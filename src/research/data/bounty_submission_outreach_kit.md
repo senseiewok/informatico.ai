@@ -34,7 +34,7 @@ All **48 Informatico.ai Folios** (and **40 CF Folios** = **88 total essays**) pa
 
 GitHub serves as our public, immutable publishing proof and cryptographic timestamp ledger for all 6 Open-Bounty Crucible harnesses and 48 Folios:
 
-1. **Public Commit History & Merkle Hash**: Every commit pushed to [`https://github.com/senseiewok/informatico.ai/commits/main`](https://github.com/senseiewok/informatico.ai/commits/main) binds the exact source code of `bounties/` (`BOUNTY-M1`, `BOUNTY-P1`, `BOUNTY-E1`, `BOUNTY-A1`, `BOUNTY-P2`, `BOUNTY-M2`) and `skills/` (`48/48` Folio verifiers) to a cryptographic Git commit SHA.
+1. **Public Commit History & Merkle Hash**: Every commit pushed to [`https://github.com/senseiewok/informatico.ai/commit/1d9bebaf7bb60348d942f3cb05916305fc304ef0`](https://github.com/senseiewok/informatico.ai/commit/1d9bebaf7bb60348d942f3cb05916305fc304ef0) binds the exact source code of `bounties/` (`BOUNTY-M1`, `BOUNTY-P1`, `BOUNTY-E1`, `BOUNTY-A1`, `BOUNTY-P2`, `BOUNTY-M2`) and `skills/` (`48/48` Folio verifiers) to a cryptographic Git commit SHA.
 2. **Publishing Proof Protocol**: Full verification steps and SHA-256 artifact hashing commands are documented in [`bounties/PUBLISHING_PROOF.md`](https://github.com/senseiewok/informatico.ai/blob/main/bounties/PUBLISHING_PROOF.md):
    ```bash
    git clone https://github.com/senseiewok/informatico.ai.git
