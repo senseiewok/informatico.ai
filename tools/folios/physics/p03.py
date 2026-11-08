@@ -60,7 +60,7 @@ FOLIO = {'category_code': 'P',
                         'exponent alpha = 0.814 in healthy vs alpha < 0.20 in dehydrated mortar '
                         'matrix plugs.',
                 'kicker': 'SIDENOTE P.03-B · BROWNIAN SUBDIFFUSION & CONTINUOUS TIME RANDOM WALKS '
-                          '(DOI 10.1016/j.addr.2015.04.015)'},
+                          '(DOI 10.1103/PhysRevLett.79.3286)'},
  'skill': {'description': 'AI-agnostic physical skill for complex fluid rheology, Carreau-Yasuda '
                           'shear thinning, and nanoparticle anomalous subdiffusion in ventilation '
                           'duct viscoplastic grout.',

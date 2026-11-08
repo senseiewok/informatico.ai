@@ -349,10 +349,10 @@ DISPATCH = {'kicker': 'FRONTIER POLYMER PHYSICS DISPATCH · DOI–EDWARDS REPTAT
  'headline': 'Tube Reptation Scaling Explains How 4.5 kb CSI-MasterFormat mRNA & Phage Genomes '
              'Thread Nanopores',
  'body': "Extending Doi & Edwards's 1978 tube reptation theory (DOI 10.1039/F29787401789), recent "
-         'clinical delivery advances for full-length 4.5 kb CSI-MasterFormat mRNA (VX-522 '
-         'NCT05668741; ARCT-032 NCT05712538; RCT2100 NCT06237335) and inhaled bacteriophages '
-         '(CYPHY Nature Medicine DOI 10.1038/s41591-025-03678-8) optimize carrier compaction to '
-         'bypass reptation bottlenecks.'}
+         'dynamic tube-dilation and contour-length fluctuation theory (Milner & McLeish 1998, DOI '
+         '10.1103/PhysRevLett.81.725) and differentiable molecular dynamics (Schoenholz & Cubuk '
+         '2020, DOI 10.1088/1742-5468/ac3ae9) quantify contour-length fluctuations and convective '
+         'constraint release to bypass reptation bottlenecks.'}
 
 META_3D = ('Doi–Edwards Curvilinear Polymer Reptation Canyon',
  'X/Z: Confining Mucin/Nuclear Tube Contour · Y: Tube Confinement Potential & 4.5 kb Writhe')

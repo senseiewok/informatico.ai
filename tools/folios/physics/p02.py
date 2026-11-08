@@ -58,7 +58,7 @@ FOLIO = {'category_code': 'P',
                         'while minimizing viscous dissipation through cross-stream hydrodynamic '
                         'shielding.',
                 'kicker': 'SIDENOTE P.02-B · ANTIPLECTIC METACHRONISM & OSEEN TENSORS (DOI '
-                          '10.1073/pnas.1016613108)'},
+                          '10.1088/0034-4885/72/9/096601)'},
  'skill': {'description': 'AI-agnostic physical skill for micro-hydrodynamic active matter '
                           'synchronization, low Reynolds Stokes flow, and ciliary metachronal wave '
                           'velocity.',

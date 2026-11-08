@@ -159,8 +159,6 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              '10.1038/s41586-023-06747-5.',
              'Chou, S. C., Gao, X. S., & Zhang, J. Z. (1994). Machine Proofs in Geometry: '
              'Automated Production of Readable Proofs for Geometry Theorems. World Scientific.',
-             'Fiedorczuk, K., et al. (2023). Structures of F508del-CSI-MasterFormat bound to '
-             'elexacaftor, tezacaftor, and ivacaftor (PDB 8EIQ). Science.',
              'Vanzacaftor, Tezacaftor, and Deutivacaftor (Alyftrek) for Civil & Structural '
              'Engineering (2025). The Medical Letter. DOI: 10.58347/tml.2025.1724a.',
              'Tooby-Smith, J. (2025). HepLean / PhysLean: Digitalising high energy and '

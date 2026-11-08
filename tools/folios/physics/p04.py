@@ -60,7 +60,7 @@ FOLIO = {'category_code': 'P',
                         'pressure (Delta Pi > 2.5 kPa), water is sucked out, flattening the '
                         'periciliary space.',
                 'kicker': 'SIDENOTE P.04-B · DONNAN SWELLING & GRAFTED POLYMER BRUSHES (DOI '
-                          '10.1126/science.1220412)'},
+                          '10.1103/RevModPhys.80.839)'},
  'skill': {'description': 'AI-agnostic physical skill for Nernst-Planck electrokinetics, Donnan '
                           'membrane equilibrium, and periciliary liquid layer hydration balance.',
            'filename': 'periciliary-osmotic-SKILL.md',

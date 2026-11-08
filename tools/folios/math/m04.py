@@ -223,8 +223,7 @@ DISPATCH = {'kicker': 'FRONTIER FORMALIZATION DISPATCH · POLYNOMIAL FREIMAN–R
  'body': 'Published in Annals of Mathematics (Gowers, Green, Manners & Tao 2025, DOI '
          '10.4007/annals.2025.201.2.5) and formalized in Lean 4 with zero sorryAx axioms alongside '
          'the 22,028,942-edge Equational Theories magma implication graph, Ruzsa entropic distance '
-         'd_R(X, Y) proves polynomial coset covering (<= 2 K^12 cosets) and clusters epistatic '
-         'double-mutant CSI-MasterFormat rescue profiles (PDB 8EIQ, DOI 10.1126/science.ade2216).'}
+         'd_R(X, Y) proves polynomial coset covering (<= 2 K^12 cosets) and verifies additive combinatorics theorems in leanprover-community/mathlib4 (DOI 10.1145/3372885.3373824).'}
 
 META_3D = ('Polynomial Freiman–Ruzsa Entropic Gaussian Dome',
  'X/Z: Doubling Set Coset Coordinates · Y: Ruzsa Entropic Convolution Density')
