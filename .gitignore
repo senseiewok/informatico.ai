@@ -1,0 +1,34 @@
+# Secrets & environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.ppk
+id_rsa*
+id_ed25519*
+credentials.json
+*service-account*.json
+auth.json
+.npmrc
+
+# Deploy tool configs
+.vscode/sftp.json
+sftp-config.json
+.ftpconfig
+
+# Local agent settings and logs
+.claude/settings.local.json
+CLAUDE.local.md
+.loop-logs/
+*.log
+
+# Python & OS caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+Thumbs.db
+*.swp

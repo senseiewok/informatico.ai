@@ -1,0 +1,465 @@
+{
+  "schema_version": "1.1",
+  "law": "Law 8 & Law 17 \u2014 Human-Scale Grounded Scientific Plate Generation & 4-Seat Image Selection Council",
+  "total_plates_replaced": 45,
+  "magazine_plates_count": 41,
+  "cf_flagship_plates_count": 4,
+  "council_seats": [
+    "gemini-4-argon (Physical Specification & Structural Plausibility Seat)",
+    "claude-opus-5.5 (Human Perceptual Impact & Tactile Craft Seat)",
+    "gemma4:31b-it-q4_K_M / qwen3.8:27b (Local VLM Anti-Hallucination & Zero-Text Gatekeeper)",
+    "deterministic-pixel-verifier (1280x720 16:9, >45KB, Zero Synthetic Sine-Wave Overlay Verifier)"
+  ],
+  "plates": [
+    {
+      "plate_id": "e01",
+      "path": "src/research/plates/e01.jpg",
+      "governing_specification": "Macro Roman pozzolanic mortar & terracotta brick aggregate with capillary pore percolation",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 310381,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "e02",
+      "path": "src/research/plates/e02.jpg",
+      "governing_specification": "High-rise concrete pumping steel slickline cutaway showing central plug-flow core",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 352831,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "e03",
+      "path": "src/research/plates/e03.jpg",
+      "governing_specification": "Acoustic Helmholtz resonator metamaterial concrete seawall cutaway",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 347335,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "e04",
+      "path": "src/research/plates/e04.jpg",
+      "governing_specification": "Counter-current sensible and latent enthalpy recovery exchanger core",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 288846,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "e05",
+      "path": "src/research/plates/e05.jpg",
+      "governing_specification": "Continuous Flight Auger (CFA) piling rig drilling stratified clay and bedrock",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 293488,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "e06",
+      "path": "src/research/plates/e06.jpg",
+      "governing_specification": "Lead-rubber seismic base isolation bearing under hospital foundation column",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 319468,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "e07",
+      "path": "src/research/plates/e07.jpg",
+      "governing_specification": "Coastal suspension bridge with glowing aeroelastic flutter & PINN stream ribbons",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 234924,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "e08",
+      "path": "src/research/plates/e08.jpg",
+      "governing_specification": "Earth-Pressure-Balance Tunnel Boring Machine (EPB-TBM) cutaway beneath brick city",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 339235,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "e09",
+      "path": "src/research/plates/e09.jpg",
+      "governing_specification": "Macro fractured concrete with translucent autogenous calcite crystal needles bridging crack",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 369435,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "e10",
+      "path": "src/research/plates/e10.jpg",
+      "governing_specification": "Robotic 3D concrete printing (3DCP) nozzle extruding ribbed horizontal mortar layers",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 273429,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "a01",
+      "path": "src/research/plates/a01.jpg",
+      "governing_specification": "Limestone masonry funicular arch studio model with hanging brass Hooke catenary chain",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 249465,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "a02",
+      "path": "src/research/plates/a02.jpg",
+      "governing_specification": "Reciprocal Japanese timber gridshell joinery with oak pegs in warm sunlight",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 268863,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "a03",
+      "path": "src/research/plates/a03.jpg",
+      "governing_specification": "Bioclimatic double-skin glass facade cutaway with buoyant thermal stack chimney",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 294575,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "a04",
+      "path": "src/research/plates/a04.jpg",
+      "governing_specification": "High-Tech exposed steel exoskeleton with plug-in capsules and diagonal wind bracing",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 313474,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "a05",
+      "path": "src/research/plates/a05.jpg",
+      "governing_specification": "Stepped coffered timber auditorium ceiling engineered for Sabine acoustic diffusion",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 298661,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "a06",
+      "path": "src/research/plates/a06.jpg",
+      "governing_specification": "Net-zero rainwater harvesting courtyard vault and mineral filtration cistern",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 337710,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "a07",
+      "path": "src/research/plates/a07.jpg",
+      "governing_specification": "Luis Barrag\u00e1n Rosa Mexicano stucco courtyard wall, golden light corridor & cobalt pool",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 334272,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "a08",
+      "path": "src/research/plates/a08.jpg",
+      "governing_specification": "Desert courtyard pavilion with mirror-white photonic sky-cooling roof & reflecting pool",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 304889,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "a09",
+      "path": "src/research/plates/a09.jpg",
+      "governing_specification": "Hygroscopic beech wood veneer petals curving open on a sunlit alpine glass facade",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 278005,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "a10",
+      "path": "src/research/plates/a10.jpg",
+      "governing_specification": "Kinetic Miura-ori origami bronze and perforated timber facade casting diamond shadows",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 388281,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "p01",
+      "path": "src/research/plates/p01.jpg",
+      "governing_specification": "Cryo-EM CFTR transmembrane protein channel in lipid bilayer with chloride ion stream",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 242139,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "p02",
+      "path": "src/research/plates/p02.jpg",
+      "governing_specification": "Airway epithelial periciliary brush cilia beating in metachronal wave beneath mucus layer",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 270799,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "p03",
+      "path": "src/research/plates/p03.jpg",
+      "governing_specification": "Biopolymer mucin hydrogel mesh with diffusing zwitterionic lipid nanoparticles",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 325222,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "p04",
+      "path": "src/research/plates/p04.jpg",
+      "governing_specification": "Viscoelastic yield-stress airway mucus plug clearance in bronchial lumen",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 273862,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "p05",
+      "path": "src/research/plates/p05.jpg",
+      "governing_specification": "Quantum WKB wavepacket tunneling through glowing potential energy barrier",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 195062,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "p06",
+      "path": "src/research/plates/p06.jpg",
+      "governing_specification": "De Gennes polymer tube reptation of long genomic DNA strand through nanopore",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 254533,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "p07",
+      "path": "src/research/plates/p07.jpg",
+      "governing_specification": "2026 Formula 1 car in dark wind tunnel with cyan/emerald Venturi ground-effect streamlines",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 298504,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "p08",
+      "path": "src/research/plates/p08.jpg",
+      "governing_specification": "Diptych of gonioapparent automotive pearlescent carbon fender vs Rosa Mexicano stucco",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 302119,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "p09",
+      "path": "src/research/plates/p09.jpg",
+      "governing_specification": "Stainless-steel capillary nozzle with 49.3-degree liquid Taylor cone & glowing aerosol plume",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 167869,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "p10",
+      "path": "src/research/plates/p10.jpg",
+      "governing_specification": "Sapphire honeycomb photonic crystal slab guiding emerald-cyan chiral edge laser around defect",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 261863,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "m01",
+      "path": "src/research/plates/m01.jpg",
+      "governing_specification": "Tactile ink-on-vellum torus-to-icosahedron modularity lifting & Taylor-Wiles bridge",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 285868,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "m02",
+      "path": "src/research/plates/m02.jpg",
+      "governing_specification": "Topographic critical-strip landscape with Riemann zeta prime-harmonic peaks on vellum",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 245592,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "m03",
+      "path": "src/research/plates/m03.jpg",
+      "governing_specification": "3SUM-to-APSP combinatorial fine-grained complexity reduction polyhedron on vellum",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 251282,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "m04",
+      "path": "src/research/plates/m04.jpg",
+      "governing_specification": "Polynomial Freiman-Ruzsa additive combinatorics entropic lattice crystal on vellum",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 292878,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "m05",
+      "path": "src/research/plates/m05.jpg",
+      "governing_specification": "AlphaGeometry neuro-symbolic Euclidean circle-and-chord geometric construction on vellum",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 234645,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "m06",
+      "path": "src/research/plates/m06.jpg",
+      "governing_specification": "Sub-cubic shortest-path matrix multiplication tensor cube decomposition on vellum",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 244632,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "m07",
+      "path": "src/research/plates/m07.jpg",
+      "governing_specification": "Sculpted carbon-fiber Formula 1 elevation circuit on obsidian with cyan/gold optical trajectory",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 173004,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "m08",
+      "path": "src/research/plates/m08.jpg",
+      "governing_specification": "Schr\u00f6dinger Riemannian color manifold horn with glowing geodesic path on vellum",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 212675,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "m09",
+      "path": "src/research/plates/m09.jpg",
+      "governing_specification": "Sculpted dark slate 3D manifold with cyan and gold Gaussian peaks linked by Wasserstein streams",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 164577,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "m10",
+      "path": "src/research/plates/m10.jpg",
+      "governing_specification": "Tactile brass-sphere, silver-rod & cast amber glass Vietoris-Rips simplicial sculpture on stone",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 271644,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "utopian-city-future",
+      "path": "src/research/plates/utopian-city-future.jpg",
+      "governing_specification": "Solarpunk bioclimatic city with diagrid timber-steel towers, skybridges & canals",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 422382,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "cf-sixty-five-roses-atelier",
+      "path": "src/images/plates/cf-sixty-five-roses-atelier.jpg",
+      "governing_specification": "Burgundy roses on brass stems, optical glass prism & crystal DNA helix on travertine table",
+      "human_perceptual_grounding": "pure_tactile_physical_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 298037,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "cf-airway-mucus-lnp",
+      "path": "src/images/plates/cf-airway-mucus-lnp.jpg",
+      "governing_specification": "Luminous zwitterionic lipid nanoparticles traversing airway mucin mesh toward ciliated epithelium",
+      "human_perceptual_grounding": "pure_tactile_physical_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 369758,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "cf-cftr-cryoem-pocket",
+      "path": "src/images/plates/cf-cftr-cryoem-pocket.jpg",
+      "governing_specification": "Cryo-EM CFTR transmembrane alpha-helices in lipid bilayer conducting glowing chloride ions",
+      "human_perceptual_grounding": "pure_tactile_physical_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 268599,
+      "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "cf-ptc-ribosome-rescue",
+      "path": "src/images/plates/cf-ptc-ribosome-rescue.jpg",
+      "governing_specification": "80S ribosome translating mRNA strand with engineered suppressor tRNA rescuing premature stop codon",
+      "human_perceptual_grounding": "pure_tactile_physical_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 188897,
+      "zero_baked_text_verified": true
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="butt" stroke-linejoin="round" role="img" aria-labelledby="informatico-logo-title informatico-logo-desc">
+  <title id="informatico-logo-title">Informatico.ai — Set-Square 2×2 Matrix [Io / ai] Architectural Seal</title>
+  <desc id="informatico-logo-desc">Double-bordered architectural 2x2 matrix seal of Informatico.ai: Top-Left pure vertical pillar (I), Top-Right seamless Bauhaus circle (o), Bottom-Left seamless 45-degree drafting set-square right triangle (a), and Bottom-Right vertical stem (i) capped by a Minium-red datum square—reading Io + ai horizontally and Ia + oi vertically.</desc>
+  <style>
+    :root {
+      --ink: #11161c;
+      --vellum: #f7f8f9;
+      --minium: #c83e2b;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #eef4fa;
+        --vellum: #122c47;
+        --minium: #ff7a66;
+      }
+    }
+    .tp-logo-plate { fill: var(--ink); stroke: var(--ink); stroke-width: 1.5; stroke-linejoin: miter; }
+    .tp-logo-inset { fill: none; stroke: var(--vellum); stroke-width: 1.5; stroke-linejoin: miter; }
+    .tp-logo-draw { stroke: var(--vellum); stroke-dasharray: none; stroke-dashoffset: 0; fill: none; }
+    .tp-logo-datum {
+      fill: var(--minium);
+      stroke: none;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    @keyframes tpLogoDraw {
+      0% { stroke-dasharray: 1; stroke-dashoffset: 1; }
+      99% { stroke-dasharray: 1; stroke-dashoffset: 0; }
+      100% { stroke-dasharray: none; stroke-dashoffset: 0; }
+    }
+    @keyframes tpDatumBreathe {
+      0%, 100% { opacity: 0.86; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.22); }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .tp-logo-q1 {
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        animation: tpLogoDraw 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0s forwards;
+      }
+      .tp-logo-q2 {
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        animation: tpLogoDraw 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.14s forwards;
+      }
+      .tp-logo-q3 {
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        animation: tpLogoDraw 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.28s forwards;
+      }
+      .tp-logo-q4 {
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        animation: tpLogoDraw 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.42s forwards;
+      }
+      .tp-logo-datum {
+        animation: tpDatumBreathe 4s ease-in-out 0.75s infinite;
+      }
+    }
+  </style>
+  <rect class="tp-logo-plate" x="0.75" y="0.75" width="34.5" height="34.5"/>
+  <rect class="tp-logo-inset" x="2.25" y="2.25" width="31.5" height="31.5"/>
+  <!-- Q1 (Top-Left): "I" — Pure Vertical Pillar -->
+  <path class="tp-logo-draw tp-logo-q1" d="M11.5 7.4v9.0" pathLength="1"/>
+  <!-- Q2 (Top-Right): "o" — Seamless Bauhaus Ocular Ring -->
+  <circle class="tp-logo-draw tp-logo-q2" cx="24.5" cy="11.9" r="4.0" pathLength="1"/>
+  <!-- Q3 (Bottom-Left): "a" — Seamless 45° Drafting Set-Square Right Triangle -->
+  <path class="tp-logo-draw tp-logo-q3" d="M11.5 28.2H8.4L14.6 22.0v6.2z" pathLength="1"/>
+  <!-- Q4 (Bottom-Right): "i" — Vertical Stem + Minium-Red Datum Square -->
+  <path class="tp-logo-draw tp-logo-q4" d="M24.5 24.8v4.8" pathLength="1"/>
+  <rect class="tp-logo-datum" x="23.1" y="20.6" width="2.8" height="2.8"/>
+</svg>
