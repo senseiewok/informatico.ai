@@ -1,6 +1,7 @@
 """Verification suite for the standalone public Informatico.ai repository."""
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import subprocess
@@ -90,6 +91,27 @@ class PublicInformaticoRepoTests(unittest.TestCase):
                     self.assertIn('class="tp-transfer-chapter"', txt, html_file)
                     self.assertGreaterEqual(txt.count("<h3"), 15, html_file)
         self.assertEqual(folio_count, 48)
+
+
+
+    def test_all_49_editorial_plates_have_unique_sha256_hashes(self) -> None:
+        plates_dir = RESEARCH / "plates"
+        expected_slugs = (
+            [f"e{i:02d}" for i in range(1, 13)]
+            + [f"a{i:02d}" for i in range(1, 13)]
+            + [f"p{i:02d}" for i in range(1, 13)]
+            + [f"m{i:02d}" for i in range(1, 13)]
+            + ["utopian-city-future"]
+        )
+        seen_hashes: dict[str, str] = {}
+        for slug in expected_slugs:
+            p = plates_dir / f"{slug}.jpg"
+            self.assertTrue(p.is_file(), f"Missing plate {slug}.jpg")
+            data = p.read_bytes()
+            self.assertGreater(len(data), 40_000, f"Plate {slug}.jpg too small")
+            h = hashlib.sha256(data).hexdigest()
+            self.assertNotIn(h, seen_hashes, f"Duplicate plate {slug}.jpg == {seen_hashes.get(h)}.jpg")
+            seen_hashes[h] = slug
 
 
 if __name__ == "__main__":
