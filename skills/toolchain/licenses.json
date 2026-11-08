@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0.0",
+  "track": "Tech & Tools · The Toolbox (X.01–X.06)",
+  "audit_date": "2026-11-08",
+  "site_code_license": "MIT",
+  "generated_artifact_license": "CC0-1.0 / CC-BY-4.0 (Educational artifact; not certified for fitness)",
+  "v1_generator_policy": "First-edition generators (make_x01.py..make_x06.py) and verifiers (verify_x01_*.py..verify_x06_*.py) execute deterministically using Python 3 stdlib and reference only permissively licensed (MIT / Apache-2.0) libraries. GPL and LGPL tools are audited below and excluded from the first-edition build pipeline to prevent copyleft derivative-work ambiguity.",
+  "tools": [
+    {
+      "name": "Python Standard Library (struct, json, hashlib, math, zipfile)",
+      "spdx_id": "PSF-2.0",
+      "category": "first_edition_active",
+      "source_url": "https://docs.python.org/3/license.html",
+      "read_date": "2026-11-08",
+      "status": "APPROVED_ACTIVE",
+      "notes": "Used directly by all make_x01.py..make_x06.py generators and verify_x01_*.py..verify_x06_*.py byte-level verifiers."
+    },
+    {
+      "name": "build123d",
+      "spdx_id": "Apache-2.0",
+      "category": "first_edition_compatible",
+      "source_url": "https://github.com/gumyr/build123d/blob/dev/LICENSE",
+      "read_date": "2026-11-08",
+      "status": "APPROVED_PERMISSIVE",
+      "notes": "Permissive Apache-2.0 algebraic BREP CAD framework over OpenCascade (OCCT LGPL-2.1 with static/template exception). Compatible with MIT code and CC0/CC-BY educational STEP/3MF/GLB outputs."
+    },
+    {
+      "name": "CadQuery 2",
+      "spdx_id": "Apache-2.0",
+      "category": "first_edition_compatible",
+      "source_url": "https://github.com/CadQuery/cadquery/blob/master/LICENSE",
+      "read_date": "2026-11-08",
+      "status": "APPROVED_PERMISSIVE",
+      "notes": "Permissive Apache-2.0 fluent parametric B-rep modeling library."
+    },
+    {
+      "name": "COMPAS Framework (compas-dev/compas)",
+      "spdx_id": "MIT",
+      "category": "first_edition_compatible",
+      "source_url": "https://github.com/compas-dev/compas/blob/main/LICENSE",
+      "read_date": "2026-11-08",
+      "status": "APPROVED_PERMISSIVE",
+      "notes": "MIT-licensed computational architecture and 3D polyhedral graphic statics framework from ETH Zurich Block Research Group. Ideal for small architecture studios."
+    },
+    {
+      "name": "Manifold (elalish/manifold)",
+      "spdx_id": "Apache-2.0",
+      "category": "first_edition_compatible",
+      "source_url": "https://github.com/elalish/manifold/blob/master/LICENSE",
+      "read_date": "2026-11-08",
+      "status": "APPROVED_PERMISSIVE",
+      "notes": "Apache-2.0 exact topological manifold CSG kernel guaranteeing 2E = 3F watertight meshes."
+    },
+    {
+      "name": "rhino3dm (mcneel/rhino3dm)",
+      "spdx_id": "MIT",
+      "category": "first_edition_compatible",
+      "source_url": "https://github.com/mcneel/rhino3dm/blob/main/LICENSE",
+      "read_date": "2026-11-08",
+      "status": "APPROVED_PERMISSIVE",
+      "notes": "MIT-licensed OpenNURBS wrapper for reading and writing .3dm geometry without a commercial Rhino seat."
+    },
+    {
+      "name": "trimesh (mikedh/trimesh)",
+      "spdx_id": "MIT",
+      "category": "first_edition_compatible",
+      "source_url": "https://github.com/mikedh/trimesh/blob/main/LICENSE.md",
+      "read_date": "2026-11-08",
+      "status": "APPROVED_PERMISSIVE",
+      "notes": "MIT-licensed triangular mesh inspection library."
+    },
+    {
+      "name": "Khronos glTF 2.0 / GLB Specification",
+      "spdx_id": "CC-BY-4.0",
+      "category": "open_standard",
+      "source_url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+      "read_date": "2026-11-08",
+      "status": "APPROVED_STANDARD",
+      "notes": "ISO/IEC 12113:2022 and Khronos open royalty-free 3D transmission format."
+    },
+    {
+      "name": "3MF Core Specification 1.2.3",
+      "spdx_id": "BSD-2-Clause",
+      "category": "open_standard",
+      "source_url": "https://github.com/3MFConsortium/spec_core/blob/master/LICENSE",
+      "read_date": "2026-11-08",
+      "status": "APPROVED_STANDARD",
+      "notes": "3MF Consortium open XML/ZIP additive manufacturing specification."
+    },
+    {
+      "name": "IfcOpenShell / Bonsai BIM",
+      "spdx_id": "LGPL-3.0-or-later",
+      "category": "deferred_edition_2",
+      "source_url": "https://github.com/IfcOpenShell/IfcOpenShell/blob/v0.8.0/COPYING.LESSER",
+      "read_date": "2026-11-08",
+      "status": "DEFERRED_V2_LGPL",
+      "notes": "LGPL-3.0-or-later; referenced in Small Architect Studio documentation as a free external tool, not linked into site runtime or v1 generators."
+    },
+    {
+      "name": "OpenSCAD",
+      "spdx_id": "GPL-2.0-or-later",
+      "category": "deferred_edition_2",
+      "source_url": "https://github.com/openscad/openscad/blob/master/COPYING",
+      "read_date": "2026-11-08",
+      "status": "DEFERRED_V2_GPL",
+      "notes": "GPL-2.0-or-later with CGAL GPL-3.0-or-later dependencies; excluded from v1 repository generators."
+    },
+    {
+      "name": "Gmsh",
+      "spdx_id": "GPL-2.0-or-later",
+      "category": "deferred_edition_2",
+      "source_url": "https://gitlab.onelab.info/gmsh/gmsh/-/blob/master/LICENSE.txt",
+      "read_date": "2026-11-08",
+      "status": "DEFERRED_V2_GPL",
+      "notes": "GPL-2.0-or-later; excluded from v1 repository generators."
+    }
+  ]
+}

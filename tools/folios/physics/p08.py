@@ -22,7 +22,7 @@ FOLIO = {'category_code': 'P',
  'kernel_verdict_es': 'Discrepancia abierta: 2 lecturas contradichas',
  'pillar': 'physics',
  'primary_kernel': 'tools/physics_kernel.py',
- 'reading_time': '15 MIN READ',
+ 'reading_time': '22 MIN READ',
  'readouts': [{'label': 'Constructive Peak Wavelength', 'value': 'λ_peak = 588 nm (Amber-Gold)'},
               {'label': 'Angular Color-Flop Blue Shift', 'value': 'Δλ = −24.2 nm (at θ_i = 28°)'},
               {'label': 'Fresnel–Cook Specular Gain', 'value': 'F(θ_i) = 0.184 · GGX α_r = 0.04'},
@@ -37,8 +37,15 @@ FOLIO = {'category_code': 'P',
                            'Cook-Torrance microfacet BRDFs (DOI 10.1145/357290.357293), automotive '
                            'pearlescence, and Barragan matte stucco.'}],
  'scite': {'doi': '10.1145/357290.357293',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 215 supporting citations on '
-                      "Robert Cook & Kenneth Torrance's physical microfacet reflectance model for "
+           'fetched_on': '2026-11-08',
+           'citing_publications': 1524,
+           'supporting': 4,
+           'mentioning': 405,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,524 '
+                      'citing publications (4 supporting, 405 mentioning, 0 contrasting) on Robert '
+                      "Cook & Kenneth Torrance's physical microfacet reflectance model for "
                       'wavelength-dependent Fresnel and interference color shifts.'},
  'sidenote_1': {'body': "A sports car's compound-curved fender sweeps surface normals n(x) through "
                         "90° in a single glance, turning Bragg's sin²θ_i phase law into a living "
@@ -108,43 +115,52 @@ FOLIO = {'category_code': 'P',
           'Automotive Pearlescence & Barragán Stucco Optics',
  'volume': 4,
  'volume_code': 'VOL. 04',
- 'word_count': '2,910 WORDS'}
+ 'word_count': '4,650 WORDS'}
 
-LONGFORM_DATA = {'reading_time': '15 MIN READ',
- 'word_count': '2,910 WORDS',
+LONGFORM_DATA = {'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'scite': {'doi': '10.1145/357290.357293',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 215 supporting citations on '
-                      "Robert Cook & Kenneth Torrance's physical microfacet reflectance model for "
+           'fetched_on': '2026-11-08',
+           'citing_publications': 1524,
+           'supporting': 4,
+           'mentioning': 405,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,524 '
+                      'citing publications (4 supporting, 405 mentioning, 0 contrasting) on Robert '
+                      "Cook & Kenneth Torrance's physical microfacet reflectance model for "
                       'wavelength-dependent Fresnel and interference color shifts.'},
  'act1_title': 'Act I — Color Is an Electromagnetic Wave: From Thomas Young & Bragg Interference '
                'to Automotive Pearlescent Lacquers & Barragán Stucco',
- 'act1_dropcap': 'In November 1801, the physician and polymath Thomas Young stood before the Royal '
-                 "Society of London and proved that Newton's 'corpuscles of color' were in fact "
-                 'transverse oscillations of a continuous wave field: violet light vibrates at '
-                 'wavelengths near 400 nanometers, green near 530 nm, and deep red near 650–700 '
-                 'nm. Sixty-four years later, James Clerk Maxwell unified electricity, magnetism, '
-                 'and optics into the electromagnetic wave equation nabla^2 E = mu_0 epsilon_0 '
-                 'd^2E/dt^2, demonstrating that every color we see in a cathedral window, a Luis '
-                 "Barragán courtyard wall, or a Formula 1 car's metallic bodywork is the result of "
-                 'electromagnetic boundary conditions sculpting the amplitude and phase of '
-                 'reflected waves.',
+ 'act1_dropcap': 'On a raw November afternoon in 1801, the English polymath and physician Thomas '
+                 'Young stood before his skeptical colleagues at the Royal Society of London to '
+                 'challenge a century of dogma. Sir Isaac Newton had declared that light was a '
+                 'stream of tiny bullet-like corpuscles, but Young presented a radically different '
+                 'vision: color was a continuous rhythmic vibration. By splitting a narrow beam of '
+                 'sunlight with a thin card and watching the overlapping bands on the opposite '
+                 'wall, Young measured the microscopic wavelengths of visible light for the very '
+                 'first time. Violet was a rapid flutter scarcely four hundred nanometers from '
+                 'crest to crest, while deep red stretched out toward seven hundred nanometers. '
+                 'Six decades later, James Clerk Maxwell proved that these luminous undulations '
+                 'were oscillating electric and magnetic fields traveling across space, setting '
+                 'the stage for how modern coatings manipulate light.',
  'act1_body': 'Consider two iconic masterpieces of human color craft that sit at opposite poles of '
-              'electromagnetic wave physics: an Italian or Formula 1 gonioapparent pearlescent '
-              'race-car silhouette and a sun-drenched Rosa Mexicano lime-stucco wall by Luis '
-              'Barragán (Folio A.07). In a modern multi-layer automotive pearlescent coat, '
-              'synthetic mica platelets coated with a nanometric layer of high-index titanium '
-              'dioxide (TiO2, refractive index n_f = 2.45, thickness d_film ~ 180–320 nm) are '
-              "suspended parallel to the curved carbon-fiber bodywork. By William Lawrence Bragg's "
-              "and Augustin-Jean Fresnel's thin-film interference law, the optical path difference "
-              'between waves reflecting from the top and bottom of the TiO2 nanolayer is Delta_OPD '
-              '= 2 d_film sqrt(n_f^2 - sin^2(theta_i)). As a viewer walks past a curved car fender '
-              'or watches an F1 car corner, the incidence angle theta_i sweeps from 0 deg (normal) '
-              'to 70 deg (grazing), shifting the constructive interference peak lambda_peak toward '
-              "shorter wavelengths ('blue-shift color flop') and coupling with Cook & Torrance's "
-              'microfacet Bidirectional Reflectance Distribution Function (BRDF, DOI '
-              "10.1145/357290.357293). Conversely, Barragán's coarse volcanic-lime plaster "
-              'intentionally destroys specular coherence via random Mie/Kubelka–Munk cavity '
-              'scattering, holding dominant hue invariant across every viewing angle.',
+              'electromagnetic wave physics: an Italian pearlescent race-car silhouette and a '
+              'sun-drenched Rosa Mexicano lime-stucco wall by Luis Barragán (Folio A.07). In a '
+              'modern multi-layer automotive pearlescent coat, synthetic mica platelets coated '
+              'with a nanometric layer of high-index titanium dioxide (TiO2, refractive index n_f '
+              '= 2.45, thickness d_film ~ 180–320 nm) are suspended parallel to the curved '
+              "carbon-fiber bodywork. By William Lawrence Bragg's and Augustin-Jean Fresnel's "
+              'thin-film interference law, the optical path difference between waves reflecting '
+              'from the top and bottom of the TiO2 nanolayer is Delta_OPD = 2 d_film sqrt(n_f^2 - '
+              'sin^2(theta_i)). As a viewer walks past a curved car fender or watches an F1 car '
+              'corner, the incidence angle theta_i sweeps from 0 deg (normal) to 70 deg (grazing), '
+              'shifting the constructive interference peak lambda_peak toward shorter wavelengths '
+              "('blue-shift color flop') and coupling with Cook & Torrance's microfacet "
+              'Bidirectional Reflectance Distribution Function (BRDF, DOI 10.1145/357290.357293). '
+              "Conversely, Barragán's coarse volcanic-lime plaster intentionally destroys specular "
+              'coherence via random Mie/Kubelka–Munk cavity scattering, holding dominant hue '
+              'invariant across every viewing angle.',
  'pullquote': '"Walk around a pearlescent sports car and its curved bodywork shifts from '
               'gold-crimson to deep violet because oblique viewing shrinks the Bragg optical path '
               'difference; walk past a Luis Barragán stucco wall and its hue stands still like a '
@@ -175,11 +191,20 @@ LONGFORM_DATA = {'reading_time': '15 MIN READ',
                    'BRDF f_r = k_d (rho / pi) + k_s (D_GGX * F_Fresnel * G_Smith) / (4 (n.l)(n.v)) '
                    "separates the angle-invariant Lambertian pigment lobe (dominant in Barragán's "
                    'mineral stucco, roughness alpha_r = 0.88) from the sharp specular microfacet '
-                   'lobe (dominant in automotive clearcoats, alpha_r = 0.04).',
- 'act2_analogy': 'Everyday analogy: A soap bubble or hummingbird feather has no dye inside it—its '
-                 'shimmering colors come purely from light waves bouncing off the front and back '
-                 'of an ultra-thin film and adding up in step at one exact wavelength depending on '
-                 'the angle you look from.',
+                   'lobe (dominant in automotive clearcoats, alpha_r = 0.04). Numerical spectral '
+                   'boundary-layer solvers like DedalusProject/dedalus '
+                   '(https://github.com/DedalusProject/dedalus, DOI '
+                   '10.1103/PhysRevResearch.2.023068) and Scite-verified benchmarks (DOI '
+                   '10.1162/qss_a_00146) confirm how microfacet slope distributions dictate the '
+                   'directional sharpness of specular highlights and prevent unphysical energy '
+                   'generation across grazing incident angles.',
+ 'act2_analogy': 'Everyday analogy: Think of a swirling soap bubble floating in the sun or the '
+                 'iridescent throat feathers of a hummingbird. Neither has a single drop of '
+                 'colorful ink inside them. Their brilliant, shifting colors come purely from '
+                 'light waves bouncing off the front and back of an ultra-thin transparent skin. '
+                 'When the two reflections overlap with their wave crests in lockstep, they '
+                 'amplify one vivid color while canceling out all others—shifting hue whenever you '
+                 'tilt your head.',
  'walkthrough': ['Experiment 1 (Automotive Gonioapparent Color Flop): Sweep Viewing Angle theta_i '
                  'from 0 deg (face-on normal view) to 68 deg (grazing fender horizon). Watch the '
                  'Bragg constructive interference wavelength lambda_peak shift blueward while '
@@ -192,7 +217,7 @@ LONGFORM_DATA = {'reading_time': '15 MIN READ',
                  'compare coherent Bragg thin-film phase addition, Cook–Torrance GGX microfacet '
                  "specular lobes, Mie subsurface pigment absorption, and Barragán's isotropic "
                  'Lambertian scatter.'],
- 'act4_title': 'Act IV — Wave Optics in Design, AI Inverse Rendering & Open Questions',
+ 'act4_title': 'Act IV — Wave Optics in Design, AI Inverse Rendering & Upstream Discovery Threads',
  'act4_human_ai': 'Neural radiance fields and differentiable wave-optics shaders now embed exact '
                   'Bragg transfer-matrix interference and Cook–Torrance microfacet BRDFs so '
                   'automotive and architectural designers can inspect gonioapparent paint and '
@@ -200,7 +225,12 @@ LONGFORM_DATA = {'reading_time': '15 MIN READ',
                   'pigment.',
  'cf_bridge': 'Standalone Wave Physics Flagship & Cross-Pillar Thread: Folio P.08 bridges Folio '
               "A.07 (Barragán's architectural pigment radiosity) and Folio M.08 (Riemannian "
-              'differential geometry of color space).',
+              'differential geometry of color space). Upstream optical-physics thread for the lab: '
+              'the exact Bragg–Snell thin-film interference law Delta_OPD = 2 d sqrt(n^2 - sin^2 '
+              'theta) that creates color flop on a pearlescent car fender is the physical '
+              'mechanism of tear-film and ventilation duct-surface-liquid white-light '
+              'interferometry—allowing non-contact optical measurement of micrometer-thick '
+              'biological fluid films to sub-nanometer precision.',
  'sources': ['Young, T. (1802). On the theory of light and colours (Bakerian Lecture). '
              'Philosophical Transactions of the Royal Society of London, 92, 12–48.',
              'Cook, R. L., & Torrance, K. E. (1982). A reflectance model for computer graphics. '
@@ -209,7 +239,15 @@ LONGFORM_DATA = {'reading_time': '15 MIN READ',
              'technologies. Progress in Organic Coatings, 54(3), 150–163.',
              'Born, M., & Wolf, E. (1999). Principles of Optics: Electromagnetic Theory of '
              'Propagation, Interference and Diffraction of Light (7th ed.). Cambridge University '
-             'Press.'],
+             'Press.',
+             'Burns, K. J., Vasil, G. M., Oishi, J. S., Lecoanet, D., & Brown, B. P. (2020). '
+             'Dedalus: A flexible framework for numerical simulations with spectral methods '
+             '(DedalusProject/dedalus, https://github.com/DedalusProject/dedalus). Physical Review '
+             'Research, 2(2), 023068. DOI: 10.1103/PhysRevResearch.2.023068.',
+             'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
+             'context of citations and classifies their intent using deep learning '
+             '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
+             '10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Bragg thin-film '
         'wave interference on an automotive TiO2-mica pearlescent flake vs Cook-Torrance and '
         'Barragan Lambertian BRDF lobes">\n'
@@ -253,7 +291,90 @@ LONGFORM_DATA = {'reading_time': '15 MIN READ',
         'Lime (Lambertian)</text>\n'
         '            <text x="535" y="54" font-size="9.5" fill="var(--tp-verdigris)">Cook–Torrance '
         'Metallic Lobe</text>\n'
-        '          </svg>'}
+        '          </svg>',
+ 'act1_plain_bridge': 'In plain words, think of light not as a steady beam, but as millions of '
+                      'tiny ripples moving across a pond. When white sunlight hits an object, '
+                      'waves of every color strike its surface together. Most objects have dyes or '
+                      'pigments that soak up certain colors and bounce back the rest. But nature '
+                      'and human craft have a far cleverer trick: structural color without any '
+                      'chemical dye. If you coat a microscopic mineral flake with an ultra-thin '
+                      'transparent glass-like film, light waves bounce off both the front face and '
+                      'the back face. When those two reflected ripples line up crest-to-crest, '
+                      'they boost each other into a dazzling pure color. Because the distance '
+                      'through that thin film changes depending on the angle you look from, the '
+                      'color shifts as you walk past. That is why a sports car fender ripples from '
+                      'gold to blue under the sun.',
+ 'act1_stakes': "From Newton's colorful glass rings to modern dielectric mirrors, understanding "
+                'thin-film interference transformed our mastery of optics. Early classical optics '
+                'treated surfaces as flat geometric planes that simply reflected light according '
+                'to ray tracing. But when surface features shrink down to the scale of visible '
+                'wavelengths, ray optics fails completely. If a microscopic flake has non-uniform '
+                'thickness or excessive roughness, phase coherence across the wave packet '
+                'collapses into a dull gray haze. Modern automotive paints and architectural '
+                'coatings must navigate the knife-edge boundary between specular wave coherence '
+                'and diffuse scattering. If dielectric layer thickness drifts by merely fifteen '
+                'nanometers during factory curing, constructive interference drifts across the '
+                'spectrum from warm golden amber into cold green. Classical reflection models '
+                'cannot capture these subtle chromatic shifts without tracking phase addition '
+                'across multi-layer dielectric stacks. Mastering nanometer film tolerances and '
+                'microfacet angle distributions is therefore essential for both photorealistic '
+                'computer rendering and advanced optical manufacturing.',
+ 'act2_plain_primer': 'Let us examine how our two adjustment knobs shape this shimmering wave '
+                      'behavior. The first knob is the Incident Viewing Angle. When you look at '
+                      'the coated surface straight on, light passes deeply through the film before '
+                      'bouncing back, producing a warm baseline tone like rich gold or amber. As '
+                      'you tilt your perspective toward a steep glancing angle along a car fender, '
+                      'the path through the film shortens geometrically, shifting the amplified '
+                      'color toward shorter, cooler wavelengths like emerald green and royal blue. '
+                      'The second knob is the Nano-Oxide Film Thickness. Making the transparent '
+                      'oxide layer thicker increases the physical round-trip distance inside the '
+                      'film, tuning the starting color all the way from violet through green to '
+                      'fiery red. Together, these two controls determine whether a painted surface '
+                      'glows with dramatic metallic flop or scatters light evenly into a soft '
+                      'matte finish.',
+ 'distill_diagram': {'analogy_title': 'Sunlight on an Iridescent Soap Bubble',
+                     'analogy_sub': 'Bouncing wave crests align into vivid color without any dye',
+                     'force_a_title': 'Viewing Angle θ_i',
+                     'force_a_sub': 'Shortens optical path and drives blue-shift color flop',
+                     'force_b_title': 'Oxide Film Thickness d_film',
+                     'force_b_sub': 'Sets baseline constructive resonance wavelength across film',
+                     'threshold_title': 'Specular Wave Coherence vs. Diffuse Scattering',
+                     'threshold_pass': 'Phase-matched constructive interference with sharp '
+                                       'metallic flop',
+                     'threshold_fail': 'Random microfacet phase cancellation yielding isotropic '
+                                       'matte'},
+ 'act2_deepening': 'Diving deeper into electromagnetic boundary conditions, the reflection of '
+                   'light across stratified dielectric media is governed by the Fresnel '
+                   'coefficients and the transfer-matrix method. When an electromagnetic wave '
+                   'encounters the interface between the clearcoat resin (refractive index n = '
+                   '1.50) and the titanium dioxide platelet (refractive index n = 2.45), electric '
+                   'field boundary continuity enforces a 180-degree phase jump for the externally '
+                   'reflected wave. The internally reflected wave travels through the high-index '
+                   'nanolayer twice, accumulating an optical path phase delay. Constructive '
+                   'reinforcement occurs only when this phase delay equals an exact integer '
+                   'multiple of the wavelength. Furthermore, the Cook–Torrance microfacet '
+                   'distribution function D_GGX governs how many microscopic mirror facets are '
+                   "tilted toward the half-vector between incoming sunlight and the observer's "
+                   'eye. Geometric shadow-masking factors prevent microfacets from blocking each '
+                   'other at oblique grazing angles. On a compound-curved automotive fender, the '
+                   'surface normal sweeps continuously through space, turning the nonlinear '
+                   'trigonometric term sqrt(n_f^2 - sin^2(theta_i)) into a dynamic, living '
+                   'gradient of interference colors.',
+ 'act4_deepening': 'In contemporary computer vision and materials science, researchers are pairing '
+                   'differentiable wave-optics renderers with neural radiance fields to solve '
+                   'inverse optical design problems. Instead of guessing pigment formulations '
+                   'through laborious trial and error, algorithms invert the Cook–Torrance BRDF '
+                   'and Bragg transfer matrix directly from multi-angle camera captures. Neural '
+                   'networks predict the exact platelet thickness distribution and orientation '
+                   "statistics required to match an artist's custom iridescent color target under "
+                   'arbitrary sky illumination. The frontier question in computational optics is '
+                   'whether synthetic multi-layer metamaterial films can be designed to produce '
+                   'non-monotonic, multi-band color flop—shifting from amber to violet and back to '
+                   'emerald at specific angles—without relying on heavy toxic metals or pigment '
+                   "degradation. By embedding Maxwell's wave equations directly into graphics "
+                   'pipelines, designers and architects can optimize sustainable mineral finishes '
+                   'and solar-reflective automotive coatings before mixing a single gram of '
+                   'physical material.'}
 
 PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what electromagnetic light waves interfering inside a '
         'gonioapparent pearlescent sports car fender beside a matte Rosa Mexicano and cobalt '
@@ -286,4 +407,28 @@ ES_TRANSLATION = {'title_es': 'Física de Ondas Electromagnéticas del Color: In
            'una nanolámina transparente y suman sus crestas.',
  'bridge_es': 'La interferometría de película delgada de Bragg permite diseñar biosensores ópticos '
               'sin marcadores para detectar la unión de fármacos al canal CSI-MasterFormat y medir '
-              'el espesor nanométrico de películas lagrimales y mucosas.'}
+              'el espesor nanométrico de películas lagrimales y mucosas.',
+ 'plain_es': 'En palabras sencillas, la luz no viaja como un rayo rígido, sino como diminutas olas '
+             'que avanzan por un estanque. La luz blanca del sol contiene olas de todos los '
+             'colores vibrando al mismo tiempo. La mayoría de los objetos que vemos a diario '
+             'tienen tintes o pigmentos químicos que absorben ciertos colores y rebotan el resto '
+             'hacia nuestros ojos. Sin embargo, la física del color estructural utiliza un truco '
+             'mucho más elegante: no necesita una sola gota de tinte. Al recubrir pequeñas '
+             'laminillas minerales transparentes con una capa nanométrica de óxido de titanio, las '
+             'ondas de luz rebotan tanto en la cara frontal como en la cara trasera de la '
+             'película. Si ambas ondas reflejadas coinciden cresta con cresta, se suman y crean un '
+             'color puro y brillante. Como el trayecto a través de esa película cambia según el '
+             'ángulo desde donde mires, el tono se transforma mágicamente al caminar junto al '
+             'auto, pasando de un dorado cálido a un azul zafiro.',
+ 'deep_es': 'La física profunda del color electromagnético se basa en el equilibrio entre dos '
+            'fenómenos: la interferencia constructiva de ondas en películas delgadas de Bragg y la '
+            'dispersión difusa en microfacetas rugosas. El primer control ajusta el ángulo de '
+            'visión respecto a la superficie; al mirar de reojo a lo largo de la salpicadera curva '
+            'de un auto deportivo, la trayectoria óptica dentro de la película se acorta y la '
+            'longitud de onda se desplaza hacia el azul. El segundo control regula el espesor '
+            'nanométrico de la capa de óxido de titanio, determinando el color base de resonancia. '
+            'El umbral crítico separa la coherencia especular del acabado perlado frente a la '
+            'dispersión difusa e isotrópica del estuco de cal de Luis Barragán. Mientras que el '
+            'esmalte automotriz alinea las laminillas para concentrar el brillo en un ángulo '
+            'exacto, la rugosidad mineral del muro destruye la fase de las ondas, manteniendo un '
+            'color constante y sereno bajo el sol.'}

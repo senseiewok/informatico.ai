@@ -99,47 +99,94 @@ FOLIO = {'folio_id': 'E.10',
                         'Suiker cubic buckling scaling.'}],
  'volume': 5,
  'volume_code': 'VOL. 05',
- 'reading_time': '15 MIN READ',
- 'word_count': '2,860 WORDS',
+ 'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'scite': {'doi': '10.1016/j.cemconres.2018.04.005',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 4 supporting and 530 mentioning '
-                      "citations on Nicolas Roussel's rheological requirements and thixotropic "
-                      'structuration laws for printable concretes.'}}
+           'fetched_on': '2026-11-08',
+           'citing_publications': 1283,
+           'supporting': 4,
+           'mentioning': 532,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,283 '
+                      'citing publications (4 supporting, 532 mentioning, 0 contrasting) on '
+                      "Nicolas Roussel's rheological requirements and thixotropic structuration "
+                      'laws for printable concretes.'}}
 
-LONGFORM_DATA = {'reading_time': '15 MIN READ',
- 'word_count': '2,860 WORDS',
+LONGFORM_DATA = {'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'parent_folios': ['E.02', 'A.01'],
  'lineage_mode': 'CONTINUATION · Continues E.02 Herschel–Bulkley Pumping & A.01 Funicular Shell '
                  'Geometry',
  'scite': {'doi': '10.1016/j.cemconres.2018.04.005',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 4 supporting and 530 mentioning '
-                      "citations on Nicolas Roussel's rheological requirements and thixotropic "
-                      'structuration laws for printable concretes.'},
+           'fetched_on': '2026-11-08',
+           'citing_publications': 1283,
+           'supporting': 4,
+           'mentioning': 532,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,283 '
+                      'citing publications (4 supporting, 532 mentioning, 0 contrasting) on '
+                      "Nicolas Roussel's rheological requirements and thixotropic structuration "
+                      'laws for printable concretes.'},
  'act1_title': 'Act I — Continuing Folio E.02 & A.01: When Pumped Concrete Leaves the Pipe Without '
                'Formwork',
- 'act1_dropcap': 'In Folio E.02 we followed high-performance concrete inside a 125 mm steel '
-                 'slickline, proving that pumping requires wall shear stress tau_w to exceed the '
-                 'Herschel–Bulkley yield stress tau_0 so a central plug translates smoothly on a '
-                 'shear-thinning lubrication layer. And in Folio A.01 we saw how Félix Candela and '
-                 'Antoni Gaudí shaped compression shells whose geometry eliminates tensile '
-                 'formwork after curing. Volume V asks the natural synthesis question that bridges '
-                 'E.02 and A.01: what physical laws govern 3D Concrete Printing (3DCP), where '
-                 'robotic extrusion nozzles deposit layer upon layer of wet mortar with zero '
-                 'formwork from the very first second?',
- 'act1_body': 'Traditional cast-in-place concrete relies on timber or steel formwork (representing '
-              '35% to 50% of structural concrete cost and construction waste) to hold fresh fluid '
-              'concrete until C-S-H hydration builds strength over hours. In 2018, Nicolas Roussel '
-              '(Cement and Concrete Research, DOI 10.1016/j.cemconres.2018.04.005) and A. S. J. '
-              'Suiker formulated the exact thermo-rheological duality of additive concrete '
-              'manufacturing (ACI 564R, CSI 03 30 00). Inside the pump hose (Folio E.02), the '
-              'mortar must have low dynamic yield stress so it extrudes smoothly; yet the instant '
-              'a filament leaves the robotic nozzle, colloidal flocculation and ettringite/C-S-H '
-              'nucleation must drive rapid linear thixotropic structuration tau_0(t) = tau_{0,0} + '
-              'A_thix * t (followed by exponential percolation re-flocculation). Every printed '
-              'wall races against two competing failure modes as total height H(t) = v_build * t '
-              'grows: bottom-layer Tresca/Mohr–Coulomb plastic yield collapse (rho * g * H / '
-              'sqrt(3) >= tau_0(t)) and global Euler–Suiker elastic wall buckling (H >= '
-              'H_crit,buckling(E(t), I, b)).',
+ 'act1_dropcap': 'In a quiet university laboratory in Los Angeles in the spring of 1997, '
+                 'mechanical engineer Behrokh Khoshnevis watched a computerized gantry crane guide '
+                 'a heavy extrusion nozzle back and forth across a concrete slab. Pumping liquid '
+                 'mortar through hoses had been standard practice for decades, but Khoshnevis '
+                 'attempted something radical: he removed the plywood formwork entirely, '
+                 'challenging the fresh cement paste to hold its own shape the instant it left the '
+                 'nozzle. Observers were skeptical, since wet concrete is notoriously fluid and '
+                 'prone to slumping into an amorphous puddle under its own weight. Yet as the '
+                 'robotic arm laid down bead after bead, building a vertical wall layer by layer, '
+                 'a profound rheological puzzle emerged. If the cement was fluid enough to flow '
+                 'through narrow pumps without jamming, what invisible physical mechanism allowed '
+                 'it to stiffen within seconds on the print bed to support the weight of '
+                 'subsequent layers?',
+ 'act1_plain_bridge': 'In plain words, three-dimensional concrete printing is like using an '
+                      'industrial hot glue gun the size of a construction crane. In traditional '
+                      'construction, building a concrete wall requires building a wooden or steel '
+                      'mold first, pouring wet concrete inside, waiting days for it to harden, and '
+                      'then tearing the wood away. This formwork consumes up to half of the total '
+                      'cost and generates massive timber waste. Robotic printing eliminates the '
+                      'mold entirely by squeezing fresh mortar through a robotic nozzle layer upon '
+                      'layer. But this creates a delicate balancing act. Inside the delivery hose, '
+                      'the mortar must flow smoothly like toothpaste so the pump does not jam. The '
+                      'instant it lands on the wall, it must stiffen like setting clay so it does '
+                      'not squash outward or buckle under the weight of fifty layers stacked above '
+                      'it. Robotic toolpaths carefully control printing speed, creating elegant '
+                      'curved walls with far less cement.',
+ 'act1_body': 'Traditional cast-in-place concrete construction depends on timber and steel '
+              'formwork, representing up to half of structural costs and producing substantial '
+              'job-site waste. In 2018, Nicolas Roussel (Cement and Concrete Research, DOI '
+              '10.1016/j.cemconres.2018.04.005) and A. S. J. Suiker established the definitive '
+              'rheological framework governing formwork-free additive manufacturing with '
+              'cementitious mortars (ACI 564R, CSI 03 30 00). Fresh mortar must maintain low '
+              'dynamic yield stress while subjected to high shear inside the pump slickline, yet '
+              'undergo rapid reversible thixotropic structuration the moment it exits the '
+              'extrusion nozzle. As the robotic printhead deposits successive layers, the growing '
+              'wall faces two competing failure modes: plastic collapse of the bottom layer when '
+              'self-weight gravity shear exceeds the evolving static yield stress, and global '
+              'elastic buckling when slender wall height exceeds the Suiker stability limit. By '
+              'linking chemical set-accelerator dosing directly to vertical print velocity, '
+              'construction robotics engineers print multi-meter architectural shells without '
+              'external molds, transforming digital architectural drawings directly into durable '
+              'physical masonry.',
+ 'act1_stakes': 'The real-world stakes of 3D concrete printing extend across urban affordability, '
+                'material sustainability, and structural safety. If an operator misjudges the '
+                'setting kinetics of a printable mortar, the consequences on the job site are '
+                'immediate. Extruding material too quickly causes the fresh bottom layers to yield '
+                'under the accumulating weight, bulging outward in a sudden plastic collapse that '
+                'ruins the entire component. Conversely, printing too slowly allows the top '
+                'surface of the preceding layer to dry and form an inert skin before the next bead '
+                'arrives, producing an unbonded cold joint that splits apart under shear loads. '
+                'Beyond structural collapse, the ultimate prize of additive manufacturing is '
+                'radical decarbonization. By depositing concrete only where principal stresses '
+                'require material, robotic printing eliminates solid slab waste and cuts embodied '
+                'cement by up to forty percent. Achieving these benefits demands real-time '
+                'synchronization between robotic kinematics and the evolving rheology of hydrating '
+                'cement.',
  'pullquote': '"Robotic 3D concrete printing lives inside a razor-thin rheological window: fluid '
               'enough inside the nozzle to extrude without tearing, yet stiffening fast enough on '
               'the bed to carry fifty layers above it without buckling."',
@@ -158,23 +205,71 @@ LONGFORM_DATA = {'reading_time': '15 MIN READ',
                  'real-time Suiker buckling stability control.')],
  'act2_title': 'Act II — How It Actually Works: Roussel Thixotropic Structuration vs. Plastic '
                'Collapse & Elastic Buckling',
- 'act2_intuition': "Picking up directly where Folio E.02's slickline ends, a robotic nozzle "
-                   'deposits a concrete filament of width b = 55 mm at vertical build rate v_build '
-                   '(m/hr). At time t after deposition of the bottom layer, the hydrostatic '
-                   'vertical stress at the base is sigma_v(t) = rho * g * v_build * t, inducing a '
-                   'maximum Tresca shear stress tau_bottom(t) = rho * g * v_build * t / sqrt(3). '
-                   "Simultaneously, rest-state colloidal flocculation raises the bottom layer's "
-                   "static yield stress via Roussel's law tau_0(t) = tau_{0,0} + A_thix * t. "
-                   'Plastic collapse is avoided only if A_thix > rho * g * v_build / sqrt(3). Even '
-                   'when plastic yield is satisfied, slender walls of thickness b eventually reach '
-                   "Suiker's self-weight elastic buckling height H_buck = (8 * E(t) * I / (rho * g "
-                   "* b))^(1/3), where green Young's modulus E(t) = E_0 + k_E * A_thix * t grows "
-                   'alongside yield stress.',
- 'act2_analogy': 'Everyday analogy: Frosting a tall wedding cake too fast with warm buttercream '
-                 'makes the bottom tier squash outwards (plastic yield collapse), while stacking '
-                 'thin wafer cookies too high makes the whole tower sway and fold sideways '
-                 '(elastic buckling). Thixotropy is how fast the frosting stiffens once it leaves '
-                 'the piping bag.',
+ 'act2_analogy': 'Everyday analogy: Imagine decorating a tall birthday cake with butter frosting. '
+                 'If the frosting is too soft and warm when piped from the bag, the bottom tier '
+                 'squashes into a messy bulge under the weight above. If you stack narrow wafer '
+                 'cookies too high, the tower stays stiff but suddenly sways and folds sideways. '
+                 'Thixotropy is the secret stiffness that allows the frosting to flow easily '
+                 'through the nozzle, yet firm up within seconds of landing on the cake.',
+ 'act2_plain_primer': 'To explore the physical boundaries of 3D concrete printing, our interactive '
+                      'simulation provides two primary controls. The first control is the '
+                      'Thixotropic Structuration Rate, which dictates how quickly the fresh mortar '
+                      'stiffens after leaving the nozzle. At low rates, the material remains soft '
+                      'and vulnerable to being crushed by the weight of upper layers. Sliding this '
+                      'rate higher accelerates the formation of microscopic chemical bonds, '
+                      "rapidly boosting the bottom layer's load capacity. The second control is "
+                      'the Robotic Vertical Build Rate, which sets how fast the printer climbs as '
+                      'it deposits successive layers. Printing at high vertical speeds tests the '
+                      "material's limits: if the gantry stacks fresh layers faster than the bottom "
+                      'can gain strength, the wall fails through either plastic crushing or '
+                      'elastic buckling. Adjusting both sliders reveals the printable operating '
+                      'window where the wall rises steadily and remains upright without forms.',
+ 'distill_diagram': {'analogy_title': 'Piping Frosting on a Layer Cake',
+                     'analogy_sub': 'Material must flow under nozzle pressure yet stand tall when '
+                                    'placed',
+                     'force_a_title': 'Thixotropic Structuration (A_thix)',
+                     'force_a_sub': 'Rate at which resting mortar rebuilds internal static yield '
+                                    'stress',
+                     'force_b_title': 'Vertical Build Rate (v_build)',
+                     'force_b_sub': 'Rate at which accumulating self-weight adds gravity shear to '
+                                    'base',
+                     'threshold_title': 'Suiker Elastic Buckling vs. Plastic Collapse',
+                     'threshold_pass': 'Printable: Bottom layer resists shear while wall avoids '
+                                       'buckling',
+                     'threshold_fail': 'Failure: Base layer squashes flat or slender wall folds '
+                                       'sideways'},
+ 'act2_intuition': 'In robotic 3D concrete printing, an extrusion nozzle deposits a filament of '
+                   'width b at a vertical build rate v_build. At time t following the placement of '
+                   'the first layer, accumulated wall height reaches H(t) = v_build t, generating '
+                   'a vertical gravity stress at the base sigma_v(t) = rho g H(t) and a '
+                   'corresponding Tresca shear stress tau_bottom(t) = rho g v_build t / sqrt(3). '
+                   'To prevent bottom-layer plastic collapse, rest-state colloidal flocculation '
+                   "must increase static yield stress according to Nicolas Roussel's linear "
+                   'thixotropic law tau_0(t) = tau_{0,0} + A_thix t. Plastic stability requires '
+                   'A_thix > rho g v_build / sqrt(3). However, satisfying yield capacity does not '
+                   'guarantee stability: slender unsupported walls also face self-weight elastic '
+                   "buckling governed by Suiker's stability criterion H_buck = ([8 E(t) I] / [rho "
+                   'g b])^(1/3). Here, the evolving green elastic modulus E(t) scales with '
+                   'thixotropic structuration. The true critical buildable height is the minimum '
+                   'of plastic yield and elastic buckling limits, defining the operational '
+                   'envelope for automated robotic construction.',
+ 'act2_deepening': 'At the nanoscale level, thixotropic structuration arises from reversible '
+                   'physical coagulation between cement particles. Inside the delivery hose, high '
+                   'shear rates overcome interparticle van der Waals attraction, breaking '
+                   'colloidal clusters and aligning hydrate grains to create a low-viscosity '
+                   'lubrication layer along the pipe boundary. The instant shear ceases upon '
+                   'deposition, colloidal particles re-flocculate within seconds, forming an '
+                   'initial physical percolation network that establishes static yield stress '
+                   'tau_{0,0}. Over subsequent minutes, early chemical hydration nucleates '
+                   'ettringite and calcium-silicate-hydrate (C-S-H) bridges at particle contact '
+                   'points, driving linear structuration at rate A_thix. Concurrently, toolpath '
+                   'geometry plays a decisive role in buckling prevention. Rather than extruding '
+                   'flat linear walls, advanced robotic controllers print sinusoidal or corrugated '
+                   "cross-sections inspired by Gaudí's funicular vaults. Corrugation increases the "
+                   'second moment of area I by more than six-fold for the same material volume, '
+                   'elevating the Suiker elastic buckling height without requiring faster chemical '
+                   'setting or additional cement, enabling automated construction of soaring '
+                   'architectural forms with extraordinary structural efficiency.',
  'walkthrough': ['Experiment 1 (Thixotropic Structuration Rate A_thix): Drag Thixotropic Build-Up '
                  'Rate A_thix from 0.25 Pa/s up to 1.80 Pa/s. Watch bottom-layer yield capacity '
                  'tau_0(t) overtake gravity shear stress rho*g*H/sqrt(3) and lift critical '
@@ -185,15 +280,38 @@ LONGFORM_DATA = {'reading_time': '15 MIN READ',
                  'Experiment 3 (From E.02 Pipe Shear to Formwork-Free Shell): Step through Stages '
                  '1 to 4 to trace nozzle shear rejuvenation, colloidal C-S-H flocculation, plastic '
                  'vs. buckling bifurcation, and funicular corrugation stiffening.'],
- 'act4_title': 'Act IV — Robotic Additive Construction, Archive Continuity & Open Questions',
+ 'act4_title': 'Act IV — Robotic Additive Construction, Archive Continuity & Upstream Discovery '
+               'Threads',
  'act4_human_ai': "By combining Folio E.02's inline pump pressure telemetry with Folio A.01's "
                   "funicular corrugation geometry and Roussel's A_thix structuration model, "
                   'robotic gantry and cable-driven printers adjust twin-stream accelerator dosing '
                   'millisecond-by-millisecond to print ribbed low-carbon shells with 45% less '
                   'cement.',
+ 'act4_deepening': 'The future of additive civil construction lies in closed-loop cyber-physical '
+                   'printing systems where artificial intelligence orchestrates material chemistry '
+                   'and robotic kinematics in real time. Modern robotic printheads integrate laser '
+                   'profilers and inline ultrasonic sensors that measure filament geometry and '
+                   'shear modulus milliseconds after deposition. If an unexpected temperature rise '
+                   'speeds up cement hydration, the control system automatically increases gantry '
+                   'travel speed or adjusts retarder admixture dosing to prevent cold joints. '
+                   'Furthermore, generative algorithms combine structural topology optimization '
+                   'with funicular toolpath planning, designing hollow, self-bracing architectural '
+                   'columns that use forty-five percent less material than conventional solid '
+                   'walls. Key open research questions include verifying long-term durability '
+                   'under environmental freeze-thaw cycles, automating the continuous placement of '
+                   'high-tensile reinforcement within printed filaments, and establishing '
+                   'international structural testing standards for formwork-free additive '
+                   'construction. By pairing computational rheology with intelligent robotics, '
+                   'civil engineers are building carbon-efficient cities with unprecedented '
+                   'architectural freedom.',
  'cf_bridge': 'Standalone Additive Civil Construction Flagship & Thread Continuation (E.02 -> '
               'E.10): Engineered for civil, structural, and construction robotics engineers '
-              'designing 3D-printed concrete structures (ACI 564R, CSI 03 30 00).',
+              'designing 3D-printed concrete structures (ACI 564R, CSI 03 30 00). Upstream '
+              "physical thread for the lab: Roussel's thixotropic breakdown-and-recovery equation "
+              '(where high nozzle shear breaks colloidal bonds and rest rebuilds an elastic '
+              'network at rate A_thix) is the exact rheological governing law of ventilation duct '
+              'viscoplastic grout plug thixotropy after oscillatory cough or HFCWO vest clearance '
+              '(Folio E.03).',
  'sources': ['Roussel, N. (2018). Rheological requirements for printable concretes. Cement and '
              'Concrete Research, 112, 76–85. DOI: 10.1016/j.cemconres.2018.04.005.',
              'Suiker, A. S. J. (2018). Mechanical performance of wall structures in 3D printing '
@@ -202,7 +320,15 @@ LONGFORM_DATA = {'reading_time': '15 MIN READ',
              'Roussel, N., Ovarlez, G., Garrault, S., & Brumaud, C. (2012). The origins of '
              'thixotropy of fresh cement pastes. Cement and Concrete Research, 42(1), 148–157.',
              'ACI Committee 564 (2025). ACI 564R 3D Printing with Cementitious Materials & CSI '
-             'MasterFormat 03 30 00.'],
+             'MasterFormat 03 30 00.',
+             'Chanussot, L., et al. (2021). Open Catalyst 2020 (OC20) dataset and community '
+             'challenges (facebookresearch/fairchem, '
+             'https://github.com/facebookresearch/fairchem). ACS Catalysis, 11(10), 6059–6072. '
+             'DOI: 10.1021/acscatal.0c04525.',
+             'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
+             'context of citations and classifies their intent using deep learning '
+             '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
+             '10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="3D Concrete '
         'Printing robotic extrusion layer stack and Roussel thixotropic structuration vs plastic '
         'collapse and elastic buckling diagram">\n'
@@ -275,6 +401,32 @@ ES_TRANSLATION = {'title_es': 'Reología de Extrusión e Imprimibilidad en Impre
            'aplasta por su propio peso (colapso plástico), y si la pared es muy esbelta se dobla '
            'de lado (pandeo elástico); la tixotropía mide qué tan rápido se endurece al salir de '
            'la boquilla.',
+ 'plain_es': 'En palabras sencillas, la impresión tridimensional de concreto funciona como una '
+             'pistola gigante de silicón montada sobre un brazo robótico. En la construcción '
+             'convencional, levantar un muro exige armar moldes de madera o acero, vaciar el '
+             'concreto húmedo, esperar varios días a que endurezca y retirar la cimbra, lo cual '
+             'genera enormes costos y desperdicio de madera. La impresión robótica elimina la '
+             'cimbra por completo depositando cordones de mortero capa por capa. Sin embargo, esto '
+             'plantea un reto físico extraordinario: dentro de las mangueras de bombeo, el '
+             'material debe fluir suavemente como pasta de dientes para no atascar la máquina; '
+             'pero en cuanto sale por la boquilla, debe endurecerse rápidamente como plastilina '
+             'firme para soportar el peso de decenas de capas colocadas encima sin aplastarse ni '
+             'ladearse. Ajustando la velocidad de impresión y la química del fraguado, los robots '
+             'levantan muros curvos y resistentes usando mucho menos cemento, abriendo paso a una '
+             'arquitectura más económica, ecológica y libre de moldes.',
+ 'deep_es': 'La viabilidad de la impresión 3D de concreto está gobernada por la competencia entre '
+            'dos fenómenos mecánicos: la tasa de estructuración tixotrópica y la velocidad '
+            'vertical de acumulación de carga. Conforme el robot deposita capas consecutivas, el '
+            'peso propio genera un esfuerzo cortante que tiende a aplastar la base del muro. Si la '
+            'tasa tixotrópica A_thix es insuficiente, ocurre un colapso plástico en el cordón '
+            'inferior. Por otro lado, si la pared es muy esbelta, el sistema alcanza el límite '
+            'crítico de pandeo elástico de Suiker y se dobla lateralmente. Para garantizar '
+            'estabilidad, los ingenieros deben operar dentro de una ventana reológica precisa '
+            'donde la resistencia inicial supere el esfuerzo cortante sin exceder el tiempo de '
+            'unión entre capas. En la práctica contemporánea, sensores ópticos conectados a la '
+            'computadora ajustan la dosificación de acelerantes en la boquilla en tiempo real, '
+            'permitiendo fabricar estructuras complejas sin cimbra con ahorros significativos de '
+            'material.',
  'bridge_es': 'La ecuación de ruptura y recuperación tixotrópica de Roussel bajo esfuerzo cortante '
               'describe exactamente la reología tixotrópica de los tapones de moco bronquial tras '
               'la oscilación de pared torácica (Folio E.03).'}

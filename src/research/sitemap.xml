@@ -481,6 +481,62 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/bounties/b06/"/>
   </url>
   <url>
+    <loc>https://informatico.ai/toolchain/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/toolchain/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/toolchain/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/toolchain/x01/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/toolchain/x01/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/x01/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/x01/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/toolchain/x01/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/toolchain/x02/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/toolchain/x02/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/x02/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/x02/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/toolchain/x02/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/toolchain/x03/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/toolchain/x03/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/x03/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/x03/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/toolchain/x03/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/toolchain/x04/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/toolchain/x04/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/x04/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/x04/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/toolchain/x04/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/toolchain/x05/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/toolchain/x05/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/x05/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/x05/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/toolchain/x05/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/toolchain/x06/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/toolchain/x06/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/x06/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/x06/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/toolchain/x06/"/>
+  </url>
+  <url>
     <loc>https://informatico.ai/es-mx/</loc>
     <lastmod>2026-11-08</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/"/>
@@ -959,5 +1015,61 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/bounties/b06/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/bounties/b06/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/bounties/b06/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/toolchain/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/toolchain/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/toolchain/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/toolchain/x01/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/toolchain/x01/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/x01/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/x01/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/toolchain/x01/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/toolchain/x02/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/toolchain/x02/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/x02/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/x02/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/toolchain/x02/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/toolchain/x03/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/toolchain/x03/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/x03/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/x03/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/toolchain/x03/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/toolchain/x04/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/toolchain/x04/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/x04/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/x04/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/toolchain/x04/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/toolchain/x05/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/toolchain/x05/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/x05/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/x05/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/toolchain/x05/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/toolchain/x06/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/toolchain/x06/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/x06/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/x06/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/toolchain/x06/"/>
   </url>
 </urlset>

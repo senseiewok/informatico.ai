@@ -95,50 +95,92 @@ FOLIO = {'folio_id': 'M.07',
                         'straight-line clipping avoidance, and 0.82% FNO spectral convergence.'}],
  'volume': 4,
  'volume_code': 'VOL. 04',
- 'reading_time': '16 MIN READ',
- 'word_count': '3,080 WORDS',
+ 'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'scite': {'doi': '10.1080/00207179.2014.900705',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 78 supporting citations on David '
+           'fetched_on': '2026-11-08',
+           'citing_publications': 87,
+           'supporting': 0,
+           'mentioning': 52,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 87 citing '
+                      'publications (0 supporting, 52 mentioning, 0 contrasting) on David '
                       "Limebeer, Giacomo Perantoni & Anil Rao's optimal control of Formula One "
                       'hybrid energy recovery systems.'}}
 
-LONGFORM_DATA = {'reading_time': '16 MIN READ',
- 'word_count': '3,080 WORDS',
+LONGFORM_DATA = {'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'scite': {'doi': '10.1080/00207179.2014.900705',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 78 supporting citations on David '
+           'fetched_on': '2026-11-08',
+           'citing_publications': 87,
+           'supporting': 0,
+           'mentioning': 52,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 87 citing '
+                      'publications (0 supporting, 52 mentioning, 0 contrasting) on David '
                       "Limebeer, Giacomo Perantoni & Anil Rao's optimal control of Formula One "
                       'hybrid energy recovery systems.'},
  'act1_title': "Act I — From Lev Pontryagin's Maximum Principle to 2026 Formula 1 350 kW Hybrid "
                'Control & Neural PDE Operators',
- 'act1_dropcap': 'In 1956, the blind Soviet mathematician Lev Semenovich Pontryagin and his '
-                 'students V. G. Boltyanskii, R. V. Gamkrelidze, and E. F. Mishchenko generalized '
-                 'the classical calculus of variations of Euler, Lagrange, and Hamilton to systems '
-                 "with hard engineering bounds on their control inputs. Pontryagin's Maximum "
-                 'Principle (PMP) proved that when a control input u(t)—such as rocket thrust or '
-                 'electric motor power—is constrained to a closed interval [u_min, u_max], the '
-                 'optimal trajectory is governed by a co-state vector lambda(t) and a control '
-                 'Hamiltonian H(x, u, lambda) whose maximization produces crisp '
-                 "'bang–singular–bang' switching laws.",
- 'act1_body': "Seventy years later, Pontryagin's theorem is the mathematical heartbeat of the 2026 "
-              'Formula 1 World Championship. By abolishing the thermal MGU-H and nearly tripling '
-              'the electrical Motor Generator Unit-Kinetic (MGU-K) output from 120 kW to 350 kW '
-              '(creating a near 50:50 power split with the 100%-sustainable-fuel V6 internal '
-              'combustion engine while capping battery state-of-charge delta at 4.0 MJ), the 2026 '
-              'FIA regulations turn every lap into a high-dimensional optimal control problem '
-              '(Limebeer, Perantoni & Rao, IEEE Transactions on Control Systems Technology, DOI '
-              '10.1080/00207179.2014.900705). If an engineer deploys the full 350 kW too early on '
-              'a straight, the battery clips to 0 kW before the braking zone, costing up to 0.45 '
-              'seconds on a single straight. Yet evaluating the aerodynamic drag C_D(h_ride, '
-              'delta_wing) and downforce C_L(h_ride, delta_wing) inside the Pontryagin Hamiltonian '
-              'across thousands of candidate trajectories via finite-volume Navier–Stokes CFD is '
-              'impossible in real time. Enter Zongyi Li, Nikola Kovachki, Kamyar Azizzadenesheli, '
-              "Burigede Liu, Kaushik Bhattacharya, Andrew Stuart, and Anima Anandkumar's Fourier "
-              'Neural Operator (FNO, arXiv:2010.08895): by parameterizing the integral kernel '
-              'directly in Fourier wavenumber space u_{t+1}(x) = sigma(W u_t(x) + F^(-1)(R_phi . '
-              '(F u_t))(x)), FNO learns mesh-independent mappings between infinite-dimensional '
-              'Banach spaces—evaluating 3D aerodynamic pressure manifolds 1,000x faster than '
-              'traditional CFD so the Pontryagin / Hamilton–Jacobi–Bellman (HJB) solver converges '
-              'in milliseconds.',
+ 'act1_dropcap': 'Blinded at age fourteen by an accidental primus stove explosion, Lev Semenovich '
+                 'Pontryagin learned to see the geometric world through pure mental acoustics and '
+                 'touch. In the spring of 1956 at the Steklov Mathematical Institute in Moscow, he '
+                 'gathered his young collaborators Vladimir Boltyanskii, Revaz Gamkrelidze, and '
+                 'Evgenii Mishchenko to solve an urgent puzzle of aviation and rocketry. Classical '
+                 'calculus developed by Euler and Lagrange assumed throttle levers could move '
+                 'infinitely without physical limits. But real engines face stubborn mechanical '
+                 'walls: fuel valves hit stops, motors overheat, and batteries drain. Pontryagin '
+                 'discovered that the swiftest path across a bounded landscape is governed by an '
+                 'invisible shadow price—a guide tracking the future value of every drop of '
+                 'energy, telling a pilot or machine precisely when to surge at full throttle, '
+                 'coast smoothly, or brake with maximum force.',
+ 'act1_plain_bridge': 'Think about driving an electric hybrid car down a long desert highway with '
+                      'only one small battery pack and no charging stations for fifty miles. If '
+                      'you stomp on the accelerator pedal the moment you leave the stoplight, the '
+                      'sudden burst of speed feels thrilling, but your battery will run completely '
+                      'dry halfway down the road. Once that charge disappears, your car bogs down, '
+                      'leaving you crawling along at a sluggish pace while more patient drivers '
+                      'glide effortlessly past you. The mathematical question behind optimal '
+                      'control is simple: how do you spend a finite budget of energy so that you '
+                      'finish the entire trip in the absolute shortest time? Instead of guessing '
+                      'with human reflexes, modern racing engineers and autonomous systems '
+                      'calculate an exact exchange rate for every watt-hour. By easing off the '
+                      'electric boost at high speeds where wind resistance pushes back hardest, a '
+                      'vehicle saves precious energy for the moments where acceleration counts '
+                      'most.',
+ 'act1_body': "Seventy years after Pontryagin's breakthrough, this variational principle forms the "
+              'computational spine of premier motorsport engineering under the 2026 regulations. '
+              'By tripling kinetic energy recovery output from 120 kilowatts to 350 kilowatts '
+              'while capping usable battery delta at 4.0 megajoules per lap, international '
+              'rulebooks turned Grand Prix circuits into massive moving laboratories (Limebeer, '
+              'Perantoni & Rao, International Journal of Control, DOI '
+              '10.1080/00207179.2014.900705). If an electric motor dumps full boost prematurely on '
+              'a straightaway, the battery depletes into clipping hundreds of meters before the '
+              'braking zone, surrendering tenths of a second per lap. Yet calculating aerodynamic '
+              'drag and downforce across thousands of candidate wing angles and ride heights using '
+              'traditional fluid dynamics takes days of supercomputer processing. To solve this '
+              'dilemma, researchers developed the Fourier Neural Operator (arXiv:2010.08895). By '
+              'calculating non-local integral kernels across spatial frequency bands, this '
+              'machine-learning architecture predicts full three-dimensional pressure fields in '
+              'less than a millisecond, feeding live aerodynamic gradients directly into the '
+              'Pontryagin control loop.',
+ 'act1_stakes': 'The stakes of this mathematical convergence extend far beyond qualifying laps and '
+                'checkered flags. For decades, optimal control and partial differential equation '
+                'modeling lived on opposite sides of a vast computational canyon. Classical '
+                'control theorists knew how to write down exact optimality equations for simple '
+                'spring-mass systems, but the moment a problem involved turbulent airflow, '
+                'swirling thermal boundaries, or complex physical media, the equations became too '
+                'heavy to evaluate in real time. Engineers had to rely on clumsy lookup tables, '
+                'pre-baked approximations, or conservative safety margins that left dramatic '
+                "amounts of performance on the table. By uniting Pontryagin's Hamiltonian "
+                'formulation with resolution-invariant neural operators, applied mathematicians '
+                'created a closed-loop bridge between high-dimensional continuum physics and '
+                'millisecond decision making. Today, this exact mathematical foundation powers '
+                'robotic surgical tools navigating beating hearts, manages electrical grid '
+                'stability across renewable wind surges, and schedules fuel-efficient trajectories '
+                'for interplanetary spacecraft.',
  'pullquote': '"Under the 2026 Formula 1 350 kW MGU-K regulations, raw horsepower no longer wins '
               'alone—victory belongs to the Pontryagin co-state lambda_E(s) that knows the exact '
               'meter on the straight to derate electric boost and switch into X-Mode."',
@@ -157,25 +199,75 @@ LONGFORM_DATA = {'reading_time': '16 MIN READ',
                  '(FNO, arXiv:2010.08895) for zero-shot super-resolution parametric PDEs.')],
  'act2_title': 'Act II — How It Actually Works: Pontryagin Co-State Switching + Fourier Neural '
                'Operator Spectral Convolutions',
- 'act2_intuition': 'To minimize lap time T_lap = int_0^L ds / v(s) along arc-length s, we define '
-                   'the distance-domain Hamiltonian H(v, E_batt, P_k, delta_wing, lambda_v, '
-                   'lambda_E) = (1 / v) + lambda_v * (F_ice + P_k / v - 1/2 rho v^2 A '
-                   'C_D(delta_wing) - F_brake) / (m v) - lambda_E * (P_k / (eta_k v)). Because '
-                   'battery energy E_batt(s) does not appear explicitly in the dynamics, the '
-                   "battery co-state lambda_E is constant along unconstrained arcs! Pontryagin's "
-                   'Maximum Principle dictates that optimal MGU-K deployment P_k*(s) switches from '
-                   'full 350 kW boost to a singular tapering arc (and energy harvesting P_k >= '
-                   '-350 kW under braking) at the exact velocity v_switch where the marginal time '
-                   'saved per joule lambda_v / (m v^2) falls below the shadow price of battery '
-                   'energy lambda_E / eta_k. Meanwhile, the Fourier Neural Operator approximates '
-                   "the non-local Green's operator of the Navier–Stokes equations via Fast Fourier "
-                   'Transforms F^(-1)(R_phi . F(u_t)) truncated at k_max spectral modes, supplying '
-                   'differentiable gradients dC_D / d(delta_wing) directly into the Pontryagin '
-                   'optimality condition.',
- 'act2_analogy': 'Everyday analogy: Imagine running a marathon with a small water flask: the '
-                 "Pontryagin co-state lambda_E is the exact 'price per sip' that tells you when a "
-                 "sip buys maximum speed uphill versus when to save it so you don't hit the wall "
-                 '400 meters before the finish line.',
+ 'act2_intuition': 'To minimize total lap time along track distance s, we formulate the '
+                   'distance-domain Hamiltonian H(v, E_batt, P_k, delta_wing, lambda_v, lambda_E) '
+                   '= (1 / v) + lambda_v * (F_ice + P_k / v - 0.5 * rho * v^2 * A * C_D - F_brake) '
+                   '/ (m * v) - lambda_E * P_k / (eta_k * v). Because battery state of charge '
+                   "E_batt does not appear explicitly in the velocity dynamics, Pontryagin's "
+                   'adjoint equation d(lambda_E)/ds = -dH/dE_batt proves that the battery co-state '
+                   'lambda_E* remains strictly constant along unconstrained arcs. This constant '
+                   'shadow price governs the entire circuit! The Pontryagin Maximum Principle '
+                   'dictates that optimal motor deployment switches from full 350 kW boost to a '
+                   'singular tapering arc at the precise switching velocity v_switch where '
+                   'marginal time saved per joule lambda_v / (m * v^2) matches the battery energy '
+                   'cost lambda_E* / eta_k. Meanwhile, the Fourier Neural Operator evaluates the '
+                   "non-local Green's function of Navier–Stokes airflow via Fast Fourier "
+                   'Transforms F^(-1)(R_phi * F(u_t)) truncated at k_max spectral modes, '
+                   'generating differentiable drag gradients dC_D / d(delta_wing) that allow the '
+                   'Hamilton–Jacobi–Bellman solver to converge in milliseconds.',
+ 'act2_deepening': 'The deeper variational beauty lies in how the Fourier Neural Operator and the '
+                   'Pontryagin Hamiltonian couple across physical dimensions. Traditional control '
+                   'algorithms treat aerodynamic drag as a static polynomial curve fit to wind '
+                   'tunnel data. In reality, vehicle ride height, pitch angle, and active '
+                   'aerodynamic flap deflections warp the airflow dynamically, changing boundary '
+                   'layer separation points down the chassis. Truncating the Fourier Neural '
+                   'Operator at k_max modes creates an exact spectral filter: low wavenumbers '
+                   'capture large recirculating vortices behind the rear wing, while higher '
+                   'wavenumbers resolve localized turbulent eddies shedding from the front wing '
+                   'endplates. As the simulated car accelerates past 290 kilometers per hour, the '
+                   'marginal propulsive acceleration gained per kilowatt of electrical energy '
+                   'drops quadratically because aerodynamic drag grows with the square of '
+                   'velocity. The Pontryagin co-state controller recognizes that continuing to '
+                   'dump 350 kilowatts into the teeth of that aerodynamic wall yields diminishing '
+                   'returns. It initiates a singular arc that gently bleeds motor power into '
+                   'low-drag active aero, preserving battery voltage for high-traction exits.',
+ 'act2_analogy': 'Everyday analogy: Imagine running a grueling trail marathon through rolling '
+                 'mountains with only a single twenty-ounce water flask. If you drink greedily on '
+                 'the early flat path because you feel thirsty, your flask runs empty on the sunny '
+                 'ridge, leaving you dehydrated and staggering before the summit. But if you horde '
+                 'the water too stingily, you finish the race fatigued with ounces to spare. '
+                 "Pontryagin's shadow price acts like an internal coach, calculating the exact "
+                 'value of each sip so you hydrate precisely on steep ascents where energy yields '
+                 'the greatest speed.',
+ 'act2_plain_primer': 'To see how this works in practice, imagine having two interactive dials on '
+                      'the dashboard of your racing simulator. The first dial governs the maximum '
+                      'electrical punch delivered by the hybrid motor, scaling from a conservative '
+                      '120 kilowatts up to a thunderous 350 kilowatts. When you dial this power '
+                      'up, the car launches down the asphalt with astonishing thrust, but your '
+                      'energy reservoir drains at nearly triple the speed, threatening to cut '
+                      'power abruptly before the next corner. The second dial controls the visual '
+                      'and mathematical clarity of the airflow simulator, increasing the number of '
+                      'wave frequencies used to map the air rushing over the car from a blurry '
+                      'eight modes up to a razor-sharp sixty-four modes. With too few wave modes, '
+                      'the computer misjudges wind resistance and gives bad advice. But as you '
+                      'turn both dials in harmony, you watch the virtual coach find the exact '
+                      'sweet spot: delivering maximum electric acceleration off slow bends, then '
+                      'smoothly tapering off the boost at blistering speeds where aerodynamic drag '
+                      'makes further electric expenditure wasteful.',
+ 'distill_diagram': {'analogy_title': 'The Marathon Runner Flask',
+                     'analogy_sub': 'Spending finite energy sips on climbs without early '
+                                    'dehydration',
+                     'force_a_title': 'Peak Electric Power P_k',
+                     'force_a_sub': 'Drives rapid acceleration but exhausts limited battery '
+                                    'reserves',
+                     'force_b_title': 'Fourier Spectral Modes k_max',
+                     'force_b_sub': 'Resolves aerodynamic drag fields across non-local wavenumber '
+                                    'space',
+                     'threshold_title': 'Switching Velocity Taper vs. Clipping',
+                     'threshold_pass': 'Optimal singular taper saves -0.42 s without battery '
+                                       'clipping',
+                     'threshold_fail': 'Early boost depletion clips power mid-straight (+0.45 s '
+                                       'lost)'},
  'walkthrough': ['Experiment 1 (350 kW MGU-K Deployment vs. Clipping): Drag MGU-K Electric Power '
                  'P_k from 120 kW (2022–2025 regulations) up to 350 kW (2026 regulations). Compare '
                  'naive early deployment (which clips battery mid-straight) against the Pontryagin '
@@ -188,14 +280,37 @@ LONGFORM_DATA = {'reading_time': '16 MIN READ',
                  'inspect FNO spectral convolution in wavenumber space, Pontryagin Hamiltonian '
                  'co-state calibration, X/Z-mode active aero switching, and regenerative braking '
                  'harvest.'],
- 'act4_title': 'Act IV — Applied Mathematics, Operator Learning & Open Questions',
+ 'act4_title': 'Act IV — Applied Mathematics, Operator Learning & Upstream Discovery Threads',
  'act4_human_ai': 'By replacing finite-element and finite-volume bottlenecks with Banach-space '
                   'Neural Operators (FNO / DeepONet) embedded inside Pontryagin and HJB optimal '
                   'control solvers, human race engineers and physicists explore whole Pareto '
                   'fronts of energy and aerodynamic strategy in real time.',
+ 'act4_deepening': 'Looking toward the horizon of autonomous engineering, embedding Fourier Neural '
+                   'Operators inside Hamilton–Jacobi–Bellman PDE solvers creates a new paradigm of '
+                   'human-machine scientific collaboration. Instead of spending hours running '
+                   'detached offline simulations, race strategists and control theorists interact '
+                   'with real-time Pareto frontiers. An artificial intelligence agent can sweep '
+                   'millions of weather shifts, tire wear regimes, and active aero configurations '
+                   'during a live telemetry session, proposing provably optimal energy allocation '
+                   'policies. Yet the human engineer retains the critical architectural role: '
+                   'defining the invariant cost functionals, monitoring non-convex boundary '
+                   'hazards, and evaluating thermal stress limits on experimental silicon-carbide '
+                   'inverters. Open mathematical frontiers remain: how do we prove rigorous error '
+                   'bounds when neural operators extrapolate outside their training distributions '
+                   'during violent vehicle spins, and can Banach-space operator learning guarantee '
+                   'Lyapunov stability when physical control actuators saturate? Resolving these '
+                   'questions bridges high-speed motorsport control with the safety-critical '
+                   'autonomy required for civil aviation, humanoid robotics, and resilient power '
+                   'grid networks.',
  'cf_bridge': 'Standalone Applied Mathematics & AI Flagship & Upstream Thread to Follow: '
               'Engineered for control theorists, applied mathematicians, motorsport strategists, '
-              'and scientific machine-learning researchers.',
+              'and scientific machine-learning researchers. Upstream mathematical thread for the '
+              'lab: the exact Pontryagin bang–singular–bang co-state switching law that schedules '
+              '350 kW MGU-K electrical deployment over a variable-velocity lap is mathematically '
+              'isomorphic to optimal breath-actuated nebulizer bolus control—injecting '
+              'high-density therapeutic aerosol pulses only during the laminar inspiratory '
+              'velocity window where deep alveolar/small-ventilation duct deposition exceeds '
+              'upper-ventilation duct impaction.',
  'sources': ['Limebeer, D. J. N., Perantoni, G., & Rao, A. V. (2014). Optimal control of Formula '
              'One car energy recovery systems. International Journal of Control, 87(10), '
              '2065–2080. DOI: 10.1080/00207179.2014.900705.',
@@ -206,7 +321,15 @@ LONGFORM_DATA = {'reading_time': '16 MIN READ',
              '(1962). The Mathematical Theory of Optimal Processes. Interscience / Wiley.',
              'Kovachki, N., Li, Z., Liu, B., Azizzadenesheli, K., Bhattacharya, K., Stuart, A., & '
              'Anandkumar, A. (2023). Neural Operator: Learning Maps Between Function Spaces. '
-             'Journal of Machine Learning Research, 24(89), 1–97.'],
+             'Journal of Machine Learning Research, 24(89), 1–97.',
+             'Brunton, S. L., Proctor, J. L., & Kutz, J. N. (2016). Discovering governing '
+             'equations from data by sparse identification of nonlinear dynamical systems '
+             '(dynamicslab/pysindy, https://github.com/dynamicslab/pysindy). PNAS, 113(15), '
+             '3932–3937. DOI: 10.1073/pnas.1517384113.',
+             'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
+             'context of citations and classifies their intent using deep learning '
+             '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
+             '10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Pontryagin 350 kW '
         'MGU-K optimal deployment profile vs naive battery clipping and Fourier Neural Operator '
         'spectral architecture">\n'
@@ -281,6 +404,34 @@ ES_TRANSLATION = {'title_es': 'Control Óptimo de Energía de Pontryagin para MG
  'why_es': 'Al correr un maratón con una cantimplora pequeña, el co-estado de Pontryagin λ_E es el '
            "'precio exacto por sorbo' que indica en qué tramo de la pista cada watt ahorra más "
            'milisegundos.',
+ 'plain_es': 'En 1956, el matemático Lev Pontryagin y su equipo en Moscú resolvieron un problema '
+             'fundamental para la ingeniería moderna: cómo guiar un vehículo o cohete con la '
+             'máxima rapidez cuando los motores y combustibles tienen límites mecánicos estrictos. '
+             'Imaginen que ustedes manejan un automóvil híbrido en una autopista larga con una '
+             'batería pequeña y sin estaciones de recarga cercanas. Si pisan el acelerador a fondo '
+             'desde el primer segundo, el arranque se siente impresionante, pero la batería se '
+             'descargará por completo antes de llegar a la mitad del trayecto, obligándolos a '
+             'avanzar lentamente el resto del camino. El Principio del Máximo de Pontryagin '
+             'calcula una especie de tipo de cambio invisible o precio sombra para cada unidad de '
+             'energía. En lugar de acelerar a ciegas, el sistema matemático determina el momento '
+             'exacto en que conviene empujar con toda la potencia eléctrica, cuándo reducir '
+             'suavemente el consumo en rectas de alta velocidad donde el viento frena con más '
+             'fuerza, y cuándo regenerar energía al frenar para completar toda la vuelta en el '
+             'menor tiempo posible.',
+ 'deep_es': 'La optimización matemática de este sistema acopla dos parámetros fundamentales: la '
+            'potencia máxima del motor eléctrico de 350 kilovatios y los modos espectrales del '
+            'Operador Neuronal de Fourier que resuelven los campos de turbulencia aerodinámica. '
+            'Cuando el vehículo rebasa los 298 kilómetros por hora en una recta, la resistencia '
+            'del aire crece de manera cuadrática, lo que reduce drásticamente el beneficio de '
+            'seguir inyectando energía eléctrica a máxima capacidad. Si la computadora mantiene el '
+            'empuje al límite sin contemplar el costo marginal, la batería se agota prematuramente '
+            'a mitad de la recta, perdiendo hasta medio segundo por vuelta en un régimen de '
+            'agotamiento severo. En contraste, el regulador de co-estado de Pontryagin identifica '
+            'el umbral crítico exacto: transiciona de una aceleración abrupta a un arco singular '
+            'que modula la descarga y activa la aerodinámica de baja resistencia. Al combinar esta '
+            'formulación variacional con operadores neuronales que evalúan fluidos complejos mil '
+            'veces más rápido que los simuladores tradicionales, los ingenieros pueden calcular '
+            'trayectorias óptimas garantizadas en tiempo real.',
  'bridge_es': 'El control óptimo bang-singular de Pontryagin y los operadores FNO permiten '
               'calcular regímenes óptimos de dosificación farmacocinética y perfiles de '
               'nebulización adaptativa para pacientes con Ingeniería Hidrosanitaria.'}

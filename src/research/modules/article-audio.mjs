@@ -350,6 +350,13 @@ function collectChaptersFromScope(host) {
 // Shared decoded AudioBuffer cache across page lifetime
 const AUDIO_BUFFER_CACHE = new Map();
 
+function formatTimeSec(sec) {
+  const s = Math.max(0, Math.floor(sec || 0));
+  const m = Math.floor(s / 60);
+  const r = s % 60;
+  return `${m}:${r < 10 ? "0" : ""}${r}`;
+}
+
 export class TpArticleAudioElement extends HTMLElement {
   static get observedAttributes() {
     return [
@@ -366,6 +373,9 @@ export class TpArticleAudioElement extends HTMLElement {
     super();
     this._playing = false;
     this._paused = false;
+    this._loading = false;
+    this._loadToken = 0;
+    this._unlocked = false;
     this._chapterIndex = 0;
     this._speedIndex = 0;
     this._utterance = null;
@@ -403,7 +413,88 @@ export class TpArticleAudioElement extends HTMLElement {
   }
 
   _getNeuralSrc(lang) {
-    return this.getAttribute(lang === "es" ? "data-audio-src-es" : "data-audio-src") || "";
+    const raw = this.getAttribute(lang === "es" ? "data-audio-src-es" : "data-audio-src") || "";
+    if (!raw) return "";
+    if (
+      typeof window !== "undefined" &&
+      window.location &&
+      window.location.pathname.includes("/es-mx/") &&
+      raw.startsWith("../../audio/")
+    ) {
+      return `../${raw}`;
+    }
+    return raw;
+  }
+
+  _unlockAudioContextSync() {
+    if (typeof window === "undefined") return null;
+    if (typeof navigator !== "undefined" && navigator.audioSession) {
+      try {
+        if (navigator.audioSession.type !== "playback") {
+          navigator.audioSession.type = "playback";
+        }
+      } catch (_e) {
+        /* ignore if audioSession is read-only */
+      }
+    }
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (typeof AudioCtx !== "function") return null;
+    if (!this._audioCtx) {
+      try {
+        this._audioCtx = new AudioCtx();
+      } catch (_e) {
+        return null;
+      }
+    }
+    const ctx = this._audioCtx;
+    if (ctx.state === "suspended" || ctx.state === "interrupted") {
+      try {
+        const p = ctx.resume();
+        if (p && typeof p.catch === "function") p.catch(() => {});
+      } catch (_e) {
+        /* ignore */
+      }
+    }
+    if (!this._unlocked) {
+      try {
+        const silentBuf = ctx.createBuffer(1, 1, 22050);
+        const unlockSource = ctx.createBufferSource();
+        unlockSource.buffer = silentBuf;
+        unlockSource.connect(ctx.destination);
+        unlockSource.start(0);
+        this._unlocked = true;
+      } catch (_e) {
+        /* ignore */
+      }
+    }
+    return ctx;
+  }
+
+  _decodeAudioBuffer(ctx, arrayBuf) {
+    const copy = arrayBuf.slice(0);
+    return new Promise((resolve, reject) => {
+      let settled = false;
+      const onResolve = (buf) => {
+        if (!settled) {
+          settled = true;
+          resolve(buf);
+        }
+      };
+      const onReject = (err) => {
+        if (!settled) {
+          settled = true;
+          reject(err);
+        }
+      };
+      try {
+        const maybePromise = ctx.decodeAudioData(copy, onResolve, onReject);
+        if (maybePromise && typeof maybePromise.then === "function") {
+          maybePromise.then(onResolve, onReject);
+        }
+      } catch (err) {
+        onReject(err);
+      }
+    });
   }
 
   _getChapterRatios(lang) {
@@ -489,6 +580,21 @@ export class TpArticleAudioElement extends HTMLElement {
     progress.setAttribute("max", "100");
     progress.setAttribute("value", "0");
     progress.setAttribute("aria-label", "Article narration progress");
+    progress.addEventListener("click", (e) => {
+      if (!this._audioBuffer || !this._audioBuffer.duration) return;
+      const rect = progress.getBoundingClientRect();
+      if (!rect.width) return;
+      const frac = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      const seekSec = frac * this._audioBuffer.duration;
+      if (this._playing && !this._paused) {
+        this._unlockAudioContextSync();
+        this._startBufferPlayback(seekSec);
+      } else {
+        this._bufferOffsetSec = seekSec;
+        progress.setAttribute("value", String(Math.round(frac * 100)));
+        this._syncLabels(seekSec);
+      }
+    });
 
     statusGroup.appendChild(statusText);
     statusGroup.appendChild(progress);
@@ -531,7 +637,7 @@ export class TpArticleAudioElement extends HTMLElement {
     this._audioEl = audioEl;
   }
 
-  _syncLabels() {
+  _syncLabels(currentSec = this._bufferOffsetSec) {
     if (!this._built) return;
     const lang = getActiveLang();
     const folioCode = (this.getAttribute("data-folio") || "FOLIO").toUpperCase();
@@ -550,22 +656,33 @@ export class TpArticleAudioElement extends HTMLElement {
         ? "Voz Natural"
         : "Natural Voice";
 
-    if (this._playing && !this._paused) {
+    const totalSec = this._audioBuffer ? this._audioBuffer.duration : 0;
+    const timeStr = totalSec > 0 ? ` · ${formatTimeSec(currentSec)} / ${formatTimeSec(totalSec)}` : "";
+
+    if (this._loading) {
+      this._playIcon.textContent = "⏳";
+      this._playBtn.setAttribute("aria-pressed", "true");
+      this._playLabel.textContent = lang === "es" ? "Cargando..." : "Loading...";
+      this._statusText.textContent =
+        lang === "es"
+          ? `Cargando pista de voz IA neural (24 kHz) · ${folioCode}...`
+          : `Loading 24 kHz Neural AI voice track · ${folioCode}...`;
+    } else if (this._playing && !this._paused) {
       this._playIcon.textContent = "⏸";
       this._playBtn.setAttribute("aria-pressed", "true");
       this._playLabel.textContent = lang === "es" ? "Pausar Audio" : "Pause Audio";
       this._statusText.textContent =
         lang === "es"
-          ? `Narrando ${folioCode} (${engineTag} · ES-MX) · ${actTitle}`
-          : `Narrating ${folioCode} (${engineTag} · EN-US) · ${actTitle}`;
+          ? `Narrando ${folioCode} (${engineTag} · ES-MX) · ${actTitle}${timeStr}`
+          : `Narrating ${folioCode} (${engineTag} · EN-US) · ${actTitle}${timeStr}`;
     } else if (this._paused) {
       this._playIcon.textContent = "▶";
       this._playBtn.setAttribute("aria-pressed", "false");
       this._playLabel.textContent = lang === "es" ? "Reanudar Audio" : "Resume Audio";
       this._statusText.textContent =
         lang === "es"
-          ? `En pausa · ${folioCode} · ${actTitle}`
-          : `Paused · ${folioCode} · ${actTitle}`;
+          ? `En pausa · ${folioCode} · ${actTitle}${timeStr}`
+          : `Paused · ${folioCode} · ${actTitle}${timeStr}`;
     } else {
       this._playIcon.textContent = "▶";
       this._playBtn.setAttribute("aria-pressed", "false");
@@ -591,6 +708,7 @@ export class TpArticleAudioElement extends HTMLElement {
   _handleLanguageSwitch() {
     const wasPlaying = this._playing && !this._paused;
     this.stop();
+    this._audioBuffer = null;
     this._syncLabels();
     if (wasPlaying) {
       this.playChapter(this._chapterIndex);
@@ -598,6 +716,10 @@ export class TpArticleAudioElement extends HTMLElement {
   }
 
   togglePlay() {
+    if (this._loading) {
+      this.stop();
+      return;
+    }
     if (this._playing && !this._paused) {
       this.pause();
     } else if (this._paused) {
@@ -629,6 +751,10 @@ export class TpArticleAudioElement extends HTMLElement {
   }
 
   pause() {
+    if (this._loading) {
+      this.stop();
+      return;
+    }
     if (this._bufferSource && this._audioCtx && this._playing && !this._paused) {
       const speed = SPEEDS[this._speedIndex];
       const elapsed = (this._audioCtx.currentTime - this._bufferStartCtxTime) * speed;
@@ -638,7 +764,7 @@ export class TpArticleAudioElement extends HTMLElement {
       );
       this._stopBufferSource();
       this._paused = true;
-      this._syncLabels();
+      this._syncLabels(this._bufferOffsetSec);
       return;
     }
     if (typeof window !== "undefined" && "speechSynthesis" in window && window.speechSynthesis.speaking) {
@@ -651,10 +777,11 @@ export class TpArticleAudioElement extends HTMLElement {
   resume() {
     const lang = getActiveLang();
     if (this._paused && this._audioBuffer && this._getNeuralSrc(lang)) {
+      this._unlockAudioContextSync();
       this._paused = false;
       this._playing = true;
       this._startBufferPlayback(this._bufferOffsetSec);
-      this._syncLabels();
+      this._syncLabels(this._bufferOffsetSec);
       return;
     }
     if (typeof window !== "undefined" && "speechSynthesis" in window && this._paused) {
@@ -668,6 +795,8 @@ export class TpArticleAudioElement extends HTMLElement {
   }
 
   stop() {
+    this._loadToken += 1;
+    this._loading = false;
     this._stopBufferSource();
     this._bufferOffsetSec = 0;
     if (this._audioEl) {
@@ -683,7 +812,7 @@ export class TpArticleAudioElement extends HTMLElement {
     if (this._progressEl) {
       this._progressEl.setAttribute("value", "0");
     }
-    this._syncLabels();
+    this._syncLabels(0);
   }
 
   cycleSpeed() {
@@ -698,11 +827,11 @@ export class TpArticleAudioElement extends HTMLElement {
       );
       this._bufferStartCtxTime = this._audioCtx.currentTime;
       this._bufferSource.playbackRate.value = newSpeed;
-      this._syncLabels();
+      this._syncLabels(this._bufferOffsetSec);
       return;
     }
-    this._syncLabels();
-    if (this._playing && !this._paused) {
+    this._syncLabels(this._bufferOffsetSec);
+    if (this._playing && !this._paused && !this._loading) {
       this.playChapter(this._chapterIndex);
     }
   }
@@ -722,6 +851,14 @@ export class TpArticleAudioElement extends HTMLElement {
   _startBufferPlayback(offsetSec) {
     if (!this._audioBuffer || !this._audioCtx) return;
     this._stopBufferSource();
+    if (this._audioCtx.state === "suspended" || this._audioCtx.state === "interrupted") {
+      try {
+        const p = this._audioCtx.resume();
+        if (p && typeof p.catch === "function") p.catch(() => {});
+      } catch (_e) {
+        /* ignore */
+      }
+    }
     const speed = SPEEDS[this._speedIndex];
     const lang = getActiveLang();
     const ratios = this._getChapterRatios(lang);
@@ -736,13 +873,17 @@ export class TpArticleAudioElement extends HTMLElement {
     this._bufferOffsetSec = safeOffset;
     this._bufferStartCtxTime = this._audioCtx.currentTime;
     this._bufferSource = source;
+    this._loading = false;
     this._playing = true;
     this._paused = false;
 
     const tick = () => {
       if (!this._playing || this._paused || !this._bufferSource) return;
       const curSpeed = SPEEDS[this._speedIndex];
-      const posSec = this._bufferOffsetSec + (this._audioCtx.currentTime - this._bufferStartCtxTime) * curSpeed;
+      const posSec = Math.min(
+        duration,
+        this._bufferOffsetSec + (this._audioCtx.currentTime - this._bufferStartCtxTime) * curSpeed
+      );
       const frac = Math.max(0, Math.min(1, posSec / duration));
       if (this._progressEl) {
         this._progressEl.setAttribute("value", String(Math.round(frac * 100)));
@@ -756,8 +897,8 @@ export class TpArticleAudioElement extends HTMLElement {
       }
       if (activeIdx !== this._chapterIndex) {
         this._chapterIndex = activeIdx;
-        this._syncLabels();
       }
+      this._syncLabels(posSec);
       if (posSec < duration) {
         this._rafId = requestAnimationFrame(tick);
       }
@@ -772,36 +913,31 @@ export class TpArticleAudioElement extends HTMLElement {
       if (this._progressEl) {
         this._progressEl.setAttribute("value", "100");
       }
-      this._syncLabels();
+      this._syncLabels(0);
     };
 
     source.start(0, safeOffset);
     this._rafId = requestAnimationFrame(tick);
-    this._syncLabels();
+    this._syncLabels(safeOffset);
   }
 
-  async _playNeuralAudioTrack(src, chapterIndex, lang) {
-    const AudioCtx = window.AudioContext || window.webkitAudioContext;
-    if (typeof AudioCtx !== "function" || typeof window.fetch !== "function") {
+  async _playNeuralAudioTrack(src, chapterIndex, lang, token) {
+    const ctx = this._audioCtx;
+    if (!ctx || typeof window.fetch !== "function") {
       return false;
     }
     try {
-      if (!this._audioCtx) {
-        this._audioCtx = new AudioCtx();
-      }
-      if (this._audioCtx.state === "suspended") {
-        await this._audioCtx.resume();
-      }
       let audioBuffer = AUDIO_BUFFER_CACHE.get(src);
       if (!audioBuffer) {
-        this._statusText.textContent =
-          lang === "es" ? "Cargando pista de voz IA neural (24 kHz)..." : "Loading 24 kHz Neural AI voice track...";
         const resp = await window.fetch(src);
         if (!resp.ok) return false;
+        if (token !== this._loadToken || !this._playing) return false;
         const arrayBuf = await resp.arrayBuffer();
-        audioBuffer = await this._audioCtx.decodeAudioData(arrayBuf);
+        if (token !== this._loadToken || !this._playing) return false;
+        audioBuffer = await this._decodeAudioBuffer(ctx, arrayBuf);
         AUDIO_BUFFER_CACHE.set(src, audioBuffer);
       }
+      if (token !== this._loadToken || !this._playing) return false;
       this._audioBuffer = audioBuffer;
       const ratios = this._getChapterRatios(lang);
       const startRatio = ratios[chapterIndex] || 0;
@@ -832,15 +968,23 @@ export class TpArticleAudioElement extends HTMLElement {
     // 1. Primary Engine: Single Pre-rendered Neural AI track via CSP-safe Web Audio API
     const customSrc = this._getNeuralSrc(lang);
     if (customSrc) {
-      this._playing = true;
-      this._paused = false;
-      this._syncLabels();
-      this._playNeuralAudioTrack(customSrc, clamped, lang).then((ok) => {
-        if (!ok && this._playing) {
-          this._playWebSpeechChapter(clamped, lang, speed);
-        }
-      });
-      return;
+      const ctx = this._unlockAudioContextSync();
+      if (ctx) {
+        const token = (this._loadToken += 1);
+        const cached = AUDIO_BUFFER_CACHE.get(customSrc);
+        this._loading = !cached;
+        this._playing = true;
+        this._paused = false;
+        this._syncLabels(this._bufferOffsetSec);
+        this._playNeuralAudioTrack(customSrc, clamped, lang, token).then((ok) => {
+          if (token !== this._loadToken) return;
+          this._loading = false;
+          if (!ok && this._playing) {
+            this._playWebSpeechChapter(clamped, lang, speed);
+          }
+        });
+        return;
+      }
     }
 
     // 2. Fallback Web Speech API Synthesis (EN-US / ES-MX) with Prosody Normalizer

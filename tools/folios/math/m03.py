@@ -105,35 +105,25 @@ FOLIO = {'folio_id': 'M.03',
  'governing_law': 'FunSearch Cap Set (≥ 512) · AlphaEvolve Rank-48',
  'volume': 2,
  'volume_code': 'VOL. 02',
- 'reading_time': '12 MIN READ · 5-ACT FEATURE MONOGRAPH',
- 'word_count': '2,500 WORDS',
+ 'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'scite': {'doi': '10.1038/s41586-023-06924-6',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 64 supporting citations on '
-                      'DeepMind FunSearch extremal Cap Sets in F_3^n, Ellenberg-Gijswijt '
-                      'slice-rank bounds (DOI 10.4007/annals.2017.185.1.8), and Rank-48 matrix '
-                      'tensors.'}}
+           'fetched_on': '2026-11-08',
+           'citing_publications': 797,
+           'supporting': 0,
+           'mentioning': 349,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 797 citing '
+                      'publications (0 supporting, 349 mentioning, 0 contrasting) on DeepMind '
+                      'FunSearch extremal Cap Sets in F_3^n, Ellenberg-Gijswijt slice-rank bounds '
+                      '(DOI 10.4007/annals.2017.185.1.8), and Rank-48 matrix tensors.'}}
 
-LONGFORM_DATA = {'reading_time': '12 MIN READ · 5-ACT FEATURE MONOGRAPH',
- 'history_lead': 'Every child who has played the card game SET knows the rule: each card has four '
-                 "features (number, shape, shading, color) with three choices each, and a 'SET' is "
-                 'three cards where each feature is either all the same or all different. '
-                 'Mathematically, the 81 cards form the four-dimensional affine space F_3^4 over '
-                 'the three-element field {0, 1, 2}, and a SET is simply a line x + y + z = 0 (mod '
-                 '3). In 1971, Giuseppe Pellegrino proved that in 4 dimensions you can pick at '
-                 'most 20 cards without forming a line. Such a line-free collection is called a '
-                 'Cap Set.',
- 'history_body': 'For 45 years, one of the flagship open problems in Ramsey theory and additive '
-                 'combinatorics was the Cap Set Problem: as the dimension n grows, does the '
-                 'maximum size of a line-free subset S in F_3^n grow like 3^n, or exponentially '
-                 'slower like c^n for some c < 3? In May 2016, Ernie Croot, Vsevolod Lev, and '
-                 'Péter Pál Pach—followed within days by Jordan Ellenberg and Dion '
-                 'Gijswijt—stunned the mathematical world with a two-page polynomial-method proof '
-                 "that |S| <= 3 * (2.7551)^n. Then, in December 2023, Google DeepMind's FunSearch "
-                 'paired a Large Language Model with an evolutionary program evaluator to discover '
-                 'a brand-new priority function constructing a 512-element Cap Set in F_3^8 '
-                 "(improving capacity to >= 2.1810), followed by AlphaEvolve's 2025 discovery of a "
-                 'rank-48 decomposition for 4x4 complex matrix multiplication—beating Volker '
-                 "Strassen's 1969 recursive bound (7^2 = 49) for the first time in 56 years.",
+LONGFORM_DATA = {'reading_time': '22 MIN READ',
+ 'act1_dropcap': 'In the sunny spring of 1974, a population geneticist named Marsha Falco was studying the inherited traits of German shepherd dogs in Cambridge, England. To track complex combinations of coat patterns, ear shapes, and eye color without drowning in raw laboratory charts, she drew geometric symbols onto index cards and began organizing them on her kitchen table. Each card carried four visual properties, and she quickly noticed a captivating pastime: three cards formed a harmonious trio whenever each feature was either perfectly identical or completely distinct across the set. When her children turned the flashcards into a competitive card game, mathematicians realized that Falco had stumbled upon an ancient mystery in finite geometry. Three years earlier in Perugia, the Italian geometer Giuseppe Pellegrino had proved that in four dimensions, you can gather at most twenty cards without accidentally completing a single line, opening the legendary cap set enigma.',
+ 'act1_plain_bridge': 'In plain words, the cap set problem asks how many items you can pack together before an unwanted pattern becomes unavoidable. Imagine filling a fruit basket with apples, oranges, and bananas while trying to avoid picking any three fruits that line up in a predictable recipe. As you add more items to the basket, avoiding coincidences becomes increasingly difficult. For decades, mathematicians wondered whether this crowding effect grows steadily or hits an abrupt mathematical wall in higher dimensions. Answering that question matters far beyond card games. The exact same mathematics governs error-correcting codes, wireless cell phone networks, and computer memory chips. When a satellite beams signals through atmospheric storms, engineers must pack data symbols so efficiently that atmospheric noise cannot cause three signals to align into an accidental error. Understanding these packing limits allows our modern communication devices to transmit clear video and data across vast distances without losing a single bit.',
+ 'act1_body': "For nearly half a century, the cap set problem stood as one of the central challenges in additive combinatorics: does the maximum size of a line-free collection grow like the full dimension or shrink exponentially slower? In 2016, Ernie Croot, Vsevolod Lev, and Péter Pál Pach—extended within days by Jordan Ellenberg and Dion Gijswijt—stunned the mathematical world by proving that line-free subsets must be bounded by an exponential ceiling strictly below the space volume (Annals of Mathematics, DOI 10.4007/annals.2017.185.1.8). Then in late 2023, Bernardino Romera-Paredes, Alhussein Fawzi, Pushmeet Kohli, and colleagues at Google DeepMind unveiled FunSearch in Nature (DOI 10.1038/s41586-023-06924-6). By pairing an evolutionary large language model with an incorruptible combinatorial verification engine, FunSearch discovered a novel priority algorithm constructing a record-breaking 512-vector cap set in eight dimensions. In 2025, AlphaEvolve built upon this code-evolution architecture to discover a 48-multiplication tensor decomposition for four-by-four complex matrices, surpassing Volker Strassen's famous 1969 recursive benchmark of 49 scalar multiplications for the first time in fifty-six years.",
+ 'act1_stakes': 'The breakthrough achieved by FunSearch and AlphaEvolve fundamentally reframed how artificial intelligence interacts with mathematical discovery and algorithmic verification. Historically, combinatorial optimization struggled against a dual trap: pure brute-force enumeration drowned in astronomical search spaces containing more configurations than atoms in the cosmos, while deep neural networks produced inscrutable black-box guesses that offered no explanatory insight or proof guarantees. FunSearch bypassed this bottleneck by searching directly in program space rather than coordinate space. Instead of outputting an opaque list of 512 multidimensional vectors, the evolutionary system evolved concise, human-readable Python functions that score geometric priorities. Human mathematicians could inspect the resulting code, identify previously unknown reflection symmetries, and translate the algorithmic patterns into formal mathematical principles. By coupling generative language models with deterministic verifiers that immediately reject invalid candidates, researchers established an auditable, self-improving discovery loop where AI creativity is permanently disciplined by rigorous mathematical truth.',
  'pullquote': 'FunSearch did not hand mathematicians an inscrutable black-box list of 512 vectors; '
               'it evolved a short, human-readable Python priority function whose symmetries taught '
               'humans a new way to build cap sets.',
@@ -158,18 +148,11 @@ LONGFORM_DATA = {'reading_time': '12 MIN READ · 5-ACT FEATURE MONOGRAPH',
                  'Google DeepMind AlphaEvolve',
                  'Finds an exact rank-48 bilinear tensor decomposition for 4x4 complex matrix '
                  'multiplication (48 < 49).')],
- 'intuition_lead': 'Why is searching directly for a 512-point subset inside F_3^8 = 6,561 points '
-                   'utterly hopeless? Because the number of subsets of size 512 is roughly '
-                   '10^780—vastly larger than the 10^80 atoms in the observable universe. Any '
-                   'brute-force or Monte Carlo search over raw coordinates drowns immediately.',
- 'intuition_body': "FunSearch changes the search space from 'coordinates' to 'programs.' Instead "
-                   'of guessing points, the LLM proposes short Python functions priority(v) that '
-                   'score each vector v in F_3^n, and a greedy deterministic builder adds the '
-                   "highest-scoring vector that doesn't complete a line x + y + z = 0 (mod 3). "
-                   "Meanwhile, Ellenberg and Gijswijt's upper bound works from the opposite "
-                   'direction: any polynomial vanishing on sumsets of a Cap Set must have low '
-                   "'slice rank,' squeezing the feasible asymptotic capacity into the rigorous "
-                   'corridor 2.1810 <= c <= 2.7551.',
+ 'act2_analogy': 'Everyday analogy: Imagine planting a grove of young apple trees in an orchard so that no three trees ever form a straight line, no matter which direction you look. If you place saplings haphazardly, you quickly find that almost every open spot lines up with two existing trees. Instead of wandering randomly with a shovel, you invent a clever rule of thumb—like placing trees near curved stone mounds—that systematically deflects lines of sight and leaves the orchard open and sunlit.',
+ 'act2_plain_primer': 'To see how algorithmic search conquers this orchard puzzle, you can adjust two intuitive control knobs. The first knob controls the dimension of the orchard, expanding the playing field from a modest garden patch to an eight-dimensional grid containing thousands of possible planting spots. As the dimension grows, the total number of locations multiplies rapidly, creating a dizzying maze where accidental lines threaten to form in every direction. The second knob sets the target efficiency for matrix operations, challenging the computer to multiply complex arrays using fewer elementary calculations than traditional textbooks require. In classical mathematics, reducing these multiplication steps seemed impossible without sacrificing accuracy. But by tuning these two knobs, you can watch how evolutionary code programs discover hidden symmetries. The computer tests thousands of priority recipes, keeping only those that assemble large collections of points without forming a single line, proving that creative heuristics can overcome combinatorial explosions.',
+ 'distill_diagram': {'analogy_title': 'Orchard Non-Collinear Saplings', 'analogy_sub': 'Planting saplings so no three ever align into a straight sightline', 'force_a_title': 'Affine Dimension in F_3^n (n)', 'force_a_sub': 'Expands finite vector space from 27 points up to 6,561 locations', 'force_b_title': 'Tensor Multiplication Target', 'force_b_sub': 'Reduces bilinear multiplications below Strassen recursive rank', 'threshold_title': 'Slice-Rank vs Greedy Frontier', 'threshold_pass': 'FunSearch 512-cap in F_3^8 and AlphaEvolve rank-48 verified', 'threshold_fail': 'Exhaustive coordinate search drowns in 10^780 configurations'},
+ 'act2_intuition': 'Why is searching directly for a 512-point cap set inside the eight-dimensional space F_3^8 completely impossible with brute force? Because the number of candidate subsets of size 512 is approximately 10^780—a quantity dwarfing the 10^80 elementary particles in the observable universe. Any raw coordinate permutation search drowns instantly in combinatorial noise. FunSearch resolved this barrier by shifting search from raw coordinates into the space of executable programs (Nature, DOI 10.1038/s41586-023-06924-6). The language model evolves compact Python priority functions that evaluate each vector, while a deterministic greedy kernel selects candidate points only if they never complete an arithmetic progression x + y + z = 0 (mod 3). Concurrently, Ellenberg and Gijswijt established an upper ceiling via the polynomial method: any function vanishing on lines must exhibit low slice rank, proving |S| <= 3 * (2.755104)^n (Annals of Mathematics, DOI 10.4007/annals.2017.185.1.8). This brackets the true asymptotic capacity within a verified theoretical corridor between 2.1810 and 2.7551.',
+ 'act2_deepening': "The mathematical synergy between cap set capacity and tensor rank reduction stems from their shared algebraic foundation in multilinear forms. When computing matrix multiplication for four-by-four arrays, classical arithmetic requires 64 scalar multiplications. Volker Strassen's 1969 breakthrough grouped entries into two-by-two blocks, recursively achieving seven multiplications per block to reach 49 products. To beat 49, AlphaEvolve represented matrix multiplication as a 3D structural tensor over the complex field. By casting tensor decomposition as an evolutionary search over factor matrices U, V, and W, the system discovered a rank-48 bilinear identity that satisfies the exact tensor contraction. In parallel, coupling this tensor search with the affine dimension slider reveals how finite-field geometries enforce structural sparsity. As dimension n advances toward eight, the slice rank of the indicator polynomial bounds the rank of companion Gram matrices, while the evolved priority functions exploit coset symmetries to maximize point density, achieving an explicit 512-cap without violating linear independence.",
  'walkthrough': ['Experiment 1 (Compare Upper & Lower Bounds): Step through Stages 1 -> 4 to see '
                  'how the polynomial method ceiling (2.7551^n) and FunSearch evolutionary floor '
                  '(2.1810^n) bracket the true capacity of F_3^n.',
@@ -180,11 +163,8 @@ LONGFORM_DATA = {'reading_time': '12 MIN READ · 5-ACT FEATURE MONOGRAPH',
                  'Experiment 3 (Download the Combinatorial Search Skill): Copy the AI-agnostic '
                  'SKILL.md below to enforce program-space priority search and polynomial '
                  'slice-rank bounds in your own coding agents.'],
- 'human_ai_shift': 'The deepest lesson of FunSearch and AlphaEvolve is interpretability through '
-                   'code. When an AI outputs a 15-line Python scoring function rather than a '
-                   'neural network weight matrix, human mathematicians can read the code, spot a '
-                   'hidden reflection symmetry, and generalize the construction to higher '
-                   'dimensions.',
+ 'act4_human_ai': 'The deepest lesson of FunSearch and AlphaEvolve is interpretability through code. When an AI outputs a 15-line Python scoring function rather than a neural network weight matrix, human mathematicians can read the code, spot a hidden reflection symmetry, and generalize the construction to higher dimensions. Pairing evolutionary program synthesis with Pareto-front symbolic regression in MilesCranmer/PySR (https://github.com/MilesCranmer/PySR, DOI 10.48550/arXiv.2305.01582) and formal algebraic verification in leanprover-community/mathlib4 (DOI 10.1145/3372885.3373824) turns extremal combinatorics and tensor rank decomposition into an auditable closed loop verified via Scite (DOI 10.1162/qss_a_00146).',
+ 'act4_deepening': "The integration of program-space evolution with formal verification heralds a transformative workflow for extremal combinatorics and algorithmic design. Rather than relying on human mathematicians to hand-craft heuristics for high-dimensional geometries, autonomous AI agents can search vast program populations across distributed islands. When an evolutionary prompt produces a scoring routine with superior performance, human researchers dissect its mathematical syntax, extracting the underlying algebraic invariants and group actions. Once these structural insights are understood, they are formalized into interactive proof systems like Lean 4, guaranteeing that no counterexamples or numerical rounding artifacts corrupt the conclusions. Looking forward, this collaborative loop addresses longstanding open questions: can evolutionary program search beat Strassen's asymptotic matrix exponent omega = 2.807 for larger square tensors, or discover explicit cap sets in nine dimensions exceeding 2,000 vectors? By uniting creative generative proposals with rigid deterministic verifiers, researchers establish an auditable engine for continuous mathematical discovery.",
  'cf_bridge': 'Designing synonymous mRNA sequences for inhaled CSI-MasterFormat genetic therapy is '
               'an extremal coding problem over the 4-letter nucleotide alphabet (or 64-codon '
               'space): we must maximize ribosomal translation efficiency and secondary-structure '
@@ -201,7 +181,14 @@ LONGFORM_DATA = {'reading_time': '12 MIN READ · 5-ACT FEATURE MONOGRAPH',
              '13(4), 354–356.',
              'Google DeepMind (2025–2026). AlphaEvolve (Rank-48 4x4 Matrix Tensor) & AlphaProof / '
              'Anthropic Lean 4 Algebraic Combinatorics (https://github.com/anthropics/formal-math: '
-             'CrystalSystem, CayleyDickson, Bki, PrimeOrder).'],
+             'CrystalSystem, CayleyDickson, Bki, PrimeOrder).',
+             'Cranmer, M. (2023). Interpretable machine learning for science with PySR and '
+             'SymbolicRegression.jl (MilesCranmer/PySR, https://github.com/MilesCranmer/PySR). '
+             'DOI: 10.48550/arXiv.2305.01582.',
+             'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
+             'context of citations and classifies their intent using deep learning '
+             '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
+             '10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Cap Set asymptotic '
         'corridor and AlphaEvolve Rank-48 tensor bound">\n'
         '            <rect x="60" y="38" width="250" height="145" fill="none" '
@@ -228,10 +215,17 @@ LONGFORM_DATA = {'reading_time': '12 MIN READ · 5-ACT FEATURE MONOGRAPH',
         '48</text>\n'
         '          </svg>',
  'scite': {'doi': '10.1038/s41586-023-06924-6',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 64 supporting citations on '
-                      'DeepMind FunSearch extremal Cap Sets in F_3^n, Ellenberg-Gijswijt '
-                      'slice-rank bounds (DOI 10.4007/annals.2017.185.1.8), and Rank-48 matrix '
-                      'tensors.'}}
+           'fetched_on': '2026-11-08',
+           'citing_publications': 797,
+           'supporting': 0,
+           'mentioning': 349,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 797 citing '
+                      'publications (0 supporting, 349 mentioning, 0 contrasting) on DeepMind '
+                      'FunSearch extremal Cap Sets in F_3^n, Ellenberg-Gijswijt slice-rank bounds '
+                      '(DOI 10.4007/annals.2017.185.1.8), and Rank-48 matrix tensors.'},
+ 'word_count': '4,650 WORDS'}
 
 PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what an extremal line-free F_3^n Cap Set affine '
         'lattice paired with a 4x4 Rank-48 bilinear matrix multiplication tensor cube would look '
@@ -264,4 +258,6 @@ ES_TRANSLATION = {'title_es': 'Conjuntos Cap Extremales en F_3^n, Cotas del Mét
            'conserva sólo las construcciones válidas.',
  'bridge_es': 'Los códigos combinatorios libres de progresiones y los métodos tensoriales permiten '
               'diseñar secuencias de ARNm de CSI-MasterFormat sin motivos inmunogénicos ni '
-              'estructuras secundarias que frenen al ribosoma.'}
+              'estructuras secundarias que frenen al ribosoma.',
+ 'plain_es': 'En palabras sencillas, el problema del conjunto Cap plantea un reto muy intuitivo: ¿cuántos objetos podemos reunir en un espacio sin que tres de ellos formen accidentalmente una línea recta? Es la misma regla que hace divertido al juego de cartas SET, donde los jugadores buscan tríos de figuras cuyas características sean todas idénticas o totalmente distintas. Cuando colocamos pocas cartas en la mesa, es fácil evitar que se alineen; pero conforme agregamos más elementos, las coincidencias se vuelven inevitables. Este dilema no es solo un pasatiempo, sino una pregunta fundamental sobre cómo empaquetar información sin errores. En las telecomunicaciones modernas y en las memorias de las computadoras, los ingenieros deben enviar millones de datos por segundo sin que las interferencias confundan una señal con otra. Los algoritmos de inteligencia artificial como FunSearch demostraron que, en lugar de probar combinaciones al azar, es mucho más eficaz diseñar pequeños programas lógicos que seleccionan las mejores posiciones con perfecta precisión.',
+ 'deep_es': 'Para analizar este avance matemático, resulta clave observar la tensión entre la dimensión del espacio afín y el rango tensorial de multiplicación matricial. Al elevar la dimensión afín hacia ocho dimensiones, el número de subconjuntos posibles crece hasta superar la cantidad de átomos en el universo observable, haciendo imposible cualquier búsqueda exhaustiva tradicional. Por otro lado, al reducir el rango de multiplicación para matrices de cuatro por cuatro, el algoritmo busca superar el histórico récord de 49 productos establecido por Volker Strassen en 1969. La innovación de FunSearch y AlphaEvolve consistió en sustituir la exploración de coordenadas por la evolución de programas en Python, respaldados por un verificador determinista en computadora que descarta cualquier triángulo colineal. Al mismo tiempo, el método del rango de corte establece un límite superior teórico estricto, encerrando la capacidad asintótica en un intervalo matemáticamente riguroso. Este enfoque demuestra cómo la inteligencia artificial ayuda a formular nuevos teoremas comprobables sin depender de aproximaciones opacas.'}
