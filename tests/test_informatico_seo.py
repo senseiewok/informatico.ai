@@ -262,6 +262,30 @@ class BuiltPages(unittest.TestCase):
         self.assertIn("</linearGradient>", out)
 
 
+    def test_every_folio_meets_multi_chapter_monograph_depth_contract(self) -> None:
+        folio_count = 0
+        for pillar in ("math", "physics", "engineering", "architecture"):
+            for fdir in sorted((RESEARCH / pillar).iterdir()):
+                if not fdir.is_dir():
+                    continue
+                folio_count += 1
+                slug = fdir.name
+                for html_file in (fdir / "index.html", RESEARCH / "es-mx" / pillar / slug / "index.html"):
+                    txt = html_file.read_text(encoding="utf-8")
+                    paras = re.findall(r"<p[^>]*>(.*?)</p>", txt, re.S)
+                    words = sum(len(re.sub(r"<[^>]+>", " ", p).split()) for p in paras)
+                    self.assertGreaterEqual(words, 2800, f"{html_file} has only {words} visible <p> words (< 2800)")
+                    self.assertGreaterEqual(len(paras), 45, f"{html_file} has only {len(paras)} <p> paragraphs (< 45)")
+                    self.assertIn('class="tp-proof-spine"', txt, html_file)
+                    self.assertEqual(txt.count('class="tp-proof-chapter"'), 4, html_file)
+                    self.assertEqual(txt.count('class="tp-proof-stage-block"'), 4, html_file)
+                    self.assertIn('class="tp-worked-verification-chapter"', txt, html_file)
+                    self.assertIn('tp-telemetry-benchmark-table', txt, html_file)
+                    self.assertIn('class="tp-transfer-chapter"', txt, html_file)
+                    self.assertGreaterEqual(txt.count("<h3"), 15, html_file)
+        self.assertEqual(folio_count, 48)
+
+
 class SiteFiles(unittest.TestCase):
     def test_sitemap_lists_both_languages_with_alternates_and_real_dates(self):
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
