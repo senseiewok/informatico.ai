@@ -3272,6 +3272,8 @@ def update_informatico_css() -> None:
     background-color: var(--tp-prussian);
     border: 1px solid var(--tp-prussian);
     cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
     box-sizing: border-box;
   }}
 
@@ -3294,6 +3296,8 @@ def update_informatico_css() -> None:
     background-color: var(--tp-stone);
     border: 1px solid var(--tp-rule-strong);
     cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
     box-sizing: border-box;
   }}
 
@@ -3319,8 +3323,17 @@ def update_informatico_css() -> None:
 
   .tp-audio-progress {{
     width: 100%;
-    height: 6px;
+    height: 8px;
+    cursor: pointer;
+    touch-action: manipulation;
     accent-color: var(--tp-verdigris);
+  }}
+
+  @media (max-width: 720px) {{
+    .tp-audio-play-btn,
+    .tp-audio-util-btn {{
+      min-height: 42px;
+    }}
   }}
 
   .tp-audio-chapters {{
