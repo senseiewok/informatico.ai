@@ -5,7 +5,7 @@ FOLIO = {'slug': 'x03',
  'folio_id': 'X.03',
  'tool_id': 'TOOL-ARCH-1',
  'cat': 'architecture',
- 'plate_slug': 'a11',
+ 'plate_slug': 'x03',
  'pillar_label_en': "Small Architect's Studio Toolbox · Structural Form-Finding & Open BIM",
  'pillar_label_es': 'Caja de Herramientas para Pequeños Despachos de Arquitectura · Búsqueda de '
                     'Forma',

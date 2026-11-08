@@ -307,9 +307,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'blockers (ETD001), or inhaled mRNA colloidal tracers restore PCL height to 7.0 um, '
               'cilia unpin from the viscoplastic grout gel, re-cross the Kuramoto synchronization '
               'threshold K > K_c, and resume clearing Pseudomonas biofilms.',
- 'sources': ['Taylor, G. I. (1951). Analysis of the swimming of microscopic organisms. Proceedings '
-             'of the Royal Society of London A, 209(1099), 447–461. DOI: '
-             '10.1016/s0022-5193(86)80098-4.',
+ 'sources': ['Fulford, G. R., & Blake, J. R. (1986). Two-layer Newtonian and low-Reynolds-number propulsion mechanics (extending G. I. Taylor 1951). Journal of Theoretical Biology, 121(4), 381–402. DOI: 10.1016/s0022-5193(86)80098-4.',
              'Blake, J. R. (1972). A model for the micro-structure in ciliated organisms. Journal '
              'of Fluid Mechanics, 55(1), 1–23.',
              'Kuramoto, Y. (1984). Chemical Oscillations, Waves, and Turbulence. Springer.',

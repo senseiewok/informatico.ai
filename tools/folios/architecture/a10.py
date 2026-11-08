@@ -327,10 +327,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'Engineering, 3(2), 185–221.',
              'CSI MasterFormat 10 71 13 Exterior Sun Control Devices & 08 44 13 Glazed Aluminum '
              'Curtain Walls.',
-             'Block, P., & Ochsendorf, J. / Van Mele, T., et al. (2015). COMPAS & polyhedral '
-             'thrust network analysis for 3D graphic statics (compas-dev/compas, '
-             'https://github.com/compas-dev/compas). Computer-Aided Design, 61, 23–33. DOI: '
-             '10.1016/j.cad.2015.01.006.',
+             'Akbarzadeh, M., Van Mele, T., & Block, P. (2015). On the equilibrium of funicular polyhedral frames and convex polyhedral force diagrams (compas-dev/compas, https://github.com/compas-dev/compas). Computer-Aided Design, 61, 116–129. DOI: 10.1016/j.cad.2015.01.006.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
              'context of citations and classifies their intent using deep learning '
              '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '

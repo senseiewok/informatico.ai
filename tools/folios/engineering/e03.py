@@ -311,9 +311,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'Liquifying the viscoplastic grout gel prior to inhaling mRNA colloidal tracers or '
               'bacteriophages multiplies nanoparticle penetration depth across the ventilation '
               'duct surface.',
- 'sources': ['Helmholtz, H. von (1863). Die Lehre von den Tonempfindungen als physiologische '
-             'Grundlage für die Theorie der Musik. Vieweg. DOI: '
-             '10.1146/annurev-matsci-070616-124032.',
+ 'sources': ['Yang, M., & Sheng, P. (2017). Sound Absorption Structures: From Porous Media to Acoustic Metamaterials (building on Helmholtz 1863). Annual Review of Materials Research, 47, 83–114. DOI: 10.1146/annurev-matsci-070616-124032.',
              'Stinson, M. R. (1991). The propagation of plane sound waves in narrow and wide '
              'circular tubes, and generalization to uniform tubes of arbitrary cross-sectional '
              'shape. JASA, 89(2), 550–558.',

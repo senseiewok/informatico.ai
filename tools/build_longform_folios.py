@@ -43,6 +43,25 @@ SITE = "https://informatico.ai/"
 ES_PREFIX = "es-mx/"
 
 
+import hashlib
+
+_PLATE_SHA8_CACHE: dict[str, str] = {}
+
+
+def plate_sha8(slug: str) -> str:
+    """Return deterministic 8-char SHA-256 hex digest of src/research/plates/<slug>.jpg for browser cache busting."""
+    s = str(slug).strip()
+    if s not in _PLATE_SHA8_CACHE:
+        p = ROOT / "src" / "research" / "plates" / f"{s}.jpg"
+        _PLATE_SHA8_CACHE[s] = hashlib.sha256(p.read_bytes()).hexdigest()[:8] if p.is_file() else "00000000"
+    return _PLATE_SHA8_CACHE[s]
+
+
+def plate_src(prefix: str, slug: str) -> str:
+    """Build cache-busted plate image URL '<prefix><slug>.jpg?v=<sha8>' to defeat stale 7-day browser disk cache."""
+    return f"{prefix}{esc(slug)}.jpg?v={plate_sha8(slug)}"
+
+
 def esc(text: str) -> str:
     return html.escape(str(text), quote=True)
 
@@ -1326,7 +1345,7 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
         utopia_companion_html = f"""
         <figure class="tp-editorial-figure tp-utopia-companion" data-editorial-plate="utopian-city-future" role="group" aria-label="2050 Utopian City of the Future in the Era of AI, Metamaterials, and Autonomous Robotics">
           
-          <img class="tp-editorial-img" src="{rel_res}/plates/utopian-city-future.jpg" data-plate-slug="utopian-city-future" width="1280" height="720" alt="Conceptual visualization imagining what the Utopian City of the Future in the era of AI, cellular auxetic metamaterials, and autonomous climbing and aerial robots would look like (artistic impression, not a measured structure)" loading="lazy" decoding="async">
+          <img class="tp-editorial-img" src="{plate_src(rel_res + '/plates/', 'utopian-city-future')}" data-plate-slug="utopian-city-future" width="1280" height="720" alt="Conceptual visualization imagining what the Utopian City of the Future in the era of AI, cellular auxetic metamaterials, and autonomous climbing and aerial robots would look like (artistic impression, not a measured structure)" loading="lazy" decoding="async">
           <figcaption class="tp-editorial-caption">
             <strong>Horizon 2050 — The Utopian City in the Era of AI, Metamaterials &amp; Robotics:</strong> Extending Ron Herron&rsquo;s <em>Walking City</em> and Peter Cook&rsquo;s <em>Plug-In City</em> into the 21st century: collaborative aerial and climbing robot swarms weave ultralight stretching-dominated auxetic metamaterial space frames (<code>E*/E_s = C(&rho;*/&rho;_s)</code>, <code>&nu; &lt; 0</code>) over seismic-cloaking phononic foundation rings (<code>Folios E.03 &amp; E.06</code>), while neuro-symbolic AI digital twins orchestrate crane-replaceable ISO-5 gene-therapy and clinical pods across lush vertical sky-gardens.
             <span class="tp-drawn-note"><strong>Visual &amp; Scite Provenance:</strong> AI-generated architectural vision plate (VLM-audited for zero baked-in text) grounded in <a class="tp-cite-link" href="https://doi.org/{esc(scite.get('doi', ''))}" target="_blank" rel="noopener noreferrer"><code>DOI {esc(scite.get('doi', ''))}</code></a> (<a class="tp-scite-badge-link" href="https://scite.ai/reports/{esc(scite.get('doi', ''))}" target="_blank" rel="noopener noreferrer">Scite Report &#8599;</a>); exact structural equilibrium is governed by <code>tools/tectonic_verify.py</code>.</span>
@@ -1424,7 +1443,7 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
     </section>
 
     <figure class="tp-editorial-figure" data-lead-figure data-editorial-plate="{esc(slug)}" role="group" aria-label="Lead illustration for Folio {esc(fid)}">
-      <img class="tp-editorial-img" src="{rel_res}/plates/{esc(slug)}.jpg" data-plate-slug="{esc(slug)}" width="1280" height="720" alt="{esc(plate_alt_c)}" loading="eager" fetchpriority="high" decoding="async">
+      <img class="tp-editorial-img" src="{plate_src(rel_res + '/plates/', slug)}" data-plate-slug="{esc(slug)}" width="1280" height="720" alt="{esc(plate_alt_c)}" loading="eager" fetchpriority="high" decoding="async">
       <figcaption class="tp-editorial-caption">
         {esc(plate_caption_c)}
         <details class="tp-plate-provenance-details">
@@ -1972,7 +1991,7 @@ def render_rack_cards(pillar: str, folios: list[dict], href_prefix: str, plate_p
         alt = decf_title(PLATE_CAPTIONS.get(slug, {}).get("alt", title_en))
         cards.append(
             f"""        <a class="tp-rack-card" href="{href_prefix}{slug}/" data-folio-slug="{esc(slug)}" data-folio-volume="{get_folio_volume(slug)[0]}"{cur}>
-          <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb" src="{plate_prefix}{esc(slug)}.jpg" width="640" height="360" loading="{loading}" decoding="async" alt="{esc(alt)}"></span>
+          <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb" src="{plate_src(plate_prefix, slug)}" width="640" height="360" loading="{loading}" decoding="async" alt="{esc(alt)}"></span>
           <span class="tp-rack-top"><span class="tp-rack-id">{esc(f["folio_id"])}</span><span class="tp-rack-badge" data-en="{rt_en}" data-es="{rt_es}">{rt_en}</span></span>
           <strong class="tp-rack-title" data-en="{esc(title_en)}" data-es="{esc(title_es)}">{esc(title_en)}</strong>
           <span class="tp-rack-dek" data-en="{esc(dek_en)}" data-es="{esc(dek_es)}">{esc(dek_en)}</span>
@@ -2102,7 +2121,7 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
     head = render_head(seo_title, seo_desc, f"{pillar}/", "website", image,
                        rel_root, rel_res, _ld("CollectionPage", title_es if es else title_en, seo_desc, canon, lang,
                                               image=image, crumbs=crumbs), lang)
-    cards = render_rack_cards(pillar, folios, "./", "../plates/", eager=3)
+    cards = render_rack_cards(pillar, folios, "./", "../plates/", eager=12)
     n = len(folios)
     extra_sections = ""
     if pillar in ("physics", "math"):
@@ -2818,7 +2837,7 @@ def render_bounties_hub(catalog: dict, lang: str = "en") -> str:
         "define la frontera de verdad T0–T3 e incluye el verificador reproducible en Python."
     )
     crumbs = [(BRAND, page_url("", lang)), (title_es if es else title_en, canon)]
-    image = "https://informatico.ai/plates/m11.jpg"
+    image = "https://informatico.ai/plates/b01.jpg"
     head = render_head(
         seo_title,
         seo_desc,
@@ -2836,7 +2855,7 @@ def render_bounties_hub(catalog: dict, lang: str = "en") -> str:
         slug = b["slug"]
         fid = b["folio_id"]
         bid = b["bounty_id"]
-        loading = "eager" if i < 3 else "lazy"
+        loading = "eager" if i < 6 else "lazy"
         plate_slug = b["plate_slug"]
         rt_en, rt_es = b["reading_time_en"], b["reading_time_es"]
         t_card_en = f"{fid} ({bid}) · {b['title_en']}"
@@ -2846,7 +2865,7 @@ def render_bounties_hub(catalog: dict, lang: str = "en") -> str:
         alt = PLATE_CAPTIONS.get(plate_slug, {}).get("alt", b["title_en"])
         rack_cards.append(
             f"""        <a class="tp-rack-card" href="./{slug}/" data-folio-slug="{esc(slug)}">
-          <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb" src="../plates/{esc(plate_slug)}.jpg" width="640" height="360" loading="{loading}" decoding="async" alt="{esc(alt)}"></span>
+          <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb" src="{plate_src('../plates/', plate_slug)}" width="640" height="360" loading="{loading}" decoding="async" alt="{esc(alt)}"></span>
           <span class="tp-rack-top"><span class="tp-rack-id">{esc(fid)} · {esc(bid)}</span><span class="tp-rack-badge" data-en="{esc(rt_en)}" data-es="{esc(rt_es)}">{esc(rt_en)}</span></span>
           <strong class="tp-rack-title" data-en="{esc(t_card_en)}" data-es="{esc(t_card_es)}">{esc(t_card_en)}</strong>
           <span class="tp-rack-dek" data-en="{esc(dek_en)}" data-es="{esc(dek_es)}">{esc(dek_en)}</span>
@@ -3076,7 +3095,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
     </section>
 
     <figure class="tp-editorial-figure" data-lead-figure data-editorial-plate="{esc(plate_slug)}" role="group" aria-label="Lead illustration for Bounty {esc(fid)}">
-      <img class="tp-editorial-img" src="{rel_res}/plates/{esc(plate_slug)}.jpg" data-plate-slug="{esc(plate_slug)}" width="1280" height="720" alt="{esc(plate_alt)}" loading="eager" fetchpriority="high" decoding="async">
+      <img class="tp-editorial-img" src="{plate_src(rel_res + '/plates/', plate_slug)}" data-plate-slug="{esc(plate_slug)}" width="1280" height="720" alt="{esc(plate_alt)}" loading="eager" fetchpriority="high" decoding="async">
       <figcaption class="tp-editorial-caption">
         {esc(plate_cap)}
         <details class="tp-plate-provenance-details">
@@ -3477,7 +3496,7 @@ def render_bounties_hub(catalog: dict, lang: str = "en") -> str:
         "define la frontera de verdad T0–T3 e incluye el verificador reproducible en Python."
     )
     crumbs = [(BRAND, page_url("", lang)), (title_es if es else title_en, canon)]
-    image = "https://informatico.ai/plates/m11.jpg"
+    image = "https://informatico.ai/plates/b01.jpg"
     head = render_head(
         seo_title,
         seo_desc,
@@ -3495,7 +3514,7 @@ def render_bounties_hub(catalog: dict, lang: str = "en") -> str:
         slug = b["slug"]
         fid = b["folio_id"]
         bid = b["bounty_id"]
-        loading = "eager" if i < 3 else "lazy"
+        loading = "eager" if i < 6 else "lazy"
         plate_slug = b["plate_slug"]
         rt_en = b.get("reading_time", "15 MIN READ").lower().replace("min read", "min read")
         rt_es = rt_en.replace("min read", "min de lectura")
@@ -3506,7 +3525,7 @@ def render_bounties_hub(catalog: dict, lang: str = "en") -> str:
         alt = PLATE_CAPTIONS.get(plate_slug, {}).get("alt", b["title"])
         rack_cards.append(
             f"""        <a class="tp-rack-card" href="./{slug}/" data-folio-slug="{esc(slug)}">
-          <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb" src="../plates/{esc(plate_slug)}.jpg" width="640" height="360" loading="{loading}" decoding="async" alt="{esc(alt)}"></span>
+          <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb" src="{plate_src('../plates/', plate_slug)}" width="640" height="360" loading="{loading}" decoding="async" alt="{esc(alt)}"></span>
           <span class="tp-rack-top"><span class="tp-rack-id">{esc(fid)} · {esc(bid)}</span><span class="tp-rack-badge" data-en="{esc(rt_en)}" data-es="{esc(rt_es)}">{esc(rt_en)}</span></span>
           <strong class="tp-rack-title" data-en="{esc(t_card_en)}" data-es="{esc(t_card_es)}">{esc(t_card_en)}</strong>
           <span class="tp-rack-dek" data-en="{esc(dek_en)}" data-es="{esc(dek_es)}">{esc(dek_en)}</span>
@@ -3730,7 +3749,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
     </section>
 
     <figure class="tp-editorial-figure" data-lead-figure data-editorial-plate="{esc(plate_slug)}" role="group" aria-label="Lead illustration for Bounty {esc(fid)}">
-      <img class="tp-editorial-img" src="{rel_res}/plates/{esc(plate_slug)}.jpg" data-plate-slug="{esc(plate_slug)}" width="1280" height="720" alt="{esc(plate_alt)}" loading="eager" fetchpriority="high" decoding="async">
+      <img class="tp-editorial-img" src="{plate_src(rel_res + '/plates/', plate_slug)}" data-plate-slug="{esc(plate_slug)}" width="1280" height="720" alt="{esc(plate_alt)}" loading="eager" fetchpriority="high" decoding="async">
       <figcaption class="tp-editorial-caption">
         {esc(plate_cap)}
         <details class="tp-plate-provenance-details">
@@ -4271,7 +4290,7 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
         "un verificador a nivel de bytes con prueba de defecto plantado y su SKILL.md portátil."
     )
     crumbs = [(BRAND, page_url("", lang)), (title_es if es else title_en, canon)]
-    image = "https://informatico.ai/plates/a11.jpg"
+    image = "https://informatico.ai/plates/x01.jpg"
     head = render_head(
         seo_title,
         seo_desc,
@@ -4289,7 +4308,7 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
         slug = t["slug"]
         fid = t["folio_id"]
         tid = t["tool_id"]
-        loading = "eager" if i < 3 else "lazy"
+        loading = "eager" if i < 6 else "lazy"
         plate_slug = t["plate_slug"]
         rt_en = t.get("reading_time", "15 MIN READ").lower()
         rt_es = rt_en.replace("min read", "min de lectura")
@@ -4300,7 +4319,7 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
         alt = PLATE_CAPTIONS.get(plate_slug, {}).get("alt", t["title"])
         rack_cards.append(
             f"""        <a class="tp-rack-card" href="./{slug}/" data-folio-slug="{esc(slug)}">
-          <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb" src="../plates/{esc(plate_slug)}.jpg" width="640" height="360" loading="{loading}" decoding="async" alt="{esc(alt)}"></span>
+          <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb" src="{plate_src('../plates/', plate_slug)}" width="640" height="360" loading="{loading}" decoding="async" alt="{esc(alt)}"></span>
           <span class="tp-rack-top"><span class="tp-rack-id">{esc(fid)} · {esc(tid)}</span><span class="tp-rack-badge" data-en="{esc(rt_en)}" data-es="{esc(rt_es)}">{esc(rt_en)}</span></span>
           <strong class="tp-rack-title" data-en="{esc(t_card_en)}" data-es="{esc(t_card_es)}">{esc(t_card_en)}</strong>
           <span class="tp-rack-dek" data-en="{esc(dek_en)}" data-es="{esc(dek_es)}">{esc(dek_en)}</span>
@@ -4661,7 +4680,7 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
     </div>
 
     <figure class="tp-editorial-figure" data-lead-figure data-editorial-plate="{esc(plate_slug)}" role="group" aria-label="Lead illustration for Toolbox {esc(fid)}">
-      <img class="tp-editorial-img" src="{rel_res}/plates/{esc(plate_slug)}.jpg" data-plate-slug="{esc(plate_slug)}" width="1280" height="720" alt="{esc(plate_alt)}" loading="eager" fetchpriority="high" decoding="async">
+      <img class="tp-editorial-img" src="{plate_src(rel_res + '/plates/', plate_slug)}" data-plate-slug="{esc(plate_slug)}" width="1280" height="720" alt="{esc(plate_alt)}" loading="eager" fetchpriority="high" decoding="async">
       <figcaption class="tp-editorial-caption">
         {esc(plate_cap)}
         <details class="tp-plate-provenance-details">
@@ -4992,7 +5011,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         folios = catalog["pillars"][p_key]
         en, es_t = PILLAR_TITLES[p_key], PILLAR_TITLES_ES[p_key]
         hook_en, hook_es = PILLAR_HOOKS[p_key]
-        cards = render_rack_cards(p_key, folios, f"{p_key}/", "plates/", eager=0)
+        cards = render_rack_cards(p_key, folios, f"{p_key}/", "plates/", eager=4)
         rows.append(
             f"""    <section class="tp-cover-pillar" data-track="{p_key}" aria-labelledby="pillar-{p_key}">
       <div class="tp-cover-pillar-head">
@@ -5026,7 +5045,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         </div>
       </div>
       <figure class="tp-cover-figure">
-        <img src="plates/utopian-city-future.jpg" width="1280" height="720" loading="eager" fetchpriority="high" decoding="async" alt="Conceptual illustration imagining what a city built with these ideas would look like: light space frames, vertical gardens and robots at work (artistic impression, not a design).">
+        <img src="{plate_src('plates/', 'utopian-city-future')}" width="1280" height="720" loading="eager" fetchpriority="high" decoding="async" alt="Conceptual illustration imagining what a city built with these ideas would look like: light space frames, vertical gardens and robots at work (artistic impression, not a design).">
         <figcaption data-en="Conceptual illustration imagining what a city built with these ideas would look like. An artistic impression, not a design." data-es="Ilustración conceptual que imagina cómo se vería una ciudad construida con estas ideas. Una impresión artística, no un diseño.">Conceptual illustration imagining what a city built with these ideas would look like. An artistic impression, not a design.</figcaption>
       </figure>
       <nav class="tp-cover-track-strip" aria-label="Informatico.ai 4 Pillars, 6 Bounties and 54 AI Skills">

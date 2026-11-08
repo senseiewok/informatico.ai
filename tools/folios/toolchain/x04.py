@@ -5,7 +5,7 @@ FOLIO = {'slug': 'x04',
  'folio_id': 'X.04',
  'tool_id': 'TOOL-ARCH-2',
  'cat': 'architecture',
- 'plate_slug': 'a10',
+ 'plate_slug': 'x04',
  'pillar_label_en': 'Small Architect & Maker Fabrication · Kinetic Facades & Laser/CNC DXF',
  'pillar_label_es': 'Fabricación para Arquitectos y Makers · Fachadas Cinéticas y DXF para '
                     'Láser/CNC',

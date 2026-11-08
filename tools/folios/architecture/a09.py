@@ -323,9 +323,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'curved CLT structure—Urbach Tower. Fabricate 2020, 50–57.',
              'CEN (2024). Eurocode 5 (EN 1995-1-1) Design of Timber Structures & CSI MasterFormat '
              '06 18 00.',
-             'Baratta, I. A., et al. (2023). DOLFINx: The next generation FEniCS problem solving '
-             'environment (FEniCS/dolfinx, https://github.com/FEniCS/dolfinx). Zenodo. DOI: '
-             '10.1145/3524456.',
+             'Scroggs, M. W., Dokken, J. S., Richardson, C. N., & Wells, G. N. (2022). Construction of Arbitrary Order Finite Element Degree-of-Freedom Maps on Polygonal and Polyhedral Cell Meshes (FEniCS/dolfinx, https://github.com/FEniCS/dolfinx). ACM Transactions on Mathematical Software, 48(2), 18:1–18:23. DOI: 10.1145/3524456.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
              'context of citations and classifies their intent using deep learning '
              '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
