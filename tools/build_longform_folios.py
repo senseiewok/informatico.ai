@@ -4050,7 +4050,7 @@ def render_not_found() -> str:
 
 
 _VOID_TAGS = frozenset({"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"})
-_URL_ATTR = re.compile(r'(\s)(href|src|data-plate-prefix)(=(["\']))(.*?)(\4)')
+_URL_ATTR = re.compile(r'(\s)(href|src|data-plate-prefix|data-audio-src|data-audio-src-es)(=(["\']))(.*?)(\4)')
 
 
 def _es_shift_url(attr: str, value: str) -> str:

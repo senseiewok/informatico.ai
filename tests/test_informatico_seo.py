@@ -62,7 +62,7 @@ class Head(HTMLParser):
         if tag == "h1":
             self._in_h1 = True
             self.h1.append("")
-        for name in ("href", "src", "data-plate-prefix"):
+        for name in ("href", "src", "data-plate-prefix", "data-audio-src", "data-audio-src-es"):
             if a.get(name) is not None:
                 self.refs.append((name, a[name]))
 
