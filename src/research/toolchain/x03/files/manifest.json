@@ -60,7 +60,7 @@
     },
     {
       "filename": "x03_artifact.dxf",
-      "format": "DXF (AutoCAD ASCII R2000)",
+      "format": "DXF (Clean-Room ASCII R2000)",
       "bytes": 4534,
       "sha256": "ca925d6014191e1a4747ef57c1ea664f4d378ec476092fde170f71cb0215f4a5"
     }

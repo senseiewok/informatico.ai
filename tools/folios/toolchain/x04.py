@@ -25,7 +25,7 @@ FOLIO = {'slug': 'x04',
  'why_en': 'Small architectural practices and independent makers frequently prototype adaptive '
            'shading screens, acoustic baffles, and folded-plate canopies using laser cutters, CNC '
            'drag-knives, or sheet-metal brakes. Folio X.04 pairs a 3D thickened Miura-ori shell '
-           '(.glb, .3mf) with a production-structured 2D AutoCAD DXF flat pattern separated into '
+           '(.glb, .3mf) with a production-structured 2D clean-room ASCII DXF (R2000 standard) flat pattern separated into '
            'CUT, MOUNTAIN, and VALLEY layers—while proving mathematically that every interior '
            'degree-4 vertex satisfies flat-foldability.',
  'why_es': 'Los estudios pequeños de arquitectura y talleres de fabricación digital suelen '
@@ -51,13 +51,13 @@ FOLIO = {'slug': 'x04',
  'current_edition': 'REV 1.0',
  'reading_time': '22 MIN READ',
  'small_studio_kit_en': 'Digital Fabrication & Laser-Cutter Kit (Inkscape / QCAD / LibreCAD / '
-                        'LightBurn + Blender): Open x04_artifact.dxf directly in any 2D CAD or '
+                        'LaserWeb + Blender): Open x04_artifact.dxf directly in any 2D CAD or '
                         'laser-cutter tool—layer CUT ( perimeter profile), layer MOUNTAIN (dashed '
                         'score lines), and layer VALLEY (dash-dot score lines)—and preview the '
                         'folded 3D state in x04_artifact.glb or print a snapped study tile from '
                         'x04_artifact.3mf.',
  'small_studio_kit_es': 'Kit de Fabricación Digital y Corte Láser (Inkscape / QCAD / LibreCAD / '
-                        'LightBurn + Blender): Abre x04_artifact.dxf directamente en cualquier '
+                        'LaserWeb + Blender): Abre x04_artifact.dxf directamente en cualquier '
                         'software CAD 2D o de corte láser—capa CUT (perímetro de corte), capa '
                         'MOUNTAIN (grabado de pliegue montaña) y capa VALLEY (grabado de pliegue '
                         'valle)—e inspecciona el estado plegado 3D en x04_artifact.glb o imprime '

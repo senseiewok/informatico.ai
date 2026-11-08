@@ -22,8 +22,8 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Primary Scite Anchor DOI**: https://doi.org/10.1016/j.CAD.2017.07.005 (Scite Report: https://scite.ai/reports/10.1016/j.CAD.2017.07.005)
 
 ## 2. Small-Studio & Independent-Practitioner Open-Tool Workflow
-- **EN**: Boutique Architecture Studio Stack (COMPAS MIT + Blender 4.2 / Bonsai + FreeCAD 1.0 + QCAD/Rhino): Run make_x03.py to generate a 7-voussoir funicular arch across 4 open formats—x03_artifact.glb for client WebGL walkthroughs, x03_artifact.step for structural engineer coordination, x03_artifact.3mf for 1:20 desktop study models, and x03_artifact.dxf for 2D stone/CLT CNC шаблоны (templates).
-- **ES-MX**: Stack para Pequeños Estudios de Arquitectura (COMPAS MIT + Blender 4.2 / Bonsai + FreeCAD 1.0 + QCAD/Rhino): Ejecuta make_x03.py para generar un arco funicular de 7 dovelas en 4 formatos abiertos: x03_artifact.glb para presentaciones WebGL con clientes, x03_artifact.step para coordinación estructural, x03_artifact.3mf para maquetas físicas 1:20 y x03_artifact.dxf para plantillas de corte 2D en CNC.
+- **EN**: Boutique Architecture Studio Stack (COMPAS MIT + Blender 4.2 / Bonsai + FreeCAD 1.0 + QCAD Community Edition / LibreCAD): Run make_x03.py to generate a 7-voussoir funicular arch across 4 open formats—x03_artifact.glb for client WebGL walkthroughs, x03_artifact.step for structural engineer coordination, x03_artifact.3mf for 1:20 desktop study models, and x03_artifact.dxf for 2D stone/CLT CNC шаблоны (templates).
+- **ES-MX**: Stack para Pequeños Estudios de Arquitectura (COMPAS MIT + Blender 4.2 / Bonsai + FreeCAD 1.0 + QCAD Community Edition / LibreCAD): Ejecuta make_x03.py para generar un arco funicular de 7 dovelas en 4 formatos abiertos: x03_artifact.glb para presentaciones WebGL con clientes, x03_artifact.step para coordinación estructural, x03_artifact.3mf para maquetas físicas 1:20 y x03_artifact.dxf para plantillas de corte 2D en CNC.
 
 ## 3. Tool-Neutral Agent Packet & Security Boundary (`security-runtime`)
 1. **Generate Deterministic 3D Artifacts Locally**: Run `python skills/toolchain/x03/make_x03.py` inside the repository working directory to emit `src/research/toolchain/x03/files/x03_artifact.*` and `manifest.json`.
@@ -51,7 +51,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ### Certified Geometry in Repository Today (T0/T1)
 - Deterministic 4-format generator (skills/toolchain/x03/make_x03.py) emitting x03_artifact.glb, x03_artifact.step, x03_artifact.3mf, and x03_artifact.dxf.
 - Byte-level stdlib verifier (verify_x03_toolchain_x03_small_architect_vault_kit.py) certifying 7-block watertightness (χ = 14), exact volume match, DXF layer structure, and planted-defect knockout.
-- Portable SKILL.md companion tailored for small architecture studios using Blender, FreeCAD, COMPAS, and QCAD/Rhino.
+- Portable SKILL.md companion tailored for small architecture studios using Blender, FreeCAD, COMPAS, and QCAD Community Edition / LibreCAD.
 
 ### Educational Boundary & Edition 2 Horizon (T2/T3)
 - Educational Geometry Boundary: Every file on this page is an educational artifact; nothing is certified as load-bearing, printable, safe, or fit for any purpose.

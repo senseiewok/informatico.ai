@@ -40,7 +40,7 @@ FOLIO = {'folio_id': 'A.02',
                 'body': '5-axis CNC-milled glued laminated larch timber with pre-compressed beechwood shear keys and '
                         'concealed self-tapping full-thread reinforcement screws (f_{m,k} = 28 MPa, f_{v,k} = 3.5 '
                         'MPa).',
-                'meta': 'Includes BTLx / Hundegger CAM file + 1:5 Revit (.rfa) · EN 14080 certified'},
+                'meta': 'Includes BTLx / Hundegger CAM file + 1:5 OpenBIM IFC 4.3 (.ifc) · EN 14080 certified'},
  'sidenote_1': {'kicker': 'SIDENOTE A.02 · VILLARD DE HONNECOURT TO KAGAWA',
                 'body': 'Reciprocal frames allow short timber billets to span distances 4×–6× their individual length, '
                         'but require strict control of notch stress concentration factor k_v under Eurocode 5.'},

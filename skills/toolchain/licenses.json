@@ -1,10 +1,74 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "track": "Tech & Tools · The Toolbox (X.01–X.06)",
   "audit_date": "2026-11-08",
   "site_code_license": "MIT",
   "generated_artifact_license": "CC0-1.0 / CC-BY-4.0 (Educational artifact; not certified for fitness)",
-  "v1_generator_policy": "First-edition generators (make_x01.py..make_x06.py) and verifiers (verify_x01_*.py..verify_x06_*.py) execute deterministically using Python 3 stdlib and reference only permissively licensed (MIT / Apache-2.0) libraries. GPL and LGPL tools are audited below and excluded from the first-edition build pipeline to prevent copyleft derivative-work ambiguity.",
+  "v1_generator_policy": "First-edition generators (make_x01.py..make_x06.py) and verifiers (verify_x01_*.py..verify_x06_*.py) execute deterministically using Python 3 stdlib (PSF-2.0) and reference only permissively licensed (MIT / Apache-2.0) libraries and open international standards. GPL, LGPL, and AGPL desktop viewers are documented as external user tools with a strict clean-room process boundary, and proprietary CAD dependencies are strictly prohibited.",
+  "global_compliance_charter": {
+    "version": "1.0.0",
+    "effective_date": "2026-11-08",
+    "jurisdiction_scope": "Worldwide (US, EU, UK, Mexico, LATAM, APAC)",
+    "tenets": [
+      {
+        "id": "GCC-01",
+        "title": "Open-Source License Clean-Room Isolation",
+        "statutory_basis": "17 U.S.C. § 102(b); EU Software Directive 2009/24/EC Recital 11 & Art. 1(2); CJEU C-406/10 SAS Institute v World Programming",
+        "ruling": "All repository generators (make_x01.py..make_x06.py, toolchain_uga.py) execute exclusively within the Python standard library (PSF-2.0) and emit independent geometric data tables. The generated artifacts (.step, .3mf, .glb, .dxf) are uncopyrightable functional mathematical facts released under CC0-1.0 / CC-BY-4.0. No copyleft libraries (GPL-2.0/GPL-3.0/AGPL-3.0) are linked, imported, or executed in the generator pipeline, guaranteeing that users and downstream developers incur zero reciprocal copyleft obligations."
+      },
+      {
+        "id": "GCC-02",
+        "title": "International Open Standards & Patent-Pledge Sovereignty",
+        "statutory_basis": "ISO/IEC 12113:2022 (glTF 2.0); ISO 10303-21 (STEP AP242); ISO/IEC 25422:2022 (3MF Core 1.2.3); Lanham Act 15 U.S.C. § 1115(b)(4); EU Trade Mark Regulation (EU) 2017/1001 Art. 14(1)(c)",
+        "ruling": "Every generated 3D solid, mesh, and 2D drawing adheres strictly to published, royalty-free, patent-pledged international standards. Specifically: (a) .glb conforms to ISO/IEC 12113:2022 under the Khronos Royalty-Free Patent Pledge; (b) .step conforms to ISO 10303-21 AP242 B-Rep exchange; (c) .3mf conforms to 3MF Core 1.2.3 under the 3MF Consortium Patent Licensing Commitment; (d) .dxf is implemented via clean-room ASCII R2000 tagged group-code tables without proprietary CAD libraries."
+      },
+      {
+        "id": "GCC-03",
+        "title": "Worldwide Professional Engineering & Architecture Practice Boundary",
+        "statutory_basis": "US NCEES Model Law § 110.20 & NCARB Model Rules Rule 2.1; EU Directive 2005/36/EC & Eurocodes (EN 1990-1999); UK Building Safety Act 2002/2022 & CDM Regs 2015; Mexico Ley Reglamentaria del Art. 5o. Constitucional (Cédula Profesional); LATAM/APAC Professional Acts",
+        "ruling": "Every file, script, and documentation page is an educational, scientific exploration artifact. Nothing in this repository constitutes a stamped, sealed, or certified architectural or engineering design, calculation of record, or construction document. No warranty of fitness for a particular purpose or structural load-bearing capacity is made. Under all worldwide jurisdictions, a locally registered and licensed professional architect or engineer of record must independently verify and certify all designs prior to physical fabrication or construction."
+      },
+      {
+        "id": "GCC-04",
+        "title": "Zero-Telemetry Data Sovereignty & Global Privacy Compliance",
+        "statutory_basis": "EU General Data Protection Regulation (GDPR 2016/679); California Consumer Privacy Act (CCPA/CPRA); Brazil LGPD (Lei 13.709/2018); Mexico LFPDPPP; UK GDPR / Data Protection Act 2018",
+        "ruling": "The entire Toolbox runs 100% locally and client-side. The web inspector uses zero-build WebGL2/Canvas with zero telemetry, zero analytics trackers, zero external fonts or CDN fetches, zero cookies, and zero cloud geometry uploads. No Personally Identifiable Information (PII) is ever collected, processed, stored, or transmitted."
+      },
+      {
+        "id": "GCC-05",
+        "title": "Export Sovereignty & Public-Domain Educational Publication Status",
+        "statutory_basis": "US Export Administration Regulations (EAR) 15 CFR § 734.3(b)(3) & § 734.7; EU Dual-Use Regulation (EU) 2021/821 Art. 2(8); Wassenaar Arrangement General Software Note (GSN)",
+        "ruling": "All software, algorithms, mathematical proofs, and geometric files published herein are released openly and publicly without restriction for educational and scientific research purposes, qualifying for public-domain exemptions under EAR 15 CFR § 734.7 and EU Dual-Use Regulation basic scientific research exclusions (EAR99 / Not Controlled)."
+      }
+    ],
+    "forbidden_proprietary_software_registry": [
+      {
+        "key": "PR-01",
+        "policy": "BANNED_PROPRIETARY_DEPENDENCY",
+        "foss_replacement": "FreeCAD 1.0 (LGPL-2.0+) / Blender 4.2+ (GPL-2.0+)"
+      },
+      {
+        "key": "PR-02",
+        "policy": "BANNED_PROPRIETARY_DEPENDENCY",
+        "foss_replacement": "COMPAS (MIT) / build123d (Apache-2.0) / CadQuery 2 (Apache-2.0)"
+      },
+      {
+        "key": "PR-03",
+        "policy": "BANNED_PROPRIETARY_DEPENDENCY",
+        "foss_replacement": "ezdxf (MIT) / Bonsai BIM & IfcOpenShell (LGPL-3.0+)"
+      },
+      {
+        "key": "PR-04",
+        "policy": "BANNED_PROPRIETARY_DEPENDENCY",
+        "foss_replacement": "QCAD Community Edition (GPL-3.0) / LibreCAD (GPL-2.0+) / Inkscape (GPL-2.0+)"
+      },
+      {
+        "key": "PR-05",
+        "policy": "BANNED_PROPRIETARY_DEPENDENCY",
+        "foss_replacement": "OrcaSlicer (AGPL-3.0) / PrusaSlicer (AGPL-3.0)"
+      }
+    ]
+  },
   "tools": [
     {
       "name": "Python Standard Library (struct, json, hashlib, math, zipfile)",
@@ -22,7 +86,7 @@
       "source_url": "https://github.com/gumyr/build123d/blob/dev/LICENSE",
       "read_date": "2026-11-08",
       "status": "APPROVED_PERMISSIVE",
-      "notes": "Permissive Apache-2.0 algebraic BREP CAD framework over OpenCascade (OCCT LGPL-2.1 with static/template exception). Compatible with MIT code and CC0/CC-BY educational STEP/3MF/GLB outputs."
+      "notes": "Permissive Apache-2.0 algebraic B-Rep CAD framework over OpenCascade (OCCT LGPL-2.1 with static/template exception). Compatible with MIT code and CC0/CC-BY educational STEP/3MF/GLB outputs."
     },
     {
       "name": "CadQuery 2",
@@ -31,7 +95,7 @@
       "source_url": "https://github.com/CadQuery/cadquery/blob/master/LICENSE",
       "read_date": "2026-11-08",
       "status": "APPROVED_PERMISSIVE",
-      "notes": "Permissive Apache-2.0 fluent parametric B-rep modeling library."
+      "notes": "Permissive Apache-2.0 fluent parametric B-Rep modeling library."
     },
     {
       "name": "COMPAS Framework (compas-dev/compas)",
@@ -52,13 +116,22 @@
       "notes": "Apache-2.0 exact topological manifold CSG kernel guaranteeing 2E = 3F watertight meshes."
     },
     {
-      "name": "rhino3dm (mcneel/rhino3dm)",
+      "name": "ezdxf (mozman/ezdxf)",
       "spdx_id": "MIT",
       "category": "first_edition_compatible",
-      "source_url": "https://github.com/mcneel/rhino3dm/blob/main/LICENSE",
+      "source_url": "https://github.com/mozman/ezdxf/blob/master/LICENSE",
       "read_date": "2026-11-08",
       "status": "APPROVED_PERMISSIVE",
-      "notes": "MIT-licensed OpenNURBS wrapper for reading and writing .3dm geometry without a commercial Rhino seat."
+      "notes": "Permissive MIT-licensed Python library for sovereign clean-room creation and analysis of ASCII DXF geometry without proprietary CAD dependencies."
+    },
+    {
+      "name": "ladybug-core (ladybug-tools/ladybug-core)",
+      "spdx_id": "MIT",
+      "category": "first_edition_compatible",
+      "source_url": "https://github.com/ladybug-tools/ladybug-core/blob/master/LICENSE",
+      "read_date": "2026-11-08",
+      "status": "APPROVED_PERMISSIVE",
+      "notes": "Permissive MIT-licensed core geometric, solar, and environmental calculation engine for open sustainable architecture."
     },
     {
       "name": "trimesh (mikedh/trimesh)",
@@ -85,16 +158,34 @@
       "source_url": "https://github.com/3MFConsortium/spec_core/blob/master/LICENSE",
       "read_date": "2026-11-08",
       "status": "APPROVED_STANDARD",
-      "notes": "3MF Consortium open XML/ZIP additive manufacturing specification."
+      "notes": "3MF Consortium open XML/ZIP additive manufacturing specification (ISO/IEC 25422:2022)."
     },
     {
       "name": "IfcOpenShell / Bonsai BIM",
       "spdx_id": "LGPL-3.0-or-later",
-      "category": "deferred_edition_2",
+      "category": "external_foss_desktop",
       "source_url": "https://github.com/IfcOpenShell/IfcOpenShell/blob/v0.8.0/COPYING.LESSER",
       "read_date": "2026-11-08",
-      "status": "DEFERRED_V2_LGPL",
-      "notes": "LGPL-3.0-or-later; referenced in Small Architect Studio documentation as a free external tool, not linked into site runtime or v1 generators."
+      "status": "APPROVED_EXTERNAL_FOSS",
+      "notes": "LGPL-3.0-or-later; referenced in Small Architect Studio documentation as a free external open-BIM tool (ISO 16739-1 IFC4), not linked into site runtime or v1 generators."
+    },
+    {
+      "name": "FreeCAD 1.0",
+      "spdx_id": "LGPL-2.0-or-later",
+      "category": "external_foss_desktop",
+      "source_url": "https://github.com/FreeCAD/FreeCAD/blob/main/LICENSE",
+      "read_date": "2026-11-08",
+      "status": "APPROVED_EXTERNAL_FOSS",
+      "notes": "LGPL-2.0-or-later open-source parametric 3D CAD modeler for opening generated ISO 10303-21 .step solids."
+    },
+    {
+      "name": "Blender 4.2+",
+      "spdx_id": "GPL-2.0-or-later",
+      "category": "external_foss_desktop",
+      "source_url": "https://projects.blender.org/blender/blender/src/branch/main/doc/license/GPL-license.txt",
+      "read_date": "2026-11-08",
+      "status": "APPROVED_EXTERNAL_FOSS",
+      "notes": "GPL-2.0-or-later open-source 3D creation suite for opening generated ISO/IEC 12113:2022 .glb meshes."
     },
     {
       "name": "OpenSCAD",

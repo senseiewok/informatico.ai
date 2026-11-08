@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Deterministic Claim, Boundary-Sentence & Security-Runtime Gate for Tech & Tools · The Toolbox (X.01–X.06).
+"""Deterministic Claim, Boundary-Sentence, Global FOSS Compliance & Security-Runtime Gate for Tech & Tools · The Toolbox (X.01–X.06).
 
-Enforces Fable's Council Contract:
+Enforces Fable & Argon Council Contract:
 1. Exact English boundary sentence (`BOUNDARY_EN`) on `/toolchain/index.html` and `/toolchain/x01..x06/index.html`.
 2. Exact Spanish boundary sentence (`BOUNDARY_ES`) on `/es-mx/toolchain/index.html` and `/es-mx/toolchain/x01..x06/index.html`.
 3. Every `manifest.json` in `src/research/toolchain/x01..x06/files/` embeds `BOUNDARY_EN`, `BOUNDARY_ES`, and `"Not certified for fitness"` in its license metadata.
 4. Zero un-negated fitness claims ("certified as load-bearing", "certified printable", "safe to build", "ready for structural load") across `src/research/toolchain/` and `skills/toolchain/`.
 5. Every `skills/toolchain/x01..x06/SKILL.md` enforces the `security-runtime` workspace boundary (no home-directory or external network grants).
+6. Global Open-Source & Legal Compliance Charter (`GCC-01`..`GCC-05`) in `skills/toolchain/licenses.json` + zero proprietary CAD software endorsements or dependencies across all Toolbox files.
 """
 from __future__ import annotations
 
@@ -43,6 +44,27 @@ FORBIDDEN_SKILL_GRANTS = re.compile(
     re.IGNORECASE,
 )
 
+FORBIDDEN_PROPRIETARY_TOOLS = re.compile(
+    r"\b("
+    r"Rhino\b|Rhinoceros|rhino3dm|McNeel|Grasshopper|"
+    r"AutoCAD|Autodesk|Revit|Fusion\s*360|Inventor|Navisworks|3ds\s*Max|"
+    r"SolidWorks|CATIA|Dassault|"
+    r"MicroStation|Bentley|"
+    r"LightBurn|"
+    r"Bambu\s*Studio|"
+    r"SketchUp"
+    r")\b",
+    re.IGNORECASE,
+)
+
+REQUIRED_CHARTER_KEYS = (
+    "version",
+    "effective_date",
+    "jurisdiction_scope",
+    "tenets",
+    "forbidden_proprietary_software_registry",
+)
+
 
 def _strip_boundaries(txt: str) -> str:
     return (
@@ -51,6 +73,66 @@ def _strip_boundaries(txt: str) -> str:
         .replace(BOUNDARY_ES, "")
         .replace(html.escape(BOUNDARY_ES), "")
     )
+
+
+def check_global_compliance_charter(root: Path, errors: list[str]) -> None:
+    """Audit skills/toolchain/licenses.json for the Global Compliance Charter (GCC-01..GCC-05)."""
+    lic_path = root / "skills" / "toolchain" / "licenses.json"
+    if not lic_path.is_file():
+        errors.append("Missing skills/toolchain/licenses.json")
+        return
+
+    data = json.loads(lic_path.read_text(encoding="utf-8"))
+    charter = data.get("global_compliance_charter")
+    if not charter:
+        errors.append("licenses.json is missing 'global_compliance_charter'")
+        return
+
+    for key in REQUIRED_CHARTER_KEYS:
+        if key not in charter:
+            errors.append(f"licenses.json global_compliance_charter missing '{key}'")
+
+    tenet_ids = [t.get("id") for t in charter.get("tenets", [])]
+    for expected_id in ("GCC-01", "GCC-02", "GCC-03", "GCC-04", "GCC-05"):
+        if expected_id not in tenet_ids:
+            errors.append(f"licenses.json global_compliance_charter missing tenet {expected_id}")
+
+    for tool in data.get("tools", []):
+        tname = tool.get("name", "")
+        m = FORBIDDEN_PROPRIETARY_TOOLS.search(tname)
+        if m:
+            errors.append(
+                f"licenses.json contains forbidden proprietary tool '{m.group(0)}' in {tname}"
+            )
+
+
+def check_forbidden_proprietary_mentions(root: Path, errors: list[str]) -> None:
+    """Enforce zero proprietary software mentions across all published Toolbox folios, generators, and skills."""
+    scan_targets = [
+        root / "toolchain" / "README.md",
+        root / "src" / "research" / "toolchain" / "README.md",
+        root / "skills" / "toolchain" / "README.md",
+        root / "skills" / "toolchain" / "licenses.json",
+        root / "tools" / "build_longform_folios.py",
+        root / "tools" / "toolchain_uga.py",
+    ]
+    scan_targets.extend((root / "tools" / "folios" / "toolchain").glob("*.py"))
+    scan_targets.extend((root / "skills" / "toolchain").glob("x0*/SKILL.md"))
+    scan_targets.extend((root / "src" / "research" / "toolchain").glob("x0*/files/manifest.json"))
+    scan_targets.extend((root / "src" / "research" / "toolchain").glob("**/index.html"))
+    scan_targets.extend((root / "src" / "research" / "es-mx" / "toolchain").glob("**/index.html"))
+
+    for p in scan_targets:
+        if not p.is_file():
+            continue
+        txt = p.read_text(encoding="utf-8", errors="ignore")
+        for line_num, line in enumerate(txt.splitlines(), 1):
+            m = FORBIDDEN_PROPRIETARY_TOOLS.search(line)
+            if m:
+                rel = p.relative_to(root)
+                errors.append(
+                    f"Forbidden proprietary software reference '{m.group(0)}' in {rel}:{line_num}"
+                )
 
 
 def main() -> int:
@@ -118,13 +200,17 @@ def main() -> int:
             if mg:
                 errors.append(f"Forbidden skill grant '{mg.group(0)}' in {spath.relative_to(ROOT)}")
 
+    # 4. Check Global Compliance Charter & Zero Proprietary Software Mentions
+    check_global_compliance_charter(ROOT, errors)
+    check_forbidden_proprietary_mentions(ROOT, errors)
+
     if errors:
         for err in errors:
             print(f"FAIL: {err}", file=sys.stderr)
         return 1
 
     print(
-        "PASS: Tech & Tools claim & boundary gate verified (7 EN pages, 7 ES-MX pages, 6 manifests, 6 SKILL.md files)."
+        "PASS: Tech & Tools claim, boundary & global FOSS compliance gate verified (7 EN pages, 7 ES-MX pages, 6 manifests, 6 SKILL.md files, GCC-01..GCC-05)."
     )
     return 0
 

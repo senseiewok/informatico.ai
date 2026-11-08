@@ -6,7 +6,7 @@ track (X.01–X.06). Generates deterministic, spec-compliant 3D CAD & fabricatio
   - .glb  (Khronos glTF 2.0 binary with POSITION, NORMAL, COLOR_0 and provenance asset.extras)
   - .step (ISO 10303-21 / STEP AP242 ASCII B-rep exchange structure with provenance header)
   - .3mf  (3MF Consortium Core 1.2.3 deterministic ZIP-packaged XML mesh model)
-  - .dxf  (AutoCAD ASCII DXF R2000 with CUT, MOUNTAIN, VALLEY, ANNOTATION layers)
+  - .dxf  (Clean-Room ASCII DXF R2000 table specification with CUT, MOUNTAIN, VALLEY, ANNOTATION layers)
   - manifest.json (SHA-256 of generator script, parameters, tool versions, file hashes)
 
 And provides the stdlib-only byte-level verifier + planted-defect knockout engine.
@@ -566,7 +566,7 @@ def write_dxf(
     segments: list[tuple[str, float, float, float, float]],
     provenance: dict[str, Any],
 ) -> bytes:
-    """Write a deterministic AutoCAD ASCII DXF file (.dxf) with CUT, MOUNTAIN, VALLEY layers."""
+    """Write a deterministic clean-room ASCII DXF file (.dxf) with CUT, MOUNTAIN, VALLEY layers."""
     prov_str = json.dumps(provenance, sort_keys=True)
     lines = [
         "999",
@@ -1195,7 +1195,7 @@ def generate_folio_assets(
         raw = write_dxf(p_dxf, geom["dxf_segments"], provenance)
         generated_files.append({
             "filename": p_dxf.name,
-            "format": "DXF (AutoCAD ASCII R2000)",
+            "format": "DXF (Clean-Room ASCII R2000)",
             "bytes": len(raw),
             "sha256": hashlib.sha256(raw).hexdigest(),
         })

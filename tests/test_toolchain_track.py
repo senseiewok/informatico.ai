@@ -132,7 +132,8 @@ class ToolchainTrackTests(unittest.TestCase):
             timeout=20,
         )
         self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
-        self.assertIn("PASS: Tech & Tools claim & boundary gate verified", res.stdout)
+        self.assertIn("PASS: Tech & Tools claim, boundary & global FOSS compliance gate verified", res.stdout)
+        self.assertIn("GCC-01..GCC-05", res.stdout)
 
     def test_five_pace_distillation_and_studio_quickstart_and_4200_word_depth(self) -> None:
         hub_html = (TOOLCHAIN_RESEARCH / "index.html").read_text(encoding="utf-8")

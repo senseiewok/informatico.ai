@@ -22,8 +22,8 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Primary Scite Anchor DOI**: https://doi.org/10.1073/pnas.1217998110 (Scite Report: https://scite.ai/reports/10.1073/pnas.1217998110)
 
 ## 2. Small-Studio & Independent-Practitioner Open-Tool Workflow
-- **EN**: Digital Fabrication & Laser-Cutter Kit (Inkscape / QCAD / LibreCAD / LightBurn + Blender): Open x04_artifact.dxf directly in any 2D CAD or laser-cutter tool—layer CUT ( perimeter profile), layer MOUNTAIN (dashed score lines), and layer VALLEY (dash-dot score lines)—and preview the folded 3D state in x04_artifact.glb or print a snapped study tile from x04_artifact.3mf.
-- **ES-MX**: Kit de Fabricación Digital y Corte Láser (Inkscape / QCAD / LibreCAD / LightBurn + Blender): Abre x04_artifact.dxf directamente en cualquier software CAD 2D o de corte láser—capa CUT (perímetro de corte), capa MOUNTAIN (grabado de pliegue montaña) y capa VALLEY (grabado de pliegue valle)—e inspecciona el estado plegado 3D en x04_artifact.glb o imprime el módulo en 3D con x04_artifact.3mf.
+- **EN**: Digital Fabrication & Laser-Cutter Kit (Inkscape / QCAD / LibreCAD / LaserWeb + Blender): Open x04_artifact.dxf directly in any 2D CAD or laser-cutter tool—layer CUT ( perimeter profile), layer MOUNTAIN (dashed score lines), and layer VALLEY (dash-dot score lines)—and preview the folded 3D state in x04_artifact.glb or print a snapped study tile from x04_artifact.3mf.
+- **ES-MX**: Kit de Fabricación Digital y Corte Láser (Inkscape / QCAD / LibreCAD / LaserWeb + Blender): Abre x04_artifact.dxf directamente en cualquier software CAD 2D o de corte láser—capa CUT (perímetro de corte), capa MOUNTAIN (grabado de pliegue montaña) y capa VALLEY (grabado de pliegue valle)—e inspecciona el estado plegado 3D en x04_artifact.glb o imprime el módulo en 3D con x04_artifact.3mf.
 
 ## 3. Tool-Neutral Agent Packet & Security Boundary (`security-runtime`)
 1. **Generate Deterministic 3D Artifacts Locally**: Run `python skills/toolchain/x04/make_x04.py` inside the repository working directory to emit `src/research/toolchain/x04/files/x04_artifact.*` and `manifest.json`.
