@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `E.03 · Acoustic Metamaterials & Viscothermal Damping · CSI 09 84 13` (`REV 1.2`, Redated `2026-11-02`)
 - **Governing Equation**: `δ_v = √(2ν/ω) · Z_s = ρ_0 c_0 ⇒ α = 1.0 · CSI 09 84 13`
-- **Primary Verification Kernel**: `tools/continuum_verify.py`
+- **Primary Verification Kernel**: `skills/engineering/e03/verify_e03.py`
 - **Verification Benchmarks**: `Critical Coupling R_v = ρ_0 c_0 ⇒ α = 0.998 · δ_v = 0.174 mm`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1146/annurev-matsci-070616-124032 (Scite Report: https://scite.ai/reports/10.1146/annurev-matsci-070616-124032)
 

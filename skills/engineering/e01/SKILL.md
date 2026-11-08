@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `E.01 · Brinkman & Percolation · CSI 03 30 00 / 07 16 00` (`REV 1.3`, Redated `2026-11-02`)
 - **Governing Equation**: `μ ∇²u − (μ/κ)u = ∇p · φ_c = 0.5927 · u = −∇Φ + ∇×Ψ`
-- **Primary Verification Kernel**: `tools/continuum_verify.py`
+- **Primary Verification Kernel**: `skills/engineering/e01/verify_e01.py`
 - **Verification Benchmarks**: `φ_c = 0.5927 · √κ = 13.09 nm · L2 Orthogonal`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1007/BF02120313 (Scite Report: https://scite.ai/reports/10.1007/BF02120313)
 

@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `M.05 · Synthetic & Distance Geometry` (`REV 1.1`, Redated `2026-11-02`)
 - **Governing Equation**: `DD+AR Closure · Cayley-Menger det(B_5) = 0`
-- **Primary Verification Kernel**: `tools/discovery/frontier_ai_math_catalog.py`
+- **Primary Verification Kernel**: `skills/math/m05/verify_m05.py`
 - **Verification Benchmarks**: `AlphaGeometry 2 (84% IMO) · Euclid Elements`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1038/s41586-023-06747-5 (Scite Report: https://scite.ai/reports/10.1038/s41586-023-06747-5)
 

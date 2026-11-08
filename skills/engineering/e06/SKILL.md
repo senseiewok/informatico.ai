@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `E.06 · Seismic Structural Dynamics · CSI 13 48 00` (`REV 1.1`, Redated `2026-11-02`)
 - **Governing Equation**: `M ü + C u̇ + F_s(u) = −M ü_g(t) · V_b = C_s W · μ_Δ = Δ_max / Δ_y`
-- **Primary Verification Kernel**: `tools/continuum_verify.py`
+- **Primary Verification Kernel**: `skills/engineering/e06/verify_e06.py`
 - **Verification Benchmarks**: `Risk Category IV Hospital · E_loop = 4 Q_d (D_M − D_y)`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1061/9780784415788 (Scite Report: https://scite.ai/reports/10.1061/9780784415788)
 

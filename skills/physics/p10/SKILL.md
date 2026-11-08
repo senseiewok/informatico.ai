@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `P.10 · Haldane–Raghu Topological Photonics & Berry Curvature` (`REV 1.0`, Redated `2026-11-03`)
 - **Governing Equation**: `C_n = (1/2π) ∮_{BZ} Ω_n(k) d²k ∈ ℤ · Ω_n = i⟨∇_k u_n | × | ∇_k u_n⟩ · |m_T| > |m_P| ⇒ |C| = 1`
-- **Primary Verification Kernel**: `tools/physics_kernel.py`
+- **Primary Verification Kernel**: `skills/physics/p10/verify_p10.py`
 - **Verification Benchmarks**: `m_T = 0.55 > m_P = 0.25 ⇒ C = +1 · Δω/ω_0 = 14.2% · T_forward = 99.8%`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1103/PhysRevLett.100.013904 (Scite Report: https://scite.ai/reports/10.1103/PhysRevLett.100.013904)
 

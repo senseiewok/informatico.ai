@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `P.03 · Soft Matter & Subdiffusion` (`REV 1.2`, Redated `2026-11-02`)
 - **Governing Equation**: `η(γ̇) = η_∞ + (η_0 − η_∞)[1 + (λ γ̇)²]^((n−1)/2) · ξ_mesh ~ w^(−0.75)`
-- **Primary Verification Kernel**: `tools/physics_kernel.py`
+- **Primary Verification Kernel**: `skills/physics/p03/verify_p03.py`
 - **Verification Benchmarks**: `Multiple-Particle Tracking (MPT) · MUC5AC / MUC5B Hydrogels`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1103/PhysRevLett.74.1250 (Scite Report: https://scite.ai/reports/10.1103/PhysRevLett.74.1250)
 

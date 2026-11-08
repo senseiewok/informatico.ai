@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `P.05 · Quantum & Chemical Physics` (`REV 1.1`, Redated `2026-11-02`)
 - **Governing Equation**: `T_WKB ~ exp(−2/ℏ ∫√(2m(V−E))dx) · k_H/k_D = 6.84`
-- **Primary Verification Kernel**: `tools/physics_kernel.py`
+- **Primary Verification Kernel**: `skills/physics/p05/verify_p05.py`
 - **Verification Benchmarks**: `Gamow 1928 · Marcus 1956 · DOI 10.1103/RevModPhys.35.724`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1103/RevModPhys.35.724 (Scite Report: https://scite.ai/reports/10.1103/RevModPhys.35.724)
 

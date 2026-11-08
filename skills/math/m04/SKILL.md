@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `M.04 · Additive Combinatorics & Algebra` (`REV 1.1`, Redated `2026-11-02`)
 - **Governing Equation**: `Lean 4 PFR Blueprint · 22,028,942 Magma Implications`
-- **Primary Verification Kernel**: `tools/discovery/frontier_ai_math_catalog.py`
+- **Primary Verification Kernel**: `skills/math/m04/verify_m04.py`
 - **Verification Benchmarks**: `Doubling |A + A| ≤ K|A| ⇒ Covered by ≤ K^C Cosets`
 - **Primary Scite Anchor DOI**: https://doi.org/10.4007/annals.2025.201.2.5 (Scite Report: https://scite.ai/reports/10.4007/annals.2025.201.2.5)
 

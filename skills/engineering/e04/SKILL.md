@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `E.04 · Coupled Heat & Mass Transfer · CSI 23 72 23` (`REV 1.1`, Redated `2026-11-02`)
 - **Governing Equation**: `ε = NTU / (1 + NTU) · Bi_m = h_m δ_m / D_w · CSI 23 72 23`
-- **Primary Verification Kernel**: `tools/continuum_verify.py`
+- **Primary Verification Kernel**: `skills/engineering/e04/verify_e04.py`
 - **Verification Benchmarks**: `Sensible ε_s = 88.2% · Latent ε_l = 79.4%`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1115/1.3644004 (Scite Report: https://scite.ai/reports/10.1115/1.3644004)
 

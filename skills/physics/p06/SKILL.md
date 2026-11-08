@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `P.06 · Polymer & Statistical Physics` (`REV 1.1`, Redated `2026-11-02`)
 - **Governing Equation**: `τ_d = L_tube² / (π² D_curv) ~ N³ · D_rep ~ N⁻²`
-- **Primary Verification Kernel**: `tools/physics_kernel.py`
+- **Primary Verification Kernel**: `skills/physics/p06/verify_p06.py`
 - **Verification Benchmarks**: `de Gennes 1971 · Doi-Edwards 1978 · DOI 10.1039/F29787401818`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1039/F29787401818 (Scite Report: https://scite.ai/reports/10.1039/F29787401818)
 

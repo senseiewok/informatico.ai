@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `A.11 · 3D Polyhedral Graphic Statics & Airy Stress Vaults · Heyman Safe Theorem` (`REV 1.0`, Redated `2026-11-07`)
 - **Governing Equation**: `σ_xx = ∂²Φ/∂y² · σ_yy = ∂²Φ/∂x² · det(H_Φ) > 0 ⇒ Compression-Only · N_i = A_i^*`
-- **Primary Verification Kernel**: `tools/tectonic_verify.py`
+- **Primary Verification Kernel**: `skills/architecture/a11/verify_a11.py`
 - **Verification Benchmarks**: `t_shell = 52 mm · L_span = 16.0 m ⇒ −72% Embodied Carbon & 0 kg Rebar (SF = 3.40)`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1016/j.cad.2015.01.006 (Scite Report: https://scite.ai/reports/10.1016/j.cad.2015.01.006)
 

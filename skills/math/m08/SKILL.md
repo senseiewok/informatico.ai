@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `M.08 · Riemannian Color Manifold & Metamer Nullspace · CIE` (`REV 1.0`, Redated `2026-11-02`)
 - **Governing Equation**: `ds² = ∑ g_ij(x) dx^i dx^j · ẍ^k + Γ^k_ij ẋ^i ẋ^j = 0 · Π: L²([380,780]) → ℝ³₊`
-- **Primary Verification Kernel**: `tools/discovery/formal_proof_thermodynamic_landscape.py`
+- **Primary Verification Kernel**: `skills/math/m08/verify_m08.py`
 - **Verification Benchmarks**: `dim ker(Π) = ∞ · Abney Hue Drift = 0.0° · CIEDE2000 ΔE_00`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1002/andp.19203682202 (Scite Report: https://scite.ai/reports/10.1002/andp.19203682202)
 

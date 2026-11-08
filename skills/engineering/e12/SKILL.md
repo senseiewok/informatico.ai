@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `E.12 · Machine-Checked RISC-V & Grid Control Barrier Functions · IEEE 1547-2025` (`REV 1.0`, Redated `2026-11-07`)
 - **Governing Equation**: `sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e · anthropics/theorem-riscv`
-- **Primary Verification Kernel**: `tools/continuum_verify.py`
+- **Primary Verification Kernel**: `skills/engineering/e12/verify_e12.py`
 - **Verification Benchmarks**: `RoCoF ≤ 0.42 Hz/s · h(x_grid) ≥ +0.18 Hz · 180M-Line Rocq Proof = 0 Silicon Bugs`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1109/TAC.2016.2638961 (Scite Report: https://scite.ai/reports/10.1109/TAC.2016.2638961)
 

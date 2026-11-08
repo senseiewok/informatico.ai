@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `M.12 · Lean 4 ETHIsFalse / EightSquare & NIST FIPS 203 ML-KEM Lattices` (`REV 1.0`, Redated `2026-11-07`)
 - **Governing Equation**: `b = A s + e (mod q) · R_ℤ(8×8) ≤ 28 (EightSquare.lean) · anthropics/formal-math · NIST FIPS 203`
-- **Primary Verification Kernel**: `tools/formal_verifier.py`
+- **Primary Verification Kernel**: `skills/math/m12/verify_m12.py`
 - **Verification Benchmarks**: `k = 3 (ML-KEM-768) · q = 3329 · n = 256 ⇒ 192-Bit Quantum Security & 0 sorry Axioms`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1145/1568318.1568324 (Scite Report: https://scite.ai/reports/10.1145/1568318.1568324)
 

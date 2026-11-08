@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `P.07 · Formula 1 Ground-Effect & 2026 Active Aero · FIA Art. 3` (`REV 1.0`, Redated `2026-11-02`)
 - **Governing Equation**: `C_p = 1 − (U/U_∞)² · Γ_v = ∮ u·dl · m z̈ + c_a(z) ż + k_s z = −½ρU²A C_L(z, δ_wing)`
-- **Primary Verification Kernel**: `tools/physics_kernel.py`
+- **Primary Verification Kernel**: `skills/physics/p07/verify_p07.py`
 - **Verification Benchmarks**: `−C_p,peak = 2.84 · −C_L = 3.38 (Z-Mode) · −40% Drag (X-Mode)`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1146/annurev.fluid.38.050304.092016 (Scite Report: https://scite.ai/reports/10.1146/annurev.fluid.38.050304.092016)
 

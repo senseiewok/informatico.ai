@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `M.01 · Modularity & Counting` (`REV 1.4`, Redated `2026-11-06`)
 - **Governing Equation**: `FLT (29,500) · Taylor-Wiles R=T · ETH #3-SAT`
-- **Primary Verification Kernel**: `tools/discovery/formal_proof_thermodynamic_landscape.py`
+- **Primary Verification Kernel**: `skills/math/m01/verify_m01.py`
 - **Verification Benchmarks**: `Anthropic Lean 4 · Ribet Level-Lowering`
 - **Primary Scite Anchor DOI**: https://doi.org/10.2307/2118559 (Scite Report: https://scite.ai/reports/10.2307/2118559)
 

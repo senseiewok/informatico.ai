@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `A.08 · Photonic Sky-Cooling & Stefan PCM · CSI 07 54 00` (`REV 1.0`, Redated `2026-11-02`)
 - **Governing Equation**: `P_net = P_rad(T) − P_atm(T_a) − (1 − R_sol)I_sol − h_c(T_a − T) · s(t) = 2λ_s√(α t) · CSI 07 54 00`
-- **Primary Verification Kernel**: `tools/tectonic_verify.py`
+- **Primary Verification Kernel**: `skills/architecture/a08/verify_a08.py`
 - **Verification Benchmarks**: `R_solar = 97.0% · ε_LWIR = 95.0% · P_net = +86.4 W/m² (−6.2 °C)`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1038/nature13883 (Scite Report: https://scite.ai/reports/10.1038/nature13883)
 

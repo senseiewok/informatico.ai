@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `P.12 · Hilbert's 6th Problem: Newton → Boltzmann → Navier–Stokes · arXiv:2503.01800` (`REV 1.0`, Redated `2026-11-07`)
 - **Governing Equation**: `∂_t f + v·∇_x f = (1/Kn) Q(f,f) · Kn → 0 ⇒ ∂_t u + (u·∇)u + ∇p = ν Δu · arXiv:2503.01800`
-- **Primary Verification Kernel**: `tools/physics_kernel.py`
+- **Primary Verification Kernel**: `skills/physics/p12/verify_p12.py`
 - **Verification Benchmarks**: `Kn = 10⁻⁴ · Re = 4.2 × 10³ ⇒ ||f_N − M_u||_L² ≤ C Kn · 10,000× Faster Weather Rollout`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1007/s00222-003-0316-5 (Scite Report: https://scite.ai/reports/10.1007/s00222-003-0316-5)
 

@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `E.09 · Self-Healing Bio-Concrete · CSI 03 30 00 / ACI 224R` (`REV 1.0`, Redated `2026-11-03`)
 - **Governing Equation**: `z(t) = √(γ r cos θ · t / 2μ) · ∂C/∂t = D_eff ∇²C − V_max C/(K_m + C) · CSI 03 30 00`
-- **Primary Verification Kernel**: `tools/continuum_verify.py`
+- **Primary Verification Kernel**: `skills/engineering/e09/verify_e09.py`
 - **Verification Benchmarks**: `w_0 = 0.30 mm → 94.0% CaCO₃ Seal · −99.98% Darcy Leakage (w³ Law)`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1016/j.ecoleng.2008.12.036 (Scite Report: https://scite.ai/reports/10.1016/j.ecoleng.2008.12.036)
 

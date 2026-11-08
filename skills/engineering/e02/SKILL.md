@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `E.02 · Concrete Yield Rheology · CSI 03 30 00` (`REV 1.3`, Redated `2026-11-02`)
 - **Governing Equation**: `τ = τ_0 + K γ̇^n · r_p / R = τ_0 / τ_w · ΔP/L = 2τ_w/R`
-- **Primary Verification Kernel**: `tools/continuum_verify.py`
+- **Primary Verification Kernel**: `skills/engineering/e02/verify_e02.py`
 - **Verification Benchmarks**: `125 mm Steel Slickline · ACI 304.2R Pumping`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1016/j.cemconcomp.2015.11.002 (Scite Report: https://scite.ai/reports/10.1016/j.cemconcomp.2015.11.002)
 

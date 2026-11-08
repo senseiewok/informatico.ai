@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `E.05 · Geotechnical & Deep Foundations · CSI 31 63 23` (`REV 1.1`, Redated `2026-11-02`)
 - **Governing Equation**: `∂u/∂t = c_v ∂²u/∂z² · Q_ult = Q_skin + Q_toe · r_u = Δu / σ'_{v0}`
-- **Primary Verification Kernel**: `tools/continuum_verify.py`
+- **Primary Verification Kernel**: `skills/engineering/e05/verify_e05.py`
 - **Verification Benchmarks**: `FHWA GEC-8 CFA Piles · Seed-Idriss Liquefaction`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1061/(ASCE)GT.1943-5606.0000073 (Scite Report: https://scite.ai/reports/10.1061/(ASCE)GT.1943-5606.0000073)
 

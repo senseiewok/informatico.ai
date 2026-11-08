@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `A.10 · Kinetic Origami & Auxetic Mashrabiya Facades · CSI 10 71 13` (`REV 1.0`, Redated `2026-11-03`)
 - **Governing Equation**: `tan(γ_2/2) = cos α · tan(γ_1/2) · ν_xy = −tan² φ < 0 · Kawasaki ∑ α_{2i} = π · CSI 10 71 13`
-- **Primary Verification Kernel**: `tools/tectonic_verify.py`
+- **Primary Verification Kernel**: `skills/architecture/a10/verify_a10.py`
 - **Verification Benchmarks**: `α = 64° · θ = 36° ⇒ ν_xy = −1.38 · SHGC = 0.19 (−68.4% Solar Load)`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1073/pnas.1217998110 (Scite Report: https://scite.ai/reports/10.1073/pnas.1217998110)
 

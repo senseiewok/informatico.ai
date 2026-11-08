@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `A.04 · Archigram to High-Tech Exoskeletons · CSI 05 12 13` (`REV 1.2`, Redated `2026-11-02`)
 - **Governing Equation**: `T_tie = V_p · (a / c) · b − 3j + 6 = s − m · τ_pod ≪ τ_frame`
-- **Primary Verification Kernel**: `tools/tectonic_verify.py`
+- **Primary Verification Kernel**: `skills/architecture/a04/verify_a04.py`
 - **Verification Benchmarks**: `Pompidou 48 m Clear Span · HSBC & Lloyd's Plug-In Pods`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1016/0020-7683(86)90014-4 (Scite Report: https://scite.ai/reports/10.1016/0020-7683(86)90014-4)
 
