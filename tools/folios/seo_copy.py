@@ -341,6 +341,52 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
         "Crisol de Premios y Retos Abiertos con Pruebas | Informatico.ai",
         "Seis folios interactivos de retos abiertos con verificadores en Python y habilidades de IA para Erdős en Lean 4, XPRIZE Quantum, Carbono y Enfriamiento.",
     ),
+    "toolchain": (
+        "Tech & Tools · The 3D CAD & Open Toolbox | Informatico.ai",
+        "Six interactive 3D CAD and open-tool folios with downloadable STEP, 3MF, GLB and DXF files, Python byte-level verifiers, and skills for small studios.",
+        "Tecnología y Herramientas · Caja 3D y CAD | Informatico.ai",
+        "Seis folios interactivos de herramientas 3D y CAD abierto con archivos STEP, 3MF, GLB y DXF, verificadores en Python y habilidades para estudios.",
+    ),
+}
+
+# Dedicated Tech & Tools · The Toolbox Folios (x01..x06) under /toolchain/<slug>/ and /es-mx/toolchain/<slug>/
+TOOLCHAIN_SEO: dict[str, tuple[str, str, str, str]] = {
+    "x01": (
+        "Zero-Build WebGL2 GLB Viewer and Manifold Validator",
+        "How a zero-dependency WebGL2 loader parses binary glTF 2.0 files while a Python stdlib verifier checks watertight topology and signed mesh volume.",
+        "Visor WebGL2 GLB y Validador de Mallas Herméticas",
+        "Cómo un cargador WebGL2 sin dependencias analiza archivos glTF 2.0 binarios mientras un verificador en Python comprueba la topología y el volumen.",
+    ),
+    "x02": (
+        "Code-First Parametric Solids: STEP, 3MF and GLB",
+        "How independent engineers generate parametric B-rep solids in Python and audit what survives across STEP AP242, 3MF and GLB with chordal tolerances.",
+        "Sólidos Paramétricos en Código: STEP, 3MF y GLB",
+        "Cómo los ingenieros independientes generan sólidos B-rep en Python y auditan qué se conserva entre STEP AP242, 3MF y GLB con tolerancias cordales.",
+    ),
+    "x03": (
+        "Small Architect's Vault, Timber and Open BIM Kit",
+        "How small architecture studios generate compression-only stone and timber voussoir arches in Python and export verified STEP, 3MF, DXF and GLB files.",
+        "Kit de Bóvedas y Madera para Estudios de Arquitectura",
+        "Cómo los pequeños estudios de arquitectura generan arcos funiculares de piedra y madera en Python y exportan archivos STEP, 3MF, DXF y GLB.",
+    ),
+    "x04": (
+        "Miura-Ori Kinetic Screens: 3D GLB to Laser-Cut DXF",
+        "How small studios and makers generate deployable Miura-ori facade shells in 3D GLB and 3MF alongside layered 2D laser-cutter DXF crease patterns.",
+        "Pantallas Cinéticas Miura-Ori: GLB 3D a Corte DXF",
+        "Cómo estudios y talleres generan envolventes plegables Miura-ori en GLB y 3MF junto con patrones planos DXF por capas para corte láser.",
+    ),
+    "x05": (
+        "SIMP Structural Lattices to Watertight 3MF Meshes",
+        "How variable-taper SIMP structural struts are synthesized as watertight 2-manifold 3MF, GLB and STEP meshes with frustum volume and overhang checks.",
+        "Retículas Estructurales SIMP a Mallas 3MF Herméticas",
+        "Cómo se sintetizan puntales estructurales SIMP ahusados como mallas 3MF, GLB y STEP herméticas con verificación de volumen y ángulo de voladizo.",
+    ),
+    "x06": (
+        "Topological Metamaterial Cells and Betti Verifier",
+        "How pierced genus-one acoustic metamaterial unit cells are exported to GLB, 3MF and STEP while a Python verifier checks Euler and Betti invariants.",
+        "Celdas de Metamateriales Topológicos y Betti 3D",
+        "Cómo se exportan celdas unitarias de metamateriales acústicos de género uno a GLB, 3MF y STEP verificando sus invariantes de Euler y Betti en Python.",
+    ),
 }
 
 # Dedicated Bounty Folios (b01..b06) under /bounties/<slug>/ and /es-mx/bounties/<slug>/

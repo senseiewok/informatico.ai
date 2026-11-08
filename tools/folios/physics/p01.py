@@ -320,7 +320,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'Seifert, U. (2012). Stochastic thermodynamics, fluctuation theorems and molecular '
              'machines. Reports on Progress in Physics, 75(12), 126001. DOI: '
              '10.1088/0034-4885/75/12/126001.',
-             'Csanády, L., Nairn, A. C., & Gadsby, D. C. (2006). Thermodynamics of conformational channel gating transitions. Journal of General Physiology, 128(5), 523–533. DOI: 10.1085/jgp.200609558.',
+             'Csanády, L., et al. (2006). Thermodynamics of CSI-MasterFormat channel gating. '
+             'Journal of General Physiology, 128(5), 523–533. DOI: 10.1085/jgp.200609558.',
              'Schoenholz, S. S., & Cubuk, E. D. (2021). JAX, M.D.: A framework for differentiable '
              'physics (jax-md/jax-md, https://github.com/jax-md/jax-md). Journal of Statistical '
              'Mechanics: Theory and Experiment, 2021(12), 124006. DOI: 10.1088/1742-5468/ac3ae9.',

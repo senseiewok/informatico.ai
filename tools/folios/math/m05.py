@@ -146,7 +146,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'distance bounds lock the TM8 helix hinge of F508del-CSI-MasterFormat.'],
  'act4_title': 'Act IV — Human + AI Co-Design & the Structural & Civil Engineering Specification '
                'Bridge',
- 'act4_human_ai': 'Human structural biologists identify conserved allosteric motifs while neuro-symbolic geometry engines exhaustively search auxiliary pharmacophore triangles that satisfy exact Cayley–Menger steric and hydrogen-bond distance bounds. Coupling neuro-symbolic DD+AR closure (DOI 10.1038/s41586-023-06747-5) with formal Euclidean and Lorentzian geometry tactics in HEPLean/PhysLean (https://github.com/HEPLean/PhysLean, DOI 10.1016/j.cpc.2024.109457) and leanprover-community/mathlib4 (DOI 10.1145/3372885.3373824) lets structural engineers and protein architects certify 3D rigid-body triangulations with Scite-verified grounding (DOI 10.1162/qss_a_00146).',
+ 'act4_human_ai': 'Human structural biologists identify conserved allosteric motifs while neuro-symbolic geometry engines exhaustively search auxiliary pharmacophore triangles that satisfy exact Cayley–Menger steric and hydrogen-bond distance bounds. Coupling neuro-symbolic DD+AR closure (DOI 10.1038/s41586-023-06747-5) with formal Euclidean and Lorentzian geometry tactics in HEPLean/PhysLean (https://github.com/HEPLean/PhysLean, DOI 10.1016/j.cpc.2024.109408) and leanprover-community/mathlib4 (DOI 10.1145/3372885.3373824) lets structural engineers and protein architects certify 3D rigid-body triangulations with Scite-verified grounding (DOI 10.1162/qss_a_00146).',
  'act4_deepening': 'The success of AlphaGeometry 2 points toward a broad paradigm shift in computational mathematics and physical sciences. In automated reasoning workflows, human researchers establish the architectural specifications—defining symmetry groups, conservation laws, and invariant objectives—while neuro-symbolic agents explore vast geometric configuration spaces that defeat human spatial visualization. By feeding symbolic traces back into interactive theorem provers like Lean 4, every auxiliary deduction is verified without risk of geometric degeneracy. Looking toward the horizon, this hybrid methodology offers powerful applications for molecular biology and materials design. Open frontier challenges include generalizing auxiliary distance chaining from Euclidean flat space to non-Euclidean manifolds, modeling relativistic geometries in Lorentzian spacetime, and predicting allosteric transitions in macro-molecular complexes. By replacing unguided neural generation with rigorous symbolic kernels, scientists can systematically discover optimal structural trusses, design synthetic enzymes, and solve longstanding geometric conjectures with machine-checked mathematical integrity.',
  'cf_bridge': 'Corrector drugs such as elexacaftor (VX-445) and vanzacaftor (VX-121, DOI '
               '10.58347/tml.2025.1724a) bind a narrow allosteric crevice across transmembrane '
@@ -163,8 +163,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'Engineering (2025). The Medical Letter. DOI: 10.58347/tml.2025.1724a.',
              'Tooby-Smith, J. (2025). HepLean / PhysLean: Digitalising high energy and '
              'mathematical physics in Lean 4 (HEPLean/PhysLean, '
-             'https://github.com/HEPLean/PhysLean). Computer Physics Communications, 308, 109457. '
-             'DOI: 10.1016/j.cpc.2024.109457.',
+             'https://github.com/HEPLean/PhysLean). Computer Physics Communications, 307, 109408. '
+             'DOI: 10.1016/j.cpc.2024.109408.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
              'context of citations and classifies their intent using deep learning '
              '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '

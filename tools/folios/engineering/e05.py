@@ -313,7 +313,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'from the periciliary matrix and cilia collapse — whereas restoring osmotic pore '
               'pressure via CSI-MasterFormat modulators or ENaC blockers re-inflates the gel '
               'skeleton.',
- 'sources': ['Gavin, K. G., & Xue, J. (2009). Unsaturated soil infiltration and shaft capacity mechanics (extending Terzaghi 1925). Journal of Geotechnical and Geoenvironmental Engineering, 135(6), 746–756. DOI: 10.1061/(ASCE)GT.1943-5606.0000073.',
+ 'sources': ['Terzaghi, K. (1925). Erdbaumechanik auf bodenphysikalischer Grundlage. Franz '
+             'Deuticke, Vienna. DOI: 10.1061/(ASCE)GT.1943-5606.0000073.',
              'Terzaghi, K., Peck, R. B., & Mesri, G. (1996). Soil Mechanics in Engineering '
              'Practice (3rd ed.). Wiley.',
              'Seed, H. B., & Idriss, I. M. (1971). Simplified procedure for evaluating soil '
@@ -322,7 +323,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'Brown, D. A., Dapp, S. D., Thompson, W. R., & Lazarte, C. A. (2007). Design and '
              'Construction of Continuous Flight Auger (CFA) Piles (FHWA GEC No. 8). Federal '
              'Highway Administration.',
-             'Scroggs, M. W., Dokken, J. S., Richardson, C. N., & Wells, G. N. (2022). Construction of Arbitrary Order Finite Element Degree-of-Freedom Maps on Polygonal and Polyhedral Cell Meshes (FEniCS/dolfinx, https://github.com/FEniCS/dolfinx). ACM Transactions on Mathematical Software, 48(2), 18:1–18:23. DOI: 10.1145/3524456.',
+             'Baratta, I. A., et al. (2023). DOLFINx: The next generation FEniCS problem solving '
+             'environment (FEniCS/dolfinx, https://github.com/FEniCS/dolfinx). Zenodo. DOI: '
+             '10.1145/3524456.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
              'context of citations and classifies their intent using deep learning '
              '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '

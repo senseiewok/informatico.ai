@@ -12,6 +12,7 @@ import { initPlateWebGL } from "./webgl-observatory.mjs";
 import { initArticleAudio } from "./article-audio.mjs";
 import { initFolioPuzzles } from "./folio-puzzle.mjs";
 import { initPhysicsDiscoveryCrucible } from "./physics-discovery-crucible.mjs";
+import { initGlbViewers } from "./glb-viewer.mjs";
 
 function bootMagazine(scope = document) {
   initThemePlate();
@@ -21,6 +22,7 @@ function bootMagazine(scope = document) {
   initPlateWebGL(scope);
   initFolioPuzzles(scope);
   initPhysicsDiscoveryCrucible(scope);
+  initGlbViewers(scope);
 }
 
 bootMagazine(document);

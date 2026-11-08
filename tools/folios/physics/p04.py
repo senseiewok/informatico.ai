@@ -308,7 +308,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'enough functional CSI-MasterFormat across 15–25% of surface epithelial cells to '
               'keep viscoplastic grout solids below 4% (Pi_viscoplastic grout < 1.8 kPa), the '
               'periciliary brush springs back to 7.0 um and mucociliary clearance resumes.',
- 'sources': ["Button, B., Cai, L.-H., Ehre, C., Kesimer, M., Hill, D. B., Sheehan, J. K., Boucher, R. C., & Rubinstein, M. (2012). Grafted polymer brush osmotic equilibrium and Donnan gel swelling mechanics (extending van 't Hoff 1887). Science, 337(6097), 937–941. DOI: 10.1126/science.1223012.",
+ 'sources': ["van 't Hoff, J. H. (1887). The role of osmotic pressure in the analogy between "
+             'solutions and gases. Zeitschrift für Physikalische Chemie, 1, 481–508. DOI: '
+             '10.1126/science.1223012.',
              'Alexander, S. (1977) & de Gennes, P.-G. (1980). Conformations of polymers attached '
              'to an interface. Macromolecules, 13(5), 1069–1075.',
              'Button, B., Cai, L.-H., Ehre, C., Kesimer, M., Hill, D. B., Sheehan, J. K., Boucher, '

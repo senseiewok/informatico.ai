@@ -1,8 +1,16 @@
 #!/usr/bin/env python3
-"""Pillar & Essay Registry for Informatico.ai (4 Pillars x 10 Essays = 40 Folios)."""
+"""Track & Folio Registry for Informatico.ai (48 Pillar Folios + 6 Open Bounties + 6 Tech & Tools = 60 Folios)."""
 from __future__ import annotations
 
-from . import architecture, engineering, math, physics
+from . import architecture, bounties, engineering, math, physics, toolchain
+from .bounties import BOUNTY_BY_SLUG, BOUNTY_FOLIOS
+from .toolchain import (
+    BOUNDARY_EN,
+    BOUNDARY_ES,
+    PILLAR_FOLIO_TO_TOOLCHAIN,
+    TOOLCHAIN_BY_SLUG,
+    TOOLCHAIN_FOLIOS,
+)
 
 PILLAR_PACKAGES = {
     "engineering": engineering.ESSAY_MODULES,
@@ -32,3 +40,20 @@ for _pillar, _modules in PILLAR_PACKAGES.items():
             FOLIO_3D_META[_slug] = _mod.META_3D
         if _mod.ES_TRANSLATION:
             FOLIO_ES_TRANSLATIONS[_slug] = _mod.ES_TRANSLATION
+
+__all__ = [
+    "BOUNDARY_EN",
+    "BOUNDARY_ES",
+    "BOUNTY_BY_SLUG",
+    "BOUNTY_FOLIOS",
+    "FOLIOS_BY_PILLAR",
+    "FOLIO_3D_META",
+    "FOLIO_ES_TRANSLATIONS",
+    "FRONTIER_DISCOVERY_DISPATCHES",
+    "LONGFORM",
+    "PILLAR_FOLIO_TO_TOOLCHAIN",
+    "PILLAR_PACKAGES",
+    "PLATE_CAPTIONS",
+    "TOOLCHAIN_BY_SLUG",
+    "TOOLCHAIN_FOLIOS",
+]

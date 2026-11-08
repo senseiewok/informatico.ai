@@ -208,7 +208,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'with Mach number Ma = O(Kn) then projects f(t, x, v) onto a local Maxwellian '
                    'whose velocity field u(t, x) satisfies d_t u + (u . grad)u + grad p = nu * '
                    'laplacian(u). Formalization libraries like HEPLean/PhysLean '
-                   '(https://github.com/HEPLean/PhysLean, DOI 10.1016/j.cpc.2024.109457), '
+                   '(https://github.com/HEPLean/PhysLean, DOI 10.1016/j.cpc.2024.109408), '
                    'open-source finite element solvers like FEniCS/dolfinx '
                    '(https://github.com/FEniCS/dolfinx), and Scite-verified smart indices (DOI '
                    '10.1162/qss_a_00146) provide computational verification of these asymptotic '
@@ -260,8 +260,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              '10.1016/j.jcp.2018.10.045.',
              'Tooby-Smith, J. (2025). HepLean / PhysLean: Digitalising high energy and '
              'mathematical physics in Lean 4 (HEPLean/PhysLean, '
-             'https://github.com/HEPLean/PhysLean). Computer Physics Communications, 308, 109457. '
-             'DOI: 10.1016/j.cpc.2024.109457.',
+             'https://github.com/HEPLean/PhysLean). Computer Physics Communications, 307, 109408. '
+             'DOI: 10.1016/j.cpc.2024.109408.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
              'context of citations and classifies their intent using deep learning '
              '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '

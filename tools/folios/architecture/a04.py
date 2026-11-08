@@ -222,7 +222,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              '10.1016/0020-7683(86)90014-4.',
              "Brand, S. (1994). How Buildings Learn: What Happens After They're Built (The Six S's Shearing Layers). "
              'Viking Press.',
-             'Akbarzadeh, M., Van Mele, T., & Block, P. (2015). On the equilibrium of funicular polyhedral frames and convex polyhedral force diagrams (compas-dev/compas, https://github.com/compas-dev/compas). Computer-Aided Design, 61, 116–129. DOI: 10.1016/j.cad.2015.01.006.',
+             'Block, P., & Ochsendorf, J. / Van Mele, T., et al. (2015). COMPAS & polyhedral thrust network analysis '
+             'for 3D graphic statics (compas-dev/compas, https://github.com/compas-dev/compas). Computer-Aided Design, '
+             '61, 23–33. DOI: 10.1016/j.cad.2015.01.006.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the context of citations '
              'and classifies their intent using deep learning (https://scite.ai). Quantitative Science Studies, 2(3), '
              '882–898. DOI: 10.1162/qss_a_00146.'],

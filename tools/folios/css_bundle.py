@@ -473,6 +473,141 @@ REVAMP_CSS = r"""
     color: var(--tp-verdigris);
   }
 
+  .tp-track-chip-toolchain {
+    background: linear-gradient(135deg, var(--tp-vellum) 0%, var(--tp-prussian-soft) 100%);
+    border-color: var(--tp-minium);
+  }
+
+  .tp-track-chip-toolchain .tp-track-chip-kicker {
+    color: var(--tp-minium);
+  }
+
+  .tp-toolchain-boundary-banner {
+    margin: 1rem 0 1.35rem;
+    padding: 0.85rem 1.1rem;
+    border: 1.5px solid var(--tp-minium);
+    border-left-width: 5px;
+    border-radius: 8px;
+    background-color: var(--tp-stone);
+    color: var(--tp-ink);
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  .tp-toolchain-boundary-banner strong {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--tp-minium);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .tp-glb-viewer {
+    margin: 1.25rem 0;
+    padding: 1rem;
+    border: 1px solid var(--tp-rule-strong);
+    border-radius: 10px;
+    background-color: var(--tp-stone);
+  }
+
+  .tp-glb-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .tp-glb-status {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--tp-prussian);
+  }
+
+  .tp-glb-canvas {
+    width: 100%;
+    height: 320px;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid var(--tp-rule);
+    background-color: var(--tp-vellum);
+    cursor: grab;
+    touch-action: none;
+  }
+
+  .tp-glb-canvas:active {
+    cursor: grabbing;
+  }
+
+  .tp-toolchain-files-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 0.75rem;
+    margin: 1rem 0;
+  }
+
+  .tp-toolchain-file-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--tp-rule-strong);
+    border-radius: 8px;
+    background-color: var(--tp-vellum);
+    text-decoration: none;
+    color: var(--tp-ink);
+    transition: border-color 0.15s ease;
+  }
+
+  .tp-toolchain-file-card:hover {
+    border-color: var(--tp-prussian);
+  }
+
+  .tp-toolchain-file-fmt {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--tp-verdigris);
+  }
+
+  .tp-toolchain-file-name {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--tp-prussian);
+  }
+
+  .tp-toolchain-file-meta {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.68rem;
+    color: var(--tp-graphite);
+    overflow-wrap: anywhere;
+  }
+
+  .tp-small-studio-box {
+    margin: 1.15rem 0;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--tp-verdigris);
+    border-left-width: 4px;
+    border-radius: 8px;
+    background-color: var(--tp-vellum);
+  }
+
+  .tp-small-studio-kicker {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.73rem;
+    font-weight: 700;
+    color: var(--tp-verdigris);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
   .tp-track-chip-title {
     font-family: var(--font-display, Georgia, serif);
     font-size: 0.88rem;
@@ -1544,6 +1679,102 @@ REVAMP_CSS = r"""
     font-size: 0.84rem;
     line-height: 1.48;
     color: var(--tp-graphite);
+  }
+
+  /* ---- 30-Second Studio Quick-Start Action Bar (Tech & Tools) ---- */
+  .tp-studio-quickstart {
+    margin: 1.4rem 0 2rem;
+    padding: 1.25rem 1.45rem;
+    border: 2px solid var(--tp-prussian);
+    border-radius: 12px;
+    background: linear-gradient(180deg, var(--tp-vellum) 0%, var(--tp-stone) 100%);
+    box-shadow: 0 4px 18px rgba(13, 27, 42, 0.06);
+  }
+  .tp-studio-quickstart-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--tp-rule-strong);
+  }
+  .tp-studio-quickstart-badge {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--tp-vellum);
+    background-color: var(--tp-prussian);
+    padding: 0.28rem 0.65rem;
+    border-radius: 4px;
+  }
+  .tp-studio-quickstart-sub {
+    font-size: 0.9rem;
+    color: var(--tp-ink-soft);
+  }
+  .tp-studio-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  .tp-studio-step-card {
+    padding: 0.95rem 1.1rem;
+    border: 1px solid var(--tp-rule-strong);
+    border-radius: 8px;
+    background-color: var(--tp-vellum);
+  }
+  .tp-studio-step-num {
+    display: inline-block;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--tp-verdigris);
+    margin-bottom: 0.35rem;
+  }
+  .tp-studio-step-title {
+    margin: 0 0 0.45rem;
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--tp-ink);
+  }
+  .tp-studio-step-card p {
+    margin: 0 0 0.65rem;
+    font-size: 0.87rem;
+    line-height: 1.5;
+    color: var(--tp-ink-soft);
+  }
+  .tp-studio-pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .tp-studio-dl-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.34rem 0.68rem;
+    border: 1px solid var(--tp-prussian);
+    border-radius: 6px;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--tp-prussian);
+    background-color: var(--tp-stone);
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+  .tp-studio-dl-pill:hover {
+    background-color: var(--tp-prussian);
+    color: var(--tp-vellum);
+  }
+  .tp-studio-dl-pill--primary {
+    background-color: var(--tp-verdigris);
+    border-color: var(--tp-verdigris);
+    color: var(--tp-vellum);
   }
 }
 """
@@ -3769,6 +4000,8 @@ def update_informatico_css() -> None:
     background-color: var(--tp-stone);
     border: 1px solid var(--tp-rule-strong);
     cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
     box-sizing: border-box;
   }}
 

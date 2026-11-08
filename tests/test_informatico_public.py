@@ -19,11 +19,11 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_all_48_skills_and_python_verifiers_exist_and_pass(self) -> None:
         skill_files = list(SKILLS.glob("*/*/SKILL.md"))
         py_files = list(SKILLS.glob("*/*/verify_*.py"))
-        self.assertEqual(len(skill_files), 54)
-        self.assertEqual(len(py_files), 54)
+        self.assertEqual(len(skill_files), 60)
+        self.assertEqual(len(py_files), 60)
         res = subprocess.run([sys.executable, "-X", "utf8", str(SKILLS / "verify_all_48_folios.py")], capture_output=True, text=True, encoding="utf-8", timeout=60)
         self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
-        self.assertIn("PASS: All 54/54", res.stdout)
+        self.assertIn("PASS: All 60/60", res.stdout)
 
     def test_all_6_bounty_and_physics_discovery_harnesses_pass(self) -> None:
         res = subprocess.run([sys.executable, "-X", "utf8", str(BOUNTIES / "run_all_bounties.py")], capture_output=True, text=True, encoding="utf-8", timeout=30)
@@ -38,7 +38,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_106_bilingual_pages_and_bounty_crucible_mounted(self) -> None:
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 120)
+        self.assertEqual(len(locs), 134)
         hub_html = (RESEARCH / "index.html").read_text(encoding="utf-8")
         self.assertIn('id="tp-bounty-crucible"', hub_html)
         self.assertIn('id="tp-symbolic-physics-lab"', hub_html)
@@ -66,7 +66,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_security_git_zero_secrets_zero_local_paths_and_zero_cf_leakage(self) -> None:
         forbidden = re.compile(r"C:\\Users\\|/home/[a-z0-9_]+|BEGIN .*PRIVATE KEY|sftp-config|cystic fibrosis", re.IGNORECASE)
         for p in ROOT.rglob("*"):
-            if not p.is_file() or ".git" in p.parts or "__pycache__" in p.parts or p.suffix in (".jpg", ".png", ".mp3", ".woff2", ".ico", ".pyc", ".webp"):
+            if not p.is_file() or ".git" in p.parts or "__pycache__" in p.parts or p.suffix in (".jpg", ".png", ".mp3", ".woff2", ".ico", ".pyc", ".webp", ".glb", ".3mf"):
                 continue
             if p.name in ("test_informatico_public.py", ".gitignore"):
                 continue

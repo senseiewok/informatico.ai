@@ -2,7 +2,7 @@
 
 > 48 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
 
-Every essay and bounty folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (54 SKILL.md companions, Python verifiers & 6 Bounty Crucible harnesses): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
+Every essay, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (60 SKILL.md companions, Python verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
 
 ## Civil Engineering & Construction
 
@@ -77,3 +77,13 @@ Every essay and bounty folio is also in Mexican Spanish under https://informatic
 - [B.04 (BOUNTY-A1) Holcim & Cooling Prizes: 3D Vaults and Sky-Cooling](https://informatico.ai/bounties/b04/): How Maxwell 3D polyhedral graphic statics in COMPAS and 8–13 μm radiative sky-cooling roofs build zero-rebar vaults that cool below ambient air.
 - [B.05 (BOUNTY-P2) PySR Symbolic Regression and PySINDy PDE Discovery](https://informatico.ai/bounties/b05/): How PySINDy sparse operator thresholding, Dedalus spectral solvers and PySR Pareto symbolic regression recover exact fluid laws from noisy sensors.
 - [B.06 (BOUNTY-M2) PhysLean Gauge Anomaly & ITensors.jl Entanglement](https://informatico.ai/bounties/b06/): How HEPLean/PhysLean certifies Standard Model gauge anomaly cancellation in Lean 4 while ITensors.jl and NetKet bound critical quantum entanglement.
+
+## Tech & Tools · The 3D CAD, Open BIM & Small-Studio Toolbox (X.01–X.06)
+
+- [Tech & Tools · The Toolbox](https://informatico.ai/toolchain/): Six interactive 3D CAD and open-tool folios with downloadable STEP, 3MF, GLB and DXF files, Python byte-level verifiers, and skills for small studios.
+- [X.01 (TOOL-CORE-1) Zero-Build WebGL2 GLB Viewer and Manifold Validator](https://informatico.ai/toolchain/x01/): How a zero-dependency WebGL2 loader parses binary glTF 2.0 files while a Python stdlib verifier checks watertight topology and signed mesh volume.
+- [X.02 (TOOL-ENG-1) Code-First Parametric Solids: STEP, 3MF and GLB](https://informatico.ai/toolchain/x02/): How independent engineers generate parametric B-rep solids in Python and audit what survives across STEP AP242, 3MF and GLB with chordal tolerances.
+- [X.03 (TOOL-ARCH-1) Small Architect's Vault, Timber and Open BIM Kit](https://informatico.ai/toolchain/x03/): How small architecture studios generate compression-only stone and timber voussoir arches in Python and export verified STEP, 3MF, DXF and GLB files.
+- [X.04 (TOOL-ARCH-2) Miura-Ori Kinetic Screens: 3D GLB to Laser-Cut DXF](https://informatico.ai/toolchain/x04/): How small studios and makers generate deployable Miura-ori facade shells in 3D GLB and 3MF alongside layered 2D laser-cutter DXF crease patterns.
+- [X.05 (TOOL-FAB-1) SIMP Structural Lattices to Watertight 3MF Meshes](https://informatico.ai/toolchain/x05/): How variable-taper SIMP structural struts are synthesized as watertight 2-manifold 3MF, GLB and STEP meshes with frustum volume and overhang checks.
+- [X.06 (TOOL-PHYS-MATH-1) Topological Metamaterial Cells and Betti Verifier](https://informatico.ai/toolchain/x06/): How pierced genus-one acoustic metamaterial unit cells are exported to GLB, 3MF and STEP while a Python verifier checks Euler and Betti invariants.

@@ -31,8 +31,18 @@ def load_informatico_folios() -> list[dict]:
             rec = dict(f)
             rec["id"] = f.get("folio_id", slug)
             rec["doi"] = (f.get("scite") or {}).get("doi", "")
-            rec["_all_json"] = json.dumps({"f": f, "lf": lf}, ensure_ascii=False)
-            rec["_sources"] = list(lf.get("sources", []))
+            rec["why_it_matters"] = lf.get("act2_analogy", "")
+            rec["act1_dropcap"] = lf.get("act1_dropcap", "")
+            rec["act1_plain_bridge"] = lf.get("act1_plain_bridge", "")
+            rec["act1_body"] = lf.get("act1_body", "")
+            rec["act1_stakes"] = lf.get("act1_stakes", "")
+            rec["act2_plain_primer"] = lf.get("act2_plain_primer", "")
+            rec["act2_body"] = lf.get("act2_intuition", "")
+            rec["act2_deepening"] = lf.get("act2_deepening", "")
+            rec["act4_body"] = lf.get("act4_human_ai", "")
+            rec["act4_deepening"] = lf.get("act4_deepening", "")
+            rec["steps"] = lf.get("walkthrough", [])
+            rec["sources"] = lf.get("sources", [])
             out.append(rec)
     return out
 
@@ -45,8 +55,20 @@ def check(folios: list[dict]) -> list[str]:
         doi = _clean_doi(e.get("doi", ""))
         if not doi or f"doi:{doi.lower()}" not in cache or not cache[f"doi:{doi.lower()}"].get("found"):
             findings.append(f"FAIL {fid}: DOI-NOT-FOUND {doi}")
-        blob = e.get("_all_json", "")
-        for d in sorted({_clean_doi(m) for m in INLINE_DOI_RE.findall(blob)}):
+        blobs = [
+            e.get("why_it_matters", ""),
+            e.get("act1_dropcap", ""),
+            e.get("act1_plain_bridge", ""),
+            e.get("act1_body", ""),
+            e.get("act1_stakes", ""),
+            e.get("act2_plain_primer", ""),
+            e.get("act2_body", ""),
+            e.get("act2_deepening", ""),
+            e.get("act4_body", ""),
+            e.get("act4_deepening", ""),
+        ]
+        blobs += list(e.get("steps", [])) + list(e.get("sources", []))
+        for d in sorted({m.rstrip(".)];,:") for b in blobs for m in INLINE_DOI_RE.findall(str(b))}):
             if f"doi:{d.lower()}" not in cache or not cache[f"doi:{d.lower()}"].get("found"):
                 findings.append(f"FAIL {fid}: INLINE-DOI-NOT-FOUND {d}")
         for src in e.get("_sources", []):

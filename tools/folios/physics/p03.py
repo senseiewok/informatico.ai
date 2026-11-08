@@ -306,7 +306,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'surmounting the most severe physiological mucus barriers.',
  'cf_bridge': 'In the SIMPLIFY trial era (NCT06350474) and for modulator-ineligible CF patients, '
               'understanding how dornase alfa, hypertonic saline, and microbubble conditioning '
-              '(DOI 10.1073/pnas.0705326104) expand xi_mesh is essential for getting '
+              '(DOI 10.1016/j.biomaterials.2026.124585) expand xi_mesh is essential for getting '
               'inhaled mRNA and base/prime editors across the mortar matrix barrier.',
  'sources': ['de Gennes, P.-G. (1979). Scaling Concepts in Polymer Physics. Cornell University '
              'Press.',
