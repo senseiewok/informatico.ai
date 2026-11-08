@@ -126,7 +126,140 @@ export function initFullscreenControls(scope = document) {
         const isFs = plate && (document.fullscreenElement === plate || document.webkitFullscreenElement === plate);
         btn.setAttribute("aria-pressed", isFs ? "true" : "false");
         const span = btn.querySelector("span");
-        if (span) span.textContent = isFs ? Enhance static SVG strokes with animated flow classes & build the Live Vector Overlay
+        if (span) span.textContent = isFs ? "Exit ⛶" : "Stage ⛶";
+      });
+    };
+    document.addEventListener("fullscreenchange", onFsChange);
+    document.addEventListener("webkitfullscreenchange", onFsChange);
+  }
+}
+
+/**
+ * Bret Victor Explorable In-Sentence Scrubbable Tokens (.tp-scrub)
+ */
+export function initScrubbableTokens(scope = document) {
+  scope.querySelectorAll(".tp-scrub").forEach((scrub) => {
+    if (scrub.dataset.scrubBound === "true") return;
+    scrub.dataset.scrubBound = "true";
+    scrub.setAttribute("tabindex", "0");
+    scrub.setAttribute("role", "slider");
+
+    let activeSlider = null;
+    if (scrub.id === "tp-inline-phi") activeSlider = document.getElementById("tp-eng-phi");
+    else if (scrub.id === "tp-inline-tau0") activeSlider = document.getElementById("tp-e02-tau0");
+    else if (scrub.id === "tp-inline-surcharge") activeSlider = document.getElementById("tp-e05-surcharge");
+    else if (scrub.id === "tp-inline-sds") activeSlider = document.getElementById("tp-e06-sds");
+    else if (scrub.id === "tp-inline-prime") activeSlider = document.getElementById("tp-math-prime");
+    else if (scrub.id === "tp-inline-rise") activeSlider = document.getElementById("tp-arch-rise");
+    else if (scrub.id === "tp-inline-atp") activeSlider = document.getElementById("p-slider-atp");
+    else if (scrub.id === "tp-inline-cf") {
+      const targetId = scrub.getAttribute("data-target-slider");
+      activeSlider = (targetId && document.getElementById(targetId)) || document.querySelector('input[data-cf-slider="primary"]');
+    }
+    if (!activeSlider) {
+      activeSlider = scope.querySelector('.tp-plate input[type="range"]') || document.querySelector('.tp-plate input[type="range"]');
+    }
+    const syncAria = () => {
+      if (!activeSlider) {
+        scrub.setAttribute("aria-label", scrub.textContent.trim() || "Interactive parameter scrubber");
+        scrub.setAttribute("aria-valuemin", "0");
+        scrub.setAttribute("aria-valuemax", "100");
+        scrub.setAttribute("aria-valuenow", "50");
+        return;
+      }
+      const min = activeSlider.min || "0";
+      const max = activeSlider.max || "100";
+      const val = activeSlider.value || min;
+      const labelEl = activeSlider.id ? document.querySelector(`label[for="${activeSlider.id}"]`) : null;
+      const labelText = (labelEl && labelEl.textContent.trim()) || scrub.getAttribute("aria-label") || scrub.textContent.trim() || "Parameter scrubber";
+      scrub.setAttribute("aria-label", labelText);
+      scrub.setAttribute("aria-valuemin", String(min));
+      scrub.setAttribute("aria-valuemax", String(max));
+      scrub.setAttribute("aria-valuenow", String(val));
+      scrub.setAttribute("aria-valuetext", scrub.textContent.trim() || String(val));
+    };
+    syncAria();
+    if (activeSlider) {
+      activeSlider.addEventListener("input", syncAria);
+    }
+
+    let isDragging = false;
+    let startX = 0;
+    let startVal = 0;
+
+    const onPointerDown = (e) => {
+      if (!activeSlider) return;
+      isDragging = true;
+      startX = e.clientX;
+      startVal = parseFloat(activeSlider.value) || 0;
+      scrub.setPointerCapture(e.pointerId);
+      scrub.classList.add("tp-scrubbing");
+      e.preventDefault();
+    };
+
+    const onPointerMove = (e) => {
+      if (!isDragging || !activeSlider) return;
+      const dx = e.clientX - startX;
+      const min = parseFloat(activeSlider.min) || 0;
+      const max = parseFloat(activeSlider.max) || 100;
+      const step = parseFloat(activeSlider.step) || 0.1;
+      const span = max - min;
+      const change = (dx / 200) * span;
+      let newVal = Math.max(min, Math.min(max, startVal + change));
+      if (step >= 1.0) newVal = Math.round(newVal / step) * step;
+      activeSlider.value = newVal;
+      activeSlider.dispatchEvent(new Event("input", { bubbles: true }));
+    };
+
+    const onPointerUp = (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      scrub.classList.remove("tp-scrubbing");
+      try { scrub.releasePointerCapture(e.pointerId); } catch (_) {}
+    };
+
+    scrub.addEventListener("pointerdown", onPointerDown);
+    scrub.addEventListener("pointermove", onPointerMove);
+    scrub.addEventListener("pointerup", onPointerUp);
+    scrub.addEventListener("pointercancel", onPointerUp);
+
+    scrub.addEventListener("keydown", (e) => {
+      if (!activeSlider) return;
+      const step = parseFloat(activeSlider.step) || 0.1;
+      const min = parseFloat(activeSlider.min) || 0;
+      const max = parseFloat(activeSlider.max) || 100;
+      let cur = parseFloat(activeSlider.value) || 0;
+      if (e.key === "ArrowRight" || e.key === "ArrowUp") {
+        e.preventDefault();
+        activeSlider.value = Math.min(max, cur + step);
+        activeSlider.dispatchEvent(new Event("input", { bubbles: true }));
+      } else if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
+        e.preventDefault();
+        activeSlider.value = Math.max(min, cur - step);
+        activeSlider.dispatchEvent(new Event("input", { bubbles: true }));
+      }
+    });
+  });
+}
+
+/**
+ * Universal Reactive SVG & Control Animation Engine across all 24 Folios.
+ * Ensures every Folio's SVG stage and controls animate smoothly on slider input,
+ * stage stepper clicks, and interactive Auto-Sweep exploration.
+ */
+export function initUniversalSvgAndControlAnimations(scope = document) {
+  const reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  scope.querySelectorAll(".tp-plate").forEach((plate) => {
+    if (plate.dataset.animBound === "true") return;
+    plate.dataset.animBound = "true";
+
+    const svg = plate.querySelector("svg.tp-svg-stage");
+    const sliders = Array.from(plate.querySelectorAll('input[type="range"]'));
+    const stepper = plate.querySelector(".tp-stepper");
+    const stepBtns = Array.from(plate.querySelectorAll(".tp-step-btn[data-step-desc]"));
+
+    // 1. Enhance static SVG strokes with animated flow classes & build the Live Vector Overlay
     let liveGroup = null;
     let harmonicPath = null;
     let beaconGroup = null;
@@ -2087,17 +2220,17 @@ export function initPlateSolvers(scope = document) {
         return;
       }
       if (slug === "p12") {
-        const qGain = v0;
-        const nGreen = v1;
-        if (atpOut) atpOut.textContent = `Q = ${qGain.toFixed(1)}`;
-        if (vmOut) vmOut.textContent = `n / n_G = ${nGreen.toFixed(2)}`;
-        if (inlineAtp) inlineAtp.textContent = `Q = ${qGain.toFixed(1)}`;
-        const nTauT = 2.8 * (qGain / 10.0);
-        const safe = qGain >= 5.0 && nGreen <= 0.85;
-        if (effOut) effOut.textContent = `n T_i τ_E = ${nTauT.toFixed(2)} × 10²¹ m⁻³·keV·s`;
-        if (ratioOut) ratioOut.textContent = `B_0 = 12.2 T REBCO (P_fus ∝ B⁴)`;
-        if (outR2) outR2.textContent = `n / n_G = ${nGreen.toFixed(2)} (${nGreen <= 0.85 ? "Tearing-Safe" : "Greenwald Alert"})`;
-        if (statusOut) statusOut.textContent = safe ? "BURNING PLASMA · ZERO DISRUPTION" : "TEARING MODE / IGNITION MARGIN ALERT";
+        const negLogKn = v0;
+        const reK = v1;
+        const kn = Math.pow(10, -negLogKn);
+        if (atpOut) atpOut.textContent = `Kn = ${kn.toExponential(1)}`;
+        if (vmOut) vmOut.textContent = `Re = ${(reK * 1000).toLocaleString("en-US")}`;
+        if (inlineAtp) inlineAtp.textContent = `Kn = ${kn.toExponential(1)}`;
+        const safe = negLogKn >= 2.0;
+        if (effOut) effOut.textContent = `||f_ε − M|| = ${kn.toExponential(1)} O(Kn)`;
+        if (ratioOut) ratioOut.textContent = `ν = 1.51 × 10⁻⁵ m²/s (Chapman–Enskog)`;
+        if (outR2) outR2.textContent = `10 days in < 60 s (GraphCast + PDE Guard)`;
+        if (statusOut) statusOut.textContent = safe ? "NEWTON → NAVIER–STOKES QED" : "RAREFIED KNUDSEN REGIME (Kn > 0.01)";
         return;
       }
 
@@ -2354,7 +2487,41 @@ export function initPlateSolvers(scope = document) {
     updateE06();
   }
 
-  // 9b. " (Rescued)" : " (Sub-Threshold)");
+  // 9b. Pillar V Biophysical Ion-Channel & Curative Therapeutics Solvers (CF.01-CF.06 / c01-c06)
+  const cfPrimary = scope.querySelector('input[data-cf-slider="primary"]') || document.querySelector('input[data-cf-slider="primary"]');
+  const cfSecondary = scope.querySelector('input[data-cf-slider="secondary"]') || document.querySelector('input[data-cf-slider="secondary"]');
+  if (cfPrimary && cfSecondary && cfPrimary.dataset.bound !== "true") {
+    cfPrimary.dataset.bound = "true";
+    const slug = cfPrimary.getAttribute("data-cf-slug") || "c01";
+    const updateCf = () => {
+      const v0 = parseFloat(cfPrimary.value) || 0;
+      const v1 = parseFloat(cfSecondary.value) || 0;
+      const lbl0 = document.getElementById(cfPrimary.id + "-val");
+      const lbl1 = document.getElementById(cfSecondary.id + "-val");
+      if (lbl0) lbl0.textContent = String(v0);
+      if (lbl1) lbl1.textContent = String(v1);
+      const inlineCf = document.getElementById("tp-inline-cf");
+      if (inlineCf) {
+        const baseName = inlineCf.textContent.split("=")[0].trim();
+        inlineCf.textContent = baseName + " = " + v0;
+      }
+
+      const r0 = document.getElementById("tp-" + slug + "-readout-0");
+      const r1 = document.getElementById("tp-" + slug + "-readout-1");
+      const r2 = document.getElementById("tp-" + slug + "-readout-2");
+      const r3 = document.getElementById("tp-" + slug + "-readout-3");
+      const box = document.getElementById("tp-" + slug + "-readout-status-box");
+
+      if (slug === "c01") {
+        // Wyman dual-corrector allostery & potentiator gating
+        const dG = Math.max(1.2, 8.4 - 6.2 * v0 - 1.1 * v1);
+        const bandC = Math.min(92.0, Math.max(2.0, 88.0 * Math.pow(v0, 1.15)));
+        const po = Math.min(0.88, Math.max(0.04, 0.08 + 0.78 * v0 * v1));
+        const sweat = -(12.0 + 46.0 * v0 * v1);
+        if (r0) r0.textContent = dG.toFixed(2) + " kcal/mol";
+        if (r1) r1.textContent = bandC.toFixed(1) + "% of Wild-Type";
+        if (r2) r2.textContent = "P_o = " + po.toFixed(2);
+        if (r3) r3.textContent = sweat.toFixed(1) + " mmol/L" + (po >= 0.5 ? " (Rescued)" : " (Sub-Threshold)");
         if (box) box.setAttribute("data-alert", po < 0.35 ? "true" : "false");
 
         const rescueCurve = document.getElementById("tp-c01-rescue-curve");

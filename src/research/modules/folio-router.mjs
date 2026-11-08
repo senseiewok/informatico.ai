@@ -1,6 +1,6 @@
 /**
  * @module folio-router
- * Site navigation for Informatico.ai: the Contents dialog (every essay, one click from any page)
+ * Site navigation for Informatico.ai: the Contents dialog (every essay and bounty folio, one click from any page)
  * with live search. Every essay lives at its own URL; links are plain links, nothing is swapped in place.
  */
 export function initFolioRouter() {
@@ -11,8 +11,10 @@ export function initFolioRouter() {
   const openers = document.querySelectorAll("[data-open-contents]");
   const search = document.getElementById("tp-contents-search");
   const empty = document.getElementById("tp-contents-empty");
-  const items = dialog.querySelectorAll("li[data-contents-item]");
+  const items = dialog.querySelectorAll("li[data-contents-item], li[data-contents-bounty-item]");
+  const pillarItems = dialog.querySelectorAll("li[data-contents-item]");
   const cols = dialog.querySelectorAll(".tp-contents-col");
+  const bountySection = dialog.querySelector(".tp-contents-bounties");
   let lastOpener = null;
 
   function setExpanded(value) {
@@ -31,6 +33,9 @@ export function initFolioRouter() {
     cols.forEach((col) => {
       col.hidden = !col.querySelector("li[data-contents-item]:not([hidden])");
     });
+    if (bountySection) {
+      bountySection.hidden = !bountySection.querySelector("li[data-contents-bounty-item]:not([hidden])");
+    }
     if (empty) empty.hidden = shown > 0;
   }
 
@@ -68,9 +73,9 @@ export function initFolioRouter() {
 
   function syncSearchLabels(isEs) {
     if (!search) return;
-    const total = items.length;
-    search.setAttribute("placeholder", isEs ? "Buscar en " + total + " ensayos" : "Search " + total + " essays");
-    search.setAttribute("aria-label", isEs ? "Buscar ensayos" : "Search essays");
+    const total = pillarItems.length;
+    search.setAttribute("placeholder", isEs ? "Buscar en " + total + " ensayos y 6 retos" : "Search " + total + " essays & 6 bounties");
+    search.setAttribute("aria-label", isEs ? "Buscar ensayos y retos" : "Search essays and bounties");
   }
 
   window.addEventListener("tp-lang-change", (ev) => {

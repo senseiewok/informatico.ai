@@ -42,9 +42,10 @@ Dear Unitary Foundation & Metriq Team,
 
 We just published Volume VI of Informatico.ai—an open, zero-build, bilingual (English + Mexican Spanish) interactive scientific monograph series—and wanted to share Folio P.11 with the Unitary Foundation and Metriq community:
 
-- Live Interactive Essay (EN): https://informatico.ai/physics/p11/
-- Español (ES-MX): https://informatico.ai/es-mx/physics/p11/
-- Cover Feature (Open-Bounty & Prize Crucible): https://informatico.ai/#tp-bounty-crucible
+- Dedicated Bounty Folio B.02 (BOUNTY-P1 Story, Proof & Code): https://informatico.ai/bounties/b02/
+- Dedicated Bounty Folio B.02 in Español (ES-MX): https://informatico.ai/es-mx/bounties/b02/
+- Companion Long-Form Essay P.11 (EN / ES-MX): https://informatico.ai/physics/p11/ | https://informatico.ai/es-mx/physics/p11/
+- All 6 Open-Bounty & Prize Folios Hub: https://informatico.ai/bounties/
 
 What Folio P.11 provides for learners and researchers:
 1. Interactive Surface-Code & Anyon Braiding Workbench: Readers scrub physical gate error rates (p_phys) against code distance (d) to watch logical error rates P_L ~ (p / p_th)^((d+1)/2) and active-volume T-factory footprints update in real time for FeMoCo [Fe7MoS9C] nitrogen fixation (anchored to Fowler et al. 2012, DOI 10.1103/PhysRevA.86.032324, and Reiher et al. 2017, DOI 10.1073/pnas.1619152114).
@@ -56,7 +57,7 @@ We would be honored to list Folio P.11 as a community educational resource on Me
 Warm regards,
 Informatico.ai Editorial & Engineering Lab
 https://informatico.ai/
-Public GitHub Repository (48 SKILL.md & Python Verifiers): https://github.com/senseiewok/informatico.ai
+Public GitHub Repository (54 SKILL.md & Python Verifiers): https://github.com/senseiewok/informatico.ai
 ```
 
 ---
@@ -71,7 +72,9 @@ Hi everyone,
 
 We have published Volume VI of Informatico.ai, an open-access bilingual (EN + ES-MX) collection of interactive mathematical and physical monographs designed to make frontier formalizations tactile for students, engineers, and mathematicians:
 
-- Cover & Open-Bounty Crucible: https://informatico.ai/#tp-bounty-crucible
+- Dedicated Bounty Folio B.01 (BOUNTY-M1 Erdős Sidon Sets & Lean 4 Story, Proof & Code): https://informatico.ai/bounties/b01/ (ES-MX: https://informatico.ai/es-mx/bounties/b01/)
+- Dedicated Bounty Folio B.06 (BOUNTY-M2 PhysLean Gauge Anomaly & DMRG Story, Proof & Code): https://informatico.ai/bounties/b06/ (ES-MX: https://informatico.ai/es-mx/bounties/b06/)
+- All 6 Open-Bounty & Prize Folios Hub: https://informatico.ai/bounties/
 - Folio M.01 (Fermat's Last Theorem & 13M-Line Lean 4 Blueprint): https://informatico.ai/math/m01/
 - Folio M.02 (Riemann Zero-Density & Challenge/XiPrime.lean): https://informatico.ai/math/m02/
 - Folio M.04 (Polynomial Freiman-Ruzsa teorth/pfr & 22M Magma Graph): https://informatico.ai/math/m04/
@@ -85,7 +88,7 @@ Feedback from the formalization community is very welcome!
 Best regards,
 Informatico.ai Editorial & Engineering Lab
 https://informatico.ai/
-Public GitHub Repository (48 SKILL.md & Python Verifiers): https://github.com/senseiewok/informatico.ai
+Public GitHub Repository (54 SKILL.md & Python Verifiers): https://github.com/senseiewok/informatico.ai
 ```
 
 ---
@@ -100,6 +103,7 @@ Dear COMPAS & Block Research Group Team,
 
 We wanted to share two new interactive, bilingual (English + Mexican Spanish) long-form monographs in Volume VI of Informatico.ai that highlight 3D polyhedral graphic statics and open-source computational form-finding with COMPAS:
 
+- Dedicated Bounty Folio B.04 (BOUNTY-A1 Holcim & Global Cooling Prize Story, Proof & Code): https://informatico.ai/bounties/b04/ (ES-MX: https://informatico.ai/es-mx/bounties/b04/)
 - Folio A.11 (3D Polyhedral Graphic Statics, Maxwell-Rankine Reciprocal Polyhedra & Zero-Rebar Vaults): https://informatico.ai/architecture/a11/
   (Anchored to Akbarzadeh, Van Mele & Block 2015, DOI 10.1016/j.cad.2015.01.006, and Heyman 1995, DOI 10.1017/cbo9781107050310)
 - Folio A.12 (Tensegrity Cable-Strut Domes & 8-13 um Radiative Sky-Cooling Envelopes): https://informatico.ai/architecture/a12/
@@ -112,7 +116,7 @@ Thank you for making COMPAS open to the world!
 Warm regards,
 Informatico.ai Editorial & Engineering Lab
 https://informatico.ai/
-Public GitHub Repository (48 SKILL.md & Python Verifiers): https://github.com/senseiewok/informatico.ai
+Public GitHub Repository (54 SKILL.md & Python Verifiers): https://github.com/senseiewok/informatico.ai
 ```
 
 ---
@@ -127,6 +131,8 @@ Dear FEniCS & PyPSA Maintainers,
 
 We just published Folios E.11 and E.12 in Volume VI of Informatico.ai (in English and Mexican Spanish) to help civil and electrical engineers explore continuum topology optimization and grid-forming control using open-source solvers:
 
+- Dedicated Bounty Folio B.03 (BOUNTY-E1 XPRIZE Carbon & IStructE Low-Carbon Slab Story, Proof & Code): https://informatico.ai/bounties/b03/ (ES-MX: https://informatico.ai/es-mx/bounties/b03/)
+- Dedicated Bounty Folio B.05 (BOUNTY-P2 Symbolic PDE Discovery Story, Proof & Code): https://informatico.ai/bounties/b05/ (ES-MX: https://informatico.ai/es-mx/bounties/b05/)
 - Folio E.11 (SIMP Topology Optimization, Michell Funicular Trusses & Skyscraper Inerter Damping): https://informatico.ai/engineering/e11/
   (Anchored to Sigmund 2001, DOI 10.1007/s001580050176, and Smith 2002, DOI 10.1109/TAC.2002.803532; links directly to FEniCS/dolfinx)
 - Folio E.12 (Machine-Checked Silicon-to-Grid Safety: 180M-Line Rocq RISC-V Verification, Control Barrier Functions & Firefly-Synchronized Grids): https://informatico.ai/engineering/e12/
@@ -137,5 +143,5 @@ Each essay pairs an interactive SVG/WebGL2 workbench with a downloadable Python 
 Warm regards,
 Informatico.ai Editorial & Engineering Lab
 https://informatico.ai/
-Public GitHub Repository (48 SKILL.md & Python Verifiers): https://github.com/senseiewok/informatico.ai
+Public GitHub Repository (54 SKILL.md & Python Verifiers): https://github.com/senseiewok/informatico.ai
 ```

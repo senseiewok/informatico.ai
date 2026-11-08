@@ -376,11 +376,9 @@ export class TpArticleAudioElement extends HTMLElement {
     this._bufferStartCtxTime = 0;
     this._bufferOffsetSec = 0;
     this._rafId = 0;
-    this._selectedEngine = "neural";
     this._chapters = [];
     this._built = false;
     this._onLangChange = () => this._handleLanguageSwitch();
-    this._onVoicesChanged = () => this._populateVoiceSelect();
   }
 
   connectedCallback() {
@@ -388,26 +386,18 @@ export class TpArticleAudioElement extends HTMLElement {
       this._buildDOM();
       this._built = true;
     }
-    this._populateVoiceSelect();
     this._syncLabels();
     window.addEventListener("tp-lang-change", this._onLangChange);
-    if (typeof window !== "undefined" && "speechSynthesis" in window && typeof window.speechSynthesis.addEventListener === "function") {
-      window.speechSynthesis.addEventListener("voiceschanged", this._onVoicesChanged);
-    }
   }
 
   disconnectedCallback() {
     this.stop();
     window.removeEventListener("tp-lang-change", this._onLangChange);
-    if (typeof window !== "undefined" && "speechSynthesis" in window && typeof window.speechSynthesis.removeEventListener === "function") {
-      window.speechSynthesis.removeEventListener("voiceschanged", this._onVoicesChanged);
-    }
   }
 
   attributeChangedCallback() {
     if (this._built) {
       this.stop();
-      this._populateVoiceSelect();
       this._syncLabels();
     }
   }
@@ -481,25 +471,9 @@ export class TpArticleAudioElement extends HTMLElement {
     speedBtn.textContent = "1.0×";
     speedBtn.addEventListener("click", () => this.cycleSpeed());
 
-    // Neural AI Voice / Engine selector
-    const voiceSelect = document.createElement("select");
-    voiceSelect.className = "tp-audio-util-btn tp-audio-voice-select";
-    voiceSelect.setAttribute("data-audio-voice", "");
-    voiceSelect.setAttribute("aria-label", "Select Neural AI Voice / Seleccionar voz neural");
-    voiceSelect.setAttribute("title", "Voice Engine / Motor de voz");
-    voiceSelect.addEventListener("change", () => {
-      this._selectedEngine = voiceSelect.value || "neural";
-      if (this._playing && !this._paused) {
-        this.playChapter(this._chapterIndex);
-      } else {
-        this._syncLabels();
-      }
-    });
-
     leftGroup.appendChild(playBtn);
     leftGroup.appendChild(stopBtn);
     leftGroup.appendChild(speedBtn);
-    leftGroup.appendChild(voiceSelect);
 
     // Status & progress group
     const statusGroup = document.createElement("div");
@@ -552,57 +526,9 @@ export class TpArticleAudioElement extends HTMLElement {
     this._playIcon = playIcon;
     this._playLabel = playLabel;
     this._speedBtn = speedBtn;
-    this._voiceSelect = voiceSelect;
     this._statusText = statusText;
     this._progressEl = progress;
     this._audioEl = audioEl;
-  }
-
-  _populateVoiceSelect() {
-    if (!this._voiceSelect) return;
-    const lang = getActiveLang();
-    const hasNeuralTrack = Boolean(this._getNeuralSrc(lang));
-    const prevVal = this._selectedEngine;
-
-    while (this._voiceSelect.firstChild) {
-      this._voiceSelect.removeChild(this._voiceSelect.firstChild);
-    }
-
-    if (hasNeuralTrack) {
-      const optNeural = document.createElement("option");
-      optNeural.value = "neural";
-      optNeural.textContent =
-        lang === "es"
-          ? "★ Voz IA Neural de Estudio (Jorge 24 kHz)"
-          : "★ Neural AI Studio Voice (Andrew 24 kHz)";
-      this._voiceSelect.appendChild(optNeural);
-    }
-
-    const ranked = getRankedVoices(lang).slice(0, 6);
-    ranked.forEach((v) => {
-      const opt = document.createElement("option");
-      opt.value = `speech:${v.voiceURI || v.name}`;
-      const isNatural = /natural|neural|online|multilingual|google|premium|enhanced|siri/i.test(v.name);
-      const shortName = v.name.replace(/^Microsoft\s+/i, "").replace(/\s+-\s+.*$/, "");
-      opt.textContent = `${isNatural ? "★ " : ""}${shortName} (${v.lang})`;
-      this._voiceSelect.appendChild(opt);
-    });
-
-    if (!this._voiceSelect.firstChild) {
-      const optFallback = document.createElement("option");
-      optFallback.value = "speech:auto";
-      optFallback.textContent = lang === "es" ? "Síntesis del Navegador (ES-MX)" : "Browser Speech (EN-US)";
-      this._voiceSelect.appendChild(optFallback);
-    }
-
-    const validValues = Array.from(this._voiceSelect.options).map((o) => o.value);
-    if (validValues.includes(prevVal)) {
-      this._voiceSelect.value = prevVal;
-      this._selectedEngine = prevVal;
-    } else {
-      this._selectedEngine = this._voiceSelect.options[0].value;
-      this._voiceSelect.value = this._selectedEngine;
-    }
   }
 
   _syncLabels() {
@@ -615,7 +541,7 @@ export class TpArticleAudioElement extends HTMLElement {
 
     const activeAct = ACT_DEFS[this._chapterIndex] || ACT_DEFS[0];
     const actTitle = lang === "es" ? activeAct.labelEs : activeAct.labelEn;
-    const usingNeuralTrack = this._selectedEngine === "neural" && Boolean(this._getNeuralSrc(lang));
+    const usingNeuralTrack = Boolean(this._getNeuralSrc(lang));
     const engineTag = usingNeuralTrack
       ? lang === "es"
         ? "IA Neural 24 kHz"
@@ -665,7 +591,6 @@ export class TpArticleAudioElement extends HTMLElement {
   _handleLanguageSwitch() {
     const wasPlaying = this._playing && !this._paused;
     this.stop();
-    this._populateVoiceSelect();
     this._syncLabels();
     if (wasPlaying) {
       this.playChapter(this._chapterIndex);
@@ -725,7 +650,7 @@ export class TpArticleAudioElement extends HTMLElement {
 
   resume() {
     const lang = getActiveLang();
-    if (this._paused && this._audioBuffer && this._selectedEngine === "neural" && this._getNeuralSrc(lang)) {
+    if (this._paused && this._audioBuffer && this._getNeuralSrc(lang)) {
       this._paused = false;
       this._playing = true;
       this._startBufferPlayback(this._bufferOffsetSec);
@@ -904,9 +829,9 @@ export class TpArticleAudioElement extends HTMLElement {
       this._progressEl.setAttribute("value", String(basePct));
     }
 
-    // 1. Primary Engine: Pre-rendered Neural AI track via CSP-safe Web Audio API
+    // 1. Primary Engine: Single Pre-rendered Neural AI track via CSP-safe Web Audio API
     const customSrc = this._getNeuralSrc(lang);
-    if (customSrc && this._selectedEngine === "neural") {
+    if (customSrc) {
       this._playing = true;
       this._paused = false;
       this._syncLabels();
@@ -918,7 +843,7 @@ export class TpArticleAudioElement extends HTMLElement {
       return;
     }
 
-    // 2. Upgraded Web Speech API Synthesis (EN-US / ES-MX) with Prosody Normalizer
+    // 2. Fallback Web Speech API Synthesis (EN-US / ES-MX) with Prosody Normalizer
     this._playWebSpeechChapter(clamped, lang, speed);
   }
 
@@ -943,11 +868,7 @@ export class TpArticleAudioElement extends HTMLElement {
     utter.rate = speed;
     utter.pitch = 1.0;
 
-    const preferredURI =
-      this._selectedEngine && this._selectedEngine.startsWith("speech:")
-        ? this._selectedEngine.slice("speech:".length)
-        : "";
-    const bestVoice = pickBestVoice(lang, preferredURI === "auto" ? "" : preferredURI);
+    const bestVoice = pickBestVoice(lang);
     if (bestVoice) {
       utter.voice = bestVoice;
     }
