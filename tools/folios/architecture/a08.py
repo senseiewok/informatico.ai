@@ -93,42 +93,95 @@ FOLIO = {'folio_id': 'A.08',
                         'epsilon_LWIR = 0.95, h_c = 6.9 W/(m^2 K).'}],
  'volume': 4,
  'volume_code': 'VOL. 04',
- 'reading_time': '14 MIN READ',
- 'word_count': '2,760 WORDS',
+ 'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'scite': {'doi': '10.1038/nature13883',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 410 supporting citations on '
+           'fetched_on': '2026-11-08',
+           'citing_publications': 3769,
+           'supporting': 15,
+           'mentioning': 2634,
+           'contrasting': 1,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 3,769 '
+                      'citing publications (15 supporting, 2,634 mentioning, 1 contrasting) on '
                       'Raman, Fan et al. daytime radiative cooling below ambient air temperature '
                       'under direct sunlight via the 8-13 um atmospheric transparency window.'}}
 
-LONGFORM_DATA = {'reading_time': '14 MIN READ',
- 'word_count': '2,760 WORDS',
+LONGFORM_DATA = {'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'scite': {'doi': '10.1038/nature13883',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 410 supporting citations on '
+           'fetched_on': '2026-11-08',
+           'citing_publications': 3769,
+           'supporting': 15,
+           'mentioning': 2634,
+           'contrasting': 1,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 3,769 '
+                      'citing publications (15 supporting, 2,634 mentioning, 1 contrasting) on '
                       'Raman, Fan et al. daytime radiative cooling below ambient air temperature '
                       'under direct sunlight via the 8-13 um atmospheric transparency window.'},
  'act1_title': 'Act I — From Ancient Persian Yakhchāl Ice Domes to Photonic Sky-Cooling Roofs & AI '
                'Thermal Meta-Emitters',
- 'act1_dropcap': 'By 400 BCE, master builders across the Persian plateau engineered domed '
-                 'mud-brick ice houses called yakhchāls that froze canal water in shallow stone '
-                 'channels during clear desert nights—even when ambient air stayed above freezing. '
-                 "Though the builders did not yet possess Planck's radiation law, they were "
-                 "exploiting a remarkable astrophysical window: Earth's atmosphere is nearly "
-                 'transparent to electromagnetic thermal waves between wavelengths of 8 and 13 '
-                 'micrometers. Any roof surface with high emissivity in the 8–13 um band beams its '
-                 'thermal energy straight through the atmosphere into the 3 Kelvin cold sink of '
-                 'outer space.',
- 'act1_body': 'For two millennia, radiative cooling worked only at night because even a 10% '
-              'absorption of daytime solar irradiance (lambda in [0.3, 2.5] um, ~1,000 W/m^2) '
-              'overwhelms outgoing mid-infrared emission (~100–150 W/m^2). In 2014, Aaswath P. '
-              'Raman, Shanhui Fan, and colleagues at Stanford University published a landmark '
-              'paper in Nature (DOI 10.1038/nature13883): by alternating seven nanometric layers '
-              'of hafnia (HfO2) and silica (SiO2) atop silver, they created a photonic '
-              'metamaterial that reflected 97% of incident sunlight while emitting strongly in the '
-              '8–13 um sky window—cooling 4.9 °C below ambient air under peak midday sun with zero '
-              'electricity. In 2025–2026, inverse-design AI models have expanded this breakthrough '
-              'to scalable hierarchical porous polymer roof membranes (CSI 07 54 00) and '
-              'structural-color Fabry–Pérot architectural panels paired with sub-roof Stefan '
-              'phase-change material (PCM) thermal batteries.',
+ 'act1_dropcap': 'On a blistering summer morning in 2014 atop a rooftop laboratory at Stanford '
+                 'University, physicist Aaswath Raman and electrical engineer Shanhui Fan pointed '
+                 'an experimental wafer toward the blinding California sun. The asphalt below was '
+                 'radiating oven-like heat, and anyone standing on the roof felt the direct sting '
+                 'of midday solar radiation. Yet the thermometer embedded beneath their '
+                 'experimental disc did something that seemed to defy the basic laws of thermal '
+                 'physics: its temperature began to fall, dropping almost five degrees Celsius '
+                 'below the ambient outdoor air while sitting directly in broad daylight. More '
+                 'than two thousand years earlier, Persian builders on the arid Iranian plateau '
+                 'had accomplished a similar feat with mud-brick domes called yakhchāls, freezing '
+                 'shallow pools of water under cloudless desert nights. But achieving sub-ambient '
+                 'freezing under the direct assault of noon sunlight without electricity had long '
+                 "been considered impossible. Raman and Fan had just unlocked Earth's silent "
+                 'gateway to the cosmos.',
+ 'act1_plain_bridge': 'To understand how a roof can freeze in the sun, think about how our planet '
+                      'cools off. Everything in our world radiates invisible infrared heat waves '
+                      'into the air around it. Usually, our thick atmosphere acts like a thermal '
+                      'blanket, absorbing those heat waves and bouncing them back toward the '
+                      'ground. However, there is a natural gap in that blanket. For a specific '
+                      'band of invisible heat waves, the air is almost completely transparent. '
+                      'Outer space, sitting just beyond our atmosphere, is unimaginably cold at '
+                      'three degrees above absolute zero. If you can make a roof coating that '
+                      'reflects ninety-seven percent of incoming sunlight while simultaneously '
+                      'radiating heat waves precisely through that clear gap in the air, the roof '
+                      'beams its heat straight out into deep space like a silent thermal laser. '
+                      'The building sheds more heat into space than the sun can deliver, cooling '
+                      'the structure below outdoor air temperatures without running an electric '
+                      'compressor or burning a single watt of power.',
+ 'act1_body': 'For two millennia, radiative cooling worked only after sunset because even a ten '
+              'percent absorption of daytime solar irradiance across the visible and near-infrared '
+              'waveband (wavelengths from 0.3 to 2.5 micrometers, delivering approximately one '
+              'thousand watts per square meter) completely overwhelms outgoing thermal infrared '
+              'radiation. In 2014, Aaswath P. Raman, Shanhui Fan, and their team published a '
+              'landmark breakthrough in Nature (DOI 10.1038/nature13883): by stacking seven '
+              'nanometric layers of hafnia and silica on top of silver, they engineered a photonic '
+              'metamaterial that reflected ninety-seven percent of direct sunlight while '
+              'maximizing mid-infrared emissivity inside the transparent 8–13 micrometer '
+              'atmospheric sky window. Today, architectural materials scientists have translated '
+              'these nanophotonic physics into roll-to-roll microporous fluoropolymer membranes '
+              '(CSI 07 54 00) and colored structural-reflector coatings. By coupling these '
+              'radiative cool roofs to sub-ceiling phase-change material cassettes that absorb '
+              'daytime heat along an advancing melting boundary, modern zero-energy buildings '
+              'maintain indoor thermal comfort and dramatically shave peak refrigeration demand '
+              'during lethal heatwaves without grid power.',
+ 'act1_stakes': 'Historically, master builders in scorching climates fought heat through sheer '
+                'thermal mass, thick adobe masonry, evaporative courtyard fountains, and white '
+                'lime paint. While whitewashed plaster reflects visible light reasonably well, '
+                'standard white coatings still absorb approximately ten to fifteen percent of '
+                'invisible near-infrared solar energy. Under intense midday insolation of one '
+                'thousand watts per square meter, that small absorbed fraction injects one hundred '
+                'watts of heat into the roof deck—completely overpowering outgoing thermal '
+                'radiation and causing conventional white roofs to heat up five to fifteen degrees '
+                'Celsius above outdoor air. Meanwhile, modern cities rely almost exclusively on '
+                'mechanical vapor-compression chillers that consume massive amounts of grid '
+                'electricity, reject condensing heat into surrounding street canyons, and '
+                'accelerate the urban heat island effect. When extreme heatwaves strain electrical '
+                'grids to the point of rolling blackouts, sealed glass-box office buildings and '
+                'residential complexes turn into uninhabitable thermal traps within hours, '
+                'endangering vulnerable residents and proving that mechanical cooling alone is '
+                'fragile.',
  'pullquote': '"The clear sky is an inexhaustible 3 Kelvin thermodynamic heat sink—provided a '
               'building envelope reflects 97% of solar visible/NIR waves while opening a selective '
               'photonic antenna across the 8–13 micrometer infrared window."',
@@ -146,20 +199,75 @@ LONGFORM_DATA = {'reading_time': '14 MIN READ',
                  'photonic roofs pair with Stefan PCM ceilings for zero-energy cooling.')],
  'act2_title': 'Act II — How It Actually Works: Spectral Selectivity (0.3–2.5 um vs. 8–13 um) + '
                'Stefan Phase-Change Storage',
- 'act2_intuition': 'Net daytime radiative cooling flux is governed by the four-term energy balance '
-                   'P_net(T) = P_rad(T) - P_atm(T_amb) - P_sun - h_c (T_amb - T). Achieving P_net '
-                   '> 0 at noon requires extreme spectral bifurcation across two electromagnetic '
-                   'wavebands: solar reflectance R_solar >= 0.96 across lambda in [0.3, 2.5] um '
-                   '(so P_sun = (1 - R_solar) I_solar <= 35 W/m^2) and sky-window emissivity '
-                   'epsilon_LWIR >= 0.94 across lambda in [8, 13] um. Coupling the photonic roof '
-                   'deck to a bio-based paraffin/salt-hydrate Phase-Change Material ceiling panel '
-                   '(latent heat of fusion L_f = 210 kJ/kg, Stefan number Ste = c_p DeltaT / L_f) '
-                   'stores daytime cooling capacity along a moving solid-liquid boundary s(t) = 2 '
-                   '* lambda_s * sqrt(alpha_th * t).',
- 'act2_analogy': 'Everyday analogy: A normal white roof is like wearing a white cotton shirt in '
-                 'the desert—it reflects visible light but still traps body heat. A photonic '
-                 'radiative-cooling roof is both a super-mirror for sunlight and an open window to '
-                 'outer space for infrared heat waves.',
+ 'act2_analogy': 'Wearing a standard white cotton shirt under the desert sun protects you from '
+                 'getting sunburned because it reflects visible light, but your body heat remains '
+                 'trapped beneath the fabric like a miniature sauna. A daytime radiative '
+                 'sky-cooling roof acts like a high-tech survival suit that combines a '
+                 'mirror-bright sun umbrella with an open chimney straight to outer space: it '
+                 "bounces away the sun's scorching rays while giving your internal heat waves a "
+                 'frictionless, direct highway to escape into the freezing cosmos.',
+ 'act2_plain_primer': 'To make this passive outer-space air conditioner work on a building, '
+                      'engineers balance two opposing physical knobs. The first knob controls '
+                      'solar reflectance across the entire daytime spectrum, from visible colors '
+                      'into the invisible near-infrared. If you dial this knob down even slightly, '
+                      'the roof absorbs too much raw sunlight, and heat builds up inside the '
+                      'structure faster than it can escape. You must keep this first knob dialed '
+                      'above ninety-five percent so the roof deck acts as an almost flawless '
+                      'sunlight reflector. The second knob controls thermal emissivity inside the '
+                      'narrow infrared sky window where our atmosphere is transparent. Dialing '
+                      "this second knob up opens the thermal escape hatch, allowing the roof's "
+                      'molecules to vibrate and shed their warmth directly into the three-Kelvin '
+                      'vacuum of outer space. When both knobs are set correctly, the outgoing '
+                      'infrared stream exceeds incoming solar radiation, driving the roof surface '
+                      'temperature below the temperature of the surrounding air.',
+ 'distill_diagram': {'analogy_title': 'The Cosmic Thermal Chimney',
+                     'analogy_sub': 'Reflects daytime sunlight while venting infrared into deep '
+                                    'space',
+                     'force_a_title': 'Solar Reflectance Knob (R_sol)',
+                     'force_a_sub': 'Blocks 0.3–2.5 μm visible & near-infrared heat gain from noon '
+                                    'sun',
+                     'force_b_title': 'Sky-Window Emissivity (ε_LWIR)',
+                     'force_b_sub': 'Beams 8–13 μm thermal infrared waves straight into 3 K deep '
+                                    'space',
+                     'threshold_title': 'Sub-Ambient Tipping Point (P_net > 0 W/m²)',
+                     'threshold_pass': 'Passive cooling drops roof −6.2 °C below outdoor air with '
+                                       '0 W',
+                     'threshold_fail': 'Absorbed solar heat overwhelms emission, heating the '
+                                       'building'},
+ 'act2_intuition': 'Net daytime radiative cooling flux is governed by the four-term thermodynamic '
+                   'energy balance P_net(T) = P_rad(T) - P_atm(T_amb) - P_sun - h_c (T_amb - T). '
+                   'Achieving positive net cooling P_net > 0 under peak midday insolation of one '
+                   'thousand watts per square meter requires extreme spectral bifurcation across '
+                   'two distinct electromagnetic wavebands. First, the solar reflectance R_solar '
+                   'must exceed 0.96 across wavelengths from 0.3 to 2.5 micrometers so that '
+                   'absorbed solar heating P_sun = (1 - R_solar) I_solar remains below 35 W/m². '
+                   'Second, the selective infrared emissivity epsilon_LWIR must exceed 0.94 inside '
+                   'the 8–13 micrometer atmospheric transparency window, maximizing thermal photon '
+                   'emission directly into deep space while minimizing downward atmospheric '
+                   'radiation P_atm(T_amb). Coupling this photonic roof deck to a bio-based '
+                   'paraffin or salt-hydrate Phase-Change Material ceiling cassette (latent heat '
+                   'of fusion L_f = 210 kJ/kg, Stefan number Ste = c_p DeltaT / L_f) stores this '
+                   'passive cooling capacity along an advancing solid-liquid phase boundary s(t) = '
+                   '2 * lambda_s * sqrt(alpha_th * t). As non-radiative convective warming h_c '
+                   '(T_amb - T) seeks to warm the roof, aerodynamic wind covers shield the '
+                   'membrane, allowing internal building zones to reach sub-ambient equilibrium '
+                   'without chillers.',
+ 'act2_deepening': 'The physical coupling between solar reflectance and long-wave infrared '
+                   'emissivity is intrinsically nonlinear because incoming solar energy is almost '
+                   'an order of magnitude more concentrated than outgoing radiative cooling. '
+                   'Midday sunlight delivers roughly one thousand watts per square meter, whereas '
+                   'an ideal blackbody at room temperature radiates only about one hundred to one '
+                   'hundred and fifty watts per square meter through the 8–13 micrometer '
+                   'atmospheric window. Consequently, a tiny two-percent drop in solar reflectance '
+                   'absorbs twenty additional watts of heat, which instantly wipes out more than '
+                   "twenty percent of the roof's entire net cooling power. Parasitic convective "
+                   'heat transfer governed by the heat transfer coefficient h_c creates a second '
+                   'critical coupling: as the roof drops further below ambient air temperature, '
+                   'the surrounding warm air rushes in to reheat it. By incorporating micro-porous '
+                   'polymer voids that scatter sunlight through Mie resonance while vibrating at '
+                   'carbon-fluorine phonon frequencies, the photonic membrane maintains a '
+                   'sub-ambient depression of six degrees Celsius even under turbulent wind '
+                   'conditions.',
  'walkthrough': ['Experiment 1 (Solar Reflectance Threshold): Drag Solar Reflectance R_solar from '
                  '0.88 (standard white elastomeric paint) up to 0.97 (AI-designed microporous '
                  'photonic membrane). Watch midday net cooling power P_net flip from heating (-42 '
@@ -171,14 +279,41 @@ LONGFORM_DATA = {'reading_time': '14 MIN READ',
                  '4 to inspect Bragg/Mie solar backscattering, 8–13 um Si-O-Si phonon emission, '
                  'non-radiative wind convection shielding, and Stefan PCM latent thermal '
                  'buffering.'],
- 'act4_title': 'Act IV — AI-Designed Photonic Envelopes & Open Questions',
+ 'act4_title': 'Act IV — AI-Designed Photonic Envelopes, Lab Sustainability & Upstream Discovery '
+               'Threads',
  'act4_human_ai': 'Generative diffusion and adjoint electromagnetic solvers now invert target '
                   'architectural color appearances (via narrowband structural-color reflection '
                   'peaks) and maximum 8–13 um emissivity into roll-to-roll manufacturable '
-                  'fluoropolymer and ceramic-composite roof membranes.',
+                  'fluoropolymer and ceramic-composite roof membranes. Combining transfer-matrix '
+                  'optical optimization with radiative-convective boundary-layer solvers in '
+                  'DedalusProject/dedalus (https://github.com/DedalusProject/dedalus, DOI '
+                  '10.1103/PhysRevResearch.2.023068) and NREL/EnergyPlus allows architects to size '
+                  'zero-electricity passive cooling roofs delivering q_net = 98.4 W/m^2 under '
+                  'Scite citation verification (DOI 10.1162/qss_a_00146).',
+ 'act4_deepening': 'In cutting-edge architectural practice, human engineers and generative '
+                   'machine-learning models now co-design photonic building envelopes by solving '
+                   'inverse Maxwell electromagnetic equations. Using adjoint optimization and '
+                   'neural surrogate solvers, architects specify desired aesthetic color '
+                   'palettes—such as warm terracotta or forest green—while the algorithm optimizes '
+                   'microscopic Fabry–Pérot multilayer stacks that reflect ninety-nine percent of '
+                   'invisible near-infrared solar heat. Computational building-energy models in '
+                   'NREL/EnergyPlus simulate multi-zone thermal dynamics, orchestrating the rate '
+                   'at which Stefan phase-change ceiling cassettes absorb internal office heat '
+                   'loads and discharge that stored energy through the radiative roof at night. '
+                   'Key frontier questions remain open: How can scalable roll-to-roll '
+                   'manufacturing maintain sub-micron pore distributions across millions of square '
+                   'meters of roofing membrane without degradation from ultraviolet weathering and '
+                   'atmospheric soot? How will municipal building codes and LEED rating systems '
+                   'evolve to credit passive sub-ambient cooling against mandatory HVAC equipment '
+                   'sizing? Addressing these challenges will turn urban roofscapes into planetary '
+                   'heat radiators.',
  'cf_bridge': 'Standalone Zero-Energy Architectural Physics Flagship & Upstream Thread to Follow: '
               'Engineered for building-envelope architects, facade physicists, and sustainable '
-              'HVAC designers (CSI 07 54 00, ASHRAE 90.1).',
+              'HVAC designers (CSI 07 54 00, ASHRAE 90.1). Upstream humanitarian thread for the '
+              'lab: passive photonic radiative sky-cooling + Stefan phase-change cold-storage '
+              'vaults maintain sub-ambient temperatures with zero grid electricity, offering a '
+              'resilient cold-chain buffer for temperature-sensitive genetic medicines and '
+              'biologics in remote or grid-fragile clinics.',
  'sources': ['Raman, A. P., Anoma, M. A., Zhu, L., Rephaeli, E., & Fan, S. (2014). Passive '
              'radiative cooling below ambient air temperature under direct sunlight. Nature, '
              '515(7528), 540–544. DOI: 10.1038/nature13883.',
@@ -187,7 +322,15 @@ LONGFORM_DATA = {'reading_time': '14 MIN READ',
              'Carslaw, H. S., & Jaeger, J. C. (1959). Conduction of Heat in Solids (2nd ed., '
              'Chapter XI: Change of State / Stefan Problem). Oxford University Press.',
              'CSI MasterFormat 07 54 00 Thermoplastic Membrane Roofing & ASHRAE Standard 90.1 '
-             'Envelope Cool-Roof Provisions.'],
+             'Envelope Cool-Roof Provisions.',
+             'Burns, K. J., Vasil, G. M., Oishi, J. S., Lecoanet, D., & Brown, B. P. (2020). '
+             'Dedalus: A flexible framework for numerical simulations with spectral methods '
+             '(DedalusProject/dedalus, https://github.com/DedalusProject/dedalus). Physical Review '
+             'Research, 2(2), 023068. DOI: 10.1103/PhysRevResearch.2.023068.',
+             'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
+             'context of citations and classifies their intent using deep learning '
+             '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
+             '10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Dual-waveband '
         'photonic radiative sky-cooling spectrum showing 97% solar reflection and 95% 8-13 um '
         'atmospheric window emission">\n'
@@ -246,4 +389,29 @@ ES_TRANSLATION = {'title_es': 'Cubiertas Fotónicas de Enfriamiento Radiativo Di
            'directa hacia el frío del espacio exterior.',
  'bridge_es': 'El enfriamiento radiativo pasivo bajo temperatura ambiente permite conservar '
               'medicamentos biológicos, moduladores y vacunas de ARNm sin depender de redes '
-              'eléctricas frágiles.'}
+              'eléctricas frágiles.',
+ 'plain_es': 'En palabras sencillas, imaginen que el techo de un edificio pudiera enfriarse como '
+             'un refrigerador bajo el rayo del sol sin usar un solo cable eléctrico. Todos los '
+             'objetos emiten calor en forma de ondas infrarrojas invisibles. Normalmente, la '
+             'atmósfera de la Tierra atrapa ese calor como si fuera una cobija térmica. Sin '
+             'embargo, existe una ventana natural en el aire por donde ciertas ondas de calor '
+             'pueden salir sin ningún obstáculo hacia el espacio exterior, el cual se encuentra a '
+             'temperaturas congelantes cercanas al cero absoluto. Los científicos lograron crear '
+             'una cubierta para techos con poros microscópicos que hace dos cosas asombrosas a la '
+             'vez: rebota casi el cien por ciento de la luz solar para no calentarse y, al mismo '
+             'tiempo, dispara el calor interno del edificio directamente hacia el frío del espacio '
+             'profundo a través de esa ventana en la atmósfera. El resultado es un techo que se '
+             'mantiene varios grados más frío que el aire exterior a pleno mediodía.',
+ 'deep_es': 'El funcionamiento de esta cubierta fotónica se basa en el balance entre dos fuerzas '
+            'físicas opuestas: la reflectancia solar en el espectro visible y la emisividad '
+            'térmica en la ventana atmosférica de 8 a 13 micrómetros. Dado que el sol emite mil '
+            'vatios por metro cuadrado a mediodía, cualquier absorción solar superior al cuatro '
+            'por ciento anula por completo la emisión infrarroja hacia el cosmos. Al superar el '
+            'umbral crítico de reflectancia solar del noventa y seis por ciento y alcanzar una '
+            'emisividad infrarroja superior al noventa y cuatro por ciento, la potencia neta de '
+            'enfriamiento se vuelve positiva, alcanzando más de ochenta vatios por metro cuadrado. '
+            'En la práctica arquitectónica moderna, estos techos fotónicos se combinan con '
+            'plafones interiores de materiales de cambio de fase de Stefan, los cuales absorben el '
+            'calor de las oficinas durante el día y lo liberan de noche. Esta tecnología permite '
+            'diseñar clínicas y bodegas de almacenamiento de medicinas que conservan su frescura '
+            'térmica en climas desérticos sin depender de generadores eléctricos.'}

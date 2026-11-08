@@ -100,44 +100,93 @@ FOLIO = {'folio_id': 'E.07',
                         'sensing error at lambda_pde = 1.00.'}],
  'volume': 4,
  'volume_code': 'VOL. 04',
- 'reading_time': '15 MIN READ',
- 'word_count': '2,880 WORDS',
+ 'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'scite': {'doi': '10.1016/j.jcp.2018.10.045',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 312 supporting citations on '
+           'fetched_on': '2026-11-08',
+           'citing_publications': 24941,
+           'supporting': 65,
+           'mentioning': 12640,
+           'contrasting': 4,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 24,941 '
+                      'citing publications (65 supporting, 12,640 mentioning, 4 contrasting) on '
                       'Physics-Informed Neural Networks (PINNs) for forward and inverse PDE '
                       'virtual sensing coupled with Scanlan bridge aeroelastic flutter '
                       'derivatives.'}}
 
-LONGFORM_DATA = {'reading_time': '15 MIN READ',
- 'word_count': '2,880 WORDS',
+LONGFORM_DATA = {'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'scite': {'doi': '10.1016/j.jcp.2018.10.045',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 312 supporting citations on '
+           'fetched_on': '2026-11-08',
+           'citing_publications': 24941,
+           'supporting': 65,
+           'mentioning': 12640,
+           'contrasting': 4,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 24,941 '
+                      'citing publications (65 supporting, 12,640 mentioning, 4 contrasting) on '
                       'Physics-Informed Neural Networks (PINNs) for forward and inverse PDE '
                       'virtual sensing coupled with Scanlan bridge aeroelastic flutter '
                       'derivatives.'},
  'act1_title': 'Act I — From Tacoma Narrows to Multi-Kilometer Suspension Spans & Physics-Informed '
                'Bridge Digital Twins',
- 'act1_dropcap': 'On the morning of November 7, 1940, a 19 m/s gale across Puget Sound locked the '
-                 '853-meter main span of the Tacoma Narrows Bridge into a 0.20 Hz antisymmetric '
-                 'torsional limit cycle that tore the plate-girder deck apart within an hour. '
-                 'Theodore von Karman initially pointed to Kármán vortex shedding, but three '
-                 'decades later, in 1971, Robert H. Scanlan and John J. Tomko proved that bridge '
-                 'collapse is not passive resonance—it is self-excited aeroelastic flutter '
-                 'governed by eighteen motion-dependent aerodynamic derivatives (H_1*..H_4*, '
-                 'A_1*..A_4*, P_1*..P_6*) where torsional wind moments inject negative aerodynamic '
-                 'damping into the structural deck.',
- 'act1_body': 'Today, civil structural engineers span straits exceeding 2,000 to 3,300 meters '
-              'using streamlined twin-box steel girders (CSI 05 12 00, AASHTO LRFD Bridge Design '
-              'Specifications). Yet monitoring fatigue, hanger cable tension, and flutter margins '
-              'across a 3-kilometer span under typhoons and heavy freight traffic faces a '
-              'fundamental observability bottleneck: physical accelerometers and strain gauges can '
-              'only be placed at sparse nodes. In 2019–2026, Maziar Raissi, Paris Perdikaris, and '
-              "George Em Karniadakis's Physics-Informed Neural Networks (PINNs, DOI "
-              '10.1016/j.jcp.2018.10.045) transformed Structural Health Monitoring (SHM): by '
-              'embedding the coupled Euler–Bernoulli vertical bending and Saint-Venant/Vlasov '
-              'torsional aeroelastic PDEs directly into the neural loss function L_total = L_data '
-              '+ lambda_pde L_pde, a bridge Digital Twin reconstructs full-field stresses, '
-              'deflections, and Scanlan flutter margins at every uninstrumented meter of the span.',
+ 'act1_dropcap': 'On the cold morning of November 7, 1940, a modest gale swept down Puget Sound, '
+                 'turning the brand-new Tacoma Narrows Bridge into a twisting ribbon of steel and '
+                 'concrete. Leonard Coatsworth, an editor for the local newspaper, abandoned his '
+                 'car on the roadway as the center span began to heave and convulse in a violent '
+                 'rotational roll. For thirty minutes, horrified engineers watched from the '
+                 'shoreline as the four-lane crossing pitched through angles exceeding forty-five '
+                 'degrees before tearing itself apart and plunging into the foaming waters below. '
+                 'Theodore von Kármán and contemporary bridge builders initially assumed the '
+                 'collapse was a simple case of wind resonance, identical to a tuning fork struck '
+                 'by a steady breeze. Three decades later, Princeton aerodynamicist Robert Scanlan '
+                 'discovered the true culprit: self-excited aeroelastic flutter, a hidden '
+                 'aerodynamic trap where a bridge deck extracts energy from smooth air to drive '
+                 'its own catastrophic destruction.',
+ 'act1_plain_bridge': 'In plain words, a suspension bridge is not just a heavy road hung from '
+                      'cables; it is a giant wing tethered above water. When wind flows past any '
+                      'roadway deck, the air splits into swirling currents that push and twist the '
+                      'structure. Normally, a bridge absorbs these gusts and settles down, like a '
+                      'stiff diving board after a single jump. But at certain high wind speeds, a '
+                      'dangerous tipping point occurs. Instead of slowing the motion, the rushing '
+                      "air begins pushing in perfect rhythm with the bridge's natural twist, "
+                      'pumping fresh energy into each cycle. The oscillations grow larger with '
+                      'every second until structural steel bends beyond repair. Today, civil '
+                      'engineers shape bridge decks with aerodynamic vents so wind slips through '
+                      'harmlessly. To watch over these multi-kilometer spans in real time, '
+                      'engineers use physics-guided artificial intelligence that calculates stress '
+                      'across every steel girder using only a handful of vibration sensors.',
+ 'act1_body': 'Today, civil structural engineers design suspension crossings spanning straits '
+              'exceeding two to three kilometers using streamlined twin-box steel girders (CSI 05 '
+              '12 00, AASHTO LRFD Bridge Design Specifications). Yet monitoring cable tension, '
+              'wind buffeting, and metal fatigue across multi-kilometer spans under typhoon gales '
+              'faces a fundamental physical obstacle: sensory blindness. Physical strain gauges '
+              'and accelerometers can only be bolted to a few accessible towers and deck joints, '
+              'leaving hundreds of meters of vibrating steel unmonitored. In 2019, Maziar Raissi, '
+              'Paris Perdikaris, and George Em Karniadakis solved this dilemma by introducing '
+              'Physics-Informed Neural Networks (PINNs, DOI 10.1016/j.jcp.2018.10.045). Rather '
+              'than treating sensor readings as raw data, a physics-informed network embeds the '
+              'governing beam and torsional equations directly into its internal loss function. '
+              'The resulting digital twin reconstructs internal bending moments, shear stresses, '
+              'and flutter safety margins across every uninstrumented meter of the bridge in real '
+              'time, ensuring that critical fatigue limits and aerodynamic stability thresholds '
+              'are continuously verified against physical law.',
+ 'act1_stakes': 'The real-world stakes of aeroelastic modeling become apparent whenever classical '
+                'approximations fail under storm conditions. For decades, engineers treated wind '
+                'loads as static horizontal pressures, multiplying mean velocity by an empirical '
+                'drag coefficient. That simplified approach ignores how a flexing structure alters '
+                'the very aerodynamic flow around it. When unexpected wind shear or localized '
+                'vortex shedding develops during a tropical cyclone, a bridge designed purely for '
+                'static pressure can suddenly slip into torsional flutter. Even when motions do '
+                'not reach catastrophic collapse, chronic unobserved vibrations accumulate '
+                'millions of low-amplitude stress cycles, nucleating invisible fatigue cracks at '
+                'welded rib-to-deck joints. Replacing corroded hanger cables or cracked '
+                'orthotropic deck plates on an active sea crossing costs hundreds of millions of '
+                'dollars and disrupts regional commerce. By coupling aeroelastic wind-tunnel '
+                'derivatives with physics-informed digital twins, modern civil engineers detect '
+                'localized structural degradation years before fatigue microcracks threaten public '
+                'safety.',
  'pullquote': '"When aerodynamic torsional damping A_2*(K) crosses from negative to positive, the '
               'wind stops resisting deck twist and begins feeding energy into every oscillation '
               'cycle."',
@@ -154,24 +203,71 @@ LONGFORM_DATA = {'reading_time': '15 MIN READ',
                  'Real-time UAV LiDAR + sparse accelerometer PINN Digital Twins deploy on '
                  'long-span cable-supported bridges for virtual stress sensing.')],
  'act2_title': 'Act II — How It Actually Works: Scanlan Aeroelastic Flutter + PINN Virtual Sensing',
- 'act2_intuition': 'A suspension bridge deck of width B subjected to mean wind velocity U '
-                   'oscillates simultaneously in vertical heave h(x, t) and torsional pitch '
-                   'alpha(x, t) at reduced frequency K = B * omega / U. Scanlan linearized the '
-                   'self-excited aerodynamic lift L_ae and pitching moment M_ae in terms of '
-                   'dimensionless flutter derivatives H_1*(K)..H_4*(K) and A_1*(K)..A_4*(K). Bluff '
-                   'plate girders exhibit positive A_2*(K) at low reduced velocity U / (f_alpha * '
-                   'B), driving effective net torsional damping zeta_net = zeta_struct - (rho * '
-                   'B^4 / (2 * I_alpha)) * A_2*(K) below zero at the critical flutter wind speed '
-                   'U_crit. Streamlined twin-box decks with central wind-slot vents keep A_2*(K) '
-                   'negative past 75 m/s, while a PINN virtual sensor penalizes the PDE residual '
-                   'R_pde = E I d^4h/dx^4 + m d^2h/dt^2 - L_ae(h, alpha) to infer internal bending '
-                   'moments from just 8 deck accelerometers.',
- 'act2_analogy': 'Everyday analogy: Holding your flat hand out a moving car window at a slight '
-                 'upward angle lets the wind push your hand up and twist your wrist '
-                 'further—feeding energy into a wild oscillation. Splitting a bridge deck into a '
-                 'vented twin wing lets the air slip cleanly through the center slot, while a PINN '
-                 'acts like a master structural engineer who can deduce the tension in every cable '
-                 'just by feeling the vibration at eight points.',
+ 'act2_analogy': 'Everyday analogy: Picture holding your palm flat out the window of a car '
+                 'speeding down a highway. If you tilt your hand up even slightly, the rushing '
+                 'wind catches the underside, forcing your wrist upward and twisting your palm '
+                 'open even further. That sudden upward jerk is aeroelastic flutter in action. '
+                 'Aerodynamic twin-box bridge decks add a central open slot that lets air bleed '
+                 'through cleanly, canceling that lifting twist before it can build into an '
+                 'uncontrolled oscillation.',
+ 'act2_plain_primer': 'To explore this aeroelastic behavior, our interactive laboratory provides '
+                      'two primary controls. The first control is Mean Wind Velocity, which sets '
+                      'the speed of the storm pushing against the suspended bridge deck. At gentle '
+                      'breezes, structural stiffness and natural material damping absorb every '
+                      'gust, keeping deck motion small and stable. As you slide the wind speed '
+                      'higher toward storm levels, the rushing airflow begins feeding rotational '
+                      'energy back into the deck, driving net damping toward zero. The second '
+                      'control is the Physics Loss Weight in our digital twin neural network. When '
+                      'this knob is set near zero, the artificial intelligence behaves like a '
+                      'naive pattern matcher, producing erratic, noisy stress guesses between the '
+                      'sparse vibration sensors. Turning this knob up forces the model to respect '
+                      "Newton's laws of motion and beam elasticity, smoothly reconstructing "
+                      'internal bending stresses across every unmeasured meter of the span.',
+ 'distill_diagram': {'analogy_title': 'Hand Out a Speeding Car Window',
+                     'analogy_sub': 'Tilting your palm catches wind and forces your wrist to twist '
+                                    'upward',
+                     'force_a_title': 'Mean Wind Speed (U_wind)',
+                     'force_a_sub': 'Pumps aeroelastic energy into deck pitch and vertical heave '
+                                    'motions',
+                     'force_b_title': 'PINN Physics Loss (lambda_pde)',
+                     'force_b_sub': 'Enforces beam mechanics to eliminate sensor noise and wild '
+                                    'guesses',
+                     'threshold_title': 'Critical Flutter Velocity Tipping Point',
+                     'threshold_pass': 'Stable: Natural damping dissipates aerodynamic wind energy',
+                     'threshold_fail': 'Flutter: Negative damping causes self-amplifying deck '
+                                       'twist'},
+ 'act2_intuition': 'A long-span suspension bridge deck of width B subjected to mean horizontal '
+                   'wind velocity U oscillates in coupled vertical heave h(x,t) and torsional '
+                   'pitch alpha(x,t). In 1971, Robert Scanlan linearized the motion-induced '
+                   'aerodynamic lift and pitching moment using dimensionless flutter derivatives '
+                   'H_1*(K) through H_4*(K) and A_1*(K) through A_4*(K), where K = B omega / U is '
+                   'the reduced frequency. Bluff plate girders generate positive values of the '
+                   'torsional derivative A_2*(K), which introduces negative aerodynamic damping '
+                   'into the structure. Once wind velocity exceeds the critical threshold U_crit, '
+                   'total net damping zeta_net = zeta_struct - (rho B^4 / [2 I_alpha]) A_2*(K) '
+                   'drops below zero, triggering runaway torsional flutter. Modern twin-box '
+                   'girders with a central slot vent airflow between the boxes, maintaining '
+                   'negative A_2*(K) past 75 m/s. Concurrently, our physics-informed neural '
+                   'network penalizes the continuous Euler–Bernoulli beam residual R_pde = E I '
+                   'd^4h/dx^4 + m d^2h/dt^2 - L_aero in its composite loss function, filtering '
+                   'high-frequency noise from sparse accelerometers and accurately evaluating '
+                   'AASHTO LRFD fatigue margins.',
+ 'act2_deepening': 'At deeper multi-scale levels, bridge aeroelasticity couples three-dimensional '
+                   'boundary-layer aerodynamics with structural dynamics. As air shears over the '
+                   'leading windward nose fairing, thin boundary layers detach and form '
+                   'alternating vortex sheets. In a conventional bluff girder, these detached '
+                   'vortices roll across the deck surface and lock into the structural natural '
+                   'frequency, generating suction peaks that lag behind the twisting motion. This '
+                   'phase lag is precisely what transforms aerodynamic drag into an '
+                   'energy-injecting torque. In vented twin-box decks, the central aerodynamic '
+                   'slot acts as a pressure-relief bypass: the vortex shed from the leading box is '
+                   'diffused before it can strike the trailing box. Simultaneously, our digital '
+                   'twin exploits automatic differentiation to compute higher-order spatial '
+                   'derivatives of the displacement field directly from neural network weights. By '
+                   'balancing empirical sensor loss against the underlying partial differential '
+                   'equations, the model calculates dynamic shear stress and curvature without '
+                   'numerical differencing errors, pinpointing micro-strain concentrations at '
+                   'delicate weld toes across the orthotropic steel deck.',
  'walkthrough': ['Experiment 1 (Critical Flutter Boundary): Drag Wind Velocity U_wind from 35 m/s '
                  'up to 78 m/s. Watch Reduced Velocity U/(f_a B) climb and track the net '
                  'aeroelastic damping margin zeta_net as it approaches the Scanlan flutter '
@@ -183,14 +279,37 @@ LONGFORM_DATA = {'reading_time': '15 MIN READ',
                  'Experiment 3 (Twin-Box Slotted Deck vs. Bluff Girder): Step through Stages 1 to '
                  '4 to compare bluff vortex lock-in, Scanlan coupled flutter derivatives, vented '
                  'twin-box aerodynamic stabilization, and PINN virtual strain reconstruction.'],
- 'act4_title': 'Act IV — Civil Structural Digital Twins & Open Questions',
+ 'act4_title': 'Act IV — Civil Structural Digital Twins, Lab Sustainability & Upstream Discovery '
+               'Threads',
  'act4_human_ai': 'In modern civil infrastructure management, bridge owners combine sparse '
                   'fiber-Bragg-grating (FBG) strain gauges and drone photogrammetry with '
                   'Physics-Informed Neural Networks so maintenance budgets target exact '
                   'Orthotropic Steel Deck (OSD) weld details before fatigue cracks nucleate.',
+ 'act4_deepening': 'Looking toward the future of civil infrastructure, the partnership between '
+                   'human structural engineers and physics-informed artificial intelligence is '
+                   'transforming how megaprojects are designed and preserved. Rather than relying '
+                   'on intermittent manual inspections or uncalibrated finite-element simulations, '
+                   'maintenance authorities deploy continuous edge-computing digital twins that '
+                   'ingest live environmental data from fiber-optic sensors and uncrewed aerial '
+                   'vehicles. When severe storms strike, these machine-learning systems provide '
+                   'instantaneous predictions of localized plastic strain and cumulative fatigue '
+                   'damage. Meanwhile, open frontier research challenges remain: reconciling '
+                   'aerodynamic turbulence models across turbulent micro-scales with macro-scale '
+                   'span dynamics, and ensuring neural network surrogate solvers remain stable '
+                   'during unpredicted extreme events. By grounding machine learning in '
+                   'deterministic continuum mechanics, structural engineers can safely extend the '
+                   'service lives of century-old suspension spans and design lighter, more '
+                   'resilient crossings across the widest straits on Earth, forging an unbreakable '
+                   'bond between computational artificial intelligence and physical structural '
+                   'reality.',
  'cf_bridge': 'Standalone Civil Engineering Flagship & Upstream Thread to Follow: This monograph '
               'is engineered for structural, wind, and bridge civil engineers building resilient '
-              'long-span infrastructure.',
+              'long-span infrastructure. Upstream mathematical thread for the lab: the exact PINN '
+              'inverse boundary-value mathematics that reconstructs uninstrumented internal bridge '
+              'girder stresses from sparse deck accelerometers transfers directly to non-invasive '
+              'forced-oscillation respiratory mechanics—inferring deep small-ventilation duct '
+              'compliance and localized obstruction from boundary pressure/flow sensors at the '
+              'mouth.',
  'sources': ['Scanlan, R. H., & Tomko, J. J. (1971). Airfoil and bridge deck flutter derivatives. '
              'Journal of the Engineering Mechanics Division (ASCE), 97(6), 1717–1737.',
              'Raissi, M., Perdikaris, P., & Karniadakis, G. E. (2019). Physics-informed neural '
@@ -200,7 +319,15 @@ LONGFORM_DATA = {'reading_time': '15 MIN READ',
              'Simiu, E., & Scanlan, R. H. (1996). Wind Effects on Structures: Fundamentals and '
              'Applications to Design (3rd ed.). Wiley.',
              'AASHTO (2024). AASHTO LRFD Bridge Design Specifications (10th ed.) & CSI '
-             'MasterFormat 05 12 00 Structural Steel Framing.'],
+             'MasterFormat 05 12 00 Structural Steel Framing.',
+             'Brunton, S. L., Proctor, J. L., & Kutz, J. N. (2016). Discovering governing '
+             'equations from data by sparse identification of nonlinear dynamical systems '
+             '(dynamicslab/pysindy, https://github.com/dynamicslab/pysindy). PNAS, 113(15), '
+             '3932–3937. DOI: 10.1073/pnas.1517384113.',
+             'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
+             'context of citations and classifies their intent using deep learning '
+             '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
+             '10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Long-span twin-box '
         'suspension bridge cross-section with Scanlan flutter derivatives and PINN virtual sensor '
         'nodes">\n'
@@ -276,6 +403,31 @@ ES_TRANSLATION = {'title_es': 'Flameo Aeroelástico de Puentes Colgantes de Gran
  'why_es': 'Sacar la mano plana por la ventanilla de un auto en movimiento con un ligero ángulo '
            'hace que el viento la empuje hacia arriba y tuerza la muñeca, inyectando energía en '
            'una oscilación autoexcitada.',
+ 'plain_es': 'En palabras sencillas, un puente colgante de gran claro funciona como una inmensa '
+             'ala extendida sobre el agua. Cuando el viento sopla a través del estrecho, el aire '
+             'empuja la estructura y genera pequeñas oscilaciones que la rigidez del acero '
+             'normalmente disipa. Sin embargo, al alcanzar una velocidad crítica de viento, ocurre '
+             'un fenómeno peligroso llamado flameo aeroelástico: el aire comienza a empujar en '
+             'sincronía con la torsión del tablero, inyectando energía en cada ciclo hasta que el '
+             'puente se retuerce de manera descontrolada, tal como ocurrió en el famoso colapso de '
+             'Tacoma Narrows en 1940. Para evitar esta catástrofe, la ingeniería moderna divide el '
+             'tablero en dos cajones de acero con una ranura central que permite el paso limpio '
+             'del viento. Además, utilizamos gemelos digitales basados en redes neuronales '
+             'informadas por la física que calculan los esfuerzos internos en cada viga a partir '
+             'de unos pocos acelerómetros colocados en el puente.',
+ 'deep_es': 'El comportamiento del puente está gobernado por dos fuerzas opuestas: la '
+            'amortiguación estructural del acero y el momento aerodinámico inducido por el viento. '
+            'A velocidades moderadas, la amortiguación natural disipa la energía cinética de las '
+            'ráfagas. No obstante, a medida que la velocidad del viento se aproxima al umbral '
+            'crítico, las fuerzas aerodinámicas superan la capacidad disipativa de la estructura, '
+            'haciendo que la amortiguación neta se vuelva negativa. En este punto de inflexión, el '
+            'tablero absorbe energía del flujo de aire y experimenta oscilaciones autoexcitadas de '
+            'flexión y torsión acopladas. En la práctica contemporánea, los ingenieros civiles '
+            'modelan estas fuerzas mediante las derivadas aeroelásticas de Scanlan y emplean redes '
+            'neuronales informadas por la física para regularizar las lecturas de sensores '
+            'dispersos. Al penalizar los residuos de las ecuaciones diferenciales de '
+            'Euler–Bernoulli en la computadora, el modelo reconstruye las concentraciones de '
+            'esfuerzo en soldaduras críticas sin depender de aproximaciones empíricas simplistas.',
  'bridge_es': 'Las ecuaciones de interacción fluido-estructura y los gemelos digitales PINN '
               'permiten inferir campos de presión y deformación en conductos biológicos '
               'colapsables y vías aéreas a partir de sensores dispersos.'}

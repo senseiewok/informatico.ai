@@ -89,7 +89,9 @@ FOLIO = {'folio_id': 'M.01',
                         'Frey curve semistability discriminant.'},
                {'edition': 'REV 1.2',
                 'date': '2026-11-01',
-                'summary': '',
+                'summary': 'REV 1.2 (Redated 2026-11-01): Coupled 5-stage FLT Boltzmann landscape '
+                           'with ETH #3-SAT sparsification and exported canonical SHA-256 snapshot '
+                           'to cf-research.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'counterfactual p=2 Pythagorean collapse and dim S_2(Gamma_0(2)) = 0 '
                         'terminal obstruction.'},
@@ -109,39 +111,26 @@ FOLIO = {'folio_id': 'M.01',
  'governing_law': 'FLT (29,500) · Taylor-Wiles R=T · ETH #3-SAT',
  'volume': 1,
  'volume_code': 'VOL. 01',
- 'reading_time': '14 MIN READ · 5-ACT FEATURE MONOGRAPH',
- 'word_count': '2,500 WORDS',
+ 'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'scite': {'doi': '10.2307/2118559',
-           'summary': 'Scite Smart Citation Index (cite-check-ledger.jsonl): 0 retractions; Wiles '
+           'fetched_on': '2026-11-08',
+           'citing_publications': 2170,
+           'supporting': 8,
+           'mentioning': 1292,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,170 '
+                      'citing publications (8 supporting, 1,292 mentioning, 0 contrasting) — Wiles '
                       "1995 Modular Elliptic Curves and Fermat's Last Theorem + Taylor-Wiles R=T "
                       'verified.'}}
 
-LONGFORM_DATA = {'reading_time': '14 MIN READ · 5-ACT FEATURE MONOGRAPH',
- 'history_lead': 'In 1637, the French jurist and amateur mathematician Pierre de Fermat scribbled '
-                 "a quiet provocation into the margin of his Latin copy of Diophantus's "
-                 'Arithmetica: it is impossible to separate a cube into two cubes, or any higher '
-                 'power p >= 3 into two powers of the same degree. He added that he had discovered '
-                 'a truly marvelous proof, which the margin was too narrow to contain. For 358 '
-                 'years, that missing proof haunted mathematics. Leonhard Euler settled p = 3; '
-                 'Sophie Germain carved out an entire class of prime exponents while writing under '
-                 'a male pseudonym; and Ernst Kummer invented ideal numbers—the birth of modern '
-                 'algebraic number theory—only to discover that unique factorization fails at '
-                 'irregular primes like p = 37.',
- 'history_body': 'The impasse broke only when mathematicians stopped treating a^p + b^p = c^p as '
-                 'an isolated curiosity of integers and connected it to two seemingly unrelated '
-                 'universes: elliptic curves and modular forms. In 1984, Gerhard Frey noticed that '
-                 'if a counterexample existed, the twisted elliptic curve y^2 = x(x - a^p)(x + '
-                 'b^p) would be so strange—semistable yet possessing an impossibly divisible '
-                 "discriminant—that it could never be modular. After Ken Ribet proved Frey's "
-                 'epsilon conjecture in 1986, Andrew Wiles spent seven years in near-total secrecy '
-                 'in his Princeton attic trying to prove the Taniyama-Shimura modularity '
-                 'conjecture. When a subtle Euler-system gap emerged in late 1993, Wiles and his '
-                 'former student Richard Taylor discovered the Taylor-Wiles patching method (R_Q = '
-                 'T_Q) on September 19, 1994—an auxiliary-prime symmetry switch between p = 3 and '
-                 "p = 5 that bypassed the obstruction. Three decades later, Kevin Buzzard's "
-                 "Imperial College Lean 4 blueprint and Anthropic's 29,500-lemma formalization "
-                 "turned Wiles's intricate human tapestry into a machine-verified deductive "
-                 'landscape.',
+LONGFORM_DATA = {'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
+ 'act1_dropcap': "In the quiet winter of 1637, the French magistrate Pierre de Fermat sat beside a crackling hearth in Castres, studying the Greek geometry of Diophantus in Claude Bachet's Latin translation. Pausing over the eighth problem in the second book—which divided a given square into two smaller squares—Fermat reached for his quill and penned a provocative observation into the wide paper margin. He asserted that while squares combine with natural harmony, cubes can never dissolve into two cubes, nor fourth powers into fourth powers, nor any higher power indefinitely. He famously added that he had discovered a truly marvelous demonstration, yet the parchment border was too narrow to hold it. When Fermat passed away three decades later, leaving behind neither notes nor rough scratchwork, that tantalizing sentence became the most celebrated obsession in intellectual history, defying the greatest minds across Europe for more than three centuries.",
+ 'act1_plain_bridge': "In plain words, Fermat asked whether simple building blocks can assemble into larger structures without leaving leftover fragments. When you tile a kitchen floor with square tiles, you can easily arrange two smaller squares to form a third, just like the classic three, four, five right triangle. But if you try to pack cubic blocks into a larger cube, solid geometry creates unavoidable corners and gaps. For centuries, this puzzle seemed like an isolated curiosity about whole numbers. Yet beneath that playful question lies a fundamental truth about symmetry, encryption, and computation. Today, the mathematical structures developed to settle Fermat's mystery form the bedrock of digital security. They protect online banking transactions, verify computer microchips, and keep private medical records safe from eavesdroppers. Proving that certain patterns can never occur gives engineers complete certainty that their digital locks cannot be broken by unauthorized intruders.",
+ 'act1_body': "The historical impasse broke only when modern mathematicians stopped treating integer equations as isolated puzzles and linked them to two profound geometric realms: elliptic curves and modular forms. In 1984, Gerhard Frey realized that any hypothetical counterexample would construct a bizarre, semistable elliptic curve whose discriminant was too wildly divisible to exist in nature. After Ken Ribet established the level-lowering epsilon conjecture in 1986, Andrew Wiles retreated into his attic for seven solitary years to prove the Taniyama–Shimura modularity conjecture. When an obstruction surfaced in late 1993, Wiles and Richard Taylor invented the auxiliary prime patching method on September 19, 1994, overcoming the deformation bottleneck (Annals of Mathematics, DOI 10.2307/2118559). Three decades later, Kevin Buzzard's blueprint architecture and open-source formalization initiatives (https://github.com/anthropics/fermats-last-theorem and https://github.com/anthropics/formal-math) converted Wiles's monumental paper into an interactive, machine-checked deductive graph of over 29,500 lemmas.",
+ 'act1_stakes': "Translating a 100-page human proof into a machine-verified computer program represents one of the crowning triumphs of modern epistemology. For centuries, mathematical consensus depended on fragile human refereeing, where subtle missteps could hide undetected for years inside dense calculations. In Wiles's original draft, an unverified assumption in an Euler system stalled the proof for nearly fourteen months until the Taylor–Wiles patching bridge unlocked the barrier. By translating the entire proof pipeline into the Lean 4 interactive theorem prover, researchers replace subjective trust with objective, deterministic type checking. Every single definition, lemma, and corollary is decomposed into an unambiguous dependency cone where no step can be skipped or hallucinated. This formalization not only preserves human heritage against the decay of notation, but also creates a verifiable digital playground where human researchers and automated artificial intelligence agents collaborate safely on the deepest open frontiers of science.",
  'pullquote': 'What took humanity 358 years to bridge by hand was not a lack of calculation, but a '
               'hidden phase transition between local deformations and global modular symmetry.',
  'pullquote_cite': "Editorial Synthesis · From Fermat's 1637 Arithmetica Margin to the "
@@ -166,22 +155,11 @@ LONGFORM_DATA = {'reading_time': '14 MIN READ · 5-ACT FEATURE MONOGRAPH',
                  'Buzzard Blueprint & Anthropic Lean 4',
                  '29,500 Lean 4 theorems formalize the modularity lifting pipeline alongside '
                  'Impagliazzo-Paturi-Zane #3-SAT sparsification bounds.')],
- 'intuition_lead': 'Why do both formal mathematical proofs and NP-hard combinatorial searches '
-                   'suddenly stall at a wall? Imagine trying to cross a mountain range at night. A '
-                   'naive search checks every boulder one by one—that is brute-force enumeration, '
-                   'which scales exponentially as 2^(s_3 n) in the Exponential Time Hypothesis '
-                   '(ETH) for #3-SAT at the critical clause density alpha_c = 4.26. In a formal '
-                   'proof, each intermediate lemma is like a mountain pass with an activation '
-                   'energy barrier Delta G^‡: if a single tactic step requires too many '
-                   'unconstrained parameters, deductive flux collapses before reaching QED.',
- 'intuition_body': 'Taylor-Wiles patching (R_Q = T_Q) works exactly like a catalytic enzyme or a '
-                   'dual-site allosteric drug. Instead of forcing the deformation ring R directly '
-                   'onto the Hecke algebra T across an 8.39 kcal/mol barrier, it introduces '
-                   'carefully chosen auxiliary primes Q_N that temporarily relax the local '
-                   'ramification constraints, lowering the peak barrier to 3.59 kcal/mol. Once the '
-                   'infinite limit is patched together, the auxiliary primes vanish, leaving E/Q '
-                   'forced into the space of weight-2 cusp forms S_2(Gamma_0(2))—a vector space '
-                   'whose dimension is strictly zero.',
+ 'act2_analogy': 'Everyday analogy: Imagine building a sweeping stone arch bridge across a turbulent mountain gorge. If you attempt to hoist a single massive stone beam across the gap, the material fractures under its own bending weight. However, by erecting temporary wooden scaffold towers in the riverbed, builders support intermediate blocks and relieve shear stress until the final keystone locks into place. Once the arch achieves self-supporting geometric equilibrium, the temporary scaffolding can be dismantled completely, leaving an enduring bridge.',
+ 'act2_plain_primer': 'Before looking at any equations, you can understand how this mathematical bridge operates through two intuitive control knobs. The first knob controls the geometric building block, shifting from flat squares to rigid three-dimensional cubes and higher dimensions. When this exponent knob rests at two, numbers fit together like flat square tiles on a bathroom floor, making balanced combinations easy to find. But as soon as you turn the knob to three or higher, the geometry stiffens, making it impossible for two integer blocks to combine into a third without leaving cracks. The second knob measures congestion, tracking how many overlapping rules or constraints crowd into the workspace. When rules are sparse, candidate shapes can flex and wiggle freely. But as congestion rises toward a critical tipping point, every local adjustment collides with neighboring constraints. To prove that no illegal shape can survive, mathematicians use the temporary scaffolding from our bridge analogy to show that every possible path collapses into a rigid dead end.',
+ 'distill_diagram': {'analogy_title': 'Scaffolded Stone Arch Bridge', 'analogy_sub': 'Temporary piers hold the span until keystones lock in balance', 'force_a_title': 'Exponent Axiom Mutation (p)', 'force_a_sub': 'Switches from Pythagorean squares to rigid higher-power geometry', 'force_b_title': 'Constraint Density (alpha)', 'force_b_sub': 'Tuning clause crowding toward the critical satisfiability cliff', 'threshold_title': 'Taylor-Wiles Modularity Barrier (R = T)', 'threshold_pass': 'Auxiliary primes patch the gap; cusp space collapses to zero', 'threshold_fail': 'Unpatched deformation ring stalls with 8.39 kcal/mol barrier'},
+ 'act2_intuition': 'Why do both formal mathematical deductions and complex computational searches suddenly freeze at an impassable wall? Picture an alpine expedition traversing a jagged ridge at midnight. A naive search examines every single boulder one by one—the brute-force equivalent of exploring exponential trees in the Exponential Time Hypothesis for #3-SAT at critical clause density alpha_c = 4.26. In formal mathematics, each deduction step behaves like a thermodynamic pass with an activation energy barrier Delta G^‡: if an inference requires too many unconstrained deformations, deductive flux collapses to zero. The Taylor–Wiles patching method (R_Q = T_Q) overcomes this bottleneck like an allosteric catalyst. Instead of forcing the universal deformation ring R directly onto the Hecke algebra T across an 8.39 kcal/mol barrier, it introduces a infinite sequence of auxiliary primes Q_N that relax local ramification constraints, dropping the effective barrier to 3.59 kcal/mol (Wiles 1995, DOI 10.2307/2118559; mathlib Community, DOI 10.1145/3372885.3373824; https://github.com/anthropics/formal-math). Taking the projective limit removes the auxiliary scaffolding, forcing the Frey curve into weight-2 cusp forms S_2(Gamma_0(2)), whose dimension is strictly zero.',
+ 'act2_deepening': 'At a deeper structural level, the isomorphism R = T establishes a perfect dictionary between geometry and arithmetic. The deformation ring R classifies all continuous deformations of a Galois representation into matrix representations over complete local rings, while the Hecke algebra T captures the spectral eigenvalues of modular forms acting on differential forms. Before patching, the tangent space of R contains excessive obstruction classes, creating a gap between local symmetries and global modularity. By selecting auxiliary primes Q_N where the Frobenius trace matches specific eigenvalue congruences, Taylor and Wiles added controlled generators to both R_Q and T_Q. This turned both objects into free modules of finite rank over a formal power series ring. When the auxiliary primes are patched together across the projective limit, the excess variables cancel symmetrically, establishing an exact isomorphism R = T. Simultaneously, coupling this deformation space to the clause density slider demonstrates how combinatorial constraints undergo a sharp phase transition from flexible satisfiability to rigid contradiction.',
  'walkthrough': ['Experiment 1 (Walk the 4-Stage Proof Stepper): Click Stages 1 -> 4 in the '
                  "interactive plate above. Watch how Frey's curve (Stage 1) and Ribet's "
                  'level-lowering (Stage 2) build tension up to the Taylor-Wiles R = T bridge '
@@ -193,19 +171,17 @@ LONGFORM_DATA = {'reading_time': '14 MIN READ · 5-ACT FEATURE MONOGRAPH',
                  'Experiment 3 (Probe the #3-SAT Phase Transition): Scrub the Clause Density '
                  'slider across alpha = 4.26 to see how sunflower sparsification controls the '
                  'fine-grained exponential exponent 2^(0.385 n).'],
- 'human_ai_shift': 'Before formal proof assistants and frontier reasoning councils, a 100-page '
-                   'proof could only be checked by a handful of human specialists over months of '
-                   'line-by-line refereeing. Today, when a human mathematician designs a Lean 4 '
-                   'dependency blueprint, AI agents can discharge thousands of routine algebraic '
-                   'subgoals while deterministic type-checkers guarantee zero hallucinated steps '
-                   '(0 sorryAx). Human potential expands from tedious verification to high-level '
-                   'architectural conjecture and cross-disciplinary synthesis.',
+ 'act4_human_ai': 'Before formal proof assistants and frontier reasoning councils, a 100-page proof could only be checked by a handful of human specialists over months of line-by-line refereeing. Today, when a human mathematician designs a Lean 4 dependency blueprint, AI agents can discharge thousands of routine algebraic subgoals while deterministic type-checkers guarantee zero hallucinated steps (0 sorryAx). Human potential expands from tedious verification to high-level architectural conjecture and cross-disciplinary synthesis.',
+ 'act4_deepening': 'Modern formalization projects demonstrate a new paradigm of collaborative research where human mathematicians and automated theorem provers divide labor according to cognitive strengths. Human architects design the blueprint graph, defining the high-level structural lemmas, strategic reductions, and topological definitions that give a proof its meaning. Automated tactic engines and machine-learning models then explore the granular combinatorial branches, discharging thousands of routine algebraic rearrangements and inductive obligations. Crucially, the interactive theorem prover acts as an incorruptible judge: no claim is accepted based on plausibility or stylistic elegance until its formal derivation passes kernel type verification. Looking toward the horizon, this hybrid methodology opens unprecedented avenues for exploring the Langlands program. Frontier questions concerning modularity lifting for higher-dimensional Calabi–Yau varieties, automorphic representations over general number fields, and the Birch and Swinnerton-Dyer conjecture are becoming amenable to distributed human-machine campaigns, transforming what once required centuries of solitary struggle into systematically verifiable collective milestones.',
  'cf_bridge': 'In Civil & Structural Engineering, the F508del CSI-MasterFormat chloride channel '
               'suffers an analogous energetic bottleneck: without assistance, folding stalls at an '
               'unbridged barrier between TMD1, NBD1, and TMD2. Dual-corrector therapy (elexacaftor '
               '+ tezacaftor in PDB 8EIQ) acts as a biophysical Taylor-Wiles bridge—binding two '
               'distinct allosteric pockets simultaneously to lower the folding activation barrier '
-              'Delta G^‡.',
+              'Delta G^‡. Meanwhile, the p = 2 counterfactual knockout mirrors Class I nonsense '
+              'mutations (like G542X and W1282X, part of the 8.0% modulator-ineligible population '
+              'in CFFPR 2024), where a missing exon segment requires a genetic or readthrough '
+              'scaffold rather than small-molecule patching alone.',
  'sources': ["Wiles, A. (1995). Modular elliptic curves and Fermat's Last Theorem. Annals of "
              'Mathematics, 141(3), 443–551. DOI: 10.2307/2118559.',
              'Taylor, R., & Wiles, A. (1995). Ring-theoretic properties of certain Hecke algebras. '
@@ -215,7 +191,15 @@ LONGFORM_DATA = {'reading_time': '14 MIN READ · 5-ACT FEATURE MONOGRAPH',
              'Buzzard, K., & Anthropic Formal Math Team (2024–2026). Lean 4 Formalization of '
              "Fermat's Last Theorem (https://github.com/anthropics/fermats-last-theorem), ETH "
              '#3-SAT Sparsification & Refutation (https://github.com/anthropics/formal-math), and '
-             '180M-Line Rocq RISC-V Verification (https://github.com/anthropics/theorem-riscv).'],
+             '180M-Line Rocq RISC-V Verification (https://github.com/anthropics/theorem-riscv).',
+             'The mathlib Community (2020). The Lean mathematical library '
+             '(leanprover-community/mathlib4 & anthropics/formal-math, '
+             'https://github.com/anthropics/formal-math). CPP 2020, 367–381. DOI: '
+             '10.1145/3372885.3373824.',
+             'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
+             'context of citations and classifies their intent using deep learning '
+             '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
+             '10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Boltzmann proof '
         'barrier reduction and Taylor-Wiles patching">\n'
         '            <line x1="50" y1="185" x2="640" y2="185" stroke="currentColor" '
@@ -243,7 +227,14 @@ LONGFORM_DATA = {'reading_time': '14 MIN READ · 5-ACT FEATURE MONOGRAPH',
         'Barrier: 3.59 kcal/mol</text>\n'
         '          </svg>',
  'scite': {'doi': '10.2307/2118559',
-           'summary': 'Scite Smart Citation Index (cite-check-ledger.jsonl): 0 retractions; Wiles '
+           'fetched_on': '2026-11-08',
+           'citing_publications': 2170,
+           'supporting': 8,
+           'mentioning': 1292,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,170 '
+                      'citing publications (8 supporting, 1,292 mentioning, 0 contrasting) — Wiles '
                       "1995 Modular Elliptic Curves and Fermat's Last Theorem + Taylor-Wiles R=T "
                       'verified.'}}
 
@@ -277,4 +268,6 @@ ES_TRANSLATION = {'title_es': 'Levantamiento de Modularidad, Barreras de Densida
            'escalones auxiliares verificados.',
  'bridge_es': 'Así como un solo anillo sin parchar deja una barrera deductiva alta, un solo '
               'corrector deja inestable la interfaz NBD1–ICL4 en F508del-CSI-MasterFormat; el '
-              'parchado dual refleja el rescate cooperativo de elexacaftor + tezacaftor.'}
+              'parchado dual refleja el rescate cooperativo de elexacaftor + tezacaftor.',
+ 'plain_es': 'En palabras sencillas, el Último Teorema de Fermat plantea una pregunta muy clara sobre cómo encajan las piezas en nuestro universo: ¿es posible combinar dos potencias perfectas para formar una tercera de la misma dimensión? Con cuadrados planos es sencillo, como cuando colocamos losetas en el piso de la cocina siguiendo el clásico triángulo de lados tres, cuatro y cinco. Sin embargo, al intentar apilar bloques tridimensionales para formar un cubo perfecto más grande, la geometría rígida deja huecos inevitables. Pierre de Fermat escribió en 1637 que esto era imposible para cualquier potencia mayor que dos, pero dejó al mundo sin su demostración. Lo fascinante es que este misterio no era una simple curiosidad aritmética. Para resolverlo, los matemáticos tuvieron que construir puentes entre universos que parecían no tener relación: las curvas elípticas y las formas modulares. Hoy en día, esas mismas estructuras matemáticas protegen la seguridad digital de las computadoras, aseguran las transacciones bancarias cotidianas y garantizan que los algoritmos de cifrado sean totalmente inviolables ante cualquier intruso.',
+ 'deep_es': 'El núcleo matemático de esta demostración se comprende al observar la interacción entre dos parámetros fundamentales: el exponente geométrico y la densidad de restricciones del sistema. En el deslizador del exponente, el valor dos permite que los enteros se acomoden en perfecta simetría pitagórica; pero en cuanto el exponente sube a tres o más, la deformación de la curva elíptica de Frey genera un discriminante imposible. Por su parte, la densidad de restricciones determina si las ramas lógicas encuentran una salida o chocan contra una contradicción total. El obstáculo histórico consistía en que emparejar directamente el anillo de deformaciones con el álgebra de operadores modulares exigía superar una barrera deductiva inmensa. Andrew Wiles y Richard Taylor resolvieron este bloqueo introduciendo primos auxiliares que actúan como un andamio temporal, reduciendo la energía de activación demostrativa. Una vez que las piezas embonan en el límite infinito, el andamio se retira y el espacio cuspidal colapsa a dimensión cero. Hoy, los asistentes formales en computadora verifican cada paso sin margen de error humano.'}

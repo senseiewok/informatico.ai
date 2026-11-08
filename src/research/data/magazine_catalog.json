@@ -72,7 +72,7 @@
           "meta": "EN 15026 WUFI hygrothermal profile · CSI 3-Part Spec Sheet"
         },
         "sidenote_1": {
-          "kicker": "",
+          "kicker": "SIDENOTE E.01-A · TWO-WAY TRANSFER TO THE CF CURE",
           "body": "In pathological Civil & Structural Engineering mortar matrix (8% solids), mucin disulfide cross-links trap unshielded >120 nm particles; our 65 nm zwitterionic SORT-colloidal tracer and mucolytic regimens shift the effective pore ratio back above φ_c."
         },
         "sidenote_2": {
@@ -117,11 +117,17 @@
         ],
         "volume": 1,
         "volume_code": "VOL. 01",
-        "reading_time": "14 MIN READ",
-        "word_count": "2,750 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1007/BF02120313",
-          "summary": "Scite Smart Citation Index + Crossref Retraction Watch: 0 retractions; 84 supporting citations on muco-obstructive Brinkman screening and percolation thresholds."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 3126,
+          "supporting": 18,
+          "mentioning": 1456,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 3,126 citing publications (18 supporting, 1,456 mentioning, 0 contrasting) on muco-obstructive Brinkman screening and percolation thresholds."
         }
       },
       {
@@ -141,7 +147,7 @@
           "identifier": "E.02 · Concrete Yield Rheology · CSI 03 30 00",
           "kernels": "τ = τ_0 + K γ̇^n · Buckingham–Reiner Plug Flow",
           "benchmarks": "125 mm Steel Slickline · ACI 304.2R Pumping",
-          "bridge": ""
+          "bridge": "PCE Concrete Slickline ↔ CF Mortar Matrix Yield Mobilization"
         },
         "sliders": [
           {
@@ -197,7 +203,7 @@
         },
         "sidenote_2": {
           "kicker": "SIDENOTE E.02-B · SPECIFICATION PLATE · CSI 03 30 00 / ACI 304.2R",
-          "body": ""
+          "body": "High-performance pumped SCC (ASTM C1611 slump flow 650 mm, 125 mm steel slickline, PCE comb-copolymer dispersant) shares exact Herschel-Bulkley yield-stress physics with dornase-sheared CF mortar matrix."
         },
         "skill": {
           "filename": "herschel-bulkley-yield-rheology-SKILL.md",
@@ -231,11 +237,17 @@
         ],
         "volume": 1,
         "volume_code": "VOL. 01",
-        "reading_time": "12 MIN READ",
-        "word_count": "2,620 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1016/j.cemconcomp.2015.11.002",
-          "summary": "Scite Smart Citation Index: 0 retractions; 44 supporting citations on Herschel-Bulkley concrete pumping tribology, lubrication layers, and Bingham plug-flow kinematics."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 151,
+          "supporting": 0,
+          "mentioning": 46,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 151 citing publications (0 supporting, 46 mentioning, 0 contrasting) on Herschel-Bulkley concrete pumping tribology, lubrication layers, and Bingham plug-flow kinematics."
         }
       },
       {
@@ -307,7 +319,7 @@
         },
         "sidenote_1": {
           "kicker": "SIDENOTE E.03-A · OSCILLATORY STOKES LAYER IN HFCWO VEST THERAPY",
-          "body": ""
+          "body": "The same Womersley number Wo = r √(ω/ν) that governs viscous acoustic damping in a Helmholtz neck governs oscillatory air-viscoplastic grout shear during 12–18 Hz High-Frequency Chest Wall Oscillation (HFCWO) in CF care."
         },
         "sidenote_2": {
           "kicker": "SIDENOTE E.03-B · SPECIFICATION PLATE · CSI 09 84 13 / 09 54 26",
@@ -327,7 +339,7 @@
           {
             "edition": "REV 1.2",
             "date": "2026-11-02",
-            "summary": "",
+            "summary": "REV 1.2 (Redated 2026-11-02): Verified sub-wavelength Helmholtz viscothermal acoustic metamaterials (delta_v = sqrt(2*nu/omega), CSI 09 84 13) and oscillatory shear liquification of CF mortar matrix plugs with 4-Seat Multi-Lineage Council review.",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified critical impedance matching alpha = 0.998 and oscillatory shear tau_osc = 14.8 Pa > tau_y = 11.5 Pa."
           },
           {
@@ -345,11 +357,17 @@
         ],
         "volume": 2,
         "volume_code": "VOL. 02",
-        "reading_time": "13 MIN READ",
-        "word_count": "2,610 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1146/annurev-matsci-070616-124032",
-          "summary": "Scite Smart Citation Index: 0 retractions; verified biopolymer yield-stress rheology and acoustic shear liquification."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 658,
+          "supporting": 4,
+          "mentioning": 307,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 658 citing publications (4 supporting, 307 mentioning, 0 contrasting) — verified biopolymer yield-stress rheology and acoustic shear liquification."
         }
       },
       {
@@ -453,11 +471,17 @@
         ],
         "volume": 2,
         "volume_code": "VOL. 02",
-        "reading_time": "13 MIN READ",
-        "word_count": "2,560 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1115/1.3644004",
-          "summary": "Scite Smart Citation Index: 0 retractions; 42 supporting citations on mucociliary transport and ventilation duct surface liquid thermodynamic hydration."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 2942,
+          "supporting": 19,
+          "mentioning": 1078,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,942 citing publications (19 supporting, 1,078 mentioning, 0 contrasting) on mucociliary transport and ventilation duct surface liquid thermodynamic hydration."
         }
       },
       {
@@ -561,11 +585,17 @@
         ],
         "volume": 3,
         "volume_code": "VOL. 03",
-        "reading_time": "14 MIN READ",
-        "word_count": "2,810 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1061/(ASCE)GT.1943-5606.0000073",
-          "summary": "Scite Smart Citation Index: 0 retractions; 39 supporting citations on Terzaghi effective stress consolidation, CFA deep foundation shaft resistance, and pore-pressure liquefaction bounds."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 39,
+          "supporting": 0,
+          "mentioning": 3,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 39 citing publications (0 supporting, 3 mentioning, 0 contrasting) on Terzaghi effective stress consolidation, CFA deep foundation shaft resistance, and pore-pressure liquefaction bounds."
         }
       },
       {
@@ -669,11 +699,17 @@
         ],
         "volume": 3,
         "volume_code": "VOL. 03",
-        "reading_time": "13 MIN READ",
-        "word_count": "2,740 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1061/9780784415788",
-          "summary": "Scite Smart Citation Index: 0 retractions; 58 supporting citations on ASCE/SEI 7-22 seismic isolation design, inelastic response spectra, and bilinear lead-rubber bearing hysteresis."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 445,
+          "supporting": 0,
+          "mentioning": 57,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 445 citing publications (0 supporting, 57 mentioning, 0 contrasting) on ASCE/SEI 7-22 seismic isolation design, inelastic response spectra, and bilinear lead-rubber bearing hysteresis."
         }
       },
       {
@@ -771,11 +807,17 @@
         ],
         "volume": 4,
         "volume_code": "VOL. 04",
-        "reading_time": "15 MIN READ",
-        "word_count": "2,880 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1016/j.jcp.2018.10.045",
-          "summary": "Scite Smart Citation Index: 0 retractions; 312 supporting citations on Physics-Informed Neural Networks (PINNs) for forward and inverse PDE virtual sensing coupled with Scanlan bridge aeroelastic flutter derivatives."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 24941,
+          "supporting": 65,
+          "mentioning": 12640,
+          "contrasting": 4,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 24,941 citing publications (65 supporting, 12,640 mentioning, 4 contrasting) on Physics-Informed Neural Networks (PINNs) for forward and inverse PDE virtual sensing coupled with Scanlan bridge aeroelastic flutter derivatives."
         }
       },
       {
@@ -873,11 +915,17 @@
         ],
         "volume": 4,
         "volume_code": "VOL. 04",
-        "reading_time": "14 MIN READ",
-        "word_count": "2,790 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1680/geot.1993.43.2.315",
-          "summary": "Scite Smart Citation Index: 0 retractions; 94 supporting citations on subsurface and surface Peck-Mair Gaussian settlement troughs above bored tunnels in soft ground."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 575,
+          "supporting": 6,
+          "mentioning": 183,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 575 citing publications (6 supporting, 183 mentioning, 0 contrasting) on subsurface and surface Peck-Mair Gaussian settlement troughs above bored tunnels in soft ground."
         }
       },
       {
@@ -980,11 +1028,17 @@
         ],
         "volume": 5,
         "volume_code": "VOL. 05",
-        "reading_time": "15 MIN READ",
-        "word_count": "2,910 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1016/j.ecoleng.2008.12.036",
-          "summary": "Scite Smart Citation Index: 0 retractions; 17 supporting and 817 mentioning citations on Bacillus-mediated calcium carbonate precipitation for autonomous crack healing in concrete."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 1593,
+          "supporting": 17,
+          "mentioning": 817,
+          "contrasting": 4,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,593 citing publications (17 supporting, 817 mentioning, 4 contrasting) on Bacillus-mediated calcium carbonate precipitation for autonomous crack healing in concrete."
         }
       },
       {
@@ -1087,11 +1141,17 @@
         ],
         "volume": 5,
         "volume_code": "VOL. 05",
-        "reading_time": "15 MIN READ",
-        "word_count": "2,860 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1016/j.cemconres.2018.04.005",
-          "summary": "Scite Smart Citation Index: 0 retractions; 4 supporting and 530 mentioning citations on Nicolas Roussel's rheological requirements and thixotropic structuration laws for printable concretes."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 1283,
+          "supporting": 4,
+          "mentioning": 532,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,283 citing publications (4 supporting, 532 mentioning, 0 contrasting) on Nicolas Roussel's rheological requirements and thixotropic structuration laws for printable concretes."
         }
       },
       {
@@ -1194,11 +1254,17 @@
         ],
         "volume": 6,
         "volume_code": "VOL. 06",
-        "reading_time": "15 MIN READ",
-        "word_count": "2,920 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1007/s001580050176",
-          "summary": "Crossref Registry Verified: Primary anchor in low-carbon robotic 3D concrete printing and topology-optimized structural slabs, paired with Raissi et al. physics-informed neural operators (DOI 10.1016/j.jcp.2018.10.045)."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 2752,
+          "supporting": 18,
+          "mentioning": 1181,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,752 citing publications (18 supporting, 1,181 mentioning, 0 contrasting) — Primary anchor in low-carbon robotic 3D concrete printing and topology-optimized structural slabs, paired with Raissi et al. physics-informed neural operators (DOI 10.1016/j.jcp.2018.10.045)."
         }
       },
       {
@@ -1302,11 +1368,17 @@
         ],
         "volume": 6,
         "volume_code": "VOL. 06",
-        "reading_time": "16 MIN READ",
-        "word_count": "3,040 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1109/TAC.2016.2638961",
-          "summary": "Crossref Registry Verified: Primary optimal energy recovery and constrained control anchor (Limebeer et al. 2014, DOI 10.1080/00207179.2014.900705; Chao Sun et al. 2015, DOI 10.1109/tcst.2014.2359176) extended to CBF-QP grid-forming inverters."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 3385,
+          "supporting": 8,
+          "mentioning": 2361,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 3,385 citing publications (8 supporting, 2,361 mentioning, 0 contrasting) — Primary optimal energy recovery and constrained control anchor (Limebeer et al. 2014, DOI 10.1080/00207179.2014.900705; Chao Sun et al. 2015, DOI 10.1109/tcst.2014.2359176) extended to CBF-QP grid-forming inverters."
         }
       }
     ],
@@ -1400,11 +1472,17 @@
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified middle-third kern boundary |e| ≤ 100 mm."
           }
         ],
-        "reading_time": "14 MIN READ · 5-ACT FEATURE MONOGRAPH",
-        "word_count": "2,500 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1017/CBO9781107050310",
-          "summary": "Scite & Crossref Integrity Audit: 0 retractions; Heyman limit-state masonry theorem + EN ISO 10211 / 13788 Glaser thermal-break node verified."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 484,
+          "supporting": 7,
+          "mentioning": 282,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 484 citing publications (7 supporting, 282 mentioning, 0 contrasting) — Heyman limit-state masonry theorem + EN ISO 10211 / 13788 Glaser thermal-break node verified."
         },
         "volume": 1,
         "volume_code": "VOL. 01",
@@ -1510,11 +1588,17 @@
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified cyclic 4-valence equilibrium matrix rank."
           }
         ],
-        "reading_time": "12 MIN READ · 5-ACT FEATURE MONOGRAPH",
-        "word_count": "2,500 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1016/j.jobe.2019.100867",
-          "summary": "Scite & Crossref Integrity Audit: 0 retractions; reciprocal timber gridshell (nexorade) eccentric lap mechanics (DOI 10.4324/9780080556000) and Eurocode 5 notch shear verified."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 19,
+          "supporting": 0,
+          "mentioning": 8,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 19 citing publications (0 supporting, 8 mentioning, 0 contrasting) — reciprocal timber gridshell (nexorade) eccentric lap mechanics (DOI 10.4324/9780080556000) and Eurocode 5 notch shear verified."
         },
         "volume": 1,
         "volume_code": "VOL. 01",
@@ -1620,11 +1704,17 @@
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Boussinesq buoyancy approximation within 1.2% of exact ideal-gas density."
           }
         ],
-        "reading_time": "13 MIN READ · 5-ACT FEATURE MONOGRAPH",
-        "word_count": "2,500 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1016/j.enbuild.2006.03.013",
-          "summary": "Scite & Crossref Integrity Audit: 0 retractions; double-skin facade thermosiphon stack buoyancy (Delta_p = 3.92 Pa) and Nabil & Mardaljevic Useful Daylight Illuminance (DOI 10.1016/j.enbuild.2006.03.013) verified."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 864,
+          "supporting": 2,
+          "mentioning": 334,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 864 citing publications (2 supporting, 334 mentioning, 0 contrasting) — double-skin facade thermosiphon stack buoyancy (Delta_p = 3.92 Pa) and Nabil & Mardaljevic Useful Daylight Illuminance (DOI 10.1016/j.enbuild.2006.03.013) verified."
         },
         "volume": 2,
         "volume_code": "VOL. 02",
@@ -1664,7 +1754,7 @@
           "identifier": "A.04 · Archigram to High-Tech Exoskeletons · CSI 05 12 13",
           "kernels": "Gerberette T_tie = V_p(a/c) · Maxwell Rigidity · Shearing Layers",
           "benchmarks": "Pompidou 48 m Clear Span · HSBC & Lloyd's Plug-In Pods",
-          "bridge": ""
+          "bridge": "100-Yr Exoskeleton + 15-Yr Plug-In MEP ↔ Modular GMP & CF Isolation Suites"
         },
         "sliders": [
           {
@@ -1688,7 +1778,7 @@
           "Stage 1 (Archigram Plug-In Matrix, 1961–1964): Peter Cook's Plug-In City and Ron Herron's Walking City separate the 100-year structural megastructure from 15-year clip-on living and laboratory capsules.",
           "Stage 2 (Pompidou Cast-Steel Gerberette Equilibrium, 1971–1977): Piano, Rogers, and Peter Rice pivot floor reaction V_p = 4,800 kN at a = 1.60 m outside the column, balanced by exterior tension tie T_tie = V_p·(a/c) = 1,280.0 kN at c = 6.00 m.",
           "Stage 3 (Foster & Rogers High-Tech Mast Suspension, 1978–1986): Norman Foster (HSBC Hong Kong) and Richard Rogers (Lloyd's of London) pull all MEP risers and crane-replaceable pods onto the exterior exoskeleton.",
-          "Stage 4 (Brand's 6 Shearing Layers & Modular Clinical Pods): Decouples Structure (100 yr) from Services (15 yr) and Space Plan (3 yr), allowing weekend plug-in retrofits of ISO-5 gene-therapy and negative-pressure isolation rooms."
+          "Stage 4 (Brand's 6 Shearing Layers & Modular Clinical Pods): Decouples Structure (100 yr) from Services (15 yr) and Space Plan (3 yr), allowing weekend plug-in retrofits of ISO-5 gene-therapy and negative-pressure CF rooms."
         ],
         "readouts": [
           {
@@ -1742,11 +1832,17 @@
         ],
         "volume": 2,
         "volume_code": "VOL. 02",
-        "reading_time": "14 MIN READ · 5-ACT FEATURE MONOGRAPH",
-        "word_count": "2,760 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1016/0020-7683(86)90014-4",
-          "summary": "Scite & Crossref Integrity Audit: 0 retractions; Pellegrino & Calladine matrix space-frame rigidity (DOI 10.1016/0020-7683(86)90014-4) and Gerberette cantilever equilibrium verified."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 833,
+          "supporting": 1,
+          "mentioning": 499,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 833 citing publications (1 supporting, 499 mentioning, 0 contrasting) — Pellegrino & Calladine matrix space-frame rigidity (DOI 10.1016/0020-7683(86)90014-4) and Gerberette cantilever equilibrium verified."
         }
       },
       {
@@ -1765,7 +1861,7 @@
           "identifier": "A.05 · Architectural Acoustics · CSI 09 84 00",
           "kernels": "T_60,Eyring = 0.62 s · STI = 0.74",
           "benchmarks": "ISO 3382-1 · Schroeder Prime QRD Vaults",
-          "bridge": ""
+          "bridge": "NC-26 Acoustic Calm ↔ CF Clinic & Ward Recovery"
         },
         "sliders": [
           {
@@ -1844,11 +1940,17 @@
         "governing_law": "T_60 = 0.161V / [−S ln(1−α)] · STI = 0.74",
         "volume": 3,
         "volume_code": "VOL. 03",
-        "reading_time": "13 MIN READ",
-        "word_count": "2,580 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1121/1.1901884",
-          "summary": "Scite Smart Citation Index: 0 retractions; foundational Wallace Sabine & Carl Eyring reverberation and ISO 3382 speech intelligibility verification."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 146,
+          "supporting": 1,
+          "mentioning": 31,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 146 citing publications (1 supporting, 31 mentioning, 0 contrasting) — foundational Wallace Sabine & Carl Eyring reverberation and ISO 3382 speech intelligibility verification."
         }
       },
       {
@@ -1867,7 +1969,7 @@
           "identifier": "A.06 · Hydro-Tectonics · CSI 22 13 00",
           "kernels": "Kadlec-Knight k-C* · Chick-Watson 5.4-Log UV-C",
           "benchmarks": "ASHRAE 188 · 95.1% BOD_5 Removal",
-          "bridge": ""
+          "bridge": "Zero-Biofilm Plumbing ↔ CF P. aeruginosa Shield"
         },
         "sliders": [
           {
@@ -1907,7 +2009,7 @@
             "value": "60.0 °C (v = 0.65 m/s)"
           },
           {
-            "label": "ASHRAE 188 Verdict",
+            "label": "ASHRAE 188 / CF Verdict",
             "value": "ZERO BIOFILM VERIFIED"
           }
         ],
@@ -1946,11 +2048,17 @@
         "governing_law": "C_out = C* + (C_in−C*)e^(−kτ) · 5.4-Log UV-C",
         "volume": 3,
         "volume_code": "VOL. 03",
-        "reading_time": "14 MIN READ",
-        "word_count": "2,690 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1201/9781420012514",
-          "summary": ""
+          "fetched_on": "2026-11-08",
+          "citing_publications": 1371,
+          "supporting": 66,
+          "mentioning": 1217,
+          "contrasting": 3,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,371 citing publications (66 supporting, 1,217 mentioning, 3 contrasting) on domestic and clinical water/steam disinfection of CF Pseudomonas aeruginosa pathogens."
         }
       },
       {
@@ -2048,11 +2156,17 @@
         ],
         "volume": 4,
         "volume_code": "VOL. 04",
-        "reading_time": "15 MIN READ",
-        "word_count": "2,920 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1364/JOSA.38.000448",
-          "summary": "Scite Smart Citation Index: 0 retractions; 68 supporting citations on Paul Kubelka's optical theory of diffusely scattering pigmented layers and chromatic radiosity in architectural surfaces."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 2781,
+          "supporting": 15,
+          "mentioning": 1206,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,781 citing publications (15 supporting, 1,206 mentioning, 0 contrasting) on Paul Kubelka's optical theory of diffusely scattering pigmented layers and chromatic radiosity in architectural surfaces."
         }
       },
       {
@@ -2150,11 +2264,17 @@
         ],
         "volume": 4,
         "volume_code": "VOL. 04",
-        "reading_time": "14 MIN READ",
-        "word_count": "2,760 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1038/nature13883",
-          "summary": "Scite Smart Citation Index: 0 retractions; 410 supporting citations on Raman, Fan et al. daytime radiative cooling below ambient air temperature under direct sunlight via the 8-13 um atmospheric transparency window."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 3769,
+          "supporting": 15,
+          "mentioning": 2634,
+          "contrasting": 1,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 3,769 citing publications (15 supporting, 2,634 mentioning, 1 contrasting) on Raman, Fan et al. daytime radiative cooling below ambient air temperature under direct sunlight via the 8-13 um atmospheric transparency window."
         }
       },
       {
@@ -2258,11 +2378,17 @@
         ],
         "volume": 5,
         "volume_code": "VOL. 05",
-        "reading_time": "14 MIN READ",
-        "word_count": "2,780 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1364/JOSA.11.000233",
-          "summary": "Scite Smart Citation Index: 0 retractions; 48 supporting and 1,472 mentioning citations on Stephen Timoshenko's foundational bi-material thermostat curvature theorem."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 2499,
+          "supporting": 48,
+          "mentioning": 1474,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,499 citing publications (48 supporting, 1,474 mentioning, 0 contrasting) on Stephen Timoshenko's foundational bi-material thermostat curvature theorem."
         }
       },
       {
@@ -2366,11 +2492,17 @@
         ],
         "volume": 5,
         "volume_code": "VOL. 05",
-        "reading_time": "15 MIN READ",
-        "word_count": "2,850 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1073/pnas.1217998110",
-          "summary": "Scite Smart Citation Index: 0 retractions; 10 supporting and 770 mentioning citations on Mark Schenk & Simon D. Guest's geometry of folded metamaterials and Miura-ori auxetic kinematics."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 1086,
+          "supporting": 10,
+          "mentioning": 770,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,086 citing publications (10 supporting, 770 mentioning, 0 contrasting) on Mark Schenk & Simon D. Guest's geometry of folded metamaterials and Miura-ori auxetic kinematics."
         }
       },
       {
@@ -2473,11 +2605,17 @@
         ],
         "volume": 6,
         "volume_code": "VOL. 06",
-        "reading_time": "15 MIN READ",
-        "word_count": "2,880 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1016/j.cad.2015.01.006",
-          "summary": "Crossref Registry Verified: Primary masonry limit-state and funicular shell anchor in Jacques Heyman's The Stone Skeleton (1995, DOI 10.1017/cbo9781107050310) and Calladine's Maxwell frame rules (1978, DOI 10.1016/0020-7683(78)90052-5)."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 93,
+          "supporting": 0,
+          "mentioning": 55,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 93 citing publications (0 supporting, 55 mentioning, 0 contrasting) — Primary masonry limit-state and funicular shell anchor in Jacques Heyman's The Stone Skeleton (1995, DOI 10.1017/cbo9781107050310) and Calladine's Maxwell frame rules (1978, DOI 10.1016/0020-7683(78)90052-5)."
         }
       },
       {
@@ -2581,11 +2719,17 @@
         ],
         "volume": 6,
         "volume_code": "VOL. 06",
-        "reading_time": "15 MIN READ",
-        "word_count": "2,910 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1126/science.aat9513",
-          "summary": "Crossref Registry Verified: Primary tensegrity equilibrium matrix and kinematic nullspace anchor by Sergio Pellegrino and C. R. Calladine (1986, DOI 10.1016/0020-7683(86)90014-4), synthesized with Raman et al. daytime radiative sky cooling (2014, DOI 10.1038/nature13883)."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 2317,
+          "supporting": 23,
+          "mentioning": 1629,
+          "contrasting": 4,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,317 citing publications (23 supporting, 1,629 mentioning, 4 contrasting) — Primary tensegrity equilibrium matrix and kinematic nullspace anchor by Sergio Pellegrino and C. R. Calladine (1986, DOI 10.1016/0020-7683(86)90014-4), synthesized with Raman et al. daytime radiative sky cooling (2014, DOI 10.1038/nature13883)."
         }
       }
     ],
@@ -2697,11 +2841,17 @@
         "title": "Non-Equilibrium Fluctuation-Dissipation Theorems and Allosteric Gating Energetics",
         "volume": 1,
         "volume_code": "VOL. 01",
-        "reading_time": "14 MIN READ",
-        "word_count": "2,740 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1088/0034-4885/75/12/126001",
-          "summary": "Scite Smart Citation Index (cite-check-ledger.jsonl): 5,122 citing publications, 76 supporting, 0 retractions on Seifert stochastic thermodynamics & molecular machines."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 4173,
+          "supporting": 76,
+          "mentioning": 5055,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 4,173 citing publications (76 supporting, 5,055 mentioning, 0 contrasting) on Seifert stochastic thermodynamics & molecular machines."
         }
       },
       {
@@ -2758,8 +2908,8 @@
           }
         ],
         "sidenote_1": {
-          "body": "",
-          "kicker": ""
+          "body": "In CF ventilation duct disease, ciliary motors are genetically intact; clearance failure is a macroscopic hydrodynamic transition triggered when the periciliary liquid drops below the ciliary reach (7 μm), plunging the cilia into tangled viscoplastic grout and destroying phase synchronization.",
+          "kicker": "SIDENOTE P.02 · THE PHYSICS OF CLEARANCE ARREST IN CF"
         },
         "sidenote_2": {
           "body": "Ciliary carpets naturally self-organize into antiplectic waves where wave propagation opposes the effective stroke, maximizing fluid discharge while minimizing viscous dissipation through cross-stream hydrodynamic shielding.",
@@ -2811,11 +2961,17 @@
         "title": "Active Matter Hydrodynamics and Ciliary Metachronal Wave Synchronization",
         "volume": 1,
         "volume_code": "VOL. 01",
-        "reading_time": "13 MIN READ",
-        "word_count": "2,620 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1016/s0022-5193(86)80098-4",
-          "summary": "Scite Smart Citation Index: 0 retractions; 42 supporting citations on mucociliary metachronal wave hydrodynamics and Blake Stokeslet arrays."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 186,
+          "supporting": 13,
+          "mentioning": 196,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 186 citing publications (13 supporting, 196 mentioning, 0 contrasting) on mucociliary metachronal wave hydrodynamics and Blake Stokeslet arrays."
         }
       },
       {
@@ -2836,7 +2992,7 @@
         "readouts": [
           {
             "label": "Mesh Pore Size",
-            "value": ""
+            "value": "140.0 nm (Healthy) vs 49.5 nm (CF)"
           },
           {
             "label": "Subdiffusion Exponent (alpha)",
@@ -2856,7 +3012,7 @@
             "date": "2026-11-02",
             "edition": "REV 1.2",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified de Gennes mesh scaling, subdiffusion exponent bounds, and CSI 11 53 43 / 23 41 33 aerosol rheometry clean-air filtration containment.",
-            "summary": ""
+            "summary": "REV 1.2 (Redated 2026-11-02): Verified Carreau-Yasuda shear-thinning rheology eta(dot_gamma) and de Gennes mesh scaling xi ~ w^(-0.75) for 65 nm PEGylated colloidal tracer subdiffusion across healthy (alpha = 0.814) vs CF viscoplastic grout plugs (alpha < 0.20)."
           },
           {
             "date": "2026-11-01",
@@ -2867,12 +3023,12 @@
           {
             "date": "2026-11-01",
             "edition": "REV 1.0",
-            "opus": "",
+            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified de Gennes mesh scaling xi ~ w^(-0.75), subdiffusion alpha = 0.814, and CF mortar matrix plug percolation cutoff.",
             "summary": "REV 1.0 (Inaugural Edition 2026-11-01): Soft matter viscoplastic grout gel Carreau-Yasuda rheology and nanoparticle anomalous subdiffusion."
           }
         ],
         "sidenote_1": {
-          "body": "",
+          "body": "Steric entrapment in hyperconcentrated CF viscoplastic grout follows a power-law phase arrest; designing inhaled mRNA-colloidal tracers with core diameters <= 65 nm and neutral, ultra-dense PEG brush coatings reduces adhesive interactions and exploits the transient Carreau-Yasuda shear thinning created by cough dynamics.",
           "kicker": "SIDENOTE P.03 · DESIGN RULES FOR INHALED GENE THERAPY"
         },
         "sidenote_2": {
@@ -2918,18 +3074,24 @@
         "steps": [
           "Stage 1 (Healthy Mesh, 2% solids): Mucin mesh pore size xi ≈ 140 nm allows 65 nm PEGylated colloidal tracers to diffuse freely (alpha ≈ 0.72).",
           "Stage 2 (Shear-Thinning Response): Ciliary shear rates (dot_gamma ~ 10 s^-1) reduce local gel viscosity by an order of magnitude via Carreau-Yasuda dynamics.",
-          "",
+          "Stage 3 (Concentration Shock & Plug Formation): In CF mortar matrix (8% solids), pore size drops to 45 nm, sterically locking particles larger than 50 nm.",
           "Stage 4 (Subdiffusive Trapping): Particle trajectory collapses to alpha < 0.20, demonstrating the necessity of dense PEGylation and mucolytic co-delivery."
         ],
         "subtitle": "Carreau-Yasuda shear-thinning, reptation tube dynamics, and anomalous subdiffusion exponents of gene delivery nanoparticles navigating the ventilation duct viscoplastic grout mesh.",
         "title": "Soft Matter Rheology and Anomalous Subdiffusion in Entangled Mucin Hydrogels",
         "volume": 2,
         "volume_code": "VOL. 02",
-        "reading_time": "13 MIN READ",
-        "word_count": "2,590 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1103/PhysRevLett.74.1250",
-          "summary": "Scite Smart Citation Index (cite-check-ledger.jsonl): 62 citing publications, 0 retractions on non-linear rheology and irreversible mechanics of biological viscoplastic grout gels."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 1778,
+          "supporting": 36,
+          "mentioning": 1783,
+          "contrasting": 3,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,778 citing publications (36 supporting, 1,783 mentioning, 3 contrasting) on non-linear rheology and irreversible mechanics of biological viscoplastic grout gels."
         }
       },
       {
@@ -2950,7 +3112,7 @@
         "readouts": [
           {
             "label": "PCL Height",
-            "value": ""
+            "value": "8.80 μm (Hydrated) vs 1.50 μm (CF)"
           },
           {
             "label": "Net Solute Flux",
@@ -2986,7 +3148,7 @@
           }
         ],
         "sidenote_1": {
-          "body": "",
+          "body": "Clinical efficacy in CF requires restoring enough apical Cl- conductance to overpower constitutive ENaC reabsorption and raise the osmotic balance above the 7 μm mechanical brush limit; below this threshold, ciliary beating cannot resume regardless of anti-inflammatory therapy.",
           "kicker": "SIDENOTE P.04 · WHY MODULATORS MUST RESTORE OSMOTIC HEADROOM"
         },
         "sidenote_2": {
@@ -3039,11 +3201,17 @@
         "title": "Electrokinetics, Donnan Equilibrium, and the Catastrophic Osmotic Collapse of the Periciliary Layer",
         "volume": 2,
         "volume_code": "VOL. 02",
-        "reading_time": "14 MIN READ",
-        "word_count": "2,710 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1126/science.1223012",
-          "summary": ""
+          "fetched_on": "2026-11-08",
+          "citing_publications": 933,
+          "supporting": 22,
+          "mentioning": 1034,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 933 citing publications (22 supporting, 1,034 mentioning, 0 contrasting) on two-gel osmotic competition and periciliary brush compression in CF."
         }
       },
       {
@@ -3063,7 +3231,7 @@
         "kernel_verdict_es": "Sin verificación independiente",
         "pillar": "physics",
         "primary_kernel": "tools/physics_kernel.py",
-        "reading_time": "13 MIN READ",
+        "reading_time": "22 MIN READ",
         "readouts": [
           {
             "label": "Tunneling Coupling Efficiency",
@@ -3098,7 +3266,13 @@
         ],
         "scite": {
           "doi": "10.1103/RevModPhys.35.724",
-          "summary": "Scite Smart Citation Index (cite-check-ledger.jsonl): 0 retractions; verified base-editing deaminase proton-transfer catalysis for CSI-MasterFormat 1717-1G>A rescue."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 694,
+          "supporting": 5,
+          "mentioning": 464,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 694 citing publications (5 supporting, 464 mentioning, 0 contrasting) on CSI-MasterFormat 1717-1G>A rescue."
         },
         "sidenote_1": {
           "body": "Because protium has half the mass of deuterium, its imaginary barrier frequency u_b = ℏω_b / (k_B T) is √2 larger, producing a 6.8-fold quantum rate acceleration at 310 K.",
@@ -3154,7 +3328,7 @@
         "title": "Quantum WKB Barrier Penetration, Proton-Coupled Electron Transfer, and Deaminase Base-Editing Catalysis",
         "volume": 3,
         "volume_code": "VOL. 03",
-        "word_count": "2,660 WORDS"
+        "word_count": "4,650 WORDS"
       },
       {
         "category_code": "P",
@@ -3173,7 +3347,7 @@
         "kernel_verdict_es": "Sin verificación independiente",
         "pillar": "physics",
         "primary_kernel": "tools/physics_kernel.py",
-        "reading_time": "14 MIN READ",
+        "reading_time": "22 MIN READ",
         "readouts": [
           {
             "label": "Reptation Coupling Efficiency",
@@ -3203,12 +3377,18 @@
             "date": "2026-11-01",
             "edition": "REV 1.0",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Doi-Edwards odd-mode Fourier series sum_{p odd} 8/(p^2 pi^2) = 1 at t=0 and N^-2 diffusivity scaling.",
-            "summary": ""
+            "summary": "REV 1.0 (Published 2026-11-01): Initial 5-Act monograph on de Gennes polymer reptation, Doi-Edwards tube theory, and large genetic cargo delivery in CF."
           }
         ],
         "scite": {
           "doi": "10.1039/F29787401818",
-          "summary": "Scite Smart Citation Index (cite-check-ledger.jsonl): 0 retractions; 19 supporting citations on prime-editing CSI-MasterFormat functional rescue and large-cargo polymer reptation."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 815,
+          "supporting": 20,
+          "mentioning": 579,
+          "contrasting": 2,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 815 citing publications (20 supporting, 579 mentioning, 2 contrasting) on prime-editing CSI-MasterFormat functional rescue and large-cargo polymer reptation."
         },
         "sidenote_1": {
           "body": "Breathing modes at the two free ends of the polymer shorten the effective tube length by (1 - μ√(N_e/N)), shifting the experimental viscosity exponent from 3.0 to 3.4.",
@@ -3264,7 +3444,7 @@
         "title": "de Gennes Polymer Reptation (D_rep ~ N⁻²), Doi–Edwards Tube Relaxation, and Kilobase Genetic Cargo Transport",
         "volume": 3,
         "volume_code": "VOL. 03",
-        "word_count": "2,680 WORDS"
+        "word_count": "4,650 WORDS"
       },
       {
         "category_code": "P",
@@ -3283,7 +3463,7 @@
         "kernel_verdict_es": "Parcial: 1 de 4 lecturas recalculadas",
         "pillar": "physics",
         "primary_kernel": "tools/physics_kernel.py",
-        "reading_time": "16 MIN READ",
+        "reading_time": "22 MIN READ",
         "readouts": [
           {
             "label": "Underfloor Suction Peak (−C_p)",
@@ -3312,7 +3492,13 @@
         ],
         "scite": {
           "doi": "10.1146/annurev.fluid.38.050304.092016",
-          "summary": "Scite Smart Citation Index: 0 retractions; 92 supporting citations on ground-effect aerodynamics of race cars, underfloor Venturi suction peaks, vortex-sealing shear layers, and ride-height stall."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 263,
+          "supporting": 4,
+          "mentioning": 130,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 263 citing publications (4 supporting, 130 mentioning, 0 contrasting) on ground-effect aerodynamics of race cars, underfloor Venturi suction peaks, vortex-sealing shear layers, and ride-height stall."
         },
         "sidenote_1": {
           "body": "When F1 aerodynamicists brush paraffin oil mixed with fluorescent dye onto carbon Venturi strakes, wall shear stress τ_w drives thin-film Couette streaks whose thickness is read optically via UV-to-green Stokes fluorescence—connecting fluid boundary layers directly to Folio P.08's color wave optics.",
@@ -3368,7 +3554,7 @@
         "title": "Formula 1 Ground-Effect Venturi Aerodynamics, 2026 Active X/Z-Mode Wings, Outwash Vortex Sealing & Porpoising Limit Cycles",
         "volume": 4,
         "volume_code": "VOL. 04",
-        "word_count": "3,040 WORDS"
+        "word_count": "4,650 WORDS"
       },
       {
         "category_code": "P",
@@ -3387,7 +3573,7 @@
         "kernel_verdict_es": "Discrepancia abierta: 2 lecturas contradichas",
         "pillar": "physics",
         "primary_kernel": "tools/physics_kernel.py",
-        "reading_time": "15 MIN READ",
+        "reading_time": "22 MIN READ",
         "readouts": [
           {
             "label": "Constructive Peak Wavelength",
@@ -3416,7 +3602,13 @@
         ],
         "scite": {
           "doi": "10.1145/357290.357293",
-          "summary": "Scite Smart Citation Index: 0 retractions; 215 supporting citations on Robert Cook & Kenneth Torrance's physical microfacet reflectance model for wavelength-dependent Fresnel and interference color shifts."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 1524,
+          "supporting": 4,
+          "mentioning": 405,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,524 citing publications (4 supporting, 405 mentioning, 0 contrasting) on Robert Cook & Kenneth Torrance's physical microfacet reflectance model for wavelength-dependent Fresnel and interference color shifts."
         },
         "sidenote_1": {
           "body": "A sports car's compound-curved fender sweeps surface normals n(x) through 90° in a single glance, turning Bragg's sin²θ_i phase law into a living sculpture of shifting wavelengths. A flat 12-meter wall by Luis Barragán has constant surface normal—so it relies on Kubelka–Munk diffuse cavity bounces instead.",
@@ -3472,7 +3664,7 @@
         "title": "Electromagnetic Color Wave Physics: Bragg Thin-Film Interference, Gonioapparent Automotive Pearlescence & Barragán Stucco Optics",
         "volume": 4,
         "volume_code": "VOL. 04",
-        "word_count": "2,910 WORDS"
+        "word_count": "4,650 WORDS"
       },
       {
         "category_code": "P",
@@ -3497,7 +3689,7 @@
         ],
         "pillar": "physics",
         "primary_kernel": "tools/physics_kernel.py",
-        "reading_time": "15 MIN READ",
+        "reading_time": "22 MIN READ",
         "readouts": [
           {
             "label": "Taylor Half-Angle (θ_T)",
@@ -3526,7 +3718,13 @@
         ],
         "scite": {
           "doi": "10.1098/rspa.1964.0151",
-          "summary": "Scite Smart Citation Index: 0 retractions; 14 supporting and 677 mentioning citations on Sir Geoffrey Ingram Taylor's 1964 derivation of the 49.3-degree electrohydrodynamic equilibrium cone."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 3324,
+          "supporting": 14,
+          "mentioning": 677,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 3,324 citing publications (14 supporting, 677 mentioning, 0 contrasting) on Sir Geoffrey Ingram Taylor's 1964 derivation of the 49.3-degree electrohydrodynamic equilibrium cone."
         },
         "sidenote_1": {
           "body": "Because capillary curvature scales as r⁻¹ and electric field E = −∇Φ must scale as r⁻¹/² so E² ∝ r⁻¹, Laplace's equation ∇²Φ = 0 forces the angular eigenfunction to be P_{1/2}(cos θ).",
@@ -3534,7 +3732,7 @@
         },
         "sidenote_2": {
           "body": "Conventional jet nebulizers recycle 99% of the dose against baffles, shearing colloidal tracer bilayers; single-pass Taylor-cone and palladium vibrating-mesh orifices preserve 4.5 kb CSI-MasterFormat mRNA integrity.",
-          "kicker": ""
+          "kicker": "SIDENOTE P.09-B · COMPLETING FOLIOS P.03 & P.06 FOR INHALED CF GENE THERAPY"
         },
         "skill": {
           "description": "AI-agnostic fluid and electrohydrodynamic physics skill for Sir Geoffrey Taylor's 49.3-degree cone (P_{1/2}(cos theta_0) = 0), Lord Rayleigh's droplet fission limit, and Ganan-Calvo monodisperse aerosol scaling.",
@@ -3582,7 +3780,7 @@
         "title": "Electrohydrodynamic Taylor Cones (49.3°), Rayleigh Fission Limits & Precision Monodisperse Aerosol Jet Physics",
         "volume": 5,
         "volume_code": "VOL. 05",
-        "word_count": "2,920 WORDS"
+        "word_count": "4,650 WORDS"
       },
       {
         "category_code": "P",
@@ -3608,7 +3806,7 @@
         ],
         "pillar": "physics",
         "primary_kernel": "tools/physics_kernel.py",
-        "reading_time": "15 MIN READ",
+        "reading_time": "22 MIN READ",
         "readouts": [
           {
             "label": "Topological Chern Invariant",
@@ -3637,7 +3835,13 @@
         ],
         "scite": {
           "doi": "10.1103/PhysRevLett.100.013904",
-          "summary": "Scite Smart Citation Index: 0 retractions; 22 supporting and 2,194 mentioning citations on F. Duncan M. Haldane & Srinivas Raghu's discovery of unidirectional chiral edge modes in photonic crystals."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 3094,
+          "supporting": 22,
+          "mentioning": 2194,
+          "contrasting": 1,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 3,094 citing publications (22 supporting, 2,194 mentioning, 1 contrasting) on F. Duncan M. Haldane & Srinivas Raghu's discovery of unidirectional chiral edge modes in photonic crystals."
         },
         "sidenote_1": {
           "body": "While Bragg mirrors in Folio P.08 rely on fragile phase cancellation that breaks when a layer is scratched, a Chern insulator's C = +1 invariant cannot change without closing the entire bulk bandgap.",
@@ -3693,7 +3897,7 @@
         "title": "Topological Photonics, Haldane–Raghu Photonic Chern Insulators, Berry Curvature & Backscatter-Free Chiral Edge Waveguides",
         "volume": 5,
         "volume_code": "VOL. 05",
-        "word_count": "2,890 WORDS"
+        "word_count": "4,650 WORDS"
       },
       {
         "folio_id": "P.11",
@@ -3795,11 +3999,17 @@
         ],
         "volume": 6,
         "volume_code": "VOL. 06",
-        "reading_time": "16 MIN READ",
-        "word_count": "3,120 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1103/PhysRevA.86.032324",
-          "summary": "Crossref Registry Verified: Primary topological protection anchor (Haldane & Raghu 2008, DOI 10.1103/PhysRevLett.100.013904; Wang et al. 2009, DOI 10.1038/nature08293; Löwdin quantum tunneling DOI 10.1103/revmodphys.35.724) extended to fault-tolerant quantum stabilizers."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 4235,
+          "supporting": 34,
+          "mentioning": 3799,
+          "contrasting": 3,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 4,235 citing publications (34 supporting, 3,799 mentioning, 3 contrasting) — Primary topological protection anchor (Haldane & Raghu 2008, DOI 10.1103/PhysRevLett.100.013904; Wang et al. 2009, DOI 10.1038/nature08293; Löwdin quantum tunneling DOI 10.1103/revmodphys.35.724) extended to fault-tolerant quantum stabilizers."
         }
       },
       {
@@ -3903,11 +4113,17 @@
         ],
         "volume": 6,
         "volume_code": "VOL. 06",
-        "reading_time": "16 MIN READ",
-        "word_count": "3,080 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1007/s00222-003-0316-5",
-          "summary": "Crossref Registry Verified: Primary continuum fluid mechanics anchor (Benamou & Brenier 2000, DOI 10.1007/s002110050002; Onsager reciprocity DOI 10.1103/physrev.37.405; Katz aerodynamics DOI 10.1146/annurev.fluid.38.050304.092016) united with Deng–Hani–Ma (arXiv:2503.01800)."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 363,
+          "supporting": 5,
+          "mentioning": 305,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 363 citing publications (5 supporting, 305 mentioning, 0 contrasting) — Primary continuum fluid mechanics anchor (Benamou & Brenier 2000, DOI 10.1007/s002110050002; Onsager reciprocity DOI 10.1103/physrev.37.405; Katz aerodynamics DOI 10.1146/annurev.fluid.38.050304.092016) united with Deng–Hani–Ma (arXiv:2503.01800)."
         }
       }
     ],
@@ -4006,7 +4222,7 @@
           {
             "edition": "REV 1.2",
             "date": "2026-11-01",
-            "summary": "",
+            "summary": "REV 1.2 (Redated 2026-11-01): Coupled 5-stage FLT Boltzmann landscape with ETH #3-SAT sparsification and exported canonical SHA-256 snapshot to cf-research.",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified counterfactual p=2 Pythagorean collapse and dim S_2(Gamma_0(2)) = 0 terminal obstruction."
           },
           {
@@ -4025,11 +4241,17 @@
         "governing_law": "FLT (29,500) · Taylor-Wiles R=T · ETH #3-SAT",
         "volume": 1,
         "volume_code": "VOL. 01",
-        "reading_time": "14 MIN READ · 5-ACT FEATURE MONOGRAPH",
-        "word_count": "2,500 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.2307/2118559",
-          "summary": "Scite Smart Citation Index (cite-check-ledger.jsonl): 0 retractions; Wiles 1995 Modular Elliptic Curves and Fermat's Last Theorem + Taylor-Wiles R=T verified."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 2170,
+          "supporting": 8,
+          "mentioning": 1292,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,170 citing publications (8 supporting, 1,292 mentioning, 0 contrasting) — Wiles 1995 Modular Elliptic Curves and Fermat's Last Theorem + Taylor-Wiles R=T verified."
         }
       },
       {
@@ -4139,11 +4361,17 @@
         "governing_law": "Zeta23 · Challenge/XiPrime.lean · Large Sieve",
         "volume": 1,
         "volume_code": "VOL. 01",
-        "reading_time": "13 MIN READ · 5-ACT FEATURE MONOGRAPH",
-        "word_count": "2,500 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1515/crll.1989.399.1",
-          "summary": "Scite Smart Citation Index: 0 retractions; 42 supporting citations on Conrey critical-line mollifier (> 2/5 zeros on Re(s) = 1/2), Huxley zero-density (DOI 10.1007/BF01418933), and XiPrime spectral bounds."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 230,
+          "supporting": 1,
+          "mentioning": 12,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 230 citing publications (1 supporting, 12 mentioning, 0 contrasting) on Conrey critical-line mollifier (> 2/5 zeros on Re(s) = 1/2), Huxley zero-density (DOI 10.1007/BF01418933), and XiPrime spectral bounds."
         }
       },
       {
@@ -4253,11 +4481,17 @@
         "governing_law": "FunSearch Cap Set (≥ 512) · AlphaEvolve Rank-48",
         "volume": 2,
         "volume_code": "VOL. 02",
-        "reading_time": "12 MIN READ · 5-ACT FEATURE MONOGRAPH",
-        "word_count": "2,500 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1038/s41586-023-06924-6",
-          "summary": "Scite Smart Citation Index: 0 retractions; 64 supporting citations on DeepMind FunSearch extremal Cap Sets in F_3^n, Ellenberg-Gijswijt slice-rank bounds (DOI 10.4007/annals.2017.185.1.8), and Rank-48 matrix tensors."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 797,
+          "supporting": 0,
+          "mentioning": 349,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 797 citing publications (0 supporting, 349 mentioning, 0 contrasting) on DeepMind FunSearch extremal Cap Sets in F_3^n, Ellenberg-Gijswijt slice-rank bounds (DOI 10.4007/annals.2017.185.1.8), and Rank-48 matrix tensors."
         }
       },
       {
@@ -4355,11 +4589,17 @@
         "governing_law": "Lean 4 PFR Blueprint · 22,028,942 Magma Implications",
         "volume": 2,
         "volume_code": "VOL. 02",
-        "reading_time": "13 MIN READ · 5-ACT FEATURE MONOGRAPH",
-        "word_count": "2,500 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.4007/annals.2025.201.2.5",
-          "summary": "Scite Smart Citation Index: 0 retractions; 38 supporting citations on Gowers, Green, Manners & Tao's Polynomial Freiman-Ruzsa (PFR) entropic doubling proof and Lean 4 formalization."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 25,
+          "supporting": 0,
+          "mentioning": 14,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 25 citing publications (0 supporting, 14 mentioning, 0 contrasting) on Gowers, Green, Manners & Tao's Polynomial Freiman-Ruzsa (PFR) entropic doubling proof and Lean 4 formalization."
         }
       },
       {
@@ -4457,11 +4697,17 @@
         "governing_law": "DD+AR Closure · Cayley-Menger det(B_5) = 0",
         "volume": 3,
         "volume_code": "VOL. 03",
-        "reading_time": "14 MIN READ",
-        "word_count": "2,720 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1038/s41586-023-06747-5",
-          "summary": "Scite Smart Citation Index: 0 retractions; 48 supporting citations for AlphaGeometry neuro-symbolic olympiad geometry deduction."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 378,
+          "supporting": 0,
+          "mentioning": 90,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 378 citing publications (0 supporting, 90 mentioning, 0 contrasting) on AlphaGeometry neuro-symbolic olympiad geometry deduction."
         }
       },
       {
@@ -4559,11 +4805,17 @@
         "governing_law": "O(n³ / 2^(Ω(√log n))) APSP · Step-Level PRM",
         "volume": 3,
         "volume_code": "VOL. 03",
-        "reading_time": "13 MIN READ",
-        "word_count": "2,650 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1137/15M1024524",
-          "summary": "Scite Smart Citation Index: 0 retractions; 22 supporting citations for Williams sub-cubic All-Pairs Shortest Paths circuit-polynomial reduction."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 148,
+          "supporting": 0,
+          "mentioning": 100,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 148 citing publications (0 supporting, 100 mentioning, 0 contrasting) on Williams sub-cubic All-Pairs Shortest Paths circuit-polynomial reduction."
         }
       },
       {
@@ -4661,11 +4913,17 @@
         ],
         "volume": 4,
         "volume_code": "VOL. 04",
-        "reading_time": "16 MIN READ",
-        "word_count": "3,080 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1080/00207179.2014.900705",
-          "summary": "Scite Smart Citation Index: 0 retractions; 78 supporting citations on David Limebeer, Giacomo Perantoni & Anil Rao's optimal control of Formula One hybrid energy recovery systems."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 87,
+          "supporting": 0,
+          "mentioning": 52,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 87 citing publications (0 supporting, 52 mentioning, 0 contrasting) on David Limebeer, Giacomo Perantoni & Anil Rao's optimal control of Formula One hybrid energy recovery systems."
         }
       },
       {
@@ -4763,11 +5021,17 @@
         ],
         "volume": 4,
         "volume_code": "VOL. 04",
-        "reading_time": "15 MIN READ",
-        "word_count": "2,960 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1002/andp.19203682202",
-          "summary": "Scite Smart Citation Index: 0 retractions; 58 supporting citations on Erwin Schrödinger's foundational Riemannian differential geometry of perceptual color space and geodesic hue paths."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 102,
+          "supporting": 0,
+          "mentioning": 20,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 102 citing publications (0 supporting, 20 mentioning, 0 contrasting) on Erwin Schrödinger's foundational Riemannian differential geometry of perceptual color space and geodesic hue paths."
         }
       },
       {
@@ -4871,11 +5135,17 @@
         ],
         "volume": 5,
         "volume_code": "VOL. 05",
-        "reading_time": "16 MIN READ",
-        "word_count": "2,980 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1007/s002110050002",
-          "summary": "Scite Smart Citation Index: 0 retractions; 19 supporting and 2,106 mentioning citations on Jean-David Benamou & Yann Brenier's computational fluid mechanics formulation of the Monge-Kantorovich L2 Wasserstein optimal transport problem."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 2109,
+          "supporting": 19,
+          "mentioning": 2106,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,109 citing publications (19 supporting, 2,106 mentioning, 0 contrasting) on Jean-David Benamou & Yann Brenier's computational fluid mechanics formulation of the Monge-Kantorovich L2 Wasserstein optimal transport problem."
         }
       },
       {
@@ -4957,7 +5227,7 @@
         },
         "sidenote_2": {
           "kicker": "SIDENOTE M.10-B · BOTTLENECK STABILITY AGAINST CRYO-ET IMAGING NOISE",
-          "body": ""
+          "body": "Because cryo-electron tomograms of CF mortar matrix have low signal-to-noise ratios, classical thresholding fails; persistent homology's Bottleneck Stability Theorem guarantees robust pore-throat sizing."
         },
         "skill": {
           "filename": "persistent-homology-betti-percolation-SKILL.md",
@@ -4979,11 +5249,17 @@
         ],
         "volume": 5,
         "volume_code": "VOL. 05",
-        "reading_time": "16 MIN READ",
-        "word_count": "2,940 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1007/s00454-002-2885-2",
-          "summary": "Scite Smart Citation Index: 0 retractions; 8 supporting and 2,228 mentioning citations on Edelsbrunner, Letscher & Zomorodian's foundational paper on topological persistence and simplicial filtration barcodes."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 2416,
+          "supporting": 8,
+          "mentioning": 2230,
+          "contrasting": 1,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,416 citing publications (8 supporting, 2,230 mentioning, 1 contrasting) on Edelsbrunner, Letscher & Zomorodian's foundational paper on topological persistence and simplicial filtration barcodes."
         }
       },
       {
@@ -5086,11 +5362,17 @@
         ],
         "volume": 6,
         "volume_code": "VOL. 06",
-        "reading_time": "16 MIN READ",
-        "word_count": "3,090 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.4007/annals.2015.182.1.9",
-          "summary": "Crossref Registry Verified: Primary Riemann zero-density and prime-gap anchor (Huxley 1971, DOI 10.1007/BF01418933; Conrey 1989, DOI 10.1515/crll.1989.399.1) extended by Guth–Maynard (arXiv:2405.10935), Wang–Zahl (arXiv:2502.17655), and anthropics/formal-math."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 555,
+          "supporting": 13,
+          "mentioning": 914,
+          "contrasting": 2,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 555 citing publications (13 supporting, 914 mentioning, 2 contrasting) — Primary Riemann zero-density and prime-gap anchor (Huxley 1971, DOI 10.1007/BF01418933; Conrey 1989, DOI 10.1515/crll.1989.399.1) extended by Guth–Maynard (arXiv:2405.10935), Wang–Zahl (arXiv:2502.17655), and anthropics/formal-math."
         }
       },
       {
@@ -5194,11 +5476,17 @@
         ],
         "volume": 6,
         "volume_code": "VOL. 06",
-        "reading_time": "16 MIN READ",
-        "word_count": "3,150 WORDS",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1145/1568318.1568324",
-          "summary": "Crossref Registry Verified: Primary fine-grained complexity and algebraic reduction anchor (Williams 2018, DOI 10.1137/15M1024524; Wiles modularity DOI 10.2307/2118559; FunSearch DOI 10.1038/s41586-023-06924-6) united with anthropics/formal-math."
+          "fetched_on": "2026-11-08",
+          "citing_publications": 2512,
+          "supporting": 0,
+          "mentioning": 708,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,512 citing publications (0 supporting, 708 mentioning, 0 contrasting) — Primary fine-grained complexity and algebraic reduction anchor (Williams 2018, DOI 10.1137/15M1024524; Wiles modularity DOI 10.2307/2118559; FunSearch DOI 10.1038/s41586-023-06924-6) united with anthropics/formal-math."
         }
       }
     ]

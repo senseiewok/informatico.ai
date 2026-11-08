@@ -781,11 +781,108 @@ def get_folio_es_meta(slug: str, folio: dict, col: dict) -> dict:
         "title_es": base.get("title_es") or seo_es_title or folio["title"],
         "subtitle_es": base.get("subtitle_es") or seo_es_desc or folio["subtitle"],
         "why_es": base.get("why_es") or seo_es_desc or folio["subtitle"],
+        "plain_es": base.get("plain_es", ""),
+        "deep_es": base.get("deep_es", ""),
         "bridge_es": base.get(
             "bridge_es",
             f"Este monográfico conecta el invariante {folio['governing_law']} ({col['bridge']}) con nuestros modelos de transporte, estructura y verificación formal para física multiescala.",
         ),
     }
+
+
+def _wrap_svg_lines(text: str, width: int = 38, max_lines: int = 2) -> list[str]:
+    words = str(text or "").split()
+    if not words:
+        return ["", ""]
+    lines: list[str] = []
+    cur: list[str] = []
+    for w in words:
+        cand = " ".join(cur + [w])
+        if len(cand) <= width or not cur:
+            cur.append(w)
+        else:
+            lines.append(" ".join(cur))
+            cur = [w]
+            if len(lines) == max_lines - 1:
+                break
+    rem_idx = sum(len(x.split()) for x in lines)
+    rem = " ".join(words[rem_idx:])
+    if rem:
+        lines.append(rem[: width + 6])
+    while len(lines) < max_lines:
+        lines.append("")
+    return lines[:max_lines]
+
+
+def render_inline_distillation_svg(fid: str, slug: str, folio: dict, lf: dict) -> str:
+    """Render Plate {fid}-D: Inline Contextual Visual Distillation SVG bridging everyday analogy to competing forces and critical threshold."""
+    dd = lf.get("distill_diagram") or {}
+    if not dd:
+        return ""
+    a_title = esc(decf_title(dd.get("analogy_title", f"Everyday Analogy ({fid})"))[:44])
+    a_s1, a_s2 = [esc(decf_title(x)) for x in _wrap_svg_lines(dd.get("analogy_sub", ""), 36, 2)]
+    fa_title = esc(decf_title(dd.get("force_a_title", "Primary Driving Force"))[:44])
+    fa_s1, fa_s2 = [esc(decf_title(x)) for x in _wrap_svg_lines(dd.get("force_a_sub", ""), 38, 2)]
+    fb_title = esc(decf_title(dd.get("force_b_title", "Counter-Balancing Force"))[:44])
+    fb_s1, fb_s2 = [esc(decf_title(x)) for x in _wrap_svg_lines(dd.get("force_b_sub", ""), 38, 2)]
+    th_title = esc(decf_title(dd.get("threshold_title", "Critical Phase Threshold"))[:48])
+    tp_s1, tp_s2 = [esc(decf_title(x)) for x in _wrap_svg_lines(dd.get("threshold_pass", ""), 36, 2)]
+    tf_s1, tf_s2 = [esc(decf_title(x)) for x in _wrap_svg_lines(dd.get("threshold_fail", ""), 36, 2)]
+
+    sliders = folio.get("sliders", [])
+    sl0_lbl = esc(decf_title(sliders[0]["label"].split("(")[0].strip())[:32]) if len(sliders) > 0 else "Primary Control"
+    sl1_lbl = esc(decf_title(sliders[1]["label"].split("(")[0].strip())[:32]) if len(sliders) > 1 else "Secondary Control"
+    gov_short = esc(decf_title(folio.get("governing_law", ""))[:72])
+
+    return f"""        <figure class="tp-distill-figure" role="group" aria-label="Plate {esc(fid)}-D Visual Intuition Bridge">
+          <svg class="tp-distill-svg" viewBox="0 0 920 228" role="img" aria-labelledby="tp-distill-title-{esc(slug)}">
+            <title id="tp-distill-title-{esc(slug)}">Plate {esc(fid)}-D Visual Intuition Bridge: from {a_title} to {fa_title} versus {fb_title} and {th_title}</title>
+            <rect x="6" y="6" width="908" height="216" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
+            <rect x="20" y="20" width="266" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-prussian)" stroke-width="1.5"/>
+            <text x="34" y="40" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-prussian)" data-en="1 · EVERYDAY ANALOGY ({esc(fid)})" data-es="1 · ANALOGÍA COTIDIANA ({esc(fid)})">1 · EVERYDAY ANALOGY ({esc(fid)})</text>
+            <text x="34" y="60" font-size="10.4" font-weight="700" fill="var(--tp-ink)">{a_title}</text>
+            <text x="34" y="78" font-size="9.1" fill="var(--tp-graphite)">{a_s1}</text>
+            <text x="34" y="92" font-size="9.1" fill="var(--tp-graphite)">{a_s2}</text>
+            <rect x="32" y="106" width="242" height="30" rx="5" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1"/>
+            <text x="42" y="125" font-family="var(--font-mono, monospace)" font-size="8.6" font-weight="600" fill="var(--tp-prussian)">Slider 1: {sl0_lbl}</text>
+            <rect x="32" y="144" width="242" height="30" rx="5" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1"/>
+            <text x="42" y="163" font-family="var(--font-mono, monospace)" font-size="8.6" font-weight="600" fill="var(--tp-verdigris)">Slider 2: {sl1_lbl}</text>
+
+            <path d="M 288 104 L 312 104" stroke="var(--tp-prussian)" stroke-width="2" stroke-dasharray="4 3"/>
+            <polygon points="312,99 320,104 312,109" fill="var(--tp-prussian)"/>
+
+            <rect x="322" y="20" width="276" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-rule-strong)" stroke-width="1.5"/>
+            <text x="336" y="40" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-ink)" data-en="2 · TWO COMPETING FORCES" data-es="2 · DOS FUERZAS EN COMPETENCIA">2 · TWO COMPETING FORCES</text>
+            <rect x="334" y="48" width="252" height="60" rx="6" fill="var(--tp-stone)" stroke="var(--tp-prussian)" stroke-width="1.2"/>
+            <text x="344" y="65" font-size="9.6" font-weight="700" fill="var(--tp-prussian)">&#9650; {fa_title}</text>
+            <text x="344" y="80" font-size="8.7" fill="var(--tp-graphite)">{fa_s1}</text>
+            <text x="344" y="93" font-size="8.7" fill="var(--tp-graphite)">{fa_s2}</text>
+            <rect x="334" y="116" width="252" height="60" rx="6" fill="var(--tp-stone)" stroke="var(--tp-minium)" stroke-width="1.2"/>
+            <text x="344" y="133" font-size="9.6" font-weight="700" fill="var(--tp-minium)">&#9660; {fb_title}</text>
+            <text x="344" y="148" font-size="8.7" fill="var(--tp-graphite)">{fb_s1}</text>
+            <text x="344" y="161" font-size="8.7" fill="var(--tp-graphite)">{fb_s2}</text>
+
+            <path d="M 600 104 L 624 104" stroke="var(--tp-verdigris)" stroke-width="2" stroke-dasharray="4 3"/>
+            <polygon points="624,99 632,104 624,109" fill="var(--tp-verdigris)"/>
+
+            <rect x="634" y="20" width="266" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-verdigris)" stroke-width="1.5"/>
+            <text x="648" y="39" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-verdigris)" data-en="3 · CRITICAL TIPPING POINT" data-es="3 · UMBRAL CRÍTICO DE FASE">3 · CRITICAL TIPPING POINT</text>
+            <text x="648" y="56" font-size="9.6" font-weight="700" fill="var(--tp-ink)">{th_title}</text>
+            <rect x="646" y="64" width="242" height="54" rx="6" fill="var(--tp-stone)" stroke="var(--tp-verdigris)" stroke-width="1.2"/>
+            <text x="656" y="80" font-family="var(--font-mono, monospace)" font-size="8.5" font-weight="700" fill="var(--tp-verdigris)">&#10003; STABLE / CERTIFIED REGIME</text>
+            <text x="656" y="94" font-size="8.5" fill="var(--tp-ink)">{tp_s1}</text>
+            <text x="656" y="106" font-size="8.5" fill="var(--tp-ink)">{tp_s2}</text>
+            <rect x="646" y="124" width="242" height="54" rx="6" fill="var(--tp-stone)" stroke="var(--tp-minium)" stroke-width="1.2"/>
+            <text x="656" y="140" font-family="var(--font-mono, monospace)" font-size="8.5" font-weight="700" fill="var(--tp-minium)">&#9888; CRITICAL BREAKDOWN REGIME</text>
+            <text x="656" y="154" font-size="8.5" fill="var(--tp-ink)">{tf_s1}</text>
+            <text x="656" y="166" font-size="8.5" fill="var(--tp-ink)">{tf_s2}</text>
+
+            <text x="460" y="208" text-anchor="middle" font-family="var(--font-mono, monospace)" font-size="8.9" font-weight="700" fill="var(--tp-prussian)">PLATE {esc(fid)}-D · VISUAL INTUITION BRIDGE → GOVERNING OPERATOR: {gov_short}</text>
+          </svg>
+          <figcaption class="tp-distill-caption">
+            <strong>Plate {esc(fid)}-D · Visual Intuition Bridge:</strong> Before diving into the formal equations, follow how the everyday physical analogy (left) sets two competing mechanisms in tension (center) around a sharp tipping point (right) that you can test directly with the two sliders in Act III.
+          </figcaption>
+        </figure>"""
 
 
 def render_futuristic_cadence_svg(folio_code: str = "INFORMATICO.AI") -> str:
@@ -928,7 +1025,7 @@ def render_multi_chapter_monograph_sections(
     act1_subchapter_html = f"""
         <h3 id="ch-i-1-{esc(slug)}" data-en="&sect; I.1 &middot; Classical Obstruction &amp; Structural Boundary" data-es="&sect; I.1 &middot; Obstrucci&oacute;n Cl&aacute;sica y Frontera Estructural">&sect; I.1 &middot; Classical Obstruction &amp; Structural Boundary</h3>
         <p>
-          Tracing the intellectual arc of Folio <strong>{esc(fid)}</strong> from its earliest formulation in {linkify_citations(esc(first_era))} to its modern resolution in {linkify_citations(esc(last_era))} reveals why un-coupled classical approximations repeatedly stalled at a hard analytical barrier. Whenever investigators attempted to treat the governing relation <code>{gov_law}</code> as a purely local or linearized perturbation, higher-order coupling terms across the kernel triad (<code>{kernels_c}</code>) amplified truncation error rather than damping it. What appeared for decades to be an intractable computational or experimental pathology was, in reality, a structural phase boundary embedded in the operator domain itself.
+          Every enduring equation begins as a human question—an act of patient curiosity by investigators who refused to accept an opaque boundary as the final word. Tracing the intellectual arc of Folio <strong>{esc(fid)}</strong> from its earliest formulation in {linkify_citations(esc(first_era))} to its modern resolution in {linkify_citations(esc(last_era))} reveals why un-coupled classical approximations repeatedly stalled at a hard analytical barrier. Whenever investigators attempted to treat the governing relation <code>{gov_law}</code> as a purely local or linearized perturbation, higher-order coupling terms across the kernel triad (<code>{kernels_c}</code>) amplified truncation error rather than damping it. What appeared for decades to be an intractable computational or experimental pathology was, in reality, a structural phase boundary embedded in the operator domain itself.
         </p>
         <p>
           Resolving that impasse required shifting from ad-hoc empirical curve fitting to a rigorous, multi-stage operator formulation anchored in <code>{bench_c}</code>. Specifically, the system&rsquo;s trajectory is governed by {sliders_prose}. Within this state space, any valid proof or physical design must simultaneously satisfy local conservation laws, global boundary conditions, and strict asymptotic scaling—setting the stage for the four-chapter formal derivation in Act II.
@@ -967,8 +1064,6 @@ def render_multi_chapter_monograph_sections(
     sn2_kicker = esc(decf_title(sn2.get("kicker", f"SIDENOTE {fid}-B")))
 
     act2_proof_spine_html = f"""
-        <p>{linkify_citations(esc(act2_analogy_c))}</p>
-
         <section class="tp-proof-spine" aria-label="Multi-Chapter Formal Proof and Governing Derivation">
           <article class="tp-proof-chapter" id="ch-ii-1-{esc(slug)}">
             <h3 data-en="&sect; II.1 &middot; Formal Problem Statement, State-Space Manifold &amp; Governing Operator" data-es="&sect; II.1 &middot; Enunciado Formal, Variedad de Espacio de Estados y Operador Gobernante">&sect; II.1 &middot; Formal Problem Statement, State-Space Manifold &amp; Governing Operator</h3>
@@ -988,7 +1083,7 @@ def render_multi_chapter_monograph_sections(
           <article class="tp-proof-chapter" id="ch-ii-2-{esc(slug)}">
             <h3 data-en="&sect; II.2 &middot; Four-Stage Proof &amp; Mechanism Decomposition (Stages 1&ndash;4)" data-es="&sect; II.2 &middot; Descomposici&oacute;n Demostrativa y Mecanismo en Cuatro Etapas (Etapas 1&ndash;4)">&sect; II.2 &middot; Four-Stage Proof &amp; Mechanism Decomposition (Stages 1&ndash;4)</h3>
             <p>
-              Rather than treating <code>{gov_law}</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>{esc(fid)}</strong> into four explicit, verifiable stages. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III and the standalone verification suite in <code>{esc(py_ver_rel)}</code>:
+              Rather than treating <code>{gov_law}</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>{esc(fid)}</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III and the standalone verification suite in <code>{esc(py_ver_rel)}</code>:
             </p>
 {stages_html}
           </article>
@@ -1016,7 +1111,7 @@ def render_multi_chapter_monograph_sections(
                 <strong>Secondary Coupling &amp; Regime Boundary ({sn2_kicker}):</strong> {linkify_citations(esc(sn2_body_c))}
               </p>
               <p>
-                <strong>Mathematical &amp; Physical Necessity of the Full Operator:</strong> This counterfactual knockout analysis proves *why* every hypothesis and coupling term in <code>{gov_law}</code> is necessary. When the primary control parameter is dragged to its degenerate boundary in the Act III observatory below, the stabilizing restorative term vanishes, reproducing the exact classical collapse predicted by theory and confirming that our solver is a genuine physical/mathematical engine rather than a static animation.
+                <strong>Mathematical &amp; Physical Necessity of the Full Operator:</strong> Testing a theorem or physical law by knocking out its core hypothesis is one of the sharpest ways a human mind builds intuition. This counterfactual analysis proves <em>why</em> every coupling term in <code>{gov_law}</code> is indispensable: When the primary control parameter is dragged to its degenerate boundary in the Act III observatory below, the stabilizing restorative term vanishes, reproducing the exact classical collapse predicted by theory and confirming that our solver is a genuine physical/mathematical engine rather than a static animation.
               </p>
             </div>
           </article>
@@ -1236,13 +1331,20 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
         </figure>"""
 
     act1_dropcap_c = decf(act1_dropcap)
+    act1_plain_bridge_c = decf(lf.get("act1_plain_bridge", ""))
     act1_body_c = decf(act1_body)
+    act1_stakes_c = decf(lf.get("act1_stakes", ""))
     act2_intuition_c = decf(act2_intuition)
     act2_analogy_c = decf(act2_analogy)
+    act2_plain_primer_c = decf(lf.get("act2_plain_primer", ""))
+    act2_deepening_c = decf(lf.get("act2_deepening", ""))
     act4_human_ai_c = decf(act4_human_ai)
+    act4_deepening_c = decf(lf.get("act4_deepening", ""))
     disc_body_c = decf(disc.get("body", ""))
     pullquote_c = decf(lf.get("pullquote", ""))
     why_es_c = decf(es_meta["why_es"])
+    plain_es_c = decf(es_meta.get("plain_es", ""))
+    deep_es_c = decf(es_meta.get("deep_es", ""))
     sn1_body_c = decf(folio["sidenote_1"]["body"])
     sn2_body_c = decf(sn2["body"])
     plate_caption_c = decf(plate_info["caption"]) or f"Plate {fid}"
@@ -1261,6 +1363,29 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
     )
     walk_items_c = "\n".join(f"<li>{esc(decf(w))}</li>" for w in lf["walkthrough"] if decf(w))
     pullquote_html = f'<blockquote class="tp-pullquote"><p>{esc(pullquote_c)}</p></blockquote>' if pullquote_c else ""
+    plain_bridge_html = (
+        f"""<div class="tp-plain-bridge-box" role="note" aria-label="In plain words">
+          <span class="tp-plain-bridge-kicker" data-en="In Plain Words &middot; Extra-Easy Explanation" data-es="En Palabras Sencillas &middot; Explicaci&oacute;n Accesible">In Plain Words &middot; Extra-Easy Explanation</span>
+          <p data-en="{esc(act1_plain_bridge_c)}" data-es="{esc(plain_es_c or act1_plain_bridge_c)}">{esc(act1_plain_bridge_c)}</p>
+        </div>"""
+        if act1_plain_bridge_c
+        else ""
+    )
+    act1_stakes_html = f"<p>{linkify_citations(esc(act1_stakes_c))}</p>" if act1_stakes_c else ""
+    analogy_box_html = (
+        f"""<div class="tp-analogy-box" role="region" aria-label="Everyday intuition and slider primer">
+          <span class="tp-plain-bridge-kicker" data-en="Everyday Analogy &amp; Interactive Controls Primer" data-es="Analog&iacute;a Cotidiana y Gu&iacute;a de Controles">Everyday Analogy &amp; Interactive Controls Primer</span>
+          <p><strong>Everyday Analogy:</strong> {linkify_citations(esc(act2_analogy_c))}</p>
+          {f"<p><strong>How the Two Sliders Work in Plain Words:</strong> {linkify_citations(esc(act2_plain_primer_c))}</p>" if act2_plain_primer_c else ""}
+        </div>"""
+        if act2_analogy_c
+        else ""
+    )
+    distill_svg_html = render_inline_distillation_svg(fid, slug, folio, lf)
+    act2_deepening_html = f"<p>{linkify_citations(esc(act2_deepening_c))}</p>" if act2_deepening_c else ""
+    act4_deepening_html = f"<p>{linkify_citations(esc(act4_deepening_c))}</p>" if act4_deepening_c else ""
+    es_plain_html = f"<p><strong>En Palabras Sencillas (Explicaci&oacute;n Accesible):</strong> {esc(plain_es_c)}</p>" if plain_es_c else ""
+    es_deep_html = f"<p><strong>Mecanismo T&eacute;cnico, Fuerzas en Competencia y Umbral Cr&iacute;tico:</strong> {esc(deep_es_c)}</p>" if deep_es_c else ""
     disc_html = (
         f"""<div class="tp-discovery-news-box" role="region" aria-label="Frontier discovery">
           <span class="tp-kicker" data-en="Frontier discovery" data-es="Descubrimiento de frontera">Frontier discovery</span>
@@ -1324,6 +1449,8 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
       </summary>
       <div class="tp-es-body">
         <p><strong>Actos I y II — Historia, ley gobernante e intuición cotidiana:</strong> <em>{esc(title_es_c)}</em> — {esc(sub_es_c)} Este monográfico interactivo verifica la ley gobernante <code>{esc(folio["governing_law"])}</code>. <strong>Por qué importa en la vida real:</strong> {esc(why_es_c)}</p>
+        {es_plain_html}
+        {es_deep_html}
         <p><strong>Acto III — Laboratorio interactivo:</strong> los deslizadores en tiempo real y las cuatro lentes del observatorio (superficie 3D, retrato de fase, listón de conservación y radar polar) permiten explorar los umbrales críticos directamente en el navegador.</p>
         <p><strong>Actos IV y V — Descubrimiento y fuentes:</strong> la narrativa completa y las fuentes primarias siguen abajo (en inglés). <em>Investigación científica y educativa abierta, no consejo médico.</em></p>
       </div>
@@ -1334,7 +1461,9 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
         {decf_title(utopia_companion_html)}
         <h2 id="act1-heading-{esc(slug)}">{esc(decf_act_title(act1_title))}</h2>
         <p class="tp-dropcap">{esc(act1_dropcap_c)}</p>
+        {plain_bridge_html}
         <p>{linkify_citations(esc(act1_body_c))}</p>
+        {act1_stakes_html}
         {act1_subchapter_html}
         {pullquote_html}
 
@@ -1354,10 +1483,13 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
         </div>
 
         <h2 id="act2-heading-{esc(slug)}">{esc(decf_act_title(act2_title))}</h2>
+        {analogy_box_html}
+        {distill_svg_html}
         <p>
-          {esc(act2_intuition_c)} Live parameter coupling: {inline_scrub} under governing law
+          {linkify_citations(esc(act2_intuition_c))} Live parameter coupling: {inline_scrub} under governing law
           <button type="button" class="tp-eq-chip" data-eq-target="tp-svg-stage-1">{esc(folio["governing_law"])}</button>.
         </p>
+        {act2_deepening_html}
         {act2_proof_spine_html}
 
         <h2 id="act3-heading-{esc(slug)}" data-en="Act III — Interactive Laboratory &amp; Worked Numerical Verification" data-es="Acto III — Laboratorio Interactivo y Verificaci&oacute;n Num&eacute;rica">Act III — Interactive Laboratory &amp; Worked Numerical Verification</h2>
@@ -1373,6 +1505,7 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
 
         <h2 id="act4-heading-{esc(slug)}">{esc(decf_act_title(act4_title))}</h2>
         <p>{linkify_citations(esc(act4_human_ai_c))}</p>
+        {act4_deepening_html}
         {disc_html}
         {act4_transfer_html}
 

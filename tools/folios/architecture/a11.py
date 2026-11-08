@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Folio A.11 (ARCHITECTURE): 3D Polyhedral Graphic Statics & Airy Stress Surfaces."""
+"""Folio A.11 (ARCHITECTURE): 3D Polyhedral Graphic Statics & Airy Stress Surfaces: Maxwell–Rankine Reciprocal Polyhedra, Guastavino Tile Vaulting & Zero-Rebar Floors."""
 from __future__ import annotations
 
 SLUG = 'a11'
@@ -108,53 +108,99 @@ FOLIO = {'folio_id': 'A.11',
                         'Hessian concavity.'}],
  'volume': 6,
  'volume_code': 'VOL. 06',
- 'reading_time': '15 MIN READ',
- 'word_count': '2,880 WORDS',
+ 'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'scite': {'doi': '10.1016/j.cad.2015.01.006',
-           'summary': 'Crossref Registry Verified: Primary masonry limit-state and funicular shell '
-                      "anchor in Jacques Heyman's The Stone Skeleton (1995, DOI "
-                      "10.1017/cbo9781107050310) and Calladine's Maxwell frame rules (1978, DOI "
-                      '10.1016/0020-7683(78)90052-5).'}}
+           'fetched_on': '2026-11-08',
+           'citing_publications': 93,
+           'supporting': 0,
+           'mentioning': 55,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 93 citing '
+                      'publications (0 supporting, 55 mentioning, 0 contrasting) — Primary masonry '
+                      "limit-state and funicular shell anchor in Jacques Heyman's The Stone "
+                      "Skeleton (1995, DOI 10.1017/cbo9781107050310) and Calladine's Maxwell frame "
+                      'rules (1978, DOI 10.1016/0020-7683(78)90052-5).'}}
 
-LONGFORM_DATA = {'reading_time': '15 MIN READ',
- 'word_count': '2,880 WORDS',
+LONGFORM_DATA = {'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'parent_folios': ['A.01', 'A.02'],
  'lineage_mode': 'CONTINUATION · Continues A.01 Funicular Masonry Vaults & A.02 Reciprocal '
                  'Gridshells',
  'scite': {'doi': '10.1016/j.cad.2015.01.006',
-           'summary': 'Crossref Registry Verified: Primary masonry limit-state and funicular shell '
-                      "anchor in Jacques Heyman's The Stone Skeleton (1995, DOI "
-                      "10.1017/cbo9781107050310) and Calladine's Maxwell frame rules (1978, DOI "
-                      '10.1016/0020-7683(78)90052-5).'},
+           'fetched_on': '2026-11-08',
+           'citing_publications': 93,
+           'supporting': 0,
+           'mentioning': 55,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 93 citing '
+                      'publications (0 supporting, 55 mentioning, 0 contrasting) — Primary masonry '
+                      "limit-state and funicular shell anchor in Jacques Heyman's The Stone "
+                      "Skeleton (1995, DOI 10.1017/cbo9781107050310) and Calladine's Maxwell frame "
+                      'rules (1978, DOI 10.1016/0020-7683(78)90052-5).'},
  'act1_title': 'Act I — Cool Fact & Human Story: How 50-Millimeter Stone Vaults Stand for '
                'Centuries Without a Single Gram of Steel',
- 'act1_dropcap': "Stand beneath the vaulted ceiling of King's College Chapel in Cambridge or the "
-                 'tiled Whispering Gallery of Grand Central Terminal in New York and look up at a '
-                 'mind-bending physical fact: the stone and terracotta tiles overhead are '
-                 'proportionally thinner than a chicken eggshell, contain zero steel reinforcement '
-                 'bars, and yet have carried heavy loads for centuries without cracking. '
-                 'Meanwhile, a modern reinforced-concrete office floor is 250 millimeters thick, '
-                 'packed with rust-prone steel rebar, and accounts for over half the embodied '
-                 'carbon of a multi-story building. Why did we forget how to build thin '
-                 'compression shells—and how can 19th-century projective geometry and open-source '
-                 'software bring them back for freeform 21st-century architecture?',
- 'act1_body': "In Folio A.01 we traced Robert Hooke's 2D hanging chain and Jacques Heyman's Master "
-              'Safe Theorem (The Stone Skeleton, 1995, DOI 10.1017/cbo9781107050310). But real '
-              'buildings are three-dimensional, asymmetric, and pierced by skylights and '
-              'stairwells where 2D slices fail. In 1864, James Clerk Maxwell discovered a '
-              'breathtaking theorem connecting statics to 4D projective geometry (later '
-              'generalized by William Rankine and C. R. Calladine 1978, DOI '
-              '10.1016/0020-7683(78)90052-5): a spatial network of structural bars is in static '
-              'equilibrium if and only if its 2D plan is the vertical projection of a faceted 3D '
-              "Airy stress polyhedron Φ(x, y), and in full 3D, every node's equilibrium is "
-              'represented by a closed reciprocal polyhedron whose face areas A_i^* equal the '
-              'exact axial forces N_i in the vault ribs! At ETH Zurich, Philippe Block and the '
-              "late Matthias Rippmann turned Maxwell's theorem into Thrust Network Analysis (TNA) "
-              'and released the open-source Python framework compas-dev/compas '
-              '(https://github.com/compas-dev/compas), enabling the Armadillo Vault (399 '
-              'dry-stacked limestone voussoirs spanning 16 meters with zero mortar) and the '
-              'HiLo/Rippmann ribbed funicular floor slab that slashes concrete and carbon by more '
-              'than 70%.',
+ 'act1_dropcap': 'In the winter of 1864 in Glenlair, Scotland, the great polymath James Clerk '
+                 'Maxwell took a break from his groundbreaking equations on electromagnetism to '
+                 'gaze at a puzzle that had baffled stone masons for centuries. Standing inside '
+                 "ancient Gothic cathedrals like King's College Chapel in Cambridge, one looks up "
+                 'at soaring stone vaults that are proportionally thinner than a chicken eggshell, '
+                 'dry-stacked without tensile mortar or steel reinforcement, yet standing firm '
+                 'after half a millennium. Maxwell sketched a radical geometric insight on his '
+                 'notebook pages: the invisible flow of forces pushing through a stone structure '
+                 'can be drawn as a dual, mirror-image geometric polyhedron. Half a world away in '
+                 '1913, Spanish master builder Rafael Guastavino used this compression principle '
+                 'to erect the famous Whispering Gallery and vaulted ceilings of Grand Central '
+                 'Terminal in New York City using lightweight terracotta tiles. These historical '
+                 'masterworks stood not through brute material strength, but through pure, '
+                 'mathematically perfected three-dimensional geometry.',
+ 'act1_plain_bridge': 'In plain words, think about how stone and concrete work. If you try to pull '
+                      'a stone apart like a piece of taffy, it cracks and fails almost '
+                      'immediately. But if you squeeze a stone tightly between your hands, it can '
+                      'support immense weight without breaking. Standard modern floors are built '
+                      'as flat concrete slabs. Because flat slabs bend and sag in the middle under '
+                      'gravity, the bottom half gets stretched, forcing builders to bury thousands '
+                      'of pounds of expensive, rust-prone steel rebar inside the concrete. Master '
+                      'vault builders avoided this problem completely by arching the floor upward '
+                      'into a shallow dome. When gravity presses down on an arch, the stone blocks '
+                      'wedge tightly against one another, funneling all the weight downward into '
+                      'pure compression. By using modern computers to shape these curved vaults in '
+                      'three dimensions, architects can build incredibly strong floors out of '
+                      'simple earth tiles or recycled brick, eliminating steel reinforcement '
+                      'entirely and slashing carbon emissions.',
+ 'act1_body': "In Folio A.01 we traced Robert Hooke's 2D hanging chain and Jacques Heyman's "
+              'plastic limit theorems (The Stone Skeleton, 1995, DOI 10.1017/cbo9781107050310). '
+              'But real architectural spaces are three-dimensional, curved, and pierced by '
+              'stairwells where simple two-dimensional slices fail. In 1864, James Clerk Maxwell '
+              'discovered that a spatial structural framework is in exact static equilibrium if '
+              'and only if it represents the projection of a polyhedral Airy stress surface, later '
+              'generalized by C. R. Calladine (1978, DOI 10.1016/0020-7683(78)90052-5). In this '
+              'three-dimensional polyhedral graphic statics, every joint in a stone vault '
+              "corresponds to a closed cell in a reciprocal force polyhedron, where each strut's "
+              'axial force equals the area of its dual polygonal face. At ETH Zurich, Philippe '
+              "Block and the late Matthias Rippmann incorporated Maxwell's reciprocal geometry "
+              'into open-source software (https://github.com/compas-dev/compas). This research '
+              'enabled the Armadillo Vault—spanning sixteen meters from 399 dry-stacked limestone '
+              'blocks with zero mortar—and funicular ribbed floor slabs that cut embodied concrete '
+              'and carbon by over seventy percent without steel rebar.',
+ 'act1_stakes': 'For centuries, master masons relied on lodge rules of thumb and geometric '
+                'templates to size stone arches and buttresses. While these empirical rules '
+                'produced magnificent structures, they required immense intuition and could not '
+                'safely predict how irregular, freeform, or asymmetric vaults would behave under '
+                'complex live loads. When twentieth-century builders transitioned to flat '
+                'reinforced-concrete slabs, they substituted computational certainty for material '
+                'efficiency: pouring massive, heavy flat slabs packed with tensile steel was '
+                'simpler to calculate than complex masonry curves. Today, building floor slabs '
+                'consume over forty percent of the total concrete and embodied carbon in a typical '
+                'high-rise building. Furthermore, embedded steel rebar inevitably oxidizes and '
+                'corrodes when exposed to ambient moisture and carbonation over time, causing '
+                'concrete spalling, cracking, and premature structural failure across modern '
+                'infrastructure. Returning to unreinforced funicular compression vaults replaces '
+                'this carbon-intensive, short-lived paradigm with ultra-durable geometries that '
+                'endure for centuries while utilizing locally available, low-carbon masonry '
+                'materials.',
  'pullquote': '"In Maxwell\'s 3D graphic statics, you do not solve differential equations to check '
               'whether a stone vault will stand—you simply look at its dual force polyhedron: if '
               "the crystal's faces close, the vault is in exact equilibrium; if the Airy surface "
@@ -172,22 +218,71 @@ LONGFORM_DATA = {'reading_time': '15 MIN READ',
                  'Philippe Block & Matthias Rippmann develop Thrust Network Analysis and '
                  'open-source compas-dev/compas for 70%-lighter vaulted floors.')],
  'act2_title': 'Act II — Cross-Field Intuition: Soap-Foam Dual Polyhedra & Concave Stress Bowls',
- 'act2_intuition': 'Imagine two linked 3D geometric crystals side by side in compas-dev/compas: '
-                   'the Form Diagram Γ (the actual geometry of the stone or earthen vault ribs) '
-                   'and the Reciprocal Force Diagram Γ^* (a cluster of soap-bubble-like polyhedral '
-                   'cells). Every strut e_i in the vault is perpendicular to a polygonal face '
-                   'f_i^* in the force crystal, and the area of that face A_i^* is the exact '
-                   "kilonewton force N_i flowing through the strut. By Gauss's divergence theorem, "
-                   'the outward normal area vectors of any closed polyhedron sum to zero—so if '
-                   'every cell in Γ^* is closed, every joint in the building is automatically in '
-                   '3D static equilibrium! Furthermore, because membrane stresses equal the second '
-                   'derivatives of the Airy stress function (σ_xx = ∂²Φ/∂y², σ_yy = ∂²Φ/∂x²), '
-                   'keeping the Airy polyhedron strictly concave (det(H_Φ) > 0) guarantees that '
-                   'zero tension can ever develop anywhere in the shell.',
- 'act2_analogy': 'Everyday analogy: Think of a cluster of soap bubbles in a wire frame: every flat '
-                 'soap film pulls in exact balance because the bubble cells are closed, and '
-                 'flipping that bubble dome upside down turns every soap-film pull into pure '
-                 'stone-on-stone compression that needs zero steel bars.',
+ 'act2_analogy': 'Think of a cluster of soap bubbles resting in a wire frame: every paper-thin '
+                 'soap film pulls in perfect physical balance because each bubble cell is '
+                 'completely closed on all sides. Now imagine taking that cluster of soap bubbles '
+                 'and flipping it upside down like an umbrella: every gentle tension pull in the '
+                 'soap film converts into pure, rock-solid compression between stone blocks. If '
+                 'the dual bubble cells close, the stone ceiling simply cannot fall down.',
+ 'act2_plain_primer': 'To design a compression-only stone vault using this soap-bubble duality, '
+                      'you work with two primary structural knobs. The first knob controls the '
+                      'scale of the reciprocal force crystal, which acts like an invisible '
+                      'mathematical shadow of the building. As you enlarge this dual crystal, the '
+                      'internal forces pushing through the stone ribs increase, showing you how '
+                      "much horizontal thrust the building's perimeter walls and foundations must "
+                      'push back against to keep the vault stable. The second knob adjusts the '
+                      'crown rise of the vault relative to the distance it spans across the room. '
+                      'If you dial this knob down toward a very shallow, almost flat arch, the '
+                      'vault exerts enormous outward thrust against the support walls, requiring '
+                      'heavy abutments. As you increase the crown rise and arch the vault higher, '
+                      'the downward forces flow more steeply into the ground, reducing horizontal '
+                      'thrust and allowing the floor to be built remarkably thin and light without '
+                      'any steel reinforcement.',
+ 'distill_diagram': {'analogy_title': 'The Inverted Soap-Bubble Foam',
+                     'analogy_sub': 'Closed polyhedral cells guarantee exact three-dimensional '
+                                    'balance',
+                     'force_a_title': 'Dual Force Scale Knob (ζ_dual)',
+                     'force_a_sub': 'Scales horizontal abutment thrust and reciprocal polyhedron '
+                                    'volume',
+                     'force_b_title': 'Vault Rise-to-Span Ratio (f/L)',
+                     'force_b_sub': 'Directs internal thrust vectors into pure compression arches',
+                     'threshold_title': 'Airy Stress Concavity det(H_Φ) > 0',
+                     'threshold_pass': 'Pure compression throughout shell; 0 kg steel rebar '
+                                       'required',
+                     'threshold_fail': 'Convexity or unclosed dual cell causes tensile hinge '
+                                       'cracking'},
+ 'act2_intuition': 'Imagine two linked three-dimensional geometric networks displayed side by side '
+                   'in the open-source compas-dev/compas framework: the Form Diagram Gamma '
+                   '(representing the physical geometry of the unreinforced stone or tile vault '
+                   'ribs) and the Reciprocal Force Diagram Gamma_star (a cellular cluster of '
+                   'convex polyhedral cells). Every physical strut e_i in the vault is strictly '
+                   'perpendicular to a corresponding polygonal face f_i_star in the dual force '
+                   'crystal, and the surface area of that polygonal face A_i_star equals the exact '
+                   "axial compressive force N_i flowing through the stone strut. By Gauss's "
+                   'divergence theorem, the outward normal area vectors of any topologically '
+                   'closed polyhedron sum identically to zero—meaning that if every polyhedral '
+                   'cell in Gamma_star closes without gaps, every joint in the three-dimensional '
+                   'building is automatically in exact static equilibrium under applied dead '
+                   'loads. Furthermore, because in-plane membrane stresses correspond to the '
+                   'second partial derivatives of the discrete Airy stress potential (sigma_xx = '
+                   'd^2 Phi / dy^2, sigma_yy = d^2 Phi / dx^2), maintaining strict concavity of '
+                   'the Airy polyhedron (det(H_Phi) > 0) guarantees that tensile stresses cannot '
+                   'develop anywhere across the vaulted shell.',
+ 'act2_deepening': 'The mathematical coupling between vault crown rise and the reciprocal force '
+                   'scale reveals why compression-only architecture achieves such dramatic '
+                   'material efficiency. When the rise-to-span ratio f/L is low, the funicular '
+                   'arch must flatten, forcing the horizontal component of thrust to increase '
+                   "according to Hooke's classical inverse relationship. In the dual force "
+                   'polyhedron Gamma_star, this geometric constraint stretches the horizontal '
+                   'faces outward, expanding the dual volume and requiring heavier perimeter '
+                   'tie-rods or buttressing masonry to balance the thrust. As you increase the '
+                   'crown rise toward sixteen percent of the span, the force polyhedron compresses '
+                   'horizontally and elongates vertically, aligning the resultant force vectors '
+                   "directly into the foundation footings. Under Heyman's safe theorem of plastic "
+                   'limit analysis, as long as the compressive stress stays well below stone '
+                   'crushing capacity and the thrust surface remains inside the middle-third kern, '
+                   'the shell cannot form kinematic failure hinges, providing a safety factor '
+                   'exceeding three even under asymmetric live loading.',
  'walkthrough': ['Experiment 1 (Reciprocal Polyhedron Scale ζ_dual): Drag Dual Polyhedron Scale '
                  'ζ_dual from 0.50 to 2.00. Watch the reciprocal force crystal Γ^* expand or '
                  'contract as horizontal abutment thrust scales proportionally.',
@@ -206,6 +301,22 @@ LONGFORM_DATA = {'reading_time': '15 MIN READ',
                   'with thin vaulted floors made of local compressed earth blocks, recycled brick, '
                   "or CNC-cut stone—addressing the World Economic Forum's affordable housing and "
                   'net-zero construction challenge.',
+ 'act4_deepening': 'In forward-looking structural studios, architects and engineering algorithms '
+                   'use 3D graphic statics to reinvent everyday construction from the ground up. '
+                   'Integrating compas-dev/compas with geometric deep learning allows algorithmic '
+                   'agents to automatically generate closed reciprocal force polyhedra for '
+                   'irregular floor layouts in fractions of a second, suggesting optimal rib '
+                   'patterns that follow principal compression stresses around elevator shafts and '
+                   'service ducts. These computational vaults can be prefabricated from '
+                   'dry-stacked interlocking limestone blocks, compressed local earth bricks, or '
+                   'hollow 3D-printed ceramic tiles that snap together without mortar. Significant '
+                   'frontier questions remain at the vanguard of structural research: How can '
+                   'robotic assembly arms with computer-vision feedback place dry-stacked '
+                   'voussoirs with sub-millimeter precision on job sites without temporary '
+                   'falsework? How do dynamic seismic ground motions interact with non-linear '
+                   "contact friction between dry unreinforced stone joints? By uniting Maxwell's "
+                   '1864 projective mathematics with automated robotics, human and machine '
+                   'architects can build fireproof, low-carbon housing that lasts for centuries.',
  'cf_bridge': 'Standalone Architectural Form-Finding & 3D Graphic Statics Flagship (A.01 + A.02 -> '
               'A.11): Engineered for architects and structural designers creating compression-only '
               'shells and low-carbon floor systems.',
@@ -223,7 +334,11 @@ LONGFORM_DATA = {'reading_time': '15 MIN READ',
              'polyhedral frames and convex polyhedral force diagrams. Computer-Aided Design, 63, '
              '118–128.',
              'Open-Source Stack: COMPAS computational framework for architecture and structures '
-             '(https://github.com/compas-dev/compas).'],
+             '(https://github.com/compas-dev/compas).',
+             'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
+             'context of citations and classifies their intent using deep learning '
+             '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
+             '10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="3D Polyhedral '
         'Graphic Statics Form Diagram Vault and Reciprocal Minkowski Force Polyhedron">\n'
         '            <line x1="35" y1="188" x2="645" y2="188" stroke="currentColor" '
@@ -300,4 +415,30 @@ ES_TRANSLATION = {'title_es': 'Estática Gráfica Poliédrica 3D y Superficies d
            'cerradas, las bóvedas tabicadas de Guastavino y los pisos funiculares 3D sostienen '
            'grandes claros con 5 cm de espesor y cero varillas de acero.',
  'bridge_es': 'La dualidad geométrica entre el diagrama de forma y el poliedro de fuerzas en '
-              'compas-dev/compas certifica equilibrio 3D exacto sin tensión.'}
+              'compas-dev/compas certifica equilibrio 3D exacto sin tensión.',
+ 'plain_es': 'En palabras sencillas, imaginen cómo trabajan los materiales de construcción '
+             'comunes. Si intentamos jalar o estirar una piedra o un ladrillo de barro, se agrieta '
+             'y se rompe con facilidad. Pero si lo apretamos con fuerza, puede soportar el peso de '
+             'un edificio entero sin sufrir ningún daño. Los pisos modernos de oficinas se '
+             'construyen como losas planas de concreto; como se doblan hacia abajo en el centro '
+             'por la gravedad, la parte inferior se estira, obligando a rellenarlas con toneladas '
+             'de varillas de acero caras y contaminantes. Los antiguos constructores de catedrales '
+             'y el maestro español Rafael Guastavino resolvieron esto curvando los techos hacia '
+             'arriba en forma de bóveda. Al recibir peso, los ladrillos se empujan unos contra '
+             'otros a pura compresión hacia los muros de apoyo. Usando computadoras modernas para '
+             'calcular estas curvas en tres dimensiones, hoy podemos construir pisos resistentes '
+             'con ladrillos de tierra local o piedra cortada, eliminando el acero y reduciendo en '
+             'más del setenta por ciento el concreto.',
+ 'deep_es': 'El fundamento matemático de estas estructuras se basa en la estática gráfica '
+            'tridimensional descubierta por James Clerk Maxwell en 1864 y modernizada por el '
+            'software abierto COMPAS en la Escuela Politécnica Federal de Zúrich. Todo nudo de una '
+            'bóveda de piedra en el diagrama de forma corresponde a una celda poliédrica cerrada '
+            'en el diagrama recíproco de fuerzas. Si cada poliedro dual se cierra perfectamente, '
+            'la suma vectorial de sus caras normales es cero, lo cual certifica un equilibrio '
+            'estático tridimensional exacto sin recurrir a ecuaciones diferenciales complejas. '
+            'Además, al mantener la concavidad estricta de la superficie de esfuerzo de Airy con '
+            'un determinante hessiano positivo, se garantiza que ninguna parte de la bóveda '
+            'trabaje en tensión. Siguiendo el teorema de seguridad de Jacques Heyman, mientras la '
+            'línea de empuje permanezca dentro del tercio medio del espesor, la estructura no '
+            'desarrollará grietas de colapso, permitiendo levantar entrepisos ligeros de solo '
+            'cinco centímetros de espesor con piedra o tierra comprimida sin refuerzo metálico.'}

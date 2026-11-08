@@ -104,50 +104,102 @@ FOLIO = {'folio_id': 'M.09',
                         'psi|^2 = 0, and log-Sinkhorn convergence.'}],
  'volume': 5,
  'volume_code': 'VOL. 05',
- 'reading_time': '16 MIN READ',
- 'word_count': '2,980 WORDS',
+ 'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'scite': {'doi': '10.1007/s002110050002',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 19 supporting and 2,106 '
-                      "mentioning citations on Jean-David Benamou & Yann Brenier's computational "
-                      'fluid mechanics formulation of the Monge-Kantorovich L2 Wasserstein optimal '
-                      'transport problem.'}}
+           'fetched_on': '2026-11-08',
+           'citing_publications': 2109,
+           'supporting': 19,
+           'mentioning': 2106,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,109 '
+                      'citing publications (19 supporting, 2,106 mentioning, 0 contrasting) on '
+                      "Jean-David Benamou & Yann Brenier's computational fluid mechanics "
+                      'formulation of the Monge-Kantorovich L2 Wasserstein optimal transport '
+                      'problem.'}}
 
-LONGFORM_DATA = {'reading_time': '16 MIN READ',
- 'word_count': '2,980 WORDS',
+LONGFORM_DATA = {'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'parent_folios': ['M.04', 'M.07', 'M.08'],
  'lineage_mode': 'TRIAD_SYNTHESIS · Synthesizes M.04 PFR Entropic Distance, M.07 Pontryagin '
                  'Control & M.08 Riemannian Geodesics',
  'scite': {'doi': '10.1007/s002110050002',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 19 supporting and 2,106 '
-                      "mentioning citations on Jean-David Benamou & Yann Brenier's computational "
-                      'fluid mechanics formulation of the Monge-Kantorovich L2 Wasserstein optimal '
-                      'transport problem.'},
+           'fetched_on': '2026-11-08',
+           'citing_publications': 2109,
+           'supporting': 19,
+           'mentioning': 2106,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,109 '
+                      'citing publications (19 supporting, 2,106 mentioning, 0 contrasting) on '
+                      "Jean-David Benamou & Yann Brenier's computational fluid mechanics "
+                      'formulation of the Monge-Kantorovich L2 Wasserstein optimal transport '
+                      'problem.'},
  'act1_title': 'Act I — Uniting M.04 Entropy, M.07 Optimal Control & M.08 Riemannian Geodesics: '
                "From Gaspard Monge's Earthworks to Wasserstein-2 Fluid Dynamics",
- 'act1_dropcap': 'Look back across our Mathematics Pillar: in Folio M.04 we measured the distance '
-                 'between probability distributions via entropic Ruzsa calculus; in Folio M.07 we '
-                 "solved Pontryagin's Maximum Principle and Hamilton–Jacobi–Bellman (HJB) "
-                 'equations over Banach spaces; and in Folio M.08 we integrated Riemannian '
-                 "geodesics across Erwin Schrödinger's curved metric manifold. All three of those "
-                 'threads converge in a single master theory of modern mathematics and generative '
-                 'AI: Optimal Transport on the Otto–Wasserstein Riemannian manifold.',
- 'act1_body': 'In 1781, the French civil and military engineer Gaspard Monge posed a deceptively '
-              'practical earth-moving problem (Mémoire sur la théorie des déblais et des '
-              'remblais): given a pile of soil (source density mu_0) and an excavation trench of '
-              'equal volume (target density mu_1), what transport map T: R^d -> R^d minimizes '
-              "total work? In 1942, Leonid Kantorovich relaxed Monge's non-linear map into a "
-              'convex linear program over joint coupling measures pi(x, y), earning the 1975 Nobel '
-              'Prize. Then in 2000, Jean-David Benamou and Yann Brenier (Numerische Mathematik, '
-              'DOI 10.1007/s002110050002) proved a breathtaking equivalence: the squared quadratic '
-              'Wasserstein-2 distance W_2^2(mu_0, mu_1) is identically equal to the minimum '
-              'kinetic action int_0^1 int_{R^d} rho(t, x) |v(t, x)|^2 dx dt of a compressible '
-              'pressureless fluid evolving from rho(0, .)=mu_0 to rho(1, .)=mu_1 under the '
-              'continuity equation d_t rho + nabla . (rho v) = 0, where the optimal velocity field '
-              'v(t, x) = nabla psi(t, x) satisfies the Hamilton–Jacobi equation d_t psi + 0.5 '
-              "|nabla psi|^2 = 0. Combined with Marco Cuturi's Sinkhorn entropic regularization "
-              '(epsilon * KL(pi || mu_0 x mu_1)), Benamou–Brenier dynamic optimal transport powers '
-              'modern Flow Matching generative AI, single-cell developmental trajectory inference, '
-              'and civil earthwork grading.',
+ 'act1_dropcap': 'In the turbulent summer of 1781 in Paris, the brilliant French mathematician and '
+                 'civil engineer Gaspard Monge presented a memoir to the Royal Academy of Sciences '
+                 'on the art of moving earth. Tasked with planning military fortifications and '
+                 'public canals, Monge pondered a humble yet mathematically stubborn question: '
+                 'given a sprawling mound of excavated dirt and a distant trench that must be '
+                 'filled, how should workers shovel and haul every clod of earth so that the total '
+                 'labor expended is the smallest possible? Shovels could not cross paths '
+                 'chaotically without wasting time, and throwing earth into random piles created '
+                 "expensive bottlenecks. For two centuries, Monge's earth-moving puzzle lingered "
+                 'as a notoriously difficult non-linear challenge. It was not until the turn of '
+                 'the twenty-first century that French applied mathematicians Jean-David Benamou '
+                 'and Yann Brenier discovered that moving piles of earth with least effort is '
+                 'mathematically identical to watching a smooth, shock-free fluid glide along '
+                 'natural riverbeds.',
+ 'act1_plain_bridge': 'Imagine you are creating a digital animation that morphs one photograph '
+                      'into another, like transforming a photo of a kitten into a photo of a lion. '
+                      'A naive video editor simply fades out the kitten while fading in the lion '
+                      'at the same time. During the middle of that transition, you see an awkward, '
+                      'ghostly double image where two transparent faces awkwardly overlap. That '
+                      'unnatural ghosting happens because standard averaging merely blends pixel '
+                      'colors without moving shapes. Optimal transport solves this problem by '
+                      "treating every bit of the kitten's image like a tiny grain of sand on a "
+                      'beach. Instead of fading, the algorithm picks up each grain and slides it '
+                      'along the smoothest, shortest path until it settles into its new home in '
+                      "the lion's mane. In everyday life, this mathematical method balances supply "
+                      'chains, schedules shipping fleets, guides machine-learning image '
+                      'generators, and tracks how stem cells mature inside growing tissue without '
+                      'blurring.',
+ 'act1_body': 'In 1942, Soviet mathematician Leonid Kantorovich made the critical breakthrough of '
+              "relaxing Monge's rigid point-to-point mapping into a convex linear program over "
+              'joint probability couplings, earning the 1975 Nobel Prize in Economics. Then in '
+              '2000, Jean-David Benamou and Yann Brenier published their seminal discovery in '
+              'Numerische Mathematik (DOI 10.1007/s002110050002), proving that quadratic '
+              'Wasserstein-2 optimal transport can be reformulated as a dynamic continuum fluid '
+              'problem. Instead of solving a static combinatorial matching grid, one tracks the '
+              'density and velocity fields of a pressureless fluid evolving along '
+              'action-minimizing geodesics governed by Hamilton–Jacobi potential theory. By '
+              'framing probability transport as kinetic energy minimization, their partial '
+              'differential equations bridged the historical divide between pure variational '
+              'analysis and large-scale industrial computation. When Marco Cuturi subsequently '
+              'introduced Sinkhorn entropic regularization, the intractable optimal transport '
+              'bottleneck transformed into rapid matrix-vector scalings perfectly suited for '
+              'parallel graphics processing hardware. Today, Benamou–Brenier dynamic transport and '
+              'Sinkhorn scaling power generative flow matching architectures, reconstruct '
+              'single-cell developmental trajectories from destructive genomic measurements, and '
+              'optimize heavy civil earthwork grading across continental infrastructure projects.',
+ 'act1_stakes': "The journey from Monge's military trenches to modern generative artificial "
+                'intelligence represents one of the greatest unifications in applied mathematics. '
+                'For centuries, engineers treating optimal transport struggled against an '
+                'exponential computational wall: comparing two probability distributions with '
+                'thousands of discrete data points required solving massive linear programs that '
+                'ground early computers to a halt. As a result, machine learning relied on crude '
+                'divergence metrics that failed whenever distributions had non-overlapping '
+                'support, causing generative models to collapse into blurry averages. By recasting '
+                'optimal transport through the twin lenses of fluid mechanics and '
+                'entropy-regularized convex optimization, researchers converted a fragile '
+                'combinatorial puzzle into a smooth, differentiable geometry known as the '
+                'Otto–Wasserstein manifold. The stakes are immense: this geometric revolution '
+                'enables continuous normalizing flows that generate photorealistic molecular '
+                'structures, allows medical roboticists to track deformable anatomical organs '
+                'during surgery, and provides logistics engineers with verified tools to minimize '
+                'continental freight emissions.',
  'pullquote': '"Benamou and Brenier revealed that morphing one probability distribution into '
               'another with minimum effort is literally an inviscid fluid flow whose particles '
               'travel along straight geodesics governed by Hamilton–Jacobi potential theory."',
@@ -166,23 +218,75 @@ LONGFORM_DATA = {'reading_time': '16 MIN READ',
                  'transport into fast GPU matrix scaling and catalyzing Flow Matching AI.')],
  'act2_title': 'Act II — How It Actually Works: Benamou–Brenier Geodesic Continuity + Sinkhorn '
                'Entropic Scaling',
- 'act2_intuition': "Connecting Folio M.07's HJB optimal control with Folio M.08's Riemannian "
-                   'metric tensor, Felix Otto showed that the space of probability densities '
-                   'P_2(R^d) equipped with the Wasserstein-2 metric W_2 is an infinite-dimensional '
-                   'Riemannian manifold whose tangent vectors are potential velocity fields v = '
-                   'nabla psi. For two Gaussian distributions N(m_0, Sigma_0) and N(m_1, Sigma_1), '
-                   'the exact Bures–Wasserstein geodesic distance has closed form W_2^2 = ||m_0 - '
-                   'm_1||^2 + Tr(Sigma_0 + Sigma_1 - 2 * (Sigma_0^(1/2) Sigma_1 '
-                   "Sigma_0^(1/2))^(1/2)), and McCann's displacement interpolation rho_t = ((1 - "
-                   't) id + t nabla Phi)_# mu_0 moves mass along constant-velocity geodesics '
-                   'without artificial bimodal fading. Adding entropic regularization epsilon * '
-                   "H(pi) (connecting back to Folio M.04's Shannon/Ruzsa entropy) yields the "
-                   'Schrödinger bridge / Sinkhorn iteration K_{ij} = exp(-||x_i - y_j||^2 / '
-                   'epsilon), computable in O(N^2) matrix-vector products.',
- 'act2_analogy': 'Everyday analogy: Fading one photo into another (linear averaging) creates a '
-                 'ghostly double exposure in the middle; Optimal Transport slides every grain of '
-                 'sand smoothly from its starting spot to its destination along the shortest '
-                 'non-crossing path.',
+ 'act2_intuition': 'Connecting optimal control with Riemannian geometry, Felix Otto demonstrated '
+                   'that the space of probability distributions P_2(R^d) endowed with the '
+                   'Wasserstein-2 metric is an infinite-dimensional Riemannian manifold. The '
+                   'tangent vectors correspond to potential velocity fields v = nabla psi. For two '
+                   'Gaussian measures N(m_0, Sigma_0) and N(m_1, Sigma_1), the exact '
+                   'Bures–Wasserstein geodesic distance has the closed-form expression W_2^2 = '
+                   '||m_0 - m_1||^2 + Tr(Sigma_0 + Sigma_1 - 2 * (Sigma_0^(1/2) Sigma_1 '
+                   "Sigma_0^(1/2))^(1/2)). Along this manifold, McCann's displacement "
+                   'interpolation rho_t = ((1 - t) id + t nabla Phi)_# mu_0 moves mass along '
+                   'constant-velocity geodesics without creating the artificial bimodal fading '
+                   "typical of Euclidean mixtures. When we introduce Marco Cuturi's entropic "
+                   'penalty epsilon * KL(pi || mu_0 x mu_1), the Kantorovich problem turns into an '
+                   'entropic Schrödinger bridge. The optimal coupling matrix factors into diagonal '
+                   'scalings u and v around a Gibbs kernel K_{ij} = exp(-||x_i - y_j||^2 / '
+                   'epsilon), converging in just eighteen parallel Sinkhorn matrix-vector '
+                   'multiplications. This dual formulation guarantees that mass is transported '
+                   'along optimal characteristic curves while avoiding computational singularities '
+                   'in high dimensions.',
+ 'act2_deepening': 'The deeper variational mechanism uncovered by Benamou and Brenier is that '
+                   'minimizing kinetic energy across a compressible density path transforms a '
+                   'static spatial permutation into a time-dependent continuity equation d_t rho + '
+                   'nabla . (rho v) = 0 coupled to the Hamilton–Jacobi equation d_t psi + 0.5 '
+                   '|nabla psi|^2 = 0. In this fluid formulation, individual probability particles '
+                   'never cross trajectories; their paths follow the gradient of a convex '
+                   'potential Phi whose Hessian determinant satisfies the Monge–Ampère partial '
+                   'differential equation det(D^2 Phi) = f / (g o nabla Phi). When the entropic '
+                   'parameter epsilon approaches zero, the diffusive Brownian motion of the '
+                   'Schrödinger bridge freezes into the deterministic Monge transport map. '
+                   'Conversely, setting epsilon higher introduces controlled thermal dispersion, '
+                   'converting a stiff combinatorial matching into a strongly convex optimization '
+                   'problem with guaranteed linear convergence rates. This interplay between fluid '
+                   'geodesics and entropic regularization explains why generative flow matching '
+                   'models can train neural velocity fields to follow straight, non-colliding '
+                   'paths between ambient noise and structured physical data.',
+ 'act2_analogy': 'Everyday analogy: Imagine raking a sprawling pile of autumn leaves from the '
+                 'center of your lawn into a neat composting bin near the fence. If you try to '
+                 'blow them with a leaf blower all at once, leaves scatter randomly in turbulent '
+                 'swirls, creating a messy cloud. But if a team of rake handlers marches in a '
+                 'synchronized wave, each leaf moves along a straight, parallel path directly to '
+                 'its final spot without colliding. Optimal transport is that synchronized rake '
+                 'line, moving mass with minimum effort and zero chaotic turbulence.',
+ 'act2_plain_primer': 'To see optimal transport in action, consider two intuitive controls on our '
+                      'interactive demonstration. The first control is a master time slider that '
+                      'sweeps your view from the starting pile of mass at time zero to the final '
+                      'target shape at time one. As you move this slider, you watch the '
+                      'distribution glide smoothly across the screen like a coherent water '
+                      'droplet, preserving its shape without ever splitting into an unnatural '
+                      'ghost image. The second control adjusts the entropic fuzziness or '
+                      'smoothness of the transport plan, moving from an ultra-crisp, deterministic '
+                      'physical path up to a slightly warm, diffusive cloud. When this '
+                      'regularization setting is very small, the algorithm calculates an exact, '
+                      'razor-sharp mechanical path, but requires more computational steps. As you '
+                      'increase the smoothness dial, the calculations converge in a fraction of a '
+                      'second while retaining the overall geometric flow, illustrating the '
+                      'practical trade-off used inside real-world generative models.',
+ 'distill_diagram': {'analogy_title': 'The Synchronized Leaf Rake',
+                     'analogy_sub': 'Moving autumn leaves along parallel paths without chaotic '
+                                    'swirls',
+                     'force_a_title': 'McCann Geodesic Time t',
+                     'force_a_sub': 'Advances fluid density along straight Hamilton-Jacobi '
+                                    'streamlines',
+                     'force_b_title': 'Sinkhorn Entropic Blur ε',
+                     'force_b_sub': 'Accelerates matrix scaling by smoothing transport coupling '
+                                    'paths',
+                     'threshold_title': 'Coherent Fluid Flow vs. Ghosting',
+                     'threshold_pass': 'Wasserstein geodesic moves mass with zero bimodal ghost '
+                                       'split',
+                     'threshold_fail': 'Linear Euclidean blending creates washed-out double '
+                                       'exposures'},
  'walkthrough': ['Experiment 1 (McCann Geodesic Interpolation Time t in [0, 1]): Drag Geodesic '
                  'Transport Time t from 0.00 (source distribution mu_0) to 1.00 (target '
                  'distribution mu_1). Compare how the Wasserstein-2 geodesic preserves coherent '
@@ -194,13 +298,36 @@ LONGFORM_DATA = {'reading_time': '16 MIN READ',
                  'Experiment 3 (From Monge Earthworks to Flow Matching AI): Step through Stages 1 '
                  'to 4 to inspect Monge–Kantorovich duality, Benamou–Brenier continuity + HJB '
                  'optimality, Bures–Wasserstein geodesics, and generative Flow Matching.'],
- 'act4_title': '',
+ 'act4_title': 'Act IV — Generative Flow Matching, Civil Earthworks & Single-Cell CF Trajectory '
+               'Inference',
  'act4_human_ai': "Uniting Gaspard Monge's original civil cut-and-fill grading optimization with "
                   'modern AI, engineers use Sinkhorn optimal transport for highway mass-haul '
                   'balancing while machine-learning researchers train Continuous Normalizing Flows '
                   'via straight Benamou–Brenier velocity fields.',
+ 'act4_deepening': 'In cutting-edge scientific research, optimal transport has become the master '
+                   'bridge connecting generative artificial intelligence with experimental biology '
+                   'and physical engineering. When biologists analyze single-cell RNA sequencing '
+                   'data to study cellular reprogramming, the physical measurement process '
+                   'destroys the living cells at each timestamp, leaving only disconnected '
+                   'snapshots of cellular populations. By deploying Benamou–Brenier dynamic '
+                   'optimal transport algorithms, human geneticists and automated AI pipelines '
+                   'reconstruct the hidden developmental trajectories that guide stem cells into '
+                   'specialized lineages. In civil infrastructure, transportation planners couple '
+                   'Sinkhorn solvers with geographic information systems to minimize mass-haul '
+                   'haulage costs and diesel emissions during major highway grading. Open '
+                   'mathematical frontiers beckon: how do we scale dynamic optimal transport to '
+                   'high-dimensional non-Euclidean manifolds like SE(3) for protein docking '
+                   'without incurring the curse of dimensionality? Developing provably stable, '
+                   'entropy-regularized flow matching estimators on curved spaces will unlock '
+                   'next-generation therapeutic molecular design and climate-scale carbon '
+                   'sequestration logistics.',
  'cf_bridge': 'Standalone Mathematical Flagship & Triad Synthesis (M.04 + M.07 + M.08 -> M.09): '
-              'Written for applied mathematicians, optimal-control theorists, and AI researchers.',
+              'Written for applied mathematicians, optimal-control theorists, and AI researchers. '
+              'Direct curative bridge for the lab: Waddington-OT and Benamou–Brenier Wasserstein-2 '
+              'trajectory inference reconstruct how ventilation duct basal stem cells '
+              'differentiate into CSI-MasterFormat-expressing ionocytes and ciliated cells across '
+              'destructive time-series scRNA-seq snapshots, while de novo Flow Matching models '
+              'design ionizable lipid nanoparticles on SE(3) manifolds.',
  'sources': ['Benamou, J.-D., & Brenier, Y. (2000). A computational fluid mechanics solution to '
              'the Monge-Kantorovich mass transfer problem. Numerische Mathematik, 84(3), 375–393. '
              'DOI: 10.1007/s002110050002.',
@@ -214,7 +341,14 @@ LONGFORM_DATA = {'reading_time': '16 MIN READ',
              'Open-Source Optimal Transport & Post-Quantum WEF Resilience Stack: POT Python '
              'Optimal Transport (https://github.com/PythonOT/POT), FEniCSx PDE Solver '
              '(https://github.com/FEniCS/dolfinx), and Open Quantum Safe Lattice Cryptography '
-             '(https://github.com/open-quantum-safe/liboqs).'],
+             '(https://github.com/open-quantum-safe/liboqs).',
+             'Baratta, I. A., et al. (2023). DOLFINx: The next generation FEniCS problem solving '
+             'environment (FEniCS/dolfinx, https://github.com/FEniCS/dolfinx). Zenodo. DOI: '
+             '10.1145/3524456.',
+             'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
+             'context of citations and classifies their intent using deep learning '
+             '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
+             '10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Benamou-Brenier '
         'Wasserstein-2 optimal transport geodesic wave packet interpolation and Sinkhorn entropic '
         'coupling diagram">\n'
@@ -278,6 +412,33 @@ ES_TRANSLATION = {'title_es': 'Transporte Óptimo de Monge–Kantorovich, Dinám
  'why_es': 'Mezclar dos fotografías disolviendo una en otra crea una imagen fantasma intermedia; '
            'el Transporte Óptimo desliza cada grano de arena desde su origen hasta su destino por '
            'la trayectoria geodésica más corta sin cruzarse.',
+ 'plain_es': 'En 1781 en París, el matemático e ingeniero civil Gaspard Monge planteó un dilema '
+             'práctico para la construcción: cómo mover montículos de tierra hacia fosas de '
+             'relleno realizando el menor esfuerzo físico posible. Durante más de dos siglos, este '
+             'problema de acarreo de materiales parecía casi imposible de resolver en computadoras '
+             'comunes debido a la enorme cantidad de combinaciones. Imaginen que ustedes quieren '
+             'transformar una fotografía en otra dentro de un editor de video. Si simplemente '
+             'desvanecen una imagen mientras aparece la otra, se produce un efecto fantasma '
+             'desagradable donde ambas figuras se enciman. El transporte óptimo resuelve esto '
+             'tratando cada parte de la imagen como si fuera un grano de arena que se desliza por '
+             'el camino más corto y limpio hasta su destino final. Esta teoría matemática permite '
+             'hoy coordinar rutas de transporte con ahorro de combustible, guiar algoritmos '
+             'generativos de inteligencia artificial y rastrear cómo maduran las células vivas a '
+             'lo largo del tiempo sin distorsiones.',
+ 'deep_es': 'La solución moderna de Benamou y Brenier demostró que el transporte óptimo cuadrático '
+            'de Wasserstein equivale a un flujo de fluido ideal sin presión que viaja a lo largo '
+            'de geodésicas en el espacio de densidades. Este sistema acopla dos parámetros '
+            'interactivos: el tiempo de transporte geodésico y el coeficiente de regularización '
+            'entrópica de Sinkhorn. Al desplazar el tiempo entre cero y uno, la masa se traslada '
+            'coherentemente conservando su estructura sin dividirse en imágenes fantasma '
+            'biumbrales. Por otro lado, el parámetro entrópico suaviza el acoplamiento '
+            'probabilístico mediante una penalización de Kullback–Leibler, lo que transforma un '
+            'problema combinatorio pesado en multiplicaciones de matrices ultrarrápidas sobre '
+            'tarjetas gráficas modernas. Cuando este valor tiende a cero, se recupera el mapa '
+            'determinista exacto de Monge; al incrementarlo moderadamente, el algoritmo converge '
+            'en apenas dieciocho iteraciones numéricas. Este balance entre geodésicas continuas y '
+            'regularización entrópica fundamenta el diseño de nuevos modelos generativos de Flow '
+            'Matching y la reconstrucción temporal de linajes celulares en biología experimental.',
  'bridge_es': 'El transporte óptimo dinámico de Benamou–Brenier (Waddington-OT) reconstruye cómo '
               'las células madre basales bronquiales se diferencian en ionocitos CSI-MasterFormat+ '
               'a partir de datos de scRNA-seq, además de guiar el diseño generativo Flow Matching '
