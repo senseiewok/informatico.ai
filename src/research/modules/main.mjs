@@ -11,6 +11,7 @@ import { initFolioRouter } from "./folio-router.mjs";
 import { initPlateWebGL } from "./webgl-observatory.mjs";
 import { initArticleAudio } from "./article-audio.mjs";
 import { initFolioPuzzles } from "./folio-puzzle.mjs";
+import { initPhysicsDiscoveryCrucible } from "./physics-discovery-crucible.mjs";
 
 function bootMagazine(scope = document) {
   initThemePlate();
@@ -19,6 +20,7 @@ function bootMagazine(scope = document) {
   initCompanionAndLedger(scope);
   initPlateWebGL(scope);
   initFolioPuzzles(scope);
+  initPhysicsDiscoveryCrucible(scope);
 }
 
 bootMagazine(document);
