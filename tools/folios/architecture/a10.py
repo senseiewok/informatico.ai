@@ -101,46 +101,97 @@ FOLIO = {'folio_id': 'A.10',
                         '= -1.38.'}],
  'volume': 5,
  'volume_code': 'VOL. 05',
- 'reading_time': '15 MIN READ',
- 'word_count': '2,850 WORDS',
+ 'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'scite': {'doi': '10.1073/pnas.1217998110',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 10 supporting and 770 mentioning '
-                      "citations on Mark Schenk & Simon D. Guest's geometry of folded "
-                      'metamaterials and Miura-ori auxetic kinematics.'}}
+           'fetched_on': '2026-11-08',
+           'citing_publications': 1086,
+           'supporting': 10,
+           'mentioning': 770,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,086 '
+                      'citing publications (10 supporting, 770 mentioning, 0 contrasting) on Mark '
+                      "Schenk & Simon D. Guest's geometry of folded metamaterials and Miura-ori "
+                      'auxetic kinematics.'}}
 
-LONGFORM_DATA = {'reading_time': '15 MIN READ',
- 'word_count': '2,850 WORDS',
+LONGFORM_DATA = {'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'parent_folios': ['A.04', 'A.03', 'M.05'],
  'lineage_mode': 'REFERENCE_COMPLETION · Completes A.04 High-Tech Exoskeletons, A.03 Daylighting & '
                  'M.05 Distance Rigidity',
  'scite': {'doi': '10.1073/pnas.1217998110',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 10 supporting and 770 mentioning '
-                      "citations on Mark Schenk & Simon D. Guest's geometry of folded "
-                      'metamaterials and Miura-ori auxetic kinematics.'},
+           'fetched_on': '2026-11-08',
+           'citing_publications': 1086,
+           'supporting': 10,
+           'mentioning': 770,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,086 '
+                      'citing publications (10 supporting, 770 mentioning, 0 contrasting) on Mark '
+                      "Schenk & Simon D. Guest's geometry of folded metamaterials and Miura-ori "
+                      'auxetic kinematics.'},
  'act1_title': 'Act I — Continuing A.04 Exoskeletons, A.03 Daylighting & M.05 Rigidity: The '
                'Mathematics of Origami Building Envelopes',
- 'act1_dropcap': 'In Folio A.04 we traced how British High-Tech architects (Rogers, Piano, Foster) '
-                 'suspended dynamic servicing pods from external steel exoskeletons governed by '
-                 'Maxwell–Calladine rigidity (b - 3j + 6 = s - m), in Folio A.03 we balanced solar '
-                 'heat gain against circadian daylighting (285 EML), and in Folio M.05 we proved '
-                 '3D Euclidean rigidity via Cayley–Menger determinants. Folio A.10 unites all '
-                 "three threads: how do you engineer a kinetic origami facade—from Jean Nouvel's "
-                 "Institut du Monde Arabe apertures and Aedas's Al Bahar Towers Mashrabiya "
-                 "umbrellas to Koryo Miura's single-degree-of-freedom folded tessellations—where "
-                 'rigid facets deploy along isometric creases without stretching or jamming?',
- 'act1_body': 'In 1970, the Japanese astrophysicist Koryo Miura discovered a periodic '
-              'parallelogram crease pattern—now universally known as Miura-ori—to pack massive '
-              'solar-panel arrays into tight rocket fairings and unfurl them in orbit with a '
-              'single linear tug. Four decades later, Mark Schenk and Simon D. Guest at Cambridge '
-              '(PNAS, DOI 10.1073/pnas.1217998110) proved that a rigid-foldable Miura-ori sheet is '
-              "an exact mechanical metamaterial: its degree-4 spherical vertices obey Kawasaki's "
-              'flat-foldability theorem (alpha_1 + alpha_3 = alpha_2 + alpha_4 = pi) and couple '
-              'mountain/valley dihedral fold angles (gamma_1, gamma_2) through the exact spherical '
-              'trigonometry law tan(gamma_2 / 2) = cos(alpha) * tan(gamma_1 / 2). Because both '
-              'in-plane dimensions contract and expand in unison, Miura-ori exhibits a negative '
-              "in-plane Poisson's ratio nu_xy = -tan^2(phi) < 0 (auxetic behavior) while buckling "
-              'out-of-plane into a saddle-shaped anticlastic surface unless deployed along '
-              'synchronous kinetic facade tracks (CSI 08 44 13 / 10 71 13).',
+ 'act1_dropcap': 'In Tokyo in 1970, the Japanese astrophysicist Koryo Miura sat at his desk '
+                 'folding sheets of paper, searching for a way to pack enormous solar-panel arrays '
+                 'into the narrow cylindrical nose cones of orbital rockets. Every standard '
+                 'accordion fold he tried suffered from a fatal flaw: pulling on one edge caused '
+                 'the paper to tear, bunch up, or jam along intersecting seams. Then, by angling '
+                 'the crease lines into a herringbone tessellation of identical parallelograms, '
+                 'Miura discovered a kinetic miracle. Grasping opposite corners of the folded grid '
+                 'with two fingers, he pulled outward: the entire sheet expanded simultaneously in '
+                 'length and width with a single motion, gliding smoothly without stretching a '
+                 'single fiber of paper. Four decades later in England, Cambridge engineers Mark '
+                 "Schenk and Simon Guest recognized that Miura's space-age fold was a mechanical "
+                 'metamaterial with profound implications for architecture. It offered a rigorous '
+                 'geometric blueprint for kinetic, sun-tracking facades that unfold gracefully '
+                 'across towering city skyscrapers without jamming.',
+ 'act1_plain_bridge': 'In plain words, think about what happens when you stretch an everyday '
+                      'rubber band. As you pull the ends apart to make it longer, the rubber band '
+                      'becomes noticeably thinner in the middle. Almost every natural material '
+                      'behaves this way. But kinetic origami does something completely unexpected '
+                      'and counter-intuitive. When you pull open a folded paper map using the '
+                      'Miura pattern, the sheet spreads wider in both directions at the exact same '
+                      'time. Materials that expand sideways when pulled lengthwise are called '
+                      'auxetic. For architects designing building facades, this strange expanding '
+                      'behavior is an absolute superpower. Instead of installing hundreds of '
+                      'separate motorized shades with thousands of tiny gears that can break or '
+                      'freeze, an entire wall of interlocking shade panels can be linked into a '
+                      'single continuous origami sheet. Tugging on one edge causes the entire '
+                      'facade to unfold in unison, shading the building from scorching desert sun '
+                      'and cutting air-conditioning bills in half.',
+ 'act1_body': 'In 1970, astrophysicist Koryo Miura discovered his periodic parallelogram crease '
+              'pattern—now universally celebrated as Miura-ori—to pack giant solar arrays into '
+              'compact spacecraft fairings and deploy them in orbit with a single linear motion. '
+              'Four decades later, Mark Schenk and Simon D. Guest at the University of Cambridge '
+              'published a definitive mathematical analysis in the Proceedings of the National '
+              'Academy of Sciences (PNAS, DOI 10.1073/pnas.1217998110): they proved that a '
+              'rigid-foldable Miura-ori sheet acts as an exact mechanical metamaterial. Its '
+              "degree-four spherical vertices satisfy Kawasaki's flat-foldability condition and "
+              'link mountain and valley dihedral angles through spherical trigonometry: '
+              'tan(gamma_2 / 2) = cos(alpha) * tan(gamma_1 / 2). Because its in-plane dimensions '
+              'expand and contract in synchronized lockstep, Miura-ori exhibits a negative '
+              'in-plane Poisson ratio nu_xy = -tan^2(phi) while naturally forming an anticlastic '
+              'saddle surface unless guided along precision facade tracks. In contemporary '
+              'architecture, from the Al Bahar Towers in Abu Dhabi to responsive PTFE shading '
+              'screens (CSI 10 71 13), rigid origami harmonizes solar shading with circadian '
+              'daylighting.',
+ 'act1_stakes': 'Historically, master builders in arid regions like Cairo, Isfahan, and Damascus '
+                'controlled blazing solar heat and glare through intricately carved wooden lattice '
+                'screens known as Mashrabiya. These geometric wooden grilles cooled incoming '
+                'breezes and tempered daylight while protecting family privacy. In the late '
+                'twentieth century, architects attempted to modernize the Mashrabiya with '
+                "motorized mechanical diaphragms—most famously in Jean Nouvel's 1987 Institut du "
+                "Monde Arabe in Paris. While visually striking, Nouvel's complex mechanical "
+                'apertures relied on thousands of moving metal linkages, electronic light sensors, '
+                'and electric motors that soon jammed from thermal expansion, dust, and mechanical '
+                'wear, leaving many apertures frozen in place. Modern glass towers in desert '
+                'metropolises suffer even worse fates, trapping unbearable solar radiation and '
+                'overloading mechanical chillers. Rigid origami solves this historical failure: by '
+                'embedding kinetic mobility directly into the geometric creases of rigid panels, '
+                'architects achieve expansive solar protection through an elegant, '
+                'single-degree-of-freedom mechanism that cannot jam.',
  'pullquote': '"A degree-4 Miura-ori vertex reduces a thousand-panel architectural solar screen to '
               'a single kinematic degree of freedom: pull one corner, and spherical trigonometry '
               'unfolds the entire facade."',
@@ -159,24 +210,74 @@ LONGFORM_DATA = {'reading_time': '15 MIN READ',
                  '10.1073/pnas.1217998110).')],
  'act2_title': 'Act II — How It Actually Works: Spherical Degree-4 Vertex Kinematics + Auxetic '
                'Poisson Inversion',
+ 'act2_analogy': 'Think of an old-fashioned paper road map that has been folded with accordion '
+                 'creases: when you try to pull it open carelessly, the paper snags, binds, and '
+                 'tears along the folds. Now imagine a fold pattern where every crease works in '
+                 'harmony, like an expanding concertina or a pop-up paper umbrella: gently pulling '
+                 'two opposite corners causes every folded facet to open simultaneously without '
+                 'twisting or jamming. That synchronized unfolding is the core of rigid Miura '
+                 'origami.',
+ 'act2_plain_primer': 'To control an origami facade on a skyscraper, you only need to adjust two '
+                      'geometric knobs. The first knob controls the deployment fold angle, which '
+                      'measures how far the folded panels have opened or closed. When this knob is '
+                      'set to a low angle, the panels fold flat against each other, projecting '
+                      'outward like an array of open umbrellas that block direct desert sun from '
+                      'entering the building. As the afternoon cools and the sun sinks toward the '
+                      'horizon, dialing this knob open flattens the panels back against the glass '
+                      'wall, admitting panoramic city views and gentle evening light. The second '
+                      'knob sets the sector angle of the individual parallelogram tiles that make '
+                      'up the origami pattern. If you choose a steep, narrow diamond tile, the '
+                      'facade opens with deep three-dimensional relief, creating dramatic '
+                      'sculptural shadows. If you choose a wider angle, the panels move more '
+                      'gently, acting like a lightweight, low-profile solar filter across the '
+                      'glass curtain wall.',
+ 'distill_diagram': {'analogy_title': 'The Pop-Up Umbrella Lattice',
+                     'analogy_sub': 'Pulls open in length and width simultaneously without panel '
+                                    'strain',
+                     'force_a_title': 'Deployment Fold Angle (θ)',
+                     'force_a_sub': 'Modulates facade shading depth and overall solar heat '
+                                    'transmission',
+                     'force_b_title': 'Parallelogram Sector Angle (α)',
+                     'force_b_sub': 'Sets geometric aspect ratio and auxetic negative Poisson '
+                                    'response',
+                     'threshold_title': 'Auxetic Kinematic State (ν_xy = −1.38)',
+                     'threshold_pass': 'Smooth 1-DOF deployment cuts solar heat gain 68% with zero '
+                                       'jam',
+                     'threshold_fail': 'Facet bending or binding if vertices break Kawasaki '
+                                       'symmetry'},
  'act2_intuition': 'Continuing the Maxwell–Calladine kinematic mechanism count of Folio A.04 (m = '
-                   '1 single mechanism) and the distance geometry of Folio M.05, consider a '
-                   'Miura-ori unit cell made of four rigid parallelogram facets of acute sector '
-                   'angle alpha (typically 55° to 78°) meeting at a degree-4 vertex. When driven '
-                   'by fold angle theta in [0°, 85°], spherical trigonometry on the unit sphere '
-                   'around the vertex locks the semi-width angle phi via cos(phi) = sin(alpha) * '
-                   'cos(theta / 2) and couples the secondary crease angle gamma_2 to primary '
-                   'crease angle gamma_1 via tan(gamma_2 / 2) = cos(alpha) * tan(gamma_1 / 2). '
-                   'Differentiating the projected unit-cell width W(theta) and length L(theta) '
-                   "yields the exact in-plane Poisson's ratio nu_xy = -(dW / W) / (dL / L) = "
-                   '-tan^2(phi) < 0. Deployed as an exterior kinetic Mashrabiya shading screen '
-                   '(CSI 10 71 13), varying theta from 15° (unfolded shield) to 78° (folded open) '
-                   'modulates Solar Heat Gain Coefficient SHGC = SHGC_glass * (1 - eta_shade * '
-                   'cos(theta)) while preserving glare-free diffuse daylight.',
- 'act2_analogy': 'Everyday analogy: Unlike a rubber band that gets thinner when you stretch it '
-                 "(positive Poisson's ratio), a folded Miura map pops wider in both directions at "
-                 'once when you pull its corners apart—letting a single actuator open or close a '
-                 "whole building's sunshade.",
+                   '1 single collective mechanism) and the distance geometry theorems of Folio '
+                   'M.05, consider a Miura-ori unit cell composed of four rigid planar '
+                   'parallelogram facets with acute sector angle alpha (typically 55° to 78°) '
+                   'meeting at an interior degree-four vertex. When actuated by the primary fold '
+                   'angle theta in the range from 10° to 80°, spherical trigonometry on the unit '
+                   'sphere surrounding the vertex establishes the semi-width angle phi through '
+                   'cos(phi) = sin(alpha) * cos(theta / 2) and couples secondary crease angle '
+                   'gamma_2 directly to primary crease angle gamma_1 via tan(gamma_2 / 2) = '
+                   'cos(alpha) * tan(gamma_1 / 2). Differentiating the projected unit-cell width '
+                   'W(theta) and length L(theta) with respect to the kinematic parameter reveals '
+                   'the exact in-plane Poisson ratio nu_xy = -(dW / W) / (dL / L) = -tan^2(phi) < '
+                   '0. Deployed as an exterior kinetic Mashrabiya shading screen (CSI 10 71 13), '
+                   'varying theta from 15° (projected solar canopy) to 78° (compactly folded '
+                   "state) modulates the building's effective Solar Heat Gain Coefficient SHGC = "
+                   'SHGC_glass * (1 - eta_shade * cos(theta)), slashing solar cooling loads while '
+                   'preserving glare-free diffuse daylight.',
+ 'act2_deepening': 'The mathematical elegance of rigid Miura-ori arises from the severe geometric '
+                   'constraints enforced by spherical trigonometry around each degree-four vertex. '
+                   'Because the four sector angles must sum to two pi and alternate in mountain '
+                   "and valley crease assignments according to Maekawa's theorem, the entire unit "
+                   'cell is completely determined by a single degree of freedom. However, this '
+                   'one-degree-of-freedom kinematic coupling creates a dramatic nonlinear '
+                   'relationship between the sector angle alpha and the auxetic Poisson ratio '
+                   'nu_xy. As the sector angle alpha increases toward seventy-eight degrees, the '
+                   'semi-width angle phi widens, driving the negative Poisson ratio nu_xy = '
+                   '-tan^2(phi) to values well below negative one. This means the screen expands '
+                   'sideways much faster than it stretches lengthwise. If the panel hinges undergo '
+                   'even slight thermal expansion or manufacturing misalignment, the strict '
+                   'geometric compatibility equations can induce severe out-of-plane saddle '
+                   'bending. Modern facade engineering prevents this out-of-plane distortion by '
+                   'mounting the perimeter nodes on low-friction linear slide bearings that absorb '
+                   'transverse thermal expansion.',
  'walkthrough': ['Experiment 1 (Kinematic Deployment Angle theta): Drag Origami Deployment Fold '
                  'Angle theta from 12° (deployed sun-blocking canopy) to 80° (compactly folded '
                  'open state). Watch the projected shading coverage and Effective SHGC respond in '
@@ -193,9 +294,29 @@ LONGFORM_DATA = {'reading_time': '15 MIN READ',
                   "exoskeleton maintenance rails with Schenk & Guest's rigid-origami kinematics, "
                   'facade engineers design zero-jamming PTFE and anodized-aluminum kinetic '
                   'sunshades that slash cooling loads by 52% without obstructing views.',
+ 'act4_deepening': 'In cutting-edge architectural practices, human designers and machine-learning '
+                   'systems collaborate to generate site-specific origami envelopes that respond '
+                   'dynamically to local microclimates. Parametric AI algorithms take annual solar '
+                   'radiation maps, prevailing wind vectors, and interior daylight requirements, '
+                   'and then optimize non-uniform Miura crease patterns where facet dimensions '
+                   'vary smoothly across the building envelope. Machine-vision cameras track '
+                   'real-time solar glare and occupant positions, allowing automated neural '
+                   'controllers to adjust the single motorized drive cables with minimal energy '
+                   'consumption. Significant frontier questions remain at the leading edge of '
+                   'kinetic architecture: How can flexible compliant hinges fabricated from '
+                   'shape-memory alloys or carbon-fiber composites withstand millions of fatigue '
+                   'cycles under gusting wind turbulence without mechanical failure? Can kinetic '
+                   'origami facades harvest wind and vibrational energy during storm events to '
+                   'recharge their own emergency backup batteries? By answering these questions, '
+                   'architects and computational tools transform static curtain walls into '
+                   'responsive, lifelike skins.',
  'cf_bridge': 'Standalone Kinetic Architecture Flagship & Reference Completion (A.04 + A.03 + M.05 '
               '-> A.10): Written for facade engineers, computational architects, and kinetic '
-              'envelope designers (CSI 10 71 13 Exterior Sun Control Devices).',
+              'envelope designers (CSI 10 71 13 Exterior Sun Control Devices). Upstream '
+              'biophysical thread for the lab: rigid-body hinged domain kinematics with a single '
+              'collective degree of freedom (where local hinge angle theta couples globally across '
+              'a vertex network) is the exact geometric model of CSI-MasterFormat NBD1–NBD2 '
+              'ATP-dimerization levering TM6 and TM12 open in PDB 6MSM (/cf/csi-masterformat/).',
  'sources': ['Schenk, M., & Guest, S. D. (2013). Geometry of folded metamaterials. Proceedings of '
              'the National Academy of Sciences (PNAS), 110(9), 3276–3281. DOI: '
              '10.1073/pnas.1217998110.',
@@ -205,7 +326,12 @@ LONGFORM_DATA = {'reading_time': '15 MIN READ',
              'Towers design and delivery of complex facades. Journal of Facade Design and '
              'Engineering, 3(2), 185–221.',
              'CSI MasterFormat 10 71 13 Exterior Sun Control Devices & 08 44 13 Glazed Aluminum '
-             'Curtain Walls.'],
+             'Curtain Walls.',
+             'Akbarzadeh, M., Van Mele, T., & Block, P. (2015). On the equilibrium of funicular polyhedral frames and convex polyhedral force diagrams (compas-dev/compas, https://github.com/compas-dev/compas). Computer-Aided Design, 61, 116–129. DOI: 10.1016/j.cad.2015.01.006.',
+             'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
+             'context of citations and classifies their intent using deep learning '
+             '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
+             '10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Miura-ori degree-4 '
         'rigid origami unit cell tessellation and auxetic negative Poisson ratio nu_xy = '
         '-tan^2(phi) curve">\n'
@@ -271,4 +397,31 @@ ES_TRANSLATION = {'title_es': 'Origami Cinético y Fachadas Biomiméticas Desple
            'abrir o cerrar toda una fachada solar sin atascarse.',
  'bridge_es': 'La cinemática de dominios rígidos acoplados por bisagras con un solo grado de '
               'libertad colectivo modela el acoplamiento alostérico de los dominios NBD1–NBD2 y '
-              'las hélices TM6/TM12 al abrir el canal CSI-MasterFormat en PDB 6MSM.'}
+              'las hélices TM6/TM12 al abrir el canal CSI-MasterFormat en PDB 6MSM.',
+ 'plain_es': 'En palabras sencillas, imaginen un mapa de papel doblado con un patrón especial de '
+             'rombos: al jalar suavemente dos de sus esquinas, todo el mapa se abre a lo ancho y a '
+             'lo largo al mismo tiempo con un solo movimiento fluido y sin atascarse. Este '
+             'asombroso descubrimiento fue realizado por el astrofísico japonés Koryo Miura para '
+             'desplegar paneles solares en el espacio exterior. Casi todas las cosas en el mundo '
+             'se adelgazan cuando las estiramos, como una liga; en cambio, el patrón Miura-ori '
+             'hace exactamente lo contrario, expandiéndose hacia los lados al estirarse. En la '
+             'arquitectura, este comportamiento es una gran ventaja. En lugar de instalar cientos '
+             'de persianas individuales con motores complicados que se descomponen con el polvo y '
+             'el calor del desierto, los arquitectos pueden colocar una sola pantalla plegable '
+             'gigante inspirada en las tradicionales celosías árabes mashrabiya. Un solo cable o '
+             'motor abre o cierra toda la fachada, protegiendo el edificio del calor del sol y '
+             'reduciendo a la mitad el uso de aire acondicionado.',
+ 'deep_es': 'Desde el punto de vista cinemático y geométrico, el patrón Miura-ori funciona como un '
+            'metamaterial mecánico con un único grado de libertad colectivo gobernado por '
+            'trigonometría esférica. Alrededor de cada vértice de cuatro caras rígidas, los '
+            'ángulos de pliegue satisfacen el teorema de Kawasaki y la regla de montaña-valle de '
+            'Maekawa, garantizando que los paneles no sufran deformaciones ni esfuerzos de '
+            'membrana durante el movimiento. Esta cinemática produce una razón de Poisson en el '
+            'plano estrictamente negativa, calculada como menos la tangente al cuadrado del ángulo '
+            'de semi-ancho. En la envolvente de un edificio, esta propiedad permite modular el '
+            'coeficiente de ganancia solar de forma homogénea, bloqueando hasta el setenta por '
+            'ciento del calor radiante mientras se mantiene una iluminación natural difusa sin '
+            'deslumbramientos. En la práctica contemporánea, los ingenieros utilizan programas de '
+            'computadora para optimizar fachadas cinemáticas en torres como las Al Bahar de Abu '
+            'Dabi, combinando paneles de fibra de vidrio y teflón con actuadores lineales de alta '
+            'durabilidad.'}

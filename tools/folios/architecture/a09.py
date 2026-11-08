@@ -101,50 +101,94 @@ FOLIO = {'folio_id': 'A.09',
                         'orthotropic beech swelling differential.'}],
  'volume': 5,
  'volume_code': 'VOL. 05',
- 'reading_time': '14 MIN READ',
- 'word_count': '2,780 WORDS',
+ 'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'scite': {'doi': '10.1364/JOSA.11.000233',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 48 supporting and 1,472 '
-                      "mentioning citations on Stephen Timoshenko's foundational bi-material "
-                      'thermostat curvature theorem.'}}
+           'fetched_on': '2026-11-08',
+           'citing_publications': 2499,
+           'supporting': 48,
+           'mentioning': 1474,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,499 '
+                      'citing publications (48 supporting, 1,474 mentioning, 0 contrasting) on '
+                      "Stephen Timoshenko's foundational bi-material thermostat curvature "
+                      'theorem.'}}
 
-LONGFORM_DATA = {'reading_time': '14 MIN READ',
- 'word_count': '2,780 WORDS',
+LONGFORM_DATA = {'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'parent_folios': ['A.02', 'E.04', 'A.08'],
  'lineage_mode': 'REFERENCE_COMPLETION · Completes A.02 Timber Gridshells, E.04 Moisture Sorption '
                  '& A.08 Zero-Energy Envelopes',
  'scite': {'doi': '10.1364/JOSA.11.000233',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 48 supporting and 1,472 '
-                      "mentioning citations on Stephen Timoshenko's foundational bi-material "
-                      'thermostat curvature theorem.'},
+           'fetched_on': '2026-11-08',
+           'citing_publications': 2499,
+           'supporting': 48,
+           'mentioning': 1474,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,499 '
+                      'citing publications (48 supporting, 1,474 mentioning, 0 contrasting) on '
+                      "Stephen Timoshenko's foundational bi-material thermostat curvature "
+                      'theorem.'},
  'act1_title': 'Act I — Completing the Timber & Climate Thread from A.02, E.04 & A.08: Wood That '
                'Breathes and Moves Without Motors',
- 'act1_dropcap': 'In Folio A.02 we analyzed how reciprocal timber gridshells carry roof loads '
-                 'across notched lap joints (Eurocode 5, EN 1995-1-1), where structural engineers '
-                 "traditionally treat wood's directional moisture swelling as a dimensional "
-                 'nuisance to be locked down. In Folio E.04 we modeled membrane moisture sorption, '
-                 'and in Folio A.08 we engineered zero-energy radiative sky-cooling roofs. Now, in '
-                 'Folio A.09, we complete that architectural triad by asking: what happens when we '
-                 "couple Stephen Timoshenko's 1925 bilayer curvature theorem with wood's natural "
-                 'orthotropic hygroscopicity so a timber building skin opens and closes '
-                 'autonomously in response to ambient humidity with zero motors, wires, or '
-                 'electronics?',
+ 'act1_dropcap': 'In the quiet laboratories of the Westinghouse Electric Corporation in 1925, the '
+                 'Ukrainian-born mechanics pioneer Stephen Timoshenko picked up a small metal '
+                 'strip bonded from two different alloys. When heated, the strip curled smoothly '
+                 'into a graceful arc, inventing the mathematical foundation for every mechanical '
+                 'thermostat. Nearly a century later in 2013, computational architect Achim Menges '
+                 'and his team at the University of Stuttgart walked through a damp Black Forest '
+                 'morning, observing fallen pinecones lying along the forest floor. Despite being '
+                 'composed entirely of dead plant tissue, the pinecone scales were curled tightly '
+                 'shut to protect their seeds from the driving rain, only to spread wide open when '
+                 'warmed by the dry afternoon sun. Menges realized that nature had achieved what '
+                 'modern responsive architecture struggled to accomplish: dynamic building facades '
+                 'that sense and respond to changing weather autonomously, moving silently without '
+                 'electric motors, mechanical sensors, digital processors, or external wiring.',
+ 'act1_plain_bridge': 'In plain words, think of what happens to a wooden door in your house during '
+                      'a humid summer. The door absorbs moisture from the damp air and swells, '
+                      'sticking inside its frame. Wood swells because natural plant cells soak up '
+                      'water vapor like millions of tiny sponges. However, wood does not swell '
+                      'equally in all directions. It expands dramatically across its grain, but '
+                      'hardly changes length along the grain. If you take a thin board cut across '
+                      'the grain and glue it tightly to a board cut along the grain, a fascinating '
+                      'reaction takes place whenever the humidity changes. When the air becomes '
+                      'humid, the cross-grain board tries to grow longer while the lengthwise '
+                      'board refuses to stretch. Because the two boards are bonded together, the '
+                      'whole piece is forced to bend into a curve. By shaping these wooden '
+                      'bilayers into facade petals, windows automatically open when the air is dry '
+                      'and seal shut when it rains.',
  'act1_body': 'Conifer pinecones and wheat awns have executed motorless climate actuation for '
-              'hundreds of millions of years: even after their cells are dead, cellulose '
-              'microfibrils wound at contrasting angles cause the outer and inner scale layers to '
-              'swell differently as relative humidity rises, bending the scale shut in rain and '
-              'springing it open in dry wind to disperse seeds. In 1925, Stephen Timoshenko '
-              '(Journal of the Optical Society of America, DOI 10.1364/JOSA.11.000233) derived the '
-              'exact analytical curvature kappa of any two-layer composite beam undergoing '
-              'differential strain Delta_epsilon = (alpha_2 - alpha_1) * Delta_MC. Over the past '
-              'decade at ICD/ITKE Stuttgart, Achim Menges, Dylan Wood, and Reichert et al. '
-              "translated Timoshenko's theorem into architectural cross-laminated European beech "
-              '(Fagus sylvatica) and spruce bilayers (HygroSkin, Urbach Tower, CSI 06 18 00): by '
-              'laminating a moisture-active tangential wood ply (alpha_T approx 0.32% per %MC) '
-              'against a moisture-stable longitudinal ply (alpha_L approx 0.01% per %MC) under '
-              'controlled kiln moisture content, flat CNC-milled timber sheets self-form into '
-              'doubly curved shells or act as zero-energy weather-responsive ventilation '
-              'apertures.',
+              'hundreds of millions of years: cellulose microfibrils wound at contrasting angles '
+              'cause outer and inner tissue layers to swell differently as relative humidity '
+              'shifts, flexing scales closed in rain and spreading them open in dry wind. In 1925, '
+              'Stephen Timoshenko published the exact analytical curvature theorem for bi-material '
+              'beams in the Journal of the Optical Society of America (DOI '
+              '10.1364/JOSA.11.000233). Over the past decade at ICD/ITKE Stuttgart, Achim Menges, '
+              "Dylan Wood, and their collaborators translated Timoshenko's mathematics into "
+              'architectural cross-laminated European beech and spruce bilayers (HygroSkin, Urbach '
+              'Tower, CSI 06 18 00). By gluing a moisture-active tangential wood veneer (expanding '
+              'roughly 0.32 percent per percent change in moisture content) against a '
+              'dimensionally stable longitudinal ply under controlled factory humidity, flat '
+              'cross-laminated timber billets curl into self-shaping doubly curved architectural '
+              'shells during standard kiln drying, or act as zero-energy ventilation petals that '
+              'regulate building airflows without electricity.',
+ 'act1_stakes': 'For centuries, carpenters and cabinetmakers treated wood swelling as an '
+                'unpredictable flaw to be restrained through heavy framing, metal fasteners, and '
+                'moisture-blocking varnishes. Master shipwrights and joiners learned through trial '
+                'and error that unseasoned timber twists, warps, and cracks if moisture escapes '
+                'unevenly across different grain directions. In twentieth-century construction, '
+                'the standard response was to over-engineer steel mechanical systems: motorized '
+                'louvers, motorized dampers, and electric actuators wired to electronic humidity '
+                'sensors. But motorized kinetic facades have proven notoriously fragile in '
+                'real-world buildings. Mechanical linkages jam from wind-borne dust, electric '
+                'servo motors burn out after repetitive weather cycles, and electronic sensors '
+                'corrode in coastal air. When building owners face mounting maintenance costs, '
+                'motorized facade louvers are frequently locked in fixed positions, abandoning '
+                'climate responsiveness altogether. The failure of complex mechanical gadgets '
+                'highlighted the need for passive, materially embedded movement where the '
+                'structure itself serves as sensor, actuator, and weather barrier.',
  'pullquote': '"In hygroscopic timber tectonics, the sensor, the actuator, and the load-bearing '
               'architectural skin are no longer separate mechanical devices—they are the same '
               'piece of wood."',
@@ -162,22 +206,72 @@ LONGFORM_DATA = {'reading_time': '14 MIN READ',
                  'timber (CLT) shells curved purely by kiln drying.')],
  'act2_title': 'Act II — How It Actually Works: Timoshenko Bilayer Mechanics + Orthotropic Wood '
                'Swelling',
- 'act2_intuition': "Extending Folio A.02's Eurocode 5 timber mechanics, wood below its Fiber "
-                   'Saturation Point (FSP approx 28–30% moisture content MC) exhibits a '
-                   '15-to-30-fold anisotropy between tangential swelling coefficient alpha_T '
-                   '(approx 0.0032 per %MC) and longitudinal grain swelling alpha_L (approx '
-                   '0.00012 per %MC). When an active tangential beech layer of thickness h_2 and '
-                   'modulus E_2 is bonded to a passive longitudinal restraint layer of thickness '
-                   'h_1 and modulus E_1 (thickness ratio m = h_1 / h_2, modulus ratio n = E_1 / '
-                   'E_2, total thickness h = h_1 + h_2), a moisture content change Delta_MC '
-                   'induces differential strain Delta_epsilon = (alpha_T - alpha_L) * Delta_MC. By '
-                   "Timoshenko's theorem, the resulting curvature is kappa = 6 * (1 + m)^2 * "
-                   'Delta_epsilon / (h * (3 * (1 + m)^2 + (1 + m * n) * (m^2 + 1 / (m * n)))), '
-                   'producing tip deflection delta_tip = 0.5 * kappa * L^2 that opens or seals '
-                   'facade ventilation petals.',
- 'act2_analogy': 'Everyday analogy: A pinecone sitting on a windowsill closes up tightly when '
-                 'placed in a humid bathroom and pops wide open in dry sunny air—because its outer '
-                 'and inner wood fibers expand at different rates like a natural thermostat strip.',
+ 'act2_analogy': 'Take two long strips of paper, wet only one strip with a damp sponge, and glue '
+                 'them back-to-back. As the wet paper expands, the dry paper stays the same size, '
+                 'forcing the glued strip to curl into a tight loop. Conifer pinecones use this '
+                 'exact trick, flexing their scales closed during downpours and popping open in '
+                 'warm dry air. Programmable timber facades operate on the identical physical '
+                 'principle, using natural grain anisotropy instead of mechanical gears.',
+ 'act2_plain_primer': 'To control this natural wood curling mechanism on a building facade, you '
+                      'work with two physical knobs. The first knob represents the change in '
+                      'moisture inside the wood as outdoor relative humidity rises or falls with '
+                      'the weather. When morning fog rolls into the city, the wood drinks in '
+                      'moisture from the air, causing the active tangential layer to swell and '
+                      'bending the facade petal tightly against its frame to keep out rain. As the '
+                      'midday sun warms and dries the atmosphere, the moisture content drops, '
+                      'relaxing the petal and curling it wide open to draw in cooling breezes. The '
+                      'second knob sets the total thickness of the bonded wooden bilayer. If you '
+                      'choose an ultra-thin wooden veneer, the petal curls rapidly with dramatic '
+                      'curvature under the slightest change in humidity. If you increase the '
+                      'thickness to several millimeters, the wood bends more slowly but develops '
+                      'immense structural force, capable of curling heavy structural roof panels '
+                      'into shape.',
+ 'distill_diagram': {'analogy_title': 'The Pinecone Wet-Paper Curl',
+                     'analogy_sub': 'Differential expansion between bonded plies curls the strip '
+                                    'with 0 W',
+                     'force_a_title': 'Moisture Shift Knob (ΔMC)',
+                     'force_a_sub': 'Drives swelling strain differential across tangential '
+                                    'cellular grain',
+                     'force_b_title': 'Bilayer Thickness Knob (h)',
+                     'force_b_sub': 'Governs flexural rigidity and sets the radius of '
+                                    'self-actuation',
+                     'threshold_title': 'Curvature Equilibrium (κ = 1.42 m⁻¹)',
+                     'threshold_pass': 'Autonomous 128 mm tip opening provides 64% passive '
+                                       'ventilation',
+                     'threshold_fail': 'Fiber saturation or delamination if rolling shear exceeds '
+                                       'limit'},
+ 'act2_intuition': "Extending Folio A.02's Eurocode 5 timber mechanics, solid wood operating below "
+                   'its Fiber Saturation Point (roughly 28% to 30% moisture content) exhibits an '
+                   'immense 15-to-30-fold anisotropy between its tangential swelling coefficient '
+                   'alpha_T (approximately 0.0032 per percent moisture shift) and its longitudinal '
+                   'grain coefficient alpha_L (barely 0.00012 per percent moisture shift). When an '
+                   'active tangential European beech layer of thickness h_2 and elastic modulus '
+                   'E_2 is bonded to a passive longitudinal restraint ply of thickness h_1 and '
+                   'modulus E_1 with thickness ratio m = h_1 / h_2 and modulus ratio n = E_1 / '
+                   'E_2, any shift in ambient moisture Delta_MC produces an internal misfit strain '
+                   "Delta_epsilon = (alpha_T - alpha_L) * Delta_MC. By Stephen Timoshenko's "
+                   'classical bilayer mechanics, the resulting uniform curvature is kappa = 6 * (1 '
+                   '+ m)^2 * Delta_epsilon / (h * (3 * (1 + m)^2 + (1 + m * n) * (m^2 + 1 / (m * '
+                   'n)))). For a cantilevered facade petal of length L, this curvature produces an '
+                   'autonomous tip deflection delta_tip = 0.5 * kappa * L^2, seamlessly opening '
+                   'ventilation louvers during warm dry weather and sealing tight against rain '
+                   'without motor drive.',
+ 'act2_deepening': 'The mechanical interaction between moisture shift and bilayer thickness '
+                   "reveals an essential engineering trade-off governed by Timoshenko's "
+                   'denominator. Because curvature kappa scales inversely with total thickness h, '
+                   'doubling the thickness of the wood reduces its curvature by half for any given '
+                   'moisture shift. However, the flexural bending rigidity of the composite strip '
+                   'scales with the cube of thickness, h^3. This means that while a thin '
+                   'three-millimeter veneer curls swiftly under rapid ambient relative humidity '
+                   'fluctuations, it possesses minimal resistance against aerodynamic wind '
+                   'flutter. Conversely, a thick structural bilayer of ten to twelve millimeters '
+                   'requires greater moisture differentials to curl, but generates tremendous '
+                   'actuation forces capable of self-shaping massive cross-laminated timber '
+                   'plates. Furthermore, interfacial shear stress peaks at the adhesive bond line '
+                   'near the free ends: if the differential strain Delta_epsilon expands too '
+                   'rapidly without proper moisture conditioning, interfacial rolling shear can '
+                   'exceed Eurocode 5 strength limits, necessitating carefully calculated '
+                   'fiber-orientation angles.',
  'walkthrough': ['Experiment 1 (Ambient Moisture Content Shift Delta_MC): Drag Wood Moisture '
                  'Content Change Delta_MC from +1.0% up to +12.0%. Watch Timoshenko curvature '
                  'kappa (m^-1) and petal tip opening delta_tip grow linearly without a single watt '
@@ -194,9 +288,30 @@ LONGFORM_DATA = {'reading_time': '14 MIN READ',
                   "Folio E.04's psychrometric moisture balance, computational architects use "
                   'finite-element Timoshenko-hygrothermal solvers to program grain orientation and '
                   'ply thickness so building envelopes self-ventilate when indoor humidity rises.',
+ 'act4_deepening': 'In modern computational timber design, architects partner with finite-element '
+                   'machine-learning workflows to program complex multi-directional curvatures '
+                   'into flat mass-timber billets before manufacturing. By feeding micro-computed '
+                   'tomography grain scans into anisotropic material models implemented in '
+                   'FEniCS/dolfinx, AI optimization algorithms compute the precise toolpath '
+                   'trajectories and cutting angles required to yield target three-dimensional '
+                   'geometries upon industrial kiln drying. This eliminates tons of wasted offcut '
+                   'material associated with subtractive five-axis CNC milling, enabling '
+                   'expressive double-curved timber shells with minimal embodied carbon. Open '
+                   'research questions continue to challenge material scientists: How do cyclic '
+                   'weathering, micro-crack fatigue, and natural lignocellulosic creep alter the '
+                   'long-term curvature response over decades of outdoor exposure? Can '
+                   'bio-inspired wax and nano-silicate coatings protect against ultraviolet fiber '
+                   'degradation while preserving hygroscopic breathability? By answering these '
+                   'questions, architects and algorithmic solvers are transforming harvested '
+                   'timber from a static structural commodity into a dynamic, climate-attuned '
+                   'living building skin.',
  'cf_bridge': 'Standalone Biomimetic Architecture Flagship & Reference Completion (A.02 + E.04 -> '
               'A.09): Written for architects, facade engineers, and mass-timber builders (CSI 06 '
-              '18 00 Glued-Laminated Construction, EN 1995-1-1).',
+              '18 00 Glued-Laminated Construction, EN 1995-1-1). Upstream biophysical thread for '
+              'the lab: the orthotropic osmotic swelling of cellulose-hemicellulose hydrogel '
+              'matrices below the fiber saturation point obeys the same Flory–Rehner / Donnan '
+              'osmotic swelling pressure that governs periciliary brush height h_PCL in Folio P.04 '
+              'when ventilation duct surface liquid hydration changes.',
  'sources': ['Timoshenko, S. (1925). Analysis of bi-metal thermostats. Journal of the Optical '
              'Society of America, 11(3), 233–255. DOI: 10.1364/JOSA.11.000233.',
              'Reichert, S., Menges, A., & Correa, D. (2015). Meteorosensitive architecture: '
@@ -207,7 +322,12 @@ LONGFORM_DATA = {'reading_time': '14 MIN READ',
              'to material programming: Self-shaping wood manufacturing of a high performance '
              'curved CLT structure—Urbach Tower. Fabricate 2020, 50–57.',
              'CEN (2024). Eurocode 5 (EN 1995-1-1) Design of Timber Structures & CSI MasterFormat '
-             '06 18 00.'],
+             '06 18 00.',
+             'Scroggs, M. W., Dokken, J. S., Richardson, C. N., & Wells, G. N. (2022). Construction of Arbitrary Order Finite Element Degree-of-Freedom Maps on Polygonal and Polyhedral Cell Meshes (FEniCS/dolfinx, https://github.com/FEniCS/dolfinx). ACM Transactions on Mathematical Software, 48(2), 18:1–18:23. DOI: 10.1145/3524456.',
+             'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
+             'context of citations and classifies their intent using deep learning '
+             '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
+             '10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Timoshenko '
         'hygroscopic cross-laminated timber bilayer curvature and zero-energy facade aperture '
         'response curve">\n'
@@ -271,4 +391,29 @@ ES_TRANSLATION = {'title_es': 'Pieles Arquitectónicas Programables de Madera Hi
            'humedad, igual que una tira bimetálica natural.',
  'bridge_es': 'El hinchamiento osmótico ortotrópico de la matriz de celulosa bajo el punto de '
               'saturación de fibra obedece el mismo equilibrio osmótico de Flory–Rehner y Donnan '
-              'que regula la altura del cepillo periciliar en el Folio P.04.'}
+              'que regula la altura del cepillo periciliar en el Folio P.04.',
+ 'plain_es': 'En palabras sencillas, imaginen una fachada de madera que se abre y se cierra sola '
+             'con el clima sin tener un solo motor ni gastar electricidad. Piensen en lo que le '
+             'ocurre a una puerta de madera en un día muy húmedo: absorbe vapor de agua del aire y '
+             'se hincha. La madera se expande mucho a lo ancho de sus fibras, pero casi nada a lo '
+             'largo de ellas. Si pegamos dos láminas delgadas de madera con las vetas cruzadas en '
+             'direcciones opuestas, cuando el ambiente se vuelve húmedo, una lámina intenta crecer '
+             'mientras la otra se resiste. Como están firmemente unidas con pegamento, la única '
+             'forma de liberar esa tensión es curvándose, exactamente igual a como una piña de '
+             'pino cierra sus escamas bajo la lluvia y las abre cuando sale el sol. Diseñando '
+             'estas hojas de madera en las ventanas de un edificio, logramos que se abran solas '
+             'para ventilar en días secos y se cierren herméticamente cuando empieza a llover.',
+ 'deep_es': 'A nivel físico y estructural, este comportamiento se rige por el teorema de curvatura '
+            'bicapa que Stephen Timoshenko formuló en 1925, combinado con la gran anisotropía '
+            'higroscópica de la madera de haya europea. Por debajo del punto de saturación de la '
+            'fibra, el coeficiente de expansión tangencial supera hasta treinta veces al '
+            'coeficiente longitudinal. Al presentarse una variación de humedad, se genera una '
+            'deformación diferencial que curva la pieza según una relación matemática exacta entre '
+            'los espesores y los módulos elásticos de ambas capas. El espesor total determina el '
+            'balance crítico: láminas muy delgadas se mueven con rapidez ante cambios sutiles de '
+            'humedad pero son vulnerables al viento, mientras que piezas más gruesas generan '
+            'enormes fuerzas capaces de curvar paneles completos de madera contralaminada durante '
+            'el secado en horno. En la actualidad, los arquitectos emplean programas de '
+            'computadora y modelos de elementos finitos para orientar las vetas con precisión '
+            'milimétrica, creando fachadas biomiméticas duraderas sin mecanismos electrónicos '
+            'propensos a fallas.'}

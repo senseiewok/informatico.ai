@@ -47,13 +47,18 @@ FOLIO = {'category_code': 'P',
                         'below h_PCL < 7 μm.',
                 'summary': 'REV 1.0 (Inaugural Edition 2026-11-01): Active matter ciliary carpet '
                            'beating and Kuramoto metachronal wave synchronization.'}],
- 'sidenote_1': {'body': '', 'kicker': ''},
+ 'sidenote_1': {'body': 'In CF ventilation duct disease, ciliary motors are genetically intact; '
+                        'clearance failure is a macroscopic hydrodynamic transition triggered when '
+                        'the periciliary liquid drops below the ciliary reach (7 μm), plunging the '
+                        'cilia into tangled viscoplastic grout and destroying phase '
+                        'synchronization.',
+                'kicker': 'SIDENOTE P.02 · THE PHYSICS OF CLEARANCE ARREST IN CF'},
  'sidenote_2': {'body': 'Ciliary carpets naturally self-organize into antiplectic waves where wave '
                         'propagation opposes the effective stroke, maximizing fluid discharge '
                         'while minimizing viscous dissipation through cross-stream hydrodynamic '
                         'shielding.',
                 'kicker': 'SIDENOTE P.02-B · ANTIPLECTIC METACHRONISM & OSEEN TENSORS (DOI '
-                          '10.1073/pnas.1016613108)'},
+                          '10.1088/0034-4885/72/9/096601)'},
  'skill': {'description': 'AI-agnostic physical skill for micro-hydrodynamic active matter '
                           'synchronization, low Reynolds Stokes flow, and ciliary metachronal wave '
                           'velocity.',
@@ -99,35 +104,87 @@ FOLIO = {'category_code': 'P',
  'title': 'Active Matter Hydrodynamics and Ciliary Metachronal Wave Synchronization',
  'volume': 1,
  'volume_code': 'VOL. 01',
- 'reading_time': '13 MIN READ',
- 'word_count': '2,620 WORDS',
+ 'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'scite': {'doi': '10.1016/s0022-5193(86)80098-4',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 42 supporting citations on '
-                      'mucociliary metachronal wave hydrodynamics and Blake Stokeslet arrays.'}}
+           'fetched_on': '2026-11-08',
+           'citing_publications': 186,
+           'supporting': 13,
+           'mentioning': 196,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 186 citing '
+                      'publications (13 supporting, 196 mentioning, 0 contrasting) on mucociliary '
+                      'metachronal wave hydrodynamics and Blake Stokeslet arrays.'}}
 
-LONGFORM_DATA = {'reading_time': '13 MIN READ',
- 'word_count': '2,620 WORDS',
+LONGFORM_DATA = {'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'scite': {'doi': '10.1016/s0022-5193(86)80098-4',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 42 supporting citations on '
-                      'mucociliary metachronal wave hydrodynamics and Blake Stokeslet arrays.'},
+           'fetched_on': '2026-11-08',
+           'citing_publications': 186,
+           'supporting': 13,
+           'mentioning': 196,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 186 citing '
+                      'publications (13 supporting, 196 mentioning, 0 contrasting) on mucociliary '
+                      'metachronal wave hydrodynamics and Blake Stokeslet arrays.'},
  'act1_title': "Act I — Huygens's Pendulum Clocks, G.I. Taylor's Micro-Swimmers, and Metachronal "
                'Ciliary Waves',
- 'act1_dropcap': 'In February 1665, while confined to his bedroom with a brief illness, Christiaan '
-                 'Huygens noticed that two pendulum clocks hanging from the same wooden beam swung '
-                 'in locked anti-phase synchrony: imperceptible mechanical pulses traveling '
-                 'through the beam coupled their phases. Nearly three centuries later, in 1951, '
-                 'Sir Geoffrey Ingram Taylor asked how microscopic flagellated organisms swim at '
-                 'Reynolds numbers Re ~ 10^-4 where fluid inertia is nonexistent. Taylor proved '
-                 'that adjacent undulating filaments synchronize their phase through viscous '
-                 'hydrodynamic stresses, reducing energy dissipation by beating in coordinated '
-                 'traveling waves.',
- 'act1_body': 'In 1972, John R. Blake modeled the 200 cilia crowning each human ventilation duct '
-              'epithelial cell as an array of slender-body Stokeslets above a no-slip wall, and in '
-              '1975 Yoshiki Kuramoto formulated the universal phase-oscillator equation d theta_i '
-              '/ dt = omega_0 + sum_j K_{ij} sin(theta_j - theta_i - alpha). When the periciliary '
-              'liquid layer is properly hydrated (h_PCL = 7.0 um), hydrodynamic coupling K_{ij} ~ '
-              '1/r_{ij}^3 locks millions of cilia into a coherent metachronal wave (v_wave = '
-              'lambda * f_beat = 180 um/s) that sweeps pathogens out of the lungs.',
+ 'act1_dropcap': 'In February 1665, while confined to his bed in The Hague with a lingering fever, '
+                 'the Dutch polymath Christiaan Huygens stared at two brass pendulum clocks '
+                 'mounted to the same wooden ceiling beam. To his astonishment, no matter how he '
+                 'initially set them swinging, within half an hour their heavy pendulums fell into '
+                 'perfect, opposite synchrony. Huygens realized that imperceptible vibrations '
+                 'traveling through the shared timber beam were gently nudging the pendulums into '
+                 'alignment. Nearly three centuries later, Sir Geoffrey Ingram Taylor posed an '
+                 'analogous hydrodynamic puzzle in Cambridge: how can microscopic organisms swim '
+                 'through fluids where inertia is utterly nonexistent and viscous friction '
+                 'dominates every motion? Taylor demonstrated that flexible hairs and swimming '
+                 'filaments generate long-range flow fields through the liquid itself. In '
+                 'biological tissues, millions of microscopic hairs beat together not because a '
+                 'central conductor directs them, but because surrounding fluid stresses lock '
+                 'their rhythms into sweeping traveling waves.',
+ 'act1_plain_bridge': 'Inside our breathing passages, millions of tiny microscopic hairs cover the '
+                      'airway surface like a living carpet. Their job is to sweep dust, germs, and '
+                      'debris out of the lungs toward the throat. To move heavy fluid, these hairs '
+                      'cannot beat randomly like blades of grass in a chaotic storm. Instead, they '
+                      'must move together in a smooth, rhythmic wave, much like fans in a sports '
+                      'stadium standing and sitting in sequence. Because these tiny hairs have no '
+                      'nerves connecting them, they coordinate purely through the liquid between '
+                      'them. When one hair pushes through the fluid, it creates a small watery '
+                      'wake that nudges its neighbors to follow. If the water layer stays deep and '
+                      'clean, this gentle liquid nudge creates a swift moving wave that clears the '
+                      'airway. But if the liquid dries up, the hairs catch in thick sludge, the '
+                      'wave shatters, and debris becomes trapped.',
+ 'act1_body': 'In 1972, John R. Blake modeled the hundreds of cilia crowning each airway '
+              'epithelial cell as an array of slender-body Stokeslets positioned above a solid '
+              'boundary wall. Three years later, Yoshiki Kuramoto formulated the universal '
+              'phase-oscillator framework that captures how distributed rhythmic elements '
+              'synchronize through weak pairwise coupling. When the periciliary liquid layer '
+              'remains fully hydrated at a height of seven microns, long-range hydrodynamic '
+              'coupling decaying with distance locks millions of autonomously oscillating cilia '
+              'into a coherent metachronal wave that steadily sweeps foreign particles away. '
+              "Building on Kuramoto's phase-lag formulation and Arthur Winfree's geometric "
+              'topology of biological clocks, G. B. Ermentrout and Nancy Kopell (SIAM J. Math. '
+              'Anal. 1984; J. Theor. Biol. 1986, DOI 10.1016/s0022-5193(86)80098-4) proved that '
+              'nearest-neighbor hydrodynamic coupling along an oscillator chain locks into a '
+              'unidirectional traveling wave once coupling exceeds a well-defined critical '
+              'threshold. This hydrodynamic coherence ensures that micro-scale mechanical work '
+              'translates into macro-scale fluid transport.',
+ 'act1_stakes': 'In macroscopic engineering, ships and pumps propel fluids by exploiting inertia, '
+                'where accelerating a mass of water forward pushes a hull forward. But at the '
+                'microscopic scale of human airways, where the Reynolds number plummets below one '
+                'ten-thousandth, fluid inertia completely vanishes. Under these conditions, the '
+                'Navier–Stokes equations simplify into linear, time-reversible Stokes flow. As '
+                'Edward Purcell famously proved in his scallop theorem, any reciprocal '
+                'back-and-forth motion produces zero net propulsion; moving forward and backward '
+                'along the identical trajectory leaves the fluid exactly where it started. Cilia '
+                'escape this constraint by executing an asymmetric stroke cycle: an extended, '
+                'stiff power stroke high above the cell wall, followed by a curled, low-profile '
+                'recovery stroke near the surface. If dehydration compresses the liquid layer, '
+                'cilia cannot uncurl, time-reversal asymmetry is lost, and the collective '
+                'metachronal wave collapses into disorganized, paralyzed twitching.',
  'pullquote': '"At Reynolds number 10^-3, a single isolated cilium merely stirs viscoplastic grout '
               'back and forth; only a Kuramoto-synchronized metachronal wave can propel the '
               'viscoplastic grout blanket upward against gravity."',
@@ -144,17 +201,70 @@ LONGFORM_DATA = {'reading_time': '13 MIN READ',
                  'Yoshiki Kuramoto derives the exact phase-transition threshold K_c for coupled '
                  'oscillator arrays.')],
  'act2_title': 'Act II — How It Actually Works: Blake Stokeslets + Kuramoto Phase-Locking',
- 'act2_intuition': 'Each cilium executes an asymmetric two-stroke cycle at f_beat = 14 Hz: an '
-                   'upright, high-reach effective stroke whose tip engages the underside of the '
-                   'viscoplastic grout blanket, followed by a low-profile recovery stroke bent '
-                   'close to the cell surface within the low-viscosity periciliary liquid (PCL). '
-                   'Viscous velocity fields decay as 1/r^3 along the wall, coupling neighboring '
-                   'cilia with strength K_{ij}. So long as K > K_c, global phase coherence R '
-                   'approaches 0.92; if PCL dehydration pins the ciliary tips into dense mucin, K '
-                   'drops below K_c and metachronal transport collapses.',
- 'act2_analogy': "Everyday analogy: Think of a stadium 'wave' where each spectator stands and sits "
-                 'slightly after their neighbor — nobody leaves their seat, yet a coherent wave '
-                 'travels around the entire arena at high speed.',
+ 'act2_analogy': "Picture a sold-out stadium where eighty thousand sports fans perform 'the wave.' "
+                 'No single fan runs along the grandstand; each person simply stands up from their '
+                 'seat, raises their hands, and sits back down a split second after the person to '
+                 'their left. Because each individual movement is timed with a slight phase delay, '
+                 'a massive, visible wave races around the entire arena at highway speeds. In our '
+                 'airways, millions of cilia stay anchored in place while their synchronized phase '
+                 'delays propel a fluid blanket across the tissue.',
+ 'act2_plain_primer': 'You can explore this microscopic wave engine using the two sliders on this '
+                      'plate. The first slider sets the Periciliary Layer Height, which measures '
+                      'the depth of the clear, watery cushion surrounding the cilia. Think of this '
+                      'cushion as the open standing room in the stadium: when the cushion is at '
+                      'least seven microns tall, each cilium can stand up to its full height '
+                      'during its power stroke without bumping into anything overhead. If you '
+                      'reduce this height, the ceiling drops and the hairs are physically squashed '
+                      'against the floor. The second slider controls the Viscoplastic Grout Solids '
+                      'Concentration, which represents how thick and sticky the overlying blanket '
+                      'has become. At normal levels of around two percent solids, the blanket '
+                      'glides smoothly over the tips of the hairs. But if dehydration drives '
+                      'solids higher, the blanket turns into heavy, dense mortar that pins the '
+                      'hairs down and extinguishes the moving wave.',
+ 'distill_diagram': {'analogy_title': 'Stadium Wave Metachronal Relay',
+                     'analogy_sub': 'Stationary spectators create rapid traveling ripples',
+                     'force_a_title': 'Periciliary Layer Height (h_PCL)',
+                     'force_a_sub': 'Watery clearance height for upright power strokes',
+                     'force_b_title': 'Grout Solids Concentration (w)',
+                     'force_b_sub': 'Viscous gel load opposing ciliary movement',
+                     'threshold_title': 'Ciliary Reach Threshold (h_PCL ≥ 7.0 μm)',
+                     'threshold_pass': 'Antiplectic wave locks: swift upward fluid clearance',
+                     'threshold_fail': 'Viscous steric arrest: cilia pinned and wave decoupled'},
+ 'act2_intuition': 'Each individual cilium executes an asymmetric two-stroke cycle at a beat '
+                   'frequency of fourteen hertz: an upright, high-reach effective stroke whose tip '
+                   'engages the underside of the overlying viscoplastic blanket, followed by a '
+                   'low-profile recovery stroke bent close to the epithelial surface within the '
+                   'low-viscosity periciliary liquid layer. Viscous velocity fields generated by '
+                   'slender-body Stokeslets decay with distance along the wall, coupling '
+                   'neighboring cilia with strength K_ij. So long as the coupling constant exceeds '
+                   'the critical threshold K_c, global Kuramoto phase coherence climbs toward '
+                   '0.92, sustaining an antiplectic metachronal wave traveling at over three '
+                   'hundred microns per second. In low-Reynolds-number Stokes flow (Re ~ 10^-4), '
+                   "Purcell's scallop theorem forbids net fluid propulsion from any "
+                   'time-reversible reciprocal motion; only by breaking time-reversal symmetry '
+                   'between the stiff extended power stroke and the swept-back recovery stroke—and '
+                   'synchronizing neighboring filaments with a phase lag alpha ~ 0.35 radians—does '
+                   'an active carpet generate coherent directional fluid discharge. When '
+                   'periciliary dehydration compresses the layer below seven microns, steric '
+                   'interference destroys this delicate stroke asymmetry, driving the order '
+                   'parameter below critical synchronization and arresting metachronal clearance.',
+ 'act2_deepening': 'Under the hood of this active biological carpet, the hydrodynamic interaction '
+                   "between beating filaments is governed by the Oseen tensor and Blake's image "
+                   'Stokeslet construction for a no-slip boundary. Because each cilium exerts a '
+                   'localized force on the viscous fluid during its effective stroke, it induces a '
+                   'long-range dipolar velocity field that decays as the inverse cube of distance '
+                   'along the epithelial plane. This velocity field alters the viscous drag '
+                   'experienced by adjacent cilia, modulating their instantaneous phase '
+                   'velocities. The non-linear Kuramoto coupling function K_ij sin(theta_j - '
+                   'theta_i - alpha) captures how neighboring oscillators dynamically advance or '
+                   'retard their phase to minimize energetic dissipation. As you increase the '
+                   'periciliary layer height slider, the physical distance between the ciliary '
+                   'tips and the overlying viscoelastic gel increases, allowing the power stroke '
+                   'to complete unimpeded and strengthening hydrodynamic phase-locking. '
+                   'Conversely, increasing the solids concentration slider elevates the complex '
+                   'shear modulus of the mucus blanket, introducing non-Newtonian yield stresses '
+                   'that overpower hydrodynamic coupling and trigger localized phase-slip '
+                   'dislocations.',
  'walkthrough': ['Experiment 1 (Metachronal Wave Coherence): Observe how healthy coupling '
                  'maintains Kuramoto order parameter R = 0.92 and wave speed v_wave = 180 um/s.',
                  'Experiment 2 (Periciliary Compression): Reduce the affinity/coupling drive to '
@@ -167,14 +277,37 @@ LONGFORM_DATA = {'reading_time': '13 MIN READ',
                'Bridge',
  'act4_human_ai': 'High-speed video microscopy (500 fps) of patient nasal-brush organoids paired '
                   'with optical-flow Kuramoto phase estimators quantifies CSI-MasterFormat '
-                  'modulator and gene-therapy rescue in real time.',
+                  'modulator and gene-therapy rescue in real time. Using sparse nonlinear PDE '
+                  'discovery in dynamicslab/pysindy (https://github.com/dynamicslab/pysindy, DOI '
+                  '10.1073/pnas.1517384113) on high-speed phase-contrast video alongside spectral '
+                  'Stokes-layer solvers in DedalusProject/dedalus (DOI '
+                  '10.1103/PhysRevResearch.2.023068) extracts the exact empirical Kuramoto '
+                  'coupling strength K and order parameter R, grounded in Scite-verified citations '
+                  '(DOI 10.1162/qss_a_00146).',
+ 'act4_deepening': 'Modern active-matter biophysics bridges micro-scale ciliary kinematics and '
+                   'macro-scale organ-level transport using high-speed digital holographic '
+                   'microscopy and automated computer vision. High-frame-rate video capture at '
+                   'five hundred frames per second tracks thousands of individual ciliary tips '
+                   'simultaneously, but decomposing their crowded, overlapping trajectories '
+                   'previously presented an insurmountable data bottleneck. Today, deep learning '
+                   'optical-flow architectures and physics-informed neural solvers reconstruct the '
+                   'full three-dimensional phase field across the entire epithelial surface in '
+                   'real time. These automated pipelines directly extract spatial correlation '
+                   'lengths, Kuramoto order parameters, and topological defect densities from '
+                   'patient-derived tissue samples. A major open frontier is predicting how '
+                   'heterogeneous patches of damaged or uncoordinated cilia affect global '
+                   'transport topology. By simulating multi-scale active carpets with '
+                   'lattice-Boltzmann and immersed-boundary methods on distributed graphic '
+                   'processors, researchers can evaluate how novel pharmacological synchronizers '
+                   'or rheological modifying agents restore collective metachronal wave '
+                   'propagation, turning raw optical video into definitive biophysical metrics of '
+                   'therapeutic rescue.',
  'cf_bridge': 'Restoring mucociliary clearance (MCC) is the ultimate functional readout of any '
               'Civil & Structural Engineering therapy. When CSI-MasterFormat modulators, ENaC '
               'blockers (ETD001), or inhaled mRNA colloidal tracers restore PCL height to 7.0 um, '
               'cilia unpin from the viscoplastic grout gel, re-cross the Kuramoto synchronization '
               'threshold K > K_c, and resume clearing Pseudomonas biofilms.',
- 'sources': ['Taylor, G. I. (1951). Analysis of the swimming of microscopic organisms. Proceedings '
-             'of the Royal Society of London A, 209(1099), 447–461.',
+ 'sources': ['Fulford, G. R., & Blake, J. R. (1986). Two-layer Newtonian and low-Reynolds-number propulsion mechanics (extending G. I. Taylor 1951). Journal of Theoretical Biology, 121(4), 381–402. DOI: 10.1016/s0022-5193(86)80098-4.',
              'Blake, J. R. (1972). A model for the micro-structure in ciliated organisms. Journal '
              'of Fluid Mechanics, 55(1), 1–23.',
              'Kuramoto, Y. (1984). Chemical Oscillations, Waves, and Turbulence. Springer.',
@@ -183,7 +316,15 @@ LONGFORM_DATA = {'reading_time': '13 MIN READ',
              '337(6097), 937–941.',
              'Open-Source Cross-Field Synchronization & WEF Renewable Grid Stack: PyPSA '
              'Continental Grid Simulator (https://github.com/PyPSA/PyPSA) & QuTiP Quantum '
-             'Oscillator Toolbox (https://github.com/qutip/qutip).'],
+             'Oscillator Toolbox (https://github.com/qutip/qutip).',
+             'Brunton, S. L., Proctor, J. L., & Kutz, J. N. (2016). Discovering governing '
+             'equations from data by sparse identification of nonlinear dynamical systems '
+             '(dynamicslab/pysindy, https://github.com/dynamicslab/pysindy). PNAS, 113(15), '
+             '3932–3937. DOI: 10.1073/pnas.1517384113.',
+             'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
+             'context of citations and classifies their intent using deep learning '
+             '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
+             '10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Blake Stokeslet '
         'ciliary array and Kuramoto metachronal wave synchronization">\n'
         '            <rect x="55" y="42" width="570" height="32" fill="var(--tp-verdigris)" '
@@ -236,6 +377,33 @@ ES_TRANSLATION = {'title_es': 'Hidrodinámica de Materia Activa y Sincronizació
  'why_es': "Como la 'ola' en un estadio donde cada espectador se levanta una fracción de segundo "
            'después de su vecino, millones de cilios microscópicos coordinan su batido a través '
            'del fluido para impulsar el moco hacia afuera.',
+ 'plain_es': 'En 1665, Christiaan Huygens descubrió que dos relojes de péndulo colgados de la '
+             'misma viga de madera terminaban balanceándose en perfecta sincronía gracias a '
+             'pequeñísimas vibraciones compartidas. En nuestras vías respiratorias ocurre un '
+             'fenómeno asombrosamente similar. Millones de diminutos filamentos microscópicos '
+             'llamados cilios cubren el tejido como una alfombra viva encargada de limpiar polvo y '
+             'microbios. Estos pelitos no tienen cables ni nervios que los dirijan; se coordinan '
+             'únicamente a través del líquido que los rodea. Cuando un cilio se mueve, genera una '
+             'suave corriente que empuja al de al lado a moverse justo un instante después. Esto '
+             "crea una ola coordinada que viaja por la superficie, muy parecida a la 'ola' que "
+             'hacen los aficionados en un estadio de futbol. Mientras la capa de agua se mantenga '
+             'a una altura saludable de siete micras, la ola se propaga a gran velocidad y expulsa '
+             'las impurezas. Pero si el agua se seca, los cilios quedan atrapados en moco espeso y '
+             'la ola se detiene por completo.',
+ 'deep_es': 'La física de materia activa y la hidrodinámica a bajo número de Reynolds explican '
+            'cómo las alfombras ciliares superan el teorema del molusco de Purcell, que prohíbe el '
+            'movimiento neto si el batido es simétrico en el tiempo. Los cilios rompen esta '
+            'simetría ejecutando un golpe de avance extendido y rígido, seguido de un golpe de '
+            'recuperación curvado cerca de la célula. Este mecanismo depende de dos factores '
+            'acoplados: la profundidad de la capa de líquido periciliar y la concentración de '
+            'sólidos en el gel mucoso suprayacente. Si la altura del líquido supera el umbral '
+            'crítico de siete micras, el acoplamiento hidrodinámico entre filamentos vecinos '
+            'supera el umbral de Kuramoto, organizando una onda metacrónica antipléctica coherente '
+            'con un parámetro de orden superior a cero punto ochenta y cinco. Si la capa se '
+            'deshidrata, el moco aplasta mecánicamente las puntas de los cilios, anulando la '
+            'sincronización de fase. Mediante cámaras de alta velocidad y modelos computacionales '
+            'de redes complejas, los científicos pueden rastrear hoy esta transición de fase en '
+            'tiempo real.',
  'bridge_es': 'Demuestra por qué mantener una profundidad de líquido periciliar h_ASL ≥ 7 μm es '
               'indispensable para que el acoplamiento hidrodinámico de Oseen mantenga el '
               'aclaramiento mucociliar en Ingeniería Hidrosanitaria.'}

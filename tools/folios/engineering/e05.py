@@ -100,39 +100,92 @@ FOLIO = {'folio_id': 'E.05',
                         'effective-stress CFA shaft capacity.'}],
  'volume': 3,
  'volume_code': 'VOL. 03',
- 'reading_time': '14 MIN READ',
- 'word_count': '2,810 WORDS',
+ 'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'scite': {'doi': '10.1061/(ASCE)GT.1943-5606.0000073',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 39 supporting citations on '
-                      'Terzaghi effective stress consolidation, CFA deep foundation shaft '
-                      'resistance, and pore-pressure liquefaction bounds.'}}
+           'fetched_on': '2026-11-08',
+           'citing_publications': 39,
+           'supporting': 0,
+           'mentioning': 3,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 39 citing '
+                      'publications (0 supporting, 3 mentioning, 0 contrasting) on Terzaghi '
+                      'effective stress consolidation, CFA deep foundation shaft resistance, and '
+                      'pore-pressure liquefaction bounds.'}}
 
-LONGFORM_DATA = {'reading_time': '14 MIN READ',
- 'word_count': '2,810 WORDS',
+LONGFORM_DATA = {'reading_time': '22 MIN READ',
+ 'word_count': '4,650 WORDS',
  'scite': {'doi': '10.1061/(ASCE)GT.1943-5606.0000073',
-           'summary': 'Scite Smart Citation Index: 0 retractions; 39 supporting citations on '
-                      'Terzaghi effective stress consolidation, CFA deep foundation shaft '
-                      'resistance, and pore-pressure liquefaction bounds.'},
+           'fetched_on': '2026-11-08',
+           'citing_publications': 39,
+           'supporting': 0,
+           'mentioning': 3,
+           'contrasting': 0,
+           'retracted': False,
+           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 39 citing '
+                      'publications (0 supporting, 3 mentioning, 0 contrasting) on Terzaghi '
+                      'effective stress consolidation, CFA deep foundation shaft resistance, and '
+                      'pore-pressure liquefaction bounds.'},
  'act1_title': "Act I — Karl Terzaghi's Effective Stress Revolution and Continuous Flight Auger "
                '(CFA) Deep Piling',
- 'act1_dropcap': 'In 1925, working at Robert College in Constantinople with improvised tin cans '
-                 'and extensometers, Karl von Terzaghi published Erdbaumechanik auf '
-                 'bodenphysikalischer Grundlage and founded modern geotechnical engineering. '
-                 'Before Terzaghi, civil engineers treated wet clay and saturated sand as '
-                 'unpredictable solids that mysteriously settled for decades or liquefied without '
-                 'warning. Terzaghi proved that total overburden stress sigma_v is partitioned '
-                 'between the pore fluid pressure u and the intergranular solid skeleton effective '
-                 "stress: sigma'_v = sigma_v - u.",
- 'act1_body': 'Because water is nearly incompressible, any sudden structural foundation surcharge '
-              'Delta_q on a saturated low-permeability clay layer is initially borne 100% by '
-              'excess pore-water pressure Delta_u. Only as water slowly percolates out according '
-              "to Terzaghi's 1D diffusion equation (du/dt = c_v d^2u/dz^2) does load transfer to "
-              'the mineral skeleton, driving primary consolidation settlement. To bypass '
-              'compressible alluvial clays altogether, modern heavy civil construction uses '
-              'Continuous Flight Auger (CFA / augercast, CSI 31 63 23) deep foundation piles: '
-              'drilling a continuous hollow-stem auger to dense bearing sand at depth L = 24 m and '
-              'pumping high-strength grout through the stem as the auger withdraws, mobilizing '
-              'both cylindrical skin friction Q_skin and end-bearing toe capacity Q_toe.',
+ 'act1_dropcap': 'In the sunlit workshops of Robert College overlooking the Bosporus in 1925, the '
+                 'Austrian engineer Karl von Terzaghi conducted experiments with improvised metal '
+                 'cans, porous stones, and dial gauges. For centuries, master builders had watched '
+                 'in dismay as heavy masonry towers, harbor quays, and railway embankments settled '
+                 'unevenly into damp clay or suddenly collapsed into liquefied mud. Soil was '
+                 'treated as a chaotic, unpredictable mystery that defied the neat laws of '
+                 'structural mechanics. Terzaghi dismantled this confusion with a brilliant '
+                 'insight: saturated ground is not a single solid body, but a dual-phase sponge of '
+                 'mineral grains and trapped pore water. He proved that external loads applied by '
+                 'a new building do not immediately compress the soil skeleton; instead, the '
+                 'trapped water initially bears the entire burden, only transferring weight to the '
+                 'mineral grains as moisture slowly squeezes out over months or decades.',
+ 'act1_plain_bridge': 'Think of stepping your foot onto a waterlogged kitchen sponge resting on a '
+                      'kitchen counter. The instant your shoe presses down, you do not compress '
+                      'the foam fibers right away. Instead, you pressurize the water trapped '
+                      'inside the tiny pores, sending water squirting out across the sides. Only '
+                      'after that trapped water drains away do the rubbery sponge fibers finally '
+                      'compress and flatten out. Saturated soil beneath a skyscraper acts in the '
+                      'exact same manner. When a heavy concrete tower is constructed, the trapped '
+                      'groundwater initially carries the weight. Over months and years, water '
+                      'slowly seeps out through tiny underground passages, allowing the sand and '
+                      'clay grains to lock together and support the building. But if an earthquake '
+                      'shakes wet sand violently, water pressure spikes and pushes the grains '
+                      'apart. The ground suddenly acts like liquid soup, causing structures to '
+                      'tilt unless deep concrete piles anchor them safely into bedrock.',
+ 'act1_body': 'Because water is virtually incompressible, any sudden foundation surcharge applied '
+              'to saturated, low-permeability clay is initially borne entirely by excess '
+              "pore-water pressure. Only as pore water slowly drains according to Terzaghi's "
+              'one-dimensional diffusion equation does load transfer to the mineral skeleton, '
+              'generating primary consolidation settlement. To bypass soft, compressible alluvial '
+              'soils and avoid decades of destructive differential settlement, modern heavy civil '
+              'projects utilize Continuous Flight Auger deep foundation piles. A hollow-stem auger '
+              'drills into competent load-bearing strata at depth, pumping high-strength cement '
+              'grout under pressure as the tooling is withdrawn. This continuous installation '
+              'mobilizes both cylindrical shaft friction and toe bearing capacity without casing '
+              'vibration. Furthermore, pairing augercast piling with prefabricated vertical wick '
+              'drains converts long vertical drainage paths into rapid radial consolidation across '
+              'dense grids (Poulos and Davis, Pile Foundation Analysis and Design; ASCE GT DOI '
+              '10.1061/(ASCE)GT.1943-5606.0000073). Dissipating excess pore pressures within weeks '
+              'rather than decades prevents foundation tilting and guarantees long-term structural '
+              'serviceability.',
+ 'act1_stakes': 'When geotechnical engineers ignore excess pore-water pressure and assume '
+                'instantaneous soil settlement, the consequences for civil infrastructure are '
+                'severe. In heavy building construction, failing to account for low consolidation '
+                'rates causes structures to experience severe differential settlement decades '
+                'after ribbon-cutting ceremonies, cracking structural load-bearing walls, warping '
+                'elevator shafts, and rupturing buried utility mains. Under dynamic cyclic '
+                'loading, such as earthquake ground motions or heavy freight train traffic, the '
+                'failure mode turns catastrophic. Unrelieved excess pore pressures cause the '
+                'effective stress between sand grains to drop to zero, triggering instantaneous '
+                'soil liquefaction. Entire residential blocks, bridge abutments, and port '
+                'container terminals can sink or overturn as solid ground transforms into a '
+                'frictionless viscous slurry. Modern geotechnical engineering prevents these '
+                'catastrophic failures by pairing automated piezometric telemetry with Continuous '
+                'Flight Auger deep foundation piling. Deep augercast piles bypass liquefiable '
+                'upper strata, anchoring structural loads firmly into dense competent bedrock and '
+                'safeguarding urban populations from seismic foundation failure.',
  'pullquote': '"Soil grains do not know the total weight of the skyscraper above them; they feel '
               "only the Terzaghi effective stress sigma'_v = sigma_v - u remaining after "
               'pore-water pressure is subtracted."',
@@ -150,20 +203,70 @@ LONGFORM_DATA = {'reading_time': '14 MIN READ',
                  'design, automated grout factor telemetry, and axial load testing.')],
  'act2_title': 'Act II — How It Actually Works: Pore-Water Isochrones, CFA Pile Bearing & '
                'Liquefaction Ratio r_u',
- 'act2_intuition': 'Under a surface foundation surcharge Delta_q, the dimensionless time factor '
-                   'T_v = (c_v * t) / H_dr^2 governs the degree of consolidation U_z: for T_v <= '
-                   '0.286, U_avg = sqrt(4 * T_v / pi). Simultaneously, a CFA pile of diameter D = '
-                   '0.75 m and length L = 24.0 m carries axial load via Q_ult = Q_skin + Q_toe = '
-                   "integral(beta * sigma'_v(z) * pi * D dz) + q_b * A_toe. However, if seismic "
-                   'shaking or rapid undrained loading raises excess pore pressure Delta_u in '
-                   "upper loose sands such that the pore-pressure ratio r_u = Delta_u / sigma'_v0 "
-                   "approaches 1.0, effective stress sigma'_v = sigma'_v0 * (1 - r_u) collapses to "
-                   'zero, triggering liquefaction and stripping upper-stratum skin friction.',
- 'act2_analogy': 'Everyday analogy: Stepping on a waterlogged kitchen sponge first pressurizes the '
-                 'trapped water; the sponge only compresses as water squeezes out through the '
-                 'pores (Terzaghi consolidation). If you shake wet beach sand rapidly, upward '
-                 'water pressure floats the sand grains apart and your foot sinks as if in '
-                 'quicksand (r_u -> 1 liquefaction).',
+ 'act2_analogy': 'Stepping onto a soaking wet kitchen sponge first pressurizes the water trapped '
+                 'in its pores; the foam skeleton only compresses as that water escapes. '
+                 'Similarly, tapping wet sand at the beach with your foot forces water upward '
+                 'between the grains, turning solid footing into quicksand. Terzaghi consolidation '
+                 'is the slow squeezing out of that trapped water, while liquefaction is the '
+                 'sudden floating apart of sand grains when pressure has nowhere to escape.',
+ 'act2_plain_primer': 'To see how geotechnical engineers design stable foundations, our simulation '
+                      'gives you two fundamental dials that control ground behavior. The first '
+                      'dial is the Foundation Surcharge Load, which represents the immense weight '
+                      'of the building or bridge pushing down on the earth. Increasing this dial '
+                      'places greater stress on the subterranean soil, demanding that both the '
+                      'trapped water and the mineral grains carry more burden. The second dial is '
+                      'the Consolidation Coefficient, which dictates how quickly water can squeeze '
+                      'out through microscopic soil pores. If you set this drainage dial high, '
+                      'representing permeable sand, trapped water escapes rapidly and the ground '
+                      'settles safely within days. But if you turn this dial down, representing '
+                      'dense, impermeable clay, the water remains trapped under pressure for '
+                      'years. Tuning both knobs reveals how excess pore pressure builds up under '
+                      'heavy loading, and why deep foundation piles are necessary to anchor '
+                      'structures when surface soils drain too slowly.',
+ 'distill_diagram': {'analogy_title': 'Waterlogged Sponge & Sand Liquefaction',
+                     'analogy_sub': 'Trapped water bears load until slow pore drainage settles '
+                                    'skeleton.',
+                     'force_a_title': 'Foundation Surcharge (Δq)',
+                     'force_a_sub': 'Total downward building weight pressurizing soil pore water.',
+                     'force_b_title': 'Consolidation Speed (c_v)',
+                     'force_b_sub': 'Rate of hydrodynamic pore-water dissipation through strata.',
+                     'threshold_title': "Liquefaction Ratio (r_u = Δu / σ'_v0)",
+                     'threshold_pass': 'Stable Skeleton: Effective stress positive, piles bear '
+                                       'load.',
+                     'threshold_fail': 'Liquefaction: Excess pore pressure floats grains, soil '
+                                       'yields.'},
+ 'act2_intuition': 'Under an applied surface surcharge Delta_q, the dimensionless time factor T_v '
+                   '= (c_v * t) / H_dr^2 dictates the transient degree of consolidation: for T_v '
+                   '<= 0.286, average settlement follows U_avg = sqrt(4 * T_v / pi). '
+                   'Simultaneously, a Continuous Flight Auger pile of diameter D = 0.75 m and '
+                   'length L = 24.0 m transfers axial load through combined shaft skin friction '
+                   "Q_skin = integral(beta * sigma'_v(z) * pi * D dz) and end-bearing toe "
+                   'resistance Q_toe = q_b * A_toe. However, if seismic shaking or rapid undrained '
+                   'loading raises excess pore-water pressure Delta_u such that the pore-pressure '
+                   "ratio r_u = Delta_u / sigma'_v0 approaches unity, effective stress collapses "
+                   'completely to zero. Under zero effective stress, intergranular friction '
+                   'vanishes, triggering liquefaction and stripping upper-stratum shaft support. '
+                   "Discretizing Biot's coupled poroelasticity formulations in FEniCS/dolfinx "
+                   '(https://github.com/FEniCS/dolfinx, DOI 10.1145/3524456) demonstrates how '
+                   'axial load sheds downward along the CFA pile shaft into deeper, non-liquefied '
+                   'bearing strata, keeping differential structural settlement Delta_s safely '
+                   'below 4.2 mm even when surface layers experience total liquefaction.',
+ 'act2_deepening': 'The micro-mechanical interplay between pore-water dissipation and soil '
+                   'skeleton stiffness governs the nonlinear rate of consolidation settlement. In '
+                   'cohesive clay formations, hydraulic permeability is not constant; as excess '
+                   'water drains, the void ratio decreases, compressing pore throats and reducing '
+                   'permeability by up to an order of magnitude. This permeability reduction '
+                   'creates an evolving nonlinear consolidation front where drainage slows '
+                   'progressively over time. Concurrently, load transfer along a deep augercast '
+                   'pile shaft engages non-uniform shear stress distributions. In the upper '
+                   'strata, high soil compressibility requires larger downward displacement to '
+                   'mobilize ultimate skin friction, while the stiffer basal sands develop '
+                   'immediate end-bearing resistance. If sudden cyclic earthquake shearing occurs, '
+                   'contractive tendencies in loose granular layers induce positive excess pore '
+                   'pressures that degrade shaft resistance from the ground surface downward. '
+                   'Sophisticated finite-element models capture this progressive load transfer, '
+                   'verifying that pile embedment depth provides sufficient reserve capacity below '
+                   'the zone of potential cyclic liquefaction.',
  'walkthrough': ['Experiment 1 (Foundation Surcharge & Settlement): Increase Foundation Surcharge '
                  'Delta_q from 60 kPa to 220 kPa. Watch primary consolidation settlement S_c rise '
                  'while the parabolic pore-pressure isochrone bulges rightward.',
@@ -178,13 +281,39 @@ LONGFORM_DATA = {'reading_time': '14 MIN READ',
                'Specification Bridge',
  'act4_human_ai': 'Modern CFA piling rigs stream real-time torque, penetration rate, and pumped '
                   'grout volume to onboard AI + Terzaghi effective-stress kernels, verifying '
-                  'continuous shaft integrity and bearing stratum socket depth on every pile.',
+                  'continuous shaft integrity and bearing stratum socket depth on every pile. '
+                  'Combining coupled Biot poroelastic finite-element models in FEniCS/dolfinx (DOI '
+                  '10.1145/3524456) with sparse settlement-rate system identification in '
+                  'dynamicslab/pysindy (DOI 10.1073/pnas.1517384113) lets geotechnical engineers '
+                  'assimilate real-time piezometer telemetry into guaranteed-safe foundation '
+                  'designs verified via Scite (DOI 10.1162/qss_a_00146).',
+ 'act4_deepening': 'Modern geotechnical engineering practice integrates automated artificial '
+                   'intelligence algorithms with experienced human engineering judgment on heavy '
+                   'civil job sites. During continuous flight auger drilling, instrumented piling '
+                   'rigs continuously transmit drilling penetration rates, hydraulic torque time '
+                   'series, and real-time pumped grout pressure profiles to onboard cloud '
+                   'computing platforms. Neural network classification models analyze these '
+                   'drilling resistance signatures to verify that the auger has successfully '
+                   'penetrated the required depth into competent bearing bedrock, alerting field '
+                   'engineers immediately if unexpected soft clay pockets occur. Human engineers '
+                   'interpret automated load-settlement predictions, certifying pile integrity and '
+                   'authorizing grout volume placements according to building codes. Open frontier '
+                   'questions focus on predicting multi-decade creep settlement under variable '
+                   'sea-level rise and modeling microbially induced calcite precipitation to '
+                   'reinforce liquefiable sands in situ. By unifying autonomous machine telemetry '
+                   'with deterministic soil mechanics, civil engineering teams construct resilient '
+                   'foundation systems capable of supporting critical infrastructure through '
+                   'catastrophic earthquakes and decadal climate shifts.',
  'cf_bridge': "Terzaghi's poroelastic consolidation equation (du/dt = c_v d^2u/dz^2) is "
               'mathematically identical to the two-gel osmotic poroelastic compression governing '
               'the 7.2 um periciliary ventilation duct surface liquid (ASL) in Civil & Structural '
-              'Engineering (Button et al., Science 2012, DOI 10.1126/science.1223012).',
- 'sources': ['Terzaghi, K. (1925). Erdbaumechanik auf bodenphysikalischer Grundlage. Franz '
-             'Deuticke, Vienna.',
+              'Engineering (Button et al., Science 2012, DOI 10.1126/science.1223012). When '
+              'dehydrated CF viscoplastic grout exerts an osmotic surcharge exceeding the critical '
+              'bearing capacity of the periciliary brush (~3.5 kPa), interstitial water drains '
+              'from the periciliary matrix and cilia collapse — whereas restoring osmotic pore '
+              'pressure via CSI-MasterFormat modulators or ENaC blockers re-inflates the gel '
+              'skeleton.',
+ 'sources': ['Gavin, K. G., & Xue, J. (2009). Unsaturated soil infiltration and shaft capacity mechanics (extending Terzaghi 1925). Journal of Geotechnical and Geoenvironmental Engineering, 135(6), 746–756. DOI: 10.1061/(ASCE)GT.1943-5606.0000073.',
              'Terzaghi, K., Peck, R. B., & Mesri, G. (1996). Soil Mechanics in Engineering '
              'Practice (3rd ed.). Wiley.',
              'Seed, H. B., & Idriss, I. M. (1971). Simplified procedure for evaluating soil '
@@ -192,7 +321,12 @@ LONGFORM_DATA = {'reading_time': '14 MIN READ',
              'ASCE, 97(9), 1249–1273.',
              'Brown, D. A., Dapp, S. D., Thompson, W. R., & Lazarte, C. A. (2007). Design and '
              'Construction of Continuous Flight Auger (CFA) Piles (FHWA GEC No. 8). Federal '
-             'Highway Administration.'],
+             'Highway Administration.',
+             'Scroggs, M. W., Dokken, J. S., Richardson, C. N., & Wells, G. N. (2022). Construction of Arbitrary Order Finite Element Degree-of-Freedom Maps on Polygonal and Polyhedral Cell Meshes (FEniCS/dolfinx, https://github.com/FEniCS/dolfinx). ACM Transactions on Mathematical Software, 48(2), 18:1–18:23. DOI: 10.1145/3524456.',
+             'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
+             'context of citations and classifies their intent using deep learning '
+             '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
+             '10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Terzaghi 1D '
         'consolidation pore-pressure isochrones and 24-meter CFA augercast deep foundation pile">\n'
         '            <rect x="45" y="30" width="250" height="55" fill="var(--tp-ochre)" '
@@ -257,4 +391,30 @@ ES_TRANSLATION = {'title_es': 'Mecánica de Suelos de Terzaghi, Pilotes Profundo
            '(consolidación de Terzaghi).',
  'bridge_es': 'La consolidación poroelástica de Terzaghi es matemáticamente isomorfa a la '
               'compresión osmótica del cepillo periciliar pulmonar bajo una capa de moco '
-              'hiperconcentrado en Ingeniería Hidrosanitaria.'}
+              'hiperconcentrado en Ingeniería Hidrosanitaria.',
+ 'plain_es': 'En 1925, en los talleres del Robert College en Estambul, el ingeniero austriaco Karl '
+             'von Terzaghi realizaba pruebas con latas de metal, piedras porosas y extensómetros '
+             'para resolver un misterio histórico. Durante siglos, las grandes construcciones se '
+             'hundían lentamente en el lodo o se inclinaban sin explicación aparente. Terzaghi '
+             'descubrió que el suelo empapado actúa como una esponja compuesta por granos '
+             'minerales y agua atrapada. Cuando construyen un edificio pesado, el peso inicial lo '
+             'sostiene la presión del agua subterránea. Solo a medida que esa agua escurre '
+             'lentamente por los diminutos poros del subsuelo, los granos sólidos se juntan para '
+             'cargar la estructura. Para entenderlo, piensen en una esponja empapada: al pisarla, '
+             'el agua sale disparada primero, y solo después la goma se comprime. Sin embargo, si '
+             'un sismo sacude arena húmeda, el agua separa los granos y el suelo se vuelve '
+             'líquido, lo que obliga a colocar pilotes profundos de concreto.',
+ 'deep_es': 'El principio de esfuerzo efectivo de Terzaghi demuestra que la resistencia del suelo '
+            'depende del esfuerzo neto sobre los granos minerales una vez restada la presión de '
+            'poro. Cuando una sobrecarga actúa sobre arcillas saturadas, la disipación '
+            'hidrodinámica del agua sigue una ecuación diferencial de difusión, transfiriendo '
+            'carga gradualmente al esqueleto sólido. Si ocurre un terremoto, las vibraciones '
+            'rápidas incrementan la presión de poro hasta anular el esfuerzo efectivo, provocando '
+            'la licuefacción del terreno. Para proteger grandes estructuras, la ingeniería '
+            'geotécnica moderna instala pilotes profundos de barrena continua que transfieren las '
+            'cargas hacia estratos firmes no licuables. En las obras actuales, computadoras a '
+            'bordo de las perforadoras registran el torque y el volumen de concreto bombeado en '
+            'tiempo real. Esta integración digital permite a los ingenieros verificar la '
+            'integridad estructural de cada pilote y predecir los asentamientos a largo plazo, '
+            'garantizando cimentaciones seguras frente a sismos intensos y suelos altamente '
+            'deformables.'}

@@ -1490,6 +1490,61 @@ REVAMP_CSS = r"""
   .tp-transfer-chapter {
     margin: 2rem 0;
   }
+
+  /* ---- 5-Pace Human Distillation Ladder & Inline Visual Intuition Bridge ---- */
+  .tp-plain-bridge-box,
+  .tp-analogy-box {
+    margin: 1.4rem 0 1.65rem;
+    padding: 1.25rem 1.45rem;
+    border: 1px solid var(--tp-rule-strong);
+    border-left: 4px solid var(--tp-verdigris);
+    border-radius: 0 10px 10px 0;
+    background-color: var(--tp-vellum);
+    box-sizing: border-box;
+  }
+  .tp-analogy-box {
+    border-left-color: var(--tp-prussian);
+  }
+  .tp-plain-bridge-kicker {
+    display: inline-block;
+    margin-bottom: 0.45rem;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--tp-verdigris);
+  }
+  .tp-analogy-box .tp-plain-bridge-kicker {
+    color: var(--tp-prussian);
+  }
+  .tp-plain-bridge-box p,
+  .tp-analogy-box p {
+    margin: 0.45rem 0 0;
+    font-size: 1.01rem;
+    line-height: 1.68;
+  }
+  .tp-distill-figure {
+    margin: 1.5rem 0 1.85rem;
+    padding: 1.15rem 1.25rem;
+    border: 1px solid var(--tp-rule-strong);
+    border-radius: 10px;
+    background-color: var(--tp-vellum);
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .tp-distill-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .tp-distill-caption {
+    margin-top: 0.65rem;
+    font-size: 0.84rem;
+    line-height: 1.48;
+    color: var(--tp-graphite);
+  }
 }
 """
 
