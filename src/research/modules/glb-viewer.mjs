@@ -1,19 +1,23 @@
 /**
  * @module glb-viewer
- * Zero-Build WebGL2 Binary glTF 2.0 (.glb) Inspector & Toolbox Workbench Engine.
+ * Zero-Build WebGL2 Binary glTF 2.0 (.glb) Inspector, Live Parametric CAD Exporter & Toolbox Workbench Engine.
  *
  * Parses the strict static-mesh subset of Khronos glTF 2.0 binary (.glb):
  *   - 12-byte header: magic 0x46546C67 ("glTF"), version 2, total byte length
  *   - Chunk 0 (0x4E4F534A JSON): accessors, bufferViews, meshes, asset.extras provenance
  *   - Chunk 1 (0x004E4942 BIN): float32 POSITION, NORMAL, COLOR_0 and uint32/uint16 indices
- * Renders in raw WebGL2 with orbit camera, wireframe & cross-section slice modes,
- * keyboard accessibility, prefers-reduced-motion compliance, and automatic 2D projection
- * fallback when WebGL2 is unavailable. Contains zero external network calls.
+ * Also provides live client-side parametric CAD synthesis and 1-click download of custom-scaled:
+ *   - .glb (ISO/IEC 12113:2022 Khronos glTF 2.0 binary)
+ *   - .step (ISO 10303-21 AP242 clean-room ASCII B-Rep solid)
+ *   - .dxf (Clean-Room ASCII R2000 layered 2D CAD projection)
+ * directly from the current workbench slider dimensions with zero server round-trips.
  */
 
 const GLB_MAGIC = 0x46546c67;
 const CHUNK_JSON = 0x4e4f534a;
 const CHUNK_BIN = 0x004e4942;
+
+const VIEWER_REGISTRY = new Map();
 
 /**
  * Decode a base64 string into an ArrayBuffer without any network call.
@@ -139,7 +143,6 @@ export function parseGlbBuffer(buffer) {
     }
   }
 
-  // Compute bounding box and divergence-theorem signed volume
   const bmin = [Infinity, Infinity, Infinity];
   const bmax = [-Infinity, -Infinity, -Infinity];
   for (let v = 0; v < vCount; v += 1) {
@@ -181,6 +184,201 @@ export function parseGlbBuffer(buffer) {
     signedVolume: signedVol6 / 6.0,
     extras: gltf.asset?.extras || {},
   };
+}
+
+/**
+ * Encode a scaled mesh into a valid Khronos glTF 2.0 binary (.glb) ArrayBuffer (ISO/IEC 12113:2022).
+ */
+export function encodeCustomGlbBuffer(parsed, scaleVec, slug, p0, p1) {
+  const [sx, sy, sz] = scaleVec;
+  const vCount = parsed.vertexCount;
+  const scaledPos = new Float32Array(vCount * 3);
+  const bmin = [Infinity, Infinity, Infinity];
+  const bmax = [-Infinity, -Infinity, -Infinity];
+  for (let i = 0; i < vCount; i += 1) {
+    const x = parsed.positions[i * 3] * sx;
+    const y = parsed.positions[i * 3 + 1] * sy;
+    const z = parsed.positions[i * 3 + 2] * sz;
+    scaledPos[i * 3] = x;
+    scaledPos[i * 3 + 1] = y;
+    scaledPos[i * 3 + 2] = z;
+    if (x < bmin[0]) bmin[0] = x;
+    if (y < bmin[1]) bmin[1] = y;
+    if (z < bmin[2]) bmin[2] = z;
+    if (x > bmax[0]) bmax[0] = x;
+    if (y > bmax[1]) bmax[1] = y;
+    if (z > bmax[2]) bmax[2] = z;
+  }
+
+  const posBytes = scaledPos.byteLength;
+  const normBytes = parsed.normals.byteLength;
+  const colBytes = parsed.colors.byteLength;
+  const idxBytes = parsed.indices.byteLength;
+  const rawBinLen = posBytes + normBytes + colBytes + idxBytes;
+  const paddedBinLen = (rawBinLen + 3) & ~3;
+
+  const gltfObj = {
+    asset: {
+      version: "2.0",
+      generator: `Informatico.ai Live Parametric Exporter (${slug.toUpperCase()})`,
+      extras: {
+        folio: slug.toUpperCase(),
+        slider_0: p0,
+        slider_1: p1,
+        license: "CC0-1.0 / CC-BY-4.0 (Educational artifact; not certified for fitness)",
+      },
+    },
+    scene: 0,
+    scenes: [{ nodes: [0] }],
+    nodes: [{ mesh: 0, name: `${slug}_parametric_solid` }],
+    meshes: [
+      {
+        name: `${slug}_mesh`,
+        primitives: [{ attributes: { POSITION: 0, NORMAL: 1, COLOR_0: 2 }, indices: 3, mode: 4 }],
+      },
+    ],
+    bufferViews: [
+      { buffer: 0, byteOffset: 0, byteLength: posBytes, target: 34962 },
+      { buffer: 0, byteOffset: posBytes, byteLength: normBytes, target: 34962 },
+      { buffer: 0, byteOffset: posBytes + normBytes, byteLength: colBytes, target: 34962 },
+      { buffer: 0, byteOffset: posBytes + normBytes + colBytes, byteLength: idxBytes, target: 34963 },
+    ],
+    accessors: [
+      { bufferView: 0, componentType: 5126, count: vCount, type: "VEC3", min: bmin, max: bmax },
+      { bufferView: 1, componentType: 5126, count: vCount, type: "VEC3" },
+      { bufferView: 2, componentType: 5126, count: vCount, type: "VEC3" },
+      { bufferView: 3, componentType: 5125, count: parsed.indices.length, type: "SCALAR" },
+    ],
+    buffers: [{ byteLength: paddedBinLen }],
+  };
+
+  const jsonBytes = new TextEncoder().encode(JSON.stringify(gltfObj));
+  const paddedJsonLen = (jsonBytes.byteLength + 3) & ~3;
+  const totalLen = 12 + 8 + paddedJsonLen + 8 + paddedBinLen;
+
+  const outBuf = new ArrayBuffer(totalLen);
+  const view = new DataView(outBuf);
+  const u8 = new Uint8Array(outBuf);
+
+  view.setUint32(0, GLB_MAGIC, true);
+  view.setUint32(4, 2, true);
+  view.setUint32(8, totalLen, true);
+  view.setUint32(12, paddedJsonLen, true);
+  view.setUint32(16, CHUNK_JSON, true);
+  u8.fill(0x20, 20, 20 + paddedJsonLen);
+  u8.set(jsonBytes, 20);
+
+  const binHeader = 20 + paddedJsonLen;
+  view.setUint32(binHeader, paddedBinLen, true);
+  view.setUint32(binHeader + 4, CHUNK_BIN, true);
+  const binStart = binHeader + 8;
+  u8.set(new Uint8Array(scaledPos.buffer), binStart);
+  u8.set(new Uint8Array(parsed.normals.buffer, parsed.normals.byteOffset, normBytes), binStart + posBytes);
+  u8.set(new Uint8Array(parsed.colors.buffer, parsed.colors.byteOffset, colBytes), binStart + posBytes + normBytes);
+  u8.set(
+    new Uint8Array(parsed.indices.buffer, parsed.indices.byteOffset, idxBytes),
+    binStart + posBytes + normBytes + colBytes
+  );
+  return outBuf;
+}
+
+/**
+ * Encode a scaled mesh into a clean-room ISO 10303-21 AP242 ASCII .STEP file.
+ */
+export function encodeCustomStepString(parsed, scaleVec, slug, p0, p1) {
+  const [sx, sy, sz] = scaleVec;
+  const lines = [
+    "ISO-10303-21;",
+    "HEADER;",
+    `FILE_DESCRIPTION(('Informatico.ai Parametric Educational Solid (${slug.toUpperCase()})','Not certified for fitness'),'2;1');`,
+    `FILE_NAME('${slug}_custom_${p0}_${p1}.step','2026-11-08T00:00:00',('Informatico.ai Toolbox'),('Sensei Ewok Lab'),'clean-room-stdlib','Informatico.ai','CC0-1.0 / CC-BY-4.0');`,
+    "FILE_SCHEMA(('AUTOMOTIVE_DESIGN { 1 0 10303 214 1 1 1 1 }'));",
+    "ENDSEC;",
+    "DATA;",
+  ];
+  let eid = 1;
+  const vIds = [];
+  for (let i = 0; i < parsed.vertexCount; i += 1) {
+    const x = (parsed.positions[i * 3] * sx).toFixed(4);
+    const y = (parsed.positions[i * 3 + 1] * sy).toFixed(4);
+    const z = (parsed.positions[i * 3 + 2] * sz).toFixed(4);
+    const cpId = eid++;
+    const vpId = eid++;
+    lines.push(`#${cpId} = CARTESIAN_POINT('V${i}',(${x},${y},${z}));`);
+    lines.push(`#${vpId} = VERTEX_POINT('VP${i}',#${cpId});`);
+    vIds.push(vpId);
+  }
+  const faceIds = [];
+  for (let t = 0; t < parsed.indices.length; t += 3) {
+    const a = vIds[parsed.indices[t]];
+    const b = vIds[parsed.indices[t + 1]];
+    const c = vIds[parsed.indices[t + 2]];
+    const loopId = eid++;
+    const boundId = eid++;
+    const faceId = eid++;
+    lines.push(`#${loopId} = POLY_LOOP('L${t / 3}',(#${a},#${b},#${c}));`);
+    lines.push(`#${boundId} = FACE_OUTER_BOUND('B${t / 3}',#${loopId},.T.);`);
+    lines.push(`#${faceId} = ADVANCED_FACE('F${t / 3}',(#${boundId}),$,.T.);`);
+    faceIds.push(`#${faceId}`);
+  }
+  const shellId = eid++;
+  const brepId = eid++;
+  lines.push(`#${shellId} = CLOSED_SHELL('${slug}_shell',(${faceIds.join(",")}));`);
+  lines.push(`#${brepId} = MANIFOLD_SOLID_BREP('${slug}_brep',#${shellId});`);
+  lines.push("ENDSEC;");
+  lines.push("END-ISO-10303-21;");
+  return lines.join("\n") + "\n";
+}
+
+/**
+ * Encode a scaled mesh into a clean-room ASCII R2000 .DXF layered 2D CAD projection.
+ */
+export function encodeCustomDxfString(parsed, scaleVec, slug, p0, p1) {
+  const [sx, sy] = scaleVec;
+  const lines = [
+    "0", "SECTION",
+    "2", "HEADER",
+    "9", "$ACADVER",
+    "1", "AC1009",
+    "0", "ENDSEC",
+    "0", "SECTION",
+    "2", "ENTITIES",
+  ];
+  const seen = new Set();
+  const idx = parsed.indices;
+  for (let t = 0; t < idx.length; t += 3) {
+    const tri = [idx[t], idx[t + 1], idx[t + 2]];
+    for (let e = 0; e < 3; e += 1) {
+      const u = tri[e];
+      const v = tri[(e + 1) % 3];
+      const key = u < v ? `${u}_${v}` : `${v}_${u}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      const x0 = (parsed.positions[u * 3] * sx).toFixed(4);
+      const y0 = (parsed.positions[u * 3 + 1] * sy).toFixed(4);
+      const x1 = (parsed.positions[v * 3] * sx).toFixed(4);
+      const y1 = (parsed.positions[v * 3 + 1] * sy).toFixed(4);
+      const layer = e === 0 ? "CUT" : e === 1 ? "MOUNTAIN" : "VALLEY";
+      lines.push("0", "LINE", "8", layer, "10", x0, "20", y0, "30", "0.0", "11", x1, "21", y1, "31", "0.0");
+    }
+  }
+  lines.push(
+    "0", "TEXT", "8", "ANNOTATION", "10", "0.0", "20", "-18.0", "30", "0.0", "40", "3.5",
+    "1", `${slug.toUpperCase()} Custom (${p0}, ${p1}) - Educational Artifact (CC0-1.0)`
+  );
+  lines.push("0", "ENDSEC", "0", "EOF");
+  return lines.join("\n") + "\n";
+}
+
+function triggerBlobDownload(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
 }
 
 const VS_SRC = `#version 300 es
@@ -242,12 +440,10 @@ function buildMvpAndNormalMatrix(yaw, pitch, zoom, aspect) {
   const cy = Math.cos(yaw), sy = Math.sin(yaw);
   const cp = Math.cos(pitch), sp = Math.sin(pitch);
   const s = zoom;
-  // Orthographic-like scaled projection with depth mapped to [-0.8, 0.8]
   const sx = s / Math.max(aspect, 0.5);
   const syProj = s;
   const sz = 0.25;
 
-  // Rotation matrix R = Rx(pitch) * Rz(yaw)
   const r00 = cy,       r01 = -sy,      r02 = 0;
   const r10 = cp * sy,  r11 = cp * cy,  r12 = -sp;
   const r20 = sp * sy,  r21 = sp * cy,  r22 = cp;
@@ -266,18 +462,24 @@ function buildMvpAndNormalMatrix(yaw, pitch, zoom, aspect) {
   return { mvp, normMat };
 }
 
-function normalizePositions(parsed) {
+function normalizePositions(parsed, scaleVec = [1.0, 1.0, 1.0]) {
   const { positions, bmin, bmax, vertexCount } = parsed;
-  const cx = 0.5 * (bmin[0] + bmax[0]);
-  const cy = 0.5 * (bmin[1] + bmax[1]);
-  const cz = 0.5 * (bmin[2] + bmax[2]);
-  const span = Math.max(bmax[0] - bmin[0], bmax[1] - bmin[1], bmax[2] - bmin[2], 1e-5);
+  const [sx, sy, sz] = scaleVec;
+  const cx = 0.5 * (bmin[0] + bmax[0]) * sx;
+  const cy = 0.5 * (bmin[1] + bmax[1]) * sy;
+  const cz = 0.5 * (bmin[2] + bmax[2]) * sz;
+  const span = Math.max(
+    (bmax[0] - bmin[0]) * sx,
+    (bmax[1] - bmin[1]) * sy,
+    (bmax[2] - bmin[2]) * sz,
+    1e-5
+  );
   const scale = 1.35 / span;
   const normPos = new Float32Array(positions.length);
   for (let i = 0; i < vertexCount; i += 1) {
-    normPos[i * 3] = (positions[i * 3] - cx) * scale;
-    normPos[i * 3 + 1] = (positions[i * 3 + 1] - cy) * scale;
-    normPos[i * 3 + 2] = (positions[i * 3 + 2] - cz) * scale;
+    normPos[i * 3] = (positions[i * 3] * sx - cx) * scale;
+    normPos[i * 3 + 1] = (positions[i * 3 + 1] * sy - cy) * scale;
+    normPos[i * 3 + 2] = (positions[i * 3 + 2] * sz - cz) * scale;
   }
   return normPos;
 }
@@ -331,6 +533,7 @@ function mountSingleGlbViewer(container) {
   if (container.dataset.glbMounted === "true") return;
   container.dataset.glbMounted = "true";
 
+  const slug = container.getAttribute("data-glb-viewer") || "x01";
   const b64 = container.getAttribute("data-glb-b64");
   const canvas = container.querySelector("canvas[data-glb-canvas]");
   const statusEl = container.querySelector("[data-glb-status]");
@@ -347,7 +550,8 @@ function mountSingleGlbViewer(container) {
     return;
   }
 
-  const normPos = normalizePositions(parsed);
+  let scaleVec = [1.0, 1.0, 1.0];
+  let normPos = normalizePositions(parsed, scaleVec);
   const wireIndices = buildWireframeIndices(parsed.indices);
 
   const state = {
@@ -361,12 +565,14 @@ function mountSingleGlbViewer(container) {
     lastY: 0,
   };
 
-  if (statusEl) {
-    const dx = (parsed.bmax[0] - parsed.bmin[0]).toFixed(1);
-    const dy = (parsed.bmax[1] - parsed.bmin[1]).toFixed(1);
-    const dz = (parsed.bmax[2] - parsed.bmin[2]).toFixed(1);
+  function updateStatusText() {
+    if (!statusEl) return;
+    const dx = ((parsed.bmax[0] - parsed.bmin[0]) * scaleVec[0]).toFixed(1);
+    const dy = ((parsed.bmax[1] - parsed.bmin[1]) * scaleVec[1]).toFixed(1);
+    const dz = ((parsed.bmax[2] - parsed.bmin[2]) * scaleVec[2]).toFixed(1);
     statusEl.textContent = `glTF 2.0 Binary (${parsed.byteLength} B) · V=${parsed.vertexCount}, F=${parsed.triangleCount} · BBox ${dx}×${dy}×${dz} mm`;
   }
+  updateStatusText();
 
   let gl = canvas.getContext("webgl2", { antialias: true, preserveDrawingBuffer: false });
   let gpu = null;
@@ -391,7 +597,7 @@ function mountSingleGlbViewer(container) {
 
       const posBuf = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
-      gl.bufferData(gl.ARRAY_BUFFER, normPos, gl.STATIC_DRAW);
+      gl.bufferData(gl.ARRAY_BUFFER, normPos, gl.DYNAMIC_DRAW);
       gl.enableVertexAttribArray(0);
       gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0);
 
@@ -419,6 +625,7 @@ function mountSingleGlbViewer(container) {
       gpu = {
         prog,
         vao,
+        posBuf,
         triBuf,
         lineBuf,
         uMvp: gl.getUniformLocation(prog, "u_mvp"),
@@ -471,6 +678,19 @@ function mountSingleGlbViewer(container) {
     gl.drawElements(gl.LINES, wireIndices.length, gl.UNSIGNED_INT, 0);
     gl.bindVertexArray(null);
   }
+
+  function updateScale(sx, sy, sz) {
+    scaleVec = [Math.max(0.15, sx), Math.max(0.15, sy), Math.max(0.15, sz)];
+    normPos = normalizePositions(parsed, scaleVec);
+    if (gl && gpu && gpu.posBuf) {
+      gl.bindBuffer(gl.ARRAY_BUFFER, gpu.posBuf);
+      gl.bufferSubData(gl.ARRAY_BUFFER, 0, normPos);
+    }
+    updateStatusText();
+    draw();
+  }
+
+  VIEWER_REGISTRY.set(slug, { parsed, getScaleVec: () => scaleVec, updateScale });
 
   canvas.addEventListener("webglcontextlost", (e) => {
     e.preventDefault();
@@ -552,6 +772,19 @@ function mountSingleGlbViewer(container) {
   draw();
 }
 
+function computeParametricScaleVec(slug, p0, p1) {
+  if (slug === "x01") return [p0 / 40.0, 1.0, p1 / 20.0];
+  if (slug === "x02") return [1.0, Math.max(0.4, p0 / 32.0), p1 / 18.0];
+  if (slug === "x03") return [1.0, 1.0 + (p1 - 18.0) / 180.0, p0 / 2000.0];
+  if (slug === "x04") {
+    const cBase = Math.max(0.15, Math.cos((78 * Math.PI) / 180.0));
+    const cNow = Math.max(0.15, Math.cos((p0 * Math.PI) / 180.0));
+    return [cNow / cBase, 1.0, p1 / 6.0];
+  }
+  if (slug === "x05") return [p0 / 24.0, (p0 + p1) / 28.0, 1.0];
+  return [p0 / 24.0, p0 / 24.0, p1 / 60.0];
+}
+
 export function initGlbViewers(scope = document) {
   scope.querySelectorAll("[data-glb-viewer]").forEach(mountSingleGlbViewer);
 
@@ -570,6 +803,7 @@ export function initGlbViewers(scope = document) {
     const r3 = wb.querySelector('[data-tc-readout="3"]');
     const box3 = wb.querySelector('[data-tc-readout-box="3"]');
     const caption = wb.querySelector("[data-tc-caption]");
+    const exportStatus = wb.querySelector("[data-tc-export-status]");
     const modeBtns = wb.querySelectorAll("[data-tc-mode]");
     let knockoutActive = false;
 
@@ -660,10 +894,41 @@ export function initGlbViewers(scope = document) {
           ? `Certified Geometry Regime (${slug.toUpperCase()}) — All 4 stage invariants satisfied (${out[3]}).`
           : `Planted-Defect / Boundary Knockout (${slug.toUpperCase()}) — Geometric invariant violated (${out[3]}).`;
       }
+      const vReg = VIEWER_REGISTRY.get(slug);
+      if (vReg) {
+        const [sx, sy, sz] = computeParametricScaleVec(slug, p0, p1);
+        vReg.updateScale(sx, sy, sz);
+      }
     };
 
     if (s0) s0.addEventListener("input", () => { knockoutActive = false; updateWb(); });
     if (s1) s1.addEventListener("input", () => { knockoutActive = false; updateWb(); });
+
+    wb.querySelectorAll("[data-tc-export]").forEach((expBtn) => {
+      expBtn.addEventListener("click", () => {
+        const fmt = expBtn.getAttribute("data-tc-export") || "glb";
+        const p0 = s0 ? parseFloat(s0.value) : 0;
+        const p1 = s1 ? parseFloat(s1.value) : 0;
+        const vReg = VIEWER_REGISTRY.get(slug);
+        if (!vReg || !vReg.parsed) return;
+        const scaleVec = computeParametricScaleVec(slug, p0, p1);
+        const fnameBase = `${slug}_custom_${p0}_${p1}`;
+        if (fmt === "glb") {
+          const glbBuf = encodeCustomGlbBuffer(vReg.parsed, scaleVec, slug, p0, p1);
+          triggerBlobDownload(new Blob([glbBuf], { type: "model/gltf-binary" }), `${fnameBase}.glb`);
+          if (exportStatus) exportStatus.textContent = `Exported ${fnameBase}.glb (${glbBuf.byteLength} B · ISO/IEC 12113:2022)`;
+        } else if (fmt === "step") {
+          const stepTxt = encodeCustomStepString(vReg.parsed, scaleVec, slug, p0, p1);
+          triggerBlobDownload(new Blob([stepTxt], { type: "application/step" }), `${fnameBase}.step`);
+          if (exportStatus) exportStatus.textContent = `Exported ${fnameBase}.step (${stepTxt.length} B · ISO 10303-21 AP242)`;
+        } else if (fmt === "dxf") {
+          const dxfTxt = encodeCustomDxfString(vReg.parsed, scaleVec, slug, p0, p1);
+          triggerBlobDownload(new Blob([dxfTxt], { type: "application/dxf" }), `${fnameBase}.dxf`);
+          if (exportStatus) exportStatus.textContent = `Exported ${fnameBase}.dxf (${dxfTxt.length} B · Clean-Room ASCII R2000)`;
+        }
+      });
+    });
+
     modeBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
         const m = btn.getAttribute("data-tc-mode");

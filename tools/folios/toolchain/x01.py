@@ -5,7 +5,7 @@ FOLIO = {'slug': 'x01',
  'folio_id': 'X.01',
  'tool_id': 'TOOL-CORE-1',
  'cat': 'core',
- 'plate_slug': 'e10',
+ 'plate_slug': 'x01',
  'pillar_label_en': 'Core 3D Instrument · WebGL2 & Byte-Level Verification',
  'pillar_label_es': 'Instrumento 3D Central · WebGL2 y Verificación a Nivel de Bytes',
  'badge_en': 'TOOLBOX X.01 · ZERO-BUILD WEBGL2 GLB INSPECTOR + STDLIB VALIDATOR',
@@ -222,11 +222,11 @@ FOLIO = {'slug': 'x01',
              '10.1145/2504435.2504442',
              'Lalish, E. (2023–2026). Manifold: Geometry library for topological robustness '
              '(Apache-2.0). https://github.com/elalish/manifold'],
- 'act1_plain_bridge': 'Think of a digital 3D model like a hollow balloon made of '
-                      'tiny flat triangles. To hold air, every single edge must be stitched neatly '
-                      'between exactly two neighboring patches. If a single seam stays open, or if '
-                      'one patch faces backward, the balloon leaks. In the computer world, we call '
-                      'an unbroken shell a watertight mesh. When you export a 3D file from design '
+ 'act1_plain_bridge': 'Think of a digital 3D model like a hollow balloon made of tiny flat '
+                      'triangles. To hold air, every single edge must be stitched neatly between '
+                      'exactly two neighboring patches. If a single seam stays open, or if one '
+                      'patch faces backward, the balloon leaks. In the computer world, we call an '
+                      'unbroken shell a watertight mesh. When you export a 3D file from design '
                       'software, things often go wrong quietly. Programs write numbers slightly '
                       'differently, round off corners, or skip hidden seams. You might not see any '
                       'flaws on your screen, but downstream tools fail immediately. That is why we '

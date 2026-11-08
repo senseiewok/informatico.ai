@@ -41,6 +41,18 @@ for _pillar, _modules in PILLAR_PACKAGES.items():
         if _mod.ES_TRANSLATION:
             FOLIO_ES_TRANSLATIONS[_slug] = _mod.ES_TRANSLATION
 
+for _b in BOUNTY_FOLIOS:
+    PLATE_CAPTIONS[_b["slug"]] = {
+        "alt": f"Editorial illustration imagining the concept of Bounty {_b['folio_id']} ({_b['bounty_id']}): {_b['title']}",
+        "caption": f"Plate {_b['folio_id']}-V · Editorial Vision Plate illustrating {_b['title']} ({_b['governing_law']}).",
+    }
+
+for _t in TOOLCHAIN_FOLIOS:
+    PLATE_CAPTIONS[_t["slug"]] = {
+        "alt": f"Editorial illustration imagining the 3D CAD and studio fabrication concept of Toolbox {_t['folio_id']} ({_t['tool_id']}): {_t['title']}",
+        "caption": f"Plate {_t['folio_id']}-V · Editorial Vision Plate illustrating {_t['title']} ({_t['governing_law']}).",
+    }
+
 __all__ = [
     "BOUNDARY_EN",
     "BOUNDARY_ES",

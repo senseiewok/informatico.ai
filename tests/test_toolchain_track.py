@@ -179,5 +179,75 @@ class ToolchainTrackTests(unittest.TestCase):
         self.assertIn("PASS: All 6 Tech & Tools (The Toolbox)", res.stdout)
 
 
+    def test_parametric_cad_browser_exporter_and_realtime_mesh_scaling(self) -> None:
+        viewer_mjs = (RESEARCH / "modules" / "glb-viewer.mjs").read_text(encoding="utf-8")
+        for sym in (
+            "VIEWER_REGISTRY",
+            "encodeCustomGlbBuffer",
+            "encodeCustomStepString",
+            "encodeCustomDxfString",
+            "updateScale",
+            "data-tc-export",
+        ):
+            self.assertIn(sym, viewer_mjs, f"Missing {sym} in glb-viewer.mjs")
+        for slug in SLUGS:
+            for base in (TOOLCHAIN_RESEARCH, RESEARCH / "es-mx" / "toolchain"):
+                html = (base / slug / "index.html").read_text(encoding="utf-8")
+                for fmt in ("glb", "step", "dxf"):
+                    self.assertIn(f'data-tc-export="{fmt}"', html, f"{slug} missing {fmt} export button")
+                self.assertIn("data-tc-export-status", html, f"{slug} missing export status caption")
+                self.assertIn("<tp-article-audio", html, f"{slug} missing <tp-article-audio>")
+
+    def test_bounties_five_pace_distillation_quickstart_and_60_folio_parity(self) -> None:
+        bounties_res = RESEARCH / "bounties"
+        hub_html = (bounties_res / "index.html").read_text(encoding="utf-8")
+        self.assertIn('class="tp-studio-quickstart"', hub_html)
+        for bslug in ("b01", "b02", "b03", "b04", "b05", "b06"):
+            for base in (bounties_res, RESEARCH / "es-mx" / "bounties"):
+                page = base / bslug / "index.html"
+                self.assertTrue(page.is_file(), f"Missing {page}")
+                txt = page.read_text(encoding="utf-8")
+                self.assertIn('class="tp-studio-quickstart"', txt, f"{page} missing quick-start bar")
+                self.assertIn('class="tp-studio-dl-pill"', txt, f"{page} missing quick-start pill")
+                self.assertIn('class="tp-plain-bridge-box"', txt, f"{page} missing 5-Pace plain bridge")
+                self.assertIn('class="tp-analogy-box"', txt, f"{page} missing 5-Pace analogy box")
+                self.assertIn('class="tp-distill-figure"', txt, f"{page} missing Plate D distillation figure")
+                self.assertIn('class="tp-distill-svg"', txt, f"{page} missing Plate D distillation SVG")
+                self.assertIn("<tp-article-audio", txt, f"{page} missing <tp-article-audio>")
+                if base == bounties_res:
+                    paras = re.findall(r"<p\b[^>]*>(.*?)</p>", txt, flags=re.S)
+                    self.assertGreaterEqual(len(paras), 52, f"{bslug} has only {len(paras)} <p> paragraphs")
+                    words = sum(len(re.sub(r"<[^>]+>", " ", p).split()) for p in paras)
+                    self.assertGreaterEqual(words, 4200, f"{bslug} has only {words} <p> words (< 4,200)")
+
+    def test_60_unique_plates_and_female_fast_audio_configuration(self) -> None:
+        all_slugs = (
+            [f"e{i:02d}" for i in range(1, 13)]
+            + [f"a{i:02d}" for i in range(1, 13)]
+            + [f"p{i:02d}" for i in range(1, 13)]
+            + [f"m{i:02d}" for i in range(1, 13)]
+            + [f"b{i:02d}" for i in range(1, 7)]
+            + [f"x{i:02d}" for i in range(1, 7)]
+        )
+        self.assertEqual(len(all_slugs), 60)
+        hashes: dict[str, str] = {}
+        plates_dir = RESEARCH / "plates"
+        for s in all_slugs:
+            img_path = plates_dir / f"{s}.jpg"
+            self.assertTrue(img_path.is_file(), f"Missing plate {img_path}")
+            raw = img_path.read_bytes()
+            self.assertGreater(len(raw), 10_000, f"Plate {img_path} is too small")
+            h = hashlib.sha256(raw).hexdigest()
+            self.assertNotIn(h, hashes, f"Duplicate plate SHA-256 between {s}.jpg and {hashes.get(h)}.jpg")
+            hashes[h] = s
+
+        audio_mjs = (RESEARCH / "modules" / "article-audio.mjs").read_text(encoding="utf-8")
+        self.assertIn("const SPEEDS = [1.15, 1.35, 1.5, 1.0, 0.85];", audio_mjs)
+        self.assertIn("ava|emma|jenny|aria|dalia", audio_mjs)
+        audio_py = (ROOT / "tools" / "build_neural_audio.py").read_text(encoding="utf-8")
+        self.assertIn('EN_VOICE = "en-US-AvaMultilingualNeural"', audio_py)
+        self.assertIn('ES_VOICE_INF = "es-MX-DaliaNeural"', audio_py)
+        self.assertIn('SPEECH_RATE = "+20%"', audio_py)
+
 if __name__ == "__main__":
     unittest.main()

@@ -7,7 +7,7 @@
 // discovery, Neural/Natural/Google voice ranking (penalizing legacy SAPI5 voices), and a
 // Scientific & Mathematical Prosody Normalizer in English (en-US) and Mexican Spanish (es-MX).
 
-const SPEEDS = [1.0, 1.25, 1.5, 0.85];
+const SPEEDS = [1.15, 1.35, 1.5, 1.0, 0.85];
 
 const ACT_DEFS = [
   { id: "act-i", selector: '[id^="act1-heading"]', labelEn: "Act I · Story", labelEs: "Acto I · Historia", esIndex: 0 },
@@ -144,8 +144,8 @@ export function normalizeScientificSpeech(raw, lang = "en") {
   let s = String(raw || "")
     .replace(/\[Scite\s*↗?\]/g, "")
     .replace(/https?:\/\/\S+/g, "")
-    .replace(/\b([CEAPMLDGTR])\.0(\d)\b/g, "$1 $2")
-    .replace(/\b([CEAPMLDGTR])\.(\d{2})\b/g, "$1 $2");
+    .replace(/\b([CEAPMLDGTRBX])\.0(\d)\b/g, "$1 $2")
+    .replace(/\b([CEAPMLDGTRBX])\.(\d{2})\b/g, "$1 $2");
 
   const isEs = String(lang || "en").toLowerCase().startsWith("es");
   if (isEs) {
@@ -225,6 +225,7 @@ export function scoreBrowserVoice(v, langCode) {
   else if (/andrew|ava|brian|emma|jenny|aria|guy|dalia|jorge|elena|paulina|samantha|daniel|siri|premium|enhanced/i.test(name)) score += 85;
   else if (/google/i.test(name)) score += 75;
   else if (v.localService === false) score += 55;
+  if (/ava|emma|jenny|aria|dalia|elena|paulina|samantha|monica|female|woman/i.test(name)) score += 40;
 
   // Strongly penalize legacy 1990s SAPI5 / desktop robotic voices so they only run if zero neural/cloud voices exist
   if (/david|zira|mark|sabina|helena|hazel|hedda|hortense|espeak|festival|desktop/i.test(name)) {
@@ -559,7 +560,7 @@ export class TpArticleAudioElement extends HTMLElement {
     speedBtn.className = "tp-audio-util-btn tp-audio-speed-btn";
     speedBtn.setAttribute("data-audio-action", "speed");
     speedBtn.setAttribute("title", "Playback speed / Velocidad de narración");
-    speedBtn.textContent = "1.0×";
+    speedBtn.textContent = "1.15×";
     speedBtn.addEventListener("click", () => this.cycleSpeed());
 
     leftGroup.appendChild(playBtn);

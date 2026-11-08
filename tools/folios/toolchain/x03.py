@@ -5,7 +5,7 @@ FOLIO = {'slug': 'x03',
  'folio_id': 'X.03',
  'tool_id': 'TOOL-ARCH-1',
  'cat': 'architecture',
- 'plate_slug': 'a11',
+ 'plate_slug': 'x03',
  'pillar_label_en': "Small Architect's Studio Toolbox · Structural Form-Finding & Open BIM",
  'pillar_label_es': 'Caja de Herramientas para Pequeños Despachos de Arquitectura · Búsqueda de '
                     'Forma',
@@ -26,17 +26,19 @@ FOLIO = {'slug': 'x03',
  'why_en': 'In architecture, advanced structural form-finding and environmental simulation often '
            'get locked inside multinational engineering consultancies with six-figure software '
            'budgets. We built Folio X.03 specifically to empower small, independent architecture '
-           'studios and solo practitioners: using MIT-licensed Python tools (COMPAS, Bonsai BIM / IfcOpenShell, '
-           'Blender, FreeCAD), a small studio can generate compression-only stone, brick, or '
-           'cross-laminated timber (CLT) voussoir arches, verify their thrust-line equilibrium, '
-           'and export 3D solids (.step, .3mf, .glb) plus 2D cutting templates (.dxf).',
+           'studios and solo practitioners: using MIT-licensed Python tools (COMPAS, Bonsai BIM / '
+           'IfcOpenShell, Blender, FreeCAD), a small studio can generate compression-only stone, '
+           'brick, or cross-laminated timber (CLT) voussoir arches, verify their thrust-line '
+           'equilibrium, and export 3D solids (.step, .3mf, .glb) plus 2D cutting templates '
+           '(.dxf).',
  'why_es': 'En la arquitectura actual, la búsqueda de forma estructural suele quedar reservada '
            'para grandes corporativos con presupuestos de software inalcanzables. Diseñamos el '
            'Folio X.03 específicamente para empoderar a pequeños despachos de arquitectura y '
            'profesionales independientes: usando herramientas abiertas en Python con licencia MIT '
-           '(COMPAS, Bonsai BIM / IfcOpenShell, Blender, FreeCAD), cualquier estudio puede generar arcos y bóvedas '
-           'de piedra, ladrillo o madera (CLT) a compresión pura, verificar su línea de empuje y '
-           'exportar sólidos 3D (.step, .3mf, .glb) y plantillas de corte 2D (.dxf).',
+           '(COMPAS, Bonsai BIM / IfcOpenShell, Blender, FreeCAD), cualquier estudio puede generar '
+           'arcos y bóvedas de piedra, ladrillo o madera (CLT) a compresión pura, verificar su '
+           'línea de empuje y exportar sólidos 3D (.step, .3mf, .glb) y plantillas de corte 2D '
+           '(.dxf).',
  'governing_law': 'H = q L² / (8 f) = 27.0 kN · |e(x)| ≤ t / 6 = 66.7 mm · ∑ F_i = 0 · χ = 2 N_v = '
                   '14',
  'pass_pill_en': 'PASS · 7 VOUSSOIRS · χ = 14 · H = 27.0 kN · STEP+3MF+DXF+GLB',
@@ -54,17 +56,19 @@ FOLIO = {'slug': 'x03',
  'current_edition': 'REV 1.0',
  'reading_time': '22 MIN READ',
  'small_studio_kit_en': 'Boutique Architecture Studio Stack (COMPAS MIT + Blender 4.2 / Bonsai + '
-                        'FreeCAD 1.0 + QCAD Community Edition / LibreCAD): Run make_x03.py to generate a 7-voussoir '
-                        'funicular arch across 4 open formats—x03_artifact.glb for client WebGL '
-                        'walkthroughs, x03_artifact.step for structural engineer coordination, '
-                        'x03_artifact.3mf for 1:20 desktop study models, and x03_artifact.dxf for '
-                        '2D stone/CLT CNC шаблоны (templates).',
+                        'FreeCAD 1.0 + QCAD Community Edition / LibreCAD): Run make_x03.py to '
+                        'generate a 7-voussoir funicular arch across 4 open '
+                        'formats—x03_artifact.glb for client WebGL walkthroughs, x03_artifact.step '
+                        'for structural engineer coordination, x03_artifact.3mf for 1:20 desktop '
+                        'study models, and x03_artifact.dxf for 2D stone/CLT CNC шаблоны '
+                        '(templates).',
  'small_studio_kit_es': 'Stack para Pequeños Estudios de Arquitectura (COMPAS MIT + Blender 4.2 / '
-                        'Bonsai + FreeCAD 1.0 + QCAD Community Edition / LibreCAD): Ejecuta make_x03.py para generar un '
-                        'arco funicular de 7 dovelas en 4 formatos abiertos: x03_artifact.glb para '
-                        'presentaciones WebGL con clientes, x03_artifact.step para coordinación '
-                        'estructural, x03_artifact.3mf para maquetas físicas 1:20 y '
-                        'x03_artifact.dxf para plantillas de corte 2D en CNC.',
+                        'Bonsai + FreeCAD 1.0 + QCAD Community Edition / LibreCAD): Ejecuta '
+                        'make_x03.py para generar un arco funicular de 7 dovelas en 4 formatos '
+                        'abiertos: x03_artifact.glb para presentaciones WebGL con clientes, '
+                        'x03_artifact.step para coordinación estructural, x03_artifact.3mf para '
+                        'maquetas físicas 1:20 y x03_artifact.dxf para plantillas de corte 2D en '
+                        'CNC.',
  'companion_folios': [('architecture',
                        'a11',
                        'Folio A.11',
@@ -80,8 +84,7 @@ FOLIO = {'slug': 'x03',
                       ('engineering', 'e02', 'Folio E.02', 'Herschel–Bulkley Concrete Rheology')],
  'external_links': [('compas-dev/compas (MIT Computational Architecture Framework)',
                      'https://github.com/compas-dev/compas'),
-                    ('Bonsai BIM / IfcOpenShell (Native Open BIM)',
-                     'https://bonsaibim.org/'),
+                    ('Bonsai BIM / IfcOpenShell (Native Open BIM)', 'https://bonsaibim.org/'),
                     ('FreeCAD 1.0 BIM & Arch Workbench', 'https://www.freecad.org/')],
  'act1_dropcap': 'In sixteen seventy-five, Robert Hooke concealed his greatest discovery inside a '
                  'Latin anagram: as hangs the flexible chain, so, but inverted, stands the rigid '
@@ -185,9 +188,10 @@ FOLIO = {'slug': 'x03',
                         'STEP/3MF solids simultaneously. Generating all four from one script '
                         'eliminates manual redrawing errors.'},
  'sidenote_2': {'kicker': 'SIDENOTE X.03-B · COMPAS & BONSAI BIM: SOVEREIGN OPEN ARCHITECTURE',
-                'body': "Both ETH Zurich's COMPAS framework and the Bonsai BIM / IfcOpenShell + ezdxf open-source ecosystem "
-                        'are MIT-licensed and run in standard Python 3, letting studios read and '
-                        'write geometry without a commercial license seat.'},
+                'body': "Both ETH Zurich's COMPAS framework and the Bonsai BIM / IfcOpenShell + "
+                        'ezdxf open-source ecosystem are MIT-licensed and run in standard Python '
+                        '3, letting studios read and write geometry without a commercial license '
+                        'seat.'},
  'walkthrough': ['Orbit the 7-voussoir funicular arch in the WebGL2 inspector below; notice how '
                  'vertex colors highlight the keystone compression crown versus the springer '
                  'haunches.',

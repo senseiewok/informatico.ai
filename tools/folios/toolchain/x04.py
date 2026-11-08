@@ -5,7 +5,7 @@ FOLIO = {'slug': 'x04',
  'folio_id': 'X.04',
  'tool_id': 'TOOL-ARCH-2',
  'cat': 'architecture',
- 'plate_slug': 'a10',
+ 'plate_slug': 'x04',
  'pillar_label_en': 'Small Architect & Maker Fabrication · Kinetic Facades & Laser/CNC DXF',
  'pillar_label_es': 'Fabricación para Arquitectos y Makers · Fachadas Cinéticas y DXF para '
                     'Láser/CNC',
@@ -25,9 +25,9 @@ FOLIO = {'slug': 'x04',
  'why_en': 'Small architectural practices and independent makers frequently prototype adaptive '
            'shading screens, acoustic baffles, and folded-plate canopies using laser cutters, CNC '
            'drag-knives, or sheet-metal brakes. Folio X.04 pairs a 3D thickened Miura-ori shell '
-           '(.glb, .3mf) with a production-structured 2D clean-room ASCII DXF (R2000 standard) flat pattern separated into '
-           'CUT, MOUNTAIN, and VALLEY layers—while proving mathematically that every interior '
-           'degree-4 vertex satisfies flat-foldability.',
+           '(.glb, .3mf) with a production-structured 2D clean-room ASCII DXF (R2000 standard) '
+           'flat pattern separated into CUT, MOUNTAIN, and VALLEY layers—while proving '
+           'mathematically that every interior degree-4 vertex satisfies flat-foldability.',
  'why_es': 'Los estudios pequeños de arquitectura y talleres de fabricación digital suelen '
            'prototipar celosías solares adaptativas, paneles acústicos y cubiertas plegadas con '
            'cortadoras láser, routers CNC o dobladoras de lámina. El Folio X.04 combina una malla '

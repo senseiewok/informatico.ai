@@ -5,7 +5,7 @@ FOLIO = {'slug': 'x02',
  'folio_id': 'X.02',
  'tool_id': 'TOOL-ENG-1',
  'cat': 'engineering',
- 'plate_slug': 'e06',
+ 'plate_slug': 'x02',
  'pillar_label_en': 'Engineering Toolbox · Code-First Parametric CAD & STEP AP242',
  'pillar_label_es': 'Herramientas de Ingeniería · CAD Paramétrico en Código y STEP AP242',
  'badge_en': 'TOOLBOX X.02 · BUILD123D / CADQUERY KERNEL → STEP AP242 · 3MF · GLB AUDIT',
@@ -219,20 +219,19 @@ FOLIO = {'slug': 'x02',
              'v1.2.3. https://github.com/3MFConsortium/spec_core',
              'build123d Contributors. (2023–2026). build123d: A python CAD programming library '
              '(Apache-2.0). https://github.com/gumyr/build123d'],
- 'act1_plain_bridge': 'Think of designing a precision metal bracket like writing a '
-                      'recipe. Instead of drawing fixed lines, you write down clear rules. You '
-                      'specify that the base is sixty millimeters long and the mounting boss sits '
-                      'centered on top. If you change one measurement, the entire part updates '
-                      'automatically. That is what parametric modeling means. But trouble starts '
-                      'when you share your file. Different manufacturing tools speak completely '
-                      'different languages. Some tools expect true curved surfaces, while others '
-                      'convert everything into flat triangular facets. When a round hole turns '
-                      'into flat facets, the opening shrinks slightly. Pins that should slide '
-                      'smoothly get stuck. Our free interactive tool solves this headache. Right '
-                      'in your browser, you can inspect an exact stepped pedestal in three '
-                      'dimensions. You can adjust the facet count and watch how the roundness '
-                      'changes in real time. In seconds, you can download verified files and '
-                      'Python scripts to audit your own parts.',
+ 'act1_plain_bridge': 'Think of designing a precision metal bracket like writing a recipe. Instead '
+                      'of drawing fixed lines, you write down clear rules. You specify that the '
+                      'base is sixty millimeters long and the mounting boss sits centered on top. '
+                      'If you change one measurement, the entire part updates automatically. That '
+                      'is what parametric modeling means. But trouble starts when you share your '
+                      'file. Different manufacturing tools speak completely different languages. '
+                      'Some tools expect true curved surfaces, while others convert everything '
+                      'into flat triangular facets. When a round hole turns into flat facets, the '
+                      'opening shrinks slightly. Pins that should slide smoothly get stuck. Our '
+                      'free interactive tool solves this headache. Right in your browser, you can '
+                      'inspect an exact stepped pedestal in three dimensions. You can adjust the '
+                      'facet count and watch how the roundness changes in real time. In seconds, '
+                      'you can download verified files and Python scripts to audit your own parts.',
  'act1_stakes': 'For an independent mechanical consultant or a small hardware team, file exchange '
                 'discrepancies between software tools create costly friction. When a client sends '
                 'a model exported through an unchecked conversion pipeline, subtle geometric '
