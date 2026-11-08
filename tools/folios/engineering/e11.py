@@ -336,9 +336,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              '10.1016/j.jcp.2018.10.045.',
              'Open-Source Stack: FEniCS/dolfinx PDE finite-element engine '
              '(https://github.com/FEniCS/dolfinx) + anthropics/formal-math verification.',
-             'Baratta, I. A., et al. (2023). DOLFINx: The next generation FEniCS problem solving '
-             'environment (FEniCS/dolfinx, https://github.com/FEniCS/dolfinx). Zenodo. DOI: '
-             '10.1145/3524456.',
+             'Scroggs, M. W., Dokken, J. S., Richardson, C. N., & Wells, G. N. (2022). Construction of Arbitrary Order Finite Element Degree-of-Freedom Maps on Polygonal and Polyhedral Cell Meshes (FEniCS/dolfinx, https://github.com/FEniCS/dolfinx). ACM Transactions on Mathematical Software, 48(2), 18:1–18:23. DOI: 10.1145/3524456.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
              'context of citations and classifies their intent using deep learning '
              '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '

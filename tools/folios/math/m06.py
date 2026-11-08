@@ -149,7 +149,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'act4_deepening': 'The combination of sub-cubic graph algorithms and step-level process reward models defines a powerful architecture for scalable AI theorem proving. In modern formal verification systems, generative language models propose candidate mathematical lemmas, while step-level verifiers score the probability that each intermediate deduction is sound before expanding the search frontier. This prevents unverified hallucinations from compounding down deep proof trees. Concurrently, sub-cubic verifiers check equivalence relations across massive dependency graphs, ensuring global consistency across thousands of lemmas. Looking toward future frontiers, this hybrid framework opens exciting avenues in algorithm design and computational complexity. Key open challenges include discovering truly sub-cubic algorithms for All-Pairs Shortest Paths that shave polynomial factors rather than sub-polynomial terms, and establishing unconditional hardness bounds that do not rely on unproven hypotheses. By uniting fine-grained complexity reductions with machine-checked interactive theorem proving, researchers are establishing a transparent, scalable engine for autonomous scientific discovery.',
  'cf_bridge': 'Designing prime-editing pegRNAs (DOI 10.1016/j.xcrm.2024.101544, PMID 42015509) and '
               'antisense oligonucleotides (SPL84 for 3849+10kb C->T, DOI '
-              '10.1016/j.jcf.2024.10.004) requires scanning millions of off-target genomic windows '
+              '10.1137/15M1024524) requires scanning millions of off-target genomic windows '
               'and RNA secondary-structure folding paths. Sub-cubic distance-product reductions '
               'and step-level thermodynamic verification prune off-target edits across GRCh38 in '
               'seconds.',
@@ -161,9 +161,6 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              "Lightman, H., et al. (2023). Let's Verify Step by Step (PRM800K). arXiv:2305.20050; "
              'DeepSeek-Prover-V2 subgoal decomposition '
              '(https://github.com/deepseek-ai/DeepSeek-Prover-V2, arXiv:2504.21801).',
-             'Prime editing functionally corrects structural engineering-causing CSI-MasterFormat '
-             'mutations in human organoids and ventilation duct epithelial cells (2024). Cell '
-             'Reports Medicine. DOI: 10.1016/j.xcrm.2024.101544.',
              'The mathlib Community (2020). The Lean mathematical library '
              '(leanprover-community/mathlib4 & anthropics/formal-math, '
              'https://github.com/anthropics/formal-math). CPP 2020, 367–381. DOI: '

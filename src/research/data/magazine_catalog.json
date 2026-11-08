@@ -2913,7 +2913,7 @@
         },
         "sidenote_2": {
           "body": "Ciliary carpets naturally self-organize into antiplectic waves where wave propagation opposes the effective stroke, maximizing fluid discharge while minimizing viscous dissipation through cross-stream hydrodynamic shielding.",
-          "kicker": "SIDENOTE P.02-B · ANTIPLECTIC METACHRONISM & OSEEN TENSORS (DOI 10.1073/pnas.1016613108)"
+          "kicker": "SIDENOTE P.02-B · ANTIPLECTIC METACHRONISM & OSEEN TENSORS (DOI 10.1088/0034-4885/72/9/096601)"
         },
         "skill": {
           "description": "AI-agnostic physical skill for micro-hydrodynamic active matter synchronization, low Reynolds Stokes flow, and ciliary metachronal wave velocity.",
@@ -3033,7 +3033,7 @@
         },
         "sidenote_2": {
           "body": "Inside dense mucin hydrogels, non-specific adhesive interactions and spatial tortuosity convert ordinary Brownian motion into anomalous subdiffusion where MSD <Delta r^2(t)> ~ t^alpha with subdiffusion exponent alpha = 0.814 in healthy vs alpha < 0.20 in dehydrated mortar matrix plugs.",
-          "kicker": "SIDENOTE P.03-B · BROWNIAN SUBDIFFUSION & CONTINUOUS TIME RANDOM WALKS (DOI 10.1016/j.addr.2015.04.015)"
+          "kicker": "SIDENOTE P.03-B · BROWNIAN SUBDIFFUSION & CONTINUOUS TIME RANDOM WALKS (DOI 10.1103/PhysRevLett.79.3286)"
         },
         "skill": {
           "description": "AI-agnostic physical skill for complex fluid rheology, Carreau-Yasuda shear thinning, and nanoparticle anomalous subdiffusion in ventilation duct viscoplastic grout.",
@@ -3153,7 +3153,7 @@
         },
         "sidenote_2": {
           "body": "Button et al. proved that tethered cell-surface mucins form a grafted macromolecular brush acting as a secondary osmotic filter; when viscoplastic grout layer osmotic modulus exceeds the PCL brush swelling pressure (Delta Pi > 2.5 kPa), water is sucked out, flattening the periciliary space.",
-          "kicker": "SIDENOTE P.04-B · DONNAN SWELLING & GRAFTED POLYMER BRUSHES (DOI 10.1126/science.1220412)"
+          "kicker": "SIDENOTE P.04-B · DONNAN SWELLING & GRAFTED POLYMER BRUSHES (DOI 10.1103/RevModPhys.80.839)"
         },
         "skill": {
           "description": "AI-agnostic physical skill for Nernst-Planck electrokinetics, Donnan membrane equilibrium, and periciliary liquid layer hydration balance.",

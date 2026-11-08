@@ -2396,5 +2396,37 @@
     "total_smart_citations": 1212,
     "unclassified": 62,
     "year": 2018
+  },
+  "doi:10.1088/0034-4885/72/9/096601": {
+    "fetched": "2026-11-08",
+    "first_author": "Lauga",
+    "found": true,
+    "journal": "Reports on Progress in Physics",
+    "title": "The hydrodynamics of swimming microorganisms",
+    "year": 2009
+  },
+  "doi:10.1103/physrevlett.79.3286": {
+    "fetched": "2026-11-08",
+    "first_author": "Gittes",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "Microscopic Viscoelasticity: Shear Moduli of Soft Materials Determined from Thermal Fluctuations",
+    "year": 1997
+  },
+  "doi:10.1103/revmodphys.80.839": {
+    "fetched": "2026-11-08",
+    "first_author": "Schoch",
+    "found": true,
+    "journal": "Reviews of Modern Physics",
+    "title": "Transport phenomena in nanofluidics",
+    "year": 2008
+  },
+  "doi:10.1103/physrevlett.81.725": {
+    "fetched": "2026-11-08",
+    "first_author": "Milner",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "Reptation and Contour-Length Fluctuations in Melts of Linear Polymers",
+    "year": 1998
   }
 }
