@@ -1261,6 +1261,122 @@ REVAMP_CSS = r"""
     border-radius: 0 10px 10px 0;
     background-color: var(--tp-vellum);
   }
+  .tp-bounty-bespoke-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid var(--tp-rule);
+    background-color: var(--tp-vellum);
+  }
+  .tp-bounty-webgl-plate {
+    margin: 2rem 0;
+    padding: 1.35rem;
+    border: 1px solid var(--tp-rule-strong);
+    border-radius: 12px;
+    background-color: var(--tp-vellum);
+  }
+  .tp-bounty-submission-tool {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border: 1px solid var(--tp-rule-strong);
+    border-top: 4px solid var(--tp-prussian);
+    border-radius: 12px;
+    background-color: var(--tp-vellum);
+  }
+  .tp-submission-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--tp-rule);
+  }
+  .tp-sub-tab {
+    appearance: none;
+    border: 1px solid var(--tp-rule-strong);
+    border-radius: 999px;
+    background-color: var(--tp-stone);
+    color: var(--tp-ink);
+    font-family: var(--font-mono, monospace);
+    font-size: 0.76rem;
+    font-weight: 600;
+    padding: 0.42rem 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.16s ease, color 0.16s ease, border-color 0.16s ease;
+  }
+  .tp-sub-tab[aria-selected="true"] {
+    background-color: var(--tp-prussian);
+    color: var(--tp-vellum);
+    border-color: var(--tp-prussian);
+  }
+  .tp-invariant-switches {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  @media (max-width: 900px) {
+    .tp-invariant-switches {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .tp-inv-switch-card {
+    padding: 1rem 1.15rem;
+    border: 1px solid var(--tp-rule-strong);
+    border-left: 4px solid var(--tp-verdigris);
+    border-radius: 8px;
+    background-color: var(--tp-stone);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .tp-inv-switch-card[data-inv-state="fail"] {
+    border-left-color: var(--tp-minium);
+    background-color: var(--tp-vellum);
+  }
+  .tp-inv-switch-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .tp-inv-toggle-btn {
+    appearance: none;
+    border: 1px solid var(--tp-verdigris);
+    border-radius: 6px;
+    background-color: var(--tp-verdigris);
+    color: var(--tp-vellum);
+    font-family: var(--font-mono, monospace);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.28rem 0.6rem;
+    cursor: pointer;
+  }
+  .tp-inv-toggle-btn[aria-pressed="false"] {
+    background-color: var(--tp-minium);
+    border-color: var(--tp-minium);
+    color: var(--tp-vellum);
+  }
+  .tp-bounty-pass-pill[data-status-alert="true"] {
+    color: var(--tp-minium);
+  }
+  .tp-terminal-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .tp-terminal-box {
+    max-height: 320px;
+    overflow: auto;
+  }
+  .tp-cli-box {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
   @media (max-width: 640px) {
     .tp-bounty-crucible {
       padding: 1rem 0.85rem;

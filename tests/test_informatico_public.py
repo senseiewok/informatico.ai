@@ -77,7 +77,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
 
     def test_every_folio_meets_multi_chapter_monograph_depth_contract(self) -> None:
         folio_count = 0
-        for pillar in ("math", "physics", "engineering", "architecture"):
+        for pillar in ("math", "physics", "engineering", "architecture", "bounties"):
             for fdir in sorted((RESEARCH / pillar).iterdir()):
                 if not fdir.is_dir():
                     continue
@@ -90,13 +90,18 @@ class PublicInformaticoRepoTests(unittest.TestCase):
                     self.assertGreaterEqual(words, 2800, f"{html_file} has only {words} visible <p> words (< 2800)")
                     self.assertGreaterEqual(len(paras), 45, f"{html_file} has only {len(paras)} <p> paragraphs (< 45)")
                     self.assertIn('class="tp-proof-spine"', txt, html_file)
-                    self.assertEqual(txt.count('class="tp-proof-chapter"'), 4, html_file)
+                    self.assertGreaterEqual(txt.count('class="tp-proof-chapter"'), 4, html_file)
                     self.assertEqual(txt.count('class="tp-proof-stage-block"'), 4, html_file)
                     self.assertIn('class="tp-worked-verification-chapter"', txt, html_file)
                     self.assertIn('tp-telemetry-benchmark-table', txt, html_file)
                     self.assertIn('class="tp-transfer-chapter"', txt, html_file)
                     self.assertGreaterEqual(txt.count("<h3"), 15, html_file)
-        self.assertEqual(folio_count, 48)
+                    if pillar == "bounties":
+                        self.assertIn("tp-bounty-bespoke-svg", txt, html_file)
+                        self.assertIn('data-pillar-webgl="bounties"', txt, html_file)
+                        self.assertIn(f'data-bounty-inspector="{slug}"', txt, html_file)
+                        self.assertIn(f'data-puzzle-slug="{slug}"', txt, html_file)
+        self.assertEqual(folio_count, 54)
 
 
 
@@ -107,6 +112,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
             + [f"a{i:02d}" for i in range(1, 13)]
             + [f"p{i:02d}" for i in range(1, 13)]
             + [f"m{i:02d}" for i in range(1, 13)]
+            + [f"b{i:02d}" for i in range(1, 7)]
             + ["utopian-city-future"]
         )
         seen_hashes: dict[str, str] = {}

@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2",
   "law": "Law 8 & Law 17 — Human-Scale Grounded Scientific Plate Generation & 4-Seat Image Selection Council",
-  "total_plates_replaced": 53,
-  "magazine_plates_count": 49,
+  "total_plates_replaced": 59,
+  "magazine_plates_count": 55,
   "cf_flagship_plates_count": 4,
   "council_seats": [
     "gemini-4-argon (Physical Specification & Structural Plausibility Seat)",
@@ -593,6 +593,72 @@
       "bytes": 1212302,
       "zero_baked_text_verified": true,
       "sha256": "c6cdf165bf3c27de5cdefa75bd1689eaacaeee978e43e6fd9e78727e4324169f"
+    },
+    {
+      "plate_id": "b01",
+      "path": "src/research/plates/b01.jpg",
+      "governing_specification": "Precision brass Golomb ruler optical interferometer and phased-array radio receiver dish on sunlit oak laboratory table",
+      "human_perceptual_grounding": "7_genre_creative_palette_top_pro_model_zero_text_zero_duplicate",
+      "winning_engine": "image-generator-pro-argon-spec-verified",
+      "resolution": "1376x768",
+      "bytes": 775047,
+      "zero_baked_text_verified": true,
+      "sha256": "eb4ebce82179bdcd510043c19d5e136fa80b0f1e805db8e5b5b9c7e7e58937be"
+    },
+    {
+      "plate_id": "b02",
+      "path": "src/research/plates/b02.jpg",
+      "governing_specification": "Gold cryogenic quantum dilution refrigerator chandelier beside illuminated FeMoCo [Fe7MoS9C] nitrogenase catalyst model",
+      "human_perceptual_grounding": "7_genre_creative_palette_top_pro_model_zero_text_zero_duplicate",
+      "winning_engine": "image-generator-pro-argon-spec-verified",
+      "resolution": "1376x768",
+      "bytes": 873321,
+      "zero_baked_text_verified": true,
+      "sha256": "1c6e6314068085c60648e234c461c868ef7592a6d964a4704b5d04399f5069a0"
+    },
+    {
+      "plate_id": "b03",
+      "path": "src/research/plates/b03.jpg",
+      "governing_specification": "Sculpted biomimetic SIMP topology-optimized vaulted concrete floor slab cured with mineralized carbonate aggregates in structural test hall",
+      "human_perceptual_grounding": "7_genre_creative_palette_top_pro_model_zero_text_zero_duplicate",
+      "winning_engine": "image-generator-pro-argon-spec-verified",
+      "resolution": "1376x768",
+      "bytes": 950019,
+      "zero_baked_text_verified": true,
+      "sha256": "05383ff57a9376cf822512b80c978e778431a9433a55b1717c7d855ac646d5fc"
+    },
+    {
+      "plate_id": "b04",
+      "path": "src/research/plates/b04.jpg",
+      "governing_specification": "Unreinforced limestone and terracotta funicular vault crowned by white 8-13 um radiative sky-cooling shell over courtyard pool",
+      "human_perceptual_grounding": "7_genre_creative_palette_top_pro_model_zero_text_zero_duplicate",
+      "winning_engine": "image-generator-pro-argon-spec-verified",
+      "resolution": "1376x768",
+      "bytes": 831785,
+      "zero_baked_text_verified": true,
+      "sha256": "3cb4925536f9fae332d46294949c3401245d3acb54ad45196975d6223ff9f5d3"
+    },
+    {
+      "plate_id": "b05",
+      "path": "src/research/plates/b05.jpg",
+      "governing_specification": "Transparent quartz hydrodynamic flume tank illuminated by laser PIV revealing emerald and amber vortex street and Burgers shock front",
+      "human_perceptual_grounding": "7_genre_creative_palette_top_pro_model_zero_text_zero_duplicate",
+      "winning_engine": "image-generator-pro-argon-spec-verified",
+      "resolution": "1376x768",
+      "bytes": 831680,
+      "zero_baked_text_verified": true,
+      "sha256": "8a8b27269e7476ed4ae13f408a5067d273955c7b09f3bef165267bcfe8d93527"
+    },
+    {
+      "plate_id": "b06",
+      "path": "src/research/plates/b06.jpg",
+      "governing_specification": "Ultracold-atom optical lattice vacuum chamber with intersecting ruby and emerald laser beams trapping a 1D quantum spin chain",
+      "human_perceptual_grounding": "7_genre_creative_palette_top_pro_model_zero_text_zero_duplicate",
+      "winning_engine": "image-generator-pro-argon-spec-verified",
+      "resolution": "1376x768",
+      "bytes": 863070,
+      "zero_baked_text_verified": true,
+      "sha256": "3ac554aaec69e156a9ae7d5a7d13c983b2530f8c8b559f9c604c9a46822e3520"
     }
   ]
 }

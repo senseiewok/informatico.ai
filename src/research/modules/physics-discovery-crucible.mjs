@@ -164,63 +164,66 @@ function bindBountyWorkbench(wb) {
         pass ? "PASS · ZERO COLLISIONS" : "ALERT · B₂ SUM COLLISION",
       ];
     } else if (slug === "b02") {
-      // Surface code QEC: d = p0, p_phys = p1 (×10^-3)
-      const pRatio = (p1 * 1e-3) / 0.01;
+      // Surface code QEC: d = p0, p_phys = p1 (0.0005..0.0120, default 0.0010)
+      const pRatio = p1 / 0.01;
       const pL = 0.03 * Math.pow(pRatio, (p0 + 1) / 2);
       const qPhys = Math.round(2 * 294 * p0 * p0);
-      pass = pL <= 1e-14 && pRatio < 1.0;
+      pass = pL <= 1e-12 && pRatio < 1.0;
       out = [
-        `P_L = ${pL.toExponential(2)} / cycle`,
+        `${pL.toExponential(2)} (at d = ${Math.round(p0)}, p = ${p1})`,
+        `294 tiles (114 data + 180 factory)`,
         `${qPhys.toLocaleString("en-US")} physical qubits`,
-        `-8496.3241 E_h (CAS(54e,54o))`,
-        pass ? "PASS · SUB-THRESHOLD QEC" : "ALERT · LOGICAL ERROR EXCEEDED",
+        pass ? "PASS · FAULT-TOLERANT REGIME" : "ALERT · LOGICAL ERROR EXCEEDED",
       ];
     } else if (slug === "b03") {
-      // SIMP Carbon Slab: rho = p0, m_CO2 = p1
-      const cRatio = 1.0 / Math.pow(Math.max(0.15, p0), 2.1);
-      const netCo2 = 118.0 * p0 - p1 * 0.42;
-      const freq = 14.2 * Math.sqrt(p0 / 0.35);
-      pass = netCo2 <= 45.0 && freq >= 8.0 && p0 >= 0.28;
+      // SIMP Carbon Slab: V/V0 = p0 (0.35), m_CO2 = p1 (12.4)
+      const netCo2 = 148.0 * p0 - p1;
+      const cRatio = 1.0 + 0.4 * Math.pow(Math.max(0.0, 1.0 - p0), 1.35);
+      const savedPct = (1.0 - p0) * 100.0;
+      pass = netCo2 < 45.0 && cRatio < 1.35;
       out = [
-        `${netCo2.toFixed(2)} kg CO₂e / m²`,
-        `J / J_0 = ${cRatio.toFixed(2)} (p = 3.0)`,
-        `f_1 = ${freq.toFixed(2)} Hz (> 8.0 Hz SLS)`,
+        `${netCo2.toFixed(2)} kg CO₂e/m² (< 45.0 target)`,
+        `${cRatio.toFixed(3)} (< 1.35 L/250 deflection limit)`,
+        `${savedPct.toFixed(1)}% concrete mass saved`,
         pass ? "PASS · SUB-45 KG CO₂E/M²" : "ALERT · SLS / CARBON EXCEEDED",
       ];
     } else if (slug === "b04") {
-      // Graphic statics & sky cooling: f/L = p0, eps_sky = p1
-      const thrustH = (16.0 / (8.0 * Math.max(0.06, p0))) * 20.0;
-      const qNet = 104.2 * p1 - (1.0 - p1) * 42.0;
+      // Graphic statics & sky cooling: f (m) = p0 (2.56), R_sol = p1 (0.97)
+      const thrustH = 256.0 / Math.max(0.8, p0);
+      const fRatio = p0 / 16.0;
+      const qNet = 151.68 - 23.3 - (1.0 - p1) * 1000.0;
       const dT = -(qNet / 18.9);
-      pass = p0 >= 0.11 && qNet >= 70.0;
+      pass = thrustH <= 160.0 && qNet >= 80.0 && dT <= -4.5;
       out = [
-        `H = ${thrustH.toFixed(1)} kN (0 kg rebar)`,
-        `q_net = ${qNet.toFixed(1)} W/m² (8–13 μm)`,
-        `ΔT = ${dT.toFixed(2)} °C (${pass ? "zero grid" : "solar gain"})`,
+        `${thrustH.toFixed(2)} kN (f/L = ${fRatio.toFixed(3)} · 0 kg rebar)`,
+        `${qNet.toFixed(1)} W/m² (≥ 80.0 W/m² target)`,
+        `${dT.toFixed(1)} °C (≤ −4.5 °C benchmark)`,
         pass ? "PASS · ZERO-REBAR + SUB-AMBIENT" : "ALERT · THRUST / COOLING BREACH",
       ];
     } else if (slug === "b05") {
-      // PySR + PySINDy: sigma = p0, lambda = p1
-      const spurious = p1 < 0.025 + p0 * 0.45 ? 2 : 0;
-      const missing = p1 > 0.14 ? 1 : 0;
-      pass = spurious === 0 && missing === 0 && p0 <= 0.08;
-      const mdl = -114.1 + p0 * 140.0 + spurious * 12.4 + missing * 24.0;
+      // PySR + PySINDy: sigma = p0 (0.02), lambda = p1 (0.05)
+      const spurious = p1 < 0.25 * p0 ? 2 : 0;
+      const missing = p1 > 0.1 ? 1 : 0;
+      pass = spurious === 0 && missing === 0;
+      const mdl = -1360.87 + p0 * 140.0 + spurious * 18.4 + missing * 42.0;
+      const activeCnt = 2 + spurious - missing;
       out = [
-        pass ? "u_t = -1.00 u·u_x + 0.10 u_xx" : spurious > 0 ? "u_t = -u·u_x + 0.1 u_xx + α·u³" : "u_t = -1.00 u·u_x (underfit)",
-        `L_MDL = ${mdl.toFixed(1)} nats`,
-        `${2 + spurious - missing} / 6 operators active`,
+        pass ? "['u*u_x', 'u_xx'] (2 / 6 active)" : `${activeCnt} / 6 operators active`,
+        pass ? "u_t = −u·u_x + 0.10 u_xx" : spurious > 0 ? "u_t = −u·u_x + 0.1 u_xx + α·u³" : "u_t = −1.00 u·u_x (underfit)",
+        `${mdl.toFixed(2)} nats (C_tree = ${pass ? 6 : spurious > 0 ? 11 : 3})`,
         pass ? "PASS · EXACT PDE RECOVERED" : "ALERT · SPARSITY DRIFT",
       ];
     } else {
-      // b06: PhysLean + ITensors: L = p0, chi = p1
-      const sVn = (0.5 / 6.0) * Math.log(Math.max(8, p0)) + 0.4785;
-      const cap = Math.log(Math.max(2, p1));
-      pass = sVn <= cap && p1 >= 8;
+      // b06: PhysLean + ITensors: chi = p0 (64), deltaY = p1 (0.00)
+      const trY3 = Math.abs(Math.pow(1.0 + p1, 3) - 1.0);
+      const sVn = 0.8828;
+      const cap = Math.log(Math.max(1, p0));
+      pass = trY3 < 1e-9 && cap >= sVn;
       out = [
-        "Tr[Y] = 0 · Tr[Y³] = 0 (Exact)",
-        `S_vN(${Math.round(p0)}) = ${sVn.toFixed(4)} nats`,
-        `ln(χ) = ${cap.toFixed(4)} nats (χ = ${Math.round(p1)})`,
-        pass ? "PASS · ANOMALY-FREE & MPS EXACT" : "ALERT · MPS BOND TRUNCATION",
+        `${trY3.toFixed(12)} (${trY3 < 1e-9 ? "Anomaly-Free" : "Anomaly Breach"})`,
+        "−1.27323954 (−4 / π exact)",
+        `${sVn.toFixed(4)} nats ≤ ln(χ) = ${cap.toFixed(4)}`,
+        pass ? "PASS · ANOMALY-FREE & AREA-LAW" : "ALERT · ANOMALY / BOND BREACH",
       ];
     }
 
@@ -230,30 +233,68 @@ function bindBountyWorkbench(wb) {
     if (r3) r3.textContent = out[3];
     if (box3) box3.setAttribute("data-alert", pass ? "false" : "true");
 
-    // Update SVG curve, dot, and 4 stage bars
+    // Update SVG curve, dot, and 4 stage bars (960x320 Bespoke Plate A coordinate frame)
     const norm0 = s0 ? (p0 - parseFloat(s0.min)) / Math.max(1e-6, parseFloat(s0.max) - parseFloat(s0.min)) : 0.5;
     const norm1 = s1 ? (p1 - parseFloat(s1.min)) / Math.max(1e-6, parseFloat(s1.max) - parseFloat(s1.min)) : 0.5;
-    const dotX = Math.round(75 + norm0 * 335);
-    const dotY = Math.round(pass ? 120 - norm1 * 55 : 152);
+    const dotX = Math.round(672 + norm0 * 244);
+    const dotY = Math.round(pass ? 116 - norm1 * 56 : 132);
     if (dot) {
       dot.setAttribute("cx", String(dotX));
       dot.setAttribute("cy", String(dotY));
       dot.setAttribute("fill", pass ? "var(--tp-verdigris)" : "var(--tp-minium)");
     }
     if (curve) {
-      const yMid = Math.round(pass ? 88 - (norm0 - 0.5) * 28 : 146);
-      curve.setAttribute("points", `65,152 155,124 ${dotX},${dotY} 335,${yMid} 420,54`);
+      const yMid = Math.round(pass ? 78 - (norm0 - 0.5) * 24 : 124);
+      curve.setAttribute("points", `666,128 730,106 ${dotX},${dotY} 856,${yMid} 920,48`);
       curve.setAttribute("stroke", pass ? "var(--tp-prussian)" : "var(--tp-minium)");
     }
     for (let i = 0; i < 4; i += 1) {
       const bar = wb.querySelector(`[data-bw-bar="${i}"]`);
       if (bar) {
-        const h = pass ? Math.round(96 + ((i + norm0 * 3) % 4) * 6) : i >= 2 ? 32 : 84;
-        bar.setAttribute("y", String(168 - h));
+        const h = pass ? Math.round(92 + ((i + norm0 * 3) % 4) * 3) : i >= 2 ? 32 : 84;
+        bar.setAttribute("y", String(274 - h));
         bar.setAttribute("height", String(h));
         bar.setAttribute("fill", pass || i < 2 ? "var(--tp-verdigris)" : "var(--tp-minium)");
       }
     }
+
+    // Update bespoke left-panel scientific SVG observables
+    wb.querySelectorAll('[data-collision-watch="true"]').forEach((cell) => {
+      cell.setAttribute("fill", pass ? "var(--tp-verdigris)" : "var(--tp-minium)");
+      cell.setAttribute("stroke", pass ? "var(--tp-verdigris)" : "var(--tp-minium)");
+      cell.setAttribute("fill-opacity", pass ? "0.18" : "0.42");
+    });
+    const b02Chain = wb.querySelector("[data-b02-syndrome-chain]");
+    if (b02Chain) {
+      b02Chain.setAttribute("opacity", pass ? "0.45" : "1.0");
+      b02Chain.setAttribute("stroke-width", pass ? "2.4" : "3.6");
+    }
+    const b03Bar = wb.querySelector("[data-b03-net-bar]");
+    if (b03Bar) {
+      b03Bar.setAttribute("fill", pass ? "var(--tp-prussian)" : "var(--tp-minium)");
+    }
+    const b04Arch = wb.querySelector("[data-b04-thrust-arch]");
+    if (b04Arch) {
+      b04Arch.setAttribute("stroke", pass ? "var(--tp-verdigris)" : "var(--tp-minium)");
+    }
+    const b05Cut = wb.querySelector("[data-b05-cutoff-line]");
+    if (b05Cut) {
+      const cutY = Math.round(138 - Math.min(1.0, norm1) * 70);
+      b05Cut.setAttribute("y1", String(cutY));
+      b05Cut.setAttribute("y2", String(cutY));
+    }
+    const b05Spur = wb.querySelector("[data-b05-spurious-bar]");
+    if (b05Spur) {
+      const spurH = pass ? 8 : 44;
+      b05Spur.setAttribute("y", String(142 - spurH));
+      b05Spur.setAttribute("height", String(spurH));
+      b05Spur.setAttribute("opacity", pass ? "0.45" : "0.95");
+    }
+    const b06Beam = wb.querySelector("[data-b06-balance-beam]");
+    if (b06Beam) {
+      b06Beam.setAttribute("transform", pass ? "rotate(0 168 152)" : "rotate(7 168 152)");
+    }
+
     if (caption) {
       caption.textContent = pass
         ? `Certified Benchmark Regime (${slug.toUpperCase()}) — All 4 stage invariants satisfied (${out[3]}).`
@@ -271,24 +312,143 @@ function bindBountyWorkbench(wb) {
       if (!s0 || !s1) return;
       if (mode === "knockout") {
         if (slug === "b01") { s0.value = "500"; s1.value = "34"; }
-        else if (slug === "b02") { s0.value = "15"; s1.value = "12.0"; }
-        else if (slug === "b03") { s0.value = "0.22"; s1.value = "5"; }
-        else if (slug === "b04") { s0.value = "0.08"; s1.value = "0.60"; }
-        else if (slug === "b05") { s0.value = "0.18"; s1.value = "0.01"; }
-        else { s0.value = "256"; s1.value = "2"; }
+        else if (slug === "b02") { s0.value = "15"; s1.value = "0.0110"; }
+        else if (slug === "b03") { s0.value = "0.35"; s1.value = "0.0"; }
+        else if (slug === "b04") { s0.value = "2.56"; s1.value = "0.88"; }
+        else if (slug === "b05") { s0.value = "0.22"; s1.value = "0.02"; }
+        else { s0.value = "64"; s1.value = "0.08"; }
       } else {
         if (slug === "b01") { s0.value = "500"; s1.value = "20"; }
-        else if (slug === "b02") { s0.value = "27"; s1.value = "1.0"; }
-        else if (slug === "b03") { s0.value = "0.35"; s1.value = "24"; }
-        else if (slug === "b04") { s0.value = "0.16"; s1.value = "0.94"; }
+        else if (slug === "b02") { s0.value = "27"; s1.value = "0.0010"; }
+        else if (slug === "b03") { s0.value = "0.35"; s1.value = "12.4"; }
+        else if (slug === "b04") { s0.value = "2.56"; s1.value = "0.97"; }
         else if (slug === "b05") { s0.value = "0.02"; s1.value = "0.05"; }
-        else { s0.value = "128"; s1.value = "64"; }
+        else { s0.value = "64"; s1.value = "0.00"; }
       }
       evaluateBountyState();
+      s0.dispatchEvent(new Event("input", { bubbles: true }));
     });
   });
 
   evaluateBountyState();
+}
+
+function bindBountySubmissionInspector(inspector) {
+  if (!inspector || inspector.dataset.bound === "true") return;
+  inspector.dataset.bound = "true";
+  const slug = inspector.getAttribute("data-bounty-inspector") || "b01";
+  const statusEl = inspector.querySelector("[data-inspector-status]");
+  const jsonOut = inspector.querySelector("[data-inspector-json-out]");
+  const cliOut = inspector.querySelector("[data-inspector-cli-out]");
+  const tabs = inspector.querySelectorAll("[data-sub-tab]");
+  const panels = inspector.querySelectorAll("[data-sub-panel]");
+  const toggleBtns = inspector.querySelectorAll("[data-inv-toggle]");
+  const cliModeBtns = inspector.querySelectorAll("[data-cli-mode]");
+  const copyJsonBtn = inspector.querySelector("[data-copy-inspector-json]");
+  const copyCliBtn = inspector.querySelector("[data-copy-inspector-cli]");
+
+  const baseJsonText = jsonOut ? jsonOut.textContent || "{}" : "{}";
+  let parsedBase = null;
+  try {
+    parsedBase = JSON.parse(baseJsonText);
+  } catch (_) {
+    parsedBase = null;
+  }
+
+  const updateInspectorState = () => {
+    let passCount = 0;
+    const states = [true, true, true];
+    toggleBtns.forEach((btn, idx) => {
+      const pressed = btn.getAttribute("aria-pressed") !== "false";
+      states[idx] = pressed;
+      if (pressed) passCount += 1;
+      btn.textContent = pressed ? "ENFORCED (PASS)" : "KNOCKED OUT (FAIL)";
+      const card = inspector.querySelector(`[data-inv-card="${idx + 1}"]`);
+      if (card) {
+        card.setAttribute("data-inv-state", pressed ? "pass" : "fail");
+      }
+    });
+    const allPass = passCount === toggleBtns.length;
+    if (statusEl) {
+      statusEl.textContent = allPass
+        ? `READY · ${passCount}/${toggleBtns.length} INVARIANTS PASS`
+        : `BLOCKED · ${toggleBtns.length - passCount} INVARIANT BREACH`;
+      statusEl.setAttribute("data-status-alert", allPass ? "false" : "true");
+    }
+    if (jsonOut && parsedBase && Array.isArray(parsedBase.invariants)) {
+      const clone = JSON.parse(JSON.stringify(parsedBase));
+      clone.all_passed = allPass;
+      clone.submission_ready = allPass;
+      clone.invariants.forEach((inv, i) => {
+        const ok = states[i] !== false;
+        inv.status = ok ? "PASS" : "FAIL_COUNTERFACTUAL_KNOCKOUT";
+      });
+      jsonOut.textContent = JSON.stringify(clone, null, 2);
+    }
+  };
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const target = tab.getAttribute("data-sub-tab") || "stress";
+      tabs.forEach((t) => t.setAttribute("aria-selected", t === tab ? "true" : "false"));
+      panels.forEach((p) => {
+        if (p.getAttribute("data-sub-panel") === target) {
+          p.removeAttribute("hidden");
+        } else {
+          p.setAttribute("hidden", "");
+        }
+      });
+    });
+  });
+
+  toggleBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const cur = btn.getAttribute("aria-pressed") !== "false";
+      btn.setAttribute("aria-pressed", cur ? "false" : "true");
+      updateInspectorState();
+    });
+  });
+
+  cliModeBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const mode = btn.getAttribute("data-cli-mode") || "python";
+      cliModeBtns.forEach((b) => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
+      if (cliOut) {
+        const val = cliOut.getAttribute(`data-cli-${mode}`);
+        if (val) cliOut.textContent = val;
+      }
+    });
+  });
+
+  if (copyJsonBtn && jsonOut) {
+    copyJsonBtn.addEventListener("click", () => {
+      const orig = copyJsonBtn.textContent;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText((jsonOut.textContent || "") + "\n").then(() => {
+          copyJsonBtn.textContent = `Copied ${slug.toUpperCase()} JSON`;
+          setTimeout(() => {
+            copyJsonBtn.textContent = orig;
+          }, 1600);
+        });
+      }
+    });
+  }
+
+  if (copyCliBtn && cliOut) {
+    copyCliBtn.addEventListener("click", () => {
+      const orig = copyCliBtn.textContent;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText((cliOut.textContent || "") + "\n").then(() => {
+          copyCliBtn.textContent = "Copied Command";
+          setTimeout(() => {
+            copyCliBtn.textContent = orig;
+          }, 1600);
+        });
+      }
+    });
+  }
+
+  updateInspectorState();
 }
 
 export function initPhysicsDiscoveryCrucible(scope = document) {
@@ -314,9 +474,12 @@ export function initPhysicsDiscoveryCrucible(scope = document) {
     });
   }
 
-  // Standalone Bounty Proof Workbenches on /bounties/b01..b06/
+  // Standalone Bounty Proof Workbenches & Prize Submission Inspectors on /bounties/b01..b06/
   scope.querySelectorAll("[data-bounty-workbench]").forEach((wb) => {
     bindBountyWorkbench(wb);
+  });
+  scope.querySelectorAll("[data-bounty-inspector]").forEach((el) => {
+    bindBountySubmissionInspector(el);
   });
 
   const lab = scope.querySelector("#tp-symbolic-physics-lab");

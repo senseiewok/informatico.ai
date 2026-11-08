@@ -241,8 +241,8 @@ float potentialSurface(vec2 xz) {
       float chiralEdge = 0.28 * exp(-18.0 * pow(xz.y - 0.68, 2.0)) * cos(8.0 * xz.x - u_time * 2.8);
       return diracK1 + diracK2 + chiralEdge;
     }
-  } else {
-    // Pillar IV: Formal Mathematics & Complexity (M.01..M.08)
+  } else if (u_pillar < 4.5) {
+    // Pillar IV: Formal Mathematics & Complexity (M.01..M.12)
     if (u_folio < 0.5) {
       // M.01: Lean 4 Fermat / Taylor-Wiles 5-Stage Modularity Bridge Reduction
       float chain = 0.22 * cos(5.2 * xz.x) * exp(-2.2 * xz.y * xz.y);
@@ -302,6 +302,44 @@ float potentialSurface(vec2 xz) {
         + exp(-12.0 * dot(xz - vec2(0.0, 0.48), xz - vec2(0.0, 0.48))));
       float h1CycleHole = -0.44 * exp(-16.0 * r2) * (0.45 + 0.55 * aNorm);
       return -0.06 + vrPeaks + h1CycleHole + breath * 0.4;
+    }
+  } else {
+    // Pillar V: Open-Bounty & Grand-Challenge Prize Crucible (B.01..B.06)
+    if (u_folio < 0.5) {
+      // B.01: Erdős Sidon B2 Difference Lattice &Erdős-Turán Bowl
+      float rulerWaves = 0.28 * cos(6.5 * xz.x) * cos(6.5 * xz.y) * (0.4 + 0.6 * aNorm);
+      float turanBowl = 0.34 * r2 - 0.24;
+      float collisionSpike = 0.42 * bNorm * exp(-14.0 * dot(xz - vec2(0.25, -0.25), xz - vec2(0.25, -0.25)));
+      return turanBowl + rulerWaves + collisionSpike + breath * 0.5;
+    } else if (u_folio < 1.5) {
+      // B.02: Kitaev Rotated Surface-Code Checkerboard & FeMoCo QPE Well
+      float checker = 0.26 * sin(7.5 * xz.x) * sin(7.5 * xz.y) * (0.5 + 0.5 * aNorm);
+      float femocoWell = -0.52 * exp(-8.5 * r2) * (1.1 - 0.5 * bNorm);
+      float thresholdRidge = 0.30 * bNorm * exp(-12.0 * xz.x * xz.x);
+      return 0.08 + checker + femocoWell + thresholdRidge + breath * 0.4;
+    } else if (u_folio < 2.5) {
+      // B.03: Bendsøe-Sigmund SIMP Funicular Rib Arch & Carbon-Compliance Saddle
+      float ribArch = (0.44 + 0.24 * aNorm) * (1.0 - 0.58 * xz.x * xz.x) * exp(-2.5 * xz.y * xz.y);
+      float diagRibs = 0.16 * exp(-14.0 * pow(abs(xz.x) - abs(xz.y), 2.0));
+      float voidPockets = -0.26 * (1.0 - aNorm) * cos(5.5 * xz.x) * cos(5.5 * xz.y);
+      return -0.14 + ribArch + diagRibs + voidPockets + 0.10 * bNorm;
+    } else if (u_folio < 3.5) {
+      // B.04: Maxwell 3D Airy Stress Dome & 8-13 um Radiative Sky-Cooling Well
+      float airyDome = (0.46 + 0.28 * aNorm) * (1.0 - 0.54 * r2);
+      float lwirWell = -0.38 * bNorm * exp(-10.0 * r2);
+      float polyFacets = 0.08 * cos(8.0 * xz.x) * cos(8.0 * xz.y);
+      return -0.10 + airyDome + lwirWell + polyFacets;
+    } else if (u_folio < 4.5) {
+      // B.05: Viscous Burgers Shock Wavefront & PySR Pareto MDL Cliff
+      float shockStep = -0.38 * tanh(4.5 * (xz.x - 0.22 * sin(2.5 * xz.y + u_time)));
+      float paretoCliff = 0.26 * exp(-8.0 * pow(xz.y + 0.35, 2.0)) * (0.5 + 0.5 * bNorm);
+      float noiseRipples = 0.18 * aNorm * sin(12.0 * xz.x + u_time * 2.0) * cos(12.0 * xz.y);
+      return 0.04 + shockStep + paretoCliff + noiseRipples;
+    } else {
+      // B.06: PhysLean Chiral Hypercharge Balance Saddle & Calabrese-Cardy Entanglement Cone
+      float chiralSaddle = 0.32 * (xz.x * xz.x - xz.y * xz.y) * (1.0 + 0.5 * bNorm);
+      float cftCone = 0.38 * log(1.0 + 3.5 * r) * (0.4 + 0.6 * aNorm) - 0.24;
+      return chiralSaddle + cftCone + breath * 0.4;
     }
   }
 }
@@ -553,6 +591,7 @@ const PILLAR_STAGE_LABELS = {
   physics: ["1. ATP Affinity Drive", "2. Allosteric Bridge", "3. Open Conductance", "4. Airway Hydration"],
   math: ["1. Human Conjecture", "2. Galois / Sieve Map", "3. Taylor-Wiles Bridge", "4. Verified QED"],
   cf: ["1. Genetic / Mucus Defect", "2. Allosteric / LNP Delivery", "3. Channel / Editing Rescue", "4. Clinical Clearance"],
+  bounties: ["1. Problem / Operator", "2. 4-Stage Proof Spine", "3. Invariant Gate R1-R3", "4. T0/T1 Certified Pass"],
 };
 
 const PILLAR_RADAR_AXES = {
@@ -561,6 +600,7 @@ const PILLAR_RADAR_AXES = {
   physics: ["ATP Coupling", "Open Prob P_o", "Kramers Rate", "Mucus Mesh ξ", "Ciliary Clearance", "Allosteric ΔΔG"],
   math: ["Axiom Purity", "Lemma Conservation", "Bridge Speedup", "Zero Simplicity", "Word-RAM Bound", "Human+AI Guard"],
   cf: ["Band C / Editing", "Open Prob P_o", "PCL Brush 7 μm", "Mucosal Slip", "NMD / Off-Target", "Registry Equity"],
+  bounties: ["Invariant R1", "Invariant R2", "Invariant R3", "T0/T1 Fidelity", "Zero-Sorry Gate", "Benchmark Margin"],
 };
 
 function shortLabel(raw, maxLen = 22) {
@@ -833,7 +873,9 @@ export function initPlateWebGL(scope = document) {
       : pillarAttr === "architecture" ? 1.0
       : pillarAttr === "physics" ? 2.0
       : pillarAttr === "math" ? 3.0
+      : pillarAttr === "bounties" ? 5.0
       : 4.0;
+    const sliderScope = canvas.closest("#tp-folio-mount") || plateRoot;
 
     let currentMode = 0; // 0 = 3D Turntable Slab, 1 = Phase Portraits, 2 = Kirchhoff Alluvial, 3 = Polar Radar
     const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -877,7 +919,7 @@ export function initPlateWebGL(scope = document) {
     }
 
     function getNormalizedSlider(idx, fallbackVal) {
-      const sliders = plateRoot.querySelectorAll('input[type="range"]');
+      const sliders = sliderScope.querySelectorAll('input[type="range"]');
       const sl = sliders[idx];
       if (!sl) return fallbackVal;
       const min = parseFloat(sl.min);
@@ -901,7 +943,7 @@ export function initPlateWebGL(scope = document) {
 
     function refreshSvgLensIfActive() {
       if (currentMode >= 2 && lensSvg) {
-        renderMultiLensSvg(lensSvg, currentMode, pillarAttr, getAffinity(), getBias(), plateRoot, folioAttr);
+        renderMultiLensSvg(lensSvg, currentMode, pillarAttr, getAffinity(), getBias(), sliderScope, folioAttr);
       }
     }
 
@@ -928,7 +970,7 @@ export function initPlateWebGL(scope = document) {
             lensSvg.hidden = false;
             lensSvg.removeAttribute("hidden");
             lensSvg.style.display = "block";
-            renderMultiLensSvg(lensSvg, currentMode, pillarAttr, getAffinity(), getBias(), plateRoot, folioAttr);
+            renderMultiLensSvg(lensSvg, currentMode, pillarAttr, getAffinity(), getBias(), sliderScope, folioAttr);
             if (!prefersReducedMotion && lensSvg.animate) {
               lensSvg.animate(
                 [{ opacity: 0.35, transform: "scale(0.985)" }, { opacity: 1, transform: "scale(1)" }],
@@ -940,7 +982,7 @@ export function initPlateWebGL(scope = document) {
       });
     });
 
-    plateRoot.querySelectorAll('input[type="range"]').forEach((slider) => {
+    sliderScope.querySelectorAll('input[type="range"]').forEach((slider) => {
       slider.addEventListener("input", refreshSvgLensIfActive);
     });
 
