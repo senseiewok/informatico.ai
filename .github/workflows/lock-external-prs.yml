@@ -1,4 +1,4 @@
-name: Restrict Pull Requests to Owner Only (@senseiewok)
+name: Restrict Pull Requests to Owner Only (@senseiewok / @senseiewok-dev)
 
 on:
   pull_request_target:
@@ -13,7 +13,15 @@ permissions:
 
 jobs:
   enforce-owner-only:
-    if: github.actor != 'senseiewok'
+    if: >-
+      github.actor != 'senseiewok' &&
+      github.actor != 'senseiewok-dev' &&
+      github.event.pull_request.author_association != 'OWNER' &&
+      github.event.pull_request.author_association != 'MEMBER' &&
+      github.event.pull_request.author_association != 'COLLABORATOR' &&
+      github.event.issue.author_association != 'OWNER' &&
+      github.event.issue.author_association != 'MEMBER' &&
+      github.event.issue.author_association != 'COLLABORATOR'
     runs-on: ubuntu-latest
     steps:
       - name: Close and lock external PR or issue
@@ -24,11 +32,11 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
         run: |
           if [ "$EVENT_NAME" = "pull_request_target" ]; then
-            gh pr comment "$NUMBER" --repo "$REPO" --body "Thank you for your interest in **Informatico.ai**. This repository serves as a single-maintainer cryptographic publishing ledger (`@senseiewok` only) and does not accept external pull requests."
+            gh pr comment "$NUMBER" --repo "$REPO" --body 'Thank you for your interest in **Informatico.ai**. This repository serves as a single-maintainer cryptographic publishing ledger (@senseiewok only) and does not accept external pull requests.'
             gh pr close "$NUMBER" --repo "$REPO"
             gh api -X PUT "repos/$REPO/issues/$NUMBER/lock" -f lock_reason="resolved"
           else
-            gh issue comment "$NUMBER" --repo "$REPO" --body "This repository is a read-only publishing archive maintained solely by `@senseiewok`."
+            gh issue comment "$NUMBER" --repo "$REPO" --body 'This repository is a read-only publishing archive maintained solely by @senseiewok.'
             gh issue close "$NUMBER" --repo "$REPO"
             gh api -X PUT "repos/$REPO/issues/$NUMBER/lock" -f lock_reason="resolved"
           fi
