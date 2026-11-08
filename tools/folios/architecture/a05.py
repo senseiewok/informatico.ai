@@ -110,10 +110,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'an acoustic catastrophe: when a lecturer uttered a single word, the sound bounced incessantly off '
                  'hard plaster walls for over five seconds, turning sentences into an unintelligible acoustic roar. '
                  'Handed the embarrassing problem by the university corporation, Sabine worked strictly between '
-                 'midnight and dawn, when horse-drawn streetcars stopped running and the city fell silent. Armed only '
-                 'with a brass organ pipe, a stopwatch, and hundreds of borrowed dining hall cushions, Sabine '
-                 'painstakingly measured how sound decayed across the dark hall, searching for the hidden mathematical '
-                 'order connecting architectural volume, surface texture, and the crystal clarity of the human voice.',
+                 'midnight and dawn, when horse-drawn streetcars stopped running and the city fell silent. Sabine '
+                 'worked armed only with a brass organ pipe, a stopwatch, and hundreds of borrowed dining hall '
+                 'cushions. Night after night, he measured how sound decayed across the dark hall, searching for the '
+                 'mathematical order connecting room volume, surface texture, and vocal clarity.',
  'act1_body': 'By 1898, Sabine derived the foundational hyperbolic reverberation formula, demonstrating that '
               'reverberation time is directly proportional to enclosed room volume and inversely proportional to total '
               'boundary absorption. In 1930, Carl F. Eyring refined this law for highly absorptive rooms where '
@@ -158,8 +158,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'in a reverberant hall. Early sound reflections arriving within fifty milliseconds are like sharp '
                  'reading glasses that bring each letter into focus. But late-arriving echoes are like smeared '
                  'fingerprints on the lens, smudging every consonant into a muddy blur. Diffusive coffered vaults act '
-                 'like lens cleaners: they scatter disruptive reflections while keeping every spoken word crisp and '
-                 'clear.',
+                 'like lens cleaners. They scatter disruptive echoes so every spoken syllable arrives crisp, distinct, '
+                 'and clear.',
  'walkthrough': ['Experiment 1 (Sabine vs. Eyring Divergence): Compare Sabine T_60 = 0.73 s against Eyring T_60 = 0.62 '
                  's at average absorption alpha_bar = 0.44 in a V = 2,400 m^3 vaulted hall.',
                  'Experiment 2 (Vault Geometry Coupling): Use the rise slider f to see how vault curvature alters '
@@ -185,7 +185,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'Schroeder, M. R. (1979). Binaural dissimilarity and optimum ceilings for concert halls: More lateral '
              'sound diffusion. JASA, 65(4), 958–963.',
              'ISO 3382-1 (2009) & FGI Guidelines for Design and Construction of Hospitals (Acoustic Criteria).',
-             'Scroggs, M. W., Dokken, J. S., Richardson, C. N., & Wells, G. N. (2022). Construction of Arbitrary Order Finite Element Degree-of-Freedom Maps on Polygonal and Polyhedral Cell Meshes (FEniCS/dolfinx, https://github.com/FEniCS/dolfinx). ACM Transactions on Mathematical Software, 48(2), 18:1–18:23. DOI: 10.1145/3524456.',
+             'Scroggs, M. W., Dokken, J. S., Richardson, C. N., & Wells, G. N. (2022). Construction of Arbitrary Order '
+             'Finite Element Degree-of-Freedom Maps on Polygonal and Polyhedral Cell Meshes (FEniCS/dolfinx, '
+             'https://github.com/FEniCS/dolfinx). ACM Transactions on Mathematical Software, 48(2), 18:1–18:23. DOI: '
+             '10.1145/3524456.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the context of citations '
              'and classifies their intent using deep learning (https://scite.ai). Quantitative Science Studies, 2(3), '
              '882–898. DOI: 10.1162/qss_a_00146.'],
@@ -212,10 +215,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'an acoustic catastrophe: when a lecturer uttered a single word, the sound bounced incessantly off '
                  'hard plaster walls for over five seconds, turning sentences into an unintelligible acoustic roar. '
                  'Handed the embarrassing problem by the university corporation, Sabine worked strictly between '
-                 'midnight and dawn, when horse-drawn streetcars stopped running and the city fell silent. Armed only '
-                 'with a brass organ pipe, a stopwatch, and hundreds of borrowed dining hall cushions, Sabine '
-                 'painstakingly measured how sound decayed across the dark hall, searching for the hidden mathematical '
-                 'order connecting architectural volume, surface texture, and the crystal clarity of the human voice.',
+                 'midnight and dawn, when horse-drawn streetcars stopped running and the city fell silent. Sabine '
+                 'worked armed only with a brass organ pipe, a stopwatch, and hundreds of borrowed dining hall '
+                 'cushions. Night after night, he measured how sound decayed across the dark hall, searching for the '
+                 'mathematical order connecting room volume, surface texture, and vocal clarity.',
  'act1_plain_bridge': 'We have all experienced how unpleasant it is to talk inside a bare tiled bathroom or a noisy '
                       'cafeteria. When you speak, your voice bounces wildly off hard walls, creating echoes that '
                       'linger and collide with the very next word you say. Listening in a room with too much echo is '

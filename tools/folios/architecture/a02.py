@@ -11,8 +11,8 @@ FOLIO = {'folio_id': 'A.02',
  'pillar': 'architecture',
  'category_code': 'A',
  'title': 'Reciprocal Timber Gridshells (Nexorades), Eccentric Lap Moments, and 1:5 Shear-Block Joinery',
- 'subtitle': 'Structural kinematics of bolt-free reciprocal timber frames where each beam rests on its neighbor with '
-             'engagement eccentricity e_z, converting global shell thrust into localized bending.',
+ 'subtitle': 'Structural kinematics of bolt-free reciprocal timber frames where each beam rests on its neighbor with a '
+             'calibrated vertical lap offset, converting global shell thrust into localized bending.',
  'date_published': '2026-10-25',
  'date_redated': '2026-11-02',
  'current_edition': 'REV 1.2',
@@ -196,7 +196,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'architecture. Journal of Building Engineering, 26, 100867. DOI: 10.1016/j.jobe.2019.100867.',
              'CEN (2004). EN 1995-1-1 (Eurocode 5): Design of timber structures — Slip modulus K_ser and fastener '
              'capacity.',
-             'Akbarzadeh, M., Van Mele, T., & Block, P. (2015). On the equilibrium of funicular polyhedral frames and convex polyhedral force diagrams (compas-dev/compas, https://github.com/compas-dev/compas). Computer-Aided Design, 61, 116–129. DOI: 10.1016/j.cad.2015.01.006.',
+             'Akbarzadeh, M., Van Mele, T., & Block, P. (2015). On the equilibrium of funicular polyhedral frames and '
+             'convex polyhedral force diagrams (compas-dev/compas, https://github.com/compas-dev/compas). '
+             'Computer-Aided Design, 61, 116–129. DOI: 10.1016/j.cad.2015.01.006.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the context of citations '
              'and classifies their intent using deep learning (https://scite.ai). Quantitative Science Studies, 2(3), '
              '882–898. DOI: 10.1162/qss_a_00146.'],
@@ -249,8 +251,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'single knife is long enough to span the whole rim on its own, but working together, they form a '
                       'self-supporting bridge. In modern timber architecture, builders use this exact interlocking '
                       'trick to cover massive halls using short, sustainable boards instead of gigantic old-growth '
-                      'tree trunks. Because the pieces lean on one another at simple notches, the roof carries heavy '
-                      'snow loads while using light, locally harvested wood.',
+                      'tree trunks. The pieces lean on one another at simple notches. Together, they carry heavy snow '
+                      'loads using light, locally harvested wood.',
  'act1_body': "From Leonardo da Vinci's self-supporting military bridges in the Codex Atlanticus to Villard de "
               "Honnecourt's medieval floor grillages and contemporary gridshells, reciprocal frames carry long spans "
               'by assembling short timber billets in closed polygonal fans. In her foundational treatise Reciprocal '
@@ -278,8 +280,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'presses down on the knuckle of the next. Pressing downward in the center makes the circle tighten '
                  'against your palms with surprising rigidity. However, if one knuckle slips sideways or if you press '
                  'too hard near the delicate nail bed, the interlocking grip instantly unravels. Reciprocal timber '
-                 'frames balance this exact trade-off: mutual geometric support creates strength, but localized joint '
-                 'shearing must be rigorously reinforced.',
+                 'frames balance this exact trade-off. Mutual geometric support creates strength, while reinforced '
+                 'notches prevent localized joint shear.',
  'act2_plain_primer': 'In the digital workshop below, you explore how two architectural sliders govern the stability '
                       'of a reciprocal timber shell. The first slider adjusts the engagement ratio, which dictates how '
                       'far along the length of each beam the neighboring timber rests. When you slide this value '

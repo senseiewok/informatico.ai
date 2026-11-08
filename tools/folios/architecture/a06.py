@@ -234,10 +234,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'same time, water sitting quietly inside lukewarm pipes can grow slimy bacterial coatings, like '
                       'a forgotten garden hose left in the summer sun. In hospitals and clean buildings, water must '
                       'perform two opposite jobs at once. Outside in the courtyard, gravel garden beds planted with '
-                      'sturdy reeds filter sink and shower water naturally through plant roots, cleaning it so it can '
-                      "be reused for flushing toilets and watering gardens. Meanwhile, inside the building's drinking "
-                      'pipes, water is kept constantly circulating at hot temperatures and passes through intense '
-                      'ultraviolet light chambers. This ultraviolet light acts like an invisible germ shield, '
+                      'sturdy reeds filter sink and shower water through plant roots. Once cleaned naturally, that '
+                      "water is reused for flushing toilets and watering gardens. Meanwhile, inside the building's "
+                      'drinking pipes, water is kept constantly circulating at hot temperatures and passes through '
+                      'intense ultraviolet light chambers. This ultraviolet light acts like an invisible germ shield, '
                       'destroying waterborne bacteria instantly so every drop from the tap is completely safe.',
  'history_body': 'In high-performance regenerative architecture, water management must resolve the tension between '
                  'ecological closed-loop conservation and stringent microbiological safety. In their foundational '

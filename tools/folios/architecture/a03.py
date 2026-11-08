@@ -11,8 +11,8 @@ FOLIO = {'folio_id': 'A.03',
  'pillar': 'architecture',
  'category_code': 'A',
  'title': 'Double-Skin Facade Buoyancy Stack Ventilation, Cavity Plumes, and 1:5 Acoustic Damper Louvers',
- 'subtitle': 'Thermosiphon stack draft Δp_stack = ρ_0 g H β ΔT and solar shading positioning inside multi-story '
-             'ventilated glass cavities—eliminating mechanical cooling loads without overheating.',
+ 'subtitle': 'Thermosiphon buoyancy stack draft and solar shading positioning inside multi-story ventilated glass '
+             'cavities—eliminating mechanical cooling loads without overheating.',
  'date_published': '2026-10-30',
  'date_redated': '2026-11-02',
  'current_edition': 'REV 1.2',
@@ -111,7 +111,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'pulling refreshing, humidified breezes through living rooms below without a whisper of mechanical '
                  'power. In 1933, amidst the birch forests of Finland, Finnish architect Alvar Aalto revived this '
                  'primal dialogue between glass, sunlight, and lungs at the Paimio Tuberculosis Sanatorium. Aalto '
-                 'carefully angled high operable windows and exterior sun-shades, understanding that fresh, buoyant '
+                 'carefully angled high operable windows and exterior sun-shades. He understood that fresh, buoyant '
                  'air and natural daylight were not decorative amenities, but lifesaving biological instruments.',
  'history_body': 'In modern high-performance architecture, double-skin facades resolve the historical tension between '
                  "daylight admittance and solar heat gain. Early pioneering installations, such as Alfred Loomis's "
@@ -245,16 +245,16 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'pulling refreshing, humidified breezes through living rooms below without a whisper of mechanical '
                  'power. In 1933, amidst the birch forests of Finland, Finnish architect Alvar Aalto revived this '
                  'primal dialogue between glass, sunlight, and lungs at the Paimio Tuberculosis Sanatorium. Aalto '
-                 'carefully angled high operable windows and exterior sun-shades, understanding that fresh, buoyant '
+                 'carefully angled high operable windows and exterior sun-shades. He understood that fresh, buoyant '
                  'air and natural daylight were not decorative amenities, but lifesaving biological instruments.',
  'act1_plain_bridge': 'We have all stepped into a car parked in the hot summer sun and felt that stifling blast of '
                       'trapped heat. Glass is fantastic at letting bright sunshine stream indoors, but it traps that '
                       'solar warmth like a greenhouse. In a modern office tower or hospital, baking inside a sealed '
                       'glass box forces giant air-conditioning units to burn enormous amounts of electrical energy all '
                       'day long. A double-skin facade solves this problem by giving the building two layers of glass '
-                      'with an open walkway in between, like wearing a light windbreaker over a sweater. When sunlight '
-                      'hits adjustable blinds inside that middle corridor, the trapped air warms up, becomes lighter, '
-                      'and rushes up the chimney to escape out the roof. That rising plume of air pulls fresh, clean '
+                      'with an open walkway in between, like wearing a light windbreaker over a sweater. Sunlight hits '
+                      'adjustable blinds inside that middle corridor. The trapped air warms up, becomes lighter, and '
+                      'rushes up the chimney to escape out the roof. That rising plume of air pulls fresh, clean '
                       'outdoor air through the building naturally, keeping rooms pleasantly cool, quiet, and full of '
                       'natural sky-blue light.',
  'act1_body': 'In modern high-performance architecture, double-skin facades resolve the historical tension between '

@@ -121,9 +121,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  "technology, and culture change from decade to decade? In Cook's Plug-In City and Herron's Walking "
                  'City, they drew vast structural space frames where living capsules, laboratories, and mechanical '
                  'organs could be hoisted in and out by cranes like cargo containers on a ship. A decade later, in '
-                 '1971, young architects Renzo Piano and Richard Rogers, together with brilliant Irish engineer Peter '
-                 'Rice, carried those utopian drawings across the English Channel to win the competition for the '
-                 "Centre Pompidou, ready to forge Archigram's paper dream into monumental cast steel.",
+                 '1971, young architects Renzo Piano and Richard Rogers teamed up with Irish engineer Peter Rice. They '
+                 'carried those utopian drawings across the English Channel to win the Centre Pompidou competition, '
+                 "ready to forge Archigram's paper dream into monumental cast steel.",
  'history_body': "Archigram's visionary manifestos directly catalyzed the British High-Tech movement, mentoring "
                  'pioneers like Norman Foster and Richard Rogers at Team 4 and Jan Kaplický at Future Systems. At the '
                  'Centre Pompidou, Peter Rice engineered colossal ten-ton cast-steel rocking cantilevers called '
@@ -222,7 +222,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              '10.1016/0020-7683(86)90014-4.',
              "Brand, S. (1994). How Buildings Learn: What Happens After They're Built (The Six S's Shearing Layers). "
              'Viking Press.',
-             'Akbarzadeh, M., Van Mele, T., & Block, P. (2015). On the equilibrium of funicular polyhedral frames and convex polyhedral force diagrams (compas-dev/compas, https://github.com/compas-dev/compas). Computer-Aided Design, 61, 116–129. DOI: 10.1016/j.cad.2015.01.006.',
+             'Akbarzadeh, M., Van Mele, T., & Block, P. (2015). On the equilibrium of funicular polyhedral frames and '
+             'convex polyhedral force diagrams (compas-dev/compas, https://github.com/compas-dev/compas). '
+             'Computer-Aided Design, 61, 116–129. DOI: 10.1016/j.cad.2015.01.006.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the context of citations '
              'and classifies their intent using deep learning (https://scite.ai). Quantitative Science Studies, 2(3), '
              '882–898. DOI: 10.1162/qss_a_00146.'],
@@ -268,19 +270,19 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  "technology, and culture change from decade to decade? In Cook's Plug-In City and Herron's Walking "
                  'City, they drew vast structural space frames where living capsules, laboratories, and mechanical '
                  'organs could be hoisted in and out by cranes like cargo containers on a ship. A decade later, in '
-                 '1971, young architects Renzo Piano and Richard Rogers, together with brilliant Irish engineer Peter '
-                 'Rice, carried those utopian drawings across the English Channel to win the competition for the '
-                 "Centre Pompidou, ready to forge Archigram's paper dream into monumental cast steel.",
+                 '1971, young architects Renzo Piano and Richard Rogers teamed up with Irish engineer Peter Rice. They '
+                 'carried those utopian drawings across the English Channel to win the Centre Pompidou competition, '
+                 "ready to forge Archigram's paper dream into monumental cast steel.",
  'act1_plain_bridge': 'Most conventional buildings resemble old desktop computers where all the delicate chips, pipes, '
                       'and wiring are glued permanently inside concrete walls. If a hospital needs to upgrade its '
                       'ventilation ducts or install modern medical technology twenty years later, workers have to tear '
                       'down walls or demolish the whole building. British high-tech architects inverted this logic by '
-                      "pushing the building's skeleton and mechanical guts onto the outside of the facade. By perching "
-                      'the structural columns outside and hanging elevators, water pipes, and air conditioning on the '
-                      'exterior, the interior rooms become wide, completely open halls without a single column in the '
-                      'way. Because the inside space is completely uncluttered, rooms can be reconfigured over a '
-                      'weekend. When specialized clinic capsules or cleanrooms wear out, a service crane can simply '
-                      'unbolt the old pod and plug in a brand-new module without disrupting the rest of the facility.',
+                      "pushing the building's skeleton and mechanical guts onto the outside of the facade. Structural "
+                      'columns perch outside, while elevators, water pipes, and air conditioning hang on the exterior. '
+                      'Inside, the rooms become wide, completely open halls without a single column in the way. '
+                      'Because the inside space is completely uncluttered, rooms can be reconfigured over a weekend. '
+                      'When specialized clinic capsules or cleanrooms wear out, a service crane can simply unbolt the '
+                      'old pod and plug in a brand-new module without disrupting the rest of the facility.',
  'act1_body': "Archigram's visionary manifestos directly catalyzed the British High-Tech movement, mentoring pioneers "
               'like Norman Foster and Richard Rogers at Team 4 and Jan Kaplický at Future Systems. At the Centre '
               'Pompidou, Peter Rice engineered colossal ten-ton cast-steel rocking cantilevers called gerberettes that '

@@ -1025,7 +1025,7 @@ def render_multi_chapter_monograph_sections(
     act1_subchapter_html = f"""
         <h3 id="ch-i-1-{esc(slug)}" data-en="&sect; I.1 &middot; Classical Obstruction &amp; Structural Boundary" data-es="&sect; I.1 &middot; Obstrucci&oacute;n Cl&aacute;sica y Frontera Estructural">&sect; I.1 &middot; Classical Obstruction &amp; Structural Boundary</h3>
         <p>
-          Every enduring equation begins as a human question—an act of patient curiosity by investigators who refused to accept an opaque boundary as the final word. Tracing the intellectual arc of Folio <strong>{esc(fid)}</strong> from its earliest formulation in {linkify_citations(esc(first_era))} to its modern resolution in {linkify_citations(esc(last_era))} reveals why un-coupled classical approximations repeatedly stalled at a hard analytical barrier. Whenever investigators attempted to treat the governing relation <code>{gov_law}</code> as a purely local or linearized perturbation, higher-order coupling terms across the kernel triad (<code>{kernels_c}</code>) amplified truncation error rather than damping it. What appeared for decades to be an intractable computational or experimental pathology was, in reality, a structural phase boundary embedded in the operator domain itself.
+          Every enduring equation begins as a human question. It grows from patient curiosity by investigators who refused to accept an opaque boundary as the final word. Tracing the intellectual arc of Folio <strong>{esc(fid)}</strong> from its earliest formulation in {linkify_citations(esc(first_era))} to its modern resolution in {linkify_citations(esc(last_era))} reveals why un-coupled classical approximations repeatedly stalled at a hard analytical barrier. Whenever investigators attempted to treat the governing relation <code>{gov_law}</code> as a purely local or linearized perturbation, higher-order coupling terms across the kernel triad (<code>{kernels_c}</code>) amplified truncation error rather than damping it. What appeared for decades to be an intractable computational or experimental pathology was, in reality, a structural phase boundary embedded in the operator domain itself.
         </p>
         <p>
           Resolving that impasse required shifting from ad-hoc empirical curve fitting to a rigorous, multi-stage operator formulation anchored in <code>{bench_c}</code>. Specifically, the system&rsquo;s trajectory is governed by {sliders_prose}. Within this state space, any valid proof or physical design must simultaneously satisfy local conservation laws, global boundary conditions, and strict asymptotic scaling—setting the stage for the four-chapter formal derivation in Act II.
@@ -1462,6 +1462,8 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
         <h2 id="act1-heading-{esc(slug)}">{esc(decf_act_title(act1_title))}</h2>
         <p class="tp-dropcap">{esc(act1_dropcap_c)}</p>
         {plain_bridge_html}
+        {analogy_box_html}
+        {distill_svg_html}
         <p>{linkify_citations(esc(act1_body_c))}</p>
         {act1_stakes_html}
         {act1_subchapter_html}
@@ -1483,8 +1485,6 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
         </div>
 
         <h2 id="act2-heading-{esc(slug)}">{esc(decf_act_title(act2_title))}</h2>
-        {analogy_box_html}
-        {distill_svg_html}
         <p>
           {linkify_citations(esc(act2_intuition_c))} Live parameter coupling: {inline_scrub} under governing law
           <button type="button" class="tp-eq-chip" data-eq-target="tp-svg-stage-1">{esc(folio["governing_law"])}</button>.

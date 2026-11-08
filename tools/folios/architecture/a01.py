@@ -12,7 +12,7 @@ FOLIO = {'folio_id': 'A.01',
  'category_code': 'A',
  'title': 'Funicular Thrust Surfaces, Maxwell–Cremona Duals, and 1:5 Nodal Tectonics',
  'subtitle': "How compression-only stone and cross-laminated timber shells stand under Heyman's Middle-Third Safe "
-             'Theorem (|e| ≤ t/6), paired with a 1:5 ISO 10211 condensation-free springer bearing node.',
+             'Theorem, paired with a 1:5 ISO 10211 condensation-free springer bearing node.',
  'date_published': '2026-10-20',
  'date_redated': '2026-11-02',
  'current_edition': 'REV 1.3',
@@ -193,12 +193,15 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'Aspergillus fumigatus (the cause of Allergic Bronchopulmonary Aspergillosis, ABPA) and Pseudomonas '
               'reservoirs. Maintaining a verified +7.08 °C Glaser dew-point margin at every structural thermal break '
               'keeps residential and clinical air envelopes dry and spore-free.',
- 'sources': ['Hooke, R. (1675). A Description of Helioscopes, and Some Other Instruments (Catenary-Arch Anagram). Royal Society, London.',
+ 'sources': ['Hooke, R. (1675). A Description of Helioscopes, and Some Other Instruments (Catenary-Arch Anagram). '
+             'Royal Society, London.',
              'Maxwell, J. C. (1864). On reciprocal figures and diagrams of forces. Philosophical Magazine, 27(182), '
              '250–261.',
              'Heyman, J. (1966). The stone skeleton. International Journal of Solids and Structures, 2(2), 249–279.',
              'ISO 13788 (2012). Hygrothermal performance of building components and building elements — Glaser method.',
-             'Akbarzadeh, M., Van Mele, T., & Block, P. (2015). On the equilibrium of funicular polyhedral frames and convex polyhedral force diagrams (compas-dev/compas, https://github.com/compas-dev/compas). Computer-Aided Design, 61, 116–129. DOI: 10.1016/j.cad.2015.01.006.',
+             'Akbarzadeh, M., Van Mele, T., & Block, P. (2015). On the equilibrium of funicular polyhedral frames and '
+             'convex polyhedral force diagrams (compas-dev/compas, https://github.com/compas-dev/compas). '
+             'Computer-Aided Design, 61, 116–129. DOI: 10.1016/j.cad.2015.01.006.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the context of citations '
              'and classifies their intent using deep learning (https://scite.ai). Quantitative Science Studies, 2(3), '
              '882–898. DOI: 10.1162/qss_a_00146.'],
