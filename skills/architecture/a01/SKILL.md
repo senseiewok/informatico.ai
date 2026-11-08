@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `A.01 · Vaults & Thermal Nodes` (`REV 1.3`, Redated `2026-11-02`)
 - **Governing Equation**: `H = qL² / (8f) · |e| ≤ t/6`
-- **Primary Verification Kernel**: `tools/tectonic_verify.py`
+- **Primary Verification Kernel**: `skills/architecture/a01/verify_a01.py`
 - **Verification Benchmarks**: `Heyman Safe Theorem (|e| ≤ t/6)`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1017/CBO9781107050310 (Scite Report: https://scite.ai/reports/10.1017/CBO9781107050310)
 

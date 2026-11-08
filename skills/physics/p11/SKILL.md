@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `P.11 · Surface-Code Quantum Error Correction & FeMoCo Catalysis · Stim / PySCF` (`REV 1.0`, Redated `2026-11-07`)
 - **Governing Equation**: `p_L ≈ 0.03 (p / p_th)^((d+1)/2) · [A_s, B_p] = 0 · H_FeMoCo |Ψ_0⟩ = E_0 |Ψ_0⟩`
-- **Primary Verification Kernel**: `tools/physics_kernel.py`
+- **Primary Verification Kernel**: `skills/physics/p11/verify_p11.py`
 - **Verification Benchmarks**: `d = 27 · p_phys = 0.001 ⇒ p_L = 3.0 × 10⁻¹⁶/cycle · ΔE_FeMoCo ≤ 1.0 kcal/mol`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1103/PhysRevA.86.032324 (Scite Report: https://scite.ai/reports/10.1103/PhysRevA.86.032324)
 

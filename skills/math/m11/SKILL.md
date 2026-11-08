@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `M.11 · 3D Kakeya Conjecture (arXiv:2502.17655) & Guth–Maynard 30/13 (arXiv:2405.10935)` (`REV 1.0`, Redated `2026-11-07`)
 - **Governing Equation**: `dim_H(K) = dim_M(K) = 3 (∀ K ⊂ ℝ³) · N(σ, T) ≪ T^((30/13)(1−σ)+o(1)) · anthropics/formal-math`
-- **Primary Verification Kernel**: `tools/formal_verifier.py`
+- **Primary Verification Kernel**: `skills/math/m11/verify_m11.py`
 - **Verification Benchmarks**: `dim_H(K_3D) = 3.000 · B_GM = 30/13 ≈ 2.3077 < 12/5 = 2.400 · Prime Gap θ = 17/30`
 - **Primary Scite Anchor DOI**: https://doi.org/10.4007/annals.2015.182.1.9 (Scite Report: https://scite.ai/reports/10.4007/annals.2015.182.1.9)
 

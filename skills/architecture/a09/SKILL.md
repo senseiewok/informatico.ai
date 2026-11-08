@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `A.09 · Hygroscopic Timber Skins & Timoshenko Curvature · CSI 06 18 00` (`REV 1.0`, Redated `2026-11-03`)
 - **Governing Equation**: `κ = 6(1+m)² Δα ΔMC / [h (3(1+m)² + (1+mn)(m² + 1/mn))] · EN 1995-1-1 · CSI 06 18 00`
-- **Primary Verification Kernel**: `tools/tectonic_verify.py`
+- **Primary Verification Kernel**: `skills/architecture/a09/verify_a09.py`
 - **Verification Benchmarks**: `ΔMC = +6.0% · h = 6.0 mm ⇒ κ = 1.42 m⁻¹ · δ_tip = 128 mm (0 W Power)`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1364/JOSA.11.000233 (Scite Report: https://scite.ai/reports/10.1364/JOSA.11.000233)
 

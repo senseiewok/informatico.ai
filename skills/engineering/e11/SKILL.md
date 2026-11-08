@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `E.11 · SIMP Topology Optimization & Inerter Damping · Eurocode 2 / ACI 318` (`REV 1.0`, Redated `2026-11-07`)
 - **Governing Equation**: `min_ρ c(ρ) = Uᵀ K(ρ) U · E_e(ρ_e) = E_min + ρ_e^p (E_0 − E_min) · F_inerter = b (ü_2 − ü_1)`
-- **Primary Verification Kernel**: `tools/continuum_verify.py`
+- **Primary Verification Kernel**: `skills/engineering/e11/verify_e11.py`
 - **Verification Benchmarks**: `V/V_0 = 0.35 · p = 3.0 · b/m = 0.18 ⇒ 65% Concrete Reduction & −44% RMS Wind Drift`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1007/s001580050176 (Scite Report: https://scite.ai/reports/10.1007/s001580050176)
 

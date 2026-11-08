@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `A.07 · Barragán Chromatic Tectonics & Radiosity · CSI 09 24 00` (`REV 1.0`, Redated `2026-11-02`)
 - **Governing Equation**: `K/S = (1 − R_∞)² / (2 R_∞) · B(x,λ) = E(x,λ) + ρ(x,λ) ∫ B(y,λ) F(x,y) dA_y · CSI 09 24 00`
-- **Primary Verification Kernel**: `tools/tectonic_verify.py`
+- **Primary Verification Kernel**: `skills/architecture/a07/verify_a07.py`
 - **Verification Benchmarks**: `Casa Gilardi (1976) · Torres de Satélite (1957) · R_∞ = 0.391`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1364/JOSA.38.000448 (Scite Report: https://scite.ai/reports/10.1364/JOSA.38.000448)
 

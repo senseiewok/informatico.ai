@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `A.02 · Reciprocal Timber Gridshells` (`REV 1.2`, Redated `2026-11-02`)
 - **Governing Equation**: `M_lap = V_lap a (1 − λ) · τ_d ≤ k_v f_{v,d}`
-- **Primary Verification Kernel**: `tools/tectonic_verify.py`
+- **Primary Verification Kernel**: `skills/architecture/a02/verify_a02.py`
 - **Verification Benchmarks**: `Eurocode 5 (EN 1995-1-1) Combined Bending & Shear`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1016/j.jobe.2019.100867 (Scite Report: https://scite.ai/reports/10.1016/j.jobe.2019.100867)
 

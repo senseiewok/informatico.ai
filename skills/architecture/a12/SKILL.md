@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `A.12 · Tensegrity Cable-Strut Domes & 8–13 μm Sky-Cooling Canopies · ASCE 19` (`REV 1.0`, Redated `2026-11-07`)
 - **Governing Equation**: `A t = f · K_T = K_E + K_G(t_0) ≻ 0 · P_cool = P_rad(T_s) − P_atm(T_amb) − P_sun`
-- **Primary Verification Kernel**: `tools/tectonic_verify.py`
+- **Primary Verification Kernel**: `skills/architecture/a12/verify_a12.py`
 - **Verification Benchmarks**: `t_0 = 185 kN · m = 1 Stiffened Mechanism · q_net = 98.4 W/m² ⇒ ΔT = −5.2 °C Below Ambient`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1126/science.aat9513 (Scite Report: https://scite.ai/reports/10.1126/science.aat9513)
 

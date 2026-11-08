@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `E.08 · EPB-TBM Tunneling & Peck–Mair Settlement · CSI 31 71 19` (`REV 1.0`, Redated `2026-11-02`)
 - **Governing Equation**: `S(y) = S_max exp(−y² / 2i²) · V_s = V_L (π D² / 4) · i = K (z_0 − z) · CSI 31 71 19`
-- **Primary Verification Kernel**: `tools/continuum_verify.py`
+- **Primary Verification Kernel**: `skills/engineering/e08/verify_e08.py`
 - **Verification Benchmarks**: `D = 9.8 m · z_0 = 24.0 m · V_L = 0.75% ⇒ S_max = 18.8 mm`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1680/geot.1993.43.2.315 (Scite Report: https://scite.ai/reports/10.1680/geot.1993.43.2.315)
 

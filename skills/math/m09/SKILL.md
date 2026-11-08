@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `M.09 · Benamou–Brenier Wasserstein-2 Optimal Transport` (`REV 1.0`, Redated `2026-11-03`)
 - **Governing Equation**: `W_2²(μ_0, μ_1) = inf ∫_0^1 ∫ ρ|v|² dx dt · ∂_t ρ + ∇·(ρ∇ψ) = 0 · ∂_t ψ + ½|∇ψ|² = 0`
-- **Primary Verification Kernel**: `tools/discovery/frontier_ai_math_catalog.py`
+- **Primary Verification Kernel**: `skills/math/m09/verify_m09.py`
 - **Verification Benchmarks**: `W_2²(μ_0, μ_1) = 4.82 · t = 0.50 McCann Geodesic · ε = 0.05 (18 Sinkhorn Steps)`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1007/s002110050002 (Scite Report: https://scite.ai/reports/10.1007/s002110050002)
 

@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `A.03 · Facade Thermodynamics` (`REV 1.2`, Redated `2026-11-02`)
 - **Governing Equation**: `Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11`
-- **Primary Verification Kernel**: `tools/tectonic_verify.py`
+- **Primary Verification Kernel**: `skills/architecture/a03/verify_a03.py`
 - **Verification Benchmarks**: `EN ISO 52022-3 Solar Factor g_tot & Buoyancy Draft`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1016/j.enbuild.2006.03.013 (Scite Report: https://scite.ai/reports/10.1016/j.enbuild.2006.03.013)
 

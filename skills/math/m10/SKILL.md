@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `M.10 · Persistent Homology & Topological Percolation Barcodes` (`REV 1.0`, Redated `2026-11-03`)
 - **Governing Equation**: `∂_{k−1} ∘ ∂_k = 0 · β_k^{i,j} = rank(H_k(K_i) → H_k(K_j)) · d_B(D(f), D(g)) ≤ ||f − g||_∞`
-- **Primary Verification Kernel**: `tools/discovery/frontier_ai_math_catalog.py`
+- **Primary Verification Kernel**: `skills/math/m10/verify_m10.py`
 - **Verification Benchmarks**: `ε = 65 nm · β_0 = 1, β_1 = 3, χ = −2 · Percolating Throat r_crit = 116 nm`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1007/s00454-002-2885-2 (Scite Report: https://scite.ai/reports/10.1007/s00454-002-2885-2)
 

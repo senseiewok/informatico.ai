@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `M.02 · Analytic Number Theory` (`REV 1.3`, Redated `2026-11-06`)
 - **Governing Equation**: `Zeta23 · Challenge/XiPrime.lean · Large Sieve`
-- **Primary Verification Kernel**: `tools/discovery/formal_proof_thermodynamic_landscape.py`
+- **Primary Verification Kernel**: `skills/math/m02/verify_m02.py`
 - **Verification Benchmarks**: `Ingham-Huxley Zero-Density N(σ, T) ≤ T^(c(1-σ))`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1515/crll.1989.399.1 (Scite Report: https://scite.ai/reports/10.1515/crll.1989.399.1)
 

@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `A.06 · Hydro-Tectonics · CSI 22 13 00` (`REV 1.1`, Redated `2026-11-02`)
 - **Governing Equation**: `C_out = C* + (C_in−C*)e^(−kτ) · 5.4-Log UV-C`
-- **Primary Verification Kernel**: `tools/tectonic_verify.py`
+- **Primary Verification Kernel**: `skills/architecture/a06/verify_a06.py`
 - **Verification Benchmarks**: `ASHRAE 188 · 95.1% BOD_5 Removal`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1201/9781420012514 (Scite Report: https://scite.ai/reports/10.1201/9781420012514)
 

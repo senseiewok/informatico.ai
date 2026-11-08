@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `P.09 · Taylor Cone EHD & Rayleigh Aerosol Physics` (`REV 1.0`, Redated `2026-11-03`)
 - **Governing Equation**: `P_{1/2}(cos θ_0) = 0 ⇒ θ_T = 49.3° · q_R = 8π √(ε_0 γ R³) · d_drop ~ (ρ ε_0 Q³ / γ K)^(1/6)`
-- **Primary Verification Kernel**: `tools/physics_kernel.py`
+- **Primary Verification Kernel**: `skills/physics/p09/verify_p09.py`
 - **Verification Benchmarks**: `Q = 1.20 μL/min · K = 0.45 S/m ⇒ d_drop = 2.42 μm · q/q_R = 0.68`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1098/rspa.1964.0151 (Scite Report: https://scite.ai/reports/10.1098/rspa.1964.0151)
 

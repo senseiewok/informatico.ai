@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `A.05 · Architectural Acoustics · CSI 09 84 00` (`REV 1.1`, Redated `2026-11-02`)
 - **Governing Equation**: `T_60 = 0.161V / [−S ln(1−α)] · STI = 0.74`
-- **Primary Verification Kernel**: `tools/tectonic_verify.py`
+- **Primary Verification Kernel**: `skills/architecture/a05/verify_a05.py`
 - **Verification Benchmarks**: `ISO 3382-1 · Schroeder Prime QRD Vaults`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1121/1.1901884 (Scite Report: https://scite.ai/reports/10.1121/1.1901884)
 

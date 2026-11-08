@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `P.01 · Non-Equilibrium Gating` (`REV 1.2`, Redated `2026-11-02`)
 - **Governing Equation**: `σ_ij = −k_B (∂²S / ∂α_i ∂α_j)⁻¹ · A_r = k_B T ln(v_r⁺ / v_r⁻)`
-- **Primary Verification Kernel**: `tools/physics_kernel.py`
+- **Primary Verification Kernel**: `skills/physics/p01/verify_p01.py`
 - **Verification Benchmarks**: `Cryo-EM 6MSM / 8EIQ · Eyring Rate Theory`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1088/0034-4885/75/12/126001 (Scite Report: https://scite.ai/reports/10.1088/0034-4885/75/12/126001)
 

@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `P.08 · Electromagnetic Color Waves & BRDF · Optics` (`REV 1.0`, Redated `2026-11-02`)
 - **Governing Equation**: `Δ_OPD = 2 d √(n_f² − sin²θ_i) = m λ · f_r = k_d(ρ/π) + k_s(D F G) / [4(n·l)(n·v)]`
-- **Primary Verification Kernel**: `tools/physics_kernel.py`
+- **Primary Verification Kernel**: `skills/physics/p08/verify_p08.py`
 - **Verification Benchmarks**: `n_f = 2.45 (TiO₂) · d = 245 nm ⇒ λ_peak = 588 nm · Flop Δλ = −24 nm`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1145/357290.357293 (Scite Report: https://scite.ai/reports/10.1145/357290.357293)
 

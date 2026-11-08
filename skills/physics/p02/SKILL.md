@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `P.02 · Active Matter & Cilia` (`REV 1.2`, Redated `2026-11-02`)
 - **Governing Equation**: `∂_t θ_i = ω_0 + ∑_j K_ij sin(θ_j − θ_i − α) · v_wave = λ f_beat`
-- **Primary Verification Kernel**: `tools/physics_kernel.py`
+- **Primary Verification Kernel**: `skills/physics/p02/verify_p02.py`
 - **Verification Benchmarks**: `High-Speed Video Cilia Kinematics (14 Hz)`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1016/s0022-5193(86)80098-4 (Scite Report: https://scite.ai/reports/10.1016/s0022-5193(86)80098-4)
 

@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `M.03 · Extremal Combinatorics & Tensors` (`REV 1.3`, Redated `2026-11-06`)
 - **Governing Equation**: `FunSearch Cap Set (≥ 512) · AlphaEvolve Rank-48`
-- **Primary Verification Kernel**: `tools/discovery/frontier_ai_math_catalog.py`
+- **Primary Verification Kernel**: `skills/math/m03/verify_m03.py`
 - **Verification Benchmarks**: `Ellenberg-Gijswijt O(2.756^n) vs |S| ≥ 2.181^n`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1038/s41586-023-06924-6 (Scite Report: https://scite.ai/reports/10.1038/s41586-023-06924-6)
 

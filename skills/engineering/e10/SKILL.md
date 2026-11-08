@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `E.10 · 3D Concrete Printing Rheology & Buildability · ACI 564R` (`REV 1.0`, Redated `2026-11-03`)
 - **Governing Equation**: `τ_0(t) = τ_{0,0} + A_thix t · H_plast = √3 τ_0(t)/(ρg) · H_buck = (8 E(t) I / ρ g b)^(1/3) · ACI 564R`
-- **Primary Verification Kernel**: `tools/continuum_verify.py`
+- **Primary Verification Kernel**: `skills/engineering/e10/verify_e10.py`
 - **Verification Benchmarks**: `A_thix = 0.85 Pa/s · v_build = 1.6 m/hr ⇒ H_crit = 2.84 m (SF = 1.68)`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1016/j.cemconres.2018.04.005 (Scite Report: https://scite.ai/reports/10.1016/j.cemconres.2018.04.005)
 

@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `M.06 · Fine-Grained Complexity & PRM` (`REV 1.1`, Redated `2026-11-02`)
 - **Governing Equation**: `O(n³ / 2^(Ω(√log n))) APSP · Step-Level PRM`
-- **Primary Verification Kernel**: `tools/discovery/formal_proof_thermodynamic_landscape.py`
+- **Primary Verification Kernel**: `skills/math/m06/verify_m06.py`
 - **Verification Benchmarks**: `SIAM 10.1137/15M1024524 · PRM800K`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1137/15M1024524 (Scite Report: https://scite.ai/reports/10.1137/15M1024524)
 

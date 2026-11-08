@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `E.07 · Bridge Aeroelastic Flutter & PINN SHM · CSI 05 12 00` (`REV 1.0`, Redated `2026-11-02`)
 - **Governing Equation**: `ζ_net = ζ_s − (ρ B⁴ / 2 I_α) A_2*(K) · L_total = L_data + λ_pde ‖R_pde‖² · CSI 05 12 00`
-- **Primary Verification Kernel**: `tools/continuum_verify.py`
+- **Primary Verification Kernel**: `skills/engineering/e07/verify_e07.py`
 - **Verification Benchmarks**: `U_crit = 76.4 m/s · PINN Stress Error 1.42% (8 Sensors)`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1016/j.jcp.2018.10.045 (Scite Report: https://scite.ai/reports/10.1016/j.jcp.2018.10.045)
 

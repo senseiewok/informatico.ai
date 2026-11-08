@@ -9,7 +9,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `P.04 · Electrokinetics & Osmosis` (`REV 1.2`, Redated `2026-11-02`)
 - **Governing Equation**: `J_k = −D_k (∇c_k + (z_k F / RT) c_k ∇Φ) · dh_PCL/dt = L_p (ΔΠ_osm − ΔP_hydro)`
-- **Primary Verification Kernel**: `tools/physics_kernel.py`
+- **Primary Verification Kernel**: `skills/physics/p04/verify_p04.py`
 - **Verification Benchmarks**: `Ussing Chamber Short-Circuit Currents (I_sc) · PCL Optical Micro-OCT`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1126/science.1223012 (Scite Report: https://scite.ai/reports/10.1126/science.1223012)
 
