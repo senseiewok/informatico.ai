@@ -104,13 +104,15 @@ class PublicInformaticoRepoTests(unittest.TestCase):
 
 
 
-    def test_all_49_editorial_plates_have_unique_sha256_hashes(self) -> None:
+    def test_all_61_editorial_plates_have_unique_sha256_hashes_and_cache_busters(self) -> None:
         plates_dir = RESEARCH / "plates"
         expected_slugs = (
             [f"e{i:02d}" for i in range(1, 13)]
             + [f"a{i:02d}" for i in range(1, 13)]
             + [f"p{i:02d}" for i in range(1, 13)]
             + [f"m{i:02d}" for i in range(1, 13)]
+            + [f"b{i:02d}" for i in range(1, 7)]
+            + [f"x{i:02d}" for i in range(1, 7)]
             + ["utopian-city-future"]
         )
         seen_hashes: dict[str, str] = {}
@@ -122,6 +124,22 @@ class PublicInformaticoRepoTests(unittest.TestCase):
             h = hashlib.sha256(data).hexdigest()
             self.assertNotIn(h, seen_hashes, f"Duplicate plate {slug}.jpg == {seen_hashes.get(h)}.jpg")
             seen_hashes[h] = slug
+
+        for hub_rel, expected_count in (
+            ("index.html", 48),
+            ("engineering/index.html", 12),
+            ("architecture/index.html", 12),
+            ("physics/index.html", 12),
+            ("math/index.html", 12),
+            ("bounties/index.html", 6),
+            ("toolchain/index.html", 6),
+        ):
+            hub_txt = (RESEARCH / hub_rel).read_text(encoding="utf-8")
+            thumbs = re.findall(r'<img class="tp-rack-thumb" src="([^"]+)"', hub_txt)
+            self.assertEqual(len(thumbs), expected_count, f"{hub_rel} expected {expected_count} rack thumbs")
+            self.assertEqual(len(set(thumbs)), expected_count, f"{hub_rel} has duplicate rack card images")
+            for t in thumbs:
+                self.assertIn("?v=", t, f"{hub_rel} thumbnail {t} missing ?v= cache-buster")
 
 
 if __name__ == "__main__":

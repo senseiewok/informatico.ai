@@ -260,8 +260,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              '10.1016/j.jcp.2018.10.045.',
              'Tooby-Smith, J. (2025). HepLean / PhysLean: Digitalising high energy and '
              'mathematical physics in Lean 4 (HEPLean/PhysLean, '
-             'https://github.com/HEPLean/PhysLean). Computer Physics Communications, 307, 109408. '
-             'DOI: 10.1016/j.cpc.2024.109408.',
+             'https://github.com/HEPLean/PhysLean). Computer Physics Communications, 308, 109457. '
+             'DOI: 10.1016/j.cpc.2024.109457.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
              'context of citations and classifies their intent using deep learning '
              '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '

@@ -41,6 +41,20 @@ for _pillar, _modules in PILLAR_PACKAGES.items():
         if _mod.ES_TRANSLATION:
             FOLIO_ES_TRANSLATIONS[_slug] = _mod.ES_TRANSLATION
 
+for _b in BOUNTY_FOLIOS:
+    _bslug = _b["slug"]
+    PLATE_CAPTIONS[_bslug] = {
+        "alt": f"Conceptual visualization imagining what Bounty {_b['folio_id']} ({_b['bounty_id']}: {_b['title']}) would look like as a physical laboratory and formal proof apparatus (artistic impression, not a measured structure)",
+        "caption": f"Plate {_b['folio_id']}-V · Dedicated Bounty Vision Plate for {_b['bounty_id']} ({_b['title']}). Governing law: {_b['governing_law']}.",
+    }
+
+for _t in TOOLCHAIN_FOLIOS:
+    _tslug = _t["slug"]
+    PLATE_CAPTIONS[_tslug] = {
+        "alt": f"Conceptual visualization imagining what Toolbox {_t['folio_id']} ({_t['tool_id']}: {_t['title']}) would look like in an open-source architecture and engineering studio workshop (artistic impression, not a measured structure)",
+        "caption": f"Plate {_t['folio_id']}-V · Dedicated Studio & Workshop Plate for {_t['tool_id']} ({_t['title']}). Governing geometric law: {_t['governing_law']}.",
+    }
+
 __all__ = [
     "BOUNDARY_EN",
     "BOUNDARY_ES",

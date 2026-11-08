@@ -5,7 +5,7 @@ FOLIO = {'slug': 'x06',
  'folio_id': 'X.06',
  'tool_id': 'TOOL-PHYS-MATH-1',
  'cat': 'physics_math',
- 'plate_slug': 'm10',
+ 'plate_slug': 'x06',
  'pillar_label_en': 'Physics & Math Explorer Toolbox · Topological Genus & Acoustic Metamaterials',
  'pillar_label_es': 'Herramientas de Física y Matemáticas · Género Topológico y Metamateriales '
                     'Acústicos',

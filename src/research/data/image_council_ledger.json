@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2",
-  "law": "Law 8 & Law 17 — Human-Scale Grounded Scientific Plate Generation & 4-Seat Image Selection Council",
-  "total_plates_replaced": 53,
-  "magazine_plates_count": 49,
+  "law": "Law 8 & Law 17 \u2014 Human-Scale Grounded Scientific Plate Generation & 4-Seat Image Selection Council",
+  "total_plates_replaced": 65,
+  "magazine_plates_count": 61,
   "cf_flagship_plates_count": 4,
   "council_seats": [
     "gemini-4-argon (Physical Specification & Structural Plausibility Seat)",
@@ -127,9 +127,9 @@
       "governing_specification": "Formwork-free SIMP trabecular vaulted concrete slab with Michell funicular ribs and precision ball-screw flywheel inerter damper in high-bay structural lab",
       "human_perceptual_grounding": "7_genre_creative_palette_top_pro_model_zero_text_zero_duplicate",
       "winning_engine": "image-generator-pro-argon-spec-verified",
-      "resolution": "1376x768",
-      "bytes": 855231,
-      "sha256": "27b8b00a3bc49150a12f0a6356619e4160263450287e26c1030c9f331ea25d06",
+      "resolution": "1280x720",
+      "bytes": 250311,
+      "sha256": "9ae6b0b067db011bd4c23821d7a364093a7fa36722d9642720a01aabdc1197bc",
       "zero_baked_text_verified": true
     },
     {
@@ -138,9 +138,9 @@
       "governing_specification": "Iridescent 300mm RISC-V silicon wafer and wire-bonded microprocessor on optical bench overlooking twilight coastal renewable battery-inverter grid with Kuramoto phase sync",
       "human_perceptual_grounding": "7_genre_creative_palette_top_pro_model_zero_text_zero_duplicate",
       "winning_engine": "image-generator-pro-argon-spec-verified",
-      "resolution": "1376x768",
-      "bytes": 739244,
-      "sha256": "051f5da826d0aacebe0091485ef1180103c97f228072195f1068be49ad737777",
+      "resolution": "1280x720",
+      "bytes": 186659,
+      "sha256": "217debfdb0d33700bd632d21fc8cde8cb4721327c18317eb599ed8a776bf755b",
       "zero_baked_text_verified": true
     },
     {
@@ -212,7 +212,7 @@
     {
       "plate_id": "a07",
       "path": "src/research/plates/a07.jpg",
-      "governing_specification": "Luis Barragán Rosa Mexicano stucco courtyard wall, golden light corridor & cobalt pool",
+      "governing_specification": "Luis Barrag\u00e1n Rosa Mexicano stucco courtyard wall, golden light corridor & cobalt pool",
       "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
       "winning_engine": "image-generator-argon-spec-verified",
       "resolution": "1280x720",
@@ -259,9 +259,9 @@
       "governing_specification": "Catalan Guastavino herringbone terracotta-tile and dry-stacked limestone funicular vault with suspended 3D Maxwell-Rankine reciprocal force polyhedron",
       "human_perceptual_grounding": "7_genre_creative_palette_top_pro_model_zero_text_zero_duplicate",
       "winning_engine": "image-generator-pro-argon-spec-verified",
-      "resolution": "1376x768",
-      "bytes": 1033529,
-      "sha256": "500bd3179842327abfa478c05c7e1f9c4b14f13019ca0be6ba9c868fff822266",
+      "resolution": "1280x720",
+      "bytes": 317883,
+      "sha256": "12dd1b2e711385156eb5a4fc2b4887c304aff967e84758720b93dffdd697f22d",
       "zero_baked_text_verified": true
     },
     {
@@ -270,9 +270,9 @@
       "governing_specification": "Long-span floating-compression tensegrity cable-strut dome clad in 8-13 um radiative sky-cooling membrane over sunlit civic botanical courtyard",
       "human_perceptual_grounding": "7_genre_creative_palette_top_pro_model_zero_text_zero_duplicate",
       "winning_engine": "image-generator-pro-argon-spec-verified",
-      "resolution": "1376x768",
-      "bytes": 1060671,
-      "sha256": "bad5fce0888ffb3474924b3e0b144ecddda38b8c97dc749f0e76d443d3cb121c",
+      "resolution": "1280x720",
+      "bytes": 333555,
+      "sha256": "de1da28f19f448b5062c2b58e2bc6f303ac03b6cd4bdd382e96ff722ff053218",
       "zero_baked_text_verified": true
     },
     {
@@ -281,7 +281,7 @@
       "governing_specification": "Cryo-EM CFTR transmembrane protein channel in lipid bilayer with chloride ion stream",
       "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
       "winning_engine": "image-generator-argon-spec-verified",
-      "resolution": "1376x768",
+      "resolution": "1280x720",
       "bytes": 916127,
       "zero_baked_text_verified": true,
       "sha256": "1d57f67896b5941357875fdfb1e4712b18e1afe488027ca2e83720d1016ae37b"
@@ -336,7 +336,7 @@
       "governing_specification": "De Gennes polymer tube reptation of long genomic DNA strand through nanopore",
       "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
       "winning_engine": "image-generator-argon-spec-verified",
-      "resolution": "1376x768",
+      "resolution": "1280x720",
       "bytes": 953829,
       "zero_baked_text_verified": true,
       "sha256": "218ee267a2968bf8e839b1ab916f3ad025f2c221464e05e3d48f9f89c3e02b0a"
@@ -391,9 +391,9 @@
       "governing_specification": "Gold-plated dilution refrigerator chandelier with rotated surface-code superconducting processor beside catalytic vessel with FeMoCo nitrogenase crystal",
       "human_perceptual_grounding": "7_genre_creative_palette_top_pro_model_zero_text_zero_duplicate",
       "winning_engine": "image-generator-pro-argon-spec-verified",
-      "resolution": "1376x768",
-      "bytes": 850190,
-      "sha256": "29bc3a0171b6888564241010f98380b9528b5dd52aa145298cd37b758ac65fd0",
+      "resolution": "1280x720",
+      "bytes": 239982,
+      "sha256": "5244713e3cb1998a319d3d46ba8b2973e830a0f032f0250a6e0718978ff1ed29",
       "zero_baked_text_verified": true
     },
     {
@@ -402,9 +402,9 @@
       "governing_specification": "Multi-scale continuum transition from colliding Newtonian hard-sphere Boltzmann particles to swirling Navier-Stokes von Karman atmospheric vortices",
       "human_perceptual_grounding": "7_genre_creative_palette_top_pro_model_zero_text_zero_duplicate",
       "winning_engine": "image-generator-pro-argon-spec-verified",
-      "resolution": "1376x768",
-      "bytes": 907619,
-      "sha256": "9f0a039b49e68d3e086a27f0bc27dd0eeb2934737b19a44a576e50f0d446aed6",
+      "resolution": "1280x720",
+      "bytes": 255904,
+      "sha256": "cfcec676eb3ec7021ef1b65c1aa028b9abb50abbaf741cd9bdbf7446e3f57599",
       "zero_baked_text_verified": true
     },
     {
@@ -413,7 +413,7 @@
       "governing_specification": "Tactile ink-on-vellum torus-to-icosahedron modularity lifting & Taylor-Wiles bridge",
       "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
       "winning_engine": "image-generator-argon-spec-verified",
-      "resolution": "1376x768",
+      "resolution": "1280x720",
       "bytes": 1040252,
       "zero_baked_text_verified": true,
       "sha256": "cd153858b11e202fdce90a18f5fb2639cf1dce56149bd501500d472681e3e8a8"
@@ -424,7 +424,7 @@
       "governing_specification": "Topographic critical-strip landscape with Riemann zeta prime-harmonic peaks on vellum",
       "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
       "winning_engine": "image-generator-argon-spec-verified",
-      "resolution": "1376x768",
+      "resolution": "1280x720",
       "bytes": 922879,
       "zero_baked_text_verified": true,
       "sha256": "f0614833ed6cc497c84ef610a4ea5c9f87404b943068c4a87cc86c6dfbb70c69"
@@ -446,7 +446,7 @@
       "governing_specification": "Polynomial Freiman-Ruzsa additive combinatorics entropic lattice crystal on vellum",
       "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
       "winning_engine": "image-generator-argon-spec-verified",
-      "resolution": "1376x768",
+      "resolution": "1280x720",
       "bytes": 976350,
       "zero_baked_text_verified": true,
       "sha256": "24987772a0bb9ae77981a79401709a44a68c45045b79bb2707b4fb3931884da0"
@@ -457,7 +457,7 @@
       "governing_specification": "AlphaGeometry neuro-symbolic Euclidean circle-and-chord geometric construction on vellum",
       "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
       "winning_engine": "image-generator-argon-spec-verified",
-      "resolution": "1376x768",
+      "resolution": "1280x720",
       "bytes": 920655,
       "zero_baked_text_verified": true,
       "sha256": "127651d236dbcb5ec3e872646a1c2ff21349a2b72395b6760a391dfc5ecd55b2"
@@ -479,7 +479,7 @@
       "governing_specification": "Sculpted carbon-fiber Formula 1 elevation circuit on obsidian with cyan/gold optical trajectory",
       "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
       "winning_engine": "image-generator-argon-spec-verified",
-      "resolution": "1376x768",
+      "resolution": "1280x720",
       "bytes": 940376,
       "zero_baked_text_verified": true,
       "sha256": "a849186f478e8b2b5b18ec6ac74d710d7b95067f42cbbebe96cc70fad43854b1"
@@ -487,10 +487,10 @@
     {
       "plate_id": "m08",
       "path": "src/research/plates/m08.jpg",
-      "governing_specification": "Schrödinger Riemannian color manifold horn with glowing geodesic path on vellum",
+      "governing_specification": "Schr\u00f6dinger Riemannian color manifold horn with glowing geodesic path on vellum",
       "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
       "winning_engine": "image-generator-argon-spec-verified",
-      "resolution": "1376x768",
+      "resolution": "1280x720",
       "bytes": 957724,
       "zero_baked_text_verified": true,
       "sha256": "31c2308bfae326c147d0851dd2fca06fdb132f5711fe526b2087e821a7d3b619"
@@ -512,7 +512,7 @@
       "governing_specification": "Tactile brass-sphere, silver-rod & cast amber glass Vietoris-Rips simplicial sculpture on stone",
       "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
       "winning_engine": "image-generator-argon-spec-verified",
-      "resolution": "1376x768",
+      "resolution": "1280x720",
       "bytes": 1100152,
       "zero_baked_text_verified": true,
       "sha256": "0d9e4aef9793652d5d442de8abbe1de6bd8777027e38b90b40c98e65969b44d0"
@@ -523,9 +523,9 @@
       "governing_specification": "3D Besicovitch-Kakeya directional laser light-tube needle bush intersecting through optical prisms in mist-filled darkroom with wave diffraction fringes",
       "human_perceptual_grounding": "7_genre_creative_palette_top_pro_model_zero_text_zero_duplicate",
       "winning_engine": "image-generator-pro-argon-spec-verified",
-      "resolution": "1376x768",
-      "bytes": 835657,
-      "sha256": "91b445046b592a5f00272ac4b053062f66861c376e81453a090f4994c9264bc9",
+      "resolution": "1280x720",
+      "bytes": 220857,
+      "sha256": "22aaa520ab901b912b9f9924b209a0e30880cad340e6c3acab6a4a5bd3c9d22f",
       "zero_baked_text_verified": true
     },
     {
@@ -534,10 +534,142 @@
       "governing_specification": "8x8x8 optical flint-glass crystal lattice suspended by copper-gold filaments pierced by coherent laser beam with coral-amber Gaussian LWE noise halo",
       "human_perceptual_grounding": "7_genre_creative_palette_top_pro_model_zero_text_zero_duplicate",
       "winning_engine": "image-generator-pro-argon-spec-verified",
-      "resolution": "1376x768",
-      "bytes": 910439,
-      "sha256": "20736811c6edad9f29f0e5edc9d2a38b41d87f656ed0e8df4f1bf6115aa83d81",
+      "resolution": "1280x720",
+      "bytes": 260716,
+      "sha256": "fd271b510e89d26dc9dc220e82dd5ed8146f5acb49841b7332ddedba847d1f09",
       "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "b01",
+      "path": "src/research/plates/b01.jpg",
+      "governing_specification": "Handcrafted brushed-brass and ebony-wood Golomb ruler & Sidon set mathematical instrument with glass prism on vellum",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 165493,
+      "zero_baked_text_verified": true,
+      "sha256": "d1cc0aa4f5604466f8588d7120ba2ddc022966b8ced67485b560ed2ac7f8a970"
+    },
+    {
+      "plate_id": "b02",
+      "path": "src/research/plates/b02.jpg",
+      "governing_specification": "Gold-plated superconducting surface-code quantum processor wafer stage beside natural iron-molybdenum-sulfur mineral crystal",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 282461,
+      "zero_baked_text_verified": true,
+      "sha256": "06d85cb16dbdad563eb32ff54b0c85e134c314b219c686fb61878faf250d6187"
+    },
+    {
+      "plate_id": "b03",
+      "path": "src/research/plates/b03.jpg",
+      "governing_specification": "Full-scale topology-optimized SIMP carbonated mineral concrete vaulted floor slab cutaway on timber sawhorses",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 295349,
+      "zero_baked_text_verified": true,
+      "sha256": "ceef0cbff2460b2c64854076d6c330a7b7c36587252831dd0d8060a7722eb673"
+    },
+    {
+      "plate_id": "b04",
+      "path": "src/research/plates/b04.jpg",
+      "governing_specification": "Zero-rebar Catalan Guastavino herringbone terracotta tile & cut-limestone funicular vault beneath mirror-white sky-cooling roof",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 303443,
+      "zero_baked_text_verified": true,
+      "sha256": "b793785ce108ce98754374e290d085ef8ef907b3c71e4107995f2612cc525f5d"
+    },
+    {
+      "plate_id": "b05",
+      "path": "src/research/plates/b05.jpg",
+      "governing_specification": "Acrylic fluid-dynamics flume with emerald-and-amber laser sheet illuminating von Karman vortex street past brass cylinder",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 218086,
+      "zero_baked_text_verified": true,
+      "sha256": "9f11f04dd2e8dd0b9494c79f2ddb5df6383c4a2c3c9371598b44a269e832ed56"
+    },
+    {
+      "plate_id": "b06",
+      "path": "src/research/plates/b06.jpg",
+      "governing_specification": "Museum-grade 3D polyhedral tensor-network & chiral gauge lattice sculpture in brushed brass and sapphire/ruby optical fibers",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 241196,
+      "zero_baked_text_verified": true,
+      "sha256": "2e738595236b29008d5d71a8d4eec7707995d495d6cc93a246ab5f4199653d59"
+    },
+    {
+      "plate_id": "x01",
+      "path": "src/research/plates/x01.jpg",
+      "governing_specification": "Faceted watertight 2-manifold polyhedral solid half-milled in aerospace aluminum and half-cast in amber optical resin on granite surface plate",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 170838,
+      "zero_baked_text_verified": true,
+      "sha256": "a38eccd580b40426f5d841a2b56b8085aa91423cca7ff6c0595c2d844af21eed"
+    },
+    {
+      "plate_id": "x02",
+      "path": "src/research/plates/x02.jpg",
+      "governing_specification": "Three physical realizations of a parametric flanged clevis bracket (CNC stainless steel, bronze 3MF print, anodized aluminum) with brass caliper",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 218316,
+      "zero_baked_text_verified": true,
+      "sha256": "cbe06d7752709c12b3662fd0324430c3a6d4cae68be51ab24a9c9b7cb652368e"
+    },
+    {
+      "plate_id": "x03",
+      "path": "src/research/plates/x03.jpg",
+      "governing_specification": "Boutique architecture studio 7-voussoir limestone & CLT compression arch scale model beside notched beechwood reciprocal frame",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 225399,
+      "zero_baked_text_verified": true,
+      "sha256": "3eac9ffe6e566dc5b07dd4fc71f65ca50f026d07cf15be5d0751b17945161637"
+    },
+    {
+      "plate_id": "x04",
+      "path": "src/research/plates/x04.jpg",
+      "governing_specification": "Kinetic deployable Miura-ori perforated brass and birch veneer solar screen beside flat laser-scored DXF crease sheet",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 230345,
+      "zero_baked_text_verified": true,
+      "sha256": "b1dbb47446ec4c17048337e20af8a30abd52702c53b3941220cee67cd0ed923b"
+    },
+    {
+      "plate_id": "x05",
+      "path": "src/research/plates/x05.jpg",
+      "governing_specification": "SLM 3D-printed titanium and bronze topology-optimized tapered strut lattice on steel build plate with 45-degree overhang angle gauge",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 160166,
+      "zero_baked_text_verified": true,
+      "sha256": "e4d20f4e047fc8a6c7a1f8df6e9e5a9569406ae2a797be58c8f7681821266852"
+    },
+    {
+      "plate_id": "x06",
+      "path": "src/research/plates/x06.jpg",
+      "governing_specification": "Sectioned brushed-brass and ceramic Genus-1 toroidal Helmholtz metamaterial unit cell cube beside acoustic water-ripple dish",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 195751,
+      "zero_baked_text_verified": true,
+      "sha256": "6a6213f337a6f87f721ca6031eed6af482932fa2ed8a060d99cb8f25cc52cbdf"
     },
     {
       "plate_id": "utopian-city-future",
@@ -589,7 +721,7 @@
       "governing_specification": "80S ribosome translating mRNA strand with engineered suppressor tRNA rescuing premature stop codon",
       "human_perceptual_grounding": "pure_tactile_physical_photography_zero_wireframe_soup",
       "winning_engine": "image-generator-argon-spec-verified",
-      "resolution": "1376x768",
+      "resolution": "1280x720",
       "bytes": 1212302,
       "zero_baked_text_verified": true,
       "sha256": "c6cdf165bf3c27de5cdefa75bd1689eaacaeee978e43e6fd9e78727e4324169f"
