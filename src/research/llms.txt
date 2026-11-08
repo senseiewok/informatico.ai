@@ -2,7 +2,7 @@
 
 > 48 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
 
-Every essay is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (48 SKILL.md companions, Python verifiers & Bounty Crucible harnesses): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
+Every essay and bounty folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (54 SKILL.md companions, Python verifiers & 6 Bounty Crucible harnesses): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
 
 ## Civil Engineering & Construction
 
@@ -67,3 +67,13 @@ Every essay is also in Mexican Spanish under https://informatico.ai/es-mx/. Publ
 - [M.10 Persistent Homology and Percolating Pores](https://informatico.ai/math/m10/): How Edelsbrunner, Letscher and Zomorodian's persistent homology finds the pore throats that let fluid percolate through materials at every scale.
 - [M.11 The 3D Kakeya Conjecture and Riemann Zero Bounds](https://informatico.ai/math/m11/): How Hong Wang and Joshua Zahl solved the 3D Kakeya needle conjecture, paired with Guth and Maynard's 30/13 Riemann zero-density breakthrough.
 - [M.12 Anthropic Lean 4 Complexity and Post-Quantum Locks](https://informatico.ai/math/m12/): How Anthropic's machine-checked Lean 4 complexity proofs pair with NIST FIPS 203 crystal lattices to protect digital trust against quantum attacks.
+
+## Open-Bounty & Prize Crucible (B.01–B.06)
+
+- [Open-Bounty & Prize Crucible](https://informatico.ai/bounties/): Six interactive bounty folios with reproducible Python verifiers and AI skills for Erdős Lean 4 problems, XPRIZE Quantum, Carbon Removal and Sky-Cooling.
+- [B.01 (BOUNTY-M1) Erdős Sidon Sets and Lean 4 Formalization Bounties](https://informatico.ai/bounties/b01/): How Mian–Chowla greedy sequences, the Erdős–Turán upper bound and Lean 4 formal proofs test Sidon sets, with a reproducible Python verifier.
+- [B.02 (BOUNTY-P1) XPRIZE Quantum and Surface-Code FeMoCo Catalysis](https://informatico.ai/bounties/b02/): How Kitaev's topological surface-code stabilizers in Stim and PySCF quantum phase estimation bound the physical qubits for nitrogen fixation.
+- [B.03 (BOUNTY-E1) XPRIZE Carbon Removal: SIMP Mineralized Floor Slabs](https://informatico.ai/bounties/b03/): How Bendsøe–Sigmund SIMP topology optimization in FEniCS and carbonate mineralization cut floor slab embodied carbon below 45 kg per square meter.
+- [B.04 (BOUNTY-A1) Holcim & Cooling Prizes: 3D Vaults and Sky-Cooling](https://informatico.ai/bounties/b04/): How Maxwell 3D polyhedral graphic statics in COMPAS and 8–13 μm radiative sky-cooling roofs build zero-rebar vaults that cool below ambient air.
+- [B.05 (BOUNTY-P2) PySR Symbolic Regression and PySINDy PDE Discovery](https://informatico.ai/bounties/b05/): How PySINDy sparse operator thresholding, Dedalus spectral solvers and PySR Pareto symbolic regression recover exact fluid laws from noisy sensors.
+- [B.06 (BOUNTY-M2) PhysLean Gauge Anomaly & ITensors.jl Entanglement](https://informatico.ai/bounties/b06/): How HEPLean/PhysLean certifies Standard Model gauge anomaly cancellation in Lean 4 while ITensors.jl and NetKet bound critical quantum entanglement.

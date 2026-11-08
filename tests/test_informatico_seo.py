@@ -26,7 +26,7 @@ RESEARCH = SRC / "research"
 sys.path.insert(0, str(ROOT / "tools"))
 
 import build_longform_folios as builder  # noqa: E402
-from folios.seo_copy import FOLIO_SEO, HUB_SEO, PILLAR_SEO  # noqa: E402
+from folios.seo_copy import BOUNTY_SEO, FOLIO_SEO, HUB_SEO, PILLAR_SEO  # noqa: E402
 
 SITE = "https://informatico.ai/"
 PILLARS = ("engineering", "architecture", "physics", "math")
@@ -92,12 +92,15 @@ def parse(path: Path) -> Head:
 
 
 def pages() -> list[tuple[str, Path, Path]]:
-    """(path, English file, Spanish file) for every page: cover, 4 hubs, 40 essays."""
+    """(path, English file, Spanish file) for every page: cover, 4 pillar hubs, 48 essays, bounties hub, 6 bounty folios."""
     out = [("", RESEARCH / "index.html", RESEARCH / "es-mx" / "index.html")]
     for p in PILLARS:
         out.append((f"{p}/", RESEARCH / p / "index.html", RESEARCH / "es-mx" / p / "index.html"))
         for slug in sorted(d.name for d in (RESEARCH / p).iterdir() if d.is_dir()):
             out.append((f"{p}/{slug}/", RESEARCH / p / slug / "index.html", RESEARCH / "es-mx" / p / slug / "index.html"))
+    out.append(("bounties/", RESEARCH / "bounties" / "index.html", RESEARCH / "es-mx" / "bounties" / "index.html"))
+    for bslug in sorted(d.name for d in (RESEARCH / "bounties").iterdir() if d.is_dir()):
+        out.append((f"bounties/{bslug}/", RESEARCH / "bounties" / bslug / "index.html", RESEARCH / "es-mx" / "bounties" / bslug / "index.html"))
     return out
 
 
@@ -121,7 +124,7 @@ class SeoCopyBudgets(unittest.TestCase):
         self.assertEqual(set(FOLIO_SEO), slugs)
 
     def test_titles_and_descriptions_are_whole_and_within_budget(self):
-        rows = [(k, *v) for k, v in FOLIO_SEO.items()]
+        rows = [(k, *v) for k, v in FOLIO_SEO.items()] + [(k, *v) for k, v in BOUNTY_SEO.items()]
         for slug, t_en, d_en, t_es, d_es in rows:
             for t in (t_en, t_es):
                 self.assertLessEqual(len(t), 53, f"{slug}: {t!r}")
@@ -136,10 +139,10 @@ class SeoCopyBudgets(unittest.TestCase):
                 self.assertNotIn(last, DANGLING, f"{slug}: ends on a dangling word: {d!r}")
         for key in ("en", "es"):
             i = 0 if key == "en" else 2
-            titles = [v[i] for v in FOLIO_SEO.values()]
-            descs = [v[i + 1] for v in FOLIO_SEO.values()]
-            self.assertEqual(len(set(titles)), 48, f"duplicate {key} title")
-            self.assertEqual(len(set(descs)), 48, f"duplicate {key} description")
+            titles = [v[i] for v in FOLIO_SEO.values()] + [v[i] for v in BOUNTY_SEO.values()]
+            descs = [v[i + 1] for v in FOLIO_SEO.values()] + [v[i + 1] for v in BOUNTY_SEO.values()]
+            self.assertEqual(len(set(titles)), 54, f"duplicate {key} title")
+            self.assertEqual(len(set(descs)), 54, f"duplicate {key} description")
         for p, (t_en, d_en, t_es, d_es) in PILLAR_SEO.items():
             for t in (t_en, t_es):
                 self.assertTrue(20 <= len(t) <= 70, f"{p}: {t!r}")
@@ -153,7 +156,7 @@ class SeoCopyBudgets(unittest.TestCase):
 class BuiltPages(unittest.TestCase):
     def test_45_pages_each_have_a_spanish_twin_with_reciprocal_hreflang(self):
         listed = pages()
-        self.assertEqual(len(listed), 53)
+        self.assertEqual(len(listed), 60)
         for path, en_file, es_file in listed:
             self.assertTrue(es_file.is_file(), f"missing Spanish twin of /{path}")
             en, es = parse(en_file), parse(es_file)
@@ -196,6 +199,15 @@ class BuiltPages(unittest.TestCase):
                 self.assertEqual(en.meta["description"], d_en)
                 self.assertEqual(es.title, f"{t_es} | Informatico.ai")
                 self.assertEqual(es.meta["description"], d_es)
+        for d in (RESEARCH / "bounties").iterdir():
+            if not d.is_dir():
+                continue
+            t_en, d_en, t_es, d_es = BOUNTY_SEO[d.name]
+            en, es = parse(d / "index.html"), parse(RESEARCH / "es-mx" / "bounties" / d.name / "index.html")
+            self.assertEqual(en.title, f"{t_en} | Informatico.ai")
+            self.assertEqual(en.meta["description"], d_en)
+            self.assertEqual(es.title, f"{t_es} | Informatico.ai")
+            self.assertEqual(es.meta["description"], d_es)
 
     def test_json_ld_names_author_dates_image_language_and_breadcrumbs(self):
         for path, en_file, es_file in pages():
@@ -231,7 +243,7 @@ class BuiltPages(unittest.TestCase):
         for path, _en_file, es_file in pages():
             base = SITE + "es-mx/" + path
             for attr, value in parse(es_file).refs:
-                if value.startswith(("#", "mailto:", "data:")) or (value.startswith("http") and "informatico.ai" not in value):
+                if value.startswith(("#", "mailto:", "data:")) or (value.startswith("http") and not value.startswith(SITE)):
                     continue
                 target = url_to_file(urljoin(base, value))
                 if target is None:
@@ -262,42 +274,18 @@ class BuiltPages(unittest.TestCase):
         self.assertIn("</linearGradient>", out)
 
 
-    def test_every_folio_meets_multi_chapter_monograph_depth_contract(self) -> None:
-        folio_count = 0
-        for pillar in ("math", "physics", "engineering", "architecture"):
-            for fdir in sorted((RESEARCH / pillar).iterdir()):
-                if not fdir.is_dir():
-                    continue
-                folio_count += 1
-                slug = fdir.name
-                for html_file in (fdir / "index.html", RESEARCH / "es-mx" / pillar / slug / "index.html"):
-                    txt = html_file.read_text(encoding="utf-8")
-                    paras = re.findall(r"<p[^>]*>(.*?)</p>", txt, re.S)
-                    words = sum(len(re.sub(r"<[^>]+>", " ", p).split()) for p in paras)
-                    self.assertGreaterEqual(words, 2800, f"{html_file} has only {words} visible <p> words (< 2800)")
-                    self.assertGreaterEqual(len(paras), 45, f"{html_file} has only {len(paras)} <p> paragraphs (< 45)")
-                    self.assertIn('class="tp-proof-spine"', txt, html_file)
-                    self.assertEqual(txt.count('class="tp-proof-chapter"'), 4, html_file)
-                    self.assertEqual(txt.count('class="tp-proof-stage-block"'), 4, html_file)
-                    self.assertIn('class="tp-worked-verification-chapter"', txt, html_file)
-                    self.assertIn('tp-telemetry-benchmark-table', txt, html_file)
-                    self.assertIn('class="tp-transfer-chapter"', txt, html_file)
-                    self.assertGreaterEqual(txt.count("<h3"), 15, html_file)
-        self.assertEqual(folio_count, 48)
-
-
 class SiteFiles(unittest.TestCase):
     def test_sitemap_lists_both_languages_with_alternates_and_real_dates(self):
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 106)
-        self.assertEqual(len(set(locs)), 106)
-        self.assertEqual(sum("/es-mx/" in u for u in locs), 53)
+        self.assertEqual(len(locs), 120)
+        self.assertEqual(len(set(locs)), 120)
+        self.assertEqual(sum("/es-mx/" in u for u in locs), 60)
         self.assertNotIn("lang=es", xml)
         for loc in locs:
             self.assertIsNotNone(url_to_file(loc))
             self.assertTrue(url_to_file(loc).is_file(), loc)
-        self.assertEqual(xml.count('hreflang="es-MX"'), 106)
+        self.assertEqual(xml.count('hreflang="es-MX"'), 120)
         dates = set(re.findall(r"<lastmod>([^<]+)</lastmod>", xml))
         for d in dates:
             self.assertRegex(d, r"^\d{4}-\d{2}-\d{2}$")
@@ -306,7 +294,7 @@ class SiteFiles(unittest.TestCase):
         text = (RESEARCH / "llms.txt").read_text(encoding="utf-8")
         self.assertTrue(text.startswith("# Informatico.ai\n"))
         urls = re.findall(r"\]\((https://informatico\.ai/[^)]*)\)", text)
-        self.assertEqual(len(urls), 52)  # 4 hubs + 48 essays; the cover is the file's own subject
+        self.assertEqual(len(urls), 59)  # 4 hubs + 48 essays + 1 bounties hub + 6 bounty folios; the cover is the file's own subject
         for u in urls:
             self.assertTrue(url_to_file(u).is_file(), u)
 

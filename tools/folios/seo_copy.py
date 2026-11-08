@@ -335,6 +335,52 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
         "Ensayos de Matemáticas: Pruebas en Lean 4 y Más | Informatico.ai",
         "Doce ensayos interactivos de matemáticas: Fermat en Lean 4, control óptimo en la Fórmula 1, la geometría del color, transporte óptimo y topología.",
     ),
+    "bounties": (
+        "Open-Bounty & Grand-Challenge Proof Crucible | Informatico.ai",
+        "Six interactive bounty folios with reproducible Python verifiers and AI skills for Erdős Lean 4 problems, XPRIZE Quantum, Carbon Removal and Sky-Cooling.",
+        "Crisol de Premios y Retos Abiertos con Pruebas | Informatico.ai",
+        "Seis folios interactivos de retos abiertos con verificadores en Python y habilidades de IA para Erdős en Lean 4, XPRIZE Quantum, Carbono y Enfriamiento.",
+    ),
+}
+
+# Dedicated Bounty Folios (b01..b06) under /bounties/<slug>/ and /es-mx/bounties/<slug>/
+BOUNTY_SEO: dict[str, tuple[str, str, str, str]] = {
+    "b01": (
+        "Erdős Sidon Sets and Lean 4 Formalization Bounties",
+        "How Mian–Chowla greedy sequences, the Erdős–Turán upper bound and Lean 4 formal proofs test Sidon sets, with a reproducible Python verifier.",
+        "Conjuntos de Sidon de Erdős y Pruebas en Lean 4",
+        "Cómo la sucesión voraz de Mian–Chowla, la cota de Erdős–Turán y las pruebas en Lean 4 verifican conjuntos de Sidon con un script reproducible.",
+    ),
+    "b02": (
+        "XPRIZE Quantum and Surface-Code FeMoCo Catalysis",
+        "How Kitaev's topological surface-code stabilizers in Stim and PySCF quantum phase estimation bound the physical qubits for nitrogen fixation.",
+        "XPRIZE Quantum y Códigos de Superficie para FeMoCo",
+        "Cómo los estabilizadores de código de superficie en Stim y la estimación de fase en PySCF acotan los qubits físicos para fijar nitrógeno limpio.",
+    ),
+    "b03": (
+        "XPRIZE Carbon Removal: SIMP Mineralized Floor Slabs",
+        "How Bendsøe–Sigmund SIMP topology optimization in FEniCS and carbonate mineralization cut floor slab embodied carbon below 45 kg per square meter.",
+        "XPRIZE Carbon: Losas Estructurales SIMP Mineralizadas",
+        "Cómo la optimización topológica SIMP en FEniCS y la mineralización de carbonatos reducen el carbono incorporado por debajo de 45 kg por metro cuadrado.",
+    ),
+    "b04": (
+        "Holcim & Cooling Prizes: 3D Vaults and Sky-Cooling",
+        "How Maxwell 3D polyhedral graphic statics in COMPAS and 8–13 μm radiative sky-cooling roofs build zero-rebar vaults that cool below ambient air.",
+        "Premios Holcim y Cooling: Bóvedas 3D y Enfriamiento",
+        "Cómo la estática gráfica poliédrica 3D en COMPAS y las cubiertas radiativas de 8–13 μm crean bóvedas sin acero que enfrían bajo el aire ambiente.",
+    ),
+    "b05": (
+        "PySR Symbolic Regression and PySINDy PDE Discovery",
+        "How PySINDy sparse operator thresholding, Dedalus spectral solvers and PySR Pareto symbolic regression recover exact fluid laws from noisy sensors.",
+        "Regresión Simbólica PySR y Descubrimiento PySINDy",
+        "Cómo la poda dispersa en PySINDy, los solucionadores espectrales Dedalus y la regresión simbólica PySR recuperan leyes de fluidos desde sensores.",
+    ),
+    "b06": (
+        "PhysLean Gauge Anomaly & ITensors.jl Entanglement",
+        "How HEPLean/PhysLean certifies Standard Model gauge anomaly cancellation in Lean 4 while ITensors.jl and NetKet bound critical quantum entanglement.",
+        "Anomalía Gauge en PhysLean y Redes en ITensors.jl",
+        "Cómo HEPLean/PhysLean certifica en Lean 4 la cancelación de anomalías del Modelo Estándar mientras ITensors.jl y NetKet acotan el entrelazamiento.",
+    ),
 }
 
 # The cover page; "{total}" is replaced with the number of essays.
