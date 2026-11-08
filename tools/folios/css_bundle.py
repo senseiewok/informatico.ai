@@ -1020,6 +1020,80 @@ REVAMP_CSS = r"""
   .tp-oss-card.is-hidden {
     display: none;
   }
+
+  /* ---- Multi-Chapter Proof & Derivation Monograph Spine ---- */
+  .tp-proof-spine {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    margin: 2rem 0 2.5rem;
+  }
+  .tp-proof-chapter,
+  .tp-worked-verification-chapter,
+  .tp-transfer-chapter {
+    padding: 1.5rem 1.65rem;
+    border: 1px solid var(--tp-rule-strong);
+    border-radius: 10px;
+    background-color: var(--tp-vellum);
+  }
+  .tp-proof-chapter h3,
+  .tp-worked-verification-chapter h3,
+  .tp-transfer-chapter h3 {
+    margin-top: 0;
+  }
+  .tp-theorem-box {
+    margin: 1rem 0 1.25rem;
+    padding: 1.1rem 1.35rem;
+    border-left: 4px solid var(--tp-prussian);
+    border-radius: 0 8px 8px 0;
+    background-color: var(--tp-stone);
+  }
+  .tp-theorem-eq {
+    font-size: 1.02rem;
+    font-weight: 700;
+    margin: 0.35rem 0;
+    color: var(--tp-prussian);
+  }
+  .tp-theorem-meta {
+    font-size: 0.84rem;
+    color: var(--tp-ink-soft);
+    margin: 0;
+  }
+  .tp-proof-stage-block {
+    margin: 1rem 0;
+    padding: 1rem 1.25rem;
+    border-left: 3px solid var(--tp-verdigris);
+    border-radius: 0 8px 8px 0;
+    background-color: var(--tp-stone);
+  }
+  .tp-proof-stage-block h4 {
+    margin: 0 0 0.45rem;
+    font-size: 0.96rem;
+    color: var(--tp-ink);
+  }
+  .tp-invariant-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 1rem 0;
+    padding-left: 1.35rem;
+  }
+  .tp-invariant-list li span {
+    display: block;
+    font-size: 0.83rem;
+    color: var(--tp-ink-soft);
+    margin-top: 0.2rem;
+  }
+  .tp-counterfactual-proof {
+    padding: 1.1rem 1.35rem;
+    border-left: 4px solid var(--tp-minium);
+    border-radius: 0 8px 8px 0;
+    background-color: var(--tp-stone);
+  }
+  .tp-worked-verification-chapter,
+  .tp-transfer-chapter {
+    margin: 2rem 0;
+  }
 }
 """
 
