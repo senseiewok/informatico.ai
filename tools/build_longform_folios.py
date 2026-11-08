@@ -1874,7 +1874,7 @@ def render_bounty_crucible_section() -> str:
         <p class="tp-bounty-grounding-links">
           <a class="tp-cite-link" href="https://github.com/senseiewok/informatico.ai" target="_blank" rel="noopener noreferrer">github.com/senseiewok/informatico.ai &rarr;</a> ·
           <a class="tp-cite-link" href="https://github.com/senseiewok/informatico.ai/tree/main/bounties" target="_blank" rel="noopener noreferrer">bounties/run_all_bounties.py &rarr;</a> ·
-          <a class="tp-cite-link" href="https://github.com/senseiewok/informatico.ai/commits/main" target="_blank" rel="noopener noreferrer">Cryptographic Commit Ledger (SHA Proof) &rarr;</a>
+          <a class="tp-cite-link" href="https://github.com/senseiewok/informatico.ai/commit/1d9bebaf7bb60348d942f3cb05916305fc304ef0" target="_blank" rel="noopener noreferrer">Cryptographic Commit Ledger (SHA Proof) &rarr;</a>
         </p>
       </div>
     </section>"""
