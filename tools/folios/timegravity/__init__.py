@@ -64,6 +64,9 @@ HUB_ONLY_PHRASES: tuple[str, ...] = (
 )
 
 # Reading order of the whole track; only `built` pages are rendered and listed in the sitemap.
+# Nine pages, codes T.00–T.07 and T.10: the council (2026-11-08) dropped T.08 (foliation), T.11 (cosmology) and
+# T.12 (AI ledger, now site-wide) and deferred T.09 (holography) to a second edition. The gap in numbering is
+# deliberate so that the codes keep matching the council record and the proposal.
 TRACK_MAP: list[dict] = [
     {"code": "T.00", "slug": "", "built": True,
      "title_en": "The hub", "title_es": "El punto de partida",

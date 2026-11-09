@@ -63,7 +63,7 @@ PAGE: dict = {
         ),
     },
     "sections": [
-        {"type": "h2", "id": "contract", "en": "How to read a T page", "es": "Cómo leer una página T"},
+        {"type": "h2", "id": "contract", "en": "How to read a T page", "es": "Cómo leer una página T", "short_en": "Labels", "short_es": "Etiquetas"},
         P(
             T("Every page in this track ships six things, and the build refuses a page that lacks one: a hand-written instrument whose "
               "knockout is the argument; a standard-library verifier that recomputes the page's central number and fails on a planted "
@@ -96,9 +96,9 @@ PAGE: dict = {
               "Este punto de partida no lleva ninguna afirmación, y el lint lo comprueba. Enuncia la intuición una vez, arriba, como "
               "pregunta en tercera persona, y esa oración está prohibida en todas las demás páginas de la serie."),
         ),
-        {"type": "h2", "id": "map", "en": "The nine pages, in reading order", "es": "Las nueve páginas, en orden de lectura"},
+        {"type": "h2", "id": "map", "en": "The nine pages, in reading order", "es": "Las nueve páginas, en orden de lectura", "short_en": "Map", "short_es": "Mapa"},
         {"type": "track_map"},
-        {"type": "h2", "id": "change", "en": "What would change this page", "es": "Qué cambiaría esta página"},
+        {"type": "h2", "id": "change", "en": "What would change this page", "es": "Qué cambiaría esta página", "short_en": "What would change", "short_es": "Qué cambiaría"},
         {"type": "change_box",
          "items": [
              ("A measurement that found a felt 'now' as a variable in a physical law would turn the open half into a claim with a label; nothing of the kind exists today.",

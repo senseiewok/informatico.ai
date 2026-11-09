@@ -98,7 +98,7 @@ PAGE: dict = {
         ),
     },
     "sections": [
-        {"type": "h2", "id": "measured", "en": "I · What was measured, and how well", "es": "I · Qué se midió, y con qué precisión"},
+        {"type": "h2", "id": "measured", "en": "I · What was measured, and how well", "es": "I · Qué se midió, y con qué precisión", "short_en": "I · Measured", "short_es": "I · Medido"},
         P(
             C("MEASURED", [PR, HKP, HKO, GPA, CHOU],
               "A clock lower in Earth's gravitational field runs slower than an identical clock above it, and in the weak field "
@@ -211,7 +211,7 @@ PAGE: dict = {
                  "el instrumento mide en la trayectoria y qué tan lejos está de g.")),
          ]},
         {"type": "plate_d"},
-        {"type": "h2", "id": "derived", "en": "II · From a clock-rate gradient to a fall, with no force term", "es": "II · De un gradiente en el ritmo de los relojes a una caída, sin término de fuerza"},
+        {"type": "h2", "id": "derived", "en": "II · From a clock-rate gradient to a fall, with no force term", "es": "II · De un gradiente en el ritmo de los relojes a una caída, sin término de fuerza", "short_en": "II · Derived", "short_es": "II · Derivado"},
         P(
             T("Write the line element of a 1+1 spacetime in which only the time-time component depends on height z:",
               "Escribe el elemento de línea de un espaciotiempo 1+1 donde solo la componente tiempo-tiempo depende de la altura z:"),
@@ -251,7 +251,7 @@ PAGE: dict = {
               "cuerpo sube, que es el defecto plantado del verificador; una página cuyo verificador acepte esa trayectoria no se publica."),
         ),
         {"type": "spine"},
-        {"type": "h2", "id": "open", "en": "III · What this page does not say", "es": "III · Lo que esta página no dice"},
+        {"type": "h2", "id": "open", "en": "III · What this page does not say", "es": "III · Lo que esta página no dice", "short_en": "III · Not said", "short_es": "III · No dicho"},
         P(
             C("OPEN", [WILL],
               "Whether the rate of time is the more basic quantity, with the pull a derived appearance, or the reverse, is not a question "

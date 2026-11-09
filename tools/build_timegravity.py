@@ -577,7 +577,7 @@ def render_page(page: dict, catalog: dict, lang: str = "en") -> str:
     jump = [("#instrument" if slug else "#question", "Instrument", "Instrumento")]
     for block in page["sections"]:
         if block["type"] == "h2":
-            jump.append((f"#{block['id']}", block["en"].split("·")[-1].strip()[:28], block["es"].split("·")[-1].strip()[:28]))
+            jump.append((f"#{block['id']}", block.get("short_en", block["en"]), block.get("short_es", block["es"])))
     # Own classes, not tp-act-pill: theme-plate.mjs relabels .tp-act-jump-bar pills with the Folio act names.
     jump_html = "\n".join(f'      <a class="tg-jump-pill" href="{h}" data-en="{a(e)}" data-es="{a(s)}">{t(e)}</a>' for h, e, s in jump)
 
