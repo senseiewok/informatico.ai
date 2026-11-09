@@ -707,5 +707,25 @@ class TimeGravitySmearedIslTests(unittest.TestCase):
             self.assertIn(s, mjs)
 
 
+class TimeGravityRefitScriptTests(unittest.TestCase):
+    """The profile-likelihood refit script for the smeared pair potential, on its own synthetic data."""
+
+    def test_refit_demo_bounds_newtonian_data_and_recovers_an_injected_sigma(self) -> None:
+        res = run(PY + [str(ROOT / "tools" / "timegravity_refit_smeared.py"), "--demo", "--quick"], timeout=300)
+        self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
+        payload = json.loads(res.stdout)
+        self.assertEqual(payload["status"], "PASS")
+        nd = payload["newtonian_data"]
+        self.assertTrue(20e-6 < nd["sigma_95_upper_m"] < 120e-6, nd)
+        self.assertTrue(15e-6 < nd["lambda_95_upper_m_alpha_minus_1"] < 120e-6, nd)
+        self.assertAlmostEqual(nd["gamma"], 1.0, delta=0.02)
+        inj = payload["injected_sigma_75um"]
+        self.assertIsNotNone(inj["smeared_best"])
+        self.assertTrue(50e-6 < inj["smeared_best"]["param_m"] < 110e-6, inj)
+        self.assertGreater(inj["chi2_newton"], inj["smeared_best"]["chi2"] + 3.84)
+        lo, hi = inj["sigma_95_interval_m"]
+        self.assertTrue(lo <= 75e-6 * 1.1 and hi >= 75e-6 * 0.9, inj)  # the injected value inside the 95 % interval, up to grid resolution
+
+
 if __name__ == "__main__":
     unittest.main()
