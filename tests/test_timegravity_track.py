@@ -254,7 +254,7 @@ class TimeGravityTrackTests(unittest.TestCase):
         res = run(PY + [str(ROOT / "timegravity" / "run_all_timegravity.py")], timeout=120)
         self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
         self.assertIn("PASS: Time & Gravity:", res.stdout)
-        self.assertEqual(res.stdout.count("REJECTED_AS_EXPECTED:"), 4)  # 3 verifiers + the lint
+        self.assertEqual(res.stdout.count("REJECTED_AS_EXPECTED:"), 6)  # 5 verifiers + the lint
 
     def test_pages_rebuild_byte_for_byte_from_source(self) -> None:
         import build_timegravity as tg
@@ -329,7 +329,7 @@ class TimeGravityBatch2Tests(unittest.TestCase):
         t01 = (TG / "t01" / "index.html").read_text(encoding="utf-8")
         self.assertIn('class="tp-pager-link tp-pager-next" href="../../timegravity/t03/"', t01)
         self.assertIn('class="tp-pager-link tp-pager-prev" href="../../timegravity/t02/"', t01)
-        self.assertEqual(hub.count('data-built="true"'), 4)
+        self.assertEqual(hub.count('data-built="true"'), 6)
 
     def test_lint_mutation_suite_kills_every_mutant_and_scite_tallies_are_cached(self) -> None:
         res = run(PY + [str(ROOT / "tools" / "check_timegravity_labels.py"), "--mutants"])
@@ -355,6 +355,79 @@ class TimeGravityBatch2Tests(unittest.TestCase):
         self.assertIsNone(re.search(r"\b(fetch|XMLHttpRequest|WebSocket|EventSource|sendBeacon|import\s*\()\b", code_only))
         self.assertIn("poissonRadial", mjs)
         self.assertIn("gpsSchwarzschildNet", mjs)
+
+
+class TimeGravityBatch3Tests(unittest.TestCase):
+    """T.07 and T.04, and the site-wide navigation entry for the track."""
+
+    def test_t07_and_t04_pages_verifiers_and_planted_defects(self) -> None:
+        for slug, vname in (("t07", "verify_t07_page_wootters.py"), ("t04", "verify_t04_clock_visibility.py")):
+            for path in (TG / slug / "index.html", TG_ES / slug / "index.html"):
+                self.assertTrue(path.is_file(), f"missing {path}")
+            gen = run(PY + [str(SKILLS / slug / f"make_{slug}.py")])
+            self.assertEqual(gen.returncode, 0, gen.stdout + gen.stderr)
+            res = run(PY + [str(SKILLS / slug / vname)])
+            self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
+            payload = json.loads(res.stdout)
+            self.assertEqual(payload["status"], "PASS")
+            self.assertEqual(payload["geometry_checks"]["planted_defect_knockout"], "REJECTED_AS_EXPECTED")
+            bad = run(PY + [str(SKILLS / slug / vname), "--planted-defect"])
+            self.assertNotEqual(bad.returncode, 0)
+            self.assertIn("FAIL", bad.stderr)
+        t07 = json.loads(run(PY + [str(SKILLS / "t07" / "verify_t07_page_wootters.py")]).stdout)
+        self.assertLess(t07["central_number"]["constraint_residual"], 1e-10)
+        self.assertLess(t07["central_number"]["max_dev_from_schroedinger"], 1e-10)
+        self.assertGreaterEqual(t07["central_number"]["kernel_dim"], 1)
+        self.assertAlmostEqual(t07["central_number"]["projection_onto_kernel"], 1.0, places=6)
+        self.assertGreater(t07["geometry_checks"]["planted_residual"], 1.0)
+        t04 = json.loads(run(PY + [str(SKILLS / "t04" / "verify_t04_clock_visibility.py")]).stdout)
+        self.assertAlmostEqual(t04["central_number"]["first_zero_dh_T_m_s"], 10.7, delta=0.1)
+        self.assertAlmostEqual(t04["central_number"]["v_1m_1s_sr_clock"], 0.989, delta=0.002)
+        self.assertLess(t04["central_number"]["max_dev_closed_vs_overlap"], 1e-12)
+
+    def test_t07_t04_labels_boundary_instruments_and_reading_order(self) -> None:
+        expect = {"t07": ("MEASURED", "DERIVED", "SINGLE RESULT", "PROPOSED", "OPEN"), "t04": ("DERIVED", "SINGLE RESULT", "PROPOSED", "OPEN")}
+        for slug, labels in expect.items():
+            en, es = TG / slug / "index.html", TG_ES / slug / "index.html"
+            self.assertEqual(labels_of(en), labels_of(es), slug)
+            self.assertEqual(set(labels_of(en)), set(labels), f"{slug}: {labels_of(en)}")
+            for path, boundary in ((en, BOUNDARY_EN), (es, BOUNDARY_ES)):
+                txt = path.read_text(encoding="utf-8")
+                self.assertIn(boundary, txt)
+                self.assertIn(f'data-tg-instrument="{"pw" if slug == "t07" else "zych"}"', txt)
+                self.assertIn("data-tg-predict", txt)
+                self.assertIn('class="tg-ai-line"', txt)
+                for phrase in HUB_ONLY_PHRASES:
+                    self.assertNotIn(phrase, txt.lower())
+            self.assertEqual(builder.to_spanish_static(en.read_text(encoding="utf-8"), swap=False, shift=False), en.read_text(encoding="utf-8"))
+        self.assertNotIn("MEASURED", labels_of(TG / "t04" / "index.html"), "T.04 is an experiment description; nothing on it is MEASURED")
+        t04 = (TG / "t04" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("magnetic field gradient, not by gravity", t04)
+        self.assertIn("Which time does the clock read?", t04)
+        self.assertIn("Whose clock?", (TG / "t07" / "index.html").read_text(encoding="utf-8"))
+        # Reading order: T.03 -> T.04 -> (T.05, T.06 in preparation) -> T.07 -> T.10
+        t03 = (TG / "t03" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('class="tp-pager-link tp-pager-next" href="../../timegravity/t04/"', t03)
+        self.assertIn('class="tp-pager-link tp-pager-prev" href="../../timegravity/t03/"', t04)
+        t07 = (TG / "t07" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('href="../../timegravity/t04/"', t07)  # nearest live page before T.07
+        self.assertEqual((TG / "index.html").read_text(encoding="utf-8").count('data-built="true"'), 6)
+
+    def test_every_page_carries_the_time_gravity_nav_and_contents_entry(self) -> None:
+        pages = [p for p in RESEARCH.rglob("index.html") if "es-mx" not in p.parts or True]
+        self.assertGreater(len(pages), 130)
+        for page in pages:
+            txt = page.read_text(encoding="utf-8")
+            self.assertIn('data-tp-nav="timegravity"', txt, f"{page} lacks the Time & Gravity nav link")
+            self.assertIn('data-en="Time &amp; Gravity" data-es="Tiempo y Gravedad"', txt, f"{page} lacks the bilingual nav label")
+            self.assertIn('aria-label="Time and Gravity track pages"', txt, f"{page} lacks the Contents-dialog section")
+            self.assertIn("T.07", txt, f"{page} Contents dialog lacks T.07")
+        es_hub = (RESEARCH / "es-mx" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('data-es="Tiempo y Gravedad">Tiempo y Gravedad</a>', es_hub)
+        for tpage in (TG / "index.html", TG / "t07" / "index.html"):
+            self.assertIn('data-tp-nav="timegravity" href="../timegravity/" aria-current="page"'.replace("../timegravity/", "../timegravity/" if tpage.parent == TG else "../../timegravity/"), tpage.read_text(encoding="utf-8"))
+        nf = (RESEARCH / "404.html").read_text(encoding="utf-8")
+        self.assertIn("/timegravity/", nf)
 
 
 if __name__ == "__main__":

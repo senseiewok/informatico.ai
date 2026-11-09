@@ -35,6 +35,8 @@ from timegravity_kernel import (  # noqa: E402
     gps_uncertainty_budget, integrate, light_clock_dilation, poisson_radial,
 )
 
+from timegravity_kernel_quantum import OMEGA_SR, pw_history_state, zych_first_zero, zych_visibility  # noqa: E402
+
 RESEARCH = ROOT / "src" / "research"
 LEDGER = json.loads((ROOT / "timegravity" / "ledger.json").read_text(encoding="utf-8"))
 ROWS = {r["id"]: r for r in LEDGER["rows"]}
@@ -137,6 +139,18 @@ PLATE_CAPTIONS = {
         "Un satélite en su órbita alrededor de la Tierra sombreada, y tres barras para el presupuesto del reloj: la ganancia gravitatoria, la pérdida por velocidad y el neto, todo calculado desde GM, el radio orbital y c.",
         "an orbit circle around a shaded disc with a satellite dot, and three horizontal bars of different lengths",
         "un círculo de órbita alrededor de un disco sombreado con un punto satélite, y tres barras horizontales de distinta longitud",
+    ),
+    "T.04": (
+        "Two arms of an interferometer one above the other, each with a clock face, and the visibility curve that falls as the height difference grows.",
+        "Dos brazos de un interferómetro uno sobre otro, cada uno con una carátula de reloj, y la curva de visibilidad que cae conforme crece la diferencia de altura.",
+        "two horizontal arms at different heights with a clock face on each, and a curve that falls from left to right",
+        "dos brazos horizontales a distintas alturas con una carátula de reloj en cada uno, y una curva que cae de izquierda a derecha",
+    ),
+    "T.07": (
+        "A grid of tiles for a stationary global state, one row per clock reading, and the cosine-squared curve the conditional probabilities trace; nothing in the grid moves.",
+        "Una cuadrícula de mosaicos para un estado global estacionario, una fila por lectura del reloj, y la curva coseno cuadrado que trazan las probabilidades condicionales; nada en la cuadrícula se mueve.",
+        "a grid of shaded tiles beside a smooth cosine-squared curve with dots on it",
+        "una cuadrícula de mosaicos sombreados junto a una curva suave de coseno cuadrado con puntos encima",
     ),
     "T.03": (
         "Concentric rings around a mass, darker where clocks run slower, from the Poisson solution on a grid; two dots of different size fall along the same line.",
@@ -522,6 +536,152 @@ def budget_table(page: dict) -> str:
         {bi("p", b["note"], "c es exacta por definición; la excentricidad (periódica, de media cero) y el potencial geoide-frente-a-ecuador no están en el presupuesto y son la razón de la ventana de aceptación de ±0.7 µs/día.", "tg-how")}"""
 
 
+def pw_instrument(page: dict) -> str:
+    ins = page["instrument"]
+    st = pw_history_state()
+    d = st["d"]
+    # Tiles: rows n = 0..d-1 (y), columns |+x>, |-x> ; opacity from the conditional probabilities weighted by the row weight
+    tiles = []
+    ty0, th = 60, 20
+    for c in st["conditional"]:
+        n = c["n"]
+        for col, p in ((0, c["p_plus_x"]), (1, 1.0 - c["p_plus_x"])):
+            x = 110 + col * 70
+            tiles.append(f'<rect class="tg-tile" data-n="{n}" data-col="{col}" x="{x}" y="{ty0 + n * th}" width="60" height="{th - 2}" rx="3" fill="var(--tp-prussian)" style="opacity:{0.08 + 0.85 * p:.3f}"/>')
+    # Plot: P(+x | t_n) dots and the cos^2 curve
+    px0, px1, py0, py1 = 380, 880, 70, 370
+    to_x = lambda n: px0 + (px1 - px0) * n / (d - 1)  # noqa: E731
+    to_y = lambda p: py1 - (py1 - py0) * p  # noqa: E731
+    curve = " ".join(f'{"M" if i == 0 else "L"} {to_x(i * (d - 1) / 200):.1f} {to_y(__import__("math").cos(st["eps"] * (i * (d - 1) / 200) / 2.0) ** 2):.1f}' for i in range(201))
+    dots = "".join(f'<circle class="tg-pw-dot" data-n="{c["n"]}" cx="{to_x(c["n"]):.1f}" cy="{to_y(c["p_plus_x"]):.1f}" r="5" fill="var(--tp-minium)"/>' for c in st["conditional"])
+    return f"""    <section class="tg-instrument" id="instrument" data-tg-instrument="pw" data-tg-d="{d}" data-tg-k="1" aria-labelledby="tg-instrument-heading-t07">
+      <h2 id="tg-instrument-heading-t07" class="tp-h2" data-en="{a(ins['title_en'])}" data-es="{a(ins['title_es'])}">{t(ins['title_en'])}</h2>
+      {bi("p", ins["how_en"], ins["how_es"], "tg-how")}
+{predict_block(page)}
+        <svg class="tg-stage" viewBox="0 0 920 420" role="img" aria-labelledby="tg-stage-title-t07 tg-stage-desc-t07" data-px0="{px0}" data-px1="{px1}" data-py0="{py0}" data-py1="{py1}" data-ty0="{ty0}" data-th="{th}">
+          <title id="tg-stage-title-t07">A stationary Page–Wootters state as a grid, and the Schrödinger curve its conditional probabilities trace</title>
+          <desc id="tg-stage-desc-t07">Left: a grid with one row per clock reading and two columns for the qubit's plus-x and minus-x components; the shading does not change because the global state is stationary. Right: the probability of plus-x given each clock reading, dots on a cosine-squared curve. A different clock basis gives a flat line at one half.</desc>
+          <text x="170" y="40" text-anchor="middle" font-size="11" font-weight="700" data-en="|Ψ⟩⟩ by clock reading (rows) and qubit part (columns)" data-es="|Ψ⟩⟩ por lectura del reloj (filas) y parte del qubit (columnas)">|Ψ⟩⟩ by clock reading (rows) and qubit part (columns)</text>
+          <text x="140" y="56" text-anchor="middle" font-size="10">|+x⟩</text>
+          <text x="210" y="56" text-anchor="middle" font-size="10">|−x⟩</text>
+          <g class="tg-tiles">{''.join(tiles)}</g>
+          <text class="tg-tile-label" x="60" y="{ty0 + 12}" font-size="10">t₀</text>
+          <text class="tg-tile-label" x="60" y="{ty0 + (d - 1) * th + 12}" font-size="10">t₁₅</text>
+          <rect class="tg-row-marker" x="104" y="{ty0 - 2}" width="142" height="{th + 2}" fill="none" stroke="var(--tp-minium)" stroke-width="2" rx="4"/>
+          <line class="tg-axis" x1="{px0}" y1="{py0}" x2="{px0}" y2="{py1}"/>
+          <line class="tg-axis" x1="{px0}" y1="{py1}" x2="{px1}" y2="{py1}"/>
+          <text x="{px0 - 8}" y="{py0 + 4}" text-anchor="end" font-size="10">1</text>
+          <text x="{px0 - 8}" y="{(py0 + py1) / 2 + 4:.0f}" text-anchor="end" font-size="10">½</text>
+          <text x="{px0 - 8}" y="{py1 + 4}" text-anchor="end" font-size="10">0</text>
+          <text x="{px1}" y="{py1 + 18}" text-anchor="end" font-size="11" data-en="clock reading tₙ" data-es="lectura del reloj tₙ">clock reading tₙ</text>
+          <text x="{px0}" y="{py0 - 12}" font-size="11" data-tg-read="plotlabel" data-en="P(+x | tₙ) against cos²(ε tₙ/2)" data-es="P(+x | tₙ) frente a cos²(ε tₙ/2)">P(+x | tₙ) against cos²(ε tₙ/2)</text>
+          <path class="tg-pw-curve" d="{curve}" fill="none" stroke="var(--tp-prussian)" stroke-width="2"/>
+          <g class="tg-pw-dots">{dots}</g>
+        </svg>
+      <div class="tg-controls">
+        <div class="tp-control-group">
+          <label for="tg-n-t07">
+            <span data-en="Clock reading n" data-es="Lectura del reloj n">Clock reading n</span>
+            <span data-tg-read="n">0</span>
+          </label>
+          <input id="tg-n-t07" data-tg-n type="range" min="0" max="{d - 1}" step="1" value="0" aria-describedby="tg-status-t07">
+        </div>
+        <div class="tg-btn-row" role="group" aria-label="Knockout and planted defect">
+          <button type="button" class="tp-step-btn tp-knockout-btn" data-tg-knockout aria-pressed="false" data-en="⚡ Knockout · read the clock in its energy basis" data-es="⚡ Apagado · leer el reloj en su base de energía">⚡ Knockout · read the clock in its energy basis</button>
+          <button type="button" class="tp-step-btn" data-tg-flip aria-pressed="false" data-en="Planted defect · clock spectrum ignores the constraint" data-es="Defecto plantado · el espectro del reloj ignora la restricción">Planted defect · clock spectrum ignores the constraint</button>
+        </div>
+      </div>
+      <div class="tp-readout-strip">
+        <div class="tp-readout-box" data-tg-readout-box="err" data-alert="false">
+          <span class="tp-readout-k" data-en="Constraint residual ‖Ĥ|Ψ⟩⟩‖" data-es="Residuo de la restricción ‖Ĥ|Ψ⟩⟩‖">Constraint residual ‖Ĥ|Ψ⟩⟩‖</span>
+          <span class="tp-readout-v" data-tg-read="residual">{st['constraint_residual']:.1e}</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="P(+x | tₙ) at the chosen reading" data-es="P(+x | tₙ) en la lectura elegida">P(+x | tₙ) at the chosen reading</span>
+          <span class="tp-readout-v" data-tg-read="pn">{st['conditional'][0]['p_plus_x']:.4f}</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="max |P − cos²(ε tₙ/2)|" data-es="máx |P − cos²(ε tₙ/2)|">max |P − cos²(ε tₙ/2)|</span>
+          <span class="tp-readout-v" data-tg-read="dev">{st['max_dev_from_schroedinger']:.1e}</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Time in this split" data-es="Tiempo en esta partición">Time in this split</span>
+          <span class="tp-readout-v" data-tg-read="split" data-en="yes: cos² motion" data-es="sí: movimiento cos²">yes: cos² motion</span>
+        </div>
+      </div>
+      <p id="tg-status-t07" class="tg-status" data-tg-status data-state="fall" aria-live="polite" data-en="Stationary whole, moving part: conditioning on the clock's time states recovers the Schrödinger curve exactly." data-es="Todo estacionario, parte en movimiento: condicionar a los estados de tiempo del reloj recupera la curva de Schrödinger exactamente.">Stationary whole, moving part: conditioning on the clock's time states recovers the Schrödinger curve exactly.</p>
+    </section>"""
+
+
+def zych_instrument(page: dict) -> str:
+    ins = page["instrument"]
+    T_hold, dh0 = 1.0, 1.0
+    px0, px1, py0, py1 = 420, 880, 70, 360
+    to_x = lambda dh: px0 + (px1 - px0) * dh / 10.0  # noqa: E731
+    to_y = lambda v: py1 - (py1 - py0) * v  # noqa: E731
+    curve = " ".join(f'{"M" if i == 0 else "L"} {to_x(i / 20):.1f} {to_y(zych_visibility(i / 20, T_hold, OMEGA_SR)):.1f}' for i in range(201))
+    v0 = zych_visibility(dh0, T_hold, OMEGA_SR)
+    return f"""    <section class="tg-instrument" id="instrument" data-tg-instrument="zych" data-tg-g="{G0}" aria-labelledby="tg-instrument-heading-t04">
+      <h2 id="tg-instrument-heading-t04" class="tp-h2" data-en="{a(ins['title_en'])}" data-es="{a(ins['title_es'])}">{t(ins['title_en'])}</h2>
+      {bi("p", ins["how_en"], ins["how_es"], "tg-how")}
+{predict_block(page)}
+        <svg class="tg-stage" viewBox="0 0 920 420" role="img" aria-labelledby="tg-stage-title-t04 tg-stage-desc-t04" data-px0="{px0}" data-px1="{px1}" data-py0="{py0}" data-py1="{py1}">
+          <title id="tg-stage-title-t04">Two interferometer arms at different heights with a clock on each, and the visibility against height difference</title>
+          <desc id="tg-stage-desc-t04">Left: two horizontal arms one above the other, each with a clock face; the lower clock accumulates less proper time. Right: the interferometric visibility from one down to zero against the height difference from zero to ten metres, with a marker at the chosen setting.</desc>
+          <text x="200" y="40" text-anchor="middle" font-size="11" font-weight="700" data-en="one clock, two heights" data-es="un reloj, dos alturas">one clock, two heights</text>
+          <line class="tg-arm tg-arm-up" x1="60" y1="120" x2="340" y2="120" stroke="var(--tp-ink)" stroke-width="3"/>
+          <line class="tg-arm tg-arm-down" x1="60" y1="300" x2="340" y2="300" stroke="var(--tp-ink)" stroke-width="3"/>
+          <path d="M 40 210 L 60 120 M 40 210 L 60 300 M 340 120 L 360 210 M 340 300 L 360 210" fill="none" stroke="var(--tp-rule-strong)" stroke-dasharray="4 4"/>
+          <circle class="tg-clock-face" cx="200" cy="120" r="22"/><line class="tg-clock-hand tg-hand-up" x1="200" y1="120" x2="200" y2="102"/>
+          <circle class="tg-clock-face" cx="200" cy="300" r="22"/><line class="tg-clock-hand tg-hand-down" x1="200" y1="300" x2="200" y2="282"/>
+          <line class="tg-release-line tg-dh-line" x1="380" y1="120" x2="380" y2="300"/>
+          <text class="tg-dh-label" x="386" y="214" font-size="10" data-tg-read="dhlabel">Δh = {dh0:.1f} m</text>
+          <text x="200" y="340" text-anchor="middle" font-size="10" fill="var(--tp-slate)" data-en="(clock hands exaggerated)" data-es="(manecillas exageradas)">(clock hands exaggerated)</text>
+          <line class="tg-axis" x1="{px0}" y1="{py0}" x2="{px0}" y2="{py1}"/>
+          <line class="tg-axis" x1="{px0}" y1="{py1}" x2="{px1}" y2="{py1}"/>
+          <text x="{px0 - 8}" y="{py0 + 4}" text-anchor="end" font-size="10">1</text>
+          <text x="{px0 - 8}" y="{py1 + 4}" text-anchor="end" font-size="10">0</text>
+          <text x="{px1}" y="{py1 + 18}" text-anchor="end" font-size="11" data-en="height difference Δh (0 to 10 m)" data-es="diferencia de altura Δh (0 a 10 m)">height difference Δh (0 to 10 m)</text>
+          <text x="{px0}" y="{py0 - 12}" font-size="11" data-en="visibility V = |cos(ω Δτ/2)|" data-es="visibilidad V = |cos(ω Δτ/2)|">visibility V = |cos(ω Δτ/2)|</text>
+          <path class="tg-zych-curve" d="{curve}" fill="none" stroke="var(--tp-prussian)" stroke-width="2.5"/>
+          <circle class="tg-zych-marker" cx="{to_x(dh0):.1f}" cy="{to_y(v0):.1f}" r="7" fill="var(--tp-minium)" stroke="var(--tp-vellum)" stroke-width="2"/>
+        </svg>
+      <div class="tg-controls">
+        <div class="tp-control-group">
+          <label for="tg-dh-t04"><span data-en="Height difference Δh (m)" data-es="Diferencia de altura Δh (m)">Height difference Δh (m)</span> <span data-tg-read="dh">{dh0:.1f}</span></label>
+          <input id="tg-dh-t04" data-tg-dh type="range" min="0" max="10" step="0.1" value="{dh0}" aria-describedby="tg-status-t04">
+          <label for="tg-T-t04"><span data-en="Hold time T (s)" data-es="Tiempo de espera T (s)">Hold time T (s)</span> <span data-tg-read="T">{T_hold:.1f}</span></label>
+          <input id="tg-T-t04" data-tg-hold type="range" min="0.1" max="10" step="0.1" value="{T_hold}">
+          <label for="tg-w-t04"><span data-en="Clock frequency log₁₀(ω/2π in Hz)" data-es="Frecuencia del reloj log₁₀(ω/2π en Hz)">Clock frequency log₁₀(ω/2π in Hz)</span> <span data-tg-read="logw">14.63</span></label>
+          <input id="tg-w-t04" data-tg-logw type="range" min="13" max="16" step="0.01" value="14.63">
+        </div>
+        <div class="tg-btn-row" role="group" aria-label="Knockout and planted defect">
+          <button type="button" class="tp-step-btn tp-knockout-btn" data-tg-knockout aria-pressed="false" data-en="⚡ Knockout · switch gravity off (g → 0)" data-es="⚡ Apagado · quitar la gravedad (g → 0)">⚡ Knockout · switch gravity off (g → 0)</button>
+          <button type="button" class="tp-step-btn" data-tg-flip aria-pressed="false" data-en="Planted defect · a clock that never ticks (ω → 0)" data-es="Defecto plantado · un reloj que nunca marcha (ω → 0)">Planted defect · a clock that never ticks (ω → 0)</button>
+        </div>
+      </div>
+      <div class="tp-readout-strip">
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Proper-time difference Δτ" data-es="Diferencia de tiempo propio Δτ">Proper-time difference Δτ</span>
+          <span class="tp-readout-v" data-tg-read="dtau">{G0 * dh0 * T_hold / 299792458.0**2:.2e} s</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Phase ω Δτ / 2" data-es="Fase ω Δτ / 2">Phase ω Δτ / 2</span>
+          <span class="tp-readout-v" data-tg-read="phase">{OMEGA_SR * G0 * dh0 * T_hold / 299792458.0**2 / 2:.3f} rad</span>
+        </div>
+        <div class="tp-readout-box" data-tg-readout-box="err" data-alert="false">
+          <span class="tp-readout-k" data-en="Visibility V" data-es="Visibilidad V">Visibility V</span>
+          <span class="tp-readout-v" data-tg-read="V">{v0:.4f}</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="First zero: Δh·T" data-es="Primer cero: Δh·T">First zero: Δh·T</span>
+          <span class="tp-readout-v" data-tg-read="zero">{zych_first_zero(OMEGA_SR):.1f} m·s</span>
+        </div>
+      </div>
+      <p id="tg-status-t04" class="tg-status" data-tg-status data-state="fall" aria-live="polite" data-en="A proposal, not a result: the clock's two readings overlap less as Δh·T grows, and the interference fades by exactly that overlap." data-es="Una propuesta, no un resultado: las dos lecturas del reloj se solapan menos conforme crece Δh·T, y la interferencia se desvanece exactamente por ese solape.">A proposal, not a result: the clock's two readings overlap less as Δh·T grows, and the interference fades by exactly that overlap.</p>
+    </section>"""
+
+
 def plate_d(page: dict) -> str:
     code = page["code"]
     return f"""        <figure class="tp-distill-figure" role="group" aria-label="Plate {code}-D Visual Intuition Bridge">
@@ -845,7 +1005,7 @@ def render_page(page: dict, catalog: dict, lang: str = "en") -> str:
     if slug:
         crumbs.append((page["code"], canon))
         ld = B._ld("ScholarlyArticle", t_es if es else t_en, desc, canon, lang, image=image,
-                   date_published=TRACK_DATE, date_modified=TRACK_DATE, crumbs=crumbs)
+                   date_published=page.get("date", TRACK_DATE), date_modified=page.get("date", TRACK_DATE), crumbs=crumbs)
     else:
         ld = B._ld("CollectionPage", t_es if es else t_en, desc, canon, lang, image=image, crumbs=crumbs)
     head = B.render_head(title, desc, path, "article" if slug else "website", image, rel_root, rel_res, ld, lang)
@@ -869,6 +1029,10 @@ def render_page(page: dict, catalog: dict, lang: str = "en") -> str:
         instrument = gps_instrument(page)
     elif kind == "poisson":
         instrument = poisson_instrument(page)
+    elif kind == "pw":
+        instrument = pw_instrument(page)
+    elif kind == "zych":
+        instrument = zych_instrument(page)
     else:
         instrument = slope_instrument(page, rel_res)
     ai_line = bi("p", page["ai_line_en"], page["ai_line_es"], "tg-ai-line") if page.get("ai_line_en") else ""
@@ -877,7 +1041,7 @@ def render_page(page: dict, catalog: dict, lang: str = "en") -> str:
 
     return f"""{head}
 <body class="tp-body tp-page-folio tg-page">
-{B.render_masthead(rel_res, "", lang)}
+{B.render_masthead(rel_res, "timegravity", lang)}
 {B.render_contents_dialog(rel_res, catalog)}
   <main id="main" class="tp-shell" tabindex="-1">
 {breadcrumb(rel_res, page)}

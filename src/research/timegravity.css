@@ -274,6 +274,12 @@
   .tg-ring { transition: opacity 240ms ease, stroke-width 240ms ease; }
   .tg-scite-n { font-family: var(--font-mono, monospace); font-size: 0.74rem; color: var(--tp-slate); }
 
+  /* T.07 and T.04 instrument parts */
+  .tg-tile { transition: opacity 200ms ease; }
+  .tg-pw-dot, .tg-zych-marker { transition: cx 200ms ease, cy 200ms ease; }
+  .tg-pw-curve, .tg-zych-curve { transition: opacity 200ms ease; }
+  .tg-arm, .tg-clock-face, .tg-clock-hand { transition: y1 200ms ease, y2 200ms ease, cy 200ms ease; }
+
   .tp-track-chip-timegravity {
     background: linear-gradient(135deg, var(--tp-vellum) 0%, var(--tp-verdigris-soft) 100%);
     border-color: var(--tp-prussian);
@@ -286,6 +292,6 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .tg-worldline, .tg-body, .tg-now-marker, .tg-bar, .tg-ring { transition: none !important; animation: none !important; }
+    .tg-worldline, .tg-body, .tg-now-marker, .tg-bar, .tg-ring, .tg-tile, .tg-pw-dot, .tg-zych-marker, .tg-pw-curve, .tg-zych-curve, .tg-arm, .tg-clock-face, .tg-clock-hand { transition: none !important; animation: none !important; }
   }
 }

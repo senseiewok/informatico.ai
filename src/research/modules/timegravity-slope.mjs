@@ -477,6 +477,211 @@ function initPoisson(root) {
   render(true);
 }
 
+// ------------------------------------------------------------------------------------------------ T.07
+/** Page–Wootters history state on a d-level clock and a qubit; complex numbers as [re, im]. Mirrors timegravity_kernel_quantum. */
+export function pwHistory(d, k, planted) {
+  const E = [];
+  for (let m = -d / 2; m < d / 2; m++) E.push(planted ? (2 * Math.PI * m * Math.abs(m)) / d : (2 * Math.PI * m) / d);
+  const eps = (4 * Math.PI * k) / d;
+  const eSys = [eps / 2, -eps / 2];
+  const inv = 1 / Math.sqrt(d);
+  const psi = Array.from({ length: 2 * d }, () => [0, 0]);
+  const cexp = (th) => [Math.cos(th), Math.sin(th)];
+  const mul = (a, b) => [a[0] * b[0] - a[1] * b[1], a[0] * b[1] + a[1] * b[0]];
+  for (let n = 0; n < d; n++) {
+    for (let mi = 0; mi < d; mi++) {
+      const cClock = cexp(-E[mi] * n);
+      for (let s = 0; s < 2; s++) {
+        const comp = cexp(-eSys[s] * n);
+        const v = mul(cClock, comp);
+        psi[mi * 2 + s][0] += inv * inv * v[0] / Math.SQRT2;
+        psi[mi * 2 + s][1] += inv * inv * v[1] / Math.SQRT2;
+      }
+    }
+  }
+  let norm = 0;
+  psi.forEach((z) => { norm += z[0] * z[0] + z[1] * z[1]; });
+  norm = Math.sqrt(norm);
+  psi.forEach((z) => { z[0] /= norm; z[1] /= norm; });
+  let residual = 0;
+  for (let i = 0; i < 2 * d; i++) {
+    const h = E[Math.floor(i / 2)] + eSys[i % 2];
+    residual += (h * psi[i][0]) ** 2 + (h * psi[i][1]) ** 2;
+  }
+  residual = Math.sqrt(residual);
+  const cond = [];
+  let maxDev = 0;
+  for (let n = 0; n < d; n++) {
+    const amp = [[0, 0], [0, 0]];
+    for (let mi = 0; mi < d; mi++) {
+      const ph = cexp(E[mi] * n);
+      for (let s = 0; s < 2; s++) {
+        const v = mul(ph, psi[mi * 2 + s]);
+        amp[s][0] += inv * v[0]; amp[s][1] += inv * v[1];
+      }
+    }
+    const w = amp[0][0] ** 2 + amp[0][1] ** 2 + amp[1][0] ** 2 + amp[1][1] ** 2;
+    const pr = (amp[0][0] + amp[1][0]) / Math.SQRT2, pi = (amp[0][1] + amp[1][1]) / Math.SQRT2;
+    const pPlus = w > 1e-18 ? (pr * pr + pi * pi) / w : NaN;
+    const closed = Math.cos((eps * n) / 2) ** 2;
+    maxDev = Math.max(maxDev, Math.abs(pPlus - closed));
+    cond.push({ n, pPlus, closed, w });
+  }
+  const energySplit = [];
+  for (let mi = 0; mi < d; mi++) {
+    const a0 = psi[mi * 2], a1 = psi[mi * 2 + 1];
+    const w = a0[0] ** 2 + a0[1] ** 2 + a1[0] ** 2 + a1[1] ** 2;
+    const pr = (a0[0] + a1[0]) / Math.SQRT2, pi = (a0[1] + a1[1]) / Math.SQRT2;
+    energySplit.push({ m: mi - d / 2, pPlus: w > 1e-18 ? (pr * pr + pi * pi) / w : NaN, w });
+  }
+  return { eps, residual, cond, maxDev, energySplit };
+}
+
+function initPw(root) {
+  const d = Number(root.getAttribute("data-tg-d")) || 16;
+  const k = Number(root.getAttribute("data-tg-k")) || 1;
+  const svg = root.querySelector("svg.tg-stage");
+  const nInput = root.querySelector("[data-tg-n]");
+  const knockoutBtn = root.querySelector("[data-tg-knockout]");
+  const flipBtn = root.querySelector("[data-tg-flip]");
+  const status = root.querySelector("[data-tg-status]");
+  const marker = root.querySelector(".tg-row-marker");
+  const dots = root.querySelectorAll(".tg-pw-dot");
+  const tiles = root.querySelectorAll(".tg-tile");
+  const curve = root.querySelector(".tg-pw-curve");
+  const reads = readouts(root);
+  if (!svg || !nInput) return;
+  const px0 = Number(svg.getAttribute("data-px0")), px1 = Number(svg.getAttribute("data-px1"));
+  const py0 = Number(svg.getAttribute("data-py0")), py1 = Number(svg.getAttribute("data-py1"));
+  const ty0 = Number(svg.getAttribute("data-ty0")), th = Number(svg.getAttribute("data-th"));
+  const toX = (n) => px0 + (px1 - px0) * n / (d - 1);
+  const toY = (p) => py1 - (py1 - py0) * p;
+  const state = { knockout: false, flip: false };
+  const S0 = {
+    en: { ok: "Stationary whole, moving part: conditioning on the clock's time states recovers the Schrödinger curve exactly.",
+          flat: "Knockout: read in the energy basis, every conditional state is an energy eigenstate. P(+x) = 1/2 for every reading. Same state, different split, no time.",
+          flip: "Planted defect: the clock's spectrum no longer matches the constraint, so Ĥ|Ψ⟩⟩ ≠ 0. The whole is not stationary and the verifier rejects it.",
+          yes: "yes: cos² motion", no: "none: flat ½", broken: "not stationary" },
+    es: { ok: "Todo estacionario, parte en movimiento: condicionar a los estados de tiempo del reloj recupera la curva de Schrödinger exactamente.",
+          flat: "Apagado: leído en la base de energía, cada estado condicional es un autoestado de energía. P(+x) = 1/2 para cada lectura. Mismo estado, otra partición, ningún tiempo.",
+          flip: "Defecto plantado: el espectro del reloj ya no coincide con la restricción, así que Ĥ|Ψ⟩⟩ ≠ 0. El todo no es estacionario y el verificador lo rechaza.",
+          yes: "sí: movimiento cos²", no: "ninguno: ½ plano", broken: "no estacionario" },
+  };
+  function render() {
+    const L = S0[lang()];
+    const res = pwHistory(d, k, state.flip);
+    const n = Number(nInput.value);
+    const series = state.knockout ? res.energySplit.map((e, i) => ({ n: i, pPlus: Number.isFinite(e.pPlus) ? e.pPlus : 0.5 })) : res.cond;
+    dots.forEach((dot, i) => {
+      const s = series[i];
+      dot.setAttribute("cx", toX(i).toFixed(1));
+      dot.setAttribute("cy", toY(s.pPlus).toFixed(1));
+    });
+    if (curve) curve.style.opacity = state.knockout ? "0.25" : "1";
+    tiles.forEach((tile) => {
+      const tn = Number(tile.getAttribute("data-n")), col = Number(tile.getAttribute("data-col"));
+      const p = state.knockout ? 0.5 : res.cond[tn].pPlus;
+      tile.style.opacity = String(0.08 + 0.85 * (col === 0 ? p : 1 - p));
+    });
+    if (marker) marker.setAttribute("y", (ty0 - 2 + n * th).toFixed(1));
+    const st = state.flip ? "flip" : state.knockout ? "flat" : "fall";
+    if (status) { status.setAttribute("data-state", st); status.textContent = state.flip ? L.flip : state.knockout ? L.flat : L.ok; }
+    if (reads.n) reads.n.textContent = String(n);
+    if (reads.residual) reads.residual.textContent = res.residual.toExponential(1);
+    if (reads.pn) reads.pn.textContent = fmt(state.knockout ? 0.5 : res.cond[n].pPlus, 4);
+    if (reads.dev) reads.dev.textContent = state.knockout ? "—" : res.maxDev.toExponential(1);
+    if (reads.split) reads.split.textContent = state.flip ? L.broken : state.knockout ? L.no : L.yes;
+    const errBox = root.querySelector('[data-tg-readout-box="err"]');
+    if (errBox) errBox.setAttribute("data-alert", state.flip ? "true" : "false");
+  }
+  nInput.addEventListener("input", render);
+  if (knockoutBtn) knockoutBtn.addEventListener("click", () => { state.knockout = !state.knockout; knockoutBtn.setAttribute("aria-pressed", String(state.knockout)); render(); });
+  if (flipBtn) flipBtn.addEventListener("click", () => { state.flip = !state.flip; flipBtn.setAttribute("aria-pressed", String(state.flip)); render(); });
+  window.addEventListener("tp-lang-change", render);
+  root.setAttribute("data-tg-ready", "true");
+  render();
+}
+
+// ------------------------------------------------------------------------------------------------ T.04
+export function zychVisibility(dh, T, omega, g) {
+  const dtau = (g * dh * T) / (C * C);
+  return { dtau, phase: (omega * dtau) / 2, V: Math.abs(Math.cos((omega * dtau) / 2)) };
+}
+
+function initZych(root) {
+  const g0 = Number(root.getAttribute("data-tg-g")) || G0;
+  const svg = root.querySelector("svg.tg-stage");
+  const dhInput = root.querySelector("[data-tg-dh]");
+  const TInput = root.querySelector("[data-tg-hold]");
+  const wInput = root.querySelector("[data-tg-logw]");
+  const knockoutBtn = root.querySelector("[data-tg-knockout]");
+  const flipBtn = root.querySelector("[data-tg-flip]");
+  const status = root.querySelector("[data-tg-status]");
+  const curve = root.querySelector(".tg-zych-curve");
+  const markerEl = root.querySelector(".tg-zych-marker");
+  const dhLine = root.querySelector(".tg-dh-line");
+  const armUp = root.querySelector(".tg-arm-up");
+  const handUp = root.querySelector(".tg-hand-up"), handDown = root.querySelector(".tg-hand-down");
+  const reads = readouts(root);
+  if (!svg || !dhInput || !TInput || !wInput) return;
+  const px0 = Number(svg.getAttribute("data-px0")), px1 = Number(svg.getAttribute("data-px1"));
+  const py0 = Number(svg.getAttribute("data-py0")), py1 = Number(svg.getAttribute("data-py1"));
+  const toX = (dh) => px0 + (px1 - px0) * dh / 10;
+  const toY = (v) => py1 - (py1 - py0) * v;
+  const state = { knockout: false, flip: false };
+  const S0 = {
+    en: { ok: "A proposal, not a result: the clock's two readings overlap less as Δh·T grows, and the interference fades by exactly that overlap.",
+          flat: "Knockout: no gravity, no proper-time difference, no which-path information. V = 1 for every height.",
+          flip: "Planted defect: a clock that never ticks carries no which-path information either, V = 1 everywhere. The verifier rejects a clock that cannot reach zero." },
+    es: { ok: "Una propuesta, no un resultado: las dos lecturas del reloj se solapan menos conforme crece Δh·T, y la interferencia se desvanece exactamente por ese solape.",
+          flat: "Apagado: sin gravedad, sin diferencia de tiempo propio, sin información de camino. V = 1 para toda altura.",
+          flip: "Defecto plantado: un reloj que nunca marcha tampoco lleva información de camino, V = 1 en todas partes. El verificador rechaza un reloj que no puede llegar a cero." },
+  };
+  function render() {
+    const L = S0[lang()];
+    const dh = Number(dhInput.value), T = Number(TInput.value), logw = Number(wInput.value);
+    const omega = state.flip ? 0 : 2 * Math.PI * 10 ** logw;
+    const g = state.knockout ? 0 : g0;
+    const pts = [];
+    for (let i = 0; i <= 200; i++) {
+      const x = i / 20;
+      pts.push(`${i ? "L" : "M"} ${toX(x).toFixed(1)} ${toY(zychVisibility(x, T, omega, g).V).toFixed(1)}`);
+    }
+    if (curve) curve.setAttribute("d", pts.join(" "));
+    const cur = zychVisibility(dh, T, omega, g);
+    if (markerEl) { markerEl.setAttribute("cx", toX(dh).toFixed(1)); markerEl.setAttribute("cy", toY(cur.V).toFixed(1)); }
+    const yUp = 300 - 180 * Math.min(1, dh / 10);
+    if (armUp) { armUp.setAttribute("y1", yUp.toFixed(1)); armUp.setAttribute("y2", yUp.toFixed(1)); }
+    root.querySelectorAll(".tg-clock-face")[0]?.setAttribute("cy", yUp.toFixed(1));
+    if (handUp) { handUp.setAttribute("y1", yUp.toFixed(1)); handUp.setAttribute("y2", (yUp - 18).toFixed(1)); }
+    if (dhLine) dhLine.setAttribute("y1", yUp.toFixed(1));
+    // exaggerated hands: the upper clock leads by the phase, drawn as an angle
+    const ang = Math.min(Math.PI, cur.phase * 2);
+    if (handUp) { handUp.setAttribute("x2", (200 + 18 * Math.sin(ang)).toFixed(1)); handUp.setAttribute("y2", (yUp - 18 * Math.cos(ang)).toFixed(1)); }
+    if (handDown) { handDown.setAttribute("x2", "200"); handDown.setAttribute("y2", "282"); }
+    const omegaSr = 2 * Math.PI * 10 ** logw;
+    const zero = omegaSr > 0 && g > 0 ? (Math.PI * C * C) / (g * omegaSr) : Infinity;
+    const st = state.flip ? "flip" : state.knockout ? "flat" : "fall";
+    if (status) { status.setAttribute("data-state", st); status.textContent = state.flip ? L.flip : state.knockout ? L.flat : L.ok; }
+    if (reads.dh) reads.dh.textContent = fmt(dh, 1);
+    if (reads.T) reads.T.textContent = fmt(T, 1);
+    if (reads.logw) reads.logw.textContent = fmt(logw, 2);
+    if (reads.dhlabel) reads.dhlabel.textContent = `Δh = ${fmt(dh, 1)} m`;
+    if (reads.dtau) reads.dtau.textContent = `${cur.dtau.toExponential(2)} s`;
+    if (reads.phase) reads.phase.textContent = `${fmt(cur.phase, 3)} rad`;
+    if (reads.V) reads.V.textContent = fmt(cur.V, 4);
+    if (reads.zero) reads.zero.textContent = Number.isFinite(zero) ? `${fmt(zero, 1)} m·s` : "—";
+    const errBox = root.querySelector('[data-tg-readout-box="err"]');
+    if (errBox) errBox.setAttribute("data-alert", state.flip ? "true" : "false");
+  }
+  [dhInput, TInput, wInput].forEach((el) => el.addEventListener("input", render));
+  if (knockoutBtn) knockoutBtn.addEventListener("click", () => { state.knockout = !state.knockout; knockoutBtn.setAttribute("aria-pressed", String(state.knockout)); render(); });
+  if (flipBtn) flipBtn.addEventListener("click", () => { state.flip = !state.flip; flipBtn.setAttribute("aria-pressed", String(state.flip)); render(); });
+  window.addEventListener("tp-lang-change", render);
+  root.setAttribute("data-tg-ready", "true");
+  render();
+}
+
 export function initTimeGravity(scope = document) {
   const once = (sel, fn) => scope.querySelectorAll(sel).forEach((el) => { if (!el.hasAttribute("data-tg-ready")) fn(el); });
   once("[data-tg-predict]", initPredict);
@@ -484,6 +689,8 @@ export function initTimeGravity(scope = document) {
   once('[data-tg-instrument="worldline"]', initWorldline);
   once('[data-tg-instrument="gps"]', initGps);
   once('[data-tg-instrument="poisson"]', initPoisson);
+  once('[data-tg-instrument="pw"]', initPw);
+  once('[data-tg-instrument="zych"]', initZych);
 }
 
 initTimeGravity(document);

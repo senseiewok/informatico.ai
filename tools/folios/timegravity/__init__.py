@@ -8,7 +8,7 @@ and tools/check_timegravity_labels.py refuses a page whose labels the ledger can
 """
 from __future__ import annotations
 
-from . import t00, t01, t02, t03
+from . import t00, t01, t02, t03, t04, t07
 
 TRACK_CODE = "T"
 TRACK_SLUG = "timegravity"
@@ -80,7 +80,7 @@ TRACK_MAP: list[dict] = [
     {"code": "T.03", "slug": "t03", "built": True,
      "title_en": "What sets the slope", "title_es": "Qué fija la pendiente",
      "q_en": "What if the mass is in two places?", "q_es": "¿Y si la masa está en dos lugares?"},
-    {"code": "T.04", "slug": "t04", "built": False,
+    {"code": "T.04", "slug": "t04", "built": True,
      "title_en": "A clock in two places", "title_es": "Un reloj en dos lugares",
      "q_en": "Which time does the clock read?", "q_es": "¿Qué tiempo marca el reloj?"},
     {"code": "T.05", "slug": "t05", "built": False,
@@ -91,7 +91,7 @@ TRACK_MAP: list[dict] = [
      "title_en": "Does gravity collapse the wave?", "title_es": "¿La gravedad colapsa la onda?",
      "q_en": "If gravity neither collapses nor is shown to entangle, what is a superposition of slopes?",
      "q_es": "Si la gravedad ni colapsa ni se muestra que entrelaza, ¿qué es una superposición de pendientes?"},
-    {"code": "T.07", "slug": "t07", "built": False,
+    {"code": "T.07", "slug": "t07", "built": True,
      "title_en": "The equation with no time", "title_es": "La ecuación sin tiempo",
      "q_en": "Whose clock?", "q_es": "¿El reloj de quién?"},
     {"code": "T.10", "slug": "t10", "built": False,
@@ -99,7 +99,7 @@ TRACK_MAP: list[dict] = [
      "q_en": "Where does the information go, in our universe?", "q_es": "¿A dónde va la información, en nuestro universo?"},
 ]
 
-PAGES: list[dict] = [t00.PAGE, t01.PAGE, t02.PAGE, t03.PAGE]
+PAGES: list[dict] = [t00.PAGE, t01.PAGE, t02.PAGE, t03.PAGE, t04.PAGE, t07.PAGE]
 PAGES_BY_SLUG: dict[str, dict] = {p["slug"]: p for p in PAGES}
 
 __all__ = [

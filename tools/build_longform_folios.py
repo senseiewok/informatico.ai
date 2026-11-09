@@ -1642,6 +1642,7 @@ PILLAR_NAV_LABELS = {
     "math": ("Mathematics", "Matemáticas"),
     "bounties": ("Bounties", "Retos"),
     "toolchain": ("Tech & Tools", "Herramientas"),
+    "timegravity": ("Time & Gravity", "Tiempo y Gravedad"),
 }
 
 # Plain-language pillar promises shown on the cover and on each pillar hub (no folio codes, no jargon stacks).
@@ -1836,7 +1837,7 @@ def render_folio_toolchain_companion(slug: str, rel_res: str = "../..") -> str:
 def render_masthead(rel_res: str, active_pillar: str = "", lang: str = "en") -> str:
     """One slim header: brand, the four disciplines + Bounties + Tech & Tools, Contents, language and theme."""
     links = []
-    for p_key in ("engineering", "architecture", "physics", "math", "bounties", "toolchain"):
+    for p_key in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "timegravity"):
         en, es = PILLAR_NAV_LABELS[p_key]
         cur = ' aria-current="page"' if p_key == active_pillar else ""
         links.append(
@@ -1922,6 +1923,18 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
             f'<span class="tp-contents-title" data-en="{esc(t["title"])}" data-es="{esc(t["title_es"])}">{esc(t["title"])}</span></a></li>'
         )
     tool_items_html = "\n            ".join(tool_items)
+    tg_items = []
+    for tg in TIMEGRAVITY_PAGES:
+        tg_slug = tg["slug"]
+        tg_path = "timegravity/" + (f"{tg_slug}/" if tg_slug else "")
+        tg_cur = ' aria-current="page"' if (tg_slug or "t00") == active_slug else ""
+        tg_search = esc(f"{tg['code']} {tg['title_en']} {tg['title_es']}".lower())
+        tg_items.append(
+            f'<li data-contents-bounty-item data-search="{tg_search}"><a href="{_href(rel_res, tg_path)}"{tg_cur}>'
+            f'<span class="tp-contents-id">{esc(tg["code"])}</span> '
+            f'<span class="tp-contents-title" data-en="{esc(tg["title_en"])}" data-es="{esc(tg["title_es"])}">{esc(tg["title_en"])}</span></a></li>'
+        )
+    tg_items_html = "\n            ".join(tg_items)
     total = sum(len(v) for v in catalog["pillars"].values())
     return f"""  <dialog id="tp-contents" class="tp-contents" aria-labelledby="tp-contents-title">
     <div class="tp-contents-inner">
@@ -1944,6 +1957,12 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
         <h3><a href="{_href(rel_res, 'toolchain/')}" data-en="Tech &amp; Tools · The Toolbox · 6 Open 3D CAD &amp; Studio Folios (X.01–X.06)" data-es="Tecnología y Herramientas · Caja de Herramientas 3D y CAD Abierto (X.01–X.06)">Tech &amp; Tools · The Toolbox · 6 Open 3D CAD &amp; Studio Folios (X.01–X.06)</a></h3>
         <ol>
             {tool_items_html}
+        </ol>
+      </section>
+      <section class="tp-contents-bounties" aria-label="Time and Gravity track pages">
+        <h3><a href="{_href(rel_res, 'timegravity/')}" data-en="Time &amp; Gravity · Nine Pages on an Open Problem (T.00–T.07, T.10)" data-es="Tiempo y Gravedad · Nueve Páginas sobre un Problema Abierto (T.00–T.07, T.10)">Time &amp; Gravity · Nine Pages on an Open Problem (T.00–T.07, T.10)</a></h3>
+        <ol>
+            {tg_items_html}
         </ol>
       </section>
     </div>
@@ -1969,7 +1988,7 @@ def render_breadcrumb(rel_res: str, pillar: str, folio: dict | None = None) -> s
 def render_site_footer(rel_res: str) -> str:
     links = " · ".join(
         f'<a href="{_href(rel_res, p + "/")}" data-en="{esc(PILLAR_NAV_LABELS[p][0])}" data-es="{esc(PILLAR_NAV_LABELS[p][1])}">{esc(PILLAR_NAV_LABELS[p][0])}</a>'
-        for p in ("engineering", "architecture", "physics", "math", "bounties", "toolchain")
+        for p in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "timegravity")
     )
     return f"""    <footer class="tp-footer tp-site-footer">
       <nav aria-label="Footer"><a href="{_href(rel_res)}">Informatico.ai</a> · {links} · <a href="https://github.com/senseiewok/informatico.ai" target="_blank" rel="noopener noreferrer" data-en="GitHub" data-es="GitHub">GitHub</a></nav>
@@ -4595,7 +4614,7 @@ def render_research_sitemap(catalog: dict) -> str:
     entries.append(("timegravity/", TIMEGRAVITY_DATE))
     for tg in TIMEGRAVITY_PAGES:
         if tg["slug"]:
-            entries.append((f"timegravity/{tg['slug']}/", TIMEGRAVITY_DATE))
+            entries.append((f"timegravity/{tg['slug']}/", tg.get("date", TIMEGRAVITY_DATE)))
 
     blocks = [
         '<?xml version="1.0" encoding="UTF-8"?>',
@@ -4659,10 +4678,10 @@ def render_llms_txt(catalog: dict) -> str:
 def render_not_found() -> str:
     """The informatico.ai 404 page. Served at any depth, so every address in it is absolute; never indexed."""
     links = " · ".join(
-        f'<a href="/{p}/">{esc(PILLAR_NAV_LABELS[p][0])}</a>' for p in ("engineering", "architecture", "physics", "math", "bounties", "toolchain")
+        f'<a href="/{p}/">{esc(PILLAR_NAV_LABELS[p][0])}</a>' for p in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "timegravity")
     )
     links_es = " · ".join(
-        f'<a href="/{ES_PREFIX}{p}/">{esc(PILLAR_NAV_LABELS[p][1])}</a>' for p in ("engineering", "architecture", "physics", "math", "bounties", "toolchain")
+        f'<a href="/{ES_PREFIX}{p}/">{esc(PILLAR_NAV_LABELS[p][1])}</a>' for p in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "timegravity")
     )
     return f"""<!DOCTYPE html>
 <html lang="en">

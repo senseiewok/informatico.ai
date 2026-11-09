@@ -192,6 +192,126 @@
       "kind": "review",
       "review_by": "2028-11-08",
       "note": "Survey of equivalence-principle and metric tests; anchors the OPEN statement about what fixes G and why universality holds."
+    },
+    {
+      "id": "T07-RABI1938",
+      "label": "MEASURED",
+      "doi": "10.1103/PhysRev.53.318",
+      "year": 1938,
+      "collaboration": "Rabi, Zacharias, Millman & Kusch (Columbia)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Molecular-beam magnetic resonance: a two-level system driven at its Bohr frequency; the measured face of Schroedinger evolution."
+    },
+    {
+      "id": "T07-RAMSEY1950",
+      "label": "MEASURED",
+      "doi": "10.1103/PhysRev.78.695",
+      "year": 1950,
+      "collaboration": "Ramsey (Harvard)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Separated oscillatory fields: phase accumulated by a two-level system between two interaction zones, the method behind atomic clocks."
+    },
+    {
+      "id": "T07-HAHN1950",
+      "label": "MEASURED",
+      "doi": "10.1103/PhysRev.80.580",
+      "year": 1950,
+      "collaboration": "Hahn (Illinois)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Spin echoes: free precession of spins refocused by a pulse; unitary two-level evolution measured in time."
+    },
+    {
+      "id": "T07-DEWITT1967",
+      "label": "DERIVED",
+      "doi": "10.1103/PhysRev.160.1113",
+      "year": 1967,
+      "collaboration": "DeWitt (Physical Review)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Canonical quantum gravity: the Hamiltonian constraint H Psi = 0, the equation with no time in it."
+    },
+    {
+      "id": "T07-PW1983",
+      "label": "DERIVED",
+      "doi": "10.1103/PhysRevD.27.2885",
+      "year": 1983,
+      "collaboration": "Page & Wootters (Physical Review D)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Evolution without evolution: conditioning a stationary global state on a clock subsystem recovers Schroedinger evolution."
+    },
+    {
+      "id": "T07-MOREVA2014",
+      "label": "SINGLE RESULT",
+      "doi": "10.1103/PhysRevA.89.052122",
+      "year": 2014,
+      "collaboration": "Moreva et al. (INRIM Turin)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Photonic illustration of Page-Wootters time from entanglement; the only realisation to date."
+    },
+    {
+      "id": "T07-GIAC2019",
+      "label": "DERIVED",
+      "doi": "10.1038/s41467-018-08155-0",
+      "year": 2019,
+      "collaboration": "Giacomini, Castro-Ruiz & Brukner (Vienna)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Quantum reference frames: covariance of physical laws under changes of quantum frame; which clock is a frame-dependent question."
+    },
+    {
+      "id": "T07-STOICA2026",
+      "label": "PROPOSED",
+      "doi": "10.48550/arXiv.2608.16732",
+      "year": 2026,
+      "collaboration": "Stoica (arXiv preprint)",
+      "kind": "preprint",
+      "review_by": "2027-11-08",
+      "note": "Preprint arguing a 'preferred-time problem' remains in Page-Wootters constructions; PROPOSED at most until peer review."
+    },
+    {
+      "id": "T04-ZYCH2011",
+      "label": "DERIVED",
+      "doi": "10.1038/ncomms1498",
+      "year": 2011,
+      "collaboration": "Zych, Costa, Pikovski & Brukner (Vienna)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Interferometric visibility of a clock in superposition of heights: V = |cos(Delta E Delta tau / 2 hbar)|; a proposal, derived."
+    },
+    {
+      "id": "T04-MARGALIT2015",
+      "label": "SINGLE RESULT",
+      "doi": "10.1126/science.aac6498",
+      "year": 2015,
+      "collaboration": "Margalit et al. (Ben-Gurion University)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "A self-interfering clock as a which-path witness: visibility loss from a clock-rate difference made by a magnetic gradient, not gravity."
+    },
+    {
+      "id": "T04-PACZOS2025",
+      "label": "PROPOSED",
+      "doi": "10.22331/q-2025-08-08-1827",
+      "year": 2025,
+      "collaboration": "Paczos, Foo & Zych (Quantum)",
+      "kind": "peer-reviewed",
+      "review_by": "2027-11-08",
+      "note": "Superposition of proper times in trapped-atom interferometers: predicted visibility modulation and resonance shift; not realised."
+    },
+    {
+      "id": "T04-SORCI2026",
+      "label": "PROPOSED",
+      "doi": "10.1103/qhj9-pc2b",
+      "year": 2026,
+      "collaboration": "Sorci, Foo, Leibfried, Sanner & Pikovski (PRL)",
+      "kind": "peer-reviewed",
+      "review_by": "2027-11-08",
+      "note": "Quantum signatures of proper time in optical ion clocks ('proper time interferometry'); a proposal, not a measurement."
     }
   ]
 }

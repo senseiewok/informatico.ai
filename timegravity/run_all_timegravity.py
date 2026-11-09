@@ -12,7 +12,7 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parent.parent
-SLUGS = ("t01", "t02", "t03")
+SLUGS = ("t01", "t02", "t03", "t04", "t07")
 
 
 def run(cmd: list[str], must_fail: bool = False) -> int:
