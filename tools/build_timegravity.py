@@ -36,6 +36,9 @@ from timegravity_kernel import (  # noqa: E402
 )
 
 from timegravity_kernel_quantum import OMEGA_SR, pw_history_state, zych_first_zero, zych_visibility  # noqa: E402
+from timegravity_kernel_bounds import (  # noqa: E402
+    GS_R0_BOUND_M, GS_R0_PARAMFREE_M, XENONNT_R0_90, dp_collapse_time, gran_sasso_signal_counts, page_average_entropy, page_curve_toy,
+)
 
 RESEARCH = ROOT / "src" / "research"
 LEDGER = json.loads((ROOT / "timegravity" / "ledger.json").read_text(encoding="utf-8"))
@@ -151,6 +154,18 @@ PLATE_CAPTIONS = {
         "Una cuadrícula de mosaicos para un estado global estacionario, una fila por lectura del reloj, y la curva coseno cuadrado que trazan las probabilidades condicionales; nada en la cuadrícula se mueve.",
         "a grid of shaded tiles beside a smooth cosine-squared curve with dots on it",
         "una cuadrícula de mosaicos sombreados junto a una curva suave de coseno cuadrado con puntos encima",
+    ),
+    "T.06": (
+        "A collapse-time curve falling steeply with mass beside an exclusion bar for R0, with the two bounds and the parameter-free value on the excluded side.",
+        "Una curva de tiempo de colapso que cae abruptamente con la masa junto a una barra de exclusión para R0, con las dos cotas y el valor sin parámetros del lado excluido.",
+        "a steep falling curve on the left and a horizontal bar with two tick marks and one dot on its shaded side on the right",
+        "una curva que cae abruptamente a la izquierda y una barra horizontal con dos marcas y un punto en su lado sombreado a la derecha",
+    ),
+    "T.10": (
+        "Hawking's straight line rising beside Page's curve, which rises with it, turns over at half the qubits and falls back to zero; dots from the ten-qubit toy sit on the curve.",
+        "La recta de Hawking subiendo junto a la curva de Page, que sube con ella, da la vuelta a la mitad de los qubits y vuelve a cero; puntos del juguete de diez qubits descansan sobre la curva.",
+        "a straight rising line and a hill-shaped curve that peaks in the middle, with dots along the hill",
+        "una recta ascendente y una curva en forma de loma que alcanza su máximo en el centro, con puntos sobre la loma",
     ),
     "T.03": (
         "Concentric rings around a mass, darker where clocks run slower, from the Poisson solution on a grid; two dots of different size fall along the same line.",
@@ -682,6 +697,159 @@ def zych_instrument(page: dict) -> str:
     </section>"""
 
 
+def dp_instrument(page: dict) -> str:
+    ins = page["instrument"]
+    import math
+    log_m0, log_r0, dr0 = -14.0, -6.0, 2.0
+    px0, px1, py0, py1 = 60, 440, 60, 360        # τ against log10 mass; y = log10 τ in [-6, 12]
+    to_x = lambda lm: px0 + (px1 - px0) * (lm + 20.0) / 8.0  # noqa: E731   (mass 1e-20 .. 1e-12 kg)
+    to_y = lambda lt: py1 - (py1 - py0) * (lt + 6.0) / 18.0  # noqa: E731   (τ 1e-6 .. 1e12 s)
+    pts = []
+    for i in range(81):
+        lm = -20.0 + 8.0 * i / 80
+        tau = dp_collapse_time(10.0 ** lm, 10.0 ** log_r0, dr0 * 10.0 ** log_r0)
+        lt = max(-6.0, min(12.0, math.log10(tau)))
+        pts.append(f'{"M" if i == 0 else "L"} {to_x(lm):.1f} {to_y(lt):.1f}')
+    tau0 = dp_collapse_time(10.0 ** log_m0, 10.0 ** log_r0, dr0 * 10.0 ** log_r0)
+    # R0 exclusion bar: log10 R0 from -12 to -9 (1 pm .. 1 nm)
+    bx0, bx1, by = 520, 880, 200
+    to_bx = lambda r0: bx0 + (bx1 - bx0) * (math.log10(r0) + 12.0) / 3.0  # noqa: E731
+    gs_x, xe_x, pf_x = to_bx(GS_R0_BOUND_M), to_bx(XENONNT_R0_90), to_bx(GS_R0_PARAMFREE_M)
+    return f"""    <section class="tg-instrument" id="instrument" data-tg-instrument="dp" aria-labelledby="tg-instrument-heading-t06">
+      <h2 id="tg-instrument-heading-t06" class="tp-h2" data-en="{a(ins['title_en'])}" data-es="{a(ins['title_es'])}">{t(ins['title_en'])}</h2>
+      {bi("p", ins["how_en"], ins["how_es"], "tg-how")}
+{predict_block(page)}
+        <svg class="tg-stage" viewBox="0 0 920 420" role="img" aria-labelledby="tg-stage-title-t06 tg-stage-desc-t06" data-px0="{px0}" data-px1="{px1}" data-py0="{py0}" data-py1="{py1}" data-bx0="{bx0}" data-bx1="{bx1}">
+          <title id="tg-stage-title-t06">The Diósi–Penrose collapse time against mass, and the exclusion bar for the nuclear density size R0</title>
+          <desc id="tg-stage-desc-t06">Left: a curve of the model's collapse time against mass on log scales, falling steeply as mass grows. Right: a horizontal bar for R0 from one picometre to one nanometre; the region below the Gran Sasso bound is shaded as excluded, the XENONnT bound sits further right, and the parameter-free value sits deep in the excluded region.</desc>
+          <text x="{(px0 + px1) / 2:.0f}" y="36" text-anchor="middle" font-size="11" font-weight="700" data-en="model collapse time τ = ħ/E_G (log–log)" data-es="tiempo de colapso del modelo τ = ħ/E_G (log–log)">model collapse time τ = ħ/E_G (log–log)</text>
+          <line class="tg-axis" x1="{px0}" y1="{py0}" x2="{px0}" y2="{py1}"/>
+          <line class="tg-axis" x1="{px0}" y1="{py1}" x2="{px1}" y2="{py1}"/>
+          <text x="{px0 - 6}" y="{to_y(12.0) + 4:.0f}" text-anchor="end" font-size="10">10¹² s</text>
+          <text x="{px0 - 6}" y="{to_y(0.0) + 4:.0f}" text-anchor="end" font-size="10">1 s</text>
+          <text x="{px0 - 6}" y="{to_y(-6.0) + 4:.0f}" text-anchor="end" font-size="10">10⁻⁶ s</text>
+          <text x="{px0}" y="{py1 + 16}" font-size="10">10⁻²⁰ kg</text>
+          <text x="{px1}" y="{py1 + 16}" text-anchor="end" font-size="10">10⁻¹² kg</text>
+          <text x="{(px0 + px1) / 2:.0f}" y="{py1 + 34}" text-anchor="middle" font-size="11" data-en="mass of the sphere in two places" data-es="masa de la esfera en dos lugares">mass of the sphere in two places</text>
+          <path class="tg-dp-curve" d="{' '.join(pts)}" fill="none" stroke="var(--tp-prussian)" stroke-width="2.5"/>
+          <circle class="tg-dp-marker" cx="{to_x(log_m0):.1f}" cy="{to_y(math.log10(tau0)):.1f}" r="7" fill="var(--tp-minium)" stroke="var(--tp-vellum)" stroke-width="2"/>
+          <text x="{(bx0 + bx1) / 2:.0f}" y="36" text-anchor="middle" font-size="11" font-weight="700" data-en="where the data draw the line for R0" data-es="dónde trazan los datos la línea para R0">where the data draw the line for R0</text>
+          <rect class="tg-dp-excluded" x="{bx0}" y="{by - 16}" width="{gs_x - bx0:.1f}" height="32" fill="var(--tp-minium-soft)" stroke="none"/>
+          <rect class="tg-dp-allowed" x="{gs_x:.1f}" y="{by - 16}" width="{bx1 - gs_x:.1f}" height="32" fill="var(--tp-verdigris-soft)" stroke="none"/>
+          <line class="tg-axis" x1="{bx0}" y1="{by}" x2="{bx1}" y2="{by}"/>
+          <text x="{bx0}" y="{by + 44}" font-size="10">1 pm</text>
+          <text x="{bx1}" y="{by + 44}" text-anchor="end" font-size="10">1 nm</text>
+          <text x="{(bx0 + bx1) / 2:.0f}" y="{by + 62}" text-anchor="middle" font-size="11" data-en="R0, size of the nuclear mass density (log)" data-es="R0, tamaño de la densidad de masa nuclear (log)">R0, size of the nuclear mass density (log)</text>
+          <line class="tg-dp-gs" x1="{gs_x:.1f}" y1="{by - 28}" x2="{gs_x:.1f}" y2="{by + 28}" stroke="var(--tp-ink)" stroke-width="2.5"/>
+          <text x="{gs_x:.1f}" y="{by - 36}" text-anchor="middle" font-size="10" data-en="Gran Sasso 2021 · 0.54 Å · 95 %" data-es="Gran Sasso 2021 · 0.54 Å · 95 %">Gran Sasso 2021 · 0.54 Å · 95 %</text>
+          <line class="tg-dp-xe" x1="{xe_x:.1f}" y1="{by - 28}" x2="{xe_x:.1f}" y2="{by + 28}" stroke="var(--tp-prussian)" stroke-width="2.5" stroke-dasharray="5 4"/>
+          <text x="{xe_x:.1f}" y="{by - 36}" text-anchor="middle" font-size="10" data-en="XENONnT 2026 · 4.9 Å · 90 %" data-es="XENONnT 2026 · 4.9 Å · 90 %">XENONnT 2026 · 4.9 Å · 90 %</text>
+          <circle class="tg-dp-pf" cx="{pf_x:.1f}" cy="{by}" r="7" fill="var(--tp-minium)" stroke="var(--tp-vellum)" stroke-width="2"/>
+          <text x="{pf_x:.1f}" y="{by + 30}" text-anchor="middle" font-size="10" data-en="parameter-free · 0.05 Å" data-es="sin parámetros · 0.05 Å">parameter-free · 0.05 Å</text>
+          <text class="tg-dp-side" x="{(bx0 + gs_x) / 2:.0f}" y="{by + 6}" text-anchor="middle" font-size="10" font-weight="700" fill="var(--tp-minium)" data-tg-read="sideleft" data-en="excluded" data-es="excluido">excluded</text>
+          <text class="tg-dp-side" x="{(gs_x + bx1) / 2:.0f}" y="{by + 6}" text-anchor="middle" font-size="10" font-weight="700" fill="var(--tp-verdigris)" data-tg-read="sideright" data-en="allowed" data-es="permitido">allowed</text>
+        </svg>
+      <div class="tg-controls">
+        <div class="tp-control-group">
+          <label for="tg-logm-t06"><span data-en="log₁₀ mass M (kg)" data-es="log₁₀ masa M (kg)">log₁₀ mass M (kg)</span> <span data-tg-read="logm">{log_m0:.1f}</span></label>
+          <input id="tg-logm-t06" data-tg-logm type="range" min="-20" max="-12" step="0.1" value="{log_m0}" aria-describedby="tg-status-t06">
+          <label for="tg-logr-t06"><span data-en="log₁₀ radius R (m)" data-es="log₁₀ radio R (m)">log₁₀ radius R (m)</span> <span data-tg-read="logr">{log_r0:.1f}</span></label>
+          <input id="tg-logr-t06" data-tg-logr type="range" min="-9" max="-5" step="0.1" value="{log_r0}">
+          <label for="tg-dr-t06"><span data-en="displacement d / R" data-es="desplazamiento d / R">displacement d / R</span> <span data-tg-read="dr">{dr0:.1f}</span></label>
+          <input id="tg-dr-t06" data-tg-dr type="range" min="0.1" max="6" step="0.1" value="{dr0}">
+        </div>
+        <div class="tg-btn-row" role="group" aria-label="Knockout and planted defect">
+          <button type="button" class="tp-step-btn tp-knockout-btn" data-tg-knockout aria-pressed="false" data-en="⚡ Knockout · switch gravity off (G → 0)" data-es="⚡ Apagado · quitar la gravedad (G → 0)">⚡ Knockout · switch gravity off (G → 0)</button>
+          <button type="button" class="tp-step-btn" data-tg-flip aria-pressed="false" data-en="Planted defect · draw the bound on the wrong side" data-es="Defecto plantado · dibujar la cota del lado equivocado">Planted defect · draw the bound on the wrong side</button>
+        </div>
+      </div>
+      <div class="tp-readout-strip">
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="E_G of the difference" data-es="E_G de la diferencia">E_G of the difference</span>
+          <span class="tp-readout-v" data-tg-read="eg">{1.054571817e-34 / tau0:.2e} J</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Model collapse time τ" data-es="Tiempo de colapso del modelo τ">Model collapse time τ</span>
+          <span class="tp-readout-v" data-tg-read="tau">{tau0:.3g} s</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Photons predicted at Gran Sasso, parameter-free R0" data-es="Fotones predichos en Gran Sasso, R0 sin parámetros">Photons predicted at Gran Sasso, parameter-free R0</span>
+          <span class="tp-readout-v">{gran_sasso_signal_counts(GS_R0_PARAMFREE_M):.1e}</span>
+        </div>
+        <div class="tp-readout-box" data-tg-readout-box="err" data-alert="false">
+          <span class="tp-readout-k" data-en="Parameter-free value is" data-es="El valor sin parámetros está">Parameter-free value is</span>
+          <span class="tp-readout-v" data-tg-read="verdict" data-en="excluded" data-es="excluido">excluded</span>
+        </div>
+      </div>
+      <p id="tg-status-t06" class="tg-status" data-tg-status data-state="fall" aria-live="polite" data-en="The model's prediction on the left; the data's verdict on the right. Below the line the radiation would have been seen; it was not." data-es="La predicción del modelo a la izquierda; el veredicto de los datos a la derecha. Debajo de la línea la radiación se habría visto; no se vio.">The model's prediction on the left; the data's verdict on the right. Below the line the radiation would have been seen; it was not.</p>
+    </section>"""
+
+
+def page_instrument(page: dict) -> str:
+    ins = page["instrument"]
+    import math
+    toy = page_curve_toy()
+    N = toy["n_qubits"]
+    px0, px1, py0, py1 = 100, 880, 50, 360
+    ymax = 12.0 * math.log(2.0)   # fixed axis: up to 12 qubits of entropy
+    to_x = lambda aq, n: px0 + (px1 - px0) * aq / n  # noqa: E731
+    to_y = lambda s: py1 - (py1 - py0) * s / ymax  # noqa: E731
+    curve = " ".join(f'{"M" if i == 0 else "L"} {to_x(i, N):.1f} {to_y(page_average_entropy(2 ** i, 2 ** (N - i)) if 0 < i < N else 0.0):.1f}' for i in range(N + 1))
+    hawking = f'M {to_x(0, N):.1f} {to_y(0):.1f} L {to_x(N, N):.1f} {to_y(N * math.log(2.0)):.1f}'
+    dots = "".join(f'<circle class="tg-page-dot" cx="{to_x(c["a"], N):.1f}" cy="{to_y(c["toy_mean_nats"]):.1f}" r="5" fill="var(--tp-minium)"/>' for c in toy["curve"])
+    peak = max(c["toy_mean_nats"] for c in toy["curve"])
+    return f"""    <section class="tg-instrument" id="instrument" data-tg-instrument="page" data-tg-toyn="{N}" aria-labelledby="tg-instrument-heading-t10">
+      <h2 id="tg-instrument-heading-t10" class="tp-h2" data-en="{a(ins['title_en'])}" data-es="{a(ins['title_es'])}">{t(ins['title_en'])}</h2>
+      {bi("p", ins["how_en"], ins["how_es"], "tg-how")}
+{predict_block(page)}
+        <svg class="tg-stage" viewBox="0 0 920 420" role="img" aria-labelledby="tg-stage-title-t10 tg-stage-desc-t10" data-px0="{px0}" data-px1="{px1}" data-py0="{py0}" data-py1="{py1}" data-ymax="{ymax}">
+          <title id="tg-stage-title-t10">Hawking's rising line against Page's curve, with dots from a ten-qubit toy</title>
+          <desc id="tg-stage-desc-t10">Entropy of the radiation against the number of emitted qubits. A straight line rises without end. A hill-shaped curve rises with it, peaks at half the qubits and falls back to zero. Dots from random ten-qubit states lie on the hill.</desc>
+          <line class="tg-axis" x1="{px0}" y1="{py0}" x2="{px0}" y2="{py1}"/>
+          <line class="tg-axis" x1="{px0}" y1="{py1}" x2="{px1}" y2="{py1}"/>
+          <text x="{px0 - 8}" y="{py1 + 4}" text-anchor="end" font-size="10">0</text>
+          <text x="{px0 - 8}" y="{to_y(5 * math.log(2.0)) + 4:.0f}" text-anchor="end" font-size="10">5 ln 2</text>
+          <text x="{px0 - 8}" y="{to_y(10 * math.log(2.0)) + 4:.0f}" text-anchor="end" font-size="10">10 ln 2</text>
+          <text x="{px0}" y="{py0 - 12}" font-size="11" data-en="entropy of the radiation (nats)" data-es="entropía de la radiación (nats)">entropy of the radiation (nats)</text>
+          <text x="{px1}" y="{py1 + 18}" text-anchor="end" font-size="11" data-tg-read="xlabel">emitted qubits a, of N = {N}</text>
+          <path class="tg-hawking-line" d="{hawking}" fill="none" stroke="var(--tp-sienna)" stroke-width="2" stroke-dasharray="6 4"/>
+          <text class="tg-hawking-label" x="{to_x(N, N) - 4:.1f}" y="{to_y(N * math.log(2.0)) - 8:.1f}" text-anchor="end" font-size="10" fill="var(--tp-sienna)" data-en="Hawking's line: thermal, rising forever" data-es="recta de Hawking: térmica, sube para siempre">Hawking's line: thermal, rising forever</text>
+          <path class="tg-page-curve" d="{curve}" fill="none" stroke="var(--tp-prussian)" stroke-width="2.5"/>
+          <text class="tg-page-label" x="{to_x(N / 2, N):.1f}" y="{to_y(peak) - 14:.1f}" text-anchor="middle" font-size="10" fill="var(--tp-prussian)" data-en="Page's curve: turns over at N/2" data-es="curva de Page: da la vuelta en N/2">Page's curve: turns over at N/2</text>
+          <g class="tg-page-dots">{dots}</g>
+        </svg>
+      <div class="tg-controls">
+        <div class="tp-control-group">
+          <label for="tg-N-t10"><span data-en="Qubits in the black hole N" data-es="Qubits en el agujero negro N">Qubits in the black hole N</span> <span data-tg-read="N">{N}</span></label>
+          <input id="tg-N-t10" data-tg-nq type="range" min="4" max="12" step="1" value="{N}" aria-describedby="tg-status-t10">
+        </div>
+        <div class="tg-btn-row" role="group" aria-label="Knockout and the naive count">
+          <button type="button" class="tp-step-btn tp-knockout-btn" data-tg-knockout aria-pressed="false" data-en="⚡ Knockout · non-unitary: entropy never turns over" data-es="⚡ Apagado · no unitario: la entropía nunca da la vuelta">⚡ Knockout · non-unitary: entropy never turns over</button>
+          <button type="button" class="tp-step-btn" data-tg-flip aria-pressed="false" data-en="Naive count · drop Page's −(m−1)/2n term" data-es="Conteo ingenuo · quitar el término −(m−1)/2n de Page">Naive count · drop Page's −(m−1)/2n term</button>
+        </div>
+      </div>
+      <div class="tp-readout-strip">
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Peak entropy, Page's formula at N/2" data-es="Entropía máxima, fórmula de Page en N/2">Peak entropy, Page's formula at N/2</span>
+          <span class="tp-readout-v" data-tg-read="peak">{page_average_entropy(2 ** (N // 2), 2 ** (N - N // 2)):.3f} nats</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Toy at N = 10: max |toy − Page|" data-es="Juguete en N = 10: máx |juguete − Page|">Toy at N = 10: max |toy − Page|</span>
+          <span class="tp-readout-v">{max(abs(c["toy_mean_nats"] - c["page_nats"]) for c in toy["curve"]):.1e} nats</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Entropy at the last cut" data-es="Entropía en el último corte">Entropy at the last cut</span>
+          <span class="tp-readout-v" data-tg-read="last">{page_average_entropy(2, 2 ** (N - 1)):.3f} nats</span>
+        </div>
+        <div class="tp-readout-box" data-tg-readout-box="err" data-alert="false">
+          <span class="tp-readout-k" data-en="Turns over?" data-es="¿Da la vuelta?">Turns over?</span>
+          <span class="tp-readout-v" data-tg-read="turn" data-en="yes, at N/2" data-es="sí, en N/2">yes, at N/2</span>
+        </div>
+      </div>
+      <p id="tg-status-t10" class="tg-status" data-tg-status data-state="fall" aria-live="polite" data-en="Counting, not gravity: a random pure state's smaller part is nearly maximally entangled with the larger, so the radiation's entropy follows the smaller side and comes back down." data-es="Conteo, no gravedad: la parte menor de un estado puro aleatorio está casi máximamente entrelazada con la mayor, así que la entropía de la radiación sigue al lado menor y vuelve a bajar.">Counting, not gravity: a random pure state's smaller part is nearly maximally entangled with the larger, so the radiation's entropy follows the smaller side and comes back down.</p>
+    </section>"""
+
+
 def plate_d(page: dict) -> str:
     code = page["code"]
     return f"""        <figure class="tp-distill-figure" role="group" aria-label="Plate {code}-D Visual Intuition Bridge">
@@ -936,8 +1104,12 @@ def neighbours(page: dict) -> tuple[dict | None, dict | None]:
 
 def open_question(page: dict) -> str:
     _prev, nx = neighbours(page)
-    nxt_en = f"Next: {nx['code']} · {nx['title_en']}" + ("" if nx["built"] else " (in preparation)")
-    nxt_es = f"Siguiente: {nx['code']} · {nx['title_es']}" + ("" if nx["built"] else " (en preparación)")
+    if nx is None:
+        nxt_en = "This is the last page of the track; the hub holds the question that opened it."
+        nxt_es = "Esta es la última página de la serie; el punto de partida guarda la pregunta que la abrió."
+    else:
+        nxt_en = f"Next: {nx['code']} · {nx['title_en']}" + ("" if nx["built"] else " (in preparation)")
+        nxt_es = f"Siguiente: {nx['code']} · {nx['title_es']}" + ("" if nx["built"] else " (en preparación)")
     return f"""        <section class="tg-open-question" aria-label="The open question this page ends with">
           <p class="tp-kicker" data-en="This page ends with one open question" data-es="Esta página termina con una pregunta abierta">This page ends with one open question</p>
           {bi("p", page["open_question_en"], page["open_question_es"])}
@@ -1033,6 +1205,10 @@ def render_page(page: dict, catalog: dict, lang: str = "en") -> str:
         instrument = pw_instrument(page)
     elif kind == "zych":
         instrument = zych_instrument(page)
+    elif kind == "dp":
+        instrument = dp_instrument(page)
+    elif kind == "page":
+        instrument = page_instrument(page)
     else:
         instrument = slope_instrument(page, rel_res)
     ai_line = bi("p", page["ai_line_en"], page["ai_line_es"], "tg-ai-line") if page.get("ai_line_en") else ""

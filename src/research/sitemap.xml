@@ -577,12 +577,28 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/timegravity/t04/"/>
   </url>
   <url>
+    <loc>https://informatico.ai/timegravity/t06/</loc>
+    <lastmod>2026-11-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/timegravity/t06/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/timegravity/t06/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/timegravity/t06/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/timegravity/t06/"/>
+  </url>
+  <url>
     <loc>https://informatico.ai/timegravity/t07/</loc>
     <lastmod>2026-11-09</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/timegravity/t07/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/timegravity/t07/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/timegravity/t07/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/timegravity/t07/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/timegravity/t10/</loc>
+    <lastmod>2026-11-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/timegravity/t10/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/timegravity/t10/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/timegravity/t10/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/timegravity/t10/"/>
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/</loc>
@@ -1161,11 +1177,27 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/timegravity/t04/"/>
   </url>
   <url>
+    <loc>https://informatico.ai/es-mx/timegravity/t06/</loc>
+    <lastmod>2026-11-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/timegravity/t06/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/timegravity/t06/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/timegravity/t06/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/timegravity/t06/"/>
+  </url>
+  <url>
     <loc>https://informatico.ai/es-mx/timegravity/t07/</loc>
     <lastmod>2026-11-09</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/timegravity/t07/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/timegravity/t07/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/timegravity/t07/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/timegravity/t07/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/timegravity/t10/</loc>
+    <lastmod>2026-11-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/timegravity/t10/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/timegravity/t10/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/timegravity/t10/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/timegravity/t10/"/>
   </url>
 </urlset>

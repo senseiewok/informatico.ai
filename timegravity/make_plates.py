@@ -245,9 +245,64 @@ def plate_t07() -> bytes:
     return c.png()
 
 
+def plate_t06() -> bytes:
+    """The model's collapse time falling with mass, and the R0 exclusion bar with two bounds and the parameter-free dot."""
+    import math
+    from timegravity_kernel_bounds import GS_R0_BOUND_M, GS_R0_PARAMFREE_M, XENONNT_R0_90, dp_collapse_time
+    c = Canvas()
+    c.fill_gradient()
+    pts = []
+    for i in range(81):
+        lm = -20.0 + 8.0 * i / 80
+        lt = max(-6.0, min(12.0, math.log10(dp_collapse_time(10.0 ** lm, 1e-6, 2e-6))))
+        pts.append((100 + 460 * i / 80, 620 - 480 * (lt + 6.0) / 18.0))
+    c.stroke([(100, 140), (100, 620)], INK, 1.2)
+    c.stroke([(100, 620), (560, 620)], INK, 1.2)
+    c.stroke(pts, PRUSSIAN, 4.0)
+    bx0, bx1, by = 680, 1200, 380
+    to_bx = lambda r0: bx0 + (bx1 - bx0) * (math.log10(r0) + 12.0) / 3.0  # noqa: E731
+    gs, xe, pf = to_bx(GS_R0_BOUND_M), to_bx(XENONNT_R0_90), to_bx(GS_R0_PARAMFREE_M)
+    for y in range(by - 30, by + 30):
+        for x in range(bx0, int(gs)):
+            c.blend(x, y, MINIUM, 0.18)
+        for x in range(int(gs), bx1):
+            c.blend(x, y, VERDIGRIS, 0.18)
+    c.stroke([(bx0, by), (bx1, by)], INK, 1.5)
+    c.stroke([(gs, by - 60), (gs, by + 60)], INK, 4.0)
+    c.stroke([(xe, by - 60), (xe, by + 60)], PRUSSIAN, 4.0, dash=(6, 6))
+    c.disc(pf, by, 12, MINIUM, ring=VELLUM)
+    return c.png()
+
+
+def plate_t07_page() -> bytes:
+    """Hawking's straight line and Page's hill, with the ten-qubit toy's dots."""
+    import math
+    from timegravity_kernel_bounds import page_average_entropy, page_curve_toy
+    c = Canvas()
+    c.fill_gradient()
+    toy = page_curve_toy()
+    N = toy["n_qubits"]
+    ymax = 12.0 * math.log(2.0)
+    to_x = lambda a: 140 + 1000 * a / N  # noqa: E731
+    to_y = lambda s: 640 - 500 * min(ymax, s) / ymax  # noqa: E731
+    c.stroke([(140, 100), (140, 640)], INK, 1.2)
+    c.stroke([(140, 640), (1140, 640)], INK, 1.2)
+    c.stroke([(to_x(0), to_y(0)), (to_x(N), to_y(N * math.log(2.0)))], (156, 69, 20), 3.0, dash=(8, 8))
+    pts = [(to_x(a), to_y(page_average_entropy(2 ** a, 2 ** (N - a)) if 0 < a < N else 0.0)) for a in range(N + 1)]
+    smooth = []
+    for i in range(len(pts) - 1):
+        for s in [k / 10 for k in range(10)]:
+            smooth.append((pts[i][0] + (pts[i + 1][0] - pts[i][0]) * s, pts[i][1] + (pts[i + 1][1] - pts[i][1]) * s))
+    smooth.append(pts[-1])
+    c.stroke(smooth, PRUSSIAN, 4.0)
+    for cnd in toy["curve"]:
+        c.disc(to_x(cnd["a"]), to_y(cnd["toy_mean_nats"]), 9, MINIUM, ring=VELLUM)
+    return c.png()
+
+
 def main() -> int:
     PLATES.mkdir(parents=True, exist_ok=True)
-    for name, fn in (("t00", plate_t00), ("t01", plate_t01), ("t02", plate_t02), ("t03", plate_t03), ("t04", plate_t04), ("t07", plate_t07)):
+    for name, fn in (("t00", plate_t00), ("t01", plate_t01), ("t02", plate_t02), ("t03", plate_t03), ("t04", plate_t04), ("t06", plate_t06), ("t07", plate_t07), ("t10", plate_t07_page)):
         data = fn()
         (PLATES / f"{name}.png").write_bytes(data)
         print(f"PASS: wrote plates/{name}.png ({len(data):,} bytes)")

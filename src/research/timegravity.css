@@ -279,6 +279,8 @@
   .tg-pw-dot, .tg-zych-marker { transition: cx 200ms ease, cy 200ms ease; }
   .tg-pw-curve, .tg-zych-curve { transition: opacity 200ms ease; }
   .tg-arm, .tg-clock-face, .tg-clock-hand { transition: y1 200ms ease, y2 200ms ease, cy 200ms ease; }
+  .tg-dp-marker, .tg-page-dots { transition: cx 200ms ease, cy 200ms ease, opacity 200ms ease; }
+  .tg-dp-excluded, .tg-dp-allowed { transition: fill 200ms ease; }
 
   .tp-track-chip-timegravity {
     background: linear-gradient(135deg, var(--tp-vellum) 0%, var(--tp-verdigris-soft) 100%);

@@ -312,6 +312,176 @@
       "kind": "peer-reviewed",
       "review_by": "2027-11-08",
       "note": "Quantum signatures of proper time in optical ion clocks ('proper time interferometry'); a proposal, not a measurement."
+    },
+    {
+      "id": "T06-DIOSI1987",
+      "label": "PROPOSED",
+      "doi": "10.1016/0375-9601(87)90681-5",
+      "year": 1987,
+      "collaboration": "Diosi (Physics Letters A)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Universal master equation for gravity-related decoherence; the model this page tests, labelled as a proposal."
+    },
+    {
+      "id": "T06-PENROSE1996",
+      "label": "PROPOSED",
+      "doi": "10.1007/BF02105068",
+      "year": 1996,
+      "collaboration": "Penrose (General Relativity and Gravitation)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Gravity's role in quantum state reduction: collapse time tau ~ hbar / E_G from the gravitational self-energy of the difference between the two mass distributions."
+    },
+    {
+      "id": "T06-DONADI2021",
+      "label": "BOUND",
+      "doi": "10.1038/s41567-020-1008-4",
+      "year": 2020,
+      "collaboration": "Donadi, Piscicchia, Curceanu, Diosi, Laubenstein & Bassi (LNGS Gran Sasso)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Underground germanium detector: no spontaneous-radiation excess; lower bound on R0 about three orders of magnitude above previous bounds; parameter-free Diosi-Penrose ruled out."
+    },
+    {
+      "id": "T06-XENONNT2026",
+      "label": "BOUND",
+      "doi": "10.1103/2jm3-4976",
+      "year": 2026,
+      "collaboration": "XENONnT Collaboration",
+      "kind": "peer-reviewed",
+      "review_by": "2027-11-09",
+      "note": "Electronic recoils 1-140 keV, first science run: Diosi-Penrose limits improved by a factor of five, CSL by two orders of magnitude (CSL is out of this page's scope). Young row: supports SINGLE RESULT at most."
+    },
+    {
+      "id": "T06-FEIN2019",
+      "label": "SINGLE RESULT",
+      "doi": "10.1038/s41567-019-0663-9",
+      "year": 2019,
+      "collaboration": "Fein et al. (Vienna, Arndt group)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Quantum superposition of molecules beyond 25 kDa: the heaviest matter-wave interference to date; the scale where DP predictions start to bite."
+    },
+    {
+      "id": "T10-HAWKING1971",
+      "label": "DERIVED",
+      "doi": "10.1103/PhysRevLett.26.1344",
+      "year": 1971,
+      "collaboration": "Hawking (Physical Review Letters)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Gravitational radiation from colliding black holes: the area theorem, the horizon area never decreases."
+    },
+    {
+      "id": "T10-BEKENSTEIN1973",
+      "label": "DERIVED",
+      "doi": "10.1103/PhysRevD.7.2333",
+      "year": 1973,
+      "collaboration": "Bekenstein (Physical Review D)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Black holes and entropy: entropy proportional to horizon area."
+    },
+    {
+      "id": "T10-HAWKING1975",
+      "label": "DERIVED",
+      "doi": "10.1007/BF02345020",
+      "year": 1975,
+      "collaboration": "Hawking (Communications in Mathematical Physics)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Particle creation by black holes: thermal radiation and the information question."
+    },
+    {
+      "id": "T10-PAGE1993A",
+      "label": "DERIVED",
+      "doi": "10.1103/PhysRevLett.71.1291",
+      "year": 1993,
+      "collaboration": "Page (Physical Review Letters, average entropy)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Average entropy of a subsystem: S(m,n) = sum_{k=n+1}^{mn} 1/k - (m-1)/(2n); the closed form the toy is checked against."
+    },
+    {
+      "id": "T10-PAGE1993B",
+      "label": "DERIVED",
+      "doi": "10.1103/PhysRevLett.71.3743",
+      "year": 1993,
+      "collaboration": "Page (Physical Review Letters, information in radiation)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Information in black hole radiation: the Page curve, radiation entropy rises then falls if evaporation is unitary."
+    },
+    {
+      "id": "T10-ABBOTT2016",
+      "label": "MEASURED",
+      "doi": "10.1103/PhysRevLett.116.061102",
+      "year": 2016,
+      "collaboration": "LIGO Scientific and Virgo Collaborations",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "GW150914: first observation of gravitational waves from a binary black hole merger."
+    },
+    {
+      "id": "T10-ISI2021",
+      "label": "MEASURED",
+      "doi": "10.1103/PhysRevLett.127.011103",
+      "year": 2021,
+      "collaboration": "Isi, Farr, Giesler, Scheel & Teukolsky (Caltech / Flatiron)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Testing the black-hole area law with GW150914: an independent analysis of the public data; the first area-theorem test."
+    },
+    {
+      "id": "T10-LVK2025",
+      "label": "SINGLE RESULT",
+      "doi": "10.1103/kw5g-d732",
+      "year": 2025,
+      "collaboration": "LIGO-Virgo-KAGRA Collaboration",
+      "kind": "peer-reviewed",
+      "review_by": "2027-11-09",
+      "note": "GW250114: network SNR 80; remnant area larger than the sum of the initial areas to high credibility; mode frequencies within 30 percent of Kerr. Young row."
+    },
+    {
+      "id": "T10-PENINGTON2020",
+      "label": "DERIVED",
+      "doi": "10.1007/JHEP09(2020)002",
+      "year": 2020,
+      "collaboration": "Penington (JHEP)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Entanglement wedge reconstruction and the information paradox: quantum extremal surfaces give a Page curve."
+    },
+    {
+      "id": "T10-ALMHEIRI2019",
+      "label": "DERIVED",
+      "doi": "10.1007/JHEP12(2019)063",
+      "year": 2019,
+      "collaboration": "Almheiri, Engelhardt, Marolf & Maxfield (JHEP)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "The entropy of bulk quantum fields and the entanglement wedge of an evaporating black hole."
+    },
+    {
+      "id": "T10-APOLOGIA2025",
+      "label": "PROPOSED",
+      "doi": "10.48550/arXiv.2506.04311",
+      "year": 2025,
+      "collaboration": "Antonini, Chen, Maxfield & Penington (arXiv preprint)",
+      "kind": "preprint",
+      "review_by": "2027-11-09",
+      "note": "An apologia for islands: defends the island mechanism; preprint, PROPOSED at most."
+    },
+    {
+      "id": "T10-BLINDERS2026",
+      "label": "PROPOSED",
+      "doi": "10.48550/arXiv.2602.06543",
+      "year": 2026,
+      "collaboration": "Geng, Karch, Perez-Pardavila, Raju, Randall & Riojas (arXiv preprint)",
+      "kind": "preprint",
+      "review_by": "2027-11-09",
+      "note": "Seeing Page curves and islands with blinders on: argues islands only redistribute information when a detector has a blind spot; preprint, PROPOSED at most."
     }
   ]
 }
