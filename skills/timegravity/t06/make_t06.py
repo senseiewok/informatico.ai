@@ -14,6 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "tools"))
 
+from timegravity_kernel_ladder import check_ladder  # noqa: E402
 from timegravity_kernel_bounds import (  # noqa: E402
     GS_A_M3, GS_BACKGROUND, GS_DAYS, GS_MEASURED, GS_R0_BOUND_M, GS_R0_PARAMFREE_M, XENONNT_R0_90, XENONNT_R0_95,
     dp_collapse_time, dp_rate_prefactor_order_of_magnitude, dp_self_energy_difference, gran_sasso_r0_bound,
@@ -48,6 +49,7 @@ def build_reference() -> dict:
                        "r0_paramfree_m": GS_R0_PARAMFREE_M, "counts_at_paramfree": r12(gran_sasso_signal_counts(GS_R0_PARAMFREE_M)),
                        "a_recomputed_no_efficiency_m3": r12(dp_rate_prefactor_order_of_magnitude())},
         "xenonnt": {"r0_bound_90_m": XENONNT_R0_90, "r0_bound_95_m": XENONNT_R0_95},
+        "sigma_ladder": {k: v for k, v in check_ladder().items() if k not in ("branch_probes",)},
         "table_log10m_kg__log10R_m__E_G_J__tau_s": table,
         "boundary_en": BOUNDARY_EN,
         "license": "CC0-1.0 / CC-BY-4.0",

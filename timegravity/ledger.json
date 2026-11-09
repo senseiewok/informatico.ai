@@ -682,6 +682,36 @@
       "kind": "peer-reviewed",
       "review_by": "2028-11-09",
       "note": "The Fourier-Bessel expansion applied to experimental probes of gravity and feeble short-range interactions: the torque between two N-fold wedge-patterned plates as one integral over wavenumber (their Eqs. 7-19); the formalism this page's wedge kernel rebuilds."
+    },
+    {
+      "id": "T06-HELOU2017",
+      "label": "BOUND",
+      "doi": "10.1103/PhysRevD.95.084054",
+      "year": 2017,
+      "collaboration": "Helou, Slagmolen, McClelland & Chen (LISA Pathfinder data)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "LISA Pathfinder appreciably constrains collapse models: the Diosi-Penrose regularisation scale sigma_DP bounded from below at 40.1 +/- 0.5 fm, larger than any nucleus."
+    },
+    {
+      "id": "T06-HAMEROFF2014",
+      "label": "PROPOSED",
+      "doi": "10.1016/j.plrev.2013.08.002",
+      "year": 2014,
+      "collaboration": "Hameroff & Penrose (Physics of Life Reviews)",
+      "kind": "review",
+      "review_by": "2028-11-09",
+      "note": "Orch-OR review: consciousness-related collapse follows 'the specific Diosi-Penrose (DP) scheme of objective reduction'; the one biological use of the DP parameter on the ladder. A proposal; the page does not assess it."
+    },
+    {
+      "id": "T06-OPPENHEIM2023",
+      "label": "BOUND",
+      "doi": "10.1038/s41467-023-43348-2",
+      "year": 2023,
+      "collaboration": "Oppenheim, Sparaciari, Soda & Weller-Davies (Nature Communications)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Gravitationally induced decoherence vs space-time diffusion: a decoherence-diffusion trade-off for any consistent classical-gravity / quantum-matter theory; torsion-balance data bound the diffusion, D2 <= 1e-41 kg^2 s m^-3; the Diosi-Penrose kernel named as a member of the class."
     }
   ]
 }

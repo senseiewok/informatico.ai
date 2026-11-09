@@ -18,6 +18,288 @@
     "r0_bound_90_m": 4.9e-10,
     "r0_bound_95_m": 4.5e-10
   },
+  "sigma_ladder": {
+    "rungs": [
+      {
+        "key": "natural",
+        "sigma_m": 1e-14,
+        "kind": "proposed",
+        "ledger_id": "T05-TILLOY2016",
+        "en": "authors' natural cut-off",
+        "es": "corte natural de los autores"
+      },
+      {
+        "key": "lisa",
+        "sigma_m": 4.01e-14,
+        "kind": "bound",
+        "ledger_id": "T06-HELOU2017",
+        "en": "LISA Pathfinder ≥ 40 fm",
+        "es": "LISA Pathfinder ≥ 40 fm"
+      },
+      {
+        "key": "gransasso",
+        "sigma_m": 5.4e-11,
+        "kind": "bound",
+        "ledger_id": "T06-DONADI2021",
+        "en": "Gran Sasso > 0.54 Å",
+        "es": "Gran Sasso > 0.54 Å"
+      },
+      {
+        "key": "xenonnt",
+        "sigma_m": 4.9e-10,
+        "kind": "single",
+        "ledger_id": "T06-XENONNT2026",
+        "en": "XENONnT > 4.9 Å",
+        "es": "XENONnT > 4.9 Å"
+      },
+      {
+        "key": "eotwash",
+        "sigma_m": 4.407e-05,
+        "kind": "estimate",
+        "ledger_id": "T05-LEE2021",
+        "en": "T.05 estimate: Newton tests ≲ 44 µm",
+        "es": "estimación T.05: pruebas de Newton ≲ 44 µm"
+      },
+      {
+        "key": "letter_lo",
+        "sigma_m": 5e-05,
+        "kind": "proposed",
+        "ledger_id": "T05-TRILLO2025",
+        "en": "2025 letter: 50 µm",
+        "es": "carta de 2025: 50 µm"
+      },
+      {
+        "key": "letter_hi",
+        "sigma_m": 0.00025,
+        "kind": "proposed",
+        "ledger_id": "T05-TRILLO2025",
+        "en": "2025 letter: 250 µm",
+        "es": "carta de 2025: 250 µm"
+      }
+    ],
+    "branch_ok": true,
+    "tubulin": {
+      "natural": {
+        "sigma_m": 1e-14,
+        "protein_size": {
+          "lifetime_s": 3357552.110336327,
+          "tubulins_for_25ms": 134302084.41345307,
+          "lifetime_over_universe_age": 7.709739573370707e-12
+        },
+        "nucleon_radius": {
+          "lifetime_s": 647673285.1448734,
+          "tubulins_for_25ms": 25906931405.794933,
+          "lifetime_over_universe_age": 1.4872121691645912e-09
+        }
+      },
+      "lisa": {
+        "sigma_m": 4.01e-14,
+        "protein_size": {
+          "lifetime_s": 13463873.751304582,
+          "tubulins_for_25ms": 538554950.0521833,
+          "lifetime_over_universe_age": 3.0916261865821665e-11
+        },
+        "nucleon_radius": {
+          "lifetime_s": 41579832570.22742,
+          "tubulins_for_25ms": 1663193302809.0967,
+          "lifetime_over_universe_age": 9.547720186797011e-08
+        }
+      },
+      "gransasso": {
+        "sigma_m": 5.4e-11,
+        "protein_size": {
+          "lifetime_s": 18350285203.145863,
+          "tubulins_for_25ms": 734011408125.8345,
+          "lifetime_over_universe_age": 4.213662673404074e-08
+        },
+        "nucleon_radius": {
+          "lifetime_s": 1.0150894353230597e+20,
+          "tubulins_for_25ms": 4.0603577412922387e+21,
+          "lifetime_over_universe_age": 233.0887185913781
+        }
+      },
+      "xenonnt": {
+        "sigma_m": 4.9e-10,
+        "protein_size": {
+          "lifetime_s": 184555556577.65427,
+          "tubulins_for_25ms": 7382222263106.17,
+          "lifetime_over_universe_age": 4.237835277825867e-07
+        },
+        "nucleon_radius": {
+          "lifetime_s": 7.584226042610261e+22,
+          "tubulins_for_25ms": 3.0336904170441043e+24,
+          "lifetime_over_universe_age": 174151.89915918783
+        }
+      },
+      "eotwash": {
+        "sigma_m": 4.407e-05,
+        "protein_size": {
+          "lifetime_s": 5.388305665809452e+24,
+          "tubulins_for_25ms": 2.1553222663237807e+26,
+          "lifetime_over_universe_age": 12372833.558478234
+        },
+        "nucleon_radius": {
+          "lifetime_s": 5.517624988152241e+37,
+          "tubulins_for_25ms": 2.2070499952608963e+39,
+          "lifetime_over_universe_age": 1.2669781532568743e+20
+        }
+      },
+      "letter_lo": {
+        "sigma_m": 5e-05,
+        "protein_size": {
+          "lifetime_s": 7.869245338828368e+24,
+          "tubulins_for_25ms": 3.1476981355313467e+26,
+          "lifetime_over_universe_age": 18069662.12513995
+        },
+        "nucleon_radius": {
+          "lifetime_s": 8.0581072114886825e+37,
+          "tubulins_for_25ms": 3.223242884595473e+39,
+          "lifetime_over_universe_age": 1.8503333980616907e+20
+        }
+      },
+      "letter_hi": {
+        "sigma_m": 0.00025,
+        "protein_size": {
+          "lifetime_s": 9.836556655404719e+26,
+          "tubulins_for_25ms": 3.9346226621618874e+28,
+          "lifetime_over_universe_age": 2258707761.4792438
+        },
+        "nucleon_radius": {
+          "lifetime_s": 1.0072634014360855e+40,
+          "tubulins_for_25ms": 4.029053605744342e+41,
+          "lifetime_over_universe_age": 2.312916747577114e+22
+        }
+      }
+    },
+    "positive_ok": true,
+    "monotone_ok": true,
+    "tubulins_for_25ms_at_natural_cutoff": 25906931405.794933,
+    "count_ok": true,
+    "lifetime_span_eotwash_over_natural": 8.51914864285014e+28,
+    "span_ok": true,
+    "eotwash_matching_sigma_live_m": 4.406690876306644e-05,
+    "rung_ok": true,
+    "casimir": {
+      "gap_1e-15_m": 8.053751663509764e-06,
+      "floor_1e-15_m": 1.710750332701953e-05,
+      "floor_1e-14_m": 2.652867237053799e-05,
+      "vdk_inner_separation_m": 2.4e-05,
+      "rho": 3500.0,
+      "eps": 5.7,
+      "db_T_per_m": 10000.0,
+      "plate_w_m": 1e-06
+    },
+    "floor_ok": true,
+    "window": {
+      "sigma_m": 4.407e-05,
+      "by_mass": {
+        "1e-15": {
+          "mass_kg": 1e-15,
+          "casimir_gap_m": 8.053751663509764e-06,
+          "floor_separation_m": 1.710750332701953e-05,
+          "splits": {
+            "split_23um": {
+              "split_m": 2.3e-05,
+              "d_c_m": 1.4873004928674271e-05,
+              "floor_m": 1.710750332701953e-05,
+              "open": false
+            },
+            "split_10um": {
+              "split_m": 1e-05,
+              "d_c_m": 2.7568749749815323e-05,
+              "floor_m": 1.710750332701953e-05,
+              "open": true,
+              "example_separation_m": 2.2338126538417428e-05,
+              "example": {
+                "peak_negativity": 0.011187570812582485,
+                "peak_time_s": 10000.0,
+                "last_entangled_time_s": 17782.794100389227
+              }
+            },
+            "split_5um": {
+              "split_m": 5e-06,
+              "d_c_m": 3.2515638560561425e-05,
+              "floor_m": 1.710750332701953e-05,
+              "open": true,
+              "example_separation_m": 2.481157094379048e-05,
+              "example": {
+                "peak_negativity": 0.01872221934690895,
+                "peak_time_s": 56234.13251903491,
+                "last_entangled_time_s": 100000.0
+              }
+            },
+            "split_1um": {
+              "split_m": 1e-06,
+              "d_c_m": 3.649864820897578e-05,
+              "floor_m": 1.710750332701953e-05,
+              "open": true,
+              "example_separation_m": 2.6803075767997657e-05,
+              "example": {
+                "peak_negativity": 0.023697842171680295,
+                "peak_time_s": 1778279.410038923,
+                "last_entangled_time_s": 1778279.410038923
+              }
+            }
+          }
+        },
+        "1e-14": {
+          "mass_kg": 1e-14,
+          "casimir_gap_m": 1.2764336185268995e-05,
+          "floor_separation_m": 2.652867237053799e-05,
+          "splits": {
+            "split_23um": {
+              "split_m": 2.3e-05,
+              "d_c_m": 1.4873004928674271e-05,
+              "floor_m": 2.652867237053799e-05,
+              "open": false
+            },
+            "split_10um": {
+              "split_m": 1e-05,
+              "d_c_m": 2.7568749749815323e-05,
+              "floor_m": 2.652867237053799e-05,
+              "open": true,
+              "example_separation_m": 2.7048711060176657e-05,
+              "example": {
+                "peak_negativity": 0.00042461456720997736,
+                "peak_time_s": 31.622776601683793,
+                "last_entangled_time_s": 56.23413251903491
+              }
+            },
+            "split_5um": {
+              "split_m": 5e-06,
+              "d_c_m": 3.2515638560561425e-05,
+              "floor_m": 2.652867237053799e-05,
+              "open": true,
+              "example_separation_m": 2.9522155465549708e-05,
+              "example": {
+                "peak_negativity": 0.005306278917396354,
+                "peak_time_s": 316.22776601683796,
+                "last_entangled_time_s": 562.341325190349
+              }
+            },
+            "split_1um": {
+              "split_m": 1e-06,
+              "d_c_m": 3.649864820897578e-05,
+              "floor_m": 2.652867237053799e-05,
+              "open": true,
+              "example_separation_m": 3.1513660289756886e-05,
+              "example": {
+                "peak_negativity": 0.010585322997714445,
+                "peak_time_s": 10000.0,
+                "last_entangled_time_s": 17782.794100389227
+              }
+            }
+          }
+        }
+      }
+    },
+    "window_ok": true,
+    "sigma_cubed_ratio": 182.55379870849123,
+    "sigma_cubed_ratio_expected": 182.55379870849123,
+    "scaling_ok": true,
+    "defect_rejected": true,
+    "ok": true
+  },
   "table_log10m_kg__log10R_m__E_G_J__tau_s": [
     [
       -20,

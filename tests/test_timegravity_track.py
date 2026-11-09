@@ -451,6 +451,12 @@ class TimeGravityBatch4Tests(unittest.TestCase):
         self.assertAlmostEqual(t06["r0_bound_recomputed_m"] / 0.54e-10, 1.0, delta=0.2)
         self.assertGreater(t06["counts_at_paramfree_r0"], 1e5)
         self.assertLess(t06["max_rel_err_E_G"], 1e-3)
+        self.assertAlmostEqual(t06["ladder_tubulins_for_25ms_at_natural_cutoff"] / 2.59e10, 1.0, delta=0.05)
+        self.assertGreater(t06["ladder_tubulin_lifetime_at_44um_s"], 1e37)
+        self.assertAlmostEqual(t06["ladder_casimir_floor_1e-15_m"] * 1e6, 17.1, delta=0.3)
+        self.assertFalse(t06["ladder_window_23um_split_open"])
+        self.assertTrue(t06["ladder_window_10um_split_open"])
+        self.assertAlmostEqual(t06["ladder_sigma_cubed_ratio"], (250 / 44.07) ** 3, delta=2.0)
         t10 = json.loads(run(PY + [str(SKILLS / "t10" / "verify_t10_page_curve.py")]).stdout)["central_number"]
         self.assertLess(t10["max_dev_from_page_nats"], 0.03)
         self.assertAlmostEqual(t10["peak_nats"], 2.97, delta=0.05)
@@ -473,7 +479,8 @@ class TimeGravityBatch4Tests(unittest.TestCase):
             self.assertEqual(builder.to_spanish_static(en.read_text(encoding="utf-8"), swap=False, shift=False), en.read_text(encoding="utf-8"))
         t06 = (TG / "t06" / "index.html").read_text(encoding="utf-8")
         self.assertNotIn("MEASURED", labels_of(TG / "t06" / "index.html"), "a bound page measures nothing")
-        for s in ("576", "506", "0.54 × 10⁻¹⁰ m", "0.05 × 10⁻¹⁰ m", "4.9 × 10⁻¹⁰ m", "CSL is not a gravity model"):
+        for s in ("576", "506", "0.54 × 10⁻¹⁰ m", "0.05 × 10⁻¹⁰ m", "4.9 × 10⁻¹⁰ m", "CSL is not a gravity model", "Where the smearing may live", 'data-tg-figure="sigma-ladder"',
+                  "above 40 fm", "6.5 × 10⁸ s", "10²⁰ ages of the universe", "twenty-nine orders of magnitude", "does not assess Orch-OR", "D₂ ≤ 10⁻⁴¹", "draws no conclusion beyond it"):
             self.assertIn(s, t06, f"T.06 lacks {s!r}")
         t10 = (TG / "t10" / "index.html").read_text(encoding="utf-8")
         for s in ("signal-to-noise ratio of 80", "to high credibility", "does not recompute it", "Where does the information go, in our universe?"):
@@ -640,7 +647,7 @@ class TimeGravitySmearedIslTests(unittest.TestCase):
         self.assertEqual(labels_of(en), labels_of(es))
         txt = en.read_text(encoding="utf-8")
         for s in ("erfc(qσ − s/2σ)", "54 and 99 µm thick", "13.00 and 23.00 mm", "23.51 and 26.00 mm", "1.5 fN·m at 72 µm", "removes 17 %", "4.3 % at 50 µm", "6.3 % at 55 µm", "removes 2.5 %",
-                  "44 µm", "one-mode lower bound", "near 49 µm", "not a bound on σ", "curve match with no data behind it", "below 37 µm", "below 15 µm", "and not for the", "Taken as a hypothesis, not as a bound", "close to the 44.4 µm",
+                  "44 µm", "one-mode lower bound", "near 49 µm", "not a bound on σ", "curve match with no data behind it", "below 37 µm", "below 15 µm", "and not for the", "Taken as a hypothesis, not as a bound", "close to the 44.4 µm", "Casimir", "cannot fall below 17 µm", "it stays open, between 17 and 37 µm",
                   "previously untested", "leaves it open", "full wedge pattern", 'data-tg-read="isl"'):
             self.assertIn(s, txt, f"T.05 lacks {s!r}")
         low = txt.lower()

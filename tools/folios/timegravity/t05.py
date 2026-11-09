@@ -332,7 +332,7 @@ PAGE: dict = {
               "separación más cercana, cerca de los 44.4 µm que había dado una cota inferior de un modo al número de onda más bajo del patrón, y la forma de "
               "Yukawa más parecida a la curva de σ = 75 µm tiene un alcance cerca de 49 µm y unas tres veces la intensidad de la gravedad, un ajuste de "
               "curva sin datos detrás."),
-            C("PROPOSED", [TRILLO, LEE],
+            C("PROPOSED", [TRILLO, LEE, VDK],
               "Taken as a hypothesis, not as a bound, a smearing no larger than that 44 µm would leave the model predicting entanglement only for "
               "masses whose nearest separation is below 37 µm in the small-split limit and below 15 µm for the letter's 23 µm split, and not for the "
               "letter's own geometry 24 µm apart; the criterion does not depend on the mass, the time does, as 1/m², and at 10⁻¹⁵ kg the negativity would "
@@ -343,6 +343,18 @@ PAGE: dict = {
               "23 µm de la carta, y no para la geometría propia de la carta a 24 µm; el criterio no depende de la masa, el tiempo sí, como 1/m², y a "
               "10⁻¹⁵ kg la negatividad alcanzaría su máximo entre unos 0.02 y 0.05 tras una hora a unas semanas según la división. Predicciones de "
               "un modelo en una geometría medida: la etiqueta es PROPUESTO."),
+            T(" The proposal the letter took its geometry from screens the Casimir force with a conducting plate 1 µm wide and demands that the Casimir pull of "
+              "each mass toward the plate stay below a tenth of the magnetic pull that closes the interferometer; on that condition, with its own "
+              "numbers, the inner states must keep 8 µm from the plate at 10⁻¹⁵ kg, so the nearest separation cannot fall below 17 µm (27 µm at "
+              "10⁻¹⁴ kg; the proposal's own 24 µm clears the floor). Under that floor the window for the letter's 23 µm split, 15 µm, is closed; "
+              "for splits of 10 µm and less it stays open, between 17 and 37 µm, with a negativity peaking at 0.01 to 0.02 after three hours to "
+              "three weeks at 10⁻¹⁵ kg.",
+              " La propuesta de la que la carta tomó su geometría apantalla la fuerza de Casimir con una placa conductora de 1 µm de ancho y exige que la "
+              "atracción de Casimir de cada masa hacia la placa quede por debajo de una décima de la atracción magnética que cierra el "
+              "interferómetro; con esa condición, y sus propios números, los estados interiores deben quedar a 8 µm de la placa a 10⁻¹⁵ kg, así "
+              "que la separación más cercana no puede bajar de 17 µm (27 µm a 10⁻¹⁴ kg; los 24 µm propios de la propuesta libran el piso). Bajo ese "
+              "piso la ventana para la división de 23 µm de la carta, 15 µm, está cerrada; para divisiones de 10 µm o menos sigue abierta, entre "
+              "17 y 37 µm, con una negatividad que alcanza 0.01 a 0.02 tras tres horas a tres semanas a 10⁻¹⁵ kg."),
             C("OPEN", [TRILLO, LEE, TAN],
               "Whether the published analysis, run on its own data, would reject the smeared shape is for the experiment to say, and the second group's bound "
               "at 48 µm is stated as published because its geometry is not in the open text; the letter calls the entangling range of σ 'previously untested' "
