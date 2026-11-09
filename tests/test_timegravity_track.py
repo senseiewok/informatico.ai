@@ -172,6 +172,56 @@ class TimeGravityTrackTests(unittest.TestCase):
         self.assertIn('href="../../../timegravity.css"', es)
         self.assertIn('src="../../../modules/timegravity-slope.mjs"', es)
         self.assertIn('src="../../../plates/t01.png', es)
+        self.assertIn('alt="Diagrama para T.01:', es)
+        self.assertIn(">Descargar SKILL.md (timegravity-t01-time-slope-geodesic.SKILL.md)</button>", es)
+        self.assertIn(">Copiar SKILL.md</button>", es)
+        self.assertIn(">Descargar verificador en Python (verify_t01_time_slope_geodesic.py)</button>", es)
+        self.assertIn(">Línea de mundo de un cuerpo soltado en reposo", es)
+        en_hub = (TG / "index.html").read_text(encoding="utf-8")
+        self.assertIn('class="tp-pager-link tp-pager-next" href="../timegravity/t01/"', en_hub)
+
+    def test_label_lint_rejects_derived_tautology_rank_mismatch_and_handles_void_tags(self) -> None:
+        import datetime as dt
+        import check_timegravity_labels as lbl
+
+        # Void tags (<br>, <wbr>) inside a claim span must not swallow the claim.
+        p = lbl._Claims()
+        p.feed('<p><span class="tg-claim" data-tg-label="OPEN" data-tg-ledger="T01-WILL2014">line 1<br>line 2<wbr></span></p>')
+        self.assertEqual(len(p.claims), 1)
+        self.assertEqual(p.claims[0]["label"], "OPEN")
+
+        rows = {
+            "T01-PR1960": {"id": "T01-PR1960", "label": "MEASURED", "doi": "10.1103/PhysRevLett.4.337", "year": 1960,
+                           "collaboration": "Harvard", "kind": "peer-reviewed", "review_by": "2028-11-08"},
+            "T01-WILL2014": {"id": "T01-WILL2014", "label": "OPEN", "doi": "10.12942/lrr-2014-4", "year": 2014,
+                             "collaboration": "Will", "kind": "peer-reviewed", "review_by": "2028-11-08"},
+            "T01-PREP2026": {"id": "T01-PREP2026", "label": "PROPOSED", "doi": "10.48550/arXiv.2601.00001", "year": 2026,
+                             "collaboration": "Test", "kind": "preprint", "review_by": "2028-11-08"},
+        }
+        today = dt.date(2026, 11, 8)
+        # DERIVED citing only its MEASURED parent (or parent + preprint) must fail.
+        errs: list[str] = []
+        lbl.check_claim("t01", 0, {"label": "DERIVED", "ids": ["T01-PR1960"], "parent": "T01-PR1960", "text": "x"}, rows, today, errs)
+        self.assertTrue(any("DERIVED needs a mature peer-reviewed derivation row" in e for e in errs), errs)
+        errs2: list[str] = []
+        lbl.check_claim("t01", 0, {"label": "DERIVED", "ids": ["T01-PR1960", "T01-PREP2026"], "parent": "T01-PR1960", "text": "x"}, rows, today, errs2)
+        self.assertTrue(any("DERIVED needs a mature peer-reviewed derivation row" in e for e in errs2), errs2)
+        # SINGLE RESULT backed only by an OPEN peer-reviewed row must fail.
+        errs3: list[str] = []
+        lbl.check_claim("t01", 0, {"label": "SINGLE RESULT", "ids": ["T01-WILL2014"], "parent": None, "text": "x"}, rows, today, errs3)
+        self.assertTrue(any("ledger label is >= SINGLE RESULT" in e for e in errs3), errs3)
+
+    def test_plates_are_byte_for_byte_reproducible_and_doi_guard_rejects_traversal(self) -> None:
+        t00_before = (RESEARCH / "plates" / "t00.png").read_bytes()
+        t01_before = (RESEARCH / "plates" / "t01.png").read_bytes()
+        res = run(PY + [str(ROOT / "timegravity" / "make_plates.py")])
+        self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
+        self.assertEqual(t00_before, (RESEARCH / "plates" / "t00.png").read_bytes())
+        self.assertEqual(t01_before, (RESEARCH / "plates" / "t01.png").read_bytes())
+        sys.path.insert(0, str(ROOT / "timegravity"))
+        import refresh_crossref_cache as rc
+        with self.assertRaises(ValueError):
+            rc.fetch("10.1103/../../etc/passwd")
 
     def test_module_is_hand_written_zero_network_and_reduced_motion_aware(self) -> None:
         mjs = (RESEARCH / "modules" / "timegravity-slope.mjs").read_text(encoding="utf-8")

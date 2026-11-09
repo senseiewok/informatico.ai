@@ -90,7 +90,7 @@ function initSlope(root) {
   const x0 = Number(svg.getAttribute("data-x0")), x1 = Number(svg.getAttribute("data-x1"));
   const y0 = Number(svg.getAttribute("data-y0")), y1 = Number(svg.getAttribute("data-y1"));
   const zTop = Number(svg.getAttribute("data-ztop")), zBot = Number(svg.getAttribute("data-zbot"));
-  const toX = (t) => x0 + (x1 - x0) * (t / T_PROPER);
+  const toX = (t) => x0 + (x1 - x0) * Math.min(1, Math.max(0, t / T_PROPER));
   const toY = (z) => y0 + (y1 - y0) * ((zTop - z) / (zTop - zBot));
 
   let raf = 0;
@@ -112,13 +112,14 @@ function initSlope(root) {
       status.textContent = knockout ? S.flat : flip ? S.flip : (Math.abs(scale - 1) < 1e-9 ? S.falls : S.scaled);
     }
     if (rateCol) rateCol.style.opacity = knockout ? "0.15" : String(0.35 + 0.5 * Math.min(1, scale / 2));
-    const relErr = Math.abs(aEff + G0 * scale) / G0;
+    const isFlat = knockout || scale === 0;
+    const relErr = scale > 0 ? Math.abs(aEff + G0 * scale) / (G0 * scale) : 0;
     if (reads.grad) reads.grad.textContent = `${fmt(scale, 2)} ×`;
     if (reads.slope) reads.slope.textContent = `${slopeAp.toExponential(3)} 1/m`;
     if (reads.accel) reads.accel.textContent = `${fmt(aEff, 5)} m/s²`;
-    if (reads.err) reads.err.textContent = knockout ? `|a| = ${Math.abs(aEff).toExponential(1)}` : `${relErr.toExponential(2)}`;
+    if (reads.err) reads.err.textContent = isFlat ? `|a| = ${Math.abs(aEff).toExponential(1)}` : `${relErr.toExponential(2)}`;
     const errBox = root.querySelector('[data-tg-readout-box="err"]');
-    if (errBox) errBox.setAttribute("data-alert", flip && !knockout ? "true" : "false");
+    if (errBox) errBox.setAttribute("data-alert", flip && !isFlat ? "true" : "false");
 
     cancelAnimationFrame(raf);
     const last = samples[samples.length - 1];

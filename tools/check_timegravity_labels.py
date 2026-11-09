@@ -51,6 +51,7 @@ RESEARCH = ROOT / "src" / "research"
 LEDGER_PATH = ROOT / "timegravity" / "ledger.json"
 CACHE_PATH = ROOT / "data" / "folio-citations.cache.json"
 KINDS = ("peer-reviewed", "preprint", "review", "press")
+VOID_TAGS = frozenset({"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"})
 ID_RE = re.compile(r"^T[0-9]{2}-[A-Z0-9]+$")
 DOI_RE = re.compile(r"^10\.[0-9]{4,9}/\S+$")
 DATE_RE = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$")
@@ -66,7 +67,7 @@ class _Claims(HTMLParser):
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
-        if self._cur is not None:
+        if self._cur is not None and tag.lower() not in VOID_TAGS:
             self._depth += 1
         if "tg-claim" in (a.get("class") or "").split():
             self._cur = {
@@ -181,14 +182,28 @@ def check_claim(page: str, idx: int, claim: dict, rows: dict[str, dict], today: 
             errors.append(f"{where}: parent {parent} not in ledger")
         elif rows[parent]["label"] != "MEASURED":
             errors.append(f"{where}: parent {parent} is labelled {rows[parent]['label']}, not MEASURED")
+        elif rows[parent]["kind"] != "peer-reviewed" or is_young(rows[parent], today):
+            errors.append(f"{where}: parent {parent} must be a mature peer-reviewed MEASURED row")
         elif parent not in claim["ids"]:
             errors.append(f"{where}: parent {parent} must also be cited in data-tg-ledger")
-        if not any(r["kind"] in ("peer-reviewed", "review") for r in cited):
-            errors.append(f"{where}: DERIVED needs a peer-reviewed derivation row")
+        deriv_rows = [r for r in cited if r["id"] != parent]
+        if not deriv_rows or not any(
+            r["kind"] in ("peer-reviewed", "review")
+            and not is_young(r, today)
+            and LABEL_RANK[r["label"]] >= LABEL_RANK["DERIVED"]
+            for r in deriv_rows
+        ):
+            errors.append(f"{where}: DERIVED needs a mature peer-reviewed derivation row distinct from parent")
     elif label == "SINGLE RESULT":
-        if not any(r["kind"] == "peer-reviewed" for r in cited):
-            errors.append(f"{where}: SINGLE RESULT needs a peer-reviewed row; preprints stay PROPOSED")
-    # PROPOSED and OPEN: any non-press row is enough.
+        if not any(
+            r["kind"] == "peer-reviewed" and LABEL_RANK[r["label"]] >= LABEL_RANK["SINGLE RESULT"]
+            for r in cited
+        ):
+            errors.append(f"{where}: SINGLE RESULT needs a peer-reviewed row whose ledger label is >= SINGLE RESULT; preprints/proposals stay PROPOSED")
+    elif label == "PROPOSED":
+        if not any(LABEL_RANK[r["label"]] >= LABEL_RANK["PROPOSED"] for r in cited):
+            errors.append(f"{where}: PROPOSED needs a row whose ledger label is >= PROPOSED")
+    # OPEN: any non-press row is enough.
     if label in ("MEASURED", "DERIVED", "BOUND"):
         young = [r["id"] for r in cited if is_young(r, today) or r["kind"] == "preprint"]
         if young and not supporting:
@@ -224,9 +239,11 @@ def lint(planted_defect: bool = False, today: dt.date | None = None) -> tuple[li
         es_claims, es_raw, es_text = parse_page(es_path)
 
         if planted_defect and not planted_done:
-            for c in en_claims:
+            for idx_c, c in enumerate(en_claims):
                 if c["label"] == "SINGLE RESULT":
                     c["label"] = "MEASURED"
+                    if idx_c < len(es_claims):
+                        es_claims[idx_c]["label"] = "MEASURED"
                     planted_done = True
                     break
 
@@ -234,6 +251,8 @@ def lint(planted_defect: bool = False, today: dt.date | None = None) -> tuple[li
             errors.append(f"{rel}: English and es-MX label sequences differ")
         if [c["ids"] for c in en_claims] != [c["ids"] for c in es_claims]:
             errors.append(f"{rel}: English and es-MX ledger-id sequences differ")
+        if [c.get("parent") for c in en_claims] != [c.get("parent") for c in es_claims]:
+            errors.append(f"{rel}: English and es-MX parent-id sequences differ")
 
         if is_hub:
             if en_claims or es_claims:
@@ -241,13 +260,16 @@ def lint(planted_defect: bool = False, today: dt.date | None = None) -> tuple[li
         else:
             if not en_claims:
                 errors.append(f"{rel}: a claim page with no claim spans")
-            if 'class="tg-ai-line"' not in en_raw:
-                errors.append(f"{rel}: missing the AI-contribution line (class tg-ai-line)")
+            for raw, lang in ((en_raw, "en"), (es_raw, "es")):
+                if 'class="tg-ai-line"' not in raw:
+                    errors.append(f"{rel} ({lang}): missing the AI-contribution line (class tg-ai-line)")
 
         for i, c in enumerate(en_claims):
             summary["claims"] += 1
             summary["labels"][c["label"]] = summary["labels"].get(c["label"], 0) + 1
             check_claim(rel, i, c, rows, today, errors)
+        for i, c in enumerate(es_claims):
+            check_claim(f"{rel} (es)", i, c, rows, today, errors)
 
         for raw, text, lang, boundary in ((en_raw, en_text, "en", BOUNDARY_EN), (es_raw, es_text, "es", BOUNDARY_ES)):
             if boundary not in raw and html.escape(boundary) not in raw:
@@ -297,11 +319,12 @@ def main() -> int:
             print(f"FAIL: {e}", file=sys.stderr)
         return 1
 
-    # Self-test: the lint must reject a label flipped upward.
+    # Self-test: the lint must reject a label flipped upward via check_claim().
     planted_errors, _ = lint(planted_defect=True, today=today)
-    knockout = "REJECTED_AS_EXPECTED" if planted_errors else "NOT_REJECTED"
-    if not planted_errors:
-        print("FAIL: self-test: a label flipped upward was not rejected", file=sys.stderr)
+    has_epistemic_rejection = any("MEASURED needs >=" in e for e in planted_errors)
+    knockout = "REJECTED_AS_EXPECTED" if has_epistemic_rejection else "NOT_REJECTED"
+    if not has_epistemic_rejection:
+        print("FAIL: self-test: a label flipped upward was not rejected by check_claim()", file=sys.stderr)
         return 1
     labels = ", ".join(f"{k}={v}" for k, v in sorted(summary["labels"].items()))
     print(

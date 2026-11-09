@@ -105,14 +105,19 @@ class Canvas:
         return b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", ihdr) + chunk(b"IDAT", zlib.compress(bytes(raw), 9)) + chunk(b"IEND", b"")
 
 
+def to_plate_y(z: float) -> float:
+    return 72 + (648 - 72) * ((1.0 - z) / (1.0 - (-10.5)))
+
+
 def frame(c: Canvas) -> None:
     c.fill_gradient()
     c.rate_column(96, 236, 72, 648)
     # axes of the (t, z) diagram
     c.stroke([(320, 72), (320, 648)], INK, 1.2)
     c.stroke([(320, 648), (1200, 648)], INK, 1.2)
-    # clocks beside the column: hands at the same angle would be "same rate"; we draw the slow ones lagging
-    for i, cy in enumerate((120, 260, 400, 540)):
+    # clocks beside the column at the same heights (0, -3.5, -7.0, -10.0 m) as the SVG stage
+    for i, z in enumerate((0.0, -3.5, -7.0, -10.0)):
+        cy = to_plate_y(z)
         c.disc(66, cy, 16, VELLUM, ring=INK)
         ang = -1.2 + 0.55 * i
         import math
@@ -125,10 +130,11 @@ def plate_t01() -> bytes:
     res = integrate(True, +1.0, sample_every=250)
     pts = []
     for _tau, t, z in res["samples"]:
-        x = 320 + 880 * (t / 1.0)
-        y = 120 + (648 - 120) * (max(0.0, -z) / 5.6)
+        x = 320 + 880 * min(1.0, max(0.0, t / 1.0))
+        y = to_plate_y(max(-10.5, min(1.0, z)))
         pts.append((x, min(646.0, y)))
-    c.stroke([(320, 120), (1200, 120)], INK, 1.0, dash=(6, 6))  # release height
+    y_rel = to_plate_y(0.0)
+    c.stroke([(320, y_rel), (1200, y_rel)], INK, 1.0, dash=(6, 6))  # release height
     c.stroke(pts, MINIUM, 4.0)
     c.disc(pts[-1][0], pts[-1][1], 11, INK)
     return c.png()

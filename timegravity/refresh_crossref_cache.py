@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import re
 import sys
 import urllib.error
 import urllib.request
@@ -22,7 +23,12 @@ CACHE = ROOT / "data" / "folio-citations.cache.json"
 USER_AGENT = "informatico.ai-timegravity-ledger/1.0 (https://github.com/senseiewok/informatico.ai)"
 
 
+DOI_RE = re.compile(r"^10\.[0-9]{4,9}/[^\s?#]+$")
+
+
 def fetch(doi: str) -> dict:
+    if not DOI_RE.match(doi) or ".." in doi:
+        raise ValueError(f"Malformed or unsafe DOI: {doi!r}")
     url = "https://api.crossref.org/works/" + urllib.request.quote(doi, safe="/()")
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
     with urllib.request.urlopen(req, timeout=30) as resp:

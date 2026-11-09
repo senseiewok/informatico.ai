@@ -4872,6 +4872,7 @@ def main() -> None:
     (res_dir / "404.html").write_text(render_not_found(), encoding="utf-8")
 
     # Time & Gravity track pages (/timegravity/ and /es-mx/timegravity/), built from tools/folios/timegravity/.
+    sys.modules.setdefault("build_longform_folios", sys.modules[__name__])
     import build_timegravity  # noqa: E402  (lazy: it imports this module)
     build_timegravity.write_pages(catalog)
 

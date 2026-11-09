@@ -116,11 +116,15 @@ def breadcrumb(rel_res: str, page: dict) -> str:
   </nav>"""
 
 
-def lead_figure(page: dict, rel_res: str) -> str:
+def lead_figure(page: dict, rel_res: str, es: bool = False) -> str:
     slug = plate_slug(page)
     code = page["code"]
     alt_en = (f"Diagram for {code}: a worldline drawn across a shaded column that shows how fast a clock runs at each height, "
               "darker meaning slower. Drawn by a script from the page's own numbers; no text, no photograph.")
+    alt_es = (f"Diagrama para {code}: una línea de mundo trazada sobre una columna sombreada que muestra qué tan rápido avanza un reloj "
+              "a cada altura, más oscuro significa más lento. Dibujado por un script con los números de la propia página; sin texto ni fotografía.")
+    alt_txt = alt_es if es else alt_en
+    aria_lbl = f"Diagrama principal para {code}" if es else f"Lead diagram for {code}"
     if code == "T.01":
         cap_en = ("Plate T.01-V · The worldline the kernel integrates: a body released at rest drifts toward the slower clocks, "
                   "faster and faster, with no force term in the equation. Drawn by timegravity/make_plates.py from tools/timegravity_kernel.py.")
@@ -131,8 +135,8 @@ def lead_figure(page: dict, rel_res: str) -> str:
                   "General relativity has the line and the shading; it has no marker. Drawn by timegravity/make_plates.py.")
         cap_es = ("Lámina T.00-V · Una línea de mundo sobre un gradiente de ritmo de relojes, con un marcador para el 'ahora' que la intuición imagina. "
                   "La relatividad general tiene la línea y el sombreado; no tiene marcador. Dibujada por timegravity/make_plates.py.")
-    return f"""    <figure class="tp-editorial-figure" data-lead-figure role="group" aria-label="Lead diagram for {code}">
-      <img class="tp-editorial-img" src="{rel_res}/plates/{slug}.png?v={png_sha8(slug)}" width="1280" height="720" alt="{a(alt_en)}" loading="eager" fetchpriority="high" decoding="async">
+    return f"""    <figure class="tp-editorial-figure" data-lead-figure role="group" aria-label="{a(aria_lbl)}">
+      <img class="tp-editorial-img" src="{rel_res}/plates/{slug}.png?v={png_sha8(slug)}" width="1280" height="720" alt="{a(alt_txt)}" loading="eager" fetchpriority="high" decoding="async">
       <figcaption class="tp-editorial-caption">
         {bi("span", cap_en, cap_es)}
         <details class="tp-plate-provenance-details">
@@ -156,7 +160,7 @@ def clocks_svg(x: float, ys: list[float]) -> str:
 def slope_instrument(page: dict, rel_res: str) -> str:
     ins = page["instrument"]
     P = PLOT
-    to_x = lambda tt: P["x0"] + (P["x1"] - P["x0"]) * tt  # noqa: E731
+    to_x = lambda tt: P["x0"] + (P["x1"] - P["x0"]) * min(1.0, max(0.0, tt))  # noqa: E731
     to_y = lambda z: P["y0"] + (P["y1"] - P["y0"]) * ((P["ztop"] - z) / (P["ztop"] - P["zbot"]))  # noqa: E731
     res = integrate(True, +1.0, sample_every=250)
     d = " ".join(f'{"M" if i == 0 else "L"} {to_x(tt):.2f} {to_y(max(P["zbot"], z)):.2f}' for i, (_tau, tt, z) in enumerate(res["samples"]))
@@ -173,8 +177,8 @@ def slope_instrument(page: dict, rel_res: str) -> str:
         for tt in (0, 0.25, 0.5, 0.75, 1.0)
     )
     svg = f"""        <svg class="tg-stage" viewBox="0 0 920 420" role="img" aria-labelledby="tg-stage-title-t01 tg-stage-desc-t01" data-x0="{P['x0']}" data-x1="{P['x1']}" data-y0="{P['y0']}" data-y1="{P['y1']}" data-ztop="{P['ztop']}" data-zbot="{P['zbot']}">
-          <title id="tg-stage-title-t01">Worldline of a body released at rest in a metric where only the rate of time varies with height</title>
-          <desc id="tg-stage-desc-t01">Left, a shaded column: clocks lower down run slower. Right, height against coordinate time: the body starts at height zero and falls 4.9 metres in one second, a parabola with no force term in the equation.</desc>
+          <title id="tg-stage-title-t01" data-en="Worldline of a body released at rest in a metric where only the rate of time varies with height" data-es="Línea de mundo de un cuerpo soltado en reposo en una métrica donde solo el ritmo del tiempo varía con la altura">Worldline of a body released at rest in a metric where only the rate of time varies with height</title>
+          <desc id="tg-stage-desc-t01" data-en="Left, a shaded column: clocks lower down run slower. Right, height against coordinate time: the body starts at height zero and falls 4.9 metres in one second, a parabola with no force term in the equation." data-es="A la izquierda, una columna sombreada: los relojes más bajos avanzan más lento. A la derecha, altura contra tiempo coordenado: el cuerpo parte en reposo en altura cero y cae 4.9 metros en un segundo, una parábola sin término de fuerza en la ecuación.">Left, a shaded column: clocks lower down run slower. Right, height against coordinate time: the body starts at height zero and falls 4.9 metres in one second, a parabola with no force term in the equation.</desc>
           <defs>
             <linearGradient id="tg-rate-grad" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stop-color="var(--tp-vellum)"/>
@@ -246,8 +250,8 @@ def worldline_instrument(page: dict) -> str:
       <h2 id="tg-instrument-heading-t00" class="tp-h2" data-en="{a(w['title_en'])}" data-es="{a(w['title_es'])}">{t(w['title_en'])}</h2>
       {bi("p", w["how_en"], w["how_es"], "tg-how")}
         <svg class="tg-stage" viewBox="0 0 920 340" role="img" aria-labelledby="tg-stage-title-t00 tg-stage-desc-t00">
-          <title id="tg-stage-title-t00">A worldline across a clock-rate gradient with a movable marker</title>
-          <desc id="tg-stage-desc-t00">Height against coordinate time. A shaded column shows clocks lower down running slower. One curve, the worldline, and one dot on it, the imagined now, which the slider moves. The physics has the curve and the shading; it has no dot.</desc>
+          <title id="tg-stage-title-t00" data-en="A worldline across a clock-rate gradient with a movable marker" data-es="Una línea de mundo sobre un gradiente de ritmo de relojes con un marcador móvil">A worldline across a clock-rate gradient with a movable marker</title>
+          <desc id="tg-stage-desc-t00" data-en="Height against coordinate time. A shaded column shows clocks lower down running slower. One curve, the worldline, and one dot on it, the imagined now, which the slider moves. The physics has the curve and the shading; it has no dot." data-es="Altura contra tiempo coordenado. Una columna sombreada muestra que los relojes más bajos avanzan más lento. Una curva, la línea de mundo, y un punto sobre ella, el ahora imaginado, que el deslizador mueve. La física tiene la curva y el sombreado; no tiene punto.">Height against coordinate time. A shaded column shows clocks lower down running slower. One curve, the worldline, and one dot on it, the imagined now, which the slider moves. The physics has the curve and the shading; it has no dot.</desc>
           <defs>
             <linearGradient id="tg-rate-grad-hub" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stop-color="var(--tp-vellum)"/>
@@ -284,7 +288,7 @@ def plate_d(page: dict) -> str:
     code = page["code"]
     return f"""        <figure class="tp-distill-figure" role="group" aria-label="Plate {code}-D Visual Intuition Bridge">
           <svg class="tp-distill-svg" viewBox="0 0 920 228" role="img" aria-labelledby="tp-distill-title-t01">
-            <title id="tp-distill-title-t01">Plate T.01-D Visual Intuition Bridge: from the marching line on wet grass to a clock-rate gradient versus a flattened gradient, and the fall at g that only one of them produces</title>
+            <title id="tp-distill-title-t01" data-en="Plate T.01-D Visual Intuition Bridge: from the marching line on wet grass to a clock-rate gradient versus a flattened gradient, and the fall at g that only one of them produces" data-es="Lámina T.01-D Puente de Intuición Visual: de la fila de marchantes sobre pasto mojado a un gradiente del ritmo de relojes frente a un gradiente aplanado, y la caída a g que solo el primero produce">Plate T.01-D Visual Intuition Bridge: from the marching line on wet grass to a clock-rate gradient versus a flattened gradient, and the fall at g that only one of them produces</title>
             <rect x="6" y="6" width="908" height="216" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
             <rect x="20" y="20" width="266" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-prussian)" stroke-width="1.5"/>
             <text x="34" y="40" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-prussian)" data-en="1 · EVERYDAY ANALOGY (T.01)" data-es="1 · ANALOGÍA COTIDIANA (T.01)">1 · EVERYDAY ANALOGY (T.01)</text>
@@ -491,21 +495,21 @@ def skill_box(page: dict) -> str:
     py_fn = Path(page["verifier"]).name
     return f"""        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion and Python verifier">
           <div class="tp-skill-header">
-            <span class="tp-skill-kicker">SKILL.md companion &amp; Python verifier · {page['code']}</span>
-            <span class="tp-skill-compat">Works with Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3</span>
+            <span class="tp-skill-kicker" data-en="SKILL.md companion &amp; Python verifier · {page['code']}" data-es="SKILL.md acompañante y verificador en Python · {page['code']}">SKILL.md companion &amp; Python verifier · {page['code']}</span>
+            <span class="tp-skill-compat" data-en="Works with Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3" data-es="Compatible con Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3">Works with Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3</span>
           </div>
           {bi("p", f"Rebuild this instrument locally and run the verifier as the acceptance gate: python {page['generator']} then python {page['verifier']} (and --planted-defect, which must fail). Then python tools/check_timegravity_labels.py.", f"Reconstruye este instrumento localmente y corre el verificador como puerta de aceptación: python {page['generator']} y luego python {page['verifier']} (y --planted-defect, que debe fallar). Después python tools/check_timegravity_labels.py.", "tp-skill-desc")}
           <div class="tp-skill-actions">
-            <button class="tp-skill-btn" type="button" data-skill-download="{skill_fn}">Download SKILL.md ({skill_fn})</button>
-            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-skill-copy="true">Copy SKILL.md</button>
-            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-py-download="{py_fn}">Download Python Verifier ({py_fn})</button>
+            <button class="tp-skill-btn" type="button" data-skill-download="{skill_fn}" data-en="Download SKILL.md ({skill_fn})" data-es="Descargar SKILL.md ({skill_fn})">Download SKILL.md ({skill_fn})</button>
+            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-skill-copy="true" data-en="Copy SKILL.md" data-es="Copiar SKILL.md">Copy SKILL.md</button>
+            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-py-download="{py_fn}" data-en="Download Python Verifier ({py_fn})" data-es="Descargar verificador en Python ({py_fn})">Download Python Verifier ({py_fn})</button>
           </div>
           <details class="tp-skill-source-details">
-            <summary class="tp-skill-source-summary">Show the <code>SKILL.md</code> source</summary>
+            <summary class="tp-skill-source-summary" data-en="Show the SKILL.md source" data-es="Mostrar el código de SKILL.md">Show the SKILL.md source</summary>
             <pre class="tp-skill-pre"><code data-skill-source>{t(skill_md)}</code></pre>
           </details>
           <details class="tp-skill-source-details">
-            <summary class="tp-skill-source-summary">Show the verifier <code>{py_fn}</code></summary>
+            <summary class="tp-skill-source-summary" data-en="Show the verifier {py_fn}" data-es="Mostrar el verificador {py_fn}">Show the verifier {py_fn}</summary>
             <pre class="tp-skill-pre"><code data-py-source>{t(verify_src)}</code></pre>
           </details>
         </section>"""
@@ -528,10 +532,22 @@ def pager(page: dict, rel_res: str) -> str:
         prev = (f'<a class="tp-pager-link tp-pager-prev" href="{B._href(rel_res, "timegravity/")}" rel="prev"><span class="tp-pager-dir">'
                 f'<span data-en="&larr; Hub" data-es="&larr; Inicio">&larr; Hub</span> · {page["prev_code"]}</span>'
                 f'<strong data-en="{a(page["prev_title_en"])}" data-es="{a(page["prev_title_es"])}">{t(page["prev_title_en"])}</strong></a>')
+    next_live = None
+    if not page.get("next_built"):
+        codes = [m["code"] for m in TRACK_MAP]
+        idx = codes.index(page["code"]) if page["code"] in codes else -1
+        for m in (TRACK_MAP[idx + 1:] if idx >= 0 else []):
+            if m["built"] and m["slug"]:
+                next_live = m
+                break
     if page.get("next_built"):
         nxt = (f'<a class="tp-pager-link tp-pager-next" href="{B._href(rel_res, "timegravity/" + page["next_slug"] + "/")}" rel="next"><span class="tp-pager-dir">'
                f'<span data-en="Next &rarr;" data-es="Siguiente &rarr;">Next &rarr;</span> · {page["next_code"]}</span>'
                f'<strong data-en="{a(page["next_title_en"])}" data-es="{a(page["next_title_es"])}">{t(page["next_title_en"])}</strong></a>')
+    elif next_live is not None:
+        nxt = (f'<a class="tp-pager-link tp-pager-next" href="{B._href(rel_res, "timegravity/" + next_live["slug"] + "/")}" rel="next"><span class="tp-pager-dir">'
+               f'<span data-en="Next live page &rarr; ({page["next_code"]} in preparation)" data-es="Siguiente publicada &rarr; ({page["next_code"]} en preparación)">Next live page &rarr; ({page["next_code"]} in preparation)</span> · {next_live["code"]}</span>'
+               f'<strong data-en="{a(next_live["title_en"])}" data-es="{a(next_live["title_es"])}">{t(next_live["title_en"])}</strong></a>')
     else:
         nxt = (f'<span class="tp-pager-link tp-pager-next" aria-disabled="true"><span class="tp-pager-dir">'
                f'<span data-en="Next (in preparation)" data-es="Siguiente (en preparación)">Next (in preparation)</span> · {page["next_code"]}</span>'
@@ -599,7 +615,7 @@ def render_page(page: dict, catalog: dict, lang: str = "en") -> str:
       {bi("p", page["standfirst_en"], page["standfirst_es"], "tp-standfirst")}
 {boundary_banner()}
     </section>
-{lead_figure(page, rel_res)}
+{lead_figure(page, rel_res, es)}
     <nav class="tg-jump-bar" aria-label="Sections of this page">
 {jump_html}
     </nav>

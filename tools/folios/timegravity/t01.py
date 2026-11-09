@@ -165,11 +165,11 @@ PAGE: dict = {
               "cloud of strontium atoms, consistent with general relativity at the 10⁻¹⁹ level.",
               "En 2022 Bothwell y colegas en JILA resolvieron el corrimiento gravitatorio al rojo a lo largo de un solo milímetro "
               "dentro de una misma nube de átomos de estroncio, consistente con la relatividad general al nivel de 10⁻¹⁹."),
-            T(" That row is labelled SINGLE RESULT, not MEASURED: it is one experiment at that scale, published within the ledger's "
-              "replication window, and the label will rise only when a second collaboration resolves the same gradient. The label is "
+            T(" That row is labelled SINGLE RESULT, not MEASURED: it is one experiment from a single collaboration at that millimetre "
+              "scale, and the label will rise only when a second collaboration resolves the same gradient. The label is "
               "a statement about the evidence, not a doubt about the team.",
-              " Esa fila lleva la etiqueta RESULTADO ÚNICO, no MEDIDO: es un solo experimento a esa escala, publicado dentro de la "
-              "ventana de replicación del libro de registro, y la etiqueta subirá solo cuando una segunda colaboración resuelva el mismo "
+              " Esa fila lleva la etiqueta RESULTADO ÚNICO, no MEDIDO: es un solo experimento de una sola colaboración a esa escala "
+              "milimétrica, y la etiqueta subirá solo cuando una segunda colaboración resuelva el mismo "
               "gradiente. La etiqueta habla de la evidencia, no duda del equipo."),
         ),
         {"type": "bridge",
