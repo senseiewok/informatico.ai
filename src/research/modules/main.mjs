@@ -2,7 +2,7 @@
  * @module main
  * Native ES6 Module entry point for Informatico.ai (/research/).
  * Coordinates theme plates, bilingual Web Component audio player, standalone HTML Folio loading,
- * interactive solvers, per-Folio bilingual crosswords, and SKILL.md companions.
+ * interactive solvers, per-Folio bilingual crosswords, SKILL.md companions, and Essay Zero trace-sentence.
  */
 import { initThemePlate } from "./theme-plate.mjs";
 import { initPlateSolvers } from "./solvers.mjs";
@@ -13,6 +13,7 @@ import { initArticleAudio } from "./article-audio.mjs";
 import { initFolioPuzzles } from "./folio-puzzle.mjs";
 import { initPhysicsDiscoveryCrucible } from "./physics-discovery-crucible.mjs";
 import { initGlbViewers } from "./glb-viewer.mjs";
+import { initTraceSentence } from "./trace-sentence.mjs";
 
 function bootMagazine(scope = document) {
   initThemePlate();
@@ -23,6 +24,7 @@ function bootMagazine(scope = document) {
   initFolioPuzzles(scope);
   initPhysicsDiscoveryCrucible(scope);
   initGlbViewers(scope);
+  initTraceSentence(scope);
 }
 
 bootMagazine(document);

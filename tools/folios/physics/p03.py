@@ -188,8 +188,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'fluid, completely missing the micro-scale pores between polymer chains. If a '
                 'delivery vehicle is larger than the local mesh diameter, or carries sticky '
                 'surface charges that adhere to mucin fibers, its effective diffusion coefficient '
-                'plummets by four orders of magnitude, permanently trapping life-saving genetic '
-                'therapies in the superficial mucus blanket destined for rapid clearance.',
+                'plummets by four orders of magnitude, permanently trapping inhaled macromolecular '
+                'formulations in the superficial mucus blanket destined for rapid clearance.',
  'pullquote': '"Increasing ventilation duct mucin solids from 2% (healthy) to 8% (CF) shrinks the '
               'correlation mesh from 300 nm to 65 nm and multiplies zero-shear viscosity by more '
               'than 200-fold."',
