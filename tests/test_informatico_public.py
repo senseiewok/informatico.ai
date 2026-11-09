@@ -38,7 +38,9 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_106_bilingual_pages_and_bounty_crucible_mounted(self) -> None:
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 150)
+        self.assertEqual(len(locs), 152)
+        self.assertTrue((RESEARCH / "about" / "index.html").is_file())
+        self.assertTrue((RESEARCH / "es-mx" / "about" / "index.html").is_file())
         hub_html = (RESEARCH / "index.html").read_text(encoding="utf-8")
         self.assertIn('id="tp-bounty-crucible"', hub_html)
         self.assertIn('id="tp-symbolic-physics-lab"', hub_html)
@@ -64,15 +66,27 @@ class PublicInformaticoRepoTests(unittest.TestCase):
             self.assertIn('id="tp-oss-physics-radar"', es_p_html)
 
     def test_security_git_zero_secrets_zero_local_paths_and_zero_cf_leakage(self) -> None:
-        forbidden = re.compile(r"C:\\Users\\|/home/[a-z0-9_]+|BEGIN .*PRIVATE KEY|sftp-config|cystic fibrosis", re.IGNORECASE)
+        secret_pat = re.compile(r"C:\\Users\\|/home/[a-z0-9_]+|BEGIN .*PRIVATE KEY|sftp-config", re.IGNORECASE)
+        cf_pat = re.compile(r"cystic fibrosis", re.IGNORECASE)
+        about_bridge_rel = {
+            Path("src/research/about/index.html"),
+            Path("src/research/es-mx/about/index.html"),
+            Path("src/research/data/about-evidence.json"),
+            Path("src/research/modules/trace-sentence.mjs"),
+            Path("tools/build_longform_folios.py"),
+        }
         for p in ROOT.rglob("*"):
             if not p.is_file() or ".git" in p.parts or "__pycache__" in p.parts or p.suffix in (".jpg", ".png", ".mp3", ".woff2", ".ico", ".pyc", ".webp", ".glb", ".3mf"):
                 continue
             if p.name in ("test_informatico_public.py", ".gitignore"):
                 continue
+            rel = p.relative_to(ROOT)
             txt = p.read_text(encoding="utf-8")
-            m = forbidden.search(txt)
-            self.assertIsNone(m, f"Forbidden pattern {m.group(0) if m else ''} found in {p.relative_to(ROOT)}")
+            m_sec = secret_pat.search(txt)
+            self.assertIsNone(m_sec, f"Forbidden secret/path pattern {m_sec.group(0) if m_sec else ''} found in {rel}")
+            if rel not in about_bridge_rel:
+                m_cf = cf_pat.search(txt)
+                self.assertIsNone(m_cf, f"Forbidden CF leakage {m_cf.group(0) if m_cf else ''} found in {rel}")
 
 
     def test_every_folio_meets_multi_chapter_monograph_depth_contract(self) -> None:

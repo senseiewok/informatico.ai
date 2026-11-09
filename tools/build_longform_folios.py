@@ -1643,6 +1643,7 @@ PILLAR_NAV_LABELS = {
     "bounties": ("Bounties", "Retos"),
     "toolchain": ("Tech & Tools", "Herramientas"),
     "timegravity": ("Time & Gravity", "Tiempo y Gravedad"),
+    "about": ("About", "Acerca de"),
 }
 
 # Plain-language pillar promises shown on the cover and on each pillar hub (no folio codes, no jargon stacks).
@@ -1837,7 +1838,7 @@ def render_folio_toolchain_companion(slug: str, rel_res: str = "../..") -> str:
 def render_masthead(rel_res: str, active_pillar: str = "", lang: str = "en") -> str:
     """One slim header: brand, the four disciplines + Bounties + Tech & Tools, Contents, language and theme."""
     links = []
-    for p_key in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "timegravity"):
+    for p_key in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "timegravity", "about"):
         en, es = PILLAR_NAV_LABELS[p_key]
         cur = ' aria-current="page"' if p_key == active_pillar else ""
         links.append(
@@ -1988,7 +1989,7 @@ def render_breadcrumb(rel_res: str, pillar: str, folio: dict | None = None) -> s
 def render_site_footer(rel_res: str) -> str:
     links = " · ".join(
         f'<a href="{_href(rel_res, p + "/")}" data-en="{esc(PILLAR_NAV_LABELS[p][0])}" data-es="{esc(PILLAR_NAV_LABELS[p][1])}">{esc(PILLAR_NAV_LABELS[p][0])}</a>'
-        for p in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "timegravity")
+        for p in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "timegravity", "about")
     )
     return f"""    <footer class="tp-footer tp-site-footer">
       <nav aria-label="Footer"><a href="{_href(rel_res)}">Informatico.ai</a> · {links} · <a href="https://github.com/senseiewok/informatico.ai" target="_blank" rel="noopener noreferrer" data-en="GitHub" data-es="GitHub">GitHub</a></nav>
@@ -4590,6 +4591,398 @@ def _folio_lastmod(f: dict) -> str:
     return f.get("date_redated") or f.get("date_published") or "2026-11-02"
 
 
+def _render_65_rosette_svg(cx: float = 876.0, cy: float = 28.0) -> str:
+    """Render a subtle 65-facet polar geometric rosette (for the 65 Roses community) in Plate 0-D."""
+    import math
+    petals = []
+    for i in range(65):
+        angle = (2.0 * math.pi * i) / 65.0
+        r_in = 3.2
+        r_out = 12.5 if i % 5 == 0 else 9.6
+        x1 = cx + r_in * math.cos(angle)
+        y1 = cy + r_in * math.sin(angle)
+        x2 = cx + r_out * math.cos(angle)
+        y2 = cy + r_out * math.sin(angle)
+        petals.append(
+            f'<line class="tz-rosette-petal" x1="{x1:.2f}" y1="{y1:.2f}" x2="{x2:.2f}" y2="{y2:.2f}" stroke="var(--tp-prussian)" stroke-width="0.75"/>'
+        )
+    petals_str = "\n          ".join(petals)
+    return f"""        <g class="tz-rosette-group" data-rosette-facets="65" aria-hidden="true">
+          <circle cx="{cx:.1f}" cy="{cy:.1f}" r="14.5" fill="var(--tp-vellum)" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+          {petals_str}
+          <circle cx="{cx:.1f}" cy="{cy:.1f}" r="2.4" fill="var(--tp-minium)"/>
+        </g>"""
+
+
+def render_about_page(catalog: dict, lang: str = "en") -> str:
+    """Render /about/ and /es-mx/about/ (Essay Zero: Why Every Claim Here Carries a Verifier & the CF Bridge)."""
+    rel_root, rel_res = "../..", ".."
+    es = lang == "es"
+    t_en, d_en, t_es, d_es = PILLAR_SEO["about"]
+    seo_title = t_es if es else t_en
+    seo_desc = d_es if es else d_en
+    canon = page_url("about/", lang)
+    image = "https://informatico.ai/plates/utopian-city-future.jpg"
+    crumbs = [
+        (BRAND, page_url("", lang)),
+        ("Acerca de" if es else "About", canon),
+    ]
+    headline = "Acerca de Informatico y el Motor de Verificación" if es else "About Informatico & the Verification Engine"
+    ld = _ld(
+        "AboutPage",
+        headline,
+        seo_desc,
+        canon,
+        lang,
+        image=image,
+        date_published="2026-10-06",
+        date_modified="2026-11-08",
+        crumbs=crumbs,
+    )
+    head = render_head(seo_title, seo_desc, "about/", "website", image, rel_root, rel_res, ld, lang)
+
+    ev_path = ROOT / "src" / "research" / "data" / "about-evidence.json"
+    ev_data = json.loads(ev_path.read_text(encoding="utf-8"))
+    ev_by_id = {row["id"]: row for row in ev_data["sentences"]}
+
+    def sent_span(sid: str) -> str:
+        row = ev_by_id[sid]
+        s_en = row["sentence_en"].replace("{value}", row["value"])
+        s_es = row["sentence_es"].replace("{value}", row.get("value_es", row["value"]))
+        return f'<span class="tz-sentence" data-ev="{esc(sid)}" data-en="{esc(s_en)}" data-es="{esc(s_es)}">{esc(s_en)}</span>'
+
+    table_rows = []
+    for idx, row in enumerate(ev_data["sentences"], start=1):
+        sid = row["id"]
+        lim_en = row["limitation"]
+        lim_es = row.get("limitation_es", lim_en)
+        table_rows.append(
+            f'          <tr id="ev-{esc(sid)}"><th scope="row">{idx}</th><td>{esc(row["tier"])}</td>'
+            f'<td>{esc(row["source_path"])}</td><td>{esc(row["date_read"])}</td>'
+            f'<td><code>{esc(row["command"])}</code></td>'
+            f'<td data-en="{esc(lim_en)}" data-es="{esc(lim_es)}">{esc(lim_en)}</td></tr>'
+        )
+    table_rows_html = "\n".join(table_rows)
+    rosette_svg = _render_65_rosette_svg()
+
+    return f"""{head}
+<body class="tp-body tp-page-hub">
+{render_masthead(rel_res, "about", lang)}
+{render_contents_dialog(rel_res, catalog, "about")}
+  <main id="main" class="tp-shell" tabindex="-1">
+    <nav class="tp-breadcrumb-bar" aria-label="Breadcrumb">
+      <ol class="tp-breadcrumb-list">
+        <li class="tp-crumb-item"><a class="tp-crumb-link" href="../">Informatico.ai</a></li>
+        <li class="tp-crumb-item" aria-current="page"><span data-en="About &amp; Verification Engine" data-es="Acerca de y Motor de Verificación">About &amp; Verification Engine</span></li>
+      </ol>
+    </nav>
+
+    <section class="tp-cover-hero" aria-labelledby="about-heading">
+      <div class="tp-cover-copy">
+        <p class="tp-kicker"><span data-en="ESSAY ZERO · ABOUT INFORMATICO.AI &amp; SENSEI EWOK LAB" data-es="ENSAYO CERO · ACERCA DE INFORMATICO.AI Y SENSEI EWOK LAB">ESSAY ZERO · ABOUT INFORMATICO.AI &amp; SENSEI EWOK LAB</span></p>
+        <h1 id="about-heading" class="tp-h1" data-en="Why Every Claim Here Carries a Verifier" data-es="Por Qué Cada Afirmación Aquí Lleva un Verificador">Why Every Claim Here Carries a Verifier</h1>
+        <div class="tz-dignity-stamp" role="note" aria-label="Non-clinical research boundary">
+          <strong data-en="NON-CLINICAL RESEARCH BOUNDARY" data-es="LÍMITE DE INVESTIGACIÓN NO CLÍNICA">NON-CLINICAL RESEARCH BOUNDARY</strong>
+          <span data-en="Independent research, not medical advice. Sensei Ewok CF Lab does not promise cures or clinical treatments." data-es="Investigación independiente, no asesoramiento médico. Sensei Ewok CF Lab no promete curas ni tratamientos clínicos.">Independent research, not medical advice. Sensei Ewok CF Lab does not promise cures or clinical treatments.</span>
+        </div>
+        <p class="tp-standfirst" data-en="Informatico.ai is an open-source publication of interactive essays on civil engineering, architecture, physics, and mathematics—built on the same deterministic verification engine that audits open Cystic Fibrosis research at senseiewok.ai." data-es="Informatico.ai es una publicación de código abierto con ensayos interactivos sobre ingeniería civil, arquitectura, física y matemáticas, construida sobre el mismo motor determinista de verificación que audita investigación abierta de Fibrosis Quística en senseiewok.ai.">Informatico.ai is an open-source publication of interactive essays on civil engineering, architecture, physics, and mathematics—built on the same deterministic verification engine that audits open Cystic Fibrosis research at senseiewok.ai.</p>
+        <div class="tp-cover-ctas">
+          <a class="tp-cta tp-cta-primary" href="https://senseiewok.ai/" target="_blank" rel="noopener noreferrer" data-en="Visit Sensei Ewok CF Lab &rarr;" data-es="Visitar Sensei Ewok CF Lab &rarr;">Visit Sensei Ewok CF Lab &rarr;</a>
+          <a class="tp-cta" href="#tz-essay" data-en="Trace a Sentence &darr;" data-es="Rastrea una Oración &darr;">Trace a Sentence &darr;</a>
+        </div>
+        <p class="tz-hint" id="tz-hint" data-en="Interactive ledger below: select any dotted sentence (or press Tab then Enter) to inspect its primary source, Answer Tier (T0–T3), date read, and verification command." data-es="Bitácora interactiva abajo: selecciona cualquier oración subrayada (o presiona Tab y Enter) para inspeccionar su fuente primaria, Nivel de Respuesta (T0–T3), fecha de lectura y comando de verificación.">Interactive ledger below: select any dotted sentence (or press Tab then Enter) to inspect its primary source, Answer Tier (T0–T3), date read, and verification command.</p>
+        <p class="tz-status" id="tz-status" role="status">
+          <span data-en="8 sentences indexed in about-evidence.json; open the table below or select a sentence to inspect its proof." data-es="8 oraciones indexadas en about-evidence.json; abre la tabla abajo o selecciona una oración para inspeccionar su prueba.">8 sentences indexed in about-evidence.json; open the table below or select a sentence to inspect its proof.</span>
+        </p>
+        <noscript><p class="tz-noscript" lang="en">JavaScript is off: every sentence's source, tier, date read, and check command is available in the static table under "All evidence for this page" below. / <span lang="es-MX">JavaScript está apagado: la fuente, el nivel, la fecha de lectura y el comando de verificación de cada oración están en la tabla estática más abajo.</span></p></noscript>
+      </div>
+      <figure class="tp-cover-figure">
+        <img src="{plate_src(rel_res + '/plates/', 'utopian-city-future')}" width="1024" height="576" loading="eager" decoding="async" alt="Architectural cross-section of a sun-lit engineering atelier and civic infrastructure span.">
+        <figcaption data-en="Plate 0-A · Shared Verification Atelier. Civil trusses, porous media, and biomolecular frames share one deterministic verification harness across Informatico.ai and senseiewok.ai." data-es="Lámina 0-A · Taller de Verificación Compartido. Armaduras civiles, medios porosos y marcos biomoleculares comparten un mismo arnés determinista en Informatico.ai y senseiewok.ai.">Plate 0-A · Shared Verification Atelier. Civil trusses, porous media, and biomolecular frames share one deterministic verification harness across Informatico.ai and senseiewok.ai.</figcaption>
+      </figure>
+    </section>
+
+    <article class="tp-prose" aria-labelledby="pace1-heading">
+      <h2 id="pace1-heading" data-en="1 · The Missing Pin at Position 508" data-es="1 · El Pasador Faltante en la Posición 508">1 · The Missing Pin at Position 508</h2>
+      <p class="tp-dropcap" data-en="Four public coordinate files sit in our open repository from the global protein archive. Each file maps a nanoscale valve made of 1,480 amino-acid links that regulates salt and water across human airways. In two files, the chain runs cleanly through link 508 and the gate swings open on its hinge. In the other two files, the coordinate table jumps straight from link 507 to link 509. Link 508 is missing. Two small molecular wedges sit pinned inside the frame, bracing the wobbly truss open so ions can pass. Every structural map also has regions too flexible for the electron beam to resolve. Our scripts measure the exact distances between the wedges and the rods they brace, and leave unmeasured regions blank. Those four structures (6MSM, 5UAK, 8EIQ, and 8EJ1) taught us our first rule: a language model will smooth over a missing coordinate with a plausible paragraph, whereas a deterministic verifier simply reports that residue 508 is absent." data-es="Cuatro archivos públicos de coordenadas reposan en nuestro repositorio desde el archivo mundial de proteínas. Cada archivo traza una válvula a nanoescala de 1,480 eslabones que regula sal y agua en las vías respiratorias. En dos archivos, la cadena pasa limpia por el eslabón 508 y la compuerta gira libre sobre su bisagra. En los otros dos, la tabla salta directo del eslabón 507 al 509. Falta el eslabón 508. Dos pequeñas cuñas moleculares se anclan dentro del marco, arriostrando la armadura para que pasen los iones. Nuestros scripts miden las distancias exactas entre las cuñas y las barras, y dejan en blanco las regiones no resueltas. Esas cuatro estructuras (6MSM, 5UAK, 8EIQ y 8EJ1) nos enseñaron nuestra primera regla: un modelo de lenguaje rellena una coordenada faltante con un párrafo plausible, mientras que un verificador determinista reporta que el residuo 508 no está.">Four public coordinate files sit in our open repository from the global protein archive. Each file maps a nanoscale valve made of 1,480 amino-acid links that regulates salt and water across human airways. In two files, the chain runs cleanly through link 508 and the gate swings open on its hinge. In the other two files, the coordinate table jumps straight from link 507 to link 509. Link 508 is missing. Two small molecular wedges sit pinned inside the frame, bracing the wobbly truss open so ions can pass. Every structural map also has regions too flexible for the electron beam to resolve. Our scripts measure the exact distances between the wedges and the rods they brace, and leave unmeasured regions blank. Those four structures (6MSM, 5UAK, 8EIQ, and 8EJ1) taught us our first rule: a language model will smooth over a missing coordinate with a plausible paragraph, whereas a deterministic verifier simply reports that residue 508 is absent.</p>
+
+      <aside class="tp-plain-bridge-box" aria-labelledby="pace2-heading">
+        <span class="tp-plain-bridge-kicker" data-en="2 · IN PLAIN WORDS · THE SHARED PROVING GROUND" data-es="2 · EN PALABRAS SENCILLAS · EL BANCO DE PRUEBAS COMPARTIDO">2 · IN PLAIN WORDS · THE SHARED PROVING GROUND</span>
+        <h2 id="pace2-heading" data-en="How Using Informatico Helps" data-es="Cómo Ayudas al Usar Informatico">How Using Informatico Helps</h2>
+        <p data-en="You do not need medical training to see how our engineering essays connect to Cystic Fibrosis. At the physical scale, the mechanics are identical. A misfolded protein channel is a space-frame truss missing one pin at position 508. Two molecular wedges brace that loose hinge just as diagonal struts stiffen a bridge frame. Thickened airway mucus is a porous hydrogel filter governed by the same flow laws as pumped mortar. Premature genetic stop signals act like truncated messages in an error-correcting code." data-es="No necesitas formación médica para ver cómo nuestros ensayos de ingeniería se conectan con la Fibrosis Quística. A escala física, la mecánica es idéntica. Un canal proteico mal plegado es una armadura espacial sin un pasador en la posición 508. Dos cuñas moleculares arriostran esa bisagra igual que los puntales rigidizan un puente. El moco espeso es un filtro de hidrogel poroso regido por las mismas leyes que el mortero bombeado. Y las señales genéticas de paro prematuro actúan como mensajes truncados.">You do not need medical training to see how our engineering essays connect to Cystic Fibrosis. At the physical scale, the mechanics are identical. A misfolded protein channel is a space-frame truss missing one pin at position 508. Two molecular wedges brace that loose hinge just as diagonal struts stiffen a bridge frame. Thickened airway mucus is a porous hydrogel filter governed by the same flow laws as pumped mortar. Premature genetic stop signals act like truncated messages in an error-correcting code.</p>
+        <p data-en="Both sites share one open-source verification engine, one citation gate, and one numerical test suite. Every time you read an essay here, run a Python verifier, download a skill companion, or report a solver edge case, you stress-test and harden the exact harness that audits our open Cystic Fibrosis research." data-es="Ambos sitios comparten un mismo motor abierto de verificación, una compuerta de citación y una batería numérica. Cada vez que lees un ensayo aquí, ejecutas un verificador en Python, descargas una habilidad compañera o reportas un caso límite, fortaleces el mismo arnés que audita nuestra investigación abierta en Fibrosis Quística.">Both sites share one open-source verification engine, one citation gate, and one numerical test suite. Every time you read an essay here, run a Python verifier, download a skill companion, or report a solver edge case, you stress-test and harden the exact harness that audits our open Cystic Fibrosis research.</p>
+      </aside>
+
+      <aside class="tp-analogy-box" aria-labelledby="pace3-heading">
+        <span class="tp-plain-bridge-kicker" data-en="3 · EVERYDAY ENGINEERING ANALOGY · THE SURVEYING LEVELING LOOP" data-es="3 · ANALOGÍA COTIDIANA DE INGENIERÍA · EL CIRCUITO DE NIVELACIÓN TOPOGRÁFICA">3 · EVERYDAY ENGINEERING ANALOGY · THE SURVEYING LEVELING LOOP</span>
+        <h2 id="pace3-heading" data-en="Closing the Loop Back to the Brass Benchmark" data-es="Cerrar el Circuito de Regreso al Banco de Nivel">Closing the Loop Back to the Brass Benchmark</h2>
+        <p data-en="A surveyor carrying elevations across a valley starts at a brass benchmark set in bedrock. They alternate backsights and foresights through turning points, then walk the loop all the way back to the starting brass pin. If the final reading does not match the initial elevation, the misclosure goes into the field book in ink. You never erase a sight to force the column to sum; you re-walk the leg that drifted." data-es="Un topógrafo que traslada cotas por un valle parte de un banco de bronce en roca firme. Alterna lecturas atrás y adelante por puntos de liga y cierra el circuito de vuelta al banco inicial. Si la lectura final no coincide con la cota inicial, el error de cierre se anota con tinta. Nunca se borra una lectura para cuadrar la columna; se vuelve a caminar el tramo que derivó.">A surveyor carrying elevations across a valley starts at a brass benchmark set in bedrock. They alternate backsights and foresights through turning points, then walk the loop all the way back to the starting brass pin. If the final reading does not match the initial elevation, the misclosure goes into the field book in ink. You never erase a sight to force the column to sum; you re-walk the leg that drifted.</p>
+        <p data-en="Where the analogy stops: a brass benchmark in bedrock stays still while you walk the loop. A scientific paper can be corrected or retracted after you cite it, and a catalog row only records what we read on a stated date. That is why our sentinels re-poll Crossref Retraction Watch and openFDA against the catalog." data-es="Dónde termina la analogía: un banco de bronce en roca firme no se mueve mientras caminas el circuito. Un artículo científico puede corregirse o retractarse después de citarlo, y una fila del catálogo solo registra lo que leímos en una fecha declarada. Por eso nuestros centinelas vuelven a consultar Crossref Retraction Watch y openFDA contra el catálogo.">Where the analogy stops: a brass benchmark in bedrock stays still while you walk the loop. A scientific paper can be corrected or retracted after you cite it, and a catalog row only records what we read on a stated date. That is why our sentinels re-poll Crossref Retraction Watch and openFDA against the catalog.</p>
+      </aside>
+    </article>
+
+    <!-- Pace 4: Plate 0-D + Interactive Trace-a-Sentence -->
+    <figure class="tp-distill-figure" id="plate-0d" role="group" aria-labelledby="plate-0d-caption">
+      <svg class="tp-distill-svg" viewBox="0 0 920 300" role="img" aria-labelledby="plate-0d-title plate-0d-desc" data-active-tier="" data-rosette-bloom="false">
+        <title id="plate-0d-title" data-en="Plate 0-D. How a sentence earns its place: source, catalog row, verifier, page." data-es="Lámina 0-D. Cómo una oración se gana su lugar: fuente, fila del catálogo, verificador, página.">Plate 0-D. How a sentence earns its place: source, catalog row, verifier, page.</title>
+        <desc id="plate-0d-desc" data-en="Four boxes in a row joined by arrows: 1. Source (T1 primary quote, T0 summary), 2. Catalog row (permissions and date read), 3. Verifier (T2 cross-checked script exit 0), and 4. Page (T3 person-reviewed sentence), with a red return arrow showing that any failed check sends the sentence back to its source, plus a 65-facet geometric rosette in the upper right." data-es="Cuatro cajas en fila unidas por flechas: 1. Fuente (cita primaria T1, resumen T0), 2. Fila del catálogo (permisos y fecha de lectura), 3. Verificador (script verificado en cruce T2 con salida 0), y 4. Página (oración revisada por una persona T3), con una flecha roja de retorno y una roseta geométrica de 65 facetas en la esquina superior derecha.">Four boxes in a row joined by arrows: 1. Source (T1 primary quote, T0 summary), 2. Catalog row (permissions and date read), 3. Verifier (T2 cross-checked script exit 0), and 4. Page (T3 person-reviewed sentence), with a red return arrow showing that any failed check sends the sentence back to its source, plus a 65-facet geometric rosette in the upper right.</desc>
+        <defs>
+          <marker id="tz-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--tp-ink)"/>
+          </marker>
+          <marker id="tz-arrow-back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--tp-minium)"/>
+          </marker>
+        </defs>
+        <rect x="6" y="6" width="908" height="288" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
+        <text x="24" y="32" class="tz-svg-kicker" data-en="PLATE 0-D · HOW A SENTENCE EARNS ITS PLACE · SHARED VERIFICATION ENGINE" data-es="LÁMINA 0-D · CÓMO UNA ORACIÓN SE GANA SU LUGAR · MOTOR DE VERIFICACIÓN COMPARTIDO">PLATE 0-D · HOW A SENTENCE EARNS ITS PLACE · SHARED VERIFICATION ENGINE</text>
+{rosette_svg}
+        <g class="tz-step" data-step="source" data-tiers="T0 T1">
+          <rect x="24" y="56" width="196" height="150" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-prussian)" stroke-width="1.5"/>
+          <text x="40" y="82" class="tz-svg-step-no">1</text>
+          <text x="62" y="82" class="tz-svg-step-title" data-en="Source" data-es="Fuente">Source</text>
+          <text x="40" y="106" class="tz-svg-body" data-en="The primary document," data-es="El documento primario,">The primary document,</text>
+          <text x="40" y="122" class="tz-svg-body" data-en="read on a stated date." data-es="leído en una fecha declarada.">read on a stated date.</text>
+          <g class="tz-tier-badge" data-tier="T1"><rect x="40" y="140" width="164" height="22" rx="11" fill="var(--tp-prussian-soft)" stroke="var(--tp-prussian)" stroke-width="1"/><text x="122" y="155" text-anchor="middle" class="tz-svg-tier" data-en="T1 primary quote" data-es="T1 cita primaria">T1 primary quote</text></g>
+          <g class="tz-tier-badge" data-tier="T0"><rect x="40" y="168" width="164" height="22" rx="11" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1"/><text x="122" y="183" text-anchor="middle" class="tz-svg-tier" data-en="T0 summary only" data-es="T0 solo resumen">T0 summary only</text></g>
+        </g>
+
+        <g class="tz-step" data-step="catalog" data-tiers="">
+          <rect x="252" y="56" width="196" height="150" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-verdigris)" stroke-width="1.5"/>
+          <text x="268" y="82" class="tz-svg-step-no">2</text>
+          <text x="290" y="82" class="tz-svg-step-title" data-en="Catalog row" data-es="Fila del catálogo">Catalog row</text>
+          <text x="268" y="106" class="tz-svg-body" data-en="What the publisher permits," data-es="Lo que la editorial permite,">What the publisher permits,</text>
+          <text x="268" y="122" class="tz-svg-body" data-en="the path, the date read." data-es="la ruta, la fecha de lectura.">the path, the date read.</text>
+          <rect x="268" y="140" width="164" height="50" rx="4" fill="var(--tp-stone)" stroke="var(--tp-rule)" stroke-width="1"/>
+          <text x="276" y="156" class="tz-svg-mono">catalog.yaml (330 rows)</text>
+          <text x="276" y="170" class="tz-svg-mono" data-en="permits: quote, doi, link" data-es="permite: cita, doi, enlace">permits: quote, doi, link</text>
+          <text x="276" y="184" class="tz-svg-mono">date_read: 2026-11-08</text>
+        </g>
+
+        <g class="tz-step" data-step="verifier" data-tiers="T2">
+          <rect x="480" y="56" width="196" height="150" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-sienna)" stroke-width="1.5"/>
+          <text x="496" y="82" class="tz-svg-step-no">3</text>
+          <text x="518" y="82" class="tz-svg-step-title" data-en="Verifier" data-es="Verificador">Verifier</text>
+          <text x="496" y="106" class="tz-svg-body" data-en="A script fails on any number" data-es="Un script falla con cualquier número">A script fails on any number</text>
+          <text x="496" y="122" class="tz-svg-body" data-en="not in the evidence file." data-es="que no esté en el archivo de evidencia.">not in the evidence file.</text>
+          <g class="tz-tier-badge" data-tier="T2"><rect x="496" y="140" width="164" height="22" rx="11" fill="var(--tp-sienna-soft)" stroke="var(--tp-sienna)" stroke-width="1"/><text x="578" y="155" text-anchor="middle" class="tz-svg-tier" data-en="T2 cross-checked" data-es="T2 verificado en cruce">T2 cross-checked</text></g>
+          <text x="496" y="184" class="tz-svg-mono" data-en="exit 0 = numbers exist" data-es="exit 0 = los números existen">exit 0 = numbers exist</text>
+        </g>
+
+        <g class="tz-step" data-step="page" data-tiers="T3">
+          <rect x="708" y="56" width="188" height="150" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-minium)" stroke-width="1.5"/>
+          <text x="724" y="82" class="tz-svg-step-no">4</text>
+          <text x="746" y="82" class="tz-svg-step-title" data-en="Page" data-es="Página">Page</text>
+          <text x="724" y="106" class="tz-svg-body" data-en="The sentence as published," data-es="La oración ya publicada,">The sentence as published,</text>
+          <text x="724" y="122" class="tz-svg-body" data-en="with its tier beside it." data-es="con su nivel al lado.">with its tier beside it.</text>
+          <g class="tz-tier-badge" data-tier="T3"><rect x="724" y="140" width="156" height="22" rx="11" fill="var(--tp-minium-soft)" stroke="var(--tp-minium)" stroke-width="1"/><text x="802" y="155" text-anchor="middle" class="tz-svg-tier" data-en="T3 person-reviewed" data-es="T3 revisado por alguien">T3 person-reviewed</text></g>
+          <text x="724" y="184" class="tz-svg-mono" data-en="a person compared quote" data-es="alguien comparó la cita">a person compared quote</text>
+        </g>
+
+        <g class="tz-arrows" fill="none" stroke="var(--tp-ink)" stroke-width="1.6" marker-end="url(#tz-arrow)">
+          <path class="tz-draw" pathLength="1" d="M222 131 H248"/>
+          <path class="tz-draw" pathLength="1" d="M450 131 H476"/>
+          <path class="tz-draw" pathLength="1" d="M678 131 H704"/>
+        </g>
+        <path class="tz-draw tz-return" pathLength="1" d="M588 212 V246 H122 V212" fill="none" stroke="var(--tp-minium)" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#tz-arrow-back)"/>
+        <text x="355" y="268" text-anchor="middle" class="tz-svg-return" data-en="A check that fails sends the sentence back to its source." data-es="Una verificación que falla devuelve la oración a su fuente.">A check that fails sends the sentence back to its source.</text>
+        <text x="896" y="284" text-anchor="end" class="tz-svg-mono" data-en="tiers: T0 summary · T1 primary quote · T2 cross-checked · T3 person-reviewed" data-es="niveles: T0 resumen · T1 cita primaria · T2 verificado en cruce · T3 revisado por una persona">tiers: T0 summary · T1 primary quote · T2 cross-checked · T3 person-reviewed</text>
+      </svg>
+      <figcaption id="plate-0d-caption" class="tp-distill-caption">
+        <span data-en="Plate 0-D · How a sentence earns its place. A source is read on a date; the catalog row records what the publisher permits; a verifier fails on any number that is not in the evidence file; the page shows the sentence with its tier. When you select a sentence below, its tier lights up here." data-es="Lámina 0-D · Cómo una oración se gana su lugar. Una fuente se lee en una fecha; la fila del catálogo registra lo que la editorial permite; un verificador falla con cualquier número que no esté en el archivo de evidencia; la página muestra la oración con su nivel. Cuando seleccionas una oración abajo, su nivel se ilumina aquí.">Plate 0-D · How a sentence earns its place. A source is read on a date; the catalog row records what the publisher permits; a verifier fails on any number that is not in the evidence file; the page shows the sentence with its tier. When you select a sentence below, its tier lights up here.</span>
+        <div class="tz-caption-actions">
+          <button type="button" class="tz-legend-btn" popovertarget="tz-tier-legend" data-en="What the tiers mean" data-es="Qué significan los niveles">What the tiers mean</button>
+          <button type="button" class="tz-rosette-btn" id="tz-rosette-btn" aria-pressed="false" data-en="✿ 65-Facet Rosette (or type 65)" data-es="✿ Roseta de 65 Facetas (o escribe 65)">✿ 65-Facet Rosette (or type 65)</button>
+        </div>
+        <p id="tz-rosette-whisper" class="tz-rosette-whisper" hidden data-en="65 facets in the upper-right rosette · Built with love and respect for the 65 Roses (Cystic Fibrosis) community." data-es="65 facetas en la roseta superior derecha · Construido con cariño y respeto para la comunidad de las 65 Rosas (Fibrosis Quística).">65 facets in the upper-right rosette · Built with love and respect for the 65 Roses (Cystic Fibrosis) community.</p>
+        <div id="tz-tier-legend" class="tz-legend" popover>
+          <h2 class="tz-legend-title" data-en="Answer tiers" data-es="Niveles de respuesta">Answer tiers</h2>
+          <dl class="tz-legend-list">
+            <dt>T0</dt><dd data-en="Summary: the lab's own words about a source, a lead, not a quote." data-es="Resumen: palabras propias del laboratorio sobre una fuente; una pista, no una cita.">Summary: the lab's own words about a source, a lead, not a quote.</dd>
+            <dt>T1</dt><dd data-en="Primary quote: the number or phrase appears in the source, read on the date shown." data-es="Cita primaria: el número o la frase aparece en la fuente, leída en la fecha indicada.">Primary quote: the number or phrase appears in the source, read on the date shown.</dd>
+            <dt>T2</dt><dd data-en="Cross-checked: two independent sources or a script agree." data-es="Verificado en cruce: dos fuentes independientes o un script coinciden.">Cross-checked: two independent sources or a script agree.</dd>
+            <dt>T3</dt><dd data-en="Person-reviewed: a person compared the sentence with its quote." data-es="Revisado por una persona: alguien comparó la oración con su cita.">Person-reviewed: a person compared the sentence with its quote.</dd>
+          </dl>
+        </div>
+      </figcaption>
+    </figure>
+
+    <section class="tp-folio-layout" aria-labelledby="essay-heading">
+      <div class="tp-prose" id="tz-essay">
+        <h2 id="essay-heading" data-en="4 · Trace a Sentence: A Lab, Not a Clinic" data-es="4 · Rastrea una Oración: Un Laboratorio, No una Clínica">4 · Trace a Sentence: A Lab, Not a Clinic</h2>
+        <p>
+          {sent_span("s1")}
+          {sent_span("s2")}
+          {sent_span("s3")}
+        </p>
+        <p>
+          {sent_span("s4")}
+          {sent_span("s5")}
+          {sent_span("s6")}
+        </p>
+        <p>
+          {sent_span("s7")}
+          {sent_span("s8")}
+        </p>
+      </div>
+      <aside class="tp-rail" aria-labelledby="rail-heading">
+        <h2 id="rail-heading" class="tz-rail-title" data-en="What the evidence panel shows" data-es="Qué muestra el panel de evidencia">What the evidence panel shows</h2>
+        <ul class="tz-rail-list">
+          <li data-en="Tier: T0 summary to T3 person-reviewed" data-es="Nivel: de T0 resumen a T3 revisado por persona">Tier: T0 summary to T3 person-reviewed</li>
+          <li data-en="Source: repository path or primary document" data-es="Fuente: ruta del repositorio o documento primario">Source: repository path or primary document</li>
+          <li data-en="Date read and recorded in the catalog" data-es="Fecha de lectura registrada en el catálogo">Date read and recorded in the catalog</li>
+          <li data-en="The deterministic check that covers it" data-es="La verificación determinista que la cubre">The deterministic check that covers it</li>
+          <li data-en="Its explicit limitation" data-es="Su limitación explícita">Its explicit limitation</li>
+        </ul>
+      </aside>
+    </section>
+
+    <details class="tz-fallback" id="tz-fallback">
+      <summary data-en="All evidence for this page (8 sentences)" data-es="Toda la evidencia de esta página (8 oraciones)">All evidence for this page (8 sentences)</summary>
+      <table class="tz-table">
+        <caption data-en="Every sentence above with its Answer Tier, source, date read, check command, and limitation." data-es="Cada oración anterior con su Nivel de Respuesta, fuente, fecha de lectura, comando de verificación y limitación.">Every sentence above with its Answer Tier, source, date read, check command, and limitation.</caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col" data-en="Tier" data-es="Nivel">Tier</th>
+            <th scope="col" data-en="Source" data-es="Fuente">Source</th>
+            <th scope="col" data-en="Date read" data-es="Fecha de lectura">Date read</th>
+            <th scope="col" data-en="Check" data-es="Verificación">Check</th>
+            <th scope="col" data-en="Limitation" data-es="Limitación">Limitation</th>
+          </tr>
+        </thead>
+        <tbody>
+{table_rows_html}
+        </tbody>
+      </table>
+    </details>
+
+    <section class="tp-prose tp-proof-spine" aria-labelledby="pace5-bridge-heading">
+      <h2 id="pace5-bridge-heading" data-en="5 · Where the Shared Engine Goes Next: Cystic Fibrosis Research on senseiewok.ai" data-es="5 · Hacia Dónde Va el Motor Compartido: Investigación de Fibrosis Quística en senseiewok.ai">5 · Where the Shared Engine Goes Next: Cystic Fibrosis Research on senseiewok.ai</h2>
+      <p data-en="When you finish an engineering or physics essay on Informatico.ai, you can follow the exact same mathematical and physical kernels across to senseiewok.ai, where they are applied to open Cystic Fibrosis questions—especially for the 8.0% of people in the CFF Patient Registry whose rare nonsense, frameshift, or splicing genotypes cannot use current small-molecule modulators." data-es="Cuando terminas un ensayo de ingeniería o física en Informatico.ai, puedes seguir exactamente los mismos núcleos matemáticos y físicos hacia senseiewok.ai, donde se aplican a preguntas abiertas de Fibrosis Quística, especialmente para el 8.0% de las personas en el Registro de Pacientes de la CFF cuyos genotipos raros de paro prematuro, corrimiento de marco o empalme no pueden usar los moduladores actuales de molécula pequeña.">When you finish an engineering or physics essay on Informatico.ai, you can follow the exact same mathematical and physical kernels across to senseiewok.ai, where they are applied to open Cystic Fibrosis questions—especially for the 8.0% of people in the CFF Patient Registry whose rare nonsense, frameshift, or splicing genotypes cannot use current small-molecule modulators.</p>
+
+      <h3 id="shared-architecture-heading" data-en="How Four Engineering Disciplines Power Open Cystic Fibrosis Research" data-es="Cómo Cuatro Disciplinas de Ingeniería Impulsan la Investigación Abierta en Fibrosis Quística">How Four Engineering Disciplines Power Open Cystic Fibrosis Research</h3>
+      <p><span data-en="Every interactive simulator and Python verifier on Informatico.ai is designed as a dual-use mathematical kernel. On this site, those kernels explain civil bridges, acoustic vaults, non-equilibrium motors, and formal theorems in plain engineering terms. On " data-es="Cada simulador interactivo y verificador en Python en Informatico.ai está diseñado como un núcleo matemático de doble uso. En este sitio, esos núcleos explican puentes civiles, bóvedas acústicas, motores fuera del equilibrio y teoremas formales en términos de ingeniería. En ">Every interactive simulator and Python verifier on Informatico.ai is designed as a dual-use mathematical kernel. On this site, those kernels explain civil bridges, acoustic vaults, non-equilibrium motors, and formal theorems in plain engineering terms. On </span><a href="https://senseiewok.ai/" target="_blank" rel="noopener noreferrer">senseiewok.ai</a><span data-en=", the exact same verified equations and scene-graph engines are applied to four open biophysical challenges in Cystic Fibrosis:" data-es=", exactamente las mismas ecuaciones verificadas se aplican a cuatro retos biofísicos abiertos en Fibrosis Quística:">, the exact same verified equations and scene-graph engines are applied to four open biophysical challenges in Cystic Fibrosis:</span></p>
+      <div class="tz-council-grid">
+        <div class="tz-council-card">
+          <span class="tz-council-kicker" data-en="PILLAR I · SPACE-FRAME MECHANICS → CFTR FOLDING" data-es="PILAR I · MECÁNICA DE ARMADURAS → PLEGAMIENTO DE CFTR">PILLAR I · SPACE-FRAME MECHANICS &rarr; CFTR FOLDING</span>
+          <strong class="tz-council-title" data-en="Bracing a 1,480-Link Nanoscale Truss" data-es="Arriostramiento de una Armadura de 1,480 Eslabones">Bracing a 1,480-Link Nanoscale Truss</strong>
+          <span class="tz-council-desc" data-en="The Maxwell–Calladine stiffness matrices and thermal buckling laws used in our civil truss essays also model how deleting residue 508 destabilizes the NBD1–ICL4 interface—and how dual small-molecule wedges brace the channel open across 53 Å and 42 Å lever arms." data-es="Las matrices de rigidez de Maxwell–Calladine y las leyes de pandeo térmico usadas en nuestros ensayos de armaduras civiles también modelan cómo la falta del residuo 508 desestabiliza la interfaz NBD1–ICL4 y cómo dos cuñas moleculares arriostran el canal.">The Maxwell–Calladine stiffness matrices and thermal buckling laws used in our civil truss essays also model how deleting residue 508 destabilizes the NBD1–ICL4 interface—and how dual small-molecule wedges brace the channel open across 53 Å and 42 Å lever arms.</span>
+        </div>
+        <div class="tz-council-card">
+          <span class="tz-council-kicker" data-en="PILLAR II · POROUS MEDIA → AIRWAY DELIVERY" data-es="PILAR II · MEDIOS POROSOS → ENTREGA EN VÍAS AÉREAS">PILLAR II · POROUS MEDIA &rarr; AIRWAY DELIVERY</span>
+          <strong class="tz-council-title" data-en="Crossing the 65 nm Mucin Hydrogel Sieve" data-es="Cruzar el Tamiz de Hidrogel de Mucina de 65 nm">Crossing the 65 nm Mucin Hydrogel Sieve</strong>
+          <span class="tz-council-desc" data-en="The Brinkman porous-flow and steric percolation solvers from our materials folios quantify how hyperconcentrated airway mucins compress periciliary cilia and trap gene-delivery nanoparticles unless neutral brush coatings reduce adhesive drag." data-es="Los solucionadores de flujo poroso de Brinkman y percolación estérica de nuestros folios de materiales cuantifican cómo las mucinas hiperconcentradas comprimen los cilios y atrapan nanopartículas a menos que recubrimientos neutros reduzcan la adhesión.">The Brinkman porous-flow and steric percolation solvers from our materials folios quantify how hyperconcentrated airway mucins compress periciliary cilia and trap gene-delivery nanoparticles unless neutral brush coatings reduce adhesive drag.</span>
+        </div>
+        <div class="tz-council-card">
+          <span class="tz-council-kicker" data-en="PILLARS III &amp; IV · STOCHASTIC PHYSICS &amp; LEAN 4 → THE LAST 8%" data-es="PILARES III Y IV · FÍSICA ESTOCÁSTICA Y LEAN 4 → EL ÚLTIMO 8%">PILLARS III &amp; IV · STOCHASTIC PHYSICS &amp; LEAN 4 &rarr; THE LAST 8%</span>
+          <strong class="tz-council-title" data-en="Genetic Rescue &amp; Zero-Hallucination Proofs" data-es="Rescate Genético y Pruebas sin Alucinaciones">Genetic Rescue &amp; Zero-Hallucination Proofs</strong>
+          <span class="tz-council-desc" data-en="Non-equilibrium Markov cycle solvers and Lean 4 formal verification blueprints help model premature stop-codon readthrough, prime/base editing, and global registry denominators—refusing unverified hand-waving until every genotype has a rigorous path forward." data-es="Los solucionadores de ciclos de Markov fuera del equilibrio y las pruebas formales en Lean 4 ayudan a modelar la lectura de codones de paro prematuro, la edición genética y los denominadores de registros globales sin cabos sueltos.">Non-equilibrium Markov cycle solvers and Lean 4 formal verification blueprints help model premature stop-codon readthrough, prime/base editing, and global registry denominators—refusing unverified hand-waving until every genotype has a rigorous path forward.</span>
+        </div>
+      </div>
+
+      <div class="tz-bridge-grid">
+        <a class="tz-bridge-card tz-bridge-card-featured" href="https://senseiewok.ai/" target="_blank" rel="noopener noreferrer">
+          <img class="tz-bridge-thumb" src="{plate_src(rel_res + '/plates/', 'utopian-city-future')}" width="640" height="360" loading="lazy" decoding="async" alt="Architectural cross-section of a sun-lit engineering atelier and civic infrastructure span.">
+          <span class="tz-bridge-kicker" data-en="SENSEIEWOK.AI · HOMEPAGE &amp; LAB OVERVIEW" data-es="SENSEIEWOK.AI · PORTADA Y PANORAMA DEL LABORATORIO">SENSEIEWOK.AI · HOMEPAGE &amp; LAB OVERVIEW</span>
+          <strong class="tz-bridge-title" data-en="Sensei Ewok CF Lab · Open Research Platform &rarr;" data-es="Sensei Ewok CF Lab · Plataforma de Investigación Abierta &rarr;">Sensei Ewok CF Lab · Open Research Platform &rarr;</strong>
+          <span class="tz-bridge-desc" data-en="Explore the 40 five-act CF monographs, 3D CFTR molecular workbenches, and primary evidence catalog on the main homepage." data-es="Explora las 40 monografías de FQ en cinco actos, las mesas de trabajo moleculares 3D de CFTR y el catálogo de evidencia primaria en la portada principal.">Explore the 40 five-act CF monographs, 3D CFTR molecular workbenches, and primary evidence catalog on the main homepage.</span>
+        </a>
+        <a class="tz-bridge-card" href="https://senseiewok.ai/cf/cftr/c01/" target="_blank" rel="noopener noreferrer">
+          <img class="tz-bridge-thumb" src="{plate_src(rel_res + '/plates/', 'a04')}" width="640" height="360" loading="lazy" decoding="async" alt="Architectural space-frame truss geometry and structural node bracing diagram.">
+          <span class="tz-bridge-kicker" data-en="MONOGRAPH C.01 · STRUCTURAL MECHANICS" data-es="MONOGRAFÍA C.01 · MECÁNICA ESTRUCTURAL">MONOGRAPH C.01 · STRUCTURAL MECHANICS</span>
+          <strong class="tz-bridge-title" data-en="The Nanoscale Valve &amp; Dual-Site Allostery at Position 508 &rarr;" data-es="La Válvula a Nanoescala y Alostería Dual en la Posición 508 &rarr;">The Nanoscale Valve &amp; Dual-Site Allostery at Position 508 &rarr;</strong>
+          <span class="tz-bridge-desc" data-en="How two small-molecule wedges brace a 1,480-residue protein truss across 53 Å and 42 Å lever arms." data-es="Cómo dos cuñas moleculares arriostran una armadura proteica de 1,480 residuos a través de brazos de palanca de 53 Å y 42 Å.">How two small-molecule wedges brace a 1,480-residue protein truss across 53 Å and 42 Å lever arms.</span>
+        </a>
+        <a class="tz-bridge-card" href="https://senseiewok.ai/cf/delivery/d01/" target="_blank" rel="noopener noreferrer">
+          <img class="tz-bridge-thumb" src="{plate_src(rel_res + '/plates/', 'p03')}" width="640" height="360" loading="lazy" decoding="async" alt="Porous media percolation and fluid transport cross-section.">
+          <span class="tz-bridge-kicker" data-en="MONOGRAPH D.01 · POROUS TRANSPORT" data-es="MONOGRAFÍA D.01 · TRANSPORTE POROSO">MONOGRAPH D.01 · POROUS TRANSPORT</span>
+          <strong class="tz-bridge-title" data-en="The Viscoelastic Hydrogel Sieve &amp; Nanoparticle Percolation &rarr;" data-es="El Tamiz de Hidrogel Viscoelástico y Percolación de Nanopartículas &rarr;">The Viscoelastic Hydrogel Sieve &amp; Nanoparticle Percolation &rarr;</strong>
+          <span class="tz-bridge-desc" data-en="Why a dehydrated mucin mesh acts like a 65 nm steric filter and how neutral brush coatings slip through." data-es="Por qué una malla de mucina deshidratada actúa como un filtro estérico de 65 nm y cómo la cruzan los recubrimientos neutros.">Why a dehydrated mucin mesh acts like a 65 nm steric filter and how neutral brush coatings slip through.</span>
+        </a>
+        <a class="tz-bridge-card" href="https://senseiewok.ai/cf/ptc/g01/" target="_blank" rel="noopener noreferrer">
+          <img class="tz-bridge-thumb" src="{plate_src(rel_res + '/plates/', 'm12')}" width="640" height="360" loading="lazy" decoding="async" alt="Information theory and error-correcting code parity check diagram.">
+          <span class="tz-bridge-kicker" data-en="MONOGRAPH G.01 · CODING &amp; READTHROUGH" data-es="MONOGRAFÍA G.01 · CODIFICACIÓN Y LECTURA">MONOGRAPH G.01 · CODING &amp; READTHROUGH</span>
+          <strong class="tz-bridge-title" data-en="Premature Stop Signals &amp; the Last 8% Genotype Gap &rarr;" data-es="Señales de Paro Prematuro y la Brecha del Último 8% &rarr;">Premature Stop Signals &amp; the Last 8% Genotype Gap &rarr;</strong>
+          <span class="tz-bridge-desc" data-en="What happens when a genetic sequence hits a premature termination codon before the valve is built." data-es="Qué ocurre cuando una secuencia genética encuentra un codón de paro prematuro antes de construir la válvula.">What happens when a genetic sequence hits a premature termination codon before the valve is built.</span>
+        </a>
+        <a class="tz-bridge-card" href="https://senseiewok.ai/math/l01/" target="_blank" rel="noopener noreferrer">
+          <img class="tz-bridge-thumb" src="{plate_src(rel_res + '/plates/', 'm01')}" width="640" height="360" loading="lazy" decoding="async" alt="Formal deductive proof graph and invariant verification lattice.">
+          <span class="tz-bridge-kicker" data-en="MONOGRAPH L.01 · FORMAL VERIFICATION" data-es="MONOGRAFÍA L.01 · VERIFICACIÓN FORMAL">MONOGRAPH L.01 · FORMAL VERIFICATION</span>
+          <strong class="tz-bridge-title" data-en="Lean 4 Formal Proofs &amp; Auxiliary Patching Landscapes &rarr;" data-es="Pruebas Formales en Lean 4 y Paisajes de Parchado Auxiliar &rarr;">Lean 4 Formal Proofs &amp; Auxiliary Patching Landscapes &rarr;</strong>
+          <span class="tz-bridge-desc" data-en="How machine-checked deduction in Lean 4 inspires zero-hand-waving verification across our research notes." data-es="Cómo la deducción verificada por máquina en Lean 4 inspira la verificación sin cabos sueltos en nuestras notas.">How machine-checked deduction in Lean 4 inspires zero-hand-waving verification across our research notes.</span>
+        </a>
+      </div>
+
+      <h3 id="council-audit-heading" data-en="How Every Essay Is Audited: 4-Seat Council &amp; 2x Retina Playwright Gate" data-es="Cómo se Audita Cada Ensayo: Consejo de 4 Asientos y Compuerta Playwright 2x Retina">How Every Essay Is Audited: 4-Seat Council &amp; 2x Retina Playwright Gate</h3>
+      <div class="tz-council-grid">
+        <div class="tz-council-card">
+          <span class="tz-council-kicker" data-en="SEAT 01 · DETERMINISTIC KERNEL" data-es="ASIENTO 01 · NÚCLEO DETERMINISTA">SEAT 01 · DETERMINISTIC KERNEL</span>
+          <strong class="tz-council-title" data-en="Claim &amp; Catalog Lock" data-es="Candado de Afirmaciones y Catálogo">Claim &amp; Catalog Lock</strong>
+          <span class="tz-council-desc" data-en="Every number and citation is checked against sources/catalog.yaml, Crossref Retraction Watch, and SHA-256 evidence locks." data-es="Cada número y cita se verifica contra sources/catalog.yaml, Crossref Retraction Watch y candados SHA-256.">Every number and citation is checked against sources/catalog.yaml, Crossref Retraction Watch, and SHA-256 evidence locks.</span>
+        </div>
+        <div class="tz-council-card">
+          <span class="tz-council-kicker" data-en="SEAT 02 · MULTI-LINEAGE COUNCIL" data-es="ASIENTO 02 · CONSEJO MULTILINAJE">SEAT 02 · MULTI-LINEAGE COUNCIL</span>
+          <strong class="tz-council-title" data-en="Adversarial Peer Review" data-es="Revisión por Pares Adversarial">Adversarial Peer Review</strong>
+          <span class="tz-council-desc" data-en="Independent frontier and open-weight models challenge equations, analogies, and clinical boundary compliance." data-es="Modelos independientes de frontera y de pesos abiertos auditan ecuaciones, analogías y límites no clínicos.">Independent frontier and open-weight models challenge equations, analogies, and clinical boundary compliance.</span>
+        </div>
+        <div class="tz-council-card">
+          <span class="tz-council-kicker" data-en="SEAT 03 · 2X RETINA PLAYWRIGHT" data-es="ASIENTO 03 · PLAYWRIGHT 2X RETINA">SEAT 03 · 2X RETINA PLAYWRIGHT</span>
+          <strong class="tz-council-title" data-en="Visual &amp; Contrast Gate" data-es="Compuerta Visual y de Contraste">Visual &amp; Contrast Gate</strong>
+          <span class="tz-council-desc" data-en="Headless 2x Retina Playwright checks inspect WCAG contrast, SVG geometry, dark/light themes, and zero horizontal overflow." data-es="Pruebas headless 2x Retina en Playwright inspeccionan contraste WCAG, geometría SVG, temas claro/oscuro y cero desbordamiento.">Headless 2x Retina Playwright checks inspect WCAG contrast, SVG geometry, dark/light themes, and zero horizontal overflow.</span>
+        </div>
+      </div>
+
+      <div class="tz-cff-card" aria-labelledby="cff-heading">
+        <h3 id="cff-heading" data-en="For the Cystic Fibrosis Community · Supporting Direct Care &amp; Clinical Research" data-es="Para la Comunidad de Fibrosis Quística · Apoyo al Cuidado Directo e Investigación Clínica">For the Cystic Fibrosis Community · Supporting Direct Care &amp; Clinical Research</h3>
+        <p data-en="Children and adults living with Cystic Fibrosis—and those who care alongside them—carry a daily discipline of airway clearance, enzymes, nebulizers, and clinical visits so ordinary life has room to breathe. The lab's maintainer is part of the CF community; the lab does not speak for it. We build open verification tools and educational monographs on donated time because careful, honest engineering is how we show respect." data-es="Las niñas, niños y adultos que viven con Fibrosis Quística —y quienes cuidan a su lado— sostienen una disciplina diaria de limpieza de vías aéreas, enzimas, nebulizadores y consultas clínicas para darle espacio y aliento a la vida cotidiana. Quien mantiene este laboratorio forma parte de la comunidad de FQ; el laboratorio no habla en su nombre. Construimos herramientas abiertas de verificación y monografías educativas en tiempo donado porque la ingeniería rigurosa y honesta es nuestra forma de mostrar respeto.">Children and adults living with Cystic Fibrosis—and those who care alongside them—carry a daily discipline of airway clearance, enzymes, nebulizers, and clinical visits so ordinary life has room to breathe. The lab's maintainer is part of the CF community; the lab does not speak for it. We build open verification tools and educational monographs on donated time because careful, honest engineering is how we show respect.</p>
+        <p data-en="If our essays, open-source solvers, or 3D CAD tools have been useful to your work and you would like to support accredited clinical trials, care centers, and patient support programs directly, please consider donating to the Cystic Fibrosis Foundation. Sensei Ewok CF Lab and Informatico.ai are independent and are not affiliated with or endorsed by the Cystic Fibrosis Foundation; donations on give.cff.org go directly to the Foundation." data-es="Si nuestros ensayos, solucionadores de código abierto o herramientas CAD 3D han sido útiles para tu trabajo y deseas apoyar directamente ensayos clínicos acreditados, centros de atención y programas de apoyo a pacientes, considera hacer un donativo a la Cystic Fibrosis Foundation. Sensei Ewok CF Lab e Informatico.ai son independientes y no están afiliados ni respaldados por la Cystic Fibrosis Foundation; los donativos en give.cff.org van directamente a la Fundación.">If our essays, open-source solvers, or 3D CAD tools have been useful to your work and you would like to support accredited clinical trials, care centers, and patient support programs directly, please consider donating to the Cystic Fibrosis Foundation. Sensei Ewok CF Lab and Informatico.ai are independent and are not affiliated with or endorsed by the Cystic Fibrosis Foundation; donations on give.cff.org go directly to the Foundation.</p>
+        <a class="tz-cff-cta" href="https://give.cff.org/washington/donate?rbref=homepage" target="_blank" rel="noopener noreferrer" data-en="Donate directly to the Cystic Fibrosis Foundation (give.cff.org) &rarr;" data-es="Donar directamente a la Cystic Fibrosis Foundation (give.cff.org) &rarr;">Donate directly to the Cystic Fibrosis Foundation (give.cff.org) &rarr;</a>
+      </div>
+
+      <h2 id="not-done-heading" data-en="What We Have Not Done" data-es="Lo Que No Hemos Hecho">What We Have Not Done</h2>
+      <ul class="tz-neg-list">
+        <li data-en="We have produced no therapy, no drug candidate, and no clinical result." data-es="No hemos producido ninguna terapia, ningún candidato a fármaco ni ningún resultado clínico.">We have produced no therapy, no drug candidate, and no clinical result.</li>
+        <li data-en="We do not run a wet lab or a clinical trial, and none of our pages has been reviewed by a physician." data-es="No operamos un laboratorio húmedo ni un ensayo clínico, y ninguna de nuestras páginas ha sido revisada por un médico.">We do not run a wet lab or a clinical trial, and none of our pages has been reviewed by a physician.</li>
+        <li data-en="We do not collect, store, or accept patient health information or individual genotypes." data-es="No recopilamos, almacenamos ni aceptamos información de salud de pacientes ni genotipos individuales.">We do not collect, store, or accept patient health information or individual genotypes.</li>
+        <li data-en="We have won no scientific prize or open-bounty award; our Bounty Crucible folios are educational verification harnesses." data-es="No hemos ganado ningún premio científico ni reto abierto; nuestros folios del Crisol de Retos son arneses educativos de verificación.">We have won no scientific prize or open-bounty award; our Bounty Crucible folios are educational verification harnesses.</li>
+        <li data-en="Our Python solvers and 3D CAD generators are simplified educational models, not stamped engineering drawings for construction." data-es="Nuestros solucionadores en Python y generadores CAD 3D son modelos educativos simplificados, no planos de ingeniería firmados para construcción.">Our Python solvers and 3D CAD generators are simplified educational models, not stamped engineering drawings for construction.</li>
+      </ul>
+
+      <h2 id="contact-heading" data-en="Check Our Math, and Write to Us" data-es="Revisa Nuestras Matemáticas y Escríbenos">Check Our Math, and Write to Us</h2>
+      <p><span data-en="Every page, solver, and verification script is open for inspection across our public GitHub repositories: " data-es="Cada página, solucionador y script de verificación está abierto a inspección en nuestros repositorios públicos de GitHub: ">Every page, solver, and verification script is open for inspection across our public GitHub repositories: </span><a href="https://github.com/senseiewok/informatico.ai" target="_blank" rel="noopener noreferrer">senseiewok/informatico.ai</a>, <a href="https://github.com/senseiewok/cf-research" target="_blank" rel="noopener noreferrer">senseiewok/cf-research</a><span data-en=", and " data-es=" y ">, and </span><a href="https://github.com/senseiewok/cf-skills" target="_blank" rel="noopener noreferrer">senseiewok/cf-skills</a>. <span data-en="If you find a broken citation, a numerical edge case in a solver, or a sentence that outruns its source, please open an issue or write to us directly at " data-es="Si encuentras una cita rota, un caso límite numérico en un solucionador o una oración que rebase su fuente, abre un issue o escríbenos directamente a ">If you find a broken citation, a numerical edge case in a solver, or a sentence that outruns its source, please open an issue or write to us directly at </span><a href="mailto:contact@senseiewok.ai">contact@senseiewok.ai</a> <span data-en="(please never include personal medical details)." data-es="(por favor nunca incluyas datos médicos personales).">(please never include personal medical details).</span></p>
+    </section>
+
+{render_site_footer(rel_res)}
+  </main>
+
+  <dialog id="tz-panel" class="tz-panel" aria-labelledby="tz-panel-title">
+    <div class="tz-panel-head">
+      <p class="tp-kicker tz-panel-kicker" data-en="Evidence" data-es="Evidencia">Evidence</p>
+      <h2 id="tz-panel-title" class="tz-panel-title" tabindex="-1"></h2>
+      <button type="button" class="tp-tool-btn tz-panel-close" id="tz-panel-close" data-en="Close" data-es="Cerrar" aria-label="{'Cerrar panel de evidencia' if lang == 'es' else 'Close evidence panel'}">Close</button>
+    </div>
+    <blockquote class="tz-panel-sentence" id="tz-panel-sentence"></blockquote>
+    <dl class="tz-panel-list">
+      <dt data-en="Tier" data-es="Nivel">Tier</dt><dd id="tz-f-tier"></dd>
+      <dt data-en="Source" data-es="Fuente">Source</dt><dd id="tz-f-source"></dd>
+      <dt data-en="Date read" data-es="Fecha de lectura">Date read</dt><dd id="tz-f-date"></dd>
+      <dt data-en="Check that covers it" data-es="Verificación que la cubre">Check that covers it</dt><dd><code id="tz-f-command"></code></dd>
+      <dt data-en="Limitation" data-es="Limitación">Limitation</dt><dd id="tz-f-limitation"></dd>
+    </dl>
+    <div class="tz-panel-nav">
+      <button type="button" class="tp-tool-btn" id="tz-prev" data-en="Previous sentence" data-es="Oración anterior">Previous sentence</button>
+      <button type="button" class="tp-tool-btn" id="tz-next" data-en="Next sentence" data-es="Oración siguiente">Next sentence</button>
+    </div>
+  </dialog>
+
+  <p id="tz-live" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
+  <script type="module" src="../modules/main.mjs"></script>
+</body>
+</html>
+"""
+
+
 def render_research_sitemap(catalog: dict) -> str:
     """Every page in both languages. Each lastmod is the essay's own re-dated day; a hub takes its newest essay's."""
     entries: list[tuple[str, str]] = []
@@ -4615,6 +5008,7 @@ def render_research_sitemap(catalog: dict) -> str:
     for tg in TIMEGRAVITY_PAGES:
         if tg["slug"]:
             entries.append((f"timegravity/{tg['slug']}/", tg.get("date", TIMEGRAVITY_DATE)))
+    entries.append(("about/", newest_all))
 
     blocks = [
         '<?xml version="1.0" encoding="UTF-8"?>',
@@ -4672,16 +5066,20 @@ def render_llms_txt(catalog: dict) -> str:
         if tg["slug"]:
             lines.append(f"- [{tg['code']} {tg['seo'][0]}]({page_url('timegravity/' + tg['slug'] + '/')}): {tg['seo'][1]}")
     lines.append("")
+    lines.append("## About Informatico.ai & the Shared Verification Engine (Essay Zero)")
+    lines.append("")
+    lines.append(f"- [About Informatico & the Verification Engine]({page_url('about/')}): {PILLAR_SEO['about'][1]}")
+    lines.append("")
     return "\n".join(lines)
 
 
 def render_not_found() -> str:
     """The informatico.ai 404 page. Served at any depth, so every address in it is absolute; never indexed."""
     links = " · ".join(
-        f'<a href="/{p}/">{esc(PILLAR_NAV_LABELS[p][0])}</a>' for p in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "timegravity")
+        f'<a href="/{p}/">{esc(PILLAR_NAV_LABELS[p][0])}</a>' for p in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "timegravity", "about")
     )
     links_es = " · ".join(
-        f'<a href="/{ES_PREFIX}{p}/">{esc(PILLAR_NAV_LABELS[p][1])}</a>' for p in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "timegravity")
+        f'<a href="/{ES_PREFIX}{p}/">{esc(PILLAR_NAV_LABELS[p][1])}</a>' for p in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "timegravity", "about")
     )
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -4881,6 +5279,14 @@ def main() -> None:
         es_tfdir.mkdir(parents=True, exist_ok=True)
         (es_tfdir / "index.html").write_text(to_spanish_static(render_toolchain_folio_page(t, catalog, "es")), encoding="utf-8")
         t_count += 1
+
+    # Render About page (/about/ and /es-mx/about/)
+    adir = res_dir / "about"
+    adir.mkdir(parents=True, exist_ok=True)
+    (adir / "index.html").write_text(render_about_page(catalog, "en"), encoding="utf-8")
+    es_adir = es_dir / "about"
+    es_adir.mkdir(parents=True, exist_ok=True)
+    (es_adir / "index.html").write_text(to_spanish_static(render_about_page(catalog, "es")), encoding="utf-8")
 
     (res_dir / "sitemap.xml").write_text(render_research_sitemap(catalog), encoding="utf-8")
     (res_dir / "robots.txt").write_text(

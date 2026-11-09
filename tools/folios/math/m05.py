@@ -23,7 +23,7 @@ FOLIO = {'folio_id': 'M.05',
  'colophon': {'identifier': 'M.05 · Synthetic & Distance Geometry',
               'kernels': 'DD+AR Closure · Cayley-Menger det(B_5)=0',
               'benchmarks': 'AlphaGeometry 2 (84% IMO) · Euclid Elements',
-              'bridge': 'Auxiliary Anchor X_aux ↔ CSI-MasterFormat TM8 Pocket Lock'},
+              'bridge': 'Auxiliary Anchor X_aux ↔ Allosteric TM8 Pocket Lock'},
  'sliders': [{'label': 'Auxiliary Construction Depth (k_aux Anchors)',
               'min': 1,
               'max': 8,
@@ -53,9 +53,9 @@ FOLIO = {'folio_id': 'M.05',
                         'demonstrations, discovering generalized auxiliary constructions in '
                         'olympiad geometry.'},
  'sidenote_2': {'kicker': 'SIDENOTE M.05-B · ALLOSTERIC TRIANGULATION IN PDB 8EIQ',
-                'body': 'In F508del-CSI-MasterFormat, vanzacaftor/elexacaftor supplies the exact '
-                        'auxiliary vertex X_aux that triangulates TM2, TM8, and TM11 into a rigid '
-                        'chloride-conducting frame.'},
+                'body': 'In the F508del transmembrane channel, elexacaftor (resolved in PDB 8EIQ, '
+                        'and next-generation corrector vanzacaftor/VX-121) supplies the auxiliary '
+                        'vertex X_aux that triangulates TM2, TM8, and TM11 into a rigid frame.'},
  'skill': {'filename': 'neuro-symbolic-geometry-SKILL.md',
            'name': 'neuro-symbolic-geometry',
            'description': 'AI-agnostic skill for neuro-symbolic DD+AR deductive closure, auxiliary '
@@ -73,7 +73,7 @@ FOLIO = {'folio_id': 'M.05',
                            '4-Seat Frontier Council review.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Cayley-Menger determinant det(B_5) = 0 and auxiliary anchor triangulation '
-                        'to CSI-MasterFormat TM2-TM8-TM11.'},
+                        'to transmembrane helices TM2-TM8-TM11.'},
                {'edition': 'REV 1.0',
                 'date': '2026-11-01',
                 'summary': 'REV 1.0 (Published 2026-11-01): Initial 5-Act monograph on '
@@ -143,14 +143,15 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Experiment 2 (Prime & Clause Slider Coupling): Adjust the interactive sliders to '
                  'compare symbolic search branching with and without auxiliary lemma pruning.',
                  'Experiment 3 (3D Pocket Rigidity): Follow Steps 1 to 4 to see how Cayley–Menger '
-                 'distance bounds lock the TM8 helix hinge of F508del-CSI-MasterFormat.'],
+                 'distance bounds lock the TM8 helix hinge of the F508del transmembrane channel.'],
  'act4_title': 'Act IV — Human + AI Co-Design & the Structural & Civil Engineering Specification '
                'Bridge',
  'act4_human_ai': 'Human structural biologists identify conserved allosteric motifs while neuro-symbolic geometry engines exhaustively search auxiliary pharmacophore triangles that satisfy exact Cayley–Menger steric and hydrogen-bond distance bounds. Coupling neuro-symbolic DD+AR closure (DOI 10.1038/s41586-023-06747-5) with formal Euclidean and Lorentzian geometry tactics in HEPLean/PhysLean (https://github.com/HEPLean/PhysLean, DOI 10.1016/j.cpc.2024.109408) and leanprover-community/mathlib4 (DOI 10.1145/3372885.3373824) lets structural engineers and protein architects certify 3D rigid-body triangulations with Scite-verified grounding (DOI 10.1162/qss_a_00146).',
  'act4_deepening': 'The success of AlphaGeometry 2 points toward a broad paradigm shift in computational mathematics and physical sciences. In automated reasoning workflows, human researchers establish the architectural specifications—defining symmetry groups, conservation laws, and invariant objectives—while neuro-symbolic agents explore vast geometric configuration spaces that defeat human spatial visualization. By feeding symbolic traces back into interactive theorem provers like Lean 4, every auxiliary deduction is verified without risk of geometric degeneracy. Looking toward the horizon, this hybrid methodology offers powerful applications for molecular biology and materials design. Open frontier challenges include generalizing auxiliary distance chaining from Euclidean flat space to non-Euclidean manifolds, modeling relativistic geometries in Lorentzian spacetime, and predicting allosteric transitions in macro-molecular complexes. By replacing unguided neural generation with rigorous symbolic kernels, scientists can systematically discover optimal structural trusses, design synthetic enzymes, and solve longstanding geometric conjectures with machine-checked mathematical integrity.',
- 'cf_bridge': 'Corrector drugs such as elexacaftor (VX-445) and vanzacaftor (VX-121, DOI '
-              '10.58347/tml.2025.1724a) bind a narrow allosteric crevice across transmembrane '
-              'helices TM2, TM8, and TM11 in F508del-CSI-MasterFormat (PDB 8EIQ). Neuro-symbolic '
+ 'cf_bridge': 'Corrector drugs such as elexacaftor (VX-445, resolved in PDB 8EIQ alongside '
+              'tezacaftor and ivacaftor) and next-generation corrector vanzacaftor (VX-121, DOI '
+              '10.58347/tml.2025.1724a) target the allosteric crevice across transmembrane '
+              'helices TM2, TM8, and TM11 in the F508del chloride channel. Neuro-symbolic '
               'auxiliary triangulation identifies the exact three-point hydrogen-bond + '
               'hydrophobic bridge that locks the unruly TM8 helix into its wild-type Euclidean '
               'coordinates.',
@@ -159,8 +160,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              '10.1038/s41586-023-06747-5.',
              'Chou, S. C., Gao, X. S., & Zhang, J. Z. (1994). Machine Proofs in Geometry: '
              'Automated Production of Readable Proofs for Geometry Theorems. World Scientific.',
-             'Vanzacaftor, Tezacaftor, and Deutivacaftor (Alyftrek) for Civil & Structural '
-             'Engineering (2025). The Medical Letter. DOI: 10.58347/tml.2025.1724a.',
+             'Fiedorczuk, K., & Chen, J. (2022). Molecular structures reveal synergistic rescue '
+             'of Δ508 CFTR by Trikafta modulators (PDB 8EIQ). Science, 378(6617), 284–290. '
+             'DOI: 10.1126/science.ade2216; The Medical Letter (2025), DOI: 10.58347/tml.2025.1724a.',
              'Tooby-Smith, J. (2025). HepLean / PhysLean: Digitalising high energy and '
              'mathematical physics in Lean 4 (HEPLean/PhysLean, '
              'https://github.com/HEPLean/PhysLean). Computer Physics Communications, 308, 109457. '
@@ -186,8 +188,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         '            <text x="255" y="172" font-size="11" fill="currentColor">TM11 '
         '(Trp1098)</text>\n'
         '            <text x="195" y="30" font-size="11" fill="currentColor">TM8 Hinge</text>\n'
-        '            <text x="232" y="114" font-size="11" fill="var(--tp-minium)">X_aux (VX-121 '
-        'Bridge)</text>\n'
+        '            <text x="232" y="114" font-size="11" fill="var(--tp-minium)">X_aux (VX-445 / '
+        '8EIQ)</text>\n'
         '            <rect x="375" y="45" width="265" height="130" fill="none" '
         'stroke="var(--tp-verdigris)" stroke-width="1.8"/>\n'
         '            <text x="390" y="72" font-size="11" fill="var(--tp-verdigris)">DD+AR + '
@@ -213,8 +215,8 @@ DISPATCH = {'kicker': 'FRONTIER NEURO-SYMBOLIC DISPATCH · DEEPMIND ALPHAGEOMETR
  'body': 'Published in Nature by Trinh, Luong & colleagues (DOI 10.1038/s41586-023-06747-5) and '
          'extended in AlphaGeometry 2, neuro-symbolic deductive search trained on 100M synthetic '
          'theorems invents auxiliary geometric constructions X_aux that lock under-constrained '
-         'incidence graphs—mirroring how vanzacaftor/elexacaftor (DOI 10.58347/tml.2025.1724a) '
-         'triangulates helices TM2–TM8–TM11 in PDB 8EIQ.'}
+         'incidence graphs—mirroring how elexacaftor (in PDB 8EIQ) and next-generation corrector '
+         'vanzacaftor (DOI 10.58347/tml.2025.1724a) triangulate helices TM2–TM8–TM11.'}
 
 META_3D = ('AlphaGeometry 2 Polyhedral Tropical Roof',
  'X/Z: Tropical Valuation Plane · Y: Piecewise-Linear Tropical Polynomial & Auxiliary Cone')
@@ -227,8 +229,8 @@ ES_TRANSLATION = {'title_es': 'Búsqueda Deductiva Neuro-Simbólica (AlphaGeomet
  'why_es': 'Un marco cuadrado de cuatro barras se deforma fácilmente hasta que añades una sola '
            'barra diagonal (una construcción auxiliar), la cual bloquea toda la estructura en '
            'triángulos rígidos.',
- 'bridge_es': 'Triangular tres hélices transmembrana (TM2–TM8–TM11 en PDB 8EIQ) mediante un punto '
-              'de anclaje auxiliar es el mecanismo geométrico exacto con el que vanzacaftor y '
-              'elexacaftor estabilizan el canal CSI-MasterFormat.',
+ 'bridge_es': 'Triangular tres hélices transmembrana (TM2–TM8–TM11) mediante un punto '
+              'de anclaje auxiliar es el mecanismo geométrico exacto con el que elexacaftor '
+              '(en PDB 8EIQ) y vanzacaftor estabilizan el canal transmembrana.',
  'plain_es': 'En palabras sencillas, resolver un problema difícil de geometría es como entrar en una habitación oscura donde no encontramos el interruptor. Tenemos muchas reglas sobre ángulos y triángulos en la memoria, pero ninguna parece encajar con las líneas dibujadas en la hoja. El gran secreto de los matemáticos, desde la antigua Grecia hasta hoy, ha sido imaginar una línea o un punto auxiliar que antes no existía. Al trazar esa pequeña guía invisible, las figuras ocultas se iluminan y el problema se resuelve con facilidad. Durante décadas, las computadoras eran incapaces de hacer esto porque solo podían revisar las líneas que ya estaban en la pantalla. El sistema AlphaGeometry superó este límite combinando una red neuronal que intuye qué punto auxiliar conviene dibujar con un motor lógico que comprueba si la idea es correcta. Hoy, esta misma intuición espacial ayuda a las computadoras a guiar robots quirúrgicos con alta precisión y a diseñar automóviles autónomos seguros.',
  'deep_es': 'Para entender este avance geométrico, debemos observar la relación entre la profundidad de construcción auxiliar y la densidad de restricciones de la figura. En el primer deslizador, agregar puntos de anclaje auxiliares permite triangular bisagras sueltas que de otro modo tendrían demasiados grados de libertad. En el segundo deslizador, la densidad de restricciones mide cuántas condiciones de paralelismo, perpendicularidad o tangencia saturan el sistema. Si la densidad es baja, la figura oscila como un marco flojo; pero al alcanzar el umbral crítico, un solo punto auxiliar bloquea la estructura completa en un poliedro rígido. En tres dimensiones, el determinante de Cayley–Menger garantiza que las distancias calculadas correspondan a una geometría euclidiana real sin distorsión métrica. Gracias a la combinación de intuición neuronal y deducción simbólica en computadora, AlphaGeometry demostró que las máquinas pueden alcanzar nivel de medalla de oro olímpica resolviendo teoremas complejos de forma transparente, auditable y sin alucinaciones numéricas.'}
