@@ -661,7 +661,7 @@
       "collaboration": "Lee, Adelberger, Cook, Fleischer & Heckel (Eot-Wash, University of Washington)",
       "kind": "peer-reviewed",
       "review_by": "2028-11-09",
-      "note": "New test of the gravitational 1/r^2 law at separations down to 52 um: data between 52 um and 3.0 mm; any gravitational-strength Yukawa interaction limited to ranges below 38.6 um at 95 % confidence."
+      "note": "New test of the gravitational 1/r^2 law at separations down to 52 um: data between 52 um and 3.0 mm; any gravitational-strength Yukawa interaction limited to ranges below 38.6 um at 95 % confidence. Wedge geometry on the page from J. G. Lee's 2020 dissertation (University of Washington, hdl.handle.net/1773/45542, Tables 4.1-4.5, 4.8)."
     },
     {
       "id": "T05-TAN2020",
@@ -672,6 +672,16 @@
       "kind": "peer-reviewed",
       "review_by": "2028-11-09",
       "note": "Improvement for testing the gravitational inverse-square law at the submillimeter range: |alpha| <= 1 holds down to lambda = 48 um at 95 % confidence; strongest bound on alpha in the range 40-350 um."
+    },
+    {
+      "id": "T05-LEE2021",
+      "label": "DERIVED",
+      "doi": "10.1088/1361-6382/abebf2",
+      "year": 2021,
+      "collaboration": "Lee, Adelberger, Marcoline, Terrano & Heckel (Eot-Wash, University of Washington)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "The Fourier-Bessel expansion applied to experimental probes of gravity and feeble short-range interactions: the torque between two N-fold wedge-patterned plates as one integral over wavenumber (their Eqs. 7-19); the formalism this page's wedge kernel rebuilds."
     }
   ]
 }

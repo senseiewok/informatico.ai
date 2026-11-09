@@ -17,6 +17,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from timegravity_kernel_dispute import check_dispute  # noqa: E402
 from timegravity_kernel_isl import check_isl  # noqa: E402
+from timegravity_kernel_wedge import check_wedge  # noqa: E402
 from timegravity_kernel_entangle import (  # noqa: E402
     BMV_D_M, BMV_DX_M, BMV_M_KG, BMV_P_PA, BMV_T_S, BMV_TEMP_K, branch_phases, concurrence_closed, disputed_interval,
     entanglement_phase, four_branch_state, negativity, negativity_threshold_gamma_t, time_to_full_entanglement,
@@ -71,6 +72,7 @@ def isl_block() -> dict:
                 "quadrature and its limits; Eot-Wash 2020 geometry at the pattern's lowest wavenumber (a one-mode estimate); the Yukawa at the published "
                 "edge is a predicted signal size for comparison, not a bound on sigma; HUST 2020 quoted as published; labelled PROPOSED and OPEN on the page",
         "quadrature_probes": r["quadrature_probes"], "limits": r["limits"], "eotwash": r["eotwash"], "hust_lambda_m": r["hust_lambda_m"],
+        "wedge": {k: v for k, v in check_wedge().items() if k not in ("bessel_probes", "radial_probes")},
     })
 
 

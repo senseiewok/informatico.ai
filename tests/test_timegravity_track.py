@@ -605,16 +605,27 @@ class TimeGravitySmearedIslTests(unittest.TestCase):
         self.assertEqual(payload["geometry_checks"]["planted_defect_knockout"], "REJECTED_AS_EXPECTED")
         cn = payload["central_number"]
         self.assertLess(cn["plate_mode_closed_vs_quadrature_max_diff"], 1e-9)
-        self.assertAlmostEqual(cn["eotwash_deficit_at_52um_by_sigma"]["75um"], 0.1037, delta=0.002)
-        self.assertAlmostEqual(cn["eotwash_deficit_at_52um_by_sigma"]["50um"], 0.0253, delta=0.001)
-        self.assertAlmostEqual(cn["eotwash_yukawa_edge_deficit_120fold"], 0.0152, delta=0.0005)
-        self.assertAlmostEqual(cn["sigma_matching_edge_120fold_m"] * 1e6, 44.4, delta=0.5)
+        self.assertAlmostEqual(cn["one_mode_eotwash_deficit_at_52um_by_sigma"]["75um"], 0.1037, delta=0.002)
+        self.assertAlmostEqual(cn["one_mode_yukawa_edge_deficit_120fold"], 0.0152, delta=0.0005)
+        self.assertAlmostEqual(cn["one_mode_sigma_matching_edge_120fold_m"] * 1e6, 44.4, delta=0.5)
         self.assertAlmostEqual(cn["sigma_c_letter_geometry_m"] * 1e6, 54.9, delta=0.3)
-        self.assertAlmostEqual(cn["deficit_120fold_at_sigma_c_letter_geometry"], 0.0365, delta=0.001)
-        fit = cn["best_yukawa_for_sigma_75um_120fold"]
-        self.assertTrue(45e-6 < fit["lambda_m"] < 52e-6, fit)
-        self.assertTrue(-3.6 < fit["alpha"] < -2.9, fit)
-        self.assertLess(cn["deficit_120fold_sigma_75um_at_300um"], 1e-3)
+        self.assertLess(cn["bessel_max_abs_diff"], 1e-9)
+        self.assertLess(cn["radial_series_max_rel_diff"], 1e-6)
+        self.assertAlmostEqual(cn["newton_torque_fNm"]["72um"]["T120_fNm"], 1.508, delta=0.02)
+        self.assertAlmostEqual(cn["wedge_deficit_at_52um_by_sigma"]["75um"], 0.1699, delta=0.003)
+        self.assertAlmostEqual(cn["wedge_deficit_at_52um_by_sigma"]["50um"], 0.0433, delta=0.001)
+        self.assertAlmostEqual(cn["wedge_deficit_at_52um_by_sigma"]["55um"], 0.0625, delta=0.001)
+        self.assertAlmostEqual(cn["wedge_yukawa_edge_deficit_120fold"], 0.0254, delta=0.0005)
+        self.assertAlmostEqual(cn["wedge_sigma_matching_edge_120fold_m"] * 1e6, 44.1, delta=0.5)
+        self.assertGreater(cn["wedge_deficit_at_52um_by_sigma"]["75um"], cn["one_mode_eotwash_deficit_at_52um_by_sigma"]["75um"])  # the full pattern removes more than the bound
+        fit = cn["wedge_best_yukawa_for_sigma_75um_120fold"]
+        self.assertTrue(45e-6 < fit["lambda_m"] < 55e-6, fit)
+        self.assertTrue(-3.6 < fit["alpha"] < -2.6, fit)
+        self.assertLess(cn["wedge_deficit_sigma_75um_by_separation"]["300um"], 2e-3)
+        win = cn["window_at_matching_sigma"]
+        self.assertAlmostEqual(win["d_c_small_split_m"] * 1e6, 37.5, delta=0.5)
+        self.assertAlmostEqual(win["d_c_letter_split_m"] * 1e6, 14.9, delta=0.5)
+        self.assertFalse(win["letter_geometry_entangles"])
         bad = run(PY + [str(SKILLS / "t05" / "verify_t05_smeared_isl.py"), "--planted-defect"])
         self.assertNotEqual(bad.returncode, 0)
         self.assertIn("FAIL", bad.stderr)
@@ -622,20 +633,23 @@ class TimeGravitySmearedIslTests(unittest.TestCase):
         ref = json.loads((TG / "t05" / "files" / "t05_reference.json").read_text(encoding="utf-8"))
         self.assertIn("smeared_isl_kernel", ref)
         self.assertAlmostEqual(ref["smeared_isl_kernel"]["eotwash"]["deficit_at_s_min_by_sigma"]["75um"]["120fold"], 0.1037, delta=0.002)
+        self.assertAlmostEqual(ref["smeared_isl_kernel"]["wedge"]["deficit_at_52um_by_sigma"]["75um"]["120fold"], 0.1699, delta=0.003)
 
     def test_isl_text_readout_and_module(self) -> None:
         en, es = TG / "t05" / "index.html", TG_ES / "t05" / "index.html"
         self.assertEqual(labels_of(en), labels_of(es))
         txt = en.read_text(encoding="utf-8")
-        for s in ("erfc(qσ − s/2σ)", "54 and 99 µm", "about a tenth", "10.4 %", "3.7 %", "1.5 %", "44 µm", "near 49 µm", "one-mode estimate", "not a bound on σ",
-                  "curve match with no data behind it", "previously untested", "leaves it open", 'data-tg-read="isl"'):
+        for s in ("erfc(qσ − s/2σ)", "54 and 99 µm thick", "13.00 and 23.00 mm", "23.51 and 26.00 mm", "1.5 fN·m at 72 µm", "removes 17 %", "4.3 % at 50 µm", "6.3 % at 55 µm", "removes 2.5 %",
+                  "44 µm", "one-mode lower bound", "near 49 µm", "not a bound on σ", "curve match with no data behind it", "below 37 µm", "below 15 µm", "and not for the", "Taken as a hypothesis, not as a bound", "close to the 44.4 µm",
+                  "previously untested", "leaves it open", "full wedge pattern", 'data-tg-read="isl"'):
             self.assertIn(s, txt, f"T.05 lacks {s!r}")
         low = txt.lower()
-        for banned in ("is excluded", "is ruled out", "rules out the model", "excludes the model", "at least 10 %"):
+        for banned in ("is excluded", "is ruled out", "rules out the model", "excludes the model", "at least 10 %", "at least 17 %"):
             self.assertNotIn(banned, low)
         self.assertEqual(txt.count('data-tg-channel="'), 3)
         mjs = (RESEARCH / "modules" / "timegravity-slope.mjs").read_text(encoding="utf-8")
-        for s in ("export function erfc", "export function plateModeRatio", "export function thickPlateRatio", "export function yukawaThickPlateRatio", "export function eotwashDeficit"):
+        for s in ("export function erfc", "export function plateModeRatio", "export function thickPlateRatio", "export function yukawaThickPlateRatio", "export function eotwashDeficit",
+                  "export function besselJAll", "export function wedgeRadialSeries", "export function wedgeTorque", "export function wedgeDeficit"):
             self.assertIn(s, mjs)
 
 
