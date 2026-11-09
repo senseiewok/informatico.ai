@@ -767,6 +767,14 @@
   "title": "Spin Echoes",
   "year": 1950
  },
+ "doi:10.1103/physreva.102.062807": {
+  "fetched": "2026-11-09",
+  "first_author": "van de Kamp",
+  "found": true,
+  "journal": "Physical Review A",
+  "title": "Quantum gravity witness via entanglement of masses: Casimir screening",
+  "year": 2020
+ },
  "doi:10.1103/physreva.86.032324": {
   "fetched": "2026-11-07",
   "first_author": "Fowler",
@@ -806,6 +814,14 @@
   "journal": "Physical Review D",
   "title": "Black Holes and Entropy",
   "year": 1973
+ },
+ "doi:10.1103/physrevd.93.024026": {
+  "fetched": "2026-11-09",
+  "first_author": "Tilloy",
+  "found": true,
+  "journal": "Physical Review D",
+  "title": "Sourcing semiclassical gravity from spontaneously localized quantum matter",
+  "year": 2016
  },
  "doi:10.1103/physrevlett.100.013904": {
   "fetched": "2026-11-04",
@@ -862,6 +878,22 @@
   "journal": "Physical Review Letters",
   "title": "Gravitationally Induced Entanglement between Two Massive Particles is Sufficient Evidence of Quantum Effects in Gravity",
   "year": 2017
+ },
+ "doi:10.1103/physrevlett.124.051301": {
+  "fetched": "2026-11-09",
+  "first_author": "Tan",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Improvement for Testing the Gravitational Inverse-Square Law at the Submillimeter Range",
+  "year": 2020
+ },
+ "doi:10.1103/physrevlett.124.101101": {
+  "fetched": "2026-11-09",
+  "first_author": "Lee",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "New Test of the Gravitational\n                    <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\">\n                      <mml:mn>1</mml:mn>\n                      <mml:mo stretchy=\"false\">/</mml:mo>\n                      <mml:msup>\n                        <mml:mi>r</mml:mi>\n                        <mml:mn>2</mml:mn>\n                      </mml:msup>\n                    </mml:math>\n                    Law at Separations down to\n                    <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\">\n                      <mml:mrow>\n                        <mml:mn>52</mml:mn>\n                        <mml:mtext> </mml:mtext>\n                        <mml:mtext> </mml:mtext>\n                        <mml:mi>μ</mml:mi>\n                        <mml:mi mathvariant=\"normal\">m</mml:mi>\n                      </mml:mrow>\n                    </mml:math>",
+  "year": 2020
  },
  "doi:10.1103/physrevlett.126.010601": {
   "fetched": "2026-11-04",
@@ -2791,6 +2823,18 @@
   "total_smart_citations": 2946,
   "unclassified": 73
  },
+ "scite:10.1103/physreva.102.062807": {
+  "citing_publications": 172,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 1,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 153,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 154,
+  "unclassified": 0
+ },
  "scite:10.1103/physreva.86.032324": {
   "citing_publications": 4235,
   "contrasting": 3,
@@ -2852,6 +2896,18 @@
   "supporting": 205,
   "total_smart_citations": 8832,
   "unclassified": 47
+ },
+ "scite:10.1103/physrevd.93.024026": {
+  "citing_publications": 169,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 3,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 213,
+  "retracted": false,
+  "supporting": 2,
+  "total_smart_citations": 218,
+  "unclassified": 0
  },
  "scite:10.1103/physrevlett.100.013904": {
   "citing_publications": 3094,
@@ -2940,6 +2996,30 @@
   "supporting": 23,
   "total_smart_citations": 1003,
   "unclassified": 1
+ },
+ "scite:10.1103/physrevlett.124.051301": {
+  "citing_publications": 183,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 140,
+  "retracted": false,
+  "supporting": 5,
+  "total_smart_citations": 145,
+  "unclassified": 0
+ },
+ "scite:10.1103/physrevlett.124.101101": {
+  "citing_publications": 312,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 218,
+  "retracted": false,
+  "supporting": 6,
+  "total_smart_citations": 224,
+  "unclassified": 0
  },
  "scite:10.1103/physrevlett.126.010601": {
   "citing_publications": 140,

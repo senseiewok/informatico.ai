@@ -258,6 +258,105 @@
       0.0
     ]
   ],
+  "dispute_kernel": {
+    "note": "Trillo-Navascues DP master equation (sigma-smeared, H = 0) and the Kafri-Taylor-Milburn classical channel; every number is a model's prediction, labelled PROPOSED on the page; the page picks no side",
+    "tn_dc_over_sigma": 0.850771985512,
+    "tn_dc_paper_text": 0.8501,
+    "tn_dc_paper_appendix": 0.850872,
+    "tn_fig3": {
+      "50um": {
+        "peak_negativity": 0.0,
+        "peak_time_s": null,
+        "last_entangled_time_s": null,
+        "e_minus_J_per_s": 4.53331784446e-06
+      },
+      "75um": {
+        "peak_negativity": 0.0237502254965,
+        "peak_time_s": 10000.0,
+        "last_entangled_time_s": 17782.7941004,
+        "e_minus_J_per_s": -3.33306446165e-06
+      },
+      "100um": {
+        "peak_negativity": 0.0450664210475,
+        "peak_time_s": 31622.7766017,
+        "last_entangled_time_s": 56234.132519,
+        "e_minus_J_per_s": -2.18462186898e-06
+      },
+      "250um": {
+        "peak_negativity": 0.0718380387664,
+        "peak_time_s": 562341.32519,
+        "last_entangled_time_s": 1778279.41004,
+        "e_minus_J_per_s": -1.9725413709e-07
+      }
+    },
+    "tn_potential_ratio_fig3": {
+      "50um": 0.265700058954,
+      "75um": 0.179011813198,
+      "100um": 0.13475835182,
+      "250um": 0.0541206321868
+    },
+    "tn_2017_nearest_m": 0.0002,
+    "tn_2017_sigma_c_m": 0.000524494263106,
+    "tn_2017_by_sigma": {
+      "half_sigma_c": {
+        "peak_negativity": 0.0,
+        "peak_time_s": null,
+        "last_entangled_time_s": null,
+        "sigma_m": 0.000262247131553,
+        "negativity_at_2p5_s": 0
+      },
+      "twice_sigma_c": {
+        "peak_negativity": 0.0498671234604,
+        "peak_time_s": 3162.27766017,
+        "last_entangled_time_s": 5623.4132519,
+        "sigma_m": 0.00104898852621,
+        "negativity_at_2p5_s": 6.0297468505e-05
+      },
+      "ten_sigma_c": {
+        "peak_negativity": 0.0799380008864,
+        "peak_time_s": 562341.32519,
+        "last_entangled_time_s": 1778279.41004,
+        "sigma_m": 0.00524494263106,
+        "negativity_at_2p5_s": 6.59717006187e-07
+      }
+    },
+    "tn_phase_tiny_sigma_rad": 0.313934492575,
+    "newton_phase_rad": 0.313934492575,
+    "ktm_threshold_ratios": [
+      {
+        "dx_um": 250.0,
+        "gamma_t_zero": 0.155693680149,
+        "gamma_t_ktm": 0.108520565335,
+        "ratio": 1.43469285908
+      },
+      {
+        "dx_um": 50.0,
+        "gamma_t_zero": 0.00439505258796,
+        "gamma_t_ktm": 0.00434082261339,
+        "ratio": 1.01249301789
+      },
+      {
+        "dx_um": 10.0,
+        "gamma_t_zero": 0.000173716689449,
+        "gamma_t_ktm": 0.000173632904535,
+        "ratio": 1.00048254053
+      },
+      {
+        "dx_um": 2.0,
+        "gamma_t_zero": 6.94345336156e-06,
+        "gamma_t_ktm": 6.94531618142e-06,
+        "ratio": 0.999731787609
+      }
+    ],
+    "ktm_2017": {
+      "gamma_t": 0.108520565335,
+      "linear_model_entanglement_phase_rad": 0.217041130669,
+      "exact_entanglement_phase_rad": 0.313934492575,
+      "linear_model_negativity": 0,
+      "linear_model_negativity_small_split": 0,
+      "exact_phases_with_ktm_dephasing_negativity": 0.0213478286711
+    }
+  },
   "boundary_en": "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. Preprints never rise above PROPOSED. Each page ends with one open question that the next page takes up.",
   "license": "CC0-1.0 / CC-BY-4.0"
 }

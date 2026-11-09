@@ -29,6 +29,10 @@ SCHN = "T05-SCHNEIDER2026"
 MV25 = "T05-MARLETTO2025"
 DIOSI25 = "T05-DIOSI2025"
 TOBAR = "T05-TOBAR2026"
+TILLOY = "T05-TILLOY2016"
+VDK = "T05-VANDEKAMP2020"
+LEE = "T05-LEE2020"
+TAN = "T05-TAN2020"
 
 PAGE: dict = {
     "slug": SLUG,
@@ -60,15 +64,15 @@ PAGE: dict = {
     ),
     "reading_time_en": "14 min read",
     "reading_time_es": "14 min de lectura",
-    "central_number_en": "For the 2017 proposal's own geometry (10⁻¹⁴ kg, 450 µm apart, each split by 250 µm, held 2.5 s): entanglement phase Δφ = 0.31 rad, concurrence |sin(Δφ/2)| = 0.16 recomputed two ways within 1e-12; full entanglement at 25.0 s; a classical mean-field channel entangles nothing (< 1e-12)",
-    "central_number_es": "Para la geometría de la propuesta de 2017 (10⁻¹⁴ kg, a 450 µm, cada una dividida 250 µm, sostenidas 2.5 s): fase de entrelazamiento Δφ = 0.31 rad, concurrencia |sin(Δφ/2)| = 0.16 recalculada de dos maneras dentro de 1e-12; entrelazamiento completo a 25.0 s; un canal clásico de campo medio no entrelaza nada (< 1e-12)",
+    "central_number_en": "For the 2017 proposal's own geometry (10⁻¹⁴ kg, 450 µm apart, each split by 250 µm, held 2.5 s): entanglement phase Δφ = 0.31 rad, concurrence |sin(Δφ/2)| = 0.16 recomputed two ways within 1e-12; full entanglement at 25.0 s; a classical mean-field channel entangles nothing (< 1e-12); the band's edges computed: the classical-channel rate KΔx²/2ħ is this page's dephasing threshold (ratio 1.000 in the small-split limit), and the Diósi–Penrose model predicts entanglement only below 0.8508σ (the 2025 letter: 0.8501σ)",
+    "central_number_es": "Para la geometría de la propuesta de 2017 (10⁻¹⁴ kg, a 450 µm, cada una dividida 250 µm, sostenidas 2.5 s): fase de entrelazamiento Δφ = 0.31 rad, concurrencia |sin(Δφ/2)| = 0.16 recalculada de dos maneras dentro de 1e-12; entrelazamiento completo a 25.0 s; un canal clásico de campo medio no entrelaza nada (< 1e-12); los bordes de la banda calculados: la tasa del canal clásico KΔx²/2ħ es el umbral de desfase de esta página (razón 1.000 en el límite de división pequeña), y el modelo de Diósi–Penrose predice entrelazamiento solo por debajo de 0.8508σ (la carta de 2025: 0.8501σ)",
     "verifier": "skills/timegravity/t05/verify_t05_entanglement_channels.py",
     "generator": "skills/timegravity/t05/make_t05.py",
     "skill": "skills/timegravity/t05/SKILL.md",
     "skill_filename": "timegravity-t05-entanglement-channels.SKILL.md",
     "open_question_en": "If a classical slope can entangle, what would count as quantum gravity?",
     "open_question_es": "Si una pendiente clásica puede entrelazar, ¿qué contaría como gravedad cuántica?",
-    "ledger_ids": [BOSE, MV, WEST, FUCHS, AGAF, TROY, KTM, PERES, WOOT, AZIZ, TRILLO, SCHN, MV25, DIOSI25, TOBAR],
+    "ledger_ids": [BOSE, MV, WEST, FUCHS, AGAF, TROY, KTM, PERES, WOOT, AZIZ, TRILLO, SCHN, MV25, DIOSI25, TOBAR, TILLOY, VDK, LEE, TAN],
     "ai_line_en": (
         "AI contribution to the cited results: none. No AI system contributed to any proposal, measurement, derivation or rebuttal cited on this page. "
         "The page text, instrument and verifier were drafted with AI assistance and checked by the site maintainer against the primary sources listed below."
@@ -86,7 +90,9 @@ PAGE: dict = {
             "with its own separation and its own phase G m² t/(ħ d). Right: entanglement against hold time, drawn for all three channels at "
             "once and at the same stroke weight: the quantum channel's curve |sin(Δφ/2)|, the classical LOCC channel's flat zero, and the "
             "disputed classical non-LOCC channel as a hatched band between them, because the literature gives two answers and this page "
-            "picks neither. Sliders set the mass, the separation, the split, the hold time and a local dephasing rate. The knockout switches "
+            "picks neither; inside the band a dotted curve is what one named classical model, the Diósi–Penrose model with its smearing σ, "
+            "predicts for the chosen σ, and the readouts give the band's two computed edges. Sliders set the mass, the separation, the split, "
+            "the hold time, a local dephasing rate and the model's σ. The knockout switches "
             "which channel the readouts follow. The planted defect is a classical LOCC channel that entangles, which the verifier rejects. "
             "Keyboard: Tab and arrows. With reduced motion on, nothing animates."
         ),
@@ -95,8 +101,9 @@ PAGE: dict = {
             "cuatro ramas, cada una con su propia separación y su propia fase G m² t/(ħ d). Derecha: entrelazamiento frente al tiempo de "
             "espera, dibujado para los tres canales a la vez y con el mismo grosor de trazo: la curva |sin(Δφ/2)| del canal cuántico, el cero "
             "plano del canal clásico LOCC, y el canal clásico no-LOCC en disputa como una banda rayada entre ambos, porque la literatura da dos "
-            "respuestas y esta página no elige ninguna. Los deslizadores fijan la masa, la separación, la división, el tiempo de espera y una "
-            "tasa local de desfase. El apagado cambia qué canal siguen las lecturas. El defecto plantado es un canal clásico LOCC que entrelaza, "
+            "respuestas y esta página no elige ninguna; dentro de la banda una curva punteada es lo que un modelo clásico con nombre, el modelo de "
+            "Diósi–Penrose con su suavizado σ, predice para la σ elegida, y las lecturas dan los dos bordes calculados de la banda. Los deslizadores "
+            "fijan la masa, la separación, la división, el tiempo de espera, una tasa local de desfase y la σ del modelo. El apagado cambia qué canal siguen las lecturas. El defecto plantado es un canal clásico LOCC que entrelaza, "
             "que el verificador rechaza. Teclado: Tab y flechas. Con movimiento reducido, nada se anima."
         ),
     },
@@ -240,6 +247,62 @@ PAGE: dict = {
               "canal cuántico, dibujado como banda rayada sin marcar ningún borde como el esperado; la página no toma partido, y las etiquetas de las filas dicen por qué: los artículos son jóvenes, "
               "dos son prepublicaciones y ninguno es una medición."),
         ),
+        P(
+            C("PROPOSED", [TRILLO, TILLOY, VDK],
+              "The band's upper edge can be computed. In the Diósi–Penrose model as the 2025 letter writes it, gravity is classical, matter is "
+              "quantum, and the mass density is smeared over a width σ, the model's only free parameter and the same R0 that T.06 bounded from "
+              "below; with the free motion switched off the model integrates in closed form, and the kernel reproduces the letter's result: the "
+              "model predicts entanglement only when the masses' nearest separation is below 0.8508σ (the letter: 0.8501σ in its text, 0.850872σ in its appendix), "
+              "that entanglement is transient, and for the letter's example geometry (10⁻¹⁵ kg, split 23 µm, 24 µm apart) nothing is entangled at "
+              "σ = 50 µm while at σ = 75, 100 and 250 µm the negativity lasts about 5 hours, 16 hours and 20 days.",
+              "El borde superior de la banda se puede calcular. En el modelo de Diósi–Penrose tal como lo escribe la carta de 2025, la gravedad es "
+              "clásica, la materia es cuántica, y la densidad de masa se suaviza sobre un ancho σ, el único parámetro libre del modelo y el mismo R0 "
+              "que T.06 acotó por abajo; con el movimiento libre apagado el modelo se integra en forma cerrada, y el núcleo reproduce el resultado de "
+              "la carta: el modelo predice entrelazamiento solo cuando la separación más cercana de las masas queda por debajo de 0.8508σ (la carta: 0.8501σ en su texto, "
+              "0.850872σ en su apéndice), el entrelazamiento es transitorio, y para la geometría de ejemplo de la carta (10⁻¹⁵ kg, división de 23 µm, a 24 µm) "
+              "nada se entrelaza a σ = 50 µm mientras que a σ = 75, 100 y 250 µm la negatividad dura unas 5 horas, 16 horas y 20 días."),
+            T(" On the same model the smearing softens gravity itself below about 2σ: at σ = 75 µm it puts the pull between those two masses at 24 µm at "
+              "18 % of Newton's. For the 2017 geometry, with a split of 250 µm, the model entangles only for σ above 525 µm and shows less than one part in a "
+              "thousand of negativity at 2.5 s, because its entanglement takes hours to build. The page's planted defect for this kernel drops the model's own "
+              "decoherence and keeps its phases; the critical separation then disappears, and the verifier rejects it. All of this is one model's arithmetic; the label is PROPOSED.",
+              " En el mismo modelo el suavizado ablanda la gravedad misma por debajo de unas 2σ: a σ = 75 µm pone la atracción entre esas dos masas a 24 µm "
+              "en el 18 % de la de Newton. Para la geometría de 2017, con una división de 250 µm, el modelo entrelaza solo para σ por encima de 525 µm y "
+              "muestra menos de una parte en mil de negatividad a 2.5 s, porque su entrelazamiento tarda horas en formarse. El defecto plantado de la página para este núcleo quita la "
+              "decoherencia propia del modelo y conserva sus fases; la separación crítica entonces desaparece, y el verificador lo rechaza. Todo esto es "
+              "la aritmética de un modelo; la etiqueta es PROPUESTO."),
+        ),
+        P(
+            C("PROPOSED", [KTM, MV],
+              "The band's lower edge is computed from the classical-channel rate: in the 2014 model the measurement-and-feedback channel reproduces the linearised "
+              "gravitational spring K = 2Gm²/d³ and adds position decoherence at KΔx²/(2ħ) per mass, 'minimal in the sense that, if it were any "
+              "smaller, evolution ... would immediately entangle'; the kernel finds that the dephasing threshold at which this page's negativity "
+              "vanishes is exactly that rate in the small-split limit (ratio 1.000 at a 2 µm split, 1.43 at the 2017 split of 250 µm, where the "
+              "linearisation is 30 % low on the phase).",
+              "El borde inferior de la banda se calcula desde la tasa del canal clásico: en el modelo de 2014 el canal de medición y retroalimentación reproduce el "
+              "resorte gravitatorio linealizado K = 2Gm²/d³ y añade decoherencia de posición a KΔx²/(2ħ) por masa, 'mínima en el sentido de que, si "
+              "fuera un poco menor, la evolución ... entrelazaría de inmediato'; el núcleo encuentra que el umbral de desfase al que se anula la "
+              "negatividad de esta página es exactamente esa tasa en el límite de división pequeña (razón 1.000 a una división de 2 µm, 1.43 a la "
+              "división de 250 µm de 2017, donde la linealización se queda 30 % corta en la fase)."),
+            T(" So the two edges are computed, not chosen: the lower one is the least noise a classical channel of that kind must add on its own "
+              "model, the upper one is what one named classical model predicts, and between them the page still picks no side.",
+              " Así que los dos bordes se calculan, no se eligen: el inferior es el ruido mínimo que debe añadir un canal clásico de ese tipo en su propio "
+              "modelo, el superior es lo que predice un modelo clásico con nombre, y entre ambos la página sigue sin tomar partido."),
+        ),
+        P(
+            C("MEASURED", [LEE, TAN],
+              "Newton's inverse-square law has been tested in the laboratory at separations down to 52 µm, with any gravitational-strength Yukawa "
+              "interaction limited to ranges below 38.6 µm at 95 % confidence, and shown by a second group to hold with |α| ≤ 1 down to a length "
+              "scale of 48 µm.",
+              "La ley del inverso del cuadrado de Newton se ha puesto a prueba en el laboratorio a separaciones de hasta 52 µm, con cualquier "
+              "interacción de Yukawa de intensidad gravitatoria limitada a alcances por debajo de 38.6 µm al 95 % de confianza, y un segundo grupo "
+              "mostró que se cumple con |α| ≤ 1 hasta una escala de longitud de 48 µm."),
+            T(" ", " "),
+            C("OPEN", [TRILLO, LEE, TAN],
+              "Whether a smearing of 75 µm or more, which softens the model's pull below about 150 µm, leaves those tests intact for the bodies they "
+              "used is not a Yukawa question and not one this kernel computes; the page notes the question and leaves it open.",
+              "Si un suavizado de 75 µm o más, que ablanda la atracción del modelo por debajo de unas 150 µm, deja intactas esas pruebas para los "
+              "cuerpos que usaron no es una pregunta de Yukawa ni una que este núcleo calcule; la página anota la pregunta y la deja abierta."),
+        ),
         {"type": "h2", "id": "labs", "en": "III · How far the laboratories are", "es": "III · Qué tan lejos están los laboratorios", "short_en": "III · Labs", "short_es": "III · Laboratorios"},
         P(
             C("MEASURED", [WEST, FUCHS],
@@ -305,6 +368,8 @@ PAGE: dict = {
               "Un experimento realizado que atestiguara entrelazamiento movería la fila del canal cuántico de PROPUESTO a RESULTADO ÚNICO, y luego a MEDIDO tras una segunda colaboración; la etiqueta de página seguiría ABIERTO hasta que la disputa sobre qué prueba se resuelva en el registro revisado por pares."),
              ("A performed experiment that found no entanglement where the quantum channel predicts it would be reported as a BOUND on the mediator, and the page rewritten around it.",
               "Un experimento realizado que no encontrara entrelazamiento donde el canal cuántico lo predice se reportaría como una COTA sobre el mediador, y la página se reescribiría alrededor de ella."),
+             ("A sub-millimetre test of Newton's law analysed for the smeared potential erf(r/2σ)/r would turn the σ question from OPEN into a BOUND on the model, in either direction.",
+              "Una prueba submilimétrica de la ley de Newton analizada para el potencial suavizado erf(r/2σ)/r convertiría la pregunta sobre σ de ABIERTO en una COTA sobre el modelo, en cualquier dirección."),
              ("Peer-reviewed resolution of the 2025 dispute in either direction would collapse the hatched band onto one of its edges and relabel the third channel.",
               "Una resolución revisada por pares de la disputa de 2025 en cualquier dirección colapsaría la banda rayada sobre uno de sus bordes y reetiquetaría el tercer canal."),
          ]},
@@ -321,8 +386,8 @@ PAGE: dict = {
          "Local dephasing multiplies off-diagonal terms by e^{−γt} per mass. The partial transpose is Hermitian; its eigenvalues come from the real 8×8 embedding and the track's Jacobi solver. N = C/2 = 0.078 at γ = 0; N = 0 at γt = 0.156.",
          "El desfase local multiplica los términos fuera de la diagonal por e^{−γt} por masa. La transpuesta parcial es hermitiana; sus valores propios salen de la inmersión real 8×8 y del solucionador de Jacobi de la serie. N = C/2 = 0.078 en γ = 0; N = 0 en γt = 0.156."),
         ("Stage 4 · The classical channel and the defect", "Etapa 4 · El canal clásico y el defecto",
-         "Mean field: φ_ij = ½(α_i + β_j) with α_i the average of A's phases on branch i and β_j likewise for B. Δφ = 0 to 1e-12 over 27 geometries. The planted defect hands the LOCC channel the quantum phases: concurrence 0.156 where zero is required, and the verifier fails, as it must.",
-         "Campo medio: φ_ij = ½(α_i + β_j) con α_i el promedio de las fases de A en la rama i y β_j lo mismo para B. Δφ = 0 a 1e-12 sobre 27 geometrías. El defecto plantado le da al canal LOCC las fases cuánticas: concurrencia 0.156 donde se exige cero, y el verificador falla, como debe."),
+         "Mean field: φ_ij = ½(α_i + β_j) with α_i the average of A's phases on branch i and β_j likewise for B. Δφ = 0 to 1e-12 over 27 geometries. The planted defect hands the LOCC channel the quantum phases: concurrence 0.156 where zero is required, and the verifier fails, as it must. A second kernel computes the band's edges: the Diósi–Penrose master equation ⟨x|ρ(t)|y⟩ = exp[(G/2ħ) g(x,y) t]⟨x|ρ(0)|y⟩ with the smeared kernel f̃(z) = erf(z/2σ)/z (critical separation 0.8508σ, its own planted defect drops the decoherence), and the classical-channel rate KΔx²/2ħ against this page's threshold.",
+         "Campo medio: φ_ij = ½(α_i + β_j) con α_i el promedio de las fases de A en la rama i y β_j lo mismo para B. Δφ = 0 a 1e-12 sobre 27 geometrías. El defecto plantado le da al canal LOCC las fases cuánticas: concurrencia 0.156 donde se exige cero, y el verificador falla, como debe. Un segundo núcleo calcula los bordes de la banda: la ecuación maestra de Diósi–Penrose ⟨x|ρ(t)|y⟩ = exp[(G/2ħ) g(x,y) t]⟨x|ρ(0)|y⟩ con el núcleo suavizado f̃(z) = erf(z/2σ)/z (separación crítica 0.8508σ, su propio defecto plantado quita la decoherencia), y la tasa del canal clásico KΔx²/2ħ frente al umbral de esta página."),
     ],
     "sidenotes": [
         ("SIDENOTE T.05-A · WHY THE PAGE LABEL IS OPEN", "NOTA T.05-A · POR QUÉ LA ETIQUETA DE PÁGINA ES ABIERTO",
@@ -348,5 +413,9 @@ PAGE: dict = {
         ("Marletto, C., & Vedral, V. (2025). Classical gravity cannot mediate entanglement by local means. arXiv:2510.19969 (preprint).", "10.48550/arXiv.2510.19969"),
         ("Diósi, L. (2025). No, classical gravity does not entangle quantized matter fields. arXiv:2511.00852 (preprint).", "10.48550/arXiv.2511.00852"),
         ("Tobar, G., Aspelmeyer, M., & Zych, M. (2026). Testing gravitationally-induced-entanglement with massive particles and quantum clocks. arXiv:2611.08313 (preprint).", "10.48550/arXiv.2611.08313"),
+        ("Tilloy, A., & Diósi, L. (2016). Sourcing semiclassical gravity from spontaneously localized quantum matter. Physical Review D, 93, 024026.", "10.1103/PhysRevD.93.024026"),
+        ("van de Kamp, T. W., Marshman, R. J., Bose, S., & Mazumdar, A. (2020). Quantum gravity witness via entanglement of masses: Casimir screening. Physical Review A, 102, 062807.", "10.1103/PhysRevA.102.062807"),
+        ("Lee, J. G., Adelberger, E. G., Cook, T. S., Fleischer, S. M., & Heckel, B. R. (2020). New test of the gravitational 1/r² law at separations down to 52 µm. Physical Review Letters, 124, 101101.", "10.1103/PhysRevLett.124.101101"),
+        ("Tan, W.-H., et al. (2020). Improvement for testing the gravitational inverse-square law at the submillimeter range. Physical Review Letters, 124, 051301.", "10.1103/PhysRevLett.124.051301"),
     ],
 }

@@ -20,6 +20,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Central numbers (2017 geometry: 10⁻¹⁴ kg, d = 450 µm, Δx = 250 µm, t = 2.5 s)**: `Δφ = 0.314 rad`, `C = 0.156`, `N = 0.078`; `C = 1` at `t = 25.0 s`; negativity vanishes at `γt = 0.156`; LOCC channel `< 10⁻¹²`.
 - **Generator**: `python skills/timegravity/t05/make_t05.py`
 - **Verifier**: `python skills/timegravity/t05/verify_t05_entanglement_channels.py`
+- **Dispute kernel** (`tools/timegravity_kernel_dispute.py`): the band's computed edges. Lower: Kafri–Taylor–Milburn channel at `K Δx²/2ħ` per mass (`K = 2Gm²/d³`) equals this page's dephasing threshold in the small-split limit (ratio 1.000 at 2 µm). Upper: the Diósi–Penrose model as Trillo & Navascués write it (σ-smeared, `H = 0`), `⟨x|ρ(t)|y⟩ = exp[(G/2ħ) g(x,y) t]⟨x|ρ(0)|y⟩`, predicts entanglement only below `d_c = 0.8508σ` (letter 0.8501σ, appendix 0.850872σ); Fig. 3 geometry (10⁻¹⁵ kg, 23 µm, 24 µm): none at σ = 50 µm, about 5 h / 16 h / 20 d at 75 / 100 / 250 µm; 2017 geometry needs σ > 525 µm and shows < 10⁻³ at 2.5 s; the smeared pull is `erf(d/2σ)` of Newton's. Verifier `python skills/timegravity/t05/verify_t05_dispute_kernel.py`; `--planted-defect` (decoherence dropped, no critical separation) must exit non-zero.
 - **Knockout check**: `python skills/timegravity/t05/verify_t05_entanglement_channels.py --planted-defect` (must exit non-zero: a LOCC channel that entangles)
 - **Label lint**: `python tools/check_timegravity_labels.py` (and `--planted-defect`, `--mutants`)
 
@@ -41,6 +42,10 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 | `T05-MARLETTO2025` | PROPOSED (preprint) | Marletto & Vedral 2025, rebuttal | https://doi.org/10.48550/arXiv.2510.19969 |
 | `T05-DIOSI2025` | PROPOSED (preprint) | Diósi 2025, rebuttal | https://doi.org/10.48550/arXiv.2511.00852 |
 | `T05-TOBAR2026` | PROPOSED (preprint) | Tobar, Aspelmeyer & Zych 2026, clock proposal | https://doi.org/10.48550/arXiv.2611.08313 |
+| `T05-TILLOY2016` | PROPOSED | Tilloy & Diósi 2016, hybrid construction | https://doi.org/10.1103/PhysRevD.93.024026 |
+| `T05-VANDEKAMP2020` | PROPOSED | Van De Kamp et al. 2020, the Fig. 3 geometry | https://doi.org/10.1103/PhysRevA.102.062807 |
+| `T05-LEE2020` | MEASURED | Lee et al. 2020, 1/r² down to 52 µm | https://doi.org/10.1103/PhysRevLett.124.101101 |
+| `T05-TAN2020` | MEASURED | Tan et al. 2020, |α| ≤ 1 down to 48 µm | https://doi.org/10.1103/PhysRevLett.124.051301 |
 
 ## 3. Tool-neutral agent packet and security boundary (`security-runtime`)
 1. **Rebuild locally**: `python skills/timegravity/t05/make_t05.py`; standard library only; writes only under `src/research/timegravity/t05/files/`.

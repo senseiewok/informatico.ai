@@ -254,7 +254,7 @@ class TimeGravityTrackTests(unittest.TestCase):
         res = run(PY + [str(ROOT / "timegravity" / "run_all_timegravity.py")], timeout=120)
         self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
         self.assertIn("PASS: Time & Gravity:", res.stdout)
-        self.assertEqual(res.stdout.count("REJECTED_AS_EXPECTED:"), 9)  # 8 verifiers + the lint
+        self.assertEqual(res.stdout.count("REJECTED_AS_EXPECTED:"), 10)  # 9 verifiers (T.05 has two) + the lint
 
     def test_pages_rebuild_byte_for_byte_from_source(self) -> None:
         import build_timegravity as tg
@@ -515,6 +515,7 @@ class TimeGravityBatch5Tests(unittest.TestCase):
         en, es = TG / "t05" / "index.html", TG_ES / "t05" / "index.html"
         self.assertEqual(labels_of(en), labels_of(es))
         self.assertEqual(set(labels_of(en)), {"PROPOSED", "DERIVED", "OPEN", "MEASURED", "SINGLE RESULT"}, labels_of(en))
+        self.assertEqual(labels_of(en).count("MEASURED"), 2, "milligram gravity and the inverse-square-law tests")
         self.assertNotIn("BOUND", labels_of(en), "nothing on this page is an exclusion limit")
         for path, boundary in ((en, BOUNDARY_EN), (es, BOUNDARY_ES)):
             txt = path.read_text(encoding="utf-8")
@@ -549,6 +550,48 @@ class TimeGravityBatch5Tests(unittest.TestCase):
         self.assertIn('class="tp-pager-link tp-pager-next" href="../../timegravity/t05/"', t04)
         self.assertNotIn("in preparation", t04)
         self.assertEqual((TG / "index.html").read_text(encoding="utf-8").count('data-built="true"'), 9)
+
+
+class TimeGravityDisputeKernelTests(unittest.TestCase):
+    """The T.05 band's computed edges: Diósi–Penrose (Trillo–Navascués) upper edge and Kafri–Taylor–Milburn lower edge."""
+
+    def test_dispute_verifier_numbers_and_planted_defect(self) -> None:
+        res = run(PY + [str(SKILLS / "t05" / "verify_t05_dispute_kernel.py")])
+        self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
+        payload = json.loads(res.stdout)
+        self.assertEqual(payload["status"], "PASS")
+        self.assertEqual(payload["geometry_checks"]["planted_defect_knockout"], "REJECTED_AS_EXPECTED")
+        cn = payload["central_number"]
+        self.assertAlmostEqual(cn["tn_dc_over_sigma"], 0.850872, delta=0.001)
+        self.assertIsNone(cn["tn_fig3_last_entangled_time_s"]["50um"])
+        self.assertGreater(cn["tn_fig3_last_entangled_time_s"]["250um"], 86400.0)
+        self.assertAlmostEqual(cn["tn_fig3_potential_over_newton"]["75um"], 0.179, delta=0.002)
+        self.assertAlmostEqual(cn["tn_2017_sigma_c_m"] * 1e6, 525.0, delta=2.0)
+        self.assertLess(cn["tn_2017_negativity_at_2p5_s_twice_sigma_c"], 1e-3)
+        self.assertAlmostEqual(cn["ktm_threshold_ratio_small_split"], 1.0, delta=0.01)
+        self.assertEqual(cn["ktm_2017_linear_model_negativity"], 0.0)
+        bad = run(PY + [str(SKILLS / "t05" / "verify_t05_dispute_kernel.py"), "--planted-defect"])
+        self.assertNotEqual(bad.returncode, 0)
+        self.assertIn("FAIL", bad.stderr)
+        self.assertIn("entangles everywhere", bad.stderr)
+        ref = json.loads((TG / "t05" / "files" / "t05_reference.json").read_text(encoding="utf-8"))
+        self.assertIn("dispute_kernel", ref)
+        self.assertIsNone(ref["dispute_kernel"]["tn_fig3"]["50um"]["last_entangled_time_s"])
+
+    def test_dispute_text_instrument_and_labels_pick_no_side(self) -> None:
+        en, es = TG / "t05" / "index.html", TG_ES / "t05" / "index.html"
+        self.assertEqual(labels_of(en), labels_of(es))
+        txt = en.read_text(encoding="utf-8")
+        for s in ("0.8508σ", "0.8501σ", "5 hours, 16 hours and 20 days", "18 % of", "525 µm", "KΔx²/(2ħ)", "ratio 1.000", "52 µm", "38.6 µm", "48 µm",
+                  "the page still picks no side", "leaves it open", "computed, not chosen", "predicts entanglement only", 'data-tg-logsig', 'class="tg-bmv-dp"', 'data-tg-read="ktm"', 'data-tg-read="dp"', 'data-tg-read="soft"'):
+            self.assertIn(s, txt, f"T.05 lacks {s!r}")
+        low = txt.lower()
+        for banned in ("the model is right", "the model is wrong", "classical gravity is ruled out", "classical gravity is confirmed", "unifies"):
+            self.assertNotIn(banned, low)
+        self.assertEqual(txt.count('data-tg-channel="'), 3)  # still three channels at equal weight
+        mjs = (RESEARCH / "modules" / "timegravity-slope.mjs").read_text(encoding="utf-8")
+        for s in ("export function tnNegativity", "export function tnCriticalSigma", "export function ktmGammaT", "export function negativityOfRho"):
+            self.assertIn(s, mjs)
 
 
 if __name__ == "__main__":

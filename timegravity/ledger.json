@@ -632,6 +632,46 @@
       "kind": "preprint",
       "review_by": "2027-11-09",
       "note": "Proposal to test whether gravity can entangle a levitated particle with an array of quantum clocks; the quantised active gravitational mass has not been tested in any prior experiment. Preprint."
+    },
+    {
+      "id": "T05-TILLOY2016",
+      "label": "PROPOSED",
+      "doi": "10.1103/PhysRevD.93.024026",
+      "year": 2016,
+      "collaboration": "Tilloy & Diosi (PRD)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Sourcing semiclassical gravity from spontaneously localized quantum matter: the hybrid classical-gravity / quantum-matter construction whose master equation (Newtonian pair potential plus doubled DP decoherence, sigma smearing) Trillo and Navascues integrate. A proposal."
+    },
+    {
+      "id": "T05-VANDEKAMP2020",
+      "label": "PROPOSED",
+      "doi": "10.1103/PhysRevA.102.062807",
+      "year": 2020,
+      "collaboration": "Van De Kamp, Marshman, Bose & Mazumdar (PRA)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Quantum gravity witness via entanglement of masses with Casimir screening: the geometry (1e-15 kg, 23 um split, 24 um separation) that Trillo and Navascues take for their Fig. 3. A proposal."
+    },
+    {
+      "id": "T05-LEE2020",
+      "label": "MEASURED",
+      "doi": "10.1103/PhysRevLett.124.101101",
+      "year": 2020,
+      "collaboration": "Lee, Adelberger, Cook, Fleischer & Heckel (Eot-Wash, University of Washington)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "New test of the gravitational 1/r^2 law at separations down to 52 um: data between 52 um and 3.0 mm; any gravitational-strength Yukawa interaction limited to ranges below 38.6 um at 95 % confidence."
+    },
+    {
+      "id": "T05-TAN2020",
+      "label": "MEASURED",
+      "doi": "10.1103/PhysRevLett.124.051301",
+      "year": 2020,
+      "collaboration": "Tan et al. (HUST, Huazhong University of Science and Technology)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Improvement for testing the gravitational inverse-square law at the submillimeter range: |alpha| <= 1 holds down to lambda = 48 um at 95 % confidence; strongest bound on alpha in the range 40-350 um."
     }
   ]
 }

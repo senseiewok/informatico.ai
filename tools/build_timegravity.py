@@ -40,6 +40,7 @@ from timegravity_kernel_entangle import (  # noqa: E402
     BMV_D_M, BMV_DX_M, BMV_M_KG, BMV_T_S, branch_phases, concurrence_closed, entanglement_phase, four_branch_state, negativity,
     time_to_full_entanglement,
 )
+from timegravity_kernel_dispute import ktm_dephasing_rate, tn_critical_sigma, tn_potential_ratio  # noqa: E402
 from timegravity_kernel_bounds import (  # noqa: E402
     GS_R0_BOUND_M, GS_R0_PARAMFREE_M, XENONNT_R0_90, dp_collapse_time, gran_sasso_signal_counts, page_average_entropy, page_curve_toy,
 )
@@ -822,6 +823,10 @@ def bmv_instrument(page: dict) -> str:
     c0 = concurrence_closed(dphi0)
     n0 = negativity(four_branch_state(q0, 10.0 ** log_g0 * t0))
     tfull0 = time_to_full_entanglement(BMV_M_KG, BMV_D_M, BMV_DX_M)
+    log_sig0 = -3.0   # σ = 1 mm, above the 2017 geometry's critical 525 µm
+    sigma_c0 = tn_critical_sigma(BMV_M_KG, BMV_DX_M, BMV_D_M - BMV_DX_M)
+    ktm_gt0 = ktm_dephasing_rate(BMV_M_KG, BMV_D_M, BMV_DX_M) * t0
+    soft0 = tn_potential_ratio(BMV_D_M - BMV_DX_M, 10.0 ** log_sig0)
     seps = {"LL": d0_um, "LR": d0_um + dx0_um, "RL": d0_um - dx0_um, "RR": d0_um}
     lines_svg = []
     for i, (ia, xa) in enumerate(zip("LR", ax)):
@@ -865,6 +870,7 @@ def bmv_instrument(page: dict) -> str:
           <text x="{px1}" y="{py1 + 16}" text-anchor="end" font-size="10">{T_MAX:.0f} s</text>
           <text x="{(px0 + px1) / 2:.0f}" y="{py1 + 34}" text-anchor="middle" font-size="11" data-en="hold time t" data-es="tiempo de espera t">hold time t</text>
           <polygon class="tg-bmv-band" points="{band_poly}" fill="url(#tg-bmv-hatch)" stroke="none"/>
+          <path class="tg-bmv-dp" d="M {px0} {py1 - 1.5} L {px1} {py1 - 1.5}" fill="none" stroke="var(--tp-ink)" stroke-width="2.5" stroke-dasharray="2 4"/>
           <path class="tg-bmv-q" d="{' '.join(q_pts)}" fill="none" stroke="var(--tp-prussian)" stroke-width="2.5"/>
           <line class="tg-bmv-l" x1="{px0}" y1="{py1 - 1.5}" x2="{px1}" y2="{py1 - 1.5}" stroke="var(--tp-verdigris)" stroke-width="2.5" stroke-dasharray="7 5"/>
           <circle class="tg-bmv-marker" cx="{to_x(t0):.1f}" cy="{to_y(c0):.1f}" r="7" fill="var(--tp-minium)" stroke="var(--tp-vellum)" stroke-width="2"/>
@@ -875,6 +881,8 @@ def bmv_instrument(page: dict) -> str:
             <text x="{px0 + 168}" y="{py1 + 58}" data-en="classical LOCC" data-es="clásico LOCC">classical LOCC</text>
             <rect x="{px0 + 262}" y="{py1 + 47}" width="22" height="14" fill="url(#tg-bmv-hatch)" stroke="var(--tp-prussian)" stroke-width="0.8"/>
             <text x="{px0 + 290}" y="{py1 + 58}" data-en="disputed, no single answer" data-es="en disputa, sin respuesta única">disputed, no single answer</text>
+            <line x1="{px0}" y1="{py1 + 74}" x2="{px0 + 22}" y2="{py1 + 74}" stroke="var(--tp-ink)" stroke-width="2.5" stroke-dasharray="2 4"/>
+            <text x="{px0 + 28}" y="{py1 + 78}" data-en="one named classical model: Diósi–Penrose with smearing σ (its prediction, not the page's)" data-es="un modelo clásico con nombre: Diósi–Penrose con suavizado σ (su predicción, no la de la página)">one named classical model: Diósi–Penrose with smearing σ (its prediction, not the page's)</text>
           </g>
         </svg>
       <div class="tg-controls">
@@ -889,6 +897,8 @@ def bmv_instrument(page: dict) -> str:
           <input id="tg-t-t05" data-tg-t type="range" min="0.1" max="{T_MAX:.0f}" step="0.1" value="{t0}">
           <label for="tg-logg-t05"><span data-en="log₁₀ dephasing rate γ (1/s)" data-es="log₁₀ tasa de desfase γ (1/s)">log₁₀ dephasing rate γ (1/s)</span> <span data-tg-read="logg">{log_g0:.1f}</span></label>
           <input id="tg-logg-t05" data-tg-logg type="range" min="-4" max="1" step="0.1" value="{log_g0}">
+          <label for="tg-logsig-t05"><span data-en="log₁₀ smearing σ of the Diósi–Penrose model (m)" data-es="log₁₀ suavizado σ del modelo de Diósi–Penrose (m)">log₁₀ smearing σ of the Diósi–Penrose model (m)</span> <span data-tg-read="logsig">{log_sig0:.1f}</span></label>
+          <input id="tg-logsig-t05" data-tg-logsig type="range" min="-6" max="-1" step="0.1" value="{log_sig0}">
         </div>
         <div class="tg-btn-row" role="group" aria-label="Knockout: which channel the readouts follow">
           <span class="tg-btn-row-label" data-en="⚡ Knockout · switch the channel:" data-es="⚡ Apagado · cambiar el canal:">⚡ Knockout · switch the channel:</span>
@@ -912,6 +922,18 @@ def bmv_instrument(page: dict) -> str:
         <div class="tp-readout-box" data-alert="false">
           <span class="tp-readout-k" data-en="Hold time for full entanglement (Δφ = π)" data-es="Tiempo de espera para entrelazamiento completo (Δφ = π)">Hold time for full entanglement (Δφ = π)</span>
           <span class="tp-readout-v" data-tg-read="tfull">{tfull0:.1f} s</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Lower edge · classical channel at its minimal rate KΔx²/2ħ (γt)" data-es="Borde inferior · canal clásico a su tasa mínima KΔx²/2ħ (γt)">Lower edge · classical channel at its minimal rate KΔx²/2ħ (γt)</span>
+          <span class="tp-readout-v" data-tg-read="ktm">{ktm_gt0:.3f} · 0 entanglement in its own linear model</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Upper edge · Diósi–Penrose model at this σ (critical σ for this geometry)" data-es="Borde superior · modelo de Diósi–Penrose a esta σ (σ crítica para esta geometría)">Upper edge · Diósi–Penrose model at this σ (critical σ for this geometry)</span>
+          <span class="tp-readout-v" data-tg-read="dp">σ_c = {sigma_c0 * 1e6:.0f} µm · entangles slowly, nothing visible in 30 s</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Newton's pull at the nearest separation, on that model: erf(d/2σ)" data-es="Atracción de Newton a la separación más cercana, en ese modelo: erf(d/2σ)">Newton's pull at the nearest separation, on that model: erf(d/2σ)</span>
+          <span class="tp-readout-v" data-tg-read="soft">{100 * soft0:.0f} %</span>
         </div>
         <div class="tp-readout-box" data-tg-readout-box="err" data-alert="false">
           <span class="tp-readout-k" data-en="This channel says the pair is" data-es="Este canal dice que el par está">This channel says the pair is</span>
