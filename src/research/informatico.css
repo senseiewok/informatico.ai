@@ -6323,4 +6323,18 @@
       }
     }
   }
+  /* Time & Gravity as a series inside Physics (2026-11-09): a second rack under the twelve essays, and the
+     series block nested in the Contents dialog's Physics column. */
+  .tp-series-rack {
+    margin-top: 2.6rem;
+    padding-top: 1.6rem;
+    border-top: 2px solid var(--tp-ink);
+  }
+  .tp-series-rack .tp-kicker { margin-bottom: 0.35rem; }
+  .tp-series-rack .tp-h2 { margin-top: 0; }
+  .tp-series-rack .tp-h2 a { color: inherit; text-decoration: none; }
+  .tp-series-rack .tp-h2 a:hover, .tp-series-rack .tp-h2 a:focus-visible { text-decoration: underline; }
+  .tp-series-rack .tp-standfirst { max-width: 62ch; margin-bottom: 1.2rem; }
+  .tp-rack-card-series .tp-rack-thumb { aspect-ratio: 1200 / 630; }
+  .tp-contents-series { margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid var(--tp-rule); }
 }

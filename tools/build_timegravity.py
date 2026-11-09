@@ -107,7 +107,14 @@ def plate_slug(page: dict) -> str:
     return "t00" if page["slug"] == "" else page["slug"]
 
 
-def boundary_banner() -> str:
+def boundary_banner(compact: bool = False) -> str:
+    """The fixed boundary. The hub prints the full box; every other T page prints a one-line strip whose <details>
+    holds the same sentence, so the lint's exact-string check and the reader's first mobile screen both hold."""
+    if compact:
+        return f"""      <details class="tg-boundary-banner tg-boundary-compact">
+        <summary>{bi("strong", "Fixed boundary", "Frontera fija")} {bi("span", "No theory of everything here: six evidence labels, one open question per page.", "Aquí no hay teoría del todo: seis etiquetas de evidencia, una pregunta abierta por página.", "tg-boundary-short")}</summary>
+        {bi("p", BOUNDARY_EN, BOUNDARY_ES)}
+      </details>"""
     return f"""      <div class="tg-boundary-banner" role="note" aria-label="Fixed boundary of every Time and Gravity page">
         {bi("strong", "Fixed boundary · printed on every T page · asserted by the lint", "Frontera fija · impresa en cada página T · comprobada por el lint")}
         {bi("span", BOUNDARY_EN, BOUNDARY_ES)}
@@ -125,6 +132,7 @@ def breadcrumb(rel_res: str, page: dict) -> str:
     return f"""  <nav class="tp-breadcrumb-bar" aria-label="Breadcrumb">
     <ol class="tp-breadcrumb-list">
         <li class="tp-crumb-item"><a class="tp-crumb-link" href="{B._href(rel_res)}">Informatico.ai</a></li>
+        <li class="tp-crumb-item"><a class="tp-crumb-link" href="{B._href(rel_res, "physics/")}" data-en="Physics" data-es="Física">Physics</a></li>
         {mid}{tail}
     </ol>
   </nav>"""
@@ -248,7 +256,7 @@ def slope_instrument(page: dict, rel_res: str) -> str:
               <stop offset="1" stop-color="var(--tp-prussian)"/>
             </linearGradient>
           </defs>
-          <rect class="tg-rate-col" x="140" y="{P['y0']}" width="60" height="{P['y1'] - P['y0']}" rx="6" fill="url(#tg-rate-grad)" style="opacity:0.6"/>
+          <rect class="tg-rate-col" x="140" y="{P['y0']}" width="60" height="{P['y1'] - P['y0']}" rx="6" fill="url(#tg-rate-grad)" opacity="0.6"/>
           <text x="170" y="{P['y0'] - 12}" text-anchor="middle" font-size="11" data-en="rate of a clock" data-es="ritmo de un reloj">rate of a clock</text>
           <text x="170" y="{P['y0'] + 16}" text-anchor="middle" font-size="10" data-en="faster" data-es="más rápido">faster</text>
           <text x="170" y="{P['y1'] - 8}" text-anchor="middle" font-size="10" fill="var(--tp-vellum)" data-en="slower" data-es="más lento">slower</text>
@@ -321,7 +329,7 @@ def worldline_instrument(page: dict) -> str:
               <stop offset="1" stop-color="var(--tp-prussian)"/>
             </linearGradient>
           </defs>
-          <rect x="140" y="50" width="60" height="250" rx="6" fill="url(#tg-rate-grad-hub)" style="opacity:0.6"/>
+          <rect x="140" y="50" width="60" height="250" rx="6" fill="url(#tg-rate-grad-hub)" opacity="0.6"/>
           <text x="170" y="38" text-anchor="middle" font-size="11" data-en="rate of a clock" data-es="ritmo de un reloj">rate of a clock</text>
           <text x="170" y="66" text-anchor="middle" font-size="10" data-en="faster" data-es="más rápido">faster</text>
           <text x="170" y="292" text-anchor="middle" font-size="10" fill="var(--tp-vellum)" data-en="slower" data-es="más lento">slower</text>
@@ -475,7 +483,7 @@ def poisson_instrument(page: dict) -> str:
         rr = 1.0 + 0.4 * k  # in units of R, out to 3.8 R
         i = min(400, int(round(rr / 4.0 * 400)))
         depth = abs(sol["phi"][i]) / abs(sol["phi"][100])  # relative to the surface potential
-        rings.append(f'<circle class="tg-ring" data-ring="{k}" cx="{cx}" cy="{cy}" r="{rpx * rr:.1f}" fill="none" stroke="var(--tp-prussian)" stroke-width="{3 + 6 * depth:.1f}" style="opacity:{0.15 + 0.6 * depth:.2f}"/>')
+        rings.append(f'<circle class="tg-ring" data-ring="{k}" cx="{cx}" cy="{cy}" r="{rpx * rr:.1f}" fill="none" stroke="var(--tp-prussian)" stroke-width="{3 + 6 * depth:.1f}" opacity="{0.15 + 0.6 * depth:.2f}"/>')
     pts = []
     for i in range(0, 401, 10):
         x = 30 + 420 * (sol["r"][i] / (4.0 * R_EARTH))
@@ -574,7 +582,7 @@ def pw_instrument(page: dict) -> str:
         n = c["n"]
         for col, p in ((0, c["p_plus_x"]), (1, 1.0 - c["p_plus_x"])):
             x = 110 + col * 70
-            tiles.append(f'<rect class="tg-tile" data-n="{n}" data-col="{col}" x="{x}" y="{ty0 + n * th}" width="60" height="{th - 2}" rx="3" fill="var(--tp-prussian)" style="opacity:{0.08 + 0.85 * p:.3f}"/>')
+            tiles.append(f'<rect class="tg-tile" data-n="{n}" data-col="{col}" x="{x}" y="{ty0 + n * th}" width="60" height="{th - 2}" rx="3" fill="var(--tp-prussian)" opacity="{0.08 + 0.85 * p:.3f}"/>')
     # Plot: P(+x | t_n) dots and the cos^2 curve
     px0, px1, py0, py1 = 380, 880, 70, 370
     to_x = lambda n: px0 + (px1 - px0) * n / (d - 1)  # noqa: E731
@@ -1116,7 +1124,7 @@ def track_map(rel_res: str) -> str:
             title = bi("span", m["title_en"], m["title_es"])
             status = bi("span", "In preparation", "En preparación", "tg-map-status")
         items.append(f"""          <li data-built="{str(m['built']).lower()}">
-            <span class="tg-map-order" aria-label="reading order">{i}/9</span>
+            <span class="tg-map-order"><span data-en="Step {i} of 9" data-es="Paso {i} de 9">Step {i} of 9</span></span>
             <span class="tg-map-code">{m['code']}</span>
             <strong class="tg-map-title">{title}</strong>
             {bi("span", "Ends with: " + m["q_en"], "Termina con: " + m["q_es"], "tg-map-q")}
@@ -1260,6 +1268,38 @@ def skill_box(page: dict) -> str:
         </section>"""
 
 
+def step_of(code: str) -> int:
+    return next(i for i, m in enumerate(TRACK_MAP, 1) if m["code"] == code)
+
+
+def step_rail(page: dict, rel_res: str) -> str:
+    """Nine numbered steps under every T hero: where the reader is, and one tap to any other step."""
+    items = []
+    for i, m in enumerate(TRACK_MAP, 1):
+        href = B._href(rel_res, "timegravity/" + (f"{m['slug']}/" if m["slug"] else ""))
+        label = (f'<span class="tg-step-n" aria-hidden="true">{i}</span>'
+                 f'<span class="tg-step-t"><span data-en="Step {i} of 9 · {a(m["title_en"])}" data-es="Paso {i} de 9 · {a(m["title_es"])}">Step {i} of 9 · {t(m["title_en"])}</span></span>')
+        if m["code"] == page["code"]:
+            items.append(f'          <li class="tg-step tg-step-current" aria-current="step">{label}</li>')
+        elif m["built"]:
+            items.append(f'          <li class="tg-step"><a href="{href}">{label}</a></li>')
+        else:
+            items.append(f'          <li class="tg-step tg-step-pending">{label}</li>')
+    return ("    <nav class=\"tg-step-rail\" aria-label=\"The nine steps of Time and Gravity\">\n"
+            "      <ol class=\"tg-steps\">\n" + "\n".join(items) + "\n      </ol>\n    </nav>")
+
+
+def hub_cta(rel_res: str) -> str:
+    """The hub's way in: begin with the first step after the hub, or jump to the map of nine."""
+    first = TRACK_MAP[1]
+    page = next(p for p in PAGES if p["code"] == first["code"])
+    href = B._href(rel_res, "timegravity/" + first["slug"] + "/")
+    return f"""      <p class="tg-hero-cta">
+        <a class="tp-cta tp-cta-primary tg-cta-begin" href="{href}"><span data-en="Begin · Step 2 of 9 · {page['reading_time_en']}" data-es="Empezar · Paso 2 de 9 · {page['reading_time_es']}">Begin · Step 2 of 9 · {page['reading_time_en']}</span><strong data-en="{a(first['title_en'])} &rarr;" data-es="{a(first['title_es'])} &rarr;">{t(first['title_en'])} &rarr;</strong></a>
+        <a class="tp-cta tg-cta-map" href="#map" data-en="See the nine steps &darr;" data-es="Ver los nueve pasos &darr;">See the nine steps &darr;</a>
+      </p>"""
+
+
 def neighbours(page: dict) -> tuple[dict | None, dict | None]:
     """Previous and next entries of TRACK_MAP in reading order (the hub is first)."""
     idx = next(i for i, m in enumerate(TRACK_MAP) if m["code"] == page["code"])
@@ -1268,18 +1308,24 @@ def neighbours(page: dict) -> tuple[dict | None, dict | None]:
     return prev, nxt
 
 
-def open_question(page: dict) -> str:
+def open_question(page: dict, rel_res: str) -> str:
     _prev, nx = neighbours(page)
     if nx is None:
-        nxt_en = "This is the last page of the track; the hub holds the question that opened it."
-        nxt_es = "Esta es la última página de la serie; el punto de partida guarda la pregunta que la abrió."
+        href = B._href(rel_res, "timegravity/")
+        nxt = (f'<a class="tg-next" href="{href}"><span class="tg-next-dir" data-en="Last step · back to the hub &rarr;" data-es="Último paso · volver al inicio &rarr;">Last step · back to the hub &rarr;</span>'
+               f'<strong data-en="The question that opened the track" data-es="La pregunta que abrió la serie">The question that opened the track</strong></a>')
+    elif nx["built"]:
+        href = B._href(rel_res, "timegravity/" + nx["slug"] + "/")
+        step = step_of(nx["code"])
+        nxt = (f'<a class="tg-next" href="{href}" rel="next"><span class="tg-next-dir" data-en="Continue · Step {step} of 9 · {nx["code"]} &rarr;" data-es="Continuar · Paso {step} de 9 · {nx["code"]} &rarr;">Continue · Step {step} of 9 · {nx["code"]} &rarr;</span>'
+               f'<strong data-en="{a(nx["title_en"])}" data-es="{a(nx["title_es"])}">{t(nx["title_en"])}</strong></a>')
     else:
-        nxt_en = f"Next: {nx['code']} · {nx['title_en']}" + ("" if nx["built"] else " (in preparation)")
-        nxt_es = f"Siguiente: {nx['code']} · {nx['title_es']}" + ("" if nx["built"] else " (en preparación)")
+        nxt = bi("p", f"Next: {nx['code']} · {nx['title_en']} (in preparation)",
+                 f"Siguiente: {nx['code']} · {nx['title_es']} (en preparación)", "tg-next")
     return f"""        <section class="tg-open-question" aria-label="The open question this page ends with">
           <p class="tp-kicker" data-en="This page ends with one open question" data-es="Esta página termina con una pregunta abierta">This page ends with one open question</p>
           {bi("p", page["open_question_en"], page["open_question_es"])}
-          {bi("p", nxt_en, nxt_es, "tg-next")}
+          {nxt}
         </section>"""
 
 
@@ -1339,7 +1385,8 @@ def render_page(page: dict, catalog: dict, lang: str = "en") -> str:
     desc = d_es if es else d_en
     canon = B.page_url(path, lang)
     image = f"https://informatico.ai/plates/{plate_slug(page)}.png"
-    crumbs = [("Informatico.ai", B.page_url("", lang)), (TRACK_TITLE_ES if es else TRACK_TITLE_EN, B.page_url("timegravity/", lang))]
+    crumbs = [("Informatico.ai", B.page_url("", lang)), ("Física" if es else "Physics", B.page_url("physics/", lang)),
+              (TRACK_TITLE_ES if es else TRACK_TITLE_EN, B.page_url("timegravity/", lang))]
     if slug:
         crumbs.append((page["code"], canon))
         ld = B._ld("ScholarlyArticle", t_es if es else t_en, desc, canon, lang, image=image,
@@ -1385,17 +1432,19 @@ def render_page(page: dict, catalog: dict, lang: str = "en") -> str:
 
     return f"""{head}
 <body class="tp-body tp-page-folio tg-page">
-{B.render_masthead(rel_res, "timegravity", lang)}
+{B.render_masthead(rel_res, "physics", lang)}
 {B.render_contents_dialog(rel_res, catalog)}
   <main id="main" class="tp-shell" tabindex="-1">
 {breadcrumb(rel_res, page)}
 <div id="tp-folio-mount" data-folio-id="{page['code']}" data-folio-slug="{plate_slug(page)}">
     <section class="tp-hero">
-      <p class="tp-kicker">{bi("span", page["kicker_en"], page["kicker_es"])} · {page['code']} · {order} · {rt}</p>
+      <p class="tp-kicker">{bi("span", page["kicker_en"], page["kicker_es"])} · {order} · {rt}</p>
       <h1 class="tp-h1" data-en="{a(page['title_en'])}" data-es="{a(page['title_es'])}">{t(page['title_en'])}</h1>
       {bi("p", page["standfirst_en"], page["standfirst_es"], "tp-standfirst")}
-{boundary_banner()}
+{hub_cta(rel_res) if not slug else ""}
+{boundary_banner(compact=bool(slug))}
     </section>
+{step_rail(page, rel_res)}
 {lead_figure(page, rel_res, es)}
     <nav class="tg-jump-bar" aria-label="Sections of this page">
 {jump_html}
@@ -1407,7 +1456,7 @@ def render_page(page: dict, catalog: dict, lang: str = "en") -> str:
         {ai_line}
 {skill_box(page)}
 {sources_list(page)}
-{open_question(page)}
+{open_question(page, rel_res)}
       </div>
       <aside class="tp-rail" aria-label="{page['code']} margin notes">
 {sidenotes(page)}

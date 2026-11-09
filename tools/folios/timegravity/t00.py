@@ -14,8 +14,8 @@ CODE = "T.00"
 PAGE: dict = {
     "slug": SLUG,
     "code": CODE,
-    "order_label_en": "Reading order 1 of 9",
-    "order_label_es": "Orden de lectura 1 de 9",
+    "order_label_en": "Step 1 of 9",
+    "order_label_es": "Paso 1 de 9",
     "kicker_en": "Time & Gravity · A track where the open problem is the subject",
     "kicker_es": "Tiempo y Gravedad · Una serie donde el problema abierto es el tema",
     "title_en": "Time & Gravity",
@@ -63,6 +63,8 @@ PAGE: dict = {
         ),
     },
     "sections": [
+        {"type": "h2", "id": "map", "en": "The nine steps, in reading order", "es": "Los nueve pasos, en orden de lectura", "short_en": "Map", "short_es": "Mapa"},
+        {"type": "track_map"},
         {"type": "h2", "id": "contract", "en": "How to read a T page", "es": "Cómo leer una página T", "short_en": "Labels", "short_es": "Etiquetas"},
         P(
             T("Every page in this track ships six things, and the build refuses a page that lacks one: a hand-written instrument whose "
@@ -96,8 +98,6 @@ PAGE: dict = {
               "Este punto de partida no lleva ninguna afirmación, y el lint lo comprueba. Enuncia la intuición una vez, arriba, como "
               "pregunta en tercera persona, y esa oración está prohibida en todas las demás páginas de la serie."),
         ),
-        {"type": "h2", "id": "map", "en": "The nine pages, in reading order", "es": "Las nueve páginas, en orden de lectura", "short_en": "Map", "short_es": "Mapa"},
-        {"type": "track_map"},
         {"type": "h2", "id": "change", "en": "What would change this page", "es": "Qué cambiaría esta página", "short_en": "What would change", "short_es": "Qué cambiaría"},
         {"type": "change_box",
          "items": [
@@ -105,8 +105,8 @@ PAGE: dict = {
               "Una medición que encontrara un 'ahora' sentido como variable en una ley física convertiría la mitad abierta en una afirmación con etiqueta; hoy no existe nada parecido."),
              ("A page in this track labelled above what its ledger rows support fails the build, and the track does not ship until the label or the ledger is fixed.",
               "Una página de esta serie etiquetada por encima de lo que sus filas del libro de registro sostienen hace fallar la construcción, y la serie no se publica hasta corregir la etiqueta o el libro."),
-             ("The pages not yet built below are in preparation; this map lists their open questions so that the order of reading is fixed before the pages exist.",
-              "Las páginas aún no construidas están en preparación; este mapa lista sus preguntas abiertas para que el orden de lectura quede fijo antes de que existan."),
+             ("Every step in the map above is live. The map keeps each page's open question beside its title so the order of reading stays fixed, and a new page joins the track only through the same ledger and lint.",
+              "Cada paso del mapa de arriba está publicado. El mapa conserva la pregunta abierta de cada página junto a su título para que el orden de lectura quede fijo, y una página nueva entra a la serie sólo por el mismo libro de registro y el mismo lint."),
          ]},
     ],
     "sources": [],
