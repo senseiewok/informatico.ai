@@ -357,6 +357,134 @@
       "exact_phases_with_ktm_dephasing_negativity": 0.0213478286711
     }
   },
+  "smeared_isl_kernel": {
+    "note": "plate-mode ratio R(q, s; sigma) = 1/2 [erfc(q sigma - s/2sigma) + e^(2qs) erfc(q sigma + s/2sigma)] of Newton's e^(-qs), checked against quadrature and its limits; Eot-Wash 2020 geometry at the pattern's lowest wavenumber (a one-mode estimate); the Yukawa at the published edge is a predicted signal size for comparison, not a bound on sigma; HUST 2020 quoted as published; labelled PROPOSED and OPEN on the page",
+    "quadrature_probes": [
+      {
+        "q_per_m": 4615.38461538,
+        "s_m": 5.2e-05,
+        "sigma_m": 7.5e-05,
+        "closed": 0.764668389852,
+        "quadrature": 0.764668389852,
+        "diff": -6.43929354283e-15
+      },
+      {
+        "q_per_m": 692.307692308,
+        "s_m": 5.2e-05,
+        "sigma_m": 7.5e-05,
+        "closed": 0.969468403827,
+        "quadrature": 0.969468403827,
+        "diff": -1.16573417586e-14
+      },
+      {
+        "q_per_m": 4615.4,
+        "s_m": 0.0003,
+        "sigma_m": 7.5e-05,
+        "closed": 0.997559273784,
+        "quadrature": 0.997559273784,
+        "diff": -1.66533453694e-15
+      },
+      {
+        "q_per_m": 4615.4,
+        "s_m": 5.2e-05,
+        "sigma_m": 0.00025,
+        "closed": 0.129624094012,
+        "quadrature": 0.129624094012,
+        "diff": 1.38777878078e-16
+      },
+      {
+        "q_per_m": 1000.0,
+        "s_m": 0.001,
+        "sigma_m": 0.0001,
+        "closed": 1.0,
+        "quadrature": 1.0,
+        "diff": 3.25295346215e-14
+      },
+      {
+        "q_per_m": 4615.4,
+        "s_m": 0.002,
+        "sigma_m": 7.5e-05,
+        "closed": 1.0,
+        "quadrature": 1.0,
+        "diff": -1.23256960194e-12
+      }
+    ],
+    "limits": {
+      "sigma_to_zero": 1.0,
+      "s_much_larger_than_sigma": 1.0,
+      "q_to_zero": 0.9999999574,
+      "s_zero": 0.624462653476,
+      "erfc_q_sigma": 0.624462653476
+    },
+    "eotwash": {
+      "r_out_m": 0.026,
+      "t_detector_m": 5.4e-05,
+      "t_attractor_m": 9.9e-05,
+      "s_min_m": 5.2e-05,
+      "s_max_m": 0.003,
+      "q_per_m": {
+        "18fold": 692.307692308,
+        "120fold": 4615.38461538
+      },
+      "deficit_at_s_min_by_sigma": {
+        "30um": {
+          "18fold": 0.000181183522821,
+          "120fold": 0.00194946435863
+        },
+        "40um": {
+          "18fold": 0.000875968394708,
+          "120fold": 0.00933223910744
+        },
+        "50um": {
+          "18fold": 0.00240215788493,
+          "120fold": 0.0252864369838
+        },
+        "75um": {
+          "18fold": 0.0102340375239,
+          "120fold": 0.103731516155
+        },
+        "100um": {
+          "18fold": 0.0225823768585,
+          "120fold": 0.218325238127
+        },
+        "250um": {
+          "18fold": 0.129188489859,
+          "120fold": 0.824768281899
+        }
+      },
+      "deficit_120fold_sigma_75um_by_separation": {
+        "52um": 0.103731516155,
+        "72um": 0.0777214252378,
+        "100um": 0.0497883099165,
+        "150um": 0.0198384732367,
+        "200um": 0.00668358113316,
+        "300um": 0.000445438744173,
+        "500um": 2.04082322708e-07,
+        "1000um": 0.0
+      },
+      "yukawa_edge_deficit_alpha_minus_1_lambda_38p6um": {
+        "18fold": 0.00146905799211,
+        "120fold": 0.0151572769687
+      },
+      "yukawa_edge_excess_alpha_plus_1": {
+        "18fold": 0.00146905799211,
+        "120fold": 0.0151572769687
+      },
+      "sigma_matching_edge_120fold_m": 4.43730674776e-05,
+      "best_yukawa_for_sigma_75um_120fold": {
+        "lambda_m": 4.87516991646e-05,
+        "alpha": -3.20709139778,
+        "residual": 5.65433098469e-05,
+        "rms_deficit": 0.0011743530637
+      },
+      "ratio_sigma_75um_to_edge_120fold": 6.84367755302,
+      "q_tail_120fold_per_m": 4235.96737318,
+      "deficit_120fold_sigma_75um_at_tail_wavenumber": 0.0919227380488,
+      "sigma_c_letter_geometry_m": 5.4883680462e-05,
+      "deficit_120fold_at_sigma_c_letter_geometry": 0.0365047576241
+    },
+    "hust_lambda_m": 4.8e-05
+  },
   "boundary_en": "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. Preprints never rise above PROPOSED. Each page ends with one open question that the next page takes up.",
   "license": "CC0-1.0 / CC-BY-4.0"
 }

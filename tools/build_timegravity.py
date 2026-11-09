@@ -41,6 +41,7 @@ from timegravity_kernel_entangle import (  # noqa: E402
     time_to_full_entanglement,
 )
 from timegravity_kernel_dispute import ktm_dephasing_rate, tn_critical_sigma, tn_potential_ratio  # noqa: E402
+from timegravity_kernel_isl import eotwash_deficit, eotwash_yukawa_edge_deficit  # noqa: E402
 from timegravity_kernel_bounds import (  # noqa: E402
     GS_R0_BOUND_M, GS_R0_PARAMFREE_M, XENONNT_R0_90, dp_collapse_time, gran_sasso_signal_counts, page_average_entropy, page_curve_toy,
 )
@@ -827,6 +828,8 @@ def bmv_instrument(page: dict) -> str:
     sigma_c0 = tn_critical_sigma(BMV_M_KG, BMV_DX_M, BMV_D_M - BMV_DX_M)
     ktm_gt0 = ktm_dephasing_rate(BMV_M_KG, BMV_D_M, BMV_DX_M) * t0
     soft0 = tn_potential_ratio(BMV_D_M - BMV_DX_M, 10.0 ** log_sig0)
+    isl0 = eotwash_deficit(10.0 ** log_sig0)
+    isl_edge = eotwash_yukawa_edge_deficit()
     seps = {"LL": d0_um, "LR": d0_um + dx0_um, "RL": d0_um - dx0_um, "RR": d0_um}
     lines_svg = []
     for i, (ia, xa) in enumerate(zip("LR", ax)):
@@ -934,6 +937,10 @@ def bmv_instrument(page: dict) -> str:
         <div class="tp-readout-box" data-alert="false">
           <span class="tp-readout-k" data-en="Newton's pull at the nearest separation, on that model: erf(d/2σ)" data-es="Atracción de Newton a la separación más cercana, en ese modelo: erf(d/2σ)">Newton's pull at the nearest separation, on that model: erf(d/2σ)</span>
           <span class="tp-readout-v" data-tg-read="soft">{100 * soft0:.0f} %</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Eöt-Wash 2020, 120-fold torque at 52 µm on that model (one-mode estimate)" data-es="Eöt-Wash 2020, par de 120 pliegues a 52 µm en ese modelo (estimación de un modo)">Eöt-Wash 2020, 120-fold torque at 52 µm on that model (one-mode estimate)</span>
+          <span class="tp-readout-v" data-tg-read="isl">−{100 * isl0:.1f} % · the Yukawa at the published edge: −{100 * isl_edge:.1f} %</span>
         </div>
         <div class="tp-readout-box" data-tg-readout-box="err" data-alert="false">
           <span class="tp-readout-k" data-en="This channel says the pair is" data-es="Este canal dice que el par está">This channel says the pair is</span>

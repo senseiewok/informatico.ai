@@ -925,6 +925,69 @@ export function erf(x) {
   const erfc = Math.exp(-ax * ax) / (Math.sqrt(Math.PI) * cf);
   return Math.sign(x) * (1 - erfc);
 }
+/** erfc at double precision: 1 − erf below 3, the continued fraction above, reflection for negative arguments. */
+export function erfc(x) {
+  if (x < 0) return 2 - erfc(-x);
+  if (x < 3) return 1 - erf(x);
+  let cf = x;
+  for (let k = 60; k >= 1; k--) cf = x + (k / 2) / cf;
+  return Math.exp(-x * x) / (Math.sqrt(Math.PI) * cf);
+}
+function logErfc(x) {
+  if (x > 25) { const x2 = x * x; return -x2 - Math.log(x * Math.sqrt(Math.PI)) + Math.log(1 - 1 / (2 * x2) + 3 / (4 * x2 * x2)); }
+  return Math.log(erfc(x));
+}
+// ---- the smeared-gravity kernel (mirrors tools/timegravity_kernel_isl.py): plate modes under the pair potential erf(r/2σ)/r
+export const EW_R_OUT_M = 26e-3, EW_T_DETECTOR_M = 54e-6, EW_T_ATTRACTOR_M = 99e-6, EW_S_MIN_M = 52e-6, EW_YUKAWA_EDGE_LAMBDA_M = 38.6e-6;
+/** Smeared-to-Newton ratio of the sheet kernel for in-plane wavenumber q at gap s: ½[erfc(qσ − s/2σ) + e^(2qs) erfc(qσ + s/2σ)]. */
+export function plateModeRatio(q, s, sigma) {
+  const a = q * sigma, b = s / (2 * sigma);
+  return 0.5 * (erfc(a - b) + Math.exp(2 * q * s + logErfc(a + b)));
+}
+function gaussLegendre(n) {
+  const xs = [], ws = [];
+  for (let i = 1; i <= n; i++) {
+    let x = Math.cos(Math.PI * (i - 0.25) / (n + 0.5)), dp = 1;
+    for (let it = 0; it < 100; it++) {
+      let p0 = 1, p1 = x;
+      for (let k = 2; k <= n; k++) { const p2 = ((2 * k - 1) * x * p1 - (k - 1) * p0) / k; p0 = p1; p1 = p2; }
+      dp = n * (x * p1 - p0) / (x * x - 1);
+      const dx = p1 / dp; x -= dx;
+      if (Math.abs(dx) < 1e-15) break;
+    }
+    xs.push(x); ws.push(2 / ((1 - x * x) * dp * dp));
+  }
+  return [xs, ws];
+}
+const [GL_X, GL_W] = gaussLegendre(24);
+/** Smeared-to-Newton ratio of the q mode between plates of thickness t1, t2 whose facing surfaces are s apart. */
+export function thickPlateRatio(q, s, sigma, t1 = EW_T_DETECTOR_M, t2 = EW_T_ATTRACTOR_M) {
+  let num = 0, den = 0;
+  for (let i = 0; i < GL_X.length; i++) {
+    const z1 = 0.5 * t1 * (GL_X[i] + 1);
+    for (let j = 0; j < GL_X.length; j++) {
+      const gap = s + z1 + 0.5 * t2 * (GL_X[j] + 1), base = GL_W[i] * GL_W[j] * Math.exp(-q * gap);
+      den += base; num += base * plateModeRatio(q, gap, sigma);
+    }
+  }
+  return num / den;
+}
+/** Yukawa-to-Newton ratio of the q mode between the same plates: sheet kernel (2π/q)e^(−qs) + α(2π/κ)e^(−κs), κ = √(q² + λ⁻²). */
+export function yukawaThickPlateRatio(q, s, alpha, lam, t1 = EW_T_DETECTOR_M, t2 = EW_T_ATTRACTOR_M) {
+  const kappa = Math.sqrt(q * q + 1 / (lam * lam));
+  let num = 0, den = 0;
+  for (let i = 0; i < GL_X.length; i++) {
+    const z1 = 0.5 * t1 * (GL_X[i] + 1);
+    for (let j = 0; j < GL_X.length; j++) {
+      const gap = s + z1 + 0.5 * t2 * (GL_X[j] + 1), w = GL_W[i] * GL_W[j];
+      den += w * Math.exp(-q * gap) / q; num += w * (Math.exp(-q * gap) / q + alpha * Math.exp(-kappa * gap) / kappa);
+    }
+  }
+  return num / den;
+}
+/** Fraction of the Eöt-Wash 120-fold Newtonian torque the smeared potential removes at 52 µm (lowest wavenumber of the pattern). */
+export function eotwashDeficit(sigma, nFold = 120, s = EW_S_MIN_M) { return 1 - thickPlateRatio(nFold / EW_R_OUT_M, s, sigma); }
+export function eotwashYukawaEdgeDeficit(nFold = 120, s = EW_S_MIN_M) { return 1 - yukawaThickPlateRatio(nFold / EW_R_OUT_M, s, -1, EW_YUKAWA_EDGE_LAMBDA_M); }
 export function tnFTilde(z, sigma) { return z > 0 ? erf(z / (2 * sigma)) / z : 1 / (sigma * Math.sqrt(Math.PI)); }
 /** g(x,y) of Trillo–Navascués Eqs. 12–14 for two particles at 1-D positions; returns [re, im]. */
 export function tnG(x, y, m, sigma) {
@@ -981,13 +1044,13 @@ function initBmv(root) {
           disputed: "Disputed classical non-LOCC: the 2025 literature gives two answers, zero and the quantum value. The band is the interval; this page picks neither edge.",
           flip: "Planted defect: a classical LOCC channel carrying the quantum phases. Local operations and classical communication cannot create entanglement; the verifier rejects this channel.",
           entangled: "entangled", separable: "separable (product state)", unsettled: "not settled: between 0 and the quantum value", defect: "entangled by a classical LOCC channel: rejected",
-          dpNever: "σ_c = {sc} µm · below it this model never entangles this geometry", dpSlow: "σ_c = {sc} µm · above it: peak negativity {pk} after {tp}, gone after {tl}", dpCurve: "σ_c = {sc} µm · entangles; at t it reads {n}", ktm: "{gt} · 0 entanglement in its own linear model", hours: "h", days: "d", seconds: "s" },
+          dpNever: "σ_c = {sc} µm · below it this model never entangles this geometry", dpSlow: "σ_c = {sc} µm · above it: peak negativity {pk} after {tp}, gone after {tl}", dpCurve: "σ_c = {sc} µm · entangles; at t it reads {n}", ktm: "{gt} · 0 entanglement in its own linear model", isl: "−{d} % · the Yukawa at the published edge: −{y} %", hours: "h", days: "d", seconds: "s" },
     es: { quantum: "Mediador cuántico: las cuatro fases tal cual. Débil no es cero; la curva crece con el tiempo de espera y llega a 1 en Δφ = π.",
           locc: "Clásico LOCC: cada masa siente solo el campo medio de la otra. La fuerza está, las fases toman forma de producto, y el entrelazamiento es exactamente cero.",
           disputed: "Clásico no-LOCC en disputa: la literatura de 2025 da dos respuestas, cero y el valor cuántico. La banda es el intervalo; esta página no elige ningún borde.",
           flip: "Defecto plantado: un canal clásico LOCC que lleva las fases cuánticas. Operaciones locales y comunicación clásica no pueden crear entrelazamiento; el verificador rechaza este canal.",
           entangled: "entrelazado", separable: "separable (estado producto)", unsettled: "sin zanjar: entre 0 y el valor cuántico", defect: "entrelazado por un canal clásico LOCC: rechazado",
-          dpNever: "σ_c = {sc} µm · por debajo este modelo nunca entrelaza esta geometría", dpSlow: "σ_c = {sc} µm · por encima: negatividad máxima {pk} tras {tp}, desaparece tras {tl}", dpCurve: "σ_c = {sc} µm · entrelaza; en t marca {n}", ktm: "{gt} · 0 de entrelazamiento en su propio modelo lineal", hours: "h", days: "d", seconds: "s" },
+          dpNever: "σ_c = {sc} µm · por debajo este modelo nunca entrelaza esta geometría", dpSlow: "σ_c = {sc} µm · por encima: negatividad máxima {pk} tras {tp}, desaparece tras {tl}", dpCurve: "σ_c = {sc} µm · entrelaza; en t marca {n}", ktm: "{gt} · 0 de entrelazamiento en su propio modelo lineal", isl: "−{d} % · el Yukawa del borde publicado: −{y} %", hours: "h", days: "d", seconds: "s" },
   };
   function render() {
     const L = S0[lang()];
@@ -1058,6 +1121,7 @@ function initBmv(root) {
     if (reads.logsig) reads.logsig.textContent = fmt(Math.log10(sigma), 1);
     if (reads.ktm) reads.ktm.textContent = L.ktm.replace("{gt}", ktmGammaT(m, d, dx, t).toFixed(3));
     if (reads.soft) reads.soft.textContent = `${(100 * erf(nearest / (2 * sigma))).toFixed(0)} %`;
+    if (reads.isl) reads.isl.textContent = L.isl.replace("{d}", (100 * eotwashDeficit(sigma)).toFixed(1)).replace("{y}", (100 * eotwashYukawaEdgeDeficit()).toFixed(1));
     const sc = tnCriticalSigma(m, dx, nearest);
     const dpPts = [];
     let dpMax = 0;

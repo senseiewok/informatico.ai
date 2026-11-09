@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "tools"))
 
 from timegravity_kernel_dispute import check_dispute  # noqa: E402
+from timegravity_kernel_isl import check_isl  # noqa: E402
 from timegravity_kernel_entangle import (  # noqa: E402
     BMV_D_M, BMV_DX_M, BMV_M_KG, BMV_P_PA, BMV_T_S, BMV_TEMP_K, branch_phases, concurrence_closed, disputed_interval,
     entanglement_phase, four_branch_state, negativity, negativity_threshold_gamma_t, time_to_full_entanglement,
@@ -61,6 +62,18 @@ def dispute_block() -> dict:
     })
 
 
+def isl_block() -> dict:
+    """The smeared pull set beside the sub-millimetre inverse-square-law tests (tools/timegravity_kernel_isl.py): one model's
+    predicted signal sizes in the plate mode the 2020 Eöt-Wash experiment measures; not a bound on σ."""
+    r = check_isl()
+    return clean({
+        "note": "plate-mode ratio R(q, s; sigma) = 1/2 [erfc(q sigma - s/2sigma) + e^(2qs) erfc(q sigma + s/2sigma)] of Newton's e^(-qs), checked against "
+                "quadrature and its limits; Eot-Wash 2020 geometry at the pattern's lowest wavenumber (a one-mode estimate); the Yukawa at the published "
+                "edge is a predicted signal size for comparison, not a bound on sigma; HUST 2020 quoted as published; labelled PROPOSED and OPEN on the page",
+        "quadrature_probes": r["quadrature_probes"], "limits": r["limits"], "eotwash": r["eotwash"], "hust_lambda_m": r["hust_lambda_m"],
+    })
+
+
 def build_reference() -> dict:
     q = branch_phases(BMV_M_KG, BMV_D_M, BMV_DX_M, BMV_T_S, "quantum")
     locc = branch_phases(BMV_M_KG, BMV_D_M, BMV_DX_M, BMV_T_S, "locc")
@@ -90,6 +103,7 @@ def build_reference() -> dict:
                              "note": "no single prediction: the 2025 literature disagrees; the page carries the interval and the label OPEN"},
         "grid_log10m_kg__d_um__t_s__dphi_rad__C_quantum__C_locc": grid,
         "dispute_kernel": dispute_block(),
+        "smeared_isl_kernel": isl_block(),
         "boundary_en": BOUNDARY_EN,
         "license": "CC0-1.0 / CC-BY-4.0",
     }
