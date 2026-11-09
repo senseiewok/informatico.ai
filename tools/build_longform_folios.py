@@ -2948,6 +2948,287 @@ def render_bounties_hub(catalog: dict, lang: str = "en") -> str:
 """
 
 
+def _svg_compact(text: str, limit: int = 24) -> str:
+    text = text.strip()
+    if len(text) <= limit:
+        return text
+    cut = text[: limit - 1].rsplit(" ", 1)[0]
+    return (cut if len(cut) >= limit // 2 else text[: limit - 1]) + "…"
+
+
+def render_bounty_history_visual(bounty: dict) -> str:
+    """Render Plate H — Interactive visual timeline of pioneers and 5-era milestone cards."""
+    fid = bounty["folio_id"]
+    milestones = bounty.get("history_milestones", [])
+    if not milestones:
+        return ""
+
+    cx_coords = [105, 282, 460, 638, 815]
+    cy = 74
+    svg_nodes = []
+
+    # Connecting dashed line
+    svg_nodes.append(
+        f'<line x1="{cx_coords[0]}" y1="{cy}" x2="{cx_coords[-1]}" y2="{cy}" '
+        'stroke="var(--tp-prussian)" stroke-width="2.4" stroke-dasharray="6,4" class="tp-bw-anim-dash"/>'
+    )
+
+    for i, m in enumerate(milestones[:5]):
+        cx = cx_coords[i]
+        is_frontier = (i == 4)
+        badge_fill = "var(--tp-verdigris)" if is_frontier else "var(--tp-prussian)"
+
+        # Year badge above node
+        svg_nodes.append(f'<rect x="{cx - 42}" y="16" width="84" height="22" rx="4" fill="{badge_fill}"/>')
+        svg_nodes.append(f'<text x="{cx}" y="31" text-anchor="middle" font-family="var(--font-mono, monospace)" font-size="10" font-weight="700" fill="var(--tp-vellum)">{esc(m["year"])}</text>')
+
+        # Node circle and pulsing frontier halo
+        if is_frontier:
+            svg_nodes.append(f'<circle cx="{cx}" cy="{cy}" r="18" fill="var(--tp-verdigris)" fill-opacity="0.25" stroke="var(--tp-verdigris)" stroke-width="1.8" class="tp-bw-anim-pulse"/>')
+            svg_nodes.append(f'<circle cx="{cx}" cy="{cy}" r="8.5" fill="var(--tp-verdigris)" stroke="var(--tp-vellum)" stroke-width="2.5"/>')
+        else:
+            svg_nodes.append(f'<circle cx="{cx}" cy="{cy}" r="8" fill="var(--tp-prussian)" stroke="var(--tp-vellum)" stroke-width="2.5"/>')
+
+        # Stagger even/odd rows and compact labels so zero horizontal overlap is possible
+        y_who = 108 if (i % 2 == 0) else 148
+        y_title = y_who + 15
+        svg_nodes.append(
+            f'<line x1="{cx}" y1="{cy + 9}" x2="{cx}" y2="{y_who - 11}" stroke="var(--tp-rule-strong)" stroke-width="1.2" stroke-dasharray="2,2"/>'
+        )
+        who_en_s = _svg_compact(m["who_en"], 23)
+        who_es_s = _svg_compact(m["who_es"], 23)
+        title_en_s = _svg_compact(m["title_en"], 26)
+        title_es_s = _svg_compact(m["title_es"], 26)
+        svg_nodes.append(f'<text x="{cx}" y="{y_who}" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--tp-ink)" data-en="{esc(who_en_s)}" data-es="{esc(who_es_s)}">{esc(who_en_s)}</text>')
+        svg_nodes.append(f'<text x="{cx}" y="{y_title}" text-anchor="middle" font-size="9.2" fill="var(--tp-graphite)" data-en="{esc(title_en_s)}" data-es="{esc(title_es_s)}">{esc(title_en_s)}</text>')
+
+    svg_body = "\n      ".join(svg_nodes)
+    svg_html = (
+        f'<svg class="tp-history-visual-svg" viewBox="0 0 920 185" role="img" '
+        f'aria-label="Chronological pioneer timeline from foundational discovery to modern certified benchmark for Bounty {esc(fid)}">\n'
+        f'      {svg_body}\n'
+        f'    </svg>'
+    )
+
+    cards = []
+    for m in milestones[:5]:
+        cards.append(
+            f"""        <article class="tp-history-card">
+          <div class="tp-history-era-top">
+            <span class="tp-history-year-pill tp-history-card-yr">{esc(m["year"])}</span>
+            <span class="tp-history-who tp-history-card-who" data-en="{esc(m['who_en'])}" data-es="{esc(m['who_es'])}">{esc(m['who_en'])}</span>
+          </div>
+          <strong class="tp-history-title tp-history-card-title" data-en="{esc(m['title_en'])}" data-es="{esc(m['title_es'])}">{esc(m['title_en'])}</strong>
+          <p class="tp-history-summary tp-history-card-sum" data-en="{esc(m['summary_en'])}" data-es="{esc(m['summary_es'])}">{esc(m['summary_en'])}</p>
+          <span class="tp-history-roadblock tp-history-card-obstacle" data-en="Classical Roadblock: {esc(m['roadblock_en'])}" data-es="Obstáculo Clásico: {esc(m['roadblock_es'])}">Classical Roadblock: {esc(m['roadblock_en'])}</span>
+        </article>"""
+        )
+    cards_html = "\n".join(cards)
+
+    return f"""<figure class="tp-history-visual-figure" role="group" aria-label="Interactive visual timeline of pioneers for Bounty {esc(fid)}">
+    {svg_html}
+    <div class="tp-history-cards-grid">
+{cards_html}
+    </div>
+  </figure>"""
+
+
+def render_bounty_crucible_svg(bounty: dict) -> str:
+    """Render interactive 3-panel Bounty physical apparatus, state-space trajectory, and 4-stage waterfall SVG."""
+    fid = bounty["folio_id"]
+    slug = bounty["slug"]
+
+    # Panel 1 bespoke content per slug
+    if slug == "b01":
+        p1_content = """<!-- Panel 1: Golomb Ruler & 6x6 Pairwise Sum Matrix -->
+      <rect x="10" y="10" width="295" height="288" rx="8" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
+      <text x="157" y="32" text-anchor="middle" font-size="10" font-weight="700" fill="var(--tp-prussian)">B.01 · GOLOMB RULER &amp; PAIRWISE SUM MATRIX</text>
+      <line x1="28" y1="72" x2="286" y2="72" stroke="var(--tp-graphite)" stroke-width="2"/>
+      <circle cx="36" cy="72" r="3.5" fill="var(--tp-prussian)"/>
+      <circle cx="68" cy="72" r="3.5" fill="var(--tp-prussian)"/>
+      <circle cx="116" cy="72" r="3.5" fill="var(--tp-prussian)"/>
+      <circle cx="172" cy="72" r="3.5" fill="var(--tp-prussian)"/>
+      <circle cx="232" cy="72" r="3.5" fill="var(--tp-prussian)"/>
+      <circle cx="276" cy="72" r="3.5" fill="var(--tp-prussian)"/>
+      <text x="36" y="86" text-anchor="middle" font-size="8" font-family="var(--font-mono, monospace)" fill="var(--tp-graphite)">0</text>
+      <text x="68" y="86" text-anchor="middle" font-size="8" font-family="var(--font-mono, monospace)" fill="var(--tp-graphite)">1</text>
+      <text x="116" y="86" text-anchor="middle" font-size="8" font-family="var(--font-mono, monospace)" fill="var(--tp-graphite)">4</text>
+      <text x="172" y="86" text-anchor="middle" font-size="8" font-family="var(--font-mono, monospace)" fill="var(--tp-graphite)">9</text>
+      <text x="232" y="86" text-anchor="middle" font-size="8" font-family="var(--font-mono, monospace)" fill="var(--tp-graphite)">15</text>
+      <text x="276" y="86" text-anchor="middle" font-size="8" font-family="var(--font-mono, monospace)" fill="var(--tp-graphite)">22</text>
+      <path data-bw-b01-arc class="tp-bw-anim-dash" d="M 36 72 Q 52 46 68 72" fill="none" stroke="var(--tp-prussian)" stroke-width="1.7" stroke-dasharray="4,3"/>
+      <path data-bw-b01-arc class="tp-bw-anim-dash" d="M 68 72 Q 92 42 116 72" fill="none" stroke="var(--tp-verdigris)" stroke-width="1.7" stroke-dasharray="4,3"/>
+      <path data-bw-b01-arc class="tp-bw-anim-dash" d="M 116 72 Q 144 40 172 72" fill="none" stroke="var(--tp-prussian)" stroke-width="1.7" stroke-dasharray="4,3"/>
+      <path data-bw-b01-arc class="tp-bw-anim-dash" d="M 172 72 Q 202 44 232 72" fill="none" stroke="var(--tp-verdigris)" stroke-width="1.7" stroke-dasharray="4,3"/>
+      <path data-bw-b01-arc class="tp-bw-anim-dash" d="M 232 72 Q 254 48 276 72" fill="none" stroke="var(--tp-prussian)" stroke-width="1.7" stroke-dasharray="4,3"/>
+      <path data-bw-b01-arc class="tp-bw-anim-dash" d="M 36 72 Q 156 16 276 72" fill="none" stroke="var(--tp-verdigris)" stroke-width="1.7" stroke-dasharray="4,3"/>
+      <!-- 21 upper-triangular pairwise sum matrix cells -->
+      <g>
+        <rect data-bw-b01-cell x="48" y="104" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+        <rect data-bw-b01-cell x="86" y="104" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+        <rect data-bw-b01-cell x="124" y="104" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+        <rect data-bw-b01-cell x="162" y="104" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+        <rect data-bw-b01-cell x="200" y="104" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+        <rect data-bw-b01-cell x="238" y="104" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+
+        <rect data-bw-b01-cell x="86" y="128" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+        <rect data-bw-b01-cell x="124" y="128" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+        <rect data-bw-b01-cell x="162" y="128" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+        <rect data-bw-b01-cell x="200" y="128" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+        <rect data-bw-b01-cell x="238" y="128" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+
+        <rect data-bw-b01-cell x="124" y="152" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+        <rect data-bw-b01-cell x="162" y="152" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+        <rect data-bw-b01-cell x="200" y="152" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+        <rect data-bw-b01-cell x="238" y="152" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+
+        <rect data-bw-b01-cell x="162" y="176" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+        <rect data-bw-b01-cell x="200" y="176" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+        <rect data-bw-b01-cell x="238" y="176" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+
+        <rect data-bw-b01-cell x="200" y="200" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+        <rect data-bw-b01-cell x="238" y="200" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+
+        <rect data-bw-b01-cell x="238" y="224" width="34" height="20" rx="3" fill="var(--tp-verdigris)" fill-opacity="0.28" stroke="var(--tp-rule-strong)" stroke-width="0.9"/>
+      </g>
+      <text data-bw-b01-badge x="157" y="278" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--tp-verdigris)">B₂ VALID · 210 DISTINCT SUMS</text>"""
+
+    elif slug == "b02":
+        p1_content = """<!-- Panel 1: 49-Qubit d=7 Surface Code Lattice & FeMoCo CAS -->
+      <rect x="10" y="10" width="295" height="288" rx="8" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
+      <text x="157" y="32" text-anchor="middle" font-size="10" font-weight="700" fill="var(--tp-prussian)">B.02 · 49-QUBIT d=7 SURFACE CODE &amp; FeMoCo</text>
+      <!-- Pulsing stabilizer plaquettes -->
+      <rect x="54" y="56" width="40" height="40" rx="4" fill="var(--tp-verdigris)" fill-opacity="0.22" class="tp-bw-anim-pulse"/>
+      <rect x="134" y="96" width="40" height="40" rx="4" fill="var(--tp-verdigris)" fill-opacity="0.22" class="tp-bw-anim-pulse"/>
+      <rect x="214" y="56" width="40" height="40" rx="4" fill="var(--tp-verdigris)" fill-opacity="0.22" class="tp-bw-anim-pulse"/>
+      <!-- Grid lines -->
+      <path d="M 34 56 L 274 56 M 34 96 L 274 96 M 34 136 L 274 136 M 34 176 L 274 176 M 54 36 L 54 196 M 94 36 L 94 196 M 134 36 L 134 196 M 174 36 L 174 196 M 214 36 L 214 196 M 254 36 L 254 196" stroke="var(--tp-rule-strong)" stroke-width="0.8"/>
+      <!-- Syndrome chain path -->
+      <path data-bw-b02-chain d="M 64 96 L 104 96 M 144 136 L 184 136" fill="none" stroke="var(--tp-verdigris)" stroke-width="2.6" stroke-linecap="round"/>
+      <!-- FeMoCo cluster and active space bar -->
+      <rect x="36" y="218" width="119" height="14" rx="3" fill="var(--tp-prussian)" fill-opacity="0.2" stroke="var(--tp-prussian)" stroke-width="1.2"/>
+      <text x="95" y="229" text-anchor="middle" font-size="8" font-weight="700" fill="var(--tp-prussian)">FeMoCo (54e, 54o) CAS</text>
+      <text x="210" y="229" text-anchor="middle" font-size="8" fill="var(--tp-graphite)">180 FACTORY TILES</text>
+      <text data-bw-b02-badge x="157" y="278" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--tp-verdigris)">PYMATCHING PAIRED · P_L = 3.00e-16</text>"""
+
+    elif slug == "b03":
+        p1_content = """<!-- Panel 1: Trabecular SIMP Slab & Mineralization -->
+      <rect x="10" y="10" width="295" height="288" rx="8" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
+      <text x="157" y="32" text-anchor="middle" font-size="10" font-weight="700" fill="var(--tp-prussian)">B.03 · TRABECULAR SIMP SLAB &amp; MINERALIZATION</text>
+      <path data-bw-b03-arch d="M 30 165 Q 157 98 284 165" fill="none" stroke="var(--tp-verdigris)" stroke-width="5.5"/>
+      <path d="M 30 165 Q 157 118 284 165" fill="none" stroke="var(--tp-prussian)" stroke-width="1.6" stroke-dasharray="5,4" class="tp-bw-anim-dash"/>
+      <path d="M 46 165 Q 157 134 268 165" fill="none" stroke="var(--tp-graphite)" stroke-width="1.2" stroke-dasharray="4,3"/>
+      <!-- Floating CO2 -> CaCO3 mineralization particles -->
+      <circle cx="75" cy="115" r="4" fill="var(--tp-verdigris)" opacity="0.85" class="tp-bw-anim-float"/>
+      <circle cx="125" cy="95" r="3" fill="var(--tp-verdigris)" opacity="0.65" class="tp-bw-anim-float"/>
+      <circle cx="185" cy="98" r="4.5" fill="var(--tp-verdigris)" opacity="0.85" class="tp-bw-anim-float"/>
+      <circle cx="235" cy="118" r="3.5" fill="var(--tp-verdigris)" opacity="0.7" class="tp-bw-anim-float"/>
+      <!-- Carbon waterfall bars -->
+      <text x="32" y="220" font-size="8" font-weight="700" fill="var(--tp-graphite)">SIMP RAW:</text>
+      <rect data-bw-b03-simp-bar x="88" y="211" width="85" height="11" rx="2" fill="var(--tp-prussian)" opacity="0.85"/>
+      <text x="32" y="238" font-size="8" font-weight="700" fill="var(--tp-graphite)">NET CO₂e:</text>
+      <rect data-bw-b03-net-bar x="88" y="229" width="45" height="11" rx="2" fill="var(--tp-verdigris)"/>
+      <text data-bw-b03-badge x="157" y="278" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--tp-verdigris)">SCORS A+ PASS · 39.4 kg CO₂e/m²</text>"""
+
+    elif slug == "b04":
+        p1_content = """<!-- Panel 1: 16 m Funicular Vault & Sky Cooling -->
+      <rect x="10" y="10" width="295" height="288" rx="8" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
+      <text x="157" y="32" text-anchor="middle" font-size="10" font-weight="700" fill="var(--tp-prussian)">B.04 · 16 m FUNICULAR VAULT &amp; SKY COOLING</text>
+      <path data-bw-b04-arch d="M 38 166 Q 158 133 278 166" fill="none" stroke="var(--tp-verdigris)" stroke-width="4.5"/>
+      <!-- Reciprocal Maxwell force polyhedron inset -->
+      <polygon points="128,75 158,52 188,75 170,105 146,105" fill="none" stroke="var(--tp-prussian)" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <!-- Solar reflection and sky-cooling radiation -->
+      <path d="M 125 45 L 125 70" stroke="var(--tp-minium)" stroke-width="1.6"/>
+      <path d="M 125 70 L 140 50" stroke="var(--tp-minium)" stroke-width="1.6" stroke-dasharray="3,3"/>
+      <text x="105" y="42" font-size="7.5" fill="var(--tp-minium)">97% REFLECTED</text>
+      <path class="tp-bw-anim-dash" d="M 175 110 L 175 52" stroke="var(--tp-verdigris)" stroke-width="2" stroke-dasharray="4,3"/>
+      <text x="195" y="48" font-size="7.5" font-weight="700" fill="var(--tp-verdigris)">8–13 μm WINDOW</text>
+      <rect x="30" y="166" width="16" height="22" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)"/>
+      <rect x="270" y="166" width="16" height="22" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)"/>
+      <text x="157" y="218" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--tp-prussian)">0 kg REBAR · PURE COMPRESSION THRUST</text>
+      <text data-bw-b04-badge x="157" y="278" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--tp-verdigris)">0 kg REBAR · H=100 kN · ΔT=-5.2°C</text>"""
+
+    elif slug == "b05":
+        p1_content = """<!-- Panel 1: Burgers Shock & Operator Library Theta(u) -->
+      <rect x="10" y="10" width="295" height="288" rx="8" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
+      <text x="157" y="32" text-anchor="middle" font-size="10" font-weight="700" fill="var(--tp-prussian)">B.05 · BURGERS SHOCK &amp; OPERATOR LIBRARY Θ(u)</text>
+      <path data-bw-b05-wave d="M 32 76 C 110 76 135 78 158 111 C 181 144 206 146 282 146" fill="none" stroke="var(--tp-verdigris)" stroke-width="2.6"/>
+      <line data-bw-b05-lambda x1="32" y1="242" x2="282" y2="242" stroke="var(--tp-minium)" stroke-width="1.8" stroke-dasharray="5,4"/>
+      <!-- 6 operator bars: [1, u, u_x, u*u_x, u_xx, u^3] -->
+      <rect x="38" y="226" width="24" height="10" rx="2" fill="var(--tp-rule-strong)"/>
+      <rect x="78" y="224" width="24" height="12" rx="2" fill="var(--tp-rule-strong)"/>
+      <rect x="118" y="222" width="24" height="14" rx="2" fill="var(--tp-rule-strong)"/>
+      <rect x="158" y="182" width="24" height="54" rx="2" fill="var(--tp-verdigris)"/>
+      <rect x="198" y="196" width="24" height="40" rx="2" fill="var(--tp-verdigris)"/>
+      <rect x="238" y="228" width="24" height="8" rx="2" fill="var(--tp-rule-strong)"/>
+      <text x="50" y="252" text-anchor="middle" font-size="7.5" fill="var(--tp-graphite)">1</text>
+      <text x="90" y="252" text-anchor="middle" font-size="7.5" fill="var(--tp-graphite)">u</text>
+      <text x="130" y="252" text-anchor="middle" font-size="7.5" fill="var(--tp-graphite)">u_x</text>
+      <text x="170" y="252" text-anchor="middle" font-size="7.5" font-weight="700" fill="var(--tp-verdigris)">uu_x</text>
+      <text x="210" y="252" text-anchor="middle" font-size="7.5" font-weight="700" fill="var(--tp-verdigris)">u_xx</text>
+      <text x="250" y="252" text-anchor="middle" font-size="7.5" fill="var(--tp-graphite)">u³</text>
+      <text data-bw-b05-badge x="157" y="278" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--tp-verdigris)">STLSQ EXACT · {u·u_x, u_xx} · MDL = -1360.9</text>"""
+
+    else:
+        # b06
+        p1_content = """<!-- Panel 1: Chiral Triangle & 1D MPS Tensor Chain -->
+      <rect x="10" y="10" width="295" height="288" rx="8" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
+      <text x="157" y="32" text-anchor="middle" font-size="10" font-weight="700" fill="var(--tp-prussian)">B.06 · CHIRAL TRIANGLE &amp; 1D MPS TENSOR CHAIN</text>
+      <polygon data-bw-b06-triangle points="157,58 102,138 212,138" fill="none" stroke="var(--tp-verdigris)" stroke-width="2.5"/>
+      <circle cx="157" cy="58" r="4" fill="var(--tp-prussian)"/>
+      <circle cx="102" cy="138" r="4" fill="var(--tp-prussian)"/>
+      <circle cx="212" cy="138" r="4" fill="var(--tp-prussian)"/>
+      <path class="tp-bw-anim-dash" d="M 157 58 L 102 138 M 102 138 L 212 138 M 212 138 L 157 58" fill="none" stroke="var(--tp-prussian)" stroke-width="1.4" stroke-dasharray="5,3"/>
+      <text x="157" y="105" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--tp-prussian)">Tr[Y³] = 0</text>
+      <g data-bw-b06-bonds stroke="var(--tp-prussian)" stroke-width="3">
+        <line x1="50" y1="195" x2="264" y2="195"/>
+      </g>
+      <circle cx="62" cy="195" r="9" fill="var(--tp-vellum)" stroke="var(--tp-prussian)" stroke-width="2"/>
+      <text x="62" y="198" text-anchor="middle" font-size="7" font-weight="700" fill="var(--tp-ink)">χ</text>
+      <circle cx="108" cy="195" r="9" fill="var(--tp-vellum)" stroke="var(--tp-prussian)" stroke-width="2"/>
+      <text x="108" y="198" text-anchor="middle" font-size="7" font-weight="700" fill="var(--tp-ink)">χ</text>
+      <circle cx="157" cy="195" r="9" fill="var(--tp-vellum)" stroke="var(--tp-prussian)" stroke-width="2"/>
+      <text x="157" y="198" text-anchor="middle" font-size="7" font-weight="700" fill="var(--tp-ink)">χ</text>
+      <circle cx="206" cy="195" r="9" fill="var(--tp-vellum)" stroke="var(--tp-prussian)" stroke-width="2"/>
+      <text x="206" y="198" text-anchor="middle" font-size="7" font-weight="700" fill="var(--tp-ink)">χ</text>
+      <circle cx="252" cy="195" r="9" fill="var(--tp-vellum)" stroke="var(--tp-prussian)" stroke-width="2"/>
+      <text x="252" y="198" text-anchor="middle" font-size="7" font-weight="700" fill="var(--tp-ink)">χ</text>
+      <text x="157" y="230" text-anchor="middle" font-size="8" fill="var(--tp-graphite)">ln(χ) = 4.16 ≥ S_vN = 0.883 nats</text>
+      <text data-bw-b06-badge x="157" y="278" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--tp-verdigris)">Tr[Y³] = 0 · ln(64) = 4.16 ≥ 0.883</text>"""
+
+    return f"""<svg class="tp-bounty-crucible-svg" viewBox="0 0 920 310" role="img" aria-label="Interactive 3-Panel Bounty {esc(fid)} Physical Apparatus, State-Space Trajectory, and 4-Stage Invariant Spectrum">
+      {p1_content}
+
+      <!-- Panel 2: State-Space Trajectory & Phase Locus -->
+      <rect x="315" y="10" width="295" height="288" rx="8" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
+      <text x="462" y="32" text-anchor="middle" font-size="10" font-weight="700" fill="var(--tp-prussian)">PANEL 2 · STATE-SPACE TRAJECTORY</text>
+      <line x1="344" y1="236" x2="588" y2="236" stroke="currentColor" stroke-opacity="0.35"/>
+      <line x1="344" y1="44" x2="344" y2="236" stroke="currentColor" stroke-opacity="0.35"/>
+      <line data-bw-thresh x1="344" y1="145" x2="588" y2="145" stroke="var(--tp-minium)" stroke-width="1.6" stroke-dasharray="5,4"/>
+      <path data-bw-harmonic d="M 344 236 Q 404 218 464 236 T 584 236" fill="none" stroke="var(--tp-verdigris)" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <polyline data-bw-curve points="344,218 402,172 468,110 524,97 584,74" fill="none" stroke="var(--tp-prussian)" stroke-width="2.8"/>
+      <circle data-bw-dot cx="468" cy="110" r="7.5" fill="var(--tp-verdigris)" stroke="var(--tp-vellum)" stroke-width="2"/>
+      <text data-bw-status-pill x="462" y="278" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--tp-verdigris)">PASS · T0/T1 CERTIFIED</text>
+
+      <!-- Panel 3: 4-Stage Invariant Margin Waterfall -->
+      <rect x="620" y="10" width="290" height="288" rx="8" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
+      <text x="765" y="32" text-anchor="middle" font-size="10" font-weight="700" fill="var(--tp-verdigris)">PANEL 3 · 4-STAGE INVARIANT WATERFALL</text>
+      <line x1="640" y1="236" x2="890" y2="236" stroke="currentColor" stroke-opacity="0.35"/>
+      <rect data-bw-bar="0" x="650" y="106" width="38" height="130" rx="4" fill="var(--tp-verdigris)" opacity="0.92"/>
+      <text data-bw-bar-val="0" x="669" y="98" text-anchor="middle" font-size="9" font-weight="700" fill="var(--tp-prussian)">PASS</text>
+      <text x="669" y="254" text-anchor="middle" font-size="9" font-weight="700" fill="currentColor">Stage 1</text>
+      <rect data-bw-bar="1" x="712" y="106" width="38" height="130" rx="4" fill="var(--tp-verdigris)" opacity="0.92"/>
+      <text data-bw-bar-val="1" x="731" y="98" text-anchor="middle" font-size="9" font-weight="700" fill="var(--tp-prussian)">PASS</text>
+      <text x="731" y="254" text-anchor="middle" font-size="9" font-weight="700" fill="currentColor">Stage 2</text>
+      <rect data-bw-bar="2" x="774" y="106" width="38" height="130" rx="4" fill="var(--tp-verdigris)" opacity="0.92"/>
+      <text data-bw-bar-val="2" x="793" y="98" text-anchor="middle" font-size="9" font-weight="700" fill="var(--tp-prussian)">PASS</text>
+      <text x="793" y="254" text-anchor="middle" font-size="9" font-weight="700" fill="currentColor">Stage 3</text>
+      <rect data-bw-bar="3" x="836" y="106" width="38" height="130" rx="4" fill="var(--tp-verdigris)" opacity="0.92"/>
+      <text data-bw-bar-val="3" x="855" y="98" text-anchor="middle" font-size="9" font-weight="700" fill="var(--tp-prussian)">PASS</text>
+      <text x="855" y="254" text-anchor="middle" font-size="9" font-weight="700" fill="currentColor">Stage 4</text>
+    </svg>"""
+
+
 def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> str:
     """Render a standalone 5-Act Bounty Monograph at /bounties/b01..b06/index.html and /es-mx/bounties/b01..b06/index.html."""
     rel_root, rel_res = "../../..", "../.."
@@ -2998,35 +3279,46 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
     first_era = f"{bounty['chronology'][0][0]} ({bounty['chronology'][0][1]})"
     last_era = f"{bounty['chronology'][-1][0]} ({bounty['chronology'][-1][1]})"
 
-    # Walkthrough items
-    walk_html = "\n            ".join(f"<li>{esc(w)}</li>" for w in bounty["walkthrough"])
+    # Walkthrough items with bilingual parity
+    walk_es = bounty.get("walkthrough_es", bounty["walkthrough"])
+    walk_items = []
+    for i, w in enumerate(bounty["walkthrough"]):
+        w_es = walk_es[i] if i < len(walk_es) else w
+        walk_items.append(f'<li data-en="{esc(w)}" data-es="{esc(w_es)}">{esc(w)}</li>')
+    walk_html = "\n            ".join(walk_items)
 
-    # 4 Proof Stages (expanded for full 5-Pace Monograph depth >= 4,200 words & >= 52 <p>)
+    # 4 Proof Stages with bilingual parity
     stage_blocks = []
+    steps_es = bounty.get("steps_es", bounty["steps"])
+    rules_es = bounty.get("rules_es", bounty["rules"])
     for idx_s, raw_step in enumerate(bounty["steps"], 1):
         rule_idx = (idx_s - 1) % len(bounty["rules"])
         matched_rule = bounty["rules"][rule_idx]
+        raw_step_es = steps_es[idx_s - 1] if idx_s - 1 < len(steps_es) else raw_step
+        matched_rule_es = rules_es[rule_idx] if rule_idx < len(rules_es) else matched_rule
         stage_blocks.append(
             f"""          <div class="tp-proof-stage-block">
             <h4><span data-en="Stage {idx_s} Derivation &amp; State Transition" data-es="Derivación y Transición de Estado · Etapa {idx_s}">Stage {idx_s} Derivation &amp; State Transition</span></h4>
-            <p><strong>Formal Stage Mechanism:</strong> {linkify_citations(esc(raw_step))}</p>
+            <p><strong data-en="Formal Stage Mechanism:" data-es="Mecanismo Formal de Etapa:">Formal Stage Mechanism:</strong> <span data-en="{esc(raw_step)}" data-es="{esc(raw_step_es)}">{linkify_citations(esc(raw_step))}</span></p>
             <p>
-              <strong>Operator Coupling &amp; Invariant Closure:</strong> At Stage {idx_s} of the Bounty {esc(fid)} ({esc(bid)}) derivation chain, the intermediate state maps directly onto the governing law <code>{esc(bounty['governing_law'])}</code> under benchmark harness <code>{esc(verifier_rel)}</code>. To guarantee that deductive or physical flux is conserved without unverified hand-waving as the system advances from Stage {idx_s} toward terminal convergence, the transition operator enforces the companion verification constraint: <em>{linkify_citations(esc(matched_rule))}</em> Every numerical trajectory and readout in the Act III interactive workbench below evaluates this exact stage transfer function in real time.
+              <strong data-en="Operator Coupling &amp; Invariant Closure:" data-es="Acoplamiento de Operadores y Clausura de Invariantes:">Operator Coupling &amp; Invariant Closure:</strong> <span data-en="At Stage {idx_s} of the Bounty {esc(fid)} ({esc(bid)}) derivation chain, the intermediate state maps directly onto the governing law {esc(bounty['governing_law'])} under benchmark harness {esc(verifier_rel)}. To guarantee that deductive or physical flux is conserved without unverified hand-waving as the system advances from Stage {idx_s} toward terminal convergence, the transition operator enforces the companion verification constraint: {esc(matched_rule)} Every numerical trajectory and readout in the Act III interactive workbench below evaluates this exact stage transfer function in real time." data-es="En la Etapa {idx_s} de la cadena de derivación del Reto {esc(fid)} ({esc(bid)}), el estado intermedio se proyecta directamente sobre la ley gobernante {esc(bounty['governing_law'])} bajo el arnés de verificación {esc(verifier_rel)}. Para garantizar que el flujo deductivo o físico se conserve sin suposiciones no verificadas a medida que el sistema avanza desde la Etapa {idx_s} hacia la convergencia terminal, el operador de transición impone la restricción de verificación complementaria: {esc(matched_rule_es)} Cada trayectoria numérica y lectura en el laboratorio interactivo del Acto III evalúa exactamente esta función de transferencia de etapa en tiempo real.">At Stage {idx_s} of the Bounty {esc(fid)} ({esc(bid)}) derivation chain, the intermediate state maps directly onto the governing law <code>{esc(bounty['governing_law'])}</code> under benchmark harness <code>{esc(verifier_rel)}</code>. To guarantee that deductive or physical flux is conserved without unverified hand-waving as the system advances from Stage {idx_s} toward terminal convergence, the transition operator enforces the companion verification constraint: <em>{linkify_citations(esc(matched_rule))}</em> Every numerical trajectory and readout in the Act III interactive workbench below evaluates this exact stage transfer function in real time.</span>
             </p>
             <p>
-              <strong>Open-Science Reproducibility &amp; Falsification Check:</strong> When an independent researcher, student, or prize auditor inspects Stage {idx_s} inside <code>{esc(verifier_rel)}</code> or executes <code>python {esc(bounty['skill_dir'])}/{esc(py_filename)}</code> locally, this stage acts as a hard mathematical firewall against silent approximation drift. Rather than relying on proprietary solvers or opaque cloud checkpoints, Stage {idx_s} exposes its exact intermediate state variables, dimensional scaling factors, and residual tolerances so any contributor worldwide can test, Perturb, or extend the proof certificate using 100% Free and Open-Source Software.
+              <strong data-en="Open-Science Reproducibility &amp; Falsification Check:" data-es="Reproducibilidad en Ciencia Abierta y Prueba de Falsación:">Open-Science Reproducibility &amp; Falsification Check:</strong> <span data-en="When an independent researcher, student, or prize auditor inspects Stage {idx_s} inside {esc(verifier_rel)} or executes python {esc(bounty['skill_dir'])}/{esc(py_filename)} locally, this stage acts as a hard mathematical firewall against silent approximation drift. Rather than relying on proprietary solvers or opaque cloud checkpoints, Stage {idx_s} exposes its exact intermediate state variables, dimensional scaling factors, and residual tolerances so any contributor worldwide can test, perturb, or extend the proof certificate using 100% Free and Open-Source Software." data-es="Cuando un investigador independiente, estudiante o auditor del premio inspecciona la Etapa {idx_s} dentro de {esc(verifier_rel)} o ejecuta python {esc(bounty['skill_dir'])}/{esc(py_filename)} localmente, esta etapa actúa como un cortafuegos matemático estricto contra desviaciones silenciosas de aproximación. En lugar de depender de solvers propietarios o checkpoints cerrados en la nube, la Etapa {idx_s} expone sus variables de estado intermedias, factores de escala dimensional y tolerancias residuales para que cualquier persona en el mundo pueda verificar, perturbar o extender el certificado de prueba con software 100% libre y de código abierto.">When an independent researcher, student, or prize auditor inspects Stage {idx_s} inside <code>{esc(verifier_rel)}</code> or executes <code>python {esc(bounty['skill_dir'])}/{esc(py_filename)}</code> locally, this stage acts as a hard mathematical firewall against silent approximation drift. Rather than relying on proprietary solvers or opaque cloud checkpoints, Stage {idx_s} exposes its exact intermediate state variables, dimensional scaling factors, and residual tolerances so any contributor worldwide can test, perturb, or extend the proof certificate using 100% Free and Open-Source Software.</span>
             </p>
           </div>"""
         )
     stages_html = "\n".join(stage_blocks)
 
-    # Invariant rules
+    # Invariant rules with bilingual parity
     rules_items = []
+    rules_es = bounty.get("rules_es", bounty["rules"])
     for r_idx, r_txt in enumerate(bounty["rules"], 1):
+        r_es = rules_es[r_idx - 1] if r_idx - 1 < len(rules_es) else r_txt
         rules_items.append(
             f"""          <li>
-            <strong>Invariant {esc(fid)}-R{r_idx}:</strong> {linkify_citations(esc(r_txt))}
-            <span>Verified deterministically offline by <code>{esc(verifier_rel)}</code> and <code>{esc(bounty['skill_dir'])}/{esc(py_filename)}</code> against primary anchor <code>DOI {esc(bounty['primary_doi'])}</code>.</span>
+            <strong data-en="Invariant {esc(fid)}-R{r_idx}:" data-es="Invariante {esc(fid)}-R{r_idx}:">Invariant {esc(fid)}-R{r_idx}:</strong> <span data-en="{esc(r_txt)}" data-es="{esc(r_es)}">{linkify_citations(esc(r_txt))}</span>
+            <span data-en="Verified deterministically offline by {esc(verifier_rel)} and {esc(bounty['skill_dir'])}/{esc(py_filename)} against primary anchor DOI {esc(bounty['primary_doi'])}." data-es="Verificado deterministamente fuera de línea por {esc(verifier_rel)} y {esc(bounty['skill_dir'])}/{esc(py_filename)} contra el ancla primaria DOI {esc(bounty['primary_doi'])}.">Verified deterministically offline by <code>{esc(verifier_rel)}</code> and <code>{esc(bounty['skill_dir'])}/{esc(py_filename)}</code> against primary anchor <code>DOI {esc(bounty['primary_doi'])}</code>.</span>
           </li>"""
         )
     rules_html = "\n".join(rules_items)
@@ -3063,9 +3355,20 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
     readouts_table_html = "\n                ".join(readout_rows)
     readouts_summary_prose = "; ".join(readout_prose_bits)
 
-    # Truth Boundary lists
-    t0_html = "\n                ".join(f"<li>{linkify_citations(esc(c))}</li>" for c in bounty["t0_t1_certified"])
-    t2_html = "\n                ".join(f"<li>{linkify_citations(esc(h))}</li>" for h in bounty["t2_t3_open_horizon"])
+    # Truth Boundary lists with bilingual parity
+    t0_es = bounty.get("t0_t1_certified_es", bounty["t0_t1_certified"])
+    t0_rows = []
+    for i, c in enumerate(bounty["t0_t1_certified"]):
+        c_es = t0_es[i] if i < len(t0_es) else c
+        t0_rows.append(f'<li data-en="{esc(c)}" data-es="{esc(c_es)}">{linkify_citations(esc(c))}</li>')
+    t0_html = "\n                ".join(t0_rows)
+
+    t2_es = bounty.get("t2_t3_open_horizon_es", bounty["t2_t3_open_horizon"])
+    t2_rows = []
+    for i, h in enumerate(bounty["t2_t3_open_horizon"]):
+        h_es = t2_es[i] if i < len(t2_es) else h
+        t2_rows.append(f'<li data-en="{esc(h)}" data-es="{esc(h_es)}">{linkify_citations(esc(h))}</li>')
+    t2_html = "\n                ".join(t2_rows)
 
     # Companion Folios & External Registry links
     comp_pills = []
@@ -3107,7 +3410,9 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
     plate_alt = decf_title(plate_info["alt"])
     plate_cap = decf(plate_info["caption"]) or f"Plate {fid}"
     sn1 = bounty["sidenote_1"]
+    sn1_es = bounty.get("sidenote_1_es", sn1)
     sn2 = bounty["sidenote_2"]
+    sn2_es = bounty.get("sidenote_2_es", sn2)
     doi_raw = esc(bounty["primary_doi"])
     rt_en = bounty.get("reading_time", "22 MIN READ").lower()
     rt_es = rt_en.replace("min read", "min de lectura")
@@ -3125,6 +3430,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
     act4_human_ai_c = bounty.get("act4_human_ai", "")
     act4_deepening_c = bounty.get("act4_deepening", "")
 
+    # Story-First: The Story in Plain Words
     plain_bridge_html = (
         f"""<div class="tp-plain-bridge-box" role="note" aria-label="In plain words">
           <span class="tp-plain-bridge-kicker" data-en="In Plain Words &middot; Extra-Easy Explanation" data-es="En Palabras Sencillas &middot; Explicaci&oacute;n Accesible">In Plain Words &middot; Extra-Easy Explanation</span>
@@ -3133,20 +3439,84 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
         if act1_plain_bridge_c
         else ""
     )
-    act1_stakes_html = f"<p>{linkify_citations(esc(act1_stakes_c))}</p>" if act1_stakes_c else ""
+
+    # Story-First: The Easy History - How Human Pioneers Reached This Frontier
+    easy_h_paras = bounty.get("easy_history_en", "").split("\n\n")
+    easy_h_es_paras = bounty.get("easy_history_es", "").split("\n\n")
+    easy_p_tags = []
+    for i, p_en in enumerate(easy_h_paras):
+        if not p_en.strip():
+            continue
+        p_es = easy_h_es_paras[i] if i < len(easy_h_es_paras) and easy_h_es_paras[i].strip() else p_en
+        easy_p_tags.append(f'<p data-en="{esc(p_en.strip())}" data-es="{esc(p_es.strip())}">{esc(p_en.strip())}</p>')
+    easy_history_content = "\n          ".join(easy_p_tags)
+    easy_history_html = (
+        f"""<div class="tp-easy-history-box" role="region" aria-label="How human pioneers reached this frontier">
+          <span class="tp-plain-bridge-kicker" data-en="How Human Pioneers Reached This Frontier" data-es="Cómo los Pioneros Alcanzaron Esta Frontera">How Human Pioneers Reached This Frontier</span>
+          <h3 data-en="{esc(bounty.get('easy_history_title_en', ''))}" data-es="{esc(bounty.get('easy_history_title_es', ''))}">{esc(bounty.get('easy_history_title_en', ''))}</h3>
+          {easy_history_content}
+        </div>"""
+        if bounty.get("easy_history_en")
+        else ""
+    )
+
+    # Plate H: Interactive Visual Historical Timeline & 5-Era Milestone Cards
+    history_visual_html = render_bounty_history_visual(bounty)
+
+    # Act I formal text
+    act1_stakes_html = f'<p data-en="{esc(act1_stakes_c)}" data-es="{esc(bounty.get("act1_stakes_es", act1_stakes_c))}">{linkify_citations(esc(act1_stakes_c))}</p>' if act1_stakes_c else ""
+
+    # Act II Intuition Ladder & Everyday Analogy
+    act2_analogy_es = bounty.get("act2_analogy_es", act2_analogy_c)
+    act2_plain_primer_es = bounty.get("act2_plain_primer_es", act2_plain_primer_c)
     analogy_box_html = (
         f"""<div class="tp-analogy-box" role="region" aria-label="Everyday intuition and slider primer">
-          <span class="tp-plain-bridge-kicker" data-en="Everyday Analogy &amp; Interactive Controls Primer" data-es="Analog&iacute;a Cotidiana y Gu&iacute;a de Controles">Everyday Analogy &amp; Interactive Controls Primer</span>
-          <p><strong>Everyday Analogy:</strong> {linkify_citations(esc(act2_analogy_c))}</p>
-          {f"<p><strong>How the Two Sliders &amp; Knockout Work in Plain Words:</strong> {linkify_citations(esc(act2_plain_primer_c))}</p>" if act2_plain_primer_c else ""}
+          <span class="tp-plain-bridge-kicker" data-en="Everyday Analogy &amp; Interactive Controls Primer" data-es="Analogía Cotidiana y Guía de Controles">Everyday Analogy &amp; Interactive Controls Primer</span>
+          <p data-en="Everyday Analogy: {esc(act2_analogy_c)}" data-es="Analogía Cotidiana: {esc(act2_analogy_es)}"><strong>Everyday Analogy:</strong> {linkify_citations(esc(act2_analogy_c))}</p>
+          {f'<p data-en="How the Two Sliders &amp; Knockout Work in Plain Words: {esc(act2_plain_primer_c)}" data-es="Cómo Funcionan los Deslizadores y la Supresión en Palabras Sencillas: {esc(act2_plain_primer_es)}"><strong>How the Two Sliders &amp; Knockout Work in Plain Words:</strong> {linkify_citations(esc(act2_plain_primer_c))}</p>' if act2_plain_primer_c else ""}
         </div>"""
         if act2_analogy_c
         else ""
     )
+
+    # 20-Second Mental Toy Model
+    toy_m_paras = bounty.get("toy_model_en", "").split("\n\n")
+    toy_m_es_paras = bounty.get("toy_model_es", "").split("\n\n")
+    toy_p_tags = []
+    for i, p_en in enumerate(toy_m_paras):
+        if not p_en.strip():
+            continue
+        p_es = toy_m_es_paras[i] if i < len(toy_m_es_paras) and toy_m_es_paras[i].strip() else p_en
+        toy_p_tags.append(f'<p data-en="{esc(p_en.strip())}" data-es="{esc(p_es.strip())}">{esc(p_en.strip())}</p>')
+    toy_model_content = "\n          ".join(toy_p_tags)
+    toy_model_html = (
+        f"""<div class="tp-toy-model-box" role="region" aria-label="20-Second Toy Model">
+          <span class="tp-plain-bridge-kicker" data-en="20-Second Mental Toy Model" data-es="Modelo Mental Rápido de 20 Segundos">20-Second Mental Toy Model</span>
+          <h4 data-en="{esc(bounty.get('toy_model_title_en', ''))}" data-es="{esc(bounty.get('toy_model_title_es', ''))}">{esc(bounty.get('toy_model_title_en', ''))}</h4>
+          {toy_model_content}
+        </div>"""
+        if bounty.get("toy_model_en")
+        else ""
+    )
+
     distill_svg_html = render_inline_distillation_svg(fid, slug, bounty, bounty)
-    act2_deepening_html = f"<p>{linkify_citations(esc(act2_deepening_c))}</p>" if act2_deepening_c else ""
-    act4_human_ai_html = f"<p>{linkify_citations(esc(act4_human_ai_c))}</p>" if act4_human_ai_c else ""
-    act4_deepening_html = f"<p>{linkify_citations(esc(act4_deepening_c))}</p>" if act4_deepening_c else ""
+
+    # Scrubbable tokens in Act II intuition
+    scrub0_html = f'<span class="tp-scrub" data-target-slider="0" id="tp-inline-s0-{esc(slug)}" tabindex="0" role="slider" aria-label="{esc(sl0["label"])}" aria-valuemin="{sl0["min"]}" aria-valuemax="{sl0["max"]}" aria-valuenow="{sl0["value"]}">{esc(sl0_disp)}</span>'
+    scrub1_html = f'<span class="tp-scrub" data-target-slider="1" id="tp-inline-s1-{esc(slug)}" tabindex="0" role="slider" aria-label="{esc(sl1["label"])}" aria-valuemin="{sl1["min"]}" aria-valuemax="{sl1["max"]}" aria-valuenow="{sl1["value"]}">{esc(sl1_disp)}</span>'
+    act2_intuition_es = bounty.get("act2_intuition_es", bounty.get("act2_intuition", ""))
+    act2_intuition_html = (
+        f"""<p>
+          <span data-en="{esc(bounty['act2_intuition'])}" data-es="{esc(act2_intuition_es)}">{linkify_citations(esc(bounty['act2_intuition']))}</span>
+          <span data-en="Live parameter coupling: " data-es="Acoplamiento de parámetros en vivo: ">Live parameter coupling: </span>{scrub0_html}
+          <span data-en=" and " data-es=" y "> and </span>{scrub1_html}
+          <span data-en=" under governing law " data-es=" bajo la ley gobernante "> under governing law </span><code>{esc(bounty['governing_law'])}</code>.
+        </p>"""
+    )
+
+    act2_deepening_html = f'<p data-en="{esc(act2_deepening_c)}" data-es="{esc(bounty.get("act2_deepening_es", act2_deepening_c))}">{linkify_citations(esc(act2_deepening_c))}</p>' if act2_deepening_c else ""
+    act4_human_ai_html = f'<p data-en="{esc(act4_human_ai_c)}" data-es="{esc(bounty.get("act4_human_ai_es", act4_human_ai_c))}">{linkify_citations(esc(act4_human_ai_c))}</p>' if act4_human_ai_c else ""
+    act4_deepening_html = f'<p data-en="{esc(act4_deepening_c)}" data-es="{esc(bounty.get("act4_deepening_es", act4_deepening_c))}">{linkify_citations(esc(act4_deepening_c))}</p>' if act4_deepening_c else ""
     es_plain_html = f"<p><strong>En Palabras Sencillas (Explicaci&oacute;n Accesible):</strong> {esc(plain_es_c)}</p>" if plain_es_c else ""
     es_deep_html = f"<p><strong>Mecanismo T&eacute;cnico, Fuerzas en Competencia y Umbral Cr&iacute;tico:</strong> {esc(deep_es_c)}</p>" if deep_es_c else ""
 
@@ -3244,9 +3614,11 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
     <section class="tp-folio-layout" aria-labelledby="act1-heading-{esc(slug)}">
       <div class="tp-prose">
         <h2 id="act1-heading-{esc(slug)}" data-en="Act I — The Challenge, Prize Origin Story &amp; Historical Turning Points ({esc(fid)})" data-es="Acto I — El Reto, Historia del Premio y Momentos Decisivos ({esc(fid)})">Act I — The Challenge, Prize Origin Story &amp; Historical Turning Points ({esc(fid)})</h2>
-        <p class="tp-dropcap">{linkify_citations(esc(bounty['act1_dropcap']))}</p>
         {plain_bridge_html}
-        <p>{linkify_citations(esc(bounty['act1_body']))}</p>
+        {easy_history_html}
+        {history_visual_html}
+        <p class="tp-dropcap" data-en="{esc(bounty['act1_dropcap'])}" data-es="{esc(bounty.get('act1_dropcap_es', bounty['act1_dropcap']))}">{linkify_citations(esc(bounty['act1_dropcap']))}</p>
+        <p data-en="{esc(bounty['act1_body'])}" data-es="{esc(bounty.get('act1_body_es', bounty['act1_body']))}">{linkify_citations(esc(bounty['act1_body']))}</p>
         {act1_stakes_html}
 
         <h3 id="ch-i-1-{esc(slug)}" data-en="&sect; I.1 &middot; Classical Obstruction, Prize Mechanics &amp; Structural Boundary" data-es="&sect; I.1 &middot; Obstrucción Clásica, Mecánica del Premio y Frontera Estructural">&sect; I.1 &middot; Classical Obstruction, Prize Mechanics &amp; Structural Boundary</h3>
@@ -3257,7 +3629,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
           Resolving the benchmark regime of Bounty <strong>{esc(fid)}</strong> (<code>{esc(bid)}</code>) requires shifting from unverified qualitative hand-waving to a deterministic operator formulation anchored in <code>{esc(verifier_rel)}</code>. Specifically, the system trajectory is governed by {sliders_prose}. Within this state space, any valid proof certificate or engineering synthesis must simultaneously satisfy local conservation laws, global boundary compatibility, and strict falsification gates—setting the stage for our four-chapter formal derivation in Act II.
         </p>
 
-        <blockquote class="tp-pullquote"><p>{esc(bounty['pullquote'])}</p></blockquote>
+        <blockquote class="tp-pullquote"><p data-en="{esc(bounty['pullquote'])}" data-es="{esc(bounty.get('pullquote_es', bounty['pullquote']))}">{esc(bounty['pullquote'])}</p></blockquote>
 
         <h3 data-en="&sect; I.2 &middot; Official Prize, Registry &amp; Historical Turning Points" data-es="&sect; I.2 &middot; Premio Oficial, Registro e Hitos Históricos">&sect; I.2 &middot; Official Prize, Registry &amp; Historical Turning Points</h3>
         <div class="tp-table-wrap">
@@ -3276,8 +3648,9 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
 
         <h2 id="act2-heading-{esc(slug)}" data-en="Act II — How We Solved the Benchmark: 4-Stage Formal Proof &amp; Derivation Spine ({esc(fid)})" data-es="Acto II — Cómo Resolvimos el Benchmark: Demostración Formal en 4 Etapas ({esc(fid)})">Act II — How We Solved the Benchmark: 4-Stage Formal Proof &amp; Derivation Spine ({esc(fid)})</h2>
         {analogy_box_html}
+        {toy_model_html}
         {distill_svg_html}
-        <p>{linkify_citations(esc(bounty['act2_intuition']))}</p>
+        {act2_intuition_html}
         {act2_deepening_html}
         <p data-en="{esc(bounty['why_en'])}" data-es="{esc(bounty['why_es'])}">{linkify_citations(esc(bounty['why_en']))}</p>
 
@@ -3322,10 +3695,10 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
             <h3 data-en="&sect; II.4 &middot; Counterfactual Axiom-Knockout &amp; Singular Boundary Anatomy" data-es="&sect; II.4 &middot; Análisis Contrafactual de Supresión de Axiomas y Anatomía de Frontera Singular">&sect; II.4 &middot; Counterfactual Axiom-Knockout &amp; Singular Boundary Anatomy</h3>
             <div class="tp-counterfactual-proof" role="region" aria-label="Counterfactual Axiom-Knockout Analysis">
               <p>
-                <strong>Primary Counterfactual Knockout ({esc(sn1['kicker'])}):</strong> {linkify_citations(esc(sn1['body']))}
+                <strong><span data-en="Primary Counterfactual Knockout ({esc(sn1['kicker'])}):" data-es="Supresión Contrafactual Primaria ({esc(sn1_es.get('kicker', sn1['kicker']))}):">Primary Counterfactual Knockout ({esc(sn1['kicker'])}):</span></strong> <span data-en="{esc(sn1['body'])}" data-es="{esc(sn1_es.get('body', sn1['body']))}">{linkify_citations(esc(sn1['body']))}</span>
               </p>
               <p>
-                <strong>Secondary Coupling &amp; Regime Boundary ({esc(sn2['kicker'])}):</strong> {linkify_citations(esc(sn2['body']))}
+                <strong><span data-en="Secondary Coupling &amp; Regime Boundary ({esc(sn2['kicker'])}):" data-es="Acoplamiento Secundario y Límite de Régimen ({esc(sn2_es.get('kicker', sn2['kicker']))}):">Secondary Coupling &amp; Regime Boundary ({esc(sn2['kicker'])}):</span></strong> <span data-en="{esc(sn2['body'])}" data-es="{esc(sn2_es.get('body', sn2['body']))}">{linkify_citations(esc(sn2['body']))}</span>
               </p>
               <p>
                 <strong>Mathematical &amp; Physical Necessity of the Full Operator:</strong> This counterfactual knockout analysis proves why every hypothesis and coupling term in <code>{esc(bounty['governing_law'])}</code> is necessary. Clicking <strong>[⚡ Counterfactual Axiom-Knockout]</strong> or dragging the sliders past the critical threshold in the Act III workbench below reproduces the exact failure mode predicted by theory.
@@ -3346,30 +3719,10 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
           <div class="tp-symbolic-regime-bar" role="group" aria-label="Select benchmark or counterfactual mode">
             <button type="button" class="tp-sym-regime-btn" data-bounty-mode="benchmark" aria-pressed="true" data-en="⚛ Certified Benchmark Regime (T0/T1 PASS)" data-es="⚛ Régimen de Referencia Certificado (T0/T1 PASS)">⚛ Certified Benchmark Regime (T0/T1 PASS)</button>
             <button type="button" class="tp-sym-regime-btn" data-bounty-mode="knockout" aria-pressed="false" data-en="⚡ Counterfactual Axiom-Knockout (Boundary Violation)" data-es="⚡ Supresión Contrafactual de Axiomas (Violación de Umbral)">⚡ Counterfactual Axiom-Knockout (Boundary Violation)</button>
+            <button type="button" class="tp-sym-regime-btn" data-bounty-mode="sweep" aria-pressed="false" data-en="▶ Auto-Sweep Animation" data-es="▶ Animación de Barrido Automático">▶ Auto-Sweep Animation</button>
           </div>
           <div class="tp-bounty-svg-wrap" role="region" aria-label="Interactive trajectory and stage verification chart for {esc(fid)}">
-            <svg class="tp-bounty-crucible-svg" viewBox="0 0 920 210" role="img" aria-label="Interactive Bounty {esc(fid)} State-Space Trajectory and 4-Stage Invariant Spectrum">
-              <rect x="12" y="12" width="440" height="186" rx="8" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
-              <rect x="468" y="12" width="440" height="186" rx="8" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
-              <text x="232" y="33" text-anchor="middle" font-size="10" font-weight="700" fill="var(--tp-prussian)">{esc(fid)} ({esc(bid)}) · STATE-SPACE RESPONSE CURVE</text>
-              <line x1="52" y1="168" x2="430" y2="168" stroke="currentColor" stroke-opacity="0.35"/>
-              <line x1="52" y1="44" x2="52" y2="168" stroke="currentColor" stroke-opacity="0.35"/>
-              <polyline data-bw-curve points="65,152 155,126 245,88 335,64 420,52" fill="none" stroke="var(--tp-prussian)" stroke-width="2.8"/>
-              <line data-bw-thresh x1="52" y1="138" x2="430" y2="138" stroke="var(--tp-minium)" stroke-width="1.8" stroke-dasharray="5,4"/>
-              <circle data-bw-dot cx="245" cy="88" r="7.5" fill="var(--tp-verdigris)" stroke="var(--tp-vellum)" stroke-width="2"/>
-              <text x="241" y="186" text-anchor="middle" font-size="9.5" fill="currentColor">{esc(bounty['governing_law'])}</text>
-
-              <text x="688" y="33" text-anchor="middle" font-size="10" font-weight="700" fill="var(--tp-verdigris)">4-STAGE INVARIANT MARGIN SPECTRUM (STAGES 1–4)</text>
-              <line x1="500" y1="168" x2="880" y2="168" stroke="currentColor" stroke-opacity="0.35"/>
-              <rect data-bw-bar="0" x="530" y="64" width="52" height="104" rx="4" fill="var(--tp-verdigris)" opacity="0.92"/>
-              <rect data-bw-bar="1" x="615" y="56" width="52" height="112" rx="4" fill="var(--tp-verdigris)" opacity="0.92"/>
-              <rect data-bw-bar="2" x="700" y="60" width="52" height="108" rx="4" fill="var(--tp-verdigris)" opacity="0.92"/>
-              <rect data-bw-bar="3" x="785" y="52" width="52" height="116" rx="4" fill="var(--tp-verdigris)" opacity="0.92"/>
-              <text x="556" y="185" text-anchor="middle" font-size="9" font-weight="700" fill="currentColor">Stage 1</text>
-              <text x="641" y="185" text-anchor="middle" font-size="9" font-weight="700" fill="currentColor">Stage 2</text>
-              <text x="726" y="185" text-anchor="middle" font-size="9" font-weight="700" fill="currentColor">Stage 3</text>
-              <text x="811" y="185" text-anchor="middle" font-size="9" font-weight="700" fill="currentColor">Stage 4</text>
-            </svg>
+            {render_bounty_crucible_svg(bounty)}
           </div>
           <p class="tp-sym-caption" data-bw-caption data-en="Certified Benchmark Regime ({esc(fid)}) — All 4 stage invariants satisfied ({esc(verifier_rel)})." data-es="Régimen de Referencia Certificado ({esc(fid)}) — Las 4 etapas e invariantes se cumplen ({esc(verifier_rel)}).">Certified Benchmark Regime ({esc(fid)}) — All 4 stage invariants satisfied ({esc(verifier_rel)}).</p>
           <div class="tp-controls-row">
@@ -3493,12 +3846,12 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
       </div>
 
       <aside class="tp-rail" aria-label="Bounty {esc(fid)} margin notes">
-        <div class="tp-sidenote"><span class="tp-sidenote-id">{esc(sn1['kicker'])}</span>{linkify_citations(esc(sn1['body']))}</div>
-        <div class="tp-sidenote"><span class="tp-sidenote-id">{esc(sn2['kicker'])}</span>{linkify_citations(esc(sn2['body']))}</div>
+        <div class="tp-sidenote"><span class="tp-sidenote-id" data-en="{esc(sn1['kicker'])}" data-es="{esc(sn1_es.get('kicker', sn1['kicker']))}">{esc(sn1['kicker'])}</span><p data-en="{esc(sn1['body'])}" data-es="{esc(sn1_es.get('body', sn1['body']))}">{linkify_citations(esc(sn1['body']))}</p></div>
+        <div class="tp-sidenote"><span class="tp-sidenote-id" data-en="{esc(sn2['kicker'])}" data-es="{esc(sn2_es.get('kicker', sn2['kicker']))}">{esc(sn2['kicker'])}</span><p data-en="{esc(sn2['body'])}" data-es="{esc(sn2_es.get('body', sn2['body']))}">{linkify_citations(esc(sn2['body']))}</p></div>
         <div class="tp-spec-plate">
           <span class="tp-spec-tag" data-en="Governing law &amp; verifier" data-es="Ley gobernante y verificador">Governing law &amp; verifier</span>
           <h3 class="tp-spec-title">{esc(bounty['governing_law'])}</h3>
-          <p class="tp-spec-meta"><code>{esc(verifier_rel)}</code> · {esc(bounty['pass_pill_en'])}</p>
+          <p class="tp-spec-meta"><code>{esc(verifier_rel)}</code> · <span data-en="{esc(bounty.get('pass_pill_en', 'T0/T1 PASS'))}" data-es="{esc(bounty.get('pass_pill_es', 'T0/T1 PASS'))}">{esc(bounty['pass_pill_en'])}</span></p>
         </div>
       </aside>
     </section>
@@ -3514,7 +3867,6 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
 </body>
 </html>
 """
-
 
 def _build_toolchain_skill_and_scripts(tool: dict) -> tuple[str, str, str, str]:
     """Return (make_py_src, verify_py_src, verify_filename, skill_md) for a Toolbox Folio X.01..X.06."""

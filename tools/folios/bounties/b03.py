@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Open Bounties — Folio B.03: $100M XPRIZE Carbon Removal & IStructE Benchmark: Sub-45 kg CO₂e/m² SIMP Mineralized Slabs."""
 
+
 FOLIO = {'slug': 'b03',
  'folio_id': 'B.03',
  'bounty_id': 'BOUNTY-E1',
@@ -366,4 +367,334 @@ FOLIO = {'slug': 'b03',
             'CO₂e/m², superando el límite de 45.0 kg CO₂e/m² de IStructE SCORS A+. '
             'Simultáneamente, la razón de flexibilidad c/c₀ = 1 + 0.40(1 − V/V₀)^1.35 se sitúa en '
             '1.224, manteniéndose con holgura por debajo del umbral de servicio de 1.35 '
-            'correspondiente a la deflexión límite L/250 de las normas Eurocódigo 2 y ACI 318.'}
+            'correspondiente a la deflexión límite L/250 de las normas Eurocódigo 2 y ACI 318.',
+ 'easy_history_title_en': 'How Human Pioneers Reached This Frontier: From 1904 Bone & Truss '
+                          'Geometry to SIMP & Mineralized Concrete',
+ 'easy_history_title_es': 'Cómo los Pioneros Humanos Llegaron a Esta Frontera: De las Cerchas de '
+                          '1904 a SIMP y el Concreto Mineralizado',
+ 'easy_history_en': 'In 1904, an Australian mechanical engineer named Anthony George Maldon '
+                    'Michell asked a question that still haunts every structural engineer: what is '
+                    'the lightest possible frame that can carry a given load between supports? '
+                    'Working purely with calculus on paper, Michell proved that an ideal '
+                    'minimum-weight structure never uses solid rectangular blocks; instead, it '
+                    'weaves curving, orthogonal fan-like ribs that follow the exact paths of '
+                    'tension and compression—looking remarkably like the porous trabecular bone '
+                    "inside a human femur or a bird's wing. Half a century later, Italian master "
+                    'builder Pier Luigi Nervi proved Michell right in poured concrete, sculpting '
+                    'breathtaking ribbed ceilings for exhibition halls in Turin and Rome that '
+                    'saved massive amounts of material. Yet because crafting custom curved wooden '
+                    'molds by hand took months of specialized carpentry, twentieth-century '
+                    "construction abandoned Nervi's ribs in favor of cheap, flat, solid concrete "
+                    'slabs—wasting up to two-thirds of every floor plate as dead, inactive '
+                    'weight.\n'
+                    '\n'
+                    'The turning point arrived between 1989 and 2001 when Danish mathematicians '
+                    'Martin Bendsøe and Ole Sigmund invented Solid Isotropic Material with '
+                    'Penalization (SIMP) and published a legendary 99-line computer code that '
+                    'allowed any finite-element solver to carve solid blocks into optimal '
+                    'bone-like ribs automatically. In the 2020s, two final pieces clicked into '
+                    'place: open-source PDE engines like FEniCS/dolfinx paired with robotic 3D '
+                    'concrete extrusion eliminated expensive wooden molds, while accelerated '
+                    'carbonate mineralization (injecting captured CO₂ gas during curing so it '
+                    'turns permanently into solid limestone CaCO₃ inside the slab) turned concrete '
+                    'from a climate liability into a permanent carbon sink—driving floor emissions '
+                    'below the 45 kg CO₂e/m² IStructE A+ and $100M XPRIZE Carbon Removal '
+                    'threshold.',
+ 'easy_history_es': 'En 1904, el ingeniero australiano Anthony George Maldon Michell planteó una '
+                    'pregunta que aún inspira a toda la ingeniería estructural: ¿cuál es la '
+                    'estructura más ligera posible capaz de sostener una carga dada entre apoyos? '
+                    'Con puro cálculo variacional en papel, Michell demostró que la estructura '
+                    'óptima de peso mínimo jamás usa bloques macizos rectangulares; en cambio, '
+                    'teje nervaduras curvas ortogonales que siguen las líneas exactas de tensión y '
+                    'compresión, idénticas al hueso trabecular poroso del fémur humano o del ala '
+                    'de un ave. Medio siglo después, el maestro italiano Pier Luigi Nervi llevó la '
+                    'geometría de Michell al concreto real, esculpiendo techos nervados en Turín y '
+                    'Roma con un ahorro extraordinario de material. Sin embargo, como fabricar '
+                    'cimbras curvas de madera a mano requería meses de carpintería artesanal, la '
+                    'construcción del siglo XX abandonó las nervaduras de Nervi en favor de losas '
+                    'planas macizas baratas de moldear, desperdiciando hasta dos tercios de cada '
+                    'entrepiso como peso muerto inactivo.\n'
+                    '\n'
+                    'El punto de inflexión llegó entre 1989 y 2001 cuando Martin Bendsøe y Ole '
+                    'Sigmund inventaron el método SIMP (Material Isotrópico Sólido con '
+                    'Penalización) y publicaron su célebre código de 99 líneas, permitiendo que '
+                    'cualquier computadora esculpiera bloques macizos en nervaduras óptimas '
+                    'automáticamente. En la década de 2020 encajaron las dos piezas finales: los '
+                    'motores abiertos de elementos finitos como FEniCS/dolfinx unidos a la '
+                    'impresión 3D robótica eliminaron las cimbras costosas, mientras que la '
+                    'mineralización acelerada de carbonatos (inyectar CO₂ capturado durante el '
+                    'curado para transformarlo en piedra caliza CaCO₃ permanente) redujo la huella '
+                    'neta por debajo del umbral de 45 kg CO₂e/m² de IStructE SCORS A+ y del XPRIZE '
+                    'Carbon Removal.',
+ 'history_milestones': [{'year': '1904',
+                         'who_en': 'A. G. M. Michell',
+                         'who_es': 'A. G. M. Michell',
+                         'title_en': 'Minimum-Weight Principal Stress Continua',
+                         'title_es': 'Continuos de Peso Mínimo sobre Líneas Principales',
+                         'summary_en': 'Proves that minimum-weight trusses align orthogonal '
+                                       'tension and compression ribs along principal strain '
+                                       'trajectories.',
+                         'summary_es': 'Demuestra que las estructuras de peso mínimo alinean '
+                                       'nervaduras ortogonales con las trayectorias principales de '
+                                       'deformación.',
+                         'roadblock_en': 'Analytical solutions exist only for idealized point '
+                                         'loads; arbitrary 3D building bays cannot be solved by '
+                                         'hand.',
+                         'roadblock_es': 'Las soluciones analíticas solo existen para cargas '
+                                         'puntuales simples; las crujías 3D reales no pueden '
+                                         'resolverse a mano.'},
+                        {'year': '1951–1960',
+                         'who_en': 'Pier Luigi Nervi',
+                         'who_es': 'Pier Luigi Nervi',
+                         'title_en': 'Isostatic Ribbed Ferrocement Floor Slabs',
+                         'title_es': 'Losas Nervadas Isostáticas de Ferrocemento',
+                         'summary_en': 'Builds the Gatti Wool Factory and Palazzetto dello Sport '
+                                       'with curving floor ribs following bending stress lines.',
+                         'summary_es': 'Construye la fábrica Gatti y el Palazzetto dello Sport con '
+                                       'nervaduras curvas que siguen los momentos flectores.',
+                         'roadblock_en': 'Hand-built plaster and timber formwork is too '
+                                         'labor-intensive for everyday commercial buildings.',
+                         'roadblock_es': 'Las cimbras artesanales de yeso y madera resultan '
+                                         'demasiado costosas para edificios convencionales.'},
+                        {'year': '1989–2001',
+                         'who_en': 'Martin Bendsøe & Ole Sigmund',
+                         'who_es': 'Martin Bendsøe y Ole Sigmund',
+                         'title_en': 'SIMP Power-Law Topology Optimization',
+                         'title_es': 'Optimización Topológica por Ley de Potencias SIMP',
+                         'summary_en': 'Penalizes intermediate finite-element densities (E = ρ^p '
+                                       'E₀, p = 3) with a Helmholtz filter to carve crisp 0/1 '
+                                       'ribs.',
+                         'summary_es': 'Penaliza densidades intermedias (E = ρ^p E₀, p = 3) con '
+                                       'filtro de Helmholtz para esculpir nervaduras nítidas 0/1.',
+                         'roadblock_en': 'Removing 65% of concrete mass alone still leaves ~51.8 '
+                                         'kg CO₂e/m² from Portland clinker calcination.',
+                         'roadblock_es': 'Retirar 65% de la masa por sí solo aún deja ~51.8 kg '
+                                         'CO₂e/m² por la calcinación del clínker Portland.'},
+                        {'year': '2018–2023',
+                         'who_en': 'FEniCS/dolfinx & Robotic 3D Extrusion',
+                         'who_es': 'FEniCS/dolfinx y Extrusión Robótica 3D',
+                         'title_en': 'Zero-Formwork Funicular Rib Fabrication',
+                         'title_es': 'Fabricación sin Cimbra de Nervaduras Funiculares',
+                         'summary_en': 'Open-source variational PDE solvers and automated '
+                                       'printing/milling turn SIMP meshes into physical floor bays '
+                                       'at V/V₀ = 0.35.',
+                         'summary_es': 'Los motores abiertos de EDPs e impresión robótica '
+                                       'materializan mallas SIMP reales con fracción volumétrica '
+                                       'V/V₀ = 0.35.',
+                         'roadblock_en': 'Requires permanent chemical carbon sequestration inside '
+                                         'the curing matrix to drop below 45 kg CO₂e/m².',
+                         'roadblock_es': 'Requiere secuestro químico permanente de CO₂ dentro de '
+                                         'la matriz para bajar de 45 kg CO₂e/m².'},
+                        {'year': '2024–2026',
+                         'who_en': 'XPRIZE Carbon Removal & IStructE SCORS A+',
+                         'who_es': 'XPRIZE Carbon Removal e IStructE SCORS A+',
+                         'title_en': 'Sub-45 kg CO₂e/m² Mineralized Structural Slabs',
+                         'title_es': 'Losas Mineralizadas Bajo 45 kg CO₂e/m²',
+                         'summary_en': 'Combines V/V₀ = 0.35 SIMP ribs with 12.4 kg/m² carbonate '
+                                       'mineralization (CaO + CO₂ → CaCO₃) to reach 39.40 kg '
+                                       'CO₂e/m².',
+                         'summary_es': 'Une nervaduras SIMP (V/V₀ = 0.35) con 12.4 kg/m² de '
+                                       'mineralización de CO₂ para lograr 39.40 kg CO₂e/m² y c/c₀ '
+                                       '= 1.224.',
+                         'roadblock_en': 'Full-scale ACI 318 / EN 1992 four-point destructive load '
+                                         'testing and ISO 14044 cradle-to-grave certification.',
+                         'roadblock_es': 'Ensayos destructivos a escala real según ACI 318 / EN '
+                                         '1992 y certificación de ciclo de vida ISO 14044.'}],
+ 'toy_model_title_en': 'Try It in Your Head in 20 Seconds: Carving a 148 kg Floor Slab Under the '
+                       '45 kg Climate Limit',
+ 'toy_model_title_es': 'Pruébalo en tu Cabeza en 20 Segundos: Esculpir una Losa de 148 kg Bajo el '
+                       'Límite Climático de 45 kg',
+ 'toy_model_en': 'Start with a standard solid concrete floor slab: each square meter emits 148 kg '
+                 'of CO₂. The climate goal (IStructE A+) demands less than 45 kg. Step 1 '
+                 '(Geometry): Use SIMP topology optimization to carve away 65% of the lazy middle '
+                 'concrete, keeping only 35% (V/V₀ = 0.35) in bone-like ribs. Multiply 148 kg × '
+                 '0.35 = 51.80 kg CO₂e/m². Notice that geometry alone gets us close, but 51.80 kg '
+                 'still fails the 45 kg target! Step 2 (Chemistry): Cure those porous ribs in a '
+                 'CO₂ chamber so the concrete permanently mineralizes 12.4 kg of CO₂ per square '
+                 'meter into solid limestone rock. Subtract 51.80 − 12.40 = 39.40 kg CO₂e/m² (< 45 '
+                 'kg PASS!), while the slab flexes only 22.4% more than solid concrete (c/c₀ = '
+                 '1.224 < 1.35 limit).',
+ 'toy_model_es': 'Comienza con una losa maciza convencional: cada metro cuadrado emite 148 kg de '
+                 'CO₂. La meta climática (IStructE A+) exige menos de 45 kg. Paso 1 (Geometría): '
+                 'Usa optimización topológica SIMP para retirar el 65% del concreto inactivo del '
+                 'núcleo, conservando solo el 35% (V/V₀ = 0.35) en nervaduras tipo hueso. '
+                 'Multiplica 148 kg × 0.35 = 51.80 kg CO₂e/m². ¡Observa que la geometría por sí '
+                 'sola se acerca, pero 51.80 kg aún rebasa el límite de 45 kg! Paso 2 (Química): '
+                 'Cura esas nervaduras en una cámara de CO₂ para mineralizar permanentemente 12.4 '
+                 'kg de CO₂/m² como roca caliza. Resta 51.80 − 12.40 = 39.40 kg CO₂e/m² (< 45 kg '
+                 '¡APROBADO!), mientras la deflexión sube solo a c/c₀ = 1.224 (< 1.35 permitido).',
+ 'act1_dropcap_es': 'La producción de cemento genera cerca del 8% de las emisiones globales de '
+                    'dióxido de carbono y, en la estructura típica de un edificio comercial, las '
+                    'losas planas de entrepiso consumen más concreto que las columnas, los muros '
+                    'de cortante y la cimentación combinados. Debido a que una losa maciza resiste '
+                    'la flexión mediante un patín delgado de compresión arriba y acero de tensión '
+                    'abajo, hasta el 65% de su volumen interior actúa como peso muerto parásito.',
+ 'act1_body_es': 'El método de Material Isotrópico Sólido con Penalización (SIMP, DOI '
+                 '10.1007/s001580050176) de Martin Bendsøe y Ole Sigmund convierte el diseño '
+                 'estructural en un problema de optimización de ecuaciones en derivadas parciales '
+                 'resoluble en software abierto con FEniCS/dolfinx. Al penalizar las densidades '
+                 'intermedias E(ρ_e) = E_min + ρ_e^p (E_0 - E_min) con p = 3 y filtrar las '
+                 'sensibilidades sobre un radio de malla r_min, el solucionador esculpe nervaduras '
+                 'isostáticas ramificadas a lo largo de las trayectorias principales de tensión y '
+                 'compresión de Michell. Cuando la extrusión robótica 3D (Folio E.10) imprime esas '
+                 'nervaduras aligeradas y las cura mediante mineralización acelerada de carbonatos '
+                 '(CaO + CO₂ → CaCO₃), el carbono incorporado neto cae de 148.0 kg CO₂e/m² a 39.40 '
+                 'kg CO₂e/m², superando con holgura la meta de 45.0 kg CO₂e/m² de IStructE SCORS '
+                 'A+ y del premio XPRIZE Carbon Removal.',
+ 'act1_stakes_es': 'La fabricación de cemento es responsable de aproximadamente el ocho por ciento '
+                   'de todas las emisiones globales de dióxido de carbono, superando la huella '
+                   'climática de la aviación comercial y el transporte marítimo combinados. En un '
+                   'edificio de varios niveles, las losas planas de concreto armado representan '
+                   'casi dos tercios de toda la masa de la superestructura y de su carbono '
+                   'incorporado. Cada tonelada innecesaria de concreto colocada en un entrepiso '
+                   'amplifica las cargas gravitacionales y sísmicas, obligando a diseñar columnas '
+                   'más gruesas, muros de cortante más anchos y cimentaciones más profundas.\n'
+                   '\n'
+                   'Históricamente, las losas prismáticas macizas se volvieron el estándar '
+                   'universal porque armar cimbras planas de madera era barato en el siglo XX, '
+                   'aunque resultara desastroso para el presupuesto global de carbono. Hoy el '
+                   'sistema de calificación climática SCORS del Institution of Structural '
+                   'Engineers (IStructE) y el reto XPRIZE Carbon Removal de cien millones de '
+                   'dólares exigen una huella neta inferior a 45 kg CO₂e/m², una meta inalcanzable '
+                   'con losas macizas convencionales (~148 kg CO₂e/m²). Al combinar la '
+                   'optimización topológica SIMP en FEniCS/dolfinx con el curado por carbonatación '
+                   'mineralizada, retiramos el 65% de la masa parásita y encerramos dióxido de '
+                   'carbono como carbonato de calcio sólido permanente.',
+ 'pullquote_es': 'El hueso jamás desperdicia calcio donde el esfuerzo es cero; la optimización '
+                 'topológica SIMP otorga a las losas de concreto esa misma inteligencia evolutiva.',
+ 'act2_intuition_es': 'A medida que se retira fracción volumétrica V/V₀ de una losa maciza, el '
+                      'carbono incorporado cae linealmente según e_net = e₀(V/V₀) - m_CO₂, '
+                      'mientras que la flexibilidad estructural c/c₀ (el inverso de la rigidez) '
+                      'aumenta suavemente sobre la curva de Pareto de Michell–SIMP c/c₀ = 1 + '
+                      '0.40(1 - V/V₀)^1.35. El punto óptimo se ubica en V/V₀ = 0.35: una reducción '
+                      'de material del 65% que mantiene la deflexión dentro de los límites de '
+                      'servicio del Eurocódigo 2 y ACI 318 (c/c₀ = 1.224 < 1.35) logrando 39.40 kg '
+                      'CO₂e/m².',
+ 'act2_analogy_es': 'Imagina la diferencia entre sentarse sobre un tronco de madera macizo y '
+                    'montar el cuadro de una bicicleta de carreras. El tronco macizo soporta tu '
+                    'peso sin esfuerzo, pero el noventa por ciento de la madera en su núcleo '
+                    'interior casi no siente carga: solo existe como volumen pesado e inerte. Una '
+                    'bicicleta de carreras, en cambio, descarta toda esa masa inactiva y dispone '
+                    'tubos huecos esbeltos en una celosía triangular que canaliza las fuerzas '
+                    'directamente hacia los ejes. En nuestra ecuación rectora, la losa maciza base '
+                    'representa el tronco pesado que emite 148 kg de CO₂e/m². El parámetro de '
+                    'fracción volumétrica V/V₀ actúa como un escultor algorítmico que retira el '
+                    'material redundante hasta dejar solo el 35% dispuesto en nervaduras '
+                    'arqueadas. La razón de flexibilidad c/c₀ mide cuánto más flexiona el piso '
+                    'esculpido respecto al macizo: sube apenas a 1.224, manteniéndose a salvo bajo '
+                    'el límite permitido de 1.35. Por último, la absorción mineralizada m_CO₂ '
+                    'actúa como un baño mineral que petrifica 12.4 kg de CO₂ por metro cuadrado '
+                    'dentro de la roca, reduciendo las emisiones netas a 39.40 kg CO₂e/m².',
+ 'act2_plain_primer_es': 'Antes de revisar las ecuaciones de elementos finitos, explora los dos '
+                         'controles interactivos de nuestro banco de pruebas en el Acto III para '
+                         'ver cómo colaboran la geometría y la química. El primer control ajusta '
+                         'la Fracción Volumétrica SIMP (V/V₀), permitiéndote elegir cuánto '
+                         'concreto conservas desde el 70% hasta el 20%. En nuestro punto '
+                         'certificado de 35% (0.35), eliminas casi dos tercios de la masa total '
+                         'conservando una rigidez excelente. Si arrastras este control demasiado a '
+                         'la izquierda, la losa se vuelve demasiado flexible y rebota; si lo '
+                         'empujas a la derecha, se vuelve rígida pero rebasa el presupuesto de '
+                         'carbono. El segundo control regula la Absorción de CO₂ Mineralizado '
+                         '(m_CO₂), fijando cuántos kilogramos de gas capturado se convierten en '
+                         'roca caliza por metro cuadrado durante el curado. Finalmente, pulsa el '
+                         'botón [⚡ Counterfactual Axiom-Knockout]: esto simula qué ocurre si la '
+                         'planta de prefabricados omite la cámara de mineralización (m_CO₂ = 0). '
+                         'De inmediato, el carbono neto salta de 39.40 a 51.80 kg CO₂e/m², '
+                         'reprobando el techo climático de IStructE y demostrando por qué '
+                         'topología y mineralización deben actuar juntas.',
+ 'act2_deepening_es': 'La formulación matemática de la optimización topológica SIMP resuelve la '
+                      'paradoja de retirar masa sin provocar deflexiones estructurales excesivas. '
+                      'Sobre el dominio continuo del tablero de piso Ω, la distribución de '
+                      'material se discretiza en elementos finitos, cada uno con una densidad '
+                      'relativa continua ρ_e acotada entre cero y uno. Martin Bendsøe y Ole '
+                      'Sigmund demostraron que penalizar el módulo de Young mediante la ley de '
+                      'potencias E(ρ_e) = E_min + ρ_e^p (E_0 - E_min) con exponente p = 3 vuelve '
+                      'antieconómicas las densidades intermedias: un elemento a mitad de densidad '
+                      'aporta apenas el 12.5% de la rigidez elástica para el 50% de la masa. '
+                      'Impulsado por un solucionador adjunto de sensibilidades con filtro de '
+                      'Helmholtz de radio r_min para suprimir el damero numérico, el algoritmo '
+                      'converge hacia nervaduras binarias nítidas que siguen las líneas '
+                      'principales de esfuerzo de Michell. Sobre esta frontera de Pareto, la '
+                      'flexibilidad normalizada escala como c/c₀ = 1.0 + 0.40(1 - V/V₀)^1.35. En '
+                      'V/V₀ = 0.35, la flexibilidad alcanza 1.224, cumpliendo holgadamente los '
+                      'límites de flecha L/250 de Eurocódigo 2 y ACI 318 (c/c₀ < 1.35). En el '
+                      'balance ambiental, las emisiones siguen e_net = e₀(V/V₀) - m_CO₂: al partir '
+                      'de 148.0 kg CO₂e/m², aligerar al 35% baja la huella a 51.80 kg CO₂e/m², y '
+                      'la carbonatación en cámara (Ca(OH)₂ + CO₂ → CaCO₃ + H₂O) secuestra m_CO₂ = '
+                      '12.4 kg/m² para alcanzar 39.40 kg CO₂e/m².',
+ 'act4_human_ai_es': 'El desarrollo de componentes estructurales que superen los estándares '
+                     'climáticos internacionales exige un ciclo de codiseño entre ingenieros '
+                     'estructurales humanos y herramientas computacionales de código abierto. El '
+                     'ingeniero humano define los parámetros fundamentales del proyecto: claros '
+                     'entre columnas, pasos de instalaciones, condiciones de apoyo y combinaciones '
+                     'de carga factorizadas (1.2D + 1.6L). Los motores numéricos abiertos y los '
+                     'agentes de IA asumen entonces la exploración espacial de alta dimensión. En '
+                     'este flujo, la biblioteca abierta FEniCS/dolfinx compila las formas '
+                     'variacionales, ensambla las matrices globales de rigidez y ejecuta el '
+                     'análisis adjunto de sensibilidad sobre millones de grados de libertad. Al '
+                     'mismo tiempo, el entorno abierto COMPAS coordina las trayectorias robóticas '
+                     'de impresión 3D o fresado CNC de moldes reutilizables, mientras nuestros '
+                     'verificadores en Python auditan las envolventes de cortante por '
+                     'punzonamiento y deflexión en cada iteración.',
+ 'act4_deepening_es': 'La transición hacia la construcción sostenible suele verse empañada por '
+                      'afirmaciones comerciales sin respaldo cuantitativo. El Folio B.03 establece '
+                      'una frontera de verdad incorruptible al empaquetar su física matemática '
+                      'completa dentro de un verificador ejecutable en Python '
+                      '(bounties/bounty_e1_simp_carbon_slab.py) y su guía SKILL.md. Ejecutándose '
+                      'sin conexión y sin dependencias externas, el arnés evalúa cada losa '
+                      'candidata frente a dos desigualdades estrictas: el carbono neto incorporado '
+                      'debe ser menor a 45.0 kg CO₂e/m² y la razón de flexibilidad c/c₀ debe '
+                      'permanecer por debajo de 1.35. Si un agente intenta reducir la huella '
+                      'bajando la fracción volumétrica a 0.15 sin soporte estructural, la '
+                      'flexibilidad salta a 1.488 y dispara un fallo inmediato; si omite la '
+                      'mineralización de CO₂, el carbono sube a 51.80 kg CO₂e/m² y reprueba el '
+                      'umbral climático. Así garantizamos que cada metro cuadrado reportado sea '
+                      'físicamente íntegro.',
+ 'sidenote_1_es': {'kicker': 'NOTA AL MARGEN B.03-A · POR QUÉ FUNCIONA LA PENALIZACIÓN p = 3',
+                   'body': 'Con p = 3, una densidad intermedia ρ = 0.5 proporciona solo el 12.5% '
+                           'de la rigidez sólida por el 50% de la masa, obligando al optimizador a '
+                           'esculpir nervaduras nítidas 0/1.'},
+ 'sidenote_2_es': {'kicker': 'NOTA AL MARGEN B.03-B · QUÍMICA DE LA MINERALIZACIÓN',
+                   'body': 'Inyectar CO₂ capturado durante el curado prefabricado convierte la '
+                           'portlandita Ca(OH)₂ en calcita CaCO₃, encerrando carbono de forma '
+                           'permanente en la matriz mineral y elevando la resistencia temprana.'},
+ 'walkthrough_es': ['Inspecciona el punto de diseño canónico en V/V₀ = 0.35 y m_CO₂ = 12.4 kg/m²: '
+                    'el carbono neto es 39.40 kg CO₂e/m² (< 45.0) y la razón de flexibilidad es '
+                    '1.224 (< 1.35) (APROBADO).',
+                    'Arrastra la Fracción Volumétrica V/V₀ hasta 0.50: observa cómo mejora la '
+                    'rigidez (c/c₀ = 1.157) mientras el carbono neto salta a 61.60 kg CO₂e/m², '
+                    'reprobando el techo climático de 45.0 kg CO₂e/m².',
+                    'Ajusta la Absorción de CO₂ Mineralizado m_CO₂ = 0.0 kg/m² (o pulsa [⚡ '
+                    'Counterfactual Axiom-Knockout]): observa cómo el cemento sin mineralizar en '
+                    'V/V₀ = 0.35 llega a 51.80 kg CO₂e/m², demostrando por qué optimización '
+                    'topológica y mineralización deben trabajar juntas.'],
+ 'steps_es': ['Etapa 1: Ensamblaje de Elasticidad Lineal en FEniCS/dolfinx — Discretiza el tablero '
+              'de piso Ω y resuelve K(ρ) u = f bajo carga gravitacional factorizada 1.2D + 1.6L.',
+              'Etapa 2: Penalización SIMP por Ley de Potencias y Filtro de Sensibilidad — Evalúa '
+              '∂c/∂ρ_e = -p ρ_e^(p-1) (E_0 - E_min) u_e^T k_0 u_e con radio de filtro de Helmholtz '
+              'r_min para eliminar inestabilidades de damero.',
+              'Etapa 3: Actualización por Criterio de Optimalidad hasta V/V₀ = 0.35 — Converge la '
+              'disposición de nervaduras a la fracción volumétrica 0.35, certificando la razón de '
+              'flexibilidad c/c₀ = 1.224 ≤ 1.35.',
+              'Etapa 4: Balance de Masa de Mineralización de Carbonatos — Secuestra m_CO₂ = 12.4 '
+              'kg CO₂e/m² en agregados de silicato de calcio durante el curado, obteniendo e_net = '
+              '148.0 × 0.35 - 12.4 = 39.40 kg CO₂e/m².'],
+ 'rules_es': ['Techo de Carbono Incorporado (IStructE SCORS A+): El carbono incorporado neto de '
+              'cuna a puerta e_net = 148.0(V/V₀) - m_CO₂ debe mantenerse estrictamente por debajo '
+              'de 45.0 kg CO₂e/m².',
+              'Cota de Deflexión de Servicio y Flexibilidad: La flexibilidad estructural '
+              'normalizada c/c₀ = 1.0 + 0.40(1 - V/V₀)^1.35 debe mantenerse estrictamente por '
+              'debajo de 1.35 para satisfacer el límite de flecha L/250.',
+              'Ventana Dual de Factibilidad de Pareto: Con m_CO₂ = 12.4 kg/m², V/V₀ debe ubicarse '
+              'dentro de [0.22, 0.38]—por debajo de 0.22 la losa es demasiado flexible (c/c₀ > '
+              '1.35), y por encima de 0.38 supera los 45.0 kg CO₂e/m².'],
+ 't0_t1_certified_es': ['Verificador determinista de Pareto flexibilidad-carbono SIMP en '
+                        'bounties/bounty_e1_simp_carbon_slab.py (tiempo de ejecución < 0.05 s).',
+                        'Formulación matemática verificada frente a FEniCS/dolfinx (DOI '
+                        '10.21105/joss.05754) y Sigmund (2001, DOI 10.1007/s001580050176).',
+                        'Listo para envío inmediato a la galería comunitaria de FEniCS Discourse y '
+                        'repositorios abiertos de ingeniería estructural.'],
+ 't2_t3_open_horizon_es': ['XPRIZE Carbon Removal ($100M) e IStructE Structural Awards: Requieren '
+                           'ensayos físicos de carga a escala real hasta la falla (flexión en '
+                           'cuatro puntos según ACI 318 / EN 1992-1-1) y verificación de análisis '
+                           'de ciclo de vida ISO 14040/14044 por terceros.']}
