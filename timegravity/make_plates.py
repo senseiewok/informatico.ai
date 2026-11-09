@@ -274,6 +274,50 @@ def plate_t06() -> bytes:
     return c.png()
 
 
+def plate_t05() -> bytes:
+    """Two masses each in two places with the four branch lines, and entanglement against hold time for the three channels:
+    the quantum curve, the LOCC flat line and the disputed band between them."""
+    import math
+    from timegravity_kernel_entangle import BMV_D_M, BMV_DX_M, BMV_M_KG, branch_phases, concurrence_closed, entanglement_phase
+    c = Canvas()
+    c.fill_gradient()
+    # Left: positions along x; A at -dx/2, +dx/2; B at d - dx/2, d + dx/2 (scaled into 110..560).
+    span = BMV_D_M + BMV_DX_M
+    sx = lambda pos: 110 + 450 * (pos + BMV_DX_M / 2) / span  # noqa: E731
+    ya, yb = 240, 480
+    ax = (sx(-BMV_DX_M / 2), sx(BMV_DX_M / 2))
+    bx = (sx(BMV_D_M - BMV_DX_M / 2), sx(BMV_D_M + BMV_DX_M / 2))
+    for i, xa in enumerate(ax):
+        for j, xb_ in enumerate(bx):
+            c.stroke([(xa, ya), (xb_, yb)], STONE if i == j else PRUSSIAN, 2.4)
+    for xa in ax:
+        c.disc(xa, ya, 16, PRUSSIAN, ring=VELLUM)
+    for xb_ in bx:
+        c.disc(xb_, yb, 16, MINIUM, ring=VELLUM)
+    # Right: entanglement against hold time 0..30 s.
+    x0, x1, y0, y1 = 700, 1200, 120, 600
+    tx = lambda t: x0 + (x1 - x0) * t / 30.0  # noqa: E731
+    ey = lambda e: y1 - (y1 - y0) * e  # noqa: E731
+    pts = []
+    for i in range(121):
+        t = 30.0 * i / 120
+        e = concurrence_closed(entanglement_phase(branch_phases(BMV_M_KG, BMV_D_M, BMV_DX_M, t, "quantum")))
+        pts.append((tx(t), ey(e)))
+    # Disputed band: hatch between the flat line and the curve.
+    for k in range(len(pts) - 1):
+        xa, ya_ = pts[k]
+        for yy in range(int(ya_), y1):
+            if ((int(xa) + yy) // 7) % 2 == 0:
+                c.blend(int(xa), yy, PRUSSIAN, 0.10)
+    c.stroke([(x0, y0), (x0, y1)], INK, 1.2)
+    c.stroke([(x0, y1), (x1, y1)], INK, 1.2)
+    c.stroke(pts, PRUSSIAN, 4.0)
+    c.stroke([(x0, y1 - 2), (x1, y1 - 2)], VERDIGRIS, 4.0, dash=(8, 8))
+    t25 = tx(2.5)
+    c.disc(t25, ey(concurrence_closed(entanglement_phase(branch_phases(BMV_M_KG, BMV_D_M, BMV_DX_M, 2.5, "quantum")))), 12, MINIUM, ring=VELLUM)
+    return c.png()
+
+
 def plate_t07_page() -> bytes:
     """Hawking's straight line and Page's hill, with the ten-qubit toy's dots."""
     import math
@@ -302,7 +346,7 @@ def plate_t07_page() -> bytes:
 
 def main() -> int:
     PLATES.mkdir(parents=True, exist_ok=True)
-    for name, fn in (("t00", plate_t00), ("t01", plate_t01), ("t02", plate_t02), ("t03", plate_t03), ("t04", plate_t04), ("t06", plate_t06), ("t07", plate_t07), ("t10", plate_t07_page)):
+    for name, fn in (("t00", plate_t00), ("t01", plate_t01), ("t02", plate_t02), ("t03", plate_t03), ("t04", plate_t04), ("t05", plate_t05), ("t06", plate_t06), ("t07", plate_t07), ("t10", plate_t07_page)):
         data = fn()
         (PLATES / f"{name}.png").write_bytes(data)
         print(f"PASS: wrote plates/{name}.png ({len(data):,} bytes)")

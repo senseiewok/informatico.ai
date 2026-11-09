@@ -1,0 +1,70 @@
+---
+name: timegravity-t05-entanglement-channels
+description: Rebuild and verify the Time & Gravity T.05 instrument - the Bose-Marletto-Vedral four-branch entanglement phase (phi_ij = G m^2 t / hbar d_ij, concurrence |sin(delta phi / 2)|, Peres negativity under local dephasing) with three channels at equal weight (quantum, classical LOCC, disputed classical non-LOCC) - with a planted defect that lets a LOCC channel entangle.
+license: MIT
+compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI Codex, Ollama (Qwen 3.8 / Gemma 4)
+---
+# Does Gravity Entangle, and Would That Settle It? (T.05 · Time & Gravity)
+
+> **Fixed Boundary (`EN`):** Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. Preprints never rise above PROPOSED. Each page ends with one open question that the next page takes up.
+>
+> **Frontera Fija (`ES-MX`):** Nada en esta página es una teoría del todo, y este sitio no propone ninguna. Cada afirmación lleva una de seis etiquetas, cada una ligada a una fila del libro de registro: MEDIDO, DERIVADO, COTA, PROPUESTO, ABIERTO o RESULTADO ÚNICO. Las prepublicaciones nunca suben de PROPUESTO. Cada página termina con una pregunta abierta que la siguiente página retoma.
+
+## 1. Page, canonical URL and governing equations
+- **Track page**: `T.05` (Time & Gravity, reading order 6 of 9, dated `2026-11-09`). Page label **OPEN**: the experiment has not run, and the literature disputes what a positive result would prove.
+- **Canonical URL**: https://informatico.ai/timegravity/t05/ (Spanish: https://informatico.ai/es-mx/timegravity/t05/)
+- **Branch phases**: `φ_ij = G m² t / (ħ d_ij)` with `d_LL = d_RR = d`, `d_LR = d + Δx`, `d_RL = d − Δx`.
+- **Entanglement phase**: `Δφ = φ_LR + φ_RL − φ_LL − φ_RR`; the four-branch state is a product exactly when `Δφ ≡ 0 (mod 2π)`.
+- **Measures**: concurrence `C = 2|ad − bc| = |sin(Δφ/2)|` (Wootters 1998); negativity from the partial transpose (Peres 1996), `N = C/2` for the pure state; local dephasing `e^{−γt}` on each mass.
+- **Channels** (equal weight): `quantum` (the four phases as written); `locc` (each mass feels the mean field of the other: `φ_ij = α_i + β_j`, `Δφ = 0`); `disputed` (classical, non-LOCC: no single prediction; carried as the interval `[0, C_quantum]`).
+- **Central numbers (2017 geometry: 10⁻¹⁴ kg, d = 450 µm, Δx = 250 µm, t = 2.5 s)**: `Δφ = 0.314 rad`, `C = 0.156`, `N = 0.078`; `C = 1` at `t = 25.0 s`; negativity vanishes at `γt = 0.156`; LOCC channel `< 10⁻¹²`.
+- **Generator**: `python skills/timegravity/t05/make_t05.py`
+- **Verifier**: `python skills/timegravity/t05/verify_t05_entanglement_channels.py`
+- **Knockout check**: `python skills/timegravity/t05/verify_t05_entanglement_channels.py --planted-defect` (must exit non-zero: a LOCC channel that entangles)
+- **Label lint**: `python tools/check_timegravity_labels.py` (and `--planted-defect`, `--mutants`)
+
+## 2. Ledger rows this page may cite (timegravity/ledger.json)
+| Row | Label | Source | DOI |
+| --- | --- | --- | --- |
+| `T05-BOSE2017` | PROPOSED | Bose et al. 2017, spin entanglement witness | https://doi.org/10.1103/PhysRevLett.119.240401 |
+| `T05-MARLETTO2017` | PROPOSED | Marletto & Vedral 2017, sufficiency argument | https://doi.org/10.1103/PhysRevLett.119.240402 |
+| `T05-WESTPHAL2021` | MEASURED | Westphal et al. 2021, gravity between 90 mg spheres | https://doi.org/10.1038/s41586-021-03250-7 |
+| `T05-FUCHS2024` | MEASURED | Fuchs et al. 2024, 0.4 mg levitated test mass | https://doi.org/10.1126/sciadv.adk2949 |
+| `T05-AGAFONOVA2026` | SINGLE RESULT (young) | Agafonova et al. 2026, 1 mg pendulum at 240 µK | https://doi.org/10.1038/s42005-026-02514-w |
+| `T05-TROYER2026` | SINGLE RESULT (young) | Troyer et al. 2026, librational ground state | https://doi.org/10.1038/s41567-026-03219-1 |
+| `T05-KTM2014` | PROPOSED | Kafri, Taylor & Milburn 2014, classical channel model | https://doi.org/10.1088/1367-2630/16/6/065020 |
+| `T05-PERES1996` | DERIVED | Peres 1996, separability criterion | https://doi.org/10.1103/PhysRevLett.77.1413 |
+| `T05-WOOTTERS1998` | DERIVED | Wootters 1998, two-qubit concurrence | https://doi.org/10.1103/PhysRevLett.80.2245 |
+| `T05-AZIZ2025` | PROPOSED (young, disputed) | Aziz & Howl 2025, Nature | https://doi.org/10.1038/s41586-025-09595-7 |
+| `T05-TRILLO2025` | PROPOSED (young) | Trillo & Navascués 2025, PRD Letter | https://doi.org/10.1103/PhysRevD.111.L121101 |
+| `T05-SCHNEIDER2026` | PROPOSED (young) | Schneider, Huggett & Linnemann 2026, CQG | https://doi.org/10.1088/1361-6382/ae6f62 |
+| `T05-MARLETTO2025` | PROPOSED (preprint) | Marletto & Vedral 2025, rebuttal | https://doi.org/10.48550/arXiv.2510.19969 |
+| `T05-DIOSI2025` | PROPOSED (preprint) | Diósi 2025, rebuttal | https://doi.org/10.48550/arXiv.2511.00852 |
+| `T05-TOBAR2026` | PROPOSED (preprint) | Tobar, Aspelmeyer & Zych 2026, clock proposal | https://doi.org/10.48550/arXiv.2611.08313 |
+
+## 3. Tool-neutral agent packet and security boundary (`security-runtime`)
+1. **Rebuild locally**: `python skills/timegravity/t05/make_t05.py`; standard library only; writes only under `src/research/timegravity/t05/files/`.
+2. **Acceptance gate**: `python skills/timegravity/t05/verify_t05_entanglement_channels.py` must print `"status": "PASS"` with `locc_channel_entangles_nothing: PASS`; `--planted-defect` must exit non-zero. Then `python tools/check_timegravity_labels.py`.
+3. **Security boundary (`security-runtime`)**: no shell outside the repository, no home-directory access, no outbound network for this task; the cache refresher is the track's only network script, run by hand by a maintainer.
+
+## 4. Deterministic verification and falsification rules
+1. Concurrence from the closed form `|sin(Δφ/2)|` and from the reduced-state purity `sqrt(2(1 − Tr ρ_A²))` agree within `10⁻¹²`.
+2. The Peres negativity of the pure state equals `C/2` within `10⁻⁹` (partial transpose, Hermitian 4×4 through the real 8×8 embedding, Jacobi solver).
+3. The recomputed phases `Δφ_RL = 0.44`, `Δφ_LR = −0.13` and `Δφ = 0.31 rad` lie within a factor of four of the proposal's order-of-magnitude values (0.7, −0.2, ≈ 0.5).
+4. `C = 1` at `Δφ = π` (`t = 25.0 s` for the 2017 geometry); `C = 0` with `G = 0`.
+5. The LOCC channel entangles nothing on a 3 × 3 × 3 grid of separations, splits and hold times (`< 10⁻¹²`) while reproducing the mean Newtonian phase; the disputed channel is carried as `[0, C_quantum]`.
+6. Planted defect: the LOCC channel carries the quantum phases; rule 5 fails and `--planted-defect` exits non-zero.
+7. `t05_reference.json` matches `manifest.json` and regenerates byte for byte.
+
+## 5. What the instrument shows (reader side)
+- Left: two masses each in two places and the four branch lines with their separations. Right: entanglement against hold time; the three channels drawn at equal weight (quantum curve, LOCC flat line, disputed hatched band).
+- Knockout: switch the channel. Planted defect: a classical LOCC channel that entangles.
+- Predict before you reveal: the concurrence after 2.5 s in the 2017 geometry.
+
+## 6. Exact T0–T3 truth boundary
+### In the repository today (T0/T1)
+- Kernel `tools/timegravity_kernel_entangle.py` (`branch_phases`, `entanglement_phase`, `concurrence_closed`, `four_branch_state`, `negativity`, `negativity_threshold_gamma_t`, `disputed_interval`, `check_bmv`), generator, verifier, ledger rows above.
+
+### Not on this page (T2/T3)
+- No gravitationally induced entanglement has been measured; no claim is made about which of the 2025 positions is right.
+- Casimir–Polder, magnetic and electrostatic forces, the witness statistics of the proposal, and the decoherence budgets of specific laboratories are not modelled beyond a single local dephasing rate.
