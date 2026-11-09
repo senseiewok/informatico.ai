@@ -293,6 +293,16 @@ PAGE: dict = {
               "consistente con gravedad clásica y materia cuántica debe intercambiar decoherencia de la materia por difusión del campo, "
               "acotaron esa difusión con mediciones tipo Cavendish y de atractor giratorio en D₂ ≤ 10⁻⁴¹ kg² s m⁻³, y nombraron al núcleo de "
               "Diósi–Penrose como miembro de la clase."),
+            T(" At the laboratory rungs the model is quiet: its own decoherence falls as σ⁻³ for separations well inside the smearing, by the "
+              "letter's expansion, and the radiation the three detectors bounded scales as 1/R0³, which is why their bounds run from below and sit "
+              "a hundred thousand times or more under the entangling range. The handles built on the model's noise or coherence go slack as σ "
+              "grows; the deficit in the mean pull grows instead, which is why the inverse-square tests are where this site's T.05 estimate is set "
+              "against the model.",
+              " En los peldaños de laboratorio el modelo es silencioso: su propia decoherencia cae como σ⁻³ para separaciones bien dentro del "
+              "suavizado, por la expansión de la carta, y la radiación que acotaron los tres detectores escala como 1/R0³, por lo que sus cotas "
+              "corren desde abajo y quedan cien mil veces o más por debajo del rango que entrelaza. Las asas construidas sobre el ruido o la "
+              "coherencia del modelo se aflojan al crecer σ; el déficit en la atracción media crece en cambio, y por eso las pruebas del inverso "
+              "del cuadrado son donde la estimación T.05 de este sitio se confronta con el modelo."),
         ),
         P(
             C("OPEN", [TRILLO, HAMEROFF, HELOU, LEE],

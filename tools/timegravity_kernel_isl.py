@@ -53,6 +53,7 @@ EW_S_MAX_M = 3.0e-3
 EW_N_FOLDS = (18, 120)
 EW_YUKAWA_EDGE_LAMBDA_M = 38.6e-6   # α = −1 excluded beyond this range at 95 %
 HUST_LAMBDA_M = 48e-6               # |α| ≤ 1 down to this range at 95 %
+HUST_GAP_M = 210e-6                 # surface-to-surface gap of the 2020 apparatus (Murata, Fujiie & Suzuki 2026, Fig. 8 caption)
 ISL_SIGMAS_M = (30e-6, 40e-6, 50e-6, 75e-6, 100e-6, 250e-6)
 ISL_TOL = 1e-9
 GL_POINTS = 24
@@ -135,6 +136,37 @@ def yukawa_thick_plate_ratio(q: float, s: float, alpha: float, lam: float, t1: f
             den += wi * wj * math.exp(-q * gap) / q
             num += wi * wj * (math.exp(-q * gap) / q + alpha * math.exp(-kappa * gap) / kappa)
     return num / den
+
+
+def pair_deviation_smeared(r: float, sigma: float) -> float:
+    """Fraction of Newton's pull between two point elements r apart that the smeared potential removes: 1 − erf(r/2σ) = erfc(r/2σ)."""
+    return math.erfc(r / (2.0 * sigma))
+
+
+def pair_deviation_yukawa(r: float, alpha: float = 1.0, lam: float = HUST_LAMBDA_M) -> float:
+    """Fraction of Newton's pull between two point elements r apart that a Yukawa α e^{−r/λ} adds or removes."""
+    return alpha * math.exp(-r / lam)
+
+
+def hust_pair_level(sigmas: tuple[float, ...] = (44e-6, 55e-6, 75e-6, 100e-6)) -> dict:
+    """At the HUST 2020 gap, pair-level deviations for several σ against the α = 1 Yukawa at that group's 95 % edge. The apparatus
+    (a 0.2 mm pendulum plate facing a 1.8 mm plate at 210 µm, a rotating eight-plate far source) is not modelled: its modulation and
+    compensation scheme is not in open text."""
+    return {"gap_m": HUST_GAP_M, "yukawa_edge_alpha_1_lambda_48um": pair_deviation_yukawa(HUST_GAP_M),
+            "smeared_by_sigma": {f"{s * 1e6:.0f}um": pair_deviation_smeared(HUST_GAP_M, s) for s in sigmas},
+            "sigma_matching_edge_m": 0.5 * HUST_GAP_M / _erfc_inverse(pair_deviation_yukawa(HUST_GAP_M))}
+
+
+def _erfc_inverse(y: float) -> float:
+    """x with erfc(x) = y, by bisection on [0, 10]."""
+    lo, hi = 0.0, 10.0
+    for _ in range(200):
+        mid = 0.5 * (lo + hi)
+        if math.erfc(mid) > y:
+            lo = mid
+        else:
+            hi = mid
+    return 0.5 * (lo + hi)
 
 
 def eotwash_mode_wavenumber(n_fold: int) -> float:
@@ -241,7 +273,7 @@ def check_isl(planted_defect: bool = False) -> dict:
                     "ratio_sigma_75um_to_edge_120fold": ratio_75_to_edge,
                     "q_tail_120fold_per_m": q_tail_120, "deficit_120fold_sigma_75um_at_tail_wavenumber": deficit_tail_75,
                     "sigma_c_letter_geometry_m": sigma_c_fig3, "deficit_120fold_at_sigma_c_letter_geometry": deficit_at_sigma_c_fig3},
-        "hust_lambda_m": HUST_LAMBDA_M, "ew_ok": ew_ok, "defect_rejected": defect_rejected,
+        "hust_lambda_m": HUST_LAMBDA_M, "hust_pair_level": hust_pair_level(), "ew_ok": ew_ok, "defect_rejected": defect_rejected,
         "ok": quad_ok and limits_ok and monotone_ok and ew_ok and defect_rejected,
     }
 

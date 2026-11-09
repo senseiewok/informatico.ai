@@ -1588,6 +1588,15 @@
   "title": "Seeing Page Curves and Islands with Blinders On",
   "year": 2026
  },
+ "doi:10.48550/arxiv.2605.18212": {
+  "fetched": "2026-11-09",
+  "first_author": "Murata",
+  "found": true,
+  "journal": "arXiv",
+  "registry": "DataCite (preprint)",
+  "title": "Short-Range Tests of the Gravitational Inverse-Square Law",
+  "year": 2026
+ },
  "doi:10.48550/arxiv.2608.16732": {
   "fetched": "2026-11-08",
   "first_author": "Stoica",
@@ -3994,6 +4003,18 @@
   "retracted": false,
   "supporting": 0,
   "total_smart_citations": 6,
+  "unclassified": 0
+ },
+ "scite:10.48550/arxiv.2605.18212": {
+  "citing_publications": 0,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 0,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 0,
   "unclassified": 0
  },
  "scite:10.48550/arxiv.2608.16732": {

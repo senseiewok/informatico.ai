@@ -34,6 +34,7 @@ VDK = "T05-VANDEKAMP2020"
 LEE = "T05-LEE2020"
 TAN = "T05-TAN2020"
 LEE21 = "T05-LEE2021"
+MURATA = "T05-MURATA2026"
 
 PAGE: dict = {
     "slug": SLUG,
@@ -73,7 +74,7 @@ PAGE: dict = {
     "skill_filename": "timegravity-t05-entanglement-channels.SKILL.md",
     "open_question_en": "If a classical slope can entangle, what would count as quantum gravity?",
     "open_question_es": "Si una pendiente clásica puede entrelazar, ¿qué contaría como gravedad cuántica?",
-    "ledger_ids": [BOSE, MV, WEST, FUCHS, AGAF, TROY, KTM, PERES, WOOT, AZIZ, TRILLO, SCHN, MV25, DIOSI25, TOBAR, TILLOY, VDK, LEE, TAN, LEE21],
+    "ledger_ids": [BOSE, MV, WEST, FUCHS, AGAF, TROY, KTM, PERES, WOOT, AZIZ, TRILLO, SCHN, MV25, DIOSI25, TOBAR, TILLOY, VDK, LEE, TAN, LEE21, MURATA],
     "ai_line_en": (
         "AI contribution to the cited results: none. No AI system contributed to any proposal, measurement, derivation or rebuttal cited on this page. "
         "The page text, instrument and verifier were drafted with AI assistance and checked by the site maintainer against the primary sources listed below."
@@ -322,6 +323,19 @@ PAGE: dict = {
               "mostró que se cumple con |α| ≤ 1 hasta una escala de longitud de 48 µm."),
             T(" The smearing that lets the model entangle softens its pull below about 2σ, and the same pull must act between the test bodies of these experiments.",
               " El suavizado que permite al modelo entrelazar ablanda su atracción por debajo de unas 2σ, y la misma atracción debe actuar entre los cuerpos de prueba de estos experimentos."),
+            C("PROPOSED", [TRILLO, TAN, MURATA],
+              "The second group's 2020 apparatus is described in a 2026 review: tungsten plates 0.2 mm thick on the pendulum facing a 1.8 mm plate at a "
+              "surface gap of 210 µm, with a rotating eight-plate source farther away; its modulation scheme is not in open text, and the site does not "
+              "model it. At the pair level, between a test-mass element and a source element at that gap, the smeared potential removes erfc(210 µm/2σ) "
+              "of Newton's pull, 4.8 % at σ = 75 µm, where the α = 1, λ = 48 µm Yukawa at that group's 95 % edge would remove 1.3 % of the same pull; "
+              "the two match at σ ≈ 60 µm, so at this gap the shape sits under that Yukawa for smaller σ and above it beyond, and the 52 µm test is the "
+              "more sensitive of the two for it.",
+              "El aparato de 2020 del segundo grupo se describe en una revisión de 2026: placas de tungsteno de 0.2 mm de espesor en el péndulo frente a "
+              "una placa de 1.8 mm a un hueco entre superficies de 210 µm, con una fuente giratoria de ocho placas más lejos; su esquema de modulación no "
+              "está en texto abierto, y el sitio no lo modela. A nivel de par, entre un elemento de la masa de prueba y uno de la fuente a ese hueco, el "
+              "potencial suavizado quita erfc(210 µm/2σ) de la atracción de Newton, 4.8 % a σ = 75 µm, donde el Yukawa de α = 1 y λ = 48 µm en el borde "
+              "al 95 % de ese grupo quitaría 1.3 % de la misma atracción; los dos coinciden en σ ≈ 60 µm, así que a este hueco la forma queda bajo ese "
+              "Yukawa para σ menores y por encima más allá, y la prueba a 52 µm es la más sensible de las dos para ella."),
         ),
         P(
             C("PROPOSED", [TRILLO, LEE, LEE21],
@@ -481,6 +495,7 @@ PAGE: dict = {
          "El acoplamiento gravitatorio está unos cuarenta y tres órdenes de magnitud por debajo del electromagnético, como señala el artículo de suficiencia de 2017, y aun así la fase tras 2.5 s es un tercio de radián. El problema del experimento es el aislamiento: 10⁻¹⁵ Pa y 0.15 K, sin campo parásito, durante segundos. Por eso la página lista los récords de enfriamiento como distancia recorrida."),
     ],
     "sources": [
+        ("Murata, J., Fujiie, T., & Suzuki, S. (2026). Short-range tests of the gravitational inverse-square law. arXiv:2605.18212.", "10.48550/arXiv.2605.18212"),
         ("Bose, S., Mazumdar, A., Morley, G. W., Ulbricht, H., Toroš, M., Paternostro, M., Geraci, A. A., Barker, P. F., Kim, M. S., & Milburn, G. (2017). Spin entanglement witness for quantum gravity. Physical Review Letters, 119(24), 240401.", "10.1103/PhysRevLett.119.240401"),
         ("Marletto, C., & Vedral, V. (2017). Gravitationally induced entanglement between two massive particles is sufficient evidence of quantum effects in gravity. Physical Review Letters, 119(24), 240402.", "10.1103/PhysRevLett.119.240402"),
         ("Westphal, T., Hepach, H., Pfaff, J., & Aspelmeyer, M. (2021). Measurement of gravitational coupling between millimetre-sized masses. Nature, 591, 225–228.", "10.1038/s41586-021-03250-7"),

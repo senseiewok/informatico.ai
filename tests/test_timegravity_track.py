@@ -520,7 +520,7 @@ class TimeGravityBatch4Tests(unittest.TestCase):
         t06 = (TG / "t06" / "index.html").read_text(encoding="utf-8")
         self.assertNotIn("MEASURED", labels_of(TG / "t06" / "index.html"), "a bound page measures nothing")
         for s in ("576", "506", "0.54 × 10⁻¹⁰ m", "0.05 × 10⁻¹⁰ m", "4.9 × 10⁻¹⁰ m", "CSL is not a gravity model", "Where the smearing may live", 'data-tg-figure="sigma-ladder"',
-                  "above 40 fm", "6.5 × 10⁸ s", "10²⁰ ages of the universe", "upper bounds can be put by observing no deviations", "not the preprint's", "twenty-nine orders of magnitude", "does not assess Orch-OR", "D₂ ≤ 10⁻⁴¹", "draws no conclusion beyond it"):
+                  "above 40 fm", "6.5 × 10⁸ s", "10²⁰ ages of the universe", "upper bounds can be put by observing no deviations", "not the preprint's", "the model is quiet", "a hundred thousand times or more", "the deficit in the mean pull grows instead", "twenty-nine orders of magnitude", "does not assess Orch-OR", "D₂ ≤ 10⁻⁴¹", "draws no conclusion beyond it"):
             self.assertIn(s, t06, f"T.06 lacks {s!r}")
         t10 = (TG / "t10" / "index.html").read_text(encoding="utf-8")
         for s in ("signal-to-noise ratio of 80", "to high credibility", "does not recompute it", "Where does the information go, in our universe?"):
@@ -679,6 +679,10 @@ class TimeGravitySmearedIslTests(unittest.TestCase):
         win = cn["window_at_matching_sigma"]
         self.assertAlmostEqual(win["d_c_small_split_m"] * 1e6, 37.5, delta=0.5)
         self.assertAlmostEqual(win["d_c_letter_split_m"] * 1e6, 14.9, delta=0.5)
+        hp = cn["hust_pair_level"]
+        self.assertAlmostEqual(hp["smeared_by_sigma"]["75um"], 0.0477, delta=0.0005)
+        self.assertAlmostEqual(hp["yukawa_edge_alpha_1_lambda_48um"], 0.0126, delta=0.0003)
+        self.assertTrue(55e-6 < hp["sigma_matching_edge_m"] < 70e-6, hp)
         self.assertFalse(win["letter_geometry_entangles"])
         bad = run(PY + [str(SKILLS / "t05" / "verify_t05_smeared_isl.py"), "--planted-defect"])
         self.assertNotEqual(bad.returncode, 0)
@@ -694,7 +698,7 @@ class TimeGravitySmearedIslTests(unittest.TestCase):
         self.assertEqual(labels_of(en), labels_of(es))
         txt = en.read_text(encoding="utf-8")
         for s in ("erfc(qσ − s/2σ)", "54 and 99 µm thick", "13.00 and 23.00 mm", "23.51 and 26.00 mm", "1.5 fN·m at 72 µm", "removes 17 %", "4.3 % at 50 µm", "6.3 % at 55 µm", "removes 2.5 %",
-                  "44 µm", "one-mode lower bound", "near 49 µm", "not a bound on σ", "curve match with no data behind it", "below 37 µm", "below 15 µm", "and not for the", "Taken as a hypothesis, not as a bound", "close to the 44.4 µm", "Casimir", "cannot fall below 17 µm", "it stays open, between 17 and 37 µm",
+                  "44 µm", "one-mode lower bound", "near 49 µm", "not a bound on σ", "surface gap of 210 µm", "4.8 % at σ = 75 µm", "the two match at σ ≈ 60 µm", "curve match with no data behind it", "below 37 µm", "below 15 µm", "and not for the", "Taken as a hypothesis, not as a bound", "close to the 44.4 µm", "Casimir", "cannot fall below 17 µm", "it stays open, between 17 and 37 µm",
                   "previously untested", "leaves it open", "full wedge pattern", 'data-tg-read="isl"'):
             self.assertIn(s, txt, f"T.05 lacks {s!r}")
         low = txt.lower()

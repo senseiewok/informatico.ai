@@ -671,7 +671,7 @@
       "collaboration": "Tan et al. (HUST, Huazhong University of Science and Technology)",
       "kind": "peer-reviewed",
       "review_by": "2028-11-09",
-      "note": "Improvement for testing the gravitational inverse-square law at the submillimeter range: |alpha| <= 1 holds down to lambda = 48 um at 95 % confidence; strongest bound on alpha in the range 40-350 um."
+      "note": "Improvement for testing the gravitational inverse-square law at the submillimeter range: |alpha| <= 1 holds down to lambda = 48 um at 95 % confidence; strongest bound on alpha in the range 40-350 um. Apparatus geometry (from the 2026 review by Murata, Fujiie & Suzuki, Fig. 8): two 0.2 mm tungsten pendulum plates facing a 1.8 mm tungsten plate at a 210 um surface gap, a rotating eight-plate far source, a 30 um Be-Cu shield; the modulation and compensation scheme is not in open text."
     },
     {
       "id": "T05-LEE2021",
@@ -722,6 +722,16 @@
       "kind": "preprint",
       "review_by": "2027-11-09",
       "note": "Diffusion minimization via optimal smearing in collapse and hybrid classical-quantum gravitational models (GRW, CSL, DP, Tilloy-Diosi): notes that for the smearing length 'upper bounds can be put by observing no deviations from Newton's law of gravitation' without working one out. Preprint; young row."
+    },
+    {
+      "id": "T05-MURATA2026",
+      "label": "PROPOSED",
+      "doi": "10.48550/arXiv.2605.18212",
+      "year": 2026,
+      "collaboration": "Murata, Fujiie & Suzuki (arXiv review)",
+      "kind": "preprint",
+      "review_by": "2027-11-09",
+      "note": "Short-range tests of the gravitational inverse-square law (review): the UW 2020 geometry in its Fig. 7 caption and the HUST 2020 geometry in its Fig. 8 caption; no smeared or erf-type potential anywhere in it; preprint, young row, cited for geometry only."
     }
   ]
 }

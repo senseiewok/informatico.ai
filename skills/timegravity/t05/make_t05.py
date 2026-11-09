@@ -73,6 +73,7 @@ def isl_block() -> dict:
                 "quadrature and its limits; Eot-Wash 2020 geometry at the pattern's lowest wavenumber (a one-mode estimate); the Yukawa at the published "
                 "edge is a predicted signal size for comparison, not a bound on sigma; HUST 2020 quoted as published; labelled PROPOSED and OPEN on the page",
         "quadrature_probes": r["quadrature_probes"], "limits": r["limits"], "eotwash": r["eotwash"], "hust_lambda_m": r["hust_lambda_m"],
+        "hust_pair_level": r["hust_pair_level"],
         "wedge": {k: v for k, v in check_wedge().items() if k not in ("bessel_probes", "radial_probes")},
     })
 

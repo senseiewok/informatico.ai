@@ -507,6 +507,17 @@
       "deficit_120fold_at_sigma_c_letter_geometry": 0.0365047576241
     },
     "hust_lambda_m": 4.8e-05,
+    "hust_pair_level": {
+      "gap_m": 0.00021,
+      "yukawa_edge_alpha_1_lambda_48um": 0.0125881422424,
+      "smeared_by_sigma": {
+        "44um": 0.000738618872335,
+        "55um": 0.00693681899416,
+        "75um": 0.0477148802374,
+        "100um": 0.13756389391
+      },
+      "sigma_matching_edge_m": 5.95109131332e-05
+    },
     "wedge": {
       "geometry": {
         "120": {
