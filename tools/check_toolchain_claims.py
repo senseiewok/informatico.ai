@@ -117,6 +117,9 @@ def check_forbidden_proprietary_mentions(root: Path, errors: list[str]) -> None:
         root / "tools" / "toolchain_uga.py",
     ]
     scan_targets.extend((root / "tools" / "folios" / "toolchain").glob("*.py"))
+    scan_targets.extend((root / "tools" / "folios" / "bounties").glob("*.py"))
+    scan_targets.extend((root / "src" / "research" / "bounties").glob("**/index.html"))
+    scan_targets.extend((root / "src" / "research" / "es-mx" / "bounties").glob("**/index.html"))
     scan_targets.extend((root / "skills" / "toolchain").glob("x0*/SKILL.md"))
     scan_targets.extend((root / "src" / "research" / "toolchain").glob("x0*/files/manifest.json"))
     scan_targets.extend((root / "src" / "research" / "toolchain").glob("**/index.html"))

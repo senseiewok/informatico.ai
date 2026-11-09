@@ -25,9 +25,9 @@ FOLIO = {'slug': 'x04',
  'why_en': 'Small architectural practices and independent makers frequently prototype adaptive '
            'shading screens, acoustic baffles, and folded-plate canopies using laser cutters, CNC '
            'drag-knives, or sheet-metal brakes. Folio X.04 pairs a 3D thickened Miura-ori shell '
-           '(.glb, .3mf) with a production-structured 2D clean-room ASCII DXF (R2000 standard) flat pattern separated into '
-           'CUT, MOUNTAIN, and VALLEY layers—while proving mathematically that every interior '
-           'degree-4 vertex satisfies flat-foldability.',
+           '(.glb, .3mf) with a production-structured 2D clean-room ASCII DXF (R2000 standard) '
+           'flat pattern separated into CUT, MOUNTAIN, and VALLEY layers—while proving '
+           'mathematically that every interior degree-4 vertex satisfies flat-foldability.',
  'why_es': 'Los estudios pequeños de arquitectura y talleres de fabricación digital suelen '
            'prototipar celosías solares adaptativas, paneles acústicos y cubiertas plegadas con '
            'cortadoras láser, routers CNC o dobladoras de lámina. El Folio X.04 combina una malla '

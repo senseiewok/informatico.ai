@@ -222,11 +222,11 @@ FOLIO = {'slug': 'x01',
              '10.1145/2504435.2504442',
              'Lalish, E. (2023–2026). Manifold: Geometry library for topological robustness '
              '(Apache-2.0). https://github.com/elalish/manifold'],
- 'act1_plain_bridge': 'Think of a digital 3D model like a hollow balloon made of '
-                      'tiny flat triangles. To hold air, every single edge must be stitched neatly '
-                      'between exactly two neighboring patches. If a single seam stays open, or if '
-                      'one patch faces backward, the balloon leaks. In the computer world, we call '
-                      'an unbroken shell a watertight mesh. When you export a 3D file from design '
+ 'act1_plain_bridge': 'Think of a digital 3D model like a hollow balloon made of tiny flat '
+                      'triangles. To hold air, every single edge must be stitched neatly between '
+                      'exactly two neighboring patches. If a single seam stays open, or if one '
+                      'patch faces backward, the balloon leaks. In the computer world, we call an '
+                      'unbroken shell a watertight mesh. When you export a 3D file from design '
                       'software, things often go wrong quietly. Programs write numbers slightly '
                       'differently, round off corners, or skip hidden seams. You might not see any '
                       'flaws on your screen, but downstream tools fail immediately. That is why we '

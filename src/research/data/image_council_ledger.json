@@ -1,9 +1,8 @@
 {
   "schema_version": "1.2",
-  "law": "Law 8 & Law 17 \u2014 Human-Scale Grounded Scientific Plate Generation & 4-Seat Image Selection Council",
-  "total_plates_replaced": 65,
+  "law": "Law 8 & Law 17 — Human-Scale Grounded Scientific Plate Generation & 4-Seat Image Selection Council",
+  "total_plates_replaced": 61,
   "magazine_plates_count": 61,
-  "cf_flagship_plates_count": 4,
   "council_seats": [
     "gemini-4-argon (Physical Specification & Structural Plausibility Seat)",
     "claude-opus-5.5 (Human Perceptual Impact & Tactile Craft Seat)",
@@ -212,7 +211,7 @@
     {
       "plate_id": "a07",
       "path": "src/research/plates/a07.jpg",
-      "governing_specification": "Luis Barrag\u00e1n Rosa Mexicano stucco courtyard wall, golden light corridor & cobalt pool",
+      "governing_specification": "Luis Barragán Rosa Mexicano stucco courtyard wall, golden light corridor & cobalt pool",
       "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
       "winning_engine": "image-generator-argon-spec-verified",
       "resolution": "1280x720",
@@ -487,7 +486,7 @@
     {
       "plate_id": "m08",
       "path": "src/research/plates/m08.jpg",
-      "governing_specification": "Schr\u00f6dinger Riemannian color manifold horn with glowing geodesic path on vellum",
+      "governing_specification": "Schrödinger Riemannian color manifold horn with glowing geodesic path on vellum",
       "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
       "winning_engine": "image-generator-argon-spec-verified",
       "resolution": "1280x720",
@@ -681,50 +680,6 @@
       "bytes": 422382,
       "zero_baked_text_verified": true,
       "sha256": "98f12fbd49e3eb85cd5a585ef34cdb120d077e3e4c0d2a9c586cde610885f756"
-    },
-    {
-      "plate_id": "cf-sixty-five-roses-atelier",
-      "path": "src/images/plates/cf-sixty-five-roses-atelier.jpg",
-      "governing_specification": "Burgundy roses on brass stems, optical glass prism & crystal DNA helix on travertine table",
-      "human_perceptual_grounding": "pure_tactile_physical_photography_zero_wireframe_soup",
-      "winning_engine": "image-generator-argon-spec-verified",
-      "resolution": "1280x720",
-      "bytes": 298037,
-      "zero_baked_text_verified": true,
-      "sha256": "582df02c05ee06b9120c21a194de57e403bb58f4c62569d6d88208071f8274bc"
-    },
-    {
-      "plate_id": "cf-airway-mucus-lnp",
-      "path": "src/images/plates/cf-airway-mucus-lnp.jpg",
-      "governing_specification": "Luminous zwitterionic lipid nanoparticles traversing airway mucin mesh toward ciliated epithelium",
-      "human_perceptual_grounding": "pure_tactile_physical_photography_zero_wireframe_soup",
-      "winning_engine": "image-generator-argon-spec-verified",
-      "resolution": "1280x720",
-      "bytes": 369758,
-      "zero_baked_text_verified": true,
-      "sha256": "0504406bfafdc384fb10c062bdcc7e2fa1b306a7cdb05a1980f0ccb4aeb5543f"
-    },
-    {
-      "plate_id": "cf-cftr-cryoem-pocket",
-      "path": "src/images/plates/cf-cftr-cryoem-pocket.jpg",
-      "governing_specification": "Cryo-EM CFTR transmembrane alpha-helices in lipid bilayer conducting glowing chloride ions",
-      "human_perceptual_grounding": "pure_tactile_physical_photography_zero_wireframe_soup",
-      "winning_engine": "image-generator-argon-spec-verified",
-      "resolution": "1280x720",
-      "bytes": 268599,
-      "zero_baked_text_verified": true,
-      "sha256": "a35e2aa2776356e065ed21d8bba9b21d68ce710eb264f90627719af22bab51e1"
-    },
-    {
-      "plate_id": "cf-ptc-ribosome-rescue",
-      "path": "src/images/plates/cf-ptc-ribosome-rescue.jpg",
-      "governing_specification": "80S ribosome translating mRNA strand with engineered suppressor tRNA rescuing premature stop codon",
-      "human_perceptual_grounding": "pure_tactile_physical_photography_zero_wireframe_soup",
-      "winning_engine": "image-generator-argon-spec-verified",
-      "resolution": "1280x720",
-      "bytes": 1212302,
-      "zero_baked_text_verified": true,
-      "sha256": "c6cdf165bf3c27de5cdefa75bd1689eaacaeee978e43e6fd9e78727e4324169f"
     }
   ]
 }
