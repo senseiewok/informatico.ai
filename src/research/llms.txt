@@ -87,3 +87,10 @@ Every essay, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish u
 - [X.04 (TOOL-ARCH-2) Miura-Ori Kinetic Screens: 3D GLB to Laser-Cut DXF](https://informatico.ai/toolchain/x04/): How small studios and makers generate deployable Miura-ori facade shells in 3D GLB and 3MF alongside layered 2D laser-cutter DXF crease patterns.
 - [X.05 (TOOL-FAB-1) SIMP Structural Lattices to Watertight 3MF Meshes](https://informatico.ai/toolchain/x05/): How variable-taper SIMP structural struts are synthesized as watertight 2-manifold 3MF, GLB and STEP meshes with frustum volume and overhang checks.
 - [X.06 (TOOL-PHYS-MATH-1) Topological Metamaterial Cells and Betti Verifier](https://informatico.ai/toolchain/x06/): How pierced genus-one acoustic metamaterial unit cells are exported to GLB, 3MF and STEP while a Python verifier checks Euler and Betti invariants.
+
+## Time & Gravity · Nine Pages on an Open Problem (T.00–T.07, T.10)
+
+- [Time & Gravity](https://informatico.ai/timegravity/): A reading track from the measured slope in the rate of time to the open problem of time in quantum gravity, with instruments, verifiers and a ledger.
+- [T.01 Gravity as a Slope in the Rate of Time](https://informatico.ai/timegravity/t01/): How measured clock-rate differences between heights make a slow body fall at g with no force term, with a live geodesic instrument and a Python verifier.
+- [T.02 Everyone Moves at One Rate: Clocks, GPS and c](https://informatico.ai/timegravity/t02/): How moving clocks tick slower by the Lorentz factor, measured from 1938 to 2014, and how the GPS satellite clock correction follows from GM, the orbit radius and c.
+- [T.03 What Sets the Slope: Poisson and the Equivalence Principle](https://informatico.ai/timegravity/t03/): How the weak-field Einstein equation reduces to Poisson's equation on a grid, and how torsion balances, lunar ranging and a satellite show every composition falls alike.

@@ -7,6 +7,30 @@
   "title": "Inhaled Nanoformulated mRNA Polyplexes for Protein Production in Lung Epithelium",
   "year": 2019
  },
+ "doi:10.1002/andp.19053221004": {
+  "fetched": "2026-11-08",
+  "first_author": "Einstein",
+  "found": true,
+  "journal": "Annalen der Physik",
+  "title": "Zur Elektrodynamik bewegter Körper",
+  "year": 1905
+ },
+ "doi:10.1002/andp.19113401005": {
+  "fetched": "2026-11-08",
+  "first_author": "Einstein",
+  "found": true,
+  "journal": "Annalen der Physik",
+  "title": "Über den Einfluß der Schwerkraft auf die Ausbreitung des Lichtes",
+  "year": 1911
+ },
+ "doi:10.1002/andp.19163540702": {
+  "fetched": "2026-11-08",
+  "first_author": "Einstein",
+  "found": true,
+  "journal": "Annalen der Physik",
+  "title": "Die Grundlage der allgemeinen Relativitätstheorie",
+  "year": 1916
+ },
  "doi:10.1002/andp.19203682202": {
   "fetched": "2026-11-04",
   "first_author": "Schrödinger",
@@ -351,6 +375,22 @@
   "title": "Selective organ targeting (SORT) nanoparticles for tissue-specific mRNA delivery and CRISPR–Cas gene editing",
   "year": 2020
  },
+ "doi:10.1038/s41586-021-04349-7": {
+  "fetched": "2026-11-08",
+  "first_author": "Bothwell",
+  "found": true,
+  "journal": "Nature",
+  "title": "Resolving the gravitational redshift across a millimetre-scale atomic sample",
+  "year": 2022
+ },
+ "doi:10.1038/s41586-023-06527-1": {
+  "fetched": "2026-11-08",
+  "first_author": "Anderson",
+  "found": true,
+  "journal": "Nature",
+  "title": "Observation of the effect of gravity on the motion of antimatter",
+  "year": 2023
+ },
  "doi:10.1038/s41586-023-06747-5": {
   "fetched": "2026-11-04",
   "first_author": "Trinh",
@@ -575,6 +615,22 @@
   "title": "Possible Realization of Directional Optical Waveguides in Photonic Crystals with Broken Time-Reversal Symmetry",
   "year": 2008
  },
+ "doi:10.1103/physrevlett.100.041101": {
+  "fetched": "2026-11-08",
+  "first_author": "Schlamminger",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Test of the Equivalence Principle Using a Rotating Torsion Balance",
+  "year": 2008
+ },
+ "doi:10.1103/physrevlett.113.120405": {
+  "fetched": "2026-11-08",
+  "first_author": "Botermann",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Test of Time Dilation Using Stored<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:mrow><mml:msup><mml:mrow><mml:mi>Li</mml:mi></mml:mrow><mml:mrow><mml:mo>+</mml:mo></mml:mrow></mml:msup></mml:mrow></mml:math>Ions as Clocks at Relativistic Speed",
+  "year": 2014
+ },
  "doi:10.1103/physrevlett.114.158101": {
   "fetched": "2026-11-04",
   "first_author": "Barato",
@@ -591,6 +647,38 @@
   "title": "Geometrical Bounds of the Irreversibility in Markovian Systems",
   "year": 2021
  },
+ "doi:10.1103/physrevlett.129.121102": {
+  "fetched": "2026-11-08",
+  "first_author": "Touboul",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\">\n                      <mml:mi>M</mml:mi>\n                      <mml:mi>I</mml:mi>\n                      <mml:mi>C</mml:mi>\n                      <mml:mi>R</mml:mi>\n                      <mml:mi>O</mml:mi>\n                      <mml:mi>S</mml:mi>\n                      <mml:mi>C</mml:mi>\n                      <mml:mi>O</mml:mi>\n                      <mml:mi>P</mml:mi>\n                      <mml:mi>E</mml:mi>\n                    </mml:math>\n                    Mission: Final Results of the Test of the Equivalence Principle",
+  "year": 2022
+ },
+ "doi:10.1103/physrevlett.133.071501": {
+  "fetched": "2026-11-08",
+  "first_author": "Cao",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Stringent Tests of Lorentz Invariance Violation from LHAASO Observations of GRB 221009A",
+  "year": 2024
+ },
+ "doi:10.1103/physrevlett.4.337": {
+  "fetched": "2026-11-08",
+  "first_author": "Pound",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Apparent Weight of Photons",
+  "year": 1960
+ },
+ "doi:10.1103/physrevlett.45.2081": {
+  "fetched": "2026-11-08",
+  "first_author": "Vessot",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Test of Relativistic Gravitation with a Space-Borne Hydrogen Maser",
+  "year": 1980
+ },
  "doi:10.1103/physrevlett.74.1250": {
   "fetched": "2026-11-04",
   "first_author": "Mason",
@@ -598,6 +686,14 @@
   "journal": "Physical Review Letters",
   "title": "Optical Measurements of Frequency-Dependent Linear Viscoelastic Moduli of Complex Fluids",
   "year": 1995
+ },
+ "doi:10.1103/physrevlett.93.261101": {
+  "fetched": "2026-11-08",
+  "first_author": "Williams",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Progress in Lunar Laser Ranging Tests of Relativistic Gravity",
+  "year": 2004
  },
  "doi:10.1103/physrevlett.95.130602": {
   "fetched": "2026-11-07",
@@ -695,6 +791,14 @@
   "title": "The propagation of plane sound waves in narrow and wide circular tubes, and generalization to uniform tubes of arbitrary cross-sectional shape",
   "year": 1991
  },
+ "doi:10.1126/science.1192720": {
+  "fetched": "2026-11-08",
+  "first_author": "Chou",
+  "found": true,
+  "journal": "Science",
+  "title": "Optical Clocks and Relativity",
+  "year": 2010
+ },
  "doi:10.1126/science.1223012": {
   "fetched": "2026-11-04",
   "first_author": "Button",
@@ -710,6 +814,22 @@
   "journal": "Science",
   "title": "Minimal \"Self\" Peptides That Inhibit Phagocytic Clearance and Enhance Delivery of Nanoparticles",
   "year": 2013
+ },
+ "doi:10.1126/science.177.4044.166": {
+  "fetched": "2026-11-08",
+  "first_author": "Hafele",
+  "found": true,
+  "journal": "Science",
+  "title": "Around-the-World Atomic Clocks: Predicted Relativistic Time Gains",
+  "year": 1972
+ },
+ "doi:10.1126/science.177.4044.168": {
+  "fetched": "2026-11-08",
+  "first_author": "Hafele",
+  "found": true,
+  "journal": "Science",
+  "title": "Around-the-World Atomic Clocks: Observed Relativistic Time Gains",
+  "year": 1972
  },
  "doi:10.1126/science.aaa3974": {
   "fetched": "2026-11-04",
@@ -887,6 +1007,22 @@
   "title": "Treatment Wetlands",
   "year": 2008
  },
+ "doi:10.12942/lrr-2003-1": {
+  "fetched": "2026-11-08",
+  "first_author": "Ashby",
+  "found": true,
+  "journal": "Living Reviews in Relativity",
+  "title": "Relativity in the Global Positioning System",
+  "year": 2003
+ },
+ "doi:10.12942/lrr-2014-4": {
+  "fetched": "2026-11-08",
+  "first_author": "Will",
+  "found": true,
+  "journal": "Living Reviews in Relativity",
+  "title": "The Confrontation between General Relativity and Experiment",
+  "year": 2014
+ },
  "doi:10.1364/josa.11.000233": {
   "fetched": "2026-11-04",
   "first_author": "Timoshenko",
@@ -894,6 +1030,14 @@
   "journal": "Journal of the Optical Society of America",
   "title": "Analysis of Bi-Metal Thermostats",
   "year": 1925
+ },
+ "doi:10.1364/josa.28.000215": {
+  "fetched": "2026-11-08",
+  "first_author": "Ives",
+  "found": true,
+  "journal": "Journal of the Optical Society of America",
+  "title": "An Experimental Study of the Rate of a Moving Atomic Clock",
+  "year": 1938
  },
  "doi:10.1364/josa.32.000247": {
   "fetched": "2026-11-04",
@@ -1431,6 +1575,42 @@
   "title": "Functional correction of the untreatable CFTR 1717-1G>A mutation through mRNA- and sgRNA-optimized base editing.",
   "year": "2026"
  },
+ "scite:10.1002/andp.19053221004": {
+  "citing_publications": 4989,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 2333,
+  "retracted": false,
+  "supporting": 36,
+  "total_smart_citations": 2472,
+  "unclassified": 103
+ },
+ "scite:10.1002/andp.19113401005": {
+  "citing_publications": 802,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 284,
+  "retracted": false,
+  "supporting": 12,
+  "total_smart_citations": 305,
+  "unclassified": 9
+ },
+ "scite:10.1002/andp.19163540702": {
+  "citing_publications": 3954,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 1,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 1570,
+  "retracted": false,
+  "supporting": 28,
+  "total_smart_citations": 1652,
+  "unclassified": 53
+ },
  "scite:10.1002/andp.19203682202": {
   "citing_publications": 102,
   "contrasting": 0,
@@ -1795,6 +1975,30 @@
   "unclassified": 8,
   "year": 2020
  },
+ "scite:10.1038/s41586-021-04349-7": {
+  "citing_publications": 554,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 1,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 258,
+  "retracted": false,
+  "supporting": 7,
+  "total_smart_citations": 269,
+  "unclassified": 3
+ },
+ "scite:10.1038/s41586-023-06527-1": {
+  "citing_publications": 139,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 1,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 70,
+  "retracted": false,
+  "supporting": 4,
+  "total_smart_citations": 75,
+  "unclassified": 0
+ },
  "scite:10.1038/s41586-023-06747-5": {
   "citing_publications": 378,
   "contrasting": 0,
@@ -2005,6 +2209,30 @@
   "unclassified": 4,
   "year": 2008
  },
+ "scite:10.1103/physrevlett.100.041101": {
+  "citing_publications": 907,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 1,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 798,
+  "retracted": false,
+  "supporting": 15,
+  "total_smart_citations": 821,
+  "unclassified": 7
+ },
+ "scite:10.1103/physrevlett.113.120405": {
+  "citing_publications": 84,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 49,
+  "retracted": false,
+  "supporting": 2,
+  "total_smart_citations": 52,
+  "unclassified": 1
+ },
  "scite:10.1103/physrevlett.114.158101": {
   "citing_publications": 1293,
   "contrasting": 0,
@@ -2033,6 +2261,54 @@
   "unclassified": 0,
   "year": 2021
  },
+ "scite:10.1103/physrevlett.129.121102": {
+  "citing_publications": 261,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 49,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 49,
+  "unclassified": 0
+ },
+ "scite:10.1103/physrevlett.133.071501": {
+  "citing_publications": 70,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 37,
+  "retracted": false,
+  "supporting": 2,
+  "total_smart_citations": 39,
+  "unclassified": 0
+ },
+ "scite:10.1103/physrevlett.4.337": {
+  "citing_publications": 909,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 427,
+  "retracted": false,
+  "supporting": 17,
+  "total_smart_citations": 458,
+  "unclassified": 14
+ },
+ "scite:10.1103/physrevlett.45.2081": {
+  "citing_publications": 703,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 414,
+  "retracted": false,
+  "supporting": 15,
+  "total_smart_citations": 434,
+  "unclassified": 5
+ },
  "scite:10.1103/physrevlett.74.1250": {
   "citing_publications": 1778,
   "contrasting": 3,
@@ -2046,6 +2322,18 @@
   "total_smart_citations": 1828,
   "unclassified": 6,
   "year": 1995
+ },
+ "scite:10.1103/physrevlett.93.261101": {
+  "citing_publications": 779,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 529,
+  "retracted": false,
+  "supporting": 15,
+  "total_smart_citations": 545,
+  "unclassified": 1
  },
  "scite:10.1103/physrevresearch.2.023068": {
   "citing_publications": 717,
@@ -2131,6 +2419,18 @@
   "unclassified": 3,
   "year": 1930
  },
+ "scite:10.1126/science.1192720": {
+  "citing_publications": 933,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 572,
+  "retracted": false,
+  "supporting": 10,
+  "total_smart_citations": 590,
+  "unclassified": 8
+ },
  "scite:10.1126/science.1223012": {
   "citing_publications": 933,
   "contrasting": 0,
@@ -2158,6 +2458,30 @@
   "total_smart_citations": 774,
   "unclassified": 1,
   "year": 2013
+ },
+ "scite:10.1126/science.177.4044.166": {
+  "citing_publications": 576,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 1,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 256,
+  "retracted": false,
+  "supporting": 16,
+  "total_smart_citations": 276,
+  "unclassified": 3
+ },
+ "scite:10.1126/science.177.4044.168": {
+  "citing_publications": 373,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 1,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 185,
+  "retracted": false,
+  "supporting": 10,
+  "total_smart_citations": 199,
+  "unclassified": 3
  },
  "scite:10.1126/science.aaa3974": {
   "citing_publications": 218,
@@ -2411,6 +2735,30 @@
   "unclassified": 143,
   "year": 2008
  },
+ "scite:10.12942/lrr-2003-1": {
+  "citing_publications": 749,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 405,
+  "retracted": false,
+  "supporting": 6,
+  "total_smart_citations": 415,
+  "unclassified": 4
+ },
+ "scite:10.12942/lrr-2014-4": {
+  "citing_publications": 4423,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 3,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 2920,
+  "retracted": false,
+  "supporting": 56,
+  "total_smart_citations": 2996,
+  "unclassified": 17
+ },
  "scite:10.1364/josa.11.000233": {
   "citing_publications": 2499,
   "contrasting": 0,
@@ -2424,6 +2772,18 @@
   "total_smart_citations": 1528,
   "unclassified": 6,
   "year": 1925
+ },
+ "scite:10.1364/josa.28.000215": {
+  "citing_publications": 419,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 1,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 200,
+  "retracted": false,
+  "supporting": 13,
+  "total_smart_citations": 222,
+  "unclassified": 8
  },
  "scite:10.1364/josa.38.000448": {
   "citing_publications": 2781,

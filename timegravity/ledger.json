@@ -1,0 +1,197 @@
+{
+  "schema": "timegravity/ledger.schema.json",
+  "track": "Time & Gravity (T)",
+  "build_date_note": "review_by is checked against the build date by tools/check_timegravity_labels.py; a passed date fails the build.",
+  "rows": [
+    {
+      "id": "T01-PR1960",
+      "label": "MEASURED",
+      "doi": "10.1103/PhysRevLett.4.337",
+      "year": 1960,
+      "collaboration": "Harvard (Pound & Rebka)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Gravitational redshift of gamma rays over a 22.5 m tower; (5.13 +/- 0.51)e-15 vs 4.92e-15 predicted."
+    },
+    {
+      "id": "T01-HK1972P",
+      "label": "MEASURED",
+      "doi": "10.1126/science.177.4044.166",
+      "year": 1972,
+      "collaboration": "Hafele & Keating (USNO)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Predicted relativistic time gains for caesium clocks flown around the world (-40 +/- 23 ns east, 275 +/- 21 ns west)."
+    },
+    {
+      "id": "T01-HK1972O",
+      "label": "MEASURED",
+      "doi": "10.1126/science.177.4044.168",
+      "year": 1972,
+      "collaboration": "Hafele & Keating (USNO)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Observed relativistic time gains (-59 +/- 10 ns east, 273 +/- 7 ns west)."
+    },
+    {
+      "id": "T01-GPA1980",
+      "label": "MEASURED",
+      "doi": "10.1103/PhysRevLett.45.2081",
+      "year": 1980,
+      "collaboration": "Gravity Probe A (SAO / NASA, Vessot et al.)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Space-borne hydrogen maser to ~10,000 km; gravitational frequency shift agrees with prediction to ~70 ppm."
+    },
+    {
+      "id": "T01-CHOU2010",
+      "label": "MEASURED",
+      "doi": "10.1126/science.1192720",
+      "year": 2010,
+      "collaboration": "NIST (Chou et al.)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Two Al+ optical clocks, 33 cm height difference; (4.1 +/- 1.6)e-17 measured vs 3.6e-17 predicted."
+    },
+    {
+      "id": "T01-BOTH2022",
+      "label": "SINGLE RESULT",
+      "doi": "10.1038/s41586-021-04349-7",
+      "year": 2022,
+      "collaboration": "JILA (Bothwell et al.)",
+      "kind": "peer-reviewed",
+      "review_by": "2027-11-08",
+      "note": "Gravitational redshift resolved across one millimetre within a single strontium atom cloud; one collaboration at that scale."
+    },
+    {
+      "id": "T01-EIN1911",
+      "label": "DERIVED",
+      "doi": "10.1002/andp.19113401005",
+      "year": 1911,
+      "collaboration": "Einstein (Annalen der Physik)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Prediction of the gravitational redshift and the clock-rate dependence on potential; the derivation parent for T.01's DERIVED claims."
+    },
+    {
+      "id": "T01-WILL2014",
+      "label": "OPEN",
+      "doi": "10.12942/lrr-2014-4",
+      "year": 2014,
+      "collaboration": "Will (Living Reviews in Relativity)",
+      "kind": "review",
+      "review_by": "2028-11-08",
+      "note": "Standard survey of experimental tests of general relativity; anchors the OPEN statement that the measurements do not pick between the two descriptions."
+    },
+    {
+      "id": "T02-EIN1905",
+      "label": "DERIVED",
+      "doi": "10.1002/andp.19053221004",
+      "year": 1905,
+      "collaboration": "Einstein (Annalen der Physik)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Special relativity: the Lorentz factor and time dilation; derivation parent for the four-velocity statement."
+    },
+    {
+      "id": "T02-IS1938",
+      "label": "MEASURED",
+      "doi": "10.1364/JOSA.28.000215",
+      "year": 1938,
+      "collaboration": "Ives & Stilwell (Bell Labs)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Transverse Doppler shift of canal rays: first laboratory measurement of time dilation."
+    },
+    {
+      "id": "T02-BOT2014",
+      "label": "MEASURED",
+      "doi": "10.1103/PhysRevLett.113.120405",
+      "year": 2014,
+      "collaboration": "Botermann et al. (GSI ESR storage ring)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Li+ ions at about a third of c: Lorentz time dilation confirmed at high precision."
+    },
+    {
+      "id": "T02-ASHBY2003",
+      "label": "DERIVED",
+      "doi": "10.12942/lrr-2003-1",
+      "year": 2003,
+      "collaboration": "Ashby (Living Reviews in Relativity)",
+      "kind": "review",
+      "review_by": "2028-11-08",
+      "note": "Relativity in the Global Positioning System: the derivation of the ~38 us/day net satellite clock offset."
+    },
+    {
+      "id": "T02-LHAASO2024",
+      "label": "BOUND",
+      "doi": "10.1103/PhysRevLett.133.071501",
+      "year": 2024,
+      "collaboration": "LHAASO Collaboration",
+      "kind": "peer-reviewed",
+      "review_by": "2027-11-08",
+      "note": "GRB 221009A: Lorentz-invariance violation bounds E_QG,1 > 10 E_Pl and E_QG,2 > 6e-8 E_Pl at 95% CL."
+    },
+    {
+      "id": "T03-EIN1916",
+      "label": "DERIVED",
+      "doi": "10.1002/andp.19163540702",
+      "year": 1916,
+      "collaboration": "Einstein (Annalen der Physik)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "The foundation of general relativity: field equation whose weak-field static limit is Poisson's equation."
+    },
+    {
+      "id": "T03-MICRO2022",
+      "label": "MEASURED",
+      "doi": "10.1103/PhysRevLett.129.121102",
+      "year": 2022,
+      "collaboration": "MICROSCOPE Collaboration (CNES/ONERA)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Final result: eta(Ti,Pt) = (-1.5 +/- 2.3 stat +/- 1.5 syst) x 1e-15."
+    },
+    {
+      "id": "T03-EOTWASH2008",
+      "label": "MEASURED",
+      "doi": "10.1103/PhysRevLett.100.041101",
+      "year": 2008,
+      "collaboration": "Eot-Wash group (Schlamminger et al.)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Torsion-balance test of the equivalence principle: eta(Be,Ti) = (0.3 +/- 1.8) x 1e-13."
+    },
+    {
+      "id": "T03-LLR2004",
+      "label": "MEASURED",
+      "doi": "10.1103/PhysRevLett.93.261101",
+      "year": 2004,
+      "collaboration": "Lunar laser ranging (Williams, Turyshev & Boggs)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-08",
+      "note": "Lunar laser ranging test of the equivalence principle for Earth and Moon falling toward the Sun."
+    },
+    {
+      "id": "T03-ALPHAG2023",
+      "label": "SINGLE RESULT",
+      "doi": "10.1038/s41586-023-06527-1",
+      "year": 2023,
+      "collaboration": "ALPHA Collaboration (CERN)",
+      "kind": "peer-reviewed",
+      "review_by": "2027-11-08",
+      "note": "Antihydrogen falls down: a = (0.75 +/- 0.13 +/- 0.16) g; one collaboration, no independent replication."
+    },
+    {
+      "id": "T03-WILL2014",
+      "label": "OPEN",
+      "doi": "10.12942/lrr-2014-4",
+      "year": 2014,
+      "collaboration": "Will (Living Reviews in Relativity)",
+      "kind": "review",
+      "review_by": "2028-11-08",
+      "note": "Survey of equivalence-principle and metric tests; anchors the OPEN statement about what fixes G and why universality holds."
+    }
+  ]
+}

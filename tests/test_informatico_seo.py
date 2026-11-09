@@ -278,14 +278,14 @@ class SiteFiles(unittest.TestCase):
     def test_sitemap_lists_both_languages_with_alternates_and_real_dates(self):
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 134)
-        self.assertEqual(len(set(locs)), 134)
-        self.assertEqual(sum("/es-mx/" in u for u in locs), 67)
+        self.assertEqual(len(locs), 142)
+        self.assertEqual(len(set(locs)), 142)
+        self.assertEqual(sum("/es-mx/" in u for u in locs), 71)
         self.assertNotIn("lang=es", xml)
         for loc in locs:
             self.assertIsNotNone(url_to_file(loc))
             self.assertTrue(url_to_file(loc).is_file(), loc)
-        self.assertEqual(xml.count('hreflang="es-MX"'), 134)
+        self.assertEqual(xml.count('hreflang="es-MX"'), 142)
         dates = set(re.findall(r"<lastmod>([^<]+)</lastmod>", xml))
         for d in dates:
             self.assertRegex(d, r"^\d{4}-\d{2}-\d{2}$")
@@ -294,7 +294,7 @@ class SiteFiles(unittest.TestCase):
         text = (RESEARCH / "llms.txt").read_text(encoding="utf-8")
         self.assertTrue(text.startswith("# Informatico.ai\n"))
         urls = re.findall(r"\]\((https://informatico\.ai/[^)]*)\)", text)
-        self.assertEqual(len(urls), 66)  # 4 hubs + 48 essays + 1 bounties hub + 6 bounty folios; the cover is the file's own subject
+        self.assertEqual(len(urls), 70)  # 4 hubs + 48 essays + bounties hub + 6 bounty folios + toolbox hub + 6 tools + Time & Gravity hub + T.01-T.03; the cover is the file's own subject
         for u in urls:
             self.assertTrue(url_to_file(u).is_file(), u)
 

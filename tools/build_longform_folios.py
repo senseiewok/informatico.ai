@@ -35,6 +35,7 @@ from folios.css_bundle import REVAMP_CSS, update_informatico_css  # noqa: E402
 from folios.bounties_data import BOUNTY_BY_SLUG, BOUNTY_FOLIOS  # noqa: E402
 from folios.toolchain_data import PILLAR_FOLIO_TO_TOOLCHAIN, TOOLCHAIN_BY_SLUG, TOOLCHAIN_FOLIOS  # noqa: E402
 from folios.seo_copy import BOUNTY_SEO, BRAND, FOLIO_SEO, HUB_SEO, PILLAR_SEO, TOOLCHAIN_SEO  # noqa: E402
+from folios.timegravity import PAGES as TIMEGRAVITY_PAGES, TRACK_DATE as TIMEGRAVITY_DATE  # noqa: E402
 from toolchain_uga import BOUNDARY_EN, BOUNDARY_ES, generate_folio_assets  # noqa: E402
 
 SITE = "https://informatico.ai/"
@@ -4540,6 +4541,11 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
           <strong class="tp-track-chip-title" data-en="Tech &amp; Tools · The Toolbox (X.01–X.06)" data-es="Tecnología y Herramientas (X.01–X.06)">Tech &amp; Tools · The Toolbox (X.01–X.06)</strong>
           <span class="tp-track-chip-meta" data-en="STEP · 3MF · GLB · DXF · Small Architects" data-es="STEP · 3MF · GLB · DXF · Pequeños Estudios">STEP · 3MF · GLB · DXF · Small Architects</span>
         </a>
+        <a class="tp-track-chip tp-track-chip-timegravity" href="timegravity/">
+          <span class="tp-track-chip-kicker" data-en="TIME &amp; GRAVITY · {len(TIMEGRAVITY_PAGES)} OF 9 PAGES LIVE" data-es="TIEMPO Y GRAVEDAD · {len(TIMEGRAVITY_PAGES)} DE 9 PÁGINAS">TIME &amp; GRAVITY · {len(TIMEGRAVITY_PAGES)} OF 9 PAGES LIVE</span>
+          <strong class="tp-track-chip-title" data-en="Time &amp; Gravity (T.00–T.10)" data-es="Tiempo y Gravedad (T.00–T.10)">Time &amp; Gravity (T.00–T.10)</strong>
+          <span class="tp-track-chip-meta" data-en="Clock rates · Geodesics · Six labels · Ledger" data-es="Ritmos de reloj · Geodésicas · Seis etiquetas · Registro">Clock rates · Geodesics · Six labels · Ledger</span>
+        </a>
         <a class="tp-track-chip tp-track-chip-skills" href="#tp-oss-physics-radar">
           <span class="tp-track-chip-kicker" data-en="60 AI SKILL.MD + VERIFIERS" data-es="60 SKILL.MD + VERIFICADORES">60 AI SKILL.MD + VERIFIERS</span>
           <strong class="tp-track-chip-title" data-en="Agent Skills &amp; 15 OSS Engines" data-es="Skills de IA y 15 Motores OSS">Agent Skills &amp; 15 OSS Engines</strong>
@@ -4585,6 +4591,11 @@ def render_research_sitemap(catalog: dict) -> str:
     entries.append(("toolchain/", max(t["date_redated"] for t in TOOLCHAIN_FOLIOS)))
     for t in TOOLCHAIN_FOLIOS:
         entries.append((f"toolchain/{t['slug']}/", t["date_redated"]))
+    # Time & Gravity (T): the hub and every shipped page, beside the Folio count of 48 (tools/folios/timegravity/).
+    entries.append(("timegravity/", TIMEGRAVITY_DATE))
+    for tg in TIMEGRAVITY_PAGES:
+        if tg["slug"]:
+            entries.append((f"timegravity/{tg['slug']}/", TIMEGRAVITY_DATE))
 
     blocks = [
         '<?xml version="1.0" encoding="UTF-8"?>',
@@ -4634,6 +4645,13 @@ def render_llms_txt(catalog: dict) -> str:
     for t in TOOLCHAIN_FOLIOS:
         t_title, t_desc = TOOLCHAIN_SEO[t["slug"]][0], TOOLCHAIN_SEO[t["slug"]][1]
         lines.append(f"- [{t['folio_id']} ({t['tool_id']}) {t_title}]({page_url('toolchain/' + t['slug'] + '/')}): {t_desc}")
+    lines.append("")
+    lines.append("## Time & Gravity · Nine Pages on an Open Problem (T.00–T.07, T.10)")
+    lines.append("")
+    lines.append(f"- [Time & Gravity]({page_url('timegravity/')}): {PILLAR_SEO['timegravity'][1]}")
+    for tg in TIMEGRAVITY_PAGES:
+        if tg["slug"]:
+            lines.append(f"- [{tg['code']} {tg['seo'][0]}]({page_url('timegravity/' + tg['slug'] + '/')}): {tg['seo'][1]}")
     lines.append("")
     return "\n".join(lines)
 
@@ -4852,6 +4870,11 @@ def main() -> None:
     )
     (res_dir / "llms.txt").write_text(render_llms_txt(catalog), encoding="utf-8")
     (res_dir / "404.html").write_text(render_not_found(), encoding="utf-8")
+
+    # Time & Gravity track pages (/timegravity/ and /es-mx/timegravity/), built from tools/folios/timegravity/.
+    sys.modules.setdefault("build_longform_folios", sys.modules[__name__])
+    import build_timegravity  # noqa: E402  (lazy: it imports this module)
+    build_timegravity.write_pages(catalog)
 
     print(f"PASS: Built Informatico.ai hub + 4 pillar racks + {count} standalone 5-Act HTML Folios + Bounties hub + {b_count} standalone Bounty Folios + Tech & Tools hub + {t_count} standalone Toolbox Folios, each in English and Spanish (/{ES_PREFIX}) + sitemap.xml + robots.txt + llms.txt + 404.html.")
 

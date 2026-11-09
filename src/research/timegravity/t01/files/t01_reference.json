@@ -1,0 +1,128 @@
+{
+  "folio_id": "T.01",
+  "title": "Gravity as a Slope in the Rate of Time",
+  "metric": "ds^2 = -A(z) c^2 dt^2 + dz^2, A(z) = 1 + 2 g z / c^2 (only g_tt varies with height; no force term)",
+  "constants": {
+    "c_m_per_s": 299792458.0,
+    "g_m_per_s2": 9.80665,
+    "T_proper_s": 1.0,
+    "rk4_steps": 20000
+  },
+  "tolerances": {
+    "rel_tol_a_vs_g": 1e-06,
+    "flat_abs_tol": 1e-12
+  },
+  "slope_Ap_per_m": 2.18227393444e-16,
+  "a_eff_m_per_s2": -9.80665,
+  "a_flat_m_per_s2": 0.0,
+  "a_flip_m_per_s2": 9.80665,
+  "samples_tau_t_z": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.05,
+      0.05,
+      -0.0122583125
+    ],
+    [
+      0.1,
+      0.1,
+      -0.04903325
+    ],
+    [
+      0.15,
+      0.15,
+      -0.1103248125
+    ],
+    [
+      0.2,
+      0.2,
+      -0.196133
+    ],
+    [
+      0.25,
+      0.25,
+      -0.3064578125
+    ],
+    [
+      0.3,
+      0.3,
+      -0.44129925
+    ],
+    [
+      0.35,
+      0.35,
+      -0.6006573125
+    ],
+    [
+      0.4,
+      0.4,
+      -0.784532
+    ],
+    [
+      0.45,
+      0.45,
+      -0.9929233125
+    ],
+    [
+      0.5,
+      0.5,
+      -1.22583125
+    ],
+    [
+      0.55,
+      0.55,
+      -1.4832558125
+    ],
+    [
+      0.6,
+      0.6,
+      -1.765197
+    ],
+    [
+      0.65,
+      0.65,
+      -2.0716548125
+    ],
+    [
+      0.7,
+      0.7,
+      -2.40262925
+    ],
+    [
+      0.75,
+      0.75,
+      -2.7581203125
+    ],
+    [
+      0.8,
+      0.8,
+      -3.138128
+    ],
+    [
+      0.85,
+      0.85,
+      -3.5426523125
+    ],
+    [
+      0.9,
+      0.9,
+      -3.97169325
+    ],
+    [
+      0.95,
+      0.95,
+      -4.4252508125
+    ],
+    [
+      1.0,
+      1.0,
+      -4.903325
+    ]
+  ],
+  "boundary_en": "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. Preprints never rise above PROPOSED. Each page ends with one open question that the next page takes up.",
+  "license": "CC0-1.0 / CC-BY-4.0"
+}

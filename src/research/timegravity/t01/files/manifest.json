@@ -1,0 +1,14 @@
+{
+  "folio_id": "T.01",
+  "generator": "skills/timegravity/t01/make_t01.py",
+  "verifier": "skills/timegravity/t01/verify_t01_time_slope_geodesic.py",
+  "license": "CC0-1.0 / CC-BY-4.0",
+  "boundary_en": "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. Preprints never rise above PROPOSED. Each page ends with one open question that the next page takes up.",
+  "files": [
+    {
+      "filename": "t01_reference.json",
+      "bytes": 2045,
+      "sha256": "f2092ef10695281dac99fb721f8ab41f2c4e74f92ddb90343398b78da337ba02"
+    }
+  ]
+}
