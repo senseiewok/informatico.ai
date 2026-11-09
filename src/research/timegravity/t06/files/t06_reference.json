@@ -1,0 +1,145 @@
+{
+  "folio_id": "T.06",
+  "title": "Does Gravity Collapse the Wave?",
+  "model": "Diosi-Penrose: tau = hbar / E_G; E_G = 2 U_self - U_int for two displaced uniform spheres (proposal, not a derivation)",
+  "gran_sasso": {
+    "measured": 576,
+    "background": 506,
+    "days": 62.0,
+    "a_m3": 1.8e-29,
+    "excess_upper_limit_95": 111.071033587,
+    "r0_bound_recomputed_m": 5.45201736741e-11,
+    "r0_bound_paper_m": 5.4e-11,
+    "r0_paramfree_m": 5e-12,
+    "counts_at_paramfree": 144000.0,
+    "a_recomputed_no_efficiency_m3": 1.04209952509e-28
+  },
+  "xenonnt": {
+    "r0_bound_90_m": 4.9e-10,
+    "r0_bound_95_m": 4.5e-10
+  },
+  "table_log10m_kg__log10R_m__E_G_J__tau_s": [
+    [
+      -20,
+      -9,
+      4.67201e-42,
+      22572122.427
+    ],
+    [
+      -20,
+      -7,
+      4.67201e-44,
+      2257212242.7
+    ],
+    [
+      -20,
+      -6,
+      4.67201e-45,
+      22572122427.0
+    ],
+    [
+      -20,
+      -5,
+      4.67201e-46,
+      225721224270.0
+    ],
+    [
+      -18,
+      -9,
+      4.67201e-38,
+      2257.2122427
+    ],
+    [
+      -18,
+      -7,
+      4.67201e-40,
+      225721.22427
+    ],
+    [
+      -18,
+      -6,
+      4.67201e-41,
+      2257212.2427
+    ],
+    [
+      -18,
+      -5,
+      4.67201e-42,
+      22572122.427
+    ],
+    [
+      -16,
+      -9,
+      4.67201e-34,
+      0.22572122427
+    ],
+    [
+      -16,
+      -7,
+      4.67201e-36,
+      22.572122427
+    ],
+    [
+      -16,
+      -6,
+      4.67201e-37,
+      225.72122427
+    ],
+    [
+      -16,
+      -5,
+      4.67201e-38,
+      2257.2122427
+    ],
+    [
+      -14,
+      -9,
+      4.67201e-30,
+      2.2572122427e-05
+    ],
+    [
+      -14,
+      -7,
+      4.67201e-32,
+      0.0022572122427
+    ],
+    [
+      -14,
+      -6,
+      4.67201e-33,
+      0.022572122427
+    ],
+    [
+      -14,
+      -5,
+      4.67201e-34,
+      0.22572122427
+    ],
+    [
+      -12,
+      -9,
+      4.67201e-26,
+      2.2572122427e-09
+    ],
+    [
+      -12,
+      -7,
+      4.67201e-28,
+      2.2572122427e-07
+    ],
+    [
+      -12,
+      -6,
+      4.67201e-29,
+      2.2572122427e-06
+    ],
+    [
+      -12,
+      -5,
+      4.67201e-30,
+      2.2572122427e-05
+    ]
+  ],
+  "boundary_en": "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. Preprints never rise above PROPOSED. Each page ends with one open question that the next page takes up.",
+  "license": "CC0-1.0 / CC-BY-4.0"
+}

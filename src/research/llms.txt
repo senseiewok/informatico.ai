@@ -95,7 +95,9 @@ Every essay, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish u
 - [T.02 Everyone Moves at One Rate: Clocks, GPS and c](https://informatico.ai/timegravity/t02/): How moving clocks tick slower by the Lorentz factor, measured from 1938 to 2014, and how the GPS satellite clock correction follows from GM, the orbit radius and c.
 - [T.03 What Sets the Slope: Poisson and the Equivalence Principle](https://informatico.ai/timegravity/t03/): How the weak-field Einstein equation reduces to Poisson's equation on a grid, and how torsion balances, lunar ranging and a satellite show every composition falls alike.
 - [T.04 A Clock in Two Places: the Clock Interferometer](https://informatico.ai/timegravity/t04/): An experiment description: a clock in superposition of two heights loses interference visibility as its proper times decohere, with the formula recomputed live.
+- [T.06 Does Gravity Collapse the Wave? The Bound](https://informatico.ai/timegravity/t06/): The Diosi-Penrose collapse proposal, its predicted spontaneous radiation, and the Gran Sasso and XENONnT bounds recomputed from the published counts.
 - [T.07 The Equation with No Time: a Page-Wootters Toy](https://informatico.ai/timegravity/t07/): How a stationary quantum state with a clock inside recovers Schrodinger evolution when conditioned on the clock, checked with a pure-Python eigensolver.
+- [T.10 Page's Counting Argument: the Page Curve on Ten Qubits](https://informatico.ai/timegravity/t10/): Hawking's rising entropy against Page's curve, built from random states on ten qubits and checked against Page's formula, with the area theorem's two tests.
 
 ## About Informatico.ai & the Shared Verification Engine (Essay Zero)
 

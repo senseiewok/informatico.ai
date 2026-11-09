@@ -682,6 +682,152 @@ function initZych(root) {
   render();
 }
 
+// ------------------------------------------------------------------------------------------------ T.06
+const HBAR = 1.054571817e-34;
+const G_NEWTON_SI = 6.6743e-11;
+export function dpInteraction(m, R, d, G) {
+  if (d >= 2 * R) return (G * m * m) / d;
+  const lam = d / (2 * R);
+  return ((G * m * m) / R) * (6 / 5 - 2 * lam ** 2 + 1.5 * lam ** 3 - 0.2 * lam ** 5);
+}
+export function dpSelfEnergyDifference(m, R, d, G = G_NEWTON_SI) {
+  return 2 * (0.6 * G * m * m / R) - dpInteraction(m, R, d, G);
+}
+
+function initDp(root) {
+  const svg = root.querySelector("svg.tg-stage");
+  const lmInput = root.querySelector("[data-tg-logm]"), lrInput = root.querySelector("[data-tg-logr]"), drInput = root.querySelector("[data-tg-dr]");
+  const knockoutBtn = root.querySelector("[data-tg-knockout]"), flipBtn = root.querySelector("[data-tg-flip]");
+  const status = root.querySelector("[data-tg-status]");
+  const curve = root.querySelector(".tg-dp-curve"), marker = root.querySelector(".tg-dp-marker");
+  const excl = root.querySelector(".tg-dp-excluded"), allow = root.querySelector(".tg-dp-allowed");
+  const reads = readouts(root);
+  if (!svg || !lmInput || !lrInput || !drInput) return;
+  const px0 = Number(svg.getAttribute("data-px0")), px1 = Number(svg.getAttribute("data-px1"));
+  const py0 = Number(svg.getAttribute("data-py0")), py1 = Number(svg.getAttribute("data-py1"));
+  const toX = (lm) => px0 + (px1 - px0) * (lm + 20) / 8;
+  const toY = (lt) => py1 - (py1 - py0) * (lt + 6) / 18;
+  const state = { knockout: false, flip: false };
+  const exclFill = excl ? excl.getAttribute("fill") : "", allowFill = allow ? allow.getAttribute("fill") : "";
+  const S0 = {
+    en: { ok: "The model's prediction on the left; the data's verdict on the right. Below the line the radiation would have been seen; it was not.",
+          flat: "Knockout: no gravity, no E_G, no collapse. The model predicts nothing and the curve leaves the chart.",
+          flip: "Planted defect: the bound painted on the wrong side would call the parameter-free value allowed. The verifier rejects this orientation.",
+          excluded: "excluded", allowed: "allowed", nothing: "no prediction" },
+    es: { ok: "La predicción del modelo a la izquierda; el veredicto de los datos a la derecha. Debajo de la línea la radiación se habría visto; no se vio.",
+          flat: "Apagado: sin gravedad, sin E_G, sin colapso. El modelo no predice nada y la curva sale de la gráfica.",
+          flip: "Defecto plantado: la cota pintada del lado equivocado llamaría permitido al valor sin parámetros. El verificador rechaza esta orientación.",
+          excluded: "excluido", allowed: "permitido", nothing: "sin predicción" },
+  };
+  function render() {
+    const L = S0[lang()];
+    const G = state.knockout ? 0 : G_NEWTON_SI;
+    const lm = Number(lmInput.value), lr = Number(lrInput.value), dr = Number(drInput.value);
+    const R = 10 ** lr;
+    const pts = [];
+    for (let i = 0; i <= 80; i++) {
+      const x = -20 + 8 * i / 80;
+      const e = dpSelfEnergyDifference(10 ** x, R, dr * R, G);
+      const lt = e > 0 ? Math.max(-6, Math.min(12, Math.log10(HBAR / e))) : 12;
+      pts.push(`${i ? "L" : "M"} ${toX(x).toFixed(1)} ${toY(lt).toFixed(1)}`);
+    }
+    if (curve) curve.setAttribute("d", pts.join(" "));
+    const e0 = dpSelfEnergyDifference(10 ** lm, R, dr * R, G);
+    const tau = e0 > 0 ? HBAR / e0 : Infinity;
+    if (marker) { marker.setAttribute("cx", toX(lm).toFixed(1)); marker.setAttribute("cy", toY(Number.isFinite(tau) ? Math.max(-6, Math.min(12, Math.log10(tau))) : 12).toFixed(1)); }
+    if (excl && allow) { excl.setAttribute("fill", state.flip ? allowFill : exclFill); allow.setAttribute("fill", state.flip ? exclFill : allowFill); }
+    if (reads.sideleft) reads.sideleft.textContent = state.flip ? L.allowed : L.excluded;
+    if (reads.sideright) reads.sideright.textContent = state.flip ? L.excluded : L.allowed;
+    if (reads.logm) reads.logm.textContent = fmt(lm, 1);
+    if (reads.logr) reads.logr.textContent = fmt(lr, 1);
+    if (reads.dr) reads.dr.textContent = fmt(dr, 1);
+    if (reads.eg) reads.eg.textContent = e0 > 0 ? `${e0.toExponential(2)} J` : "0 J";
+    if (reads.tau) reads.tau.textContent = Number.isFinite(tau) ? `${tau.toPrecision(3)} s` : "∞";
+    if (reads.verdict) reads.verdict.textContent = state.knockout ? L.nothing : state.flip ? L.allowed : L.excluded;
+    const st = state.flip ? "flip" : state.knockout ? "flat" : "fall";
+    if (status) { status.setAttribute("data-state", st); status.textContent = state.flip ? L.flip : state.knockout ? L.flat : L.ok; }
+    const errBox = root.querySelector('[data-tg-readout-box="err"]');
+    if (errBox) errBox.setAttribute("data-alert", state.flip ? "true" : "false");
+  }
+  [lmInput, lrInput, drInput].forEach((el) => el.addEventListener("input", render));
+  if (knockoutBtn) knockoutBtn.addEventListener("click", () => { state.knockout = !state.knockout; knockoutBtn.setAttribute("aria-pressed", String(state.knockout)); render(); });
+  if (flipBtn) flipBtn.addEventListener("click", () => { state.flip = !state.flip; flipBtn.setAttribute("aria-pressed", String(state.flip)); render(); });
+  window.addEventListener("tp-lang-change", render);
+  root.setAttribute("data-tg-ready", "true");
+  render();
+}
+
+// ------------------------------------------------------------------------------------------------ T.10
+/** Page 1993: S(m,n) = Σ_{k=n+1}^{mn} 1/k − (m−1)/(2n), m ≤ n (nats). */
+export function pageAverageEntropy(m, n, correction = true) {
+  if (m > n) { const t = m; m = n; n = t; }
+  let s = 0;
+  for (let k = n + 1; k <= m * n; k++) s += 1 / k;
+  return s - (correction ? (m - 1) / (2 * n) : 0);
+}
+
+function initPage(root) {
+  const svg = root.querySelector("svg.tg-stage");
+  const nInput = root.querySelector("[data-tg-nq]");
+  const knockoutBtn = root.querySelector("[data-tg-knockout]"), flipBtn = root.querySelector("[data-tg-flip]");
+  const status = root.querySelector("[data-tg-status]");
+  const curve = root.querySelector(".tg-page-curve"), hawk = root.querySelector(".tg-hawking-line");
+  const hawkLabel = root.querySelector(".tg-hawking-label"), pageLabel = root.querySelector(".tg-page-label");
+  const dots = root.querySelector(".tg-page-dots");
+  const reads = readouts(root);
+  if (!svg || !nInput) return;
+  const px0 = Number(svg.getAttribute("data-px0")), px1 = Number(svg.getAttribute("data-px1"));
+  const py0 = Number(svg.getAttribute("data-py0")), py1 = Number(svg.getAttribute("data-py1"));
+  const ymax = Number(svg.getAttribute("data-ymax"));
+  const toyN = Number(root.getAttribute("data-tg-toyn")) || 10;
+  const toX = (a, N) => px0 + (px1 - px0) * a / N;
+  const toY = (s) => py1 - (py1 - py0) * Math.min(ymax, s) / ymax;
+  const state = { knockout: false, flip: false };
+  const S0 = {
+    en: { ok: "Counting, not gravity: a random pure state's smaller part is nearly maximally entangled with the larger, so the radiation's entropy follows the smaller side and comes back down.",
+          flat: "Knockout: no unitarity. Every emitted qubit is thermal and the entropy climbs Hawking's line to the end; the information is gone. This is the verifier's planted defect.",
+          flip: "Naive count: without Page's −(m−1)/2n correction the curve sits exactly at the maximum ln m, overestimating the entropy most at the halfway point.",
+          yes: "yes, at N/2", no: "no: Hawking's line", label: "emitted qubits a, of N = " },
+    es: { ok: "Conteo, no gravedad: la parte menor de un estado puro aleatorio está casi máximamente entrelazada con la mayor, así que la entropía de la radiación sigue al lado menor y vuelve a bajar.",
+          flat: "Apagado: sin unitariedad. Cada qubit emitido es térmico y la entropía sube por la recta de Hawking hasta el final; la información se fue. Este es el defecto plantado del verificador.",
+          flip: "Conteo ingenuo: sin la corrección −(m−1)/2n de Page la curva queda exactamente en el máximo ln m, sobreestimando la entropía sobre todo a la mitad.",
+          yes: "sí, en N/2", no: "no: recta de Hawking", label: "qubits emitidos a, de N = " },
+  };
+  function render() {
+    const L = S0[lang()];
+    const N = Number(nInput.value);
+    const pts = [];
+    for (let a = 0; a <= N; a++) {
+      let s = 0;
+      if (a > 0 && a < N) s = state.knockout ? a * Math.LN2 : pageAverageEntropy(2 ** a, 2 ** (N - a), !state.flip);
+      if (a === N && state.knockout) s = N * Math.LN2;
+      pts.push(`${a ? "L" : "M"} ${toX(a, N).toFixed(1)} ${toY(s).toFixed(1)}`);
+    }
+    if (curve) curve.setAttribute("d", pts.join(" "));
+    if (hawk) hawk.setAttribute("d", `M ${toX(0, N).toFixed(1)} ${toY(0).toFixed(1)} L ${toX(N, N).toFixed(1)} ${toY(N * Math.LN2).toFixed(1)}`);
+    if (hawkLabel) { hawkLabel.setAttribute("x", (toX(N, N) - 4).toFixed(1)); hawkLabel.setAttribute("y", (toY(N * Math.LN2) - 8).toFixed(1)); }
+    const half = Math.floor(N / 2);
+    const peak = pageAverageEntropy(2 ** half, 2 ** (N - half));
+    if (pageLabel) { pageLabel.setAttribute("x", toX(N / 2, N).toFixed(1)); pageLabel.setAttribute("y", (toY(state.knockout ? N * Math.LN2 / 2 : peak) - 14).toFixed(1)); pageLabel.style.opacity = state.knockout ? "0.3" : "1"; }
+    if (dots) dots.style.opacity = (N === toyN && !state.knockout && !state.flip) ? "1" : "0.15";
+    if (reads.N) reads.N.textContent = String(N);
+    if (reads.xlabel) reads.xlabel.textContent = `${L.label}${N}`;
+    if (reads.peak) reads.peak.textContent = `${fmt(peak, 3)} nats`;
+    if (reads.last) reads.last.textContent = `${fmt(state.knockout ? (N - 1) * Math.LN2 : pageAverageEntropy(2, 2 ** (N - 1), !state.flip), 3)} nats`;
+    if (reads.turn) reads.turn.textContent = state.knockout ? L.no : L.yes;
+    const st = state.knockout ? "flip" : state.flip ? "flat" : "fall";
+    if (status) { status.setAttribute("data-state", st); status.textContent = state.knockout ? L.flat : state.flip ? L.flip : L.ok; }
+    const errBox = root.querySelector('[data-tg-readout-box="err"]');
+    if (errBox) errBox.setAttribute("data-alert", state.knockout ? "true" : "false");
+  }
+  nInput.addEventListener("input", render);
+  if (knockoutBtn) knockoutBtn.addEventListener("click", () => { state.knockout = !state.knockout; knockoutBtn.setAttribute("aria-pressed", String(state.knockout)); render(); });
+  if (flipBtn) flipBtn.addEventListener("click", () => { state.flip = !state.flip; flipBtn.setAttribute("aria-pressed", String(state.flip)); render(); });
+  window.addEventListener("tp-lang-change", render);
+  root.setAttribute("data-tg-ready", "true");
+  render();
+}
+
 export function initTimeGravity(scope = document) {
   const once = (sel, fn) => scope.querySelectorAll(sel).forEach((el) => { if (!el.hasAttribute("data-tg-ready")) fn(el); });
   once("[data-tg-predict]", initPredict);
@@ -691,6 +837,8 @@ export function initTimeGravity(scope = document) {
   once('[data-tg-instrument="poisson"]', initPoisson);
   once('[data-tg-instrument="pw"]', initPw);
   once('[data-tg-instrument="zych"]', initZych);
+  once('[data-tg-instrument="dp"]', initDp);
+  once('[data-tg-instrument="page"]', initPage);
 }
 
 initTimeGravity(document);

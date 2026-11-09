@@ -1,0 +1,108 @@
+{
+  "folio_id": "T.10",
+  "title": "Page's Counting Argument",
+  "formula": "S(m,n) = sum_{k=n+1}^{mn} 1/k - (m-1)/(2n), m <= n (Page 1993, average entropy of a subsystem)",
+  "parameters": {
+    "n_qubits": 10,
+    "samples": 8,
+    "seed": 20261109,
+    "tolerance_nats": 0.03
+  },
+  "curve_a__toy_mean__page__hawking_line": [
+    [
+      1,
+      0.692217838876,
+      0.691682575228,
+      0.69314718056
+    ],
+    [
+      2,
+      1.37926310128,
+      1.37897133446,
+      1.38629436112
+    ],
+    [
+      3,
+      2.04880902818,
+      2.04868482969,
+      2.07944154168
+    ],
+    [
+      4,
+      2.64873173616,
+      2.64809726857,
+      2.77258872224
+    ],
+    [
+      5,
+      2.9661171093,
+      2.96630547684,
+      3.4657359028
+    ],
+    [
+      6,
+      2.64873173616,
+      2.64809726857,
+      4.15888308336
+    ],
+    [
+      7,
+      2.04880902818,
+      2.04868482969,
+      4.85203026392
+    ],
+    [
+      8,
+      1.37926310128,
+      1.37897133446,
+      5.54517744448
+    ],
+    [
+      9,
+      0.692217838876,
+      0.691682575228,
+      6.23832462504
+    ]
+  ],
+  "page_table_N_qubits__S_half_nats": [
+    [
+      4,
+      0.922395659896
+    ],
+    [
+      5,
+      1.15313805258
+    ],
+    [
+      6,
+      1.58853376085
+    ],
+    [
+      7,
+      1.83366809936
+    ],
+    [
+      8,
+      2.27486596959
+    ],
+    [
+      9,
+      2.52364633911
+    ],
+    [
+      10,
+      2.96630547684
+    ],
+    [
+      11,
+      3.21600036811
+    ],
+    [
+      12,
+      3.65902549326
+    ]
+  ],
+  "note": "The assertion is against Page's closed form; the random states are only the sample. No island, no horizon, no gravity in the toy.",
+  "boundary_en": "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. Preprints never rise above PROPOSED. Each page ends with one open question that the next page takes up.",
+  "license": "CC0-1.0 / CC-BY-4.0"
+}

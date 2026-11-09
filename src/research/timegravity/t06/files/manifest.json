@@ -1,0 +1,14 @@
+{
+  "folio_id": "T.06",
+  "generator": "skills/timegravity/t06/make_t06.py",
+  "verifier": "skills/timegravity/t06/verify_t06_collapse_bound.py",
+  "license": "CC0-1.0 / CC-BY-4.0",
+  "boundary_en": "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. Preprints never rise above PROPOSED. Each page ends with one open question that the next page takes up.",
+  "files": [
+    {
+      "filename": "t06_reference.json",
+      "bytes": 2519,
+      "sha256": "a40c49f7debf327e37bb8bff723de7ce4befa8661287cd160fa62fd140df8382"
+    }
+  ]
+}
