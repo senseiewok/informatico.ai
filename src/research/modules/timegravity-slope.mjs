@@ -871,18 +871,8 @@ export function jacobiEigenvalues(a, tol = 1e-12, maxSweeps = 60) {
   }
   return m.map((row, i) => row[i]);
 }
-/** Peres negativity of the dephased four-branch state: partial transpose, Hermitian 4×4 → real symmetric 8×8. */
-export function bmvNegativity(p, gammaT) {
-  const B = ["LL", "LR", "RL", "RR"];
-  const eta = Math.exp(-gammaT);
-  const re = [], im = [];
-  for (let r = 0; r < 4; r++) { re.push([0, 0, 0, 0]); im.push([0, 0, 0, 0]); }
-  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) {
-    const br = B[r], bc = B[c];
-    const damp = 0.25 * (br[0] !== bc[0] ? eta : 1) * (br[1] !== bc[1] ? eta : 1);
-    const ph = p[br] - p[bc];
-    re[r][c] = damp * Math.cos(ph); im[r][c] = damp * Math.sin(ph);
-  }
+/** Peres negativity of a 4×4 density matrix given as real and imaginary parts: partial transpose, Hermitian → real symmetric 8×8. */
+export function negativityOfRho(re, im) {
   // partial transpose on B: (i,j),(k,l) <- (i,l),(k,j)
   const ptRe = [], ptIm = [];
   for (let r = 0; r < 4; r++) { ptRe.push([0, 0, 0, 0]); ptIm.push([0, 0, 0, 0]); }
@@ -900,14 +890,85 @@ export function bmvNegativity(p, gammaT) {
   for (let k = 0; k < 4; k++) { const v = 0.5 * (vals[2 * k] + vals[2 * k + 1]); if (v < 0) neg -= v; }
   return neg;
 }
+/** Peres negativity of the dephased four-branch state. */
+export function bmvNegativity(p, gammaT) {
+  const B = ["LL", "LR", "RL", "RR"];
+  const eta = Math.exp(-gammaT);
+  const re = [], im = [];
+  for (let r = 0; r < 4; r++) { re.push([0, 0, 0, 0]); im.push([0, 0, 0, 0]); }
+  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) {
+    const br = B[r], bc = B[c];
+    const damp = 0.25 * (br[0] !== bc[0] ? eta : 1) * (br[1] !== bc[1] ? eta : 1);
+    const ph = p[br] - p[bc];
+    re[r][c] = damp * Math.cos(ph); im[r][c] = damp * Math.sin(ph);
+  }
+  return negativityOfRho(re, im);
+}
+// ---- the dispute kernel (mirrors tools/timegravity_kernel_dispute.py)
+/** erf at double precision: Maclaurin series below |x| = 3, continued fraction for erfc above (the smeared kernel subtracts
+ * nearly equal values when σ ≫ separation, so a 1e-7 approximation would turn decoherence into growth). */
+export function erf(x) {
+  const ax = Math.abs(x);
+  if (ax < 3) {
+    let term = ax, sum = ax;
+    for (let n = 1; n < 80; n++) {
+      term *= -ax * ax / n;
+      const add = term / (2 * n + 1);
+      sum += add;
+      if (Math.abs(add) < 1e-17 * Math.abs(sum)) break;
+    }
+    return Math.sign(x) * (2 / Math.sqrt(Math.PI)) * sum;
+  }
+  // erfc(x) = exp(-x²)/√π · 1/(x + (1/2)/(x + 1/(x + (3/2)/(x + 2/(x + …)))))
+  let cf = ax;
+  for (let k = 60; k >= 1; k--) cf = ax + (k / 2) / cf;
+  const erfc = Math.exp(-ax * ax) / (Math.sqrt(Math.PI) * cf);
+  return Math.sign(x) * (1 - erfc);
+}
+export function tnFTilde(z, sigma) { return z > 0 ? erf(z / (2 * sigma)) / z : 1 / (sigma * Math.sqrt(Math.PI)); }
+/** g(x,y) of Trillo–Navascués Eqs. 12–14 for two particles at 1-D positions; returns [re, im]. */
+export function tnG(x, y, m, sigma) {
+  let re = 0, im = 0;
+  for (let j = 0; j < 2; j++) for (let k = 0; k < 2; k++) {
+    const fxx = tnFTilde(Math.abs(x[j] - x[k]), sigma), fyy = tnFTilde(Math.abs(y[j] - y[k]), sigma), fxy = tnFTilde(Math.abs(x[j] - y[k]), sigma);
+    re += m * m * (-fxx - fyy + 2 * fxy);
+    im += m * m * (fxx - fyy);
+  }
+  return [re, im];
+}
+/** Negativity of the DP-model state at time t for mass A at {−L, 0} and mass B at {d, d + L} (nearest separation d). */
+export function tnNegativity(L, d, m, sigma, t, G = G_NEWTON_SI) {
+  const br = [[-L, d], [-L, d + L], [0, d], [0, d + L]];
+  const re = [], im = [];
+  for (let r = 0; r < 4; r++) { re.push([0, 0, 0, 0]); im.push([0, 0, 0, 0]); }
+  const k0 = (G / (2 * HBAR)) * t;
+  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) {
+    const [gr, gi] = tnG(br[r], br[c], m, sigma);
+    const mag = 0.25 * Math.exp(k0 * gr);
+    re[r][c] = mag * Math.cos(k0 * gi); im[r][c] = mag * Math.sin(k0 * gi);
+  }
+  return negativityOfRho(re, im);
+}
+/** E_− of their Eq. 20: the dynamics entangles when it is negative. */
+export function tnEMinus(m, L, d, sigma, G = G_NEWTON_SI) {
+  return (G * m * m / (2 * HBAR)) * (1 / (Math.sqrt(Math.PI) * sigma) - tnFTilde(L, sigma)
+    - (1 / Math.SQRT2) * Math.abs(tnFTilde(d + 2 * L, sigma) + tnFTilde(d, sigma) - 2 * tnFTilde(L + d, sigma)));
+}
+export function tnCriticalSigma(m, L, d) {
+  let lo = 1e-9, hi = 1.0;
+  if (tnEMinus(m, L, d, hi) >= 0) return Infinity;
+  for (let i = 0; i < 60; i++) { const mid = Math.sqrt(lo * hi); if (tnEMinus(m, L, d, mid) < 0) hi = mid; else lo = mid; }
+  return Math.sqrt(lo * hi);
+}
+export function ktmGammaT(m, d, dx, t) { return (2 * G_NEWTON_SI * m * m / d ** 3) * dx * dx * t / (2 * HBAR); }
 
 function initBmv(root) {
   const svg = root.querySelector("svg.tg-stage");
   const lm = root.querySelector("[data-tg-logm]"), dIn = root.querySelector("[data-tg-d]"), dxIn = root.querySelector("[data-tg-dx]");
-  const tIn = root.querySelector("[data-tg-t]"), lgIn = root.querySelector("[data-tg-logg]");
+  const tIn = root.querySelector("[data-tg-t]"), lgIn = root.querySelector("[data-tg-logg]"), lsIn = root.querySelector("[data-tg-logsig]");
   const chanBtns = Array.from(root.querySelectorAll("[data-tg-channel]")), flipBtn = root.querySelector("[data-tg-flip]");
   const status = root.querySelector("[data-tg-status]");
-  const qPath = root.querySelector(".tg-bmv-q"), lLine = root.querySelector(".tg-bmv-l"), band = root.querySelector(".tg-bmv-band"), marker = root.querySelector(".tg-bmv-marker");
+  const qPath = root.querySelector(".tg-bmv-q"), lLine = root.querySelector(".tg-bmv-l"), band = root.querySelector(".tg-bmv-band"), marker = root.querySelector(".tg-bmv-marker"), dpPath = root.querySelector(".tg-bmv-dp");
   const reads = readouts(root);
   if (!svg || !lm || !dIn || !dxIn || !tIn || !lgIn) return;
   const g = (k) => Number(svg.getAttribute("data-" + k));
@@ -919,12 +980,14 @@ function initBmv(root) {
           locc: "Classical LOCC: each mass feels only the mean field of the other. The force is there, the phases take a product form, and the entanglement is exactly zero.",
           disputed: "Disputed classical non-LOCC: the 2025 literature gives two answers, zero and the quantum value. The band is the interval; this page picks neither edge.",
           flip: "Planted defect: a classical LOCC channel carrying the quantum phases. Local operations and classical communication cannot create entanglement; the verifier rejects this channel.",
-          entangled: "entangled", separable: "separable (product state)", unsettled: "not settled: between 0 and the quantum value", defect: "entangled by a classical LOCC channel: rejected" },
+          entangled: "entangled", separable: "separable (product state)", unsettled: "not settled: between 0 and the quantum value", defect: "entangled by a classical LOCC channel: rejected",
+          dpNever: "σ_c = {sc} µm · below it this model never entangles this geometry", dpSlow: "σ_c = {sc} µm · above it: peak negativity {pk} after {tp}, gone after {tl}", dpCurve: "σ_c = {sc} µm · entangles; at t it reads {n}", ktm: "{gt} · 0 entanglement in its own linear model", hours: "h", days: "d", seconds: "s" },
     es: { quantum: "Mediador cuántico: las cuatro fases tal cual. Débil no es cero; la curva crece con el tiempo de espera y llega a 1 en Δφ = π.",
           locc: "Clásico LOCC: cada masa siente solo el campo medio de la otra. La fuerza está, las fases toman forma de producto, y el entrelazamiento es exactamente cero.",
           disputed: "Clásico no-LOCC en disputa: la literatura de 2025 da dos respuestas, cero y el valor cuántico. La banda es el intervalo; esta página no elige ningún borde.",
           flip: "Defecto plantado: un canal clásico LOCC que lleva las fases cuánticas. Operaciones locales y comunicación clásica no pueden crear entrelazamiento; el verificador rechaza este canal.",
-          entangled: "entrelazado", separable: "separable (estado producto)", unsettled: "sin zanjar: entre 0 y el valor cuántico", defect: "entrelazado por un canal clásico LOCC: rechazado" },
+          entangled: "entrelazado", separable: "separable (estado producto)", unsettled: "sin zanjar: entre 0 y el valor cuántico", defect: "entrelazado por un canal clásico LOCC: rechazado",
+          dpNever: "σ_c = {sc} µm · por debajo este modelo nunca entrelaza esta geometría", dpSlow: "σ_c = {sc} µm · por encima: negatividad máxima {pk} tras {tp}, desaparece tras {tl}", dpCurve: "σ_c = {sc} µm · entrelaza; en t marca {n}", ktm: "{gt} · 0 de entrelazamiento en su propio modelo lineal", hours: "h", days: "d", seconds: "s" },
   };
   function render() {
     const L = S0[lang()];
@@ -990,12 +1053,39 @@ function initBmv(root) {
     if (reads.ent) reads.ent.textContent = state.channel === "disputed" ? `0 … ${(2 * bmvNegativity(pq, gamma * t)).toFixed(3)}` : ent.toFixed(3);
     if (reads.tfull) reads.tfull.textContent = Number.isFinite(tfull) ? `${tfull.toFixed(1)} s` : "∞";
     if (reads.verdict) reads.verdict.textContent = verdict;
+    // The band's computed edges (dispute kernel): the classical channel's minimal rate, and one named classical model at the chosen σ.
+    const nearest = d - dx, sigma = lsIn ? 10 ** Number(lsIn.value) : 1e-3;
+    if (reads.logsig) reads.logsig.textContent = fmt(Math.log10(sigma), 1);
+    if (reads.ktm) reads.ktm.textContent = L.ktm.replace("{gt}", ktmGammaT(m, d, dx, t).toFixed(3));
+    if (reads.soft) reads.soft.textContent = `${(100 * erf(nearest / (2 * sigma))).toFixed(0)} %`;
+    const sc = tnCriticalSigma(m, dx, nearest);
+    const dpPts = [];
+    let dpMax = 0;
+    for (let i = 0; i <= 60; i++) {
+      const tt = tmax * i / 60;
+      const n = tt > 0 ? 2 * tnNegativity(dx, nearest, m, sigma, tt) : 0;
+      dpMax = Math.max(dpMax, n);
+      dpPts.push(`${i ? "L" : "M"} ${toX(tt).toFixed(1)} ${toY(n).toFixed(1)}`);
+    }
+    if (dpPath) dpPath.setAttribute("d", dpPts.join(" "));
+    if (reads.dp) {
+      const scTxt = Number.isFinite(sc) ? (sc * 1e6).toFixed(0) : "∞";
+      if (sigma <= sc) reads.dp.textContent = L.dpNever.replace("{sc}", scTxt);
+      else if (dpMax > 1e-3) reads.dp.textContent = L.dpCurve.replace("{sc}", scTxt).replace("{n}", (2 * tnNegativity(dx, nearest, m, sigma, t)).toFixed(3));
+      else {
+        // slow entanglement: scan a log grid of times for the peak and the last entangled time
+        let pk = 0, tp = 0, tl = 0;
+        for (let k = -4; k <= 32; k++) { const tt = 10 ** (k / 4); const n = tnNegativity(dx, nearest, m, sigma, tt); if (n > pk) { pk = n; tp = tt; } if (n > 1e-9) tl = tt; }
+        const fmtT = (x) => x >= 2 * 86400 ? `${(x / 86400).toFixed(0)} ${L.days}` : x >= 3600 ? `${(x / 3600).toFixed(1)} ${L.hours}` : `${x.toFixed(0)} ${L.seconds}`;
+        reads.dp.textContent = L.dpSlow.replace("{sc}", scTxt).replace("{pk}", pk.toFixed(3)).replace("{tp}", fmtT(tp)).replace("{tl}", fmtT(tl));
+      }
+    }
     const st = state.flip && state.channel === "locc" ? "flip" : state.channel;
     if (status) { status.setAttribute("data-state", st); status.textContent = st === "flip" ? L.flip : L[state.channel]; }
     const errBox = root.querySelector('[data-tg-readout-box="err"]');
     if (errBox) errBox.setAttribute("data-alert", st === "flip" ? "true" : "false");
   }
-  [lm, dIn, dxIn, tIn, lgIn].forEach((el) => el.addEventListener("input", render));
+  [lm, dIn, dxIn, tIn, lgIn, lsIn].filter(Boolean).forEach((el) => el.addEventListener("input", render));
   chanBtns.forEach((btn) => btn.addEventListener("click", () => {
     state.channel = btn.getAttribute("data-tg-channel");
     chanBtns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));

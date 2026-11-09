@@ -15,6 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "tools"))
 
+from timegravity_kernel_dispute import check_dispute  # noqa: E402
 from timegravity_kernel_entangle import (  # noqa: E402
     BMV_D_M, BMV_DX_M, BMV_M_KG, BMV_P_PA, BMV_T_S, BMV_TEMP_K, branch_phases, concurrence_closed, disputed_interval,
     entanglement_phase, four_branch_state, negativity, negativity_threshold_gamma_t, time_to_full_entanglement,
@@ -33,6 +34,31 @@ def r12(x: float) -> float | None:
     `Infinity` token that standard JSON parsers refuse."""
     import math
     return float(f"{x:.12g}") if math.isfinite(x) else None
+
+
+def clean(x):
+    """Round floats to 12 significant digits, recursively; non-finite values become null."""
+    if isinstance(x, float):
+        return r12(x)
+    if isinstance(x, dict):
+        return {k: clean(v) for k, v in x.items()}
+    if isinstance(x, list):
+        return [clean(v) for v in x]
+    return x
+
+
+def dispute_block() -> dict:
+    """The computed edges of the disputed channel's band (tools/timegravity_kernel_dispute.py): what each side's own model predicts."""
+    r = check_dispute()
+    return clean({
+        "note": "Trillo-Navascues DP master equation (sigma-smeared, H = 0) and the Kafri-Taylor-Milburn classical channel; "
+                "every number is a model's prediction, labelled PROPOSED on the page; the page picks no side",
+        "tn_dc_over_sigma": r["tn_dc_over_sigma_e_minus_small_split"], "tn_dc_paper_text": r["tn_dc_paper_text"], "tn_dc_paper_appendix": r["tn_dc_paper_appendix"],
+        "tn_fig3": r["tn_fig3"], "tn_potential_ratio_fig3": r["tn_potential_ratio_fig3"],
+        "tn_2017_nearest_m": r["tn_2017_nearest_m"], "tn_2017_sigma_c_m": r["tn_2017_sigma_c_m"], "tn_2017_by_sigma": r["tn_2017_by_sigma"],
+        "tn_phase_tiny_sigma_rad": r["tn_phase_tiny_sigma_rad"], "newton_phase_rad": r["newton_phase_rad"],
+        "ktm_threshold_ratios": r["ktm_threshold_ratios"], "ktm_2017": r["ktm_2017"],
+    })
 
 
 def build_reference() -> dict:
@@ -63,6 +89,7 @@ def build_reference() -> dict:
         "disputed_channel": {"concurrence_interval": [r12(x) for x in disputed_interval(BMV_M_KG, BMV_D_M, BMV_DX_M, BMV_T_S)],
                              "note": "no single prediction: the 2025 literature disagrees; the page carries the interval and the label OPEN"},
         "grid_log10m_kg__d_um__t_s__dphi_rad__C_quantum__C_locc": grid,
+        "dispute_kernel": dispute_block(),
         "boundary_en": BOUNDARY_EN,
         "license": "CC0-1.0 / CC-BY-4.0",
     }
