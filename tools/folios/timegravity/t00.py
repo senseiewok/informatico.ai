@@ -33,8 +33,8 @@ PAGE: dict = {
     "seo": (
         "Time & Gravity · Nine Pages on an Open Problem",
         "A reading track from the measured slope in the rate of time to the open problem of time in quantum gravity, with instruments, verifiers and a ledger.",
-        "Tiempo y Gravedad · Nueve Páginas sobre un Problema Abierto",
-        "Una serie de lectura que va de la pendiente medida en el ritmo del tiempo al problema abierto del tiempo en la gravedad cuántica, con instrumentos y verificadores.",
+        "Tiempo y Gravedad · Un Problema Abierto en 9 Páginas",
+        "Una serie que va de la pendiente medida en el ritmo del tiempo al problema abierto del tiempo en la gravedad cuántica, con instrumentos y verificadores.",
     ),
     "reading_time_en": "6 min read",
     "reading_time_es": "6 min de lectura",

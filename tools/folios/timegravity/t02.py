@@ -47,9 +47,9 @@ PAGE: dict = {
     ),
     "seo": (
         "Everyone Moves at One Rate: Clocks, GPS and c",
-        "How moving clocks tick slower by the Lorentz factor, measured from 1938 to 2014, and how the GPS satellite clock correction follows from GM, the orbit radius and c.",
+        "How moving clocks tick slower by the Lorentz factor, measured from 1938 to 2014, and how the GPS clock correction follows from GM, the orbit radius and c.",
         "Todos Avanzamos a un Mismo Ritmo: Relojes, GPS y c",
-        "Cómo los relojes en movimiento avanzan más lento por el factor de Lorentz, medido de 1938 a 2014, y cómo la corrección del reloj GPS sale de GM, el radio orbital y c.",
+        "Cómo los relojes en movimiento avanzan más lento por el factor de Lorentz, medido de 1938 a 2014, y cómo la corrección del GPS sale de GM, el radio orbital y c.",
     ),
     "reading_time_en": "13 min read",
     "reading_time_es": "13 min de lectura",

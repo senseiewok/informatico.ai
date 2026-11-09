@@ -50,10 +50,10 @@ PAGE: dict = {
         "lo comprueba contra la fórmula de Page, y dice llanamente qué de esta historia está medido, derivado y todavía abierto."
     ),
     "seo": (
-        "Page's Counting Argument: the Page Curve on Ten Qubits",
+        "Page's Counting Argument: the Curve on Ten Qubits",
         "Hawking's rising entropy against Page's curve, built from random states on ten qubits and checked against Page's formula, with the area theorem's two tests.",
-        "El Argumento de Conteo de Page: la Curva de Page en Diez Qubits",
-        "La entropía creciente de Hawking frente a la curva de Page, construida con estados aleatorios de diez qubits y comprobada contra la fórmula de Page, con las dos pruebas del teorema del área.",
+        "Argumento de Conteo de Page: la Curva en Diez Qubits",
+        "La entropía creciente de Hawking frente a la curva de Page, construida con diez qubits y comprobada contra su fórmula, con dos pruebas del teorema del área.",
     ),
     "reading_time_en": "14 min read",
     "reading_time_es": "14 min de lectura",

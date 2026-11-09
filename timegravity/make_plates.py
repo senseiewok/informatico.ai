@@ -5,7 +5,8 @@
   src/research/plates/t01.png  T.01: the falling worldline the kernel integrates, over the same gradient
 
 The curve in t01.png comes from tools/timegravity_kernel.integrate, so the plate is drawn from the page's own number.
-Deterministic; 1280x720 RGB; zlib-compressed PNG written by hand (struct + zlib).
+Deterministic; drawn on a 1280x720 RGB canvas, then cropped and box-filtered to 1200x630 (the Open Graph image size
+the site's SEO audit expects for PNG plates); zlib-compressed PNG written by hand (struct + zlib).
 """
 from __future__ import annotations
 
@@ -19,7 +20,8 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from timegravity_kernel import integrate  # noqa: E402
 
-W, H = 1280, 720
+W, H = 1280, 720          # drawing canvas
+OUT_W, OUT_H = 1200, 630  # written plate (Open Graph size); 16 canvas pixels -> 15 plate pixels on both axes
 PLATES = ROOT / "src" / "research" / "plates"
 
 VELLUM = (247, 248, 249)
@@ -91,17 +93,67 @@ class Canvas:
                 if a > 0:
                     self.blend(int(cx) + dx, int(cy) + dy, rgb, a)
 
+    def downscaled(self) -> array:
+        """Crop 24 rows top and bottom (1280x672) and box-filter by 15/16 on both axes to OUT_W x OUT_H (1200x630).
+
+        16 source pixels map onto 15 output pixels exactly, so each output pixel is an area average of two or three
+        source pixels with weights in fifteenths; separable, integer, deterministic."""
+        crop_top = (H - OUT_H * 16 // 15) // 2  # 24
+        taps = []
+        for o in range(max(OUT_W, OUT_H)):
+            lo, hi = o * 16, o * 16 + 16  # span in fifteenths of a source pixel
+            s = lo // 15
+            pairs = []
+            while s * 15 < hi:
+                w = min(hi, s * 15 + 15) - max(lo, s * 15)
+                pairs.append((s, w))
+                s += 1
+            taps.append(pairs)
+        # horizontal pass: H_crop rows x OUT_W columns, values x16
+        h_rows = OUT_H * 16 // 15  # 672
+        mid = array("I", [0]) * (h_rows * OUT_W * 3)
+        px = self.px
+        for y in range(h_rows):
+            src = (y + crop_top) * W * 3
+            dst = y * OUT_W * 3
+            for x in range(OUT_W):
+                r = g = b = 0
+                for s, w in taps[x]:
+                    i = src + s * 3
+                    r += px[i] * w
+                    g += px[i + 1] * w
+                    b += px[i + 2] * w
+                j = dst + x * 3
+                mid[j], mid[j + 1], mid[j + 2] = r, g, b
+        # vertical pass: OUT_H rows, values x256 -> divide
+        out = array("B", bytes(OUT_W * OUT_H * 3))
+        for y in range(OUT_H):
+            dst = y * OUT_W * 3
+            for x in range(OUT_W):
+                r = g = b = 0
+                for s, w in taps[y]:
+                    i = s * OUT_W * 3 + x * 3
+                    r += mid[i] * w
+                    g += mid[i + 1] * w
+                    b += mid[i + 2] * w
+                j = dst + x * 3
+                out[j] = (r + 128) >> 8
+                out[j + 1] = (g + 128) >> 8
+                out[j + 2] = (b + 128) >> 8
+        return out
+
     def png(self) -> bytes:
+        px = self.downscaled()
         raw = bytearray()
-        stride = W * 3
-        for y in range(H):
+        stride = OUT_W * 3
+        for y in range(OUT_H):
             raw.append(0)
-            raw += self.px[y * stride:(y + 1) * stride].tobytes()
+            raw += px[y * stride:(y + 1) * stride].tobytes()
 
         def chunk(tag: bytes, data: bytes) -> bytes:
             return struct.pack(">I", len(data)) + tag + data + struct.pack(">I", zlib.crc32(tag + data) & 0xFFFFFFFF)
 
-        ihdr = struct.pack(">IIBBBBB", W, H, 8, 2, 0, 0, 0)
+        ihdr = struct.pack(">IIBBBBB", OUT_W, OUT_H, 8, 2, 0, 0, 0)
         return b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", ihdr) + chunk(b"IDAT", zlib.compress(bytes(raw), 9)) + chunk(b"IEND", b"")
 
 

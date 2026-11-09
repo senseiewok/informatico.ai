@@ -198,7 +198,7 @@ def lead_figure(page: dict, rel_res: str, es: bool = False) -> str:
     cap_en = f"Plate {code}-V · {cap_en_body} Drawn by timegravity/make_plates.py from tools/timegravity_kernel.py."
     cap_es = f"Lámina {code}-V · {cap_es_body} Dibujada por timegravity/make_plates.py desde tools/timegravity_kernel.py."
     return f"""    <figure class="tp-editorial-figure" data-lead-figure role="group" aria-label="{a(fig_label)}">
-      <img class="tp-editorial-img" src="{rel_res}/plates/{slug}.png?v={png_sha8(slug)}" width="1280" height="720" alt="{a(alt_txt)}" loading="eager" fetchpriority="high" decoding="async">
+      <img class="tp-editorial-img" src="{rel_res}/plates/{slug}.png?v={png_sha8(slug)}" width="1200" height="630" alt="{a(alt_txt)}" loading="eager" fetchpriority="high" decoding="async">
       <figcaption class="tp-editorial-caption">
         {bi("span", cap_en, cap_es)}
         <details class="tp-plate-provenance-details">
