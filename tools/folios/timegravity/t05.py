@@ -273,6 +273,29 @@ PAGE: dict = {
               "la aritmética de un modelo; la etiqueta es PROPUESTO."),
         ),
         P(
+            C("PROPOSED", [TRILLO, TILLOY, MV25],
+              "The kernel can also say where the model's entangling power sits. Its generator has two parts: an imaginary part, a commutator with the "
+              "smeared pair potential −Gm₁m₂ erf(d/2σ)/d, and a real part, the model's own noise. With the noise switched off and only the potential "
+              "kept, the evolution is unitary, the four-branch state stays pure, and the negativity is that of the smeared phase, exactly this page's "
+              "quantum channel, 0.078 for the 2017 geometry, as σ → 0; with the potential switched off and only the noise kept, the negativity is zero "
+              "wherever the kernel looks, as expected of a dephasing channel in the position basis. In full the model gives less than its potential "
+              "alone: for the letter's geometry at σ = 75 µm, 0.024 against 0.152 after 10⁴ s, and at σ = 50 µm nothing against 0.363, the noise, "
+              "stronger at smaller σ, having removed it all.",
+              "El núcleo también puede decir dónde está el poder de entrelazar del modelo. Su generador tiene dos partes: una imaginaria, un conmutador con "
+              "el potencial de par suavizado −Gm₁m₂ erf(d/2σ)/d, y una real, el ruido propio del modelo. Con el ruido apagado y solo el potencial, el "
+              "evolución es unitaria, el estado de cuatro ramas sigue puro, y la negatividad es la de la fase suavizada, exactamente el canal cuántico de "
+              "esta página, 0.078 para la geometría de 2017, cuando σ → 0; con el potencial apagado y solo el ruido, la negatividad es cero dondequiera "
+              "que mire el núcleo, como se espera de un canal de desfase en la base de posición. Completo, el modelo da menos que su potencial solo: "
+              "para la geometría de la carta a σ = 75 µm, 0.024 frente a 0.152 tras 10⁴ s, y a σ = 50 µm nada frente a 0.363, pues el ruido, más fuerte "
+              "a σ menor, lo ha quitado todo."),
+            T(" In this construction the entangling term is the commutator with the smeared pair potential, the term left once the classical field is "
+              "traced out; the noise term only takes away. Whether such a term counts as classical mediation is the dispute itself, and the page "
+              "states the decomposition and no more.",
+              " En esta construcción el término que entrelaza es el conmutador con el potencial de par suavizado, el término que queda una vez trazado "
+              "el campo clásico; el término de ruido solo quita. Si tal término cuenta como mediación clásica es la disputa misma, y la página enuncia "
+              "la descomposición y nada más."),
+        ),
+        P(
             C("PROPOSED", [KTM, MV],
               "The band's lower edge is computed from the classical-channel rate: in the 2014 model the measurement-and-feedback channel reproduces the linearised "
               "gravitational spring K = 2Gm²/d³ and adds position decoherence at KΔx²/(2ħ) per mass, 'minimal in the sense that, if it were any "

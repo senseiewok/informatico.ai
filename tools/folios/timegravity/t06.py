@@ -22,6 +22,7 @@ FEIN = "T06-FEIN2019"
 HELOU = "T06-HELOU2017"
 HAMEROFF = "T06-HAMEROFF2014"
 OPPENHEIM = "T06-OPPENHEIM2023"
+PICCIONE = "T06-PICCIONE2025"
 TILLOY = "T05-TILLOY2016"
 TRILLO = "T05-TRILLO2025"
 LEE = "T05-LEE2020"
@@ -65,7 +66,7 @@ PAGE: dict = {
     "skill_filename": "timegravity-t06-collapse-bound.SKILL.md",
     "open_question_en": "If gravity neither collapses nor is shown to entangle, what is a superposition of slopes?",
     "open_question_es": "Si la gravedad ni colapsa ni se muestra que entrelaza, ¿qué es una superposición de pendientes?",
-    "ledger_ids": [DIOSI, PENROSE, DONADI, XENON, FEIN, HELOU, HAMEROFF, OPPENHEIM, TILLOY, TRILLO, LEE, LEE21],
+    "ledger_ids": [DIOSI, PENROSE, DONADI, XENON, FEIN, HELOU, HAMEROFF, OPPENHEIM, PICCIONE, TILLOY, TRILLO, LEE, LEE21],
     "ai_line_en": (
         "AI contribution to the cited results: none. No AI system contributed to any proposal, measurement or bound cited on this page. "
         "The page text, instrument and verifier were drafted with AI assistance and checked by the site maintainer against the primary sources listed below."
@@ -269,15 +270,20 @@ PAGE: dict = {
               "magnitud fuera y rompe la ley σ³ entre los peldaños superiores, lo que el verificador rechaza."),
         ),
         P(
-            C("PROPOSED", [TRILLO, LEE, LEE21],
+            C("PROPOSED", [TRILLO, LEE, LEE21, PICCIONE],
               "At the top of the ladder sits the 2025 letter's 50 to 250 µm, the range in which the model entangles two masses in a "
               "laboratory; just below it, at 44 µm, the wedge kernel of T.05 finds the model's softened pull removing as much of the "
               "Eöt-Wash torque as the Yukawa that test excludes at 95 %. On this site's estimate the inverse-square tests leave room only below "
-              "that line, and the entanglement letter needs the range above it.",
+              "that line, and the entanglement letter needs the range above it. A 2025 preprint on the smearing profiles of these models notes that for "
+              "this parameter 'upper bounds can be put by observing no deviations from Newton's law of gravitation'; it works none out and names no "
+              "experiment. The 44 µm rung is this site's own estimate from the Eöt-Wash comparison on T.05, not the preprint's.",
               "En lo alto de la escalera están los 50 a 250 µm de la carta de 2025, el rango en que el modelo entrelaza dos masas en un "
               "laboratorio; justo debajo, a 44 µm, el núcleo de cuñas de T.05 encuentra que la atracción suavizada del modelo quita tanto "
               "del par de Eöt-Wash como el Yukawa que esa prueba excluye al 95 %. En la estimación de este sitio las pruebas del inverso del cuadrado "
-              "dejan sitio solo por debajo de esa línea, y la carta de entrelazamiento necesita el rango por encima."),
+              "dejan sitio solo por debajo de esa línea, y la carta de entrelazamiento necesita el rango por encima. Una prepublicación de 2025 sobre los "
+              "perfiles de suavizado de estos modelos anota que para este parámetro 'se pueden poner cotas superiores observando que no hay desviaciones "
+              "de la ley de gravitación de Newton'; no calcula ninguna ni nombra experimento alguno. El peldaño de 44 µm es la estimación propia de este "
+              "sitio desde la comparación con Eöt-Wash en T.05, no la de la prepublicación."),
             C("BOUND", [OPPENHEIM],
               "The same torsion balances enter a second squeeze: in 2023 Oppenheim and co-workers showed that any consistent theory with "
               "classical gravity and quantum matter must trade decoherence of the matter against diffusion of the field, bounded that "
@@ -344,6 +350,7 @@ PAGE: dict = {
         ("Tilloy, A., & Diósi, L. (2016). Sourcing semiclassical gravity from spontaneously localized quantum matter. Physical Review D, 93, 024026.", "10.1103/PhysRevD.93.024026"),
         ("Trillo, D., & Navascués, M. (2025). The Diósi-Penrose model of classical gravity predicts gravitationally induced entanglement. Physical Review D, 111, L121101.", "10.1103/PhysRevD.111.L121101"),
         ("Lee, J. G., Adelberger, E. G., Cook, T. S., Fleischer, S. M., & Heckel, B. R. (2020). New test of the gravitational 1/r² law at separations down to 52 µm. Physical Review Letters, 124, 101101.", "10.1103/PhysRevLett.124.101101"),
+        ("Piccione, N. (2025). Diffusion minimization via optimal smearing in collapse and hybrid classical-quantum gravitational models. arXiv:2511.00644.", "10.48550/arXiv.2511.00644"),
         ("Lee, J. G., Adelberger, E. G., Marcoline, F. V., Terrano, W. A., & Heckel, B. R. (2021). The Fourier–Bessel expansion: application to experimental probes of gravity and feeble short-range interactions. Classical and Quantum Gravity, 38, 085020.", "10.1088/1361-6382/abebf2"),
     ],
 }

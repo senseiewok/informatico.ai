@@ -712,6 +712,16 @@
       "kind": "peer-reviewed",
       "review_by": "2028-11-09",
       "note": "Gravitationally induced decoherence vs space-time diffusion: a decoherence-diffusion trade-off for any consistent classical-gravity / quantum-matter theory; torsion-balance data bound the diffusion, D2 <= 1e-41 kg^2 s m^-3; the Diosi-Penrose kernel named as a member of the class."
+    },
+    {
+      "id": "T06-PICCIONE2025",
+      "label": "PROPOSED",
+      "doi": "10.48550/arXiv.2511.00644",
+      "year": 2025,
+      "collaboration": "Piccione (arXiv)",
+      "kind": "preprint",
+      "review_by": "2027-11-09",
+      "note": "Diffusion minimization via optimal smearing in collapse and hybrid classical-quantum gravitational models (GRW, CSL, DP, Tilloy-Diosi): notes that for the smearing length 'upper bounds can be put by observing no deviations from Newton's law of gravitation' without working one out. Preprint; young row."
     }
   ]
 }

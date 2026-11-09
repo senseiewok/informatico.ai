@@ -50,6 +50,8 @@ def main(argv: list[str] | None = None) -> int:
         assert res["tn_2017_ok"], "the 2017 geometry does not reproduce: none below σ_c, some above, Newtonian phases as σ → 0, < 1e-3 at 2.5 s"
         assert res["ktm_ok"], f"the T.05 dephasing threshold is not the Kafri–Taylor–Milburn minimal rate in the small-split limit: ratios {[round(r['ratio'], 4) for r in res['ktm_threshold_ratios']]}"
         assert res["ktm_edge_ok"], f"the classical channel's own linearised model entangles: negativity {res['ktm_2017']['linear_model_negativity']}"
+        assert res["parts_ok"], ("the decomposition of the model's generator fails: the noise part alone must entangle nothing, the interaction part alone "
+                                 "must give at least the full negativity, and at σ = 1 nm the interaction part must be the quantum channel")
         assert res["defect_rejected"], "the planted decoherence-free channel was not detectable"
         ref = verify_reference_block()
     except AssertionError as exc:
@@ -69,12 +71,14 @@ def main(argv: list[str] | None = None) -> int:
             "ktm_threshold_ratio_small_split": res["ktm_threshold_ratios"][-1]["ratio"],
             "ktm_2017_linear_model_negativity": res["ktm_2017"]["linear_model_negativity"],
             "ktm_2017_exact_phases_with_ktm_dephasing_negativity": res["ktm_2017"]["exact_phases_with_ktm_dephasing_negativity"],
+            "entangling_parts": res["entangling_parts"], "quantum_channel_negativity_2017": res["quantum_channel_negativity_2017"],
         },
         "geometry_checks": {
             "critical_separation_matches_paper": "PASS",
             "e_minus_vs_master_equation_double_entry": "PASS",
             "fig3_geometry_reproduced": "PASS",
             "ktm_minimal_rate_is_the_threshold": "PASS",
+            "entangling_power_in_the_interaction_part": "PASS",
             "planted_defect_knockout": "REJECTED_AS_EXPECTED",
         },
         "reference_block": ref,
