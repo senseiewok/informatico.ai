@@ -7,6 +7,8 @@ One folder per shipped page under `skills/timegravity/<slug>/`:
 | `T.01` Gravity as a Slope in the Rate of Time | `t01/` | `make_t01.py` | `verify_t01_time_slope_geodesic.py` (`--planted-defect` must exit non-zero) | `SKILL.md` |
 | `T.02` Everyone Moves at One Rate | `t02/` | `make_t02.py` | `verify_t02_gps_one_rate.py` (sign flip must exit non-zero; two calculation paths must agree) | `SKILL.md` |
 | `T.03` What Sets the Slope | `t03/` | `make_t03.py` | `verify_t03_poisson_equivalence.py` (η = 10⁻³ must exit non-zero) | `SKILL.md` |
+| `T.04` A Clock in Two Places | `t04/` | `make_t04.py` | `verify_t04_clock_visibility.py` (a clock that never decoheres must exit non-zero) | `SKILL.md` |
+| `T.07` The Equation with No Time | `t07/` | `make_t07.py` | `verify_t07_page_wootters.py` (a clock spectrum that ignores the constraint must exit non-zero) | `SKILL.md` |
 
 The hub `T.00` has no generator and no verifier: it carries no claims, and `tools/check_timegravity_labels.py` asserts that.
 

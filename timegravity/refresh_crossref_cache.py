@@ -13,6 +13,7 @@ import datetime as dt
 import json
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -22,6 +23,26 @@ LEDGER = ROOT / "timegravity" / "ledger.json"
 CACHE = ROOT / "data" / "folio-citations.cache.json"
 USER_AGENT = "informatico.ai-timegravity-ledger/1.0 (https://github.com/senseiewok/informatico.ai)"
 DOI_RE = re.compile(r"^10\.[0-9]{4,9}/[^\s?#]+$")
+
+
+def fetch_datacite(doi: str) -> dict:
+    """arXiv DOIs (10.48550/...) are registered with DataCite, not Crossref; same cache shape, source noted."""
+    url = "https://api.datacite.org/dois/" + urllib.request.quote(doi, safe="/()")
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/vnd.api+json"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        attrs = json.load(resp)["data"]["attributes"]
+    creators = attrs.get("creators") or []
+    first = (creators[0].get("familyName") or creators[0].get("name") or "").split(",")[0] if creators else ""
+    titles = attrs.get("titles") or []
+    return {
+        "fetched": dt.date.today().isoformat(),
+        "first_author": first,
+        "found": True,
+        "journal": attrs.get("publisher") or "arXiv",
+        "title": titles[0].get("title", "") if titles else "",
+        "year": int(attrs.get("publicationYear") or 0) or None,
+        "registry": "DataCite (preprint)",
+    }
 
 
 def fetch(doi: str) -> dict:
@@ -111,8 +132,9 @@ def main() -> int:
                 t = cache[key]
                 print(f"OK   scite {doi}: {t['citing_publications']} citing · {t['supporting']} supporting · {t['contrasting']} contrasting · {t['mentioning']} mentioning")
             else:
-                cache[key] = fetch(doi)
+                cache[key] = fetch_datacite(doi) if doi.lower().startswith("10.48550/") else fetch(doi)
                 print(f"OK   {doi}: {cache[key]['first_author']} ({cache[key]['year']}) {cache[key]['title'][:70]}")
+            time.sleep(1.2)  # polite pacing for the public endpoints
         except (urllib.error.URLError, urllib.error.HTTPError, KeyError, ValueError, TimeoutError) as exc:
             failures += 1
             print(f"FAIL {key}: {exc}", file=sys.stderr)

@@ -343,6 +343,22 @@
   "title": "Image-based analysis of lipid nanoparticle–mediated siRNA delivery, intracellular trafficking and endosomal escape",
   "year": 2013
  },
+ "doi:10.1038/ncomms1498": {
+  "fetched": "2026-11-08",
+  "first_author": "Zych",
+  "found": true,
+  "journal": "Nature Communications",
+  "title": "Quantum interferometric visibility as a witness of general relativistic proper time",
+  "year": 2011
+ },
+ "doi:10.1038/s41467-018-08155-0": {
+  "fetched": "2026-11-08",
+  "first_author": "Giacomini",
+  "found": true,
+  "journal": "Nature Communications",
+  "title": "Quantum mechanics and the covariance of physical laws in quantum reference frames",
+  "year": 2019
+ },
  "doi:10.1038/s41467-019-08329-4": {
   "fetched": "2026-11-04",
   "first_author": "Lueck",
@@ -583,6 +599,14 @@
   "title": "Disintegration of water drops in an electric field",
   "year": 1964
  },
+ "doi:10.1103/physrev.160.1113": {
+  "fetched": "2026-11-08",
+  "first_author": "DeWitt",
+  "found": true,
+  "journal": "Physical Review",
+  "title": "Quantum Theory of Gravity. I. The Canonical Theory",
+  "year": 1967
+ },
  "doi:10.1103/physrev.17.273": {
   "fetched": "2026-11-04",
   "first_author": "Washburn",
@@ -599,6 +623,30 @@
   "title": "Reciprocal Relations in Irreversible Processes. I.",
   "year": 1931
  },
+ "doi:10.1103/physrev.53.318": {
+  "fetched": "2026-11-08",
+  "first_author": "Rabi",
+  "found": true,
+  "journal": "Physical Review",
+  "title": "A New Method of Measuring Nuclear Magnetic Moment",
+  "year": 1938
+ },
+ "doi:10.1103/physrev.78.695": {
+  "fetched": "2026-11-08",
+  "first_author": "Ramsey",
+  "found": true,
+  "journal": "Physical Review",
+  "title": "A Molecular Beam Resonance Method with Separated Oscillating Fields",
+  "year": 1950
+ },
+ "doi:10.1103/physrev.80.580": {
+  "fetched": "2026-11-08",
+  "first_author": "Hahn",
+  "found": true,
+  "journal": "Physical Review",
+  "title": "Spin Echoes",
+  "year": 1950
+ },
  "doi:10.1103/physreva.86.032324": {
   "fetched": "2026-11-07",
   "first_author": "Fowler",
@@ -606,6 +654,22 @@
   "journal": "Physical Review A",
   "title": "Surface codes: Towards practical large-scale quantum computation",
   "year": 2012
+ },
+ "doi:10.1103/physreva.89.052122": {
+  "fetched": "2026-11-08",
+  "first_author": "Moreva",
+  "found": true,
+  "journal": "Physical Review A",
+  "title": "Time from quantum entanglement: An experimental illustration",
+  "year": 2014
+ },
+ "doi:10.1103/physrevd.27.2885": {
+  "fetched": "2026-11-08",
+  "first_author": "Page",
+  "found": true,
+  "journal": "Physical Review D",
+  "title": "Evolution without evolution: Dynamics described by stationary observables",
+  "year": 1983
  },
  "doi:10.1103/physrevlett.100.013904": {
   "fetched": "2026-11-04",
@@ -718,6 +782,14 @@
   "journal": "Physical Review X",
   "title": "Nonequilibrium Thermodynamics of Chemical Reaction Networks: Wisdom from Stochastic Thermodynamics",
   "year": 2016
+ },
+ "doi:10.1103/qhj9-pc2b": {
+  "fetched": "2026-11-08",
+  "first_author": "Sorci",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Quantum Signatures of Proper Time in Optical Ion Clocks",
+  "year": 2026
  },
  "doi:10.1103/revmodphys.35.724": {
   "fetched": "2026-11-04",
@@ -837,6 +909,14 @@
   "found": true,
   "journal": "Science",
   "title": "Translational tuning optimizes nascent protein folding in cells",
+  "year": 2015
+ },
+ "doi:10.1126/science.aac6498": {
+  "fetched": "2026-11-08",
+  "first_author": "Margalit",
+  "found": true,
+  "journal": "Science",
+  "title": "A self-interfering clock as a “which path” witness",
   "year": 2015
  },
  "doi:10.1126/science.aat9513": {
@@ -1119,6 +1199,14 @@
   "title": "Stim: a fast stabilizer circuit simulator",
   "year": 2021
  },
+ "doi:10.22331/q-2025-08-08-1827": {
+  "fetched": "2026-11-08",
+  "first_author": "Paczos",
+  "found": true,
+  "journal": "Quantum",
+  "title": "Witnessing mass-energy equivalence with trapped atom interferometers",
+  "year": 2025
+ },
  "doi:10.2307/2118559": {
   "fetched": "2026-11-04",
   "first_author": "Wiles",
@@ -1174,6 +1262,15 @@
   "journal": "arXiv",
   "title": "Interpretable Machine Learning for Science with PySR and SymbolicRegression.jl",
   "year": 2023
+ },
+ "doi:10.48550/arxiv.2608.16732": {
+  "fetched": "2026-11-08",
+  "first_author": "Stoica",
+  "found": true,
+  "journal": "arXiv",
+  "registry": "DataCite (preprint)",
+  "title": "The preferred-time problem in the conditional interpretation of time",
+  "year": 2026
  },
  "doi:10.58347/tml.2025.1724a": {
   "fetched": "2026-11-04",
@@ -1933,6 +2030,30 @@
   "unclassified": 3,
   "year": 2013
  },
+ "scite:10.1038/ncomms1498": {
+  "citing_publications": 322,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 1,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 453,
+  "retracted": false,
+  "supporting": 10,
+  "total_smart_citations": 464,
+  "unclassified": 0
+ },
+ "scite:10.1038/s41467-018-08155-0": {
+  "citing_publications": 429,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 2,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 646,
+  "retracted": false,
+  "supporting": 25,
+  "total_smart_citations": 675,
+  "unclassified": 2
+ },
  "scite:10.1038/s41467-019-08329-4": {
   "citing_publications": 174,
   "contrasting": 0,
@@ -2181,6 +2302,54 @@
   "unclassified": 14,
   "year": 1964
  },
+ "scite:10.1103/physrev.160.1113": {
+  "citing_publications": 4006,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 2,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 4189,
+  "retracted": false,
+  "supporting": 32,
+  "total_smart_citations": 4252,
+  "unclassified": 29
+ },
+ "scite:10.1103/physrev.53.318": {
+  "citing_publications": 866,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 345,
+  "retracted": false,
+  "supporting": 1,
+  "total_smart_citations": 364,
+  "unclassified": 18
+ },
+ "scite:10.1103/physrev.78.695": {
+  "citing_publications": 1169,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 621,
+  "retracted": false,
+  "supporting": 4,
+  "total_smart_citations": 635,
+  "unclassified": 10
+ },
+ "scite:10.1103/physrev.80.580": {
+  "citing_publications": 5831,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 1,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 2848,
+  "retracted": false,
+  "supporting": 24,
+  "total_smart_citations": 2946,
+  "unclassified": 73
+ },
  "scite:10.1103/physreva.86.032324": {
   "citing_publications": 4235,
   "contrasting": 3,
@@ -2194,6 +2363,30 @@
   "total_smart_citations": 3842,
   "unclassified": 6,
   "year": 2012
+ },
+ "scite:10.1103/physreva.89.052122": {
+  "citing_publications": 173,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 150,
+  "retracted": false,
+  "supporting": 6,
+  "total_smart_citations": 157,
+  "unclassified": 1
+ },
+ "scite:10.1103/physrevd.27.2885": {
+  "citing_publications": 796,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 881,
+  "retracted": false,
+  "supporting": 15,
+  "total_smart_citations": 916,
+  "unclassified": 20
  },
  "scite:10.1103/physrevlett.100.013904": {
   "citing_publications": 3094,
@@ -2363,6 +2556,18 @@
   "unclassified": 0,
   "year": 2016
  },
+ "scite:10.1103/qhj9-pc2b": {
+  "citing_publications": 12,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 7,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 7,
+  "unclassified": 0
+ },
  "scite:10.1103/revmodphys.35.724": {
   "citing_publications": 694,
   "contrasting": 0,
@@ -2496,6 +2701,18 @@
   "total_smart_citations": 276,
   "unclassified": 0,
   "year": 2015
+ },
+ "scite:10.1126/science.aac6498": {
+  "citing_publications": 118,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 135,
+  "retracted": false,
+  "supporting": 3,
+  "total_smart_citations": 138,
+  "unclassified": 0
  },
  "scite:10.1126/science.aat9513": {
   "citing_publications": 2317,
@@ -2883,6 +3100,18 @@
   "unclassified": 0,
   "year": 2021
  },
+ "scite:10.22331/q-2025-08-08-1827": {
+  "citing_publications": 5,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 1,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 1,
+  "unclassified": 0
+ },
  "scite:10.2307/2118559": {
   "citing_publications": 2170,
   "contrasting": 0,
@@ -2952,6 +3181,18 @@
   "total_smart_citations": 428,
   "unclassified": 0,
   "year": 2023
+ },
+ "scite:10.48550/arxiv.2608.16732": {
+  "citing_publications": 0,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 0,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 0,
+  "unclassified": 0
  },
  "scite:10.7717/peerj.4375": {
   "citing_publications": 1360,

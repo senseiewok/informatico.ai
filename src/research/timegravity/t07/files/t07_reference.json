@@ -1,0 +1,171 @@
+{
+  "folio_id": "T.07",
+  "title": "The Equation with No Time",
+  "construction": "H = H_C x 1 + 1 x H_S, H|Psi>> = 0; |Psi>> = (1/sqrt d) sum_n |t_n> x exp(-i H_S n)|+x>; d-level cyclic clock (Pegg-Barnett)",
+  "parameters": {
+    "clock_levels_d": 16,
+    "k": 1,
+    "eps": 0.785398163397,
+    "hilbert_dim": 32,
+    "tolerance": 1e-10
+  },
+  "constraint_residual": 1.40842506499e-15,
+  "max_dev_from_schroedinger": 7.77156117238e-16,
+  "conditional_n__p_plus_x__cos2": [
+    [
+      0,
+      1.0,
+      1.0
+    ],
+    [
+      1,
+      0.853553390593,
+      0.853553390593
+    ],
+    [
+      2,
+      0.5,
+      0.5
+    ],
+    [
+      3,
+      0.146446609407,
+      0.146446609407
+    ],
+    [
+      4,
+      1.30241657437e-31,
+      3.74939945665e-33
+    ],
+    [
+      5,
+      0.146446609407,
+      0.146446609407
+    ],
+    [
+      6,
+      0.5,
+      0.5
+    ],
+    [
+      7,
+      0.853553390593,
+      0.853553390593
+    ],
+    [
+      8,
+      1.0,
+      1.0
+    ],
+    [
+      9,
+      0.853553390593,
+      0.853553390593
+    ],
+    [
+      10,
+      0.5,
+      0.5
+    ],
+    [
+      11,
+      0.146446609407,
+      0.146446609407
+    ],
+    [
+      12,
+      3.28149673757e-31,
+      3.37445951099e-32
+    ],
+    [
+      13,
+      0.146446609407,
+      0.146446609407
+    ],
+    [
+      14,
+      0.5,
+      0.5
+    ],
+    [
+      15,
+      0.853553390593,
+      0.853553390593
+    ]
+  ],
+  "energy_split_m__p_plus_x": [
+    [
+      -8,
+      null
+    ],
+    [
+      -7,
+      null
+    ],
+    [
+      -6,
+      null
+    ],
+    [
+      -5,
+      null
+    ],
+    [
+      -4,
+      null
+    ],
+    [
+      -3,
+      null
+    ],
+    [
+      -2,
+      null
+    ],
+    [
+      -1,
+      0.5
+    ],
+    [
+      0,
+      null
+    ],
+    [
+      1,
+      0.5
+    ],
+    [
+      2,
+      null
+    ],
+    [
+      3,
+      null
+    ],
+    [
+      4,
+      null
+    ],
+    [
+      5,
+      null
+    ],
+    [
+      6,
+      null
+    ],
+    [
+      7,
+      null
+    ]
+  ],
+  "jacobi_kernel": {
+    "kernel_dim": 2,
+    "projection_onto_kernel": 1.0,
+    "eigenvalue_min": -3.53429173529,
+    "eigenvalue_max": 3.14159265359
+  },
+  "planted_defect_constraint_residual": 13.3286488145,
+  "boundary_en": "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. Preprints never rise above PROPOSED. Each page ends with one open question that the next page takes up.",
+  "license": "CC0-1.0 / CC-BY-4.0"
+}

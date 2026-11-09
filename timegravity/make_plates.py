@@ -199,9 +199,55 @@ def plate_t03() -> bytes:
     return c.png()
 
 
+def plate_t04() -> bytes:
+    """Two arms at different heights with a clock on each, and the visibility curve falling with height difference."""
+    from timegravity_kernel_quantum import OMEGA_SR, zych_visibility
+    c = Canvas()
+    c.fill_gradient()
+    c.rate_column(96, 236, 72, 648)
+    for y in (220, 500):
+        c.stroke([(330, y), (600, y)], INK, 3.0)
+        c.disc(465, y, 34, VELLUM, ring=INK)
+        c.stroke([(465, y), (465, y - 26)], INK, 2.5)
+    c.stroke([(300, 360), (330, 220)], INK, 1.2, dash=(5, 5))
+    c.stroke([(300, 360), (330, 500)], INK, 1.2, dash=(5, 5))
+    pts = [(700 + 480 * s, 620 - 480 * zych_visibility(10.0 * s, 1.0, OMEGA_SR)) for s in [i / 160 for i in range(161)]]
+    c.stroke([(700, 140), (700, 620)], INK, 1.2)
+    c.stroke([(700, 620), (1180, 620)], INK, 1.2)
+    c.stroke(pts, MINIUM, 4.0)
+    c.disc(pts[16][0], pts[16][1], 11, INK)
+    return c.png()
+
+
+def plate_t07() -> bytes:
+    """A grid of tiles for the stationary history state and the cos² curve of the conditional probabilities."""
+    from timegravity_kernel_quantum import pw_history_state
+    import math
+    c = Canvas()
+    c.fill_gradient()
+    st = pw_history_state()
+    d = st["d"]
+    for cnd in st["conditional"]:
+        n = cnd["n"]
+        for col, p in ((0, cnd["p_plus_x"]), (1, 1.0 - cnd["p_plus_x"])):
+            x0 = 140 + col * 120
+            y0 = 90 + n * 34
+            for y in range(y0, y0 + 30):
+                for x in range(x0, x0 + 110):
+                    c.blend(x, y, PRUSSIAN, 0.08 + 0.85 * p)
+    pts = [(500 + 640 * s, 600 - 440 * math.cos(st["eps"] * (s * (d - 1)) / 2.0) ** 2) for s in [i / 200 for i in range(201)]]
+    c.stroke([(500, 140), (500, 600)], INK, 1.2)
+    c.stroke([(500, 600), (1140, 600)], INK, 1.2)
+    c.stroke(pts, PRUSSIAN, 3.0)
+    for cnd in st["conditional"]:
+        x = 500 + 640 * cnd["n"] / (d - 1)
+        c.disc(x, 600 - 440 * cnd["p_plus_x"], 8, MINIUM)
+    return c.png()
+
+
 def main() -> int:
     PLATES.mkdir(parents=True, exist_ok=True)
-    for name, fn in (("t00", plate_t00), ("t01", plate_t01), ("t02", plate_t02), ("t03", plate_t03)):
+    for name, fn in (("t00", plate_t00), ("t01", plate_t01), ("t02", plate_t02), ("t03", plate_t03), ("t04", plate_t04), ("t07", plate_t07)):
         data = fn()
         (PLATES / f"{name}.png").write_bytes(data)
         print(f"PASS: wrote plates/{name}.png ({len(data):,} bytes)")
