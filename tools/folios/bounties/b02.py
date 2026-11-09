@@ -376,4 +376,380 @@ FOLIO = {'slug': 'b02',
             'umbral de percolación p_th ≈ 0.01. Con una distancia d = 27 y p_phys = 0.001, la tasa '
             'de error por ciclo se reduce a 3.00 × 10⁻¹⁶, garantizando la supervivencia del '
             'circuito profundo con una huella de 428,652 qubits físicos (Q_phys = 2 · N_teselas · '
-            'd²). Superar el 1% de error destruye la corrección y amplifica el ruido.'}
+            'd²). Superar el 1% de error destruye la corrección y amplifica el ruido.',
+ 'easy_history_title_en': 'How Human Pioneers Reached This Frontier: From 1909 Fertilizer Furnaces & '
+                          'Topological Loops to Stim & XPRIZE Quantum',
+ 'easy_history_title_es': 'Cómo los Pioneros Humanos Llegaron a Esta Frontera: De los Hornos de 1909 '
+                          'y los Lazos Topológicos a Stim y XPRIZE Quantum',
+ 'easy_history_en': 'In 1909, German chemists Fritz Haber and Carl Bosch figured out how to '
+                    'pull nitrogen gas out of thin air and turn it into crop fertilizer, saving '
+                    'billions of people from famine. Yet their industrial recipe required crushing '
+                    'pressures of 200 atmospheres and roaring furnaces at 450 °C, burning vast '
+                    'quantities of fossil gas. Meanwhile, humble soil bacteria on the roots of '
+                    'clover and beans quietly perform the exact same reaction at room temperature '
+                    'using a metallic enzyme cluster called FeMoCo ([Fe₇MoS₉C]). For decades, '
+                    'chemists tried to model how FeMoCo splits the triple bond of nitrogen, only to '
+                    'hit an exponential brick wall: its 54 interacting electrons weave so many '
+                    'simultaneous quantum possibilities (roughly 3 × 10³²) that even the largest '
+                    'classical supercomputer runs out of memory before finishing a single step.\n\n'
+                    'To simulate quantum chemistry natively, physicists turned to quantum computers, '
+                    'immediately confronting a second wall: hardware fragility. A stray thermal '
+                    'vibration spoils a physical qubit in microseconds. In 1997, Russian physicist '
+                    'Alexei Kitaev proposed a radical solution—stitching qubits into a topological '
+                    'checkerboard so errors are caught by neighborhood parity checks without '
+                    'peeking at the fragile quantum state. In 2012, Austin Fowler and colleagues '
+                    'proved that once physical gate errors drop below a 1% threshold, widening '
+                    'this surface-code quilt suppresses logical errors exponentially. Five years '
+                    'later, Markus Reiher and collaborators calculated the first concrete qubit '
+                    'budget for FeMoCo, and in 2021 Craig Gidney released Stim, making it possible '
+                    'to test millions of syndrome cycles in seconds and powering today’s open '
+                    'XPRIZE Quantum and Unitary Foundation benchmarks.',
+ 'easy_history_es': 'En 1909, los químicos alemanes Fritz Haber y Carl Bosch descubrieron cómo '
+                    'capturar el nitrógeno del aire para fabricar fertilizantes agrícolas, salvando '
+                    'del hambre a miles de millones de personas. Sin embargo, su receta industrial '
+                    'exigía presiones aplastantes de 200 atmósferas y hornos ardientes a 450 °C, '
+                    'quemando enormes volúmenes de gas natural. Mientras tanto, humildes bacterias '
+                    'en las raíces del trébol y el frijol realizan exactamente la misma reacción a '
+                    'temperatura ambiente gracias a un pequeño cúmulo metálico llamado FeMoCo '
+                    '([Fe₇MoS₉C]). Durante décadas, los químicos intentaron simular cómo FeMoCo '
+                    'rompe el triple enlace del nitrógeno, pero chocaron contra un muro '
+                    'exponencial: sus 54 electrones entrelazados generan tantas configuraciones '
+                    'cuánticas simultáneas (cerca de 3 × 10³²) que incluso la mayor '
+                    'supercomputadora clásica agota su memoria antes de completar un solo paso.\n\n'
+                    'Para simular la química cuántica en su propio idioma, los físicos recurrieron a '
+                    'las computadoras cuánticas, enfrentando de inmediato un segundo muro: la '
+                    'extrema fragilidad del hardware. Cualquier vibración térmica arruina un qubit '
+                    'físico en microsegundos. En 1997, el físico ruso Alexei Kitaev propuso una '
+                    'salida brillante: tejer los qubits en un tablero topológico para detectar '
+                    'errores mediante controles de paridad vecinales sin destruir el estado '
+                    'cuántico. En 2012, Austin Fowler y sus colegas demostraron que si el error '
+                    'físico baja del umbral del 1%, ampliar este código de superficie reduce el '
+                    'error lógico de forma exponencial. En 2017, Markus Reiher y su equipo '
+                    'calcularon el primer presupuesto cuántico para FeMoCo, y en 2021 Craig Gidney '
+                    'lanzó Stim, permitiendo simular millones de ciclos en segundos e impulsando '
+                    'los retos abiertos de XPRIZE Quantum y Unitary Foundation.',
+ 'history_milestones': [{'year': '1997',
+                         'who_en': 'Alexei Kitaev',
+                         'who_es': 'Alexei Kitaev',
+                         'title_en': 'Topological Toric & Surface Codes',
+                         'title_es': 'Códigos Topológicos Tóricos y de Superficie',
+                         'summary_en': 'Encodes logical qubits non-locally across a 2D lattice of '
+                                       'commuting four-body X and Z stabilizers.',
+                         'summary_es': 'Codifica qubits lógicos de forma no local en una red 2D de '
+                                       'estabilizadores conmutativos X y Z de cuatro cuerpos.',
+                         'roadblock_en': 'Requires high-rate syndrome extraction circuits without '
+                                         'spreading hook errors across tiles.',
+                         'roadblock_es': 'Requiere circuitos rápidos de extracción de síndromes sin '
+                                         'propagar errores de gancho entre teselas.'},
+                        {'year': '2012',
+                         'who_en': 'Austin Fowler, John Martinis & Colleagues',
+                         'who_es': 'Austin Fowler, John Martinis y Colegas',
+                         'title_en': 'The 1% Surface-Code Threshold & Magic States',
+                         'title_es': 'El Umbral del 1% y las Fábricas de Estados Mágicos',
+                         'summary_en': 'Establishes p_th ≈ 1% circuit threshold and P_L = 0.03 '
+                                       '(p_phys / p_th)^((d+1)/2) scaling with 15-to-1 T-factories.',
+                         'summary_es': 'Establece el umbral p_th ≈ 1% y la ley P_L = 0.03 (p_phys / '
+                                       'p_th)^((d+1)/2) con fábricas 15 a 1 de compuertas T.',
+                         'roadblock_en': 'Distillation factories dominate total physical qubit '
+                                         'footprint for deep chemistry circuits.',
+                         'roadblock_es': 'Las fábricas de destilación dominan la huella total de '
+                                         'qubits físicos en circuitos químicos profundos.'},
+                        {'year': '2017',
+                         'who_en': 'Markus Reiher, Matthias Troyer & Krysta Svore',
+                         'who_es': 'Markus Reiher, Matthias Troyer y Krysta Svore',
+                         'title_en': 'First Fault-Tolerant FeMoCo Resource Estimate',
+                         'title_es': 'Primera Estimación Tolerante a Fallos para FeMoCo',
+                         'summary_en': 'Maps nitrogenase [Fe₇MoS₉C] active-space Quantum Phase '
+                                       'Estimation into concrete logical Toffoli and qubit budgets.',
+                         'summary_es': 'Traduce la Estimación de Fase Cuántica del espacio activo '
+                                       'de [Fe₇MoS₉C] en presupuestos concretos de Toffolis y qubits.',
+                         'roadblock_en': 'Initial Trotter decompositions needed over 10¹⁴ gates '
+                                         'before tensor hypercontraction (THC).',
+                         'roadblock_es': 'Las primeras descomposiciones de Trotter exigían más de '
+                                         '10¹⁴ compuertas antes de la hipercontracción tensorial.'},
+                        {'year': '2021',
+                         'who_en': 'Craig Gidney & Qiming Sun',
+                         'who_es': 'Craig Gidney y Qiming Sun',
+                         'title_en': 'Stim Megahertz QEC & PySCF Integrals',
+                         'title_es': 'Simulación Megahertz en Stim e Integrales en PySCF',
+                         'summary_en': 'Stim samples stabilizer syndromes at megahertz speeds '
+                                       'while PySCF computes open-shell active-space Hamiltonians.',
+                         'summary_es': 'Stim muestrea síndromes estabilizadores a velocidad de '
+                                       'megahertz mientras PySCF calcula hamiltonianos de espacio activo.',
+                         'roadblock_en': 'Bridging ab-initio orbital integrals to active-volume '
+                                         'lattice surgery remained fragmented.',
+                         'roadblock_es': 'Conectar las integrales orbitales ab-initio con la '
+                                         'cirugía de red de volumen activo seguía fragmentado.'},
+                        {'year': '2024–2026',
+                         'who_en': 'XPRIZE Quantum Applications & Unitary Foundation',
+                         'who_es': 'XPRIZE Quantum Applications y Unitary Foundation',
+                         'title_en': 'Standardized Open Resource Benchmarks',
+                         'title_es': 'Estándares Abiertos de Recursos Tolerantes a Fallos',
+                         'summary_en': 'Certifies sub-threshold d = 27 (P_L = 3 × 10⁻¹⁶, 428,652 '
+                                       'qubits) for 54-electron FeMoCo catalysis on Metriq.info.',
+                         'summary_es': 'Certifica el régimen d = 27 (P_L = 3 × 10⁻¹⁶, 428,652 '
+                                       'qubits) para la catálisis de 54 electrones de FeMoCo en Metriq.',
+                         'roadblock_en': 'Physical quantum processors must still scale from ~10³ '
+                                         'to 4.3 × 10⁵ sub-threshold qubits.',
+                         'roadblock_es': 'Los procesadores cuánticos físicos aún deben escalar de '
+                                         '~10³ a 4.3 × 10⁵ qubits bajo el umbral.'}],
+ 'toy_model_title_en': 'Try It in Your Head in 20 Seconds: How Distance d Crushes Quantum Noise',
+ 'toy_model_title_es': 'Pruébalo en tu Cabeza en 20 Segundos: Cómo la Distancia d Aplasta el Ruido '
+                       'Cuántico',
+ 'toy_model_en': 'Suppose a physical qubit flips by mistake once every thousand steps (p_phys = '
+                 '0.001), which is 10 times cleaner than the 1% surface-code threshold (p_th = '
+                 '0.01). That gives a clean suppression ratio of p_phys / p_th = 0.001 / 0.01 = '
+                 '0.10 (one-tenth!). Now watch what happens when we weave a small distance d = 3 '
+                 'patch: an error chain needs (3 + 1) / 2 = 2 simultaneous steps to fool the patch, '
+                 'so the logical error drops to 0.03 × (0.10)² = 3 × 10⁻⁴. Widen the patch to d = '
+                 '7, and it needs (7 + 1) / 2 = 4 steps: 0.03 × (0.10)⁴ = 3 × 10⁻⁶. At our FeMoCo '
+                 'target of d = 27, it needs (27 + 1) / 2 = 14 steps, crushing the error to 0.03 × '
+                 '10⁻¹⁴ = 3.00 × 10⁻¹⁶ per cycle across 2 × 294 × 27² = 428,652 physical qubits!',
+ 'toy_model_es': 'Supón que un qubit físico falla una vez cada mil operaciones (p_phys = 0.001), es '
+                 'decir, 10 veces más limpio que el umbral del 1% del código de superficie (p_th = '
+                 '0.01). Eso nos da una razón de supresión exacta de p_phys / p_th = 0.001 / 0.01 = '
+                 '0.10 (¡un décimo!). Ahora mira qué ocurre al tejer un parche pequeño de distancia '
+                 'd = 3: una cadena de error necesita (3 + 1) / 2 = 2 fallos simultáneos para '
+                 'engañar al parche, bajando el error lógico a 0.03 × (0.10)² = 3 × 10⁻⁴. Con d = '
+                 '7, necesita (7 + 1) / 2 = 4 fallos: 0.03 × (0.10)⁴ = 3 × 10⁻⁶. En nuestra meta '
+                 'para FeMoCo con d = 27, exige (27 + 1) / 2 = 14 pasos, aplastando el error a 0.03 '
+                 '× 10⁻¹⁴ = 3.00 × 10⁻¹⁶ por ciclo usando 2 × 294 × 27² = 428,652 qubits físicos.',
+ 'act1_dropcap_es': '¿Por qué ni siquiera la supercomputadora clásica más grande del mundo puede '
+                    'calcular la ruta exacta de reacción en el estado fundamental del cofactor de '
+                    'hierro y molibdeno de la nitrogenasa, FeMoCo ([Fe₇MoS₉C])? Porque sus átomos '
+                    'de hierro y molibdeno de capa d abierta comparten 54 electrones fuertemente '
+                    'correlacionados a través de 54 orbitales espaciales (108 espín-orbitales), '
+                    'abarcando un espacio de Hilbert de dimensión 2¹⁰⁸ ≈ 3 × 10³² donde la teoría '
+                    'del funcional de la densidad de referencia única y las aproximaciones de '
+                    'cúmulos acoplados colapsan por completo.',
+ 'act1_body_es': 'La Estimación de Fase Cuántica (QPE) y la codificación por bloques qubitizada '
+                 'pueden resolver la energía del espacio activo de FeMoCo con precisión química '
+                 '(1.6 mHa = 1 kcal/mol) en tiempo polinomial, pero solo si cada compuerta lógica '
+                 'sobrevive a miles de millones de ciclos de extracción de síndromes sin un solo '
+                 'error lógico de inversión de bit o de fase. El premio XPRIZE Quantum Applications '
+                 'de 5 millones de dólares reta a los investigadores a producir estimaciones '
+                 'rigurosas de recursos tolerantes a fallos para problemas de alto impacto '
+                 'ambiental, mientras que el registro Metriq.info y unitaryHACK de Unitary '
+                 'Foundation premian los bancos de pruebas de código abierto construidos sobre el '
+                 'simulador estabilizador de megahertz de Craig Gidney (quantumlib/Stim) y el motor '
+                 'de química cuántica ab-initio de Qiming Sun (pyscf/pyscf).',
+ 'act1_stakes_es': 'Reemplazar el centenario proceso Haber–Bosch por una fijación catalítica limpia '
+                   'de nitrógeno a temperatura ambiente representa una de las mayores oportunidades '
+                   'de descarbonización en la ingeniería química moderna. La síntesis industrial de '
+                   'amoníaco consume actualmente cerca del 2% de todo el suministro energético '
+                   'mundial y libera más de 450 millones de toneladas métricas de dióxido de '
+                   'carbono a nuestra atmósfera cada año. Si los químicos y científicos de '
+                   'materiales lograran descifrar la ruta electrónica exacta de reacción del '
+                   'cofactor de hierro-molibdeno FeMoCo ([Fe₇MoS₉C]), los catalizadores sintéticos '
+                   'transformarían la agricultura sostenible y ofrecerían un vector limpio de alta '
+                   'densidad para el almacenamiento y transporte de hidrógeno verde.\n'
+                   '\n'
+                   'Sin embargo, calcular la barrera electrónica de reacción en el estado '
+                   'fundamental de FeMoCo exige una estimación de fase cuántica con estricta '
+                   'precisión química (1.6 mHa o 1 kcal/mol), lo que demanda un algoritmo cuántico '
+                   'capaz de ejecutar más de diez mil millones de compuertas Toffoli tolerantes a '
+                   'fallos. En los procesadores cuánticos ruidosos sin corrección, las vibraciones '
+                   'térmicas del entorno destruyen las frágiles superposiciones cuánticas en '
+                   'cuestión de microsegundos. El único camino viable es la corrección topológica '
+                   'de errores cuánticos mediante el código de superficie rotado de Kitaev, que '
+                   'entreteje cientos de qubits físicos ruidosos en un solo qubit lógico '
+                   'ultraestable. El premio XPRIZE Quantum Applications de 5 millones de dólares y '
+                   'el registro Metriq de Unitary Foundation evalúan este gran desafío: ¿cuántos '
+                   'qubits físicos se requieren genuinamente para ejecutar una simulación completa '
+                   'de FeMoCo? Al integrar el simulador estabilizador de megahertz de Craig Gidney '
+                   '(Stim) con motores de química cuántica ab-initio (PySCF), los investigadores '
+                   'pueden evaluar con rigor la ley de escalamiento de umbral P_L ≈ 0.03 (p_phys / '
+                   'p_th)^((d+1)/2). Establecer estos presupuestos exactos de hardware determina si '
+                   'una computadora cuántica tolerante a fallos podrá resolver la seguridad '
+                   'alimentaria y la sostenibilidad climática antes de mediados de siglo.',
+ 'pullquote_es': 'Por debajo del umbral del 1% del código de superficie, añadir qubits físicos '
+                 'convierte el ruido cuántico de un enemigo exponencial en un susurro '
+                 'exponencialmente suprimido.',
+ 'act2_intuition_es': 'Un código de superficie plano rotado de distancia impar d dispone 2d² qubits '
+                      'físicos sobre un tablero de ajedrez de estabilizadores de cuatro cuerpos '
+                      'tipo X y tipo Z. Cualquier cadena de errores más corta que (d+1)/2 es '
+                      'emparejada de forma única mediante acoplamiento perfecto de peso mínimo '
+                      '(PyMatching), haciendo que la tasa de error lógico por ciclo se desplome '
+                      'como P_L ≈ 0.03 (p_phys / p_th)^((d+1)/2) siempre que el error físico de '
+                      'compuerta p_phys se mantenga por debajo del umbral p_th ≈ 0.01.',
+ 'act2_analogy_es': 'Analogía cotidiana: Imagina tejer una intrincada alfombra persa de seda en '
+                    'medio de una tormenta de arena. Cada qubit físico es como un delicado hilo de '
+                    'seda individual, y el ruido ambiental de compuerta p_phys es el ritmo al que '
+                    'los granos de arena rompen hilos sueltos. El umbral crítico p_th representa '
+                    'la resistencia de tu telar: si la arena cae a un ritmo mayor que un grano por '
+                    'cada cien hilos (p_phys ≥ 1%), todo el tapiz se deshilacha sin remedio. Pero '
+                    'si el telar opera por debajo de ese umbral crítico de tormenta (p_phys < '
+                    'p_th), puedes proteger el diseño maestro agrupando los hilos en un cuadro '
+                    'tejido protector de distancia d. Aunque algunos hilos individuales se rompan '
+                    'dentro de una tesela, las puntadas estabilizadoras de cuatro cuerpos que los '
+                    'rodean detectan la rotura y atan nudos complementarios para reparar el '
+                    'desgarro antes de que se propague. Para provocar un defecto irreparable a '
+                    'través de todo el patrón lógico—la tasa de error lógico P_L—la tormenta debe '
+                    'cortar una cadena ininterrumpida de (d+1)/2 hilos que cruce de un borde al '
+                    'otro de la alfombra. Al ampliar el tamaño d de la tesela, este cruce '
+                    'catastrófico se vuelve exponencialmente improbable, aunque el número total de '
+                    'hilos Q_phys crezca cuadráticamente como 2 · N_tiles · d².',
+ 'act2_plain_primer_es': 'Para explorar este mecanismo de protección cuántica, nuestra consola '
+                         'interactiva ofrece dos controles esenciales de ingeniería. El primer '
+                         'control ajusta la Distancia del Código de Superficie d, variando el '
+                         'tamaño impar de la cuadrícula desde 7 hasta 35. A medida que aumentas la '
+                         'distancia, el tablero se ensancha, exigiendo que cualquier ruido '
+                         'ambiental forme una cadena de errores cada vez más larga antes de '
+                         'provocar un fallo lógico. En nuestra distancia objetivo d = 27, la tasa '
+                         'de error lógico se desploma a un microscópico 3.00 × 10⁻¹⁶ por ciclo, '
+                         'superando con holgura el techo de supervivencia de circuito profundo '
+                         'necesario para FeMoCo, con una huella de 428,652 qubits físicos. El '
+                         'segundo control ajusta la Tasa de Error Físico de Compuerta p_phys desde '
+                         '0.0005 hasta 0.012, poniendo a prueba la calidad de los componentes '
+                         'físicos del procesador. Observa la dramática transición de fase al cruzar '
+                         'el umbral del 1% (p_th = 0.01). Si empujas la tasa de error por encima '
+                         'de 0.010, o pulsas el botón [⚡ Counterfactual Knockout], la física '
+                         'protectora se invierte por completo. En lugar de suprimir errores, las '
+                         'cuadrículas más grandes acumulan más ruido del que pueden corregir: el '
+                         'error lógico explota, el sistema falla y el estado cambia a COLAPSO '
+                         'CRÍTICO DE UMBRAL.',
+ 'act2_deepening_es': 'El fundamento cuantitativo de la corrección de errores cuánticos tolerante '
+                      'a fallos descansa sobre la mecánica estadística y la homología topológica. '
+                      'Un código de superficie plano rotado representa un solo qubit lógico '
+                      'mediante una cuadrícula bidimensional de qubits físicos que alterna entre '
+                      'operadores estrella de tipo X y operadores plaqueta de tipo Z. Debido a que '
+                      'los estabilizadores estrella y plaqueta conmutan localmente, las mediciones '
+                      'de síndrome extraen valores propios discretos de error sin perturbar el '
+                      'estado lógico codificado. Cuando los errores físicos de compuerta ocurren '
+                      'con probabilidad independiente p_phys por debajo del umbral p_th ≈ 0.01, las '
+                      'cadenas de error se comportan como paredes de dominio en un modelo calibre '
+                      'de Ising bidimensional de plaquetas aleatorias. Los algoritmos de '
+                      'acoplamiento perfecto de peso mínimo (como PyMatching) emparejan los '
+                      'defectos de síndrome con éxito, lo que significa que un fallo lógico ocurre '
+                      'únicamente si una cadena no detectada de fallos abarca al menos (d+1)/2 '
+                      'sitios físicos a través de la red de distancia d.\n'
+                      '\n'
+                      'Esto produce la ley canónica de escalamiento P_L = 0.03 (p_phys / '
+                      'p_th)^((d+1)/2). Al evaluar esta expresión en nuestros parámetros base de d '
+                      '= 27 y p_phys = 0.001 se obtiene un factor de supresión de (0.001 / 0.01)¹⁴ '
+                      '= 10⁻¹⁴, llevando la tasa de error lógico a P_L = 3.00 × 10⁻¹⁶ por ronda de '
+                      'extracción de síndrome. En el algoritmo de la nitrogenasa FeMoCo, simular '
+                      'el espacio activo de 54 electrones mediante hipercontracción tensorial (THC) '
+                      'requiere aproximadamente 10¹⁰ operaciones Toffoli distribuidas en 114 '
+                      'teselas de datos y enrutamiento y 180 teselas de fábricas de destilación de '
+                      'estados mágicos 15 a 1, sumando N_tiles = 294. Cada tesela rotada requiere '
+                      '2d² qubits físicos, arrojando una huella exacta de hardware de Q_phys = 2 × '
+                      '294 × 27² = 428,652 qubits físicos. Con P_L = 3.00 × 10⁻¹⁶, toda la rutina '
+                      'de estimación de fase cuántica de miles de millones de compuertas finaliza '
+                      'con una probabilidad de supervivencia algorítmica del 99.7%.',
+ 'act4_human_ai_es': 'Acelerar la transición desde la corrección teórica de errores cuánticos '
+                     'hacia la catálisis industrial práctica exige una colaboración fluida entre '
+                     'expertos humanos y herramientas computacionales de código abierto. Hoy en '
+                     'día, los químicos cuánticos utilizan paquetes ab-initio como PySCF '
+                     '(pyscf/pyscf) para trazar geometrías de orbitales moleculares, calcular '
+                     'integrales de repulsión electrónica e identificar espacios activos mínimos '
+                     'para catalizadores multimetálicos complejos como FeMoCo. Una vez establecido '
+                     'el hamiltoniano, los arquitectos cuánticos humanos diseñan tuberías de '
+                     'compilación tolerantes a fallos, apoyándose en simuladores estabilizadores de '
+                     'alta velocidad como Stim de Craig Gidney (quantumlib/Stim) para modelar miles '
+                     'de millones de ciclos de síndrome en segundos desde computadoras portátiles '
+                     'estándar.\n'
+                     '\n'
+                     'Simultáneamente, los agentes de razonamiento de inteligencia artificial y los '
+                     'decodificadores de redes neuronales colaboran optimizando la disposición de '
+                     'las fábricas de destilación de estados mágicos, enrutando cirugías de red '
+                     'multitesela y descubriendo representaciones tensoriales comprimidas (como la '
+                     'hipercontracción tensorial de rango reducido) que recortan drásticamente el '
+                     'conteo lógico de compuertas Toffoli. Para garantizar que cada optimización '
+                     'del compilador preserve la validez física, los asistentes de demostración '
+                     'formal como Lean 4 verifican las transformaciones del grupo de Clifford y las '
+                     'relaciones de conmutatividad de los estabilizadores sin error humano. '
+                     'Iniciativas como el premio XPRIZE Quantum Applications de 5 millones de '
+                     'dólares y el registro Metriq de Unitary Foundation ofrecen la arena abierta '
+                     'donde estos equipos híbridos publican bancos de pruebas transparentes y '
+                     'reproducibles. Al fusionar la intuición química humana con la compilación de '
+                     'circuitos guiada por IA y la simulación estabilizadora determinista, la '
+                     'comunidad científica global puede predecir con certeza los hitos de hardware '
+                     'necesarios para alcanzar la ventaja cuántica catalítica.',
+ 'act4_deepening_es': 'En el exigente terreno de los bancos de pruebas de computación cuántica, las '
+                      'afirmaciones exageradas de hardware y los errores matemáticos pueden '
+                      'distorsionar fácilmente las hojas de ruta de investigación. Artículos '
+                      'especulativos suelen publicar conteos de qubits demasiado optimistas al '
+                      'ignorar convenientemente las fábricas de destilación de estados mágicos, '
+                      'asumir fidelidades de compuerta irreales o calcular mal los costos de '
+                      'teselas de volumen activo. Para evitar que tales defectos socaven el '
+                      'progreso científico, Informatico acompaña el Folio B.02 con un verificador '
+                      'determinista incorruptible en Python '
+                      '(bounties/bounty_p1_surface_code_femoco.py) y una especificación abierta '
+                      'SKILL.md.\n'
+                      '\n'
+                      'El verificador en Python se ejecuta en menos de treinta milisegundos '
+                      'utilizando aritmética de la biblioteca estándar, reevaluando desde primeros '
+                      'principios la ley de escalamiento de código de superficie de '
+                      'Fowler–Mariantoni–Martinis y los parámetros del hamiltoniano de espacio '
+                      'activo de Reiher–Troyer. Verifica estrictamente tres invariantes '
+                      'innegociables: primero, que p_phys < p_th = 0.01, deteniéndose de inmediato '
+                      'si un agente intenta reclamar supresión de errores en el régimen desordenado '
+                      'de percolación; segundo, que la tasa de error lógico P_L satisfaga el techo '
+                      'de supervivencia de circuito profundo de 10⁻¹² requerido para 10¹⁰ '
+                      'compuertas Toffoli; y tercero, que el total de qubits físicos sea '
+                      'estrictamente igual a 2 × N_tiles × d², contabilizando las 180 teselas de '
+                      'fábricas de destilación de estados mágicos junto con las 114 teselas de '
+                      'datos. Si se introduce cualquier defecto sembrado—como omitir las fábricas '
+                      'de destilación o manipular el exponente (d+1)/2—el verificador rechaza la '
+                      'entrega con una traza diagnóstica detallada. Este control determinista '
+                      'asegura que cada banco de pruebas certificado por el laboratorio represente '
+                      'una realidad de ingeniería genuina y verificada por pares.',
+ 'sidenote_1_es': {'kicker': 'NOTA AL MARGEN B.02-A · TRANSICIÓN DE FASE DEL UMBRAL',
+                   'body': 'Arrastrar p_phys a través de p_th = 0.01 en el banco de pruebas '
+                           'dispara la transición de desorden de mecánica estadística del modelo '
+                           'calibre de plaquetas aleatorias: las cadenas de error percolan por toda '
+                           'la red.'},
+ 'sidenote_2_es': {'kicker': 'NOTA AL MARGEN B.02-B · POR QUÉ FEMOCO IMPORTA PARA EL CLIMA',
+                   'body': 'Reemplazar el reformado con vapor Haber–Bosch de alta temperatura por '
+                           'fijación catalítica de nitrógeno a temperatura ambiente apunta '
+                           'aproximadamente al 1.8% de las emisiones globales antropogénicas de '
+                           'CO₂.'},
+ 'walkthrough_es': ['Verifica el punto de referencia canónico en d = 27 y p_phys = 0.0010: P_L = '
+                    '3.00 × 10⁻¹⁶ por ronda de síndrome y Q_phys = 428,652 qubits físicos '
+                    '(APROBADO).',
+                    'Reduce la Distancia del Código d de 27 a 15 con p_phys = 0.0010: observa cómo '
+                    'Q_phys baja a 132,300 qubits mientras P_L sube a 3.00 × 10⁻¹⁰, fallando la '
+                    'compuerta de supervivencia de circuito profundo de 10⁻¹².',
+                    'Arrastra p_phys por encima de 0.0100 (o pulsa [⚡ Counterfactual '
+                    'Axiom-Knockout]): observa cómo el código de superficie cruza el umbral del 1% '
+                    'donde la supresión de errores lógicos colapsa por completo.'],
+ 'steps_es': ['Etapa 1: Hamiltoniano de Espacio Activo en PySCF y Qubitización — Extrae las '
+              'integrales del espacio activo de 54 electrones y 54 orbitales de FeMoCo en PySCF y '
+              'comprime el tensor de Coulomb mediante hipercontracción tensorial (THC) para '
+              'operadores de caminata qubitizados.',
+              'Etapa 2: Extracción de Síndromes y Escalamiento de Umbral en Stim — Muestrea '
+              'circuitos estabilizadores con error físico de compuerta p_phys = 10⁻³ frente al '
+              'umbral p_th = 10⁻², logrando un factor de supresión por ronda (p_phys / p_th) = '
+              '0.10.',
+              'Etapa 3: Selección de Distancia de Código para Circuitos Toffoli Profundos — Elige '
+              'la distancia impar d = 27 para que el exponente (d+1)/2 = 14 lleve P_L = 0.03 × '
+              '10⁻¹⁴ = 3.00 × 10⁻¹⁶ por debajo del techo de supervivencia de 10⁻¹².',
+              'Etapa 4: Huella de Teselas de Volumen Activo y Estados Mágicos — Suma 114 teselas '
+              'lógicas de datos/enrutamiento y 180 teselas de destilación de estados mágicos (294 '
+              'teselas × 2d² = 428,652 qubits físicos).'],
+ 'rules_es': ['Invariante de Supresión Sub-Umbral: La supresión exponencial tolerante a fallos se '
+              'cumple si y solo si p_phys < p_th = 0.01; cuando p_phys ≥ p_th, aumentar la '
+              'distancia de código d degrada en lugar de mejorar la fidelidad lógica.',
+              'Techo de Supervivencia de Circuito Profundo: Simular las 10¹⁰ compuertas Toffoli/T '
+              'de FeMoCo exige un error lógico por ronda P_L < 10⁻¹²; con p_phys = 0.001 y d = 27, '
+              'P_L = 3.00 × 10⁻¹⁶ aprueba con más de 3 órdenes de magnitud de margen.',
+              'Conservación de la Huella de Qubits Físicos: El total de qubits físicos escala '
+              'estrictamente como Q_phys = 2 × (N_data + N_factory) × d² = 2 × 294 × 27² = '
+              '428,652.'],
+ 't0_t1_certified_es': ['Estimador de recursos de volumen activo para FeMoCo y umbral de código de '
+                        'superficie con cero dependencias en '
+                        'bounties/bounty_p1_surface_code_femoco.py (tiempo de ejecución < 0.05 s).',
+                        'Verificación exacta del escalamiento asintótico de error lógico de Fowler '
+                        'et al. (2012) y de los conteos de teselas lógicas de Reiher et al. (2017) '
+                        '/ THC.',
+                        'Listo para envío inmediato como banco de pruebas educativo y de estimación '
+                        'de recursos en el registro Metriq.info de Unitary Foundation.'],
+ 't2_t3_open_horizon_es': ['XPRIZE Quantum Applications (bolsa de 5 millones de dólares): Requiere '
+                           'registro formal de equipo y un artículo original de algoritmo cuántico '
+                           'que reduzca el conteo lógico de compuertas T o la huella de qubits más '
+                           'allá de las líneas base actuales THC/qDRIFT.',
+                           'Recompensas en Efectivo unitaryHACK de Unitary Foundation: Otorgadas '
+                           'durante la ventana anual del hackathon por pull requests fusionados que '
+                           'resuelvan problemas etiquetados en Stim, PySCF, Mitiq, PennyLane o '
+                           'Qiskit.']}

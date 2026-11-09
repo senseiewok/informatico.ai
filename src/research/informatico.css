@@ -5442,6 +5442,196 @@
     color: var(--tp-graphite);
   }
 
+  /* ---- Story-First Easy History, Plate H Visual Timeline & 20-Second Toy Model ---- */
+  .tp-easy-history-box {
+    margin: 1.5rem 0 1.75rem;
+    padding: 1.35rem 1.55rem;
+    border: 1px solid var(--tp-rule-strong);
+    border-left: 4px solid var(--tp-prussian);
+    border-radius: 0 10px 10px 0;
+    background-color: var(--tp-stone);
+    box-sizing: border-box;
+  }
+  .tp-easy-history-box h3 {
+    margin: 0.2rem 0 0.7rem;
+    font-size: 1.15rem;
+    line-height: 1.35;
+    color: var(--tp-ink);
+  }
+  .tp-easy-history-box p {
+    margin: 0.6rem 0 0;
+    font-size: 1.01rem;
+    line-height: 1.7;
+  }
+  .tp-history-visual-figure {
+    margin: 1.5rem 0 2rem;
+    padding: 1.25rem 1.35rem;
+    border: 1px solid var(--tp-rule-strong);
+    border-radius: 10px;
+    background-color: var(--tp-vellum);
+    box-sizing: border-box;
+  }
+  .tp-history-visual-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+  .tp-history-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  .tp-history-card {
+    padding: 0.85rem 0.95rem;
+    border: 1px solid var(--tp-rule-strong);
+    border-top: 3px solid var(--tp-prussian);
+    border-radius: 8px;
+    background-color: var(--tp-stone);
+    display: flex;
+    flex-direction: column;
+    gap: 0.32rem;
+  }
+  .tp-history-card:last-child {
+    border-top-color: var(--tp-verdigris);
+  }
+  .tp-history-era-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+  }
+  .tp-history-year-pill {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.73rem;
+    font-weight: 700;
+    color: var(--tp-vellum);
+    background-color: var(--tp-prussian);
+    padding: 0.14rem 0.48rem;
+    border-radius: 4px;
+  }
+  .tp-history-card:last-child .tp-history-year-pill {
+    background-color: var(--tp-verdigris);
+  }
+  .tp-history-who {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--tp-graphite);
+  }
+  .tp-history-title {
+    margin: 0.1rem 0 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--tp-ink);
+  }
+  .tp-history-summary {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.48;
+    color: var(--tp-ink-soft);
+  }
+  .tp-history-roadblock {
+    margin: 0.2rem 0 0;
+    padding-top: 0.35rem;
+    border-top: 1px dashed var(--tp-rule-strong);
+    font-size: 0.77rem;
+    line-height: 1.42;
+    color: var(--tp-graphite);
+  }
+  .tp-toy-model-box {
+    margin: 1.35rem 0 1.65rem;
+    padding: 1.25rem 1.45rem;
+    border: 1px solid var(--tp-rule-strong);
+    border-left: 4px solid var(--tp-minium);
+    border-radius: 0 10px 10px 0;
+    background-color: var(--tp-stone);
+    box-sizing: border-box;
+  }
+  .tp-toy-model-box .tp-plain-bridge-kicker {
+    color: var(--tp-minium);
+  }
+  .tp-toy-model-box h4 {
+    margin: 0.15rem 0 0.5rem;
+    font-size: 1.04rem;
+    color: var(--tp-ink);
+  }
+  .tp-toy-model-box p {
+    margin: 0.4rem 0 0;
+    font-size: 0.98rem;
+    line-height: 1.66;
+  }
+  .tp-truth-col {
+    padding: 1.25rem 1.35rem;
+    border-radius: 10px;
+    border: 1px solid var(--tp-rule-strong);
+    background-color: var(--tp-vellum);
+  }
+  .tp-truth-col-certified {
+    border-top: 4px solid var(--tp-verdigris);
+  }
+  .tp-truth-col-horizon {
+    border-top: 4px solid var(--tp-prussian);
+  }
+  .tp-truth-kicker {
+    display: inline-block;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--tp-verdigris);
+    margin-bottom: 0.3rem;
+  }
+  .tp-truth-col-horizon .tp-truth-kicker {
+    color: var(--tp-prussian);
+  }
+  .tp-truth-col h4 {
+    margin: 0.2rem 0 0.65rem;
+    font-size: 1.02rem;
+    color: var(--tp-ink);
+  }
+  .tp-truth-col ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.54;
+  }
+  @keyframes tpBountyPulse {
+    0%, 100% { transform: scale(1); opacity: 0.92; }
+    50% { transform: scale(1.16); opacity: 1; }
+  }
+  @keyframes tpBountyFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .tp-bw-anim-dash {
+      animation: tpSvgDashFlow 12s linear infinite;
+    }
+    .tp-bw-anim-dash-rev {
+      animation: tpSvgDashFlow 14s linear infinite reverse;
+    }
+    .tp-bw-anim-pulse {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: tpBountyPulse 2.6s ease-in-out infinite;
+    }
+    .tp-bw-anim-orbit {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: tpReticleOrbit 16s linear infinite;
+    }
+    .tp-bw-anim-float {
+      animation: tpBountyFloat 3.2s ease-in-out infinite;
+    }
+  }
+
   /* ---- 30-Second Studio Quick-Start Action Bar (Tech & Tools) ---- */
   .tp-studio-quickstart {
     margin: 1.4rem 0 2rem;

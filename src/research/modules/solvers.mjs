@@ -145,7 +145,14 @@ export function initScrubbableTokens(scope = document) {
     scrub.setAttribute("role", "slider");
 
     let activeSlider = null;
-    if (scrub.id === "tp-inline-phi") activeSlider = document.getElementById("tp-eng-phi");
+    const explicitTarget = scrub.getAttribute("data-target-slider");
+    if (explicitTarget) {
+      activeSlider = document.getElementById(explicitTarget) ||
+        ((explicitTarget === "0" || explicitTarget === "1")
+          ? document.querySelector(`[id^="tp-bw-s${explicitTarget}-"], [data-bw-slider="${explicitTarget}"]`)
+          : null);
+    }
+    else if (scrub.id === "tp-inline-phi") activeSlider = document.getElementById("tp-eng-phi");
     else if (scrub.id === "tp-inline-tau0") activeSlider = document.getElementById("tp-e02-tau0");
     else if (scrub.id === "tp-inline-surcharge") activeSlider = document.getElementById("tp-e05-surcharge");
     else if (scrub.id === "tp-inline-sds") activeSlider = document.getElementById("tp-e06-sds");
@@ -157,7 +164,7 @@ export function initScrubbableTokens(scope = document) {
       activeSlider = (targetId && document.getElementById(targetId)) || document.querySelector('input[data-cf-slider="primary"]');
     }
     if (!activeSlider) {
-      activeSlider = scope.querySelector('.tp-plate input[type="range"]') || document.querySelector('.tp-plate input[type="range"]');
+      activeSlider = scope.querySelector('.tp-plate input[type="range"], .tp-bounty-workbench input[type="range"]') || document.querySelector('.tp-plate input[type="range"], .tp-bounty-workbench input[type="range"]');
     }
     const syncAria = () => {
       if (!activeSlider) {

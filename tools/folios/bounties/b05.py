@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Open Bounties — Folio B.05: Pareto Symbolic Regression (PySR) & Sparse PDE Discovery (PySINDy + Dedalus) from Noisy Sensor Fields."""
 
+
 FOLIO = {'slug': 'b05',
  'folio_id': 'B.05',
  'bounty_id': 'BOUNTY-P2',
@@ -368,4 +369,303 @@ FOLIO = {'slug': 'b05',
             'de corte λ = 0.05 se anula numéricamente, aislando el soporte exacto {u·u_x, u_xx}. '
             'La selección final se formaliza a través de la longitud mínima de descripción de '
             'Pareto en PySR (L_MDL = -1360.87 nats), demostrando que cuando el umbral satisface '
-            '0.25σ < λ ≤ 0.10, el sistema garantiza convergencia sin subajuste ni sobreajuste.'}
+            '0.25σ < λ ≤ 0.10, el sistema garantiza convergencia sin subajuste ni sobreajuste.',
+ 'easy_history_title_en': "How Human Pioneers Reached This Frontier: From Kepler's Mars Tables to "
+                          'SINDy & PySR Symbolic Discovery',
+ 'easy_history_title_es': 'Cómo los Pioneros Humanos Llegaron a Esta Frontera: De las Tablas de '
+                          'Marte de Kepler a SINDy y PySR',
+ 'easy_history_en': 'In 1601, German astronomer Johannes Kepler inherited crates of handwritten '
+                    'night-sky measurements of the planet Mars recorded by Tycho Brahe. For four '
+                    'exhausting years, Kepler tried over forty different geometric models by hand, '
+                    'fighting tiny observational errors of eight arcminutes until he realized that '
+                    'Mars moves in an ellipse and sweeps out equal areas in equal times. Two '
+                    'centuries later, Claude-Louis Navier and George Gabriel Stokes derived the '
+                    'fundamental partial differential equations of fluid motion by balancing '
+                    'momentum and viscous friction from first principles. For four hundred years, '
+                    'that was how science worked: humans stared at noisy numbers for decades until '
+                    'a flash of genius revealed the compact equation hidden underneath.\n'
+                    '\n'
+                    'In the 21st century, high-speed lasers and ocean sensors began recording '
+                    'billions of fluid velocity points per second, yet standard deep neural '
+                    'networks turned that data into millions of inscrutable black-box weights that '
+                    'cannot tell a physicist which physical forces are active. In 2009, Michael '
+                    'Schmidt and Hod Lipson showed that computers could evolve symbolic '
+                    'conservation laws directly from pendulum motion data. Then, in 2016, Steven '
+                    'Brunton, Joshua Proctor, and J. Nathan Kutz noticed a profound truth: even in '
+                    'turbulent nonlinear fluids, the true governing equation uses only two or '
+                    'three active terms out of dozens of possibilities. Their Sparse '
+                    'Identification of Nonlinear Dynamics (SINDy) algorithm—now paired with Keaton '
+                    "Burns's Dedalus spectral solver and Miles Cranmer's PySR Pareto Minimum "
+                    'Description Length engine—automatically prunes away sensor static to hand '
+                    'human scientists the exact governing PDE.',
+ 'easy_history_es': 'En 1601, el astrónomo alemán Johannes Kepler heredó los cuadernos de '
+                    'observaciones nocturnas del planeta Marte registrados por Tycho Brahe. '
+                    'Durante cuatro años de cálculos manuales agotadores, Kepler puso a prueba más '
+                    'de cuarenta modelos geométricos distintos, lidiando con pequeñas '
+                    'incertidumbres de medición hasta descubrir que Marte describe una elipse y '
+                    'barre áreas iguales en tiempos iguales. Dos siglos más tarde, Claude-Louis '
+                    'Navier y George Gabriel Stokes formularon las ecuaciones en derivadas '
+                    'parciales del movimiento de los fluidos equilibrando el momento lineal y la '
+                    'fricción viscosa. Durante cuatro siglos, así avanzó la ciencia: mentes '
+                    'humanas analizaban tablas con ruido durante décadas hasta encontrar la '
+                    'ecuación compacta oculta en los datos.\n'
+                    '\n'
+                    'En el siglo XXI, los velocímetros láser en túneles de viento y las boyas '
+                    'oceánicas comenzaron a registrar miles de millones de mediciones por segundo, '
+                    'pero las redes neuronales profundas convirtieron esos datos en millones de '
+                    'pesos opacos que no revelan qué fuerzas físicas gobiernan el fenómeno. En '
+                    '2009, Michael Schmidt y Hod Lipson demostraron que una computadora podía '
+                    'descubrir leyes simbólicas de conservación a partir de datos experimentales. '
+                    'Luego, en 2016, Steven Brunton, Joshua Proctor y J. Nathan Kutz formularon el '
+                    'método SINDy (Identificación Dispersa de Dinámica No Lineal): como toda ley '
+                    'física real utiliza apenas dos o tres operadores activos dentro de un '
+                    'catálogo amplio, basta aplicar un umbral secuencial (STLSQ) junto con la '
+                    'frontera de Pareto de longitud mínima de descripción (MDL) en PySR de Miles '
+                    'Cranmer para podar el ruido y recuperar la ecuación diferencial exacta.',
+ 'history_milestones': [{'year': '1609 & 1822',
+                         'who_en': 'Johannes Kepler, C.-L. Navier & G. G. Stokes',
+                         'who_es': 'Johannes Kepler, C.-L. Navier y G. G. Stokes',
+                         'title_en': 'Hand-Crafted Laws from Noisy Observations',
+                         'title_es': 'Leyes Físicas Deducidas a Mano desde Datos con Ruido',
+                         'summary_en': "Kepler distills Brahe's Mars tables into elliptical laws; "
+                                       'Navier and Stokes formulate viscous fluid momentum '
+                                       'equations.',
+                         'summary_es': 'Kepler destila las tablas de Marte en leyes elípticas; '
+                                       'Navier y Stokes formulan las ecuaciones de los fluidos '
+                                       'viscosos.',
+                         'roadblock_en': 'Requires years or decades of manual human '
+                                         'trial-and-error for each new physical regime.',
+                         'roadblock_es': 'Requiere años o décadas de prueba y error manual humano '
+                                         'para cada nuevo régimen físico.'},
+                        {'year': '2009',
+                         'who_en': 'Michael Schmidt & Hod Lipson',
+                         'who_es': 'Michael Schmidt y Hod Lipson',
+                         'title_en': 'Automated Evolutionary Discovery of Physical Invariants',
+                         'title_es': 'Descubrimiento Evolutivo de Invariantes Físicos',
+                         'summary_en': 'Extracts symbolic Hamiltonians and Lagrangians directly '
+                                       'from double-pendulum motion-capture tracks.',
+                         'summary_es': 'Extrae hamiltonianos y lagrangianos simbólicos '
+                                       'directamente de capturas de movimiento de péndulos dobles.',
+                         'roadblock_en': 'Pure genetic programming scales poorly to partial '
+                                         'differential equations with noisy spatial derivatives.',
+                         'roadblock_es': 'La programación genética pura escala con dificultad '
+                                         'hacia ecuaciones en derivadas parciales con ruido '
+                                         'espacial.'},
+                        {'year': '2016',
+                         'who_en': 'Steven Brunton, Joshua Proctor & J. Nathan Kutz',
+                         'who_es': 'Steven Brunton, Joshua Proctor y J. Nathan Kutz',
+                         'title_en': 'SINDy & Sequentially Thresholded Least Squares (STLSQ)',
+                         'title_es': 'SINDy y Mínimos Cuadrados con Umbral Secuencial (STLSQ)',
+                         'summary_en': 'Recognizes that physical laws are sparse in operator space '
+                                       'Θ(u), zeroing out any weight |ξ_k| < λ iteratively.',
+                         'summary_es': 'Reconoce que las leyes físicas son dispersas en el espacio '
+                                       'de operadores Θ(u), anulando todo peso |ξ_k| < λ.',
+                         'roadblock_en': 'Choosing cutoff λ too high deletes small physical '
+                                         'viscosity ν u_xx; choosing λ too low leaks sensor noise.',
+                         'roadblock_es': 'Un umbral λ demasiado alto borra la viscosidad real ν '
+                                         'u_xx; un λ muy bajo deja pasar ruido espurio.'},
+                        {'year': '2020',
+                         'who_en': 'Keaton Burns (Dedalus) & Brian de Silva (PySINDy)',
+                         'who_es': 'Keaton Burns (Dedalus) y Brian de Silva (PySINDy)',
+                         'title_en': 'Spectral Rollouts & Open-Source PDE Pruning',
+                         'title_es': 'Integración Espectral y Poda Abierta de EDPs',
+                         'summary_en': 'Unites Chebyshev–Fourier spectral shock simulations in '
+                                       'Dedalus with standardized sparse operator libraries in '
+                                       'PySINDy.',
+                         'summary_es': 'Une simulaciones espectrales Chebyshev–Fourier en Dedalus '
+                                       'con bibliotecas estandarizadas de operadores en PySINDy.',
+                         'roadblock_en': 'Linear operator libraries still need an '
+                                         'information-theoretic criterion to rank free-form '
+                                         'symbolic trees.',
+                         'roadblock_es': 'Las bibliotecas de operadores aún requieren un criterio '
+                                         'de teoría de la información para jerarquizar árboles '
+                                         'simbólicos.'},
+                        {'year': '2023–2026',
+                         'who_en': 'Miles Cranmer (PySR) & Pareto MDL Crucible',
+                         'who_es': 'Miles Cranmer (PySR) y el Crisol de Pareto MDL',
+                         'title_en': 'Minimum Description Length (L_MDL = −1360.87 nats)',
+                         'title_es': 'Longitud Mínima de Descripción (L_MDL = −1360.87 nats)',
+                         'summary_en': 'Scores symbolic trees via L_MDL = (N/2) ln(MSE) + λ_MDL '
+                                       'C_tree, certifying u_t = −u·u_x + 0.10 u_xx at the C_tree '
+                                       '= 6 cliff.',
+                         'summary_es': 'Evalúa árboles mediante L_MDL = (N/2) ln(MSE) + λ_MDL '
+                                       'C_tree, certificando u_t = −u·u_x + 0.10 u_xx en el '
+                                       'escalón C_tree = 6.',
+                         'roadblock_en': 'Extending guaranteed recovery to 3D turbulent closures '
+                                         'with formal symmetry verification in Lean 4.',
+                         'roadblock_es': 'Extender la recuperación garantizada a cierres '
+                                         'turbulentos 3D con verificación formal de simetrías en '
+                                         'Lean 4.'}],
+ 'toy_model_title_en': 'Try It in Your Head in 20 Seconds: Snipping 4 Fake Noise Terms to Reveal a '
+                       '2-Term Fluid Law',
+ 'toy_model_title_es': 'Pruébalo en tu Cabeza en 20 Segundos: Podar 4 Términos Falsos de Ruido '
+                       'para Revelar una Ley de 2 Términos',
+ 'toy_model_en': 'Suppose a fluid wave obeys the clean 2-term Burgers law: u_t = −1.00 u·u_x + '
+                 '0.10 u_xx (wave steepening plus viscosity). When a noisy sensor (σ = 0.02) '
+                 'measures the wave, ordinary regression guesses a messy 6-term formula: u_t = '
+                 '+0.004(1) − 0.004(u) + 0.003(u_x) − 0.999(u·u_x) + 0.100(u_xx) + 0.005(u³). Now '
+                 'apply the STLSQ pruning rule with cutoff λ = 0.05: erase every number smaller '
+                 'than 0.05! Instantly, 0.004, −0.004, 0.003, and 0.005 all drop to exact zero, '
+                 'leaving only −1.00 u·u_x and +0.10 u_xx. Just be careful: if you raise the '
+                 'scissors above λ = 0.10, you accidentally snip off the real 0.10 u_xx viscosity '
+                 'term (UNDERFIT)!',
+ 'toy_model_es': 'Supón que una onda en un fluido obedece la ley limpia de Burgers de 2 términos: '
+                 'u_t = −1.00 u·u_x + 0.10 u_xx (empinamiento de la ola más viscosidad). Cuando un '
+                 'sensor con ruido (σ = 0.02) mide la ola, una regresión común propone una fórmula '
+                 'sucia de 6 términos: u_t = +0.004(1) − 0.004(u) + 0.003(u_x) − 0.999(u·u_x) + '
+                 '0.100(u_xx) + 0.005(u³). Ahora aplica la tijera STLSQ con umbral λ = 0.05: '
+                 '¡borra todo número menor a 0.05! Al instante, 0.004, −0.004, 0.003 y 0.005 caen '
+                 'a cero exacto, dejando solo −1.00 u·u_x y +0.10 u_xx. Pero cuidado: si subes la '
+                 'tijera por encima de λ = 0.10, ¡cortarás por accidente la viscosidad real 0.10 '
+                 'u_xx (SUBAJUSTE)!',
+ 'act1_dropcap_es': 'Cuando Johannes Kepler estudió las observaciones de Marte registradas por '
+                    'Tycho Brahe, o cuando Claude-Louis Navier y George Gabriel Stokes escribieron '
+                    'las ecuaciones de momento de los fluidos viscosos, buscaban la ley matemática '
+                    'más simple capaz de explicar los datos sin parámetros espurios. En el siglo '
+                    'XXI, Steven Brunton, Joshua Proctor y J. Nathan Kutz (DOI '
+                    '10.1073/pnas.1517384113) demostraron que la mayoría de las leyes físicas '
+                    'rectoras son dispersas en el espacio de operadores no lineales candidatos.',
+ 'act1_body_es': 'Nuestro banco de pruebas de descubrimiento abierto acopla tres motores de '
+                 'frontera: Dedalus (Burns et al. 2020, DOI 10.1103/PhysRevResearch.2.023068) '
+                 'genera trayectorias espectrales Chebyshev–Fourier de alta precisión de ondas de '
+                 'choque viscosas; PySINDy (de Silva et al. 2020, DOI 10.21105/joss.02104) aplica '
+                 'Mínimos Cuadrados con Umbral Secuencial (STLSQ) sobre la biblioteca de '
+                 'operadores candidatos Θ(u) = [1, u, u_x, u·u_x, u_xx, u³]; y PySR de Miles '
+                 'Cranmer (arXiv:2305.01582) califica los árboles de expresiones candidatos según '
+                 'su Longitud Mínima de Descripción de Pareto L_MDL = (N/2) ln(MSE) + λ_MDL '
+                 'C_tree. Con ruido de sensor σ = 0.02 y umbral de dispersión λ = 0.05, el flujo '
+                 'poda los cuatro términos espurios de ruido a cero exacto y recupera u_t = -1.00 '
+                 'u·u_x + 0.10 u_xx con L_MDL = -1360.87 nats.',
+ 'act1_stakes_es': 'Durante siglos, descubrir las ecuaciones diferenciales que gobiernan la '
+                   'naturaleza exigió generaciones de genio observacional. Hoy en día, los túneles '
+                   'de viento, los reactores de fusión tokamak, las boyas oceánicas y los ensayos '
+                   'de vuelo aeroespacial registran miles de millones de coordenadas de velocidad '
+                   'y presión por segundo. Sin embargo, las redes neuronales profundas '
+                   'convencionales operan como cajas negras inescrutables: no garantizan la '
+                   'conservación de la masa, alucinan dinámicas inestables fuera del régimen de '
+                   'entrenamiento y no pueden entregar a un ingeniero una expresión analítica '
+                   'limpia.\n'
+                   '\n'
+                   'La identificación dispersa mediante PySINDy y la regresión simbólica evolutiva '
+                   'de Pareto mediante PySR representan un cambio de paradigma en la ciencia '
+                   'automatizada. En lugar de ocultar la dinámica física dentro de millones de '
+                   'pesos opacos, estos algoritmos interrogan series temporales ruidosas para '
+                   'aislar los operadores matemáticos exactos que impulsan el fenómeno, '
+                   'convirtiendo flujos crudos de sensores en conocimiento científico verificable.',
+ 'pullquote_es': 'La navaja de Occam no es una vaga preferencia filosófica; sobre la frontera de '
+                 'Pareto de la Longitud Mínima de Descripción, la verdadera ley física es un '
+                 'acantilado geométrico donde el error cae cuatro órdenes de magnitud.',
+ 'act2_intuition_es': 'En presencia de ruido gaussiano de sensor σ, los mínimos cuadrados '
+                      'ordinarios asignan pequeños pesos no nulos ξ_k ≈ σ·d_k a cada operador '
+                      'candidato de la biblioteca [1, u, u_x, u·u_x, u_xx, u³], produciendo un '
+                      'polinomio sobreajustado que diverge fuera de la ventana de entrenamiento. '
+                      'STLSQ elimina todo coeficiente con |ξ_k| < λ = 0.05 y vuelve a resolver '
+                      'sobre el soporte sobreviviente. Siempre que la deriva de ruido se mantenga '
+                      'por debajo de λ (σ ≤ 0.18) y λ permanezca por debajo de la viscosidad real '
+                      'ν = 0.10, el soporte exacto {u·u_x, u_xx} se recupera con probabilidad 1.',
+ 'act2_analogy_es': 'Imagina a un jardinero experimentado podando un huerto de manzanos al inicio '
+                    'de la primavera. Los árboles representan los términos matemáticos candidatos '
+                    'y sus ramas representan las posibles fuerzas físicas que actúan sobre el '
+                    'fluido. En este huerto, el crecimiento sano y natural consta de solo dos '
+                    'ramas maestras: una rama inclinada que impulsa el agua hacia adelante (la '
+                    'advección no lineal u·u_x) y una rama suave que amortigua los remolinos (la '
+                    'difusión viscosa 0.10 u_xx). Sin embargo, una tormenta ha cubierto el árbol '
+                    'de ramitas secas y maleza (el ruido del sensor σ). Si el jardinero corta con '
+                    'una tijera calibrada en el umbral λ = 0.05, toda ramita más delgada que el '
+                    'umbral cae a cero absoluto, dejando intactas únicamente las dos ramas '
+                    'maestras fructíferas y alcanzando el puntaje óptimo de longitud mínima de '
+                    'descripción L_MDL.',
+ 'act2_plain_primer_es': 'En el banco de pruebas interactivo del Acto III tienes el control '
+                         'directo sobre el crisol de descubrimiento mediante dos deslizadores. El '
+                         'primer control ajusta la Amplitud de Ruido del Sensor σ (de 0.00 a '
+                         '0.25), simulando cuánta interferencia eléctrica contamina los '
+                         'velocímetros del fluido. El segundo control fija el Umbral de Corte de '
+                         'Dispersión STLSQ λ (de 0.01 a 0.20), actuando como un tamiz matemático '
+                         'que anula cualquier término cuyo peso calculado sea menor que λ. En λ = '
+                         '0.05 y σ = 0.02, el filtro elimina los cuatro términos de ruido y '
+                         'conserva la ecuación exacta de Burgers. Pero observa qué ocurre al '
+                         'pulsar [⚡ Counterfactual Axiom-Knockout] o mover los controles fuera de '
+                         'la ventana segura: si subes λ por encima de 0.10, la tijera corta por '
+                         'error la viscosidad real 0.10 u_xx (SUBAJUSTE); si subes el ruido σ con '
+                         'un λ muy pequeño, se cuelan términos cúbicos falsos u³ (SOBREAJUSTE).',
+ 'act2_deepening_es': 'La mecánica matemática de nuestro flujo de descubrimiento une la '
+                      'integración espectral de alta resolución con la optimización dispersa no '
+                      'convexa. En la Etapa 1, el motor espectral Dedalus discretiza la ecuación '
+                      'viscosa de Burgers u_t + u u_x = ν u_xx sobre N = 200 nodos de colocación '
+                      'Chebyshev–Fourier con viscosidad cinemática real ν = 0.10. Cuando las '
+                      'trayectorias de velocidad se muestrean con ruido σ = 0.02, la regresión '
+                      'ordinaria sobre Θ(u) = [1, u, u_x, u·u_x, u_xx, u³] asigna pesos espurios '
+                      '[0.0036, -0.0044, 0.0030, -0.9992, 0.0996, 0.0050]. Aquí interviene el '
+                      'algoritmo STLSQ: al imponer que todo coeficiente |ξ_k| < λ = 0.05 se anule '
+                      'exactamente, los cuatro términos parásitos desaparecen y el soporte se '
+                      'contrae a {u·u_x, u_xx}. A continuación, PySR evalúa el funcional de '
+                      'Longitud Mínima de Descripción L_MDL = (N/2) ln(MSE) + λ_MDL C_tree con '
+                      'λ_MDL = 0.45 sobre complejidades C_tree ∈ {3, 6, 11}, certificando la '
+                      'rodilla de Pareto en C_tree = 6 con L_MDL = -1360.87 nats.',
+ 'act4_human_ai_es': 'Resolver retos abiertos de descubrimiento físico requiere una simbiosis '
+                     'auténtica entre la intuición humana y el cálculo simbólico de alto '
+                     'rendimiento. Los físicos e ingenieros humanos formulan los principios de '
+                     'conservación, las condiciones de frontera y las bibliotecas de operadores '
+                     'admisibles Θ(u), mientras que Dedalus genera trayectorias espectrales de '
+                     'referencia, PySINDy ejecuta la poda convexa STLSQ y PySR explora millones de '
+                     'árboles sintácticos evolutivos. Cada ecuación candidata propuesta por la '
+                     'frontera de Pareto es auditada frente a simetrías físicas, consistencia '
+                     'dimensional e invariancia galileana.',
+ 'act4_deepening_es': 'En la computación científica, un verificador que solo imprime APROBADO sin '
+                      'pruebas adversarias oculta errores algorítmicos. El arnés autónomo en '
+                      'Python bounties/bounty_p2_pysr_pysindy_pde_discovery.py y su guía SKILL.md '
+                      'ejecutan una auditoría determinista en dos capas con cero dependencias '
+                      'externas: primero certifican que en σ = 0.02 y λ = 0.05 STLSQ aísla el '
+                      'soporte exacto {u·u_x, u_xx} y PySR selecciona C_tree = 6 con L_MDL = '
+                      '-1360.87 nats; segundo, inyectan defectos sembrados contrafactuales (ruido '
+                      'excesivo σ = 0.22 para provocar SOBREAJUSTE y umbral excesivo λ = 0.15 para '
+                      'provocar SUBAJUSTE), garantizando que cualquier desviación física falle de '
+                      'forma explícita y reproducible.',
+ 'sidenote_1_es': {'kicker': 'NOTA AL MARGEN B.05-A · DIAGRAMA DE FASE SOBREAJUSTE VS. SUBAJUSTE',
+                   'body': 'Deslizar λ por encima de 0.10 en el banco de pruebas borra el término '
+                           'viscoso ν u_xx (subajuste), mientras que bajar λ a 0.01 con ruido alto '
+                           'σ = 0.15 deja pasar términos espurios u³ (sobreajuste).'},
+ 'sidenote_2_es': {'kicker': 'NOTA AL MARGEN B.05-B · FORMULACIÓN DÉBIL PARA RUIDO ALTO',
+                   'body': 'Integrar Θ(u) contra funciones de prueba suaves de soporte compacto '
+                           'φ(x,t) (Weak SINDy) evita derivar señales ruidosas directamente, '
+                           'extendiendo la recuperación hasta un 20% de ruido.'},
+ 'walkthrough_es': ['Verifica el punto de referencia canónico en σ = 0.02 y λ = 0.05: los términos '
+                    "activos de la EDP son ['u*u_x', 'u_xx'] y L_MDL = -1360.87 nats (APROBADO).",
+                    'Sube el Umbral de Corte de Dispersión λ por encima de 0.11 con σ = 0.02: '
+                    'observa cómo se poda el término de difusión viscosa 0.10 u_xx, disparando una '
+                    'alerta de SUBAJUSTE (UNDERFIT).',
+                    'Sube el Ruido σ a 0.22 mientras bajas λ a 0.02 (o pulsa [⚡ Counterfactual '
+                    'Axiom-Knockout]): observa cómo los operadores espurios u³ y u cruzan el '
+                    'umbral, disparando una alerta de SOBREAJUSTE (OVERFIT).'],
+ 'steps_es': ['Etapa 1: Integración Espectral Chebyshev–Fourier en Dedalus — Integra la dinámica '
+              'de ondas de choque viscosas de Burgers u_t + u u_x = ν u_xx (ν = 0.10) sobre N = '
+              '200 nodos espaciotemporales de colocación.',
+              'Etapa 2: Ensamblaje de la Biblioteca de Operadores con Ruido — Construye Θ(u) = [1, '
+              'u, u_x, u·u_x, u_xx, u³] contaminada con amplitud de ruido de sensor σ = 0.02.',
+              'Etapa 3: Umbralizado Duro STLSQ en PySINDy — Anula todos los términos con |ξ_k| < λ '
+              '= 0.05, podando los pesos espurios [0.0036, -0.0044, 0.0030, 0.0050] a cero exacto '
+              'mientras conserva [-0.9992, 0.0996].',
+              'Etapa 4: Selección de Pareto MDL en PySR — Evalúa L_MDL = (N/2) ln(MSE) + 0.45 '
+              'C_tree sobre los niveles de complejidad C_tree ∈ {3, 6, 11}, certificando la '
+              'rodilla en C_tree = 6 (L_MDL = -1360.8705 nats).'],
+ 'rules_es': ['Invariante de Recuperación de Soporte Exacto: STLSQ debe recuperar el soporte '
+              "exacto de dos términos ['u*u_x', 'u_xx'] con cero operadores falsos positivos y "
+              'cero términos físicos falsos negativos.',
+              'Cota de Supervivencia de Viscosidad (Prevención de Subajuste): El umbral de '
+              'dispersión λ debe satisfacer λ ≤ |ν - 0.02 σ| ≈ 0.0996; fijar λ > 0.10 poda el '
+              'término de disipación viscosa ν u_xx.',
+              'Cota de Rechazo de Ruido (Prevención de Sobreajuste): El umbral λ debe superar '
+              'max_{k ∉ S} |σ · d_k| = 0.25 σ; cuando σ > 4λ, se filtran términos cúbicos u³ y '
+              'lineales espurios en la EDP descubierta.'],
+ 't0_t1_certified_es': ['Verificador determinista de poda de operadores STLSQ y Pareto MDL de PySR '
+                        'en bounties/bounty_p2_pysr_pysindy_pde_discovery.py (tiempo de ejecución '
+                        '< 0.05 s).',
+                        'Verificado frente a Brunton, Proctor & Kutz (2016, DOI '
+                        '10.1073/pnas.1517384113), de Silva et al. (2020, DOI 10.21105/joss.02104) '
+                        'y Burns et al. (2020, DOI 10.1103/PhysRevResearch.2.023068).',
+                        'Montado en vivo en la Portada, el Hub de Física y el Hub de Matemáticas '
+                        'de Informatico.ai mediante '
+                        'src/research/modules/physics-discovery-crucible.mjs.'],
+ 't2_t3_open_horizon_es': ['SRBench y Retos Abiertos de PySR / PySINDy: Extender el descubrimiento '
+                           'simbólico automatizado a tensores de cierre turbulento 3D con '
+                           'simetrías de conservación de energía garantizadas en Lean 4.']}
