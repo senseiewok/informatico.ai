@@ -77,18 +77,32 @@ def collinear_branches(split: float, nearest: float) -> list[tuple[float, float]
 
 
 def tn_state(split: float, nearest: float, masses: tuple[float, float], sigma: float, t: float,
-             planted_defect: bool = False) -> list[list[complex]]:
-    """ρ(t) on the four branches from an equal superposition at t = 0, H = 0 (their Eq. 24)."""
+             planted_defect: bool = False, part: str = "full") -> list[list[complex]]:
+    """ρ(t) on the four branches from an equal superposition at t = 0, H = 0 (their Eq. 24). `part` keeps the whole generator
+    ("full"), only its imaginary part ("interaction": the commutator with the smeared pair potential, a pure unitary), or only its
+    real part ("noise": the model's own decoherence, a dephasing channel)."""
     br = collinear_branches(split, nearest)
     rho = [[0j] * 4 for _ in range(4)]
     for r in range(4):
         for c in range(4):
-            rho[r][c] = 0.25 * cmath.exp((G_NEWTON / (2.0 * HBAR)) * tn_g(br[r], br[c], masses, sigma, planted_defect) * t)
+            g = tn_g(br[r], br[c], masses, sigma, planted_defect)
+            if part == "interaction":
+                g = complex(0.0, g.imag)
+            elif part == "noise":
+                g = complex(g.real, 0.0)
+            elif part != "full":
+                raise ValueError(part)
+            rho[r][c] = 0.25 * cmath.exp((G_NEWTON / (2.0 * HBAR)) * g * t)
     return rho
 
 
-def tn_negativity(split: float, nearest: float, m: float, sigma: float, t: float, planted_defect: bool = False) -> float:
-    return negativity(tn_state(split, nearest, (m, m), sigma, t, planted_defect))
+def tn_negativity(split: float, nearest: float, m: float, sigma: float, t: float, planted_defect: bool = False, part: str = "full") -> float:
+    return negativity(tn_state(split, nearest, (m, m), sigma, t, planted_defect, part))
+
+
+def tn_negativity_parts(split: float, nearest: float, m: float, sigma: float, t: float) -> dict[str, float]:
+    """The model's negativity with its whole generator, with its interaction part alone, and with its noise part alone."""
+    return {p: tn_negativity(split, nearest, m, sigma, t, part=p) for p in ("full", "interaction", "noise")}
 
 
 def tn_entanglement_phase(split: float, nearest: float, m: float, sigma: float, t: float) -> float:
@@ -257,6 +271,17 @@ def check_dispute(planted_defect: bool = False) -> dict:
     ktm_ok = abs(ratios[-1]["ratio"] - 1.0) < 1e-2 and all(r["ratio"] is not None for r in ratios)
     ktm_2017 = ktm_edge(BMV_M_KG, BMV_D_M, BMV_DX_M, BMV_T_S)
     ktm_edge_ok = ktm_2017["linear_model_negativity"] < 1e-3 and ktm_2017["linear_model_negativity_small_split"] < 1e-9
+    # 5. Where the entangling power sits: the noise part alone entangles nothing at any σ or time; the interaction part alone gives
+    #    at least the full model's negativity; and as σ → 0 the interaction part is the quantum channel exactly.
+    parts = {}
+    for label, (L, d, mm, s, tt) in {"fig3_sigma_75um_1e4s": (TN_L_M, TN_D_M, TN_M_KG, 75e-6, 1e4), "fig3_sigma_50um_1e4s": (TN_L_M, TN_D_M, TN_M_KG, 50e-6, 1e4),
+                                     "geometry_2017_sigma_1mm_2p5s": (BMV_DX_M, nearest_2017, BMV_M_KG, 1e-3, BMV_T_S),
+                                     "geometry_2017_sigma_1nm_2p5s": (BMV_DX_M, nearest_2017, BMV_M_KG, 1e-9, BMV_T_S)}.items():
+        parts[label] = tn_negativity_parts(L, d, mm, s, tt)
+    quantum_negativity = negativity(four_branch_state(branch_phases(BMV_M_KG, BMV_D_M, BMV_DX_M, BMV_T_S, "quantum")))
+    parts_ok = (all(v["noise"] < 1e-12 for v in parts.values()) and all(v["interaction"] >= v["full"] - 1e-12 for v in parts.values())
+                and abs(parts["geometry_2017_sigma_1nm_2p5s"]["interaction"] - quantum_negativity) < 1e-6
+                and parts["fig3_sigma_50um_1e4s"]["full"] < 1e-12 < parts["fig3_sigma_50um_1e4s"]["interaction"])
     defect_rejected = tn_critical_separation_from_negativity(sigma, sigma / 500.0, planted_defect=True) == float("inf")
     return {
         "tn_dc_over_sigma_e_minus_small_split": dc_ratio_e, "tn_dc_paper_text": TN_DC_OVER_SIGMA_TEXT, "tn_dc_paper_appendix": TN_DC_OVER_SIGMA_APPENDIX,
@@ -264,9 +289,10 @@ def check_dispute(planted_defect: bool = False) -> dict:
         "tn_fig3": fig3, "tn_2017_nearest_m": nearest_2017, "tn_2017_sigma_c_m": sigma_c_2017, "tn_2017_by_sigma": tn_2017,
         "tn_phase_tiny_sigma_rad": dphi_tn_tiny_sigma, "newton_phase_rad": dphi_newton, "tn_potential_ratio_fig3": potential_ratio_fig3,
         "ktm_threshold_ratios": ratios, "ktm_2017": ktm_2017,
+        "entangling_parts": parts, "quantum_channel_negativity_2017": quantum_negativity, "parts_ok": parts_ok,
         "dc_paper_ok": dc_paper_ok, "dc_double_entry_ok": dc_double_entry_ok, "fig3_ok": fig3_ok, "tn_2017_ok": tn_2017_ok,
         "ktm_ok": ktm_ok, "ktm_edge_ok": ktm_edge_ok, "defect_rejected": defect_rejected,
-        "ok": dc_paper_ok and dc_double_entry_ok and fig3_ok and tn_2017_ok and ktm_ok and ktm_edge_ok and defect_rejected,
+        "ok": dc_paper_ok and dc_double_entry_ok and fig3_ok and tn_2017_ok and ktm_ok and ktm_edge_ok and parts_ok and defect_rejected,
     }
 
 

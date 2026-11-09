@@ -355,7 +355,30 @@
       "linear_model_negativity": 0,
       "linear_model_negativity_small_split": 0,
       "exact_phases_with_ktm_dephasing_negativity": 0.0213478286711
-    }
+    },
+    "entangling_parts": {
+      "fig3_sigma_75um_1e4s": {
+        "full": 0.0237502254965,
+        "interaction": 0.152110142034,
+        "noise": 0
+      },
+      "fig3_sigma_50um_1e4s": {
+        "full": 0,
+        "interaction": 0.36296060279,
+        "noise": 0
+      },
+      "geometry_2017_sigma_1mm_2p5s": {
+        "full": 6.70235628343e-05,
+        "interaction": 0.000211012724284,
+        "noise": 0
+      },
+      "geometry_2017_sigma_1nm_2p5s": {
+        "full": 0,
+        "interaction": 0.0781617306618,
+        "noise": 0
+      }
+    },
+    "quantum_channel_negativity_2017": 0.0781617306618
   },
   "smeared_isl_kernel": {
     "note": "plate-mode ratio R(q, s; sigma) = 1/2 [erfc(q sigma - s/2sigma) + e^(2qs) erfc(q sigma + s/2sigma)] of Newton's e^(-qs), checked against quadrature and its limits; Eot-Wash 2020 geometry at the pattern's lowest wavenumber (a one-mode estimate); the Yukawa at the published edge is a predicted signal size for comparison, not a bound on sigma; HUST 2020 quoted as published; labelled PROPOSED and OPEN on the page",

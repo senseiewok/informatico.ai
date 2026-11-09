@@ -1561,6 +1561,15 @@
   "title": "Classical Gravity Cannot Mediate Entanglement by Local Means",
   "year": 2025
  },
+ "doi:10.48550/arxiv.2511.00644": {
+  "fetched": "2026-11-09",
+  "first_author": "Piccione",
+  "found": true,
+  "journal": "arXiv",
+  "registry": "DataCite (preprint)",
+  "title": "Diffusion minimization via optimal smearing in collapse and hybrid classical-quantum gravitational models",
+  "year": 2025
+ },
  "doi:10.48550/arxiv.2511.00852": {
   "fetched": "2026-11-09",
   "first_author": "Diósi",
@@ -3949,6 +3958,18 @@
   "retracted": false,
   "supporting": 0,
   "total_smart_citations": 8,
+  "unclassified": 0
+ },
+ "scite:10.48550/arxiv.2511.00644": {
+  "citing_publications": 1,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 6,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 6,
   "unclassified": 0
  },
  "scite:10.48550/arxiv.2511.00852": {

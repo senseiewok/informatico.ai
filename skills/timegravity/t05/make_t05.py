@@ -60,6 +60,7 @@ def dispute_block() -> dict:
         "tn_2017_nearest_m": r["tn_2017_nearest_m"], "tn_2017_sigma_c_m": r["tn_2017_sigma_c_m"], "tn_2017_by_sigma": r["tn_2017_by_sigma"],
         "tn_phase_tiny_sigma_rad": r["tn_phase_tiny_sigma_rad"], "newton_phase_rad": r["newton_phase_rad"],
         "ktm_threshold_ratios": r["ktm_threshold_ratios"], "ktm_2017": r["ktm_2017"],
+        "entangling_parts": r["entangling_parts"], "quantum_channel_negativity_2017": r["quantum_channel_negativity_2017"],
     })
 
 
