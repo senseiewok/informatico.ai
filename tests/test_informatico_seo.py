@@ -101,6 +101,7 @@ def pages() -> list[tuple[str, Path, Path]]:
     out.append(("bounties/", RESEARCH / "bounties" / "index.html", RESEARCH / "es-mx" / "bounties" / "index.html"))
     for bslug in sorted(d.name for d in (RESEARCH / "bounties").iterdir() if d.is_dir()):
         out.append((f"bounties/{bslug}/", RESEARCH / "bounties" / bslug / "index.html", RESEARCH / "es-mx" / "bounties" / bslug / "index.html"))
+    out.append(("about/", RESEARCH / "about" / "index.html", RESEARCH / "es-mx" / "about" / "index.html"))
     return out
 
 
@@ -156,7 +157,7 @@ class SeoCopyBudgets(unittest.TestCase):
 class BuiltPages(unittest.TestCase):
     def test_45_pages_each_have_a_spanish_twin_with_reciprocal_hreflang(self):
         listed = pages()
-        self.assertEqual(len(listed), 60)
+        self.assertEqual(len(listed), 61)
         for path, en_file, es_file in listed:
             self.assertTrue(es_file.is_file(), f"missing Spanish twin of /{path}")
             en, es = parse(en_file), parse(es_file)
@@ -278,14 +279,14 @@ class SiteFiles(unittest.TestCase):
     def test_sitemap_lists_both_languages_with_alternates_and_real_dates(self):
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 146)
-        self.assertEqual(len(set(locs)), 146)
-        self.assertEqual(sum("/es-mx/" in u for u in locs), 73)
+        self.assertEqual(len(locs), 148)
+        self.assertEqual(len(set(locs)), 148)
+        self.assertEqual(sum("/es-mx/" in u for u in locs), 74)
         self.assertNotIn("lang=es", xml)
         for loc in locs:
             self.assertIsNotNone(url_to_file(loc))
             self.assertTrue(url_to_file(loc).is_file(), loc)
-        self.assertEqual(xml.count('hreflang="es-MX"'), 146)
+        self.assertEqual(xml.count('hreflang="es-MX"'), 148)
         dates = set(re.findall(r"<lastmod>([^<]+)</lastmod>", xml))
         for d in dates:
             self.assertRegex(d, r"^\d{4}-\d{2}-\d{2}$")
@@ -294,7 +295,7 @@ class SiteFiles(unittest.TestCase):
         text = (RESEARCH / "llms.txt").read_text(encoding="utf-8")
         self.assertTrue(text.startswith("# Informatico.ai\n"))
         urls = re.findall(r"\]\((https://informatico\.ai/[^)]*)\)", text)
-        self.assertEqual(len(urls), 72)  # 4 hubs + 48 essays + bounties hub + 6 bounty folios + toolbox hub + 6 tools + Time & Gravity hub + T.01-T.03; the cover is the file's own subject
+        self.assertEqual(len(urls), 73)  # 4 hubs + 48 essays + bounties hub + 6 bounty folios + toolbox hub + 6 tools + Time & Gravity hub + T.01-T.04, T.07 + about; the cover is the file's own subject
         for u in urls:
             self.assertTrue(url_to_file(u).is_file(), u)
 

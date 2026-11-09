@@ -96,3 +96,7 @@ Every essay, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish u
 - [T.03 What Sets the Slope: Poisson and the Equivalence Principle](https://informatico.ai/timegravity/t03/): How the weak-field Einstein equation reduces to Poisson's equation on a grid, and how torsion balances, lunar ranging and a satellite show every composition falls alike.
 - [T.04 A Clock in Two Places: the Clock Interferometer](https://informatico.ai/timegravity/t04/): An experiment description: a clock in superposition of two heights loses interference visibility as its proper times decohere, with the formula recomputed live.
 - [T.07 The Equation with No Time: a Page-Wootters Toy](https://informatico.ai/timegravity/t07/): How a stationary quantum state with a clock inside recovers Schrodinger evolution when conditioned on the clock, checked with a pure-Python eigensolver.
+
+## About Informatico.ai & the Shared Verification Engine (Essay Zero)
+
+- [About Informatico & the Verification Engine](https://informatico.ai/about/): How an independent open-source lab builds interactive engineering essays, why every claim carries a verifier, and how testing these models helps research.

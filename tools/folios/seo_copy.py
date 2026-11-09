@@ -354,6 +354,12 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
         "Tiempo y Gravedad · Un Problema Abierto en 9 Páginas | Informatico.ai",
         "Una serie que va de la pendiente medida en el ritmo del tiempo al problema abierto del tiempo en la gravedad cuántica, con instrumentos y verificadores.",
     ),
+    "about": (
+        "About Informatico & the Verification Engine | Informatico.ai",
+        "How an independent open-source lab builds interactive engineering essays, why every claim carries a verifier, and how testing these models helps research.",
+        "Acerca de Informatico y el Motor de Verificación | Informatico.ai",
+        "Cómo un laboratorio independiente de código abierto crea ensayos interactivos, verifica cada afirmación en público y conecta la ingeniería con la ciencia.",
+    ),
 }
 
 # Dedicated Tech & Tools · The Toolbox Folios (x01..x06) under /toolchain/<slug>/ and /es-mx/toolchain/<slug>/

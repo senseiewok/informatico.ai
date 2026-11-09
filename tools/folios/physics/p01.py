@@ -8,7 +8,7 @@ PILLAR = 'physics'
 
 FOLIO = {'category_code': 'P',
  'colophon': {'benchmarks': 'Cryo-EM 6MSM / 8EIQ · Eyring Rate Theory',
-              'bridge': 'Keizer Fluctuation-Dissipation Matrix ↔ CSI-MasterFormat Allosteric '
+              'bridge': 'Keizer Fluctuation-Dissipation Matrix ↔ ABC-transporter Allosteric '
                         'Rescue',
               'identifier': 'P.01 · Non-Equilibrium Gating',
               'kernels': 'Keizer FDT · Harada-Sasa · Hill Cycle Diagrams'},
@@ -49,13 +49,13 @@ FOLIO = {'category_code': 'P',
                         'uncoupled G551D dissipative trap.',
                 'summary': 'REV 1.0 (Inaugural Edition 2026-11-01): Keizer non-equilibrium '
                            'fluctuation-dissipation theory and reaction-diffusion non-linear '
-                           'coupling in CSI-MasterFormat gating.'}],
- 'sidenote_1': {'body': 'While traditional pharmacology treats CSI-MasterFormat gating as an '
+                           'coupling in ABC-transporter gating.'}],
+ 'sidenote_1': {'body': 'While traditional pharmacology treats ABC-transporter gating as an '
                         'on/off equilibrium switch, non-equilibrium physics proves G551D is an '
                         'active dissipation sink where ATP hydrolysis is decoupled from pore work; '
                         'ivacaftor acts as a physical synchronizer restoring '
                         'fluctuation-dissipation coherence.',
-                'kicker': 'SIDENOTE P.01 · TWO-WAY TRANSFER TO CSI-MasterFormat MODULATOR THERAPY'},
+                'kicker': 'SIDENOTE P.01 · TWO-WAY TRANSFER TO ABC-TRANSPORTER MODULATOR THERAPY'},
  'sidenote_2': {'body': 'Harada and Sasa showed that broken detailed balance in steady-state '
                         'molecular motors produces an anomalous dissipation Q_hk = gamma integral '
                         '[v_omega^2 - (2 k_B T / gamma) Re(mu_omega)] d omega / (2 pi) directly '
@@ -103,7 +103,7 @@ FOLIO = {'category_code': 'P',
            'Stage 4 (Stationary NESS Cycle): Bounded dissipation-fluctuation ratio (1.12 <= 2.0) '
            'maintains stable open-state chloride conduction.'],
  'subtitle': "How Keizer's non-equilibrium fluctuation theory, Harada-Sasa dissipation, and Hill "
-             'cycle flux diagrams quantify the energetic efficiency of CSI-MasterFormat ABC gating '
+             'cycle flux diagrams quantify the energetic efficiency of ABC-transporter gating '
              'cycles and allosteric rescue.',
  'title': 'Non-Equilibrium Fluctuation-Dissipation Theorems and Allosteric Gating Energetics',
  'volume': 1,
@@ -309,7 +309,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'precise energetic cost of gating rescue, designing next-generation allosteric '
                    'modulators that achieve maximal ion transport with minimal metabolic strain on '
                    'the host cell.',
- 'cf_bridge': 'In Civil & Structural Engineering, Class III gating variants (such as G551D) and '
+ 'cf_bridge': 'In Non-Equilibrium Statistical Biophysics, Class III gating variants (such as G551D) and '
               'rescued Class II F508del channels require potentiators (ivacaftor or deutivacaftor '
               'in Alyftrek, DOI 10.58347/tml.2025.1724a) to restore the thermodynamic coupling '
               'efficiency between NBD ATP hydrolysis and transmembrane Cl- conductance (DOI '
@@ -353,19 +353,19 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         'Δμ_ATP (k_B T)</text>\n'
         '          </svg>'}
 
-PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what the CSI-MasterFormat transmembrane ion channel '
+PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what the ABC-transporter transmembrane ion channel '
         'protein with dimerized NBD1-NBD2 domains in a lipid bilayer would look like (artistic '
         'impression, not an atomic structure)',
  'caption': 'Conceptual Vision Plate P.01-V (Imagining What It Would Look Like) · Artistic '
-            'molecular visualization imagining the CSI-MasterFormat anion channel embedded in a '
+            'molecular visualization imagining the ABC-transporter anion channel embedded in a '
             'phospholipid bilayer with ATP bound at the cytoplasmic NBD1-NBD2 dimer interface '
             '(schematic artistic impression, not an experimental atomic coordinate model).'}
 
-DISPATCH = {'kicker': 'FRONTIER BIOPHYSICS DISPATCH · NON-EQUILIBRIUM CSI-MasterFormat GATING & ALYFTREK',
- 'headline': 'Single-Molecule Non-Equilibrium Thermodynamics Decodes ATP-Driven CSI-MasterFormat '
+DISPATCH = {'kicker': 'FRONTIER BIOPHYSICS DISPATCH · NON-EQUILIBRIUM ABC-transporter GATING & ALYFTREK',
+ 'headline': 'Single-Molecule Non-Equilibrium Thermodynamics Decodes ATP-Driven ABC-transporter '
              'Channel Gating',
  'body': "Extending Keizer's fluctuation-dissipation theorem and Csanády's irreversible "
-         'CSI-MasterFormat gating cycle (J. Gen. Physiol. DOI 10.1085/jgp.200609558; Seifert Rep. '
+         'ABC-transporter gating cycle (J. Gen. Physiol. DOI 10.1085/jgp.200609558; Seifert Rep. '
          'Prog. Phys. DOI 10.1088/0034-4885/75/12/126001), next-generation triple modulators '
          '(vanzacaftor/tezacaftor/deutivacaftor, Alyftrek DOI 10.58347/tml.2025.1724a) stabilize '
          'the NBD1-NBD2 dimer to restore open probability P_o > 0.75.'}
@@ -377,8 +377,8 @@ ES_TRANSLATION = {'title_es': 'Teoremas de Fluctuación-Disipación Fuera del Eq
              'Alostérica',
  'subtitle_es': 'Cómo la teoría de fluctuaciones de Keizer, la disipación de Harada–Sasa y los '
                 'diagramas de flujo de Hill cuantifican la eficiencia energética del ciclo de '
-                'apertura del canal CSI-MasterFormat impulsado por ATP.',
- 'why_es': 'Un ciclo saludable de apertura del canal CSI-MasterFormat funciona como una cadena de '
+                'apertura del canal transportador ABC impulsado por ATP.',
+ 'why_es': 'Un ciclo saludable de apertura del canal transportador ABC funciona como una cadena de '
            'bicicleta bien engranada al piñón (88% de eficiencia); la mutación G551D es una cadena '
            'suelta hasta que un potenciador alostérico vuelve a acoplarla.',
  'plain_es': 'En 1905, Albert Einstein demostró que el movimiento aleatorio de granos de polen en '
@@ -410,4 +410,4 @@ ES_TRANSLATION = {'title_es': 'Teoremas de Fluctuación-Disipación Fuera del Eq
             'molecular asistido por computadora.',
  'bridge_es': 'Cuantifica termodinámicamente cómo los moduladores triples '
               '(elexacaftor/tezacaftor/ivacaftor y vanzacaftor/tezacaftor/deutivacaftor) restauran '
-              'la probabilidad de apertura P_o > 0.75 en el canal CSI-MasterFormat.'}
+              'la probabilidad de apertura P_o > 0.75 en el canal transportador ABC.'}

@@ -13,7 +13,7 @@ FOLIO = {'folio_id': 'M.01',
  'title': 'Modularity Lifting, Spectral Zero-Density Barriers, and #3-SAT Sparsification',
  'subtitle': "How Anthropic's 29,500-theorem Lean 4 Fermat's Last Theorem proof and Taylor-Wiles "
              'auxiliary prime patching map onto non-equilibrium Boltzmann landscapes and '
-             'CSI-MasterFormat allostery.',
+             'transmembrane channel allostery.',
  'date_published': '2026-10-18',
  'date_redated': '2026-11-06',
  'current_edition': 'REV 1.4',
@@ -22,7 +22,7 @@ FOLIO = {'folio_id': 'M.01',
  'colophon': {'identifier': 'M.01 · Modularity & Counting',
               'kernels': 'FLT (29,500) · Taylor-Wiles R=T · ETH #3-SAT',
               'benchmarks': 'Anthropic Lean 4 · Ribet Level-Lowering',
-              'bridge': 'Taylor-Wiles R=T ↔ CSI-MasterFormat Dual-Corrector Allostery'},
+              'bridge': 'Taylor-Wiles R=T ↔ Allosteric Dual-Corrector Rescue'},
  'sliders': [{'label': 'Exponent Axiom Mutation (p = 2 Pythagorean vs p ≥ 3)',
               'min': 2,
               'max': 11,
@@ -52,8 +52,8 @@ FOLIO = {'folio_id': 'M.01',
                 'body': 'At p = 2, Frey curve semistability fractures and the Pythagorean '
                         'counterexample 3² + 4² = 5² emerges, dropping deductive flux to '
                         '3.2%—exact analog to unrescued Class I nonsense truncation in '
-                        'CSI-MasterFormat.'},
- 'sidenote_2': {'kicker': 'SIDENOTE M.01-B · ALLOSTERIC BRIDGE TO THE CURE',
+                        'an allosteric ion channel.'},
+ 'sidenote_2': {'kicker': 'SIDENOTE M.01-B · MODULARITY REPAIR & ALLOSTERIC COUPLING',
                 'body': 'Just as a single unpatched deformation ring leaves an 8.39 kcal/mol '
                         'barrier in the modularity lift, a single-site corrector leaves F508del '
                         'NBD1-ICL4 unstable; dual-site Taylor-Wiles patching mirrors elexacaftor + '
@@ -82,7 +82,7 @@ FOLIO = {'folio_id': 'M.01',
                 'date': '2026-11-02',
                 'summary': 'REV 1.3 (Redated 2026-11-02): Re-verified 5-stage FLT Boltzmann '
                            'landscape with 4-Seat Frontier Council review, confirmed zero sorryAx '
-                           'axioms and full isomorphism to CSI-MasterFormat allosteric '
+                           'axioms and full isomorphism to transmembrane channel allosteric '
                            'dual-corrector rescue.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Taylor-Wiles R=T patching activation barrier Delta G‡ = 3.59 kcal/mol and '
@@ -173,7 +173,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'fine-grained exponential exponent 2^(0.385 n).'],
  'act4_human_ai': 'Before formal proof assistants and frontier reasoning councils, a 100-page proof could only be checked by a handful of human specialists over months of line-by-line refereeing. Today, when a human mathematician designs a Lean 4 dependency blueprint, AI agents can discharge thousands of routine algebraic subgoals while deterministic type-checkers guarantee zero hallucinated steps (0 sorryAx). Human potential expands from tedious verification to high-level architectural conjecture and cross-disciplinary synthesis.',
  'act4_deepening': 'Modern formalization projects demonstrate a new paradigm of collaborative research where human mathematicians and automated theorem provers divide labor according to cognitive strengths. Human architects design the blueprint graph, defining the high-level structural lemmas, strategic reductions, and topological definitions that give a proof its meaning. Automated tactic engines and machine-learning models then explore the granular combinatorial branches, discharging thousands of routine algebraic rearrangements and inductive obligations. Crucially, the interactive theorem prover acts as an incorruptible judge: no claim is accepted based on plausibility or stylistic elegance until its formal derivation passes kernel type verification. Looking toward the horizon, this hybrid methodology opens unprecedented avenues for exploring the Langlands program. Frontier questions concerning modularity lifting for higher-dimensional Calabi–Yau varieties, automorphic representations over general number fields, and the Birch and Swinnerton-Dyer conjecture are becoming amenable to distributed human-machine campaigns, transforming what once required centuries of solitary struggle into systematically verifiable collective milestones.',
- 'cf_bridge': 'In Civil & Structural Engineering, the F508del CSI-MasterFormat chloride channel '
+ 'cf_bridge': 'In Non-Equilibrium Statistical Biophysics, the F508del transmembrane chloride channel '
               'suffers an analogous energetic bottleneck: without assistance, folding stalls at an '
               'unbridged barrier between TMD1, NBD1, and TMD2. Dual-corrector therapy (elexacaftor '
               '+ tezacaftor in PDB 8EIQ) acts as a biophysical Taylor-Wiles bridge—binding two '
@@ -262,12 +262,12 @@ ES_TRANSLATION = {'title_es': 'Levantamiento de Modularidad, Barreras de Densida
              'Esparsificación de #3-SAT',
  'subtitle_es': 'Cómo la formalización en Lean 4 del Último Teorema de Fermat (29,500+ lemas) y el '
                 'parchado con primos auxiliares de Taylor–Wiles R = T se proyectan sobre paisajes '
-                'de energía libre de Boltzmann y alostería en CSI-MasterFormat.',
+                'de energía libre de Boltzmann y alostería en canales transmembrana.',
  'why_es': 'El parchado de Taylor–Wiles (R_Q = T_Q) actúa como una enzima catalítica o un fármaco '
            'alostérico dual: en vez de cruzar una barrera imposible de un solo salto, construye '
            'escalones auxiliares verificados.',
  'bridge_es': 'Así como un solo anillo sin parchar deja una barrera deductiva alta, un solo '
-              'corrector deja inestable la interfaz NBD1–ICL4 en F508del-CSI-MasterFormat; el '
+              'corrector deja inestable la interfaz NBD1–ICL4 en el canal F508del; el '
               'parchado dual refleja el rescate cooperativo de elexacaftor + tezacaftor.',
  'plain_es': 'En palabras sencillas, el Último Teorema de Fermat plantea una pregunta muy clara sobre cómo encajan las piezas en nuestro universo: ¿es posible combinar dos potencias perfectas para formar una tercera de la misma dimensión? Con cuadrados planos es sencillo, como cuando colocamos losetas en el piso de la cocina siguiendo el clásico triángulo de lados tres, cuatro y cinco. Sin embargo, al intentar apilar bloques tridimensionales para formar un cubo perfecto más grande, la geometría rígida deja huecos inevitables. Pierre de Fermat escribió en 1637 que esto era imposible para cualquier potencia mayor que dos, pero dejó al mundo sin su demostración. Lo fascinante es que este misterio no era una simple curiosidad aritmética. Para resolverlo, los matemáticos tuvieron que construir puentes entre universos que parecían no tener relación: las curvas elípticas y las formas modulares. Hoy en día, esas mismas estructuras matemáticas protegen la seguridad digital de las computadoras, aseguran las transacciones bancarias cotidianas y garantizan que los algoritmos de cifrado sean totalmente inviolables ante cualquier intruso.',
  'deep_es': 'El núcleo matemático de esta demostración se comprende al observar la interacción entre dos parámetros fundamentales: el exponente geométrico y la densidad de restricciones del sistema. En el deslizador del exponente, el valor dos permite que los enteros se acomoden en perfecta simetría pitagórica; pero en cuanto el exponente sube a tres o más, la deformación de la curva elíptica de Frey genera un discriminante imposible. Por su parte, la densidad de restricciones determina si las ramas lógicas encuentran una salida o chocan contra una contradicción total. El obstáculo histórico consistía en que emparejar directamente el anillo de deformaciones con el álgebra de operadores modulares exigía superar una barrera deductiva inmensa. Andrew Wiles y Richard Taylor resolvieron este bloqueo introduciendo primos auxiliares que actúan como un andamio temporal, reduciendo la energía de activación demostrativa. Una vez que las piezas embonan en el límite infinito, el andamio se retira y el espacio cuspidal colapsa a dimensión cero. Hoy, los asistentes formales en computadora verifican cada paso sin margen de error humano.'}
