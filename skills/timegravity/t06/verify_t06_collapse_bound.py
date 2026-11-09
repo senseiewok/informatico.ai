@@ -66,6 +66,7 @@ def main(argv: list[str] | None = None) -> int:
         assert lad["window_ok"], "the window at the matching σ is not closed for the 23 µm split and open for 10 and 1 µm"
         assert lad["scaling_ok"], f"the σ³ law between the top rungs fails: ratio {lad['sigma_cubed_ratio']:.4g} vs {lad['sigma_cubed_ratio_expected']:.4g} (the small-displacement series dropped returns rounding noise)"
         assert lad["defect_rejected"], "the planted series-dropped defect was not detectable"
+        assert lad["diffusion_ok"], "the Oppenheim Eq. F16 table does not reproduce: their inputs must land within two orders of their printed 1e-9 and the Eöt-Wash inputs 12 to 18 orders below it, above the interferometry floor"
         files = verify_reference_files()
     except AssertionError as exc:
         print(json.dumps({"status": "FAIL", "folio_id": "T.06", "error": str(exc)}), file=sys.stderr)
@@ -74,10 +75,10 @@ def main(argv: list[str] | None = None) -> int:
         "status": "PASS",
         "folio_id": "T.06",
         "canonical_url": "https://informatico.ai/timegravity/t06/",
-        "central_number": {"ladder_tubulins_for_25ms_at_natural_cutoff": lad["tubulins_for_25ms_at_natural_cutoff"], "ladder_tubulin_lifetime_at_44um_s": lad["tubulin"]["eotwash"]["nucleon_radius"]["lifetime_s"], "ladder_casimir_floor_1e-15_m": lad["casimir"]["floor_1e-15_m"], "ladder_casimir_floor_1e-14_m": lad["casimir"]["floor_1e-14_m"], "ladder_window_23um_split_open": lad["window"]["by_mass"]["1e-15"]["splits"]["split_23um"]["open"], "ladder_window_10um_split_open": lad["window"]["by_mass"]["1e-15"]["splits"]["split_10um"]["open"], "ladder_sigma_cubed_ratio": lad["sigma_cubed_ratio"], "r0_bound_recomputed_m": res["r0_bound_recomputed_m"], "r0_bound_paper_m": res["r0_bound_paper_m"],
+        "central_number": {"ladder_tubulins_for_25ms_at_natural_cutoff": lad["tubulins_for_25ms_at_natural_cutoff"], "ladder_tubulin_lifetime_at_44um_s": lad["tubulin"]["eotwash"]["nucleon_radius"]["lifetime_s"], "ladder_casimir_floor_1e-15_m": lad["casimir"]["floor_1e-15_m"], "ladder_casimir_floor_1e-14_m": lad["casimir"]["floor_1e-14_m"], "ladder_window_23um_split_open": lad["window"]["by_mass"]["1e-15"]["splits"]["split_23um"]["open"], "ladder_window_10um_split_open": lad["window"]["by_mass"]["1e-15"]["splits"]["split_10um"]["open"], "ladder_sigma_cubed_ratio": lad["sigma_cubed_ratio"], "diffusion_ceiling_oppenheim_inputs": lad["diffusion"]["oppenheim_inputs_ceiling"], "diffusion_ceiling_eotwash": {k: v["ceiling"] for k, v in lad["diffusion"]["eotwash"].items()}, "diffusion_orders_below_printed": {k: v["orders_below_printed"] for k, v in lad["diffusion"]["eotwash"].items()}, "r0_bound_recomputed_m": res["r0_bound_recomputed_m"], "r0_bound_paper_m": res["r0_bound_paper_m"],
                            "excess_upper_limit_counts_95": res["excess_upper_limit_counts"], "counts_at_paramfree_r0": res["counts_at_paramfree_r0"],
                            "tau_1um_1e-14kg_2R_s": res["tau_1um_1e-14kg_2R_s"], "max_rel_err_E_G": res["max_rel_err_interaction_energy"]},
-        "geometry_checks": {"sigma_ladder_tubulin_and_casimir_floor": "PASS", "sigma_cubed_law": "PASS", 
+        "geometry_checks": {"sigma_ladder_tubulin_and_casimir_floor": "PASS", "sigma_cubed_law": "PASS", "oppenheim_f16_with_eotwash_inputs": "PASS", 
             "E_G_closed_form_vs_quadrature": "PASS",
             "bound_recomputed_from_counts": "PASS",
             "paramfree_value_excluded": "PASS",

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import math
 import re
 import subprocess
 import sys
@@ -497,6 +498,9 @@ class TimeGravityBatch4Tests(unittest.TestCase):
         self.assertFalse(t06["ladder_window_23um_split_open"])
         self.assertTrue(t06["ladder_window_10um_split_open"])
         self.assertAlmostEqual(t06["ladder_sigma_cubed_ratio"], (250 / 44.07) ** 3, delta=2.0)
+        self.assertAlmostEqual(math.log10(t06["diffusion_ceiling_oppenheim_inputs"]), -10.7, delta=0.5)
+        for k, v in t06["diffusion_orders_below_printed"].items():
+            self.assertTrue(12.0 < v < 18.0, (k, v))
         t10 = json.loads(run(PY + [str(SKILLS / "t10" / "verify_t10_page_curve.py")]).stdout)["central_number"]
         self.assertLess(t10["max_dev_from_page_nats"], 0.03)
         self.assertAlmostEqual(t10["peak_nats"], 2.97, delta=0.05)
@@ -520,7 +524,7 @@ class TimeGravityBatch4Tests(unittest.TestCase):
         t06 = (TG / "t06" / "index.html").read_text(encoding="utf-8")
         self.assertNotIn("MEASURED", labels_of(TG / "t06" / "index.html"), "a bound page measures nothing")
         for s in ("576", "506", "0.54 × 10⁻¹⁰ m", "0.05 × 10⁻¹⁰ m", "4.9 × 10⁻¹⁰ m", "CSL is not a gravity model", "Where the smearing may live", 'data-tg-figure="sigma-ladder"',
-                  "above 40 fm", "6.5 × 10⁸ s", "10²⁰ ages of the universe", "upper bounds can be put by observing no deviations", "not the preprint's", "the model is quiet", "a hundred thousand times or more", "the deficit in the mean pull grows instead", "twenty-nine orders of magnitude", "does not assess Orch-OR", "D₂ ≤ 10⁻⁴¹", "draws no conclusion beyond it"):
+                  "above 40 fm", "6.5 × 10⁸ s", "10²⁰ ages of the universe", "upper bounds can be put by observing no deviations", "not the preprint's", "the model is quiet", "a hundred thousand times or more", "the deficit in the mean pull grows instead", "thirteen to sixteen orders lower", "not a bound: the step from a torque residual", "twenty-nine orders of magnitude", "does not assess Orch-OR", "D₂ ≤ 10⁻⁴¹", "draws no conclusion beyond it"):
             self.assertIn(s, t06, f"T.06 lacks {s!r}")
         t10 = (TG / "t10" / "index.html").read_text(encoding="utf-8")
         for s in ("signal-to-noise ratio of 80", "to high credibility", "does not recompute it", "Where does the information go, in our universe?"):
