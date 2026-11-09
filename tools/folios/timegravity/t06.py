@@ -46,7 +46,7 @@ PAGE: dict = {
         "Does Gravity Collapse the Wave? The Bound",
         "The Diosi-Penrose collapse proposal, its predicted spontaneous radiation, and the Gran Sasso and XENONnT bounds recomputed from the published counts.",
         "¿La Gravedad Colapsa la Onda? La Cota",
-        "La propuesta de colapso de Diosi y Penrose, la radiación espontánea que predice, y las cotas de Gran Sasso y XENONnT recalculadas a partir de los conteos publicados.",
+        "La propuesta de colapso de Diosi y Penrose, la radiación espontánea que predice, y las cotas de Gran Sasso y XENONnT recalculadas de los conteos publicados.",
     ),
     "reading_time_en": "13 min read",
     "reading_time_es": "13 min de lectura",

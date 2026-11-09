@@ -47,7 +47,7 @@ PAGE: dict = {
         "A Clock in Two Places: the Clock Interferometer",
         "An experiment description: a clock in superposition of two heights loses interference visibility as its proper times decohere, with the formula recomputed live.",
         "Un Reloj en Dos Lugares: el Interferómetro de Reloj",
-        "La descripción de un experimento: un reloj en superposición de dos alturas pierde visibilidad de interferencia al decoherer sus tiempos propios, con la fórmula recalculada en vivo.",
+        "Descripción de un experimento: un reloj en superposición de dos alturas pierde visibilidad al decoherer sus tiempos propios, con la fórmula en vivo.",
     ),
     "reading_time_en": "12 min read",
     "reading_time_es": "12 min de lectura",

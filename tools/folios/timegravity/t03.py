@@ -41,10 +41,10 @@ PAGE: dict = {
         "cuerpo, esté hecho de lo que sea, lee el mismo mapa. Esa igualdad se ha medido a una parte en mil billones, y la antimateria se ha visto caer una vez."
     ),
     "seo": (
-        "What Sets the Slope: Poisson and the Equivalence Principle",
-        "How the weak-field Einstein equation reduces to Poisson's equation on a grid, and how torsion balances, lunar ranging and a satellite show every composition falls alike.",
-        "Qué Fija la Pendiente: Poisson y el Principio de Equivalencia",
-        "Cómo la ecuación de Einstein en campo débil se reduce a la de Poisson en una malla, y cómo balanzas de torsión, el láser lunar y un satélite muestran que todo cae igual.",
+        "What Sets the Slope: Poisson and Equivalence",
+        "How the weak-field Einstein equation reduces to Poisson's equation, and how torsion balances, lunar ranging and a satellite show every composition falls alike.",
+        "Qué Fija la Pendiente: Poisson y Equivalencia",
+        "Cómo la ecuación de Einstein en campo débil se reduce a la de Poisson, y cómo balanzas de torsión, el láser lunar y un satélite muestran que todo cae igual.",
     ),
     "reading_time_en": "13 min read",
     "reading_time_es": "13 min de lectura",

@@ -57,10 +57,10 @@ PAGE: dict = {
         "tres respuestas con el mismo peso y etiqueta toda la pregunta como ABIERTA."
     ),
     "seo": (
-        "Does Gravity Entangle? Three Channels, One Open Question",
-        "The Bose-Marletto-Vedral proposal recomputed live: the entanglement phase of two masses in two places, a classical channel that entangles nothing, and the 2025 dispute, drawn at equal weight.",
-        "¿La Gravedad Entrelaza? Tres Canales, Una Pregunta Abierta",
-        "La propuesta de Bose, Marletto y Vedral recalculada en vivo: la fase de entrelazamiento de dos masas en dos lugares, un canal clásico que no entrelaza nada, y la disputa de 2025, dibujados con el mismo peso.",
+        "Does Gravity Entangle? Three Channels, One Question",
+        "Bose-Marletto-Vedral recomputed: the entanglement phase of two masses, a classical channel that entangles nothing, and the 2025 dispute, at equal weight.",
+        "¿La Gravedad Entrelaza? Tres Canales, Una Pregunta",
+        "Bose, Marletto y Vedral recalculados: la fase de entrelazamiento de dos masas, un canal clásico que no entrelaza nada, y la disputa de 2025, con el mismo peso.",
     ),
     "reading_time_en": "14 min read",
     "reading_time_es": "14 min de lectura",
