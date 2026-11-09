@@ -988,6 +988,100 @@ export function yukawaThickPlateRatio(q, s, alpha, lam, t1 = EW_T_DETECTOR_M, t2
 /** Fraction of the Eöt-Wash 120-fold Newtonian torque the smeared potential removes at 52 µm (lowest wavenumber of the pattern). */
 export function eotwashDeficit(sigma, nFold = 120, s = EW_S_MIN_M) { return 1 - thickPlateRatio(nFold / EW_R_OUT_M, s, sigma); }
 export function eotwashYukawaEdgeDeficit(nFold = 120, s = EW_S_MIN_M) { return 1 - yukawaThickPlateRatio(nFold / EW_R_OUT_M, s, -1, EW_YUKAWA_EDGE_LAMBDA_M); }
+// ---- the wedge-pattern Fourier–Bessel kernel (mirrors tools/timegravity_kernel_wedge.py): the full Eöt-Wash 2020 geometry
+export const EW_WEDGES = { 120: { r0: 13.004e-3, r1: 22.998e-3, wedgeDeg: 1.490 }, 18: { r0: 23.505e-3, r1: 26.000e-3, wedgeDeg: 9.984 } };
+export const RHO_CONTRAST = 21450 - 1162;
+function besselJ0J1(x) {
+  if (x < 12) {
+    let s0 = 0, s1 = 0, t0 = 1, t1 = x / 2;
+    for (let k = 0; k < 60; k++) {
+      s0 += t0; s1 += t1;
+      t0 *= -(x * x / 4) / ((k + 1) * (k + 1)); t1 *= -(x * x / 4) / ((k + 1) * (k + 2));
+      if (Math.abs(t0) < 1e-18 && Math.abs(t1) < 1e-18) break;
+    }
+    return [s0, s1];
+  }
+  const out = [];
+  for (const nu of [0, 1]) {
+    const mu = 4 * nu * nu, a = [1];
+    for (let k = 1; k < 12; k++) a.push(a[k - 1] * (mu - (2 * k - 1) * (2 * k - 1)) / (k * 8 * x));
+    let p = 0, q = 0;
+    for (let k = 0; k < 12; k += 2) p += ((k / 2) % 2 ? -1 : 1) * a[k];
+    for (let k = 1; k < 12; k += 2) q += (((k - 1) / 2) % 2 ? -1 : 1) * a[k];
+    const chi = x - (nu / 2 + 0.25) * Math.PI;
+    out.push(Math.sqrt(2 / (Math.PI * x)) * (p * Math.cos(chi) - q * Math.sin(chi)));
+  }
+  return out;
+}
+/** J_0(x) … J_nmax(x): forward recurrence where stable, Miller's backward recurrence otherwise. */
+export function besselJAll(nmax, x) {
+  if (x > nmax + 20) {
+    const [j0, j1] = besselJ0J1(x), out = [j0, j1];
+    for (let n = 1; n < nmax; n++) out.push(2 * n / x * out[n] - out[n - 1]);
+    return out.slice(0, nmax + 1);
+  }
+  let start = Math.floor(Math.max(nmax, x) + 15 + 2 * Math.sqrt(Math.max(nmax, x)));
+  if (start % 2) start += 1;
+  const vals = new Array(start + 1).fill(0);
+  let jp1 = 0, j = 1e-300;
+  vals[start] = j;
+  for (let n = start; n > 0; n--) {
+    const jm1 = 2 * n / x * j - jp1;
+    jp1 = j; j = jm1; vals[n - 1] = j;
+    if (Math.abs(j) > 1e250) { for (let i = 0; i <= start; i++) vals[i] *= 1e-250; j *= 1e-250; jp1 *= 1e-250; }
+  }
+  let norm = vals[0];
+  for (let n = 2; n <= start; n += 2) norm += 2 * vals[n];
+  return vals.slice(0, nmax + 1).map((v) => v / norm);
+}
+/** R(m, k) = ∫ρ J_m(kρ) dρ over the wedge annulus, by the 2021 paper's Bessel series with a truncation that grows with k·r₁. */
+export function wedgeRadialSeries(m, r0, r1, k) {
+  const jmax = Math.max(250, Math.floor((k * r1 - m) / 2) + 40), nmax = m + 2 * jmax + 1;
+  const b1 = besselJAll(nmax, k * r1), b0 = besselJAll(nmax, k * r0);
+  let total = 0;
+  for (let j = 0; j <= jmax; j++) { const n = m + 2 * j + 1; total += n / ((n - 1) * (n + 1)) * (r1 * b1[n] - r0 * b0[n]); }
+  return 2 * m * total / k;
+}
+const GL16 = gaussLegendre(16), GL12 = gaussLegendre(12);
+function kNodes(kmin = 1, kmax = 4e5, perDecade = 6) {
+  const npan = Math.floor(Math.log10(kmax / kmin) * perDecade) + 1, nodes = [];
+  for (let i = 0; i < npan; i++) {
+    const a = kmin * (kmax / kmin) ** (i / npan), b = kmin * (kmax / kmin) ** ((i + 1) / npan);
+    for (let g = 0; g < 16; g++) nodes.push([0.5 * (b - a) * GL16[0][g] + 0.5 * (a + b), 0.5 * (b - a) * GL16[1][g]]);
+  }
+  return nodes;
+}
+const K_NODES = kNodes();
+const R_TABLES = {};
+function radialTable(nFold) {
+  if (!R_TABLES[nFold]) { const w = EW_WEDGES[nFold]; R_TABLES[nFold] = K_NODES.map(([k]) => wedgeRadialSeries(nFold, w.r0, w.r1, k)); }
+  return R_TABLES[nFold];
+}
+function zNewton(k, s, t1, t2) { return Math.exp(-k * s) * (1 - Math.exp(-k * t1)) * (1 - Math.exp(-k * t2)) / (k * k); }
+function zYukawa(k, s, t1, t2, lam) { const g = Math.sqrt(k * k + 1 / (lam * lam)); return (k / g) * Math.exp(-g * s) * (1 - Math.exp(-g * t1)) * (1 - Math.exp(-g * t2)) / (g * g); }
+function zSmeared(k, s, t1, t2, sigma) {
+  let total = 0;
+  for (let i = 0; i < 12; i++) {
+    const z1 = 0.5 * t1 * (GL12[0][i] + 1);
+    for (let j = 0; j < 12; j++) { const gap = s + z1 + 0.5 * t2 * (GL12[0][j] + 1); total += GL12[1][i] * GL12[1][j] * Math.exp(-k * gap) * plateModeRatio(k, gap, sigma); }
+  }
+  return total * 0.25 * t1 * t2;
+}
+/** Torque amplitude (N·m) of the N-fold harmonic at facing-surface separation s: kind "newton", "smeared" (sigma) or "yukawa" (alpha, lam). */
+export function wedgeTorque(nFold, s, kind = "newton", sigma = 0, alpha = 0, lam = 1, t1 = EW_T_DETECTOR_M, t2 = EW_T_ATTRACTOR_M) {
+  const w = EW_WEDGES[nFold], beta = (w.wedgeDeg / 2) * Math.PI / 180;
+  const pref = 8 * nFold * G_NEWTON_SI * RHO_CONTRAST * RHO_CONTRAST * Math.sin(nFold * beta) ** 2, table = radialTable(nFold);
+  let total = 0;
+  for (let i = 0; i < K_NODES.length; i++) {
+    const [k, wk] = K_NODES[i], r = table[i];
+    const z = kind === "newton" ? zNewton(k, s, t1, t2) : kind === "smeared" ? zSmeared(k, s, t1, t2, sigma) : zNewton(k, s, t1, t2) + alpha * zYukawa(k, s, t1, t2, lam);
+    total += wk * r * r * z;
+  }
+  return pref * total;
+}
+/** Fraction of the N-fold Newtonian torque the smeared potential removes at separation s, on the full wedge pattern. */
+export function wedgeDeficit(sigma, nFold = 120, s = EW_S_MIN_M) { return 1 - wedgeTorque(nFold, s, "smeared", sigma) / wedgeTorque(nFold, s); }
+export function wedgeYukawaEdgeDeficit(nFold = 120, s = EW_S_MIN_M) { return 1 - wedgeTorque(nFold, s, "yukawa", 0, -1, EW_YUKAWA_EDGE_LAMBDA_M) / wedgeTorque(nFold, s); }
 export function tnFTilde(z, sigma) { return z > 0 ? erf(z / (2 * sigma)) / z : 1 / (sigma * Math.sqrt(Math.PI)); }
 /** g(x,y) of Trillo–Navascués Eqs. 12–14 for two particles at 1-D positions; returns [re, im]. */
 export function tnG(x, y, m, sigma) {
@@ -1121,7 +1215,7 @@ function initBmv(root) {
     if (reads.logsig) reads.logsig.textContent = fmt(Math.log10(sigma), 1);
     if (reads.ktm) reads.ktm.textContent = L.ktm.replace("{gt}", ktmGammaT(m, d, dx, t).toFixed(3));
     if (reads.soft) reads.soft.textContent = `${(100 * erf(nearest / (2 * sigma))).toFixed(0)} %`;
-    if (reads.isl) reads.isl.textContent = L.isl.replace("{d}", (100 * eotwashDeficit(sigma)).toFixed(1)).replace("{y}", (100 * eotwashYukawaEdgeDeficit()).toFixed(1));
+    if (reads.isl) reads.isl.textContent = L.isl.replace("{d}", (100 * wedgeDeficit(sigma)).toFixed(1)).replace("{y}", (100 * wedgeYukawaEdgeDeficit()).toFixed(1));
     const sc = tnCriticalSigma(m, dx, nearest);
     const dpPts = [];
     let dpMax = 0;

@@ -19,6 +19,13 @@ PENROSE = "T06-PENROSE1996"
 DONADI = "T06-DONADI2021"
 XENON = "T06-XENONNT2026"
 FEIN = "T06-FEIN2019"
+HELOU = "T06-HELOU2017"
+HAMEROFF = "T06-HAMEROFF2014"
+OPPENHEIM = "T06-OPPENHEIM2023"
+TILLOY = "T05-TILLOY2016"
+TRILLO = "T05-TRILLO2025"
+LEE = "T05-LEE2020"
+LEE21 = "T05-LEE2021"
 
 PAGE: dict = {
     "slug": SLUG,
@@ -58,7 +65,7 @@ PAGE: dict = {
     "skill_filename": "timegravity-t06-collapse-bound.SKILL.md",
     "open_question_en": "If gravity neither collapses nor is shown to entangle, what is a superposition of slopes?",
     "open_question_es": "Si la gravedad ni colapsa ni se muestra que entrelaza, ¿qué es una superposición de pendientes?",
-    "ledger_ids": [DIOSI, PENROSE, DONADI, XENON, FEIN],
+    "ledger_ids": [DIOSI, PENROSE, DONADI, XENON, FEIN, HELOU, HAMEROFF, OPPENHEIM, TILLOY, TRILLO, LEE, LEE21],
     "ai_line_en": (
         "AI contribution to the cited results: none. No AI system contributed to any proposal, measurement or bound cited on this page. "
         "The page text, instrument and verifier were drafted with AI assistance and checked by the site maintainer against the primary sources listed below."
@@ -227,12 +234,77 @@ PAGE: dict = {
             T(" The next page takes up the strangest version of that question: an equation for the whole with no time in it at all.",
               " La siguiente página retoma la versión más extraña de esa pregunta: una ecuación para el todo sin tiempo alguno."),
         ),
+        {"type": "h2", "id": "ladder", "en": "IV · Where the smearing may live", "es": "IV · Dónde puede vivir el suavizado", "short_en": "IV · Ladder", "short_es": "IV · Escalera"},
+        {"type": "sigma_ladder"},
+        P(
+            C("BOUND", [HELOU, DONADI, XENON],
+              "The model has one free length, the width σ over which each mass is smeared, and the radiation it predicts has bounded that "
+              "length from below three times: analysis of LISA Pathfinder data put it above 40 fm in 2017, the Gran Sasso germanium "
+              "detector above 0.54 Å in 2021, and XENONnT above 4.9 Å in 2026.",
+              "El modelo tiene una longitud libre, el ancho σ sobre el que se suaviza cada masa, y la radiación que predice ha acotado esa "
+              "longitud por abajo tres veces: el análisis de los datos de LISA Pathfinder la puso por encima de 40 fm en 2017, el "
+              "detector de germanio de Gran Sasso por encima de 0.54 Å en 2021, y XENONnT por encima de 4.9 Å en 2026."),
+            T(" The ladder draws them as the left edge of the allowed region. Everything else on it is a use of the same parameter, and the "
+              "uses disagree.",
+              " La escalera las dibuja como el borde izquierdo de la región permitida. Todo lo demás en ella es un uso del mismo parámetro, y "
+              "los usos no coinciden."),
+        ),
+        P(
+            C("PROPOSED", [TILLOY, HAMEROFF, PENROSE],
+              "Two very different uses want σ small. The authors of the hybrid form that the 2025 entanglement letter builds on called it "
+              "'the natural cutoff σ ∼ 10⁻¹² cm', a hundredth of a picometre. The one biological use of the model, Orch-OR, holds that "
+              "consciousness-related collapse follows 'the specific Diósi-Penrose scheme'; on Penrose's formula the kernel finds that a "
+              "single tubulin, 55 kDa, in two places a nucleon radius apart lives 6.5 × 10⁸ s at σ = 10⁻¹⁴ m and about 10³⁷ s at the "
+              "laboratory rungs near 44 µm, some 10²⁰ ages of the universe: twenty-nine orders of magnitude between the two uses of one number.",
+              "Dos usos muy distintos quieren σ pequeña. Los autores de la forma híbrida sobre la que se construye la carta de entrelazamiento "
+              "de 2025 la llamaron 'el corte natural σ ∼ 10⁻¹² cm', una centésima de picómetro. El único uso biológico del modelo, Orch-OR, "
+              "sostiene que el colapso ligado a la conciencia sigue 'el esquema específico de Diósi-Penrose'; con la fórmula de Penrose el núcleo "
+              "encuentra que una sola tubulina, 55 kDa, en dos lugares a un radio de nucleón vive 6.5 × 10⁸ s a σ = 10⁻¹⁴ m y unos 10³⁷ s en "
+              "los peldaños de laboratorio cerca de 44 µm, unas 10²⁰ edades del universo: veintinueve órdenes de magnitud entre los dos usos de un mismo número."),
+            T(" The page does not assess Orch-OR; it reports what the model's own formula gives at each rung. Its planted defect for this "
+              "kernel drops the small-displacement series, so the direct difference returns rounding noise six orders of magnitude off and "
+              "breaks the σ³ law between the top rungs, which the verifier rejects.",
+              " La página no evalúa Orch-OR; reporta lo que la fórmula propia del modelo da en cada peldaño. Su defecto plantado para este "
+              "núcleo quita la serie de desplazamiento pequeño, así que la diferencia directa devuelve ruido de redondeo seis órdenes de "
+              "magnitud fuera y rompe la ley σ³ entre los peldaños superiores, lo que el verificador rechaza."),
+        ),
+        P(
+            C("PROPOSED", [TRILLO, LEE, LEE21],
+              "At the top of the ladder sits the 2025 letter's 50 to 250 µm, the range in which the model entangles two masses in a "
+              "laboratory; just below it, at 44 µm, the wedge kernel of T.05 finds the model's softened pull removing as much of the "
+              "Eöt-Wash torque as the Yukawa that test excludes at 95 %. On this site's estimate the inverse-square tests leave room only below "
+              "that line, and the entanglement letter needs the range above it.",
+              "En lo alto de la escalera están los 50 a 250 µm de la carta de 2025, el rango en que el modelo entrelaza dos masas en un "
+              "laboratorio; justo debajo, a 44 µm, el núcleo de cuñas de T.05 encuentra que la atracción suavizada del modelo quita tanto "
+              "del par de Eöt-Wash como el Yukawa que esa prueba excluye al 95 %. En la estimación de este sitio las pruebas del inverso del cuadrado "
+              "dejan sitio solo por debajo de esa línea, y la carta de entrelazamiento necesita el rango por encima."),
+            C("BOUND", [OPPENHEIM],
+              "The same torsion balances enter a second squeeze: in 2023 Oppenheim and co-workers showed that any consistent theory with "
+              "classical gravity and quantum matter must trade decoherence of the matter against diffusion of the field, bounded that "
+              "diffusion with Cavendish-type and rotating-attractor measurements at D₂ ≤ 10⁻⁴¹ kg² s m⁻³, and named the Diósi–Penrose kernel "
+              "as a member of the class.",
+              "Las mismas balanzas de torsión entran en un segundo apretón: en 2023 Oppenheim y colaboradores mostraron que toda teoría "
+              "consistente con gravedad clásica y materia cuántica debe intercambiar decoherencia de la materia por difusión del campo, "
+              "acotaron esa difusión con mediciones tipo Cavendish y de atractor giratorio en D₂ ≤ 10⁻⁴¹ kg² s m⁻³, y nombraron al núcleo de "
+              "Diósi–Penrose como miembro de la clase."),
+        ),
+        P(
+            C("OPEN", [TRILLO, HAMEROFF, HELOU, LEE],
+              "No single σ serves every use on the ladder: the bounds want it above 5 Å, the biological use needs the bottom of the ladder, "
+              "the entanglement letter needs the top, and the inverse-square tests, on this site's estimate, leave room only under 44 µm. The ladder "
+              "shows that and the page draws no conclusion beyond it; which rung gives way is for the experiments to decide.",
+              "Ninguna σ sirve a todos los usos de la escalera: las cotas la quieren por encima de 5 Å, el uso biológico necesita el fondo "
+              "de la escalera, la carta de entrelazamiento necesita la cima, y las pruebas del inverso del cuadrado, en la estimación de este sitio, dejan sitio "
+              "solo por debajo de 44 µm. La escalera muestra eso y la página no concluye nada más allá; qué peldaño cede lo decidirán los experimentos."),
+        ),
         {"type": "change_box",
          "items": [
              ("A measured excess of spontaneous radiation with the predicted 1/R0³ spectrum, seen by two detectors, would turn the BOUND into a measurement of R0 and the page would be rewritten.",
               "Un exceso medido de radiación espontánea con el espectro 1/R0³ predicho, visto por dos detectores, convertiría la COTA en una medición de R0 y la página se reescribiría."),
              ("The XENONnT row leaves the replication window in 2028 or when a second detector reaches its bound; either moves its claim from SINGLE RESULT to BOUND.",
               "La fila de XENONnT sale de la ventana de replicación en 2028 o cuando un segundo detector alcance su cota; cualquiera de las dos mueve su afirmación de RESULTADO ÚNICO a COTA."),
+             ("A refit of the Eöt-Wash data for the smeared potential, published by its collaboration, would turn the ladder's 44 µm rung from this site's estimate into a BOUND, in either direction.",
+              "Un reajuste de los datos de Eöt-Wash para el potencial suavizado, publicado por su colaboración, convertiría el peldaño de 44 µm de la escalera de estimación de este sitio en una COTA, en cualquier dirección."),
              ("If the recomputed bound ever drifted more than 20 % from the published 0.54 × 10⁻¹⁰ m after a constants change, the verifier fails and the page does not build.",
               "Si la cota recalculada llegara a desviarse más del 20 % de los 0.54 × 10⁻¹⁰ m publicados tras un cambio de constantes, el verificador falla y la página no se construye."),
          ]},
@@ -266,5 +338,12 @@ PAGE: dict = {
         ("Donadi, S., Piscicchia, K., Curceanu, C., Diósi, L., Laubenstein, M., & Bassi, A. (2021). Underground test of gravity-related wave function collapse. Nature Physics, 17, 74–78.", "10.1038/s41567-020-1008-4"),
         ("Aprile, E., et al. (XENONnT Collaboration) (2026). Challenging spontaneous quantum collapse with XENONnT. Physical Review Letters, 136, 120201.", "10.1103/2jm3-4976"),
         ("Fein, Y. Y., Geyer, P., Zwick, P., Kiałka, F., Pedalino, S., Mayor, M., Gerlich, S., & Arndt, M. (2019). Quantum superposition of molecules beyond 25 kDa. Nature Physics, 15, 1242–1245.", "10.1038/s41567-019-0663-9"),
+        ("Helou, B., Slagmolen, B. J. J., McClelland, D. E., & Chen, Y. (2017). LISA pathfinder appreciably constrains collapse models. Physical Review D, 95, 084054.", "10.1103/PhysRevD.95.084054"),
+        ("Hameroff, S., & Penrose, R. (2014). Consciousness in the universe: A review of the 'Orch OR' theory. Physics of Life Reviews, 11(1), 39–78.", "10.1016/j.plrev.2013.08.002"),
+        ("Oppenheim, J., Sparaciari, C., Šoda, B., & Weller-Davies, Z. (2023). Gravitationally induced decoherence vs space-time diffusion: testing the quantum nature of gravity. Nature Communications, 14, 7910.", "10.1038/s41467-023-43348-2"),
+        ("Tilloy, A., & Diósi, L. (2016). Sourcing semiclassical gravity from spontaneously localized quantum matter. Physical Review D, 93, 024026.", "10.1103/PhysRevD.93.024026"),
+        ("Trillo, D., & Navascués, M. (2025). The Diósi-Penrose model of classical gravity predicts gravitationally induced entanglement. Physical Review D, 111, L121101.", "10.1103/PhysRevD.111.L121101"),
+        ("Lee, J. G., Adelberger, E. G., Cook, T. S., Fleischer, S. M., & Heckel, B. R. (2020). New test of the gravitational 1/r² law at separations down to 52 µm. Physical Review Letters, 124, 101101.", "10.1103/PhysRevLett.124.101101"),
+        ("Lee, J. G., Adelberger, E. G., Marcoline, F. V., Terrano, W. A., & Heckel, B. R. (2021). The Fourier–Bessel expansion: application to experimental probes of gravity and feeble short-range interactions. Classical and Quantum Gravity, 38, 085020.", "10.1088/1361-6382/abebf2"),
     ],
 }

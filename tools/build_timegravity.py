@@ -11,6 +11,7 @@ from __future__ import annotations
 import hashlib
 import html
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -41,7 +42,7 @@ from timegravity_kernel_entangle import (  # noqa: E402
     time_to_full_entanglement,
 )
 from timegravity_kernel_dispute import ktm_dephasing_rate, tn_critical_sigma, tn_potential_ratio  # noqa: E402
-from timegravity_kernel_isl import eotwash_deficit, eotwash_yukawa_edge_deficit  # noqa: E402
+from timegravity_kernel_wedge import wedge_deficit, wedge_yukawa_edge_deficit  # noqa: E402
 from timegravity_kernel_bounds import (  # noqa: E402
     GS_R0_BOUND_M, GS_R0_PARAMFREE_M, XENONNT_R0_90, dp_collapse_time, gran_sasso_signal_counts, page_average_entropy, page_curve_toy,
 )
@@ -836,8 +837,8 @@ def bmv_instrument(page: dict) -> str:
     sigma_c0 = tn_critical_sigma(BMV_M_KG, BMV_DX_M, BMV_D_M - BMV_DX_M)
     ktm_gt0 = ktm_dephasing_rate(BMV_M_KG, BMV_D_M, BMV_DX_M) * t0
     soft0 = tn_potential_ratio(BMV_D_M - BMV_DX_M, 10.0 ** log_sig0)
-    isl0 = eotwash_deficit(10.0 ** log_sig0)
-    isl_edge = eotwash_yukawa_edge_deficit()
+    isl0 = wedge_deficit(10.0 ** log_sig0)
+    isl_edge = wedge_yukawa_edge_deficit()
     seps = {"LL": d0_um, "LR": d0_um + dx0_um, "RL": d0_um - dx0_um, "RR": d0_um}
     lines_svg = []
     for i, (ia, xa) in enumerate(zip("LR", ax)):
@@ -947,7 +948,7 @@ def bmv_instrument(page: dict) -> str:
           <span class="tp-readout-v" data-tg-read="soft">{100 * soft0:.0f} %</span>
         </div>
         <div class="tp-readout-box" data-alert="false">
-          <span class="tp-readout-k" data-en="Eöt-Wash 2020, 120-fold torque at 52 µm on that model (one-mode estimate)" data-es="Eöt-Wash 2020, par de 120 pliegues a 52 µm en ese modelo (estimación de un modo)">Eöt-Wash 2020, 120-fold torque at 52 µm on that model (one-mode estimate)</span>
+          <span class="tp-readout-k" data-en="Eöt-Wash 2020, 120-fold torque at 52 µm on that model (full wedge pattern, Fourier–Bessel)" data-es="Eöt-Wash 2020, par de 120 pliegues a 52 µm en ese modelo (patrón de cuñas completo, Fourier–Bessel)">Eöt-Wash 2020, 120-fold torque at 52 µm on that model (full wedge pattern, Fourier–Bessel)</span>
           <span class="tp-readout-v" data-tg-read="isl">−{100 * isl0:.1f} % · the Yukawa at the published edge: −{100 * isl_edge:.1f} %</span>
         </div>
         <div class="tp-readout-box" data-tg-readout-box="err" data-alert="false">
@@ -1066,6 +1067,72 @@ def plate_d(page: dict) -> str:
           </svg>
           <figcaption class="tp-distill-caption">
             {bi("span", "Plate T.01-D · Visual Intuition Bridge: the everyday analogy (left) sets up one quantity with two settings (centre), and the verifier's three demands (right) are what the knockout and the sign-flip buttons in the instrument above test.", "Lámina T.01-D · Puente de Intuición Visual: la analogía cotidiana (izquierda) plantea una cantidad con dos ajustes (centro), y las tres exigencias del verificador (derecha) son lo que prueban los botones de apagado y de signo invertido en el instrumento de arriba.")}
+          </figcaption>
+        </figure>"""
+
+
+def sigma_ladder(page: dict) -> str:
+    """Plate T.06-L · the σ ladder: every published bound and every claimed value of the Diósi–Penrose smearing on one log axis,
+    with what Penrose's formula then says about a tubulin at each rung (tools/timegravity_kernel_ladder.py)."""
+    from timegravity_kernel_ladder import LADDER_RUNGS, tubulin_table
+    tub = tubulin_table()
+    x0, x1, lo, hi = 70.0, 850.0, -15.0, -3.0
+    xs = lambda sigma: x0 + (math.log10(sigma) - lo) / (hi - lo) * (x1 - x0)
+    axis_y = 182.0
+    parts = [f'<rect x="6" y="6" width="908" height="288" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>',
+             f'<line x1="{x0 - 20:.1f}" y1="{axis_y}" x2="{x1 + 30:.1f}" y2="{axis_y}" stroke="var(--tp-ink)" stroke-width="1.4"/>',
+             f'<polygon points="{x1 + 30:.1f},{axis_y - 4} {x1 + 40:.1f},{axis_y} {x1 + 30:.1f},{axis_y + 4}" fill="var(--tp-ink)"/>']
+    for dec in range(-15, -2):
+        x = xs(10.0 ** dec)
+        major = dec in (-15, -12, -10, -9, -6, -3)
+        parts.append(f'<line x1="{x:.1f}" y1="{axis_y}" x2="{x:.1f}" y2="{axis_y + (9 if major else 5)}" stroke="var(--tp-ink)" stroke-width="{1.2 if major else 0.8}"/>')
+        if major:
+            name = {-15: "1 fm", -12: "1 pm", -10: "1 Å", -9: "1 nm", -6: "1 µm", -3: "1 mm"}[dec]
+            parts.append(f'<text x="{x:.1f}" y="{axis_y + 22}" text-anchor="middle" font-size="9.2" fill="var(--tp-graphite)">{name}</text>')
+    parts.append(f'<text x="{(x0 + x1) / 2:.1f}" y="{axis_y + 40}" text-anchor="middle" font-size="9.6" font-weight="700" fill="var(--tp-ink)" data-en="smearing width σ of the Diósi–Penrose model (log scale)" data-es="ancho de suavizado σ del modelo de Diósi–Penrose (escala log)">smearing width σ of the Diósi–Penrose model (log scale)</text>')
+    # allowed region from the strongest mature bound (Gran Sasso) rightwards, lighter from XENONnT (single result)
+    gs = xs(0.54e-10); xe = xs(4.9e-10)
+    parts.append(f'<rect x="{gs:.1f}" y="{axis_y - 6}" width="{x1 + 30 - gs:.1f}" height="6" fill="var(--tp-verdigris)" opacity="0.2"/>')
+    parts.append(f'<text x="{xe + 6:.1f}" y="{axis_y - 9}" font-size="7.8" fill="var(--tp-verdigris)" data-en="allowed by the mature bound →" data-es="permitido por la cota madura →">allowed by the mature bound →</text>')
+    # the letter's range and the site's estimate
+    xa, xb, xe2 = xs(50e-6), xs(250e-6), xs(44.07e-6)
+    parts.append(f'<rect x="{xa:.1f}" y="{axis_y - 30}" width="{xb - xa:.1f}" height="10" rx="2" fill="var(--tp-prussian)" opacity="0.85"/>')
+    parts.append(f'<text x="{(xa + xb) / 2:.1f}" y="{axis_y - 36}" text-anchor="middle" font-size="8.8" font-weight="700" fill="var(--tp-prussian)" data-en="2025 letter: entangles at 50–250 µm (PROPOSED)" data-es="carta de 2025: entrelaza a 50–250 µm (PROPUESTO)">2025 letter: entangles at 50–250 µm (PROPOSED)</text>')
+    parts.append(f'<line x1="{xe2:.1f}" y1="{axis_y - 112}" x2="{xe2:.1f}" y2="{axis_y}" stroke="var(--tp-minium)" stroke-width="1.8" stroke-dasharray="5 3"/>')
+    parts.append(f'<polygon points="{xe2 - 2:.1f},{axis_y - 100} {xe2 - 12:.1f},{axis_y - 105} {xe2 - 2:.1f},{axis_y - 110}" fill="var(--tp-minium)"/>')
+    parts.append(f'<text x="{xe2 - 6:.1f}" y="{axis_y - 118}" text-anchor="end" font-size="8.8" font-weight="700" fill="var(--tp-minium)" data-en="T.05 estimate: softened pull under the excluded Yukawa only for σ ≲ 44 µm (PROPOSED)" data-es="estimación T.05: atracción suavizada bajo el Yukawa excluido solo para σ ≲ 44 µm (PROPUESTO)">T.05 estimate: softened pull under the excluded Yukawa only for σ ≲ 44 µm (PROPOSED)</text>')
+    # the bounds and the natural cut-off, labels staggered
+    stagger = {"natural": 96, "lisa": 70, "gransasso": 96, "xenonnt": 70}
+    for key, sigma, kind, _lid, en, es in LADDER_RUNGS:
+        if key in ("eotwash", "letter_lo", "letter_hi"):
+            continue
+        x = xs(sigma); h = stagger[key]
+        col = "var(--tp-verdigris)" if kind in ("bound", "single") else "var(--tp-prussian)"
+        dash = "" if kind == "bound" else ' stroke-dasharray="4 3"'
+        parts.append(f'<line x1="{x:.1f}" y1="{axis_y - h}" x2="{x:.1f}" y2="{axis_y}" stroke="{col}" stroke-width="1.6"{dash}/>')
+        if kind in ("bound", "single"):
+            parts.append(f'<polygon points="{x + 2:.1f},{axis_y - h + 8} {x + 12:.1f},{axis_y - h + 13} {x + 2:.1f},{axis_y - h + 18}" fill="{col}"/>')
+        label = en + (" (BOUND)" if kind == "bound" else " (SINGLE RESULT)" if kind == "single" else " (PROPOSED)")
+        label_es = es + (" (COTA)" if kind == "bound" else " (RESULTADO ÚNICO)" if kind == "single" else " (PROPUESTO)")
+        parts.append(f'<text x="{x + 4:.1f}" y="{axis_y - h - 4}" font-size="8.6" font-weight="700" fill="{col}" data-en="{a(label)}" data-es="{a(label_es)}">{t(label)}</text>')
+    # tubulin row
+    def sci(v: float) -> str:
+        ex = int(math.floor(math.log10(v))); man = v / 10 ** ex
+        sup = str(ex).translate(str.maketrans("-0123456789", "⁻⁰¹²³⁴⁵⁶⁷⁸⁹"))
+        return (f"{man:.1f} × " if abs(man - 1.0) > 0.05 else "") + f"10{sup}"
+    nat = tub["natural"]["nucleon_radius"]; ew = tub["eotwash"]["nucleon_radius"]
+    parts.append(f'<text x="{x0 - 20:.1f}" y="{axis_y + 62}" font-size="8.8" font-weight="700" fill="var(--tp-ink)" data-en="The model\'s formula applied to one tubulin (55 kDa), the object the Orch-OR proposal refers to, in two places a nucleon radius apart:" data-es="La fórmula del modelo aplicada a una tubulina (55 kDa), el objeto al que se refiere la propuesta Orch-OR, en dos lugares a un radio de nucleón:">The model\'s formula applied to one tubulin (55 kDa), the object the Orch-OR proposal refers to, in two places a nucleon radius apart:</text>')
+    parts.append(f'<text x="{xs(1e-14):.1f}" y="{axis_y + 78}" font-size="8.6" fill="var(--tp-graphite)" data-en="at 10⁻¹⁴ m: lives {sci(nat["lifetime_s"])} s" data-es="a 10⁻¹⁴ m: vive {sci(nat["lifetime_s"])} s">at 10⁻¹⁴ m: lives {sci(nat["lifetime_s"])} s</text>')
+    parts.append(f'<text x="{xe2:.1f}" y="{axis_y + 78}" text-anchor="end" font-size="8.6" fill="var(--tp-graphite)" data-en="at 44 µm: lives {sci(ew["lifetime_s"])} s, {sci(ew["lifetime_over_universe_age"])} ages of the universe" data-es="a 44 µm: vive {sci(ew["lifetime_s"])} s, {sci(ew["lifetime_over_universe_age"])} edades del universo">at 44 µm: lives {sci(ew["lifetime_s"])} s, {sci(ew["lifetime_over_universe_age"])} ages of the universe</text>')
+    parts.append(f'<text x="460" y="{axis_y + 100}" text-anchor="middle" font-family="var(--font-mono, monospace)" font-size="8.9" font-weight="700" fill="var(--tp-prussian)" data-en="PLATE T.06-L · THE σ LADDER · one parameter, four uses, each rung a ledger row" data-es="LÁMINA T.06-L · LA ESCALERA σ · un parámetro, cuatro usos, cada peldaño una fila del libro">PLATE T.06-L · THE σ LADDER · one parameter, four uses, each rung a ledger row</text>')
+    body = "\n            ".join(parts)
+    return f"""        <figure class="tp-distill-figure" role="group" aria-label="Plate T.06-L The sigma ladder" data-tg-figure="sigma-ladder">
+          <svg class="tp-distill-svg" viewBox="0 0 920 300" role="img" aria-labelledby="tp-ladder-title-t06">
+            <title id="tp-ladder-title-t06" data-en="Plate T.06-L The sigma ladder: the Diósi–Penrose smearing width on a log axis from a femtometre to a millimetre, with the lower bounds from LISA Pathfinder, Gran Sasso and XENONnT, the authors' natural cut-off, the 2025 entanglement letter's range, this site's Eöt-Wash estimate, and the lifetime of a tubulin at two rungs" data-es="Lámina T.06-L La escalera σ: el ancho de suavizado de Diósi–Penrose en un eje logarítmico de un femtómetro a un milímetro, con las cotas inferiores de LISA Pathfinder, Gran Sasso y XENONnT, el corte natural de los autores, el rango de la carta de entrelazamiento de 2025, la estimación de Eöt-Wash de este sitio, y la vida de una tubulina en dos peldaños">Plate T.06-L The sigma ladder</title>
+            {body}
+          </svg>
+          <figcaption class="tp-distill-caption">
+            {bi("span", "Plate T.06-L · The σ ladder: three bounds from experimental data hold the smearing from below (green, allowed to the right); its authors' natural cut-off and the 2025 letter's entangling range are proposals (blue); the dashed red line is this site's estimate from T.05 of where the inverse-square tests leave room. The bottom row applies the model's formula to a single tubulin, the object the Orch-OR proposal refers to; the page does not assess that proposal. Each rung is a ledger row; the page draws no conclusion beyond the picture.", "Lámina T.06-L · La escalera σ: tres cotas desde datos experimentales sostienen el suavizado por abajo (verde, permitido a la derecha); el corte natural de sus autores y el rango de entrelazamiento de la carta de 2025 son propuestas (azul); la línea roja punteada es la estimación de este sitio desde T.05 de dónde dejan sitio las pruebas del inverso del cuadrado. La fila inferior aplica la fórmula del modelo a una sola tubulina, el objeto al que se refiere la propuesta Orch-OR; la página no evalúa esa propuesta. Cada peldaño es una fila del libro de registro; la página no concluye nada más allá de la imagen.")}
           </figcaption>
         </figure>"""
 
@@ -1191,6 +1258,8 @@ def render_sections(page: dict, rel_res: str) -> str:
         </div>""")
         elif kind == "plate_d":
             out.append(plate_d(page))
+        elif kind == "sigma_ladder":
+            out.append(sigma_ladder(page))
         elif kind == "equation":
             out.append(f'        <p class="tg-equation"><code>{t(block["text"])}</code></p>')
         elif kind == "spine":

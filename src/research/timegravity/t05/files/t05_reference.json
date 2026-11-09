@@ -483,7 +483,174 @@
       "sigma_c_letter_geometry_m": 5.4883680462e-05,
       "deficit_120fold_at_sigma_c_letter_geometry": 0.0365047576241
     },
-    "hust_lambda_m": 4.8e-05
+    "hust_lambda_m": 4.8e-05,
+    "wedge": {
+      "geometry": {
+        "120": {
+          "r_inner_m": 0.013004,
+          "r_outer_m": 0.022998,
+          "wedge_deg": 1.49
+        },
+        "18": {
+          "r_inner_m": 0.023505,
+          "r_outer_m": 0.026,
+          "wedge_deg": 9.984
+        }
+      },
+      "rho_contrast_kg_m3": 20288.0,
+      "t_detector_m": 5.4e-05,
+      "t_attractor_m": 9.9e-05,
+      "bessel_ok": true,
+      "radial_ok": true,
+      "newton_torques": {
+        "52um": {
+          "T120_fNm": 1.71463125256,
+          "T18_fNm": 1.08180817786
+        },
+        "72um": {
+          "T120_fNm": 1.50806767877,
+          "T18_fNm": 1.06031693904
+        },
+        "100um": {
+          "T120_fNm": 1.26082910776,
+          "T18_fNm": 1.03110384164
+        },
+        "300um": {
+          "T120_fNm": 0.357973041681,
+          "T18_fNm": 0.847957877158
+        },
+        "1000um": {
+          "T120_fNm": 0.00529467656245,
+          "T18_fNm": 0.441688027962
+        }
+      },
+      "t120_at_72um_implied_by_letter_fNm": 1.65,
+      "newton_ok": true,
+      "deficit_at_52um_by_sigma": {
+        "30um": {
+          "120fold": 0.00342761432514,
+          "18fold": 0.000286275722476
+        },
+        "44um": {
+          "120fold": 0.0252035451034,
+          "18fold": 0.00216312539596
+        },
+        "50um": {
+          "120fold": 0.0432860770772,
+          "18fold": 0.00376879714916
+        },
+        "55um": {
+          "120fold": 0.0624906282139,
+          "18fold": 0.00551236057926
+        },
+        "75um": {
+          "120fold": 0.169901190466,
+          "18fold": 0.0159264936467
+        },
+        "100um": {
+          "120fold": 0.339490001619,
+          "18fold": 0.0348768089034
+        }
+      },
+      "yukawa_edge_deficit_at_52um": {
+        "120fold": 0.0253746768787,
+        "18fold": 0.00229543306361
+      },
+      "deficit_by_separation": {
+        "52um": {
+          "sigma_75um_120fold": 0.169901190466,
+          "sigma_75um_18fold": 0.0159264936467,
+          "yukawa_edge_120fold": 0.0253746768787
+        },
+        "72um": {
+          "sigma_75um_120fold": 0.131312113898,
+          "sigma_75um_18fold": 0.0111375772092,
+          "yukawa_edge_120fold": 0.0168861956271
+        },
+        "100um": {
+          "sigma_75um_120fold": 0.0878818667394,
+          "sigma_75um_18fold": 0.0064732030504,
+          "yukawa_edge_120fold": 0.00954268357789
+        },
+        "150um": {
+          "sigma_75um_120fold": 0.0378810037755,
+          "sigma_75um_18fold": 0.00216403049245,
+          "yukawa_edge_120fold": 0.00343855803903
+        },
+        "200um": {
+          "sigma_75um_120fold": 0.0138057841088,
+          "sigma_75um_18fold": 0.000610564704716,
+          "yukawa_edge_120fold": 0.00123665434267
+        },
+        "300um": {
+          "sigma_75um_120fold": 0.00107483083352,
+          "sigma_75um_18fold": 2.84277899664e-05,
+          "yukawa_edge_120fold": 0.000159105627709
+        },
+        "500um": {
+          "sigma_75um_120fold": 6.63703569437e-07,
+          "sigma_75um_18fold": 6.2970666459e-09,
+          "yukawa_edge_120fold": 2.58560504462e-06
+        }
+      },
+      "sigma_matching_edge_120fold_m": 4.40669087631e-05,
+      "best_yukawa_for_sigma_75um_120fold": {
+        "lambda_m": 4.93412484627e-05,
+        "alpha": -3.083361137,
+        "residual": 6.94027780802e-05,
+        "rms_deficit": 0.00294539424526
+      },
+      "ratio_sigma_75um_to_edge_120fold": 6.69569867935,
+      "wedge_ok": true,
+      "window_at_matching_sigma": {
+        "sigma_m": 4.40669087631e-05,
+        "mass_kg": 1e-15,
+        "d_c_small_split_m": 3.74908880258e-05,
+        "d_c_letter_split_m": 1.48704010723e-05,
+        "letter_geometry": {
+          "peak_negativity": 0.0,
+          "peak_time_s": null,
+          "last_entangled_time_s": null
+        },
+        "examples": {
+          "split_23um": {
+            "d_c_m": 1.48704010723e-05,
+            "at_half_d_c": {
+              "peak_negativity": 0.0165215056444,
+              "peak_time_s": 3162.27766017,
+              "last_entangled_time_s": 3162.27766017
+            }
+          },
+          "split_10um": {
+            "d_c_m": 2.75661244723e-05,
+            "at_half_d_c": {
+              "peak_negativity": 0.0374403366455,
+              "peak_time_s": 17782.7941004,
+              "last_entangled_time_s": 31622.7766017
+            }
+          },
+          "split_5um": {
+            "d_c_m": 3.25130095545e-05,
+            "at_half_d_c": {
+              "peak_negativity": 0.0433870461301,
+              "peak_time_s": 56234.132519,
+              "last_entangled_time_s": 100000.0
+            }
+          },
+          "split_1um": {
+            "d_c_m": 3.64960180113e-05,
+            "at_half_d_c": {
+              "peak_negativity": 0.0508782959999,
+              "peak_time_s": 1778279.41004,
+              "last_entangled_time_s": 3162277.66017
+            }
+          }
+        }
+      },
+      "window_ok": true,
+      "defect_rejected": true,
+      "ok": true
+    }
   },
   "boundary_en": "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. Preprints never rise above PROPOSED. Each page ends with one open question that the next page takes up.",
   "license": "CC0-1.0 / CC-BY-4.0"

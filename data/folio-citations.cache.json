@@ -295,6 +295,14 @@
   "title": "Design challenges of reciprocal frame structures in architecture",
   "year": 2019
  },
+ "doi:10.1016/j.plrev.2013.08.002": {
+  "fetched": "2026-11-09",
+  "first_author": "Hameroff",
+  "found": true,
+  "journal": "Physics of Life Reviews",
+  "title": "Consciousness in the universe: A review of the 'Orch OR' theory",
+  "year": 2014
+ },
  "doi:10.1016/j.xcrm.2024.101544": {
   "fetched": "2026-11-04",
   "first_author": "Bulcaen",
@@ -414,6 +422,14 @@
   "journal": "",
   "title": "",
   "year": null
+ },
+ "doi:10.1038/s41467-023-43348-2": {
+  "fetched": "2026-11-09",
+  "first_author": "Oppenheim",
+  "found": true,
+  "journal": "Nature Communications",
+  "title": "Gravitationally induced decoherence vs space-time diffusion: testing the quantum nature of gravity",
+  "year": 2023
  },
  "doi:10.1038/s41551-024-01233-3": {
   "fetched": "2026-11-04",
@@ -663,6 +679,14 @@
   "title": "Stochastic thermodynamics, fluctuation theorems and molecular machines",
   "year": 2012
  },
+ "doi:10.1088/1361-6382/abebf2": {
+  "fetched": "2026-11-09",
+  "first_author": "Lee",
+  "found": true,
+  "journal": "Classical and Quantum Gravity",
+  "title": "The Fourier–Bessel expansion: application to experimental probes of gravity and feeble short-range interactions",
+  "year": 2021
+ },
  "doi:10.1088/1361-6382/ae6f62": {
   "fetched": "2026-11-09",
   "first_author": "Schneider",
@@ -822,6 +846,14 @@
   "journal": "Physical Review D",
   "title": "Sourcing semiclassical gravity from spontaneously localized quantum matter",
   "year": 2016
+ },
+ "doi:10.1103/physrevd.95.084054": {
+  "fetched": "2026-11-09",
+  "first_author": "Helou",
+  "found": true,
+  "journal": "Physical Review D",
+  "title": "LISA pathfinder appreciably constrains collapse models",
+  "year": 2017
  },
  "doi:10.1103/physrevlett.100.013904": {
   "fetched": "2026-11-04",
@@ -2313,6 +2345,18 @@
   "unclassified": 0,
   "year": 2019
  },
+ "scite:10.1016/j.plrev.2013.08.002": {
+  "citing_publications": 1146,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 236,
+  "retracted": false,
+  "supporting": 7,
+  "total_smart_citations": 245,
+  "unclassified": 2
+ },
  "scite:10.1016/s0022-5193(86)80098-4": {
   "citing_publications": 186,
   "contrasting": 0,
@@ -2420,6 +2464,18 @@
   "total_smart_citations": 227,
   "unclassified": 0,
   "year": 2019
+ },
+ "scite:10.1038/s41467-023-43348-2": {
+  "citing_publications": 77,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 42,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 42,
+  "unclassified": 0
  },
  "scite:10.1038/s41551-024-01233-3": {
   "citing_publications": 70,
@@ -2699,6 +2755,18 @@
   "unclassified": 17,
   "year": 2012
  },
+ "scite:10.1088/1361-6382/abebf2": {
+  "citing_publications": 2,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 0,
+  "retracted": false,
+  "supporting": 1,
+  "total_smart_citations": 1,
+  "unclassified": 0
+ },
  "scite:10.1088/1361-6382/ae6f62": {
   "citing_publications": 1,
   "classification_provenance": "Scite ML citation classification",
@@ -2907,6 +2975,18 @@
   "retracted": false,
   "supporting": 2,
   "total_smart_citations": 218,
+  "unclassified": 0
+ },
+ "scite:10.1103/physrevd.95.084054": {
+  "citing_publications": 86,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 75,
+  "retracted": false,
+  "supporting": 3,
+  "total_smart_citations": 78,
   "unclassified": 0
  },
  "scite:10.1103/physrevlett.100.013904": {

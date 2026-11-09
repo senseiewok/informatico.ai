@@ -33,6 +33,7 @@ TILLOY = "T05-TILLOY2016"
 VDK = "T05-VANDEKAMP2020"
 LEE = "T05-LEE2020"
 TAN = "T05-TAN2020"
+LEE21 = "T05-LEE2021"
 
 PAGE: dict = {
     "slug": SLUG,
@@ -64,15 +65,15 @@ PAGE: dict = {
     ),
     "reading_time_en": "14 min read",
     "reading_time_es": "14 min de lectura",
-    "central_number_en": "For the 2017 proposal's own geometry (10⁻¹⁴ kg, 450 µm apart, each split by 250 µm, held 2.5 s): entanglement phase Δφ = 0.31 rad, concurrence |sin(Δφ/2)| = 0.16 recomputed two ways within 1e-12; full entanglement at 25.0 s; a classical mean-field channel entangles nothing (< 1e-12); the band's edges computed: the classical-channel rate KΔx²/2ħ is this page's dephasing threshold (ratio 1.000 in the small-split limit), and the Diósi–Penrose model predicts entanglement only below 0.8508σ (the 2025 letter: 0.8501σ); on the 2020 Eöt-Wash plates that model's smeared pull removes about a tenth of the 120-fold torque at 52 µm for σ = 75 µm, where the Yukawa at the published edge removes 1.5 %",
-    "central_number_es": "Para la geometría de la propuesta de 2017 (10⁻¹⁴ kg, a 450 µm, cada una dividida 250 µm, sostenidas 2.5 s): fase de entrelazamiento Δφ = 0.31 rad, concurrencia |sin(Δφ/2)| = 0.16 recalculada de dos maneras dentro de 1e-12; entrelazamiento completo a 25.0 s; un canal clásico de campo medio no entrelaza nada (< 1e-12); los bordes de la banda calculados: la tasa del canal clásico KΔx²/2ħ es el umbral de desfase de esta página (razón 1.000 en el límite de división pequeña), y el modelo de Diósi–Penrose predice entrelazamiento solo por debajo de 0.8508σ (la carta de 2025: 0.8501σ); en las placas de Eöt-Wash de 2020 la atracción suavizada de ese modelo quita alrededor de una décima del par de 120 pliegues a 52 µm para σ = 75 µm, donde el Yukawa del borde publicado quita 1.5 %",
+    "central_number_en": "For the 2017 proposal's own geometry (10⁻¹⁴ kg, 450 µm apart, each split by 250 µm, held 2.5 s): entanglement phase Δφ = 0.31 rad, concurrence |sin(Δφ/2)| = 0.16 recomputed two ways within 1e-12; full entanglement at 25.0 s; a classical mean-field channel entangles nothing (< 1e-12); the band's edges computed: the classical-channel rate KΔx²/2ħ is this page's dephasing threshold (ratio 1.000 in the small-split limit), and the Diósi–Penrose model predicts entanglement only below 0.8508σ (the 2025 letter: 0.8501σ); on the 2020 Eöt-Wash wedge pattern that model's smeared pull removes 17 % of the 120-fold torque at 52 µm for σ = 75 µm, where the Yukawa at the published edge removes 2.5 %",
+    "central_number_es": "Para la geometría de la propuesta de 2017 (10⁻¹⁴ kg, a 450 µm, cada una dividida 250 µm, sostenidas 2.5 s): fase de entrelazamiento Δφ = 0.31 rad, concurrencia |sin(Δφ/2)| = 0.16 recalculada de dos maneras dentro de 1e-12; entrelazamiento completo a 25.0 s; un canal clásico de campo medio no entrelaza nada (< 1e-12); los bordes de la banda calculados: la tasa del canal clásico KΔx²/2ħ es el umbral de desfase de esta página (razón 1.000 en el límite de división pequeña), y el modelo de Diósi–Penrose predice entrelazamiento solo por debajo de 0.8508σ (la carta de 2025: 0.8501σ); en el patrón de cuñas de Eöt-Wash de 2020 la atracción suavizada de ese modelo quita 17 % del par de 120 pliegues a 52 µm para σ = 75 µm, donde el Yukawa del borde publicado quita 2.5 %",
     "verifier": "skills/timegravity/t05/verify_t05_entanglement_channels.py",
     "generator": "skills/timegravity/t05/make_t05.py",
     "skill": "skills/timegravity/t05/SKILL.md",
     "skill_filename": "timegravity-t05-entanglement-channels.SKILL.md",
     "open_question_en": "If a classical slope can entangle, what would count as quantum gravity?",
     "open_question_es": "Si una pendiente clásica puede entrelazar, ¿qué contaría como gravedad cuántica?",
-    "ledger_ids": [BOSE, MV, WEST, FUCHS, AGAF, TROY, KTM, PERES, WOOT, AZIZ, TRILLO, SCHN, MV25, DIOSI25, TOBAR, TILLOY, VDK, LEE, TAN],
+    "ledger_ids": [BOSE, MV, WEST, FUCHS, AGAF, TROY, KTM, PERES, WOOT, AZIZ, TRILLO, SCHN, MV25, DIOSI25, TOBAR, TILLOY, VDK, LEE, TAN, LEE21],
     "ai_line_en": (
         "AI contribution to the cited results: none. No AI system contributed to any proposal, measurement, derivation or rebuttal cited on this page. "
         "The page text, instrument and verifier were drafted with AI assistance and checked by the site maintainer against the primary sources listed below."
@@ -300,32 +301,60 @@ PAGE: dict = {
               " El suavizado que permite al modelo entrelazar ablanda su atracción por debajo de unas 2σ, y la misma atracción debe actuar entre los cuerpos de prueba de estos experimentos."),
         ),
         P(
-            C("PROPOSED", [TRILLO, LEE],
-              "The kernel takes the question one step further. Between two patterned plates, each in-plane mode of the mass pattern with wavenumber q pulls "
-              "across a gap s as e^(−qs) under Newton; under the smeared potential it pulls as ½[erfc(qσ − s/2σ) + e^(2qs) erfc(qσ + s/2σ)] of that, a closed "
-              "form the kernel checks against direct quadrature and against its limits. Mapped onto the 2020 Eöt-Wash geometry (platinum plates 54 and 99 µm "
-              "thick, hole patterns 52 mm across with 18- and 120-fold symmetry, separations between facing surfaces from 52 µm to 3.0 mm), and taken at the "
-              "lowest wavenumber the 120-fold pattern allows, where the smearing bites least, the model removes about a tenth of the Newtonian 120-fold torque "
-              "at 52 µm for σ = 75 µm (10.4 %; 2.5 % for σ = 50 µm, 0.2 % for σ = 30 µm, 3.7 % at the smallest σ, 55 µm, that entangles the letter's own "
-              "geometry) and less than a thousandth beyond 300 µm; a Yukawa at the published 95 % edge, α = −1 at λ = 38.6 µm, removes 1.5 % in the same mode "
-              "at the same separation.",
-              "El núcleo lleva la pregunta un paso más allá. Entre dos placas con patrón, cada modo en el plano del patrón de masa con número de onda q atrae "
-              "a través de un hueco s como e^(−qs) según Newton; con el potencial suavizado atrae como ½[erfc(qσ − s/2σ) + e^(2qs) erfc(qσ + s/2σ)] de eso, "
-              "una forma cerrada que el núcleo comprueba contra cuadratura directa y contra sus límites. Llevado a la geometría de Eöt-Wash de 2020 (placas de "
-              "platino de 54 y 99 µm de espesor, patrones de agujeros de 52 mm de ancho con simetría de 18 y 120 pliegues, separaciones entre caras enfrentadas "
-              "de 52 µm a 3.0 mm), y tomado al número de onda más bajo que permite el patrón de 120 pliegues, donde el suavizado muerde menos, el modelo quita "
-              "alrededor de una décima del par newtoniano de 120 pliegues a 52 µm para σ = 75 µm (10.4 %; 2.5 % para σ = 50 µm, 0.2 % para σ = 30 µm, 3.7 % "
-              "a la σ más pequeña, 55 µm, que entrelaza la geometría propia de la carta) y menos de una milésima más allá de 300 µm; un Yukawa en el borde "
-              "publicado al 95 %, α = −1 con λ = 38.6 µm, quita 1.5 % en el mismo modo a la misma separación."),
-            T(" That sets two predicted signal sizes side by side in one mode; it is not a bound on σ, because the experiment's fit, with its floating offset, "
-              "roughness correction and calibrated scale, is not recomputed here. In this one-mode estimate a smearing of 44 µm would remove as much as the edge "
-              "Yukawa does at the closest separation, and the Yukawa shape closest to the σ = 75 µm curve has a range near 49 µm and about three times gravity's "
-              "strength, a curve match with no data behind it. One model's predictions at a measured geometry: the label is PROPOSED.",
-              " Eso pone lado a lado dos tamaños de señal predichos en un modo; no es una cota sobre σ, porque el ajuste del experimento, con su desplazamiento "
-              "libre, su corrección de rugosidad y su escala calibrada, no se recalcula aquí. En esta estimación de un modo un suavizado de 44 µm quitaría tanto "
-              "como el Yukawa del borde a la separación más cercana, y la forma de Yukawa más parecida a la curva de σ = 75 µm tiene un alcance cerca de 49 µm "
-              "y unas tres veces la intensidad de la gravedad, un ajuste de curva sin datos detrás. Predicciones de un modelo en una geometría medida: la "
-              "etiqueta es PROPUESTO."),
+            C("PROPOSED", [TRILLO, LEE, LEE21],
+              "The kernel can redo the comparison with the experiment's own method. Between two patterned plates each in-plane mode of the mass "
+              "pattern with wavenumber q contributes to the pull across a gap s in proportion to e^(−qs) under Newton, and to ½[erfc(qσ − s/2σ) + "
+              "e^(2qs) erfc(qσ + s/2σ)] of that under the smeared potential, a closed form checked against direct quadrature; the 2020 test bodies are two concentric sets of glue-filled "
+              "wedges cut from platinum foils, 120 wedges between 13.00 and 23.00 mm and 18 between 23.51 and 26.00 mm at 50 % duty, 54 and 99 µm thick, "
+              "measured to the micrometre in the 2020 dissertation, and the Fourier–Bessel expansion the collaboration published in 2021 turns the torque at "
+              "each harmonic into one integral over wavenumber. The kernel rebuilds that integral with its own Bessel functions, checked against their "
+              "integral representation, and gets the Newtonian 120-fold torque at 1.5 fN·m at 72 µm, where the letter's magnetic subtraction of 0.0165 fN·m, "
+              "'roughly 1 %' of the signal, implies by arithmetic about 1.6. On the same integral the smeared potential removes 17 % of the 120-fold torque at 52 µm for "
+              "σ = 75 µm (4.3 % at 50 µm, 0.3 % at 30 µm, 6.3 % at 55 µm, the smallest σ at which that model entangles the letter's own geometry), 13 % at 72 µm, 3.8 % at "
+              "150 µm and 0.1 % at 300 µm, while a Yukawa at the published 95 % edge, α = −1 at λ = 38.6 µm, removes 2.5 % at 52 µm.",
+              "El núcleo puede rehacer la comparación con el método propio del experimento. Entre dos placas con patrón, cada modo en el plano del patrón "
+              "de masa con número de onda q contribuye a la atracción a través de un hueco s en proporción a e^(−qs) según Newton, y a ½[erfc(qσ − s/2σ) + "
+              "e^(2qs) erfc(qσ + s/2σ)] de eso con el potencial suavizado, una forma cerrada comprobada contra cuadratura directa; los cuerpos de prueba de 2020 son dos conjuntos "
+              "concéntricos de cuñas rellenas de pegamento cortadas en láminas de platino, 120 cuñas entre 13.00 y 23.00 mm y 18 entre 23.51 y 26.00 mm con "
+              "50 % de relleno, de 54 y 99 µm de espesor, medidas al micrómetro en la tesis doctoral de 2020, y la expansión de Fourier–Bessel que la "
+              "colaboración publicó en 2021 convierte el par de cada armónico en una sola integral sobre el número de onda. El núcleo reconstruye esa "
+              "integral con sus propias funciones de Bessel, comprobadas contra su representación integral, y obtiene el par newtoniano de 120 pliegues en "
+              "1.5 fN·m a 72 µm, donde la resta magnética de la carta, 0.0165 fN·m, 'alrededor del 1 %' de la señal, implica por aritmética unos 1.6. Sobre la misma integral "
+              "el potencial suavizado quita 17 % del par de 120 pliegues a 52 µm para σ = 75 µm (4.3 % a 50 µm, 0.3 % a 30 µm, 6.3 % a 55 µm, la σ más "
+              "pequeña a la que ese modelo entrelaza la geometría propia de la carta), 13 % a 72 µm, 3.8 % a 150 µm y 0.1 % a 300 µm, mientras que un Yukawa en el borde "
+              "publicado al 95 %, α = −1 con λ = 38.6 µm, quita 2.5 % a 52 µm."),
+            T(" That sets two predicted signal sizes side by side; it is not a bound on σ, because the experiment's fit, with its floating offset, roughness "
+              "correction and calibrated scale, is not recomputed here. A smearing of 44 µm in that model would remove as much torque as the Yukawa at the published edge does at the closest "
+              "separation, close to the 44.4 µm a one-mode lower bound at the pattern's lowest wavenumber had given, and the Yukawa shape closest to the "
+              "σ = 75 µm curve has a range near 49 µm and about three times gravity's strength, a curve match with no data behind it.",
+              " Eso pone lado a lado dos tamaños de señal predichos; no es una cota sobre σ, porque el ajuste del experimento, con su desplazamiento libre, "
+              "su corrección de rugosidad y su escala calibrada, no se recalcula aquí. Un suavizado de 44 µm en ese modelo quitaría tanto par como el Yukawa del borde publicado a la "
+              "separación más cercana, cerca de los 44.4 µm que había dado una cota inferior de un modo al número de onda más bajo del patrón, y la forma de "
+              "Yukawa más parecida a la curva de σ = 75 µm tiene un alcance cerca de 49 µm y unas tres veces la intensidad de la gravedad, un ajuste de "
+              "curva sin datos detrás."),
+            C("PROPOSED", [TRILLO, LEE, VDK],
+              "Taken as a hypothesis, not as a bound, a smearing no larger than that 44 µm would leave the model predicting entanglement only for "
+              "masses whose nearest separation is below 37 µm in the small-split limit and below 15 µm for the letter's 23 µm split, and not for the "
+              "letter's own geometry 24 µm apart; the criterion does not depend on the mass, the time does, as 1/m², and at 10⁻¹⁵ kg the negativity would "
+              "peak between about 0.02 and 0.05 after an hour to a few weeks depending on the split. One model's predictions at a measured geometry: the label is "
+              "PROPOSED.",
+              "Tomado como hipótesis, no como cota, un suavizado no mayor que esos 44 µm dejaría al modelo prediciendo entrelazamiento solo para "
+              "masas cuya separación más cercana quede por debajo de 37 µm en el límite de división pequeña y por debajo de 15 µm para la división de "
+              "23 µm de la carta, y no para la geometría propia de la carta a 24 µm; el criterio no depende de la masa, el tiempo sí, como 1/m², y a "
+              "10⁻¹⁵ kg la negatividad alcanzaría su máximo entre unos 0.02 y 0.05 tras una hora a unas semanas según la división. Predicciones de "
+              "un modelo en una geometría medida: la etiqueta es PROPUESTO."),
+            T(" The proposal the letter took its geometry from screens the Casimir force with a conducting plate 1 µm wide and demands that the Casimir pull of "
+              "each mass toward the plate stay below a tenth of the magnetic pull that closes the interferometer; on that condition, with its own "
+              "numbers, the inner states must keep 8 µm from the plate at 10⁻¹⁵ kg, so the nearest separation cannot fall below 17 µm (27 µm at "
+              "10⁻¹⁴ kg; the proposal's own 24 µm clears the floor). Under that floor the window for the letter's 23 µm split, 15 µm, is closed; "
+              "for splits of 10 µm and less it stays open, between 17 and 37 µm, with a negativity peaking at 0.01 to 0.02 after three hours to "
+              "three weeks at 10⁻¹⁵ kg.",
+              " La propuesta de la que la carta tomó su geometría apantalla la fuerza de Casimir con una placa conductora de 1 µm de ancho y exige que la "
+              "atracción de Casimir de cada masa hacia la placa quede por debajo de una décima de la atracción magnética que cierra el "
+              "interferómetro; con esa condición, y sus propios números, los estados interiores deben quedar a 8 µm de la placa a 10⁻¹⁵ kg, así "
+              "que la separación más cercana no puede bajar de 17 µm (27 µm a 10⁻¹⁴ kg; los 24 µm propios de la propuesta libran el piso). Bajo ese "
+              "piso la ventana para la división de 23 µm de la carta, 15 µm, está cerrada; para divisiones de 10 µm o menos sigue abierta, entre "
+              "17 y 37 µm, con una negatividad que alcanza 0.01 a 0.02 tras tres horas a tres semanas a 10⁻¹⁵ kg."),
             C("OPEN", [TRILLO, LEE, TAN],
               "Whether the published analysis, run on its own data, would reject the smeared shape is for the experiment to say, and the second group's bound "
               "at 48 µm is stated as published because its geometry is not in the open text; the letter calls the entangling range of σ 'previously untested' "
