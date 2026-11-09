@@ -482,6 +482,156 @@
       "kind": "preprint",
       "review_by": "2027-11-09",
       "note": "Seeing Page curves and islands with blinders on: argues islands only redistribute information when a detector has a blind spot; preprint, PROPOSED at most."
+    },
+    {
+      "id": "T05-BOSE2017",
+      "label": "PROPOSED",
+      "doi": "10.1103/PhysRevLett.119.240401",
+      "year": 2017,
+      "collaboration": "Bose, Mazumdar, Morley, Ulbricht, Toros, Paternostro, Geraci, Barker, Kim & Milburn (PRL)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Spin entanglement witness for quantum gravity: two micron-size masses in adjacent interferometers; illustrative geometry 1e-14 kg, 450 um apart, split by 250 um, 2.5 s; witness W > 1 certifies entanglement. A proposal, not performed."
+    },
+    {
+      "id": "T05-MARLETTO2017",
+      "label": "PROPOSED",
+      "doi": "10.1103/PhysRevLett.119.240402",
+      "year": 2017,
+      "collaboration": "Marletto & Vedral (PRL)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Gravitationally induced entanglement between two masses is argued to be sufficient evidence of quantum effects in gravity, via a general information-theoretic argument about mediators. A proposal."
+    },
+    {
+      "id": "T05-WESTPHAL2021",
+      "label": "MEASURED",
+      "doi": "10.1038/s41586-021-03250-7",
+      "year": 2021,
+      "collaboration": "Westphal, Hepach, Pfaff & Aspelmeyer (Vienna)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Gravitational coupling between two gold spheres of about 1 mm radius and 90 mg, torsion pendulum, 12.7 mHz, 350 h; closest surface distance 400 um. Newtonian gravity measured from a source below 100 mg."
+    },
+    {
+      "id": "T05-FUCHS2024",
+      "label": "MEASURED",
+      "doi": "10.1126/sciadv.adk2949",
+      "year": 2024,
+      "collaboration": "Fuchs, Uitenbroek, Plugge, van Halteren, van Soest, Vinante, Ulbricht & Oosterkamp (Leiden)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Levitated 0.4 mg magnetic particle at 26.7 Hz, Q above 1e7, force noise 0.5 fN/sqrt(Hz), senses kilogram source masses about half a metre away. Gravity sensed by a sub-milligram test mass."
+    },
+    {
+      "id": "T05-AGAFONOVA2026",
+      "label": "SINGLE RESULT",
+      "doi": "10.1038/s42005-026-02514-w",
+      "year": 2026,
+      "collaboration": "Agafonova, Rossello, Mekonnen & Hosten (ISTA)",
+      "kind": "peer-reviewed",
+      "review_by": "2027-11-09",
+      "note": "One-milligram torsional pendulum at 18 Hz laser-cooled from room temperature to 240 microkelvin; a platform, not a gravity or entanglement measurement. Young row."
+    },
+    {
+      "id": "T05-TROYER2026",
+      "label": "SINGLE RESULT",
+      "doi": "10.1038/s41567-026-03219-1",
+      "year": 2026,
+      "collaboration": "Troyer, Fechtel, Hummer, Rudolph, Stickler, Delic & Arndt (Vienna)",
+      "kind": "peer-reviewed",
+      "review_by": "2027-11-09",
+      "note": "Two librational modes of a levitated silica nanorotor cooled to occupation numbers 0.21 +/- 0.03 and 0.54 +/- 0.32 singly, 1.02 +/- 0.08 and 0.73 +/- 0.22 together. Young row."
+    },
+    {
+      "id": "T05-KTM2014",
+      "label": "PROPOSED",
+      "doi": "10.1088/1367-2630/16/6/065020",
+      "year": 2014,
+      "collaboration": "Kafri, Taylor & Milburn (NJP)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "A classical channel model for gravitational decoherence: gravity as measurement and feedback (LOCC) reproduces the Newtonian force but entangles nothing and adds a minimum decoherence. The LOCC channel of this page."
+    },
+    {
+      "id": "T05-PERES1996",
+      "label": "DERIVED",
+      "doi": "10.1103/PhysRevLett.77.1413",
+      "year": 1996,
+      "collaboration": "Peres (PRL)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Separability criterion: a separable density matrix has a positive partial transpose; for two qubits the criterion is necessary and sufficient. The negativity readout of this page."
+    },
+    {
+      "id": "T05-WOOTTERS1998",
+      "label": "DERIVED",
+      "doi": "10.1103/PhysRevLett.80.2245",
+      "year": 1998,
+      "collaboration": "Wootters (PRL)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Concurrence of an arbitrary two-qubit state; for a pure state C = 2|ad - bc|, which for the four-branch gravitational state is |sin(delta phi / 2)|."
+    },
+    {
+      "id": "T05-AZIZ2025",
+      "label": "PROPOSED",
+      "doi": "10.1038/s41586-025-09595-7",
+      "year": 2025,
+      "collaboration": "Aziz & Howl (Nature)",
+      "kind": "peer-reviewed",
+      "review_by": "2027-11-09",
+      "note": "Argues that the classical gravitational interaction can transmit quantum information and generate entanglement through physically local processes when matter is treated by quantum field theory. Disputed; young row."
+    },
+    {
+      "id": "T05-TRILLO2025",
+      "label": "PROPOSED",
+      "doi": "10.1103/PhysRevD.111.L121101",
+      "year": 2025,
+      "collaboration": "Trillo & Navascues (PRD)",
+      "kind": "peer-reviewed",
+      "review_by": "2027-11-09",
+      "note": "Diosi-Penrose dynamics with classical gravity can entangle the mechanical degrees of freedom of two separate particles; 'GIE detection is not enough to validate quantum gravity'. Young row."
+    },
+    {
+      "id": "T05-SCHNEIDER2026",
+      "label": "PROPOSED",
+      "doi": "10.1088/1361-6382/ae6f62",
+      "year": 2026,
+      "collaboration": "Schneider, Huggett & Linnemann (CQG)",
+      "kind": "peer-reviewed",
+      "review_by": "2027-11-09",
+      "note": "A demonstration that classical gravity does not produce entanglement: if gravity is classical and a mediator and entanglement is observed, something other than gravity supplied it. Young row."
+    },
+    {
+      "id": "T05-MARLETTO2025",
+      "label": "PROPOSED",
+      "doi": "10.48550/arXiv.2510.19969",
+      "year": 2025,
+      "collaboration": "Marletto & Vedral (arXiv)",
+      "kind": "preprint",
+      "review_by": "2027-11-09",
+      "note": "Two-page rebuttal: classical gravity cannot mediate entanglement by local means; quantum features are necessary in the field if it entangles by local propagation. Preprint, PROPOSED at most."
+    },
+    {
+      "id": "T05-DIOSI2025",
+      "label": "PROPOSED",
+      "doi": "10.48550/arXiv.2511.00852",
+      "year": 2025,
+      "collaboration": "Diosi (arXiv)",
+      "kind": "preprint",
+      "review_by": "2027-11-09",
+      "note": "Non-perturbative Heisenberg-picture derivation said to preclude the entanglement claimed by Aziz and Howl. Preprint, PROPOSED at most."
+    },
+    {
+      "id": "T05-TOBAR2026",
+      "label": "PROPOSED",
+      "doi": "10.48550/arXiv.2611.08313",
+      "year": 2026,
+      "collaboration": "Tobar, Aspelmeyer & Zych (arXiv)",
+      "kind": "preprint",
+      "review_by": "2027-11-09",
+      "note": "Proposal to test whether gravity can entangle a levitated particle with an array of quantum clocks; the quantised active gravitational mass has not been tested in any prior experiment. Preprint."
     }
   ]
 }

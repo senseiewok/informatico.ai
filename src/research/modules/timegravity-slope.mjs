@@ -828,6 +828,189 @@ function initPage(root) {
   render();
 }
 
+// ------------------------------------------------------------------------------------------------ T.05
+/** Four Newtonian branch phases φ_ij = G m² t / (ħ d_ij); mirrors timegravity_kernel_entangle.branch_phases. */
+export function bmvPhases(m, d, dx, t, channel = "quantum", planted = false, G = G_NEWTON_SI) {
+  const sep = { LL: d, LR: d + dx, RL: d - dx, RR: d };
+  const q = {};
+  for (const k of Object.keys(sep)) q[k] = (G * m * m * t) / (HBAR * sep[k]);
+  if (channel === "quantum" || (channel === "locc" && planted)) return q;
+  if (channel === "locc") {
+    const alpha = { L: 0.5 * (q.LL + q.LR), R: 0.5 * (q.RL + q.RR) };
+    const beta = { L: 0.5 * (q.LL + q.RL), R: 0.5 * (q.LR + q.RR) };
+    const out = {};
+    for (const i of "LR") for (const j of "LR") out[i + j] = 0.5 * (alpha[i] + beta[j]);
+    return out;
+  }
+  return null; // disputed: no single prediction
+}
+export function bmvEntanglementPhase(p) { return p.LR + p.RL - p.LL - p.RR; }
+export function bmvConcurrence(dphi) { return Math.abs(Math.sin(0.5 * dphi)); }
+/** Jacobi eigenvalues of a real symmetric matrix (small n). */
+export function jacobiEigenvalues(a, tol = 1e-12, maxSweeps = 60) {
+  const n = a.length;
+  const m = a.map((row) => row.slice());
+  for (let sweep = 0; sweep < maxSweeps; sweep++) {
+    let off = 0;
+    for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) off += m[i][j] * m[i][j];
+    if (off < tol * tol) break;
+    for (let p = 0; p < n; p++) for (let q = p + 1; q < n; q++) {
+      if (Math.abs(m[p][q]) < 1e-300) continue;
+      const theta = (m[q][q] - m[p][p]) / (2 * m[p][q]);
+      const tt = Math.sign(theta || 1) / (Math.abs(theta) + Math.sqrt(theta * theta + 1));
+      const c = 1 / Math.sqrt(tt * tt + 1), s = tt * c;
+      for (let k = 0; k < n; k++) {
+        const akp = m[k][p], akq = m[k][q];
+        m[k][p] = c * akp - s * akq; m[k][q] = s * akp + c * akq;
+      }
+      for (let k = 0; k < n; k++) {
+        const apk = m[p][k], aqk = m[q][k];
+        m[p][k] = c * apk - s * aqk; m[q][k] = s * apk + c * aqk;
+      }
+    }
+  }
+  return m.map((row, i) => row[i]);
+}
+/** Peres negativity of the dephased four-branch state: partial transpose, Hermitian 4×4 → real symmetric 8×8. */
+export function bmvNegativity(p, gammaT) {
+  const B = ["LL", "LR", "RL", "RR"];
+  const eta = Math.exp(-gammaT);
+  const re = [], im = [];
+  for (let r = 0; r < 4; r++) { re.push([0, 0, 0, 0]); im.push([0, 0, 0, 0]); }
+  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) {
+    const br = B[r], bc = B[c];
+    const damp = 0.25 * (br[0] !== bc[0] ? eta : 1) * (br[1] !== bc[1] ? eta : 1);
+    const ph = p[br] - p[bc];
+    re[r][c] = damp * Math.cos(ph); im[r][c] = damp * Math.sin(ph);
+  }
+  // partial transpose on B: (i,j),(k,l) <- (i,l),(k,j)
+  const ptRe = [], ptIm = [];
+  for (let r = 0; r < 4; r++) { ptRe.push([0, 0, 0, 0]); ptIm.push([0, 0, 0, 0]); }
+  for (let i = 0; i < 2; i++) for (let j = 0; j < 2; j++) for (let k = 0; k < 2; k++) for (let l = 0; l < 2; l++) {
+    ptRe[2 * i + j][2 * k + l] = re[2 * i + l][2 * k + j];
+    ptIm[2 * i + j][2 * k + l] = im[2 * i + l][2 * k + j];
+  }
+  const big = [];
+  for (let r = 0; r < 8; r++) big.push(new Array(8).fill(0));
+  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) {
+    big[r][c] = ptRe[r][c]; big[r + 4][c + 4] = ptRe[r][c]; big[r][c + 4] = -ptIm[r][c]; big[r + 4][c] = ptIm[r][c];
+  }
+  const vals = jacobiEigenvalues(big).sort((x, y) => x - y);
+  let neg = 0;
+  for (let k = 0; k < 4; k++) { const v = 0.5 * (vals[2 * k] + vals[2 * k + 1]); if (v < 0) neg -= v; }
+  return neg;
+}
+
+function initBmv(root) {
+  const svg = root.querySelector("svg.tg-stage");
+  const lm = root.querySelector("[data-tg-logm]"), dIn = root.querySelector("[data-tg-d]"), dxIn = root.querySelector("[data-tg-dx]");
+  const tIn = root.querySelector("[data-tg-t]"), lgIn = root.querySelector("[data-tg-logg]");
+  const chanBtns = Array.from(root.querySelectorAll("[data-tg-channel]")), flipBtn = root.querySelector("[data-tg-flip]");
+  const status = root.querySelector("[data-tg-status]");
+  const qPath = root.querySelector(".tg-bmv-q"), lLine = root.querySelector(".tg-bmv-l"), band = root.querySelector(".tg-bmv-band"), marker = root.querySelector(".tg-bmv-marker");
+  const reads = readouts(root);
+  if (!svg || !lm || !dIn || !dxIn || !tIn || !lgIn) return;
+  const g = (k) => Number(svg.getAttribute("data-" + k));
+  const lx0 = g("lx0"), lx1 = g("lx1"), ya = g("ya"), yb = g("yb"), px0 = g("px0"), px1 = g("px1"), py0 = g("py0"), py1 = g("py1"), tmax = g("tmax");
+  const toX = (tt) => px0 + (px1 - px0) * tt / tmax, toY = (e) => py1 - (py1 - py0) * Math.max(0, Math.min(1, e));
+  const state = { channel: "quantum", flip: false };
+  const S0 = {
+    en: { quantum: "Quantum mediator: the four phases as written. Weak is not zero; the curve grows with the hold time and reaches 1 at Δφ = π.",
+          locc: "Classical LOCC: each mass feels only the mean field of the other. The force is there, the phases take a product form, and the entanglement is exactly zero.",
+          disputed: "Disputed classical non-LOCC: the 2025 literature gives two answers, zero and the quantum value. The band is the interval; this page picks neither edge.",
+          flip: "Planted defect: a classical LOCC channel carrying the quantum phases. Local operations and classical communication cannot create entanglement; the verifier rejects this channel.",
+          entangled: "entangled", separable: "separable (product state)", unsettled: "not settled: between 0 and the quantum value", defect: "entangled by a classical LOCC channel: rejected" },
+    es: { quantum: "Mediador cuántico: las cuatro fases tal cual. Débil no es cero; la curva crece con el tiempo de espera y llega a 1 en Δφ = π.",
+          locc: "Clásico LOCC: cada masa siente solo el campo medio de la otra. La fuerza está, las fases toman forma de producto, y el entrelazamiento es exactamente cero.",
+          disputed: "Clásico no-LOCC en disputa: la literatura de 2025 da dos respuestas, cero y el valor cuántico. La banda es el intervalo; esta página no elige ningún borde.",
+          flip: "Defecto plantado: un canal clásico LOCC que lleva las fases cuánticas. Operaciones locales y comunicación clásica no pueden crear entrelazamiento; el verificador rechaza este canal.",
+          entangled: "entrelazado", separable: "separable (estado producto)", unsettled: "sin zanjar: entre 0 y el valor cuántico", defect: "entrelazado por un canal clásico LOCC: rechazado" },
+  };
+  function render() {
+    const L = S0[lang()];
+    const m = 10 ** Number(lm.value), dUm = Number(dIn.value);
+    let dxUm = Number(dxIn.value);
+    if (dxUm > dUm - 10) { dxUm = dUm - 10; dxIn.value = String(dxUm); }
+    const d = dUm * 1e-6, dx = dxUm * 1e-6, t = Number(tIn.value), gamma = 10 ** Number(lgIn.value);
+    // Left: positions.
+    const span = d + dx, sx = (pos) => lx0 + (lx1 - lx0) * (pos + dx / 2) / span;
+    const ax = { L: sx(-dx / 2), R: sx(dx / 2) }, bx = { L: sx(d - dx / 2), R: sx(d + dx / 2) };
+    const sep = { LL: dUm, LR: dUm + dxUm, RL: dUm - dxUm, RR: dUm };
+    root.querySelectorAll("[data-tg-mass]").forEach((el) => {
+      const k = el.getAttribute("data-tg-mass");
+      el.setAttribute("cx", (k[0] === "A" ? ax[k[1]] : bx[k[1]]).toFixed(1));
+    });
+    root.querySelectorAll("[data-tg-branch]").forEach((el) => {
+      const k = el.getAttribute("data-tg-branch");
+      el.setAttribute("x1", ax[k[0]].toFixed(1)); el.setAttribute("x2", bx[k[1]].toFixed(1));
+    });
+    root.querySelectorAll("[data-tg-sep]").forEach((el) => {
+      const k = el.getAttribute("data-tg-sep");
+      el.setAttribute("x", ((ax[k[0]] + bx[k[1]]) / 2 + (k === "LR" ? 18 : k === "RL" ? -18 : 0)).toFixed(1));
+      el.textContent = `${k} · ${sep[k].toFixed(0)} µm`;
+    });
+    // Right: curves.
+    const pts = [], poly = [];
+    for (let i = 0; i <= 120; i++) {
+      const tt = tmax * i / 120;
+      const e = bmvConcurrence(bmvEntanglementPhase(bmvPhases(m, d, dx, tt, "quantum")));
+      pts.push(`${i ? "L" : "M"} ${toX(tt).toFixed(1)} ${toY(e).toFixed(1)}`);
+      poly.push(`${toX(tt).toFixed(1)},${toY(e).toFixed(1)}`);
+    }
+    if (qPath) qPath.setAttribute("d", pts.join(" "));
+    if (band) band.setAttribute("points", poly.join(" ") + ` ${px1},${py1} ${px0},${py1}`);
+    if (lLine) {
+      if (state.flip) lLine.setAttribute("d", pts.join(" "));
+      lLine.setAttribute("stroke-dasharray", state.flip ? "2 3" : "7 5");
+      lLine.setAttribute("y1", state.flip ? String(toY(bmvConcurrence(bmvEntanglementPhase(bmvPhases(m, d, dx, 0, "quantum"))))) : String(py1 - 1.5));
+      lLine.setAttribute("y2", state.flip ? String(toY(bmvConcurrence(bmvEntanglementPhase(bmvPhases(m, d, dx, tmax, "quantum"))))) : String(py1 - 1.5));
+    }
+    // Readouts for the followed channel.
+    const pq = bmvPhases(m, d, dx, t, "quantum");
+    const dphiQ = bmvEntanglementPhase(pq);
+    const rate = Math.abs(bmvEntanglementPhase(bmvPhases(m, d, dx, 1, "quantum")));
+    const tfull = rate > 0 ? Math.PI / rate : Infinity;
+    let dphi = dphiQ, ent = 2 * bmvNegativity(pq, gamma * t), verdict = L.entangled, markY = toY(ent);
+    if (state.channel === "locc") {
+      const pl = bmvPhases(m, d, dx, t, "locc", state.flip);
+      dphi = bmvEntanglementPhase(pl); ent = 2 * bmvNegativity(pl, gamma * t);
+      verdict = state.flip ? L.defect : L.separable; markY = toY(ent);
+    } else if (state.channel === "disputed") {
+      verdict = L.unsettled; markY = toY(0.5 * ent);
+    }
+    if (ent < 1e-9) ent = 0;
+    if (state.channel === "quantum" && ent === 0) verdict = L.separable;
+    if (marker) { marker.setAttribute("cx", toX(t).toFixed(1)); marker.setAttribute("cy", markY.toFixed(1)); }
+    if (reads.logm) reads.logm.textContent = fmt(Number(lm.value), 1);
+    if (reads.d) reads.d.textContent = dUm.toFixed(0);
+    if (reads.dx) reads.dx.textContent = dxUm.toFixed(0);
+    if (reads.t) reads.t.textContent = fmt(t, 1);
+    if (reads.logg) reads.logg.textContent = fmt(Number(lgIn.value), 1);
+    if (reads.dphi) reads.dphi.textContent = state.channel === "disputed" ? `0 … ${dphiQ.toFixed(3)} rad` : `${dphi.toFixed(3)} rad`;
+    if (reads.ent) reads.ent.textContent = state.channel === "disputed" ? `0 … ${(2 * bmvNegativity(pq, gamma * t)).toFixed(3)}` : ent.toFixed(3);
+    if (reads.tfull) reads.tfull.textContent = Number.isFinite(tfull) ? `${tfull.toFixed(1)} s` : "∞";
+    if (reads.verdict) reads.verdict.textContent = verdict;
+    const st = state.flip && state.channel === "locc" ? "flip" : state.channel;
+    if (status) { status.setAttribute("data-state", st); status.textContent = st === "flip" ? L.flip : L[state.channel]; }
+    const errBox = root.querySelector('[data-tg-readout-box="err"]');
+    if (errBox) errBox.setAttribute("data-alert", st === "flip" ? "true" : "false");
+  }
+  [lm, dIn, dxIn, tIn, lgIn].forEach((el) => el.addEventListener("input", render));
+  chanBtns.forEach((btn) => btn.addEventListener("click", () => {
+    state.channel = btn.getAttribute("data-tg-channel");
+    chanBtns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+    render();
+  }));
+  if (flipBtn) flipBtn.addEventListener("click", () => {
+    state.flip = !state.flip; flipBtn.setAttribute("aria-pressed", String(state.flip));
+    if (state.flip) { state.channel = "locc"; chanBtns.forEach((b) => b.setAttribute("aria-pressed", String(b.getAttribute("data-tg-channel") === "locc"))); }
+    render();
+  });
+  window.addEventListener("tp-lang-change", render);
+  root.setAttribute("data-tg-ready", "true");
+  render();
+}
+
 export function initTimeGravity(scope = document) {
   const once = (sel, fn) => scope.querySelectorAll(sel).forEach((el) => { if (!el.hasAttribute("data-tg-ready")) fn(el); });
   once("[data-tg-predict]", initPredict);
@@ -838,6 +1021,7 @@ export function initTimeGravity(scope = document) {
   once('[data-tg-instrument="pw"]', initPw);
   once('[data-tg-instrument="zych"]', initZych);
   once('[data-tg-instrument="dp"]', initDp);
+  once('[data-tg-instrument="bmv"]', initBmv);
   once('[data-tg-instrument="page"]', initPage);
 }
 

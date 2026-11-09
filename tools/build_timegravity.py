@@ -36,6 +36,10 @@ from timegravity_kernel import (  # noqa: E402
 )
 
 from timegravity_kernel_quantum import OMEGA_SR, pw_history_state, zych_first_zero, zych_visibility  # noqa: E402
+from timegravity_kernel_entangle import (  # noqa: E402
+    BMV_D_M, BMV_DX_M, BMV_M_KG, BMV_T_S, branch_phases, concurrence_closed, entanglement_phase, four_branch_state, negativity,
+    time_to_full_entanglement,
+)
 from timegravity_kernel_bounds import (  # noqa: E402
     GS_R0_BOUND_M, GS_R0_PARAMFREE_M, XENONNT_R0_90, dp_collapse_time, gran_sasso_signal_counts, page_average_entropy, page_curve_toy,
 )
@@ -154,6 +158,12 @@ PLATE_CAPTIONS = {
         "Una cuadrícula de mosaicos para un estado global estacionario, una fila por lectura del reloj, y la curva coseno cuadrado que trazan las probabilidades condicionales; nada en la cuadrícula se mueve.",
         "a grid of shaded tiles beside a smooth cosine-squared curve with dots on it",
         "una cuadrícula de mosaicos sombreados junto a una curva suave de coseno cuadrado con puntos encima",
+    ),
+    "T.05": (
+        "Two masses each in two places, the four branch lines between them, and entanglement against hold time for three channels at one stroke weight: the quantum curve, the classical LOCC flat line and the disputed band between them.",
+        "Dos masas cada una en dos lugares, las cuatro líneas de rama entre ellas, y el entrelazamiento frente al tiempo de espera para tres canales con un mismo grosor: la curva cuántica, la recta plana del canal clásico LOCC y la banda en disputa entre ambas.",
+        "two pairs of dots joined by four lines on the left, and on the right a rising curve above a dashed flat line with a hatched band between them and one dot on the curve",
+        "dos pares de puntos unidos por cuatro líneas a la izquierda, y a la derecha una curva ascendente sobre una recta punteada plana con una banda rayada entre ambas y un punto sobre la curva",
     ),
     "T.06": (
         "A collapse-time curve falling steeply with mass beside an exclusion bar for R0, with the two bounds and the parameter-free value on the excluded side.",
@@ -785,6 +795,133 @@ def dp_instrument(page: dict) -> str:
     </section>"""
 
 
+def bmv_instrument(page: dict) -> str:
+    ins = page["instrument"]
+    import math
+    log_m0, d0_um, dx0_um, t0, log_g0 = -14.0, 450.0, 250.0, 2.5, -4.0
+    T_MAX = 30.0
+    # Left panel: positions along x (A at ∓Δx/2, B at d ∓ Δx/2), two rows.
+    lx0, lx1, ya, yb = 70, 400, 120, 320
+    span = (d0_um + dx0_um) * 1e-6
+    sx = lambda pos: lx0 + (lx1 - lx0) * (pos + dx0_um * 1e-6 / 2) / span  # noqa: E731
+    ax = (sx(-dx0_um * 1e-6 / 2), sx(dx0_um * 1e-6 / 2))
+    bx = (sx(d0_um * 1e-6 - dx0_um * 1e-6 / 2), sx(d0_um * 1e-6 + dx0_um * 1e-6 / 2))
+    # Right panel: entanglement 0..1 against hold time 0..T_MAX.
+    px0, px1, py0, py1 = 500, 880, 60, 340
+    to_x = lambda tt: px0 + (px1 - px0) * tt / T_MAX  # noqa: E731
+    to_y = lambda e: py1 - (py1 - py0) * e  # noqa: E731
+    q_pts, band = [], []
+    for i in range(121):
+        tt = T_MAX * i / 120
+        e = concurrence_closed(entanglement_phase(branch_phases(BMV_M_KG, BMV_D_M, BMV_DX_M, tt, "quantum")))
+        q_pts.append(f'{"M" if i == 0 else "L"} {to_x(tt):.1f} {to_y(e):.1f}')
+        band.append(f"{to_x(tt):.1f},{to_y(e):.1f}")
+    band_poly = " ".join(band) + f" {px1},{py1} {px0},{py1}"
+    q0 = branch_phases(BMV_M_KG, BMV_D_M, BMV_DX_M, t0, "quantum")
+    dphi0 = entanglement_phase(q0)
+    c0 = concurrence_closed(dphi0)
+    n0 = negativity(four_branch_state(q0, 10.0 ** log_g0 * t0))
+    tfull0 = time_to_full_entanglement(BMV_M_KG, BMV_D_M, BMV_DX_M)
+    seps = {"LL": d0_um, "LR": d0_um + dx0_um, "RL": d0_um - dx0_um, "RR": d0_um}
+    lines_svg = []
+    for i, (ia, xa) in enumerate(zip("LR", ax)):
+        for j, (jb, xb_) in enumerate(zip("LR", bx)):
+            key = ia + jb
+            lines_svg.append(
+                f'          <line class="tg-bmv-branch" data-tg-branch="{key}" x1="{xa:.1f}" y1="{ya}" x2="{xb_:.1f}" y2="{yb}" '
+                f'stroke="{"var(--tp-stone)" if i == j else "var(--tp-prussian)"}" stroke-width="2"/>'
+            )
+            lines_svg.append(
+                f'          <text class="tg-bmv-sep" data-tg-sep="{key}" x="{(xa + xb_) / 2 + (18 if key == "LR" else -18 if key == "RL" else 0):.1f}" '
+                f'y="{(ya + yb) / 2 + (-6 if key in ("LL",) else 14 if key == "RR" else 4)}" text-anchor="middle" font-size="10">{key} · {seps[key]:.0f} µm</text>'
+            )
+    return f"""    <section class="tg-instrument" id="instrument" data-tg-instrument="bmv" aria-labelledby="tg-instrument-heading-t05">
+      <h2 id="tg-instrument-heading-t05" class="tp-h2" data-en="{a(ins['title_en'])}" data-es="{a(ins['title_es'])}">{t(ins['title_en'])}</h2>
+      {bi("p", ins["how_en"], ins["how_es"], "tg-how")}
+{predict_block(page)}
+        <svg class="tg-stage" viewBox="0 0 920 420" role="img" aria-labelledby="tg-stage-title-t05 tg-stage-desc-t05" data-lx0="{lx0}" data-lx1="{lx1}" data-ya="{ya}" data-yb="{yb}" data-px0="{px0}" data-px1="{px1}" data-py0="{py0}" data-py1="{py1}" data-tmax="{T_MAX}">
+          <title id="tg-stage-title-t05">Two masses each in two places with four branch lines, and entanglement against hold time for three channels</title>
+          <desc id="tg-stage-desc-t05">Left: mass A in two positions on an upper row and mass B in two positions on a lower row, joined by four lines labelled with their separations in micrometres. Right: entanglement from zero to one against hold time from zero to thirty seconds, with a rising curve for the quantum channel, a dashed flat line at zero for the classical LOCC channel, and a hatched band between them for the disputed classical non-LOCC channel; a marker sits on the followed channel at the chosen hold time.</desc>
+          <defs>
+            <pattern id="tg-bmv-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <line x1="0" y1="0" x2="0" y2="8" stroke="var(--tp-prussian)" stroke-width="1.2" opacity="0.45"/>
+            </pattern>
+          </defs>
+          <text x="{(lx0 + lx1) / 2:.0f}" y="36" text-anchor="middle" font-size="11" font-weight="700" data-en="four branches, four separations" data-es="cuatro ramas, cuatro separaciones">four branches, four separations</text>
+          <text x="{lx0 - 30}" y="{ya + 4}" text-anchor="end" font-size="11" font-weight="700">A</text>
+          <text x="{lx0 - 30}" y="{yb + 4}" text-anchor="end" font-size="11" font-weight="700">B</text>
+{chr(10).join(lines_svg)}
+          <circle class="tg-bmv-mass" data-tg-mass="AL" cx="{ax[0]:.1f}" cy="{ya}" r="11" fill="var(--tp-prussian)" stroke="var(--tp-vellum)" stroke-width="2"/>
+          <circle class="tg-bmv-mass" data-tg-mass="AR" cx="{ax[1]:.1f}" cy="{ya}" r="11" fill="var(--tp-prussian)" stroke="var(--tp-vellum)" stroke-width="2"/>
+          <circle class="tg-bmv-mass" data-tg-mass="BL" cx="{bx[0]:.1f}" cy="{yb}" r="11" fill="var(--tp-minium)" stroke="var(--tp-vellum)" stroke-width="2"/>
+          <circle class="tg-bmv-mass" data-tg-mass="BR" cx="{bx[1]:.1f}" cy="{yb}" r="11" fill="var(--tp-minium)" stroke="var(--tp-vellum)" stroke-width="2"/>
+          <text x="{(lx0 + lx1) / 2:.0f}" y="{yb + 44}" text-anchor="middle" font-size="11" data-en="L and R: the two positions of each mass" data-es="L y R: las dos posiciones de cada masa">L and R: the two positions of each mass</text>
+          <text x="{(px0 + px1) / 2:.0f}" y="36" text-anchor="middle" font-size="11" font-weight="700" data-en="entanglement against hold time, three channels" data-es="entrelazamiento frente al tiempo de espera, tres canales">entanglement against hold time, three channels</text>
+          <line class="tg-axis" x1="{px0}" y1="{py0}" x2="{px0}" y2="{py1}"/>
+          <line class="tg-axis" x1="{px0}" y1="{py1}" x2="{px1}" y2="{py1}"/>
+          <text x="{px0 - 6}" y="{py0 + 4}" text-anchor="end" font-size="10">1</text>
+          <text x="{px0 - 6}" y="{py1 + 4}" text-anchor="end" font-size="10">0</text>
+          <text x="{px0}" y="{py1 + 16}" font-size="10">0 s</text>
+          <text x="{px1}" y="{py1 + 16}" text-anchor="end" font-size="10">{T_MAX:.0f} s</text>
+          <text x="{(px0 + px1) / 2:.0f}" y="{py1 + 34}" text-anchor="middle" font-size="11" data-en="hold time t" data-es="tiempo de espera t">hold time t</text>
+          <polygon class="tg-bmv-band" points="{band_poly}" fill="url(#tg-bmv-hatch)" stroke="none"/>
+          <path class="tg-bmv-q" d="{' '.join(q_pts)}" fill="none" stroke="var(--tp-prussian)" stroke-width="2.5"/>
+          <line class="tg-bmv-l" x1="{px0}" y1="{py1 - 1.5}" x2="{px1}" y2="{py1 - 1.5}" stroke="var(--tp-verdigris)" stroke-width="2.5" stroke-dasharray="7 5"/>
+          <circle class="tg-bmv-marker" cx="{to_x(t0):.1f}" cy="{to_y(c0):.1f}" r="7" fill="var(--tp-minium)" stroke="var(--tp-vellum)" stroke-width="2"/>
+          <g class="tg-bmv-legend" font-size="10">
+            <line x1="{px0}" y1="{py1 + 54}" x2="{px0 + 22}" y2="{py1 + 54}" stroke="var(--tp-prussian)" stroke-width="2.5"/>
+            <text x="{px0 + 28}" y="{py1 + 58}" data-en="quantum mediator" data-es="mediador cuántico">quantum mediator</text>
+            <line x1="{px0 + 140}" y1="{py1 + 54}" x2="{px0 + 162}" y2="{py1 + 54}" stroke="var(--tp-verdigris)" stroke-width="2.5" stroke-dasharray="7 5"/>
+            <text x="{px0 + 168}" y="{py1 + 58}" data-en="classical LOCC" data-es="clásico LOCC">classical LOCC</text>
+            <rect x="{px0 + 262}" y="{py1 + 47}" width="22" height="14" fill="url(#tg-bmv-hatch)" stroke="var(--tp-prussian)" stroke-width="0.8"/>
+            <text x="{px0 + 290}" y="{py1 + 58}" data-en="disputed, no single answer" data-es="en disputa, sin respuesta única">disputed, no single answer</text>
+          </g>
+        </svg>
+      <div class="tg-controls">
+        <div class="tp-control-group">
+          <label for="tg-logm-t05"><span data-en="log₁₀ mass m (kg)" data-es="log₁₀ masa m (kg)">log₁₀ mass m (kg)</span> <span data-tg-read="logm">{log_m0:.1f}</span></label>
+          <input id="tg-logm-t05" data-tg-logm type="range" min="-16" max="-12" step="0.1" value="{log_m0}" aria-describedby="tg-status-t05">
+          <label for="tg-d-t05"><span data-en="separation d (µm)" data-es="separación d (µm)">separation d (µm)</span> <span data-tg-read="d">{d0_um:.0f}</span></label>
+          <input id="tg-d-t05" data-tg-d type="range" min="150" max="1000" step="10" value="{d0_um:.0f}">
+          <label for="tg-dx-t05"><span data-en="split Δx (µm)" data-es="división Δx (µm)">split Δx (µm)</span> <span data-tg-read="dx">{dx0_um:.0f}</span></label>
+          <input id="tg-dx-t05" data-tg-dx type="range" min="10" max="400" step="10" value="{dx0_um:.0f}">
+          <label for="tg-t-t05"><span data-en="hold time t (s)" data-es="tiempo de espera t (s)">hold time t (s)</span> <span data-tg-read="t">{t0:.1f}</span></label>
+          <input id="tg-t-t05" data-tg-t type="range" min="0.1" max="{T_MAX:.0f}" step="0.1" value="{t0}">
+          <label for="tg-logg-t05"><span data-en="log₁₀ dephasing rate γ (1/s)" data-es="log₁₀ tasa de desfase γ (1/s)">log₁₀ dephasing rate γ (1/s)</span> <span data-tg-read="logg">{log_g0:.1f}</span></label>
+          <input id="tg-logg-t05" data-tg-logg type="range" min="-4" max="1" step="0.1" value="{log_g0}">
+        </div>
+        <div class="tg-btn-row" role="group" aria-label="Knockout: which channel the readouts follow">
+          <span class="tg-btn-row-label" data-en="⚡ Knockout · switch the channel:" data-es="⚡ Apagado · cambiar el canal:">⚡ Knockout · switch the channel:</span>
+          <button type="button" class="tp-step-btn tp-knockout-btn" data-tg-channel="quantum" aria-pressed="true" data-en="quantum mediator" data-es="mediador cuántico">quantum mediator</button>
+          <button type="button" class="tp-step-btn tp-knockout-btn" data-tg-channel="locc" aria-pressed="false" data-en="classical LOCC" data-es="clásico LOCC">classical LOCC</button>
+          <button type="button" class="tp-step-btn tp-knockout-btn" data-tg-channel="disputed" aria-pressed="false" data-en="disputed classical non-LOCC" data-es="clásico no-LOCC en disputa">disputed classical non-LOCC</button>
+        </div>
+        <div class="tg-btn-row" role="group" aria-label="Planted defect">
+          <button type="button" class="tp-step-btn" data-tg-flip aria-pressed="false" data-en="Planted defect · a classical LOCC channel that entangles" data-es="Defecto plantado · un canal clásico LOCC que entrelaza">Planted defect · a classical LOCC channel that entangles</button>
+        </div>
+      </div>
+      <div class="tp-readout-strip">
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Entanglement phase Δφ" data-es="Fase de entrelazamiento Δφ">Entanglement phase Δφ</span>
+          <span class="tp-readout-v" data-tg-read="dphi">{dphi0:.3f} rad</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Entanglement (2 × negativity; equals concurrence when pure)" data-es="Entrelazamiento (2 × negatividad; igual a la concurrencia si es puro)">Entanglement (2 × negativity; equals concurrence when pure)</span>
+          <span class="tp-readout-v" data-tg-read="ent">{2 * n0:.3f}</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Hold time for full entanglement (Δφ = π)" data-es="Tiempo de espera para entrelazamiento completo (Δφ = π)">Hold time for full entanglement (Δφ = π)</span>
+          <span class="tp-readout-v" data-tg-read="tfull">{tfull0:.1f} s</span>
+        </div>
+        <div class="tp-readout-box" data-tg-readout-box="err" data-alert="false">
+          <span class="tp-readout-k" data-en="This channel says the pair is" data-es="Este canal dice que el par está">This channel says the pair is</span>
+          <span class="tp-readout-v" data-tg-read="verdict" data-en="entangled" data-es="entrelazado">entangled</span>
+        </div>
+      </div>
+      <p id="tg-status-t05" class="tg-status" data-tg-status data-state="quantum" aria-live="polite" data-en="Quantum mediator: the four phases as written. Weak is not zero; after 2.5 s the concurrence is 0.16, and the same geometry would reach 1 at 25 s." data-es="Mediador cuántico: las cuatro fases tal cual. Débil no es cero; tras 2.5 s la concurrencia es 0.16, y la misma geometría llegaría a 1 a los 25 s.">Quantum mediator: the four phases as written. Weak is not zero; after 2.5 s the concurrence is 0.16, and the same geometry would reach 1 at 25 s.</p>
+    </section>"""
+
+
 def page_instrument(page: dict) -> str:
     ins = page["instrument"]
     import math
@@ -1207,6 +1344,8 @@ def render_page(page: dict, catalog: dict, lang: str = "en") -> str:
         instrument = zych_instrument(page)
     elif kind == "dp":
         instrument = dp_instrument(page)
+    elif kind == "bmv":
+        instrument = bmv_instrument(page)
     elif kind == "page":
         instrument = page_instrument(page)
     else:

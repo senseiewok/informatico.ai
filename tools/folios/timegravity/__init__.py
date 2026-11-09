@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Time & Gravity track registry (T.00–T.07, T.10): the fixed boundary line, the six claim labels, the
+"""Time & Gravity track registry (T.00–T.07, T.10; all nine pages shipped): the fixed boundary line, the six claim labels, the
 banned-phrase backstop and the list of pages shipped so far.
 
 The track sits beside Tech & Tools · The Toolbox (X.01–X.06), outside the Folio count of 48. Pages are
@@ -8,7 +8,7 @@ and tools/check_timegravity_labels.py refuses a page whose labels the ledger can
 """
 from __future__ import annotations
 
-from . import t00, t01, t02, t03, t04, t06, t07, t10
+from . import t00, t01, t02, t03, t04, t05, t06, t07, t10
 
 TRACK_CODE = "T"
 TRACK_SLUG = "timegravity"
@@ -83,7 +83,7 @@ TRACK_MAP: list[dict] = [
     {"code": "T.04", "slug": "t04", "built": True,
      "title_en": "A clock in two places", "title_es": "Un reloj en dos lugares",
      "q_en": "Which time does the clock read?", "q_es": "¿Qué tiempo marca el reloj?"},
-    {"code": "T.05", "slug": "t05", "built": False,
+    {"code": "T.05", "slug": "t05", "built": True,
      "title_en": "Does gravity entangle, and would that settle it?", "title_es": "¿La gravedad entrelaza, y eso bastaría?",
      "q_en": "If a classical slope can entangle, what would count as quantum gravity?",
      "q_es": "Si una pendiente clásica puede entrelazar, ¿qué contaría como gravedad cuántica?"},
@@ -99,7 +99,7 @@ TRACK_MAP: list[dict] = [
      "q_en": "Where does the information go, in our universe?", "q_es": "¿A dónde va la información, en nuestro universo?"},
 ]
 
-PAGES: list[dict] = [t00.PAGE, t01.PAGE, t02.PAGE, t03.PAGE, t04.PAGE, t06.PAGE, t07.PAGE, t10.PAGE]
+PAGES: list[dict] = [t00.PAGE, t01.PAGE, t02.PAGE, t03.PAGE, t04.PAGE, t05.PAGE, t06.PAGE, t07.PAGE, t10.PAGE]
 PAGES_BY_SLUG: dict[str, dict] = {p["slug"]: p for p in PAGES}
 
 __all__ = [

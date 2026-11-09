@@ -281,6 +281,9 @@
   .tg-arm, .tg-clock-face, .tg-clock-hand { transition: y1 200ms ease, y2 200ms ease, cy 200ms ease; }
   .tg-dp-marker, .tg-page-dots { transition: cx 200ms ease, cy 200ms ease, opacity 200ms ease; }
   .tg-dp-excluded, .tg-dp-allowed { transition: fill 200ms ease; }
+  .tg-bmv-mass, .tg-bmv-marker { transition: cx 200ms ease, cy 200ms ease; }
+  .tg-bmv-branch { transition: x1 200ms ease, x2 200ms ease; }
+  .tg-btn-row-label { align-self: center; font-size: 0.85rem; color: var(--tp-graphite); }
 
   .tp-track-chip-timegravity {
     background: linear-gradient(135deg, var(--tp-vellum) 0%, var(--tp-verdigris-soft) 100%);
@@ -294,6 +297,6 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .tg-worldline, .tg-body, .tg-now-marker, .tg-bar, .tg-ring, .tg-tile, .tg-pw-dot, .tg-zych-marker, .tg-pw-curve, .tg-zych-curve, .tg-arm, .tg-clock-face, .tg-clock-hand { transition: none !important; animation: none !important; }
+    .tg-worldline, .tg-body, .tg-now-marker, .tg-bar, .tg-ring, .tg-tile, .tg-pw-dot, .tg-zych-marker, .tg-pw-curve, .tg-zych-curve, .tg-arm, .tg-clock-face, .tg-clock-hand, .tg-dp-marker, .tg-bmv-mass, .tg-bmv-marker, .tg-bmv-branch { transition: none !important; animation: none !important; }
   }
 }

@@ -447,6 +447,22 @@
   "title": "Underground test of gravity-related wave function collapse",
   "year": 2021
  },
+ "doi:10.1038/s41567-026-03219-1": {
+  "fetched": "2026-11-09",
+  "first_author": "Troyer",
+  "found": true,
+  "journal": "Nature Physics",
+  "title": "Quantum ground-state cooling of two librational modes of a nanorotor",
+  "year": 2026
+ },
+ "doi:10.1038/s41586-021-03250-7": {
+  "fetched": "2026-11-09",
+  "first_author": "Westphal",
+  "found": true,
+  "journal": "Nature",
+  "title": "Measurement of gravitational coupling between millimetre-sized masses",
+  "year": 2021
+ },
  "doi:10.1038/s41586-021-04349-7": {
   "fetched": "2026-11-08",
   "first_author": "Bothwell",
@@ -487,6 +503,14 @@
   "title": "Bridge RNAs direct programmable recombination of target and donor DNA",
   "year": 2024
  },
+ "doi:10.1038/s41586-025-09595-7": {
+  "fetched": "2026-11-09",
+  "first_author": "Aziz",
+  "found": true,
+  "journal": "Nature",
+  "title": "Classical theories of gravity produce entanglement",
+  "year": 2025
+ },
  "doi:10.1038/s41591-024-03412-0": {
   "fetched": "2026-11-04",
   "first_author": "",
@@ -494,6 +518,14 @@
   "journal": "",
   "title": "",
   "year": null
+ },
+ "doi:10.1038/s42005-026-02514-w": {
+  "fetched": "2026-11-09",
+  "first_author": "Agafonova",
+  "found": true,
+  "journal": "Communications Physics",
+  "title": "One-milligram torsional pendulum toward experiments at the quantum-gravity interface",
+  "year": 2026
  },
  "doi:10.1039/f29787401789": {
   "fetched": "2026-11-04",
@@ -631,6 +663,22 @@
   "title": "Stochastic thermodynamics, fluctuation theorems and molecular machines",
   "year": 2012
  },
+ "doi:10.1088/1361-6382/ae6f62": {
+  "fetched": "2026-11-09",
+  "first_author": "Schneider",
+  "found": true,
+  "journal": "Classical and Quantum Gravity",
+  "title": "A demonstration that classical gravity does not produce entanglement",
+  "year": 2026
+ },
+ "doi:10.1088/1367-2630/16/6/065020": {
+  "fetched": "2026-11-09",
+  "first_author": "Kafri",
+  "found": true,
+  "journal": "New Journal of Physics",
+  "title": "A classical channel model for gravitational decoherence",
+  "year": 2014
+ },
  "doi:10.1088/1742-5468/ac3ae9": {
   "fetched": "2026-11-07",
   "first_author": "Schoenholz",
@@ -735,6 +783,14 @@
   "title": "Time from quantum entanglement: An experimental illustration",
   "year": 2014
  },
+ "doi:10.1103/physrevd.111.l121101": {
+  "fetched": "2026-11-09",
+  "first_author": "Trillo",
+  "found": true,
+  "journal": "Physical Review D",
+  "title": "Diósi-Penrose model of classical gravity predicts gravitationally induced entanglement",
+  "year": 2025
+ },
  "doi:10.1103/physrevd.27.2885": {
   "fetched": "2026-11-08",
   "first_author": "Page",
@@ -790,6 +846,22 @@
   "journal": "Physical Review Letters",
   "title": "Observation of Gravitational Waves from a Binary Black Hole Merger",
   "year": 2016
+ },
+ "doi:10.1103/physrevlett.119.240401": {
+  "fetched": "2026-11-09",
+  "first_author": "Bose",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Spin Entanglement Witness for Quantum Gravity",
+  "year": 2017
+ },
+ "doi:10.1103/physrevlett.119.240402": {
+  "fetched": "2026-11-09",
+  "first_author": "Marletto",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Gravitationally Induced Entanglement between Two Massive Particles is Sufficient Evidence of Quantum Effects in Gravity",
+  "year": 2017
  },
  "doi:10.1103/physrevlett.126.010601": {
   "fetched": "2026-11-04",
@@ -870,6 +942,22 @@
   "journal": "Physical Review Letters",
   "title": "Optical Measurements of Frequency-Dependent Linear Viscoelastic Moduli of Complex Fluids",
   "year": 1995
+ },
+ "doi:10.1103/physrevlett.77.1413": {
+  "fetched": "2026-11-09",
+  "first_author": "Peres",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Separability Criterion for Density Matrices",
+  "year": 1996
+ },
+ "doi:10.1103/physrevlett.80.2245": {
+  "fetched": "2026-11-09",
+  "first_author": "Wootters",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Entanglement of Formation of an Arbitrary State of Two Qubits",
+  "year": 1998
  },
  "doi:10.1103/physrevlett.93.261101": {
   "fetched": "2026-11-08",
@@ -982,6 +1070,14 @@
   "journal": "The Journal of the Acoustical Society of America",
   "title": "The propagation of plane sound waves in narrow and wide circular tubes, and generalization to uniform tubes of arbitrary cross-sectional shape",
   "year": 1991
+ },
+ "doi:10.1126/sciadv.adk2949": {
+  "fetched": "2026-11-09",
+  "first_author": "Fuchs",
+  "found": true,
+  "journal": "Science Advances",
+  "title": "Measuring gravity with milligram levitated masses",
+  "year": 2024
  },
  "doi:10.1126/science.1192720": {
   "fetched": "2026-11-08",
@@ -1392,6 +1488,24 @@
   "title": "An apologia for islands",
   "year": 2025
  },
+ "doi:10.48550/arxiv.2510.19969": {
+  "fetched": "2026-11-09",
+  "first_author": "Marletto",
+  "found": true,
+  "journal": "arXiv",
+  "registry": "DataCite (preprint)",
+  "title": "Classical Gravity Cannot Mediate Entanglement by Local Means",
+  "year": 2025
+ },
+ "doi:10.48550/arxiv.2511.00852": {
+  "fetched": "2026-11-09",
+  "first_author": "Diósi",
+  "found": true,
+  "journal": "arXiv",
+  "registry": "DataCite (preprint)",
+  "title": "No, classical gravity does not entangle quantized matter fields",
+  "year": 2025
+ },
  "doi:10.48550/arxiv.2602.06543": {
   "fetched": "2026-11-09",
   "first_author": "Geng",
@@ -1408,6 +1522,15 @@
   "journal": "arXiv",
   "registry": "DataCite (preprint)",
   "title": "The preferred-time problem in the conditional interpretation of time",
+  "year": 2026
+ },
+ "doi:10.48550/arxiv.2611.08313": {
+  "fetched": "2026-11-09",
+  "first_author": "Tobar",
+  "found": true,
+  "journal": "arXiv",
+  "registry": "DataCite (preprint)",
+  "title": "Testing Gravitationally-Induced-Entanglement with Massive Particles and Quantum Clocks",
   "year": 2026
  },
  "doi:10.58347/tml.2025.1724a": {
@@ -2318,6 +2441,30 @@
   "total_smart_citations": 238,
   "unclassified": 0
  },
+ "scite:10.1038/s41567-026-03219-1": {
+  "citing_publications": 13,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 5,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 5,
+  "unclassified": 0
+ },
+ "scite:10.1038/s41586-021-03250-7": {
+  "citing_publications": 250,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 132,
+  "retracted": false,
+  "supporting": 2,
+  "total_smart_citations": 134,
+  "unclassified": 0
+ },
  "scite:10.1038/s41586-021-04349-7": {
   "citing_publications": 554,
   "classification_provenance": "Scite ML citation classification",
@@ -2383,6 +2530,30 @@
   "total_smart_citations": 150,
   "unclassified": 0,
   "year": 2024
+ },
+ "scite:10.1038/s41586-025-09595-7": {
+  "citing_publications": 33,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 1,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 43,
+  "retracted": false,
+  "supporting": 1,
+  "total_smart_citations": 45,
+  "unclassified": 0
+ },
+ "scite:10.1038/s42005-026-02514-w": {
+  "citing_publications": 10,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 4,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 4,
+  "unclassified": 0
  },
  "scite:10.1039/f29787401818": {
   "citing_publications": 815,
@@ -2495,6 +2666,30 @@
   "total_smart_citations": 5148,
   "unclassified": 17,
   "year": 2012
+ },
+ "scite:10.1088/1361-6382/ae6f62": {
+  "citing_publications": 1,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 1,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 1,
+  "unclassified": 0
+ },
+ "scite:10.1088/1367-2630/16/6/065020": {
+  "citing_publications": 231,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 320,
+  "retracted": false,
+  "supporting": 2,
+  "total_smart_citations": 322,
+  "unclassified": 0
  },
  "scite:10.1088/1742-5468/ac3ae9": {
   "citing_publications": 195,
@@ -2622,6 +2817,18 @@
   "total_smart_citations": 157,
   "unclassified": 1
  },
+ "scite:10.1103/physrevd.111.l121101": {
+  "citing_publications": 20,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 13,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 13,
+  "unclassified": 0
+ },
  "scite:10.1103/physrevd.27.2885": {
   "citing_publications": 796,
   "classification_provenance": "Scite ML citation classification",
@@ -2709,6 +2916,30 @@
   "supporting": 158,
   "total_smart_citations": 11113,
   "unclassified": 89
+ },
+ "scite:10.1103/physrevlett.119.240401": {
+  "citing_publications": 1166,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 2,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 1469,
+  "retracted": false,
+  "supporting": 31,
+  "total_smart_citations": 1504,
+  "unclassified": 2
+ },
+ "scite:10.1103/physrevlett.119.240402": {
+  "citing_publications": 1044,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 3,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 976,
+  "retracted": false,
+  "supporting": 23,
+  "total_smart_citations": 1003,
+  "unclassified": 1
  },
  "scite:10.1103/physrevlett.126.010601": {
   "citing_publications": 140,
@@ -2834,6 +3065,30 @@
   "unclassified": 6,
   "year": 1995
  },
+ "scite:10.1103/physrevlett.77.1413": {
+  "citing_publications": 6049,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 1,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 5799,
+  "retracted": false,
+  "supporting": 48,
+  "total_smart_citations": 5905,
+  "unclassified": 57
+ },
+ "scite:10.1103/physrevlett.80.2245": {
+  "citing_publications": 9301,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 1,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 8443,
+  "retracted": false,
+  "supporting": 70,
+  "total_smart_citations": 8555,
+  "unclassified": 41
+ },
  "scite:10.1103/physrevlett.93.261101": {
   "citing_publications": 779,
   "classification_provenance": "Scite ML citation classification",
@@ -2941,6 +3196,18 @@
   "total_smart_citations": 35,
   "unclassified": 3,
   "year": 1930
+ },
+ "scite:10.1126/sciadv.adk2949": {
+  "citing_publications": 72,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 39,
+  "retracted": false,
+  "supporting": 1,
+  "total_smart_citations": 40,
+  "unclassified": 0
  },
  "scite:10.1126/science.1192720": {
   "citing_publications": 933,
@@ -3512,6 +3779,30 @@
   "total_smart_citations": 41,
   "unclassified": 0
  },
+ "scite:10.48550/arxiv.2510.19969": {
+  "citing_publications": 7,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 8,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 8,
+  "unclassified": 0
+ },
+ "scite:10.48550/arxiv.2511.00852": {
+  "citing_publications": 5,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 7,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 7,
+  "unclassified": 0
+ },
  "scite:10.48550/arxiv.2602.06543": {
   "citing_publications": 3,
   "classification_provenance": "Scite ML citation classification",
@@ -3529,6 +3820,18 @@
   "classification_provenance": "Scite ML citation classification",
   "contrasting": 0,
   "fetched": "2026-11-08",
+  "found": true,
+  "mentioning": 0,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 0,
+  "unclassified": 0
+ },
+ "scite:10.48550/arxiv.2611.08313": {
+  "citing_publications": 0,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
   "found": true,
   "mentioning": 0,
   "retracted": false,

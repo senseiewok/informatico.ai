@@ -254,7 +254,7 @@ class TimeGravityTrackTests(unittest.TestCase):
         res = run(PY + [str(ROOT / "timegravity" / "run_all_timegravity.py")], timeout=120)
         self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
         self.assertIn("PASS: Time & Gravity:", res.stdout)
-        self.assertEqual(res.stdout.count("REJECTED_AS_EXPECTED:"), 8)  # 7 verifiers + the lint
+        self.assertEqual(res.stdout.count("REJECTED_AS_EXPECTED:"), 9)  # 8 verifiers + the lint
 
     def test_pages_rebuild_byte_for_byte_from_source(self) -> None:
         import build_timegravity as tg
@@ -329,7 +329,7 @@ class TimeGravityBatch2Tests(unittest.TestCase):
         t01 = (TG / "t01" / "index.html").read_text(encoding="utf-8")
         self.assertIn('class="tp-pager-link tp-pager-next" href="../../timegravity/t03/"', t01)
         self.assertIn('class="tp-pager-link tp-pager-prev" href="../../timegravity/t02/"', t01)
-        self.assertEqual(hub.count('data-built="true"'), 8)
+        self.assertEqual(hub.count('data-built="true"'), 9)
 
     def test_lint_mutation_suite_kills_every_mutant_and_scite_tallies_are_cached(self) -> None:
         res = run(PY + [str(ROOT / "tools" / "check_timegravity_labels.py"), "--mutants"])
@@ -411,7 +411,7 @@ class TimeGravityBatch3Tests(unittest.TestCase):
         self.assertIn('class="tp-pager-link tp-pager-prev" href="../../timegravity/t03/"', t04)
         t07 = (TG / "t07" / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="../../timegravity/t04/"', t07)  # nearest live page before T.07
-        self.assertEqual((TG / "index.html").read_text(encoding="utf-8").count('data-built="true"'), 8)
+        self.assertEqual((TG / "index.html").read_text(encoding="utf-8").count('data-built="true"'), 9)
 
     def test_every_page_carries_the_time_gravity_nav_and_contents_entry(self) -> None:
         pages = [p for p in RESEARCH.rglob("index.html") if "es-mx" not in p.parts or True]
@@ -479,11 +479,76 @@ class TimeGravityBatch4Tests(unittest.TestCase):
         for s in ("signal-to-noise ratio of 80", "to high credibility", "does not recompute it", "Where does the information go, in our universe?"):
             self.assertIn(s, t10, f"T.10 lacks {s!r}")
         self.assertNotIn("solves the information paradox", t10.lower())
-        self.assertEqual((TG / "index.html").read_text(encoding="utf-8").count('data-built="true"'), 8)
-        # Reading order T.04 -> (T.05 in preparation) -> T.06 -> T.07 -> T.10
+        self.assertEqual((TG / "index.html").read_text(encoding="utf-8").count('data-built="true"'), 9)
+        # Reading order T.04 -> T.05 -> T.06 -> T.07 -> T.10
         self.assertIn('class="tp-pager-link tp-pager-next" href="../../timegravity/t07/"', t06)
         self.assertIn('class="tp-pager-link tp-pager-prev" href="../../timegravity/t07/"', t10)
         self.assertIn('class="tp-pager-link tp-pager-empty"', t10)  # last page: no next
+
+
+class TimeGravityBatch5Tests(unittest.TestCase):
+    """T.05 (gravity-mediated entanglement, three channels at equal weight), the last page of the track."""
+
+    def test_t05_page_verifier_and_planted_defect(self) -> None:
+        for path in (TG / "t05" / "index.html", TG_ES / "t05" / "index.html"):
+            self.assertTrue(path.is_file(), f"missing {path}")
+        gen = run(PY + [str(SKILLS / "t05" / "make_t05.py")])
+        self.assertEqual(gen.returncode, 0, gen.stdout + gen.stderr)
+        res = run(PY + [str(SKILLS / "t05" / "verify_t05_entanglement_channels.py")])
+        self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
+        payload = json.loads(res.stdout)
+        self.assertEqual(payload["status"], "PASS")
+        self.assertEqual(payload["geometry_checks"]["planted_defect_knockout"], "REJECTED_AS_EXPECTED")
+        cn = payload["central_number"]
+        self.assertAlmostEqual(cn["entanglement_phase_rad"], 0.314, delta=0.002)
+        self.assertAlmostEqual(cn["concurrence"], 0.156, delta=0.001)
+        self.assertAlmostEqual(cn["negativity"], 0.5 * cn["concurrence"], delta=1e-9)
+        self.assertAlmostEqual(cn["time_to_full_entanglement_s"], 25.0, delta=0.1)
+        self.assertLess(cn["worst_locc_entanglement"], 1e-12)
+        self.assertEqual(cn["disputed_interval"][0], 0.0)
+        bad = run(PY + [str(SKILLS / "t05" / "verify_t05_entanglement_channels.py"), "--planted-defect"])
+        self.assertNotEqual(bad.returncode, 0)
+        self.assertIn("FAIL", bad.stderr)
+        self.assertIn("LOCC channel entangles", bad.stderr)
+
+    def test_t05_labels_three_channels_equal_weight_and_reading_order(self) -> None:
+        en, es = TG / "t05" / "index.html", TG_ES / "t05" / "index.html"
+        self.assertEqual(labels_of(en), labels_of(es))
+        self.assertEqual(set(labels_of(en)), {"PROPOSED", "DERIVED", "OPEN", "MEASURED", "SINGLE RESULT"}, labels_of(en))
+        self.assertNotIn("BOUND", labels_of(en), "nothing on this page is an exclusion limit")
+        for path, boundary in ((en, BOUNDARY_EN), (es, BOUNDARY_ES)):
+            txt = path.read_text(encoding="utf-8")
+            self.assertIn(boundary, txt)
+            self.assertIn('data-tg-instrument="bmv"', txt)
+            self.assertIn("data-tg-predict", txt)
+            self.assertIn('class="tg-ai-line"', txt)
+            for phrase in HUB_ONLY_PHRASES:
+                self.assertNotIn(phrase, txt.lower())
+            # Three channel buttons, equal weight: same class, one per channel, quantum pressed by default only.
+            self.assertEqual(txt.count('data-tg-channel="'), 3)
+            for ch in ("quantum", "locc", "disputed"):
+                self.assertIn(f'class="tp-step-btn tp-knockout-btn" data-tg-channel="{ch}"', txt)
+            # The three drawings share one stroke weight.
+            self.assertEqual(txt.count('stroke-width="2.5"'), txt.count('stroke-width="2.5"'))
+            self.assertIn('class="tg-bmv-q"', txt)
+            self.assertIn('class="tg-bmv-l"', txt)
+            self.assertIn('class="tg-bmv-band"', txt)
+        self.assertEqual(builder.to_spanish_static(en.read_text(encoding="utf-8"), swap=False, shift=False), en.read_text(encoding="utf-8"))
+        t05 = en.read_text(encoding="utf-8")
+        for s in ("10⁻¹⁵ Pa", "0.15 K", "0.31 rad", "25.0 s", "GIE detection is not enough to validate quantum gravity",
+                  "does not pick a side", "If a classical slope can entangle, what would count as quantum gravity?"):
+            self.assertIn(s, t05, f"T.05 lacks {s!r}")
+        low = t05.lower()
+        for banned in ("proves that gravity", "proof that gravity is quantum", "gravity is therefore quantum", "unifies"):
+            self.assertNotIn(banned, low)
+        self.assertIn("does not say gravity is quantum, or that it is not", low)
+        # Reading order: T.04 -> T.05 -> T.06, and the hub now lists nine built pages.
+        self.assertIn('class="tp-pager-link tp-pager-prev" href="../../timegravity/t04/"', t05)
+        self.assertIn('class="tp-pager-link tp-pager-next" href="../../timegravity/t06/"', t05)
+        t04 = (TG / "t04" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('class="tp-pager-link tp-pager-next" href="../../timegravity/t05/"', t04)
+        self.assertNotIn("in preparation", t04)
+        self.assertEqual((TG / "index.html").read_text(encoding="utf-8").count('data-built="true"'), 9)
 
 
 if __name__ == "__main__":
