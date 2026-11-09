@@ -413,22 +413,62 @@ class TimeGravityBatch3Tests(unittest.TestCase):
         self.assertIn('href="../../timegravity/t04/"', t07)  # nearest live page before T.07
         self.assertEqual((TG / "index.html").read_text(encoding="utf-8").count('data-built="true"'), 9)
 
-    def test_every_page_carries_the_time_gravity_nav_and_contents_entry(self) -> None:
-        pages = [p for p in RESEARCH.rglob("index.html") if "es-mx" not in p.parts or True]
+    def test_series_lives_under_physics_not_in_the_masthead(self) -> None:
+        """2026-11-09 council: Time & Gravity is a series inside Physics. No masthead item of its own; the Contents
+        dialog lists it inside the Physics column on every page; /physics/ shows a nine-card series rack; T pages
+        mark Physics as the current masthead item and carry Physics in the breadcrumb."""
+        pages = list(RESEARCH.rglob("index.html"))
         self.assertGreater(len(pages), 130)
         for page in pages:
             txt = page.read_text(encoding="utf-8")
-            self.assertIn('data-tp-nav="timegravity"', txt, f"{page} lacks the Time & Gravity nav link")
-            self.assertIn('data-en="Time &amp; Gravity" data-es="Tiempo y Gravedad"', txt, f"{page} lacks the bilingual nav label")
-            self.assertIn('aria-label="Time and Gravity track pages"', txt, f"{page} lacks the Contents-dialog section")
+            self.assertNotIn('data-tp-nav="timegravity"', txt, f"{page} still has a Time & Gravity masthead item")
+            self.assertIn('aria-label="Time and Gravity track pages"', txt, f"{page} lacks the Contents-dialog series block")
             self.assertIn("T.07", txt, f"{page} Contents dialog lacks T.07")
-        es_hub = (RESEARCH / "es-mx" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('data-es="Tiempo y Gravedad">Tiempo y Gravedad</a>', es_hub)
+            after_physics = txt.split('data-pillar="physics"', 1)[1]
+            next_col = after_physics.find('class="tp-contents-col"')
+            series_at = after_physics.find('class="tp-contents-series"')
+            self.assertGreater(series_at, -1, f"{page}: no series block after the Physics column header")
+            self.assertTrue(next_col == -1 or series_at < next_col, f"{page}: the series block is not inside the Physics column")
+        for phys in (RESEARCH / "physics" / "index.html", RESEARCH / "es-mx" / "physics" / "index.html"):
+            txt = phys.read_text(encoding="utf-8")
+            self.assertEqual(txt.count('class="tp-rack-card tp-rack-card-series"'), 9, f"{phys}: nine series cards")
+            self.assertIn('id="timegravity-series"', txt)
+            self.assertIn("1 series of 9 steps", txt)
+            self.assertLess(txt.index('id="timegravity-series"'), txt.index("tp-symbolic-physics-lab"),
+                            "series rack sits above the interactive sections")
         for tpage in (TG / "index.html", TG / "t07" / "index.html"):
-            self.assertIn('data-tp-nav="timegravity" href="../timegravity/" aria-current="page"'.replace("../timegravity/", "../timegravity/" if tpage.parent == TG else "../../timegravity/"), tpage.read_text(encoding="utf-8"))
+            txt = tpage.read_text(encoding="utf-8")
+            self.assertRegex(txt, r'data-tp-nav="physics" href="[^"]*physics/" aria-current="page"')
+            self.assertIn('data-en="Physics" data-es="Física">Physics</a></li>', txt, "Physics breadcrumb")
         nf = (RESEARCH / "404.html").read_text(encoding="utf-8")
         self.assertIn("/timegravity/", nf)
 
+    def test_way_in_and_way_through(self) -> None:
+        """The hub hero links forward; every page shows its step; the closing card is the Continue link; the boundary
+        sentence is on every page but boxed in full only on the hub; the stale 'not yet built' bullet is gone."""
+        hub = (TG / "index.html").read_text(encoding="utf-8")
+        self.assertIn('class="tp-cta tp-cta-primary tg-cta-begin" href="../timegravity/t02/"', hub)
+        self.assertIn('class="tp-cta tg-cta-map" href="#map"', hub)
+        self.assertIn('<div class="tg-boundary-banner" role="note"', hub)
+        self.assertNotIn("tg-boundary-compact", hub)
+        self.assertNotIn("not yet built", hub)
+        self.assertIn("Step 1 of 9", hub)
+        self.assertLess(hub.index('id="map"'), hub.index('id="contract"'), "the map comes before the reading contract")
+        self.assertEqual(hub.count('class="tg-step tg-step-current" aria-current="step"'), 1)
+        for code, slug, step, nxt in (("T.02", "t02", 2, "t01"), ("T.01", "t01", 3, "t03"), ("T.07", "t07", 8, "t10")):
+            txt = (TG / slug / "index.html").read_text(encoding="utf-8")
+            self.assertIn(f"Step {step} of 9", txt, code)
+            self.assertNotIn("Reading order", txt, code)
+            self.assertIn('<details class="tg-boundary-banner tg-boundary-compact">', txt, code)
+            self.assertIn(BOUNDARY_EN, txt, code)
+            self.assertIn(f'<a class="tg-next" href="../../timegravity/{nxt}/" rel="next">', txt, code)
+            self.assertEqual(txt.count('aria-current="step"'), 1, code)
+            self.assertEqual(txt.count('class="tg-step"'), 8, code)
+        last = (TG / "t10" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('<a class="tg-next" href="../../timegravity/">', last)
+        es = (RESEARCH / "es-mx" / "timegravity" / "t01" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("Paso 3 de 9", es)
+        self.assertIn(BOUNDARY_ES, es)
 
 class TimeGravityBatch4Tests(unittest.TestCase):
     """T.06 (collapse bound) and T.10 (Page's counting argument)."""

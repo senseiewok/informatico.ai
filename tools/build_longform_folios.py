@@ -35,7 +35,7 @@ from folios.css_bundle import REVAMP_CSS, update_informatico_css  # noqa: E402
 from folios.bounties_data import BOUNTY_BY_SLUG, BOUNTY_FOLIOS  # noqa: E402
 from folios.toolchain_data import PILLAR_FOLIO_TO_TOOLCHAIN, TOOLCHAIN_BY_SLUG, TOOLCHAIN_FOLIOS  # noqa: E402
 from folios.seo_copy import BOUNTY_SEO, BRAND, FOLIO_SEO, HUB_SEO, PILLAR_SEO, TOOLCHAIN_SEO  # noqa: E402
-from folios.timegravity import PAGES as TIMEGRAVITY_PAGES, TRACK_DATE as TIMEGRAVITY_DATE  # noqa: E402
+from folios.timegravity import PAGES as TIMEGRAVITY_PAGES, TRACK_DATE as TIMEGRAVITY_DATE, TRACK_MAP as TIMEGRAVITY_TRACK_MAP  # noqa: E402
 from toolchain_uga import BOUNDARY_EN, BOUNDARY_ES, generate_folio_assets  # noqa: E402
 
 SITE = "https://informatico.ai/"
@@ -1838,7 +1838,9 @@ def render_folio_toolchain_companion(slug: str, rel_res: str = "../..") -> str:
 def render_masthead(rel_res: str, active_pillar: str = "", lang: str = "en") -> str:
     """One slim header: brand, the four disciplines + Bounties + Tech & Tools, Contents, language and theme."""
     links = []
-    for p_key in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "timegravity", "about"):
+    # Time & Gravity is a series inside Physics (2026-11-09 council): it is reached from /physics/, the Contents
+    # dialog's Physics column, the home chip and the footer, not from a masthead item of its own.
+    for p_key in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "about"):
         en, es = PILLAR_NAV_LABELS[p_key]
         cur = ' aria-current="page"' if p_key == active_pillar else ""
         links.append(
@@ -1876,6 +1878,25 @@ def render_masthead(rel_res: str, active_pillar: str = "", lang: str = "en") -> 
 
 def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -> str:
     """Every essay, one click from any page: a native <dialog> with search, four columns of titles."""
+    tg_items = []
+    for tg in TIMEGRAVITY_PAGES:
+        tg_slug = tg["slug"]
+        tg_path = "timegravity/" + (f"{tg_slug}/" if tg_slug else "")
+        tg_cur = ' aria-current="page"' if (tg_slug or "t00") == active_slug else ""
+        tg_search = esc(f"{tg['code']} {tg['title_en']} {tg['title_es']}".lower())
+        tg_items.append(
+            f'<li data-contents-bounty-item data-search="{tg_search}"><a href="{_href(rel_res, tg_path)}"{tg_cur}>'
+            f'<span class="tp-contents-id">{esc(tg["code"])}</span> '
+            f'<span class="tp-contents-title" data-en="{esc(tg["title_en"])}" data-es="{esc(tg["title_es"])}">{esc(tg["title_en"])}</span></a></li>'
+        )
+    tg_items_html = "\n            ".join(tg_items)
+    tg_series_html = f"""
+          <section class="tp-contents-series" aria-label="Time and Gravity track pages">
+            <h3><a href="{_href(rel_res, 'timegravity/')}" data-en="Series · Time &amp; Gravity · 9 steps (T.00–T.10)" data-es="Serie · Tiempo y Gravedad · 9 pasos (T.00–T.10)">Series · Time &amp; Gravity · 9 steps (T.00–T.10)</a></h3>
+            <ol>
+            {tg_items_html}
+            </ol>
+          </section>"""
     cols = []
     for p_key in ("engineering", "architecture", "physics", "math"):
         items = []
@@ -1898,7 +1919,7 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
           <h3><a href="{_href(rel_res, p_key + "/")}" data-en="{esc(en)}" data-es="{esc(es)}">{esc(en)}</a></h3>
           <ol>
             {items_html}
-          </ol>
+          </ol>{tg_series_html if p_key == "physics" else ""}
         </section>"""
         )
     cols_html = "\n".join(cols)
@@ -1924,18 +1945,6 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
             f'<span class="tp-contents-title" data-en="{esc(t["title"])}" data-es="{esc(t["title_es"])}">{esc(t["title"])}</span></a></li>'
         )
     tool_items_html = "\n            ".join(tool_items)
-    tg_items = []
-    for tg in TIMEGRAVITY_PAGES:
-        tg_slug = tg["slug"]
-        tg_path = "timegravity/" + (f"{tg_slug}/" if tg_slug else "")
-        tg_cur = ' aria-current="page"' if (tg_slug or "t00") == active_slug else ""
-        tg_search = esc(f"{tg['code']} {tg['title_en']} {tg['title_es']}".lower())
-        tg_items.append(
-            f'<li data-contents-bounty-item data-search="{tg_search}"><a href="{_href(rel_res, tg_path)}"{tg_cur}>'
-            f'<span class="tp-contents-id">{esc(tg["code"])}</span> '
-            f'<span class="tp-contents-title" data-en="{esc(tg["title_en"])}" data-es="{esc(tg["title_es"])}">{esc(tg["title_en"])}</span></a></li>'
-        )
-    tg_items_html = "\n            ".join(tg_items)
     total = sum(len(v) for v in catalog["pillars"].values())
     return f"""  <dialog id="tp-contents" class="tp-contents" aria-labelledby="tp-contents-title">
     <div class="tp-contents-inner">
@@ -1958,12 +1967,6 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
         <h3><a href="{_href(rel_res, 'toolchain/')}" data-en="Tech &amp; Tools · The Toolbox · 6 Open 3D CAD &amp; Studio Folios (X.01–X.06)" data-es="Tecnología y Herramientas · Caja de Herramientas 3D y CAD Abierto (X.01–X.06)">Tech &amp; Tools · The Toolbox · 6 Open 3D CAD &amp; Studio Folios (X.01–X.06)</a></h3>
         <ol>
             {tool_items_html}
-        </ol>
-      </section>
-      <section class="tp-contents-bounties" aria-label="Time and Gravity track pages">
-        <h3><a href="{_href(rel_res, 'timegravity/')}" data-en="Time &amp; Gravity · Nine Pages on an Open Problem (T.00–T.07, T.10)" data-es="Tiempo y Gravedad · Nueve Páginas sobre un Problema Abierto (T.00–T.07, T.10)">Time &amp; Gravity · Nine Pages on an Open Problem (T.00–T.07, T.10)</a></h3>
-        <ol>
-            {tg_items_html}
         </ol>
       </section>
     </div>
@@ -2131,6 +2134,44 @@ def render_folio_page(pillar: str, folios: list[dict], folio: dict, catalog: dic
 """
 
 
+def _png_sha8(name: str) -> str:
+    p = ROOT / "src" / "research" / "plates" / f"{name}.png"
+    return hashlib.sha256(p.read_bytes()).hexdigest()[:8] if p.is_file() else "00000000"
+
+
+def render_timegravity_series_rack(rel_res: str) -> str:
+    """The Time & Gravity series as a rack of nine plate cards on /physics/, one per step, in reading order."""
+    cards = []
+    by_code = {p["code"]: p for p in TIMEGRAVITY_PAGES}
+    for i, m in enumerate(TIMEGRAVITY_TRACK_MAP, 1):  # reading order, which is not code order (T.02 precedes T.01)
+        tg = by_code.get(m["code"])
+        if tg is None:
+            continue
+        slug = tg["slug"]
+        plate = slug or "t00"
+        href = _href(rel_res, "timegravity/" + (f"{slug}/" if slug else ""))
+        t_en, d_en, t_es, d_es = tg["seo"]
+        title_en, title_es = tg["title_en"], tg["title_es"]
+        cards.append(
+            f"""        <a class="tp-rack-card tp-rack-card-series" href="{href}" data-folio-slug="{esc(plate)}" data-series-step="{i}">
+          <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb tp-rack-thumb-series" src="{_href(rel_res, 'plates/' + plate + '.png')}?v={_png_sha8(plate)}" width="1200" height="630" loading="lazy" decoding="async" alt="{esc('Plate for ' + tg['code'] + ' · ' + title_en)}"></span>
+          <span class="tp-rack-top"><span class="tp-rack-id" data-en="Step {i} of 9 · {esc(tg['code'])}" data-es="Paso {i} de 9 · {esc(tg['code'])}">Step {i} of 9 · {esc(tg['code'])}</span><span class="tp-rack-badge" data-en="{esc(tg['reading_time_en'])}" data-es="{esc(tg['reading_time_es'])}">{esc(tg['reading_time_en'])}</span></span>
+          <strong class="tp-rack-title" data-en="{esc(title_en)}" data-es="{esc(title_es)}">{esc(title_en)}</strong>
+          <span class="tp-rack-dek" data-en="{esc(d_en)}" data-es="{esc(d_es)}">{esc(d_en)}</span>
+        </a>"""
+        )
+    cards_html = "\n".join(cards)
+    return f"""
+    <section class="tp-issue-rack tp-series-rack" aria-label="Time and Gravity series" id="timegravity-series">
+      <p class="tp-kicker" data-en="Series · Time &amp; Gravity · nine steps, one open problem" data-es="Serie · Tiempo y Gravedad · nueve pasos, un problema abierto">Series · Time &amp; Gravity · nine steps, one open problem</p>
+      <h2 class="tp-h2"><a href="{_href(rel_res, 'timegravity/')}" data-en="Time &amp; Gravity" data-es="Tiempo y Gravedad">Time &amp; Gravity</a></h2>
+      <p class="tp-standfirst" data-en="A guided reading track rather than twelve stand-alone essays: from the measured slope in the rate of time to the open problem of time in quantum gravity, in nine steps that each end with the question the next one takes up. Six evidence labels, a ledger and a lint hold every claim." data-es="Una serie de lectura guiada, no doce ensayos sueltos: de la pendiente medida en el ritmo del tiempo al problema abierto del tiempo en la gravedad cuántica, en nueve pasos que terminan cada uno con la pregunta que retoma el siguiente. Seis etiquetas de evidencia, un libro de registro y un lint sostienen cada afirmación.">A guided reading track rather than twelve stand-alone essays: from the measured slope in the rate of time to the open problem of time in quantum gravity, in nine steps that each end with the question the next one takes up. Six evidence labels, a ledger and a lint hold every claim.</p>
+      <div class="tp-rack-grid">
+{cards_html}
+      </div>
+    </section>"""
+
+
 def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str = "en") -> str:
     rel_root, rel_res = "../..", ".."
     es = lang == "es"
@@ -2145,8 +2186,12 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
     cards = render_rack_cards(pillar, folios, "./", "../plates/", eager=12)
     n = len(folios)
     extra_sections = ""
+    if pillar == "physics":
+        extra_sections = render_timegravity_series_rack(rel_res)
     if pillar in ("physics", "math"):
-        extra_sections = f"\n{render_symbolic_physics_lab_section(rel_res)}\n{render_oss_physics_radar_section(rel_res)}"
+        extra_sections += f"\n{render_symbolic_physics_lab_section(rel_res)}\n{render_oss_physics_radar_section(rel_res)}"
+    kick_en = f"Pillar {PILLAR_ROMAN[pillar]} · {n} essays" + (" · 1 series of 9 steps" if pillar == "physics" else "")
+    kick_es = f"Pilar {PILLAR_ROMAN[pillar]} · {n} ensayos" + (" · 1 serie de 9 pasos" if pillar == "physics" else "")
     return f"""{head}
 <body class="tp-body tp-page-hub">
 {render_masthead(rel_res, pillar, lang)}
@@ -2154,7 +2199,7 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
   <main id="main" class="tp-shell" tabindex="-1">
 {render_breadcrumb(rel_res, pillar)}
     <section class="tp-pillar-hero" aria-labelledby="pillar-heading">
-      <p class="tp-kicker" data-en="Pillar {PILLAR_ROMAN[pillar]} · {n} essays" data-es="Pilar {PILLAR_ROMAN[pillar]} · {n} ensayos">Pillar {PILLAR_ROMAN[pillar]} · {n} essays</p>
+      <p class="tp-kicker" data-en="{kick_en}" data-es="{kick_es}">{kick_en}</p>
       <h1 id="pillar-heading" class="tp-h1" data-en="{esc(title_en)}" data-es="{esc(title_es)}">{esc(title_en)}</h1>
       <p class="tp-standfirst" data-en="{esc(hook_en)}" data-es="{esc(hook_es)}">{esc(hook_en)}</p>
     </section>
@@ -4914,7 +4959,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
           <span class="tp-track-chip-meta" data-en="STEP · 3MF · GLB · DXF · Small Architects" data-es="STEP · 3MF · GLB · DXF · Pequeños Estudios">STEP · 3MF · GLB · DXF · Small Architects</span>
         </a>
         <a class="tp-track-chip tp-track-chip-timegravity" href="timegravity/">
-          <span class="tp-track-chip-kicker" data-en="TIME &amp; GRAVITY · {len(TIMEGRAVITY_PAGES)} OF 9 PAGES LIVE" data-es="TIEMPO Y GRAVEDAD · {len(TIMEGRAVITY_PAGES)} DE 9 PÁGINAS">TIME &amp; GRAVITY · {len(TIMEGRAVITY_PAGES)} OF 9 PAGES LIVE</span>
+          <span class="tp-track-chip-kicker" data-en="PHYSICS SERIES · 9 STEPS" data-es="SERIE DE FÍSICA · 9 PASOS">PHYSICS SERIES · 9 STEPS</span>
           <strong class="tp-track-chip-title" data-en="Time &amp; Gravity (T.00–T.10)" data-es="Tiempo y Gravedad (T.00–T.10)">Time &amp; Gravity (T.00–T.10)</strong>
           <span class="tp-track-chip-meta" data-en="Clock rates · Geodesics · Six labels · Ledger" data-es="Ritmos de reloj · Geodésicas · Seis etiquetas · Registro">Clock rates · Geodesics · Six labels · Ledger</span>
         </a>
