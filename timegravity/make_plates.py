@@ -154,9 +154,54 @@ def plate_t00() -> bytes:
     return c.png()
 
 
+def ring(c: Canvas, cx: float, cy: float, r: float, rgb: tuple[int, int, int], width: float) -> None:
+    import math
+    pts = [(cx + r * math.cos(a), cy + r * math.sin(a)) for a in [i * 2 * math.pi / 180 for i in range(181)]]
+    c.stroke(pts, rgb, width)
+
+
+def plate_t02() -> bytes:
+    """Earth, an orbit, a satellite, and the three clock-budget bars (lengths from the kernel)."""
+    from timegravity_kernel import gps_terms
+    c = Canvas()
+    c.fill_gradient()
+    c.rate_column(96, 236, 72, 648)
+    c.disc(520, 360, 70, PRUSSIAN, ring=INK)
+    ring(c, 520, 360, 230, INK, 1.4)
+    c.disc(750, 360, 13, MINIUM, ring=VELLUM)
+    terms = gps_terms()
+    scale = 7.0
+    y = 120
+    for val, col in ((terms["grav_us"], VERDIGRIS), (abs(terms["vel_us"]), (156, 69, 20)), (terms["net_us"], PRUSSIAN)):
+        c.stroke([(820, y), (820 + val * scale, y)], col, 9.0)
+        y += 44
+    return c.png()
+
+
+def plate_t03() -> bytes:
+    """Concentric rings around a mass from the Poisson grid solution, and two bodies on one vertical line."""
+    from timegravity_kernel import GM_EARTH, G_NEWTON, R_EARTH, poisson_radial
+    c = Canvas()
+    c.fill_gradient()
+    sol = poisson_radial(GM_EARTH / G_NEWTON, R_EARTH, 4.0 * R_EARTH, 400)
+    cx, cy, R = 420.0, 360.0, 70.0
+    for k in range(1, 8):
+        rr = 1.0 + 0.4 * k
+        i = min(400, int(round(rr / 4.0 * 400)))
+        depth = abs(sol["phi"][i]) / abs(sol["phi"][100])
+        ring(c, cx, cy, R * rr, PRUSSIAN, 2.0 + 8.0 * depth)
+    c.disc(cx, cy, R, INK)
+    c.stroke([(1000, 120), (1000, 600)], INK, 1.0, dash=(6, 6))
+    c.disc(1000, 300, 12, MINIUM, ring=VELLUM)
+    c.disc(1000, 300, 5, VELLUM)
+    c.disc(1000, 300, 19, (0, 0, 0), ring=INK) if False else None
+    c.disc(1000, 420, 18, INK, ring=VELLUM)
+    return c.png()
+
+
 def main() -> int:
     PLATES.mkdir(parents=True, exist_ok=True)
-    for name, fn in (("t00", plate_t00), ("t01", plate_t01)):
+    for name, fn in (("t00", plate_t00), ("t01", plate_t01), ("t02", plate_t02), ("t03", plate_t03)):
         data = fn()
         (PLATES / f"{name}.png").write_bytes(data)
         print(f"PASS: wrote plates/{name}.png ({len(data):,} bytes)")

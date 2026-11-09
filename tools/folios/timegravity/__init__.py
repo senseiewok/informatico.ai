@@ -8,7 +8,7 @@ and tools/check_timegravity_labels.py refuses a page whose labels the ledger can
 """
 from __future__ import annotations
 
-from . import t00, t01
+from . import t00, t01, t02, t03
 
 TRACK_CODE = "T"
 TRACK_SLUG = "timegravity"
@@ -71,13 +71,13 @@ TRACK_MAP: list[dict] = [
     {"code": "T.00", "slug": "", "built": True,
      "title_en": "The hub", "title_es": "El punto de partida",
      "q_en": "Is any of this physics?", "q_es": "¿Algo de esto es física?"},
-    {"code": "T.02", "slug": "t02", "built": False,
+    {"code": "T.02", "slug": "t02", "built": True,
      "title_en": "Everyone moves at one rate", "title_es": "Todos avanzamos a un mismo ritmo",
      "q_en": "Why can nothing opt out?", "q_es": "¿Por qué nada puede quedarse fuera?"},
     {"code": "T.01", "slug": "t01", "built": True,
      "title_en": "Gravity as a slope in the rate of time", "title_es": "La gravedad como pendiente en el ritmo del tiempo",
      "q_en": "What sets the slope?", "q_es": "¿Qué fija la pendiente?"},
-    {"code": "T.03", "slug": "t03", "built": False,
+    {"code": "T.03", "slug": "t03", "built": True,
      "title_en": "What sets the slope", "title_es": "Qué fija la pendiente",
      "q_en": "What if the mass is in two places?", "q_es": "¿Y si la masa está en dos lugares?"},
     {"code": "T.04", "slug": "t04", "built": False,
@@ -99,7 +99,7 @@ TRACK_MAP: list[dict] = [
      "q_en": "Where does the information go, in our universe?", "q_es": "¿A dónde va la información, en nuestro universo?"},
 ]
 
-PAGES: list[dict] = [t00.PAGE, t01.PAGE]
+PAGES: list[dict] = [t00.PAGE, t01.PAGE, t02.PAGE, t03.PAGE]
 PAGES_BY_SLUG: dict[str, dict] = {p["slug"]: p for p in PAGES}
 
 __all__ = [

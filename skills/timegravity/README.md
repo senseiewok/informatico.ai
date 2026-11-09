@@ -5,6 +5,8 @@ One folder per shipped page under `skills/timegravity/<slug>/`:
 | Page | Folder | Generator | Verifier (stdlib, planted defect) | Companion |
 | --- | --- | --- | --- | --- |
 | `T.01` Gravity as a Slope in the Rate of Time | `t01/` | `make_t01.py` | `verify_t01_time_slope_geodesic.py` (`--planted-defect` must exit non-zero) | `SKILL.md` |
+| `T.02` Everyone Moves at One Rate | `t02/` | `make_t02.py` | `verify_t02_gps_one_rate.py` (sign flip must exit non-zero; two calculation paths must agree) | `SKILL.md` |
+| `T.03` What Sets the Slope | `t03/` | `make_t03.py` | `verify_t03_poisson_equivalence.py` (η = 10⁻³ must exit non-zero) | `SKILL.md` |
 
 The hub `T.00` has no generator and no verifier: it carries no claims, and `tools/check_timegravity_labels.py` asserts that.
 

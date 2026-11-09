@@ -1,0 +1,78 @@
+{
+  "folio_id": "T.02",
+  "title": "Everyone Moves at One Rate",
+  "constants": {
+    "c_m_per_s": 299792458.0,
+    "GM_m3_s2": 398600441800000.0,
+    "a_gps_m": 26561750.0,
+    "R_ground_m": 6378137.0
+  },
+  "tolerances": {
+    "net_window_us_per_day": 0.7,
+    "double_entry_us_per_day": 0.3
+  },
+  "gps_first_order_us_per_day": {
+    "grav_us": 45.6518618669,
+    "vel_us": -7.21312456031,
+    "net_us": 38.4387373066
+  },
+  "gps_schwarzschild_net_us_per_day": 38.5427178173,
+  "position_error_per_day_m": 11523.6435396,
+  "uncertainty_budget": {
+    "combined_sigma_us_per_day": 0.0942820907627,
+    "ground_rotation_effect_us_per_day": 0.103980823951,
+    "rows": [
+      {
+        "input": "GM (IERS 2010)",
+        "value": 398600441800000.0,
+        "sigma": 800000.0,
+        "contribution_us_per_day": 7.71474084615e-08
+      },
+      {
+        "input": "orbit semi-major axis a",
+        "value": 26561750.0,
+        "sigma": 5000.0,
+        "contribution_us_per_day": 0.00407340902759
+      },
+      {
+        "input": "ground clock radius R",
+        "value": 6378137.0,
+        "sigma": 10000.0,
+        "contribution_us_per_day": 0.0941940548945
+      }
+    ],
+    "note": "c is exact by definition; eccentricity (periodic, zero mean) and the geoid-vs-equator potential are not in the budget and are the reason the acceptance window is ±0.7 µs/day."
+  },
+  "light_clock_gamma": [
+    [
+      0.0,
+      1.0
+    ],
+    [
+      0.1,
+      1.00503781526
+    ],
+    [
+      0.3,
+      1.04828483672
+    ],
+    [
+      0.5,
+      1.15470053838
+    ],
+    [
+      0.7,
+      1.40028008403
+    ],
+    [
+      0.9,
+      2.29415733871
+    ],
+    [
+      0.99,
+      7.08881205008
+    ]
+  ],
+  "boundary_en": "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. Preprints never rise above PROPOSED. Each page ends with one open question that the next page takes up.",
+  "license": "CC0-1.0 / CC-BY-4.0"
+}

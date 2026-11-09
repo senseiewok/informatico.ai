@@ -19,8 +19,22 @@ A sibling track beside *Tech & Tools · The Toolbox* (`X.01`–`X.06`), outside 
 | --- | --- | --- | --- | --- |
 | `T.00` | [The hub](https://informatico.ai/timegravity/) | A worldline with a movable "now" marker: a picture of the question, not a result | none; the lint asserts zero claim spans | none |
 | `T.01` | [Gravity as a Slope in the Rate of Time](https://informatico.ai/timegravity/t01/) | 1+1 geodesic where only `g_tt` varies with height; the body falls at g with no force term; knockout flattens the gradient and nothing falls | `a = −9.80665 m/s²` within `1e-6` relative · sign flip makes the body rise | MEASURED, SINGLE RESULT, DERIVED, OPEN |
+| `T.02` | [Everyone Moves at One Rate](https://informatico.ai/timegravity/t02/) | Light clock stretched by γ; GPS clock budget from GM, a and c; knockout leaves the satellite clock uncorrected (≈11.5 km/day pseudorange error) | `+45.7 − 7.2 = +38.4 µs/day`, recomputed two ways within `0.3 µs/day`, with a GUM-style uncertainty budget · sign flip | MEASURED, DERIVED, BOUND, OPEN |
+| `T.03` | [What Sets the Slope](https://informatico.ai/timegravity/t03/) | ∇²Φ = 4πGρ solved on a radial grid; mass slider reshapes the clock-rate map; two compositions fall together; knockout removes the source | grid recovers `−GM/r` (≈1e-6) and `Φ(0) = −3GM/2R`; separation `< 1e-12 m` · planted η = 10⁻³ separates them by 4.9 mm | MEASURED, SINGLE RESULT, DERIVED, OPEN |
 
-Reading order of the whole track and the open question each page ends with: `tools/folios/timegravity/__init__.py` (`TRACK_MAP`). Batch 2 onward (T.02, T.03, then T.07, T.04, then T.05, T.06, T.10) reuses this scaffold.
+Reading order (T.00 → T.02 → T.01 → T.03 → …) and the open question each page ends with: `tools/folios/timegravity/__init__.py` (`TRACK_MAP`). Batch 3 onward (T.07, T.04, then T.05, T.06, T.10) reuses this scaffold.
+
+## Borrowed from other fields (batch 2)
+
+| Field | What the track does with it |
+| --- | --- |
+| Software verification (mutation testing) | `tools/check_timegravity_labels.py --mutants` applies ten in-memory mutants (label flipped up, parent dropped, press row, stale review date, one collaboration, young rows, es-MX mismatch, missing boundary, hub-only phrase on a claim page, a claim on the hub); every one must be killed or the lint fails. |
+| Accounting (double entry) | T.02's net GPS term is computed by two unrelated paths (first-order terms; Schwarzschild rate ratio) that must agree within 0.3 µs/day. |
+| Metrology (GUM uncertainty budget) | T.02 propagates the stated 1σ of GM, a and R to the net term and combines them in quadrature; c is exact. |
+| Evidence synthesis (citation polarity) | Every ledger DOI carries Scite's public tallies (`scite:<doi>` in the cache; `[observed: Scite ML citation classification]`); the lint warns when contrasting > supporting and fails on a retracted row. |
+| Aviation (checklist) | `timegravity/LABEL-CHECKLIST.md`: the human decision procedure the lint cannot replace. |
+| Pedagogy (predict before reveal) | T.02 and T.03 ask the reader to commit to an answer before the knockout or the planted defect reveals it. |
+| Cartography (one map, many views) | Each instrument keeps one state object that every panel and readout reads from. |
 
 ## The ledger and the label lint
 

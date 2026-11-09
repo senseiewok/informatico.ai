@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run all 61 standalone Informatico.ai Folio, Bounty, Toolbox & Time and Gravity Python verifiers (48 Pillar Folios + 6 Bounty Folios + 6 Tech & Tools Folios + 1 Time & Gravity page) and confirm 61/61 PASS."""
+"""Run all 63 standalone Informatico.ai Folio, Bounty, Toolbox & Time and Gravity Python verifiers (48 Pillar Folios + 6 Bounty Folios + 6 Tech & Tools Folios + 3 Time & Gravity pages) and confirm 63/63 PASS."""
 from __future__ import annotations
 
 import json
@@ -12,8 +12,8 @@ ROOT = Path(__file__).resolve().parent
 
 def main() -> int:
     verifiers = sorted(ROOT.glob("*/*/verify_*.py"))
-    if len(verifiers) != 61:
-        print(f"FAIL: expected 61 verifiers (48 Folios + 6 Bounties + 6 Tech & Tools + 1 Time & Gravity), found {len(verifiers)}", file=sys.stderr)
+    if len(verifiers) != 63:
+        print(f"FAIL: expected 63 verifiers (48 Folios + 6 Bounties + 6 Tech & Tools + 3 Time & Gravity), found {len(verifiers)}", file=sys.stderr)
         return 1
     for v in verifiers:
         res = subprocess.run([sys.executable, "-X", "utf8", str(v)], capture_output=True, text=True, encoding="utf-8", timeout=15)
@@ -24,7 +24,7 @@ def main() -> int:
         if payload.get("status") != "PASS":
             print(f"FAIL: {v} status={payload.get('status')}", file=sys.stderr)
             return 1
-    print(f"PASS: All {len(verifiers)}/61 standalone Folio, Bounty, Toolbox & Time and Gravity Python verifiers passed deterministic checks.")
+    print(f"PASS: All {len(verifiers)}/63 standalone Folio, Bounty, Toolbox & Time and Gravity Python verifiers passed deterministic checks.")
     return 0
 
 

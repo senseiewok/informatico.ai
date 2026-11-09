@@ -21,8 +21,6 @@ ROOT = Path(__file__).resolve().parent.parent
 LEDGER = ROOT / "timegravity" / "ledger.json"
 CACHE = ROOT / "data" / "folio-citations.cache.json"
 USER_AGENT = "informatico.ai-timegravity-ledger/1.0 (https://github.com/senseiewok/informatico.ai)"
-
-
 DOI_RE = re.compile(r"^10\.[0-9]{4,9}/[^\s?#]+$")
 
 
@@ -53,10 +51,40 @@ def fetch(doi: str) -> dict:
     }
 
 
+def fetch_scite_tally(doi: str) -> dict:
+    """Scite's public, unauthenticated tallies endpoint (zero quota, no key; see cf-evidence-loop's scite provider).
+
+    Stored in the cache's existing `scite:<doi>` shape so the site renders it like the OSS radar does. The counts are
+    [observed: Scite ML citation classification]: a classifier's output, never a substitute for reading the source.
+    """
+    if not DOI_RE.match(doi) or ".." in doi:
+        raise ValueError(f"Malformed or unsafe DOI: {doi!r}")
+    url = "https://api.scite.ai/tallies/" + urllib.request.quote(doi, safe="/()")
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        data = json.load(resp)
+    if not isinstance(data, dict) or not data.get("doi"):
+        raise ValueError(f"unexpected Scite tally shape: {str(data)[:120]}")
+    contrasting = int(data.get("contradicting", data.get("contrasting", 0)) or 0)
+    return {
+        "citing_publications": int(data.get("citingPublications", 0) or 0),
+        "contrasting": contrasting,
+        "fetched": dt.date.today().isoformat(),
+        "found": True,
+        "mentioning": int(data.get("mentioning", 0) or 0),
+        "retracted": bool(data.get("retracted", False)),
+        "supporting": int(data.get("supporting", 0) or 0),
+        "total_smart_citations": int(data.get("total", 0) or 0),
+        "unclassified": int(data.get("unclassified", 0) or 0),
+        "classification_provenance": "Scite ML citation classification",
+    }
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--force", action="store_true", help="re-fetch rows that are already cached")
     ap.add_argument("--dry-run", action="store_true", help="list what would be fetched and exit")
+    ap.add_argument("--scite", action="store_true", help="also fetch Scite public citation tallies (scite:<doi> rows)")
     args = ap.parse_args()
 
     ledger = json.loads(LEDGER.read_text(encoding="utf-8"))
@@ -66,19 +94,28 @@ def main() -> int:
         key = "doi:" + row["doi"].lower()
         if args.force or key not in cache or not cache[key].get("found"):
             todo.append((key, row["doi"]))
+        if args.scite:
+            skey = "scite:" + row["doi"].lower()
+            if args.force or skey not in cache or not cache[skey].get("found"):
+                todo.append((skey, row["doi"]))
     if args.dry_run:
         for key, doi in todo:
-            print("would fetch", doi)
+            print("would fetch", key)
         return 0
 
     failures = 0
     for key, doi in todo:
         try:
-            cache[key] = fetch(doi)
-            print(f"OK   {doi}: {cache[key]['first_author']} ({cache[key]['year']}) {cache[key]['title'][:70]}")
+            if key.startswith("scite:"):
+                cache[key] = fetch_scite_tally(doi)
+                t = cache[key]
+                print(f"OK   scite {doi}: {t['citing_publications']} citing · {t['supporting']} supporting · {t['contrasting']} contrasting · {t['mentioning']} mentioning")
+            else:
+                cache[key] = fetch(doi)
+                print(f"OK   {doi}: {cache[key]['first_author']} ({cache[key]['year']}) {cache[key]['title'][:70]}")
         except (urllib.error.URLError, urllib.error.HTTPError, KeyError, ValueError, TimeoutError) as exc:
             failures += 1
-            print(f"FAIL {doi}: {exc}", file=sys.stderr)
+            print(f"FAIL {key}: {exc}", file=sys.stderr)
 
     if todo and not failures:
         # Keep the cache's own formatting (indent=1, sorted keys, CRLF) so the diff shows only the new rows.

@@ -30,7 +30,10 @@ from folios.timegravity import (  # noqa: E402
     TRACK_TITLE_ES,
 )
 from folios.seo_copy import BRAND, PILLAR_SEO  # noqa: E402
-from timegravity_kernel import G0, integrate  # noqa: E402
+from timegravity_kernel import (  # noqa: E402
+    A_GPS, G0, G_NEWTON, GM_EARTH, R_EARTH, fall_two_bodies, gps_position_error_per_day_m, gps_schwarzschild_net, gps_terms,
+    gps_uncertainty_budget, integrate, light_clock_dilation, poisson_radial,
+)
 
 RESEARCH = ROOT / "src" / "research"
 LEDGER = json.loads((ROOT / "timegravity" / "ledger.json").read_text(encoding="utf-8"))
@@ -116,26 +119,45 @@ def breadcrumb(rel_res: str, page: dict) -> str:
   </nav>"""
 
 
+PLATE_CAPTIONS = {
+    "T.00": (
+        "A worldline across a clock-rate gradient, with a marker for the 'now' the intuition imagines. General relativity has the line and the shading; it has no marker.",
+        "Una línea de mundo sobre un gradiente de ritmo de relojes, con un marcador para el 'ahora' que la intuición imagina. La relatividad general tiene la línea y el sombreado; no tiene marcador.",
+        "a worldline drawn across a shaded column that shows how fast a clock runs at each height, darker meaning slower, with one marker on the line",
+        "una línea de mundo trazada sobre una columna sombreada que muestra qué tan rápido avanza un reloj a cada altura, más oscuro significa más lento, con un marcador sobre la línea",
+    ),
+    "T.01": (
+        "The worldline the kernel integrates: a body released at rest drifts toward the slower clocks, faster and faster, with no force term in the equation.",
+        "La línea de mundo que integra el núcleo: un cuerpo soltado en reposo deriva hacia los relojes más lentos, cada vez más rápido, sin término de fuerza en la ecuación.",
+        "a falling worldline drawn across a shaded column that shows how fast a clock runs at each height, darker meaning slower",
+        "una línea de mundo que cae trazada sobre una columna sombreada que muestra qué tan rápido avanza un reloj a cada altura, más oscuro significa más lento",
+    ),
+    "T.02": (
+        "A satellite on its orbit around the shaded Earth, and three bars for the clock budget: the gravitational gain, the velocity loss and the net, all computed from GM, the orbit radius and c.",
+        "Un satélite en su órbita alrededor de la Tierra sombreada, y tres barras para el presupuesto del reloj: la ganancia gravitatoria, la pérdida por velocidad y el neto, todo calculado desde GM, el radio orbital y c.",
+        "an orbit circle around a shaded disc with a satellite dot, and three horizontal bars of different lengths",
+        "un círculo de órbita alrededor de un disco sombreado con un punto satélite, y tres barras horizontales de distinta longitud",
+    ),
+    "T.03": (
+        "Concentric rings around a mass, darker where clocks run slower, from the Poisson solution on a grid; two dots of different size fall along the same line.",
+        "Anillos concéntricos alrededor de una masa, más oscuros donde los relojes van más lento, de la solución de Poisson en una malla; dos puntos de distinto tamaño caen por la misma línea.",
+        "concentric rings around a disc, darker toward the centre, and two dots of different size on one vertical line",
+        "anillos concéntricos alrededor de un disco, más oscuros hacia el centro, y dos puntos de distinto tamaño sobre una línea vertical",
+    ),
+}
+
+
 def lead_figure(page: dict, rel_res: str, es: bool = False) -> str:
     slug = plate_slug(page)
     code = page["code"]
-    alt_en = (f"Diagram for {code}: a worldline drawn across a shaded column that shows how fast a clock runs at each height, "
-              "darker meaning slower. Drawn by a script from the page's own numbers; no text, no photograph.")
-    alt_es = (f"Diagrama para {code}: una línea de mundo trazada sobre una columna sombreada que muestra qué tan rápido avanza un reloj "
-              "a cada altura, más oscuro significa más lento. Dibujado por un script con los números de la propia página; sin texto ni fotografía.")
+    cap_en_body, cap_es_body, alt_body_en, alt_body_es = PLATE_CAPTIONS[code]
+    alt_en = f"Diagram for {code}: {alt_body_en}. Drawn by a script from the page's own numbers; no text, no photograph."
+    alt_es = f"Diagrama para {code}: {alt_body_es}. Dibujado por un script con los números de la página; sin texto ni fotografía."
     alt_txt = alt_es if es else alt_en
-    aria_lbl = f"Diagrama principal para {code}" if es else f"Lead diagram for {code}"
-    if code == "T.01":
-        cap_en = ("Plate T.01-V · The worldline the kernel integrates: a body released at rest drifts toward the slower clocks, "
-                  "faster and faster, with no force term in the equation. Drawn by timegravity/make_plates.py from tools/timegravity_kernel.py.")
-        cap_es = ("Lámina T.01-V · La línea de mundo que integra el núcleo: un cuerpo soltado en reposo deriva hacia los relojes más lentos, "
-                  "cada vez más rápido, sin término de fuerza en la ecuación. Dibujada por timegravity/make_plates.py desde tools/timegravity_kernel.py.")
-    else:
-        cap_en = ("Plate T.00-V · A worldline across a clock-rate gradient, with a marker for the 'now' the intuition imagines. "
-                  "General relativity has the line and the shading; it has no marker. Drawn by timegravity/make_plates.py.")
-        cap_es = ("Lámina T.00-V · Una línea de mundo sobre un gradiente de ritmo de relojes, con un marcador para el 'ahora' que la intuición imagina. "
-                  "La relatividad general tiene la línea y el sombreado; no tiene marcador. Dibujada por timegravity/make_plates.py.")
-    return f"""    <figure class="tp-editorial-figure" data-lead-figure role="group" aria-label="{a(aria_lbl)}">
+    fig_label = f"Diagrama principal de {code}" if es else f"Lead diagram for {code}"
+    cap_en = f"Plate {code}-V · {cap_en_body} Drawn by timegravity/make_plates.py from tools/timegravity_kernel.py."
+    cap_es = f"Lámina {code}-V · {cap_es_body} Dibujada por timegravity/make_plates.py desde tools/timegravity_kernel.py."
+    return f"""    <figure class="tp-editorial-figure" data-lead-figure role="group" aria-label="{a(fig_label)}">
       <img class="tp-editorial-img" src="{rel_res}/plates/{slug}.png?v={png_sha8(slug)}" width="1280" height="720" alt="{a(alt_txt)}" loading="eager" fetchpriority="high" decoding="async">
       <figcaption class="tp-editorial-caption">
         {bi("span", cap_en, cap_es)}
@@ -178,7 +200,7 @@ def slope_instrument(page: dict, rel_res: str) -> str:
     )
     svg = f"""        <svg class="tg-stage" viewBox="0 0 920 420" role="img" aria-labelledby="tg-stage-title-t01 tg-stage-desc-t01" data-x0="{P['x0']}" data-x1="{P['x1']}" data-y0="{P['y0']}" data-y1="{P['y1']}" data-ztop="{P['ztop']}" data-zbot="{P['zbot']}">
           <title id="tg-stage-title-t01" data-en="Worldline of a body released at rest in a metric where only the rate of time varies with height" data-es="Línea de mundo de un cuerpo soltado en reposo en una métrica donde solo el ritmo del tiempo varía con la altura">Worldline of a body released at rest in a metric where only the rate of time varies with height</title>
-          <desc id="tg-stage-desc-t01" data-en="Left, a shaded column: clocks lower down run slower. Right, height against coordinate time: the body starts at height zero and falls 4.9 metres in one second, a parabola with no force term in the equation." data-es="A la izquierda, una columna sombreada: los relojes más bajos avanzan más lento. A la derecha, altura contra tiempo coordenado: el cuerpo parte en reposo en altura cero y cae 4.9 metros en un segundo, una parábola sin término de fuerza en la ecuación.">Left, a shaded column: clocks lower down run slower. Right, height against coordinate time: the body starts at height zero and falls 4.9 metres in one second, a parabola with no force term in the equation.</desc>
+          <desc id="tg-stage-desc-t01" data-en="Left, a shaded column: clocks lower down run slower. Right, height against coordinate time: the body starts at height zero and falls 4.9 metres in one second, a parabola with no force term in the equation." data-es="Izquierda, una columna sombreada: los relojes más abajo avanzan más lento. Derecha, altura contra tiempo coordenado: el cuerpo inicia en altura cero y cae 4.9 metros en un segundo, una parábola sin término de fuerza en la ecuación.">Left, a shaded column: clocks lower down run slower. Right, height against coordinate time: the body starts at height zero and falls 4.9 metres in one second, a parabola with no force term in the equation.</desc>
           <defs>
             <linearGradient id="tg-rate-grad" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stop-color="var(--tp-vellum)"/>
@@ -251,7 +273,7 @@ def worldline_instrument(page: dict) -> str:
       {bi("p", w["how_en"], w["how_es"], "tg-how")}
         <svg class="tg-stage" viewBox="0 0 920 340" role="img" aria-labelledby="tg-stage-title-t00 tg-stage-desc-t00">
           <title id="tg-stage-title-t00" data-en="A worldline across a clock-rate gradient with a movable marker" data-es="Una línea de mundo sobre un gradiente de ritmo de relojes con un marcador móvil">A worldline across a clock-rate gradient with a movable marker</title>
-          <desc id="tg-stage-desc-t00" data-en="Height against coordinate time. A shaded column shows clocks lower down running slower. One curve, the worldline, and one dot on it, the imagined now, which the slider moves. The physics has the curve and the shading; it has no dot." data-es="Altura contra tiempo coordenado. Una columna sombreada muestra que los relojes más bajos avanzan más lento. Una curva, la línea de mundo, y un punto sobre ella, el ahora imaginado, que el deslizador mueve. La física tiene la curva y el sombreado; no tiene punto.">Height against coordinate time. A shaded column shows clocks lower down running slower. One curve, the worldline, and one dot on it, the imagined now, which the slider moves. The physics has the curve and the shading; it has no dot.</desc>
+          <desc id="tg-stage-desc-t00" data-en="Height against coordinate time. A shaded column shows clocks lower down running slower. One curve, the worldline, and one dot on it, the imagined now, which the slider moves. The physics has the curve and the shading; it has no dot." data-es="Altura contra tiempo coordenado. Una columna sombreada muestra que los relojes más abajo avanzan más lento. Una curva, la línea de mundo, y un punto sobre ella, el ahora imaginado, que el deslizador mueve. La física tiene la curva y el sombreado; no tiene punto.">Height against coordinate time. A shaded column shows clocks lower down running slower. One curve, the worldline, and one dot on it, the imagined now, which the slider moves. The physics has the curve and the shading; it has no dot.</desc>
           <defs>
             <linearGradient id="tg-rate-grad-hub" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stop-color="var(--tp-vellum)"/>
@@ -284,11 +306,227 @@ def worldline_instrument(page: dict) -> str:
     </section>"""
 
 
+def predict_block(page: dict) -> str:
+    """Pedagogy: predict before reveal. A static question without scripts; with scripts, the chosen answer gets a verdict."""
+    pr = page.get("predict")
+    if not pr:
+        return ""
+    slug = plate_slug(page)
+    opts = "\n".join(
+        f'          <button type="button" class="tp-step-btn" data-tg-option="{i}" aria-pressed="false" data-en="{a(en)}" data-es="{a(es)}">{t(en)}</button>'
+        for i, (en, es) in enumerate(pr["options"])
+    )
+    return f"""      <div class="tg-predict" data-tg-predict data-tg-answer="{pr['answer']}" role="group" aria-labelledby="tg-predict-q-{slug}">
+        <p id="tg-predict-q-{slug}" class="tg-predict-q"><span class="tg-predict-kicker" data-en="Predict before you reveal" data-es="Predice antes de revelar">Predict before you reveal</span> {bi("span", pr["q_en"], pr["q_es"])}</p>
+        <div class="tg-btn-row">
+{opts}
+        </div>
+        <p class="tg-predict-verdict" data-tg-verdict hidden aria-live="polite" data-tg-reveal-en="{a(pr['reveal_en'])}" data-tg-reveal-es="{a(pr['reveal_es'])}"></p>
+      </div>"""
+
+
+def gps_instrument(page: dict) -> str:
+    ins = page["instrument"]
+    beta0 = 0.6
+    gamma0 = light_clock_dilation(beta0)
+    terms = gps_terms()
+    poserr = gps_position_error_per_day_m(terms["net_us"])
+    # Light clock: mirrors at y=90 and y=350 (L = 260 px); in motion the photon's path is a zigzag whose half-base is β·γ·L/2 per leg.
+    L = 260.0
+    half = beta0 * gamma0 * L / 2.0
+    zig = f"M {180 - half:.1f} 350 L 180 90 L {180 + half:.1f} 350"
+    # Orbit panel: Earth at (560, 250) r=58; orbit radius drawn on a compressed scale so the slider range fits.
+    def orbit_px(a_m: float) -> float:
+        return 72.0 + 150.0 * (a_m - R_EARTH) / (42164000.0 - R_EARTH)
+    rpx = orbit_px(A_GPS)
+    bar_scale = 3.2  # px per µs/day
+    return f"""    <section class="tg-instrument" id="instrument" data-tg-instrument="gps" data-tg-gm="{GM_EARTH}" data-tg-rearth="{R_EARTH}" aria-labelledby="tg-instrument-heading-t02">
+      <h2 id="tg-instrument-heading-t02" class="tp-h2" data-en="{a(ins['title_en'])}" data-es="{a(ins['title_es'])}">{t(ins['title_en'])}</h2>
+      {bi("p", ins["how_en"], ins["how_es"], "tg-how")}
+{predict_block(page)}
+        <svg class="tg-stage" viewBox="0 0 920 440" role="img" aria-labelledby="tg-stage-title-t02 tg-stage-desc-t02">
+          <title id="tg-stage-title-t02">A light clock at rest and in motion, and the GPS clock budget computed from three constants</title>
+          <desc id="tg-stage-desc-t02">Left: two mirrors with a photon bouncing between them; at rest the path is vertical, in motion it is a longer zigzag, so the tick takes longer by the Lorentz factor. Right: Earth, a satellite on its orbit, and three bars: the gravitational gain of the satellite clock, its velocity loss and the net, in microseconds per day; a fourth bar shows the pseudorange error after one uncorrected day.</desc>
+          <defs>
+            <radialGradient id="tg-earth-grad" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0" stop-color="var(--tp-prussian)"/>
+              <stop offset="1" stop-color="var(--tp-stone-deep)"/>
+            </radialGradient>
+          </defs>
+          <text x="180" y="40" text-anchor="middle" font-size="11" font-weight="700" data-en="light clock · v/c = {beta0:.2f}" data-es="reloj de luz · v/c = {beta0:.2f}">light clock · v/c = {beta0:.2f}</text>
+          <rect x="120" y="86" width="120" height="4" fill="var(--tp-ink)"/>
+          <rect x="120" y="350" width="120" height="4" fill="var(--tp-ink)"/>
+          <line class="tg-release-line" x1="180" y1="90" x2="180" y2="350"/>
+          <text x="186" y="222" font-size="10" fill="var(--tp-slate)" data-en="at rest" data-es="en reposo">at rest</text>
+          <path class="tg-worldline tg-zigzag" data-state="fall" d="{zig}"/>
+          <circle class="tg-body tg-photon" cx="180" cy="90" r="6"/>
+          <text x="180" y="376" text-anchor="middle" font-size="10" data-tg-read="gammalabel">tick × γ = {gamma0:.3f}</text>
+          <text x="180" y="392" text-anchor="middle" font-size="9.5" fill="var(--tp-slate)" data-en="(same speed c, longer path)" data-es="(misma rapidez c, camino más largo)">(same speed c, longer path)</text>
+          <circle cx="560" cy="250" r="58" fill="url(#tg-earth-grad)" stroke="var(--tp-ink)" stroke-width="1.2"/>
+          <text x="560" y="254" text-anchor="middle" font-size="10" fill="var(--tp-vellum)" data-en="ground clock" data-es="reloj en tierra">ground clock</text>
+          <circle class="tg-orbit" cx="560" cy="250" r="{rpx:.1f}" fill="none" stroke="var(--tp-rule-strong)" stroke-dasharray="4 4"/>
+          <circle class="tg-satellite" cx="{560 + rpx:.1f}" cy="250" r="7" fill="var(--tp-minium)" stroke="var(--tp-vellum)" stroke-width="2"/>
+          <text class="tg-sat-label" x="{560 + rpx + 12:.1f}" y="246" font-size="10" data-tg-read="alabel">a = {A_GPS / 1000:,.0f} km</text>
+          <g class="tg-bars" transform="translate(380, 40)">
+            <text x="0" y="0" font-size="10" font-weight="700" data-en="satellite clock, µs per day" data-es="reloj satelital, µs por día">satellite clock, µs per day</text>
+            <rect class="tg-bar tg-bar-grav" x="0" y="10" width="{terms['grav_us'] * bar_scale:.1f}" height="12" fill="var(--tp-verdigris)"/>
+            <text x="{terms['grav_us'] * bar_scale + 6:.1f}" y="20" font-size="10" data-tg-read="gravbar">+{terms['grav_us']:.1f} (potential)</text>
+            <rect class="tg-bar tg-bar-vel" x="0" y="28" width="{abs(terms['vel_us']) * bar_scale:.1f}" height="12" fill="var(--tp-sienna)"/>
+            <text x="{abs(terms['vel_us']) * bar_scale + 6:.1f}" y="38" font-size="10" data-tg-read="velbar">{terms['vel_us']:.1f} (speed)</text>
+            <rect class="tg-bar tg-bar-net" x="0" y="46" width="{terms['net_us'] * bar_scale:.1f}" height="12" fill="var(--tp-prussian)"/>
+            <text x="{terms['net_us'] * bar_scale + 6:.1f}" y="56" font-size="10" font-weight="700" data-tg-read="netbar">+{terms['net_us']:.1f} net</text>
+          </g>
+          <g class="tg-errbar" transform="translate(380, 392)">
+            <text x="0" y="0" font-size="10" font-weight="700" data-en="pseudorange error after one uncorrected day" data-es="error de pseudodistancia tras un día sin corregir">pseudorange error after one uncorrected day</text>
+            <rect x="0" y="8" width="480" height="10" fill="var(--tp-stone-deep)" stroke="var(--tp-rule)"/>
+            <rect class="tg-bar tg-bar-err" x="0" y="8" width="0" height="10" fill="var(--tp-minium)"/>
+            <text x="486" y="17" font-size="10" data-tg-read="errbar">0 km (corrected)</text>
+          </g>
+        </svg>
+      <div class="tg-controls">
+        <div class="tp-control-group">
+          <label for="tg-beta-t02">
+            <span data-en="Light-clock speed v/c" data-es="Rapidez del reloj de luz v/c">Light-clock speed v/c</span>
+            <span data-tg-read="beta">{beta0:.2f}</span>
+          </label>
+          <input id="tg-beta-t02" data-tg-beta type="range" min="0" max="0.95" step="0.01" value="{beta0}">
+          <label for="tg-orbit-t02">
+            <span data-en="Orbit radius a (km)" data-es="Radio orbital a (km)">Orbit radius a (km)</span>
+            <span data-tg-read="a">{A_GPS / 1000:,.0f}</span>
+          </label>
+          <input id="tg-orbit-t02" data-tg-orbit type="range" min="7000" max="42164" step="100" value="{round(A_GPS / 1000)}" aria-describedby="tg-status-t02">
+        </div>
+        <div class="tg-btn-row" role="group" aria-label="Knockout and planted defect">
+          <button type="button" class="tp-step-btn tp-knockout-btn" data-tg-knockout aria-pressed="false" data-en="⚡ Knockout · leave the satellite clock uncorrected" data-es="⚡ Apagado · dejar el reloj satelital sin corregir">⚡ Knockout · leave the satellite clock uncorrected</button>
+          <button type="button" class="tp-step-btn" data-tg-flip aria-pressed="false" data-en="Planted defect · correct it the wrong way" data-es="Defecto plantado · corregirlo al revés">Planted defect · correct it the wrong way</button>
+          <button type="button" class="tp-step-btn" data-tg-replay data-en="Replay the tick" data-es="Repetir el tic">Replay the tick</button>
+        </div>
+      </div>
+      <div class="tp-readout-strip">
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Lorentz factor γ of the light clock" data-es="Factor de Lorentz γ del reloj de luz">Lorentz factor γ of the light clock</span>
+          <span class="tp-readout-v" data-tg-read="gamma">{gamma0:.4f}</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Gravitational · velocity (µs/day)" data-es="Gravitatorio · velocidad (µs/día)">Gravitational · velocity (µs/day)</span>
+          <span class="tp-readout-v" data-tg-read="terms">+{terms['grav_us']:.2f} · {terms['vel_us']:.2f}</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Net, two ways (µs/day)" data-es="Neto, de dos maneras (µs/día)">Net, two ways (µs/day)</span>
+          <span class="tp-readout-v" data-tg-read="net">+{terms['net_us']:.2f} · +{gps_schwarzschild_net():.2f}</span>
+        </div>
+        <div class="tp-readout-box" data-tg-readout-box="err" data-alert="false">
+          <span class="tp-readout-k" data-en="Pseudorange error after one day" data-es="Error de pseudodistancia tras un día">Pseudorange error after one day</span>
+          <span class="tp-readout-v" data-tg-read="poserr">0 km (corrected; {poserr / 1000:.1f} km if not)</span>
+        </div>
+      </div>
+      <p id="tg-status-t02" class="tg-status" data-tg-status data-state="fall" aria-live="polite" data-en="Corrected: the satellite clock is pre-set to run slow by the net amount, so from the ground it keeps time with the ground clocks." data-es="Corregido: el reloj satelital se preajusta para atrasar la cantidad neta, así que desde tierra mantiene el tiempo con los relojes en tierra.">Corrected: the satellite clock is pre-set to run slow by the net amount, so from the ground it keeps time with the ground clocks.</p>
+    </section>"""
+
+
+def poisson_instrument(page: dict) -> str:
+    ins = page["instrument"]
+    mass = GM_EARTH / G_NEWTON
+    sol = poisson_radial(mass, R_EARTH, 4.0 * R_EARTH, 400)
+    cx, cy, rpx = 240.0, 230.0, 48.0
+    rings = []
+    for k in range(1, 8):
+        rr = 1.0 + 0.4 * k  # in units of R, out to 3.8 R
+        i = min(400, int(round(rr / 4.0 * 400)))
+        depth = abs(sol["phi"][i]) / abs(sol["phi"][100])  # relative to the surface potential
+        rings.append(f'<circle class="tg-ring" data-ring="{k}" cx="{cx}" cy="{cy}" r="{rpx * rr:.1f}" fill="none" stroke="var(--tp-prussian)" stroke-width="{3 + 6 * depth:.1f}" style="opacity:{0.15 + 0.6 * depth:.2f}"/>')
+    pts = []
+    for i in range(0, 401, 10):
+        x = 30 + 420 * (sol["r"][i] / (4.0 * R_EARTH))
+        y = 425 - 40 * (abs(sol["phi"][i]) / abs(sol["phi_center"]))
+        pts.append(f'{"M" if i == 0 else "L"} {x:.1f} {y:.1f}')
+    curve = " ".join(pts)
+    fall0 = fall_two_bodies(0.0)
+    return f"""    <section class="tg-instrument" id="instrument" data-tg-instrument="poisson" data-tg-gm="{GM_EARTH}" data-tg-rearth="{R_EARTH}" data-tg-gnewton="{G_NEWTON}" aria-labelledby="tg-instrument-heading-t03">
+      <h2 id="tg-instrument-heading-t03" class="tp-h2" data-en="{a(ins['title_en'])}" data-es="{a(ins['title_es'])}">{t(ins['title_en'])}</h2>
+      {bi("p", ins["how_en"], ins["how_es"], "tg-how")}
+{predict_block(page)}
+        <svg class="tg-stage" viewBox="0 0 920 440" role="img" aria-labelledby="tg-stage-title-t03 tg-stage-desc-t03">
+          <title id="tg-stage-title-t03">A mass and the clock-rate map around it from Poisson's equation, and two bodies of different composition falling together</title>
+          <desc id="tg-stage-desc-t03">Left: a disc for the mass with concentric rings, darker and thicker where the potential is deeper and clocks run slower, and a small curve of the potential against radius below. Right: two bodies released from the same height above a ground line fall together; a readout gives their separation.</desc>
+          <text x="{cx}" y="36" text-anchor="middle" font-size="11" font-weight="700" data-en="clock-rate map from ∇²Φ = 4πGρ" data-es="mapa de ritmo de relojes desde ∇²Φ = 4πGρ">clock-rate map from ∇²Φ = 4πGρ</text>
+          <g class="tg-rings">{''.join(rings)}</g>
+          <circle class="tg-mass" cx="{cx}" cy="{cy}" r="{rpx}" fill="var(--tp-ink)"/>
+          <text class="tg-mass-label" x="{cx}" y="{cy + 4}" text-anchor="middle" font-size="10" fill="var(--tp-vellum)" data-tg-read="mlabel">M = 1.0 M⊕</text>
+          <path class="tg-phi-curve" d="{curve}" fill="none" stroke="var(--tp-prussian)" stroke-width="2"/>
+          <text x="30" y="436" font-size="9.5" fill="var(--tp-slate)" data-en="Φ(r) on the grid, centre to 4R" data-es="Φ(r) en la malla, del centro a 4R">Φ(r) on the grid, centre to 4R</text>
+          <line class="tg-axis" x1="520" y1="400" x2="890" y2="400"/>
+          <text x="890" y="418" text-anchor="end" font-size="10" data-en="surface" data-es="superficie">surface</text>
+          <line class="tg-release-line" x1="520" y1="80" x2="890" y2="80"/>
+          <text x="890" y="74" text-anchor="end" font-size="10" data-en="released together" data-es="soltados juntos">released together</text>
+          <circle class="tg-body tg-body-a" cx="640" cy="80" r="9"/>
+          <text x="640" y="62" text-anchor="middle" font-size="10">Ti</text>
+          <circle class="tg-body tg-body-b" cx="770" cy="80" r="13"/>
+          <text x="770" y="58" text-anchor="middle" font-size="10">Pt</text>
+          <text x="705" y="436" text-anchor="middle" font-size="9.5" fill="var(--tp-slate)" data-tg-read="seplabel" data-en="separation drawn ×10⁴" data-es="separación dibujada ×10⁴">separation drawn ×10⁴</text>
+        </svg>
+      <div class="tg-controls">
+        <div class="tp-control-group">
+          <label for="tg-mass-t03">
+            <span data-en="Source mass M (Earth masses)" data-es="Masa fuente M (masas terrestres)">Source mass M (Earth masses)</span>
+            <span data-tg-read="m">1.0</span>
+          </label>
+          <input id="tg-mass-t03" data-tg-mass type="range" min="0.1" max="3" step="0.1" value="1" aria-describedby="tg-status-t03">
+        </div>
+        <div class="tg-btn-row" role="group" aria-label="Knockout and planted defect">
+          <button type="button" class="tp-step-btn tp-knockout-btn" data-tg-knockout aria-pressed="false" data-en="⚡ Knockout · remove the source (M → 0)" data-es="⚡ Apagado · quitar la fuente (M → 0)">⚡ Knockout · remove the source (M → 0)</button>
+          <button type="button" class="tp-step-btn" data-tg-flip aria-pressed="false" data-en="Planted defect · η = 10⁻³" data-es="Defecto plantado · η = 10⁻³">Planted defect · η = 10⁻³</button>
+          <button type="button" class="tp-step-btn" data-tg-replay data-en="Replay the fall" data-es="Repetir la caída">Replay the fall</button>
+        </div>
+      </div>
+      <div class="tp-readout-strip">
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Surface acceleration GM/R²" data-es="Aceleración en superficie GM/R²">Surface acceleration GM/R²</span>
+          <span class="tp-readout-v" data-tg-read="gsurf">{G_NEWTON * mass / R_EARTH**2:.3f} m/s²</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Φ(0) / (GM/R), grid vs −1.5" data-es="Φ(0) / (GM/R), malla vs −1.5">Φ(0) / (GM/R), grid vs −1.5</span>
+          <span class="tp-readout-v" data-tg-read="phi0">{sol['phi_center'] / (G_NEWTON * mass / R_EARTH):.4f}</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Grid vs −GM/r outside, worst rel. error" data-es="Malla vs −GM/r afuera, peor error rel.">Grid vs −GM/r outside, worst rel. error</span>
+          <span class="tp-readout-v" data-tg-read="griderr">{sol['worst_rel_err_exterior']:.1e}</span>
+        </div>
+        <div class="tp-readout-box" data-tg-readout-box="err" data-alert="false">
+          <span class="tp-readout-k" data-en="Separation after 1 s (η)" data-es="Separación tras 1 s (η)">Separation after 1 s (η)</span>
+          <span class="tp-readout-v" data-tg-read="sep">{fall0['separation_m']:.1e} m (η = 0)</span>
+        </div>
+      </div>
+      <p id="tg-status-t03" class="tg-status" data-tg-status data-state="fall" aria-live="polite" data-en="Both bodies read the same map and fall as one: the geodesic equation has no term for what they are made of." data-es="Ambos cuerpos leen el mismo mapa y caen como uno: la ecuación geodésica no tiene término para lo que están hechos.">Both bodies read the same map and fall as one: the geodesic equation has no term for what they are made of.</p>
+    </section>"""
+
+
+def budget_table(page: dict) -> str:
+    b = gps_uncertainty_budget()
+    rows = "\n".join(
+        f'            <tr><td>{t(r["input"])}</td><td><code>{r["value"]:.9g}</code></td><td><code>{r["sigma"]:.3g}</code></td><td><code>{r["contribution_us"]:.3f}</code></td></tr>'
+        for r in b["rows"]
+    )
+    return f"""        <h3 id="budget" data-en="Uncertainty budget for the net term (metrology habit, GUM style)" data-es="Presupuesto de incertidumbre del término neto (hábito metrológico, estilo GUM)">Uncertainty budget for the net term (metrology habit, GUM style)</h3>
+        {bi("p", "Each input's stated 1σ uncertainty is propagated numerically to the net term and the contributions are combined in quadrature. c is exact by definition. The ground clock's rotation, which the first-order sum leaves out and the Schwarzschild path includes, is listed for comparison.", "La incertidumbre 1σ declarada de cada entrada se propaga numéricamente al término neto y las contribuciones se combinan en cuadratura. c es exacta por definición. La rotación del reloj en tierra, que la suma de primer orden omite y el camino de Schwarzschild incluye, se lista para comparar.")}
+        <div class="tp-table-wrap">
+          <table class="tp-table tg-ledger-table" aria-label="Uncertainty budget for the GPS net clock term">
+            <thead><tr>{bi("th", "Input", "Entrada")}{bi("th", "Value (SI)", "Valor (SI)")}{bi("th", "1σ", "1σ")}{bi("th", "Contribution to net (µs/day)", "Contribución al neto (µs/día)")}</tr></thead>
+            <tbody>
+{rows}
+            <tr><td>{bi("strong", "Combined (quadrature)", "Combinada (cuadratura)")}</td><td></td><td></td><td><code>{b["combined_sigma_us"]:.3f}</code></td></tr>
+            <tr><td>{bi("em", "Ground rotation, not in the first-order sum", "Rotación del suelo, no está en la suma de primer orden")}</td><td></td><td></td><td><code>{b["ground_rotation_effect_us"]:.3f}</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        {bi("p", b["note"], "c es exacta por definición; la excentricidad (periódica, de media cero) y el potencial geoide-frente-a-ecuador no están en el presupuesto y son la razón de la ventana de aceptación de ±0.7 µs/día.", "tg-how")}"""
+
+
 def plate_d(page: dict) -> str:
     code = page["code"]
     return f"""        <figure class="tp-distill-figure" role="group" aria-label="Plate {code}-D Visual Intuition Bridge">
           <svg class="tp-distill-svg" viewBox="0 0 920 228" role="img" aria-labelledby="tp-distill-title-t01">
-            <title id="tp-distill-title-t01" data-en="Plate T.01-D Visual Intuition Bridge: from the marching line on wet grass to a clock-rate gradient versus a flattened gradient, and the fall at g that only one of them produces" data-es="Lámina T.01-D Puente de Intuición Visual: de la fila de marchantes sobre pasto mojado a un gradiente del ritmo de relojes frente a un gradiente aplanado, y la caída a g que solo el primero produce">Plate T.01-D Visual Intuition Bridge: from the marching line on wet grass to a clock-rate gradient versus a flattened gradient, and the fall at g that only one of them produces</title>
+            <title id="tp-distill-title-t01" data-en="Plate T.01-D Visual Intuition Bridge: from the marching line on wet grass to a clock-rate gradient versus a flattened gradient, and the fall at g that only one of them produces" data-es="Lámina T.01-D Puente de Intuición Visual: de la fila de marchantes en pasto mojado a un gradiente de ritmo de relojes frente a un gradiente aplanado, y la caída a g que solo uno de ellos produce">Plate T.01-D Visual Intuition Bridge: from the marching line on wet grass to a clock-rate gradient versus a flattened gradient, and the fall at g that only one of them produces</title>
             <rect x="6" y="6" width="908" height="216" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
             <rect x="20" y="20" width="266" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-prussian)" stroke-width="1.5"/>
             <text x="34" y="40" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-prussian)" data-en="1 · EVERYDAY ANALOGY (T.01)" data-es="1 · ANALOGÍA COTIDIANA (T.01)">1 · EVERYDAY ANALOGY (T.01)</text>
@@ -395,27 +633,38 @@ def track_map(rel_res: str) -> str:
 
 def ledger_table(page: dict) -> str:
     rows = []
+    fetched_dates = set()
     for rid in page["ledger_ids"]:
         r = ROWS[rid]
         rec = CACHE.get("doi:" + r["doi"].lower(), {})
+        sc = CACHE.get("scite:" + r["doi"].lower(), {})
         src = f"{rec.get('first_author', '')} ({r['year']}), {rec.get('journal', '')}"
+        if sc.get("found"):
+            fetched_dates.add(str(sc.get("fetched", "")))
+            scite = (f'<a class="tp-cite-link" href="https://scite.ai/reports/{a(r["doi"])}" target="_blank" rel="noopener noreferrer" '
+                     f'title="Scite report for {a(r["doi"])}">{sc.get("supporting", 0)} · {sc.get("contrasting", 0)} · {sc.get("mentioning", 0)}</a> '
+                     f'<span class="tg-scite-n">/ {sc.get("citing_publications", 0):,}</span>')
+        else:
+            scite = bi("span", "not fetched", "sin consultar")
         rows.append(
             f'            <tr><td><code>{rid}</code></td><td><span class="tg-label-chip tg-claim-look" data-tg-label="{r["label"]}" data-tg-label-es="{a(LABEL_ES[r["label"]])}"></span></td>'
             f'<td>{t(src)}</td><td><a class="tp-cite-link" href="https://doi.org/{a(r["doi"])}" target="_blank" rel="noopener noreferrer">{t(r["doi"])}</a></td>'
-            f'<td>{t(r["collaboration"])}</td><td>{r["kind"]}</td><td>{r["review_by"]}</td></tr>'
+            f'<td>{t(r["collaboration"])}</td><td>{r["kind"]}</td><td>{scite}</td><td>{r["review_by"]}</td></tr>'
         )
+    fetched = ", ".join(sorted(fetched_dates)) or "—"
     return f"""        <h3 id="ledger" data-en="Grounding ledger rows cited on this page" data-es="Filas del libro de registro citadas en esta página">Grounding ledger rows cited on this page</h3>
         {bi("p", "Every row below resolves in the site's offline Crossref cache. The lint derives what each set of rows can carry; a person decided the label on each claim above. Rows pass a review date and the build fails until someone rereads the source.", "Cada fila de abajo resuelve en la caché Crossref sin conexión del sitio. El lint deriva lo que cada conjunto de filas puede sostener; una persona decidió la etiqueta de cada afirmación de arriba. Las filas tienen fecha de revisión y la construcción falla hasta que alguien relea la fuente.")}
         <div class="tp-table-wrap">
           <table class="tp-table tg-ledger-table" aria-label="Ledger rows for {page['code']}">
             <thead><tr>
-              {bi("th", "Row", "Fila")}{bi("th", "Row label", "Etiqueta de la fila")}{bi("th", "Source", "Fuente")}<th>DOI</th>{bi("th", "Collaboration", "Colaboración")}{bi("th", "Kind", "Tipo")}{bi("th", "Review by", "Revisar antes de")}
+              {bi("th", "Row", "Fila")}{bi("th", "Row label", "Etiqueta de la fila")}{bi("th", "Source", "Fuente")}<th>DOI</th>{bi("th", "Collaboration", "Colaboración")}{bi("th", "Kind", "Tipo")}{bi("th", "Scite: supporting · contrasting · mentioning / citing", "Scite: apoyo · contraste · mención / citantes")}{bi("th", "Review by", "Revisar antes de")}
             </tr></thead>
             <tbody>
 {chr(10).join(rows)}
             </tbody>
           </table>
-        </div>"""
+        </div>
+        {bi("p", f"Scite column: [observed: Scite ML citation classification, accessed {fetched}] via Scite's public tallies endpoint. The counts are a classifier's output over indexed citation statements, an evidence-synthesis habit borrowed from medicine; they never replace reading the source, and a row with more contrasting than supporting statements is flagged for a human re-read in the label checklist.", f"Columna Scite: [observado: clasificación de citas por aprendizaje automático de Scite, consultada {fetched}] mediante el punto público de conteos de Scite. Los conteos son la salida de un clasificador sobre enunciados de cita indexados, un hábito de síntesis de evidencia tomado de la medicina; nunca sustituyen leer la fuente, y una fila con más enunciados de contraste que de apoyo se marca para relectura humana en la lista de verificación de etiquetas.", "tg-how")}"""
 
 
 def render_sections(page: dict, rel_res: str) -> str:
@@ -448,6 +697,8 @@ def render_sections(page: dict, rel_res: str) -> str:
             out.append(change_box(block))
         elif kind == "ledger_table":
             out.append(ledger_table(page))
+        elif kind == "budget_table":
+            out.append(budget_table(page))
         elif kind == "labels":
             out.append(labels_legend())
         elif kind == "track_map":
@@ -491,11 +742,11 @@ def skill_box(page: dict) -> str:
         return ""
     skill_md = (ROOT / page["skill"]).read_text(encoding="utf-8")
     verify_src = (ROOT / page["verifier"]).read_text(encoding="utf-8")
-    skill_fn = "timegravity-t01-time-slope-geodesic.SKILL.md"
+    skill_fn = page.get("skill_filename", "timegravity-t01-time-slope-geodesic.SKILL.md")
     py_fn = Path(page["verifier"]).name
     return f"""        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion and Python verifier">
           <div class="tp-skill-header">
-            <span class="tp-skill-kicker" data-en="SKILL.md companion &amp; Python verifier · {page['code']}" data-es="SKILL.md acompañante y verificador en Python · {page['code']}">SKILL.md companion &amp; Python verifier · {page['code']}</span>
+            <span class="tp-skill-kicker" data-en="SKILL.md companion &amp; Python verifier · {page['code']}" data-es="Compañero SKILL.md y verificador en Python · {page['code']}">SKILL.md companion &amp; Python verifier · {page['code']}</span>
             <span class="tp-skill-compat" data-en="Works with Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3" data-es="Compatible con Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3">Works with Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3</span>
           </div>
           {bi("p", f"Rebuild this instrument locally and run the verifier as the acceptance gate: python {page['generator']} then python {page['verifier']} (and --planted-defect, which must fail). Then python tools/check_timegravity_labels.py.", f"Reconstruye este instrumento localmente y corre el verificador como puerta de aceptación: python {page['generator']} y luego python {page['verifier']} (y --planted-defect, que debe fallar). Después python tools/check_timegravity_labels.py.", "tp-skill-desc")}
@@ -505,19 +756,28 @@ def skill_box(page: dict) -> str:
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-py-download="{py_fn}" data-en="Download Python Verifier ({py_fn})" data-es="Descargar verificador en Python ({py_fn})">Download Python Verifier ({py_fn})</button>
           </div>
           <details class="tp-skill-source-details">
-            <summary class="tp-skill-source-summary" data-en="Show the SKILL.md source" data-es="Mostrar el código de SKILL.md">Show the SKILL.md source</summary>
+            <summary class="tp-skill-source-summary"><span data-en="Show the " data-es="Mostrar el código de ">Show the </span><code>SKILL.md</code><span data-en=" source" data-es=" fuente"> source</span></summary>
             <pre class="tp-skill-pre"><code data-skill-source>{t(skill_md)}</code></pre>
           </details>
           <details class="tp-skill-source-details">
-            <summary class="tp-skill-source-summary" data-en="Show the verifier {py_fn}" data-es="Mostrar el verificador {py_fn}">Show the verifier {py_fn}</summary>
+            <summary class="tp-skill-source-summary"><span data-en="Show the verifier " data-es="Mostrar el verificador ">Show the verifier </span><code>{py_fn}</code></summary>
             <pre class="tp-skill-pre"><code data-py-source>{t(verify_src)}</code></pre>
           </details>
         </section>"""
 
 
+def neighbours(page: dict) -> tuple[dict | None, dict | None]:
+    """Previous and next entries of TRACK_MAP in reading order (the hub is first)."""
+    idx = next(i for i, m in enumerate(TRACK_MAP) if m["code"] == page["code"])
+    prev = TRACK_MAP[idx - 1] if idx > 0 else None
+    nxt = TRACK_MAP[idx + 1] if idx + 1 < len(TRACK_MAP) else None
+    return prev, nxt
+
+
 def open_question(page: dict) -> str:
-    nxt_en = f"Next: {page['next_code']} · {page['next_title_en']}" + ("" if page.get("next_built") else " (in preparation)")
-    nxt_es = f"Siguiente: {page['next_code']} · {page['next_title_es']}" + ("" if page.get("next_built") else " (en preparación)")
+    _prev, nx = neighbours(page)
+    nxt_en = f"Next: {nx['code']} · {nx['title_en']}" + ("" if nx["built"] else " (in preparation)")
+    nxt_es = f"Siguiente: {nx['code']} · {nx['title_es']}" + ("" if nx["built"] else " (en preparación)")
     return f"""        <section class="tg-open-question" aria-label="The open question this page ends with">
           <p class="tp-kicker" data-en="This page ends with one open question" data-es="Esta página termina con una pregunta abierta">This page ends with one open question</p>
           {bi("p", page["open_question_en"], page["open_question_es"])}
@@ -526,32 +786,37 @@ def open_question(page: dict) -> str:
 
 
 def pager(page: dict, rel_res: str) -> str:
-    if page["slug"] == "":
+    pv, nx = neighbours(page)
+    if pv is None:
         prev = '<span class="tp-pager-link tp-pager-empty" aria-hidden="true"></span>'
     else:
-        prev = (f'<a class="tp-pager-link tp-pager-prev" href="{B._href(rel_res, "timegravity/")}" rel="prev"><span class="tp-pager-dir">'
-                f'<span data-en="&larr; Hub" data-es="&larr; Inicio">&larr; Hub</span> · {page["prev_code"]}</span>'
-                f'<strong data-en="{a(page["prev_title_en"])}" data-es="{a(page["prev_title_es"])}">{t(page["prev_title_en"])}</strong></a>')
+        prev_href = "timegravity/" + (f"{pv['slug']}/" if pv["slug"] else "")
+        prev_lbl_en = "&larr; Hub" if not pv["slug"] else "&larr; Previous"
+        prev_lbl_es = "&larr; Inicio" if not pv["slug"] else "&larr; Anterior"
+        prev = (f'<a class="tp-pager-link tp-pager-prev" href="{B._href(rel_res, prev_href)}" rel="prev"><span class="tp-pager-dir">'
+                f'<span data-en="{prev_lbl_en}" data-es="{prev_lbl_es}">{prev_lbl_en}</span> · {pv["code"]}</span>'
+                f'<strong data-en="{a(pv["title_en"])}" data-es="{a(pv["title_es"])}">{t(pv["title_en"])}</strong></a>')
     next_live = None
-    if not page.get("next_built"):
-        codes = [m["code"] for m in TRACK_MAP]
-        idx = codes.index(page["code"]) if page["code"] in codes else -1
+    if nx is not None and not nx.get("built"):
+        idx = next((i for i, m in enumerate(TRACK_MAP) if m["code"] == page["code"]), -1)
         for m in (TRACK_MAP[idx + 1:] if idx >= 0 else []):
             if m["built"] and m["slug"]:
                 next_live = m
                 break
-    if page.get("next_built"):
-        nxt = (f'<a class="tp-pager-link tp-pager-next" href="{B._href(rel_res, "timegravity/" + page["next_slug"] + "/")}" rel="next"><span class="tp-pager-dir">'
-               f'<span data-en="Next &rarr;" data-es="Siguiente &rarr;">Next &rarr;</span> · {page["next_code"]}</span>'
-               f'<strong data-en="{a(page["next_title_en"])}" data-es="{a(page["next_title_es"])}">{t(page["next_title_en"])}</strong></a>')
-    elif next_live is not None:
+    if nx is not None and nx.get("built"):
+        nxt = (f'<a class="tp-pager-link tp-pager-next" href="{B._href(rel_res, "timegravity/" + nx["slug"] + "/")}" rel="next"><span class="tp-pager-dir">'
+               f'<span data-en="Next &rarr;" data-es="Siguiente &rarr;">Next &rarr;</span> · {nx["code"]}</span>'
+               f'<strong data-en="{a(nx["title_en"])}" data-es="{a(nx["title_es"])}">{t(nx["title_en"])}</strong></a>')
+    elif next_live is not None and nx is not None:
         nxt = (f'<a class="tp-pager-link tp-pager-next" href="{B._href(rel_res, "timegravity/" + next_live["slug"] + "/")}" rel="next"><span class="tp-pager-dir">'
-               f'<span data-en="Next live page &rarr; ({page["next_code"]} in preparation)" data-es="Siguiente publicada &rarr; ({page["next_code"]} en preparación)">Next live page &rarr; ({page["next_code"]} in preparation)</span> · {next_live["code"]}</span>'
+               f'<span data-en="Next live page &rarr; ({nx["code"]} in preparation)" data-es="Siguiente publicada &rarr; ({nx["code"]} en preparación)">Next live page &rarr; ({nx["code"]} in preparation)</span> · {next_live["code"]}</span>'
                f'<strong data-en="{a(next_live["title_en"])}" data-es="{a(next_live["title_es"])}">{t(next_live["title_en"])}</strong></a>')
-    else:
+    elif nx is not None:
         nxt = (f'<span class="tp-pager-link tp-pager-next" aria-disabled="true"><span class="tp-pager-dir">'
-               f'<span data-en="Next (in preparation)" data-es="Siguiente (en preparación)">Next (in preparation)</span> · {page["next_code"]}</span>'
-               f'<strong data-en="{a(page["next_title_en"])}" data-es="{a(page["next_title_es"])}">{t(page["next_title_en"])}</strong></span>')
+               f'<span data-en="Next (in preparation)" data-es="Siguiente (en preparación)">Next (in preparation)</span> · {nx["code"]}</span>'
+               f'<strong data-en="{a(nx["title_en"])}" data-es="{a(nx["title_es"])}">{t(nx["title_en"])}</strong></span>')
+    else:
+        nxt = '<span class="tp-pager-link tp-pager-empty" aria-hidden="true"></span>'
     all_link = (f'<p class="tp-pager-all"><a href="{B._href(rel_res, "timegravity/")}" data-en="All Time &amp; Gravity pages &rarr;" '
                 f'data-es="Todas las páginas de Tiempo y Gravedad &rarr;">All Time &amp; Gravity pages &rarr;</a></p>')
     return f"""    <nav class="tp-pager" aria-label="More in Time and Gravity">
@@ -597,7 +862,15 @@ def render_page(page: dict, catalog: dict, lang: str = "en") -> str:
     # Own classes, not tp-act-pill: theme-plate.mjs relabels .tp-act-jump-bar pills with the Folio act names.
     jump_html = "\n".join(f'      <a class="tg-jump-pill" href="{h}" data-en="{a(e)}" data-es="{a(s)}">{t(e)}</a>' for h, e, s in jump)
 
-    instrument = slope_instrument(page, rel_res) if slug else worldline_instrument(page)
+    kind = (page.get("instrument") or {}).get("kind", "slope")
+    if not slug:
+        instrument = worldline_instrument(page)
+    elif kind == "gps":
+        instrument = gps_instrument(page)
+    elif kind == "poisson":
+        instrument = poisson_instrument(page)
+    else:
+        instrument = slope_instrument(page, rel_res)
     ai_line = bi("p", page["ai_line_en"], page["ai_line_es"], "tg-ai-line") if page.get("ai_line_en") else ""
     order = bi("span", page["order_label_en"], page["order_label_es"])
     rt = bi("span", page["reading_time_en"], page["reading_time_es"])

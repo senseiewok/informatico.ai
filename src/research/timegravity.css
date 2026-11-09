@@ -243,6 +243,37 @@
   .tg-open-question p { margin: 0.3rem 0 0; font-size: 1.2rem; font-weight: 700; }
   .tg-open-question .tg-next { margin-top: 0.5rem; font-size: 0.9rem; font-weight: 400; color: var(--tp-graphite); }
 
+  /* Predict before reveal (pedagogy): a question, three answers, a verdict once the reader commits. */
+  .tg-predict {
+    margin: 0.4rem 0 1rem;
+    padding: 0.8rem 1rem;
+    border: 1px dashed var(--tp-rule-strong);
+    border-radius: 8px;
+    background-color: var(--tp-stone);
+  }
+  .tg-predict-q { margin: 0 0 0.55rem; font-size: 0.95rem; line-height: 1.5; }
+  .tg-predict-kicker {
+    display: inline-block;
+    margin-right: 0.4rem;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--tp-sienna);
+  }
+  .tg-predict .tp-step-btn[aria-pressed="true"] { background-color: var(--tp-prussian); border-color: var(--tp-prussian); color: var(--tp-vellum); }
+  .tg-predict-verdict { margin: 0.6rem 0 0; font-size: 0.9rem; line-height: 1.5; color: var(--tp-graphite); }
+  .tg-predict-verdict[data-correct="true"] { color: var(--tp-verdigris); }
+  .tg-predict-verdict[data-correct="false"] { color: var(--tp-sienna); }
+
+  /* T.02 and T.03 instrument parts */
+  .tg-zigzag { stroke: var(--tp-minium); }
+  .tg-zigzag[data-state="flat"] { stroke: var(--tp-verdigris); }
+  .tg-bar { transition: width 240ms ease; }
+  .tg-ring { transition: opacity 240ms ease, stroke-width 240ms ease; }
+  .tg-scite-n { font-family: var(--font-mono, monospace); font-size: 0.74rem; color: var(--tp-slate); }
+
   .tp-track-chip-timegravity {
     background: linear-gradient(135deg, var(--tp-vellum) 0%, var(--tp-verdigris-soft) 100%);
     border-color: var(--tp-prussian);
@@ -255,6 +286,6 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .tg-worldline, .tg-body, .tg-now-marker { transition: none !important; animation: none !important; }
+    .tg-worldline, .tg-body, .tg-now-marker, .tg-bar, .tg-ring { transition: none !important; animation: none !important; }
   }
 }

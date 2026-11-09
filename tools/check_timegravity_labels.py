@@ -129,6 +129,16 @@ def check_ledger(ledger: dict, cache: dict, today: dt.date, errors: list[str]) -
             errors.append(f"ledger {rid}: DOI {doi} does not resolve in the offline Crossref cache")
         elif rec.get("year") and abs(int(rec["year"]) - int(row.get("year", 0))) > 1:
             errors.append(f"ledger {rid}: year {row.get('year')} disagrees with Crossref {rec['year']}")
+        # Evidence-synthesis habit: Scite citation polarity is a WARN, never a verdict (the checklist says what to do).
+        sc = cache.get("scite:" + doi.lower())
+        if sc and sc.get("found"):
+            if sc.get("retracted"):
+                errors.append(f"ledger {rid}: Scite marks DOI {doi} as retracted; a retracted row cannot back a claim")
+            if int(sc.get("contrasting", 0)) > int(sc.get("supporting", 0)):
+                WARNINGS.append(
+                    f"ledger {rid}: Scite shows more contrasting ({sc.get('contrasting')}) than supporting ({sc.get('supporting')}) "
+                    "citation statements [observed: Scite ML citation classification]; re-read three contrasting statements before keeping the label"
+                )
         rb = str(row.get("review_by", ""))
         if not DATE_RE.match(rb):
             errors.append(f"ledger {rid}: review_by {rb!r} is not YYYY-MM-DD")
@@ -219,14 +229,38 @@ def page_paths() -> list[tuple[str, Path, Path, bool]]:
     return out
 
 
-def lint(planted_defect: bool = False, today: dt.date | None = None) -> tuple[list[str], dict]:
+WARNINGS: list[str] = []
+
+# Mutation suite (software-verification habit): each mutant is applied in memory and the lint must report >= 1 error.
+MUTANTS: tuple[str, ...] = (
+    "flip_up",        # SINGLE RESULT -> MEASURED (the planted defect)
+    "drop_parent",    # first DERIVED claim loses data-tg-parent
+    "press_row",      # a cited row becomes kind=press
+    "stale_review",   # every review_by date has passed
+    "same_collab",    # the rows behind the first MEASURED claim collapse to one collaboration
+    "young_rows",     # the rows behind the first MEASURED claim were all published this year
+    "es_mismatch",    # the Spanish twin's first label differs
+    "no_boundary",    # the boundary line is missing from one page
+    "hub_phrase",     # the hub-only sentence appears on a claim page
+    "hub_claim",      # the hub carries a claim span
+)
+
+
+def lint(planted_defect: bool = False, today: dt.date | None = None, mutation: str | None = None) -> tuple[list[str], dict]:
     today = today or dt.date.today()
+    if mutation == "flip_up":
+        planted_defect = True
+    if mutation == "stale_review":
+        today = dt.date(2099, 1, 1)
     errors: list[str] = []
     ledger = json.loads(LEDGER_PATH.read_text(encoding="utf-8"))
     cache = json.loads(CACHE_PATH.read_text(encoding="utf-8"))
+    if mutation == "press_row":
+        ledger["rows"][0]["kind"] = "press"
     rows = check_ledger(ledger, cache, today, errors)
     summary = {"pages": 0, "claims": 0, "labels": {}}
     planted_done = False
+    mutated = mutation in (None, "flip_up", "stale_review", "press_row")  # mutations applied before the page loop
 
     for rel, en_path, es_path, is_hub in page_paths():
         for path, lang in ((en_path, "en"), (es_path, "es")):
@@ -237,6 +271,35 @@ def lint(planted_defect: bool = False, today: dt.date | None = None) -> tuple[li
         summary["pages"] += 2
         en_claims, en_raw, en_text = parse_page(en_path)
         es_claims, es_raw, es_text = parse_page(es_path)
+
+        if mutation and not mutated:
+            if mutation == "drop_parent" and any(c["label"] == "DERIVED" for c in en_claims):
+                for lst in (en_claims, es_claims):
+                    nxt_c = next(c for c in lst if c["label"] == "DERIVED")
+                    nxt_c["parent"] = None
+                mutated = True
+            elif mutation in ("same_collab", "young_rows") and any(c["label"] == "MEASURED" for c in en_claims):
+                first = next(c for c in en_claims if c["label"] == "MEASURED")
+                for rid in first["ids"]:
+                    if rid in rows:
+                        if mutation == "same_collab":
+                            rows[rid]["collaboration"] = "one collaboration"
+                        else:
+                            rows[rid]["year"] = today.year
+                mutated = True
+            elif mutation == "es_mismatch" and es_claims:
+                es_claims[0]["label"] = "OPEN" if es_claims[0]["label"] != "OPEN" else "PROPOSED"
+                mutated = True
+            elif mutation == "no_boundary" and not is_hub:
+                en_raw = en_raw.replace(BOUNDARY_EN, "").replace(html.escape(BOUNDARY_EN), "")
+                mutated = True
+            elif mutation == "hub_phrase" and not is_hub:
+                en_raw = en_raw + "<p>" + HUB_ONLY_PHRASES[0] + "</p>"
+                mutated = True
+            elif mutation == "hub_claim" and is_hub:
+                en_claims.append({"label": "OPEN", "ids": ["T01-WILL2014"], "parent": None, "text": "mutant"})
+                es_claims.append({"label": "OPEN", "ids": ["T01-WILL2014"], "parent": None, "text": "mutante"})
+                mutated = True
 
         if planted_defect and not planted_done:
             for idx_c, c in enumerate(en_claims):
@@ -294,15 +357,36 @@ def lint(planted_defect: bool = False, today: dt.date | None = None) -> tuple[li
 
     if planted_defect and not planted_done:
         errors.append("planted defect requested but no SINGLE RESULT claim exists to flip")
+    if mutation and not mutated:
+        errors.append(f"mutant {mutation!r} could not be applied (nothing to mutate)")
     return errors, summary
+
+
+def run_mutants(today: dt.date) -> tuple[list[str], list[str]]:
+    """Apply every mutant in memory; return (killed, survived). A surviving mutant means a fail-open rule."""
+    killed, survived = [], []
+    for m in MUTANTS:
+        errs, _ = lint(today=today, mutation=m)
+        (killed if errs else survived).append(m)
+    return killed, survived
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Time & Gravity ledger-driven label lint")
     ap.add_argument("--planted-defect", action="store_true", help="flip one label upward in memory; the lint must fail")
+    ap.add_argument("--mutants", action="store_true", help="run the mutation suite only and report killed/survived")
     ap.add_argument("--today", help="override the build date (YYYY-MM-DD) for review_by and age rules")
     args = ap.parse_args()
     today = dt.date.fromisoformat(args.today) if args.today else dt.date.today()
+
+    if args.mutants:
+        killed, survived = run_mutants(today)
+        for m in killed:
+            print(f"KILLED   {m}")
+        for m in survived:
+            print(f"SURVIVED {m}", file=sys.stderr)
+        print(f"MUTANTS: {len(killed)}/{len(MUTANTS)} killed")
+        return 1 if survived else 0
 
     errors, summary = lint(planted_defect=args.planted_defect, today=today)
     if args.planted_defect:
@@ -326,10 +410,18 @@ def main() -> int:
     if not has_epistemic_rejection:
         print("FAIL: self-test: a label flipped upward was not rejected by check_claim()", file=sys.stderr)
         return 1
+    killed, survived = run_mutants(today)
+    if survived:
+        for m in survived:
+            print(f"FAIL: mutant {m!r} survived the lint (fail-open rule)", file=sys.stderr)
+        return 1
+    for w in sorted(set(WARNINGS)):
+        print(f"WARN: {w}", file=sys.stderr)
     labels = ", ".join(f"{k}={v}" for k, v in sorted(summary["labels"].items()))
     print(
         f"PASS: Time & Gravity label lint verified ({summary['pages']} pages, {summary['claims']} claims: {labels}; "
-        f"{len(json.loads(LEDGER_PATH.read_text(encoding='utf-8'))['rows'])} ledger rows resolve; planted_defect_knockout={knockout})."
+        f"{len(json.loads(LEDGER_PATH.read_text(encoding='utf-8'))['rows'])} ledger rows resolve; planted_defect_knockout={knockout}; "
+        f"mutants killed {len(killed)}/{len(MUTANTS)}; scite warnings {len(set(WARNINGS))})."
     )
     return 0
 

@@ -92,3 +92,5 @@ Every essay, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish u
 
 - [Time & Gravity](https://informatico.ai/timegravity/): A reading track from the measured slope in the rate of time to the open problem of time in quantum gravity, with instruments, verifiers and a ledger.
 - [T.01 Gravity as a Slope in the Rate of Time](https://informatico.ai/timegravity/t01/): How measured clock-rate differences between heights make a slow body fall at g with no force term, with a live geodesic instrument and a Python verifier.
+- [T.02 Everyone Moves at One Rate: Clocks, GPS and c](https://informatico.ai/timegravity/t02/): How moving clocks tick slower by the Lorentz factor, measured from 1938 to 2014, and how the GPS satellite clock correction follows from GM, the orbit radius and c.
+- [T.03 What Sets the Slope: Poisson and the Equivalence Principle](https://informatico.ai/timegravity/t03/): How the weak-field Einstein equation reduces to Poisson's equation on a grid, and how torsion balances, lunar ranging and a satellite show every composition falls alike.

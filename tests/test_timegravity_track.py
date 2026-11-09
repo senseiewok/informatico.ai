@@ -178,7 +178,7 @@ class TimeGravityTrackTests(unittest.TestCase):
         self.assertIn(">Descargar verificador en Python (verify_t01_time_slope_geodesic.py)</button>", es)
         self.assertIn(">Línea de mundo de un cuerpo soltado en reposo", es)
         en_hub = (TG / "index.html").read_text(encoding="utf-8")
-        self.assertIn('class="tp-pager-link tp-pager-next" href="../timegravity/t01/"', en_hub)
+        self.assertIn('class="tp-pager-link tp-pager-next" href="../timegravity/t0', en_hub)
 
     def test_label_lint_rejects_derived_tautology_rank_mismatch_and_handles_void_tags(self) -> None:
         import datetime as dt
@@ -254,7 +254,7 @@ class TimeGravityTrackTests(unittest.TestCase):
         res = run(PY + [str(ROOT / "timegravity" / "run_all_timegravity.py")], timeout=120)
         self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
         self.assertIn("PASS: Time & Gravity:", res.stdout)
-        self.assertEqual(res.stdout.count("REJECTED_AS_EXPECTED:"), 2)
+        self.assertEqual(res.stdout.count("REJECTED_AS_EXPECTED:"), 4)  # 3 verifiers + the lint
 
     def test_pages_rebuild_byte_for_byte_from_source(self) -> None:
         import build_timegravity as tg
@@ -266,6 +266,95 @@ class TimeGravityTrackTests(unittest.TestCase):
             es = (RESEARCH / "es-mx" / rel / "index.html").read_text(encoding="utf-8")
             self.assertEqual(tg.render_page(page, catalog, "en"), en, f"{rel}: English page is stale; run tools/build_timegravity.py")
             self.assertEqual(builder.to_spanish_static(tg.render_page(page, catalog, "es")), es, f"{rel}: Spanish page is stale")
+
+
+class TimeGravityBatch2Tests(unittest.TestCase):
+    """T.02 and T.03, the Scite column, the lint mutation suite and the cross-field additions."""
+
+    def test_t02_and_t03_pages_verifiers_and_planted_defects(self) -> None:
+        for slug, vname, must_have in (
+            ("t02", "verify_t02_gps_one_rate.py", ("double_entry_schwarzschild", "position_error_per_day_m")),
+            ("t03", "verify_t03_poisson_equivalence.py", ("equivalence_principle_eta_0", "poisson_recovers_GM_over_r")),
+        ):
+            for path in (TG / slug / "index.html", TG_ES / slug / "index.html"):
+                self.assertTrue(path.is_file(), f"missing {path}")
+            gen = run(PY + [str(SKILLS / slug / f"make_{slug}.py")])
+            self.assertEqual(gen.returncode, 0, gen.stdout + gen.stderr)
+            res = run(PY + [str(SKILLS / slug / vname)])
+            self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
+            payload = json.loads(res.stdout)
+            self.assertEqual(payload["status"], "PASS")
+            self.assertEqual(payload["geometry_checks"]["planted_defect_knockout"], "REJECTED_AS_EXPECTED")
+            for key in must_have:
+                self.assertTrue(key in payload["geometry_checks"] or key in payload["central_number"], key)
+            bad = run(PY + [str(SKILLS / slug / vname), "--planted-defect"])
+            self.assertNotEqual(bad.returncode, 0)
+            self.assertIn("FAIL", bad.stderr)
+        t02 = json.loads(run(PY + [str(SKILLS / "t02" / "verify_t02_gps_one_rate.py")]).stdout)
+        cn = t02["central_number"]
+        self.assertAlmostEqual(cn["grav_us_per_day"], 45.7, delta=0.6)
+        self.assertAlmostEqual(cn["vel_us_per_day"], -7.2, delta=0.2)
+        self.assertAlmostEqual(cn["net_us_per_day"], 38.5, delta=0.7)
+        self.assertLess(abs(cn["double_entry_diff_us"]), 0.3)
+        self.assertAlmostEqual(cn["position_error_per_day_m"] / 1000, 11.5, delta=0.3)
+        t03 = json.loads(run(PY + [str(SKILLS / "t03" / "verify_t03_poisson_equivalence.py")]).stdout)
+        self.assertLess(t03["central_number"]["poisson_worst_rel_err_exterior"], 1e-4)
+        self.assertLess(t03["central_number"]["two_body_separation_m"], 1e-12)
+        self.assertAlmostEqual(t03["geometry_checks"]["planted_separation_m"], 4.9e-3, delta=1e-4)
+
+    def test_t02_t03_labels_boundary_and_instruments(self) -> None:
+        expect = {"t02": ("MEASURED", "DERIVED", "BOUND", "OPEN"), "t03": ("MEASURED", "SINGLE RESULT", "DERIVED", "OPEN")}
+        for slug, labels in expect.items():
+            en, es = TG / slug / "index.html", TG_ES / slug / "index.html"
+            self.assertEqual(labels_of(en), labels_of(es), slug)
+            for lab in labels:
+                self.assertIn(lab, labels_of(en), f"{slug} lacks {lab}")
+            for path, boundary in ((en, BOUNDARY_EN), (es, BOUNDARY_ES)):
+                txt = path.read_text(encoding="utf-8")
+                self.assertIn(boundary, txt)
+                self.assertIn(f'data-tg-instrument="{"gps" if slug == "t02" else "poisson"}"', txt)
+                self.assertIn("data-tg-predict", txt, f"{path} lacks predict-before-reveal")
+                self.assertIn('class="tg-ai-line"', txt)
+                self.assertIn("Scite", txt)
+                for phrase in HUB_ONLY_PHRASES:
+                    self.assertNotIn(phrase, txt.lower())
+            self.assertEqual(builder.to_spanish_static(en.read_text(encoding="utf-8"), swap=False, shift=False), en.read_text(encoding="utf-8"))
+        self.assertIn('id="budget"', (TG / "t02" / "index.html").read_text(encoding="utf-8"))
+        self.assertNotIn("BOUND", labels_of(TG / "t03" / "index.html"))
+        # Reading order: T.00 -> T.02 -> T.01 -> T.03 ; every built neighbour is a real link.
+        hub = (TG / "index.html").read_text(encoding="utf-8")
+        self.assertIn('class="tp-pager-link tp-pager-next" href="../timegravity/t02/"', hub)
+        t02 = (TG / "t02" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('class="tp-pager-link tp-pager-next" href="../../timegravity/t01/"', t02)
+        t01 = (TG / "t01" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('class="tp-pager-link tp-pager-next" href="../../timegravity/t03/"', t01)
+        self.assertIn('class="tp-pager-link tp-pager-prev" href="../../timegravity/t02/"', t01)
+        self.assertEqual(hub.count('data-built="true"'), 4)
+
+    def test_lint_mutation_suite_kills_every_mutant_and_scite_tallies_are_cached(self) -> None:
+        res = run(PY + [str(ROOT / "tools" / "check_timegravity_labels.py"), "--mutants"])
+        self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
+        self.assertIn("MUTANTS: 10/10 killed", res.stdout)
+        self.assertNotIn("SURVIVED", res.stderr)
+        ok = run(PY + [str(ROOT / "tools" / "check_timegravity_labels.py")])
+        self.assertIn("mutants killed 10/10", ok.stdout)
+        cache = json.loads((ROOT / "data" / "folio-citations.cache.json").read_text(encoding="utf-8"))
+        ledger = json.loads((ROOT / "timegravity" / "ledger.json").read_text(encoding="utf-8"))
+        for row in ledger["rows"]:
+            sc = cache.get("scite:" + row["doi"].lower())
+            self.assertTrue(sc and sc.get("found"), f"{row['id']} has no Scite tally in the cache")
+            for key in ("supporting", "contrasting", "mentioning", "citing_publications", "fetched"):
+                self.assertIn(key, sc)
+        self.assertTrue((ROOT / "timegravity" / "LABEL-CHECKLIST.md").is_file())
+
+    def test_module_covers_the_four_instruments_and_stays_offline(self) -> None:
+        mjs = (RESEARCH / "modules" / "timegravity-slope.mjs").read_text(encoding="utf-8")
+        for sel in ('data-tg-instrument="slope"', 'data-tg-instrument="worldline"', 'data-tg-instrument="gps"', 'data-tg-instrument="poisson"', "data-tg-predict"):
+            self.assertIn(sel, mjs)
+        code_only = re.sub(r"//.*?$|/\*.*?\*/", "", mjs, flags=re.M | re.S)
+        self.assertIsNone(re.search(r"\b(fetch|XMLHttpRequest|WebSocket|EventSource|sendBeacon|import\s*\()\b", code_only))
+        self.assertIn("poissonRadial", mjs)
+        self.assertIn("gpsSchwarzschildNet", mjs)
 
 
 if __name__ == "__main__":
