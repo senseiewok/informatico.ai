@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://informatico.ai/timegravity/ledger.schema.json",
+  "title": "Time & Gravity grounding ledger",
+  "description": "One row per cited source. A claim span on a T page names one or more row ids; tools/check_timegravity_labels.py derives the label each set of rows can carry.",
+  "type": "object",
+  "required": ["rows"],
+  "properties": {
+    "schema": {"type": "string"},
+    "track": {"type": "string"},
+    "build_date_note": {"type": "string"},
+    "rows": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "doi", "year", "collaboration", "kind", "review_by"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string", "pattern": "^T[0-9]{2}-[A-Z0-9]+$", "description": "Page code and a short source tag, e.g. T01-PR1960."},
+          "label": {"type": "string", "enum": ["MEASURED", "DERIVED", "BOUND", "SINGLE RESULT", "PROPOSED", "OPEN"], "description": "The highest label this row alone can support."},
+          "doi": {"type": "string", "pattern": "^10\\.[0-9]{4,9}/\\S+$", "description": "Must resolve in data/folio-citations.cache.json (offline Crossref cache)."},
+          "year": {"type": "integer", "minimum": 1600, "maximum": 2100},
+          "collaboration": {"type": "string", "minLength": 3, "description": "Who did the work; MEASURED needs two distinct values."},
+          "kind": {"type": "string", "enum": ["peer-reviewed", "preprint", "review", "press"], "description": "press rows can never back a claim; preprint rows cap at PROPOSED."},
+          "review_by": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$", "description": "The build fails once this date has passed."},
+          "note": {"type": "string"}
+        }
+      }
+    }
+  }
+}

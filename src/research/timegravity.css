@@ -1,0 +1,260 @@
+/* Time & Gravity (T) track styles. Loaded only by /timegravity/ pages, after informatico.css, and built on its tokens. */
+@layer timegravity {
+  .tg-boundary-banner {
+    margin: 1rem 0 1.35rem;
+    padding: 0.85rem 1.1rem;
+    border: 1.5px solid var(--tp-prussian);
+    border-left-width: 5px;
+    border-radius: 8px;
+    background-color: var(--tp-stone);
+    color: var(--tp-ink);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+  .tg-boundary-banner strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.74rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--tp-prussian);
+  }
+
+  /* Claim spans: the label rides along as a small chip after the text. */
+  .tg-claim {
+    border-bottom: 1.5px solid var(--tp-rule-strong);
+    text-decoration: none;
+  }
+  .tg-claim::after, .tg-claim-look::after {
+    content: attr(data-tg-label);
+    display: inline-block;
+    margin: 0 0.15rem 0 0.4rem;
+    padding: 0.05rem 0.42rem;
+    border: 1px solid var(--tp-rule-strong);
+    border-radius: 999px;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    vertical-align: 0.18em;
+    color: var(--tp-graphite);
+    background-color: var(--tp-stone);
+    white-space: nowrap;
+  }
+  html[lang="es-MX"] .tg-claim::after, html[lang="es-MX"] .tg-claim-look::after {
+    content: attr(data-tg-label-es);
+  }
+  .tg-claim[data-tg-label="MEASURED"] { border-bottom-color: var(--tp-verdigris); }
+  .tg-claim[data-tg-label="MEASURED"]::after, .tg-claim-look[data-tg-label="MEASURED"]::after { color: var(--tp-verdigris); border-color: var(--tp-verdigris); background-color: var(--tp-verdigris-soft); }
+  .tg-claim[data-tg-label="DERIVED"] { border-bottom-color: var(--tp-prussian); }
+  .tg-claim[data-tg-label="DERIVED"]::after, .tg-claim-look[data-tg-label="DERIVED"]::after { color: var(--tp-prussian); border-color: var(--tp-prussian); background-color: var(--tp-prussian-soft); }
+  .tg-claim[data-tg-label="BOUND"] { border-bottom-color: var(--tp-sienna); }
+  .tg-claim[data-tg-label="BOUND"]::after, .tg-claim-look[data-tg-label="BOUND"]::after { color: var(--tp-sienna); border-color: var(--tp-sienna); background-color: var(--tp-sienna-soft); }
+  .tg-claim[data-tg-label="SINGLE RESULT"] { border-bottom-color: var(--tp-minium); }
+  .tg-claim[data-tg-label="SINGLE RESULT"]::after, .tg-claim-look[data-tg-label="SINGLE RESULT"]::after { color: var(--tp-minium); border-color: var(--tp-minium); background-color: var(--tp-minium-soft); }
+  .tg-claim[data-tg-label="PROPOSED"] { border-bottom-style: dashed; }
+  .tg-claim[data-tg-label="OPEN"] { border-bottom-style: dotted; }
+
+  .tg-label-legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.6rem;
+    margin: 1rem 0 1.4rem;
+    padding: 0;
+    list-style: none;
+  }
+  .tg-label-legend li {
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--tp-rule);
+    border-radius: 8px;
+    background-color: var(--tp-vellum);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  .tg-claim-look::after { margin-left: 0; }
+
+  /* Instrument */
+  .tg-instrument {
+    margin: 1.6rem 0 2rem;
+    padding: 1.1rem 1.2rem 1.3rem;
+    border: 1px solid var(--tp-rule-strong);
+    border-radius: 10px;
+    background-color: var(--tp-vellum);
+  }
+  .tg-instrument h2, .tg-instrument h3 { margin-top: 0; }
+  .tg-stage {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--tp-rule);
+    border-radius: 8px;
+    background-color: var(--tp-stone);
+  }
+  .tg-stage text {
+    font-family: var(--font-mono, monospace);
+    fill: var(--tp-graphite);
+  }
+  .tg-worldline {
+    fill: none;
+    stroke: var(--tp-minium);
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+  .tg-worldline[data-state="flat"] { stroke: var(--tp-verdigris); }
+  .tg-worldline[data-state="flip"] { stroke: var(--tp-sienna); stroke-dasharray: 6 5; }
+  .tg-body { fill: var(--tp-ink); stroke: var(--tp-vellum); stroke-width: 2; }
+  .tg-release-line { stroke: var(--tp-rule-strong); stroke-dasharray: 4 4; }
+  .tg-axis { stroke: var(--tp-rule-strong); stroke-width: 1.2; }
+  .tg-clock-face { fill: var(--tp-vellum); stroke: var(--tp-graphite); stroke-width: 1.2; }
+  .tg-clock-hand { stroke: var(--tp-ink); stroke-width: 1.6; stroke-linecap: round; }
+  .tg-now-marker { fill: var(--tp-minium); stroke: var(--tp-vellum); stroke-width: 2; }
+  .tg-controls {
+    display: grid;
+    grid-template-columns: minmax(220px, 1.2fr) minmax(240px, 2fr);
+    gap: 1rem;
+    align-items: end;
+    margin-top: 1rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--tp-rule);
+  }
+  .tg-btn-row { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .tg-btn-row .tp-step-btn[aria-pressed="true"] { background-color: var(--tp-minium); border-color: var(--tp-minium); color: var(--tp-vellum); }
+  .tg-instrument input[type="range"] { width: 100%; accent-color: var(--tp-prussian); }
+  .tg-instrument :is(button, input, a):focus-visible { outline: 3px solid var(--tp-prussian); outline-offset: 2px; }
+  .tg-how { font-size: 0.9rem; line-height: 1.55; color: var(--tp-graphite); margin: 0.6rem 0 0.9rem; }
+  .tg-status { margin: 0.8rem 0 0; font-family: var(--font-mono, monospace); font-size: 0.8rem; color: var(--tp-graphite); }
+  .tg-status[data-state="flat"] { color: var(--tp-verdigris); }
+  .tg-status[data-state="flip"] { color: var(--tp-minium); font-weight: 700; }
+
+  /* Section jump bar (own classes so the Folio act relabelling in theme-plate.mjs leaves it alone). */
+  .tg-jump-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.42rem;
+    margin-top: 0.95rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--tp-rule);
+  }
+  .tg-jump-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.68rem;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--tp-ink);
+    background-color: var(--tp-vellum);
+    border: 1px solid var(--tp-rule-strong);
+    border-radius: 999px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .tg-jump-pill:hover, .tg-jump-pill:focus-visible { background-color: var(--tp-ink); color: var(--tp-vellum); }
+
+  .tg-equation {
+    margin: 1rem 0 1.2rem;
+    padding: 0.9rem 1.1rem;
+    border-left: 4px solid var(--tp-prussian);
+    border-radius: 0 8px 8px 0;
+    background-color: var(--tp-stone);
+    font-family: var(--font-mono, monospace);
+    font-size: 1rem;
+    overflow-x: auto;
+  }
+
+  /* Track map on the hub */
+  .tg-track-map {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 0.9rem;
+    margin: 1rem 0 1.6rem;
+    padding: 0;
+    list-style: none;
+    counter-reset: tgmap;
+  }
+  .tg-track-map li {
+    position: relative;
+    padding: 0.95rem 1rem 1rem;
+    border: 1px solid var(--tp-rule-strong);
+    border-radius: 10px;
+    background-color: var(--tp-vellum);
+  }
+  .tg-track-map li[data-built="false"] { border-style: dashed; background-color: var(--tp-stone); }
+  .tg-map-code {
+    display: inline-block;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--tp-prussian);
+    margin-bottom: 0.3rem;
+  }
+  .tg-map-order { float: right; font-family: var(--font-mono, monospace); font-size: 0.68rem; color: var(--tp-slate); }
+  .tg-map-title { display: block; font-weight: 700; font-size: 1.02rem; line-height: 1.35; margin-bottom: 0.4rem; color: var(--tp-ink); }
+  .tg-map-title a { color: inherit; }
+  .tg-map-q { display: block; font-size: 0.88rem; line-height: 1.45; color: var(--tp-graphite); }
+  .tg-map-status {
+    display: inline-block;
+    margin-top: 0.55rem;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.66rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--tp-slate);
+  }
+
+  /* "What would change this page" */
+  .tg-change-box {
+    margin: 1.4rem 0 1.6rem;
+    padding: 1.1rem 1.3rem;
+    border: 1px solid var(--tp-rule-strong);
+    border-left: 4px solid var(--tp-sienna);
+    border-radius: 0 10px 10px 0;
+    background-color: var(--tp-vellum);
+  }
+  .tg-change-box .tp-plain-bridge-kicker { color: var(--tp-sienna); }
+  .tg-change-box ul { margin: 0.4rem 0 0 1.1rem; padding: 0; }
+  .tg-change-box li { margin: 0.35rem 0; line-height: 1.55; }
+
+  .tg-ai-line {
+    margin: 1.2rem 0;
+    padding: 0.7rem 0.95rem;
+    border: 1px dashed var(--tp-rule-strong);
+    border-radius: 8px;
+    font-size: 0.86rem;
+    line-height: 1.5;
+    color: var(--tp-graphite);
+  }
+
+  .tg-ledger-table th, .tg-ledger-table td { font-size: 0.82rem; vertical-align: top; }
+  .tg-ledger-table code { font-size: 0.78rem; }
+
+  .tg-open-question {
+    margin: 1.8rem 0 1rem;
+    padding: 1.2rem 1.4rem;
+    border: 2px solid var(--tp-ink);
+    border-radius: 10px;
+    background-color: var(--tp-vellum);
+  }
+  .tg-open-question .tp-kicker { margin-bottom: 0.3rem; }
+  .tg-open-question p { margin: 0.3rem 0 0; font-size: 1.2rem; font-weight: 700; }
+  .tg-open-question .tg-next { margin-top: 0.5rem; font-size: 0.9rem; font-weight: 400; color: var(--tp-graphite); }
+
+  .tp-track-chip-timegravity {
+    background: linear-gradient(135deg, var(--tp-vellum) 0%, var(--tp-verdigris-soft) 100%);
+    border-color: var(--tp-prussian);
+  }
+  .tp-track-chip-timegravity .tp-track-chip-kicker { color: var(--tp-prussian); }
+
+  @media (max-width: 720px) {
+    .tg-controls { grid-template-columns: 1fr; }
+    .tg-claim::after, .tg-claim-look::after { font-size: 0.58rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tg-worldline, .tg-body, .tg-now-marker { transition: none !important; animation: none !important; }
+  }
+}

@@ -1,0 +1,315 @@
+#!/usr/bin/env python3
+"""Ledger-driven claim-label lint for the Time & Gravity track (standard library only).
+
+A claim on a T page is a span: <span class="tg-claim" data-tg-label="MEASURED" data-tg-ledger="T01-A,T01-B"
+[data-tg-parent="T01-A"]>...</span>. Transitions, questions and definitions carry no span. This lint checks the
+mechanics; a human checklist decides the label itself.
+
+Rules (council contract, 2026-11-08):
+  1. MEASURED needs at least two supporting rows from different collaborations with peer-reviewed DOIs.
+  2. BOUND is for exclusion limits: at least one peer-reviewed row whose own label is BOUND.
+  3. DERIVED names a parent row (data-tg-parent) whose ledger label is MEASURED.
+  4. A row younger than 24 months (conservatively: published in this or the previous calendar year) or a preprint
+     never supports MEASURED, DERIVED or BOUND; such claims cap at SINGLE RESULT or PROPOSED unless other rows carry them.
+  5. SINGLE RESULT needs a peer-reviewed row; preprints never rise above PROPOSED; press rows back nothing.
+  6. Every DOI resolves in data/folio-citations.cache.json (the offline Crossref cache).
+  7. English and es-MX pages carry identical label sequences.
+  8. The build fails once any row's review_by date has passed.
+  9. Banned phrases in both languages are a cheap backstop; the hub-only sentence appears on no other page, and at
+     most once per language on the hub.
+ 10. The hub carries zero claim spans; every T page prints the fixed boundary line; every claim page carries the
+     AI-contribution line.
+
+--planted-defect flips the first SINGLE RESULT claim upward to MEASURED in memory; the lint must then fail (exit 1,
+FAIL on stderr). The normal run performs that flip internally as a self-test and reports REJECTED_AS_EXPECTED.
+"""
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import html
+import json
+import re
+import sys
+from html.parser import HTMLParser
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "tools"))
+
+from folios.timegravity import (  # noqa: E402
+    BANNED_EVERYWHERE,
+    BOUNDARY_EN,
+    BOUNDARY_ES,
+    HUB_ONLY_PHRASES,
+    LABEL_RANK,
+    LABELS,
+    PAGES,
+)
+
+RESEARCH = ROOT / "src" / "research"
+LEDGER_PATH = ROOT / "timegravity" / "ledger.json"
+CACHE_PATH = ROOT / "data" / "folio-citations.cache.json"
+KINDS = ("peer-reviewed", "preprint", "review", "press")
+ID_RE = re.compile(r"^T[0-9]{2}-[A-Z0-9]+$")
+DOI_RE = re.compile(r"^10\.[0-9]{4,9}/\S+$")
+DATE_RE = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$")
+
+
+class _Claims(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.claims: list[dict] = []
+        self.text: list[str] = []
+        self._depth = 0
+        self._cur: dict | None = None
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if self._cur is not None:
+            self._depth += 1
+        if "tg-claim" in (a.get("class") or "").split():
+            self._cur = {
+                "label": a.get("data-tg-label", ""),
+                "ids": [x.strip() for x in (a.get("data-tg-ledger") or "").split(",") if x.strip()],
+                "parent": a.get("data-tg-parent"),
+                "text": "",
+            }
+            self._depth = 0
+
+    def handle_endtag(self, tag):
+        if self._cur is not None:
+            if self._depth == 0:
+                self.claims.append(self._cur)
+                self._cur = None
+            else:
+                self._depth -= 1
+
+    def handle_data(self, data):
+        self.text.append(data)
+        if self._cur is not None:
+            self._cur["text"] += data
+
+
+def parse_page(path: Path) -> tuple[list[dict], str, str]:
+    raw = path.read_text(encoding="utf-8")
+    p = _Claims()
+    p.feed(raw)
+    p.close()
+    return p.claims, raw, " ".join(p.text)
+
+
+def is_young(row: dict, today: dt.date) -> bool:
+    return today.year - int(row["year"]) < 2
+
+
+def check_ledger(ledger: dict, cache: dict, today: dt.date, errors: list[str]) -> dict[str, dict]:
+    rows: dict[str, dict] = {}
+    for row in ledger.get("rows", []):
+        rid = row.get("id", "<missing id>")
+        for key in ("id", "label", "doi", "year", "collaboration", "kind", "review_by"):
+            if key not in row:
+                errors.append(f"ledger {rid}: missing field '{key}'")
+        if rid in rows:
+            errors.append(f"ledger {rid}: duplicate id")
+        if not ID_RE.match(str(rid)):
+            errors.append(f"ledger {rid}: id does not match T##-TAG")
+        if row.get("label") not in LABELS:
+            errors.append(f"ledger {rid}: label {row.get('label')!r} is not one of {LABELS}")
+        if row.get("kind") not in KINDS:
+            errors.append(f"ledger {rid}: kind {row.get('kind')!r} is not one of {KINDS}")
+        doi = str(row.get("doi", ""))
+        if not DOI_RE.match(doi):
+            errors.append(f"ledger {rid}: malformed DOI {doi!r}")
+        if doi.lower().startswith(("http", "www")):
+            errors.append(f"ledger {rid}: a URL is not a DOI")
+        rec = cache.get("doi:" + doi.lower())
+        if not rec or not rec.get("found"):
+            errors.append(f"ledger {rid}: DOI {doi} does not resolve in the offline Crossref cache")
+        elif rec.get("year") and abs(int(rec["year"]) - int(row.get("year", 0))) > 1:
+            errors.append(f"ledger {rid}: year {row.get('year')} disagrees with Crossref {rec['year']}")
+        rb = str(row.get("review_by", ""))
+        if not DATE_RE.match(rb):
+            errors.append(f"ledger {rid}: review_by {rb!r} is not YYYY-MM-DD")
+        elif dt.date.fromisoformat(rb) < today:
+            errors.append(f"ledger {rid}: review_by {rb} has passed; reread the source and renew the row")
+        if row.get("kind") == "press":
+            errors.append(f"ledger {rid}: press rows cannot enter the ledger as backing for any claim")
+        if row.get("kind") == "preprint" and LABEL_RANK.get(row.get("label", ""), 0) > LABEL_RANK["PROPOSED"]:
+            errors.append(f"ledger {rid}: a preprint row cannot carry a label above PROPOSED")
+        rows[rid] = row
+    return rows
+
+
+def check_claim(page: str, idx: int, claim: dict, rows: dict[str, dict], today: dt.date, errors: list[str]) -> None:
+    where = f"{page} claim #{idx + 1} [{claim['label']}] \"{claim['text'][:60]}...\""
+    label = claim["label"]
+    if label not in LABELS:
+        errors.append(f"{where}: unknown label {label!r}")
+        return
+    if not claim["ids"]:
+        errors.append(f"{where}: no ledger id")
+        return
+    cited = []
+    for rid in claim["ids"]:
+        if rid not in rows:
+            errors.append(f"{where}: ledger id {rid} not in ledger")
+        else:
+            cited.append(rows[rid])
+    if not cited:
+        return
+    if any(r["kind"] == "press" for r in cited):
+        errors.append(f"{where}: a press row cannot back a claim")
+    rank = LABEL_RANK[label]
+    mature = [r for r in cited if r["kind"] in ("peer-reviewed", "review") and not is_young(r, today)]
+    supporting = [r for r in mature if LABEL_RANK[r["label"]] >= rank]
+    if label == "MEASURED":
+        collabs = {r["collaboration"] for r in supporting if r["kind"] == "peer-reviewed"}
+        if len(collabs) < 2:
+            errors.append(
+                f"{where}: MEASURED needs >= 2 mature peer-reviewed rows from different collaborations "
+                f"(found {len(collabs)}); cap at SINGLE RESULT"
+            )
+    elif label == "BOUND":
+        if not any(r["label"] == "BOUND" and r["kind"] == "peer-reviewed" for r in mature):
+            errors.append(f"{where}: BOUND needs a mature peer-reviewed exclusion-limit row (ledger label BOUND)")
+    elif label == "DERIVED":
+        parent = claim.get("parent")
+        if not parent:
+            errors.append(f"{where}: DERIVED must name a parent MEASURED row (data-tg-parent)")
+        elif parent not in rows:
+            errors.append(f"{where}: parent {parent} not in ledger")
+        elif rows[parent]["label"] != "MEASURED":
+            errors.append(f"{where}: parent {parent} is labelled {rows[parent]['label']}, not MEASURED")
+        elif parent not in claim["ids"]:
+            errors.append(f"{where}: parent {parent} must also be cited in data-tg-ledger")
+        if not any(r["kind"] in ("peer-reviewed", "review") for r in cited):
+            errors.append(f"{where}: DERIVED needs a peer-reviewed derivation row")
+    elif label == "SINGLE RESULT":
+        if not any(r["kind"] == "peer-reviewed" for r in cited):
+            errors.append(f"{where}: SINGLE RESULT needs a peer-reviewed row; preprints stay PROPOSED")
+    # PROPOSED and OPEN: any non-press row is enough.
+    if label in ("MEASURED", "DERIVED", "BOUND"):
+        young = [r["id"] for r in cited if is_young(r, today) or r["kind"] == "preprint"]
+        if young and not supporting:
+            errors.append(f"{where}: only young/preprint rows {young} back a {label} claim; cap at SINGLE RESULT or PROPOSED")
+
+
+def page_paths() -> list[tuple[str, Path, Path, bool]]:
+    out = []
+    for p in PAGES:
+        slug = p["slug"]
+        rel = "timegravity/" + (f"{slug}/" if slug else "")
+        out.append((rel, RESEARCH / rel / "index.html", RESEARCH / "es-mx" / rel / "index.html", slug == ""))
+    return out
+
+
+def lint(planted_defect: bool = False, today: dt.date | None = None) -> tuple[list[str], dict]:
+    today = today or dt.date.today()
+    errors: list[str] = []
+    ledger = json.loads(LEDGER_PATH.read_text(encoding="utf-8"))
+    cache = json.loads(CACHE_PATH.read_text(encoding="utf-8"))
+    rows = check_ledger(ledger, cache, today, errors)
+    summary = {"pages": 0, "claims": 0, "labels": {}}
+    planted_done = False
+
+    for rel, en_path, es_path, is_hub in page_paths():
+        for path, lang in ((en_path, "en"), (es_path, "es")):
+            if not path.is_file():
+                errors.append(f"{rel}: missing {lang} page {path.relative_to(ROOT)}")
+        if not (en_path.is_file() and es_path.is_file()):
+            continue
+        summary["pages"] += 2
+        en_claims, en_raw, en_text = parse_page(en_path)
+        es_claims, es_raw, es_text = parse_page(es_path)
+
+        if planted_defect and not planted_done:
+            for c in en_claims:
+                if c["label"] == "SINGLE RESULT":
+                    c["label"] = "MEASURED"
+                    planted_done = True
+                    break
+
+        if [c["label"] for c in en_claims] != [c["label"] for c in es_claims]:
+            errors.append(f"{rel}: English and es-MX label sequences differ")
+        if [c["ids"] for c in en_claims] != [c["ids"] for c in es_claims]:
+            errors.append(f"{rel}: English and es-MX ledger-id sequences differ")
+
+        if is_hub:
+            if en_claims or es_claims:
+                errors.append(f"{rel}: the hub must carry zero claim spans (found {len(en_claims)})")
+        else:
+            if not en_claims:
+                errors.append(f"{rel}: a claim page with no claim spans")
+            if 'class="tg-ai-line"' not in en_raw:
+                errors.append(f"{rel}: missing the AI-contribution line (class tg-ai-line)")
+
+        for i, c in enumerate(en_claims):
+            summary["claims"] += 1
+            summary["labels"][c["label"]] = summary["labels"].get(c["label"], 0) + 1
+            check_claim(rel, i, c, rows, today, errors)
+
+        for raw, text, lang, boundary in ((en_raw, en_text, "en", BOUNDARY_EN), (es_raw, es_text, "es", BOUNDARY_ES)):
+            if boundary not in raw and html.escape(boundary) not in raw:
+                errors.append(f"{rel} ({lang}): the fixed boundary line is missing")
+            low = html.unescape(raw).lower()          # attributes and text: a mention anywhere counts
+            low_text = " ".join(text.split()).lower()  # rendered text only, for the once-per-language rule
+            for phrase in BANNED_EVERYWHERE:
+                if phrase in low:
+                    errors.append(f"{rel} ({lang}): banned phrase {phrase!r}")
+            for phrase in HUB_ONLY_PHRASES:
+                if is_hub:
+                    n = low_text.count(phrase)
+                    if n > 1:
+                        errors.append(f"{rel} ({lang}): the hub states {phrase!r} {n} times in its text; once is the limit")
+                elif phrase in low:
+                    errors.append(f"{rel} ({lang}): {phrase!r} is allowed on the hub only")
+
+    referenced = {rid for p in PAGES for rid in p.get("ledger_ids", [])}
+    for rid in rows:
+        if rid not in referenced:
+            summary.setdefault("unreferenced_rows", []).append(rid)
+
+    if planted_defect and not planted_done:
+        errors.append("planted defect requested but no SINGLE RESULT claim exists to flip")
+    return errors, summary
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description="Time & Gravity ledger-driven label lint")
+    ap.add_argument("--planted-defect", action="store_true", help="flip one label upward in memory; the lint must fail")
+    ap.add_argument("--today", help="override the build date (YYYY-MM-DD) for review_by and age rules")
+    args = ap.parse_args()
+    today = dt.date.fromisoformat(args.today) if args.today else dt.date.today()
+
+    errors, summary = lint(planted_defect=args.planted_defect, today=today)
+    if args.planted_defect:
+        if errors:
+            print("FAIL: planted label defect caught as expected:", file=sys.stderr)
+            for e in errors:
+                print(f"FAIL: {e}", file=sys.stderr)
+            return 1
+        print("FAIL: planted label defect was NOT caught; the lint is fail-open", file=sys.stderr)
+        return 2
+
+    if errors:
+        for e in errors:
+            print(f"FAIL: {e}", file=sys.stderr)
+        return 1
+
+    # Self-test: the lint must reject a label flipped upward.
+    planted_errors, _ = lint(planted_defect=True, today=today)
+    knockout = "REJECTED_AS_EXPECTED" if planted_errors else "NOT_REJECTED"
+    if not planted_errors:
+        print("FAIL: self-test: a label flipped upward was not rejected", file=sys.stderr)
+        return 1
+    labels = ", ".join(f"{k}={v}" for k, v in sorted(summary["labels"].items()))
+    print(
+        f"PASS: Time & Gravity label lint verified ({summary['pages']} pages, {summary['claims']} claims: {labels}; "
+        f"{len(json.loads(LEDGER_PATH.read_text(encoding='utf-8'))['rows'])} ledger rows resolve; planted_defect_knockout={knockout})."
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

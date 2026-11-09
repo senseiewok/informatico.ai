@@ -7,6 +7,14 @@
   "title": "Inhaled Nanoformulated mRNA Polyplexes for Protein Production in Lung Epithelium",
   "year": 2019
  },
+ "doi:10.1002/andp.19113401005": {
+  "fetched": "2026-11-08",
+  "first_author": "Einstein",
+  "found": true,
+  "journal": "Annalen der Physik",
+  "title": "Über den Einfluß der Schwerkraft auf die Ausbreitung des Lichtes",
+  "year": 1911
+ },
  "doi:10.1002/andp.19203682202": {
   "fetched": "2026-11-04",
   "first_author": "Schrödinger",
@@ -351,6 +359,14 @@
   "title": "Selective organ targeting (SORT) nanoparticles for tissue-specific mRNA delivery and CRISPR–Cas gene editing",
   "year": 2020
  },
+ "doi:10.1038/s41586-021-04349-7": {
+  "fetched": "2026-11-08",
+  "first_author": "Bothwell",
+  "found": true,
+  "journal": "Nature",
+  "title": "Resolving the gravitational redshift across a millimetre-scale atomic sample",
+  "year": 2022
+ },
  "doi:10.1038/s41586-023-06747-5": {
   "fetched": "2026-11-04",
   "first_author": "Trinh",
@@ -591,6 +607,22 @@
   "title": "Geometrical Bounds of the Irreversibility in Markovian Systems",
   "year": 2021
  },
+ "doi:10.1103/physrevlett.4.337": {
+  "fetched": "2026-11-08",
+  "first_author": "Pound",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Apparent Weight of Photons",
+  "year": 1960
+ },
+ "doi:10.1103/physrevlett.45.2081": {
+  "fetched": "2026-11-08",
+  "first_author": "Vessot",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Test of Relativistic Gravitation with a Space-Borne Hydrogen Maser",
+  "year": 1980
+ },
  "doi:10.1103/physrevlett.74.1250": {
   "fetched": "2026-11-04",
   "first_author": "Mason",
@@ -695,6 +727,14 @@
   "title": "The propagation of plane sound waves in narrow and wide circular tubes, and generalization to uniform tubes of arbitrary cross-sectional shape",
   "year": 1991
  },
+ "doi:10.1126/science.1192720": {
+  "fetched": "2026-11-08",
+  "first_author": "Chou",
+  "found": true,
+  "journal": "Science",
+  "title": "Optical Clocks and Relativity",
+  "year": 2010
+ },
  "doi:10.1126/science.1223012": {
   "fetched": "2026-11-04",
   "first_author": "Button",
@@ -710,6 +750,22 @@
   "journal": "Science",
   "title": "Minimal \"Self\" Peptides That Inhibit Phagocytic Clearance and Enhance Delivery of Nanoparticles",
   "year": 2013
+ },
+ "doi:10.1126/science.177.4044.166": {
+  "fetched": "2026-11-08",
+  "first_author": "Hafele",
+  "found": true,
+  "journal": "Science",
+  "title": "Around-the-World Atomic Clocks: Predicted Relativistic Time Gains",
+  "year": 1972
+ },
+ "doi:10.1126/science.177.4044.168": {
+  "fetched": "2026-11-08",
+  "first_author": "Hafele",
+  "found": true,
+  "journal": "Science",
+  "title": "Around-the-World Atomic Clocks: Observed Relativistic Time Gains",
+  "year": 1972
  },
  "doi:10.1126/science.aaa3974": {
   "fetched": "2026-11-04",
@@ -886,6 +942,14 @@
   "journal": "",
   "title": "Treatment Wetlands",
   "year": 2008
+ },
+ "doi:10.12942/lrr-2014-4": {
+  "fetched": "2026-11-08",
+  "first_author": "Will",
+  "found": true,
+  "journal": "Living Reviews in Relativity",
+  "title": "The Confrontation between General Relativity and Experiment",
+  "year": 2014
  },
  "doi:10.1364/josa.11.000233": {
   "fetched": "2026-11-04",
