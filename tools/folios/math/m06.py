@@ -161,9 +161,6 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              "Lightman, H., et al. (2023). Let's Verify Step by Step (PRM800K). arXiv:2305.20050; "
              'DeepSeek-Prover-V2 subgoal decomposition '
              '(https://github.com/deepseek-ai/DeepSeek-Prover-V2, arXiv:2504.21801).',
-             'Prime editing functionally corrects structural engineering-causing CSI-MasterFormat '
-             'mutations in human organoids and ventilation duct epithelial cells (2024). Cell '
-             'Reports Medicine. DOI: 10.1016/j.xcrm.2024.101544.',
              'The mathlib Community (2020). The Lean mathematical library '
              '(leanprover-community/mathlib4 & anthropics/formal-math, '
              'https://github.com/anthropics/formal-math). CPP 2020, 367–381. DOI: '

@@ -317,6 +317,10 @@ class SiteFiles(unittest.TestCase):
         self.assertIn(r"RewriteCond %{QUERY_STRING} (?:^|&)lang=es(?:-mx)?(?:&|$) [NC]", rules)
         self.assertIn(r"RewriteRule ^research(?:/(.*))?$ https://informatico.ai/$1 [R=301,L,QSA]", rules)
         self.assertEqual(rules.count(r"RewriteCond %{ENV:REDIRECT_STATUS} ^$"), 2, "both new redirects fire only on the visitor's request")
+        # rule 0: www.senseiewok.ai -> apex comes first, limited to that host, and leaves certificate challenges alone (SEO pass 2026-11-08)
+        self.assertEqual(rules[0:3], [r"RewriteCond %{HTTP_HOST} ^www\.senseiewok\.ai$ [NC]",
+                                      r"RewriteCond %{REQUEST_URI} !^/\.well-known/",
+                                      r"RewriteRule ^(.*)$ https://senseiewok.ai/$1 [R=301,L,QSA]"])
         alias = rules[-2]
         self.assertNotIn("404", alias, "/404.html must be rewritten on informatico.ai so the ErrorDocument finds research/404.html")
         self.assertEqual(rules[-1], r"RewriteRule ^(.*)$ /research/$1 [L,QSA]")

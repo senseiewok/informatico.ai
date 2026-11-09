@@ -191,8 +191,12 @@ export function parseGlbBuffer(buffer) {
  */
 export function encodeCustomGlbBuffer(parsed, scaleVec, slug, p0, p1) {
   const [sx, sy, sz] = scaleVec;
+  const invSx = 1 / Math.max(Math.abs(sx), 1e-5);
+  const invSy = 1 / Math.max(Math.abs(sy), 1e-5);
+  const invSz = 1 / Math.max(Math.abs(sz), 1e-5);
   const vCount = parsed.vertexCount;
   const scaledPos = new Float32Array(vCount * 3);
+  const scaledNorm = new Float32Array(vCount * 3);
   const bmin = [Infinity, Infinity, Infinity];
   const bmax = [-Infinity, -Infinity, -Infinity];
   for (let i = 0; i < vCount; i += 1) {
@@ -208,10 +212,17 @@ export function encodeCustomGlbBuffer(parsed, scaleVec, slug, p0, p1) {
     if (x > bmax[0]) bmax[0] = x;
     if (y > bmax[1]) bmax[1] = y;
     if (z > bmax[2]) bmax[2] = z;
+    const nx = parsed.normals[i * 3] * invSx;
+    const ny = parsed.normals[i * 3 + 1] * invSy;
+    const nz = parsed.normals[i * 3 + 2] * invSz;
+    const nLen = Math.hypot(nx, ny, nz) || 1;
+    scaledNorm[i * 3] = nx / nLen;
+    scaledNorm[i * 3 + 1] = ny / nLen;
+    scaledNorm[i * 3 + 2] = nz / nLen;
   }
 
   const posBytes = scaledPos.byteLength;
-  const normBytes = parsed.normals.byteLength;
+  const normBytes = scaledNorm.byteLength;
   const colBytes = parsed.colors.byteLength;
   const idxBytes = parsed.indices.byteLength;
   const rawBinLen = posBytes + normBytes + colBytes + idxBytes;
@@ -273,7 +284,7 @@ export function encodeCustomGlbBuffer(parsed, scaleVec, slug, p0, p1) {
   view.setUint32(binHeader + 4, CHUNK_BIN, true);
   const binStart = binHeader + 8;
   u8.set(new Uint8Array(scaledPos.buffer), binStart);
-  u8.set(new Uint8Array(parsed.normals.buffer, parsed.normals.byteOffset, normBytes), binStart + posBytes);
+  u8.set(new Uint8Array(scaledNorm.buffer), binStart + posBytes);
   u8.set(new Uint8Array(parsed.colors.buffer, parsed.colors.byteOffset, colBytes), binStart + posBytes + normBytes);
   u8.set(
     new Uint8Array(parsed.indices.buffer, parsed.indices.byteOffset, idxBytes),
