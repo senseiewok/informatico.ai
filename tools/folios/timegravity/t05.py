@@ -64,8 +64,8 @@ PAGE: dict = {
     ),
     "reading_time_en": "14 min read",
     "reading_time_es": "14 min de lectura",
-    "central_number_en": "For the 2017 proposal's own geometry (10⁻¹⁴ kg, 450 µm apart, each split by 250 µm, held 2.5 s): entanglement phase Δφ = 0.31 rad, concurrence |sin(Δφ/2)| = 0.16 recomputed two ways within 1e-12; full entanglement at 25.0 s; a classical mean-field channel entangles nothing (< 1e-12); the band's edges computed: the classical-channel rate KΔx²/2ħ is this page's dephasing threshold (ratio 1.000 in the small-split limit), and the Diósi–Penrose model predicts entanglement only below 0.8508σ (the 2025 letter: 0.8501σ)",
-    "central_number_es": "Para la geometría de la propuesta de 2017 (10⁻¹⁴ kg, a 450 µm, cada una dividida 250 µm, sostenidas 2.5 s): fase de entrelazamiento Δφ = 0.31 rad, concurrencia |sin(Δφ/2)| = 0.16 recalculada de dos maneras dentro de 1e-12; entrelazamiento completo a 25.0 s; un canal clásico de campo medio no entrelaza nada (< 1e-12); los bordes de la banda calculados: la tasa del canal clásico KΔx²/2ħ es el umbral de desfase de esta página (razón 1.000 en el límite de división pequeña), y el modelo de Diósi–Penrose predice entrelazamiento solo por debajo de 0.8508σ (la carta de 2025: 0.8501σ)",
+    "central_number_en": "For the 2017 proposal's own geometry (10⁻¹⁴ kg, 450 µm apart, each split by 250 µm, held 2.5 s): entanglement phase Δφ = 0.31 rad, concurrence |sin(Δφ/2)| = 0.16 recomputed two ways within 1e-12; full entanglement at 25.0 s; a classical mean-field channel entangles nothing (< 1e-12); the band's edges computed: the classical-channel rate KΔx²/2ħ is this page's dephasing threshold (ratio 1.000 in the small-split limit), and the Diósi–Penrose model predicts entanglement only below 0.8508σ (the 2025 letter: 0.8501σ); on the 2020 Eöt-Wash plates that model's smeared pull removes about a tenth of the 120-fold torque at 52 µm for σ = 75 µm, where the Yukawa at the published edge removes 1.5 %",
+    "central_number_es": "Para la geometría de la propuesta de 2017 (10⁻¹⁴ kg, a 450 µm, cada una dividida 250 µm, sostenidas 2.5 s): fase de entrelazamiento Δφ = 0.31 rad, concurrencia |sin(Δφ/2)| = 0.16 recalculada de dos maneras dentro de 1e-12; entrelazamiento completo a 25.0 s; un canal clásico de campo medio no entrelaza nada (< 1e-12); los bordes de la banda calculados: la tasa del canal clásico KΔx²/2ħ es el umbral de desfase de esta página (razón 1.000 en el límite de división pequeña), y el modelo de Diósi–Penrose predice entrelazamiento solo por debajo de 0.8508σ (la carta de 2025: 0.8501σ); en las placas de Eöt-Wash de 2020 la atracción suavizada de ese modelo quita alrededor de una décima del par de 120 pliegues a 52 µm para σ = 75 µm, donde el Yukawa del borde publicado quita 1.5 %",
     "verifier": "skills/timegravity/t05/verify_t05_entanglement_channels.py",
     "generator": "skills/timegravity/t05/make_t05.py",
     "skill": "skills/timegravity/t05/SKILL.md",
@@ -91,7 +91,7 @@ PAGE: dict = {
             "once and at the same stroke weight: the quantum channel's curve |sin(Δφ/2)|, the classical LOCC channel's flat zero, and the "
             "disputed classical non-LOCC channel as a hatched band between them, because the literature gives two answers and this page "
             "picks neither; inside the band a dotted curve is what one named classical model, the Diósi–Penrose model with its smearing σ, "
-            "predicts for the chosen σ, and the readouts give the band's two computed edges. Sliders set the mass, the separation, the split, "
+            "predicts for the chosen σ, and the readouts give the band's two computed edges and what the smeared pull would do to the 120-fold torque of the 2020 Eöt-Wash plates at 52 µm. Sliders set the mass, the separation, the split, "
             "the hold time, a local dephasing rate and the model's σ. The knockout switches "
             "which channel the readouts follow. The planted defect is a classical LOCC channel that entangles, which the verifier rejects. "
             "Keyboard: Tab and arrows. With reduced motion on, nothing animates."
@@ -102,7 +102,7 @@ PAGE: dict = {
             "espera, dibujado para los tres canales a la vez y con el mismo grosor de trazo: la curva |sin(Δφ/2)| del canal cuántico, el cero "
             "plano del canal clásico LOCC, y el canal clásico no-LOCC en disputa como una banda rayada entre ambos, porque la literatura da dos "
             "respuestas y esta página no elige ninguna; dentro de la banda una curva punteada es lo que un modelo clásico con nombre, el modelo de "
-            "Diósi–Penrose con su suavizado σ, predice para la σ elegida, y las lecturas dan los dos bordes calculados de la banda. Los deslizadores "
+            "Diósi–Penrose con su suavizado σ, predice para la σ elegida, y las lecturas dan los dos bordes calculados de la banda y lo que la atracción suavizada haría al par de 120 pliegues de las placas de Eöt-Wash de 2020 a 52 µm. Los deslizadores "
             "fijan la masa, la separación, la división, el tiempo de espera, una tasa local de desfase y la σ del modelo. El apagado cambia qué canal siguen las lecturas. El defecto plantado es un canal clásico LOCC que entrelaza, "
             "que el verificador rechaza. Teclado: Tab y flechas. Con movimiento reducido, nada se anima."
         ),
@@ -296,12 +296,43 @@ PAGE: dict = {
               "La ley del inverso del cuadrado de Newton se ha puesto a prueba en el laboratorio a separaciones de hasta 52 µm, con cualquier "
               "interacción de Yukawa de intensidad gravitatoria limitada a alcances por debajo de 38.6 µm al 95 % de confianza, y un segundo grupo "
               "mostró que se cumple con |α| ≤ 1 hasta una escala de longitud de 48 µm."),
-            T(" ", " "),
+            T(" The smearing that lets the model entangle softens its pull below about 2σ, and the same pull must act between the test bodies of these experiments.",
+              " El suavizado que permite al modelo entrelazar ablanda su atracción por debajo de unas 2σ, y la misma atracción debe actuar entre los cuerpos de prueba de estos experimentos."),
+        ),
+        P(
+            C("PROPOSED", [TRILLO, LEE],
+              "The kernel takes the question one step further. Between two patterned plates, each in-plane mode of the mass pattern with wavenumber q pulls "
+              "across a gap s as e^(−qs) under Newton; under the smeared potential it pulls as ½[erfc(qσ − s/2σ) + e^(2qs) erfc(qσ + s/2σ)] of that, a closed "
+              "form the kernel checks against direct quadrature and against its limits. Mapped onto the 2020 Eöt-Wash geometry (platinum plates 54 and 99 µm "
+              "thick, hole patterns 52 mm across with 18- and 120-fold symmetry, separations between facing surfaces from 52 µm to 3.0 mm), and taken at the "
+              "lowest wavenumber the 120-fold pattern allows, where the smearing bites least, the model removes about a tenth of the Newtonian 120-fold torque "
+              "at 52 µm for σ = 75 µm (10.4 %; 2.5 % for σ = 50 µm, 0.2 % for σ = 30 µm, 3.7 % at the smallest σ, 55 µm, that entangles the letter's own "
+              "geometry) and less than a thousandth beyond 300 µm; a Yukawa at the published 95 % edge, α = −1 at λ = 38.6 µm, removes 1.5 % in the same mode "
+              "at the same separation.",
+              "El núcleo lleva la pregunta un paso más allá. Entre dos placas con patrón, cada modo en el plano del patrón de masa con número de onda q atrae "
+              "a través de un hueco s como e^(−qs) según Newton; con el potencial suavizado atrae como ½[erfc(qσ − s/2σ) + e^(2qs) erfc(qσ + s/2σ)] de eso, "
+              "una forma cerrada que el núcleo comprueba contra cuadratura directa y contra sus límites. Llevado a la geometría de Eöt-Wash de 2020 (placas de "
+              "platino de 54 y 99 µm de espesor, patrones de agujeros de 52 mm de ancho con simetría de 18 y 120 pliegues, separaciones entre caras enfrentadas "
+              "de 52 µm a 3.0 mm), y tomado al número de onda más bajo que permite el patrón de 120 pliegues, donde el suavizado muerde menos, el modelo quita "
+              "alrededor de una décima del par newtoniano de 120 pliegues a 52 µm para σ = 75 µm (10.4 %; 2.5 % para σ = 50 µm, 0.2 % para σ = 30 µm, 3.7 % "
+              "a la σ más pequeña, 55 µm, que entrelaza la geometría propia de la carta) y menos de una milésima más allá de 300 µm; un Yukawa en el borde "
+              "publicado al 95 %, α = −1 con λ = 38.6 µm, quita 1.5 % en el mismo modo a la misma separación."),
+            T(" That sets two predicted signal sizes side by side in one mode; it is not a bound on σ, because the experiment's fit, with its floating offset, "
+              "roughness correction and calibrated scale, is not recomputed here. In this one-mode estimate a smearing of 44 µm would remove as much as the edge "
+              "Yukawa does at the closest separation, and the Yukawa shape closest to the σ = 75 µm curve has a range near 49 µm and about three times gravity's "
+              "strength, a curve match with no data behind it. One model's predictions at a measured geometry: the label is PROPOSED.",
+              " Eso pone lado a lado dos tamaños de señal predichos en un modo; no es una cota sobre σ, porque el ajuste del experimento, con su desplazamiento "
+              "libre, su corrección de rugosidad y su escala calibrada, no se recalcula aquí. En esta estimación de un modo un suavizado de 44 µm quitaría tanto "
+              "como el Yukawa del borde a la separación más cercana, y la forma de Yukawa más parecida a la curva de σ = 75 µm tiene un alcance cerca de 49 µm "
+              "y unas tres veces la intensidad de la gravedad, un ajuste de curva sin datos detrás. Predicciones de un modelo en una geometría medida: la "
+              "etiqueta es PROPUESTO."),
             C("OPEN", [TRILLO, LEE, TAN],
-              "Whether a smearing of 75 µm or more, which softens the model's pull below about 150 µm, leaves those tests intact for the bodies they "
-              "used is not a Yukawa question and not one this kernel computes; the page notes the question and leaves it open.",
-              "Si un suavizado de 75 µm o más, que ablanda la atracción del modelo por debajo de unas 150 µm, deja intactas esas pruebas para los "
-              "cuerpos que usaron no es una pregunta de Yukawa ni una que este núcleo calcule; la página anota la pregunta y la deja abierta."),
+              "Whether the published analysis, run on its own data, would reject the smeared shape is for the experiment to say, and the second group's bound "
+              "at 48 µm is stated as published because its geometry is not in the open text; the letter calls the entangling range of σ 'previously untested' "
+              "and its main text does not mention these tests. The page notes the question and leaves it open.",
+              "Si el análisis publicado, corrido sobre sus propios datos, rechazaría la forma suavizada es algo que debe decir el experimento, y la cota del "
+              "segundo grupo a 48 µm se enuncia tal como se publicó porque su geometría no está en el texto abierto; la carta llama al rango de σ que "
+              "entrelaza 'no probado antes' y su texto principal no menciona estas pruebas. La página anota la pregunta y la deja abierta."),
         ),
         {"type": "h2", "id": "labs", "en": "III · How far the laboratories are", "es": "III · Qué tan lejos están los laboratorios", "short_en": "III · Labs", "short_es": "III · Laboratorios"},
         P(
@@ -368,8 +399,8 @@ PAGE: dict = {
               "Un experimento realizado que atestiguara entrelazamiento movería la fila del canal cuántico de PROPUESTO a RESULTADO ÚNICO, y luego a MEDIDO tras una segunda colaboración; la etiqueta de página seguiría ABIERTO hasta que la disputa sobre qué prueba se resuelva en el registro revisado por pares."),
              ("A performed experiment that found no entanglement where the quantum channel predicts it would be reported as a BOUND on the mediator, and the page rewritten around it.",
               "Un experimento realizado que no encontrara entrelazamiento donde el canal cuántico lo predice se reportaría como una COTA sobre el mediador, y la página se reescribiría alrededor de ella."),
-             ("A sub-millimetre test of Newton's law analysed for the smeared potential erf(r/2σ)/r would turn the σ question from OPEN into a BOUND on the model, in either direction.",
-              "Una prueba submilimétrica de la ley de Newton analizada para el potencial suavizado erf(r/2σ)/r convertiría la pregunta sobre σ de ABIERTO en una COTA sobre el modelo, en cualquier dirección."),
+             ("A sub-millimetre test of Newton's law analysed by its own collaboration for the smeared potential erf(r/2σ)/r would turn the σ question from OPEN into a BOUND on the model, in either direction; the page's one-mode estimate is not that analysis.",
+              "Una prueba submilimétrica de la ley de Newton analizada por su propia colaboración para el potencial suavizado erf(r/2σ)/r convertiría la pregunta sobre σ de ABIERTO en una COTA sobre el modelo, en cualquier dirección; la estimación de un modo de la página no es ese análisis."),
              ("Peer-reviewed resolution of the 2025 dispute in either direction would collapse the hatched band onto one of its edges and relabel the third channel.",
               "Una resolución revisada por pares de la disputa de 2025 en cualquier dirección colapsaría la banda rayada sobre uno de sus bordes y reetiquetaría el tercer canal."),
          ]},
