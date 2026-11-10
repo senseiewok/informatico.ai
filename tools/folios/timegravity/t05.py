@@ -98,7 +98,7 @@ PAGE: dict = {
             "once and at the same stroke weight: the quantum channel's curve |sin(Δφ/2)|, the classical LOCC channel's flat zero, and the "
             "disputed classical non-LOCC channel as a hatched band between them, because the literature gives two answers and this page "
             "picks neither; inside the band a dotted curve is what one named classical model, the Diósi–Penrose model with its smearing σ, "
-            "predicts for the chosen σ, and the readouts give the band's two computed edges and what the smeared pull would do to the 120-fold torque of the 2020 Eöt-Wash plates at 52 µm. Sliders set the mass, the separation, the split, "
+            "predicts for the chosen σ, and the readouts give the band's two computed edges and what the smeared pull would do to the 120-fold torque of the 2020 Eöt-Wash plates at 52 µm, and the σ above which the quantum witness would survive pure collapse at this geometry and hold time. Sliders set the mass, the separation, the split, "
             "the hold time, a local dephasing rate and the model's σ. The knockout switches "
             "which channel the readouts follow. The planted defect is a classical LOCC channel that entangles, which the verifier rejects. "
             "Keyboard: Tab and arrows. With reduced motion on, nothing animates."
@@ -109,7 +109,7 @@ PAGE: dict = {
             "espera, dibujado para los tres canales a la vez y con el mismo grosor de trazo: la curva |sin(Δφ/2)| del canal cuántico, el cero "
             "plano del canal clásico LOCC, y el canal clásico no-LOCC en disputa como una banda rayada entre ambos, porque la literatura da dos "
             "respuestas y esta página no elige ninguna; dentro de la banda una curva punteada es lo que un modelo clásico con nombre, el modelo de "
-            "Diósi–Penrose con su suavizado σ, predice para la σ elegida, y las lecturas dan los dos bordes calculados de la banda y lo que la atracción suavizada haría al par de 120 pliegues de las placas de Eöt-Wash de 2020 a 52 µm. Los deslizadores "
+            "Diósi–Penrose con su suavizado σ, predice para la σ elegida, y las lecturas dan los dos bordes calculados de la banda y lo que la atracción suavizada haría al par de 120 pliegues de las placas de Eöt-Wash de 2020 a 52 µm, y la σ por encima de la cual el testigo cuántico sobreviviría al colapso puro en esta geometría y tiempo de espera. Los deslizadores "
             "fijan la masa, la separación, la división, el tiempo de espera, una tasa local de desfase y la σ del modelo. El apagado cambia qué canal siguen las lecturas. El defecto plantado es un canal clásico LOCC que entrelaza, "
             "que el verificador rechaza. Teclado: Tab y flechas. Con movimiento reducido, nada se anima."
         ),
