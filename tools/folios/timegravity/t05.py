@@ -568,6 +568,30 @@ PAGE: dict = {
               "dentro de la única geometría que los datos le dejan, la dinámica híbrida muestra entrelazamiento solo a tasas de decoherencia entre cincuenta y "
               "doscientas setenta veces por debajo del propio presupuesto de la propuesta; la página calcula los dos umbrales y no mide ninguno."),
         ),
+        P(
+            C("PROPOSED", [AZIZ, BOSE, CHEV, VDK, SCHUT],
+              "The dispute's other classical route can be put on the same map. The 2025 Nature paper that argues classical gravity entangles quantum fields "
+              "gives its entangling term in closed form: it grows as the sixth power of the object's mass and the fourth power of Newton's constant (its "
+              "square root as the cube and the square), and its authors write that at 10⁻¹⁴ kg it is 'substantially smaller' than the quantum phase and "
+              "becomes significant for masses 'approaching the Planck mass and beyond'.",
+              "La otra ruta clásica de la disputa puede ponerse en el mismo mapa. El artículo de Nature de 2025 que sostiene que la gravedad clásica entrelaza "
+              "campos cuánticos da su término de entrelazamiento en forma cerrada: crece como la sexta potencia de la masa del objeto y la cuarta potencia de la "
+              "constante de Newton (su raíz cuadrada como el cubo y el cuadrado), y sus autores escriben que a 10⁻¹⁴ kg es 'sustancialmente menor' que la fase "
+              "cuántica y se vuelve significativo para masas 'que se acercan a la masa de Planck y más allá'."),
+            T(" Evaluated by this page on their formula for diamond spheres, the proposals' material, the ratio of that term to the quantum phase is 2 × 10⁻²⁹ "
+              "at the 2017 geometry, 5 × 10⁻³⁰ at the 2020 refinement, 7 × 10⁻³⁴ at the screened 2020 geometry and 8 × 10⁻²⁹ at the 2024 side-by-side one; "
+              "ytterbium, the paper's material, gives about ten thousand times more. For a Planck-mass ytterbium sphere ten radii apart, the paper's own "
+              "setting, the term lies far above the 0.1 the paper calls significant. The formula is a leading-order one that assumes a small quantum phase and "
+              "a nearest approach well inside the split, conditions these geometries meet only partly, so the ratios are order-of-magnitude readings, not a "
+              "finding about any experiment; whether the mechanism is right is the dispute above.",
+              " Evaluada por esta página con su fórmula para esferas de diamante, el material de las propuestas, la razón entre ese término y la fase cuántica "
+              "es de 2 × 10⁻²⁹ en la geometría de 2017, 5 × 10⁻³⁰ en el refinamiento de 2020, 7 × 10⁻³⁴ en la geometría apantallada de 2020 y 8 × 10⁻²⁹ en la "
+              "lado a lado de 2024; el iterbio, el material del artículo, da unas diez mil veces más. Para una esfera de iterbio de masa de Planck a diez radios "
+              "de distancia, el escenario del propio artículo, el término queda muy por encima del 0.1 que el artículo llama significativo. La fórmula es de "
+              "primer orden y supone una fase cuántica pequeña y una aproximación más cercana bien dentro de la división, condiciones que estas geometrías "
+              "cumplen solo en parte, así que las razones son lecturas de orden de magnitud, no un hallazgo sobre experimento alguno; si el mecanismo es "
+              "correcto es la disputa de arriba."),
+        ),
         {"type": "h2", "id": "labs", "en": "III · How far the laboratories are", "es": "III · Qué tan lejos están los laboratorios", "short_en": "III · Labs", "short_es": "III · Laboratorios"},
         P(
             C("MEASURED", [WEST, FUCHS],
