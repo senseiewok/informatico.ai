@@ -465,6 +465,35 @@ PAGE: dict = {
               "división igual a la separación, y si algo se sitúa en ella no lo determina esta página."),
         ),
         {"type": "threshold_map"},
+        P(
+            C("PROPOSED", [TRILLO, LEE, VDK, BOSE, AZIZ],
+              "Read together with the 2020 inverse-square data, the map says where the one explicit classical model on the page could still reach the "
+              "witness. At the 2017 geometry the hybrid dynamics needs σ above 525 µm, a smearing that on this site's full-pattern kernel would remove the "
+              "whole 120-fold torque the 2020 experiment measured at its Newtonian value at 52 µm; at the letter's own geometry it needs 55 µm, at which "
+              "the smeared pull would take 6 % off that torque where the published exclusion edge corresponds to 2.5 %.",
+              "Leído junto con los datos de 2020 sobre la ley del inverso del cuadrado, el mapa dice hasta dónde podría llegar al testigo el único modelo "
+              "clásico explícito de esta página. En la geometría de 2017 la dinámica híbrida necesita σ por encima de 525 µm, un suavizado que en el "
+              "núcleo de patrón completo de este sitio eliminaría todo el par de 120 pliegues que el experimento de 2020 midió en su valor newtoniano a "
+              "52 µm; en la geometría de la propia carta necesita 55 µm, con lo que la atracción suavizada quitaría 6 % de ese par donde el borde de "
+              "exclusión publicado corresponde a 2.5 %."),
+            T(" At this site's 44 µm estimate the model reaches only pairs closer than 36 µm at a split a thirtieth of the gap and 19 µm at equal split and "
+              "gap, against a Casimir floor of 17.1 µm for 10⁻¹⁵ kg and 26.5 µm for 10⁻¹⁴ kg. No hold time widens that reach and heavier masses only narrow "
+              "it, since the hybrid threshold is geometric while the floor rises with mass: at 10⁻¹³ kg the floor of 41.5 µm lies above the 36 µm reach. "
+              "What stays open on the estimate is a region of masses up to about 10⁻¹⁴ kg, small splits, nearest approaches between the floor and 36 µm, "
+              "and σ between about 21 and 44 µm. So a witness at a nearest approach beyond that reach could be attributed to this model only with a "
+              "smearing that contradicts the 2020 torque on this site's kernel. What such a witness would say about gravity remains the dispute above, "
+              "since other classical accounts are argued in the literature and this page assesses none of them; and whether 44 µm is a bound rather than "
+              "an estimate waits on a refit of the 2020 data with the smeared kernel.",
+              " En la estimación de 44 µm de este sitio el modelo alcanza solo pares a menos de 36 µm con una división de un treintavo de la separación y "
+              "de 19 µm a división igual a la separación, frente a un piso de Casimir de 17.1 µm para 10⁻¹⁵ kg y de 26.5 µm para 10⁻¹⁴ kg. Ningún tiempo "
+              "de espera amplía ese alcance y las masas mayores solo lo estrechan, porque el umbral híbrido es geométrico mientras el piso sube con la "
+              "masa: a 10⁻¹³ kg el piso de 41.5 µm queda por encima del alcance de 36 µm. Lo que sigue abierto en la estimación es una región de masas "
+              "hasta unos 10⁻¹⁴ kg, divisiones pequeñas, aproximaciones más cercanas entre el piso y 36 µm, y σ entre unos 21 y 44 µm. Así que un "
+              "testigo a una aproximación más cercana mayor que ese alcance solo podría atribuirse a este modelo con un suavizado que contradiga el par "
+              "de 2020 en el núcleo de este sitio. Qué diría tal testigo sobre la gravedad sigue siendo la disputa de arriba, pues en la literatura se "
+              "defienden otras descripciones clásicas y esta página no evalúa ninguna; y si 44 µm es una cota y no una estimación depende de un reajuste "
+              "de los datos de 2020 con el núcleo suavizado."),
+        ),
         {"type": "h2", "id": "labs", "en": "III · How far the laboratories are", "es": "III · Qué tan lejos están los laboratorios", "short_en": "III · Labs", "short_es": "III · Laboratorios"},
         P(
             C("MEASURED", [WEST, FUCHS],
