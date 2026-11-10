@@ -311,7 +311,8 @@ def parallel_map(ratios: tuple = (0.03, 0.1, 0.25, 0.5, 1.0, 2.0), gap: float = 
 PROPOSALS = (
     ("bose2017", "collinear", 1e-14, 250e-6, 200e-6),              # Bose et al. 2017: d = 450 µm centre to centre, Δx = 250 µm
     ("chevalier2020_d350", "collinear", 1e-14, 250e-6, 100e-6),    # Chevalier, Paige & Kim 2020: d = 350 µm, 2δ = 250 µm, closest approach 100 µm
-    ("vandekamp2020", "collinear", 1e-15, 23e-6, 47e-6),           # van de Kamp et al. 2020: Δx = 23 µm, initial separation 47 µm behind a 1 µm plate
+    ("vandekamp2020", "collinear", 1e-15, 23e-6, 47e-6),           # the paper's "initial separation of 47 µm" read as the nearest approach
+    ("vandekamp2020_letter_reading", "collinear", 1e-15, 23e-6, 24e-6),  # the same proposal as the 2025 letter reads it: 47 µm centre to centre, 24 µm nearest (Δx = 23 µm, 1 µm plate)
     ("schut2024_z30", "parallel", 1e-14, 8.5e-6, 61e-6),           # Schut et al. 2024 Table I: 10⁻¹⁴ kg, z = 30 µm (d = 61 µm), Δx = 8.5 µm
     ("schut2024_z10", "parallel", 1e-14, 1.7e-6, 21e-6),           # z = 10 µm (d = 21 µm), Δx = 1.7 µm
     ("schut2024_z5", "parallel", 1e-14, 0.65e-6, 11e-6),           # z = 5 µm (d = 11 µm), Δx = 0.65 µm
