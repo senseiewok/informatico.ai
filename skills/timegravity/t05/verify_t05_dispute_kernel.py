@@ -55,6 +55,8 @@ def main(argv: list[str] | None = None) -> int:
         assert res["collapse_ok"], "pure Diósi–Penrose collapse against the quantum channel does not reproduce: no entanglement at σ = 100 µm, some at 500 µm, the quantum value at 1 mm, and the letter geometry's critical σ below the 2017 geometry's"
         assert res["scaling_ok"], "the collapse threshold does not scale as expected: insensitive to mass and hold time within 2 %, roughly linear in the geometry's size"
         assert res["rijavec_ok"], f"this page's dephasing threshold {res['dephasing_threshold_per_s']:.4f} /s is not the 2021 study's 1/τ_G = {1 / res['rijavec_tau_g_s']:.4f} /s within 2 %"
+        assert res["map_ok"], "the geometry map is not as expected: both thresholds mass-independent, hybrid above collapse everywhere, both monotone in the ratio, 2017 point recovered"
+        assert res["isl_ok"], "the map read with the 2020 data is not as expected: whole torque removed at the 2017 threshold, 2-3x the edge at the letter's, estimate at the edge, window above the 1e-15 kg floor only"
         assert res["defect_rejected"], "the planted decoherence-free channel was not detectable"
         ref = verify_reference_block()
     except AssertionError as exc:
@@ -76,7 +78,7 @@ def main(argv: list[str] | None = None) -> int:
             "ktm_2017_exact_phases_with_ktm_dephasing_negativity": res["ktm_2017"]["exact_phases_with_ktm_dephasing_negativity"],
             "entangling_parts": res["entangling_parts"], "quantum_channel_negativity_2017": res["quantum_channel_negativity_2017"],
             "pure_collapse": {k: {"critical_sigma_m": v["critical_sigma_m"], "half_sigma_m": v["half_sigma_m"], "quantum_negativity": v["quantum_negativity"]} for k, v in res["pure_collapse"].items()},
-            "collapse_scaling": res["collapse_scaling"], "rijavec_tau_g_s": res["rijavec_tau_g_s"], "dephasing_threshold_per_s": res["dephasing_threshold_per_s"],
+            "threshold_map": res["threshold_map"], "map_with_isl": res["map_with_isl"], "collapse_scaling": res["collapse_scaling"], "rijavec_tau_g_s": res["rijavec_tau_g_s"], "dephasing_threshold_per_s": res["dephasing_threshold_per_s"],
         },
         "geometry_checks": {
             "critical_separation_matches_paper": "PASS",
@@ -86,6 +88,8 @@ def main(argv: list[str] | None = None) -> int:
             "entangling_power_in_the_interaction_part": "PASS",
             "pure_collapse_critical_sigma": "PASS",
             "collapse_threshold_scaling_and_2021_cross_check": "PASS",
+            "geometry_map_two_thresholds": "PASS",
+            "map_against_2020_inverse_square_data": "PASS",
             "planted_defect_knockout": "REJECTED_AS_EXPECTED",
         },
         "reference_block": ref,

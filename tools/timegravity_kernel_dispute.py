@@ -143,6 +143,54 @@ def dp_collapse_scaling() -> dict:
     }
 
 
+MAP_RATIOS = (0.03, 0.1, 0.25, 0.5, 0.96, 1.25, 2.0, 4.0, 8.0, 16.0, 32.0)
+MAP_SMALL_MASS_KG = 1e-16  # keeps the entangling phase small at a 100 µm nearest approach, where the collapse threshold is geometric
+
+
+def threshold_map(ratios: tuple = MAP_RATIOS, nearest: float = 100e-6) -> list[dict]:
+    """Both σ thresholds over the geometry ratio r = split / nearest approach, each divided by the nearest approach: G(r), above which
+    the letter's hybrid dynamics entangles (E_− < 0), and F(r), above which the quantum witness survives pure Diósi–Penrose collapse
+    at 2.5 s. Both scale with the nearest approach and, while the entangling phase is small, depend on nothing but r."""
+    rows = []
+    for r in ratios:
+        split = r * nearest
+        rows.append({
+            "ratio": r,
+            "hybrid_over_nearest": tn_critical_sigma(1e-15, split, nearest) / nearest,
+            "hybrid_over_nearest_1e-14": tn_critical_sigma(1e-14, split, nearest) / nearest,
+            "collapse_over_nearest": dp_collapse_sigma_at(split, nearest, MAP_SMALL_MASS_KG, BMV_T_S, 0.0) / nearest,
+            "collapse_over_nearest_1e-15": dp_collapse_sigma_at(split, nearest, 1e-15, BMV_T_S, 0.0) / nearest,
+        })
+    return rows
+
+
+SIGMA_ESTIMATE_M = 44.07e-6  # T.05's estimate of where the hybrid form could still live: the smeared pull matching the published Yukawa edge
+
+
+def map_with_isl(sigma_estimate: float = SIGMA_ESTIMATE_M) -> dict:
+    """The geometry map read with the 2020 inverse-square data: the 52 µm torque deficit the smeared pull would produce at each
+    geometry's hybrid threshold, and the widest nearest approach the hybrid dynamics can entangle at the σ estimate, against the
+    Casimir floor. Cross-kernel, so the wedge and ladder kernels are imported here."""
+    from timegravity_kernel_wedge import wedge_deficit, wedge_yukawa_edge_deficit
+    from timegravity_kernel_ladder import casimir_floor_separation
+    thresholds = {
+        "geometry_2017": tn_critical_sigma(BMV_M_KG, BMV_DX_M, BMV_D_M - BMV_DX_M),
+        "letter_geometry": tn_critical_sigma(TN_M_KG, TN_L_M, TN_D_M),
+    }
+    deficits = {k: wedge_deficit(s) for k, s in thresholds.items()}
+    deficits["estimate"] = wedge_deficit(sigma_estimate)
+    rows = threshold_map()
+    widest = {f"r{row['ratio']:g}": sigma_estimate / row["hybrid_over_nearest"] for row in rows}
+    return {
+        "sigma_estimate_m": sigma_estimate, "hybrid_threshold_m": thresholds, "torque_deficit_at_threshold": deficits,
+        "published_edge_deficit": wedge_yukawa_edge_deficit(), "widest_entangling_nearest_m": widest,
+        "casimir_floor_m": {f"{m:.0e}": casimir_floor_separation(m) for m in (1e-15, 1e-14, 1e-13)},
+        # the hybrid threshold for a pair sitting at its own Casimir floor, at a split a thirtieth of the gap and at equal split and gap
+        "hybrid_sigma_at_floor_m": {f"{m:.0e}_r{r:g}": tn_critical_sigma(m, r * casimir_floor_separation(m), casimir_floor_separation(m))
+                                    for m in (1e-15, 1e-14) for r in (0.03, 1.0)},
+    }
+
+
 def rijavec_tau_g(m: float = BMV_M_KG, d: float = BMV_D_M, dx: float = BMV_DX_M) -> float:
     """τ_G = ħ d [(d/Δx)² − 1] / (G m²) of Rijavec, Carlesso, Bassi, Vedral & Marletto 2021 (their Eq. 7): the pair is separable at all
     times for a dephasing rate above 1/τ_G (their Eq. 15)."""
@@ -346,6 +394,28 @@ def check_dispute(planted_defect: bool = False) -> dict:
     gamma_zero = negativity_threshold_gamma_t(branch_phases(BMV_M_KG, BMV_D_M, BMV_DX_M, BMV_T_S, "quantum"), hi=50.0) / BMV_T_S
     tau_g = rijavec_tau_g()
     rijavec_ok = abs(gamma_zero * tau_g - 1.0) < 2e-2
+    # 4e. The geometry map: both thresholds over r = split / nearest, mass-independent, G above F everywhere, F and G monotone.
+    tmap = threshold_map()
+    gs = [row["hybrid_over_nearest"] for row in tmap]; fs = [row["collapse_over_nearest"] for row in tmap]
+    map_ok = (all(abs(row["hybrid_over_nearest_1e-14"] / row["hybrid_over_nearest"] - 1.0) < 1e-3 for row in tmap)
+              and all(abs(row["collapse_over_nearest_1e-15"] / row["collapse_over_nearest"] - 1.0) < 1e-2 for row in tmap)
+              and all(g > f for g, f in zip(gs, fs)) and all(b > a_ for a_, b in zip(gs, gs[1:])) and all(b > a_ for a_, b in zip(fs, fs[1:]))
+              and 0.3 < fs[0] < 0.4 and 0.99 < fs[-1] < 1.01 and 1.15 < gs[0] < 1.25 and 3.0 < gs[0] / fs[0] < 3.6
+              and abs(tmap[5]["collapse_over_nearest"] * 200e-6 / collapse["geometry_2017_2p5s"]["critical_sigma_m"] - 1.0) < 1e-2
+              and abs(tmap[5]["hybrid_over_nearest"] * 200e-6 / tn_critical_sigma(BMV_M_KG, BMV_DX_M, BMV_D_M - BMV_DX_M) - 1.0) < 1e-3)
+    # 4f. The map against the 2020 data: at the 2017 geometry's hybrid threshold the smeared pull removes the whole 52 µm torque; at the
+    # letter's it is 2 to 3 times the published edge; the estimate reproduces the edge; the open window sits above the Casimir floor only
+    # for small splits.
+    isl = map_with_isl()
+    isl_ok = (isl["torque_deficit_at_threshold"]["geometry_2017"] > 0.99
+              and 2.0 < isl["torque_deficit_at_threshold"]["letter_geometry"] / isl["published_edge_deficit"] < 3.0
+              and abs(isl["torque_deficit_at_threshold"]["estimate"] / isl["published_edge_deficit"] - 1.0) < 0.05
+              and 34e-6 < isl["widest_entangling_nearest_m"]["r0.03"] < 38e-6 and 18e-6 < isl["widest_entangling_nearest_m"]["r0.96"] < 21e-6
+              and isl["casimir_floor_m"]["1e-15"] < isl["widest_entangling_nearest_m"]["r0.03"]
+              and isl["casimir_floor_m"]["1e-14"] > isl["widest_entangling_nearest_m"]["r0.96"]
+              and isl["casimir_floor_m"]["1e-13"] > isl["widest_entangling_nearest_m"]["r0.03"]
+              and 19e-6 < isl["hybrid_sigma_at_floor_m"]["1e-15_r0.03"] < 23e-6
+              and 39e-6 < isl["hybrid_sigma_at_floor_m"]["1e-15_r1"] < 41e-6)
     # 5. Where the entangling power sits: the noise part alone entangles nothing at any σ or time; the interaction part alone gives
     #    at least the full model's negativity; and as σ → 0 the interaction part is the quantum channel exactly.
     parts = {}
@@ -366,10 +436,11 @@ def check_dispute(planted_defect: bool = False) -> dict:
         "ktm_threshold_ratios": ratios, "ktm_2017": ktm_2017,
         "entangling_parts": parts, "quantum_channel_negativity_2017": quantum_negativity, "parts_ok": parts_ok,
         "pure_collapse": collapse, "collapse_ok": collapse_ok,
+        "threshold_map": tmap, "map_ok": map_ok, "map_with_isl": isl, "isl_ok": isl_ok,
         "collapse_scaling": scaling, "scaling_ok": scaling_ok, "rijavec_tau_g_s": tau_g, "dephasing_threshold_per_s": gamma_zero, "rijavec_ok": rijavec_ok,
         "dc_paper_ok": dc_paper_ok, "dc_double_entry_ok": dc_double_entry_ok, "fig3_ok": fig3_ok, "tn_2017_ok": tn_2017_ok,
         "ktm_ok": ktm_ok, "ktm_edge_ok": ktm_edge_ok, "defect_rejected": defect_rejected,
-        "ok": dc_paper_ok and dc_double_entry_ok and fig3_ok and tn_2017_ok and ktm_ok and ktm_edge_ok and parts_ok and collapse_ok and scaling_ok and rijavec_ok and defect_rejected,
+        "ok": dc_paper_ok and dc_double_entry_ok and fig3_ok and tn_2017_ok and ktm_ok and ktm_edge_ok and parts_ok and collapse_ok and scaling_ok and rijavec_ok and map_ok and isl_ok and defect_rejected,
     }
 
 
