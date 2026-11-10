@@ -1792,6 +1792,7 @@ REVAMP_CSS = r"""
   .tp-toy-model-box .tp-plain-bridge-kicker {
     color: var(--tp-minium);
   }
+  .tp-toy-model-box h3,
   .tp-toy-model-box h4 {
     margin: 0.15rem 0 0.5rem;
     font-size: 1.04rem;
@@ -1878,7 +1879,7 @@ REVAMP_CSS = r"""
     border: 2px solid var(--tp-prussian);
     border-radius: 12px;
     background: linear-gradient(180deg, var(--tp-vellum) 0%, var(--tp-stone) 100%);
-    box-shadow: var(--tp-shadow-flyout);
+    box-shadow: var(--tp-shadow-card);
   }
   .tp-studio-quickstart-head {
     display: flex;
