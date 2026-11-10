@@ -33,6 +33,9 @@ TILLOY = "T05-TILLOY2016"
 VDK = "T05-VANDEKAMP2020"
 LEE = "T05-LEE2020"
 TAN = "T05-TAN2020"
+DIOSI87 = "T06-DIOSI1987"
+PENROSE96 = "T06-PENROSE1996"
+DONADI21 = "T06-DONADI2021"
 LEE21 = "T05-LEE2021"
 MURATA = "T05-MURATA2026"
 
@@ -74,7 +77,7 @@ PAGE: dict = {
     "skill_filename": "timegravity-t05-entanglement-channels.SKILL.md",
     "open_question_en": "If a classical slope can entangle, what would count as quantum gravity?",
     "open_question_es": "Si una pendiente clásica puede entrelazar, ¿qué contaría como gravedad cuántica?",
-    "ledger_ids": [BOSE, MV, WEST, FUCHS, AGAF, TROY, KTM, PERES, WOOT, AZIZ, TRILLO, SCHN, MV25, DIOSI25, TOBAR, TILLOY, VDK, LEE, TAN, LEE21, MURATA],
+    "ledger_ids": [BOSE, MV, WEST, FUCHS, AGAF, TROY, KTM, PERES, WOOT, AZIZ, TRILLO, SCHN, MV25, DIOSI25, TOBAR, TILLOY, VDK, LEE, TAN, LEE21, MURATA, DIOSI87, PENROSE96, DONADI21],
     "ai_line_en": (
         "AI contribution to the cited results: none. No AI system contributed to any proposal, measurement, derivation or rebuttal cited on this page. "
         "The page text, instrument and verifier were drafted with AI assistance and checked by the site maintainer against the primary sources listed below."
@@ -399,6 +402,28 @@ PAGE: dict = {
               "Si el análisis publicado, corrido sobre sus propios datos, rechazaría la forma suavizada es algo que debe decir el experimento, y la cota del "
               "segundo grupo a 48 µm se enuncia tal como se publicó porque su geometría no está en el texto abierto; la carta llama al rango de σ que "
               "entrelaza 'no probado antes' y su texto principal no menciona estas pruebas. La página anota la pregunta y la deja abierta."),
+        ),
+        P(
+            C("PROPOSED", [BOSE, DIOSI87, PENROSE96, DONADI21],
+              "The proposed experiment is also a collapse test. If gravity is quantum and the Diósi–Penrose collapse exists besides, with Newton's law "
+              "untouched, the collapse decoheres the two masses on the same two-body kernel the hybrid model uses for its noise, at a rate that grows "
+              "with the mass squared and falls as the smearing grows; on this page's kernel the quantum channel's negativity of 0.078 for the 2017 "
+              "geometry is reduced to zero at 2.5 s unless σ is above 130 µm, and to half unless σ is above 177 µm, while the letter's lighter geometry "
+              "keeps some unless σ is below 14 µm. The 2017 proposal named spontaneous collapse as a mechanism that 'will typically lead to a strong loss "
+              "of coherence' and gave no number; these are the numbers this page computes on that model.",
+              "El experimento propuesto es también una prueba de colapso. Si la gravedad es cuántica y además existe el colapso de Diósi–Penrose, con "
+              "la ley de Newton intacta, el colapso decohere las dos masas sobre el mismo núcleo de dos cuerpos que el modelo híbrido usa para su ruido, "
+              "a un ritmo que crece con el cuadrado de la masa y cae al crecer el suavizado; en el núcleo de esta página la negatividad de 0.078 del canal "
+              "cuántico para la geometría de 2017 se reduce a cero a los 2.5 s salvo que σ esté por encima de 130 µm, y a la mitad salvo que esté por "
+              "encima de 177 µm, mientras que la geometría más ligera de la carta conserva algo salvo que σ baje de 14 µm. La propuesta de 2017 nombró el "
+              "colapso espontáneo como un mecanismo que 'típicamente llevará a una fuerte pérdida de coherencia' y no dio número; estos son los números "
+              "que esta página calcula en ese modelo."),
+            T(" A positive witness at the 2017 geometry would therefore set a lower bound of 130 µm on the collapse length, more than five orders of "
+              "magnitude above the radiation detectors' 4.9 Å; in that scenario Newton's law is untouched, so the hybrid form's Eöt-Wash estimate does "
+              "not apply to it. A null result would not by itself separate classical gravity from quantum gravity with collapse.",
+              " Un testigo positivo en la geometría de 2017 fijaría por tanto una cota inferior de 130 µm a la longitud de colapso, más de cinco órdenes "
+              "de magnitud por encima de los 4.9 Å de los detectores de radiación; en ese escenario la ley de Newton queda intacta, así que la estimación "
+              "de Eöt-Wash de la forma híbrida no le aplica. Un resultado nulo no separaría por sí solo la gravedad clásica de la gravedad cuántica con colapso."),
         ),
         {"type": "h2", "id": "labs", "en": "III · How far the laboratories are", "es": "III · Qué tan lejos están los laboratorios", "short_en": "III · Labs", "short_es": "III · Laboratorios"},
         P(

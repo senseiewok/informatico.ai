@@ -61,6 +61,7 @@ def dispute_block() -> dict:
         "tn_phase_tiny_sigma_rad": r["tn_phase_tiny_sigma_rad"], "newton_phase_rad": r["newton_phase_rad"],
         "ktm_threshold_ratios": r["ktm_threshold_ratios"], "ktm_2017": r["ktm_2017"],
         "entangling_parts": r["entangling_parts"], "quantum_channel_negativity_2017": r["quantum_channel_negativity_2017"],
+        "pure_collapse": r["pure_collapse"],
     })
 
 

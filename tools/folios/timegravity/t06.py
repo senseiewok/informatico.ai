@@ -276,14 +276,15 @@ PAGE: dict = {
               "Eöt-Wash torque as the Yukawa that test excludes at 95 %. On this site's estimate the inverse-square tests leave room only below "
               "that line, and the entanglement letter needs the range above it. A 2025 preprint on the smearing profiles of these models notes that for "
               "this parameter 'upper bounds can be put by observing no deviations from Newton's law of gravitation'; it works none out and names no "
-              "experiment. The 44 µm rung is this site's own estimate from the Eöt-Wash comparison on T.05, not the preprint's.",
+              "experiment. The 44 µm rung is this site's own estimate from the Eöt-Wash comparison on T.05, not the preprint's. T.05 adds a rung of another kind: if gravity is quantum and pure collapse exists besides, a positive witness at the 2017 geometry would put σ above 130 µm within this pure-collapse model.",
               "En lo alto de la escalera están los 50 a 250 µm de la carta de 2025, el rango en que el modelo entrelaza dos masas en un "
               "laboratorio; justo debajo, a 44 µm, el núcleo de cuñas de T.05 encuentra que la atracción suavizada del modelo quita tanto "
               "del par de Eöt-Wash como el Yukawa que esa prueba excluye al 95 %. En la estimación de este sitio las pruebas del inverso del cuadrado "
               "dejan sitio solo por debajo de esa línea, y la carta de entrelazamiento necesita el rango por encima. Una prepublicación de 2025 sobre los "
               "perfiles de suavizado de estos modelos anota que para este parámetro 'se pueden poner cotas superiores observando que no hay desviaciones "
               "de la ley de gravitación de Newton'; no calcula ninguna ni nombra experimento alguno. El peldaño de 44 µm es la estimación propia de este "
-              "sitio desde la comparación con Eöt-Wash en T.05, no la de la prepublicación."),
+              "sitio desde la comparación con Eöt-Wash en T.05, no la de la prepublicación. T.05 añade un peldaño de otra clase: si la gravedad es "
+              "cuántica y además existe el colapso puro, un testigo positivo en la geometría de 2017 pondría σ por encima de 130 µm dentro de este modelo de colapso puro."),
             C("BOUND", [OPPENHEIM],
               "The same torsion balances enter a second squeeze: in 2023 Oppenheim and co-workers showed that any consistent theory with "
               "classical gravity and quantum matter must trade decoherence of the matter against diffusion of the field, bounded that "

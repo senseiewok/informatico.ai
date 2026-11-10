@@ -378,7 +378,45 @@
         "noise": 0
       }
     },
-    "quantum_channel_negativity_2017": 0.0781617306618
+    "quantum_channel_negativity_2017": 0.0781617306618,
+    "pure_collapse": {
+      "geometry_2017_2p5s": {
+        "quantum_negativity": 0.0781617306615,
+        "critical_sigma_m": 0.000129871577935,
+        "half_sigma_m": 0.000176769285333,
+        "negativity_by_sigma": {
+          "44um": 0,
+          "100um": 0,
+          "200um": 0.0496089042819,
+          "500um": 0.0760710262423,
+          "1000um": 0.077894666502
+        }
+      },
+      "letter_geometry_2p5s": {
+        "quantum_negativity": 0.00530005009952,
+        "critical_sigma_m": 1.43194213906e-05,
+        "half_sigma_m": 1.87896617146e-05,
+        "negativity_by_sigma": {
+          "44um": 0.00507304319782,
+          "100um": 0.00528027509227,
+          "200um": 0.0052975675446,
+          "500um": 0.00529989104982,
+          "1000um": 0.00530003021568
+        }
+      },
+      "letter_geometry_1s": {
+        "quantum_negativity": 0.00212005339086,
+        "critical_sigma_m": 1.43192302794e-05,
+        "half_sigma_m": 1.87675696581e-05,
+        "negativity_by_sigma": {
+          "44um": 0.00202979409997,
+          "100um": 0.00211219291016,
+          "200um": 0.002119066614,
+          "500um": 0.00211999017134,
+          "1000um": 0.00212004548738
+        }
+      }
+    }
   },
   "smeared_isl_kernel": {
     "note": "plate-mode ratio R(q, s; sigma) = 1/2 [erfc(q sigma - s/2sigma) + e^(2qs) erfc(q sigma + s/2sigma)] of Newton's e^(-qs), checked against quadrature and its limits; Eot-Wash 2020 geometry at the pattern's lowest wavenumber (a one-mode estimate); the Yukawa at the published edge is a predicted signal size for comparison, not a bound on sigma; HUST 2020 quoted as published; labelled PROPOSED and OPEN on the page",

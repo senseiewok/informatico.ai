@@ -524,7 +524,7 @@ class TimeGravityBatch4Tests(unittest.TestCase):
         t06 = (TG / "t06" / "index.html").read_text(encoding="utf-8")
         self.assertNotIn("MEASURED", labels_of(TG / "t06" / "index.html"), "a bound page measures nothing")
         for s in ("576", "506", "0.54 × 10⁻¹⁰ m", "0.05 × 10⁻¹⁰ m", "4.9 × 10⁻¹⁰ m", "CSL is not a gravity model", "Where the smearing may live", 'data-tg-figure="sigma-ladder"',
-                  "above 40 fm", "6.5 × 10⁸ s", "10²⁰ ages of the universe", "upper bounds can be put by observing no deviations", "not the preprint's", "the model is quiet", "a hundred thousand times or more", "the deficit in the mean pull grows instead", "thirteen to sixteen orders lower", "not a bound: the step from a torque residual", "twenty-nine orders of magnitude", "does not assess Orch-OR", "D₂ ≤ 10⁻⁴¹", "draws no conclusion beyond it"):
+                  "above 40 fm", "6.5 × 10⁸ s", "10²⁰ ages of the universe", "upper bounds can be put by observing no deviations", "not the preprint's", "the model is quiet", "a hundred thousand times or more", "a rung of another kind", "the deficit in the mean pull grows instead", "thirteen to sixteen orders lower", "not a bound: the step from a torque residual", "twenty-nine orders of magnitude", "does not assess Orch-OR", "D₂ ≤ 10⁻⁴¹", "draws no conclusion beyond it"):
             self.assertIn(s, t06, f"T.06 lacks {s!r}")
         t10 = (TG / "t10" / "index.html").read_text(encoding="utf-8")
         for s in ("signal-to-noise ratio of 80", "to high credibility", "does not recompute it", "Where does the information go, in our universe?"):
@@ -628,6 +628,10 @@ class TimeGravityDisputeKernelTests(unittest.TestCase):
         self.assertLess(parts["fig3_sigma_50um_1e4s"]["full"], 1e-12)
         self.assertAlmostEqual(parts["fig3_sigma_50um_1e4s"]["interaction"], 0.3630, delta=0.001)
         self.assertAlmostEqual(parts["geometry_2017_sigma_1nm_2p5s"]["interaction"], cn["quantum_channel_negativity_2017"], delta=1e-6)
+        pc = cn["pure_collapse"]
+        self.assertAlmostEqual(pc["geometry_2017_2p5s"]["critical_sigma_m"] * 1e6, 130.0, delta=2.0)
+        self.assertAlmostEqual(pc["geometry_2017_2p5s"]["half_sigma_m"] * 1e6, 177.0, delta=2.0)
+        self.assertAlmostEqual(pc["letter_geometry_2p5s"]["critical_sigma_m"] * 1e6, 14.3, delta=0.5)
         bad = run(PY + [str(SKILLS / "t05" / "verify_t05_dispute_kernel.py"), "--planted-defect"])
         self.assertNotEqual(bad.returncode, 0)
         self.assertIn("FAIL", bad.stderr)
@@ -641,7 +645,7 @@ class TimeGravityDisputeKernelTests(unittest.TestCase):
         self.assertEqual(labels_of(en), labels_of(es))
         txt = en.read_text(encoding="utf-8")
         for s in ("0.8508σ", "0.8501σ", "5 hours, 16 hours and 20 days", "18 % of", "525 µm", "KΔx²/(2ħ)", "ratio 1.000", "52 µm", "38.6 µm", "48 µm",
-                  "the page still picks no side", "leaves it open", "computed, not chosen", "predicts entanglement only", "where the model's entangling power sits", "zero wherever the kernel looks", "0.024 against", "the noise term only takes away", 'data-tg-logsig', 'class="tg-bmv-dp"', 'data-tg-read="ktm"', 'data-tg-read="dp"', 'data-tg-read="soft"'):
+                  "the page still picks no side", "leaves it open", "computed, not chosen", "predicts entanglement only", "also a collapse test", "unless σ is above 130 µm", "would not by itself separate", "more than five orders", "where the model's entangling power sits", "zero wherever the kernel looks", "0.024 against", "the noise term only takes away", 'data-tg-logsig', 'class="tg-bmv-dp"', 'data-tg-read="ktm"', 'data-tg-read="dp"', 'data-tg-read="soft"'):
             self.assertIn(s, txt, f"T.05 lacks {s!r}")
         low = txt.lower()
         for banned in ("the model is right", "the model is wrong", "classical gravity is ruled out", "classical gravity is confirmed", "unifies"):
