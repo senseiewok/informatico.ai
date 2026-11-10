@@ -632,6 +632,10 @@ class TimeGravityDisputeKernelTests(unittest.TestCase):
         self.assertAlmostEqual(pc["geometry_2017_2p5s"]["critical_sigma_m"] * 1e6, 130.0, delta=2.0)
         self.assertAlmostEqual(pc["geometry_2017_2p5s"]["half_sigma_m"] * 1e6, 177.0, delta=2.0)
         self.assertAlmostEqual(pc["letter_geometry_2p5s"]["critical_sigma_m"] * 1e6, 14.3, delta=0.5)
+        sc = cn["collapse_scaling"]
+        self.assertAlmostEqual(sc["by_geometry_scale"]["x0.5"] * 1e6, 65.6, delta=1.0)
+        self.assertAlmostEqual(sc["by_geometry_scale"]["x2"] * 1e6, 259.0, delta=3.0)
+        self.assertAlmostEqual(cn["dephasing_threshold_per_s"] * cn["rijavec_tau_g_s"], 1.0, delta=0.02)
         bad = run(PY + [str(SKILLS / "t05" / "verify_t05_dispute_kernel.py"), "--planted-defect"])
         self.assertNotEqual(bad.returncode, 0)
         self.assertIn("FAIL", bad.stderr)
@@ -645,7 +649,7 @@ class TimeGravityDisputeKernelTests(unittest.TestCase):
         self.assertEqual(labels_of(en), labels_of(es))
         txt = en.read_text(encoding="utf-8")
         for s in ("0.8508σ", "0.8501σ", "5 hours, 16 hours and 20 days", "18 % of", "525 µm", "KΔx²/(2ħ)", "ratio 1.000", "52 µm", "38.6 µm", "48 µm",
-                  "the page still picks no side", "leaves it open", "computed, not chosen", "predicts entanglement only", "also a collapse test", "unless σ is above 130 µm", "would not by itself separate", "more than five orders", "where the model's entangling power sits", "zero wherever the kernel looks", "0.024 against", "the noise term only takes away", 'data-tg-logsig', 'class="tg-bmv-dp"', 'data-tg-read="ktm"', 'data-tg-read="dp"', 'data-tg-read="soft"'):
+                  "the page still picks no side", "leaves it open", "computed, not chosen", "predicts entanglement only", "also a collapse test", "unless σ is above 130 µm", "would not by itself separate", "more than five orders", "letter's closer geometry", "66 and 259 µm", "for any value of its parameters", "within 1 % of the 1/τ_G", "nonlocal features", "where the model's entangling power sits", "zero wherever the kernel looks", "0.024 against", "the noise term only takes away", 'data-tg-logsig', 'class="tg-bmv-dp"', 'data-tg-read="ktm"', 'data-tg-read="dp"', 'data-tg-read="soft"'):
             self.assertIn(s, txt, f"T.05 lacks {s!r}")
         low = txt.lower()
         for banned in ("the model is right", "the model is wrong", "classical gravity is ruled out", "classical gravity is confirmed", "unifies"):

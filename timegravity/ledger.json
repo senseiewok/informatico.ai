@@ -732,6 +732,26 @@
       "kind": "preprint",
       "review_by": "2027-11-09",
       "note": "Short-range tests of the gravitational inverse-square law (review): the UW 2020 geometry in its Fig. 7 caption and the HUST 2020 geometry in its Fig. 8 caption; no smeared or erf-type potential anywhere in it; preprint, young row, cited for geometry only."
+    },
+    {
+      "id": "T05-RIJAVEC2021",
+      "label": "DERIVED",
+      "doi": "10.1088/1367-2630/abf3eb",
+      "year": 2021,
+      "collaboration": "Rijavec, Carlesso, Bassi, Vedral & Marletto (New Journal of Physics)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-09",
+      "note": "Decoherence effects in non-classicality tests of gravity: residual gas and thermal photons for the Bose et al. and Krisnanda et al. proposals; separable at all times for a dephasing rate above 1/tau_G (Eq. 15, tau_G = hbar d [(d/dx)^2 - 1]/(G m^2)); 'any value of the parameters of the CSL model would completely hinder the generation of gravitationally induced entanglement'; the Diosi-Penrose model is not treated."
+    },
+    {
+      "id": "T05-FENG2025",
+      "label": "PROPOSED",
+      "doi": "10.48550/arXiv.2503.19774",
+      "year": 2025,
+      "collaboration": "Feng, Vedral & Marletto (arXiv)",
+      "kind": "preprint",
+      "review_by": "2027-11-09",
+      "note": "Collapse-based models for gravity do not violate the entanglement-based witness of non-classicality: argues the Diosi-Penrose-type models that entangle 'have nonlocal features'; replies to Trillo and Navascues ('Here we disprove their claims'). Preprint; young row."
     }
   ]
 }

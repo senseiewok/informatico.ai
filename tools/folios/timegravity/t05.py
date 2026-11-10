@@ -38,6 +38,8 @@ PENROSE96 = "T06-PENROSE1996"
 DONADI21 = "T06-DONADI2021"
 LEE21 = "T05-LEE2021"
 MURATA = "T05-MURATA2026"
+RIJAVEC = "T05-RIJAVEC2021"
+FENG = "T05-FENG2025"
 
 PAGE: dict = {
     "slug": SLUG,
@@ -77,7 +79,7 @@ PAGE: dict = {
     "skill_filename": "timegravity-t05-entanglement-channels.SKILL.md",
     "open_question_en": "If a classical slope can entangle, what would count as quantum gravity?",
     "open_question_es": "Si una pendiente clásica puede entrelazar, ¿qué contaría como gravedad cuántica?",
-    "ledger_ids": [BOSE, MV, WEST, FUCHS, AGAF, TROY, KTM, PERES, WOOT, AZIZ, TRILLO, SCHN, MV25, DIOSI25, TOBAR, TILLOY, VDK, LEE, TAN, LEE21, MURATA, DIOSI87, PENROSE96, DONADI21],
+    "ledger_ids": [BOSE, MV, WEST, FUCHS, AGAF, TROY, KTM, PERES, WOOT, AZIZ, TRILLO, SCHN, MV25, DIOSI25, TOBAR, TILLOY, VDK, LEE, TAN, LEE21, MURATA, DIOSI87, PENROSE96, DONADI21, RIJAVEC, FENG],
     "ai_line_en": (
         "AI contribution to the cited results: none. No AI system contributed to any proposal, measurement, derivation or rebuttal cited on this page. "
         "The page text, instrument and verifier were drafted with AI assistance and checked by the site maintainer against the primary sources listed below."
@@ -233,18 +235,20 @@ PAGE: dict = {
               "resultado positivo excluiría."),
         ),
         P(
-            C("OPEN", [AZIZ, TRILLO, SCHN, MV25, DIOSI25],
+            C("OPEN", [AZIZ, TRILLO, SCHN, MV25, DIOSI25, FENG],
               "Whether every classical account of gravity falls into that second channel is disputed: a 2025 paper argues that a classical gravitational "
               "interaction can transmit quantum information and generate entanglement through physically local processes when matter is treated by quantum "
               "field theory, and a 2025 letter finds that the Diósi–Penrose dynamics with classical gravity entangles two separate particles, so that "
               "'GIE detection is not enough to validate quantum gravity'; two preprints and a 2026 paper reply that classical gravity cannot mediate "
-              "entanglement by local means and that the perturbative result is precluded by an exact derivation.",
+              "entanglement by local means and that the perturbative result is precluded by an exact derivation, and a 2025 preprint by the witness's own "
+              "proposers argues that the collapse-based models which entangle do so through nonlocal features and do not escape the witness.",
               "Si toda descripción clásica de la gravedad cae en ese segundo canal está en disputa: un artículo de 2025 sostiene que una interacción "
               "gravitatoria clásica puede transmitir información cuántica y generar entrelazamiento mediante procesos físicamente locales cuando la "
               "materia se trata con teoría cuántica de campos, y una carta de 2025 encuentra que la dinámica de Diósi-Penrose con gravedad clásica "
               "entrelaza dos partículas separadas, de modo que 'detectar GIE no basta para validar la gravedad cuántica'; dos prepublicaciones y un "
               "artículo de 2026 responden que la gravedad clásica no puede mediar entrelazamiento por medios locales y que el resultado perturbativo "
-              "queda excluido por una derivación exacta."),
+              "queda excluido por una derivación exacta, y una prepublicación de 2025 de los propios proponentes del testigo sostiene que los modelos basados "
+              "en colapso que entrelazan lo hacen mediante rasgos no locales y no escapan al testigo."),
             T(" This is the third channel. The kernel gives it no curve of its own, only the interval between the two published answers, no entanglement at all and "
               "as much as the quantum channel gives, drawn as a hatched band with neither edge marked as the expected one; the page does not pick a side, and the row labels say why: the papers are young, two are "
               "preprints, and none is a measurement.",
@@ -300,17 +304,21 @@ PAGE: dict = {
               "la descomposición y nada más."),
         ),
         P(
-            C("PROPOSED", [KTM, MV],
+            C("PROPOSED", [KTM, MV, RIJAVEC],
               "The band's lower edge is computed from the classical-channel rate: in the 2014 model the measurement-and-feedback channel reproduces the linearised "
               "gravitational spring K = 2Gm²/d³ and adds position decoherence at KΔx²/(2ħ) per mass, 'minimal in the sense that, if it were any "
               "smaller, evolution ... would immediately entangle'; the kernel finds that the dephasing threshold at which this page's negativity "
               "vanishes is exactly that rate in the small-split limit (ratio 1.000 at a 2 µm split, 1.43 at the 2017 split of 250 µm, where the "
-              "linearisation is 30 % low on the phase).",
+              "linearisation is 30 % low on the phase). The same threshold, 0.156 over 2.5 s or 0.062 per second, is within 1 % of the 1/τ_G of a 2021 "
+              "decoherence study of these proposals, 0.0628 per second on its formula with the 2017 numbers, which it rounds to ≃0.06 s⁻¹ and above "
+              "which it finds the pair separable at all times.",
               "El borde inferior de la banda se calcula desde la tasa del canal clásico: en el modelo de 2014 el canal de medición y retroalimentación reproduce el "
               "resorte gravitatorio linealizado K = 2Gm²/d³ y añade decoherencia de posición a KΔx²/(2ħ) por masa, 'mínima en el sentido de que, si "
               "fuera un poco menor, la evolución ... entrelazaría de inmediato'; el núcleo encuentra que el umbral de desfase al que se anula la "
               "negatividad de esta página es exactamente esa tasa en el límite de división pequeña (razón 1.000 a una división de 2 µm, 1.43 a la "
-              "división de 250 µm de 2017, donde la linealización se queda 30 % corta en la fase)."),
+              "división de 250 µm de 2017, donde la linealización se queda 30 % corta en la fase). El mismo umbral, 0.156 en 2.5 s o 0.062 por segundo, está a "
+              "menos de 1 % del 1/τ_G de un estudio de decoherencia de 2021 sobre estas propuestas, 0.0628 por segundo con su fórmula y los números de "
+              "2017, que el estudio redondea a ≃0.06 s⁻¹ y por encima del cual encuentra el par separable en todo momento."),
             T(" So the two edges are computed, not chosen: the lower one is the least noise a classical channel of that kind must add on its own "
               "model, the upper one is what one named classical model predicts, and between them the page still picks no side.",
               " Así que los dos bordes se calculan, no se eligen: el inferior es el ruido mínimo que debe añadir un canal clásico de ese tipo en su propio "
@@ -404,26 +412,35 @@ PAGE: dict = {
               "entrelaza 'no probado antes' y su texto principal no menciona estas pruebas. La página anota la pregunta y la deja abierta."),
         ),
         P(
-            C("PROPOSED", [BOSE, DIOSI87, PENROSE96, DONADI21],
+            C("PROPOSED", [BOSE, DIOSI87, PENROSE96, DONADI21, RIJAVEC],
               "The proposed experiment is also a collapse test. If gravity is quantum and the Diósi–Penrose collapse exists besides, with Newton's law "
               "untouched, the collapse decoheres the two masses on the same two-body kernel the hybrid model uses for its noise, at a rate that grows "
               "with the mass squared and falls as the smearing grows; on this page's kernel the quantum channel's negativity of 0.078 for the 2017 "
-              "geometry is reduced to zero at 2.5 s unless σ is above 130 µm, and to half unless σ is above 177 µm, while the letter's lighter geometry "
-              "keeps some unless σ is below 14 µm. The 2017 proposal named spontaneous collapse as a mechanism that 'will typically lead to a strong loss "
+              "geometry is reduced to zero at 2.5 s unless σ is above 130 µm, and to half unless σ is above 177 µm, while the letter's closer geometry "
+              "keeps some unless σ is below 14 µm. The threshold is set by the geometry's size and barely by the mass or the hold time while the "
+              "entangling phase stays small, since both the phases and the collapse damping grow as m²t: scaling the 2017 geometry by a half or by two "
+              "moves it to 66 and 259 µm, while a tenfold change of mass at fixed geometry leaves it at 130 µm. The 2017 proposal named spontaneous collapse as a mechanism that 'will typically lead to a strong loss "
               "of coherence' and gave no number; these are the numbers this page computes on that model.",
               "El experimento propuesto es también una prueba de colapso. Si la gravedad es cuántica y además existe el colapso de Diósi–Penrose, con "
               "la ley de Newton intacta, el colapso decohere las dos masas sobre el mismo núcleo de dos cuerpos que el modelo híbrido usa para su ruido, "
               "a un ritmo que crece con el cuadrado de la masa y cae al crecer el suavizado; en el núcleo de esta página la negatividad de 0.078 del canal "
               "cuántico para la geometría de 2017 se reduce a cero a los 2.5 s salvo que σ esté por encima de 130 µm, y a la mitad salvo que esté por "
-              "encima de 177 µm, mientras que la geometría más ligera de la carta conserva algo salvo que σ baje de 14 µm. La propuesta de 2017 nombró el "
+              "encima de 177 µm, mientras que la geometría más cercana de la carta conserva algo salvo que σ baje de 14 µm. El umbral lo fija el tamaño de la "
+              "geometría y apenas la masa o el tiempo de retención mientras la fase que entrelaza sigue siendo pequeña, porque tanto las fases como el "
+              "amortiguamiento del colapso crecen como m²t: escalar la geometría de 2017 a la mitad o al doble lo lleva a 66 y 259 µm, mientras que "
+              "un cambio de masa de diez veces a geometría fija lo deja en 130 µm. La propuesta de 2017 nombró el "
               "colapso espontáneo como un mecanismo que 'típicamente llevará a una fuerte pérdida de coherencia' y no dio número; estos son los números "
               "que esta página calcula en ese modelo."),
             T(" A positive witness at the 2017 geometry would therefore set a lower bound of 130 µm on the collapse length, more than five orders of "
               "magnitude above the radiation detectors' 4.9 Å; in that scenario Newton's law is untouched, so the hybrid form's Eöt-Wash estimate does "
-              "not apply to it. A null result would not by itself separate classical gravity from quantum gravity with collapse.",
+              "not apply to it. A null result would not by itself separate classical gravity from quantum gravity with collapse. A 2021 study of decoherence "
+              "in these proposals found that the other collapse model, CSL, would hinder the entanglement for any value of its parameters; it did not "
+              "treat the Diósi–Penrose case, which is this page's computation.",
               " Un testigo positivo en la geometría de 2017 fijaría por tanto una cota inferior de 130 µm a la longitud de colapso, más de cinco órdenes "
               "de magnitud por encima de los 4.9 Å de los detectores de radiación; en ese escenario la ley de Newton queda intacta, así que la estimación "
-              "de Eöt-Wash de la forma híbrida no le aplica. Un resultado nulo no separaría por sí solo la gravedad clásica de la gravedad cuántica con colapso."),
+              "de Eöt-Wash de la forma híbrida no le aplica. Un resultado nulo no separaría por sí solo la gravedad clásica de la gravedad cuántica con colapso. "
+              "Un estudio de decoherencia de 2021 sobre estas propuestas halló que el otro modelo de colapso, CSL, impediría el entrelazamiento para "
+              "cualquier valor de sus parámetros; no trató el caso de Diósi–Penrose, que es el cálculo de esta página."),
         ),
         {"type": "h2", "id": "labs", "en": "III · How far the laboratories are", "es": "III · Qué tan lejos están los laboratorios", "short_en": "III · Labs", "short_es": "III · Laboratorios"},
         P(
@@ -521,6 +538,8 @@ PAGE: dict = {
     ],
     "sources": [
         ("Murata, J., Fujiie, T., & Suzuki, S. (2026). Short-range tests of the gravitational inverse-square law. arXiv:2605.18212.", "10.48550/arXiv.2605.18212"),
+        ("Rijavec, S., Carlesso, M., Bassi, A., Vedral, V., & Marletto, C. (2021). Decoherence effects in non-classicality tests of gravity. New Journal of Physics, 23, 043040.", "10.1088/1367-2630/abf3eb"),
+        ("Feng, T., Vedral, V., & Marletto, C. (2025). Collapse-based models for gravity do not violate the entanglement-based witness of non-classicality. arXiv:2503.19774.", "10.48550/arXiv.2503.19774"),
         ("Bose, S., Mazumdar, A., Morley, G. W., Ulbricht, H., Toroš, M., Paternostro, M., Geraci, A. A., Barker, P. F., Kim, M. S., & Milburn, G. (2017). Spin entanglement witness for quantum gravity. Physical Review Letters, 119(24), 240401.", "10.1103/PhysRevLett.119.240401"),
         ("Marletto, C., & Vedral, V. (2017). Gravitationally induced entanglement between two massive particles is sufficient evidence of quantum effects in gravity. Physical Review Letters, 119(24), 240402.", "10.1103/PhysRevLett.119.240402"),
         ("Westphal, T., Hepach, H., Pfaff, J., & Aspelmeyer, M. (2021). Measurement of gravitational coupling between millimetre-sized masses. Nature, 591, 225–228.", "10.1038/s41586-021-03250-7"),

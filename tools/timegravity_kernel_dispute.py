@@ -130,6 +130,25 @@ def dp_collapse_sigma_at(split: float, nearest: float, m: float, t: float, fract
     return math.sqrt(lo * hi)
 
 
+def dp_collapse_scaling() -> dict:
+    """How the critical collapse σ of the 2017 geometry moves with mass, hold time and the geometry's overall size: both the Newtonian
+    phases and the collapse damping scale as m² t, so while the phases stay small the threshold is set by the geometry alone."""
+    nearest = BMV_D_M - BMV_DX_M
+    base = dp_collapse_sigma_at(BMV_DX_M, nearest, BMV_M_KG, BMV_T_S, 0.0)
+    return {
+        "base_m": base,
+        "by_mass_at_2p5s": {f"{m:.0e}": dp_collapse_sigma_at(BMV_DX_M, nearest, m, BMV_T_S, 0.0) for m in (1e-15, 1e-14)},
+        "by_hold_time_1e-14kg": {f"{t:g}s": dp_collapse_sigma_at(BMV_DX_M, nearest, BMV_M_KG, t, 0.0) for t in (1.0, 2.5)},
+        "by_geometry_scale": {f"x{k:g}": dp_collapse_sigma_at(BMV_DX_M * k, nearest * k, BMV_M_KG, BMV_T_S, 0.0) for k in (0.5, 1.0, 2.0)},
+    }
+
+
+def rijavec_tau_g(m: float = BMV_M_KG, d: float = BMV_D_M, dx: float = BMV_DX_M) -> float:
+    """τ_G = ħ d [(d/Δx)² − 1] / (G m²) of Rijavec, Carlesso, Bassi, Vedral & Marletto 2021 (their Eq. 7): the pair is separable at all
+    times for a dephasing rate above 1/τ_G (their Eq. 15)."""
+    return HBAR * d * ((d / dx) ** 2 - 1.0) / (G_NEWTON * m * m)
+
+
 def tn_negativity_parts(split: float, nearest: float, m: float, sigma: float, t: float) -> dict[str, float]:
     """The model's negativity with its whole generator, with its interaction part alone, and with its noise part alone."""
     return {p: tn_negativity(split, nearest, m, sigma, t, part=p) for p in ("full", "interaction", "noise")}
@@ -319,6 +338,14 @@ def check_dispute(planted_defect: bool = False) -> dict:
                    and abs(dp_collapse_negativity(BMV_DX_M, nearest_2017, BMV_M_KG, 1.0, BMV_T_S) - quantum_2017) < 1e-9
                    and all(seq17[i] <= seq17[i + 1] + 1e-12 for i in range(len(seq17) - 1))
                    and collapse["letter_geometry_2p5s"]["critical_sigma_m"] < collapse["letter_geometry_2p5s"]["half_sigma_m"] < c17["critical_sigma_m"])
+    # 4d. The threshold's scaling, and the 2021 study's 1/τ_G against this page's dephasing threshold.
+    scaling = dp_collapse_scaling()
+    sc_m = list(scaling["by_mass_at_2p5s"].values()); sc_t = list(scaling["by_hold_time_1e-14kg"].values()); sc_g = scaling["by_geometry_scale"]
+    scaling_ok = (max(sc_m) / min(sc_m) < 1.02 and max(sc_t) / min(sc_t) < 1.02
+                  and 0.4 < sc_g["x0.5"] / sc_g["x1"] < 0.6 and 1.7 < sc_g["x2"] / sc_g["x1"] < 2.3)
+    gamma_zero = negativity_threshold_gamma_t(branch_phases(BMV_M_KG, BMV_D_M, BMV_DX_M, BMV_T_S, "quantum"), hi=50.0) / BMV_T_S
+    tau_g = rijavec_tau_g()
+    rijavec_ok = abs(gamma_zero * tau_g - 1.0) < 2e-2
     # 5. Where the entangling power sits: the noise part alone entangles nothing at any σ or time; the interaction part alone gives
     #    at least the full model's negativity; and as σ → 0 the interaction part is the quantum channel exactly.
     parts = {}
@@ -339,9 +366,10 @@ def check_dispute(planted_defect: bool = False) -> dict:
         "ktm_threshold_ratios": ratios, "ktm_2017": ktm_2017,
         "entangling_parts": parts, "quantum_channel_negativity_2017": quantum_negativity, "parts_ok": parts_ok,
         "pure_collapse": collapse, "collapse_ok": collapse_ok,
+        "collapse_scaling": scaling, "scaling_ok": scaling_ok, "rijavec_tau_g_s": tau_g, "dephasing_threshold_per_s": gamma_zero, "rijavec_ok": rijavec_ok,
         "dc_paper_ok": dc_paper_ok, "dc_double_entry_ok": dc_double_entry_ok, "fig3_ok": fig3_ok, "tn_2017_ok": tn_2017_ok,
         "ktm_ok": ktm_ok, "ktm_edge_ok": ktm_edge_ok, "defect_rejected": defect_rejected,
-        "ok": dc_paper_ok and dc_double_entry_ok and fig3_ok and tn_2017_ok and ktm_ok and ktm_edge_ok and parts_ok and collapse_ok and defect_rejected,
+        "ok": dc_paper_ok and dc_double_entry_ok and fig3_ok and tn_2017_ok and ktm_ok and ktm_edge_ok and parts_ok and collapse_ok and scaling_ok and rijavec_ok and defect_rejected,
     }
 
 
