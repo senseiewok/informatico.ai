@@ -681,6 +681,228 @@
         "hybrid_last_time_s": null
       }
     ],
+    "parallel_map": [
+      {
+        "ratio": 0.03,
+        "hybrid_over_gap": 0.646347105579,
+        "collapse_over_gap": 0.439391601257
+      },
+      {
+        "ratio": 0.1,
+        "hybrid_over_gap": 0.646236555303,
+        "collapse_over_gap": 0.435967411947
+      },
+      {
+        "ratio": 0.25,
+        "hybrid_over_gap": 0.645598594304,
+        "collapse_over_gap": 0.437810923426
+      },
+      {
+        "ratio": 0.5,
+        "hybrid_over_gap": 0.643318102588,
+        "collapse_over_gap": 0.444469101688
+      },
+      {
+        "ratio": 1.0,
+        "hybrid_over_gap": 0.634195589705,
+        "collapse_over_gap": 0.46118944016
+      },
+      {
+        "ratio": 2.0,
+        "hybrid_over_gap": 0.599706986082,
+        "collapse_over_gap": 0.473513613926
+      }
+    ],
+    "proposals": [
+      {
+        "key": "bose2017",
+        "layout": "collinear",
+        "m_kg": 1e-14,
+        "split_m": 0.00025,
+        "nearest_m": 0.0002,
+        "hybrid_sigma_c_m": 0.000524495511171,
+        "torque_deficit_at_hybrid_sigma_c": 0.999965932287,
+        "collapse_sigma_c_at_t_full_m": 0.000163722841284,
+        "quantum_t_full_s": 25.0178996565,
+        "at_sigma": {
+          "44um": {
+            "entangles": false
+          },
+          "30um": {
+            "entangles": false
+          }
+        }
+      },
+      {
+        "key": "chevalier2020_d350",
+        "layout": "collinear",
+        "m_kg": 1e-14,
+        "split_m": 0.00025,
+        "nearest_m": 0.0001,
+        "hybrid_sigma_c_m": 0.000405682676783,
+        "torque_deficit_at_hybrid_sigma_c": 0.998630395146,
+        "collapse_sigma_c_at_t_full_m": 0.000105597151488,
+        "quantum_t_full_s": 8.33929988552,
+        "at_sigma": {
+          "44um": {
+            "entangles": false
+          },
+          "30um": {
+            "entangles": false
+          }
+        }
+      },
+      {
+        "key": "vandekamp2020",
+        "layout": "collinear",
+        "m_kg": 1e-15,
+        "split_m": 2.3e-05,
+        "nearest_m": 4.7e-05,
+        "hybrid_sigma_c_m": 8.20321610089e-05,
+        "torque_deficit_at_hybrid_sigma_c": 0.215603780014,
+        "collapse_sigma_c_at_t_full_m": 2.89241363389e-05,
+        "quantum_t_full_s": 1435.53401857,
+        "at_sigma": {
+          "44um": {
+            "entangles": false
+          },
+          "30um": {
+            "entangles": false
+          }
+        }
+      },
+      {
+        "key": "schut2024_z30",
+        "layout": "parallel",
+        "m_kg": 1e-14,
+        "split_m": 8.5e-06,
+        "nearest_m": 6.1e-05,
+        "hybrid_sigma_c_m": 3.94134505611e-05,
+        "torque_deficit_at_hybrid_sigma_c": 0.0150909164754,
+        "collapse_sigma_c_at_t_full_m": 3.22409358148e-05,
+        "quantum_t_full_s": 158.212513395,
+        "at_sigma": {
+          "44um": {
+            "entangles": true,
+            "hybrid_negativity_at_t_full": 0.00678412722145,
+            "peak_negativity": 0.00644645697578,
+            "peak_time_s": 100.0,
+            "last_entangled_time_s": 177.827941004
+          },
+          "30um": {
+            "entangles": false
+          }
+        }
+      },
+      {
+        "key": "schut2024_z10",
+        "layout": "parallel",
+        "m_kg": 1e-14,
+        "split_m": 1.7e-06,
+        "nearest_m": 2.1e-05,
+        "hybrid_sigma_c_m": 1.3571846997e-05,
+        "torque_deficit_at_hybrid_sigma_c": 3.04766195169e-06,
+        "collapse_sigma_c_at_t_full_m": 1.1079379449e-05,
+        "quantum_t_full_s": 159.848479373,
+        "at_sigma": {
+          "44um": {
+            "entangles": true,
+            "hybrid_negativity_at_t_full": 0.00293112001113,
+            "peak_negativity": 0.0661197817102,
+            "peak_time_s": 5623.4132519,
+            "last_entangled_time_s": 10000.0
+          },
+          "30um": {
+            "entangles": true,
+            "hybrid_negativity_at_t_full": 0.00784942813627,
+            "peak_negativity": 0.0544363808876,
+            "peak_time_s": 1778.27941004,
+            "last_entangled_time_s": 3162.27766017
+          }
+        }
+      },
+      {
+        "key": "schut2024_z5",
+        "layout": "parallel",
+        "m_kg": 1e-14,
+        "split_m": 6.5e-07,
+        "nearest_m": 1.1e-05,
+        "hybrid_sigma_c_m": 7.10947190542e-06,
+        "torque_deficit_at_hybrid_sigma_c": 3.54971607663e-12,
+        "collapse_sigma_c_at_t_full_m": 5.80097827636e-06,
+        "quantum_t_full_s": 156.785959094,
+        "at_sigma": {
+          "44um": {
+            "entangles": true,
+            "hybrid_negativity_at_t_full": 0.000461487825423,
+            "peak_negativity": 0.0766588791934,
+            "peak_time_s": 56234.132519,
+            "last_entangled_time_s": 100000.0
+          },
+          "30um": {
+            "entangles": true,
+            "hybrid_negativity_at_t_full": 0.00140581312561,
+            "peak_negativity": 0.0721663984513,
+            "peak_time_s": 17782.7941004,
+            "last_entangled_time_s": 31622.7766017
+          }
+        }
+      },
+      {
+        "key": "schut2024_z10_1e-13",
+        "layout": "parallel",
+        "m_kg": 1e-13,
+        "split_m": 1.7e-07,
+        "nearest_m": 2.1e-05,
+        "hybrid_sigma_c_m": 1.35735022081e-05,
+        "torque_deficit_at_hybrid_sigma_c": 3.05252903932e-06,
+        "collapse_sigma_c_at_t_full_m": 1.10692246767e-05,
+        "quantum_t_full_s": 159.074913618,
+        "at_sigma": {
+          "44um": {
+            "entangles": true,
+            "hybrid_negativity_at_t_full": 0.00291732663783,
+            "peak_negativity": 0.0661217942027,
+            "peak_time_s": 5623.4132519,
+            "last_entangled_time_s": 10000.0
+          },
+          "30um": {
+            "entangles": true,
+            "hybrid_negativity_at_t_full": 0.00781400801797,
+            "peak_negativity": 0.0544382693004,
+            "peak_time_s": 1778.27941004,
+            "last_entangled_time_s": 3162.27766017
+          }
+        }
+      },
+      {
+        "key": "schut2024_z10_1e-15",
+        "layout": "parallel",
+        "m_kg": 1e-15,
+        "split_m": 2.3e-05,
+        "nearest_m": 2.1e-05,
+        "hybrid_sigma_c_m": 1.32673348107e-05,
+        "torque_deficit_at_hybrid_sigma_c": 2.25522655195e-06,
+        "collapse_sigma_c_at_t_full_m": 1.23262235017e-05,
+        "quantum_t_full_s": 160.01142824,
+        "at_sigma": {
+          "44um": {
+            "entangles": true,
+            "hybrid_negativity_at_t_full": 0.0052418232316,
+            "peak_negativity": 0.0663345554865,
+            "peak_time_s": 3162.27766017,
+            "last_entangled_time_s": 5623.4132519
+          },
+          "30um": {
+            "entangles": true,
+            "hybrid_negativity_at_t_full": 0.0135555058122,
+            "peak_negativity": 0.0544323647259,
+            "peak_time_s": 1000.0,
+            "last_entangled_time_s": 1778.27941004
+          }
+        }
+      }
+    ],
     "rijavec_tau_g_s": 15.9268895845,
     "dephasing_threshold_per_s": 0.0622774720594
   },

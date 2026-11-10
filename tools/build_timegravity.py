@@ -1217,6 +1217,80 @@ def threshold_map(page: dict) -> str:
         </figure>"""
 
 
+def proposals_table(page: dict) -> str:
+    """Table T.05-P · the published GIE geometries on the map: both models' thresholds, the 52 µm torque deficit the hybrid
+    threshold would cause, and the two predictions in time (tools/timegravity_kernel_dispute.py, proposals_table)."""
+    from timegravity_kernel_dispute import proposals_table as _props
+    names = {
+        "bose2017": ("Bose et al. 2017 (PRL)", "Bose et al. 2017 (PRL)"),
+        "chevalier2020_d350": ("Chevalier, Paige & Kim 2020 (PRA), d = 350 µm", "Chevalier, Paige & Kim 2020 (PRA), d = 350 µm"),
+        "vandekamp2020": ("van de Kamp et al. 2020 (PRA), screened", "van de Kamp et al. 2020 (PRA), apantallado"),
+        "schut2024_z30": ("Schut et al. 2024 (PRR), z = 30 µm", "Schut et al. 2024 (PRR), z = 30 µm"),
+        "schut2024_z10": ("Schut et al. 2024 (PRR), z = 10 µm", "Schut et al. 2024 (PRR), z = 10 µm"),
+        "schut2024_z5": ("Schut et al. 2024 (PRR), z = 5 µm", "Schut et al. 2024 (PRR), z = 5 µm"),
+        "schut2024_z10_1e-13": ("Schut et al. 2024 (PRR), z = 10 µm, heavier", "Schut et al. 2024 (PRR), z = 10 µm, más pesado"),
+        "schut2024_z10_1e-15": ("Schut et al. 2024 (PRR), z = 10 µm, lighter", "Schut et al. 2024 (PRR), z = 10 µm, más ligero"),
+    }
+    sup = str.maketrans("-0123456789", "⁻⁰¹²³⁴⁵⁶⁷⁸⁹")
+    def mass(m: float) -> str:
+        return f"10{str(round(math.log10(m))).translate(sup)} kg"
+    def um(x: float) -> str:
+        v = x * 1e6
+        return f"{v:.2f} µm" if v < 1 else f"{v:.1f} µm" if v < 10 else f"{v:.0f} µm"
+    def dur(s: float, lang: str) -> str:
+        if s < 120: return f"{s:.0f} s"
+        if s < 3600: return f"{s / 60:.0f} min"
+        if s < 2 * 86400: return f"{s / 3600:.1f} h"
+        return f"{s / 86400:.0f} " + ("days" if lang == "en" else "días")
+    def pct(d: float) -> str:
+        return "100 %" if d >= 0.995 else f"{100 * d:.1f} %"
+    rows = []
+    for r in _props():
+        en_name, es_name = names[r["key"]]
+        lay_en, lay_es = ("collinear", "colineal") if r["layout"] == "collinear" else ("side by side", "lado a lado")
+        hyb = f'{um(r["hybrid_sigma_c_m"])} ({pct(r["torque_deficit_at_hybrid_sigma_c"])})'
+        at = r["at_sigma"]["44um"]
+        if at["entangles"]:
+            at_en = f'{at["hybrid_negativity_at_t_full"]:.4f} · peak {at["peak_negativity"]:.3f} after {dur(at["peak_time_s"], "en")}'
+            at_es = f'{at["hybrid_negativity_at_t_full"]:.4f} · máximo {at["peak_negativity"]:.3f} tras {dur(at["peak_time_s"], "es")}'
+        else:
+            at_en, at_es = "none", "ninguno"
+        geo_en = f"{mass(r['m_kg'])} · split {um(r['split_m'])} · gap {um(r['nearest_m'])}"
+        geo_es = f"{mass(r['m_kg'])} · división {um(r['split_m'])} · separación {um(r['nearest_m'])}"
+        tf_en = f"{dur(r['quantum_t_full_s'], 'en')} · {at_en}"; tf_es = f"{dur(r['quantum_t_full_s'], 'es')} · {at_es}"
+        rows.append("<tr>" + bi("td", en_name, es_name) + bi("td", lay_en, lay_es) + bi("td", geo_en, geo_es)
+                    + f"<td>{hyb}</td><td>{um(r['collapse_sigma_c_at_t_full_m'])}</td>" + bi("td", tf_en, tf_es) + "</tr>")
+    head = ("<tr>" + bi("th", "Proposal", "Propuesta") + bi("th", "Layout", "Disposición") + bi("th", "Geometry", "Geometría")
+            + bi("th", "Hybrid entangles above σ (52 µm torque deficit)", "La híbrida entrelaza por encima de σ (déficit de par a 52 µm)")
+            + bi("th", "Witness survives collapse above σ", "El testigo sobrevive al colapso por encima de σ")
+            + bi("th", "Quantum channel full in · hybrid negativity then, σ = 44 µm", "Canal cuántico completo en · negatividad híbrida entonces, σ = 44 µm") + "</tr>")
+    cap_en = ("Table T.05-P · Published geometries on the map: for each, the σ above which the 2025 letter's hybrid dynamics entangles it, with the 52 µm Eöt-Wash "
+              "torque deficit that smearing would cause, the σ above which the quantum witness survives pure Diósi–Penrose collapse at the quantum channel's "
+              "full-entanglement time, that time, and the hybrid negativity at it for this site's 44 µm estimate. Side-by-side rows use the planar kernel (about "
+              "0.65 of the gap), collinear rows the one-dimensional map. These are two models' thresholds for each geometry, computed by this site's kernels, not "
+              "exclusions of anything; other proposals exist that the page has not mapped; no witness has been measured.")
+    cap_es = ("Tabla T.05-P · Geometrías publicadas sobre el mapa: para cada una, la σ por encima de la cual la dinámica híbrida de la carta de 2025 la entrelaza, con el "
+              "déficit de par de Eöt-Wash a 52 µm que ese suavizado causaría, la σ por encima de la cual el testigo cuántico sobrevive al colapso puro de Diósi–Penrose "
+              "en el tiempo de entrelazamiento completo del canal cuántico, ese tiempo, y la negatividad híbrida en ese momento para la estimación de 44 µm de este "
+              "sitio. Las filas lado a lado usan el núcleo planar (cerca de 0.65 de la separación), las colineales el mapa unidimensional. Son los umbrales de dos "
+              "modelos para cada geometría, calculados por los núcleos de este sitio, no exclusiones de nada; existen otras propuestas que la página no ha mapeado; "
+              "ningún testigo se ha medido.")
+    body = "\n              ".join(rows)
+    return f"""        <figure class="tp-distill-figure" role="group" aria-label="Table T.05-P Published geometries on the map" data-tg-figure="proposals-table">
+          <div class="tp-table-wrap">
+            <table class="tp-table tg-ledger-table" aria-label="Published gravitationally induced entanglement geometries on the two-model map">
+              <thead>{head}</thead>
+              <tbody>
+              {body}
+              </tbody>
+            </table>
+          </div>
+          <figcaption class="tp-distill-caption">
+            {bi("span", cap_en, cap_es)}
+          </figcaption>
+        </figure>"""
+
+
 def spine(page: dict) -> str:
     blocks = []
     for i, (te, ts, be, bs) in enumerate(page["stages"], 1):
@@ -1342,6 +1416,8 @@ def render_sections(page: dict, rel_res: str) -> str:
             out.append(sigma_ladder(page))
         elif kind == "threshold_map":
             out.append(threshold_map(page))
+        elif kind == "proposals_table":
+            out.append(proposals_table(page))
         elif kind == "equation":
             out.append(f'        <p class="tg-equation"><code>{t(block["text"])}</code></p>')
         elif kind == "spine":

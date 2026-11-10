@@ -799,6 +799,14 @@
   "title": "Spin Echoes",
   "year": 1950
  },
+ "doi:10.1103/physreva.102.022428": {
+  "fetched": "2026-11-10",
+  "first_author": "Chevalier",
+  "found": true,
+  "journal": "Physical Review A",
+  "title": "Witnessing the nonclassical nature of gravity in the presence of unknown interactions",
+  "year": 2020
+ },
  "doi:10.1103/physreva.102.062807": {
   "fetched": "2026-11-09",
   "first_author": "van de Kamp",
@@ -1054,6 +1062,14 @@
   "journal": "Physical Review Research",
   "title": "Dedalus: A flexible framework for numerical simulations with spectral methods",
   "year": 2020
+ },
+ "doi:10.1103/physrevresearch.6.013199": {
+  "fetched": "2026-11-10",
+  "first_author": "Schut",
+  "found": true,
+  "journal": "Physical Review Research",
+  "title": "Micrometer-size spatial superpositions for the QGEM protocol via screening and trapping",
+  "year": 2024
  },
  "doi:10.1103/physrevx.6.041064": {
   "fetched": "2026-11-04",
@@ -2938,6 +2954,18 @@
   "total_smart_citations": 2946,
   "unclassified": 73
  },
+ "scite:10.1103/physreva.102.022428": {
+  "citing_publications": 99,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 81,
+  "retracted": false,
+  "supporting": 1,
+  "total_smart_citations": 82,
+  "unclassified": 0
+ },
  "scite:10.1103/physreva.102.062807": {
   "citing_publications": 172,
   "classification_provenance": "Scite ML citation classification",
@@ -3321,6 +3349,18 @@
   "total_smart_citations": 521,
   "unclassified": 0,
   "year": 2020
+ },
+ "scite:10.1103/physrevresearch.6.013199": {
+  "citing_publications": 37,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 25,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 25,
+  "unclassified": 0
  },
  "scite:10.1103/physrevx.6.041064": {
   "citing_publications": 347,
