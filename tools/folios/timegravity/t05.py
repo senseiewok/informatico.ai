@@ -46,6 +46,8 @@ HORN = "T05-HORNBERGER2003"
 HACK = "T05-HACKERMULLER2004"
 ROMERO = "T05-ROMEROISART2011"
 SELLNER = "T05-SELLNER2017"
+DANIA = "T05-DANIA2024"
+MAGRINI = "T05-MAGRINI2021"
 
 PAGE: dict = {
     "slug": SLUG,
@@ -621,6 +623,20 @@ PAGE: dict = {
               "es una interpolación que la supera por exactamente 8π/3, cerca de 8.4, y da 5.4 × 10¹³; sus techos son las cifras de trabajo, más estrictas, "
               "de las propias propuestas. Con los 10⁻¹⁵ Pa y 0.15 K de la propuesta de 2017 la forma citada da 2.8 s para helio, junto a la caída de 3.5 s "
               "que ese artículo llama del mismo orden; eso reproduce la fórmula del propio artículo y no prueba física alguna."),
+            C("MEASURED", [DANIA, MAGRINI],
+              " Two measurements sit closer in scale. The damping of a silica nanoparticle levitated in a Paul trap follows the gas pressure in "
+              "proportion from 10⁻⁴ down to 7 × 10⁻¹¹ mbar; and, in a separate experiment, the heating of a silica sphere of 71.5 nm radius by gas "
+              "collisions has been measured in re-heating runs at 9 × 10⁻⁹ mbar.",
+              " Dos mediciones quedan más cerca en escala. El amortiguamiento de una nanopartícula de sílice levitada en una trampa de Paul sigue "
+              "a la presión del gas en proporción desde 10⁻⁴ hasta 7 × 10⁻¹¹ mbar; y, en un experimento distinto, se ha medido el calentamiento por "
+              "colisiones de gas de una esfera de sílice de 71.5 nm de radio en corridas de recalentamiento a 9 × 10⁻⁹ mbar."),
+            T(" The first experiment's own heating rates exceeded what gas alone predicts, so only its damping is cited. Both measure the momentum "
+              "the gas hands over, in particles hundreds to thousands of times lighter than the spheres here; neither prepares a spatial "
+              "superposition, and its loss to gas at any size above a large molecule is not among the measurements this page found.",
+              " Las tasas de calentamiento del propio primer experimento superaron lo que predice el gas solo, así que solo se cita su "
+              "amortiguamiento. Las dos miden el momento que entrega el gas, en partículas de cientos a miles de veces más ligeras que las esferas "
+              "de aquí; ninguna prepara una superposición espacial, y su pérdida por el gas a cualquier tamaño por encima de una molécula grande no "
+              "está entre las mediciones que esta página encontró."),
         ),
         P(
             C("DERIVED", [HACK, ROMERO, RIJAVEC],
@@ -666,7 +682,7 @@ PAGE: dict = {
               "ceiling. With surroundings as warm as the sphere, scattered photons join in, the sixth-root rule no longer holds, and the two temperature "
               "ceilings are 12 K and 6.3 K. The 2024 proposal budgets about 0.01 per second 'for the ambient temperatures of ∼1 K' and states no pressure; "
               "that rate is helium at 8 × 10⁻¹⁶ Pa on the kinetic rate and 9 × 10⁻¹⁷ Pa on the cited form. Each ceiling lets one source use the whole "
-              "threshold, with the full split held throughout; together the sources must share it, hydrogen would add to helium, and dipole and Casimir "
+              "threshold, with the full split held throughout; together the sources must share it, hydrogen would add to helium, with a collision rate 1.4 times higher at the same pressure, and dipole and Casimir "
               "couplings, gravity gradients, phonons and the trap are not counted. These are necessary conditions, not a budget, and the page pronounces on "
               "no experiment's feasibility.",
               " Con un entorno frío el techo de presión escala con el umbral mismo y el techo de temperatura interna con su raíz sexta, así que el umbral "
@@ -675,7 +691,7 @@ PAGE: dict = {
               "temperatura son 12 K y 6.3 K. La propuesta de 2024 presupuesta cerca de 0.01 por segundo 'para temperaturas ambiente de ∼1 K' y no declara "
               "presión alguna; esa tasa es helio a 8 × 10⁻¹⁶ Pa en la tasa cinética y a 9 × 10⁻¹⁷ Pa en la forma citada. Cada techo deja que una sola fuente "
               "use todo el umbral, con la división completa mantenida todo el tiempo; juntas, las fuentes deben repartírselo, el hidrógeno se sumaría al "
-              "helio, y los acoplamientos dipolares y de Casimir, los gradientes de gravedad, los fonones y la trampa no se cuentan. Son condiciones "
+              "helio, con una tasa de colisiones 1.4 veces mayor a la misma presión, y los acoplamientos dipolares y de Casimir, los gradientes de gravedad, los fonones y la trampa no se cuentan. Son condiciones "
               "necesarias, no un presupuesto, y la página no se pronuncia sobre la factibilidad de experimento alguno."),
             C("SINGLE RESULT", [SELLNER],
               " One published figure for a cryogenic vacuum can be set beside them: from how long antiprotons survived in a cryogenic Penning trap, its "

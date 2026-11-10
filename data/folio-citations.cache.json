@@ -487,6 +487,14 @@
   "title": "Measurement of gravitational coupling between millimetre-sized masses",
   "year": 2021
  },
+ "doi:10.1038/s41586-021-03602-3": {
+  "fetched": "2026-11-09",
+  "first_author": "Magrini",
+  "found": true,
+  "journal": "Nature",
+  "title": "Real-time optimal quantum control of mechanical motion at room temperature",
+  "year": 2021
+ },
  "doi:10.1038/s41586-021-04349-7": {
   "fetched": "2026-11-08",
   "first_author": "Bothwell",
@@ -879,6 +887,14 @@
   "title": "Black Holes and Entropy",
   "year": 1973
  },
+ "doi:10.1103/physrevd.78.022002": {
+  "fetched": "2026-11-09",
+  "first_author": "Geraci",
+  "found": true,
+  "journal": "Physical Review D",
+  "title": "Improved constraints on non-Newtonian forces at 10 microns",
+  "year": 2008
+ },
  "doi:10.1103/physrevd.93.024026": {
   "fetched": "2026-11-09",
   "first_author": "Tilloy",
@@ -990,6 +1006,14 @@
   "journal": "Physical Review Letters",
   "title": "<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\">\n                      <mml:mi>M</mml:mi>\n                      <mml:mi>I</mml:mi>\n                      <mml:mi>C</mml:mi>\n                      <mml:mi>R</mml:mi>\n                      <mml:mi>O</mml:mi>\n                      <mml:mi>S</mml:mi>\n                      <mml:mi>C</mml:mi>\n                      <mml:mi>O</mml:mi>\n                      <mml:mi>P</mml:mi>\n                      <mml:mi>E</mml:mi>\n                    </mml:math>\n                    Mission: Final Results of the Test of the Equivalence Principle",
   "year": 2022
+ },
+ "doi:10.1103/physrevlett.132.133602": {
+  "fetched": "2026-11-09",
+  "first_author": "Dania",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Ultrahigh Quality Factor of a Levitated Nanomechanical Oscillator",
+  "year": 2024
  },
  "doi:10.1103/physrevlett.133.071501": {
   "fetched": "2026-11-08",
@@ -2648,6 +2672,18 @@
   "total_smart_citations": 134,
   "unclassified": 0
  },
+ "scite:10.1038/s41586-021-03602-3": {
+  "citing_publications": 522,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 380,
+  "retracted": false,
+  "supporting": 11,
+  "total_smart_citations": 391,
+  "unclassified": 0
+ },
  "scite:10.1038/s41586-021-04349-7": {
   "citing_publications": 554,
   "classification_provenance": "Scite ML citation classification",
@@ -3108,6 +3144,18 @@
   "total_smart_citations": 8832,
   "unclassified": 47
  },
+ "scite:10.1103/physrevd.78.022002": {
+  "citing_publications": 250,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 223,
+  "retracted": false,
+  "supporting": 3,
+  "total_smart_citations": 227,
+  "unclassified": 1
+ },
  "scite:10.1103/physrevd.93.024026": {
   "citing_publications": 169,
   "classification_provenance": "Scite ML citation classification",
@@ -3280,6 +3328,18 @@
   "retracted": false,
   "supporting": 0,
   "total_smart_citations": 49,
+  "unclassified": 0
+ },
+ "scite:10.1103/physrevlett.132.133602": {
+  "citing_publications": 84,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 35,
+  "retracted": false,
+  "supporting": 1,
+  "total_smart_citations": 36,
   "unclassified": 0
  },
  "scite:10.1103/physrevlett.133.071501": {

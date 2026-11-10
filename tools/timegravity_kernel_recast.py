@@ -134,6 +134,32 @@ def edge_crossing_lambda(table: dict) -> float:
     return float("nan")
 
 
+# Geraci et al. 2008 (Phys. Rev. D 78, 022002), Table 5: 95 % exclusion limits on |α| from a micro-cantilever at a nominal 25 µm
+# face-to-face separation, the other published table that reaches below the balance's 52 µm.
+GERACI2008_TABLE5 = ((4e-6, 3.1e7), (6e-6, 4.6e5), (10e-6, 1.4e4), (18e-6, 1.1e3), (34e-6, 2.5e2), (66e-6, 1.5e2))
+
+
+def short_range_comparison() -> list[dict]:
+    """Geraci et al. 2008's tabulated |α| limits beside the balance's own |α95| at the same range (log-log interpolation between the
+    two neighbouring rows of the dissertation's table; None below its shortest row)."""
+    rows = load_table()["rows"]
+    out = []
+    for lam, lim in GERACI2008_TABLE5:
+        lo = [r for r in rows if r["lambda_m"] <= lam * (1.0 + 1e-9)]
+        hi = [r for r in rows if r["lambda_m"] >= lam * (1.0 - 1e-9)]
+        if not lo or not hi:
+            bal = None
+        else:
+            a, b = lo[-1], hi[0]
+            if a["lambda_m"] == b["lambda_m"]:
+                bal = a["alpha95_abs"]
+            else:
+                f = math.log(lam / a["lambda_m"]) / math.log(b["lambda_m"] / a["lambda_m"])
+                bal = math.exp(math.log(a["alpha95_abs"]) + f * (math.log(b["alpha95_abs"]) - math.log(a["alpha95_abs"])))
+        out.append({"lambda_m": lam, "geraci_alpha95_abs": lim, "balance_alpha95_abs": bal, "geraci_over_balance": None if bal is None else lim / bal})
+    return out
+
+
 def reach_below_limit(sigmas_m: tuple[float, ...] = (25e-6, 18e-6, 13.6e-6)) -> list[dict]:
     """Why the balance loses reach below the rung: for each σ the best-mimic λ (table rows down to its shortest, 5 µm), the effective
     strength, the published signed limit there and their ratio (how many times too weak the smeared pull is to be seen)."""
@@ -178,12 +204,21 @@ def check_recast(planted_defect: bool = False, quick: bool = True) -> dict:
     below_ok = (3.0 < r25["times_too_weak"] < 20.0 and 100.0 < r18["times_too_weak"] < 300.0 and r13["times_too_weak"] > 1000.0
                 and r13["mimic_at_table_floor"] and 10e-6 < r25["lambda_m"] < 12e-6 and 6.5e-6 < r18["lambda_m"] < 8e-6
                 and not any(r["excluded"] for r in below))
-    recast_ok = recast_ok and below_ok
+    short = short_range_comparison()
+    by_lam = {round(r["lambda_m"] * 1e6): r for r in short}
+    short_ok = (all(r["geraci_over_balance"] is not None and r["geraci_over_balance"] > 1.0 for r in short if r["lambda_m"] >= 10e-6)
+                and 4.0 < by_lam[10]["geraci_over_balance"] < 5.0 and 3000.0 < by_lam[10]["balance_alpha95_abs"] < 3200.0
+                and by_lam[4]["balance_alpha95_abs"] is None    # the balance's table starts at 5 µm
+                and 0.5 < by_lam[6]["geraci_over_balance"] < 0.8)   # at 6 µm the cantilever's |α| limit is the stronger
+    need6 = reach_below_limit((17e-6,))[0]   # the smeared pull whose best mimic is the 6.3 µm row
+    cantilever_over_need = by_lam[6]["geraci_alpha95_abs"] / abs(need6["alpha_eff"])
+    short_ok = bool(short_ok and 6.0e-6 < need6["lambda_m"] < 6.6e-6 and 1500.0 < cantilever_over_need < 2600.0)
+    recast_ok = recast_ok and below_ok and short_ok
     # the planted defect (single-separation edge match) must give the retired 44 µm, not a value below 35 µm
     defect_rejected = not (32e-6 < Recast(120, "log52-3000", n_sep=12).sigma_95(planted_defect=True) < 35e-6) if not planted_defect else None
     return {"table_rows": n_rows, "edge_crossing_lambda_m": edge, "sigma_95_m": s95, "variants_sigma_95_m": variants, "spread_m": spread,
             "at_33um": at33, "at_35um": at35, "at_edge_match_44um": at44, "retired_edge_match_sigma_m": EDGE_MATCH_SIGMA_M,
-            "below_limit": below, "below_ok": below_ok,
+            "below_limit": below, "below_ok": below_ok, "short_range_comparison": short, "short_ok": short_ok, "cantilever_6um_limit_over_smeared_need": cantilever_over_need,
             "table_ok": table_ok, "edge_ok": edge_ok, "recast_ok": recast_ok, "defect_rejected": defect_rejected,
             "ok": bool(recast_ok and (defect_rejected is None or defect_rejected))}
 

@@ -43,7 +43,7 @@ def main() -> int:
                 "temperature_ceiling_k": z10["temperature_ceiling_k"],
                 "rate_ratio_quantum_over_hybrid_33um": res["rate_ratio_quantum_over_hybrid_33um"],
                 "gas_rate_per_pa_at_4K_1e-14kg_per_s": res["gas_rate_per_pa_at_4K_1e-14kg_per_s"],
-                "base_partial_pressure_pa": res["base_partial_pressure_pa"], "vacuum_comparison_helium": res["vacuum_comparison_helium"],
+                "base_partial_pressure_pa": res["base_partial_pressure_pa"], "vacuum_comparison_helium": res["vacuum_comparison_helium"], "hydrogen_over_helium_rate_at_equal_pressure": res["hydrogen_over_helium_rate_at_equal_pressure"],
                 "transcription_checks": res["transcription_checks"], "estimate": res["estimate"],
                 "other_geometries": {k: {"rates_per_s": b["rates_per_s"], "pressure_ceiling_pa": b["pressure_ceiling_pa"],
                                          "number_density_ceiling_per_m3": b["number_density_ceiling_per_m3"],
