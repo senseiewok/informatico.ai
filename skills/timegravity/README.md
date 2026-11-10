@@ -14,6 +14,8 @@ One folder per shipped page under `skills/timegravity/<slug>/`:
 | `T.08` A Horizon Has a Temperature | `t08/` | `make_t08.py` | `verify_t08_horizon_thermodynamics.py` (severing cross-horizon entanglement must exit non-zero) | `SKILL.md` |
 | `T.09` A Horizon Rings Like a Bell | `t09/` | `make_t09.py` | `verify_t09_kerr_ringdown.py` (corrupting the Kerr radical `√(1 − χ²) → √(1 + χ²)` must exit non-zero) | `SKILL.md` |
 | `T.10` Page's Counting Argument | `t10/` | `make_t10.py` | `verify_t10_page_curve.py` (a non-unitary toy that never turns over must exit non-zero) | `SKILL.md` |
+| `T.11` What Selects the World a Clock Sees? | `t11/` | `make_t11.py` | `verify_t11_einselection.py` (scrambling the pointer commutator `[Ĥ_int, Z_S] = 0` must exit non-zero) | `SKILL.md` |
+| `T.12` Two Clocks That Only Meet in Gravity | `t12/` | `make_t12.py` | `verify_t12_dark_clock.py` (dropping the factor of 2 in the proper-time step must exit non-zero) | `SKILL.md` |
 
 The hub `T.00` has no generator and no verifier: it carries no claims, and `tools/check_timegravity_labels.py` asserts that.
 

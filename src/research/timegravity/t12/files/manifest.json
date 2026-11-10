@@ -1,0 +1,14 @@
+{
+  "folio_id": "T.12",
+  "generator": "skills/timegravity/t12/make_t12.py",
+  "verifier": "skills/timegravity/t12/verify_t12_dark_clock.py",
+  "license": "CC0-1.0 / CC-BY-4.0",
+  "boundary_en": "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. Preprints never rise above PROPOSED. Each page ends with one open question that the next page takes up.",
+  "files": [
+    {
+      "filename": "t12_reference.json",
+      "bytes": 3763,
+      "sha256": "eebda50c27019ede93d8aed9a6b1e83bbdb90ad85507e5a4e9cb576484dd5069"
+    }
+  ]
+}

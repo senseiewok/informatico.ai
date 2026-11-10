@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Time & Gravity track registry (T.00–T.10; all eleven pages shipped): the fixed boundary line, the six claim labels, the
+"""Time & Gravity track registry (T.00–T.12; all thirteen pages shipped): the fixed boundary line, the six claim labels, the
 banned-phrase backstop and the list of pages shipped so far.
 
 The track sits beside Tech & Tools · The Toolbox (X.01–X.06), outside the Folio count of 48. Pages are
@@ -8,7 +8,7 @@ and tools/check_timegravity_labels.py refuses a page whose labels the ledger can
 """
 from __future__ import annotations
 
-from . import t00, t01, t02, t03, t04, t05, t06, t07, t08, t09, t10
+from . import t00, t01, t02, t03, t04, t05, t06, t07, t08, t09, t10, t11, t12
 
 TRACK_CODE = "T"
 TRACK_SLUG = "timegravity"
@@ -64,7 +64,7 @@ HUB_ONLY_PHRASES: tuple[str, ...] = (
 )
 
 # Reading order of the whole track; only `built` pages are rendered and listed in the sitemap.
-# Eleven pages, codes T.00–T.10 in reading order (T.00, T.02, T.01, T.03, T.04, T.05, T.06, T.07, T.08, T.09, T.10).
+# Thirteen pages, codes T.00–T.12 in reading order (T.00, T.02, T.01, T.03, T.04, T.05, T.06, T.07, T.08, T.09, T.10, T.11, T.12).
 TRACK_MAP: list[dict] = [
     {"code": "T.00", "slug": "", "built": True,
      "title_en": "The hub", "title_es": "El punto de partida",
@@ -103,9 +103,17 @@ TRACK_MAP: list[dict] = [
     {"code": "T.10", "slug": "t10", "built": True,
      "title_en": "Page's counting argument", "title_es": "El argumento de conteo de Page",
      "q_en": "Where does the information go, in our universe?", "q_es": "¿A dónde va la información, en nuestro universo?"},
+    {"code": "T.11", "slug": "t11", "built": True,
+     "title_en": "What selects the world a clock sees?", "title_es": "¿Qué selecciona el mundo que ve un reloj?",
+     "q_en": "If the electromagnetic bath only records and decoheres what couples to photons, how could our clocks ever detect a sector of matter that never scatters light at all?",
+     "q_es": "Si el baño electromagnético solo registra y decohera lo que se acopla a los fotones, ¿cómo podrían nuestros relojes detectar un sector de materia que jamás dispersa la luz?"},
+    {"code": "T.12", "slug": "t12", "built": True,
+     "title_en": "Two clocks that only meet in gravity", "title_es": "Dos relojes que solo se encuentran en la gravedad",
+     "q_en": "Does the 84.3% of matter that leaves no electromagnetic record couple to our clocks only through the curvature of proper time, or through a portal just below today's optical-clock bounds?",
+     "q_es": "¿El 84.3% de la materia que no deja registro electromagnético se acopla a nuestros relojes solo mediante la curvatura del tiempo propio, o mediante un portal justo por debajo de las cotas actuales de los relojes ópticos?"},
 ]
 
-PAGES: list[dict] = [t00.PAGE, t01.PAGE, t02.PAGE, t03.PAGE, t04.PAGE, t05.PAGE, t06.PAGE, t07.PAGE, t08.PAGE, t09.PAGE, t10.PAGE]
+PAGES: list[dict] = [t00.PAGE, t01.PAGE, t02.PAGE, t03.PAGE, t04.PAGE, t05.PAGE, t06.PAGE, t07.PAGE, t08.PAGE, t09.PAGE, t10.PAGE, t11.PAGE, t12.PAGE]
 PAGES_BY_SLUG: dict[str, dict] = {p["slug"]: p for p in PAGES}
 
 __all__ = [

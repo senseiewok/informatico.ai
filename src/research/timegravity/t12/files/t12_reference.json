@@ -1,0 +1,154 @@
+{
+  "folio_id": "T.12",
+  "title": "Two Clocks That Only Meet in Gravity",
+  "construction": "Omega_c / Omega_b = 0.1200 / 0.02237; Delta tau(T) = -(2 G M_DM / c^2 v_0) [arsinh(v_0 T / b_1) - arsinh(v_0 T / b_2)] -> -(2 G M_DM / c^2 v_0) ln(b_2 / b_1); Phi_Pl = hbar sqrt(8 pi G rho_DM) / (m_phi c^3)",
+  "parameters": {
+    "transit_mass_kg": 1000000.0,
+    "b1_m": 1.0,
+    "baseline_m": 1000.0,
+    "v_virial_m_s": 220000.0,
+    "t_half_window_s": 10.0,
+    "tolerance": 1e-12
+  },
+  "cosmological_budget": {
+    "omega_c_h2": 0.12,
+    "omega_b_h2": 0.02237,
+    "dark_to_baryon_ratio": 5.36432722396,
+    "dark_to_baryon_ratio_err": 0.0645867025555,
+    "dark_fraction_of_matter": 0.842874201025,
+    "err_propagation_rel_diff": 1.56055407988e-10
+  },
+  "gravitational_transit": {
+    "delta_tau_analytic_s": -4.66413816972e-26,
+    "delta_tau_quadrature_s": -4.66413816972e-26,
+    "delta_tau_asymptotic_s": -4.66413820466e-26,
+    "quadrature_rel_err": 3.69181934648e-16,
+    "sweep_quad_max_err": 6.13286640958e-16,
+    "dv_perp_m_s": 6.06754545455e-10,
+    "impulse_rel_err": 5.63559007725e-11,
+    "zero_baseline_shift_s": -0.0,
+    "em_scattering_rate_s": 0.0,
+    "vt_over_b1__t_s__delta_nu_over_nu": [
+      [
+        -5.0,
+        -2.27272727273e-05,
+        -1.44897120192e-22
+      ],
+      [
+        -4.5,
+        -2.04545454545e-05,
+        -1.60354168045e-22
+      ],
+      [
+        -4.0,
+        -1.81818181818e-05,
+        -1.79368974019e-22
+      ],
+      [
+        -3.5,
+        -1.59090909091e-05,
+        -2.0327044289e-22
+      ],
+      [
+        -3.0,
+        -1.36363636364e-05,
+        -2.34093936378e-22
+      ],
+      [
+        -2.5,
+        -1.13636363636e-05,
+        -2.75058796667e-22
+      ],
+      [
+        -2.0,
+        -9.09090909091e-06,
+        -3.31366110799e-22
+      ],
+      [
+        -1.5,
+        -6.81818181818e-06,
+        -4.11187382528e-22
+      ],
+      [
+        -1.0,
+        -4.54545454545e-06,
+        -5.24366954665e-22
+      ],
+      [
+        -0.5,
+        -2.27272727273e-06,
+        -6.63474092882e-22
+      ],
+      [
+        0.0,
+        0.0,
+        -7.41874152759e-22
+      ],
+      [
+        0.5,
+        2.27272727273e-06,
+        -6.63474092882e-22
+      ],
+      [
+        1.0,
+        4.54545454545e-06,
+        -5.24366954665e-22
+      ],
+      [
+        1.5,
+        6.81818181818e-06,
+        -4.11187382528e-22
+      ],
+      [
+        2.0,
+        9.09090909091e-06,
+        -3.31366110799e-22
+      ],
+      [
+        2.5,
+        1.13636363636e-05,
+        -2.75058796667e-22
+      ],
+      [
+        3.0,
+        1.36363636364e-05,
+        -2.34093936378e-22
+      ],
+      [
+        3.5,
+        1.59090909091e-05,
+        -2.0327044289e-22
+      ],
+      [
+        4.0,
+        1.81818181818e-05,
+        -1.79368974019e-22
+      ],
+      [
+        4.5,
+        2.04545454545e-05,
+        -1.60354168045e-22
+      ],
+      [
+        5.0,
+        2.27272727273e-05,
+        -1.44897120192e-22
+      ]
+    ]
+  },
+  "ultralight_scalar_bound": {
+    "m_phi_ev": 1e-15,
+    "compton_freq_hz": 0.241798924357,
+    "rho_dm_gev_cm3": 0.4,
+    "phi_planck_dimensionless": 7.19868298148e-16,
+    "rho_roundtrip_rel_err": 2.11470553066e-16,
+    "pure_gravity_colocated_mod": 0.0,
+    "portal_de1e4_colocated_mod": 7.63060396037e-20
+  },
+  "planted_defect": {
+    "delta_tau_analytic_s": -0.0,
+    "quadrature_rel_err": 1.0
+  },
+  "boundary_en": "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. Preprints never rise above PROPOSED. Each page ends with one open question that the next page takes up.",
+  "license": "CC0-1.0 / CC-BY-4.0"
+}

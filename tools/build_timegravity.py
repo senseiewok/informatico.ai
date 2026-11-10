@@ -206,6 +206,18 @@ PLATE_CAPTIONS = {
         "a damped oscillating wave on the left, and a rising curve with dots along it in a frequency versus damping-time plot on the right",
         "una onda oscilante amortiguada a la izquierda, y una curva ascendente con puntos encima en una gráfica de frecuencia contra tiempo de amortiguamiento a la derecha",
     ),
+    "T.11": (
+        "Left: the 2 × 2 clock reduced density matrix ρ_S as environmental photons scatter off the split, suppressing off-diagonal coherences as γ^N while leaving the pointer diagonal untouched. Right: the Quantum Darwinism mutual-information plateau I(S : E_k) across k of N = 6 bath modes.",
+        "Izquierda: la matriz de densidad reducida 2 × 2 del reloj ρ_S conforme los fotones del entorno se dispersan en la división, suprimiendo las coherencias fuera de la diagonal como γ^N mientras deja intacta la diagonal puntero. Derecha: la meseta de información mutua del darwinismo cuántico I(S : E_k) a lo largo de k de N = 6 modos del baño.",
+        "four matrix bars on the left where the two off-diagonal bars shrink with bath scattering, and a rising S-shaped mutual-information plateau curve with dots on the right",
+        "cuatro barras matriciales a la izquierda donde las dos barras fuera de la diagonal se encogen con la dispersión del baño, y una curva en S con meseta de información mutua y puntos a la derecha",
+    ),
+    "T.12": (
+        "Left: an electromagnetically transparent dark-matter subhalo flying past a two-node optical clock baseline (Λ_EM = 0), shifting the gravitational potential Φ(r) while leaving photon scattering at zero. Right: the accumulated proper-time step Δτ(t) across the flyby and its asymptotic plateau Δτ_∞ = −(2GM/c²v_0) ln(b_2/b_1).",
+        "Izquierda: un subhalo de materia oscura electromagnéticamente transparente que pasa junto a una línea base de dos relojes ópticos (Λ_EM = 0), desplazando el potencial gravitatorio Φ(r) sin dispersar fotones. Derecha: el escalón acumulado de tiempo propio Δτ(t) durante el sobrevuelo y su meseta asintótica Δτ_∞ = −(2GM/c²v_0) ln(b_2/b_1).",
+        "a trajectory passing two clock circles on the left, and a smooth step-shaped curve of accumulated proper-time difference against time on the right",
+        "una trayectoria que pasa junto a dos círculos de reloj a la izquierda, y una curva suave en forma de escalón de diferencia de tiempo propio acumulada contra el tiempo a la derecha",
+    ),
 }
 
 
@@ -1224,6 +1236,189 @@ def kerr_instrument(page: dict) -> str:
     </section>"""
 
 
+def einselection_instrument(page: dict) -> str:
+    ins = page["instrument"]
+    from timegravity_kernel_einselection import (
+        N_ENV_DEFAULT, THETA_DEFAULT, photon_bath_localization_table, statevector_quantum_darwinism,
+    )
+    qd = statevector_quantum_darwinism(THETA_DEFAULT, N_ENV_DEFAULT)
+    bath = photon_bath_localization_table()
+    # Left panel: 2x2 clock reduced density matrix bars (|rho_00|, |rho_11| in prussian, |rho_01|, |rho_10| in minium)
+    lx0, lx1, ly0, ly1 = 60, 410, 70, 350
+    coh = qd["coherence_ratio_statevector"]
+    bar_w = 54
+    b_xs = [lx0 + 28, lx0 + 108, lx0 + 188, lx0 + 268]
+    b_labels = ["|ρ₀₀|", "|ρ₁₁|", "|ρ₀₁|", "|ρ₁₀|"]
+    b_vals = [0.5, 0.5, 0.5 * coh, 0.5 * coh]
+    b_cols = ["var(--tp-prussian)", "var(--tp-prussian)", "var(--tp-minium)", "var(--tp-minium)"]
+    bars_svg = []
+    for idx, (bx, lbl, val, col) in enumerate(zip(b_xs, b_labels, b_vals, b_cols)):
+        bh = (ly1 - ly0) * val
+        by = ly1 - bh
+        bars_svg.append(
+            f'<rect class="tg-ein-bar" data-bar="{idx}" x="{bx}" y="{by:.1f}" width="{bar_w}" height="{max(1.5, bh):.1f}" rx="3" fill="{col}" opacity="0.86"/>'
+            f'<text x="{bx + bar_w / 2:.1f}" y="{ly1 + 18}" text-anchor="middle" font-size="10">{lbl}</text>'
+        )
+    # Right panel: Quantum Darwinism plateau I(S : E_k) in bits for k = 0..N
+    rx0, rx1, ry0, ry1 = 480, 880, 70, 350
+    N = N_ENV_DEFAULT
+    to_x = lambda k: rx0 + (rx1 - rx0) * k / N  # noqa: E731
+    to_y = lambda bits: ry1 - (ry1 - ry0) * (bits / 2.05)  # noqa: E731
+    pts = []
+    dots = []
+    for row in qd["fragments"]:
+        kx = to_x(row["k"])
+        ky = to_y(row["i_s_ek_jacobi_bits"])
+        pts.append(f'{"M" if row["k"] == 0 else "L"} {kx:.1f} {ky:.1f}')
+        dots.append(f'<circle class="tg-ein-dot" data-k="{row["k"]}" cx="{kx:.1f}" cy="{ky:.1f}" r="5" fill="var(--tp-minium)"/>')
+    return f"""    <section class="tg-instrument" id="instrument" data-tg-instrument="einselection" data-tg-n="{N}" aria-labelledby="tg-instrument-heading-t11">
+      <h2 id="tg-instrument-heading-t11" class="tp-h2" data-en="{a(ins['title_en'])}" data-es="{a(ins['title_es'])}">{t(ins['title_en'])}</h2>
+      {bi("p", ins["how_en"], ins["how_es"], "tg-how")}
+{predict_block(page)}
+        <svg class="tg-stage" viewBox="0 0 920 420" role="img" aria-labelledby="tg-stage-title-t11 tg-stage-desc-t11" data-ly0="{ly0}" data-ly1="{ly1}" data-rx0="{rx0}" data-rx1="{rx1}" data-ry0="{ry0}" data-ry1="{ry1}">
+          <title id="tg-stage-title-t11">Clock reduced density matrix coherences beside the Quantum Darwinism mutual-information plateau across six environmental modes</title>
+          <desc id="tg-stage-desc-t11">Left: four vertical bars for the clock's reduced density matrix elements; the two pointer diagonal populations stay at 0.5 while the two off-diagonal coherences shrink as gamma to the sixth power. Right: mutual information I(S:E_k) rising to the one-bit classical plateau at small k and jumping to two bits at k = N.</desc>
+          <text x="{(lx0 + lx1) / 2:.0f}" y="38" text-anchor="middle" font-size="11" font-weight="700" data-en="Clock reduced state ρ_S: pointer diagonal vs off-diagonal" data-es="Estado reducido del reloj ρ_S: diagonal puntero frente a coherencias">Clock reduced state ρ_S: pointer diagonal vs off-diagonal</text>
+          <line class="tg-axis" x1="{lx0}" y1="{ly0}" x2="{lx0}" y2="{ly1}"/>
+          <line class="tg-axis" x1="{lx0}" y1="{ly1}" x2="{lx1}" y2="{ly1}"/>
+          <text x="{lx0 - 8}" y="{ly1 - (ly1 - ly0) * 0.5 + 4:.0f}" text-anchor="end" font-size="10">0.5</text>
+          <text x="{lx0 - 8}" y="{ly1 + 4}" text-anchor="end" font-size="10">0</text>
+          <g class="tg-ein-bars">{''.join(bars_svg)}</g>
+          <text x="{(rx0 + rx1) / 2:.0f}" y="38" text-anchor="middle" font-size="11" font-weight="700" data-en="Quantum Darwinism plateau I(S : E_k) across k of N = 6 modes" data-es="Meseta de darwinismo cuántico I(S : E_k) en k de N = 6 modos">Quantum Darwinism plateau I(S : E_k) across k of N = 6 modes</text>
+          <line class="tg-axis" x1="{rx0}" y1="{ry0}" x2="{rx0}" y2="{ry1}"/>
+          <line class="tg-axis" x1="{rx0}" y1="{ry1}" x2="{rx1}" y2="{ry1}"/>
+          <line x1="{rx0}" y1="{to_y(1.0):.1f}" x2="{rx1}" y2="{to_y(1.0):.1f}" stroke="var(--tp-verdigris)" stroke-width="1.4" stroke-dasharray="4 3"/>
+          <text x="{rx0 - 8}" y="{to_y(2.0) + 4:.0f}" text-anchor="end" font-size="10">2 bits</text>
+          <text x="{rx0 - 8}" y="{to_y(1.0) + 4:.0f}" text-anchor="end" font-size="10">1 bit</text>
+          <text x="{rx0 - 8}" y="{ry1 + 4}" text-anchor="end" font-size="10">0</text>
+          <text x="{rx1}" y="{ry1 + 22}" text-anchor="end" font-size="10" data-en="captured bath fraction k / N (N = 6)" data-es="fracción capturada del baño k / N (N = 6)">captured bath fraction k / N (N = 6)</text>
+          <path class="tg-ein-curve" d="{' '.join(pts)}" fill="none" stroke="var(--tp-prussian)" stroke-width="2.6"/>
+          <g class="tg-ein-dots">{''.join(dots)}</g>
+        </svg>
+      <div class="tg-controls">
+        <div class="tp-control-group">
+          <label for="tg-theta-t11"><span data-en="Single-mode scattering angle θ (rad)" data-es="Ángulo de dispersión por modo θ (rad)">Single-mode scattering angle θ (rad)</span> <span data-tg-read="theta">{THETA_DEFAULT:.2f}</span></label>
+          <input id="tg-theta-t11" data-tg-theta-input type="range" min="0.00" max="1.57" step="0.05" value="{THETA_DEFAULT:.2f}" aria-describedby="tg-status-t11">
+        </div>
+        <div class="tp-control-group">
+          <label for="tg-r-t11"><span data-en="Sphere radius R (µm, for photon bath Λ)" data-es="Radio de la esfera R (µm, para el baño Λ)">Sphere radius R (µm, for photon bath Λ)</span> <span data-tg-read="rad">10.0</span></label>
+          <input id="tg-r-t11" data-tg-r-input type="range" min="1.0" max="20.0" step="1.0" value="10.0" aria-describedby="tg-status-t11">
+        </div>
+        <div class="tg-btn-row" role="group" aria-label="Knockout and planted defect">
+          <button type="button" class="tp-step-btn tp-knockout-btn" data-tg-knockout aria-pressed="false" data-en="⚡ Knockout · uncouple the bath (θ = 0, ε = 1 → Λ_EM = 0)" data-es="⚡ Apagado · desacoplar el baño (θ = 0, ε = 1 → Λ_EM = 0)">⚡ Knockout · uncouple the bath (θ = 0, ε = 1 → Λ_EM = 0)</button>
+        </div>
+      </div>
+      <div class="tp-readout-strip">
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Off-diagonal coherence |ρ₀₁(N)| / |ρ₀₁(0)| = cos⁶θ" data-es="Coherencia fuera de la diagonal |ρ₀₁(N)| / |ρ₀₁(0)| = cos⁶θ">Off-diagonal coherence |ρ₀₁(N)| / |ρ₀₁(0)| = cos⁶θ</span>
+          <span class="tp-readout-v" data-tg-read="coh">{coh:.2e}</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Redundant record I(S : E₂) at k = 2 of 6 modes" data-es="Registro redundante I(S : E₂) en k = 2 de 6 modos">Redundant record I(S : E₂) at k = 2 of 6 modes</span>
+          <span class="tp-readout-v" data-tg-read="mi2">{qd['k2_plateau_bits']:.4f} bits (R_δ = 3.0)</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Joos–Zeh photon bath τ_loc (Δx = 10 µm): 2.725 K CMB vs 300 K" data-es="Baño de fotones Joos–Zeh τ_loc (Δx = 10 µm): CMB 2.725 K frente a 300 K">Joos–Zeh photon bath τ_loc (Δx = 10 µm): 2.725 K CMB vs 300 K</span>
+          <span class="tp-readout-v" data-tg-read="tau">{bath['dust_10um_dielectric']['tau_cmb_s']:.2f} s · {bath['dust_10um_dielectric']['tau_300k_s']:.2e} s</span>
+        </div>
+        <div class="tp-readout-box" data-tg-readout-box="err" data-alert="false">
+          <span class="tp-readout-k" data-en="Statevector vs Zurek closed form" data-es="Vector de estado frente a forma cerrada de Zurek">Statevector vs Zurek closed form</span>
+          <span class="tp-readout-v" data-tg-read="err">{qd['max_mi_dev_nats']:.1e} nats · PASS</span>
+        </div>
+      </div>
+      <p id="tg-status-t11" class="tg-status" data-tg-status data-state="fall" aria-live="polite" data-en="Einselection &amp; Quantum Darwinism: the interaction Hamiltonian [Ĥ_int, Z_S] = 0 preserves pointer populations while scattering copies of Z_S into the photon bath." data-es="Einselección y darwinismo cuántico: el hamiltoniano de interacción [Ĥ_int, Z_S] = 0 preserva las poblaciones puntero mientras copia Z_S en el baño de fotones.">Einselection &amp; Quantum Darwinism: the interaction Hamiltonian [Ĥ_int, Z_S] = 0 preserves pointer populations while scattering copies of Z_S into the photon bath.</p>
+    </section>"""
+
+
+def dark_clock_instrument(page: dict) -> str:
+    ins = page["instrument"]
+    from timegravity_kernel_dark_clock import (
+        B_IMPACT_DEFAULT_M, BASELINE_DEFAULT_M, M_TRANSIT_DEFAULT_KG, V_VIRIAL_M_S,
+        cosmological_matter_budget, dark_transit_clock_shift, ultralight_scalar_clock_bound,
+    )
+    cosmo = cosmological_matter_budget()
+    fly = dark_transit_clock_shift(M_TRANSIT_DEFAULT_KG, B_IMPACT_DEFAULT_M, BASELINE_DEFAULT_M, V_VIRIAL_M_S)
+    ulp = ultralight_scalar_clock_bound()
+    # Left panel: flyby geometry with clock 1 at b1, clock 2 at b2, and passing dark trajectory
+    lx0, lx1, ly0, ly1 = 60, 410, 65, 355
+    # Right panel: accumulated proper-time step Delta tau(t) across the flyby
+    rx0, rx1, ry0, ry1 = 480, 880, 65, 355
+    pts = []
+    dt_inf = fly["delta_tau_asymptotic_s"]
+    b1 = fly["b1_m"]
+    b2 = fly["b2_m"]
+    v0 = fly["v_m_s"]
+    for idx in range(61):
+        t_val = 0.01 * (10.0 ** (3.0 * idx / 60.0)) * (b1 / v0)
+        tx = rx0 + (rx1 - rx0) * idx / 60
+        num = math.asinh(v0 * t_val / b1) - math.asinh(v0 * t_val / b2)
+        den = math.log(b2 / b1)
+        frac = num / den if abs(den) > 0 else 0.0
+        ty = ry0 + 30 + (ry1 - ry0 - 60) * frac
+        pts.append(f'{"M" if idx == 0 else "L"} {tx:.1f} {ty:.1f}')
+    return f"""    <section class="tg-instrument" id="instrument" data-tg-instrument="dark_clock" aria-labelledby="tg-instrument-heading-t12">
+      <h2 id="tg-instrument-heading-t12" class="tp-h2" data-en="{a(ins['title_en'])}" data-es="{a(ins['title_es'])}">{t(ins['title_en'])}</h2>
+      {bi("p", ins["how_en"], ins["how_es"], "tg-how")}
+{predict_block(page)}
+        <svg class="tg-stage" viewBox="0 0 920 420" role="img" aria-labelledby="tg-stage-title-t12 tg-stage-desc-t12" data-rx0="{rx0}" data-rx1="{rx1}" data-ry0="{ry0}" data-ry1="{ry1}">
+          <title id="tg-stage-title-t12">An electromagnetically transparent mass flying past two optical clocks and the accumulated gravitational proper-time step</title>
+          <desc id="tg-stage-desc-t12">Left: a dark subhalo trajectory passing clock 1 at impact parameter b_1 and clock 2 at b_2 with zero photon scattering. Right: the accumulated proper-time step Delta tau(t) approaching the logarithmic plateau -(2GM/c^2 v_0) ln(b_2/b_1).</desc>
+          <text x="{(lx0 + lx1) / 2:.0f}" y="38" text-anchor="middle" font-size="11" font-weight="700" data-en="Transparent flyby (Λ_EM = 0, G &gt; 0) past two clocks" data-es="Sobrevuelo transparente (Λ_EM = 0, G &gt; 0) junto a dos relojes">Transparent flyby (Λ_EM = 0, G &gt; 0) past two clocks</text>
+          <line x1="145" y1="{ly0 + 10}" x2="145" y2="{ly1 - 10}" stroke="var(--tp-minium)" stroke-width="2.5" stroke-dasharray="6 4"/>
+          <polygon points="140,{ly0 + 18} 145,{ly0 + 6} 150,{ly0 + 18}" fill="var(--tp-minium)"/>
+          <circle class="tg-dark-mass" cx="145" cy="195" r="14" fill="var(--tp-stone)" stroke="var(--tp-minium)" stroke-width="2" stroke-dasharray="3 2"/>
+          <text x="145" y="199" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--tp-minium)">M_DM</text>
+          <line class="tg-dark-b1" x1="145" y1="195" x2="225" y2="195" stroke="var(--tp-prussian)" stroke-width="1.6" stroke-dasharray="3 2"/>
+          <line class="tg-dark-b2" x1="145" y1="245" x2="355" y2="245" stroke="var(--tp-verdigris)" stroke-width="1.6" stroke-dasharray="3 2"/>
+          <circle cx="225" cy="195" r="11" fill="var(--tp-prussian)"/>
+          <text x="225" y="176" text-anchor="middle" font-size="9.5" fill="var(--tp-prussian)" data-en="Clock 1 (b₁)" data-es="Reloj 1 (b₁)">Clock 1 (b₁)</text>
+          <circle cx="355" cy="245" r="11" fill="var(--tp-verdigris)"/>
+          <text x="355" y="226" text-anchor="middle" font-size="9.5" fill="var(--tp-verdigris)" data-en="Clock 2 (b₂)" data-es="Reloj 2 (b₂)">Clock 2 (b₂)</text>
+          <text x="235" y="330" text-anchor="middle" font-size="9.5" fill="var(--tp-graphite)" data-en="Planck 2018: Ω_c / Ω_b = 5.36 ± 0.06 (84.3 % dark)" data-es="Planck 2018: Ω_c / Ω_b = 5.36 ± 0.06 (84.3 % oscura)">Planck 2018: Ω_c / Ω_b = 5.36 ± 0.06 (84.3 % dark)</text>
+          <text x="{(rx0 + rx1) / 2:.0f}" y="38" text-anchor="middle" font-size="11" font-weight="700" data-en="Proper-time step Δτ(T) = −(2GM/c²v₀) ln(b₂/b₁)" data-es="Escalón de tiempo propio Δτ(T) = −(2GM/c²v₀) ln(b₂/b₁)">Proper-time step Δτ(T) = −(2GM/c²v₀) ln(b₂/b₁)</text>
+          <line class="tg-axis" x1="{rx0}" y1="{ry0}" x2="{rx0}" y2="{ry1}"/>
+          <line class="tg-axis" x1="{rx0}" y1="{ry0 + 30}" x2="{rx1}" y2="{ry0 + 30}" stroke-dasharray="4 3"/>
+          <line class="tg-axis" x1="{rx0}" y1="{ry1 - 30}" x2="{rx1}" y2="{ry1 - 30}" stroke="var(--tp-verdigris)" stroke-dasharray="4 3"/>
+          <text x="{rx0 - 8}" y="{ry0 + 34}" text-anchor="end" font-size="10">0</text>
+          <text x="{rx0 - 8}" y="{ry1 - 26}" text-anchor="end" font-size="10" data-tg-read="dtlabel">{dt_inf:.1e} s</text>
+          <text x="{rx1}" y="{ry1 + 18}" text-anchor="end" font-size="10" data-en="integration window T across flyby" data-es="ventana de integración T del sobrevuelo">integration window T across flyby</text>
+          <path class="tg-dark-curve" d="{' '.join(pts)}" fill="none" stroke="var(--tp-prussian)" stroke-width="2.6"/>
+        </svg>
+      <div class="tg-controls">
+        <div class="tp-control-group">
+          <label for="tg-logm-t12"><span data-en="log₁₀ clump mass M_DM (kg)" data-es="log₁₀ masa del subhalo M_DM (kg)">log₁₀ clump mass M_DM (kg)</span> <span data-tg-read="logm">6.0</span></label>
+          <input id="tg-logm-t12" data-tg-logm-input type="range" min="4.0" max="16.0" step="0.5" value="6.0" aria-describedby="tg-status-t12">
+        </div>
+        <div class="tp-control-group">
+          <label for="tg-ratio-t12"><span data-en="Impact-parameter ratio b₂ / b₁" data-es="Razón de parámetros de impacto b₂ / b₁">Impact-parameter ratio b₂ / b₁</span> <span data-tg-read="ratio">1001.0</span></label>
+          <input id="tg-ratio-t12" data-tg-ratio-input type="range" min="1.5" max="1001.0" step="10.0" value="1001.0" aria-describedby="tg-status-t12">
+        </div>
+        <div class="tg-btn-row" role="group" aria-label="Knockout and planted defect">
+          <button type="button" class="tp-step-btn tp-knockout-btn" data-tg-knockout aria-pressed="false" data-en="⚡ Knockout · equal impact parameters b₂ = b₁ (common-mode Φ, Δτ = 0)" data-es="⚡ Apagado · parámetros de impacto iguales b₂ = b₁ (Φ común, Δτ = 0)">⚡ Knockout · equal impact parameters b₂ = b₁ (common-mode Φ, Δτ = 0)</button>
+        </div>
+      </div>
+      <div class="tp-readout-strip">
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Cosmological dark-to-baryonic ratio Ω_c / Ω_b" data-es="Razón cosmológica oscura a bariónica Ω_c / Ω_b">Cosmological dark-to-baryonic ratio Ω_c / Ω_b</span>
+          <span class="tp-readout-v" data-tg-read="cosmo">{cosmo['dark_to_baryon_ratio']:.3f} ± {cosmo['dark_to_baryon_ratio_err']:.3f} ({cosmo['dark_fraction_of_matter'] * 100:.1f} %)</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Asymptotic clock step Δτ_∞ = −(2GM/c²v₀) ln(b₂/b₁)" data-es="Escalón asintótico del reloj Δτ_∞ = −(2GM/c²v₀) ln(b₂/b₁)">Asymptotic clock step Δτ_∞ = −(2GM/c²v₀) ln(b₂/b₁)</span>
+          <span class="tp-readout-v" data-tg-read="dt">{dt_inf:.3e} s</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Scalar field amplitude Φ_Pl (m_φ = 10⁻¹⁵ eV) · Λ_EM" data-es="Amplitud escalar Φ_Pl (m_φ = 10⁻¹⁵ eV) · Λ_EM">Scalar field amplitude Φ_Pl (m_φ = 10⁻¹⁵ eV) · Λ_EM</span>
+          <span class="tp-readout-v" data-tg-read="ulp">{ulp['phi_planck_dimensionless']:.2e} · Λ_EM = 0</span>
+        </div>
+        <div class="tp-readout-box" data-tg-readout-box="err" data-alert="false">
+          <span class="tp-readout-k" data-en="Quadrature vs analytic arsinh" data-es="Cuadratura frente a arsinh analítico">Quadrature vs analytic arsinh</span>
+          <span class="tp-readout-v" data-tg-read="err">{fly['quadrature_rel_err']:.1e} · PASS</span>
+        </div>
+      </div>
+      <p id="tg-status-t12" class="tg-status" data-tg-status data-state="fall" aria-live="polite" data-en="Universal metric coupling: an electromagnetically uncoupled mass (Λ_EM = 0) casts zero photon shadow yet shifts the gravitational clock rate along its flyby." data-es="Acoplamiento métrico universal: una masa sin acoplamiento electromagnético (Λ_EM = 0) no proyecta sombra fotónica pero desplaza el ritmo gravitatorio del reloj en su sobrevuelo.">Universal metric coupling: an electromagnetically uncoupled mass (Λ_EM = 0) casts zero photon shadow yet shifts the gravitational clock rate along its flyby.</p>
+    </section>"""
+
+
 def plate_d(page: dict) -> str:
     code = page["code"]
     slug = page["slug"] or "t01"
@@ -1677,6 +1872,96 @@ def plate_d(page: dict) -> str:
             "cap_en": "Plate T.10-D · Visual Intuition Bridge: dealing a pure quantum deck (left), Page's exact subsystem entropy formula against Hawking's rising thermal line (center), and the 10-qubit Haar-random eigensolver gate (right).",
             "cap_es": "Lámina T.10-D · Puente de Intuición Visual: repartir una baraja cuántica pura (izquierda), la fórmula exacta de entropía de Page frente a la recta térmica de Hawking (centro), y la puerta del solver de 10 qubits (derecha).",
         },
+        "t11": {
+            "title_en": "Plate T.11-D Visual Intuition Bridge: environmental photon scattering selects pointer states by suppressing off-diagonal coherences as gamma^N while copying 1 bit of classical record across the bath",
+            "title_es": "Lámina T.11-D Puente de Intuición Visual: la dispersión de fotones del entorno selecciona estados puntero suprimiendo las coherencias fuera de la diagonal como gamma^N mientras copia 1 bit de registro clásico en el baño",
+            "p1_h_en": "Sunlit dust motes in a dark room",
+            "p1_h_es": "Motas de polvo al sol en un cuarto oscuro",
+            "p1_l1_en": "Passing photons bounce off the mote's",
+            "p1_l1_es": "Los fotones rebotan en la posición de",
+            "p1_l2_en": "position and broadcast it to the room.",
+            "p1_l2_es": "la mota y la difunden por todo el cuarto.",
+            "p1_art": (
+                '<rect x="48" y="114" width="28" height="44" rx="2" fill="var(--tp-prussian)"/>'
+                '<rect x="88" y="114" width="28" height="44" rx="2" fill="var(--tp-prussian)"/>'
+                '<rect x="132" y="150" width="24" height="8" rx="2" fill="var(--tp-minium)"/>'
+                '<path d="M 172 158 C 186 122, 206 120, 248 120" fill="none" stroke="var(--tp-verdigris)" stroke-width="2.2"/>'
+                '<text x="150" y="182" text-anchor="middle" font-size="8.3" fill="var(--tp-graphite)" data-en="[Ĥ_int, Z_S] = 0 · |ρ₀₁| = ½ cos⁶θ · I(S:E_k) ≈ 1 bit" data-es="[Ĥ_int, Z_S] = 0 · |ρ₀₁| = ½ cos⁶θ · I(S:E_k) ≈ 1 bit">[Ĥ_int, Z_S] = 0 · |ρ₀₁| = ½ cos⁶θ · I(S:E_k) ≈ 1 bit</text>'
+            ),
+            "p2_on_en": "▲ Photon bath coupled: [Ĥ_int, Z_S] = 0",
+            "p2_on_es": "▲ Baño acoplado: [Ĥ_int, Z_S] = 0",
+            "p2_on1_en": "|ρ₀₁(N)| = ½ (cos θ)^N → 0; k = 2 of 6",
+            "p2_on1_es": "|ρ₀₁(N)| = ½ (cos θ)^N → 0; k = 2 de 6",
+            "p2_on2_en": "modes already hold 0.998 bits of Z_S.",
+            "p2_on2_es": "modos ya guardan 0.998 bits de Z_S.",
+            "p2_off_en": "▼ Knockout: uncouple bath (θ = 0, ε = 1)",
+            "p2_off_es": "▼ Apagado: desacoplar baño (θ = 0, ε = 1)",
+            "p2_off1_en": "Λ_EM = 0; off-diagonal coherence stays",
+            "p2_off1_es": "Λ_EM = 0; la coherencia queda en 1.0 y",
+            "p2_off2_en": "at 1.0 and the bath records 0 bits.",
+            "p2_off2_es": "el baño registra exactamente 0 bits.",
+            "p3_ok_en": "✓ STATEVECTOR & R⁶T⁹ SCALING",
+            "p3_ok_es": "✓ VECTOR DE ESTADO Y ESCALA R⁶T⁹",
+            "p3_ok1_en": "max |I_sv − I_Zurek| < 10⁻¹² nats",
+            "p3_ok1_es": "máx |I_sv − I_Zurek| < 10⁻¹² nats",
+            "p3_ok2_en": "Λ ∝ R⁶T⁹ exact · ε = 1 → Λ_EM = 0",
+            "p3_ok2_es": "Λ ∝ R⁶T⁹ exacto · ε = 1 → Λ_EM = 0",
+            "p3_bad_en": "⚠ PLANTED DEFECT: SCRAMBLED POINTER",
+            "p3_bad_es": "⚠ DEFECTO PLANTADO: BASE MEZCLADA",
+            "p3_bad1_en": "Rotating Z_S → X_S breaks [Ĥ_int, Z_S]=0",
+            "p3_bad1_es": "Rotar Z_S → X_S rompe [Ĥ_int, Z_S]=0",
+            "p3_bad2_en": "and collapses the Darwinism plateau.",
+            "p3_bad2_es": "y destruye la meseta de información.",
+            "foot_en": "PLATE T.11-D · VISUAL INTUITION BRIDGE → [Ĥ_int, Π_i] = 0 · I(S:E_k) = h₂(γ^N) + h₂(γ^k) − h₂(γ^{N−k}) · Λ_photon ∝ R⁶T⁹|(ε−1)/(ε+2)|²",
+            "foot_es": "LÁMINA T.11-D · PUENTE DE INTUICIÓN VISUAL → [Ĥ_int, Π_i] = 0 · I(S:E_k) = h₂(γ^N) + h₂(γ^k) − h₂(γ^{N−k}) · Λ_fotón ∝ R⁶T⁹|(ε−1)/(ε+2)|²",
+            "cap_en": "Plate T.11-D · Visual Intuition Bridge: ambient photons scatter off a localized dust mote (left), selecting the pointer basis and broadcasting redundant classical records across the bath (centre), verified against the 1+6-qubit statevector and Joos–Zeh R⁶T⁹ scaling (right).",
+            "cap_es": "Lámina T.11-D · Puente de Intuición Visual: los fotones ambientales se dispersan en una mota de polvo (izquierda), seleccionando la base puntero y difundiendo registros clásicos redundantes en el baño (centro), verificado frente al estado de 1+6 qubits y la ley R⁶T⁹ de Joos y Zeh (derecha).",
+        },
+        "t12": {
+            "title_en": "Plate T.12-D Visual Intuition Bridge: an electromagnetically transparent dark mass casts zero photon shadow yet shifts the relative proper time of two clocks via the universal metric g00",
+            "title_es": "Lámina T.12-D Puente de Intuición Visual: una masa oscura electromagnéticamente transparente no proyecta sombra fotónica pero desplaza el tiempo propio relativo de dos relojes mediante la métrica universal g00",
+            "p1_h_en": "A clear glass lens in a dark current",
+            "p1_h_es": "Una lente transparente en la corriente",
+            "p1_l1_en": "Light passes straight through without",
+            "p1_l1_es": "La luz pasa sin sombra, pero la masa",
+            "p1_l2_en": "a shadow, yet its mass bends the clock.",
+            "p1_l2_es": "curva el ritmo de los relojes vecinos.",
+            "p1_art": (
+                '<line x1="74" y1="112" x2="74" y2="168" stroke="var(--tp-minium)" stroke-width="2" stroke-dasharray="4 3"/>'
+                '<circle cx="114" cy="138" r="6" fill="var(--tp-prussian)"/>'
+                '<circle cx="154" cy="138" r="6" fill="var(--tp-verdigris)"/>'
+                '<path d="M 176 124 C 202 124, 214 158, 248 158" fill="none" stroke="var(--tp-prussian)" stroke-width="2.2"/>'
+                '<text x="150" y="182" text-anchor="middle" font-size="8.3" fill="var(--tp-graphite)" data-en="Λ_EM = 0, G &gt; 0 · Δτ_∞ = −(2GM/c²v₀) ln(b₂/b₁)" data-es="Λ_EM = 0, G &gt; 0 · Δτ_∞ = −(2GM/c²v₀) ln(b₂/b₁)">Λ_EM = 0, G &gt; 0 · Δτ_∞ = −(2GM/c²v₀) ln(b₂/b₁)</text>'
+            ),
+            "p2_on_en": "▲ Universal gravity: b₂ > b₁, G > 0",
+            "p2_on_es": "▲ Gravedad universal: b₂ > b₁, G > 0",
+            "p2_on1_en": "Ω_c / Ω_b = 5.36 ± 0.06 (84.3 % dark);",
+            "p2_on1_es": "Ω_c / Ω_b = 5.36 ± 0.06 (84.3 % oscura);",
+            "p2_on2_en": "flyby leaves step −(2GM/c²v₀) ln(b₂/b₁).",
+            "p2_on2_es": "deja el escalón −(2GM/c²v₀) ln(b₂/b₁).",
+            "p2_off_en": "▼ Knockout: equal impact b₂ = b₁",
+            "p2_off_es": "▼ Apagado: impacto igual b₂ = b₁",
+            "p2_off1_en": "Both clocks sample the same Φ(t);",
+            "p2_off1_es": "Ambos relojes leen el mismo Φ(t);",
+            "p2_off2_en": "differential shift Δτ(T) = 0 everywhere.",
+            "p2_off2_es": "el cambio diferencial Δτ(T) = 0 siempre.",
+            "p3_ok_en": "✓ QUADRATURE & IMPULSE IDENTITY",
+            "p3_ok_es": "✓ CUADRATURA E IDENTIDAD DE IMPULSO",
+            "p3_ok1_en": "|Δτ_quad − Δτ_arsinh| / |Δτ| < 10⁻⁹",
+            "p3_ok1_es": "|Δτ_cuad − Δτ_arsinh| / |Δτ| < 10⁻⁹",
+            "p3_ok2_en": "+c² ∂Δτ_∞/∂b₁ = 2GM/(b₁v₀) (< 10⁻⁶)",
+            "p3_ok2_es": "+c² ∂Δτ_∞/∂b₁ = 2GM/(b₁v₀) (< 10⁻⁶)",
+            "p3_bad_en": "⚠ PLANTED DEFECT: MISSING FACTOR OF 2",
+            "p3_bad_es": "⚠ DEFECTO PLANTADO: FALTA EL FACTOR 2",
+            "p3_bad1_en": "Halving the arsinh step breaks both",
+            "p3_bad1_es": "Partir por dos el arsinh rompe tanto",
+            "p3_bad2_en": "quadrature and the impulse identity.",
+            "p3_bad2_es": "la cuadratura como el impulso.",
+            "foot_en": "PLATE T.12-D · VISUAL INTUITION BRIDGE → Ω_c/Ω_b = 5.364 ± 0.065 · Δτ_∞ = −(2GM/c²v₀) ln(b₂/b₁) · T^{μν}_dark → g₀₀ ONLY",
+            "foot_es": "LÁMINA T.12-D · PUENTE DE INTUICIÓN VISUAL → Ω_c/Ω_b = 5.364 ± 0.065 · Δτ_∞ = −(2GM/c²v₀) ln(b₂/b₁) · T^{μν}_oscuro → SOLO g₀₀",
+            "cap_en": "Plate T.12-D · Visual Intuition Bridge: an electromagnetically dark mass passes unseen through light yet bends the metric (left and centre), producing a logarithmic proper-time step verified against Gauss–Legendre quadrature and the transverse impulse identity (right).",
+            "cap_es": "Lámina T.12-D · Puente de Intuición Visual: una masa electromagnéticamente oscura pasa sin sombra por la luz pero curva la métrica (izquierda y centro), produciendo un escalón logarítmico de tiempo propio verificado frente a la cuadratura de Gauss–Legendre y la identidad de impulso (derecha).",
+        },
     }
     sp = specs.get(slug, specs["t01"])
     return f"""        <figure class="tp-distill-figure" role="group" aria-label="Plate {code}-D Visual Intuition Bridge">
@@ -2088,13 +2373,13 @@ def track_map(rel_res: str) -> str:
             title = bi("span", m["title_en"], m["title_es"])
             status = bi("span", "In preparation", "En preparación", "tg-map-status")
         items.append(f"""          <li data-built="{str(m['built']).lower()}">
-            <span class="tg-map-order"><span data-en="Step {i} of 11" data-es="Paso {i} de 11">Step {i} of 11</span></span>
+            <span class="tg-map-order"><span data-en="Step {i} of 13" data-es="Paso {i} de 13">Step {i} of 13</span></span>
             <span class="tg-map-code">{m['code']}</span>
             <strong class="tg-map-title">{title}</strong>
             {bi("span", "Ends with: " + m["q_en"], "Termina con: " + m["q_es"], "tg-map-q")}
             {status}
           </li>""")
-    return "        <ol class=\"tg-track-map\" aria-label=\"The eleven pages in reading order\">\n" + "\n".join(items) + "\n        </ol>"
+    return "        <ol class=\"tg-track-map\" aria-label=\"The thirteen pages in reading order\">\n" + "\n".join(items) + "\n        </ol>"
 
 
 def ledger_table(page: dict) -> str:
@@ -2384,10 +2669,10 @@ HUMANS_DATA: dict[str, dict] = {
                 "names_es": "Kerr · DeWitt · Page y Wootters · Bekenstein, Hawking y Unruh · Mather · LIGO/Virgo/KAGRA · Penington",
                 "place_en": "Spinning horizons, conditional clocks, Rindler wedges, ringdowns & the Page curve",
                 "place_es": "Horizontes en rotación, relojes condicionales, cuñas de Rindler, resonancias y la curva de Page",
-                "story_en": "Roy Kerr found the exact spinning horizon in 1963; Bryce DeWitt (1967) and Don Page and William Wootters (1983) showed how conditional probability recovers ticking time from a stationary state. Jacob Bekenstein, Stephen Hawking, and William Unruh linked horizon surface gravity to thermal states, Don Page (1993) derived the unitary turnover curve, and LIGO, Virgo, KAGRA, and Maximiliano Isi tested Kerr ringdowns and Hawking's area law on merging black holes.",
-                "story_es": "Roy Kerr halló el horizonte en rotación exacto en 1963; Bryce DeWitt (1967) y Don Page y William Wootters (1983) mostraron cómo la probabilidad condicional recupera el tiempo desde un estado estacionario. Jacob Bekenstein, Stephen Hawking y William Unruh vincularon la gravedad superficial con estados térmicos, Don Page (1993) derivó la curva de retorno unitaria, y LIGO, Virgo, KAGRA y Maximiliano Isi probaron las resonancias de Kerr y la ley del área.",
-                "spec_en": "Steps T.07 · T.08 · T.09 · T.10",
-                "spec_es": "Pasos T.07 · T.08 · T.09 · T.10",
+                "story_en": "Roy Kerr found the exact spinning horizon in 1963; Bryce DeWitt (1967) and Don Page and William Wootters (1983) showed how conditional probability recovers ticking time from a stationary state. Jacob Bekenstein, Stephen Hawking, and William Unruh linked horizon surface gravity to thermal states, Don Page (1993) derived the unitary turnover curve, and LIGO, Virgo, KAGRA, and Maximiliano Isi tested Kerr ringdowns and Hawking's area law on merging black holes. Wojciech Zurek, Erich Joos, H. Dieter Zeh, Serge Haroche, and Jean-Michel Brune showed how the photon bath selects pointer states, while Planck, Douglas Clowe, Jun Ye, Ekkehard Peik, and Nils Huntemann tested gravity and clocks across dark matter.",
+                "story_es": "Roy Kerr halló el horizonte en rotación exacto en 1963; Bryce DeWitt (1967) y Don Page y William Wootters (1983) mostraron cómo la probabilidad condicional recupera el tiempo desde un estado estacionario. Jacob Bekenstein, Stephen Hawking y William Unruh vincularon la gravedad superficial con estados térmicos, Don Page (1993) derivó la curva de retorno unitaria, y LIGO, Virgo, KAGRA y Maximiliano Isi probaron las resonancias de Kerr y la ley del área. Wojciech Zurek, Erich Joos, H. Dieter Zeh, Serge Haroche y Jean-Michel Brune mostraron cómo el baño de fotones selecciona estados puntero, mientras Planck, Douglas Clowe, Jun Ye, Ekkehard Peik y Nils Huntemann pusieron a prueba la gravedad y los relojes frente a la materia oscura.",
+                "spec_en": "Steps T.07 · T.08 · T.09 · T.10 · T.11 · T.12",
+                "spec_es": "Pasos T.07 · T.08 · T.09 · T.10 · T.11 · T.12",
                 "doi": "10.1103/PhysRevD.27.2885",
             },
         ],
@@ -2940,6 +3225,110 @@ HUMANS_DATA: dict[str, dict] = {
             },
         ],
     },
+    "t11": {
+        "lineage_en": "Pioneers of Step T.11 · Hugh Everett III (1957) · H. Dieter Zeh (1970) · Wojciech Zurek (1981, 2003, 2009) · Erich Joos & H. Dieter Zeh (1985) · Michel Brune, Serge Haroche, Jean-Michel Raimond & Davidovich (1996) · Klaus Hornberger, Lucia Hackermüller & Markus Arndt (2003–2004)",
+        "lineage_es": "Pioneros del Paso T.11 · Hugh Everett III (1957) · H. Dieter Zeh (1970) · Wojciech Zurek (1981, 2003, 2009) · Erich Joos y H. Dieter Zeh (1985) · Michel Brune, Serge Haroche, Jean-Michel Raimond y Davidovich (1996) · Klaus Hornberger, Lucia Hackermüller y Markus Arndt (2003–2004)",
+        "title_en": "The Humans Behind Step T.11 · Pointer Bases, Photon Baths, and Cavity Cat States",
+        "title_es": "Las Personas Detrás del Paso T.11 · Bases Puntero, Baños de Fotones y Estados Gato en Cavidad",
+        "lead_en": "Why does a macroscopic clock appear in one definite position rather than a superposition of positions? These theorists and experimentalists showed how the interaction Hamiltonian and the ambient electromagnetic bath select the pointer states and copy them across the environment.",
+        "lead_es": "¿Por qué un reloj macroscópico aparece en una posición definida y no en una superposición de posiciones? Estos teóricos y experimentalistas mostraron cómo el hamiltoniano de interacción y el baño electromagnético seleccionan los estados puntero y los copian en el entorno.",
+        "cards": [
+            {
+                "icon": "page-wootters",
+                "era_en": "1957 & 1981–2009 · Princeton, Austin & Los Alamos",
+                "era_es": "1957 y 1981–2009 · Princeton, Austin y Los Álamos",
+                "names_en": "Hugh Everett III · Wojciech Hubert Zurek",
+                "names_es": "Hugh Everett III · Wojciech Hubert Zurek",
+                "place_en": "Princeton University, University of Texas at Austin & Los Alamos National Laboratory",
+                "place_es": "Universidad de Princeton, Universidad de Texas en Austin y Laboratorio Nacional de Los Álamos",
+                "story_en": "In 1957 Hugh Everett III formulated relative-state quantum mechanics without an external collapse postulate, leaving open why observers record one preferred basis. In 1981 Wojciech Zurek showed that the apparatus–environment interaction Hamiltonian selects the pointer projectors satisfying [Ĥ_int, Π_i] = 0, and in 2009 formulated Quantum Darwinism: the classical record is the observable redundantly copied into many small fragments of the bath.",
+                "story_es": "En 1957 Hugh Everett III formuló la mecánica cuántica de estados relativos sin postulado de colapso externo, dejando abierto por qué los observadores registran una base preferida. En 1981 Wojciech Zurek mostró que el hamiltoniano de interacción aparato–entorno selecciona los proyectores puntero que cumplen [Ĥ_int, Π_i] = 0, y en 2009 formuló el darwinismo cuántico.",
+                "spec_en": "Einselection [Ĥ_int, Π_i] = 0 & Quantum Darwinism plateau (DERIVED)",
+                "spec_es": "Einselección [Ĥ_int, Π_i] = 0 y meseta de darwinismo cuántico (DERIVADO)",
+                "doi": "10.1103/PhysRevD.24.1516",
+            },
+            {
+                "icon": "gps-constellation",
+                "era_en": "1970 & 1985 · Heidelberg",
+                "era_es": "1970 y 1985 · Heidelberg",
+                "names_en": "Erich Joos & H. Dieter Zeh",
+                "names_es": "Erich Joos y H. Dieter Zeh",
+                "place_en": "Institut für Theoretische Physik, Universität Heidelberg",
+                "place_es": "Instituto de Física Teórica, Universidad de Heidelberg",
+                "story_en": "Following H. Dieter Zeh's 1970 insight that macroscopic quantum systems cannot be isolated from their surroundings, Erich Joos and Zeh calculated in 1985 the localization rate Λ of a dust grain bathed in thermal radiation. Because long-wavelength dipole scattering scales as R⁶T⁹|(ε−1)/(ε+2)|², even the 2.7 K cosmic microwave background localizes a 10 µm grain in about one second.",
+                "story_es": "Siguiendo la idea de H. Dieter Zeh de 1970 de que los sistemas cuánticos macroscópicos no pueden aislarse de su entorno, Erich Joos y Zeh calcularon en 1985 la tasa de localización Λ de un grano de polvo bañado en radiación térmica. Como la dispersión dipolar escala como R⁶T⁹|(ε−1)/(ε+2)|², hasta el fondo cósmico de 2.7 K localiza un grano de 10 µm en cerca de un segundo.",
+                "spec_en": "Dipole photon bath Λ ∝ R⁶T⁹|(ε−1)/(ε+2)|² (DERIVED)",
+                "spec_es": "Baño dipolar de fotones Λ ∝ R⁶T⁹|(ε−1)/(ε+2)|² (DERIVADO)",
+                "doi": "10.1007/BF01725541",
+            },
+            {
+                "icon": "atom-chip",
+                "era_en": "1996 & 2003–2004 · Paris & Vienna",
+                "era_es": "1996 y 2003–2004 · París y Viena",
+                "names_en": "Michel Brune, Serge Haroche & Jean-Michel Raimond · Klaus Hornberger, Lucia Hackermüller & Markus Arndt",
+                "names_es": "Michel Brune, Serge Haroche y Jean-Michel Raimond · Klaus Hornberger, Lucia Hackermüller y Markus Arndt",
+                "place_en": "École Normale Supérieure (Paris) & University of Vienna",
+                "place_es": "École Normale Supérieure (París) y Universidad de Viena",
+                "story_en": "At the École Normale Supérieure in 1996, Michel Brune, Serge Haroche, Jean-Michel Raimond, and colleagues prepared a mesoscopic superposition of two microwave field phases in a superconducting cavity and watched single rubidium atoms trace its decoherence into a mixture. In 2003–2004 in Vienna, Klaus Hornberger, Lucia Hackermüller, and Markus Arndt measured the loss of C₇₀ matter-wave fringes under controlled gas collisions and thermal photon emission.",
+                "story_es": "En la École Normale Supérieure en 1996, Michel Brune, Serge Haroche, Jean-Michel Raimond y colegas prepararon una superposición mesoscópica de dos fases de microondas en una cavidad superconductora y observaron su decoherencia átomo por átomo. En 2003–2004 en Viena, Klaus Hornberger, Lucia Hackermüller y Markus Arndt midieron la pérdida de visibilidad de ondas de C₇₀ bajo colisiones de gas y emisión térmica.",
+                "spec_en": "Cavity QED cat decoherence & C₇₀ matter-wave baths (MEASURED)",
+                "spec_es": "Decoherencia en cavidad QED y baños en ondas de C₇₀ (MEDIDO)",
+                "doi": "10.1103/PhysRevLett.77.4887",
+            },
+        ],
+    },
+    "t12": {
+        "lineage_en": "Pioneers of Step T.12 · Clowe, Bradač, Gonzalez, Markevitch, Randall, Jones & Zaritsky (2006) · Planck Collaboration (2020) · Kennedy, Oelker, Bothwell, Kedar, Robinson, Marti, Milne & Ye (2020) · Carney et al. (2021) · Filzinger, Dörscher, Lange, Klose, Steinel, Benkler, Peik, Lisdat & Huntemann (2023) · LUX-ZEPLIN Collaboration (2023)",
+        "lineage_es": "Pioneros del Paso T.12 · Clowe, Bradač, Gonzalez, Markevitch, Randall, Jones y Zaritsky (2006) · Colaboración Planck (2020) · Kennedy, Oelker, Bothwell, Kedar, Robinson, Marti, Milne y Ye (2020) · Carney et al. (2021) · Filzinger, Dörscher, Lange, Klose, Steinel, Benkler, Peik, Lisdat y Huntemann (2023) · Colaboración LUX-ZEPLIN (2023)",
+        "title_en": "The Humans Behind Step T.12 · Gravitational Lenses, the Cosmic Budget, and Dark-Sector Clock Comparisons",
+        "title_es": "Las Personas Detrás del Paso T.12 · Lentes Gravitatorias, el Presupuesto Cósmico y Comparaciones de Relojes en el Sector Oscuro",
+        "lead_en": "What happens when a mass sector has zero electromagnetic polarizability (Λ_EM = 0) and zero optical shadow, yet shares the spacetime metric g_μν? Cosmologists mapped its gravitational wells across the sky while atomic physicists turned optical clocks and underground detectors into dark-sector observatories.",
+        "lead_es": "¿Qué ocurre cuando un sector de masa tiene polarizabilidad electromagnética nula (Λ_EM = 0) y cero sombra óptica, pero comparte la métrica g_μν? Los cosmólogos trazaron sus pozos gravitatorios en el cielo mientras los físicos atómicos convirtieron relojes ópticos y detectores subterráneos en observatorios del sector oscuro.",
+        "cards": [
+            {
+                "icon": "gps-constellation",
+                "era_en": "2006 & 2018–2020 · Tucson, Cambridge & ESA L2",
+                "era_es": "2006 y 2018–2020 · Tucson, Cambridge y punto L2 de la ESA",
+                "names_en": "Douglas Clowe, Maruša Bradač & the Bullet Cluster Team · The Planck Collaboration",
+                "names_es": "Douglas Clowe, Maruša Bradač y el Equipo del Cúmulo Bala · La Colaboración Planck",
+                "place_en": "Magellan, Hubble & Chandra Telescopes (1E 0657−558) & ESA Planck Spacecraft",
+                "place_es": "Telescopios Magellan, Hubble y Chandra (1E 0657−558) y satélite Planck de la ESA",
+                "story_en": "In 2006 Douglas Clowe, Maruša Bradač, Anthony Gonzalez, Maxim Markevitch, Scott Randall, Christine Jones, and Dennis Zaritsky compared Chandra X-ray maps of the hot baryonic gas in the merging cluster 1E 0657−558 against weak-lensing maps of the gravitational potential, showing at 8σ that the potential follows the collisionless mass rather than the luminous gas. In 2018–2020 the Planck Collaboration fixed the cosmic ratio at Ω_c h² / Ω_b h² = 5.36 ± 0.06.",
+                "story_es": "En 2006 Douglas Clowe, Maruša Bradač, Anthony Gonzalez, Maxim Markevitch, Scott Randall, Christine Jones y Dennis Zaritsky compararon mapas de rayos X de Chandra del gas bariónico en el cúmulo en fusión 1E 0657−558 con mapas de lente débil del potencial gravitatorio, mostrando a 8σ que el potencial sigue a la masa sin colisiones. En 2018–2020 la Colaboración Planck fijó la razón cósmica en Ω_c h² / Ω_b h² = 5.36 ± 0.06.",
+                "spec_en": "8σ lensing–gas separation & Ω_c / Ω_b = 5.36 ± 0.06 (MEASURED)",
+                "spec_es": "Separación lente–gas a 8σ y Ω_c / Ω_b = 5.36 ± 0.06 (MEDIDO)",
+                "doi": "10.1051/0004-6361/201833910",
+            },
+            {
+                "icon": "optical-lattice",
+                "era_en": "2020 & 2023 · Boulder, Colorado & Braunschweig, Germany",
+                "era_es": "2020 y 2023 · Boulder, Colorado y Braunschweig, Alemania",
+                "names_en": "Colin Kennedy, Tobias Bothwell & Jun Ye · Melina Filzinger, Ekkehard Peik, Christian Lisdat & Nils Huntemann",
+                "names_es": "Colin Kennedy, Tobias Bothwell y Jun Ye · Melina Filzinger, Ekkehard Peik, Christian Lisdat y Nils Huntemann",
+                "place_en": "JILA (⁸⁷Sr vs Silicon Cavity) & PTB (¹⁷¹Yb⁺ E3/E2 vs ⁸⁷Sr)",
+                "place_es": "JILA (⁸⁷Sr frente a cavidad de silicio) y PTB (¹⁷¹Yb⁺ E3/E2 frente a ⁸⁷Sr)",
+                "story_en": "If ultralight scalar dark matter couples to the fine-structure constant α or electron mass m_e, different clock transitions will oscillate at the Compton frequency m_φ c² / h. At JILA in 2020, Colin Kennedy, Jun Ye, and colleagues compared an ⁸⁷Sr optical lattice clock against a cryogenic crystalline silicon cavity; at PTB in 2023, Melina Filzinger, Nils Huntemann, and co-workers compared the electric octupole and quadrupole transitions of ¹⁷¹Yb⁺ against ⁸⁷Sr over more than two years, setting tight bounds on scalar couplings.",
+                "story_es": "Si la materia oscura escalar ultraligera se acopla a la constante de estructura fina α o a la masa del electrón m_e, distintas transiciones de reloj oscilarán a la frecuencia de Compton m_φ c² / h. En JILA en 2020, Colin Kennedy, Jun Ye y colegas compararon un reloj de ⁸⁷Sr con una cavidad criogénica de silicio; en el PTB en 2023, Melina Filzinger, Nils Huntemann y colaboradores compararon las transiciones E3 y E2 de ¹⁷¹Yb⁺ y ⁸⁷Sr durante más de dos años.",
+                "spec_en": "Sr–Si & Yb⁺–Sr dark-matter clock bounds (BOUND)",
+                "spec_es": "Cotas de relojes Sr–Si e Yb⁺–Sr sobre materia oscura (COTA)",
+                "doi": "10.1103/PhysRevLett.130.253001",
+            },
+            {
+                "icon": "underground-crystal",
+                "era_en": "2021–2026 · Lead (South Dakota), Gran Sasso & Gaithersburg",
+                "era_es": "2021–2026 · Lead (Dakota del Sur), Gran Sasso y Gaithersburg",
+                "names_en": "LUX-ZEPLIN (LZ) & XENONnT Collaborations · Daniel Carney, Sohitri Ghosh, Gordan Krnjaic & Jacob M. Taylor",
+                "names_es": "Colaboraciones LUX-ZEPLIN (LZ) y XENONnT · Daniel Carney, Sohitri Ghosh, Gordan Krnjaic y Jacob M. Taylor",
+                "place_en": "Sanford Underground Research Facility (SURF), Gran Sasso & Quantum-Sensor Arrays",
+                "place_es": "Laboratorio Subterráneo de Sanford (SURF), Gran Sasso y arreglos de sensores cuánticos",
+                "story_en": "One mile underground in South Dakota, the LUX-ZEPLIN Collaboration pushed spin-independent WIMP–nucleon cross sections down to 9.2 × 10⁻⁴⁸ cm² at 36 GeV/c² in 2023 without a positive recoil signal. To reach hypothetical dark sectors that have zero non-gravitational couplings at all, Daniel Carney, Jacob Taylor, and colleagues proposed using optomechanical accelerometer arrays and clock networks to detect passing dark-matter clumps purely through their Newtonian gravitational impulse.",
+                "story_es": "A una milla bajo tierra en Dakota del Sur, la colaboración LUX-ZEPLIN llevó las secciones eficaces WIMP–nucleón hasta 9.2 × 10⁻⁴⁸ cm² a 36 GeV/c² en 2023 sin señal de retroceso. Para alcanzar sectores oscuros con acoplamiento no gravitatorio nulo, Daniel Carney, Jacob Taylor y colegas propusieron usar redes de relojes y sensores optomecánicos para detectar subhalos puramente por su impulso gravitatorio.",
+                "spec_en": "LZ 9.2 × 10⁻⁴⁸ cm² (BOUND) & pure-gravity sensor proposals (PROPOSED)",
+                "spec_es": "LZ 9.2 × 10⁻⁴⁸ cm² (COTA) y propuestas puramente gravitatorias (PROPUESTO)",
+                "doi": "10.1103/PhysRevLett.131.041002",
+            },
+        ],
+    },
 }
 
 
@@ -3106,30 +3495,30 @@ def step_of(code: str) -> int:
 
 
 def step_rail(page: dict, rel_res: str) -> str:
-    """Eleven numbered steps under every T hero: where the reader is, and one tap to any other step."""
+    """Thirteen numbered steps under every T hero: where the reader is, and one tap to any other step."""
     items = []
     for i, m in enumerate(TRACK_MAP, 1):
         href = B._href(rel_res, "timegravity/" + (f"{m['slug']}/" if m["slug"] else ""))
         label = (f'<span class="tg-step-n" aria-hidden="true">{i}</span>'
-                 f'<span class="tg-step-t"><span data-en="Step {i} of 11 · {a(m["title_en"])}" data-es="Paso {i} de 11 · {a(m["title_es"])}">Step {i} of 11 · {t(m["title_en"])}</span></span>')
+                 f'<span class="tg-step-t"><span data-en="Step {i} of 13 · {a(m["title_en"])}" data-es="Paso {i} de 13 · {a(m["title_es"])}">Step {i} of 13 · {t(m["title_en"])}</span></span>')
         if m["code"] == page["code"]:
             items.append(f'          <li class="tg-step tg-step-current" aria-current="step">{label}</li>')
         elif m["built"]:
             items.append(f'          <li class="tg-step"><a href="{href}">{label}</a></li>')
         else:
             items.append(f'          <li class="tg-step tg-step-pending">{label}</li>')
-    return ("    <nav class=\"tg-step-rail\" aria-label=\"The eleven steps of Time and Gravity\">\n"
+    return ("    <nav class=\"tg-step-rail\" aria-label=\"The thirteen steps of Time and Gravity\">\n"
             "      <ol class=\"tg-steps\">\n" + "\n".join(items) + "\n      </ol>\n    </nav>")
 
 
 def hub_cta(rel_res: str) -> str:
-    """The hub's way in: begin with the first step after the hub, or jump to the map of eleven."""
+    """The hub's way in: begin with the first step after the hub, or jump to the map of thirteen."""
     first = TRACK_MAP[1]
     page = next(p for p in PAGES if p["code"] == first["code"])
     href = B._href(rel_res, "timegravity/" + first["slug"] + "/")
     return f"""      <p class="tg-hero-cta">
-        <a class="tp-cta tp-cta-primary tg-cta-begin" href="{href}"><span data-en="Begin · Step 2 of 11 · {page['reading_time_en']}" data-es="Empezar · Paso 2 de 11 · {page['reading_time_es']}">Begin · Step 2 of 11 · {page['reading_time_en']}</span><strong data-en="{a(first['title_en'])} &rarr;" data-es="{a(first['title_es'])} &rarr;">{t(first['title_en'])} &rarr;</strong></a>
-        <a class="tp-cta tg-cta-map" href="#map" data-en="See the eleven steps &darr;" data-es="Ver los once pasos &darr;">See the eleven steps &darr;</a>
+        <a class="tp-cta tp-cta-primary tg-cta-begin" href="{href}"><span data-en="Begin · Step 2 of 13 · {page['reading_time_en']}" data-es="Empezar · Paso 2 de 13 · {page['reading_time_es']}">Begin · Step 2 of 13 · {page['reading_time_en']}</span><strong data-en="{a(first['title_en'])} &rarr;" data-es="{a(first['title_es'])} &rarr;">{t(first['title_en'])} &rarr;</strong></a>
+        <a class="tp-cta tg-cta-map" href="#map" data-en="See the thirteen steps &darr;" data-es="Ver los trece pasos &darr;">See the thirteen steps &darr;</a>
       </p>"""
 
 
@@ -3150,7 +3539,7 @@ def open_question(page: dict, rel_res: str) -> str:
     elif nx["built"]:
         href = B._href(rel_res, "timegravity/" + nx["slug"] + "/")
         step = step_of(nx["code"])
-        nxt = (f'<a class="tg-next" href="{href}" rel="next"><span class="tg-next-dir" data-en="Continue · Step {step} of 11 · {nx["code"]} &rarr;" data-es="Continuar · Paso {step} de 11 · {nx["code"]} &rarr;">Continue · Step {step} of 11 · {nx["code"]} &rarr;</span>'
+        nxt = (f'<a class="tg-next" href="{href}" rel="next"><span class="tg-next-dir" data-en="Continue · Step {step} of 13 · {nx["code"]} &rarr;" data-es="Continuar · Paso {step} de 13 · {nx["code"]} &rarr;">Continue · Step {step} of 13 · {nx["code"]} &rarr;</span>'
                f'<strong data-en="{a(nx["title_en"])}" data-es="{a(nx["title_es"])}">{t(nx["title_en"])}</strong></a>')
     else:
         nxt = bi("p", f"Next: {nx['code']} · {nx['title_en']} (in preparation)",
@@ -3262,6 +3651,10 @@ def render_page(page: dict, catalog: dict, lang: str = "en") -> str:
         instrument = kerr_instrument(page)
     elif kind == "page":
         instrument = page_instrument(page)
+    elif kind == "einselection":
+        instrument = einselection_instrument(page)
+    elif kind == "dark_clock":
+        instrument = dark_clock_instrument(page)
     else:
         instrument = slope_instrument(page, rel_res)
     ai_line = bi("p", page["ai_line_en"], page["ai_line_es"], "tg-ai-line") if page.get("ai_line_en") else ""

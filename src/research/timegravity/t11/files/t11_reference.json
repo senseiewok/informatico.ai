@@ -1,0 +1,90 @@
+{
+  "folio_id": "T.11",
+  "title": "What Selects the World a Clock Sees?",
+  "construction": "|Psi_SE> = (|0>_S x |0>^{x N} + |1>_S x (cos theta |0> + sin theta |1>)^{x N}) / sqrt(2); I(S : E_k) = h_2(gamma^N) + h_2(gamma^k) - h_2(gamma^{N-k}), gamma = |cos theta|; Lambda_sc = (8! 8 zeta(9) c R^6 / 9 pi) (k_B T_e / hbar c)^9 Re[(eps-1)/(eps+2)]^2",
+  "parameters": {
+    "n_env_modes": 6,
+    "statevector_dim": 128,
+    "theta_rad": 1.35,
+    "gamma_overlap": 0.219006687093,
+    "tolerance": 1e-12
+  },
+  "coherence_ratio_n6": 0.000110342864503,
+  "coherence_ratio_abs_dev": 2.71050543121e-20,
+  "s_system_nats": 0.693147174472,
+  "max_mi_dev_nats": 1.68753899743e-14,
+  "sweep_max_mi_dev_nats": 1.68753899743e-14,
+  "midpoint_identity_err": 2.44249065418e-15,
+  "full_bath_identity_err": 1.68753899743e-14,
+  "k2_plateau_bits": 0.998343684332,
+  "k__f__i_jacobi_nats__i_analytic_nats__i_bits": [
+    [
+      0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      1,
+      0.166666666667,
+      0.66896984984,
+      0.66896984984,
+      0.965119484868
+    ],
+    [
+      2,
+      0.333333333333,
+      0.691999110025,
+      0.691999110025,
+      0.998343684332
+    ],
+    [
+      3,
+      0.5,
+      0.693147174472,
+      0.693147174472,
+      0.999999991217
+    ],
+    [
+      4,
+      0.666666666667,
+      0.694295238919,
+      0.694295238919,
+      1.0016562981
+    ],
+    [
+      5,
+      0.833333333333,
+      0.717324499104,
+      0.717324499104,
+      1.03488049757
+    ],
+    [
+      6,
+      1.0,
+      1.38629434894,
+      1.38629434894,
+      1.99999998243
+    ]
+  ],
+  "photon_bath_localization": {
+    "dx_m": 1e-05,
+    "t_cmb_k": 2.72548,
+    "t_room_k": 300.0,
+    "dust_10um_tau_cmb_s": 1.63384471782,
+    "dust_10um_tau_300k_s": 6.88821161896e-19,
+    "dust_10um_conductor_lambda_cmb_cm2_s": 1642763.16424,
+    "qgem_1um_tau_cmb_s": 1633844.71782,
+    "qgem_1um_tau_300k_s": 6.88821161896e-13,
+    "dark_sector_lambda_300k_m2_s": 0.0,
+    "r6_scaling_rel_err": 6.98491930962e-16,
+    "t9_scaling_rel_err": 2.15856764749e-16
+  },
+  "planted_defect": {
+    "k2_plateau_bits": -3.48150762251e-15,
+    "coherence_ratio": 1.0
+  },
+  "boundary_en": "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. Preprints never rise above PROPOSED. Each page ends with one open question that the next page takes up.",
+  "license": "CC0-1.0 / CC-BY-4.0"
+}
