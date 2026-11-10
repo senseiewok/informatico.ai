@@ -1,0 +1,142 @@
+{
+  "folio_id": "T.08",
+  "title": "A Horizon Has a Temperature",
+  "construction": "|0_M> = Z_d(xi)^{-1/2} sum_{n=0}^{d-1} exp(-n xi / 2) |n>_L x |n>_R (normalized on d levels); rho_R = Tr_L |0_M><0_M|; T_U = hbar a / (2 pi k_B c); T_H = hbar c^3 / (8 pi G M k_B); S_BH = k_B c^3 A / (4 G hbar)",
+  "parameters": {
+    "fock_cutoff_d": 16,
+    "default_xi": 2.5,
+    "truncation_tail": 4.24835425529e-18,
+    "tolerance": 1e-12
+  },
+  "max_dev_from_planck": 1.66533453694e-15,
+  "max_dev_from_truncated_gibbs": 1.66533453694e-15,
+  "sweep_truncated_gibbs_max_dev": 4.10782519111e-15,
+  "entropy_nats": 0.309214208327,
+  "planck_entropy_nats": 0.309214208327,
+  "entropy_dev_from_planck": 0.0,
+  "n_bar": 0.0894254898339,
+  "n_bar_planck": 0.0894254898339,
+  "fock_n__p_jacobi__p_gibbs__p_planck": [
+    [
+      0,
+      0.917915001376,
+      0.917915001376,
+      0.917915001376
+    ],
+    [
+      1,
+      0.0753470516248,
+      0.0753470516248,
+      0.0753470516248
+    ],
+    [
+      2,
+      0.00618486262894,
+      0.00618486262894,
+      0.00618486262894
+    ],
+    [
+      3,
+      0.000507684440385,
+      0.000507684440385,
+      0.000507684440385
+    ],
+    [
+      4,
+      4.16732765904e-05,
+      4.16732765904e-05,
+      4.16732765904e-05
+    ],
+    [
+      5,
+      3.42075085156e-06,
+      3.42075085158e-06,
+      3.42075085158e-06
+    ],
+    [
+      6,
+      2.80792328939e-07,
+      2.80792328944e-07,
+      2.80792328944e-07
+    ],
+    [
+      7,
+      2.30488379438e-08,
+      2.3048837935e-08,
+      2.3048837935e-08
+    ],
+    [
+      8,
+      1.89196382379e-09,
+      1.89196383018e-09,
+      1.89196383018e-09
+    ],
+    [
+      9,
+      1.55301852682e-10,
+      1.55301848397e-10,
+      1.55301848397e-10
+    ],
+    [
+      10,
+      1.27479552674e-11,
+      1.27479520119e-11,
+      1.27479520119e-11
+    ],
+    [
+      11,
+      1.04641084739e-12,
+      1.04641562336e-12,
+      1.04641562336e-12
+    ],
+    [
+      12,
+      8.58946250628e-14,
+      8.58950250032e-14,
+      8.58950250032e-14
+    ],
+    [
+      13,
+      6.62883291785e-15,
+      7.05069300919e-15,
+      7.05069300919e-15
+    ],
+    [
+      14,
+      6.19608379994e-16,
+      5.78756125957e-16,
+      5.78756125957e-16
+    ],
+    [
+      15,
+      4.32684680491e-16,
+      4.75071958027e-17,
+      4.75071958027e-17
+    ]
+  ],
+  "rindler_redshift": {
+    "accel_m_s2": 1e+20,
+    "horizon_distance_x0_m": 0.000898755178737,
+    "unruh_temp_k": 0.405501352275,
+    "max_hyperbola_invariant_err": 6.66133814775e-16,
+    "max_four_velocity_norm_err": 6.66133814775e-16
+  },
+  "hawking_bekenstein": {
+    "quadrature_vs_area_quarter_rel_err": 2.45110719697e-16,
+    "bch_first_law_rel_err": 4.95618840969e-13,
+    "solar_mass_row": {
+      "m_over_msun": 1.0,
+      "r_s_m": 2953.33938207,
+      "kappa_m_s2": 15215914300200.0,
+      "hawking_temp_k": 6.17007382481e-08,
+      "s_bh_over_kb": 1.04895488618e+77,
+      "t_cmb_over_t_hawking": 44172567.0938
+    }
+  },
+  "planted_defect": {
+    "entropy_nats": 2.35750117731e-15,
+    "max_dev_from_planck": 0.0820849986239
+  },
+  "boundary_en": "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. Preprints never rise above PROPOSED. Each page ends with one open question that the next page takes up.",
+  "license": "CC0-1.0 / CC-BY-4.0"
+}

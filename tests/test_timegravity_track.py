@@ -64,8 +64,8 @@ class TimeGravityTrackTests(unittest.TestCase):
         self.assertTrue((TG / "t01" / "index.html").is_file())
         self.assertTrue((TG_ES / "index.html").is_file())
         self.assertTrue((TG_ES / "t01" / "index.html").is_file())
-        self.assertEqual(len(TRACK_MAP), 9)
-        self.assertEqual([m["code"] for m in TRACK_MAP], ["T.00", "T.02", "T.01", "T.03", "T.04", "T.05", "T.06", "T.07", "T.10"])
+        self.assertEqual(len(TRACK_MAP), 11)
+        self.assertEqual([m["code"] for m in TRACK_MAP], ["T.00", "T.02", "T.01", "T.03", "T.04", "T.05", "T.06", "T.07", "T.08", "T.09", "T.10"])
 
     def test_scaffold_files_exist(self) -> None:
         for rel in ("timegravity/README.md", "timegravity/run_all_timegravity.py", "timegravity/ledger.json",
@@ -136,7 +136,7 @@ class TimeGravityTrackTests(unittest.TestCase):
             raw = hub.read_text(encoding="utf-8").lower()
             self.assertIn("a common intuition is that", raw)
             self.assertIn("tg-track-map", raw)
-            self.assertEqual(raw.count("<li data-built="), 9)
+            self.assertEqual(raw.count("<li data-built="), 11)
             self.assertIn("what would change this page", raw)
         for page in (TG / "t01" / "index.html", TG_ES / "t01" / "index.html"):
             low = page.read_text(encoding="utf-8").lower()
@@ -252,10 +252,10 @@ class TimeGravityTrackTests(unittest.TestCase):
         self.assertIn("## Time & Gravity", llms)
 
     def test_one_command_runner_passes(self) -> None:
-        res = run(PY + [str(ROOT / "timegravity" / "run_all_timegravity.py")], timeout=300)  # 11 verifiers with planted defects; the two T.05 kernels take 12-15 s each
+        res = run(PY + [str(ROOT / "timegravity" / "run_all_timegravity.py")], timeout=300)  # 14 verifiers with planted defects; the two T.05 kernels take 12-15 s each
         self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
         self.assertIn("PASS: Time & Gravity:", res.stdout)
-        self.assertEqual(res.stdout.count("REJECTED_AS_EXPECTED:"), 13)  # 12 verifiers (8 pages, T.05 with five) + the label lint = 13
+        self.assertEqual(res.stdout.count("REJECTED_AS_EXPECTED:"), 15)  # 14 verifiers (10 pages, T.05 with five) + the label lint = 15
 
     def test_pages_rebuild_byte_for_byte_from_source(self) -> None:
         import build_timegravity as tg
@@ -330,7 +330,7 @@ class TimeGravityBatch2Tests(unittest.TestCase):
         t01 = (TG / "t01" / "index.html").read_text(encoding="utf-8")
         self.assertIn('class="tp-pager-link tp-pager-next" href="../../timegravity/t03/"', t01)
         self.assertIn('class="tp-pager-link tp-pager-prev" href="../../timegravity/t02/"', t01)
-        self.assertEqual(hub.count('data-built="true"'), 9)
+        self.assertEqual(hub.count('data-built="true"'), 11)
 
     def test_lint_mutation_suite_kills_every_mutant_and_scite_tallies_are_cached(self) -> None:
         res = run(PY + [str(ROOT / "tools" / "check_timegravity_labels.py"), "--mutants"])
@@ -406,17 +406,17 @@ class TimeGravityBatch3Tests(unittest.TestCase):
         self.assertIn("magnetic field gradient, not by gravity", t04)
         self.assertIn("Which time does the clock read?", t04)
         self.assertIn("Whose clock?", (TG / "t07" / "index.html").read_text(encoding="utf-8"))
-        # Reading order: T.03 -> T.04 -> (T.05, T.06 in preparation) -> T.07 -> T.10
+        # Reading order: T.03 -> T.04 -> T.05 -> T.06 -> T.07 -> T.08 -> T.09 -> T.10
         t03 = (TG / "t03" / "index.html").read_text(encoding="utf-8")
         self.assertIn('class="tp-pager-link tp-pager-next" href="../../timegravity/t04/"', t03)
         self.assertIn('class="tp-pager-link tp-pager-prev" href="../../timegravity/t03/"', t04)
         t07 = (TG / "t07" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="../../timegravity/t04/"', t07)  # nearest live page before T.07
-        self.assertEqual((TG / "index.html").read_text(encoding="utf-8").count('data-built="true"'), 9)
+        self.assertIn('href="../../timegravity/t04/"', t07)  # step rail link to T.04
+        self.assertEqual((TG / "index.html").read_text(encoding="utf-8").count('data-built="true"'), 11)
 
     def test_series_lives_under_physics_not_in_the_masthead(self) -> None:
         """2026-11-09 council: Time & Gravity is a series inside Physics. No masthead item of its own; the Contents
-        dialog lists it inside the Physics column on every page; /physics/ shows a nine-card series rack; T pages
+        dialog lists it inside the Physics column on every page; /physics/ shows an eleven-card series rack; T pages
         mark Physics as the current masthead item and carry Physics in the breadcrumb."""
         pages = list(RESEARCH.rglob("index.html"))
         self.assertGreater(len(pages), 130)
@@ -432,9 +432,9 @@ class TimeGravityBatch3Tests(unittest.TestCase):
             self.assertTrue(next_col == -1 or series_at < next_col, f"{page}: the series block is not inside the Physics column")
         for phys in (RESEARCH / "physics" / "index.html", RESEARCH / "es-mx" / "physics" / "index.html"):
             txt = phys.read_text(encoding="utf-8")
-            self.assertEqual(txt.count('class="tp-rack-card tp-rack-card-series"'), 9, f"{phys}: nine series cards")
+            self.assertEqual(txt.count('class="tp-rack-card tp-rack-card-series"'), 11, f"{phys}: eleven series cards")
             self.assertIn('id="timegravity-series"', txt)
-            self.assertIn("1 series of 9 steps", txt)
+            self.assertIn("1 series of 11 steps", txt)
             self.assertLess(txt.index('id="timegravity-series"'), txt.index("tp-symbolic-physics-lab"),
                             "series rack sits above the interactive sections")
         for tpage in (TG / "index.html", TG / "t07" / "index.html"):
@@ -453,22 +453,22 @@ class TimeGravityBatch3Tests(unittest.TestCase):
         self.assertIn('<div class="tg-boundary-banner" role="note"', hub)
         self.assertNotIn("tg-boundary-compact", hub)
         self.assertNotIn("not yet built", hub)
-        self.assertIn("Step 1 of 9", hub)
+        self.assertIn("Step 1 of 11", hub)
         self.assertLess(hub.index('id="map"'), hub.index('id="contract"'), "the map comes before the reading contract")
         self.assertEqual(hub.count('class="tg-step tg-step-current" aria-current="step"'), 1)
-        for code, slug, step, nxt in (("T.02", "t02", 2, "t01"), ("T.01", "t01", 3, "t03"), ("T.07", "t07", 8, "t10")):
+        for code, slug, step, nxt in (("T.02", "t02", 2, "t01"), ("T.01", "t01", 3, "t03"), ("T.07", "t07", 8, "t08"), ("T.08", "t08", 9, "t09"), ("T.09", "t09", 10, "t10")):
             txt = (TG / slug / "index.html").read_text(encoding="utf-8")
-            self.assertIn(f"Step {step} of 9", txt, code)
+            self.assertIn(f"Step {step} of 11", txt, code)
             self.assertNotIn("Reading order", txt, code)
             self.assertIn('<details class="tg-boundary-banner tg-boundary-compact">', txt, code)
             self.assertIn(BOUNDARY_EN, txt, code)
             self.assertIn(f'<a class="tg-next" href="../../timegravity/{nxt}/" rel="next">', txt, code)
             self.assertEqual(txt.count('aria-current="step"'), 1, code)
-            self.assertEqual(txt.count('class="tg-step"'), 8, code)
+            self.assertEqual(txt.count('class="tg-step"'), 10, code)
         last = (TG / "t10" / "index.html").read_text(encoding="utf-8")
         self.assertIn('<a class="tg-next" href="../../timegravity/">', last)
         es = (RESEARCH / "es-mx" / "timegravity" / "t01" / "index.html").read_text(encoding="utf-8")
-        self.assertIn("Paso 3 de 9", es)
+        self.assertIn("Paso 3 de 11", es)
         self.assertIn(BOUNDARY_ES, es)
 
 class TimeGravityBatch4Tests(unittest.TestCase):
@@ -530,10 +530,10 @@ class TimeGravityBatch4Tests(unittest.TestCase):
         for s in ("signal-to-noise ratio of 80", "to high credibility", "does not recompute it", "Where does the information go, in our universe?"):
             self.assertIn(s, t10, f"T.10 lacks {s!r}")
         self.assertNotIn("solves the information paradox", t10.lower())
-        self.assertEqual((TG / "index.html").read_text(encoding="utf-8").count('data-built="true"'), 9)
-        # Reading order T.04 -> T.05 -> T.06 -> T.07 -> T.10
+        self.assertEqual((TG / "index.html").read_text(encoding="utf-8").count('data-built="true"'), 11)
+        # Reading order T.04 -> T.05 -> T.06 -> T.07 -> T.08 -> T.09 -> T.10
         self.assertIn('class="tp-pager-link tp-pager-next" href="../../timegravity/t07/"', t06)
-        self.assertIn('class="tp-pager-link tp-pager-prev" href="../../timegravity/t07/"', t10)
+        self.assertIn('class="tp-pager-link tp-pager-prev" href="../../timegravity/t09/"', t10)
         self.assertIn('class="tp-pager-link tp-pager-empty"', t10)  # last page: no next
 
 
@@ -594,13 +594,13 @@ class TimeGravityBatch5Tests(unittest.TestCase):
         for banned in ("proves that gravity", "proof that gravity is quantum", "gravity is therefore quantum", "unifies"):
             self.assertNotIn(banned, low)
         self.assertIn("does not say gravity is quantum, or that it is not", low)
-        # Reading order: T.04 -> T.05 -> T.06, and the hub now lists nine built pages.
+        # Reading order: T.04 -> T.05 -> T.06, and the hub now lists eleven built pages.
         self.assertIn('class="tp-pager-link tp-pager-prev" href="../../timegravity/t04/"', t05)
         self.assertIn('class="tp-pager-link tp-pager-next" href="../../timegravity/t06/"', t05)
         t04 = (TG / "t04" / "index.html").read_text(encoding="utf-8")
         self.assertIn('class="tp-pager-link tp-pager-next" href="../../timegravity/t05/"', t04)
         self.assertNotIn("in preparation", t04)
-        self.assertEqual((TG / "index.html").read_text(encoding="utf-8").count('data-built="true"'), 9)
+        self.assertEqual((TG / "index.html").read_text(encoding="utf-8").count('data-built="true"'), 11)
 
 
 class TimeGravityDisputeKernelTests(unittest.TestCase):
@@ -741,6 +741,109 @@ class TimeGravityRefitScriptTests(unittest.TestCase):
         self.assertGreater(inj["chi2_newton"], inj["smeared_best"]["chi2"] + 3.84)
         lo, hi = inj["sigma_95_interval_m"]
         self.assertTrue(lo <= 75e-6 * 1.1 and hi >= 75e-6 * 0.9, inj)  # the injected value inside the 95 % interval, up to grid resolution
+
+
+class TimeGravityBatch6Tests(unittest.TestCase):
+    """T.08 (Horizon Thermodynamics / Rindler–Unruh–Hawking) and T.09 (Kerr Ringdown & Horizon Spectroscopy)."""
+
+    def test_t08_and_t09_pages_verifiers_and_planted_defects(self) -> None:
+        for slug, vname in (("t08", "verify_t08_horizon_thermodynamics.py"), ("t09", "verify_t09_kerr_ringdown.py")):
+            for path in (TG / slug / "index.html", TG_ES / slug / "index.html", RESEARCH / "plates" / f"{slug}.png"):
+                self.assertTrue(path.is_file(), f"missing {path}")
+            gen = run(PY + [str(SKILLS / slug / f"make_{slug}.py")])
+            self.assertEqual(gen.returncode, 0, gen.stdout + gen.stderr)
+            res = run(PY + [str(SKILLS / slug / vname)])
+            self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
+            payload = json.loads(res.stdout)
+            self.assertEqual(payload["status"], "PASS")
+            self.assertEqual(payload["geometry_checks"]["planted_defect_knockout"], "REJECTED_AS_EXPECTED")
+            bad = run(PY + [str(SKILLS / slug / vname), "--planted-defect"])
+            self.assertNotEqual(bad.returncode, 0)
+            self.assertIn("FAIL", bad.stderr)
+        t08 = json.loads(run(PY + [str(SKILLS / "t08" / "verify_t08_horizon_thermodynamics.py")]).stdout)["central_number"]
+        self.assertLess(t08["max_dev_from_planck"], 1e-12)
+        self.assertLess(t08["entropy_dev_from_planck"], 1e-12)
+        self.assertLess(t08["quadrature_vs_area_quarter_rel_err"], 1e-12)
+        self.assertAlmostEqual(t08["solar_hawking_temp_k"] * 1e9, 61.7, delta=0.2)
+        t09 = json.loads(run(PY + [str(SKILLS / "t09" / "verify_t09_kerr_ringdown.py")]).stdout)["central_number"]
+        self.assertLess(t09["max_published_dev_220"], 1e-6)
+        self.assertLess(t09["max_published_dev_221"], 1e-6)
+        self.assertLess(t09["worst_smarr_rel_err"], 1e-12)
+        self.assertLess(t09["max_cf_residual"], 1e-10)
+        self.assertAlmostEqual(t09["gw150914_fiducial"]["f_220_hz"], 273.07, delta=0.5)
+        self.assertAlmostEqual(t09["gw150914_fiducial"]["tau_220_ms"], 3.75, delta=0.05)
+
+    def test_t08_t09_labels_boundary_instruments_and_reading_order(self) -> None:
+        expect = {
+            "t08": {"MEASURED", "DERIVED", "SINGLE RESULT", "OPEN"},
+            "t09": {"MEASURED", "DERIVED", "SINGLE RESULT", "PROPOSED", "OPEN"},
+        }
+        for slug, labels in expect.items():
+            en, es = TG / slug / "index.html", TG_ES / slug / "index.html"
+            self.assertEqual(labels_of(en), labels_of(es), slug)
+            self.assertEqual(set(labels_of(en)), labels, f"{slug}: {labels_of(en)}")
+            for path, boundary in ((en, BOUNDARY_EN), (es, BOUNDARY_ES)):
+                txt = path.read_text(encoding="utf-8")
+                self.assertIn(boundary, txt)
+                self.assertIn(f'data-tg-instrument="{"horizon" if slug == "t08" else "kerr"}"', txt)
+                self.assertIn("data-tg-predict", txt)
+                self.assertIn('class="tg-ai-line"', txt)
+                for phrase in HUB_ONLY_PHRASES:
+                    self.assertNotIn(phrase, txt.lower())
+            self.assertEqual(builder.to_spanish_static(en.read_text(encoding="utf-8"), swap=False, shift=False), en.read_text(encoding="utf-8"))
+        t08 = (TG / "t08" / "index.html").read_text(encoding="utf-8")
+        for s in ("2.726 K", "61.7 nK", "Bose–Einstein condensate", "Does a real horizon have the hairless geometry"):
+            self.assertIn(s, t08, f"T.08 lacks {s!r}")
+        t09 = (TG / "t09" / "index.html").read_text(encoding="utf-8")
+        for s in ("273.07 Hz", "3.747 ms", "266.80 Hz", "1.239 ms", "GW250114", "never recomputed from median masses", "If the classical horizon has no hair and only grows"):
+            self.assertIn(s, t09, f"T.09 lacks {s!r}")
+        # Reading order: T.07 -> T.08 -> T.09 -> T.10
+        t07 = (TG / "t07" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('class="tp-pager-link tp-pager-next" href="../../timegravity/t08/"', t07)
+        self.assertIn('class="tp-pager-link tp-pager-prev" href="../../timegravity/t07/"', t08)
+        self.assertIn('class="tp-pager-link tp-pager-next" href="../../timegravity/t09/"', t08)
+        self.assertIn('class="tp-pager-link tp-pager-prev" href="../../timegravity/t08/"', t09)
+        self.assertIn('class="tp-pager-link tp-pager-next" href="../../timegravity/t10/"', t09)
+
+
+class TimeGravityHumansAndPlatesTests(unittest.TestCase):
+    """Human lineage vitrines, bespoke apparatus SVG medallions, and unique Plate {code}-D diagrams across all 11 pages."""
+
+    def test_every_page_honors_the_humans_with_lineage_and_apparatus_medallions(self) -> None:
+        slugs = ("", "t01", "t02", "t03", "t04", "t05", "t06", "t07", "t08", "t09", "t10")
+        for slug in slugs:
+            en = (TG / slug / "index.html") if slug else (TG / "index.html")
+            es = (TG_ES / slug / "index.html") if slug else (TG_ES / "index.html")
+            self.assertEqual(labels_of(en), labels_of(es), f"{slug or 'hub'}: EN/ES claim labels diverged")
+            en_jump = ">The Humans</a>" if slug else ">Humans (1905–2026)</a>"
+            es_jump = ">Las Personas</a>" if slug else ">Personas (1905–2026)</a>"
+            for path, jump_label in ((en, en_jump), (es, es_jump)):
+                txt = path.read_text(encoding="utf-8")
+                self.assertIn('class="tg-hero-lineage"', txt, f"{path} lacks .tg-hero-lineage")
+                self.assertIn('id="humans"', txt, f"{path} lacks #humans section")
+                self.assertIn('class="tg-humans-section"', txt, f"{path} lacks .tg-humans-section")
+                self.assertIn('class="tg-humans-grid"', txt, f"{path} lacks .tg-humans-grid")
+                self.assertGreaterEqual(txt.count('class="tg-human-card"'), 3, f"{path} has fewer than 3 human cards")
+                self.assertGreaterEqual(txt.count('class="tg-apparatus-svg"'), 3, f"{path} lacks apparatus SVG medallions")
+                self.assertIn(jump_label, txt, f"{path} lacks #humans jump pill")
+
+    def test_every_step_has_its_own_bespoke_plate_d_visual_intuition_bridge(self) -> None:
+        seen_titles: set[str] = set()
+        for code, slug in (("T.01", "t01"), ("T.02", "t02"), ("T.03", "t03"), ("T.04", "t04"),
+                           ("T.05", "t05"), ("T.06", "t06"), ("T.07", "t07"), ("T.08", "t08"),
+                           ("T.09", "t09"), ("T.10", "t10")):
+            for root, prefix in ((TG, "PLATE"), (TG_ES, "LÁMINA")):
+                path = root / slug / "index.html"
+                txt = path.read_text(encoding="utf-8")
+                self.assertIn(f'id="tp-distill-title-{slug}"', txt, f"{path} lacks bespoke Plate D title id")
+                self.assertIn(f"{prefix} {code}-D", txt, f"{path} lacks {prefix} {code}-D")
+                if slug != "t01":
+                    self.assertNotIn(f"{prefix} T.01-D", txt, f"{path} still repeats {prefix} T.01-D")
+            en_txt = (TG / slug / "index.html").read_text(encoding="utf-8")
+            m = re.search(rf'<title id="tp-distill-title-{slug}"[^>]*>([^<]+)</title>', en_txt)
+            self.assertIsNotNone(m, f"{slug} missing <title id='tp-distill-title-{slug}'>")
+            seen_titles.add(m.group(1))
+        self.assertEqual(len(seen_titles), 10, "Every step T.01..T.10 must have a distinct Plate {code}-D SVG title")
 
 
 if __name__ == "__main__":

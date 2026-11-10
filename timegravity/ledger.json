@@ -842,6 +842,136 @@
       "kind": "peer-reviewed",
       "review_by": "2028-11-10",
       "note": "Real-time optimal quantum control of mechanical motion at room temperature: a silica nanosphere of 71.5 nm radius cooled near its ground state; from re-heating measurements at different background pressures, decoherence (heating) rates due to backaction, 2 pi x 18.8 kHz, and due to residual gas molecules, 2 pi x 0.6 kHz, at 9.2e-9 mbar. Read from arXiv:2012.15188v2. A measured gas-collision heating rate, not the loss of a spatial superposition."
+    },
+    {
+      "id": "T08-PENZIAS1965",
+      "label": "MEASURED",
+      "doi": "10.1086/148307",
+      "year": 1965,
+      "collaboration": "Bell Telephone Laboratories (Penzias & Wilson)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "A measurement of excess antenna temperature at 4080 Mc/s: isotropic background radiation at about 3.5 +/- 1.0 K; the first observation of the cosmic microwave background, the measured thermal radiation bath alongside COBE FIRAS."
+    },
+    {
+      "id": "T08-MATHER1994",
+      "label": "MEASURED",
+      "doi": "10.1086/173574",
+      "year": 1994,
+      "collaboration": "COBE FIRAS Collaboration (Mather et al.)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Measurement of the cosmic microwave background spectrum by the COBE FIRAS instrument: Planck blackbody spectrum at T_0 = 2.726 +/- 0.010 K with deviations below 0.03 % of peak brightness; the measured Planck thermal bath parent on T.08."
+    },
+    {
+      "id": "T08-BCH1973",
+      "label": "DERIVED",
+      "doi": "10.1007/BF01645742",
+      "year": 1973,
+      "collaboration": "Bardeen, Carter & Hawking (Communications in Mathematical Physics)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "The four laws of black hole mechanics: surface gravity kappa is constant over a stationary horizon (zeroth law), dM = (kappa / 8 pi G) dA + Omega_H dJ (first law), dA >= 0 (second law), and kappa = 0 cannot be reached in a finite number of steps (third law)."
+    },
+    {
+      "id": "T08-BW1975",
+      "label": "DERIVED",
+      "doi": "10.1063/1.522605",
+      "year": 1975,
+      "collaboration": "Bisognano & Wichmann (Journal of Mathematical Physics)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "On the duality condition for a Hermitian scalar field: for any relativistic quantum field in its Minkowski vacuum, the modular Hamiltonian of the right Rindler wedge generates Lorentz boosts and the reduced state is KMS thermal with respect to boost parameter at inverse temperature 2 pi."
+    },
+    {
+      "id": "T08-UNRUH1976",
+      "label": "DERIVED",
+      "doi": "10.1103/PhysRevD.14.870",
+      "year": 1976,
+      "collaboration": "Unruh (Physical Review D)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Notes on black-hole evaporation: a uniformly accelerated detector with proper acceleration a in the Minkowski vacuum responds as if immersed in a thermal bath at temperature T_U = hbar a / (2 pi k_B c), matching Hawking's black-hole temperature when proper acceleration is redshifted to infinity as surface gravity kappa."
+    },
+    {
+      "id": "T08-MUNOZ2019",
+      "label": "SINGLE RESULT",
+      "doi": "10.1038/s41586-019-1241-0",
+      "year": 2019,
+      "collaboration": "Munoz de Nova, Golubkov, Kolobov & Steinhauer (Technion)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Observation of thermal Hawking radiation and its temperature in an analogue black hole: spontaneous phonon emission at a sonic horizon in a Bose-Einstein condensate follows a thermal spectrum at the surface-gravity temperature. Explicitly fenced on T.08 as a fluid-mechanics acoustic analogue, not a gravitational horizon."
+    },
+    {
+      "id": "T09-ABBOTT2016B",
+      "label": "MEASURED",
+      "doi": "10.1103/PhysRevLett.116.221101",
+      "year": 2016,
+      "collaboration": "LIGO Scientific and Virgo Collaborations (Tests of GR)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Tests of general relativity with GW150914: the post-merger ringdown damped-sinusoid frequency and damping time agree with the fundamental l=m=2 Kerr quasinormal mode predicted from the inspiral mass and spin."
+    },
+    {
+      "id": "T09-KERR1963",
+      "label": "DERIVED",
+      "doi": "10.1103/PhysRevLett.11.237",
+      "year": 1963,
+      "collaboration": "Kerr (Physical Review Letters)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Gravitational field of a spinning mass as an example of algebraically special metrics: the exact stationary axisymmetric vacuum solution of Einstein's equations, parameterized uniquely by mass M and angular momentum J."
+    },
+    {
+      "id": "T09-SMARR1973",
+      "label": "DERIVED",
+      "doi": "10.1103/PhysRevLett.30.71",
+      "year": 1973,
+      "collaboration": "Smarr (Physical Review Letters)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Mass formula for Kerr black holes: M c^2 = (kappa c^2 / 4 pi G) A + 2 Omega_H J, connecting horizon area A, surface gravity kappa, and horizon angular velocity Omega_H."
+    },
+    {
+      "id": "T09-TEUKOLSKY1973",
+      "label": "DERIVED",
+      "doi": "10.1086/152444",
+      "year": 1973,
+      "collaboration": "Teukolsky (Astrophysical Journal)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Perturbations of a rotating black hole. I. Fundamental equations for gravitational, electromagnetic, and neutrino-field perturbations: separable radial and angular master equations on the Kerr background."
+    },
+    {
+      "id": "T09-LEAVER1985",
+      "label": "DERIVED",
+      "doi": "10.1098/rspa.1985.0119",
+      "year": 1985,
+      "collaboration": "Leaver (Proceedings of the Royal Society A)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "An analytic representation for the quasi-normal modes of Kerr black holes: three-term continued-fraction eigenvalue equations for the angular separation constant A_lm and complex frequency M omega_lmn."
+    },
+    {
+      "id": "T09-ISI2019",
+      "label": "PROPOSED",
+      "doi": "10.1103/PhysRevLett.123.111102",
+      "year": 2019,
+      "collaboration": "Isi, Giesler, Farr, Scheel & Teukolsky (PRL)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Testing the no-hair theorem withGW150914: claims evidence for the l=m=2, n=1 first overtone right at the merger peak and consistency with the Kerr mass and spin; the significance of the overtone in GW150914 is disputed in the literature."
+    },
+    {
+      "id": "T09-COTESTA2022",
+      "label": "OPEN",
+      "doi": "10.1103/PhysRevLett.129.111102",
+      "year": 2022,
+      "collaboration": "Cotesta, Carullo, Berti & Cardoso (PRL)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Analysis of ringdowns: argues that the claimed n=1 overtone detection in GW150914 near the peak is sensitive to start-time choice and noise transients; whether the first overtone was resolved in GW150914 remains an open question."
     }
   ]
 }

@@ -55,6 +55,14 @@
   "title": "On the difference between consecutive primes",
   "year": 1971
  },
+ "doi:10.1007/bf01645742": {
+  "fetched": "2026-11-10",
+  "first_author": "Bardeen",
+  "found": true,
+  "journal": "Communications in Mathematical Physics",
+  "title": "The four laws of black hole mechanics",
+  "year": 1973
+ },
  "doi:10.1007/bf02105068": {
   "fetched": "2026-11-09",
   "first_author": "Penrose",
@@ -479,6 +487,14 @@
   "title": "Quantum ground-state cooling of two librational modes of a nanorotor",
   "year": 2026
  },
+ "doi:10.1038/s41586-019-1241-0": {
+  "fetched": "2026-11-10",
+  "first_author": "Muñoz de Nova",
+  "found": true,
+  "journal": "Nature",
+  "title": "Observation of thermal Hawking radiation and its temperature in an analogue black hole",
+  "year": 2019
+ },
  "doi:10.1038/s41586-021-03250-7": {
   "fetched": "2026-11-09",
   "first_author": "Westphal",
@@ -607,6 +623,14 @@
   "title": "Minimum Design Loads and Associated Criteria for Buildings and Other Structures",
   "year": 2021
  },
+ "doi:10.1063/1.522605": {
+  "fetched": "2026-11-10",
+  "first_author": "Bisognano",
+  "found": true,
+  "journal": "Journal of Mathematical Physics",
+  "title": "On the duality condition for a Hermitian scalar field",
+  "year": 1975
+ },
  "doi:10.1063/5.0006074": {
   "fetched": "2026-11-07",
   "first_author": "Sun",
@@ -687,6 +711,30 @@
   "title": "Thermodynamics of CFTR Channel Gating: A Spreading Conformational Change Initiates an Irreversible Gating Cycle",
   "year": 2006
  },
+ "doi:10.1086/148307": {
+  "fetched": "2026-11-10",
+  "first_author": "Penzias",
+  "found": true,
+  "journal": "The Astrophysical Journal",
+  "title": "A Measurement of Excess Antenna Temperature at 4080 Mc/s.",
+  "year": 1965
+ },
+ "doi:10.1086/152444": {
+  "fetched": "2026-11-10",
+  "first_author": "Teukolsky",
+  "found": true,
+  "journal": "The Astrophysical Journal",
+  "title": "Perturbations of a Rotating Black Hole. I. Fundamental Equations for Gravitational, Electromagnetic, and Neutrino-Field Perturbations",
+  "year": 1973
+ },
+ "doi:10.1086/173574": {
+  "fetched": "2026-11-10",
+  "first_author": "Mather",
+  "found": true,
+  "journal": "The Astrophysical Journal",
+  "title": "Measurement of the cosmic microwave background spectrum by the COBE FIRAS instrument",
+  "year": 1994
+ },
  "doi:10.1088/0034-4885/75/12/126001": {
   "fetched": "2026-11-04",
   "first_author": "Seifert",
@@ -758,6 +806,14 @@
   "journal": "Proceedings of the Royal Society of London. Series A. Mathematical and Physical Sciences",
   "title": "Disintegration of water drops in an electric field",
   "year": 1964
+ },
+ "doi:10.1098/rspa.1985.0119": {
+  "fetched": "2026-11-10",
+  "first_author": "Leaver",
+  "found": true,
+  "journal": "Proceedings of the Royal Society of London. A. Mathematical and Physical Sciences",
+  "title": "An analytic representation for the quasi-normal modes of Kerr black holes",
+  "year": 1985
  },
  "doi:10.1103/2jm3-4976": {
   "fetched": "2026-11-09",
@@ -871,6 +927,14 @@
   "title": "Diósi-Penrose model of classical gravity predicts gravitationally induced entanglement",
   "year": 2025
  },
+ "doi:10.1103/physrevd.14.870": {
+  "fetched": "2026-11-10",
+  "first_author": "Unruh",
+  "found": true,
+  "journal": "Physical Review D",
+  "title": "Notes on black-hole evaporation",
+  "year": 1976
+ },
  "doi:10.1103/physrevd.27.2885": {
   "fetched": "2026-11-08",
   "first_author": "Page",
@@ -927,6 +991,14 @@
   "title": "Test of the Equivalence Principle Using a Rotating Torsion Balance",
   "year": 2008
  },
+ "doi:10.1103/physrevlett.11.237": {
+  "fetched": "2026-11-10",
+  "first_author": "Kerr",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Gravitational Field of a Spinning Mass as an Example of Algebraically Special Metrics",
+  "year": 1963
+ },
  "doi:10.1103/physrevlett.113.120405": {
   "fetched": "2026-11-08",
   "first_author": "Botermann",
@@ -951,6 +1023,14 @@
   "title": "Observation of Gravitational Waves from a Binary Black Hole Merger",
   "year": 2016
  },
+ "doi:10.1103/physrevlett.116.221101": {
+  "fetched": "2026-11-10",
+  "first_author": "Abbott",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Tests of General Relativity with GW150914",
+  "year": 2016
+ },
  "doi:10.1103/physrevlett.119.240401": {
   "fetched": "2026-11-09",
   "first_author": "Bose",
@@ -966,6 +1046,14 @@
   "journal": "Physical Review Letters",
   "title": "Gravitationally Induced Entanglement between Two Massive Particles is Sufficient Evidence of Quantum Effects in Gravity",
   "year": 2017
+ },
+ "doi:10.1103/physrevlett.123.111102": {
+  "fetched": "2026-11-10",
+  "first_author": "Isi",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Testing the No-Hair Theorem with GW150914",
+  "year": 2019
  },
  "doi:10.1103/physrevlett.124.051301": {
   "fetched": "2026-11-09",
@@ -999,6 +1087,14 @@
   "title": "Testing the Black-Hole Area Law with GW150914",
   "year": 2021
  },
+ "doi:10.1103/physrevlett.129.111102": {
+  "fetched": "2026-11-10",
+  "first_author": "Cotesta",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Analysis of Ringdown Overtones in GW150914",
+  "year": 2022
+ },
  "doi:10.1103/physrevlett.129.121102": {
   "fetched": "2026-11-08",
   "first_author": "Touboul",
@@ -1030,6 +1126,14 @@
   "journal": "Physical Review Letters",
   "title": "Gravitational Radiation from Colliding Black Holes",
   "year": 1971
+ },
+ "doi:10.1103/physrevlett.30.71": {
+  "fetched": "2026-11-10",
+  "first_author": "Smarr",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Mass Formula for Kerr Black Holes",
+  "year": 1973
  },
  "doi:10.1103/physrevlett.4.337": {
   "fetched": "2026-11-08",
@@ -2154,6 +2258,18 @@
   "unclassified": 1,
   "year": 1920
  },
+ "scite:10.1007/bf01645742": {
+  "citing_publications": 4730,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 2,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 4234,
+  "retracted": false,
+  "supporting": 79,
+  "total_smart_citations": 4348,
+  "unclassified": 33
+ },
  "scite:10.1007/bf02105068": {
   "citing_publications": 2220,
   "classification_provenance": "Scite ML citation classification",
@@ -2660,6 +2776,18 @@
   "total_smart_citations": 5,
   "unclassified": 0
  },
+ "scite:10.1038/s41586-019-1241-0": {
+  "citing_publications": 514,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 401,
+  "retracted": false,
+  "supporting": 9,
+  "total_smart_citations": 413,
+  "unclassified": 3
+ },
  "scite:10.1038/s41586-021-03250-7": {
   "citing_publications": 250,
   "classification_provenance": "Scite ML citation classification",
@@ -2816,6 +2944,18 @@
   "unclassified": 0,
   "year": 2021
  },
+ "scite:10.1063/1.522605": {
+  "citing_publications": 743,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 742,
+  "retracted": false,
+  "supporting": 19,
+  "total_smart_citations": 765,
+  "unclassified": 4
+ },
  "scite:10.1063/5.0006074": {
   "citing_publications": 1601,
   "contrasting": 0,
@@ -2871,6 +3011,42 @@
   "total_smart_citations": 52,
   "unclassified": 0,
   "year": 2014
+ },
+ "scite:10.1086/148307": {
+  "citing_publications": 2869,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 1329,
+  "retracted": false,
+  "supporting": 21,
+  "total_smart_citations": 1411,
+  "unclassified": 61
+ },
+ "scite:10.1086/152444": {
+  "citing_publications": 2568,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 2849,
+  "retracted": false,
+  "supporting": 30,
+  "total_smart_citations": 2891,
+  "unclassified": 12
+ },
+ "scite:10.1086/173574": {
+  "citing_publications": 874,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 1,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 552,
+  "retracted": false,
+  "supporting": 13,
+  "total_smart_citations": 571,
+  "unclassified": 5
  },
  "scite:10.1088/0034-4885/75/12/126001": {
   "citing_publications": 4173,
@@ -2973,6 +3149,18 @@
   "total_smart_citations": 705,
   "unclassified": 14,
   "year": 1964
+ },
+ "scite:10.1098/rspa.1985.0119": {
+  "citing_publications": 1544,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 1,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 803,
+  "retracted": false,
+  "supporting": 28,
+  "total_smart_citations": 832,
+  "unclassified": 0
  },
  "scite:10.1103/2jm3-4976": {
   "citing_publications": 3,
@@ -3120,6 +3308,18 @@
   "total_smart_citations": 13,
   "unclassified": 0
  },
+ "scite:10.1103/physrevd.14.870": {
+  "citing_publications": 5810,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 7,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 6323,
+  "retracted": false,
+  "supporting": 117,
+  "total_smart_citations": 6494,
+  "unclassified": 47
+ },
  "scite:10.1103/physrevd.27.2885": {
   "citing_publications": 796,
   "classification_provenance": "Scite ML citation classification",
@@ -3206,6 +3406,18 @@
   "total_smart_citations": 821,
   "unclassified": 7
  },
+ "scite:10.1103/physrevlett.11.237": {
+  "citing_publications": 4260,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 3142,
+  "retracted": false,
+  "supporting": 38,
+  "total_smart_citations": 3251,
+  "unclassified": 71
+ },
  "scite:10.1103/physrevlett.113.120405": {
   "citing_publications": 84,
   "classification_provenance": "Scite ML citation classification",
@@ -3244,6 +3456,18 @@
   "total_smart_citations": 11113,
   "unclassified": 89
  },
+ "scite:10.1103/physrevlett.116.221101": {
+  "citing_publications": 2344,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 6,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 1905,
+  "retracted": false,
+  "supporting": 72,
+  "total_smart_citations": 1989,
+  "unclassified": 6
+ },
  "scite:10.1103/physrevlett.119.240401": {
   "citing_publications": 1166,
   "classification_provenance": "Scite ML citation classification",
@@ -3266,6 +3490,18 @@
   "retracted": false,
   "supporting": 23,
   "total_smart_citations": 1003,
+  "unclassified": 1
+ },
+ "scite:10.1103/physrevlett.123.111102": {
+  "citing_publications": 616,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 2,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 536,
+  "retracted": false,
+  "supporting": 25,
+  "total_smart_citations": 564,
   "unclassified": 1
  },
  "scite:10.1103/physrevlett.124.051301": {
@@ -3318,6 +3554,18 @@
   "total_smart_citations": 93,
   "unclassified": 0
  },
+ "scite:10.1103/physrevlett.129.111102": {
+  "citing_publications": 194,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 64,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 64,
+  "unclassified": 0
+ },
  "scite:10.1103/physrevlett.129.121102": {
   "citing_publications": 261,
   "classification_provenance": "Scite ML citation classification",
@@ -3365,6 +3613,18 @@
   "supporting": 30,
   "total_smart_citations": 1200,
   "unclassified": 5
+ },
+ "scite:10.1103/physrevlett.30.71": {
+  "citing_publications": 690,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 454,
+  "retracted": false,
+  "supporting": 14,
+  "total_smart_citations": 469,
+  "unclassified": 1
  },
  "scite:10.1103/physrevlett.4.337": {
   "citing_publications": 909,

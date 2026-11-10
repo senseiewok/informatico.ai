@@ -349,9 +349,9 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     # Time & Gravity hub (/timegravity/): the track pages' own copy lives in tools/folios/timegravity/<slug>.py ("seo").
     "timegravity": (
-        "Time & Gravity · Nine Pages on an Open Problem | Informatico.ai",
+        "Time & Gravity · Eleven Pages on an Open Problem | Informatico.ai",
         "A reading track from the measured slope in the rate of time to the open problem of time in quantum gravity, with instruments, verifiers and a ledger.",
-        "Tiempo y Gravedad · Un Problema Abierto en 9 Páginas | Informatico.ai",
+        "Tiempo y Gravedad · Un Problema Abierto en 11 Páginas | Informatico.ai",
         "Una serie que va de la pendiente medida en el ritmo del tiempo al problema abierto del tiempo en la gravedad cuántica, con instrumentos y verificadores.",
     ),
     "about": (

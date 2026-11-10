@@ -11,7 +11,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 > **Frontera Fija (`ES-MX`):** Nada en esta página es una teoría del todo, y este sitio no propone ninguna. Cada afirmación lleva una de seis etiquetas, cada una ligada a una fila del libro de registro: MEDIDO, DERIVADO, COTA, PROPUESTO, ABIERTO o RESULTADO ÚNICO. Las prepublicaciones nunca suben de PROPUESTO. Cada página termina con una pregunta abierta que la siguiente página retoma.
 
 ## 1. Page, canonical URL and governing equations
-- **Track page**: `T.04` (Time & Gravity, reading order 5 of 9, dated `2026-11-09`). Page label **PROPOSED**: an experiment description, not a result; no gravitational version has run.
+- **Track page**: `T.04` (Time & Gravity, reading order 5 of 11, dated `2026-11-09`). Page label **PROPOSED**: an experiment description, not a result; no gravitational version has run.
 - **Canonical URL**: https://informatico.ai/timegravity/t04/ (Spanish: https://informatico.ai/es-mx/timegravity/t04/)
 - **Proper-time difference**: `Δτ = g Δh T / c²` between arms Δh apart for time T (weak field).
 - **Visibility**: `V = |cos(ω Δτ / 2)|` for a clock prepared in `|+⟩`, `ω = ΔE/ħ` (Zych, Costa, Pikovski & Brukner 2011).

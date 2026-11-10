@@ -26,8 +26,8 @@ WILL = "T01-WILL2014"
 PAGE: dict = {
     "slug": SLUG,
     "code": CODE,
-    "order_label_en": "Step 3 of 9",
-    "order_label_es": "Paso 3 de 9",
+    "order_label_en": "Step 3 of 11",
+    "order_label_es": "Paso 3 de 11",
     "kicker_en": "Time & Gravity · T.01 · The best-measured half of the intuition",
     "kicker_es": "Tiempo y Gravedad · T.01 · La mitad mejor medida de la intuición",
     "title_en": "Gravity as a Slope in the Rate of Time",

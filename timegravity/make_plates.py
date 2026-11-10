@@ -396,9 +396,87 @@ def plate_t07_page() -> bytes:
     return c.png()
 
 
+def plate_t08() -> bytes:
+    """Left: Rindler null horizons X = ±cT and accelerated hyperbola. Right: Planck Fock occupation bars and curve."""
+    import math
+    from timegravity_kernel_horizon import XI_DEFAULT, two_mode_squeezed_wedge
+    c = Canvas()
+    c.fill_gradient()
+    # Left: Rindler wedge diagram centered at (320, 380)
+    cx, cy, span = 260.0, 380.0, 220.0
+    c.stroke([(cx, cy - span), (cx + span, cy), (cx, cy + span)], INK, 1.5, dash=(6, 6))
+    c.stroke([(cx, cy), (cx + span, cy - span)], MINIUM, 3.0)
+    c.stroke([(cx, cy), (cx + span, cy + span)], MINIUM, 3.0)
+    hyp = []
+    for i in range(81):
+        eta = -1.1 + 2.2 * i / 80.0
+        x = cx + 95.0 * math.cosh(eta)
+        y = cy - 95.0 * math.sinh(eta)
+        hyp.append((x, y))
+    c.stroke(hyp, PRUSSIAN, 4.0)
+    c.disc(cx + 95.0, cy, 10, PRUSSIAN, ring=VELLUM)
+    c.disc(cx - 55.0, cy, 10, STONE, ring=INK)
+    # Right: Fock occupation probabilities p_n from the Jacobi partial-trace kernel
+    wedge = two_mode_squeezed_wedge(XI_DEFAULT, 8)
+    x0, x1, y0, y1 = 640, 1180, 140, 620
+    c.stroke([(x0, y0), (x0, y1)], INK, 1.2)
+    c.stroke([(x0, y1), (x1, y1)], INK, 1.2)
+    bw = 44
+    for n, p in enumerate(wedge["eigenvalues"][:8]):
+        bx = x0 + 24 + n * 64
+        bh = int(round((y1 - y0 - 20) * p))
+        for yy in range(y1 - bh, y1):
+            for xx in range(bx, bx + bw):
+                c.blend(xx, yy, PRUSSIAN, 0.72)
+        c.disc(bx + bw // 2, y1 - bh, 7, MINIUM, ring=VELLUM)
+    return c.png()
+
+
+def plate_t09() -> bytes:
+    """Left: Kerr damped ringdown waveform h(t) for (2,2,0) and (2,2,1). Right: (f, tau) spin trajectory."""
+    import math
+    from timegravity_kernel_kerr import FIDUCIAL_MASS_SOLAR, KERR_SPINS, physical_ringdown, solve_kerr_qnm_branch
+    c = Canvas()
+    c.fill_gradient()
+    b0 = {r["chi"]: r for r in solve_kerr_qnm_branch(KERR_SPINS, overtone_n=0)}
+    b1 = {r["chi"]: r for r in solve_kerr_qnm_branch(KERR_SPINS, overtone_n=1)}
+    r220 = b0[0.68]
+    r221 = b1[0.68]
+    # Left: damped sinusoid over t / M in [0, 60]
+    lx0, lx1, lyc = 110, 610, 380
+    c.stroke([(lx0, lyc), (lx1, lyc)], INK, 1.0, dash=(5, 5))
+    wave0, wave1 = [], []
+    for i in range(181):
+        tm = 60.0 * i / 180.0
+        x = lx0 + (lx1 - lx0) * (i / 180.0)
+        y0_ = lyc - 180.0 * math.exp(r220["mw_im"] * tm) * math.cos(r220["mw_re"] * tm)
+        y1_ = lyc - 140.0 * math.exp(r221["mw_im"] * tm) * math.cos(r221["mw_re"] * tm)
+        wave0.append((x, y0_))
+        wave1.append((x, y1_))
+    c.stroke(wave1, VERDIGRIS, 2.5)
+    c.stroke(wave0, PRUSSIAN, 4.0)
+    # Right: (f_Hz, tau_ms) trajectory across chi in KERR_SPINS for 62 M_sun
+    rx0, rx1, ry0, ry1 = 700, 1180, 140, 620
+    c.stroke([(rx0, ry0), (rx0, ry1)], INK, 1.2)
+    c.stroke([(rx0, ry1), (rx1, ry1)], INK, 1.2)
+    fx = lambda f: rx0 + (rx1 - rx0) * (f - 180.0) / 220.0  # noqa: E731
+    ty = lambda tau: ry1 - (ry1 - ry0) * (tau - 0.8) / 4.5  # noqa: E731
+    pts0, pts1 = [], []
+    for chi in KERR_SPINS:
+        p0 = physical_ringdown(FIDUCIAL_MASS_SOLAR, b0[chi]["mw_re"], b0[chi]["mw_im"])
+        p1 = physical_ringdown(FIDUCIAL_MASS_SOLAR, b1[chi]["mw_re"], b1[chi]["mw_im"])
+        pts0.append((fx(p0["f_hz"]), ty(p0["tau_ms"])))
+        pts1.append((fx(p1["f_hz"]), ty(p1["tau_ms"])))
+    c.stroke(pts0, PRUSSIAN, 3.5)
+    c.stroke(pts1, VERDIGRIS, 2.5, dash=(6, 6))
+    for i, (px, py) in enumerate(pts0):
+        c.disc(px, py, 10 if KERR_SPINS[i] == 0.68 else 6, MINIUM if KERR_SPINS[i] == 0.68 else PRUSSIAN, ring=VELLUM)
+    return c.png()
+
+
 def main() -> int:
     PLATES.mkdir(parents=True, exist_ok=True)
-    for name, fn in (("t00", plate_t00), ("t01", plate_t01), ("t02", plate_t02), ("t03", plate_t03), ("t04", plate_t04), ("t05", plate_t05), ("t06", plate_t06), ("t07", plate_t07), ("t10", plate_t07_page)):
+    for name, fn in (("t00", plate_t00), ("t01", plate_t01), ("t02", plate_t02), ("t03", plate_t03), ("t04", plate_t04), ("t05", plate_t05), ("t06", plate_t06), ("t07", plate_t07), ("t08", plate_t08), ("t09", plate_t09), ("t10", plate_t07_page)):
         data = fn()
         (PLATES / f"{name}.png").write_bytes(data)
         print(f"PASS: wrote plates/{name}.png ({len(data):,} bytes)")

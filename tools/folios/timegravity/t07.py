@@ -26,8 +26,8 @@ PAGE: dict = {
     "slug": SLUG,
     "code": CODE,
     "date": "2026-11-09",
-    "order_label_en": "Step 8 of 9",
-    "order_label_es": "Paso 8 de 9",
+    "order_label_en": "Step 8 of 11",
+    "order_label_es": "Paso 8 de 11",
     "kicker_en": "Time & Gravity · T.07 · Where the 'felt now' has no variable",
     "kicker_es": "Tiempo y Gravedad · T.07 · Donde el 'ahora sentido' no tiene variable",
     "title_en": "The Equation with No Time",
@@ -215,9 +215,9 @@ PAGE: dict = {
               "Qué reloj lleva el universo, si es el de algún subsistema, no está resuelto: la construcción recupera un tiempo para cada "
               "elección de reloj, y nada en la restricción escoge uno."),
             T(" The 'felt now' that the hub stated as a question is absent here too: the toy has readings, not a present. That absence is the "
-              "page's honest result, and the next page carries it to the one place a clock can be seen to lose information: a black hole.",
+              "page's honest result, and the next page asks what happens when acceleration or gravity turns the split between clock and rest into a causal horizon.",
               " El 'ahora sentido' que el punto de partida planteó como pregunta también está ausente aquí: el juguete tiene lecturas, no un "
-              "presente. Esa ausencia es el resultado honesto de la página, y la siguiente lo lleva al único lugar donde un reloj puede verse perdiendo información: un agujero negro."),
+              "presente. Esa ausencia es el resultado honesto de la página, y la siguiente pregunta qué pasa cuando la aceleración o la gravedad convierte la partición entre el reloj y el resto en un horizonte causal."),
         ),
         {"type": "change_box",
          "items": [

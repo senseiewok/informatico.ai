@@ -1,0 +1,14 @@
+{
+  "folio_id": "T.08",
+  "generator": "skills/timegravity/t08/make_t08.py",
+  "verifier": "skills/timegravity/t08/verify_t08_horizon_thermodynamics.py",
+  "license": "CC0-1.0 / CC-BY-4.0",
+  "boundary_en": "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. Preprints never rise above PROPOSED. Each page ends with one open question that the next page takes up.",
+  "files": [
+    {
+      "filename": "t08_reference.json",
+      "bytes": 3435,
+      "sha256": "72616d35d780a458ef6d960138f2142a1c10fccc44126baecfd1b82bb1d19851"
+    }
+  ]
+}

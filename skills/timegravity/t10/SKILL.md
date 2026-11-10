@@ -11,7 +11,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 > **Frontera Fija (`ES-MX`):** Nada en esta página es una teoría del todo, y este sitio no propone ninguna. Cada afirmación lleva una de seis etiquetas, cada una ligada a una fila del libro de registro: MEDIDO, DERIVADO, COTA, PROPUESTO, ABIERTO o RESULTADO ÚNICO. Las prepublicaciones nunca suben de PROPUESTO. Cada página termina con una pregunta abierta que la siguiente página retoma.
 
 ## 1. Page, canonical URL and governing equations
-- **Track page**: `T.10` (Time & Gravity, reading order 9 of 9, dated `2026-11-09`). Page labels **DERIVED** and **OPEN**.
+- **Track page**: `T.10` (Time & Gravity, reading order 11 of 11, dated `2026-11-09`). Page labels **DERIVED** and **OPEN**.
 - **Canonical URL**: https://informatico.ai/timegravity/t10/ (Spanish: https://informatico.ai/es-mx/timegravity/t10/)
 - **Page's formula**: `S(m, n) = Σ_{k=n+1}^{mn} 1/k − (m−1)/(2n)` for `m ≤ n` (nats). Hawking's line: `S = a · ln 2`.
 - **Central numbers**: 8 Haar-random pure states on 10 qubits; mean entropy at every cut within `0.03` nats of Page's formula (achieved ≈ 0.002); peak at `a = 5` with `2.97` nats; final `0.69` nats; symmetric about `N/2`.
