@@ -641,6 +641,38 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/timegravity/t12/"/>
   </url>
   <url>
+    <loc>https://informatico.ai/essays/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/essays/mesoscopic-floor/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/mesoscopic-floor/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/mesoscopic-floor/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/mesoscopic-floor/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/mesoscopic-floor/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/essays/derived-not-measured/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/derived-not-measured/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/derived-not-measured/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/derived-not-measured/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/derived-not-measured/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/essays/barriers-pores-clocks/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/barriers-pores-clocks/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/barriers-pores-clocks/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/barriers-pores-clocks/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/barriers-pores-clocks/"/>
+  </url>
+  <url>
     <loc>https://informatico.ai/about/</loc>
     <lastmod>2026-11-08</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/about/"/>
@@ -1287,6 +1319,38 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/timegravity/t12/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/timegravity/t12/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/timegravity/t12/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/essays/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/essays/mesoscopic-floor/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/mesoscopic-floor/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/mesoscopic-floor/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/mesoscopic-floor/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/mesoscopic-floor/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/essays/derived-not-measured/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/derived-not-measured/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/derived-not-measured/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/derived-not-measured/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/derived-not-measured/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/essays/barriers-pores-clocks/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/barriers-pores-clocks/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/barriers-pores-clocks/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/barriers-pores-clocks/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/barriers-pores-clocks/"/>
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/about/</loc>
