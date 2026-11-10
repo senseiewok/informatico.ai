@@ -256,12 +256,12 @@ PAGE: dict = {
               "'the natural cutoff σ ∼ 10⁻¹² cm', a hundredth of a picometre. The one biological use of the model, Orch-OR, holds that "
               "consciousness-related collapse follows 'the specific Diósi-Penrose scheme'; on Penrose's formula the kernel finds that a "
               "single tubulin, 55 kDa, in two places a nucleon radius apart lives 6.5 × 10⁸ s at σ = 10⁻¹⁴ m and about 10³⁷ s at the "
-              "laboratory rungs near 44 µm, some 10²⁰ ages of the universe: twenty-nine orders of magnitude between the two uses of one number.",
+              "laboratory rungs near 33 µm, some 5 × 10¹⁹ ages of the universe: nearly twenty-nine orders of magnitude between the two uses of one number.",
               "Dos usos muy distintos quieren σ pequeña. Los autores de la forma híbrida sobre la que se construye la carta de entrelazamiento "
               "de 2025 la llamaron 'el corte natural σ ∼ 10⁻¹² cm', una centésima de picómetro. El único uso biológico del modelo, Orch-OR, "
               "sostiene que el colapso ligado a la conciencia sigue 'el esquema específico de Diósi-Penrose'; con la fórmula de Penrose el núcleo "
               "encuentra que una sola tubulina, 55 kDa, en dos lugares a un radio de nucleón vive 6.5 × 10⁸ s a σ = 10⁻¹⁴ m y unos 10³⁷ s en "
-              "los peldaños de laboratorio cerca de 44 µm, unas 10²⁰ edades del universo: veintinueve órdenes de magnitud entre los dos usos de un mismo número."),
+              "los peldaños de laboratorio cerca de 33 µm, unas 5 × 10¹⁹ edades del universo: casi veintinueve órdenes de magnitud entre los dos usos de un mismo número."),
             T(" The page does not assess Orch-OR; it reports what the model's own formula gives at each rung. Its planted defect for this "
               "kernel drops the small-displacement series, so the direct difference returns rounding noise six orders of magnitude off and "
               "breaks the σ³ law between the top rungs, which the verifier rejects.",
@@ -272,19 +272,18 @@ PAGE: dict = {
         P(
             C("PROPOSED", [TRILLO, LEE, LEE21, PICCIONE],
               "At the top of the ladder sits the 2025 letter's 50 to 250 µm, the range in which the model entangles two masses in a "
-              "laboratory; just below it, at 44 µm, the wedge kernel of T.05 finds the model's softened pull removing as much of the "
-              "Eöt-Wash torque as the Yukawa that test excludes at 95 %. On this site's estimate the inverse-square tests leave room only below "
-              "that line, and the entanglement letter needs the range above it. A 2025 preprint on the smearing profiles of these models notes that for "
+              "laboratory; well below it, at 33 µm, sits T.05's recast of the experiment's published 95 % limits onto the model's softened pull. On that "
+              "recast the inverse-square tests leave room only below that line, and the entanglement letter needs the range above it. A 2025 preprint on the smearing profiles of these models notes that for "
               "this parameter 'upper bounds can be put by observing no deviations from Newton's law of gravitation'; it works none out and names no "
-              "experiment. The 44 µm rung is this site's own estimate from the Eöt-Wash comparison on T.05, not the preprint's. T.05 adds a rung of another kind: if gravity is quantum and pure collapse exists besides, a positive witness at the 2017 geometry would put σ above 130 µm within this pure-collapse model. The ladder also carries a window of another kind, 13.6 to 44 µm: on this site's estimate the letter's model could still entangle one published geometry there, the 2024 side-by-side proposal, without contradicting the 2020 inverse-square data; it is a window for that one model and that one geometry, not a bound on σ, and it moves or closes if the 2020 data are refit.",
+              "experiment. The 33 µm rung is this site's own recast of the published limits on T.05, not the preprint's and not a refit of the data; it superseded an earlier 44 µm edge match. T.05 adds a rung of another kind: if gravity is quantum and pure collapse exists besides, a positive witness at the 2017 geometry would put σ above 130 µm within this pure-collapse model. The ladder also carries a window of another kind, 13.6 to 33 µm: on this site's estimate the letter's model could still entangle one published geometry there, the 2024 side-by-side proposal, without contradicting the 2020 inverse-square data; it is a window for that one model and that one geometry, not a bound on σ, and it moves or closes if the 2020 data are refit.",
               "En lo alto de la escalera están los 50 a 250 µm de la carta de 2025, el rango en que el modelo entrelaza dos masas en un "
-              "laboratorio; justo debajo, a 44 µm, el núcleo de cuñas de T.05 encuentra que la atracción suavizada del modelo quita tanto "
-              "del par de Eöt-Wash como el Yukawa que esa prueba excluye al 95 %. En la estimación de este sitio las pruebas del inverso del cuadrado "
-              "dejan sitio solo por debajo de esa línea, y la carta de entrelazamiento necesita el rango por encima. Una prepublicación de 2025 sobre los "
+              "laboratorio; bastante más abajo, a 33 µm, está el recast que T.05 hace de los límites publicados del experimento al 95 % sobre la atracción "
+              "suavizada del modelo. En ese recast las pruebas del inverso del cuadrado dejan sitio solo por debajo de esa línea, y la carta de "
+              "entrelazamiento necesita el rango por encima. Una prepublicación de 2025 sobre los "
               "perfiles de suavizado de estos modelos anota que para este parámetro 'se pueden poner cotas superiores observando que no hay desviaciones "
-              "de la ley de gravitación de Newton'; no calcula ninguna ni nombra experimento alguno. El peldaño de 44 µm es la estimación propia de este "
-              "sitio desde la comparación con Eöt-Wash en T.05, no la de la prepublicación. T.05 añade un peldaño de otra clase: si la gravedad es "
-              "cuántica y además existe el colapso puro, un testigo positivo en la geometría de 2017 pondría σ por encima de 130 µm dentro de este modelo de colapso puro. La escalera lleva además una ventana de otra clase, de 13.6 a 44 µm: en la estimación de este sitio el modelo de la carta aún podría entrelazar allí una geometría publicada, la propuesta lado a lado de 2024, sin contradecir los datos de 2020 del inverso del cuadrado; es una ventana para ese único modelo y esa única geometría, no una cota de σ, y se mueve o se cierra si los datos de 2020 se reajustan."),
+              "de la ley de gravitación de Newton'; no calcula ninguna ni nombra experimento alguno. El peldaño de 33 µm es el recast propio de este sitio "
+              "de los límites publicados en T.05, no el de la prepublicación ni un reajuste de los datos; sustituyó a un ajuste de borde anterior de 44 µm. T.05 añade un peldaño de otra clase: si la gravedad es "
+              "cuántica y además existe el colapso puro, un testigo positivo en la geometría de 2017 pondría σ por encima de 130 µm dentro de este modelo de colapso puro. La escalera lleva además una ventana de otra clase, de 13.6 a 33 µm: en la estimación de este sitio el modelo de la carta aún podría entrelazar allí una geometría publicada, la propuesta lado a lado de 2024, sin contradecir los datos de 2020 del inverso del cuadrado; es una ventana para ese único modelo y esa única geometría, no una cota de σ, y se mueve o se cierra si los datos de 2020 se reajustan."),
             C("BOUND", [OPPENHEIM],
               "The same torsion balances enter a second squeeze: in 2023 Oppenheim and co-workers showed that any consistent theory with "
               "classical gravity and quantum matter must trade decoherence of the matter against diffusion of the field, bounded that "
@@ -329,11 +328,11 @@ PAGE: dict = {
         P(
             C("OPEN", [TRILLO, HAMEROFF, HELOU, LEE],
               "No single σ serves every use on the ladder: the bounds want it above 5 Å, the biological use needs the bottom of the ladder, "
-              "the entanglement letter needs the top, and the inverse-square tests, on this site's estimate, leave room only under 44 µm. The ladder "
+              "the entanglement letter needs the top, and the inverse-square tests, on this site's recast of their published limits, leave room only under 33 µm. The ladder "
               "shows that and the page draws no conclusion beyond it; which rung gives way is for the experiments to decide.",
               "Ninguna σ sirve a todos los usos de la escalera: las cotas la quieren por encima de 5 Å, el uso biológico necesita el fondo "
-              "de la escalera, la carta de entrelazamiento necesita la cima, y las pruebas del inverso del cuadrado, en la estimación de este sitio, dejan sitio "
-              "solo por debajo de 44 µm. La escalera muestra eso y la página no concluye nada más allá; qué peldaño cede lo decidirán los experimentos."),
+              "de la escalera, la carta de entrelazamiento necesita la cima, y las pruebas del inverso del cuadrado, en el recast que este sitio hace de sus límites publicados, dejan sitio "
+              "solo por debajo de 33 µm. La escalera muestra eso y la página no concluye nada más allá; qué peldaño cede lo decidirán los experimentos."),
         ),
         {"type": "change_box",
          "items": [
@@ -341,8 +340,8 @@ PAGE: dict = {
               "Un exceso medido de radiación espontánea con el espectro 1/R0³ predicho, visto por dos detectores, convertiría la COTA en una medición de R0 y la página se reescribiría."),
              ("The XENONnT row leaves the replication window in 2028 or when a second detector reaches its bound; either moves its claim from SINGLE RESULT to BOUND.",
               "La fila de XENONnT sale de la ventana de replicación en 2028 o cuando un segundo detector alcance su cota; cualquiera de las dos mueve su afirmación de RESULTADO ÚNICO a COTA."),
-             ("A refit of the Eöt-Wash data for the smeared potential, published by its collaboration, would turn the ladder's 44 µm rung from this site's estimate into a BOUND, in either direction.",
-              "Un reajuste de los datos de Eöt-Wash para el potencial suavizado, publicado por su colaboración, convertiría el peldaño de 44 µm de la escalera de estimación de este sitio en una COTA, en cualquier dirección."),
+             ("A refit of the Eöt-Wash data for the smeared potential, published by its collaboration, would turn the ladder's 33 µm rung from this site's recast of the published limits into a BOUND, in either direction. Until November 2026 the rung stood at 44 µm, a match to the gravitational-strength edge at one separation; the recast superseded it.",
+              "Un reajuste de los datos de Eöt-Wash para el potencial suavizado, publicado por su colaboración, convertiría el peldaño de 33 µm de la escalera, recast propio de este sitio de los límites publicados, en una COTA, en cualquier dirección. Hasta noviembre de 2026 el peldaño estuvo en 44 µm, un ajuste al borde de intensidad gravitatoria a una sola separación; el recast lo sustituyó."),
              ("If the recomputed bound ever drifted more than 20 % from the published 0.54 × 10⁻¹⁰ m after a constants change, the verifier fails and the page does not build.",
               "Si la cota recalculada llegara a desviarse más del 20 % de los 0.54 × 10⁻¹⁰ m publicados tras un cambio de constantes, el verificador falla y la página no se construye."),
          ]},

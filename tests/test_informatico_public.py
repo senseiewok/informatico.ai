@@ -20,10 +20,10 @@ class PublicInformaticoRepoTests(unittest.TestCase):
         skill_files = list(SKILLS.glob("*/*/SKILL.md"))
         py_files = list(SKILLS.glob("*/*/verify_*.py"))
         self.assertEqual(len(skill_files), 68)
-        self.assertEqual(len(py_files), 70)  # T.05 carries three verifiers
-        res = subprocess.run([sys.executable, "-X", "utf8", str(SKILLS / "verify_all_48_folios.py")], capture_output=True, text=True, encoding="utf-8", timeout=60)
+        self.assertEqual(len(py_files), 71)  # T.05 carries four verifiers
+        res = subprocess.run([sys.executable, "-X", "utf8", str(SKILLS / "verify_all_48_folios.py")], capture_output=True, text=True, encoding="utf-8", timeout=240)
         self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
-        self.assertIn("PASS: All 70/70", res.stdout)
+        self.assertIn("PASS: All 71/71", res.stdout)
 
     def test_all_6_bounty_and_physics_discovery_harnesses_pass(self) -> None:
         res = subprocess.run([sys.executable, "-X", "utf8", str(BOUNTIES / "run_all_bounties.py")], capture_output=True, text=True, encoding="utf-8", timeout=30)

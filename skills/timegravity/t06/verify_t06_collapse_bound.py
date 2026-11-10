@@ -7,7 +7,7 @@ published 0.54e-10 m; the parameter-free R0 = 0.05e-10 m would have produced abo
 E_G for two displaced uniform spheres agrees with a direct numerical integration within 1e-3. Planted defect: the
 bound drawn on the wrong side (small R0 treated as allowed); `--planted-defect` must exit non-zero with FAIL on stderr.
 The σ ladder (tools/timegravity_kernel_ladder.py): one tubulin a nucleon radius apart lives 6.5e8 s at σ = 1e-14 m (2.6e10 tubulins for
-25 ms) and 5.5e37 s at 44 µm; the Casimir floor of Van De Kamp et al. is 17.1 µm at 1e-15 kg; the σ³ law holds between the top rungs;
+25 ms) and 2.3e37 s at 33 µm, T.05's recast limit; the Casimir floor of Van De Kamp et al. is 17.1 µm at 1e-15 kg; the σ³ law holds between the top rungs;
 its planted defect (the small-displacement series dropped) breaks that law and `--planted-defect` must exit non-zero.
 Boundary: Nothing on this page is a theory of everything, and this site proposes none.
 """
@@ -75,7 +75,7 @@ def main(argv: list[str] | None = None) -> int:
         "status": "PASS",
         "folio_id": "T.06",
         "canonical_url": "https://informatico.ai/timegravity/t06/",
-        "central_number": {"ladder_tubulins_for_25ms_at_natural_cutoff": lad["tubulins_for_25ms_at_natural_cutoff"], "ladder_tubulin_lifetime_at_44um_s": lad["tubulin"]["eotwash"]["nucleon_radius"]["lifetime_s"], "ladder_casimir_floor_1e-15_m": lad["casimir"]["floor_1e-15_m"], "ladder_casimir_floor_1e-14_m": lad["casimir"]["floor_1e-14_m"], "ladder_window_23um_split_open": lad["window"]["by_mass"]["1e-15"]["splits"]["split_23um"]["open"], "ladder_window_10um_split_open": lad["window"]["by_mass"]["1e-15"]["splits"]["split_10um"]["open"], "ladder_sigma_cubed_ratio": lad["sigma_cubed_ratio"], "diffusion_ceiling_oppenheim_inputs": lad["diffusion"]["oppenheim_inputs_ceiling"], "diffusion_ceiling_eotwash": {k: v["ceiling"] for k, v in lad["diffusion"]["eotwash"].items()}, "diffusion_orders_below_printed": {k: v["orders_below_printed"] for k, v in lad["diffusion"]["eotwash"].items()}, "r0_bound_recomputed_m": res["r0_bound_recomputed_m"], "r0_bound_paper_m": res["r0_bound_paper_m"],
+        "central_number": {"ladder_tubulins_for_25ms_at_natural_cutoff": lad["tubulins_for_25ms_at_natural_cutoff"], "ladder_tubulin_lifetime_at_recast_rung_s": lad["tubulin"]["eotwash"]["nucleon_radius"]["lifetime_s"], "ladder_casimir_floor_1e-15_m": lad["casimir"]["floor_1e-15_m"], "ladder_casimir_floor_1e-14_m": lad["casimir"]["floor_1e-14_m"], "ladder_window_23um_split_open": lad["window"]["by_mass"]["1e-15"]["splits"]["split_23um"]["open"], "ladder_window_10um_split_open": lad["window"]["by_mass"]["1e-15"]["splits"]["split_10um"]["open"], "ladder_sigma_cubed_ratio": lad["sigma_cubed_ratio"], "diffusion_ceiling_oppenheim_inputs": lad["diffusion"]["oppenheim_inputs_ceiling"], "diffusion_ceiling_eotwash": {k: v["ceiling"] for k, v in lad["diffusion"]["eotwash"].items()}, "diffusion_orders_below_printed": {k: v["orders_below_printed"] for k, v in lad["diffusion"]["eotwash"].items()}, "r0_bound_recomputed_m": res["r0_bound_recomputed_m"], "r0_bound_paper_m": res["r0_bound_paper_m"],
                            "excess_upper_limit_counts_95": res["excess_upper_limit_counts"], "counts_at_paramfree_r0": res["counts_at_paramfree_r0"],
                            "tau_1um_1e-14kg_2R_s": res["tau_1um_1e-14kg_2R_s"], "max_rel_err_E_G": res["max_rel_err_interaction_energy"]},
         "geometry_checks": {"sigma_ladder_tubulin_and_casimir_floor": "PASS", "sigma_cubed_law": "PASS", "oppenheim_f16_with_eotwash_inputs": "PASS", 
