@@ -641,7 +641,8 @@
       "collaboration": "Tilloy & Diosi (PRD)",
       "kind": "peer-reviewed",
       "review_by": "2028-11-09",
-      "note": "Sourcing semiclassical gravity from spontaneously localized quantum matter: the hybrid classical-gravity / quantum-matter construction whose master equation (Newtonian pair potential plus doubled DP decoherence, sigma smearing) Trillo and Navascues integrate. A proposal."
+      "note": "Sourcing semiclassical gravity from spontaneously localized quantum matter: the hybrid classical-gravity / quantum-matter construction whose master equation (Newtonian pair potential plus doubled DP decoherence, sigma smearing) Trillo and Navascues integrate. A proposal.",
+      "contrasting_audit": "Audited (AH-8/AH-12): contrasting citations challenge hybrid classical-channel dynamics against entanglement witnesses and DP heating/short-range bounds; row stays capped at PROPOSED and T.05 contrasts Model B explicitly against Model A and Eot-Wash/Ge bounds."
     },
     {
       "id": "T05-VANDEKAMP2020",
@@ -651,7 +652,8 @@
       "collaboration": "Van De Kamp, Marshman, Bose & Mazumdar (PRA)",
       "kind": "peer-reviewed",
       "review_by": "2028-11-09",
-      "note": "Quantum gravity witness via entanglement of masses with Casimir screening: the geometry (1e-15 kg, 23 um split, 24 um separation) that Trillo and Navascues take for their Fig. 3. A proposal."
+      "note": "Quantum gravity witness via entanglement of masses with Casimir screening: the geometry (1e-15 kg, 23 um split, 24 um separation) that Trillo and Navascues take for their Fig. 3. A proposal.",
+      "contrasting_audit": "Audited (AH-8/AH-12): follow-up QGEM design papers (including Schut et al. 2022) refine conducting-plate screening, patch potentials, and nearest-approach vs center-distance conventions; row stays capped at PROPOSED and T.05 computes both 24 um and 47 um readings."
     },
     {
       "id": "T05-LEE2020",

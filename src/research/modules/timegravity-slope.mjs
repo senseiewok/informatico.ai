@@ -61,7 +61,16 @@ const STR = {
 };
 
 function lang() {
-  return document.documentElement.lang === "es-MX" ? "es" : "en";
+  return /^es(?:-|$)/i.test(document.documentElement.lang || "") ? "es" : "en";
+}
+
+function syncClaimTitles(scope = document) {
+  const isEs = lang() === "es";
+  scope.querySelectorAll('.tg-claim[data-tg-label="DERIVED"]').forEach((el) => {
+    const nextTitle = el.getAttribute(isEs ? "data-title-es" : "data-title-en");
+    if (nextTitle) el.setAttribute("title", nextTitle);
+    el.setAttribute("data-tg-qualifier", isEs ? "DERIVADO (NO MEDIDO)" : "DERIVED (NOT MEASURED)");
+  });
 }
 
 function reducedMotion() {
@@ -1650,6 +1659,11 @@ function initDarkClock(root) {
 }
 
 export function initTimeGravity(scope = document) {
+  syncClaimTitles(scope);
+  if (scope === document && !document.documentElement.hasAttribute("data-tg-claim-lang-bound")) {
+    document.documentElement.setAttribute("data-tg-claim-lang-bound", "true");
+    window.addEventListener("tp-lang-change", () => syncClaimTitles(document));
+  }
   const once = (sel, fn) => scope.querySelectorAll(sel).forEach((el) => { if (!el.hasAttribute("data-tg-ready")) fn(el); });
   once("[data-tg-predict]", initPredict);
   once('[data-tg-instrument="slope"]', initSlope);

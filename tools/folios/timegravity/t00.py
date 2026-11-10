@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Time & Gravity · T.00 — The hub.
 
-Poses the intuition once, in the third person, as a question; maps the nine pages; carries no claims.
+Poses the intuition once, in the third person, as a question; maps the thirteen pages; carries no claims.
 tools/check_timegravity_labels.py asserts that this page has zero claim spans.
 """
 from __future__ import annotations
@@ -65,6 +65,26 @@ PAGE: dict = {
     "sections": [
         {"type": "h2", "id": "map", "en": "The thirteen steps, in reading order", "es": "Los trece pasos, en orden de lectura", "short_en": "Map", "short_es": "Mapa"},
         {"type": "track_map"},
+        P(
+            T("The thirteen steps move through four regimes without skipping an intermediate link. Steps 2 to 4 (T.02, T.01, T.03) establish the "
+              "classical metric clock-rate gradient from laboratory optical clocks, GPS satellites, and torsion-balance equivalence tests. Steps 5 to 7 "
+              "(T.04, T.05, T.06) bring quantum superpositions into that gradient: proper-time clock interferometry, the three-channel gravity-entanglement "
+              "dispute alongside short-range inverse-square limits, and underground radiation bounds on spontaneous gravitational collapse. Steps 8 to 11 "
+              "(T.07, T.08, T.09, T.10) confront the timeless Wheeler–DeWitt constraint and causal horizons: relational Page–Wootters clocks, Rindler–Unruh–Hawking "
+              "thermal wedges, Kerr quasi-normal ringdown spectroscopy, and Page's unitary entropy curve. Steps 12 and 13 (T.11, T.12) ask how a macroscopic "
+              "record forms at all: electromagnetic pointer selection and Quantum Darwinism for ordinary matter that scatters photons, set beside the "
+              "five-sixths of non-relativistic gravitating matter that leaves no electromagnetic record and meets our clocks through spacetime curvature.",
+              "Los trece pasos recorren cuatro regímenes sin saltarse ningún eslabón intermedio. Los pasos 2 a 4 (T.02, T.01, T.03) establecen el "
+              "gradiente métrico clásico del ritmo de los relojes desde los relojes ópticos de laboratorio, los satélites GPS y las pruebas del principio "
+              "de equivalencia en balanza de torsión. Los pasos 5 a 7 (T.04, T.05, T.06) llevan las superposiciones cuánticas a ese gradiente: la "
+              "interferometría de relojes en tiempo propio, la disputa de tres canales sobre el entrelazamiento gravitatorio junto a los límites de corto "
+              "alcance del inverso del cuadrado, y las cotas subterráneas de radiación sobre el colapso gravitatorio espontáneo. Los pasos 8 a 11 "
+              "(T.07, T.08, T.09, T.10) abordan la ligadura atemporal de Wheeler y DeWitt y los horizontes causales: relojes relacionales de Page y Wootters, "
+              "cuñas térmicas de Rindler, Unruh y Hawking, espectroscopía de ringdown cuasinormal de Kerr y la curva unitaria de entropía de Page. Los pasos "
+              "12 y 13 (T.11, T.12) preguntan cómo llega a formarse un registro macroscópico: la selección electromagnética de estados puntero y el darwinismo "
+              "cuántico para la materia ordinaria que dispersa fotones, frente a los cinco sextos de materia gravitante no relativista que no dejan huella "
+              "electromagnética y solo se encuentran con nuestros relojes mediante la curvatura del espaciotiempo."),
+        ),
         {"type": "h2", "id": "contract", "en": "How to read a T page", "es": "Cómo leer una página T", "short_en": "Labels", "short_es": "Etiquetas"},
         P(
             T("Every page in this track ships six things, and the build refuses a page that lacks one: a hand-written instrument whose "
@@ -81,12 +101,14 @@ PAGE: dict = {
         {"type": "labels"},
         P(
             T("The labels describe evidence, not confidence. MEASURED needs at least two collaborations with peer-reviewed results. "
-              "BOUND is an exclusion limit. DERIVED follows by mathematics from a named MEASURED parent. SINGLE RESULT is one "
+              "BOUND is an exclusion limit. DERIVED — printed on its badge as DERIVED (NOT MEASURED) — follows by mathematics or deterministic "
+              "kernel from a named MEASURED parent row without claiming a new experiment ran. SINGLE RESULT is one "
               "collaboration, or anything published inside the last twenty-four months. PROPOSED is a proposal, and a preprint can never "
               "be more. OPEN is a question the field has not closed. A lint checks the mechanics: rows, dates, collaborations, DOIs, the "
               "same label sequence in both languages. A human checklist decides the label itself.",
               "Las etiquetas describen evidencia, no confianza. MEDIDO necesita al menos dos colaboraciones con resultados revisados por "
-              "pares. COTA es un límite de exclusión. DERIVADO se sigue por matemáticas de una fila madre MEDIDA con nombre. RESULTADO "
+              "pares. COTA es un límite de exclusión. DERIVADO — impreso en su insignia como DERIVADO (NO MEDIDO) — se sigue por matemáticas o "
+              "núcleo determinista de una fila madre MEDIDA con nombre sin afirmar que se corrió un experimento nuevo. RESULTADO "
               "ÚNICO es una sola colaboración, o cualquier cosa publicada en los últimos veinticuatro meses. PROPUESTO es una propuesta, y "
               "una prepublicación nunca puede ser más. ABIERTO es una pregunta que el campo no ha cerrado. Un lint revisa la mecánica: "
               "filas, fechas, colaboraciones, DOI, la misma secuencia de etiquetas en ambos idiomas. Una lista de verificación humana decide "

@@ -31,6 +31,7 @@ import html
 import json
 import re
 import sys
+from decimal import Decimal, InvalidOperation
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -129,16 +130,18 @@ def check_ledger(ledger: dict, cache: dict, today: dt.date, errors: list[str]) -
             errors.append(f"ledger {rid}: DOI {doi} does not resolve in the offline Crossref cache")
         elif rec.get("year") and abs(int(rec["year"]) - int(row.get("year", 0))) > 1:
             errors.append(f"ledger {rid}: year {row.get('year')} disagrees with Crossref {rec['year']}")
-        # Evidence-synthesis habit: Scite citation polarity is a WARN, never a verdict (the checklist says what to do).
+        # Evidence-synthesis habit (AH-8 / AH-12): Scite contrasting > supporting requires an explicit contrasting_audit scope note.
         sc = cache.get("scite:" + doi.lower())
         if sc and sc.get("found"):
             if sc.get("retracted"):
                 errors.append(f"ledger {rid}: Scite marks DOI {doi} as retracted; a retracted row cannot back a claim")
             if int(sc.get("contrasting", 0)) > int(sc.get("supporting", 0)):
-                WARNINGS.append(
-                    f"ledger {rid}: Scite shows more contrasting ({sc.get('contrasting')}) than supporting ({sc.get('supporting')}) "
-                    "citation statements [observed: Scite ML citation classification]; re-read three contrasting statements before keeping the label"
-                )
+                audit = str(row.get("contrasting_audit") or "").strip()
+                if len(audit) < 20:
+                    errors.append(
+                        f"ledger {rid}: Scite shows more contrasting ({sc.get('contrasting')}) than supporting ({sc.get('supporting')}) "
+                        "citation statements [observed: Scite ML citation classification]; add a >=20-char contrasting_audit scope note"
+                    )
         rb = str(row.get("review_by", ""))
         if not DATE_RE.match(rb):
             errors.append(f"ledger {rid}: review_by {rb!r} is not YYYY-MM-DD")
@@ -230,19 +233,38 @@ def page_paths() -> list[tuple[str, Path, Path, bool]]:
 
 
 WARNINGS: list[str] = []
+_SUB_SUP_DIGITS = str.maketrans("⁰¹²³⁴⁵⁶⁷⁸⁹⁻₀₁₂₃₄₅₆₇₈₉", "0123456789-0123456789")
+_CLAIM_NUM_RE = re.compile(r"(?<![A-Za-z])[-−]?\d+(?:,\d{3})*(?:\.\d+)?(?:[eE][-−+]?\d+)?")
+
+
+def claim_number_tokens(text: str) -> list[str]:
+    """Normalized numeric tokens inside a claim span (ported from cf-research check_claims.py Rule R3)."""
+    norm = text.translate(_SUB_SUP_DIGITS).replace("−", "-")
+    out: list[str] = []
+    for m in _CLAIM_NUM_RE.finditer(norm):
+        tok = m.group(0).replace(",", "")
+        try:
+            out.append(format(Decimal(tok).normalize(), "f"))
+        except InvalidOperation:
+            out.append(tok)
+    return sorted(out)
+
 
 # Mutation suite (software-verification habit): each mutant is applied in memory and the lint must report >= 1 error.
 MUTANTS: tuple[str, ...] = (
-    "flip_up",        # SINGLE RESULT -> MEASURED (the planted defect)
-    "drop_parent",    # first DERIVED claim loses data-tg-parent
-    "press_row",      # a cited row becomes kind=press
-    "stale_review",   # every review_by date has passed
-    "same_collab",    # the rows behind the first MEASURED claim collapse to one collaboration
-    "young_rows",     # the rows behind the first MEASURED claim were all published this year
-    "es_mismatch",    # the Spanish twin's first label differs
-    "no_boundary",    # the boundary line is missing from one page
-    "hub_phrase",     # the hub-only sentence appears on a claim page
-    "hub_claim",      # the hub carries a claim span
+    "flip_up",          # SINGLE RESULT -> MEASURED (the planted defect)
+    "drop_parent",      # first DERIVED claim loses data-tg-parent
+    "bad_parent_label", # first DERIVED claim's parent row is downgraded from MEASURED to PROPOSED
+    "press_row",        # a cited row becomes kind=press
+    "stale_review",     # every review_by date has passed
+    "same_collab",      # the rows behind the first MEASURED claim collapse to one collaboration
+    "young_rows",       # the rows behind the first MEASURED claim were all published this year
+    "es_mismatch",      # the Spanish twin's first label differs
+    "es_num_mismatch",  # the Spanish twin's first claim number drifts (R3 numeric parity)
+    "unres_scite",      # a contrasting-dominant row loses its contrasting_audit scope note (AH-8/AH-12)
+    "no_boundary",      # the boundary line is missing from one page
+    "hub_phrase",       # the hub-only sentence appears on a claim page
+    "hub_claim",        # the hub carries a claim span
 )
 
 
@@ -255,12 +277,20 @@ def lint(planted_defect: bool = False, today: dt.date | None = None, mutation: s
     errors: list[str] = []
     ledger = json.loads(LEDGER_PATH.read_text(encoding="utf-8"))
     cache = json.loads(CACHE_PATH.read_text(encoding="utf-8"))
+    mutated = mutation in (None, "flip_up", "stale_review")
     if mutation == "press_row":
         ledger["rows"][0]["kind"] = "press"
+        mutated = True
+    elif mutation == "unres_scite":
+        for r in ledger["rows"]:
+            sc = cache.get("scite:" + r.get("doi", "").lower())
+            if r.get("contrasting_audit") and sc and int(sc.get("contrasting", 0)) > int(sc.get("supporting", 0)):
+                r.pop("contrasting_audit", None)
+                mutated = True
+                break
     rows = check_ledger(ledger, cache, today, errors)
     summary = {"pages": 0, "claims": 0, "labels": {}}
     planted_done = False
-    mutated = mutation in (None, "flip_up", "stale_review", "press_row")  # mutations applied before the page loop
 
     for rel, en_path, es_path, is_hub in page_paths():
         for path, lang in ((en_path, "en"), (es_path, "es")):
@@ -278,6 +308,10 @@ def lint(planted_defect: bool = False, today: dt.date | None = None, mutation: s
                     nxt_c = next(c for c in lst if c["label"] == "DERIVED")
                     nxt_c["parent"] = None
                 mutated = True
+            elif mutation == "bad_parent_label" and any(c["label"] == "DERIVED" and c.get("parent") in rows for c in en_claims):
+                pid = next(c["parent"] for c in en_claims if c["label"] == "DERIVED" and c.get("parent") in rows)
+                rows[pid]["label"] = "PROPOSED"
+                mutated = True
             elif mutation in ("same_collab", "young_rows") and any(c["label"] == "MEASURED" for c in en_claims):
                 first = next(c for c in en_claims if c["label"] == "MEASURED")
                 for rid in first["ids"]:
@@ -289,6 +323,9 @@ def lint(planted_defect: bool = False, today: dt.date | None = None, mutation: s
                 mutated = True
             elif mutation == "es_mismatch" and es_claims:
                 es_claims[0]["label"] = "OPEN" if es_claims[0]["label"] != "OPEN" else "PROPOSED"
+                mutated = True
+            elif mutation == "es_num_mismatch" and es_claims:
+                es_claims[0]["text"] = es_claims[0]["text"] + " 999"
                 mutated = True
             elif mutation == "no_boundary" and not is_hub:
                 en_raw = en_raw.replace(BOUNDARY_EN, "").replace(html.escape(BOUNDARY_EN), "")
@@ -316,6 +353,13 @@ def lint(planted_defect: bool = False, today: dt.date | None = None, mutation: s
             errors.append(f"{rel}: English and es-MX ledger-id sequences differ")
         if [c.get("parent") for c in en_claims] != [c.get("parent") for c in es_claims]:
             errors.append(f"{rel}: English and es-MX parent-id sequences differ")
+        for idx_num, (en_c, es_c) in enumerate(zip(en_claims, es_claims)):
+            n_en, n_es = claim_number_tokens(en_c["text"]), claim_number_tokens(es_c["text"])
+            if n_en != n_es:
+                errors.append(
+                    f"{rel} claim #{idx_num + 1}: English and es-MX numeric tokens differ "
+                    f"(EN={n_en} vs ES={n_es})"
+                )
 
         if is_hub:
             if en_claims or es_claims:
@@ -367,7 +411,8 @@ def run_mutants(today: dt.date) -> tuple[list[str], list[str]]:
     killed, survived = [], []
     for m in MUTANTS:
         errs, _ = lint(today=today, mutation=m)
-        (killed if errs else survived).append(m)
+        real_kill = bool(errs) and not any("could not be applied" in e for e in errs)
+        (killed if real_kill else survived).append(m)
     return killed, survived
 
 

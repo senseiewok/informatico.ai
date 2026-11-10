@@ -42,13 +42,16 @@
     background-color: var(--tp-stone);
     white-space: nowrap;
   }
-  html[lang="es-MX"] .tg-claim::after, html[lang="es-MX"] .tg-claim-look::after {
+  html[lang="es-MX"] .tg-claim::after, html[lang="es-MX"] .tg-claim-look::after,
+  html[lang^="es"] .tg-claim::after, html[lang^="es"] .tg-claim-look::after {
     content: attr(data-tg-label-es);
   }
   .tg-claim[data-tg-label="MEASURED"] { border-bottom-color: var(--tp-verdigris); }
   .tg-claim[data-tg-label="MEASURED"]::after, .tg-claim-look[data-tg-label="MEASURED"]::after { color: var(--tp-verdigris); border-color: var(--tp-verdigris); background-color: var(--tp-verdigris-soft); }
   .tg-claim[data-tg-label="DERIVED"] { border-bottom-color: var(--tp-prussian); }
-  .tg-claim[data-tg-label="DERIVED"]::after, .tg-claim-look[data-tg-label="DERIVED"]::after { color: var(--tp-prussian); border-color: var(--tp-prussian); background-color: var(--tp-prussian-soft); }
+  .tg-claim[data-tg-label="DERIVED"]::after, .tg-claim-look[data-tg-label="DERIVED"]::after { content: "DERIVED (NOT MEASURED)"; color: var(--tp-prussian); border-color: var(--tp-prussian); background-color: var(--tp-prussian-soft); }
+  html[lang="es-MX"] .tg-claim[data-tg-label="DERIVED"]::after, html[lang="es-MX"] .tg-claim-look[data-tg-label="DERIVED"]::after,
+  html[lang^="es"] .tg-claim[data-tg-label="DERIVED"]::after, html[lang^="es"] .tg-claim-look[data-tg-label="DERIVED"]::after { content: "DERIVADO (NO MEDIDO)"; }
   .tg-claim[data-tg-label="BOUND"] { border-bottom-color: var(--tp-sienna); }
   .tg-claim[data-tg-label="BOUND"]::after, .tg-claim-look[data-tg-label="BOUND"]::after { color: var(--tp-sienna); border-color: var(--tp-sienna); background-color: var(--tp-sienna-soft); }
   .tg-claim[data-tg-label="SINGLE RESULT"] { border-bottom-color: var(--tp-minium); }

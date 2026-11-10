@@ -1879,7 +1879,11 @@ def render_masthead(rel_res: str, active_pillar: str = "", lang: str = "en") -> 
 def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -> str:
     """Every essay, one click from any page: a native <dialog> with search, four columns of titles."""
     tg_items = []
-    for tg in TIMEGRAVITY_PAGES:
+    tg_by_code = {p["code"]: p for p in TIMEGRAVITY_PAGES}
+    for m in TIMEGRAVITY_TRACK_MAP:
+        tg = tg_by_code.get(m["code"])
+        if tg is None:
+            continue
         tg_slug = tg["slug"]
         tg_path = "timegravity/" + (f"{tg_slug}/" if tg_slug else "")
         tg_cur = ' aria-current="page"' if (tg_slug or "t00") == active_slug else ""
@@ -2161,11 +2165,17 @@ def render_timegravity_series_rack(rel_res: str) -> str:
         </a>"""
         )
     cards_html = "\n".join(cards)
+    hub_href = _href(rel_res, "timegravity/")
+    step2_href = _href(rel_res, "timegravity/t02/")
     return f"""
-    <section class="tp-issue-rack tp-series-rack" aria-label="Time and Gravity series" id="timegravity-series">
-      <p class="tp-kicker" data-en="Series · Time &amp; Gravity · thirteen steps, one open problem" data-es="Serie · Tiempo y Gravedad · trece pasos, un problema abierto">Series · Time &amp; Gravity · thirteen steps, one open problem</p>
-      <h2 class="tp-h2"><a href="{_href(rel_res, 'timegravity/')}" data-en="Time &amp; Gravity" data-es="Tiempo y Gravedad">Time &amp; Gravity</a></h2>
-      <p class="tp-standfirst" data-en="A guided reading track rather than twelve stand-alone essays: from the measured slope in the rate of time to the open problem of time in quantum gravity, in thirteen steps that each end with the question the next one takes up. Six evidence labels, a ledger and a lint hold every claim." data-es="Una serie de lectura guiada, no doce ensayos sueltos: de la pendiente medida en el ritmo del tiempo al problema abierto del tiempo en la gravedad cuántica, en trece pasos que terminan cada uno con la pregunta que retoma el siguiente. Seis etiquetas de evidencia, un libro de registro y un lint sostienen cada afirmación.">A guided reading track rather than twelve stand-alone essays: from the measured slope in the rate of time to the open problem of time in quantum gravity, in thirteen steps that each end with the question the next one takes up. Six evidence labels, a ledger and a lint hold every claim.</p>
+    <section class="tp-issue-rack tp-series-rack tp-series-rack-lead" aria-labelledby="timegravity-series-heading" id="timegravity-series">
+      <p class="tp-kicker" data-en="Featured Series · Time &amp; Gravity · 13 steps · 110 audited claims" data-es="Serie Destacada · Tiempo y Gravedad · 13 pasos · 110 afirmaciones auditadas">Featured Series · Time &amp; Gravity · 13 steps · 110 audited claims</p>
+      <h2 id="timegravity-series-heading" class="tp-h2"><a href="{hub_href}" data-en="Time &amp; Gravity (T.00–T.12)" data-es="Tiempo y Gravedad (T.00–T.12)">Time &amp; Gravity (T.00–T.12)</a></h2>
+      <p class="tp-standfirst" data-en="A guided thirteen-step inquiry from optical clocks and sub-millimetre torsion balances to GW250114 black-hole ringdown, electromagnetic pointer selection, and dark-sector clock networks—where every page ends with the open question the next one takes up, and six strict evidence labels (including DERIVED (NOT MEASURED)) hold every claim to a 108-row offline ledger." data-es="Una investigación guiada de trece pasos desde relojes ópticos y balanzas de torsión submilimétricas hasta el ringdown de agujeros negros GW250114, la selección electromagnética de estados puntero y las redes de relojes del sector oscuro, donde cada página cierra con la pregunta abierta que retoma la siguiente y seis etiquetas de evidencia (incluida DERIVADO (NO MEDIDO)) sostienen cada afirmación frente a un libro de 108 filas.">A guided thirteen-step inquiry from optical clocks and sub-millimetre torsion balances to GW250114 black-hole ringdown, electromagnetic pointer selection, and dark-sector clock networks—where every page ends with the open question the next one takes up, and six strict evidence labels (including DERIVED (NOT MEASURED)) hold every claim to a 108-row offline ledger.</p>
+      <div class="tp-series-rack-ctas">
+        <a class="tp-cta tp-cta-primary" href="{hub_href}" data-en="Enter the Series Hub · T.00 →" data-es="Entrar al Inicio de la Serie · T.00 →">Enter the Series Hub · T.00 →</a>
+        <a class="tp-cta" href="{step2_href}" data-en="Begin Step 2 · Everyone Moves at One Rate (T.02) →" data-es="Empezar Paso 2 · Todos Avanzamos a un Mismo Ritmo (T.02) →">Begin Step 2 · Everyone Moves at One Rate (T.02) →</a>
+      </div>
       <div class="tp-rack-grid">
 {cards_html}
       </div>
@@ -2185,11 +2195,18 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
                                               image=image, crumbs=crumbs), lang)
     cards = render_rack_cards(pillar, folios, "./", "../plates/", eager=12)
     n = len(folios)
-    extra_sections = ""
+    lead_series = render_timegravity_series_rack(rel_res) if pillar == "physics" else ""
+    rack_cls = "tp-issue-rack tp-issue-rack-headed" if pillar == "physics" else "tp-issue-rack"
+    rack_head = ""
     if pillar == "physics":
-        extra_sections = render_timegravity_series_rack(rel_res)
+        rack_head = """      <div class="tp-issue-rack-head">
+        <p class="tp-kicker" data-en="Standalone Physics Monographs · P.01–P.12" data-es="Monografías Independientes de Física · P.01–P.12">Standalone Physics Monographs · P.01–P.12</p>
+        <h2 class="tp-h2" data-en="Twelve Multiscale &amp; Quantum Monographs" data-es="Doce Monografías Multiescala y Cuánticas">Twelve Multiscale &amp; Quantum Monographs</h2>
+      </div>
+"""
+    extra_sections = ""
     if pillar in ("physics", "math"):
-        extra_sections += f"\n{render_symbolic_physics_lab_section(rel_res)}\n{render_oss_physics_radar_section(rel_res)}"
+        extra_sections = f"\n{render_symbolic_physics_lab_section(rel_res)}\n{render_oss_physics_radar_section(rel_res)}"
     kick_en = f"Pillar {PILLAR_ROMAN[pillar]} · {n} essays" + (" · 1 series of 13 steps" if pillar == "physics" else "")
     kick_es = f"Pilar {PILLAR_ROMAN[pillar]} · {n} ensayos" + (" · 1 serie de 13 pasos" if pillar == "physics" else "")
     return f"""{head}
@@ -2202,9 +2219,9 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
       <p class="tp-kicker" data-en="{kick_en}" data-es="{kick_es}">{kick_en}</p>
       <h1 id="pillar-heading" class="tp-h1" data-en="{esc(title_en)}" data-es="{esc(title_es)}">{esc(title_en)}</h1>
       <p class="tp-standfirst" data-en="{esc(hook_en)}" data-es="{esc(hook_es)}">{esc(hook_en)}</p>
-    </section>
-    <section class="tp-issue-rack" aria-label="{esc(PILLAR_TITLES[pillar])} essays">
-      <div class="tp-rack-grid">
+    </section>{lead_series}
+    <section class="{rack_cls}" aria-label="{esc(PILLAR_TITLES[pillar])} essays">
+{rack_head}      <div class="tp-rack-grid">
 {cards}
       </div>
     </section>{extra_sections}
@@ -4865,10 +4882,111 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
 """
 
 
+def render_cover_timegravity_feature(rel_res: str = ".") -> str:
+    """Featured Series Essay-Showcase & 13-Step Reading-Order Ribbon on the Home cover."""
+    by_code = {p["code"]: p for p in TIMEGRAVITY_PAGES}
+    step_items = []
+    for i, m in enumerate(TIMEGRAVITY_TRACK_MAP, 1):
+        tg = by_code.get(m["code"])
+        if tg is None:
+            continue
+        slug = tg["slug"]
+        href = _href(rel_res, "timegravity/" + (f"{slug}/" if slug else ""))
+        meta_en = f"Step {i} of 13 · {tg['code']}"
+        meta_es = f"Paso {i} de 13 · {tg['code']}"
+        title_en, title_es = tg["title_en"], tg["title_es"]
+        step_items.append(
+            f"""          <li class="tp-featured-step-item">
+            <a class="tp-featured-step-link" href="{href}">
+              <span class="tp-featured-step-meta" data-en="{esc(meta_en)}" data-es="{esc(meta_es)}">{esc(meta_en)}</span>
+              <strong class="tp-featured-step-title" data-en="{esc(title_en)}" data-es="{esc(title_es)}">{esc(title_en)}</strong>
+            </a>
+          </li>"""
+        )
+    steps_html = "\n".join(step_items)
+    hub_href = _href(rel_res, "timegravity/")
+    step2_href = _href(rel_res, "timegravity/t02/")
+    phys_href = _href(rel_res, "physics/#timegravity-series")
+    plate_url = f"{_href(rel_res, 'plates/t00.png')}?v={_png_sha8('t00')}"
+
+    kicker_en = "Featured Series · Physics · 13 Steps · 110 Audited Claims"
+    kicker_es = "Serie Destacada · Física · 13 Pasos · 110 Afirmaciones Auditadas"
+    h2_en = "Time & Gravity: Thirteen Steps from Falling Clocks to Open Horizons"
+    h2_es = "Tiempo y Gravedad: Trece Pasos de los Relojes que Caen a los Horizontes Abiertos"
+    essay1_en = (
+        "Drop an apple from rest and ask what pushes it downward: in general relativity, nothing pushes. "
+        "A clock on an upper shelf ticks slightly faster than a clock on the floor—about 1.09 × 10⁻¹⁶ faster per metre at Earth’s surface—"
+        "and a freely falling body simply follows the straightest worldline that maximises its own elapsed proper time. "
+        "Our thirteen-step series begins with that everyday clock-rate slope and walks, one open question at a time, through optical-lattice "
+        "interferometry, 10⁻¹⁴ kg table-top quantum-gravity witnesses and the 33 µm Eöt-Wash torsion-balance recast, Diósi–Penrose objective-collapse bounds, "
+        "timeless Wheeler–DeWitt relational clocks, Hawking–Unruh horizon thermodynamics, GW250114 Kerr black-hole ringdown spectroscopy, "
+        "Page-curve island unitarity, electromagnetic pointer-state einselection (scaling as R⁶T⁹), and the 84.3% non-relativistic dark-matter clock baseline."
+    )
+    essay1_es = (
+        "Suelta una manzana desde el reposo y pregunta qué la empuja hacia abajo: en la relatividad general nada empuja. "
+        "Un reloj en un estante alto corre ligeramente más rápido que uno en el suelo —alrededor de 1.09 × 10⁻¹⁶ más rápido por metro en la superficie terrestre— "
+        "y un cuerpo en caída libre simplemente sigue la línea de mundo más recta que maximiza su propio tiempo propio transcurrido. "
+        "Nuestra serie de trece pasos parte de esa pendiente cotidiana de ritmos de reloj y recorre, una pregunta abierta a la vez, la interferometría "
+        "de redes ópticas, los testigos de gravedad cuántica de mesa de 10⁻¹⁴ kg y el recálculo Eöt-Wash a 33 µm, las cotas de colapso objetivo de Diósi–Penrose, "
+        "los relojes relacionales sin tiempo de Wheeler–DeWitt, la termodinámica de horizontes de Hawking–Unruh, la espectroscopía de ringdown de Kerr en GW250114, "
+        "la unitariedad de islas en la curva de Page, la einselección electromagnética de estados puntero (con escala R⁶T⁹) y el fondo gravitacional del 84.3% de materia oscura no relativista."
+    )
+    essay2_en = (
+        "Where standard relativity and quantum mechanics meet without laboratory data, prose alone easily blurs textbook measurements with mathematical extrapolations. "
+        "Every substantive claim across T.00–T.12 therefore carries one of six machine-checked badges—MEASURED, DERIVED (NOT MEASURED), SINGLE RESULT, BOUND, PROPOSED, or OPEN—"
+        "verified offline against a 108-row primary-literature ledger and sixteen zero-dependency Python physics kernels with planted-defect knockouts."
+    )
+    essay2_es = (
+        "Donde la relatividad estándar y la mecánica cuántica se encuentran sin datos de laboratorio, la prosa por sí sola confunde con facilidad mediciones consolidadas con extrapolaciones matemáticas. "
+        "Por ello, cada afirmación sustantiva de T.00–T.12 lleva una de seis insignias verificadas por máquina —MEASURED, DERIVADO (NO MEDIDO), SINGLE RESULT, BOUND, PROPOSED u OPEN— "
+        "auditadas fuera de línea frente a un registro primario de 108 filas y dieciséis kernels de física en Python sin dependencias externas."
+    )
+    cta1_en, cta1_es = "Enter the Series Hub (T.00) →", "Entrar al Inicio de la Serie (T.00) →"
+    cta2_en, cta2_es = "Begin Step 2 · Everyone Moves at One Rate (T.02) →", "Empezar Paso 2 · Todos Avanzamos a un Mismo Ritmo (T.02) →"
+    cta3_en, cta3_es = "Explore the Physics Section →", "Explorar la Sección de Física →"
+    cap_en = (
+        "Deterministic track map (Plate T.00): four regimes from falling clocks and 10⁻¹⁴ kg interferometers to GW250114 horizons, "
+        "R⁶T⁹ photon baths, and dark-sector clock networks—every claim audited against primary DOIs."
+    )
+    cap_es = (
+        "Mapa determinista de la serie (Lámina T.00): cuatro regímenes desde relojes en caída e interferómetros de 10⁻¹⁴ kg hasta horizontes GW250114, "
+        "baños fotónicos R⁶T⁹ y redes de relojes del sector oscuro, con cada afirmación auditada frente a DOIs primarios."
+    )
+    rail_en = "Reading order across all 13 steps (note T.02 precedes T.01 so spacetime norm precedes spatial projection):"
+    rail_es = "Orden de lectura de los 13 pasos (nota: T.02 precede a T.01 para fijar la norma espaciotemporal antes de su proyección):"
+
+    return f"""    <section class="tp-cover-featured-series" id="featured-timegravity" aria-labelledby="featured-tg-heading">
+      <div class="tp-featured-series-grid">
+        <div class="tp-featured-series-copy">
+          <p class="tp-kicker" data-en="{esc(kicker_en)}" data-es="{esc(kicker_es)}">{esc(kicker_en)}</p>
+          <h2 id="featured-tg-heading" class="tp-h2"><a href="{hub_href}" data-en="{esc(h2_en)}" data-es="{esc(h2_es)}">{esc(h2_en)}</a></h2>
+          <p class="tp-featured-series-essay" data-en="{esc(essay1_en)}" data-es="{esc(essay1_es)}">{esc(essay1_en)}</p>
+          <p class="tp-featured-series-essay" data-en="{esc(essay2_en)}" data-es="{esc(essay2_es)}">{esc(essay2_en)}</p>
+          <div class="tp-featured-series-ctas">
+            <a class="tp-cta tp-cta-primary" href="{hub_href}" data-en="{esc(cta1_en)}" data-es="{esc(cta1_es)}">{esc(cta1_en)}</a>
+            <a class="tp-cta" href="{step2_href}" data-en="{esc(cta2_en)}" data-es="{esc(cta2_es)}">{esc(cta2_en)}</a>
+            <a class="tp-cta" href="{phys_href}" data-en="{esc(cta3_en)}" data-es="{esc(cta3_es)}">{esc(cta3_en)}</a>
+          </div>
+        </div>
+        <figure class="tp-featured-series-figure">
+          <img class="tp-featured-series-plate" src="{plate_url}" width="1200" height="630" loading="lazy" decoding="async" alt="Deterministic series diagram for Time and Gravity (T.00 to T.12): clock-rate gradient, quantum superposition interferometry, Kerr horizon ringdown, and six-label evidence ledger.">
+          <figcaption class="tp-featured-series-caption" data-en="{esc(cap_en)}" data-es="{esc(cap_es)}">{esc(cap_en)}</figcaption>
+        </figure>
+      </div>
+      <nav class="tp-featured-steps-nav" aria-labelledby="featured-tg-steps-label">
+        <p id="featured-tg-steps-label" class="tp-featured-steps-label" data-en="{esc(rail_en)}" data-es="{esc(rail_es)}">{esc(rail_en)}</p>
+        <ol class="tp-featured-steps-rail">
+{steps_html}
+        </ol>
+      </nav>
+    </section>"""
+
+
 def render_hub_index(catalog: dict, lang: str = "en") -> str:
-    """The cover: compact hero + 6-Track & Skills Navigator Strip above the fold, followed by the 4 Pillar rows and 6 Bounties."""
+    """The cover: compact hero + Navigator Strip above the fold, Featured Time & Gravity Essay-Showcase, 4 Pillar rows, Toolchain, and 6 Bounties."""
     es = lang == "es"
     total = sum(len(v) for v in catalog["pillars"].values())
+    skill_count = len(list((ROOT / "skills").glob("*/*/SKILL.md")))
     t_en, d_en, t_es, d_es = (x.replace("{total}", str(total)) for x in HUB_SEO)
     hub_title, hub_desc = (t_es, d_es) if es else (t_en, d_en)
     hub_ld = json.dumps(
@@ -4894,10 +5012,10 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         rows.append(
             f"""    <section class="tp-cover-pillar" data-track="{p_key}" aria-labelledby="pillar-{p_key}">
       <div class="tp-cover-pillar-head">
-        <p class="tp-kicker" data-en="Pillar {PILLAR_ROMAN[p_key]} · {len(folios)} essays" data-es="Pillar {PILLAR_ROMAN[p_key]} · {len(folios)} ensayos">Pillar {PILLAR_ROMAN[p_key]} · {len(folios)} essays</p>
+        <p class="tp-kicker" data-en="Pillar {PILLAR_ROMAN[p_key]} · {len(folios)} essays" data-es="Pilar {PILLAR_ROMAN[p_key]} · {len(folios)} ensayos">Pillar {PILLAR_ROMAN[p_key]} · {len(folios)} essays</p>
         <h2 id="pillar-{p_key}" class="tp-h2"><a href="{p_key}/" data-en="{esc(en)}" data-es="{esc(es_t)}">{esc(en)}</a></h2>
         <p class="tp-cover-hook" data-en="{esc(hook_en)}" data-es="{esc(hook_es)}">{esc(hook_en)}</p>
-        <a class="tp-cover-more" href="{p_key}/" data-en="See all {len(folios)} &rarr;" data-es="Ver los {len(folios)} &rarr;">See all {len(folios)} &rarr;</a>
+        <a class="tp-cover-more" href="{p_key}/" data-en="See all {len(folios)} →" data-es="Ver los {len(folios)} →">See all {len(folios)} →</a>
       </div>
       <div class="tp-cover-row">
 {cards}
@@ -4906,6 +5024,11 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         )
     rows_html = "\n".join(rows)
     first = catalog["pillars"]["engineering"][0]
+    strip_aria = (
+        f"Informatico.ai: 4 Pilares, Serie Tiempo y Gravedad, 6 Retos y {skill_count} Skills de IA"
+        if es
+        else f"Informatico.ai 4 Pillars, Time and Gravity Series, 6 Bounties and {skill_count} AI Skills"
+    )
 
     return f"""{head}
 <body class="tp-body tp-page-cover">
@@ -4919,7 +5042,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         <p class="tp-standfirst" data-en="{total} long-form essays and 6 dedicated Open-Bounty proof monographs. Each one tells the human story, builds the everyday intuition, and hands you a live model, Python verifier, and AI SKILL.md to push, pull and test." data-es="{total} ensayos de largo aliento y 6 monografías de retos abiertos. Cada uno cuenta la historia humana, construye la intuición cotidiana y te entrega un modelo vivo, verificador en Python y SKILL.md para probar.">{total} long-form essays and 6 dedicated Open-Bounty proof monographs. Each one tells the human story, builds the everyday intuition, and hands you a live model, Python verifier, and AI SKILL.md to push, pull and test.</p>
         <div class="tp-cover-ctas">
           <a class="tp-cta tp-cta-primary" href="engineering/{first["slug"]}/" data-en="Start reading" data-es="Empezar a leer">Start reading</a>
-          <a class="tp-cta tp-cta-bounty" href="bounties/" data-en="Explore 6 Bounties &amp; Proofs &rarr;" data-es="Explorar 6 Retos y Pruebas &rarr;">Explore 6 Bounties &amp; Proofs &rarr;</a>
+          <a class="tp-cta tp-cta-bounty" href="bounties/" data-en="Explore 6 Bounties &amp; Proofs →" data-es="Explorar 6 Retos y Pruebas →">Explore 6 Bounties &amp; Proofs →</a>
           <button type="button" class="tp-cta" data-open-contents aria-haspopup="dialog" aria-controls="tp-contents" data-en="Browse all {total}" data-es="Ver los {total}">Browse all {total}</button>
         </div>
       </div>
@@ -4927,7 +5050,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         <img src="{plate_src('plates/', 'utopian-city-future')}" width="1280" height="720" loading="eager" fetchpriority="high" decoding="async" alt="Conceptual illustration imagining what a city built with these ideas would look like: light space frames, vertical gardens and robots at work (artistic impression, not a design).">
         <figcaption data-en="Conceptual illustration imagining what a city built with these ideas would look like. An artistic impression, not a design." data-es="Ilustración conceptual que imagina cómo se vería una ciudad construida con estas ideas. Una impresión artística, no un diseño.">Conceptual illustration imagining what a city built with these ideas would look like. An artistic impression, not a design.</figcaption>
       </figure>
-      <nav class="tp-cover-track-strip" aria-label="Informatico.ai 4 Pillars, 6 Bounties and 54 AI Skills">
+      <nav class="tp-cover-track-strip" aria-label="{strip_aria}">
         <a class="tp-track-chip" href="engineering/">
           <span class="tp-track-chip-kicker" data-en="PILLAR I · 12 ESSAYS" data-es="PILAR I · 12 ENSAYOS">PILLAR I · 12 ESSAYS</span>
           <strong class="tp-track-chip-title" data-en="Engineering &amp; Construction" data-es="Ingeniería y Construcción">Engineering &amp; Construction</strong>
@@ -4939,9 +5062,9 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
           <span class="tp-track-chip-meta" data-en="12 Folios · Vaults, Barragán, Sky-Cooling" data-es="12 Folios · Bóvedas, Barragán, Enfriamiento">12 Folios · Vaults, Barragán, Sky-Cooling</span>
         </a>
         <a class="tp-track-chip" href="physics/">
-          <span class="tp-track-chip-kicker" data-en="PILLAR III · 12 ESSAYS" data-es="PILAR III · 12 ENSAYOS">PILLAR III · 12 ENSAYOS</span>
+          <span class="tp-track-chip-kicker" data-en="PILLAR III · 12 ESSAYS + 13-STEP SERIES" data-es="PILAR III · 12 ENSAYOS + SERIE DE 13 PASOS">PILLAR III · 12 ESSAYS + 13-STEP SERIES</span>
           <strong class="tp-track-chip-title" data-en="Multiscale &amp; Quantum Physics" data-es="Física Multiescala y Cuántica">Multiscale &amp; Quantum Physics</strong>
-          <span class="tp-track-chip-meta" data-en="12 Folios · F1 Aero, Soft Matter, QEC" data-es="12 Folios · Aero F1, Materia Blanda, QEC">12 Folios · F1 Aero, Soft Matter, QEC</span>
+          <span class="tp-track-chip-meta" data-en="Time &amp; Gravity (T.00–T.12) · F1 Aero, QEC" data-es="Tiempo y Gravedad (T.00–T.12) · Aero F1, QEC">Time &amp; Gravity (T.00–T.12) · F1 Aero, QEC</span>
         </a>
         <a class="tp-track-chip" href="math/">
           <span class="tp-track-chip-kicker" data-en="PILLAR IV · 12 ESSAYS" data-es="PILAR IV · 12 ENSAYOS">PILLAR IV · 12 ENSAYOS</span>
@@ -4964,12 +5087,13 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
           <span class="tp-track-chip-meta" data-en="Clock rates · Geodesics · Six labels · Ledger" data-es="Ritmos de reloj · Geodésicas · Seis etiquetas · Registro">Clock rates · Geodesics · Six labels · Ledger</span>
         </a>
         <a class="tp-track-chip tp-track-chip-skills" href="#tp-oss-physics-radar">
-          <span class="tp-track-chip-kicker" data-en="60 AI SKILL.MD + VERIFIERS" data-es="60 SKILL.MD + VERIFICADORES">60 AI SKILL.MD + VERIFIERS</span>
+          <span class="tp-track-chip-kicker" data-en="{skill_count} AI SKILL.MD + VERIFIERS" data-es="{skill_count} SKILL.MD + VERIFICADORES">{skill_count} AI SKILL.MD + VERIFIERS</span>
           <strong class="tp-track-chip-title" data-en="Agent Skills &amp; 15 OSS Engines" data-es="Skills de IA y 15 Motores OSS">Agent Skills &amp; 15 OSS Engines</strong>
           <span class="tp-track-chip-meta" data-en="Claude · Copilot · Cursor · Antigravity" data-es="Claude · Copilot · Cursor · Antigravity">Claude · Copilot · Cursor · Antigravity</span>
         </a>
       </nav>
     </section>
+{render_cover_timegravity_feature(".")}
 {rows_html}
 {render_toolchain_section(".")}
 {render_bounty_crucible_section(".")}
@@ -5429,11 +5553,12 @@ def render_research_sitemap(catalog: dict) -> str:
 
 
 def render_llms_txt(catalog: dict) -> str:
-    """A plain-text map of the site for language-model tools (llms.txt convention): what each essay, bounty, and toolbox folio is, and where."""
+    """A plain-text map of the site for language-model tools (llms.txt convention): what each essay, series step, bounty, and toolbox folio is, and where."""
     total = sum(len(v) for v in catalog["pillars"].values())
+    skill_count = len(list((ROOT / "skills").glob("*/*/SKILL.md")))
     t_en, d_en, _t_es, _d_es = (x.replace("{total}", str(total)) for x in HUB_SEO)
     lines = [f"# {BRAND}", "", f"> {d_en}", "",
-             f"Every essay, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under {page_url('', 'es')}. Public open-source repository (60 SKILL.md companions, Python verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.", ""]
+             f"Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under {page_url('', 'es')}. Public open-source repository ({skill_count} SKILL.md companions, Python verifiers, 13-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.", ""]
     for pillar, folios in catalog["pillars"].items():
         lines.append(f"## {PILLAR_TITLES[pillar]}")
         lines.append("")
@@ -5459,9 +5584,11 @@ def render_llms_txt(catalog: dict) -> str:
     lines.append("## Time & Gravity · Thirteen Pages on an Open Problem (T.00–T.12)")
     lines.append("")
     lines.append(f"- [Time & Gravity]({page_url('timegravity/')}): {PILLAR_SEO['timegravity'][1]}")
-    for tg in TIMEGRAVITY_PAGES:
-        if tg["slug"]:
-            lines.append(f"- [{tg['code']} {tg['seo'][0]}]({page_url('timegravity/' + tg['slug'] + '/')}): {tg['seo'][1]}")
+    by_code = {p["code"]: p for p in TIMEGRAVITY_PAGES}
+    for step_no, m in enumerate(TIMEGRAVITY_TRACK_MAP, 1):
+        tg = by_code.get(m["code"])
+        if tg and tg["slug"]:
+            lines.append(f"- [Step {step_no} · {tg['code']} {tg['seo'][0]}]({page_url('timegravity/' + tg['slug'] + '/')}): {tg['seo'][1]}")
     lines.append("")
     lines.append("## About Informatico.ai & the Shared Verification Engine (Essay Zero)")
     lines.append("")

@@ -82,7 +82,7 @@ class TimeGravityTrackTests(unittest.TestCase):
         cache = json.loads((ROOT / "data" / "folio-citations.cache.json").read_text(encoding="utf-8"))
         self.assertGreaterEqual(len(ledger["rows"]), 6)
         for row in ledger["rows"]:
-            self.assertEqual(set(row) - {"note"}, {"id", "label", "doi", "year", "collaboration", "kind", "review_by"}, row["id"])
+            self.assertEqual(set(row) - {"note", "contrasting_audit"}, {"id", "label", "doi", "year", "collaboration", "kind", "review_by"}, row["id"])
             self.assertTrue(cache.get("doi:" + row["doi"].lower(), {}).get("found"), f"{row['id']} DOI not in offline cache")
             self.assertNotEqual(row["kind"], "press")
         ids = {r["id"] for r in ledger["rows"]}
@@ -240,8 +240,20 @@ class TimeGravityTrackTests(unittest.TestCase):
     def test_index_sitemap_and_llms_carry_the_track(self) -> None:
         hub = (RESEARCH / "index.html").read_text(encoding="utf-8")
         self.assertIn('class="tp-track-chip tp-track-chip-timegravity" href="timegravity/"', hub)
+        self.assertIn('id="featured-timegravity"', hub)
+        self.assertLess(hub.index('id="featured-timegravity"'), hub.index('id="pillar-engineering"'))
+        rail_start = hub.index('class="tp-featured-steps-rail"')
+        rail = hub[rail_start:hub.index("</ol>", rail_start)]
+        self.assertLess(rail.index('href="./timegravity/t02/"'), rail.index('href="./timegravity/t01/"'))
         es_hub = (RESEARCH / "es-mx" / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="timegravity/"', es_hub)
+        self.assertIn('id="featured-timegravity"', es_hub)
+        self.assertLess(es_hub.index('id="featured-timegravity"'), es_hub.index('id="pillar-engineering"'))
+        phys = (RESEARCH / "physics" / "index.html").read_text(encoding="utf-8")
+        es_phys = (RESEARCH / "es-mx" / "physics" / "index.html").read_text(encoding="utf-8")
+        self.assertLess(phys.index('id="timegravity-series"'), phys.index("Standalone Physics Monographs"))
+        self.assertLess(es_phys.index('id="timegravity-series"'), es_phys.index("Monografías Independientes de Física"))
+        self.assertIn("T06-GERACI2008", (TG / "t06" / "index.html").read_text(encoding="utf-8"))
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         for url in ("https://informatico.ai/timegravity/", "https://informatico.ai/timegravity/t01/",
                     "https://informatico.ai/es-mx/timegravity/", "https://informatico.ai/es-mx/timegravity/t01/"):
@@ -249,6 +261,8 @@ class TimeGravityTrackTests(unittest.TestCase):
         llms = (RESEARCH / "llms.txt").read_text(encoding="utf-8")
         self.assertIn("(https://informatico.ai/timegravity/)", llms)
         self.assertIn("(https://informatico.ai/timegravity/t01/)", llms)
+        self.assertIn("72 SKILL.md companions", llms)
+        self.assertLess(llms.index("timegravity/t02/"), llms.index("timegravity/t01/"))
         self.assertIn("## Time & Gravity", llms)
 
     def test_one_command_runner_passes(self) -> None:
@@ -335,10 +349,10 @@ class TimeGravityBatch2Tests(unittest.TestCase):
     def test_lint_mutation_suite_kills_every_mutant_and_scite_tallies_are_cached(self) -> None:
         res = run(PY + [str(ROOT / "tools" / "check_timegravity_labels.py"), "--mutants"])
         self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
-        self.assertIn("MUTANTS: 10/10 killed", res.stdout)
+        self.assertIn("MUTANTS: 13/13 killed", res.stdout)
         self.assertNotIn("SURVIVED", res.stderr)
         ok = run(PY + [str(ROOT / "tools" / "check_timegravity_labels.py")])
-        self.assertIn("mutants killed 10/10", ok.stdout)
+        self.assertIn("mutants killed 13/13", ok.stdout)
         cache = json.loads((ROOT / "data" / "folio-citations.cache.json").read_text(encoding="utf-8"))
         ledger = json.loads((ROOT / "timegravity" / "ledger.json").read_text(encoding="utf-8"))
         for row in ledger["rows"]:
@@ -507,7 +521,7 @@ class TimeGravityBatch4Tests(unittest.TestCase):
         self.assertAlmostEqual(t10["final_nats"], 0.69, delta=0.03)
 
     def test_t06_t10_labels_boundary_instruments_and_quoted_figures(self) -> None:
-        expect = {"t06": {"PROPOSED", "BOUND", "SINGLE RESULT", "OPEN"}, "t10": {"MEASURED", "SINGLE RESULT", "DERIVED", "PROPOSED", "OPEN"}}
+        expect = {"t06": {"PROPOSED", "DERIVED", "BOUND", "SINGLE RESULT", "OPEN"}, "t10": {"MEASURED", "SINGLE RESULT", "DERIVED", "PROPOSED", "OPEN"}}
         for slug, labels in expect.items():
             en, es = TG / slug / "index.html", TG_ES / slug / "index.html"
             self.assertEqual(labels_of(en), labels_of(es), slug)
@@ -910,6 +924,27 @@ class TimeGravityHumansAndPlatesTests(unittest.TestCase):
             self.assertIsNotNone(m, f"{slug} missing <title id='tp-distill-title-{slug}'>")
             seen_titles.add(m.group(1))
         self.assertEqual(len(seen_titles), 12, "Every step T.01..T.12 must have a distinct Plate {code}-D SVG title")
+
+    def test_derived_not_measured_chip_and_parent_tooltips(self) -> None:
+        css = (ROOT / "src" / "research" / "timegravity.css").read_text(encoding="utf-8")
+        self.assertIn('content: "DERIVED (NOT MEASURED)"', css)
+        self.assertIn('content: "DERIVADO (NO MEDIDO)"', css)
+        self.assertIn('html[lang^="es"] .tg-claim[data-tg-label="DERIVED"]::after', css)
+        hub_en = (TG / "index.html").read_text(encoding="utf-8")
+        hub_es = (TG_ES / "index.html").read_text(encoding="utf-8")
+        self.assertIn("computed, not directly measured", hub_en)
+        self.assertIn("calculado, no medido directamente", hub_es)
+        for slug in ("t05", "t06", "t11", "t12"):
+            en_txt = (TG / slug / "index.html").read_text(encoding="utf-8")
+            es_txt = (TG_ES / slug / "index.html").read_text(encoding="utf-8")
+            self.assertIn('data-tg-qualifier="DERIVED (NOT MEASURED)"', en_txt)
+            self.assertIn('data-tg-qualifier="DERIVADO (NO MEDIDO)"', es_txt)
+            self.assertIn("Derived by mathematics/kernel from MEASURED parent row ", en_txt)
+            self.assertIn("Derivado por matemáticas/kernel de la fila madre MEDIDA ", es_txt)
+        # Epistemological guardrails: T.05 pure-collapse BMV hypothesis and T.12 unbuilt sensor proposal stay PROPOSED.
+        self.assertEqual(labels_of(TG / "t05" / "index.html").count("DERIVED"), 12)
+        self.assertEqual(labels_of(TG / "t06" / "index.html").count("DERIVED"), 2)
+        self.assertEqual(labels_of(TG / "t12" / "index.html").count("PROPOSED"), 1)
 
 
 if __name__ == "__main__":

@@ -4560,7 +4560,10 @@
   .tp-body .tp-rack-top {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.2rem 0.5rem;
     width: 100%;
+    box-sizing: border-box;
     padding: 0.8rem 0.95rem 0;
     font-size: 0.8rem;
     color: var(--tp-slate);
@@ -6348,18 +6351,207 @@
       }
     }
   }
-  /* Time & Gravity as a series inside Physics (2026-11-09): a second rack under the twelve essays, and the
-     series block nested in the Contents dialog's Physics column. */
+  /* Time & Gravity as a featured series on the Home cover and at the top of Physics (2026-11-10):
+     lead series rack above the 12 standalone Physics monographs, Featured Series Essay-Showcase on the cover,
+     and the series block in reading order inside the Contents dialog's Physics column. */
   .tp-series-rack {
     margin-top: 2.6rem;
     padding-top: 1.6rem;
     border-top: 2px solid var(--tp-ink);
   }
-  .tp-series-rack .tp-kicker { margin-bottom: 0.35rem; }
+  .tp-series-rack.tp-series-rack-lead {
+    margin-top: 1.6rem;
+    margin-bottom: 2.6rem;
+    padding: 1.5rem 1.5rem 1.65rem;
+    border: 1.5px solid var(--tp-rule-strong);
+    border-top: 4px solid var(--tp-prussian);
+    border-radius: 12px;
+    background: linear-gradient(180deg, var(--tp-vellum) 0%, var(--tp-stone) 100%);
+  }
+  .tp-series-rack .tp-kicker { margin-bottom: 0.35rem; color: var(--tp-prussian); font-weight: 700; }
   .tp-series-rack .tp-h2 { margin-top: 0; }
   .tp-series-rack .tp-h2 a { color: inherit; text-decoration: none; }
   .tp-series-rack .tp-h2 a:hover, .tp-series-rack .tp-h2 a:focus-visible { text-decoration: underline; }
-  .tp-series-rack .tp-standfirst { max-width: 62ch; margin-bottom: 1.2rem; }
+  .tp-series-rack .tp-standfirst { max-width: 68ch; margin-bottom: 1rem; }
+  .tp-series-rack-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin: 0 0 1.35rem;
+  }
+  .tp-series-rack-ctas .tp-cta {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
   .tp-rack-card-series .tp-rack-thumb { aspect-ratio: 1200 / 630; }
+  .tp-rack-card-series .tp-rack-top { flex-wrap: wrap; gap: 0.25rem 0.5rem; }
+  .tp-issue-rack-headed {
+    margin-top: 2.2rem;
+    padding-top: 1.6rem;
+    border-top: 2px solid var(--tp-ink);
+  }
+  .tp-issue-rack-head {
+    margin-bottom: 1.15rem;
+  }
+  .tp-issue-rack-head .tp-kicker { margin-bottom: 0.3rem; }
+  .tp-issue-rack-head .tp-h2 { margin: 0; }
   .tp-contents-series { margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid var(--tp-rule); }
+
+  /* Cover Featured Series Essay-Showcase (#featured-timegravity) */
+  .tp-cover-featured-series {
+    margin: 2rem 0 2.6rem;
+    padding: 1.6rem 1.65rem 1.5rem;
+    border: 1.5px solid var(--tp-rule-strong);
+    border-top: 4px solid var(--tp-prussian);
+    border-radius: 12px;
+    background: linear-gradient(180deg, var(--tp-vellum) 0%, var(--tp-stone) 100%);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+  }
+  .tp-featured-series-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.28fr) minmax(0, 1fr);
+    gap: 1.6rem;
+    align-items: start;
+  }
+  .tp-featured-series-copy .tp-kicker {
+    margin: 0 0 0.4rem;
+    color: var(--tp-prussian);
+    font-weight: 700;
+  }
+  .tp-featured-series-copy .tp-h2 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.45rem, 2.5vw, 1.95rem);
+    line-height: 1.18;
+  }
+  .tp-featured-series-copy .tp-h2 a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .tp-featured-series-copy .tp-h2 a:hover,
+  .tp-featured-series-copy .tp-h2 a:focus-visible {
+    text-decoration: underline;
+  }
+  .tp-featured-series-essay {
+    margin: 0 0 0.75rem;
+    font-size: 0.98rem;
+    line-height: 1.62;
+    color: var(--tp-ink);
+    max-width: 66ch;
+  }
+  .tp-featured-series-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1rem;
+  }
+  .tp-featured-series-ctas .tp-cta {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .tp-featured-series-figure {
+    margin: 0;
+    padding: 0.65rem;
+    border: 1px solid var(--tp-rule-strong);
+    border-radius: 10px;
+    background-color: var(--tp-vellum);
+  }
+  .tp-featured-series-plate {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 630;
+    border-radius: 6px;
+    border: 1px solid var(--tp-rule);
+    background-color: var(--tp-stone);
+  }
+  .tp-featured-series-caption {
+    margin-top: 0.55rem;
+    font-size: 0.8rem;
+    line-height: 1.48;
+    color: var(--tp-graphite);
+  }
+  .tp-featured-steps-nav {
+    margin-top: 1.35rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--tp-rule-strong);
+  }
+  .tp-featured-steps-label {
+    margin: 0 0 0.65rem;
+    font-family: var(--tp-font-mono, monospace);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tp-prussian);
+  }
+  .tp-featured-steps-rail {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    gap: 0.55rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .tp-featured-step-item {
+    margin: 0;
+  }
+  .tp-featured-step-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.48rem 0.68rem;
+    border: 1px solid var(--tp-rule-strong);
+    border-radius: 8px;
+    background-color: var(--tp-vellum);
+    text-decoration: none;
+    color: var(--tp-ink);
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+  .tp-featured-step-link:hover,
+  .tp-featured-step-link:focus-visible {
+    border-color: var(--tp-prussian);
+    background-color: var(--tp-prussian-soft);
+  }
+  .tp-featured-step-meta {
+    font-family: var(--tp-font-mono, monospace);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--tp-prussian);
+    margin-bottom: 0.15rem;
+  }
+  .tp-featured-step-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--tp-ink);
+  }
+  @media (max-width: 960px) {
+    .tp-featured-series-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .tp-cover-featured-series {
+      padding: 1.2rem 1.05rem 1.15rem;
+    }
+    .tp-series-rack.tp-series-rack-lead {
+      padding: 1.15rem 1rem 1.25rem;
+    }
+    .tp-featured-steps-rail {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 0.55rem;
+      padding-bottom: 0.45rem;
+    }
+    .tp-featured-step-item {
+      flex: 0 0 188px;
+      scroll-snap-align: start;
+    }
+  }
 }
