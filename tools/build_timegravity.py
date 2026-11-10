@@ -58,8 +58,8 @@ PLOT = {"x0": 300, "x1": 890, "y0": 50, "y1": 390, "ztop": 1.0, "zbot": -10.5}
 LABEL_DEF = {
     "MEASURED": ("At least two collaborations, peer-reviewed DOIs, older than the replication window.",
                  "Al menos dos colaboraciones, DOI revisados por pares, más antiguas que la ventana de replicación."),
-    "DERIVED": ("Follows by mathematics from a named MEASURED parent row.",
-                "Se sigue por matemáticas de una fila madre MEDIDA con nombre."),
+    "DERIVED": ("Follows by mathematics or deterministic kernel from a named MEASURED parent row (computed, not directly measured).",
+                "Se sigue por matemáticas o kernel determinista de una fila madre MEDIDA con nombre (calculado, no medido directamente)."),
     "BOUND": ("An exclusion limit: what the data rule out, not what they show.",
               "Un límite de exclusión: lo que los datos descartan, no lo que muestran."),
     "SINGLE RESULT": ("One collaboration, or anything inside the last twenty-four months.",
@@ -84,19 +84,30 @@ def bi(tag: str, en: str, es: str, cls: str = "", extra: str = "") -> str:
     return f'<{tag}{c}{x} data-en="{a(en)}" data-es="{a(es)}">{t(en)}</{tag}>'
 
 
-def seg(s: dict) -> str:
+def seg(s: dict, lang: str = "en") -> str:
     if s["kind"] == "text":
         return f'<span data-en="{a(s["en"])}" data-es="{a(s["es"])}">{t(s["en"])}</span>'
     label = s["label"]
-    parent = f' data-tg-parent="{a(s["parent"])}"' if s.get("parent") else ""
+    parent_id = s.get("parent")
+    parent = f' data-tg-parent="{a(parent_id)}"' if parent_id else ""
+    qual_attrs = ""
+    if label == "DERIVED" and parent_id:
+        qual = "DERIVADO (NO MEDIDO)" if lang == "es" else "DERIVED (NOT MEASURED)"
+        title_en = f"Derived by mathematics/kernel from MEASURED parent row {parent_id} (not directly measured)"
+        title_es = f"Derivado por matemáticas/kernel de la fila madre MEDIDA {parent_id} (no medido directamente)"
+        title_cur = title_es if lang == "es" else title_en
+        qual_attrs = (
+            f' data-tg-qualifier="{a(qual)}" title="{a(title_cur)}"'
+            f' data-title-en="{a(title_en)}" data-title-es="{a(title_es)}"'
+        )
     return (
         f'<span class="tg-claim" data-tg-label="{a(label)}" data-tg-label-es="{a(LABEL_ES[label])}" '
-        f'data-tg-ledger="{a(",".join(s["ids"]))}"{parent} data-en="{a(s["en"])}" data-es="{a(s["es"])}">{t(s["en"])}</span>'
+        f'data-tg-ledger="{a(",".join(s["ids"]))}"{parent}{qual_attrs} data-en="{a(s["en"])}" data-es="{a(s["es"])}">{t(s["en"])}</span>'
     )
 
 
-def para(p: dict) -> str:
-    return "<p>" + "".join(seg(s) for s in p["segments"]) + "</p>"
+def para(p: dict, lang: str = "en") -> str:
+    return "<p>" + "".join(seg(s, lang) for s in p["segments"]) + "</p>"
 
 
 def png_sha8(slug: str) -> str:
@@ -3381,22 +3392,22 @@ def humans_section(page: dict, rel_res: str) -> str:
         </section>"""
 
 
-def render_sections(page: dict, rel_res: str) -> str:
+def render_sections(page: dict, rel_res: str, lang: str = "en") -> str:
     out = []
     for block in page["sections"]:
         kind = block["type"]
         if kind == "h2":
             out.append(f'        <h2 id="{block["id"]}" class="tp-h2" data-en="{a(block["en"])}" data-es="{a(block["es"])}">{t(block["en"])}</h2>')
         elif kind == "p":
-            out.append("        " + para(block))
+            out.append("        " + para(block, lang))
         elif kind == "bridge":
-            inner = "\n".join("          " + para(p) for p in block["paras"])
+            inner = "\n".join("          " + para(p, lang) for p in block["paras"])
             out.append(f"""        <div class="tp-plain-bridge-box" role="note" aria-label="In plain words">
           <span class="tp-plain-bridge-kicker" data-en="{a(block['kicker_en'])}" data-es="{a(block['kicker_es'])}">{t(block['kicker_en'])}</span>
 {inner}
         </div>""")
         elif kind == "analogy":
-            inner = "\n".join("          " + para(p) for p in block["paras"])
+            inner = "\n".join("          " + para(p, lang) for p in block["paras"])
             out.append(f"""        <div class="tp-analogy-box" role="region" aria-label="Everyday intuition and controls primer">
           <span class="tp-plain-bridge-kicker" data-en="{a(block['kicker_en'])}" data-es="{a(block['kicker_es'])}">{t(block['kicker_en'])}</span>
 {inner}
@@ -3684,7 +3695,7 @@ def render_page(page: dict, catalog: dict, lang: str = "en") -> str:
 {instrument}
     <section class="tp-folio-layout" aria-label="Essay">
       <div class="tp-prose">
-{render_sections(page, rel_res)}
+{render_sections(page, rel_res, lang)}
         {ai_line}
 {skill_box(page)}
 {sources_list(page)}

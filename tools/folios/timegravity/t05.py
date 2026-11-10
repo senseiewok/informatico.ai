@@ -87,7 +87,7 @@ PAGE: dict = {
     "skill_filename": "timegravity-t05-entanglement-channels.SKILL.md",
     "open_question_en": "If a classical slope can entangle, what would count as quantum gravity?",
     "open_question_es": "Si una pendiente clásica puede entrelazar, ¿qué contaría como gravedad cuántica?",
-    "ledger_ids": [BOSE, MV, WEST, FUCHS, AGAF, TROY, KTM, PERES, WOOT, AZIZ, TRILLO, SCHN, MV25, DIOSI25, TOBAR, TILLOY, VDK, LEE, TAN, LEE21, MURATA, DIOSI87, PENROSE96, DONADI21, RIJAVEC, FENG, CHEV, SCHUT],
+    "ledger_ids": [BOSE, MV, WEST, FUCHS, AGAF, TROY, KTM, PERES, WOOT, AZIZ, TRILLO, SCHN, MV25, DIOSI25, TOBAR, TILLOY, VDK, LEE, TAN, LEE21, MURATA, DIOSI87, PENROSE96, DONADI21, RIJAVEC, FENG, CHEV, SCHUT, HORN, HACK, ROMERO, SELLNER, DANIA, MAGRINI],
     "ai_line_en": (
         "AI contribution to the cited results: none. No AI system contributed to any proposal, measurement, derivation or rebuttal cited on this page. "
         "The page text, instrument and verifier were drafted with AI assistance and checked by the site maintainer against the primary sources listed below."
@@ -312,7 +312,7 @@ PAGE: dict = {
               "la descomposición y nada más."),
         ),
         P(
-            C("PROPOSED", [KTM, MV, RIJAVEC],
+            C("DERIVED", [KTM, MV, RIJAVEC, WEST],
               "The band's lower edge is computed from the classical-channel rate: in the 2014 model the measurement-and-feedback channel reproduces the linearised "
               "gravitational spring K = 2Gm²/d³ and adds position decoherence at KΔx²/(2ħ) per mass, 'minimal in the sense that, if it were any "
               "smaller, evolution ... would immediately entangle'; the kernel finds that the dephasing threshold at which this page's negativity "
@@ -326,7 +326,8 @@ PAGE: dict = {
               "negatividad de esta página es exactamente esa tasa en el límite de división pequeña (razón 1.000 a una división de 2 µm, 1.43 a la "
               "división de 250 µm de 2017, donde la linealización se queda 30 % corta en la fase). El mismo umbral, 0.156 en 2.5 s o 0.062 por segundo, está a "
               "menos de 1 % del 1/τ_G de un estudio de decoherencia de 2021 sobre estas propuestas, 0.0628 por segundo con su fórmula y los números de "
-              "2017, que el estudio redondea a ≃0.06 s⁻¹ y por encima del cual encuentra el par separable en todo momento."),
+              "2017, que el estudio redondea a ≃0.06 s⁻¹ y por encima del cual encuentra el par separable en todo momento.",
+              parent=WEST),
             T(" So the two edges are computed, not chosen: the lower one is the least noise a classical channel of that kind must add on its own "
               "model, the upper one is what one named classical model predicts, and between them the page still picks no side.",
               " Así que los dos bordes se calculan, no se eligen: el inferior es el ruido mínimo que debe añadir un canal clásico de ese tipo en su propio "
@@ -342,7 +343,7 @@ PAGE: dict = {
               "mostró que se cumple con |α| ≤ 1 hasta una escala de longitud de 48 µm."),
             T(" The smearing that lets the model entangle softens its pull below about 2σ, and the same pull must act between the test bodies of these experiments.",
               " El suavizado que permite al modelo entrelazar ablanda su atracción por debajo de unas 2σ, y la misma atracción debe actuar entre los cuerpos de prueba de estos experimentos."),
-            C("PROPOSED", [TRILLO, TAN, MURATA],
+            C("DERIVED", [TRILLO, TAN, LEE21, MURATA],
               "The second group's 2020 apparatus is described in a 2026 review: tungsten plates 0.2 mm thick on the pendulum facing a 1.8 mm plate at a "
               "surface gap of 210 µm, with a rotating eight-plate source farther away; its modulation scheme is not in open text, and the site does not "
               "model it. At the pair level, between a test-mass element and a source element at that gap, the smeared potential removes erfc(210 µm/2σ) "
@@ -354,10 +355,11 @@ PAGE: dict = {
               "está en texto abierto, y el sitio no lo modela. A nivel de par, entre un elemento de la masa de prueba y uno de la fuente a ese hueco, el "
               "potencial suavizado quita erfc(210 µm/2σ) de la atracción de Newton, 4.8 % a σ = 75 µm, donde el Yukawa de α = 1 y λ = 48 µm en el borde "
               "al 95 % de ese grupo quitaría 1.3 % de la misma atracción; los dos coinciden en σ ≈ 60 µm, así que a este hueco la forma queda bajo ese "
-              "Yukawa para σ menores y por encima más allá, y la prueba a 52 µm es la más sensible de las dos para ella."),
+              "Yukawa para σ menores y por encima más allá, y la prueba a 52 µm es la más sensible de las dos para ella.",
+              parent=TAN),
         ),
         P(
-            C("PROPOSED", [TRILLO, LEE, LEE21],
+            C("DERIVED", [TRILLO, LEE, LEE21],
               "The kernel can redo the comparison with the experiment's own method. Between two patterned plates each in-plane mode of the mass "
               "pattern with wavenumber q contributes to the pull across a gap s in proportion to e^(−qs) under Newton, and to ½[erfc(qσ − s/2σ) + "
               "e^(2qs) erfc(qσ + s/2σ)] of that under the smeared potential, a closed form checked against direct quadrature; the 2020 test bodies are two concentric sets of glue-filled "
@@ -378,7 +380,8 @@ PAGE: dict = {
               "1.5 fN·m a 72 µm, donde la resta magnética de la carta, 0.0165 fN·m, 'alrededor del 1 %' de la señal, implica por aritmética unos 1.6. Sobre la misma integral "
               "el potencial suavizado quita 17 % del par de 120 pliegues a 52 µm para σ = 75 µm (4.3 % a 50 µm, 0.3 % a 30 µm, 6.3 % a 55 µm, la σ más "
               "pequeña a la que ese modelo entrelaza la geometría propia de la carta), 13 % a 72 µm, 3.8 % a 150 µm y 0.1 % a 300 µm, mientras que un Yukawa en el borde "
-              "publicado al 95 %, α = −1 con λ = 38.6 µm, quita 2.5 % a 52 µm."),
+              "publicado al 95 %, α = −1 con λ = 38.6 µm, quita 2.5 % a 52 µm.",
+              parent=LEE),
             T(" That sets two predicted signal sizes side by side; it is not a bound on σ, because the experiment's fit, with its floating offset, roughness "
               "correction and calibrated scale, is not recomputed here. The one-mode lower bound at the pattern's lowest wavenumber had given 44.4 µm, and the Yukawa shape closest to the "
               "σ = 75 µm curve has a range near 49 µm and about three times gravity's strength, a curve match with no data behind it.",
@@ -393,7 +396,7 @@ PAGE: dict = {
               "gravitational strength; the experiment's own best fit there leans slightly towards a stronger pull, so the signed limit the smeared pull faces "
               "is the tight one. Projecting the smeared signal onto each tabulated shape and comparing with the signed limit at the shape it mimics best, "
               "the published limits exclude σ above 33 µm at 95 %: 33.1 µm on three separation weightings, on an absolute-torque weighting and on both "
-              "measured harmonics, 33.6 µm on a linear weighting. At 33 µm the effective strength is −7.3 against a limit of −7.4 at a 18 µm range; at 35 µm it is −10.3, excluded.",
+              "measured harmonics, 33.6 µm on a linear weighting. At 33 µm the effective strength is −7.3 against a limit of −7.4 at an 18 µm range; at 35 µm it is −10.2, excluded.",
               "Los límites publicados pueden recastearse sobre la atracción suavizada. La tesis del experimento de 2020 tabula, para 66 alcances de Yukawa de 5 µm "
               "a 9 mm, la intensidad ajustada con su incertidumbre y los límites al 95 % con signo. En el núcleo de patrón completo de esta página la atracción "
               "suavizada imita de forma excelente a un Yukawa, con una forma a 2–4 % a un alcance cercano a 0.55 σ y una intensidad de varias unidades, y a esos "
@@ -402,7 +405,7 @@ PAGE: dict = {
               "sobre cada forma tabulada y comparando con el límite con signo en la forma que mejor imita, los límites publicados excluyen σ por encima de 33 µm "
               "al 95 %: 33.1 µm con tres ponderaciones de la separación, con una ponderación por par absoluto y con los dos armónicos medidos, 33.6 µm con una "
               "ponderación lineal. A 33 µm la intensidad efectiva es −7.3 frente a "
-              "un límite de −7.4 a un alcance de 18 µm; a 35 µm es −10.3, excluida.",
+              "un límite de −7.4 a un alcance de 18 µm; a 35 µm es −10.2, excluida.",
               parent=LEE),
             T(" This is a recast of published limits, not a refit of the data: it assumes the smeared shape shares its mimic's degeneracy with the fitted offset "
               "and scale, which the shape agreement supports; a direct refit of the raw torque data, requested from the authors, is the only check that closes "
@@ -486,7 +489,7 @@ PAGE: dict = {
               "geometries whose nearest approach is below 27 µm at tiny splits and below 14 µm at equal split and gap, against a Casimir floor of 17 µm for "
               "10⁻¹⁵ kg; at equal split and gap the window is closed, it opens only for splits below about half the gap, and whether anything sits in it is not determined by this page.",
               " Así que un testigo positivo se leería como una cota inferior de σ en cualquiera de los dos modelos, y las dos cotas difieren por un factor de "
-              "3.3 a divisiones pequeñas, 3.8 en la geometría de la carta, 4.1 en la geometría de 2017 y cerca de 13 a una división ocho veces la separación; "
+              "3.3 a divisiones pequeñas, 3.8 en la geometría de la carta, 4.1 en la geometría de 2017 y cerca de 11 a una división ocho veces la separación; "
               "la página calcula las dos curvas y no saca conclusión alguna de la brecha entre ellas, pues ningún testigo se ha medido. En el límite recast de "
               "33 µm de T.05 la dinámica híbrida entrelazaría solo geometrías cuya aproximación más cercana quede por debajo de 27 µm a divisiones diminutas "
               "y de 14 µm a división igual a la separación, frente a un piso de Casimir de 17 µm para 10⁻¹⁵ kg; a división igual a la separación la ventana "
@@ -494,7 +497,7 @@ PAGE: dict = {
         ),
         {"type": "threshold_map"},
         P(
-            C("PROPOSED", [TRILLO, LEE, VDK, BOSE, AZIZ],
+            C("DERIVED", [TRILLO, LEE, LEE21, VDK, BOSE, AZIZ],
               "Read together with the 2020 inverse-square data, the map says where the one explicit classical model on the page could still reach the "
               "witness. At the 2017 geometry the hybrid dynamics needs σ above 525 µm, a smearing that on this site's full-pattern kernel would remove the "
               "whole 120-fold torque the 2020 experiment measured at its Newtonian value at 52 µm; at the letter's own geometry it needs 55 µm, at which "
@@ -503,7 +506,8 @@ PAGE: dict = {
               "clásico explícito de esta página. En la geometría de 2017 la dinámica híbrida necesita σ por encima de 525 µm, un suavizado que en el "
               "núcleo de patrón completo de este sitio eliminaría todo el par de 120 pliegues que el experimento de 2020 midió en su valor newtoniano a "
               "52 µm; en la geometría de la propia carta necesita 55 µm, con lo que la atracción suavizada quitaría 6 % de ese par donde el borde de "
-              "exclusión publicado corresponde a 2.5 %."),
+              "exclusión publicado corresponde a 2.5 %.",
+              parent=LEE),
             T(" At this site's recast limit of 33 µm, in the collinear layout of the 2017 proposal, the model reaches only pairs closer than 27 µm at a split a thirtieth of the gap and 14 µm at equal split and "
               "gap, against a Casimir floor of 17.1 µm for 10⁻¹⁵ kg and 26.5 µm for 10⁻¹⁴ kg. No hold time widens that reach and heavier masses only narrow "
               "it, since the hybrid threshold is geometric while the floor rises with mass: at 10⁻¹⁴ kg the reach clears the floor only at the smallest splits, and at 10⁻¹³ kg the floor of 41.5 µm lies above the 27 µm reach. "
@@ -542,7 +546,7 @@ PAGE: dict = {
               "las dos predicciones, y ningún testigo se ha medido."),
         ),
         P(
-            C("PROPOSED", [TRILLO, BOSE, CHEV, VDK, SCHUT, LEE],
+            C("DERIVED", [TRILLO, BOSE, CHEV, VDK, SCHUT, LEE, LEE21],
               "The map and the data, applied to the geometries the literature has actually proposed. In the collinear layout the 2017 proposal needs σ "
               "above 525 µm from the hybrid dynamics and a 2020 refinement with the masses 100 µm apart at closest approach needs 406 µm, both erasing "
               "the 52 µm torque; the 2020 Casimir-screened proposal, a 23 µm split 47 µm from its partner behind a 1 µm plate, needs 82 µm, a 22 % "
@@ -566,7 +570,8 @@ PAGE: dict = {
               "necesita solo σ por encima de 13.6 µm, un suavizado que deja intacto el par de 2020: entre las geometrías mapeadas aquí es la única que la "
               "dinámica híbrida podría entrelazar sin contradecir los datos del inverso del cuadrado. Su separación de 21 µm queda por debajo del piso de "
               "26.5 µm que esta página calcula con la fórmula de caída libre; el esquema de 2024 atrapa y apantalla en su lugar, y la página toma su "
-              "geometría tal como se publicó."),
+              "geometría tal como se publicó.",
+              parent=LEE),
             T(" Time still separates the two there. That geometry is designed for an entangling rate of 0.01 per second, so the quantum channel reaches full "
               "entanglement in about 160 s; at that moment the hybrid dynamics at σ = 33 µm shows a negativity of 0.0062 (0.0078 at 30 µm), and its peak of "
               "0.059 comes after about 53 minutes (0.054 after half an hour at 30 µm). The 61 µm spacing needs 39 µm, above the recast limit, so it closes.",
@@ -577,14 +582,15 @@ PAGE: dict = {
         ),
         {"type": "proposals_table"},
         P(
-            C("PROPOSED", [TRILLO, SCHUT, RIJAVEC, BOSE],
+            C("DERIVED", [TRILLO, SCHUT, RIJAVEC, BOSE, PERES, LEE],
               "Decoherence enters the same way for both models. With the local dephasing the instrument applies, the quantum channel at that geometry "
               "keeps some entanglement for decoherence rates below 0.0098 per second, the proposal's own criterion reproduced to a part in a million; the hybrid dynamics keeps "
               "some only below 0.00008 per second at σ = 33 µm, 0.0001 at 30 µm and 0.0002 at 20 µm, forty-five to a hundred and twenty-five times lower.",
               "La decoherencia entra del mismo modo en los dos modelos. Con el desfase local que aplica el instrumento, el canal cuántico en esa geometría "
               "conserva algo de entrelazamiento para tasas de decoherencia por debajo de 0.0098 por segundo, el propio criterio de la propuesta reproducido "
               "a una parte en un millón; la dinámica híbrida conserva algo solo por debajo de 0.00008 por segundo a σ = 33 µm, 0.0001 a 30 µm y 0.0002 a 20 µm, entre cuarenta y "
-              "cinco y ciento veinticinco veces menos."),
+              "cinco y ciento veinticinco veces menos.",
+              parent=LEE),
             T(" At a thousandth per second, ten times below the rate the proposal budgets for gas and black-body scattering, the hybrid dynamics shows no "
               "entanglement at any time in that geometry while the quantum channel still reaches 0.34. So within the one geometry the data leave it, the "
               "hybrid dynamics shows entanglement only at decoherence rates fifty to a hundred and thirty times below the proposal's own budget; the page "
@@ -666,7 +672,7 @@ PAGE: dict = {
         ),
         {"type": "hardware_table"},
         P(
-            C("PROPOSED", [SCHUT, TRILLO, ROMERO, RIJAVEC],
+            C("DERIVED", [SCHUT, TRILLO, ROMERO, RIJAVEC, HORN, HACK],
               "Set against the two thresholds of the 2024 geometry, those rates translate into ceilings on two environmental parameters. For the quantum "
               "channel to keep any entanglement, helium at 4 K must stay below 1.5 × 10⁻¹⁵ Pa, about 28 atoms in a cubic centimetre, and the sphere's "
               "internal temperature below about 16 K with the surroundings at 1 K. For the hybrid dynamics at σ = 33 µm the pressure ceiling is "
@@ -676,7 +682,8 @@ PAGE: dict = {
               "canal cuántico conserve algo de entrelazamiento, el helio a 4 K debe quedar por debajo de 1.5 × 10⁻¹⁵ Pa, unos 28 átomos en un centímetro "
               "cúbico, y la temperatura interna de la esfera por debajo de unos 16 K con el entorno a 1 K. Para la dinámica híbrida a σ = 33 µm el techo de "
               "presión es 1.2 × 10⁻¹⁷ Pa, cerca de un átomo en cinco centímetros cúbicos, y el techo de temperatura interna 7.3 K. En la forma que citan las "
-              "propuestas los dos techos de presión son 1.8 × 10⁻¹⁶ Pa y 1.5 × 10⁻¹⁸ Pa."),
+              "propuestas los dos techos de presión son 1.8 × 10⁻¹⁶ Pa y 1.5 × 10⁻¹⁸ Pa.",
+              parent=HORN),
             T(" With cold surroundings the pressure ceiling scales with the threshold itself and the internal-temperature ceiling with its sixth root, so "
               "the 125-fold stricter threshold of the hybrid dynamics appears as a 125-fold lower pressure ceiling and a 2.2-fold lower temperature "
               "ceiling. With surroundings as warm as the sphere, scattered photons join in, the sixth-root rule no longer holds, and the two temperature "
@@ -850,6 +857,16 @@ PAGE: dict = {
         ("Tilloy, A., & Diósi, L. (2016). Sourcing semiclassical gravity from spontaneously localized quantum matter. Physical Review D, 93, 024026.", "10.1103/PhysRevD.93.024026"),
         ("van de Kamp, T. W., Marshman, R. J., Bose, S., & Mazumdar, A. (2020). Quantum gravity witness via entanglement of masses: Casimir screening. Physical Review A, 102, 062807.", "10.1103/PhysRevA.102.062807"),
         ("Lee, J. G., Adelberger, E. G., Cook, T. S., Fleischer, S. M., & Heckel, B. R. (2020). New test of the gravitational 1/r² law at separations down to 52 µm. Physical Review Letters, 124, 101101.", "10.1103/PhysRevLett.124.101101"),
+        ("Lee, J. G., Adelberger, E. G., Fleming, D., Heckel, B. R., & Shaw, E. A. (2021). The Fourier–Bessel expansion: application to experimental probes of gravity and feeble short-range interactions. Classical and Quantum Gravity, 38, 085020.", "10.1088/1361-6382/abebf2"),
         ("Tan, W.-H., et al. (2020). Improvement for testing the gravitational inverse-square law at the submillimeter range. Physical Review Letters, 124, 051301.", "10.1103/PhysRevLett.124.051301"),
+        ("Diósi, L. (1987). A universal master equation for the gravitational violation of quantum mechanics. Physics Letters A, 120(8), 377–381.", "10.1016/0375-9601(87)90681-5"),
+        ("Penrose, R. (1996). On gravity's role in quantum state reduction. General Relativity and Gravitation, 28(5), 581–600.", "10.1007/BF02105068"),
+        ("Donadi, S., Piscicchia, K., Curceanu, C., Diósi, L., Laubenstein, M., & Bassi, A. (2021). Underground test of gravity-related wave function collapse. Nature Physics, 17, 74–78.", "10.1038/s41567-020-1008-4"),
+        ("Hornberger, K., Uttenthaler, S., Brezger, B., Hackermüller, L., Arndt, M., & Zeilinger, A. (2003). Collisional decoherence observed in matter wave interferometry. Physical Review Letters, 90(16), 160401.", "10.1103/PhysRevLett.90.160401"),
+        ("Hackermüller, L., Hornberger, K., Brezger, B., Zeilinger, A., & Arndt, M. (2004). Decoherence of matter waves by thermal emission of radiation. Nature, 427, 711–714.", "10.1038/nature02276"),
+        ("Romero-Isart, O. (2011). Quantum superposition of massive objects and collapse models. Physical Review A, 84(5), 052121.", "10.1103/PhysRevA.84.052121"),
+        ("Sellner, S., et al. (BASE Collaboration) (2017). Improved limit on the directly measured antiproton lifetime. New Journal of Physics, 19, 083023.", "10.1088/1367-2630/aa7e73"),
+        ("Dania, L., Bykov, D. S., Goschin, M., Teller, M., Kassid, A., & Northup, T. E. (2024). Ultrahigh quality factor of a levitated nanomechanical oscillator. Physical Review Letters, 132(13), 133602.", "10.1103/PhysRevLett.132.133602"),
+        ("Magrini, L., Rosenzweig, P., Bach, C., Deutschmann-Olek, A., Hofer, S. G., Hong, S., Kiesel, N., Kugi, A., & Aspelmeyer, M. (2021). Real-time optimal quantum control of mechanical motion at room temperature. Nature, 595, 373–377.", "10.1038/s41586-021-03602-3"),
     ],
 }

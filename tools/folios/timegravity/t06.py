@@ -67,7 +67,7 @@ PAGE: dict = {
     "skill_filename": "timegravity-t06-collapse-bound.SKILL.md",
     "open_question_en": "If gravity neither collapses nor is shown to entangle, what is a superposition of slopes?",
     "open_question_es": "Si la gravedad ni colapsa ni se muestra que entrelaza, ¿qué es una superposición de pendientes?",
-    "ledger_ids": [DIOSI, PENROSE, DONADI, XENON, FEIN, HELOU, HAMEROFF, OPPENHEIM, PICCIONE, TILLOY, TRILLO, LEE, LEE21],
+    "ledger_ids": [DIOSI, PENROSE, DONADI, XENON, FEIN, HELOU, HAMEROFF, OPPENHEIM, PICCIONE, TILLOY, TRILLO, LEE, LEE21, GERACI],
     "ai_line_en": (
         "AI contribution to the cited results: none. No AI system contributed to any proposal, measurement or bound cited on this page. "
         "The page text, instrument and verifier were drafted with AI assistance and checked by the site maintainer against the primary sources listed below."
@@ -271,7 +271,7 @@ PAGE: dict = {
               "magnitud fuera y rompe la ley σ³ entre los peldaños superiores, lo que el verificador rechaza."),
         ),
         P(
-            C("PROPOSED", [TRILLO, LEE, LEE21, PICCIONE],
+            C("DERIVED", [TRILLO, LEE, LEE21, PICCIONE],
               "At the top of the ladder sits the 2025 letter's 50 to 250 µm, the range in which the model entangles two masses in a "
               "laboratory; well below it, at 33 µm, sits T.05's recast of the experiment's published 95 % limits onto the model's softened pull. On that "
               "recast the inverse-square tests leave room only below that line, and the entanglement letter needs the range above it. A 2025 preprint on the smearing profiles of these models notes that for "
@@ -287,10 +287,11 @@ PAGE: dict = {
               "perfiles de suavizado de estos modelos anota que para este parámetro 'se pueden poner cotas superiores observando que no hay desviaciones "
               "de la ley de gravitación de Newton'; no calcula ninguna ni nombra experimento alguno. El peldaño de 33 µm es el recast propio de este sitio "
               "de los límites publicados en T.05, no el de la prepublicación ni un reajuste de los datos; sustituyó a un ajuste de borde anterior de 44 µm. Por debajo del peldaño la balanza pierde alcance deprisa: a σ = 25 µm la atracción "
-              "suavizada imita un Yukawa de 13 µm de alcance unas siete veces más débil que el límite publicado allí, a 18 µm uno de 7 µm unas 140 veces "
+              "suavizada imita un Yukawa de 11 µm de alcance unas siete veces más débil que el límite publicado allí, a 18 µm uno de 7 µm unas 140 veces "
               "más débil, y a 13.6 µm la imitación cae al alcance tabulado más corto, 5 µm, unas cinco mil veces más débil; el sitio por debajo de "
               "33 µm existe porque ningún experimento alcanza intensidad casi gravitatoria a alcances de 5 a 10 µm, no por un hueco en los datos. T.05 añade un peldaño de otra clase: si la gravedad es "
-              "cuántica y además existe el colapso puro, un testigo positivo en la geometría de 2017 pondría σ por encima de 130 µm dentro de este modelo de colapso puro. La escalera lleva además una ventana de otra clase, de 13.6 a 33 µm: en la estimación de este sitio el modelo de la carta aún podría entrelazar allí una geometría publicada, la propuesta lado a lado de 2024, sin contradecir los datos de 2020 del inverso del cuadrado; es una ventana para ese único modelo y esa única geometría, no una cota de σ, y se mueve o se cierra si los datos de 2020 se reajustan."),
+              "cuántica y además existe el colapso puro, un testigo positivo en la geometría de 2017 pondría σ por encima de 130 µm dentro de este modelo de colapso puro. La escalera lleva además una ventana de otra clase, de 13.6 a 33 µm: en la estimación de este sitio el modelo de la carta aún podría entrelazar allí una geometría publicada, la propuesta lado a lado de 2024, sin contradecir los datos de 2020 del inverso del cuadrado; es una ventana para ese único modelo y esa única geometría, no una cota de σ, y se mueve o se cierra si los datos de 2020 se reajustan.",
+              parent=LEE),
             C("BOUND", [GERACI, LEE],
               " One experiment has worked at a smaller separation than the balance's 52 µm: a micro-cantilever about 25 µm from its source mass, "
               "whose published 95 % limits exclude strengths above 14,000 at a range of 10 µm. Set beside the balance's own tabulated limits on the "
@@ -322,7 +323,7 @@ PAGE: dict = {
               "corren desde abajo y quedan cien mil veces o más por debajo del rango que entrelaza. Las asas construidas sobre el ruido o la "
               "coherencia del modelo se aflojan al crecer σ; el déficit en la atracción media crece en cambio, y por eso las pruebas del inverso "
               "del cuadrado son donde la estimación T.05 de este sitio se confronta con el modelo."),
-            C("PROPOSED", [OPPENHEIM, LEE],
+            C("DERIVED", [OPPENHEIM, LEE],
               "The same torque residuals could be read into the 2023 trade-off itself. Its authors bound the field diffusion of the Diósi–Penrose-kernel "
               "class from the variance of the time-averaged force on a composite body, a sum over its nuclei of incoherent kicks, so that the ceiling "
               "grows with the number of atoms N and with the nuclear radius cubed, and they fed it Cavendish-class numbers, a 10⁻⁷ m/s² scatter over "
@@ -336,7 +337,8 @@ PAGE: dict = {
               "números de clase Cavendish, una dispersión de 10⁻⁷ m/s² en 100 s sobre un kilogramo, para un techo de 10⁻⁹ kg² s m⁻¹ frente a un piso "
               "de interferometría de 10⁻⁴⁰, un apretón que ellos llaman extremadamente conservador. Leída con los pares de 2020, un residuo de "
               "0.005 fN·m sobre una lámina de platino de 2 g a un brazo de 18 mm en un tiempo de promediado de 10³ a 10⁴ s, su fórmula da un techo "
-              "entre 10⁻²⁶ y 10⁻²², de trece a dieciséis órdenes más bajo, y la brecha sobre el piso de interferometría se encogería de treinta y un órdenes a entre catorce y dieciocho."),
+              "entre 10⁻²⁶ y 10⁻²², de trece a dieciséis órdenes más bajo, y la brecha sobre el piso de interferometría se encogería de treinta y un órdenes a entre catorce y dieciocho.",
+              parent=LEE),
             T(" That is their estimate with better inputs, not a bound: the step from a torque residual to an acceleration is a heuristic at the level "
               "of their own Cavendish step, the averaging time is this page's assumption and enters linearly, and the number says nothing about the "
               "smeared model of T.05, whose granularity is σ rather than a nucleus and whose ceiling would sit (σ/r_N)³ higher.",
