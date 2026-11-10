@@ -462,4 +462,16 @@
       background-color: var(--tp-stone);
     }
   }
+
+  /* tg-figure-cap (2026-11-09, maintainer on a large screen): the lead plate, the instrument and the distill plate
+     stop growing with the viewport. The shell is unbounded on wide screens, so at 2560 px the plate was 2,461 px
+     wide and 1,480 px tall; capped at the width of a comfortable reading column and left-aligned with the text. */
+  @media (min-width: 1100px) {
+    .tg-page [data-lead-figure],
+    .tg-page .tg-instrument,
+    .tg-page .tp-distill-figure {
+      box-sizing: border-box;
+      max-width: 1080px;
+    }
+  }
 }
