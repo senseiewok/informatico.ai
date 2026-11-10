@@ -14,7 +14,7 @@ if hasattr(sys.stdout, "reconfigure"):
 FOLIO_METADATA = {
     "folio_id": "M.12",
     "slug": "m12",
-    "title": "Anthropic Lean 4 Complexity & Post-Quantum Crystal Locks: ETH Refutation (`ETHIsFalse`), Eight-Square Rank Compression & ML-KEM Lattices",
+    "title": "Anthropic Lean 4 Complexity & Post-Quantum Crystal Locks: ETH Refutation (ETHIsFalse), Eight-Square Rank Compression & ML-KEM Lattices",
     "governing_law": "b = A s + e (mod q) · R_ℤ(8×8) ≤ 28 (EightSquare.lean) · anthropics/formal-math · NIST FIPS 203",
     "primary_kernel": "tools/formal_verifier.py",
     "primary_doi": "10.1145/1568318.1568324",

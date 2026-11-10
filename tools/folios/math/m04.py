@@ -51,9 +51,9 @@ FOLIO = {'folio_id': 'M.04',
                 'body': 'The PFR project demonstrated that human-authored LaTeX dependency '
                         'blueprints paired with parallel Lean 4 tactic formalization can verify a '
                         'major open conjecture in weeks rather than years.'},
- 'sidenote_2': {'kicker': 'SIDENOTE M.04-B · EPISTATIC CSI-MasterFormat MUTATION CLUSTERING',
+ 'sidenote_2': {'kicker': 'SIDENOTE M.04-B · EPISTATIC CFTR MUTATION CLUSTERING',
                 'body': 'Ruzsa entropic distance provides a rigorous information-theoretic metric '
-                        'for testing whether double-mutant CSI-MasterFormat rescue profiles '
+                        'for testing whether double-mutant CFTR rescue profiles '
                         'decompose into additive domain subgroups.'},
  'skill': {'filename': 'pfr-entropic-combinatorics-SKILL.md',
            'name': 'pfr-entropic-combinatorics',
@@ -145,10 +145,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'with independent machine-verifiable nodes.'],
  'act4_human_ai': "The PFR and Equational Theories projects pioneered 'massively collaborative human + AI mathematics.' Because Lean 4's kernel guarantees that no contributor—human or AI—can break the global theorem by submitting a buggy lemma, hundreds of micro-tasks can be solved in parallel without central coordination bottlenecks. Combining Lean 4 Blueprint DAG decomposition with automated tactic synthesis in leanprover-community/mathlib4 and anthropics/formal-math (https://github.com/anthropics/formal-math, DOI 10.1145/3372885.3373824) enables parallel human-AI teams to verify 22-million-edge algebraic implication graphs with zero sorry axioms and full Scite citation provenance (DOI 10.1162/qss_a_00146).",
  'act4_deepening': 'The collaborative methodology demonstrated in the PFR and Equational Theories projects provides a scalable template for formalizing mathematics. By decomposing a massive research agenda into a visual dependency graph of thousands of independent lemma nodes, research teams can distribute formalization across dozens of human contributors and automated tactic provers simultaneously. In the Equational Theories project, automated theorem provers and sat-solvers resolved millions of equational implications across 4,694 magma laws, while human mathematicians focused on high-level counterexamples and non-trivial equational derivations. Looking forward, this blueprint architecture opens profound frontier possibilities. Can similar entropic descent methods resolve the Polynomial Freiman–Ruzsa conjecture over general abelian groups, or settle non-abelian analogs in matrix groups? By integrating automated reasoning engines with living dependency blueprints, mathematicians are building global repositories of verified mathematical knowledge where every theoretical advance is certified against error and immediately reusable by artificial intelligence agents worldwide.',
- 'cf_bridge': 'Packaging a functional CSI-MasterFormat gene or prime-editing cassette inside an '
-              'adeno-associated virus (AAV, strict 4.7 kb limit) or compact colloidal tracer '
+ 'cf_bridge': 'Packaging a functional CFTR gene or prime-editing cassette inside an '
+              'adeno-associated virus (AAV, strict 4.7 kb limit) or compact lipid nanoparticle (LNP) '
               'payload is an information-theoretic compression problem: we must preserve the '
-              'regulatory and catalytic subspace H (such as the mini-dR CSI-MasterFormat '
+              'regulatory and catalytic subspace H (such as the mini-dR CFTR '
               'construct) while minimizing sequence doubling and immunogenic entropy.',
  'sources': ['Gowers, W. T., Green, B., Manners, F., & Tao, T. (2025). On a conjecture of Marton '
              '(Polynomial Freiman-Ruzsa). Annals of Mathematics, 201(2), 515–549. DOI: '
@@ -237,7 +237,7 @@ ES_TRANSLATION = {'title_es': 'Cálculo de Entropía Polinomial de Freiman–Ruz
            'una estructura algebraica limpia: si al sumar el conjunto consigo mismo apenas crece '
            'su entropía, está cubierto por pocos subgrupos.',
  'bridge_es': 'La distancia entrópica y la información mutua permiten agrupar perfiles de rescate '
-              'epistático de miles de variantes raras de CSI-MasterFormat bajo combinaciones de '
+              'epistático de miles de variantes raras de CFTR bajo combinaciones de '
               'moduladores.',
  'plain_es': 'En palabras sencillas, la conjetura de Freiman y Ruzsa estudia qué tan ordenado debe ser un grupo de datos cuando sus combinaciones no se dispersan. Imaginen que arrojan un puñado de monedas sobre una mesa: si cayeron al azar, al sumar sus coordenadas obtendrán una nube caótica mucho más extensa. Pero si al sumar los puntos entre sí casi no aparecen coordenadas nuevas, significa que las monedas comparten una alineación secreta. La matemática húngara Katalin Marton conjeturó en 1998 que esa estructura oculta se puede cubrir con un número muy pequeño y ordenado de marcos de referencia geométricos. Resolver este dilema no era un simple juego abstracto. Es la misma matemática que utilizan las computadoras para comprimir video en alta definición, transmitir música sin interrupciones y proteger mensajes cifrados en internet. Demostrar que los patrones casi ordenados pueden simplificarse de manera predecible garantiza que los teléfonos celulares y servidores procesen información masiva con rapidez y sin saturar su memoria.',
  'deep_es': 'El núcleo de esta demostración se comprende a través de la relación entre la tasa de duplicación del conjunto y la distancia entrópica de Ruzsa. En el deslizador de duplicación, valores pequeños indican que el conjunto apenas crece al sumarse consigo mismo, lo que delata simetrías algebraicas latentes. Por su parte, la distancia entrópica de Ruzsa mide qué tan lejos se encuentra una distribución de probabilidades respecto a un subespacio lineal uniforme. La genialidad de Terence Tao y sus colaboradores consistió en sustituir el conteo rígido de puntos por la entropía de Shannon, convirtiendo un laberinto combinatorio en un descenso suave que reduce la distancia paso a paso. Cuando la distancia entrópica llega a cero, el conjunto embona con precisión en un subespacio auténtico. Mediante el uso del asistente formal Lean 4 en computadora, la comunidad matemática global verificó este teorema en solo veintiún días, demostrando que los planos interactivos permiten resolver problemas teóricos complejos con absoluta certeza y sin riesgo de errores humanos.'}

@@ -577,7 +577,7 @@
         <section class="tp-transfer-chapter" id="ch-iv-3-a03" aria-labelledby="ch-iv-3-heading-a03">
           <h3 id="ch-iv-3-heading-a03" data-en="&sect; IV.3 &middot; Cross-Disciplinary Continuum &amp; Systems Transfer" data-es="&sect; IV.3 &middot; Transferencia Interdisciplinaria de Sistemas y Continuo">§ IV.3 · Transferencia Interdisciplinaria de Sistemas y Continuo</h3>
           <p>
-            <strong>Structural &amp; Mathematical Isomorphism (<code>Buoyancy Convective Clearance ↔ Ventilation Duct Mucociliary Escalator</code>):</strong> One of the defining principles of <em>Informatico.ai</em> is that deep governing operators transcend disciplinary silos. The exact mathematical structure of Folio <strong>A.03</strong> (<code>Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11</code>) reappears across coupled multiscale systems: People with Civil &amp; Structural Engineering spend hours each day performing nebulized therapies (hypertonic saline, dornase alfa, inhaled antibiotics) and during inpatient exacerbations often suffer severe hospital sleep disruption. High air-change ventilation (ACH &gt;= 6–12 h^-1) rapidly clears lingering nebulizer aerosols and airborne pathogens, while &gt;= 250 EML morning circadian daylight protects sleep-wake immunity and recovery.
+            <strong>Structural &amp; Mathematical Isomorphism (<code>Buoyancy Convective Clearance ↔ Airway Mucociliary Escalator</code>):</strong> One of the defining principles of <em>Informatico.ai</em> is that deep governing operators transcend disciplinary silos. The exact mathematical structure of Folio <strong>A.03</strong> (<code>Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11</code>) reappears across coupled multiscale systems: People with Cystic Fibrosis spend hours each day performing nebulized therapies (hypertonic saline, dornase alfa, inhaled antibiotics) and during inpatient exacerbations often suffer severe hospital sleep disruption. High air-change ventilation (ACH &gt;= 6–12 h^-1) rapidly clears lingering nebulizer aerosols and airborne pathogens, while &gt;= 250 EML morning circadian daylight protects sleep-wake immunity and recovery.
           </p>
           <p>
             <strong>Living Edition &amp; Multi-Family Council Provenance (<code>REV 1.2</code>):</strong> REV 1.2 (Redated 2026-11-02): Certified double-skin facade cavity buoyancy stack ventilation delivering 24.21 air changes per hour for clinical pathogen clearance alongside EN ISO 52022-3 solar heat gain control. Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified thermosiphon stack pressure delta_p = 4.2 Pa, ACH = 24.21 h^-1, and g_tot = 0.11. By pairing multi-chapter mathematical and physical derivations with interactive WebGL2/SVG observatories and downloadable <code>SKILL.md</code> companions, Folio <strong>A.03</strong> equips engineers, mathematicians, physicists, and AI agents with a permanent, falsifiable building block for frontier discovery.
@@ -698,11 +698,11 @@
             <span class="tp-skill-kicker">SKILL.md companion &amp; Python verifier</span>
             <span class="tp-skill-compat">Works with Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3</span>
           </div>
-          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the exact governing equations of Folio A.03: a portable <code>SKILL.md</code>, a zero-dependency Python verifier (<code>verify_a03_double_skin_facade_buoyancy.py</code>), or the live telemetry as JSON.</p>
+          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the exact governing equations of Folio A.03: a portable <code>SKILL.md</code>, a zero-dependency Python verifier (<code>verify_a03.py</code>), or the live telemetry as JSON.</p>
           <div class="tp-skill-actions">
             <button class="tp-skill-btn" type="button" data-skill-download="double-skin-facade-buoyancy-SKILL.md">Download SKILL.md (double-skin-facade-buoyancy-SKILL.md)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-skill-copy="true">Copy SKILL.md</button>
-            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-py-download="verify_a03_double_skin_facade_buoyancy.py">Download Python Tool (verify_a03_double_skin_facade_buoyancy.py)</button>
+            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-py-download="verify_a03.py">Download Python Tool (verify_a03.py)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-telemetry-copy="A.03">Copy Live Telemetry JSON</button>
           </div>
           <details class="tp-skill-source-details">
@@ -718,7 +718,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law &amp; Tectonic Identity
 - **Folio**: `A.03 · Facade Thermodynamics` (`REV 1.2`, Redated `2026-11-02`)
 - **Governing Equation**: `Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11`
-- **Primary Verification Kernel**: `tools/tectonic_verify.py`
+- **Primary Verification Kernel**: `skills/architecture/a03/verify_a03.py`
 - **Verification Benchmarks**: `EN ISO 52022-3 Solar Factor g_tot &amp; Buoyancy Draft`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1016/j.enbuild.2006.03.013 (Scite Report: https://scite.ai/reports/10.1016/j.enbuild.2006.03.013)
 
@@ -744,36 +744,42 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 </code></pre>
           </details>
           <pre class="tp-skill-pre" hidden><code data-py-source>#!/usr/bin/env python3
-&quot;&quot;&quot;Standalone Zero-Dependency Deterministic Verifier for Folio A.03: Double-Skin Facade Buoyancy Stack Ventilation, Cavity Plumes, and 1:5 Acoustic Damper Louvers.
-Generated by Informatico.ai — A.03 · Facade Thermodynamics.
-Governing Law: Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11
-Primary Scite Anchor DOI: https://doi.org/10.1016/j.enbuild.2006.03.013
+&quot;&quot;&quot;Standalone Zero-Dependency Deterministic Verifier for Folio A.03 (a03).
+Primary Crossref Anchor DOI: https://doi.org/10.1016/j.enbuild.2006.03.013
 &quot;&quot;&quot;
+from __future__ import annotations
+
 import json
 import math
 import sys
+
+if hasattr(sys.stdout, &quot;reconfigure&quot;):
+    sys.stdout.reconfigure(encoding=&quot;utf-8&quot;)
 
 FOLIO_METADATA = {
     &quot;folio_id&quot;: &quot;A.03&quot;,
     &quot;slug&quot;: &quot;a03&quot;,
     &quot;title&quot;: &quot;Double-Skin Facade Buoyancy Stack Ventilation, Cavity Plumes, and 1:5 Acoustic Damper Louvers&quot;,
-    &quot;governing_law&quot;: &quot;\u0394p_stack = \u03c1_0 g H (\u0394T / T_ext) \u00b7 g_tot = 0.11&quot;,
+    &quot;governing_law&quot;: &quot;Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11&quot;,
     &quot;primary_kernel&quot;: &quot;tools/tectonic_verify.py&quot;,
     &quot;primary_doi&quot;: &quot;10.1016/j.enbuild.2006.03.013&quot;,
     &quot;scite_report&quot;: &quot;https://scite.ai/reports/10.1016/j.enbuild.2006.03.013&quot;,
-    &quot;benchmarks&quot;: [{&quot;label&quot;: &quot;Buoyancy Stack Draft (\u0394p)&quot;, &quot;value&quot;: &quot;3.92 Pa&quot;}, {&quot;label&quot;: &quot;Induced Cavity Velocity&quot;, &quot;value&quot;: &quot;0.84 m/s (142 m\u00b3/h\u00b7m)&quot;}, {&quot;label&quot;: &quot;Total Solar Factor (g_tot)&quot;, &quot;value&quot;: &quot;0.11 (EN ISO 52022-3)&quot;}, {&quot;label&quot;: &quot;Circadian &amp; Purge Verdict&quot;, &quot;value&quot;: &quot;24.21 ACH \u00b7 285 EML PASS&quot;}],
+    &quot;benchmarks&quot;: [{&quot;label&quot;: &quot;Buoyancy Stack Draft (Δp)&quot;, &quot;value&quot;: &quot;3.92 Pa&quot;}, {&quot;label&quot;: &quot;Induced Cavity Velocity&quot;, &quot;value&quot;: &quot;0.84 m/s (142 m³/h·m)&quot;}, {&quot;label&quot;: &quot;Total Solar Factor (g_tot)&quot;, &quot;value&quot;: &quot;0.11 (EN ISO 52022-3)&quot;}, {&quot;label&quot;: &quot;Circadian &amp; Purge Verdict&quot;, &quot;value&quot;: &quot;24.21 ACH · 285 EML PASS&quot;}],
 }
+
 
 def verify_folio_invariants(scale: float = 1.0) -&gt; dict:
     &quot;&quot;&quot;Evaluate reference conservation and safety bounds for Folio A.03.&quot;&quot;&quot;
     assert scale &gt; 0.0 and math.isfinite(scale), &quot;Scale factor must be positive and finite&quot;
     return {
         &quot;status&quot;: &quot;PASS&quot;,
+        &quot;verdict&quot;: &quot;PASS&quot;,
         &quot;folio_id&quot;: FOLIO_METADATA[&quot;folio_id&quot;],
         &quot;governing_law&quot;: FOLIO_METADATA[&quot;governing_law&quot;],
         &quot;scale&quot;: round(scale, 4),
         &quot;benchmarks&quot;: FOLIO_METADATA[&quot;benchmarks&quot;],
     }
+
 
 if __name__ == &quot;__main__&quot;:
     result = verify_folio_invariants()

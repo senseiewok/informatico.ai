@@ -48,7 +48,7 @@ FOLIO = {'slug': 'x03',
  'skill_dir': 'skills/toolchain/x03',
  'skill_name': 'toolchain-x03-small-architect-vault-kit',
  'formats': ('glb', 'step', '3mf', 'dxf'),
- 'primary_doi': '10.1016/j.CAD.2017.07.005',
+ 'primary_doi': '10.1016/0020-7683(66)90018-7',
  'scite_summary': 'Heyman (1966) safe theorem of masonry limit analysis and ETH Zurich Block '
                   'Research Group COMPAS graphic statics verified offline.',
  'date_published': '2026-11-08',
@@ -109,8 +109,9 @@ FOLIO = {'slug': 'x03',
               'Clerk Maxwell’s eighteen sixty-four reciprocal force polygons and William Rankine’s '
               'graphic statics provided the geometric machinery to trace these equilibrium lines '
               'by hand. Decades later, Philippe Block and Tom Van Mele digitized this heritage '
-              'through thrust network analysis and the open-source COMPAS framework (DOI: '
-              '10.1016/j.CAD.2017.07.005). By translating reciprocal polyhedra into algebraic '
+              'through thrust network analysis, polyhedral graphic statics (Akbarzadeh, Van Mele, '
+              '& Block, 2015, DOI: 10.1016/j.cad.2015.01.006), and the open-source COMPAS '
+              'framework. By translating reciprocal polyhedra into algebraic '
               'matrices, they showed that complex three-dimensional compression vaults can be '
               'calculated without non-linear finite element solvers, directly linking graphic '
               'statics to computerized architectural production.',
@@ -216,6 +217,9 @@ FOLIO = {'slug': 'x03',
                         'groin vaults and open-standard IFC 4.3 structural analysis view export.'],
  'sources': ['Heyman, J. (1966). The stone skeleton. International Journal of Solids and '
              'Structures, 2(2), 249–279. DOI 10.1016/0020-7683(66)90018-7',
+             'Akbarzadeh, M., Van Mele, T., & Block, P. (2015). On the equilibrium of funicular '
+             'polyhedral frames and convex polyhedral force diagrams. Computer-Aided Design, 63, '
+             '118–128. DOI 10.1016/j.cad.2015.01.006',
              'Block, P., & Ochsendorf, J. (2007). Thrust network analysis: A new methodology for '
              'three-dimensional equilibrium. Journal of the International Association for Shell '
              'and Spatial Structures, 48(3), 167–173.',

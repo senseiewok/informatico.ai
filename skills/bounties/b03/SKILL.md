@@ -35,7 +35,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 5. Exact T0–T3 Truth Boundary
 ### Certified in Repository Today (T0/T1)
 - Deterministic SIMP compliance-carbon Pareto verifier in bounties/bounty_e1_simp_carbon_slab.py (< 0.05s runtime).
-- Verified FEniCS/dolfinx (DOI 10.21105/joss.05754) and Sigmund (2001, DOI 10.1007/s001580050176) mathematical formulation.
+- Verified FEniCS/dolfinx (Scroggs et al., 2022, DOI 10.1145/3524456) and Sigmund (2001, DOI 10.1007/s001580050176) mathematical formulation.
 - Ready for immediate community showcase submission on FEniCS Discourse and open structural engineering benchmark repositories.
 
 ### Open Global Prize Horizon (T2/T3)

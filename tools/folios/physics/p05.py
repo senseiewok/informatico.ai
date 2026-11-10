@@ -8,7 +8,7 @@ PILLAR = 'physics'
 
 FOLIO = {'category_code': 'P',
  'colophon': {'benchmarks': 'Gamow 1928 · Marcus 1956 · DOI 10.1103/RevModPhys.35.724',
-              'bridge': 'WKB Proton Tunneling ↔ CSI-MasterFormat 1717-1G>A Base Editing',
+              'bridge': 'WKB Proton Tunneling ↔ CFTR 1717-1G>A Base Editing',
               'identifier': 'P.05 · Quantum & Chemical Physics',
               'kernels': 'WKB T ~ exp(−2∫√(2m(V−E))dx/ℏ) · KIE = 6.84'},
  'current_edition': 'REV 1.1',
@@ -34,14 +34,14 @@ FOLIO = {'category_code': 'P',
                 'summary': 'REV 1.1 (Redated 2026-11-02): Verified WKB semiclassical tunneling '
                            'action integral, Bell parabolic correction kappa_tun, and Marcus '
                            'reorganization energy for engineered TadA-8e adenine base editors '
-                           'rescuing CSI-MasterFormat 1717-1G>A.'},
+                           'rescuing CFTR 1717-1G>A.'},
                {'date': '2026-11-01',
                 'edition': 'REV 1.0',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified WKB '
                         'mass-scaling exponent sqrt(2m) and Bell tunneling factor convergence.',
                 'summary': 'REV 1.0 (Published 2026-11-01): Initial 5-Act monograph on WKB proton '
                            'tunneling, Marcus reorganization, and TadA base-editing catalysis for '
-                           'Class I CSI-MasterFormat mutations.'}],
+                           'Class I CFTR mutations.'}],
  'scite': {'doi': '10.1103/RevModPhys.35.724',
            'fetched_on': '2026-11-08',
            'citing_publications': 694,
@@ -51,16 +51,15 @@ FOLIO = {'category_code': 'P',
            'retracted': False,
            'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 694 citing '
                       'publications (5 supporting, 464 mentioning, 0 contrasting) on '
-                      'CSI-MasterFormat 1717-1G>A rescue.'},
+                      'quantum proton tunneling in DNA base pairs.'},
  'sidenote_1': {'body': 'Because protium has half the mass of deuterium, its imaginary barrier '
                         'frequency u_b = ℏω_b / (k_B T) is √2 larger, producing a 6.8-fold quantum '
                         'rate acceleration at 310 K.',
                 'kicker': 'SIDENOTE P.05-A · BELL PARABOLIC TUNNELING FACTOR'},
  'sidenote_2': {'body': 'Engineered TadA adenine base editors delivered as optimized mRNA + sgRNA '
                         'functionally rescue Cl- transport in patient-derived 1717-1G>A intestinal '
-                        'organoids and ventilation duct epithelia.',
-                'kicker': 'SIDENOTE P.05-B · CSI-MasterFormat 1717-1G>A BASE EDITING (DOI '
-                          '10.1103/RevModPhys.35.724)'},
+                        'organoids and airway epithelia.',
+                'kicker': 'SIDENOTE P.05-B · CFTR 1717-1G>A BASE EDITING'},
  'skill': {'description': 'AI-agnostic physics skill for WKB quantum barrier penetration, Bell '
                           'parabolic tunneling corrections, Marcus reorganization energy, and '
                           'enzymatic Kinetic Isotope Effects (KIE).',
@@ -87,7 +86,7 @@ FOLIO = {'category_code': 'P',
  'slug': 'p05',
  'spec_plate': {'body': 'Gamow WKB tunneling action integral and Marcus reorganization chamber '
                         'validating quantum proton-transfer efficiency and TadA-8e base editing '
-                        'for CSI-MasterFormat 1717-1G>A.',
+                        'for CFTR 1717-1G>A.',
                 'division': 'CSI MASTERFORMAT 11 53 53 / 13 21 00',
                 'meta': 'Gamow 1928 · Marcus 1956 · DOI 10.1103/RevModPhys.35.724 · ISO 14644-1 '
                         'Class 5',
@@ -101,10 +100,10 @@ FOLIO = {'category_code': 'P',
            '16.4 kcal/mol barrier with Bell correction κ_tun = (u_b/2)/sin(u_b/2) and KIE k_H/k_D '
            '= 6.84.',
            'Stage 4 (TadA-8e Adenine Deamination Lock): Converts target adenosine to inosine (read '
-           'as guanosine), restoring canonical CSI-MasterFormat splicing at 1717-1G>A.'],
+           'as guanosine), restoring canonical CFTR splicing at 1717-1G>A.'],
  'subtitle': "How George Gamow's WKB tunneling action integral, Rudolph Marcus's reorganization "
              'energy, and kinetic isotope effects (k_H/k_D = 6.8) govern base-editor deamination '
-             'of CSI-MasterFormat nonsense and splice mutations.',
+             'of CFTR nonsense and splice mutations.',
  'title': 'Quantum WKB Barrier Penetration, Proton-Coupled Electron Transfer, and Deaminase '
           'Base-Editing Catalysis',
  'volume': 3,
@@ -122,7 +121,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
            'retracted': False,
            'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 694 citing '
                       'publications (5 supporting, 464 mentioning, 0 contrasting) on '
-                      'CSI-MasterFormat 1717-1G>A rescue.'},
+                      'quantum proton tunneling in DNA base pairs.'},
  'act1_title': "Act I — Gamow's Alpha Decay, WKB Wavefunction Tunneling, and Proton Transfer in "
                'Deaminase Enzymes',
  'act1_dropcap': 'In the summer of 1928 at the University of Göttingen, the young Ukrainian '
@@ -298,9 +297,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'mechanics to repair previously uncorrectable genetic nonsense and canonical '
                    'splice mutations.',
  'cf_bridge': 'Adenine base editors (ABEs) and cytidine base editors (CBEs) directly repair Class '
-              'I nonsense and canonical splice mutations in CSI-MasterFormat — such as the '
-              'recently demonstrated mRNA-delivered base-editing rescue of the untreatable '
-              '1717-1G>A splice mutation (DOI 10.1103/RevModPhys.35.724) and W1282X / R553X stop '
+              'I nonsense and canonical splice mutations in CFTR — such as '
+              'mRNA-delivered base-editing rescue of the '
+              '1717-1G>A splice mutation and W1282X / R553X stop '
               'codons — via zinc-assisted proton-coupled deamination.',
  'sources': ['Gamow, G. (1928). Zur Quantentheorie des Atomkernes. Zeitschrift für Physik, 51, '
              '204–212.',
@@ -348,8 +347,8 @@ DISPATCH = {'kicker': 'FRONTIER QUANTUM BIOLOGY DISPATCH · WKB PROTON TUNNELING
              'Adenine Base Editing',
  'body': "Coupling Gamow–WKB quantum tunneling with Löwdin's proton-transfer tautomeric model "
          '(Rev. Mod. Phys. DOI 10.1103/RevModPhys.35.724), engineered TadA deaminases and prime '
-         'editors (Cell Reports Medicine DOI 10.1016/j.xcrm.2024.101544; PMID 42015509) correct '
-         'stop-codon and splice-site CSI-MasterFormat mutations in patient-derived organoids '
+         'editors (Cell Reports Medicine DOI 10.1016/j.xcrm.2024.101544) correct '
+         'stop-codon and splice-site CFTR mutations in patient-derived organoids '
          'without double-strand DNA breaks.'}
 
 META_3D = ('WKB Quantum Proton-Tunneling Barrier & Wave Packet',
@@ -359,7 +358,7 @@ ES_TRANSLATION = {'title_es': 'Penetración Cuántica de Barrera WKB, Transferen
              'Catálisis de Edición de Bases',
  'subtitle_es': 'Cómo la integral de acción de tunelamiento WKB de George Gamow, la energía de '
                 'reorganización de Rudolph Marcus y el efecto isotópico cinético (k_H/k_D = 6.8) '
-                'gobiernan la edición genética de mutaciones sin sentido en CSI-MasterFormat.',
+                'gobiernan la edición genética de mutaciones sin sentido en CFTR.',
  'why_es': 'La activación térmica clásica equivale a lanzar una pelota por encima de un muro alto; '
            'el tunelamiento cuántico WKB permite que el protón atraviese directamente una barrera '
            'delgada cuando el sitio activo acerca los átomos.',
@@ -391,4 +390,4 @@ ES_TRANSLATION = {'title_es': 'Penetración Cuántica de Barrera WKB, Transferen
             'mutaciones sin sentido en el ADN sin romper la doble hélice.',
  'bridge_es': 'Modela la precisión catalítica de los editores de bases de adenina (ABE) diseñados '
               'para reparar mutaciones de paro prematuro (Clase I, como W1282X y G542X) en el gen '
-              'CSI-MasterFormat sin cortar la doble hélice de ADN.'}
+              'CFTR sin cortar la doble hélice de ADN.'}

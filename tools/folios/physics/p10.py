@@ -9,7 +9,7 @@ PILLAR = 'physics'
 FOLIO = {'category_code': 'P',
  'colophon': {'benchmarks': 'm_T = 0.55 > m_P = 0.25 ⇒ C = +1 · Δω/ω_0 = 14.2% · T_forward = 99.8%',
               'bridge': 'Synthesizes E.03/A.05/P.08 · Topological Ring Biosensor ↔ '
-                        'Single-colloidal tracer Sizing',
+                        'Single-LNP Sizing',
               'identifier': 'P.10 · Haldane–Raghu Topological Photonics & Berry Curvature',
               'kernels': 'Berry Curvature Ω_n(k) · First Chern Invariant C_n ∈ ℤ · Bulk-Boundary '
                          'Edge Mode'},
@@ -223,10 +223,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                   'disorder-immune silicon-photonic lab-on-a-chip interferometers.',
  'cf_bridge': 'Standalone Wave-Physics Flagship & Triad Synthesis (E.03 + A.05 + P.08 -> P.10): '
               'Written for optical physicists, metamaterial engineers, and silicon-photonics '
-              'designers. Upstream biophysical thread for the lab: topological photonic '
+              'designers. Upstream biophysical case study: topological photonic '
               'ring-resonator and Mach–Zehnder biosensors eliminate fabrication-roughness '
               'backscatter noise, enabling label-free single-particle refractive-index sizing and '
-              'RNA payload quantification of 65 nm CSI-MasterFormat lipid nanoparticles (P.09) in '
+              'RNA payload quantification of 65 nm CFTR mRNA lipid nanoparticles (P.09) in '
               'microfluidic quality-control channels.',
  'sources': ['Haldane, F. D. M., & Raghu, S. (2008). Possible realization of directional optical '
              'waveguides in photonic crystals with broken time-reversal symmetry. Physical Review '

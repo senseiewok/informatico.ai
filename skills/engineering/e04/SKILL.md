@@ -31,4 +31,4 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Enthalpy Verification**: `PASS · BALANCED NTU`
 
 ## 5. Frontier Discovery & Contemporary Research Context (2024–2026)
-- **Sulfonated Block-Copolymer Enthalpy Cores Reach 79.4% Latent Moisture Recovery at Zero Pathogen Crossover**: Extending Kays & London's ε-NTU compact heat exchanger theory (1960, DOI 10.1115/1.3644004), modern sulfonated ionomer membranes selectively transport H2O vapor via solution-diffusion while blocking >99.6% of viral/bacterial aerosols, protecting the 7.2 μm ventilation duct surface liquid down to −12.5 °C outdoor air.
+- **Sulfonated Block-Copolymer Enthalpy Cores Reach 79.4% Latent Moisture Recovery at Zero Pathogen Crossover**: Extending Kays & London's ε-NTU compact heat exchanger theory (1960, DOI 10.1115/1.3644004), modern sulfonated ionomer membranes selectively transport H2O vapor via solution-diffusion while blocking >99.6% of viral/bacterial aerosols, protecting the 7.2 μm airway surface liquid down to −12.5 °C outdoor air.

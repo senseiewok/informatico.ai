@@ -72,12 +72,12 @@ FOLIO = {'folio_id': 'M.09',
                         'the Benamou–Brenier continuity equation defines the Levi-Civita geodesic '
                         "while Sinkhorn's ε -> 0 limit recovers the Monge–Ampère PDE det(D²Φ) = f "
                         '/ (g ∘ ∇Φ).'},
- 'sidenote_2': {'kicker': 'SIDENOTE M.09-B · WADDINGTON-OT FOR VENTILATION DUCT BASAL STEM CELL '
+ 'sidenote_2': {'kicker': 'SIDENOTE M.09-B · WADDINGTON-OT FOR AIRWAY BASAL STEM CELL '
                           'DIFFERENTIATION',
                 'body': 'Because scRNA-seq destroys cells at each measurement timepoint t_k, '
                         'Benamou–Brenier optimal transport is the canonical mathematical tool to '
                         'reconstruct ancestor-descendant trajectories from basal stem cells to '
-                        'CSI-MasterFormat+ ionocytes.'},
+                        'CFTR+ ionocytes.'},
  'skill': {'filename': 'wasserstein-optimal-transport-benamou-brenier-SKILL.md',
            'name': 'wasserstein-optimal-transport-benamou-brenier',
            'description': 'AI-agnostic mathematical and generative-AI skill for Monge-Kantorovich '
@@ -323,9 +323,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'sequestration logistics.',
  'cf_bridge': 'Standalone Mathematical Flagship & Triad Synthesis (M.04 + M.07 + M.08 -> M.09): '
               'Written for applied mathematicians, optimal-control theorists, and AI researchers. '
-              'Direct curative bridge for the lab: Waddington-OT and Benamou–Brenier Wasserstein-2 '
-              'trajectory inference reconstruct how ventilation duct basal stem cells '
-              'differentiate into CSI-MasterFormat-expressing ionocytes and ciliated cells across '
+              'Biophysical case study: Waddington-OT and Benamou–Brenier Wasserstein-2 '
+              'trajectory inference reconstruct how airway basal stem cells '
+              'differentiate into CFTR-expressing ionocytes and ciliated cells across '
               'destructive time-series scRNA-seq snapshots, while de novo Flow Matching models '
               'design ionizable lipid nanoparticles on SE(3) manifolds.',
  'sources': ['Benamou, J.-D., & Brenier, Y. (2000). A computational fluid mechanics solution to '
@@ -438,6 +438,6 @@ ES_TRANSLATION = {'title_es': 'Transporte Óptimo de Monge–Kantorovich, Dinám
             'regularización entrópica fundamenta el diseño de nuevos modelos generativos de Flow '
             'Matching y la reconstrucción temporal de linajes celulares en biología experimental.',
  'bridge_es': 'El transporte óptimo dinámico de Benamou–Brenier (Waddington-OT) reconstruye cómo '
-              'las células madre basales bronquiales se diferencian en ionocitos CSI-MasterFormat+ '
+              'las células madre basales bronquiales se diferencian en ionocitos CFTR+ '
               'a partir de datos de scRNA-seq, además de guiar el diseño generativo Flow Matching '
               'de lípidos.'}

@@ -25,7 +25,7 @@ FOLIO = {'folio_id': 'E.07',
  'colophon': {'identifier': 'E.07 · Bridge Aeroelastic Flutter & PINN SHM · CSI 05 12 00',
               'kernels': 'Scanlan Flutter Derivatives A_2*(K), H_1*(K) · Euler–Bernoulli PINN Loss',
               'benchmarks': 'U_crit = 76.4 m/s · PINN Stress Error 1.42% (8 Sensors)',
-              'bridge': 'Sparse Bridge Accelerometer PINNs ↔ Non-Invasive Ventilation Duct '
+              'bridge': 'Sparse Bridge Accelerometer PINNs ↔ Non-Invasive Airway '
                         'Impedance Inversion'},
  'sliders': [{'label': 'Mean Wind Velocity (U_wind)',
               'min': 20.0,
@@ -304,10 +304,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'reality.',
  'cf_bridge': 'Standalone Civil Engineering Flagship & Upstream Thread to Follow: This monograph '
               'is engineered for structural, wind, and bridge civil engineers building resilient '
-              'long-span infrastructure. Upstream mathematical thread for the lab: the exact PINN '
+              'long-span infrastructure. Upstream mathematical case study: the exact PINN '
               'inverse boundary-value mathematics that reconstructs uninstrumented internal bridge '
               'girder stresses from sparse deck accelerometers transfers directly to non-invasive '
-              'forced-oscillation respiratory mechanics—inferring deep small-ventilation duct '
+              'forced-oscillation respiratory mechanics—inferring deep small-airway '
               'compliance and localized obstruction from boundary pressure/flow sensors at the '
               'mouth.',
  'sources': ['Scanlan, R. H., & Tomko, J. J. (1971). Airfoil and bridge deck flutter derivatives. '

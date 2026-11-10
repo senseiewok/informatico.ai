@@ -8,7 +8,7 @@ PILLAR = 'physics'
 
 FOLIO = {'category_code': 'P',
  'colophon': {'benchmarks': 'de Gennes 1971 · Doi-Edwards 1978 · DOI 10.1039/F29787401818',
-              'bridge': 'Tube Reptation ↔ 4.5 kb CSI-MasterFormat mRNA & Prime-Editor Delivery',
+              'bridge': 'Tube Reptation ↔ 4.5 kb CFTR mRNA & Prime-Editor Delivery',
               'identifier': 'P.06 · Polymer & Statistical Physics',
               'kernels': 'τ_d ~ N³ · D_rep ~ N⁻² · a_tube = 85 nm'},
  'current_edition': 'REV 1.1',
@@ -32,7 +32,7 @@ FOLIO = {'category_code': 'P',
                         'exponent 3.4, and CSI 11 53 43 / 23 41 33 cleanroom aerosol containment.',
                 'summary': 'REV 1.1 (Redated 2026-11-02): Verified de Gennes polymer reptation '
                            '(D_rep ~ N^-2, tau_d ~ N^3) and Doi-Edwards topological tube '
-                           'disengagement dynamics for 4.5 kb CSI-MasterFormat mRNA and '
+                           'disengagement dynamics for 4.5 kb CFTR mRNA and '
                            'prime-editing ribonucleoprotein polyplex mucosal transit.'},
                {'date': '2026-11-01',
                 'edition': 'REV 1.0',
@@ -51,7 +51,7 @@ FOLIO = {'category_code': 'P',
            'retracted': False,
            'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 815 citing '
                       'publications (20 supporting, 579 mentioning, 2 contrasting) on '
-                      'prime-editing CSI-MasterFormat functional rescue and large-cargo polymer '
+                      'Doi–Edwards tube-theory constitutive mechanics and entangled polymer '
                       'reptation.'},
  'sidenote_1': {'body': 'Breathing modes at the two free ends of the polymer shorten the effective '
                         'tube length by (1 - μ√(N_e/N)), shifting the experimental viscosity '
@@ -87,7 +87,7 @@ FOLIO = {'category_code': 'P',
               'value': -30.0}],
  'slug': 'p06',
  'spec_plate': {'body': 'De Gennes topological tube model and Doi-Edwards viscoelastic relaxation '
-                        'cell validating 4.5 kb CSI-MasterFormat mRNA and prime-editing polyplex '
+                        'cell validating 4.5 kb CFTR mRNA and prime-editing polyplex '
                         'mucosal penetration.',
                 'division': 'CSI MASTERFORMAT 11 53 43 / 23 41 33',
                 'meta': 'de Gennes 1971 · Doi-Edwards 1978 · DOI 10.1039/F29787401818 · NSF/ANSI '
@@ -101,10 +101,10 @@ FOLIO = {'category_code': 'P',
            'Stage 3 (Tube Disengagement τ_d ~ N³): Complete memory relaxation occurs when the '
            'chain slithers out of its original tube in time τ_d = L_tube² / (π² D_curv).',
            'Stage 4 (Biased Mucosal Penetration): Weak electro-osmotic alignment tilts the leading '
-           'chain end, accelerating 4.5 kb CSI-MasterFormat mRNA polyplex transport across '
-           'ventilation duct viscoplastic grout.'],
+           'chain end, accelerating 4.5 kb CFTR mRNA polyplex transport across '
+           'airway mucus.'],
  'subtitle': "How Pierre-Gilles de Gennes's topological tube model and Doi–Edwards viscoelastic "
-             'relaxation govern the slithering transport of 4.5 kb CSI-MasterFormat mRNA and '
+             'relaxation govern the slithering transport of 4.5 kb CFTR mRNA and '
              'prime-editing polyplexes through entangled hydrogels.',
  'title': 'de Gennes Polymer Reptation (D_rep ~ N⁻²), Doi–Edwards Tube Relaxation, and Kilobase '
           'Genetic Cargo Transport',
@@ -123,7 +123,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
            'retracted': False,
            'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 815 citing '
                       'publications (20 supporting, 579 mentioning, 2 contrasting) on '
-                      'prime-editing CSI-MasterFormat functional rescue and large-cargo polymer '
+                      'Doi–Edwards tube-theory constitutive mechanics and entangled polymer '
                       'reptation.'},
  'act1_title': "Act I — de Gennes's Reptating Snake, Doi–Edwards Tube Theory, and Large-Cargo "
                'DNA/RNA Reptation',
@@ -265,8 +265,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Experiment 2 (Biased Electric / Osmotic Reptation): See how a modest electric or '
                  'electro-osmotic field aligns the leading chain end, shifting mobility from N^-2 '
                  'toward N^-1.',
-                 'Experiment 3 (4.5 kb CSI-MasterFormat mRNA & Prime-Editor Cargo): Compare '
-                 'compacted spherical colloidal tracer packaging against elongated polyplex '
+                 'Experiment 3 (4.5 kb CFTR mRNA & Prime-Editor Cargo): Compare '
+                 'compacted spherical lipid nanoparticle (LNP) packaging against elongated polyplex '
                  'reptation through 100 nm mucin pores.'],
  'act4_title': 'Act IV — Human + AI Co-Design & the Structural & Civil Engineering Specification '
                'Bridge',
@@ -297,12 +297,12 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'with machine-learning polymer dynamics, researchers can systematically '
                    'engineer non-viral delivery vectors capable of transporting massive genetic '
                    'payloads across physiological gel barriers.',
- 'cf_bridge': 'Full-length CSI-MasterFormat mRNA (4,443 nucleotides coding for 1,480 amino acids) '
-              'and prime-editing SpCas9-M-MLV RT constructs (>6.3 kb, DOI 10.1039/F29787401818, '
-              'PMID 42015509) are among the largest genetic payloads in clinical medicine. '
+ 'cf_bridge': 'Full-length CFTR mRNA (4,443 nucleotides coding for 1,480 amino acids) '
+              'and prime-editing SpCas9-M-MLV RT constructs (>6.3 kb) '
+              'are among the largest genetic payloads in clinical medicine. '
               'Controlling whether these payloads compact into <75 nm spheres or reptate as '
               'worm-like micelles/polyplexes (DOI 10.1002/adma.201805116) determines their success '
-              'in crossing CF ventilation duct viscoplastic grout and reaching basal stem cells.',
+              'in crossing CF airway mucus and reaching basal stem cells.',
  'sources': ['de Gennes, P.-G. (1971). Reptation of a polymer chain in the presence of fixed '
              'obstacles. Journal of Chemical Physics, 55(2), 572–579.',
              'Doi, M., & Edwards, S. F. (1986). The Theory of Polymer Dynamics. Oxford University '
@@ -335,7 +335,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         '            <text x="95" y="28" font-size="11" fill="var(--tp-verdigris)">Doi-Edwards '
         'Confining Tube (a_tube = 85 nm · τ_d ~ N³ · D_rep ~ N⁻²)</text>\n'
         '            <text x="135" y="202" font-size="11" fill="currentColor">Fixed Mucin Mesh '
-        'Obstacles (Red) · Reptating 4.5 kb CSI-MasterFormat mRNA / Polyplex Chain</text>\n'
+        'Obstacles (Red) · Reptating 4.5 kb CFTR mRNA / Polyplex Chain</text>\n'
         '          </svg>'}
 
 PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what Doi-Edwards tube reptation of a 4.5-kilobase mRNA '
@@ -346,7 +346,7 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what Doi-Edwards tub
             'its curvilinear primitive path through a confining topological tube.'}
 
 DISPATCH = {'kicker': 'FRONTIER POLYMER PHYSICS DISPATCH · DOI–EDWARDS REPTATION OF 4.5 KB MRNA CARGO',
- 'headline': 'Tube Reptation Scaling Explains How 4.5 kb CSI-MasterFormat mRNA & Phage Genomes '
+ 'headline': 'Tube Reptation Scaling Explains How 4.5 kb CFTR mRNA & Phage Genomes '
              'Thread Nanopores',
  'body': "Extending Doi & Edwards's 1978 tube reptation theory (DOI 10.1039/F29787401789), recent "
          'dynamic tube-dilation and contour-length fluctuation theory (Milner & McLeish 1998, DOI '
@@ -361,7 +361,7 @@ ES_TRANSLATION = {'title_es': 'Reptación de Polímeros de de Gennes (D_rep ~ N�
              'y Transporte de Carga Genética de 4.5 kb',
  'subtitle_es': 'Cómo el modelo topológico de tubo de Pierre-Gilles de Gennes y la relajación '
                 'viscoelástica de Doi–Edwards gobiernan el transporte reptante del ARNm de '
-                'CSI-MasterFormat de 4.5 kb a través de hidrogeles.',
+                'CFTR de 4.5 kb a través de hidrogeles.',
  'why_es': 'Llevar una escalera rígida de 3 metros de lado a través de un bosque de bambú es '
            'imposible, pero deslizar una manguera flexible a lo largo de un sendero sinuoso '
            'permite cruzar sin atascarse.',
@@ -391,6 +391,6 @@ ES_TRANSLATION = {'title_es': 'Reptación de Polímeros de de Gennes (D_rep ~ N�
             'malla, el transporte se bloquea por completo. En cambio, formulaciones flexibles que '
             'aprovechan la reptación sesgada permiten que complejos de edición genética y ARNm de '
             'cuatro punto cinco kilobases atraviesen barreras biológicas complejas.',
- 'bridge_es': 'Optimiza la compactación topológica del ARNm completo de CSI-MasterFormat (4.5 kb, '
+ 'bridge_es': 'Optimiza la compactación topológica del ARNm completo de CFTR (4.5 kb, '
               'ensayos clínicos VX-522, ARCT-032 y RCT2100) y de bacteriófagos inhalados (ensayo '
               'CYPHY) frente a biopelículas pulmonares.'}

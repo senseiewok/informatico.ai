@@ -19,7 +19,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Deterministic Generator**: `python skills/toolchain/x03/make_x03.py`
 - **Byte-Level Stdlib Verifier**: `python skills/toolchain/x03/verify_x03_toolchain_x03_small_architect_vault_kit.py`
 - **Planted-Defect Knockout Check**: `python skills/toolchain/x03/verify_x03_toolchain_x03_small_architect_vault_kit.py --planted-defect` (must exit non-zero)
-- **Primary Scite Anchor DOI**: https://doi.org/10.1016/j.CAD.2017.07.005 (Scite Report: https://scite.ai/reports/10.1016/j.CAD.2017.07.005)
+- **Primary Scite Anchor DOI**: https://doi.org/10.1016/0020-7683(66)90018-7 (Scite Report: https://scite.ai/reports/10.1016/0020-7683(66)90018-7)
 
 ## 2. Small-Studio & Independent-Practitioner Open-Tool Workflow
 - **EN**: Boutique Architecture Studio Stack (COMPAS MIT + Blender 4.2 / Bonsai + FreeCAD 1.0 + QCAD Community Edition / LibreCAD): Run make_x03.py to generate a 7-voussoir funicular arch across 4 open formats—x03_artifact.glb for client WebGL walkthroughs, x03_artifact.step for structural engineer coordination, x03_artifact.3mf for 1:20 desktop study models, and x03_artifact.dxf for 2D stone/CLT CNC шаблоны (templates).

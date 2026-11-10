@@ -19,7 +19,7 @@ FOLIO_METADATA = {
     "primary_kernel": "tools/physics_kernel.py",
     "primary_doi": "10.1103/PhysRevLett.74.1250",
     "scite_report": "https://scite.ai/reports/10.1103/PhysRevLett.74.1250",
-    "benchmarks": [{"label": "Mesh Pore Size", "value": ""}, {"label": "Subdiffusion Exponent (alpha)", "value": "0.814 (65 nm colloidal tracer in Healthy)"}, {"label": "Zero-Shear Viscosity", "value": "0.055 Pa·s (2% solids)"}, {"label": "Kernel Verification", "value": "PASS · VERIFIED"}],
+    "benchmarks": [{"label": "Mesh Pore Size", "value": "140.0 nm (Healthy) vs 49.5 nm (CF)"}, {"label": "Subdiffusion Exponent (alpha)", "value": "0.814 (65 nm LNP in Healthy)"}, {"label": "Zero-Shear Viscosity", "value": "0.055 Pa·s (2% solids)"}, {"label": "Kernel Verification", "value": "PASS · VERIFIED"}],
 }
 
 

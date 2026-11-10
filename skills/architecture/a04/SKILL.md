@@ -14,7 +14,9 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Primary Scite Anchor DOI**: https://doi.org/10.1016/0020-7683(86)90014-4 (Scite Report: https://scite.ai/reports/10.1016/0020-7683(86)90014-4)
 
 ## 2. Deterministic Verification & Falsification Rules
-1. Evaluate cast-steel gerberette cantilever equilibrium: exterior tension tie force T_tie = V_floor * (a / c) and column compression C_col = V_floor * (1 + a / c). 2. Verify 3D space-frame static and kinematic determinacy via the Maxwell-Calladine matrix index b - 3j + 6 = s - m (ensuring m = 0 internal mechanisms). 3. Decouple Stewart Brand's 6 Shearing Layers by routing all Services (HVAC, medical gases, cleanroom exhaust, tau = 7-15 yr) on the exterior exoskeleton outside the 48 m column-free Structure (tau = 60-100 yr).
+1. Evaluate cast-steel gerberette cantilever equilibrium: exterior tension tie force T_tie = V_floor * (a / c) and column compression C_col = V_floor * (1 + a / c).
+2. Verify 3D space-frame static and kinematic determinacy via the Maxwell-Calladine matrix index b - 3j + 6 = s - m (ensuring m = 0 internal mechanisms).
+3. Decouple Stewart Brand's 6 Shearing Layers by routing all Services (HVAC, medical gases, cleanroom exhaust, tau = 7-15 yr) on the exterior exoskeleton outside the 48 m column-free Structure (tau = 60-100 yr).
 
 ## 3. 4-Stage Physical & Mathematical Mechanism
 - Stage 1 (Archigram Plug-In Matrix, 1961–1964): Peter Cook's Plug-In City and Ron Herron's Walking City separate the 100-year structural megastructure from 15-year clip-on living and laboratory capsules.
@@ -29,4 +31,4 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Maxwell-Calladine Verdict**: `ISOSTATIC EXOSKELETON PASS`
 
 ## 5. Frontier Discovery & Contemporary Research Context (2024–2026)
-- **From Archigram's 1964 Plug-In Capsules to High-Tech Exoskeletons & Modular ISO-5 Gene-Therapy Pods**: Connecting Peter Cook & Ron Herron's Archigram Plug-In megastructures (1961–1974) with Piano, Rogers & Peter Rice's Centre Pompidou cast-steel gerberettes (T_tie = V_p a/c = 1,280.0 kN), Norman Foster's HSBC suspended trusses, and Pellegrino–Calladine matrix space-frame rigidity (Int. J. Solids Struct.
+- **From Archigram's 1964 Plug-In Capsules to High-Tech Exoskeletons & Modular ISO-5 Gene-Therapy Pods**: Connecting Peter Cook & Ron Herron's Archigram Plug-In megastructures (1961–1974) with Piano, Rogers & Peter Rice's Centre Pompidou cast-steel gerberettes (T_tie = V_p a/c = 1,280.0 kN), Norman Foster's HSBC suspended trusses, and Pellegrino–Calladine matrix space-frame rigidity (Int. J. Solids Struct. DOI 10.1016/0020-7683(86)90014-4; Calladine DOI 10.1016/0020-7683(78)90052-5), modern research hospitals decouple the 100-year structural frame from crane-replaceable 15-year GMP gene-therapy and negative-pressure CF isolation pods.

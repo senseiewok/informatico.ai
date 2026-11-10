@@ -47,10 +47,10 @@ FOLIO = {'category_code': 'P',
                         'below h_PCL < 7 μm.',
                 'summary': 'REV 1.0 (Inaugural Edition 2026-11-01): Active matter ciliary carpet '
                            'beating and Kuramoto metachronal wave synchronization.'}],
- 'sidenote_1': {'body': 'In CF ventilation duct disease, ciliary motors are genetically intact; '
+ 'sidenote_1': {'body': 'In CF airway disease, ciliary motors are genetically intact; '
                         'clearance failure is a macroscopic hydrodynamic transition triggered when '
                         'the periciliary liquid drops below the ciliary reach (7 μm), plunging the '
-                        'cilia into tangled viscoplastic grout and destroying phase '
+                        'cilia into tangled airway mucus and destroying phase '
                         'synchronization.',
                 'kicker': 'SIDENOTE P.02 · THE PHYSICS OF CLEARANCE ARREST IN CF'},
  'sidenote_2': {'body': 'Ciliary carpets naturally self-organize into antiplectic waves where wave '
@@ -74,7 +74,7 @@ FOLIO = {'category_code': 'P',
               'step': 0.2,
               'unit': 'μm',
               'value': 7.0},
-             {'label': 'Viscoplastic Grout Solids Concentration',
+             {'label': 'Mucus Solids Concentration',
               'max': 10.0,
               'min': 1.0,
               'step': 0.5,
@@ -83,12 +83,12 @@ FOLIO = {'category_code': 'P',
  'slug': 'p02',
  'spec_plate': {'body': 'Continuum phase-field model coupling Stokesian hydrodynamic interactions '
                         'with non-linear limit-cycle oscillators to predict emergent transport '
-                        'velocity across tubular surfaces under Class II Type A2 laminar '
+                        'velocity across bronchial epithelial surfaces under Class II Type A2 laminar '
                         'containment.',
                 'division': 'CSI MASTERFORMAT 11 53 13 / 13 21 26',
                 'meta': 'Brennen & Winet 1977 · Vilfan & Jülicher PRL 2006 · Button Science 2012 · '
                         'NSF/ANSI 49',
-                'title': 'Ventilation Duct Epithelial Organ-on-Chip & Environmental '
+                'title': 'Airway Epithelial Organ-on-Chip & Environmental '
                          'Micro-Incubator'},
  'status_badge': 'REDATED REV 1.2',
  'steps': ['Stage 1 (Autonomous Beating, omega_0): Individual cilia oscillate at 12–14 Hz, '
@@ -98,9 +98,9 @@ FOLIO = {'category_code': 'P',
            'Stage 3 (Emergent Metachronal Wave): Kuramoto order parameter climbs above 0.85, '
            'organizing an antiplectic traveling wave at velocity v = lambda * f ≈ 336 μm/s.',
            'Stage 4 (Steric & Viscous Arrest): Desiccation below h < 7 μm causes cilia tips to '
-           'catch on the overlying viscoplastic grout gel, collapsing wave velocity to zero.'],
+           'catch on the overlying mucus gel, collapsing wave velocity to zero.'],
  'subtitle': 'Low Reynolds number Stokesian hydrodynamics, Kuramoto phase-lag synchronization, and '
-             'the collective propulsion velocity of human ventilation duct ciliary carpets.',
+             'the collective propulsion velocity of human airway ciliary carpets.',
  'title': 'Active Matter Hydrodynamics and Ciliary Metachronal Wave Synchronization',
  'volume': 1,
  'volume_code': 'VOL. 01',
@@ -185,9 +185,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'recovery stroke near the surface. If dehydration compresses the liquid layer, '
                 'cilia cannot uncurl, time-reversal asymmetry is lost, and the collective '
                 'metachronal wave collapses into disorganized, paralyzed twitching.',
- 'pullquote': '"At Reynolds number 10^-3, a single isolated cilium merely stirs viscoplastic grout '
+ 'pullquote': '"At Reynolds number 10^-3, a single isolated cilium merely stirs mucus '
               'back and forth; only a Kuramoto-synchronized metachronal wave can propel the '
-              'viscoplastic grout blanket upward against gravity."',
+              'mucus blanket upward against gravity."',
  'chronology': [('1665',
                  'Christiaan Huygens discovers phase synchronization between coupled pendulum '
                  'oscillators.'),
@@ -215,24 +215,24 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'least seven microns tall, each cilium can stand up to its full height '
                       'during its power stroke without bumping into anything overhead. If you '
                       'reduce this height, the ceiling drops and the hairs are physically squashed '
-                      'against the floor. The second slider controls the Viscoplastic Grout Solids '
+                      'against the floor. The second slider controls the Mucus Solids '
                       'Concentration, which represents how thick and sticky the overlying blanket '
                       'has become. At normal levels of around two percent solids, the blanket '
                       'glides smoothly over the tips of the hairs. But if dehydration drives '
-                      'solids higher, the blanket turns into heavy, dense mortar that pins the '
+                      'solids higher, the blanket turns into heavy, dense mucus that pins the '
                       'hairs down and extinguishes the moving wave.',
  'distill_diagram': {'analogy_title': 'Stadium Wave Metachronal Relay',
                      'analogy_sub': 'Stationary spectators create rapid traveling ripples',
                      'force_a_title': 'Periciliary Layer Height (h_PCL)',
                      'force_a_sub': 'Watery clearance height for upright power strokes',
-                     'force_b_title': 'Grout Solids Concentration (w)',
+                     'force_b_title': 'Mucus Solids Concentration (w)',
                      'force_b_sub': 'Viscous gel load opposing ciliary movement',
                      'threshold_title': 'Ciliary Reach Threshold (h_PCL ≥ 7.0 μm)',
                      'threshold_pass': 'Antiplectic wave locks: swift upward fluid clearance',
                      'threshold_fail': 'Viscous steric arrest: cilia pinned and wave decoupled'},
  'act2_intuition': 'Each individual cilium executes an asymmetric two-stroke cycle at a beat '
                    'frequency of fourteen hertz: an upright, high-reach effective stroke whose tip '
-                   'engages the underside of the overlying viscoplastic blanket, followed by a '
+                   'engages the underside of the overlying viscoelastic mucus blanket, followed by a '
                    'low-profile recovery stroke bent close to the epithelial surface within the '
                    'low-viscosity periciliary liquid layer. Viscous velocity fields generated by '
                    'slender-body Stokeslets decay with distance along the wall, coupling '
@@ -271,12 +271,12 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'simulate PCL compression (< 4.5 um) and watch the wave decohere into arrested '
                  'patches.',
                  'Experiment 3 (4-Stage Stepper): Trace Stokeslet wall shielding, power vs. '
-                 'recovery asymmetry, Kuramoto phase-locking, and viscoplastic grout plug '
+                 'recovery asymmetry, Kuramoto phase-locking, and mucus plug '
                  'pinning.'],
  'act4_title': 'Act IV — Human + AI Co-Design & the Structural & Civil Engineering Specification '
                'Bridge',
  'act4_human_ai': 'High-speed video microscopy (500 fps) of patient nasal-brush organoids paired '
-                  'with optical-flow Kuramoto phase estimators quantifies CSI-MasterFormat '
+                  'with optical-flow Kuramoto phase estimators quantifies CFTR '
                   'modulator and gene-therapy rescue in real time. Using sparse nonlinear PDE '
                   'discovery in dynamicslab/pysindy (https://github.com/dynamicslab/pysindy, DOI '
                   '10.1073/pnas.1517384113) on high-speed phase-contrast video alongside spectral '
@@ -303,16 +303,16 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'propagation, turning raw optical video into definitive biophysical metrics of '
                    'therapeutic rescue.',
  'cf_bridge': 'Restoring mucociliary clearance (MCC) is the ultimate functional readout of any '
-              'Civil & Structural Engineering therapy. When CSI-MasterFormat modulators, ENaC '
-              'blockers (ETD001), or inhaled mRNA colloidal tracers restore PCL height to 7.0 um, '
-              'cilia unpin from the viscoplastic grout gel, re-cross the Kuramoto synchronization '
+              'Cystic Fibrosis therapy. When CFTR modulators, ENaC '
+              'blockers (ETD001), or inhaled mRNA lipid nanoparticles (LNPs) restore PCL height to 7.0 um, '
+              'cilia unpin from the mucus gel, re-cross the Kuramoto synchronization '
               'threshold K > K_c, and resume clearing Pseudomonas biofilms.',
  'sources': ['Fulford, G. R., & Blake, J. R. (1986). Two-layer Newtonian and low-Reynolds-number propulsion mechanics (extending G. I. Taylor 1951). Journal of Theoretical Biology, 121(4), 381–402. DOI: 10.1016/s0022-5193(86)80098-4.',
              'Blake, J. R. (1972). A model for the micro-structure in ciliated organisms. Journal '
              'of Fluid Mechanics, 55(1), 1–23.',
              'Kuramoto, Y. (1984). Chemical Oscillations, Waves, and Turbulence. Springer.',
              'Button, B., et al. (2012). A periciliary brush promotes the lung health by '
-             'separating the viscoplastic grout layer from ventilation duct epithelia. Science, '
+             'separating the mucus layer from airway epithelia. Science, '
              '337(6097), 937–941.',
              'Open-Source Cross-Field Synchronization & WEF Renewable Grid Stack: PyPSA '
              'Continental Grid Simulator (https://github.com/PyPSA/PyPSA) & QuTiP Quantum '
@@ -345,22 +345,22 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         'stroke-width="3"/>\n'
         '            <path d="M 500 168 Q 500 100 535 68" fill="none" stroke="var(--tp-prussian)" '
         'stroke-width="3"/>\n'
-        '            <text x="72" y="62" font-size="11" fill="var(--tp-verdigris)">Viscoplastic '
-        'Grout Blanket Propelled at v_wave = λ·f_beat = 180 μm/s (Kuramoto R = 0.92)</text>\n'
+        '            <text x="72" y="62" font-size="11" fill="var(--tp-verdigris)">Airway '
+        'Mucus Blanket Propelled at v_wave = λ·f_beat = 180 μm/s (Kuramoto R = 0.92)</text>\n'
         '            <text x="165" y="196" font-size="11" fill="currentColor">Hydrated 7.0 μm '
         'Periciliary Layer · 14 Hz Power (Blue) &amp; Recovery (Red) Strokes</text>\n'
         '          </svg>'}
 
-PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what ventilation duct epithelial cilia beating in a '
+PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what airway epithelial cilia beating in a '
         'synchronized Kuramoto metachronal wave across the periciliary liquid would look like '
         '(artistic impression, not a measured structure)',
  'caption': 'Conceptual Vision Plate P.02-V (Imagining What It Would Look Like) · Artistic '
             'biophysical visualization imagining a carpet of respiratory epithelial cilia beating '
-            'in a coordinated antiplectic metachronal wave beneath the ventilation duct '
-            'viscoplastic grout layer.'}
+            'in a coordinated antiplectic metachronal wave beneath the airway '
+            'mucus layer.'}
 
 DISPATCH = {'kicker': 'FRONTIER ACTIVE MATTER DISPATCH · HYDRODYNAMIC METACHRONAL COHERENCE',
- 'headline': 'Kuramoto Phase Synchronization Explains How Ventilation Duct Cilia Coordinate '
+ 'headline': 'Kuramoto Phase Synchronization Explains How Airway Cilia Coordinate '
              'Mucociliary Clearance',
  'body': 'Recent active-matter biophysics (Fulford & Blake (1986) DOI '
          '10.1016/s0022-5193(86)80098-4; Kuramoto synchronization) demonstrates that hydrodynamic '
@@ -406,4 +406,4 @@ ES_TRANSLATION = {'title_es': 'Hidrodinámica de Materia Activa y Sincronizació
             'tiempo real.',
  'bridge_es': 'Demuestra por qué mantener una profundidad de líquido periciliar h_ASL ≥ 7 μm es '
               'indispensable para que el acoplamiento hidrodinámico de Oseen mantenga el '
-              'aclaramiento mucociliar en Ingeniería Hidrosanitaria.'}
+              'aclaramiento mucociliar en la Fibrosis Quística.'}

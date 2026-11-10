@@ -23,7 +23,7 @@ FOLIO = {'folio_id': 'M.02',
  'colophon': {'identifier': 'M.02 · Analytic Number Theory',
               'kernels': 'Zeta23 · Challenge/XiPrime.lean · Large Sieve',
               'benchmarks': 'Ingham-Huxley Zero-Density N(σ, T) ≤ T^(c(1-σ))',
-              'bridge': 'Cheeger-Fiedler Spectral Gap ↔ CSI-MasterFormat Burst Relaxation'},
+              'bridge': 'Cheeger-Fiedler Spectral Gap ↔ CFTR Burst Relaxation'},
  'sliders': [{'label': 'Real Part Threshold σ in Critical Strip (1/2 ≤ σ ≤ 1)',
               'min': 0.52,
               'max': 0.98,
@@ -55,7 +55,7 @@ FOLIO = {'folio_id': 'M.02',
  'sidenote_2': {'kicker': 'SIDENOTE M.02-B · MARKOVIAN CHANNEL RELAXATION',
                 'body': 'The spectral gap between the leading eigenvalue and off-critical '
                         'exceptions directly governs mixing time τ_mix = 1/λ_2 in continuous-time '
-                        'Markov chains of CSI-MasterFormat open/closed pore bursts.'},
+                        'Markov chains of CFTR open/closed pore bursts.'},
  'skill': {'filename': 'zeta-spectral-zero-density-SKILL.md',
            'name': 'zeta-spectral-zero-density',
            'description': 'AI-agnostic analytic number theory and spectral gap skill for Riemann '
@@ -164,7 +164,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'conductance inequality h_G^2 / 2 <= lambda_2 <= 2 h_G.'],
  'act4_human_ai': "Analytic number theory is famous for 'epsilon-delta bookkeeping' where a single sign slip in a stationary-phase integral can invalidate a 40-page paper. By pairing human harmonic-analysis intuition with Lean 4 formal verification in Challenge/XiPrime.lean, researchers can test bold new mollifier designs while the proof assistant enforces every explicit constant and contour boundary. By combining formal complex-analytic tactics in anthropics/formal-math (https://github.com/anthropics/formal-math) and leanprover-community/mathlib4 (DOI 10.1145/3372885.3373824) with numerical GUE spectral spacing checks, AI proof assistants verify explicit zero-free region bounds and Turán inequalities with zero unverified assumptions, anchored by Scite Smart Citations (DOI 10.1162/qss_a_00146).",
  'act4_deepening': 'The formalization of zero-density estimates highlights how modern AI proof assistants transform frontier analytic research. Translating complex contour shifts and mollifier bounds into Lean 4 requires decomposing intricate analytic arguments into modular lemmas that automated reasoning agents can systematically verify. In this workflow, human researchers formulate the high-level architecture—selecting contour paths, defining mollifier coefficients, and establishing energy partitions—while AI tactic generators discharge tedious matrix inequalities and verify explicit error bounds. Looking forward, this collaborative framework opens new horizons in the study of L-functions. Open frontier challenges, such as lowering the zero-density exponent below the Huxley threshold or verifying the subconvexity hypothesis for higher-degree automorphic representations, require evaluating thousands of coupled multi-dimensional integrals. By combining interactive theorem provers with generative proof search, mathematicians can systematically explore vast design spaces of mollifiers, accelerating discoveries in spectral theory and ensuring that future analytic milestones are grounded in verifiable machine-checked truth.',
- 'cf_bridge': 'A single CSI-MasterFormat chloride channel flickering between closed (C_1, C_2) and '
+ 'cf_bridge': 'A single CFTR chloride channel flickering between closed (C_1, C_2) and '
               'open-burst (O) states is governed by a continuous-time Markov generator Q whose '
               'relaxation time tau_relax = 1 / Re(lambda_2) depends on its spectral gap. Just as '
               'zero-density bounds prevent rogue zeta zeros from destabilizing prime counts, '
@@ -244,7 +244,7 @@ DISPATCH = {'kicker': 'FRONTIER SPECTRAL PROOF DISPATCH · LEAN 4 ZETA23, XIPRIM
          "(Invent. Math. DOI 10.1007/BF01418933) and J. B. Conrey's critical-line mollifier (> 2/5 "
          'of Riemann zeros on Re(s) = 1/2, J. Reine Angew. Math. DOI 10.1515/crll.1989.399.1) with '
          "Anthropic's Lean 4 Zeta23 and Challenge/XiPrime.lean formalizations, spectral gap bounds "
-         'map directly onto Cheeger-Fiedler Markovian relaxation in CSI-MasterFormat ion channel '
+         'map directly onto Cheeger-Fiedler Markovian relaxation in CFTR ion channel '
          'gating (DOI 10.1085/jgp.200609558).'}
 
 META_3D = ('Riemann XiPrime Critical-Line Zero-Free Canyon',
@@ -260,6 +260,6 @@ ES_TRANSLATION = {'title_es': 'Estimaciones de Densidad de Ceros de la Función 
            'acumularla simultáneamente en todas las demás.',
  'bridge_es': 'La brecha espectral de Cheeger–Fiedler de una matriz de transición markoviana '
               'determina el tiempo exacto de relajación entre los estados cerrado y abierto del '
-              'canal de cloruro CSI-MasterFormat.',
+              'canal de cloruro CFTR.',
  'plain_es': 'En palabras sencillas, Bernhard Riemann se preguntó cómo están distribuidos los números primos a lo largo de la recta numérica infinita. Los primos, como dos, tres, cinco y siete, son los componentes fundamentales de toda la aritmética, ya que cualquier número entero se forma multiplicándolos entre sí. Aunque a simple vista parecen esparcidos al azar, Riemann descubrió que su cadencia responde a una sinfonía de frecuencias en el plano complejo. Si estas frecuencias se mantienen alineadas en una franja muy precisa, los números primos se distribuyen de forma suave y predecible. Esta armonía no es solo un enigma teórico: es el cimiento de la seguridad informática moderna. Cada vez que iniciamos sesión en un banco o compramos en internet, las computadoras confían en que la distribución de los primos no sufrirá oscilaciones imprevistas. Demostrar que las posibles irregularidades son insignificantes garantiza que los códigos de protección digital permanezcan blindados frente a ataques.',
  'deep_es': 'Para comprender las cotas de densidad de ceros, conviene analizar la competencia entre la coordenada real sigma y la ventana de observación logarítmica. En el deslizador de sigma, acercarse a la línea crítica revela oscilaciones complejas, mientras que desplazarse hacia la derecha comprime exponencialmente cualquier posible desviación. Por su parte, al ampliar la ventana temporal de observación, el método de la Gran Criba demuestra que la energía espectral disponible es estrictamente finita. Si un conjunto de frecuencias gasta energía concentrándose en un punto, resulta imposible que genere resonancias fuera de balance en otras alturas. En el punto de cruce donde sigma vale tres cuartos, las cotas de Ingham y Huxley convergen, fijando una barrera infranqueable que asegura la estabilidad estadística de los números primos. Gracias a las herramientas de verificación en computadora dentro de Lean 4, estas estimaciones analíticas ya no dependen de cálculos manuales propensos a errores en los signos, consolidando un certificado matemático permanente e incorruptible.'}

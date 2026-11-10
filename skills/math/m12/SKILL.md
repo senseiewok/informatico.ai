@@ -4,7 +4,7 @@ description: AI-agnostic formal mathematics and cryptography skill for Anthropic
 license: MIT
 compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI Codex, Ollama (Qwen 3.8 / Gemma 4)
 ---
-# Anthropic Lean 4 Complexity & Post-Quantum Crystal Locks: ETH Refutation (`ETHIsFalse`), Eight-Square Rank Compression & ML-KEM Lattices (Folio M.12)
+# Anthropic Lean 4 Complexity & Post-Quantum Crystal Locks: ETH Refutation (ETHIsFalse), Eight-Square Rank Compression & ML-KEM Lattices (Folio M.12)
 
 ## 1. Governing Law & Tectonic Identity
 - **Folio**: `M.12 · Lean 4 ETHIsFalse / EightSquare & NIST FIPS 203 ML-KEM Lattices` (`REV 1.0`, Redated `2026-11-07`)
@@ -22,7 +22,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Stage 1 (Shor's Quantum Fourier Period-Finding Shatters RSA & ECC): On a fault-tolerant quantum computer (Folio P.11), Shor's algorithm finds the period r of a^x mod N in O((log N)³) gates, breaking classical RSA-2048 and elliptic-curve signatures.
 - Stage 2 (Module Learning With Errors Crystal Lattice Lock, NIST FIPS 203 ML-KEM): Public key b = A s + e (mod q = 3329) over polynomial ring R_q = ℤ_q[X]/(X²⁵⁶ + 1) hides secret s behind centered binomial noise e, reducing security to Worst-Case Shortest Vector (SVP) in 768D.
 - Stage 3 (Anthropic Machine-Checked Complexity Reductions in anthropics/formal-math): In anthropics/formal-math, Lean 4 proofs verify EightSquare.lean (compressing 8-square bilinear multiplication from 64 to ≤ 28 products), ThreeSUM_APSP.lean, and ETHIsFalse.lean (formalizing complexity hypothesis refutations).
-- Stage 4 (Zero-`sorry` Lean 4 Verification + Open-Source liboqs Deployment): Combining open-quantum-safe/liboqs with Lean 4 type-checking guarantees both mathematical hardness and bug-free cryptographic implementation.
+- Stage 4 (Zero-sorry Lean 4 Verification + Open-Source liboqs Deployment): Combining open-quantum-safe/liboqs with Lean 4 type-checking guarantees both mathematical hardness and bug-free cryptographic implementation.
 
 ## 4. Reference Telemetry & Acceptance Bounds
 - **Post-Quantum Security (Core-SVP)**: `192-Bit Quantum Safe (k=3)`

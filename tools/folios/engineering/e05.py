@@ -306,12 +306,12 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'catastrophic earthquakes and decadal climate shifts.',
  'cf_bridge': "Terzaghi's poroelastic consolidation equation (du/dt = c_v d^2u/dz^2) is "
               'mathematically identical to the two-gel osmotic poroelastic compression governing '
-              'the 7.2 um periciliary ventilation duct surface liquid (ASL) in Civil & Structural '
-              'Engineering (Button et al., Science 2012, DOI 10.1126/science.1223012). When '
-              'dehydrated CF viscoplastic grout exerts an osmotic surcharge exceeding the critical '
+              'the 7.2 um periciliary airway surface liquid (ASL) in Cystic '
+              'Fibrosis (Button et al., Science 2012, DOI 10.1126/science.1223012). When '
+              'dehydrated CF airway mucus exerts an osmotic surcharge exceeding the critical '
               'bearing capacity of the periciliary brush (~3.5 kPa), interstitial water drains '
               'from the periciliary matrix and cilia collapse — whereas restoring osmotic pore '
-              'pressure via CSI-MasterFormat modulators or ENaC blockers re-inflates the gel '
+              'pressure via CFTR modulators or ENaC blockers re-inflates the gel '
               'skeleton.',
  'sources': ['Gavin, K. G., & Xue, J. (2009). Unsaturated soil infiltration and shaft capacity mechanics (extending Terzaghi 1925). Journal of Geotechnical and Geoenvironmental Engineering, 135(6), 746–756. DOI: 10.1061/(ASCE)GT.1943-5606.0000073.',
              'Terzaghi, K., Peck, R. B., & Mesri, G. (1996). Soil Mechanics in Engineering '
@@ -371,13 +371,13 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what Continuous Flig
 
 DISPATCH = {'kicker': 'FRONTIER GEOTECHNICAL DISPATCH · AUTOMATED CFA RIG TELEMETRY & POROELASTIC GELS',
  'headline': 'Real-Time Drilling Torque/Grout Telemetry Meets Terzaghi Consolidation & Two-Gel '
-             'Ventilation Duct Physics',
+             'Airway Surface Physics',
  'body': "One century after Karl Terzaghi's Erdbaumechanik (1925), modern Continuous Flight Auger "
          '(CFA) piling rigs (FHWA GEC-8; ASCE J. Geotech. Geoenviron. Eng. DOI '
          '10.1061/(ASCE)GT.1943-5606.0000073) combine real-time specific-energy torque profiles '
          'with Seed–Idriss liquefaction screening, while Button, Rubinstein & Boucher (Science DOI '
          '10.1126/science.1223012) proved that the exact same Terzaghi poroelastic consolidation '
-         'law governs osmotic collapse of the periciliary ventilation duct brush.'}
+         'law governs osmotic collapse of the periciliary airway brush.'}
 
 META_3D = ('Terzaghi Consolidation Dish & 4-Pile Bearing Cones',
  'X/Z: Foundation Mat Footprint · Y: Effective Stress Consolidation & CFA Pile Capacity')
@@ -391,7 +391,7 @@ ES_TRANSLATION = {'title_es': 'Mecánica de Suelos de Terzaghi, Pilotes Profundo
            '(consolidación de Terzaghi).',
  'bridge_es': 'La consolidación poroelástica de Terzaghi es matemáticamente isomorfa a la '
               'compresión osmótica del cepillo periciliar pulmonar bajo una capa de moco '
-              'hiperconcentrado en Ingeniería Hidrosanitaria.',
+              'hiperconcentrado en la Fibrosis Quística.',
  'plain_es': 'En 1925, en los talleres del Robert College en Estambul, el ingeniero austriaco Karl '
              'von Terzaghi realizaba pruebas con latas de metal, piedras porosas y extensómetros '
              'para resolver un misterio histórico. Durante siglos, las grandes construcciones se '

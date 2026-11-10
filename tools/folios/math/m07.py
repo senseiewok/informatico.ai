@@ -302,15 +302,15 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'questions bridges high-speed motorsport control with the safety-critical '
                    'autonomy required for civil aviation, humanoid robotics, and resilient power '
                    'grid networks.',
- 'cf_bridge': 'Standalone Applied Mathematics & AI Flagship & Upstream Thread to Follow: '
+ 'cf_bridge': 'Standalone Applied Mathematics & AI Flagship & Upstream Mathematical Thread: '
               'Engineered for control theorists, applied mathematicians, motorsport strategists, '
-              'and scientific machine-learning researchers. Upstream mathematical thread for the '
-              'lab: the exact Pontryagin bang–singular–bang co-state switching law that schedules '
+              'and scientific machine-learning researchers. Upstream mathematical case '
+              'study: the exact Pontryagin bang–singular–bang co-state switching law that schedules '
               '350 kW MGU-K electrical deployment over a variable-velocity lap is mathematically '
               'isomorphic to optimal breath-actuated nebulizer bolus control—injecting '
               'high-density therapeutic aerosol pulses only during the laminar inspiratory '
-              'velocity window where deep alveolar/small-ventilation duct deposition exceeds '
-              'upper-ventilation duct impaction.',
+              'velocity window where deep alveolar/small-airway deposition exceeds '
+              'upper-airway impaction.',
  'sources': ['Limebeer, D. J. N., Perantoni, G., & Rao, A. V. (2014). Optimal control of Formula '
              'One car energy recovery systems. International Journal of Control, 87(10), '
              '2065–2080. DOI: 10.1080/00207179.2014.900705.',
@@ -434,4 +434,4 @@ ES_TRANSLATION = {'title_es': 'Control Óptimo de Energía de Pontryagin para MG
             'trayectorias óptimas garantizadas en tiempo real.',
  'bridge_es': 'El control óptimo bang-singular de Pontryagin y los operadores FNO permiten '
               'calcular regímenes óptimos de dosificación farmacocinética y perfiles de '
-              'nebulización adaptativa para pacientes con Ingeniería Hidrosanitaria.'}
+              'nebulización adaptativa para pacientes con Fibrosis Quística.'}

@@ -19,7 +19,7 @@ FOLIO_METADATA = {
     "primary_kernel": "tools/discovery/frontier_ai_math_catalog.py",
     "primary_doi": "10.1007/s00454-002-2885-2",
     "scite_report": "https://scite.ai/reports/10.1007/s00454-002-2885-2",
-    "benchmarks": [{"label": "Betti Numbers (β_0, β_1, β_2)", "value": "β₀ = 1 · β₁ = 3 · β₂ = 0"}, {"label": "Euler–Poincaré Invariant (χ)", "value": "χ = β₀ − β₁ + β₂ = −2"}, {"label": "Max H_1 Percolation Throat", "value": "r_crit = 116 nm (> 65 nm colloidal tracer)"}, {"label": "Topological Stability Verdict", "value": "PERCOLATING · BOTTLENECK PASS"}],
+    "benchmarks": [{"label": "Betti Numbers (β_0, β_1, β_2)", "value": "β₀ = 1 · β₁ = 3 · β₂ = 0"}, {"label": "Euler–Poincaré Invariant (χ)", "value": "χ = β₀ − β₁ + β₂ = −2"}, {"label": "Max H_1 Percolation Throat", "value": "r_crit = 116 nm (> 65 nm LNP)"}, {"label": "Topological Stability Verdict", "value": "PERCOLATING · BOTTLENECK PASS"}],
 }
 
 

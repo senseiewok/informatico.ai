@@ -8,8 +8,8 @@ PILLAR = 'physics'
 
 FOLIO = {'category_code': 'P',
  'colophon': {'benchmarks': 'Q = 1.20 μL/min · K = 0.45 S/m ⇒ d_drop = 2.42 μm · q/q_R = 0.68',
-              'bridge': 'Completes P.03/P.04/P.06 · Intact 65 nm colloidal tracer Nebulization → '
-                        'Tubular Generations 4–16',
+              'bridge': 'Completes P.03/P.04/P.06 · Intact 65 nm LNP Nebulization → '
+                        'Bronchial Generations 4–16',
               'identifier': 'P.09 · Taylor Cone EHD & Rayleigh Aerosol Physics',
               'kernels': 'Taylor P_{1/2}(cos θ_0) = 0 (49.3°) · Rayleigh Limit q_R · Gañán-Calvo '
                          'Jet'},
@@ -28,9 +28,9 @@ FOLIO = {'category_code': 'P',
  'primary_kernel': 'tools/physics_kernel.py',
  'reading_time': '22 MIN READ',
  'readouts': [{'label': 'Taylor Half-Angle (θ_T)', 'value': '49.29° (P_{1/2} Zero)'},
-              {'label': 'Monodisperse Droplet (d_drop)', 'value': '2.42 μm (Tubular Window)'},
+              {'label': 'Monodisperse Droplet (d_drop)', 'value': '2.42 μm (Bronchial Window)'},
               {'label': 'Rayleigh Charge Ratio (q/q_R)', 'value': '0.68 (< 1.00 Stable)'},
-              {'label': 'Aerosol & colloidal tracer Verdict', 'value': '97.4% INTACT mRNA · PASS'}],
+              {'label': 'Aerosol & LNP Verdict', 'value': '97.4% INTACT mRNA · PASS'}],
  'revisions': [{'date': '2026-11-03',
                 'edition': 'REV 1.0',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified root '
@@ -56,8 +56,8 @@ FOLIO = {'category_code': 'P',
                         'eigenfunction to be P_{1/2}(cos θ).',
                 'kicker': 'SIDENOTE P.09-A · WHY LEGENDRE ORDER ν = 1/2 FIXES 49.3 DEGREES'},
  'sidenote_2': {'body': 'Conventional jet nebulizers recycle 99% of the dose against baffles, '
-                        'shearing colloidal tracer bilayers; single-pass Taylor-cone and palladium '
-                        'vibrating-mesh orifices preserve 4.5 kb CSI-MasterFormat mRNA integrity.',
+                        'shearing LNP bilayers; single-pass Taylor-cone and palladium '
+                        'vibrating-mesh orifices preserve 4.5 kb CFTR mRNA integrity.',
                 'kicker': 'SIDENOTE P.09-B · COMPLETING FOLIOS P.03 & P.06 FOR INHALED CF GENE '
                           'THERAPY'},
  'skill': {'description': 'AI-agnostic fluid and electrohydrodynamic physics skill for Sir '
@@ -71,10 +71,10 @@ FOLIO = {'category_code': 'P',
                      'P_{1/2}(cos(pi - alpha_T)) = 0.',
                      'Compute Ganan-Calvo cone-jet droplet diameter d_drop ~ (rho * epsilon_0 * '
                      'Q^3 / (gamma * K_cond))^(1/6) and verify 1.5 um <= MMAD <= 3.5 um for '
-                     'tracheotubular targeting.',
+                     'tracheobronchial targeting.',
                      'Enforce Rayleigh fissility stability q < q_R = 8 * pi * sqrt(epsilon_0 * '
                      'gamma * R^3) and Weber shear stability We_shear < We_crit to prevent '
-                     'colloidal tracer rupture.']},
+                     'LNP rupture.']},
  'sliders': [{'label': 'Liquid Volumetric Flow Rate (Q)',
               'max': 5.0,
               'min': 0.2,
@@ -94,8 +94,8 @@ FOLIO = {'category_code': 'P',
                 'division': 'PULMONARY AEROSOL BIOPHYSICS / USP <1601>',
                 'meta': 'Taylor (1964) DOI 10.1098/rspa.1964.0151 & Next-Generation Impactor (NGI) '
                         'verified',
-                'title': 'Low-Shear Electrohydrodynamic & Vibrating-Mesh Monodisperse colloidal '
-                         'tracer Nebulizer'},
+                'title': 'Low-Shear Electrohydrodynamic & Vibrating-Mesh Monodisperse LNP '
+                         'Nebulizer'},
  'status_badge': 'EHD AEROSOL PHYSICS · REV 1.0',
  'steps': ['Stage 1 (Taylor Equipotential Cone Equilibrium, DOI 10.1098/rspa.1964.0151): Balancing '
            'Maxwell electrostatic stress ½ ε_0 E_n² against Laplace pressure γ cot α / r fixes '
@@ -104,9 +104,9 @@ FOLIO = {'category_code': 'P',
            'a sub-micrometer liquid microjet from the cone tip without high-shear wall cavitation.',
            'Stage 3 (Monodisperse Capillary Breakup in the 1.5–3.5 μm Window): At Q = 1.20 μL/min '
            'and K = 0.45 S/m, jet varicose breakup yields d_drop = 2.42 μm (GSD = 1.18) for deep '
-           'tubular deposition.',
+           'bronchial deposition.',
            'Stage 4 (Rayleigh Fission Guard & Intact 4.5 kb mRNA Survival, Continuing P.06): Holds '
-           'droplet charge ratio q / q_R = 0.68 < 1.00, preserving 97.4% colloidal tracer '
+           'droplet charge ratio q / q_R = 0.68 < 1.00, preserving 97.4% LNP '
            'lipid-bilayer encapsulation.'],
  'subtitle': 'Completing the biophysical delivery sequence of Folios P.03, P.04, and P.06: how Sir '
              "Geoffrey Taylor's P_{1/2}(cos θ_0) = 0 equilibrium cone and Rayleigh charge limits "
@@ -213,22 +213,22 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Buffer Conductivity K_cond from 0.05 S/m to 1.50 S/m. Observe how higher charge '
                  'relaxation shrinks jet diameter while keeping droplet charge below the Rayleigh '
                  'fission explosion limit q / q_R < 1.0.',
-                 'Experiment 3 (From Taylor Cone to Tubular Deposition): Step through Stages 1 to '
+                 'Experiment 3 (From Taylor Cone to Bronchial Deposition): Step through Stages 1 to '
                  '4 to inspect P_{1/2}(cos theta_0) = 0 cone formation, apex cone-jet necking, '
-                 'Rayleigh charge stability, and intact colloidal tracer mRNA survival.'],
- 'act4_title': 'Act IV — Precision Aerosol Physics, Archive Continuity & Curative CF Delivery '
+                 'Rayleigh charge stability, and intact LNP mRNA survival.'],
+ 'act4_title': 'Act IV — Precision Aerosol Physics, Archive Continuity & Pulmonary CF Delivery '
                'Bridge',
  'act4_human_ai': "By coupling Folio P.03's non-Newtonian shear bounds and Folio P.06's 4.5 kb "
                   'mRNA integrity criteria with Taylor–Gañán-Calvo cone-jet physics, aerosol '
                   'engineers optimize soft-mist and EHD nebulizer waveforms so delicate '
                   'gene-editing vectors survive atomization intact.',
- 'cf_bridge': 'Direct Curative CF Delivery Bridge & Reference Completion (P.03 + P.04 + P.06 -> '
-              'P.09): Once a 65 nm zwitterionic SORT-colloidal tracer carrying 4.5 kb '
-              'CSI-MasterFormat mRNA (Folio P.06) is formulated, it must reach the conducting '
-              'ventilation ducts (generations 4–16) without oropharyngeal impaction (> 5 um) or '
+ 'cf_bridge': 'Biophysical CF Delivery Case Study & Reference Completion (P.03 + P.04 + P.06 -> '
+              'P.09): Once a 65 nm zwitterionic SORT-LNP carrying 4.5 kb '
+              'CFTR mRNA (Folio P.06) is formulated, it must reach the conducting '
+              'airways (generations 4–16) without oropharyngeal impaction (> 5 um) or '
               'alveolar exhalation (< 0.8 um). Taylor-cone EHD and low-shear vibrating-mesh '
               'atomization generate monodisperse 2.4 um droplets (GSD <= 1.22) at gentle apex '
-              'shear rates, preserving >96% colloidal tracer encapsulation efficiency prior to '
+              'shear rates, preserving >96% LNP encapsulation efficiency prior to '
               'mucin mesh percolation (Folio E.01 / P.03).',
  'sources': ['Taylor, G. I. (1964). Disintegration of water drops in an electric field. '
              'Proceedings of the Royal Society of London. Series A, Mathematical and Physical '
@@ -270,10 +270,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         '              <circle cx="298" cy="124" r="4.2" fill="var(--tp-verdigris)"/>\n'
         '            </g>\n'
         '            <text x="50" y="26" font-size="10.5" font-weight="600" '
-        'fill="currentColor">Taylor Cone (θ_T = 49.3°) &amp; Monodisperse colloidal tracer '
+        'fill="currentColor">Taylor Cone (θ_T = 49.3°) &amp; Monodisperse LNP '
         'Mist</text>\n'
         '            <text id="tp-p09-svg-cone-text" x="50" y="206" font-size="10" '
-        'fill="var(--tp-verdigris)">P_{1/2}(cos 130.7°) = 0 · d_drop = 2.42 μm (Tubular '
+        'fill="var(--tp-verdigris)">P_{1/2}(cos 130.7°) = 0 · d_drop = 2.42 μm (Bronchial '
         'Target)</text>\n'
         '            <line x1="355" y1="24" x2="355" y2="195" stroke="currentColor" '
         'stroke-opacity="0.2"/>\n'
@@ -285,9 +285,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         'fill-opacity="0.14"/>\n'
         '            <circle id="tp-p09-op-dot" cx="485" cy="114" r="6" fill="var(--tp-minium)"/>\n'
         '            <text x="385" y="86" font-size="9.5" fill="var(--tp-verdigris)">1.5–3.5 μm '
-        'Deep-Ventilation Duct Conductive Window</text>\n'
+        'Deep-Airway Conductive Window</text>\n'
         '            <text id="tp-p09-rayleigh-text" x="382" y="206" font-size="10" '
-        'fill="var(--tp-prussian)">Charge Ratio q / q_R = 0.68 (&lt; 1.00 Intact colloidal tracer '
+        'fill="var(--tp-prussian)">Charge Ratio q / q_R = 0.68 (&lt; 1.00 Intact LNP '
         'Bilayer)</text>\n'
         '          </svg>',
  'act1_plain_bridge': 'In plain words, think of spraying water from a garden hose or a household '
@@ -383,7 +383,7 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what an electrified 
  'caption': 'Conceptual Vision Plate P.09-V (Imagining What It Would Look Like) · Artistic '
             'fluid-physics visualization (completing Folios P.03, P.04 & P.06) imagining Sir '
             "Geoffrey Taylor's 49.3° electrohydrodynamic cone-jet transition atomizing intact 65 "
-            'nm mRNA lipid nanoparticles into a monodisperse 2.4 μm tubular mist.'}
+            'nm mRNA lipid nanoparticles into a monodisperse 2.4 μm bronchial mist.'}
 
 DISPATCH = {'kicker': 'FRONTIER AEROSOL PHYSICS DISPATCH · COMPLETING P.03, P.04 & P.06 · TAYLOR-CONE '
            'NEBULIZATION',
@@ -392,7 +392,7 @@ DISPATCH = {'kicker': 'FRONTIER AEROSOL PHYSICS DISPATCH · COMPLETING P.03, P.0
  'body': 'Completing the biophysical delivery sequence of Folios P.03, P.04, and P.06, Sir '
          "Geoffrey Ingram Taylor's P_{1/2}(cos θ_0) = 0 equilibrium cone (Proc. R. Soc. A DOI "
          "10.1098/rspa.1964.0151) and Gañán-Calvo's cone-jet scaling generate monodisperse 2.4 μm "
-         'tubular droplets without shearing fragile 4.5 kb CSI-MasterFormat mRNA lipid '
+         'bronchial droplets without shearing fragile 4.5 kb CFTR mRNA lipid '
          'nanoparticles.'}
 
 META_3D = ('Taylor 49.3° Electrohydrodynamic Cone-Jet Potential',
@@ -408,8 +408,8 @@ ES_TRANSLATION = {'title_es': 'Conos Electrohidrodinámicos de Taylor (49.3°), 
            'idénticas sin agitar ni romper las moléculas frágiles en su interior.',
  'bridge_es': 'La atomización electrohidrodinámica por cono de Taylor y malla vibrante produce '
               'gotas monodispersas de 2.4 μm a bajo esfuerzo cortante, preservando más del 96% de '
-              'las nanopartículas lipídicas (SORT-colloidal tracer) cargadas con ARNm de '
-              'CSI-MasterFormat.',
+              'las nanopartículas lipídicas (SORT-LNP) cargadas con ARNm de '
+              'CFTR.',
  'plain_es': 'En palabras sencillas, piensen en cómo funciona un atomizador de perfume o una '
              'manguera de jardín. Los aspersores convencionales fuerzan el líquido a gran '
              'velocidad a través de agujeros diminutos, despedazando el agua en gotas de tamaños '

@@ -22,7 +22,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Stage 1 (Autonomous Beating, omega_0): Individual cilia oscillate at 12–14 Hz, generating localized Stokesian velocity fields.
 - Stage 2 (Hydrodynamic Phase-Lag Coupling): Neighboring cilia interact via viscous fluid stress with phase lag alpha ≈ pi/6.
 - Stage 3 (Emergent Metachronal Wave): Kuramoto order parameter climbs above 0.85, organizing an antiplectic traveling wave at velocity v = lambda * f ≈ 336 μm/s.
-- Stage 4 (Steric & Viscous Arrest): Desiccation below h < 7 μm causes cilia tips to catch on the overlying viscoplastic grout gel, collapsing wave velocity to zero.
+- Stage 4 (Steric & Viscous Arrest): Desiccation below h < 7 μm causes cilia tips to catch on the overlying mucus gel, collapsing wave velocity to zero.
 
 ## 4. Reference Telemetry & Acceptance Bounds
 - **Beating Frequency**: `14.00 Hz (Healthy PCL)`
@@ -31,4 +31,4 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Kernel Verification**: `PASS · VERIFIED`
 
 ## 5. Frontier Discovery & Contemporary Research Context (2024–2026)
-- **Kuramoto Phase Synchronization Explains How Ventilation Duct Cilia Coordinate Mucociliary Clearance**: Recent active-matter biophysics (Fulford & Blake (1986) DOI 10.1016/s0022-5193(86)80098-4; Kuramoto synchronization) demonstrates that hydrodynamic Oseen coupling across periciliary liquid depth h_ASL = 7.2 μm locks millions of beating cilia (12–15 Hz) into coherent antiplectic metachronal waves.
+- **Kuramoto Phase Synchronization Explains How Airway Cilia Coordinate Mucociliary Clearance**: Recent active-matter biophysics (Fulford & Blake (1986) DOI 10.1016/s0022-5193(86)80098-4; Kuramoto synchronization) demonstrates that hydrodynamic Oseen coupling across periciliary liquid depth h_ASL = 7.2 μm locks millions of beating cilia (12–15 Hz) into coherent antiplectic metachronal waves.

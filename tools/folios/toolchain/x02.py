@@ -37,9 +37,9 @@ FOLIO = {'slug': 'x02',
  'skill_dir': 'skills/toolchain/x02',
  'skill_name': 'toolchain-x02-parametric-step-3mf-roundtrip',
  'formats': ('glb', 'step', '3mf'),
- 'primary_doi': '10.1016/j.cad.2021.103018',
- 'scite_summary': 'ISO 10303-242 (STEP AP242) boundary-representation exchange semantics and '
-                  'chordal tessellation error bounds verified offline.',
+ 'primary_doi': '10.1115/1.4029050',
+ 'scite_summary': 'ISO 10303-242 (STEP AP242) boundary-representation exchange semantics (Feeney '
+                  'et al., 2015) and chordal tessellation error bounds verified offline.',
  'date_published': '2026-11-08',
  'date_redated': '2026-11-08',
  'current_edition': 'REV 1.0',
@@ -94,9 +94,10 @@ FOLIO = {'slug': 'x02',
               'Sharing a model between different modeling programs frequently resulted in '
               'translated geometry losing its parametric history, trimming curves failing to '
               'evaluate, and cylindrical surfaces collapsing into crude triangle approximations. '
-              'The ratification of ISO 10303-21 STEP AP242 (DOI: 10.1016/j.cad.2016.07.003) — '
-              'established an open, model-based engineering foundation for boundary '
-              'representations. Instead of approximating curved shapes as flat polygons, STEP '
+              'The ratification of ISO 10303-21 STEP AP242 (Feeney et al., 2015, DOI: '
+              '10.1115/1.4029050) — established an open, model-based engineering foundation for '
+              'boundary representations. Instead of approximating curved shapes as flat polygons, '
+              'STEP '
               'AP242 defines solids through explicit topological hierarchies: CARTESIAN_POINT, '
               'VERTEX_POINT, POLY_LOOP, and ADVANCED_FACE entities bounded within a CLOSED_SHELL. '
               'In Folio X.02, we demonstrate how open Python libraries such as build123d and '
