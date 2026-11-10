@@ -19,11 +19,11 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_all_48_skills_and_python_verifiers_exist_and_pass(self) -> None:
         skill_files = list(SKILLS.glob("*/*/SKILL.md"))
         py_files = list(SKILLS.glob("*/*/verify_*.py"))
-        self.assertEqual(len(skill_files), 72)
-        self.assertEqual(len(py_files), 76)  # T.05 carries five verifiers
+        self.assertEqual(len(skill_files), 75)
+        self.assertEqual(len(py_files), 79)  # T.05 carries five verifiers + 3 Cross-Scale Essay verifiers
         res = subprocess.run([sys.executable, "-X", "utf8", str(SKILLS / "verify_all_48_folios.py")], capture_output=True, text=True, encoding="utf-8", timeout=240)
         self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
-        self.assertIn("PASS: All 76/76", res.stdout)
+        self.assertIn("PASS: All 79/79", res.stdout)
 
     def test_all_6_bounty_and_physics_discovery_harnesses_pass(self) -> None:
         res = subprocess.run([sys.executable, "-X", "utf8", str(BOUNTIES / "run_all_bounties.py")], capture_output=True, text=True, encoding="utf-8", timeout=30)
@@ -38,7 +38,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_106_bilingual_pages_and_bounty_crucible_mounted(self) -> None:
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 162)
+        self.assertEqual(len(locs), 170)
         self.assertTrue((RESEARCH / "about" / "index.html").is_file())
         self.assertTrue((RESEARCH / "es-mx" / "about" / "index.html").is_file())
         hub_html = (RESEARCH / "index.html").read_text(encoding="utf-8")
@@ -65,16 +65,25 @@ class PublicInformaticoRepoTests(unittest.TestCase):
             self.assertIn('id="tp-symbolic-physics-lab"', es_p_html)
             self.assertIn('id="tp-oss-physics-radar"', es_p_html)
 
-    def test_security_git_zero_secrets_zero_local_paths_and_zero_cf_leakage(self) -> None:
+    def test_security_git_zero_secrets_zero_local_paths_and_proportional_cf_bridge(self) -> None:
         secret_pat = re.compile(r"C:\\Users\\|/home/[a-z0-9_]+|BEGIN .*PRIVATE KEY|sftp-config", re.IGNORECASE)
-        cf_pat = re.compile(r"cystic fibrosis", re.IGNORECASE)
+        cf_pat = re.compile(r"cystic fibrosis|fibrosis quística", re.IGNORECASE)
         about_bridge_rel = {
             Path("src/research/about/index.html"),
             Path("src/research/es-mx/about/index.html"),
             Path("src/research/data/about-evidence.json"),
             Path("src/research/modules/trace-sentence.mjs"),
+            Path("src/research/modules/cross-scale-essays.mjs"),
             Path("tools/build_longform_folios.py"),
+            Path("tools/build_cross_scale_essays.py"),
+            Path("tests/test_cross_scale_essays.py"),
         }
+        essay_bridge_prefixes = (
+            ("src", "research", "essays"),
+            ("src", "research", "es-mx", "essays"),
+            ("tools", "folios", "essays"),
+            ("skills", "essays"),
+        )
         for p in ROOT.rglob("*"):
             if not p.is_file() or ".git" in p.parts or "__pycache__" in p.parts or p.suffix in (".jpg", ".png", ".mp3", ".woff2", ".ico", ".pyc", ".webp", ".glb", ".3mf"):
                 continue
@@ -84,9 +93,17 @@ class PublicInformaticoRepoTests(unittest.TestCase):
             txt = p.read_text(encoding="utf-8")
             m_sec = secret_pat.search(txt)
             self.assertIsNone(m_sec, f"Forbidden secret/path pattern {m_sec.group(0) if m_sec else ''} found in {rel}")
-            if rel not in about_bridge_rel:
+            in_essay_bridge = any(rel.parts[:len(pref)] == pref for pref in essay_bridge_prefixes)
+            if rel not in about_bridge_rel and not in_essay_bridge:
                 m_cf = cf_pat.search(txt)
-                self.assertIsNone(m_cf, f"Forbidden CF leakage {m_cf.group(0) if m_cf else ''} found in {rel}")
+                self.assertIsNone(m_cf, f"Forbidden CF leakage {m_cf.group(0) if m_cf else ''} outside /about/ and /essays/ in {rel}")
+            if rel.parts[:3] in (("src", "research", "essays"),) and len(rel.parts) == 5 and rel.name == "index.html":
+                paras = [re.sub(r"<[^>]+>", " ", pr) for pr in re.findall(r"<p[^>]*>(.*?)</p>", txt, re.S)]
+                cf_para_hits = sum(1 for pr in paras if cf_pat.search(pr))
+                visible = re.sub(r"<[^>]+>", " ", txt)
+                self.assertLessEqual(len(cf_pat.findall(visible)), 4, f"{rel} exceeds <= 4 proportional CF mentions")
+                self.assertLess(cf_para_hits / max(len(paras), 1), 0.16, f"{rel} has {cf_para_hits}/{len(paras)} CF paragraphs")
+                self.assertIn('class="tz-dignity-stamp"', txt, f"{rel} missing non-clinical research boundary stamp")
 
 
     def test_every_folio_meets_multi_chapter_monograph_depth_contract(self) -> None:

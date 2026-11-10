@@ -1643,6 +1643,7 @@ PILLAR_NAV_LABELS = {
     "bounties": ("Bounties", "Retos"),
     "toolchain": ("Tech & Tools", "Herramientas"),
     "timegravity": ("Time & Gravity", "Tiempo y Gravedad"),
+    "essays": ("Cross-Scale Essays", "Ensayos entre Escalas"),
     "about": ("About", "Acerca de"),
 }
 
@@ -1949,12 +1950,24 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
             f'<span class="tp-contents-title" data-en="{esc(t["title"])}" data-es="{esc(t["title_es"])}">{esc(t["title"])}</span></a></li>'
         )
     tool_items_html = "\n            ".join(tool_items)
+    from folios.essays import ESSAYS as CROSS_SCALE_ESSAYS  # noqa: E402
+    essay_items = []
+    for es_doc in CROSS_SCALE_ESSAYS:
+        e_slug = es_doc["slug"]
+        e_cur = ' aria-current="page"' if e_slug == active_slug else ""
+        e_search = esc(f"{es_doc['code']} {es_doc['title_en']} {es_doc['title_es']}".lower())
+        essay_items.append(
+            f'<li data-contents-bounty-item data-search="{e_search}"><a href="{_href(rel_res, "essays/" + e_slug + "/")}"{e_cur}>'
+            f'<span class="tp-contents-id">{esc(es_doc["code"])}</span> '
+            f'<span class="tp-contents-title" data-en="{esc(es_doc["title_en"])}" data-es="{esc(es_doc["title_es"])}">{esc(es_doc["title_en"])}</span></a></li>'
+        )
+    essay_items_html = "\n            ".join(essay_items)
     total = sum(len(v) for v in catalog["pillars"].values())
     return f"""  <dialog id="tp-contents" class="tp-contents" aria-labelledby="tp-contents-title">
     <div class="tp-contents-inner">
       <div class="tp-contents-head">
         <h2 id="tp-contents-title" data-en="Contents" data-es="Contenido">Contents</h2>
-        <input id="tp-contents-search" class="tp-contents-search" type="search" autocomplete="off" placeholder="Search {total} essays, 6 bounties &amp; 6 tools" aria-label="Search essays, bounties and tools">
+        <input id="tp-contents-search" class="tp-contents-search" type="search" autocomplete="off" placeholder="Search {total} essays, 6 bounties, 6 tools &amp; 3 syntheses" aria-label="Search essays, bounties and tools">
         <button type="button" class="tp-tool-btn tp-contents-close" data-close-contents aria-label="Close contents">Close</button>
       </div>
       <p id="tp-contents-empty" class="tp-contents-empty" hidden data-en="No essay matches that search." data-es="Ningún ensayo coincide con la búsqueda.">No essay matches that search.</p>
@@ -1971,6 +1984,12 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
         <h3><a href="{_href(rel_res, 'toolchain/')}" data-en="Tech &amp; Tools · The Toolbox · 6 Open 3D CAD &amp; Studio Folios (X.01–X.06)" data-es="Tecnología y Herramientas · Caja de Herramientas 3D y CAD Abierto (X.01–X.06)">Tech &amp; Tools · The Toolbox · 6 Open 3D CAD &amp; Studio Folios (X.01–X.06)</a></h3>
         <ol>
             {tool_items_html}
+        </ol>
+      </section>
+      <section class="tp-contents-bounties" aria-label="Cross-Scale Featured Essays">
+        <h3><a href="{_href(rel_res, 'essays/')}" data-en="Cross-Scale Featured Essays · 3 Standalone Syntheses (ES.01–ES.03)" data-es="Ensayos Destacados entre Escalas · 3 Síntesis Independientes (ES.01–ES.03)">Cross-Scale Featured Essays · 3 Standalone Syntheses (ES.01–ES.03)</a></h3>
+        <ol>
+            {essay_items_html}
         </ol>
       </section>
     </div>
@@ -1996,7 +2015,7 @@ def render_breadcrumb(rel_res: str, pillar: str, folio: dict | None = None) -> s
 def render_site_footer(rel_res: str) -> str:
     links = " · ".join(
         f'<a href="{_href(rel_res, p + "/")}" data-en="{esc(PILLAR_NAV_LABELS[p][0])}" data-es="{esc(PILLAR_NAV_LABELS[p][1])}">{esc(PILLAR_NAV_LABELS[p][0])}</a>'
-        for p in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "timegravity", "about")
+        for p in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "timegravity", "essays", "about")
     )
     return f"""    <footer class="tp-footer tp-site-footer">
       <nav aria-label="Footer"><a href="{_href(rel_res)}">Informatico.ai</a> · {links} · <a href="https://github.com/senseiewok/informatico.ai" target="_blank" rel="noopener noreferrer" data-en="GitHub" data-es="GitHub">GitHub</a></nav>
@@ -2182,6 +2201,41 @@ def render_timegravity_series_rack(rel_res: str) -> str:
     </section>"""
 
 
+def render_cross_scale_essays_showcase(rel_res: str, lang: str = "en") -> str:
+    """Featured three-card showcase of Cross-Scale Companion Essays (/essays/, ES.01–ES.03)."""
+    from folios.essays import ESSAYS as CROSS_SCALE_ESSAYS  # noqa: E402
+    es = lang == "es"
+    cards = []
+    for es_doc in CROSS_SCALE_ESSAYS:
+        slug = es_doc["slug"]
+        pslug = es_doc["plate_slug"]
+        href = _href(rel_res, f"essays/{slug}/")
+        img_src = f"{_href(rel_res, 'plates/' + pslug + '.png')}?v={_png_sha8(pslug)}"
+        t_en, t_es = decf_title(es_doc["title_en"]), decf_title(es_doc["title_es"])
+        d_en = re.sub(r"cystic fibrosis", "dense-hydrogel", decf_title(es_doc["card_dek_en"]), flags=re.I)
+        d_es = re.sub(r"fibrosis quística", "hidrogel denso", decf_title(es_doc["card_dek_es"]), flags=re.I)
+        alt_txt = f"Lámina esquemática de {es_doc['code']} · {t_es}" if es else f"Schematic plate for {es_doc['code']} · {t_en}"
+        cards.append(
+            f"""        <a class="tp-rack-card tp-essay-card" href="{href}" data-folio-slug="{esc(slug)}">
+          <span class="tp-rack-thumb-wrap"><img class="tp-essay-thumb" src="{img_src}" width="1200" height="630" loading="lazy" decoding="async" alt="{esc(alt_txt)}"></span>
+          <span class="tp-rack-top"><span class="tp-rack-id" data-en="{esc(es_doc['code'])} · Cross-Scale" data-es="{esc(es_doc['code'])} · Entre Escalas">{esc(es_doc['code'])} · Cross-Scale</span><span class="tp-rack-badge" data-en="{esc(es_doc['reading_time_en'])}" data-es="{esc(es_doc['reading_time_es'])}">{esc(es_doc['reading_time_en'])}</span></span>
+          <strong class="tp-rack-title" data-en="{esc(t_en)}" data-es="{esc(t_es)}">{esc(t_en)}</strong>
+          <span class="tp-rack-dek" data-en="{esc(d_en)}" data-es="{esc(d_es)}">{esc(d_en)}</span>
+        </a>"""
+        )
+    cards_html = "\n".join(cards)
+    hub_href = _href(rel_res, "essays/")
+    return f"""
+    <section class="tp-cross-scale-showcase" id="cross-scale-essays" aria-labelledby="cross-scale-essays-heading">
+      <p class="tp-kicker" data-en="Featured Companion Synthesis · 3 Standalone Essays · ES.01–ES.03" data-es="Síntesis Compañera Destacada · 3 Ensayos Independientes · ES.01–ES.03">Featured Companion Synthesis · 3 Standalone Essays · ES.01–ES.03</p>
+      <h2 id="cross-scale-essays-heading" class="tp-h2"><a href="{hub_href}" data-en="Cross-Scale Essays: Clocks, Stone, and Living Matter" data-es="Ensayos entre Escalas: Relojes, Piedra y Materia Viva">Cross-Scale Essays: Clocks, Stone, and Living Matter</a></h2>
+      <p class="tp-standfirst" data-en="Why the exact same fluctuation-dissipation floors, formal DERIVED (NOT MEASURED) parent-row gates, and Barato–Seifert thermodynamic uncertainty bounds (Q_TUR ≥ 2) unite 10⁻¹⁴ kg quantum-gravity diamonds, optical clocks, porous mortar, and nanoscale conformational channels." data-es="Por qué los mismos pisos de fluctuación-disipación, las compuertas formales DERIVADO (NO MEDIDO) y las cotas de incertidumbre termodinámica de Barato–Seifert (Q_TUR ≥ 2) unen diamantes de gravedad cuántica de 10⁻¹⁴ kg, relojes ópticos, mortero poroso y canales conformacionales a nanoescala.">Why the exact same fluctuation-dissipation floors, formal DERIVED (NOT MEASURED) parent-row gates, and Barato–Seifert thermodynamic uncertainty bounds (Q_TUR ≥ 2) unite 10⁻¹⁴ kg quantum-gravity diamonds, optical clocks, porous mortar, and nanoscale conformational channels.</p>
+      <div class="tp-cross-scale-grid">
+{cards_html}
+      </div>
+    </section>"""
+
+
 def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str = "en") -> str:
     rel_root, rel_res = "../..", ".."
     es = lang == "es"
@@ -2195,7 +2249,7 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
                                               image=image, crumbs=crumbs), lang)
     cards = render_rack_cards(pillar, folios, "./", "../plates/", eager=12)
     n = len(folios)
-    lead_series = render_timegravity_series_rack(rel_res) if pillar == "physics" else ""
+    lead_series = (render_timegravity_series_rack(rel_res) + render_cross_scale_essays_showcase(rel_res, lang)) if pillar == "physics" else ""
     rack_cls = "tp-issue-rack tp-issue-rack-headed" if pillar == "physics" else "tp-issue-rack"
     rack_head = ""
     if pillar == "physics":
@@ -5094,6 +5148,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
       </nav>
     </section>
 {render_cover_timegravity_feature(".")}
+{render_cross_scale_essays_showcase(".", lang)}
 {rows_html}
 {render_toolchain_section(".")}
 {render_bounty_crucible_section(".")}
@@ -5529,6 +5584,12 @@ def render_research_sitemap(catalog: dict) -> str:
     for tg in TIMEGRAVITY_PAGES:
         if tg["slug"]:
             entries.append((f"timegravity/{tg['slug']}/", tg.get("date", TIMEGRAVITY_DATE)))
+    # Cross-Scale Featured Essays (/essays/ and /essays/<slug>/).
+    from folios.essays import ESSAYS as CROSS_SCALE_ESSAYS  # noqa: E402
+    essays_date = max((e.get("date", TIMEGRAVITY_DATE) for e in CROSS_SCALE_ESSAYS), default=TIMEGRAVITY_DATE)
+    entries.append(("essays/", essays_date))
+    for es_doc in CROSS_SCALE_ESSAYS:
+        entries.append((f"essays/{es_doc['slug']}/", es_doc.get("date", essays_date)))
     entries.append(("about/", newest_all))
 
     blocks = [
@@ -5590,6 +5651,13 @@ def render_llms_txt(catalog: dict) -> str:
         if tg and tg["slug"]:
             lines.append(f"- [Step {step_no} · {tg['code']} {tg['seo'][0]}]({page_url('timegravity/' + tg['slug'] + '/')}): {tg['seo'][1]}")
     lines.append("")
+    from folios.essays import ESSAYS as CROSS_SCALE_ESSAYS  # noqa: E402
+    lines.append("## Cross-Scale Featured Essays · Clocks, Stone, and Living Matter (ES.01–ES.03)")
+    lines.append("")
+    lines.append(f"- [Cross-Scale Essays]({page_url('essays/')}): {PILLAR_SEO['essays'][1]}")
+    for es_doc in CROSS_SCALE_ESSAYS:
+        lines.append(f"- [{es_doc['code']} {es_doc['seo'][0]}]({page_url('essays/' + es_doc['slug'] + '/')}): {es_doc['seo'][1]}")
+    lines.append("")
     lines.append("## About Informatico.ai & the Shared Verification Engine (Essay Zero)")
     lines.append("")
     lines.append(f"- [About Informatico & the Verification Engine]({page_url('about/')}): {PILLAR_SEO['about'][1]}")
@@ -5600,10 +5668,10 @@ def render_llms_txt(catalog: dict) -> str:
 def render_not_found() -> str:
     """The informatico.ai 404 page. Served at any depth, so every address in it is absolute; never indexed."""
     links = " · ".join(
-        f'<a href="/{p}/">{esc(PILLAR_NAV_LABELS[p][0])}</a>' for p in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "timegravity", "about")
+        f'<a href="/{p}/">{esc(PILLAR_NAV_LABELS[p][0])}</a>' for p in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "timegravity", "essays", "about")
     )
     links_es = " · ".join(
-        f'<a href="/{ES_PREFIX}{p}/">{esc(PILLAR_NAV_LABELS[p][1])}</a>' for p in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "timegravity", "about")
+        f'<a href="/{ES_PREFIX}{p}/">{esc(PILLAR_NAV_LABELS[p][1])}</a>' for p in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "timegravity", "essays", "about")
     )
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -5739,6 +5807,9 @@ def main() -> None:
     update_informatico_css()
     write_bounty_skills()
     write_toolchain_skills_and_assets()
+    sys.modules.setdefault("build_longform_folios", sys.modules[__name__])
+    import build_cross_scale_essays  # noqa: E402
+    build_cross_scale_essays.write_essay_pages(catalog)
 
     res_dir = ROOT / "src" / "research"
     es_dir = res_dir / ES_PREFIX.strip("/")

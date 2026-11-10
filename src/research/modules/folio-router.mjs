@@ -14,7 +14,7 @@ export function initFolioRouter() {
   const items = dialog.querySelectorAll("li[data-contents-item], li[data-contents-bounty-item]");
   const pillarItems = dialog.querySelectorAll("li[data-contents-item]");
   const cols = dialog.querySelectorAll(".tp-contents-col");
-  const bountySection = dialog.querySelector(".tp-contents-bounties");
+  const bountySections = dialog.querySelectorAll(".tp-contents-bounties");
   let lastOpener = null;
 
   function setExpanded(value) {
@@ -33,9 +33,9 @@ export function initFolioRouter() {
     cols.forEach((col) => {
       col.hidden = !col.querySelector("li[data-contents-item]:not([hidden])");
     });
-    if (bountySection) {
-      bountySection.hidden = !bountySection.querySelector("li[data-contents-bounty-item]:not([hidden])");
-    }
+    bountySections.forEach((sec) => {
+      sec.hidden = !sec.querySelector("li[data-contents-bounty-item]:not([hidden])");
+    });
     if (empty) empty.hidden = shown > 0;
   }
 
@@ -74,8 +74,16 @@ export function initFolioRouter() {
   function syncSearchLabels(isEs) {
     if (!search) return;
     const total = pillarItems.length;
-    search.setAttribute("placeholder", isEs ? "Buscar en " + total + " ensayos y 6 retos" : "Search " + total + " essays & 6 bounties");
-    search.setAttribute("aria-label", isEs ? "Buscar ensayos y retos" : "Search essays and bounties");
+    search.setAttribute(
+      "placeholder",
+      isEs
+        ? "Buscar en " + total + " ensayos, 6 retos, 6 herramientas y 3 síntesis"
+        : "Search " + total + " essays, 6 bounties, 6 tools & 3 syntheses"
+    );
+    search.setAttribute(
+      "aria-label",
+      isEs ? "Buscar ensayos, retos y herramientas" : "Search essays, bounties and tools"
+    );
   }
 
   window.addEventListener("tp-lang-change", (ev) => {

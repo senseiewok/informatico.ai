@@ -3706,6 +3706,7 @@ def render_page(page: dict, catalog: dict, lang: str = "en") -> str:
       </aside>
     </section>
 </div>
+{B.render_cross_scale_essays_showcase(rel_res, lang) if not slug else ""}
 {pager(page, rel_res)}
 {B.render_site_footer(rel_res)}
   </main>

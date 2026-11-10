@@ -360,6 +360,12 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
         "Acerca de Informatico y el Motor de Verificación | Informatico.ai",
         "Cómo un laboratorio independiente de código abierto crea ensayos interactivos, verifica cada afirmación en público y conecta la ingeniería con la ciencia.",
     ),
+    "essays": (
+        "Cross-Scale Essays · Shared Laws & Verification | Informatico.ai",
+        "Three long-form essays where quantum decoherence, formal verification and porous-media thermodynamics unite falling clocks, stone and living systems.",
+        "Ensayos entre Escalas · Leyes y Verificación | Informatico.ai",
+        "Tres ensayos donde la decoherencia cuántica, la verificación formal y la termodinámica unen relojes ópticos, medios porosos y sistemas biológicos.",
+    ),
 }
 
 # Dedicated Tech & Tools · The Toolbox Folios (x01..x06) under /toolchain/<slug>/ and /es-mx/toolchain/<slug>/
