@@ -1137,6 +1137,81 @@ def sigma_ladder(page: dict) -> str:
         </figure>"""
 
 
+def threshold_map(page: dict) -> str:
+    """Plate T.05-M · the geometry map: for any pair geometry, the σ above which the 2025 letter's hybrid dynamics entangles and the σ
+    above which the quantum witness survives pure Diósi–Penrose collapse, both over the nearest approach d, against the split-to-gap
+    ratio (tools/timegravity_kernel_dispute.py, threshold_map)."""
+    from timegravity_kernel_dispute import threshold_map as _tmap
+    rows = _tmap()
+    x0, x1, y_top, y_bot = 92.0, 850.0, 30.0, 226.0
+    rlo, rhi, vlo, vhi = math.log10(0.03), math.log10(32.0), math.log10(0.3), math.log10(40.0)
+    xs = lambda r: x0 + (math.log10(r) - rlo) / (rhi - rlo) * (x1 - x0)
+    ys = lambda v: y_bot - (math.log10(v) - vlo) / (vhi - vlo) * (y_bot - y_top)
+    parts = [f'<rect x="6" y="6" width="908" height="288" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>']
+    for r in (0.03, 0.1, 0.3, 1.0, 3.0, 10.0, 30.0):
+        x = xs(r)
+        parts.append(f'<line x1="{x:.1f}" y1="{y_top}" x2="{x:.1f}" y2="{y_bot}" stroke="var(--tp-rule-strong)" stroke-width="0.6" opacity="0.5"/>')
+        parts.append(f'<text x="{x:.1f}" y="{y_bot + 14}" text-anchor="middle" font-size="8.8" fill="var(--tp-graphite)">{r:g}</text>')
+    for v in (0.3, 1.0, 3.0, 10.0, 30.0):
+        y = ys(v)
+        parts.append(f'<line x1="{x0}" y1="{y:.1f}" x2="{x1}" y2="{y:.1f}" stroke="var(--tp-rule-strong)" stroke-width="0.6" opacity="0.5"/>')
+        parts.append(f'<text x="{x0 - 6}" y="{y + 3:.1f}" text-anchor="end" font-size="8.8" fill="var(--tp-graphite)">{v:g}</text>')
+    parts.append(f'<line x1="{x0}" y1="{y_top}" x2="{x0}" y2="{y_bot}" stroke="var(--tp-ink)" stroke-width="1.3"/>')
+    parts.append(f'<line x1="{x0}" y1="{y_bot}" x2="{x1}" y2="{y_bot}" stroke="var(--tp-ink)" stroke-width="1.3"/>')
+    parts.append(f'<text x="{(x0 + x1) / 2:.1f}" y="{y_bot + 30}" text-anchor="middle" font-size="9.4" font-weight="700" fill="var(--tp-ink)" '
+                 f'data-en="split ÷ nearest approach (Δx / d), log scale" data-es="división ÷ aproximación más cercana (Δx / d), escala logarítmica">split ÷ nearest approach (Δx / d), log scale</text>')
+    parts.append(f'<text x="22" y="{(y_top + y_bot) / 2:.1f}" text-anchor="middle" font-size="9.4" font-weight="700" fill="var(--tp-ink)" transform="rotate(-90 22 {(y_top + y_bot) / 2:.1f})" '
+                 f'data-en="σ ÷ nearest approach (σ / d)" data-es="σ ÷ aproximación más cercana (σ / d)">σ ÷ nearest approach (σ / d)</text>')
+    g_pts = " ".join(f"{xs(r['ratio']):.1f},{ys(r['hybrid_over_nearest']):.1f}" for r in rows)
+    f_pts = " ".join(f"{xs(r['ratio']):.1f},{ys(r['collapse_over_nearest']):.1f}" for r in rows)
+    parts.append(f'<polyline points="{g_pts}" fill="none" stroke="var(--tp-prussian)" stroke-width="2.2" stroke-linejoin="round"/>')
+    parts.append(f'<polyline points="{f_pts}" fill="none" stroke="var(--tp-minium)" stroke-width="2.2" stroke-dasharray="6 4" stroke-linejoin="round"/>')
+    g_label = "hybrid dynamics entangles above this line (PROPOSED)"; g_label_es = "la dinámica híbrida entrelaza por encima de esta línea (PROPUESTO)"
+    f_label = "witness survives pure collapse above this line (PROPOSED)"; f_label_es = "el testigo sobrevive al colapso puro por encima de esta línea (PROPUESTO)"
+    parts.append(f'<text x="{x0 + 8:.1f}" y="{ys(rows[0]["hybrid_over_nearest"]) - 12:.1f}" text-anchor="start" font-size="8.8" font-weight="700" fill="var(--tp-prussian)" data-en="{a(g_label)}" data-es="{a(g_label_es)}">{t(g_label)}</text>')
+    parts.append(f'<text x="{x0 + 8:.1f}" y="{ys(rows[0]["collapse_over_nearest"]) - 10:.1f}" text-anchor="start" font-size="8.8" font-weight="700" fill="var(--tp-minium)" data-en="{a(f_label)}" data-es="{a(f_label_es)}">{t(f_label)}</text>')
+    gap = "between the lines: a model difference, not data"; gap_es = "entre las líneas: una diferencia entre modelos, no datos"
+    parts.append(f'<text x="{xs(6.0):.1f}" y="{ys(2.2):.1f}" text-anchor="middle" font-size="8.6" font-style="italic" fill="var(--tp-graphite)" data-en="{a(gap)}" data-es="{a(gap_es)}">{t(gap)}</text>')
+    # The two named geometries at their own masses (the page's numbers: 525 / 130 µm and 55 / 14 µm), within 0.4 % of the small-mass curves.
+    from timegravity_kernel_dispute import tn_critical_sigma, dp_collapse_sigma_at, BMV_M_KG, BMV_DX_M, BMV_D_M, BMV_T_S, TN_M_KG, TN_L_M, TN_D_M
+    for name_en, name_es, dx, split, near, m in (("2017 proposal", "propuesta de 2017", 8, BMV_DX_M, BMV_D_M - BMV_DX_M, BMV_M_KG),
+                                                  ("2025 letter", "carta de 2025", -8, TN_L_M, TN_D_M, TN_M_KG)):
+        x = xs(split / near)
+        anchor = "start" if dx > 0 else "end"
+        # Labels follow the page's wording: the hybrid threshold is stated as "above" (ceiling: 525, 55 µm), the collapse one to the nearest µm (130, 14 µm).
+        for sig_m, col, dy, rnd in ((tn_critical_sigma(m, split, near), "var(--tp-prussian)", -8, lambda v: math.ceil(v - 1e-9)),
+                                    (dp_collapse_sigma_at(split, near, m, BMV_T_S, 0.0), "var(--tp-minium)", 16, round)):
+            y = ys(sig_m / near); sig = rnd(sig_m * 1e6)
+            parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4" fill="{col}" stroke="var(--tp-vellum)" stroke-width="1.2"/>')
+            lab = f"{name_en}: σ = {sig:.0f} µm"; lab_es = f"{name_es}: σ = {sig:.0f} µm"
+            parts.append(f'<text x="{x + dx:.1f}" y="{y + dy:.1f}" text-anchor="{anchor}" font-size="8.2" fill="{col}" data-en="{a(lab)}" data-es="{a(lab_es)}">{t(lab)}</text>')
+    footer = "PLATE T.05-M · THE GEOMETRY MAP · TWO PUBLISHED MODELS, THIS SITE'S KERNEL · NO WITNESS MEASURED"
+    footer_es = "LÁMINA T.05-M · EL MAPA GEOMÉTRICO · DOS MODELOS PUBLICADOS, EL NÚCLEO DE ESTE SITIO · NINGÚN TESTIGO MEDIDO"
+    parts.append(f'<text x="460" y="{y_bot + 56}" text-anchor="middle" font-family="var(--font-mono, monospace)" font-size="8.9" font-weight="700" fill="var(--tp-prussian)" data-en="{a(footer)}" data-es="{a(footer_es)}">{t(footer)}</text>')
+    body = "\n            ".join(parts)
+    title_en = ("Plate T.05-M The geometry map: on log axes, the sigma above which the 2025 letter's hybrid dynamics entangles (solid) and the sigma above which the quantum "
+                "witness survives pure Diósi–Penrose collapse (dashed), both divided by the nearest approach, against the split-to-gap ratio; dots mark the 2017 proposal and the letter's geometry")
+    title_es = ("Lámina T.05-M El mapa geométrico: en ejes logarítmicos, la sigma por encima de la cual la dinámica híbrida de la carta de 2025 entrelaza (continua) y la sigma por encima "
+                "de la cual el testigo cuántico sobrevive al colapso puro de Diósi–Penrose (discontinua), ambas divididas por la aproximación más cercana, frente a la razón división/separación; "
+                "los puntos marcan la propuesta de 2017 y la geometría de la carta")
+    cap_en = ("Plate T.05-M · The geometry map: for any pair geometry, the σ above which the letter's hybrid dynamics entangles (solid) and the σ above which the quantum witness "
+              "survives pure Diósi–Penrose collapse (dashed), both over the nearest approach d, against the split-to-gap ratio. Both lines are this site's computations on the two "
+              "published models; the gap between them is a model difference, not an exclusion region, and the page picks no side. No witness has been measured.")
+    cap_es = ("Lámina T.05-M · El mapa geométrico: para cualquier geometría del par, la σ por encima de la cual la dinámica híbrida de la carta entrelaza (continua) y la σ por encima de "
+              "la cual el testigo cuántico sobrevive al colapso puro de Diósi–Penrose (discontinua), ambas sobre la aproximación más cercana d, frente a la razón división/separación. Las dos "
+              "líneas son cálculos de este sitio sobre los dos modelos publicados; la brecha entre ellas es una diferencia entre modelos, no una región de exclusión, y la página no toma "
+              "partido. Ningún testigo se ha medido.")
+    return f"""        <figure class="tp-distill-figure" role="group" aria-label="Plate T.05-M The geometry map" data-tg-figure="threshold-map">
+          <svg class="tp-distill-svg" viewBox="0 0 920 300" role="img" aria-labelledby="tp-map-title-t05">
+            <title id="tp-map-title-t05" data-en="{a(title_en)}" data-es="{a(title_es)}">{t(title_en)}</title>
+            {body}
+          </svg>
+          <figcaption class="tp-distill-caption">
+            {bi("span", cap_en, cap_es)}
+          </figcaption>
+        </figure>"""
+
+
 def spine(page: dict) -> str:
     blocks = []
     for i, (te, ts, be, bs) in enumerate(page["stages"], 1):
@@ -1260,6 +1335,8 @@ def render_sections(page: dict, rel_res: str) -> str:
             out.append(plate_d(page))
         elif kind == "sigma_ladder":
             out.append(sigma_ladder(page))
+        elif kind == "threshold_map":
+            out.append(threshold_map(page))
         elif kind == "equation":
             out.append(f'        <p class="tg-equation"><code>{t(block["text"])}</code></p>')
         elif kind == "spine":

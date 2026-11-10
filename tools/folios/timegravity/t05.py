@@ -442,6 +442,29 @@ PAGE: dict = {
               "Un estudio de decoherencia de 2021 sobre estas propuestas halló que el otro modelo de colapso, CSL, impediría el entrelazamiento para "
               "cualquier valor de sus parámetros; no trató el caso de Diósi–Penrose, que es el cálculo de esta página."),
         ),
+        P(
+            C("PROPOSED", [TRILLO, BOSE, DIOSI87, PENROSE96],
+              "The two laboratory uses of σ sit on one geometric axis. For any geometry both thresholds scale with the nearest approach d and depend "
+              "otherwise only on the ratio of split to nearest approach: the letter's hybrid dynamics entangles the pair only for σ above 1.2 to 38 times d "
+              "as the split grows from a thirtieth of d to thirty-two times it, while quantum gravity with pure collapse keeps a surviving witness for σ "
+              "above 0.37 to 1.0 times d over the same range.",
+              "Los dos usos de laboratorio de σ se sitúan sobre un mismo eje geométrico. Para cualquier geometría ambos umbrales escalan con la aproximación "
+              "más cercana d y dependen, aparte de eso, solo de la razón entre la división y la aproximación más cercana: la dinámica híbrida de la carta "
+              "entrelaza el par solo para σ por encima de 1.2 a 38 veces d conforme la división crece de un treintavo de d a treinta y dos veces d, "
+              "mientras que la gravedad cuántica con colapso puro conserva un testigo superviviente para σ por encima de 0.37 a 1.0 veces d en el mismo rango."),
+            T(" So a positive witness would read as a lower bound on σ in either model, and the two bounds differ by a factor of 3.3 at small splits, 3.8 at "
+              "the letter's geometry, 4.1 at the 2017 geometry and about 11 at a split eight times the gap; the page computes the two curves and draws no "
+              "conclusion from the gap between them, since no witness has been measured. At the T.05 estimate of 44 µm the hybrid dynamics would entangle only "
+              "geometries whose nearest approach is below 36 µm at tiny splits and below 19 µm at equal split and gap, against a Casimir floor of 17 µm for "
+              "10⁻¹⁵ kg; the window is about two micrometres wide at equal split and gap, and whether anything sits in it is not determined by this page.",
+              " Así que un testigo positivo se leería como una cota inferior de σ en cualquiera de los dos modelos, y las dos cotas difieren por un factor de "
+              "3.3 a divisiones pequeñas, 3.8 en la geometría de la carta, 4.1 en la geometría de 2017 y cerca de 11 a una división ocho veces la separación; "
+              "la página calcula las dos curvas y no saca conclusión alguna de la brecha entre ellas, pues ningún testigo se ha medido. En la estimación de "
+              "44 µm de T.05 la dinámica híbrida entrelazaría solo geometrías cuya aproximación más cercana quede por debajo de 36 µm a divisiones diminutas "
+              "y de 19 µm a división igual a la separación, frente a un piso de Casimir de 17 µm para 10⁻¹⁵ kg; la ventana tiene unas dos micras de ancho a "
+              "división igual a la separación, y si algo se sitúa en ella no lo determina esta página."),
+        ),
+        {"type": "threshold_map"},
         {"type": "h2", "id": "labs", "en": "III · How far the laboratories are", "es": "III · Qué tan lejos están los laboratorios", "short_en": "III · Labs", "short_es": "III · Laboratorios"},
         P(
             C("MEASURED", [WEST, FUCHS],
