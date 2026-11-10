@@ -812,6 +812,36 @@
       "kind": "peer-reviewed",
       "review_by": "2028-11-10",
       "note": "Improved limit on the directly measured antiproton lifetime: no annihilation in 11.66 particle-years of storage in a cryogenic Penning-trap reservoir; from the lifetime limit the paper infers partial-pressure upper limits of 1.2e-18 mbar for hydrogen and 2.7e-18 mbar for helium at 68 % confidence (1.2e-16 Pa and 2.7e-16 Pa). One collaboration's inferred, model-dependent limit on its own trap vacuum, not a gauge reading; labelled SINGLE RESULT, not an exclusion limit on any model."
+    },
+    {
+      "id": "T06-GERACI2008",
+      "label": "BOUND",
+      "doi": "10.1103/PhysRevD.78.022002",
+      "year": 2008,
+      "collaboration": "Geraci, Smullin, Weld, Chiaverini & Kapitulnik (Physical Review D)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Improved constraints on non-Newtonian forces at 10 microns: a cryogenic micro-cantilever with a nominal face-to-face separation of 25 um; '95 percent confidence exclusion of forces with |alpha| > 14,000 at lambda = 10 microns'; Table 5 gives the 95 % exclusion on |alpha| at lambda = 4, 6, 10, 18, 34, 66 um as 3.1e7, 4.6e5, 1.4e4, 1.1e3, 2.5e2, 1.5e2. Read from arXiv:0802.2350v2. On T.06 beside the 2020 torsion balance's own tabulated limits, which are stronger from 10 to 66 um."
+    },
+    {
+      "id": "T05-DANIA2024",
+      "label": "MEASURED",
+      "doi": "10.1103/PhysRevLett.132.133602",
+      "year": 2024,
+      "collaboration": "Dania, Bykov, Goschin, Teller, Kassid & Northup (PRL)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Ultrahigh quality factor of a levitated nanomechanical oscillator: a silica nanoparticle (4.3e-17 kg, likely a cluster of two nanospheres) in a linear Paul trap at room temperature, pressure varied from 7e-11 to 1e-4 mbar; 'the data are consistent with a linear model gamma proportional to P'; damping rates 'consistent with a gas-damping model', heating rates 'higher than expected solely from interaction with the background gas'. Read from arXiv:2304.02408v2. A measurement of gas damping, not of decoherence of a superposition."
+    },
+    {
+      "id": "T05-MAGRINI2021",
+      "label": "MEASURED",
+      "doi": "10.1038/s41586-021-03602-3",
+      "year": 2021,
+      "collaboration": "Magrini, Rosenzweig, Bach, Deutschmann-Olek, Hofer, Hong, Kiesel, Kugi & Aspelmeyer (Nature)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Real-time optimal quantum control of mechanical motion at room temperature: a silica nanosphere of 71.5 nm radius cooled near its ground state; from re-heating measurements at different background pressures, decoherence (heating) rates due to backaction, 2 pi x 18.8 kHz, and due to residual gas molecules, 2 pi x 0.6 kHz, at 9.2e-9 mbar. Read from arXiv:2012.15188v2. A measured gas-collision heating rate, not the loss of a spatial superposition."
     }
   ]
 }

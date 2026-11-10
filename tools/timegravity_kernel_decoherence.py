@@ -60,6 +60,7 @@ K_B = 1.380649e-23               # J/K (exact, SI 2019)
 C_LIGHT = 299792458.0            # m/s (exact)
 ATOMIC_MASS_UNIT_KG = 1.66053906660e-27
 HELIUM_MASS_KG = 4.002602 * ATOMIC_MASS_UNIT_KG   # 6.65e-27 kg; Rijavec et al. 2021 take 6.6e-27 kg ('a atom of helium')
+HYDROGEN_MASS_KG = 2.01588 * ATOMIC_MASS_UNIT_KG  # the H₂ molecule
 AIR_MASS_KG = 28.97 * ATOMIC_MASS_UNIT_KG         # Romero-Isart 2011, Table 3
 ZETA_9 = 1.0020083928260822
 DIAMOND_EPS = complex(5.7, 1e-4)                  # Rijavec et al. 2021, Table 2 caption
@@ -266,9 +267,12 @@ def check_decoherence(planted_defect: bool = False) -> dict:
     r14 = sphere_radius(1e-14, DIAMOND_DENSITY)
     est = {"p_for_1e-4_per_s_pa": 1e-4 / gas_rate_saturated(1.0, 4.0, r14), "p_for_quantum_pa": z10["rates_per_s"]["quantum"] / gas_rate_saturated(1.0, 4.0, r14)}
     estimate_ok = abs(est["p_for_1e-4_per_s_pa"] / 1.6e-17 - 1.0) < 0.05 and abs(est["p_for_quantum_pa"] / 1.6e-15 - 1.0) < 0.06
+    # hydrogen beside helium at the same pressure and temperature: the kinetic rate goes as 1/√m
+    h2 = gas_rate_saturated(1.0, 4.0, r14, m_gas=HYDROGEN_MASS_KG) / gas_rate_saturated(1.0, 4.0, r14)
+    identity_ok = bool(identity_ok and abs(h2 / math.sqrt(HELIUM_MASS_KG / HYDROGEN_MASS_KG) - 1.0) < 1e-12 and 1.40 < h2 < 1.42)
     ok = bool(identity_ok and regime_ok and transcription_ok and ceilings_ok and estimate_ok)
     return {"budgets": budgets, "transcription_checks": tc, "estimate": est, "base_partial_pressure_pa": BASE_PARTIAL_PRESSURE_PA,
-            "rate_ratio_quantum_over_hybrid_33um": rate_ratio, "vacuum_comparison_helium": vac,
+            "rate_ratio_quantum_over_hybrid_33um": rate_ratio, "vacuum_comparison_helium": vac, "hydrogen_over_helium_rate_at_equal_pressure": h2,
             "gas_rate_per_pa_at_4K_1e-14kg_per_s": {form: gas_rate_saturated(1.0, 4.0, r14, form=form) for form in GAS_COEFF},
             "identity_ok": identity_ok, "regime_ok": regime_ok, "transcription_ok": transcription_ok, "ceilings_ok": ceilings_ok,
             "estimate_ok": estimate_ok, "ok": ok}

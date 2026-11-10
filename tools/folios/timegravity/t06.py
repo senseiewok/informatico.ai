@@ -27,6 +27,7 @@ TILLOY = "T05-TILLOY2016"
 TRILLO = "T05-TRILLO2025"
 LEE = "T05-LEE2020"
 LEE21 = "T05-LEE2021"
+GERACI = "T06-GERACI2008"
 
 PAGE: dict = {
     "slug": SLUG,
@@ -290,6 +291,18 @@ PAGE: dict = {
               "más débil, y a 13.6 µm la imitación cae al alcance tabulado más corto, 5 µm, unas cinco mil veces más débil; el sitio por debajo de "
               "33 µm existe porque ningún experimento alcanza intensidad casi gravitatoria a alcances de 5 a 10 µm, no por un hueco en los datos. T.05 añade un peldaño de otra clase: si la gravedad es "
               "cuántica y además existe el colapso puro, un testigo positivo en la geometría de 2017 pondría σ por encima de 130 µm dentro de este modelo de colapso puro. La escalera lleva además una ventana de otra clase, de 13.6 a 33 µm: en la estimación de este sitio el modelo de la carta aún podría entrelazar allí una geometría publicada, la propuesta lado a lado de 2024, sin contradecir los datos de 2020 del inverso del cuadrado; es una ventana para ese único modelo y esa única geometría, no una cota de σ, y se mueve o se cierra si los datos de 2020 se reajustan."),
+            C("BOUND", [GERACI, LEE],
+              " One experiment has worked at a smaller separation than the balance's 52 µm: a micro-cantilever about 25 µm from its source mass, "
+              "whose published 95 % limits exclude strengths above 14,000 at a range of 10 µm. Set beside the balance's own tabulated limits on the "
+              "magnitude, the balance is the stronger at ranges from 10 to 66 µm (3,100 at 10 µm) and the cantilever at 6 µm (460,000 against "
+              "730,000), where its limit is still about two thousand times the strength the smeared pull would need. Neither table reaches the "
+              "room below the rung.",
+              " Un experimento ha trabajado a una separación menor que los 52 µm de la balanza: un microvoladizo a unos 25 µm de su masa fuente, "
+              "cuyos límites publicados al 95 % excluyen intensidades por encima de 14,000 a un alcance de 10 µm. Puestos junto a los límites "
+              "tabulados de la propia balanza sobre la magnitud, la balanza es la más fuerte en alcances de 10 a 66 µm (3,100 a 10 µm) y el "
+              "microvoladizo a 6 µm (460,000 frente a 730,000), donde su límite sigue siendo unas dos mil veces la intensidad que la atracción "
+              "suavizada necesitaría. Ninguna de las dos tablas alcanza el sitio por debajo del peldaño."),
+            T(" ", " "),
             C("BOUND", [OPPENHEIM],
               "The same torsion balances enter a second squeeze: in 2023 Oppenheim and co-workers showed that any consistent theory with "
               "classical gravity and quantum matter must trade decoherence of the matter against diffusion of the field, bounded that "

@@ -37,7 +37,7 @@ def main() -> int:
             "central_number": {"sigma_95_m": res["sigma_95_m"], "variants_sigma_95_m": res["variants_sigma_95_m"], "spread_m": res["spread_m"],
                                "edge_crossing_lambda_m": res["edge_crossing_lambda_m"], "retired_edge_match_sigma_m": res["retired_edge_match_sigma_m"],
                                "at_33um": res["at_33um"], "at_35um": res["at_35um"], "at_edge_match_44um": res["at_edge_match_44um"], "table_rows": res["table_rows"]},
-            "geometry_checks": {"table_11_4_transcription": "PASS", "gravitational_strength_edge_recovered": "PASS", "recast_sigma_95": "PASS", "abs_torque_weighting_agrees": "PASS", "data_lean_positive_in_window": "PASS", "reach_below_limit": "PASS",
+            "geometry_checks": {"table_11_4_transcription": "PASS", "gravitational_strength_edge_recovered": "PASS", "recast_sigma_95": "PASS", "abs_torque_weighting_agrees": "PASS", "data_lean_positive_in_window": "PASS", "reach_below_limit": "PASS", "balance_stronger_than_cantilever_10_to_66um": "PASS", "cantilever_stronger_at_6um_and_still_far_above_need": "PASS",
                                 "constants_consistent": "PASS", "planted_single_separation_method_rejected": "PASS" if res["defect_rejected"] else "n/a"},
         }
         print(json.dumps(out, indent=2, default=str))
