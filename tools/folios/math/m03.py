@@ -52,8 +52,8 @@ FOLIO = {'folio_id': 'M.03',
                 'body': 'FunSearch outputs human-readable priority functions rather than raw '
                         'black-box coordinates, allowing mathematicians to inspect the symmetries '
                         'of the 512-cap construction in F_3^8.'},
- 'sidenote_2': {'kicker': 'SIDENOTE M.03-B · SYNONYMOUS CODON PACKING FOR CSI-MasterFormat mRNA',
-                'body': 'Designing maximally diverse synonymous CSI-MasterFormat mRNA sequences '
+ 'sidenote_2': {'kicker': 'SIDENOTE M.03-B · SYNONYMOUS CODON PACKING FOR CFTR mRNA',
+                'body': 'Designing maximally diverse synonymous CFTR mRNA sequences '
                         'that avoid TLR7/8 uridine triplets and secondary hairpin collisions is '
                         'isomorphic to packing line-free codewords in finite-field Hamming '
                         'spaces.'},
@@ -165,7 +165,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'slice-rank bounds in your own coding agents.'],
  'act4_human_ai': 'The deepest lesson of FunSearch and AlphaEvolve is interpretability through code. When an AI outputs a 15-line Python scoring function rather than a neural network weight matrix, human mathematicians can read the code, spot a hidden reflection symmetry, and generalize the construction to higher dimensions. Pairing evolutionary program synthesis with Pareto-front symbolic regression in MilesCranmer/PySR (https://github.com/MilesCranmer/PySR, DOI 10.48550/arXiv.2305.01582) and formal algebraic verification in leanprover-community/mathlib4 (DOI 10.1145/3372885.3373824) turns extremal combinatorics and tensor rank decomposition into an auditable closed loop verified via Scite (DOI 10.1162/qss_a_00146).',
  'act4_deepening': "The integration of program-space evolution with formal verification heralds a transformative workflow for extremal combinatorics and algorithmic design. Rather than relying on human mathematicians to hand-craft heuristics for high-dimensional geometries, autonomous AI agents can search vast program populations across distributed islands. When an evolutionary prompt produces a scoring routine with superior performance, human researchers dissect its mathematical syntax, extracting the underlying algebraic invariants and group actions. Once these structural insights are understood, they are formalized into interactive proof systems like Lean 4, guaranteeing that no counterexamples or numerical rounding artifacts corrupt the conclusions. Looking forward, this collaborative loop addresses longstanding open questions: can evolutionary program search beat Strassen's asymptotic matrix exponent omega = 2.807 for larger square tensors, or discover explicit cap sets in nine dimensions exceeding 2,000 vectors? By uniting creative generative proposals with rigid deterministic verifiers, researchers establish an auditable engine for continuous mathematical discovery.",
- 'cf_bridge': 'Designing synonymous mRNA sequences for inhaled CSI-MasterFormat genetic therapy is '
+ 'cf_bridge': 'Designing synonymous mRNA sequences for inhaled CFTR genetic therapy is '
               'an extremal coding problem over the 4-letter nucleotide alphabet (or 64-codon '
               'space): we must maximize ribosomal translation efficiency and secondary-structure '
               'free energy while avoiding Toll-like receptor (TLR7/8) uridine motifs and forbidden '
@@ -243,7 +243,7 @@ DISPATCH = {'kicker': 'FRONTIER AI DISCOVERY DISPATCH · DEEPMIND FUNSEARCH CAP 
          'beneath the Ellenberg–Gijswijt slice-rank ceiling (2.7551^n, Annals of Math. DOI '
          '10.4007/annals.2017.185.1.8), while AlphaEvolve discovered a Rank-48 tensor '
          'decomposition for 4x4 complex matrix multiplication—directly informing non-immunogenic '
-         'synonymous CSI-MasterFormat mRNA codon packing.'}
+         'synonymous CFTR mRNA codon packing.'}
 
 META_3D = ('FunSearch Cap-Set F_3^n Combinatorial Plateaus',
  'X/Z: Affine Finite-Field Hyperplane Grid · Y: Non-Collinear Cap-Set Indicator & Tensor Rank')
@@ -257,7 +257,7 @@ ES_TRANSLATION = {'title_es': 'Conjuntos Cap Extremales en F_3^n, Cotas del Mét
            'pequeños programas en Python que califican qué puntos elegir, y un verificador exacto '
            'conserva sólo las construcciones válidas.',
  'bridge_es': 'Los códigos combinatorios libres de progresiones y los métodos tensoriales permiten '
-              'diseñar secuencias de ARNm de CSI-MasterFormat sin motivos inmunogénicos ni '
+              'diseñar secuencias de ARNm de CFTR sin motivos inmunogénicos ni '
               'estructuras secundarias que frenen al ribosoma.',
  'plain_es': 'En palabras sencillas, el problema del conjunto Cap plantea un reto muy intuitivo: ¿cuántos objetos podemos reunir en un espacio sin que tres de ellos formen accidentalmente una línea recta? Es la misma regla que hace divertido al juego de cartas SET, donde los jugadores buscan tríos de figuras cuyas características sean todas idénticas o totalmente distintas. Cuando colocamos pocas cartas en la mesa, es fácil evitar que se alineen; pero conforme agregamos más elementos, las coincidencias se vuelven inevitables. Este dilema no es solo un pasatiempo, sino una pregunta fundamental sobre cómo empaquetar información sin errores. En las telecomunicaciones modernas y en las memorias de las computadoras, los ingenieros deben enviar millones de datos por segundo sin que las interferencias confundan una señal con otra. Los algoritmos de inteligencia artificial como FunSearch demostraron que, en lugar de probar combinaciones al azar, es mucho más eficaz diseñar pequeños programas lógicos que seleccionan las mejores posiciones con perfecta precisión.',
  'deep_es': 'Para analizar este avance matemático, resulta clave observar la tensión entre la dimensión del espacio afín y el rango tensorial de multiplicación matricial. Al elevar la dimensión afín hacia ocho dimensiones, el número de subconjuntos posibles crece hasta superar la cantidad de átomos en el universo observable, haciendo imposible cualquier búsqueda exhaustiva tradicional. Por otro lado, al reducir el rango de multiplicación para matrices de cuatro por cuatro, el algoritmo busca superar el histórico récord de 49 productos establecido por Volker Strassen en 1969. La innovación de FunSearch y AlphaEvolve consistió en sustituir la exploración de coordenadas por la evolución de programas en Python, respaldados por un verificador determinista en computadora que descarta cualquier triángulo colineal. Al mismo tiempo, el método del rango de corte establece un límite superior teórico estricto, encerrando la capacidad asintótica en un intervalo matemáticamente riguroso. Este enfoque demuestra cómo la inteligencia artificial ayuda a formular nuevos teoremas comprobables sin depender de aproximaciones opacas.'}

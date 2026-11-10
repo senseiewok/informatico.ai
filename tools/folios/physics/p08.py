@@ -56,7 +56,7 @@ FOLIO = {'category_code': 'P',
                           'WALLS LOVE MATTE'},
  'sidenote_2': {'body': 'The exact same Bragg–Snell equation Δ_OPD = 2 d √(n² − sin²θ) used to '
                         'design pearlescent automotive pigments is used in clinical white-light '
-                        'interferometry to measure the 7 μm ventilation duct surface liquid and '
+                        'interferometry to measure the 7 μm airway surface liquid and '
                         'tear-film lipid layers.',
                 'kicker': 'SIDENOTE P.08-B · SPECIFICATION PLATE · THIN-FILM INTERFEROMETRY IN '
                           'BIOPHYSICS'},
@@ -225,10 +225,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                   'pigment.',
  'cf_bridge': 'Standalone Wave Physics Flagship & Cross-Pillar Thread: Folio P.08 bridges Folio '
               "A.07 (Barragán's architectural pigment radiosity) and Folio M.08 (Riemannian "
-              'differential geometry of color space). Upstream optical-physics thread for the lab: '
+              'differential geometry of color space). Upstream optical-physics case study: '
               'the exact Bragg–Snell thin-film interference law Delta_OPD = 2 d sqrt(n^2 - sin^2 '
               'theta) that creates color flop on a pearlescent car fender is the physical '
-              'mechanism of tear-film and ventilation duct-surface-liquid white-light '
+              'mechanism of tear-film and airway-surface-liquid white-light '
               'interferometry—allowing non-contact optical measurement of micrometer-thick '
               'biological fluid films to sub-nanometer precision.',
  'sources': ['Young, T. (1802). On the theory of light and colours (Bakerian Lecture). '
@@ -406,7 +406,7 @@ ES_TRANSLATION = {'title_es': 'Física de Ondas Electromagnéticas del Color: In
            'iridiscentes nacen cuando las ondas de luz rebotan en las caras superior e inferior de '
            'una nanolámina transparente y suman sus crestas.',
  'bridge_es': 'La interferometría de película delgada de Bragg permite diseñar biosensores ópticos '
-              'sin marcadores para detectar la unión de fármacos al canal CSI-MasterFormat y medir '
+              'sin marcadores para detectar la unión de fármacos al canal CFTR y medir '
               'el espesor nanométrico de películas lagrimales y mucosas.',
  'plain_es': 'En palabras sencillas, la luz no viaja como un rayo rígido, sino como diminutas olas '
              'que avanzan por un estanque. La luz blanca del sol contiene olas de todos los '

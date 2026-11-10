@@ -31,7 +31,7 @@ FOLIO = {'folio_id': 'M.10',
               'benchmarks': 'ε = 65 nm · β_0 = 1, β_1 = 3, χ = −2 · Percolating Throat r_crit = '
                             '116 nm',
               'bridge': 'Completes E.01/P.03/M.05 · Cryo-ET Mucin H_1 Barcode ↔ 65 nm '
-                        'SORT-colloidal tracer Passage'},
+                        'SORT-LNP Passage'},
  'sliders': [{'label': 'Simplicial Filtration Scale (ε)',
               'min': 15.0,
               'max': 140.0,
@@ -55,17 +55,17 @@ FOLIO = {'folio_id': 'M.10',
            'diagonal noise from long structural bars.',
            'Stage 4 (Critical Percolation Throat Certification, Completing E.01 & P.03): '
            'Identifies spanning H_1 pore-throat interval [38 nm, 116 nm], proving a 65 nm '
-           'SORT-colloidal tracer percolates through the treated mesh.'],
+           'SORT-LNP percolates through the treated mesh.'],
  'readouts': [{'label': 'Betti Numbers (β_0, β_1, β_2)', 'value': 'β₀ = 1 · β₁ = 3 · β₂ = 0'},
               {'label': 'Euler–Poincaré Invariant (χ)', 'value': 'χ = β₀ − β₁ + β₂ = −2'},
               {'label': 'Max H_1 Percolation Throat',
-               'value': 'r_crit = 116 nm (> 65 nm colloidal tracer)'},
+               'value': 'r_crit = 116 nm (> 65 nm LNP)'},
               {'label': 'Topological Stability Verdict', 'value': 'PERCOLATING · BOTTLENECK PASS'}],
  'spec_plate': {'division': 'ALGEBRAIC TOPOLOGY & 3D POROUS TOMOGRAPHY / TDA',
                 'title': 'Vietoris–Rips & Alpha-Complex Persistent Homology Percolation Certifier',
                 'body': 'Exact Z_2 sparse boundary-matrix reducer and Wasserstein/Bottleneck '
                         'persistence diagram analyzer for 3D micro-CT concrete cores (E.01/E.09) '
-                        'and cryo-ET ventilation duct mucin hydrogels (P.03).',
+                        'and cryo-ET airway mucin hydrogels (P.03).',
                 'meta': 'Edelsbrunner, Letscher & Zomorodian (2002) DOI 10.1007/s00454-002-2885-2 '
                         'verified'},
  'sidenote_1': {'kicker': 'SIDENOTE M.10-A · CLOSING THE 40-FOLIO LOOP FROM E.01 TO M.10',
@@ -74,7 +74,7 @@ FOLIO = {'folio_id': 'M.10',
                         'algebraic-topology theorem that extracts percolating cycles from raw 3D '
                         'point clouds.'},
  'sidenote_2': {'kicker': 'SIDENOTE M.10-B · BOTTLENECK STABILITY AGAINST CRYO-ET IMAGING NOISE',
-                'body': 'Because cryo-electron tomograms of CF mortar matrix have low '
+                'body': 'Because cryo-electron tomograms of CF sputum have low '
                         'signal-to-noise ratios, classical thresholding fails; persistent '
                         "homology's Bottleneck Stability Theorem guarantees robust pore-throat "
                         'sizing.'},
@@ -90,7 +90,7 @@ FOLIO = {'folio_id': 'M.10',
                      'Filter out topological noise features with persistence lifetime (d_i - b_i) '
                      '<= 2 * sigma_noise under the Cohen-Steiner Bottleneck Stability bound.',
                      'Compare the birth/death scale of the spanning H_1 / H_2 percolation cycle '
-                     'against therapeutic nanoparticle hydrodynamic diameter d_colloidal tracer.']},
+                     'against therapeutic nanoparticle hydrodynamic diameter d_LNP.']},
  'revisions': [{'edition': 'REV 1.0',
                 'date': '2026-11-03',
                 'summary': 'REV 1.0 (Published 2026-11-03): Crowning 40th Folio of Informatico.ai '
@@ -209,7 +209,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'd_B(D(f), D(g)) <= ||f - g||_inf for persistence diagrams.'),
                 ('2026',
                  'Persistent homology barcodes quantify 3D micro-CT pore connectivity in civil '
-                 'geomaterials (E.01/E.09) and cryo-ET ventilation duct mucin meshes (P.03).')],
+                 'geomaterials (E.01/E.09) and cryo-ET airway mucin meshes (P.03).')],
  'act2_title': 'Act II — How It Actually Works: Vietoris–Rips Boundary Reduction ∂_{k-1} ∘ ∂_k = 0 '
                '+ Betti Persistence Barcodes',
  'act2_intuition': 'Let X = {x_1, ..., x_n} be a discrete point cloud in three-dimensional '
@@ -227,7 +227,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'seals it at death radius d_i. In porous media, the persistence interval [b*, '
                    'd*] of the dominant spanning beta_1 bar reveals the exact physical bottleneck: '
                    'here, the critical throat radius r_crit = 116 nm comfortably exceeds a 65 nm '
-                   'colloidal tracer.',
+                   'lipid nanoparticle (LNP).',
  'act2_deepening': 'The deeper algebraic power of persistent homology rests upon the '
                    'Cohen-Steiner, Edelsbrunner, and Harer Bottleneck Stability Theorem, which '
                    'establishes that d_B(D(f), D(g)) <= ||f - g||_infinity. When spatial '
@@ -275,7 +275,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                      'force_b_sub': 'Injects spatial jitter bounded by Bottleneck Stability '
                                     'guarantees',
                      'threshold_title': 'Critical Throat Percolation Bound',
-                     'threshold_pass': 'Spanning H_1 bar certifies 65 nm colloidal tracer passage',
+                     'threshold_pass': 'Spanning H_1 bar certifies 65 nm LNP passage',
                      'threshold_fail': 'Narrow pore bottleneck below 38 nm blocks nanoparticle '
                                        'transport'},
  'walkthrough': ['Experiment 1 (Filtration Scale Radius epsilon): Drag Simplicial Filtration '
@@ -290,7 +290,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Stages 1 to 4 to inspect Vietoris–Rips simplex birth, Z_2 boundary matrix '
                  'reduction, Betti barcode lifetimes, and critical pore-throat certification.'],
  'act4_title': 'Act IV — Topological Data Analysis in Porous Media, Archive Closure & CF '
-               'Viscoplastic Grout Mesh Tomography',
+               'Mucus Mesh Tomography',
  'act4_human_ai': "By pairing Folio E.01's Darcy–Brinkman continuum solvers and Folio E.09's "
                   'concrete micro-CT scans with persistent homology, materials scientists extract '
                   'exact pore-throat bottlenecks from 3D X-ray tomograms without hand-tuned binary '
@@ -315,12 +315,12 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'tissues.',
  'cf_bridge': 'Crowning Volume V Triad Synthesis (E.01 + P.03 + M.05 -> M.10): This 40th Folio '
               'closes the architectural loop back to Folio E.01. In cryo-electron tomography '
-              '(cryo-ET) of Civil & Structural Engineering mortar matrix (Folio P.03), mucin '
+              '(cryo-ET) of Cystic Fibrosis sputum (Folio P.03), mucin '
               'polymers form a disordered 3D network where geometric pore diameter varies wildly. '
               'Computing the H_1 and H_2 persistent homology barcodes of the distance-transform '
               'field rigorously determines the maximum percolating sphere radius r_crit (e.g., '
-              'shifting r_crit from 42 nm in untreated CF mortar matrix to 118 nm after mucolytic '
-              '+ hypertonic saline therapy), certifying when a 65 nm SORT-colloidal tracer (Folio '
+              'shifting r_crit from 42 nm in untreated CF sputum to 118 nm after mucolytic '
+              '+ hypertonic saline therapy), certifying when a 65 nm SORT-LNP (Folio '
               'P.09) can traverse the mesh.',
  'sources': ['Edelsbrunner, H., Letscher, D., & Zomorodian, A. (2002). Topological persistence and '
              'simplification. Discrete & Computational Geometry, 28(4), 511–533. DOI: '
@@ -377,7 +377,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         '            <text x="380" y="102" font-size="9.5" fill="var(--tp-verdigris)">Spanning H₁ '
         'Percolation Throat [b*, d*] = [38, 116 nm]</text>\n'
         '            <text id="tp-m10-stab-text" x="380" y="206" font-size="10" '
-        'fill="var(--tp-prussian)">Bottleneck Stability d_B ≤ ||f − g||_∞ · 65 nm colloidal tracer '
+        'fill="var(--tp-prussian)">Bottleneck Stability d_B ≤ ||f − g||_∞ · 65 nm LNP '
         'PASS</text>\n'
         '          </svg>'}
 
@@ -438,6 +438,6 @@ ES_TRANSLATION = {'title_es': 'Homología Persistente, Filtraciones Simpliciales
             'atravesar la red porosa, eliminando el sesgo humano en tomografías de geomateriales y '
             'mallas de hidrogel.',
  'bridge_es': 'Calcular los códigos de barras de homología persistente H₁ y H₂ sobre tomografías '
-              'crio-electrónicas de esputo en Ingeniería Hidrosanitaria determina el radio crítico '
+              'crio-electrónicas de esputo en la Fibrosis Quística determina el radio crítico '
               'exacto r_crit del poro percolante para certificar el paso de nanopartículas de 65 '
               'nm.'}

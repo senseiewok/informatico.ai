@@ -38,9 +38,9 @@ FOLIO = {'slug': 'x01',
  'skill_dir': 'skills/toolchain/x01',
  'skill_name': 'toolchain-x01-glb-inspector-validator',
  'formats': ('glb', 'step', '3mf'),
- 'primary_doi': '10.1145/3596711.3596790',
- 'scite_summary': 'Khronos glTF 2.0 binary transmission specification and discrete exterior '
-                  'calculus / divergence-theorem polyhedral volume invariants verified offline.',
+ 'primary_doi': '10.1080/10867651.1996.10487458',
+ 'scite_summary': 'Khronos glTF 2.0 binary transmission specification and Mirtich (1996) '
+                  'divergence-theorem polyhedral volume invariants verified offline.',
  'date_published': '2026-11-08',
  'date_redated': '2026-11-08',
  'current_edition': 'REV 1.0',
@@ -96,7 +96,7 @@ FOLIO = {'slug': 'x01',
               'indexing shared vertices, recording explicit units, or preserving topological '
               'relationships. When complex assemblies moved between competing modeling suites, '
               'files ballooned in size and frequently corrupted boundary edges. The release of the '
-              'Khronos glTF 2.0 specification (DOI: 10.1145/3230744) — alongside its binary '
+              'Khronos glTF 2.0 specification (ISO/IEC 12113:2022) — alongside its binary '
               'packaging format, GLB — fundamentally transformed this landscape. A binary GLB '
               'packages everything into a streamlined container beginning with a compact '
               'twelve-byte header defining the format magic number, version, and total file '

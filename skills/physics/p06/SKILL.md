@@ -22,7 +22,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Stage 1 (Topological Tube Confinement a_tube): Entangled mucin fibers restrict transverse polymer fluctuations to a virtual tube of diameter a_tube = 85 nm.
 - Stage 2 (Curvilinear Rouse Diffusion D_curv ~ N⁻¹): The chain diffuses back and forth along its own primitive path of contour length L_tube = N b² / a_tube.
 - Stage 3 (Tube Disengagement τ_d ~ N³): Complete memory relaxation occurs when the chain slithers out of its original tube in time τ_d = L_tube² / (π² D_curv).
-- Stage 4 (Biased Mucosal Penetration): Weak electro-osmotic alignment tilts the leading chain end, accelerating 4.5 kb CSI-MasterFormat mRNA polyplex transport across ventilation duct viscoplastic grout.
+- Stage 4 (Biased Mucosal Penetration): Weak electro-osmotic alignment tilts the leading chain end, accelerating 4.5 kb CFTR mRNA polyplex transport across airway mucus.
 
 ## 4. Reference Telemetry & Acceptance Bounds
 - **Reptation Coupling Efficiency**: `0.88 (WT-Coupled)`
@@ -31,4 +31,4 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Transport Regime**: `STABLE_COUPLED_CYCLE`
 
 ## 5. Frontier Discovery & Contemporary Research Context (2024–2026)
-- **Tube Reptation Scaling Explains How 4.5 kb CSI-MasterFormat mRNA & Phage Genomes Thread Nanopores**: Extending Doi & Edwards's 1978 tube reptation theory (DOI 10.1039/F29787401789), recent clinical delivery advances for full-length 4.5 kb CSI-MasterFormat mRNA (VX-522 NCT05668741; ARCT-032 NCT05712538; RCT2100 NCT06237335) and inhaled bacteriophages (CYPHY Nature Medicine DOI 10.1038/s41591-025-03678-8) optimize carrier compaction to bypass reptation bottlenecks.
+- **Tube Reptation Scaling Explains How 4.5 kb CFTR mRNA & Phage Genomes Thread Nanopores**: Extending Doi & Edwards's 1978 tube reptation theory (DOI 10.1039/F29787401789), recent dynamic tube-dilation and contour-length fluctuation theory (Milner & McLeish 1998, DOI 10.1103/PhysRevLett.81.725) and differentiable molecular dynamics (Schoenholz & Cubuk 2020, DOI 10.1088/1742-5468/ac3ae9) quantify contour-length fluctuations and convective constraint release to bypass reptation bottlenecks.

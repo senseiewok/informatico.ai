@@ -310,10 +310,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'perception while providing verified mathematical tools for virtual reality, '
                    'architectural daylight design, and autonomous robotics.',
  'cf_bridge': 'Standalone Pure & Applied Mathematics Flagship & Cross-Pillar Synthesis: Folio M.08 '
-              'completes our Volume IV Color Wave Triad alongside Architecture (Folio A.07 on Luis '
+              'completes Volume IV Color Wave Triad alongside Architecture (Folio A.07 on Luis '
               "Barragán's chromatic walls) and Physics (Folio P.08 on Bragg thin-film wave "
-              'interference and automotive pearlescence). Upstream mathematical thread for the '
-              "lab: Erwin Schrödinger's Fisher–Rao / Shahshahani Riemannian metric ds^2 = sum "
+              'interference and automotive pearlescence). Upstream mathematical case '
+              "study: Erwin Schrödinger's Fisher–Rao / Shahshahani Riemannian metric ds^2 = sum "
               '(dx^i)^2 / x^i on the positive cone is the exact information-geometric metric '
               'governing evolutionary population genetics and single-cell transcriptomic '
               'trajectories.',
@@ -430,4 +430,4 @@ ES_TRANSLATION = {'title_es': 'Geometría Diferencial Riemanniana de la Percepci
             'el control de calidad en acabados automotrices y arquitectónicos.',
  'bridge_es': 'La métrica de información de Fisher–Rao y las variedades riemannianas curvas '
               'permiten medir distancias verdaderas entre estados fisiológicos multivariados y '
-              'trayectorias de respuesta clínica en Ingeniería Hidrosanitaria.'}
+              'trayectorias de respuesta clínica en la Fibrosis Quística.'}

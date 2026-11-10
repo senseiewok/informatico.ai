@@ -11,6 +11,7 @@ Enforces Fable & Argon Council Contract:
 """
 from __future__ import annotations
 
+import ast
 import html
 import json
 import re
@@ -104,6 +105,101 @@ def check_global_compliance_charter(root: Path, errors: list[str]) -> None:
             errors.append(
                 f"licenses.json contains forbidden proprietary tool '{m.group(0)}' in {tname}"
             )
+
+
+CHIMERA_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
+    ("F508del-CSI-MasterFormat", re.compile(r"F508del-CSI-MasterFormat", re.IGNORECASE)),
+    ("CSI-MasterFormat mRNA", re.compile(r"CSI-MasterFormat\s+mRNA", re.IGNORECASE)),
+    (
+        "ventilation duct viscoplastic grout",
+        re.compile(r"ventilation\s+duct\s+viscoplastic\s+grout", re.IGNORECASE),
+    ),
+    ("viscoplastic grout", re.compile(r"\bviscoplastic\s+grout\b", re.IGNORECASE)),
+    (
+        "CSI-MasterFormat paired with biophysical token",
+        re.compile(
+            r"CSI-MasterFormat.{0,160}\b(?:PDB|polyplex|epitheli\w*|ionocyte\w*|splicing|channel|1717-1G>A|G551D|F508del)\b"
+            r"|\b(?:PDB|polyplex|epitheli\w*|ionocyte\w*|splicing|1717-1G>A|G551D|F508del)\b.{0,160}CSI-MasterFormat",
+            re.IGNORECASE,
+        ),
+    ),
+    ("/cf/csi-masterformat/", re.compile(r"/cf/csi-masterformat/", re.IGNORECASE)),
+    (
+        "colloidal tracer LNP chimera",
+        re.compile(
+            r"\b(?:SORT-colloidal\s+tracer|d_colloidal\s+tracer|mRNA\s+colloidal\s+tracer|PEGylated\s+colloidal\s+tracer|colloidal\s+tracer\s+lipid|nanopart[ií]culas\s+lip[ií]dicas\s*\(\s*colloidal\s+tracer\s*\))\b",
+            re.IGNORECASE,
+        ),
+    ),
+    (
+        "bronchial-to-tubular / airway-to-duct anatomical chimera",
+        re.compile(
+            r"\btracheotubular\b"
+            r"|\btubular\s+(?:tree|generations?|window|dean\s+vortices)\b"
+            r"|\bventilation\s+duct\s+(?:irritants?|surface|mucosa|clearance)\b",
+            re.IGNORECASE,
+        ),
+    ),
+    (
+        "Civil & Structural Engineering / Ingeniería Hidrosanitaria / Non-Equilibrium disease chimera",
+        re.compile(
+            r"\b(?:people|patients|adults|children|living)\s+with\s+(?:Civil\s*(?:&|&amp;)\s*Structural\s+Engineering|Non-Equilibrium\s+Statistical\s+Biophysics)\b"
+            r"|\bIn\s+Non-Equilibrium\s+Statistical\s+Biophysics,\s+(?:the\s+F508del|Class\s+III\s+gating)\b"
+            r"|\b(?:pacientes|personas)\s+con\s+Ingenier[ií]a\s+Hidrosanitaria\b"
+            r"|\bmucina\s+en\s+Ingenier[ií]a\s+Hidrosanitaria\b"
+            r"|\ben\s+la\s+Ingenier[ií]a\s+Hidrosanitaria,\s+el\s+moco\b",
+            re.IGNORECASE,
+        ),
+    ),
+)
+
+_BINARY_SUFFIXES = frozenset(
+    {".jpg", ".jpeg", ".png", ".mp3", ".woff2", ".ico", ".pyc", ".webp", ".glb", ".3mf", ".step", ".dxf"}
+)
+
+
+def check_no_regex_chimeras(root: Path, errors: list[str]) -> None:
+    """Reject regex-substitution chimeras across all repository source, skill, catalog, and HTML files."""
+    skip_rel = {Path("tools/check_toolchain_claims.py")}
+    ws_re = re.compile(r"\s+")
+    tag_re = re.compile(r"<[^>]+>")
+    for p in sorted(root.rglob("*")):
+        if not p.is_file():
+            continue
+        if ".git" in p.parts or "__pycache__" in p.parts or p.suffix.lower() in _BINARY_SUFFIXES:
+            continue
+        rel = p.relative_to(root)
+        if rel in skip_rel or (rel.parts and rel.parts[0] == "tests"):
+            continue
+        try:
+            txt = p.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError) as exc:
+            errors.append(f"Unreadable or non-UTF-8 file in {rel.as_posix()}: {exc}")
+            continue
+
+        blocks_to_scan: list[tuple[str, str]] = []
+        if p.suffix.lower() == ".py":
+            try:
+                tree = ast.parse(txt, filename=rel.as_posix())
+            except SyntaxError as exc:
+                errors.append(f"Python syntax error in {rel.as_posix()}: {exc}")
+                continue
+            for node in ast.walk(tree):
+                if isinstance(node, ast.Constant) and isinstance(node.value, str):
+                    blocks_to_scan.append((f"line {getattr(node, 'lineno', 1)}", ws_re.sub(" ", node.value)))
+        elif p.suffix.lower() in (".html", ".htm"):
+            plain = ws_re.sub(" ", html.unescape(tag_re.sub(" ", txt)))
+            blocks_to_scan.append(("document", plain))
+        else:
+            blocks_to_scan.append(("document", ws_re.sub(" ", txt)))
+
+        for loc, block in blocks_to_scan:
+            for label, rx in CHIMERA_PATTERNS:
+                m = rx.search(block)
+                if m:
+                    errors.append(
+                        f"Regex chimera ({label}: '{m.group(0)}') in {rel.as_posix()} ({loc})"
+                    )
 
 
 def check_forbidden_proprietary_mentions(root: Path, errors: list[str]) -> None:
@@ -203,9 +299,10 @@ def main() -> int:
             if mg:
                 errors.append(f"Forbidden skill grant '{mg.group(0)}' in {spath.relative_to(ROOT)}")
 
-    # 4. Check Global Compliance Charter & Zero Proprietary Software Mentions
+    # 4. Check Global Compliance Charter, Zero Proprietary Software Mentions & Zero Regex Chimeras
     check_global_compliance_charter(ROOT, errors)
     check_forbidden_proprietary_mentions(ROOT, errors)
+    check_no_regex_chimeras(ROOT, errors)
 
     if errors:
         for err in errors:
@@ -213,7 +310,7 @@ def main() -> int:
         return 1
 
     print(
-        "PASS: Tech & Tools claim, boundary & global FOSS compliance gate verified (7 EN pages, 7 ES-MX pages, 6 manifests, 6 SKILL.md files, GCC-01..GCC-05)."
+        "PASS: Tech & Tools claim, boundary & global FOSS compliance gate verified (7 EN pages, 7 ES-MX pages, 6 manifests, 6 SKILL.md files, GCC-01..GCC-05, zero regex chimeras)."
     )
     return 0
 

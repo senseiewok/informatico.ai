@@ -24,7 +24,7 @@ FOLIO = {'folio_id': 'E.03',
  'colophon': {'identifier': 'E.03 · Acoustic Metamaterials & Viscothermal Damping · CSI 09 84 13',
               'kernels': 'δ_v = √(2ν/ω) · Z_s = R_v + i ω M_a − i ρ c² / (ω V_cav)',
               'benchmarks': 'Critical Coupling R_v = ρ_0 c_0 ⇒ α = 0.998 · δ_v = 0.174 mm',
-              'bridge': 'Oscillatory Stokes Boundary Layer ↔ HFCWO Ventilation Duct Oscillations'},
+              'bridge': 'Oscillatory Stokes Boundary Layer ↔ HFCWO Airway Oscillations'},
  'sliders': [{'label': 'Resonant Frequency (f_0)',
               'min': 80.0,
               'max': 400.0,
@@ -58,7 +58,7 @@ FOLIO = {'folio_id': 'E.03',
                         'certified'},
  'sidenote_1': {'kicker': 'SIDENOTE E.03-A · OSCILLATORY STOKES LAYER IN HFCWO VEST THERAPY',
                 'body': 'The same Womersley number Wo = r √(ω/ν) that governs viscous acoustic '
-                        'damping in a Helmholtz neck governs oscillatory air-viscoplastic grout '
+                        'damping in a Helmholtz neck governs oscillatory air-mucus '
                         'shear during 12–18 Hz High-Frequency Chest Wall Oscillation (HFCWO) in CF '
                         'care.'},
  'sidenote_2': {'kicker': 'SIDENOTE E.03-B · SPECIFICATION PLATE · CSI 09 84 13 / 09 54 26',
@@ -80,7 +80,7 @@ FOLIO = {'folio_id': 'E.03',
                 'date': '2026-11-02',
                 'summary': 'REV 1.2 (Redated 2026-11-02): Verified sub-wavelength Helmholtz '
                            'viscothermal acoustic metamaterials (delta_v = sqrt(2*nu/omega), CSI '
-                           '09 84 13) and oscillatory shear liquification of CF mortar matrix '
+                           '09 84 13) and oscillatory shear liquefaction of CF sputum '
                            'plugs with 4-Seat Multi-Lineage Council review.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'critical impedance matching alpha = 0.998 and oscillatory shear tau_osc = '
@@ -88,7 +88,7 @@ FOLIO = {'folio_id': 'E.03',
                {'edition': 'REV 1.1',
                 'date': '2026-11-01',
                 'summary': 'REV 1.1 (Redated 2026-11-01): Added Womersley oscillatory shear bridge '
-                           'to 15 Hz ventilation duct oscillation and CSI 09 84 13 cleanroom panel '
+                           'to 15 Hz airway oscillation and CSI 09 84 13 cleanroom panel '
                            'spec.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'reflection coefficient |R|² = 0.002 at Z_s/Z_0 = 1.04 + 0.08i.'},
@@ -188,7 +188,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'rather than idealized resonance, engineers construct ultra-compact silencers that '
                 'reliably absorb high-energy acoustic noise.',
  'pullquote': '"When oscillatory acoustic shear stress tau_osc = 14.8 Pa crosses the 11.5 Pa '
-              'Herschel–Bulkley yield threshold, solid-like CF mortar matrix undergoes a '
+              'Herschel–Bulkley yield threshold, solid-like CF sputum undergoes a '
               'reversible solid-to-liquid transition (G\'\' > G\')."',
  'chronology': [('1863',
                  'Hermann von Helmholtz invents the acoustic cavity resonator in Die Lehre von den '
@@ -201,7 +201,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'functions for viscothermal slits.'),
                 ('2025',
                  'Multimode thixo-viscoelastoplastic rheological characterization of human CF '
-                 'viscoplastic grout (PMID 41388033).')],
+                 'airway mucus (PMID 41388033).')],
  'act2_title': 'Act II — How It Actually Works: Critical Coupling & Yield-Stress Liquification',
  'act2_analogy': 'Think of an acoustic resonator like a child on a playground swing. Pushing the '
                  'swing at its natural tempo builds huge motion with very little effort. In our '
@@ -270,16 +270,16 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'to ambient temperature and fluid viscosity.',
  'walkthrough': ['Experiment 1 (Critical Impedance Match): Inspect the absorption peak alpha(f) = '
                  '0.998 at the Helmholtz resonance where Im(Z_s) = 0 and Re(Z_s) = rho_0 c_0.',
-                 'Experiment 2 (Yield-Stress Crossing): Compare the resting CF mortar matrix yield '
+                 'Experiment 2 (Yield-Stress Crossing): Compare the resting CF sputum yield '
                  'stress (tau_y = 11.5 Pa) against the 15 Hz oscillatory shear stress (tau_osc = '
-                 '14.8 Pa), yielding a 1.29x liquification margin.',
+                 '14.8 Pa), yielding a 1.29x liquefaction margin.',
                  'Experiment 3 (Microbubble Conditioning): Follow the 4-stage stepper to see how '
                  'acoustic shear + mucolytic conditioning opens percolation pathways for inhaled '
                  'nanocarriers.'],
  'act4_title': 'Act IV — Human + AI Co-Design & the Structural & Civil Engineering Specification '
                'Bridge',
  'act4_human_ai': 'Differentiable Stinson viscothermal solvers allow AI optimization loops to '
-                  'invert target ventilation duct or room impedance spectra into 3D-printable '
+                  'invert target airway or room impedance spectra into 3D-printable '
                   'coiled-space metamaterial geometries in seconds. Combining spectral '
                   'Helmholtz–Stinson boundary-layer solvers in DedalusProject/dedalus '
                   '(https://github.com/DedalusProject/dedalus, DOI '
@@ -307,17 +307,17 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'built environments.',
  'cf_bridge': 'High-Frequency Chest Wall Oscillation (HFCWO, NCT07175012) and oscillatory positive '
               'expiratory pressure (OPEP) devices operate at 12–15 Hz specifically to generate '
-              'tau_osc = 14.8 Pa > tau_y = 11.5 Pa across generations 4–12 of the tubular tree. '
-              'Liquifying the viscoplastic grout gel prior to inhaling mRNA colloidal tracers or '
-              'bacteriophages multiplies nanoparticle penetration depth across the ventilation '
-              'duct surface.',
+              'tau_osc = 14.8 Pa > tau_y = 11.5 Pa across generations 4–12 of the bronchial tree. '
+              'Liquefying the airway mucus gel prior to inhaling mRNA lipid nanoparticles (LNPs) or '
+              'bacteriophages multiplies nanoparticle penetration depth across the airway '
+              'surface.',
  'sources': ['Yang, M., & Sheng, P. (2017). Sound Absorption Structures: From Porous Media to Acoustic Metamaterials (building on Helmholtz 1863). Annual Review of Materials Research, 47, 83–114. DOI: 10.1146/annurev-matsci-070616-124032.',
              'Stinson, M. R. (1991). The propagation of plane sound waves in narrow and wide '
              'circular tubes, and generalization to uniform tubes of arbitrary cross-sectional '
              'shape. JASA, 89(2), 550–558.',
              'Yang, M., & Sheng, P. (2017). Sound absorption structures: From porous media to '
              'acoustic metamaterials. Annual Review of Materials Research, 47, 83–114.',
-             'Thixo-viscoelastoplastic rheological characterisation of human viscoplastic grout '
+             'Thixo-viscoelastoplastic rheological characterisation of human bronchial mucus '
              '(2025). PMID: 41388033.',
              'Burns, K. J., Vasil, G. M., Oishi, J. S., Lecoanet, D., & Brown, B. P. (2020). '
              'Dedalus: A flexible framework for numerical simulations with spectral methods '
@@ -328,7 +328,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
              '10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Viscothermal '
-        'Helmholtz absorption peak and Herschel-Bulkley viscoplastic grout yield-stress '
+        'Helmholtz absorption peak and Herschel-Bulkley airway mucus yield-stress '
         'crossing">\n'
         '            <line x1="60" y1="180" x2="620" y2="180" stroke="currentColor" '
         'stroke-opacity="0.4"/>\n'
@@ -342,7 +342,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         '            <circle cx="310" cy="32" r="6" fill="var(--tp-verdigris)"/>\n'
         '            <text x="195" y="22" font-size="11" fill="var(--tp-verdigris)">Critical '
         "Coupling Peak: α = 0.998 · τ_osc = 14.8 Pa (G'' &gt; G')</text>\n"
-        '            <text x="415" y="88" font-size="11" fill="var(--tp-minium)">CF Mortar Matrix '
+        '            <text x="415" y="88" font-size="11" fill="var(--tp-minium)">CF Sputum '
         'Yield Threshold τ_y = 11.5 Pa</text>\n'
         '            <text x="225" y="202" font-size="11" fill="currentColor">Oscillatory '
         'Frequency &amp; Shear Coupling Regime</text>\n'
@@ -357,13 +357,13 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a labyrinthine 
             'lattice.'}
 
 DISPATCH = {'kicker': 'FRONTIER METAMATERIAL DISPATCH · SUB-WAVELENGTH ACOUSTIC DAMPING',
- 'headline': 'Coiled-Space Labyrinthine Metamaterials & Multimode Thixotropic Viscoplastic Grout '
-             'Liquification',
+ 'headline': 'Coiled-Space Labyrinthine Metamaterials & Multimode Thixotropic Airway Mucus '
+             'Liquefaction',
  'body': "Building on Helmholtz (1863) and Stinson's viscothermal wave theory (1991), modern "
          'coiled-space acoustic metamaterials (DOI 10.1146/annurev-matsci-070616-124032) achieve α '
          '= 0.998 absorption in 1/19th of a wavelength, while 2025 multimode '
          'thixo-viscoelastoplastic rheometry (PMID 41388033; trial NCT07175012) confirms that 15 '
-         'Hz oscillatory shear (τ_osc = 14.8 Pa) liquefies CF ventilation duct plugs above τ_y = '
+         'Hz oscillatory shear (τ_osc = 14.8 Pa) liquefies CF airway mucus plugs above τ_y = '
          '11.5 Pa.'}
 
 META_3D = ('Coiled Helmholtz Labyrinthine Ring Resonator',

@@ -206,10 +206,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'urban matrix while autonomous robotic gantries hot-swap modular living, research, and cleanroom '
                    'capsules in real time (conceptual architectural synthesis for modular lifecycle efficiency, not an '
                    'approved medical facility schematic).',
- 'cf_bridge': 'Civil & Structural Engineering clinical care and curative therapy manufacturing evolve far faster than '
+ 'cf_bridge': 'Cystic Fibrosis clinical care and curative therapy manufacturing evolve far faster than '
               'hospital concrete: in a single decade, CF centers have had to retrofit negative-pressure airborne '
               'isolation suites (for Burkholderia cepacia and Mycobacterium abscessus protection), high-flow HEPA '
-              'nebulization rooms, and localized GMP point-of-care colloidal tracer/mRNA and autologous gene-editing '
+              'nebulization rooms, and localized GMP point-of-care lipid nanoparticle (LNP)/mRNA and autologous gene-editing '
               'cleanrooms. An Archigram / High-Tech exoskeleton with exterior plug-in MEP manifolds allows a hospital '
               'or research institute to crane in a new ISO-5 gene-therapy pod or upgrade ACH ventilation in a weekend '
               'without shutting down adjacent patient wards.',
@@ -222,9 +222,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              '10.1016/0020-7683(86)90014-4.',
              "Brand, S. (1994). How Buildings Learn: What Happens After They're Built (The Six S's Shearing Layers). "
              'Viking Press.',
-             'Block, P., & Ochsendorf, J. / Van Mele, T., et al. (2015). COMPAS & polyhedral thrust network analysis '
-             'for 3D graphic statics (compas-dev/compas, https://github.com/compas-dev/compas). Computer-Aided Design, '
-             '61, 23–33. DOI: 10.1016/j.cad.2015.01.006.',
+             'Akbarzadeh, M., Van Mele, T., & Block, P. (2015). On the equilibrium of funicular polyhedral frames and '
+             'convex polyhedral force diagrams (compas-dev/compas, https://github.com/compas-dev/compas). '
+             'Computer-Aided Design, 63, 118–128. DOI: 10.1016/j.cad.2015.01.006.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the context of citations '
              'and classifies their intent using deep learning (https://scite.ai). Quantitative Science Studies, 2(3), '
              '882–898. DOI: 10.1162/qss_a_00146.'],
@@ -411,7 +411,7 @@ ES_TRANSLATION = {'title_es': 'De las Megaestructuras Plug-In de Archigram a los
  'why_es': 'Separar el esqueleto estructural de 100 años de vida de las cápsulas técnicas de 15 años permite '
            'actualizar quirófanos y laboratorios limpios ISO-5 como módulos enchufables sin demoler el edificio.',
  'bridge_es': 'Las cápsulas modulares de presión negativa y salas blancas GMP permiten desplegar rápidamente unidades '
-              'de producción de ARNm y terapia génica junto a clínicas de Ingeniería Hidrosanitaria.',
+              'de producción de ARNm y terapia génica junto a clínicas de Fibrosis Quística.',
  'plain_es': 'La mayoría de los edificios convencionales se parecen a una vieja computadora de escritorio donde todos '
              'los cables, tuberías y circuitos están pegados con pegamento dentro de paredes de concreto. Cuando un '
              'hospital necesita renovar sus conductos de ventilación o instalar equipo médico moderno veinte años '

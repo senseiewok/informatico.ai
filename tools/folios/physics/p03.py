@@ -20,7 +20,7 @@ FOLIO = {'category_code': 'P',
  'primary_kernel': 'tools/physics_kernel.py',
  'readouts': [{'label': 'Mesh Pore Size', 'value': '140.0 nm (Healthy) vs 49.5 nm (CF)'},
               {'label': 'Subdiffusion Exponent (alpha)',
-               'value': '0.814 (65 nm colloidal tracer in Healthy)'},
+               'value': '0.814 (65 nm LNP in Healthy)'},
               {'label': 'Zero-Shear Viscosity', 'value': '0.055 Pa·s (2% solids)'},
               {'label': 'Kernel Verification', 'value': 'PASS · VERIFIED'}],
  'revisions': [{'date': '2026-11-02',
@@ -30,8 +30,8 @@ FOLIO = {'category_code': 'P',
                         '41 33 aerosol rheometry clean-air filtration containment.',
                 'summary': 'REV 1.2 (Redated 2026-11-02): Verified Carreau-Yasuda shear-thinning '
                            'rheology eta(dot_gamma) and de Gennes mesh scaling xi ~ w^(-0.75) for '
-                           '65 nm PEGylated colloidal tracer subdiffusion across healthy (alpha = '
-                           '0.814) vs CF viscoplastic grout plugs (alpha < 0.20).'},
+                           '65 nm PEGylated LNP subdiffusion across healthy (alpha = '
+                           '0.814) vs CF mucus plugs (alpha < 0.20).'},
                {'date': '2026-11-01',
                 'edition': 'REV 1.1',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified de '
@@ -39,17 +39,17 @@ FOLIO = {'category_code': 'P',
                         '11 53 43 / 23 41 33 HEPA extraction boundary.',
                 'summary': 'REV 1.1 (Redated 2026-11-01): Added CSI MasterFormat 11 53 43 / 23 41 '
                            '33 laboratory rheometry aerosol containment plate and Carreau-Yasuda '
-                           'shear-thinning subdiffusion scaling for 65 nm PEGylated colloidal '
-                           'tracers.'},
+                           'shear-thinning subdiffusion scaling for 65 nm PEGylated '
+                           'LNPs.'},
                {'date': '2026-11-01',
                 'edition': 'REV 1.0',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified de '
                         'Gennes mesh scaling xi ~ w^(-0.75), subdiffusion alpha = 0.814, and CF '
-                        'mortar matrix plug percolation cutoff.',
-                'summary': 'REV 1.0 (Inaugural Edition 2026-11-01): Soft matter viscoplastic grout '
+                        'sputum plug percolation cutoff.',
+                'summary': 'REV 1.0 (Inaugural Edition 2026-11-01): Soft matter mucus '
                            'gel Carreau-Yasuda rheology and nanoparticle anomalous subdiffusion.'}],
- 'sidenote_1': {'body': 'Steric entrapment in hyperconcentrated CF viscoplastic grout follows a '
-                        'power-law phase arrest; designing inhaled mRNA-colloidal tracers with '
+ 'sidenote_1': {'body': 'Steric entrapment in hyperconcentrated CF mucus follows a '
+                        'power-law phase arrest; designing inhaled mRNA-LNPs with '
                         'core diameters <= 65 nm and neutral, ultra-dense PEG brush coatings '
                         'reduces adhesive interactions and exploits the transient Carreau-Yasuda '
                         'shear thinning created by cough dynamics.',
@@ -57,18 +57,18 @@ FOLIO = {'category_code': 'P',
  'sidenote_2': {'body': 'Inside dense mucin hydrogels, non-specific adhesive interactions and '
                         'spatial tortuosity convert ordinary Brownian motion into anomalous '
                         'subdiffusion where MSD <Delta r^2(t)> ~ t^alpha with subdiffusion '
-                        'exponent alpha = 0.814 in healthy vs alpha < 0.20 in dehydrated mortar '
-                        'matrix plugs.',
+                        'exponent alpha = 0.814 in healthy vs alpha < 0.20 in dehydrated '
+                        'sputum plugs.',
                 'kicker': 'SIDENOTE P.03-B · BROWNIAN SUBDIFFUSION & CONTINUOUS TIME RANDOM WALKS '
                           '(DOI 10.1103/PhysRevLett.79.3286)'},
  'skill': {'description': 'AI-agnostic physical skill for complex fluid rheology, Carreau-Yasuda '
-                          'shear thinning, and nanoparticle anomalous subdiffusion in ventilation '
-                          'duct viscoplastic grout.',
-           'filename': 'viscoplastic grout-soft-matter-SKILL.md',
-           'name': 'viscoplastic grout-soft-matter',
+                          'shear thinning, and nanoparticle anomalous subdiffusion in airway '
+                          'mucus.',
+           'filename': 'mucus-soft-matter-SKILL.md',
+           'name': 'mucus-soft-matter',
            'rules': ['Scale mesh pore diameter as xi = 140 * (2.0 / w)^0.75 nm.',
                      'Compute subdiffusion exponent alpha(d_p, xi) to verify penetration window.',
-                     'Trigger viscoplastic grout plug alert when solids fraction w >= 7.0%.']},
+                     'Trigger mucus plug alert when solids fraction w >= 7.0%.']},
  'sliders': [{'label': 'Mucin Solids Fraction (w)',
               'max': 10.0,
               'min': 1.0,
@@ -92,16 +92,16 @@ FOLIO = {'category_code': 'P',
                 'title': 'Aerosolized Particle Rheometer & HEPA H14 Clean-Air Filtration Loop'},
  'status_badge': 'REDATED REV 1.2',
  'steps': ['Stage 1 (Healthy Mesh, 2% solids): Mucin mesh pore size xi ≈ 140 nm allows 65 nm '
-           'PEGylated colloidal tracers to diffuse freely (alpha ≈ 0.72).',
+           'PEGylated LNPs to diffuse freely (alpha ≈ 0.72).',
            'Stage 2 (Shear-Thinning Response): Ciliary shear rates (dot_gamma ~ 10 s^-1) reduce '
            'local gel viscosity by an order of magnitude via Carreau-Yasuda dynamics.',
-           'Stage 3 (Concentration Shock & Plug Formation): In CF mortar matrix (8% solids), pore '
+           'Stage 3 (Concentration Shock & Plug Formation): In CF sputum (8% solids), pore '
            'size drops to 45 nm, sterically locking particles larger than 50 nm.',
            'Stage 4 (Subdiffusive Trapping): Particle trajectory collapses to alpha < 0.20, '
            'demonstrating the necessity of dense PEGylation and mucolytic co-delivery.'],
  'subtitle': 'Carreau-Yasuda shear-thinning, reptation tube dynamics, and anomalous subdiffusion '
-             'exponents of gene delivery nanoparticles navigating the ventilation duct '
-             'viscoplastic grout mesh.',
+             'exponents of gene delivery nanoparticles navigating the airway '
+             'mucus mesh.',
  'title': 'Soft Matter Rheology and Anomalous Subdiffusion in Entangled Mucin Hydrogels',
  'volume': 2,
  'volume_code': 'VOL. 02',
@@ -116,8 +116,8 @@ FOLIO = {'category_code': 'P',
            'retracted': False,
            'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,778 '
                       'citing publications (36 supporting, 1,783 mentioning, 3 contrasting) on '
-                      'non-linear rheology and irreversible mechanics of biological viscoplastic '
-                      'grout gels.'}}
+                      'non-linear rheology and viscoelastic microrheology of biological '
+                      'biopolymer hydrogels.'}}
 
 LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'word_count': '4,650 WORDS',
@@ -130,8 +130,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
            'retracted': False,
            'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,778 '
                       'citing publications (36 supporting, 1,783 mentioning, 3 contrasting) on '
-                      'non-linear rheology and irreversible mechanics of biological viscoplastic '
-                      'grout gels.'},
+                      'non-linear rheology and viscoelastic microrheology of biological '
+                      'biopolymer hydrogels.'},
  'act1_title': "Act I — Pierre-Gilles de Gennes's Scaling Laws, Carreau Shear-Thinning, and Mucin "
                'Subdiffusion',
  'act1_dropcap': 'In the late autumn of 1979, inside his modest study at the Collège de France in '
@@ -190,7 +190,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'surface charges that adhere to mucin fibers, its effective diffusion coefficient '
                 'plummets by four orders of magnitude, permanently trapping inhaled macromolecular '
                 'formulations in the superficial mucus blanket destined for rapid clearance.',
- 'pullquote': '"Increasing ventilation duct mucin solids from 2% (healthy) to 8% (CF) shrinks the '
+ 'pullquote': '"Increasing airway mucin solids from 2% (healthy) to 8% (CF) shrinks the '
               'correlation mesh from 300 nm to 65 nm and multiplies zero-shear viscosity by more '
               'than 200-fold."',
  'chronology': [('1972',
@@ -201,7 +201,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  '~ w^{-3/4} in polymer gels.'),
                 ('2009',
                  'Lai, Wang, Wirtz & Hanes quantify nanoparticle subdiffusion and PEG-corona slip '
-                 'in human CF mortar matrix (DOI 10.1016/j.addr.2008.11.002).'),
+                 'in human CF sputum (DOI 10.1016/j.addr.2008.11.002).'),
                 ('2020',
                  'Thomas Mason & David Weitz formulate generalized Stokes-Einstein optical '
                  'microrheology of viscoelastic complex fluids (1995, DOI '
@@ -270,18 +270,18 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'caged nanoparticles to hop between adjacent pores and momentarily restoring '
                    'normal Fickian diffusion.',
  'walkthrough': ['Experiment 1 (de Gennes Mesh Scaling): Compare healthy 2% mucin solids (xi_mesh '
-                 '~ 300 nm, alpha = 0.94 Fickian) against hyperconcentrated 8% CF mortar matrix '
+                 '~ 300 nm, alpha = 0.94 Fickian) against hyperconcentrated 8% CF sputum '
                  '(xi_mesh ~ 65 nm, alpha = 0.38 subdiffusive).',
                  'Experiment 2 (Carreau–Yasuda Shear-Thinning): Observe how cough and 15 Hz '
                  'acoustic shear drive gamma_dot > 1/lambda, dropping effective viscosity along '
                  'the power-law slope (n - 1)/2.',
-                 'Experiment 3 (Nanocarrier Sizing): Verify why 68 nm PEGylated colloidal tracers '
+                 'Experiment 3 (Nanocarrier Sizing): Verify why 68 nm PEGylated LNPs '
                  'diffuse rapidly while >200 nm unshielded particles remain subdiffusively caged.'],
  'act4_title': 'Act IV — Human + AI Co-Design & the Structural & Civil Engineering Specification '
                'Bridge',
  'act4_human_ai': 'Multiple-particle tracking (MPT) microscopy paired with fractional-Brownian '
                   'neural classifiers extracts local pore-size distributions directly from '
-                  'microliter mortar matrix samples. End-to-end differentiable Brownian and '
+                  'microliter sputum samples. End-to-end differentiable Brownian and '
                   'Rouse–Zimm polymer network simulations in jax-md/jax-md '
                   '(https://github.com/jax-md/jax-md, DOI 10.1088/1742-5468/ac3ae9) paired with '
                   'symbolic scaling-law regression in MilesCranmer/PySR (DOI '
@@ -307,12 +307,12 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'cf_bridge': 'In the SIMPLIFY trial era (NCT06350474) and for modulator-ineligible CF patients, '
               'understanding how dornase alfa, hypertonic saline, and microbubble conditioning '
               '(DOI 10.1073/pnas.0705326104) expand xi_mesh is essential for getting '
-              'inhaled mRNA and base/prime editors across the mortar matrix barrier.',
+              'inhaled mRNA and base/prime editors across the sputum barrier.',
  'sources': ['de Gennes, P.-G. (1979). Scaling Concepts in Polymer Physics. Cornell University '
              'Press.',
              'Carreau, P. J. (1972). Rheological equations from molecular network theories. '
              'Transactions of the Society of Rheology, 16(1), 99–127.',
-             'Lai, S. K., Wang, Y.-Y., & Hanes, J. (2009). Viscoplastic Grout-penetrating '
+             'Lai, S. K., Wang, Y.-Y., & Hanes, J. (2009). Mucus-penetrating '
              'nanoparticles for drug and gene delivery to mucosal tissues. Adv. Drug Deliv. Rev., '
              '61(2), 158–171. DOI: 10.1016/j.addr.2008.11.002.',
              'Mason, T. G., & Weitz, D. A. (1995). Optical Measurements of Frequency-Dependent '
@@ -337,8 +337,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         'stroke-width="2.5" stroke-dasharray="5,4"/>\n'
         '            <text x="355" y="48" font-size="11" fill="var(--tp-verdigris)">Healthy 2% '
         'Mucin (ξ_mesh = 300 nm · α = 0.94 Normal Diffusion)</text>\n'
-        '            <text x="330" y="122" font-size="11" fill="var(--tp-minium)">CF 8% Mortar '
-        'Matrix (ξ_mesh = 65 nm · α = 0.38 Caged Subdiffusion)</text>\n'
+        '            <text x="330" y="122" font-size="11" fill="var(--tp-minium)">CF 8% Sputum '
+        '(ξ_mesh = 65 nm · α = 0.38 Caged Subdiffusion)</text>\n'
         '            <text x="195" y="204" font-size="11" fill="currentColor">Log-Log Mean Squared '
         'Displacement ⟨Δr²(t)⟩ = 6 D_α t^α</text>\n'
         '          </svg>'}
@@ -352,12 +352,12 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what PEGylated lipid
 
 DISPATCH = {'kicker': 'FRONTIER SOFT MATTER DISPATCH · DE GENNES SCALING & MUCIN SUBDIFFUSION',
  'headline': 'Single-Particle Tracking Reveals Anomalous Subdiffusion to Normal Diffusion '
-             'Crossover in CF Mortar Matrix',
+             'Crossover in CF Sputum',
  'body': "Applying Pierre-Gilles de Gennes's polymer correlation scaling and Mason–Weitz "
          'generalized Stokes–Einstein microrheology (Phys. Rev. Lett. DOI '
          '10.1103/PhysRevLett.74.1250), multiple-particle tracking studies (Lai et al. PNAS DOI '
-         '10.1073/pnas.0705326104) map the exact mesh-size threshold where inhaled mRNA colloidal '
-         'tracers escape mucin caging.'}
+         '10.1073/pnas.0705326104) map the exact mesh-size threshold where inhaled mRNA lipid '
+         'nanoparticles escape mucin caging.'}
 
 META_3D = ('Carreau–Yasuda Entangled Mucin Mesh & Shear Furrow',
  'X/Z: Mucin Biopolymer Network Plane · Y: Viscoelastic Energy & Shear-Thinning Trough')
@@ -396,6 +396,6 @@ ES_TRANSLATION = {'title_es': 'Reología de Materia Blanda y Subdifusión Anóma
             'mecánico generado por la tos desenreda temporalmente las cadenas, reduciendo la '
             'viscosidad en varios órdenes de magnitud y abriendo ventanas transitorias para la '
             'penetración de terapias génicas avanzadas.',
- 'bridge_es': 'Guía el diseño de nanopartículas lipídicas (colloidal tracer) recubiertas con '
+ 'bridge_es': 'Guía el diseño de nanopartículas lipídicas (LNP) recubiertas con '
               'polímeros zwitteriónicos o PEG denso para atravesar poros de mucina de 100–200 nm y '
-              'entregar ARNm de CSI-MasterFormat a las células epiteliales.'}
+              'entregar ARNm de CFTR a las células epiteliales.'}

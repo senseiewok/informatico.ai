@@ -24,7 +24,7 @@ FOLIO = {'folio_id': 'E.02',
  'colophon': {'identifier': 'E.02 · Concrete Yield Rheology · CSI 03 30 00',
               'kernels': 'τ = τ_0 + K γ̇^n · Buckingham–Reiner Plug Flow',
               'benchmarks': '125 mm Steel Slickline · ACI 304.2R Pumping',
-              'bridge': 'PCE Concrete Slickline ↔ CF Mortar Matrix Yield Mobilization'},
+              'bridge': 'PCE Concrete Slickline ↔ CF Sputum Yield Mobilization'},
  'sliders': [{'label': 'Concrete Yield Stress (τ_0)',
               'min': 5.0,
               'max': 100.0,
@@ -64,7 +64,7 @@ FOLIO = {'folio_id': 'E.02',
  'sidenote_2': {'kicker': 'SIDENOTE E.02-B · SPECIFICATION PLATE · CSI 03 30 00 / ACI 304.2R',
                 'body': 'High-performance pumped SCC (ASTM C1611 slump flow 650 mm, 125 mm steel '
                         'slickline, PCE comb-copolymer dispersant) shares exact Herschel-Bulkley '
-                        'yield-stress physics with dornase-sheared CF mortar matrix.'},
+                        'yield-stress physics with dornase-sheared CF sputum.'},
  'skill': {'filename': 'herschel-bulkley-yield-rheology-SKILL.md',
            'name': 'herschel-bulkley-yield-rheology',
            'description': 'AI-agnostic civil and non-Newtonian fluid mechanics skill for '
@@ -309,12 +309,12 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'placement of ultra-low-carbon mixtures across complex mega-structures.',
  'cf_bridge': 'The exact same Herschel–Bulkley yield-stress equation (tau = tau_0 + K * '
               'gamma_dot^n) that governs concrete slickline plugging governs mucociliary arrest in '
-              'Civil & Structural Engineering ventilation ducts (PMID 41388033). Just as '
+              'Cystic Fibrosis airways (PMID 41388033). Just as '
               'polycarboxylate ether (PCE) steric dispersants cleave cement flocculation bridges '
               'to drop tau_0 below wall shear tau_w, inhaled mucolytics (dornase alfa, '
-              'NCT06350474) and 15 Hz oscillatory chest-wall shear lower mortar matrix yield '
-              'stress tau_0 below periciliary propulsive stress (~11.5 Pa), restoring viscoplastic '
-              'grout clearance.',
+              'NCT06350474) and 15 Hz oscillatory chest-wall shear lower sputum yield '
+              'stress tau_0 below periciliary propulsive stress (~11.5 Pa), restoring airway '
+              'mucus clearance.',
  'sources': ['Bingham, E. C. (1922). Fluidity and Plasticity. McGraw-Hill, New York.',
              'Herschel, W. H., & Bulkley, R. (1926). Konsistenzmessungen von Gummi-Benzollösungen. '
              'Kolloid-Zeitschrift, 39, 291–300.',
@@ -393,7 +393,7 @@ ES_TRANSLATION = {'title_es': 'Reología de Esfuerzo de Fluencia de Herschel–B
  'why_es': 'Al exprimir pasta dental o mortero por un tubo no se deforma todo el volumen: un '
            'cilindro sólido central se desliza intacto como un tapón sobre una delgada capa '
            'lubricante sometida a corte.',
- 'bridge_es': 'El esputo de las vías respiratorias en Ingeniería Hidrosanitaria es un fluido '
+ 'bridge_es': 'El esputo de las vías respiratorias en la Fibrosis Quística es un fluido '
               'viscoplástico de Herschel–Bulkley; reducir su esfuerzo de fluencia τ₀ mediante '
               'agentes mucolíticos o hidratación osmótica restaura el deslizamiento mucociliar.',
  'plain_es': 'En 1922, el químico Eugene Bingham descubrió que materiales densos como pinturas, '

@@ -810,7 +810,7 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
             ("EDWARDS", "Físico británico coautor junto con Masao Doi de la teoría del tubo polimérico", "Acto I"),
             ("CADENA", "Macromolécula larga de ARN mensajero (4.5 kb) que se desliza entre obstáculos", "Acto II"),
             ("TUBO", "Conducto virtual topológico formado por las restricciones de las cadenas vecinas", "Acto II"),
-            ("ARNM", "Sigla en español del ácido ribonucleico mensajero terapéutico para ion-channel", "Acto IV"),
+            ("ARNM", "Sigla en español del ácido ribonucleico mensajero terapéutico para el canal CFTR", "Acto IV"),
             ("NUDO", "Restricción topológica que impide el movimiento transversal de la macromolécula", "Acto III"),
             ("DOI", "Físico japonés que demostró el escalamiento cúbico del tiempo de desenredo", "Acto I"),
         ],

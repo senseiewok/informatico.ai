@@ -309,8 +309,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'precise energetic cost of gating rescue, designing next-generation allosteric '
                    'modulators that achieve maximal ion transport with minimal metabolic strain on '
                    'the host cell.',
- 'cf_bridge': 'In Non-Equilibrium Statistical Biophysics, Class III gating variants (such as G551D) and '
-              'rescued Class II F508del channels require potentiators (ivacaftor or deutivacaftor '
+ 'cf_bridge': 'In Cystic Fibrosis, Class III gating variants (such as G551D) and '
+              'rescued Class II F508del-CFTR channels require potentiators (ivacaftor or deutivacaftor '
               'in Alyftrek, DOI 10.58347/tml.2025.1724a) to restore the thermodynamic coupling '
               'efficiency between NBD ATP hydrolysis and transmembrane Cl- conductance (DOI '
               '10.1085/jgp.200609558).',

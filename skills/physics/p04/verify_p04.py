@@ -19,7 +19,7 @@ FOLIO_METADATA = {
     "primary_kernel": "tools/physics_kernel.py",
     "primary_doi": "10.1126/science.1223012",
     "scite_report": "https://scite.ai/reports/10.1126/science.1223012",
-    "benchmarks": [{"label": "PCL Height", "value": ""}, {"label": "Net Solute Flux", "value": "+1.50 μEq/(cm²·h) (Cl- Secretory)"}, {"label": "Hydration Status", "value": "HEALTHY_HYDRATED_PCL"}, {"label": "Kernel Verification", "value": "PASS · VERIFIED"}],
+    "benchmarks": [{"label": "PCL Height", "value": "8.80 μm (Hydrated) vs 1.50 μm (CF)"}, {"label": "Net Solute Flux", "value": "+1.50 μEq/(cm²·h) (Cl- Secretory)"}, {"label": "Hydration Status", "value": "HEALTHY_HYDRATED_PCL"}, {"label": "Kernel Verification", "value": "PASS · VERIFIED"}],
 }
 
 

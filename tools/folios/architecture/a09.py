@@ -307,11 +307,11 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'living building skin.',
  'cf_bridge': 'Standalone Biomimetic Architecture Flagship & Reference Completion (A.02 + E.04 -> '
               'A.09): Written for architects, facade engineers, and mass-timber builders (CSI 06 '
-              '18 00 Glued-Laminated Construction, EN 1995-1-1). Upstream biophysical thread for '
-              'the lab: the orthotropic osmotic swelling of cellulose-hemicellulose hydrogel '
+              '18 00 Glued-Laminated Construction, EN 1995-1-1). Upstream biophysical case '
+              'study: the orthotropic osmotic swelling of cellulose-hemicellulose hydrogel '
               'matrices below the fiber saturation point obeys the same Flory–Rehner / Donnan '
               'osmotic swelling pressure that governs periciliary brush height h_PCL in Folio P.04 '
-              'when ventilation duct surface liquid hydration changes.',
+              'when airway surface liquid hydration changes.',
  'sources': ['Timoshenko, S. (1925). Analysis of bi-metal thermostats. Journal of the Optical '
              'Society of America, 11(3), 233–255. DOI: 10.1364/JOSA.11.000233.',
              'Reichert, S., Menges, A., & Correa, D. (2015). Meteorosensitive architecture: '

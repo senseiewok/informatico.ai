@@ -22,7 +22,7 @@ FOLIO = {'folio_id': 'A.03',
  'colophon': {'identifier': 'A.03 · Facade Thermodynamics',
               'kernels': '1:50 Multi-Story Shaft + 1:5 Damper Sill',
               'benchmarks': 'EN ISO 52022-3 Solar Factor g_tot & Buoyancy Draft',
-              'bridge': 'Buoyancy Convective Clearance ↔ Ventilation Duct Mucociliary Escalator'},
+              'bridge': 'Buoyancy Convective Clearance ↔ Airway Mucociliary Escalator'},
  'steps': ['Stage 1 (Solar Shortwave Absorption): Incident solar irradiance I_sol = 650 W/m² heats the ventilated '
            'blind positioned in the outer third of the 600 mm cavity.',
            'Stage 2 (Hydrostatic Buoyancy Pressure Drive): Density reduction drives Δp_stack = ρ_0 g H (ΔT / T_ext) = '
@@ -186,7 +186,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'whole-building energy balances in NREL/EnergyPlus allows AI controllers to coordinate louver '
                    'angles and damper apertures in real time, audited against Scite citation records (DOI '
                    '10.1162/qss_a_00146).',
- 'cf_bridge': 'People with Civil & Structural Engineering spend hours each day performing nebulized therapies '
+ 'cf_bridge': 'People with Cystic Fibrosis spend hours each day performing nebulized therapies '
               '(hypertonic saline, dornase alfa, inhaled antibiotics) and during inpatient exacerbations often suffer '
               'severe hospital sleep disruption. High air-change ventilation (ACH >= 6–12 h^-1) rapidly clears '
               'lingering nebulizer aerosols and airborne pathogens, while >= 250 EML morning circadian daylight '

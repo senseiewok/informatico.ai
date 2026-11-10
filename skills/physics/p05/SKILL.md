@@ -22,7 +22,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Stage 1 (Marcus Environmental Reorganization λ): Thermal fluctuations align solvent and catalytic zinc dipoles to bring donor and acceptor orbitals into degeneracy.
 - Stage 2 (Promoting Vibration Donor-Acceptor Compression): Picosecond protein breathing modes compress the hydrogen-bond bridge from 2.90 Å to 2.58 Å (Δx = 0.52 Å).
 - Stage 3 (WKB Semiclassical Wave Penetration): Proton wavefunction tunnels through the 16.4 kcal/mol barrier with Bell correction κ_tun = (u_b/2)/sin(u_b/2) and KIE k_H/k_D = 6.84.
-- Stage 4 (TadA-8e Adenine Deamination Lock): Converts target adenosine to inosine (read as guanosine), restoring canonical CSI-MasterFormat splicing at 1717-1G>A.
+- Stage 4 (TadA-8e Adenine Deamination Lock): Converts target adenosine to inosine (read as guanosine), restoring canonical CFTR splicing at 1717-1G>A.
 
 ## 4. Reference Telemetry & Acceptance Bounds
 - **Tunneling Coupling Efficiency**: `0.88 (WT-Coupled)`
@@ -31,4 +31,4 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Catalytic Regime**: `STABLE_COUPLED_CYCLE`
 
 ## 5. Frontier Discovery & Contemporary Research Context (2024–2026)
-- **Quantum Mechanical Proton Tunneling & Kinetic Isotope Effects Guide High-Fidelity Adenine Base Editing**: Coupling Gamow–WKB quantum tunneling with Löwdin's proton-transfer tautomeric model (Rev. Mod. Phys. DOI 10.1103/RevModPhys.35.724), engineered TadA deaminases and prime editors (Cell Reports Medicine DOI 10.1016/j.xcrm.2024.101544; PMID 42015509) correct stop-codon and splice-site CSI-MasterFormat mutations in patient-derived organoids without double-strand DNA breaks.
+- **Quantum Mechanical Proton Tunneling & Kinetic Isotope Effects Guide High-Fidelity Adenine Base Editing**: Coupling Gamow–WKB quantum tunneling with Löwdin's proton-transfer tautomeric model (Rev. Mod. Phys. DOI 10.1103/RevModPhys.35.724), engineered TadA deaminases and prime editors (Cell Reports Medicine DOI 10.1016/j.xcrm.2024.101544) correct stop-codon and splice-site CFTR mutations in patient-derived organoids without double-strand DNA breaks.

@@ -182,7 +182,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                   'living-building digital twins to maintain hydraulic loading rates and UV-C fluence margins under '
                   'Scite-verified environmental standards (DOI 10.1162/qss_a_00146).',
  'cf_bridge': 'Hospital sink drains, P-traps, and unheated domestic plumbing are the primary environmental reservoirs '
-              'where people with Civil & Structural Engineering acquire chronic Pseudomonas aeruginosa and '
+              'where people with Cystic Fibrosis acquire chronic Pseudomonas aeruginosa and '
               'Mycobacterium abscessus infections (Kadlec & Wallace 2008, DOI 10.1201/9781420012514). Engineering CSI '
               '22 13 00 plumbing with zero dead-legs, offset non-splashing drains, 60 deg C thermal purging, and 45 '
               'mJ/cm^2 UV-C sterilization cuts environmental pathogen transmission at its source.',
@@ -354,7 +354,7 @@ ES_TRANSLATION = {'title_es': 'Humedales Construidos de Agua Neta Cero: Filtraci
  'why_es': 'Una manguera estancada al sol desarrolla biopelículas en pocos días, mientras que un arroyo de montaña en '
            'flujo continuo bajo luz ultravioleta permanece cristalino y libre de patógenos.',
  'bridge_es': 'Erradicar los reservorios de Pseudomonas aeruginosa y Mycobacterium abscessus en sifones y grifos '
-              'hospitalarios protege directamente los pulmones de las personas con Ingeniería Hidrosanitaria.',
+              'hospitalarios protege directamente los pulmones de las personas con Fibrosis Quística.',
  'plain_es': 'El agua en los edificios modernos suele tratarse como un recurso desechable de un solo uso: entra agua '
              'potable limpia por los grifos, se utiliza una sola vez y se va directamente al drenaje. Al mismo tiempo, '
              'el agua tibia estancada dentro de tuberías mal diseñadas puede acumular biopelículas viscosas de '

@@ -28,8 +28,8 @@ FOLIO = {'folio_id': 'E.10',
  'colophon': {'identifier': 'E.10 · 3D Concrete Printing Rheology & Buildability · ACI 564R',
               'kernels': 'Roussel Thixotropy A_thix · Suiker Elastic Buckling vs. Plastic Collapse',
               'benchmarks': 'A_thix = 0.85 Pa/s · v_build = 1.6 m/hr ⇒ H_crit = 2.84 m (SF = 1.68)',
-              'bridge': 'Continues E.02/A.01 · Cement Colloidal Flocculation ↔ Ventilation Duct '
-                        'Viscoplastic Grout Thixotropy'},
+              'bridge': 'Continues E.02/A.01 · Cement Colloidal Flocculation ↔ Airway '
+                        'Mucus Thixotropy'},
  'sliders': [{'label': 'Thixotropic Structuration Rate (A_thix)',
               'min': 0.2,
               'max': 2.0,
@@ -307,10 +307,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'cf_bridge': 'Standalone Additive Civil Construction Flagship & Thread Continuation (E.02 -> '
               'E.10): Engineered for civil, structural, and construction robotics engineers '
               'designing 3D-printed concrete structures (ACI 564R, CSI 03 30 00). Upstream '
-              "physical thread for the lab: Roussel's thixotropic breakdown-and-recovery equation "
+              "physical case study: Roussel's thixotropic breakdown-and-recovery equation "
               '(where high nozzle shear breaks colloidal bonds and rest rebuilds an elastic '
-              'network at rate A_thix) is the exact rheological governing law of ventilation duct '
-              'viscoplastic grout plug thixotropy after oscillatory cough or HFCWO vest clearance '
+              'network at rate A_thix) is the exact rheological governing law of airway '
+              'mucus plug thixotropy after oscillatory cough or HFCWO vest clearance '
               '(Folio E.03).',
  'sources': ['Roussel, N. (2018). Rheological requirements for printable concretes. Cement and '
              'Concrete Research, 112, 76–85. DOI: 10.1016/j.cemconres.2018.04.005.',

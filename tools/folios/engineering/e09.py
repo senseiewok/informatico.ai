@@ -302,12 +302,12 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'consumer of resources into an enduring, self-repairing material system.',
  'cf_bridge': 'Standalone Civil Materials Flagship & Thread Continuation (E.01 -> E.09): Written '
               'for structural and materials civil engineers specifying durable marine and '
-              'underground concrete (CSI 03 30 00, ACI 224R). Upstream biophysical thread for the '
-              'lab: the coupled Fickian reaction-diffusion and divalent calcium (Ca2+ / CO3^2-) '
+              'underground concrete (CSI 03 30 00, ACI 224R). Upstream biophysical case '
+              'study: the coupled Fickian reaction-diffusion and divalent calcium (Ca2+ / CO3^2-) '
               'cross-linking kinetics that solidify a bacterial biofilm mineral bridge in concrete '
               'are the exact mathematical mirror of Ca2+-mediated mucin MUC5B/MUC5AC gel '
-              'cross-linking and bicarbonate (HCO3^-) chelation during CSI-MasterFormat-restored '
-              'ventilation duct surface unfolding.',
+              'cross-linking and bicarbonate (HCO3^-) chelation during CFTR-restored '
+              'airway surface mucin unfolding.',
  'sources': ['Jonkers, H. M., Thijssen, A., Muyzer, G., Copuroglu, O., & Schlangen, E. (2010). '
              'Application of bacteria as self-healing agent for the development of sustainable '
              'concrete. Ecological Engineering, 36(2), 230–235. DOI: '
@@ -429,4 +429,4 @@ ES_TRANSLATION = {'title_es': 'Concreto Autocurativo Bacteriano y Cristalino: Im
  'bridge_es': 'La cinética de reacción-difusión de Fick–Michaelis–Menten y el entrecruzamiento por '
               'iones divalentes Ca²⁺/CO₃²⁻ reflejan matemáticamente la quelación de calcio y '
               'bicarbonato que despliega las mucinas MUC5B en las vías respiratorias con '
-              'Ingeniería Hidrosanitaria.'}
+              'Fibrosis Quística.'}

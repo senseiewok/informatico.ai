@@ -94,7 +94,7 @@ FOLIO = {'slug': 'b03',
                  'and publish the canonical 99-line topology optimization code (DOI '
                  '10.1007/s001580050176).'),
                 ('2018–2023',
-                 'FEniCS/dolfinx (DOI 10.21105/joss.05754) and robotic 3D concrete printing enable '
+                 'FEniCS/dolfinx (DOI 10.1145/3524456) and robotic 3D concrete printing enable '
                  'full-scale ribbed funicular floor slabs saving 60–70% concrete.'),
                 ('2024–2026',
                  '$100M XPRIZE Carbon Removal and IStructE SCORS A+ establish sub-45 kg CO₂e/m² '
@@ -162,7 +162,7 @@ FOLIO = {'slug': 'b03',
                  'together.'],
  't0_t1_certified': ['Deterministic SIMP compliance-carbon Pareto verifier in '
                      'bounties/bounty_e1_simp_carbon_slab.py (< 0.05s runtime).',
-                     'Verified FEniCS/dolfinx (DOI 10.21105/joss.05754) and Sigmund (2001, DOI '
+                     'Verified FEniCS/dolfinx (Scroggs et al., 2022, DOI 10.1145/3524456) and Sigmund (2001, DOI '
                      '10.1007/s001580050176) mathematical formulation.',
                      'Ready for immediate community showcase submission on FEniCS Discourse and '
                      'open structural engineering benchmark repositories.'],
@@ -173,8 +173,10 @@ FOLIO = {'slug': 'b03',
  'sources': ['Sigmund, O. (2001). A 99 line topology optimization code written in Matlab. '
              'Structural and Multidisciplinary Optimization, 21(2), 120–127. DOI '
              '10.1007/s001580050176',
-             'Baratta, I. A., et al. (2023). DOLFINx: The next generation FEniCS problem solving '
-             'environment. Journal of Open Source Software, 8(92), 5754. DOI 10.21105/joss.05754',
+             'Scroggs, M. W., Dokken, J. S., Richardson, C. N., & Wells, G. N. (2022). '
+             'Construction of arbitrary order finite element degree-of-freedom maps on polygonal '
+             'and polyhedral cell meshes. ACM Transactions on Mathematical Software, 48(2), 1–23. '
+             'DOI 10.1145/3524456',
              'Smith, M. C. (2002). Synthesis of mechanical networks: the inerter. IEEE '
              'Transactions on Automatic Control, 47(10), 1648–1662. DOI 10.1109/TAC.2002.803532',
              'Roussel, N. (2018). Rheological requirements for printable concretes. Cement and '
@@ -690,8 +692,8 @@ FOLIO = {'slug': 'b03',
               '1.35), y por encima de 0.38 supera los 45.0 kg CO₂e/m².'],
  't0_t1_certified_es': ['Verificador determinista de Pareto flexibilidad-carbono SIMP en '
                         'bounties/bounty_e1_simp_carbon_slab.py (tiempo de ejecución < 0.05 s).',
-                        'Formulación matemática verificada frente a FEniCS/dolfinx (DOI '
-                        '10.21105/joss.05754) y Sigmund (2001, DOI 10.1007/s001580050176).',
+                        'Formulación matemática verificada frente a FEniCS/dolfinx (Scroggs et al., '
+                        '2022, DOI 10.1145/3524456) y Sigmund (2001, DOI 10.1007/s001580050176).',
                         'Listo para envío inmediato a la galería comunitaria de FEniCS Discourse y '
                         'repositorios abiertos de ingeniería estructural.'],
  't2_t3_open_horizon_es': ['XPRIZE Carbon Removal ($100M) e IStructE Structural Awards: Requieren '

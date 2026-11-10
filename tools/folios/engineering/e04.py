@@ -24,7 +24,7 @@ FOLIO = {'folio_id': 'E.04',
  'colophon': {'identifier': 'E.04 · Coupled Heat & Mass Transfer · CSI 23 72 23',
               'kernels': 'ε = NTU / (1 + NTU) (Balanced Counter-Current)',
               'benchmarks': 'Sensible ε_s = 88.2% · Latent ε_l = 79.4%',
-              'bridge': 'Selective Vapor Permeation ↔ Ventilation Duct Surface Liquid (ASL) '
+              'bridge': 'Selective Vapor Permeation ↔ Airway Surface Liquid (ASL) '
                         'Humidification'},
  'sliders': [{'label': 'Sensible Transfer Units (NTU_s)',
               'min': 1.0,
@@ -61,9 +61,9 @@ FOLIO = {'folio_id': 'E.04',
                         'included'},
  'sidenote_1': {'kicker': 'SIDENOTE E.04-A · NASAL TURBINATES AS BIOLOGICAL COUNTER-CURRENT '
                           'EXCHANGERS',
-                'body': 'Human nasal turbinates and conducting ventilation ducts operate on the '
+                'body': 'Human nasal turbinates and conducting airways operate on the '
                         'exact same coupled sensible-latent counter-current exchange law to keep '
-                        'periciliary Ventilation Duct Surface Liquid (ASL) hydrated at 37 °C and '
+                        'periciliary Airway Surface Liquid (ASL) hydrated at 37 °C and '
                         '100% RH.'},
  'sidenote_2': {'kicker': 'SIDENOTE E.04-B · SPECIFICATION PLATE · CSI 23 72 23 / 23 41 33',
                 'body': 'Counter-current polymer-membrane enthalpy recovery core with selective '
@@ -109,7 +109,7 @@ FOLIO = {'folio_id': 'E.04',
            'retracted': False,
            'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,942 '
                       'citing publications (19 supporting, 1,078 mentioning, 0 contrasting) on '
-                      'mucociliary transport and ventilation duct surface liquid thermodynamic '
+                      'mucociliary transport and airway surface liquid thermodynamic '
                       'hydration.'}}
 
 LONGFORM_DATA = {'reading_time': '22 MIN READ',
@@ -123,7 +123,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
            'retracted': False,
            'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,942 '
                       'citing publications (19 supporting, 1,078 mentioning, 0 contrasting) on '
-                      'mucociliary transport and ventilation duct surface liquid thermodynamic '
+                      'mucociliary transport and airway surface liquid thermodynamic '
                       'hydration.'},
  'act1_title': "Act I — Wilhelm Nusselt, Kays & London's NTU Method, and Counter-Current Enthalpy "
                'Recovery',
@@ -187,7 +187,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'sub-zero frost formation.',
  'pullquote': '"At NTU = 4.2 in a balanced counter-current membrane core, sensible effectiveness '
               'reaches 80.8% and latent moisture recovery hits 73.9% — preventing evaporative '
-              'collapse of the 7-micron ventilation duct surface liquid."',
+              'collapse of the 7-micron airway surface liquid."',
  'chronology': [('1915',
                  'Wilhelm Nusselt establishes the fundamental dimensionless groups of '
                  'boundary-layer heat and mass transfer.'),
@@ -302,9 +302,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'compounds. By harmonizing intelligent automated control with advanced '
                    'materials science, modern engineering delivers ultra-low-energy buildings that '
                    'safeguard human respiratory health across fluctuating global climates.',
- 'cf_bridge': 'In Civil & Structural Engineering, loss of CSI-MasterFormat chloride secretion '
-              'leaves the 7 um ventilation duct surface liquid (ASL) osmotically fragile. '
-              'Breathing cold, dry winter air (<20% RH) strips moisture from the upper tubular '
+ 'cf_bridge': 'In Cystic Fibrosis, loss of CFTR chloride secretion '
+              'leaves the 7 um airway surface liquid (ASL) osmotically fragile. '
+              'Breathing cold, dry winter air (<20% RH) strips moisture from the upper bronchial '
               'tree, accelerating mucociliary collapse. Counter-current membrane enthalpy recovery '
               'in CF bedrooms and heated humidified high-flow therapy preserves the 44 mg/L '
               'saturation boundary so cilia can keep beating at 12–15 Hz.',
@@ -359,7 +359,7 @@ DISPATCH = {'kicker': 'FRONTIER THERMODYNAMICS DISPATCH · SELECTIVE IONOMER MEM
  'body': "Extending Kays & London's ε-NTU compact heat exchanger theory (1960, DOI "
          '10.1115/1.3644004), modern sulfonated ionomer membranes selectively transport H2O vapor '
          'via solution-diffusion while blocking >99.6% of viral/bacterial aerosols, protecting the '
-         '7.2 μm ventilation duct surface liquid down to −12.5 °C outdoor air.'}
+         '7.2 μm airway surface liquid down to −12.5 °C outdoor air.'}
 
 META_3D = ('Cross-Corrugated Chevron Enthalpy Exchanger',
  'X: Supply Air Channel · Z: Exhaust Counter-Flow · Y: Psychrometric Enthalpy Transfer Surface')

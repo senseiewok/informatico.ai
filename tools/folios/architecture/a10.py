@@ -29,7 +29,7 @@ FOLIO = {'folio_id': 'A.10',
               'kernels': 'Miura-Ori Spherical Vertex Law · Schenk–Guest Auxetic ν_xy = −tan² φ',
               'benchmarks': 'α = 64° · θ = 36° ⇒ ν_xy = −1.38 · SHGC = 0.19 (−68.4% Solar Load)',
               'bridge': 'Completes A.04/A.03/M.05 · Rigid-Hinge Origami Kinematics ↔ '
-                        'CSI-MasterFormat NBD1–NBD2 Lever'},
+                        'CFTR NBD1–NBD2 Lever'},
  'sliders': [{'label': 'Origami Deployment Fold Angle (θ)',
               'min': 10.0,
               'max': 80.0,
@@ -313,10 +313,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'cf_bridge': 'Standalone Kinetic Architecture Flagship & Reference Completion (A.04 + A.03 + M.05 '
               '-> A.10): Written for facade engineers, computational architects, and kinetic '
               'envelope designers (CSI 10 71 13 Exterior Sun Control Devices). Upstream '
-              'biophysical thread for the lab: rigid-body hinged domain kinematics with a single '
+              'biophysical case study: rigid-body hinged domain kinematics with a single '
               'collective degree of freedom (where local hinge angle theta couples globally across '
-              'a vertex network) is the exact geometric model of CSI-MasterFormat NBD1–NBD2 '
-              'ATP-dimerization levering TM6 and TM12 open in PDB 6MSM (/cf/csi-masterformat/).',
+              'a vertex network) is the exact geometric model of CFTR NBD1–NBD2 '
+              'ATP-dimerization levering TM6 and TM12 open in PDB 6MSM.',
  'sources': ['Schenk, M., & Guest, S. D. (2013). Geometry of folded metamaterials. Proceedings of '
              'the National Academy of Sciences (PNAS), 110(9), 3276–3281. DOI: '
              '10.1073/pnas.1217998110.',
@@ -397,7 +397,7 @@ ES_TRANSLATION = {'title_es': 'Origami Cinético y Fachadas Biomiméticas Desple
            'abrir o cerrar toda una fachada solar sin atascarse.',
  'bridge_es': 'La cinemática de dominios rígidos acoplados por bisagras con un solo grado de '
               'libertad colectivo modela el acoplamiento alostérico de los dominios NBD1–NBD2 y '
-              'las hélices TM6/TM12 al abrir el canal CSI-MasterFormat en PDB 6MSM.',
+              'las hélices TM6/TM12 al abrir el canal CFTR en PDB 6MSM.',
  'plain_es': 'En palabras sencillas, imaginen un mapa de papel doblado con un patrón especial de '
              'rombos: al jalar suavemente dos de sus esquinas, todo el mapa se abre a lo ancho y a '
              'lo largo al mismo tiempo con un solo movimiento fluido y sin atascarse. Este '

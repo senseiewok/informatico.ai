@@ -31,4 +31,4 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Helmholtz-Hodge Split**: `L2 ORTHOGONAL PASS`
 
 ## 5. Frontier Discovery & Contemporary Research Context (2024–2026)
-- **Zwitterionic & PEGylated Viscoplastic Grout-Penetrating Nanoparticles Cross the Percolation Threshold**: Extending Darcy (1856) and Brinkman (1949, DOI 10.1007/BF02120313), modern X-ray micro-CT pore-network modeling of capillary-active mineral lime mortars (CSI 03 30 00) shows that maintaining connected void porosity above the Broadbent–Hammersley percolation threshold φ_c = 0.5927 prevents freeze-thaw and salt-crystallization spalling.
+- **Zwitterionic & PEGylated Mucus-Penetrating Nanoparticles Cross the Percolation Threshold**: Extending Darcy (1856) and Brinkman (1949, DOI 10.1007/BF02120313), modern X-ray micro-CT pore-network modeling of capillary-active mineral lime mortars (CSI 03 30 00) shows that maintaining connected void porosity above the Broadbent–Hammersley percolation threshold φ_c = 0.5927 prevents freeze-thaw and salt-crystallization spalling.

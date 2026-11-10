@@ -188,20 +188,22 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    "10.1145/3524456), architects co-design unreinforced stone shells that satisfy both Heyman's "
                    "geometric safety factor SF >= 3.0 and Glaser's zero-condensation invariant, verified through Scite "
                    'Smart Citations (DOI 10.1162/qss_a_00146).',
- 'cf_bridge': 'For children and adults living with Civil & Structural Engineering, hidden interstitial condensation '
+ 'cf_bridge': 'For children and adults living with Cystic Fibrosis, hidden interstitial condensation '
               'inside building envelopes is not merely a durability flaw—it is a biological hazard that breeds '
               'Aspergillus fumigatus (the cause of Allergic Bronchopulmonary Aspergillosis, ABPA) and Pseudomonas '
               'reservoirs. Maintaining a verified +7.08 °C Glaser dew-point margin at every structural thermal break '
               'keeps residential and clinical air envelopes dry and spore-free.',
  'sources': ['Hooke, R. (1675). A Description of Helioscopes, and Some Other Instruments (Catenary-Arch Anagram). '
-             'London. DOI: 10.1017/CBO9781107050310.',
+             'London.',
              'Maxwell, J. C. (1864). On reciprocal figures and diagrams of forces. Philosophical Magazine, 27(182), '
              '250–261.',
              'Heyman, J. (1966). The stone skeleton. International Journal of Solids and Structures, 2(2), 249–279.',
+             'Heyman, J. (1995). The Stone Skeleton: Structural Engineering of Masonry Architecture. Cambridge '
+             'University Press. DOI: 10.1017/CBO9781107050310.',
              'ISO 13788 (2012). Hygrothermal performance of building components and building elements — Glaser method.',
-             'Block, P., & Ochsendorf, J. / Van Mele, T., et al. (2015). COMPAS & polyhedral thrust network analysis '
-             'for 3D graphic statics (compas-dev/compas, https://github.com/compas-dev/compas). Computer-Aided Design, '
-             '61, 23–33. DOI: 10.1016/j.cad.2015.01.006.',
+             'Akbarzadeh, M., Van Mele, T., & Block, P. (2015). On the equilibrium of funicular polyhedral frames and '
+             'convex polyhedral force diagrams (compas-dev/compas, https://github.com/compas-dev/compas). '
+             'Computer-Aided Design, 63, 118–128. DOI: 10.1016/j.cad.2015.01.006.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the context of citations '
              'and classifies their intent using deep learning (https://scite.ai). Quantitative Science Studies, 2(3), '
              '882–898. DOI: 10.1162/qss_a_00146.'],
@@ -373,7 +375,7 @@ ES_TRANSLATION = {'title_es': 'Superficies Foniculares de Empuje, Duales de Maxw
  'why_es': 'Una cadena colgante adopta por gravedad la forma exacta de tracción pura; al invertirla como un arco de '
            'piedra (catenaria invertida de Hooke y Gaudí), toda la estructura trabaja en compresión pura sin doblarse.',
  'bridge_es': 'El equilibrio recíproco de fuerzas y la eliminación de puentes térmicos garantizan envolventes '
-              'hospitalarias sin moho ni condensación intersticial para pacientes con Ingeniería Hidrosanitaria.',
+              'hospitalarias sin moho ni condensación intersticial para pacientes con Fibrosis Quística.',
  'plain_es': 'Para comprender cómo se sostiene una bóveda de piedra, imaginen apoyar dos libros gruesos sobre una mesa '
              'de madera pulida. Si los libros se inclinan con suficiente altura, sus extremos superiores se presionan '
              'con firmeza y permanecen firmes. Pero si separamos las bases unos centímetros de más, el empuje hacia '

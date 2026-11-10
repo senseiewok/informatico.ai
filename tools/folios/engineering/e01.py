@@ -54,10 +54,10 @@ FOLIO = {'folio_id': 'E.01',
                         'rapid liquid capillary drying while preventing salt-crystallization '
                         'spalling in historic masonry and mass-timber hybrid envelopes.',
                 'meta': 'EN 15026 WUFI hygrothermal profile · CSI 3-Part Spec Sheet'},
- 'sidenote_1': {'kicker': 'SIDENOTE E.01-A · TWO-WAY TRANSFER TO THE CF CURE',
-                'body': 'In pathological Civil & Structural Engineering mortar matrix (8% solids), '
-                        'mucin disulfide cross-links trap unshielded >120 nm particles; our 65 nm '
-                        'zwitterionic SORT-colloidal tracer and mucolytic regimens shift the '
+ 'sidenote_1': {'kicker': 'SIDENOTE E.01-A · BIOPHYSICAL PERCOLATION CASE STUDY',
+                'body': 'In pathological Cystic Fibrosis sputum (8% solids), '
+                        'mucin disulfide cross-links trap unshielded >120 nm particles; 65 nm '
+                        'zwitterionic SORT-LNP formulations and mucolytic regimens shift the '
                         'effective pore ratio back above φ_c.'},
  'sidenote_2': {'kicker': 'SIDENOTE E.01-B · SPECIFICATION PLATE · CSI 03 30 00 / 07 16 00',
                 'body': 'Capillary-active mineral lime mortar and breathable silicate coating (φ = '
@@ -310,13 +310,13 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'engineering teams can forecast progressive pore clogging and schedule targeted '
                    'breathable consolidation treatments before irreversible structural spalling '
                    'begins.',
- 'cf_bridge': 'In Civil & Structural Engineering, dehydrated ventilation duct viscoplastic grout '
+ 'cf_bridge': 'In Cystic Fibrosis, dehydrated airway mucus '
               '(~8–12% solids vs. ~2% healthy) compresses pore sizes from ~200–500 nm down to '
-              '~60–150 nm. For the 8.0% of CFFPR 2024 patients ineligible for CSI-MasterFormat '
+              '~60–150 nm. For the 8.0% of CFFPR 2024 patients ineligible for CFTR '
               'modulators who depend on inhaled mRNA lipid nanoparticles or viral vectors, '
-              'conditioning the viscoplastic grout above phi_c = 0.5927 and keeping particle '
+              'conditioning the airway mucus above phi_c = 0.5927 and keeping particle '
               'diameter below the Brinkman-screened pore throat is the prerequisite for reaching '
-              'ventilation duct basal cells.',
+              'airway basal cells.',
  'sources': ['Darcy, H. (1856). Les Fontaines Publiques de la Ville de Dijon. Victor Dalmont, '
              'Paris.',
              'Brinkman, H. C. (1947). A calculation of the viscous force exerted by a flowing '
@@ -342,7 +342,7 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what Darcy-Brinkman 
             'matrix.'}
 
 DISPATCH = {'kicker': 'FRONTIER DISCOVERY DISPATCH · POROUS MEDIA & NANOMEDICINE',
- 'headline': 'Zwitterionic & PEGylated Viscoplastic Grout-Penetrating Nanoparticles Cross the '
+ 'headline': 'Zwitterionic & PEGylated Mucus-Penetrating Nanoparticles Cross the '
              'Percolation Threshold',
  'body': 'Extending Darcy (1856) and Brinkman (1949, DOI 10.1007/BF02120313), modern X-ray '
          'micro-CT pore-network modeling of capillary-active mineral lime mortars (CSI 03 30 00) '
@@ -356,13 +356,13 @@ META_3D = ('Darcy–Brinkman Percolation Throat Lattice',
 ES_TRANSLATION = {'title_es': 'Continuo Poroso de Stokes–Brinkman, Descomposición de Helmholtz–Hodge y Percolación',
  'subtitle_es': 'Cómo se equilibran el esfuerzo cortante viscoso y el arrastre de Darcy sobre la '
                 'longitud de apantallamiento de Brinkman √κ en caliza porosa, morteros capilares e '
-                'hidrogeles de mucina en Ingeniería Hidrosanitaria.',
+                'hidrogeles de mucina en la Fibrosis Quística.',
  'why_es': 'Imagina pedalear en bicicleta a través de un bosque: el apantallamiento de Brinkman es '
            'la resistencia combinada del aire y las ramas que rozas, mientras que la percolación '
            'determina si existe un sendero continuo para cruzar de un extremo a otro.',
- 'bridge_es': 'En la Ingeniería Hidrosanitaria, el moco bronquial deshidratado forma una malla '
-              'biopolimérica densa donde el transporte de nanopartículas lipídicas (colloidal '
-              'tracer) y vectores de terapia génica obedece exactamente la transición de '
+ 'bridge_es': 'En la Fibrosis Quística, el moco bronquial deshidratado forma una malla '
+              'biopolimérica densa donde el transporte de nanopartículas lipídicas (LNP) '
+              'y vectores de terapia génica obedece exactamente la transición de '
               'percolación de Broadbent–Hammersley y el apantallamiento de Brinkman.',
  'plain_es': 'En 1856, el ingeniero francés Henry Darcy realizaba experimentos en la ciudad de '
              'Dijon con el objetivo de llevar agua limpia y segura a las fuentes y hospitales '

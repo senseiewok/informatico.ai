@@ -8,7 +8,7 @@ PILLAR = 'physics'
 
 FOLIO = {'category_code': 'P',
  'colophon': {'benchmarks': '−C_p,peak = 2.84 · −C_L = 3.38 (Z-Mode) · −40% Drag (X-Mode)',
-              'bridge': 'F1 Lamb–Oseen Vortex Sealing ↔ M.07 FNO Surrogates & Tubular Dean '
+              'bridge': 'F1 Lamb–Oseen Vortex Sealing ↔ M.07 FNO Surrogates & Bronchial Dean '
                         'Vortices',
               'identifier': 'P.07 · Formula 1 Ground-Effect & 2026 Active Aero · FIA Art. 3',
               'kernels': 'Venturi Bernoulli–Euler Suction · Lamb–Oseen Vortex · Hopf Porpoising'},
@@ -225,13 +225,13 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                   'MilesCranmer/PySR (DOI 10.48550/arXiv.2305.01582) delivers real-time '
                   'aeroelastic digital twins verified against wind-tunnel and Scite-audited fluid '
                   'mechanics benchmarks (DOI 10.1162/qss_a_00146).',
- 'cf_bridge': 'Standalone Motorsport & Fluid Physics Flagship & Upstream Thread to Follow: Written '
+ 'cf_bridge': 'Standalone Motorsport & Fluid Physics Flagship & Upstream Physical Thread: Written '
               'as a premier fluid-dynamics and aero-elasticity monograph for motorsport, '
-              'aerospace, and vehicle physicists. Upstream physical thread for the lab: the '
+              'aerospace, and vehicle physicists. Upstream physical case study: the '
               'Lamb–Oseen longitudinal vortex cores that Formula 1 aerodynamicists use to energize '
               'boundary layers and prevent diffuser separation obey the exact same Navier–Stokes '
               'secondary-vortex transport equations as Dean vortices in curved, bifurcating human '
-              'bronchi—guiding how pulsatile aerosol streams avoid upper-ventilation duct '
+              'bronchi—guiding how pulsatile aerosol streams avoid upper-airway '
               'impaction.',
  'sources': ['Zhang, X., Toet, W., & Zerihan, J. (2006). Ground effect aerodynamics of race cars. '
              'Applied Mechanics Reviews, 59(1), 33–49. DOI: 10.1115/1.2110263.',

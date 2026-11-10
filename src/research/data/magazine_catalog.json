@@ -72,8 +72,8 @@
           "meta": "EN 15026 WUFI hygrothermal profile · CSI 3-Part Spec Sheet"
         },
         "sidenote_1": {
-          "kicker": "SIDENOTE E.01-A · TWO-WAY TRANSFER TO THE CF CURE",
-          "body": "In pathological Civil & Structural Engineering mortar matrix (8% solids), mucin disulfide cross-links trap unshielded >120 nm particles; our 65 nm zwitterionic SORT-colloidal tracer and mucolytic regimens shift the effective pore ratio back above φ_c."
+          "kicker": "SIDENOTE E.01-A · BIOPHYSICAL PERCOLATION CASE STUDY",
+          "body": "In pathological Cystic Fibrosis sputum (8% solids), mucin disulfide cross-links trap unshielded >120 nm particles; 65 nm zwitterionic SORT-LNP formulations and mucolytic regimens shift the effective pore ratio back above φ_c."
         },
         "sidenote_2": {
           "kicker": "SIDENOTE E.01-B · SPECIFICATION PLATE · CSI 03 30 00 / 07 16 00",
@@ -147,7 +147,7 @@
           "identifier": "E.02 · Concrete Yield Rheology · CSI 03 30 00",
           "kernels": "τ = τ_0 + K γ̇^n · Buckingham–Reiner Plug Flow",
           "benchmarks": "125 mm Steel Slickline · ACI 304.2R Pumping",
-          "bridge": "PCE Concrete Slickline ↔ CF Mortar Matrix Yield Mobilization"
+          "bridge": "PCE Concrete Slickline ↔ CF Sputum Yield Mobilization"
         },
         "sliders": [
           {
@@ -203,7 +203,7 @@
         },
         "sidenote_2": {
           "kicker": "SIDENOTE E.02-B · SPECIFICATION PLATE · CSI 03 30 00 / ACI 304.2R",
-          "body": "High-performance pumped SCC (ASTM C1611 slump flow 650 mm, 125 mm steel slickline, PCE comb-copolymer dispersant) shares exact Herschel-Bulkley yield-stress physics with dornase-sheared CF mortar matrix."
+          "body": "High-performance pumped SCC (ASTM C1611 slump flow 650 mm, 125 mm steel slickline, PCE comb-copolymer dispersant) shares exact Herschel-Bulkley yield-stress physics with dornase-sheared CF sputum."
         },
         "skill": {
           "filename": "herschel-bulkley-yield-rheology-SKILL.md",
@@ -267,7 +267,7 @@
           "identifier": "E.03 · Acoustic Metamaterials & Viscothermal Damping · CSI 09 84 13",
           "kernels": "δ_v = √(2ν/ω) · Z_s = R_v + i ω M_a − i ρ c² / (ω V_cav)",
           "benchmarks": "Critical Coupling R_v = ρ_0 c_0 ⇒ α = 0.998 · δ_v = 0.174 mm",
-          "bridge": "Oscillatory Stokes Boundary Layer ↔ HFCWO Ventilation Duct Oscillations"
+          "bridge": "Oscillatory Stokes Boundary Layer ↔ HFCWO Airway Oscillations"
         },
         "sliders": [
           {
@@ -319,7 +319,7 @@
         },
         "sidenote_1": {
           "kicker": "SIDENOTE E.03-A · OSCILLATORY STOKES LAYER IN HFCWO VEST THERAPY",
-          "body": "The same Womersley number Wo = r √(ω/ν) that governs viscous acoustic damping in a Helmholtz neck governs oscillatory air-viscoplastic grout shear during 12–18 Hz High-Frequency Chest Wall Oscillation (HFCWO) in CF care."
+          "body": "The same Womersley number Wo = r √(ω/ν) that governs viscous acoustic damping in a Helmholtz neck governs oscillatory air-mucus shear during 12–18 Hz High-Frequency Chest Wall Oscillation (HFCWO) in CF care."
         },
         "sidenote_2": {
           "kicker": "SIDENOTE E.03-B · SPECIFICATION PLATE · CSI 09 84 13 / 09 54 26",
@@ -339,13 +339,13 @@
           {
             "edition": "REV 1.2",
             "date": "2026-11-02",
-            "summary": "REV 1.2 (Redated 2026-11-02): Verified sub-wavelength Helmholtz viscothermal acoustic metamaterials (delta_v = sqrt(2*nu/omega), CSI 09 84 13) and oscillatory shear liquification of CF mortar matrix plugs with 4-Seat Multi-Lineage Council review.",
+            "summary": "REV 1.2 (Redated 2026-11-02): Verified sub-wavelength Helmholtz viscothermal acoustic metamaterials (delta_v = sqrt(2*nu/omega), CSI 09 84 13) and oscillatory shear liquefaction of CF sputum plugs with 4-Seat Multi-Lineage Council review.",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified critical impedance matching alpha = 0.998 and oscillatory shear tau_osc = 14.8 Pa > tau_y = 11.5 Pa."
           },
           {
             "edition": "REV 1.1",
             "date": "2026-11-01",
-            "summary": "REV 1.1 (Redated 2026-11-01): Added Womersley oscillatory shear bridge to 15 Hz ventilation duct oscillation and CSI 09 84 13 cleanroom panel spec.",
+            "summary": "REV 1.1 (Redated 2026-11-01): Added Womersley oscillatory shear bridge to 15 Hz airway oscillation and CSI 09 84 13 cleanroom panel spec.",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified reflection coefficient |R|² = 0.002 at Z_s/Z_0 = 1.04 + 0.08i."
           },
           {
@@ -387,7 +387,7 @@
           "identifier": "E.04 · Coupled Heat & Mass Transfer · CSI 23 72 23",
           "kernels": "ε = NTU / (1 + NTU) (Balanced Counter-Current)",
           "benchmarks": "Sensible ε_s = 88.2% · Latent ε_l = 79.4%",
-          "bridge": "Selective Vapor Permeation ↔ Ventilation Duct Surface Liquid (ASL) Humidification"
+          "bridge": "Selective Vapor Permeation ↔ Airway Surface Liquid (ASL) Humidification"
         },
         "sliders": [
           {
@@ -439,7 +439,7 @@
         },
         "sidenote_1": {
           "kicker": "SIDENOTE E.04-A · NASAL TURBINATES AS BIOLOGICAL COUNTER-CURRENT EXCHANGERS",
-          "body": "Human nasal turbinates and conducting ventilation ducts operate on the exact same coupled sensible-latent counter-current exchange law to keep periciliary Ventilation Duct Surface Liquid (ASL) hydrated at 37 °C and 100% RH."
+          "body": "Human nasal turbinates and conducting airways operate on the exact same coupled sensible-latent counter-current exchange law to keep periciliary Airway Surface Liquid (ASL) hydrated at 37 °C and 100% RH."
         },
         "sidenote_2": {
           "kicker": "SIDENOTE E.04-B · SPECIFICATION PLATE · CSI 23 72 23 / 23 41 33",
@@ -481,7 +481,7 @@
           "mentioning": 1078,
           "contrasting": 0,
           "retracted": false,
-          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,942 citing publications (19 supporting, 1,078 mentioning, 0 contrasting) on mucociliary transport and ventilation duct surface liquid thermodynamic hydration."
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,942 citing publications (19 supporting, 1,078 mentioning, 0 contrasting) on mucociliary transport and airway surface liquid thermodynamic hydration."
         }
       },
       {
@@ -729,7 +729,7 @@
           "identifier": "E.07 · Bridge Aeroelastic Flutter & PINN SHM · CSI 05 12 00",
           "kernels": "Scanlan Flutter Derivatives A_2*(K), H_1*(K) · Euler–Bernoulli PINN Loss",
           "benchmarks": "U_crit = 76.4 m/s · PINN Stress Error 1.42% (8 Sensors)",
-          "bridge": "Sparse Bridge Accelerometer PINNs ↔ Non-Invasive Ventilation Duct Impedance Inversion"
+          "bridge": "Sparse Bridge Accelerometer PINNs ↔ Non-Invasive Airway Impedance Inversion"
         },
         "sliders": [
           {
@@ -1063,7 +1063,7 @@
           "identifier": "E.10 · 3D Concrete Printing Rheology & Buildability · ACI 564R",
           "kernels": "Roussel Thixotropy A_thix · Suiker Elastic Buckling vs. Plastic Collapse",
           "benchmarks": "A_thix = 0.85 Pa/s · v_build = 1.6 m/hr ⇒ H_crit = 2.84 m (SF = 1.68)",
-          "bridge": "Continues E.02/A.01 · Cement Colloidal Flocculation ↔ Ventilation Duct Viscoplastic Grout Thixotropy"
+          "bridge": "Continues E.02/A.01 · Cement Colloidal Flocculation ↔ Airway Mucus Thixotropy"
         },
         "sliders": [
           {
@@ -1522,7 +1522,7 @@
           "identifier": "A.02 · Reciprocal Timber Gridshells",
           "kernels": "1:50 Nexorade Bay + 1:5 Notched Lap Joint",
           "benchmarks": "Eurocode 5 (EN 1995-1-1) Combined Bending & Shear",
-          "bridge": "Reciprocal Load Sharing ↔ CSI-MasterFormat NBD1-NBD2 Dimer Interlock"
+          "bridge": "Reciprocal Load Sharing ↔ CFTR NBD1-NBD2 Dimer Interlock"
         },
         "steps": [
           "Stage 1 (4-Valence Reciprocal Fan): Four GL28h larch members interlock in a pinwheel cyclic dependency so no more than two members meet at any single point.",
@@ -1638,7 +1638,7 @@
           "identifier": "A.03 · Facade Thermodynamics",
           "kernels": "1:50 Multi-Story Shaft + 1:5 Damper Sill",
           "benchmarks": "EN ISO 52022-3 Solar Factor g_tot & Buoyancy Draft",
-          "bridge": "Buoyancy Convective Clearance ↔ Ventilation Duct Mucociliary Escalator"
+          "bridge": "Buoyancy Convective Clearance ↔ Airway Mucociliary Escalator"
         },
         "steps": [
           "Stage 1 (Solar Shortwave Absorption): Incident solar irradiance I_sol = 650 W/m² heats the ventilated blind positioned in the outer third of the 600 mm cavity.",
@@ -2414,7 +2414,7 @@
           "identifier": "A.10 · Kinetic Origami & Auxetic Mashrabiya Facades · CSI 10 71 13",
           "kernels": "Miura-Ori Spherical Vertex Law · Schenk–Guest Auxetic ν_xy = −tan² φ",
           "benchmarks": "α = 64° · θ = 36° ⇒ ν_xy = −1.38 · SHGC = 0.19 (−68.4% Solar Load)",
-          "bridge": "Completes A.04/A.03/M.05 · Rigid-Hinge Origami Kinematics ↔ CSI-MasterFormat NBD1–NBD2 Lever"
+          "bridge": "Completes A.04/A.03/M.05 · Rigid-Hinge Origami Kinematics ↔ CFTR NBD1–NBD2 Lever"
         },
         "sliders": [
           {
@@ -2908,7 +2908,7 @@
           }
         ],
         "sidenote_1": {
-          "body": "In CF ventilation duct disease, ciliary motors are genetically intact; clearance failure is a macroscopic hydrodynamic transition triggered when the periciliary liquid drops below the ciliary reach (7 μm), plunging the cilia into tangled viscoplastic grout and destroying phase synchronization.",
+          "body": "In CF airway disease, ciliary motors are genetically intact; clearance failure is a macroscopic hydrodynamic transition triggered when the periciliary liquid drops below the ciliary reach (7 μm), plunging the cilia into tangled airway mucus and destroying phase synchronization.",
           "kicker": "SIDENOTE P.02 · THE PHYSICS OF CLEARANCE ARREST IN CF"
         },
         "sidenote_2": {
@@ -2935,7 +2935,7 @@
             "value": 7.0
           },
           {
-            "label": "Viscoplastic Grout Solids Concentration",
+            "label": "Mucus Solids Concentration",
             "max": 10.0,
             "min": 1.0,
             "step": 0.5,
@@ -2945,19 +2945,19 @@
         ],
         "slug": "p02",
         "spec_plate": {
-          "body": "Continuum phase-field model coupling Stokesian hydrodynamic interactions with non-linear limit-cycle oscillators to predict emergent transport velocity across tubular surfaces under Class II Type A2 laminar containment.",
+          "body": "Continuum phase-field model coupling Stokesian hydrodynamic interactions with non-linear limit-cycle oscillators to predict emergent transport velocity across bronchial epithelial surfaces under Class II Type A2 laminar containment.",
           "division": "CSI MASTERFORMAT 11 53 13 / 13 21 26",
           "meta": "Brennen & Winet 1977 · Vilfan & Jülicher PRL 2006 · Button Science 2012 · NSF/ANSI 49",
-          "title": "Ventilation Duct Epithelial Organ-on-Chip & Environmental Micro-Incubator"
+          "title": "Airway Epithelial Organ-on-Chip & Environmental Micro-Incubator"
         },
         "status_badge": "REDATED REV 1.2",
         "steps": [
           "Stage 1 (Autonomous Beating, omega_0): Individual cilia oscillate at 12–14 Hz, generating localized Stokesian velocity fields.",
           "Stage 2 (Hydrodynamic Phase-Lag Coupling): Neighboring cilia interact via viscous fluid stress with phase lag alpha ≈ pi/6.",
           "Stage 3 (Emergent Metachronal Wave): Kuramoto order parameter climbs above 0.85, organizing an antiplectic traveling wave at velocity v = lambda * f ≈ 336 μm/s.",
-          "Stage 4 (Steric & Viscous Arrest): Desiccation below h < 7 μm causes cilia tips to catch on the overlying viscoplastic grout gel, collapsing wave velocity to zero."
+          "Stage 4 (Steric & Viscous Arrest): Desiccation below h < 7 μm causes cilia tips to catch on the overlying mucus gel, collapsing wave velocity to zero."
         ],
-        "subtitle": "Low Reynolds number Stokesian hydrodynamics, Kuramoto phase-lag synchronization, and the collective propulsion velocity of human ventilation duct ciliary carpets.",
+        "subtitle": "Low Reynolds number Stokesian hydrodynamics, Kuramoto phase-lag synchronization, and the collective propulsion velocity of human airway ciliary carpets.",
         "title": "Active Matter Hydrodynamics and Ciliary Metachronal Wave Synchronization",
         "volume": 1,
         "volume_code": "VOL. 01",
@@ -2996,7 +2996,7 @@
           },
           {
             "label": "Subdiffusion Exponent (alpha)",
-            "value": "0.814 (65 nm colloidal tracer in Healthy)"
+            "value": "0.814 (65 nm LNP in Healthy)"
           },
           {
             "label": "Zero-Shear Viscosity",
@@ -3012,37 +3012,37 @@
             "date": "2026-11-02",
             "edition": "REV 1.2",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified de Gennes mesh scaling, subdiffusion exponent bounds, and CSI 11 53 43 / 23 41 33 aerosol rheometry clean-air filtration containment.",
-            "summary": "REV 1.2 (Redated 2026-11-02): Verified Carreau-Yasuda shear-thinning rheology eta(dot_gamma) and de Gennes mesh scaling xi ~ w^(-0.75) for 65 nm PEGylated colloidal tracer subdiffusion across healthy (alpha = 0.814) vs CF viscoplastic grout plugs (alpha < 0.20)."
+            "summary": "REV 1.2 (Redated 2026-11-02): Verified Carreau-Yasuda shear-thinning rheology eta(dot_gamma) and de Gennes mesh scaling xi ~ w^(-0.75) for 65 nm PEGylated LNP subdiffusion across healthy (alpha = 0.814) vs CF mucus plugs (alpha < 0.20)."
           },
           {
             "date": "2026-11-01",
             "edition": "REV 1.1",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified de Gennes mesh scaling xi ~ w^(-0.75), subdiffusion alpha = 0.814, and CSI 11 53 43 / 23 41 33 HEPA extraction boundary.",
-            "summary": "REV 1.1 (Redated 2026-11-01): Added CSI MasterFormat 11 53 43 / 23 41 33 laboratory rheometry aerosol containment plate and Carreau-Yasuda shear-thinning subdiffusion scaling for 65 nm PEGylated colloidal tracers."
+            "summary": "REV 1.1 (Redated 2026-11-01): Added CSI MasterFormat 11 53 43 / 23 41 33 laboratory rheometry aerosol containment plate and Carreau-Yasuda shear-thinning subdiffusion scaling for 65 nm PEGylated LNPs."
           },
           {
             "date": "2026-11-01",
             "edition": "REV 1.0",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified de Gennes mesh scaling xi ~ w^(-0.75), subdiffusion alpha = 0.814, and CF mortar matrix plug percolation cutoff.",
-            "summary": "REV 1.0 (Inaugural Edition 2026-11-01): Soft matter viscoplastic grout gel Carreau-Yasuda rheology and nanoparticle anomalous subdiffusion."
+            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified de Gennes mesh scaling xi ~ w^(-0.75), subdiffusion alpha = 0.814, and CF sputum plug percolation cutoff.",
+            "summary": "REV 1.0 (Inaugural Edition 2026-11-01): Soft matter mucus gel Carreau-Yasuda rheology and nanoparticle anomalous subdiffusion."
           }
         ],
         "sidenote_1": {
-          "body": "Steric entrapment in hyperconcentrated CF viscoplastic grout follows a power-law phase arrest; designing inhaled mRNA-colloidal tracers with core diameters <= 65 nm and neutral, ultra-dense PEG brush coatings reduces adhesive interactions and exploits the transient Carreau-Yasuda shear thinning created by cough dynamics.",
+          "body": "Steric entrapment in hyperconcentrated CF mucus follows a power-law phase arrest; designing inhaled mRNA-LNPs with core diameters <= 65 nm and neutral, ultra-dense PEG brush coatings reduces adhesive interactions and exploits the transient Carreau-Yasuda shear thinning created by cough dynamics.",
           "kicker": "SIDENOTE P.03 · DESIGN RULES FOR INHALED GENE THERAPY"
         },
         "sidenote_2": {
-          "body": "Inside dense mucin hydrogels, non-specific adhesive interactions and spatial tortuosity convert ordinary Brownian motion into anomalous subdiffusion where MSD <Delta r^2(t)> ~ t^alpha with subdiffusion exponent alpha = 0.814 in healthy vs alpha < 0.20 in dehydrated mortar matrix plugs.",
+          "body": "Inside dense mucin hydrogels, non-specific adhesive interactions and spatial tortuosity convert ordinary Brownian motion into anomalous subdiffusion where MSD <Delta r^2(t)> ~ t^alpha with subdiffusion exponent alpha = 0.814 in healthy vs alpha < 0.20 in dehydrated sputum plugs.",
           "kicker": "SIDENOTE P.03-B · BROWNIAN SUBDIFFUSION & CONTINUOUS TIME RANDOM WALKS (DOI 10.1103/PhysRevLett.79.3286)"
         },
         "skill": {
-          "description": "AI-agnostic physical skill for complex fluid rheology, Carreau-Yasuda shear thinning, and nanoparticle anomalous subdiffusion in ventilation duct viscoplastic grout.",
-          "filename": "viscoplastic grout-soft-matter-SKILL.md",
-          "name": "viscoplastic grout-soft-matter",
+          "description": "AI-agnostic physical skill for complex fluid rheology, Carreau-Yasuda shear thinning, and nanoparticle anomalous subdiffusion in airway mucus.",
+          "filename": "mucus-soft-matter-SKILL.md",
+          "name": "mucus-soft-matter",
           "rules": [
             "Scale mesh pore diameter as xi = 140 * (2.0 / w)^0.75 nm.",
             "Compute subdiffusion exponent alpha(d_p, xi) to verify penetration window.",
-            "Trigger viscoplastic grout plug alert when solids fraction w >= 7.0%."
+            "Trigger mucus plug alert when solids fraction w >= 7.0%."
           ]
         },
         "sliders": [
@@ -3072,12 +3072,12 @@
         },
         "status_badge": "REDATED REV 1.2",
         "steps": [
-          "Stage 1 (Healthy Mesh, 2% solids): Mucin mesh pore size xi ≈ 140 nm allows 65 nm PEGylated colloidal tracers to diffuse freely (alpha ≈ 0.72).",
+          "Stage 1 (Healthy Mesh, 2% solids): Mucin mesh pore size xi ≈ 140 nm allows 65 nm PEGylated LNPs to diffuse freely (alpha ≈ 0.72).",
           "Stage 2 (Shear-Thinning Response): Ciliary shear rates (dot_gamma ~ 10 s^-1) reduce local gel viscosity by an order of magnitude via Carreau-Yasuda dynamics.",
-          "Stage 3 (Concentration Shock & Plug Formation): In CF mortar matrix (8% solids), pore size drops to 45 nm, sterically locking particles larger than 50 nm.",
+          "Stage 3 (Concentration Shock & Plug Formation): In CF sputum (8% solids), pore size drops to 45 nm, sterically locking particles larger than 50 nm.",
           "Stage 4 (Subdiffusive Trapping): Particle trajectory collapses to alpha < 0.20, demonstrating the necessity of dense PEGylation and mucolytic co-delivery."
         ],
-        "subtitle": "Carreau-Yasuda shear-thinning, reptation tube dynamics, and anomalous subdiffusion exponents of gene delivery nanoparticles navigating the ventilation duct viscoplastic grout mesh.",
+        "subtitle": "Carreau-Yasuda shear-thinning, reptation tube dynamics, and anomalous subdiffusion exponents of gene delivery nanoparticles navigating the airway mucus mesh.",
         "title": "Soft Matter Rheology and Anomalous Subdiffusion in Entangled Mucin Hydrogels",
         "volume": 2,
         "volume_code": "VOL. 02",
@@ -3091,7 +3091,7 @@
           "mentioning": 1783,
           "contrasting": 3,
           "retracted": false,
-          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,778 citing publications (36 supporting, 1,783 mentioning, 3 contrasting) on non-linear rheology and irreversible mechanics of biological viscoplastic grout gels."
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,778 citing publications (36 supporting, 1,783 mentioning, 3 contrasting) on non-linear rheology and viscoelastic microrheology of biological biopolymer hydrogels."
         }
       },
       {
@@ -3132,7 +3132,7 @@
             "date": "2026-11-02",
             "edition": "REV 1.2",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Donnan osmotic equilibrium Delta Pi = 2.5 kPa, critical PCL threshold h_PCL = 7.0 um, and CSI 11 53 53 / 13 21 00 Ussing electrophysiology compliance.",
-            "summary": "REV 1.2 (Redated 2026-11-02): Verified coupled Nernst-Planck electrokinetic ion flux, Donnan swelling pressures, and Starling water flux (d h_PCL / dt = L_p (Delta Pi_osm - Delta P_hydro)) predicting catastrophic periciliary brush collapse below 7.0 um in CSI-MasterFormat deficit."
+            "summary": "REV 1.2 (Redated 2026-11-02): Verified coupled Nernst-Planck electrokinetic ion flux, Donnan swelling pressures, and Starling water flux (d h_PCL / dt = L_p (Delta Pi_osm - Delta P_hydro)) predicting catastrophic periciliary brush collapse below 7.0 um in CFTR deficit."
           },
           {
             "date": "2026-11-01",
@@ -3143,7 +3143,7 @@
           {
             "date": "2026-11-01",
             "edition": "REV 1.0",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified trans-epithelial ion fluxes, Donnan swelling pressures, and catastrophic osmotic PCL thinning below CSI-MasterFormat deficiency.",
+            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified trans-epithelial ion fluxes, Donnan swelling pressures, and catastrophic osmotic PCL thinning under CFTR deficiency.",
             "summary": "REV 1.0 (Inaugural Edition 2026-11-01): Nernst-Planck electrokinetics, Donnan membrane equilibrium, and periciliary osmotic collapse."
           }
         ],
@@ -3152,7 +3152,7 @@
           "kicker": "SIDENOTE P.04 · WHY MODULATORS MUST RESTORE OSMOTIC HEADROOM"
         },
         "sidenote_2": {
-          "body": "Button et al. proved that tethered cell-surface mucins form a grafted macromolecular brush acting as a secondary osmotic filter; when viscoplastic grout layer osmotic modulus exceeds the PCL brush swelling pressure (Delta Pi > 2.5 kPa), water is sucked out, flattening the periciliary space.",
+          "body": "Button et al. proved that tethered cell-surface mucins form a grafted macromolecular brush acting as a secondary osmotic filter; when mucus layer osmotic modulus exceeds the PCL brush swelling pressure (Delta Pi > 2.5 kPa), water is sucked out, flattening the periciliary space.",
           "kicker": "SIDENOTE P.04-B · DONNAN SWELLING & GRAFTED POLYMER BRUSHES (DOI 10.1103/RevModPhys.80.839)"
         },
         "skill": {
@@ -3167,7 +3167,7 @@
         },
         "sliders": [
           {
-            "label": "CSI-MasterFormat Conductance Factor",
+            "label": "CFTR Conductance Factor",
             "max": 2.0,
             "min": 0.0,
             "step": 0.1,
@@ -3192,12 +3192,12 @@
         },
         "status_badge": "REDATED REV 1.2",
         "steps": [
-          "Stage 1 (Hydrated Epithelium): CSI-MasterFormat Cl^- secretion balances ENaC Na^+ absorption, maintaining PCL osmotic equilibrium (h ≈ 7.0 μm).",
-          "Stage 2 (CSI-MasterFormat Defect & Unchecked ENaC): Loss of Cl^- permeability and 2.5x ENaC activity creates a net hyperosmolar reabsorptive drive.",
+          "Stage 1 (Hydrated Epithelium): CFTR Cl^- secretion balances ENaC Na^+ absorption, maintaining PCL osmotic equilibrium (h ≈ 7.0 μm).",
+          "Stage 2 (CFTR Defect & Unchecked ENaC): Loss of Cl^- permeability and 2.5x ENaC activity creates a net hyperosmolar reabsorptive drive.",
           "Stage 3 (Osmotic Desiccation): Trans-epithelial water flux drains the periciliary space, causing osmotic pressure to rise from 0.7 to 2.5 kPa.",
           "Stage 4 (Grafted Brush Compression): Tethered cell-surface mucins (MUC1, MUC4, MUC16) collapse under mechanical compression, permanently disabling clearance."
         ],
-        "subtitle": "Coupled Nernst-Planck electrodiffusion, Donnan swelling pressures, and trans-epithelial liquid flux determining the critical hydration threshold of ventilation duct surfaces.",
+        "subtitle": "Coupled Nernst-Planck electrodiffusion, Donnan swelling pressures, and trans-epithelial liquid flux determining the critical hydration threshold of airway surfaces.",
         "title": "Electrokinetics, Donnan Equilibrium, and the Catastrophic Osmotic Collapse of the Periciliary Layer",
         "volume": 2,
         "volume_code": "VOL. 02",
@@ -3218,7 +3218,7 @@
         "category_code": "P",
         "colophon": {
           "benchmarks": "Gamow 1928 · Marcus 1956 · DOI 10.1103/RevModPhys.35.724",
-          "bridge": "WKB Proton Tunneling ↔ CSI-MasterFormat 1717-1G>A Base Editing",
+          "bridge": "WKB Proton Tunneling ↔ CFTR 1717-1G>A Base Editing",
           "identifier": "P.05 · Quantum & Chemical Physics",
           "kernels": "WKB T ~ exp(−2∫√(2m(V−E))dx/ℏ) · KIE = 6.84"
         },
@@ -3255,13 +3255,13 @@
             "date": "2026-11-02",
             "edition": "REV 1.1",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Bell tunneling factor convergence kappa_tun = 6.84 at 310 K, Marcus reorganization lambda = 22.4 kcal/mol, and CSI 11 53 53 / 13 21 00 laser kinetic cleanroom criteria.",
-            "summary": "REV 1.1 (Redated 2026-11-02): Verified WKB semiclassical tunneling action integral, Bell parabolic correction kappa_tun, and Marcus reorganization energy for engineered TadA-8e adenine base editors rescuing CSI-MasterFormat 1717-1G>A."
+            "summary": "REV 1.1 (Redated 2026-11-02): Verified WKB semiclassical tunneling action integral, Bell parabolic correction kappa_tun, and Marcus reorganization energy for engineered TadA-8e adenine base editors rescuing CFTR 1717-1G>A."
           },
           {
             "date": "2026-11-01",
             "edition": "REV 1.0",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified WKB mass-scaling exponent sqrt(2m) and Bell tunneling factor convergence.",
-            "summary": "REV 1.0 (Published 2026-11-01): Initial 5-Act monograph on WKB proton tunneling, Marcus reorganization, and TadA base-editing catalysis for Class I CSI-MasterFormat mutations."
+            "summary": "REV 1.0 (Published 2026-11-01): Initial 5-Act monograph on WKB proton tunneling, Marcus reorganization, and TadA base-editing catalysis for Class I CFTR mutations."
           }
         ],
         "scite": {
@@ -3272,15 +3272,15 @@
           "mentioning": 464,
           "contrasting": 0,
           "retracted": false,
-          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 694 citing publications (5 supporting, 464 mentioning, 0 contrasting) on CSI-MasterFormat 1717-1G>A rescue."
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 694 citing publications (5 supporting, 464 mentioning, 0 contrasting) on quantum proton tunneling in DNA base pairs."
         },
         "sidenote_1": {
           "body": "Because protium has half the mass of deuterium, its imaginary barrier frequency u_b = ℏω_b / (k_B T) is √2 larger, producing a 6.8-fold quantum rate acceleration at 310 K.",
           "kicker": "SIDENOTE P.05-A · BELL PARABOLIC TUNNELING FACTOR"
         },
         "sidenote_2": {
-          "body": "Engineered TadA adenine base editors delivered as optimized mRNA + sgRNA functionally rescue Cl- transport in patient-derived 1717-1G>A intestinal organoids and ventilation duct epithelia.",
-          "kicker": "SIDENOTE P.05-B · CSI-MasterFormat 1717-1G>A BASE EDITING (DOI 10.1103/RevModPhys.35.724)"
+          "body": "Engineered TadA adenine base editors delivered as optimized mRNA + sgRNA functionally rescue Cl- transport in patient-derived 1717-1G>A intestinal organoids and airway epithelia.",
+          "kicker": "SIDENOTE P.05-B · CFTR 1717-1G>A BASE EDITING"
         },
         "skill": {
           "description": "AI-agnostic physics skill for WKB quantum barrier penetration, Bell parabolic tunneling corrections, Marcus reorganization energy, and enzymatic Kinetic Isotope Effects (KIE).",
@@ -3312,7 +3312,7 @@
         ],
         "slug": "p05",
         "spec_plate": {
-          "body": "Gamow WKB tunneling action integral and Marcus reorganization chamber validating quantum proton-transfer efficiency and TadA-8e base editing for CSI-MasterFormat 1717-1G>A.",
+          "body": "Gamow WKB tunneling action integral and Marcus reorganization chamber validating quantum proton-transfer efficiency and TadA-8e base editing for CFTR 1717-1G>A.",
           "division": "CSI MASTERFORMAT 11 53 53 / 13 21 00",
           "meta": "Gamow 1928 · Marcus 1956 · DOI 10.1103/RevModPhys.35.724 · ISO 14644-1 Class 5",
           "title": "Quantum Deaminase Catalysis & Laser Kinetic Isotope Cleanroom"
@@ -3322,9 +3322,9 @@
           "Stage 1 (Marcus Environmental Reorganization λ): Thermal fluctuations align solvent and catalytic zinc dipoles to bring donor and acceptor orbitals into degeneracy.",
           "Stage 2 (Promoting Vibration Donor-Acceptor Compression): Picosecond protein breathing modes compress the hydrogen-bond bridge from 2.90 Å to 2.58 Å (Δx = 0.52 Å).",
           "Stage 3 (WKB Semiclassical Wave Penetration): Proton wavefunction tunnels through the 16.4 kcal/mol barrier with Bell correction κ_tun = (u_b/2)/sin(u_b/2) and KIE k_H/k_D = 6.84.",
-          "Stage 4 (TadA-8e Adenine Deamination Lock): Converts target adenosine to inosine (read as guanosine), restoring canonical CSI-MasterFormat splicing at 1717-1G>A."
+          "Stage 4 (TadA-8e Adenine Deamination Lock): Converts target adenosine to inosine (read as guanosine), restoring canonical CFTR splicing at 1717-1G>A."
         ],
-        "subtitle": "How George Gamow's WKB tunneling action integral, Rudolph Marcus's reorganization energy, and kinetic isotope effects (k_H/k_D = 6.8) govern base-editor deamination of CSI-MasterFormat nonsense and splice mutations.",
+        "subtitle": "How George Gamow's WKB tunneling action integral, Rudolph Marcus's reorganization energy, and kinetic isotope effects (k_H/k_D = 6.8) govern base-editor deamination of CFTR nonsense and splice mutations.",
         "title": "Quantum WKB Barrier Penetration, Proton-Coupled Electron Transfer, and Deaminase Base-Editing Catalysis",
         "volume": 3,
         "volume_code": "VOL. 03",
@@ -3334,7 +3334,7 @@
         "category_code": "P",
         "colophon": {
           "benchmarks": "de Gennes 1971 · Doi-Edwards 1978 · DOI 10.1039/F29787401818",
-          "bridge": "Tube Reptation ↔ 4.5 kb CSI-MasterFormat mRNA & Prime-Editor Delivery",
+          "bridge": "Tube Reptation ↔ 4.5 kb CFTR mRNA & Prime-Editor Delivery",
           "identifier": "P.06 · Polymer & Statistical Physics",
           "kernels": "τ_d ~ N³ · D_rep ~ N⁻² · a_tube = 85 nm"
         },
@@ -3371,7 +3371,7 @@
             "date": "2026-11-02",
             "edition": "REV 1.1",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Doi-Edwards odd-mode Fourier sum psi(0) = 1.0, contour-length fluctuation exponent 3.4, and CSI 11 53 43 / 23 41 33 cleanroom aerosol containment.",
-            "summary": "REV 1.1 (Redated 2026-11-02): Verified de Gennes polymer reptation (D_rep ~ N^-2, tau_d ~ N^3) and Doi-Edwards topological tube disengagement dynamics for 4.5 kb CSI-MasterFormat mRNA and prime-editing ribonucleoprotein polyplex mucosal transit."
+            "summary": "REV 1.1 (Redated 2026-11-02): Verified de Gennes polymer reptation (D_rep ~ N^-2, tau_d ~ N^3) and Doi-Edwards topological tube disengagement dynamics for 4.5 kb CFTR mRNA and prime-editing ribonucleoprotein polyplex mucosal transit."
           },
           {
             "date": "2026-11-01",
@@ -3388,7 +3388,7 @@
           "mentioning": 579,
           "contrasting": 2,
           "retracted": false,
-          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 815 citing publications (20 supporting, 579 mentioning, 2 contrasting) on prime-editing CSI-MasterFormat functional rescue and large-cargo polymer reptation."
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 815 citing publications (20 supporting, 579 mentioning, 2 contrasting) on Doi–Edwards tube-theory constitutive mechanics and entangled polymer reptation."
         },
         "sidenote_1": {
           "body": "Breathing modes at the two free ends of the polymer shorten the effective tube length by (1 - μ√(N_e/N)), shifting the experimental viscosity exponent from 3.0 to 3.4.",
@@ -3428,7 +3428,7 @@
         ],
         "slug": "p06",
         "spec_plate": {
-          "body": "De Gennes topological tube model and Doi-Edwards viscoelastic relaxation cell validating 4.5 kb CSI-MasterFormat mRNA and prime-editing polyplex mucosal penetration.",
+          "body": "De Gennes topological tube model and Doi-Edwards viscoelastic relaxation cell validating 4.5 kb CFTR mRNA and prime-editing polyplex mucosal penetration.",
           "division": "CSI MASTERFORMAT 11 53 43 / 23 41 33",
           "meta": "de Gennes 1971 · Doi-Edwards 1978 · DOI 10.1039/F29787401818 · NSF/ANSI 49",
           "title": "Polymer Reptation Microfluidic Array & Gene Cargo Cleanroom Loop"
@@ -3438,9 +3438,9 @@
           "Stage 1 (Topological Tube Confinement a_tube): Entangled mucin fibers restrict transverse polymer fluctuations to a virtual tube of diameter a_tube = 85 nm.",
           "Stage 2 (Curvilinear Rouse Diffusion D_curv ~ N⁻¹): The chain diffuses back and forth along its own primitive path of contour length L_tube = N b² / a_tube.",
           "Stage 3 (Tube Disengagement τ_d ~ N³): Complete memory relaxation occurs when the chain slithers out of its original tube in time τ_d = L_tube² / (π² D_curv).",
-          "Stage 4 (Biased Mucosal Penetration): Weak electro-osmotic alignment tilts the leading chain end, accelerating 4.5 kb CSI-MasterFormat mRNA polyplex transport across ventilation duct viscoplastic grout."
+          "Stage 4 (Biased Mucosal Penetration): Weak electro-osmotic alignment tilts the leading chain end, accelerating 4.5 kb CFTR mRNA polyplex transport across airway mucus."
         ],
-        "subtitle": "How Pierre-Gilles de Gennes's topological tube model and Doi–Edwards viscoelastic relaxation govern the slithering transport of 4.5 kb CSI-MasterFormat mRNA and prime-editing polyplexes through entangled hydrogels.",
+        "subtitle": "How Pierre-Gilles de Gennes's topological tube model and Doi–Edwards viscoelastic relaxation govern the slithering transport of 4.5 kb CFTR mRNA and prime-editing polyplexes through entangled hydrogels.",
         "title": "de Gennes Polymer Reptation (D_rep ~ N⁻²), Doi–Edwards Tube Relaxation, and Kilobase Genetic Cargo Transport",
         "volume": 3,
         "volume_code": "VOL. 03",
@@ -3450,7 +3450,7 @@
         "category_code": "P",
         "colophon": {
           "benchmarks": "−C_p,peak = 2.84 · −C_L = 3.38 (Z-Mode) · −40% Drag (X-Mode)",
-          "bridge": "F1 Lamb–Oseen Vortex Sealing ↔ M.07 FNO Surrogates & Tubular Dean Vortices",
+          "bridge": "F1 Lamb–Oseen Vortex Sealing ↔ M.07 FNO Surrogates & Bronchial Dean Vortices",
           "identifier": "P.07 · Formula 1 Ground-Effect & 2026 Active Aero · FIA Art. 3",
           "kernels": "Venturi Bernoulli–Euler Suction · Lamb–Oseen Vortex · Hopf Porpoising"
         },
@@ -3615,7 +3615,7 @@
           "kicker": "SIDENOTE P.08-A · WHY CURVED CAR BODIES LOVE GONIOAPPARENT FLOP WHILE WALLS LOVE MATTE"
         },
         "sidenote_2": {
-          "body": "The exact same Bragg–Snell equation Δ_OPD = 2 d √(n² − sin²θ) used to design pearlescent automotive pigments is used in clinical white-light interferometry to measure the 7 μm ventilation duct surface liquid and tear-film lipid layers.",
+          "body": "The exact same Bragg–Snell equation Δ_OPD = 2 d √(n² − sin²θ) used to design pearlescent automotive pigments is used in clinical white-light interferometry to measure the 7 μm airway surface liquid and tear-film lipid layers.",
           "kicker": "SIDENOTE P.08-B · SPECIFICATION PLATE · THIN-FILM INTERFEROMETRY IN BIOPHYSICS"
         },
         "skill": {
@@ -3670,7 +3670,7 @@
         "category_code": "P",
         "colophon": {
           "benchmarks": "Q = 1.20 μL/min · K = 0.45 S/m ⇒ d_drop = 2.42 μm · q/q_R = 0.68",
-          "bridge": "Completes P.03/P.04/P.06 · Intact 65 nm colloidal tracer Nebulization → Tubular Generations 4–16",
+          "bridge": "Completes P.03/P.04/P.06 · Intact 65 nm LNP Nebulization → Bronchial Generations 4–16",
           "identifier": "P.09 · Taylor Cone EHD & Rayleigh Aerosol Physics",
           "kernels": "Taylor P_{1/2}(cos θ_0) = 0 (49.3°) · Rayleigh Limit q_R · Gañán-Calvo Jet"
         },
@@ -3697,14 +3697,14 @@
           },
           {
             "label": "Monodisperse Droplet (d_drop)",
-            "value": "2.42 μm (Tubular Window)"
+            "value": "2.42 μm (Bronchial Window)"
           },
           {
             "label": "Rayleigh Charge Ratio (q/q_R)",
             "value": "0.68 (< 1.00 Stable)"
           },
           {
-            "label": "Aerosol & colloidal tracer Verdict",
+            "label": "Aerosol & LNP Verdict",
             "value": "97.4% INTACT mRNA · PASS"
           }
         ],
@@ -3731,7 +3731,7 @@
           "kicker": "SIDENOTE P.09-A · WHY LEGENDRE ORDER ν = 1/2 FIXES 49.3 DEGREES"
         },
         "sidenote_2": {
-          "body": "Conventional jet nebulizers recycle 99% of the dose against baffles, shearing colloidal tracer bilayers; single-pass Taylor-cone and palladium vibrating-mesh orifices preserve 4.5 kb CSI-MasterFormat mRNA integrity.",
+          "body": "Conventional jet nebulizers recycle 99% of the dose against baffles, shearing LNP bilayers; single-pass Taylor-cone and palladium vibrating-mesh orifices preserve 4.5 kb CFTR mRNA integrity.",
           "kicker": "SIDENOTE P.09-B · COMPLETING FOLIOS P.03 & P.06 FOR INHALED CF GENE THERAPY"
         },
         "skill": {
@@ -3740,8 +3740,8 @@
           "name": "taylor-cone-ehd-rayleigh-aerosol",
           "rules": [
             "Verify Taylor cone onset voltage V_onset ~ sqrt(gamma * d_nozzle / epsilon_0) and equilibrium half-angle alpha_T = 49.29 deg from P_{1/2}(cos(pi - alpha_T)) = 0.",
-            "Compute Ganan-Calvo cone-jet droplet diameter d_drop ~ (rho * epsilon_0 * Q^3 / (gamma * K_cond))^(1/6) and verify 1.5 um <= MMAD <= 3.5 um for tracheotubular targeting.",
-            "Enforce Rayleigh fissility stability q < q_R = 8 * pi * sqrt(epsilon_0 * gamma * R^3) and Weber shear stability We_shear < We_crit to prevent colloidal tracer rupture."
+            "Compute Ganan-Calvo cone-jet droplet diameter d_drop ~ (rho * epsilon_0 * Q^3 / (gamma * K_cond))^(1/6) and verify 1.5 um <= MMAD <= 3.5 um for tracheobronchial targeting.",
+            "Enforce Rayleigh fissility stability q < q_R = 8 * pi * sqrt(epsilon_0 * gamma * R^3) and Weber shear stability We_shear < We_crit to prevent LNP rupture."
           ]
         },
         "sliders": [
@@ -3767,14 +3767,14 @@
           "body": "Precision aerosol generator maintaining aerodynamic mass median diameter MMAD = 2.0–3.2 μm, geometric standard deviation GSD ≤ 1.25, and post-nebulization mRNA encapsulation efficiency ≥ 95%.",
           "division": "PULMONARY AEROSOL BIOPHYSICS / USP <1601>",
           "meta": "Taylor (1964) DOI 10.1098/rspa.1964.0151 & Next-Generation Impactor (NGI) verified",
-          "title": "Low-Shear Electrohydrodynamic & Vibrating-Mesh Monodisperse colloidal tracer Nebulizer"
+          "title": "Low-Shear Electrohydrodynamic & Vibrating-Mesh Monodisperse LNP Nebulizer"
         },
         "status_badge": "EHD AEROSOL PHYSICS · REV 1.0",
         "steps": [
           "Stage 1 (Taylor Equipotential Cone Equilibrium, DOI 10.1098/rspa.1964.0151): Balancing Maxwell electrostatic stress ½ ε_0 E_n² against Laplace pressure γ cot α / r fixes P_{1/2}(cos 130.7°) = 0 and θ_T = 49.3°.",
           "Stage 2 (Gañán-Calvo Apex Cone-Jet Necking): Charge relaxation τ_e = ε / K accelerates a sub-micrometer liquid microjet from the cone tip without high-shear wall cavitation.",
-          "Stage 3 (Monodisperse Capillary Breakup in the 1.5–3.5 μm Window): At Q = 1.20 μL/min and K = 0.45 S/m, jet varicose breakup yields d_drop = 2.42 μm (GSD = 1.18) for deep tubular deposition.",
-          "Stage 4 (Rayleigh Fission Guard & Intact 4.5 kb mRNA Survival, Continuing P.06): Holds droplet charge ratio q / q_R = 0.68 < 1.00, preserving 97.4% colloidal tracer lipid-bilayer encapsulation."
+          "Stage 3 (Monodisperse Capillary Breakup in the 1.5–3.5 μm Window): At Q = 1.20 μL/min and K = 0.45 S/m, jet varicose breakup yields d_drop = 2.42 μm (GSD = 1.18) for deep bronchial deposition.",
+          "Stage 4 (Rayleigh Fission Guard & Intact 4.5 kb mRNA Survival, Continuing P.06): Holds droplet charge ratio q / q_R = 0.68 < 1.00, preserving 97.4% LNP lipid-bilayer encapsulation."
         ],
         "subtitle": "Completing the biophysical delivery sequence of Folios P.03, P.04, and P.06: how Sir Geoffrey Taylor's P_{1/2}(cos θ_0) = 0 equilibrium cone and Rayleigh charge limits govern precision aerosol generation.",
         "title": "Electrohydrodynamic Taylor Cones (49.3°), Rayleigh Fission Limits & Precision Monodisperse Aerosol Jet Physics",
@@ -3786,7 +3786,7 @@
         "category_code": "P",
         "colophon": {
           "benchmarks": "m_T = 0.55 > m_P = 0.25 ⇒ C = +1 · Δω/ω_0 = 14.2% · T_forward = 99.8%",
-          "bridge": "Synthesizes E.03/A.05/P.08 · Topological Ring Biosensor ↔ Single-colloidal tracer Sizing",
+          "bridge": "Synthesizes E.03/A.05/P.08 · Topological Ring Biosensor ↔ Single-LNP Sizing",
           "identifier": "P.10 · Haldane–Raghu Topological Photonics & Berry Curvature",
           "kernels": "Berry Curvature Ω_n(k) · First Chern Invariant C_n ∈ ℤ · Bulk-Boundary Edge Mode"
         },
@@ -4270,7 +4270,7 @@
           "identifier": "M.02 · Analytic Number Theory",
           "kernels": "Zeta23 · Challenge/XiPrime.lean · Large Sieve",
           "benchmarks": "Ingham-Huxley Zero-Density N(σ, T) ≤ T^(c(1-σ))",
-          "bridge": "Cheeger-Fiedler Spectral Gap ↔ CSI-MasterFormat Burst Relaxation"
+          "bridge": "Cheeger-Fiedler Spectral Gap ↔ CFTR Burst Relaxation"
         },
         "sliders": [
           {
@@ -4320,7 +4320,7 @@
         },
         "sidenote_2": {
           "kicker": "SIDENOTE M.02-B · MARKOVIAN CHANNEL RELAXATION",
-          "body": "The spectral gap between the leading eigenvalue and off-critical exceptions directly governs mixing time τ_mix = 1/λ_2 in continuous-time Markov chains of CSI-MasterFormat open/closed pore bursts."
+          "body": "The spectral gap between the leading eigenvalue and off-critical exceptions directly governs mixing time τ_mix = 1/λ_2 in continuous-time Markov chains of CFTR open/closed pore bursts."
         },
         "skill": {
           "filename": "zeta-spectral-zero-density-SKILL.md",
@@ -4439,8 +4439,8 @@
           "body": "FunSearch outputs human-readable priority functions rather than raw black-box coordinates, allowing mathematicians to inspect the symmetries of the 512-cap construction in F_3^8."
         },
         "sidenote_2": {
-          "kicker": "SIDENOTE M.03-B · SYNONYMOUS CODON PACKING FOR CSI-MasterFormat mRNA",
-          "body": "Designing maximally diverse synonymous CSI-MasterFormat mRNA sequences that avoid TLR7/8 uridine triplets and secondary hairpin collisions is isomorphic to packing line-free codewords in finite-field Hamming spaces."
+          "kicker": "SIDENOTE M.03-B · SYNONYMOUS CODON PACKING FOR CFTR mRNA",
+          "body": "Designing maximally diverse synonymous CFTR mRNA sequences that avoid TLR7/8 uridine triplets and secondary hairpin collisions is isomorphic to packing line-free codewords in finite-field Hamming spaces."
         },
         "skill": {
           "filename": "extremal-capset-tensor-rank-SKILL.md",
@@ -4559,8 +4559,8 @@
           "body": "The PFR project demonstrated that human-authored LaTeX dependency blueprints paired with parallel Lean 4 tactic formalization can verify a major open conjecture in weeks rather than years."
         },
         "sidenote_2": {
-          "kicker": "SIDENOTE M.04-B · EPISTATIC CSI-MasterFormat MUTATION CLUSTERING",
-          "body": "Ruzsa entropic distance provides a rigorous information-theoretic metric for testing whether double-mutant CSI-MasterFormat rescue profiles decompose into additive domain subgroups."
+          "kicker": "SIDENOTE M.04-B · EPISTATIC CFTR MUTATION CLUSTERING",
+          "body": "Ruzsa entropic distance provides a rigorous information-theoretic metric for testing whether double-mutant CFTR rescue profiles decompose into additive domain subgroups."
         },
         "skill": {
           "filename": "pfr-entropic-combinatorics-SKILL.md",
@@ -5112,8 +5112,8 @@
           "body": "In Felix Otto's formal Riemannian calculus on probability space P_2(R^d), the Benamou–Brenier continuity equation defines the Levi-Civita geodesic while Sinkhorn's ε -> 0 limit recovers the Monge–Ampère PDE det(D²Φ) = f / (g ∘ ∇Φ)."
         },
         "sidenote_2": {
-          "kicker": "SIDENOTE M.09-B · WADDINGTON-OT FOR VENTILATION DUCT BASAL STEM CELL DIFFERENTIATION",
-          "body": "Because scRNA-seq destroys cells at each measurement timepoint t_k, Benamou–Brenier optimal transport is the canonical mathematical tool to reconstruct ancestor-descendant trajectories from basal stem cells to CSI-MasterFormat+ ionocytes."
+          "kicker": "SIDENOTE M.09-B · WADDINGTON-OT FOR AIRWAY BASAL STEM CELL DIFFERENTIATION",
+          "body": "Because scRNA-seq destroys cells at each measurement timepoint t_k, Benamou–Brenier optimal transport is the canonical mathematical tool to reconstruct ancestor-descendant trajectories from basal stem cells to CFTR+ ionocytes."
         },
         "skill": {
           "filename": "wasserstein-optimal-transport-benamou-brenier-SKILL.md",
@@ -5171,7 +5171,7 @@
           "identifier": "M.10 · Persistent Homology & Topological Percolation Barcodes",
           "kernels": "Vietoris–Rips Filtration · Z_2 Boundary Reduction ∂_k · Bottleneck Stability",
           "benchmarks": "ε = 65 nm · β_0 = 1, β_1 = 3, χ = −2 · Percolating Throat r_crit = 116 nm",
-          "bridge": "Completes E.01/P.03/M.05 · Cryo-ET Mucin H_1 Barcode ↔ 65 nm SORT-colloidal tracer Passage"
+          "bridge": "Completes E.01/P.03/M.05 · Cryo-ET Mucin H_1 Barcode ↔ 65 nm SORT-LNP Passage"
         },
         "sliders": [
           {
@@ -5195,7 +5195,7 @@
           "Stage 1 (Vietoris–Rips Simplicial Filtration K_ε, Continuing M.05): Grows balls of radius ε around 3D pore/mucin nodes, adding edges, triangles, and tetrahedra as pairwise distances cross 2ε.",
           "Stage 2 (Chain Complex & Z_2 Boundary Reduction ∂_{k−1} ∘ ∂_k = 0, DOI 10.1007/s00454-002-2885-2): Reduces boundary matrices to pair each k-cycle birth b_i with its bounding (k+1)-simplex death d_i.",
           "Stage 3 (Cohen-Steiner Bottleneck Stability Guarantee): Perturbation σ_noise = 0.08 shifts persistence points by at most d_B ≤ ||f − g||_∞, cleanly separating short diagonal noise from long structural bars.",
-          "Stage 4 (Critical Percolation Throat Certification, Completing E.01 & P.03): Identifies spanning H_1 pore-throat interval [38 nm, 116 nm], proving a 65 nm SORT-colloidal tracer percolates through the treated mesh."
+          "Stage 4 (Critical Percolation Throat Certification, Completing E.01 & P.03): Identifies spanning H_1 pore-throat interval [38 nm, 116 nm], proving a 65 nm SORT-LNP percolates through the treated mesh."
         ],
         "readouts": [
           {
@@ -5208,7 +5208,7 @@
           },
           {
             "label": "Max H_1 Percolation Throat",
-            "value": "r_crit = 116 nm (> 65 nm colloidal tracer)"
+            "value": "r_crit = 116 nm (> 65 nm LNP)"
           },
           {
             "label": "Topological Stability Verdict",
@@ -5218,7 +5218,7 @@
         "spec_plate": {
           "division": "ALGEBRAIC TOPOLOGY & 3D POROUS TOMOGRAPHY / TDA",
           "title": "Vietoris–Rips & Alpha-Complex Persistent Homology Percolation Certifier",
-          "body": "Exact Z_2 sparse boundary-matrix reducer and Wasserstein/Bottleneck persistence diagram analyzer for 3D micro-CT concrete cores (E.01/E.09) and cryo-ET ventilation duct mucin hydrogels (P.03).",
+          "body": "Exact Z_2 sparse boundary-matrix reducer and Wasserstein/Bottleneck persistence diagram analyzer for 3D micro-CT concrete cores (E.01/E.09) and cryo-ET airway mucin hydrogels (P.03).",
           "meta": "Edelsbrunner, Letscher & Zomorodian (2002) DOI 10.1007/s00454-002-2885-2 verified"
         },
         "sidenote_1": {
@@ -5227,7 +5227,7 @@
         },
         "sidenote_2": {
           "kicker": "SIDENOTE M.10-B · BOTTLENECK STABILITY AGAINST CRYO-ET IMAGING NOISE",
-          "body": "Because cryo-electron tomograms of CF mortar matrix have low signal-to-noise ratios, classical thresholding fails; persistent homology's Bottleneck Stability Theorem guarantees robust pore-throat sizing."
+          "body": "Because cryo-electron tomograms of CF sputum have low signal-to-noise ratios, classical thresholding fails; persistent homology's Bottleneck Stability Theorem guarantees robust pore-throat sizing."
         },
         "skill": {
           "filename": "persistent-homology-betti-percolation-SKILL.md",
@@ -5236,7 +5236,7 @@
           "rules": [
             "Verify the fundamental chain-complex identity partial_{k-1} * partial_k = 0 and Euler-Poincare invariant chi = sum_k (-1)^k |K^(k)| = sum_k (-1)^k beta_k.",
             "Filter out topological noise features with persistence lifetime (d_i - b_i) <= 2 * sigma_noise under the Cohen-Steiner Bottleneck Stability bound.",
-            "Compare the birth/death scale of the spanning H_1 / H_2 percolation cycle against therapeutic nanoparticle hydrodynamic diameter d_colloidal tracer."
+            "Compare the birth/death scale of the spanning H_1 / H_2 percolation cycle against therapeutic nanoparticle hydrodynamic diameter d_LNP."
           ]
         },
         "revisions": [

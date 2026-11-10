@@ -19,7 +19,7 @@ FOLIO_METADATA = {
     "primary_kernel": "tools/physics_kernel.py",
     "primary_doi": "10.1098/rspa.1964.0151",
     "scite_report": "https://scite.ai/reports/10.1098/rspa.1964.0151",
-    "benchmarks": [{"label": "Taylor Half-Angle (θ_T)", "value": "49.29° (P_{1/2} Zero)"}, {"label": "Monodisperse Droplet (d_drop)", "value": "2.42 μm (Tubular Window)"}, {"label": "Rayleigh Charge Ratio (q/q_R)", "value": "0.68 (< 1.00 Stable)"}, {"label": "Aerosol & colloidal tracer Verdict", "value": "97.4% INTACT mRNA · PASS"}],
+    "benchmarks": [{"label": "Taylor Half-Angle (θ_T)", "value": "49.29° (P_{1/2} Zero)"}, {"label": "Monodisperse Droplet (d_drop)", "value": "2.42 μm (Bronchial Window)"}, {"label": "Rayleigh Charge Ratio (q/q_R)", "value": "0.68 (< 1.00 Stable)"}, {"label": "Aerosol & LNP Verdict", "value": "97.4% INTACT mRNA · PASS"}],
 }
 
 

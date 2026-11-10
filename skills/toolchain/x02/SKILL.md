@@ -19,7 +19,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Deterministic Generator**: `python skills/toolchain/x02/make_x02.py`
 - **Byte-Level Stdlib Verifier**: `python skills/toolchain/x02/verify_x02_toolchain_x02_parametric_step_3mf_roundtrip.py`
 - **Planted-Defect Knockout Check**: `python skills/toolchain/x02/verify_x02_toolchain_x02_parametric_step_3mf_roundtrip.py --planted-defect` (must exit non-zero)
-- **Primary Scite Anchor DOI**: https://doi.org/10.1016/j.cad.2021.103018 (Scite Report: https://scite.ai/reports/10.1016/j.cad.2021.103018)
+- **Primary Scite Anchor DOI**: https://doi.org/10.1115/1.4029050 (Scite Report: https://scite.ai/reports/10.1115/1.4029050)
 
 ## 2. Small-Studio & Independent-Practitioner Open-Tool Workflow
 - **EN**: Independent Engineer's Zero-Cost Stack (build123d Apache-2.0 + FreeCAD 1.0 + OrcaSlicer): Author parametric parts in Python, export ISO 10303-21 STEP AP242 for CNC machine shops and 3MF for additive prototyping, and run verify_x02 to confirm zero volume drift between B-rep and mesh.

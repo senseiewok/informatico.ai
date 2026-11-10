@@ -19,7 +19,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Deterministic Generator**: `python skills/toolchain/x01/make_x01.py`
 - **Byte-Level Stdlib Verifier**: `python skills/toolchain/x01/verify_x01_toolchain_x01_glb_inspector_validator.py`
 - **Planted-Defect Knockout Check**: `python skills/toolchain/x01/verify_x01_toolchain_x01_glb_inspector_validator.py --planted-defect` (must exit non-zero)
-- **Primary Scite Anchor DOI**: https://doi.org/10.1145/3596711.3596790 (Scite Report: https://scite.ai/reports/10.1145/3596711.3596790)
+- **Primary Scite Anchor DOI**: https://doi.org/10.1080/10867651.1996.10487458 (Scite Report: https://scite.ai/reports/10.1080/10867651.1996.10487458)
 
 ## 2. Small-Studio & Independent-Practitioner Open-Tool Workflow
 - **EN**: Zero-Cost Studio Workflow (Blender 4.2 + FreeCAD 1.0 + Python 3 stdlib): Run make_x01.py to emit x01_artifact.glb, x01_artifact.step, and x01_artifact.3mf; audit any client or subcontractor .glb mesh for non-manifold edges, inverted normals, or chunk corruption in < 0.05s before opening a slicer or BIM model.

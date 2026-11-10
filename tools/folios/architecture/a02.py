@@ -22,7 +22,7 @@ FOLIO = {'folio_id': 'A.02',
  'colophon': {'identifier': 'A.02 · Reciprocal Timber Gridshells',
               'kernels': '1:50 Nexorade Bay + 1:5 Notched Lap Joint',
               'benchmarks': 'Eurocode 5 (EN 1995-1-1) Combined Bending & Shear',
-              'bridge': 'Reciprocal Load Sharing ↔ CSI-MasterFormat NBD1-NBD2 Dimer Interlock'},
+              'bridge': 'Reciprocal Load Sharing ↔ CFTR NBD1-NBD2 Dimer Interlock'},
  'steps': ['Stage 1 (4-Valence Reciprocal Fan): Four GL28h larch members interlock in a pinwheel cyclic dependency so '
            'no more than two members meet at any single point.',
            'Stage 2 (Eccentricity-Induced Dome Rise): Vertical offset e_z = 85 mm at each lap joint automatically '
@@ -182,8 +182,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    '10.1145/3524456), structural architects optimize reciprocal nexorade toolpaths for robotic 5-axis '
                    'timber fabrication under Eurocode 5 and Scite-verified structural literature (DOI '
                    '10.1162/qss_a_00146).',
- 'cf_bridge': 'Pediatric Civil & Structural Engineering outpatient clinics and respiratory rehabilitation halls '
-              'require zero-VOC, formaldehyde-free interiors (avoiding ventilation duct irritants that trigger '
+ 'cf_bridge': 'Pediatric Cystic Fibrosis outpatient clinics and respiratory rehabilitation halls '
+              'require zero-VOC, formaldehyde-free interiors (avoiding airway irritants that trigger '
               'bronchospasm) and warm, biophilic acoustics that lower clinical anxiety during multi-hour pulmonary '
               'function testing and nebulizer sessions. Polyurethane-bonded, zero-added-formaldehyde glulam gridshells '
               'deliver clean indoor air alongside negative net embodied carbon.',
@@ -196,9 +196,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'architecture. Journal of Building Engineering, 26, 100867. DOI: 10.1016/j.jobe.2019.100867.',
              'CEN (2004). EN 1995-1-1 (Eurocode 5): Design of timber structures — Slip modulus K_ser and fastener '
              'capacity.',
-             'Block, P., & Ochsendorf, J. / Van Mele, T., et al. (2015). COMPAS & polyhedral thrust network analysis '
-             'for 3D graphic statics (compas-dev/compas, https://github.com/compas-dev/compas). Computer-Aided Design, '
-             '61, 23–33. DOI: 10.1016/j.cad.2015.01.006.',
+             'Akbarzadeh, M., Van Mele, T., & Block, P. (2015). On the equilibrium of funicular polyhedral frames and '
+             'convex polyhedral force diagrams (compas-dev/compas, https://github.com/compas-dev/compas). '
+             'Computer-Aided Design, 63, 118–128. DOI: 10.1016/j.cad.2015.01.006.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the context of citations '
              'and classifies their intent using deep learning (https://scite.ai). Quantitative Science Studies, 2(3), '
              '882–898. DOI: 10.1162/qss_a_00146.'],
@@ -359,7 +359,7 @@ DISPATCH = {'kicker': 'FRONTIER TIMBER TECTONICS DISPATCH · RECIPROCAL NEXORADE
          'Architecture (DOI 10.4324/9780080556000; Asefi & Bahremandi-Tolou, J. Build. Eng. 2019, DOI '
          '10.1016/j.jobe.2019.100867), modern 5-axis CNC GL28h larch nexorades use engagement eccentricity e_z = 85 mm '
          'and Eurocode 5 notch verification (utilization 0.64 <= 1.00, buckling SF = 3.74) to build column-free timber '
-         'shells—mirroring the reciprocal NBD1-NBD2 dimer interlock in rescued F508del-CSI-MasterFormat (PDB 8EIQ).'}
+         'shells—mirroring the reciprocal NBD1-NBD2 dimer interlock in rescued F508del-CFTR (PDB 8EIQ).'}
 
 META_3D = ('Nexorade Reciprocal 4-Beam Pinwheel Gridshell',
  'X/Z: Geodesic Timber Lattice Coordinates · Y: Reciprocal Lap-Joint Camber & Bending Moment')
@@ -370,7 +370,7 @@ ES_TRANSLATION = {'title_es': 'Retículas Recíprocas de Madera (Nexorades), Mom
  'why_es': 'Como cuatro cuchillos o vigas entrelazados en molinete sobre las bordes de un vaso, cada elemento sostiene '
            'al siguiente y es sostenido por el anterior, salvando un claro mucho mayor que cualquier pieza individual.',
  'bridge_es': 'El engranaje cooperativo de vigas recíprocas ilustra a escala tectónica cómo el dímero NBD1–NBD2 del '
-              'canal CSI-MasterFormat se estabiliza mutuamente bajo moduladores alostéricos (PDB 8EIQ).',
+              'canal CFTR se estabiliza mutuamente bajo moduladores alostéricos (PDB 8EIQ).',
  'plain_es': 'Para entender cómo funciona una estructura recíproca de madera, coloquen cuatro cuchillos de mesa '
              'entrelazados en forma de molinete sobre la boca de una taza grande. Si el extremo de cada cuchillo '
              'descansa sobre la hoja del siguiente, el conjunto se traba por sí solo en el centro con una firmeza '

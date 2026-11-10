@@ -32,7 +32,7 @@ FOLIO = {'category_code': 'P',
                            'electrokinetic ion flux, Donnan swelling pressures, and Starling water '
                            'flux (d h_PCL / dt = L_p (Delta Pi_osm - Delta P_hydro)) predicting '
                            'catastrophic periciliary brush collapse below 7.0 um in '
-                           'CSI-MasterFormat deficit.'},
+                           'CFTR deficit.'},
                {'date': '2026-11-01',
                 'edition': 'REV 1.1',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
@@ -46,7 +46,7 @@ FOLIO = {'category_code': 'P',
                 'edition': 'REV 1.0',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'trans-epithelial ion fluxes, Donnan swelling pressures, and catastrophic '
-                        'osmotic PCL thinning below CSI-MasterFormat deficiency.',
+                        'osmotic PCL thinning under CFTR deficiency.',
                 'summary': 'REV 1.0 (Inaugural Edition 2026-11-01): Nernst-Planck electrokinetics, '
                            'Donnan membrane equilibrium, and periciliary osmotic collapse.'}],
  'sidenote_1': {'body': 'Clinical efficacy in CF requires restoring enough apical Cl- conductance '
@@ -56,7 +56,7 @@ FOLIO = {'category_code': 'P',
                 'kicker': 'SIDENOTE P.04 · WHY MODULATORS MUST RESTORE OSMOTIC HEADROOM'},
  'sidenote_2': {'body': 'Button et al. proved that tethered cell-surface mucins form a grafted '
                         'macromolecular brush acting as a secondary osmotic filter; when '
-                        'viscoplastic grout layer osmotic modulus exceeds the PCL brush swelling '
+                        'mucus layer osmotic modulus exceeds the PCL brush swelling '
                         'pressure (Delta Pi > 2.5 kPa), water is sucked out, flattening the '
                         'periciliary space.',
                 'kicker': 'SIDENOTE P.04-B · DONNAN SWELLING & GRAFTED POLYMER BRUSHES (DOI '
@@ -71,7 +71,7 @@ FOLIO = {'category_code': 'P',
                      'classification.',
                      'Flag osmotic collapse when net solute reabsorption exceeds 1.5 '
                      'μEq/(cm^2*h).']},
- 'sliders': [{'label': 'CSI-MasterFormat Conductance Factor',
+ 'sliders': [{'label': 'CFTR Conductance Factor',
               'max': 2.0,
               'min': 0.0,
               'step': 0.1,
@@ -92,9 +92,9 @@ FOLIO = {'category_code': 'P',
                         'ISO 14644-1',
                 'title': 'Ussing Chamber Transepithelial Electrophysiology & Micro-OCT Facility'},
  'status_badge': 'REDATED REV 1.2',
- 'steps': ['Stage 1 (Hydrated Epithelium): CSI-MasterFormat Cl^- secretion balances ENaC Na^+ '
+ 'steps': ['Stage 1 (Hydrated Epithelium): CFTR Cl^- secretion balances ENaC Na^+ '
            'absorption, maintaining PCL osmotic equilibrium (h ≈ 7.0 μm).',
-           'Stage 2 (CSI-MasterFormat Defect & Unchecked ENaC): Loss of Cl^- permeability and 2.5x '
+           'Stage 2 (CFTR Defect & Unchecked ENaC): Loss of Cl^- permeability and 2.5x '
            'ENaC activity creates a net hyperosmolar reabsorptive drive.',
            'Stage 3 (Osmotic Desiccation): Trans-epithelial water flux drains the periciliary '
            'space, causing osmotic pressure to rise from 0.7 to 2.5 kPa.',
@@ -102,7 +102,7 @@ FOLIO = {'category_code': 'P',
            'collapse under mechanical compression, permanently disabling clearance.'],
  'subtitle': 'Coupled Nernst-Planck electrodiffusion, Donnan swelling pressures, and '
              'trans-epithelial liquid flux determining the critical hydration threshold of '
-             'ventilation duct surfaces.',
+             'airway surfaces.',
  'title': 'Electrokinetics, Donnan Equilibrium, and the Catastrophic Osmotic Collapse of the '
           'Periciliary Layer',
  'volume': 2,
@@ -191,8 +191,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'surpasses the three kilopascal brush threshold. At that critical tipping point, '
                 'water is violently extracted from the brush, triggering an abrupt mechanical '
                 'collapse from which cilia cannot spontaneously recover.',
- 'pullquote': '"The ventilation duct does not collapse because water disappears into thin air — it '
-              'collapses when dehydrated viscoplastic grout concentration crosses ~6% solids and '
+ 'pullquote': '"The airway does not collapse because water disappears into thin air — it '
+              'collapses when dehydrated mucus concentration crosses ~6% solids and '
               'its osmotic pressure crushes the 3.0 kPa periciliary brush."',
  'chronology': [('1887',
                  "Jacobus Henricus van 't Hoff formulates the thermodynamic law of osmotic "
@@ -205,8 +205,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'surface-tethered polymer brushes.'),
                 ('2012',
                  'Button, Rubinstein & Boucher prove the two-gel osmotic brush model of human '
-                 'ventilation duct surface liquid in Science.')],
- 'act2_title': 'Act II — How It Actually Works: Two-Gel Osmotic Competition (Pi_viscoplastic grout '
+                 'airway surface liquid in Science.')],
+ 'act2_title': 'Act II — How It Actually Works: Two-Gel Osmotic Competition (Pi_mucus '
                'vs. Pi_PCL)',
  'act2_analogy': 'Think of a sturdy coil-spring mattress (the periciliary brush) holding up a down '
                  'comforter (healthy mucus). The mattress easily supports the comforter, keeping '
@@ -267,19 +267,19 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'net flux switches from secretion to hyper-reabsorption, luminal water volume '
                    'is depleted, concentrating the supernatant mucin network until its external '
                    'osmotic pressure overwhelms the Donnan modulus, crushing the brush.',
- 'walkthrough': ['Experiment 1 (Two-Gel Crossover): Compare healthy Pi_viscoplastic grout = 0.5 '
-                 'kPa < Pi_PCL = 3.0 kPa (cilia upright at 7.0 um) against CF Pi_viscoplastic '
-                 'grout = 4.2 kPa > Pi_PCL (brush compressed to 3.2 um).',
+ 'walkthrough': ['Experiment 1 (Two-Gel Crossover): Compare healthy Pi_mucus = 0.5 '
+                 'kPa < Pi_PCL = 3.0 kPa (cilia upright at 7.0 um) against CF Pi_mucus '
+                 '= 4.2 kPa > Pi_PCL (brush compressed to 3.2 um).',
                  'Experiment 2 (Osmotic Rescue): Trace how inhaled 7% hypertonic saline or ENaC '
-                 'blockade (ETD001) restores luminal water volume and drops Pi_viscoplastic grout '
+                 'blockade (ETD001) restores luminal water volume and drops Pi_mucus '
                  'back below 3.0 kPa.',
                  'Experiment 3 (Interactive Voltage & Affinity Sliders): Scrub the Physics plate '
                  'controls to observe electro-osmotic coupling across the epithelium.'],
  'act4_title': 'Act IV — Human + AI Co-Design & the Structural & Civil Engineering Specification '
                'Bridge',
  'act4_human_ai': 'Coupled Nernst–Planck + Rubinstein–Boucher two-gel osmotic solvers predict the '
-                  'exact threshold of CSI-MasterFormat functional rescue (~15–20% of wild-type Cl- '
-                  'transport) needed to keep Pi_viscoplastic grout below the 3.0 kPa brush '
+                  'exact threshold of CFTR functional rescue (~15–20% of wild-type Cl- '
+                  'transport) needed to keep Pi_mucus below the 3.0 kPa brush '
                   'collapse line. Differentiable Poisson–Boltzmann and coarse-grained '
                   'polyelectrolyte molecular dynamics in jax-md/jax-md '
                   '(https://github.com/jax-md/jax-md, DOI 10.1088/1742-5468/ac3ae9) coupled with '
@@ -304,16 +304,16 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'three-kilopascal osmotic safety margin, turning raw optical interference data '
                    'into actionable biophysical predictions of mucosal hydration.',
  'cf_bridge': 'This 3.0 kPa osmotic threshold defines the quantitative target for every genetic CF '
-              'therapy in our pipeline: if inhaled mRNA colloidal tracers or prime editors restore '
-              'enough functional CSI-MasterFormat across 15–25% of surface epithelial cells to '
-              'keep viscoplastic grout solids below 4% (Pi_viscoplastic grout < 1.8 kPa), the '
+              'therapy in clinical pipelines: if inhaled mRNA lipid nanoparticles (LNPs) or prime editors restore '
+              'enough functional CFTR across 15–25% of surface epithelial cells to '
+              'keep mucus solids below 4% (Pi_mucus < 1.8 kPa), the '
               'periciliary brush springs back to 7.0 um and mucociliary clearance resumes.',
  'sources': ["Button, B., Cai, L.-H., Ehre, C., Kesimer, M., Hill, D. B., Sheehan, J. K., Boucher, R. C., & Rubinstein, M. (2012). Grafted polymer brush osmotic equilibrium and Donnan gel swelling mechanics (extending van 't Hoff 1887). Science, 337(6097), 937–941. DOI: 10.1126/science.1223012.",
              'Alexander, S. (1977) & de Gennes, P.-G. (1980). Conformations of polymers attached '
              'to an interface. Macromolecules, 13(5), 1069–1075.',
              'Button, B., Cai, L.-H., Ehre, C., Kesimer, M., Hill, D. B., Sheehan, J. K., Boucher, '
              'R. C., & Rubinstein, M. (2012). A periciliary brush promotes the lung health by '
-             'separating the viscoplastic grout layer from ventilation duct epithelia. Science, '
+             'separating the mucus layer from airway epithelia. Science, '
              '337(6097), 937–941.',
              'Zhulina, E. B., Borisov, O. V., & Priamitsyn, V. A. (1990). Theory of sterically '
              'stabilized dispersions. Macromolecules, 23(21), 4581–4590.',
@@ -325,8 +325,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
              '10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" '
-        'aria-label="Button-Rubinstein-Boucher two-gel osmotic competition between Pi_viscoplastic '
-        'grout and Pi_PCL=3.0 kPa">\n'
+        'aria-label="Button-Rubinstein-Boucher two-gel osmotic competition between Pi_mucus '
+        'and Pi_PCL=3.0 kPa">\n'
         '            <line x1="60" y1="185" x2="620" y2="185" stroke="currentColor" '
         'stroke-opacity="0.4"/>\n'
         '            <line x1="60" y1="25" x2="60" y2="185" stroke="currentColor" '
@@ -340,27 +340,27 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         '            <text x="75" y="94" font-size="11" fill="var(--tp-prussian)">Periciliary '
         'Brush Modulus Threshold Π_PCL = 3.0 kPa (h_PCL = 7.0 μm)</text>\n'
         '            <text x="95" y="148" font-size="11" fill="var(--tp-verdigris)">Healthy 2% '
-        'Viscoplastic Grout (Π = 0.5 kPa)</text>\n'
+        'Mucus (Π = 0.5 kPa)</text>\n'
         '            <text x="360" y="54" font-size="11" fill="var(--tp-minium)">CF 8% '
-        'Viscoplastic Grout (Π = 4.2 kPa · Brush Crushed)</text>\n'
-        '            <text x="215" y="204" font-size="11" fill="currentColor">Viscoplastic Grout '
+        'Mucus (Π = 4.2 kPa · Brush Crushed)</text>\n'
+        '            <text x="215" y="204" font-size="11" fill="currentColor">Mucus '
         'Layer Solid Concentration (% w/w) · Two-Gel Osmotic Balance</text>\n'
         '          </svg>'}
 
-PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what the ventilation duct surface two-gel osmotic '
-        'brush system (viscoplastic grout gel over tethered periciliary mucin brush) would look '
+PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what the airway surface two-gel osmotic '
+        'brush system (mucus gel over tethered periciliary mucin brush) would look '
         'like (artistic impression, not a measured structure)',
  'caption': 'Conceptual Vision Plate P.04-V (Imagining What It Would Look Like) · Artistic '
             'cross-sectional visualization imagining the Button-Rubinstein-Boucher two-gel system: '
-            'a grafted periciliary mucin brush supporting an overlying viscoplastic grout gel '
+            'a grafted periciliary mucin brush supporting an overlying mucus gel '
             'layer.'}
 
 DISPATCH = {'kicker': 'FRONTIER PULMONARY PHYSICS DISPATCH · THE TWO-GEL OSMOTIC BRUSH MODEL',
- 'headline': "Button, Rubinstein & Boucher's Gel-on-Brush Discovery Redefined Ventilation Duct "
+ 'headline': "Button, Rubinstein & Boucher's Gel-on-Brush Discovery Redefined Airway "
              'Surface Dehydration',
  'body': 'In a landmark Science study (Button, Rubinstein et al. (2012, Science DOI '
          '10.1126/science.1223012)), researchers overturned the simple water-layer model of the '
-         'lung, proving that osmotic pressure competition between the viscoplastic grout gel and '
+         'lung, proving that osmotic pressure competition between the mucus gel and '
          'tethered periciliary mucin brush governs ciliary collapse in CF—now targeted by inhaled '
          'ENaC blocker ETD001 (DOI 10.1016/j.jcf.2024.06.002, NCT06478706).'}
 
@@ -403,4 +403,4 @@ ES_TRANSLATION = {'title_es': 'Electrocinética, Equilibrio de Donnan y el Colap
             'restauran este margen de seguridad.',
  'bridge_es': 'Explica el modelo de dos geles de Button, Rubinstein y Boucher y fundamenta las '
               'terapias de rehidratación osmótica e inhibidores inhalados de ENaC (como ETD001) en '
-              'Ingeniería Hidrosanitaria.'}
+              'la Fibrosis Quística.'}

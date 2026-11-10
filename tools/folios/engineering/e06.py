@@ -310,7 +310,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'facilities, ensuring continuous life-saving operations through the most '
                    'violent earthquakes.',
  'cf_bridge': 'Research hospitals and GMP genetic-medicine facilities producing inhaled '
-              'CSI-MasterFormat mRNA lipid nanoparticles and bacteriophages require uninterrupted '
+              'CFTR mRNA lipid nanoparticles and bacteriophages require uninterrupted '
               'negative/positive pressure containment, cryogenic storage, and sub-angstrom Cryo-EM '
               'structural imaging (PDB 8EIQ). Designing clinical and research infrastructure to '
               'ASCE 7-22 Risk Category IV with seismic base isolation keeps floor accelerations '
@@ -394,7 +394,7 @@ ES_TRANSLATION = {'title_es': 'Dinámica Estructural No Lineal, Espectros Inelá
            'debajo de ti manteniendo estable el torso.',
  'bridge_es': 'El aislamiento de base sísmico protege hospitales pediátricos, biobancos '
               'criogénicos y salas blancas GMP donde se producen terapias génicas y moduladores de '
-              'CSI-MasterFormat.',
+              'CFTR.',
  'plain_es': 'En la primavera de 1932, tras los devastadores terremotos de Long Beach y Tokio, el '
              'ingeniero Maurice Anthony Biot formuló en Caltech el espectro de respuesta sísmica. '
              'Biot descubrió una curva matemática que explica cómo los edificios amplifican el '

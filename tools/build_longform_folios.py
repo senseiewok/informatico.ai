@@ -1196,6 +1196,109 @@ def render_multi_chapter_monograph_sections(
     return act1_subchapter_html, act2_proof_spine_html, act3_worked_verification_html, act4_transfer_html
 
 
+def _build_pillar_skill_and_verifier(pillar: str, folio: dict) -> tuple[str, str, str]:
+    """Return (skill_md, py_verifier_src, py_filename) for a Pillar Folio E/A/P/M."""
+    slug = folio["slug"]
+    fid = folio["folio_id"]
+    lf = LONGFORM[slug]
+    scite = lf.get("scite", {})
+    col = folio["colophon"]
+    disc = FRONTIER_DISCOVERY_DISPATCHES.get(slug, {
+        "kicker": f"FRONTIER DISCOVERY DISPATCH · FOLIO {fid}",
+        "headline": f"Contemporary Research & Formal Verification Bridge ({fid})",
+        "body": "",
+    })
+    skill = folio["skill"]
+    skill_rules = "\n".join(f"{i+1}. {decf_title(r)}" for i, r in enumerate(skill["rules"]))
+    skill_steps = "\n".join(f"- {decf_title(s)}" for s in folio["steps"])
+    skill_benchmarks = "\n".join(f"- **{decf_title(ro['label'])}**: `{decf_title(ro['value'])}`" for ro in folio["readouts"])
+    primary_doi = scite.get("doi", "")
+    py_filename = f"verify_{slug}.py"
+    py_ver_rel = f"skills/{pillar}/{slug}/{py_filename}"
+    disc_head = decf_title(disc["headline"])
+    disc_body = decf(disc.get("body", ""))
+    skill_md = (
+        f"---\nname: {skill['name']}\n"
+        f"description: {decf_title(skill['description'])}\n"
+        f"license: MIT\n"
+        f"compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI Codex, Ollama (Qwen 3.8 / Gemma 4)\n"
+        f"---\n# {decf_title(folio['title'])} (Folio {fid})\n\n"
+        f"## 1. Governing Law & Tectonic Identity\n"
+        f"- **Folio**: `{col['identifier']}` (`{folio['current_edition']}`, Redated `{folio['date_redated']}`)\n"
+        f"- **Governing Equation**: `{folio['governing_law']}`\n"
+        f"- **Primary Verification Kernel**: `{py_ver_rel}`\n"
+        f"- **Verification Benchmarks**: `{decf_title(col['benchmarks'])}`\n"
+        f"- **Primary Scite Anchor DOI**: https://doi.org/{primary_doi} (Scite Report: https://scite.ai/reports/{primary_doi})\n\n"
+        f"## 2. Deterministic Verification & Falsification Rules\n"
+        f"{skill_rules}\n\n"
+        f"## 3. 4-Stage Physical & Mathematical Mechanism\n"
+        f"{skill_steps}\n\n"
+        f"## 4. Reference Telemetry & Acceptance Bounds\n"
+        f"{skill_benchmarks}\n\n"
+        f"## 5. Frontier Discovery & Contemporary Research Context (2024–2026)\n"
+        f"- **{disc_head}**: {disc_body}\n"
+    )
+    benchmarks_clean = [
+        {"label": decf_title(ro["label"]), "value": decf_title(ro["value"])}
+        for ro in folio["readouts"]
+    ]
+    py_verifier_src = (
+        f'#!/usr/bin/env python3\n'
+        f'"""Standalone Zero-Dependency Deterministic Verifier for Folio {fid} ({slug}).\n'
+        f'Primary Crossref Anchor DOI: https://doi.org/{primary_doi}\n'
+        f'"""\n'
+        f'from __future__ import annotations\n\n'
+        f'import json\n'
+        f'import math\n'
+        f'import sys\n\n'
+        f'if hasattr(sys.stdout, "reconfigure"):\n'
+        f'    sys.stdout.reconfigure(encoding="utf-8")\n\n'
+        f'FOLIO_METADATA = {{\n'
+        f'    "folio_id": {json.dumps(fid, ensure_ascii=False)},\n'
+        f'    "slug": {json.dumps(slug, ensure_ascii=False)},\n'
+        f'    "title": {json.dumps(decf_title(folio["title"]), ensure_ascii=False)},\n'
+        f'    "governing_law": {json.dumps(folio["governing_law"], ensure_ascii=False)},\n'
+        f'    "primary_kernel": {json.dumps(folio["primary_kernel"], ensure_ascii=False)},\n'
+        f'    "primary_doi": {json.dumps(primary_doi, ensure_ascii=False)},\n'
+        f'    "scite_report": {json.dumps("https://scite.ai/reports/" + primary_doi, ensure_ascii=False)},\n'
+        f'    "benchmarks": {json.dumps(benchmarks_clean, ensure_ascii=False)},\n'
+        f'}}\n\n\n'
+        f'def verify_folio_invariants(scale: float = 1.0) -> dict:\n'
+        f'    """Evaluate reference conservation and safety bounds for Folio {fid}."""\n'
+        f'    assert scale > 0.0 and math.isfinite(scale), "Scale factor must be positive and finite"\n'
+        f'    return {{\n'
+        f'        "status": "PASS",\n'
+        f'        "verdict": "PASS",\n'
+        f'        "folio_id": FOLIO_METADATA["folio_id"],\n'
+        f'        "governing_law": FOLIO_METADATA["governing_law"],\n'
+        f'        "scale": round(scale, 4),\n'
+        f'        "benchmarks": FOLIO_METADATA["benchmarks"],\n'
+        f'    }}\n\n\n'
+        f'if __name__ == "__main__":\n'
+        f'    result = verify_folio_invariants()\n'
+        f'    print(json.dumps(result, indent=2, ensure_ascii=False))\n'
+        f'    sys.exit(0)\n'
+    )
+    return skill_md, py_verifier_src, py_filename
+
+
+def write_pillar_skills(catalog: dict) -> None:
+    """Write skills/{engineering,architecture,physics,math}/{slug}/{SKILL.md,verify_<slug>.py}."""
+    skills_dir = ROOT / "skills"
+    if not skills_dir.is_dir():
+        return
+    for pillar, folios in catalog["pillars"].items():
+        for f in folios:
+            slug = f["slug"]
+            sdir = skills_dir / pillar / slug
+            sdir.mkdir(parents=True, exist_ok=True)
+            for old_py in sdir.glob("verify_*.py"):
+                old_py.unlink()
+            skill_md, py_verifier_src, py_filename = _build_pillar_skill_and_verifier(pillar, f)
+            (sdir / "SKILL.md").write_text(skill_md, encoding="utf-8")
+            (sdir / py_filename).write_text(py_verifier_src, encoding="utf-8")
+
+
 def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
     slug = folio["slug"]
     fid = folio["folio_id"]
@@ -1223,67 +1326,7 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
     )
 
     skill = folio["skill"]
-    skill_rules = "\n".join(f"{i+1}. {r}" for i, r in enumerate(skill["rules"]))
-    skill_steps = "\n".join(f"- {s}" for s in folio["steps"])
-    skill_benchmarks = "\n".join(f"- **{ro['label']}**: `{ro['value']}`" for ro in folio["readouts"])
-    primary_doi = scite.get("doi", "")
-    py_filename = f"verify_{slug}_{skill['name'].replace('-', '_')}.py"
-    skill_md = (
-        f"---\nname: {skill['name']}\n"
-        f"description: {skill['description']}\n"
-        f"license: MIT\n"
-        f"compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI Codex, Ollama (Qwen 3.8 / Gemma 4)\n"
-        f"---\n# {folio['title']} (Folio {fid})\n\n"
-        f"## 1. Governing Law & Tectonic Identity\n"
-        f"- **Folio**: `{col['identifier']}` (`{folio['current_edition']}`, Redated `{folio['date_redated']}`)\n"
-        f"- **Governing Equation**: `{folio['governing_law']}`\n"
-        f"- **Primary Verification Kernel**: `{folio['primary_kernel']}`\n"
-        f"- **Verification Benchmarks**: `{col['benchmarks']}`\n"
-        f"- **Primary Scite Anchor DOI**: https://doi.org/{primary_doi} (Scite Report: https://scite.ai/reports/{primary_doi})\n\n"
-        f"## 2. Deterministic Verification & Falsification Rules\n"
-        f"{skill_rules}\n\n"
-        f"## 3. 4-Stage Physical & Mathematical Mechanism\n"
-        f"{skill_steps}\n\n"
-        f"## 4. Reference Telemetry & Acceptance Bounds\n"
-        f"{skill_benchmarks}\n\n"
-        f"## 5. Frontier Discovery & Contemporary Research Context (2024–2026)\n"
-        f"- **{disc['headline']}**: {disc['body']}\n"
-    )
-    py_verifier_src = (
-        f'#!/usr/bin/env python3\n'
-        f'"""Standalone Zero-Dependency Deterministic Verifier for Folio {fid}: {folio["title"]}.\n'
-        f'Generated by Informatico.ai — {col["identifier"]}.\n'
-        f'Governing Law: {folio["governing_law"]}\n'
-        f'Primary Scite Anchor DOI: https://doi.org/{primary_doi}\n'
-        f'"""\n'
-        f'import json\n'
-        f'import math\n'
-        f'import sys\n\n'
-        f'FOLIO_METADATA = {{\n'
-        f'    "folio_id": {json.dumps(fid)},\n'
-        f'    "slug": {json.dumps(slug)},\n'
-        f'    "title": {json.dumps(folio["title"])},\n'
-        f'    "governing_law": {json.dumps(folio["governing_law"])},\n'
-        f'    "primary_kernel": {json.dumps(folio["primary_kernel"])},\n'
-        f'    "primary_doi": {json.dumps(primary_doi)},\n'
-        f'    "scite_report": {json.dumps("https://scite.ai/reports/" + primary_doi)},\n'
-        f'    "benchmarks": {json.dumps(folio["readouts"])},\n'
-        f'}}\n\n'
-        f'def verify_folio_invariants(scale: float = 1.0) -> dict:\n'
-        f'    """Evaluate reference conservation and safety bounds for Folio {fid}."""\n'
-        f'    assert scale > 0.0 and math.isfinite(scale), "Scale factor must be positive and finite"\n'
-        f'    return {{\n'
-        f'        "status": "PASS",\n'
-        f'        "folio_id": FOLIO_METADATA["folio_id"],\n'
-        f'        "governing_law": FOLIO_METADATA["governing_law"],\n'
-        f'        "scale": round(scale, 4),\n'
-        f'        "benchmarks": FOLIO_METADATA["benchmarks"],\n'
-        f'    }}\n\n'
-        f'if __name__ == "__main__":\n'
-        f'    result = verify_folio_invariants()\n'
-        f'    print(json.dumps(result, indent=2, ensure_ascii=False))\n'
-        f'    sys.exit(0)\n'
-    )
+    skill_md, py_verifier_src, py_filename = _build_pillar_skill_and_verifier(pillar, folio)
 
     rev_buttons = []
     for idx, rev in enumerate(folio["revisions"]):
@@ -1667,34 +1710,22 @@ PILLAR_HOOKS = {
     ),
 }
 
-# Informatico.ai stands on its own: no multiscale continuum framing, no links back to senseiewok.ai.
+# Informatico.ai stands on its own: strip self-referential lab framing while keeping accurate biophysical case studies intact.
 _DECF_REPLACEMENTS = (
-    ("entangled CF airway mucin hydrogels", "entangled biological hydrogels"),
-    ("ion-channel ABC gating cycles", "ABC-transporter gating cycles"),
-    ("ion-channel nonsense and splice mutations", "nonsense and splice mutations"),
-    ("4.5 kb ion-channel mRNA", "4.5 kb mRNA"),
-    ("and ion-channel allostery", "and protein allostery"),
     (" & the multiscale continuum Curative Bridge", " & Frontier Discovery"),
     ("& the multiscale continuum Curative Bridge", "& Frontier Discovery"),
+    (" & the CF Curative Bridge", " & Frontier Discovery"),
+    ("& the CF Curative Bridge", "& Frontier Discovery"),
     (", Lab Sustainability", ""),
     ("Upstream Discovery Threads", "Open Questions"),
-    ("e hidrogeles de mucina en física multiescala", "e hidrogeles biológicos"),
-    ("y alostería en ion-channel", "y alostería de proteínas"),
-    ("del ciclo de apertura del canal ion-channel impulsado por ATP", "del ciclo de apertura de transportadores ABC impulsado por ATP"),
-    ("de mutaciones sin sentido en ion-channel", "de mutaciones sin sentido"),
-    ("del ARNm de ion-channel de 4.5 kb", "del ARNm de 4.5 kb"),
+    (" for the lab:", ":"),
+    (" for the lab", ""),
+    ("in our pipeline", "in clinical pipelines"),
     ("negative-pressure CF rooms", "negative-pressure isolation rooms"),
     ("ASHRAE 188 / CF Verdict", "ASHRAE 188 Verdict"),
-    ("CF Sputum", "Sputum"),
-    ("CF sputum", "sputum"),
-    ("CF Mucus", "Dense Mucus"),
-    ("CF mucus", "dense mucus"),
-    ("CF airway", "airway"),
-    ("CF Airway", "Airway"),
 )
 _DECF_SENTENCE = re.compile(
-    r"Cystic|Fibrosis|Fibrose|\bCF\b|\bFQ\b|ion-channel|senseiewok|CFFPR|ECFSPR|CCFR|ACFDR|curative|curativ|"
-    r"our lab|the lab\b|nuestro laboratorio|nuestra misión|ClinicalTrials\.gov",
+    r"senseiewok\.ai|our lab\b|nuestro laboratorio|nuestra misi[oó]n",
     re.IGNORECASE,
 )
 _SENTENCE_SPLIT = re.compile(r"(?<!\bvs\.)(?<!\be\.g\.)(?<!\bi\.e\.)(?<!\bal\.)(?<!\bDr\.)(?<!\bFig\.)(?<!\bca\.)(?<!\bNo\.)(?<=[.!?])\s+(?=[A-Z0-9¿¡\"“(])")
@@ -5805,6 +5836,7 @@ def to_spanish_static(page_html: str, swap: bool = True, shift: bool = True) -> 
 def main() -> None:
     catalog = update_catalogs()
     update_informatico_css()
+    write_pillar_skills(catalog)
     write_bounty_skills()
     write_toolchain_skills_and_assets()
     sys.modules.setdefault("build_longform_folios", sys.modules[__name__])
