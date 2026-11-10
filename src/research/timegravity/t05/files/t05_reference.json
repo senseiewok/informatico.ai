@@ -772,6 +772,25 @@
         }
       },
       {
+        "key": "vandekamp2020_letter_reading",
+        "layout": "collinear",
+        "m_kg": 1e-15,
+        "split_m": 2.3e-05,
+        "nearest_m": 2.4e-05,
+        "hybrid_sigma_c_m": 5.4883805191e-05,
+        "torque_deficit_at_hybrid_sigma_c": 0.0620034928455,
+        "collapse_sigma_c_at_t_full_m": 1.7950610271e-05,
+        "quantum_t_full_s": 370.46039189,
+        "at_sigma": {
+          "44um": {
+            "entangles": false
+          },
+          "30um": {
+            "entangles": false
+          }
+        }
+      },
+      {
         "key": "schut2024_z30",
         "layout": "parallel",
         "m_kg": 1e-14,

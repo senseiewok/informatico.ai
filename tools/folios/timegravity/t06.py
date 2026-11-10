@@ -276,7 +276,7 @@ PAGE: dict = {
               "Eöt-Wash torque as the Yukawa that test excludes at 95 %. On this site's estimate the inverse-square tests leave room only below "
               "that line, and the entanglement letter needs the range above it. A 2025 preprint on the smearing profiles of these models notes that for "
               "this parameter 'upper bounds can be put by observing no deviations from Newton's law of gravitation'; it works none out and names no "
-              "experiment. The 44 µm rung is this site's own estimate from the Eöt-Wash comparison on T.05, not the preprint's. T.05 adds a rung of another kind: if gravity is quantum and pure collapse exists besides, a positive witness at the 2017 geometry would put σ above 130 µm within this pure-collapse model.",
+              "experiment. The 44 µm rung is this site's own estimate from the Eöt-Wash comparison on T.05, not the preprint's. T.05 adds a rung of another kind: if gravity is quantum and pure collapse exists besides, a positive witness at the 2017 geometry would put σ above 130 µm within this pure-collapse model. The ladder also carries a window of another kind, 13.6 to 44 µm: on this site's estimate the letter's model could still entangle one published geometry there, the 2024 side-by-side proposal, without contradicting the 2020 inverse-square data; it is a window for that one model and that one geometry, not a bound on σ, and it moves or closes if the 2020 data are refit.",
               "En lo alto de la escalera están los 50 a 250 µm de la carta de 2025, el rango en que el modelo entrelaza dos masas en un "
               "laboratorio; justo debajo, a 44 µm, el núcleo de cuñas de T.05 encuentra que la atracción suavizada del modelo quita tanto "
               "del par de Eöt-Wash como el Yukawa que esa prueba excluye al 95 %. En la estimación de este sitio las pruebas del inverso del cuadrado "
@@ -284,7 +284,7 @@ PAGE: dict = {
               "perfiles de suavizado de estos modelos anota que para este parámetro 'se pueden poner cotas superiores observando que no hay desviaciones "
               "de la ley de gravitación de Newton'; no calcula ninguna ni nombra experimento alguno. El peldaño de 44 µm es la estimación propia de este "
               "sitio desde la comparación con Eöt-Wash en T.05, no la de la prepublicación. T.05 añade un peldaño de otra clase: si la gravedad es "
-              "cuántica y además existe el colapso puro, un testigo positivo en la geometría de 2017 pondría σ por encima de 130 µm dentro de este modelo de colapso puro."),
+              "cuántica y además existe el colapso puro, un testigo positivo en la geometría de 2017 pondría σ por encima de 130 µm dentro de este modelo de colapso puro. La escalera lleva además una ventana de otra clase, de 13.6 a 44 µm: en la estimación de este sitio el modelo de la carta aún podría entrelazar allí una geometría publicada, la propuesta lado a lado de 2024, sin contradecir los datos de 2020 del inverso del cuadrado; es una ventana para ese único modelo y esa única geometría, no una cota de σ, y se mueve o se cierra si los datos de 2020 se reajustan."),
             C("BOUND", [OPPENHEIM],
               "The same torsion balances enter a second squeeze: in 2023 Oppenheim and co-workers showed that any consistent theory with "
               "classical gravity and quantum matter must trade decoherence of the matter against diffusion of the field, bounded that "
