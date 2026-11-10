@@ -703,6 +703,14 @@
   "title": "A classical channel model for gravitational decoherence",
   "year": 2014
  },
+ "doi:10.1088/1367-2630/abf3eb": {
+  "fetched": "2026-11-09",
+  "first_author": "Rijavec",
+  "found": true,
+  "journal": "New Journal of Physics",
+  "title": "Decoherence effects in non-classicality tests of gravity",
+  "year": 2021
+ },
  "doi:10.1088/1742-5468/ac3ae9": {
   "fetched": "2026-11-07",
   "first_author": "Schoenholz",
@@ -1542,6 +1550,15 @@
   "journal": "arXiv",
   "title": "Interpretable Machine Learning for Science with PySR and SymbolicRegression.jl",
   "year": 2023
+ },
+ "doi:10.48550/arxiv.2503.19774": {
+  "fetched": "2026-11-09",
+  "first_author": "Feng",
+  "found": true,
+  "journal": "arXiv",
+  "registry": "DataCite (preprint)",
+  "title": "Collapse-based models for gravity do not violate the entanglement-based witness of non-classicality",
+  "year": 2025
  },
  "doi:10.48550/arxiv.2506.04311": {
   "fetched": "2026-11-09",
@@ -2809,6 +2826,18 @@
   "total_smart_citations": 322,
   "unclassified": 0
  },
+ "scite:10.1088/1367-2630/abf3eb": {
+  "citing_publications": 85,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 47,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 47,
+  "unclassified": 0
+ },
  "scite:10.1088/1742-5468/ac3ae9": {
   "citing_publications": 195,
   "contrasting": 0,
@@ -3944,6 +3973,18 @@
   "total_smart_citations": 428,
   "unclassified": 0,
   "year": 2023
+ },
+ "scite:10.48550/arxiv.2503.19774": {
+  "citing_publications": 0,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 0,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 0,
+  "unclassified": 0
  },
  "scite:10.48550/arxiv.2506.04311": {
   "citing_publications": 5,

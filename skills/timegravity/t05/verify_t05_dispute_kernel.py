@@ -53,6 +53,8 @@ def main(argv: list[str] | None = None) -> int:
         assert res["parts_ok"], ("the decomposition of the model's generator fails: the noise part alone must entangle nothing, the interaction part alone "
                                  "must give at least the full negativity, and at σ = 1 nm the interaction part must be the quantum channel")
         assert res["collapse_ok"], "pure Diósi–Penrose collapse against the quantum channel does not reproduce: no entanglement at σ = 100 µm, some at 500 µm, the quantum value at 1 mm, and the letter geometry's critical σ below the 2017 geometry's"
+        assert res["scaling_ok"], "the collapse threshold does not scale as expected: insensitive to mass and hold time within 2 %, roughly linear in the geometry's size"
+        assert res["rijavec_ok"], f"this page's dephasing threshold {res['dephasing_threshold_per_s']:.4f} /s is not the 2021 study's 1/τ_G = {1 / res['rijavec_tau_g_s']:.4f} /s within 2 %"
         assert res["defect_rejected"], "the planted decoherence-free channel was not detectable"
         ref = verify_reference_block()
     except AssertionError as exc:
@@ -74,6 +76,7 @@ def main(argv: list[str] | None = None) -> int:
             "ktm_2017_exact_phases_with_ktm_dephasing_negativity": res["ktm_2017"]["exact_phases_with_ktm_dephasing_negativity"],
             "entangling_parts": res["entangling_parts"], "quantum_channel_negativity_2017": res["quantum_channel_negativity_2017"],
             "pure_collapse": {k: {"critical_sigma_m": v["critical_sigma_m"], "half_sigma_m": v["half_sigma_m"], "quantum_negativity": v["quantum_negativity"]} for k, v in res["pure_collapse"].items()},
+            "collapse_scaling": res["collapse_scaling"], "rijavec_tau_g_s": res["rijavec_tau_g_s"], "dephasing_threshold_per_s": res["dephasing_threshold_per_s"],
         },
         "geometry_checks": {
             "critical_separation_matches_paper": "PASS",
@@ -82,6 +85,7 @@ def main(argv: list[str] | None = None) -> int:
             "ktm_minimal_rate_is_the_threshold": "PASS",
             "entangling_power_in_the_interaction_part": "PASS",
             "pure_collapse_critical_sigma": "PASS",
+            "collapse_threshold_scaling_and_2021_cross_check": "PASS",
             "planted_defect_knockout": "REJECTED_AS_EXPECTED",
         },
         "reference_block": ref,
