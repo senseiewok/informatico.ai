@@ -35,7 +35,7 @@ import math
 from timegravity_kernel import G_NEWTON
 from timegravity_kernel_entangle import (
     BMV_D_M, BMV_DX_M, BMV_M_KG, BMV_T_S, BRANCHES, HBAR, branch_phases, entanglement_phase, four_branch_state, negativity,
-    negativity_threshold_gamma_t,
+    negativity_threshold_gamma_t, time_to_full_entanglement,
 )
 
 # Trillo & Navascués 2025, Fig. 3 (lengths and masses from Van De Kamp et al. 2020)
@@ -189,6 +189,25 @@ def map_with_isl(sigma_estimate: float = SIGMA_ESTIMATE_M) -> dict:
         "hybrid_sigma_at_floor_m": {f"{m:.0e}_r{r:g}": tn_critical_sigma(m, r * casimir_floor_separation(m), casimir_floor_separation(m))
                                     for m in (1e-15, 1e-14) for r in (0.03, 1.0)},
     }
+
+
+def open_region_timing(sigma_estimate: float = SIGMA_ESTIMATE_M) -> list[dict]:
+    """Inside the region where the hybrid dynamics could still reach the witness (pairs at their Casimir floor, small splits, σ at the
+    estimate or below): how fast and how strongly it entangles, against the quantum channel's time to full entanglement at the same
+    geometry, and what the hybrid negativity is at that moment."""
+    from timegravity_kernel_ladder import casimir_floor_separation
+    rows = []
+    for m, nearest, r in ((1e-15, casimir_floor_separation(1e-15), 0.03), (1e-15, casimir_floor_separation(1e-15), 0.25), (1e-15, 30e-6, 0.03),
+                          (1e-14, casimir_floor_separation(1e-14), 0.03), (1e-14, casimir_floor_separation(1e-14), 0.25)):
+        split = r * nearest
+        t_full = time_to_full_entanglement(m, nearest + split, split)
+        for sigma in (sigma_estimate, 30e-6):
+            surv = tn_survival(split, nearest, m, sigma)
+            rows.append({"m_kg": m, "nearest_m": nearest, "ratio": r, "sigma_m": sigma, "hybrid_critical_sigma_m": tn_critical_sigma(m, split, nearest),
+                         "quantum_t_full_s": t_full, "hybrid_negativity_at_t_full": tn_negativity(split, nearest, m, sigma, t_full),
+                         "hybrid_negativity_at_10_t_full": tn_negativity(split, nearest, m, sigma, 10.0 * t_full),
+                         "hybrid_peak_negativity": surv["peak_negativity"], "hybrid_peak_time_s": surv["peak_time_s"], "hybrid_last_time_s": surv["last_entangled_time_s"]})
+    return rows
 
 
 def rijavec_tau_g(m: float = BMV_M_KG, d: float = BMV_D_M, dx: float = BMV_DX_M) -> float:
@@ -416,6 +435,15 @@ def check_dispute(planted_defect: bool = False) -> dict:
               and isl["casimir_floor_m"]["1e-13"] > isl["widest_entangling_nearest_m"]["r0.03"]
               and 19e-6 < isl["hybrid_sigma_at_floor_m"]["1e-15_r0.03"] < 23e-6
               and 39e-6 < isl["hybrid_sigma_at_floor_m"]["1e-15_r1"] < 41e-6)
+    # 4g. Time as the discriminator inside the open region: where the hybrid dynamics entangles at all (σ above its threshold), its
+    # negativity at the quantum channel's full-entanglement time is below 2e-3, its peak comes 9 to 110 times later and stays below 0.06.
+    timing = open_region_timing()
+    live = [row for row in timing if row["sigma_m"] > row["hybrid_critical_sigma_m"]]
+    timing_ok = (len(live) >= 6
+                 and all(row["hybrid_negativity_at_t_full"] < 2e-3 for row in live)
+                 and all(8.0 < row["hybrid_peak_time_s"] / row["quantum_t_full_s"] < 150.0 for row in live)
+                 and all(0.0 < row["hybrid_peak_negativity"] < 0.06 for row in live)
+                 and all(row["hybrid_peak_negativity"] < 1e-9 for row in timing if row["sigma_m"] <= row["hybrid_critical_sigma_m"]))
     # 5. Where the entangling power sits: the noise part alone entangles nothing at any σ or time; the interaction part alone gives
     #    at least the full model's negativity; and as σ → 0 the interaction part is the quantum channel exactly.
     parts = {}
@@ -436,11 +464,11 @@ def check_dispute(planted_defect: bool = False) -> dict:
         "ktm_threshold_ratios": ratios, "ktm_2017": ktm_2017,
         "entangling_parts": parts, "quantum_channel_negativity_2017": quantum_negativity, "parts_ok": parts_ok,
         "pure_collapse": collapse, "collapse_ok": collapse_ok,
-        "threshold_map": tmap, "map_ok": map_ok, "map_with_isl": isl, "isl_ok": isl_ok,
+        "threshold_map": tmap, "map_ok": map_ok, "map_with_isl": isl, "isl_ok": isl_ok, "open_region_timing": timing, "timing_ok": timing_ok,
         "collapse_scaling": scaling, "scaling_ok": scaling_ok, "rijavec_tau_g_s": tau_g, "dephasing_threshold_per_s": gamma_zero, "rijavec_ok": rijavec_ok,
         "dc_paper_ok": dc_paper_ok, "dc_double_entry_ok": dc_double_entry_ok, "fig3_ok": fig3_ok, "tn_2017_ok": tn_2017_ok,
         "ktm_ok": ktm_ok, "ktm_edge_ok": ktm_edge_ok, "defect_rejected": defect_rejected,
-        "ok": dc_paper_ok and dc_double_entry_ok and fig3_ok and tn_2017_ok and ktm_ok and ktm_edge_ok and parts_ok and collapse_ok and scaling_ok and rijavec_ok and map_ok and isl_ok and defect_rejected,
+        "ok": dc_paper_ok and dc_double_entry_ok and fig3_ok and tn_2017_ok and ktm_ok and ktm_edge_ok and parts_ok and collapse_ok and scaling_ok and rijavec_ok and map_ok and isl_ok and timing_ok and defect_rejected,
     }
 
 
