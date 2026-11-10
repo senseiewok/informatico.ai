@@ -11,7 +11,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 > **Frontera Fija (`ES-MX`):** Nada en esta página es una teoría del todo, y este sitio no propone ninguna. Cada afirmación lleva una de seis etiquetas, cada una ligada a una fila del libro de registro: MEDIDO, DERIVADO, COTA, PROPUESTO, ABIERTO o RESULTADO ÚNICO. Las prepublicaciones nunca suben de PROPUESTO. Cada página termina con una pregunta abierta que la siguiente página retoma.
 
 ## 1. Page, canonical URL and governing equations
-- **Track page**: `T.01` (Time & Gravity, reading order 3 of 9, dated `2026-11-08`)
+- **Track page**: `T.01` (Time & Gravity, reading order 3 of 11, dated `2026-11-08`)
 - **Canonical URL**: https://informatico.ai/timegravity/t01/ (Spanish: https://informatico.ai/es-mx/timegravity/t01/)
 - **Metric**: `ds² = −A(z) c² dt² + dz²`, `A(z) = 1 + 2 g z / c²`; only `g_tt` varies with height, space is flat.
 - **Geodesic (x⁰ = ct)**: `d²z/dτ² = −(A′/2)(c dt/dτ)²`, `d²t/dτ² = −(A′/A)(dt/dτ)(dz/dτ)`; there is no force term.

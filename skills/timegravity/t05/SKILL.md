@@ -11,7 +11,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 > **Frontera Fija (`ES-MX`):** Nada en esta página es una teoría del todo, y este sitio no propone ninguna. Cada afirmación lleva una de seis etiquetas, cada una ligada a una fila del libro de registro: MEDIDO, DERIVADO, COTA, PROPUESTO, ABIERTO o RESULTADO ÚNICO. Las prepublicaciones nunca suben de PROPUESTO. Cada página termina con una pregunta abierta que la siguiente página retoma.
 
 ## 1. Page, canonical URL and governing equations
-- **Track page**: `T.05` (Time & Gravity, reading order 6 of 9, dated `2026-11-09`). Page label **OPEN**: the experiment has not run, and the literature disputes what a positive result would prove.
+- **Track page**: `T.05` (Time & Gravity, reading order 6 of 11, dated `2026-11-09`). Page label **OPEN**: the experiment has not run, and the literature disputes what a positive result would prove.
 - **Canonical URL**: https://informatico.ai/timegravity/t05/ (Spanish: https://informatico.ai/es-mx/timegravity/t05/)
 - **Branch phases**: `φ_ij = G m² t / (ħ d_ij)` with `d_LL = d_RR = d`, `d_LR = d + Δx`, `d_RL = d − Δx`.
 - **Entanglement phase**: `Δφ = φ_LR + φ_RL − φ_LL − φ_RR`; the four-branch state is a product exactly when `Δφ ≡ 0 (mod 2π)`.

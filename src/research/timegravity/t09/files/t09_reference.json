@@ -1,0 +1,97 @@
+{
+  "folio_id": "T.09",
+  "title": "A Horizon Rings Like a Bell",
+  "construction": "Kerr horizon r_+ = GM/c^2 (1 + sqrt(1 - chi^2)), A = 8 pi (GM/c^2)^2 (1 + sqrt(1 - chi^2)); Smarr M c^2 = (kappa c^2 / 4 pi G) A + 2 Omega_H J; Leaver (1985) coupled angular + radial 3-term continued fractions for s = -2, l = m = 2, n in {0, 1}",
+  "parameters": {
+    "default_m_solar": 62.0,
+    "default_chi": 0.68,
+    "cf_tolerance": 1e-10,
+    "benchmark_tolerance": 1e-06
+  },
+  "worst_smarr_rel_err": 1.17151373448e-16,
+  "worst_first_law_rel_err": 2.46904220773e-10,
+  "max_cf_residual": 2.80866677486e-15,
+  "max_published_dev_220": 6.40888872736e-09,
+  "max_published_dev_221": 8.33624881303e-09,
+  "gw150914_fiducial": {
+    "m_solar": 62.0,
+    "chi": 0.68,
+    "r_plus_km": 158.681671149,
+    "area_km2": 365125.08892,
+    "f_220_hz": 273.071538305,
+    "tau_220_ms": 3.74653225257,
+    "f_221_hz": 266.799997641,
+    "tau_221_ms": 1.2387597395
+  },
+  "qnm_chi__w220_re_im__w221_re_im__f220_hz__tau220_ms": [
+    [
+      0.0,
+      0.373671684418,
+      -0.0889623156889,
+      0.346710996879,
+      -0.273914875291,
+      194.740362375,
+      3.43279815797
+    ],
+    [
+      0.2,
+      0.402145324248,
+      -0.0883111662076,
+      0.378976357384,
+      -0.270545604688,
+      209.579503712,
+      3.45810939364
+    ],
+    [
+      0.4,
+      0.439841921735,
+      -0.0868819620294,
+      0.42084667723,
+      -0.264733449002,
+      229.225223099,
+      3.51499513009
+    ],
+    [
+      0.5,
+      0.464123025976,
+      -0.0856388349881,
+      0.447407037453,
+      -0.260224553637,
+      241.879409209,
+      3.56601854133
+    ],
+    [
+      0.68,
+      0.52397510429,
+      -0.0815126236312,
+      0.511941147204,
+      -0.246528575063,
+      273.071538305,
+      3.74653225257
+    ],
+    [
+      0.8,
+      0.586016974909,
+      -0.0756295523561,
+      0.577922397167,
+      -0.228148940042,
+      305.404885654,
+      4.03796748641
+    ],
+    [
+      0.9,
+      0.671614272132,
+      -0.0648692358758,
+      0.667657550818,
+      -0.195252067056,
+      350.014229564,
+      4.70777355865
+    ]
+  ],
+  "planted_defect": {
+    "planted_first_law_rel_err": 2.00000000053,
+    "planted_cf_residual": 2.14020022945
+  },
+  "boundary_en": "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. Preprints never rise above PROPOSED. Each page ends with one open question that the next page takes up.",
+  "license": "CC0-1.0 / CC-BY-4.0"
+}

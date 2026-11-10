@@ -1892,7 +1892,7 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
     tg_items_html = "\n            ".join(tg_items)
     tg_series_html = f"""
           <section class="tp-contents-series" aria-label="Time and Gravity track pages">
-            <h3><a href="{_href(rel_res, 'timegravity/')}" data-en="Series · Time &amp; Gravity · 9 steps (T.00–T.10)" data-es="Serie · Tiempo y Gravedad · 9 pasos (T.00–T.10)">Series · Time &amp; Gravity · 9 steps (T.00–T.10)</a></h3>
+            <h3><a href="{_href(rel_res, 'timegravity/')}" data-en="Series · Time &amp; Gravity · 11 steps (T.00–T.10)" data-es="Serie · Tiempo y Gravedad · 11 pasos (T.00–T.10)">Series · Time &amp; Gravity · 11 steps (T.00–T.10)</a></h3>
             <ol>
             {tg_items_html}
             </ol>
@@ -2140,7 +2140,7 @@ def _png_sha8(name: str) -> str:
 
 
 def render_timegravity_series_rack(rel_res: str) -> str:
-    """The Time & Gravity series as a rack of nine plate cards on /physics/, one per step, in reading order."""
+    """The Time & Gravity series as a rack of eleven plate cards on /physics/, one per step, in reading order."""
     cards = []
     by_code = {p["code"]: p for p in TIMEGRAVITY_PAGES}
     for i, m in enumerate(TIMEGRAVITY_TRACK_MAP, 1):  # reading order, which is not code order (T.02 precedes T.01)
@@ -2155,7 +2155,7 @@ def render_timegravity_series_rack(rel_res: str) -> str:
         cards.append(
             f"""        <a class="tp-rack-card tp-rack-card-series" href="{href}" data-folio-slug="{esc(plate)}" data-series-step="{i}">
           <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb tp-rack-thumb-series" src="{_href(rel_res, 'plates/' + plate + '.png')}?v={_png_sha8(plate)}" width="1200" height="630" loading="lazy" decoding="async" alt="{esc('Plate for ' + tg['code'] + ' · ' + title_en)}"></span>
-          <span class="tp-rack-top"><span class="tp-rack-id" data-en="Step {i} of 9 · {esc(tg['code'])}" data-es="Paso {i} de 9 · {esc(tg['code'])}">Step {i} of 9 · {esc(tg['code'])}</span><span class="tp-rack-badge" data-en="{esc(tg['reading_time_en'])}" data-es="{esc(tg['reading_time_es'])}">{esc(tg['reading_time_en'])}</span></span>
+          <span class="tp-rack-top"><span class="tp-rack-id" data-en="Step {i} of 11 · {esc(tg['code'])}" data-es="Paso {i} de 11 · {esc(tg['code'])}">Step {i} of 11 · {esc(tg['code'])}</span><span class="tp-rack-badge" data-en="{esc(tg['reading_time_en'])}" data-es="{esc(tg['reading_time_es'])}">{esc(tg['reading_time_en'])}</span></span>
           <strong class="tp-rack-title" data-en="{esc(title_en)}" data-es="{esc(title_es)}">{esc(title_en)}</strong>
           <span class="tp-rack-dek" data-en="{esc(d_en)}" data-es="{esc(d_es)}">{esc(d_en)}</span>
         </a>"""
@@ -2163,9 +2163,9 @@ def render_timegravity_series_rack(rel_res: str) -> str:
     cards_html = "\n".join(cards)
     return f"""
     <section class="tp-issue-rack tp-series-rack" aria-label="Time and Gravity series" id="timegravity-series">
-      <p class="tp-kicker" data-en="Series · Time &amp; Gravity · nine steps, one open problem" data-es="Serie · Tiempo y Gravedad · nueve pasos, un problema abierto">Series · Time &amp; Gravity · nine steps, one open problem</p>
+      <p class="tp-kicker" data-en="Series · Time &amp; Gravity · eleven steps, one open problem" data-es="Serie · Tiempo y Gravedad · once pasos, un problema abierto">Series · Time &amp; Gravity · eleven steps, one open problem</p>
       <h2 class="tp-h2"><a href="{_href(rel_res, 'timegravity/')}" data-en="Time &amp; Gravity" data-es="Tiempo y Gravedad">Time &amp; Gravity</a></h2>
-      <p class="tp-standfirst" data-en="A guided reading track rather than twelve stand-alone essays: from the measured slope in the rate of time to the open problem of time in quantum gravity, in nine steps that each end with the question the next one takes up. Six evidence labels, a ledger and a lint hold every claim." data-es="Una serie de lectura guiada, no doce ensayos sueltos: de la pendiente medida en el ritmo del tiempo al problema abierto del tiempo en la gravedad cuántica, en nueve pasos que terminan cada uno con la pregunta que retoma el siguiente. Seis etiquetas de evidencia, un libro de registro y un lint sostienen cada afirmación.">A guided reading track rather than twelve stand-alone essays: from the measured slope in the rate of time to the open problem of time in quantum gravity, in nine steps that each end with the question the next one takes up. Six evidence labels, a ledger and a lint hold every claim.</p>
+      <p class="tp-standfirst" data-en="A guided reading track rather than twelve stand-alone essays: from the measured slope in the rate of time to the open problem of time in quantum gravity, in eleven steps that each end with the question the next one takes up. Six evidence labels, a ledger and a lint hold every claim." data-es="Una serie de lectura guiada, no doce ensayos sueltos: de la pendiente medida en el ritmo del tiempo al problema abierto del tiempo en la gravedad cuántica, en once pasos que terminan cada uno con la pregunta que retoma el siguiente. Seis etiquetas de evidencia, un libro de registro y un lint sostienen cada afirmación.">A guided reading track rather than twelve stand-alone essays: from the measured slope in the rate of time to the open problem of time in quantum gravity, in eleven steps that each end with the question the next one takes up. Six evidence labels, a ledger and a lint hold every claim.</p>
       <div class="tp-rack-grid">
 {cards_html}
       </div>
@@ -2190,8 +2190,8 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
         extra_sections = render_timegravity_series_rack(rel_res)
     if pillar in ("physics", "math"):
         extra_sections += f"\n{render_symbolic_physics_lab_section(rel_res)}\n{render_oss_physics_radar_section(rel_res)}"
-    kick_en = f"Pillar {PILLAR_ROMAN[pillar]} · {n} essays" + (" · 1 series of 9 steps" if pillar == "physics" else "")
-    kick_es = f"Pilar {PILLAR_ROMAN[pillar]} · {n} ensayos" + (" · 1 serie de 9 pasos" if pillar == "physics" else "")
+    kick_en = f"Pillar {PILLAR_ROMAN[pillar]} · {n} essays" + (" · 1 series of 11 steps" if pillar == "physics" else "")
+    kick_es = f"Pilar {PILLAR_ROMAN[pillar]} · {n} ensayos" + (" · 1 serie de 11 pasos" if pillar == "physics" else "")
     return f"""{head}
 <body class="tp-body tp-page-hub">
 {render_masthead(rel_res, pillar, lang)}
@@ -5456,7 +5456,7 @@ def render_llms_txt(catalog: dict) -> str:
         t_title, t_desc = TOOLCHAIN_SEO[t["slug"]][0], TOOLCHAIN_SEO[t["slug"]][1]
         lines.append(f"- [{t['folio_id']} ({t['tool_id']}) {t_title}]({page_url('toolchain/' + t['slug'] + '/')}): {t_desc}")
     lines.append("")
-    lines.append("## Time & Gravity · Nine Pages on an Open Problem (T.00–T.07, T.10)")
+    lines.append("## Time & Gravity · Eleven Pages on an Open Problem (T.00–T.10)")
     lines.append("")
     lines.append(f"- [Time & Gravity]({page_url('timegravity/')}): {PILLAR_SEO['timegravity'][1]}")
     for tg in TIMEGRAVITY_PAGES:

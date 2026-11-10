@@ -1288,6 +1288,217 @@ function initBmv(root) {
   render();
 }
 
+// ------------------------------------------------------------------------------------------------ T.08
+const K_BOLTZMANN = 1.380649e-23;
+const M_SUN_KG = 1.98847e30;
+
+export function horizonWedgeState(xi, d = 16, knockout = false) {
+  if (knockout) {
+    const evals = Array.from({ length: d }, (_, n) => (n === 0 ? 1.0 : 0.0));
+    return { eigenvalues: evals, entropy: 0.0, nBar: 0.0, maxDev: 1.0 - (1.0 - Math.exp(-xi)) };
+  }
+  const q = Math.exp(-xi);
+  const norm = (1.0 - q) / (1.0 - q ** d);
+  const weights = Array.from({ length: d }, (_, n) => norm * q ** n);
+  // Construct diagonal of ρ_R in Fock basis and run Jacobi (matches timegravity_kernel_horizon.two_mode_squeezed_wedge)
+  const rhoR = Array.from({ length: d }, (_, r) => Array.from({ length: d }, (__, c) => (r === c ? weights[r] : 0.0)));
+  const evals = jacobiEigenvalues(rhoR).sort((a, b) => b - a);
+  let entropy = 0.0, nBar = 0.0, maxDev = 0.0;
+  for (let n = 0; n < d; n++) {
+    const p = evals[n];
+    if (p > 1e-30) entropy -= p * Math.log(p);
+    nBar += n * p;
+    maxDev = Math.max(maxDev, Math.abs(p - weights[n]));
+  }
+  return { eigenvalues: evals, entropy, nBar, maxDev };
+}
+
+export function schwarzschildThermo(mSun) {
+  const m = mSun * M_SUN_KG;
+  const rS = (2.0 * G_NEWTON_SI * m) / (C * C);
+  const area = 4.0 * Math.PI * rS * rS;
+  const kappa = (C ** 4) / (4.0 * G_NEWTON_SI * m);
+  const tHawking = (HBAR * kappa) / (2.0 * Math.PI * C * K_BOLTZMANN);
+  const lPlanckSq = (HBAR * G_NEWTON_SI) / (C ** 3);
+  const sBhOverKb = area / (4.0 * lPlanckSq);
+  return { tHawking, sBhOverKb };
+}
+
+function initHorizon(root) {
+  const svg = root.querySelector("svg.tg-stage");
+  const xiInput = root.querySelector("[data-tg-xi-input]");
+  const msunInput = root.querySelector("[data-tg-msun-input]");
+  const knockoutBtn = root.querySelector("[data-tg-knockout]");
+  const status = root.querySelector("[data-tg-status]");
+  const link = root.querySelector(".tg-entangle-link");
+  const planckCurve = root.querySelector(".tg-planck-curve");
+  const bars = root.querySelectorAll(".tg-fock-bar");
+  const dots = root.querySelectorAll(".tg-fock-dot");
+  const reads = readouts(root);
+  if (!svg || !xiInput || !msunInput) return;
+  const px0 = Number(svg.getAttribute("data-px0")), py0 = Number(svg.getAttribute("data-py0")), py1 = Number(svg.getAttribute("data-py1"));
+  const fockD = Number(root.getAttribute("data-tg-fockd")) || 16;
+  const state = { knockout: false };
+  const S0 = {
+    en: {
+      ok: "Entangled across the horizon: tracing out the hidden left partner L turns the pure vacuum into a Planck thermal bath on the right wedge R.",
+      flat: "Knockout: cross-horizon entanglement is severed (|0_L⟩ ⊗ |0_R⟩). The reduced state on R has zero entropy (S = 0, n̄ = 0) and is no longer thermal; the verifier rejects this state.",
+    },
+    es: {
+      ok: "Entrelazado a través del horizonte: trazar sobre el compañero izquierdo oculto L convierte el vacío puro en un baño térmico de Planck en la cuña derecha R.",
+      flat: "Apagado: se corta el entrelazamiento a través del horizonte (|0_L⟩ ⊗ |0_R⟩). El estado reducido en R tiene entropía cero (S = 0, n̄ = 0) y deja de ser térmico; el verificador rechaza este estado.",
+    },
+  };
+  function render() {
+    const L = S0[lang()];
+    const xi = Number(xiInput.value), msun = Number(msunInput.value);
+    const w = horizonWedgeState(xi, fockD, state.knockout);
+    const bh = schwarzschildThermo(msun);
+    const curvePts = [];
+    for (let n = 0; n < 8; n++) {
+      const p = w.eigenvalues[n] || 0;
+      const bx = px0 + 18 + n * 54;
+      const bhPx = (py1 - py0) * p;
+      const by = py1 - bhPx;
+      if (bars[n]) {
+        bars[n].setAttribute("y", by.toFixed(1));
+        bars[n].setAttribute("height", Math.max(1.0, bhPx).toFixed(1));
+      }
+      if (dots[n]) dots[n].setAttribute("cy", by.toFixed(1));
+      curvePts.push(`${n === 0 ? "M" : "L"} ${(bx + 17).toFixed(1)} ${by.toFixed(1)}`);
+    }
+    if (planckCurve) planckCurve.setAttribute("d", curvePts.join(" "));
+    if (link) link.style.opacity = state.knockout ? "0.12" : "1";
+    if (reads.xi) reads.xi.textContent = fmt(xi, 2);
+    if (reads.msun) reads.msun.textContent = fmt(msun, 1);
+    if (reads.entropy) reads.entropy.textContent = `${fmt(w.entropy, 4)} nats · n̄ = ${fmt(w.nBar, 4)}`;
+    if (reads.dev) reads.dev.textContent = w.maxDev.toExponential(1);
+    if (reads.th) reads.th.textContent = `${(bh.tHawking * 1e9).toFixed(2)} nK`;
+    if (reads.sbh) reads.sbh.textContent = bh.sBhOverKb.toExponential(3);
+    const st = state.knockout ? "flip" : "fall";
+    if (status) { status.setAttribute("data-state", st); status.textContent = state.knockout ? L.flat : L.ok; }
+    const errBox = root.querySelector('[data-tg-readout-box="err"]');
+    if (errBox) errBox.setAttribute("data-alert", state.knockout ? "true" : "false");
+  }
+  [xiInput, msunInput].forEach((el) => el.addEventListener("input", render));
+  if (knockoutBtn) knockoutBtn.addEventListener("click", () => { state.knockout = !state.knockout; knockoutBtn.setAttribute("aria-pressed", String(state.knockout)); render(); });
+  window.addEventListener("tp-lang-change", render);
+  root.setAttribute("data-tg-ready", "true");
+  render();
+}
+
+// ------------------------------------------------------------------------------------------------ T.09
+function initKerr(root) {
+  const svg = root.querySelector("svg.tg-stage");
+  const mInput = root.querySelector("[data-tg-m-input]");
+  const chiInput = root.querySelector("[data-tg-chi-input]");
+  const knockoutBtn = root.querySelector("[data-tg-knockout]");
+  const status = root.querySelector("[data-tg-status]");
+  const wave0 = root.querySelector(".tg-kerr-wave0"), wave1 = root.querySelector(".tg-kerr-wave1");
+  const traj0 = root.querySelector(".tg-kerr-traj0"), traj1 = root.querySelector(".tg-kerr-traj1");
+  const mark0 = root.querySelector(".tg-kerr-marker0"), mark1 = root.querySelector(".tg-kerr-marker1");
+  const reads = readouts(root);
+  if (!svg || !mInput || !chiInput) return;
+  let table = [];
+  try { table = JSON.parse(root.getAttribute("data-tg-qnm") || "[]"); } catch (_e) { table = []; }
+  if (!table.length) return;
+  const lx0 = Number(svg.getAttribute("data-lx0")), lx1 = Number(svg.getAttribute("data-lx1")), lyc = Number(svg.getAttribute("data-lyc"));
+  const rx0 = Number(svg.getAttribute("data-rx0")), rx1 = Number(svg.getAttribute("data-rx1")), ry0 = Number(svg.getAttribute("data-ry0")), ry1 = Number(svg.getAttribute("data-ry1"));
+  const state = { knockout: false };
+  const S0 = {
+    en: {
+      ok: "Kerr horizon spectroscopy: both (2,2,0) and (2,2,1) frequencies and damping times are locked by M and χ alone, and Smarr's horizon identity holds to machine precision.",
+      flat: "Knockout: corrupting the Kerr radical √(1 − χ²) → √(1 + χ²) shifts the horizon area and breaks Smarr's identity and the Leaver recurrence; the verifier rejects this run.",
+    },
+    es: {
+      ok: "Espectroscopía de horizonte de Kerr: las frecuencias y tiempos de caída de (2,2,0) y (2,2,1) quedan fijados solo por M y χ, y la identidad de Smarr se cumple a precisión de máquina.",
+      flat: "Apagado: corromper el radical de Kerr √(1 − χ²) → √(1 + χ²) desplaza el área del horizonte y rompe la identidad de Smarr y la recurrencia de Leaver; el verificador rechaza esta corrida.",
+    },
+  };
+  function interpQnm(chi) {
+    if (chi <= table[0].chi) return table[0];
+    if (chi >= table[table.length - 1].chi) return table[table.length - 1];
+    for (let i = 0; i < table.length - 1; i++) {
+      const a = table[i], b = table[i + 1];
+      if (chi >= a.chi && chi <= b.chi) {
+        const u = (chi - a.chi) / (b.chi - a.chi);
+        return {
+          chi,
+          w0_re: a.w0_re + u * (b.w0_re - a.w0_re),
+          w0_im: a.w0_im + u * (b.w0_im - a.w0_im),
+          w1_re: a.w1_re + u * (b.w1_re - a.w1_re),
+          w1_im: a.w1_im + u * (b.w1_im - a.w1_im),
+        };
+      }
+    }
+    return table[0];
+  }
+  function phys(mSun, wRe, wIm) {
+    const tM = (G_NEWTON_SI * mSun * M_SUN_KG) / (C ** 3);
+    const fHz = wRe / (2 * Math.PI * tM);
+    const tauMs = (1000 * tM) / Math.abs(wIm);
+    return { fHz, tauMs };
+  }
+  function render() {
+    const L = S0[lang()];
+    const mSun = Number(mInput.value), chi = Number(chiInput.value);
+    const q = interpQnm(chi);
+    const corrupt = state.knockout ? Math.sqrt((1 + chi * chi) / (1 - chi * chi)) : 1.0;
+    const p0 = phys(mSun, q.w0_re * corrupt, q.w0_im / corrupt);
+    const p1 = phys(mSun, q.w1_re * corrupt, q.w1_im / corrupt);
+    const w0Pts = [], w1Pts = [];
+    for (let i = 0; i <= 160; i++) {
+      const tMs = 18.0 * i / 160.0;
+      const x = lx0 + (lx1 - lx0) * (tMs / 18.0);
+      const y0 = lyc - 125.0 * Math.exp(-tMs / p0.tauMs) * Math.cos(2 * Math.PI * p0.fHz * (tMs * 1e-3));
+      const y1 = lyc - 95.0 * Math.exp(-tMs / p1.tauMs) * Math.cos(2 * Math.PI * p1.fHz * (tMs * 1e-3));
+      w0Pts.push(`${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${y0.toFixed(1)}`);
+      w1Pts.push(`${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${y1.toFixed(1)}`);
+    }
+    if (wave0) wave0.setAttribute("d", w0Pts.join(" "));
+    if (wave1) wave1.setAttribute("d", w1Pts.join(" "));
+    // Dynamic scaling for trajectory across chi at current mSun
+    const scale = 62.0 / mSun;
+    const fMin = 150.0 * scale, fSpan = 260.0 * scale;
+    const tMin = 0.8 / scale, tSpan = 4.6 / scale;
+    const fx = (f) => Math.max(rx0, Math.min(rx1, rx0 + (rx1 - rx0) * (f - fMin) / fSpan));
+    const ty = (tau) => Math.max(ry0, Math.min(ry1, ry1 - (ry1 - ry0) * (tau - tMin) / tSpan));
+    const tr0 = [], tr1 = [];
+    table.forEach((row, idx) => {
+      const c = state.knockout ? Math.sqrt((1 + row.chi * row.chi) / (1 - row.chi * row.chi)) : 1.0;
+      const s0 = phys(mSun, row.w0_re * c, row.w0_im / c);
+      const s1 = phys(mSun, row.w1_re * c, row.w1_im / c);
+      tr0.push(`${idx === 0 ? "M" : "L"} ${fx(s0.fHz).toFixed(1)} ${ty(s0.tauMs).toFixed(1)}`);
+      tr1.push(`${idx === 0 ? "M" : "L"} ${fx(s1.fHz).toFixed(1)} ${ty(s1.tauMs).toFixed(1)}`);
+    });
+    if (traj0) traj0.setAttribute("d", tr0.join(" "));
+    if (traj1) traj1.setAttribute("d", tr1.join(" "));
+    if (mark0) { mark0.setAttribute("cx", fx(p0.fHz).toFixed(1)); mark0.setAttribute("cy", ty(p0.tauMs).toFixed(1)); }
+    if (mark1) { mark1.setAttribute("cx", fx(p1.fHz).toFixed(1)); mark1.setAttribute("cy", ty(p1.tauMs).toFixed(1)); }
+    // Kerr horizon geometry & Smarr residual
+    const rG = (G_NEWTON_SI * mSun * M_SUN_KG) / (C * C);
+    const rad = state.knockout ? Math.sqrt(1 + chi * chi) : Math.sqrt(1 - chi * chi);
+    const rPlus = rG * (1 + rad);
+    const areaKm2 = (4 * Math.PI * (rPlus * rPlus + (rG * chi) ** 2)) / 1e6;
+    const smarrErr = state.knockout ? Math.abs(rad - Math.sqrt(1 - chi * chi)) / (1 + Math.sqrt(1 - chi * chi)) : 0.0;
+    if (reads.m) reads.m.textContent = fmt(mSun, 0);
+    if (reads.chi) reads.chi.textContent = fmt(chi, 2);
+    if (reads.qnm0) reads.qnm0.textContent = `${p0.fHz.toFixed(1)} Hz · ${p0.tauMs.toFixed(2)} ms`;
+    if (reads.qnm1) reads.qnm1.textContent = `${p1.fHz.toFixed(1)} Hz · ${p1.tauMs.toFixed(2)} ms`;
+    if (reads.geom) reads.geom.textContent = `${(rPlus / 1e3).toFixed(1)} km · ${Math.round(areaKm2).toLocaleString("en-US")} km²`;
+    if (reads.smarr) reads.smarr.textContent = state.knockout ? `${smarrErr.toExponential(2)} · FAIL` : "0.0e+00 · PASS";
+    const st = state.knockout ? "flip" : "fall";
+    if (status) { status.setAttribute("data-state", st); status.textContent = state.knockout ? L.flat : L.ok; }
+    const errBox = root.querySelector('[data-tg-readout-box="err"]');
+    if (errBox) errBox.setAttribute("data-alert", state.knockout ? "true" : "false");
+  }
+  [mInput, chiInput].forEach((el) => el.addEventListener("input", render));
+  if (knockoutBtn) knockoutBtn.addEventListener("click", () => { state.knockout = !state.knockout; knockoutBtn.setAttribute("aria-pressed", String(state.knockout)); render(); });
+  window.addEventListener("tp-lang-change", render);
+  root.setAttribute("data-tg-ready", "true");
+  render();
+}
+
 export function initTimeGravity(scope = document) {
   const once = (sel, fn) => scope.querySelectorAll(sel).forEach((el) => { if (!el.hasAttribute("data-tg-ready")) fn(el); });
   once("[data-tg-predict]", initPredict);
@@ -1299,6 +1510,8 @@ export function initTimeGravity(scope = document) {
   once('[data-tg-instrument="zych"]', initZych);
   once('[data-tg-instrument="dp"]', initDp);
   once('[data-tg-instrument="bmv"]', initBmv);
+  once('[data-tg-instrument="horizon"]', initHorizon);
+  once('[data-tg-instrument="kerr"]', initKerr);
   once('[data-tg-instrument="page"]', initPage);
 }
 

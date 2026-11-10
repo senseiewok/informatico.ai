@@ -11,7 +11,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 > **Frontera Fija (`ES-MX`):** Nada en esta página es una teoría del todo, y este sitio no propone ninguna. Cada afirmación lleva una de seis etiquetas, cada una ligada a una fila del libro de registro: MEDIDO, DERIVADO, COTA, PROPUESTO, ABIERTO o RESULTADO ÚNICO. Las prepublicaciones nunca suben de PROPUESTO. Cada página termina con una pregunta abierta que la siguiente página retoma.
 
 ## 1. Page, canonical URL and governing equations
-- **Track page**: `T.07` (Time & Gravity, reading order 8 of 9, dated `2026-11-09`)
+- **Track page**: `T.07` (Time & Gravity, reading order 8 of 11, dated `2026-11-09`)
 - **Canonical URL**: https://informatico.ai/timegravity/t07/ (Spanish: https://informatico.ai/es-mx/timegravity/t07/)
 - **Constraint**: `Ĥ|Ψ⟩⟩ = 0` with `Ĥ = Ĥ_C ⊗ 1 + 1 ⊗ Ĥ_S` (DeWitt 1967 form, two subsystems).
 - **History state**: `|Ψ⟩⟩ = (1/√d) Σₙ |tₙ⟩ ⊗ e^{−iĤ_S tₙ}|ψ(0)⟩`, Pegg–Barnett clock `|tₙ⟩ = (1/√d) Σₘ e^{−iEₘtₙ}|Eₘ⟩`, `Eₘ = 2πm/d`, `Ĥ_S = (ε/2)σ_z`, `ε/2 = 2π/d`.

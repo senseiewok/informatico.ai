@@ -1,0 +1,3 @@
+src/research/timegravity/*/files/*.json text eol=lf
+src/research/toolchain/*/files/*.step text eol=lf
+src/research/toolchain/*/files/*.dxf text eol=lf

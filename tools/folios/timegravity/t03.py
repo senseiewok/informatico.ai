@@ -24,8 +24,8 @@ PR = "T01-PR1960"
 PAGE: dict = {
     "slug": SLUG,
     "code": CODE,
-    "order_label_en": "Step 4 of 9",
-    "order_label_es": "Paso 4 de 9",
+    "order_label_en": "Step 4 of 11",
+    "order_label_es": "Paso 4 de 11",
     "kicker_en": "Time & Gravity · T.03 · The source side of the slope",
     "kicker_es": "Tiempo y Gravedad · T.03 · El lado de la fuente de la pendiente",
     "title_en": "What Sets the Slope",

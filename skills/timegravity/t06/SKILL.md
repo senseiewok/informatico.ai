@@ -11,7 +11,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 > **Frontera Fija (`ES-MX`):** Nada en esta página es una teoría del todo, y este sitio no propone ninguna. Cada afirmación lleva una de seis etiquetas, cada una ligada a una fila del libro de registro: MEDIDO, DERIVADO, COTA, PROPUESTO, ABIERTO o RESULTADO ÚNICO. Las prepublicaciones nunca suben de PROPUESTO. Cada página termina con una pregunta abierta que la siguiente página retoma.
 
 ## 1. Page, canonical URL and governing equations
-- **Track page**: `T.06` (Time & Gravity, reading order 7 of 9, dated `2026-11-09`). Page label **BOUND**; the model itself is **PROPOSED**.
+- **Track page**: `T.06` (Time & Gravity, reading order 7 of 11, dated `2026-11-09`). Page label **BOUND**; the model itself is **PROPOSED**.
 - **Canonical URL**: https://informatico.ai/timegravity/t06/ (Spanish: https://informatico.ai/es-mx/timegravity/t06/)
 - **Model**: `τ = ħ / E_G`, `E_G = 2 U_self − U_int(d)`, `U_self = (3/5) G M²/R`, `U_int = G M²/d` beyond contact (quintic in d/2R when overlapping). Far apart `E_G = (6/5) G M²/R`; coincident `E_G = 0`.
 - **Radiation (Donadi et al. 2021, Eq. 4)**: `dΓ/dω = (2/3) G e² N² N_a / (π^{3/2} ε₀ c³ R0³ ω)` ⇒ `z_s = a / R0³`, `a ≈ 1.8 × 10⁻²⁹ m³` in the 1,000–3,800 keV window over 62 days.
