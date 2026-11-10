@@ -41,7 +41,7 @@ from timegravity_kernel_entangle import (  # noqa: E402
     BMV_D_M, BMV_DX_M, BMV_M_KG, BMV_T_S, branch_phases, concurrence_closed, entanglement_phase, four_branch_state, negativity,
     time_to_full_entanglement,
 )
-from timegravity_kernel_dispute import ktm_dephasing_rate, tn_critical_sigma, tn_potential_ratio  # noqa: E402
+from timegravity_kernel_dispute import dp_collapse_sigma_at, ktm_dephasing_rate, tn_critical_sigma, tn_potential_ratio  # noqa: E402
 from timegravity_kernel_wedge import wedge_deficit, wedge_yukawa_edge_deficit  # noqa: E402
 from timegravity_kernel_bounds import (  # noqa: E402
     GS_R0_BOUND_M, GS_R0_PARAMFREE_M, XENONNT_R0_90, dp_collapse_time, gran_sasso_signal_counts, page_average_entropy, page_curve_toy,
@@ -839,6 +839,7 @@ def bmv_instrument(page: dict) -> str:
     soft0 = tn_potential_ratio(BMV_D_M - BMV_DX_M, 10.0 ** log_sig0)
     isl0 = wedge_deficit(10.0 ** log_sig0)
     isl_edge = wedge_yukawa_edge_deficit()
+    col0 = dp_collapse_sigma_at(BMV_DX_M, BMV_D_M - BMV_DX_M, BMV_M_KG, t0, 0.0)
     seps = {"LL": d0_um, "LR": d0_um + dx0_um, "RL": d0_um - dx0_um, "RR": d0_um}
     lines_svg = []
     for i, (ia, xa) in enumerate(zip("LR", ax)):
@@ -942,6 +943,10 @@ def bmv_instrument(page: dict) -> str:
         <div class="tp-readout-box" data-alert="false">
           <span class="tp-readout-k" data-en="Upper edge · Diósi–Penrose model at this σ (critical σ for this geometry)" data-es="Borde superior · modelo de Diósi–Penrose a esta σ (σ crítica para esta geometría)">Upper edge · Diósi–Penrose model at this σ (critical σ for this geometry)</span>
           <span class="tp-readout-v" data-tg-read="dp">σ_c = {sigma_c0 * 1e6:.0f} µm · entangles slowly, nothing visible in 30 s</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Collapse test · quantum gravity plus pure Diósi–Penrose collapse, Newton intact: the witness at this hold time survives for" data-es="Prueba de colapso · gravedad cuántica más colapso puro de Diósi–Penrose, Newton intacto: el testigo a este tiempo de espera sobrevive para">Collapse test · quantum gravity plus pure Diósi–Penrose collapse, Newton intact: the witness at this hold time survives for</span>
+          <span class="tp-readout-v" data-tg-read="col">σ > {col0 * 1e6:.0f} µm · {col0 / (BMV_D_M - BMV_DX_M):.2f} × the nearest approach · the hybrid σ_c above is {sigma_c0 / col0:.1f} × this</span>
         </div>
         <div class="tp-readout-box" data-alert="false">
           <span class="tp-readout-k" data-en="Newton's pull at the nearest separation, on that model: erf(d/2σ)" data-es="Atracción de Newton a la separación más cercana, en ese modelo: erf(d/2σ)">Newton's pull at the nearest separation, on that model: erf(d/2σ)</span>

@@ -1117,6 +1117,28 @@ export function tnCriticalSigma(m, L, d) {
   for (let i = 0; i < 60; i++) { const mid = Math.sqrt(lo * hi); if (tnEMinus(m, L, d, mid) < 0) hi = mid; else lo = mid; }
   return Math.sqrt(lo * hi);
 }
+/** Quantum gravity plus pure Diósi–Penrose collapse with Newton's law intact: the quantum channel's Newtonian branch phases, damped by
+ *  Diósi's two-body collapse functional (the real part of the hybrid generator) at smearing σ; mass A at {−L, 0}, mass B at {d, d + L}. */
+export function dpCollapseNegativity(L, d, m, sigma, t, G = G_NEWTON_SI) {
+  const br = [[-L, d], [-L, d + L], [0, d], [0, d + L]];
+  const ph = br.map((b) => G * m * m * t / (HBAR * Math.abs(b[1] - b[0])));
+  const re = [], im = [];
+  for (let r = 0; r < 4; r++) { re.push([0, 0, 0, 0]); im.push([0, 0, 0, 0]); }
+  const k0 = (G / (2 * HBAR)) * t;
+  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) {
+    const gr = tnG(br[r], br[c], m, sigma)[0];
+    const mag = 0.25 * Math.exp(k0 * gr);
+    re[r][c] = mag * Math.cos(ph[r] - ph[c]); im[r][c] = mag * Math.sin(ph[r] - ph[c]);
+  }
+  return negativityOfRho(re, im);
+}
+/** The smallest σ at which the witness survives pure collapse at hold time t (negativity above 10⁻⁹): log bisection between 0.1 nm and 1 m. */
+export function dpCollapseSigma(L, d, m, t, G = G_NEWTON_SI) {
+  let lo = 1e-10, hi = 1.0;
+  if (dpCollapseNegativity(L, d, m, hi, t, G) <= 1e-9) return Infinity;
+  for (let i = 0; i < 70; i++) { const mid = Math.sqrt(lo * hi); if (dpCollapseNegativity(L, d, m, mid, t, G) > 1e-9) hi = mid; else lo = mid; }
+  return Math.sqrt(lo * hi);
+}
 export function ktmGammaT(m, d, dx, t) { return (2 * G_NEWTON_SI * m * m / d ** 3) * dx * dx * t / (2 * HBAR); }
 
 function initBmv(root) {
@@ -1138,13 +1160,13 @@ function initBmv(root) {
           disputed: "Disputed classical non-LOCC: the 2025 literature gives two answers, zero and the quantum value. The band is the interval; this page picks neither edge.",
           flip: "Planted defect: a classical LOCC channel carrying the quantum phases. Local operations and classical communication cannot create entanglement; the verifier rejects this channel.",
           entangled: "entangled", separable: "separable (product state)", unsettled: "not settled: between 0 and the quantum value", defect: "entangled by a classical LOCC channel: rejected",
-          dpNever: "σ_c = {sc} µm · below it this model never entangles this geometry", dpSlow: "σ_c = {sc} µm · above it: peak negativity {pk} after {tp}, gone after {tl}", dpCurve: "σ_c = {sc} µm · entangles; at t it reads {n}", ktm: "{gt} · 0 entanglement in its own linear model", isl: "−{d} % · the Yukawa at the published edge: −{y} %", hours: "h", days: "d", seconds: "s" },
+          dpNever: "σ_c = {sc} µm · below it this model never entangles this geometry", dpSlow: "σ_c = {sc} µm · above it: peak negativity {pk} after {tp}, gone after {tl}", dpCurve: "σ_c = {sc} µm · entangles; at t it reads {n}", col: "σ > {cs} µm · {f} × the nearest approach · the hybrid σ_c above is {r} × this", ktm: "{gt} · 0 entanglement in its own linear model", isl: "−{d} % · the Yukawa at the published edge: −{y} %", hours: "h", days: "d", seconds: "s" },
     es: { quantum: "Mediador cuántico: las cuatro fases tal cual. Débil no es cero; la curva crece con el tiempo de espera y llega a 1 en Δφ = π.",
           locc: "Clásico LOCC: cada masa siente solo el campo medio de la otra. La fuerza está, las fases toman forma de producto, y el entrelazamiento es exactamente cero.",
           disputed: "Clásico no-LOCC en disputa: la literatura de 2025 da dos respuestas, cero y el valor cuántico. La banda es el intervalo; esta página no elige ningún borde.",
           flip: "Defecto plantado: un canal clásico LOCC que lleva las fases cuánticas. Operaciones locales y comunicación clásica no pueden crear entrelazamiento; el verificador rechaza este canal.",
           entangled: "entrelazado", separable: "separable (estado producto)", unsettled: "sin zanjar: entre 0 y el valor cuántico", defect: "entrelazado por un canal clásico LOCC: rechazado",
-          dpNever: "σ_c = {sc} µm · por debajo este modelo nunca entrelaza esta geometría", dpSlow: "σ_c = {sc} µm · por encima: negatividad máxima {pk} tras {tp}, desaparece tras {tl}", dpCurve: "σ_c = {sc} µm · entrelaza; en t marca {n}", ktm: "{gt} · 0 de entrelazamiento en su propio modelo lineal", isl: "−{d} % · el Yukawa del borde publicado: −{y} %", hours: "h", days: "d", seconds: "s" },
+          dpNever: "σ_c = {sc} µm · por debajo este modelo nunca entrelaza esta geometría", dpSlow: "σ_c = {sc} µm · por encima: negatividad máxima {pk} tras {tp}, desaparece tras {tl}", dpCurve: "σ_c = {sc} µm · entrelaza; en t marca {n}", col: "σ > {cs} µm · {f} × la aproximación más cercana · la σ_c híbrida de arriba es {r} × esta", ktm: "{gt} · 0 de entrelazamiento en su propio modelo lineal", isl: "−{d} % · el Yukawa del borde publicado: −{y} %", hours: "h", days: "d", seconds: "s" },
   };
   function render() {
     const L = S0[lang()];
@@ -1237,6 +1259,13 @@ function initBmv(root) {
         const fmtT = (x) => x >= 2 * 86400 ? `${(x / 86400).toFixed(0)} ${L.days}` : x >= 3600 ? `${(x / 3600).toFixed(1)} ${L.hours}` : `${x.toFixed(0)} ${L.seconds}`;
         reads.dp.textContent = L.dpSlow.replace("{sc}", scTxt).replace("{pk}", pk.toFixed(3)).replace("{tp}", fmtT(tp)).replace("{tl}", fmtT(tl));
       }
+    }
+    if (reads.col) {
+      // The collapse test (T.05 § II): quantum gravity plus pure Diósi–Penrose collapse; the witness at this hold time survives above this σ.
+      const cs = dpCollapseSigma(dx, nearest, m, t);
+      const csTxt = Number.isFinite(cs) ? (cs * 1e6).toFixed(0) : "∞";
+      const ratio = Number.isFinite(sc) && Number.isFinite(cs) ? (sc / cs).toFixed(1) : "—";
+      reads.col.textContent = L.col.replace("{cs}", csTxt).replace("{f}", Number.isFinite(cs) ? (cs / nearest).toFixed(2) : "—").replace("{r}", ratio);
     }
     const st = state.flip && state.channel === "locc" ? "flip" : state.channel;
     if (status) { status.setAttribute("data-state", st); status.textContent = st === "flip" ? L.flip : L[state.channel]; }
