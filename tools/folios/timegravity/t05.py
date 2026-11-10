@@ -520,7 +520,9 @@ PAGE: dict = {
               "The map and the data, applied to the geometries the literature has actually proposed. In the collinear layout the 2017 proposal needs σ "
               "above 525 µm from the hybrid dynamics and a 2020 refinement with the masses 100 µm apart at closest approach needs 406 µm, both erasing "
               "the 52 µm torque; the 2020 Casimir-screened proposal, a 23 µm split 47 µm from its partner behind a 1 µm plate, needs 82 µm, a 22 % "
-              "deficit against a published edge at 2.5 %. Side by side the threshold drops: with the two superpositions parallel rather than in line, "
+              "deficit against a published edge at 2.5 %. That paper calls 47 µm an initial separation without saying whether it is the centre distance or "
+              "the nearest approach; read as the centre distance, as the 2025 letter reads it, the nearest approach is 24 µm and the threshold 55 µm, a 6 % "
+              "deficit, so the table carries both readings. Side by side the threshold drops: with the two superpositions parallel rather than in line, "
               "the hybrid dynamics entangles above 0.65 times the gap for any split, half the collinear value, and the pure-collapse witness survives "
               "above 0.44 to 0.47 times it. So the 2024 proposal of micrometre superpositions of 10⁻¹⁴ kg diamonds beside a screening plate, 1.7 µm "
               "splits 21 µm apart, needs only σ above 13.6 µm, a smearing that leaves the 2020 torque untouched: among the geometries mapped here it is "
@@ -529,7 +531,9 @@ PAGE: dict = {
               "El mapa y los datos, aplicados a las geometrías que la literatura ha propuesto de verdad. En la disposición colineal la propuesta de 2017 "
               "necesita de la dinámica híbrida σ por encima de 525 µm y un refinamiento de 2020 con las masas a 100 µm en su mayor acercamiento necesita "
               "406 µm, ambas borrando el par a 52 µm; la propuesta de 2020 apantallada contra Casimir, una división de 23 µm a 47 µm de su pareja tras una "
-              "placa de 1 µm, necesita 82 µm, un déficit de 22 % frente a un borde publicado de 2.5 %. Lado a lado el umbral baja: con las dos "
+              "placa de 1 µm, necesita 82 µm, un déficit de 22 % frente a un borde publicado de 2.5 %. Ese artículo llama a los 47 µm una separación inicial sin "
+              "decir si es la distancia entre centros o la aproximación más cercana; leída como distancia entre centros, como la lee la carta de 2025, la "
+              "aproximación más cercana es de 24 µm y el umbral de 55 µm, un déficit de 6 %, así que la tabla lleva ambas lecturas. Lado a lado el umbral baja: con las dos "
               "superposiciones paralelas en vez de en línea, la dinámica híbrida entrelaza por encima de 0.65 veces la separación para cualquier división, "
               "la mitad del valor colineal, y el testigo de colapso puro sobrevive por encima de 0.44 a 0.47 veces ella. Así que la propuesta de 2024 de "
               "superposiciones micrométricas de diamantes de 10⁻¹⁴ kg junto a una placa de apantallamiento, divisiones de 1.7 µm a 21 µm de distancia, "
@@ -546,6 +550,24 @@ PAGE: dict = {
               "y nunca supera 0.006."),
         ),
         {"type": "proposals_table"},
+        P(
+            C("PROPOSED", [TRILLO, SCHUT, RIJAVEC, BOSE],
+              "Decoherence enters the same way for both models. With the local dephasing the instrument applies, the quantum channel at that geometry "
+              "keeps some entanglement for decoherence rates below 0.0098 per second, the proposal's own criterion reproduced to a part in a million; the hybrid dynamics keeps "
+              "some only below 0.00004 per second at σ = 44 µm, 0.0001 at 30 µm and 0.0002 at 20 µm, forty to two hundred and sixty times lower.",
+              "La decoherencia entra del mismo modo en los dos modelos. Con el desfase local que aplica el instrumento, el canal cuántico en esa geometría "
+              "conserva algo de entrelazamiento para tasas de decoherencia por debajo de 0.0098 por segundo, el propio criterio de la propuesta reproducido "
+              "a una parte en un millón; la dinámica híbrida conserva algo solo por debajo de 0.00004 por segundo a σ = 44 µm, 0.0001 a 30 µm y 0.0002 a 20 µm, entre cuarenta "
+              "y doscientas sesenta veces menos."),
+            T(" At a thousandth per second, ten times below the rate the proposal budgets for gas and black-body scattering, the hybrid dynamics shows no "
+              "entanglement at any time in that geometry while the quantum channel still reaches 0.34. So within the one geometry the data leave it, the "
+              "hybrid dynamics shows entanglement only at decoherence rates fifty to two hundred and seventy times below the proposal's own budget; the page "
+              "computes the two thresholds and measures neither.",
+              " A una milésima por segundo, diez veces por debajo de la tasa que la propuesta presupuesta para la dispersión por gas y por radiación de cuerpo "
+              "negro, la dinámica híbrida no muestra entrelazamiento en ningún momento en esa geometría mientras el canal cuántico aún alcanza 0.34. Así que, "
+              "dentro de la única geometría que los datos le dejan, la dinámica híbrida muestra entrelazamiento solo a tasas de decoherencia entre cincuenta y "
+              "doscientas setenta veces por debajo del propio presupuesto de la propuesta; la página calcula los dos umbrales y no mide ninguno."),
+        ),
         {"type": "h2", "id": "labs", "en": "III · How far the laboratories are", "es": "III · Qué tan lejos están los laboratorios", "short_en": "III · Labs", "short_es": "III · Laboratorios"},
         P(
             C("MEASURED", [WEST, FUCHS],

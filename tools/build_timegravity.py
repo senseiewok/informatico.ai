@@ -1106,6 +1106,19 @@ def sigma_ladder(page: dict) -> str:
     parts.append(f'<line x1="{xe2:.1f}" y1="{axis_y - 112}" x2="{xe2:.1f}" y2="{axis_y}" stroke="var(--tp-minium)" stroke-width="1.8" stroke-dasharray="5 3"/>')
     parts.append(f'<polygon points="{xe2 - 2:.1f},{axis_y - 100} {xe2 - 12:.1f},{axis_y - 105} {xe2 - 2:.1f},{axis_y - 110}" fill="var(--tp-minium)"/>')
     parts.append(f'<text x="{xe2 - 6:.1f}" y="{axis_y - 118}" text-anchor="end" font-size="8.8" font-weight="700" fill="var(--tp-minium)" data-en="T.05 estimate: softened pull under the excluded Yukawa only for σ ≲ 44 µm (PROPOSED)" data-es="estimación T.05: atracción suavizada bajo el Yukawa excluido solo para σ ≲ 44 µm (PROPUESTO)">T.05 estimate: softened pull under the excluded Yukawa only for σ ≲ 44 µm (PROPOSED)</text>')
+    # T.05's window: on the 44 µm estimate the hybrid dynamics could still entangle one published geometry, the 2024 side-by-side one, for σ above
+    # its threshold there (13.6 µm). A model-specific window, not a bound on σ: lighter fill, dashed edge, its own label.
+    from timegravity_kernel_dispute import proposals_table as _props, SIGMA_ESTIMATE_M
+    by_key = {r["key"]: r for r in _props()}
+    if "schut2024_z10" not in by_key:
+        raise KeyError("proposals_table has no 'schut2024_z10' row; the ladder window needs its hybrid threshold")
+    schut = by_key["schut2024_z10"]
+    xw0, xw1 = xs(schut["hybrid_sigma_c_m"]), xs(SIGMA_ESTIMATE_M)
+    parts.append(f'<rect x="{xw0:.1f}" y="{axis_y - 18}" width="{xw1 - xw0:.1f}" height="8" rx="2" fill="var(--tp-prussian)" opacity="0.3" stroke="var(--tp-prussian)" stroke-width="1" stroke-dasharray="3 2"/>')
+    w_en = ("T.05 window: the hybrid model could still reach only the 2024", f"side-by-side geometry, {schut['hybrid_sigma_c_m'] * 1e6:.1f}–{SIGMA_ESTIMATE_M * 1e6:.0f} µm (PROPOSED, model-specific)")
+    w_es = ("Ventana T.05: el modelo híbrido solo podría alcanzar la geometría", f"lado a lado de 2024, {schut['hybrid_sigma_c_m'] * 1e6:.1f}–{SIGMA_ESTIMATE_M * 1e6:.0f} µm (PROPUESTO, específico del modelo)")
+    for i, (en_line, es_line) in enumerate(zip(w_en, w_es)):
+        parts.append(f'<text x="{xw0 - 8:.1f}" y="{axis_y - 28 + 10 * i}" text-anchor="end" font-size="7.8" font-weight="700" fill="var(--tp-prussian)" data-en="{a(en_line)}" data-es="{a(es_line)}">{t(en_line)}</text>')
     # the bounds and the natural cut-off, labels staggered
     stagger = {"natural": 96, "lisa": 70, "gransasso": 96, "xenonnt": 70}
     for key, sigma, kind, _lid, en, es in LADDER_RUNGS:
@@ -1137,7 +1150,7 @@ def sigma_ladder(page: dict) -> str:
             {body}
           </svg>
           <figcaption class="tp-distill-caption">
-            {bi("span", "Plate T.06-L · The σ ladder: three bounds from experimental data hold the smearing from below (green, allowed to the right); its authors' natural cut-off and the 2025 letter's entangling range are proposals (blue); the dashed red line is this site's estimate from T.05 of where the inverse-square tests leave room. The bottom row applies the model's formula to a single tubulin, the object the Orch-OR proposal refers to; the page does not assess that proposal. Each rung is a ledger row; the page draws no conclusion beyond the picture.", "Lámina T.06-L · La escalera σ: tres cotas desde datos experimentales sostienen el suavizado por abajo (verde, permitido a la derecha); el corte natural de sus autores y el rango de entrelazamiento de la carta de 2025 son propuestas (azul); la línea roja punteada es la estimación de este sitio desde T.05 de dónde dejan sitio las pruebas del inverso del cuadrado. La fila inferior aplica la fórmula del modelo a una sola tubulina, el objeto al que se refiere la propuesta Orch-OR; la página no evalúa esa propuesta. Cada peldaño es una fila del libro de registro; la página no concluye nada más allá de la imagen.")}
+            {bi("span", "Plate T.06-L · The σ ladder: three bounds from experimental data hold the smearing from below (green, allowed to the right); its authors' natural cut-off and the 2025 letter's entangling range are proposals (blue); the dashed red line is this site's estimate from T.05 of where the inverse-square tests leave room. The lighter dashed bar, 13.6 to 44 µm, is T.05's window where the letter's model could still entangle one published geometry, the 2024 side-by-side proposal; it is specific to that model and that geometry, not a bound on σ generally, and it moves or closes if the 2020 data are refit. The bottom row applies the model's formula to a single tubulin, the object the Orch-OR proposal refers to; the page does not assess that proposal. Each rung is a ledger row; the page draws no conclusion beyond the picture.", "Lámina T.06-L · La escalera σ: tres cotas desde datos experimentales sostienen el suavizado por abajo (verde, permitido a la derecha); el corte natural de sus autores y el rango de entrelazamiento de la carta de 2025 son propuestas (azul); la línea roja punteada es la estimación de este sitio desde T.05 de dónde dejan sitio las pruebas del inverso del cuadrado. La barra discontinua más clara, de 13.6 a 44 µm, es la ventana de T.05 donde el modelo de la carta aún podría entrelazar una geometría publicada, la propuesta lado a lado de 2024; es específica de ese modelo y esa geometría, no una cota de σ en general, y se mueve o se cierra si los datos de 2020 se reajustan. La fila inferior aplica la fórmula del modelo a una sola tubulina, el objeto al que se refiere la propuesta Orch-OR; la página no evalúa esa propuesta. Cada peldaño es una fila del libro de registro; la página no concluye nada más allá de la imagen.")}
           </figcaption>
         </figure>"""
 
@@ -1236,7 +1249,8 @@ def proposals_table(page: dict) -> str:
     names = {
         "bose2017": ("Bose et al. 2017 (PRL)", "Bose et al. 2017 (PRL)"),
         "chevalier2020_d350": ("Chevalier, Paige & Kim 2020 (PRA), d = 350 µm", "Chevalier, Paige & Kim 2020 (PRA), d = 350 µm"),
-        "vandekamp2020": ("van de Kamp et al. 2020 (PRA), screened", "van de Kamp et al. 2020 (PRA), apantallado"),
+        "vandekamp2020": ("van de Kamp et al. 2020 (PRA), screened; 47 µm read as the nearest approach", "van de Kamp et al. 2020 (PRA), apantallado; 47 µm leídos como aproximación más cercana"),
+        "vandekamp2020_letter_reading": ("the same, read as the 2025 letter reads it: 47 µm centre to centre", "la misma, leída como la lee la carta de 2025: 47 µm entre centros"),
         "schut2024_z30": ("Schut et al. 2024 (PRR), z = 30 µm", "Schut et al. 2024 (PRR), z = 30 µm"),
         "schut2024_z10": ("Schut et al. 2024 (PRR), z = 10 µm", "Schut et al. 2024 (PRR), z = 10 µm"),
         "schut2024_z5": ("Schut et al. 2024 (PRR), z = 5 µm", "Schut et al. 2024 (PRR), z = 5 µm"),

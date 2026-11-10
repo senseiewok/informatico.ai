@@ -772,6 +772,25 @@
         }
       },
       {
+        "key": "vandekamp2020_letter_reading",
+        "layout": "collinear",
+        "m_kg": 1e-15,
+        "split_m": 2.3e-05,
+        "nearest_m": 2.4e-05,
+        "hybrid_sigma_c_m": 5.4883805191e-05,
+        "torque_deficit_at_hybrid_sigma_c": 0.0620034928455,
+        "collapse_sigma_c_at_t_full_m": 1.7950610271e-05,
+        "quantum_t_full_s": 370.46039189,
+        "at_sigma": {
+          "44um": {
+            "entangles": false
+          },
+          "30um": {
+            "entangles": false
+          }
+        }
+      },
+      {
         "key": "schut2024_z30",
         "layout": "parallel",
         "m_kg": 1e-14,
@@ -903,6 +922,33 @@
         }
       }
     ],
+    "open_window_decoherence": {
+      "geometry": "schut2024_z10",
+      "entangling_rate_rad_per_s": 0.0196535660891,
+      "proposal_omega_ent_per_s": 0.00982678304453,
+      "quantum_dephasing_threshold_per_s": 0.00982676177538,
+      "hybrid_dephasing_threshold_per_s": {
+        "20um": 0.000216827786198,
+        "30um": 0.00010020025407,
+        "44um": 3.68695054244e-05
+      },
+      "peaks": {
+        "gamma_1e-04": {
+          "quantum": 0.474805544991,
+          "quantum_time_s": 177.827941004,
+          "hybrid_20um": 0.0114470248696,
+          "hybrid_30um": 4.51154431306e-06,
+          "hybrid_44um": 0.0
+        },
+        "gamma_1e-03": {
+          "quantum": 0.337206016902,
+          "quantum_time_s": 177.827941004,
+          "hybrid_20um": 0.0,
+          "hybrid_30um": 0.0,
+          "hybrid_44um": 0.0
+        }
+      }
+    },
     "rijavec_tau_g_s": 15.9268895845,
     "dephasing_threshold_per_s": 0.0622774720594
   },

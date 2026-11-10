@@ -311,7 +311,8 @@ def parallel_map(ratios: tuple = (0.03, 0.1, 0.25, 0.5, 1.0, 2.0), gap: float = 
 PROPOSALS = (
     ("bose2017", "collinear", 1e-14, 250e-6, 200e-6),              # Bose et al. 2017: d = 450 µm centre to centre, Δx = 250 µm
     ("chevalier2020_d350", "collinear", 1e-14, 250e-6, 100e-6),    # Chevalier, Paige & Kim 2020: d = 350 µm, 2δ = 250 µm, closest approach 100 µm
-    ("vandekamp2020", "collinear", 1e-15, 23e-6, 47e-6),           # van de Kamp et al. 2020: Δx = 23 µm, initial separation 47 µm behind a 1 µm plate
+    ("vandekamp2020", "collinear", 1e-15, 23e-6, 47e-6),           # the paper's "initial separation of 47 µm" read as the nearest approach
+    ("vandekamp2020_letter_reading", "collinear", 1e-15, 23e-6, 24e-6),  # the same proposal as the 2025 letter reads it: 47 µm centre to centre, 24 µm nearest (Δx = 23 µm, 1 µm plate)
     ("schut2024_z30", "parallel", 1e-14, 8.5e-6, 61e-6),           # Schut et al. 2024 Table I: 10⁻¹⁴ kg, z = 30 µm (d = 61 µm), Δx = 8.5 µm
     ("schut2024_z10", "parallel", 1e-14, 1.7e-6, 21e-6),           # z = 10 µm (d = 21 µm), Δx = 1.7 µm
     ("schut2024_z5", "parallel", 1e-14, 0.65e-6, 11e-6),           # z = 5 µm (d = 11 µm), Δx = 0.65 µm
@@ -340,6 +341,69 @@ def proposals_table(sigmas: tuple = (SIGMA_ESTIMATE_M, 30e-6)) -> list[dict]:
                 row["at_sigma"][f"{s * 1e6:.0f}um"] = {"entangles": False}
         rows.append(row)
     return rows
+
+
+def dephase_points(rho: list[list[complex]], gamma: float, t: float) -> list[list[complex]]:
+    """Local dephasing as the page's instrument applies it: each mass's left/right coherence shrinks by e^{−γt}; branch index 2a + b."""
+    eta = math.exp(-gamma * t)
+    out = [[0j] * 4 for _ in range(4)]
+    for r in range(4):
+        for c in range(4):
+            ar, br_ = divmod(r, 2); ac, bc = divmod(c, 2)
+            out[r][c] = rho[r][c] * (eta if ar != ac else 1.0) * (eta if br_ != bc else 1.0)
+    return out
+
+
+def quantum_state_points(br: list[tuple], m: float, t: float) -> list[list[complex]]:
+    """The quantum channel on planar branches: Newtonian phases, no damping."""
+    phases = [G_NEWTON * m * m * t / (HBAR * _dist(b[0], b[1])) for b in br]
+    return [[0.25 * cmath.exp(1j * (phases[r] - phases[c])) for c in range(4)] for r in range(4)]
+
+
+_LOG_GRID = tuple(10.0 ** (k / 4.0) for k in range(-12, 44))
+
+
+def max_negativity_dephased(state, br: list[tuple], m: float, gamma: float, sigma: float | None = None) -> tuple[float, float | None]:
+    """Largest negativity over the log time grid under local dephasing γ; `state` is hybrid_state_points or quantum_state_points."""
+    best, t_best = 0.0, None
+    for t in _LOG_GRID:
+        rho = state(br, m, sigma, t) if sigma is not None else state(br, m, t)
+        n = negativity(dephase_points(rho, gamma, t))
+        if n > best:
+            best, t_best = n, t
+    return best, t_best
+
+
+def dephasing_threshold_points(state, br: list[tuple], m: float, sigma: float | None = None) -> float:
+    """The dephasing rate above which the model shows no entanglement at any time (log bisection)."""
+    lo, hi = 1e-9, 10.0
+    if max_negativity_dephased(state, br, m, hi, sigma)[0] > 1e-9:
+        return float("inf")
+    for _ in range(40):
+        mid = math.sqrt(lo * hi)
+        if max_negativity_dephased(state, br, m, mid, sigma)[0] > 1e-9:
+            lo = mid
+        else:
+            hi = mid
+    return math.sqrt(lo * hi)
+
+
+def open_window_decoherence(sigmas: tuple = (20e-6, 30e-6, SIGMA_ESTIMATE_M), gammas: tuple = (1e-4, 1e-3)) -> dict:
+    """At the 2024 side-by-side geometry (the one mapped geometry the hybrid dynamics could reach on the estimate): the dephasing
+    rate that erases the quantum channel's entanglement (the proposal's own criterion, γ < |ω_ent|), the rate that erases the
+    hybrid dynamics' entanglement at each σ, and both peaks at two fixed rates."""
+    key, layout, m, split, gap = next(p for p in PROPOSALS if p[0] == "schut2024_z10")
+    br = branches_parallel(split, gap)
+    rate = abs(sum(((-1) ** (i // 2 + i % 2)) * G_NEWTON * m * m / (HBAR * _dist(b[0], b[1])) for i, b in enumerate(br)))
+    out = {"geometry": key, "entangling_rate_rad_per_s": rate, "proposal_omega_ent_per_s": rate / 2.0,
+           "quantum_dephasing_threshold_per_s": dephasing_threshold_points(quantum_state_points, br, m),
+           "hybrid_dephasing_threshold_per_s": {f"{s * 1e6:.0f}um": dephasing_threshold_points(hybrid_state_points, br, m, s) for s in sigmas},
+           "peaks": {}}
+    for g in gammas:
+        q = max_negativity_dephased(quantum_state_points, br, m, g)
+        out["peaks"][f"gamma_{g:.0e}"] = {"quantum": q[0], "quantum_time_s": q[1],
+                                          **{f"hybrid_{s * 1e6:.0f}um": max_negativity_dephased(hybrid_state_points, br, m, g, s)[0] for s in sigmas}}
+    return out
 
 
 def rijavec_tau_g(m: float = BMV_M_KG, d: float = BMV_D_M, dx: float = BMV_DX_M) -> float:
@@ -595,6 +659,15 @@ def check_dispute(planted_defect: bool = False) -> dict:
                     and pb["schut2024_z10"]["at_sigma"]["44um"]["entangles"] and pb["schut2024_z10"]["at_sigma"]["30um"]["entangles"]
                     and 150.0 < pb["schut2024_z10"]["quantum_t_full_s"] < 170.0
                     and len(live) >= 8 and all(v["hybrid_negativity_at_t_full"] < 2e-2 for v in live) and all(v["peak_negativity"] < 0.085 for v in live))
+    # 4i. Decoherence at the 2024 geometry: the quantum channel's dephasing threshold is the proposal's own |ω_ent| to a part in ten thousand; the hybrid
+    # thresholds sit 40 to 300 times lower; at γ = 1e-3 /s the hybrid shows nothing while the quantum channel still peaks above 0.3.
+    dec = open_window_decoherence()
+    hyb_thr = dec["hybrid_dephasing_threshold_per_s"]
+    decoh_ok = (abs(dec["quantum_dephasing_threshold_per_s"] / dec["proposal_omega_ent_per_s"] - 1.0) < 1e-4  # the proposal's γ < |ω_ent| criterion, reproduced
+                and all(2e-5 < v < 5e-4 for v in hyb_thr.values())
+                and all(40.0 < dec["quantum_dephasing_threshold_per_s"] / v < 300.0 for v in hyb_thr.values())
+                and hyb_thr["20um"] > hyb_thr["30um"] > hyb_thr["44um"]
+                and dec["peaks"]["gamma_1e-03"]["quantum"] > 0.3 and all(v < 1e-9 for k, v in dec["peaks"]["gamma_1e-03"].items() if k.startswith("hybrid")))
     # 5. Where the entangling power sits: the noise part alone entangles nothing at any σ or time; the interaction part alone gives
     #    at least the full model's negativity; and as σ → 0 the interaction part is the quantum channel exactly.
     parts = {}
@@ -615,11 +688,11 @@ def check_dispute(planted_defect: bool = False) -> dict:
         "ktm_threshold_ratios": ratios, "ktm_2017": ktm_2017,
         "entangling_parts": parts, "quantum_channel_negativity_2017": quantum_negativity, "parts_ok": parts_ok,
         "pure_collapse": collapse, "collapse_ok": collapse_ok,
-        "threshold_map": tmap, "map_ok": map_ok, "map_with_isl": isl, "isl_ok": isl_ok, "open_region_timing": timing, "timing_ok": timing_ok, "points_ok": points_ok, "parallel_map": pmap, "parallel_ok": parallel_ok, "proposals": props, "proposals_ok": proposals_ok,
+        "threshold_map": tmap, "map_ok": map_ok, "map_with_isl": isl, "isl_ok": isl_ok, "open_region_timing": timing, "timing_ok": timing_ok, "points_ok": points_ok, "parallel_map": pmap, "parallel_ok": parallel_ok, "proposals": props, "proposals_ok": proposals_ok, "open_window_decoherence": dec, "decoh_ok": decoh_ok,
         "collapse_scaling": scaling, "scaling_ok": scaling_ok, "rijavec_tau_g_s": tau_g, "dephasing_threshold_per_s": gamma_zero, "rijavec_ok": rijavec_ok,
         "dc_paper_ok": dc_paper_ok, "dc_double_entry_ok": dc_double_entry_ok, "fig3_ok": fig3_ok, "tn_2017_ok": tn_2017_ok,
         "ktm_ok": ktm_ok, "ktm_edge_ok": ktm_edge_ok, "defect_rejected": defect_rejected,
-        "ok": dc_paper_ok and dc_double_entry_ok and fig3_ok and tn_2017_ok and ktm_ok and ktm_edge_ok and parts_ok and collapse_ok and scaling_ok and rijavec_ok and map_ok and isl_ok and timing_ok and points_ok and parallel_ok and proposals_ok and defect_rejected,
+        "ok": dc_paper_ok and dc_double_entry_ok and fig3_ok and tn_2017_ok and ktm_ok and ktm_edge_ok and parts_ok and collapse_ok and scaling_ok and rijavec_ok and map_ok and isl_ok and timing_ok and points_ok and parallel_ok and proposals_ok and decoh_ok and defect_rejected,
     }
 
 
