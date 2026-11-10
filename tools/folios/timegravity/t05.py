@@ -33,7 +33,11 @@ TILLOY = "T05-TILLOY2016"
 VDK = "T05-VANDEKAMP2020"
 LEE = "T05-LEE2020"
 TAN = "T05-TAN2020"
+DIOSI87 = "T06-DIOSI1987"
+PENROSE96 = "T06-PENROSE1996"
+DONADI21 = "T06-DONADI2021"
 LEE21 = "T05-LEE2021"
+MURATA = "T05-MURATA2026"
 
 PAGE: dict = {
     "slug": SLUG,
@@ -73,7 +77,7 @@ PAGE: dict = {
     "skill_filename": "timegravity-t05-entanglement-channels.SKILL.md",
     "open_question_en": "If a classical slope can entangle, what would count as quantum gravity?",
     "open_question_es": "Si una pendiente clásica puede entrelazar, ¿qué contaría como gravedad cuántica?",
-    "ledger_ids": [BOSE, MV, WEST, FUCHS, AGAF, TROY, KTM, PERES, WOOT, AZIZ, TRILLO, SCHN, MV25, DIOSI25, TOBAR, TILLOY, VDK, LEE, TAN, LEE21],
+    "ledger_ids": [BOSE, MV, WEST, FUCHS, AGAF, TROY, KTM, PERES, WOOT, AZIZ, TRILLO, SCHN, MV25, DIOSI25, TOBAR, TILLOY, VDK, LEE, TAN, LEE21, MURATA, DIOSI87, PENROSE96, DONADI21],
     "ai_line_en": (
         "AI contribution to the cited results: none. No AI system contributed to any proposal, measurement, derivation or rebuttal cited on this page. "
         "The page text, instrument and verifier were drafted with AI assistance and checked by the site maintainer against the primary sources listed below."
@@ -322,6 +326,19 @@ PAGE: dict = {
               "mostró que se cumple con |α| ≤ 1 hasta una escala de longitud de 48 µm."),
             T(" The smearing that lets the model entangle softens its pull below about 2σ, and the same pull must act between the test bodies of these experiments.",
               " El suavizado que permite al modelo entrelazar ablanda su atracción por debajo de unas 2σ, y la misma atracción debe actuar entre los cuerpos de prueba de estos experimentos."),
+            C("PROPOSED", [TRILLO, TAN, MURATA],
+              "The second group's 2020 apparatus is described in a 2026 review: tungsten plates 0.2 mm thick on the pendulum facing a 1.8 mm plate at a "
+              "surface gap of 210 µm, with a rotating eight-plate source farther away; its modulation scheme is not in open text, and the site does not "
+              "model it. At the pair level, between a test-mass element and a source element at that gap, the smeared potential removes erfc(210 µm/2σ) "
+              "of Newton's pull, 4.8 % at σ = 75 µm, where the α = 1, λ = 48 µm Yukawa at that group's 95 % edge would remove 1.3 % of the same pull; "
+              "the two match at σ ≈ 60 µm, so at this gap the shape sits under that Yukawa for smaller σ and above it beyond, and the 52 µm test is the "
+              "more sensitive of the two for it.",
+              "El aparato de 2020 del segundo grupo se describe en una revisión de 2026: placas de tungsteno de 0.2 mm de espesor en el péndulo frente a "
+              "una placa de 1.8 mm a un hueco entre superficies de 210 µm, con una fuente giratoria de ocho placas más lejos; su esquema de modulación no "
+              "está en texto abierto, y el sitio no lo modela. A nivel de par, entre un elemento de la masa de prueba y uno de la fuente a ese hueco, el "
+              "potencial suavizado quita erfc(210 µm/2σ) de la atracción de Newton, 4.8 % a σ = 75 µm, donde el Yukawa de α = 1 y λ = 48 µm en el borde "
+              "al 95 % de ese grupo quitaría 1.3 % de la misma atracción; los dos coinciden en σ ≈ 60 µm, así que a este hueco la forma queda bajo ese "
+              "Yukawa para σ menores y por encima más allá, y la prueba a 52 µm es la más sensible de las dos para ella."),
         ),
         P(
             C("PROPOSED", [TRILLO, LEE, LEE21],
@@ -385,6 +402,28 @@ PAGE: dict = {
               "Si el análisis publicado, corrido sobre sus propios datos, rechazaría la forma suavizada es algo que debe decir el experimento, y la cota del "
               "segundo grupo a 48 µm se enuncia tal como se publicó porque su geometría no está en el texto abierto; la carta llama al rango de σ que "
               "entrelaza 'no probado antes' y su texto principal no menciona estas pruebas. La página anota la pregunta y la deja abierta."),
+        ),
+        P(
+            C("PROPOSED", [BOSE, DIOSI87, PENROSE96, DONADI21],
+              "The proposed experiment is also a collapse test. If gravity is quantum and the Diósi–Penrose collapse exists besides, with Newton's law "
+              "untouched, the collapse decoheres the two masses on the same two-body kernel the hybrid model uses for its noise, at a rate that grows "
+              "with the mass squared and falls as the smearing grows; on this page's kernel the quantum channel's negativity of 0.078 for the 2017 "
+              "geometry is reduced to zero at 2.5 s unless σ is above 130 µm, and to half unless σ is above 177 µm, while the letter's lighter geometry "
+              "keeps some unless σ is below 14 µm. The 2017 proposal named spontaneous collapse as a mechanism that 'will typically lead to a strong loss "
+              "of coherence' and gave no number; these are the numbers this page computes on that model.",
+              "El experimento propuesto es también una prueba de colapso. Si la gravedad es cuántica y además existe el colapso de Diósi–Penrose, con "
+              "la ley de Newton intacta, el colapso decohere las dos masas sobre el mismo núcleo de dos cuerpos que el modelo híbrido usa para su ruido, "
+              "a un ritmo que crece con el cuadrado de la masa y cae al crecer el suavizado; en el núcleo de esta página la negatividad de 0.078 del canal "
+              "cuántico para la geometría de 2017 se reduce a cero a los 2.5 s salvo que σ esté por encima de 130 µm, y a la mitad salvo que esté por "
+              "encima de 177 µm, mientras que la geometría más ligera de la carta conserva algo salvo que σ baje de 14 µm. La propuesta de 2017 nombró el "
+              "colapso espontáneo como un mecanismo que 'típicamente llevará a una fuerte pérdida de coherencia' y no dio número; estos son los números "
+              "que esta página calcula en ese modelo."),
+            T(" A positive witness at the 2017 geometry would therefore set a lower bound of 130 µm on the collapse length, more than five orders of "
+              "magnitude above the radiation detectors' 4.9 Å; in that scenario Newton's law is untouched, so the hybrid form's Eöt-Wash estimate does "
+              "not apply to it. A null result would not by itself separate classical gravity from quantum gravity with collapse.",
+              " Un testigo positivo en la geometría de 2017 fijaría por tanto una cota inferior de 130 µm a la longitud de colapso, más de cinco órdenes "
+              "de magnitud por encima de los 4.9 Å de los detectores de radiación; en ese escenario la ley de Newton queda intacta, así que la estimación "
+              "de Eöt-Wash de la forma híbrida no le aplica. Un resultado nulo no separaría por sí solo la gravedad clásica de la gravedad cuántica con colapso."),
         ),
         {"type": "h2", "id": "labs", "en": "III · How far the laboratories are", "es": "III · Qué tan lejos están los laboratorios", "short_en": "III · Labs", "short_es": "III · Laboratorios"},
         P(
@@ -481,6 +520,7 @@ PAGE: dict = {
          "El acoplamiento gravitatorio está unos cuarenta y tres órdenes de magnitud por debajo del electromagnético, como señala el artículo de suficiencia de 2017, y aun así la fase tras 2.5 s es un tercio de radián. El problema del experimento es el aislamiento: 10⁻¹⁵ Pa y 0.15 K, sin campo parásito, durante segundos. Por eso la página lista los récords de enfriamiento como distancia recorrida."),
     ],
     "sources": [
+        ("Murata, J., Fujiie, T., & Suzuki, S. (2026). Short-range tests of the gravitational inverse-square law. arXiv:2605.18212.", "10.48550/arXiv.2605.18212"),
         ("Bose, S., Mazumdar, A., Morley, G. W., Ulbricht, H., Toroš, M., Paternostro, M., Geraci, A. A., Barker, P. F., Kim, M. S., & Milburn, G. (2017). Spin entanglement witness for quantum gravity. Physical Review Letters, 119(24), 240401.", "10.1103/PhysRevLett.119.240401"),
         ("Marletto, C., & Vedral, V. (2017). Gravitationally induced entanglement between two massive particles is sufficient evidence of quantum effects in gravity. Physical Review Letters, 119(24), 240402.", "10.1103/PhysRevLett.119.240402"),
         ("Westphal, T., Hepach, H., Pfaff, J., & Aspelmeyer, M. (2021). Measurement of gravitational coupling between millimetre-sized masses. Nature, 591, 225–228.", "10.1038/s41586-021-03250-7"),

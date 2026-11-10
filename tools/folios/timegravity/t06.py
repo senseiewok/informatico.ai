@@ -276,14 +276,15 @@ PAGE: dict = {
               "Eöt-Wash torque as the Yukawa that test excludes at 95 %. On this site's estimate the inverse-square tests leave room only below "
               "that line, and the entanglement letter needs the range above it. A 2025 preprint on the smearing profiles of these models notes that for "
               "this parameter 'upper bounds can be put by observing no deviations from Newton's law of gravitation'; it works none out and names no "
-              "experiment. The 44 µm rung is this site's own estimate from the Eöt-Wash comparison on T.05, not the preprint's.",
+              "experiment. The 44 µm rung is this site's own estimate from the Eöt-Wash comparison on T.05, not the preprint's. T.05 adds a rung of another kind: if gravity is quantum and pure collapse exists besides, a positive witness at the 2017 geometry would put σ above 130 µm within this pure-collapse model.",
               "En lo alto de la escalera están los 50 a 250 µm de la carta de 2025, el rango en que el modelo entrelaza dos masas en un "
               "laboratorio; justo debajo, a 44 µm, el núcleo de cuñas de T.05 encuentra que la atracción suavizada del modelo quita tanto "
               "del par de Eöt-Wash como el Yukawa que esa prueba excluye al 95 %. En la estimación de este sitio las pruebas del inverso del cuadrado "
               "dejan sitio solo por debajo de esa línea, y la carta de entrelazamiento necesita el rango por encima. Una prepublicación de 2025 sobre los "
               "perfiles de suavizado de estos modelos anota que para este parámetro 'se pueden poner cotas superiores observando que no hay desviaciones "
               "de la ley de gravitación de Newton'; no calcula ninguna ni nombra experimento alguno. El peldaño de 44 µm es la estimación propia de este "
-              "sitio desde la comparación con Eöt-Wash en T.05, no la de la prepublicación."),
+              "sitio desde la comparación con Eöt-Wash en T.05, no la de la prepublicación. T.05 añade un peldaño de otra clase: si la gravedad es "
+              "cuántica y además existe el colapso puro, un testigo positivo en la geometría de 2017 pondría σ por encima de 130 µm dentro de este modelo de colapso puro."),
             C("BOUND", [OPPENHEIM],
               "The same torsion balances enter a second squeeze: in 2023 Oppenheim and co-workers showed that any consistent theory with "
               "classical gravity and quantum matter must trade decoherence of the matter against diffusion of the field, bounded that "
@@ -293,6 +294,37 @@ PAGE: dict = {
               "consistente con gravedad clásica y materia cuántica debe intercambiar decoherencia de la materia por difusión del campo, "
               "acotaron esa difusión con mediciones tipo Cavendish y de atractor giratorio en D₂ ≤ 10⁻⁴¹ kg² s m⁻³, y nombraron al núcleo de "
               "Diósi–Penrose como miembro de la clase."),
+            T(" At the laboratory rungs the model is quiet: its own decoherence falls as σ⁻³ for separations well inside the smearing, by the "
+              "letter's expansion, and the radiation the three detectors bounded scales as 1/R0³, which is why their bounds run from below and sit "
+              "a hundred thousand times or more under the entangling range. The handles built on the model's noise or coherence go slack as σ "
+              "grows; the deficit in the mean pull grows instead, which is why the inverse-square tests are where this site's T.05 estimate is set "
+              "against the model.",
+              " En los peldaños de laboratorio el modelo es silencioso: su propia decoherencia cae como σ⁻³ para separaciones bien dentro del "
+              "suavizado, por la expansión de la carta, y la radiación que acotaron los tres detectores escala como 1/R0³, por lo que sus cotas "
+              "corren desde abajo y quedan cien mil veces o más por debajo del rango que entrelaza. Las asas construidas sobre el ruido o la "
+              "coherencia del modelo se aflojan al crecer σ; el déficit en la atracción media crece en cambio, y por eso las pruebas del inverso "
+              "del cuadrado son donde la estimación T.05 de este sitio se confronta con el modelo."),
+            C("PROPOSED", [OPPENHEIM, LEE],
+              "The same torque residuals could be read into the 2023 trade-off itself. Its authors bound the field diffusion of the Diósi–Penrose-kernel "
+              "class from the variance of the time-averaged force on a composite body, a sum over its nuclei of incoherent kicks, so that the ceiling "
+              "grows with the number of atoms N and with the nuclear radius cubed, and they fed it Cavendish-class numbers, a 10⁻⁷ m/s² scatter over "
+              "100 s on a kilogram, for a ceiling of 10⁻⁹ kg² s m⁻¹ against an interferometry floor of 10⁻⁴⁰, a squeeze they call extremely "
+              "conservative. Read with the 2020 torques instead, a residual of 0.005 fN·m on a 2 g platinum foil at an 18 mm lever arm over an averaging "
+              "time of 10³ to 10⁴ s, their formula gives a ceiling between 10⁻²⁶ and 10⁻²², thirteen to sixteen orders lower, and the gap above the "
+              "interferometry floor would shrink from thirty-one orders to between fourteen and eighteen.",
+              "Los mismos residuos de par podrían leerse dentro del propio intercambio de 2023. Sus autores acotan la difusión del campo de la clase "
+              "de núcleo de Diósi–Penrose desde la varianza de la fuerza promediada en el tiempo sobre un cuerpo compuesto, una suma sobre sus núcleos "
+              "de golpes incoherentes, de modo que el techo crece con el número de átomos N y con el cubo del radio nuclear, y la alimentaron con "
+              "números de clase Cavendish, una dispersión de 10⁻⁷ m/s² en 100 s sobre un kilogramo, para un techo de 10⁻⁹ kg² s m⁻¹ frente a un piso "
+              "de interferometría de 10⁻⁴⁰, un apretón que ellos llaman extremadamente conservador. Leída con los pares de 2020, un residuo de "
+              "0.005 fN·m sobre una lámina de platino de 2 g a un brazo de 18 mm en un tiempo de promediado de 10³ a 10⁴ s, su fórmula da un techo "
+              "entre 10⁻²⁶ y 10⁻²², de trece a dieciséis órdenes más bajo, y la brecha sobre el piso de interferometría se encogería de treinta y un órdenes a entre catorce y dieciocho."),
+            T(" That is their estimate with better inputs, not a bound: the step from a torque residual to an acceleration is a heuristic at the level "
+              "of their own Cavendish step, the averaging time is this page's assumption and enters linearly, and the number says nothing about the "
+              "smeared model of T.05, whose granularity is σ rather than a nucleus and whose ceiling would sit (σ/r_N)³ higher.",
+              " Esa es su estimación con mejores entradas, no una cota: el paso de un residuo de par a una aceleración es una heurística al nivel de su "
+              "propio paso Cavendish, el tiempo de promediado es una suposición de esta página y entra linealmente, y el número no dice nada del modelo "
+              "suavizado de T.05, cuya granularidad es σ y no un núcleo y cuyo techo quedaría (σ/r_N)³ más alto."),
         ),
         P(
             C("OPEN", [TRILLO, HAMEROFF, HELOU, LEE],

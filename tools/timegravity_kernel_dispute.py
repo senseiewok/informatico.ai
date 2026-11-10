@@ -100,6 +100,36 @@ def tn_negativity(split: float, nearest: float, m: float, sigma: float, t: float
     return negativity(tn_state(split, nearest, (m, m), sigma, t, planted_defect, part))
 
 
+def dp_collapse_state(split: float, nearest: float, m: float, sigma: float, t: float) -> list[list[complex]]:
+    """Quantum gravity plus Diósi–Penrose collapse, Newton intact: the Newtonian branch phases of the quantum channel with the
+    DP decoherence (the real part of the hybrid generator, which is Diósi's two-body collapse functional) as damping."""
+    br = collinear_branches(split, nearest)
+    phases = [G_NEWTON * m * m * t / (HBAR * abs(b[1] - b[0])) for b in br]
+    rho = [[0j] * 4 for _ in range(4)]
+    for r in range(4):
+        for c in range(4):
+            damp = (G_NEWTON / (2.0 * HBAR)) * tn_g(br[r], br[c], (m, m), sigma).real * t
+            rho[r][c] = 0.25 * cmath.exp(1j * (phases[r] - phases[c])) * math.exp(damp)
+    return rho
+
+
+def dp_collapse_negativity(split: float, nearest: float, m: float, sigma: float, t: float) -> float:
+    return negativity(dp_collapse_state(split, nearest, m, sigma, t))
+
+
+def dp_collapse_sigma_at(split: float, nearest: float, m: float, t: float, fraction: float) -> float:
+    """The smallest σ at which pure collapse leaves `fraction` of the quantum channel's negativity (fraction → 0 for the critical σ)."""
+    target = fraction * negativity(dp_collapse_state(split, nearest, m, 1.0, t))
+    lo, hi = 1e-10, 1.0
+    for _ in range(90):
+        mid = math.sqrt(lo * hi)
+        if dp_collapse_negativity(split, nearest, m, mid, t) > max(target, 1e-9):
+            hi = mid
+        else:
+            lo = mid
+    return math.sqrt(lo * hi)
+
+
 def tn_negativity_parts(split: float, nearest: float, m: float, sigma: float, t: float) -> dict[str, float]:
     """The model's negativity with its whole generator, with its interaction part alone, and with its noise part alone."""
     return {p: tn_negativity(split, nearest, m, sigma, t, part=p) for p in ("full", "interaction", "noise")}
@@ -271,6 +301,24 @@ def check_dispute(planted_defect: bool = False) -> dict:
     ktm_ok = abs(ratios[-1]["ratio"] - 1.0) < 1e-2 and all(r["ratio"] is not None for r in ratios)
     ktm_2017 = ktm_edge(BMV_M_KG, BMV_D_M, BMV_DX_M, BMV_T_S)
     ktm_edge_ok = ktm_2017["linear_model_negativity"] < 1e-3 and ktm_2017["linear_model_negativity_small_split"] < 1e-9
+    # 4c. Quantum gravity plus pure DP collapse (Newton intact): the σ below which the witness dies, for both geometries.
+    collapse = {}
+    for label, (L, d, mm, tt) in {"geometry_2017_2p5s": (BMV_DX_M, nearest_2017, BMV_M_KG, BMV_T_S), "letter_geometry_2p5s": (TN_L_M, TN_D_M, TN_M_KG, BMV_T_S),
+                                 "letter_geometry_1s": (TN_L_M, TN_D_M, TN_M_KG, 1.0)}.items():
+        collapse[label] = {"quantum_negativity": negativity(dp_collapse_state(L, d, mm, 1.0, tt)), "critical_sigma_m": dp_collapse_sigma_at(L, d, mm, tt, 0.0),
+                           "half_sigma_m": dp_collapse_sigma_at(L, d, mm, tt, 0.5),
+                           "negativity_by_sigma": {f"{s * 1e6:.0f}um": dp_collapse_negativity(L, d, mm, s, tt) for s in (44e-6, 100e-6, 200e-6, 500e-6, 1e-3)}}
+    c17 = collapse["geometry_2017_2p5s"]
+    # The damping is bounded (Re g ≤ 0, so every off-diagonal element shrinks); at σ = 1 m the state is the quantum channel's to 1e-9;
+    # the quantum negativity is positive; and the negativity rises monotonically along the σ table.
+    quantum_2017 = negativity(four_branch_state(branch_phases(BMV_M_KG, BMV_D_M, BMV_DX_M, BMV_T_S, "quantum")))
+    seq17 = [c17["negativity_by_sigma"][k] for k in ("44um", "100um", "200um", "500um", "1000um")]
+    collapse_ok = (c17["critical_sigma_m"] < c17["half_sigma_m"] and c17["negativity_by_sigma"]["100um"] < 1e-9 < c17["negativity_by_sigma"]["500um"]
+                   and abs(c17["negativity_by_sigma"]["1000um"] - c17["quantum_negativity"]) / c17["quantum_negativity"] < 1e-2
+                   and c17["quantum_negativity"] > 0.07 and abs(c17["quantum_negativity"] - quantum_2017) < 1e-9
+                   and abs(dp_collapse_negativity(BMV_DX_M, nearest_2017, BMV_M_KG, 1.0, BMV_T_S) - quantum_2017) < 1e-9
+                   and all(seq17[i] <= seq17[i + 1] + 1e-12 for i in range(len(seq17) - 1))
+                   and collapse["letter_geometry_2p5s"]["critical_sigma_m"] < collapse["letter_geometry_2p5s"]["half_sigma_m"] < c17["critical_sigma_m"])
     # 5. Where the entangling power sits: the noise part alone entangles nothing at any σ or time; the interaction part alone gives
     #    at least the full model's negativity; and as σ → 0 the interaction part is the quantum channel exactly.
     parts = {}
@@ -290,9 +338,10 @@ def check_dispute(planted_defect: bool = False) -> dict:
         "tn_phase_tiny_sigma_rad": dphi_tn_tiny_sigma, "newton_phase_rad": dphi_newton, "tn_potential_ratio_fig3": potential_ratio_fig3,
         "ktm_threshold_ratios": ratios, "ktm_2017": ktm_2017,
         "entangling_parts": parts, "quantum_channel_negativity_2017": quantum_negativity, "parts_ok": parts_ok,
+        "pure_collapse": collapse, "collapse_ok": collapse_ok,
         "dc_paper_ok": dc_paper_ok, "dc_double_entry_ok": dc_double_entry_ok, "fig3_ok": fig3_ok, "tn_2017_ok": tn_2017_ok,
         "ktm_ok": ktm_ok, "ktm_edge_ok": ktm_edge_ok, "defect_rejected": defect_rejected,
-        "ok": dc_paper_ok and dc_double_entry_ok and fig3_ok and tn_2017_ok and ktm_ok and ktm_edge_ok and parts_ok and defect_rejected,
+        "ok": dc_paper_ok and dc_double_entry_ok and fig3_ok and tn_2017_ok and ktm_ok and ktm_edge_ok and parts_ok and collapse_ok and defect_rejected,
     }
 
 

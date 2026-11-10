@@ -104,6 +104,7 @@ def main(argv: list[str] | None = None) -> int:
                                          "letter_geometry_entangles": win["letter_geometry"]["last_entangled_time_s"] is not None,
                                          "examples": {k: {"d_c_m": v["d_c_m"], "peak_negativity_at_half_d_c": v["at_half_d_c"]["peak_negativity"], "peak_time_s": v["at_half_d_c"]["peak_time_s"]} for k, v in win["examples"].items()}},
             "hust_lambda_m_as_published": HUST_LAMBDA_M,
+            "hust_pair_level": res["hust_pair_level"],
         },
         "geometry_checks": {
             "closed_form_vs_quadrature": "PASS",

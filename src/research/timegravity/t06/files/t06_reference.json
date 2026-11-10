@@ -298,6 +298,37 @@
     "sigma_cubed_ratio_expected": 182.55379870849123,
     "scaling_ok": true,
     "defect_rejected": true,
+    "diffusion": {
+      "oppenheim_inputs_ceiling": 2.2448563359279477e-11,
+      "oppenheim_printed_ceiling": 1e-09,
+      "orders_between_recomputed_and_printed": 1.6488114473155198,
+      "interferometry_floor": 1e-40,
+      "eotwash_sigma_a": 1.4535289117610096e-13,
+      "eotwash_n_atoms": 6.371412683134387e+21,
+      "eotwash": {
+        "T_1e+03_r_N_1fm": {
+          "ceiling": 3.0218411968300005e-26,
+          "orders_below_printed": 16.519728362350595,
+          "orders_above_floor": 14.480271637649404
+        },
+        "T_1e+03_r_N_7fm_platinum": {
+          "ceiling": 1.03649153051269e-23,
+          "orders_below_printed": 13.984434242307826,
+          "orders_above_floor": 17.015565757692176
+        },
+        "T_1e+04_r_N_1fm": {
+          "ceiling": 3.0218411968300005e-25,
+          "orders_below_printed": 15.519728362350596,
+          "orders_above_floor": 15.480271637649404
+        },
+        "T_1e+04_r_N_7fm_platinum": {
+          "ceiling": 1.03649153051269e-22,
+          "orders_below_printed": 12.984434242307826,
+          "orders_above_floor": 18.015565757692176
+        }
+      }
+    },
+    "diffusion_ok": true,
     "ok": true
   },
   "table_log10m_kg__log10R_m__E_G_J__tau_s": [
