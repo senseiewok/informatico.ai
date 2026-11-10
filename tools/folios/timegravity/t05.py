@@ -494,6 +494,25 @@ PAGE: dict = {
               "defienden otras descripciones clásicas y esta página no evalúa ninguna; y si 44 µm es una cota y no una estimación depende de un reajuste "
               "de los datos de 2020 con el núcleo suavizado."),
         ),
+        P(
+            C("PROPOSED", [TRILLO, BOSE, MV],
+              "Inside that region, time does the separating. For a 10⁻¹⁵ kg pair at the 17 µm floor with a split a thirtieth of the gap, the quantum "
+              "channel reaches full entanglement in 14 hours; at that moment the hybrid dynamics at σ = 44 µm shows a negativity of 0.0007, and its own "
+              "peak of 0.053 comes after about two months. At the 10⁻¹⁴ kg floor the quantum channel takes 13 minutes, the hybrid dynamics shows "
+              "0.0016 then and peaks at 0.025 after about five hours.",
+              "Dentro de esa región, el tiempo es lo que separa. Para un par de 10⁻¹⁵ kg en el piso de 17 µm con una división de un treintavo de la "
+              "separación, el canal cuántico alcanza el entrelazamiento completo en 14 horas; en ese momento la dinámica híbrida a σ = 44 µm muestra una "
+              "negatividad de 0.0007, y su propio máximo de 0.053 llega tras unos dos meses. En el piso de 10⁻¹⁴ kg el canal cuántico tarda 13 minutos, la "
+              "dinámica híbrida muestra 0.0016 entonces y alcanza su máximo de 0.025 tras unas cinco horas."),
+            T(" Across the region the hybrid peak arrives roughly ten to a hundred times later than the quantum channel's full entanglement and stays at "
+              "about a tenth of it or less. So the hybrid dynamics does not predict a witness of the quantum channel's size on the quantum channel's "
+              "timescale, and the quantum channel does not predict a peak of a few hundredths after days of coherence; the page states the two "
+              "predictions, and no witness has been measured.",
+              " En toda la región el máximo híbrido llega entre unas diez y unas cien veces más tarde que el entrelazamiento completo del canal cuántico y "
+              "se queda en alrededor de una décima de él o menos. Así que la dinámica híbrida no predice un testigo del tamaño del canal cuántico en la "
+              "escala de tiempo del canal cuántico, y el canal cuántico no predice un máximo de unas centésimas tras días de coherencia; la página enuncia "
+              "las dos predicciones, y ningún testigo se ha medido."),
+        ),
         {"type": "h2", "id": "labs", "en": "III · How far the laboratories are", "es": "III · Qué tan lejos están los laboratorios", "short_en": "III · Labs", "short_es": "III · Laboratorios"},
         P(
             C("MEASURED", [WEST, FUCHS],
