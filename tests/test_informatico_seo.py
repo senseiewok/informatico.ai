@@ -349,5 +349,32 @@ class SiteFiles(unittest.TestCase):
         self.assertIn("window.location.assign(target.toString())", js)
 
 
+    def test_about_page_essay_zero_styles_remain_bundled(self):
+        """Essay Zero (/about/ and /es-mx/about/) relies on .tz-* rules in informatico.css and css_bundle.py."""
+        css = (RESEARCH / "informatico.css").read_text(encoding="utf-8")
+        bundle = (ROOT / "tools" / "folios" / "css_bundle.py").read_text(encoding="utf-8")
+        for required in (
+            ".tz-dignity-stamp",
+            "button.tz-sentence",
+            ".tz-tier-mark",
+            ".tz-svg-kicker",
+            ".tz-rosette-group",
+            ".tz-legend-btn",
+            ".tz-rosette-btn",
+            ".tz-table",
+            ".tz-panel",
+            ".tz-bridge-grid",
+            ".tz-bridge-card",
+            ".tz-bridge-thumb",
+            ".tz-council-grid",
+            ".tz-council-card",
+            ".tz-cff-card",
+            ".tz-cff-cta",
+            ".tp-body .tz-cff-cta",
+        ):
+            self.assertIn(required, css, f"Missing {required} in src/research/informatico.css")
+            self.assertIn(required, bundle, f"Missing {required} in tools/folios/css_bundle.py")
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -28,6 +28,7 @@
     --tp-code-fg: #153556;
     --tp-highlight: rgba(176, 48, 30, 0.16);
     --tp-shadow-flyout: 0 14px 34px rgba(17, 22, 28, 0.22);
+    --tp-shadow-card: 0 4px 18px rgba(17, 22, 28, 0.06);
   }
 
   html[data-theme="blueprint"],
@@ -55,6 +56,7 @@
     --tp-code-fg: #8ac8ff;
     --tp-highlight: rgba(138, 200, 255, 0.22);
     --tp-shadow-flyout: 0 16px 38px rgba(0, 0, 0, 0.65);
+    --tp-shadow-card: 0 4px 18px rgba(0, 0, 0, 0.35);
     --text-1: #f0f6fc;
     --ink-primary: #f0f6fc;
     --ink-secondary: #d0d8e2;
@@ -5553,6 +5555,7 @@
   .tp-toy-model-box .tp-plain-bridge-kicker {
     color: var(--tp-minium);
   }
+  .tp-toy-model-box h3,
   .tp-toy-model-box h4 {
     margin: 0.15rem 0 0.5rem;
     font-size: 1.04rem;
@@ -5639,7 +5642,7 @@
     border: 2px solid var(--tp-prussian);
     border-radius: 12px;
     background: linear-gradient(180deg, var(--tp-vellum) 0%, var(--tp-stone) 100%);
-    box-shadow: var(--tp-shadow-flyout);
+    box-shadow: var(--tp-shadow-card);
   }
   .tp-studio-quickstart-head {
     display: flex;
