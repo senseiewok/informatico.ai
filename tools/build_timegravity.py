@@ -1268,7 +1268,7 @@ def plate_d(page: dict) -> str:
             "p3_bad2_es": "la prueba debe fallar o falla la página.",
             "foot_en": "PLATE T.01-D · VISUAL INTUITION BRIDGE → ds² = −A(z)c²dt² + dz² · A(z) = 1 + 2gz/c² · d²z/dτ² = −(A′/2)(c dt/dτ)²",
             "foot_es": "LÁMINA T.01-D · PUENTE DE INTUICIÓN VISUAL → ds² = −A(z)c²dt² + dz² · A(z) = 1 + 2gz/c² · d²z/dτ² = −(A′/2)(c dt/dτ)²",
-            "cap_en": "Plate T.01-D · Visual Intuition Bridge: the everyday analogy (left) sets up one quantity with two settings (centre), and the verifier's three demands (right) are what the knockout and the sign-flip buttons in the instrument above test.",
+            "cap_en": "Plate T.01-D · Visual Intuition Bridge: the everyday analogy (left) sets up one quantity with two settings (center), and the verifier's three demands (right) are what the knockout and the sign-flip buttons in the instrument above test.",
             "cap_es": "Lámina T.01-D · Puente de Intuición Visual: la analogía cotidiana (izquierda) plantea una cantidad con dos ajustes (centro), y las tres exigencias del verificador (derecha) son lo que prueban los botones de apagado y de signo invertido en el instrumento de arriba.",
         },
         "t02": {
@@ -1336,7 +1336,7 @@ def plate_d(page: dict) -> str:
             "p2_on_es": "▲ Fuente activa: ∇²Φ = 4πGρ, η = 0",
             "p2_on1_en": "Radial solver recovers −GM/r outside",
             "p2_on1_es": "El solver radial recupera −GM/r afuera",
-            "p2_on2_en": "and −3GM/(2R) at the sphere's centre.",
+            "p2_on2_en": "and −3GM/(2R) at the sphere's center.",
             "p2_on2_es": "y −3GM/(2R) en el centro de la esfera.",
             "p2_off_en": "▼ Knockout: M → 0 (no source mass)",
             "p2_off_es": "▼ Apagado: M → 0 (sin masa fuente)",
@@ -1358,7 +1358,7 @@ def plate_d(page: dict) -> str:
             "p3_bad2_es": "separa el par 4.9 mm en 1 s; se rechaza.",
             "foot_en": "PLATE T.03-D · VISUAL INTUITION BRIDGE → ∇²Φ = 4πGρ · g₀₀ = −(1 + 2Φ/c²) · MICROSCOPE |η| ≤ 1.5 × 10⁻¹⁵",
             "foot_es": "LÁMINA T.03-D · PUENTE DE INTUICIÓN VISUAL → ∇²Φ = 4πGρ · g₀₀ = −(1 + 2Φ/c²) · MICROSCOPE |η| ≤ 1.5 × 10⁻¹⁵",
-            "cap_en": "Plate T.03-D · Visual Intuition Bridge: mass bends the clock rate through Poisson's equation (left and centre), and the equivalence principle demands that every test body follow the same curve (right).",
+            "cap_en": "Plate T.03-D · Visual Intuition Bridge: mass bends the clock rate through Poisson's equation (left and center), and the equivalence principle demands that every test body follow the same curve (right).",
             "cap_es": "Lámina T.03-D · Puente de Intuición Visual: la masa curva el ritmo del reloj mediante la ecuación de Poisson (izquierda y centro), y el principio de equivalencia exige que todo cuerpo siga la misma curva (derecha).",
         },
         "t04": {
@@ -1404,7 +1404,7 @@ def plate_d(page: dict) -> str:
             "p3_bad2_es": "y nunca alcanza el nodo ortogonal.",
             "foot_en": "PLATE T.04-D · VISUAL INTUITION BRIDGE → Δτ = gΔh·T/c² · V = |cos(ωgΔh·T / 2c²)| · PROPOSAL (NOT YET RUN IN GRAVITY)",
             "foot_es": "LÁMINA T.04-D · PUENTE DE INTUICIÓN VISUAL → Δτ = gΔh·T/c² · V = |cos(ωgΔh·T / 2c²)| · PROPUESTA (AÚN NO CORRIDA EN GRAVEDAD)",
-            "cap_en": "Plate T.04-D · Visual Intuition Bridge: an internal clock carried along two heights records which path the wavepacket took (left and centre), modulating the interference visibility (right).",
+            "cap_en": "Plate T.04-D · Visual Intuition Bridge: an internal clock carried along two heights records which path the wavepacket took (left and center), modulating the interference visibility (right).",
             "cap_es": "Lámina T.04-D · Puente de Intuición Visual: un reloj interno llevado por dos alturas registra qué camino siguió el paquete de ondas (izquierda y centro), modulando la visibilidad de interferencia (derecha).",
         },
         "t05": {
@@ -1451,7 +1451,7 @@ def plate_d(page: dict) -> str:
             "p3_bad2_es": "LOCC viola la separabilidad LOCC.",
             "foot_en": "PLATE T.05-D · VISUAL INTUITION BRIDGE → Δφ = 0.314 rad · C = |sin(Δφ/2)| = 0.156 · THREE CHANNELS · PAGE LABEL OPEN",
             "foot_es": "LÁMINA T.05-D · PUENTE DE INTUICIÓN VISUAL → Δφ = 0.314 rad · C = |sin(Δφ/2)| = 0.156 · TRES CANALES · ETIQUETA ABIERTO",
-            "cap_en": "Plate T.05-D · Visual Intuition Bridge: four branch distances between two superposed masses (left), the three channels drawn at equal weight without picking a side (centre), and the verifier's separability gate (right).",
+            "cap_en": "Plate T.05-D · Visual Intuition Bridge: four branch distances between two superposed masses (left), the three channels drawn at equal weight without picking a side (center), and the verifier's separability gate (right).",
             "cap_es": "Lámina T.05-D · Puente de Intuición Visual: cuatro distancias de rama entre dos masas en superposición (izquierda), los tres canales dibujados con el mismo peso sin tomar partido (centro), y la puerta de separabilidad del verificador (derecha).",
         },
         "t06": {
@@ -1497,7 +1497,7 @@ def plate_d(page: dict) -> str:
             "p3_bad2_es": "la tasa 1/R0³; el verificador lo rechaza.",
             "foot_en": "PLATE T.06-D · VISUAL INTUITION BRIDGE → τ = ħ/E_G · E_G = (6/5)GM²/R · Gran Sasso R0 > 0.54 Å · XENONnT R0 > 4.9 Å",
             "foot_es": "LÁMINA T.06-D · PUENTE DE INTUICIÓN VISUAL → τ = ħ/E_G · E_G = (6/5)GM²/R · Gran Sasso R0 > 0.54 Å · XENONnT R0 > 4.9 Å",
-            "cap_en": "Plate T.06-D · Visual Intuition Bridge: the spontaneous radiation test in an underground detector (left), the model's collapse time and exclusion line (centre), and the verifier's orientation check (right).",
+            "cap_en": "Plate T.06-D · Visual Intuition Bridge: the spontaneous radiation test in an underground detector (left), the model's collapse time and exclusion line (center), and the verifier's orientation check (right).",
             "cap_es": "Lámina T.06-D · Puente de Intuición Visual: la prueba de radiación espontánea en un detector subterráneo (izquierda), el tiempo de colapso y la línea de exclusión (centro), y la prueba de orientación del verificador (derecha).",
         },
         "t07": {
@@ -1542,7 +1542,7 @@ def plate_d(page: dict) -> str:
             "p3_bad2_es": "(Ĥ_C + Ĥ_S)|Ψ⟩⟩ = 0 (residuo > 1).",
             "foot_en": "PLATE T.07-D · VISUAL INTUITION BRIDGE → (Ĥ_C ⊗ I + I ⊗ Ĥ_S)|Ψ⟩⟩ = 0 · |ψ(t_n)⟩ = √d ⟨t_n|Ψ⟩⟩ · P(+x|n) = cos²(εn/2)",
             "foot_es": "LÁMINA T.07-D · PUENTE DE INTUICIÓN VISUAL → (Ĥ_C ⊗ I + I ⊗ Ĥ_S)|Ψ⟩⟩ = 0 · |ψ(t_n)⟩ = √d ⟨t_n|Ψ⟩⟩ · P(+x|n) = cos²(εn/2)",
-            "cap_en": "Plate T.07-D · Visual Intuition Bridge: a stationary flip-book state (left) shows Schrödinger evolution when conditioned on the clock's time basis and a flat 1/2 in the energy basis (centre), guarded by the constraint residual check (right).",
+            "cap_en": "Plate T.07-D · Visual Intuition Bridge: a stationary flip-book state (left) shows Schrödinger evolution when conditioned on the clock's time basis and a flat 1/2 in the energy basis (center), guarded by the constraint residual check (right).",
             "cap_es": "Lámina T.07-D · Puente de Intuición Visual: un estado folioscopio estacionario (izquierda) muestra evolución de Schrödinger al condicionarse en la base de tiempo y 1/2 plano en la de energía (centro), vigilado por el residuo de la restricción (derecha).",
         },
         "t08": {
@@ -1587,7 +1587,7 @@ def plate_d(page: dict) -> str:
             "p3_bad2_es": "el verificador rechaza el desajuste.",
             "foot_en": "PLATE T.08-D · VISUAL INTUITION BRIDGE → T_U = ħa/(2πck_B) · T_H = ħc³/(8πGMk_B) · S_BH = k_B A/(4ℓ_P²) · 1 M_☉ → 61.7 nK",
             "foot_es": "LÁMINA T.08-D · PUENTE DE INTUICIÓN VISUAL → T_U = ħa/(2πck_B) · T_H = ħc³/(8πGMk_B) · S_BH = k_B A/(4ℓ_P²) · 1 M_☉ → 61.7 nK",
-            "cap_en": "Plate T.08-D · Visual Intuition Bridge: tracing over the hidden Rindler wedge turns a pure two-mode state into an exact Gibbs thermal state (left and centre), and integrating the first law recovers the quarter-area entropy (right).",
+            "cap_en": "Plate T.08-D · Visual Intuition Bridge: tracing over the hidden Rindler wedge turns a pure two-mode state into an exact Gibbs thermal state (left and center), and integrating the first law recovers the quarter-area entropy (right).",
             "cap_es": "Lámina T.08-D · Puente de Intuición Visual: trazar sobre la cuña oculta de Rindler convierte un estado puro de dos modos en un estado térmico exacto de Gibbs (izquierda y centro), e integrar la primera ley recupera la entropía de un cuarto del área (derecha).",
         },
         "t09": {
@@ -1630,7 +1630,7 @@ def plate_d(page: dict) -> str:
             "p3_bad2_es": "viola Smarr y Leaver; el verificador falla.",
             "foot_en": "PLATE T.09-D · VISUAL INTUITION BRIDGE → A(M,χ) = 8π(GM/c²)²(1 + √(1 − χ²)) · 62 M_☉, χ = 0.67 → 250.8 Hz, 4.16 ms",
             "foot_es": "LÁMINA T.09-D · PUENTE DE INTUICIÓN VISUAL → A(M,χ) = 8π(GM/c²)²(1 + √(1 − χ²)) · 62 M_☉, χ = 0.67 → 250.8 Hz, 4.16 ms",
-            "cap_en": "Plate T.09-D · Visual Intuition Bridge: a Kerr horizon's fundamental tone and first overtone are fixed by M and χ alone (left and centre), checked against Smarr's identity and Leaver's continued-fraction benchmark (right).",
+            "cap_en": "Plate T.09-D · Visual Intuition Bridge: a Kerr horizon's fundamental tone and first overtone are fixed by M and χ alone (left and center), checked against Smarr's identity and Leaver's continued-fraction benchmark (right).",
             "cap_es": "Lámina T.09-D · Puente de Intuición Visual: el modo fundamental y el primer sobretono de un horizonte de Kerr quedan fijados solo por M y χ (izquierda y centro), verificados frente a la identidad de Smarr y la tabla de Leaver (derecha).",
         },
         "t10": {
@@ -1674,7 +1674,7 @@ def plate_d(page: dict) -> str:
             "p3_bad2_es": "la prueba de retorno en el corte final.",
             "foot_en": "PLATE T.10-D · VISUAL INTUITION BRIDGE → S(m,n) = Σ_{k=n+1}^{mn} 1/k − (m−1)/(2n) · N = 10 QUBITS · PEAK 2.97 NATS AT a = 5",
             "foot_es": "LÁMINA T.10-D · PUENTE DE INTUICIÓN VISUAL → S(m,n) = Σ_{k=n+1}^{mn} 1/k − (m−1)/(2n) · N = 10 QUBITS · MÁXIMO 2.97 NATS EN a = 5",
-            "cap_en": "Plate T.10-D · Visual Intuition Bridge: dealing a pure quantum deck (left), Page's exact subsystem entropy formula against Hawking's rising thermal line (centre), and the 10-qubit Haar-random eigensolver gate (right).",
+            "cap_en": "Plate T.10-D · Visual Intuition Bridge: dealing a pure quantum deck (left), Page's exact subsystem entropy formula against Hawking's rising thermal line (center), and the 10-qubit Haar-random eigensolver gate (right).",
             "cap_es": "Lámina T.10-D · Puente de Intuición Visual: repartir una baraja cuántica pura (izquierda), la fórmula exacta de entropía de Page frente a la recta térmica de Hawking (centro), y la puerta del solver de 10 qubits (derecha).",
         },
     }
@@ -2243,9 +2243,53 @@ def apparatus_svg(kind: str) -> str:
             '<path d="M 36 46 Q 46 18, 56 46" fill="none" stroke="var(--tp-verdigris)" stroke-width="2"/>'
             '<line x1="36" y1="46" x2="56" y2="20" stroke="var(--tp-minium)" stroke-width="1.3" stroke-dasharray="2 2"/>'
         ),
+        "rindler-wedge": (
+            '<line x1="12" y1="52" x2="52" y2="12" stroke="var(--tp-minium)" stroke-width="1.6"/>'
+            '<line x1="12" y1="12" x2="52" y2="52" stroke="var(--tp-minium)" stroke-width="1.6"/>'
+            '<path d="M 48 16 Q 35 32, 48 48" fill="none" stroke="var(--tp-prussian)" stroke-width="2.2"/>'
+            '<line x1="21" y1="28" x2="43" y2="28" stroke="var(--tp-verdigris)" stroke-width="1.5" stroke-dasharray="2 2"/>'
+            '<circle cx="21" cy="28" r="3" fill="var(--tp-stone)" stroke="var(--tp-ink)" stroke-width="1.2"/>'
+            '<circle cx="43" cy="28" r="3" fill="var(--tp-prussian)"/>'
+        ),
+        "horn-antenna": (
+            '<polygon points="14,38 44,18 48,40 16,44" fill="var(--tp-stone)" stroke="var(--tp-prussian)" stroke-width="1.6"/>'
+            '<line x1="24" y1="42" x2="24" y2="52" stroke="var(--tp-ink)" stroke-width="1.8"/>'
+            '<line x1="16" y1="52" x2="36" y2="52" stroke="var(--tp-ink)" stroke-width="1.6"/>'
+            '<path d="M 48 20 Q 55 29, 50 38" fill="none" stroke="var(--tp-minium)" stroke-width="1.5"/>'
+            '<path d="M 52 17 Q 60 29, 54 41" fill="none" stroke="var(--tp-verdigris)" stroke-width="1.4" stroke-dasharray="2 2"/>'
+        ),
+        "sonic-horizon": (
+            '<path d="M 10 24 L 28 24 Q 34 24, 36 38 L 54 38" fill="none" stroke="var(--tp-prussian)" stroke-width="2"/>'
+            '<line x1="33" y1="12" x2="33" y2="52" stroke="var(--tp-minium)" stroke-width="1.5" stroke-dasharray="3 2"/>'
+            '<circle cx="22" cy="19" r="3" fill="var(--tp-verdigris)"/>'
+            '<circle cx="44" cy="31" r="3" fill="var(--tp-minium)"/>'
+            '<path d="M 22 19 Q 33 12, 44 31" fill="none" stroke="var(--tp-verdigris)" stroke-width="1.3" stroke-dasharray="2 2"/>'
+        ),
+        "kerr-ergosphere": (
+            '<ellipse cx="32" cy="32" rx="21" ry="13" fill="var(--tp-stone)" stroke="var(--tp-verdigris)" stroke-width="1.5" stroke-dasharray="3 2"/>'
+            '<circle cx="32" cy="32" r="10" fill="var(--tp-ink)" stroke="var(--tp-prussian)" stroke-width="1.8"/>'
+            '<path d="M 16 22 A 22 15 0 0 1 48 22" fill="none" stroke="var(--tp-minium)" stroke-width="1.6"/>'
+            '<polygon points="47,19 51,23 45,24" fill="var(--tp-minium)"/>'
+        ),
+        "continued-fraction": (
+            '<line x1="12" y1="16" x2="52" y2="16" stroke="var(--tp-ink)" stroke-width="1.3"/>'
+            '<line x1="18" y1="12" x2="18" y2="52" stroke="var(--tp-ink)" stroke-width="1.3"/>'
+            '<path d="M 24 24 Q 34 32, 46 46" fill="none" stroke="var(--tp-prussian)" stroke-width="1.6" stroke-dasharray="2 2"/>'
+            '<circle cx="28" cy="26" r="3.5" fill="var(--tp-prussian)"/>'
+            '<circle cx="37" cy="35" r="3.5" fill="var(--tp-verdigris)"/>'
+            '<circle cx="46" cy="45" r="3.5" fill="var(--tp-minium)"/>'
+        ),
+        "ligo-interferometer": (
+            '<line x1="16" y1="46" x2="16" y2="14" stroke="var(--tp-prussian)" stroke-width="2.2"/>'
+            '<line x1="16" y1="46" x2="50" y2="46" stroke="var(--tp-prussian)" stroke-width="2.2"/>'
+            '<line x1="12" y1="50" x2="22" y2="40" stroke="var(--tp-minium)" stroke-width="1.8"/>'
+            '<rect x="12" y="11" width="8" height="4" fill="var(--tp-verdigris)"/>'
+            '<rect x="48" y="42" width="4" height="8" fill="var(--tp-verdigris)"/>'
+            '<path d="M 26 24 C 30 16, 34 32, 38 19 S 46 28, 50 24" fill="none" stroke="var(--tp-minium)" stroke-width="1.6"/>'
+        ),
     }.get(kind, '<circle cx="32" cy="32" r="16" fill="var(--tp-stone)" stroke="var(--tp-prussian)" stroke-width="1.6"/>')
     return (
-        '<span class="tg-apparatus-badge" aria-hidden="true">'
+        f'<span class="tg-apparatus-badge" data-apparatus="{kind}" aria-hidden="true">'
         '<svg class="tg-apparatus-svg" viewBox="0 0 64 64" focusable="false">'
         '<circle cx="32" cy="32" r="29" fill="var(--tp-vellum)" stroke="var(--tp-rule-strong)" stroke-width="1"/>'
         f"{inner}"
@@ -2259,7 +2303,7 @@ HUMANS_DATA: dict[str, dict] = {
         "lineage_es": "1905–2026 · Einstein · Ives y Stilwell · Pound y Rebka · Kerr · Hafele y Keating · Vessot y Levine · DeWitt · Page y Wootters · Bekenstein, Hawking y Unruh · Mather y COBE · Eöt-Wash y HUST · Wineland y Ye · Brukner y Folman · Bose, Marletto y Vedral · Diósi, Penrose y Curceanu · MICROSCOPE, ALPHA y LIGO/Virgo/KAGRA",
         "title_en": "The Humans Who Built the Clockwork (1905–2026)",
         "title_es": "Las Personas que Construyeron esta Relojería (1905–2026)",
-        "lead_en": "Every equation and every row in the grounding ledger began with human beings: machinists cutting platinum wedges to the micrometre, physicists threading helium bags through brick towers, clockmakers booking airline seats for atomic standards, and theorists counting states by hand. Before we step into the instruments, we honor the people whose patience and craft built this record.",
+        "lead_en": "Every equation and every row in the grounding ledger began with human beings: machinists cutting platinum wedges to the micrometer, physicists threading helium bags through brick towers, clockmakers booking airline seats for atomic standards, and theorists counting states by hand. Before we step into the instruments, we honor the people whose patience and craft built this record.",
         "lead_es": "Cada ecuación y cada fila del libro de registro comenzó con seres humanos: maquinistas que cortaron cuñas de platino al micrómetro, físicos que tendieron bolsas de helio por torres de ladrillo, relojeros que compraron boletos de avión para estándares atómicos y teóricos que contaron estados a mano. Antes de entrar a los instrumentos, honramos a las personas cuya paciencia y oficio construyeron este registro.",
         "cards": [
             {
@@ -2284,7 +2328,7 @@ HUMANS_DATA: dict[str, dict] = {
                 "names_es": "Ives y Stilwell · Pound y Rebka · Hafele y Keating · Vessot y Levine",
                 "place_en": "Canal rays, a 22.5 m brick tower, commercial airliners & a Scout D rocket",
                 "place_es": "Rayos canales, una torre de ladrillo de 22.5 m, vuelos comerciales y un cohete Scout D",
-                "story_en": "Herbert Ives and G. R. Stilwell photographed hydrogen canal rays in 1938 to catch the quadratic speed shift. In 1960 Robert Pound and Glen Rebka Jr. sent 14.4 keV iron-57 gamma rays down Harvard's 22.5-metre Jefferson Tower to measure the height shift inside a building. In 1971 Joseph Hafele and Richard Keating flew four cesium clocks around the world on commercial jets, and in 1976 Robert Vessot and Martin Levine launched a hydrogen maser 10,000 km up on a Scout D rocket.",
+                "story_en": "Herbert Ives and G. R. Stilwell photographed hydrogen canal rays in 1938 to catch the quadratic speed shift. In 1960 Robert Pound and Glen Rebka Jr. sent 14.4 keV iron-57 gamma rays down Harvard's 22.5-meter Jefferson Tower to measure the height shift inside a building. In 1971 Joseph Hafele and Richard Keating flew four cesium clocks around the world on commercial jets, and in 1976 Robert Vessot and Martin Levine launched a hydrogen maser 10,000 km up on a Scout D rocket.",
                 "story_es": "Herbert Ives y G. R. Stilwell fotografiaron rayos canales de hidrógeno en 1938 para medir el corrimiento cuadrático por velocidad. En 1960 Robert Pound y Glen Rebka Jr. enviaron rayos gamma de hierro-57 por los 22.5 metros de la torre Jefferson de Harvard para medir el cambio por altura dentro de un edificio. En 1971 Joseph Hafele y Richard Keating volaron cuatro relojes de cesio alrededor del mundo en aviones comerciales, y en 1976 Robert Vessot y Martin Levine lanzaron un máser de hidrógeno a 10,000 km en un cohete Scout D.",
                 "spec_en": "Steps T.01 · T.02",
                 "spec_es": "Pasos T.01 · T.02",
@@ -2298,7 +2342,7 @@ HUMANS_DATA: dict[str, dict] = {
                 "names_es": "Ashby · Adelberger y Eöt-Wash · Wineland · Touboul · Ye · Hangst y ALPHA",
                 "place_en": "GPS satellites, torsion balances, optical lattices & falling antihydrogen",
                 "place_es": "Satélites GPS, balanzas de torsión, redes ópticas y antihidrógeno en caída libre",
-                "story_en": "Neil Ashby documented how every GPS satellite clock balances +45.7 against −7.2 microseconds per day. Chin-wen Chou and David Wineland resolved a 33 cm height step with aluminum-ion clocks in 2010, and Tobias Bothwell and Jun Ye resolved 1 millimetre across a strontium cloud in 2022. Meanwhile Eöt-Wash torsion pendulums, Pierre Touboul's orbiting MICROSCOPE cylinders, and Jeffrey Hangst's ALPHA-g trap at CERN tested universal free fall across matter and antimatter.",
+                "story_en": "Neil Ashby documented how every GPS satellite clock balances +45.7 against −7.2 microseconds per day. Chin-wen Chou and David Wineland resolved a 33 cm height step with aluminum-ion clocks in 2010, and Tobias Bothwell and Jun Ye resolved 1 millimeter across a strontium cloud in 2022. Meanwhile Eöt-Wash torsion pendulums, Pierre Touboul's orbiting MICROSCOPE cylinders, and Jeffrey Hangst's ALPHA-g trap at CERN tested universal free fall across matter and antimatter.",
                 "story_es": "Neil Ashby documentó cómo cada reloj satelital GPS equilibra +45.7 frente a −7.2 microsegundos por día. Chin-wen Chou y David Wineland resolvieron un escalón de 33 cm con relojes de iones de aluminio en 2010, y Tobias Bothwell y Jun Ye resolvieron 1 milímetro en una nube de estroncio en 2022. Mientras tanto, los péndulos de Eöt-Wash, los cilindros orbitales de MICROSCOPE con Pierre Touboul y la trampa ALPHA-g con Jeffrey Hangst en el CERN pusieron a prueba la caída libre universal en materia y antimateria.",
                 "spec_en": "Steps T.01 · T.02 · T.03",
                 "spec_es": "Pasos T.01 · T.02 · T.03",
@@ -2351,9 +2395,9 @@ HUMANS_DATA: dict[str, dict] = {
     "t01": {
         "lineage_en": "Pioneers of Step T.01 · Einstein (1911, 1916) · Pound & Rebka (1960) · Vessot & Levine (1976) · Chou & Wineland (2010) · Bothwell & Ye (2022)",
         "lineage_es": "Pioneros del Paso T.01 · Einstein (1911, 1916) · Pound y Rebka (1960) · Vessot y Levine (1976) · Chou y Wineland (2010) · Bothwell y Ye (2022)",
-        "title_en": "The Humans Behind Step T.01 · From a Brick Tower to a Single Millimetre",
+        "title_en": "The Humans Behind Step T.01 · From a Brick Tower to a Single Millimeter",
         "title_es": "Las Personas Detrás del Paso T.01 · De una Torre de Ladrillo a un Solo Milímetro",
-        "lead_en": "Measuring a fractional clock shift of 10⁻¹⁶ per metre of height took sixty-two years of laboratory craft—from a helium bag threaded through four floors at Harvard to a rocket over the Atlantic and a hundred thousand strontium atoms held in a vertical laser standing wave.",
+        "lead_en": "Measuring a fractional clock shift of 10⁻¹⁶ per meter of height took sixty-two years of laboratory craft—from a helium bag threaded through four floors at Harvard to a rocket over the Atlantic and a hundred thousand strontium atoms held in a vertical laser standing wave.",
         "lead_es": "Medir un cambio fraccionario de reloj de 10⁻¹⁶ por metro de altura tomó sesenta y dos años de oficio experimental: desde una bolsa de helio tendida por cuatro pisos en Harvard hasta un cohete sobre el Atlántico y cien mil átomos de estroncio sostenidos en una onda estacionaria láser.",
         "cards": [
             {
@@ -2378,7 +2422,7 @@ HUMANS_DATA: dict[str, dict] = {
                 "names_es": "Robert V. Pound y Glen A. Rebka Jr.",
                 "place_en": "Jefferson Physical Laboratory, Harvard University · 22.5 m Tower",
                 "place_es": "Laboratorio Físico Jefferson, Universidad de Harvard · Torre de 22.5 m",
-                "story_en": "To catch a fractional shift of 2.5 × 10⁻¹⁵ inside a building, Pound and his graduate student Glen Rebka hung a Mylar bag of flowing helium down a 22.5-metre shaft in Harvard's Jefferson Tower and mounted an iron-57 gamma-ray source on a loudspeaker cone, sweeping the Doppler velocity to null the height shift.",
+                "story_en": "To catch a fractional shift of 2.5 × 10⁻¹⁵ inside a building, Pound and his graduate student Glen Rebka hung a Mylar bag of flowing helium down a 22.5-meter shaft in Harvard's Jefferson Tower and mounted an iron-57 gamma-ray source on a loudspeaker cone, sweeping the Doppler velocity to null the height shift.",
                 "story_es": "Para detectar un cambio fraccionario de 2.5 × 10⁻¹⁵ dentro de un edificio, Pound y su estudiante de doctorado Glen Rebka colgaron una bolsa de Mylar con helio a lo largo de un tiro de 22.5 metros en la torre Jefferson de Harvard y montaron una fuente gamma de hierro-57 en el cono de un altavoz.",
                 "spec_en": "⁵⁷Fe Mössbauer recoilless resonance · Δh = 22.5 m",
                 "spec_es": "Resonancia Mössbauer sin retroceso en ⁵⁷Fe · Δh = 22.5 m",
@@ -2392,7 +2436,7 @@ HUMANS_DATA: dict[str, dict] = {
                 "names_es": "Robert F. C. Vessot y Martin W. Levine",
                 "place_en": "Smithsonian Astrophysical Observatory & NASA · Gravity Probe A",
                 "place_es": "Observatorio Astrofísico Smithsoniano y NASA · Gravity Probe A",
-                "story_en": "Vessot and Levine built a rugged atomic hydrogen maser and launched it 10,000 kilometres into space aboard a Scout D rocket. A continuous two-way microwave Doppler-cancellation link subtracted the rocket's motion in real time, testing the gravitational redshift to 7 × 10⁻⁵ during a two-hour flight.",
+                "story_en": "Vessot and Levine built a rugged atomic hydrogen maser and launched it 10,000 kilometers into space aboard a Scout D rocket. A continuous two-way microwave Doppler-cancellation link subtracted the rocket's motion in real time, testing the gravitational redshift to 7 × 10⁻⁵ during a two-hour flight.",
                 "story_es": "Vessot y Levine construyeron un máser atómico de hidrógeno y lo lanzaron a 10,000 kilómetros de altitud en un cohete Scout D. Un enlace continuo de microondas de dos vías restó en tiempo real el efecto Doppler del movimiento del cohete, probando el corrimiento gravitatorio a 7 × 10⁻⁵ en dos horas de vuelo.",
                 "spec_en": "Suborbital hydrogen maser · Δh = 10,000 km",
                 "spec_es": "Máser suborbital de hidrógeno · Δh = 10,000 km",
@@ -2406,7 +2450,7 @@ HUMANS_DATA: dict[str, dict] = {
                 "names_es": "Chin-wen Chou y David J. Wineland · Tobias Bothwell y Jun Ye",
                 "place_en": "NIST Ion Storage Group (33 cm) & JILA Optical Lattice Lab (1 mm)",
                 "place_es": "Grupo de Trampas de Iones del NIST (33 cm) y Laboratorio JILA (1 mm)",
-                "story_en": "In 2010 Chou, Hume, Rosenband, and Wineland connected two optical aluminum-ion clocks with a phase-stabilised optical fibre and raised one bench by 33 centimetres on a jack. Twelve years later down the street at JILA, Bothwell, Ye, and co-workers imaged the continuous redshift across a single millimetre of an ultracold strontium cloud.",
+                "story_en": "In 2010 Chou, Hume, Rosenband, and Wineland connected two optical aluminum-ion clocks with a phase-stabilized optical fiber and raised one bench by 33 centimeters on a jack. Twelve years later down the street at JILA, Bothwell, Ye, and co-workers imaged the continuous redshift across a single millimeter of an ultracold strontium cloud.",
                 "story_es": "En 2010 Chou, Hume, Rosenband y Wineland conectaron dos relojes ópticos de iones de aluminio con una fibra estabilizada en fase y levantaron una mesa 33 centímetros con un gato mecánico. Doce años después, en JILA, Bothwell, Ye y colaboradores midieron la pendiente continua a través de un solo milímetro de una nube ultrafría de estroncio.",
                 "spec_en": "Al⁺ ion clocks (33 cm) & ⁸⁷Sr lattice (1 mm)",
                 "spec_es": "Relojes de Al⁺ (33 cm) y red óptica de ⁸⁷Sr (1 mm)",
@@ -2458,7 +2502,7 @@ HUMANS_DATA: dict[str, dict] = {
                 "names_es": "Neil Ashby y la Ingeniería de Relojes del GPS",
                 "place_en": "University of Colorado Boulder & the 20,184 km Constellation",
                 "place_es": "Universidad de Colorado en Boulder y la constelación a 20,184 km",
-                "story_en": "At 20,184 km altitude and 3.87 km/s orbital speed, a satellite clock gains +45.7 microseconds a day from height and loses 7.2 microseconds a day from speed. Neil Ashby's review lays out how engineers detune every rubidium and cesium oscillator before launch by −4.4647 × 10⁻¹⁰ so the +38.6 µs/day net drift is cancelled continuously.",
+                "story_en": "At 20,184 km altitude and 3.87 km/s orbital speed, a satellite clock gains +45.7 microseconds a day from height and loses 7.2 microseconds a day from speed. Neil Ashby's review lays out how engineers detune every rubidium and cesium oscillator before launch by −4.4647 × 10⁻¹⁰ so the +38.6 µs/day net drift is canceled continuously.",
                 "story_es": "A 20,184 km de altitud y 3.87 km/s de velocidad orbital, un reloj satelital gana +45.7 microsegundos al día por altura y pierde 7.2 microsegundos al día por velocidad. La revisión de Neil Ashby detalla cómo los ingenieros desafinan cada oscilador de rubidio y cesio antes del lanzamiento por −4.4647 × 10⁻¹⁰ para cancelar los +38.6 µs/día netos.",
                 "spec_en": "Factory frequency offset −4.4647 × 10⁻¹⁰ · +38.6 µs/day",
                 "spec_es": "Ajuste de frecuencia de fábrica −4.4647 × 10⁻¹⁰ · +38.6 µs/día",
@@ -2469,7 +2513,7 @@ HUMANS_DATA: dict[str, dict] = {
     "t03": {
         "lineage_en": "Pioneers of Step T.03 · Einstein (1915–1916) · Schwarzschild (1916) · Schlamminger, Gundlach & Adelberger (2008) · Touboul & MICROSCOPE (2022) · Hangst & ALPHA (2023)",
         "lineage_es": "Pioneros del Paso T.03 · Einstein (1915–1916) · Schwarzschild (1916) · Schlamminger, Gundlach y Adelberger (2008) · Touboul y MICROSCOPE (2022) · Hangst y ALPHA (2023)",
-        "title_en": "The Humans Behind Step T.03 · Torsion Fibres, Drag-Free Satellites, and Falling Antimatter",
+        "title_en": "The Humans Behind Step T.03 · Torsion Fibers, Drag-Free Satellites, and Falling Antimatter",
         "title_es": "Las Personas Detrás del Paso T.03 · Fibras de Torsión, Satélites sin Arrastre y Antimateria en Caída",
         "lead_en": "Because the slope in clock rate is a property of spacetime rather than of the falling object, titanium, beryllium, platinum, and antihydrogen must follow the same trajectory. Generations of experimentalists built the balances and traps that tested that statement across fifteen orders of magnitude.",
         "lead_es": "Como la pendiente en el ritmo del reloj pertenece al espaciotiempo y no al objeto que cae, el titanio, el berilio, el platino y el antihidrógeno deben seguir la misma trayectoria. Generaciones de experimentalistas construyeron las balanzas y trampas que pusieron a prueba esa afirmación a lo largo de quince órdenes de magnitud.",
@@ -2573,7 +2617,7 @@ HUMANS_DATA: dict[str, dict] = {
     "t05": {
         "lineage_en": "Pioneers of Step T.05 · Peres & Wootters (1996–1998) · Hornberger, Hackermüller & Arndt (2003–2004) · Kafri, Taylor & Milburn (2014) · Bose et al. & Marletto–Vedral (2017) · Lee/Eöt-Wash & Tan/HUST (2020) · Westphal & Aspelmeyer (2021) · 2025–2026 Dispute Authors",
         "lineage_es": "Pioneros del Paso T.05 · Peres y Wootters (1996–1998) · Hornberger, Hackermüller y Arndt (2003–2004) · Kafri, Taylor y Milburn (2014) · Bose et al. y Marletto–Vedral (2017) · Lee/Eöt-Wash y Tan/HUST (2020) · Westphal y Aspelmeyer (2021) · Autores de la disputa 2025–2026",
-        "title_en": "The Humans Behind Step T.05 · The Two-Mass Proposals, the Sub-Millimetre Pendulums, and the Open Dispute",
+        "title_en": "The Humans Behind Step T.05 · The Two-Mass Proposals, the Sub-Millimeter Pendulums, and the Open Dispute",
         "title_es": "Las Personas Detrás del Paso T.05 · Las Propuestas de Dos Masas, los Péndulos Submilimétricos y la Disputa Abierta",
         "lead_en": "Step T.05 brings together three communities of researchers: quantum-information theorists who designed the entanglement witness and its classical counter-models, precision-gravity experimentalists who tested Newton's law at 52 µm and 90 mg, and the authors of the active 2025–2026 debate.",
         "lead_es": "El Paso T.05 reúne a tres comunidades de investigadores: teóricos de información cuántica que diseñaron el testigo de entrelazamiento y sus contramodelos clásicos, experimentalistas que probaron la ley de Newton a 52 µm y 90 mg, y los autores del debate activo de 2025–2026.",
@@ -2627,7 +2671,7 @@ HUMANS_DATA: dict[str, dict] = {
         "lineage_es": "Pioneros del Paso T.06 · Diósi (1987) · Penrose (1996) · Helou et al. (2017) · Fein y Arndt (2019) · Donadi, Piscicchia, Curceanu, Diósi, Laubenstein y Bassi (2021) · Oppenheim et al. (2023) · Colaboración XENONnT (2026)",
         "title_en": "The Humans Behind Step T.06 · From Gravitational Self-Energy to Deep Underground Caverns",
         "title_es": "Las Personas Detrás del Paso T.06 · De la Autoenergía Gravitatoria a las Cavernas Subterráneas",
-        "lead_en": "A proposal that gravity ends spatial superpositions also implies a tiny spontaneous jitter of nuclear charges. Testing that prediction required taking ultra-pure germanium crystals and multi-tonne liquid-xenon chambers under 1,400 metres of Italian dolomite rock.",
+        "lead_en": "A proposal that gravity ends spatial superpositions also implies a tiny spontaneous jitter of nuclear charges. Testing that prediction required taking ultra-pure germanium crystals and multi-tonne liquid-xenon chambers under 1,400 meters of Italian dolomite rock.",
         "lead_es": "Una propuesta de que la gravedad termina las superposiciones espaciales implica también un pequeño temblor espontáneo de las cargas nucleares. Poner a prueba esa predicción exigió llevar cristales de germanio ultrapuro y cámaras de xenón líquido bajo 1,400 metros de roca dolomita en Italia.",
         "cards": [
             {
@@ -2666,7 +2710,7 @@ HUMANS_DATA: dict[str, dict] = {
                 "names_es": "Elena Aprile y XENONnT · Yaakov Fein y Markus Arndt · Jonathan Oppenheim et al.",
                 "place_en": "XENONnT Liquid Xenon TPC, Vienna Macromolecule Interferometer & UCL",
                 "place_es": "Cámara de xenón líquido XENONnT, interferómetro macromolecular de Viena y UCL",
-                "story_en": "In 2026 the XENONnT Collaboration analysed 1.16 tonne-years of liquid-xenon exposure to push the radiation limit to R0 > 4.9 × 10⁻¹⁰ m (90 %). Meanwhile Yaakov Fein, Markus Arndt and co-workers observed matter-wave interference for molecules beyond 25,000 atomic mass units in Vienna (2019), and Jonathan Oppenheim and colleagues bounded the classical-gravity diffusion trade-off (2023).",
+                "story_en": "In 2026 the XENONnT Collaboration analyzed 1.16 tonne-years of liquid-xenon exposure to push the radiation limit to R0 > 4.9 × 10⁻¹⁰ m (90 %). Meanwhile Yaakov Fein, Markus Arndt and co-workers observed matter-wave interference for molecules beyond 25,000 atomic mass units in Vienna (2019), and Jonathan Oppenheim and colleagues bounded the classical-gravity diffusion trade-off (2023).",
                 "story_es": "En 2026 la colaboración XENONnT analizó 1.16 toneladas-año de exposición de xenón líquido para llevar el límite de radiación a R0 > 4.9 × 10⁻¹⁰ m (90 %). Entretanto, Yaakov Fein, Markus Arndt y colaboradores observaron interferencia de ondas de materia en moléculas de más de 25,000 unidades de masa atómica en Viena (2019), y Jonathan Oppenheim y colegas acotaron la difusión gravitatoria (2023).",
                 "spec_en": "XENONnT 1.16 t·yr (R0 > 4.9 Å) & 25,000 amu molecules",
                 "spec_es": "XENONnT 1.16 t·año (R0 > 4.9 Å) y moléculas de 25,000 uma",
@@ -2735,7 +2779,7 @@ HUMANS_DATA: dict[str, dict] = {
         "lead_es": "Vincular la pendiente del reloj en un horizonte con un baño térmico exacto reunió a teóricos de campos cuánticos que estudiaban observadores acelerados y a radioastrónomos que midieron el fondo cósmico de microondas de 2.725 K que baña a todo agujero negro astrofísico.",
         "cards": [
             {
-                "icon": "black-hole-qubits",
+                "icon": "rindler-wedge",
                 "era_en": "1973–1976 · Princeton, Cambridge, Berkeley & Vancouver",
                 "era_es": "1973–1976 · Princeton, Cambridge, Berkeley y Vancouver",
                 "names_en": "Jacob D. Bekenstein · Stephen W. Hawking · William G. Unruh · Joseph Bisognano & Eyvind Wichmann",
@@ -2749,7 +2793,7 @@ HUMANS_DATA: dict[str, dict] = {
                 "doi": "10.1103/PhysRevD.14.870",
             },
             {
-                "icon": "gps-constellation",
+                "icon": "horn-antenna",
                 "era_en": "1965 & 1996 · Holmdel, New Jersey & NASA Goddard",
                 "era_es": "1965 y 1996 · Holmdel, Nueva Jersey y NASA Goddard",
                 "names_en": "Arno A. Penzias & Robert W. Wilson · John C. Mather & the COBE FIRAS Team",
@@ -2763,7 +2807,7 @@ HUMANS_DATA: dict[str, dict] = {
                 "doi": "10.1086/178173",
             },
             {
-                "icon": "atom-chip",
+                "icon": "sonic-horizon",
                 "era_en": "2016 · Haifa, Israel",
                 "era_es": "2016 · Haifa, Israel",
                 "names_en": "Jeff Steinhauer",
@@ -2780,14 +2824,14 @@ HUMANS_DATA: dict[str, dict] = {
     },
     "t09": {
         "lineage_en": "Pioneers of Step T.09 · Roy Kerr (1963) · Larry Smarr (1973) · Saul Teukolsky (1973) · Edward Leaver (1985) · Berti, Cardoso & Starinets (2009) · LIGO/Virgo/KAGRA & Isi et al. (2016, 2019, 2021, 2025)",
-        "lineage_es": "Pioneros del Paso T.09 · Roy Kerr (1963) · Larry Smarr (1973) · Saul Teukolsky (1973) · Edward Leaver (1985) · Berti, Cardoso y Starinets (2009) · LIGO/Virgo/KAGRA e Isi et al. (2016, 2019, 2021, 2025)",
-        "title_en": "The Humans Behind Step T.09 · Spinning Horizons, Continued Fractions, and Four-Kilometre Interferometers",
+        "lineage_es": "Pioneers of Step T.09 · Roy Kerr (1963) · Larry Smarr (1973) · Saul Teukolsky (1973) · Edward Leaver (1985) · Berti, Cardoso y Starinets (2009) · LIGO/Virgo/KAGRA e Isi et al. (2016, 2019, 2021, 2025)".replace("Pioneers of Step", "Pioneros del Paso"),
+        "title_en": "The Humans Behind Step T.09 · Spinning Horizons, Continued Fractions, and Four-Kilometer Interferometers",
         "title_es": "Las Personas Detrás del Paso T.09 · Horizontes en Rotación, Fracciones Continuas e Interferómetros de Cuatro Kilómetros",
         "lead_en": "Predicting and measuring the damped tones of a newly merged black hole took fifty-two years: from Roy Kerr's 1963 exact rotating solution and Edward Leaver's 1985 continued-fraction eigenvalues to the LIGO–Virgo–KAGRA interferometers.",
         "lead_es": "Predecir y medir los tonos amortiguados de un agujero negro recién fusionado tomó cincuenta y dos años: desde la solución exacta en rotación de Roy Kerr en 1963 y las fracciones continuas de Edward Leaver en 1985 hasta los interferómetros de LIGO–Virgo–KAGRA.",
         "cards": [
             {
-                "icon": "black-hole-qubits",
+                "icon": "kerr-ergosphere",
                 "era_en": "1963 & 1973 · Austin, Stanford & Pasadena",
                 "era_es": "1963 y 1973 · Austin, Stanford y Pasadena",
                 "names_en": "Roy P. Kerr · Larry Smarr · Saul A. Teukolsky",
@@ -2801,7 +2845,7 @@ HUMANS_DATA: dict[str, dict] = {
                 "doi": "10.1103/PhysRevLett.11.237",
             },
             {
-                "icon": "page-wootters",
+                "icon": "continued-fraction",
                 "era_en": "1985 & 2009 · Salt Lake City, Oxford, Lisbon & Mississippi",
                 "era_es": "1985 y 2009 · Salt Lake City, Oxford, Lisboa y Misisipi",
                 "names_en": "Edward W. Leaver · Emanuele Berti, Vitor Cardoso & Andrei O. Starinets",
@@ -2815,7 +2859,7 @@ HUMANS_DATA: dict[str, dict] = {
                 "doi": "10.1098/rspa.1985.0119",
             },
             {
-                "icon": "torsion-pendulum",
+                "icon": "ligo-interferometer",
                 "era_en": "2016–2025 · Hanford, Livingston, Cascina, Kamioka, MIT & Caltech",
                 "era_es": "2016–2025 · Hanford, Livingston, Cascina, Kamioka, MIT y Caltech",
                 "names_en": "LIGO, Virgo & KAGRA Collaborations · Maximiliano Isi, Matthew Giesler, Will Farr, Mark Scheel & Saul Teukolsky",
@@ -2867,14 +2911,14 @@ HUMANS_DATA: dict[str, dict] = {
                 "doi": "10.1103/PhysRevLett.71.1291",
             },
             {
-                "icon": "torsion-pendulum",
+                "icon": "ligo-interferometer",
                 "era_en": "2015–2025 · Hanford, Livingston, Cascina, Kamioka, MIT & Caltech",
                 "era_es": "2015–2025 · Hanford, Livingston, Cascina, Kamioka, MIT y Caltech",
                 "names_en": "LIGO, Virgo & KAGRA Collaborations · Maximiliano Isi, Will Farr, Matthew Giesler, Mark Scheel & Saul Teukolsky",
                 "names_es": "Colaboraciones LIGO, Virgo y KAGRA · Maximiliano Isi, Will Farr, Matthew Giesler, Mark Scheel y Saul Teukolsky",
                 "place_en": "4 km Laser Interferometers & Ringdown Posterior Analysis",
                 "place_es": "Interferómetros láser de 4 km y análisis posterior de resonancia",
-                "story_en": "The LIGO and Virgo collaborations recorded the first binary black-hole merger GW150914 in 2015. In 2021 Maximiliano Isi, Will Farr, Matthew Giesler, Mark Scheel, and Saul Teukolsky independently reanalysed its inspiral and ringdown portions to test Hawking's area law on a real signal, followed in 2025 by the LVK collaboration's SNR-80 event GW250114.",
+                "story_en": "The LIGO and Virgo collaborations recorded the first binary black-hole merger GW150914 in 2015. In 2021 Maximiliano Isi, Will Farr, Matthew Giesler, Mark Scheel, and Saul Teukolsky independently reanalyzed its inspiral and ringdown portions to test Hawking's area law on a real signal, followed in 2025 by the LVK collaboration's SNR-80 event GW250114.",
                 "story_es": "Las colaboraciones LIGO y Virgo registraron la primera fusión de agujeros negros binarios GW150914 en 2015. En 2021 Maximiliano Isi, Will Farr, Matthew Giesler, Mark Scheel y Saul Teukolsky reanalizaron de forma independiente su inspiración y resonancia para probar la ley del área de Hawking, seguidos en 2025 por el evento GW250114 de relación señal a ruido 80.",
                 "spec_en": "GW150914 & GW250114 horizon area tests (MEASURED / SINGLE RESULT)",
                 "spec_es": "Pruebas del área del horizonte en GW150914 y GW250114",
