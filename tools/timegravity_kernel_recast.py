@@ -134,6 +134,20 @@ def edge_crossing_lambda(table: dict) -> float:
     return float("nan")
 
 
+def reach_below_limit(sigmas_m: tuple[float, ...] = (25e-6, 18e-6, 13.6e-6)) -> list[dict]:
+    """Why the balance loses reach below the rung: for each σ the best-mimic λ (table rows down to its shortest, 5 µm), the effective
+    strength, the published signed limit there and their ratio (how many times too weak the smeared pull is to be seen)."""
+    rc = Recast(120, "log52-3000", n_sep=12, lam_min=5e-6, lam_max=100e-6)
+    lam_floor = min(r["lambda_m"] for r in rc.table["rows"])
+    out = []
+    for s in sigmas_m:
+        a = rc.at_sigma(s)
+        out.append({"sigma_m": s, "lambda_m": a["lambda_m"], "alpha_eff": a["alpha_eff"], "alpha95_minus": a["alpha95_minus"],
+                    "times_too_weak": a["alpha95_minus"] / a["alpha_eff"], "shape_residual": a["shape_residual"],
+                    "mimic_at_table_floor": a["lambda_m"] == lam_floor, "excluded": a["excluded"]})
+    return out
+
+
 def check_recast(planted_defect: bool = False, quick: bool = True) -> dict:
     """The verifier's gate. Quick: the primary configuration (120ω, log grid, 12 separations, λ 10–100 µm) with equal and absolute-torque
     weighting; full: the four grids × two harmonics as well."""
@@ -159,10 +173,17 @@ def check_recast(planted_defect: bool = False, quick: bool = True) -> dict:
                  and all(r["alpha_star"] > 0 for r in table["rows"] if 5e-6 <= r["lambda_m"] <= 100e-6)  # the data lean the other way in the window
                  and (math.isnan(at33["shape_residual"]) or at33["shape_residual"] < 0.05)
                  and 0.4 < at33["lambda_m"] / 33e-6 < 0.7)
+    below = reach_below_limit()
+    r25, r18, r13 = below
+    below_ok = (3.0 < r25["times_too_weak"] < 20.0 and 100.0 < r18["times_too_weak"] < 300.0 and r13["times_too_weak"] > 1000.0
+                and r13["mimic_at_table_floor"] and 10e-6 < r25["lambda_m"] < 12e-6 and 6.5e-6 < r18["lambda_m"] < 8e-6
+                and not any(r["excluded"] for r in below))
+    recast_ok = recast_ok and below_ok
     # the planted defect (single-separation edge match) must give the retired 44 µm, not a value below 35 µm
     defect_rejected = not (32e-6 < Recast(120, "log52-3000", n_sep=12).sigma_95(planted_defect=True) < 35e-6) if not planted_defect else None
     return {"table_rows": n_rows, "edge_crossing_lambda_m": edge, "sigma_95_m": s95, "variants_sigma_95_m": variants, "spread_m": spread,
             "at_33um": at33, "at_35um": at35, "at_edge_match_44um": at44, "retired_edge_match_sigma_m": EDGE_MATCH_SIGMA_M,
+            "below_limit": below, "below_ok": below_ok,
             "table_ok": table_ok, "edge_ok": edge_ok, "recast_ok": recast_ok, "defect_rejected": defect_rejected,
             "ok": bool(recast_ok and (defect_rejected is None or defect_rejected))}
 

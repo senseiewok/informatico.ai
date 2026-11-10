@@ -1319,6 +1319,76 @@ def proposals_table(page: dict) -> str:
         </figure>"""
 
 
+def hardware_table(page: dict) -> str:
+    """Table T.05-H · the dephasing thresholds of the 2024 geometries as ceilings: the helium pressure and the internal temperature at
+    which residual gas or thermal photons alone reach each channel's threshold (tools/timegravity_kernel_decoherence.py, budget)."""
+    from timegravity_kernel_decoherence import BUDGET_GEOMETRIES, budget as _budget
+    names = {
+        "schut2024_z10": ("z = 10 µm · 10⁻¹⁴ kg · split 1.7 µm", "z = 10 µm · 10⁻¹⁴ kg · división 1.7 µm"),
+        "schut2024_z5": ("z = 5 µm · 10⁻¹⁴ kg · split 0.65 µm", "z = 5 µm · 10⁻¹⁴ kg · división 0.65 µm"),
+        "schut2024_z10_1e-15": ("z = 10 µm · 10⁻¹⁵ kg · split 23 µm", "z = 10 µm · 10⁻¹⁵ kg · división 23 µm"),
+        "schut2024_z10_1e-13": ("z = 10 µm · 10⁻¹³ kg · split 0.17 µm", "z = 10 µm · 10⁻¹³ kg · división 0.17 µm"),
+    }
+    sup = str.maketrans("-0123456789", "⁻⁰¹²³⁴⁵⁶⁷⁸⁹")
+    def sci(x: float) -> str:
+        e = math.floor(math.log10(x)); m = x / 10.0 ** e
+        if round(m, 1) >= 10.0:
+            m, e = 1.0, e + 1
+        return f"{m:.1f} × 10{str(e).translate(sup)}"
+    def kel(x: float) -> str:
+        return f"{x:.0f} K" if x >= 10 else f"{x:.1f} K"
+    def per_cc(n_m3: float) -> str:
+        x = n_m3 / 1e6
+        return f"{x:.0f}" if x >= 10 else f"{x:.1f}" if x >= 1 else f"{x:.2g}"
+    rows = []
+    for key in BUDGET_GEOMETRIES:
+        b = _budget(key)
+        for chan, (ch_en, ch_es) in (("quantum", ("quantum", "cuántico")), ("hybrid_33um", ("hybrid, σ = 33 µm", "híbrida, σ = 33 µm"))):
+            pc = b["pressure_ceiling_pa"][chan]["4K"]; tc = b["temperature_ceiling_k"][chan]; nd = b["number_density_ceiling_per_m3"][chan]["4K"]
+            en_name, es_name = names[key]
+            rows.append("<tr>" + bi("td", en_name, es_name) + bi("td", ch_en, ch_es)
+                        + f"<td>{sci(b['rates_per_s'][chan])} /s</td>"
+                        + bi("td", f"{sci(pc['kinetic'])} Pa · {per_cc(nd)} atoms/cm³", f"{sci(pc['kinetic'])} Pa · {per_cc(nd)} átomos/cm³")
+                        + f"<td>{sci(pc['cited'])} Pa</td>"
+                        + f"<td>{kel(tc['env_1K'])} ({kel(tc['env_1K_im_high'])} – {kel(tc['env_1K_im_low'])})</td><td>{kel(tc['env_equal'])}</td></tr>")
+    head = ("<tr>" + bi("th", "2024 geometry", "Geometría de 2024") + bi("th", "Channel", "Canal")
+            + bi("th", "Dephasing threshold", "Umbral de desfase")
+            + bi("th", "Helium ceiling at 4 K, kinetic rate (the necessary one)", "Techo de helio a 4 K, tasa cinética (el necesario)")
+            + bi("th", "The same on the form the proposals cite", "Lo mismo en la forma que citan las propuestas")
+            + bi("th", "Internal-temperature ceiling, surroundings at 1 K (absorption ten times higher – ten times lower)",
+                 "Techo de temperatura interna, entorno a 1 K (absorción diez veces mayor – diez veces menor)")
+            + bi("th", "The same, surroundings as warm as the sphere", "Lo mismo, entorno tan caliente como la esfera") + "</tr>")
+    cap_en = ("Table T.05-H · The two dephasing thresholds as ceilings, for four geometries of the 2024 proposal: the helium pressure at which residual gas "
+              "alone, and the sphere's internal temperature at which thermal photons alone, reach each channel's threshold. Gas: the kinetic rate at which "
+              "atoms strike the sphere, the lowest defensible rate and so the necessary ceiling, with its number density; beside it the closed form the "
+              "proposals cite, an interpolation larger by 8π/3. Photons: the long-wavelength closed forms, with the imaginary part of diamond's dielectric "
+              "constant assumed at 10⁻⁴ and a decade either side. Each ceiling lets one source use the whole threshold; other gases, dipoles, Casimir forces, "
+              "gravity gradients, phonons and the trap are not in it. No decoherence measurement at this scale exists among the page's sources: these are "
+              "two models' thresholds turned into pressures and temperatures by an extrapolated theory, not a finding about any experiment.")
+    cap_es = ("Tabla T.05-H · Los dos umbrales de desfase como techos, para cuatro geometrías de la propuesta de 2024: la presión de helio a la que el gas residual "
+              "por sí solo, y la temperatura interna de la esfera a la que los fotones térmicos por sí solos, alcanzan el umbral de cada canal. Gas: la tasa "
+              "cinética a la que los átomos golpean la esfera, la tasa defendible más baja y por eso el techo necesario, con su densidad numérica; a su lado la "
+              "forma cerrada que citan las propuestas, una interpolación mayor por 8π/3. Fotones: las formas cerradas de longitud de onda larga, con la parte "
+              "imaginaria de la constante dieléctrica del diamante supuesta en 10⁻⁴ y una década a cada lado. Cada techo deja que una sola fuente use todo el "
+              "umbral; otros gases, los dipolos, las fuerzas de Casimir, los gradientes de gravedad, los fonones y la trampa no están en él. No hay entre las "
+              "fuentes de la página ninguna medición de decoherencia a esta escala: son los umbrales de dos modelos convertidos en presiones y temperaturas "
+              "por una teoría extrapolada, no un hallazgo sobre experimento alguno.")
+    body = "\n              ".join(rows)
+    return f"""        <figure class="tp-distill-figure" role="group" aria-label="Table T.05-H The dephasing thresholds as ceilings" data-tg-figure="hardware-table">
+          <div class="tp-table-wrap">
+            <table class="tp-table tg-ledger-table" aria-label="Pressure and internal-temperature ceilings for the quantum and hybrid channels at the 2024 geometries">
+              <thead>{head}</thead>
+              <tbody>
+              {body}
+              </tbody>
+            </table>
+          </div>
+          <figcaption class="tp-distill-caption">
+            {bi("span", cap_en, cap_es)}
+          </figcaption>
+        </figure>"""
+
+
 def spine(page: dict) -> str:
     blocks = []
     for i, (te, ts, be, bs) in enumerate(page["stages"], 1):
@@ -1446,6 +1516,8 @@ def render_sections(page: dict, rel_res: str) -> str:
             out.append(threshold_map(page))
         elif kind == "proposals_table":
             out.append(proposals_table(page))
+        elif kind == "hardware_table":
+            out.append(hardware_table(page))
         elif kind == "equation":
             out.append(f'        <p class="tg-equation"><code>{t(block["text"])}</code></p>')
         elif kind == "spine":

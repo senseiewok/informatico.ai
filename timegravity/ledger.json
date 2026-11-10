@@ -772,6 +772,46 @@
       "kind": "peer-reviewed",
       "review_by": "2028-11-10",
       "note": "Micrometer-size spatial superpositions for the QGEM protocol via screening and trapping: parallel configuration, diamond masses 1e-15 to 1e-13 kg beside a grounded 1 um conducting plate at z = 30 / 10 / 5 um (mass-mass d = 61 / 21 / 11 um); Table I gives the superposition width for an entanglement rate of 0.01 Hz: 8.5 / 1.7 / 0.65 um at 1e-14 kg, 23 / 7.5 um at 1e-15 kg (z = 10 / 5), 0.85 / 0.17 / 0.06 um at 1e-13 kg; witnessable when gamma < |omega_ent|. Proposal; no measurement."
+    },
+    {
+      "id": "T05-HORNBERGER2003",
+      "label": "MEASURED",
+      "doi": "10.1103/PhysRevLett.90.160401",
+      "year": 2003,
+      "collaboration": "Hornberger, Uttenthaler, Brezger, Hackermueller, Arndt & Zeilinger (Vienna)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Collisional decoherence observed in matter wave interferometry: loss of fringe visibility of C70 fullerenes in a Talbot-Lau interferometer against the pressure of several background gases at room temperature (p <= 2.5e-6 mbar); 'in very good quantitative agreement with decoherence theory', with no adjustable parameters; pressure uncertainty about 15 %. The measured parent of the residual-gas rate on this page, which extrapolates the same theory from a molecule to a micron sphere."
+    },
+    {
+      "id": "T05-HACKERMULLER2004",
+      "label": "MEASURED",
+      "doi": "10.1038/nature02276",
+      "year": 2004,
+      "collaboration": "Hackermueller, Hornberger, Brezger, Zeilinger & Arndt (Vienna)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Decoherence of matter waves by thermal emission of radiation: C70 fullerenes keep their interference below about 1000 K internal temperature and lose it gradually towards 3000 K; 'good quantitative agreement between our experimental observations and microscopic decoherence theory'. The measured parent of the thermal-emission rate on this page, which extrapolates the same theory to a cold micron sphere."
+    },
+    {
+      "id": "T05-ROMEROISART2011",
+      "label": "DERIVED",
+      "doi": "10.1103/PhysRevA.84.052121",
+      "year": 2011,
+      "collaboration": "Romero-Isart (Physical Review A)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Quantum superposition of massive objects and collapse models: position-localization master equation with decoherence function Gamma(x) = gamma (1 - exp[-x^2/4a^2]) (Eqs. 8-10), Lambda = gamma/4a^2; residual gas with a = lambda_th/2 and saturated rate gamma_air = lambda_th^2 Lambda (Eqs. 25-27), used in the short-wavelength limit; blackbody scattering Lambda ~ R^6 T_e^9 Re[(eps-1)/(eps+2)]^2 (Eq. 28) and emission/absorption Lambda ~ R^3 T^6 Im[(eps-1)/(eps+2)] (Eq. 29) in the long-wavelength limit. Equation numbers from arXiv:1110.4495v1. The closed forms the entanglement proposals cite for their decoherence rates."
+    },
+    {
+      "id": "T05-SELLNER2017",
+      "label": "SINGLE RESULT",
+      "doi": "10.1088/1367-2630/aa7e73",
+      "year": 2017,
+      "collaboration": "Sellner et al. (BASE collaboration, CERN)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Improved limit on the directly measured antiproton lifetime: no annihilation in 11.66 particle-years of storage in a cryogenic Penning-trap reservoir; from the lifetime limit the paper infers partial-pressure upper limits of 1.2e-18 mbar for hydrogen and 2.7e-18 mbar for helium at 68 % confidence (1.2e-16 Pa and 2.7e-16 Pa). One collaboration's inferred, model-dependent limit on its own trap vacuum, not a gauge reading; labelled SINGLE RESULT, not an exclusion limit on any model."
     }
   ]
 }

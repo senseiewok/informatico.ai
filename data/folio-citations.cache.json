@@ -359,6 +359,14 @@
   "title": "Open Catalyst 2020 (OC20) Dataset and Community Challenges",
   "year": 2021
  },
+ "doi:10.1038/nature02276": {
+  "fetched": "2026-11-09",
+  "first_author": "Hackermüller",
+  "found": true,
+  "journal": "Nature",
+  "title": "Decoherence of matter waves by thermal emission of radiation",
+  "year": 2004
+ },
  "doi:10.1038/nature08293": {
   "fetched": "2026-11-04",
   "first_author": "Wang",
@@ -703,6 +711,14 @@
   "title": "A classical channel model for gravitational decoherence",
   "year": 2014
  },
+ "doi:10.1088/1367-2630/aa7e73": {
+  "fetched": "2026-11-09",
+  "first_author": "Sellner",
+  "found": true,
+  "journal": "New Journal of Physics",
+  "title": "Improved limit on the directly measured antiproton lifetime",
+  "year": 2017
+ },
  "doi:10.1088/1367-2630/abf3eb": {
   "fetched": "2026-11-09",
   "first_author": "Rijavec",
@@ -814,6 +830,14 @@
   "journal": "Physical Review A",
   "title": "Quantum gravity witness via entanglement of masses: Casimir screening",
   "year": 2020
+ },
+ "doi:10.1103/physreva.84.052121": {
+  "fetched": "2026-11-09",
+  "first_author": "Romero-Isart",
+  "found": true,
+  "journal": "Physical Review A",
+  "title": "Quantum superposition of massive objects and collapse models",
+  "year": 2011
  },
  "doi:10.1103/physreva.86.032324": {
   "fetched": "2026-11-07",
@@ -1038,6 +1062,14 @@
   "journal": "Physical Review Letters",
   "title": "Entanglement of Formation of an Arbitrary State of Two Qubits",
   "year": 1998
+ },
+ "doi:10.1103/physrevlett.90.160401": {
+  "fetched": "2026-11-09",
+  "first_author": "Hornberger",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Collisional Decoherence Observed in Matter Wave Interferometry",
+  "year": 2003
  },
  "doi:10.1103/physrevlett.93.261101": {
   "fetched": "2026-11-08",
@@ -2450,6 +2482,18 @@
   "unclassified": 5,
   "year": 2021
  },
+ "scite:10.1038/nature02276": {
+  "citing_publications": 388,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 390,
+  "retracted": false,
+  "supporting": 8,
+  "total_smart_citations": 402,
+  "unclassified": 4
+ },
  "scite:10.1038/nature13883": {
   "citing_publications": 3769,
   "contrasting": 1,
@@ -2842,6 +2886,18 @@
   "total_smart_citations": 322,
   "unclassified": 0
  },
+ "scite:10.1088/1367-2630/aa7e73": {
+  "citing_publications": 68,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 51,
+  "retracted": false,
+  "supporting": 2,
+  "total_smart_citations": 54,
+  "unclassified": 1
+ },
  "scite:10.1088/1367-2630/abf3eb": {
   "citing_publications": 85,
   "classification_provenance": "Scite ML citation classification",
@@ -2976,6 +3032,18 @@
   "retracted": false,
   "supporting": 0,
   "total_smart_citations": 154,
+  "unclassified": 0
+ },
+ "scite:10.1103/physreva.84.052121": {
+  "citing_publications": 342,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 389,
+  "retracted": false,
+  "supporting": 7,
+  "total_smart_citations": 396,
   "unclassified": 0
  },
  "scite:10.1103/physreva.86.032324": {
@@ -3323,6 +3391,18 @@
   "supporting": 70,
   "total_smart_citations": 8555,
   "unclassified": 41
+ },
+ "scite:10.1103/physrevlett.90.160401": {
+  "citing_publications": 324,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 2,
+  "fetched": "2026-11-09",
+  "found": true,
+  "mentioning": 324,
+  "retracted": false,
+  "supporting": 25,
+  "total_smart_citations": 354,
+  "unclassified": 3
  },
  "scite:10.1103/physrevlett.93.261101": {
   "citing_publications": 779,
