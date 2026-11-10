@@ -1998,7 +1998,7 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
     <div class="tp-contents-inner">
       <div class="tp-contents-head">
         <h2 id="tp-contents-title" data-en="Contents" data-es="Contenido">Contents</h2>
-        <input id="tp-contents-search" class="tp-contents-search" type="search" autocomplete="off" placeholder="Search {total} essays, 6 bounties, 6 tools &amp; 3 syntheses" aria-label="Search essays, bounties and tools">
+        <input id="tp-contents-search" class="tp-contents-search" type="search" autocomplete="off" placeholder="Search {total} essays, 6 bounties, 6 tools &amp; 6 syntheses" aria-label="Search essays, bounties and tools">
         <button type="button" class="tp-tool-btn tp-contents-close" data-close-contents aria-label="Close contents">Close</button>
       </div>
       <p id="tp-contents-empty" class="tp-contents-empty" hidden data-en="No essay matches that search." data-es="Ningún ensayo coincide con la búsqueda.">No essay matches that search.</p>
@@ -2018,7 +2018,7 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
         </ol>
       </section>
       <section class="tp-contents-bounties" aria-label="Cross-Scale Featured Essays">
-        <h3><a href="{_href(rel_res, 'essays/')}" data-en="Cross-Scale Featured Essays · 3 Standalone Syntheses (ES.01–ES.03)" data-es="Ensayos Destacados entre Escalas · 3 Síntesis Independientes (ES.01–ES.03)">Cross-Scale Featured Essays · 3 Standalone Syntheses (ES.01–ES.03)</a></h3>
+        <h3><a href="{_href(rel_res, 'essays/')}" data-en="Cross-Scale Featured Essays · 6 Standalone Syntheses (ES.01–ES.06)" data-es="Ensayos Destacados entre Escalas · 6 Síntesis Independientes (ES.01–ES.06)">Cross-Scale Featured Essays · 6 Standalone Syntheses (ES.01–ES.06)</a></h3>
         <ol>
             {essay_items_html}
         </ol>
@@ -2258,9 +2258,9 @@ def render_cross_scale_essays_showcase(rel_res: str, lang: str = "en") -> str:
     hub_href = _href(rel_res, "essays/")
     return f"""
     <section class="tp-cross-scale-showcase" id="cross-scale-essays" aria-labelledby="cross-scale-essays-heading">
-      <p class="tp-kicker" data-en="Featured Companion Synthesis · 3 Standalone Essays · ES.01–ES.03" data-es="Síntesis Compañera Destacada · 3 Ensayos Independientes · ES.01–ES.03">Featured Companion Synthesis · 3 Standalone Essays · ES.01–ES.03</p>
+      <p class="tp-kicker" data-en="Featured Companion Synthesis · 6 Standalone Essays · ES.01–ES.06" data-es="Síntesis Compañera Destacada · 6 Ensayos Independientes · ES.01–ES.06">Featured Companion Synthesis · 6 Standalone Essays · ES.01–ES.06</p>
       <h2 id="cross-scale-essays-heading" class="tp-h2"><a href="{hub_href}" data-en="Cross-Scale Essays: Clocks, Stone, and Living Matter" data-es="Ensayos entre Escalas: Relojes, Piedra y Materia Viva">Cross-Scale Essays: Clocks, Stone, and Living Matter</a></h2>
-      <p class="tp-standfirst" data-en="Why the exact same fluctuation-dissipation floors, formal DERIVED (NOT MEASURED) parent-row gates, and Barato–Seifert thermodynamic uncertainty bounds (Q_TUR ≥ 2) unite 10⁻¹⁴ kg quantum-gravity diamonds, optical clocks, porous mortar, and nanoscale conformational channels." data-es="Por qué los mismos pisos de fluctuación-disipación, las compuertas formales DERIVADO (NO MEDIDO) y las cotas de incertidumbre termodinámica de Barato–Seifert (Q_TUR ≥ 2) unen diamantes de gravedad cuántica de 10⁻¹⁴ kg, relojes ópticos, mortero poroso y canales conformacionales a nanoescala.">Why the exact same fluctuation-dissipation floors, formal DERIVED (NOT MEASURED) parent-row gates, and Barato–Seifert thermodynamic uncertainty bounds (Q_TUR ≥ 2) unite 10⁻¹⁴ kg quantum-gravity diamonds, optical clocks, porous mortar, and nanoscale conformational channels.</p>
+      <p class="tp-standfirst" data-en="Two editorial movements—Foundations &amp; Bounds (ES.01–ES.03) and Constraints &amp; Formal Proof (ES.04–ES.06)—tracing how fluctuation-dissipation floors, DERIVED (NOT MEASURED) parent gates, Q_TUR ≥ 2 bounds, rank-nullity rigidity, Doob conditional survival, and a 64×64 Page–Wootters / Lean 4 proof unite falling clocks, stone vaults, and living pores." data-es="Dos movimientos editoriales —Fundamentos y Cotas (ES.01–ES.03) y Restricciones y Prueba Formal (ES.04–ES.06)— que muestran cómo los pisos de fluctuación-disipación, las compuertas DERIVADO (NO MEDIDO), las cotas Q_TUR ≥ 2, la rigidez rango-nulidad, la supervivencia condicional de Doob y una prueba Page–Wootters 64×64 / Lean 4 unen relojes en caída, bóvedas de piedra y poros vivos.">Two editorial movements—Foundations &amp; Bounds (ES.01–ES.03) and Constraints &amp; Formal Proof (ES.04–ES.06)—tracing how fluctuation-dissipation floors, DERIVED (NOT MEASURED) parent gates, Q_TUR ≥ 2 bounds, rank-nullity rigidity, Doob conditional survival, and a 64×64 Page–Wootters / Lean 4 proof unite falling clocks, stone vaults, and living pores.</p>
       <div class="tp-cross-scale-grid">
 {cards_html}
       </div>
@@ -5683,7 +5683,7 @@ def render_llms_txt(catalog: dict) -> str:
             lines.append(f"- [Step {step_no} · {tg['code']} {tg['seo'][0]}]({page_url('timegravity/' + tg['slug'] + '/')}): {tg['seo'][1]}")
     lines.append("")
     from folios.essays import ESSAYS as CROSS_SCALE_ESSAYS  # noqa: E402
-    lines.append("## Cross-Scale Featured Essays · Clocks, Stone, and Living Matter (ES.01–ES.03)")
+    lines.append("## Cross-Scale Featured Essays · Clocks, Stone, and Living Matter (ES.01–ES.06)")
     lines.append("")
     lines.append(f"- [Cross-Scale Essays]({page_url('essays/')}): {PILLAR_SEO['essays'][1]}")
     for es_doc in CROSS_SCALE_ESSAYS:

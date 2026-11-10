@@ -291,7 +291,7 @@ PAGE: dict = {
               "más débil, y a 13.6 µm la imitación cae al alcance tabulado más corto, 5 µm, unas cinco mil veces más débil; el sitio por debajo de "
               "33 µm existe porque ningún experimento alcanza intensidad casi gravitatoria a alcances de 5 a 10 µm, no por un hueco en los datos. T.05 añade un peldaño de otra clase: si la gravedad es "
               "cuántica y además existe el colapso puro, un testigo positivo en la geometría de 2017 pondría σ por encima de 130 µm dentro de este modelo de colapso puro. La escalera lleva además una ventana de otra clase, de 13.6 a 33 µm: en la estimación de este sitio el modelo de la carta aún podría entrelazar allí una geometría publicada, la propuesta lado a lado de 2024, sin contradecir los datos de 2020 del inverso del cuadrado; es una ventana para ese único modelo y esa única geometría, no una cota de σ, y se mueve o se cierra si los datos de 2020 se reajustan.",
-              parent=LEE),
+              parent=LEE, kernel="ew_recast_sigma_um"),
             C("BOUND", [GERACI, LEE],
               " One experiment has worked at a smaller separation than the balance's 52 µm: a micro-cantilever about 25 µm from its source mass, "
               "whose published 95 % limits exclude strengths above 14,000 at a range of 10 µm. Set beside the balance's own tabulated limits on the "

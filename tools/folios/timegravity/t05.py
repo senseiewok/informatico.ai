@@ -406,7 +406,7 @@ PAGE: dict = {
               "al 95 %: 33.1 µm con tres ponderaciones de la separación, con una ponderación por par absoluto y con los dos armónicos medidos, 33.6 µm con una "
               "ponderación lineal. A 33 µm la intensidad efectiva es −7.3 frente a "
               "un límite de −7.4 a un alcance de 18 µm; a 35 µm es −10.2, excluida.",
-              parent=LEE),
+              parent=LEE, kernel="ew_recast_sigma_um"),
             T(" This is a recast of published limits, not a refit of the data: it assumes the smeared shape shares its mimic's degeneracy with the fitted offset "
               "and scale, which the shape agreement supports; a direct refit of the raw torque data, requested from the authors, is the only check that closes "
               "this, and the weighting of the experiment's 95 runs is not public, hence the several weightings. The earlier figure on this page, 44 µm from "

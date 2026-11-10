@@ -14,10 +14,22 @@ def T(en: str, es: str) -> dict:
     return {"kind": "text", "en": en, "es": es}
 
 
-def C(label: str, ids: list[str] | tuple[str, ...], en: str, es: str, parent: str | None = None) -> dict:
+def C(
+    label: str,
+    ids: list[str] | tuple[str, ...],
+    en: str,
+    es: str,
+    parent: str | None = None,
+    kernel: str | None = None,
+    scope: str | None = None,
+) -> dict:
     seg = {"kind": "claim", "label": label, "ids": list(ids), "en": en, "es": es}
     if parent:
         seg["parent"] = parent
+    if kernel:
+        seg["kernel"] = kernel
+    if scope:
+        seg["scope"] = scope
     return seg
 
 

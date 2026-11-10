@@ -2,7 +2,7 @@
 
 > 48 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
 
-Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (75 SKILL.md companions, Python verifiers, 13-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
+Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (78 SKILL.md companions, Python verifiers, 13-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
 
 ## Civil Engineering & Construction
 
@@ -104,12 +104,15 @@ Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio 
 - [Step 12 · T.11 What Selects the World a Clock Sees? Einselection and Quantum Darwinism](https://informatico.ai/timegravity/t11/): How pointer-commuting photon scattering suppresses spatial superpositions and broadcasts redundant classical records in the electromagnetic bath.
 - [Step 13 · T.12 Two Clocks That Only Meet in Gravity: Dark Sectors and Clock Networks](https://informatico.ai/timegravity/t12/): How universal metric coupling lets spatially separated clocks sense electromagnetically transparent matter while co-located optical clocks bound scalar portals.
 
-## Cross-Scale Featured Essays · Clocks, Stone, and Living Matter (ES.01–ES.03)
+## Cross-Scale Featured Essays · Clocks, Stone, and Living Matter (ES.01–ES.06)
 
-- [Cross-Scale Essays](https://informatico.ai/essays/): Three long-form essays where quantum decoherence, formal verification and porous-media thermodynamics unite falling clocks, stone and living systems.
+- [Cross-Scale Essays](https://informatico.ai/essays/): Six long-form essays where quantum decoherence, formal verification and porous-media thermodynamics unite falling clocks, stone and living systems.
 - [ES.01 The Mesoscopic Floor: From Vacuum to Hydrogels](https://informatico.ai/essays/mesoscopic-floor/): How one thermal bath governs falling diamonds in ultra-high vacuum and hindered nanoparticles in polymer hydrogels across nineteen Knudsen decades.
 - [ES.02 Derived, Not Measured: Six Evidence Labels](https://informatico.ai/essays/derived-not-measured/): Why machine-precision math deduced from a measured law is still not a measurement: six evidence labels, parent provenance, and eight mutation tests.
 - [ES.03 Barriers, Pores, and Autonomous Clocks](https://informatico.ai/essays/barriers-pores-clocks/): How the thermodynamic uncertainty relation, Brinkman porous screening, and Kramers barrier escape govern clocks, stone mortar, and protein pores.
+- [ES.04 Tensegrity, Microcausality, and Zero Modes](https://informatico.ai/essays/tensegrity-microcausality-zero-modes/): How one rank-nullity index theorem eliminates floppy shear modes in space trusses and fixes quantum subsystem locality in entanglement tests.
+- [ES.05 Islands, Blinders, and Conditional Survival](https://informatico.ai/essays/islands-blinders-conditional-survival/): Compare unitary island saddles, undressed detector subalgebras, and Doob conditional survival costs across six steps in harmonized nats.
+- [ES.06 Timeless Clocks, Torque Bounds, and Formal Proof](https://informatico.ai/essays/coupled-constraints-formal-proof/): How timeless quantum clock constraints, sub-millimetre torsion bounds, bilateral spin echoes, and Lean formal proofs test tabletop gravity.
 
 ## About Informatico.ai & the Shared Verification Engine (Essay Zero)
 
