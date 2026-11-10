@@ -3052,6 +3052,28 @@
     box-sizing: border-box;
   }
 
+  /* tp-wide-screen-cap (council 2026-11-10). The containment contract above sets max-width: 100% on .tp-shell and
+     so cancels the shell's own clamp, which is the masthead's: the page grew without bound on wide screens
+     (2,461 px lead figures at 2560, the margin rail 1,900 px from its text). The clamp returns, wrapped in min()
+     so phones keep the contract. From 1600 px up, editorial figures stop at 1,080 px like the Time & Gravity
+     plates and the essay grid's main column stops at the same width, so the margin rail sits beside the text. */
+  .tp-shell {
+    max-width: min(100%, clamp(1440px, 95vw, 1880px));
+  }
+
+  @media (min-width: 1600px) {
+    .tp-editorial-figure,
+    .tp-editorial-figure > figcaption,
+    .tp-cover-figure {
+      max-width: 1080px;
+    }
+
+    .tp-folio-layout {
+      grid-template-columns: minmax(0, 1080px) minmax(280px, 26rem);
+      justify-content: start;
+    }
+  }
+
   /* ---- Subtle Futuristic SVG Telemetry HUD & Interactive Bilingual Crossword Atelier ---- */
   .tp-futuristic-hud-strip {
     width: 100%;

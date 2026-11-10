@@ -469,7 +469,11 @@
   @media (min-width: 1100px) {
     .tg-page [data-lead-figure],
     .tg-page .tg-instrument,
-    .tg-page .tp-distill-figure {
+    .tg-page .tp-distill-figure,
+    .tg-page .tg-boundary-banner,
+    .tg-page .tg-step-rail,
+    .tg-page .tg-jump-bar,
+    .tg-page .tg-hero-cta {
       box-sizing: border-box;
       max-width: 1080px;
     }
