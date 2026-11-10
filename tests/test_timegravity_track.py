@@ -524,7 +524,7 @@ class TimeGravityBatch4Tests(unittest.TestCase):
         t06 = (TG / "t06" / "index.html").read_text(encoding="utf-8")
         self.assertNotIn("MEASURED", labels_of(TG / "t06" / "index.html"), "a bound page measures nothing")
         for s in ("576", "506", "0.54 × 10⁻¹⁰ m", "0.05 × 10⁻¹⁰ m", "4.9 × 10⁻¹⁰ m", "CSL is not a gravity model", "Where the smearing may live", 'data-tg-figure="sigma-ladder"',
-                  "above 40 fm", "6.5 × 10⁸ s", "10¹⁹ ages of the universe", "upper bounds can be put by observing no deviations", "not the preprint's", "the model is quiet", "a hundred thousand times or more", "a rung of another kind", "a window of another kind", "(PROPOSED, model-specific)", "not a bound on σ", "the deficit in the mean pull grows instead", "thirteen to sixteen orders lower", "not a bound: the step from a torque residual", "twenty-nine orders of magnitude", "does not assess Orch-OR", "D₂ ≤ 10⁻⁴¹", "draws no conclusion beyond it"):
+                  "above 40 fm", "6.5 × 10⁸ s", "10¹⁹ ages of the universe", "loses reach quickly", "some five thousand times too weak", "upper bounds can be put by observing no deviations", "not the preprint's", "the model is quiet", "a hundred thousand times or more", "a rung of another kind", "a window of another kind", "(PROPOSED, model-specific)", "not a bound on σ", "the deficit in the mean pull grows instead", "thirteen to sixteen orders lower", "not a bound: the step from a torque residual", "twenty-nine orders of magnitude", "does not assess Orch-OR", "D₂ ≤ 10⁻⁴¹", "draws no conclusion beyond it"):
             self.assertIn(s, t06, f"T.06 lacks {s!r}")
         t10 = (TG / "t10" / "index.html").read_text(encoding="utf-8")
         for s in ("signal-to-noise ratio of 80", "to high credibility", "does not recompute it", "Where does the information go, in our universe?"):
@@ -710,7 +710,7 @@ class TimeGravitySmearedIslTests(unittest.TestCase):
         self.assertEqual(labels_of(en), labels_of(es))
         txt = en.read_text(encoding="utf-8")
         for s in ("erfc(qσ − s/2σ)", "54 and 99 µm thick", "13.00 and 23.00 mm", "23.51 and 26.00 mm", "1.5 fN·m at 72 µm", "removes 17 %", "4.3 % at 50 µm", "6.3 % at 55 µm", "removes 2.5 %",
-                  "33 µm", "one-mode lower bound", "near 49 µm", "recast of published limits, not a refit", "exclude σ above 33 µm at 95 %", "is superseded", "not a bound on σ", "surface gap of 210 µm", "4.8 % at σ = 75 µm", "the two match at σ ≈ 60 µm", "curve match with no data behind it", "below 27 µm", "below 6 µm", "was a looser reading and is superseded", "the change box keeps it", "had given 44.4 µm", "Casimir", "cannot fall below 17 µm", "it stays open, between 17 and 27 µm",
+                  "33 µm", "one-mode lower bound", "near 49 µm", "recast of published limits, not a refit", "hundreds to thousands of times above", "not a gap in the data", "exclude σ above 33 µm at 95 %", "is superseded", "not a bound on σ", "surface gap of 210 µm", "4.8 % at σ = 75 µm", "the two match at σ ≈ 60 µm", "curve match with no data behind it", "below 27 µm", "below 6 µm", "was a looser reading and is superseded", "the change box keeps it", "had given 44.4 µm", "Casimir", "cannot fall below 17 µm", "it stays open, between 17 and 27 µm",
                   "previously untested", "leaves it open", "full wedge pattern", 'data-tg-read="isl"'):
             self.assertIn(s, txt, f"T.05 lacks {s!r}")
         low = txt.lower()

@@ -403,13 +403,16 @@ PAGE: dict = {
               "this, and the weighting of the experiment's 95 runs is not public, hence the several weightings. The earlier figure on this page, 44 µm from "
               "matching the gravitational-strength edge at one separation, was a looser reading and is superseded; the change box keeps it. With σ below 33 µm "
               "the model reaches, in the collinear layout, only pairs closer than 27 µm at small splits, and for the letter's 23 µm split only separations "
-              "below 6 µm, not its own geometry 24 µm apart.",
+              "below 6 µm, not its own geometry 24 µm apart. Below the limit the mimic range drops under 10 µm, where the published limit sits hundreds "
+              "to thousands of times above the smeared pull's effective strength; that, not a gap in the data, is what keeps the region open.",
               " Esto es un recast de límites publicados, no un reajuste de los datos: supone que la forma suavizada comparte con su imitación la degeneración con "
               "el desplazamiento y la escala ajustados, lo que el acuerdo de forma respalda; un reajuste directo de los datos crudos de par, solicitado a los "
               "autores, es la única comprobación que lo cierra, y la ponderación de las 95 corridas del experimento no es pública, de ahí las varias "
               "ponderaciones. La cifra anterior de esta página, 44 µm por igualar el borde de intensidad gravitatoria a una sola separación, era una lectura "
               "más laxa y queda superada; la caja de cambios la conserva. Con σ por debajo de 33 µm el modelo alcanza, en la disposición colineal, solo pares a "
-              "menos de 27 µm con divisiones pequeñas, y para la división de 23 µm de la carta solo separaciones por debajo de 6 µm, no su propia geometría a 24 µm."),
+              "menos de 27 µm con divisiones pequeñas, y para la división de 23 µm de la carta solo separaciones por debajo de 6 µm, no su propia geometría a 24 µm. Por debajo del límite el alcance imitado "
+              "baja de 10 µm, donde el límite publicado queda de cientos a miles de veces por encima de la intensidad efectiva de la atracción suavizada; eso, "
+              "y no un hueco en los datos, es lo que mantiene abierta la región."),
             T(" The proposal the letter took its geometry from screens the Casimir force with a conducting plate 1 µm wide and demands that the Casimir pull of "
               "each mass toward the plate stay below a tenth of the magnetic pull that closes the interferometer; on that condition, with its own "
               "numbers, the inner states must keep 8 µm from the plate at 10⁻¹⁵ kg, so the nearest separation cannot fall below 17 µm (27 µm at "
