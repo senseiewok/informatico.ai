@@ -826,6 +826,11 @@ class TimeGravityHumansAndPlatesTests(unittest.TestCase):
                 self.assertGreaterEqual(txt.count('class="tg-human-card"'), 3, f"{path} has fewer than 3 human cards")
                 self.assertGreaterEqual(txt.count('class="tg-apparatus-svg"'), 3, f"{path} lacks apparatus SVG medallions")
                 self.assertIn(jump_label, txt, f"{path} lacks #humans jump pill")
+        for app in ("rindler-wedge", "horn-antenna", "sonic-horizon"):
+            self.assertIn(f'data-apparatus="{app}"', (TG / "t08" / "index.html").read_text(encoding="utf-8"))
+        for app in ("kerr-ergosphere", "continued-fraction", "ligo-interferometer"):
+            self.assertIn(f'data-apparatus="{app}"', (TG / "t09" / "index.html").read_text(encoding="utf-8"))
+        self.assertIn('data-apparatus="ligo-interferometer"', (TG / "t10" / "index.html").read_text(encoding="utf-8"))
 
     def test_every_step_has_its_own_bespoke_plate_d_visual_intuition_bridge(self) -> None:
         seen_titles: set[str] = set()
