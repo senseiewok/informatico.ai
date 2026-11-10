@@ -54,11 +54,11 @@
       },
       {
         "key": "eotwash",
-        "sigma_m": 4.407e-05,
+        "sigma_m": 3.31e-05,
         "kind": "estimate",
         "ledger_id": "T05-LEE2021",
-        "en": "T.05 estimate: Newton tests ≲ 44 µm",
-        "es": "estimación T.05: pruebas de Newton ≲ 44 µm"
+        "en": "T.05 recast of the published limits: σ > 33 µm excluded (DERIVED)",
+        "es": "recast T.05 de los límites publicados: σ > 33 µm excluida (DERIVADO)"
       },
       {
         "key": "letter_lo",
@@ -132,16 +132,16 @@
         }
       },
       "eotwash": {
-        "sigma_m": 4.407e-05,
+        "sigma_m": 3.31e-05,
         "protein_size": {
-          "lifetime_s": 5.388305665809452e+24,
-          "tubulins_for_25ms": 2.1553222663237807e+26,
-          "lifetime_over_universe_age": 12372833.558478234
+          "lifetime_s": 2.283006010545162e+24,
+          "tubulins_for_25ms": 9.132024042180647e+25,
+          "lifetime_over_universe_age": 5242325.720442826
         },
         "nucleon_radius": {
-          "lifetime_s": 5.517624988152241e+37,
-          "tubulins_for_25ms": 2.2070499952608963e+39,
-          "lifetime_over_universe_age": 1.2669781532568743e+20
+          "lifetime_s": 2.33779814455607e+37,
+          "tubulins_for_25ms": 9.351192578224279e+38,
+          "lifetime_over_universe_age": 5.3681415142149775e+19
         }
       },
       "letter_lo": {
@@ -175,9 +175,9 @@
     "monotone_ok": true,
     "tubulins_for_25ms_at_natural_cutoff": 25906931405.794933,
     "count_ok": true,
-    "lifetime_span_eotwash_over_natural": 8.51914864285014e+28,
+    "lifetime_span_eotwash_over_natural": 3.6095330750490114e+28,
     "span_ok": true,
-    "eotwash_matching_sigma_live_m": 4.406690876306644e-05,
+    "eotwash_matching_sigma_live_m": 3.3079219801423074e-05,
     "rung_ok": true,
     "casimir": {
       "gap_1e-15_m": 8.053751663509764e-06,
@@ -191,7 +191,7 @@
     },
     "floor_ok": true,
     "window": {
-      "sigma_m": 4.407e-05,
+      "sigma_m": 3.31e-05,
       "by_mass": {
         "1e-15": {
           "mass_kg": 1e-15,
@@ -200,44 +200,44 @@
           "splits": {
             "split_23um": {
               "split_m": 2.3e-05,
-              "d_c_m": 1.4873004928674271e-05,
+              "d_c_m": 5.663817216633548e-06,
               "floor_m": 1.710750332701953e-05,
               "open": false
             },
             "split_10um": {
               "split_m": 1e-05,
-              "d_c_m": 2.7568749749815323e-05,
+              "d_c_m": 1.8258171166070142e-05,
               "floor_m": 1.710750332701953e-05,
               "open": true,
-              "example_separation_m": 2.2338126538417428e-05,
+              "example_separation_m": 1.7682837246544837e-05,
               "example": {
-                "peak_negativity": 0.011187570812582485,
-                "peak_time_s": 10000.0,
-                "last_entangled_time_s": 17782.794100389227
+                "peak_negativity": 0.0007703554421065992,
+                "peak_time_s": 1778.2794100389228,
+                "last_entangled_time_s": 3162.2776601683795
               }
             },
             "split_5um": {
               "split_m": 5e-06,
-              "d_c_m": 3.2515638560561425e-05,
+              "d_c_m": 2.3187436875159062e-05,
               "floor_m": 1.710750332701953e-05,
               "open": true,
-              "example_separation_m": 2.481157094379048e-05,
+              "example_separation_m": 2.0147470101089297e-05,
               "example": {
-                "peak_negativity": 0.01872221934690895,
-                "peak_time_s": 56234.13251903491,
-                "last_entangled_time_s": 100000.0
+                "peak_negativity": 0.008120016814586625,
+                "peak_time_s": 17782.794100389227,
+                "last_entangled_time_s": 31622.776601683792
               }
             },
             "split_1um": {
               "split_m": 1e-06,
-              "d_c_m": 3.649864820897578e-05,
+              "d_c_m": 2.7164814164601933e-05,
               "floor_m": 1.710750332701953e-05,
               "open": true,
-              "example_separation_m": 2.6803075767997657e-05,
+              "example_separation_m": 2.2136158745810733e-05,
               "example": {
-                "peak_negativity": 0.023697842171680295,
-                "peak_time_s": 1778279.410038923,
-                "last_entangled_time_s": 1778279.410038923
+                "peak_negativity": 0.015681539654851133,
+                "peak_time_s": 562341.3251903491,
+                "last_entangled_time_s": 1000000.0
               }
             }
           }
@@ -249,44 +249,32 @@
           "splits": {
             "split_23um": {
               "split_m": 2.3e-05,
-              "d_c_m": 1.4873004928674271e-05,
+              "d_c_m": 5.663817216633548e-06,
               "floor_m": 2.652867237053799e-05,
               "open": false
             },
             "split_10um": {
               "split_m": 1e-05,
-              "d_c_m": 2.7568749749815323e-05,
+              "d_c_m": 1.8258171166070142e-05,
               "floor_m": 2.652867237053799e-05,
-              "open": true,
-              "example_separation_m": 2.7048711060176657e-05,
-              "example": {
-                "peak_negativity": 0.00042461456720997736,
-                "peak_time_s": 31.622776601683793,
-                "last_entangled_time_s": 56.23413251903491
-              }
+              "open": false
             },
             "split_5um": {
               "split_m": 5e-06,
-              "d_c_m": 3.2515638560561425e-05,
+              "d_c_m": 2.3187436875159062e-05,
               "floor_m": 2.652867237053799e-05,
-              "open": true,
-              "example_separation_m": 2.9522155465549708e-05,
-              "example": {
-                "peak_negativity": 0.005306278917396354,
-                "peak_time_s": 316.22776601683796,
-                "last_entangled_time_s": 562.341325190349
-              }
+              "open": false
             },
             "split_1um": {
               "split_m": 1e-06,
-              "d_c_m": 3.649864820897578e-05,
+              "d_c_m": 2.7164814164601933e-05,
               "floor_m": 2.652867237053799e-05,
               "open": true,
-              "example_separation_m": 3.1513660289756886e-05,
+              "example_separation_m": 2.6846743267569962e-05,
               "example": {
-                "peak_negativity": 0.010585322997714445,
-                "peak_time_s": 10000.0,
-                "last_entangled_time_s": 17782.794100389227
+                "peak_negativity": 0.0003229791107129096,
+                "peak_time_s": 1778.2794100389228,
+                "last_entangled_time_s": 1778.2794100389228
               }
             }
           }
@@ -294,8 +282,8 @@
       }
     },
     "window_ok": true,
-    "sigma_cubed_ratio": 182.55379870849123,
-    "sigma_cubed_ratio_expected": 182.55379870849123,
+    "sigma_cubed_ratio": 430.85986862538005,
+    "sigma_cubed_ratio_expected": 430.8598686253801,
     "scaling_ok": true,
     "defect_rejected": true,
     "diffusion": {

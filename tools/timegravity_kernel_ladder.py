@@ -9,7 +9,8 @@ literature). Its rungs, each with a source on the ledger:
   · the one biological use, Orch-OR (Hameroff & Penrose 2014): consciousness-related collapse follows "the specific Diósi-Penrose
     scheme" — the kernel computes what Penrose's formula then says about a tubulin at each rung;
   · the entanglement letter (Trillo & Navascués 2025): entanglement in the laboratory needs σ between 50 and 250 µm;
-  · this site's estimate (T.05 wedge kernel): the model's softened pull matches the Yukawa the Eöt-Wash test excludes at σ = 44 µm.
+  · this site's recast of the Eöt-Wash 2020 published limits (T.05, timegravity_kernel_recast): σ above 33 µm excluded at 95 %;
+    the earlier single-separation edge match (44.07 µm) is kept reproducible as the retired reading.
 
 Point-mass decoherence. For a point mass m in two places Δx apart the DP decoherence rate is Γ = (G m²/ħ)[f̃(0) − f̃(Δx)] with
     f̃(z) = erf(z/2σ)/z and f̃(0) = 1/(σ√π) (the kernel of the T.05 dispute kernel). For Δx ≪ σ the two terms cancel to many
@@ -22,7 +23,7 @@ Casimir floor. Van De Kamp et al. 2020 screen the Casimir force between the two 
     interferometer (their Eq. 14): x ≥ [90 ħc/(8ρπ²) · (ε−1)/(ε+2) · m/(g μ_B ∂B)]^{1/5}, with ρ the mass density, ε its dielectric
     constant, g = 2, ∂B the field gradient. The nearest separation of the two inner states is then at least 2x + W. The kernel
     evaluates this with their numbers (ρ = 3.5 g/cm³, ∂B = 10⁴ T/m, diamond ε = 5.7) and sets it beside the window the T.05
-    estimate leaves the model (the critical separation d_c of the dispute kernel at σ = 44 µm for several splits).
+    recast leaves the model (the critical separation d_c of the dispute kernel at σ = 33 µm for several splits).
 
 Planted defect: the small-Δx series dropped, so the direct difference is used everywhere; at laboratory σ the cancellation
     returns garbage (negative or non-monotone lifetimes) and the verifier must reject it.
@@ -51,11 +52,11 @@ LADDER_RUNGS = [
     ("lisa", 40.1e-15, "bound", "T06-HELOU2017", "LISA Pathfinder ≥ 40 fm", "LISA Pathfinder ≥ 40 fm"),
     ("gransasso", 0.54e-10, "bound", "T06-DONADI2021", "Gran Sasso > 0.54 Å", "Gran Sasso > 0.54 Å"),
     ("xenonnt", 4.9e-10, "single", "T06-XENONNT2026", "XENONnT > 4.9 Å", "XENONnT > 4.9 Å"),
-    ("eotwash", 44.07e-6, "estimate", "T05-LEE2021", "T.05 estimate: Newton tests ≲ 44 µm", "estimación T.05: pruebas de Newton ≲ 44 µm"),
+    ("eotwash", 33.1e-6, "estimate", "T05-LEE2021", "T.05 recast of the published limits: σ > 33 µm excluded (DERIVED)", "recast T.05 de los límites publicados: σ > 33 µm excluida (DERIVADO)"),
     ("letter_lo", 50e-6, "proposed", "T05-TRILLO2025", "2025 letter: 50 µm", "carta de 2025: 50 µm"),
     ("letter_hi", 250e-6, "proposed", "T05-TRILLO2025", "2025 letter: 250 µm", "carta de 2025: 250 µm"),
 ]
-EW_MATCH_SIGMA_M = 44.07e-6
+EW_MATCH_SIGMA_M = 33.1e-6  # recast of the published limits (timegravity_kernel_recast); the retired edge match was 44.07 µm
 LADDER_TOL = 1e-6
 
 # Van De Kamp et al. 2020 numbers
@@ -188,10 +189,12 @@ def check_ladder(planted_defect: bool = False) -> dict:
     count_ok = n25 is not None and 1e10 < n25 < 1e11
     span = tub["eotwash"]["nucleon_radius"]["lifetime_s"] / tub["natural"]["nucleon_radius"]["lifetime_s"] if positive_ok else None
     span_ok = span is not None and span > 1e20
-    # 3. The ladder's Eöt-Wash rung is the wedge kernel's matching σ (cross-check against the live computation).
+    # 3. The ladder's Eöt-Wash rung is the recast kernel's σ_95 (cross-check against the live computation, quick configuration), and the
+    #    retired single-separation edge match stays reproducible above it.
+    from timegravity_kernel_recast import Recast, EDGE_MATCH_SIGMA_M
     from timegravity_kernel_wedge import wedge_sigma_matching_edge
-    live = wedge_sigma_matching_edge(120)
-    rung_ok = abs(live - EW_MATCH_SIGMA_M) / EW_MATCH_SIGMA_M < 1e-2
+    live = Recast(120, "log52-3000", n_sep=12, lam_min=10e-6, lam_max=100e-6).sigma_95()
+    rung_ok = abs(live - EW_MATCH_SIGMA_M) / EW_MATCH_SIGMA_M < 1e-2 and abs(wedge_sigma_matching_edge(120) - EDGE_MATCH_SIGMA_M) / EDGE_MATCH_SIGMA_M < 1e-2
     # 4. The Casimir floor on the proposal's own condition, and the window set beside it.
     floor15 = casimir_floor_separation(1e-15)
     floor14 = casimir_floor_separation(1e-14)
@@ -203,7 +206,7 @@ def check_ladder(planted_defect: bool = False) -> dict:
     diffusion = diffusion_table()
     diffusion_ok = (abs(diffusion["orders_between_recomputed_and_printed"]) < 2.5 and all(12.0 < v["orders_below_printed"] < 18.0 for v in diffusion["eotwash"].values())
                     and all(v["ceiling"] > diffusion["interferometry_floor"] for v in diffusion["eotwash"].values()))
-    # 5. The σ³ law between the two laboratory rungs (Δx ≪ σ): τ(250 µm)/τ(44 µm) = (250/44.07)³ within 1 %.
+    # 5. The σ³ law between the two laboratory rungs (Δx ≪ σ): τ(250 µm)/τ(33 µm) = (250/33.1)³ within 1 %.
     ratio = tub["letter_hi"]["nucleon_radius"]["lifetime_s"] / tub["eotwash"]["nucleon_radius"]["lifetime_s"]
     ratio_expected = (250e-6 / EW_MATCH_SIGMA_M) ** 3
     scaling_ok = abs(ratio / ratio_expected - 1.0) < 1e-2

@@ -10,10 +10,12 @@ Newton's e^{−qs}, a closed form checked against direct quadrature (1e-9), its 
 series checked against quadrature (1e-6): the Newtonian 120-fold torque is 1.51 fN·m at 72 µm (the letter's "roughly 1 %"
 magnetic subtraction of 0.0165 fN·m implies about 1.6); the smeared potential removes 17.0 % of it at 52 µm for σ = 75 µm (4.3 %
 at 50 µm, 0.3 % at 30 µm, 6.3 % at the 55 µm that first entangles the letter's own geometry), 0.1 % at 300 µm; the Yukawa at the
-published 95 % edge (α = −1, λ = 38.6 µm) removes 2.5 %; a smearing of 44 µm matches that edge (the one-mode lower bound at the
-pattern's lowest wavenumber gave 10.4 % and the same 44 µm); the Yukawa shape closest to the σ = 75 µm curve has λ ≈ 49 µm and
-α ≈ −3.1. With σ at most 44 µm the model entangles only nearest separations below 37 µm (small split) or 15 µm (23 µm split), and
-never the letter's own geometry. Two predicted signal sizes side by side; the experiment's own fit is not recomputed.
+published 95 % edge (α = −1, λ = 38.6 µm) removes 2.5 %; a smearing of 44 µm matches that edge at the single 52 µm separation (the
+one-mode lower bound at the pattern's lowest wavenumber gave 10.4 % and the same 44 µm), a reading retired in favour of the recast of
+the published limits over the full pattern (verify_t05_recast.py: σ above 33 µm excluded at 95 %); the Yukawa shape closest to the
+σ = 75 µm curve has λ ≈ 49 µm and α ≈ −3.1. With σ at most 33 µm the model entangles only nearest separations below 27 µm (small
+split) or 6 µm (23 µm split), and never the letter's own geometry. Two predicted signal sizes side by side; the experiment's own fit
+is not recomputed here.
 Planted defects (`--planted-defect`): the plate-mode closed form drops its e^{2qs} erfc term, and the radial Bessel series keeps a
 fixed 250 terms whatever k; the quadrature double entries then disagree and the run must exit non-zero with FAIL on stderr.
 Boundary: Nothing on this page is a theory of everything, and this site proposes none.

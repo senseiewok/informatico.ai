@@ -252,10 +252,10 @@ class TimeGravityTrackTests(unittest.TestCase):
         self.assertIn("## Time & Gravity", llms)
 
     def test_one_command_runner_passes(self) -> None:
-        res = run(PY + [str(ROOT / "timegravity" / "run_all_timegravity.py")], timeout=120)
+        res = run(PY + [str(ROOT / "timegravity" / "run_all_timegravity.py")], timeout=300)  # 11 verifiers with planted defects; the two T.05 kernels take 12-15 s each
         self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
         self.assertIn("PASS: Time & Gravity:", res.stdout)
-        self.assertEqual(res.stdout.count("REJECTED_AS_EXPECTED:"), 11)  # 10 verifiers (T.05 has three) + the lint
+        self.assertEqual(res.stdout.count("REJECTED_AS_EXPECTED:"), 12)  # 11 verifiers (8 pages, T.05 with four) + the label lint = 12
 
     def test_pages_rebuild_byte_for_byte_from_source(self) -> None:
         import build_timegravity as tg
@@ -493,11 +493,11 @@ class TimeGravityBatch4Tests(unittest.TestCase):
         self.assertGreater(t06["counts_at_paramfree_r0"], 1e5)
         self.assertLess(t06["max_rel_err_E_G"], 1e-3)
         self.assertAlmostEqual(t06["ladder_tubulins_for_25ms_at_natural_cutoff"] / 2.59e10, 1.0, delta=0.05)
-        self.assertGreater(t06["ladder_tubulin_lifetime_at_44um_s"], 1e37)
+        self.assertGreater(t06["ladder_tubulin_lifetime_at_recast_rung_s"], 1e37)
         self.assertAlmostEqual(t06["ladder_casimir_floor_1e-15_m"] * 1e6, 17.1, delta=0.3)
         self.assertFalse(t06["ladder_window_23um_split_open"])
         self.assertTrue(t06["ladder_window_10um_split_open"])
-        self.assertAlmostEqual(t06["ladder_sigma_cubed_ratio"], (250 / 44.07) ** 3, delta=2.0)
+        self.assertAlmostEqual(t06["ladder_sigma_cubed_ratio"], (250 / 33.1) ** 3, delta=5.0)
         self.assertAlmostEqual(math.log10(t06["diffusion_ceiling_oppenheim_inputs"]), -10.7, delta=0.5)
         for k, v in t06["diffusion_orders_below_printed"].items():
             self.assertTrue(12.0 < v < 18.0, (k, v))
@@ -524,7 +524,7 @@ class TimeGravityBatch4Tests(unittest.TestCase):
         t06 = (TG / "t06" / "index.html").read_text(encoding="utf-8")
         self.assertNotIn("MEASURED", labels_of(TG / "t06" / "index.html"), "a bound page measures nothing")
         for s in ("576", "506", "0.54 × 10⁻¹⁰ m", "0.05 × 10⁻¹⁰ m", "4.9 × 10⁻¹⁰ m", "CSL is not a gravity model", "Where the smearing may live", 'data-tg-figure="sigma-ladder"',
-                  "above 40 fm", "6.5 × 10⁸ s", "10²⁰ ages of the universe", "upper bounds can be put by observing no deviations", "not the preprint's", "the model is quiet", "a hundred thousand times or more", "a rung of another kind", "a window of another kind", "(PROPOSED, model-specific)", "not a bound on σ", "the deficit in the mean pull grows instead", "thirteen to sixteen orders lower", "not a bound: the step from a torque residual", "twenty-nine orders of magnitude", "does not assess Orch-OR", "D₂ ≤ 10⁻⁴¹", "draws no conclusion beyond it"):
+                  "above 40 fm", "6.5 × 10⁸ s", "10¹⁹ ages of the universe", "upper bounds can be put by observing no deviations", "not the preprint's", "the model is quiet", "a hundred thousand times or more", "a rung of another kind", "a window of another kind", "(PROPOSED, model-specific)", "not a bound on σ", "the deficit in the mean pull grows instead", "thirteen to sixteen orders lower", "not a bound: the step from a torque residual", "twenty-nine orders of magnitude", "does not assess Orch-OR", "D₂ ≤ 10⁻⁴¹", "draws no conclusion beyond it"):
             self.assertIn(s, t06, f"T.06 lacks {s!r}")
         t10 = (TG / "t10" / "index.html").read_text(encoding="utf-8")
         for s in ("signal-to-noise ratio of 80", "to high credibility", "does not recompute it", "Where does the information go, in our universe?"):
@@ -649,7 +649,7 @@ class TimeGravityDisputeKernelTests(unittest.TestCase):
         self.assertEqual(labels_of(en), labels_of(es))
         txt = en.read_text(encoding="utf-8")
         for s in ("0.8508σ", "0.8501σ", "5 hours, 16 hours and 20 days", "18 % of", "525 µm", "KΔx²/(2ħ)", "ratio 1.000", "52 µm", "38.6 µm", "48 µm",
-                  "the page still picks no side", "leaves it open", "computed, not chosen", "predicts entanglement only", "also a collapse test", "unless σ is above 130 µm", "would not by itself separate", "more than five orders", "letter's closer geometry", "66 and 259 µm", "for any value of its parameters", "within 1 % of the 1/τ_G", "nonlocal features", "one geometric axis", "1.2 to 38 times d", "0.37 to 1.0 times d", "draws no conclusion from the gap", "data-tg-figure=\"threshold-map\"", "a model difference, not an exclusion region", "data-tg-read=\"col\"", "the hybrid σ_c above is 4.0 × this", "the one explicit classical model on the page", "remove the whole 120-fold torque", "beyond that reach could be attributed to this model only with", "this page assesses none of them", "a bound rather than an estimate", "time does the separating", "full entanglement in 14 hours", "roughly ten to a hundred times later", "does not predict a witness of the quantum channel's size", "Side by side the threshold drops", "among the geometries mapped here it is", "data-tg-figure=\"proposals-table\"", "not exclusions of anything", "in the collinear layout of the 2017 proposal", "so the table carries both readings", "Decoherence enters the same way for both models", "forty to two hundred and sixty times lower", "computes the two thresholds and measures neither", "The dispute's other classical route can be put on the same map", "approaching the Planck mass and beyond", "order-of-magnitude readings, not a", "where the model's entangling power sits", "zero wherever the kernel looks", "0.024 against", "the noise term only takes away", 'data-tg-logsig', 'class="tg-bmv-dp"', 'data-tg-read="ktm"', 'data-tg-read="dp"', 'data-tg-read="soft"'):
+                  "the page still picks no side", "leaves it open", "computed, not chosen", "predicts entanglement only", "also a collapse test", "unless σ is above 130 µm", "would not by itself separate", "more than five orders", "letter's closer geometry", "66 and 259 µm", "for any value of its parameters", "within 1 % of the 1/τ_G", "nonlocal features", "one geometric axis", "1.2 to 38 times d", "0.37 to 1.0 times d", "draws no conclusion from the gap", "data-tg-figure=\"threshold-map\"", "a model difference, not an exclusion region", "data-tg-read=\"col\"", "the hybrid σ_c above is 4.0 × this", "the one explicit classical model on the page", "remove the whole 120-fold torque", "beyond that reach could be attributed to this model only with", "this page assesses none of them", "the signed limit the smeared pull faces", "time does the separating", "full entanglement in 14 hours", "roughly four to sixty times later", "does not predict a witness of the quantum channel's size", "Side by side the threshold drops", "among the geometries mapped here it is", "data-tg-figure=\"proposals-table\"", "not exclusions of anything", "in the collinear layout of the 2017 proposal", "so the table carries both readings", "Decoherence enters the same way for both models", "forty-five to a hundred and twenty-five times lower", "computes the two thresholds and measures neither", "The dispute's other classical route can be put on the same map", "approaching the Planck mass and beyond", "order-of-magnitude readings, not a", "where the model's entangling power sits", "zero wherever the kernel looks", "0.024 against", "the noise term only takes away", 'data-tg-logsig', 'class="tg-bmv-dp"', 'data-tg-read="ktm"', 'data-tg-read="dp"', 'data-tg-read="soft"'):
             self.assertIn(s, txt, f"T.05 lacks {s!r}")
         low = txt.lower()
         for banned in ("the model is right", "the model is wrong", "classical gravity is ruled out", "classical gravity is confirmed", "unifies"):
@@ -710,7 +710,7 @@ class TimeGravitySmearedIslTests(unittest.TestCase):
         self.assertEqual(labels_of(en), labels_of(es))
         txt = en.read_text(encoding="utf-8")
         for s in ("erfc(qσ − s/2σ)", "54 and 99 µm thick", "13.00 and 23.00 mm", "23.51 and 26.00 mm", "1.5 fN·m at 72 µm", "removes 17 %", "4.3 % at 50 µm", "6.3 % at 55 µm", "removes 2.5 %",
-                  "44 µm", "one-mode lower bound", "near 49 µm", "not a bound on σ", "surface gap of 210 µm", "4.8 % at σ = 75 µm", "the two match at σ ≈ 60 µm", "curve match with no data behind it", "below 37 µm", "below 15 µm", "and not for the", "Taken as a hypothesis, not as a bound", "close to the 44.4 µm", "Casimir", "cannot fall below 17 µm", "it stays open, between 17 and 37 µm",
+                  "33 µm", "one-mode lower bound", "near 49 µm", "recast of published limits, not a refit", "exclude σ above 33 µm at 95 %", "is superseded", "not a bound on σ", "surface gap of 210 µm", "4.8 % at σ = 75 µm", "the two match at σ ≈ 60 µm", "curve match with no data behind it", "below 27 µm", "below 6 µm", "was a looser reading and is superseded", "the change box keeps it", "had given 44.4 µm", "Casimir", "cannot fall below 17 µm", "it stays open, between 17 and 27 µm",
                   "previously untested", "leaves it open", "full wedge pattern", 'data-tg-read="isl"'):
             self.assertIn(s, txt, f"T.05 lacks {s!r}")
         low = txt.lower()

@@ -374,37 +374,54 @@ PAGE: dict = {
               "pequeña a la que ese modelo entrelaza la geometría propia de la carta), 13 % a 72 µm, 3.8 % a 150 µm y 0.1 % a 300 µm, mientras que un Yukawa en el borde "
               "publicado al 95 %, α = −1 con λ = 38.6 µm, quita 2.5 % a 52 µm."),
             T(" That sets two predicted signal sizes side by side; it is not a bound on σ, because the experiment's fit, with its floating offset, roughness "
-              "correction and calibrated scale, is not recomputed here. A smearing of 44 µm in that model would remove as much torque as the Yukawa at the published edge does at the closest "
-              "separation, close to the 44.4 µm a one-mode lower bound at the pattern's lowest wavenumber had given, and the Yukawa shape closest to the "
+              "correction and calibrated scale, is not recomputed here. The one-mode lower bound at the pattern's lowest wavenumber had given 44.4 µm, and the Yukawa shape closest to the "
               "σ = 75 µm curve has a range near 49 µm and about three times gravity's strength, a curve match with no data behind it.",
               " Eso pone lado a lado dos tamaños de señal predichos; no es una cota sobre σ, porque el ajuste del experimento, con su desplazamiento libre, "
-              "su corrección de rugosidad y su escala calibrada, no se recalcula aquí. Un suavizado de 44 µm en ese modelo quitaría tanto par como el Yukawa del borde publicado a la "
-              "separación más cercana, cerca de los 44.4 µm que había dado una cota inferior de un modo al número de onda más bajo del patrón, y la forma de "
+              "su corrección de rugosidad y su escala calibrada, no se recalcula aquí. La cota inferior de un modo al número de onda más bajo del patrón había dado 44.4 µm, y la forma de "
               "Yukawa más parecida a la curva de σ = 75 µm tiene un alcance cerca de 49 µm y unas tres veces la intensidad de la gravedad, un ajuste de "
               "curva sin datos detrás."),
-            C("PROPOSED", [TRILLO, LEE, VDK],
-              "Taken as a hypothesis, not as a bound, a smearing no larger than that 44 µm would leave the model predicting entanglement only for "
-              "masses whose nearest separation is below 37 µm in the small-split limit and below 15 µm for the letter's 23 µm split, and not for the "
-              "letter's own geometry 24 µm apart; the criterion does not depend on the mass, the time does, as 1/m², and at 10⁻¹⁵ kg the negativity would "
-              "peak between about 0.02 and 0.05 after an hour to a few weeks depending on the split. One model's predictions at a measured geometry: the label is "
-              "PROPOSED.",
-              "Tomado como hipótesis, no como cota, un suavizado no mayor que esos 44 µm dejaría al modelo prediciendo entrelazamiento solo para "
-              "masas cuya separación más cercana quede por debajo de 37 µm en el límite de división pequeña y por debajo de 15 µm para la división de "
-              "23 µm de la carta, y no para la geometría propia de la carta a 24 µm; el criterio no depende de la masa, el tiempo sí, como 1/m², y a "
-              "10⁻¹⁵ kg la negatividad alcanzaría su máximo entre unos 0.02 y 0.05 tras una hora a unas semanas según la división. Predicciones de "
-              "un modelo en una geometría medida: la etiqueta es PROPUESTO."),
+            C("DERIVED", [LEE, LEE21, TRILLO],
+              "The published limits can be recast onto the smeared pull. The 2020 experiment's dissertation tabulates, for 66 Yukawa ranges from 5 µm to 9 mm, "
+              "the fitted strength with its uncertainty and the signed 95 % limits. On this page's full-pattern kernel the smeared pull is an excellent Yukawa "
+              "mimic, within 2 to 4 % in shape at a range near 0.55 σ and a strength of several, and at those ranges the published limit is far below "
+              "gravitational strength; the experiment's own best fit there leans slightly towards a stronger pull, so the signed limit the smeared pull faces "
+              "is the tight one. Projecting the smeared signal onto each tabulated shape and comparing with the signed limit at the shape it mimics best, "
+              "the published limits exclude σ above 33 µm at 95 %: 33.1 µm on three separation weightings, on an absolute-torque weighting and on both "
+              "measured harmonics, 33.6 µm on a linear weighting. At 33 µm the effective strength is −7.3 against a limit of −7.4 at a 18 µm range; at 35 µm it is −10.3, excluded.",
+              "Los límites publicados pueden recastearse sobre la atracción suavizada. La tesis del experimento de 2020 tabula, para 66 alcances de Yukawa de 5 µm "
+              "a 9 mm, la intensidad ajustada con su incertidumbre y los límites al 95 % con signo. En el núcleo de patrón completo de esta página la atracción "
+              "suavizada imita de forma excelente a un Yukawa, con una forma a 2–4 % a un alcance cercano a 0.55 σ y una intensidad de varias unidades, y a esos "
+              "alcances el límite publicado está muy por debajo de la intensidad gravitatoria; el propio mejor ajuste del experimento allí se inclina un poco "
+              "hacia una atracción más fuerte, así que el límite con signo que enfrenta la atracción suavizada es el estrecho. Proyectando la señal suavizada "
+              "sobre cada forma tabulada y comparando con el límite con signo en la forma que mejor imita, los límites publicados excluyen σ por encima de 33 µm "
+              "al 95 %: 33.1 µm con tres ponderaciones de la separación, con una ponderación por par absoluto y con los dos armónicos medidos, 33.6 µm con una "
+              "ponderación lineal. A 33 µm la intensidad efectiva es −7.3 frente a "
+              "un límite de −7.4 a un alcance de 18 µm; a 35 µm es −10.3, excluida.",
+              parent=LEE),
+            T(" This is a recast of published limits, not a refit of the data: it assumes the smeared shape shares its mimic's degeneracy with the fitted offset "
+              "and scale, which the shape agreement supports; a direct refit of the raw torque data, requested from the authors, is the only check that closes "
+              "this, and the weighting of the experiment's 95 runs is not public, hence the several weightings. The earlier figure on this page, 44 µm from "
+              "matching the gravitational-strength edge at one separation, was a looser reading and is superseded; the change box keeps it. With σ below 33 µm "
+              "the model reaches, in the collinear layout, only pairs closer than 27 µm at small splits, and for the letter's 23 µm split only separations "
+              "below 6 µm, not its own geometry 24 µm apart.",
+              " Esto es un recast de límites publicados, no un reajuste de los datos: supone que la forma suavizada comparte con su imitación la degeneración con "
+              "el desplazamiento y la escala ajustados, lo que el acuerdo de forma respalda; un reajuste directo de los datos crudos de par, solicitado a los "
+              "autores, es la única comprobación que lo cierra, y la ponderación de las 95 corridas del experimento no es pública, de ahí las varias "
+              "ponderaciones. La cifra anterior de esta página, 44 µm por igualar el borde de intensidad gravitatoria a una sola separación, era una lectura "
+              "más laxa y queda superada; la caja de cambios la conserva. Con σ por debajo de 33 µm el modelo alcanza, en la disposición colineal, solo pares a "
+              "menos de 27 µm con divisiones pequeñas, y para la división de 23 µm de la carta solo separaciones por debajo de 6 µm, no su propia geometría a 24 µm."),
             T(" The proposal the letter took its geometry from screens the Casimir force with a conducting plate 1 µm wide and demands that the Casimir pull of "
               "each mass toward the plate stay below a tenth of the magnetic pull that closes the interferometer; on that condition, with its own "
               "numbers, the inner states must keep 8 µm from the plate at 10⁻¹⁵ kg, so the nearest separation cannot fall below 17 µm (27 µm at "
               "10⁻¹⁴ kg; the proposal's own 24 µm clears the floor). Under that floor the window for the letter's 23 µm split, 15 µm, is closed; "
-              "for splits of 10 µm and less it stays open, between 17 and 37 µm, with a negativity peaking at 0.01 to 0.02 after three hours to "
-              "three weeks at 10⁻¹⁵ kg.",
+              "for splits of 10 µm and less it stays open, between 17 and 27 µm, with a negativity peaking at 0.01 to 0.04 after five hours to "
+              "five weeks at 10⁻¹⁵ kg.",
               " La propuesta de la que la carta tomó su geometría apantalla la fuerza de Casimir con una placa conductora de 1 µm de ancho y exige que la "
               "atracción de Casimir de cada masa hacia la placa quede por debajo de una décima de la atracción magnética que cierra el "
               "interferómetro; con esa condición, y sus propios números, los estados interiores deben quedar a 8 µm de la placa a 10⁻¹⁵ kg, así "
               "que la separación más cercana no puede bajar de 17 µm (27 µm a 10⁻¹⁴ kg; los 24 µm propios de la propuesta libran el piso). Bajo ese "
               "piso la ventana para la división de 23 µm de la carta, 15 µm, está cerrada; para divisiones de 10 µm o menos sigue abierta, entre "
-              "17 y 37 µm, con una negatividad que alcanza 0.01 a 0.02 tras tres horas a tres semanas a 10⁻¹⁵ kg."),
+              "17 y 27 µm, con una negatividad que alcanza 0.01 a 0.04 tras cinco horas a cinco semanas a 10⁻¹⁵ kg."),
             C("OPEN", [TRILLO, LEE, TAN],
               "Whether the published analysis, run on its own data, would reject the smeared shape is for the experiment to say, and the second group's bound "
               "at 48 µm is stated as published because its geometry is not in the open text; the letter calls the entangling range of σ 'previously untested' "
@@ -456,15 +473,15 @@ PAGE: dict = {
               "mientras que la gravedad cuántica con colapso puro conserva un testigo superviviente para σ por encima de 0.37 a 1.0 veces d en el mismo rango."),
             T(" So a positive witness would read as a lower bound on σ in either model, and the two bounds differ by a factor of 3.3 at small splits, 3.8 at "
               "the letter's geometry, 4.1 at the 2017 geometry and about 11 at a split eight times the gap; the page computes the two curves and draws no "
-              "conclusion from the gap between them, since no witness has been measured. At the T.05 estimate of 44 µm the hybrid dynamics would entangle only "
-              "geometries whose nearest approach is below 36 µm at tiny splits and below 19 µm at equal split and gap, against a Casimir floor of 17 µm for "
-              "10⁻¹⁵ kg; the window is about two micrometres wide at equal split and gap, and whether anything sits in it is not determined by this page.",
+              "conclusion from the gap between them, since no witness has been measured. At the T.05 recast limit of 33 µm the hybrid dynamics would entangle only "
+              "geometries whose nearest approach is below 27 µm at tiny splits and below 14 µm at equal split and gap, against a Casimir floor of 17 µm for "
+              "10⁻¹⁵ kg; at equal split and gap the window is closed, it opens only for splits below about half the gap, and whether anything sits in it is not determined by this page.",
               " Así que un testigo positivo se leería como una cota inferior de σ en cualquiera de los dos modelos, y las dos cotas difieren por un factor de "
               "3.3 a divisiones pequeñas, 3.8 en la geometría de la carta, 4.1 en la geometría de 2017 y cerca de 11 a una división ocho veces la separación; "
-              "la página calcula las dos curvas y no saca conclusión alguna de la brecha entre ellas, pues ningún testigo se ha medido. En la estimación de "
-              "44 µm de T.05 la dinámica híbrida entrelazaría solo geometrías cuya aproximación más cercana quede por debajo de 36 µm a divisiones diminutas "
-              "y de 19 µm a división igual a la separación, frente a un piso de Casimir de 17 µm para 10⁻¹⁵ kg; la ventana tiene unas dos micras de ancho a "
-              "división igual a la separación, y si algo se sitúa en ella no lo determina esta página."),
+              "la página calcula las dos curvas y no saca conclusión alguna de la brecha entre ellas, pues ningún testigo se ha medido. En el límite recast de "
+              "33 µm de T.05 la dinámica híbrida entrelazaría solo geometrías cuya aproximación más cercana quede por debajo de 27 µm a divisiones diminutas "
+              "y de 14 µm a división igual a la separación, frente a un piso de Casimir de 17 µm para 10⁻¹⁵ kg; a división igual a la separación la ventana "
+              "está cerrada, se abre solo para divisiones por debajo de la mitad de la separación, y si algo se sitúa en ella no lo determina esta página."),
         ),
         {"type": "threshold_map"},
         P(
@@ -478,40 +495,40 @@ PAGE: dict = {
               "núcleo de patrón completo de este sitio eliminaría todo el par de 120 pliegues que el experimento de 2020 midió en su valor newtoniano a "
               "52 µm; en la geometría de la propia carta necesita 55 µm, con lo que la atracción suavizada quitaría 6 % de ese par donde el borde de "
               "exclusión publicado corresponde a 2.5 %."),
-            T(" At this site's 44 µm estimate, in the collinear layout of the 2017 proposal, the model reaches only pairs closer than 36 µm at a split a thirtieth of the gap and 19 µm at equal split and "
+            T(" At this site's recast limit of 33 µm, in the collinear layout of the 2017 proposal, the model reaches only pairs closer than 27 µm at a split a thirtieth of the gap and 14 µm at equal split and "
               "gap, against a Casimir floor of 17.1 µm for 10⁻¹⁵ kg and 26.5 µm for 10⁻¹⁴ kg. No hold time widens that reach and heavier masses only narrow "
-              "it, since the hybrid threshold is geometric while the floor rises with mass: at 10⁻¹³ kg the floor of 41.5 µm lies above the 36 µm reach. "
-              "What stays open on the estimate is a region of masses up to about 10⁻¹⁴ kg, small splits, nearest approaches between the floor and 36 µm, "
-              "and σ between about 21 and 44 µm. So a witness at a nearest approach beyond that reach could be attributed to this model only with a "
+              "it, since the hybrid threshold is geometric while the floor rises with mass: at 10⁻¹⁴ kg the reach clears the floor only at the smallest splits, and at 10⁻¹³ kg the floor of 41.5 µm lies above the 27 µm reach. "
+              "What stays open on the recast is a region of masses up to about 10⁻¹⁴ kg, splits below about half the gap, nearest approaches between the floor and 27 µm, "
+              "and σ between about 21 and 33 µm. So a witness at a nearest approach beyond that reach could be attributed to this model only with a "
               "smearing that contradicts the 2020 torque on this site's kernel. What such a witness would say about gravity remains the dispute above, "
-              "since other classical accounts are argued in the literature and this page assesses none of them; and whether 44 µm is a bound rather than "
-              "an estimate waits on a refit of the 2020 data with the smeared kernel.",
-              " En la estimación de 44 µm de este sitio, en la disposición colineal de la propuesta de 2017, el modelo alcanza solo pares a menos de 36 µm con una división de un treintavo de la separación y "
-              "de 19 µm a división igual a la separación, frente a un piso de Casimir de 17.1 µm para 10⁻¹⁵ kg y de 26.5 µm para 10⁻¹⁴ kg. Ningún tiempo "
+              "since other classical accounts are argued in the literature and this page assesses none of them; and whether the 33 µm recast holds as a bound "
+              "waits on a refit of the 2020 data with the smeared kernel.",
+              " En el límite recast de 33 µm de este sitio, en la disposición colineal de la propuesta de 2017, el modelo alcanza solo pares a menos de 27 µm con una división de un treintavo de la separación y "
+              "de 14 µm a división igual a la separación, frente a un piso de Casimir de 17.1 µm para 10⁻¹⁵ kg y de 26.5 µm para 10⁻¹⁴ kg. Ningún tiempo "
               "de espera amplía ese alcance y las masas mayores solo lo estrechan, porque el umbral híbrido es geométrico mientras el piso sube con la "
-              "masa: a 10⁻¹³ kg el piso de 41.5 µm queda por encima del alcance de 36 µm. Lo que sigue abierto en la estimación es una región de masas "
-              "hasta unos 10⁻¹⁴ kg, divisiones pequeñas, aproximaciones más cercanas entre el piso y 36 µm, y σ entre unos 21 y 44 µm. Así que un "
+              "masa: a 10⁻¹⁴ kg el alcance supera el piso solo a las divisiones más pequeñas, y a 10⁻¹³ kg el piso de 41.5 µm queda por encima del alcance de 27 µm. Lo que sigue abierto en el recast es una región de masas "
+              "hasta unos 10⁻¹⁴ kg, divisiones por debajo de la mitad de la separación, aproximaciones más cercanas entre el piso y 27 µm, y σ entre unos 21 y 33 µm. Así que un "
               "testigo a una aproximación más cercana mayor que ese alcance solo podría atribuirse a este modelo con un suavizado que contradiga el par "
               "de 2020 en el núcleo de este sitio. Qué diría tal testigo sobre la gravedad sigue siendo la disputa de arriba, pues en la literatura se "
-              "defienden otras descripciones clásicas y esta página no evalúa ninguna; y si 44 µm es una cota y no una estimación depende de un reajuste "
+              "defienden otras descripciones clásicas y esta página no evalúa ninguna; y si el recast de 33 µm se sostiene como cota depende de un reajuste "
               "de los datos de 2020 con el núcleo suavizado."),
         ),
         P(
             C("PROPOSED", [TRILLO, BOSE, MV],
               "Inside that region, in that layout, time does the separating. For a 10⁻¹⁵ kg pair at the 17 µm floor with a split a thirtieth of the gap, the quantum "
-              "channel reaches full entanglement in 14 hours; at that moment the hybrid dynamics at σ = 44 µm shows a negativity of 0.0007, and its own "
-              "peak of 0.053 comes after about two months. At the 10⁻¹⁴ kg floor the quantum channel takes 13 minutes, the hybrid dynamics shows "
-              "0.0016 then and peaks at 0.025 after about five hours.",
+              "channel reaches full entanglement in 14 hours; at that moment the hybrid dynamics at σ = 33 µm shows a negativity of 0.0013, and its own "
+              "peak of 0.037 comes after about five weeks. At the 10⁻¹⁴ kg floor, where 33 µm barely clears the hybrid threshold of 32 µm, the quantum "
+              "channel takes 13 minutes and the hybrid dynamics shows 0.0004 then and never exceeds 0.001.",
               "Dentro de esa región, en esa disposición, el tiempo es lo que separa. Para un par de 10⁻¹⁵ kg en el piso de 17 µm con una división de un treintavo de la "
-              "separación, el canal cuántico alcanza el entrelazamiento completo en 14 horas; en ese momento la dinámica híbrida a σ = 44 µm muestra una "
-              "negatividad de 0.0007, y su propio máximo de 0.053 llega tras unos dos meses. En el piso de 10⁻¹⁴ kg el canal cuántico tarda 13 minutos, la "
-              "dinámica híbrida muestra 0.0016 entonces y alcanza su máximo de 0.025 tras unas cinco horas."),
-            T(" Across the region the hybrid peak arrives roughly ten to a hundred times later than the quantum channel's full entanglement and stays at "
-              "about a tenth of it or less. So the hybrid dynamics does not predict a witness of the quantum channel's size on the quantum channel's "
+              "separación, el canal cuántico alcanza el entrelazamiento completo en 14 horas; en ese momento la dinámica híbrida a σ = 33 µm muestra una "
+              "negatividad de 0.0013, y su propio máximo de 0.037 llega tras unas cinco semanas. En el piso de 10⁻¹⁴ kg, donde 33 µm apenas supera el umbral "
+              "híbrido de 32 µm, el canal cuántico tarda 13 minutos y la dinámica híbrida muestra 0.0004 entonces y nunca pasa de 0.001."),
+            T(" Across the region the hybrid peak arrives roughly four to sixty times later than the quantum channel's full entanglement and stays well "
+              "under a tenth of it. So the hybrid dynamics does not predict a witness of the quantum channel's size on the quantum channel's "
               "timescale, and the quantum channel does not predict a peak of a few hundredths after days of coherence; the page states the two "
               "predictions, and no witness has been measured.",
-              " En toda la región el máximo híbrido llega entre unas diez y unas cien veces más tarde que el entrelazamiento completo del canal cuántico y "
-              "se queda en alrededor de una décima de él o menos. Así que la dinámica híbrida no predice un testigo del tamaño del canal cuántico en la "
+              " En toda la región el máximo híbrido llega entre unas cuatro y unas sesenta veces más tarde que el entrelazamiento completo del canal cuántico y "
+              "se queda muy por debajo de una décima de él. Así que la dinámica híbrida no predice un testigo del tamaño del canal cuántico en la "
               "escala de tiempo del canal cuántico, y el canal cuántico no predice un máximo de unas centésimas tras días de coherencia; la página enuncia "
               "las dos predicciones, y ningún testigo se ha medido."),
         ),
@@ -542,31 +559,31 @@ PAGE: dict = {
               "26.5 µm que esta página calcula con la fórmula de caída libre; el esquema de 2024 atrapa y apantalla en su lugar, y la página toma su "
               "geometría tal como se publicó."),
             T(" Time still separates the two there. That geometry is designed for an entangling rate of 0.01 per second, so the quantum channel reaches full "
-              "entanglement in about 160 s; at that moment the hybrid dynamics at σ = 44 µm shows a negativity of 0.0029 (0.0078 at 30 µm), and its peak of "
-              "0.066 comes after about 1.6 hours (0.054 after half an hour at 30 µm). At the 61 µm spacing it needs 39 µm and never exceeds 0.006.",
+              "entanglement in about 160 s; at that moment the hybrid dynamics at σ = 33 µm shows a negativity of 0.0062 (0.0078 at 30 µm), and its peak of "
+              "0.059 comes after about 53 minutes (0.054 after half an hour at 30 µm). The 61 µm spacing needs 39 µm, above the recast limit, so it closes.",
               " El tiempo sigue separando a los dos allí. Esa geometría está diseñada para una tasa de entrelazamiento de 0.01 por segundo, así que el canal "
-              "cuántico alcanza el entrelazamiento completo en unos 160 s; en ese momento la dinámica híbrida a σ = 44 µm muestra una negatividad de 0.0029 "
-              "(0.0078 a 30 µm), y su máximo de 0.066 llega tras cerca de 1.6 horas (0.054 tras media hora a 30 µm). A la separación de 61 µm necesita 39 µm "
-              "y nunca supera 0.006."),
+              "cuántico alcanza el entrelazamiento completo en unos 160 s; en ese momento la dinámica híbrida a σ = 33 µm muestra una negatividad de 0.0062 "
+              "(0.0078 a 30 µm), y su máximo de 0.059 llega tras unos 53 minutos (0.054 tras media hora a 30 µm). La separación de 61 µm necesita 39 µm, "
+              "por encima del límite recast, así que se cierra."),
         ),
         {"type": "proposals_table"},
         P(
             C("PROPOSED", [TRILLO, SCHUT, RIJAVEC, BOSE],
               "Decoherence enters the same way for both models. With the local dephasing the instrument applies, the quantum channel at that geometry "
               "keeps some entanglement for decoherence rates below 0.0098 per second, the proposal's own criterion reproduced to a part in a million; the hybrid dynamics keeps "
-              "some only below 0.00004 per second at σ = 44 µm, 0.0001 at 30 µm and 0.0002 at 20 µm, forty to two hundred and sixty times lower.",
+              "some only below 0.00008 per second at σ = 33 µm, 0.0001 at 30 µm and 0.0002 at 20 µm, forty-five to a hundred and twenty-five times lower.",
               "La decoherencia entra del mismo modo en los dos modelos. Con el desfase local que aplica el instrumento, el canal cuántico en esa geometría "
               "conserva algo de entrelazamiento para tasas de decoherencia por debajo de 0.0098 por segundo, el propio criterio de la propuesta reproducido "
-              "a una parte en un millón; la dinámica híbrida conserva algo solo por debajo de 0.00004 por segundo a σ = 44 µm, 0.0001 a 30 µm y 0.0002 a 20 µm, entre cuarenta "
-              "y doscientas sesenta veces menos."),
+              "a una parte en un millón; la dinámica híbrida conserva algo solo por debajo de 0.00008 por segundo a σ = 33 µm, 0.0001 a 30 µm y 0.0002 a 20 µm, entre cuarenta y "
+              "cinco y ciento veinticinco veces menos."),
             T(" At a thousandth per second, ten times below the rate the proposal budgets for gas and black-body scattering, the hybrid dynamics shows no "
               "entanglement at any time in that geometry while the quantum channel still reaches 0.34. So within the one geometry the data leave it, the "
-              "hybrid dynamics shows entanglement only at decoherence rates fifty to two hundred and seventy times below the proposal's own budget; the page "
+              "hybrid dynamics shows entanglement only at decoherence rates fifty to a hundred and thirty times below the proposal's own budget; the page "
               "computes the two thresholds and measures neither.",
               " A una milésima por segundo, diez veces por debajo de la tasa que la propuesta presupuesta para la dispersión por gas y por radiación de cuerpo "
               "negro, la dinámica híbrida no muestra entrelazamiento en ningún momento en esa geometría mientras el canal cuántico aún alcanza 0.34. Así que, "
               "dentro de la única geometría que los datos le dejan, la dinámica híbrida muestra entrelazamiento solo a tasas de decoherencia entre cincuenta y "
-              "doscientas setenta veces por debajo del propio presupuesto de la propuesta; la página calcula los dos umbrales y no mide ninguno."),
+              "ciento treinta veces por debajo del propio presupuesto de la propuesta; la página calcula los dos umbrales y no mide ninguno."),
         ),
         P(
             C("PROPOSED", [AZIZ, BOSE, CHEV, VDK, SCHUT],
@@ -659,6 +676,8 @@ PAGE: dict = {
               "Un experimento realizado que no encontrara entrelazamiento donde el canal cuántico lo predice se reportaría como una COTA sobre el mediador, y la página se reescribiría alrededor de ella."),
              ("A sub-millimetre test of Newton's law analysed by its own collaboration for the smeared potential erf(r/2σ)/r would turn the σ question from OPEN into a BOUND on the model, in either direction; the page's one-mode estimate is not that analysis.",
               "Una prueba submilimétrica de la ley de Newton analizada por su propia colaboración para el potencial suavizado erf(r/2σ)/r convertiría la pregunta sobre σ de ABIERTO en una COTA sobre el modelo, en cualquier dirección; la estimación de un modo de la página no es ese análisis."),
+             ("Until November 2026 this page estimated the smearing the inverse-square tests leave room for at 44 µm, by matching the gravitational-strength edge at one separation; the recast of the published 95 % limits onto the smeared pull superseded it at 33 µm, and a refit of the data by the experiment's authors would settle it as a BOUND in either direction.",
+              "Hasta noviembre de 2026 esta página estimó en 44 µm el suavizado para el que dejan sitio las pruebas del inverso del cuadrado, igualando el borde de intensidad gravitatoria a una sola separación; el recast de los límites publicados al 95 % sobre la atracción suavizada lo sustituyó en 33 µm, y un reajuste de los datos por los autores del experimento lo zanjaría como COTA en cualquier dirección."),
              ("Peer-reviewed resolution of the 2025 dispute in either direction would collapse the hatched band onto one of its edges and relabel the third channel.",
               "Una resolución revisada por pares de la disputa de 2025 en cualquier dirección colapsaría la banda rayada sobre uno de sus bordes y reetiquetaría el tercer canal."),
          ]},
