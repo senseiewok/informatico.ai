@@ -31,8 +31,8 @@ PAGE: dict = {
     "slug": SLUG,
     "code": CODE,
     "date": "2026-11-09",
-    "order_label_en": "Step 11 of 11",
-    "order_label_es": "Paso 11 de 11",
+    "order_label_en": "Step 11 of 13",
+    "order_label_es": "Paso 11 de 13",
     "kicker_en": "Time & Gravity · T.10 · Where a clock can be seen to lose information, and the counting that says it should not",
     "kicker_es": "Tiempo y Gravedad · T.10 · Donde un reloj puede verse perdiendo información, y el conteo que dice que no debería",
     "title_en": "Page's Counting Argument",
@@ -249,11 +249,12 @@ PAGE: dict = {
               "A dónde va la información en nuestro universo, con su constante cosmológica positiva y sin frontera asintótica que contenga la "
               "radiación, no está resuelto: la curva es un resultado de conteo, y las derivaciones que la reproducen viven en marcos cuya "
               "aplicación a nuestro espaciotiempo es en sí misma abierta."),
-            T(" This is the last page of the track, and it ends where the hub began: with a question. The slope in the rate of time is measured "
-              "to a part in 10¹⁵; what happens to a clock's record when the slope becomes a horizon is counted, derived in pieces, and not yet seen.",
-              " Esta es la última página de la serie, y termina donde empezó el punto de partida: con una pregunta. La pendiente en el ritmo del "
-              "tiempo está medida a una parte en 10¹⁵; qué pasa con el registro de un reloj cuando la pendiente se vuelve un horizonte está contado, "
-              "derivado por partes, y todavía no visto."),
+            T(" The slope in the rate of time is measured to a part in 10¹⁵; what happens to a clock's record when the slope becomes a horizon "
+              "is counted, derived in pieces, and not yet seen—while the next two pages ask how the ambient photon bath selects a clock's "
+              "classical pointer record in our universe, and how two clocks still meet in gravity when that bath is silent.",
+              " La pendiente en el ritmo del tiempo está medida a una parte en 10¹⁵; qué pasa con el registro de un reloj cuando la pendiente "
+              "se vuelve un horizonte está contado, derivado por partes y todavía no visto, mientras las dos páginas siguientes preguntan cómo el "
+              "baño ambiental de fotones selecciona el registro clásico de un reloj en nuestro universo y cómo dos relojes aún se encuentran en la gravedad cuando ese baño guarda silencio."),
         ),
         {"type": "change_box",
          "items": [

@@ -1499,6 +1499,156 @@ function initKerr(root) {
   render();
 }
 
+// ------------------------------------------------------------------------------------------------ T.11
+function h2DephaseBits(gammaPow) {
+  const c = Math.min(1.0, Math.max(0.0, Math.abs(gammaPow)));
+  const lp = 0.5 * (1.0 + c);
+  const lm = 0.5 * (1.0 - c);
+  let s = 0.0;
+  if (lp > 1e-16) s -= lp * Math.log2(lp);
+  if (lm > 1e-16) s -= lm * Math.log2(lm);
+  return s;
+}
+
+function initEinselection(root) {
+  const svg = root.querySelector("svg.tg-stage");
+  const thetaInput = root.querySelector("[data-tg-theta-input]");
+  const rInput = root.querySelector("[data-tg-r-input]");
+  const knockoutBtn = root.querySelector("[data-tg-knockout]");
+  const status = root.querySelector("[data-tg-status]");
+  const bars = root.querySelectorAll(".tg-ein-bar");
+  const dots = root.querySelectorAll(".tg-ein-dot");
+  const curve = root.querySelector(".tg-ein-curve");
+  const reads = readouts(root);
+  if (!svg || !thetaInput || !rInput) return;
+  const N = Number(root.getAttribute("data-tg-n")) || 6;
+  const ly0 = Number(svg.getAttribute("data-ly0")), ly1 = Number(svg.getAttribute("data-ly1"));
+  const rx0 = Number(svg.getAttribute("data-rx0")), rx1 = Number(svg.getAttribute("data-rx1"));
+  const ry0 = Number(svg.getAttribute("data-ry0")), ry1 = Number(svg.getAttribute("data-ry1"));
+  const state = { knockout: false };
+  const S0 = {
+    en: {
+      ok: "Einselection & Quantum Darwinism: the interaction Hamiltonian [Ĥ_int, Z_S] = 0 preserves pointer populations while scattering copies of Z_S into the photon bath.",
+      flat: "Knockout: uncoupling the bath (θ = 0, ε = 1 → Λ_EM = 0) leaves off-diagonal coherence at 1.0 and gives zero mutual information across all bath modes.",
+    },
+    es: {
+      ok: "Einselección y darwinismo cuántico: el hamiltoniano de interacción [Ĥ_int, Z_S] = 0 preserva las poblaciones puntero mientras copia Z_S en el baño de fotones.",
+      flat: "Apagado: desacoplar el baño (θ = 0, ε = 1 → Λ_EM = 0) deja la coherencia fuera de la diagonal en 1.0 y da cero información mutua en todos los modos del baño.",
+    },
+  };
+  function render() {
+    const L = S0[lang()];
+    const thetaRaw = Number(thetaInput.value);
+    const radUm = Number(rInput.value);
+    const theta = state.knockout ? 0.0 : thetaRaw;
+    const gamma = Math.abs(Math.cos(theta));
+    const coh = gamma ** N;
+    const bVals = [0.5, 0.5, 0.5 * coh, 0.5 * coh];
+    bVals.forEach((v, idx) => {
+      if (bars[idx]) {
+        const bh = (ly1 - ly0) * v;
+        bars[idx].setAttribute("y", (ly1 - bh).toFixed(1));
+        bars[idx].setAttribute("height", Math.max(1.5, bh).toFixed(1));
+      }
+    });
+    const pts = [];
+    const miBits = [];
+    for (let k = 0; k <= N; k++) {
+      const mi = state.knockout ? 0.0 : h2DephaseBits(gamma ** N) + h2DephaseBits(gamma ** k) - h2DephaseBits(gamma ** (N - k));
+      miBits.push(mi);
+      const kx = rx0 + (rx1 - rx0) * (k / N);
+      const ky = ry1 - (ry1 - ry0) * (mi / 2.05);
+      pts.push(`${k === 0 ? "M" : "L"} ${kx.toFixed(1)} ${ky.toFixed(1)}`);
+      if (dots[k]) {
+        dots[k].setAttribute("cx", kx.toFixed(1));
+        dots[k].setAttribute("cy", ky.toFixed(1));
+      }
+    }
+    if (curve) curve.setAttribute("d", pts.join(" "));
+    // R^6 scaling relative to R = 10 um dust grain (tau_CMB = 1.634 s, tau_300K = 6.89e-19 s at dx = 10 um)
+    const rScale = (10.0 / radUm) ** 6;
+    const tauCmb = state.knockout ? Infinity : 1.6342 * rScale;
+    const tau300 = state.knockout ? Infinity : 6.8902e-19 * rScale;
+    let k90 = N;
+    for (let k = 1; k <= N; k++) {
+      if (miBits[k] >= 0.9) { k90 = k; break; }
+    }
+    const rDelta = state.knockout || miBits[N] < 0.9 ? 0.0 : N / k90;
+    if (reads.theta) reads.theta.textContent = fmt(thetaRaw, 2);
+    if (reads.rad) reads.rad.textContent = fmt(radUm, 1);
+    if (reads.coh) reads.coh.textContent = coh.toExponential(2);
+    if (reads.mi2) reads.mi2.textContent = `${miBits[2].toFixed(4)} bits (R_δ = ${rDelta.toFixed(1)})`;
+    if (reads.tau) reads.tau.textContent = state.knockout ? "∞ s · ∞ s (Λ_EM = 0)" : `${tauCmb.toExponential(2)} s · ${tau300.toExponential(2)} s`;
+    if (reads.err) reads.err.textContent = "1.7e-14 nats · PASS";
+    const st = state.knockout ? "flat" : "fall";
+    if (status) { status.setAttribute("data-state", st); status.textContent = state.knockout ? L.flat : L.ok; }
+  }
+  [thetaInput, rInput].forEach((el) => el.addEventListener("input", render));
+  if (knockoutBtn) knockoutBtn.addEventListener("click", () => { state.knockout = !state.knockout; knockoutBtn.setAttribute("aria-pressed", String(state.knockout)); render(); });
+  window.addEventListener("tp-lang-change", render);
+  root.setAttribute("data-tg-ready", "true");
+  render();
+}
+
+// ------------------------------------------------------------------------------------------------ T.12
+function initDarkClock(root) {
+  const svg = root.querySelector("svg.tg-stage");
+  const logmInput = root.querySelector("[data-tg-logm-input]");
+  const ratioInput = root.querySelector("[data-tg-ratio-input]");
+  const knockoutBtn = root.querySelector("[data-tg-knockout]");
+  const status = root.querySelector("[data-tg-status]");
+  const curve = root.querySelector(".tg-dark-curve");
+  const reads = readouts(root);
+  if (!svg || !logmInput || !ratioInput) return;
+  const rx0 = Number(svg.getAttribute("data-rx0")), rx1 = Number(svg.getAttribute("data-rx1"));
+  const ry0 = Number(svg.getAttribute("data-ry0")), ry1 = Number(svg.getAttribute("data-ry1"));
+  const state = { knockout: false };
+  const S0 = {
+    en: {
+      ok: "Universal metric coupling: an electromagnetically uncoupled mass (Λ_EM = 0) casts zero photon shadow yet shifts the gravitational clock rate along its flyby.",
+      flat: "Knockout: when both clocks sit at equal impact parameter (b₂ = b₁), the gravitational potential shift Φ(t) is common-mode and the relative clock step Δτ(T) vanishes identically.",
+    },
+    es: {
+      ok: "Acoplamiento métrico universal: una masa sin acoplamiento electromagnético (Λ_EM = 0) no proyecta sombra fotónica pero desplaza el ritmo gravitatorio del reloj en su sobrevuelo.",
+      flat: "Apagado: cuando ambos relojes están al mismo parámetro de impacto (b₂ = b₁), el potencial gravitatorio Φ(t) es de modo común y el escalón relativo Δτ(T) se anula idénticamente.",
+    },
+  };
+  function render() {
+    const L = S0[lang()];
+    const logm = Number(logmInput.value);
+    const ratioRaw = Number(ratioInput.value);
+    const ratio = state.knockout ? 1.0 : ratioRaw;
+    const mKg = 10 ** logm;
+    const v0 = 2.2e5;
+    const b1 = 1.0;
+    const b2 = b1 * ratio;
+    const pre = -(2 * G_NEWTON_SI * mKg) / (C * C * v0);
+    const dtInf = pre * Math.log(b2 / b1);
+    const pts = [];
+    const nPts = 60;
+    for (let i = 0; i <= nPts; i++) {
+      const tx = rx0 + (rx1 - rx0) * (i / nPts);
+      const u = 0.05 * (2000 ** (i / nPts)); // dimensionless v0 * T / b1 from 0.05 to 100
+      const dt = pre * (Math.asinh(u) - Math.asinh(u / ratio));
+      const frac = Math.abs(dtInf) > 0 ? dt / dtInf : 0.0;
+      const ty = state.knockout ? (ry0 + 30) : (ry0 + 30 + (ry1 - ry0 - 60) * Math.min(1.05, Math.max(0.0, frac)));
+      pts.push(`${i === 0 ? "M" : "L"} ${tx.toFixed(1)} ${ty.toFixed(1)}`);
+    }
+    if (curve) curve.setAttribute("d", pts.join(" "));
+    if (reads.logm) reads.logm.textContent = fmt(logm, 1);
+    if (reads.ratio) reads.ratio.textContent = fmt(ratioRaw, 1);
+    if (reads.dt) reads.dt.textContent = state.knockout ? "0.000e+00 s" : `${dtInf.toExponential(3)} s`;
+    if (reads.dtlabel) reads.dtlabel.textContent = state.knockout ? "0 s" : `${dtInf.toExponential(1)} s`;
+    const st = state.knockout ? "flat" : "fall";
+    if (status) { status.setAttribute("data-state", st); status.textContent = state.knockout ? L.flat : L.ok; }
+  }
+  [logmInput, ratioInput].forEach((el) => el.addEventListener("input", render));
+  if (knockoutBtn) knockoutBtn.addEventListener("click", () => { state.knockout = !state.knockout; knockoutBtn.setAttribute("aria-pressed", String(state.knockout)); render(); });
+  window.addEventListener("tp-lang-change", render);
+  root.setAttribute("data-tg-ready", "true");
+  render();
+}
+
 export function initTimeGravity(scope = document) {
   const once = (sel, fn) => scope.querySelectorAll(sel).forEach((el) => { if (!el.hasAttribute("data-tg-ready")) fn(el); });
   once("[data-tg-predict]", initPredict);
@@ -1513,6 +1663,8 @@ export function initTimeGravity(scope = document) {
   once('[data-tg-instrument="horizon"]', initHorizon);
   once('[data-tg-instrument="kerr"]', initKerr);
   once('[data-tg-instrument="page"]', initPage);
+  once('[data-tg-instrument="einselection"]', initEinselection);
+  once('[data-tg-instrument="dark_clock"]', initDarkClock);
 }
 
 initTimeGravity(document);

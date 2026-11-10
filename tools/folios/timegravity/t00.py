@@ -14,8 +14,8 @@ CODE = "T.00"
 PAGE: dict = {
     "slug": SLUG,
     "code": CODE,
-    "order_label_en": "Step 1 of 11",
-    "order_label_es": "Paso 1 de 11",
+    "order_label_en": "Step 1 of 13",
+    "order_label_es": "Paso 1 de 13",
     "kicker_en": "Time & Gravity · A track where the open problem is the subject",
     "kicker_es": "Tiempo y Gravedad · Una serie donde el problema abierto es el tema",
     "title_en": "Time & Gravity",
@@ -23,17 +23,17 @@ PAGE: dict = {
     "standfirst_en": (
         "A common intuition is that experience slides along a worldline and that gravity is a slope in the rate of time. "
         "Is any of that physics? Half of it is, and it is among the best-measured facts we have. The other half has no "
-        "variable in any equation. These eleven pages walk from the measured half to the open half without inventing a step."
+        "variable in any equation. These thirteen pages walk from the measured half to the open half without inventing a step."
     ),
     "standfirst_es": (
         "Una intuición común es que la experiencia se desliza por una línea de mundo y que la gravedad es una pendiente en el "
         "ritmo del tiempo. ¿Algo de eso es física? La mitad sí, y está entre los hechos mejor medidos que tenemos. La otra mitad "
-        "no tiene variable en ninguna ecuación. Estas once páginas caminan de la mitad medida a la mitad abierta sin inventar un paso."
+        "no tiene variable en ninguna ecuación. Estas trece páginas caminan de la mitad medida a la mitad abierta sin inventar un paso."
     ),
     "seo": (
-        "Time & Gravity · Eleven Pages on an Open Problem",
+        "Time & Gravity · Thirteen Pages on an Open Problem",
         "A reading track from the measured slope in the rate of time to the open problem of time in quantum gravity, with instruments, verifiers and a ledger.",
-        "Tiempo y Gravedad · Un Problema Abierto en 11 Páginas",
+        "Tiempo y Gravedad · Un Problema Abierto en 13 Páginas",
         "Una serie que va de la pendiente medida en el ritmo del tiempo al problema abierto del tiempo en la gravedad cuántica, con instrumentos y verificadores.",
     ),
     "reading_time_en": "6 min read",
@@ -63,7 +63,7 @@ PAGE: dict = {
         ),
     },
     "sections": [
-        {"type": "h2", "id": "map", "en": "The eleven steps, in reading order", "es": "Los once pasos, en orden de lectura", "short_en": "Map", "short_es": "Mapa"},
+        {"type": "h2", "id": "map", "en": "The thirteen steps, in reading order", "es": "Los trece pasos, en orden de lectura", "short_en": "Map", "short_es": "Mapa"},
         {"type": "track_map"},
         {"type": "h2", "id": "contract", "en": "How to read a T page", "es": "Cómo leer una página T", "short_en": "Labels", "short_es": "Etiquetas"},
         P(

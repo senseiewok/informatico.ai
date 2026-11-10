@@ -33,8 +33,8 @@ PAGE: dict = {
     "slug": SLUG,
     "code": CODE,
     "date": "2026-11-09",
-    "order_label_en": "Step 7 of 11",
-    "order_label_es": "Paso 7 de 11",
+    "order_label_en": "Step 7 of 13",
+    "order_label_es": "Paso 7 de 13",
     "kicker_en": "Time & Gravity · T.06 · A proposal and the two experiments that bound it",
     "kicker_es": "Tiempo y Gravedad · T.06 · Una propuesta y los dos experimentos que la acotan",
     "title_en": "Does Gravity Collapse the Wave?",
@@ -287,7 +287,7 @@ PAGE: dict = {
               "perfiles de suavizado de estos modelos anota que para este parámetro 'se pueden poner cotas superiores observando que no hay desviaciones "
               "de la ley de gravitación de Newton'; no calcula ninguna ni nombra experimento alguno. El peldaño de 33 µm es el recast propio de este sitio "
               "de los límites publicados en T.05, no el de la prepublicación ni un reajuste de los datos; sustituyó a un ajuste de borde anterior de 44 µm. Por debajo del peldaño la balanza pierde alcance deprisa: a σ = 25 µm la atracción "
-              "suavizada imita un Yukawa de 11 µm de alcance unas siete veces más débil que el límite publicado allí, a 18 µm uno de 7 µm unas 140 veces "
+              "suavizada imita un Yukawa de 13 µm de alcance unas siete veces más débil que el límite publicado allí, a 18 µm uno de 7 µm unas 140 veces "
               "más débil, y a 13.6 µm la imitación cae al alcance tabulado más corto, 5 µm, unas cinco mil veces más débil; el sitio por debajo de "
               "33 µm existe porque ningún experimento alcanza intensidad casi gravitatoria a alcances de 5 a 10 µm, no por un hueco en los datos. T.05 añade un peldaño de otra clase: si la gravedad es "
               "cuántica y además existe el colapso puro, un testigo positivo en la geometría de 2017 pondría σ por encima de 130 µm dentro de este modelo de colapso puro. La escalera lleva además una ventana de otra clase, de 13.6 a 33 µm: en la estimación de este sitio el modelo de la carta aún podría entrelazar allí una geometría publicada, la propuesta lado a lado de 2024, sin contradecir los datos de 2020 del inverso del cuadrado; es una ventana para ese único modelo y esa única geometría, no una cota de σ, y se mueve o se cierra si los datos de 2020 se reajustan."),

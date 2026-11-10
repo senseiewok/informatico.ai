@@ -53,8 +53,8 @@ PAGE: dict = {
     "slug": SLUG,
     "code": CODE,
     "date": "2026-11-09",
-    "order_label_en": "Step 6 of 11",
-    "order_label_es": "Paso 6 de 11",
+    "order_label_en": "Step 6 of 13",
+    "order_label_es": "Paso 6 de 13",
     "kicker_en": "Time & Gravity · T.05 · A proposal, a dispute and no result yet; page label OPEN",
     "kicker_es": "Tiempo y Gravedad · T.05 · Una propuesta, una disputa y todavía ningún resultado; etiqueta de página ABIERTO",
     "title_en": "Does Gravity Entangle, and Would That Settle It?",
@@ -486,7 +486,7 @@ PAGE: dict = {
               "geometries whose nearest approach is below 27 µm at tiny splits and below 14 µm at equal split and gap, against a Casimir floor of 17 µm for "
               "10⁻¹⁵ kg; at equal split and gap the window is closed, it opens only for splits below about half the gap, and whether anything sits in it is not determined by this page.",
               " Así que un testigo positivo se leería como una cota inferior de σ en cualquiera de los dos modelos, y las dos cotas difieren por un factor de "
-              "3.3 a divisiones pequeñas, 3.8 en la geometría de la carta, 4.1 en la geometría de 2017 y cerca de 11 a una división ocho veces la separación; "
+              "3.3 a divisiones pequeñas, 3.8 en la geometría de la carta, 4.1 en la geometría de 2017 y cerca de 13 a una división ocho veces la separación; "
               "la página calcula las dos curvas y no saca conclusión alguna de la brecha entre ellas, pues ningún testigo se ha medido. En el límite recast de "
               "33 µm de T.05 la dinámica híbrida entrelazaría solo geometrías cuya aproximación más cercana quede por debajo de 27 µm a divisiones diminutas "
               "y de 14 µm a división igual a la separación, frente a un piso de Casimir de 17 µm para 10⁻¹⁵ kg; a división igual a la separación la ventana "

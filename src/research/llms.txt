@@ -88,7 +88,7 @@ Every essay, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish u
 - [X.05 (TOOL-FAB-1) SIMP Structural Lattices to Watertight 3MF Meshes](https://informatico.ai/toolchain/x05/): How variable-taper SIMP structural struts are synthesized as watertight 2-manifold 3MF, GLB and STEP meshes with frustum volume and overhang checks.
 - [X.06 (TOOL-PHYS-MATH-1) Topological Metamaterial Cells and Betti Verifier](https://informatico.ai/toolchain/x06/): How pierced genus-one acoustic metamaterial unit cells are exported to GLB, 3MF and STEP while a Python verifier checks Euler and Betti invariants.
 
-## Time & Gravity · Eleven Pages on an Open Problem (T.00–T.10)
+## Time & Gravity · Thirteen Pages on an Open Problem (T.00–T.12)
 
 - [Time & Gravity](https://informatico.ai/timegravity/): A reading track from the measured slope in the rate of time to the open problem of time in quantum gravity, with instruments, verifiers and a ledger.
 - [T.01 Gravity as a Slope in the Rate of Time](https://informatico.ai/timegravity/t01/): How measured clock-rate differences between heights make a slow body fall at g with no force term, with a live geodesic instrument and a Python verifier.
@@ -101,6 +101,8 @@ Every essay, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish u
 - [T.08 A Horizon Has a Temperature: Rindler Wedges and Hawking's Quarter](https://informatico.ai/timegravity/t08/): How tracing over modes behind a causal horizon turns a pure vacuum state into a Planck thermal bath and fixes black-hole entropy at A/4.
 - [T.09 A Horizon Rings Like a Bell: Kerr Quasinormal Modes and Leaver's Continued Fractions](https://informatico.ai/timegravity/t09/): How a spinning Kerr black hole rings down at frequencies fixed by mass and spin alone, solved from Leaver's continued fractions and checked against GW150914 and GW250114.
 - [T.10 Page's Counting Argument: the Curve on Ten Qubits](https://informatico.ai/timegravity/t10/): Hawking's rising entropy against Page's curve, built from random states on ten qubits and checked against Page's formula, with the area theorem's two tests.
+- [T.11 What Selects the World a Clock Sees? Einselection and Quantum Darwinism](https://informatico.ai/timegravity/t11/): How pointer-commuting photon scattering suppresses spatial superpositions and broadcasts redundant classical records in the electromagnetic bath.
+- [T.12 Two Clocks That Only Meet in Gravity: Dark Sectors and Clock Networks](https://informatico.ai/timegravity/t12/): How universal metric coupling lets spatially separated clocks sense electromagnetically transparent matter while co-located optical clocks bound scalar portals.
 
 ## About Informatico.ai & the Shared Verification Engine (Essay Zero)
 

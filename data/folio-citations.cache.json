@@ -63,6 +63,14 @@
   "title": "The four laws of black hole mechanics",
   "year": 1973
  },
+ "doi:10.1007/bf01725541": {
+  "fetched": "2026-11-10",
+  "first_author": "Joos",
+  "found": true,
+  "journal": "Zeitschrift für Physik B Condensed Matter",
+  "title": "The emergence of classical properties through interaction with the environment",
+  "year": 1985
+ },
  "doi:10.1007/bf02105068": {
   "fetched": "2026-11-09",
   "first_author": "Penrose",
@@ -415,6 +423,14 @@
   "title": "Quantum interferometric visibility as a witness of general relativistic proper time",
   "year": 2011
  },
+ "doi:10.1038/nphys1202": {
+  "fetched": "2026-11-10",
+  "first_author": "Zurek",
+  "found": true,
+  "journal": "Nature Physics",
+  "title": "Quantum Darwinism",
+  "year": 2009
+ },
  "doi:10.1038/s41467-018-08155-0": {
   "fetched": "2026-11-08",
   "first_author": "Giacomini",
@@ -591,6 +607,14 @@
   "title": "Dynamics of concentrated polymer systems. Part 3.—The constitutive equation",
   "year": 1978
  },
+ "doi:10.1051/0004-6361/201833910": {
+  "fetched": "2026-11-10",
+  "first_author": "Planck Collaboration",
+  "found": true,
+  "journal": "Astronomy &amp; Astrophysics",
+  "title": "<i>Planck</i>\n                    2018 results",
+  "year": 2020
+ },
  "doi:10.1056/nejmra1813799": {
   "fetched": "2026-11-04",
   "first_author": "Boucher",
@@ -735,6 +759,14 @@
   "title": "Measurement of the cosmic microwave background spectrum by the COBE FIRAS instrument",
   "year": 1994
  },
+ "doi:10.1086/508162": {
+  "fetched": "2026-11-10",
+  "first_author": "Clowe",
+  "found": true,
+  "journal": "The Astrophysical Journal",
+  "title": "A Direct Empirical Proof of the Existence of Dark Matter",
+  "year": 2006
+ },
  "doi:10.1088/0034-4885/75/12/126001": {
   "fetched": "2026-11-04",
   "first_author": "Seifert",
@@ -774,6 +806,14 @@
   "journal": "New Journal of Physics",
   "title": "Improved limit on the directly measured antiproton lifetime",
   "year": 2017
+ },
+ "doi:10.1088/1367-2630/abd9e7": {
+  "fetched": "2026-11-10",
+  "first_author": "Carney",
+  "found": true,
+  "journal": "New Journal of Physics",
+  "title": "Ultralight dark matter detection with mechanical quantum sensors",
+  "year": 2021
  },
  "doi:10.1088/1367-2630/abf3eb": {
   "fetched": "2026-11-09",
@@ -935,6 +975,14 @@
   "title": "Notes on black-hole evaporation",
   "year": 1976
  },
+ "doi:10.1103/physrevd.24.1516": {
+  "fetched": "2026-11-10",
+  "first_author": "Zurek",
+  "found": true,
+  "journal": "Physical Review D",
+  "title": "Pointer basis of quantum apparatus: Into what mixture does the wave packet collapse?",
+  "year": 1981
+ },
  "doi:10.1103/physrevd.27.2885": {
   "fetched": "2026-11-08",
   "first_author": "Page",
@@ -1071,6 +1119,14 @@
   "title": "New Test of the Gravitational\n                    <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\">\n                      <mml:mn>1</mml:mn>\n                      <mml:mo stretchy=\"false\">/</mml:mo>\n                      <mml:msup>\n                        <mml:mi>r</mml:mi>\n                        <mml:mn>2</mml:mn>\n                      </mml:msup>\n                    </mml:math>\n                    Law at Separations down to\n                    <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\">\n                      <mml:mrow>\n                        <mml:mn>52</mml:mn>\n                        <mml:mtext> </mml:mtext>\n                        <mml:mtext> </mml:mtext>\n                        <mml:mi>μ</mml:mi>\n                        <mml:mi mathvariant=\"normal\">m</mml:mi>\n                      </mml:mrow>\n                    </mml:math>",
   "year": 2020
  },
+ "doi:10.1103/physrevlett.125.201302": {
+  "fetched": "2026-11-10",
+  "first_author": "Kennedy",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Precision Metrology Meets Cosmology: Improved Constraints on Ultralight Dark Matter from Atom-Cavity Frequency Comparisons",
+  "year": 2020
+ },
  "doi:10.1103/physrevlett.126.010601": {
   "fetched": "2026-11-04",
   "first_author": "Van Vu",
@@ -1102,6 +1158,22 @@
   "journal": "Physical Review Letters",
   "title": "<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\">\n                      <mml:mi>M</mml:mi>\n                      <mml:mi>I</mml:mi>\n                      <mml:mi>C</mml:mi>\n                      <mml:mi>R</mml:mi>\n                      <mml:mi>O</mml:mi>\n                      <mml:mi>S</mml:mi>\n                      <mml:mi>C</mml:mi>\n                      <mml:mi>O</mml:mi>\n                      <mml:mi>P</mml:mi>\n                      <mml:mi>E</mml:mi>\n                    </mml:math>\n                    Mission: Final Results of the Test of the Equivalence Principle",
   "year": 2022
+ },
+ "doi:10.1103/physrevlett.130.253001": {
+  "fetched": "2026-11-10",
+  "first_author": "Filzinger",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Improved Limits on the Coupling of Ultralight Bosonic Dark Matter to Photons from Optical Atomic Clock Comparisons",
+  "year": 2023
+ },
+ "doi:10.1103/physrevlett.131.041002": {
+  "fetched": "2026-11-10",
+  "first_author": "Aalbers",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "First Dark Matter Search Results from the LUX-ZEPLIN (LZ) Experiment",
+  "year": 2023
  },
  "doi:10.1103/physrevlett.132.133602": {
   "fetched": "2026-11-09",
@@ -1183,6 +1255,14 @@
   "title": "Separability Criterion for Density Matrices",
   "year": 1996
  },
+ "doi:10.1103/physrevlett.77.4887": {
+  "fetched": "2026-11-10",
+  "first_author": "Brune",
+  "found": true,
+  "journal": "Physical Review Letters",
+  "title": "Observing the Progressive Decoherence of the “Meter” in a Quantum Measurement",
+  "year": 1996
+ },
  "doi:10.1103/physrevlett.80.2245": {
   "fetched": "2026-11-09",
   "first_author": "Wootters",
@@ -1246,6 +1326,14 @@
   "journal": "Physical Review Letters",
   "title": "Quantum Signatures of Proper Time in Optical Ion Clocks",
   "year": 2026
+ },
+ "doi:10.1103/revmodphys.29.454": {
+  "fetched": "2026-11-10",
+  "first_author": "Everett",
+  "found": true,
+  "journal": "Reviews of Modern Physics",
+  "title": "\"Relative State\" Formulation of Quantum Mechanics",
+  "year": 1957
  },
  "doi:10.1103/revmodphys.35.724": {
   "fetched": "2026-11-04",
@@ -2270,6 +2358,18 @@
   "total_smart_citations": 4348,
   "unclassified": 33
  },
+ "scite:10.1007/bf01725541": {
+  "citing_publications": 1704,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 1,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 1400,
+  "retracted": false,
+  "supporting": 27,
+  "total_smart_citations": 1430,
+  "unclassified": 2
+ },
  "scite:10.1007/bf02105068": {
   "citing_publications": 2220,
   "classification_provenance": "Scite ML citation classification",
@@ -2674,6 +2774,18 @@
   "total_smart_citations": 464,
   "unclassified": 0
  },
+ "scite:10.1038/nphys1202": {
+  "citing_publications": 746,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 760,
+  "retracted": false,
+  "supporting": 12,
+  "total_smart_citations": 776,
+  "unclassified": 4
+ },
  "scite:10.1038/s41467-018-08155-0": {
   "citing_publications": 429,
   "classification_provenance": "Scite ML citation classification",
@@ -2916,6 +3028,18 @@
   "unclassified": 1,
   "year": 1978
  },
+ "scite:10.1051/0004-6361/201833910": {
+  "citing_publications": 17212,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 15,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 4343,
+  "retracted": false,
+  "supporting": 314,
+  "total_smart_citations": 4681,
+  "unclassified": 9
+ },
  "scite:10.1061/(asce)gt.1943-5606.0000073": {
   "citing_publications": 39,
   "contrasting": 0,
@@ -3048,6 +3172,18 @@
   "total_smart_citations": 571,
   "unclassified": 5
  },
+ "scite:10.1086/508162": {
+  "citing_publications": 2983,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 6,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 2572,
+  "retracted": false,
+  "supporting": 72,
+  "total_smart_citations": 2712,
+  "unclassified": 62
+ },
  "scite:10.1088/0034-4885/75/12/126001": {
   "citing_publications": 4173,
   "contrasting": 0,
@@ -3109,6 +3245,18 @@
   "supporting": 2,
   "total_smart_citations": 54,
   "unclassified": 1
+ },
+ "scite:10.1088/1367-2630/abd9e7": {
+  "citing_publications": 101,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 63,
+  "retracted": false,
+  "supporting": 0,
+  "total_smart_citations": 63,
+  "unclassified": 0
  },
  "scite:10.1088/1367-2630/abf3eb": {
   "citing_publications": 85,
@@ -3320,6 +3468,18 @@
   "total_smart_citations": 6494,
   "unclassified": 47
  },
+ "scite:10.1103/physrevd.24.1516": {
+  "citing_publications": 1887,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 1,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 1706,
+  "retracted": false,
+  "supporting": 23,
+  "total_smart_citations": 1743,
+  "unclassified": 13
+ },
  "scite:10.1103/physrevd.27.2885": {
   "citing_publications": 796,
   "classification_provenance": "Scite ML citation classification",
@@ -3528,6 +3688,18 @@
   "total_smart_citations": 224,
   "unclassified": 0
  },
+ "scite:10.1103/physrevlett.125.201302": {
+  "citing_publications": 296,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 203,
+  "retracted": false,
+  "supporting": 1,
+  "total_smart_citations": 205,
+  "unclassified": 1
+ },
  "scite:10.1103/physrevlett.126.010601": {
   "citing_publications": 140,
   "contrasting": 0,
@@ -3576,6 +3748,30 @@
   "retracted": false,
   "supporting": 0,
   "total_smart_citations": 49,
+  "unclassified": 0
+ },
+ "scite:10.1103/physrevlett.130.253001": {
+  "citing_publications": 180,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 1,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 92,
+  "retracted": false,
+  "supporting": 3,
+  "total_smart_citations": 96,
+  "unclassified": 0
+ },
+ "scite:10.1103/physrevlett.131.041002": {
+  "citing_publications": 927,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 1,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 339,
+  "retracted": false,
+  "supporting": 8,
+  "total_smart_citations": 348,
   "unclassified": 0
  },
  "scite:10.1103/physrevlett.132.133602": {
@@ -3700,6 +3896,18 @@
   "total_smart_citations": 5905,
   "unclassified": 57
  },
+ "scite:10.1103/physrevlett.77.4887": {
+  "citing_publications": 1783,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 0,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 1523,
+  "retracted": false,
+  "supporting": 38,
+  "total_smart_citations": 1575,
+  "unclassified": 14
+ },
  "scite:10.1103/physrevlett.80.2245": {
   "citing_publications": 9301,
   "classification_provenance": "Scite ML citation classification",
@@ -3787,6 +3995,18 @@
   "supporting": 0,
   "total_smart_citations": 7,
   "unclassified": 0
+ },
+ "scite:10.1103/revmodphys.29.454": {
+  "citing_publications": 3702,
+  "classification_provenance": "Scite ML citation classification",
+  "contrasting": 2,
+  "fetched": "2026-11-10",
+  "found": true,
+  "mentioning": 2466,
+  "retracted": false,
+  "supporting": 27,
+  "total_smart_citations": 2528,
+  "unclassified": 33
  },
  "scite:10.1103/revmodphys.35.724": {
   "citing_publications": 694,

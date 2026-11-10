@@ -474,9 +474,89 @@ def plate_t09() -> bytes:
     return c.png()
 
 
+def plate_t11() -> bytes:
+    """Left: pointer state radial photon broadcast to N=6 modes. Right: Quantum Darwinism I(S:E_k) plateau vs coherence decay."""
+    import math
+    from timegravity_kernel_einselection import N_ENV_DEFAULT, THETA_DEFAULT, statevector_quantum_darwinism
+    c = Canvas()
+    c.fill_gradient()
+    qd = statevector_quantum_darwinism(THETA_DEFAULT, N_ENV_DEFAULT, planted_defect=False)
+    # Left: central pointer qubit S broadcasting radial wave-fronts to 6 environment observer nodes
+    cx, cy, r_ring = 310.0, 380.0, 175.0
+    for rad in (55, 95, 135, 175):
+        ring_pts = [(cx + rad * math.cos(2 * math.pi * j / 72), cy + rad * math.sin(2 * math.pi * j / 72)) for j in range(73)]
+        c.stroke(ring_pts, STONE, 1.5)
+    for m in range(N_ENV_DEFAULT):
+        ang = -math.pi / 2 + 2.0 * math.pi * m / N_ENV_DEFAULT
+        ox, oy = cx + r_ring * math.cos(ang), cy + r_ring * math.sin(ang)
+        c.stroke([(cx, cy), (ox, oy)], PRUSSIAN if m < 2 else VERDIGRIS, 2.8 if m < 2 else 1.8, dash=None if m < 2 else (6, 6))
+        c.disc(ox, oy, 11 if m < 2 else 8, MINIUM if m < 2 else PRUSSIAN, ring=VELLUM)
+    c.disc(cx, cy, 16, PRUSSIAN, ring=VELLUM)
+    # Right: mutual information I(S:E_k) in bits (0 to 2 bits) and off-diagonal coherence gamma^k
+    rx0, rx1, ry0, ry1 = 620, 1170, 130, 620
+    c.stroke([(rx0, ry0), (rx0, ry1)], INK, 1.2)
+    c.stroke([(rx0, ry1), (rx1, ry1)], INK, 1.2)
+    # Classical 1-bit plateau line
+    y_one_bit = ry1 - (ry1 - ry0) * 0.5
+    c.stroke([(rx0, y_one_bit), (rx1, y_one_bit)], INK, 1.2, dash=(6, 6))
+    tx = lambda k: rx0 + (rx1 - rx0) * (k / N_ENV_DEFAULT)  # noqa: E731
+    ty_mi = lambda bits: ry1 - (ry1 - ry0) * min(2.0, max(0.0, bits)) / 2.0  # noqa: E731
+    ty_coh = lambda coh: ry1 - (ry1 - ry0) * min(1.0, max(0.0, coh)) * 0.5  # noqa: E731
+    mi_pts = [(tx(row["k"]), ty_mi(row["i_s_ek_jacobi_bits"])) for row in qd["fragments"]]
+    coh_pts = [(tx(k), ty_coh(qd["gamma"] ** k)) for k in range(N_ENV_DEFAULT + 1)]
+    c.stroke(coh_pts, MINIUM, 3.0, dash=(7, 7))
+    c.stroke(mi_pts, PRUSSIAN, 4.2)
+    for x, y in mi_pts:
+        c.disc(x, y, 9, PRUSSIAN, ring=VELLUM)
+    return c.png()
+
+
+def plate_t12() -> bytes:
+    """Left: EM-transparent mass flyby past two clocks across baseline d_c. Right: differential redshift pulse and arsinh step."""
+    import math
+    from timegravity_kernel_dark_clock import dark_transit_clock_shift
+    c = Canvas()
+    c.fill_gradient()
+    tr = dark_transit_clock_shift()
+    # Left: two clocks separated by baseline d_c and gravitational potential contours of passing dark mass
+    c1x, c1y = 260.0, 270.0
+    c2x, c2y = 260.0, 510.0
+    dmx, dmy = 420.0, 270.0
+    c.stroke([(c1x, c1y), (c2x, c2y)], INK, 2.0, dash=(6, 6))
+    c.stroke([(dmx, 120.0), (dmx, 620.0)], MINIUM, 3.2)
+    for rad in (48, 92, 145, 210):
+        ring_pts = [(dmx + rad * math.cos(2 * math.pi * j / 72), dmy + rad * math.sin(2 * math.pi * j / 72)) for j in range(73)]
+        c.stroke(ring_pts, PRUSSIAN, 1.4, dash=(5, 5))
+    c.disc(c1x, c1y, 13, PRUSSIAN, ring=VELLUM)
+    c.disc(c2x, c2y, 13, VERDIGRIS, ring=VELLUM)
+    c.disc(dmx, dmy, 15, MINIUM, ring=VELLUM)
+    # Right: instantaneous differential redshift pulse and integrated proper-time step arsinh curve
+    rx0, rx1, ry0, ry1 = 620, 1170, 130, 620
+    ry_mid = 0.5 * (ry0 + ry1)
+    c.stroke([(rx0, ry0), (rx0, ry1)], INK, 1.2)
+    c.stroke([(rx0, ry_mid), (rx1, ry_mid)], INK, 1.1, dash=(6, 6))
+    prof = tr["profile"]
+    min_df = min(p["delta_nu_over_nu"] for p in prof) or -1.0
+    pulse_pts = []
+    step_pts = []
+    max_asinh = math.asinh(5.0)
+    for p in prof:
+        u = p["vt_over_b1"]
+        x = rx0 + (rx1 - rx0) * ((u + 5.0) / 10.0)
+        y_pulse = ry_mid + 200.0 * (p["delta_nu_over_nu"] / abs(min_df))
+        y_step = ry_mid + 180.0 * (math.asinh(u) / max_asinh)
+        pulse_pts.append((x, y_pulse))
+        step_pts.append((x, y_step))
+    c.stroke(pulse_pts, PRUSSIAN, 4.0)
+    c.stroke(step_pts, MINIUM, 3.2)
+    for x, y in pulse_pts[::4]:
+        c.disc(x, y, 7, PRUSSIAN, ring=VELLUM)
+    return c.png()
+
+
 def main() -> int:
     PLATES.mkdir(parents=True, exist_ok=True)
-    for name, fn in (("t00", plate_t00), ("t01", plate_t01), ("t02", plate_t02), ("t03", plate_t03), ("t04", plate_t04), ("t05", plate_t05), ("t06", plate_t06), ("t07", plate_t07), ("t08", plate_t08), ("t09", plate_t09), ("t10", plate_t07_page)):
+    for name, fn in (("t00", plate_t00), ("t01", plate_t01), ("t02", plate_t02), ("t03", plate_t03), ("t04", plate_t04), ("t05", plate_t05), ("t06", plate_t06), ("t07", plate_t07), ("t08", plate_t08), ("t09", plate_t09), ("t10", plate_t07_page), ("t11", plate_t11), ("t12", plate_t12)):
         data = fn()
         (PLATES / f"{name}.png").write_bytes(data)
         print(f"PASS: wrote plates/{name}.png ({len(data):,} bytes)")

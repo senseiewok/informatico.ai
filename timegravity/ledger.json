@@ -972,6 +972,116 @@
       "kind": "peer-reviewed",
       "review_by": "2028-11-10",
       "note": "Analysis of ringdowns: argues that the claimed n=1 overtone detection in GW150914 near the peak is sensitive to start-time choice and noise transients; whether the first overtone was resolved in GW150914 remains an open question."
+    },
+    {
+      "id": "T11-BRUNE1996",
+      "label": "MEASURED",
+      "doi": "10.1103/PhysRevLett.77.4887",
+      "year": 1996,
+      "collaboration": "ENS Paris (Brune, Hagley, Dreyer, Maitre, Maali, Wunderlich, Raimond & Haroche)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Observing the progressive decoherence of the 'meter' in a quantum measurement: a Rydberg atom entangles with a mesoscopic coherent microwave field in a high-Q superconducting cavity, and two-atom correlation measurements track the off-diagonal interference decay as photons leak into the environment."
+    },
+    {
+      "id": "T11-ZUREK1981",
+      "label": "DERIVED",
+      "doi": "10.1103/PhysRevD.24.1516",
+      "year": 1981,
+      "collaboration": "Zurek (Physical Review D)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Pointer basis of quantum apparatus: into what mixture does the wave packet collapse? Shows that the system-environment interaction Hamiltonian H_int selects as stable pointer states the eigenstates of the observable that commutes with H_int ([H_int, Pi] = 0)."
+    },
+    {
+      "id": "T11-JOOS1985",
+      "label": "DERIVED",
+      "doi": "10.1007/BF01725541",
+      "year": 1985,
+      "collaboration": "Joos & Zeh (Zeitschrift fur Physik B)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "The emergence of classical properties through interaction with the environment: derives the position-localization master equation d rho / dt = -Lambda (x - x')^2 rho from dipole Rayleigh scattering of thermal photons and residual gas, showing that even the 2.7 K cosmic microwave background localizes a 10 um dust grain on a one-second timescale."
+    },
+    {
+      "id": "T11-ZUREK2009",
+      "label": "DERIVED",
+      "doi": "10.1038/nphys1202",
+      "year": 2009,
+      "collaboration": "Zurek (Nature Physics)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Quantum Darwinism: shows that pointer states not only survive decoherence but imprint redundant copies of their eigenvalue across independent environment fragments E_k, producing a classical mutual-information plateau I(S : E_k) approx H(S) even for small fractions f = k / N of the photon bath."
+    },
+    {
+      "id": "T11-EVERETT1957",
+      "label": "PROPOSED",
+      "doi": "10.1103/RevModPhys.29.454",
+      "year": 1957,
+      "collaboration": "Everett (Reviews of Modern Physics)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "'Relative state' formulation of quantum mechanics: proposes that the universal wavefunction evolves unitarily without collapse, with each observer branch correlated to a definite relative state. Whether unselected decohered branches persist physically or are eliminated by objective reduction remains open."
+    },
+    {
+      "id": "T12-PLANCK2020",
+      "label": "MEASURED",
+      "doi": "10.1051/0004-6361/201833910",
+      "year": 2020,
+      "collaboration": "Planck Collaboration (ESA / Astronomy & Astrophysics)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Planck 2018 results. VI. Cosmological parameters: CMB temperature, polarization, and lensing power spectra measure a physical cold dark matter density Omega_c h^2 = 0.1200 +/- 0.0012 alongside baryon density Omega_b h^2 = 0.02237 +/- 0.00015 (dark-to-baryon ratio 5.364, 84.3 % of non-relativistic matter)."
+    },
+    {
+      "id": "T12-CLOWE2006",
+      "label": "MEASURED",
+      "doi": "10.1086/508162",
+      "year": 2006,
+      "collaboration": "Clowe, Bradac, Gonzalez, Markevitch, Randall, Jones & Zaritsky (Bullet Cluster collaboration)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "A direct empirical proof of the existence of dark matter: weak gravitational lensing of the merging cluster 1E 0657-558 shows that the gravitational potential peaks trace the collisionless galaxies rather than the shocked X-ray plasma that holds most of the baryonic mass."
+    },
+    {
+      "id": "T12-KENNEDY2020",
+      "label": "BOUND",
+      "doi": "10.1103/PhysRevLett.125.201302",
+      "year": 2020,
+      "collaboration": "JILA (Kennedy, Oelker, Robinson, Bothwell, Kedar, Milner, Marti, Derevianko & Ye)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Precision metrology meets cosmology: comparing an 87Sr optical lattice clock against a cryogenic crystalline silicon optical cavity sets upper bounds on the dilaton coupling d_e of ultralight scalar dark matter to the electromagnetic fine-structure constant across 10^-21 eV <= m_phi c^2 <= 10^-16 eV."
+    },
+    {
+      "id": "T12-FILZINGER2023",
+      "label": "BOUND",
+      "doi": "10.1103/PhysRevLett.130.253001",
+      "year": 2023,
+      "collaboration": "PTB Braunschweig (Filzinger, Doring, Steinel, Huntemann et al.)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Improved limits on the coupling of ultralight bosonic dark matter to photons from optical atomic clock comparisons: multi-year comparisons of 171Yb+ electric-octupole (E3) and electric-quadrupole (E2) transitions and 87Sr tighten bounds on oscillating and transient alpha variations."
+    },
+    {
+      "id": "T12-LZ2023",
+      "label": "BOUND",
+      "doi": "10.1103/PhysRevLett.131.041002",
+      "year": 2023,
+      "collaboration": "LUX-ZEPLIN (LZ) Collaboration (Aalbers et al., SURF)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "First dark matter search results from the LUX-ZEPLIN (LZ) experiment: sets a 90 % confidence upper limit on spin-independent WIMP-nucleon elastic scattering cross-sections down to 9.2 x 10^-48 cm^2 at 36 GeV/c^2."
+    },
+    {
+      "id": "T12-CARNEY2021",
+      "label": "PROPOSED",
+      "doi": "10.1088/1367-2630/abd9e7",
+      "year": 2021,
+      "collaboration": "Carney, Hook, Liu, Taylor & Zhao (New Journal of Physics)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Ultralight dark matter detection with mechanical quantum sensors: analyses the impulse and gravitational redshift signatures of dark-matter transits coupled purely through gravity across arrays of quantum-limited accelerometers and clocks."
     }
   ]
 }
