@@ -550,6 +550,24 @@ PAGE: dict = {
               "y nunca supera 0.006."),
         ),
         {"type": "proposals_table"},
+        P(
+            C("PROPOSED", [TRILLO, SCHUT, RIJAVEC, BOSE],
+              "Decoherence enters the same way for both models. With the local dephasing the instrument applies, the quantum channel at that geometry "
+              "keeps some entanglement for decoherence rates below 0.0098 per second, the proposal's own criterion reproduced to a part in a million; the hybrid dynamics keeps "
+              "some only below 0.00004 per second at σ = 44 µm, 0.0001 at 30 µm and 0.0002 at 20 µm, forty to two hundred and sixty times lower.",
+              "La decoherencia entra del mismo modo en los dos modelos. Con el desfase local que aplica el instrumento, el canal cuántico en esa geometría "
+              "conserva algo de entrelazamiento para tasas de decoherencia por debajo de 0.0098 por segundo, el propio criterio de la propuesta reproducido "
+              "a una parte en un millón; la dinámica híbrida conserva algo solo por debajo de 0.00004 por segundo a σ = 44 µm, 0.0001 a 30 µm y 0.0002 a 20 µm, entre cuarenta "
+              "y doscientas sesenta veces menos."),
+            T(" At a thousandth per second, ten times below the rate the proposal budgets for gas and black-body scattering, the hybrid dynamics shows no "
+              "entanglement at any time in that geometry while the quantum channel still reaches 0.34. So within the one geometry the data leave it, the "
+              "hybrid dynamics shows entanglement only at decoherence rates fifty to two hundred and seventy times below the proposal's own budget; the page "
+              "computes the two thresholds and measures neither.",
+              " A una milésima por segundo, diez veces por debajo de la tasa que la propuesta presupuesta para la dispersión por gas y por radiación de cuerpo "
+              "negro, la dinámica híbrida no muestra entrelazamiento en ningún momento en esa geometría mientras el canal cuántico aún alcanza 0.34. Así que, "
+              "dentro de la única geometría que los datos le dejan, la dinámica híbrida muestra entrelazamiento solo a tasas de decoherencia entre cincuenta y "
+              "doscientas setenta veces por debajo del propio presupuesto de la propuesta; la página calcula los dos umbrales y no mide ninguno."),
+        ),
         {"type": "h2", "id": "labs", "en": "III · How far the laboratories are", "es": "III · Qué tan lejos están los laboratorios", "short_en": "III · Labs", "short_es": "III · Laboratorios"},
         P(
             C("MEASURED", [WEST, FUCHS],

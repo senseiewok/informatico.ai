@@ -61,7 +61,7 @@ def dispute_block() -> dict:
         "tn_phase_tiny_sigma_rad": r["tn_phase_tiny_sigma_rad"], "newton_phase_rad": r["newton_phase_rad"],
         "ktm_threshold_ratios": r["ktm_threshold_ratios"], "ktm_2017": r["ktm_2017"],
         "entangling_parts": r["entangling_parts"], "quantum_channel_negativity_2017": r["quantum_channel_negativity_2017"],
-        "pure_collapse": r["pure_collapse"], "collapse_scaling": r["collapse_scaling"], "threshold_map": r["threshold_map"], "map_with_isl": r["map_with_isl"], "open_region_timing": r["open_region_timing"], "parallel_map": r["parallel_map"], "proposals": r["proposals"], "rijavec_tau_g_s": r["rijavec_tau_g_s"], "dephasing_threshold_per_s": r["dephasing_threshold_per_s"],
+        "pure_collapse": r["pure_collapse"], "collapse_scaling": r["collapse_scaling"], "threshold_map": r["threshold_map"], "map_with_isl": r["map_with_isl"], "open_region_timing": r["open_region_timing"], "parallel_map": r["parallel_map"], "proposals": r["proposals"], "open_window_decoherence": r["open_window_decoherence"], "rijavec_tau_g_s": r["rijavec_tau_g_s"], "dephasing_threshold_per_s": r["dephasing_threshold_per_s"],
     })
 
 
