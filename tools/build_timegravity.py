@@ -1177,6 +1177,15 @@ def threshold_map(page: dict) -> str:
     parts.append(f'<text x="{x0 + 8:.1f}" y="{ys(rows[0]["collapse_over_nearest"]) - 10:.1f}" text-anchor="start" font-size="8.8" font-weight="700" fill="var(--tp-minium)" data-en="{a(f_label)}" data-es="{a(f_label_es)}">{t(f_label)}</text>')
     gap = "between the lines: a model difference, not data"; gap_es = "entre las líneas: una diferencia entre modelos, no datos"
     parts.append(f'<text x="{xs(6.0):.1f}" y="{ys(2.2):.1f}" text-anchor="middle" font-size="8.6" font-style="italic" fill="var(--tp-graphite)" data-en="{a(gap)}" data-es="{a(gap_es)}">{t(gap)}</text>')
+    # The side-by-side layout (the 2024 screened proposal) has nearly flat thresholds that would crowd the lower-left corner; stated, not drawn (Table T.05-P has the numbers).
+    from timegravity_kernel_dispute import parallel_map as _pmap
+    pm = _pmap(ratios=(0.03, 0.5, 1.0, 2.0, 32.0))  # first and last for the hybrid ends, all five for the collapse range
+    side_en = (f"side by side (2024 layout), not drawn, d the gap: hybrid above {pm[0]['hybrid_over_gap']:.2f} d at small splits, {pm[-1]['hybrid_over_gap']:.2f} d at the largest;",
+               f"witness survives pure collapse above {min(p['collapse_over_gap'] for p in pm):.2f}–{max(p['collapse_over_gap'] for p in pm):.2f} d")
+    side_es = (f"lado a lado (disposición de 2024), sin dibujar, d la separación: la híbrida por encima de {pm[0]['hybrid_over_gap']:.2f} d a divisiones pequeñas, {pm[-1]['hybrid_over_gap']:.2f} d en la mayor;",
+               f"el testigo sobrevive al colapso puro por encima de {min(p['collapse_over_gap'] for p in pm):.2f}–{max(p['collapse_over_gap'] for p in pm):.2f} d")
+    for i, (en_line, es_line) in enumerate(zip(side_en, side_es)):
+        parts.append(f'<text x="{x0 + 8:.1f}" y="{ys(20.0) + 12 * i:.1f}" text-anchor="start" font-size="8.2" font-style="italic" fill="var(--tp-graphite)" data-en="{a(en_line)}" data-es="{a(es_line)}">{t(en_line)}</text>')
     # The two named geometries at their own masses (the page's numbers: 525 / 130 µm and 55 / 14 µm), within 0.4 % of the small-mass curves.
     from timegravity_kernel_dispute import tn_critical_sigma, dp_collapse_sigma_at, BMV_M_KG, BMV_DX_M, BMV_D_M, BMV_T_S, TN_M_KG, TN_L_M, TN_D_M
     for name_en, name_es, dx, split, near, m in (("2017 proposal", "propuesta de 2017", 8, BMV_DX_M, BMV_D_M - BMV_DX_M, BMV_M_KG),
@@ -1201,11 +1210,14 @@ def threshold_map(page: dict) -> str:
                 "los puntos marcan la propuesta de 2017 y la geometría de la carta")
     cap_en = ("Plate T.05-M · The geometry map: for any pair geometry, the σ above which the letter's hybrid dynamics entangles (solid) and the σ above which the quantum witness "
               "survives pure Diósi–Penrose collapse (dashed), both over the nearest approach d, against the split-to-gap ratio. Both lines are this site's computations on the two "
-              "published models; the gap between them is a model difference, not an exclusion region, and the page picks no side. No witness has been measured.")
+              "published models; the gap between them is a model difference, not an exclusion region, and the page picks no side. The side-by-side layout of the 2024 "
+              "screened proposal has nearly flat thresholds (hybrid about 0.65 d at small splits, collapse about 0.44 d) and is stated on the plate rather than drawn; Table T.05-P "
+              "carries its numbers. No witness has been measured.")
     cap_es = ("Lámina T.05-M · El mapa geométrico: para cualquier geometría del par, la σ por encima de la cual la dinámica híbrida de la carta entrelaza (continua) y la σ por encima de "
               "la cual el testigo cuántico sobrevive al colapso puro de Diósi–Penrose (discontinua), ambas sobre la aproximación más cercana d, frente a la razón división/separación. Las dos "
               "líneas son cálculos de este sitio sobre los dos modelos publicados; la brecha entre ellas es una diferencia entre modelos, no una región de exclusión, y la página no toma "
-              "partido. Ningún testigo se ha medido.")
+              "partido. La disposición lado a lado de la propuesta apantallada de 2024 tiene umbrales casi planos (la híbrida cerca de 0.65 d a divisiones pequeñas, el colapso "
+              "cerca de 0.44 d) y se enuncia en la lámina en vez de dibujarse; la Tabla T.05-P lleva sus números. Ningún testigo se ha medido.")
     return f"""        <figure class="tp-distill-figure" role="group" aria-label="Plate T.05-M The geometry map" data-tg-figure="threshold-map">
           <svg class="tp-distill-svg" viewBox="0 0 920 300" role="img" aria-labelledby="tp-map-title-t05">
             <title id="tp-map-title-t05" data-en="{a(title_en)}" data-es="{a(title_es)}">{t(title_en)}</title>
@@ -1248,7 +1260,9 @@ def proposals_table(page: dict) -> str:
     for r in _props():
         en_name, es_name = names[r["key"]]
         lay_en, lay_es = ("collinear", "colineal") if r["layout"] == "collinear" else ("side by side", "lado a lado")
-        hyb = f'{um(r["hybrid_sigma_c_m"])} ({pct(r["torque_deficit_at_hybrid_sigma_c"])})'
+        # The hybrid threshold is stated as "above", so it rounds up like the page text (525, 406, 82, 40, 14, 8 µm).
+        sc_um = r["hybrid_sigma_c_m"] * 1e6
+        hyb = (f"{math.ceil(sc_um - 1e-9):.0f} µm" if sc_um >= 10 else f"{math.ceil(sc_um * 10 - 1e-9) / 10:.1f} µm") + f' ({pct(r["torque_deficit_at_hybrid_sigma_c"])})'
         at = r["at_sigma"]["44um"]
         if at["entangles"]:
             at_en = f'{at["hybrid_negativity_at_t_full"]:.4f} · peak {at["peak_negativity"]:.3f} after {dur(at["peak_time_s"], "en")}'
