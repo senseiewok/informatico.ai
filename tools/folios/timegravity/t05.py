@@ -40,6 +40,8 @@ LEE21 = "T05-LEE2021"
 MURATA = "T05-MURATA2026"
 RIJAVEC = "T05-RIJAVEC2021"
 FENG = "T05-FENG2025"
+CHEV = "T05-CHEVALIER2020"
+SCHUT = "T05-SCHUT2024"
 
 PAGE: dict = {
     "slug": SLUG,
@@ -79,7 +81,7 @@ PAGE: dict = {
     "skill_filename": "timegravity-t05-entanglement-channels.SKILL.md",
     "open_question_en": "If a classical slope can entangle, what would count as quantum gravity?",
     "open_question_es": "Si una pendiente clásica puede entrelazar, ¿qué contaría como gravedad cuántica?",
-    "ledger_ids": [BOSE, MV, WEST, FUCHS, AGAF, TROY, KTM, PERES, WOOT, AZIZ, TRILLO, SCHN, MV25, DIOSI25, TOBAR, TILLOY, VDK, LEE, TAN, LEE21, MURATA, DIOSI87, PENROSE96, DONADI21, RIJAVEC, FENG],
+    "ledger_ids": [BOSE, MV, WEST, FUCHS, AGAF, TROY, KTM, PERES, WOOT, AZIZ, TRILLO, SCHN, MV25, DIOSI25, TOBAR, TILLOY, VDK, LEE, TAN, LEE21, MURATA, DIOSI87, PENROSE96, DONADI21, RIJAVEC, FENG, CHEV, SCHUT],
     "ai_line_en": (
         "AI contribution to the cited results: none. No AI system contributed to any proposal, measurement, derivation or rebuttal cited on this page. "
         "The page text, instrument and verifier were drafted with AI assistance and checked by the site maintainer against the primary sources listed below."
@@ -476,7 +478,7 @@ PAGE: dict = {
               "núcleo de patrón completo de este sitio eliminaría todo el par de 120 pliegues que el experimento de 2020 midió en su valor newtoniano a "
               "52 µm; en la geometría de la propia carta necesita 55 µm, con lo que la atracción suavizada quitaría 6 % de ese par donde el borde de "
               "exclusión publicado corresponde a 2.5 %."),
-            T(" At this site's 44 µm estimate the model reaches only pairs closer than 36 µm at a split a thirtieth of the gap and 19 µm at equal split and "
+            T(" At this site's 44 µm estimate, in the collinear layout of the 2017 proposal, the model reaches only pairs closer than 36 µm at a split a thirtieth of the gap and 19 µm at equal split and "
               "gap, against a Casimir floor of 17.1 µm for 10⁻¹⁵ kg and 26.5 µm for 10⁻¹⁴ kg. No hold time widens that reach and heavier masses only narrow "
               "it, since the hybrid threshold is geometric while the floor rises with mass: at 10⁻¹³ kg the floor of 41.5 µm lies above the 36 µm reach. "
               "What stays open on the estimate is a region of masses up to about 10⁻¹⁴ kg, small splits, nearest approaches between the floor and 36 µm, "
@@ -484,7 +486,7 @@ PAGE: dict = {
               "smearing that contradicts the 2020 torque on this site's kernel. What such a witness would say about gravity remains the dispute above, "
               "since other classical accounts are argued in the literature and this page assesses none of them; and whether 44 µm is a bound rather than "
               "an estimate waits on a refit of the 2020 data with the smeared kernel.",
-              " En la estimación de 44 µm de este sitio el modelo alcanza solo pares a menos de 36 µm con una división de un treintavo de la separación y "
+              " En la estimación de 44 µm de este sitio, en la disposición colineal de la propuesta de 2017, el modelo alcanza solo pares a menos de 36 µm con una división de un treintavo de la separación y "
               "de 19 µm a división igual a la separación, frente a un piso de Casimir de 17.1 µm para 10⁻¹⁵ kg y de 26.5 µm para 10⁻¹⁴ kg. Ningún tiempo "
               "de espera amplía ese alcance y las masas mayores solo lo estrechan, porque el umbral híbrido es geométrico mientras el piso sube con la "
               "masa: a 10⁻¹³ kg el piso de 41.5 µm queda por encima del alcance de 36 µm. Lo que sigue abierto en la estimación es una región de masas "
@@ -496,11 +498,11 @@ PAGE: dict = {
         ),
         P(
             C("PROPOSED", [TRILLO, BOSE, MV],
-              "Inside that region, time does the separating. For a 10⁻¹⁵ kg pair at the 17 µm floor with a split a thirtieth of the gap, the quantum "
+              "Inside that region, in that layout, time does the separating. For a 10⁻¹⁵ kg pair at the 17 µm floor with a split a thirtieth of the gap, the quantum "
               "channel reaches full entanglement in 14 hours; at that moment the hybrid dynamics at σ = 44 µm shows a negativity of 0.0007, and its own "
               "peak of 0.053 comes after about two months. At the 10⁻¹⁴ kg floor the quantum channel takes 13 minutes, the hybrid dynamics shows "
               "0.0016 then and peaks at 0.025 after about five hours.",
-              "Dentro de esa región, el tiempo es lo que separa. Para un par de 10⁻¹⁵ kg en el piso de 17 µm con una división de un treintavo de la "
+              "Dentro de esa región, en esa disposición, el tiempo es lo que separa. Para un par de 10⁻¹⁵ kg en el piso de 17 µm con una división de un treintavo de la "
               "separación, el canal cuántico alcanza el entrelazamiento completo en 14 horas; en ese momento la dinámica híbrida a σ = 44 µm muestra una "
               "negatividad de 0.0007, y su propio máximo de 0.053 llega tras unos dos meses. En el piso de 10⁻¹⁴ kg el canal cuántico tarda 13 minutos, la "
               "dinámica híbrida muestra 0.0016 entonces y alcanza su máximo de 0.025 tras unas cinco horas."),
@@ -513,6 +515,37 @@ PAGE: dict = {
               "escala de tiempo del canal cuántico, y el canal cuántico no predice un máximo de unas centésimas tras días de coherencia; la página enuncia "
               "las dos predicciones, y ningún testigo se ha medido."),
         ),
+        P(
+            C("PROPOSED", [TRILLO, BOSE, CHEV, VDK, SCHUT, LEE],
+              "The map and the data, applied to the geometries the literature has actually proposed. In the collinear layout the 2017 proposal needs σ "
+              "above 525 µm from the hybrid dynamics and a 2020 refinement with the masses 100 µm apart at closest approach needs 406 µm, both erasing "
+              "the 52 µm torque; the 2020 Casimir-screened proposal, a 23 µm split 47 µm from its partner behind a 1 µm plate, needs 82 µm, a 22 % "
+              "deficit against a published edge at 2.5 %. Side by side the threshold drops: with the two superpositions parallel rather than in line, "
+              "the hybrid dynamics entangles above 0.65 times the gap for any split, half the collinear value, and the pure-collapse witness survives "
+              "above 0.44 to 0.47 times it. So the 2024 proposal of micrometre superpositions of 10⁻¹⁴ kg diamonds beside a screening plate, 1.7 µm "
+              "splits 21 µm apart, needs only σ above 13.6 µm, a smearing that leaves the 2020 torque untouched: among the geometries mapped here it is "
+              "the only one the hybrid dynamics could entangle without contradicting the inverse-square data. Its 21 µm gap sits below the 26.5 µm "
+              "floor this page computes from the free-fall formula; the 2024 scheme traps and screens instead, and the page takes its geometry as published.",
+              "El mapa y los datos, aplicados a las geometrías que la literatura ha propuesto de verdad. En la disposición colineal la propuesta de 2017 "
+              "necesita de la dinámica híbrida σ por encima de 525 µm y un refinamiento de 2020 con las masas a 100 µm en su mayor acercamiento necesita "
+              "406 µm, ambas borrando el par a 52 µm; la propuesta de 2020 apantallada contra Casimir, una división de 23 µm a 47 µm de su pareja tras una "
+              "placa de 1 µm, necesita 82 µm, un déficit de 22 % frente a un borde publicado de 2.5 %. Lado a lado el umbral baja: con las dos "
+              "superposiciones paralelas en vez de en línea, la dinámica híbrida entrelaza por encima de 0.65 veces la separación para cualquier división, "
+              "la mitad del valor colineal, y el testigo de colapso puro sobrevive por encima de 0.44 a 0.47 veces ella. Así que la propuesta de 2024 de "
+              "superposiciones micrométricas de diamantes de 10⁻¹⁴ kg junto a una placa de apantallamiento, divisiones de 1.7 µm a 21 µm de distancia, "
+              "necesita solo σ por encima de 13.6 µm, un suavizado que deja intacto el par de 2020: entre las geometrías mapeadas aquí es la única que la "
+              "dinámica híbrida podría entrelazar sin contradecir los datos del inverso del cuadrado. Su separación de 21 µm queda por debajo del piso de "
+              "26.5 µm que esta página calcula con la fórmula de caída libre; el esquema de 2024 atrapa y apantalla en su lugar, y la página toma su "
+              "geometría tal como se publicó."),
+            T(" Time still separates the two there. That geometry is designed for an entangling rate of 0.01 per second, so the quantum channel reaches full "
+              "entanglement in about 160 s; at that moment the hybrid dynamics at σ = 44 µm shows a negativity of 0.0029 (0.0078 at 30 µm), and its peak of "
+              "0.066 comes after about 1.6 hours (0.054 after half an hour at 30 µm). At the 61 µm spacing it needs 39 µm and never exceeds 0.006.",
+              " El tiempo sigue separando a los dos allí. Esa geometría está diseñada para una tasa de entrelazamiento de 0.01 por segundo, así que el canal "
+              "cuántico alcanza el entrelazamiento completo en unos 160 s; en ese momento la dinámica híbrida a σ = 44 µm muestra una negatividad de 0.0029 "
+              "(0.0078 a 30 µm), y su máximo de 0.066 llega tras cerca de 1.6 horas (0.054 tras media hora a 30 µm). A la separación de 61 µm necesita 39 µm "
+              "y nunca supera 0.006."),
+        ),
+        {"type": "proposals_table"},
         {"type": "h2", "id": "labs", "en": "III · How far the laboratories are", "es": "III · Qué tan lejos están los laboratorios", "short_en": "III · Labs", "short_es": "III · Laboratorios"},
         P(
             C("MEASURED", [WEST, FUCHS],
@@ -611,6 +644,8 @@ PAGE: dict = {
         ("Murata, J., Fujiie, T., & Suzuki, S. (2026). Short-range tests of the gravitational inverse-square law. arXiv:2605.18212.", "10.48550/arXiv.2605.18212"),
         ("Rijavec, S., Carlesso, M., Bassi, A., Vedral, V., & Marletto, C. (2021). Decoherence effects in non-classicality tests of gravity. New Journal of Physics, 23, 043040.", "10.1088/1367-2630/abf3eb"),
         ("Feng, T., Vedral, V., & Marletto, C. (2025). Collapse-based models for gravity do not violate the entanglement-based witness of non-classicality. arXiv:2503.19774.", "10.48550/arXiv.2503.19774"),
+        ("Chevalier, H., Paige, A. J., & Kim, M. S. (2020). Witnessing the nonclassical nature of gravity in the presence of unknown interactions. Physical Review A, 102(2), 022428.", "10.1103/PhysRevA.102.022428"),
+        ("Schut, M., Geraci, A., Bose, S., & Mazumdar, A. (2024). Micrometer-size spatial superpositions for the QGEM protocol via screening and trapping. Physical Review Research, 6(1), 013199.", "10.1103/PhysRevResearch.6.013199"),
         ("Bose, S., Mazumdar, A., Morley, G. W., Ulbricht, H., Toroš, M., Paternostro, M., Geraci, A. A., Barker, P. F., Kim, M. S., & Milburn, G. (2017). Spin entanglement witness for quantum gravity. Physical Review Letters, 119(24), 240401.", "10.1103/PhysRevLett.119.240401"),
         ("Marletto, C., & Vedral, V. (2017). Gravitationally induced entanglement between two massive particles is sufficient evidence of quantum effects in gravity. Physical Review Letters, 119(24), 240402.", "10.1103/PhysRevLett.119.240402"),
         ("Westphal, T., Hepach, H., Pfaff, J., & Aspelmeyer, M. (2021). Measurement of gravitational coupling between millimetre-sized masses. Nature, 591, 225–228.", "10.1038/s41586-021-03250-7"),

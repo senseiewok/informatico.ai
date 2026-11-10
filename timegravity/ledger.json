@@ -752,6 +752,26 @@
       "kind": "preprint",
       "review_by": "2027-11-09",
       "note": "Collapse-based models for gravity do not violate the entanglement-based witness of non-classicality: argues the Diosi-Penrose-type models that entangle 'have nonlocal features'; replies to Trillo and Navascues ('Here we disprove their claims'). Preprint; young row."
+    },
+    {
+      "id": "T05-CHEVALIER2020",
+      "label": "PROPOSED",
+      "doi": "10.1103/PhysRevA.102.022428",
+      "year": 2020,
+      "collaboration": "Chevalier, Paige & Kim (Physical Review A)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Witnessing the nonclassical nature of gravity in the presence of unknown interactions: the 2017 geometry with d = 450 um and 350 um (closest approach 200 and 100 um), delta = 125 um per branch (2 delta = 250 um), m = 1e-14 kg; a witness W1 that works for gamma < 0.0627 /s; at d = 350 um with gamma = 0.3 /s the optimal free fall is 0.34 s. Proposal; no measurement."
+    },
+    {
+      "id": "T05-SCHUT2024",
+      "label": "PROPOSED",
+      "doi": "10.1103/PhysRevResearch.6.013199",
+      "year": 2024,
+      "collaboration": "Schut, Geraci, Bose & Mazumdar (Physical Review Research)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-10",
+      "note": "Micrometer-size spatial superpositions for the QGEM protocol via screening and trapping: parallel configuration, diamond masses 1e-15 to 1e-13 kg beside a grounded 1 um conducting plate at z = 30 / 10 / 5 um (mass-mass d = 61 / 21 / 11 um); Table I gives the superposition width for an entanglement rate of 0.01 Hz: 8.5 / 1.7 / 0.65 um at 1e-14 kg, 23 / 7.5 um at 1e-15 kg (z = 10 / 5), 0.85 / 0.17 / 0.06 um at 1e-13 kg; witnessable when gamma < |omega_ent|. Proposal; no measurement."
     }
   ]
 }

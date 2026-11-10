@@ -210,6 +210,138 @@ def open_region_timing(sigma_estimate: float = SIGMA_ESTIMATE_M) -> list[dict]:
     return rows
 
 
+# ---------------------------------------------------------------------------------------------------------------------------------
+# Branches as points in a plane. The smeared pair potential of two Gaussian masses depends on their distance alone, so the 1-D
+# kernels above generalise by replacing |x − y| with the Euclidean distance; the collinear layout reproduces them to rounding.
+# ---------------------------------------------------------------------------------------------------------------------------------
+def _dist(p: tuple, q: tuple) -> float:
+    return math.hypot(p[0] - q[0], p[1] - q[1])
+
+
+def tn_g_points(x: tuple, y: tuple, m: float, sigma: float) -> complex:
+    """g(x, y) of the letter's Eqs. 12–14 for two branches given as pairs of 2-D points (particle A, particle B), equal masses."""
+    re = im = 0.0
+    for j in range(2):
+        for k in range(2):
+            fxx = f_tilde(_dist(x[j], x[k]), sigma); fyy = f_tilde(_dist(y[j], y[k]), sigma); fxy = f_tilde(_dist(x[j], y[k]), sigma)
+            re += m * m * (-fxx - fyy + 2.0 * fxy)
+            im += m * m * (fxx - fyy)
+    return complex(re, im)
+
+
+def branches_collinear(split: float, nearest: float) -> list[tuple]:
+    """Mass A at {−L, 0}, mass B at {d, d + L} on one line: the layout of the 2017 proposal and of the kernels above."""
+    return [((a, 0.0), (b, 0.0)) for a in (-split, 0.0) for b in (nearest, nearest + split)]
+
+
+def branches_parallel(split: float, gap: float) -> list[tuple]:
+    """The two superpositions side by side, a gap apart, each split along the same transverse direction (the 2024 screened
+    proposal's parallel configuration): like branches sit at the gap, unlike branches at √(gap² + split²)."""
+    return [((0.0, a), (gap, b)) for a in (0.0, split) for b in (0.0, split)]
+
+
+def hybrid_state_points(br: list[tuple], m: float, sigma: float, t: float) -> list[list[complex]]:
+    k0 = (G_NEWTON / (2.0 * HBAR)) * t
+    return [[0.25 * cmath.exp(k0 * tn_g_points(br[r], br[c], m, sigma)) for c in range(4)] for r in range(4)]
+
+
+def collapse_state_points(br: list[tuple], m: float, sigma: float, t: float) -> list[list[complex]]:
+    phases = [G_NEWTON * m * m * t / (HBAR * _dist(b[0], b[1])) for b in br]
+    k0 = (G_NEWTON / (2.0 * HBAR)) * t
+    return [[0.25 * cmath.exp(1j * (phases[r] - phases[c])) * math.exp(k0 * tn_g_points(br[r], br[c], m, sigma).real) for c in range(4)]
+            for r in range(4)]
+
+
+def quantum_t_full_points(br: list[tuple], m: float) -> float:
+    """Time at which the quantum channel's four-branch state is maximally entangled (entangling phase π)."""
+    rate = [G_NEWTON * m * m / (HBAR * _dist(b[0], b[1])) for b in br]
+    return math.pi / abs(rate[1] + rate[2] - rate[0] - rate[3])
+
+
+def hybrid_survival_points(br: list[tuple], m: float, sigma: float) -> dict:
+    best, t_best, last = 0.0, None, None
+    for k in range(-12, 44):
+        t = 10.0 ** (k / 4.0)
+        n = negativity(hybrid_state_points(br, m, sigma, t))
+        if n > best:
+            best, t_best = n, t
+        if n > 1e-9:
+            last = t
+    return {"peak_negativity": best, "peak_time_s": t_best, "last_entangled_time_s": last}
+
+
+def hybrid_critical_sigma_points(br: list[tuple], m: float) -> float:
+    """Smallest σ at which the hybrid dynamics entangles the geometry at any time on the log grid (the E_− criterion is written
+    for the collinear layout, so the general case is decided on the master equation's negativity)."""
+    entangles = lambda s: hybrid_survival_points(br, m, s)["peak_negativity"] > 1e-9
+    lo, hi = 1e-7, 1.0
+    if not entangles(hi):
+        return float("inf")
+    for _ in range(36):
+        mid = math.sqrt(lo * hi)
+        if entangles(mid):
+            hi = mid
+        else:
+            lo = mid
+    return math.sqrt(lo * hi)
+
+
+def collapse_critical_sigma_points(br: list[tuple], m: float, t: float) -> float:
+    lo, hi = 1e-10, 1.0
+    for _ in range(60):
+        mid = math.sqrt(lo * hi)
+        if negativity(collapse_state_points(br, m, mid, t)) > 1e-9:
+            hi = mid
+        else:
+            lo = mid
+    return math.sqrt(lo * hi)
+
+
+def parallel_map(ratios: tuple = (0.03, 0.1, 0.25, 0.5, 1.0, 2.0), gap: float = 100e-6) -> list[dict]:
+    """The side-by-side counterpart of threshold_map: both thresholds over the gap, against split / gap."""
+    rows = []
+    for r in ratios:
+        br = branches_parallel(r * gap, gap)
+        rows.append({"ratio": r, "hybrid_over_gap": hybrid_critical_sigma_points(br, 1e-15) / gap,
+                     "collapse_over_gap": collapse_critical_sigma_points(br, MAP_SMALL_MASS_KG, BMV_T_S) / gap})
+    return rows
+
+
+# Published geometries: (key, layout, mass kg, split m, nearest approach or gap m). Sources on the T.05 ledger.
+PROPOSALS = (
+    ("bose2017", "collinear", 1e-14, 250e-6, 200e-6),              # Bose et al. 2017: d = 450 µm centre to centre, Δx = 250 µm
+    ("chevalier2020_d350", "collinear", 1e-14, 250e-6, 100e-6),    # Chevalier, Paige & Kim 2020: d = 350 µm, 2δ = 250 µm, closest approach 100 µm
+    ("vandekamp2020", "collinear", 1e-15, 23e-6, 47e-6),           # van de Kamp et al. 2020: Δx = 23 µm, initial separation 47 µm behind a 1 µm plate
+    ("schut2024_z30", "parallel", 1e-14, 8.5e-6, 61e-6),           # Schut et al. 2024 Table I: 10⁻¹⁴ kg, z = 30 µm (d = 61 µm), Δx = 8.5 µm
+    ("schut2024_z10", "parallel", 1e-14, 1.7e-6, 21e-6),           # z = 10 µm (d = 21 µm), Δx = 1.7 µm
+    ("schut2024_z5", "parallel", 1e-14, 0.65e-6, 11e-6),           # z = 5 µm (d = 11 µm), Δx = 0.65 µm
+    ("schut2024_z10_1e-13", "parallel", 1e-13, 0.17e-6, 21e-6),    # 10⁻¹³ kg, z = 10 µm
+    ("schut2024_z10_1e-15", "parallel", 1e-15, 23e-6, 21e-6),      # 10⁻¹⁵ kg, z = 10 µm
+)
+
+
+def proposals_table(sigmas: tuple = (SIGMA_ESTIMATE_M, 30e-6)) -> list[dict]:
+    """Every published geometry on the map: the hybrid threshold and its 52 µm torque deficit, the pure-collapse threshold at the
+    quantum channel's full-entanglement time, and at each σ the hybrid negativity at that time and its peak."""
+    from timegravity_kernel_wedge import wedge_deficit
+    rows = []
+    for key, layout, m, split, near in PROPOSALS:
+        br = branches_collinear(split, near) if layout == "collinear" else branches_parallel(split, near)
+        sc = hybrid_critical_sigma_points(br, m)
+        t_full = quantum_t_full_points(br, m)
+        row = {"key": key, "layout": layout, "m_kg": m, "split_m": split, "nearest_m": near, "hybrid_sigma_c_m": sc,
+               "torque_deficit_at_hybrid_sigma_c": wedge_deficit(sc) if sc < 1.0 else 1.0,
+               "collapse_sigma_c_at_t_full_m": collapse_critical_sigma_points(br, m, t_full), "quantum_t_full_s": t_full, "at_sigma": {}}
+        for s in sigmas:
+            if s > sc:
+                surv = hybrid_survival_points(br, m, s)
+                row["at_sigma"][f"{s * 1e6:.0f}um"] = {"entangles": True, "hybrid_negativity_at_t_full": negativity(hybrid_state_points(br, m, s, t_full)), **surv}
+            else:
+                row["at_sigma"][f"{s * 1e6:.0f}um"] = {"entangles": False}
+        rows.append(row)
+    return rows
+
+
 def rijavec_tau_g(m: float = BMV_M_KG, d: float = BMV_D_M, dx: float = BMV_DX_M) -> float:
     """τ_G = ħ d [(d/Δx)² − 1] / (G m²) of Rijavec, Carlesso, Bassi, Vedral & Marletto 2021 (their Eq. 7): the pair is separable at all
     times for a dephasing rate above 1/τ_G (their Eq. 15)."""
@@ -444,6 +576,25 @@ def check_dispute(planted_defect: bool = False) -> dict:
                  and all(8.0 < row["hybrid_peak_time_s"] / row["quantum_t_full_s"] < 150.0 for row in live)
                  and all(0.0 < row["hybrid_peak_negativity"] < 0.06 for row in live)
                  and all(row["hybrid_peak_negativity"] < 1e-9 for row in timing if row["sigma_m"] <= row["hybrid_critical_sigma_m"]))
+    # 4h. Points in a plane: the collinear layout reproduces the 1-D kernels; side by side the hybrid threshold is about 0.65 of the gap
+    # for any split and the collapse threshold about 0.44; the published proposals' thresholds, deficits and timing.
+    brc = branches_collinear(BMV_DX_M, BMV_D_M - BMV_DX_M)
+    points_ok = (abs(negativity(hybrid_state_points(brc, BMV_M_KG, 1e-3, BMV_T_S)) - tn_negativity(BMV_DX_M, BMV_D_M - BMV_DX_M, BMV_M_KG, 1e-3, BMV_T_S)) < 1e-12
+                 and abs(negativity(collapse_state_points(brc, BMV_M_KG, 1e-3, BMV_T_S)) - dp_collapse_negativity(BMV_DX_M, BMV_D_M - BMV_DX_M, BMV_M_KG, 1e-3, BMV_T_S)) < 1e-12
+                 and abs(hybrid_critical_sigma_points(brc, BMV_M_KG) / tn_critical_sigma(BMV_M_KG, BMV_DX_M, BMV_D_M - BMV_DX_M) - 1.0) < 1e-3
+                 and abs(quantum_t_full_points(brc, BMV_M_KG) / time_to_full_entanglement(BMV_M_KG, BMV_D_M, BMV_DX_M) - 1.0) < 1e-9)
+    pmap = parallel_map()
+    parallel_ok = all(0.59 < row["hybrid_over_gap"] < 0.66 for row in pmap) and all(0.42 < row["collapse_over_gap"] < 0.49 for row in pmap)
+    props = proposals_table()
+    pb = {row["key"]: row for row in props}
+    live = [v for row in props for v in row["at_sigma"].values() if v["entangles"]]
+    proposals_ok = (pb["bose2017"]["torque_deficit_at_hybrid_sigma_c"] > 0.99 and pb["chevalier2020_d350"]["torque_deficit_at_hybrid_sigma_c"] > 0.99
+                    and 0.15 < pb["vandekamp2020"]["torque_deficit_at_hybrid_sigma_c"] < 0.30 and pb["schut2024_z30"]["torque_deficit_at_hybrid_sigma_c"] < 0.025
+                    and 13e-6 < pb["schut2024_z10"]["hybrid_sigma_c_m"] < 14.5e-6 and pb["schut2024_z10"]["torque_deficit_at_hybrid_sigma_c"] < 1e-3
+                    and not pb["bose2017"]["at_sigma"]["44um"]["entangles"] and not pb["vandekamp2020"]["at_sigma"]["44um"]["entangles"]
+                    and pb["schut2024_z10"]["at_sigma"]["44um"]["entangles"] and pb["schut2024_z10"]["at_sigma"]["30um"]["entangles"]
+                    and 150.0 < pb["schut2024_z10"]["quantum_t_full_s"] < 170.0
+                    and len(live) >= 8 and all(v["hybrid_negativity_at_t_full"] < 2e-2 for v in live) and all(v["peak_negativity"] < 0.085 for v in live))
     # 5. Where the entangling power sits: the noise part alone entangles nothing at any σ or time; the interaction part alone gives
     #    at least the full model's negativity; and as σ → 0 the interaction part is the quantum channel exactly.
     parts = {}
@@ -464,11 +615,11 @@ def check_dispute(planted_defect: bool = False) -> dict:
         "ktm_threshold_ratios": ratios, "ktm_2017": ktm_2017,
         "entangling_parts": parts, "quantum_channel_negativity_2017": quantum_negativity, "parts_ok": parts_ok,
         "pure_collapse": collapse, "collapse_ok": collapse_ok,
-        "threshold_map": tmap, "map_ok": map_ok, "map_with_isl": isl, "isl_ok": isl_ok, "open_region_timing": timing, "timing_ok": timing_ok,
+        "threshold_map": tmap, "map_ok": map_ok, "map_with_isl": isl, "isl_ok": isl_ok, "open_region_timing": timing, "timing_ok": timing_ok, "points_ok": points_ok, "parallel_map": pmap, "parallel_ok": parallel_ok, "proposals": props, "proposals_ok": proposals_ok,
         "collapse_scaling": scaling, "scaling_ok": scaling_ok, "rijavec_tau_g_s": tau_g, "dephasing_threshold_per_s": gamma_zero, "rijavec_ok": rijavec_ok,
         "dc_paper_ok": dc_paper_ok, "dc_double_entry_ok": dc_double_entry_ok, "fig3_ok": fig3_ok, "tn_2017_ok": tn_2017_ok,
         "ktm_ok": ktm_ok, "ktm_edge_ok": ktm_edge_ok, "defect_rejected": defect_rejected,
-        "ok": dc_paper_ok and dc_double_entry_ok and fig3_ok and tn_2017_ok and ktm_ok and ktm_edge_ok and parts_ok and collapse_ok and scaling_ok and rijavec_ok and map_ok and isl_ok and timing_ok and defect_rejected,
+        "ok": dc_paper_ok and dc_double_entry_ok and fig3_ok and tn_2017_ok and ktm_ok and ktm_edge_ok and parts_ok and collapse_ok and scaling_ok and rijavec_ok and map_ok and isl_ok and timing_ok and points_ok and parallel_ok and proposals_ok and defect_rejected,
     }
 
 
