@@ -261,15 +261,15 @@ class TimeGravityTrackTests(unittest.TestCase):
         llms = (RESEARCH / "llms.txt").read_text(encoding="utf-8")
         self.assertIn("(https://informatico.ai/timegravity/)", llms)
         self.assertIn("(https://informatico.ai/timegravity/t01/)", llms)
-        self.assertIn("75 SKILL.md companions", llms)
+        self.assertIn("78 SKILL.md companions", llms)
         self.assertLess(llms.index("timegravity/t02/"), llms.index("timegravity/t01/"))
         self.assertIn("## Time & Gravity", llms)
 
     def test_one_command_runner_passes(self) -> None:
-        res = run(PY + [str(ROOT / "timegravity" / "run_all_timegravity.py")], timeout=300)  # 16 verifiers with planted defects; the two T.05 kernels take 12-15 s each
+        res = run(PY + [str(ROOT / "timegravity" / "run_all_timegravity.py")], timeout=300)  # 17 verifiers with planted defects; the two T.05 kernels take 12-15 s each
         self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
         self.assertIn("PASS: Time & Gravity:", res.stdout)
-        self.assertEqual(res.stdout.count("REJECTED_AS_EXPECTED:"), 17)  # 16 verifiers (12 pages, T.05 with five) + the label lint = 17
+        self.assertEqual(res.stdout.count("REJECTED_AS_EXPECTED:"), 18)  # 17 verifiers (12 pages, T.05 with five, T.06 with two) + the label lint = 18
 
     def test_pages_rebuild_byte_for_byte_from_source(self) -> None:
         import build_timegravity as tg
@@ -349,10 +349,10 @@ class TimeGravityBatch2Tests(unittest.TestCase):
     def test_lint_mutation_suite_kills_every_mutant_and_scite_tallies_are_cached(self) -> None:
         res = run(PY + [str(ROOT / "tools" / "check_timegravity_labels.py"), "--mutants"])
         self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
-        self.assertIn("MUTANTS: 13/13 killed", res.stdout)
+        self.assertIn("MUTANTS: 15/15 killed", res.stdout)
         self.assertNotIn("SURVIVED", res.stderr)
         ok = run(PY + [str(ROOT / "tools" / "check_timegravity_labels.py")])
-        self.assertIn("mutants killed 13/13", ok.stdout)
+        self.assertIn("mutants killed 15/15", ok.stdout)
         cache = json.loads((ROOT / "data" / "folio-citations.cache.json").read_text(encoding="utf-8"))
         ledger = json.loads((ROOT / "timegravity" / "ledger.json").read_text(encoding="utf-8"))
         for row in ledger["rows"]:

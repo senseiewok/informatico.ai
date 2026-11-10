@@ -90,6 +90,8 @@ def seg(s: dict, lang: str = "en") -> str:
     label = s["label"]
     parent_id = s.get("parent")
     parent = f' data-tg-parent="{a(parent_id)}"' if parent_id else ""
+    k_attr = f' data-tg-kernel="{a(s["kernel"])}"' if s.get("kernel") else ""
+    scope_attr = f' data-tg-scope="{a(s["scope"])}"' if s.get("scope") else ""
     qual_attrs = ""
     if label == "DERIVED" and parent_id:
         qual = "DERIVADO (NO MEDIDO)" if lang == "es" else "DERIVED (NOT MEASURED)"
@@ -102,7 +104,7 @@ def seg(s: dict, lang: str = "en") -> str:
         )
     return (
         f'<span class="tg-claim" data-tg-label="{a(label)}" data-tg-label-es="{a(LABEL_ES[label])}" '
-        f'data-tg-ledger="{a(",".join(s["ids"]))}"{parent}{qual_attrs} data-en="{a(s["en"])}" data-es="{a(s["es"])}">{t(s["en"])}</span>'
+        f'data-tg-ledger="{a(",".join(s["ids"]))}"{parent}{k_attr}{scope_attr}{qual_attrs} data-en="{a(s["en"])}" data-es="{a(s["es"])}">{t(s["en"])}</span>'
     )
 
 

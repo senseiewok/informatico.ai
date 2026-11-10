@@ -19,11 +19,11 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_all_48_skills_and_python_verifiers_exist_and_pass(self) -> None:
         skill_files = list(SKILLS.glob("*/*/SKILL.md"))
         py_files = list(SKILLS.glob("*/*/verify_*.py"))
-        self.assertEqual(len(skill_files), 75)
-        self.assertEqual(len(py_files), 79)  # T.05 carries five verifiers + 3 Cross-Scale Essay verifiers
+        self.assertEqual(len(skill_files), 78)
+        self.assertEqual(len(py_files), 83)  # T.05 carries five verifiers, T.06 carries two + 6 Cross-Scale Essay verifiers
         res = subprocess.run([sys.executable, "-X", "utf8", str(SKILLS / "verify_all_48_folios.py")], capture_output=True, text=True, encoding="utf-8", timeout=240)
         self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
-        self.assertIn("PASS: All 79/79", res.stdout)
+        self.assertIn("PASS: All 83/83", res.stdout)
 
     def test_all_6_bounty_and_physics_discovery_harnesses_pass(self) -> None:
         res = subprocess.run([sys.executable, "-X", "utf8", str(BOUNTIES / "run_all_bounties.py")], capture_output=True, text=True, encoding="utf-8", timeout=30)
@@ -38,7 +38,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_106_bilingual_pages_and_bounty_crucible_mounted(self) -> None:
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 170)
+        self.assertEqual(len(locs), 176)
         self.assertTrue((RESEARCH / "about" / "index.html").is_file())
         self.assertTrue((RESEARCH / "es-mx" / "about" / "index.html").is_file())
         hub_html = (RESEARCH / "index.html").read_text(encoding="utf-8")

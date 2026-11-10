@@ -47,6 +47,15 @@ from folios.timegravity import (  # noqa: E402
     LABELS,
     PAGES,
 )
+from timegravity_kernel_ladder import EW_MATCH_SIGMA_M  # noqa: E402
+
+WIDENING_EN_RE = re.compile(r"\b(only|all|never|every)\b", re.IGNORECASE)
+WIDENING_ES_RE = re.compile(r"\b(solamente|únicamente|todos|todas|nunca|jamás)\b", re.IGNORECASE)
+EMPIRICAL_LABELS = frozenset({"MEASURED", "BOUND", "SINGLE RESULT"})
+# Kernel numeric anchors: (expected_value, max_rounding_tolerance)
+KERNEL_ANCHORS: dict[str, tuple[float, float]] = {
+    "ew_recast_sigma_um": (EW_MATCH_SIGMA_M * 1e6, 0.6),
+}
 
 RESEARCH = ROOT / "src" / "research"
 LEDGER_PATH = ROOT / "timegravity" / "ledger.json"
@@ -75,6 +84,8 @@ class _Claims(HTMLParser):
                 "label": a.get("data-tg-label", ""),
                 "ids": [x.strip() for x in (a.get("data-tg-ledger") or "").split(",") if x.strip()],
                 "parent": a.get("data-tg-parent"),
+                "scope": a.get("data-tg-scope", ""),
+                "kernel": a.get("data-tg-kernel"),
                 "text": "",
             }
             self._depth = 0
@@ -221,6 +232,41 @@ def check_claim(page: str, idx: int, claim: dict, rows: dict[str, dict], today: 
         young = [r["id"] for r in cited if is_young(r, today) or r["kind"] == "preprint"]
         if young and not supporting:
             errors.append(f"{where}: only young/preprint rows {young} back a {label} claim; cap at SINGLE RESULT or PROPOSED")
+    # Rule 11 (R9 empirical widening-word scope guard): empirical spans cannot use universal quantifiers unless explicitly authorized by r['widening_words'] or >=8-word data-tg-scope
+    if label in EMPIRICAL_LABELS:
+        is_es_page = page.endswith("(es)")
+        w_match = (WIDENING_ES_RE if is_es_page else WIDENING_EN_RE).search(claim["text"])
+        if w_match:
+            word = w_match.group(1).lower()
+            scope_words = len((claim.get("scope") or "").split())
+            backed_in_ledger = any(
+                word in {str(w).lower() for w in (r.get("widening_words") or ())}
+                for r in cited
+            )
+            if scope_words < 8 and not backed_in_ledger:
+                errors.append(
+                    f"{where}: empirical {label} claim uses universal widening quantifier {word!r} without explicit ledger widening_words or >=8-word data-tg-scope"
+                )
+    # Rule 12 (DERIVED kernel numerical provenance binding): claims carrying data-tg-kernel must match live kernel anchor within rounding tolerance
+    k_key = claim.get("kernel")
+    if k_key:
+        if k_key not in KERNEL_ANCHORS:
+            errors.append(f"{where}: unknown data-tg-kernel key {k_key!r}")
+        else:
+            expected_val, tol_val = KERNEL_ANCHORS[k_key]
+            toks = claim_number_tokens(claim["text"])
+            matched_anchor = False
+            for tok in toks:
+                try:
+                    if abs(float(tok) - expected_val) <= tol_val:
+                        matched_anchor = True
+                        break
+                except ValueError:
+                    continue
+            if not matched_anchor:
+                errors.append(
+                    f"{where}: DERIVED recast claim drifted from live kernel anchor {k_key}={expected_val:.2f}±{tol_val:.2f} (found numeric tokens {toks})"
+                )
 
 
 def page_paths() -> list[tuple[str, Path, Path, bool]]:
@@ -262,9 +308,11 @@ MUTANTS: tuple[str, ...] = (
     "es_mismatch",      # the Spanish twin's first label differs
     "es_num_mismatch",  # the Spanish twin's first claim number drifts (R3 numeric parity)
     "unres_scite",      # a contrasting-dominant row loses its contrasting_audit scope note (AH-8/AH-12)
-    "no_boundary",      # the boundary line is missing from one page
-    "hub_phrase",       # the hub-only sentence appears on a claim page
-    "hub_claim",        # the hub carries a claim span
+    "no_boundary",        # the boundary line is missing from one page
+    "hub_phrase",         # the hub-only sentence appears on a claim page
+    "hub_claim",          # the hub carries a claim span
+    "widening_overclaim", # an empirical SINGLE RESULT claim adds an unbacked universal quantifier ('never')
+    "derived_num_drift",  # a DERIVED Fourier-Bessel recast claim drifts from the live kernel's 33 um anchor
 )
 
 
@@ -336,6 +384,18 @@ def lint(planted_defect: bool = False, today: dt.date | None = None, mutation: s
             elif mutation == "hub_claim" and is_hub:
                 en_claims.append({"label": "OPEN", "ids": ["T01-WILL2014"], "parent": None, "text": "mutant"})
                 es_claims.append({"label": "OPEN", "ids": ["T01-WILL2014"], "parent": None, "text": "mutante"})
+                mutated = True
+            elif mutation == "widening_overclaim" and any(c["label"] == "SINGLE RESULT" for c in en_claims):
+                c_en = next(c for c in en_claims if c["label"] == "SINGLE RESULT")
+                for rid in c_en["ids"]:
+                    if rid in rows:
+                        rows[rid]["note"] = str(rows[rid].get("note", "")) + " (all 95 runs)"
+                c_en["text"] = c_en["text"] + " and never deviates in every regime"
+                mutated = True
+            elif mutation == "derived_num_drift" and any(c.get("kernel") in KERNEL_ANCHORS for c in en_claims):
+                for lst in (en_claims, es_claims):
+                    c_der = next(c for c in lst if c.get("kernel") in KERNEL_ANCHORS)
+                    c_der["text"] = re.sub(r"\b33(?:\.\d+)?\b", "49", c_der["text"])
                 mutated = True
 
         if planted_defect and not planted_done:

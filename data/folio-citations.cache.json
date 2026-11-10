@@ -63,6 +63,14 @@
     "title": "On the difference between consecutive primes",
     "year": 1971
   },
+  "doi:10.1007/bf01608499": {
+    "fetched": "2026-11-10",
+    "first_author": "Lindblad",
+    "found": true,
+    "journal": "Communications in Mathematical Physics",
+    "title": "On the generators of quantum dynamical semigroups",
+    "year": 1976
+  },
   "doi:10.1007/bf01645742": {
     "fetched": "2026-11-10",
     "first_author": "Bardeen",
@@ -118,6 +126,14 @@
     "journal": "Journal of High Energy Physics",
     "title": "The entropy of bulk quantum fields and the entanglement wedge of an evaporating black hole",
     "year": 2019
+  },
+  "doi:10.1007/s00023-014-0375-8": {
+    "fetched": "2026-11-10",
+    "first_author": "Chetrite",
+    "found": true,
+    "journal": "Annales Henri Poincaré",
+    "title": "Nonequilibrium Markov Processes Conditioned on Large Deviations",
+    "year": 2014
   },
   "doi:10.1007/s001580050176": {
     "fetched": "2026-11-07",
@@ -423,6 +439,14 @@
     "title": "Quantum interferometric visibility as a witness of general relativistic proper time",
     "year": 2011
   },
+  "doi:10.1038/ncomms5213": {
+    "fetched": "2026-11-10",
+    "first_author": "Peruzzo",
+    "found": true,
+    "journal": "Nature Communications",
+    "title": "A variational eigenvalue solver on a photonic quantum processor",
+    "year": 2014
+  },
   "doi:10.1038/nmat1644": {
     "fetched": "2026-11-10",
     "first_author": "Fang",
@@ -438,6 +462,14 @@
     "journal": "Nature Physics",
     "title": "Quantum Darwinism",
     "year": 2009
+  },
+  "doi:10.1038/nphys2835": {
+    "fetched": "2026-11-10",
+    "first_author": "Kane",
+    "found": true,
+    "journal": "Nature Physics",
+    "title": "Topological boundary modes in isostatic lattices",
+    "year": 2013
   },
   "doi:10.1038/s41467-018-08155-0": {
     "fetched": "2026-11-08",
@@ -646,6 +678,14 @@
     "journal": "",
     "title": "Minimum Design Loads and Associated Criteria for Buildings and Other Structures",
     "year": 2021
+  },
+  "doi:10.1063/1.1716296": {
+    "fetched": "2026-11-10",
+    "first_author": "Meiboom",
+    "found": true,
+    "journal": "Review of Scientific Instruments",
+    "title": "Modified Spin-Echo Method for Measuring Nuclear Relaxation Times",
+    "year": 1958
   },
   "doi:10.1063/1.522605": {
     "fetched": "2026-11-10",
@@ -1287,6 +1327,14 @@
     "title": "Entanglement of Formation of an Arbitrary State of Two Qubits",
     "year": 1998
   },
+  "doi:10.1103/physrevlett.82.2417": {
+    "fetched": "2026-11-10",
+    "first_author": "Viola",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "Dynamical Decoupling of Open Quantum Systems",
+    "year": 1999
+  },
   "doi:10.1103/physrevlett.90.160401": {
     "fetched": "2026-11-09",
     "first_author": "Hornberger",
@@ -1326,6 +1374,14 @@
     "journal": "Physical Review Research",
     "title": "Micrometer-size spatial superpositions for the QGEM protocol via screening and trapping",
     "year": 2024
+  },
+  "doi:10.1103/physrevx.6.041053": {
+    "fetched": "2026-11-10",
+    "first_author": "Barato",
+    "found": true,
+    "journal": "Physical Review X",
+    "title": "Cost and Precision of Brownian Clocks",
+    "year": 2016
   },
   "doi:10.1103/physrevx.6.041064": {
     "fetched": "2026-11-04",
@@ -1671,6 +1727,14 @@
     "title": "",
     "year": null
   },
+  "doi:10.1172/jci154571": {
+    "fetched": "2026-11-10",
+    "first_author": "Lee",
+    "found": true,
+    "journal": "Journal of Clinical Investigation",
+    "title": "Small-molecule eRF3a degraders rescue CFTR nonsense mutations by promoting premature termination codon readthrough",
+    "year": 2022
+  },
   "doi:10.1177/1477153506070670": {
     "fetched": "2026-11-04",
     "first_author": "",
@@ -1743,6 +1807,14 @@
     "title": "Dynamically Allocated Hub in Task-Evoked Network Predicts the Vulnerable Prefrontal Locus for Contextual Memory Retrieval in Macaques",
     "year": 2015
   },
+  "doi:10.1371/journal.pgen.1007723": {
+    "fetched": "2026-11-10",
+    "first_author": "Sharma",
+    "found": true,
+    "journal": "PLOS Genetics",
+    "title": "Capitalizing on the heterogeneous effects of CFTR nonsense and frameshift variants to inform therapeutic strategy for cystic fibrosis",
+    "year": 2018
+  },
   "doi:10.1515/crll.1989.399.1": {
     "fetched": "2026-11-04",
     "first_author": "",
@@ -1814,6 +1886,14 @@
     "journal": "The Annals of Mathematics",
     "title": "Modular Elliptic Curves and Fermat's Last Theorem",
     "year": 1995
+  },
+  "doi:10.24033/bsmf.1494": {
+    "fetched": "2026-11-10",
+    "first_author": "Doob",
+    "found": true,
+    "journal": "Bulletin de la Soci&amp;#233;t&amp;#233; math&amp;#233;matique de France",
+    "title": "Conditional brownian motion and the boundary limits of harmonic functions",
+    "year": 1957
   },
   "doi:10.4007/annals.2015.182.1.9": {
     "fetched": "2026-11-07",

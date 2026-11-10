@@ -270,6 +270,116 @@ def generate_essay_plates() -> dict[str, str]:
     p3_bytes = _encode_png(w, h, b3)
     (PLATES_DIR / "essay03.png").write_bytes(p3_bytes)
     hashes["essay03"] = hashlib.sha256(p3_bytes).hexdigest()[:8]
+
+    # Plate 4: essay04.png (Tensegrity, Microcausality & Zero Modes: braced cubic truss + rank matrix + spacelike arms)
+    b4 = _make_canvas(w, h, stone)
+    _fill_rect(b4, w, h, 36, 36, 582, 594, vellum)
+    _fill_rect(b4, w, h, 618, 36, 1164, 594, vellum)
+    # Left: 3D isometric cubic truss with 6 verdigris diagonal shear braces
+    cube_pts = [
+        (160, 210), (360, 210), (360, 410), (160, 410),
+        (245, 145), (445, 145), (445, 345), (245, 345),
+    ]
+    cube_edges = [
+        (0, 1), (1, 2), (2, 3), (3, 0),
+        (4, 5), (5, 6), (6, 7), (7, 4),
+        (0, 4), (1, 5), (2, 6), (3, 7),
+    ]
+    cube_diags = [(0, 2), (4, 6), (0, 5), (3, 6), (1, 6), (0, 7)]
+    for i, j in cube_diags:
+        _draw_line(b4, w, h, cube_pts[i][0], cube_pts[i][1], cube_pts[j][0], cube_pts[j][1], 2.8, verdigris, 0.8)
+    for i, j in cube_edges:
+        _draw_line(b4, w, h, cube_pts[i][0], cube_pts[i][1], cube_pts[j][0], cube_pts[j][1], 3.8, prussian, 0.92)
+    for cx_p, cy_p in cube_pts:
+        _draw_disc(b4, w, h, cx_p, cy_p, 8.5, ink)
+    # Right: su(4) 6+9 Cartan decomposition lattice & spacelike lightcone arms [A_A, A_B] = 0
+    _draw_line(b4, w, h, 890, 110, 890, 520, 2.0, rule, 0.9)
+    _draw_line(b4, w, h, 720, 145, 1060, 485, 2.2, minium, 0.45)
+    _draw_line(b4, w, h, 1060, 145, 720, 485, 2.2, minium, 0.45)
+    _draw_ring(b4, w, h, 755, 315, 58.0, 3.6, prussian, 0.9)
+    _draw_ring(b4, w, h, 1025, 315, 58.0, 3.6, verdigris, 0.9)
+    for k in range(3):
+        ang = k * (2.0 * math.pi / 3.0)
+        _draw_disc(b4, w, h, 755 + 58 * math.cos(ang), 315 + 58 * math.sin(ang), 7.5, prussian)
+        _draw_disc(b4, w, h, 1025 + 58 * math.cos(ang), 315 + 58 * math.sin(ang), 7.5, verdigris)
+    for r_i in range(3):
+        for c_i in range(3):
+            gx, gy = 855 + c_i * 35, 280 + r_i * 35
+            _draw_disc(b4, w, h, gx, gy, 5.5, sienna, 0.85)
+    _draw_line(b4, w, h, 600, 54, 600, 576, 3.0, ink, 0.85)
+    p4_bytes = _encode_png(w, h, b4)
+    (PLATES_DIR / "essay04.png").write_bytes(p4_bytes)
+    hashes["essay04"] = hashlib.sha256(p4_bytes).hexdigest()[:8]
+
+    # Plate 5: essay05.png (Islands, Blinders & Conditional Survival: QES Page tent vs Hawking rise + Doob barrier chain)
+    b5 = _make_canvas(w, h, stone)
+    _fill_rect(b5, w, h, 36, 36, 1164, 594, vellum)
+    # Left-Center: Page curve axes + Hawking rising line + QES unitary tent crossing at midpoint
+    ax_x0, ax_y0, ax_w, ax_h = 95, 505, 520, 360
+    _draw_line(b5, w, h, ax_x0, ax_y0, ax_x0 + ax_w, ax_y0, 2.8, ink)
+    _draw_line(b5, w, h, ax_x0, ax_y0, ax_x0, ax_y0 - ax_h, 2.8, ink)
+    # Hawking coarse-grained / blinder line (minium)
+    _draw_line(b5, w, h, ax_x0, ax_y0, ax_x0 + ax_w, ax_y0 - ax_h + 20, 3.6, minium, 0.82)
+    # Island saddle descending line (verdigris faint)
+    _draw_line(b5, w, h, ax_x0, ax_y0 - ax_h + 20, ax_x0 + ax_w, ax_y0, 2.4, verdigris, 0.45)
+    # QES unitary tent (prussian bold)
+    mid_x, mid_y = ax_x0 + ax_w * 0.5, ax_y0 - (ax_h - 20) * 0.5
+    _draw_line(b5, w, h, ax_x0, ax_y0, mid_x, mid_y, 5.0, prussian)
+    _draw_line(b5, w, h, mid_x, mid_y, ax_x0 + ax_w, ax_y0, 5.0, prussian)
+    _draw_disc(b5, w, h, mid_x, mid_y, 11.0, sienna)
+    _draw_disc(b5, w, h, ax_x0 + ax_w, ax_y0, 10.0, verdigris)
+    # Right: 6-step absorbing barrier chain + Doob h-conditioned surviving trajectory
+    for b_idx in range(6):
+        bx = 700 + b_idx * 72
+        _draw_line(b5, w, h, bx, 150, bx, 480, 2.6, rule, 0.95)
+        # Absorbing sink node below
+        _draw_disc(b5, w, h, bx, 495, 7.5, minium, 0.8)
+        if b_idx < 5:
+            y_cur = 340 - b_idx * 28
+            y_nxt = 340 - (b_idx + 1) * 28
+            _draw_line(b5, w, h, bx, y_cur, bx + 72, y_nxt, 4.4, verdigris)
+            _draw_line(b5, w, h, bx, y_cur, bx + 26, 495, 2.0, minium, 0.55)
+        _draw_disc(b5, w, h, bx, 340 - b_idx * 28, 9.0, prussian)
+    p5_bytes = _encode_png(w, h, b5)
+    (PLATES_DIR / "essay05.png").write_bytes(p5_bytes)
+    hashes["essay05"] = hashlib.sha256(p5_bytes).hexdigest()[:8]
+
+    # Plate 6: essay06.png (One Timeless Operator, Four Regimes & Zero-Sorry Proof: 16-tick WdW clock + bilateral echo + turnstile)
+    b6 = _make_canvas(w, h, stone)
+    _fill_rect(b6, w, h, 36, 36, 1164, 594, vellum)
+    # Left: 16-state Page-Wootters timeless clock ring coupled to central 4-state system diamond
+    wcx, wcy, wr = 265.0, 315.0, 155.0
+    _draw_ring(b6, w, h, wcx, wcy, wr, 3.2, prussian, 0.85)
+    _draw_ring(b6, w, h, wcx, wcy, 68.0, 2.4, verdigris, 0.75)
+    for k in range(16):
+        ang = -0.5 * math.pi + k * (math.pi / 8.0)
+        tx, ty = wcx + wr * math.cos(ang), wcy + wr * math.sin(ang)
+        _draw_disc(b6, w, h, tx, ty, 7.5 if k % 4 else 10.5, prussian if k % 2 == 0 else sienna)
+        if k % 4 == 0:
+            ix, iy = wcx + 68.0 * math.cos(ang), wcy + 68.0 * math.sin(ang)
+            _draw_line(b6, w, h, ix, iy, tx, ty, 2.4, verdigris, 0.75)
+            _draw_disc(b6, w, h, ix, iy, 8.5, ink)
+    # Center: Bilateral X_A (x) X_B spin-echo pulse rails
+    for ry in (235, 395):
+        _draw_line(b6, w, h, 495, ry, 795, ry, 3.2, prussian)
+    for px_i in (555, 625, 695, 765):
+        _draw_line(b6, w, h, px_i, 195, px_i, 435, 3.8, sienna, 0.9)
+        _draw_disc(b6, w, h, px_i, 235, 8.5, verdigris)
+        _draw_disc(b6, w, h, px_i, 395, 8.5, verdigris)
+    # Right: 4-Wall exclusion frame + formal turnstile geometry (⊢)
+    _fill_rect(b6, w, h, 865, 135, 1115, 495, stone, 0.85)
+    _draw_line(b6, w, h, 865, 135, 1115, 135, 3.0, minium)
+    _draw_line(b6, w, h, 865, 495, 1115, 495, 3.0, minium)
+    _draw_line(b6, w, h, 865, 135, 865, 495, 3.0, minium)
+    _draw_line(b6, w, h, 1115, 135, 1115, 495, 3.0, minium)
+    # Crisp turnstile symbol (geometric vertical + horizontal bar, not letters) + unitary survival disc
+    _draw_line(b6, w, h, 945, 235, 945, 395, 6.0, ink)
+    _draw_line(b6, w, h, 945, 315, 1035, 315, 6.0, ink)
+    _draw_disc(b6, w, h, 1055, 315, 16.0, verdigris)
+    _draw_ring(b6, w, h, 1055, 315, 26.0, 3.0, prussian)
+    p6_bytes = _encode_png(w, h, b6)
+    (PLATES_DIR / "essay06.png").write_bytes(p6_bytes)
+    hashes["essay06"] = hashlib.sha256(p6_bytes).hexdigest()[:8]
     return hashes
 
 
@@ -394,6 +504,155 @@ def render_instrument(essay: dict, is_es: bool = False) -> str:
             <div><span data-en="Mutation Gate:" data-es="Compuerta de Mutación:">Mutation Gate:</span> <strong data-cs-read="mutants" data-en="8/8 mutants killed (PASS)" data-es="8/8 mutantes eliminados (PASA)">8/8 mutants killed (PASS)</strong></div>
           </div>
           <button type="button" class="tp-cta" data-cs-knockout aria-pressed="false" data-en="Toggle Lax Prose Mode (Disable Parent Gate)" data-es="Alternar Modo Laxo (Apagar Compuerta Madre)">Toggle Lax Prose Mode (Disable Parent Gate)</button>
+        </div>
+      </div>
+      <p class="tp-essay-status" data-cs-status role="status"></p>
+    </section>"""
+
+    if kind == "kinematic":
+        svg_aria = (
+            "Comparación rango-nulidad de modos blandos en celosía cúbica, modos no locales en su(4) y deriva de negatividad BMV"
+            if is_es
+            else "Rank-nullity comparison of cubic space-frame floppy modes, su(4) non-local zero-modes, and BMV entanglement negativity drift"
+        )
+        return f"""    <section id="instrument" class="tp-essay-observatory" data-cs-instrument="kinematic" aria-labelledby="inst-heading">
+      <div class="tp-essay-obs-head">
+        <p class="tp-kicker" data-en="Interactive Rank–Nullity &amp; Microcausality Observatory · ES.04" data-es="Observatorio Interactivo de Rango-Nulidad y Microcausalidad · ES.04">Interactive Rank–Nullity &amp; Microcausality Observatory · ES.04</p>
+        <h2 id="inst-heading" class="tp-h2" data-en="Cubic Space-Frame Bracing (3V − 6 − E) vs. su(4) Microcausality Locking" data-es="Arriostramiento de Celosía Cúbica (3V − 6 − E) frente al Bloqueo de Microcausalidad en su(4)">Cubic Space-Frame Bracing (3V − 6 − E) vs. su(4) Microcausality Locking</h2>
+      </div>
+      <div class="tp-essay-obs-grid">
+        <svg class="tp-essay-svg" viewBox="0 0 560 250" role="img" aria-label="{svg_aria}">
+          <rect x="8" y="8" width="544" height="234" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule)"/>
+          <text x="24" y="40" fill="var(--tp-ink)" font-size="12" font-weight="700" data-en="1 · 3D Cubic Truss Shear Zero-Modes (V = 8, E = 12 + braces)" data-es="1 · Modos Blandos de Corte en Celosía Cúbica 3D (V = 8, E = 12 + diagonales)">1 · 3D Cubic Truss Shear Zero-Modes (V = 8, E = 12 + braces)</text>
+          <rect x="24" y="50" width="230" height="18" rx="4" fill="var(--tp-vellum)" stroke="var(--tp-rule)"/>
+          <rect data-cs-bar="truss" x="24" y="50" width="8.0" height="18" rx="4" fill="var(--tp-prussian)"/>
+          <text data-cs-read="trussmodes" x="268" y="64" fill="var(--tp-ink)" font-family="monospace" font-size="13" data-en="0 floppy · 0 self-stress" data-es="0 blandos · 0 autotensión">0 floppy · 0 self-stress</text>
+
+          <text x="24" y="114" fill="var(--tp-ink)" font-size="12" font-weight="700" data-en="2 · su(4) Unpinned Cartan–Weyl σ_i ⊗ σ_j Modes (dim 15 = 6 local + 9 non-local)" data-es="2 · Modos Cartan–Weyl σ_i ⊗ σ_j Libres en su(4) (dim 15 = 6 locales + 9 no locales)">2 · su(4) Unpinned Cartan–Weyl σ_i ⊗ σ_j Modes (dim 15 = 6 local + 9 non-local)</text>
+          <rect x="24" y="124" width="230" height="18" rx="4" fill="var(--tp-vellum)" stroke="var(--tp-rule)"/>
+          <rect data-cs-bar="su4" x="24" y="124" width="8.0" height="18" rx="4" fill="var(--tp-verdigris)"/>
+          <text data-cs-read="su4modes" x="268" y="138" fill="var(--tp-ink)" font-family="monospace" font-size="13" data-en="0 free non-local (local kernel = 6)" data-es="0 no locales libres (núcleo local = 6)">0 free non-local (local kernel = 6)</text>
+
+          <text x="24" y="186" fill="var(--tp-ink)" font-size="12" font-weight="700" data-en="3 · Two-Mass BMV Negativity Gauge Drift ΔN under Allowed Algebra" data-es="3 · Deriva de Calibre de Negatividad BMV ΔN bajo el Álgebra Permitida">3 · Two-Mass BMV Negativity Gauge Drift ΔN under Allowed Algebra</text>
+          <rect x="24" y="196" width="230" height="18" rx="4" fill="var(--tp-vellum)" stroke="var(--tp-rule)"/>
+          <rect data-cs-bar="drift" x="24" y="196" width="8.0" height="18" rx="4" fill="var(--tp-minium)"/>
+          <text data-cs-read="bmvdrift" x="268" y="210" fill="var(--tp-ink)" font-family="monospace" font-size="13" data-en="ΔN = 0.000 (N = 0.078 invariant)" data-es="ΔN = 0.000 (N = 0.078 invariante)">ΔN = 0.000 (N = 0.078 invariant)</text>
+        </svg>
+        <div class="tp-essay-controls">
+          <label class="tp-essay-ctrl">
+            <span data-en="Diagonal shear braces on cubic frame" data-es="Diagonales de corte en celosía cúbica">Diagonal shear braces on cubic frame</span>
+            <strong data-cs-read="braces">6 / 6</strong>
+            <input type="range" min="0" max="7" step="1" value="6" data-cs-input="braces">
+          </label>
+          <label class="tp-essay-ctrl">
+            <span data-en="Pinned spatial microcausality commutators [A_A, A_B] = 0" data-es="Conmutadores espaciales fijados [A_A, A_B] = 0">Pinned spatial microcausality commutators [A_A, A_B] = 0</span>
+            <strong data-cs-read="pinrank">9 / 9</strong>
+            <input type="range" min="0" max="9" step="1" value="9" data-cs-input="pinrank">
+          </label>
+          <button type="button" class="tp-cta" data-cs-knockout aria-pressed="false" data-en="Toggle Non-Local su(4) Refactorization Defect" data-es="Alternar Defecto de Refactorización No Local en su(4)">Toggle Non-Local su(4) Refactorization Defect</button>
+        </div>
+      </div>
+      <p class="tp-essay-status" data-cs-status role="status"></p>
+    </section>"""
+
+    if kind == "island_page":
+        svg_aria = (
+            "Comparación en nats entre la curva unitaria QES de Page, la línea de grano grueso sin vestido gravitatorio y el costo KL de Doob"
+            if is_es
+            else "Comparison in nats of the unitary QES Page tent, the undressed subalgebra coarse-graining line, and the Doob KL post-selection cost"
+        )
+        grp_aria = "Seleccionar régimen de horizonte o barrera" if is_es else "Select horizon or barrier regime"
+        return f"""    <section id="instrument" class="tp-essay-observatory" data-cs-instrument="island_page" aria-labelledby="inst-heading">
+      <div class="tp-essay-obs-head">
+        <p class="tp-kicker" data-en="Interactive Page-Curve &amp; Doob Survival Observatory · ES.05" data-es="Observatorio Interactivo de Curva de Page y Supervivencia de Doob · ES.05">Interactive Page-Curve &amp; Doob Survival Observatory · ES.05</p>
+        <h2 id="inst-heading" class="tp-h2" data-en="Unitary QES Saddle Switch vs. Subalgebra Blinders vs. Doob Post-Selection Cost" data-es="Cambio de Silla QES Unitario frente a Subálgebra Restringida y Costo de Doob">Unitary QES Saddle Switch vs. Subalgebra Blinders vs. Doob Post-Selection Cost</h2>
+      </div>
+      <div class="tp-essay-obs-grid">
+        <svg class="tp-essay-svg" viewBox="0 0 560 260" role="img" aria-label="{svg_aria}">
+          <rect x="8" y="8" width="544" height="244" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule)"/>
+          <line x1="64" y1="224" x2="496" y2="224" stroke="var(--tp-ink)" stroke-width="1.5"/>
+          <line x1="64" y1="44" x2="64" y2="224" stroke="var(--tp-ink)" stroke-width="1.5"/>
+          <line x1="64" y1="224" x2="496" y2="44" stroke="var(--tp-minium)" stroke-width="2.2" stroke-dasharray="6 4"/>
+          <polyline points="64,224 280,134 496,224" fill="none" stroke="var(--tp-prussian)" stroke-width="3.4"/>
+          <circle data-ip-point cx="280.0" cy="134.0" r="8.5" fill="var(--tp-verdigris)" stroke="var(--tp-vellum)" stroke-width="2.5"/>
+          <text x="76" y="34" fill="var(--tp-ink)" font-size="12" font-weight="700" data-en="Entropy S(k) in nats · Solid: QES min(k, 6−k) ln 2 · Dashed: Undressed k ln 2" data-es="Entropía S(k) en nats · Sólida: QES mín(k, 6−k) ln 2 · Guiones: Sin vestido k ln 2">Entropy S(k) in nats · Solid: QES min(k, 6−k) ln 2 · Dashed: Undressed k ln 2</text>
+          <text x="64" y="242" fill="var(--tp-ink)" font-size="11">k = 0</text>
+          <text x="266" y="242" fill="var(--tp-ink)" font-size="11">k = 3</text>
+          <text x="476" y="242" fill="var(--tp-ink)" font-size="11">k = 6</text>
+        </svg>
+        <div class="tp-essay-controls">
+          <div class="tp-essay-btn-stack" role="group" aria-label="{grp_aria}">
+            <button type="button" class="tp-cta" data-ip-mode="qes_unitary" aria-pressed="true" data-en="1 · Unitary QES Saddle Switch (DERIVED)" data-es="1 · Cambio de Silla QES Unitario (DERIVADO)">1 · Unitary QES Saddle Switch (DERIVED)</button>
+            <button type="button" class="tp-cta" data-ip-mode="blinder_cptp" aria-pressed="false" data-en="2 · Subalgebra Blinders (PROPOSED CPTP)" data-es="2 · Subálgebra sin Vestido (CPTP PROPUESTO)">2 · Subalgebra Blinders (PROPOSED CPTP)</button>
+            <button type="button" class="tp-cta" data-ip-mode="doob_postselect" aria-pressed="false" data-en="3 · Doob Conditional Survival (Post-Selected)" data-es="3 · Supervivencia Condicional de Doob (Postselección)">3 · Doob Conditional Survival (Post-Selected)</button>
+          </div>
+          <label class="tp-essay-ctrl">
+            <span data-en="Evaporation / barrier step k (N = 6)" data-es="Paso de evaporación / barrera k (N = 6)">Evaporation / barrier step k (N = 6)</span>
+            <strong data-cs-read="stepk">k = 3 / 6</strong>
+            <input type="range" min="0" max="6" step="1" value="3" data-cs-input="stepk">
+          </label>
+          <label class="tp-essay-ctrl">
+            <span data-en="Per-step absorbing hazard γ (Doob benchmark)" data-es="Riesgo absorbente por paso γ (referencia Doob)">Per-step absorbing hazard γ (Doob benchmark)</span>
+            <strong data-cs-read="hazard">γ = 0.25</strong>
+            <input type="range" min="0.05" max="0.50" step="0.05" value="0.25" data-cs-input="hazard">
+          </label>
+          <div class="tp-essay-readout-box">
+            <div><span data-en="Radiation Entropy S(k):" data-es="Entropía de Radiación S(k):">Radiation Entropy S(k):</span> <strong data-cs-read="snats">2.079 nats</strong></div>
+            <div><span data-en="Doob KL Sampling Cost V_Doob:" data-es="Costo KL de Muestreo V_Doob:">Doob KL Sampling Cost V_Doob:</span> <strong data-cs-read="vdoob">0.000 nats</strong></div>
+            <div><span data-en="Trajectory Selection:" data-es="Selección de Trayectorias:">Trajectory Selection:</span> <strong data-cs-read="discard" data-en="0.0% discarded" data-es="0.0 % descartado">0.0% discarded</strong></div>
+          </div>
+          <button type="button" class="tp-cta" data-cs-knockout aria-pressed="false" data-en="Toggle Ensemble-Conflation Defect" data-es="Alternar Defecto de Confusión de Ensambles">Toggle Ensemble-Conflation Defect</button>
+        </div>
+      </div>
+      <p class="tp-essay-status" data-cs-status role="status"></p>
+    </section>"""
+
+    if kind == "wdw_clock":
+        svg_aria = (
+            "Visibilidad condicionada de Page-Wootters en el núcleo 64x64, negatividad cuántica bajo eco bilateral CPMG y exclusión híbrida a 33 micrómetros"
+            if is_es
+            else "Conditioned Page-Wootters visibility from the 64x64 nullspace, quantum negativity under bilateral CPMG echo, and 33-micrometre hybrid exclusion"
+        )
+        grp_aria = "Seleccionar protocolo de eco de espín" if is_es else "Select spin-echo protocol"
+        return f"""    <section id="instrument" class="tp-essay-observatory" data-cs-instrument="wdw_clock" aria-labelledby="inst-heading">
+      <div class="tp-essay-obs-head">
+        <p class="tp-kicker" data-en="Interactive 64×64 Timeless Nullspace &amp; Bilateral Echo Observatory · ES.06" data-es="Observatorio Interactivo de Núcleo Atemporal 64×64 y Eco Bilateral · ES.06">Interactive 64×64 Timeless Nullspace &amp; Bilateral Echo Observatory · ES.06</p>
+        <h2 id="inst-heading" class="tp-h2" data-en="Conditioned Clock Visibility, Synchronous X_A ⊗ X_B Echo &amp; 33 µm Hybrid Exclusion" data-es="Visibilidad de Reloj Condicionada, Eco Síncrono X_A ⊗ X_B y Exclusión Híbrida a 33 µm">Conditioned Clock Visibility, Synchronous X_A ⊗ X_B Echo &amp; 33 µm Hybrid Exclusion</h2>
+      </div>
+      <div class="tp-essay-obs-grid">
+        <svg class="tp-essay-svg" viewBox="0 0 560 250" role="img" aria-label="{svg_aria}">
+          <rect x="8" y="8" width="544" height="234" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule)"/>
+          <text x="24" y="40" fill="var(--tp-ink)" font-size="12" font-weight="700" data-en="1 · Conditioned Zych–Brukner Visibility ⟨t_n|Ψ⟩⟩ from ker(C) (dim 64)" data-es="1 · Visibilidad Condicionada ⟨t_n|Ψ⟩⟩ desde ker(C) (dim 64)">1 · Conditioned Zych–Brukner Visibility ⟨t_n|Ψ⟩⟩ from ker(C) (dim 64)</text>
+          <rect x="24" y="50" width="230" height="18" rx="4" fill="var(--tp-vellum)" stroke="var(--tp-rule)"/>
+          <rect data-cs-bar="vis" x="24" y="50" width="8.0" height="18" rx="4" fill="var(--tp-prussian)"/>
+          <text data-cs-read="vis" x="268" y="64" fill="var(--tp-ink)" font-family="monospace" font-size="13">V(t_n) = 0.000 · η = 0</text>
+
+          <text x="24" y="114" fill="var(--tp-ink)" font-size="12" font-weight="700" data-en="2 · Unitary Quantum BMV Negativity under Quasistatic Gradient Echo" data-es="2 · Negatividad BMV Cuántica Unitaria bajo Eco de Gradiente Cuasiestático">2 · Unitary Quantum BMV Negativity under Quasistatic Gradient Echo</text>
+          <rect x="24" y="124" width="230" height="18" rx="4" fill="var(--tp-vellum)" stroke="var(--tp-rule)"/>
+          <rect data-cs-bar="negq" x="24" y="124" width="195.4" height="18" rx="4" fill="var(--tp-verdigris)"/>
+          <text data-cs-read="negq" x="268" y="138" fill="var(--tp-ink)" font-family="monospace" font-size="13">N_Q = 0.357</text>
+
+          <text x="24" y="186" fill="var(--tp-ink)" font-size="12" font-weight="700" data-en="3 · Classical-Hybrid Smeared Gravity Channel (T.05/T.06 4-Wall Gate)" data-es="3 · Canal Híbrido Clásico de Gravedad Suavizada (Compuerta de 4 Muros)">3 · Classical-Hybrid Smeared Gravity Channel (T.05/T.06 4-Wall Gate)</text>
+          <rect x="24" y="196" width="230" height="18" rx="4" fill="var(--tp-vellum)" stroke="var(--tp-rule)"/>
+          <rect data-cs-bar="negh" x="24" y="196" width="8.0" height="18" rx="4" fill="var(--tp-minium)"/>
+          <text data-cs-read="negh" x="268" y="210" fill="var(--tp-ink)" font-family="monospace" font-size="13" data-en="N_hyb = 0.000 (σ ≤ 33 µm excluded)" data-es="N_hyb = 0.000 (σ ≤ 33 µm excluido)">N_hyb = 0.000 (σ ≤ 33 µm excluded)</text>
+        </svg>
+        <div class="tp-essay-controls">
+          <div class="tp-essay-btn-stack" role="group" aria-label="{grp_aria}">
+            <button type="button" class="tp-cta" data-wdw-echo="bilateral" aria-pressed="true" data-en="Bilateral X_A ⊗ X_B Echo (Preserves Z_A Z_B)" data-es="Eco Bilateral X_A ⊗ X_B (Preserva Z_A Z_B)">Bilateral X_A ⊗ X_B Echo (Preserves Z_A Z_B)</button>
+            <button type="button" class="tp-cta" data-wdw-echo="unilateral" aria-pressed="false" data-en="Unilateral X_A ⊗ I Echo (Cancels Z_A Z_B!)" data-es="Eco Unilateral X_A ⊗ I (¡Cancela Z_A Z_B!)">Unilateral X_A ⊗ I Echo (Cancels Z_A Z_B!)</button>
+          </div>
+          <label class="tp-essay-ctrl">
+            <span data-en="Conditioned clock reading n ∈ {{0..15}}" data-es="Lectura condicionada del reloj n ∈ {{0..15}}">Conditioned clock reading n ∈ {{0..15}}</span>
+            <strong data-cs-read="tickn">n = 4 (t_n = 0.50π)</strong>
+            <input type="range" min="0" max="15" step="1" value="4" data-cs-input="tickn">
+          </label>
+          <label class="tp-essay-ctrl">
+            <span data-en="CPMG π-pulses N_dd against 1/f gradient noise" data-es="Pulsos π CPMG N_dd frente a ruido de gradiente 1/f">CPMG π-pulses N_dd against 1/f gradient noise</span>
+            <strong data-cs-read="ndd">N_dd = 4 (γ_eff = 7.50e-4 s⁻¹)</strong>
+            <input type="range" min="1" max="8" step="1" value="4" data-cs-input="ndd">
+          </label>
+          <button type="button" class="tp-cta" data-cs-knockout aria-pressed="false" data-en="Toggle Retired 44 µm / White-Noise Defect" data-es="Alternar Defecto de 44 µm Retirado / Ruido Blanco">Toggle Retired 44 µm / White-Noise Defect</button>
         </div>
       </div>
       <p class="tp-essay-status" data-cs-status role="status"></p>
@@ -695,7 +954,7 @@ def render_essay_page(essay: dict, essays: list[dict], catalog: dict, lang: str 
       </a>
     </nav>
     <p class="tp-pager-all">
-      <a href="../" data-en="All 3 Cross-Scale Essays →" data-es="Los 3 Ensayos entre Escalas →">All 3 Cross-Scale Essays →</a> ·
+      <a href="../" data-en="All 6 Cross-Scale Essays →" data-es="Los 6 Ensayos entre Escalas →">All 6 Cross-Scale Essays →</a> ·
       <a href="../../timegravity/" data-en="Time &amp; Gravity (T.00–T.12) →" data-es="Tiempo y Gravedad (T.00–T.12) →">Time &amp; Gravity (T.00–T.12) →</a>
     </p>
 {B.render_site_footer(rel_res)}
@@ -723,9 +982,24 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
     ]
     ld = B._ld("CollectionPage", seo_t.replace(f" | {BRAND}", ""), seo_d, canon, lang, image=image, crumbs=crumbs)
     head = B.render_head(seo_t, seo_d, path, "website", image, rel_root, rel_res, ld, lang)
-    cards = render_essay_cards(essays, rel_res, is_es=is_es)
+    cards_m1 = render_essay_cards(essays[:3], rel_res, is_es=is_es)
+    cards_m2 = render_essay_cards(essays[3:], rel_res, is_es=is_es)
     aria_crumb = "Ruta de navegación" if is_es else "Breadcrumb"
-    aria_rack = "Ensayos Destacados entre Escalas" if is_es else "Cross-Scale Featured Essays"
+    aria_rack1 = "Movimiento I: Pisos, Registros y Relojes" if is_es else "Movement I: Floors, Ledgers & Clocks"
+    aria_rack2 = "Movimiento II: Celosías, Horizontes y Operadores Atemporales" if is_es else "Movement II: Frames, Horizons & Timeless Operators"
+
+    m2_section = ""
+    if essays[3:]:
+        m2_section = f"""
+    <section class="tp-issue-rack" aria-label="{aria_rack2}">
+      <div class="tp-section-head">
+        <p class="tp-kicker" data-en="Movement II · ES.04–ES.06 · Rigidity, Horizons &amp; Coupled Formal Proof" data-es="Movimiento II · ES.04–ES.06 · Rigidez, Horizontes y Prueba Formal Acoplada">Movement II · ES.04–ES.06 · Rigidity, Horizons &amp; Coupled Formal Proof</p>
+        <h2 class="tp-h2" data-en="Frames, Horizons, and One Timeless Operator" data-es="Celosías, Horizontes y un Operador Atemporal">Frames, Horizons, and One Timeless Operator</h2>
+      </div>
+      <div class="tp-rack-grid">
+{cards_m2}
+      </div>
+    </section>"""
 
     return f"""{head}
 <body class="tp-body tp-page-hub">
@@ -739,20 +1013,24 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
       </ol>
     </nav>
     <section class="tp-hero">
-      <p class="tp-kicker" data-en="Featured Synthesis · 3 Standalone Essays · Shared Laws &amp; Verification" data-es="Síntesis Destacada · 3 Ensayos Independientes · Leyes y Verificación">Featured Synthesis · 3 Standalone Essays · Shared Laws &amp; Verification</p>
+      <p class="tp-kicker" data-en="Featured Synthesis · 6 Standalone Essays · Two Movements &amp; Zero-Sorry Verification" data-es="Síntesis Destacada · 6 Ensayos Independientes · Dos Movimientos y Verificación Formal">Featured Synthesis · 6 Standalone Essays · Two Movements &amp; Zero-Sorry Verification</p>
       <h1 class="tp-h1" data-en="Cross-Scale Essays: Clocks, Stone, and Living Matter" data-es="Ensayos entre Escalas: Relojes, Piedra y Materia Viva">Cross-Scale Essays: Clocks, Stone, and Living Matter</h1>
-      <p class="tp-standfirst" data-en="Three standalone essays exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, and thermodynamic uncertainty—govern 10⁻¹⁴ kg quantum-gravity diamonds, optical clocks, porous mortar, and nanoscale biological channels." data-es="Tres ensayos independientes sobre por qué las mismas ecuaciones matemáticas y reglas de verificación formal —fluctuación-disipación, procedencia epistémica y relación de incertidumbre termodinámica— gobiernan diamantes de gravedad cuántica de 10⁻¹⁴ kg, relojes ópticos, mortero poroso y canales biológicos a nanoescala.">Three standalone essays exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, and thermodynamic uncertainty—govern 10⁻¹⁴ kg quantum-gravity diamonds, optical clocks, porous mortar, and nanoscale biological channels.</p>
+      <p class="tp-standfirst" data-en="Six standalone essays in two movements exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, and coupled timeless constraints—govern 10⁻¹⁴ kg quantum-gravity diamonds, space-frame trusses, black-hole horizons, and nanoscale biological channels." data-es="Seis ensayos independientes en dos movimientos sobre por qué las mismas ecuaciones matemáticas y reglas de verificación formal —fluctuación-disipación, procedencia epistémica, incertidumbre termodinámica, rango-nulidad y microcausalidad, supervivencia condicional de Doob y ligaduras atemporales acopladas— gobiernan diamantes de gravedad cuántica de 10⁻¹⁴ kg, celosías estructurales, horizontes de agujeros negros y canales biológicos a nanoescala.">Six standalone essays in two movements exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, and coupled timeless constraints—govern 10⁻¹⁴ kg quantum-gravity diamonds, space-frame trusses, black-hole horizons, and nanoscale biological channels.</p>
       <div class="tp-series-rack-ctas">
-        <a class="tp-cta tp-cta-primary" href="mesoscopic-floor/" data-en="Read ES.01 · The Mesoscopic Floor →" data-es="Leer ES.01 · El Piso Mesoscópico →">Read ES.01 · The Mesoscopic Floor →</a>
+        <a class="tp-cta tp-cta-primary" href="mesoscopic-floor/" data-en="Start Movement I · ES.01 The Mesoscopic Floor →" data-es="Iniciar Movimiento I · ES.01 El Piso Mesoscópico →">Start Movement I · ES.01 The Mesoscopic Floor →</a>
+        <a class="tp-cta" href="coupled-constraints-formal-proof/" data-en="Read Capstone · ES.06 Coupled Timeless Proof →" data-es="Leer Cierre · ES.06 Prueba Atemporal Acoplada →">Read Capstone · ES.06 Coupled Timeless Proof →</a>
         <a class="tp-cta" href="../timegravity/" data-en="Time &amp; Gravity Core Series (T.00–T.12) →" data-es="Serie Principal Tiempo y Gravedad (T.00–T.12) →">Time &amp; Gravity Core Series (T.00–T.12) →</a>
-        <a class="tp-cta" href="../about/" data-en="Essay Zero · Shared Verification Engine →" data-es="Ensayo Cero · Motor Compartido →">Essay Zero · Shared Verification Engine →</a>
       </div>
     </section>
-    <section class="tp-issue-rack" aria-label="{aria_rack}">
+    <section class="tp-issue-rack" aria-label="{aria_rack1}">
+      <div class="tp-section-head">
+        <p class="tp-kicker" data-en="Movement I · ES.01–ES.03 · Thermal Baths, Epistemic Ledgers &amp; Markov Clocks" data-es="Movimiento I · ES.01–ES.03 · Baños Térmicos, Registros Epistémicos y Relojes Markovianos">Movement I · ES.01–ES.03 · Thermal Baths, Epistemic Ledgers &amp; Markov Clocks</p>
+        <h2 class="tp-h2" data-en="Floors, Ledgers, and Dissipative Clocks" data-es="Pisos, Registros y Relojes Disipativos">Floors, Ledgers, and Dissipative Clocks</h2>
+      </div>
       <div class="tp-rack-grid">
-{cards}
+{cards_m1}
       </div>
-    </section>
+    </section>{m2_section}
 {B.render_site_footer(rel_res)}
   </main>
   <script type="module" src="{rel_res}/modules/main.mjs"></script>
@@ -799,7 +1077,7 @@ def main() -> int:
     (RESEARCH / B.ES_PREFIX.strip("/") / "index.html").write_text(B.to_spanish_static(B.render_hub_index(catalog, "es")), encoding="utf-8")
     (RESEARCH / "sitemap.xml").write_text(B.render_research_sitemap(catalog), encoding="utf-8")
     (RESEARCH / "llms.txt").write_text(B.render_llms_txt(catalog), encoding="utf-8")
-    print(f"PASS: Built {len(written)} Cross-Scale Essay pages (hub + 3 essays × EN/ES-MX) + 3 PNG plates + cover, sitemap.xml and llms.txt.")
+    print(f"PASS: Built {len(written)} Cross-Scale Essay pages (hub + {len(load_essays())} essays × EN/ES-MX) + {len(load_essays())} PNG plates + cover, sitemap.xml and llms.txt.")
     return 0
 
 

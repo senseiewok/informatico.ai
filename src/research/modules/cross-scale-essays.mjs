@@ -1,13 +1,16 @@
 /**
  * @module cross-scale-essays
- * Zero-dependency interactive instruments for the 3 Informatico.ai Cross-Scale Featured Essays (/essays/):
- *  - [data-cs-instrument="mesoscopic"] (ES.01): Fluctuation-dissipation, short-wavelength gas saturation vs R^6 T^9
+ * Zero-dependency interactive instruments for the 6 Informatico.ai Cross-Scale Featured Essays (/essays/):
+ *  - [data-cs-instrument="mesoscopic"]  (ES.01): Fluctuation-dissipation, short-wavelength gas saturation vs R^6 T^9
  *    black-body photon localization in ultra-high vacuum (0.15–4 K), paired with Stokes-Einstein & Ogston-Amsden
  *    hindered nanoparticle diffusion in aqueous hydrogels (310.15 K).
- *  - [data-cs-instrument="epistemic"]  (ES.02): Six-tier Epistemic Lattice & 8-mutant falsification inspector comparing
+ *  - [data-cs-instrument="epistemic"]   (ES.02): Six-tier Epistemic Lattice & 8-mutant falsification inspector comparing
  *    tabletop quantum-gravity deductions (DERIVED (NOT MEASURED)) with Cryo-EM structural gaps (UNRESOLVED vs DELETED).
- *  - [data-cs-instrument="tur_pores"]  (ES.03): Barato-Seifert Thermodynamic Uncertainty Relation (Q_TUR >= 2) on a
+ *  - [data-cs-instrument="tur_pores"]   (ES.03): Barato-Seifert Thermodynamic Uncertainty Relation (Q_TUR >= 2) on a
  *    biased Markovian clock/gating ring paired with Brinkman porous screening & Kramers barrier escape.
+ *  - [data-cs-instrument="kinematic"]   (ES.04): Maxwell-Calladine rank-nullity rigidity vs su(4) microcausality normalizer.
+ *  - [data-cs-instrument="island_page"] (ES.05): Unitary QES saddle switch vs subalgebra coarse-graining vs Doob h-transform.
+ *  - [data-cs-instrument="wdw_clock"]   (ES.06): 64x64 Page-Wootters clock/branch conditioner & bilateral CPMG parity filter.
  *  - [data-cs-predict]: Predict-before-reveal interactive commitment prompt.
  */
 
@@ -322,6 +325,273 @@ function initTurPores(root) {
   render();
 }
 
+function initKinematic(root) {
+  const bracesInput = root.querySelector('[data-cs-input="braces"]');
+  const pinInput = root.querySelector('[data-cs-input="pinrank"]');
+  const koBtn = root.querySelector("[data-cs-knockout]");
+  const statusEl = root.querySelector("[data-cs-status]");
+  const barTruss = root.querySelector('[data-cs-bar="truss"]');
+  const barSu4 = root.querySelector('[data-cs-bar="su4"]');
+  const barDrift = root.querySelector('[data-cs-bar="drift"]');
+  const reads = {};
+  root.querySelectorAll("[data-cs-read]").forEach((el) => { reads[el.getAttribute("data-cs-read")] = el; });
+  let knockout = false;
+
+  const MSG = {
+    en: {
+      ok: "Rank–nullity locked: 6 diagonal braces collapse all 6 shear zero-modes of a cubic space frame (18 − 18 = 0), while 9 spatial microcausality commutators [A_A, A_B] = 0 restrict su(4) (dim 15) to su(2)_A ⊕ su(2)_B (dim 6), keeping BMV negativity N = 0.078 gauge-invariant.",
+      ko: "Non-local refactorization defect active: unlocks Cartan–Weyl σ_i ⊗ σ_j rotations in su(4) across spacelike-separated arms, allowing arbitrary entanglement drift ΔN = 0.422—violating spatial microcausality.",
+    },
+    es: {
+      ok: "Rango-nulidad bloqueado: 6 diagonales eliminan los 6 modos blandos de corte en una celosía cúbica (18 − 18 = 0), mientras 9 conmutadores de microcausalidad [A_A, A_B] = 0 restringen su(4) (dim 15) a su(2)_A ⊕ su(2)_B (dim 6), fijando la negatividad BMV N = 0.078.",
+      ko: "Defecto de refactorización no local activo: desbloquea generadores Cartan–Weyl σ_i ⊗ σ_j en su(4) entre brazos espacialmente separados, induciendo una deriva ΔN = 0.422 que viola la microcausalidad.",
+    },
+  };
+
+  function render() {
+    const braces = Number(bracesInput ? bracesInput.value : 6);
+    const pinRank = knockout ? 0 : Number(pinInput ? pinInput.value : 9);
+    const isEs = lang() === "es";
+
+    const nFloppyTruss = Math.max(0, 6 - braces);
+    const nSelfStress = Math.max(0, braces - 6);
+    const nNonlocalZero = 9 - pinRank;
+    const gaugeDrift = nNonlocalZero === 0 ? 0.0 : Number((0.0469 * nNonlocalZero).toFixed(3));
+
+    if (reads.braces) reads.braces.textContent = `${braces} / 6`;
+    if (reads.pinrank) reads.pinrank.textContent = `${pinRank} / 9`;
+    if (reads.trussmodes) {
+      reads.trussmodes.textContent = isEs
+        ? `${nFloppyTruss} blandos · ${nSelfStress} autotensión`
+        : `${nFloppyTruss} floppy · ${nSelfStress} self-stress`;
+    }
+    if (reads.su4modes) {
+      reads.su4modes.textContent = isEs
+        ? `${nNonlocalZero} no locales libres (núcleo local = 6)`
+        : `${nNonlocalZero} free non-local (local kernel = 6)`;
+    }
+    if (reads.bmvdrift) {
+      reads.bmvdrift.textContent = nNonlocalZero === 0
+        ? (isEs ? "ΔN = 0.000 (N = 0.078 invariante)" : "ΔN = 0.000 (N = 0.078 invariant)")
+        : (isEs ? `ΔN = ${gaugeDrift.toFixed(3)} (ambiguo)` : `ΔN = ${gaugeDrift.toFixed(3)} (ambiguous)`);
+    }
+
+    if (barTruss) barTruss.setAttribute("width", Math.max(8, (nFloppyTruss / 6) * 230).toFixed(1));
+    if (barSu4) barSu4.setAttribute("width", Math.max(8, (nNonlocalZero / 9) * 230).toFixed(1));
+    if (barDrift) barDrift.setAttribute("width", Math.max(8, (gaugeDrift / 0.43) * 230).toFixed(1));
+
+    if (statusEl) {
+      const L = MSG[lang()];
+      if (knockout) {
+        statusEl.textContent = L.ko;
+        statusEl.setAttribute("data-state", "defect");
+      } else if (nFloppyTruss > 0 || nNonlocalZero > 0) {
+        statusEl.textContent = isEs
+          ? `Restricción parcial activa: ${nFloppyTruss} modos blandos mecánicos (${braces}/6 diagonales) y ${nNonlocalZero} generadores no locales libres en su(4) (${pinRank}/9 conmutadores [A_A, A_B] = 0; deriva ΔN = ${gaugeDrift.toFixed(3)}).`
+          : `Under-constrained regime active: ${nFloppyTruss} mechanical floppy modes (${braces}/6 diagonal braces) and ${nNonlocalZero} free non-local su(4) generators (${pinRank}/9 [A_A, A_B] = 0 commutators; BMV drift ΔN = ${gaugeDrift.toFixed(3)}).`;
+        statusEl.setAttribute("data-state", "defect");
+      } else {
+        statusEl.textContent = L.ok;
+        statusEl.setAttribute("data-state", "pass");
+      }
+    }
+  }
+
+  [bracesInput, pinInput].forEach((el) => { if (el) el.addEventListener("input", render); });
+  if (koBtn) {
+    koBtn.addEventListener("click", () => {
+      knockout = !knockout;
+      koBtn.setAttribute("aria-pressed", String(knockout));
+      render();
+    });
+  }
+  window.addEventListener("tp-lang-change", render);
+  root.setAttribute("data-cs-ready", "true");
+  render();
+}
+
+function initIslandPage(root) {
+  const stepInput = root.querySelector('[data-cs-input="stepk"]');
+  const hazInput = root.querySelector('[data-cs-input="hazard"]');
+  const modeBtns = root.querySelectorAll("button[data-ip-mode]");
+  const koBtn = root.querySelector("[data-cs-knockout]");
+  const statusEl = root.querySelector("[data-cs-status]");
+  const ptEl = root.querySelector("[data-ip-point]");
+  const reads = {};
+  root.querySelectorAll("[data-cs-read]").forEach((el) => { reads[el.getAttribute("data-cs-read")] = el; });
+  let mode = "qes_unitary";
+  let knockout = false;
+
+  const LN2 = Math.LN2;
+  const MSG = {
+    en: {
+      qes_unitary: "Regime 1 (Unitary QES Saddle Switch, DERIVED model): S_gen(k) = min(k, 6−k) ln 2 nats crosses from the empty Hawking saddle to the interior Island saddle at k = 3 and returns to 0 nats at k = 6 with zero discarded runs (V_Doob = 0 nats).",
+      blinder_cptp: "Regime 2 (Subalgebra Coarse-Graining / 'Blinders', PROPOSED arXiv:2602.06543): trace-preserving CPTP restriction omitting asymptotic gravitational dressing (0% discarded runs, V_Doob = 0 nats); global purity holds, but undressed radiation entropy climbs as k ln 2.",
+      doob_postselect: "Regime 3 (Doob h-Transform Conditional Survival, DERIVED theorem): conditioning an absorbing barrier chain on survival tilts transitions with zero post-selected variance at the terminal boundary ONLY by discarding 1 − (1−γ)⁶ of trajectories (V_Doob = −6 ln(1−γ) nats).",
+      ko: "Ensemble-conflation defect active: omits the interior Island saddle while falsely equating path-space KL post-selection discard cost with fine-grained von Neumann radiation entropy.",
+    },
+    es: {
+      qes_unitary: "Régimen 1 (Cambio de Silla QES Unitario, modelo DERIVADO): S_gen(k) = mín(k, 6−k) ln 2 nats cruza de la silla de Hawking a la silla de Isla en k = 3 y vuelve a 0 nats en k = 6 sin descartar corridas (V_Doob = 0 nats).",
+      blinder_cptp: "Régimen 2 (Grano Grueso de Subálgebra / 'Anteojeras', PROPUESTO arXiv:2602.06543): restricción CPTP que conserva la traza omitiendo el vestido gravitatorio (0 % descartado, V_Doob = 0 nats); la entropía restringida sube como k ln 2.",
+      doob_postselect: "Régimen 3 (Transformada h de Doob, teorema DERIVADO): condicionar una cadena absorbente a sobrevivir alcanza el borde final solo descartando 1 − (1−γ)⁶ de las trayectorias con costo KL exacto V_Doob = −6 ln(1−γ) nats.",
+      ko: "Defecto de confusión de ensambles activo: omite la silla interior de Isla e iguala falsamente el costo KL de postselección en espacio de trayectorias con la entropía fina de von Neumann.",
+    },
+  };
+
+  function render() {
+    const k = Number(stepInput ? stepInput.value : 3);
+    const gamma = Number(hazInput ? hazInput.value : 0.25);
+    const isEs = lang() === "es";
+
+    let sNats = Math.min(k, 6 - k) * LN2;
+    let vDoob = 0.0;
+    let discardPct = 0.0;
+
+    if (knockout) {
+      sNats = k * LN2;
+      vDoob = -6 * Math.log(1 - gamma);
+      discardPct = (1 - ((1 - gamma) ** 6)) * 100;
+    } else if (mode === "blinder_cptp") {
+      sNats = k * LN2;
+      vDoob = 0.0;
+      discardPct = 0.0;
+    } else if (mode === "doob_postselect") {
+      sNats = Math.min(k, 6 - k) * LN2;
+      vDoob = -6 * Math.log(1 - gamma);
+      discardPct = (1 - ((1 - gamma) ** 6)) * 100;
+    }
+
+    if (reads.stepk) reads.stepk.textContent = `k = ${k} / 6`;
+    if (reads.hazard) reads.hazard.textContent = `γ = ${gamma.toFixed(2)}`;
+    if (reads.snats) reads.snats.textContent = `${sNats.toFixed(3)} nats`;
+    if (reads.vdoob) reads.vdoob.textContent = `${vDoob.toFixed(3)} nats`;
+    if (reads.discard) reads.discard.textContent = isEs ? `${discardPct.toFixed(1)} % descartado` : `${discardPct.toFixed(1)}% discarded`;
+
+    if (ptEl) {
+      // x maps k in [0..6] -> [64..496], y maps sNats in [0..6*ln2=4.159] -> [224..44]
+      const cx = 64 + (k / 6) * 432;
+      const cy = 224 - (sNats / (6 * LN2)) * 180;
+      ptEl.setAttribute("cx", cx.toFixed(1));
+      ptEl.setAttribute("cy", cy.toFixed(1));
+    }
+
+    if (statusEl) {
+      const L = MSG[lang()];
+      statusEl.textContent = knockout ? L.ko : L[mode];
+      statusEl.setAttribute("data-state", knockout ? "defect" : "pass");
+    }
+  }
+
+  [stepInput, hazInput].forEach((el) => { if (el) el.addEventListener("input", render); });
+  modeBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      mode = btn.getAttribute("data-ip-mode") || "qes_unitary";
+      knockout = false;
+      if (koBtn) koBtn.setAttribute("aria-pressed", "false");
+      modeBtns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      render();
+    });
+  });
+  if (koBtn) {
+    koBtn.addEventListener("click", () => {
+      knockout = !knockout;
+      koBtn.setAttribute("aria-pressed", String(knockout));
+      render();
+    });
+  }
+  window.addEventListener("tp-lang-change", render);
+  root.setAttribute("data-cs-ready", "true");
+  render();
+}
+
+function initWdwClock(root) {
+  const tickInput = root.querySelector('[data-cs-input="tickn"]');
+  const nddInput = root.querySelector('[data-cs-input="ndd"]');
+  const echoBtns = root.querySelectorAll("button[data-wdw-echo]");
+  const koBtn = root.querySelector("[data-cs-knockout]");
+  const statusEl = root.querySelector("[data-cs-status]");
+  const barVis = root.querySelector('[data-cs-bar="vis"]');
+  const barNegQ = root.querySelector('[data-cs-bar="negq"]');
+  const barNegH = root.querySelector('[data-cs-bar="negh"]');
+  const reads = {};
+  root.querySelectorAll("[data-cs-read]").forEach((el) => { reads[el.getAttribute("data-cs-read")] = el; });
+  let echoMode = "bilateral";
+  let knockout = false;
+
+  const MSG = {
+    en: {
+      bilateral: "Timeless kernel ker(C) verified (||C|Ψ⟩⟩|| < 10⁻¹³): conditioning on |t_n⟩ yields Zych–Brukner proper-time beats (η = 0), while synchronous bilateral X_A ⊗ X_B pulses preserve (−Z_A)(−Z_B) = +Z_A Z_B gravitational entanglement under 1/f stray gradients and σ ≤ 33 µm excludes hybrid entanglement.",
+      unilateral: "Unilateral X_A ⊗ I echo warning: flipping arm A alone sends Z_A Z_B → −Z_A Z_B midway through the hold, refocusing the gravitational cross-phase itself to zero (N_quantum = 0.000) alongside local gradient noise!",
+      ko: "Retired-bound / Markovian-echo defect active: substitutes the superseded 44.07 µm single-gap edge match for the 33 µm recast and falsely applies 1/N_dd² CPMG suppression to memoryless white Lindblad noise.",
+    },
+    es: {
+      bilateral: "Núcleo atemporal ker(C) verificado (||C|Ψ⟩⟩|| < 10⁻¹³): condicionar en |t_n⟩ extrae el batido de tiempo propio de Zych–Brukner (η = 0), mientras pulsos bilaterales síncronos X_A ⊗ X_B preservan (−Z_A)(−Z_B) = +Z_A Z_B ante gradientes 1/f y σ ≤ 33 µm excluye al canal híbrido.",
+      unilateral: "Advertencia de eco unilateral X_A ⊗ I: invertir solo el brazo A envía Z_A Z_B → −Z_A Z_B a mitad de espera, cancelando la propia fase gravitatoria a cero (N_cuántico = 0.000) junto con el ruido local.",
+      ko: "Defecto de cota retirada / ruido blanco activo: sustituye el recast de 33 µm por el antiguo ajuste de 44.07 µm y aplica falsamente supresión 1/N_dd² a ruido blanco markoviano sin memoria.",
+    },
+  };
+
+  function render() {
+    const nTick = Number(tickInput ? tickInput.value : 4);
+    const nDd = Number(nddInput ? nddInput.value : 4);
+    const isEs = lang() === "es";
+
+    const tn = (2 * Math.PI * nTick) / 16.0;
+    // Integer-mode bandwidth-scaled model [-3, -1, 1, 5] -> deltaOmega = (5 - 1) - (-1 - (-3)) = 2
+    const deltaOmega = 2.0;
+    const vis = Math.abs(Math.cos(0.5 * deltaOmega * tn));
+    // Low-frequency gradient noise gamma_0 = 0.012 s^-1 vs Schut 2024 threshold 0.00983 s^-1
+    const gammaEff = 0.012 / (nDd * nDd);
+    let negQ = Math.max(0, 0.402 * Math.exp(-2.0 * gammaEff * 52.0) - 0.015);
+    if (echoMode === "unilateral") negQ = 0.0;
+    const negHyb = knockout ? 0.064 : 0.0;
+    const sigmaBoundTxt = knockout
+      ? (isEs ? "44.1 µm (DEFECTO)" : "44.1 µm (DEFECT)")
+      : (isEs ? "33 µm (95 % NC)" : "33 µm (95% CL)");
+
+    if (reads.tickn) reads.tickn.textContent = `n = ${nTick} (t_n = ${(tn / Math.PI).toFixed(2)}π)`;
+    if (reads.ndd) reads.ndd.textContent = `N_dd = ${nDd} (γ_eff = ${gammaEff.toExponential(2)} s⁻¹)`;
+    if (reads.vis) reads.vis.textContent = `V(t_n) = ${vis.toFixed(3)} · η = 0`;
+    if (reads.negq) reads.negq.textContent = `N_Q = ${negQ.toFixed(3)}`;
+    if (reads.negh) {
+      reads.negh.textContent = knockout
+        ? (isEs ? `N_hyb = ${negHyb.toFixed(3)} (${sigmaBoundTxt})` : `N_hyb = ${negHyb.toFixed(3)} (${sigmaBoundTxt})`)
+        : (isEs ? "N_hyb = 0.000 (σ ≤ 33 µm excluido)" : "N_hyb = 0.000 (σ ≤ 33 µm excluded)");
+    }
+
+    if (barVis) barVis.setAttribute("width", Math.max(8, vis * 230).toFixed(1));
+    if (barNegQ) barNegQ.setAttribute("width", Math.max(8, (negQ / 0.42) * 230).toFixed(1));
+    if (barNegH) barNegH.setAttribute("width", Math.max(8, (negHyb / 0.42) * 230).toFixed(1));
+
+    if (statusEl) {
+      const L = MSG[lang()];
+      statusEl.textContent = knockout ? L.ko : L[echoMode];
+      statusEl.setAttribute("data-state", (knockout || echoMode === "unilateral") ? "defect" : "pass");
+    }
+  }
+
+  [tickInput, nddInput].forEach((el) => { if (el) el.addEventListener("input", render); });
+  echoBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      echoMode = btn.getAttribute("data-wdw-echo") || "bilateral";
+      knockout = false;
+      if (koBtn) koBtn.setAttribute("aria-pressed", "false");
+      echoBtns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      render();
+    });
+  });
+  if (koBtn) {
+    koBtn.addEventListener("click", () => {
+      knockout = !knockout;
+      koBtn.setAttribute("aria-pressed", String(knockout));
+      render();
+    });
+  }
+  window.addEventListener("tp-lang-change", render);
+  root.setAttribute("data-cs-ready", "true");
+  render();
+}
+
 export function initCrossScaleEssays(scope = document) {
   const once = (sel, fn) => scope.querySelectorAll(sel).forEach((el) => {
     if (!el.hasAttribute("data-cs-ready")) fn(el);
@@ -330,6 +600,9 @@ export function initCrossScaleEssays(scope = document) {
   once('[data-cs-instrument="mesoscopic"]', initMesoscopic);
   once('[data-cs-instrument="epistemic"]', initEpistemic);
   once('[data-cs-instrument="tur_pores"]', initTurPores);
+  once('[data-cs-instrument="kinematic"]', initKinematic);
+  once('[data-cs-instrument="island_page"]', initIslandPage);
+  once('[data-cs-instrument="wdw_clock"]', initWdwClock);
 }
 
 initCrossScaleEssays(document);
