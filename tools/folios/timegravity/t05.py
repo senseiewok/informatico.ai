@@ -42,6 +42,10 @@ RIJAVEC = "T05-RIJAVEC2021"
 FENG = "T05-FENG2025"
 CHEV = "T05-CHEVALIER2020"
 SCHUT = "T05-SCHUT2024"
+HORN = "T05-HORNBERGER2003"
+HACK = "T05-HACKERMULLER2004"
+ROMERO = "T05-ROMEROISART2011"
+SELLNER = "T05-SELLNER2017"
 
 PAGE: dict = {
     "slug": SLUG,
@@ -587,6 +591,104 @@ PAGE: dict = {
               "negro, la dinámica híbrida no muestra entrelazamiento en ningún momento en esa geometría mientras el canal cuántico aún alcanza 0.34. Así que, "
               "dentro de la única geometría que los datos le dejan, la dinámica híbrida muestra entrelazamiento solo a tasas de decoherencia entre cincuenta y "
               "ciento treinta veces por debajo del propio presupuesto de la propuesta; la página calcula los dos umbrales y no mide ninguno."),
+        ),
+        P(
+            C("DERIVED", [HORN, ROMERO, RIJAVEC, VDK],
+              "The single rate this page's instrument applies has two standard physical sources. Residual gas first. For a sphere far larger than the "
+              "gas's thermal wavelength, split far wider than that wavelength, each hard collision already resolves the split, so the rate no longer "
+              "depends on it: it is proportional to the pressure and to the square of the radius, and inversely to the square root of the gas atom's mass "
+              "times the temperature, so that at a fixed pressure a colder gas dephases faster.",
+              "La única tasa que aplica el instrumento de esta página tiene dos fuentes físicas estándar. Primero el gas residual. Para una esfera mucho "
+              "mayor que la longitud de onda térmica del gas, dividida mucho más que esa longitud de onda, cada colisión dura ya resuelve la división, así "
+              "que la tasa deja de depender de ella: es proporcional a la presión y al cuadrado del radio, e inversamente proporcional a la raíz cuadrada "
+              "de la masa del átomo de gas por la temperatura, de modo que a presión fija un gas más frío desfasa más rápido.",
+              parent=HORN),
+            T(" That is a rate per mass, with the terms in which both masses differ decaying twice as fast: the convention of the 2024 proposal, of the "
+              "2021 decoherence analysis and of this page's instrument, so no factor of two separates them. The measured parent tested this theory on C₇₀ "
+              "molecules, about ten orders of magnitude lighter and at room temperature; no decoherence measurement at micron scale or at a few kelvin is "
+              "among this page's sources, so every number below is an extrapolation of the theory, not a measurement. Two saturated rates are carried. The "
+              "rate at which helium atoms at 4 K strike a 10⁻¹⁴ kg diamond sphere is 6.4 × 10¹² per second for each pascal; it is the lowest defensible "
+              "rate, so the ceiling it sets is the necessary one. The closed form the proposals cite is an interpolation that exceeds it by exactly 8π/3, "
+              "about 8.4, and gives 5.4 × 10¹³; its ceilings are the proposals' own stricter working figures. At the 2017 proposal's 10⁻¹⁵ Pa and 0.15 K the "
+              "cited form gives 2.8 s for helium, beside the 3.5 s fall that paper calls the same order; that reproduces the paper's own formula and "
+              "tests no physics.",
+              " Es una tasa por masa, y los términos en que las dos masas difieren decaen al doble: la convención de la propuesta de 2024, del análisis de "
+              "decoherencia de 2021 y del instrumento de esta página, de modo que ningún factor de dos los separa. La fila medida madre probó esta teoría "
+              "con moléculas de C₇₀, unos diez órdenes de magnitud más ligeras y a temperatura ambiente; entre las fuentes de esta página no hay ninguna "
+              "medición de decoherencia a escala micrométrica ni a unos pocos kelvin, así que cada número de abajo es una extrapolación de la teoría, no una "
+              "medición. Se llevan dos tasas saturadas. La tasa a la que átomos de helio a 4 K golpean una esfera de diamante de 10⁻¹⁴ kg es de 6.4 × 10¹² por "
+              "segundo por cada pascal; es la tasa defendible más baja, así que el techo que fija es el necesario. La forma cerrada que citan las propuestas "
+              "es una interpolación que la supera por exactamente 8π/3, cerca de 8.4, y da 5.4 × 10¹³; sus techos son las cifras de trabajo, más estrictas, "
+              "de las propias propuestas. Con los 10⁻¹⁵ Pa y 0.15 K de la propuesta de 2017 la forma citada da 2.8 s para helio, junto a la caída de 3.5 s "
+              "que ese artículo llama del mismo orden; eso reproduce la fórmula del propio artículo y no prueba física alguna."),
+        ),
+        P(
+            C("DERIVED", [HACK, ROMERO, RIJAVEC],
+              "Thermal photons work the other way round. At a few kelvin their wavelength is a fraction of a millimetre, far longer than any split here, so "
+              "a single photon resolves little and the rate grows as the square of the split; for emission it also grows as the cube of the radius and the "
+              "sixth power of the sphere's internal temperature, and for photons scattered from the surroundings as the sixth power of the radius and the "
+              "ninth of their temperature.",
+              "Los fotones térmicos funcionan al revés. A unos pocos kelvin su longitud de onda es una fracción de milímetro, mucho mayor que cualquier "
+              "división de aquí, así que un solo fotón resuelve poco y la tasa crece como el cuadrado de la división; para la emisión crece además como el "
+              "cubo del radio y la sexta potencia de la temperatura interna de la esfera, y para los fotones dispersados del entorno como la sexta potencia "
+              "del radio y la novena de su temperatura.",
+              parent=HACK),
+            T(" The measured parent is again C₇₀, hot molecules whose interference faded as the theory of thermal emission predicts; a cold micron sphere "
+              "of bulk diamond is an extrapolation of that theory. For the same sphere split by 1.7 µm, emission at 4 K dephases at 2 × 10⁻⁶ per second, on "
+              "an assumed absorption: diamond's far-infrared loss is poorly known, the page takes the imaginary part of the dielectric constant that the "
+              "2021 analysis takes, 10⁻⁴, and carries a decade either side, which with cold surroundings moves a temperature ceiling by a factor of 1.5. On "
+              "the same forms the 2021 analysis's own geometry reaches its separability rate at 3.5 K, where the paper says 'lower than 4 K'; the kernel "
+              "is stricter there by about a factor of two in rate. The kernel takes the internal and ambient temperatures as given; how a trapped sphere "
+              "reaches and holds an internal temperature is not computed here.",
+              " La fila medida madre es otra vez el C₇₀, moléculas calientes cuya interferencia se apagó como predice la teoría de la emisión térmica; una "
+              "esfera micrométrica fría de diamante macizo es una extrapolación de esa teoría. Para la misma esfera dividida 1.7 µm, la emisión a 4 K desfasa "
+              "a 2 × 10⁻⁶ por segundo, con una absorción supuesta: la pérdida del diamante en el infrarrojo lejano se conoce mal, la página toma la parte "
+              "imaginaria de la constante dieléctrica que toma el análisis de 2021, 10⁻⁴, y lleva una década a cada lado, lo que con un entorno frío mueve un "
+              "techo de temperatura por un factor de 1.5. Con las mismas formas, la geometría propia del análisis de 2021 alcanza su tasa de separabilidad a "
+              "3.5 K, donde el artículo dice 'menor que 4 K'; el núcleo es ahí más estricto por cerca de un factor de dos en la tasa. El núcleo toma como "
+              "dadas la temperatura interna y la del entorno; cómo una esfera atrapada alcanza y mantiene una temperatura interna no se calcula aquí."),
+        ),
+        {"type": "hardware_table"},
+        P(
+            C("PROPOSED", [SCHUT, TRILLO, ROMERO, RIJAVEC],
+              "Set against the two thresholds of the 2024 geometry, those rates translate into ceilings on two environmental parameters. For the quantum "
+              "channel to keep any entanglement, helium at 4 K must stay below 1.5 × 10⁻¹⁵ Pa, about 28 atoms in a cubic centimetre, and the sphere's "
+              "internal temperature below about 16 K with the surroundings at 1 K. For the hybrid dynamics at σ = 33 µm the pressure ceiling is "
+              "1.2 × 10⁻¹⁷ Pa, about one atom in five cubic centimetres, and the internal-temperature ceiling 7.3 K. On the form the proposals cite the two "
+              "pressure ceilings are 1.8 × 10⁻¹⁶ Pa and 1.5 × 10⁻¹⁸ Pa.",
+              "Puestas frente a los dos umbrales de la geometría de 2024, esas tasas se traducen en techos sobre dos parámetros del entorno. Para que el "
+              "canal cuántico conserve algo de entrelazamiento, el helio a 4 K debe quedar por debajo de 1.5 × 10⁻¹⁵ Pa, unos 28 átomos en un centímetro "
+              "cúbico, y la temperatura interna de la esfera por debajo de unos 16 K con el entorno a 1 K. Para la dinámica híbrida a σ = 33 µm el techo de "
+              "presión es 1.2 × 10⁻¹⁷ Pa, cerca de un átomo en cinco centímetros cúbicos, y el techo de temperatura interna 7.3 K. En la forma que citan las "
+              "propuestas los dos techos de presión son 1.8 × 10⁻¹⁶ Pa y 1.5 × 10⁻¹⁸ Pa."),
+            T(" With cold surroundings the pressure ceiling scales with the threshold itself and the internal-temperature ceiling with its sixth root, so "
+              "the 125-fold stricter threshold of the hybrid dynamics appears as a 125-fold lower pressure ceiling and a 2.2-fold lower temperature "
+              "ceiling. With surroundings as warm as the sphere, scattered photons join in, the sixth-root rule no longer holds, and the two temperature "
+              "ceilings are 12 K and 6.3 K. The 2024 proposal budgets about 0.01 per second 'for the ambient temperatures of ∼1 K' and states no pressure; "
+              "that rate is helium at 8 × 10⁻¹⁶ Pa on the kinetic rate and 9 × 10⁻¹⁷ Pa on the cited form. Each ceiling lets one source use the whole "
+              "threshold, with the full split held throughout; together the sources must share it, hydrogen would add to helium, and dipole and Casimir "
+              "couplings, gravity gradients, phonons and the trap are not counted. These are necessary conditions, not a budget, and the page pronounces on "
+              "no experiment's feasibility.",
+              " Con un entorno frío el techo de presión escala con el umbral mismo y el techo de temperatura interna con su raíz sexta, así que el umbral "
+              "125 veces más estricto de la dinámica híbrida aparece como un techo de presión 125 veces menor y un techo de temperatura 2.2 veces menor. "
+              "Con un entorno tan caliente como la esfera se suman los fotones dispersados, la regla de la raíz sexta deja de valer y los dos techos de "
+              "temperatura son 12 K y 6.3 K. La propuesta de 2024 presupuesta cerca de 0.01 por segundo 'para temperaturas ambiente de ∼1 K' y no declara "
+              "presión alguna; esa tasa es helio a 8 × 10⁻¹⁶ Pa en la tasa cinética y a 9 × 10⁻¹⁷ Pa en la forma citada. Cada techo deja que una sola fuente "
+              "use todo el umbral, con la división completa mantenida todo el tiempo; juntas, las fuentes deben repartírselo, el hidrógeno se sumaría al "
+              "helio, y los acoplamientos dipolares y de Casimir, los gradientes de gravedad, los fonones y la trampa no se cuentan. Son condiciones "
+              "necesarias, no un presupuesto, y la página no se pronuncia sobre la factibilidad de experimento alguno."),
+            C("SINGLE RESULT", [SELLNER],
+              " One published figure for a cryogenic vacuum can be set beside them: from how long antiprotons survived in a cryogenic Penning trap, its "
+              "collaboration infers that the hydrogen and helium partial pressures there were below 1.2 × 10⁻¹⁶ Pa and 2.7 × 10⁻¹⁶ Pa at 68 % confidence.",
+              " Junto a ellos puede ponerse una cifra publicada para un vacío criogénico: de cuánto tiempo sobrevivieron antiprotones en una trampa de "
+              "Penning criogénica, su colaboración infiere que las presiones parciales de hidrógeno y de helio allí estaban por debajo de 1.2 × 10⁻¹⁶ Pa y "
+              "2.7 × 10⁻¹⁶ Pa con 68 % de confianza."),
+            T(" These are model-dependent upper limits for that trap at its own temperature, not measured pressures and not a statement about an "
+              "interferometer's chamber. Read as helium at 4 K, that helium limit is about a fifth of the quantum channel's necessary ceiling and one and a "
+              "half times its cited one; the hybrid dynamics' two ceilings lie about 20 and about 180 times below the limit.",
+              " Son límites superiores dependientes de un modelo, para esa trampa a su propia temperatura, no presiones medidas ni un enunciado sobre la "
+              "cámara de un interferómetro. Leído como helio a 4 K, ese límite de helio es cerca de una quinta parte del techo necesario del canal cuántico "
+              "y una vez y media su techo citado; los dos techos de la dinámica híbrida quedan unas 20 y unas 180 veces por debajo del límite."),
         ),
         P(
             C("PROPOSED", [AZIZ, BOSE, CHEV, VDK, SCHUT],
