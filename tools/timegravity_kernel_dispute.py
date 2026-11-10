@@ -406,6 +406,56 @@ def open_window_decoherence(sigmas: tuple = (20e-6, 30e-6, SIGMA_ESTIMATE_M), ga
     return out
 
 
+# ---------------------------------------------------------------------------------------------------------------------------------
+# The dispute's other classical route: Aziz & Howl 2025 (Nature; arXiv:2510.19714v3) give the entangling amplitude of classical
+# gravity coupled to quantum-field matter in closed form, their Eq. 85: √ϑ = (6/25) G² m² M³ R t / (ħ³ d_RL), with M the object's mass,
+# m its constituent atom's mass, R its radius and d_RL the nearest separation, under Δx ≫ R and d ≫ R; the quantum phase is their
+# Eq. 42, φ = G M² t / (ħ d). The page evaluates both and assesses neither.
+# ---------------------------------------------------------------------------------------------------------------------------------
+ATOMIC_MASS_UNIT_KG = 1.66053906660e-27
+CARBON12_KG = 12.0 * ATOMIC_MASS_UNIT_KG
+YTTERBIUM_KG = 173.04 * ATOMIC_MASS_UNIT_KG
+DIAMOND_DENSITY = 3500.0
+YTTERBIUM_DENSITY = 6900.0
+PLANCK_MASS_KG = 2.176434e-8
+
+
+def sphere_radius(mass: float, density: float) -> float:
+    return (3.0 * mass / (4.0 * math.pi * density)) ** (1.0 / 3.0)
+
+
+def aziz_howl_theta(atom_mass: float, mass: float, radius: float, t: float, nearest: float) -> float:
+    """ϑ of Aziz & Howl 2025 Eq. 85 (the square of the printed √ϑ)."""
+    return ((6.0 / 25.0) * G_NEWTON ** 2 * atom_mass ** 2 * mass ** 3 * radius * t / (HBAR ** 3 * nearest)) ** 2
+
+
+def quantum_phase_aziz(mass: float, t: float, nearest: float) -> float:
+    """Their Eq. 42, the quantum-gravity phase φ = G M² t / (ħ d)."""
+    return G_NEWTON * mass * mass * t / (HBAR * nearest)
+
+
+def aziz_howl_table() -> dict:
+    """Their amplitude against the quantum phase at each mapped geometry (diamond spheres, each proposal's own hold time), plus the
+    2017 geometry in their own material (ytterbium) and a Planck-mass ytterbium sphere ten radii apart as the check of their words."""
+    rows = {}
+    for key, t in (("bose2017", BMV_T_S), ("chevalier2020_d350", 0.34), ("vandekamp2020", 1.0), ("schut2024_z10", 1.0)):
+        _k, _layout, m, _split, near = next(p for p in PROPOSALS if p[0] == key)
+        r = sphere_radius(m, DIAMOND_DENSITY)
+        th = aziz_howl_theta(CARBON12_KG, m, r, t, near); ph = quantum_phase_aziz(m, t, near)
+        rows[key] = {"m_kg": m, "radius_m": r, "nearest_m": near, "t_s": t, "theta": th, "phi": ph, "theta_over_phi": th / ph}
+    r_yb = sphere_radius(BMV_M_KG, YTTERBIUM_DENSITY)
+    rows["bose2017_ytterbium"] = {"m_kg": BMV_M_KG, "radius_m": r_yb, "nearest_m": BMV_D_M - BMV_DX_M, "t_s": 2.0,
+                                  "theta": aziz_howl_theta(YTTERBIUM_KG, BMV_M_KG, r_yb, 2.0, BMV_D_M - BMV_DX_M),
+                                  "phi": quantum_phase_aziz(BMV_M_KG, 2.0, BMV_D_M - BMV_DX_M)}
+    rows["bose2017_ytterbium"]["theta_over_phi"] = rows["bose2017_ytterbium"]["theta"] / rows["bose2017_ytterbium"]["phi"]
+    r_pl = sphere_radius(PLANCK_MASS_KG, YTTERBIUM_DENSITY)
+    rows["planck_mass_ytterbium_10R_1s"] = {"m_kg": PLANCK_MASS_KG, "radius_m": r_pl, "nearest_m": 10.0 * r_pl, "t_s": 1.0,
+                                            "theta": aziz_howl_theta(YTTERBIUM_KG, PLANCK_MASS_KG, r_pl, 1.0, 10.0 * r_pl),
+                                            "phi": quantum_phase_aziz(PLANCK_MASS_KG, 1.0, 10.0 * r_pl)}
+    rows["planck_mass_ytterbium_10R_1s"]["theta_over_phi"] = rows["planck_mass_ytterbium_10R_1s"]["theta"] / rows["planck_mass_ytterbium_10R_1s"]["phi"]
+    return rows
+
+
 def rijavec_tau_g(m: float = BMV_M_KG, d: float = BMV_D_M, dx: float = BMV_DX_M) -> float:
     """τ_G = ħ d [(d/Δx)² − 1] / (G m²) of Rijavec, Carlesso, Bassi, Vedral & Marletto 2021 (their Eq. 7): the pair is separable at all
     times for a dephasing rate above 1/τ_G (their Eq. 15)."""
@@ -668,6 +718,13 @@ def check_dispute(planted_defect: bool = False) -> dict:
                 and all(40.0 < dec["quantum_dephasing_threshold_per_s"] / v < 300.0 for v in hyb_thr.values())
                 and hyb_thr["20um"] > hyb_thr["30um"] > hyb_thr["44um"]
                 and dec["peaks"]["gamma_1e-03"]["quantum"] > 0.3 and all(v < 1e-9 for k, v in dec["peaks"]["gamma_1e-03"].items() if k.startswith("hybrid")))
+    # 4j. Aziz & Howl's amplitude on the map: 25 to 34 orders below the quantum phase at every laboratory geometry, far above their 0.1
+    # threshold at the Planck mass (their own words); the formula scales as M^6 R^2 t^2 / d^2 in ϑ.
+    az = aziz_howl_table()
+    aziz_ok = (all(1e-35 < az[k]["theta_over_phi"] < 1e-24 for k in ("bose2017", "chevalier2020_d350", "vandekamp2020", "schut2024_z10", "bose2017_ytterbium"))
+               and az["planck_mass_ytterbium_10R_1s"]["theta"] > 1e10
+               and abs(aziz_howl_theta(CARBON12_KG, 2e-14, 1.0, 1.0, 1.0) / aziz_howl_theta(CARBON12_KG, 1e-14, 1.0, 1.0, 1.0) - 64.0) < 1e-9
+               and abs(aziz_howl_theta(CARBON12_KG, 1e-14, 1.0, 2.0, 1.0) / aziz_howl_theta(CARBON12_KG, 1e-14, 1.0, 1.0, 1.0) - 4.0) < 1e-9)
     # 5. Where the entangling power sits: the noise part alone entangles nothing at any σ or time; the interaction part alone gives
     #    at least the full model's negativity; and as σ → 0 the interaction part is the quantum channel exactly.
     parts = {}
@@ -688,11 +745,11 @@ def check_dispute(planted_defect: bool = False) -> dict:
         "ktm_threshold_ratios": ratios, "ktm_2017": ktm_2017,
         "entangling_parts": parts, "quantum_channel_negativity_2017": quantum_negativity, "parts_ok": parts_ok,
         "pure_collapse": collapse, "collapse_ok": collapse_ok,
-        "threshold_map": tmap, "map_ok": map_ok, "map_with_isl": isl, "isl_ok": isl_ok, "open_region_timing": timing, "timing_ok": timing_ok, "points_ok": points_ok, "parallel_map": pmap, "parallel_ok": parallel_ok, "proposals": props, "proposals_ok": proposals_ok, "open_window_decoherence": dec, "decoh_ok": decoh_ok,
+        "threshold_map": tmap, "map_ok": map_ok, "map_with_isl": isl, "isl_ok": isl_ok, "open_region_timing": timing, "timing_ok": timing_ok, "points_ok": points_ok, "parallel_map": pmap, "parallel_ok": parallel_ok, "proposals": props, "proposals_ok": proposals_ok, "open_window_decoherence": dec, "decoh_ok": decoh_ok, "aziz_howl": az, "aziz_ok": aziz_ok,
         "collapse_scaling": scaling, "scaling_ok": scaling_ok, "rijavec_tau_g_s": tau_g, "dephasing_threshold_per_s": gamma_zero, "rijavec_ok": rijavec_ok,
         "dc_paper_ok": dc_paper_ok, "dc_double_entry_ok": dc_double_entry_ok, "fig3_ok": fig3_ok, "tn_2017_ok": tn_2017_ok,
         "ktm_ok": ktm_ok, "ktm_edge_ok": ktm_edge_ok, "defect_rejected": defect_rejected,
-        "ok": dc_paper_ok and dc_double_entry_ok and fig3_ok and tn_2017_ok and ktm_ok and ktm_edge_ok and parts_ok and collapse_ok and scaling_ok and rijavec_ok and map_ok and isl_ok and timing_ok and points_ok and parallel_ok and proposals_ok and decoh_ok and defect_rejected,
+        "ok": dc_paper_ok and dc_double_entry_ok and fig3_ok and tn_2017_ok and ktm_ok and ktm_edge_ok and parts_ok and collapse_ok and scaling_ok and rijavec_ok and map_ok and isl_ok and timing_ok and points_ok and parallel_ok and proposals_ok and decoh_ok and aziz_ok and defect_rejected,
     }
 
 
