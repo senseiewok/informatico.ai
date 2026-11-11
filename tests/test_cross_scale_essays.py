@@ -24,8 +24,8 @@ from test_informatico_seo import DANGLING, FORMULA, SITE, parse, url_to_file  # 
 
 
 class CrossScaleEssaysTests(unittest.TestCase):
-    def test_six_essays_and_hub_built_in_english_and_spanish_with_seo_and_jsonld(self) -> None:
-        self.assertEqual([e["code"] for e in ESSAYS], ["ES.01", "ES.02", "ES.03", "ES.04", "ES.05", "ES.06"])
+    def test_seven_essays_and_hub_built_in_english_and_spanish_with_seo_and_jsonld(self) -> None:
+        self.assertEqual([e["code"] for e in ESSAYS], ["ES.01", "ES.02", "ES.03", "ES.04", "ES.05", "ES.06", "ES.07"])
         self.assertEqual(
             [e["slug"] for e in ESSAYS],
             [
@@ -35,6 +35,7 @@ class CrossScaleEssaysTests(unittest.TestCase):
                 "tensegrity-microcausality-zero-modes",
                 "islands-blinders-conditional-survival",
                 "coupled-constraints-formal-proof",
+                "loophole-free-parallel-horizon",
             ],
         )
 
@@ -123,13 +124,16 @@ class CrossScaleEssaysTests(unittest.TestCase):
             self.assertIn('id="cross-scale-essays"', txt, rel)
             for e in ESSAYS:
                 self.assertIn(f"essays/{e['slug']}/", txt, rel)
-        lean_file = SKILLS / "coupled-constraints-formal-proof" / "IRUG_Unification.lean"
-        self.assertTrue(lean_file.is_file(), f"Missing Lean 4 companion {lean_file}")
-        lean_src = lean_file.read_text(encoding="utf-8")
-        lean_code = re.sub(r"/--?.*?-/", "", lean_src, flags=re.S)
-        lean_code = re.sub(r"--.*?$", "", lean_code, flags=re.M)
-        self.assertIsNone(re.search(r"\b(sorry|admit|axiom)\b", lean_code), "Forbidden sorry/admit/axiom in IRUG_Unification.lean")
-        self.assertGreaterEqual(len(re.findall(r"\btheorem\s+\w+", lean_code)), 4)
+        for lean_rel, min_thms in (
+            (SKILLS / "coupled-constraints-formal-proof" / "IRUG_Unification.lean", 4),
+            (SKILLS / "loophole-free-parallel-horizon" / "ParallelHorizon.lean", 9),
+        ):
+            self.assertTrue(lean_rel.is_file(), f"Missing Lean 4 companion {lean_rel}")
+            lean_src = lean_rel.read_text(encoding="utf-8")
+            lean_code = re.sub(r"/--?.*?-/", "", lean_src, flags=re.S)
+            lean_code = re.sub(r"--.*?$", "", lean_code, flags=re.M)
+            self.assertIsNone(re.search(r"\b(sorry|sorryAx|admit|axiom)\b", lean_code), f"Forbidden sorry/admit/axiom in {lean_rel.name}")
+            self.assertGreaterEqual(len(re.findall(r"\btheorem\s+\w+", lean_code)), min_thms)
         catalog = builder.update_catalogs()
         for e in ESSAYS:
             slug = e["slug"]

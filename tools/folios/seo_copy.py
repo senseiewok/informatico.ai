@@ -362,9 +362,9 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "essays": (
         "Cross-Scale Essays · Shared Laws & Verification | Informatico.ai",
-        "Six long-form essays where quantum decoherence, formal verification and porous-media thermodynamics unite falling clocks, stone and living systems.",
+        "Seven long-form essays where quantum decoherence, formal verification and porous-media thermodynamics unite falling clocks, stone and living systems.",
         "Ensayos entre Escalas · Leyes y Verificación | Informatico.ai",
-        "Seis ensayos donde la decoherencia cuántica, la verificación formal y la termodinámica unen relojes ópticos, medios porosos y sistemas biológicos.",
+        "Siete ensayos donde la decoherencia cuántica, la verificación formal y la termodinámica unen relojes ópticos, medios porosos y sistemas biológicos.",
     ),
 }
 

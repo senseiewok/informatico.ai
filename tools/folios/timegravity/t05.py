@@ -553,7 +553,7 @@ PAGE: dict = {
               "deficit against a published edge at 2.5 %. That paper calls 47 µm an initial separation without saying whether it is the centre distance or "
               "the nearest approach; read as the centre distance, as the 2025 letter reads it, the nearest approach is 24 µm and the threshold 55 µm, a 6 % "
               "deficit, so the table carries both readings. Side by side the threshold drops: with the two superpositions parallel rather than in line, "
-              "the hybrid dynamics entangles above 0.65 times the gap for any split, half the collinear value, and the pure-collapse witness survives "
+              "the hybrid dynamics entangles above 0.65 times the gap at small splits and down to 0.45 times the gap in the large-split limit (putting the parallel hybrid reach at 51.2 µm to 73.2 µm for the 33.1 µm recast, derived in Essay ES.07), while the pure-collapse witness survives "
               "above 0.44 to 0.47 times it. So the 2024 proposal of micrometre superpositions of 10⁻¹⁴ kg diamonds beside a screening plate, 1.7 µm "
               "splits 21 µm apart, needs only σ above 13.6 µm, a smearing that leaves the 2020 torque untouched: among the geometries mapped here it is "
               "the only one the hybrid dynamics could entangle without contradicting the inverse-square data. Its 21 µm gap sits below the 26.5 µm "
@@ -564,14 +564,14 @@ PAGE: dict = {
               "placa de 1 µm, necesita 82 µm, un déficit de 22 % frente a un borde publicado de 2.5 %. Ese artículo llama a los 47 µm una separación inicial sin "
               "decir si es la distancia entre centros o la aproximación más cercana; leída como distancia entre centros, como la lee la carta de 2025, la "
               "aproximación más cercana es de 24 µm y el umbral de 55 µm, un déficit de 6 %, así que la tabla lleva ambas lecturas. Lado a lado el umbral baja: con las dos "
-              "superposiciones paralelas en vez de en línea, la dinámica híbrida entrelaza por encima de 0.65 veces la separación para cualquier división, "
-              "la mitad del valor colineal, y el testigo de colapso puro sobrevive por encima de 0.44 a 0.47 veces ella. Así que la propuesta de 2024 de "
+              "superposiciones paralelas en vez de en línea, la dinámica híbrida entrelaza por encima de 0.65 veces la separación a divisiones pequeñas y hasta 0.45 veces la separación en el límite de gran división (situando el alcance híbrido paralelo entre 51.2 µm y 73.2 µm para el recast de 33.1 µm, derivado en el Ensayo ES.07), mientras el testigo de colapso puro sobrevive por encima de 0.44 a 0.47 veces ella. Así que la propuesta de 2024 de "
               "superposiciones micrométricas de diamantes de 10⁻¹⁴ kg junto a una placa de apantallamiento, divisiones de 1.7 µm a 21 µm de distancia, "
               "necesita solo σ por encima de 13.6 µm, un suavizado que deja intacto el par de 2020: entre las geometrías mapeadas aquí es la única que la "
               "dinámica híbrida podría entrelazar sin contradecir los datos del inverso del cuadrado. Su separación de 21 µm queda por debajo del piso de "
               "26.5 µm que esta página calcula con la fórmula de caída libre; el esquema de 2024 atrapa y apantalla en su lugar, y la página toma su "
               "geometría tal como se publicó.",
-              parent=LEE),
+              parent=LEE,
+              kernel="parallel_hybrid_horizon_um"),
             T(" Time still separates the two there. That geometry is designed for an entangling rate of 0.01 per second, so the quantum channel reaches full "
               "entanglement in about 160 s; at that moment the hybrid dynamics at σ = 33 µm shows a negativity of 0.0062 (0.0078 at 30 µm), and its peak of "
               "0.059 comes after about 53 minutes (0.054 after half an hour at 30 µm). The 61 µm spacing needs 39 µm, above the recast limit, so it closes.",

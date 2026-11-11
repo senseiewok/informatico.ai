@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """Rational SI dimensional homogeneity (AH-14), parameter provenance (AH-9), ±25% sensitivity envelopes (AH-11),
-and complex-step derivative parity across the Time & Gravity (T.01–T.12) and Cross-Scale (ES.01–ES.06) kernels.
+and complex-step derivative parity across the Time & Gravity (T.01–T.12) and Cross-Scale (ES.01–ES.07) kernels.
 
 Pure-Python standard library only (`fractions.Fraction`, `cmath`, `math`).
 Zero domain-external symbols: 100% physics & mathematics kernel.
@@ -131,11 +131,19 @@ PARAMETER_PROVENANCE_LEDGER: tuple[dict[str, object], ...] = (
         "ledger_id": "T05-SCHUT2024",
         "source_locator": "tools/timegravity_kernel_dispute_latest.py critical dephasing rate on Schut et al. 2024 PRR 6, 013199",
     },
+    {
+        "symbol": "PARALLEL_HYBRID_HORIZON_CEILING_M",
+        "value_si": 2.210927620647473 * k_lad.EW_MATCH_SIGMA_M,
+        "unit": "m",
+        "provenance_class": "derived",
+        "ledger_id": "T05-TRILLO2025",
+        "source_locator": "tools/timegravity_kernel_dispute.py asymptotic parallel hybrid ceiling 2.210928 * sigma_95 = 73.14 um (ES.07)",
+    },
 )
 
 
 def verify_si_dimensional_homogeneity(planted_defect: bool = False) -> dict[str, object]:
-    """Verify exact rational SI dimensional balance across 16 governing equations of T.01–T.12 & ES.01–ES.06."""
+    """Verify exact rational SI dimensional balance across 17 governing equations of T.01–T.12 & ES.01–ES.07."""
     g_dim = dim_vec(m=-1, l=2, t=-2) if planted_defect else GRAV_G
     planck_len_sq = dim_div(dim_mul(ACTION, g_dim), dim_pow(VELOCITY, 3))
 
@@ -216,6 +224,12 @@ def verify_si_dimensional_homogeneity(planted_defect: bool = False) -> dict[str,
                 BOLTZMANN_K,
             ),
             DIMLESS,
+        ),
+        # 17. T.05/ES.07 Closed-form parallel hybrid critical dephasing gamma_crit^hyb = (G m^2 / hbar) * (sqrt(2) b - a)
+        (
+            "T05_ES07_parallel_hybrid_critical_dephasing",
+            dim_mul(dim_div(dim_mul(g_dim, dim_pow(MASS, 2)), ACTION), dim_pow(LENGTH, -1)),
+            FREQ,
         ),
     ]
 

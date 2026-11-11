@@ -38,6 +38,32 @@ from timegravity_kernel_entangle import (
     negativity_threshold_gamma_t, time_to_full_entanglement,
 )
 
+# Exact parallel Diósi–Penrose hybrid horizon ratios D_c / σ:
+#   Small-split limit Δx/σ → 0: root of erf(s/2)/s − ½ exp(−s²/4)/√π = (√2 − 1)/(2√π)  → s₀ = 1.547133964214740 (σ_c/D = 0.646356)
+#   Large-split limit Δx/σ → ∞: root of (√π / s) erf(s/2) = 1/√2                        → s_∞ = 2.210927620647473 (σ_c/D = 0.452299)
+PARALLEL_DC0_OVER_SIGMA = 1.547133964214740
+PARALLEL_DC_INF_OVER_SIGMA = 2.210927620647473
+
+
+def _gl_unit(n: int = 24) -> tuple[tuple[float, ...], tuple[float, ...]]:
+    """Gauss–Legendre nodes and weights mapped onto [0, 1] (Newton refinement, zero circular imports)."""
+    us, ws = [], []
+    for k in range(1, n + 1):
+        x = math.cos(math.pi * (k - 0.25) / (n + 0.5))
+        for _ in range(12):
+            p0, p1 = 1.0, x
+            for j in range(2, n + 1):
+                p0, p1 = p1, ((2 * j - 1) * x * p1 - (j - 1) * p0) / j
+            dp = n * (x * p1 - p0) / (x * x - 1.0)
+            x -= p1 / dp
+        w = 2.0 / ((1.0 - x * x) * dp * dp)
+        us.append(0.5 * (1.0 - x))
+        ws.append(0.5 * w)
+    return tuple(us), tuple(ws)
+
+
+_GL24_U, _GL24_W = _gl_unit(24)
+
 # Trillo & Navascués 2025, Fig. 3 (lengths and masses from Van De Kamp et al. 2020)
 TN_M_KG = 1e-15
 TN_L_M = 23e-6            # superposition size (their L)
@@ -215,7 +241,7 @@ def open_region_timing(sigma_estimate: float = SIGMA_ESTIMATE_M) -> list[dict]:
 # kernels above generalise by replacing |x − y| with the Euclidean distance; the collinear layout reproduces them to rounding.
 # ---------------------------------------------------------------------------------------------------------------------------------
 def _dist(p: tuple, q: tuple) -> float:
-    return math.hypot(p[0] - q[0], p[1] - q[1])
+    return math.dist(p, q)
 
 
 def tn_g_points(x: tuple, y: tuple, m: float, sigma: float) -> complex:
@@ -305,6 +331,129 @@ def parallel_map(ratios: tuple = (0.03, 0.1, 0.25, 0.5, 1.0, 2.0), gap: float = 
         rows.append({"ratio": r, "hybrid_over_gap": hybrid_critical_sigma_points(br, 1e-15) / gap,
                      "collapse_over_gap": collapse_critical_sigma_points(br, MAP_SMALL_MASS_KG, BMV_T_S) / gap})
     return rows
+
+
+# ---------------------------------------------------------------------------------------------------------------------------------
+# Exact closed-form 2-D and 3-D skewed parallel Diósi–Penrose hybrid channel (reflection block diagonalisation of the 4×4 PT matrix).
+# Midpoint-centred branches: mass A at (0, ∓Δx/2, 0), mass B at (D, ∓(Δx/2)cos θ, ∓(Δx/2)sin θ).
+# Then r_same(θ) = √(D² + ½ Δx²(1 − cos θ)), r_diff(θ) = √(D² + ½ Δx²(1 + cos θ)), a = f(0) − f(Δx), b = |f(r_same) − f(r_diff)|,
+# and 0 ≤ b ≤ a ≤ ã = a + ħ γ_env / (G m²) holds identically, giving an overflow-free closed form for N_hyb(t) on all t ∈ [0, ∞).
+# ---------------------------------------------------------------------------------------------------------------------------------
+def branches_parallel_skewed(split: float, gap: float, theta_rad: float = 0.0) -> list[tuple]:
+    """Midpoint-centred 3-D skewed parallel branches at relative transverse angle θ (θ = 0: parallel; θ = π/2: orthogonal '+' cross)."""
+    h = 0.5 * split
+    ct, st = math.cos(theta_rad), math.sin(theta_rad)
+    return [((0.0, sa * h, 0.0), (gap, sb * h * ct, sb * h * st)) for sa in (-1.0, 1.0) for sb in (-1.0, 1.0)]
+
+
+def parallel_ab_rates(split: float, gap: float, sigma: float, theta_rad: float = 0.0) -> tuple[float, float]:
+    """Cancellation-free evaluation of a = f(0) − f(Δx) and b = |f(r_same(θ)) − f(r_diff(θ))| across all Δx/σ and D/σ."""
+    inv_sqrt_pi_s = 1.0 / (sigma * math.sqrt(math.pi))
+    beta = (split / (2.0 * sigma)) ** 2
+    if beta <= 4.0:
+        a = inv_sqrt_pi_s * sum(w * (-math.expm1(-beta * u * u)) for u, w in zip(_GL24_U, _GL24_W))
+    else:
+        a = inv_sqrt_pi_s - f_tilde(split, sigma)
+
+    ct = math.cos(theta_rad)
+    r_same_sq = gap * gap + 0.5 * split * split * (1.0 - ct)
+    r_diff_sq = gap * gap + 0.5 * split * split * (1.0 + ct)
+    r_same = math.sqrt(r_same_sq)
+    r_diff = math.sqrt(r_diff_sq)
+    alpha_same = r_same_sq / (4.0 * sigma * sigma)
+    alpha_diff = r_diff_sq / (4.0 * sigma * sigma)
+    # Exact cancellation-free identity: (r_diff² − r_same²) / (4σ²) = (Δx / 2σ)² cos θ = β cos θ.
+    d_alpha = beta * abs(ct)
+    a_min = min(alpha_same, alpha_diff)
+    if max(alpha_same, alpha_diff) <= 16.0 or d_alpha <= 1e-3:
+        b = inv_sqrt_pi_s * sum(
+            w * math.exp(-a_min * u * u) * (-math.expm1(-d_alpha * u * u))
+            for u, w in zip(_GL24_U, _GL24_W)
+        )
+    else:
+        b = abs(f_tilde(r_same, sigma) - f_tilde(r_diff, sigma))
+    return a, b
+
+
+def parallel_hybrid_negativity_closed(
+    split: float,
+    gap: float,
+    m: float,
+    sigma: float,
+    t: float,
+    gamma_env: float = 0.0,
+    theta_rad: float = 0.0,
+    planted_defect: bool = False,
+) -> float:
+    """Exact overflow-free Peres negativity of the parallel / 3-D skewed Diósi–Penrose hybrid state under local dephasing γ_env."""
+    if t <= 0.0:
+        return 0.0
+    a, b = parallel_ab_rates(split, gap, sigma, theta_rad)
+    tau = G_NEWTON * m * m * t / (2.0 * HBAR)
+    if planted_defect:
+        # Planted defect: drop DP self-decoherence (a := 0, γ_env := 0) while keeping coherent cross-phase sin(2 b τ).
+        return 0.5 * abs(math.sin(2.0 * b * tau))
+    a_tilde = a + (HBAR * gamma_env) / (G_NEWTON * m * m)
+    p = 4.0 * a_tilde * tau
+    q = 4.0 * b * tau
+    # Since 0 ≤ b ≤ a ≤ a_tilde, p − q ≥ 0 for all t ≥ 0: both exponentials have non-positive arguments (zero overflow on [0, ∞)).
+    ep_minus = math.exp(-max(0.0, p - q))
+    ep_plus = math.exp(-(p + q))
+    u_sinh = 0.5 * (ep_minus - ep_plus)
+    u_cosh = 0.5 * (ep_minus + ep_plus)
+    rad = math.sqrt(u_sinh * u_sinh + 4.0 * math.exp(-p) * (math.sin(2.0 * b * tau) ** 2))
+    lam_min = 0.25 * (1.0 - u_cosh - rad)
+    return max(0.0, -lam_min)
+
+
+def parallel_hybrid_critical_gap_over_sigma(split_over_sigma: float, theta_rad: float = 0.0) -> float:
+    """Exact closed-form horizon D_c(Δx/σ, θ) / σ where √2 b − a = 0 (returns 0.0 when √2 b ≤ a already at D → 0)."""
+    sigma = 1.0
+    split = split_over_sigma
+
+    def margin(d_over_s: float) -> float:
+        a, b = parallel_ab_rates(split, d_over_s, sigma, theta_rad)
+        return math.sqrt(2.0) * b - a
+
+    if margin(1e-12) <= 0.0:
+        return 0.0
+    lo, hi = 1e-12, 20.0
+    for _ in range(70):
+        mid = 0.5 * (lo + hi)
+        if margin(mid) > 0.0:
+            lo = mid
+        else:
+            hi = mid
+    return 0.5 * (lo + hi)
+
+
+def parallel_hybrid_critical_sigma_exact(split: float, gap: float, theta_rad: float = 0.0) -> float:
+    """Exact closed-form critical smearing σ_c(D, Δx, θ) above which √2 b > a (mass- and time-independent; inf at θ = π/2)."""
+    if abs(math.cos(theta_rad)) < 1e-15:
+        return float("inf")
+
+    def margin(s: float) -> float:
+        a, b = parallel_ab_rates(split, gap, s, theta_rad)
+        return math.sqrt(2.0) * b - a
+
+    lo, hi = 1e-12 * gap, 1e4 * max(split, gap)
+    if margin(hi) <= 0.0:
+        return float("inf")
+    for _ in range(80):
+        mid = math.sqrt(lo * hi)
+        if margin(mid) > 0.0:
+            hi = mid
+        else:
+            lo = mid
+    return math.sqrt(lo * hi)
+
+
+def parallel_hybrid_critical_dephasing(
+    split: float, gap: float, m: float, sigma: float, theta_rad: float = 0.0
+) -> float:
+    """Exact critical environmental dephasing rate γ_crit^hyb = (G m² / ħ) max(0, √2 b − a)."""
+    a, b = parallel_ab_rates(split, gap, sigma, theta_rad)
+    return (G_NEWTON * m * m / HBAR) * max(0.0, math.sqrt(2.0) * b - a)
 
 
 # Published geometries: (key, layout, mass kg, split m, nearest approach or gap m). Sources on the T.05 ledger.
@@ -698,7 +847,20 @@ def check_dispute(planted_defect: bool = False) -> dict:
                  and abs(hybrid_critical_sigma_points(brc, BMV_M_KG) / tn_critical_sigma(BMV_M_KG, BMV_DX_M, BMV_D_M - BMV_DX_M) - 1.0) < 1e-3
                  and abs(quantum_t_full_points(brc, BMV_M_KG) / time_to_full_entanglement(BMV_M_KG, BMV_D_M, BMV_DX_M) - 1.0) < 1e-9)
     pmap = parallel_map()
-    parallel_ok = all(0.59 < row["hybrid_over_gap"] < 0.66 for row in pmap) and all(0.42 < row["collapse_over_gap"] < 0.49 for row in pmap)
+    parallel_ok = all(0.45 < row["hybrid_over_gap"] < 0.66 for row in pmap) and all(0.42 < row["collapse_over_gap"] < 0.49 for row in pmap)
+    # 4h_closed. Exact closed-form 2-D and 3-D skewed parallel hybrid negativity, horizon asymptotes (1.5471 σ to 2.2109 σ),
+    # orthogonal θ = π/2 null symmetry, overflow-free t = 1e8 s evaluation, and closed-form γ_crit^hyb agreement.
+    closed_errs = []
+    for th in (0.0, math.pi / 4.0, math.pi / 2.0, math.pi):
+        br_sk = branches_parallel_skewed(25e-6, 35e-6, th)
+        for gm in (0.0, 1e-4):
+            n_mat = negativity(dephase_points(hybrid_state_points(br_sk, 1e-14, 45e-6, 600.0), gm, 600.0))
+            n_cl = parallel_hybrid_negativity_closed(25e-6, 35e-6, 1e-14, 45e-6, 600.0, gamma_env=gm, theta_rad=th)
+            closed_errs.append(abs(n_mat - n_cl))
+    dc0_num = parallel_hybrid_critical_gap_over_sigma(1e-6, 0.0)
+    dc_inf_num = parallel_hybrid_critical_gap_over_sigma(1e8, 0.0)
+    n_t1e8 = parallel_hybrid_negativity_closed(250e-6, 75e-6, 1e-14, 33.1e-6, 1e8)
+    n_orth = parallel_hybrid_negativity_closed(250e-6, 75e-6, 1e-14, 60e-6, 2.5, theta_rad=0.5 * math.pi)
     props = proposals_table()
     pb = {row["key"]: row for row in props}
     live = [v for row in props for v in row["at_sigma"].values() if v["entangles"]]
@@ -713,6 +875,15 @@ def check_dispute(planted_defect: bool = False) -> dict:
     # thresholds sit 40 to 300 times lower; at γ = 1e-3 /s the hybrid shows nothing while the quantum channel still peaks above 0.3.
     dec = open_window_decoherence()
     hyb_thr = dec["hybrid_dephasing_threshold_per_s"]
+    gcrit_closed_33 = parallel_hybrid_critical_dephasing(1.7e-6, 21e-6, 1e-14, SIGMA_ESTIMATE_M)
+    parallel_closed_ok = (
+        max(closed_errs) < 1e-13
+        and abs(dc0_num - PARALLEL_DC0_OVER_SIGMA) < 1e-6
+        and abs(dc_inf_num - PARALLEL_DC_INF_OVER_SIGMA) < 1e-6
+        and n_t1e8 == 0.0
+        and n_orth == 0.0
+        and abs(gcrit_closed_33 / hyb_thr["33um"] - 1.0) < 1e-4
+    )
     decoh_ok = (abs(dec["quantum_dephasing_threshold_per_s"] / dec["proposal_omega_ent_per_s"] - 1.0) < 1e-4  # the proposal's γ < |ω_ent| criterion, reproduced
                 and all(2e-5 < v < 5e-4 for v in hyb_thr.values())
                 and all(40.0 < dec["quantum_dephasing_threshold_per_s"] / v < 300.0 for v in hyb_thr.values())
@@ -745,11 +916,11 @@ def check_dispute(planted_defect: bool = False) -> dict:
         "ktm_threshold_ratios": ratios, "ktm_2017": ktm_2017,
         "entangling_parts": parts, "quantum_channel_negativity_2017": quantum_negativity, "parts_ok": parts_ok,
         "pure_collapse": collapse, "collapse_ok": collapse_ok,
-        "threshold_map": tmap, "map_ok": map_ok, "map_with_isl": isl, "isl_ok": isl_ok, "open_region_timing": timing, "timing_ok": timing_ok, "points_ok": points_ok, "parallel_map": pmap, "parallel_ok": parallel_ok, "proposals": props, "proposals_ok": proposals_ok, "open_window_decoherence": dec, "decoh_ok": decoh_ok, "aziz_howl": az, "aziz_ok": aziz_ok,
+        "threshold_map": tmap, "map_ok": map_ok, "map_with_isl": isl, "isl_ok": isl_ok, "open_region_timing": timing, "timing_ok": timing_ok, "points_ok": points_ok, "parallel_map": pmap, "parallel_ok": parallel_ok, "parallel_closed_ok": parallel_closed_ok, "parallel_dc0_over_sigma": PARALLEL_DC0_OVER_SIGMA, "parallel_dc_inf_over_sigma": PARALLEL_DC_INF_OVER_SIGMA, "proposals": props, "proposals_ok": proposals_ok, "open_window_decoherence": dec, "decoh_ok": decoh_ok, "aziz_howl": az, "aziz_ok": aziz_ok,
         "collapse_scaling": scaling, "scaling_ok": scaling_ok, "rijavec_tau_g_s": tau_g, "dephasing_threshold_per_s": gamma_zero, "rijavec_ok": rijavec_ok,
         "dc_paper_ok": dc_paper_ok, "dc_double_entry_ok": dc_double_entry_ok, "fig3_ok": fig3_ok, "tn_2017_ok": tn_2017_ok,
         "ktm_ok": ktm_ok, "ktm_edge_ok": ktm_edge_ok, "defect_rejected": defect_rejected,
-        "ok": dc_paper_ok and dc_double_entry_ok and fig3_ok and tn_2017_ok and ktm_ok and ktm_edge_ok and parts_ok and collapse_ok and scaling_ok and rijavec_ok and map_ok and isl_ok and timing_ok and points_ok and parallel_ok and proposals_ok and decoh_ok and aziz_ok and defect_rejected,
+        "ok": dc_paper_ok and dc_double_entry_ok and fig3_ok and tn_2017_ok and ktm_ok and ktm_edge_ok and parts_ok and collapse_ok and scaling_ok and rijavec_ok and map_ok and isl_ok and timing_ok and points_ok and parallel_ok and parallel_closed_ok and proposals_ok and decoh_ok and aziz_ok and defect_rejected,
     }
 
 
