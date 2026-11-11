@@ -534,6 +534,131 @@ def generate_essay_plates() -> dict[str, str]:
     p9_bytes = _encode_png(w, h, b9)
     (PLATES_DIR / "essay09.png").write_bytes(p9_bytes)
     hashes["essay09"] = hashlib.sha256(p9_bytes).hexdigest()[:8]
+
+    # Plate 10: essay10.png (Four-Gate Operator Sieve: (sigma, l_b) exclusion quadrant + sign-split potential curves + 4 gates / 2 survivors)
+    b10 = _make_canvas(w, h, stone)
+    _fill_rect(b10, w, h, 36, 36, 1164, 594, vellum)
+    # Left panel: 2D (sigma, l_b) exclusion contour quadrant (x = 86..536, y = 96..524; 10.2 px/um)
+    qx0, qy0, qscale = 86.0, 524.0, 10.2
+    _fill_rect(b10, w, h, int(qx0), 96, 536, int(qy0), (242, 219, 214), 0.72)
+    signed_pts = [(0.0, 27.22), (10.0, 25.47), (18.0, 23.34), (24.0, 20.01), (28.0, 16.22), (32.0, 7.83), (33.01, 0.0)]
+    unsigned_pts = [(0.0, 38.47), (18.0, 36.24), (32.0, 28.69), (40.4, 0.0)]
+
+    def _interp_contour(pts: list[tuple[float, float]], sig_u: float) -> float:
+        if sig_u <= pts[0][0]:
+            return pts[0][1]
+        if sig_u >= pts[-1][0]:
+            return 0.0
+        for idx_c in range(len(pts) - 1):
+            x_a, y_a = pts[idx_c]
+            x_b, y_b = pts[idx_c + 1]
+            if x_a <= sig_u <= x_b:
+                t_c = (sig_u - x_a) / max(x_b - x_a, 1e-9)
+                return y_a + t_c * (y_b - y_a)
+        return 0.0
+
+    # Fill unsigned crescent (warm sienna wash) and sub-27.22 um allowed core (verdigris wash)
+    for px_s in range(int(qx0) + 1, 502, 2):
+        sig_val = (px_s - qx0) / qscale
+        if sig_val < 40.4:
+            lb_u = _interp_contour(unsigned_pts, sig_val)
+            py_u = int(qy0 - lb_u * qscale)
+            _fill_rect(b10, w, h, px_s, py_u, px_s + 2, int(qy0), (244, 233, 215), 0.92)
+        if sig_val < 33.01:
+            lb_s = _interp_contour(signed_pts, sig_val)
+            py_s = int(qy0 - lb_s * qscale)
+            _fill_rect(b10, w, h, px_s, py_s, px_s + 2, int(qy0), (212, 236, 224), 0.96)
+
+    # Sienna dashed unsigned 38.47 um arc
+    for idx_u in range(len(unsigned_pts) - 1):
+        ux0, uy0 = unsigned_pts[idx_u]
+        ux1, uy1 = unsigned_pts[idx_u + 1]
+        for seg_i in range(0, 10, 2):
+            ta = seg_i / 10.0
+            tb = (seg_i + 1.15) / 10.0
+            _draw_line(
+                b10, w, h,
+                qx0 + (ux0 + ta * (ux1 - ux0)) * qscale,
+                qy0 - (uy0 + ta * (uy1 - uy0)) * qscale,
+                qx0 + (ux0 + min(1.0, tb) * (ux1 - ux0)) * qscale,
+                qy0 - (uy0 + min(1.0, tb) * (uy1 - uy0)) * qscale,
+                3.4, sienna, 0.92,
+            )
+    # Solid minium signed 27.22..33.01 um exclusion boundary
+    for idx_s in range(len(signed_pts) - 1):
+        sx0, sy0 = signed_pts[idx_s]
+        sx1, sy1 = signed_pts[idx_s + 1]
+        _draw_line(
+            b10, w, h,
+            qx0 + sx0 * qscale, qy0 - sy0 * qscale,
+            qx0 + sx1 * qscale, qy0 - sy1 * qscale,
+            4.8, minium,
+        )
+    # Axes + active benchmark disc at (18, 18) um
+    _draw_line(b10, w, h, qx0, qy0, 538.0, qy0, 3.0, ink)
+    _draw_line(b10, w, h, qx0, qy0, qx0, 94.0, 3.0, ink)
+    bm_x, bm_y = qx0 + 18.0 * qscale, qy0 - 18.0 * qscale
+    _draw_line(b10, w, h, qx0, bm_y, bm_x, bm_y, 1.8, verdigris, 0.65)
+    _draw_line(b10, w, h, bm_x, qy0, bm_x, bm_y, 1.8, verdigris, 0.65)
+    _draw_disc(b10, w, h, bm_x, bm_y, 12.5, verdigris)
+    _draw_ring(b10, w, h, bm_x, bm_y, 21.0, 3.2, prussian)
+
+    # Center divider
+    _draw_line(b10, w, h, 578.0, 56.0, 578.0, 574.0, 3.0, ink, 0.85)
+
+    # Right-left subplot: Sign-split potential ratio curves across r (+2/3 (l_AdS/r)^2 in prussian vs -exp(-r/l_b) in minium)
+    cx0, cy_zero, cw_r = 618.0, 315.0, 326.0
+    _draw_line(b10, w, h, cx0, 112.0, cx0, 518.0, 2.8, ink)
+    _draw_line(b10, w, h, cx0, cy_zero, cx0 + cw_r, cy_zero, 2.8, ink, 0.9)
+    prev_px, prev_py_pos, prev_py_neg = None, None, None
+    for ri in range(49):
+        u_r = ri / 48.0
+        r_um = 44.0 + u_r * 76.0
+        px_r = cx0 + u_r * cw_r
+        v_pos = (2.0 / 3.0) * ((30.0 / r_um) ** 2)
+        v_neg = -math.exp(-r_um / 30.0)
+        py_pos = cy_zero - min(192.0, v_pos * 560.0)
+        py_neg = cy_zero - max(-192.0, v_neg * 560.0)
+        if prev_px is not None:
+            _draw_line(b10, w, h, prev_px, prev_py_pos, px_r, py_pos, 4.6, prussian)
+            _draw_line(b10, w, h, prev_px, prev_py_neg, px_r, py_neg, 4.6, minium)
+        prev_px, prev_py_pos, prev_py_neg = px_r, py_pos, py_neg
+    # Datum markers at r = 52 um (u = 8 / 76)
+    u52 = (52.0 - 44.0) / 76.0
+    x52 = cx0 + u52 * cw_r
+    y52_pos = cy_zero - (2.0 / 3.0) * ((30.0 / 52.0) ** 2) * 560.0
+    y52_neg = cy_zero + math.exp(-52.0 / 30.0) * 560.0
+    _draw_line(b10, w, h, x52, y52_pos, x52, y52_neg, 2.0, sienna, 0.7)
+    _draw_disc(b10, w, h, x52, y52_pos, 9.0, prussian)
+    _draw_disc(b10, w, h, x52, y52_neg, 9.0, minium)
+
+    # Far-right 4 vertical gate columns + 6 candidate rows with 2 verdigris survivor discs
+    _fill_rect(b10, w, h, 968, 102, 1148, 528, stone, 0.88)
+    gate_xs = (992.0, 1034.0, 1076.0, 1118.0)
+    row_ys = (142.0, 211.0, 280.0, 349.0, 418.0, 487.0)
+    gate_matrix = (
+        (False, True, False, False),
+        (True, False, True, True),
+        (True, True, False, False),
+        (True, True, True, False),
+        (True, True, True, True),
+        (True, True, True, True),
+    )
+    for gx in gate_xs:
+        _draw_line(b10, w, h, gx, 118.0, gx, 512.0, 2.4, rule, 0.95)
+    for r_idx, ry_m in enumerate(row_ys):
+        is_survivor = r_idx >= 4
+        _draw_line(b10, w, h, 980.0, ry_m, 1130.0, ry_m, 1.8, verdigris if is_survivor else rule, 0.65)
+        for g_idx, gx in enumerate(gate_xs):
+            passed = gate_matrix[r_idx][g_idx]
+            if is_survivor and g_idx == 3:
+                _draw_disc(b10, w, h, gx, ry_m, 11.5, verdigris)
+                _draw_ring(b10, w, h, gx, ry_m, 17.5, 2.8, prussian)
+            else:
+                _draw_disc(b10, w, h, gx, ry_m, 6.8, verdigris if passed else minium, 0.92)
+    p10_bytes = _encode_png(w, h, b10)
+    (PLATES_DIR / "essay10.png").write_bytes(p10_bytes)
+    hashes["essay10"] = hashlib.sha256(p10_bytes).hexdigest()[:8]
     return hashes
 
 
@@ -989,6 +1114,103 @@ def render_instrument(essay: dict, is_es: bool = False) -> str:
       <p class="tp-essay-status" data-cs-status role="status"></p>
     </section>"""
 
+    if kind == "four_gate_sieve":
+        svg_aria = (
+            "Cuadrante de exclusión con signo y sin signo para suavizado gaussiano y longitud de flexión, frente a curvas de cambio fraccional de potencial"
+            if is_es
+            else "Signed and unsigned 95 percent exclusion quadrant for Gaussian smearing and bending length, paired with fractional potential shift curves"
+        )
+        return f"""    <section id="instrument" class="tp-essay-observatory" data-cs-instrument="four_gate_sieve" aria-labelledby="inst-heading">
+      <div class="tp-essay-obs-head">
+        <p class="tp-kicker" data-en="Interactive Four-Gate Operator Sieve &amp; Scale-Bridge Observatory · ES.10" data-es="Observatorio Interactivo de la Criba de Operadores de Cuatro Compuertas · ES.10">Interactive Four-Gate Operator Sieve &amp; Scale-Bridge Observatory · ES.10</p>
+        <h2 id="inst-heading" class="tp-h2" data-en="Signed (σ, ℓ_b) Exclusion Quadrant, Opposite-Sign Potential Shifts &amp; 310 K Helfrich Bridge" data-es="Cuadrante de Exclusión con Signo (σ, ℓ_b), Signos Opuestos de Potencial y Puente de Helfrich a 310 K">Signed (σ, ℓ_b) Exclusion Quadrant, Opposite-Sign Potential Shifts &amp; 310 K Helfrich Bridge</h2>
+      </div>
+      <div class="tp-essay-obs-grid">
+        <svg class="tp-essay-svg" viewBox="0 0 560 320" role="img" aria-label="{svg_aria}">
+          <rect x="6" y="6" width="548" height="308" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule)"/>
+          <g data-fgs-left></g>
+          <g data-fgs-right></g>
+        </svg>
+        <div class="tp-essay-controls">
+          <label class="tp-essay-ctrl">
+            <span data-en="Gaussian smearing width σ (µm)" data-es="Ancho de suavizado gaussiano σ (µm)">Gaussian smearing width σ (µm)</span>
+            <strong data-cs-val="sigma">18.0 µm</strong>
+            <input type="range" min="0" max="35" step="0.5" value="18.0" data-cs-input="sigma">
+          </label>
+          <label class="tp-essay-ctrl">
+            <span data-en="Spatial bending length ℓ_b (µm)" data-es="Longitud de flexión espacial ℓ_b (µm)">Spatial bending length ℓ_b (µm)</span>
+            <strong data-cs-val="lb">18.0 µm</strong>
+            <input type="range" min="0" max="42" step="0.5" value="18.0" data-cs-input="lb">
+          </label>
+          <button type="button" class="tp-cta" data-fgs-scale="brane" aria-pressed="false" data-en="Scale: 2.0 K Spacetime Brane (d = 3) ⇄ 310.15 K Bilayer" data-es="Escala: Brana Espaciotemporal 2.0 K (d = 3) ⇄ Bicapa 310.15 K">Scale: 2.0 K Spacetime Brane (d = 3) ⇄ 310.15 K Bilayer</button>
+          <div class="tp-essay-readout-box">
+            <div><span data-en="Mermin Witness:" data-es="Testigo Mermin:">Mermin Witness:</span> <strong data-cs-read="mermin">⟨M₃⟩ = 3.6509 &gt; 2.8284 (DP 0.3227)</strong></div>
+            <div><span data-en="Signed Edge &amp; Shift:" data-es="Borde con Signo y Cambio:">Signed Edge &amp; Shift:</span> <strong data-cs-read="edge" data-en="ALLOWED · Δφ/Δφ_N = −5.83% (D = 75 µm)" data-es="PERMITIDO · Δφ/Δφ_N = −5.83 % (D = 75 µm)">ALLOWED · Δφ/Δφ_N = −5.83% (D = 75 µm)</strong></div>
+          </div>
+          <button type="button" class="tp-cta" data-cs-knockout aria-pressed="false" data-en="Toggle Planted Sign-Conflation Defect" data-es="Alternar Defecto Plantado de Signo">Toggle Planted Sign-Conflation Defect</button>
+        </div>
+      </div>
+      <div class="tp-essay-table-wrap">
+        <table class="tp-telemetry-benchmark-table" data-fgs-table>
+          <caption data-en="Live 6-Model × 4-Gate Sieve · G1: Sub-50 µm Torsion · G2: Cassini PPN &amp; Unitarity · G3: Mermin ⟨M₃⟩ &gt; 2√2 · G4: Proper-Time Clocks" data-es="Criba en Vivo 6 Modelos × 4 Compuertas · G1: Torsión Sub-50 µm · G2: Cassini PPN y Unitaridad · G3: Mermin ⟨M₃⟩ &gt; 2√2 · G4: Relojes de Tiempo Propio">Live 6-Model × 4-Gate Sieve · G1: Sub-50 µm Torsion · G2: Cassini PPN &amp; Unitarity · G3: Mermin ⟨M₃⟩ &gt; 2√2 · G4: Proper-Time Clocks</caption>
+          <thead>
+            <tr>
+              <th scope="col" data-en="Candidate Operator" data-es="Operador Candidato">Candidate Operator</th>
+              <th scope="col">G1</th>
+              <th scope="col">G2</th>
+              <th scope="col">G3</th>
+              <th scope="col">G4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-fgs-row="scalar_sheet">
+              <th scope="row" data-en="Scalar Sheet" data-es="Lámina Escalar">Scalar Sheet</th>
+              <td data-fgs-cell="scalar_sheet:0" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="scalar_sheet:1" data-en="FAIL" data-es="FALLA">FAIL</td>
+              <td data-fgs-cell="scalar_sheet:2" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="scalar_sheet:3" data-en="FAIL" data-es="FALLA">FAIL</td>
+            </tr>
+            <tr data-fgs-row="stelle_box2">
+              <th scope="row" data-en="Stelle □²" data-es="Stelle □²">Stelle □²</th>
+              <td data-fgs-cell="stelle_box2:0" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="stelle_box2:1" data-en="FAIL" data-es="FALLA">FAIL</td>
+              <td data-fgs-cell="stelle_box2:2" data-en="FAIL" data-es="FALLA">FAIL</td>
+              <td data-fgs-cell="stelle_box2:3" data-en="PASS" data-es="PASA">PASS</td>
+            </tr>
+            <tr data-fgs-row="classical_dp">
+              <th scope="row" data-en="Classical DP" data-es="DP Clásico">Classical DP</th>
+              <td data-fgs-cell="classical_dp:0" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="classical_dp:1" data-en="COND" data-es="COND">COND</td>
+              <td data-fgs-cell="classical_dp:2" data-en="FAIL" data-es="FALLA">FAIL</td>
+              <td data-fgs-cell="classical_dp:3" data-en="FAIL" data-es="FALLA">FAIL</td>
+            </tr>
+            <tr data-fgs-row="horava_nabla4">
+              <th scope="row" data-en="Hořava ∇⁴" data-es="Hořava ∇⁴">Hořava ∇⁴</th>
+              <td data-fgs-cell="horava_nabla4:0" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="horava_nabla4:1" data-en="COND" data-es="COND">COND</td>
+              <td data-fgs-cell="horava_nabla4:2" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="horava_nabla4:3" data-en="PASS" data-es="PASA">PASS</td>
+            </tr>
+            <tr data-fgs-row="warped_rs2">
+              <th scope="row" data-en="Warped RS-II Brane" data-es="Brana Alabeada RS-II">Warped RS-II Brane</th>
+              <td data-fgs-cell="warped_rs2:0" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="warped_rs2:1" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="warped_rs2:2" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="warped_rs2:3" data-en="PASS" data-es="PASA">PASS</td>
+            </tr>
+            <tr data-fgs-row="canonical_qg">
+              <th scope="row" data-en="Canonical QG EFT" data-es="TCE Cuántica Canónica">Canonical QG EFT</th>
+              <td data-fgs-cell="canonical_qg:0" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="canonical_qg:1" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="canonical_qg:2" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="canonical_qg:3" data-en="PASS" data-es="PASA">PASS</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tp-essay-status" data-cs-status role="status"></p>
+    </section>"""
+
     svg_aria = (
         "Cota de la Relación de Incertidumbre Termodinámica en Q_TUR = 2 con punto operativo en vivo"
         if is_es
@@ -1315,11 +1537,13 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
     head = B.render_head(seo_t, seo_d, path, "website", image, rel_root, rel_res, ld, lang)
     cards_m1 = render_essay_cards(essays[:3], rel_res, is_es=is_es)
     cards_m2 = render_essay_cards(essays[3:6], rel_res, is_es=is_es)
-    cards_m3 = render_essay_cards(essays[6:], rel_res, is_es=is_es)
+    cards_m3 = render_essay_cards(essays[6:9], rel_res, is_es=is_es)
+    cards_m4 = render_essay_cards(essays[9:], rel_res, is_es=is_es)
     aria_crumb = "Ruta de navegación" if is_es else "Breadcrumb"
     aria_rack1 = "Movimiento I: Pisos, Registros y Relojes" if is_es else "Movement I: Floors, Ledgers & Clocks"
     aria_rack2 = "Movimiento II: Celosías, Horizontes y Operadores Atemporales" if is_es else "Movement II: Frames, Horizons & Timeless Operators"
     aria_rack3 = "Movimiento III: Horizontes Paralelos, Islas Cuánticas y Fronteras Epistémicas" if is_es else "Movement III: Parallel Horizons, Quantum Islands & Epistemic Boundaries"
+    aria_rack4 = "Movimiento IV: Coda · La Criba de Operadores de Cuatro Compuertas" if is_es else "Movement IV: Coda · The Four-Gate Operator Sieve"
 
     m2_section = ""
     if essays[3:6]:
@@ -1335,7 +1559,7 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
     </section>"""
 
     m3_section = ""
-    if essays[6:]:
+    if essays[6:9]:
         m3_section = f"""
     <section class="tp-issue-rack" aria-label="{aria_rack3}">
       <div class="tp-section-head">
@@ -1344,6 +1568,19 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
       </div>
       <div class="tp-rack-grid">
 {cards_m3}
+      </div>
+    </section>"""
+
+    m4_section = ""
+    if essays[9:]:
+        m4_section = f"""
+    <section class="tp-issue-rack" aria-label="{aria_rack4}">
+      <div class="tp-section-head">
+        <p class="tp-kicker" data-en="Movement IV · Coda · ES.10 · The Four-Gate Operator Sieve" data-es="Movimiento IV · Coda · ES.10 · La Criba de Operadores de Cuatro Compuertas">Movement IV · Coda · ES.10 · The Four-Gate Operator Sieve</p>
+        <h2 class="tp-h2" data-en="Signed Curvature, Smeared Gravity, and Universal Bounds" data-es="Curvatura con Signo, Gravedad Suavizada y Cotas Universales">Signed Curvature, Smeared Gravity, and Universal Bounds</h2>
+      </div>
+      <div class="tp-rack-grid">
+{cards_m4}
       </div>
     </section>"""
 
@@ -1359,12 +1596,13 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
       </ol>
     </nav>
     <section class="tp-hero">
-      <p class="tp-kicker" data-en="Featured Synthesis · 9 Standalone Essays · Three Movements &amp; Zero-Sorry Verification" data-es="Síntesis Destacada · 9 Ensayos Independientes · Tres Movimientos y Verificación Formal">Featured Synthesis · 9 Standalone Essays · Three Movements &amp; Zero-Sorry Verification</p>
+      <p class="tp-kicker" data-en="Featured Synthesis · 10 Standalone Essays · Four Movements &amp; Zero-Sorry Verification" data-es="Síntesis entre Escalas · 10 Ensayos Independientes · Cuatro Movimientos y Verificación Formal">Featured Synthesis · 10 Standalone Essays · Four Movements &amp; Zero-Sorry Verification</p>
       <h1 class="tp-h1" data-en="Cross-Scale Essays: Clocks, Stone, and Living Matter" data-es="Ensayos entre Escalas: Relojes, Piedra y Materia Viva">Cross-Scale Essays: Clocks, Stone, and Living Matter</h1>
-      <p class="tp-standfirst" data-en="Nine standalone essays in three symmetric movements exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, coupled timeless constraints, closed-form parallel horizons, Fisher Schur-complement identifiability, and tripartite Mermin / active-clock witnesses—govern 10⁻¹⁴ kg quantum-gravity diamonds, space-frame trusses, black-hole horizons, and nanoscale biological channels." data-es="Nueve ensayos independientes en tres movimientos simétricos sobre por qué las mismas ecuaciones matemáticas y reglas de verificación formal —fluctuación-disipación, procedencia epistémica, incertidumbre termodinámica, rango-nulidad y microcausalidad, supervivencia condicional de Doob, ligaduras atemporales acopladas, horizontes paralelos cerrados, complementos de Schur de Fisher y testigos Mermin / relojes activos— gobiernan diamantes de gravedad cuántica de 10⁻¹⁴ kg, celosías estructurales, horizontes de agujeros negros y canales biológicos a nanoescala.">Nine standalone essays in three symmetric movements exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, coupled timeless constraints, closed-form parallel horizons, Fisher Schur-complement identifiability, and tripartite Mermin / active-clock witnesses—govern 10⁻¹⁴ kg quantum-gravity diamonds, space-frame trusses, black-hole horizons, and nanoscale biological channels.</p>
+      <p class="tp-standfirst" data-en="Ten standalone essays in four movements exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, coupled timeless constraints, closed-form parallel horizons, Fisher Schur-complement identifiability, tripartite Mermin / active-clock witnesses, and the four-gate biharmonic operator sieve—govern 10⁻¹⁴ kg quantum-gravity diamonds, space-frame trusses, black-hole horizons, and nanoscale biological membranes." data-es="Diez ensayos independientes en cuatro movimientos sobre por qué las mismas ecuaciones matemáticas y reglas de verificación formal —fluctuación-disipación, procedencia epistémica, incertidumbre termodinámica, rango-nulidad y microcausalidad, supervivencia condicional de Doob, ligaduras atemporales acopladas, horizontes paralelos cerrados, complementos de Schur de Fisher, testigos Mermin / relojes activos y la criba de operadores de cuatro compuertas— gobiernan diamantes de gravedad cuántica de 10⁻¹⁴ kg, celosías estructurales, horizontes de agujeros negros y membranas biológicas a nanoescala.">Ten standalone essays in four movements exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, coupled timeless constraints, closed-form parallel horizons, Fisher Schur-complement identifiability, tripartite Mermin / active-clock witnesses, and the four-gate biharmonic operator sieve—govern 10⁻¹⁴ kg quantum-gravity diamonds, space-frame trusses, black-hole horizons, and nanoscale biological membranes.</p>
       <div class="tp-series-rack-ctas">
         <a class="tp-cta tp-cta-primary" href="mesoscopic-floor/" data-en="Start Movement I · ES.01 The Mesoscopic Floor →" data-es="Iniciar Movimiento I · ES.01 El Piso Mesoscópico →">Start Movement I · ES.01 The Mesoscopic Floor →</a>
         <a class="tp-cta" href="loophole-free-parallel-horizon/" data-en="Enter Movement III · ES.07–ES.09 Horizons &amp; Multipartite Clocks →" data-es="Entrar al Movimiento III · ES.07–ES.09 Horizontes y Relojes →">Enter Movement III · ES.07–ES.09 Horizontes y Relojes →</a>
+        <a class="tp-cta" href="four-gate-operator-sieve/" data-en="Read Coda · ES.10 The Four-Gate Operator Sieve →" data-es="Leer Coda · ES.10 La Criba de Operadores de Cuatro Compuertas →">Read Coda · ES.10 The Four-Gate Operator Sieve →</a>
         <a class="tp-cta" href="../timegravity/" data-en="Time &amp; Gravity Core Series (T.00–T.12) →" data-es="Serie Principal Tiempo y Gravedad (T.00–T.12) →">Time &amp; Gravity Core Series (T.00–T.12) →</a>
       </div>
     </section>
@@ -1376,7 +1614,7 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
       <div class="tp-rack-grid">
 {cards_m1}
       </div>
-    </section>{m2_section}{m3_section}
+    </section>{m2_section}{m3_section}{m4_section}
 {B.render_site_footer(rel_res)}
   </main>
   <script type="module" src="{rel_res}/modules/main.mjs"></script>

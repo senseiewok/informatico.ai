@@ -25,7 +25,7 @@ from test_informatico_seo import DANGLING, FORMULA, SITE, parse, url_to_file  # 
 
 class CrossScaleEssaysTests(unittest.TestCase):
     def test_seven_essays_and_hub_built_in_english_and_spanish_with_seo_and_jsonld(self) -> None:
-        self.assertEqual([e["code"] for e in ESSAYS], ["ES.01", "ES.02", "ES.03", "ES.04", "ES.05", "ES.06", "ES.07", "ES.08", "ES.09"])
+        self.assertEqual([e["code"] for e in ESSAYS], ["ES.01", "ES.02", "ES.03", "ES.04", "ES.05", "ES.06", "ES.07", "ES.08", "ES.09", "ES.10"])
         self.assertEqual(
             [e["slug"] for e in ESSAYS],
             [
@@ -38,6 +38,7 @@ class CrossScaleEssaysTests(unittest.TestCase):
                 "loophole-free-parallel-horizon",
                 "schur-complements-nuisance-identifiability",
                 "multipartite-witnesses-active-clocks",
+                "four-gate-operator-sieve",
             ],
         )
 
@@ -131,6 +132,7 @@ class CrossScaleEssaysTests(unittest.TestCase):
             (SKILLS / "loophole-free-parallel-horizon" / "ParallelHorizon.lean", 9),
             (SKILLS / "schur-complements-nuisance-identifiability" / "SchurIdentifiability.lean", 9),
             (SKILLS / "multipartite-witnesses-active-clocks" / "MultipartiteWitness.lean", 9),
+            (SKILLS / "four-gate-operator-sieve" / "FourGateSieve.lean", 9),
         ):
             self.assertTrue(lean_rel.is_file(), f"Missing Lean 4 companion {lean_rel}")
             lean_src = lean_rel.read_text(encoding="utf-8")

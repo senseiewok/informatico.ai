@@ -1222,6 +1222,507 @@ function initMultipartiteWitness(root) {
   render();
 }
 
+const SVG_NS = "http://www.w3.org/2000/svg";
+const EULER_GAMMA = 0.5772156649015329;
+
+function svgEl(tag, attrs = {}, text = null) {
+  const el = document.createElementNS(SVG_NS, tag);
+  Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, String(v)));
+  if (text !== null) el.textContent = text;
+  return el;
+}
+
+function closedFormCombined(r, sigma, lb, knockout = false) {
+  let first = 1.0;
+  let second = 0.0;
+  if (sigma <= 1e-9) {
+    first = 1.0;
+    second = lb > 1e-9 ? Math.exp(-r / lb) : 0.0;
+  } else if (lb <= 1e-9) {
+    first = erfApprox(r / (2.0 * sigma));
+    second = 0.0;
+  } else {
+    first = erfApprox(r / (2.0 * sigma));
+    const a = sigma / lb;
+    const b = r / (2.0 * sigma);
+    const d1 = a - b;
+    const d2 = a + b;
+    const termB = Math.exp(-b * b) * erfcScaled(d2);
+    const termA = d1 >= 0.0
+      ? Math.exp(-b * b) * erfcScaled(d1)
+      : 2.0 * Math.exp(a * a - r / lb) - Math.exp(-b * b) * erfcScaled(-d1);
+    second = 0.5 * (termA - termB);
+  }
+  return knockout ? (first + second) : (first - second);
+}
+
+function besselI0(x) {
+  const ax = Math.abs(x);
+  if (ax < 3.75) {
+    const y = (x / 3.75) * (x / 3.75);
+    return 1.0 + y * (3.5156229 + y * (3.0899424 + y * (1.2067492 + y * (0.2659732 + y * (0.0360768 + y * 0.0045813)))));
+  }
+  const y = 3.75 / ax;
+  return (Math.exp(ax) / Math.sqrt(ax)) * (
+    0.39894228 + y * (0.01328592 + y * (0.00225319 + y * (-0.00157565 + y * (
+      0.00916281 + y * (-0.02057706 + y * (0.02635537 + y * (-0.01647633 + y * 0.00392377)))
+    ))))
+  );
+}
+
+function besselK0(x) {
+  if (x <= 1e-12) return 0.0;
+  if (x <= 2.0) {
+    const y = (x * x) / 4.0;
+    return -Math.log(x / 2.0) * besselI0(x) - 0.57721566 + y * (
+      0.42278420 + y * (0.23069756 + y * (0.03488590 + y * (0.00262698 + y * (0.00010750 + y * 0.00000740))))
+    );
+  }
+  const y = 2.0 / x;
+  return (Math.exp(-x) / Math.sqrt(x)) * (
+    1.25331414 + y * (-0.07832358 + y * (0.02189568 + y * (-0.01062446 + y * (
+      0.00587872 + y * (-0.00251540 + y * 0.00053208)
+    ))))
+  );
+}
+
+function helfrichGreenReg(rNm, lbNm) {
+  return Math.log(rNm / (2.0 * lbNm)) + EULER_GAMMA + besselK0(rNm / lbNm);
+}
+
+function initFourGateSieve(root) {
+  const sigmaInput = root.querySelector('[data-cs-input="sigma"]');
+  const lbInput = root.querySelector('[data-cs-input="lb"]');
+  const valSigma = root.querySelector('[data-cs-val="sigma"]');
+  const valLb = root.querySelector('[data-cs-val="lb"]');
+  const scaleBtn = root.querySelector("[data-fgs-scale]");
+  const koBtn = root.querySelector("[data-cs-knockout]");
+  const statusEl = root.querySelector("[data-cs-status]");
+  const leftG = root.querySelector("[data-fgs-left]");
+  const rightG = root.querySelector("[data-fgs-right]");
+  const reads = {};
+  root.querySelectorAll("[data-cs-read]").forEach((el) => { reads[el.getAttribute("data-cs-read")] = el; });
+  const cells = {};
+  root.querySelectorAll("[data-fgs-cell]").forEach((el) => { cells[el.getAttribute("data-fgs-cell")] = el; });
+
+  let scale = "brane";
+  let knockout = false;
+
+  const SIGNED_CONTOUR = [
+    [0.0, 27.22], [10.0, 25.47], [18.0, 23.34], [24.0, 20.01],
+    [28.0, 16.22], [32.0, 7.83], [33.01, 0.0],
+  ];
+  const UNSIGNED_CONTOUR = [
+    [0.0, 38.47], [18.0, 36.24], [32.0, 28.69], [40.4, 0.0],
+  ];
+
+  const G_NEWTON = 6.67430e-11;
+  const MASS_KG = 1.0e-14;
+  const D_M = 75.0e-6;
+  const DX_M = 250.0e-6;
+  const DIAG_M = Math.hypot(D_M, DX_M);
+  const OMEGA_N = ((2.0 * G_NEWTON * MASS_KG * MASS_KG) / HBAR) * ((1.0 / D_M) - (1.0 / DIAG_M));
+  const T_PI = Math.PI / OMEGA_N;
+  const GAMMA_2K = 0.021965;
+  const ETA_2K = Math.exp(-GAMMA_2K * T_PI);
+  const BISEP_BOUND = 2.0 * Math.SQRT2;
+  const DP_SIGMA_M = 33.08e-6;
+
+  // Precompute classical 3-body DP Mermin benchmark at sigma_95 = 33.08 um (0.3227)
+  const dpA = smearedF(0.0, DP_SIGMA_M) - smearedF(DX_M, DP_SIGMA_M);
+  const dpB = smearedF(D_M, DP_SIGMA_M) - smearedF(DIAG_M, DP_SIGMA_M);
+  const dpTau = (G_NEWTON * MASS_KG * MASS_KG * T_PI) / (2.0 * HBAR);
+  const M3_DP_REF = 0.25 * Math.pow(ETA_2K, 3) * (
+    Math.exp(-6.0 * (dpA + 2.0 * dpB) * dpTau) + 3.0 * Math.exp(-2.0 * (3.0 * dpA - 2.0 * dpB) * dpTau)
+  ) + 3.0 * ETA_2K * Math.exp(-2.0 * dpA * dpTau) * Math.pow(Math.sin(2.0 * dpB * dpTau), 2);
+
+  function contourLimit(pts, sig) {
+    if (sig < 0.0) return pts[0][1];
+    const last = pts[pts.length - 1];
+    if (sig > last[0]) return -1.0;
+    for (let i = 0; i < pts.length - 1; i += 1) {
+      const [x0, y0] = pts[i];
+      const [x1, y1] = pts[i + 1];
+      if (sig >= x0 && sig <= x1) {
+        const t = (sig - x0) / Math.max(x1 - x0, 1e-9);
+        return y0 + t * (y1 - y0);
+      }
+    }
+    return 0.0;
+  }
+
+  function renderLeftQuadrant(sigma, lb, insideSigned, insideUnsigned, isEs) {
+    if (!leftG) return;
+    leftG.replaceChildren();
+    const x0 = 38;
+    const y0 = 266;
+    const w = 212;
+    const h = 216;
+    const maxS = 44.0;
+    const maxL = 44.0;
+    const sx = (s) => x0 + (s / maxS) * w;
+    const sy = (l) => y0 - (l / maxL) * h;
+
+    leftG.appendChild(svgEl("text", {
+      x: x0 - 4,
+      y: 30,
+      fill: "var(--tp-ink)",
+      "font-size": "11.2",
+      "font-weight": "700",
+    }, isEs ? "1 · Cuadrante 95 % (σ, ℓ_b)" : "1 · 95% Quadrant (σ, ℓ_b)"));
+
+    leftG.appendChild(svgEl("rect", {
+      x: x0,
+      y: y0 - h,
+      width: w,
+      height: h,
+      rx: 6,
+      fill: "var(--tp-minium-soft)",
+      stroke: "var(--tp-rule)",
+    }));
+
+    const uPoly = [[x0, y0], ...UNSIGNED_CONTOUR.map(([s, l]) => [sx(s), sy(l)]), [sx(40.4), y0]]
+      .map(([px, py]) => `${px.toFixed(1)},${py.toFixed(1)}`).join(" ");
+    leftG.appendChild(svgEl("polygon", { points: uPoly, fill: "var(--tp-vellum)", opacity: "0.92" }));
+
+    const sPoly = [[x0, y0], ...SIGNED_CONTOUR.map(([s, l]) => [sx(s), sy(l)]), [sx(33.01), y0]]
+      .map(([px, py]) => `${px.toFixed(1)},${py.toFixed(1)}`).join(" ");
+    leftG.appendChild(svgEl("polygon", { points: sPoly, fill: "var(--tp-verdigris)", opacity: "0.18" }));
+
+    const uLine = UNSIGNED_CONTOUR.map(([s, l]) => `${sx(s).toFixed(1)},${sy(l).toFixed(1)}`).join(" ");
+    leftG.appendChild(svgEl("polyline", {
+      points: uLine,
+      fill: "none",
+      stroke: "var(--tp-sienna)",
+      "stroke-width": "2.2",
+      "stroke-dasharray": "5 3",
+    }));
+
+    const sLine = SIGNED_CONTOUR.map(([s, l]) => `${sx(s).toFixed(1)},${sy(l).toFixed(1)}`).join(" ");
+    leftG.appendChild(svgEl("polyline", {
+      points: sLine,
+      fill: "none",
+      stroke: "var(--tp-minium)",
+      "stroke-width": "2.8",
+    }));
+
+    leftG.appendChild(svgEl("line", { x1: x0, y1: y0, x2: x0 + w, y2: y0, stroke: "var(--tp-ink)", "stroke-width": "1.5" }));
+    leftG.appendChild(svgEl("line", { x1: x0, y1: y0 - h, x2: x0, y2: y0, stroke: "var(--tp-ink)", "stroke-width": "1.5" }));
+
+    [0, 18, 33, 40].forEach((tk) => {
+      const tx = sx(tk);
+      leftG.appendChild(svgEl("line", { x1: tx, y1: y0, x2: tx, y2: y0 + 4, stroke: "var(--tp-ink)" }));
+      leftG.appendChild(svgEl("text", { x: tx - 6, y: y0 + 15, fill: "var(--tp-ink)", "font-size": "9.5" }, String(tk)));
+    });
+    [0, 18, 27, 38].forEach((tk) => {
+      const ty = sy(tk);
+      leftG.appendChild(svgEl("line", { x1: x0 - 4, y1: ty, x2: x0, y2: ty, stroke: "var(--tp-ink)" }));
+      leftG.appendChild(svgEl("text", { x: 14, y: ty + 3.5, fill: "var(--tp-ink)", "font-size": "9.5" }, String(tk)));
+    });
+    leftG.appendChild(svgEl("text", { x: x0 + 74, y: 298, fill: "var(--tp-ink)", "font-size": "10.2", "font-weight": "700" }, "σ (µm)"));
+    leftG.appendChild(svgEl("text", { x: x0 + 6, y: y0 - h + 14, fill: "var(--tp-minium)", "font-size": "9.4", "font-weight": "700" }, isEs ? "Sólida: con signo 27.2 µm" : "Solid: signed 27.2 µm"));
+    leftG.appendChild(svgEl("text", { x: x0 + 6, y: y0 - h + 26, fill: "var(--tp-sienna)", "font-size": "9.2" }, isEs ? "Guiones: sin signo 38.5 µm" : "Dashed: unsigned 38.5 µm"));
+
+    const cx = sx(Math.min(maxS, sigma));
+    const cy = sy(Math.min(maxL, lb));
+    const dotCol = knockout
+      ? "var(--tp-minium)"
+      : (insideSigned ? "var(--tp-verdigris)" : (insideUnsigned ? "var(--tp-sienna)" : "var(--tp-minium)"));
+    leftG.appendChild(svgEl("line", { x1: x0, y1: cy, x2: cx, y2: cy, stroke: dotCol, "stroke-width": "1.2", "stroke-dasharray": "3 2" }));
+    leftG.appendChild(svgEl("line", { x1: cx, y1: cy, x2: cx, y2: y0, stroke: dotCol, "stroke-width": "1.2", "stroke-dasharray": "3 2" }));
+    leftG.appendChild(svgEl("circle", { cx: cx.toFixed(1), cy: cy.toFixed(1), r: "9.5", fill: "none", stroke: "var(--tp-prussian)", "stroke-width": "1.8" }));
+    leftG.appendChild(svgEl("circle", { cx: cx.toFixed(1), cy: cy.toFixed(1), r: "5.8", fill: dotCol, stroke: "var(--tp-vellum)", "stroke-width": "1.6" }));
+  }
+
+  function renderRightPanel(sigma, lb, isEs) {
+    if (!rightG) return;
+    rightG.replaceChildren();
+    const x0 = 294;
+    const yTop = 50;
+    const w = 248;
+    const h = 216;
+    const yBot = yTop + h;
+
+    rightG.appendChild(svgEl("rect", {
+      x: x0,
+      y: yTop,
+      width: w,
+      height: h,
+      rx: 6,
+      fill: "var(--tp-vellum)",
+      stroke: "var(--tp-rule)",
+    }));
+
+    if (scale === "brane") {
+      rightG.appendChild(svgEl("text", {
+        x: x0,
+        y: 30,
+        fill: "var(--tp-ink)",
+        "font-size": "11.2",
+        "font-weight": "700",
+      }, isEs ? "2 · ΔV(r)/V_N (%) · Brana 2.0 K (d = 3)" : "2 · ΔV(r)/V_N (%) · 2.0 K Brane (d = 3)"));
+
+      const rMin = 35.0;
+      const rMax = 120.0;
+      const vMin = -35.0;
+      const vMax = 45.0;
+      const rx = (r) => x0 + ((r - rMin) / (rMax - rMin)) * w;
+      const ry = (pct) => {
+        const cl = Math.max(vMin, Math.min(vMax, pct));
+        return yBot - ((cl - vMin) / (vMax - vMin)) * h;
+      };
+      const yZero = ry(0.0);
+
+      rightG.appendChild(svgEl("line", { x1: x0, y1: yZero, x2: x0 + w, y2: yZero, stroke: "var(--tp-ink)", "stroke-width": "1.4" }));
+      [52, 75].forEach((rm) => {
+        const xm = rx(rm);
+        rightG.appendChild(svgEl("line", { x1: xm, y1: yTop, x2: xm, y2: yBot, stroke: "var(--tp-rule)", "stroke-dasharray": "3 3" }));
+        rightG.appendChild(svgEl("text", { x: xm - 8, y: yBot + 15, fill: "var(--tp-ink)", "font-size": "9.5" }, `${rm}`));
+      });
+      rightG.appendChild(svgEl("text", { x: x0 + w - 26, y: yBot + 15, fill: "var(--tp-ink)", "font-size": "9.5" }, "120"));
+      rightG.appendChild(svgEl("text", { x: x0 + 82, y: 298, fill: "var(--tp-ink)", "font-size": "10.2", "font-weight": "700" }, "r (µm)"));
+
+      const rsPts = [];
+      const branePts = [];
+      for (let i = 0; i <= 48; i += 1) {
+        const r = rMin + (i / 48.0) * (rMax - rMin);
+        const pctRs = (2.0 / 3.0) * Math.pow(30.0 / r, 2) * 100.0;
+        const pctBrane = (closedFormCombined(r, sigma, lb, knockout) - 1.0) * 100.0;
+        rsPts.push(`${rx(r).toFixed(1)},${ry(pctRs).toFixed(1)}`);
+        branePts.push(`${rx(r).toFixed(1)},${ry(pctBrane).toFixed(1)}`);
+      }
+      rightG.appendChild(svgEl("polyline", {
+        points: rsPts.join(" "),
+        fill: "none",
+        stroke: "var(--tp-prussian)",
+        "stroke-width": "2.5",
+      }));
+      rightG.appendChild(svgEl("polyline", {
+        points: branePts.join(" "),
+        fill: "none",
+        stroke: knockout ? "var(--tp-sienna)" : "var(--tp-minium)",
+        "stroke-width": "2.8",
+        ...(knockout ? { "stroke-dasharray": "5 2" } : {}),
+      }));
+
+      const v52Rs = (2.0 / 3.0) * Math.pow(30.0 / 52.0, 2) * 100.0;
+      const v52Br = (closedFormCombined(52.0, sigma, lb, knockout) - 1.0) * 100.0;
+      rightG.appendChild(svgEl("circle", { cx: rx(52).toFixed(1), cy: ry(v52Rs).toFixed(1), r: "4.4", fill: "var(--tp-prussian)" }));
+      rightG.appendChild(svgEl("circle", { cx: rx(52).toFixed(1), cy: ry(v52Br).toFixed(1), r: "4.8", fill: knockout ? "var(--tp-sienna)" : "var(--tp-minium)" }));
+
+      rightG.appendChild(svgEl("text", {
+        x: x0 + 36,
+        y: yTop + 15,
+        fill: "var(--tp-prussian)",
+        "font-family": "monospace",
+        "font-size": "9.0",
+      }, `RS-II +(2/3)(30/r)²: +${v52Rs.toFixed(2)}% @52µm`));
+      rightG.appendChild(svgEl("text", {
+        x: x0 + 8,
+        y: yBot - 8,
+        fill: knockout ? "var(--tp-sienna)" : "var(--tp-minium)",
+        "font-family": "monospace",
+        "font-size": "9.4",
+      }, `${knockout ? "DEFECT (+second)" : "Brane (−second)"}: ${v52Br >= 0 ? "+" : ""}${v52Br.toFixed(2)}% @52µm`));
+    } else {
+      rightG.appendChild(svgEl("text", {
+        x: x0,
+        y: 30,
+        fill: "var(--tp-ink)",
+        "font-size": "11.0",
+        "font-weight": "700",
+      }, isEs ? "2 · Bicapa 310.15 K (d = 2, ℓ_b = 65.44 nm)" : "2 · 310.15 K Bilayer (d = 2, ℓ_b = 65.44 nm)"));
+
+      const lbNm = 65.44;
+      const rMin = 2.0;
+      const rMax = 150.0;
+      const gMin = -3.4;
+      const gMax = 0.8;
+      const rx = (r) => x0 + ((r - rMin) / (rMax - rMin)) * w;
+      const ry = (g) => {
+        const cl = Math.max(gMin, Math.min(gMax, g));
+        return yBot - ((cl - gMin) / (gMax - gMin)) * h;
+      };
+      const yZero = ry(0.0);
+      rightG.appendChild(svgEl("line", { x1: x0, y1: yZero, x2: x0 + w, y2: yZero, stroke: "var(--tp-ink)", "stroke-width": "1.3" }));
+
+      const barePts = [];
+      const regPts = [];
+      for (let i = 0; i <= 50; i += 1) {
+        const r = rMin + (i / 50.0) * (rMax - rMin);
+        const gBare = Math.log(r / (2.0 * lbNm)) + EULER_GAMMA;
+        const gReg = helfrichGreenReg(r, lbNm);
+        barePts.push(`${rx(r).toFixed(1)},${ry(gBare).toFixed(1)}`);
+        regPts.push(`${rx(r).toFixed(1)},${ry(gReg).toFixed(1)}`);
+      }
+      rightG.appendChild(svgEl("polyline", {
+        points: barePts.join(" "),
+        fill: "none",
+        stroke: "var(--tp-sienna)",
+        "stroke-width": "2.0",
+        "stroke-dasharray": "4 3",
+      }));
+      rightG.appendChild(svgEl("polyline", {
+        points: regPts.join(" "),
+        fill: "none",
+        stroke: "var(--tp-verdigris)",
+        "stroke-width": "2.8",
+      }));
+
+      const g75 = helfrichGreenReg(7.5, lbNm);
+      rightG.appendChild(svgEl("circle", { cx: rx(7.5).toFixed(1), cy: ry(g75).toFixed(1), r: "5.2", fill: "var(--tp-verdigris)", stroke: "var(--tp-prussian)", "stroke-width": "1.5" }));
+      rightG.appendChild(svgEl("text", { x: x0 + 68, y: 298, fill: "var(--tp-ink)", "font-size": "10.2", "font-weight": "700" }, "r (nm · Helfrich d = 2)"));
+      rightG.appendChild(svgEl("text", {
+        x: x0 + 8,
+        y: yTop + 16,
+        fill: "var(--tp-verdigris)",
+        "font-family": "monospace",
+        "font-size": "9.2",
+      }, "ln(r/2ℓ_b)+γ_E+K₀(r/ℓ_b) · F = 1.31 pN"));
+      rightG.appendChild(svgEl("text", {
+        x: x0 + 8,
+        y: yBot - 20,
+        fill: "var(--tp-prussian)",
+        "font-family": "monospace",
+        "font-size": "9.1",
+      }, "U_GBP(7.5 nm) = −0.0741 k_B T"));
+      rightG.appendChild(svgEl("text", {
+        x: x0 + 8,
+        y: yBot - 7,
+        fill: "var(--tp-ink)",
+        "font-family": "monospace",
+        "font-size": "9.1",
+      }, "F_EH / F_lipid = 3.68e54"));
+    }
+  }
+
+  function render() {
+    const sigma = Number(sigmaInput ? sigmaInput.value : 18.0);
+    const lb = Number(lbInput ? lbInput.value : 18.0);
+    const isEs = lang() === "es";
+
+    if (valSigma) valSigma.textContent = `${sigma.toFixed(1)} µm`;
+    if (valLb) valLb.textContent = `${lb.toFixed(1)} µm`;
+
+    if (scaleBtn) {
+      scaleBtn.setAttribute("aria-pressed", String(scale === "bilayer"));
+      scaleBtn.textContent = scale === "brane"
+        ? (isEs
+          ? "Escala activa: Brana Espaciotemporal 2.0 K (d = 3) → Cambiar a Bicapa 310.15 K"
+          : "Active: 2.0 K Spacetime Brane (d = 3) → Switch to 310.15 K Lipid Bilayer")
+        : (isEs
+          ? "Escala activa: Bicapa Lipídica 310.15 K (d = 2, ℓ_b = 65.44 nm, F = 1.31 pN)"
+          : "Active: 310.15 K Lipid Bilayer (d = 2, l_b = 65.44 nm, F = 1.31 pN)");
+    }
+
+    const insideSigned = sigma <= 33.01 && lb <= contourLimit(SIGNED_CONTOUR, sigma);
+    const insideUnsigned = sigma <= 40.4 && lb <= contourLimit(UNSIGNED_CONTOUR, sigma);
+
+    const dUm = 75.0;
+    const dxUm = 250.0;
+    const diagUm = Math.hypot(dUm, dxUm);
+    const dPhiRatio = (
+      (closedFormCombined(dUm, sigma, lb, knockout) / dUm)
+      - (closedFormCombined(diagUm, sigma, lb, knockout) / diagUm)
+    ) / ((1.0 / dUm) - (1.0 / diagUm));
+    const phaseShiftPct = (dPhiRatio - 1.0) * 100.0;
+    const m3Live = Math.pow(ETA_2K, 3) + 3.0 * ETA_2K * Math.pow(Math.sin(0.5 * Math.PI * dPhiRatio), 2);
+    const gtePass = m3Live > BISEP_BOUND;
+
+    renderLeftQuadrant(sigma, lb, insideSigned, insideUnsigned, isEs);
+    renderRightPanel(sigma, lb, isEs);
+
+    if (reads.mermin) {
+      reads.mermin.textContent = knockout
+        ? `PLANTED DEFECT ACTIVE · ⟨M₃⟩ = ${m3Live.toFixed(4)}`
+        : `⟨M₃⟩ = ${m3Live.toFixed(4)} ${gtePass ? ">" : "≤"} ${BISEP_BOUND.toFixed(4)} (DP ${M3_DP_REF.toFixed(4)})`;
+    }
+    if (reads.edge) {
+      if (knockout) {
+        reads.edge.textContent = "PLANTED DEFECT ACTIVE (−second → +second)";
+      } else if (scale === "bilayer") {
+        reads.edge.textContent = "l_b = 65.44 nm · U_GBP = −0.0741 k_B T · F_EH/F_lip = 3.68e54";
+      } else {
+        const edgeTag = insideSigned
+          ? (isEs ? "PERMITIDO" : "ALLOWED")
+          : (insideUnsigned ? (isEs ? "TRAMPA SIN SIGNO" : "UNSIGNED TRAP") : (isEs ? "EXCLUIDO" : "EXCLUDED"));
+        reads.edge.textContent = `${edgeTag} · Δφ/Δφ_N = ${phaseShiftPct >= 0 ? "+" : ""}${phaseShiftPct.toFixed(2)}% (D = 75 µm)`;
+      }
+    }
+
+    const passTxt = isEs ? "PASA" : "PASS";
+    const failTxt = isEs ? "FALLA" : "FAIL";
+    const condTxt = "COND";
+    const gateState = {
+      scalar_sheet: [insideSigned ? passTxt : failTxt, failTxt, gtePass ? passTxt : failTxt, failTxt],
+      stelle_box2: [lb <= 27.22 ? passTxt : failTxt, failTxt, failTxt, passTxt],
+      classical_dp: [sigma <= 33.01 ? passTxt : failTxt, condTxt, failTxt, failTxt],
+      horava_nabla4: [insideSigned ? passTxt : failTxt, condTxt, gtePass ? passTxt : failTxt, passTxt],
+      warped_rs2: [passTxt, passTxt, passTxt, passTxt],
+      canonical_qg: [passTxt, passTxt, passTxt, passTxt],
+    };
+    Object.entries(gateState).forEach(([modelKey, labels]) => {
+      labels.forEach((lbl, idx) => {
+        const cell = cells[`${modelKey}:${idx}`];
+        if (!cell) return;
+        if (knockout) {
+          cell.textContent = idx === 0 ? "PLANTED DEFECT ACTIVE" : (isEs ? "DEFECTO" : "DEFECT");
+        } else {
+          cell.textContent = lbl;
+        }
+      });
+    });
+
+    if (statusEl) {
+      if (knockout) {
+        statusEl.textContent = isEs
+          ? "PLANTED DEFECT ACTIVE — Defecto de signo activo: invierte el ablandamiento espacial (−second) a (+second), confundiendo la elasticidad biarmónica espacial con el refuerzo de Kaluza–Klein en RS-II."
+          : "PLANTED DEFECT ACTIVE — Sign-conflation defect flips spatial bending softening (−second) to (+second), confusing spatial biharmonic elasticity with warped RS-II Kaluza–Klein gravitational enhancement!";
+        statusEl.setAttribute("data-state", "defect");
+      } else if (scale === "bilayer") {
+        statusEl.textContent = isEs
+          ? "Modo bicapa lipídica a 310.15 K (d = 2): el operador de Helfrich (−σ_ten Δ + κ Δ²) regulariza el logaritmo infrarrojo mediante K₀(r/ℓ_b) en ℓ_b = 65.44 nm (F = 1.31 pN, U_GBP = −0.0741 k_B T en 7.5 nm; razón de rigidez F_EH / F_lip = 3.68×10⁵⁴)."
+          : "310.15 K Lipid Bilayer mode (d = 2): the Helfrich operator (−σ_ten Δ + κ Δ²) UV-regularizes the 2D logarithmic sheet via K₀(r/ℓ_b) at l_b = 65.44 nm (F = 1.31 pN, U_GBP = −0.0741 k_B T at 7.5 nm; stiffness ratio F_EH / F_lipid = 3.68×10⁵⁴).";
+        statusEl.setAttribute("data-state", "pass");
+      } else if (insideSigned) {
+        statusEl.textContent = isEs
+          ? `Dentro del contorno con signo al 95 %: (σ, ℓ_b) = (${sigma.toFixed(1)}, ${lb.toFixed(1)}) µm produce ablandamiento gravitatorio (${phaseShiftPct.toFixed(2)} % en D = 75 µm), preserva ⟨M₃⟩ = ${m3Live.toFixed(4)} > 2√2 y deja exactamente 2 sobrevivientes en las cuatro compuertas (RS-II Alabeada y TCE Cuántica Canónica).`
+          : `Inside signed 95% contour: (σ, ℓ_b) = (${sigma.toFixed(1)}, ${lb.toFixed(1)}) µm yields genuine spatial softening (${phaseShiftPct.toFixed(2)}% phase shift at D = 75 µm), preserves ⟨M₃⟩ = ${m3Live.toFixed(4)} > 2√2, and leaves exact 2 four-gate survivors (Warped RS-II Brane & Canonical QG EFT).`;
+        statusEl.setAttribute("data-state", "pass");
+      } else if (insideUnsigned) {
+        statusEl.textContent = isEs
+          ? `Excluido por la cota con signo (pero dentro del arco ingenuo sin signo de 38.47 µm): ignorar el signo negativo de −exp(−r/ℓ_b) sobreestima ℓ_b; la Tabla 11.4 de Eöt-Wash descarta (${sigma.toFixed(1)}, ${lb.toFixed(1)}) µm en la Compuerta G1.`
+          : `Excluded by signed Eöt-Wash bound (inside naive 38.47 µm unsigned arc): ignoring the negative sign of −exp(−r/ℓ_b) overestimates ℓ_b; signed Table 11.4 excludes (${sigma.toFixed(1)}, ${lb.toFixed(1)}) µm at Gate G1!`;
+        statusEl.setAttribute("data-state", "defect");
+      } else {
+        statusEl.textContent = isEs
+          ? `Excluido tanto con signo como sin signo: (${sigma.toFixed(1)}, ${lb.toFixed(1)}) µm viola los límites de par submilimétrico de Eöt-Wash en r ≥ 52 µm (Compuerta G1).`
+          : `Excluded under both signed and unsigned contours: (${sigma.toFixed(1)}, ${lb.toFixed(1)}) µm violates Eöt-Wash sub-millimetre torsion-balance bounds at r ≥ 52 µm (Gate G1).`;
+        statusEl.setAttribute("data-state", "defect");
+      }
+    }
+  }
+
+  [sigmaInput, lbInput].forEach((el) => { if (el) el.addEventListener("input", render); });
+  if (scaleBtn) {
+    scaleBtn.addEventListener("click", () => {
+      scale = scale === "brane" ? "bilayer" : "brane";
+      scaleBtn.setAttribute("data-fgs-scale", scale);
+      render();
+    });
+  }
+  if (koBtn) {
+    koBtn.addEventListener("click", () => {
+      knockout = !knockout;
+      koBtn.setAttribute("aria-pressed", String(knockout));
+      render();
+    });
+  }
+  window.addEventListener("tp-lang-change", render);
+  root.setAttribute("data-cs-ready", "true");
+  render();
+}
+
 export function initCrossScaleEssays(scope = document) {
   const once = (sel, fn) => scope.querySelectorAll(sel).forEach((el) => {
     if (!el.hasAttribute("data-cs-ready")) fn(el);
@@ -1236,6 +1737,7 @@ export function initCrossScaleEssays(scope = document) {
   once('[data-cs-instrument="parallel_horizon"]', initParallelHorizon);
   once('[data-cs-instrument="schur_recast"]', initSchurRecast);
   once('[data-cs-instrument="multipartite_witness"]', initMultipartiteWitness);
+  once('[data-cs-instrument="four_gate_sieve"]', initFourGateSieve);
 }
 
 initCrossScaleEssays(document);

@@ -399,6 +399,14 @@
     "title": "Open Catalyst 2020 (OC20) Dataset and Community Challenges",
     "year": 2021
   },
+  "doi:10.1038/nature01997": {
+    "fetched": "2026-11-10",
+    "first_author": "Bertotti",
+    "found": true,
+    "journal": "Nature",
+    "title": "A test of general relativity using radio links with the Cassini spacecraft",
+    "year": 2003
+  },
   "doi:10.1038/nature02276": {
     "fetched": "2026-11-09",
     "first_author": "Hackermüller",
@@ -1031,6 +1039,14 @@
     "title": "Notes on black-hole evaporation",
     "year": 1976
   },
+  "doi:10.1103/physrevd.16.953": {
+    "fetched": "2026-11-10",
+    "first_author": "Stelle",
+    "found": true,
+    "journal": "Physical Review D",
+    "title": "Renormalization of higher-derivative quantum gravity",
+    "year": 1977
+  },
   "doi:10.1103/physrevd.24.1516": {
     "fetched": "2026-11-10",
     "first_author": "Zurek",
@@ -1062,6 +1078,14 @@
     "journal": "Physical Review D",
     "title": "Improved constraints on non-Newtonian forces at 10 microns",
     "year": 2008
+  },
+  "doi:10.1103/physrevd.79.084008": {
+    "fetched": "2026-11-10",
+    "first_author": "Horava",
+    "found": true,
+    "journal": "Physical Review D",
+    "title": "Quantum gravity at a Lifshitz point",
+    "year": 2009
   },
   "doi:10.1103/physrevd.93.024026": {
     "fetched": "2026-11-09",
@@ -1295,12 +1319,28 @@
     "title": "Information in black hole radiation",
     "year": 1993
   },
+  "doi:10.1103/physrevlett.72.2996": {
+    "fetched": "2026-11-10",
+    "first_author": "Donoghue",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "Leading quantum correction to the Newtonian potential",
+    "year": 1994
+  },
   "doi:10.1103/physrevlett.74.1250": {
     "fetched": "2026-11-04",
     "first_author": "Mason",
     "found": true,
     "journal": "Physical Review Letters",
     "title": "Optical Measurements of Frequency-Dependent Linear Viscoelastic Moduli of Complex Fluids",
+    "year": 1995
+  },
+  "doi:10.1103/physrevlett.75.1260": {
+    "fetched": "2026-11-10",
+    "first_author": "Jacobson",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "Thermodynamics of spacetime: The Einstein equation of state",
     "year": 1995
   },
   "doi:10.1103/physrevlett.77.1413": {
@@ -1335,6 +1375,22 @@
     "title": "Dynamical Decoupling of Open Quantum Systems",
     "year": 1999
   },
+  "doi:10.1103/physrevlett.83.4690": {
+    "fetched": "2026-11-10",
+    "first_author": "Randall",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "An Alternative to Compactification",
+    "year": 1999
+  },
+  "doi:10.1103/physrevlett.84.2778": {
+    "fetched": "2026-11-10",
+    "first_author": "Garriga",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "Gravity in the Randall-Sundrum Brane World",
+    "year": 2000
+  },
   "doi:10.1103/physrevlett.90.160401": {
     "fetched": "2026-11-09",
     "first_author": "Hornberger",
@@ -1358,6 +1414,14 @@
     "journal": "Physical Review Letters",
     "title": "Equality Connecting Energy Dissipation with a Violation of the Fluctuation-Response Relation",
     "year": 2005
+  },
+  "doi:10.1103/physrevlett.98.021101": {
+    "fetched": "2026-11-10",
+    "first_author": "Kapner",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "Tests of the Gravitational Inverse-Square Law below the Dark-Energy Length Scale",
+    "year": 2007
   },
   "doi:10.1103/physrevresearch.2.023068": {
     "fetched": "2026-11-07",
@@ -1751,6 +1815,14 @@
     "title": "Treatment Wetlands",
     "year": 2008
   },
+  "doi:10.1209/0295-5075/22/2/012": {
+    "fetched": "2026-11-10",
+    "first_author": "Goulian",
+    "found": true,
+    "journal": "Europhysics Letters (EPL)",
+    "title": "Long-Range Forces in Heterogeneous Fluid Membranes",
+    "year": 1993
+  },
   "doi:10.12942/lrr-2003-1": {
     "fetched": "2026-11-08",
     "first_author": "Ashby",
@@ -1822,6 +1894,14 @@
     "journal": "Journal für die reine und angewandte Mathematik (Crelles Journal)",
     "title": "More than two fifths of the zeros of the Riemann zeta function are on the critical line.",
     "year": 1989
+  },
+  "doi:10.1515/znc-1973-11-1209": {
+    "fetched": "2026-11-10",
+    "first_author": "Helfrich",
+    "found": true,
+    "journal": "Zeitschrift für Naturforschung C",
+    "title": "Elastic Properties of Lipid Bilayers: Theory and Possible Experiments",
+    "year": 1973
   },
   "doi:10.1561/2200000073": {
     "fetched": "2026-11-07",
