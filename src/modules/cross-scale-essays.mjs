@@ -1723,6 +1723,330 @@ function initFourGateSieve(root) {
   render();
 }
 
+function initSevenGateCrown(root) {
+  const lstarInput = root.querySelector("[data-crown-lstar]");
+  const dqInput = root.querySelector("[data-crown-dq]");
+  const gravSelect = root.querySelector("[data-crown-grav]");
+  const valLstar = root.querySelector('[data-crown-val="lstar"]');
+  const valDq = root.querySelector('[data-crown-val="dq"]');
+  const curveEnt = root.querySelector('[data-crown-curve="entire"]');
+  const curveSt = root.querySelector('[data-crown-curve="stelle"]');
+  const curveFat = root.querySelector('[data-crown-curve="fat"]');
+  const lstarLine = root.querySelector("[data-crown-lstar-line]");
+  const lstarDot = root.querySelector("[data-crown-lstar-dot]");
+  const m75Dot = root.querySelector("[data-crown-m75-dot]");
+  const badgeBg = root.querySelector("[data-crown-badge-bg]");
+  const statusEl = root.querySelector("[data-cs-status]");
+
+  const reads = {};
+  root.querySelectorAll("[data-crown-read]").forEach((el) => {
+    reads[el.getAttribute("data-crown-read")] = el;
+  });
+  const bars = {};
+  root.querySelectorAll("[data-crown-bar]").forEach((el) => {
+    bars[el.getAttribute("data-crown-bar")] = el;
+  });
+  const cells = {};
+  root.querySelectorAll("[data-crown-cell]").forEach((el) => {
+    cells[el.getAttribute("data-crown-cell")] = el;
+  });
+  const scores = {};
+  root.querySelectorAll("[data-crown-score]").forEach((el) => {
+    scores[el.getAttribute("data-crown-score")] = el;
+  });
+  const rows = {};
+  root.querySelectorAll("[data-crown-row]").forEach((el) => {
+    rows[el.getAttribute("data-crown-row")] = el;
+  });
+
+  const L_SCHUR = 32.98;
+  const L_VAC = 88.11;
+  const L_KAPNER = 84.89;
+  const X0_P = 56.0;
+  const W_P = 396.0;
+  const Y_BOT = 348.0;
+  const H_P = 214.0;
+
+  const G_NEWTON = 6.67430e-11;
+  const MASS_KG = 1.0e-14;
+  const D_M = 75.0e-6;
+  const DX_M = 250.0e-6;
+  const DIAG_M = Math.hypot(D_M, DX_M);
+  const OMEGA_N = ((2.0 * G_NEWTON * MASS_KG * MASS_KG) / HBAR) * ((1.0 / D_M) - (1.0 / DIAG_M));
+  const T_PI = Math.PI / OMEGA_N;
+  const ETA_2K = Math.exp(-0.021965 * T_PI);
+
+  const BASE_MATRIX = {
+    scalarSheet: [true, false, true, false, false, false, false],
+    stelleBox2: [true, false, false, true, false, true, false],
+    classicalDPHybrid: [true, false, false, false, false, false, false],
+    fatGraviton85um: [false, true, true, true, true, false, true],
+    pureGaugeIrrationalSM: [true, true, true, true, false, true, false],
+    flatCircleKK5D: [false, true, true, true, false, false, false],
+    canonicalQuantumGREFT: [true, true, true, true, true, true, false],
+    nonlocalChiralHorizonCrown: [true, true, true, true, true, true, true],
+  };
+
+  function cpx(rUm) {
+    return X0_P + ((rUm - 5.0) / 105.0) * W_P;
+  }
+
+  function cpy(vRatio) {
+    return Y_BOT - Math.max(0.0, Math.min(1.0, vRatio)) * H_P;
+  }
+
+  function fmtSigned(val, digits = 2) {
+    const clean = Math.abs(val) < 1e-9 ? 0.0 : val;
+    return `${clean >= 0.0 ? "+" : "−"}${Math.abs(clean).toFixed(digits)}`;
+  }
+
+  function updateSignedBar(barEl, val, maxScale) {
+    if (!barEl) return;
+    const xMid = 691.5;
+    const halfW = 196.5;
+    if (Math.abs(val) < 1e-5) {
+      barEl.setAttribute("x", (xMid - 6.0).toFixed(1));
+      barEl.setAttribute("width", "12.0");
+      barEl.setAttribute("fill", "var(--tp-verdigris)");
+      return;
+    }
+    const span = Math.max(5.0, Math.min(1.0, Math.abs(val) / maxScale) * halfW);
+    barEl.setAttribute("x", (val >= 0.0 ? xMid : xMid - span).toFixed(1));
+    barEl.setAttribute("width", span.toFixed(1));
+    barEl.setAttribute("fill", "var(--tp-minium)");
+  }
+
+  function setRead(key, text, ok) {
+    const el = reads[key];
+    if (!el) return;
+    el.textContent = text;
+    el.setAttribute("fill", ok ? "var(--tp-verdigris)" : "var(--tp-minium)");
+  }
+
+  function render() {
+    const lstar = Number(lstarInput ? lstarInput.value : 18);
+    const dq = Number(dqInput ? dqInput.value : 0.0);
+    const mode = gravSelect ? gravSelect.value : "with_grav";
+    const isEs = lang() === "es";
+
+    if (valLstar) valLstar.textContent = `${lstar.toFixed(0)} µm`;
+    if (valDq) valDq.textContent = fmtSigned(dq, 2);
+
+    // 1. Update Left Panel radial potential curves across r = 5..110 um
+    const entPts = [];
+    const stPts = [];
+    const fatPts = [];
+    for (let i = 0; i <= 70; i += 1) {
+      const rUm = 5.0 + (i / 70.0) * 105.0;
+      const rx = cpx(rUm).toFixed(1);
+      entPts.push(`${rx},${cpy(erfApprox(rUm / (2.0 * lstar))).toFixed(1)}`);
+      stPts.push(`${rx},${cpy(1.0 - Math.exp(-rUm / lstar)).toFixed(1)}`);
+      fatPts.push(`${rx},${cpy(erfApprox(rUm / (2.0 * L_VAC))).toFixed(1)}`);
+    }
+    if (curveEnt) curveEnt.setAttribute("points", entPts.join(" "));
+    if (curveSt) curveSt.setAttribute("points", stPts.join(" "));
+    if (curveFat) curveFat.setAttribute("points", fatPts.join(" "));
+
+    const g1Pass = lstar < L_SCHUR;
+    if (curveEnt) {
+      curveEnt.setAttribute("stroke", g1Pass ? "var(--tp-verdigris)" : "var(--tp-minium)");
+    }
+    const xls = cpx(lstar);
+    const yls = cpy(erfApprox(0.5));
+    if (lstarLine) {
+      lstarLine.setAttribute("x1", xls.toFixed(1));
+      lstarLine.setAttribute("x2", xls.toFixed(1));
+      lstarLine.setAttribute("y1", yls.toFixed(1));
+      lstarLine.setAttribute("stroke", g1Pass ? "var(--tp-verdigris)" : "var(--tp-minium)");
+    }
+    if (lstarDot) {
+      lstarDot.setAttribute("cx", xls.toFixed(1));
+      lstarDot.setAttribute("cy", yls.toFixed(1));
+      lstarDot.setAttribute("fill", g1Pass ? "var(--tp-verdigris)" : "var(--tp-minium)");
+    }
+    const v52 = erfApprox(52.0 / (2.0 * lstar));
+    const v75 = erfApprox(75.0 / (2.0 * lstar));
+    const diagUm = Math.hypot(75.0, 250.0);
+    const vDiag = erfApprox(diagUm / (2.0 * lstar));
+    if (m75Dot) {
+      m75Dot.setAttribute("cy", cpy(v75).toFixed(1));
+    }
+    if (reads.left_foot) {
+      reads.left_foot.textContent = isEs
+        ? `r (µm) · ℓ_* = ${lstar.toFixed(0)} µm · V(52 µm)/V_N = ${v52.toFixed(4)} (0 fantasmas)`
+        : `r (µm) · ℓ_* = ${lstar.toFixed(0)} µm · V(52 µm)/V_N = ${v52.toFixed(4)} (0 ghosts)`;
+    }
+
+    const dPhiRatio = ((v75 / 75.0) - (vDiag / diagUm)) / ((1.0 / 75.0) - (1.0 / diagUm));
+    const m3Live = Math.pow(ETA_2K, 3) + 3.0 * ETA_2K * Math.pow(Math.sin(0.5 * Math.PI * dPhiRatio), 2);
+    const g3Pass = m3Live > 2.0;
+
+    // 2. Chiral hypercharge & mixed gravitational anomaly equations (scaled by 6)
+    let q;
+    let u;
+    let d;
+    let l;
+    let e;
+    if (mode === "with_grav") {
+      q = 1.0 + 2.0 * dq;
+      u = -4.0 - 2.0 * dq;
+      d = 2.0 - 2.0 * dq;
+      l = -3.0;
+      e = 6.0;
+    } else {
+      const tParam = 3.0 * dq;
+      q = 1.0;
+      l = -3.0;
+      u = -1.0 - tParam;
+      d = -1.0 + tParam;
+      e = Math.cbrt(18.0 * (tParam * tParam + 3.0));
+    }
+
+    const resSu3 = 2.0 * q + u + d;
+    const resSu2 = 3.0 * q + l;
+    const resGrav = 6.0 * q + 3.0 * u + 3.0 * d + 2.0 * l + e;
+    const resFermat = Math.pow(u + 4.0, 3) + Math.pow(d + 4.0, 3) - Math.pow(e, 3);
+    const resHatom = (3.0 + 3.0 * q) - e;
+
+    const okSu3 = Math.abs(resSu3) < 1e-5;
+    const okSu2 = Math.abs(resSu2) < 1e-5;
+    const okGrav = Math.abs(resGrav) < 1e-4;
+    const okFermat = Math.abs(resFermat) < 1e-4;
+    const okHatom = Math.abs(resHatom) < 1e-4;
+    const g5Pass = okSu3 && okSu2 && okGrav && okFermat && okHatom;
+
+    const passWord = isEs ? "PASA" : "PASS";
+    const failWord = isEs ? "FALLA" : "FAIL";
+
+    if (reads.tuple) {
+      reads.tuple.textContent = `6Y = (q, u, d, ℓ, e) = (${fmtSigned(q)}, ${fmtSigned(u)}, ${fmtSigned(d)}, ${fmtSigned(l)}, ${fmtSigned(e)})`;
+    }
+    setRead("su3", `${resSu3.toFixed(3)} · ${okSu3 ? passWord : failWord}`, okSu3);
+    setRead("su2", `${resSu2.toFixed(3)} · ${okSu2 ? passWord : failWord}`, okSu2);
+    setRead("grav", `${resGrav.toFixed(3)} (e=${e.toFixed(2)}) · ${okGrav ? passWord : failWord}`, okGrav);
+    setRead("fermat", `${resFermat.toFixed(3)} · ${okFermat ? passWord : failWord}`, okFermat);
+    setRead(
+      "hatom",
+      `${resHatom.toFixed(3)} · ${okHatom ? (isEs ? "CUANTIZADO" : "QUANTIZED") : (isEs ? "DECUANTIZADO" : "DEQUANTIZED")}`,
+      okHatom,
+    );
+    setRead("uv", `${lstar.toFixed(0)} µm ${g1Pass ? "<" : "≥"} ${L_SCHUR} · ${g1Pass ? passWord : failWord}`, g1Pass);
+
+    updateSignedBar(bars.su3, resSu3, 6.0);
+    updateSignedBar(bars.su2, resSu2, 6.0);
+    updateSignedBar(bars.grav, resGrav, 6.0);
+    updateSignedBar(bars.fermat, resFermat, 220.0);
+    updateSignedBar(bars.hatom, resHatom, 6.0);
+
+    if (bars.uv) {
+      bars.uv.setAttribute("width", ((lstar / 95.0) * 393.0).toFixed(1));
+      bars.uv.setAttribute("fill", g1Pass ? "var(--tp-verdigris)" : "var(--tp-minium)");
+    }
+
+    const crownAllPass = g1Pass && g3Pass && g5Pass;
+    if (badgeBg) {
+      badgeBg.setAttribute("stroke", crownAllPass ? "var(--tp-verdigris)" : "var(--tp-minium)");
+    }
+    if (reads.crown_verdict) {
+      reads.crown_verdict.setAttribute("fill", crownAllPass ? "var(--tp-verdigris)" : "var(--tp-minium)");
+      if (crownAllPass) {
+        reads.crown_verdict.textContent = isEs
+          ? "CORONA: 7/7 COMPUERTAS PASAN · ÚNICO SOBREVIVIENTE"
+          : "CROWN STATUS: 7/7 GATES PASS · UNIQUE SURVIVOR";
+      } else {
+        const broken = [];
+        if (!g1Pass) broken.push("G1");
+        if (!g3Pass) broken.push("G3");
+        if (!g5Pass) broken.push("G5");
+        reads.crown_verdict.textContent = isEs
+          ? `FUERA DE VENTANA CORONA · FALLA EN ${broken.join(", ")}`
+          : `OUTSIDE CROWN WINDOW · FAILS ${broken.join(", ")}`;
+      }
+    }
+    if (reads.crown_sub) {
+      reads.crown_sub.textContent = isEs
+        ? `G6 rayo nulo: ℓ_Λ = ${L_VAC} / ${L_KAPNER} µm · ⟨M₃(75µm)⟩ = ${m3Live.toFixed(3)} > 2`
+        : `G6 null-ray: ℓ_Λ = ${L_VAC} / ${L_KAPNER} µm · ⟨M₃(75µm)⟩ = ${m3Live.toFixed(3)} > 2`;
+    }
+
+    // 3. Update 8x7 Elimination Table cells & row states
+    const liveMatrix = {
+      ...BASE_MATRIX,
+      canonicalQuantumGREFT: [g1Pass, true, g3Pass, true, g5Pass, true, false],
+      nonlocalChiralHorizonCrown: [g1Pass, true, g3Pass, true, g5Pass, true, true],
+    };
+
+    Object.entries(liveMatrix).forEach(([rowKey, vec]) => {
+      let countPass = 0;
+      vec.forEach((ok, idx) => {
+        if (ok) countPass += 1;
+        const cell = cells[`${rowKey}:${idx}`];
+        if (cell) {
+          cell.textContent = ok ? passWord : failWord;
+        }
+      });
+      const scoreEl = scores[rowKey];
+      if (scoreEl) {
+        if (rowKey === "nonlocalChiralHorizonCrown") {
+          scoreEl.textContent = countPass === 7
+            ? (isEs ? "7/7 Corona" : "7/7 Crown")
+            : `${countPass}/7`;
+        } else if (rowKey === "canonicalQuantumGREFT") {
+          scoreEl.textContent = countPass === 6
+            ? (isEs ? "6/7 TCE" : "6/7 EFT")
+            : `${countPass}/7`;
+        } else {
+          scoreEl.textContent = `${countPass}/7`;
+        }
+      }
+      const rowEl = rows[rowKey];
+      if (rowEl) {
+        const isActive = (rowKey === "nonlocalChiralHorizonCrown" && crownAllPass)
+          || (rowKey === "pureGaugeIrrationalSM" && mode === "omit_grav_sym" && !okGrav);
+        rowEl.setAttribute("data-crown-highlight", isActive ? "true" : "false");
+      }
+    });
+
+    if (statusEl) {
+      if (crownAllPass) {
+        statusEl.textContent = isEs
+          ? `Ventana Corona 7/7 activa: ℓ_* = ${lstar.toFixed(0)} µm < 32.98 µm (muro con signo de Eöt-Wash) y ℓ_* ≪ ℓ_Λ = 88.11 µm (desacoplo en horizonte nulo G6), mientras [Grav]²U(1)_Y = 0 y la reducción cúbica de Fermat fijan e = 6, Q(p + e⁻) = 0 y dejan a UV Entera + Corona Quiral como único sobreviviente 7/7.`
+          : `7/7 Crown window active: ℓ_* = ${lstar.toFixed(0)} µm < 32.98 µm (signed Eöt-Wash Schur wall) and ℓ_* ≪ ℓ_Λ = 88.11 µm (G6 null-horizon vacuum decoupling), while [Grav]²U(1)_Y = 0 plus the Fermat cubic reduction lock e = 6, Q(p + e⁻) = 0, leaving Entire UV + Chiral Crown as the unique 7/7 survivor.`;
+        statusEl.setAttribute("data-state", "pass");
+      } else if (mode === "omit_grav_sym" && !okGrav) {
+        statusEl.textContent = isEs
+          ? `Rama irracional pura de norma activa (omitiendo [Grav]²U(1)_Y): las anomalías puras de norma se anulan con e = (18(t²+3))^(1/3) = ${e.toFixed(4)}, pero la anomalía gravitatoria mixta deja residuo ${resGrav.toFixed(3)} ≠ 0 y decuantiza el átomo de hidrógeno (6 Q(p + e⁻) = ${resHatom.toFixed(3)}), eliminada en la Compuerta G5.`
+          : `Pure-gauge irrational U(1) branch active (omitting [Grav]²U(1)_Y): pure-gauge anomalies vanish at irrational e = (18(t²+3))^(1/3) = ${e.toFixed(4)}, but the mixed gravitational anomaly leaves residual ${resGrav.toFixed(3)} ≠ 0 and dequantizes hydrogen (6 Q(p + e⁻) = ${resHatom.toFixed(3)})—eliminated at Gate G5.`;
+        statusEl.setAttribute("data-state", "defect");
+      } else if (!g5Pass) {
+        statusEl.textContent = isEs
+          ? `Perturbación quiral δ(3Y_Q) = ${fmtSigned(dq)} viola la cancelación de anomalías en la Compuerta G5: [SU(2)]²U(1)_Y = ${resSu2.toFixed(3)}, residuo cúbico de Fermat = ${resFermat.toFixed(3)} y carga de hidrógeno 6 Q(p + e⁻) = ${resHatom.toFixed(3)}.`
+          : `Chiral quark shift δ(3Y_Q) = ${fmtSigned(dq)} breaks Gate G5 anomaly cancellation: [SU(2)]²U(1)_Y = ${resSu2.toFixed(3)}, Fermat cubic residual = ${resFermat.toFixed(3)}, and hydrogen charge 6 Q(p + e⁻) = ${resHatom.toFixed(3)}.`;
+        statusEl.setAttribute("data-state", "defect");
+      } else {
+        statusEl.textContent = isEs
+          ? `Excluido en la Compuerta G1: ℓ_* = ${lstar.toFixed(0)} µm excede el muro de Schur con signo de Eöt-Wash (32.98 µm), suprimiendo V(52 µm)/V_N a ${v52.toFixed(4)} aunque ⟨M₃(75 µm)⟩ = ${m3Live.toFixed(4)} permanezca sobre 2.`
+          : `Excluded at Gate G1: ℓ_* = ${lstar.toFixed(0)} µm exceeds the signed Eöt-Wash Schur wall (32.98 µm), suppressing V(52 µm)/V_N to ${v52.toFixed(4)} even though ⟨M₃(75 µm)⟩ = ${m3Live.toFixed(4)} remains above 2.`;
+        statusEl.setAttribute("data-state", "defect");
+      }
+    }
+  }
+
+  [lstarInput, dqInput].forEach((el) => {
+    if (el) {
+      el.addEventListener("input", render);
+      el.addEventListener("change", render);
+    }
+  });
+  if (gravSelect) {
+    gravSelect.addEventListener("change", render);
+    gravSelect.addEventListener("input", render);
+  }
+  window.addEventListener("tp-lang-change", render);
+  root.setAttribute("data-cs-ready", "true");
+  render();
+}
+
 export function initCrossScaleEssays(scope = document) {
   const once = (sel, fn) => scope.querySelectorAll(sel).forEach((el) => {
     if (!el.hasAttribute("data-cs-ready")) fn(el);
@@ -1738,6 +2062,7 @@ export function initCrossScaleEssays(scope = document) {
   once('[data-cs-instrument="schur_recast"]', initSchurRecast);
   once('[data-cs-instrument="multipartite_witness"]', initMultipartiteWitness);
   once('[data-cs-instrument="four_gate_sieve"]', initFourGateSieve);
+  once('[data-cs-instrument="seven_gate_crown"]', initSevenGateCrown);
 }
 
 initCrossScaleEssays(document);
