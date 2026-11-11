@@ -1,4 +1,4 @@
-"""Cross-Scale Featured Essays (ES.01–ES.07) for Informatico.ai."""
+"""Cross-Scale Featured Essays (ES.01–ES.09) for Informatico.ai."""
 from __future__ import annotations
 
 from .e01_mesoscopic import ESSAY as E01
@@ -8,7 +8,9 @@ from .e04_tensegrity_microcausality import ESSAY as E04
 from .e05_islands_conditional_survival import ESSAY as E05
 from .e06_coupled_constraints_proof import ESSAY as E06
 from .e07_parallel_hybrid_horizon import ESSAY as E07
+from .e08_schur_identifiability import ESSAY as E08
+from .e09_multipartite_witnesses import ESSAY as E09
 
-ESSAYS: tuple[dict, ...] = (E01, E02, E03, E04, E05, E06, E07)
+ESSAYS: tuple[dict, ...] = (E01, E02, E03, E04, E05, E06, E07, E08, E09)
 
-__all__ = ["E01", "E02", "E03", "E04", "E05", "E06", "E07", "ESSAYS"]
+__all__ = ["E01", "E02", "E03", "E04", "E05", "E06", "E07", "E08", "E09", "ESSAYS"]

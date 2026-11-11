@@ -1895,9 +1895,11 @@ def plate_d(page: dict) -> str:
             "p1_l2_en": "position and broadcast it to the room.",
             "p1_l2_es": "la mota y la difunden por todo el cuarto.",
             "p1_art": (
-                '<rect x="48" y="114" width="28" height="44" rx="2" fill="var(--tp-prussian)"/>'
-                '<rect x="88" y="114" width="28" height="44" rx="2" fill="var(--tp-prussian)"/>'
-                '<rect x="132" y="150" width="24" height="8" rx="2" fill="var(--tp-minium)"/>'
+                '<circle cx="62" cy="136" r="8" fill="var(--tp-stone)" stroke="var(--tp-prussian)" stroke-width="1.6"/>'
+                '<circle cx="92" cy="136" r="8" fill="var(--tp-stone)" stroke="var(--tp-prussian)" stroke-width="1.3" stroke-dasharray="2.5 2"/>'
+                '<path d="M 44 114 L 56 129 M 68 129 L 82 114 M 98 129 L 112 114" fill="none" stroke="var(--tp-minium)" stroke-width="1.5"/>'
+                '<rect x="122" y="118" width="14" height="36" rx="2" fill="var(--tp-prussian)"/>'
+                '<rect x="144" y="150" width="14" height="6" rx="1.5" fill="var(--tp-minium)"/>'
                 '<path d="M 172 158 C 186 122, 206 120, 248 120" fill="none" stroke="var(--tp-verdigris)" stroke-width="2.2"/>'
                 '<text x="150" y="182" text-anchor="middle" font-size="8.3" fill="var(--tp-graphite)" data-en="[Ĥ_int, Z_S] = 0 · |ρ₀₁| = ½ cos⁶θ · I(S:E_k) ≈ 1 bit" data-es="[Ĥ_int, Z_S] = 0 · |ρ₀₁| = ½ cos⁶θ · I(S:E_k) ≈ 1 bit">[Ĥ_int, Z_S] = 0 · |ρ₀₁| = ½ cos⁶θ · I(S:E_k) ≈ 1 bit</text>'
             ),
@@ -1927,7 +1929,7 @@ def plate_d(page: dict) -> str:
             "p3_bad2_es": "y destruye la meseta de información.",
             "foot_en": "PLATE T.11-D · VISUAL INTUITION BRIDGE → [Ĥ_int, Π_i] = 0 · I(S:E_k) = h₂(γ^N) + h₂(γ^k) − h₂(γ^{N−k}) · Λ_photon ∝ R⁶T⁹|(ε−1)/(ε+2)|²",
             "foot_es": "LÁMINA T.11-D · PUENTE DE INTUICIÓN VISUAL → [Ĥ_int, Π_i] = 0 · I(S:E_k) = h₂(γ^N) + h₂(γ^k) − h₂(γ^{N−k}) · Λ_fotón ∝ R⁶T⁹|(ε−1)/(ε+2)|²",
-            "cap_en": "Plate T.11-D · Visual Intuition Bridge: ambient photons scatter off a localized dust mote (left), selecting the pointer basis and broadcasting redundant classical records across the bath (centre), verified against the 1+6-qubit statevector and Joos–Zeh R⁶T⁹ scaling (right).",
+            "cap_en": "Plate T.11-D · Visual Intuition Bridge: ambient photons scatter off a localized dust mote (left), selecting the pointer basis and broadcasting redundant classical records across the bath (center), verified against the 1+6-qubit statevector and Joos–Zeh R⁶T⁹ scaling (right).",
             "cap_es": "Lámina T.11-D · Puente de Intuición Visual: los fotones ambientales se dispersan en una mota de polvo (izquierda), seleccionando la base puntero y difundiendo registros clásicos redundantes en el baño (centro), verificado frente al estado de 1+6 qubits y la ley R⁶T⁹ de Joos y Zeh (derecha).",
         },
         "t12": {
@@ -1940,8 +1942,10 @@ def plate_d(page: dict) -> str:
             "p1_l2_en": "a shadow, yet its mass bends the clock.",
             "p1_l2_es": "curva el ritmo de los relojes vecinos.",
             "p1_art": (
-                '<line x1="74" y1="112" x2="74" y2="168" stroke="var(--tp-minium)" stroke-width="2" stroke-dasharray="4 3"/>'
-                '<circle cx="114" cy="138" r="6" fill="var(--tp-prussian)"/>'
+                '<ellipse cx="74" cy="138" rx="18" ry="22" fill="none" stroke="var(--tp-prussian)" stroke-width="1.4" stroke-dasharray="3 2"/>'
+                '<circle cx="74" cy="138" r="7" fill="var(--tp-stone)" stroke="var(--tp-prussian)" stroke-width="1.6"/>'
+                '<line x1="46" y1="122" x2="102" y2="122" stroke="var(--tp-minium)" stroke-width="1.5" stroke-dasharray="3 2"/>'
+                '<circle cx="118" cy="138" r="6" fill="var(--tp-prussian)"/>'
                 '<circle cx="154" cy="138" r="6" fill="var(--tp-verdigris)"/>'
                 '<path d="M 176 124 C 202 124, 214 158, 248 158" fill="none" stroke="var(--tp-prussian)" stroke-width="2.2"/>'
                 '<text x="150" y="182" text-anchor="middle" font-size="8.3" fill="var(--tp-graphite)" data-en="Λ_EM = 0, G &gt; 0 · Δτ_∞ = −(2GM/c²v₀) ln(b₂/b₁)" data-es="Λ_EM = 0, G &gt; 0 · Δτ_∞ = −(2GM/c²v₀) ln(b₂/b₁)">Λ_EM = 0, G &gt; 0 · Δτ_∞ = −(2GM/c²v₀) ln(b₂/b₁)</text>'
@@ -1972,7 +1976,7 @@ def plate_d(page: dict) -> str:
             "p3_bad2_es": "la cuadratura como el impulso.",
             "foot_en": "PLATE T.12-D · VISUAL INTUITION BRIDGE → Ω_c/Ω_b = 5.364 ± 0.065 · Δτ_∞ = −(2GM/c²v₀) ln(b₂/b₁) · T^{μν}_dark → g₀₀ ONLY",
             "foot_es": "LÁMINA T.12-D · PUENTE DE INTUICIÓN VISUAL → Ω_c/Ω_b = 5.364 ± 0.065 · Δτ_∞ = −(2GM/c²v₀) ln(b₂/b₁) · T^{μν}_oscuro → SOLO g₀₀",
-            "cap_en": "Plate T.12-D · Visual Intuition Bridge: an electromagnetically dark mass passes unseen through light yet bends the metric (left and centre), producing a logarithmic proper-time step verified against Gauss–Legendre quadrature and the transverse impulse identity (right).",
+            "cap_en": "Plate T.12-D · Visual Intuition Bridge: an electromagnetically dark mass passes unseen through light yet bends the metric (left and center), producing a logarithmic proper-time step verified against Gauss–Legendre quadrature and the transverse impulse identity (right).",
             "cap_es": "Lámina T.12-D · Puente de Intuición Visual: una masa electromagnéticamente oscura pasa sin sombra por la luz pero curva la métrica (izquierda y centro), produciendo un escalón logarítmico de tiempo propio verificado frente a la cuadratura de Gauss–Legendre y la identidad de impulso (derecha).",
         },
     }
@@ -2585,6 +2589,57 @@ def apparatus_svg(kind: str) -> str:
             '<rect x="48" y="42" width="4" height="8" fill="var(--tp-verdigris)"/>'
             '<path d="M 26 24 C 30 16, 34 32, 38 19 S 46 28, 50 24" fill="none" stroke="var(--tp-minium)" stroke-width="1.6"/>'
         ),
+        "pointer-darwinism": (
+            '<line x1="27" y1="21" x2="17" y2="16" stroke="var(--tp-prussian)" stroke-width="1.4"/>'
+            '<line x1="37" y1="21" x2="47" y2="16" stroke="var(--tp-prussian)" stroke-width="1.4"/>'
+            '<line x1="27" y1="29" x2="17" y2="34" stroke="var(--tp-prussian)" stroke-width="1.4"/>'
+            '<line x1="37" y1="29" x2="47" y2="34" stroke="var(--tp-prussian)" stroke-width="1.4"/>'
+            '<polygon points="32,17 40,25 32,33 24,25" fill="var(--tp-stone)" stroke="var(--tp-prussian)" stroke-width="1.6"/>'
+            '<circle cx="32" cy="25" r="2.2" fill="var(--tp-prussian)"/>'
+            '<circle cx="15" cy="15" r="3.2" fill="var(--tp-verdigris)"/>'
+            '<circle cx="49" cy="15" r="3.2" fill="var(--tp-verdigris)"/>'
+            '<circle cx="15" cy="35" r="3.2" fill="var(--tp-verdigris)"/>'
+            '<circle cx="49" cy="35" r="3.2" fill="var(--tp-verdigris)"/>'
+            '<path d="M 15 49 C 19 42, 24 42, 32 42 L 43 42 C 47 42, 49 39, 50 35" fill="none" stroke="var(--tp-minium)" stroke-width="1.8"/>'
+        ),
+        "photon-scattering": (
+            '<circle cx="24" cy="34" r="7" fill="var(--tp-stone)" stroke="var(--tp-prussian)" stroke-width="1.7"/>'
+            '<circle cx="40" cy="34" r="7" fill="var(--tp-stone)" stroke="var(--tp-prussian)" stroke-width="1.4" stroke-dasharray="2.5 2"/>'
+            '<path d="M 11 19 Q 15 15, 19 23 T 23 27" fill="none" stroke="var(--tp-minium)" stroke-width="1.6"/>'
+            '<path d="M 28 28 Q 33 19, 39 14" fill="none" stroke="var(--tp-verdigris)" stroke-width="1.6"/>'
+            '<path d="M 44 28 Q 48 21, 52 17" fill="none" stroke="var(--tp-minium)" stroke-width="1.5" stroke-dasharray="2 2"/>'
+            '<line x1="24" y1="46" x2="40" y2="46" stroke="var(--tp-ink)" stroke-width="1.3"/>'
+        ),
+        "cavity-buckminster": (
+            '<path d="M 16 15 Q 22 28, 16 41" fill="none" stroke="var(--tp-prussian)" stroke-width="2.2"/>'
+            '<path d="M 48 15 Q 42 28, 48 41" fill="none" stroke="var(--tp-prussian)" stroke-width="2.2"/>'
+            '<ellipse cx="27" cy="25" rx="5.5" ry="3.2" transform="rotate(-22 27 25)" fill="var(--tp-stone)" stroke="var(--tp-minium)" stroke-width="1.5"/>'
+            '<ellipse cx="37" cy="25" rx="5.5" ry="3.2" transform="rotate(22 37 25)" fill="var(--tp-stone)" stroke="var(--tp-verdigris)" stroke-width="1.5"/>'
+            '<polygon points="32,33 36,36 35,41 29,41 28,36" fill="var(--tp-stone)" stroke="var(--tp-prussian)" stroke-width="1.4"/>'
+            '<line x1="19" y1="47" x2="26" y2="47" stroke="var(--tp-ink)" stroke-width="1.8"/>'
+            '<line x1="29" y1="47" x2="35" y2="47" stroke="var(--tp-ink)" stroke-width="1.8"/>'
+            '<line x1="38" y1="47" x2="45" y2="47" stroke="var(--tp-ink)" stroke-width="1.8"/>'
+        ),
+        "bullet-cluster-lensing": (
+            '<ellipse cx="19" cy="31" rx="7.5" ry="10.5" fill="none" stroke="var(--tp-prussian)" stroke-width="1.5" stroke-dasharray="2.5 2"/>'
+            '<circle cx="19" cy="31" r="3.8" fill="var(--tp-prussian)" opacity="0.35" stroke="var(--tp-prussian)" stroke-width="1.4"/>'
+            '<ellipse cx="45" cy="31" rx="7.5" ry="10.5" fill="none" stroke="var(--tp-prussian)" stroke-width="1.5" stroke-dasharray="2.5 2"/>'
+            '<circle cx="45" cy="31" r="3.8" fill="var(--tp-prussian)" opacity="0.35" stroke="var(--tp-prussian)" stroke-width="1.4"/>'
+            '<path d="M 35 19 Q 24 31, 35 43" fill="none" stroke="var(--tp-minium)" stroke-width="2"/>'
+            '<polygon points="35,23 27,31 35,39" fill="var(--tp-minium)" opacity="0.75"/>'
+            '<line x1="19" y1="47" x2="45" y2="47" stroke="var(--tp-verdigris)" stroke-width="1.4" stroke-dasharray="2 2"/>'
+        ),
+        "dark-clock-comparison": (
+            '<line x1="14" y1="33" x2="27" y2="33" stroke="var(--tp-prussian)" stroke-width="1.8"/>'
+            '<line x1="14" y1="18" x2="27" y2="18" stroke="var(--tp-prussian)" stroke-width="1.8"/>'
+            '<line x1="20.5" y1="33" x2="20.5" y2="18" stroke="var(--tp-minium)" stroke-width="1.6"/>'
+            '<line x1="37" y1="33" x2="50" y2="33" stroke="var(--tp-prussian)" stroke-width="1.8"/>'
+            '<line x1="37" y1="23" x2="50" y2="23" stroke="var(--tp-prussian)" stroke-width="1.4" stroke-dasharray="2 1.5"/>'
+            '<line x1="37" y1="15" x2="50" y2="15" stroke="var(--tp-prussian)" stroke-width="1.8"/>'
+            '<line x1="43.5" y1="33" x2="43.5" y2="15" stroke="var(--tp-verdigris)" stroke-width="1.6"/>'
+            '<line x1="27" y1="25" x2="37" y2="25" stroke="var(--tp-ink)" stroke-width="1.3" stroke-dasharray="2 2"/>'
+            '<path d="M 12 45 C 18 38, 26 52, 32 45 S 46 38, 52 45" fill="none" stroke="var(--tp-minium)" stroke-width="1.7"/>'
+        ),
     }.get(kind, '<circle cx="32" cy="32" r="16" fill="var(--tp-stone)" stroke="var(--tp-prussian)" stroke-width="1.6"/>')
     return (
         f'<span class="tg-apparatus-badge" data-apparatus="{kind}" aria-hidden="true">'
@@ -2597,12 +2652,12 @@ def apparatus_svg(kind: str) -> str:
 
 HUMANS_DATA: dict[str, dict] = {
     "": {
-        "lineage_en": "1905–2026 · Einstein · Ives & Stilwell · Pound & Rebka · Kerr · Hafele & Keating · Vessot & Levine · DeWitt · Page & Wootters · Bekenstein, Hawking & Unruh · Mather & COBE · Eöt-Wash & HUST · Wineland & Ye · Brukner & Folman · Bose, Marletto & Vedral · Diósi, Penrose & Curceanu · MICROSCOPE, ALPHA & LIGO/Virgo/KAGRA",
-        "lineage_es": "1905–2026 · Einstein · Ives y Stilwell · Pound y Rebka · Kerr · Hafele y Keating · Vessot y Levine · DeWitt · Page y Wootters · Bekenstein, Hawking y Unruh · Mather y COBE · Eöt-Wash y HUST · Wineland y Ye · Brukner y Folman · Bose, Marletto y Vedral · Diósi, Penrose y Curceanu · MICROSCOPE, ALPHA y LIGO/Virgo/KAGRA",
+        "lineage_en": "1905–2026 · Einstein · Ives & Stilwell · Pound & Rebka · Kerr · Hafele & Keating · Vessot & Levine · DeWitt · Page & Wootters · Bekenstein, Hawking & Unruh · Zurek, Joos & Zeh · Mather, Clowe & Planck · Haroche & Arndt · Eöt-Wash & HUST · Wineland, Ye, Peik & Huntemann · Brukner & Folman · Bose, Marletto & Vedral · Diósi, Penrose & Curceanu · MICROSCOPE, ALPHA, LIGO/Virgo/KAGRA, LZ & XENONnT",
+        "lineage_es": "1905–2026 · Einstein · Ives y Stilwell · Pound y Rebka · Kerr · Hafele y Keating · Vessot y Levine · DeWitt · Page y Wootters · Bekenstein, Hawking y Unruh · Zurek, Joos y Zeh · Mather, Clowe y Planck · Haroche y Arndt · Eöt-Wash y HUST · Wineland, Ye, Peik y Huntemann · Brukner y Folman · Bose, Marletto y Vedral · Diósi, Penrose y Curceanu · MICROSCOPE, ALPHA, LIGO/Virgo/KAGRA, LZ y XENONnT",
         "title_en": "The Humans Who Built the Clockwork (1905–2026)",
         "title_es": "Las Personas que Construyeron esta Relojería (1905–2026)",
-        "lead_en": "Every equation and every row in the grounding ledger began with human beings: machinists cutting platinum wedges to the micrometer, physicists threading helium bags through brick towers, clockmakers booking airline seats for atomic standards, and theorists counting states by hand. Before we step into the instruments, we honor the people whose patience and craft built this record.",
-        "lead_es": "Cada ecuación y cada fila del libro de registro comenzó con seres humanos: maquinistas que cortaron cuñas de platino al micrómetro, físicos que tendieron bolsas de helio por torres de ladrillo, relojeros que compraron boletos de avión para estándares atómicos y teóricos que contaron estados a mano. Antes de entrar a los instrumentos, honramos a las personas cuya paciencia y oficio construyeron este registro.",
+        "lead_en": "Across all thirteen steps of this track (T.00–T.12), every equation and every row in the grounding ledger began with human beings: machinists cutting platinum wedges to the micrometer, physicists threading helium bags through brick towers, clockmakers booking airline seats for atomic standards, experimentalists trapping microwave cat states and comparing optical clocks against dark-matter waves, and theorists counting states by hand. Before we step into the instruments, we honor the people whose patience and craft built this record.",
+        "lead_es": "A lo largo de los trece pasos de esta serie (T.00–T.12), cada ecuación y cada fila del libro de registro comenzó con seres humanos: maquinistas que cortaron cuñas de platino al micrómetro, físicos que tendieron bolsas de helio por torres de ladrillo, relojeros que compraron boletos de avión para estándares atómicos, experimentalistas que atraparon estados gato en cavidades y compararon relojes ópticos frente al sector oscuro, y teóricos que contaron estados a mano. Antes de entrar a los instrumentos, honramos a las personas cuya paciencia y oficio construyeron este registro.",
         "cards": [
             {
                 "icon": "einstein-elevator",
@@ -3247,7 +3302,7 @@ HUMANS_DATA: dict[str, dict] = {
         "lead_es": "¿Por qué un reloj macroscópico aparece en una posición definida y no en una superposición de posiciones? Estos teóricos y experimentalistas mostraron cómo el hamiltoniano de interacción y el baño electromagnético seleccionan los estados puntero y los copian en el entorno.",
         "cards": [
             {
-                "icon": "page-wootters",
+                "icon": "pointer-darwinism",
                 "era_en": "1957 & 1981–2009 · Princeton, Austin & Los Alamos",
                 "era_es": "1957 y 1981–2009 · Princeton, Austin y Los Álamos",
                 "names_en": "Hugh Everett III · Wojciech Hubert Zurek",
@@ -3261,7 +3316,7 @@ HUMANS_DATA: dict[str, dict] = {
                 "doi": "10.1103/PhysRevD.24.1516",
             },
             {
-                "icon": "gps-constellation",
+                "icon": "photon-scattering",
                 "era_en": "1970 & 1985 · Heidelberg",
                 "era_es": "1970 y 1985 · Heidelberg",
                 "names_en": "Erich Joos & H. Dieter Zeh",
@@ -3275,7 +3330,7 @@ HUMANS_DATA: dict[str, dict] = {
                 "doi": "10.1007/BF01725541",
             },
             {
-                "icon": "atom-chip",
+                "icon": "cavity-buckminster",
                 "era_en": "1996 & 2003–2004 · Paris & Vienna",
                 "era_es": "1996 y 2003–2004 · París y Viena",
                 "names_en": "Michel Brune, Serge Haroche & Jean-Michel Raimond · Klaus Hornberger, Lucia Hackermüller & Markus Arndt",
@@ -3299,7 +3354,7 @@ HUMANS_DATA: dict[str, dict] = {
         "lead_es": "¿Qué ocurre cuando un sector de masa tiene polarizabilidad electromagnética nula (Λ_EM = 0) y cero sombra óptica, pero comparte la métrica g_μν? Los cosmólogos trazaron sus pozos gravitatorios en el cielo mientras los físicos atómicos convirtieron relojes ópticos y detectores subterráneos en observatorios del sector oscuro.",
         "cards": [
             {
-                "icon": "gps-constellation",
+                "icon": "bullet-cluster-lensing",
                 "era_en": "2006 & 2018–2020 · Tucson, Cambridge & ESA L2",
                 "era_es": "2006 y 2018–2020 · Tucson, Cambridge y punto L2 de la ESA",
                 "names_en": "Douglas Clowe, Maruša Bradač & the Bullet Cluster Team · The Planck Collaboration",
@@ -3313,7 +3368,7 @@ HUMANS_DATA: dict[str, dict] = {
                 "doi": "10.1051/0004-6361/201833910",
             },
             {
-                "icon": "optical-lattice",
+                "icon": "dark-clock-comparison",
                 "era_en": "2020 & 2023 · Boulder, Colorado & Braunschweig, Germany",
                 "era_es": "2020 y 2023 · Boulder, Colorado y Braunschweig, Alemania",
                 "names_en": "Colin Kennedy, Tobias Bothwell & Jun Ye · Melina Filzinger, Ekkehard Peik, Christian Lisdat & Nils Huntemann",
@@ -3730,8 +3785,8 @@ def write_pages(catalog: dict | None = None) -> list[Path]:
         en_dir.mkdir(parents=True, exist_ok=True)
         es_dir.mkdir(parents=True, exist_ok=True)
         en_html = render_page(page, catalog, "en")
-        (en_dir / "index.html").write_text(en_html, encoding="utf-8")
-        (es_dir / "index.html").write_text(B.to_spanish_static(render_page(page, catalog, "es")), encoding="utf-8")
+        (en_dir / "index.html").write_text(en_html, encoding="utf-8", newline="\n")
+        (es_dir / "index.html").write_text(B.to_spanish_static(render_page(page, catalog, "es")), encoding="utf-8", newline="\n")
         written += [en_dir / "index.html", es_dir / "index.html"]
     return written
 
@@ -3740,10 +3795,10 @@ def main() -> int:
     catalog = B.update_catalogs()
     written = write_pages(catalog)
     # The track's entries on the cover, the sitemap and llms.txt live in the main builder, like the Toolbox's.
-    (RESEARCH / "index.html").write_text(B.render_hub_index(catalog), encoding="utf-8")
-    (RESEARCH / B.ES_PREFIX.strip("/") / "index.html").write_text(B.to_spanish_static(B.render_hub_index(catalog, "es")), encoding="utf-8")
-    (RESEARCH / "sitemap.xml").write_text(B.render_research_sitemap(catalog), encoding="utf-8")
-    (RESEARCH / "llms.txt").write_text(B.render_llms_txt(catalog), encoding="utf-8")
+    (RESEARCH / "index.html").write_text(B.render_hub_index(catalog), encoding="utf-8", newline="\n")
+    (RESEARCH / B.ES_PREFIX.strip("/") / "index.html").write_text(B.to_spanish_static(B.render_hub_index(catalog, "es")), encoding="utf-8", newline="\n")
+    (RESEARCH / "sitemap.xml").write_text(B.render_research_sitemap(catalog), encoding="utf-8", newline="\n")
+    (RESEARCH / "llms.txt").write_text(B.render_llms_txt(catalog), encoding="utf-8", newline="\n")
     print(f"PASS: Built {len(written)} Time & Gravity pages ({len(PAGES)} pages × EN/ES-MX) + cover, sitemap.xml and llms.txt entries.")
     return 0
 

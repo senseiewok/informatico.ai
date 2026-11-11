@@ -143,6 +143,16 @@ REVAMP_CSS = r"""
       white-space: nowrap;
     }
 
+    .tp-masthead-tools {
+      gap: 0.25rem;
+    }
+
+    .tp-tool-btn {
+      min-width: 2.25rem;
+      padding: 0.35rem 0.55rem;
+      font-size: 0.8rem;
+    }
+
     .tp-masthead-slim .tp-brand-title {
       font-size: 0.92rem;
     }
@@ -5985,3 +5995,4 @@ def update_informatico_css() -> None:
         css = css[:-1].rstrip() + "\n\n" + addition
     css = css.rstrip() + "\n" + REVAMP_CSS
     css_path.write_text(css, encoding="utf-8")
+

@@ -434,6 +434,106 @@ def generate_essay_plates() -> dict[str, str]:
     p7_bytes = _encode_png(w, h, b7)
     (PLATES_DIR / "essay07.png").write_bytes(p7_bytes)
     hashes["essay07"] = hashlib.sha256(p7_bytes).hexdigest()[:8]
+
+    # Plate 8: essay08.png (Schur Identifiability: Nuisance tangent projection + 3-point Kiefer-Wolfowitz pins + sloppy spectrum)
+    b8 = _make_canvas(w, h, stone)
+    _fill_rect(b8, w, h, 36, 36, 1164, 594, vellum)
+    # Left panel: Nuisance plane parallelogram + raw deficit vector projecting orthogonally onto P_perp residual
+    poly_pts = [(88, 395), (355, 345), (435, 455), (168, 505)]
+    for idx_p in range(4):
+        ax0, ay0 = poly_pts[idx_p]
+        ax1, ay1 = poly_pts[(idx_p + 1) % 4]
+        _draw_line(b8, w, h, ax0, ay0, ax1, ay1, 3.0, rule, 0.95)
+    # Fill nuisance plane softly with hatching lines
+    for hu in range(1, 7):
+        fu = hu / 7.0
+        hx0 = 88 + (168 - 88) * fu
+        hy0 = 395 + (505 - 395) * fu
+        hx1 = 355 + (435 - 355) * fu
+        hy1 = 345 + (455 - 345) * fu
+        _draw_line(b8, w, h, hx0, hy0, hx1, hy1, 1.4, rule, 0.65)
+    # Origin (195, 420), nuisance shadow (345, 392), raw tip (345, 165), orthogonal vector (195, 193)
+    ox, oy = 195.0, 420.0
+    sx_p, sy_p = 345.0, 392.0
+    tx_p, ty_p = 345.0, 165.0
+    _draw_line(b8, w, h, ox, oy, sx_p, sy_p, 3.6, sienna, 0.9)
+    _draw_line(b8, w, h, ox, oy, tx_p, ty_p, 4.4, prussian, 0.95)
+    for d_k in range(1, 16):
+        du = d_k / 16.0
+        _draw_disc(b8, w, h, sx_p, sy_p + (ty_p - sy_p) * du, 2.2, verdigris, 0.85)
+    # Orthogonal Schur residual vector at origin
+    _draw_line(b8, w, h, ox, oy, ox, oy - (sy_p - ty_p), 5.0, verdigris, 0.96)
+    _draw_disc(b8, w, h, ox, oy, 9.0, ink)
+    _draw_disc(b8, w, h, tx_p, ty_p, 9.5, prussian)
+    _draw_disc(b8, w, h, ox, oy - (sy_p - ty_p), 10.5, verdigris)
+    # Center panel: Kiefer-Wolfowitz directional variance curve d(s) <= 3 touching ceiling at 3 support pins
+    cx0, cy0, cw_k = 485, 485, 310
+    _draw_line(b8, w, h, cx0, cy0, cx0 + cw_k, cy0, 2.6, ink)
+    _draw_line(b8, w, h, cx0, 185, cx0 + cw_k, 185, 3.0, minium, 0.88)
+    prev_kx, prev_ky = float(cx0), 185.0
+    for ki in range(1, 65):
+        u = ki / 64.0
+        # Non-positive dip away from u = 0, u = 0.36, u = 1.0 so curve kisses y = 185 at exact 3 Caratheodory nodes
+        dip = 42.0 * (u * (u - 0.36) * (1.0 - u)) ** 2 * 18.0
+        kx = cx0 + u * cw_k
+        ky = 185.0 + min(240.0, dip)
+        _draw_line(b8, w, h, prev_kx, prev_ky, kx, ky, 3.8, prussian)
+        prev_kx, prev_ky = kx, ky
+    for u_pin in (0.0, 0.36, 1.0):
+        px_k = cx0 + u_pin * cw_k
+        _draw_line(b8, w, h, px_k, cy0, px_k, 185.0, 2.0, sienna, 0.55)
+        _draw_disc(b8, w, h, px_k, 185.0, 9.5, minium)
+    # Right panel: Stiff-to-sloppy logarithmic Fisher eigenvalue bar cascade
+    bars_h = [335, 255, 175, 102, 48]
+    bar_cols = [prussian, prussian, verdigris, sienna, minium]
+    for bi_idx, (bh, bcol) in enumerate(zip(bars_h, bar_cols)):
+        bx0 = 865 + bi_idx * 52
+        _fill_rect(b8, w, h, bx0, 485 - bh, bx0 + 34, 485, bcol, 0.88)
+    _draw_line(b8, w, h, 850, 485, 1135, 485, 2.8, ink)
+    p8_bytes = _encode_png(w, h, b8)
+    (PLATES_DIR / "essay08.png").write_bytes(p8_bytes)
+    hashes["essay08"] = hashlib.sha256(p8_bytes).hexdigest()[:8]
+
+    # Plate 9: essay09.png (Multipartite Witnesses & Active Clocks: N=3 prism + M^2 vs M^(20/3) fan + proper-time wave ring)
+    b9 = _make_canvas(w, h, stone)
+    _fill_rect(b9, w, h, 36, 36, 1164, 594, vellum)
+    # Left panel: Isometric N = 3 equilateral-triangle interferometer prism (3 parallel vertical arms)
+    tri_top = [(235, 155), (125, 235), (345, 235)]
+    tri_bot = [(235, 425), (125, 505), (345, 505)]
+    for ti in range(3):
+        tj = (ti + 1) % 3
+        _draw_line(b9, w, h, tri_top[ti][0], tri_top[ti][1], tri_top[tj][0], tri_top[tj][1], 3.2, verdigris, 0.85)
+        _draw_line(b9, w, h, tri_bot[ti][0], tri_bot[ti][1], tri_bot[tj][0], tri_bot[tj][1], 3.2, verdigris, 0.85)
+        _draw_line(b9, w, h, tri_top[ti][0], tri_top[ti][1], tri_bot[ti][0], tri_bot[ti][1], 4.4, prussian, 0.95)
+        _draw_disc(b9, w, h, tri_top[ti][0], tri_top[ti][1], 10.5, prussian)
+        _draw_disc(b9, w, h, tri_bot[ti][0], tri_bot[ti][1], 10.5, minium)
+    # Center panel: Log-log scaling tomography fan (shallow passive slope vs steep M^(20/3) slope + composition step)
+    fx0, fy0, fw_s = 455, 495, 295
+    _draw_line(b9, w, h, fx0, fy0, fx0 + fw_s, fy0, 2.8, ink)
+    _draw_line(b9, w, h, fx0, fy0, fx0, 135, 2.8, ink)
+    # Shallow passive Newtonian slope (prussian) vs steep Aziz-Howl slope (minium) + Yb composition jump (sienna)
+    _draw_line(b9, w, h, fx0 + 20, fy0 - 55, fx0 + fw_s - 15, fy0 - 165, 4.4, prussian)
+    _draw_line(b9, w, h, fx0 + 20, fy0 - 25, fx0 + fw_s - 45, 150, 4.4, minium)
+    _draw_line(b9, w, h, fx0 + 175, fy0 - 110, fx0 + 175, 215, 3.2, sienna, 0.9)
+    _draw_disc(b9, w, h, fx0 + 175, 215, 9.5, sienna)
+    _draw_disc(b9, w, h, fx0 + 175, fy0 - 110, 9.5, prussian)
+    # Right panel: Active optical clock concentric proper-time phase-modulation ring
+    acx, acy = 975.0, 315.0
+    _draw_ring(b9, w, h, acx, acy, 142.0, 3.0, prussian, 0.85)
+    _draw_ring(b9, w, h, acx, acy, 96.0, 2.4, verdigris, 0.75)
+    prev_wx, prev_wy = None, None
+    for wi in range(121):
+        ang = (wi / 120.0) * 2.0 * math.pi
+        rad = 119.0 + 14.0 * math.sin(8.0 * ang)
+        wx, wy = acx + rad * math.cos(ang), acy + rad * math.sin(ang)
+        if prev_wx is not None:
+            _draw_line(b9, w, h, prev_wx, prev_wy, wx, wy, 2.8, minium, 0.9)
+        prev_wx, prev_wy = wx, wy
+    _draw_line(b9, w, h, acx, acy, acx + 68, acy - 58, 4.5, ink)
+    _draw_disc(b9, w, h, acx, acy, 10.0, sienna)
+    p9_bytes = _encode_png(w, h, b9)
+    (PLATES_DIR / "essay09.png").write_bytes(p9_bytes)
+    hashes["essay09"] = hashlib.sha256(p9_bytes).hexdigest()[:8]
     return hashes
 
 
@@ -770,6 +870,120 @@ def render_instrument(essay: dict, is_es: bool = False) -> str:
             <input type="range" min="0.6" max="3.6" step="0.1" value="2.0" data-cs-input="temp">
           </label>
           <button type="button" class="tp-cta" data-cs-knockout aria-pressed="false" data-en="Toggle Naive 51.2 µm / Uncentred-90° Defect" data-es="Alternar Defecto de 51.2 µm / Esquina 90°">Toggle Naive 51.2 µm / Uncentred-90° Defect</button>
+        </div>
+      </div>
+      <p class="tp-essay-status" data-cs-status role="status"></p>
+    </section>"""
+
+    if kind == "schur_recast":
+        svg_aria = (
+            "Retención de información de complemento de Schur frente a parámetros parásitos, alineación ortogonal con Yukawa y ganancia D-óptima bajo 50 micrómetros"
+            if is_es
+            else "Schur-complement Fisher retention against floating nuisance parameters, orthogonal Yukawa mimic alignment, and sub-50-micrometre D-optimal gain"
+        )
+        grp_w_aria = "Seleccionar ponderación de ruido por separación" if is_es else "Select separation noise weighting"
+        grp_p_aria = "Seleccionar modo de proyección de parámetros parásitos" if is_es else "Select nuisance projection mode"
+        return f"""    <section id="instrument" class="tp-essay-observatory" data-cs-instrument="schur_recast" aria-labelledby="inst-heading">
+      <div class="tp-essay-obs-head">
+        <p class="tp-kicker" data-en="Interactive Fisher Schur-Complement &amp; Kiefer–Wolfowitz Design Observatory · ES.08" data-es="Observatorio Interactivo de Complemento de Schur de Fisher y Diseño de Kiefer–Wolfowitz · ES.08">Interactive Fisher Schur-Complement &amp; Kiefer–Wolfowitz Design Observatory · ES.08</p>
+        <h2 id="inst-heading" class="tp-h2" data-en="Orthogonal Projection P_⊥ Against Floating (γ, s₀) &amp; Sub-50 µm D-Optimal Leverage" data-es="Proyección Ortogonal P_⊥ Frente a (γ, s₀) Flotantes y Apalancamiento D-Óptimo Bajo 50 µm">Orthogonal Projection P_⊥ Against Floating (γ, s₀) &amp; Sub-50 µm D-Optimal Leverage</h2>
+      </div>
+      <div class="tp-essay-obs-grid">
+        <svg class="tp-essay-svg" viewBox="0 0 560 260" role="img" aria-label="{svg_aria}">
+          <rect x="8" y="8" width="544" height="244" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule)"/>
+          <text x="24" y="40" fill="var(--tp-ink)" font-size="12" font-weight="700" data-en="1 · Schur Fisher Retention I_schur / I_raw = ||P_⊥ d_σ||_W² / ||d_σ||_W²" data-es="1 · Retención de Fisher de Schur I_schur / I_raw = ||P_⊥ d_σ||_W² / ||d_σ||_W²">1 · Schur Fisher Retention I_schur / I_raw = ||P_⊥ d_σ||_W² / ||d_σ||_W²</text>
+          <rect x="24" y="50" width="230" height="18" rx="4" fill="var(--tp-vellum)" stroke="var(--tp-rule)"/>
+          <rect data-cs-bar="ret" x="24" y="50" width="154.8" height="18" rx="4" fill="var(--tp-prussian)"/>
+          <text data-cs-read="ret" x="268" y="64" fill="var(--tp-ink)" font-family="monospace" font-size="12.5">67.3% Fisher (||P_⊥d||/||d|| = 0.821)</text>
+
+          <text x="24" y="116" fill="var(--tp-ink)" font-size="12" font-weight="700" data-en="2 · Orthogonal Yukawa Mimic Alignment cos θ_⊥ &amp; Effective α_eff vs α_95,−" data-es="2 · Alineación Ortogonal con Yukawa cos θ_⊥ y α_eff Efectivo frente a α_95,−">2 · Orthogonal Yukawa Mimic Alignment cos θ_⊥ &amp; Effective α_eff vs α_95,−</text>
+          <rect x="24" y="126" width="230" height="18" rx="4" fill="var(--tp-vellum)" stroke="var(--tp-rule)"/>
+          <rect data-cs-bar="align" x="24" y="126" width="229.9" height="18" rx="4" fill="var(--tp-verdigris)"/>
+          <text data-cs-read="align" x="268" y="140" fill="var(--tp-ink)" font-family="monospace" font-size="11.6">cos θ_⊥ = 0.9998 · α_eff = −7.38 &lt; −7.36</text>
+
+          <text x="24" y="192" fill="var(--tp-ink)" font-size="12" font-weight="700" data-en="3 · Next-Gen Sub-50 µm Schur Information Gain I_schur(s_min) / I_schur(52 µm)" data-es="3 · Ganancia de Información de Schur Bajo 50 µm I_schur(s_min) / I_schur(52 µm)">3 · Next-Gen Sub-50 µm Schur Information Gain I_schur(s_min) / I_schur(52 µm)</text>
+          <rect x="24" y="202" width="230" height="18" rx="4" fill="var(--tp-vellum)" stroke="var(--tp-rule)"/>
+          <rect data-cs-bar="gain" x="24" y="202" width="24.0" height="18" rx="4" fill="var(--tp-sienna)"/>
+          <text data-cs-read="gain" x="268" y="216" fill="var(--tp-ink)" font-family="monospace" font-size="12.5">1.00× (max_s d(s) = 3.000 D-opt)</text>
+        </svg>
+        <div class="tp-essay-controls">
+          <div class="tp-essay-btn-stack" role="group" aria-label="{grp_w_aria}">
+            <button type="button" class="tp-cta" data-sr-weight="equal" aria-pressed="true" data-en="Equal Fractional Weights (W = I)" data-es="Pesos Fraccionales Iguales (W = I)">Equal Fractional Weights (W = I)</button>
+            <button type="button" class="tp-cta" data-sr-weight="abs_torque" aria-pressed="false" data-en="Constant Torque Noise (W = T_N²)" data-es="Ruido de Par Constante (W = T_N²)">Constant Torque Noise (W = T_N²)</button>
+          </div>
+          <div class="tp-essay-btn-stack" role="group" aria-label="{grp_p_aria}">
+            <button type="button" class="tp-cta" data-sr-proj="schur" aria-pressed="true" data-en="Schur Orthogonal P_⊥ (Profiles γ, s₀)" data-es="Ortogonal de Schur P_⊥ (Perfila γ, s₀)">Schur Orthogonal P_⊥ (Profiles γ, s₀)</button>
+            <button type="button" class="tp-cta" data-sr-proj="raw" aria-pressed="false" data-en="Unprojected Raw Shape (T.05 Baseline)" data-es="Forma Cruda Sin Proyectar (Base T.05)">Unprojected Raw Shape (T.05 Baseline)</button>
+          </div>
+          <label class="tp-essay-ctrl">
+            <span data-en="Gaussian smearing width σ (µm, recast σ_95 ≈ 32.9–33.1 µm)" data-es="Ancho de suavizado gaussiano σ (µm, recast σ_95 ≈ 32.9–33.1 µm)">Gaussian smearing width σ (µm, recast σ_95 ≈ 32.9–33.1 µm)</span>
+            <strong data-cs-read="sigma">σ = 33.0 µm (λ_mimic = 18.0 µm)</strong>
+            <input type="range" min="18" max="60" step="0.5" value="33.0" data-cs-input="sigma">
+          </label>
+          <label class="tp-essay-ctrl">
+            <span data-en="Closest torsion-foil separation s_min (µm, 2020 floor = 52 µm)" data-es="Separación mínima entre láminas s_min (µm, piso 2020 = 52 µm)">Closest torsion-foil separation s_min (µm, 2020 floor = 52 µm)</span>
+            <strong data-cs-read="smin">s_min = 52 µm (3-pt support: 52, 162, 3000 µm)</strong>
+            <input type="range" min="25" max="52" step="1" value="52" data-cs-input="smin">
+          </label>
+          <button type="button" class="tp-cta" data-cs-knockout aria-pressed="false" data-en="Toggle Nuisance-Washout Fallacy Defect" data-es="Alternar Defecto de Borrado por Parámetros Parásitos">Toggle Nuisance-Washout Fallacy Defect</button>
+        </div>
+      </div>
+      <p class="tp-essay-status" data-cs-status role="status"></p>
+    </section>"""
+
+    if kind == "multipartite_witness":
+        svg_aria = (
+            "Testigo tripartito exacto de Mermin M3 frente a cotas LHV y biseparables, razón de composición frente a Aziz-Howl y modulación de reloj cuántico activo"
+            if is_es
+            else "Exact tripartite Mermin witness M3 against LHV and biseparable bounds, composition leverage against Aziz-Howl, and active quantum clock modulation"
+        )
+        grp_comp_aria = "Seleccionar composición isotópica de las masas de prueba" if is_es else "Select test-mass isotopic composition"
+        grp_chan_aria = "Seleccionar canal gravitatorio" if is_es else "Select gravitational channel"
+        return f"""    <section id="instrument" class="tp-essay-observatory" data-cs-instrument="multipartite_witness" aria-labelledby="inst-heading">
+      <div class="tp-essay-obs-head">
+        <p class="tp-kicker" data-en="Interactive N = 3 Mermin Witness, Scaling Tomography &amp; Active Clock Observatory · ES.09" data-es="Observatorio Interactivo de Testigo Mermin N = 3, Tomografía de Escalamiento y Reloj Activo · ES.09">Interactive N = 3 Mermin Witness, Scaling Tomography &amp; Active Clock Observatory · ES.09</p>
+        <h2 id="inst-heading" class="tp-h2" data-en="Equilateral-Prism GTE (⟨M₃⟩ &gt; 2√2), ¹⁷³Yb / ¹²C Composition Lever &amp; Proper-Time Beats" data-es="Entrelazamiento Genuino Tripartito (⟨M₃⟩ &gt; 2√2), Palanca ¹⁷³Yb / ¹²C y Batidos de Tiempo Propio">Equilateral-Prism GTE (⟨M₃⟩ &gt; 2√2), ¹⁷³Yb / ¹²C Composition Lever &amp; Proper-Time Beats</h2>
+      </div>
+      <div class="tp-essay-obs-grid">
+        <svg class="tp-essay-svg" viewBox="0 0 560 260" role="img" aria-label="{svg_aria}">
+          <rect x="8" y="8" width="544" height="244" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule)"/>
+          <text x="24" y="40" fill="var(--tp-ink)" font-size="12" font-weight="700" data-en="1 · Tripartite Mermin Witness ⟨M₃(t)⟩ (LHV ≤ 2.0 · Biseparable GTE &gt; 2√2 = 2.828)" data-es="1 · Testigo Mermin Tripartito ⟨M₃(t)⟩ (VL ≤ 2.0 · GTE Biseparable &gt; 2√2 = 2.828)">1 · Tripartite Mermin Witness ⟨M₃(t)⟩ (LHV ≤ 2.0 · Biseparable GTE &gt; 2√2 = 2.828)</text>
+          <rect x="24" y="50" width="230" height="18" rx="4" fill="var(--tp-vellum)" stroke="var(--tp-rule)"/>
+          <rect data-cs-bar="mermin" x="24" y="50" width="211.3" height="18" rx="4" fill="var(--tp-verdigris)"/>
+          <line x1="139.0" y1="45" x2="139.0" y2="73" stroke="var(--tp-sienna)" stroke-width="2.0" stroke-dasharray="3 2"/>
+          <line x1="186.6" y1="45" x2="186.6" y2="73" stroke="var(--tp-minium)" stroke-width="2.2" stroke-dasharray="3 2"/>
+          <text data-cs-read="mermin" x="268" y="64" fill="var(--tp-ink)" font-family="monospace" font-size="12.5">⟨M₃⟩ = 3.674 &gt; 2√2 (GTE PASS)</text>
+
+          <text x="24" y="116" fill="var(--tp-ink)" font-size="12" font-weight="700" data-en="2 · Composition Tomography: Passive WEP Ratio vs Aziz–Howl √ϑ Ratio" data-es="2 · Tomografía de Composición: Razón WEP Pasiva frente a Razón √ϑ de Aziz–Howl">2 · Composition Tomography: Passive WEP Ratio vs Aziz–Howl √ϑ Ratio</text>
+          <rect x="24" y="126" width="230" height="18" rx="4" fill="var(--tp-vellum)" stroke="var(--tp-rule)"/>
+          <rect data-cs-bar="comp" x="24" y="126" width="28.0" height="18" rx="4" fill="var(--tp-prussian)"/>
+          <text data-cs-read="comp" x="268" y="140" fill="var(--tp-ink)" font-family="monospace" font-size="12.5">WEP 1.00× · √ϑ_AH 1.00× (¹²C ref)</text>
+
+          <text x="24" y="192" fill="var(--tp-ink)" font-size="12" font-weight="700" data-en="3 · Active Optical Clock Proper-Time Visibility V_clock = |cos(½ ω₀ ΔΦ_g t / c²)|" data-es="3 · Visibilidad de Tiempo Propio de Reloj Óptico Activo V_clock = |cos(½ ω₀ ΔΦ_g t / c²)|">3 · Active Optical Clock Proper-Time Visibility V_clock = |cos(½ ω₀ ΔΦ_g t / c²)|</text>
+          <rect x="24" y="202" width="230" height="18" rx="4" fill="var(--tp-vellum)" stroke="var(--tp-rule)"/>
+          <rect data-cs-bar="clock" x="24" y="202" width="182.0" height="18" rx="4" fill="var(--tp-sienna)"/>
+          <text data-cs-read="clock" x="268" y="216" fill="var(--tp-ink)" font-family="monospace" font-size="12.5">V_clock = 0.791 · 1|23 σ_c = 34.93 µm</text>
+        </svg>
+        <div class="tp-essay-controls">
+          <div class="tp-essay-btn-stack" role="group" aria-label="{grp_chan_aria}">
+            <button type="button" class="tp-cta" data-mw-chan="quantum" aria-pressed="true" data-en="Unitary Quantum Prism (D = 75 µm)" data-es="Prisma Cuántico Unitario (D = 75 µm)">Unitary Quantum Prism (D = 75 µm)</button>
+            <button type="button" class="tp-cta" data-mw-chan="hybrid" aria-pressed="false" data-en="3-Body DP Hybrid (σ_95 = 33.08 µm)" data-es="Híbrido DP de 3 Cuerpos (σ_95 = 33.08 µm)">3-Body DP Hybrid (σ_95 = 33.08 µm)</button>
+          </div>
+          <div class="tp-essay-btn-stack" role="group" aria-label="{grp_comp_aria}">
+            <button type="button" class="tp-cta" data-mw-comp="diamond" aria-pressed="true" data-en="¹²C Diamond (12 u, 3.5 g/cm³)" data-es="Diamante ¹²C (12 u, 3.5 g/cm³)">¹²C Diamond (12 u, 3.5 g/cm³)</button>
+            <button type="button" class="tp-cta" data-mw-comp="yb173" aria-pressed="false" data-en="¹⁷³Yb Crystal (173 u, 6.9 g/cm³)" data-es="Cristal ¹⁷³Yb (173 u, 6.9 g/cm³)">¹⁷³Yb Crystal (173 u, 6.9 g/cm³)</button>
+          </div>
+          <label class="tp-essay-ctrl">
+            <span data-en="Prism hold time t (s, π-gate peak at t_π = 2.61 s)" data-es="Tiempo de espera del prisma t (s, pico π en t_π = 2.61 s)">Prism hold time t (s, π-gate peak at t_π = 2.61 s)</span>
+            <strong data-cs-read="holdt">t = 2.61 s (Δφ = 3.14 rad)</strong>
+            <input type="range" min="0.20" max="5.20" step="0.01" value="2.61" data-cs-input="holdt">
+          </label>
+          <label class="tp-essay-ctrl">
+            <span data-en="Cryogenic bath temperature T (K, Z-pointer preserves ZZZ)" data-es="Temperatura del baño criogénico T (K, puntero Z preserva ZZZ)">Cryogenic bath temperature T (K, Z-pointer preserves ZZZ)</span>
+            <strong data-cs-read="temp">T = 2.0 K (η = 0.944)</strong>
+            <input type="range" min="0.6" max="3.6" step="0.1" value="2.0" data-cs-input="temp">
+          </label>
+          <button type="button" class="tp-cta" data-cs-knockout aria-pressed="false" data-en="Toggle Biseparable-LHV Conflation Defect" data-es="Alternar Defecto de Confusión Biseparable / VL">Toggle Biseparable-LHV Conflation Defect</button>
         </div>
       </div>
       <p class="tp-essay-status" data-cs-status role="status"></p>
@@ -1125,8 +1339,8 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
         m3_section = f"""
     <section class="tp-issue-rack" aria-label="{aria_rack3}">
       <div class="tp-section-head">
-        <p class="tp-kicker" data-en="Movement III · ES.07 · Parallel Smeared-Gravity Horizons, Cryogenic Valleys &amp; Epistemic Scope" data-es="Movimiento III · ES.07 · Horizontes Paralelos de Gravedad Difuminada, Valles Criogénicos y Alcance Epistémico">Movement III · ES.07 · Parallel Smeared-Gravity Horizons, Cryogenic Valleys &amp; Epistemic Scope</p>
-        <h2 class="tp-h2" data-en="The Parallel Horizon, the 75 µm Quantum Island, and Why This Is Not a Theory of Everything" data-es="El Horizonte Paralelo, la Isla Cuántica de 75 µm y por Qué Esto No Es una Teoría del Todo">The Parallel Horizon, the 75 µm Quantum Island, and Why This Is Not a Theory of Everything</h2>
+        <p class="tp-kicker" data-en="Movement III · ES.07–ES.09 · Parallel Horizons, Schur Identifiability &amp; Multipartite Clocks" data-es="Movimiento III · ES.07–ES.09 · Horizontes Paralelos, Identificabilidad de Schur y Relojes Multipartitos">Movement III · ES.07–ES.09 · Parallel Horizons, Schur Identifiability &amp; Multipartite Clocks</p>
+        <h2 class="tp-h2" data-en="The Parallel Horizon, Nuisance-Orthogonal Identifiability, and Multipartite Quantum Clocks" data-es="El Horizonte Paralelo, la Identificabilidad Ortogonal y los Relojes Cuánticos Multipartitos">The Parallel Horizon, Nuisance-Orthogonal Identifiability, and Multipartite Quantum Clocks</h2>
       </div>
       <div class="tp-rack-grid">
 {cards_m3}
@@ -1145,12 +1359,12 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
       </ol>
     </nav>
     <section class="tp-hero">
-      <p class="tp-kicker" data-en="Featured Synthesis · 7 Standalone Essays · Three Movements &amp; Zero-Sorry Verification" data-es="Síntesis Destacada · 7 Ensayos Independientes · Tres Movimientos y Verificación Formal">Featured Synthesis · 7 Standalone Essays · Three Movements &amp; Zero-Sorry Verification</p>
+      <p class="tp-kicker" data-en="Featured Synthesis · 9 Standalone Essays · Three Movements &amp; Zero-Sorry Verification" data-es="Síntesis Destacada · 9 Ensayos Independientes · Tres Movimientos y Verificación Formal">Featured Synthesis · 9 Standalone Essays · Three Movements &amp; Zero-Sorry Verification</p>
       <h1 class="tp-h1" data-en="Cross-Scale Essays: Clocks, Stone, and Living Matter" data-es="Ensayos entre Escalas: Relojes, Piedra y Materia Viva">Cross-Scale Essays: Clocks, Stone, and Living Matter</h1>
-      <p class="tp-standfirst" data-en="Seven standalone essays in three movements exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, coupled timeless constraints, and closed-form parallel horizons—govern 10⁻¹⁴ kg quantum-gravity diamonds, space-frame trusses, black-hole horizons, and nanoscale biological channels." data-es="Siete ensayos independientes en tres movimientos sobre por qué las mismas ecuaciones matemáticas y reglas de verificación formal —fluctuación-disipación, procedencia epistémica, incertidumbre termodinámica, rango-nulidad y microcausalidad, supervivencia condicional de Doob, ligaduras atemporales acopladas y horizontes paralelos cerrados— gobiernan diamantes de gravedad cuántica de 10⁻¹⁴ kg, celosías estructurales, horizontes de agujeros negros y canales biológicos a nanoescala.">Seven standalone essays in three movements exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, coupled timeless constraints, and closed-form parallel horizons—govern 10⁻¹⁴ kg quantum-gravity diamonds, space-frame trusses, black-hole horizons, and nanoscale biological channels.</p>
+      <p class="tp-standfirst" data-en="Nine standalone essays in three symmetric movements exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, coupled timeless constraints, closed-form parallel horizons, Fisher Schur-complement identifiability, and tripartite Mermin / active-clock witnesses—govern 10⁻¹⁴ kg quantum-gravity diamonds, space-frame trusses, black-hole horizons, and nanoscale biological channels." data-es="Nueve ensayos independientes en tres movimientos simétricos sobre por qué las mismas ecuaciones matemáticas y reglas de verificación formal —fluctuación-disipación, procedencia epistémica, incertidumbre termodinámica, rango-nulidad y microcausalidad, supervivencia condicional de Doob, ligaduras atemporales acopladas, horizontes paralelos cerrados, complementos de Schur de Fisher y testigos Mermin / relojes activos— gobiernan diamantes de gravedad cuántica de 10⁻¹⁴ kg, celosías estructurales, horizontes de agujeros negros y canales biológicos a nanoescala.">Nine standalone essays in three symmetric movements exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, coupled timeless constraints, closed-form parallel horizons, Fisher Schur-complement identifiability, and tripartite Mermin / active-clock witnesses—govern 10⁻¹⁴ kg quantum-gravity diamonds, space-frame trusses, black-hole horizons, and nanoscale biological channels.</p>
       <div class="tp-series-rack-ctas">
         <a class="tp-cta tp-cta-primary" href="mesoscopic-floor/" data-en="Start Movement I · ES.01 The Mesoscopic Floor →" data-es="Iniciar Movimiento I · ES.01 El Piso Mesoscópico →">Start Movement I · ES.01 The Mesoscopic Floor →</a>
-        <a class="tp-cta" href="loophole-free-parallel-horizon/" data-en="Read Capstone · ES.07 The Parallel Horizon &amp; 75 µm Island →" data-es="Leer Cierre · ES.07 El Horizonte Paralelo e Isla de 75 µm →">Read Capstone · ES.07 The Parallel Horizon &amp; 75 µm Island →</a>
+        <a class="tp-cta" href="loophole-free-parallel-horizon/" data-en="Enter Movement III · ES.07–ES.09 Horizons &amp; Multipartite Clocks →" data-es="Entrar al Movimiento III · ES.07–ES.09 Horizontes y Relojes →">Enter Movement III · ES.07–ES.09 Horizontes y Relojes →</a>
         <a class="tp-cta" href="../timegravity/" data-en="Time &amp; Gravity Core Series (T.00–T.12) →" data-es="Serie Principal Tiempo y Gravedad (T.00–T.12) →">Time &amp; Gravity Core Series (T.00–T.12) →</a>
       </div>
     </section>
