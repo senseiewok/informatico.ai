@@ -261,7 +261,7 @@ class TimeGravityTrackTests(unittest.TestCase):
         llms = (RESEARCH / "llms.txt").read_text(encoding="utf-8")
         self.assertIn("(https://informatico.ai/timegravity/)", llms)
         self.assertIn("(https://informatico.ai/timegravity/t01/)", llms)
-        self.assertIn("79 SKILL.md companions", llms)
+        self.assertIn("81 SKILL.md companions", llms)
         self.assertLess(llms.index("timegravity/t02/"), llms.index("timegravity/t01/"))
         self.assertIn("## Time & Gravity", llms)
 
@@ -959,3 +959,4 @@ class TimeGravityHumansAndPlatesTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
