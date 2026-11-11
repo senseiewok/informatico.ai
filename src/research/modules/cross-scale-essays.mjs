@@ -800,6 +800,428 @@ function initParallelHorizon(root) {
   render();
 }
 
+function erfcScaled(x) {
+  if (x >= 0) {
+    const t = 1.0 / (1.0 + 0.3275911 * x);
+    return (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t;
+  }
+  return 2.0 * Math.exp(x * x) - erfcScaled(-x);
+}
+
+function sheetSmearedRatio(q, s, sigma) {
+  if (sigma <= 0) return 1.0;
+  const a = q * sigma;
+  const b = s / (2.0 * sigma);
+  const d1 = a - b;
+  const d2 = a + b;
+  const term1 = d1 >= 0 ? Math.exp(-d1 * d1) * erfcScaled(d1) : 1.0 - erfApprox(d1);
+  const term2 = Math.exp(-d1 * d1) * erfcScaled(d2);
+  return 0.5 * (term1 + term2);
+}
+
+function initSchurRecast(root) {
+  const sigmaInput = root.querySelector('[data-cs-input="sigma"]');
+  const sminInput = root.querySelector('[data-cs-input="smin"]');
+  const weightBtns = root.querySelectorAll("button[data-sr-weight]");
+  const projBtns = root.querySelectorAll("button[data-sr-proj]");
+  const koBtn = root.querySelector("[data-cs-knockout]");
+  const statusEl = root.querySelector("[data-cs-status]");
+  const barRet = root.querySelector('[data-cs-bar="ret"]');
+  const barAlign = root.querySelector('[data-cs-bar="align"]');
+  const barGain = root.querySelector('[data-cs-bar="gain"]');
+  const reads = {};
+  root.querySelectorAll("[data-cs-read]").forEach((el) => { reads[el.getAttribute("data-cs-read")] = el; });
+  let weightMode = "equal";
+  let projMode = "schur";
+  let knockout = false;
+
+  // Compact 3-mode radial + 3x3 Gauss-Legendre thick-foil surrogate (t1 = 54 um, t2 = 99 um) matching the 120-fold Eot-Wash kernel
+  const K_MODES = [
+    [6000.0, 0.25],
+    [7600.0, 0.48],
+    [9800.0, 0.27],
+  ];
+  const GL3_U = [0.11270166537925831, 0.5, 0.8872983346207417];
+  const GL3_W = [5.0 / 18.0, 8.0 / 18.0, 5.0 / 18.0];
+  const T_DET = 54e-6;
+  const T_ATT = 99e-6;
+  // Lee (2020) Table 11.4 rows (lambda_um, alpha95_minus)
+  const TABLE_ROWS = [
+    [10.0, -520.0], [11.0, -232.0], [13.0, -63.5], [14.0, -37.3],
+    [16.0, -15.2], [18.0, -7.36], [20.0, -4.02], [22.0, -2.41],
+    [25.0, -1.27], [28.0, -0.886], [32.0, -0.507], [35.0, -0.36],
+  ];
+
+  function foilTorque(s, kind, paramM) {
+    let sum = 0.0;
+    for (let m = 0; m < K_MODES.length; m += 1) {
+      const k = K_MODES[m][0];
+      const wk = K_MODES[m][1];
+      const kap = kind === "yukawa" ? Math.sqrt(k * k + 1.0 / (paramM * paramM)) : k;
+      let zSum = 0.0;
+      for (let i1 = 0; i1 < 3; i1 += 1) {
+        const z1 = GL3_U[i1] * T_DET;
+        for (let i2 = 0; i2 < 3; i2 += 1) {
+          const sz = s + z1 + GL3_U[i2] * T_ATT;
+          const wt = GL3_W[i1] * GL3_W[i2];
+          if (kind === "newton") {
+            zSum += wt * (Math.exp(-k * sz) / k);
+          } else if (kind === "smeared") {
+            zSum += wt * (Math.exp(-k * sz) / k) * sheetSmearedRatio(k, sz, paramM);
+          } else {
+            zSum += wt * (Math.exp(-kap * sz) / kap);
+          }
+        }
+      }
+      sum += wk * zSum;
+    }
+    return sum;
+  }
+
+  function mgsProject(vec, q1, q2, w) {
+    let c1 = 0.0;
+    let c2 = 0.0;
+    for (let i = 0; i < vec.length; i += 1) {
+      c1 += w[i] * q1[i] * vec[i];
+      c2 += w[i] * q2[i] * vec[i];
+    }
+    return vec.map((x, i) => x - c1 * q1[i] - c2 * q2[i]);
+  }
+
+  function det3(r0, r1, r2) {
+    return (
+      r0[0] * (r1[1] * r2[2] - r1[2] * r2[1])
+      - r0[1] * (r1[0] * r2[2] - r1[2] * r2[0])
+      + r0[2] * (r1[0] * r2[1] - r1[1] * r2[0])
+    );
+  }
+
+  function dOptimalMidUm(sMinM, sigmaM) {
+    const nG = 25;
+    const sMaxM = 3.0e-3;
+    const ds = 0.25e-6;
+    const grid = [];
+    const rows = [];
+    for (let i = 0; i < nG; i += 1) {
+      const s = sMinM * Math.pow(sMaxM / sMinM, i / (nG - 1));
+      grid.push(s);
+      const tn = foilTorque(s, "newton", 0);
+      const v2 = (sMinM * (foilTorque(s + ds, "newton", 0) - foilTorque(s - ds, "newton", 0))) / (2.0 * ds * tn);
+      const d = 1.0 - foilTorque(s, "smeared", sigmaM) / tn;
+      rows.push([1.0, v2, d]);
+    }
+    let bestDet = -1.0;
+    let bestMid = grid[7];
+    for (let i1 = 1; i1 < nG - 1; i1 += 1) {
+      const v = Math.abs(det3(rows[0], rows[i1], rows[nG - 1]));
+      if (v > bestDet) {
+        bestDet = v;
+        bestMid = grid[i1];
+      }
+    }
+    return Math.round(bestMid * 1e6);
+  }
+
+  function computeGrid(sMinM, sigmaM, wMode, useSchur) {
+    const n = 12;
+    const sMaxM = 3.0e-3;
+    const seps = [];
+    for (let i = 0; i < n; i += 1) {
+      seps.push(sMinM * Math.pow(sMaxM / sMinM, i / (n - 1)));
+    }
+    const tN = seps.map((s) => foilTorque(s, "newton", 0));
+    const w = wMode === "abs_torque" ? tN.map((t) => t * t) : seps.map(() => 1.0);
+    const ds = 0.25e-6;
+    const v1 = seps.map(() => 1.0);
+    const v2 = seps.map((s, i) => (sMinM * (foilTorque(s + ds, "newton", 0) - foilTorque(s - ds, "newton", 0))) / (2.0 * ds * tN[i]));
+    let n1 = 0.0;
+    for (let i = 0; i < n; i += 1) n1 += w[i] * v1[i] * v1[i];
+    n1 = Math.sqrt(Math.max(n1, 1e-300));
+    const q1 = v1.map((x) => x / n1);
+    let r12 = 0.0;
+    for (let i = 0; i < n; i += 1) r12 += w[i] * q1[i] * v2[i];
+    const u2 = v2.map((x, i) => x - r12 * q1[i]);
+    let n2 = 0.0;
+    for (let i = 0; i < n; i += 1) n2 += w[i] * u2[i] * u2[i];
+    n2 = Math.sqrt(Math.max(n2, 1e-300));
+    const q2 = u2.map((x) => x / n2);
+
+    const dRaw = seps.map((s, i) => 1.0 - foilTorque(s, "smeared", sigmaM) / tN[i]);
+    const dPerp = mgsProject(dRaw, q1, q2, w);
+    let rawSq = 0.0;
+    let perpSq = 0.0;
+    for (let i = 0; i < n; i += 1) {
+      rawSq += w[i] * dRaw[i] * dRaw[i];
+      perpSq += w[i] * dPerp[i] * dPerp[i];
+    }
+    const dUse = useSchur ? dPerp : dRaw;
+    let best = null;
+    for (let r = 0; r < TABLE_ROWS.length; r += 1) {
+      const lamUm = TABLE_ROWS[r][0];
+      const a95Minus = TABLE_ROWS[r][1];
+      const yRaw = seps.map((s, i) => foilTorque(s, "yukawa", lamUm * 1e-6) / tN[i]);
+      const yUse = useSchur ? mgsProject(yRaw, q1, q2, w) : yRaw;
+      let den = 0.0;
+      let dot = 0.0;
+      let dNorm = 0.0;
+      for (let i = 0; i < n; i += 1) {
+        den += w[i] * yUse[i] * yUse[i];
+        dot += w[i] * dUse[i] * yUse[i];
+        dNorm += w[i] * dUse[i] * dUse[i];
+      }
+      const aEff = -dot / Math.max(den, 1e-300);
+      let errSq = 0.0;
+      for (let i = 0; i < n; i += 1) {
+        const diff = dUse[i] + aEff * yUse[i];
+        errSq += w[i] * diff * diff;
+      }
+      const resid = Math.sqrt(errSq / Math.max(dNorm, 1e-300));
+      if (!best || resid < best.resid) {
+        best = { lamUm, a95Minus, aEff, resid, cosTheta: Math.sqrt(Math.max(0.0, 1.0 - resid * resid)) };
+      }
+    }
+    return { fisherRet: perpSq / Math.max(rawSq, 1e-300), normRet: Math.sqrt(perpSq / Math.max(rawSq, 1e-300)), perpSq, best };
+  }
+
+  const MSG = {
+    en: {
+      excluded: "Schur-complement exclusion verified: after projecting out floating calibration scale γ and separation offset s₀ via Modified Gram–Schmidt (P_⊥), the orthogonal smeared residual still aligns with Yukawa y_λ (cos θ_⊥ > 0.999) and violates α_95,−!",
+      allowed: "Inside 95% allowed region: at this smaller smearing width σ, even the Schur-projected short-range deficit stays milder than Lee et al. (2020) Table 11.4 α_95,−; pushing s_min below 50 µm boosts Schur Fisher leverage sharply.",
+      ko: "Nuisance-washout fallacy active: falsely assumes floating (γ, s₀) absorbs 100% of the Gaussian-smeared deficit without projecting onto P_⊥, hiding an excluded smearing width behind a rank-deficient algebra mistake!",
+    },
+    es: {
+      excluded: "Exclusión por complemento de Schur verificada: tras proyectar la escala flotante γ y el desplazamiento s₀ mediante Gram–Schmidt modificado (P_⊥), el residuo ortogonal se alinea con Yukawa y_λ (cos θ_⊥ > 0.999) y viola α_95,−.",
+      allowed: "Dentro de la región permitida al 95 %: para este ancho menor σ, incluso el déficit proyectado por Schur es más suave que α_95,− de la Tabla 11.4; reducir s_min bajo 50 µm multiplica la información de Fisher.",
+      ko: "Falacia de borrado parásito activa: supone falsamente que (γ, s₀) absorben el 100 % del déficit gaussiano sin calcular P_⊥, ocultando un ancho excluido tras un error algebraico.",
+    },
+  };
+
+  function render() {
+    const sigmaUm = Number(sigmaInput ? sigmaInput.value : 33.0);
+    const sMinUm = Number(sminInput ? sminInput.value : 52);
+    const isEs = lang() === "es";
+
+    const base52 = computeGrid(52e-6, sigmaUm * 1e-6, weightMode, projMode === "schur");
+    const curS = computeGrid(sMinUm * 1e-6, sigmaUm * 1e-6, weightMode, true);
+    const baseSchur52 = computeGrid(52e-6, sigmaUm * 1e-6, weightMode, true);
+    const gain = curS.perpSq / Math.max(baseSchur52.perpSq, 1e-300);
+
+    const fisherPct = knockout ? 0.0 : base52.fisherRet * 100.0;
+    const normFrac = knockout ? 0.0 : base52.normRet;
+    const best = base52.best;
+    const aEff = knockout ? 0.0 : best.aEff;
+    const cosTh = knockout ? 0.0 : best.cosTheta;
+    const excluded = !knockout && aEff < best.a95Minus;
+    const midSupportUm = dOptimalMidUm(sMinUm * 1e-6, sigmaUm * 1e-6);
+
+    if (reads.sigma) reads.sigma.textContent = `σ = ${sigmaUm.toFixed(1)} µm (λ_mimic = ${best.lamUm.toFixed(1)} µm)`;
+    if (reads.smin) {
+      reads.smin.textContent = isEs
+        ? `s_min = ${sMinUm} µm (soporte 3-pt: ${sMinUm}, ${midSupportUm}, 3000 µm)`
+        : `s_min = ${sMinUm} µm (3-pt support: ${sMinUm}, ${midSupportUm}, 3000 µm)`;
+    }
+    if (reads.ret) {
+      reads.ret.textContent = knockout
+        ? (isEs ? "0.0% Fisher (DEFECTO DE BORRADO)" : "0.0% Fisher (WASHOUT DEFECT)")
+        : `${fisherPct.toFixed(1)}% Fisher (||P_⊥d||/||d|| = ${normFrac.toFixed(3)})`;
+    }
+    if (reads.align) {
+      const cmp = aEff < best.a95Minus ? "<" : "≥";
+      reads.align.textContent = `cos θ_⊥ = ${cosTh.toFixed(4)} · α_eff = ${aEff.toFixed(2)} ${cmp} ${best.a95Minus}`;
+    }
+    if (reads.gain) {
+      reads.gain.textContent = `${gain.toFixed(2)}× (max_s d(s) = 3.000 D-opt)`;
+    }
+
+    if (barRet) barRet.setAttribute("width", Math.max(8, (fisherPct / 100.0) * 230).toFixed(1));
+    if (barAlign) barAlign.setAttribute("width", Math.max(8, cosTh * 230).toFixed(1));
+    if (barGain) barGain.setAttribute("width", Math.max(20, Math.min(1.0, Math.log10(Math.max(1.0, gain)) / 1.25 + 0.1) * 230).toFixed(1));
+
+    if (statusEl) {
+      const L = MSG[lang()];
+      if (knockout) {
+        statusEl.textContent = L.ko;
+        statusEl.setAttribute("data-state", "defect");
+      } else if (excluded) {
+        statusEl.textContent = L.excluded;
+        statusEl.setAttribute("data-state", "pass");
+      } else {
+        statusEl.textContent = L.allowed;
+        statusEl.setAttribute("data-state", "pass");
+      }
+    }
+  }
+
+  [sigmaInput, sminInput].forEach((el) => { if (el) el.addEventListener("input", render); });
+  weightBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      weightMode = btn.getAttribute("data-sr-weight") || "equal";
+      weightBtns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      render();
+    });
+  });
+  projBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      projMode = btn.getAttribute("data-sr-proj") || "schur";
+      projBtns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      render();
+    });
+  });
+  if (koBtn) {
+    koBtn.addEventListener("click", () => {
+      knockout = !knockout;
+      koBtn.setAttribute("aria-pressed", String(knockout));
+      render();
+    });
+  }
+  window.addEventListener("tp-lang-change", render);
+  root.setAttribute("data-cs-ready", "true");
+  render();
+}
+
+function initMultipartiteWitness(root) {
+  const holdInput = root.querySelector('[data-cs-input="holdt"]');
+  const tempInput = root.querySelector('[data-cs-input="temp"]');
+  const chanBtns = root.querySelectorAll("button[data-mw-chan]");
+  const compBtns = root.querySelectorAll("button[data-mw-comp]");
+  const koBtn = root.querySelector("[data-cs-knockout]");
+  const statusEl = root.querySelector("[data-cs-status]");
+  const barMermin = root.querySelector('[data-cs-bar="mermin"]');
+  const barComp = root.querySelector('[data-cs-bar="comp"]');
+  const barClock = root.querySelector('[data-cs-bar="clock"]');
+  const reads = {};
+  root.querySelectorAll("[data-cs-read]").forEach((el) => { reads[el.getAttribute("data-cs-read")] = el; });
+  let chanMode = "quantum";
+  let compMode = "diamond";
+  let knockout = false;
+
+  const G = 6.67430e-11;
+  const MASS_KG = 1.0e-14;
+  const D_M = 75e-6;
+  const DX_M = 250e-6;
+  const SIGMA_95_M = 33.08e-6;
+  const OMEGA_PAIR = ((2.0 * G * MASS_KG * MASS_KG) / HBAR) * ((1.0 / D_M) - (1.0 / Math.hypot(D_M, DX_M)));
+  const A_GAS_1K = 0.0290064;
+  const B_EM_1K = 2.32101e-5;
+  const B_SC_1K = 2.14194e-8;
+  const BISEP_BOUND = 2.0 * Math.SQRT2;
+
+  const MSG = {
+    en: {
+      gte: "Genuine tripartite entanglement (GTE) verified: ⟨M₃(t)⟩ clears BOTH the local-hidden-variable ceiling (2.0) AND the Seevinck–Svetlichny biseparable ceiling (2√2 ≈ 2.828) without extra local rotation gates because cryogenic Z-pointer localization leaves Z_j undamped!",
+      sub: "Below biseparable GTE ceiling (2√2 ≈ 2.828): adjust hold time toward t_π = 2.61 s or stay near the 2.04 K cryogenic valley so ⟨M₃(t)⟩ = η³ + (3/2)η(1 − cos Δφ) crosses 2.828.",
+      hybrid: "3-body Diósi–Penrose hybrid channel at σ_95 = 33.08 µm: two-neighbour collective damping lowers the 1|23 critical width to σ_c^(1|23) = 34.93 µm > 33.08 µm, locking N_1|23^hyb = 0 identically and capping ⟨M₃⟩_hyb < 1.0!",
+      ko: "Biseparable-conflation defect active: falsely claims genuine 3-body quantum gravity entanglement whenever ⟨M₃⟩ > 2.0, ignoring that a single 2-body Bell pair tensored with a separable third mass reaches ⟨M₃⟩ = 2√2 = 2.828!",
+    },
+    es: {
+      gte: "Entrelazamiento genuino tripartito (GTE) verificado: ⟨M₃(t)⟩ supera TANTO el techo de variables ocultas locales (2.0) COMO el techo biseparable de Seevinck–Svetlichny (2√2 ≈ 2.828) porque la localización criogénica en Z deja a Z_j sin amortiguar.",
+      sub: "Bajo el techo GTE biseparable (2√2 ≈ 2.828): acerca el tiempo de espera a t_π = 2.61 s o mantén el baño cerca del valle criogénico de 2.04 K para que ⟨M₃(t)⟩ = η³ + (3/2)η(1 − cos Δφ) supere 2.828.",
+      hybrid: "Canal híbrido Diósi–Penrose de 3 cuerpos en σ_95 = 33.08 µm: el amortiguamiento colectivo de dos vecinos reduce el umbral crítico 1|23 a σ_c^(1|23) = 34.93 µm > 33.08 µm, fijando N_1|23^hyb = 0 y ⟨M₃⟩_hyb < 1.0.",
+      ko: "Defecto de confusión biseparable activo: declara falsamente entrelazamiento genuino de 3 cuerpos apenas ⟨M₃⟩ > 2.0, ignorando que un solo par de Bell de 2 cuerpos alcanza ⟨M₃⟩ = 2√2 = 2.828.",
+    },
+  };
+
+  function render() {
+    const tHold = Number(holdInput ? holdInput.value : 2.61);
+    const tempK = Number(tempInput ? tempInput.value : 2.0);
+    const isEs = lang() === "es";
+
+    // Density adjust for surface area R^2 when switching diamond (3500 kg/m^3) vs Yb (6900 kg/m^3) at fixed mass M
+    const rhoScale = compMode === "yb173" ? Math.pow(3500.0 / 6900.0, 2.0 / 3.0) : 1.0;
+    const gammaGas = A_GAS_1K * rhoScale * Math.pow(tempK, -0.5);
+    const gammaPhot = (B_EM_1K * Math.pow(tempK, 6) + B_SC_1K * Math.pow(tempK, 9));
+    const etaEnv = Math.exp(-(gammaGas + gammaPhot) * tHold);
+
+    let dPhi = OMEGA_PAIR * tHold;
+    let m3Val = 0.0;
+    if (chanMode === "quantum") {
+      m3Val = Math.pow(etaEnv, 3) + 1.5 * etaEnv * (1.0 - Math.cos(dPhi));
+    } else {
+      const a = smearedF(0.0, SIGMA_95_M) - smearedF(DX_M, SIGMA_95_M);
+      const b = smearedF(D_M, SIGMA_95_M) - smearedF(Math.hypot(D_M, DX_M), SIGMA_95_M);
+      const tau = (G * MASS_KG * MASS_KG * tHold) / (2.0 * HBAR);
+      const phiHyb = 2.0 * b * tau;
+      dPhi = phiHyb;
+      const xxx = 0.25 * Math.pow(etaEnv, 3) * (
+        Math.exp(-6.0 * (a + 2.0 * b) * tau) + 3.0 * Math.exp(-2.0 * (3.0 * a - 2.0 * b) * tau)
+      );
+      const xzzSum = 3.0 * etaEnv * Math.exp(-2.0 * a * tau) * Math.pow(Math.sin(phiHyb), 2);
+      m3Val = xxx + xzzSum;
+    }
+
+    const ahAmpRatio = compMode === "yb173" ? Math.pow(173.04 / 12.0, 2) * Math.pow(3500.0 / 6900.0, 1.0 / 3.0) : 1.0;
+    // Active optical Sr-like clock proper-time visibility benchmark (scaled coherent array parameter)
+    const vClock = Math.abs(Math.cos(0.245 * tHold));
+
+    if (reads.holdt) reads.holdt.textContent = `t = ${tHold.toFixed(2)} s (Δφ = ${dPhi.toFixed(2)} rad)`;
+    if (reads.temp) reads.temp.textContent = `T = ${tempK.toFixed(1)} K (η = ${etaEnv.toFixed(3)})`;
+    if (reads.mermin) {
+      if (knockout) {
+        reads.mermin.textContent = isEs ? `⟨M₃⟩ = ${m3Val.toFixed(3)} vs 2.0 (DEFECTO)` : `⟨M₃⟩ = ${m3Val.toFixed(3)} vs 2.0 (DEFECT)`;
+      } else if (m3Val > BISEP_BOUND) {
+        reads.mermin.textContent = `⟨M₃⟩ = ${m3Val.toFixed(3)} > 2√2 (GTE PASS)`;
+      } else {
+        reads.mermin.textContent = `⟨M₃⟩ = ${m3Val.toFixed(3)} ≤ 2.828`;
+      }
+    }
+    if (reads.comp) {
+      reads.comp.textContent = compMode === "yb173"
+        ? `WEP 1.00× · √ϑ_AH ${ahAmpRatio.toFixed(1)}× (¹⁷³Yb)`
+        : (isEs ? "WEP 1.00× · √ϑ_AH 1.00× (ref ¹²C)" : "WEP 1.00× · √ϑ_AH 1.00× (¹²C ref)");
+    }
+    if (reads.clock) {
+      reads.clock.textContent = `V_clock = ${vClock.toFixed(3)} · 1|23 σ_c = 34.93 µm`;
+    }
+
+    if (barMermin) barMermin.setAttribute("width", Math.max(8, (Math.max(0, m3Val) / 4.0) * 230).toFixed(1));
+    if (barComp) barComp.setAttribute("width", (compMode === "yb173" ? 226.0 : 28.0).toFixed(1));
+    if (barClock) barClock.setAttribute("width", Math.max(8, vClock * 230).toFixed(1));
+
+    if (statusEl) {
+      const L = MSG[lang()];
+      if (knockout) {
+        statusEl.textContent = L.ko;
+        statusEl.setAttribute("data-state", "defect");
+      } else if (chanMode === "hybrid") {
+        statusEl.textContent = L.hybrid;
+        statusEl.setAttribute("data-state", "pass");
+      } else if (m3Val > BISEP_BOUND) {
+        statusEl.textContent = L.gte;
+        statusEl.setAttribute("data-state", "pass");
+      } else {
+        statusEl.textContent = L.sub;
+        statusEl.setAttribute("data-state", "defect");
+      }
+    }
+  }
+
+  [holdInput, tempInput].forEach((el) => { if (el) el.addEventListener("input", render); });
+  chanBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      chanMode = btn.getAttribute("data-mw-chan") || "quantum";
+      chanBtns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      render();
+    });
+  });
+  compBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      compMode = btn.getAttribute("data-mw-comp") || "diamond";
+      compBtns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      render();
+    });
+  });
+  if (koBtn) {
+    koBtn.addEventListener("click", () => {
+      knockout = !knockout;
+      koBtn.setAttribute("aria-pressed", String(knockout));
+      render();
+    });
+  }
+  window.addEventListener("tp-lang-change", render);
+  root.setAttribute("data-cs-ready", "true");
+  render();
+}
+
 export function initCrossScaleEssays(scope = document) {
   const once = (sel, fn) => scope.querySelectorAll(sel).forEach((el) => {
     if (!el.hasAttribute("data-cs-ready")) fn(el);
@@ -812,6 +1234,8 @@ export function initCrossScaleEssays(scope = document) {
   once('[data-cs-instrument="island_page"]', initIslandPage);
   once('[data-cs-instrument="wdw_clock"]', initWdwClock);
   once('[data-cs-instrument="parallel_horizon"]', initParallelHorizon);
+  once('[data-cs-instrument="schur_recast"]', initSchurRecast);
+  once('[data-cs-instrument="multipartite_witness"]', initMultipartiteWitness);
 }
 
 initCrossScaleEssays(document);

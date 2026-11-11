@@ -68,23 +68,127 @@ def project(deficit: list[float], shape: list[float], weights: list[float] | Non
     return a_eff, resid
 
 
+def _w_dot(u: list[float], v: list[float], weights: list[float] | None = None) -> float:
+    if weights is None:
+        return sum(ui * vi for ui, vi in zip(u, v))
+    return sum(wi * ui * vi for wi, ui, vi in zip(weights, u, v))
+
+
+def nuisance_orthonormal_basis(n_fold: int, seps: list[float], t_newton: list[float],
+                               weights: list[float] | None = None, step_m: float = 1e-8) -> tuple[list[float], list[float]]:
+    """Modified Gram–Schmidt W-orthonormal basis (q1, q2) for the linearized floating calibration tangent space
+    N = span{ 1, s_ref * d/ds ln T_N(s) } corresponding to floating Newtonian scale γ and separation offset s0."""
+    s_ref = seps[0]
+    v1 = [1.0 for _ in seps]
+    v2 = [
+        s_ref * (wedge_torque(n_fold, s + step_m, "newton") - wedge_torque(n_fold, s - step_m, "newton")) / (2.0 * step_m * tn)
+        for s, tn in zip(seps, t_newton)
+    ]
+    n1 = math.sqrt(max(_w_dot(v1, v1, weights), 1e-300))
+    q1 = [x / n1 for x in v1]
+    c12 = _w_dot(v2, q1, weights)
+    u2 = [x - c12 * q1_i for x, q1_i in zip(v2, q1)]
+    n2 = math.sqrt(max(_w_dot(u2, u2, weights), 1e-300))
+    q2 = [x / n2 for x in u2]
+    return q1, q2
+
+
+def project_out_nuisance(vec: list[float], q1: list[float], q2: list[float], weights: list[float] | None = None) -> list[float]:
+    """Apply the Fisher Schur-complement orthogonal projector P_perp = I - Q Q^T W to `vec`."""
+    a1 = _w_dot(vec, q1, weights)
+    a2 = _w_dot(vec, q2, weights)
+    return [v - a1 * q1_i - a2 * q2_i for v, q1_i, q2_i in zip(vec, q1, q2)]
+
+
+def _det3(m: list[list[float]]) -> float:
+    return (
+        m[0][0] * (m[1][1] * m[2][2] - m[1][2] * m[2][1])
+        - m[0][1] * (m[1][0] * m[2][2] - m[1][2] * m[2][0])
+        + m[0][2] * (m[1][0] * m[2][1] - m[1][1] * m[2][0])
+    )
+
+
+def _inv3(m: list[list[float]]) -> list[list[float]]:
+    d = _det3(m)
+    return [
+        [(m[1][1] * m[2][2] - m[1][2] * m[2][1]) / d, (m[0][2] * m[2][1] - m[0][1] * m[2][2]) / d, (m[0][1] * m[1][2] - m[0][2] * m[1][1]) / d],
+        [(m[1][2] * m[2][0] - m[1][0] * m[2][2]) / d, (m[0][0] * m[2][2] - m[0][2] * m[2][0]) / d, (m[0][2] * m[1][0] - m[0][0] * m[1][2]) / d],
+        [(m[1][0] * m[2][1] - m[1][1] * m[2][0]) / d, (m[0][1] * m[2][0] - m[0][0] * m[2][1]) / d, (m[0][0] * m[1][1] - m[0][1] * m[1][0]) / d],
+    ]
+
+
+def d_optimal_three_point_design(sigma: float = 33e-6, s_min: float = 25e-6, s_max: float = EW_S_MAX_M,
+                                 n_grid: int = 25, n_fold: int = 120) -> dict:
+    """Exact saturated 3-point Kiefer–Wolfowitz / Carathéodory D-optimal separation design on [s_min, s_max]
+    for joint estimation of (γ, s0, α_smeared). Verifies the Kiefer–Wolfowitz Equivalence Theorem directional
+    variance bound d(s) = x(s)^T M(ξ*)^-1 x(s) <= 3 across the entire grid, hitting 3 at the 3 support points."""
+    seps = [s_min * (s_max / s_min) ** (i / (n_grid - 1)) for i in range(n_grid)]
+    tn = [wedge_torque(n_fold, s, "newton") for s in seps]
+    v2 = [
+        s_min * (wedge_torque(n_fold, s + 1e-8, "newton") - wedge_torque(n_fold, s - 1e-8, "newton")) / (2.0e-8 * tn_i)
+        for s, tn_i in zip(seps, tn)
+    ]
+    key = (n_fold, tuple(seps), sigma)
+    sig_vec = _DEFICIT_CACHE.get(key)
+    if sig_vec is None:
+        sig_vec = _DEFICIT_CACHE[key] = smeared_deficit(n_fold, seps, sigma, tn)
+    rows_x = [[1.0, v2[i], sig_vec[i]] for i in range(n_grid)]
+    best_abs_det = -1.0
+    best_triplet = (0, n_grid // 2, n_grid - 1)
+    for i0 in range(n_grid - 2):
+        for i1 in range(i0 + 1, n_grid - 1):
+            for i2 in range(i1 + 1, n_grid):
+                val = abs(_det3([rows_x[i0], rows_x[i1], rows_x[i2]]))
+                if val > best_abs_det:
+                    best_abs_det = val
+                    best_triplet = (i0, i1, i2)
+    m_opt = [[sum(rows_x[idx][r] * rows_x[idx][c] for idx in best_triplet) / 3.0 for c in range(3)] for r in range(3)]
+    m_inv = _inv3(m_opt)
+    d_curve = [
+        sum(rows_x[k][r] * sum(m_inv[r][c] * rows_x[k][c] for c in range(3)) for r in range(3))
+        for k in range(n_grid)
+    ]
+    return {
+        "sigma_m": sigma,
+        "s_min_m": s_min,
+        "s_max_m": s_max,
+        "n_grid": n_grid,
+        "support_separations_m": [seps[i] for i in best_triplet],
+        "support_weights": [1.0 / 3.0, 1.0 / 3.0, 1.0 / 3.0],
+        "max_directional_variance": max(d_curve),
+        "support_directional_variances": [d_curve[i] for i in best_triplet],
+        "kiefer_wolfowitz_certified": max(d_curve) <= 3.0 + 1e-9 and all(abs(d_curve[i] - 3.0) < 1e-9 for i in best_triplet),
+    }
+
+
 _DEFICIT_CACHE: dict = {}
 
 
 class Recast:
-    """One recast configuration (harmonic, separation grid, λ window) with the Yukawa shapes computed once."""
+    """One recast configuration (harmonic, separation grid, λ window) with the Yukawa shapes computed once.
+    When `nuisance_orthogonal=True`, applies exact Fisher Schur-complement projection out of span{1, s_min d/ds ln T_N(s)}."""
 
     def __init__(self, n_fold: int = 120, grid: str = "log52-3000", n_sep: int | None = None, lam_min: float = 10e-6, lam_max: float = 400e-6,
-                 weighting: str = "equal"):
+                 weighting: str = "equal", nuisance_orthogonal: bool = False):
         self.table = load_table()
         self.rows = {r["lambda_m"]: r for r in self.table["rows"]}
         self.lams = [r["lambda_m"] for r in self.table["rows"] if lam_min <= r["lambda_m"] <= lam_max]
         self.n_fold, self.grid = n_fold, grid
         self.seps = separation_grid(grid, n_sep)
         self.t_newton = [wedge_torque(n_fold, s, "newton") for s in self.seps]
-        self.shapes = unit_yukawa_shapes(n_fold, self.seps, self.lams, self.t_newton)
+        self.raw_shapes = unit_yukawa_shapes(n_fold, self.seps, self.lams, self.t_newton)
         self.weighting = weighting
         self.weights = [t * t for t in self.t_newton] if weighting == "abs_torque" else None
+        self.nuisance_orthogonal = nuisance_orthogonal
+        if nuisance_orthogonal:
+            self.q1, self.q2 = nuisance_orthonormal_basis(n_fold, self.seps, self.t_newton, self.weights)
+            self.shapes = {
+                lam: project_out_nuisance(sh, self.q1, self.q2, self.weights)
+                for lam, sh in self.raw_shapes.items()
+            }
+        else:
+            self.q1, self.q2 = [], []
+            self.shapes = self.raw_shapes
 
     def at_sigma(self, sigma: float, planted_defect: bool = False) -> dict:
         """Best-mimic λ, effective strength, shape residual, the published signed limit there and the verdict."""
@@ -95,9 +199,10 @@ class Recast:
             return {"sigma_m": sigma, "lambda_m": EDGE_LAMBDA_M, "alpha_eff": -d52 / edge, "shape_residual": float("nan"),
                     "alpha95_minus": -1.0, "excluded": d52 > edge, "gaussian_z2": float("nan")}
         key = (self.n_fold, tuple(self.seps), sigma)  # the deficits do not depend on the weighting, so the variants share them
-        d = _DEFICIT_CACHE.get(key)
-        if d is None:
-            d = _DEFICIT_CACHE[key] = smeared_deficit(self.n_fold, self.seps, sigma, self.t_newton)
+        d_raw = _DEFICIT_CACHE.get(key)
+        if d_raw is None:
+            d_raw = _DEFICIT_CACHE[key] = smeared_deficit(self.n_fold, self.seps, sigma, self.t_newton)
+        d = project_out_nuisance(d_raw, self.q1, self.q2, self.weights) if self.nuisance_orthogonal else d_raw
         best = None
         for lam in self.lams:
             a_eff, resid = project(d, self.shapes[lam], self.weights)
@@ -105,10 +210,18 @@ class Recast:
                 best = (lam, resid, a_eff)
         lam, resid, a_eff = best
         row = self.rows[lam]
-        return {"sigma_m": sigma, "lambda_m": lam, "alpha_eff": a_eff, "shape_residual": resid, "alpha_star": row["alpha_star"],
-                "sigma_alpha": row["sigma_alpha"], "alpha95_minus": row["alpha95_minus"], "excluded": a_eff < row["alpha95_minus"],
-                # a reading aid only: the thesis' signed limit encodes the exact, asymmetric Δχ² = 6.17 boundary; this is the Gaussian z² about α*
-                "gaussian_z2": ((a_eff - row["alpha_star"]) / row["sigma_alpha"]) ** 2}
+        out = {"sigma_m": sigma, "lambda_m": lam, "alpha_eff": a_eff, "shape_residual": resid, "alpha_star": row["alpha_star"],
+               "sigma_alpha": row["sigma_alpha"], "alpha95_minus": row["alpha95_minus"], "excluded": a_eff < row["alpha95_minus"],
+               # a reading aid only: the thesis' signed limit encodes the exact, asymmetric Δχ² = 6.17 boundary; this is the Gaussian z² about α*
+               "gaussian_z2": ((a_eff - row["alpha_star"]) / row["sigma_alpha"]) ** 2}
+        if self.nuisance_orthogonal:
+            d_norm2 = max(_w_dot(d, d, self.weights), 1e-300)
+            raw_norm2 = max(_w_dot(d_raw, d_raw, self.weights), 1e-300)
+            y_norm2 = max(_w_dot(self.shapes[lam], self.shapes[lam], self.weights), 1e-300)
+            out["retained_norm_fraction"] = math.sqrt(d_norm2 / raw_norm2)
+            out["fisher_retention_ratio"] = d_norm2 / raw_norm2
+            out["cos_theta_perp"] = abs(_w_dot(d, self.shapes[lam], self.weights)) / math.sqrt(d_norm2 * y_norm2)
+        return out
 
     def sigma_95(self, lo: float = 20e-6, hi: float = 60e-6, steps: int = 9, planted_defect: bool = False) -> float:
         """Smallest σ excluded at 95 % (log bisection; 9 steps give 0.2 % resolution over 20–60 µm)."""
@@ -187,14 +300,24 @@ def check_recast(planted_defect: bool = False, quick: bool = True) -> dict:
     primary = Recast(120, "log52-3000", n_sep=12, lam_min=10e-6, lam_max=100e-6)
     s95 = primary.sigma_95(planted_defect=planted_defect)
     at33, at35, at44 = (primary.at_sigma(s, planted_defect) for s in (33e-6, 35e-6, EDGE_MATCH_SIGMA_M))
+    schur_eq = Recast(120, "log52-3000", n_sep=12, lam_min=10e-6, lam_max=100e-6, nuisance_orthogonal=True)
+    schur_abs = Recast(120, "log52-3000", n_sep=12, lam_min=10e-6, lam_max=100e-6, weighting="abs_torque", nuisance_orthogonal=True)
+    schur_eq_33 = schur_eq.at_sigma(33e-6, planted_defect=planted_defect)
+    schur_abs_33 = schur_abs.at_sigma(33e-6, planted_defect=planted_defect)
+    s95_schur_eq = schur_eq.sigma_95(planted_defect=planted_defect)
+    s95_schur_abs = schur_abs.sigma_95(planted_defect=planted_defect)
     variants = {"120-log52-3000-12": s95,
-                "120-log52-3000-12-abs_torque": Recast(120, "log52-3000", n_sep=12, lam_min=10e-6, lam_max=100e-6, weighting="abs_torque").sigma_95(planted_defect=planted_defect)}
+                "120-log52-3000-12-abs_torque": Recast(120, "log52-3000", n_sep=12, lam_min=10e-6, lam_max=100e-6, weighting="abs_torque").sigma_95(planted_defect=planted_defect),
+                "120-log52-3000-12-schur_equal": s95_schur_eq,
+                "120-log52-3000-12-schur_abs_torque": s95_schur_abs}
     if not quick:
         for n_fold in (120, 18):
             for grid in ("log52-3000", "lin52-3000", "log52-200", "log52-100"):
                 variants[f"{n_fold}-{grid}"] = Recast(n_fold, grid, lam_min=10e-6, lam_max=400e-6).sigma_95(planted_defect=planted_defect)
     spread = max(variants.values()) - min(variants.values()) if all(math.isfinite(v) for v in variants.values()) else float("inf")
-    recast_ok = (table_ok and edge_ok and 32e-6 < s95 < 35e-6 and spread < 1.0e-6
+    schur_ok = (32e-6 < s95_schur_eq < 33.4e-6 and 32e-6 < s95_schur_abs < 33.4e-6
+                and schur_eq_33.get("cos_theta_perp", 0.0) > 0.999 and schur_abs_33.get("cos_theta_perp", 0.0) > 0.9995)
+    recast_ok = (table_ok and edge_ok and 32e-6 < s95 < 35e-6 and spread < 1.0e-6 and schur_ok
                  and (not at33["excluded"]) and at35["excluded"] and at44["excluded"] and at44["gaussian_z2"] > 10.0
                  and all(r["alpha_star"] > 0 for r in table["rows"] if 5e-6 <= r["lambda_m"] <= 100e-6)  # the data lean the other way in the window
                  and (math.isnan(at33["shape_residual"]) or at33["shape_residual"] < 0.05)
@@ -217,6 +340,8 @@ def check_recast(planted_defect: bool = False, quick: bool = True) -> dict:
     # the planted defect (single-separation edge match) must give the retired 44 µm, not a value below 35 µm
     defect_rejected = not (32e-6 < Recast(120, "log52-3000", n_sep=12).sigma_95(planted_defect=True) < 35e-6) if not planted_defect else None
     return {"table_rows": n_rows, "edge_crossing_lambda_m": edge, "sigma_95_m": s95, "variants_sigma_95_m": variants, "spread_m": spread,
+            "schur_nuisance_orthogonal": {"sigma_95_equal_m": s95_schur_eq, "sigma_95_abs_torque_m": s95_schur_abs,
+                                          "at_33um_equal": schur_eq_33, "at_33um_abs_torque": schur_abs_33},
             "at_33um": at33, "at_35um": at35, "at_edge_match_44um": at44, "retired_edge_match_sigma_m": EDGE_MATCH_SIGMA_M,
             "below_limit": below, "below_ok": below_ok, "short_range_comparison": short, "short_ok": short_ok, "cantilever_6um_limit_over_smeared_need": cantilever_over_need,
             "table_ok": table_ok, "edge_ok": edge_ok, "recast_ok": recast_ok, "defect_rejected": defect_rejected,

@@ -642,7 +642,7 @@
   </url>
   <url>
     <loc>https://informatico.ai/essays/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/"/>
@@ -703,6 +703,22 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/loophole-free-parallel-horizon/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/loophole-free-parallel-horizon/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/loophole-free-parallel-horizon/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/essays/schur-complements-nuisance-identifiability/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/schur-complements-nuisance-identifiability/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/schur-complements-nuisance-identifiability/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/schur-complements-nuisance-identifiability/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/schur-complements-nuisance-identifiability/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/essays/multipartite-witnesses-active-clocks/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/multipartite-witnesses-active-clocks/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/multipartite-witnesses-active-clocks/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/multipartite-witnesses-active-clocks/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/multipartite-witnesses-active-clocks/"/>
   </url>
   <url>
     <loc>https://informatico.ai/about/</loc>
@@ -1354,7 +1370,7 @@
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/essays/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/"/>
@@ -1415,6 +1431,22 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/loophole-free-parallel-horizon/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/loophole-free-parallel-horizon/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/loophole-free-parallel-horizon/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/essays/schur-complements-nuisance-identifiability/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/schur-complements-nuisance-identifiability/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/schur-complements-nuisance-identifiability/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/schur-complements-nuisance-identifiability/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/schur-complements-nuisance-identifiability/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/essays/multipartite-witnesses-active-clocks/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/multipartite-witnesses-active-clocks/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/multipartite-witnesses-active-clocks/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/multipartite-witnesses-active-clocks/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/multipartite-witnesses-active-clocks/"/>
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/about/</loc>
