@@ -19,7 +19,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from timegravity_kernel_quantum import ZYCH_TOL, check_zych  # noqa: E402
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t04" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t04" / "files"
 
 
 def verify_reference_files() -> dict:

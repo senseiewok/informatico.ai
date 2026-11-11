@@ -19,7 +19,7 @@ from toolchain_uga import verify_folio_assets  # noqa: E402
 def main(argv: list[str] | None = None) -> int:
     args = argv if argv is not None else sys.argv[1:]
     planted_only = "--planted-defect" in args
-    files_dir = ROOT / "src" / "research" / "toolchain" / "x02" / "files"
+    files_dir = ROOT / "src" / "toolchain" / "x02" / "files"
     make_script = Path(__file__).resolve().parent / "make_x02.py"
     try:
         result = verify_folio_assets(

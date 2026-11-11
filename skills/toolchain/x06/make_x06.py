@@ -16,7 +16,7 @@ from toolchain_uga import generate_folio_assets  # noqa: E402
 
 
 def main() -> int:
-    files_dir = ROOT / "src" / "research" / "toolchain" / "x06" / "files"
+    files_dir = ROOT / "src" / "toolchain" / "x06" / "files"
     manifest = generate_folio_assets(
         slug="x06",
         folio_id="X.06",

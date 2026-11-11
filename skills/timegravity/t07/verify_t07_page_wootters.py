@@ -21,7 +21,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from timegravity_kernel_quantum import PW_TOL, check_page_wootters  # noqa: E402
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t07" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t07" / "files"
 
 
 def verify_reference_files() -> dict:

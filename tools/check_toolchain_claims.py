@@ -4,8 +4,8 @@
 Enforces Fable & Argon Council Contract:
 1. Exact English boundary sentence (`BOUNDARY_EN`) on `/toolchain/index.html` and `/toolchain/x01..x06/index.html`.
 2. Exact Spanish boundary sentence (`BOUNDARY_ES`) on `/es-mx/toolchain/index.html` and `/es-mx/toolchain/x01..x06/index.html`.
-3. Every `manifest.json` in `src/research/toolchain/x01..x06/files/` embeds `BOUNDARY_EN`, `BOUNDARY_ES`, and `"Not certified for fitness"` in its license metadata.
-4. Zero un-negated fitness claims ("certified as load-bearing", "certified printable", "safe to build", "ready for structural load") across `src/research/toolchain/` and `skills/toolchain/`.
+3. Every `manifest.json` in `src/toolchain/x01..x06/files/` embeds `BOUNDARY_EN`, `BOUNDARY_ES`, and `"Not certified for fitness"` in its license metadata.
+4. Zero un-negated fitness claims ("certified as load-bearing", "certified printable", "safe to build", "ready for structural load") across `src/toolchain/` and `skills/toolchain/`.
 5. Every `skills/toolchain/x01..x06/SKILL.md` enforces the `security-runtime` workspace boundary (no home-directory or external network grants).
 6. Global Open-Source & Legal Compliance Charter (`GCC-01`..`GCC-05`) in `skills/toolchain/licenses.json` + zero proprietary CAD software endorsements or dependencies across all Toolbox files.
 """
@@ -206,7 +206,7 @@ def check_forbidden_proprietary_mentions(root: Path, errors: list[str]) -> None:
     """Enforce zero proprietary software mentions across all published Toolbox folios, generators, and skills."""
     scan_targets = [
         root / "toolchain" / "README.md",
-        root / "src" / "research" / "toolchain" / "README.md",
+        root / "src" / "toolchain" / "README.md",
         root / "skills" / "toolchain" / "README.md",
         root / "skills" / "toolchain" / "licenses.json",
         root / "tools" / "build_longform_folios.py",
@@ -214,12 +214,12 @@ def check_forbidden_proprietary_mentions(root: Path, errors: list[str]) -> None:
     ]
     scan_targets.extend((root / "tools" / "folios" / "toolchain").glob("*.py"))
     scan_targets.extend((root / "tools" / "folios" / "bounties").glob("*.py"))
-    scan_targets.extend((root / "src" / "research" / "bounties").glob("**/index.html"))
-    scan_targets.extend((root / "src" / "research" / "es-mx" / "bounties").glob("**/index.html"))
+    scan_targets.extend((root / "src" / "bounties").glob("**/index.html"))
+    scan_targets.extend((root / "src" / "es-mx" / "bounties").glob("**/index.html"))
     scan_targets.extend((root / "skills" / "toolchain").glob("x0*/SKILL.md"))
-    scan_targets.extend((root / "src" / "research" / "toolchain").glob("x0*/files/manifest.json"))
-    scan_targets.extend((root / "src" / "research" / "toolchain").glob("**/index.html"))
-    scan_targets.extend((root / "src" / "research" / "es-mx" / "toolchain").glob("**/index.html"))
+    scan_targets.extend((root / "src" / "toolchain").glob("x0*/files/manifest.json"))
+    scan_targets.extend((root / "src" / "toolchain").glob("**/index.html"))
+    scan_targets.extend((root / "src" / "es-mx" / "toolchain").glob("**/index.html"))
 
     for p in scan_targets:
         if not p.is_file():
@@ -236,7 +236,7 @@ def check_forbidden_proprietary_mentions(root: Path, errors: list[str]) -> None:
 
 def main() -> int:
     errors: list[str] = []
-    res_dir = ROOT / "src" / "research"
+    res_dir = ROOT / "src"
     skills_dir = ROOT / "skills" / "toolchain"
 
     # 1. Check English pages for BOUNDARY_EN

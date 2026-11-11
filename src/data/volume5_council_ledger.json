@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0",
+  "volume": 5,
+  "volume_label": "VOL. 05 \u2014 AUTOGENOUS SYSTEMS, PROGRAMMABLE SKINS & OPTIMAL TRANSPORT",
+  "archive_context_ingested": {
+    "catalog_path": "src/data/magazine_catalog.json",
+    "prior_volumes_ingested": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "prior_folios_ingested_count": 32
+  },
+  "council_1_topic_nomination_3x10": {
+    "seat_1_claude_opus_5_5_candidates": 10,
+    "seat_2_gemini_4_argon_candidates": 10,
+    "seat_3_gpt_oss_120b_qwen3_8_gemma4_candidates": 10,
+    "total_nominated_pool": 30
+  },
+  "council_1b_separate_selection_jury": {
+    "selected_folios": [
+      {
+        "id": "e09",
+        "folio": "E.09",
+        "lineage_mode": "CONTINUATION",
+        "parent_folios": [
+          "E.01",
+          "E.07"
+        ],
+        "score": 96.4
+      },
+      {
+        "id": "e10",
+        "folio": "E.10",
+        "lineage_mode": "CONTINUATION",
+        "parent_folios": [
+          "E.02",
+          "A.01"
+        ],
+        "score": 95.8
+      },
+      {
+        "id": "a09",
+        "folio": "A.09",
+        "lineage_mode": "REFERENCE_COMPLETION",
+        "parent_folios": [
+          "A.02",
+          "E.04",
+          "A.08"
+        ],
+        "score": 96.1
+      },
+      {
+        "id": "a10",
+        "folio": "A.10",
+        "lineage_mode": "REFERENCE_COMPLETION",
+        "parent_folios": [
+          "A.04",
+          "A.03",
+          "M.05"
+        ],
+        "score": 95.5
+      },
+      {
+        "id": "p09",
+        "folio": "P.09",
+        "lineage_mode": "REFERENCE_COMPLETION",
+        "parent_folios": [
+          "P.03",
+          "P.04",
+          "P.06"
+        ],
+        "score": 98.2
+      },
+      {
+        "id": "p10",
+        "folio": "P.10",
+        "lineage_mode": "TRIAD_SYNTHESIS",
+        "parent_folios": [
+          "E.03",
+          "A.05",
+          "A.08",
+          "P.08"
+        ],
+        "score": 96.9
+      },
+      {
+        "id": "m09",
+        "folio": "M.09",
+        "lineage_mode": "TRIAD_SYNTHESIS",
+        "parent_folios": [
+          "M.04",
+          "M.07",
+          "M.08"
+        ],
+        "score": 97.6
+      },
+      {
+        "id": "m10",
+        "folio": "M.10",
+        "lineage_mode": "TRIAD_SYNTHESIS",
+        "parent_folios": [
+          "E.01",
+          "P.03",
+          "M.05"
+        ],
+        "score": 97.4
+      }
+    ]
+  },
+  "council_2_article_and_materials_review": {
+    "status": "PASS",
+    "folios_verified": 40,
+    "volumes_verified": 5,
+    "checks": [
+      "5-Act structure + es-MX bilingual summaries",
+      "Primary DOI + Scite citation grounding",
+      "Interactive Plate A (2D SVG) + Plate B (3D WebGL2 / Kirchhoff / Radar) + solvers.mjs",
+      "Downloadable AI-agnostic SKILL.md companions (40/40)"
+    ]
+  }
+}

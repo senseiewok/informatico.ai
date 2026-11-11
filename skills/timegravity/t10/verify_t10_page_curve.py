@@ -20,7 +20,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from timegravity_kernel_bounds import PAGE_TOL_NATS, check_page_curve  # noqa: E402
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t10" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t10" / "files"
 
 
 def verify_reference_files() -> dict:

@@ -26,7 +26,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **ES-MX**: Stack para Ingenieros y Makers Independientes (Manifold Apache-2.0 + OrcaSlicer / PrusaSlicer + FreeCAD): Genera puntales estructurales ahusados en Python, exporta x05_artifact.3mf con metadatos XML y x05_artifact.step, y ejecuta verify_x05 para auditar hermeticidad 2E = 3F, volumen exacto y distribución de ángulos de voladizo.
 
 ## 3. Tool-Neutral Agent Packet & Security Boundary (`security-runtime`)
-1. **Generate Deterministic 3D Artifacts Locally**: Run `python skills/toolchain/x05/make_x05.py` inside the repository working directory to emit `src/research/toolchain/x05/files/x05_artifact.*` and `manifest.json`.
+1. **Generate Deterministic 3D Artifacts Locally**: Run `python skills/toolchain/x05/make_x05.py` inside the repository working directory to emit `src/toolchain/x05/files/x05_artifact.*` and `manifest.json`.
 2. **Run Byte-Level Verifier as Acceptance Gate**: Run `python skills/toolchain/x05/verify_x05_toolchain_x05_simp_manifold_3mf.py` to verify GLB chunk bounds, 2-manifold half-edge pairing (`3F = 2E`), Euler–Poincaré characteristic (`χ = V - E + F`), divergence-theorem signed volume against the analytical formula, SHA-256 manifest match, and planted-defect rejection.
 3. **Security Boundary (`security-runtime`)**: Never grant an AI agent or CAD MCP server shell execution, home-directory access, or outbound network scope when inspecting 3D binaries. Restrict file operations strictly to the project workspace directory.
 

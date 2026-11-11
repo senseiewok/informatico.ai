@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic reference artefact generator for Time & Gravity · T.11 (What Selects the World a Clock Sees?).
 Canonical URL: https://informatico.ai/timegravity/t11/
-Writes src/research/timegravity/t11/files/t11_reference.json (the 1+6 qubit pure-dephasing Quantum Darwinism
+Writes src/timegravity/t11/files/t11_reference.json (the 1+6 qubit pure-dephasing Quantum Darwinism
 statevector partial-trace mutual-information curve I(S : E_k) against Zurek's closed-form binary entropy formula,
 and the Joos-Zeh / Romero-Isart thermal photon scattering localization table) and manifest.json.
 Standard library only; byte-for-byte reproducible.
@@ -25,7 +25,7 @@ from timegravity_kernel_einselection import (  # noqa: E402
     statevector_quantum_darwinism,
 )
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t11" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t11" / "files"
 BOUNDARY_EN = (
     "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of "
     "six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. "

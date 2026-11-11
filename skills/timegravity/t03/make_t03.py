@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic reference artefact generator for Time & Gravity · T.03 (What Sets the Slope).
 Canonical URL: https://informatico.ai/timegravity/t03/
-Writes src/research/timegravity/t03/files/t03_reference.json (the Poisson grid solution for an Earth-mass uniform
+Writes src/timegravity/t03/files/t03_reference.json (the Poisson grid solution for an Earth-mass uniform
 sphere, sampled, and the two-body fall) and manifest.json. Standard library only; byte-for-byte reproducible.
 """
 from __future__ import annotations
@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from timegravity_kernel import EP_SEP_TOL, G_NEWTON, GM_EARTH, POISSON_REL_TOL, R_EARTH, fall_two_bodies, poisson_radial  # noqa: E402
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t03" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t03" / "files"
 BOUNDARY_EN = (
     "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of "
     "six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. "

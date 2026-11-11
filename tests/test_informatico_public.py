@@ -10,7 +10,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-RESEARCH = ROOT / "src" / "research"
+RESEARCH = ROOT / "src"
 SKILLS = ROOT / "skills"
 BOUNTIES = ROOT / "bounties"
 
@@ -73,9 +73,10 @@ class PublicInformaticoRepoTests(unittest.TestCase):
             re.IGNORECASE,
         )
         about_bridge_rel = {
-            Path("src/research/about/index.html"),
-            Path("src/research/es-mx/about/index.html"),
-            Path("src/research/data/about-evidence.json"),
+            Path("src/about/index.html"),
+            Path("src/es-mx/about/index.html"),
+            Path("src/data/about-evidence.json"),
+            Path("deploy/htaccess.txt"),
             Path("tests/test_informatico_seo.py"),
             Path("tools/build_longform_folios.py"),
         }
@@ -91,7 +92,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
             if rel not in about_bridge_rel:
                 m_lab = lab_leak_pat.search(txt)
                 self.assertIsNone(m_lab, f"Forbidden self-referential lab leakage {m_lab.group(0) if m_lab else ''} found in {rel}")
-            if rel.parts[:3] in (("src", "research", "essays"),) and len(rel.parts) == 5 and rel.name == "index.html":
+            if rel.parts[:2] == ("src", "essays") and len(rel.parts) == 4 and rel.name == "index.html":
                 paras = [re.sub(r"<[^>]+>", " ", pr) for pr in re.findall(r"<p[^>]*>(.*?)</p>", txt, re.S)]
                 cf_para_hits = sum(1 for pr in paras if cf_pat.search(pr))
                 visible = re.sub(r"<[^>]+>", " ", txt)
@@ -171,6 +172,36 @@ class PublicInformaticoRepoTests(unittest.TestCase):
             self.assertEqual(len(set(thumbs)), expected_count, f"{hub_rel} has duplicate rack card images")
             for t in thumbs:
                 self.assertIn("?v=", t, f"{hub_rel} thumbnail {t} missing ?v= cache-buster")
+
+    def test_deploy_upload_gate_and_htaccess_invariants(self) -> None:
+        import tempfile
+        sys.path.insert(0, str(ROOT / "deploy"))
+        import check_upload  # noqa: E402
+
+        htaccess_path = ROOT / "deploy" / "htaccess.txt"
+        self.assertTrue(htaccess_path.is_file())
+        self.assertNotIn(b"\r\n", htaccess_path.read_bytes(), "deploy/htaccess.txt must use LF line endings")
+        ht_text = htaccess_path.read_text(encoding="utf-8")
+        self.assertIn("RewriteRule ^research(?:/(.*))?$ https://informatico.ai/$1 [R=301,L,QSA]", ht_text)
+        self.assertEqual(check_upload.problems(RESEARCH, htaccess_path=htaccess_path), [])
+
+        gitattrs = (ROOT / ".gitattributes").read_text(encoding="utf-8")
+        self.assertIn("deploy/htaccess.txt text eol=lf", gitattrs)
+        self.assertIn("*.sh text eol=lf", gitattrs)
+
+        with tempfile.TemporaryDirectory() as td:
+            tp = Path(td)
+            (tp / "bad.html").write_text("<!DOCTYPE html><script>window.x=1;</script>", encoding="utf-8")
+            (tp / "good.html").write_text(
+                '<!DOCTYPE html><script type="application/ld+json">{"@context":"https://schema.org"}</script>',
+                encoding="utf-8",
+            )
+            bad_ht = tp / "htaccess.txt"
+            bad_ht.write_bytes(b"RewriteEngine On\r\n")
+            probs = check_upload.problems(tp, htaccess_path=bad_ht)
+            self.assertTrue(any("CRLF" in p for p in probs), probs)
+            self.assertTrue(any("bad.html" in p and "inline script" in p for p in probs), probs)
+            self.assertFalse(any("good.html" in p for p in probs), probs)
 
 
 if __name__ == "__main__":

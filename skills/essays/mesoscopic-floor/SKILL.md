@@ -10,7 +10,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Essay code & slug**: `ES.01` · `mesoscopic-floor` (dated `2026-11-10`)
 - **Canonical URL**: https://informatico.ai/essays/mesoscopic-floor/ (Spanish twin: https://informatico.ai/es-mx/essays/mesoscopic-floor/)
 - **Physics kernel & bilingual monograph module**: `tools/folios/essays/e01_mesoscopic.py`
-- **Interactive client instrument**: `src/research/modules/cross-scale-essays.mjs` (`[data-cs-instrument="mesoscopic"]`)
+- **Interactive client instrument**: `src/modules/cross-scale-essays.mjs` (`[data-cs-instrument="mesoscopic"]`)
 - **Standalone deterministic verifier**: `python -X utf8 skills/essays/mesoscopic-floor/verify_essay_mesoscopic_floor.py`
 - **Planted-defect knockout check**: `python -X utf8 skills/essays/mesoscopic-floor/verify_essay_mesoscopic_floor.py --planted-defect` (must exit `1`)
 

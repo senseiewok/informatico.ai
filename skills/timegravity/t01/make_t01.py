@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic reference artefact generator for Time & Gravity · T.01 (Gravity as a Slope in the Rate of Time).
 Canonical URL: https://informatico.ai/timegravity/t01/
-Writes src/research/timegravity/t01/files/t01_reference.json (constants, sampled worldline, the three accelerations)
+Writes src/timegravity/t01/files/t01_reference.json (constants, sampled worldline, the three accelerations)
 and manifest.json (byte counts and SHA-256). Standard library only; byte-for-byte reproducible.
 """
 from __future__ import annotations
@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from timegravity_kernel import C, FLAT_TOL, G0, N_STEPS, REL_TOL, T_PROPER, integrate  # noqa: E402
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t01" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t01" / "files"
 BOUNDARY_EN = (
     "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of "
     "six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. "

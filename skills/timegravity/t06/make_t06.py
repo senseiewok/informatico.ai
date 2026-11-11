@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic reference artefact generator for Time & Gravity · T.06 (Does Gravity Collapse the Wave?).
 Canonical URL: https://informatico.ai/timegravity/t06/
-Writes src/research/timegravity/t06/files/t06_reference.json (E_G and τ for a grid of masses and radii, the Gran Sasso
+Writes src/timegravity/t06/files/t06_reference.json (E_G and τ for a grid of masses and radii, the Gran Sasso
 bound recomputed from the counts, the parameter-free prediction) and manifest.json. Standard library only; reproducible.
 """
 from __future__ import annotations
@@ -21,7 +21,7 @@ from timegravity_kernel_bounds import (  # noqa: E402
     gran_sasso_signal_counts, poisson_upper_limit,
 )
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t06" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t06" / "files"
 BOUNDARY_EN = (
     "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of "
     "six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. "

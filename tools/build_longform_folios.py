@@ -50,10 +50,10 @@ _PLATE_SHA8_CACHE: dict[str, str] = {}
 
 
 def plate_sha8(slug: str) -> str:
-    """Return deterministic 8-char SHA-256 hex digest of src/research/plates/<slug>.jpg for browser cache busting."""
+    """Return deterministic 8-char SHA-256 hex digest of src/plates/<slug>.jpg for browser cache busting."""
     s = str(slug).strip()
     if s not in _PLATE_SHA8_CACHE:
-        p = ROOT / "src" / "research" / "plates" / f"{s}.jpg"
+        p = ROOT / "src" / "plates" / f"{s}.jpg"
         _PLATE_SHA8_CACHE[s] = hashlib.sha256(p.read_bytes()).hexdigest()[:8] if p.is_file() else "00000000"
     return _PLATE_SHA8_CACHE[s]
 
@@ -257,7 +257,7 @@ def get_volume_spec(vol_num: int) -> dict:
 
 
 def update_catalogs() -> dict:
-    cat_path = ROOT / "src" / "research" / "data" / "magazine_catalog.json"
+    cat_path = ROOT / "src" / "data" / "magazine_catalog.json"
     catalog = json.loads(cat_path.read_text(encoding="utf-8"))
     catalog["version"] = "6.0.0"
     catalog["title"] = "Informatico.ai — 6-Volume, 48-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog"
@@ -1799,6 +1799,7 @@ def page_url(path: str, lang: str = "en") -> str:
 
 def render_head(title: str, desc: str, path: str, og_type: str, og_image: str, rel_root: str, rel_res: str, ld_json: str, lang: str = "en") -> str:
     """The <head>. English and Spanish each have their own address, canonical and reciprocal hreflang pair."""
+    root_pfx = "" if rel_root in (".", "") else f"{rel_root}/"
     css_href = "informatico.css" if rel_res in (".", "") else f"{rel_res}/informatico.css"
     mod_href = "modules/main.mjs" if rel_res in (".", "") else f"{rel_res}/modules/main.mjs"
     en_url, es_url = page_url(path, "en"), page_url(path, "es")
@@ -1831,10 +1832,10 @@ def render_head(title: str, desc: str, path: str, og_type: str, og_image: str, r
   <meta name="twitter:description" content="{esc(desc)}">
   <meta name="twitter:image" content="{og_image}">
   <meta name="theme-color" content="#eceef0">
-  <link rel="icon" href="{rel_root}/images/icon-32.png" sizes="32x32" type="image/png">
-  <link rel="icon" href="{rel_root}/images/icon-192.png" sizes="192x192" type="image/png">
-  <link rel="apple-touch-icon" href="{rel_root}/images/apple-touch-icon.png">
-  <link rel="stylesheet" href="{rel_root}/styles.css">
+  <link rel="icon" href="{root_pfx}images/icon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="{root_pfx}images/icon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="{root_pfx}images/apple-touch-icon.png">
+  <link rel="stylesheet" href="{root_pfx}styles.css">
   <link rel="stylesheet" href="{css_href}">
   <link rel="modulepreload" href="{mod_href}">
   <script type="application/ld+json">{ld_json}</script>
@@ -2156,7 +2157,7 @@ def _ld(ld_type: str, headline: str, desc: str, url: str, lang: str = "en", *, i
 
 
 def render_folio_page(pillar: str, folios: list[dict], folio: dict, catalog: dict, lang: str = "en") -> str:
-    rel_root, rel_res = "../../..", "../.."
+    rel_root, rel_res = "../..", "../.."
     es = lang == "es"
     slug = folio["slug"]
     canon, seo_title, seo_desc = build_folio_seo_meta(pillar, folio, True, lang)
@@ -2189,7 +2190,7 @@ def render_folio_page(pillar: str, folios: list[dict], folio: dict, catalog: dic
 
 
 def _png_sha8(name: str) -> str:
-    p = ROOT / "src" / "research" / "plates" / f"{name}.png"
+    p = ROOT / "src" / "plates" / f"{name}.png"
     return hashlib.sha256(p.read_bytes()).hexdigest()[:8] if p.is_file() else "00000000"
 
 
@@ -2268,7 +2269,7 @@ def render_cross_scale_essays_showcase(rel_res: str, lang: str = "en") -> str:
 
 
 def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str = "en") -> str:
-    rel_root, rel_res = "../..", ".."
+    rel_root, rel_res = "..", ".."
     es = lang == "es"
     canon, seo_title, seo_desc = build_folio_seo_meta(pillar, folios[0], False, lang)
     title_en, title_es = PILLAR_TITLES[pillar], PILLAR_TITLES_ES[pillar]
@@ -2984,7 +2985,7 @@ def write_bounty_skills() -> None:
 
 def render_bounties_hub(catalog: dict, lang: str = "en") -> str:
     """Render the standalone Bounties Hub at /bounties/index.html and /es-mx/bounties/index.html."""
-    rel_root, rel_res = "../..", ".."
+    rel_root, rel_res = "..", ".."
     es = lang == "es"
     t_en, d_en, t_es, d_es = PILLAR_SEO["bounties"]
     seo_title = t_es if es else t_en
@@ -3379,7 +3380,7 @@ def render_bounty_crucible_svg(bounty: dict) -> str:
 
 def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> str:
     """Render a standalone 5-Act Bounty Monograph at /bounties/b01..b06/index.html and /es-mx/bounties/b01..b06/index.html."""
-    rel_root, rel_res = "../../..", "../.."
+    rel_root, rel_res = "../..", "../.."
     es = lang == "es"
     slug = bounty["slug"]
     fid = bounty["folio_id"]
@@ -4041,7 +4042,7 @@ def _build_toolchain_skill_and_scripts(tool: dict) -> tuple[str, str, str, str]:
         f'sys.path.insert(0, str(ROOT / "tools"))\n\n'
         f'from toolchain_uga import generate_folio_assets  # noqa: E402\n\n\n'
         f'def main() -> int:\n'
-        f'    files_dir = ROOT / "src" / "research" / "toolchain" / {json.dumps(slug)} / "files"\n'
+        f'    files_dir = ROOT / "src" / "toolchain" / {json.dumps(slug)} / "files"\n'
         f'    manifest = generate_folio_assets(\n'
         f'        slug={json.dumps(slug)},\n'
         f'        folio_id={json.dumps(fid)},\n'
@@ -4073,7 +4074,7 @@ def _build_toolchain_skill_and_scripts(tool: dict) -> tuple[str, str, str, str]:
         f'def main(argv: list[str] | None = None) -> int:\n'
         f'    args = argv if argv is not None else sys.argv[1:]\n'
         f'    planted_only = "--planted-defect" in args\n'
-        f'    files_dir = ROOT / "src" / "research" / "toolchain" / {json.dumps(slug)} / "files"\n'
+        f'    files_dir = ROOT / "src" / "toolchain" / {json.dumps(slug)} / "files"\n'
         f'    make_script = Path(__file__).resolve().parent / "make_{slug}.py"\n'
         f'    try:\n'
         f'        result = verify_folio_assets(\n'
@@ -4120,7 +4121,7 @@ def _build_toolchain_skill_and_scripts(tool: dict) -> tuple[str, str, str, str]:
         f"- **EN**: {tool['small_studio_kit_en']}\n"
         f"- **ES-MX**: {tool['small_studio_kit_es']}\n\n"
         f"## 3. Tool-Neutral Agent Packet & Security Boundary (`security-runtime`)\n"
-        f"1. **Generate Deterministic 3D Artifacts Locally**: Run `python {tool['generator_script']}` inside the repository working directory to emit `src/research/toolchain/{slug}/files/{slug}_artifact.*` and `manifest.json`.\n"
+        f"1. **Generate Deterministic 3D Artifacts Locally**: Run `python {tool['generator_script']}` inside the repository working directory to emit `src/toolchain/{slug}/files/{slug}_artifact.*` and `manifest.json`.\n"
         f"2. **Run Byte-Level Verifier as Acceptance Gate**: Run `python {tool['verifier_script']}` to verify GLB chunk bounds, 2-manifold half-edge pairing (`3F = 2E`), Euler–Poincaré characteristic (`χ = V - E + F`), divergence-theorem signed volume against the analytical formula, SHA-256 manifest match, and planted-defect rejection.\n"
         f"3. **Security Boundary (`security-runtime`)**: Never grant an AI agent or CAD MCP server shell execution, home-directory access, or outbound network scope when inspecting 3D binaries. Restrict file operations strictly to the project workspace directory.\n\n"
         f"## 4. Deterministic Verification & Falsification Rules\n"
@@ -4137,9 +4138,9 @@ def _build_toolchain_skill_and_scripts(tool: dict) -> tuple[str, str, str, str]:
 
 
 def write_toolchain_skills_and_assets() -> None:
-    """Write skills/toolchain/{x01..x06}/{make_x0x.py,verify_x0x_*.py,SKILL.md} and generate src/research/toolchain/<slug>/files/*."""
+    """Write skills/toolchain/{x01..x06}/{make_x0x.py,verify_x0x_*.py,SKILL.md} and generate src/toolchain/<slug>/files/*."""
     skills_dir = ROOT / "skills"
-    res_dir = ROOT / "src" / "research"
+    res_dir = ROOT / "src"
     for tool in TOOLCHAIN_FOLIOS:
         slug = tool["slug"]
         tdir = skills_dir / "toolchain" / slug
@@ -4242,7 +4243,7 @@ def render_toolchain_section(rel_res: str = ".") -> str:
 
 def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
     """Render the standalone Tech & Tools Hub at /toolchain/index.html and /es-mx/toolchain/index.html."""
-    rel_root, rel_res = "../..", ".."
+    rel_root, rel_res = "..", ".."
     es = lang == "es"
     t_en, d_en, t_es, d_es = PILLAR_SEO["toolchain"]
     seo_title = t_es if es else t_en
@@ -4360,7 +4361,7 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
 
 def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> str:
     """Render a standalone 5-Act Toolbox Monograph at /toolchain/x01..x06/index.html and /es-mx/toolchain/x01..x06/index.html."""
-    rel_root, rel_res = "../../..", "../.."
+    rel_root, rel_res = "../..", "../.."
     es = lang == "es"
     slug = tool["slug"]
     fid = tool["folio_id"]
@@ -4395,7 +4396,7 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
     skill_filename = f"{tool['skill_name']}-SKILL.md"
     reg_name, reg_url = tool["external_links"][0]
 
-    files_dir = ROOT / "src" / "research" / "toolchain" / slug / "files"
+    files_dir = ROOT / "src" / "toolchain" / slug / "files"
     manifest_path = files_dir / "manifest.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     glb_bytes = (files_dir / f"{slug}_artifact.glb").read_bytes()
@@ -4471,7 +4472,7 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
               <strong>Byte-Level Invariant Closure:</strong> At Stage {idx_s} of Toolbox <strong>{esc(fid)}</strong> (<code>{esc(tid)}</code>), the generator <code>{esc(gen_rel)}</code> and stdlib verifier <code>{esc(verifier_rel)}</code> enforce the governing geometric law <code>{esc(tool['governing_law'])}</code> along with the companion invariant: <em>{linkify_citations(esc(matched_rule))}</em>
             </p>
             <p>
-              <strong>Small-Studio &amp; Free-Tool Verification:</strong> When a designer, architect, or independent engineer inspects Stage {idx_s} inside Blender 4.2+, FreeCAD 1.0, OrcaSlicer / PrusaSlicer, or QCAD / LibreCAD—or executes <code>python {esc(verifier_rel)}</code> on the command line—this stage guarantees that no unverified coordinate drift, inverted surface normal, non-manifold edge seam, or truncated binary chunk can propagate silently into downstream visualization, structural coordination, or digital fabrication workflows. Every output file in <code>src/research/toolchain/{esc(slug)}/files/</code> is locked by a deterministic SHA-256 hash in <code>manifest.json</code> so small studios can audit exact geometric provenance without any paid proprietary CAD seat.
+              <strong>Small-Studio &amp; Free-Tool Verification:</strong> When a designer, architect, or independent engineer inspects Stage {idx_s} inside Blender 4.2+, FreeCAD 1.0, OrcaSlicer / PrusaSlicer, or QCAD / LibreCAD—or executes <code>python {esc(verifier_rel)}</code> on the command line—this stage guarantees that no unverified coordinate drift, inverted surface normal, non-manifold edge seam, or truncated binary chunk can propagate silently into downstream visualization, structural coordination, or digital fabrication workflows. Every output file in <code>src/toolchain/{esc(slug)}/files/</code> is locked by a deterministic SHA-256 hash in <code>manifest.json</code> so small studios can audit exact geometric provenance without any paid proprietary CAD seat.
             </p>
           </div>"""
         )
@@ -4482,7 +4483,7 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
         rules_items.append(
             f"""          <li>
             <strong>Invariant {esc(fid)}-R{r_idx}:</strong> {linkify_citations(esc(r_txt))}
-            <span>Checked deterministically offline by <code>{esc(verifier_rel)}</code> against committed binary artifacts in <code>src/research/toolchain/{esc(slug)}/files/</code>.</span>
+            <span>Checked deterministically offline by <code>{esc(verifier_rel)}</code> against committed binary artifacts in <code>src/toolchain/{esc(slug)}/files/</code>.</span>
           </li>"""
         )
     rules_html = "\n".join(rules_items)
@@ -4842,7 +4843,7 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
         <section class="tp-worked-verification-chapter" id="ch-iii-3-{esc(slug)}" aria-labelledby="ch-iii-3-heading-{esc(slug)}">
           <h3 id="ch-iii-3-heading-{esc(slug)}" data-en="&sect; III.3 &middot; Worked Byte-Level Verification &amp; Reference Telemetry Table" data-es="&sect; III.3 &middot; Verificación a Nivel de Bytes y Tabla de Telemetría de Referencia">&sect; III.3 &middot; Worked Byte-Level Verification &amp; Reference Telemetry Table</h3>
           <p>
-            To verify the interactive 3D Inspector and Workbench above by hand or inside an automated studio QA pipeline, we evaluate <code>{esc(tool['governing_law'])}</code> at the canonical baseline operating point ({sliders_prose}) on the committed artifacts in <code>src/research/toolchain/{esc(slug)}/files/</code>. The resulting geometric and topological telemetry is certified as follows: {readouts_summary_prose}.
+            To verify the interactive 3D Inspector and Workbench above by hand or inside an automated studio QA pipeline, we evaluate <code>{esc(tool['governing_law'])}</code> at the canonical baseline operating point ({sliders_prose}) on the committed artifacts in <code>src/toolchain/{esc(slug)}/files/</code>. The resulting geometric and topological telemetry is certified as follows: {readouts_summary_prose}.
           </p>
           <div class="tp-table-wrap">
             <table class="tp-table tp-telemetry-benchmark-table" aria-label="Reference numerical verification benchmark for Toolbox {esc(fid)}">
@@ -5363,7 +5364,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         },
         ensure_ascii=False,
     ).replace("</", "<" + "\\/")
-    head = render_head(hub_title, hub_desc, "", "website", "https://informatico.ai/plates/utopian-city-future.jpg", "..", ".", hub_ld, lang)
+    head = render_head(hub_title, hub_desc, "", "website", "https://informatico.ai/plates/utopian-city-future.jpg", ".", ".", hub_ld, lang)
 
     rows = []
     for p_key in ("engineering", "architecture", "physics", "math"):
@@ -5501,7 +5502,7 @@ def _render_65_rosette_svg(cx: float = 876.0, cy: float = 28.0) -> str:
 
 def render_about_page(catalog: dict, lang: str = "en") -> str:
     """Render /about/ and /es-mx/about/ (Essay Zero: Why Every Claim Here Carries a Verifier & the CF Bridge)."""
-    rel_root, rel_res = "../..", ".."
+    rel_root, rel_res = "..", ".."
     es = lang == "es"
     t_en, d_en, t_es, d_es = PILLAR_SEO["about"]
     seo_title = t_es if es else t_en
@@ -5526,7 +5527,7 @@ def render_about_page(catalog: dict, lang: str = "en") -> str:
     )
     head = render_head(seo_title, seo_desc, "about/", "website", image, rel_root, rel_res, ld, lang)
 
-    ev_path = ROOT / "src" / "research" / "data" / "about-evidence.json"
+    ev_path = ROOT / "src" / "data" / "about-evidence.json"
     ev_data = json.loads(ev_path.read_text(encoding="utf-8"))
     ev_by_id = {row["id"]: row for row in ev_data["sentences"]}
 
@@ -6121,7 +6122,7 @@ def main() -> None:
     import build_cross_scale_essays  # noqa: E402
     build_cross_scale_essays.write_essay_pages(catalog)
 
-    res_dir = ROOT / "src" / "research"
+    res_dir = ROOT / "src"
     es_dir = res_dir / ES_PREFIX.strip("/")
     hub_html = render_hub_index(catalog)
     (res_dir / "index.html").write_text(hub_html, encoding="utf-8")

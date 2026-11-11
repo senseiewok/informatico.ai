@@ -10,7 +10,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Essay code & slug**: `ES.05` · `islands-blinders-conditional-survival` (dated `2026-11-10`)
 - **Canonical URL**: https://informatico.ai/essays/islands-blinders-conditional-survival/ (Spanish twin: https://informatico.ai/es-mx/essays/islands-blinders-conditional-survival/)
 - **Physics kernel & bilingual monograph module**: `tools/folios/essays/e05_islands_conditional_survival.py`
-- **Interactive client instrument**: `src/research/modules/cross-scale-essays.mjs` (`[data-cs-instrument="island_page"]`)
+- **Interactive client instrument**: `src/modules/cross-scale-essays.mjs` (`[data-cs-instrument="island_page"]`)
 - **Standalone deterministic verifier**: `python -X utf8 skills/essays/islands-blinders-conditional-survival/verify_essay_islands_conditional_survival.py`
 - **Planted-defect knockout check**: `python -X utf8 skills/essays/islands-blinders-conditional-survival/verify_essay_islands_conditional_survival.py --planted-defect` (must exit `1`)
 

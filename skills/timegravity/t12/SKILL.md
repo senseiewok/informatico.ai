@@ -38,7 +38,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 | `T12-CARNEY2021` | PROPOSED | Carney et al. 2021, mechanical sensor and clock array detection of gravitational dark matter | https://doi.org/10.1088/1367-2630/abd9e7 |
 
 ## 3. Tool-neutral agent packet and security boundary (`security-runtime`)
-1. **Rebuild locally**: `python skills/timegravity/t12/make_t12.py`; standard library only; writes only under `src/research/timegravity/t12/files/`.
+1. **Rebuild locally**: `python skills/timegravity/t12/make_t12.py`; standard library only; writes only under `src/timegravity/t12/files/`.
 2. **Acceptance gate**: `python skills/timegravity/t12/verify_t12_dark_clock.py` must print `"status": "PASS"` with `arsinh_matches_gl5_quadrature: PASS`; `--planted-defect` must exit non-zero. Then `python tools/check_timegravity_labels.py`.
 3. **Security boundary (`security-runtime`)**: no shell outside the repository, no home-directory access, no outbound network for this task.
 
@@ -56,7 +56,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 
 ## 6. Exact T0–T3 truth boundary
 ### In the repository today (T0/T1)
-- Kernel `tools/timegravity_kernel_dark_clock.py`, generator, verifier, ledger rows above, and the ES module `src/research/modules/timegravity-slope.mjs`.
+- Kernel `tools/timegravity_kernel_dark_clock.py`, generator, verifier, ledger rows above, and the ES module `src/modules/timegravity-slope.mjs`.
 
 ### Not on this page (T2/T3)
 - Direct laboratory detection of individual dark-matter transits through gravity alone (`T12-CARNEY2021`) is `PROPOSED` and requires Planck-mass-scale sensors far beyond current optical-clock or optomechanical noise floors.

@@ -23,7 +23,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from timegravity_kernel_dark_clock import DARK_CLOCK_TOL, check_dark_clock  # noqa: E402
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t12" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t12" / "files"
 
 
 def verify_reference_files() -> dict:

@@ -10,7 +10,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-RESEARCH = ROOT / "src" / "research"
+RESEARCH = ROOT / "src"
 SKILLS = ROOT / "skills"
 TOOLCHAIN_SKILLS = SKILLS / "toolchain"
 TOOLCHAIN_RESEARCH = RESEARCH / "toolchain"

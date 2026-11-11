@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic reference artefact generator for Time & Gravity · T.02 (Everyone Moves at One Rate).
 Canonical URL: https://informatico.ai/timegravity/t02/
-Writes src/research/timegravity/t02/files/t02_reference.json (GPS terms two ways, the uncertainty budget, a
+Writes src/timegravity/t02/files/t02_reference.json (GPS terms two ways, the uncertainty budget, a
 light-clock table) and manifest.json (byte counts and SHA-256). Standard library only; byte-for-byte reproducible.
 """
 from __future__ import annotations
@@ -19,7 +19,7 @@ from timegravity_kernel import (  # noqa: E402
     gps_position_error_per_day_m, gps_schwarzschild_net, gps_terms, gps_uncertainty_budget, light_clock_dilation,
 )
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t02" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t02" / "files"
 BOUNDARY_EN = (
     "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of "
     "six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. "

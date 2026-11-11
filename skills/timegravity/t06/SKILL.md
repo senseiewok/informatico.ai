@@ -32,7 +32,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 | `T06-FEIN2019` | SINGLE RESULT | Fein et al. 2019, superposition beyond 25 kDa | https://doi.org/10.1038/s41567-019-0663-9 |
 
 ## 3. Tool-neutral agent packet and security boundary (`security-runtime`)
-1. **Rebuild locally**: `python skills/timegravity/t06/make_t06.py`; standard library only; writes only under `src/research/timegravity/t06/files/`.
+1. **Rebuild locally**: `python skills/timegravity/t06/make_t06.py`; standard library only; writes only under `src/timegravity/t06/files/`.
 2. **Acceptance gate**: `python skills/timegravity/t06/verify_t06_collapse_bound.py` must print `"status": "PASS"` with `bound_recomputed_from_counts: PASS`; `--planted-defect` must exit non-zero. Then `python tools/check_timegravity_labels.py`.
 3. **Security boundary (`security-runtime`)**: no shell outside the repository, no home-directory access, no outbound network for this task; the cache refresher is the track's only network script, run by hand by a maintainer.
 

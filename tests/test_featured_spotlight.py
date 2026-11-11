@@ -7,7 +7,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RES = ROOT / "src" / "research"
+RES = ROOT / "src"
 
 
 class FeaturedSpotlightTests(unittest.TestCase):
@@ -36,7 +36,7 @@ class FeaturedSpotlightTests(unittest.TestCase):
                 self.assertIn("plates/t00.png?v=", html)
                 self.assertIn("timegravity/", html)
 
-            # Verify every spotlight href and img src resolves inside src/research/
+            # Verify every spotlight href and img src resolves inside src/
             desk_match = re.search(
                 r'<section class="tp-featured-edition-desk".*?</section>',
                 html,

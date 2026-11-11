@@ -59,7 +59,7 @@ KERNEL_ANCHORS: dict[str, tuple[float, float]] = {
     "parallel_hybrid_horizon_um": (PARALLEL_DC_INF_OVER_SIGMA * EW_MATCH_SIGMA_M * 1e6, 0.3),
 }
 
-RESEARCH = ROOT / "src" / "research"
+RESEARCH = ROOT / "src"
 LEDGER_PATH = ROOT / "timegravity" / "ledger.json"
 CACHE_PATH = ROOT / "data" / "folio-citations.cache.json"
 KINDS = ("peer-reviewed", "preprint", "review", "press")

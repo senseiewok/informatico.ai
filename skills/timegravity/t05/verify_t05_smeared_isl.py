@@ -32,7 +32,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 from timegravity_kernel_isl import EW_YUKAWA_EDGE_LAMBDA_M, HUST_LAMBDA_M, ISL_TOL, check_isl  # noqa: E402
 from timegravity_kernel_wedge import WEDGE_TOL, check_wedge  # noqa: E402
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t05" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t05" / "files"
 
 
 def verify_reference_block() -> dict:

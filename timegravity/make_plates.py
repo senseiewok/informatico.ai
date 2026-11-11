@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Draw the Time & Gravity editorial plates as PNG files with the standard library only (no fonts, no text).
 
-  src/research/plates/t00.png  the hub: a worldline across a clock-rate gradient, with a marker for the imagined 'now'
-  src/research/plates/t01.png  T.01: the falling worldline the kernel integrates, over the same gradient
+  src/plates/t00.png  the hub: a worldline across a clock-rate gradient, with a marker for the imagined 'now'
+  src/plates/t01.png  T.01: the falling worldline the kernel integrates, over the same gradient
 
 The curve in t01.png comes from tools/timegravity_kernel.integrate, so the plate is drawn from the page's own number.
 Deterministic; drawn on a 1280x720 RGB canvas, then cropped and box-filtered to 1200x630 (the Open Graph image size
@@ -22,7 +22,7 @@ from timegravity_kernel import integrate  # noqa: E402
 
 W, H = 1280, 720          # drawing canvas
 OUT_W, OUT_H = 1200, 630  # written plate (Open Graph size); 16 canvas pixels -> 15 plate pixels on both axes
-PLATES = ROOT / "src" / "research" / "plates"
+PLATES = ROOT / "src" / "plates"
 
 VELLUM = (247, 248, 249)
 STONE = (223, 227, 231)

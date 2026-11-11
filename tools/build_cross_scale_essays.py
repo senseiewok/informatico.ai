@@ -22,7 +22,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 import build_longform_folios as B  # noqa: E402
 from folios.seo_copy import BRAND, PILLAR_SEO  # noqa: E402
 
-RESEARCH = ROOT / "src" / "research"
+RESEARCH = ROOT / "src"
 PLATES_DIR = RESEARCH / "plates"
 
 BOUNDARY_BANNER_EN = (
@@ -1184,7 +1184,7 @@ def render_essay_page(essay: dict, essays: list[dict], catalog: dict, lang: str 
     is_es = lang == "es"
     slug = essay["slug"]
     path = f"essays/{slug}/"
-    rel_root = "../../.."
+    rel_root = "../.."
     rel_res = "../.."
     t_en, d_en, t_es, d_es = essay["seo"]
     seo_t = t_es if is_es else t_en
@@ -1300,7 +1300,7 @@ def render_essay_page(essay: dict, essays: list[dict], catalog: dict, lang: str 
 def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> str:
     is_es = lang == "es"
     path = "essays/"
-    rel_root = "../.."
+    rel_root = ".."
     rel_res = ".."
     t_en, d_en, t_es, d_es = PILLAR_SEO["essays"]
     seo_t = t_es if is_es else t_en

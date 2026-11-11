@@ -52,7 +52,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 | `T05-TAN2020` | MEASURED | Tan et al. 2020, |α| ≤ 1 down to 48 µm | https://doi.org/10.1103/PhysRevLett.124.051301 |
 
 ## 3. Tool-neutral agent packet and security boundary (`security-runtime`)
-1. **Rebuild locally**: `python skills/timegravity/t05/make_t05.py`; standard library only; writes only under `src/research/timegravity/t05/files/`.
+1. **Rebuild locally**: `python skills/timegravity/t05/make_t05.py`; standard library only; writes only under `src/timegravity/t05/files/`.
 2. **Acceptance gate**: `python skills/timegravity/t05/verify_t05_entanglement_channels.py` must print `"status": "PASS"` with `locc_channel_entangles_nothing: PASS`; `--planted-defect` must exit non-zero. Then `python tools/check_timegravity_labels.py`.
 3. **Security boundary (`security-runtime`)**: no shell outside the repository, no home-directory access, no outbound network for this task; the cache refresher is the track's only network script, run by hand by a maintainer.
 

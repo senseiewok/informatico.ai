@@ -24,7 +24,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 from timegravity_kernel_bounds import DP_TOL, GS_R0_BOUND_M, check_dp  # noqa: E402
 from timegravity_kernel_ladder import check_ladder  # noqa: E402
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t06" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t06" / "files"
 
 
 def verify_reference_files() -> dict:

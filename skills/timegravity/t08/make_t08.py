@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic reference artefact generator for Time & Gravity · T.08 (A Horizon Has a Temperature).
 Canonical URL: https://informatico.ai/timegravity/t08/
-Writes src/research/timegravity/t08/files/t08_reference.json (the two-mode Rindler thermofield double's reduced
+Writes src/timegravity/t08/files/t08_reference.json (the two-mode Rindler thermofield double's reduced
 density matrix eigenvalues against the Planck and truncated-Gibbs weights, the Hawking-Bekenstein first-law
 quadrature check, and the Rindler proper-time redshift table) and manifest.json.
 Standard library only; byte-for-byte reproducible.
@@ -28,7 +28,7 @@ from timegravity_kernel_horizon import (  # noqa: E402
     two_mode_squeezed_wedge,
 )
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t08" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t08" / "files"
 BOUNDARY_EN = (
     "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of "
     "six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. "

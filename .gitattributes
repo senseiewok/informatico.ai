@@ -1,3 +1,7 @@
-src/research/timegravity/*/files/*.json text eol=lf
-src/research/toolchain/*/files/*.step text eol=lf
-src/research/toolchain/*/files/*.dxf text eol=lf
+src/timegravity/*/files/*.json text eol=lf
+src/toolchain/*/files/*.step text eol=lf
+src/toolchain/*/files/*.dxf text eol=lf
+deploy/htaccess.txt text eol=lf
+*.htaccess text eol=lf
+.htaccess text eol=lf
+*.sh text eol=lf

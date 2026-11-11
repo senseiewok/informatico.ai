@@ -15,6 +15,8 @@ auth.json
 .npmrc
 
 # Deploy tool configs
+deploy/deploy.local.json
+*.local.json
 .vscode/sftp.json
 sftp-config.json
 .ftpconfig
