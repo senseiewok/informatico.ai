@@ -14,9 +14,11 @@ import { initFolioPuzzles } from "./folio-puzzle.mjs";
 import { initPhysicsDiscoveryCrucible } from "./physics-discovery-crucible.mjs";
 import { initGlbViewers } from "./glb-viewer.mjs";
 import { initTraceSentence } from "./trace-sentence.mjs";
+import { initFeaturedSpotlight } from "./featured-spotlight.mjs";
 
 function bootMagazine(scope = document) {
   initThemePlate();
+  initFeaturedSpotlight(scope);
   initArticleAudio(scope);
   initPlateSolvers(scope);
   initCompanionAndLedger(scope);

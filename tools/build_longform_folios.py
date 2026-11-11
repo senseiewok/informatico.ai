@@ -4967,6 +4967,283 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
 """
 
 
+INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
+    {
+        "code": "T.00",
+        "folio_id": "T.00–T.12",
+        "disc_en": "Physics Unification · 13 Steps",
+        "disc_es": "Unificación Física · 13 Pasos",
+        "href": "timegravity/",
+        "plate_kind": "png",
+        "plate_slug": "t00",
+        "title_en": "Time & Gravity: Thirteen Steps from Falling Clocks to Open Horizons",
+        "title_es": "Tiempo y Gravedad: Trece Pasos de los Relojes que Caen a los Horizontes Abiertos",
+        "dek_en": "Walks from everyday 1.09 × 10⁻¹⁶ m⁻¹ optical-clock slopes through 10⁻¹⁴ kg quantum-gravity interferometers, Page–Wootters relational time, and GW250114 Kerr horizons under six machine-checked epistemic badges.",
+        "dek_es": "Recorre desde la pendiente cotidiana de 1.09 × 10⁻¹⁶ m⁻¹ en relojes ópticos hasta interferómetros de gravedad cuántica de 10⁻¹⁴ kg, el tiempo relacional de Page–Wootters y horizontes de Kerr GW250114 bajo seis etiquetas epistémicas.",
+        "law": "dτ/dt = √(1 + 2Φ/c²) · (Ĥ_C ⊗ I_S + I_C ⊗ Ĥ_S)|Ψ⟩⟩ = 0",
+        "badge_en": "MEASURED · DERIVED · BOUND · OPEN (110 CLAIMS)",
+        "badge_es": "MEASURED · DERIVADO · BOUND · OPEN (110 AFIRMACIONES)",
+        "cta_en": "Read T.00–T.12 Series →",
+        "cta_es": "Leer la Serie T.00–T.12 →",
+        "alt": "Series track diagram for Time and Gravity (T.00 to T.12) spanning optical clock gradients, tabletop interferometry, Kerr horizons, and six epistemic badges.",
+    },
+    {
+        "code": "B.06",
+        "folio_id": "B.06",
+        "disc_en": "Formal Gauge Physics · Lean 4",
+        "disc_es": "Física Gauge Formal · Lean 4",
+        "href": "bounties/b06/",
+        "plate_kind": "jpg",
+        "plate_slug": "b06",
+        "title_en": "Machine-Checked Gauge Physics in PhysLean & Tensor-Network Ground States",
+        "title_es": "Física Gauge Verificada en PhysLean y Estados Base de Redes Tensoriales",
+        "dek_en": "Couples Lean 4 dependent-type verification of Standard Model chiral gauge anomaly cancellation (Σ Y³ = 0, Σ Y = 0) with Matrix Product State entanglement bounds.",
+        "dek_es": "Acopla la verificación en Lean 4 de la cancelación de anomalías gauge quirales del Modelo Estándar (Σ Y³ = 0, Σ Y = 0) con cotas de entrelazamiento en estados de producto matricial.",
+        "law": "Tr({Tᵃ, Tᵇ} Tᶜ)_L − Tr({Tᵃ, Tᵇ} Tᶜ)_R = 0 · S_vN ≤ log χ",
+        "badge_en": "LEAN 4 KERNEL + ITENSOR VERIFIED",
+        "badge_es": "VERIFICADO EN LEAN 4 + ITENSOR",
+        "cta_en": "Read B.06 Proof Monograph →",
+        "cta_es": "Leer Monografía B.06 →",
+        "alt": "Editorial plate for Bounty B.06 illustrating chiral gauge anomaly cancellation and tensor-network entanglement geometry.",
+    },
+    {
+        "code": "P.12",
+        "folio_id": "P.12",
+        "disc_en": "Statistical & Continuum Physics",
+        "disc_es": "Física Estadística y del Continuo",
+        "href": "physics/p12/",
+        "plate_kind": "jpg",
+        "plate_slug": "p12",
+        "title_en": "Hilbert's Sixth Problem Resolved: Hard-Sphere Boltzmann Kinetics to Navier–Stokes",
+        "title_es": "El Sexto Problema de Hilbert: De la Cinética de Boltzmann a Navier–Stokes",
+        "dek_en": "Traces how microscopic Newton hard-sphere collisions converge rigorously across mesoscopic Boltzmann kinetic equations to macroscopic compressible and incompressible fluid laws.",
+        "dek_es": "Traza cómo las colisiones microscópicas de esferas duras convergen rigurosamente mediante la ecuación cinética de Boltzmann hacia las leyes macroscópicas de Navier–Stokes.",
+        "law": "∂_t f + v·∇_x f = (1/Kn) Q(f,f) · Kn → 0",
+        "badge_en": "DOI + PYTHON VERIFIER PASS",
+        "badge_es": "DOI + VERIFICADOR PYTHON APROBADO",
+        "cta_en": "Read P.12 Physics Monograph →",
+        "cta_es": "Leer Monografía P.12 →",
+        "alt": "Editorial plate for Folio P.12 showing hard-sphere kinetic trajectories converging into smooth continuum vortices.",
+    },
+    {
+        "code": "M.11",
+        "folio_id": "M.11",
+        "disc_en": "Harmonic Analysis & Number Theory",
+        "disc_es": "Análisis Armónico y Teoría de Números",
+        "href": "math/m11/",
+        "plate_kind": "jpg",
+        "plate_slug": "m11",
+        "title_en": "Resolution of the 3D Kakeya Conjecture & Breaking Ingham's 1940 Riemann Barrier",
+        "title_es": "Resolución de la Conjetura de Kakeya 3D y Ruptura de la Barrera de Ingham (1940)",
+        "dek_en": "Maps multiscale tube-incidence geometry (dim_H = dim_M = 3 in ℝ³) and Guth–Maynard large-value Dirichlet polynomial bounds tightening Riemann zeta zero-density exponents.",
+        "dek_es": "Conecta la geometría multiescala de incidencia de tubos (dim_H = dim_M = 3 en ℝ³) con las cotas de polinomios de Dirichlet de Guth–Maynard sobre ceros de la función zeta.",
+        "law": "dim_H(K) = dim_M(K) = 3 · N(σ, T) ≪ T^((30/13)(1−σ)+ε)",
+        "badge_en": "DOI + PYTHON VERIFIER PASS",
+        "badge_es": "DOI + VERIFICADOR PYTHON APROBADO",
+        "cta_en": "Read M.11 Mathematics Monograph →",
+        "cta_es": "Leer Monografía M.11 →",
+        "alt": "Editorial plate for Folio M.11 depicting 3D Kakeya directional tube incidences and critical-strip zero density bounds.",
+    },
+    {
+        "code": "M.12",
+        "folio_id": "M.12",
+        "disc_en": "Formal Complexity & Cryptography",
+        "disc_es": "Complejidad Formal y Criptografía",
+        "href": "math/m12/",
+        "plate_kind": "jpg",
+        "plate_slug": "m12",
+        "title_en": "Anthropic Lean 4 Complexity & Post-Quantum Crystal Locks (ML-KEM Lattices)",
+        "title_es": "Complejidad en Lean 4 y Cerraduras Post-Cuánticas de Retículos ML-KEM",
+        "dek_en": "Examines machine-checked fine-grained complexity reductions, eight-square bilinear rank compression, and Module-LWE lattice geometry securing post-quantum key encapsulation.",
+        "dek_es": "Examina reducciones de complejidad verificadas por máquina, compresión de rango bilineal y la geometría de retículos Module-LWE para criptografía post-cuántica.",
+        "law": "b = A s + e (mod q) · R_ℤ(8×8) ≤ 28",
+        "badge_en": "LEAN 4 + NIST FIPS 203 VERIFIED",
+        "badge_es": "VERIFICADO EN LEAN 4 + NIST FIPS 203",
+        "cta_en": "Read M.12 Cryptography Monograph →",
+        "cta_es": "Leer Monografía M.12 →",
+        "alt": "Editorial plate for Folio M.12 illustrating Module-LWE lattice geometry and formal proof graphs.",
+    },
+    {
+        "code": "A.11",
+        "folio_id": "A.11",
+        "disc_en": "Stereotomy & Graphic Statics",
+        "disc_es": "Estereotomía y Estática Gráfica",
+        "href": "architecture/a11/",
+        "plate_kind": "jpg",
+        "plate_slug": "a11",
+        "title_en": "3D Polyhedral Graphic Statics & Airy Stress Surfaces: Zero-Rebar Vaults",
+        "title_es": "Estática Gráfica Poliédrica 3D y Superficies de Airy: Bóvedas sin Acero",
+        "dek_en": "Maps Maxwell–Rankine reciprocal polyhedra and concave Airy stress functions onto compression-only tile vaults that cut embodied floor carbon by over 60 percent.",
+        "dek_es": "Conecta poliedros recíprocos de Maxwell–Rankine y funciones de esfuerzo de Airy con bóvedas tabicadas a compresión pura de bajo carbono incorporado.",
+        "law": "σ_xx = ∂²Φ/∂y² · σ_yy = ∂²Φ/∂x² · det(H_Φ) > 0",
+        "badge_en": "EQUILIBRIUM KERNEL VERIFIED",
+        "badge_es": "KERNEL DE EQUILIBRIO VERIFICADO",
+        "cta_en": "Read A.11 Architecture Monograph →",
+        "cta_es": "Leer Monografía A.11 →",
+        "alt": "Editorial plate for Folio A.11 showing compression-only masonry tile vault ribs and reciprocal force polyhedra.",
+    },
+    {
+        "code": "E.12",
+        "folio_id": "E.12",
+        "disc_en": "Verified Systems & Control",
+        "disc_es": "Sistemas Verificados y Control",
+        "href": "engineering/e12/",
+        "plate_kind": "jpg",
+        "plate_slug": "e12",
+        "title_en": "Machine-Checked Silicon-to-Grid Safety: Rocq RISC-V & Control Barrier Functions",
+        "title_es": "Seguridad Verificada del Silicio a la Red: RISC-V en Rocq y Barreras de Control",
+        "dek_en": "Unites hardware-level theorem proving with quadratic-program Control Barrier Functions (CBF-QP) and Kuramoto inverter synchronization for resilient power grids.",
+        "dek_es": "Une pruebas formales en silicio con funciones barrera de control (CBF-QP) y sincronización de inversores para redes eléctricas resilientes.",
+        "law": "sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x))",
+        "badge_en": "CBF-QP INVARIANCE VERIFIED",
+        "badge_es": "INVARIANZA CBF-QP VERIFICADA",
+        "cta_en": "Read E.12 Engineering Monograph →",
+        "cta_es": "Leer Monografía E.12 →",
+        "alt": "Editorial plate for Folio E.12 showing verified silicon architecture coupled to synchronized grid phase trajectories.",
+    },
+    {
+        "code": "X.03",
+        "folio_id": "X.03",
+        "disc_en": "Tech & Tools · CAD Pipeline",
+        "disc_es": "Herramientas · Flujo CAD 3D",
+        "href": "toolchain/x03/",
+        "plate_kind": "jpg",
+        "plate_slug": "x03",
+        "title_en": "The Small Architecture Studio's Vault, Timber & Reciprocal-Frame CAD Pipeline",
+        "title_es": "Flujo CAD de Bóvedas, Madera y Marcos Recíprocos para Pequeños Estudios",
+        "dek_en": "Delivers open-format STEP AP242, 3MF, DXF, and 2-manifold GLB generators with byte-level stdlib verifiers so independent studios own their geometry end to end.",
+        "dek_es": "Entrega generadores abiertos STEP AP242, 3MF, DXF y GLB 2-variedad con verificadores deterministas para estudios independientes.",
+        "law": "V − E + F = 2(1 − g) · Σ F_ext + Σ R_support = 0",
+        "badge_en": "STEP / GLB BYTE-VERIFIED",
+        "badge_es": "STEP / GLB VERIFICADO A NIVEL DE BYTES",
+        "cta_en": "Read X.03 Toolbox Monograph →",
+        "cta_es": "Leer Monografía X.03 →",
+        "alt": "Editorial plate for Toolbox X.03 showing reciprocal timber joinery and neutral STEP/GLB studio geometry.",
+    },
+)
+
+INFORMATICO_RELEASE_SCHEDULE: tuple[dict, ...] = (
+    {
+        "slot_en": "WED · 09:00 PT SLOT",
+        "slot_es": "MIÉ · TURNO 09:00 PT",
+        "code": "T.13 · UNIFICATION",
+        "title_en": "Gauge-Gravity Holonomy, Soft Graviton Theorems & PhysLean Anomaly Bridge",
+        "title_es": "Holonomía Gauge-Gravedad, Teoremas de Gravitones Blandos y Puente PhysLean",
+        "gate_en": "SCHEDULED EDITION · Gated by build_timegravity.py & Lean 4 PhysLean kernels (DERIVED / OPEN)",
+        "gate_es": "EDICIÓN PROGRAMADA · Sujeta a build_timegravity.py y kernels PhysLean en Lean 4 (DERIVADO / ABIERTO)",
+    },
+    {
+        "slot_en": "MON · 09:00 PT SLOT",
+        "slot_es": "LUN · TURNO 09:00 PT",
+        "code": "P.12 ↔ M.11 · REV 1.4",
+        "title_en": "Thermodynamic Uncertainty Relations (TUR) Across Boltzmann-to-Stokes Scales",
+        "title_es": "Relaciones de Incertidumbre Termodinámica (TUR) de Boltzmann a Navier–Stokes",
+        "gate_en": "SCHEDULED EDITION · Gated by verify_all_48_folios.py & planted-defect entropy knockouts",
+        "gate_es": "EDICIÓN PROGRAMADA · Sujeta a verify_all_48_folios.py y pruebas de defectos plantados",
+    },
+    {
+        "slot_en": "WED · 09:00 PT SLOT",
+        "slot_es": "MIÉ · TURNO 09:00 PT",
+        "code": "A.11 ↔ X.03 · CAD EDITION",
+        "title_en": "Reciprocal Polyhedral Vaults & Passive Sky-Cooling Envelopes in STEP AP242",
+        "title_es": "Bóvedas Poliédricas Recíprocas y Envolventes Radiativas en STEP AP242",
+        "gate_en": "SCHEDULED EDITION · Gated by run_all_toolchain.py & watertight 2-manifold GLB verifier",
+        "gate_es": "EDICIÓN PROGRAMADA · Sujeta a run_all_toolchain.py y verificador GLB 2-variedad",
+    },
+)
+
+
+def render_cover_rotating_spotlight_and_schedule(rel_res: str = ".") -> str:
+    """Swiss 8+4 Rotating Featured Cover Essay Spotlight & Verifier-Gated Release Schedule Desk."""
+    slides_html: list[str] = []
+    pills_html: list[str] = []
+    total_slots = len(INFORMATICO_SPOTLIGHT_ROTATION)
+
+    p_prefix = "plates/" if rel_res in ("", ".") else f"{rel_res.rstrip('/')}/plates/"
+    for idx, item in enumerate(INFORMATICO_SPOTLIGHT_ROTATION):
+        href = _href(rel_res, item["href"])
+        if item["plate_kind"] == "png":
+            img_url = f"{p_prefix}{item['plate_slug']}.png?v={_png_sha8(item['plate_slug'])}"
+            w_attr, h_attr = "1200", "630"
+        else:
+            img_url = plate_src(p_prefix, item["plate_slug"])
+            w_attr, h_attr = "1280", "720"
+        hidden_attr = "" if idx == 0 else " hidden"
+        pressed = "true" if idx == 0 else "false"
+        pills_html.append(
+            f'          <button type="button" class="tp-spotlight-pill" data-spotlight-pick="{idx}" aria-pressed="{pressed}">{esc(item["code"])}</button>'
+        )
+        slides_html.append(
+            f"""          <article class="tp-spotlight-slide" data-spotlight-slot="{idx}"{hidden_attr}>
+            <div class="tp-spotlight-copy">
+              <div class="tp-spotlight-meta-row">
+                <span class="tp-kicker" data-en="{esc(item['disc_en'])}" data-es="{esc(item['disc_es'])}">{esc(item['disc_en'])}</span>
+                <span class="tp-spotlight-badge" data-en="{esc(item['badge_en'])}" data-es="{esc(item['badge_es'])}">{esc(item['badge_en'])}</span>
+              </div>
+              <p class="tp-spotlight-slide-title"><a href="{href}" data-en="{esc(item['title_en'])}" data-es="{esc(item['title_es'])}">{esc(item['title_en'])}</a></p>
+              <p class="tp-spotlight-dek" data-en="{esc(item['dek_en'])}" data-es="{esc(item['dek_es'])}">{esc(item['dek_en'])}</p>
+              <p class="tp-spotlight-law"><code>{esc(item['law'])}</code></p>
+              <div class="tp-featured-series-ctas">
+                <a class="tp-cta tp-cta-primary" href="{href}" data-en="{esc(item['cta_en'])}" data-es="{esc(item['cta_es'])}">{esc(item['cta_en'])}</a>
+              </div>
+            </div>
+            <figure class="tp-spotlight-figure">
+              <img class="tp-spotlight-img" src="{img_url}" width="{w_attr}" height="{h_attr}" loading="lazy" decoding="async" alt="{esc(item['alt'])}">
+            </figure>
+          </article>"""
+        )
+
+    rel_items: list[str] = []
+    for r in INFORMATICO_RELEASE_SCHEDULE:
+        rel_items.append(
+            f"""          <li class="tp-release-item">
+            <div class="tp-release-item-top">
+              <span data-en="{esc(r['slot_en'])}" data-es="{esc(r['slot_es'])}">{esc(r['slot_en'])}</span>
+              <span>{esc(r['code'])}</span>
+            </div>
+            <strong class="tp-release-item-title" data-en="{esc(r['title_en'])}" data-es="{esc(r['title_es'])}">{esc(r['title_en'])}</strong>
+            <span class="tp-release-item-gate" data-en="{esc(r['gate_en'])}" data-es="{esc(r['gate_es'])}">{esc(r['gate_en'])}</span>
+          </li>"""
+        )
+
+    pills_block = "\n".join(pills_html)
+    slides_block = "\n".join(slides_html)
+    releases_block = "\n".join(rel_items)
+    counter_en = f"Slot 1 / {total_slots} · Rotates every 12h"
+    counter_es = f"Turno 1 / {total_slots} · Rota cada 12 h"
+
+    return f"""    <section class="tp-featured-edition-desk" id="tp-featured-edition-desk" aria-labelledby="tp-featured-desk-heading">
+      <div class="tp-featured-desk-head">
+        <div>
+          <p class="tp-kicker" data-en="Rotating Homepage Cover · 12-Hour Cycle Across Physics, Math, Architecture &amp; Engineering" data-es="Portada Rotativa · Ciclo de 12 Horas en Física, Matemáticas, Arquitectura e Ingeniería">Rotating Homepage Cover · 12-Hour Cycle Across Physics, Math, Architecture &amp; Engineering</p>
+          <h2 id="tp-featured-desk-heading" class="tp-h2" data-en="Featured Monograph Spotlight &amp; Release Desk" data-es="Monografía Destacada y Calendario Editorial">Featured Monograph Spotlight &amp; Release Desk</h2>
+        </div>
+        <div class="tp-featured-desk-controls" role="toolbar" aria-label="Featured monograph rotation controls">
+          <span class="tp-spotlight-counter" data-spotlight-counter data-en="{esc(counter_en)}" data-es="{esc(counter_es)}">{esc(counter_en)}</span>
+          <button type="button" class="tp-spotlight-step-btn" data-spotlight-step="prev" data-en="← Prev" data-es="← Ant.">← Prev</button>
+{pills_block}
+          <button type="button" class="tp-spotlight-step-btn" data-spotlight-step="next" data-en="Next →" data-es="Sig. →">Next →</button>
+        </div>
+      </div>
+      <p class="tp-sr-only" aria-live="polite" data-spotlight-live></p>
+      <div class="tp-featured-desk-grid">
+        <div class="tp-spotlight-stage">
+{slides_block}
+        </div>
+        <aside class="tp-release-schedule-rail" aria-labelledby="tp-release-schedule-heading">
+          <div class="tp-release-rail-head">
+            <span class="tp-kicker" data-en="Autonomous Editorial Calendar · Mon / Wed / Fri" data-es="Calendario Editorial Autónomo · Lun / Mié / Vie">Autonomous Editorial Calendar · Mon / Wed / Fri</span>
+            <h3 id="tp-release-schedule-heading" class="tp-release-rail-title" data-en="Scheduled Monograph Release Queue" data-es="Calendario de Lanzamientos Programados">Scheduled Monograph Release Queue</h3>
+            <p class="tp-release-rail-sub" data-en="Upcoming editions advance to publication only after passing offline citation, kernel, and negative-control verifiers." data-es="Las próximas ediciones se publican únicamente tras aprobar verificadores fuera de línea de citas, kernels y controles negativos.">Upcoming editions advance to publication only after passing offline citation, kernel, and negative-control verifiers.</p>
+          </div>
+          <ul class="tp-release-queue">
+{releases_block}
+          </ul>
+        </aside>
+      </div>
+    </section>"""
+
+
 def render_cover_timegravity_feature(rel_res: str = ".") -> str:
     """Featured Series Essay-Showcase & 13-Step Reading-Order Ribbon on the Home cover."""
     by_code = {p["code"]: p for p in TIMEGRAVITY_PAGES}
@@ -5178,6 +5455,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         </a>
       </nav>
     </section>
+{render_cover_rotating_spotlight_and_schedule(".")}
 {render_cover_timegravity_feature(".")}
 {render_cross_scale_essays_showcase(".", lang)}
 {rows_html}
