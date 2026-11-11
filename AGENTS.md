@@ -27,7 +27,7 @@ Never hand-edit generated HTML, catalog JSON, or companion skill outputs in isol
    ```bash
    python tools/build_longform_folios.py
    ```
-   Regenerates `src/research/data/magazine_catalog.json`, `src/research/informatico.css`, `skills/{engineering,architecture,physics,math,bounties,toolchain}/**`, and all bilingual pages under `src/research/` and `src/research/es-mx/` (`sitemap.xml`, `llms.txt`, `404.html`).
+   Regenerates `src/data/magazine_catalog.json`, `src/informatico.css`, `skills/{engineering,architecture,physics,math,bounties,toolchain}/**`, and all bilingual pages under `src/` and `src/es-mx/` (`sitemap.xml`, `llms.txt`, `404.html`).
 
 ## Offline Verification Gate
 

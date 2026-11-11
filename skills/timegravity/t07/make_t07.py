@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic reference artefact generator for Time & Gravity · T.07 (The Equation with No Time).
 Canonical URL: https://informatico.ai/timegravity/t07/
-Writes src/research/timegravity/t07/files/t07_reference.json (the Page–Wootters history state's conditional
+Writes src/timegravity/t07/files/t07_reference.json (the Page–Wootters history state's conditional
 probabilities against the closed form, the constraint residual, the Jacobi kernel check) and manifest.json.
 Standard library only; byte-for-byte reproducible.
 """
@@ -17,7 +17,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from timegravity_kernel_quantum import PW_D, PW_K, PW_TOL, pw_history_state, pw_kernel_check  # noqa: E402
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t07" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t07" / "files"
 BOUNDARY_EN = (
     "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of "
     "six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. "

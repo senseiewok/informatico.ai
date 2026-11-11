@@ -37,7 +37,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 | `T08-MUNOZ2019` | SINGLE RESULT | Muñoz de Nova et al. 2019, acoustic BEC sonic horizon (analogue only) | https://doi.org/10.1038/s41586-019-1241-0 |
 
 ## 3. Tool-neutral agent packet and security boundary (`security-runtime`)
-1. **Rebuild locally**: `python skills/timegravity/t08/make_t08.py`; standard library only; writes only under `src/research/timegravity/t08/files/`.
+1. **Rebuild locally**: `python skills/timegravity/t08/make_t08.py`; standard library only; writes only under `src/timegravity/t08/files/`.
 2. **Acceptance gate**: `python skills/timegravity/t08/verify_t08_horizon_thermodynamics.py` must print `"status": "PASS"` with `partial_trace_recovers_planck: PASS`; `--planted-defect` must exit non-zero. Then `python tools/check_timegravity_labels.py`.
 3. **Security boundary (`security-runtime`)**: no shell outside the repository, no home-directory access, no outbound network for this task.
 
@@ -55,7 +55,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 
 ## 6. Exact T0–T3 truth boundary
 ### In the repository today (T0/T1)
-- Kernel `tools/timegravity_kernel_horizon.py`, generator, verifier, ledger rows above, and the ES module `src/research/modules/timegravity-slope.mjs`.
+- Kernel `tools/timegravity_kernel_horizon.py`, generator, verifier, ledger rows above, and the ES module `src/modules/timegravity-slope.mjs`.
 
 ### Not on this page (T2/T3)
 - Direct detection of astrophysical Hawking radiation (`61.7 nK` for `1 M_☉` is eight orders of magnitude colder than the `2.725 K` CMB) or the full Unruh effect for a macroscopic thermometer is OPEN.

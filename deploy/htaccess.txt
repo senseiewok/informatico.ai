@@ -1,0 +1,131 @@
+# informatico.ai - Apache per-directory configuration for standalone sibling root (/informatico.ai).
+# Upload by hand as .htaccess in /informatico.ai (deploy/deploy.ps1 skips hidden files). If the site answers 500 after upload,
+# delete this file in cPanel File Manager, then add it back one numbered section at a time to find the
+# directive your AllowOverride does not permit (usually "Options").
+
+# BEFORE UPLOADING: in cPanel File Manager (Settings: show hidden files) open the existing .htaccess in /informatico.ai
+# if there is one, and put the blocks below UNDER its existing lines, never over them: cPanel writes its HTTPS-redirect
+# and handler lines there. Plain http:// already answers 301 to https:// on the live site, so no redirect is added here.
+#
+# ---- 1. Security and cache headers (mod_headers). "always" makes them apply to 404 and 3xx responses too.
+# Keep one header per line, the value in double quotes, and change a header here first; tests/test_informatico_seo.py pins this file.
+<IfModule mod_headers.c>
+  Header always unset Content-Security-Policy
+  # Only this site's own files run or load: no inline script or style, no event-handler or style attributes, no other host, no data:
+  # or blob: source, no frames, workers or plugins, no form submission anywhere, no <base>, and no embedding of these pages.
+  # media-src 'self' allows native playback of same-origin .mp3 narrations and .webm scientific plates.
+  # require-trusted-types-for 'script' + trusted-types 'none' reject DOM string injection (innerHTML and the like).
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self'; style-src-attr 'none'; img-src 'self'; font-src 'self'; connect-src 'self'; media-src 'self'; frame-src 'none'; worker-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'"
+  Header always unset X-Content-Type-Options
+  Header always set X-Content-Type-Options "nosniff"
+  Header always unset Referrer-Policy
+  Header always set Referrer-Policy "no-referrer"
+  Header always unset X-Frame-Options
+  Header always set X-Frame-Options "DENY"
+  Header always unset Permissions-Policy
+  Header always set Permissions-Policy "accelerometer=(), autoplay=(), bluetooth=(), browsing-topics=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), hid=(), idle-detection=(), interest-cohort=(), local-fonts=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), xr-spatial-tracking=()"
+  Header always unset Cross-Origin-Opener-Policy
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always unset Cross-Origin-Resource-Policy
+  Header always set Cross-Origin-Resource-Policy "same-origin"
+  Header always unset Strict-Transport-Security
+  Header always set Strict-Transport-Security "max-age=300"
+  # Revalidate HTML, CSS, JS, JSON, XML, and TXT on each load (304 when unchanged); cache fonts, images, audio, video, and 3D meshes for a week.
+  <FilesMatch "\.(html|css|js|mjs|json|xml|txt)$">
+    Header unset Cache-Control
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.(woff2|woff|webp|avif|png|jpg|jpeg|gif|svg|ico|mp3|webm|glb|3mf)$">
+    Header unset Cache-Control
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+</IfModule>
+
+# ---- 2. Content types (mod_mime).
+<IfModule mod_mime.c>
+  AddType text/javascript .js .mjs
+  AddType text/css .css
+  AddType font/woff2 .woff2
+  AddType font/woff .woff
+  AddType image/webp .webp
+  AddType image/avif .avif
+  AddType image/svg+xml .svg
+  AddType application/xml .xml
+  AddType text/plain .txt
+  AddType application/json .json
+  AddType application/manifest+json .webmanifest
+  AddType text/csv .csv
+  AddType audio/mpeg .mp3
+  AddType video/webm .webm
+  AddType model/gltf-binary .glb
+  AddType model/3mf .3mf
+  AddType model/step .step .stp
+  AddType image/vnd.dxf .dxf
+  AddCharset utf-8 .html .css .js .mjs .txt .xml .json .csv .step .stp .dxf
+</IfModule>
+
+# ---- 3. No directory listings.
+Options -Indexes
+
+# ---- 4. Never serve hidden or stray files.
+<IfModule mod_authz_core.c>
+  <FilesMatch "(^\.|\.(map|bak|backup|orig|tmp|swp|log|sql|ini|env|py|ps1|cmd|sh|md|ya?ml)$|~$)">
+    Require all denied
+  </FilesMatch>
+</IfModule>
+<IfModule !mod_authz_core.c>
+  <FilesMatch "(^\.|\.(map|bak|backup|orig|tmp|swp|log|sql|ini|env|py|ps1|cmd|sh|md|ya?ml)$|~$)">
+    Order allow,deny
+    Deny from all
+  </FilesMatch>
+</IfModule>
+
+# ---- 4a. Deny deploy sync-state manifest if present.
+<IfModule mod_authz_core.c>
+  <Files ".ftp-deploy-sync-state.json">
+    Require all denied
+  </Files>
+</IfModule>
+<IfModule !mod_authz_core.c>
+  <Files ".ftp-deploy-sync-state.json">
+    Order allow,deny
+    Deny from all
+  </Files>
+</IfModule>
+
+# ---- 4b. Hidden folders such as /.git/ or /.svn/ answer 404; /.well-known/ (certificate renewal) is left alone.
+<IfModule mod_alias.c>
+  RedirectMatch 404 "/\.(?!well-known/)"
+  RedirectMatch 301 "^/favicon\.(?:ico|png)$" "/images/icon-32.png"
+  RedirectMatch 301 "^/apple-touch-icon(?:-\d+x\d+)?(?:-precomposed)?\.png$" "/images/apple-touch-icon.png"
+</IfModule>
+
+# ---- 4c. Standalone root canonical host, legacy path, cross-domain, and Spanish locale redirects (mod_rewrite).
+# /informatico.ai IS the standalone document root of https://informatico.ai/, so no internal subdirectory rewrite is needed.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.informatico\.ai$ [NC]
+  RewriteCond %{REQUEST_URI} !^/\.well-known/
+  RewriteRule ^(.*)$ https://informatico.ai/$1 [R=301,L,QSA]
+  RewriteCond %{HTTP_HOST} ^informatico\.ai$ [NC]
+  RewriteRule ^research(?:/(.*))?$ https://informatico.ai/$1 [R=301,L,QSA]
+  RewriteCond %{HTTP_HOST} ^informatico\.ai$ [NC]
+  RewriteRule ^cf(?:/(.*))?$ https://senseiewok.ai/cf/$1 [R=301,L,QSA]
+  RewriteCond %{HTTP_HOST} ^informatico\.ai$ [NC]
+  RewriteRule ^es(?:/(.*))?$ https://informatico.ai/es-mx/$1 [R=301,L]
+  RewriteCond %{HTTP_HOST} ^informatico\.ai$ [NC]
+  RewriteCond %{ENV:REDIRECT_STATUS} ^$
+  RewriteCond %{QUERY_STRING} (?:^|&)lang=es(?:-mx)?(?:&|$) [NC]
+  RewriteRule ^(?!es-mx(?:/|$))(.*)$ https://informatico.ai/es-mx/$1? [R=301,L]
+</IfModule>
+
+# ---- 5. The site's own 404 page, for missing files and for the denied ones in sections 4 and 4b (a 403 would confirm the file exists).
+ErrorDocument 404 /404.html
+ErrorDocument 403 /404.html
+
+# ---- 6. Compression.
+<IfModule mod_deflate.c>
+<IfModule mod_filter.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json application/xml text/plain image/svg+xml
+</IfModule>
+</IfModule>

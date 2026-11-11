@@ -38,7 +38,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 | `T10-LVK2025` | SINGLE RESULT | GW250114 SNR 80 Kerr ringdown and area law (young row) | https://doi.org/10.1103/kw5g-d732 |
 
 ## 3. Tool-neutral agent packet and security boundary (`security-runtime`)
-1. **Rebuild locally**: `python skills/timegravity/t09/make_t09.py`; standard library only; writes only under `src/research/timegravity/t09/files/`.
+1. **Rebuild locally**: `python skills/timegravity/t09/make_t09.py`; standard library only; writes only under `src/timegravity/t09/files/`.
 2. **Acceptance gate**: `python skills/timegravity/t09/verify_t09_kerr_ringdown.py` must print `"status": "PASS"` with `leaver_continued_fraction_roots: PASS`; `--planted-defect` must exit non-zero. Then `python tools/check_timegravity_labels.py`.
 3. **Security boundary (`security-runtime`)**: no shell outside the repository, no home-directory access, no outbound network for this task.
 
@@ -55,7 +55,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 
 ## 6. Exact T0–T3 truth boundary
 ### In the repository today (T0/T1)
-- Kernel `tools/timegravity_kernel_kerr.py`, generator, verifier, ledger rows above, and the ES module `src/research/modules/timegravity-slope.mjs`.
+- Kernel `tools/timegravity_kernel_kerr.py`, generator, verifier, ledger rows above, and the ES module `src/modules/timegravity-slope.mjs`.
 
 ### Not on this page (T2/T3)
 - Never plug published median masses/spins into `A(M, χ)` to claim an independent observational test of `A_f > A_1 + A_2`; an observational area-law test requires full joint `(M, χ)` posteriors gated at the merger time (`T10-ISI2021`, `T10-LVK2025`), quoted as those papers' own reported results.

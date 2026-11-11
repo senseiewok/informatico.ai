@@ -11,7 +11,7 @@ from pathlib import Path
 from urllib.parse import urljoin
 
 ROOT = Path(__file__).resolve().parent.parent
-RESEARCH = ROOT / "src" / "research"
+RESEARCH = ROOT / "src"
 SKILLS = ROOT / "skills" / "essays"
 sys.path.insert(0, str(ROOT / "tools"))
 sys.path.insert(0, str(ROOT / "tests"))

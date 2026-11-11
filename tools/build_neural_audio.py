@@ -3,7 +3,7 @@
 
 Covers:
   - 60 Informatico.ai Folios (48 Pillar Folios e01..e12, a01..a12, p01..p12, m01..m12 + 6 Bounties b01..b06 + 6 Toolbox x01..x06)
-    in EN-US & ES-MX -> src/research/audio/<slug>-{en,es}.mp3
+    in EN-US & ES-MX -> src/audio/<slug>-{en,es}.mp3
   - 40 Sensei Ewok CF Lab Monographs (c01..c10, p01..p10, d01..d10, l01..l10) in EN-US & ES-MX -> src/cf/audio/<slug>-{en,es}.mp3
 
 Uses a warm, brisk Woman's Neural AI Voice (`en-US-AvaMultilingualNeural` & `es-MX-DaliaNeural` at `rate="+20%"`)
@@ -326,8 +326,8 @@ def build_informatico_scripts() -> list[dict]:
                     "folio_id": fid,
                     "en_segments": chapters_en,
                     "es_segments": chapters_es,
-                    "en_out": SRC / "research" / "audio" / f"{slug}-en.mp3",
-                    "es_out": SRC / "research" / "audio" / f"{slug}-es.mp3",
+                    "en_out": SRC / "audio" / f"{slug}-en.mp3",
+                    "es_out": SRC / "audio" / f"{slug}-es.mp3",
                 }
             )
 
@@ -414,8 +414,8 @@ def build_informatico_scripts() -> list[dict]:
                     "folio_id": fid,
                     "en_segments": chapters_en,
                     "es_segments": chapters_es,
-                    "en_out": SRC / "research" / "audio" / f"{slug}-en.mp3",
-                    "es_out": SRC / "research" / "audio" / f"{slug}-es.mp3",
+                    "en_out": SRC / "audio" / f"{slug}-en.mp3",
+                    "es_out": SRC / "audio" / f"{slug}-es.mp3",
                 }
             )
     return items
@@ -592,7 +592,7 @@ async def generate_all(force: bool = False, informatico_only: bool = False) -> i
             for item in inf_items
         },
     }
-    inf_man_path = SRC / "research" / "audio" / "manifest.json"
+    inf_man_path = SRC / "audio" / "manifest.json"
     inf_man_path.parent.mkdir(parents=True, exist_ok=True)
     inf_man_path.write_text(json.dumps(inf_manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
@@ -636,7 +636,7 @@ def check_all() -> int:
                 if not (head.startswith(b"ID3") or (len(head) >= 2 and head[0] == 0xFF and (head[1] & 0xE0) == 0xE0)):
                     errors.append(f"Invalid MP3 header in {path.relative_to(ROOT).as_posix()}")
 
-    inf_man_path = SRC / "research" / "audio" / "manifest.json"
+    inf_man_path = SRC / "audio" / "manifest.json"
     if not inf_man_path.is_file():
         errors.append(f"Missing audio manifest: {inf_man_path.relative_to(ROOT).as_posix()}")
     else:

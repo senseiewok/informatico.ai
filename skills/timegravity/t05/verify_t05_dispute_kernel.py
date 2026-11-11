@@ -23,7 +23,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from timegravity_kernel_dispute import DISPUTE_TOL, TN_DC_OVER_SIGMA_APPENDIX, check_dispute  # noqa: E402
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t05" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t05" / "files"
 
 
 def verify_reference_block() -> dict:

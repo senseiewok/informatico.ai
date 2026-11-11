@@ -21,7 +21,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from timegravity_kernel_entangle import ENT_TOL, NEG_TOL, check_bmv  # noqa: E402
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t05" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t05" / "files"
 
 
 def verify_reference_files() -> dict:

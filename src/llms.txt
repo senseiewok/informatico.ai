@@ -1,0 +1,120 @@
+# Informatico.ai
+
+> 48 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
+
+Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (79 SKILL.md companions, Python verifiers, 13-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
+
+## Civil Engineering & Construction
+
+- [Civil Engineering & Construction](https://informatico.ai/engineering/): Twelve interactive essays on civil engineering and construction: concrete pumping, 3D printing, bridges, tunnel boring machines and self-healing concrete.
+- [E.01 Stokes–Brinkman Flow in Porous Materials](https://informatico.ai/engineering/e01/): How viscous shear and Darcy drag balance inside porous limestone, capillary mortars and biological hydrogels, with an interactive percolation model.
+- [E.02 Herschel–Bulkley Rheology of Pumped Concrete](https://informatico.ai/engineering/e02/): How the yield-stress rheology of Bingham, Herschel and Bulkley sets pipe pressure, forms a solid plug core and keeps concrete pumping free of blockages.
+- [E.03 Acoustic Metamaterials: Helmholtz Sound Absorbers](https://informatico.ai/engineering/e03/): How coiled quarter-wave resonators and micro-slit boundary layers absorb nearly all low-frequency sound in a panel 1/19th of a wavelength thick.
+- [E.04 Counter-Current Enthalpy Recovery Exchangers](https://informatico.ai/engineering/e04/): How membrane exchangers pass heat and water vapor from exhaust to supply air, recovering 88.2% sensible and 79.4% latent energy without frost.
+- [E.05 Terzaghi Soil Mechanics and CFA Deep Foundations](https://informatico.ai/engineering/e05/): How Karl Terzaghi's effective stress principle and consolidation theory, with continuous flight auger piles, govern building settlement and liquefaction.
+- [E.06 Nonlinear Structural Dynamics and Seismic Isolation](https://informatico.ai/engineering/e06/): How Biot's earthquake spectra, Newmark–Hall ductility and Robinson's lead-rubber bearings decouple hospitals and laboratories from ground motion.
+- [E.07 Suspension Bridge Flutter and Scanlan Derivatives](https://informatico.ai/engineering/e07/): How Robert Scanlan's flutter derivatives govern twin-box bridge decks in extreme wind, and how physics-informed neural networks read them from few sensors.
+- [E.08 EPB Tunnel Boring Machines and Settlement Troughs](https://informatico.ai/engineering/e08/): How the Peck–Mair Gaussian settlement trough predicts ground movement above city tunnels, paired with graph neural network twins of the subsurface.
+- [E.09 Self-Healing Concrete: Bacterial and Crystalline](https://informatico.ai/engineering/e09/): How Bacillus pseudofirmus spores and crystalline admixtures seal microcracks in concrete by growing calcium carbonate, tracked with ultrasonic coda waves.
+- [E.10 3D Concrete Printing: Extrusion and Buildability](https://informatico.ai/engineering/e10/): How Nicolas Roussel's thixotropic structuration and Suiker's buckling laws decide whether a robot-printed concrete wall stands without formwork.
+- [E.11 SIMP Topology Optimization and Inerter Damping](https://informatico.ai/engineering/e11/): How Bendsøe and Sigmund's bone-like topology optimization and Formula 1 flywheel inerters cut floor concrete by 65% while calming wind sway in towers.
+- [E.12 Verified RISC-V Silicon and Firefly Grid Control](https://informatico.ai/engineering/e12/): How Anthropic's 180-million-line Rocq proof for RISC-V chips, Control Barrier Functions and firefly phase-locking stabilize renewable power grids.
+
+## Architecture
+
+- [Architecture](https://informatico.ai/architecture/): Twelve interactive essays on architecture: stone vaults, timber gridshells, Barragán's color, sky-cooling roofs and facades that move with humidity and sun.
+- [A.01 Funicular Thrust Surfaces in Stone and Timber Shells](https://informatico.ai/architecture/a01/): How compression-only stone vaults and cross-laminated timber shells stand under Heyman's middle-third rule, with a condensation-free springer detail.
+- [A.02 Reciprocal Timber Gridshells (Nexorades)](https://informatico.ai/architecture/a02/): How bolt-free reciprocal timber frames, where each beam rests on its neighbor, turn shell thrust into local bending and span large roofs with short pieces.
+- [A.03 Double-Skin Facades and Buoyancy Stack Ventilation](https://informatico.ai/architecture/a03/): How the thermosiphon stack effect and solar shading inside multi-story ventilated glass cavities cut mechanical cooling loads without overheating.
+- [A.04 From Archigram to British High-Tech Architecture](https://informatico.ai/architecture/a04/): How Archigram's 1960s Plug-In City manifestos shaped Rogers, Piano, Rice and Foster: cast-steel exoskeletons, open floors and crane-replaceable modules.
+- [A.05 Room Acoustics: Sabine–Eyring Reverberation](https://informatico.ai/architecture/a05/): How Wallace Sabine's decay law, Carl Eyring's absorption formula and Manfred Schroeder's prime-sequence coffers shape reverberation and noise fatigue.
+- [A.06 Net-Zero Water and Greywater Constructed Wetlands](https://informatico.ai/architecture/a06/): How Kadlec–Knight reed beds recycle 95% of building greywater, while 60 °C hot-water loops and UV-C reactors keep Legionella and Pseudomonas out.
+- [A.07 Luis Barragán's Chromatic Tectonics](https://informatico.ai/architecture/a07/): How Luis Barragán, Chucho Reyes Ferreira and Josef Albers turned mineral pigments like Rosa Mexicano and Mexican sunlight into architecture of color.
+- [A.08 Radiative Sky-Cooling Roofs and Phase-Change Walls](https://informatico.ai/architecture/a08/): How photonic roofs send building heat through the 8–13 μm atmospheric window into cold space, even under midday sun, paired with phase-change walls.
+- [A.09 Hygroscopic Programmable Timber Skins](https://informatico.ai/architecture/a09/): How Timoshenko's bilayer curvature theory and Achim Menges's beech skins let building facades open and close with humidity, using no motors at all.
+- [A.10 Miura-Ori Origami Deployable Facades](https://informatico.ai/architecture/a10/): How Koryo Miura's fold and the folded metamaterials of Schenk and Guest drive adaptive, deployable solar facades inspired by the mashrabiya screen.
+- [A.11 3D Polyhedral Graphic Statics and Stone Vaults](https://informatico.ai/architecture/a11/): How James Clerk Maxwell's reciprocal force polyhedra and open-source COMPAS software design thin, unreinforced vaulted floors with 72% less concrete.
+- [A.12 Tensegrity Cable Domes and Sky-Cooling Canopies](https://informatico.ai/architecture/a12/): How Sergio Pellegrino's prestressed tensegrity domes and 8–13 μm radiative sky-cooling membranes shade and cool civic plazas using zero electricity.
+
+## Physics
+
+- [Physics](https://informatico.ai/physics/): Twelve interactive essays on physics: Formula 1 aerodynamics, the wave physics of color, cilia and mucus, Taylor-cone aerosols and topological photonics.
+- [P.01 Fluctuation–Dissipation and Allosteric Gating Energy](https://informatico.ai/physics/p01/): How Keizer's fluctuation theory, Harada–Sasa dissipation and Hill cycle diagrams measure the energy efficiency of ABC-transporter gating cycles.
+- [P.02 Active Matter: Ciliary Metachronal Waves](https://informatico.ai/physics/p02/): How low-Reynolds-number hydrodynamics and Kuramoto phase-lag synchronization make carpets of airway cilia beat in waves that move fluid together.
+- [P.03 Mucin Hydrogel Rheology and Anomalous Subdiffusion](https://informatico.ai/physics/p03/): How Carreau–Yasuda shear-thinning, reptation and anomalous subdiffusion decide how fast gene-delivery nanoparticles can cross the airway mucus mesh.
+- [P.04 Electrokinetics of Airway Surface Hydration](https://informatico.ai/physics/p04/): How Nernst–Planck electrodiffusion, Donnan swelling pressure and liquid flux across the epithelium set the critical hydration threshold of airway surfaces.
+- [P.05 Quantum Tunneling: WKB Barrier Penetration](https://informatico.ai/physics/p05/): How Gamow's WKB tunneling integral, Marcus reorganization energy and kinetic isotope effects shape the chemistry of base editing of nonsense mutations.
+- [P.06 de Gennes Polymer Reptation in Entangled Gels](https://informatico.ai/physics/p06/): How Pierre-Gilles de Gennes's tube model and Doi–Edwards relaxation govern how 4.5 kb mRNA and gene-editing polyplexes slither through entangled gels.
+- [P.07 Formula 1 Ground-Effect Venturi Aerodynamics](https://informatico.ai/physics/p07/): How underfloor Venturi tunnels, edge vortices and the 2026 FIA active aerodynamics rules balance downforce against porpoising in Formula 1 cars.
+- [P.08 The Wave Physics of Color](https://informatico.ai/physics/p08/): How light waves between 380 and 780 nm make pearlescent car paint shift color with angle, while Luis Barragán's lime walls keep a calm, steady hue.
+- [P.09 Electrohydrodynamic Taylor Cones and Aerosols](https://informatico.ai/physics/p09/): How Sir Geoffrey Taylor's 49.3° equilibrium cone and the Rayleigh charge limit govern electrospray, a precise way to turn a liquid into a fine aerosol.
+- [P.10 Topological Photonics and Chern Numbers](https://informatico.ai/physics/p10/): How Haldane and Raghu's Berry curvature and integer Chern numbers let light and sound flow around sharp defects with zero reflection.
+- [P.11 Surface-Code Quantum Computing and Clean Nitrogen](https://informatico.ai/physics/p11/): How Kitaev's topological surface-code stabilizers in Stim and PySCF quantum phase estimation decode room-temperature nitrogen fertilizer catalysis.
+- [P.12 Hilbert's Sixth Problem: Atoms to Navier–Stokes](https://informatico.ai/physics/p12/): How Yu Deng, Zaher Hani and Xiao Ma derived the incompressible Navier–Stokes fluid equations from colliding Newtonian spheres over long times.
+
+## Mathematics
+
+- [Mathematics](https://informatico.ai/math/): Twelve interactive essays on mathematics: Fermat's Last Theorem in Lean 4, F1 optimal control, the geometry of color, optimal transport and topology.
+- [M.01 Fermat's Last Theorem in Lean 4: Modularity Lifting](https://informatico.ai/math/m01/): How the Lean 4 formalization of Fermat's Last Theorem and Taylor–Wiles patching work, and how their stepwise proofs mirror energy landscapes.
+- [M.02 Riemann Zeta Zero-Density Estimates in Lean 4](https://informatico.ai/math/m02/): Inside the Zeta23 and XiPrime Lean 4 proofs: how mathematicians bound exceptions to the Riemann critical line and what spectral gaps describe.
+- [M.03 Cap Sets, FunSearch and AlphaEvolve](https://informatico.ai/math/m03/): How Google DeepMind's FunSearch found larger cap sets and AlphaEvolve multiplied 4×4 complex matrices with 48 products, reshaping extremal combinatorics.
+- [M.04 Polynomial Freiman–Ruzsa and the Magma Graph](https://informatico.ai/math/m04/): How Terence Tao and the Lean community formalized Marton's conjecture with entropy methods and mapped all 4,694 × 4,694 pairs of magma laws.
+- [M.05 AlphaGeometry 2: Neuro-Symbolic Deductive Search](https://informatico.ai/math/m05/): How pairing a symbolic deduction engine with neural auxiliary-point generation solves Olympiad geometry, and how the same idea locates 3D binding sites.
+- [M.06 Fine-Grained Complexity and Process Supervision](https://informatico.ai/math/m06/): How Ryan Williams's APSP speedup and step-level process reward models prune errors in formal proof search and in genomic off-target scans.
+- [M.07 F1 Energy Control with Pontryagin's Maximum Principle](https://informatico.ai/math/m07/): How Pontryagin's Maximum Principle schedules the 350 kW electric boost of 2026 Formula 1 cars without clipping the battery, sped up by neural operators.
+- [M.08 The Riemannian Geometry of Color Perception](https://informatico.ai/math/m08/): How Grassmann's projection creates metamers, colors that look the same but differ in light, and how Schrödinger's curved metric defines true hue paths.
+- [M.09 Monge–Kantorovich Optimal Transport](https://informatico.ai/math/m09/): How Jean-David Benamou and Yann Brenier showed that Wasserstein-2 optimal transport is a fluid flow along geodesics, governed by Hamilton–Jacobi.
+- [M.10 Persistent Homology and Percolating Pores](https://informatico.ai/math/m10/): How Edelsbrunner, Letscher and Zomorodian's persistent homology finds the pore throats that let fluid percolate through materials at every scale.
+- [M.11 The 3D Kakeya Conjecture and Riemann Zero Bounds](https://informatico.ai/math/m11/): How Hong Wang and Joshua Zahl solved the 3D Kakeya needle conjecture, paired with Guth and Maynard's 30/13 Riemann zero-density breakthrough.
+- [M.12 Anthropic Lean 4 Complexity and Post-Quantum Locks](https://informatico.ai/math/m12/): How Anthropic's machine-checked Lean 4 complexity proofs pair with NIST FIPS 203 crystal lattices to protect digital trust against quantum attacks.
+
+## Open-Bounty & Prize Crucible (B.01–B.06)
+
+- [Open-Bounty & Prize Crucible](https://informatico.ai/bounties/): Six interactive bounty folios with reproducible Python verifiers and AI skills for Erdős Lean 4 problems, XPRIZE Quantum, Carbon Removal and Sky-Cooling.
+- [B.01 (BOUNTY-M1) Erdős Sidon Sets and Lean 4 Formalization Bounties](https://informatico.ai/bounties/b01/): How Mian–Chowla greedy sequences, the Erdős–Turán upper bound and Lean 4 formal proofs test Sidon sets, with a reproducible Python verifier.
+- [B.02 (BOUNTY-P1) XPRIZE Quantum and Surface-Code FeMoCo Catalysis](https://informatico.ai/bounties/b02/): How Kitaev's topological surface-code stabilizers in Stim and PySCF quantum phase estimation bound the physical qubits for nitrogen fixation.
+- [B.03 (BOUNTY-E1) XPRIZE Carbon Removal: SIMP Mineralized Floor Slabs](https://informatico.ai/bounties/b03/): How Bendsøe–Sigmund SIMP topology optimization in FEniCS and carbonate mineralization cut floor slab embodied carbon below 45 kg per square meter.
+- [B.04 (BOUNTY-A1) Holcim & Cooling Prizes: 3D Vaults and Sky-Cooling](https://informatico.ai/bounties/b04/): How Maxwell 3D polyhedral graphic statics in COMPAS and 8–13 μm radiative sky-cooling roofs build zero-rebar vaults that cool below ambient air.
+- [B.05 (BOUNTY-P2) PySR Symbolic Regression and PySINDy PDE Discovery](https://informatico.ai/bounties/b05/): How PySINDy sparse operator thresholding, Dedalus spectral solvers and PySR Pareto symbolic regression recover exact fluid laws from noisy sensors.
+- [B.06 (BOUNTY-M2) PhysLean Gauge Anomaly & ITensors.jl Entanglement](https://informatico.ai/bounties/b06/): How HEPLean/PhysLean certifies Standard Model gauge anomaly cancellation in Lean 4 while ITensors.jl and NetKet bound critical quantum entanglement.
+
+## Tech & Tools · The 3D CAD, Open BIM & Small-Studio Toolbox (X.01–X.06)
+
+- [Tech & Tools · The Toolbox](https://informatico.ai/toolchain/): Six interactive 3D CAD and open-tool folios with downloadable STEP, 3MF, GLB and DXF files, Python byte-level verifiers, and skills for small studios.
+- [X.01 (TOOL-CORE-1) Zero-Build WebGL2 GLB Viewer and Manifold Validator](https://informatico.ai/toolchain/x01/): How a zero-dependency WebGL2 loader parses binary glTF 2.0 files while a Python stdlib verifier checks watertight topology and signed mesh volume.
+- [X.02 (TOOL-ENG-1) Code-First Parametric Solids: STEP, 3MF and GLB](https://informatico.ai/toolchain/x02/): How independent engineers generate parametric B-rep solids in Python and audit what survives across STEP AP242, 3MF and GLB with chordal tolerances.
+- [X.03 (TOOL-ARCH-1) Small Architect's Vault, Timber and Open BIM Kit](https://informatico.ai/toolchain/x03/): How small architecture studios generate compression-only stone and timber voussoir arches in Python and export verified STEP, 3MF, DXF and GLB files.
+- [X.04 (TOOL-ARCH-2) Miura-Ori Kinetic Screens: 3D GLB to Laser-Cut DXF](https://informatico.ai/toolchain/x04/): How small studios and makers generate deployable Miura-ori facade shells in 3D GLB and 3MF alongside layered 2D laser-cutter DXF crease patterns.
+- [X.05 (TOOL-FAB-1) SIMP Structural Lattices to Watertight 3MF Meshes](https://informatico.ai/toolchain/x05/): How variable-taper SIMP structural struts are synthesized as watertight 2-manifold 3MF, GLB and STEP meshes with frustum volume and overhang checks.
+- [X.06 (TOOL-PHYS-MATH-1) Topological Metamaterial Cells and Betti Verifier](https://informatico.ai/toolchain/x06/): How pierced genus-one acoustic metamaterial unit cells are exported to GLB, 3MF and STEP while a Python verifier checks Euler and Betti invariants.
+
+## Time & Gravity · Thirteen Pages on an Open Problem (T.00–T.12)
+
+- [Time & Gravity](https://informatico.ai/timegravity/): A reading track from the measured slope in the rate of time to the open problem of time in quantum gravity, with instruments, verifiers and a ledger.
+- [Step 2 · T.02 Everyone Moves at One Rate: Clocks, GPS and c](https://informatico.ai/timegravity/t02/): How moving clocks tick slower by the Lorentz factor, measured from 1938 to 2014, and how the GPS clock correction follows from GM, the orbit radius and c.
+- [Step 3 · T.01 Gravity as a Slope in the Rate of Time](https://informatico.ai/timegravity/t01/): How measured clock-rate differences between heights make a slow body fall at g with no force term, with a live geodesic instrument and a Python verifier.
+- [Step 4 · T.03 What Sets the Slope: Poisson and Equivalence](https://informatico.ai/timegravity/t03/): How the weak-field Einstein equation reduces to Poisson's equation, and how torsion balances, lunar ranging and a satellite show every composition falls alike.
+- [Step 5 · T.04 A Clock in Two Places: the Clock Interferometer](https://informatico.ai/timegravity/t04/): An experiment description: a clock in superposition of two heights loses interference visibility as its proper times decohere, with the formula recomputed live.
+- [Step 6 · T.05 Does Gravity Entangle? Three Channels, One Question](https://informatico.ai/timegravity/t05/): Bose-Marletto-Vedral recomputed: the entanglement phase of two masses, a classical channel that entangles nothing, and the 2025 dispute, at equal weight.
+- [Step 7 · T.06 Does Gravity Collapse the Wave? The Bound](https://informatico.ai/timegravity/t06/): The Diosi-Penrose collapse proposal, its predicted spontaneous radiation, and the Gran Sasso and XENONnT bounds recomputed from the published counts.
+- [Step 8 · T.07 The Equation with No Time: a Page-Wootters Toy](https://informatico.ai/timegravity/t07/): How a stationary quantum state with a clock inside recovers Schrodinger evolution when conditioned on the clock, checked with a pure-Python eigensolver.
+- [Step 9 · T.08 A Horizon Has a Temperature: Rindler Wedges and Hawking's Quarter](https://informatico.ai/timegravity/t08/): How tracing over modes behind a causal horizon turns a pure vacuum state into a Planck thermal bath and fixes black-hole entropy at A/4.
+- [Step 10 · T.09 A Horizon Rings Like a Bell: Kerr Quasinormal Modes and Leaver's Continued Fractions](https://informatico.ai/timegravity/t09/): How a spinning Kerr black hole rings down at frequencies fixed by mass and spin alone, solved from Leaver's continued fractions and checked against GW150914 and GW250114.
+- [Step 11 · T.10 Page's Counting Argument: the Curve on Ten Qubits](https://informatico.ai/timegravity/t10/): Hawking's rising entropy against Page's curve, built from random states on ten qubits and checked against Page's formula, with the area theorem's two tests.
+- [Step 12 · T.11 What Selects the World a Clock Sees? Einselection and Quantum Darwinism](https://informatico.ai/timegravity/t11/): How pointer-commuting photon scattering suppresses spatial superpositions and broadcasts redundant classical records in the electromagnetic bath.
+- [Step 13 · T.12 Two Clocks That Only Meet in Gravity: Dark Sectors and Clock Networks](https://informatico.ai/timegravity/t12/): How universal metric coupling lets spatially separated clocks sense electromagnetically transparent matter while co-located optical clocks bound scalar portals.
+
+## Cross-Scale Featured Essays · Clocks, Stone, and Living Matter (ES.01–ES.07)
+
+- [Cross-Scale Essays](https://informatico.ai/essays/): Seven long-form essays where quantum decoherence, formal verification and porous-media thermodynamics unite falling clocks, stone and living systems.
+- [ES.01 The Mesoscopic Floor: From Vacuum to Hydrogels](https://informatico.ai/essays/mesoscopic-floor/): How one thermal bath governs falling diamonds in ultra-high vacuum and hindered nanoparticles in polymer hydrogels across nineteen Knudsen decades.
+- [ES.02 Derived, Not Measured: Six Evidence Labels](https://informatico.ai/essays/derived-not-measured/): Why machine-precision math deduced from a measured law is still not a measurement: six evidence labels, parent provenance, and eight mutation tests.
+- [ES.03 Barriers, Pores, and Autonomous Clocks](https://informatico.ai/essays/barriers-pores-clocks/): How the thermodynamic uncertainty relation, Brinkman porous screening, and Kramers barrier escape govern clocks, stone mortar, and protein pores.
+- [ES.04 Tensegrity, Microcausality, and Zero Modes](https://informatico.ai/essays/tensegrity-microcausality-zero-modes/): How one rank-nullity index theorem eliminates floppy shear modes in space trusses and fixes quantum subsystem locality in entanglement tests.
+- [ES.05 Islands, Blinders, and Conditional Survival](https://informatico.ai/essays/islands-blinders-conditional-survival/): Compare unitary island saddles, undressed detector subalgebras, and Doob conditional survival costs across six steps in harmonized nats.
+- [ES.06 Timeless Clocks, Torque Bounds, and Formal Proof](https://informatico.ai/essays/coupled-constraints-formal-proof/): How timeless quantum clock constraints, sub-millimetre torsion bounds, bilateral spin echoes, and Lean formal proofs test tabletop gravity.
+- [ES.07 Parallel Gravity Horizons and the Quantum Island](https://informatico.ai/essays/loophole-free-parallel-horizon/): Exact closed-form parallel smeared-gravity horizons, torsion-balance limits, cryogenic valleys, and orthogonal null controls for tabletop entanglement.
+
+## About Informatico.ai & the Shared Verification Engine (Essay Zero)
+
+- [About Informatico & the Verification Engine](https://informatico.ai/about/): How an independent open-source lab builds interactive engineering essays, why every claim carries a verifier, and how testing these models helps research.

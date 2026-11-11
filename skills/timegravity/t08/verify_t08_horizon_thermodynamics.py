@@ -21,7 +21,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from timegravity_kernel_horizon import HORIZON_TOL, check_horizon  # noqa: E402
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t08" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t08" / "files"
 
 
 def verify_reference_files() -> dict:

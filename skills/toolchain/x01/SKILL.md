@@ -26,7 +26,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **ES-MX**: Flujo de Estudio sin Costo (Blender 4.2 + FreeCAD 1.0 + Python 3 stdlib): Ejecuta make_x01.py para generar x01_artifact.glb, x01_artifact.step y x01_artifact.3mf; audita cualquier malla .glb en busca de bordes no-variedad, normales invertidas o bloques corruptos en < 0.05s antes de enviarla a corte o BIM.
 
 ## 3. Tool-Neutral Agent Packet & Security Boundary (`security-runtime`)
-1. **Generate Deterministic 3D Artifacts Locally**: Run `python skills/toolchain/x01/make_x01.py` inside the repository working directory to emit `src/research/toolchain/x01/files/x01_artifact.*` and `manifest.json`.
+1. **Generate Deterministic 3D Artifacts Locally**: Run `python skills/toolchain/x01/make_x01.py` inside the repository working directory to emit `src/toolchain/x01/files/x01_artifact.*` and `manifest.json`.
 2. **Run Byte-Level Verifier as Acceptance Gate**: Run `python skills/toolchain/x01/verify_x01_toolchain_x01_glb_inspector_validator.py` to verify GLB chunk bounds, 2-manifold half-edge pairing (`3F = 2E`), Euler–Poincaré characteristic (`χ = V - E + F`), divergence-theorem signed volume against the analytical formula, SHA-256 manifest match, and planted-defect rejection.
 3. **Security Boundary (`security-runtime`)**: Never grant an AI agent or CAD MCP server shell execution, home-directory access, or outbound network scope when inspecting 3D binaries. Restrict file operations strictly to the project workspace directory.
 
@@ -49,7 +49,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 
 ## 7. Exact T0–T3 Truth Boundary
 ### Certified Geometry in Repository Today (T0/T1)
-- Zero-dependency WebGL2 GLB loader and interactive orbit/wireframe/clipping inspector in src/research/modules/glb-viewer.mjs.
+- Zero-dependency WebGL2 GLB loader and interactive orbit/wireframe/clipping inspector in src/modules/glb-viewer.mjs.
 - Deterministic Python stdlib generator (skills/toolchain/x01/make_x01.py) emitting x01_artifact.glb, x01_artifact.step, x01_artifact.3mf, manifest.json, and 4 malformed fuzz fixtures.
 - Byte-level stdlib verifier (verify_x01_toolchain_x01_glb_inspector_validator.py) certifying χ = 2, V = 24,000.0 mm³, SHA-256 manifest match, 4/4 fuzz rejection, and planted-defect knockout.
 

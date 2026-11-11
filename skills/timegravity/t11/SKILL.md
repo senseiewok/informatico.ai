@@ -38,7 +38,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 | `T06-DONADI2020` | BOUND | Donadi et al. 2020, VIP-2 underground Ge X-ray bound on parameter-free Diósi–Penrose | https://doi.org/10.1038/s41567-020-1008-4 |
 
 ## 3. Tool-neutral agent packet and security boundary (`security-runtime`)
-1. **Rebuild locally**: `python skills/timegravity/t11/make_t11.py`; standard library only; writes only under `src/research/timegravity/t11/files/`.
+1. **Rebuild locally**: `python skills/timegravity/t11/make_t11.py`; standard library only; writes only under `src/timegravity/t11/files/`.
 2. **Acceptance gate**: `python skills/timegravity/t11/verify_t11_einselection.py` must print `"status": "PASS"` with `statevector_matches_zurek_closed_form: PASS`; `--planted-defect` must exit non-zero. Then `python tools/check_timegravity_labels.py`.
 3. **Security boundary (`security-runtime`)**: no shell outside the repository, no home-directory access, no outbound network for this task.
 
@@ -56,7 +56,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 
 ## 6. Exact T0–T3 truth boundary
 ### In the repository today (T0/T1)
-- Kernel `tools/timegravity_kernel_einselection.py`, generator, verifier, ledger rows above, and the ES module `src/research/modules/timegravity-slope.mjs`.
+- Kernel `tools/timegravity_kernel_einselection.py`, generator, verifier, ledger rows above, and the ES module `src/modules/timegravity-slope.mjs`.
 
 ### Not on this page (T2/T3)
 - Whether decohered branches that have become orthogonal in the photon bath (`|⟨E^(0)|E^(1)⟩| = γ^N → 0`) persist as physical Everettian worlds (`PROPOSED`) or are pruned by an objective collapse mechanism (`PROPOSED`/`BOUND`) is `OPEN`.

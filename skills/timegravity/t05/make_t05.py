@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic reference artefact generator for Time & Gravity · T.05 (Does Gravity Entangle, and Would That Settle It?).
 Canonical URL: https://informatico.ai/timegravity/t05/
-Writes src/research/timegravity/t05/files/t05_reference.json (the four branch phases, entanglement phase, concurrence and
+Writes src/timegravity/t05/files/t05_reference.json (the four branch phases, entanglement phase, concurrence and
 negativity for the 2017 proposal's geometry; a grid over mass, separation and hold time for the quantum and LOCC channels;
 the dephasing budget) and manifest.json. Standard library only; reproducible.
 """
@@ -23,7 +23,7 @@ from timegravity_kernel_entangle import (  # noqa: E402
     entanglement_phase, four_branch_state, negativity, negativity_threshold_gamma_t, time_to_full_entanglement,
 )
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t05" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t05" / "files"
 BOUNDARY_EN = (
     "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of "
     "six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. "

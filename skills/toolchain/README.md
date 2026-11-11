@@ -2,7 +2,7 @@
 
 Each folder (`x01/` through `x06/`) contains:
 1. **`SKILL.md`**: Cross-provider AI agent skill (`Claude Code`, `GitHub Copilot`, `Cursor`, `Antigravity`, `Qwen3-Coder`, `Ollama`) with YAML frontmatter and `security-runtime` guardrails.
-2. **`make_<slug>.py`**: Deterministic Python 3 stdlib generator (the primary source of truth) that writes the neutral `.glb`, `.step`, `.3mf`, `.dxf`, and `manifest.json` files into `src/research/toolchain/<slug>/files/`.
+2. **`make_<slug>.py`**: Deterministic Python 3 stdlib generator (the primary source of truth) that writes the neutral `.glb`, `.step`, `.3mf`, `.dxf`, and `manifest.json` files into `src/toolchain/<slug>/files/`.
 3. **`verify_<slug>_*.py`**: Byte-level Python 3 stdlib verifier with `--planted-defect` falsification knockout.
 
 ## Quick Verification

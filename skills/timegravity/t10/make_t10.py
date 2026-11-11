@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic reference artefact generator for Time & Gravity · T.10 (Page's Counting Argument).
 Canonical URL: https://informatico.ai/timegravity/t10/
-Writes src/research/timegravity/t10/files/t10_reference.json (the Haar-random toy's radiation entropy at every cut
+Writes src/timegravity/t10/files/t10_reference.json (the Haar-random toy's radiation entropy at every cut
 against Page's closed form and Hawking's line) and manifest.json. Standard library only; fixed seed, reproducible.
 """
 from __future__ import annotations
@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from timegravity_kernel_bounds import PAGE_N_QUBITS, PAGE_SAMPLES, PAGE_SEED, PAGE_TOL_NATS, page_average_entropy, page_curve_toy  # noqa: E402
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t10" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t10" / "files"
 BOUNDARY_EN = (
     "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of "
     "six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. "

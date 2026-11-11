@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic reference artefact generator for Time & Gravity · T.12 (Two Clocks That Only Meet in Gravity).
 Canonical URL: https://informatico.ai/timegravity/t12/
-Writes src/research/timegravity/t12/files/t12_reference.json (the Planck 2018 dark-to-baryonic matter budget,
+Writes src/timegravity/t12/files/t12_reference.json (the Planck 2018 dark-to-baryonic matter budget,
 the closed-form arsinh vs. composite Gauss-Legendre quadrature proper-time shift of an electromagnetically
 transparent flyby, and the ultralight scalar clock modulation bound) and manifest.json.
 Standard library only; byte-for-byte reproducible.
@@ -29,7 +29,7 @@ from timegravity_kernel_dark_clock import (  # noqa: E402
     ultralight_scalar_clock_bound,
 )
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t12" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t12" / "files"
 BOUNDARY_EN = (
     "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of "
     "six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. "

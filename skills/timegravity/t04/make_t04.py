@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic reference artefact generator for Time & Gravity · T.04 (A Clock in Two Places).
 Canonical URL: https://informatico.ai/timegravity/t04/
-Writes src/research/timegravity/t04/files/t04_reference.json (visibility against height difference and clock
+Writes src/timegravity/t04/files/t04_reference.json (visibility against height difference and clock
 frequency, closed form and state overlap) and manifest.json. Standard library only; byte-for-byte reproducible.
 """
 from __future__ import annotations
@@ -17,7 +17,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 from timegravity_kernel import C, G0  # noqa: E402
 from timegravity_kernel_quantum import OMEGA_SR, ZYCH_TOL, clock_overlap, proper_time_difference, zych_first_zero, zych_visibility  # noqa: E402
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t04" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t04" / "files"
 BOUNDARY_EN = (
     "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of "
     "six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. "

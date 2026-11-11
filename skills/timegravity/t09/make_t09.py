@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic reference artefact generator for Time & Gravity · T.09 (A Horizon Rings Like a Bell).
 Canonical URL: https://informatico.ai/timegravity/t09/
-Writes src/research/timegravity/t09/files/t09_reference.json (Leaver's continued-fraction Kerr quasinormal modes
+Writes src/timegravity/t09/files/t09_reference.json (Leaver's continued-fraction Kerr quasinormal modes
 for l=m=2, n=0 and n=1 across chi in [0, 0.90], Smarr and differential first-law checks, and GW150914-scale SI
 frequencies and damping times) and manifest.json.
 Standard library only; byte-for-byte reproducible.
@@ -25,7 +25,7 @@ from timegravity_kernel_kerr import (  # noqa: E402
     solve_kerr_qnm_branch,
 )
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t09" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t09" / "files"
 BOUNDARY_EN = (
     "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of "
     "six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. "

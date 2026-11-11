@@ -3,7 +3,7 @@
 **30-Second Studio Quick-Start for 1–5 Person Architecture Studios, Solo Engineers, and Physics/Math Makers**
 
 Every Folio in **Tech & Tools · The Toolbox** (`X.01`–`X.06`) ships:
-1. **Committed Neutral 3D & 2D CAD Files** (`src/research/toolchain/x01..x06/files/`) — open directly in **Blender 4.2+**, **FreeCAD 1.0**, **OrcaSlicer / PrusaSlicer**, **QCAD / LibreCAD** with 100% Free & Open-Source Software (zero proprietary software required).
+1. **Committed Neutral 3D & 2D CAD Files** (`src/toolchain/x01..x06/files/`) — open directly in **Blender 4.2+**, **FreeCAD 1.0**, **OrcaSlicer / PrusaSlicer**, **QCAD / LibreCAD** with 100% Free & Open-Source Software (zero proprietary software required).
 2. **Code-as-Source-of-Truth Generator** (`skills/toolchain/x01..x06/make_x01.py..make_x06.py`) — pure Python 3 standard library scripts that deterministically synthesize the `.glb`, `.step`, `.3mf`, `.dxf`, and `manifest.json` files byte-for-bit.
 3. **Byte-Level Verifier & Planted-Defect Knockout** (`skills/toolchain/x01..x06/verify_x01_*.py..verify_x06_*.py`) — verifies $2$-manifold half-edge closure ($3F = 2E$), Euler–Poincaré characteristic ($\chi = V - E + F = 2 - 2g$), divergence-theorem volume, and rejects planted defects.
 4. **Portable Agent Skill (`SKILL.md`)** (`skills/toolchain/x01..x06/SKILL.md`) — cross-provider AI skill with `security-runtime` guardrails.
@@ -15,7 +15,7 @@ Every Folio in **Tech & Tools · The Toolbox** (`X.01`–`X.06`) ships:
 
 ## Directory & Artifact Index
 
-| Folio | Title | Downloadable Files (`src/research/toolchain/<slug>/files/`) | Free Desktop Tools | Generator & Verifier (`skills/toolchain/<slug>/`) |
+| Folio | Title | Downloadable Files (`src/toolchain/<slug>/files/`) | Free Desktop Tools | Generator & Verifier (`skills/toolchain/<slug>/`) |
 | :--- | :--- | :--- | :--- | :--- |
 | **`X.01`** | **Zero-Build WebGL2 GLB Inspector & Byte-Level 2-Manifold Geometry Verifier** | `x01_artifact.glb`, `x01_artifact.step`, `x01_artifact.3mf`, `manifest.json` (+ 4 fuzz fixtures) | Browser WebGL2, Blender 4.2+, FreeCAD 1.0 | `make_x01.py` · `verify_x01_toolchain_x01_glb_inspector_validator.py` |
 | **`X.02`** | **Code-First Parametric Solids & Measured STEP AP242, 3MF, and GLB Round-Trip Fidelity** | `x02_artifact.step`, `x02_artifact.3mf`, `x02_artifact.glb`, `manifest.json` | FreeCAD 1.0, build123d, OrcaSlicer | `make_x02.py` · `verify_x02_toolchain_x02_parametric_step_3mf_roundtrip.py` |

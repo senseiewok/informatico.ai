@@ -47,7 +47,7 @@ from timegravity_kernel_bounds import (  # noqa: E402
     GS_R0_BOUND_M, GS_R0_PARAMFREE_M, XENONNT_R0_90, dp_collapse_time, gran_sasso_signal_counts, page_average_entropy, page_curve_toy,
 )
 
-RESEARCH = ROOT / "src" / "research"
+RESEARCH = ROOT / "src"
 LEDGER = json.loads((ROOT / "timegravity" / "ledger.json").read_text(encoding="utf-8"))
 ROWS = {r["id"]: r for r in LEDGER["rows"]}
 CACHE = json.loads((ROOT / "data" / "folio-citations.cache.json").read_text(encoding="utf-8"))
@@ -3610,7 +3610,7 @@ def render_page(page: dict, catalog: dict, lang: str = "en") -> str:
     slug = page["slug"]
     path = "timegravity/" + (f"{slug}/" if slug else "")
     rel_res = "../.." if slug else ".."
-    rel_root = rel_res + "/.."
+    rel_root = rel_res
     t_en, d_en, t_es, d_es = page["seo"]
     if slug:
         title = f"{t_es if es else t_en} | {BRAND}"

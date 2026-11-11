@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
 import sys
 import unittest
 from html.parser import HTMLParser
@@ -22,7 +23,7 @@ from urllib.parse import urljoin, urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
-RESEARCH = SRC / "research"
+RESEARCH = SRC
 sys.path.insert(0, str(ROOT / "tools"))
 
 import build_longform_folios as builder  # noqa: E402
@@ -62,7 +63,7 @@ class Head(HTMLParser):
         if tag == "h1":
             self._in_h1 = True
             self.h1.append("")
-        for name in ("href", "src", "data-plate-prefix", "data-audio-src", "data-audio-src-es"):
+        for name in ("href", "src", "data-plate-prefix", "data-audio-src", "data-audio-src-es", "data-glb-src"):
             if a.get(name) is not None:
                 self.refs.append((name, a[name]))
 
@@ -106,15 +107,12 @@ def pages() -> list[tuple[str, Path, Path]]:
 
 
 def url_to_file(url: str) -> Path | None:
-    """Where informatico.ai serves an address from (deploy/htaccess.txt section 4c, rule 6)."""
+    """Where informatico.ai serves an address from its standalone document root (src/)."""
     parts = urlsplit(url)
     if parts.netloc != "informatico.ai":
         return None
     path = parts.path
-    if re.match(r"^/(images|fonts|scripts)/|^/styles\.css$", path):
-        f = SRC / path.lstrip("/")
-    else:
-        f = RESEARCH / path.lstrip("/")
+    f = SRC / path.lstrip("/")
     return f / "index.html" if path.endswith("/") else f
 
 
@@ -308,28 +306,62 @@ class SiteFiles(unittest.TestCase):
         self.assertIn("/es-mx/", (RESEARCH / "404.html").read_text(encoding="utf-8"))
 
     def test_htaccess_routes_old_spanish_links_duplicates_and_errors(self):
-        if not (ROOT / "deploy" / "htaccess.txt").is_file():
-            return
-        ht = (ROOT / "deploy" / "htaccess.txt").read_text(encoding="utf-8")
+        ht_path = ROOT / "deploy" / "htaccess.txt"
+        self.assertTrue(ht_path.is_file(), "Missing deploy/htaccess.txt")
+        ht = ht_path.read_text(encoding="utf-8")
+        # Section 1: strict CSP with media-src 'self' for .mp3 narrations and .webm plates + security & cache headers
+        self.assertIn(
+            'Header always set Content-Security-Policy "default-src \'self\'; script-src \'self\'; script-src-attr \'none\'; '
+            'style-src \'self\'; style-src-attr \'none\'; img-src \'self\'; font-src \'self\'; connect-src \'self\'; '
+            'media-src \'self\'; frame-src \'none\'; worker-src \'none\'; base-uri \'none\'; form-action \'none\'; '
+            'frame-ancestors \'none\'; object-src \'none\'; require-trusted-types-for \'script\'; trusted-types \'none\'"',
+            ht,
+        )
+        self.assertIn('Header always set X-Content-Type-Options "nosniff"', ht)
+        self.assertIn('Header always set Referrer-Policy "no-referrer"', ht)
+        self.assertIn('Header always set X-Frame-Options "DENY"', ht)
+        self.assertIn('Header always set Cross-Origin-Opener-Policy "same-origin"', ht)
+        self.assertIn('Header always set Cross-Origin-Resource-Policy "same-origin"', ht)
+        self.assertIn('Header always set Strict-Transport-Security "max-age=300"', ht)
+        self.assertIn(r'<FilesMatch "\.(woff2|woff|webp|avif|png|jpg|jpeg|gif|svg|ico|mp3|webm|glb|3mf)$">', ht)
+        # Section 2: MIME types including WebM and neutral 3D/CAD types
+        for mime_line in (
+            "AddType audio/mpeg .mp3",
+            "AddType video/webm .webm",
+            "AddType model/gltf-binary .glb",
+            "AddType model/3mf .3mf",
+            "AddType model/step .step .stp",
+            "AddType image/vnd.dxf .dxf",
+        ):
+            self.assertIn(mime_line, ht)
+        # Sections 3, 4, 4a, 4b, 5, 6
+        self.assertIn("Options -Indexes", ht)
+        self.assertIn('<Files ".ftp-deploy-sync-state.json">', ht)
+        self.assertIn(r'RedirectMatch 404 "/\.(?!well-known/)"', ht)
+        self.assertIn(r'RedirectMatch 301 "^/favicon\.(?:ico|png)$" "/images/icon-32.png"', ht)
+        self.assertIn(r'RedirectMatch 301 "^/apple-touch-icon(?:-\d+x\d+)?(?:-precomposed)?\.png$" "/images/apple-touch-icon.png"', ht)
+        self.assertIn("ErrorDocument 404 /404.html", ht)
+        self.assertIn("ErrorDocument 403 /404.html", ht)
+        self.assertIn("AddOutputFilterByType DEFLATE", ht)
+        # Section 4c: standalone sibling root mod_rewrite rules
         block = ht[ht.index("# ---- 4c."):ht.index("# ---- 5.")]
         rules = [ln.strip() for ln in block.splitlines() if ln.strip().startswith(("RewriteCond", "RewriteRule"))]
-        self.assertIn(r"RewriteRule ^es(?:/(.*))?$ https://informatico.ai/es-mx/$1 [R=301,L]", rules)
-        self.assertIn(r"RewriteRule ^(?!es-mx(?:/|$))(.*)$ https://informatico.ai/es-mx/$1? [R=301,L]", rules)
-        self.assertIn(r"RewriteCond %{QUERY_STRING} (?:^|&)lang=es(?:-mx)?(?:&|$) [NC]", rules)
+        self.assertEqual(
+            rules[0:3],
+            [
+                r"RewriteCond %{HTTP_HOST} ^www\.informatico\.ai$ [NC]",
+                r"RewriteCond %{REQUEST_URI} !^/\.well-known/",
+                r"RewriteRule ^(.*)$ https://informatico.ai/$1 [R=301,L,QSA]",
+            ],
+        )
         self.assertIn(r"RewriteRule ^research(?:/(.*))?$ https://informatico.ai/$1 [R=301,L,QSA]", rules)
-        self.assertEqual(rules.count(r"RewriteCond %{ENV:REDIRECT_STATUS} ^$"), 2, "both new redirects fire only on the visitor's request")
-        # rule 0: www.senseiewok.ai -> apex comes first, limited to that host, and leaves certificate challenges alone (SEO pass 2026-11-08)
-        self.assertEqual(rules[0:3], [r"RewriteCond %{HTTP_HOST} ^www\.senseiewok\.ai$ [NC]",
-                                      r"RewriteCond %{REQUEST_URI} !^/\.well-known/",
-                                      r"RewriteRule ^(.*)$ https://senseiewok.ai/$1 [R=301,L,QSA]"])
-        alias = rules[-2]
-        self.assertNotIn("404", alias, "/404.html must be rewritten on informatico.ai so the ErrorDocument finds research/404.html")
-        self.assertEqual(rules[-1], r"RewriteRule ^(.*)$ /research/$1 [L,QSA]")
-        # the senseiewok.ai redirect must come before the transparent rewrite and be limited to that host
-        i = rules.index(r"RewriteRule ^research(?:/(.*))?$ https://informatico.ai/$1 [R=301,L,QSA]")
-        self.assertEqual(rules[i - 2], r"RewriteCond %{HTTP_HOST} ^(?:www\.)?senseiewok\.ai$ [NC]")
-        # section 4b still claims /es/ for senseiewok.ai, which is why the Spanish pages are under /es-mx/
-        self.assertIn('RedirectMatch 301 "^/es/?$"', ht)
+        self.assertIn(r"RewriteRule ^cf(?:/(.*))?$ https://senseiewok.ai/cf/$1 [R=301,L,QSA]", rules)
+        self.assertIn(r"RewriteRule ^es(?:/(.*))?$ https://informatico.ai/es-mx/$1 [R=301,L]", rules)
+        self.assertIn(r"RewriteCond %{ENV:REDIRECT_STATUS} ^$", rules)
+        self.assertIn(r"RewriteCond %{QUERY_STRING} (?:^|&)lang=es(?:-mx)?(?:&|$) [NC]", rules)
+        self.assertIn(r"RewriteRule ^(?!es-mx(?:/|$))(.*)$ https://informatico.ai/es-mx/$1? [R=301,L]", rules)
+        # Standalone root needs zero internal /research/$1 rewrite
+        self.assertNotIn("/research/$1", ht)
         self.assertEqual(builder.ES_PREFIX, "es-mx/")
         # verify the regex behaviors directly
         es_rule_pat = re.compile(r"^(?!es-mx(?:/|$))(.*)$")
@@ -341,6 +373,63 @@ class SiteFiles(unittest.TestCase):
         self.assertIsNotNone(qs_pat.search("lang=es"))
         self.assertIsNotNone(qs_pat.search("foo=1&lang=es-MX&bar=2"))
         self.assertIsNone(qs_pat.search("lang=en"))
+        res_rule_pat = re.compile(r"^research(?:/(.*))?$", re.IGNORECASE)
+        self.assertEqual(res_rule_pat.match("research/math/m01/").group(1), "math/m01/")
+        self.assertIsNone(res_rule_pat.match("research").group(1))
+        self.assertIsNone(res_rule_pat.match("researchers"))
+
+    def test_standalone_root_every_html_and_css_asset_resolves_and_upload_check_passes(self):
+        """Every local href, src, plate/audio attribute, and CSS url(...) inside src/ resolves within src/."""
+        self.assertFalse((SRC / "research").exists(), "src/research/ must not exist after standalone root flatten")
+        html_files = sorted(SRC.rglob("*.html"))
+        self.assertGreaterEqual(len(html_files), 179)
+        src_resolved = SRC.resolve()
+        for hf in html_files:
+            rel_html = hf.relative_to(SRC).as_posix()
+            base = SITE + ("" if rel_html == "index.html" else rel_html.removesuffix("index.html"))
+            h = parse(hf)
+            for attr, value in h.refs:
+                if value.startswith(("#", "mailto:", "data:")) or (value.startswith("http") and not value.startswith(SITE)):
+                    continue
+                target = url_to_file(urljoin(base, value))
+                if target is None:
+                    continue
+                resolved = target.resolve()
+                self.assertTrue(
+                    resolved.is_relative_to(src_resolved),
+                    f"{rel_html}: {attr}={value!r} escapes standalone root src/ -> {resolved}",
+                )
+                if attr == "data-plate-prefix":
+                    plate_dir = resolved.parent if not resolved.is_dir() else resolved
+                    self.assertTrue(plate_dir.is_dir(), f"{rel_html}: {attr}={value!r} -> {plate_dir} missing")
+                else:
+                    self.assertTrue(resolved.exists(), f"{rel_html}: {attr}={value!r} -> {resolved} does not exist")
+        css_files = sorted(SRC.rglob("*.css"))
+        self.assertGreaterEqual(len(css_files), 3)
+        for cf in css_files:
+            css_txt = cf.read_text(encoding="utf-8")
+            for raw_url in re.findall(r"url\(\s*['\"]?([^'\")]+)['\"]?\s*\)", css_txt):
+                if raw_url.startswith(("data:", "http:", "https:", "#")):
+                    continue
+                clean_url = raw_url.split("?", 1)[0].split("#", 1)[0]
+                resolved_css_asset = (cf.parent / clean_url).resolve()
+                self.assertTrue(
+                    resolved_css_asset.is_relative_to(src_resolved) and resolved_css_asset.is_file(),
+                    f"{cf.relative_to(SRC)}: broken CSS url({raw_url!r}) -> {resolved_css_asset}",
+                )
+        # Verify deploy/check_upload.py and deploy.local.example.json
+        example_cfg = json.loads((ROOT / "deploy" / "deploy.local.example.json").read_text(encoding="utf-8"))
+        self.assertEqual(example_cfg.get("remoteDir"), "informatico.ai")
+        self.assertEqual(example_cfg.get("server"), "<cpanel-ftp-host>")
+        self.assertEqual(example_cfg.get("user"), "<cpanel-ftp-user>")
+        up = subprocess.run(
+            [sys.executable, "-X", "utf8", str(ROOT / "deploy" / "check_upload.py")],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            timeout=30,
+        )
+        self.assertEqual(up.returncode, 0, up.stdout + up.stderr)
 
     def test_language_button_follows_the_pages_own_alternate(self):
         js = (RESEARCH / "modules" / "theme-plate.mjs").read_text(encoding="utf-8")
@@ -372,7 +461,7 @@ class SiteFiles(unittest.TestCase):
             ".tz-cff-cta",
             ".tp-body .tz-cff-cta",
         ):
-            self.assertIn(required, css, f"Missing {required} in src/research/informatico.css")
+            self.assertIn(required, css, f"Missing {required} in src/informatico.css")
             self.assertIn(required, bundle, f"Missing {required} in tools/folios/css_bundle.py")
 
 

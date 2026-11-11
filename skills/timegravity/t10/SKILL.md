@@ -34,7 +34,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 | `T10-APOLOGIA2025` / `T10-BLINDERS2026` | PROPOSED (preprints) | the island dispute | https://doi.org/10.48550/arXiv.2506.04311 · https://doi.org/10.48550/arXiv.2602.06543 |
 
 ## 3. Tool-neutral agent packet and security boundary (`security-runtime`)
-1. **Rebuild locally**: `python skills/timegravity/t10/make_t10.py`; standard library only; fixed seed; writes only under `src/research/timegravity/t10/files/`.
+1. **Rebuild locally**: `python skills/timegravity/t10/make_t10.py`; standard library only; fixed seed; writes only under `src/timegravity/t10/files/`.
 2. **Acceptance gate**: `python skills/timegravity/t10/verify_t10_page_curve.py` must print `"status": "PASS"` with `turns_over_at_half: PASS`; `--planted-defect` must exit non-zero. Then `python tools/check_timegravity_labels.py`.
 3. **Security boundary (`security-runtime`)**: no shell outside the repository, no home-directory access, no outbound network for this task.
 

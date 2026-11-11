@@ -25,7 +25,7 @@ from __future__ import annotations
 import math
 
 # Exact SI 2019 & material constants (aligned with tools/timegravity_kernel_decoherence.py
-# and src/research/modules/cross-scale-essays.mjs)
+# and src/modules/cross-scale-essays.mjs)
 K_B = 1.380649e-23
 H_PLANCK = 6.62607015e-34
 HBAR = H_PLANCK / (2.0 * math.pi)

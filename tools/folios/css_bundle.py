@@ -3317,7 +3317,7 @@ REVAMP_CSS = r"""
 
 
 def update_informatico_css() -> None:
-    css_path = ROOT / "src" / "research" / "informatico.css"
+    css_path = ROOT / "src" / "informatico.css"
     css = css_path.read_text(encoding="utf-8")
     marker = "/* 5-Act Long-Form Editorial Magazine & Informatico.ai Styles */"
     if marker in css:

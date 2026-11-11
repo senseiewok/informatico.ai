@@ -198,7 +198,7 @@ FOLIO = {'slug': 'x01',
                  'skills/toolchain/x01/verify_x01_toolchain_x01_glb_inspector_validator.py '
                  'locally.'],
  't0_t1_certified': ['Zero-dependency WebGL2 GLB loader and interactive orbit/wireframe/clipping '
-                     'inspector in src/research/modules/glb-viewer.mjs.',
+                     'inspector in src/modules/glb-viewer.mjs.',
                      'Deterministic Python stdlib generator (skills/toolchain/x01/make_x01.py) '
                      'emitting x01_artifact.glb, x01_artifact.step, x01_artifact.3mf, '
                      'manifest.json, and 4 malformed fuzz fixtures.',

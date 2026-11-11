@@ -26,7 +26,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **ES-MX**: Kit de Fabricación Digital y Corte Láser (Inkscape / QCAD / LibreCAD / LaserWeb + Blender): Abre x04_artifact.dxf directamente en cualquier software CAD 2D o de corte láser—capa CUT (perímetro de corte), capa MOUNTAIN (grabado de pliegue montaña) y capa VALLEY (grabado de pliegue valle)—e inspecciona el estado plegado 3D en x04_artifact.glb o imprime el módulo en 3D con x04_artifact.3mf.
 
 ## 3. Tool-Neutral Agent Packet & Security Boundary (`security-runtime`)
-1. **Generate Deterministic 3D Artifacts Locally**: Run `python skills/toolchain/x04/make_x04.py` inside the repository working directory to emit `src/research/toolchain/x04/files/x04_artifact.*` and `manifest.json`.
+1. **Generate Deterministic 3D Artifacts Locally**: Run `python skills/toolchain/x04/make_x04.py` inside the repository working directory to emit `src/toolchain/x04/files/x04_artifact.*` and `manifest.json`.
 2. **Run Byte-Level Verifier as Acceptance Gate**: Run `python skills/toolchain/x04/verify_x04_toolchain_x04_miura_ori_dxf_fabricator.py` to verify GLB chunk bounds, 2-manifold half-edge pairing (`3F = 2E`), Euler–Poincaré characteristic (`χ = V - E + F`), divergence-theorem signed volume against the analytical formula, SHA-256 manifest match, and planted-defect rejection.
 3. **Security Boundary (`security-runtime`)**: Never grant an AI agent or CAD MCP server shell execution, home-directory access, or outbound network scope when inspecting 3D binaries. Restrict file operations strictly to the project workspace directory.
 

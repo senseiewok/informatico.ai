@@ -1,0 +1,7 @@
+{
+  "server": "<cpanel-ftp-host>",
+  "user": "<cpanel-ftp-user>",
+  "certDomain": "<server-cert-domain>",
+  "remoteDir": "informatico.ai",
+  "port": 21
+}

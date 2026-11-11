@@ -19,7 +19,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from timegravity_kernel import GPS_DOUBLE_ENTRY_TOL_US, GPS_TOL_US, check_gps  # noqa: E402
 
-FILES_DIR = ROOT / "src" / "research" / "timegravity" / "t02" / "files"
+FILES_DIR = ROOT / "src" / "timegravity" / "t02" / "files"
 
 
 def verify_reference_files() -> dict:

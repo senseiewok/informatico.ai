@@ -11,7 +11,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-RESEARCH = ROOT / "src" / "research"
+RESEARCH = ROOT / "src"
 TG = RESEARCH / "timegravity"
 TG_ES = RESEARCH / "es-mx" / "timegravity"
 SKILLS = ROOT / "skills" / "timegravity"
@@ -72,9 +72,9 @@ class TimeGravityTrackTests(unittest.TestCase):
                     "timegravity/ledger.schema.json", "timegravity/make_plates.py", "timegravity/refresh_crossref_cache.py",
                     "tools/check_timegravity_labels.py", "tools/build_timegravity.py", "tools/timegravity_kernel.py",
                     "skills/timegravity/README.md", "skills/timegravity/t01/SKILL.md", "skills/timegravity/t01/make_t01.py",
-                    "skills/timegravity/t01/verify_t01_time_slope_geodesic.py", "src/research/modules/timegravity-slope.mjs",
-                    "src/research/timegravity.css", "src/research/plates/t00.png", "src/research/plates/t01.png",
-                    "src/research/timegravity/t01/files/t01_reference.json", "src/research/timegravity/t01/files/manifest.json"):
+                    "skills/timegravity/t01/verify_t01_time_slope_geodesic.py", "src/modules/timegravity-slope.mjs",
+                    "src/timegravity.css", "src/plates/t00.png", "src/plates/t01.png",
+                    "src/timegravity/t01/files/t01_reference.json", "src/timegravity/t01/files/manifest.json"):
             self.assertTrue((ROOT / rel).is_file(), f"missing {rel}")
 
     def test_ledger_schema_fields_and_offline_crossref_resolution(self) -> None:
@@ -926,7 +926,7 @@ class TimeGravityHumansAndPlatesTests(unittest.TestCase):
         self.assertEqual(len(seen_titles), 12, "Every step T.01..T.12 must have a distinct Plate {code}-D SVG title")
 
     def test_derived_not_measured_chip_and_parent_tooltips(self) -> None:
-        css = (ROOT / "src" / "research" / "timegravity.css").read_text(encoding="utf-8")
+        css = (ROOT / "src" / "timegravity.css").read_text(encoding="utf-8")
         self.assertIn('content: "DERIVED (NOT MEASURED)"', css)
         self.assertIn('content: "DERIVADO (NO MEDIDO)"', css)
         self.assertIn('html[lang^="es"] .tg-claim[data-tg-label="DERIVED"]::after', css)
