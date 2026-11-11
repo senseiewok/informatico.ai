@@ -183,6 +183,14 @@
     "title": "Computing Persistent Homology",
     "year": 2004
   },
+  "doi:10.1016/0003-4916(75)90211-0": {
+    "fetched": "2026-11-11",
+    "first_author": "Fritzsch",
+    "found": true,
+    "journal": "Annals of Physics",
+    "title": "Unified interactions of leptons and hadrons",
+    "year": 1975
+  },
   "doi:10.1016/0020-7683(66)90018-7": {
     "fetched": "2026-11-10",
     "first_author": "Heyman",
@@ -206,6 +214,14 @@
     "journal": "International Journal of Solids and Structures",
     "title": "Matrix analysis of statically and kinematically indeterminate frameworks",
     "year": 1986
+  },
+  "doi:10.1016/0370-2693(92)91112-m": {
+    "fetched": "2026-11-11",
+    "first_author": "Kaplan",
+    "found": true,
+    "journal": "Physics Letters B",
+    "title": "A method for simulating chiral fermions on the lattice",
+    "year": 1992
   },
   "doi:10.1016/0375-9601(87)90681-5": {
     "fetched": "2026-11-09",
@@ -398,6 +414,14 @@
     "journal": "ACS Catalysis",
     "title": "Open Catalyst 2020 (OC20) Dataset and Community Challenges",
     "year": 2021
+  },
+  "doi:10.1038/nature01997": {
+    "fetched": "2026-11-10",
+    "first_author": "Bertotti",
+    "found": true,
+    "journal": "Nature",
+    "title": "A test of general relativity using radio links with the Cassini spacecraft",
+    "year": 2003
   },
   "doi:10.1038/nature02276": {
     "fetched": "2026-11-09",
@@ -1023,6 +1047,14 @@
     "title": "Diósi-Penrose model of classical gravity predicts gravitationally induced entanglement",
     "year": 2025
   },
+  "doi:10.1103/physrevd.13.3398": {
+    "fetched": "2026-11-11",
+    "first_author": "Jackiw",
+    "found": true,
+    "journal": "Physical Review D",
+    "title": "Solitons with fermion number ½",
+    "year": 1976
+  },
   "doi:10.1103/physrevd.14.870": {
     "fetched": "2026-11-10",
     "first_author": "Unruh",
@@ -1030,6 +1062,14 @@
     "journal": "Physical Review D",
     "title": "Notes on black-hole evaporation",
     "year": 1976
+  },
+  "doi:10.1103/physrevd.16.953": {
+    "fetched": "2026-11-10",
+    "first_author": "Stelle",
+    "found": true,
+    "journal": "Physical Review D",
+    "title": "Renormalization of higher-derivative quantum gravity",
+    "year": 1977
   },
   "doi:10.1103/physrevd.24.1516": {
     "fetched": "2026-11-10",
@@ -1047,6 +1087,22 @@
     "title": "Evolution without evolution: Dynamics described by stationary observables",
     "year": 1983
   },
+  "doi:10.1103/physrevd.39.693": {
+    "fetched": "2026-11-11",
+    "first_author": "Geng",
+    "found": true,
+    "journal": "Physical Review D",
+    "title": "Uniqueness of quark and lepton representations in the standard model from the anomalies viewpoint",
+    "year": 1989
+  },
+  "doi:10.1103/physrevd.41.715": {
+    "fetched": "2026-11-11",
+    "first_author": "Minahan",
+    "found": true,
+    "journal": "Physical Review D",
+    "title": "Comment on anomaly cancellation in the standard model",
+    "year": 1990
+  },
   "doi:10.1103/physrevd.7.2333": {
     "fetched": "2026-11-09",
     "first_author": "Bekenstein",
@@ -1062,6 +1118,14 @@
     "journal": "Physical Review D",
     "title": "Improved constraints on non-Newtonian forces at 10 microns",
     "year": 2008
+  },
+  "doi:10.1103/physrevd.79.084008": {
+    "fetched": "2026-11-10",
+    "first_author": "Horava",
+    "found": true,
+    "journal": "Physical Review D",
+    "title": "Quantum gravity at a Lifshitz point",
+    "year": 2009
   },
   "doi:10.1103/physrevd.93.024026": {
     "fetched": "2026-11-09",
@@ -1094,6 +1158,14 @@
     "journal": "Physical Review Letters",
     "title": "Test of the Equivalence Principle Using a Rotating Torsion Balance",
     "year": 2008
+  },
+  "doi:10.1103/physrevlett.108.031101": {
+    "fetched": "2026-11-11",
+    "first_author": "Biswas",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "Towards Singularity- and Ghost-Free Theories of Gravity",
+    "year": 2012
   },
   "doi:10.1103/physrevlett.11.237": {
     "fetched": "2026-11-10",
@@ -1295,12 +1367,28 @@
     "title": "Information in black hole radiation",
     "year": 1993
   },
+  "doi:10.1103/physrevlett.72.2996": {
+    "fetched": "2026-11-10",
+    "first_author": "Donoghue",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "Leading quantum correction to the Newtonian potential",
+    "year": 1994
+  },
   "doi:10.1103/physrevlett.74.1250": {
     "fetched": "2026-11-04",
     "first_author": "Mason",
     "found": true,
     "journal": "Physical Review Letters",
     "title": "Optical Measurements of Frequency-Dependent Linear Viscoelastic Moduli of Complex Fluids",
+    "year": 1995
+  },
+  "doi:10.1103/physrevlett.75.1260": {
+    "fetched": "2026-11-10",
+    "first_author": "Jacobson",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "Thermodynamics of spacetime: The Einstein equation of state",
     "year": 1995
   },
   "doi:10.1103/physrevlett.77.1413": {
@@ -1335,6 +1423,22 @@
     "title": "Dynamical Decoupling of Open Quantum Systems",
     "year": 1999
   },
+  "doi:10.1103/physrevlett.83.4690": {
+    "fetched": "2026-11-10",
+    "first_author": "Randall",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "An Alternative to Compactification",
+    "year": 1999
+  },
+  "doi:10.1103/physrevlett.84.2778": {
+    "fetched": "2026-11-10",
+    "first_author": "Garriga",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "Gravity in the Randall-Sundrum Brane World",
+    "year": 2000
+  },
   "doi:10.1103/physrevlett.90.160401": {
     "fetched": "2026-11-09",
     "first_author": "Hornberger",
@@ -1358,6 +1462,14 @@
     "journal": "Physical Review Letters",
     "title": "Equality Connecting Energy Dissipation with a Violation of the Fluctuation-Response Relation",
     "year": 2005
+  },
+  "doi:10.1103/physrevlett.98.021101": {
+    "fetched": "2026-11-10",
+    "first_author": "Kapner",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "Tests of the Gravitational Inverse-Square Law below the Dark-Energy Length Scale",
+    "year": 2007
   },
   "doi:10.1103/physrevresearch.2.023068": {
     "fetched": "2026-11-07",
@@ -1414,6 +1526,14 @@
     "journal": "Reviews of Modern Physics",
     "title": "Proton Tunneling in DNA and its Biological Implications",
     "year": 1963
+  },
+  "doi:10.1103/revmodphys.61.1": {
+    "fetched": "2026-11-11",
+    "first_author": "Weinberg",
+    "found": true,
+    "journal": "Reviews of Modern Physics",
+    "title": "The cosmological constant problem",
+    "year": 1989
   },
   "doi:10.1109/tac.2002.803532": {
     "fetched": "2026-11-07",
@@ -1751,6 +1871,14 @@
     "title": "Treatment Wetlands",
     "year": 2008
   },
+  "doi:10.1209/0295-5075/22/2/012": {
+    "fetched": "2026-11-10",
+    "first_author": "Goulian",
+    "found": true,
+    "journal": "Europhysics Letters (EPL)",
+    "title": "Long-Range Forces in Heterogeneous Fluid Membranes",
+    "year": 1993
+  },
   "doi:10.12942/lrr-2003-1": {
     "fetched": "2026-11-08",
     "first_author": "Ashby",
@@ -1822,6 +1950,14 @@
     "journal": "Journal für die reine und angewandte Mathematik (Crelles Journal)",
     "title": "More than two fifths of the zeros of the Riemann zeta function are on the critical line.",
     "year": 1989
+  },
+  "doi:10.1515/znc-1973-11-1209": {
+    "fetched": "2026-11-10",
+    "first_author": "Helfrich",
+    "found": true,
+    "journal": "Zeitschrift für Naturforschung C",
+    "title": "Elastic Properties of Lipid Bilayers: Theory and Possible Experiments",
+    "year": 1973
   },
   "doi:10.1561/2200000073": {
     "fetched": "2026-11-07",

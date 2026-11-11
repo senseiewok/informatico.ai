@@ -49,6 +49,39 @@ def bi(tag: str, en: str, es: str, cls: str = "", extra: str = "") -> str:
     return f'<{tag}{c}{x} data-en="{a(en)}" data-es="{a(es)}">{t(en)}</{tag}>'
 
 
+def _plate_slug(essay: dict) -> str:
+    return str(essay.get("plate_slug") or essay["plate"])
+
+
+def _essay_date(essay: dict) -> str:
+    return str(essay.get("date") or essay["published"])
+
+
+def _instrument_kind(essay: dict) -> str:
+    if essay.get("instrument_kind"):
+        return str(essay["instrument_kind"])
+    inst = essay.get("instrument")
+    if isinstance(inst, str):
+        return inst
+    if isinstance(inst, dict) and inst.get("kind"):
+        return str(inst["kind"])
+    return ""
+
+
+def _skill_path(essay: dict) -> str:
+    if essay.get("skill_path"):
+        return str(essay["skill_path"])
+    sdir = essay.get("skill_dir") or essay["slug"]
+    return f"skills/essays/{sdir}/SKILL.md"
+
+
+def _verifier_path(essay: dict) -> str:
+    if essay.get("verifier_path"):
+        return str(essay["verifier_path"])
+    sdir = essay.get("skill_dir") or essay["slug"]
+    return f"skills/essays/{sdir}/{essay['verifier']}"
+
+
 # ---------------------------------------------------------------------------
 # Pure-stdlib deterministic 1200x630 PNG plate renderer (zero baked-in text)
 # ---------------------------------------------------------------------------
@@ -534,6 +567,267 @@ def generate_essay_plates() -> dict[str, str]:
     p9_bytes = _encode_png(w, h, b9)
     (PLATES_DIR / "essay09.png").write_bytes(p9_bytes)
     hashes["essay09"] = hashlib.sha256(p9_bytes).hexdigest()[:8]
+
+    # Plate 10: essay10.png (Four-Gate Operator Sieve: (sigma, l_b) exclusion quadrant + sign-split potential curves + 4 gates / 2 survivors)
+    b10 = _make_canvas(w, h, stone)
+    _fill_rect(b10, w, h, 36, 36, 1164, 594, vellum)
+    # Left panel: 2D (sigma, l_b) exclusion contour quadrant (x = 86..536, y = 96..524; 10.2 px/um)
+    qx0, qy0, qscale = 86.0, 524.0, 10.2
+    _fill_rect(b10, w, h, int(qx0), 96, 536, int(qy0), (242, 219, 214), 0.72)
+    signed_pts = [(0.0, 27.22), (10.0, 25.47), (18.0, 23.34), (24.0, 20.01), (28.0, 16.22), (32.0, 7.83), (33.01, 0.0)]
+    unsigned_pts = [(0.0, 38.47), (18.0, 36.24), (32.0, 28.69), (40.4, 0.0)]
+
+    def _interp_contour(pts: list[tuple[float, float]], sig_u: float) -> float:
+        if sig_u <= pts[0][0]:
+            return pts[0][1]
+        if sig_u >= pts[-1][0]:
+            return 0.0
+        for idx_c in range(len(pts) - 1):
+            x_a, y_a = pts[idx_c]
+            x_b, y_b = pts[idx_c + 1]
+            if x_a <= sig_u <= x_b:
+                t_c = (sig_u - x_a) / max(x_b - x_a, 1e-9)
+                return y_a + t_c * (y_b - y_a)
+        return 0.0
+
+    # Fill unsigned crescent (warm sienna wash) and sub-27.22 um allowed core (verdigris wash)
+    for px_s in range(int(qx0) + 1, 502, 2):
+        sig_val = (px_s - qx0) / qscale
+        if sig_val < 40.4:
+            lb_u = _interp_contour(unsigned_pts, sig_val)
+            py_u = int(qy0 - lb_u * qscale)
+            _fill_rect(b10, w, h, px_s, py_u, px_s + 2, int(qy0), (244, 233, 215), 0.92)
+        if sig_val < 33.01:
+            lb_s = _interp_contour(signed_pts, sig_val)
+            py_s = int(qy0 - lb_s * qscale)
+            _fill_rect(b10, w, h, px_s, py_s, px_s + 2, int(qy0), (212, 236, 224), 0.96)
+
+    # Sienna dashed unsigned 38.47 um arc
+    for idx_u in range(len(unsigned_pts) - 1):
+        ux0, uy0 = unsigned_pts[idx_u]
+        ux1, uy1 = unsigned_pts[idx_u + 1]
+        for seg_i in range(0, 10, 2):
+            ta = seg_i / 10.0
+            tb = (seg_i + 1.15) / 10.0
+            _draw_line(
+                b10, w, h,
+                qx0 + (ux0 + ta * (ux1 - ux0)) * qscale,
+                qy0 - (uy0 + ta * (uy1 - uy0)) * qscale,
+                qx0 + (ux0 + min(1.0, tb) * (ux1 - ux0)) * qscale,
+                qy0 - (uy0 + min(1.0, tb) * (uy1 - uy0)) * qscale,
+                3.4, sienna, 0.92,
+            )
+    # Solid minium signed 27.22..33.01 um exclusion boundary
+    for idx_s in range(len(signed_pts) - 1):
+        sx0, sy0 = signed_pts[idx_s]
+        sx1, sy1 = signed_pts[idx_s + 1]
+        _draw_line(
+            b10, w, h,
+            qx0 + sx0 * qscale, qy0 - sy0 * qscale,
+            qx0 + sx1 * qscale, qy0 - sy1 * qscale,
+            4.8, minium,
+        )
+    # Axes + active benchmark disc at (18, 18) um
+    _draw_line(b10, w, h, qx0, qy0, 538.0, qy0, 3.0, ink)
+    _draw_line(b10, w, h, qx0, qy0, qx0, 94.0, 3.0, ink)
+    bm_x, bm_y = qx0 + 18.0 * qscale, qy0 - 18.0 * qscale
+    _draw_line(b10, w, h, qx0, bm_y, bm_x, bm_y, 1.8, verdigris, 0.65)
+    _draw_line(b10, w, h, bm_x, qy0, bm_x, bm_y, 1.8, verdigris, 0.65)
+    _draw_disc(b10, w, h, bm_x, bm_y, 12.5, verdigris)
+    _draw_ring(b10, w, h, bm_x, bm_y, 21.0, 3.2, prussian)
+
+    # Center divider
+    _draw_line(b10, w, h, 578.0, 56.0, 578.0, 574.0, 3.0, ink, 0.85)
+
+    # Right-left subplot: Sign-split potential ratio curves across r (+2/3 (l_AdS/r)^2 in prussian vs -exp(-r/l_b) in minium)
+    cx0, cy_zero, cw_r = 618.0, 315.0, 326.0
+    _draw_line(b10, w, h, cx0, 112.0, cx0, 518.0, 2.8, ink)
+    _draw_line(b10, w, h, cx0, cy_zero, cx0 + cw_r, cy_zero, 2.8, ink, 0.9)
+    prev_px, prev_py_pos, prev_py_neg = None, None, None
+    for ri in range(49):
+        u_r = ri / 48.0
+        r_um = 44.0 + u_r * 76.0
+        px_r = cx0 + u_r * cw_r
+        v_pos = (2.0 / 3.0) * ((30.0 / r_um) ** 2)
+        v_neg = -math.exp(-r_um / 30.0)
+        py_pos = cy_zero - min(192.0, v_pos * 560.0)
+        py_neg = cy_zero - max(-192.0, v_neg * 560.0)
+        if prev_px is not None:
+            _draw_line(b10, w, h, prev_px, prev_py_pos, px_r, py_pos, 4.6, prussian)
+            _draw_line(b10, w, h, prev_px, prev_py_neg, px_r, py_neg, 4.6, minium)
+        prev_px, prev_py_pos, prev_py_neg = px_r, py_pos, py_neg
+    # Datum markers at r = 52 um (u = 8 / 76)
+    u52 = (52.0 - 44.0) / 76.0
+    x52 = cx0 + u52 * cw_r
+    y52_pos = cy_zero - (2.0 / 3.0) * ((30.0 / 52.0) ** 2) * 560.0
+    y52_neg = cy_zero + math.exp(-52.0 / 30.0) * 560.0
+    _draw_line(b10, w, h, x52, y52_pos, x52, y52_neg, 2.0, sienna, 0.7)
+    _draw_disc(b10, w, h, x52, y52_pos, 9.0, prussian)
+    _draw_disc(b10, w, h, x52, y52_neg, 9.0, minium)
+
+    # Far-right 4 vertical gate columns + 6 candidate rows with 2 verdigris survivor discs
+    _fill_rect(b10, w, h, 968, 102, 1148, 528, stone, 0.88)
+    gate_xs = (992.0, 1034.0, 1076.0, 1118.0)
+    row_ys = (142.0, 211.0, 280.0, 349.0, 418.0, 487.0)
+    gate_matrix = (
+        (False, True, False, False),
+        (True, False, True, True),
+        (True, True, False, False),
+        (True, True, True, False),
+        (True, True, True, True),
+        (True, True, True, True),
+    )
+    for gx in gate_xs:
+        _draw_line(b10, w, h, gx, 118.0, gx, 512.0, 2.4, rule, 0.95)
+    for r_idx, ry_m in enumerate(row_ys):
+        is_survivor = r_idx >= 4
+        _draw_line(b10, w, h, 980.0, ry_m, 1130.0, ry_m, 1.8, verdigris if is_survivor else rule, 0.65)
+        for g_idx, gx in enumerate(gate_xs):
+            passed = gate_matrix[r_idx][g_idx]
+            if is_survivor and g_idx == 3:
+                _draw_disc(b10, w, h, gx, ry_m, 11.5, verdigris)
+                _draw_ring(b10, w, h, gx, ry_m, 17.5, 2.8, prussian)
+            else:
+                _draw_disc(b10, w, h, gx, ry_m, 6.8, verdigris if passed else minium, 0.92)
+    p10_bytes = _encode_png(w, h, b10)
+    (PLATES_DIR / "essay10.png").write_bytes(p10_bytes)
+    hashes["essay10"] = hashlib.sha256(p10_bytes).hexdigest()[:8]
+
+    # Plate 11: essay11.png (Seven-Gate Crown Sieve: deep navy/gold/cyan entire UV erf(r/2l_*) + Spin(10) 16-state chiral wheel + null-horizon cone & 8x7 crown matrix)
+    navy_outer = (10, 20, 38)
+    navy_bg = (15, 29, 54)
+    navy_card = (21, 39, 70)
+    navy_rule = (48, 82, 124)
+    gold = (224, 178, 76)
+    gold_hi = (246, 214, 124)
+    cyan = (58, 202, 222)
+    emerald = (46, 186, 138)
+    crimson = (218, 76, 64)
+    amber = (230, 146, 56)
+    ivory_line = (222, 230, 242)
+
+    b11 = _make_canvas(w, h, navy_outer)
+    _fill_rect(b11, w, h, 28, 28, 1172, 602, navy_bg)
+    # Three framed triptych cards
+    _fill_rect(b11, w, h, 48, 52, 412, 578, navy_card)
+    _fill_rect(b11, w, h, 430, 52, 770, 578, navy_card)
+    _fill_rect(b11, w, h, 788, 52, 1152, 578, navy_card)
+    _draw_line(b11, w, h, 48, 52, 1152, 52, 2.2, gold, 0.55)
+    _draw_line(b11, w, h, 48, 578, 1152, 578, 2.2, navy_rule, 0.85)
+
+    # Left panel: Short-range radial potential sieve V(r)/V_N(r) (erf(r/2l_*) vs Stelle ghost Yukawa vs 88.11 um fat graviton)
+    lx0, ly_bot, lw_p, lh_p = 80.0, 514.0, 304.0, 372.0
+    ly_top = ly_bot - lh_p
+    # Asymptote V/V_N = 1 and vertical reference walls (32.98 um, 75.0 um, 88.11 um)
+    _draw_line(b11, w, h, lx0, ly_top, lx0 + lw_p, ly_top, 1.8, navy_rule, 0.9)
+    for r_ref, r_col in ((32.98, cyan), (75.0, emerald), (88.11, amber)):
+        rx_m = lx0 + (r_ref / 110.0) * lw_p
+        for seg_y in range(int(ly_top), int(ly_bot), 14):
+            _draw_line(b11, w, h, rx_m, float(seg_y), rx_m, float(min(int(ly_bot), seg_y + 7)), 2.0, r_col, 0.62)
+    _draw_line(b11, w, h, lx0, ly_bot, lx0 + lw_p, ly_bot, 2.8, ivory_line, 0.92)
+    _draw_line(b11, w, h, lx0, ly_bot, lx0, ly_top - 16.0, 2.8, ivory_line, 0.92)
+
+    prev_ent, prev_st, prev_fat = None, None, None
+    for idx_r in range(65):
+        u_r = idx_r / 64.0
+        r_um = 1.5 + u_r * 108.5
+        px_r = lx0 + (r_um / 110.0) * lw_p
+        py_ent = ly_bot - math.erf(r_um / 36.0) * lh_p
+        py_st = ly_bot - (1.0 - math.exp(-r_um / 18.0)) * lh_p
+        py_fat = ly_bot - math.erf(r_um / (2.0 * 88.11)) * lh_p
+        if prev_ent is not None:
+            if idx_r % 2 == 1:
+                _draw_line(b11, w, h, prev_fat[0], prev_fat[1], px_r, py_fat, 3.0, amber, 0.88)
+                _draw_line(b11, w, h, prev_st[0], prev_st[1], px_r, py_st, 3.2, crimson, 0.88)
+            _draw_line(b11, w, h, prev_ent[0], prev_ent[1], px_r, py_ent, 4.8, gold)
+        prev_ent = (px_r, py_ent)
+        prev_st = (px_r, py_st)
+        prev_fat = (px_r, py_fat)
+
+    for r_bm, d_col in ((18.0, cyan), (52.0, emerald), (75.0, gold_hi)):
+        bx_m = lx0 + (r_bm / 110.0) * lw_p
+        by_m = ly_bot - math.erf(r_bm / 36.0) * lh_p
+        _draw_disc(b11, w, h, bx_m, by_m, 8.0, d_col)
+        _draw_ring(b11, w, h, bx_m, by_m, 13.0, 2.4, ivory_line, 0.85)
+
+    # Center panel: Spin(10) 16-state chiral wheel & Fermat cube-sum triad
+    wcx, wcy, wr_outer, wr_inner = 600.0, 315.0, 142.0, 88.0
+    _draw_ring(b11, w, h, wcx, wcy, wr_outer + 18.0, 1.8, navy_rule, 0.75)
+    _draw_ring(b11, w, h, wcx, wcy, wr_outer, 3.4, gold, 0.92)
+    _draw_ring(b11, w, h, wcx, wcy, wr_inner, 2.4, cyan, 0.78)
+    wheel_pts: list[tuple[float, float]] = []
+    for k_w in range(16):
+        ang_w = -0.5 * math.pi + k_w * (2.0 * math.pi / 16.0)
+        wheel_pts.append((wcx + wr_outer * math.cos(ang_w), wcy + wr_outer * math.sin(ang_w)))
+    # Chiral anomaly-cancellation star chords + Fermat cube triad
+    for k_w in range(16):
+        opp = (k_w + 5) % 16
+        _draw_line(b11, w, h, wheel_pts[k_w][0], wheel_pts[k_w][1], wheel_pts[opp][0], wheel_pts[opp][1], 1.5, navy_rule, 0.65)
+    tri_idx = (0, 5, 11)
+    for ti_a in range(3):
+        p_a = wheel_pts[tri_idx[ti_a]]
+        p_b = wheel_pts[tri_idx[(ti_a + 1) % 3]]
+        _draw_line(b11, w, h, p_a[0], p_a[1], p_b[0], p_b[1], 3.2, gold_hi, 0.9)
+    # 16 Weyl state discs: k=0 (nu_R singlet crown), 1..6 (Q_L cyan), 7..9 (u^c gold), 10..12 (d^c emerald), 13..14 (L_L ivory), 15 (e^c crimson)
+    for k_w, (wx, wy) in enumerate(wheel_pts):
+        if k_w == 0:
+            _draw_disc(b11, w, h, wx, wy, 11.5, gold_hi)
+            _draw_ring(b11, w, h, wx, wy, 17.5, 2.8, cyan)
+        elif k_w <= 6:
+            _draw_disc(b11, w, h, wx, wy, 8.2, cyan)
+        elif k_w <= 9:
+            _draw_disc(b11, w, h, wx, wy, 8.2, gold)
+        elif k_w <= 12:
+            _draw_disc(b11, w, h, wx, wy, 8.2, emerald)
+        elif k_w <= 14:
+            _draw_disc(b11, w, h, wx, wy, 8.2, ivory_line)
+        else:
+            _draw_disc(b11, w, h, wx, wy, 8.8, crimson)
+    _draw_disc(b11, w, h, wcx, wcy, 15.0, gold)
+    _draw_ring(b11, w, h, wcx, wcy, 24.0, 2.6, ivory_line, 0.9)
+
+    # Right panel top: Null-horizon causal Killing cone (Gate G6)
+    hcx, hcy = 970.0, 176.0
+    _draw_ring(b11, w, h, hcx, hcy, 86.0, 2.2, amber, 0.48)
+    _draw_line(b11, w, h, hcx - 92.0, hcy - 78.0, hcx + 92.0, hcy + 78.0, 3.6, cyan, 0.95)
+    _draw_line(b11, w, h, hcx - 92.0, hcy + 78.0, hcx + 92.0, hcy - 78.0, 3.6, cyan, 0.95)
+    _draw_line(b11, w, h, hcx - 92.0, hcy - 78.0, hcx + 92.0, hcy - 78.0, 2.0, gold, 0.72)
+    _draw_line(b11, w, h, hcx - 92.0, hcy + 78.0, hcx + 92.0, hcy + 78.0, 2.0, gold, 0.72)
+    _draw_ring(b11, w, h, hcx, hcy, 34.0, 2.8, emerald, 0.92)
+    _draw_disc(b11, w, h, hcx, hcy, 9.5, gold_hi)
+
+    # Right panel bottom: Exact 8-Candidate x 7-Gate (G1..G7) Crown Matrix matching SevenGateCrown.lean
+    crown_matrix = (
+        (True, False, True, False, False, False, False),
+        (True, False, False, True, False, True, False),
+        (True, False, False, False, False, False, False),
+        (False, True, True, True, True, False, True),
+        (True, True, True, True, False, True, False),
+        (False, True, True, True, False, False, False),
+        (True, True, True, True, True, True, False),
+        (True, True, True, True, True, True, True),
+    )
+    gx11 = [832.0 + g_i * 46.0 for g_i in range(7)]
+    ry11 = [302.0 + r_i * 34.0 for r_i in range(8)]
+    for gx_c in gx11:
+        _draw_line(b11, w, h, gx_c, 286.0, gx_c, 554.0, 1.8, navy_rule, 0.85)
+    for r_i, ry_c in enumerate(ry11):
+        is_crown = r_i == 7
+        is_eft = r_i == 6
+        row_col = gold_hi if is_crown else (cyan if is_eft else navy_rule)
+        _draw_line(b11, w, h, 816.0, ry_c, 1124.0, ry_c, 2.2 if is_crown else 1.4, row_col, 0.85 if is_crown else 0.55)
+        for g_i, gx_c in enumerate(gx11):
+            ok_g = crown_matrix[r_i][g_i]
+            if is_crown:
+                _draw_disc(b11, w, h, gx_c, ry_c, 9.2 if g_i == 6 else 7.4, gold_hi if g_i == 6 else gold)
+                if g_i == 6:
+                    _draw_ring(b11, w, h, gx_c, ry_c, 14.5, 2.6, cyan)
+            else:
+                _draw_disc(b11, w, h, gx_c, ry_c, 5.8, emerald if ok_g else crimson, 0.92)
+
+    p11_bytes = _encode_png(w, h, b11)
+    (PLATES_DIR / "essay11.png").write_bytes(p11_bytes)
+    hashes["essay11"] = hashlib.sha256(p11_bytes).hexdigest()[:8]
     return hashes
 
 
@@ -567,7 +861,7 @@ def render_predict_box(essay: dict, is_es: bool = False) -> str:
 
 
 def render_instrument(essay: dict, is_es: bool = False) -> str:
-    kind = essay["instrument_kind"]
+    kind = _instrument_kind(essay)
     if kind == "mesoscopic":
         svg_aria = (
             "Comparación logarítmica de tasa colisional de helio en onda corta, tasa dipolar de fotones térmicos y fracción de difusión de Ogston en hidrogel"
@@ -989,6 +1283,311 @@ def render_instrument(essay: dict, is_es: bool = False) -> str:
       <p class="tp-essay-status" data-cs-status role="status"></p>
     </section>"""
 
+    if kind == "four_gate_sieve":
+        svg_aria = (
+            "Cuadrante de exclusión con signo y sin signo para suavizado gaussiano y longitud de flexión, frente a curvas de cambio fraccional de potencial"
+            if is_es
+            else "Signed and unsigned 95 percent exclusion quadrant for Gaussian smearing and bending length, paired with fractional potential shift curves"
+        )
+        return f"""    <section id="instrument" class="tp-essay-observatory" data-cs-instrument="four_gate_sieve" aria-labelledby="inst-heading">
+      <div class="tp-essay-obs-head">
+        <p class="tp-kicker" data-en="Interactive Four-Gate Operator Sieve &amp; Scale-Bridge Observatory · ES.10" data-es="Observatorio Interactivo de la Criba de Operadores de Cuatro Compuertas · ES.10">Interactive Four-Gate Operator Sieve &amp; Scale-Bridge Observatory · ES.10</p>
+        <h2 id="inst-heading" class="tp-h2" data-en="Signed (σ, ℓ_b) Exclusion Quadrant, Opposite-Sign Potential Shifts &amp; 310 K Helfrich Bridge" data-es="Cuadrante de Exclusión con Signo (σ, ℓ_b), Signos Opuestos de Potencial y Puente de Helfrich a 310 K">Signed (σ, ℓ_b) Exclusion Quadrant, Opposite-Sign Potential Shifts &amp; 310 K Helfrich Bridge</h2>
+      </div>
+      <div class="tp-essay-obs-grid">
+        <svg class="tp-essay-svg" viewBox="0 0 560 320" role="img" aria-label="{svg_aria}">
+          <rect x="6" y="6" width="548" height="308" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule)"/>
+          <g data-fgs-left></g>
+          <g data-fgs-right></g>
+        </svg>
+        <div class="tp-essay-controls">
+          <label class="tp-essay-ctrl">
+            <span data-en="Gaussian smearing width σ (µm)" data-es="Ancho de suavizado gaussiano σ (µm)">Gaussian smearing width σ (µm)</span>
+            <strong data-cs-val="sigma">18.0 µm</strong>
+            <input type="range" min="0" max="35" step="0.5" value="18.0" data-cs-input="sigma">
+          </label>
+          <label class="tp-essay-ctrl">
+            <span data-en="Spatial bending length ℓ_b (µm)" data-es="Longitud de flexión espacial ℓ_b (µm)">Spatial bending length ℓ_b (µm)</span>
+            <strong data-cs-val="lb">18.0 µm</strong>
+            <input type="range" min="0" max="42" step="0.5" value="18.0" data-cs-input="lb">
+          </label>
+          <button type="button" class="tp-cta" data-fgs-scale="brane" aria-pressed="false" data-en="Scale: 2.0 K Spacetime Brane (d = 3) ⇄ 310.15 K Bilayer" data-es="Escala: Brana Espaciotemporal 2.0 K (d = 3) ⇄ Bicapa 310.15 K">Scale: 2.0 K Spacetime Brane (d = 3) ⇄ 310.15 K Bilayer</button>
+          <div class="tp-essay-readout-box">
+            <div><span data-en="Mermin Witness:" data-es="Testigo Mermin:">Mermin Witness:</span> <strong data-cs-read="mermin">⟨M₃⟩ = 3.6509 &gt; 2.8284 (DP 0.3227)</strong></div>
+            <div><span data-en="Signed Edge &amp; Shift:" data-es="Borde con Signo y Cambio:">Signed Edge &amp; Shift:</span> <strong data-cs-read="edge" data-en="ALLOWED · Δφ/Δφ_N = −5.83% (D = 75 µm)" data-es="PERMITIDO · Δφ/Δφ_N = −5.83 % (D = 75 µm)">ALLOWED · Δφ/Δφ_N = −5.83% (D = 75 µm)</strong></div>
+          </div>
+          <button type="button" class="tp-cta" data-cs-knockout aria-pressed="false" data-en="Toggle Planted Sign-Conflation Defect" data-es="Alternar Defecto Plantado de Signo">Toggle Planted Sign-Conflation Defect</button>
+        </div>
+      </div>
+      <div class="tp-essay-table-wrap">
+        <table class="tp-telemetry-benchmark-table" data-fgs-table>
+          <caption data-en="Live 6-Model × 4-Gate Sieve · G1: Sub-50 µm Torsion · G2: Cassini PPN &amp; Unitarity · G3: Mermin ⟨M₃⟩ &gt; 2√2 · G4: Proper-Time Clocks" data-es="Criba en Vivo 6 Modelos × 4 Compuertas · G1: Torsión Sub-50 µm · G2: Cassini PPN y Unitaridad · G3: Mermin ⟨M₃⟩ &gt; 2√2 · G4: Relojes de Tiempo Propio">Live 6-Model × 4-Gate Sieve · G1: Sub-50 µm Torsion · G2: Cassini PPN &amp; Unitarity · G3: Mermin ⟨M₃⟩ &gt; 2√2 · G4: Proper-Time Clocks</caption>
+          <thead>
+            <tr>
+              <th scope="col" data-en="Candidate Operator" data-es="Operador Candidato">Candidate Operator</th>
+              <th scope="col">G1</th>
+              <th scope="col">G2</th>
+              <th scope="col">G3</th>
+              <th scope="col">G4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-fgs-row="scalar_sheet">
+              <th scope="row" data-en="Scalar Sheet" data-es="Lámina Escalar">Scalar Sheet</th>
+              <td data-fgs-cell="scalar_sheet:0" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="scalar_sheet:1" data-en="FAIL" data-es="FALLA">FAIL</td>
+              <td data-fgs-cell="scalar_sheet:2" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="scalar_sheet:3" data-en="FAIL" data-es="FALLA">FAIL</td>
+            </tr>
+            <tr data-fgs-row="stelle_box2">
+              <th scope="row" data-en="Stelle □²" data-es="Stelle □²">Stelle □²</th>
+              <td data-fgs-cell="stelle_box2:0" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="stelle_box2:1" data-en="FAIL" data-es="FALLA">FAIL</td>
+              <td data-fgs-cell="stelle_box2:2" data-en="FAIL" data-es="FALLA">FAIL</td>
+              <td data-fgs-cell="stelle_box2:3" data-en="PASS" data-es="PASA">PASS</td>
+            </tr>
+            <tr data-fgs-row="classical_dp">
+              <th scope="row" data-en="Classical DP" data-es="DP Clásico">Classical DP</th>
+              <td data-fgs-cell="classical_dp:0" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="classical_dp:1" data-en="COND" data-es="COND">COND</td>
+              <td data-fgs-cell="classical_dp:2" data-en="FAIL" data-es="FALLA">FAIL</td>
+              <td data-fgs-cell="classical_dp:3" data-en="FAIL" data-es="FALLA">FAIL</td>
+            </tr>
+            <tr data-fgs-row="horava_nabla4">
+              <th scope="row" data-en="Hořava ∇⁴" data-es="Hořava ∇⁴">Hořava ∇⁴</th>
+              <td data-fgs-cell="horava_nabla4:0" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="horava_nabla4:1" data-en="COND" data-es="COND">COND</td>
+              <td data-fgs-cell="horava_nabla4:2" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="horava_nabla4:3" data-en="PASS" data-es="PASA">PASS</td>
+            </tr>
+            <tr data-fgs-row="warped_rs2">
+              <th scope="row" data-en="Warped RS-II Brane" data-es="Brana Alabeada RS-II">Warped RS-II Brane</th>
+              <td data-fgs-cell="warped_rs2:0" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="warped_rs2:1" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="warped_rs2:2" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="warped_rs2:3" data-en="PASS" data-es="PASA">PASS</td>
+            </tr>
+            <tr data-fgs-row="canonical_qg">
+              <th scope="row" data-en="Canonical QG EFT" data-es="TCE Cuántica Canónica">Canonical QG EFT</th>
+              <td data-fgs-cell="canonical_qg:0" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="canonical_qg:1" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="canonical_qg:2" data-en="PASS" data-es="PASA">PASS</td>
+              <td data-fgs-cell="canonical_qg:3" data-en="PASS" data-es="PASA">PASS</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tp-essay-status" data-cs-status role="status"></p>
+    </section>"""
+
+    if kind == "seven_gate_crown":
+        svg_aria = (
+            "Comparación en dos paneles de la razón de potencial gravitatorio a corto alcance V(r)/V_N(r) para regularidad UV entera erf(r/2ℓ_*), Yukawa fantasma de Stelle y gravitón grueso de 88.11 µm, junto con diagnósticos en vivo de anomalías quirales y horizonte nulo"
+            if is_es
+            else "Two-panel comparison of short-range gravitational potential ratio V(r)/V_N(r) for ghost-free entire UV erf(r/2l_*), Stelle ghost Yukawa, and 88.11 micrometre fat-graviton cutoff, paired with live chiral anomaly and null-horizon diagnostics"
+        )
+        lstar_def = 18.0
+        l_vac = 88.11
+        x0_p, w_p = 56.0, 396.0
+        y_top, y_bot, h_p = 134.0, 348.0, 214.0
+
+        def _cpx(r_u: float) -> float:
+            return x0_p + ((r_u - 5.0) / 105.0) * w_p
+
+        def _cpy(v_u: float) -> float:
+            return y_bot - max(0.0, min(1.0, v_u)) * h_p
+
+        pts_ent: list[str] = []
+        pts_st: list[str] = []
+        pts_fat: list[str] = []
+        for idx_p in range(71):
+            r_u = 5.0 + (idx_p / 70.0) * 105.0
+            rx_u = _cpx(r_u)
+            pts_ent.append(f"{rx_u:.1f},{_cpy(math.erf(r_u / (2.0 * lstar_def))):.1f}")
+            pts_st.append(f"{rx_u:.1f},{_cpy(1.0 - math.exp(-r_u / lstar_def)):.1f}")
+            pts_fat.append(f"{rx_u:.1f},{_cpy(math.erf(r_u / (2.0 * l_vac))):.1f}")
+        ent_poly = " ".join(pts_ent)
+        st_poly = " ".join(pts_st)
+        fat_poly = " ".join(pts_fat)
+
+        x_schur = _cpx(32.98)
+        x_m75 = _cpx(75.0)
+        x_vac = _cpx(88.11)
+        x_ls = _cpx(lstar_def)
+        y_ls = _cpy(math.erf(0.5))
+        y_m75 = _cpy(math.erf(75.0 / (2.0 * lstar_def)))
+        v52_def = math.erf(52.0 / (2.0 * lstar_def))
+        x_uv_bar = (lstar_def / 95.0) * 393.0
+        x_uv_schur = 495.0 + (32.98 / 95.0) * 393.0
+        x_uv_vac = 495.0 + (88.11 / 95.0) * 393.0
+
+        crown_rows_spec = (
+            ("scalarSheet", "Scalar Sheet / Brans–Dicke", "Lámina Escalar / Brans–Dicke", (True, False, True, False, False, False, False), "2/7", "2/7"),
+            ("stelleBox2", "Stelle Local R + R² + C²", "Stelle Local R + R² + C²", (True, False, False, True, False, True, False), "3/7", "3/7"),
+            ("classicalDPHybrid", "Classical + Diósi–Penrose", "Clásico + Diósi–Penrose", (True, False, False, False, False, False, False), "1/7", "1/7"),
+            ("fatGraviton85um", "Fat Graviton (85–88 µm)", "Gravitón Grueso (85–88 µm)", (False, True, True, True, True, False, True), "5/7", "5/7"),
+            ("pureGaugeIrrationalSM", "Pure-Gauge Irrational U(1)", "U(1) Irracional Puro de Norma", (True, True, True, True, False, True, False), "5/7", "5/7"),
+            ("flatCircleKK5D", "Smooth Circle KK (M₄ × S¹)", "Círculo Liso KK (M₄ × S¹)", (False, True, True, True, False, False, False), "3/7", "3/7"),
+            ("canonicalQuantumGREFT", "Canonical GR EFT + Spin(10)", "TCE RG Canónica + Spin(10)", (True, True, True, True, True, True, False), "6/7 EFT", "6/7 TCE"),
+            ("nonlocalChiralHorizonCrown", "Entire UV + Chiral Crown", "UV Entera + Corona Quiral", (True, True, True, True, True, True, True), "7/7 Crown", "7/7 Corona"),
+        )
+        tr_blocks: list[str] = []
+        for r_key, name_en, name_es, gates, sc_en, sc_es in crown_rows_spec:
+            tds_g = []
+            for g_i, g_ok in enumerate(gates):
+                ce, cs = ("PASS", "PASA") if g_ok else ("FAIL", "FALLA")
+                tds_g.append(f'              <td data-crown-cell="{r_key}:{g_i}" data-en="{ce}" data-es="{cs}">{ce}</td>')
+            tds_joined = "\n".join(tds_g)
+            tr_blocks.append(
+                f"""            <tr data-crown-row="{r_key}">
+              <th scope="row" data-en="{a(name_en)}" data-es="{a(name_es)}">{t(name_en)}</th>
+{tds_joined}
+              <td data-crown-score="{r_key}" data-en="{a(sc_en)}" data-es="{a(sc_es)}">{t(sc_en)}</td>
+            </tr>"""
+            )
+        crown_tbody_html = "\n".join(tr_blocks)
+
+        return f"""    <section id="instrument" class="tp-essay-observatory" data-cs-instrument="seven_gate_crown" aria-labelledby="inst-heading">
+      <div class="tp-essay-obs-head">
+        <p class="tp-kicker" data-en="Interactive Seven-Gate Crown Sieve Observatory · ES.11" data-es="Observatorio Interactivo de la Criba Corona de Siete Compuertas · ES.11">Interactive Seven-Gate Crown Sieve Observatory · ES.11</p>
+        <h2 id="inst-heading" class="tp-h2" data-en="Entire UV Potential Sieve, [Grav]²U(1)_Y Chiral Anomaly Lock &amp; 8×7 Crown Elimination" data-es="Criba de Potencial UV Entera, Bloqueo Quiral [Grav]²U(1)_Y y Eliminación Corona 8×7">Entire UV Potential Sieve, [Grav]²U(1)_Y Chiral Anomaly Lock &amp; 8×7 Crown Elimination</h2>
+      </div>
+      <svg class="tp-essay-svg" viewBox="0 0 920 420" role="img" aria-label="{a(svg_aria)}">
+        <rect x="6" y="6" width="908" height="408" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule)"/>
+        <rect x="20" y="18" width="448" height="384" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-rule)"/>
+        <text x="34" y="40" fill="var(--tp-ink)" font-size="11.8" font-weight="700" data-en="1 · Short-Range Potential Ratio V(r) / V_N(r) (r = 5–110 µm)" data-es="1 · Razón de Potencial a Corto Alcance V(r) / V_N(r) (r = 5–110 µm)">1 · Short-Range Potential Ratio V(r) / V_N(r) (r = 5–110 µm)</text>
+        <line x1="34" y1="56" x2="54" y2="56" stroke="var(--tp-verdigris)" stroke-width="2.8"/>
+        <text x="60" y="60" fill="var(--tp-verdigris)" font-size="9.5" font-weight="600" data-en="Entire UV erf(r / 2ℓ_*) (0 ghosts)" data-es="UV entera erf(r / 2ℓ_*) (0 fantasmas)">Entire UV erf(r / 2ℓ_*) (0 ghosts)</text>
+        <line x1="248" y1="56" x2="268" y2="56" stroke="var(--tp-minium)" stroke-width="2.3" stroke-dasharray="5 3"/>
+        <text x="274" y="60" fill="var(--tp-minium)" font-size="9.5" font-weight="600" data-en="Stelle 1 − e^(−r/ℓ_*) (−1 ghost)" data-es="Stelle 1 − e^(−r/ℓ_*) (fantasma −1)">Stelle 1 − e^(−r/ℓ_*) (−1 ghost)</text>
+        <line x1="34" y1="73" x2="54" y2="73" stroke="var(--tp-sienna)" stroke-width="2.3" stroke-dasharray="2 3"/>
+        <text x="60" y="77" fill="var(--tp-sienna)" font-size="9.3" data-en="Fat-Graviton erf(r / 2ℓ_Λ) · ℓ_Λ = 88.11 µm (Planck 2018; 84.89 µm Kapner 2007)" data-es="Gravitón grueso erf(r / 2ℓ_Λ) · ℓ_Λ = 88.11 µm (Planck 2018; 84.89 µm Kapner)">Fat-Graviton erf(r / 2ℓ_Λ) · ℓ_Λ = 88.11 µm (Planck 2018; 84.89 µm Kapner 2007)</text>
+
+        <line x1="{x0_p:.1f}" y1="{y_top:.1f}" x2="{x0_p + w_p:.1f}" y2="{y_top:.1f}" stroke="var(--tp-rule)" stroke-dasharray="4 3"/>
+        <line x1="{x0_p:.1f}" y1="241.0" x2="{x0_p + w_p:.1f}" y2="241.0" stroke="var(--tp-rule)" stroke-dasharray="2 4"/>
+        <line x1="{x0_p:.1f}" y1="{y_bot:.1f}" x2="{x0_p + w_p:.1f}" y2="{y_bot:.1f}" stroke="var(--tp-ink)" stroke-width="1.5"/>
+        <line x1="{x0_p:.1f}" y1="{y_top - 6.0:.1f}" x2="{x0_p:.1f}" y2="{y_bot:.1f}" stroke="var(--tp-ink)" stroke-width="1.5"/>
+
+        <text x="50" y="138" text-anchor="end" fill="var(--tp-ink)" font-size="9.3">1.0</text>
+        <text x="50" y="245" text-anchor="end" fill="var(--tp-ink)" font-size="9.3">0.5</text>
+        <text x="50" y="351" text-anchor="end" fill="var(--tp-ink)" font-size="9.3">0.0</text>
+        <text x="30" y="122" fill="var(--tp-ink)" font-size="9.4" font-weight="700">V/V_N</text>
+
+        <line x1="{x_schur:.1f}" y1="102" x2="{x_schur:.1f}" y2="{y_bot:.1f}" stroke="var(--tp-minium)" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <text x="{x_schur + 4.0:.1f}" y="101" fill="var(--tp-minium)" font-size="9.2" font-weight="700" data-en="Schur 32.98 µm" data-es="Schur 32.98 µm">Schur 32.98 µm</text>
+
+        <line x1="{x_m75:.1f}" y1="118" x2="{x_m75:.1f}" y2="{y_bot:.1f}" stroke="var(--tp-prussian)" stroke-width="1.4" stroke-dasharray="3 3"/>
+        <text x="{x_m75 - 4.0:.1f}" y="119" text-anchor="end" fill="var(--tp-prussian)" font-size="9.2" font-weight="700" data-en="Mermin 75.0 µm" data-es="Mermin 75.0 µm">Mermin 75.0 µm</text>
+
+        <line x1="{x_vac:.1f}" y1="102" x2="{x_vac:.1f}" y2="{y_bot:.1f}" stroke="var(--tp-sienna)" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <text x="{x_vac + 4.0:.1f}" y="101" fill="var(--tp-sienna)" font-size="9.2" font-weight="700" data-en="Vacuum 88.11 µm" data-es="Vacío 88.11 µm">Vacuum 88.11 µm</text>
+
+        <polyline data-crown-curve="fat" points="{fat_poly}" fill="none" stroke="var(--tp-sienna)" stroke-width="2.3" stroke-dasharray="2 3"/>
+        <polyline data-crown-curve="stelle" points="{st_poly}" fill="none" stroke="var(--tp-minium)" stroke-width="2.3" stroke-dasharray="5 3"/>
+        <polyline data-crown-curve="entire" points="{ent_poly}" fill="none" stroke="var(--tp-verdigris)" stroke-width="3.0"/>
+
+        <line data-crown-lstar-line x1="{x_ls:.1f}" y1="{y_ls:.1f}" x2="{x_ls:.1f}" y2="{y_bot:.1f}" stroke="var(--tp-verdigris)" stroke-width="1.4" stroke-dasharray="2 2"/>
+        <circle data-crown-lstar-dot cx="{x_ls:.1f}" cy="{y_ls:.1f}" r="4.8" fill="var(--tp-verdigris)" stroke="var(--tp-vellum)" stroke-width="1.5"/>
+        <circle data-crown-m75-dot cx="{x_m75:.1f}" cy="{y_m75:.1f}" r="4.8" fill="var(--tp-prussian)" stroke="var(--tp-vellum)" stroke-width="1.5"/>
+
+        <text x="74.9" y="364" text-anchor="middle" fill="var(--tp-ink)" font-size="9.3">10</text>
+        <text x="{x_schur:.1f}" y="364" text-anchor="middle" fill="var(--tp-ink)" font-size="9.3">33</text>
+        <text x="233.3" y="364" text-anchor="middle" fill="var(--tp-ink)" font-size="9.3">52</text>
+        <text x="{x_m75:.1f}" y="364" text-anchor="middle" fill="var(--tp-ink)" font-size="9.3">75</text>
+        <text x="{x_vac:.1f}" y="364" text-anchor="middle" fill="var(--tp-ink)" font-size="9.3">88</text>
+        <text x="452.0" y="364" text-anchor="middle" fill="var(--tp-ink)" font-size="9.3">110</text>
+        <text data-crown-read="left_foot" x="254" y="388" text-anchor="middle" fill="var(--tp-ink)" font-family="monospace" font-size="9.8" font-weight="700" data-en="r (µm) · ℓ_* = 18 µm · V(52 µm)/V_N = {v52_def:.4f} (0 ghosts)" data-es="r (µm) · ℓ_* = 18 µm · V(52 µm)/V_N = {v52_def:.4f} (0 fantasmas)">r (µm) · ℓ_* = 18 µm · V(52 µm)/V_N = {v52_def:.4f} (0 ghosts)</text>
+
+        <rect x="480" y="18" width="420" height="384" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-rule)"/>
+        <text x="495" y="40" fill="var(--tp-ink)" font-size="11.8" font-weight="700" data-en="2 · Chiral Anomaly &amp; Null-Horizon Diagnostics (G1, G5, G6, G7)" data-es="2 · Diagnóstico de Anomalía Quiral y Horizonte Nulo (G1, G5, G6, G7)">2 · Chiral Anomaly &amp; Null-Horizon Diagnostics (G1, G5, G6, G7)</text>
+        <text data-crown-read="tuple" x="495" y="58" fill="var(--tp-prussian)" font-family="monospace" font-size="9.6">6Y = (q, u, d, ℓ, e) = (+1.00, −4.00, +2.00, −3.00, +6.00)</text>
+
+        <text x="495" y="82" fill="var(--tp-ink)" font-size="10.0" font-weight="700">1 · [SU(3)]²U(1)_Y = 2q + u + d</text>
+        <text data-crown-read="su3" x="888" y="82" text-anchor="end" fill="var(--tp-verdigris)" font-family="monospace" font-size="10.0" font-weight="700" data-en="0.000 · PASS" data-es="0.000 · PASA">0.000 · PASS</text>
+        <rect x="495" y="90" width="393" height="12" rx="3" fill="var(--tp-stone)" stroke="var(--tp-rule)"/>
+        <line x1="691.5" y1="88" x2="691.5" y2="104" stroke="var(--tp-ink)" stroke-width="1.2"/>
+        <rect data-crown-bar="su3" x="685.5" y="90" width="12.0" height="12" rx="3" fill="var(--tp-verdigris)"/>
+
+        <text x="495" y="127" fill="var(--tp-ink)" font-size="10.0" font-weight="700">2 · [SU(2)]²U(1)_Y = 3q + ℓ</text>
+        <text data-crown-read="su2" x="888" y="127" text-anchor="end" fill="var(--tp-verdigris)" font-family="monospace" font-size="10.0" font-weight="700" data-en="0.000 · PASS" data-es="0.000 · PASA">0.000 · PASS</text>
+        <rect x="495" y="135" width="393" height="12" rx="3" fill="var(--tp-stone)" stroke="var(--tp-rule)"/>
+        <line x1="691.5" y1="133" x2="691.5" y2="149" stroke="var(--tp-ink)" stroke-width="1.2"/>
+        <rect data-crown-bar="su2" x="685.5" y="135" width="12.0" height="12" rx="3" fill="var(--tp-verdigris)"/>
+
+        <text x="495" y="172" fill="var(--tp-ink)" font-size="10.0" font-weight="700">3 · [Grav]²U(1)_Y = 6q + 3u + 3d + 2ℓ + e</text>
+        <text data-crown-read="grav" x="888" y="172" text-anchor="end" fill="var(--tp-verdigris)" font-family="monospace" font-size="10.0" font-weight="700" data-en="0.000 (e=6.00) · PASS" data-es="0.000 (e=6.00) · PASA">0.000 (e=6.00) · PASS</text>
+        <rect x="495" y="180" width="393" height="12" rx="3" fill="var(--tp-stone)" stroke="var(--tp-rule)"/>
+        <line x1="691.5" y1="178" x2="691.5" y2="194" stroke="var(--tp-ink)" stroke-width="1.2"/>
+        <rect data-crown-bar="grav" x="685.5" y="180" width="12.0" height="12" rx="3" fill="var(--tp-verdigris)"/>
+
+        <text x="495" y="217" fill="var(--tp-ink)" font-size="10.0" font-weight="700">4 · Fermat [U(1)_Y]³: (u+4)³ + (d+4)³ − e³</text>
+        <text data-crown-read="fermat" x="888" y="217" text-anchor="end" fill="var(--tp-verdigris)" font-family="monospace" font-size="10.0" font-weight="700" data-en="0.000 · PASS" data-es="0.000 · PASA">0.000 · PASS</text>
+        <rect x="495" y="225" width="393" height="12" rx="3" fill="var(--tp-stone)" stroke="var(--tp-rule)"/>
+        <line x1="691.5" y1="223" x2="691.5" y2="239" stroke="var(--tp-ink)" stroke-width="1.2"/>
+        <rect data-crown-bar="fermat" x="685.5" y="225" width="12.0" height="12" rx="3" fill="var(--tp-verdigris)"/>
+
+        <text x="495" y="262" fill="var(--tp-ink)" font-size="10.0" font-weight="700" data-en="5 · Hydrogen Neutrality 6 Q(p + e⁻)" data-es="5 · Neutralidad de Hidrógeno 6 Q(p + e⁻)">5 · Hydrogen Neutrality 6 Q(p + e⁻)</text>
+        <text data-crown-read="hatom" x="888" y="262" text-anchor="end" fill="var(--tp-verdigris)" font-family="monospace" font-size="10.0" font-weight="700" data-en="0.000 · QUANTIZED" data-es="0.000 · CUANTIZADO">0.000 · QUANTIZED</text>
+        <rect x="495" y="270" width="393" height="12" rx="3" fill="var(--tp-stone)" stroke="var(--tp-rule)"/>
+        <line x1="691.5" y1="268" x2="691.5" y2="284" stroke="var(--tp-ink)" stroke-width="1.2"/>
+        <rect data-crown-bar="hatom" x="685.5" y="270" width="12.0" height="12" rx="3" fill="var(--tp-verdigris)"/>
+
+        <text x="495" y="307" fill="var(--tp-ink)" font-size="10.0" font-weight="700" data-en="6 · Scale Gate: ℓ_* vs 32.98 &amp; 88.11 µm" data-es="6 · Escala: ℓ_* vs 32.98 y 88.11 µm">6 · Scale Gate: ℓ_* vs 32.98 &amp; 88.11 µm</text>
+        <text data-crown-read="uv" x="888" y="307" text-anchor="end" fill="var(--tp-verdigris)" font-family="monospace" font-size="10.0" font-weight="700" data-en="18 µm &lt; 32.98 · PASS" data-es="18 µm &lt; 32.98 · PASA">18 µm &lt; 32.98 · PASS</text>
+        <rect x="495" y="315" width="393" height="12" rx="3" fill="var(--tp-stone)" stroke="var(--tp-rule)"/>
+        <rect data-crown-bar="uv" x="495" y="315" width="{x_uv_bar:.1f}" height="12" rx="3" fill="var(--tp-verdigris)"/>
+        <line x1="{x_uv_schur:.1f}" y1="312" x2="{x_uv_schur:.1f}" y2="330" stroke="var(--tp-minium)" stroke-width="2.0" stroke-dasharray="3 2"/>
+        <line x1="{x_uv_vac:.1f}" y1="312" x2="{x_uv_vac:.1f}" y2="330" stroke="var(--tp-sienna)" stroke-width="2.0" stroke-dasharray="2 2"/>
+
+        <rect data-crown-badge-bg x="495" y="346" width="393" height="44" rx="6" fill="var(--tp-stone)" stroke="var(--tp-verdigris)" stroke-width="1.6"/>
+        <text data-crown-read="crown_verdict" x="691.5" y="364" text-anchor="middle" fill="var(--tp-verdigris)" font-family="monospace" font-size="10.3" font-weight="700" data-en="CROWN STATUS: 7/7 GATES PASS · UNIQUE SURVIVOR" data-es="CORONA: 7/7 COMPUERTAS PASAN · ÚNICO SOBREVIVIENTE">CROWN STATUS: 7/7 GATES PASS · UNIQUE SURVIVOR</text>
+        <text data-crown-read="crown_sub" x="691.5" y="381" text-anchor="middle" fill="var(--tp-ink)" font-family="monospace" font-size="8.8" data-en="G6 null-ray: ℓ_Λ = 88.11 / 84.89 µm · ⟨M₃(75µm)⟩ = 3.674 &gt; 2" data-es="G6 rayo nulo: ℓ_Λ = 88.11 / 84.89 µm · ⟨M₃(75µm)⟩ = 3.674 &gt; 2">G6 null-ray: ℓ_Λ = 88.11 / 84.89 µm · ⟨M₃(75µm)⟩ = 3.674 &gt; 2</text>
+      </svg>
+
+      <div class="tp-controls-row">
+        <label class="tp-essay-ctrl">
+          <span data-en="Nonlocal UV scale ℓ_* (8–60 µm)" data-es="Escala UV no local ℓ_* (8–60 µm)">Nonlocal UV scale ℓ_* (8–60 µm)</span>
+          <strong data-crown-val="lstar">18 µm</strong>
+          <input type="range" min="8" max="60" step="1" value="18" data-crown-lstar>
+        </label>
+        <label class="tp-essay-ctrl">
+          <span data-en="Quark hypercharge shift δ(3Y_Q)" data-es="Perturbación de hipercarga δ(3Y_Q)">Quark hypercharge shift δ(3Y_Q)</span>
+          <strong data-crown-val="dq">+0.00</strong>
+          <input type="range" min="-1.0" max="1.0" step="0.05" value="0.00" data-crown-dq>
+        </label>
+        <div class="tp-spl-control-group">
+          <label class="tp-spl-label" for="crown-grav-mode" data-en="Mixed Gravitational Anomaly Gate (G5)" data-es="Compuerta de Anomalía Gravitatoria Mixta (G5)">Mixed Gravitational Anomaly Gate (G5)</label>
+          <select id="crown-grav-mode" class="tp-spl-select" data-crown-grav>
+            <option value="with_grav" selected data-en="[Grav]²U(1)_Y = 0 active — locks e = 6" data-es="[Grav]²U(1)_Y = 0 activa — fija e = 6">[Grav]²U(1)_Y = 0 active — locks e = 6</option>
+            <option value="omit_grav_sym" data-en="Omit [Grav]²U(1)_Y — irrational e = (18(t²+3))^(1/3)" data-es="Omitir [Grav]²U(1)_Y — rama irracional e = (18(t²+3))^(1/3)">Omit [Grav]²U(1)_Y — irrational e = (18(t²+3))^(1/3)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="tp-essay-table-wrap">
+        <table class="tp-telemetry-benchmark-table" data-crown-table>
+          <caption data-en="8 Candidate Architectures × 7 Gates (SevenGateCrown.lean) · G1: Sub-50 µm Torsion (&lt;32.98 µm) · G2: Lorentz PPN &amp; Ghost-Free Spin-2 · G3: Tripartite Mermin (⟨M₃⟩ &gt; 2) · G4: Clock &amp; TUR Floor (Q_TUR ≥ 2) · G5: Chiral Anomaly &amp; Domain Wall · G6: Null Horizon Vacuum Decoupling · G7: Entire UV Regularity (erf)" data-es="8 Arquitecturas Candidatas × 7 Compuertas (SevenGateCrown.lean) · G1: Torsión Sub-50 µm (&lt;32.98 µm) · G2: PPN Lorentz y Espín-2 sin Fantasmas · G3: Mermin Tripartito (⟨M₃⟩ &gt; 2) · G4: Reloj y Piso TUR (Q_TUR ≥ 2) · G5: Anomalía Quiral y Muro de Dominio · G6: Desacoplo en Horizonte Nulo · G7: Regularidad UV Entera (erf)">8 Candidate Architectures × 7 Gates (SevenGateCrown.lean) · G1: Sub-50 µm Torsion (&lt;32.98 µm) · G2: Lorentz PPN &amp; Ghost-Free Spin-2 · G3: Tripartite Mermin (⟨M₃⟩ &gt; 2) · G4: Clock &amp; TUR Floor (Q_TUR ≥ 2) · G5: Chiral Anomaly &amp; Domain Wall · G6: Null Horizon Vacuum Decoupling · G7: Entire UV Regularity (erf)</caption>
+          <thead>
+            <tr>
+              <th scope="col" data-en="Candidate Architecture" data-es="Arquitectura Candidata">Candidate Architecture</th>
+              <th scope="col" title="Sub-50 µm Torsion (&lt;32.98 µm)">G1</th>
+              <th scope="col" title="Lorentz PPN &amp; Ghost-Free Spin-2">G2</th>
+              <th scope="col" title="Tripartite Mermin (⟨M₃⟩ &gt; 2)">G3</th>
+              <th scope="col" title="Clock &amp; TUR Floor (Q_TUR ≥ 2)">G4</th>
+              <th scope="col" title="Chiral Anomaly &amp; Domain Wall">G5</th>
+              <th scope="col" title="Null Horizon Vacuum Decoupling">G6</th>
+              <th scope="col" title="Entire UV Regularity (erf)">G7</th>
+              <th scope="col" data-en="Verdict" data-es="Veredicto">Verdict</th>
+            </tr>
+          </thead>
+          <tbody>
+{crown_tbody_html}
+          </tbody>
+        </table>
+      </div>
+      <p class="tp-essay-status" data-cs-status role="status"></p>
+    </section>"""
+
     svg_aria = (
         "Cota de la Relación de Incertidumbre Termodinámica en Q_TUR = 2 con punto operativo en vivo"
         if is_es
@@ -1133,17 +1732,19 @@ def render_sources(essay: dict) -> str:
 
 
 def render_skill_box(essay: dict, is_es: bool = False) -> str:
-    gh_skill = f"https://github.com/senseiewok/informatico.ai/blob/main/{essay['skill_path']}"
-    gh_ver = f"https://github.com/senseiewok/informatico.ai/blob/main/{essay['verifier_path']}"
+    sp = _skill_path(essay)
+    vp = _verifier_path(essay)
+    gh_skill = f"https://github.com/senseiewok/informatico.ai/blob/main/{sp}"
+    gh_ver = f"https://github.com/senseiewok/informatico.ai/blob/main/{vp}"
     aria_skill = "SKILL.md portable y verificador en Python" if is_es else "Portable SKILL.md and Python verifier"
     return f"""        <aside class="tp-plain-bridge-box tp-essay-skill-box" aria-label="{aria_skill}">
           {bi("span", "Portable AI SKILL.md & Deterministic Python Verifier", "Compañero SKILL.md Portable y Verificador en Python", "tp-plain-bridge-kicker")}
           {bi("p",
-              f"Run `python {essay['verifier_path']}` locally (standard library only, zero network calls) to recompute every equation on this page, and `--planted-defect` to confirm the verifier fails closed when a regime or epistemic rule is broken.",
-              f"Ejecuta `python {essay['verifier_path']}` localmente (solo biblioteca estándar, cero red) para recalcular cada ecuación de esta página, y `--planted-defect` para confirmar que el verificador falla en cerrado ante un defecto plantado.")}
+              f"Run `python {vp}` locally (standard library only, zero network calls) to recompute every equation on this page, and `--planted-defect` to confirm the verifier fails closed when a regime or epistemic rule is broken.",
+              f"Ejecuta `python {vp}` localmente (solo biblioteca estándar, cero red) para recalcular cada ecuación de esta página, y `--planted-defect` para confirmar que el verificador falla en cerrado ante un defecto plantado.")}
           <p class="tp-series-rack-ctas">
-            <a class="tp-cta" href="{a(gh_skill)}" target="_blank" rel="noopener noreferrer"><code>{t(essay['skill_path'])}</code> →</a>
-            <a class="tp-cta" href="{a(gh_ver)}" target="_blank" rel="noopener noreferrer"><code>{t(essay['verifier_path'])}</code> →</a>
+            <a class="tp-cta" href="{a(gh_skill)}" target="_blank" rel="noopener noreferrer"><code>{t(sp)}</code> →</a>
+            <a class="tp-cta" href="{a(gh_ver)}" target="_blank" rel="noopener noreferrer"><code>{t(vp)}</code> →</a>
           </p>
         </aside>"""
 
@@ -1164,7 +1765,7 @@ def render_essay_cards(essays: list[dict], rel_res: str, is_es: bool = False) ->
     cards = []
     for es_doc in essays:
         slug = es_doc["slug"]
-        pslug = es_doc["plate_slug"]
+        pslug = _plate_slug(es_doc)
         v = plate_hash(pslug)
         href = B._href(rel_res, f"essays/{slug}/")
         img_src = B._href(rel_res, f"plates/{pslug}.png?v={v}")
@@ -1191,7 +1792,8 @@ def render_essay_page(essay: dict, essays: list[dict], catalog: dict, lang: str 
     seo_d = d_es if is_es else d_en
     full_title = seo_t if seo_t.endswith(BRAND) else f"{seo_t} | {BRAND}"
     canon = B.page_url(path, lang)
-    pslug = essay["plate_slug"]
+    pslug = _plate_slug(essay)
+    edate = _essay_date(essay)
     v = plate_hash(pslug)
     image = f"https://informatico.ai/plates/{pslug}.png"
     crumbs = [
@@ -1206,8 +1808,8 @@ def render_essay_page(essay: dict, essays: list[dict], catalog: dict, lang: str 
         canon,
         lang,
         image=image,
-        date_published=essay["date"],
-        date_modified=essay["date"],
+        date_published=edate,
+        date_modified=edate,
         crumbs=crumbs,
     )
     head = B.render_head(full_title, seo_d, path, "article", image, rel_root, rel_res, ld, lang)
@@ -1315,11 +1917,13 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
     head = B.render_head(seo_t, seo_d, path, "website", image, rel_root, rel_res, ld, lang)
     cards_m1 = render_essay_cards(essays[:3], rel_res, is_es=is_es)
     cards_m2 = render_essay_cards(essays[3:6], rel_res, is_es=is_es)
-    cards_m3 = render_essay_cards(essays[6:], rel_res, is_es=is_es)
+    cards_m3 = render_essay_cards(essays[6:9], rel_res, is_es=is_es)
+    cards_m4 = render_essay_cards(essays[9:11], rel_res, is_es=is_es)
     aria_crumb = "Ruta de navegación" if is_es else "Breadcrumb"
     aria_rack1 = "Movimiento I: Pisos, Registros y Relojes" if is_es else "Movement I: Floors, Ledgers & Clocks"
     aria_rack2 = "Movimiento II: Celosías, Horizontes y Operadores Atemporales" if is_es else "Movement II: Frames, Horizons & Timeless Operators"
     aria_rack3 = "Movimiento III: Horizontes Paralelos, Islas Cuánticas y Fronteras Epistémicas" if is_es else "Movement III: Parallel Horizons, Quantum Islands & Epistemic Boundaries"
+    aria_rack4 = "Movimiento IV · Coda y Corona" if is_es else "Movement IV · Coda & Crown"
 
     m2_section = ""
     if essays[3:6]:
@@ -1335,7 +1939,7 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
     </section>"""
 
     m3_section = ""
-    if essays[6:]:
+    if essays[6:9]:
         m3_section = f"""
     <section class="tp-issue-rack" aria-label="{aria_rack3}">
       <div class="tp-section-head">
@@ -1344,6 +1948,19 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
       </div>
       <div class="tp-rack-grid">
 {cards_m3}
+      </div>
+    </section>"""
+
+    m4_section = ""
+    if essays[9:11]:
+        m4_section = f"""
+    <section class="tp-issue-rack" aria-label="{aria_rack4}">
+      <div class="tp-section-head">
+        <p class="tp-kicker" data-en="Movement IV · Coda &amp; Crown · ES.10–ES.11" data-es="Movimiento IV · Coda y Corona · ES.10–ES.11">Movement IV · Coda &amp; Crown · ES.10–ES.11</p>
+        <h2 class="tp-h2" data-en="Signed Biharmonic Sieves, Chiral Anomaly Locking, and the Seven-Gate Crown" data-es="Cribas Biarmónicas con Signo, Bloqueo Quiral de Anomalías y la Corona de Siete Compuertas">Signed Biharmonic Sieves, Chiral Anomaly Locking, and the Seven-Gate Crown</h2>
+      </div>
+      <div class="tp-rack-grid">
+{cards_m4}
       </div>
     </section>"""
 
@@ -1359,12 +1976,14 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
       </ol>
     </nav>
     <section class="tp-hero">
-      <p class="tp-kicker" data-en="Featured Synthesis · 9 Standalone Essays · Three Movements &amp; Zero-Sorry Verification" data-es="Síntesis Destacada · 9 Ensayos Independientes · Tres Movimientos y Verificación Formal">Featured Synthesis · 9 Standalone Essays · Three Movements &amp; Zero-Sorry Verification</p>
+      <p class="tp-kicker" data-en="Featured Synthesis · 11 Standalone Essays · Four Movements &amp; Zero-Sorry Verification" data-es="Síntesis entre Escalas · 11 Ensayos Independientes · Cuatro Movimientos y Verificación Formal">Featured Synthesis · 11 Standalone Essays · Four Movements &amp; Zero-Sorry Verification</p>
       <h1 class="tp-h1" data-en="Cross-Scale Essays: Clocks, Stone, and Living Matter" data-es="Ensayos entre Escalas: Relojes, Piedra y Materia Viva">Cross-Scale Essays: Clocks, Stone, and Living Matter</h1>
-      <p class="tp-standfirst" data-en="Nine standalone essays in three symmetric movements exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, coupled timeless constraints, closed-form parallel horizons, Fisher Schur-complement identifiability, and tripartite Mermin / active-clock witnesses—govern 10⁻¹⁴ kg quantum-gravity diamonds, space-frame trusses, black-hole horizons, and nanoscale biological channels." data-es="Nueve ensayos independientes en tres movimientos simétricos sobre por qué las mismas ecuaciones matemáticas y reglas de verificación formal —fluctuación-disipación, procedencia epistémica, incertidumbre termodinámica, rango-nulidad y microcausalidad, supervivencia condicional de Doob, ligaduras atemporales acopladas, horizontes paralelos cerrados, complementos de Schur de Fisher y testigos Mermin / relojes activos— gobiernan diamantes de gravedad cuántica de 10⁻¹⁴ kg, celosías estructurales, horizontes de agujeros negros y canales biológicos a nanoescala.">Nine standalone essays in three symmetric movements exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, coupled timeless constraints, closed-form parallel horizons, Fisher Schur-complement identifiability, and tripartite Mermin / active-clock witnesses—govern 10⁻¹⁴ kg quantum-gravity diamonds, space-frame trusses, black-hole horizons, and nanoscale biological channels.</p>
+      <p class="tp-standfirst" data-en="Eleven standalone essays in four movements exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, coupled timeless constraints, closed-form parallel horizons, Fisher Schur-complement identifiability, tripartite Mermin / active-clock witnesses, the four-gate biharmonic operator sieve, and the seven-gate chiral and entire-UV crown sieve—govern 10⁻¹⁴ kg quantum-gravity diamonds, space-frame trusses, black-hole horizons, and nanoscale biological membranes." data-es="Once ensayos independientes en cuatro movimientos sobre por qué las mismas ecuaciones matemáticas y reglas de verificación formal —fluctuación-disipación, procedencia epistémica, incertidumbre termodinámica, rango-nulidad y microcausalidad, supervivencia condicional de Doob, ligaduras atemporales acopladas, horizontes paralelos cerrados, complementos de Schur de Fisher, testigos Mermin / relojes activos, la criba de operadores de cuatro compuertas y la criba corona quiral y UV entera de siete compuertas— gobiernan diamantes de gravedad cuántica de 10⁻¹⁴ kg, celosías estructurales, horizontes de agujeros negros y membranas biológicas a nanoescala.">Eleven standalone essays in four movements exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, coupled timeless constraints, closed-form parallel horizons, Fisher Schur-complement identifiability, tripartite Mermin / active-clock witnesses, the four-gate biharmonic operator sieve, and the seven-gate chiral and entire-UV crown sieve—govern 10⁻¹⁴ kg quantum-gravity diamonds, space-frame trusses, black-hole horizons, and nanoscale biological membranes.</p>
       <div class="tp-series-rack-ctas">
         <a class="tp-cta tp-cta-primary" href="mesoscopic-floor/" data-en="Start Movement I · ES.01 The Mesoscopic Floor →" data-es="Iniciar Movimiento I · ES.01 El Piso Mesoscópico →">Start Movement I · ES.01 The Mesoscopic Floor →</a>
         <a class="tp-cta" href="loophole-free-parallel-horizon/" data-en="Enter Movement III · ES.07–ES.09 Horizons &amp; Multipartite Clocks →" data-es="Entrar al Movimiento III · ES.07–ES.09 Horizontes y Relojes →">Enter Movement III · ES.07–ES.09 Horizontes y Relojes →</a>
+        <a class="tp-cta" href="four-gate-operator-sieve/" data-en="Read Coda · ES.10 The Four-Gate Operator Sieve →" data-es="Leer Coda · ES.10 La Criba de Operadores de Cuatro Compuertas →">Read Coda · ES.10 The Four-Gate Operator Sieve →</a>
+        <a class="tp-cta" href="seven-gate-crown-sieve/" data-en="Read Crown · ES.11 The Seven-Gate Crown Sieve →" data-es="Leer Corona · ES.11 La Criba Corona de Siete Compuertas →">Read Crown · ES.11 The Seven-Gate Crown Sieve →</a>
         <a class="tp-cta" href="../timegravity/" data-en="Time &amp; Gravity Core Series (T.00–T.12) →" data-es="Serie Principal Tiempo y Gravedad (T.00–T.12) →">Time &amp; Gravity Core Series (T.00–T.12) →</a>
       </div>
     </section>
@@ -1376,7 +1995,7 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
       <div class="tp-rack-grid">
 {cards_m1}
       </div>
-    </section>{m2_section}{m3_section}
+    </section>{m2_section}{m3_section}{m4_section}
 {B.render_site_footer(rel_res)}
   </main>
   <script type="module" src="{rel_res}/modules/main.mjs"></script>
