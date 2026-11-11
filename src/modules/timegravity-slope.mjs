@@ -1658,6 +1658,147 @@ function initDarkClock(root) {
   render();
 }
 
+// ------------------------------------------------------------------------------------------------ T.13
+function initHolonomySoft(root) {
+  const svg = root.querySelector("svg.tg-stage");
+  const eradInput = root.querySelector("[data-tg-erad-input]");
+  const dlInput = root.querySelector("[data-tg-dl-input]");
+  const ncInput = root.querySelector("[data-tg-nc-input]");
+  const knockoutBtn = root.querySelector("[data-tg-knockout]");
+  const status = root.querySelector("[data-tg-status]");
+  const memPath = root.querySelector(".tg-hol-mem");
+  const wavePath = root.querySelector(".tg-hol-wave");
+  const plateauLine = root.querySelector(".tg-hol-plateau");
+  const bars = root.querySelectorAll(".tg-hol-bar");
+  const wardBox = root.querySelector('[data-tg-readout-box="ward"]');
+  const anomBox = root.querySelector('[data-tg-readout-box="anom"]');
+  const errBox = root.querySelector('[data-tg-readout-box="err"]');
+  const reads = readouts(root);
+  if (!svg || !eradInput || !dlInput || !ncInput) return;
+
+  const lx0 = Number(svg.getAttribute("data-lx0")), lx1 = Number(svg.getAttribute("data-lx1"));
+  const ly0 = Number(svg.getAttribute("data-ly0")), ly1 = Number(svg.getAttribute("data-ly1"));
+  const ryMid = Number(svg.getAttribute("data-rymid")) || 208;
+  const M_SUN_KG = 1.98847e30;
+  const MPC_SI_M = 3.0856775814913673e22;
+  const state = { knockout: false };
+
+  const S0 = {
+    en: {
+      ok: "Infrared consistency satisfied: κ_e = κ_p enforces universal free fall (||W^μ|| = 0), E_rad leaves permanent baseline memory ΔL = ½ L₀ Δh, and N_c = 3 cancels all four chiral and gravitational anomalies.",
+      ncFail: "Anomaly mismatch: at N_c ≠ 3, SU(2)_L² × U(1)_Y (N_c − 3) and cubic U(1)_Y³ (−54(N_c − 3)) fail to cancel at one loop.",
+      knockout: "Planted defect active (κ_e / κ_p = 1 + 10⁻⁵ & N_c = 2): both the spin-2 soft-graviton Ward identity (||W^μ||/E_cm = 3.45e-06) and chiral anomaly cancellation fail; verifier exits 1.",
+    },
+    es: {
+      ok: "Consistencia infrarroja satisfecha: κ_e = κ_p impone caída libre universal (||W^μ|| = 0), E_rad deja memoria permanente ΔL = ½ L₀ Δh, y N_c = 3 cancela las cuatro anomalías quirales y gravitacionales.",
+      ncFail: "Desajuste de anomalías: con N_c ≠ 3, las trazas SU(2)_L² × U(1)_Y (N_c − 3) y cúbica U(1)_Y³ (−54(N_c − 3)) no se cancelan a un lazo.",
+      knockout: "Defecto plantado activo (κ_e / κ_p = 1 + 10⁻⁵ y N_c = 2): fallan tanto la identidad blanda de Ward de espín 2 (||W^μ||/E_cm = 3.45e-06) como la cancelación de anomalías quirales; el verificador sale con código 1.",
+    },
+  };
+
+  function render() {
+    const L = S0[lang()];
+    const eRadSolar = Number(eradInput.value);
+    const dlMpc = Number(dlInput.value);
+    const ncSlider = Math.round(Number(ncInput.value));
+    const nc = state.knockout ? 2 : ncSlider;
+
+    const eRadJ = eRadSolar * M_SUN_KG * C * C;
+    const dlM = dlMpc * MPC_SI_M;
+    const dhChar = (2.0 * G_NEWTON_SI * eRadJ) / (C ** 4 * dlM);
+    const dlLigo = 0.5 * 4000.0 * dhChar;
+
+    // Scale memory waveform height relative to fiducial GW150914 (7.003e-22 -> full scale)
+    const yZero = ly1 - 44;
+    const maxRise = yZero - (ly0 + 34);
+    const scaleRatio = Math.min(1.18, Math.max(0.08, (dhChar / 7.00326e-22) * 0.78));
+    const risePx = maxRise * scaleRatio;
+    const yStep = yZero - risePx;
+
+    const memPts = [];
+    const wavePts = [];
+    for (let i = 0; i <= 80; i++) {
+      const u = -4.0 + (8.0 * i) / 80.0;
+      const tx = lx0 + ((lx1 - lx0) * i) / 80.0;
+      const stepFrac = 0.5 * (1.0 + Math.tanh(1.35 * u));
+      const osc = 0.34 * Math.exp(-0.75 * u * u) * Math.cos(7.5 * u);
+      const ym = yZero - risePx * stepFrac;
+      const yw = yZero - risePx * (stepFrac + osc);
+      memPts.push(`${i === 0 ? "M" : "L"} ${tx.toFixed(1)} ${ym.toFixed(1)}`);
+      wavePts.push(`${i === 0 ? "M" : "L"} ${tx.toFixed(1)} ${yw.toFixed(1)}`);
+    }
+    if (memPath) memPath.setAttribute("d", memPts.join(" "));
+    if (wavePath) wavePath.setAttribute("d", wavePts.join(" "));
+    if (plateauLine) {
+      plateauLine.setAttribute("y1", yStep.toFixed(1));
+      plateauLine.setAttribute("y2", yStep.toFixed(1));
+    }
+
+    const wardNorm = state.knockout ? 3.4519e-6 : 0.0;
+    const trGrav = 0;
+    const trSu3 = 0;
+    const trSu2 = nc - 3;
+    const trCubic = -54 * (nc - 3);
+
+    // Normalized bar heights in [-2.2, +2.2] mapped onto 110 px half-span
+    const barUnits = [
+      state.knockout ? 1.65 : 0.0,
+      0.0,
+      trSu2,
+      -(nc - 3),
+    ];
+    barUnits.forEach((val, idx) => {
+      const bar = bars[idx];
+      if (!bar) return;
+      const px = Math.min(115, Math.abs(val) * 48);
+      if (px < 2) {
+        bar.setAttribute("y", (ryMid - 2).toFixed(1));
+        bar.setAttribute("height", "4");
+        bar.setAttribute("fill", "var(--tp-verdigris)");
+      } else if (val > 0) {
+        bar.setAttribute("y", (ryMid - px).toFixed(1));
+        bar.setAttribute("height", px.toFixed(1));
+        bar.setAttribute("fill", "var(--tp-minium)");
+      } else {
+        bar.setAttribute("y", ryMid.toFixed(1));
+        bar.setAttribute("height", px.toFixed(1));
+        bar.setAttribute("fill", "var(--tp-minium)");
+      }
+    });
+
+    const allOk = !state.knockout && nc === 3;
+    if (reads.erad) reads.erad.textContent = fmt(eRadSolar, 1);
+    if (reads.dl) reads.dl.textContent = String(Math.round(dlMpc));
+    if (reads.nc) reads.nc.textContent = String(nc);
+    if (reads.dhlabel) reads.dhlabel.textContent = dhChar.toExponential(2);
+    if (reads.ward) reads.ward.textContent = state.knockout ? `${wardNorm.toExponential(2)} · FAIL` : "0.00e+00 (η = 0)";
+    if (reads.mem) reads.mem.textContent = `${dhChar.toExponential(2)} · ${dlLigo.toExponential(2)} m`;
+    if (reads.anom) reads.anom.textContent = `(${trGrav}, ${trSu3}, ${trSu2}, ${trCubic}) · ${nc === 3 ? "CANCEL" : "ANOMALOUS"}`;
+    if (reads.err) reads.err.textContent = allOk ? "1.3e-16 · 12 thms · PASS" : "GATE REJECTED · EXIT 1";
+
+    if (wardBox) wardBox.setAttribute("data-alert", String(state.knockout));
+    if (anomBox) anomBox.setAttribute("data-alert", String(nc !== 3));
+    if (errBox) errBox.setAttribute("data-alert", String(!allOk));
+
+    if (status) {
+      status.setAttribute("data-state", allOk ? "fall" : "flat");
+      status.textContent = state.knockout ? L.knockout : (nc === 3 ? L.ok : L.ncFail);
+    }
+  }
+
+  [eradInput, dlInput, ncInput].forEach((el) => el.addEventListener("input", render));
+  if (knockoutBtn) {
+    knockoutBtn.addEventListener("click", () => {
+      state.knockout = !state.knockout;
+      knockoutBtn.setAttribute("aria-pressed", String(state.knockout));
+      render();
+    });
+  }
+  window.addEventListener("tp-lang-change", render);
+  root.setAttribute("data-tg-ready", "true");
+  render();
+}
+
 export function initTimeGravity(scope = document) {
   syncClaimTitles(scope);
   if (scope === document && !document.documentElement.hasAttribute("data-tg-claim-lang-bound")) {
@@ -1679,6 +1820,7 @@ export function initTimeGravity(scope = document) {
   once('[data-tg-instrument="page"]', initPage);
   once('[data-tg-instrument="einselection"]', initEinselection);
   once('[data-tg-instrument="dark_clock"]', initDarkClock);
+  once('[data-tg-instrument="holonomy_soft"]', initHolonomySoft);
 }
 
 initTimeGravity(document);

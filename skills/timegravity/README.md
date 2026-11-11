@@ -16,6 +16,7 @@ One folder per shipped page under `skills/timegravity/<slug>/`:
 | `T.10` Page's Counting Argument | `t10/` | `make_t10.py` | `verify_t10_page_curve.py` (a non-unitary toy that never turns over must exit non-zero) | `SKILL.md` |
 | `T.11` What Selects the World a Clock Sees? | `t11/` | `make_t11.py` | `verify_t11_einselection.py` (scrambling the pointer commutator `[Ĥ_int, Z_S] = 0` must exit non-zero) | `SKILL.md` |
 | `T.12` Two Clocks That Only Meet in Gravity | `t12/` | `make_t12.py` | `verify_t12_dark_clock.py` (dropping the factor of 2 in the proper-time step must exit non-zero) | `SKILL.md` |
+| `T.13` Where Infrared Gravity Meets Gauge Theory | `t13/` | `make_t13.py` | `verify_t13_holonomy_soft.py` (perturbing `κ_e / κ_p = 1 + 10⁻⁵` and setting `N_c = 2` must exit non-zero; `HolonomySoftAnomaly.lean` pure Lean 4 Prelude formalization) | `SKILL.md` |
 
 The hub `T.00` has no generator and no verifier: it carries no claims, and `tools/check_timegravity_labels.py` asserts that.
 

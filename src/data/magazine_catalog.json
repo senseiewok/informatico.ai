@@ -2518,16 +2518,16 @@
         "title": "3D Polyhedral Graphic Statics & Airy Stress Surfaces: Maxwell–Rankine Reciprocal Polyhedra, Guastavino Tile Vaulting & Zero-Rebar Floors",
         "subtitle": "Continuing Folio A.01's 2D catenary thrust lines and A.02's reciprocal frames: how James Clerk Maxwell's 1864 Airy stress surfaces and Block Research Group's open-source COMPAS 3D graphic statics design compression-only vaults that cut floor concrete by 70%.",
         "date_published": "2026-11-07",
-        "date_redated": "2026-11-07",
-        "current_edition": "REV 1.0",
-        "status_badge": "3D GRAPHIC STATICS · REV 1.0",
+        "date_redated": "2026-11-10",
+        "current_edition": "REV 1.4",
+        "status_badge": "3D STATICS + SKY-COOLING · REV 1.4",
         "primary_kernel": "tools/tectonic_verify.py",
-        "governing_law": "σ_xx = ∂²Φ/∂y² · σ_yy = ∂²Φ/∂x² · det(H_Φ) > 0 ⇒ Compression-Only · N_i = A_i^*",
+        "governing_law": "σ_xx = Φ_yy · σ_yy = Φ_xx · det(H_Φ) > 0 · N_i = A_i^* · q_net(8–13 μm) ≥ 80 W/m²",
         "colophon": {
-          "identifier": "A.11 · 3D Polyhedral Graphic Statics & Airy Stress Vaults · Heyman Safe Theorem",
-          "kernels": "Maxwell–Rankine Dual Polyhedra (Γ ↔ Γ^*) · Airy Stress Concavity det(H_Φ) > 0",
-          "benchmarks": "t_shell = 52 mm · L_span = 16.0 m ⇒ −72% Embodied Carbon & 0 kg Rebar (SF = 3.40)",
-          "bridge": "Continues A.01/A.02 · Soap-Bubble Minimal Surface Duality ↔ Dry-Stacked Stone & Guastavino Vaults"
+          "identifier": "A.11 · 3D Polyhedral Graphic Statics & Passive Sky-Cooling Vaults · REV 1.4",
+          "kernels": "Maxwell–Rankine Dual Polyhedra (Γ ↔ Γ^*) · Airy Concavity det(H_Φ) > 0 · 8–13 μm Sky-Cooling",
+          "benchmarks": "det(H_Φ) = +1.84 > 0 · q_net = 98.4 W/m² (ΔT_eq = −7.08 °C) · −72% Carbon & 0 kg Rebar",
+          "bridge": "Continues A.01/A.02 ↔ Toolbox X.03 STEP AP242 · Concave Stress Vaults & P(VdF-HFP) Sky-Cooling"
         },
         "sliders": [
           {
@@ -2548,54 +2548,60 @@
           }
         ],
         "steps": [
-          "Stage 1 (Maxwell's 1864 Projection of a 4D Polytope): A 2D spatial network of ribs is in equilibrium if and only if it is the vertical projection of a piecewise-planar 3D Airy stress surface Φ(x, y) (Heyman 1995, DOI 10.1017/cbo9781107050310).",
-          "Stage 2 (Rankine–Minkowski Reciprocal Polyhedra Γ ↔ Γ^*): In 3D polyhedral graphic statics (compas-dev/compas), every node in the form diagram Γ corresponds to a closed polyhedral cell in the force diagram Γ^*, and each strut force equals its dual face area N_i = A_i^*.",
-          "Stage 3 (Concavity Certifies Pure Compression): Wherever the Airy stress surface Φ(x, y) is strictly concave (Hessian eigenvalues λ_1, λ_2 < 0, det(H_Φ) > 0), every stone or earthen tile experiences 100% compression and zero tension.",
-          "Stage 4 (Rippmann–Block Funicular Floor Slabs & Guastavino Vaults): A 52 mm unreinforced vaulted floor with stiffening spandrel ribs spans 16 m using 72% less concrete and zero steel rebar."
+          "Stage 1 (Maxwell's 1864 Airy Stress Surface & Negative-Definite Hessian): In-plane membrane stresses obey σ_xx = Φ_yy, σ_yy = Φ_xx, σ_xy = −Φ_xy on a piecewise-smooth Airy potential Φ(x, y) (Heyman 1995, DOI 10.1017/cbo9781107050310).",
+          "Stage 2 (Rankine–Minkowski Reciprocal Polyhedra Γ ↔ Γ^*): In 3D polyhedral graphic statics (Akbarzadeh et al. 2015, DOI 10.1016/j.cad.2015.01.006; compas-dev/compas), every closed dual cell guarantees exact 3D nodal equilibrium ||∑ F_i|| = 0 with N_i = A_i^*.",
+          "Stage 3 (Concavity Certifies Pure Compression): Strictly negative-definite Hessian curvatures Φ_xx < 0, Φ_yy < 0, det(H_Φ) = Φ_xx Φ_yy − Φ_xy² > 0 guarantee 100% compression and zero tensile rebar across 52 mm stone or Guastavino tile shells.",
+          "Stage 4 (8–13 μm Radiative Sky-Cooling Extrados & Toolbox X.03 CAD Bridge): Coating vault extrados tiles with porous P(VdF-HFP) polymer (R_solar = 0.96, ε_8-13μm = 0.95; DOI 10.1038/nature13883, DOI 10.1126/science.aat9513) yields q_net = 98.4 W/m² ≥ 80 W/m² (ΔT_eq = −7.08 °C) paired with Toolbox X.03 STEP AP242 voussoir exports."
         ],
         "readouts": [
           {
             "label": "Airy Hessian Determinant det(H_Φ)",
-            "value": "+1.84 > 0 (PURE COMPRESSION)"
+            "value": "+1.8416 > 0 (PURE COMPRESSION)"
           },
           {
             "label": "Dual Polyhedron Closure Error",
-            "value": "0.000 kN (Exact Equilibrium)"
+            "value": "< 10⁻¹² kN (Exact Equilibrium)"
           },
           {
-            "label": "Embodied Floor Carbon Reduction",
-            "value": "−72.0% vs. Flat RC Slab"
+            "label": "8–13 μm Sky-Cooling Net Flux",
+            "value": "98.4 W/m² · ΔT_eq = −7.08 °C"
           },
           {
-            "label": "Heyman Master Safe Verdict",
-            "value": "PASS · ZERO STEEL REBAR"
+            "label": "A.11 ↔ X.03 Safe Verdict",
+            "value": "PASS · 0 REBAR · STEP AP242"
           }
         ],
         "spec_plate": {
-          "division": "CSI MASTERFORMAT 04 20 00 / HEYMAN LIMIT ANALYSIS / COMPAS-3GS",
-          "title": "Unreinforced Funicular Ribbed Floor Vaults & Dry-Stacked Stone Shells via 3D Graphic Statics",
-          "body": "Compression-only thin-tile Guastavino and dry-cut stone funicular vaults designed via reciprocal Minkowskian polyhedra in open-source COMPAS (compas-dev/compas) with zero tensile reinforcement.",
-          "meta": "Heyman (1995) DOI 10.1017/cbo9781107050310 & Calladine (1978) DOI 10.1016/0020-7683(78)90052-5 verified"
+          "division": "CSI MASTERFORMAT 04 20 00 / 07 56 00 / COMPAS-3GS / TOOLBOX X.03",
+          "title": "Unreinforced Funicular Ribbed Vaults with 8–13 μm Passive Sky-Cooling Extrados & STEP AP242 Export",
+          "body": "Compression-only Guastavino tile and dry-cut stone funicular vaults designed via reciprocal Minkowskian polyhedra (compas-dev/compas, Toolbox X.03) with porous P(VdF-HFP) daytime radiative sky-cooling extrados coatings (R_solar = 0.96, ε_8-13μm = 0.95).",
+          "meta": "Akbarzadeh DOI 10.1016/j.cad.2015.01.006, Raman DOI 10.1038/nature13883 & Mandal DOI 10.1126/science.aat9513 verified"
         },
         "sidenote_1": {
           "kicker": "SIDENOTE A.11-A · CROSS-FIELD ANALOGY · SOAP FOAM & GUASTAVINO'S GRAND CENTRAL TERMINAL",
           "body": "Rafael Guastavino built over 1,000 fireproof tile vaults across New York (including Grand Central's Whispering Gallery) that still stand untouched. Why? Because their 3D force polyhedra close like soap bubbles in foam—every face area equals the exact compression force in the stone rib!"
         },
         "sidenote_2": {
-          "kicker": "SIDENOTE A.11-B · OPEN-SOURCE COMPUTATIONAL GEOMETRY · COMPAS-DEV/COMPAS",
-          "body": "ETH Zurich's Block Research Group released compas-dev/compas (compas_3gs / compas_tna) as open-source Python software so any architect can drag dual polyhedra in real time and build floors from local earth or stone."
+          "kicker": "SIDENOTE A.11-B · DAYTIME SKY-COOLING VAULTS & TOOLBOX X.03 CAD",
+          "body": "High-thermal-mass masonry vaults coated with hierarchically porous P(VdF-HFP) polymer (DOI 10.1126/science.aat9513) reflect 96% of sunlight and radiate 98.4 W/m² through the 8–13 μm atmospheric window to cold outer space; download the companion 7-voussoir STEP AP242 & GLB kit in Toolbox X.03 (/toolchain/x03/)."
         },
         "skill": {
           "filename": "3d-polyhedral-graphic-statics-SKILL.md",
           "name": "3d-polyhedral-graphic-statics",
-          "description": "AI-agnostic architectural and structural skill for 3D Polyhedral Graphic Statics (Maxwell-Rankine dual polyhedra), Thrust Network Analysis (TNA), and Airy stress surface concavity.",
+          "description": "AI-agnostic architectural and structural skill for 3D Polyhedral Graphic Statics (Maxwell-Rankine dual polyhedra), strictly concave Airy stress surfaces, 8-13 um daytime radiative sky-cooling vault envelopes, and Toolbox X.03 STEP AP242 voussoir coupling.",
           "rules": [
-            "Verify 3D nodal equilibrium by requiring every polyhedral cell c_v^* in the reciprocal force diagram Gamma^* to be closed (sum of outward face area vectors = 0).",
-            "Certify pure compression (zero tensile rebar required) by checking strict concavity of the discrete Airy stress polyhedron Phi(x, y): det(H_Phi) > 0 and trace(H_Phi) < 0.",
-            "Scale horizontal thrust H inversely with dual force polyhedron height zeta_dual while keeping the thrust surface inside the Heyman middle-third kern."
+            "Verify 3D nodal equilibrium by requiring every polyhedral cell c_v^* in the reciprocal force diagram Gamma^* to close with ||sum F_i|| < 1e-12 kN.",
+            "Certify pure compression (zero tensile rebar) by checking negative-definite Airy stress Hessian Phi_xx < 0, Phi_yy < 0, and det(H_Phi) = Phi_xx*Phi_yy - Phi_xy^2 > 0.",
+            "Enforce daytime radiative sky-cooling net flux q_net = q_rad(T_s) - q_atm(T_a) - q_solar*(1 - R_solar) - h_c*(T_a - T_s) >= 80 W/m^2 at T_a = 303.15 K (Delta T_eq <= -4.5 C)."
           ]
         },
         "revisions": [
+          {
+            "edition": "REV 1.4",
+            "date": "2026-11-10",
+            "summary": "REV 1.4 (Redated 2026-11-10): Coupled 3D polyhedral graphic statics and negative-definite Airy stress surfaces (DOI 10.1016/j.cad.2015.01.006) with 8–13 μm atmospheric-window daytime radiative sky-cooling extrados coatings (Raman et al. 2014, DOI 10.1038/nature13883; Mandal et al. 2018 porous P(VdF-HFP), DOI 10.1126/science.aat9513), cross-linked directly to Toolbox X.03 STEP AP242/3MF/DXF/GLB voussoir assemblies and verified with numerical --planted-defect knockouts.",
+            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified Airy Hessian concavity (det(H_Φ) = +1.8416 > 0), dual cell nodal closure (< 1e-12 kN), daytime cooling flux q_net = 98.43 W/m² ≥ 80 W/m² (ΔT_eq = −7.08 °C), and X.03 CAD parity."
+          },
           {
             "edition": "REV 1.0",
             "date": "2026-11-07",
@@ -4026,16 +4032,16 @@
         "title": "Hilbert's Sixth Problem Resolved: Hard-Sphere Boltzmann Kinetics to Navier–Stokes Continuum & Neural Climate Operators",
         "subtitle": "Synthesizing Folio P.01's statistical mechanics, P.07's aerodynamics, and M.09's continuum transport: how Yu Deng, Zaher Hani, and Xiao Ma (arXiv:2503.01800) rigorously derived incompressible Navier–Stokes from Newtonian particle collisions across arbitrary macroscopic times.",
         "date_published": "2026-11-07",
-        "date_redated": "2026-11-07",
-        "current_edition": "REV 1.0",
-        "status_badge": "HILBERT 6TH RESOLVED · REV 1.0",
+        "date_redated": "2026-11-10",
+        "current_edition": "REV 1.4",
+        "status_badge": "HILBERT 6TH + TUR · REV 1.4",
         "primary_kernel": "tools/physics_kernel.py",
-        "governing_law": "∂_t f + v·∇_x f = (1/Kn) Q(f,f) · Kn → 0 ⇒ ∂_t u + (u·∇)u + ∇p = ν Δu · arXiv:2503.01800",
+        "governing_law": "Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² ≥ 2 · ∂_t f + v·∇_x f = (1/Kn) Q(f,f) ⇒ σ_visc = (2μ/T) S_ij S_ij ≥ 0",
         "colophon": {
-          "identifier": "P.12 · Hilbert's 6th Problem: Newton → Boltzmann → Navier–Stokes · arXiv:2503.01800",
-          "kernels": "Boltzmann–Grad Scaling (N ε^(d−1) = 1/Kn) · Deng–Hani–Ma Feynman Layered Cluster Trees · Chapman–Enskog ν",
-          "benchmarks": "Kn = 10⁻⁴ · Re = 4.2 × 10³ ⇒ ||f_N − M_u||_L² ≤ C Kn · 10,000× Faster Weather Rollout",
-          "bridge": "Synthesizes P.01/P.07/M.09 · Pointillist Billiard Balls to Continuous Ocean Waves ↔ Early Monsoon & Flood Warnings"
+          "identifier": "P.12 · Hilbert's 6th & TUR Bridge: Markov Jumps → Boltzmann → Navier–Stokes · arXiv:2503.01800",
+          "kernels": "Barato–Seifert TUR (Q_TUR ≥ 2) · Boltzmann–Grad (N ε^(d−1) = 1/Kn) · Deng–Hani–Ma Trees · Chapman–Enskog σ_visc",
+          "benchmarks": "Q_TUR = 2.3617 ≥ 2 (A = 1.5 rad) · Kn = 10⁻⁴ ⇒ ||f_N − M_u||_L² ≤ C Kn · σ_visc = (2μ/T)S_ij S_ij > 0",
+          "bridge": "Synthesizes P.01/P.07/M.09/M.11 · Mesoscopic Markovian TUR Precision Floor ↔ Continuum Viscous Entropy"
         },
         "sliders": [
           {
@@ -4056,54 +4062,60 @@
           }
         ],
         "steps": [
-          "Stage 1 (Level 1 — Microscopic Newtonian Billiard Spheres): N hard spheres of diameter ε evolve deterministically under time-reversible elastic collisions in the Boltzmann–Grad scaling limit N ε^(d−1) = 1/Kn.",
+          "Stage 1 (Level 1 — Mesoscopic Markovian TUR & Newtonian Hard Spheres): On non-equilibrium steady-state Markovian jump cycles (Barato & Seifert 2015, DOI 10.1103/PhysRevLett.114.158101), current precision obeys Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² ≥ 2 while N hard spheres evolve under Boltzmann–Grad scaling N ε^(d−1) = 1/Kn.",
           "Stage 2 (Level 2 — Deng–Hani–Ma Long-Time Boltzmann Kinetic Limit, arXiv:2503.01800): Cutting cumulant recollision loops via layered Feynman interaction trees suppresses pathological memory correlations, proving convergence to the irreversible Boltzmann equation for arbitrarily long times.",
-          "Stage 3 (Level 3 — Chapman–Enskog Hydrodynamic Limit Kn → 0, Continuing P.07 & M.09): As mean free path shrinks (Kn → 0), the distribution relaxes to a local Maxwellian whose velocity moments obey the incompressible Navier–Stokes–Fourier equations.",
-          "Stage 4 (Physics-Informed Neural Climate Operators): Grounding Fourier Neural Operators in exact Boltzmann–Navier–Stokes conservation laws (DOI 10.1016/j.jcp.2018.10.045) delivers 10,000× faster cyclone and flash-flood forecasts."
+          "Stage 3 (Level 3 — Chapman–Enskog Viscous Entropy Production Kn → 0, Continuing P.07, M.09 & M.11): As Kn → 0, local Maxwellian projection yields incompressible Navier–Stokes flow with strictly non-negative viscous entropy production σ_visc = (2μ/T) S_ij S_ij ≥ 0 (DOI 10.1007/s00222-003-0316-5).",
+          "Stage 4 (Thermodynamically Consistent Neural Climate Operators): Grounding Fourier Neural Operators in exact Boltzmann–Navier–Stokes conservation laws and positive dissipation (DOI 10.1016/j.jcp.2018.10.045) delivers 10,000× faster cyclone and flash-flood forecasts."
         ],
         "readouts": [
+          {
+            "label": "Markovian TUR Product Q_TUR",
+            "value": "2.3617 ≥ 2.0 (A = 1.5 rad PASS)"
+          },
           {
             "label": "Hydrodynamic Convergence Error",
             "value": "O(Kn) = 1.0 × 10⁻⁴ (EXACT)"
           },
           {
-            "label": "Recollision Cumulant Remainder",
-            "value": "Exponentially Suppressed"
+            "label": "Chapman–Enskog Viscous σ_visc",
+            "value": "6.20 × 10⁻⁴ W/(m³·K) > 0"
           },
           {
-            "label": "Chapman–Enskog Viscosity (ν)",
-            "value": "1.51 × 10⁻⁵ m²/s (Verified)"
-          },
-          {
-            "label": "Hilbert's 6th Continuum Verdict",
-            "value": "NEWTON → NAVIER–STOKES QED"
+            "label": "Hilbert's 6th + TUR Verdict",
+            "value": "BOLTZMANN → STOKES TUR QED"
           }
         ],
         "spec_plate": {
-          "division": "HILBERT'S SIXTH PROBLEM / KINETIC THEORY / HYDRODYNAMIC CONTINUUM LIMIT",
-          "title": "Three-Tier Microscopic-to-Macroscopic Derivation of Navier–Stokes & Neural Weather Surrogates",
-          "body": "Rigorous long-time derivation from N-body Newtonian hard spheres to the Boltzmann kinetic equation and incompressible Navier–Stokes–Fourier hydrodynamics (Deng, Hani & Ma 2025, arXiv:2503.01800) coupled with conservation-enforced neural operators.",
-          "meta": "Benamou–Brenier fluid continuum DOI 10.1007/s002110050002, Katz aero DOI 10.1146/annurev.fluid.38.050304.092016 & arXiv:2503.01800 verified"
+          "division": "HILBERT'S SIXTH PROBLEM / STOCHASTIC TUR / HYDRODYNAMIC CONTINUUM LIMIT",
+          "title": "Mesoscopic Markovian TUR to Boltzmann Kinetics, Navier–Stokes Viscous Dissipation & Neural Surrogates",
+          "body": "Cross-scale synthesis linking Barato–Seifert Thermodynamic Uncertainty Relations (DOI 10.1103/PhysRevLett.114.158101) in NESS Markovian jump networks across the Deng–Hani–Ma Boltzmann–Grad limit (arXiv:2503.01800) to Chapman–Enskog viscous entropy production σ_visc = (2μ/T) S_ij S_ij ≥ 0 (DOI 10.1007/s00222-003-0316-5).",
+          "meta": "Barato–Seifert TUR DOI 10.1103/PhysRevLett.114.158101, Golse–Saint-Raymond DOI 10.1007/s00222-003-0316-5 & arXiv:2503.01800 verified"
         },
         "sidenote_1": {
           "kicker": "SIDENOTE P.12-A · CROSS-FIELD ANALOGY · GEORGES SEURAT'S POINTILLISM & STADIUM CROWD WAVES",
           "body": "Stand 5 cm from Georges Seurat's 'A Sunday on La Grande Jatte' and you see only discrete paint dots (Newton's atoms). Step back 5 meters and your eye integrates them into shimmering water (Navier–Stokes). Deng, Hani, and Ma proved the exact mathematical zoom lens between the two!"
         },
         "sidenote_2": {
-          "kicker": "SIDENOTE P.12-B · WHY LANFORD (1975) WAS STUCK AT ONE-FIFTH OF A COLLISION TIME",
-          "body": "For 50 years after Oscar Lanford's 1975 theorem, mathematicians could only prove Newton -> Boltzmann for 0.2 mean free collision times before recollision trees exploded. Deng, Hani, and Ma's 2025 layered cluster expansion (arXiv:2503.01800) conquered arbitrary macroscopic times."
+          "kicker": "SIDENOTE P.12-B · BARATO–SEIFERT TUR SCOPE & CONTINUUM VISCOUS BRIDGE",
+          "body": "For time-homogeneous non-equilibrium steady-state Markovian jump networks (DOI 10.1103/PhysRevLett.114.158101), Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² ≥ 2 bounds current precision by entropy production; under Kn → 0 coarse-graining (arXiv:2503.01800), microscopic irreversibility projects onto continuum viscous dissipation σ_visc = (2μ/T) S_ij S_ij ≥ 0."
         },
         "skill": {
           "filename": "hilbert-sixth-boltzmann-navier-stokes-SKILL.md",
           "name": "hilbert-sixth-boltzmann-navier-stokes",
-          "description": "AI-agnostic mathematical physics skill for Hilbert's Sixth Problem: Boltzmann-Grad scaling limit (N * eps^(d-1) = 1/Kn), Deng-Hani-Ma recollision cumulant pruning, and Chapman-Enskog Navier-Stokes hydrodynamic convergence.",
+          "description": "AI-agnostic mathematical physics skill for Hilbert's Sixth Problem and Thermodynamic Uncertainty Relations (TUR): NESS Markovian jump bound Q_TUR = (Delta S / k_B) * Var(J) / <J>^2 >= 2, Boltzmann-Grad scaling (N * eps^(d-1) = 1/Kn), Deng-Hani-Ma cumulant pruning, and Chapman-Enskog Navier-Stokes viscous entropy production sigma_visc = (2*mu/T) S_ij S_ij >= 0.",
           "rules": [
-            "Enforce Boltzmann-Grad kinetic scaling N * epsilon^(d - 1) = 1 / Kn so mean free path lambda_mfp remains O(Kn) as N -> infinity and epsilon -> 0.",
-            "Evaluate Chapman-Enskog kinematic viscosity nu ~ c_s * lambda_mfp and require Mach number Ma = O(Kn) for the incompressible Navier-Stokes-Fourier limit.",
-            "Verify mass, momentum, and energy conservation moments int {1, v, |v|^2} Q(f, f) dv = 0 across all neural operator rollout steps."
+            "Enforce Barato-Seifert TUR Q_TUR = (Delta S / k_B) * Var(J) / <J>^2 = A * coth(A / 2) >= 2 within its time-homogeneous NESS Markovian jump network scope (rejecting sub-TUR Q_TUR < 2).",
+            "Enforce Boltzmann-Grad kinetic scaling N * epsilon^(d - 1) = 1 / Kn and exact elastic hard-sphere collision invariants (Delta m = 0, Delta p = 0, Delta E = 0 to < 1e-14).",
+            "Require positive Chapman-Enskog viscous entropy production sigma_visc = (2 * mu / T) * S_ij * S_ij >= 0 with mu > 0 as Kn -> 0 across all continuum and neural operator rollouts."
           ]
         },
         "revisions": [
+          {
+            "edition": "REV 1.4",
+            "date": "2026-11-10",
+            "summary": "REV 1.4 (Redated 2026-11-10): Synthesized Barato & Seifert (2015, DOI 10.1103/PhysRevLett.114.158101) Thermodynamic Uncertainty Relation (Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² = A·coth(A/2) ≥ 2 for NESS Markovian jump networks, bridged to Folio M.11) across the Boltzmann–Grad hard-sphere limit (Kn → 0) into Chapman–Enskog Navier–Stokes viscous entropy production σ_visc = (2μ/T) S_ij S_ij ≥ 0 (DOI 10.1007/s00222-003-0316-5), with stdlib numerical verifier and --planted-defect entropy knockouts.",
+            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified Markovian steady-state TUR scope (Q_TUR = 2.3617 > 2 at A = 1.5 rad), hard-sphere collision invariants (< 1e-14), and positive Couette viscous dissipation σ_visc > 0."
+          },
           {
             "edition": "REV 1.0",
             "date": "2026-11-07",

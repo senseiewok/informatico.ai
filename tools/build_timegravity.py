@@ -231,6 +231,12 @@ PLATE_CAPTIONS = {
         "a trajectory passing two clock circles on the left, and a smooth step-shaped curve of accumulated proper-time difference against time on the right",
         "una trayectoria que pasa junto a dos círculos de reloj a la izquierda, y una curva suave en forma de escalón de diferencia de tiempo propio acumulada contra el tiempo a la derecha",
     ),
+    "T.13": (
+        "Left: an oscillatory binary-merger gravitational wave riding onto Christodoulou's permanent DC displacement memory step Δh_char = 2 G E_rad / (c⁴ D_L), shifting proper arm separation by ΔL = (1/2) L_0 Δh. Right: Weinberg's spin-2 soft Ward residual and the Standard Model chiral and mixed gauge–gravitational anomaly polynomials crossing zero together exclusively at N_c = 3 quark colours.",
+        "Izquierda: una onda gravitacional oscilatoria de fusión binaria montada sobre el escalón permanente de memoria de desplazamiento de Christodoulou Δh_char = 2 G E_rad / (c⁴ D_L), desplazando la separación propia del brazo en ΔL = (1/2) L_0 Δh. Derecha: el residuo blando de Ward de espín 2 de Weinberg y los polinomios de anomalías quirales y mixtas del Modelo Estándar cruzando cero simultáneamente en N_c = 3 colores de quarks.",
+        "an oscillating gravitational wave settling onto a permanent upward step on the left, and anomaly residual lines crossing zero together at N_c equals 3 on the right",
+        "una onda gravitacional oscilante que se asienta en un escalón permanente hacia arriba a la izquierda, y líneas de residuos de anomalías que cruzan cero juntas en N_c igual a 3 a la derecha",
+    ),
 }
 
 
@@ -1432,6 +1438,108 @@ def dark_clock_instrument(page: dict) -> str:
     </section>"""
 
 
+def holonomy_soft_instrument(page: dict) -> str:
+    ins = page["instrument"]
+    from timegravity_kernel_holonomy_soft import (
+        GW150914_DL_MPC, GW150914_E_RAD_SOLAR, LIGO_ARM_M,
+        anomaly_traces_6y, memory_flux_quadrature_check, memory_strain_step, soft_ward_identities,
+    )
+    soft = soft_ward_identities(kappa_ratio_e_over_p=1.0)
+    mem = memory_strain_step(e_rad_solar=GW150914_E_RAD_SOLAR, d_l_mpc=GW150914_DL_MPC, arm_length_m=LIGO_ARM_M)
+    quad = memory_flux_quadrature_check(e_rad_solar=GW150914_E_RAD_SOLAR, d_l_mpc=GW150914_DL_MPC)
+    anom = anomaly_traces_6y(n_c=3, include_right_electron=True)
+
+    lx0, lx1, ly0, ly1 = 62, 422, 68, 348
+    rx0, rx1, ry0, ry1 = 488, 882, 68, 348
+    ry_mid = 208
+    y_zero = ly1 - 44
+    y_step = ly0 + 58
+
+    mem_pts = []
+    wave_pts = []
+    for idx in range(81):
+        u = -4.0 + 8.0 * idx / 80.0
+        tx = lx0 + (lx1 - lx0) * idx / 80.0
+        step_frac = 0.5 * (1.0 + math.tanh(1.35 * u))
+        osc = 0.34 * math.exp(-0.75 * u * u) * math.cos(7.5 * u)
+        ym = y_zero - (y_zero - y_step) * step_frac
+        yw = y_zero - (y_zero - y_step) * (step_frac + osc)
+        mem_pts.append(f'{"M" if idx == 0 else "L"} {tx:.1f} {ym:.1f}')
+        wave_pts.append(f'{"M" if idx == 0 else "L"} {tx:.1f} {yw:.1f}')
+
+    bar_xs = (534, 628, 722, 816)
+    bar_labels_en = ("s=2 Ward", "Tr[6Y]", "SU(2)²·6Y", "U(1)³ / 54")
+    bar_labels_es = ("Ward s=2", "Tr[6Y]", "SU(2)²·6Y", "U(1)³ / 54")
+    bars_svg = []
+    for bx, len_s, les_s in zip(bar_xs, bar_labels_en, bar_labels_es):
+        bars_svg.append(
+            f'<rect class="tg-hol-bar" x="{bx - 22}" y="{ry_mid - 2}" width="44" height="4" rx="2" fill="var(--tp-verdigris)"/>'
+            f'<text x="{bx}" y="{ry1 + 18}" text-anchor="middle" font-size="9.2" fill="var(--tp-graphite)" data-en="{a(len_s)}" data-es="{a(les_s)}">{t(len_s)}</text>'
+        )
+
+    dh_c = mem["delta_h_char"]
+    dl_c = mem["delta_l_char_m"]
+    return f"""    <section class="tg-instrument" id="instrument" data-tg-instrument="holonomy_soft" aria-labelledby="tg-instrument-heading-t13">
+      <h2 id="tg-instrument-heading-t13" class="tp-h2" data-en="{a(ins['title_en'])}" data-es="{a(ins['title_es'])}">{t(ins['title_en'])}</h2>
+      {bi("p", ins["how_en"], ins["how_es"], "tg-how")}
+{predict_block(page)}
+        <svg class="tg-stage" viewBox="0 0 920 420" role="img" aria-labelledby="tg-stage-title-t13 tg-stage-desc-t13" data-lx0="{lx0}" data-lx1="{lx1}" data-ly0="{ly0}" data-ly1="{ly1}" data-rx0="{rx0}" data-rx1="{rx1}" data-ry0="{ry0}" data-ry1="{ry1}" data-rymid="{ry_mid}">
+          <title id="tg-stage-title-t13">Gravitational-wave displacement memory step and infrared gauge-gravity Ward and anomaly residuals</title>
+          <desc id="tg-stage-desc-t13">Left: oscillatory merger wave plus permanent DC memory strain step Delta h_char = 2 G E_rad / (c^4 D_L). Right: Weinberg s=2 soft Ward residual and the Standard Model chiral and mixed gravitational anomaly traces vanishing together at N_c = 3.</desc>
+          <text x="{(lx0 + lx1) / 2:.0f}" y="38" text-anchor="middle" font-size="11" font-weight="700" data-en="Christodoulou memory step Δh(t) &amp; arm offset ΔL" data-es="Escalón de memoria de Christodoulou Δh(t) y desplazamiento ΔL">Christodoulou memory step Δh(t) &amp; arm offset ΔL</text>
+          <line class="tg-axis" x1="{lx0}" y1="{ly0}" x2="{lx0}" y2="{ly1}"/>
+          <line class="tg-axis" x1="{lx0}" y1="{y_zero}" x2="{lx1}" y2="{y_zero}" stroke-dasharray="4 3"/>
+          <line class="tg-hol-plateau" x1="{lx0}" y1="{y_step}" x2="{lx1}" y2="{y_step}" stroke="var(--tp-verdigris)" stroke-width="1.5" stroke-dasharray="5 3"/>
+          <text x="{lx0 - 8}" y="{y_zero + 4}" text-anchor="end" font-size="9.5">0</text>
+          <text x="{lx0 - 8}" y="{y_step + 4}" text-anchor="end" font-size="9.2" fill="var(--tp-verdigris)" data-tg-read="dhlabel">{dh_c:.2e}</text>
+          <path class="tg-hol-wave" d="{' '.join(wave_pts)}" fill="none" stroke="var(--tp-prussian)" stroke-width="1.6" opacity="0.55"/>
+          <path class="tg-hol-mem" d="{' '.join(mem_pts)}" fill="none" stroke="var(--tp-minium)" stroke-width="2.7"/>
+          <text x="{(lx0 + lx1) / 2:.0f}" y="{ly1 + 18}" text-anchor="middle" font-size="9.5" fill="var(--tp-graphite)" data-en="time across merger burst (permanent DC offset after ringdown)" data-es="tiempo durante la fusión (escalón DC permanente tras la relajación)">time across merger burst (permanent DC offset after ringdown)</text>
+          <text x="{(rx0 + rx1) / 2:.0f}" y="38" text-anchor="middle" font-size="11" font-weight="700" data-en="Soft Ward &amp; anomaly residuals (all zero iff κ_e = κ_p, N_c = 3)" data-es="Residuos de Ward y anomalías (todos cero sii κ_e = κ_p, N_c = 3)">Soft Ward &amp; anomaly residuals (all zero iff κ_e = κ_p, N_c = 3)</text>
+          <line class="tg-axis" x1="{rx0}" y1="{ry0}" x2="{rx0}" y2="{ry1}"/>
+          <line class="tg-axis" x1="{rx0}" y1="{ry_mid}" x2="{rx1}" y2="{ry_mid}" stroke-dasharray="4 3"/>
+          <text x="{rx0 - 8}" y="{ry_mid + 4}" text-anchor="end" font-size="9.5">0</text>
+          {''.join(bars_svg)}
+        </svg>
+      <div class="tg-controls">
+        <div class="tp-control-group">
+          <label for="tg-erad-t13"><span data-en="Radiated merger energy E_rad (M_⊙ c²)" data-es="Energía radiada E_rad (M_⊙ c²)">Radiated merger energy E_rad (M_⊙ c²)</span> <span data-tg-read="erad">3.0</span></label>
+          <input id="tg-erad-t13" data-tg-erad-input type="range" min="0.5" max="8.0" step="0.5" value="3.0" aria-describedby="tg-status-t13">
+        </div>
+        <div class="tp-control-group">
+          <label for="tg-dl-t13"><span data-en="Luminosity distance D_L (Mpc)" data-es="Distancia de luminosidad D_L (Mpc)">Luminosity distance D_L (Mpc)</span> <span data-tg-read="dl">410</span></label>
+          <input id="tg-dl-t13" data-tg-dl-input type="range" min="100" max="1000" step="10" value="410" aria-describedby="tg-status-t13">
+        </div>
+        <div class="tp-control-group">
+          <label for="tg-nc-t13"><span data-en="Quark colour multiplicity N_c" data-es="Multiplicidad de color de quarks N_c">Quark colour multiplicity N_c</span> <span data-tg-read="nc">3</span></label>
+          <input id="tg-nc-t13" data-tg-nc-input type="range" min="1" max="5" step="1" value="3" aria-describedby="tg-status-t13">
+        </div>
+        <div class="tg-btn-row" role="group" aria-label="Knockout and planted defect">
+          <button type="button" class="tp-step-btn tp-knockout-btn" data-tg-knockout aria-pressed="false" data-en="⚡ Knockout · planted defect (κ_e / κ_p = 1 + 10⁻⁵ &amp; N_c = 2 → Ward &amp; anomaly FAIL)" data-es="⚡ Apagado · defecto plantado (κ_e / κ_p = 1 + 10⁻⁵ y N_c = 2 → FALLA Ward y anomalía)">⚡ Knockout · planted defect (κ_e / κ_p = 1 + 10⁻⁵ &amp; N_c = 2 → Ward &amp; anomaly FAIL)</button>
+        </div>
+      </div>
+      <div class="tp-readout-strip">
+        <div class="tp-readout-box" data-tg-readout-box="ward" data-alert="false">
+          <span class="tp-readout-k" data-en="Weinberg s = 2 soft Ward ||W^μ|| / E_cm" data-es="Ward blando s = 2 de Weinberg ||W^μ|| / E_cm">Weinberg s = 2 soft Ward ||W^μ|| / E_cm</span>
+          <span class="tp-readout-v" data-tg-read="ward">{soft['s2_ward_vector_rel_norm']:.2e} (η = 0)</span>
+        </div>
+        <div class="tp-readout-box" data-alert="false">
+          <span class="tp-readout-k" data-en="Memory Δh_char · ΔL (4 km LIGO / 2.5 Gm LISA)" data-es="Memoria Δh_char · ΔL (4 km LIGO / 2.5 Gm LISA)">Memory Δh_char · ΔL (4 km LIGO / 2.5 Gm LISA)</span>
+          <span class="tp-readout-v" data-tg-read="mem">{dh_c:.2e} · {dl_c:.2e} m</span>
+        </div>
+        <div class="tp-readout-box" data-tg-readout-box="anom" data-alert="false">
+          <span class="tp-readout-k" data-en="Traces (grav, SU3², SU2², U1³) at N_c" data-es="Trazas (grav, SU3², SU2², U1³) en N_c">Traces (grav, SU3², SU2², U1³) at N_c</span>
+          <span class="tp-readout-v" data-tg-read="anom">({anom['tr_grav_6y']}, {anom['tr_su3_sq_6y']}, {anom['tr_su2_sq_6y']}, {anom['tr_u1_cubic_6y']}) · CANCEL</span>
+        </div>
+        <div class="tp-readout-box" data-tg-readout-box="err" data-alert="false">
+          <span class="tp-readout-k" data-en="GL5 memory quadrature &amp; Lean 4 Prelude gate" data-es="Cuadratura GL5 de memoria y compuerta Lean 4 Prelude">GL5 memory quadrature &amp; Lean 4 Prelude gate</span>
+          <span class="tp-readout-v" data-tg-read="err">{quad['quadrature_rel_err']:.1e} · 12 thms · PASS</span>
+        </div>
+      </div>
+      <p id="tg-status-t13" class="tg-status" data-tg-status data-state="fall" aria-live="polite" data-en="Infrared consistency satisfied: κ_e = κ_p enforces universal free fall (||W^μ|| = 0), E_rad leaves permanent baseline memory ΔL = ½ L₀ Δh, and N_c = 3 cancels all four chiral and gravitational anomalies." data-es="Consistencia infrarroja satisfecha: κ_e = κ_p impone caída libre universal (||W^μ|| = 0), E_rad deja memoria permanente ΔL = ½ L₀ Δh, y N_c = 3 cancela las cuatro anomalías quirales y gravitacionales.">Infrared consistency satisfied: κ_e = κ_p enforces universal free fall (||W^μ|| = 0), E_rad leaves permanent baseline memory ΔL = ½ L₀ Δh, and N_c = 3 cancels all four chiral and gravitational anomalies.</p>
+    </section>"""
+
+
 def plate_d(page: dict) -> str:
     code = page["code"]
     slug = page["slug"] or "t01"
@@ -1979,6 +2087,50 @@ def plate_d(page: dict) -> str:
             "cap_en": "Plate T.12-D · Visual Intuition Bridge: an electromagnetically dark mass passes unseen through light yet bends the metric (left and center), producing a logarithmic proper-time step verified against Gauss–Legendre quadrature and the transverse impulse identity (right).",
             "cap_es": "Lámina T.12-D · Puente de Intuición Visual: una masa electromagnéticamente oscura pasa sin sombra por la luz pero curva la métrica (izquierda y centro), produciendo un escalón logarítmico de tiempo propio verificado frente a la cuadratura de Gauss–Legendre y la identidad de impulso (derecha).",
         },
+        "t13": {
+            "title_en": "Plate T.13-D Visual Intuition Bridge: infrared soft-graviton gauge invariance, permanent gravitational-wave displacement memory, and mixed gauge-gravitational anomaly cancellation at N_c = 3",
+            "title_es": "Lámina T.13-D Puente de Intuición Visual: invariancia gauge infrarroja de gravitones blandos, memoria permanente de ondas gravitacionales y cancelación de anomalías mixtas en N_c = 3",
+            "p1_h_en": "Wake memory & three algebraic locks",
+            "p1_h_es": "Memoria de estela y tres candados algebraicos",
+            "p1_l1_en": "Wave energy shifts free-falling mirrors;",
+            "p1_l1_es": "La energía de la onda desplaza espejos;",
+            "p1_l2_en": "soft spin-2 & triangles lock κ_a and N_c.",
+            "p1_l2_es": "el espín 2 blando y los lazos fijan κ_a y N_c.",
+            "p1_art": (
+                '<path d="M 38 156 L 96 156 C 128 156, 146 118, 178 118 L 260 118" fill="none" stroke="var(--tp-minium)" stroke-width="2.4"/>'
+                '<line x1="38" y1="156" x2="260" y2="156" stroke="var(--tp-rule-strong)" stroke-width="1.1" stroke-dasharray="3 3"/>'
+                '<circle cx="216" cy="118" r="4" fill="var(--tp-verdigris)"/>'
+                '<text x="150" y="178" text-anchor="middle" font-size="8.2" fill="var(--tp-graphite)" data-en="Δh_char = 2GE_rad/(c⁴D_L) · W^μ = 0 · N_c = 3" data-es="Δh_char = 2GE_rad/(c⁴D_L) · W^μ = 0 · N_c = 3">Δh_char = 2GE_rad/(c⁴D_L) · W^μ = 0 · N_c = 3</text>'
+            ),
+            "p2_on_en": "▲ Consistent IR EFT: κ_e = κ_p, N_c = 3",
+            "p2_on_es": "▲ EFT infrarroja consistente: κ_e = κ_p, N_c = 3",
+            "p2_on1_en": "||W^μ|| = 0 (η = 0); Tr[6Y] = 0;",
+            "p2_on1_es": "||W^μ|| = 0 (η = 0); Tr[6Y] = 0;",
+            "p2_on2_en": "SU(2)²(6Y) = 0 and Tr[(6Y)³] = 0.",
+            "p2_on2_es": "SU(2)²(6Y) = 0 y Tr[(6Y)³] = 0.",
+            "p2_off_en": "▼ Knockout: κ_e / κ_p = 1 + 10⁻⁵, N_c = 2",
+            "p2_off_es": "▼ Apagado: κ_e / κ_p = 1 + 10⁻⁵, N_c = 2",
+            "p2_off1_en": "Longitudinal gravitons fail to decouple;",
+            "p2_off1_es": "Los gravitones longitudinales no desacoplan;",
+            "p2_off2_en": "SU(2)² = −1 and U(1)_Y³ = +54 ≠ 0.",
+            "p2_off2_es": "SU(2)² = −1 y U(1)_Y³ = +54 ≠ 0.",
+            "p3_ok_en": "✓ GL5 MEMORY & 12 LEAN 4 THEOREMS",
+            "p3_ok_es": "✓ MEMORIA GL5 Y 12 TEOREMAS LEAN 4",
+            "p3_ok1_en": "|Δh_GL5 − Δh_exact| / Δh < 10⁻¹²",
+            "p3_ok1_es": "|Δh_GL5 − Δh_exacto| / Δh < 10⁻¹²",
+            "p3_ok2_en": "0 imports · 0 sorry · s ≥ 3 → g_a = 0",
+            "p3_ok2_es": "0 imports · 0 sorry · s ≥ 3 → g_a = 0",
+            "p3_bad_en": "⚠ PLANTED DEFECT: WARD & ANOMALY FAIL",
+            "p3_bad_es": "⚠ DEFECTO PLANTADO: FALLAN WARD Y ANOMALÍA",
+            "p3_bad1_en": "||W^μ||/E_cm = 3.45×10⁻⁶ > 10⁻¹²;",
+            "p3_bad1_es": "||W^μ||/E_cm = 3.45×10⁻⁶ > 10⁻¹²;",
+            "p3_bad2_en": "verifier prints FAIL to stderr (exit 1).",
+            "p3_bad2_es": "el verificador imprime FAIL (salida 1).",
+            "foot_en": "PLATE T.13-D · VISUAL INTUITION BRIDGE → ∑ η_a κ_a p_a^μ = 0 · ΔL/L₀ = ½ Δh_+^mem · Tr[(6Y)³] = −54(N_c − 3) = 0",
+            "foot_es": "LÁMINA T.13-D · PUENTE DE INTUICIÓN VISUAL → ∑ η_a κ_a p_a^μ = 0 · ΔL/L₀ = ½ Δh_+^mem · Tr[(6Y)³] = −54(N_c − 3) = 0",
+            "cap_en": "Plate T.13-D · Visual Intuition Bridge: permanent nonlinear gravitational-wave memory and the infrared soft-graviton and triangle-anomaly locks (left and centre), verified by Gauss–Legendre quadrature and 12 core Lean 4 Prelude theorems (right).",
+            "cap_es": "Lámina T.13-D · Puente de Intuición Visual: memoria permanente no lineal de ondas gravitacionales y candados infrarrojos de gravitones blandos y anomalías triangulares (izquierda y centro), verificados por cuadratura de Gauss–Legendre y 12 teoremas en Lean 4 Prelude (derecha).",
+        },
     }
     sp = specs.get(slug, specs["t01"])
     return f"""        <figure class="tp-distill-figure" role="group" aria-label="Plate {code}-D Visual Intuition Bridge">
@@ -2390,13 +2542,13 @@ def track_map(rel_res: str) -> str:
             title = bi("span", m["title_en"], m["title_es"])
             status = bi("span", "In preparation", "En preparación", "tg-map-status")
         items.append(f"""          <li data-built="{str(m['built']).lower()}">
-            <span class="tg-map-order"><span data-en="Step {i} of 13" data-es="Paso {i} de 13">Step {i} of 13</span></span>
+            <span class="tg-map-order"><span data-en="Step {i} of 14" data-es="Paso {i} de 14">Step {i} of 14</span></span>
             <span class="tg-map-code">{m['code']}</span>
             <strong class="tg-map-title">{title}</strong>
             {bi("span", "Ends with: " + m["q_en"], "Termina con: " + m["q_es"], "tg-map-q")}
             {status}
           </li>""")
-    return "        <ol class=\"tg-track-map\" aria-label=\"The thirteen pages in reading order\">\n" + "\n".join(items) + "\n        </ol>"
+    return "        <ol class=\"tg-track-map\" aria-label=\"The fourteen pages in reading order\">\n" + "\n".join(items) + "\n        </ol>"
 
 
 def ledger_table(page: dict) -> str:
@@ -2640,6 +2792,13 @@ def apparatus_svg(kind: str) -> str:
             '<line x1="27" y1="25" x2="37" y2="25" stroke="var(--tp-ink)" stroke-width="1.3" stroke-dasharray="2 2"/>'
             '<path d="M 12 45 C 18 38, 26 52, 32 45 S 46 38, 52 45" fill="none" stroke="var(--tp-minium)" stroke-width="1.7"/>'
         ),
+        "soft-triangle": (
+            '<polygon points="32,12 14,46 50,46" fill="none" stroke="var(--tp-prussian)" stroke-width="1.8"/>'
+            '<circle cx="32" cy="12" r="4" fill="var(--tp-minium)"/>'
+            '<circle cx="14" cy="46" r="4" fill="var(--tp-prussian)"/>'
+            '<circle cx="50" cy="46" r="4" fill="var(--tp-verdigris)"/>'
+            '<path d="M 23 36 L 41 36" stroke="var(--tp-minium)" stroke-width="1.5" stroke-dasharray="2 2"/>'
+        ),
     }.get(kind, '<circle cx="32" cy="32" r="16" fill="var(--tp-stone)" stroke="var(--tp-prussian)" stroke-width="1.6"/>')
     return (
         f'<span class="tg-apparatus-badge" data-apparatus="{kind}" aria-hidden="true">'
@@ -2739,8 +2898,8 @@ HUMANS_DATA: dict[str, dict] = {
                 "place_es": "Horizontes en rotación, relojes condicionales, cuñas de Rindler, resonancias y la curva de Page",
                 "story_en": "Roy Kerr found the exact spinning horizon in 1963; Bryce DeWitt (1967) and Don Page and William Wootters (1983) showed how conditional probability recovers ticking time from a stationary state. Jacob Bekenstein, Stephen Hawking, and William Unruh linked horizon surface gravity to thermal states, Don Page (1993) derived the unitary turnover curve, and LIGO, Virgo, KAGRA, and Maximiliano Isi tested Kerr ringdowns and Hawking's area law on merging black holes. Wojciech Zurek, Erich Joos, H. Dieter Zeh, Serge Haroche, and Jean-Michel Brune showed how the photon bath selects pointer states, while Planck, Douglas Clowe, Jun Ye, Ekkehard Peik, and Nils Huntemann tested gravity and clocks across dark matter.",
                 "story_es": "Roy Kerr halló el horizonte en rotación exacto en 1963; Bryce DeWitt (1967) y Don Page y William Wootters (1983) mostraron cómo la probabilidad condicional recupera el tiempo desde un estado estacionario. Jacob Bekenstein, Stephen Hawking y William Unruh vincularon la gravedad superficial con estados térmicos, Don Page (1993) derivó la curva de retorno unitaria, y LIGO, Virgo, KAGRA y Maximiliano Isi probaron las resonancias de Kerr y la ley del área. Wojciech Zurek, Erich Joos, H. Dieter Zeh, Serge Haroche y Jean-Michel Brune mostraron cómo el baño de fotones selecciona estados puntero, mientras Planck, Douglas Clowe, Jun Ye, Ekkehard Peik y Nils Huntemann pusieron a prueba la gravedad y los relojes frente a la materia oscura.",
-                "spec_en": "Steps T.07 · T.08 · T.09 · T.10 · T.11 · T.12",
-                "spec_es": "Pasos T.07 · T.08 · T.09 · T.10 · T.11 · T.12",
+                "spec_en": "Steps T.07 · T.08 · T.09 · T.10 · T.11 · T.12 · T.13",
+                "spec_es": "Pasos T.07 · T.08 · T.09 · T.10 · T.11 · T.12 · T.13",
                 "doi": "10.1103/PhysRevD.27.2885",
             },
         ],
@@ -3397,6 +3556,58 @@ HUMANS_DATA: dict[str, dict] = {
             },
         ],
     },
+    "t13": {
+        "lineage_en": "Pioneers of Step T.13 · Weinberg (1964–1965) · Adler (1969) · Delbourgo & Salam (1972) · Christodoulou (1991) · Strominger & Zhiboedov (2016) · Zhang, Ye & Schumm (2024) · Tooby-Smith (2025)",
+        "lineage_es": "Pioneros del Paso T.13 · Weinberg (1964–1965) · Adler (1969) · Delbourgo y Salam (1972) · Christodoulou (1991) · Strominger y Zhiboedov (2016) · Zhang, Ye y Schumm (2024) · Tooby-Smith (2025)",
+        "title_en": "The Humans Behind Step T.13 · Soft Gravitons, Null-Infinity Memory, and Chiral Triangle Locks",
+        "title_es": "Las Personas Detrás del Paso T.13 · Gravitones Blandos, Memoria en el Infinito Nulo y Candados Quirales",
+        "lead_en": "Without assuming ultraviolet physics at the Planck scale, three generations of theorists and experimentalists uncovered the exact low-energy consistency conditions that tie massless spin-2 gravity to gauge charges, permanent wave memory, and the fermion table.",
+        "lead_es": "Sin suponer física ultravioleta en la escala de Planck, tres generaciones de teóricos y experimentalistas descubrieron las condiciones exactas de consistencia de baja energía que enlazan la gravedad sin masa de espín 2 con las cargas gauge, la memoria permanente de ondas y la tabla de fermiones.",
+        "cards": [
+            {
+                "icon": "soft-triangle",
+                "era_en": "1964–1965 · Berkeley, California",
+                "era_es": "1964–1965 · Berkeley, California",
+                "names_en": "Steven Weinberg",
+                "names_es": "Steven Weinberg",
+                "place_en": "University of California, Berkeley · Infrared S-Matrix Theory",
+                "place_es": "Universidad de California en Berkeley · Teoría de la Matriz S Infrarroja",
+                "story_en": "Working purely from Lorentz invariance and unitarity of flat-space scattering amplitudes, Steven Weinberg showed in 1964–1965 that soft massless spin-1 emission requires charge conservation, soft massless spin-2 emission forces every species to share one gravitational coupling κ (deriving the Equivalence Principle), and massless spins s ≥ 3 cannot mediate long-range forces.",
+                "story_es": "Partiendo solo de la invariancia de Lorentz y la unitariedad de amplitudes de dispersión, Steven Weinberg demostró en 1964–1965 que la emisión blanda de espín 1 exige conservar la carga, la emisión blanda de espín 2 obliga a toda especie a compartir un mismo acoplamiento gravitacional κ, y los espines sin masa s ≥ 3 no pueden mediar fuerzas macroscópicas.",
+                "spec_en": "Soft Ward hierarchy · s = 1, 2, ≥ 3 (DERIVED)",
+                "spec_es": "Jerarquía blanda de Ward · s = 1, 2, ≥ 3 (DERIVADO)",
+                "doi": "10.1103/PhysRev.135.B1049",
+            },
+            {
+                "icon": "ligo-interferometer",
+                "era_en": "1991 & 2016 · Courant Institute & Harvard",
+                "era_es": "1991 y 2016 · Instituto Courant y Harvard",
+                "names_en": "Demetrios Christodoulou · Andrew Strominger & Alexander Zhiboedov",
+                "names_es": "Demetrios Christodoulou · Andrew Strominger y Alexander Zhiboedov",
+                "place_en": "New York University, Harvard University & LIGO/Virgo Catalogs",
+                "place_es": "Universidad de Nueva York, Universidad de Harvard y Catálogos LIGO/Virgo",
+                "story_en": "In 1991 Demetrios Christodoulou proved from the nonlinear vacuum Einstein equations that gravitational-wave energy flux leaves a permanent displacement step between free-falling test masses after a wave train passes. Twenty-five years later Andrew Strominger and Alexander Zhiboedov showed that displacement memory, BMS supertranslations, and Weinberg's soft graviton theorem form one infrared triangle.",
+                "story_es": "En 1991 Demetrios Christodoulou demostró desde las ecuaciones no lineales de Einstein en el vacío que el flujo de energía de ondas gravitacionales deja un escalón permanente de desplazamiento entre masas en caída libre. Veinticinco años después Andrew Strominger y Alexander Zhiboedov mostraron que la memoria, las supertraslaciones BMS y el gravitón blando forman un solo triángulo infrarrojo.",
+                "spec_en": "Nonlinear GW memory Δh_char = 2GE_rad/(c⁴D_L) (DERIVED)",
+                "spec_es": "Memoria gravitacional Δh_char = 2GE_rad/(c⁴D_L) (DERIVADO)",
+                "doi": "10.1103/PhysRevLett.67.1486",
+            },
+            {
+                "icon": "optical-lattice",
+                "era_en": "1969, 1972 & 2024–2025 · Princeton, Imperial College, Boulder & Munich",
+                "era_es": "1969, 1972 y 2024–2025 · Princeton, Imperial College, Boulder y Múnich",
+                "names_en": "Stephen L. Adler · Robert Delbourgo & Abdus Salam · Chuankun Zhang, Thorsten Schumm & Jun Ye · Joseph Tooby-Smith",
+                "names_es": "Stephen L. Adler · Robert Delbourgo y Abdus Salam · Chuankun Zhang, Thorsten Schumm y Jun Ye · Joseph Tooby-Smith",
+                "place_en": "IAS Princeton, Imperial College London, JILA / TU Wien & PhysLean",
+                "place_es": "IAS Princeton, Imperial College London, JILA / TU Wien y PhysLean",
+                "story_en": "Stephen Adler (1969) uncovered the one-loop chiral triangle anomaly, and Robert Delbourgo and Abdus Salam (1972) computed its mixed gravitational counterpart Tr[Y] = 0, which joins SU(2)²U(1)_Y and U(1)_Y³ to lock N_c = 3 quark colours—formalized in Lean 4 by Joseph Tooby-Smith (2025), while Chuankun Zhang, Thorsten Schumm, Jun Ye, and colleagues (2024) linked ²²⁹Th nuclear isomers to ⁸⁷Sr optical clocks.",
+                "story_es": "Stephen Adler (1969) descubrió la anomalía triangular quiral a un lazo, y Robert Delbourgo y Abdus Salam (1972) calcularon su contraparte gravitacional mixta Tr[Y] = 0, que junto con SU(2)²U(1)_Y y U(1)_Y³ fija N_c = 3 colores de quarks —formalizado en Lean 4 por Joseph Tooby-Smith (2025)—, mientras Chuankun Zhang, Thorsten Schumm, Jun Ye y colegas (2024) enlazaron ²²⁹Th con relojes de ⁸⁷Sr.",
+                "spec_en": "Tr[6Y] = 0, N_c = 3 & ²²⁹Th/⁸⁷Sr comb link",
+                "spec_es": "Tr[6Y] = 0, N_c = 3 y enlace de peine ²²⁹Th/⁸⁷Sr",
+                "doi": "10.1016/0370-2693(72)90825-8",
+            },
+        ],
+    },
 }
 
 
@@ -3563,30 +3774,30 @@ def step_of(code: str) -> int:
 
 
 def step_rail(page: dict, rel_res: str) -> str:
-    """Thirteen numbered steps under every T hero: where the reader is, and one tap to any other step."""
+    """Fourteen numbered steps under every T hero: where the reader is, and one tap to any other step."""
     items = []
     for i, m in enumerate(TRACK_MAP, 1):
         href = B._href(rel_res, "timegravity/" + (f"{m['slug']}/" if m["slug"] else ""))
         label = (f'<span class="tg-step-n" aria-hidden="true">{i}</span>'
-                 f'<span class="tg-step-t"><span data-en="Step {i} of 13 · {a(m["title_en"])}" data-es="Paso {i} de 13 · {a(m["title_es"])}">Step {i} of 13 · {t(m["title_en"])}</span></span>')
+                 f'<span class="tg-step-t"><span data-en="Step {i} of 14 · {a(m["title_en"])}" data-es="Paso {i} de 14 · {a(m["title_es"])}">Step {i} of 14 · {t(m["title_en"])}</span></span>')
         if m["code"] == page["code"]:
             items.append(f'          <li class="tg-step tg-step-current" aria-current="step">{label}</li>')
         elif m["built"]:
             items.append(f'          <li class="tg-step"><a href="{href}">{label}</a></li>')
         else:
             items.append(f'          <li class="tg-step tg-step-pending">{label}</li>')
-    return ("    <nav class=\"tg-step-rail\" aria-label=\"The thirteen steps of Time and Gravity\">\n"
+    return ("    <nav class=\"tg-step-rail\" aria-label=\"The fourteen steps of Time and Gravity\">\n"
             "      <ol class=\"tg-steps\">\n" + "\n".join(items) + "\n      </ol>\n    </nav>")
 
 
 def hub_cta(rel_res: str) -> str:
-    """The hub's way in: begin with the first step after the hub, or jump to the map of thirteen."""
+    """The hub's way in: begin with the first step after the hub, or jump to the map of fourteen."""
     first = TRACK_MAP[1]
     page = next(p for p in PAGES if p["code"] == first["code"])
     href = B._href(rel_res, "timegravity/" + first["slug"] + "/")
     return f"""      <p class="tg-hero-cta">
-        <a class="tp-cta tp-cta-primary tg-cta-begin" href="{href}"><span data-en="Begin · Step 2 of 13 · {page['reading_time_en']}" data-es="Empezar · Paso 2 de 13 · {page['reading_time_es']}">Begin · Step 2 of 13 · {page['reading_time_en']}</span><strong data-en="{a(first['title_en'])} &rarr;" data-es="{a(first['title_es'])} &rarr;">{t(first['title_en'])} &rarr;</strong></a>
-        <a class="tp-cta tg-cta-map" href="#map" data-en="See the thirteen steps &darr;" data-es="Ver los trece pasos &darr;">See the thirteen steps &darr;</a>
+        <a class="tp-cta tp-cta-primary tg-cta-begin" href="{href}"><span data-en="Begin · Step 2 of 14 · {page['reading_time_en']}" data-es="Empezar · Paso 2 de 14 · {page['reading_time_es']}">Begin · Step 2 of 14 · {page['reading_time_en']}</span><strong data-en="{a(first['title_en'])} &rarr;" data-es="{a(first['title_es'])} &rarr;">{t(first['title_en'])} &rarr;</strong></a>
+        <a class="tp-cta tg-cta-map" href="#map" data-en="See the fourteen steps &darr;" data-es="Ver los catorce pasos &darr;">See the fourteen steps &darr;</a>
       </p>"""
 
 
@@ -3607,7 +3818,7 @@ def open_question(page: dict, rel_res: str) -> str:
     elif nx["built"]:
         href = B._href(rel_res, "timegravity/" + nx["slug"] + "/")
         step = step_of(nx["code"])
-        nxt = (f'<a class="tg-next" href="{href}" rel="next"><span class="tg-next-dir" data-en="Continue · Step {step} of 13 · {nx["code"]} &rarr;" data-es="Continuar · Paso {step} de 13 · {nx["code"]} &rarr;">Continue · Step {step} of 13 · {nx["code"]} &rarr;</span>'
+        nxt = (f'<a class="tg-next" href="{href}" rel="next"><span class="tg-next-dir" data-en="Continue · Step {step} of 14 · {nx["code"]} &rarr;" data-es="Continuar · Paso {step} de 14 · {nx["code"]} &rarr;">Continue · Step {step} of 14 · {nx["code"]} &rarr;</span>'
                f'<strong data-en="{a(nx["title_en"])}" data-es="{a(nx["title_es"])}">{t(nx["title_en"])}</strong></a>')
     else:
         nxt = bi("p", f"Next: {nx['code']} · {nx['title_en']} (in preparation)",
@@ -3723,6 +3934,8 @@ def render_page(page: dict, catalog: dict, lang: str = "en") -> str:
         instrument = einselection_instrument(page)
     elif kind == "dark_clock":
         instrument = dark_clock_instrument(page)
+    elif kind == "holonomy_soft":
+        instrument = holonomy_soft_instrument(page)
     else:
         instrument = slope_instrument(page, rel_res)
     ai_line = bi("p", page["ai_line_en"], page["ai_line_es"], "tg-ai-line") if page.get("ai_line_en") else ""

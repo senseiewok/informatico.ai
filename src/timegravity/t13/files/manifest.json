@@ -1,0 +1,15 @@
+{
+  "folio_id": "T.13",
+  "generator": "skills/timegravity/t13/make_t13.py",
+  "verifier": "skills/timegravity/t13/verify_t13_holonomy_soft.py",
+  "lean_formalization": "skills/timegravity/t13/HolonomySoftAnomaly.lean",
+  "license": "CC0-1.0 / CC-BY-4.0",
+  "boundary_en": "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. Preprints never rise above PROPOSED. Each page ends with one open question that the next page takes up.",
+  "files": [
+    {
+      "filename": "t13_reference.json",
+      "bytes": 5244,
+      "sha256": "78324656d2392f9c8733dd988541c48aaf8a0a97c6bb6a5d4741586e8cd44ea8"
+    }
+  ]
+}
