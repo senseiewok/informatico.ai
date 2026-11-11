@@ -2,7 +2,7 @@
 
 > 48 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
 
-Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (83 SKILL.md companions, Python verifiers, 13-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
+Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (84 SKILL.md companions, Python verifiers, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
 
 ## Civil Engineering & Construction
 
@@ -88,7 +88,7 @@ Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio 
 - [X.05 (TOOL-FAB-1) SIMP Structural Lattices to Watertight 3MF Meshes](https://informatico.ai/toolchain/x05/): How variable-taper SIMP structural struts are synthesized as watertight 2-manifold 3MF, GLB and STEP meshes with frustum volume and overhang checks.
 - [X.06 (TOOL-PHYS-MATH-1) Topological Metamaterial Cells and Betti Verifier](https://informatico.ai/toolchain/x06/): How pierced genus-one acoustic metamaterial unit cells are exported to GLB, 3MF and STEP while a Python verifier checks Euler and Betti invariants.
 
-## Time & Gravity · Thirteen Pages on an Open Problem (T.00–T.12)
+## Time & Gravity · Fourteen Pages on an Open Problem (T.00–T.13)
 
 - [Time & Gravity](https://informatico.ai/timegravity/): A reading track from the measured slope in the rate of time to the open problem of time in quantum gravity, with instruments, verifiers and a ledger.
 - [Step 2 · T.02 Everyone Moves at One Rate: Clocks, GPS and c](https://informatico.ai/timegravity/t02/): How moving clocks tick slower by the Lorentz factor, measured from 1938 to 2014, and how the GPS clock correction follows from GM, the orbit radius and c.
@@ -103,6 +103,7 @@ Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio 
 - [Step 11 · T.10 Page's Counting Argument: the Curve on Ten Qubits](https://informatico.ai/timegravity/t10/): Hawking's rising entropy against Page's curve, built from random states on ten qubits and checked against Page's formula, with the area theorem's two tests.
 - [Step 12 · T.11 What Selects the World a Clock Sees? Einselection and Quantum Darwinism](https://informatico.ai/timegravity/t11/): How pointer-commuting photon scattering suppresses spatial superpositions and broadcasts redundant classical records in the electromagnetic bath.
 - [Step 13 · T.12 Two Clocks That Only Meet in Gravity: Dark Sectors and Clock Networks](https://informatico.ai/timegravity/t12/): How universal metric coupling lets spatially separated clocks sense electromagnetically transparent matter while co-located optical clocks bound scalar portals.
+- [Step 14 · T.13 Where Infrared Gravity Meets Gauge Theory](https://informatico.ai/timegravity/t13/): Soft gravitons, gravitational wave memory, and mixed anomaly cancellation link equivalence and quark colour while UV quantum gravity stays open.
 
 ## Cross-Scale Featured Essays · Clocks, Stone, and Living Matter (ES.01–ES.11)
 

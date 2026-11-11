@@ -11,19 +11,19 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 > **Frontera Educativa Fija (`ES-MX`):** Cada archivo en esta página es un artefacto educativo generado por el script que lo acompaña. Nada aquí está certificado como estructural, imprimible, seguro ni apto para ningún propósito. El verificador comprueba la geometría, no la aptitud.
 
 ## 1. Governing Law, Open Standard & Canonical URL
-- **Toolbox Folio**: `X.03` (`TOOL-ARCH-1` · `REV 1.0`, Redated `2026-11-08`)
+- **Toolbox Folio**: `X.03` (`TOOL-ARCH-1` · `REV 1.4`, Redated `2026-11-10`)
 - **Canonical URL**: https://informatico.ai/toolchain/x03/ (Spanish: https://informatico.ai/es-mx/toolchain/x03/)
 - **Track Badge**: TOOLBOX X.03 · BOUTIQUE ARCHITECT'S ZERO-COST VAULT & TIMBER KIT (STEP · 3MF · DXF · GLB)
 - **Reference Standard / Repository**: [compas-dev/compas (MIT Computational Architecture Framework)](https://github.com/compas-dev/compas)
-- **Governing Equation**: `H = q L² / (8 f) = 27.0 kN · |e(x)| ≤ t / 6 = 66.7 mm · ∑ F_i = 0 · χ = 2 N_v = 14`
+- **Governing Equation**: `H = q L² / (8 f) = 27.0 kN · |e(x)| ≤ t / 6 = 66.7 mm · χ = 2 N_v = 14 · q_net(8–13 μm) ≥ 80 W/m²`
 - **Deterministic Generator**: `python skills/toolchain/x03/make_x03.py`
 - **Byte-Level Stdlib Verifier**: `python skills/toolchain/x03/verify_x03_toolchain_x03_small_architect_vault_kit.py`
 - **Planted-Defect Knockout Check**: `python skills/toolchain/x03/verify_x03_toolchain_x03_small_architect_vault_kit.py --planted-defect` (must exit non-zero)
 - **Primary Scite Anchor DOI**: https://doi.org/10.1016/0020-7683(66)90018-7 (Scite Report: https://scite.ai/reports/10.1016/0020-7683(66)90018-7)
 
 ## 2. Small-Studio & Independent-Practitioner Open-Tool Workflow
-- **EN**: Boutique Architecture Studio Stack (COMPAS MIT + Blender 4.2 / Bonsai + FreeCAD 1.0 + QCAD Community Edition / LibreCAD): Run make_x03.py to generate a 7-voussoir funicular arch across 4 open formats—x03_artifact.glb for client WebGL walkthroughs, x03_artifact.step for structural engineer coordination, x03_artifact.3mf for 1:20 desktop study models, and x03_artifact.dxf for 2D stone/CLT CNC шаблоны (templates).
-- **ES-MX**: Stack para Pequeños Estudios de Arquitectura (COMPAS MIT + Blender 4.2 / Bonsai + FreeCAD 1.0 + QCAD Community Edition / LibreCAD): Ejecuta make_x03.py para generar un arco funicular de 7 dovelas en 4 formatos abiertos: x03_artifact.glb para presentaciones WebGL con clientes, x03_artifact.step para coordinación estructural, x03_artifact.3mf para maquetas físicas 1:20 y x03_artifact.dxf para plantillas de corte 2D en CNC.
+- **EN**: Boutique Architecture Studio Stack (COMPAS MIT + Blender 4.2 / Bonsai + FreeCAD 1.0 + QCAD Community Edition / LibreCAD): Run make_x03.py to generate a 7-voussoir funicular arch coupled with an A.11 passive radiative sky-cooling extrados envelope across 4 open formats—x03_artifact.glb for client WebGL walkthroughs, x03_artifact.step for structural engineer coordination, x03_artifact.3mf for 1:20 desktop study models, and x03_artifact.dxf for 2D stone/CLT CNC cutting templates.
+- **ES-MX**: Stack para Pequeños Estudios de Arquitectura (COMPAS MIT + Blender 4.2 / Bonsai + FreeCAD 1.0 + QCAD Community Edition / LibreCAD): Ejecuta make_x03.py para generar un arco funicular de 7 dovelas acoplado al extradós de enfriamiento radiativo diurno A.11 en 4 formatos abiertos: x03_artifact.glb para presentaciones WebGL con clientes, x03_artifact.step para coordinación estructural, x03_artifact.3mf para maquetas físicas 1:20 y x03_artifact.dxf para plantillas de corte 2D en CNC.
 
 ## 3. Tool-Neutral Agent Packet & Security Boundary (`security-runtime`)
 1. **Generate Deterministic 3D Artifacts Locally**: Run `python skills/toolchain/x03/make_x03.py` inside the repository working directory to emit `src/toolchain/x03/files/x03_artifact.*` and `manifest.json`.
@@ -31,28 +31,28 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 3. **Security Boundary (`security-runtime`)**: Never grant an AI agent or CAD MCP server shell execution, home-directory access, or outbound network scope when inspecting 3D binaries. Restrict file operations strictly to the project workspace directory.
 
 ## 4. Deterministic Verification & Falsification Rules
-1. Multi-Voussoir Topological Closure: Each of the N_v = 7 discrete voussoirs must be an independent closed 2-manifold (3F = 2E, χ = 2 per block, total χ = 14) with zero non-manifold edges.
-2. Heyman Middle-Third Safe Kern Bound: The thrust eccentricity |e| must satisfy |e| ≤ t/6 (66.7 mm for t = 400 mm) at every bed joint so compressive stresses remain non-negative across the entire joint.
-3. 4-Format Provenance & Volume Identity: The signed 3D mesh volume in GLB/3MF/STEP must match the 2D DXF elevation shoelace area multiplied by bay width b = 600 mm within 10⁻⁴ relative error.
+1. Multi-Voussoir Topological Closure: Each of the N_v = 7 discrete voussoirs must be an independent closed 2-manifold (3F = 2E, χ = 2 per block, total χ = 2 N_v = 14) across GLB, 3MF, and STEP AP242 with zero non-manifold edges.
+2. Heyman Middle-Third Safe Kern Bound: At L = 6000 mm, f = 2000 mm, t = 400 mm, H = 27.0 kN, thrust eccentricity |e| must satisfy |e| ≤ t/6 = 66.7 mm so compressive stresses remain non-negative across every joint.
+3. A.11 Passive Sky-Cooling Extrados & 4-Format Volume Identity: The 8–13 μm coating (ε_{8–13 μm} = 0.95, R_solar = 0.96) must achieve q_net ≥ 80 W/m² and ΔT_eq ≤ −4.5 °C at T_a = 303.15 K, while 3D mesh volume matches 2D DXF shoelace area × b = 600 mm within 10⁻⁴ relative error.
 
 ## 5. 4-Stage Geometry & Verification Pipeline
-- Stage 1: Funicular Thrust-Line & Joint-Normal Synthesis — Evaluate z(x_k) = f(1 − (2x_k/L)²) and unit normal n(x_k) across N_v + 1 = 8 radial stations to bound 7 compression-only voussoir blocks.
-- Stage 2: Multi-Body Watertight Hexahedral Extrusion — Extrude each radial quad across bay width b = 600 mm into an 8-vertex, 12-triangle closed hexahedron (total V = 56, E = 126, F = 84, Euler characteristic χ = 2β_0 = 14).
-- Stage 3: 4-Format Studio Exchange Generation — Emit x03_artifact.glb (WebGL/Blender), x03_artifact.step (AP242 B-rep), x03_artifact.3mf (1:20 physical model), and x03_artifact.dxf (2D CUT elevation + MOUNTAIN thrust line).
-- Stage 4: Heyman Kern & Divergence-Volume Verification — Certify |e| ≤ t/6 = 66.7 mm, verify exact agreement between shoelace-extruded volume and 3D divergence volume (1.7724 × 10⁹ mm³), and test planted-defect rejection.
+- Stage 1: Funicular Thrust-Line & Joint-Normal Synthesis — Evaluate z(x_k) = f(1 − (2x_k/L)²) and unit normal n(x_k) across N_v + 1 = 8 radial stations (L = 6000 mm, f = 2000 mm, t = 400 mm) to bound 7 compression-only voussoir blocks at H = 27.0 kN.
+- Stage 2: Multi-Body Watertight Hexahedral Extrusion — Extrude each radial quad across bay width b = 600 mm into an 8-vertex, 12-triangle closed hexahedron (total V = 56, E = 126, F = 84, Euler–Poincaré characteristic χ = 2 N_v = 14).
+- Stage 3: 4-Format Studio Exchange & A.11 Extrados Coupling — Emit x03_artifact.glb, x03_artifact.step (AP242 B-rep), x03_artifact.3mf, and x03_artifact.dxf while evaluating 8–13 μm radiative sky-cooling flux across the 4.69 m² extrados shell.
+- Stage 4: Heyman Kern, Sky-Cooling & Divergence-Volume Verification — Certify |e| ≤ t/6 = 66.7 mm, q_net = 98.4 W/m² ≥ 80 W/m² (ΔT_eq = −7.08 °C ≤ −4.5 °C), exact 3D volume match (1.7724 × 10⁹ mm³), and planted-defect rejection.
 
 ## 6. Certified Reference Telemetry (T0/T1)
 - **7-Voussoir Topology (V, E, F)**: `V=56, E=126, F=84 · χ=14`
-- **Maxwell–Rankine Thrust H**: `27.00 kN (at L=6m, f=2m)`
-- **Heyman Middle-Third Kern**: `|e| = 18.0 ≤ 66.7 mm (PASS)`
-- **4-Format Export Verdict**: `GLB · STEP · 3MF · DXF PASS`
+- **Thrust H & Heyman Kern**: `H = 27.0 kN · |e| = 18.0 ≤ 66.7 mm`
+- **A.11 Sky-Cooling Extrados**: `q_net = 98.4 W/m² · ΔT_eq = −7.08 °C`
+- **4-Format Export Verdict**: `STEP AP242 · 3MF · DXF · GLB PASS`
 
 ## 7. Exact T0–T3 Truth Boundary
 ### Certified Geometry in Repository Today (T0/T1)
-- Deterministic 4-format generator (skills/toolchain/x03/make_x03.py) emitting x03_artifact.glb, x03_artifact.step, x03_artifact.3mf, and x03_artifact.dxf.
-- Byte-level stdlib verifier (verify_x03_toolchain_x03_small_architect_vault_kit.py) certifying 7-block watertightness (χ = 14), exact volume match, DXF layer structure, and planted-defect knockout.
+- Deterministic 4-format generator (skills/toolchain/x03/make_x03.py) emitting x03_artifact.glb, x03_artifact.step (AP242), x03_artifact.3mf, and x03_artifact.dxf.
+- Byte-level stdlib verifier (verify_x03_toolchain_x03_small_architect_vault_kit.py) certifying 7-block watertightness (χ = 14), H = 27.0 kN, A.11 sky-cooling flux (q_net = 98.4 W/m², ΔT_eq = −7.08 °C), exact volume match, and planted-defect knockout.
 - Portable SKILL.md companion tailored for small architecture studios using Blender, FreeCAD, COMPAS, and QCAD Community Edition / LibreCAD.
 
 ### Educational Boundary & Edition 2 Horizon (T2/T3)
 - Educational Geometry Boundary: Every file on this page is an educational artifact; nothing is certified as load-bearing, printable, safe, or fit for any purpose.
-- Future Edition 2 Extensions: Polyhedral 3D graphic statics multi-rib groin vaults and open-standard IFC 4.3 structural analysis view export.
+- Future Edition 2 Extensions: Polyhedral 3D graphic statics multi-rib groin vaults, hygrometric dew-point coupling on radiative extrados shells, and open-standard IFC 4.3 structural analysis view export.

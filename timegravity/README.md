@@ -1,4 +1,4 @@
-# Time & Gravity (`T.00`–`T.12`) · a track where the open problem is the subject
+# Time & Gravity (`T.00`–`T.13`) · a track where the open problem is the subject
 
 **Live:** [https://informatico.ai/timegravity/](https://informatico.ai/timegravity/) · **Español (es-MX):** [https://informatico.ai/es-mx/timegravity/](https://informatico.ai/es-mx/timegravity/)
 
@@ -13,7 +13,7 @@ A sibling track beside *Tech & Tools · The Toolbox* (`X.01`–`X.06`), outside 
 5. **A 5-pace distillation ladder and es-MX** in the same commit.
 6. **An AI-contribution line** naming any AI system that contributed to a cited result and the human who checked it.
 
-## All 13 shipped pages (in pedagogical reading order, `T.00` → `T.02` → `T.01` → … → `T.12`)
+## All 14 shipped pages (in pedagogical reading order, `T.00` → `T.02` → `T.01` → … → `T.13`)
 
 *Note: Rows below follow the fixed pedagogical reading sequence (`TRACK_MAP`), where Step 2 (`T.02`, universal spacetime rate) precedes Step 3 (`T.01`, geodesic fall in a clock-rate gradient).*
 
@@ -32,8 +32,9 @@ A sibling track beside *Tech & Tools · The Toolbox* (`X.01`–`X.06`), outside 
 | `11 · T.10` | [Page's Counting Argument](https://informatico.ai/timegravity/t10/) | Hawking's line against Page's curve; Haar toy on 10 qubits with a pure-Python eigensolver; knockout removes unitarity | toy within `0.03 nats` of Page's formula, peak `2.97 nats` at 5 qubits, final `0.69` · a non-unitary toy that never turns over | MEASURED, DERIVED, SINGLE RESULT, PROPOSED, OPEN |
 | `12 · T.11` | [What Selects the World a Clock Sees?](https://informatico.ai/timegravity/t11/) | 1+6-qubit pure-dephasing pointer-state & Quantum Darwinism plateau beside Joos–Zeh photon-bath localization; knockout uncouples the bath (`θ = 0`, `ε = 1 → Λ_EM = 0`) | statevector partial traces match Zurek's closed form `I(S:E_k) = h₂(γ^N) + h₂(γ^k) − h₂(γ^{N−k})` within `1e-12` nats (`0.998 bits` at `k = 2` of `6`); long-wavelength Rayleigh `R⁶T⁹` scaling exact · scrambled pointer basis (`Z_S → X_S`) collapses the plateau | MEASURED, DERIVED, BOUND, PROPOSED, OPEN |
 | `13 · T.12` | [Two Clocks That Only Meet in Gravity](https://informatico.ai/timegravity/t12/) | Dark-matter flyby proper-time step across two optical clocks (`Λ_EM = 0`, `G > 0`); knockout sets equal impact parameters `b₂ = b₁` (`Δτ = 0`) | Planck 2018 `Ω_c / Ω_b = 5.364 ± 0.065` (`84.3 %` of non-relativistic gravitating matter); analytic `Δτ(T)` vs Gauss–Legendre quadrature within `1e-11` and impulse identity `+c² ∂Δτ_∞/∂b₁ = 2GM/(b₁v₀)` within `1e-9` · dropping `G_dark = 0` or halving arsinh breaks both | MEASURED, DERIVED, BOUND, PROPOSED, OPEN |
+| `14 · T.13` | [Where Infrared Gravity Meets Gauge Theory](https://informatico.ai/timegravity/t13/) | Soft-graviton Ward balance, Christodoulou memory step `Δh_char = 2GE_rad/(c⁴D_L)` across arm `L₀`, and SM Weyl `6Y` anomaly bars across `N_c`; knockout perturbs `κ_e/κ_p = 1 + 10⁻⁵` and sets `N_c = 2` | `s = 1, 2` Ward norms `0.0` vs `s = 3` obstruction `0.367 > 0`; `GW150914` fiducial `Δh_char = 7.003 × 10⁻²²` (`ΔL = 1.401 × 10⁻¹⁸ m` on `4 km`) vs Gauss–Legendre flux within `1e-15`; `Tr[SU(2)²(6Y)] = N_c − 3`, `Tr[(6Y)³] = −54(N_c − 3)` + Lean 4 Prelude `HolonomySoftAnomaly.lean` · `κ_e ≠ κ_p` + `N_c = 2` rejected | MEASURED, DERIVED, BOUND, SINGLE RESULT, PROPOSED, OPEN |
 
-Reading order (`T.00` → `T.02` → `T.01` → `T.03` → `T.04` → `T.05` → `T.06` → `T.07` → `T.08` → `T.09` → `T.10` → `T.11` → `T.12`) and the open question each page ends with: `tools/folios/timegravity/__init__.py` (`TRACK_MAP`). All thirteen pages (`26` bilingual EN/`es-MX` pages, `110` claims, `108` ledger rows) are shipped.
+Reading order (`T.00` → `T.02` → `T.01` → `T.03` → `T.04` → `T.05` → `T.06` → `T.07` → `T.08` → `T.09` → `T.10` → `T.11` → `T.12` → `T.13`) and the open question each page ends with: `tools/folios/timegravity/__init__.py` (`TRACK_MAP`). All fourteen pages (`28` bilingual EN/`es-MX` pages, `123` claims, `117` ledger rows) are shipped.
 
 ## Borrowed from other fields
 
@@ -44,12 +45,12 @@ Reading order (`T.00` → `T.02` → `T.01` → `T.03` → `T.04` → `T.05` →
 | Metrology (GUM uncertainty budget) | T.02 propagates the stated 1σ of GM, a and R to the net term and combines them in quadrature; c is exact. |
 | Evidence synthesis (citation polarity & claim-number parity) | Every ledger DOI carries Scite's public tallies (`scite:<doi>` in the cache; `[observed: Scite ML citation classification]`); the lint fails on a retracted row, requires an audited `contrasting_audit` scope note whenever `contrasting > supporting`, and enforces exact numeric parity across every English and `es-MX` claim span. |
 | Aviation (checklist) | `timegravity/LABEL-CHECKLIST.md`: the human decision procedure the lint cannot replace. |
-| Pedagogy (predict before reveal) | Every claim page (`T.01`–`T.12`) asks the reader to commit to a prediction before the knockout or planted defect reveals the verdict. |
+| Pedagogy (predict before reveal) | Every claim page (`T.01`–`T.13`) asks the reader to commit to a prediction before the knockout or planted defect reveals the verdict. |
 | Cartography (one map, many views) | Each instrument keeps one state object that every panel and readout reads from. |
 
 ## The ledger and the label lint
 
-`timegravity/ledger.json` has one row per cited source (`108` rows, `100 %` referenced in per-page Grounding Ledger tables) with the fields `id`, `label`, `doi`, `year`, `collaboration`, `kind`, `review_by` (schema: `timegravity/ledger.schema.json`). A claim on a page is a span:
+`timegravity/ledger.json` has one row per cited source (`117` rows, `100 %` referenced in per-page Grounding Ledger tables) with the fields `id`, `label`, `doi`, `year`, `collaboration`, `kind`, `review_by` (schema: `timegravity/ledger.schema.json`). A claim on a page is a span:
 
 ```html
 <span class="tg-claim" data-tg-label="MEASURED" data-tg-ledger="T01-PR1960,T01-HK1972O">…</span>
@@ -67,4 +68,4 @@ New DOIs enter the cache with `python timegravity/refresh_crossref_cache.py` (th
 python timegravity/run_all_timegravity.py
 ```
 
-runs all `12` generators (`make_t01.py`–`make_t12.py`), all `16` stdlib verifiers across `T.01`–`T.12` (including `T.05`'s five verifiers, plus `--planted-defect` on every one, which must fail), the label lint (plus its `--planted-defect` and `10/10` mutation suite), and `tools/check_folio_citations.py --offline`. Pages are built by `python tools/build_timegravity.py` (also called at the end of `tools/build_longform_folios.py`); plates by `python timegravity/make_plates.py`. Tests: `python -m unittest tests.test_timegravity_track`.
+runs all `13` generators (`make_t01.py`–`make_t13.py`), all `17` stdlib verifiers across `T.01`–`T.13` (including `T.05`'s five verifiers, plus `--planted-defect` on every one, which must fail), the label lint (plus its `--planted-defect` and mutation suite), and `tools/check_folio_citations.py --offline`. Pages are built by `python tools/build_timegravity.py` (also called at the end of `tools/build_longform_folios.py`); plates by `python timegravity/make_plates.py`. Tests: `python -m unittest tests.test_timegravity_track`.

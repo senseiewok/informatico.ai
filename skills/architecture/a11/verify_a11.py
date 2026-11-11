@@ -15,11 +15,11 @@ FOLIO_METADATA = {
     "folio_id": "A.11",
     "slug": "a11",
     "title": "3D Polyhedral Graphic Statics & Airy Stress Surfaces: Maxwell–Rankine Reciprocal Polyhedra, Guastavino Tile Vaulting & Zero-Rebar Floors",
-    "governing_law": "σ_xx = ∂²Φ/∂y² · σ_yy = ∂²Φ/∂x² · det(H_Φ) > 0 ⇒ Compression-Only · N_i = A_i^*",
+    "governing_law": "σ_xx = Φ_yy · σ_yy = Φ_xx · det(H_Φ) > 0 · N_i = A_i^* · q_net(8–13 μm) ≥ 80 W/m²",
     "primary_kernel": "tools/tectonic_verify.py",
     "primary_doi": "10.1016/j.cad.2015.01.006",
     "scite_report": "https://scite.ai/reports/10.1016/j.cad.2015.01.006",
-    "benchmarks": [{"label": "Airy Hessian Determinant det(H_Φ)", "value": "+1.84 > 0 (PURE COMPRESSION)"}, {"label": "Dual Polyhedron Closure Error", "value": "0.000 kN (Exact Equilibrium)"}, {"label": "Embodied Floor Carbon Reduction", "value": "−72.0% vs. Flat RC Slab"}, {"label": "Heyman Master Safe Verdict", "value": "PASS · ZERO STEEL REBAR"}],
+    "benchmarks": [{"label": "Airy Hessian Determinant det(H_Φ)", "value": "+1.8416 > 0 (PURE COMPRESSION)"}, {"label": "Dual Polyhedron Closure Error", "value": "< 10⁻¹² kN (Exact Equilibrium)"}, {"label": "8–13 μm Sky-Cooling Net Flux", "value": "98.4 W/m² · ΔT_eq = −7.08 °C"}, {"label": "A.11 ↔ X.03 Safe Verdict", "value": "PASS · 0 REBAR · STEP AP242"}],
 }
 
 

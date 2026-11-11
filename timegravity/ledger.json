@@ -1084,6 +1084,96 @@
       "kind": "peer-reviewed",
       "review_by": "2028-11-10",
       "note": "Ultralight dark matter detection with mechanical quantum sensors: analyses the impulse and gravitational redshift signatures of dark-matter transits coupled purely through gravity across arrays of quantum-limited accelerometers and clocks."
+    },
+    {
+      "id": "T13-WEINBERG1964",
+      "label": "DERIVED",
+      "doi": "10.1103/PhysRev.135.B1049",
+      "year": 1964,
+      "collaboration": "Weinberg (Physical Review)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-11",
+      "note": "Photons and gravitons in S-matrix theory: derivation of charge conservation for massless spin-1 bosons, equality of gravitational and inertial mass (universal coupling) for massless spin-2 bosons, and absence of macroscopic long-range interactions for massless spins s >= 3 from Lorentz invariance."
+    },
+    {
+      "id": "T13-WEINBERG1965",
+      "label": "DERIVED",
+      "doi": "10.1103/PhysRev.140.B516",
+      "year": 1965,
+      "collaboration": "Weinberg (Physical Review)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-11",
+      "note": "Infrared photons and gravitons: all-orders soft-photon and soft-graviton factorization of scattering amplitudes and resummation of infrared divergences."
+    },
+    {
+      "id": "T13-ADLER1969",
+      "label": "DERIVED",
+      "doi": "10.1103/PhysRev.177.2426",
+      "year": 1969,
+      "collaboration": "Adler (Physical Review)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-11",
+      "note": "Axial-vector vertex in spinor electrodynamics: establishes the one-loop chiral triangle anomaly spoiling classical axial current conservation and constraining consistent chiral gauge theories."
+    },
+    {
+      "id": "T13-DELBOURGO1972",
+      "label": "DERIVED",
+      "doi": "10.1016/0370-2693(72)90825-8",
+      "year": 1972,
+      "collaboration": "Delbourgo & Salam (Physics Letters B)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-11",
+      "note": "The gravitational correction to PCAC: computes the one-loop mixed chiral-gravitational triangle diagram with two external gravitons, yielding the mixed gravitational-hypercharge trace condition Tr[Y] = 0."
+    },
+    {
+      "id": "T13-CHRIST1991",
+      "label": "DERIVED",
+      "doi": "10.1103/PhysRevLett.67.1486",
+      "year": 1991,
+      "collaboration": "Christodoulou (Physical Review Letters)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-11",
+      "note": "Nonlinear nature of gravitation and gravitational-wave experiments: rigorous derivation from asymptotically flat vacuum Einstein equations that radiated gravitational-wave energy flux leaves a permanent nonlinear displacement step between free-falling test masses."
+    },
+    {
+      "id": "T13-STROM2016",
+      "label": "DERIVED",
+      "doi": "10.1007/JHEP01(2016)086",
+      "year": 2016,
+      "collaboration": "Strominger & Zhiboedov (Journal of High Energy Physics)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-11",
+      "note": "Gravitational memory, BMS supertranslations and soft theorems: proves that gravitational displacement memory, BMS supertranslation conservation at null infinity, and Weinberg's soft-graviton theorem are equivalent infrared facets."
+    },
+    {
+      "id": "T13-HUBNER2020",
+      "label": "BOUND",
+      "doi": "10.1103/PhysRevD.101.023011",
+      "year": 2020,
+      "collaboration": "Hubner, Talbot, Lasky & Thrane (Physical Review D)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-11",
+      "note": "Measuring gravitational-wave memory in the first LIGO/Virgo gravitational-wave transient catalog: places observational bounds on the nonlinear memory signal across binary black hole detections and projects ensemble-stacking detection thresholds."
+    },
+    {
+      "id": "T13-ZHANG2024",
+      "label": "SINGLE RESULT",
+      "doi": "10.1038/s41586-024-07839-6",
+      "year": 2024,
+      "collaboration": "JILA & TU Wien (Zhang, Ooi, Higgins, Doyle, von der Wense, Beeks, Leitner, Kazakov, Li, Thirolf, Schumm & Ye)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-11",
+      "note": "Frequency ratio of the 229mTh nuclear isomeric transition and the 87Sr atomic clock: phase-coherent vacuum-ultraviolet frequency-comb link comparing a solid-state 229Th:CaF2 nuclear transition directly against an 87Sr optical lattice clock."
+    },
+    {
+      "id": "T13-TOOBY2025",
+      "label": "SINGLE RESULT",
+      "doi": "10.1016/j.cpc.2024.109457",
+      "year": 2025,
+      "collaboration": "Tooby-Smith (Computer Physics Communications)",
+      "kind": "peer-reviewed",
+      "review_by": "2027-11-11",
+      "note": "HepLean / PhysLean: digitalising high energy physics in Lean 4, including machine-checked proofs of Standard Model gauge and mixed gravitational anomaly cancellation for rational and integer hypercharge assignments."
     }
   ]
 }

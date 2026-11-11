@@ -554,9 +554,60 @@ def plate_t12() -> bytes:
     return c.png()
 
 
+def plate_t13() -> bytes:
+    """Left: oscillatory burst + permanent Christodoulou memory step. Right: SM gauge-gravity anomaly traces crossing 0 at N_c = 3."""
+    import math
+    from timegravity_kernel_holonomy_soft import anomaly_nc_scan, memory_strain_step
+    c = Canvas()
+    c.fill_gradient()
+    mem = memory_strain_step()
+    scan = anomaly_nc_scan((1, 2, 3, 4, 5))
+    # Left: burst waveform + permanent DC memory step between initial and final baseline levels
+    lx0, lx1, ly0, ly1 = 90.0, 560.0, 140.0, 610.0
+    ly_base = 455.0
+    step_px = 185.0 * (mem["delta_h_plus_inclined"] / mem["delta_h_char"])
+    c.stroke([(lx0, ly0), (lx0, ly1)], INK, 1.2)
+    c.stroke([(lx0, ly_base), (lx1, ly_base)], INK, 1.1, dash=(6, 6))
+    c.stroke([(lx0, ly_base - step_px), (lx1, ly_base - step_px)], MINIUM, 1.2, dash=(5, 5))
+    wave_pts = []
+    mem_pts = []
+    n_pts = 160
+    for j in range(n_pts + 1):
+        u = -4.0 + 8.0 * (j / n_pts)
+        x = lx0 + (lx1 - lx0) * (j / n_pts)
+        mem_frac = 0.5 * (1.0 + math.tanh(1.6 * u))
+        osc = math.exp(-0.75 * u * u) * math.cos(5.8 * u) * 115.0
+        y_mem = ly_base - step_px * mem_frac
+        y_tot = y_mem - osc
+        mem_pts.append((x, y_mem))
+        wave_pts.append((x, y_tot))
+    c.stroke(wave_pts, PRUSSIAN, 2.8)
+    c.stroke(mem_pts, MINIUM, 4.0)
+    c.disc(lx0 + 18.0, ly_base, 8, PRUSSIAN, ring=VELLUM)
+    c.disc(lx1 - 18.0, ly_base - step_px, 10, MINIUM, ring=VELLUM)
+    # Right: normalized anomaly residuals across N_c in {1, 2, 3, 4, 5} converging strictly at N_c = 3
+    rx0, rx1, ry0, ry1 = 640.0, 1170.0, 140.0, 610.0
+    ry_zero = 0.5 * (ry0 + ry1)
+    c.stroke([(rx0, ry0), (rx0, ry1)], INK, 1.2)
+    c.stroke([(rx0, ry_zero), (rx1, ry_zero)], INK, 1.3, dash=(6, 6))
+    tx = lambda nc: rx0 + (rx1 - rx0) * ((nc - 1.0) / 4.0)  # noqa: E731
+    su2_pts = [(tx(r["n_c"]), ry_zero - 88.0 * r["tr_su2_sq_6y"]) for r in scan]
+    u1_pts = [(tx(r["n_c"]), ry_zero - 88.0 * (r["tr_u1_cubic_6y"] / 54.0)) for r in scan]
+    grav_pts = [(tx(r["n_c"]), ry_zero - 88.0 * r["tr_grav_6y"]) for r in scan]
+    c.stroke(grav_pts, VERDIGRIS, 2.6, dash=(7, 5))
+    c.stroke(u1_pts, MINIUM, 3.4)
+    c.stroke(su2_pts, PRUSSIAN, 3.8)
+    for x, y in u1_pts:
+        c.disc(x, y, 7, MINIUM, ring=VELLUM)
+    for x, y in su2_pts:
+        c.disc(x, y, 8, PRUSSIAN, ring=VELLUM)
+    c.disc(tx(3), ry_zero, 13, VERDIGRIS, ring=VELLUM)
+    return c.png()
+
+
 def main() -> int:
     PLATES.mkdir(parents=True, exist_ok=True)
-    for name, fn in (("t00", plate_t00), ("t01", plate_t01), ("t02", plate_t02), ("t03", plate_t03), ("t04", plate_t04), ("t05", plate_t05), ("t06", plate_t06), ("t07", plate_t07), ("t08", plate_t08), ("t09", plate_t09), ("t10", plate_t07_page), ("t11", plate_t11), ("t12", plate_t12)):
+    for name, fn in (("t00", plate_t00), ("t01", plate_t01), ("t02", plate_t02), ("t03", plate_t03), ("t04", plate_t04), ("t05", plate_t05), ("t06", plate_t06), ("t07", plate_t07), ("t08", plate_t08), ("t09", plate_t09), ("t10", plate_t07_page), ("t11", plate_t11), ("t12", plate_t12), ("t13", plate_t13)):
         data = fn()
         (PLATES / f"{name}.png").write_bytes(data)
         print(f"PASS: wrote plates/{name}.png ({len(data):,} bytes)")

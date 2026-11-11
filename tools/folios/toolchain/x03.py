@@ -39,32 +39,34 @@ FOLIO = {'slug': 'x03',
            'arcos y bóvedas de piedra, ladrillo o madera (CLT) a compresión pura, verificar su '
            'línea de empuje y exportar sólidos 3D (.step, .3mf, .glb) y plantillas de corte 2D '
            '(.dxf).',
- 'governing_law': 'H = q L² / (8 f) = 27.0 kN · |e(x)| ≤ t / 6 = 66.7 mm · ∑ F_i = 0 · χ = 2 N_v = '
-                  '14',
- 'pass_pill_en': 'PASS · 7 VOUSSOIRS · χ = 14 · H = 27.0 kN · STEP+3MF+DXF+GLB',
- 'pass_pill_es': 'APROBADO · 7 DOVELAS · χ = 14 · H = 27.0 kN · STEP+3MF+DXF+GLB',
+ 'governing_law': 'H = q L² / (8 f) = 27.0 kN · |e(x)| ≤ t / 6 = 66.7 mm · χ = 2 N_v = 14 · '
+                  'q_net(8–13 μm) ≥ 80 W/m²',
+ 'pass_pill_en': 'PASS · 7 VOUSSOIRS · χ = 14 · H = 27.0 kN · q_net ≥ 80 W/m² · STEP+3MF+DXF+GLB',
+ 'pass_pill_es': 'APROBADO · 7 DOVELAS · χ = 14 · H = 27.0 kN · q_net ≥ 80 W/m² · STEP+3MF+DXF+GLB',
  'generator_script': 'skills/toolchain/x03/make_x03.py',
  'verifier_script': 'skills/toolchain/x03/verify_x03_toolchain_x03_small_architect_vault_kit.py',
  'skill_dir': 'skills/toolchain/x03',
  'skill_name': 'toolchain-x03-small-architect-vault-kit',
  'formats': ('glb', 'step', '3mf', 'dxf'),
  'primary_doi': '10.1016/0020-7683(66)90018-7',
- 'scite_summary': 'Heyman (1966) safe theorem of masonry limit analysis and ETH Zurich Block '
-                  'Research Group COMPAS graphic statics verified offline.',
+ 'scite_summary': 'Heyman (1966) masonry limit analysis, Akbarzadeh et al. (2015) polyhedral '
+                  'graphic statics, and Raman (2014) / Mandal (2018) 8–13 μm radiative sky-cooling '
+                  'verified offline.',
  'date_published': '2026-11-08',
- 'date_redated': '2026-11-08',
- 'current_edition': 'REV 1.0',
- 'reading_time': '22 MIN READ',
+ 'date_redated': '2026-11-10',
+ 'current_edition': 'REV 1.4',
+ 'reading_time': '24 MIN READ',
  'small_studio_kit_en': 'Boutique Architecture Studio Stack (COMPAS MIT + Blender 4.2 / Bonsai + '
                         'FreeCAD 1.0 + QCAD Community Edition / LibreCAD): Run make_x03.py to '
-                        'generate a 7-voussoir funicular arch across 4 open '
+                        'generate a 7-voussoir funicular arch coupled with an A.11 passive '
+                        'radiative sky-cooling extrados envelope across 4 open '
                         'formats—x03_artifact.glb for client WebGL walkthroughs, x03_artifact.step '
                         'for structural engineer coordination, x03_artifact.3mf for 1:20 desktop '
-                        'study models, and x03_artifact.dxf for 2D stone/CLT CNC шаблоны '
-                        '(templates).',
+                        'study models, and x03_artifact.dxf for 2D stone/CLT CNC cutting templates.',
  'small_studio_kit_es': 'Stack para Pequeños Estudios de Arquitectura (COMPAS MIT + Blender 4.2 / '
                         'Bonsai + FreeCAD 1.0 + QCAD Community Edition / LibreCAD): Ejecuta '
-                        'make_x03.py para generar un arco funicular de 7 dovelas en 4 formatos '
+                        'make_x03.py para generar un arco funicular de 7 dovelas acoplado al '
+                        'extradós de enfriamiento radiativo diurno A.11 en 4 formatos '
                         'abiertos: x03_artifact.glb para presentaciones WebGL con clientes, '
                         'x03_artifact.step para coordinación estructural, x03_artifact.3mf para '
                         'maquetas físicas 1:20 y x03_artifact.dxf para plantillas de corte 2D en '
@@ -72,7 +74,7 @@ FOLIO = {'slug': 'x03',
  'companion_folios': [('architecture',
                        'a11',
                        'Folio A.11',
-                       '3D Polyhedral Graphic Statics & Stone Vaults'),
+                       '3D Polyhedral Graphic Statics & Sky-Cooling Vaults'),
                       ('architecture',
                        'a01',
                        'Folio A.01',
@@ -111,10 +113,11 @@ FOLIO = {'slug': 'x03',
               'by hand. Decades later, Philippe Block and Tom Van Mele digitized this heritage '
               'through thrust network analysis, polyhedral graphic statics (Akbarzadeh, Van Mele, '
               '& Block, 2015, DOI: 10.1016/j.cad.2015.01.006), and the open-source COMPAS '
-              'framework. By translating reciprocal polyhedra into algebraic '
-              'matrices, they showed that complex three-dimensional compression vaults can be '
-              'calculated without non-linear finite element solvers, directly linking graphic '
-              'statics to computerized architectural production.',
+              'framework. In REV 1.4, we couple this compression-only vault geometry directly with '
+              'Folio A.11’s passive daytime radiative sky-cooling extrados envelope: coating the '
+              'outer vault shell with hierarchically porous P(VdF-HFP) polymer (Raman et al., 2014, '
+              'DOI: 10.1038/nature13883; Mandal et al., 2018, DOI: 10.1126/science.aat9513) reflects '
+              '96% of incident sunlight while radiating heat through the 8–13 μm atmospheric window.',
  'pullquote': 'When a two-person architecture studio can generate verified STEP, 3MF, DXF, and GLB '
               'vault geometry from a 100-line Python script, computational tectonics stops being a '
               'corporate monopoly and becomes a public craft.',
@@ -128,22 +131,27 @@ FOLIO = {'slug': 'x03',
                  "Jacques Heyman publishes 'The Stone Skeleton' (DOI "
                  '10.1016/0020-7683(66)90018-7), proving the lower-bound safe theorem of masonry '
                  'arches.'),
+                ('2014–2018',
+                 'Raman et al. (DOI 10.1038/nature13883) and Mandal et al. (DOI '
+                 '10.1126/science.aat9513) demonstrate daytime sub-ambient radiative sky cooling '
+                 'across the 8–13 μm atmospheric window.'),
                 ('2017–2026',
                  'Philippe Block and Tom Van Mele release the MIT-licensed COMPAS framework '
                  '(compas-dev/compas), bringing 2D/3D graphic statics to Python.')],
- 'act2_intuition': 'The mathematical equilibrium of the seven-voussoir assembly rests on the '
-                   'classical parabolic thrust relation H = q L² / (8 f). For a uniform load q '
-                   'across span L with crown rise f = 2000 mm, the horizontal abutment thrust '
-                   'resolves to exactly H = 27.00 kN. Static equilibrium demands that the vector '
-                   'sum of all internal joint forces vanishes, ∑ F_i = 0. To guarantee that no '
-                   'tensile stresses develop across any block interface of thickness t = 400 mm, '
-                   'Heyman’s middle-third kern requires that the thrust eccentricity satisfies '
-                   '|e(x)| ≤ t / 6 = 66.7 mm. Operating at |e| = 18.0 mm maintains full '
-                   'cross-sectional compression. Topologically, each individual voussoir forms an '
-                   'independent closed polyhedron with Euler characteristic χ = V − E + F = 2. '
-                   'Across the entire seven-block assembly, the aggregate topological invariant '
-                   'evaluates to χ = 2 N_v = 14, comprising V = 56 vertices, E = 126 edges, and F '
-                   '= 84 faces, confirming boundary manifold closure.',
+ 'act2_intuition': 'The mathematical equilibrium of the seven-voussoir assembly (L = 6000 mm, f = '
+                   '2000 mm, t = 400 mm, b = 600 mm) rests on the classical parabolic thrust '
+                   'relation H = q L² / (8 f). For a uniform load q = 12 kN/m across span L = 6.0 m '
+                   'with crown rise f = 2.0 m, horizontal abutment thrust resolves to exactly H = '
+                   '27.00 kN, while ∑ F_i = 0 at every node. Heyman’s middle-third kern requires '
+                   'that thrust eccentricity satisfies |e(x)| ≤ t / 6 = 66.7 mm; operating at |e| '
+                   '= 18.0 mm maintains pure compression across every radial bed joint. '
+                   'Topologically, each discrete hexahedral voussoir has Euler–Poincaré '
+                   'characteristic χ = V − E + F = 2, giving aggregate χ = 2 N_v = 14 (V = 56, E = '
+                   '126, F = 84) across STEP AP242, 3MF, DXF, and 2-manifold GLB. Simultaneously, '
+                   'evaluating the A.11 porous P(VdF-HFP) extrados coating (R_solar = 0.96, '
+                   'ε_{8–13 μm} = 0.95) at ambient T_a = 303.15 K under 890 W/m² solar irradiance '
+                   'yields net radiative cooling flux q_net = 98.4 W/m² ≥ 80 W/m² and steady-state '
+                   'sub-ambient cooling ΔT_eq = −7.08 °C ≤ −4.5 °C.',
  'sliders': [{'id': 'tp-tool-s0',
               'label': 'Vault Crown Rise f',
               'min': 1200,
@@ -159,35 +167,36 @@ FOLIO = {'slug': 'x03',
               'value': 18,
               'unit': ' mm'}],
  'readouts': [{'label': '7-Voussoir Topology (V, E, F)', 'value': 'V=56, E=126, F=84 · χ=14'},
-              {'label': 'Maxwell–Rankine Thrust H', 'value': '27.00 kN (at L=6m, f=2m)'},
-              {'label': 'Heyman Middle-Third Kern', 'value': '|e| = 18.0 ≤ 66.7 mm (PASS)'},
-              {'label': '4-Format Export Verdict', 'value': 'GLB · STEP · 3MF · DXF PASS'}],
+              {'label': 'Thrust H & Heyman Kern', 'value': 'H = 27.0 kN · |e| = 18.0 ≤ 66.7 mm'},
+              {'label': 'A.11 Sky-Cooling Extrados', 'value': 'q_net = 98.4 W/m² · ΔT_eq = −7.08 °C'},
+              {'label': '4-Format Export Verdict', 'value': 'STEP AP242 · 3MF · DXF · GLB PASS'}],
  'steps': ['Stage 1: Funicular Thrust-Line & Joint-Normal Synthesis — Evaluate z(x_k) = f(1 − '
-           '(2x_k/L)²) and unit normal n(x_k) across N_v + 1 = 8 radial stations to bound 7 '
-           'compression-only voussoir blocks.',
+           '(2x_k/L)²) and unit normal n(x_k) across N_v + 1 = 8 radial stations (L = 6000 mm, f = '
+           '2000 mm, t = 400 mm) to bound 7 compression-only voussoir blocks at H = 27.0 kN.',
            'Stage 2: Multi-Body Watertight Hexahedral Extrusion — Extrude each radial quad across '
            'bay width b = 600 mm into an 8-vertex, 12-triangle closed hexahedron (total V = 56, E '
-           '= 126, F = 84, Euler characteristic χ = 2β_0 = 14).',
-           'Stage 3: 4-Format Studio Exchange Generation — Emit x03_artifact.glb (WebGL/Blender), '
-           'x03_artifact.step (AP242 B-rep), x03_artifact.3mf (1:20 physical model), and '
-           'x03_artifact.dxf (2D CUT elevation + MOUNTAIN thrust line).',
-           'Stage 4: Heyman Kern & Divergence-Volume Verification — Certify |e| ≤ t/6 = 66.7 mm, '
-           'verify exact agreement between shoelace-extruded volume and 3D divergence volume '
-           '(1.7724 × 10⁹ mm³), and test planted-defect rejection.'],
+           '= 126, F = 84, Euler–Poincaré characteristic χ = 2 N_v = 14).',
+           'Stage 3: 4-Format Studio Exchange & A.11 Extrados Coupling — Emit x03_artifact.glb, '
+           'x03_artifact.step (AP242 B-rep), x03_artifact.3mf, and x03_artifact.dxf while '
+           'evaluating 8–13 μm radiative sky-cooling flux across the 4.69 m² extrados shell.',
+           'Stage 4: Heyman Kern, Sky-Cooling & Divergence-Volume Verification — Certify |e| ≤ t/6 '
+           '= 66.7 mm, q_net = 98.4 W/m² ≥ 80 W/m² (ΔT_eq = −7.08 °C ≤ −4.5 °C), exact 3D volume '
+           'match (1.7724 × 10⁹ mm³), and planted-defect rejection.'],
  'rules': ['Multi-Voussoir Topological Closure: Each of the N_v = 7 discrete voussoirs must be an '
-           'independent closed 2-manifold (3F = 2E, χ = 2 per block, total χ = 14) with zero '
-           'non-manifold edges.',
-           'Heyman Middle-Third Safe Kern Bound: The thrust eccentricity |e| must satisfy |e| ≤ '
-           't/6 (66.7 mm for t = 400 mm) at every bed joint so compressive stresses remain '
-           'non-negative across the entire joint.',
-           '4-Format Provenance & Volume Identity: The signed 3D mesh volume in GLB/3MF/STEP must '
-           'match the 2D DXF elevation shoelace area multiplied by bay width b = 600 mm within '
-           '10⁻⁴ relative error.'],
+           'independent closed 2-manifold (3F = 2E, χ = 2 per block, total χ = 2 N_v = 14) across '
+           'GLB, 3MF, and STEP AP242 with zero non-manifold edges.',
+           'Heyman Middle-Third Safe Kern Bound: At L = 6000 mm, f = 2000 mm, t = 400 mm, H = 27.0 '
+           'kN, thrust eccentricity |e| must satisfy |e| ≤ t/6 = 66.7 mm so compressive stresses '
+           'remain non-negative across every joint.',
+           'A.11 Passive Sky-Cooling Extrados & 4-Format Volume Identity: The 8–13 μm coating '
+           '(ε_{8–13 μm} = 0.95, R_solar = 0.96) must achieve q_net ≥ 80 W/m² and ΔT_eq ≤ −4.5 °C '
+           'at T_a = 303.15 K, while 3D mesh volume matches 2D DXF shoelace area × b = 600 mm '
+           'within 10⁻⁴ relative error.'],
  'sidenote_1': {'kicker': 'SIDENOTE X.03-A · WHY SMALL ARCHITECTURE STUDIOS NEED OPEN EXCHANGE',
                 'body': 'A small practice collaborating with a local stonemason, timber '
-                        'fabricator, or structural engineer often needs 2D DXF templates and 3D '
-                        'STEP/3MF solids simultaneously. Generating all four from one script '
-                        'eliminates manual redrawing errors.'},
+                        'fabricator, or structural engineer often needs 2D DXF cutting templates '
+                        'and 3D STEP/3MF solids simultaneously. Generating all four from one '
+                        'script eliminates manual redrawing errors.'},
  'sidenote_2': {'kicker': 'SIDENOTE X.03-B · COMPAS & BONSAI BIM: SOVEREIGN OPEN ARCHITECTURE',
                 'body': "Both ETH Zurich's COMPAS framework and the Bonsai BIM / IfcOpenShell + "
                         'ezdxf open-source ecosystem are MIT-licensed and run in standard Python '
@@ -199,34 +208,41 @@ FOLIO = {'slug': 'x03',
                  'Drag Thrust Eccentricity |e| past 66.7 mm (or click [⚡ Counterfactual '
                  "Axiom-Knockout]) to see the thrust line exit Heyman's middle-third kern and open "
                  'a hinge.',
-                 'Download x03_artifact.dxf (for 2D CAD/laser templates), x03_artifact.step, '
-                 'x03_artifact.3mf, and x03_artifact.glb, plus the small-studio SKILL.md '
-                 'companion.'],
+                 'Download x03_artifact.dxf (for 2D CAD/laser cutting templates), '
+                 'x03_artifact.step, x03_artifact.3mf, and x03_artifact.glb, plus the small-studio '
+                 'SKILL.md companion.'],
  't0_t1_certified': ['Deterministic 4-format generator (skills/toolchain/x03/make_x03.py) emitting '
-                     'x03_artifact.glb, x03_artifact.step, x03_artifact.3mf, and x03_artifact.dxf.',
+                     'x03_artifact.glb, x03_artifact.step (AP242), x03_artifact.3mf, and '
+                     'x03_artifact.dxf.',
                      'Byte-level stdlib verifier '
                      '(verify_x03_toolchain_x03_small_architect_vault_kit.py) certifying 7-block '
-                     'watertightness (χ = 14), exact volume match, DXF layer structure, and '
-                     'planted-defect knockout.',
+                     'watertightness (χ = 14), H = 27.0 kN, A.11 sky-cooling flux (q_net = 98.4 '
+                     'W/m², ΔT_eq = −7.08 °C), exact volume match, and planted-defect knockout.',
                      'Portable SKILL.md companion tailored for small architecture studios using '
                      'Blender, FreeCAD, COMPAS, and QCAD Community Edition / LibreCAD.'],
  't2_t3_open_horizon': ['Educational Geometry Boundary: Every file on this page is an educational '
                         'artifact; nothing is certified as load-bearing, printable, safe, or fit '
                         'for any purpose.',
                         'Future Edition 2 Extensions: Polyhedral 3D graphic statics multi-rib '
-                        'groin vaults and open-standard IFC 4.3 structural analysis view export.'],
+                        'groin vaults, hygrometric dew-point coupling on radiative extrados shells, '
+                        'and open-standard IFC 4.3 structural analysis view export.'],
  'sources': ['Heyman, J. (1966). The stone skeleton. International Journal of Solids and '
              'Structures, 2(2), 249–279. DOI 10.1016/0020-7683(66)90018-7',
              'Akbarzadeh, M., Van Mele, T., & Block, P. (2015). On the equilibrium of funicular '
              'polyhedral frames and convex polyhedral force diagrams. Computer-Aided Design, 63, '
              '118–128. DOI 10.1016/j.cad.2015.01.006',
+             'Raman, A. P., Anoma, M. A., Zhu, L., Rephaeli, E., & Fan, S. (2014). Passive '
+             'radiative cooling below ambient air temperature under direct sunlight. Nature, '
+             '515(7528), 540–544. DOI 10.1038/nature13883',
+             'Mandal, J., Fu, Y., Overvig, A. C., Jia, M., Sun, K., Shi, N. N., Zhou, H., Xiao, '
+             'X., Yu, N., & Yang, Y. (2018). Hierarchically porous polymer coatings for highly '
+             'efficient passive daytime radiative cooling. Science, 362(6412), 315–319. DOI '
+             '10.1126/science.aat9513',
              'Block, P., & Ochsendorf, J. (2007). Thrust network analysis: A new methodology for '
              'three-dimensional equilibrium. Journal of the International Association for Shell '
              'and Spatial Structures, 48(3), 167–173.',
              'Van Mele, T., et al. (2017–2026). COMPAS: A framework for computational research in '
-             'architecture and structures (MIT License). https://github.com/compas-dev/compas',
-             'Rippmann, M., & Block, P. (2013). Funicular shell design exploration. ACADIA 2013 '
-             'Adaptive Architecture, 337–346.'],
+             'architecture and structures (MIT License). https://github.com/compas-dev/compas'],
  'act1_plain_bridge': 'Every historic masonry arch that has stood for centuries quietly proves '
                       'that stone works best when squeezed together rather than pulled apart. For '
                       'a small one-to-five person architectural studio, proving that a curved '
@@ -279,19 +295,19 @@ FOLIO = {'slug': 'x03',
                       'mechanism, revealing exactly why classical stone arches fail geometrically.',
  'act2_deepening': 'Beneath the visual interface, Maxwell’s reciprocal force duality governs every '
                    'geometric transformation. For every primal polygon formed by the interlocking '
-                   'voussoirs, there exists an orthogonal dual polygon in Maxwell-Rankine force '
+                   'voussoirs, there exists an orthogonal dual polygon in Maxwell–Rankine force '
                    'space whose edge lengths correspond directly to internal compressive thrust '
-                   'magnitudes. When you adjust crown rise f, the algorithmic pipeline dynamically '
-                   'updates the nodal coordinates and rescales the dual force polyhedron without '
-                   're-meshing the physical assembly. Each voussoir block is parameterized as a '
-                   'solid prismatic hexahedron bounded by radial contact planes and curved '
-                   'intrados and extrados surfaces. Contact stresses are evaluated across planar '
-                   'quadrilaterals using trapezoidal compressive stress blocks. If the '
-                   'eccentricity exceeds t / 6, the stress distribution triangularizes and contact '
-                   'separates, introducing an unconstrained rotational hinge. By enforcing '
-                   'equilibrium across the dual force network, the generator verifies that the '
-                   'resultant thrust vector remains strictly within the middle third of every '
-                   'radial bed joint before triggering multi-format export.',
+                   'magnitudes (Akbarzadeh et al., 2015, DOI: 10.1016/j.cad.2015.01.006). When you '
+                   'adjust crown rise f, the algorithmic pipeline dynamically updates nodal '
+                   'coordinates and rescales the dual force polyhedron without re-meshing the '
+                   'physical assembly. Each voussoir block is parameterized as a closed prismatic '
+                   'hexahedron (V = 8, E = 18, F = 12, χ = 2 per block; aggregate χ = 2 N_v = 14) '
+                   'bounded by radial contact planes and intrados/extrados chords across L = 6000 '
+                   'mm, f = 2000 mm, t = 400 mm, and b = 600 mm. Simultaneously, the outer extrados '
+                   'facets (4.69 m² per bay) carry Folio A.11’s porous P(VdF-HFP) sky-cooling '
+                   'envelope (R_solar = 0.96, ε_{8–13 μm} = 0.95), exporting q_net = 98.4 W/m² to '
+                   'the cold sky (ΔT_eq = −7.08 °C at T_a = 303.15 K) before multi-format STEP '
+                   'AP242, 3MF, DXF, and GLB serialization.',
  'act4_human_ai': 'In a small design studio, partnering with an AI coding assistant transforms '
                   'structural ideation from passive drafting into verifiable engineering. Rather '
                   'than treating artificial intelligence as a speculative image generator, the '
@@ -309,21 +325,19 @@ FOLIO = {'slug': 'x03',
                   'restricted to multinational engineering firms, ensuring constructability at '
                   'zero overhead.',
  'act4_deepening': 'This toolkit forms a synthesis across structural physics, projective geometry, '
-                   'and modern material science, linking directly to our companion folios. It '
-                   'deepens the funicular equilibrium foundations established in Folio A.01, which '
-                   'maps Heyman masonry vaults against Glaser thermal diffusion nodes. The '
-                   'polyhedral graphic statics implemented here directly extend Folio A.11’s '
-                   'three-dimensional reciprocal polyhedra, proving how dual force diagrams '
-                   'eliminate embodied carbon in floor plates by eliminating steel reinforcement. '
+                   'and radiative envelope thermodynamics, linking directly to our companion '
+                   'folios. It deepens the funicular equilibrium foundations established in Folio '
+                   'A.01, which maps Heyman masonry vaults against Glaser thermal diffusion nodes. '
+                   'In REV 1.4, Toolbox X.03 couples directly to Folio A.11’s concave Airy stress '
+                   'surfaces (det(H_Φ) > 0), three-dimensional reciprocal polyhedra, and passive '
+                   'daytime radiative sky-cooling extrados coatings (Raman et al., 2014, DOI: '
+                   '10.1038/nature13883; Mandal et al., 2018, DOI: 10.1126/science.aat9513), '
+                   'allowing unreinforced compression vaults to shed 98.4 W/m² through the 8–13 μm '
+                   'atmospheric window while storing sub-ambient coolness in thermal stone mass. '
                    'When voussoir contact faces rotate to accommodate mutual bearing without '
                    'falsework, the mechanics bridge into Folio A.02’s reciprocal timber nexorades, '
-                   'where interlocking timber members support spans far exceeding individual stick '
-                   'lengths through mutual lap joints. Furthermore, when these voussoirs are cast '
-                   'using modern low-carbon binders or 3D-printed earth mortars, their yield '
-                   'stress and pumpability are governed by Folio E.02’s Herschel-Bulkley concrete '
-                   'rheology. Together, these interdisciplinary links demonstrate that ancient '
-                   'stereotomy and cutting-edge computational mechanics are twin expressions of '
-                   'unyielding equilibrium physics.',
+                   'and when cast with low-carbon earth mortars, their pumpability follows Folio '
+                   'E.02’s Herschel–Bulkley rheology.',
  'plain_es': 'Cualquier arco de piedra tradicional demuestra que la mampostería trabaja a la '
              'perfección cuando se comprime y sufre cuando se tensiona. Para un taller '
              'independiente de arquitectura de una a cinco personas, calcular una bóveda curva o '
@@ -336,17 +350,17 @@ FOLIO = {'slug': 'x03',
              'CNC de dovelas, mandar el archivo 3MF a tu impresora 3D para maquetas físicas y '
              'cargar los planos DXF en QCAD o LibreCAD para cortar plantillas de carpintería y '
              'cantería artesanal.',
- 'deep_es': 'El equilibrio estático de este ensamblaje de siete dovelas se fundamenta en la teoría '
-            'plástica de Jacques Heyman y la estática gráfica recíproca de Maxwell y Rankine. La '
-            'fuerza horizontal de empuje se determina mediante H = q L² / (8 f), resultando '
-            'exactamente en 27.00 kN para un peralte de dos mil milímetros. Para erradicar '
-            'cualquier esfuerzo de tracción en un material sin cohesión tensil, la línea de empuje '
-            'debe confinarse estrictamente dentro del tercio medio de la sección de espesor t = '
-            '400 mm, cumpliendo |e(x)| ≤ t / 6 = 66.7 mm. Con una excentricidad de operación de '
-            '18.0 mm, las juntas radiales mantienen compresión total en sus caras de contacto. '
-            'Topológicamente, cada bloque constituye un poliedro cerrado con característica de '
-            'Euler χ = 2, totalizando χ = 14 en la macroestructura con 56 vértices, 126 aristas y '
-            '84 caras conformando un colector cerrado estanco.',
+ 'deep_es': 'El equilibrio estático de este ensamblaje de siete dovelas (L = 6000 mm, f = 2000 '
+            'mm, t = 400 mm, b = 600 mm) se fundamenta en la teoría plástica de Jacques Heyman y '
+            'la estática gráfica recíproca de Maxwell y Rankine. El empuje horizontal H = q L² / '
+            '(8 f) resulta exactamente en 27.00 kN, confinando la excentricidad |e| = 18.0 mm '
+            'dentro del núcleo central |e(x)| ≤ t / 6 = 66.7 mm. Topológicamente, cada dovela '
+            'hexaédrica cerrada posee característica de Euler–Poincaré χ = 2, sumando χ = 2 N_v = '
+            '14 (56 vértices, 126 aristas y 84 caras) en STEP AP242, 3MF, DXF y GLB 2-variedad. '
+            'En REV 1.4, el extradós acopla el recubrimiento poroso P(VdF-HFP) del Folio A.11 '
+            '(R_solar = 0.96, ε_{8–13 μm} = 0.95), alcanzando un flujo neto de enfriamiento '
+            'radiativo diurno q_net = 98.4 W/m² ≥ 80 W/m² y ΔT_eq = −7.08 °C ≤ −4.5 °C a T_a = '
+            '303.15 K.',
  'distill_diagram': {'analogy_title': 'The Inverted Hanging Chain',
                      'analogy_sub': 'Gravity tension inverts into pure compressive vault '
                                     'equilibrium',

@@ -1279,6 +1279,13 @@ def _build_pillar_skill_and_verifier(pillar: str, folio: dict) -> tuple[str, str
         f'    print(json.dumps(result, indent=2, ensure_ascii=False))\n'
         f'    sys.exit(0)\n'
     )
+    existing_dir = ROOT / "skills" / pillar / slug
+    existing_py = existing_dir / py_filename
+    existing_md = existing_dir / "SKILL.md"
+    if existing_py.is_file() and "--planted-defect" in existing_py.read_text(encoding="utf-8"):
+        py_verifier_src = existing_py.read_text(encoding="utf-8")
+        if existing_md.is_file():
+            skill_md = existing_md.read_text(encoding="utf-8")
     return skill_md, py_verifier_src, py_filename
 
 
@@ -1929,7 +1936,7 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
     tg_items_html = "\n            ".join(tg_items)
     tg_series_html = f"""
           <section class="tp-contents-series" aria-label="Time and Gravity track pages">
-            <h3><a href="{_href(rel_res, 'timegravity/')}" data-en="Series · Time &amp; Gravity · 13 steps (T.00–T.12)" data-es="Serie · Tiempo y Gravedad · 13 pasos (T.00–T.12)">Series · Time &amp; Gravity · 13 steps (T.00–T.12)</a></h3>
+            <h3><a href="{_href(rel_res, 'timegravity/')}" data-en="Series · Time &amp; Gravity · 14 steps (T.00–T.13)" data-es="Serie · Tiempo y Gravedad · 14 pasos (T.00–T.13)">Series · Time &amp; Gravity · 14 steps (T.00–T.13)</a></h3>
             <ol>
             {tg_items_html}
             </ol>
@@ -2195,7 +2202,7 @@ def _png_sha8(name: str) -> str:
 
 
 def render_timegravity_series_rack(rel_res: str) -> str:
-    """The Time & Gravity series as a rack of thirteen plate cards on /physics/, one per step, in reading order."""
+    """The Time & Gravity series as a rack of fourteen plate cards on /physics/, one per step, in reading order."""
     cards = []
     by_code = {p["code"]: p for p in TIMEGRAVITY_PAGES}
     for i, m in enumerate(TIMEGRAVITY_TRACK_MAP, 1):  # reading order, which is not code order (T.02 precedes T.01)
@@ -2210,7 +2217,7 @@ def render_timegravity_series_rack(rel_res: str) -> str:
         cards.append(
             f"""        <a class="tp-rack-card tp-rack-card-series" href="{href}" data-folio-slug="{esc(plate)}" data-series-step="{i}">
           <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb tp-rack-thumb-series" src="{_href(rel_res, 'plates/' + plate + '.png')}?v={_png_sha8(plate)}" width="1200" height="630" loading="lazy" decoding="async" alt="{esc('Plate for ' + tg['code'] + ' · ' + title_en)}"></span>
-          <span class="tp-rack-top"><span class="tp-rack-id" data-en="Step {i} of 13 · {esc(tg['code'])}" data-es="Paso {i} de 13 · {esc(tg['code'])}">Step {i} of 13 · {esc(tg['code'])}</span><span class="tp-rack-badge" data-en="{esc(tg['reading_time_en'])}" data-es="{esc(tg['reading_time_es'])}">{esc(tg['reading_time_en'])}</span></span>
+          <span class="tp-rack-top"><span class="tp-rack-id" data-en="Step {i} of 14 · {esc(tg['code'])}" data-es="Paso {i} de 14 · {esc(tg['code'])}">Step {i} of 14 · {esc(tg['code'])}</span><span class="tp-rack-badge" data-en="{esc(tg['reading_time_en'])}" data-es="{esc(tg['reading_time_es'])}">{esc(tg['reading_time_en'])}</span></span>
           <strong class="tp-rack-title" data-en="{esc(title_en)}" data-es="{esc(title_es)}">{esc(title_en)}</strong>
           <span class="tp-rack-dek" data-en="{esc(d_en)}" data-es="{esc(d_es)}">{esc(d_en)}</span>
         </a>"""
@@ -2220,9 +2227,9 @@ def render_timegravity_series_rack(rel_res: str) -> str:
     step2_href = _href(rel_res, "timegravity/t02/")
     return f"""
     <section class="tp-issue-rack tp-series-rack tp-series-rack-lead" aria-labelledby="timegravity-series-heading" id="timegravity-series">
-      <p class="tp-kicker" data-en="Featured Series · Time &amp; Gravity · 13 steps · 110 audited claims" data-es="Serie Destacada · Tiempo y Gravedad · 13 pasos · 110 afirmaciones auditadas">Featured Series · Time &amp; Gravity · 13 steps · 110 audited claims</p>
-      <h2 id="timegravity-series-heading" class="tp-h2"><a href="{hub_href}" data-en="Time &amp; Gravity (T.00–T.12)" data-es="Tiempo y Gravedad (T.00–T.12)">Time &amp; Gravity (T.00–T.12)</a></h2>
-      <p class="tp-standfirst" data-en="A guided thirteen-step inquiry from optical clocks and sub-millimetre torsion balances to GW250114 black-hole ringdown, electromagnetic pointer selection, and dark-sector clock networks—where every page ends with the open question the next one takes up, and six strict evidence labels (including DERIVED (NOT MEASURED)) hold every claim to a 108-row offline ledger." data-es="Una investigación guiada de trece pasos desde relojes ópticos y balanzas de torsión submilimétricas hasta el ringdown de agujeros negros GW250114, la selección electromagnética de estados puntero y las redes de relojes del sector oscuro, donde cada página cierra con la pregunta abierta que retoma la siguiente y seis etiquetas de evidencia (incluida DERIVADO (NO MEDIDO)) sostienen cada afirmación frente a un libro de 108 filas.">A guided thirteen-step inquiry from optical clocks and sub-millimetre torsion balances to GW250114 black-hole ringdown, electromagnetic pointer selection, and dark-sector clock networks—where every page ends with the open question the next one takes up, and six strict evidence labels (including DERIVED (NOT MEASURED)) hold every claim to a 108-row offline ledger.</p>
+      <p class="tp-kicker" data-en="Featured Series · Time &amp; Gravity · 14 steps · 123 audited claims" data-es="Serie Destacada · Tiempo y Gravedad · 14 pasos · 123 afirmaciones auditadas">Featured Series · Time &amp; Gravity · 14 steps · 123 audited claims</p>
+      <h2 id="timegravity-series-heading" class="tp-h2"><a href="{hub_href}" data-en="Time &amp; Gravity (T.00–T.13)" data-es="Tiempo y Gravedad (T.00–T.13)">Time &amp; Gravity (T.00–T.13)</a></h2>
+      <p class="tp-standfirst" data-en="A guided fourteen-step inquiry from optical clocks and sub-millimetre torsion balances to GW250114 black-hole ringdown, electromagnetic pointer selection, dark-sector clock networks, and Weinberg soft-graviton Ward identities—where every page ends with the open question the next one takes up, and six strict evidence labels (including DERIVED (NOT MEASURED)) hold every claim to a 117-row offline ledger." data-es="Una investigación guiada de catorce pasos desde relojes ópticos y balanzas de torsión submilimétricas hasta el ringdown de agujeros negros GW250114, la selección electromagnética de estados puntero, las redes de relojes del sector oscuro y las identidades de gravitones blandos de Weinberg, donde cada página cierra con la pregunta abierta que retoma la siguiente y seis etiquetas de evidencia (incluida DERIVADO (NO MEDIDO)) sostienen cada afirmación frente a un libro de 117 filas.">A guided fourteen-step inquiry from optical clocks and sub-millimetre torsion balances to GW250114 black-hole ringdown, electromagnetic pointer selection, dark-sector clock networks, and Weinberg soft-graviton Ward identities—where every page ends with the open question the next one takes up, and six strict evidence labels (including DERIVED (NOT MEASURED)) hold every claim to a 117-row offline ledger.</p>
       <div class="tp-series-rack-ctas">
         <a class="tp-cta tp-cta-primary" href="{hub_href}" data-en="Enter the Series Hub · T.00 →" data-es="Entrar al Inicio de la Serie · T.00 →">Enter the Series Hub · T.00 →</a>
         <a class="tp-cta" href="{step2_href}" data-en="Begin Step 2 · Everyone Moves at One Rate (T.02) →" data-es="Empezar Paso 2 · Todos Avanzamos a un Mismo Ritmo (T.02) →">Begin Step 2 · Everyone Moves at One Rate (T.02) →</a>
@@ -2293,8 +2300,8 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
     extra_sections = ""
     if pillar in ("physics", "math"):
         extra_sections = f"\n{render_symbolic_physics_lab_section(rel_res)}\n{render_oss_physics_radar_section(rel_res)}"
-    kick_en = f"Pillar {PILLAR_ROMAN[pillar]} · {n} essays" + (" · 1 series of 13 steps" if pillar == "physics" else "")
-    kick_es = f"Pilar {PILLAR_ROMAN[pillar]} · {n} ensayos" + (" · 1 serie de 13 pasos" if pillar == "physics" else "")
+    kick_en = f"Pillar {PILLAR_ROMAN[pillar]} · {n} essays" + (" · 1 series of 14 steps" if pillar == "physics" else "")
+    kick_es = f"Pilar {PILLAR_ROMAN[pillar]} · {n} ensayos" + (" · 1 serie de 14 pasos" if pillar == "physics" else "")
     return f"""{head}
 <body class="tp-body tp-page-hub">
 {render_masthead(rel_res, pillar, lang)}
@@ -5425,9 +5432,9 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
           <span class="tp-track-chip-meta" data-en="12 Folios · Vaults, Barragán, Sky-Cooling" data-es="12 Folios · Bóvedas, Barragán, Enfriamiento">12 Folios · Vaults, Barragán, Sky-Cooling</span>
         </a>
         <a class="tp-track-chip" href="physics/">
-          <span class="tp-track-chip-kicker" data-en="PILLAR III · 12 ESSAYS + 13-STEP SERIES" data-es="PILAR III · 12 ENSAYOS + SERIE DE 13 PASOS">PILLAR III · 12 ESSAYS + 13-STEP SERIES</span>
+          <span class="tp-track-chip-kicker" data-en="PILLAR III · 12 ESSAYS + 14-STEP SERIES" data-es="PILAR III · 12 ENSAYOS + SERIE DE 14 PASOS">PILLAR III · 12 ESSAYS + 14-STEP SERIES</span>
           <strong class="tp-track-chip-title" data-en="Multiscale &amp; Quantum Physics" data-es="Física Multiescala y Cuántica">Multiscale &amp; Quantum Physics</strong>
-          <span class="tp-track-chip-meta" data-en="Time &amp; Gravity (T.00–T.12) · F1 Aero, QEC" data-es="Tiempo y Gravedad (T.00–T.12) · Aero F1, QEC">Time &amp; Gravity (T.00–T.12) · F1 Aero, QEC</span>
+          <span class="tp-track-chip-meta" data-en="Time &amp; Gravity (T.00–T.13) · F1 Aero, QEC" data-es="Tiempo y Gravedad (T.00–T.13) · Aero F1, QEC">Time &amp; Gravity (T.00–T.13) · F1 Aero, QEC</span>
         </a>
         <a class="tp-track-chip" href="math/">
           <span class="tp-track-chip-kicker" data-en="PILLAR IV · 12 ESSAYS" data-es="PILAR IV · 12 ENSAYOS">PILLAR IV · 12 ENSAYOS</span>
@@ -5445,8 +5452,8 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
           <span class="tp-track-chip-meta" data-en="STEP · 3MF · GLB · DXF · Small Architects" data-es="STEP · 3MF · GLB · DXF · Pequeños Estudios">STEP · 3MF · GLB · DXF · Small Architects</span>
         </a>
         <a class="tp-track-chip tp-track-chip-timegravity" href="timegravity/">
-          <span class="tp-track-chip-kicker" data-en="PHYSICS SERIES · 13 STEPS" data-es="SERIE DE FÍSICA · 13 PASOS">PHYSICS SERIES · 13 STEPS</span>
-          <strong class="tp-track-chip-title" data-en="Time &amp; Gravity (T.00–T.12)" data-es="Tiempo y Gravedad (T.00–T.12)">Time &amp; Gravity (T.00–T.12)</strong>
+          <span class="tp-track-chip-kicker" data-en="PHYSICS SERIES · 14 STEPS" data-es="SERIE DE FÍSICA · 14 PASOS">PHYSICS SERIES · 14 STEPS</span>
+          <strong class="tp-track-chip-title" data-en="Time &amp; Gravity (T.00–T.13)" data-es="Tiempo y Gravedad (T.00–T.13)">Time &amp; Gravity (T.00–T.13)</strong>
           <span class="tp-track-chip-meta" data-en="Clock rates · Geodesics · Six labels · Ledger" data-es="Ritmos de reloj · Geodésicas · Seis etiquetas · Registro">Clock rates · Geodesics · Six labels · Ledger</span>
         </a>
         <a class="tp-track-chip tp-track-chip-skills" href="#tp-oss-physics-radar">
@@ -5929,7 +5936,7 @@ def render_llms_txt(catalog: dict) -> str:
     skill_count = len(list((ROOT / "skills").glob("*/*/SKILL.md")))
     t_en, d_en, _t_es, _d_es = (x.replace("{total}", str(total)) for x in HUB_SEO)
     lines = [f"# {BRAND}", "", f"> {d_en}", "",
-             f"Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under {page_url('', 'es')}. Public open-source repository ({skill_count} SKILL.md companions, Python verifiers, 13-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.", ""]
+             f"Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under {page_url('', 'es')}. Public open-source repository ({skill_count} SKILL.md companions, Python verifiers, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.", ""]
     for pillar, folios in catalog["pillars"].items():
         lines.append(f"## {PILLAR_TITLES[pillar]}")
         lines.append("")
@@ -5952,7 +5959,7 @@ def render_llms_txt(catalog: dict) -> str:
         t_title, t_desc = TOOLCHAIN_SEO[t["slug"]][0], TOOLCHAIN_SEO[t["slug"]][1]
         lines.append(f"- [{t['folio_id']} ({t['tool_id']}) {t_title}]({page_url('toolchain/' + t['slug'] + '/')}): {t_desc}")
     lines.append("")
-    lines.append("## Time & Gravity · Thirteen Pages on an Open Problem (T.00–T.12)")
+    lines.append("## Time & Gravity · Fourteen Pages on an Open Problem (T.00–T.13)")
     lines.append("")
     lines.append(f"- [Time & Gravity]({page_url('timegravity/')}): {PILLAR_SEO['timegravity'][1]}")
     by_code = {p["code"]: p for p in TIMEGRAVITY_PAGES}

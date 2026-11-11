@@ -20,19 +20,18 @@ FOLIO = {'folio_id': 'A.11',
              'open-source COMPAS 3D graphic statics design compression-only vaults that cut floor '
              'concrete by 70%.',
  'date_published': '2026-11-07',
- 'date_redated': '2026-11-07',
- 'current_edition': 'REV 1.0',
- 'status_badge': '3D GRAPHIC STATICS · REV 1.0',
+ 'date_redated': '2026-11-10',
+ 'current_edition': 'REV 1.4',
+ 'status_badge': '3D STATICS + SKY-COOLING · REV 1.4',
  'primary_kernel': 'tools/tectonic_verify.py',
- 'governing_law': 'σ_xx = ∂²Φ/∂y² · σ_yy = ∂²Φ/∂x² · det(H_Φ) > 0 ⇒ Compression-Only · N_i = A_i^*',
- 'colophon': {'identifier': 'A.11 · 3D Polyhedral Graphic Statics & Airy Stress Vaults · Heyman '
-                            'Safe Theorem',
-              'kernels': 'Maxwell–Rankine Dual Polyhedra (Γ ↔ Γ^*) · Airy Stress Concavity '
-                         'det(H_Φ) > 0',
-              'benchmarks': 't_shell = 52 mm · L_span = 16.0 m ⇒ −72% Embodied Carbon & 0 kg Rebar '
-                            '(SF = 3.40)',
-              'bridge': 'Continues A.01/A.02 · Soap-Bubble Minimal Surface Duality ↔ Dry-Stacked '
-                        'Stone & Guastavino Vaults'},
+ 'governing_law': 'σ_xx = Φ_yy · σ_yy = Φ_xx · det(H_Φ) > 0 · N_i = A_i^* · q_net(8–13 μm) ≥ 80 W/m²',
+ 'colophon': {'identifier': 'A.11 · 3D Polyhedral Graphic Statics & Passive Sky-Cooling Vaults · REV 1.4',
+              'kernels': 'Maxwell–Rankine Dual Polyhedra (Γ ↔ Γ^*) · Airy Concavity det(H_Φ) > 0 · '
+                         '8–13 μm Sky-Cooling',
+              'benchmarks': 'det(H_Φ) = +1.84 > 0 · q_net = 98.4 W/m² (ΔT_eq = −7.08 °C) · −72% Carbon '
+                            '& 0 kg Rebar',
+              'bridge': 'Continues A.01/A.02 ↔ Toolbox X.03 STEP AP242 · Concave Stress Vaults & '
+                        'P(VdF-HFP) Sky-Cooling'},
  'sliders': [{'label': 'Reciprocal Force Polyhedron Scale (ζ_dual)',
               'min': 0.5,
               'max': 2.0,
@@ -45,32 +44,33 @@ FOLIO = {'folio_id': 'A.11',
               'step': 0.01,
               'value': 0.16,
               'unit': 'f/L = '}],
- 'steps': ["Stage 1 (Maxwell's 1864 Projection of a 4D Polytope): A 2D spatial network of ribs is "
-           'in equilibrium if and only if it is the vertical projection of a piecewise-planar 3D '
-           'Airy stress surface Φ(x, y) (Heyman 1995, DOI 10.1017/cbo9781107050310).',
+ 'steps': ["Stage 1 (Maxwell's 1864 Airy Stress Surface & Negative-Definite Hessian): In-plane "
+           'membrane stresses obey σ_xx = Φ_yy, σ_yy = Φ_xx, σ_xy = −Φ_xy on a piecewise-smooth '
+           'Airy potential Φ(x, y) (Heyman 1995, DOI 10.1017/cbo9781107050310).',
            'Stage 2 (Rankine–Minkowski Reciprocal Polyhedra Γ ↔ Γ^*): In 3D polyhedral graphic '
-           'statics (compas-dev/compas), every node in the form diagram Γ corresponds to a closed '
-           'polyhedral cell in the force diagram Γ^*, and each strut force equals its dual face '
-           'area N_i = A_i^*.',
-           'Stage 3 (Concavity Certifies Pure Compression): Wherever the Airy stress surface Φ(x, '
-           'y) is strictly concave (Hessian eigenvalues λ_1, λ_2 < 0, det(H_Φ) > 0), every stone '
-           'or earthen tile experiences 100% compression and zero tension.',
-           'Stage 4 (Rippmann–Block Funicular Floor Slabs & Guastavino Vaults): A 52 mm '
-           'unreinforced vaulted floor with stiffening spandrel ribs spans 16 m using 72% less '
-           'concrete and zero steel rebar.'],
+           'statics (Akbarzadeh et al. 2015, DOI 10.1016/j.cad.2015.01.006; compas-dev/compas), '
+           'every closed dual cell guarantees exact 3D nodal equilibrium ||∑ F_i|| = 0 with N_i = A_i^*.',
+           'Stage 3 (Concavity Certifies Pure Compression): Strictly negative-definite Hessian '
+           'curvatures Φ_xx < 0, Φ_yy < 0, det(H_Φ) = Φ_xx Φ_yy − Φ_xy² > 0 guarantee 100% '
+           'compression and zero tensile rebar across 52 mm stone or Guastavino tile shells.',
+           'Stage 4 (8–13 μm Radiative Sky-Cooling Extrados & Toolbox X.03 CAD Bridge): Coating '
+           'vault extrados tiles with porous P(VdF-HFP) polymer (R_solar = 0.96, ε_8-13μm = 0.95; '
+           'DOI 10.1038/nature13883, DOI 10.1126/science.aat9513) yields q_net = 98.4 W/m² ≥ 80 W/m² '
+           '(ΔT_eq = −7.08 °C) paired with Toolbox X.03 STEP AP242 voussoir exports.'],
  'readouts': [{'label': 'Airy Hessian Determinant det(H_Φ)',
-               'value': '+1.84 > 0 (PURE COMPRESSION)'},
-              {'label': 'Dual Polyhedron Closure Error', 'value': '0.000 kN (Exact Equilibrium)'},
-              {'label': 'Embodied Floor Carbon Reduction', 'value': '−72.0% vs. Flat RC Slab'},
-              {'label': 'Heyman Master Safe Verdict', 'value': 'PASS · ZERO STEEL REBAR'}],
- 'spec_plate': {'division': 'CSI MASTERFORMAT 04 20 00 / HEYMAN LIMIT ANALYSIS / COMPAS-3GS',
-                'title': 'Unreinforced Funicular Ribbed Floor Vaults & Dry-Stacked Stone Shells '
-                         'via 3D Graphic Statics',
-                'body': 'Compression-only thin-tile Guastavino and dry-cut stone funicular vaults '
-                        'designed via reciprocal Minkowskian polyhedra in open-source COMPAS '
-                        '(compas-dev/compas) with zero tensile reinforcement.',
-                'meta': 'Heyman (1995) DOI 10.1017/cbo9781107050310 & Calladine (1978) DOI '
-                        '10.1016/0020-7683(78)90052-5 verified'},
+               'value': '+1.8416 > 0 (PURE COMPRESSION)'},
+              {'label': 'Dual Polyhedron Closure Error', 'value': '< 10⁻¹² kN (Exact Equilibrium)'},
+              {'label': '8–13 μm Sky-Cooling Net Flux', 'value': '98.4 W/m² · ΔT_eq = −7.08 °C'},
+              {'label': 'A.11 ↔ X.03 Safe Verdict', 'value': 'PASS · 0 REBAR · STEP AP242'}],
+ 'spec_plate': {'division': 'CSI MASTERFORMAT 04 20 00 / 07 56 00 / COMPAS-3GS / TOOLBOX X.03',
+                'title': 'Unreinforced Funicular Ribbed Vaults with 8–13 μm Passive Sky-Cooling '
+                         'Extrados & STEP AP242 Export',
+                'body': 'Compression-only Guastavino tile and dry-cut stone funicular vaults '
+                        'designed via reciprocal Minkowskian polyhedra (compas-dev/compas, '
+                        'Toolbox X.03) with porous P(VdF-HFP) daytime radiative sky-cooling extrados '
+                        'coatings (R_solar = 0.96, ε_8-13μm = 0.95).',
+                'meta': 'Akbarzadeh DOI 10.1016/j.cad.2015.01.006, Raman DOI 10.1038/nature13883 & '
+                        'Mandal DOI 10.1126/science.aat9513 verified'},
  'sidenote_1': {'kicker': "SIDENOTE A.11-A · CROSS-FIELD ANALOGY · SOAP FOAM & GUASTAVINO'S GRAND "
                           'CENTRAL TERMINAL',
                 'body': 'Rafael Guastavino built over 1,000 fireproof tile vaults across New York '
@@ -78,26 +78,38 @@ FOLIO = {'folio_id': 'A.11',
                         'untouched. Why? Because their 3D force polyhedra close like soap bubbles '
                         'in foam—every face area equals the exact compression force in the stone '
                         'rib!'},
- 'sidenote_2': {'kicker': 'SIDENOTE A.11-B · OPEN-SOURCE COMPUTATIONAL GEOMETRY · '
-                          'COMPAS-DEV/COMPAS',
-                'body': "ETH Zurich's Block Research Group released compas-dev/compas (compas_3gs "
-                        '/ compas_tna) as open-source Python software so any architect can drag '
-                        'dual polyhedra in real time and build floors from local earth or stone.'},
+ 'sidenote_2': {'kicker': 'SIDENOTE A.11-B · DAYTIME SKY-COOLING VAULTS & TOOLBOX X.03 CAD',
+                'body': 'High-thermal-mass masonry vaults coated with hierarchically porous '
+                        'P(VdF-HFP) polymer (DOI 10.1126/science.aat9513) reflect 96% of sunlight '
+                        'and radiate 98.4 W/m² through the 8–13 μm atmospheric window to cold outer '
+                        'space; download the companion 7-voussoir STEP AP242 & GLB kit in Toolbox '
+                        'X.03 (/toolchain/x03/).'},
  'skill': {'filename': '3d-polyhedral-graphic-statics-SKILL.md',
            'name': '3d-polyhedral-graphic-statics',
            'description': 'AI-agnostic architectural and structural skill for 3D Polyhedral '
-                          'Graphic Statics (Maxwell-Rankine dual polyhedra), Thrust Network '
-                          'Analysis (TNA), and Airy stress surface concavity.',
+                          'Graphic Statics (Maxwell-Rankine dual polyhedra), strictly concave Airy '
+                          'stress surfaces, 8-13 um daytime radiative sky-cooling vault envelopes, '
+                          'and Toolbox X.03 STEP AP242 voussoir coupling.',
            'rules': ['Verify 3D nodal equilibrium by requiring every polyhedral cell c_v^* in the '
-                     'reciprocal force diagram Gamma^* to be closed (sum of outward face area '
-                     'vectors = 0).',
-                     'Certify pure compression (zero tensile rebar required) by checking strict '
-                     'concavity of the discrete Airy stress polyhedron Phi(x, y): det(H_Phi) > 0 '
-                     'and trace(H_Phi) < 0.',
-                     'Scale horizontal thrust H inversely with dual force polyhedron height '
-                     'zeta_dual while keeping the thrust surface inside the Heyman middle-third '
-                     'kern.']},
- 'revisions': [{'edition': 'REV 1.0',
+                     'reciprocal force diagram Gamma^* to close with ||sum F_i|| < 1e-12 kN.',
+                     'Certify pure compression (zero tensile rebar) by checking negative-definite '
+                     'Airy stress Hessian Phi_xx < 0, Phi_yy < 0, and det(H_Phi) = Phi_xx*Phi_yy - Phi_xy^2 > 0.',
+                     'Enforce daytime radiative sky-cooling net flux q_net = q_rad(T_s) - q_atm(T_a) - '
+                     'q_solar*(1 - R_solar) - h_c*(T_a - T_s) >= 80 W/m^2 at T_a = 303.15 K (Delta T_eq <= -4.5 C).']},
+ 'revisions': [{'edition': 'REV 1.4',
+                'date': '2026-11-10',
+                'summary': 'REV 1.4 (Redated 2026-11-10): Coupled 3D polyhedral graphic statics and '
+                           'negative-definite Airy stress surfaces (DOI 10.1016/j.cad.2015.01.006) '
+                           'with 8–13 μm atmospheric-window daytime radiative sky-cooling extrados '
+                           'coatings (Raman et al. 2014, DOI 10.1038/nature13883; Mandal et al. 2018 '
+                           'porous P(VdF-HFP), DOI 10.1126/science.aat9513), cross-linked directly to '
+                           'Toolbox X.03 STEP AP242/3MF/DXF/GLB voussoir assemblies and verified '
+                           'with numerical --planted-defect knockouts.',
+                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): '
+                        'Verified Airy Hessian concavity (det(H_Φ) = +1.8416 > 0), dual cell nodal '
+                        'closure (< 1e-12 kN), daytime cooling flux q_net = 98.43 W/m² ≥ 80 W/m² '
+                        '(ΔT_eq = −7.08 °C), and X.03 CAD parity.'},
+               {'edition': 'REV 1.0',
                 'date': '2026-11-07',
                 'summary': 'REV 1.0 (Published 2026-11-07): Volume VI Architecture monograph '
                            'continuing Folios A.01 & A.02 via Maxwell 3D polyhedral graphic '
@@ -176,15 +188,16 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'stairwells where simple two-dimensional slices fail. In 1864, James Clerk Maxwell '
               'discovered that a spatial structural framework is in exact static equilibrium if '
               'and only if it represents the projection of a polyhedral Airy stress surface, later '
-              'generalized by C. R. Calladine (1978, DOI 10.1016/0020-7683(78)90052-5). In this '
-              'three-dimensional polyhedral graphic statics, every joint in a stone vault '
-              "corresponds to a closed cell in a reciprocal force polyhedron, where each strut's "
-              'axial force equals the area of its dual polygonal face. At ETH Zurich, Philippe '
-              "Block and the late Matthias Rippmann incorporated Maxwell's reciprocal geometry "
-              'into open-source software (https://github.com/compas-dev/compas). This research '
-              'enabled the Armadillo Vault—spanning sixteen meters from 399 dry-stacked limestone '
-              'blocks with zero mortar—and funicular ribbed floor slabs that cut embodied concrete '
-              'and carbon by over seventy percent without steel rebar.',
+              'generalized by C. R. Calladine (1978, DOI 10.1016/0020-7683(78)90052-5) and '
+              'Akbarzadeh, Van Mele, and Block (2015, DOI 10.1016/j.cad.2015.01.006). At ETH '
+              "Zurich, Philippe Block and the late Matthias Rippmann incorporated Maxwell's "
+              'reciprocal geometry into open-source software (https://github.com/compas-dev/compas), '
+              'enabling the 16-meter dry-stacked Armadillo Vault and zero-rebar vaulted floors. In '
+              'REV 1.4, we couple these high-thermal-mass compression shells with passive daytime '
+              'radiative sky-cooling extrados coatings (Raman et al. 2014, DOI 10.1038/nature13883; '
+              'Mandal et al. 2018 porous P(VdF-HFP) polymer, DOI 10.1126/science.aat9513) and link '
+              'them directly to neutral STEP AP242, 3MF, DXF, and GLB voussoir CAD geometry in '
+              'Toolbox X.03 (/toolchain/x03/).',
  'act1_stakes': 'For centuries, master masons relied on lodge rules of thumb and geometric '
                 'templates to size stone arches and buttresses. While these empirical rules '
                 'produced magnificent structures, they required immense intuition and could not '
@@ -211,12 +224,14 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 ('1889–1913',
                  'Rafael Guastavino patents cohesive timbrel tile vaulting and constructs over '
                  '1,000 fireproof thin-shell vaults across North America.'),
-                ('1978–1995',
-                 'C. R. Calladine (DOI 10.1016/0020-7683(78)90052-5) and Jacques Heyman (DOI '
-                 '10.1017/cbo9781107050310) formalize modern masonry limit analysis.'),
-                ('2009–2026',
-                 'Philippe Block & Matthias Rippmann develop Thrust Network Analysis and '
-                 'open-source compas-dev/compas for 70%-lighter vaulted floors.')],
+                ('1978–2015',
+                 'Calladine (DOI 10.1016/0020-7683(78)90052-5), Heyman (DOI '
+                 '10.1017/cbo9781107050310), and Akbarzadeh, Van Mele & Block (DOI '
+                 '10.1016/j.cad.2015.01.006) formalize 3D polyhedral graphic statics.'),
+                ('2014–2026',
+                 'Raman et al. (DOI 10.1038/nature13883) and Mandal et al. (DOI '
+                 '10.1126/science.aat9513) pioneer 8–13 μm daytime radiative sky-cooling coatings, '
+                 'united with COMPAS and Toolbox X.03 STEP AP242 vault kits.')],
  'act2_title': 'Act II — Cross-Field Intuition: Soap-Foam Dual Polyhedra & Concave Stress Bowls',
  'act2_analogy': 'Think of a cluster of soap bubbles resting in a wire frame: every paper-thin '
                  'soap film pulls in perfect physical balance because each bubble cell is '
@@ -255,34 +270,33 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'in the open-source compas-dev/compas framework: the Form Diagram Gamma '
                    '(representing the physical geometry of the unreinforced stone or tile vault '
                    'ribs) and the Reciprocal Force Diagram Gamma_star (a cellular cluster of '
-                   'convex polyhedral cells). Every physical strut e_i in the vault is strictly '
-                   'perpendicular to a corresponding polygonal face f_i_star in the dual force '
-                   'crystal, and the surface area of that polygonal face A_i_star equals the exact '
-                   "axial compressive force N_i flowing through the stone strut. By Gauss's "
-                   'divergence theorem, the outward normal area vectors of any topologically '
-                   'closed polyhedron sum identically to zero—meaning that if every polyhedral '
-                   'cell in Gamma_star closes without gaps, every joint in the three-dimensional '
-                   'building is automatically in exact static equilibrium under applied dead '
-                   'loads. Furthermore, because in-plane membrane stresses correspond to the '
-                   'second partial derivatives of the discrete Airy stress potential (sigma_xx = '
-                   'd^2 Phi / dy^2, sigma_yy = d^2 Phi / dx^2), maintaining strict concavity of '
-                   'the Airy polyhedron (det(H_Phi) > 0) guarantees that tensile stresses cannot '
-                   'develop anywhere across the vaulted shell.',
- 'act2_deepening': 'The mathematical coupling between vault crown rise and the reciprocal force '
-                   'scale reveals why compression-only architecture achieves such dramatic '
-                   'material efficiency. When the rise-to-span ratio f/L is low, the funicular '
-                   'arch must flatten, forcing the horizontal component of thrust to increase '
-                   "according to Hooke's classical inverse relationship. In the dual force "
-                   'polyhedron Gamma_star, this geometric constraint stretches the horizontal '
-                   'faces outward, expanding the dual volume and requiring heavier perimeter '
-                   'tie-rods or buttressing masonry to balance the thrust. As you increase the '
-                   'crown rise toward sixteen percent of the span, the force polyhedron compresses '
-                   'horizontally and elongates vertically, aligning the resultant force vectors '
-                   "directly into the foundation footings. Under Heyman's safe theorem of plastic "
-                   'limit analysis, as long as the compressive stress stays well below stone '
-                   'crushing capacity and the thrust surface remains inside the middle-third kern, '
-                   'the shell cannot form kinematic failure hinges, providing a safety factor '
-                   'exceeding three even under asymmetric live loading.',
+                   'convex polyhedral cells; Akbarzadeh et al. 2015, DOI 10.1016/j.cad.2015.01.006). '
+                   'Every physical strut e_i in the vault is strictly perpendicular to a '
+                   'corresponding polygonal face f_i_star in the dual force crystal, and the '
+                   'surface area of that polygonal face A_i_star equals the exact axial compressive '
+                   "force N_i flowing through the stone strut. By Gauss's divergence theorem, the "
+                   'outward normal area vectors of any closed polyhedron sum identically to zero '
+                   '(||sum F_i|| < 1e-12 kN). Furthermore, in-plane membrane stresses satisfy '
+                   'sigma_xx = Phi_yy, sigma_yy = Phi_xx, and sigma_xy = -Phi_xy on the Airy stress '
+                   'surface Phi(x, y): negative-definite curvature (Phi_xx < 0, Phi_yy < 0, '
+                   'det(H_Phi) = Phi_xx*Phi_yy - Phi_xy^2 > 0) guarantees pure biaxial compression '
+                   'with zero tension across the shell.',
+ 'act2_deepening': 'The REV 1.4 architectural synthesis unites pure-compression structural geometry '
+                   'with passive atmospheric-window radiative thermodynamics and open CAD exchange. '
+                   'Structurally, as crown rise f/L approaches sixteen percent of the span, the '
+                   'reciprocal force polyhedron compresses horizontally and keeps the thrust '
+                   'surface inside the Heyman middle-third kern with safety factor above three. '
+                   'Thermally, coating the high-mass stone or Guastavino tile extrados with a '
+                   'hierarchically porous P(VdF-HFP) polymer film (Mandal et al. 2018, DOI '
+                   '10.1126/science.aat9513; building on Raman et al. 2014 photonic radiative '
+                   'cooling, DOI 10.1038/nature13883) provides solar reflectance R_solar = 0.96 '
+                   'while emitting selectively through the 8–13 micrometer atmospheric transparency '
+                   'window (varepsilon_8-13um = 0.95) directly toward 3 K outer space. At ambient '
+                   'T_a = 303.15 K (30.0 C) under 890 W/m^2 direct sunlight, net cooling flux '
+                   'q_net = q_rad(T_s) - q_atm(T_a) - q_solar*(1 - R_solar) - h_c*(T_a - T_s) '
+                   'reaches 98.43 W/m^2 >= 80 W/m^2, driving an equilibrium sub-ambient drop '
+                   'Delta T_eq = -7.08 C <= -4.5 C and turning the vaulted stone ceiling into a '
+                   'zero-electricity radiant heat sink.',
  'walkthrough': ['Experiment 1 (Reciprocal Polyhedron Scale ζ_dual): Drag Dual Polyhedron Scale '
                  'ζ_dual from 0.50 to 2.00. Watch the reciprocal force crystal Γ^* expand or '
                  'contract as horizontal abutment thrust scales proportionally.',
@@ -295,34 +309,37 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'act4_title': "Act IV — Imagining Humanity's Future: Zero-Rebar Affordable Housing Built from "
                'Local Earth and Stone',
  'act4_human_ai': 'By pairing open-source compas-dev/compas (https://github.com/compas-dev/compas) '
-                  'with AI graph neural networks that map arbitrary room layouts into closed '
-                  'Minkowskian force polyhedra in milliseconds, builders across the Global South '
-                  'and dense cities alike can replace imported steel rebar and high-clinker cement '
-                  'with thin vaulted floors made of local compressed earth blocks, recycled brick, '
-                  "or CNC-cut stone—addressing the World Economic Forum's affordable housing and "
-                  'net-zero construction challenge.',
+                  'and Toolbox X.03 (/toolchain/x03/) neutral STEP AP242, 3MF, DXF, and GLB '
+                  'generators with porous P(VdF-HFP) sky-cooling roof coatings (DOI '
+                  '10.1126/science.aat9513), small studios across hot climates can replace imported '
+                  'steel rebar and energy-intensive air conditioning with passive, radiant-cooled '
+                  'vaulted housing made of local compressed earth, tile, or cut stone.',
  'act4_deepening': 'In forward-looking structural studios, architects and engineering algorithms '
-                   'use 3D graphic statics to reinvent everyday construction from the ground up. '
-                   'Integrating compas-dev/compas with geometric deep learning allows algorithmic '
-                   'agents to automatically generate closed reciprocal force polyhedra for '
-                   'irregular floor layouts in fractions of a second, suggesting optimal rib '
-                   'patterns that follow principal compression stresses around elevator shafts and '
-                   'service ducts. These computational vaults can be prefabricated from '
-                   'dry-stacked interlocking limestone blocks, compressed local earth bricks, or '
-                   'hollow 3D-printed ceramic tiles that snap together without mortar. Significant '
-                   'frontier questions remain at the vanguard of structural research: How can '
-                   'robotic assembly arms with computer-vision feedback place dry-stacked '
-                   'voussoirs with sub-millimeter precision on job sites without temporary '
-                   'falsework? How do dynamic seismic ground motions interact with non-linear '
-                   "contact friction between dry unreinforced stone joints? By uniting Maxwell's "
-                   '1864 projective mathematics with automated robotics, human and machine '
-                   'architects can build fireproof, low-carbon housing that lasts for centuries.',
- 'cf_bridge': 'Standalone Architectural Form-Finding & 3D Graphic Statics Flagship (A.01 + A.02 -> '
-              'A.11): Engineered for architects and structural designers creating compression-only '
-              'shells and low-carbon floor systems.',
+                   'couple 3D graphic statics directly to neutral B-rep CAD exchange and passive '
+                   'building physics. Integrating compas-dev/compas with Toolbox X.03 '
+                   '(/toolchain/x03/) allows small studios to verify closed reciprocal force '
+                   'polyhedra, check Airy stress concavity, and emit watertight STEP AP242, 3MF, '
+                   'DXF, and GLB voussoir geometries in Python without proprietary CAD seats. '
+                   'Pairing unreinforced masonry thermal mass with 8–13 micrometer radiative '
+                   'sky-cooling extrados coatings (Raman et al. 2014, DOI 10.1038/nature13883; '
+                   'Mandal et al. 2018, DOI 10.1126/science.aat9513) sheds over 98 W/m^2 of heat '
+                   'under peak sunlight while storing night coolness inside compression-only stone '
+                   'ribs. Frontier research continues on robotic falsework-free placement, seismic '
+                   'dry-joint rocking dissipation, and weather-durable mineral-polymer sky-cooling '
+                   'glazes for century-scale zero-rebar housing.',
+ 'cf_bridge': 'Standalone Architectural Form-Finding & Passive Sky-Cooling Vault Flagship (A.01 + '
+              'A.02 -> A.11 <-> Toolbox X.03): Engineered for architects and structural designers '
+              'creating compression-only shells and passive radiative envelopes.',
  'sources': ['Akbarzadeh, M., Van Mele, T., & Block, P. (2015). On the equilibrium of funicular '
              'polyhedral frames and convex polyhedral force diagrams. Computer-Aided Design, 63, '
              '118–128. DOI: 10.1016/j.cad.2015.01.006.',
+             'Raman, A. P., Anoma, M. A., Zhu, L., Rephaeli, E., & Fan, S. (2014). Passive '
+             'radiative cooling below ambient air temperature under direct sunlight. Nature, '
+             '515(7528), 540–544. DOI: 10.1038/nature13883.',
+             'Mandal, J., Fu, Y., Overvig, A. C., Jia, M., Sun, K., Shi, N. N., Zhou, H., Xiao, '
+             'X., Yu, N., & Yang, Y. (2018). Hierarchically porous polymer coatings for highly '
+             'efficient passive daytime radiative cooling. Science, 362(6412), 315–319. DOI: '
+             '10.1126/science.aat9513.',
              'Heyman, J. (1995). The Stone Skeleton: Structural Engineering of Masonry '
              'Architecture. Cambridge University Press. DOI: 10.1017/cbo9781107050310.',
              "Calladine, C. R. (1978). Buckminster Fuller's 'Tensegrity' structures and Clerk "
@@ -330,11 +347,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'Solids and Structures, 14(2), 161–172. DOI: 10.1016/0020-7683(78)90052-5.',
              'Block, P., & Ochsendorf, J. (2007). Thrust Network Analysis: A new methodology for '
              'three-dimensional equilibrium. Journal of the IASS, 48(3), 167–173.',
-             'Akbarzadeh, M., Van Mele, T., & Block, P. (2015). On the equilibrium of funicular '
-             'polyhedral frames and convex polyhedral force diagrams. Computer-Aided Design, 63, '
-             '118–128.',
              'Open-Source Stack: COMPAS computational framework for architecture and structures '
-             '(https://github.com/compas-dev/compas).',
+             '(https://github.com/compas-dev/compas) & Informatico Toolbox X.03 (/toolchain/x03/).',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
              'context of citations and classifies their intent using deep learning '
              '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
@@ -394,28 +408,27 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a dry-stacked l
             'ribbed stone-and-tile vault designed via Maxwell 3D polyhedral graphic statics in '
             'COMPAS.'}
 
-DISPATCH = {'kicker': 'FRONTIER COMPUTATIONAL ARCHITECTURE DISPATCH · CONTINUING A.01 & A.02 · '
-           'COMPAS-DEV/COMPAS',
- 'headline': '3D Polyhedral Graphic Statics & Airy Stress Surfaces Slash Floor Slab Carbon by 72% '
-             'With Zero Rebar',
- 'body': "Extending Jacques Heyman's masonry safe theorem (DOI 10.1017/cbo9781107050310) and "
-         "Calladine's Maxwell frame rules (DOI 10.1016/0020-7683(78)90052-5) into 3D reciprocal "
-         'polyhedra via open-source compas-dev/compas lets architects build thin vaulted floors '
-         'from local stone and earth.'}
+DISPATCH = {'kicker': 'FRONTIER COMPUTATIONAL ARCHITECTURE DISPATCH · A.11 ↔ TOOLBOX X.03 · REV 1.4',
+ 'headline': '3D Polyhedral Graphic Statics & 8–13 μm Sky-Cooling Vaults Pair Zero-Rebar Shells '
+             'With Passive Radiant Cooling',
+ 'body': 'Coupling negative-definite Airy stress vaults (DOI 10.1016/j.cad.2015.01.006) and '
+         'Toolbox X.03 STEP AP242 voussoir kits with porous P(VdF-HFP) sky-cooling extrados '
+         'coatings (DOI 10.1038/nature13883, DOI 10.1126/science.aat9513) delivers 98.4 W/m^2 '
+         'daytime cooling (Delta T_eq = -7.08 C) and 72% lower floor carbon.'}
 
 META_3D = ('Maxwell–Airy 3D Concave Stress & Thrust Network Surface',
  'X: Span Coordinate x/L · Z: Transverse Coordinate y/L · Y: Airy Stress Potential Φ(x, y)')
 
 ES_TRANSLATION = {'title_es': 'Estática Gráfica Poliédrica 3D y Superficies de Esfuerzo de Airy: Poliedros '
              'Recíprocos de Maxwell, Bóvedas de Guastavino y Pisos sin Acero',
- 'subtitle_es': 'Continuando los Folios A.01 y A.02: cómo las superficies de esfuerzo de Airy de '
-                'Maxwell (1864) y el software abierto COMPAS diseñan bóvedas a pura compresión con '
-                '70% menos concreto.',
- 'why_es': 'Igual que una espuma de burbujas de jabón se equilibra porque sus celdas están '
-           'cerradas, las bóvedas tabicadas de Guastavino y los pisos funiculares 3D sostienen '
-           'grandes claros con 5 cm de espesor y cero varillas de acero.',
- 'bridge_es': 'La dualidad geométrica entre el diagrama de forma y el poliedro de fuerzas en '
-              'compas-dev/compas certifica equilibrio 3D exacto sin tensión.',
+ 'subtitle_es': 'Continuando los Folios A.01 y A.02 hacia la Caja de Herramientas X.03: bóvedas '
+                'poliédricas a compresión pura con recubrimientos de enfriamiento radiativo diurno '
+                '(8–13 μm) y exportación STEP AP242.',
+ 'why_es': 'Igual que una espuma de burbujas de jabón se equilibra al cerrar sus celdas, las '
+           'bóvedas de piedra y ladrillo sin acero recubiertas con polímero poroso P(VdF-HFP) '
+           'irradian 98.4 W/m² al espacio exterior bajo pleno sol.',
+ 'bridge_es': 'La dualidad de poliedros recíprocos en COMPAS y X.03 une compresión pura sin acero '
+              'con enfriamiento pasivo sub-ambiental (ΔT_eq = −7.08 °C).',
  'plain_es': 'En palabras sencillas, imaginen cómo trabajan los materiales de construcción '
              'comunes. Si intentamos jalar o estirar una piedra o un ladrillo de barro, se agrieta '
              'y se rompe con facilidad. Pero si lo apretamos con fuerza, puede soportar el peso de '
@@ -429,16 +442,14 @@ ES_TRANSLATION = {'title_es': 'Estática Gráfica Poliédrica 3D y Superficies d
              'calcular estas curvas en tres dimensiones, hoy podemos construir pisos resistentes '
              'con ladrillos de tierra local o piedra cortada, eliminando el acero y reduciendo en '
              'más del setenta por ciento el concreto.',
- 'deep_es': 'El fundamento matemático de estas estructuras se basa en la estática gráfica '
-            'tridimensional descubierta por James Clerk Maxwell en 1864 y modernizada por el '
-            'software abierto COMPAS en la Escuela Politécnica Federal de Zúrich. Todo nudo de una '
-            'bóveda de piedra en el diagrama de forma corresponde a una celda poliédrica cerrada '
-            'en el diagrama recíproco de fuerzas. Si cada poliedro dual se cierra perfectamente, '
-            'la suma vectorial de sus caras normales es cero, lo cual certifica un equilibrio '
-            'estático tridimensional exacto sin recurrir a ecuaciones diferenciales complejas. '
-            'Además, al mantener la concavidad estricta de la superficie de esfuerzo de Airy con '
-            'un determinante hessiano positivo, se garantiza que ninguna parte de la bóveda '
-            'trabaje en tensión. Siguiendo el teorema de seguridad de Jacques Heyman, mientras la '
-            'línea de empuje permanezca dentro del tercio medio del espesor, la estructura no '
-            'desarrollará grietas de colapso, permitiendo levantar entrepisos ligeros de solo '
-            'cinco centímetros de espesor con piedra o tierra comprimida sin refuerzo metálico.'}
+ 'deep_es': 'En la edición REV 1.4, la estática gráfica poliédrica tridimensional (Akbarzadeh et '
+            'al. 2015, DOI 10.1016/j.cad.2015.01.006) se acopla con recubrimientos pasivos de '
+            'enfriamiento radiativo diurno en la ventana atmosférica de 8 a 13 micrómetros (Raman '
+            'et al. 2014, DOI 10.1038/nature13883; Mandal et al. 2018, DOI 10.1126/science.aat9513) '
+            'y con el kit de dovelas STEP AP242 de la Herramienta X.03 (/es-mx/toolchain/x03/). '
+            'Cada celda dual cerrada garantiza equilibrio nodal exacto (||∑ F_i|| < 10⁻¹² kN) y el '
+            'hessiano definido negativo de la superficie de Airy (Φ_xx < 0, Φ_yy < 0, det(H_Φ) = '
+            '+1.8416 > 0) certifica compresión pura sin varillas de acero. En el extradós, el '
+            'polímero poroso P(VdF-HFP) con reflectancia solar R_solar = 0.96 y emisividad '
+            'ε_8-13μm = 0.95 evacúa q_net = 98.43 W/m² >= 80 W/m² a T_a = 303.15 K, logrando un '
+            'descenso sub-ambiental de equilibrio ΔT_eq = −7.08 °C.'}

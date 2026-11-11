@@ -14,8 +14,8 @@ CODE = "T.00"
 PAGE: dict = {
     "slug": SLUG,
     "code": CODE,
-    "order_label_en": "Step 1 of 13",
-    "order_label_es": "Paso 1 de 13",
+    "order_label_en": "Step 1 of 14",
+    "order_label_es": "Paso 1 de 14",
     "kicker_en": "Time & Gravity · A track where the open problem is the subject",
     "kicker_es": "Tiempo y Gravedad · Una serie donde el problema abierto es el tema",
     "title_en": "Time & Gravity",
@@ -23,17 +23,17 @@ PAGE: dict = {
     "standfirst_en": (
         "A common intuition is that experience slides along a worldline and that gravity is a slope in the rate of time. "
         "Is any of that physics? Half of it is, and it is among the best-measured facts we have. The other half has no "
-        "variable in any equation. These thirteen pages walk from the measured half to the open half without inventing a step."
+        "variable in any equation. These fourteen pages walk from the measured half to the open half without inventing a step."
     ),
     "standfirst_es": (
         "Una intuición común es que la experiencia se desliza por una línea de mundo y que la gravedad es una pendiente en el "
         "ritmo del tiempo. ¿Algo de eso es física? La mitad sí, y está entre los hechos mejor medidos que tenemos. La otra mitad "
-        "no tiene variable en ninguna ecuación. Estas trece páginas caminan de la mitad medida a la mitad abierta sin inventar un paso."
+        "no tiene variable en ninguna ecuación. Estas catorce páginas caminan de la mitad medida a la mitad abierta sin inventar un paso."
     ),
     "seo": (
-        "Time & Gravity · Thirteen Pages on an Open Problem",
+        "Time & Gravity · Fourteen Pages on an Open Problem",
         "A reading track from the measured slope in the rate of time to the open problem of time in quantum gravity, with instruments, verifiers and a ledger.",
-        "Tiempo y Gravedad · Un Problema Abierto en 13 Páginas",
+        "Tiempo y Gravedad · Un Problema Abierto en 14 Páginas",
         "Una serie que va de la pendiente medida en el ritmo del tiempo al problema abierto del tiempo en la gravedad cuántica, con instrumentos y verificadores.",
     ),
     "reading_time_en": "6 min read",
@@ -63,27 +63,27 @@ PAGE: dict = {
         ),
     },
     "sections": [
-        {"type": "h2", "id": "map", "en": "The thirteen steps, in reading order", "es": "Los trece pasos, en orden de lectura", "short_en": "Map", "short_es": "Mapa"},
+        {"type": "h2", "id": "map", "en": "The fourteen steps, in reading order", "es": "Los catorce pasos, en orden de lectura", "short_en": "Map", "short_es": "Mapa"},
         {"type": "track_map"},
         P(
-            T("The thirteen steps move through four regimes without skipping an intermediate link. Steps 2 to 4 (T.02, T.01, T.03) establish the "
+            T("The fourteen steps move through four regimes without skipping an intermediate link. Steps 2 to 4 (T.02, T.01, T.03) establish the "
               "classical metric clock-rate gradient from laboratory optical clocks, GPS satellites, and torsion-balance equivalence tests. Steps 5 to 7 "
               "(T.04, T.05, T.06) bring quantum superpositions into that gradient: proper-time clock interferometry, the three-channel gravity-entanglement "
               "dispute alongside short-range inverse-square limits, and underground radiation bounds on spontaneous gravitational collapse. Steps 8 to 11 "
               "(T.07, T.08, T.09, T.10) confront the timeless Wheeler–DeWitt constraint and causal horizons: relational Page–Wootters clocks, Rindler–Unruh–Hawking "
-              "thermal wedges, Kerr quasi-normal ringdown spectroscopy, and Page's unitary entropy curve. Steps 12 and 13 (T.11, T.12) ask how a macroscopic "
-              "record forms at all: electromagnetic pointer selection and Quantum Darwinism for ordinary matter that scatters photons, set beside the "
-              "five-sixths of non-relativistic gravitating matter that leaves no electromagnetic record and meets our clocks through spacetime curvature.",
-              "Los trece pasos recorren cuatro regímenes sin saltarse ningún eslabón intermedio. Los pasos 2 a 4 (T.02, T.01, T.03) establecen el "
+              "thermal wedges, Kerr quasi-normal ringdown spectroscopy, and Page's unitary entropy curve. Steps 12 to 14 (T.11, T.12, T.13) ask how a macroscopic "
+              "record forms and where infrared gravity meets gauge theory: electromagnetic pointer selection for ordinary matter, dark-sector clock baselines, and "
+              "Weinberg soft-graviton Ward identities beside gravitational-wave memory and Standard Model anomaly cancellation.",
+              "Los catorce pasos recorren cuatro regímenes sin saltarse ningún eslabón intermedio. Los pasos 2 a 4 (T.02, T.01, T.03) establecen el "
               "gradiente métrico clásico del ritmo de los relojes desde los relojes ópticos de laboratorio, los satélites GPS y las pruebas del principio "
               "de equivalencia en balanza de torsión. Los pasos 5 a 7 (T.04, T.05, T.06) llevan las superposiciones cuánticas a ese gradiente: la "
               "interferometría de relojes en tiempo propio, la disputa de tres canales sobre el entrelazamiento gravitatorio junto a los límites de corto "
               "alcance del inverso del cuadrado, y las cotas subterráneas de radiación sobre el colapso gravitatorio espontáneo. Los pasos 8 a 11 "
               "(T.07, T.08, T.09, T.10) abordan la ligadura atemporal de Wheeler y DeWitt y los horizontes causales: relojes relacionales de Page y Wootters, "
               "cuñas térmicas de Rindler, Unruh y Hawking, espectroscopía de ringdown cuasinormal de Kerr y la curva unitaria de entropía de Page. Los pasos "
-              "12 y 13 (T.11, T.12) preguntan cómo llega a formarse un registro macroscópico: la selección electromagnética de estados puntero y el darwinismo "
-              "cuántico para la materia ordinaria que dispersa fotones, frente a los cinco sextos de materia gravitante no relativista que no dejan huella "
-              "electromagnética y solo se encuentran con nuestros relojes mediante la curvatura del espaciotiempo."),
+              "12 a 14 (T.11, T.12, T.13) preguntan cómo se forma un registro macroscópico y dónde la gravedad infrarroja toca las teorías gauge: la selección "
+              "electromagnética de estados puntero, las líneas base de relojes del sector oscuro y las identidades de gravitones blandos de Weinberg junto a la "
+              "memoria gravitacional y la cancelación de anomalías del Modelo Estándar."),
         ),
         {"type": "h2", "id": "contract", "en": "How to read a T page", "es": "Cómo leer una página T", "short_en": "Labels", "short_es": "Etiquetas"},
         P(

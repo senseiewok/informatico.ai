@@ -1,0 +1,152 @@
+{
+  "folio_id": "T.13",
+  "title": "Where Infrared Gravity Meets Gauge Theory",
+  "construction": "Weinberg soft theorems: sum_a eta_a q_a = 0 (s=1), sum_a eta_a kappa_a p_a^mu = 0 => kappa_a = kappa (s=2), sum_a eta_a g_a p_a^mu p_a^nu = 0 => g_a = 0 (s>=3); Memory holonomy: Delta h_char = 2 G E_rad / (c^4 D_L), Delta L / L_0 = (1/2) Delta h_+^mem; Anomaly cancellation (6Y): Tr[6Y] = 0, Tr[SU(3)^2(6Y)] = 0, Tr[SU(2)^2(6Y)] = N_c - 3, Tr[(6Y)^3] = -54(N_c - 3)",
+  "clean": {
+    "step": "T.13",
+    "planted_defect": false,
+    "constants": {
+      "c_m_s": 299792458.0,
+      "g_si": 6.6743e-11,
+      "hbar_j_s": 1.054571817e-34,
+      "m_sun_kg": 1.98847e+30,
+      "mpc_m": 3.08567758149e+22,
+      "kappa_si": 9.11404946847e-22
+    },
+    "soft_theorems": {
+      "e_cm_gev": 5.17027241869,
+      "momentum_conservation_norm_gev": 0.0,
+      "s1_charge_ward_residual": 0.0,
+      "s2_kappa_ratio_e_over_p": 1.0,
+      "s2_ward_vector_rel_norm": 0.0,
+      "s2_eta_wep_implied": 0.0,
+      "s2_three_momenta_gram_det": 464.374938154,
+      "s3_four_tensor_gram_det": 21277795.6704,
+      "s3_ward_tensor_rel_norm": 0.0,
+      "s3_universal_unit_obstruction_norm": 0.367198923483
+    },
+    "memory_benchmarks": {
+      "gw150914_fiducial": {
+        "e_rad_solar": 3.0,
+        "e_rad_j": 5.36144313079e+47,
+        "d_l_mpc": 410.0,
+        "d_l_m": 1.26512780841e+25,
+        "iota_rad": 1.57079632679,
+        "inclination_factor": 0.708333333333,
+        "arm_length_m": 4000.0,
+        "delta_h_char": 7.00325934447e-22,
+        "delta_h_plus_inclined": 4.96064203566e-22,
+        "delta_l_char_m": 1.40065186889e-18,
+        "delta_l_inclined_m": 9.92128407133e-19
+      },
+      "gw250114_fiducial": {
+        "e_rad_solar": 3.0,
+        "e_rad_j": 5.36144313079e+47,
+        "d_l_mpc": 400.0,
+        "d_l_m": 1.2342710326e+25,
+        "iota_rad": 1.57079632679,
+        "inclination_factor": 0.708333333333,
+        "arm_length_m": 4000.0,
+        "delta_h_char": 7.17834082808e-22,
+        "delta_h_plus_inclined": 5.08465808655e-22,
+        "delta_l_char_m": 1.43566816562e-18,
+        "delta_l_inclined_m": 1.01693161731e-18
+      },
+      "gw150914_on_lisa_arm": {
+        "e_rad_solar": 3.0,
+        "e_rad_j": 5.36144313079e+47,
+        "d_l_mpc": 410.0,
+        "d_l_m": 1.26512780841e+25,
+        "iota_rad": 1.57079632679,
+        "inclination_factor": 0.708333333333,
+        "arm_length_m": 2500000000.0,
+        "delta_h_char": 7.00325934447e-22,
+        "delta_h_plus_inclined": 4.96064203566e-22,
+        "delta_l_char_m": 8.75407418058e-13,
+        "delta_l_inclined_m": 6.20080254458e-13
+      },
+      "flux_quadrature": {
+        "dh_quadrature": 7.00325934447e-22,
+        "dh_closed_form": 7.00325934447e-22,
+        "quadrature_rel_err": 1.34279688129e-16,
+        "quadrature_window_rel_err": 1.34279688129e-16
+      }
+    },
+    "anomaly_cancellation": {
+      "active_generation": {
+        "n_c": 3,
+        "include_right_electron": true,
+        "tr_grav_6y": 0,
+        "tr_su3_sq_6y": 0,
+        "tr_su2_sq_6y": 0,
+        "tr_u1_cubic_6y": 0,
+        "all_anomalies_cancel": true
+      },
+      "without_right_electron_knockout": {
+        "n_c": 3,
+        "include_right_electron": false,
+        "tr_grav_6y": -6,
+        "tr_su3_sq_6y": 0,
+        "tr_su2_sq_6y": 0,
+        "tr_u1_cubic_6y": -216,
+        "all_anomalies_cancel": false
+      },
+      "nc_scan": [
+        {
+          "n_c": 1,
+          "include_right_electron": true,
+          "tr_grav_6y": 0,
+          "tr_su3_sq_6y": 0,
+          "tr_su2_sq_6y": -2,
+          "tr_u1_cubic_6y": 108,
+          "all_anomalies_cancel": false
+        },
+        {
+          "n_c": 2,
+          "include_right_electron": true,
+          "tr_grav_6y": 0,
+          "tr_su3_sq_6y": 0,
+          "tr_su2_sq_6y": -1,
+          "tr_u1_cubic_6y": 54,
+          "all_anomalies_cancel": false
+        },
+        {
+          "n_c": 3,
+          "include_right_electron": true,
+          "tr_grav_6y": 0,
+          "tr_su3_sq_6y": 0,
+          "tr_su2_sq_6y": 0,
+          "tr_u1_cubic_6y": 0,
+          "all_anomalies_cancel": true
+        },
+        {
+          "n_c": 4,
+          "include_right_electron": true,
+          "tr_grav_6y": 0,
+          "tr_su3_sq_6y": 0,
+          "tr_su2_sq_6y": 1,
+          "tr_u1_cubic_6y": -54,
+          "all_anomalies_cancel": false
+        },
+        {
+          "n_c": 5,
+          "include_right_electron": true,
+          "tr_grav_6y": 0,
+          "tr_su3_sq_6y": 0,
+          "tr_su2_sq_6y": 2,
+          "tr_u1_cubic_6y": -108,
+          "all_anomalies_cancel": false
+        }
+      ]
+    }
+  },
+  "planted_defect_snapshot": {
+    "s2_ward_vector_rel_norm": 3.45193894608e-06,
+    "tr_su2_sq_6y": -1,
+    "tr_u1_cubic_6y": 54,
+    "all_anomalies_cancel": false
+  },
+  "lean_companion": "skills/timegravity/t13/HolonomySoftAnomaly.lean",
+  "boundary_en": "Nothing on this page is a theory of everything, and this site proposes none. Every claim carries one of six labels, each tied to a ledger row: MEASURED, DERIVED, BOUND, PROPOSED, OPEN, or SINGLE RESULT. Preprints never rise above PROPOSED. Each page ends with one open question that the next page takes up.",
+  "license": "CC0-1.0 / CC-BY-4.0"
+}

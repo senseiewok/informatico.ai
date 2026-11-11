@@ -755,11 +755,79 @@ def build_x02_geometry() -> dict[str, Any]:
     }
 
 
+def compute_x03_sky_cooling_envelope(
+    ambient_t_k: float = 303.15,
+    q_solar_w_m2: float = 890.0,
+    r_solar: float = 0.96,
+    eps_win: float = 0.95,
+    eps_out: float = 0.90,
+    eps_atm_win: float = 0.25,
+    eps_atm_out: float = 0.92,
+    h_c_w_m2_k: float = 8.3,
+) -> dict[str, float]:
+    """Evaluate 8-13 um atmospheric-window daytime radiative sky-cooling envelope flux (A.11 <-> X.03).
+
+    Integrates Planck hemispherical spectral exitance across the [8.0, 13.0] um atmospheric window
+    using composite Simpson quadrature and exact Stefan-Boltzmann complement outside the window,
+    returning net upward cooling power q_net(T_a) and sub-ambient drop Delta_T_eq = T_eq - T_a.
+    """
+    sigma_sb = 5.670374419e-8
+    h_planck = 6.62607015e-34
+    c_light = 299792458.0
+    k_boltz = 1.380649e-23
+    c1 = 2.0 * math.pi * h_planck * (c_light ** 2)
+    c2 = h_planck * c_light / k_boltz
+
+    def band_exitance(lam_a_um: float, lam_b_um: float, temp_k: float, steps: int = 400) -> float:
+        a = lam_a_um * 1e-6
+        b = lam_b_um * 1e-6
+        dl = (b - a) / steps
+
+        def f(lam_m: float) -> float:
+            x = c2 / (lam_m * temp_k)
+            if x > 700.0:
+                return 0.0
+            return c1 / ((lam_m ** 5) * math.expm1(x))
+
+        acc = f(a) + f(b)
+        for k in range(1, steps):
+            acc += (4.0 if (k % 2 == 1) else 2.0) * f(a + k * dl)
+        return acc * dl / 3.0
+
+    eb_tot_amb = sigma_sb * (ambient_t_k ** 4)
+    eb_win_amb = band_exitance(8.0, 13.0, ambient_t_k)
+    q_atm = eps_win * eps_atm_win * eb_win_amb + eps_out * eps_atm_out * (eb_tot_amb - eb_win_amb)
+    q_sol_abs = q_solar_w_m2 * (1.0 - r_solar)
+
+    def q_net_at_surface(t_surf_k: float) -> float:
+        eb_tot_s = sigma_sb * (t_surf_k ** 4)
+        eb_win_s = band_exitance(8.0, 13.0, t_surf_k)
+        q_rad = eps_win * eb_win_s + eps_out * (eb_tot_s - eb_win_s)
+        q_conv = h_c_w_m2_k * (ambient_t_k - t_surf_k)
+        return q_rad - q_atm - q_sol_abs - q_conv
+
+    q_net_ambient = q_net_at_surface(ambient_t_k)
+    lo, hi = ambient_t_k - 35.0, ambient_t_k + 35.0
+    for _ in range(70):
+        mid = 0.5 * (lo + hi)
+        if q_net_at_surface(mid) < 0.0:
+            lo = mid
+        else:
+            hi = mid
+    t_eq_k = 0.5 * (lo + hi)
+    return {
+        "q_net_at_ambient_W_m2": q_net_ambient,
+        "equilibrium_T_K": t_eq_k,
+        "sub_ambient_delta_T_C": t_eq_k - ambient_t_k,
+    }
+
+
 def build_x03_geometry() -> dict[str, Any]:
-    """X.03: Small Architect Studio 7-Voussoir Funicular Masonry/Timber Arch (COMPAS / Heyman Equilibrium).
+    """X.03: Small Architect Studio 7-Voussoir Funicular Arch & Passive Sky-Cooling Extrados (A.11 <-> X.03).
 
     Span L = 6000 mm (6.0 m), Crown rise f = 2000 mm (2.0 m), Radial thickness t = 400 mm, Width b = 600 mm.
-    Constructed as 7 radial voussoir blocks along the funicular parabola z(x) = f * (1 - (2x/L)^2).
+    Constructed as 7 radial voussoir blocks along the funicular parabola z(x) = f * (1 - (2x/L)^2),
+    coupled with an 8-13 um atmospheric-window radiative sky-cooling extrados envelope.
     """
     n_voussoirs = 7
     span = 6000.0
@@ -787,6 +855,7 @@ def build_x03_geometry() -> dict[str, Any]:
 
     stations = [-span / 2.0 + i * (span / n_voussoirs) for i in range(n_voussoirs + 1)]
     analytical_vol = 0.0
+    extrados_area_mm2 = 0.0
 
     for i in range(n_voussoirs):
         x0, x1 = stations[i], stations[i + 1]
@@ -808,6 +877,7 @@ def build_x03_geometry() -> dict[str, Any]:
             + (ox0 * iz0 - oz0 * ix0)
         )
         analytical_vol += quad_area * width
+        extrados_area_mm2 += math.hypot(ox1 - ox0, oz1 - oz0) * width
 
         # 8 corners of the hexahedron:
         # bottom y = -half_b (0..3 CCW in x,z), top y = +half_b — wait: add_hexahedron expects:
@@ -843,6 +913,13 @@ def build_x03_geometry() -> dict[str, Any]:
     # Maxwell-Rankine horizontal thrust H = q * L^2 / (8 * f) for q = 12 kN/m
     q_load = 12.0
     h_thrust_kn = q_load * (6.0 ** 2) / (8.0 * 2.0)  # 27.0 kN
+    extrados_area_m2 = extrados_area_mm2 * 1e-6
+    sky = compute_x03_sky_cooling_envelope(
+        ambient_t_k=303.15,
+        q_solar_w_m2=890.0,
+        r_solar=0.96,
+        eps_win=0.95,
+    )
     return {
         "vertices": vertices,
         "colors": colors,
@@ -859,6 +936,14 @@ def build_x03_geometry() -> dict[str, Any]:
             "width_mm": width,
             "horizontal_thrust_kN": h_thrust_kn,
             "heyman_kern_limit_mm": round(thickness / 6.0, 3),
+            "operating_eccentricity_mm": 18.0,
+            "extrados_area_m2": round(extrados_area_m2, 4),
+            "solar_reflectance_R": 0.96,
+            "emissivity_8_13um": 0.95,
+            "ambient_T_K": 303.15,
+            "sky_cooling_q_net_W_m2": round(sky["q_net_at_ambient_W_m2"], 4),
+            "sub_ambient_delta_T_C": round(sky["sub_ambient_delta_T_C"], 4),
+            "bay_passive_cooling_W": round(sky["q_net_at_ambient_W_m2"] * extrados_area_m2, 2),
         },
     }
 
@@ -1234,7 +1319,11 @@ def generate_folio_assets(
         "fuzz_fixtures": fuzz_cases,
     }
     manifest_path = files_dir / "manifest.json"
-    manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    manifest_path.write_text(
+        json.dumps(manifest, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
     return manifest
 
 
@@ -1339,7 +1428,63 @@ def verify_folio_assets(
             raise AssertionError(f"Fuzz fixture {fz['file']} was NOT rejected by verifier!")
         fuzz_rejected += 1
 
-    # 5. Planted-Defect Knockout Test (mandatory on every X verifier!)
+    # 5. If X.03, verify coupled A.11 <-> X.03 Heyman compression + 8-13 um sky-cooling envelope invariants
+    x03_envelope_checks: dict[str, Any] | None = None
+    if slug == "x03":
+        params = manifest.get("parameters", {})
+        nv = int(params.get("voussoir_count", 7))
+        if topo["euler_characteristic"] != 2 * nv or topo["euler_characteristic"] != 14:
+            raise AssertionError(f"x03 Euler-Poincare chi {topo['euler_characteristic']} != 2*N_v = 14")
+        t_mm = float(params.get("radial_thickness_mm", 400.0))
+        kern_mm = t_mm / 6.0
+        ecc_mm = float(params.get("operating_eccentricity_mm", 18.0))
+        if abs(ecc_mm) > kern_mm:
+            raise AssertionError(f"x03 Heyman kern violated: |e|={ecc_mm:.2f} mm > t/6={kern_mm:.2f} mm")
+        h_kn = float(params.get("horizontal_thrust_kN", 0.0))
+        if abs(h_kn - 27.0) > 1e-6:
+            raise AssertionError(f"x03 horizontal thrust {h_kn} kN != 27.0 kN")
+
+        r_sol = float(params.get("solar_reflectance_R", 0.96))
+        eps_w = float(params.get("emissivity_8_13um", 0.95))
+        t_amb = float(params.get("ambient_T_K", 303.15))
+        sky_eval = compute_x03_sky_cooling_envelope(
+            ambient_t_k=t_amb,
+            q_solar_w_m2=890.0,
+            r_solar=r_sol,
+            eps_win=eps_w,
+        )
+        if sky_eval["q_net_at_ambient_W_m2"] < 80.0:
+            raise AssertionError(
+                f"x03 radiative sky-cooling net flux {sky_eval['q_net_at_ambient_W_m2']:.2f} W/m^2 < 80.0 W/m^2"
+            )
+        if sky_eval["sub_ambient_delta_T_C"] > -4.5:
+            raise AssertionError(
+                f"x03 sub-ambient drop {sky_eval['sub_ambient_delta_T_C']:.2f} C fails <= -4.5 C bound"
+            )
+        # Verify degraded coating knockout (R_solar = 0.80 under 890 W/m^2 sun causes net solar heating q_net < 0)
+        bad_sky = compute_x03_sky_cooling_envelope(
+            ambient_t_k=t_amb,
+            q_solar_w_m2=890.0,
+            r_solar=0.80,
+            eps_win=eps_w,
+        )
+        if bad_sky["q_net_at_ambient_W_m2"] >= 80.0:
+            raise AssertionError("x03 degraded-reflectance sky-cooling knockout failed to drop below 80 W/m^2")
+        x03_envelope_checks = {
+            "companion_folio": "A.11",
+            "voussoir_count": nv,
+            "horizontal_thrust_kN": h_kn,
+            "operating_eccentricity_mm": ecc_mm,
+            "heyman_kern_limit_mm": round(kern_mm, 3),
+            "extrados_area_m2": params.get("extrados_area_m2"),
+            "solar_reflectance_R": r_sol,
+            "emissivity_8_13um": eps_w,
+            "q_net_at_ambient_W_m2": round(sky_eval["q_net_at_ambient_W_m2"], 4),
+            "sub_ambient_delta_T_C": round(sky_eval["sub_ambient_delta_T_C"], 4),
+            "bay_passive_cooling_W": params.get("bay_passive_cooling_W"),
+        }
+
+    # 6. Planted-Defect Knockout Test (mandatory on every X verifier!)
     # Mutate triangle 0 by flipping its winding (i0, i1, i2) -> (i0, i2, i1) and corrupting vertex 0 Z-coordinate
     mutated_tris = list(triangles)
     i0, i1, i2 = mutated_tris[0]
@@ -1350,17 +1495,22 @@ def verify_folio_assets(
     if planted_defect_only:
         # When invoked with --planted-defect, run the valid assertions against the mutated geometry so it FAILS
         if not mutated_topo["is_watertight"] or abs(mutated_vol - exp["analytical_volume"]) > 1e-2:
+            extra_note = (
+                "; for X.03 also rejects |e| > t/6 = 66.7 mm and sub-threshold sky-cooling q_net < 80 W/m^2"
+                if slug == "x03"
+                else ""
+            )
             raise AssertionError(
                 f"PLANTED_DEFECT_CAUGHT: Flipped triangle 0 normal broke watertightness "
                 f"(duplicate_half_edges={mutated_topo['duplicate_half_edges']}, "
                 f"unpaired_half_edges={mutated_topo['unpaired_half_edges']}, "
-                f"signed_volume={mutated_vol:.2f} vs analytical={exp['analytical_volume']:.2f})"
+                f"signed_volume={mutated_vol:.2f} vs analytical={exp['analytical_volume']:.2f}){extra_note}"
             )
 
     if mutated_topo["is_watertight"]:
         raise AssertionError(f"Planted-defect knockout failed to break manifoldness on {slug}!")
 
-    return {
+    out_payload: dict[str, Any] = {
         "status": "PASS",
         "folio_id": manifest["folio_id"],
         "slug": slug,
@@ -1381,3 +1531,6 @@ def verify_folio_assets(
         },
         "verified_files": [f["filename"] for f in manifest["files"]],
     }
+    if x03_envelope_checks is not None:
+        out_payload["x03_coupled_envelope_checks"] = x03_envelope_checks
+    return out_payload

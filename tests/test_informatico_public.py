@@ -19,11 +19,11 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_all_48_skills_and_python_verifiers_exist_and_pass(self) -> None:
         skill_files = list(SKILLS.glob("*/*/SKILL.md"))
         py_files = list(SKILLS.glob("*/*/verify_*.py"))
-        self.assertEqual(len(skill_files), 83)
-        self.assertEqual(len(py_files), 88)  # T.05 carries five verifiers, T.06 carries two + 11 Cross-Scale Essay verifiers
+        self.assertEqual(len(skill_files), 84)
+        self.assertEqual(len(py_files), 89)  # T.05 carries five verifiers, T.06 carries two + T.01-T.13 + 11 Cross-Scale Essay verifiers
         res = subprocess.run([sys.executable, "-X", "utf8", str(SKILLS / "verify_all_48_folios.py")], capture_output=True, text=True, encoding="utf-8", timeout=240)
         self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
-        self.assertIn("PASS: All 88/88", res.stdout)
+        self.assertIn("PASS: All 89/89", res.stdout)
 
     def test_all_6_bounty_and_physics_discovery_harnesses_pass(self) -> None:
         res = subprocess.run([sys.executable, "-X", "utf8", str(BOUNTIES / "run_all_bounties.py")], capture_output=True, text=True, encoding="utf-8", timeout=30)
@@ -38,7 +38,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_106_bilingual_pages_and_bounty_crucible_mounted(self) -> None:
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 186)
+        self.assertEqual(len(locs), 188)
         self.assertTrue((RESEARCH / "about" / "index.html").is_file())
         self.assertTrue((RESEARCH / "es-mx" / "about" / "index.html").is_file())
         hub_html = (RESEARCH / "index.html").read_text(encoding="utf-8")
@@ -83,7 +83,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
         for p in ROOT.rglob("*"):
             if not p.is_file() or ".git" in p.parts or "__pycache__" in p.parts or p.suffix in (".jpg", ".png", ".mp3", ".woff2", ".ico", ".pyc", ".webp", ".glb", ".3mf"):
                 continue
-            if p.name in ("test_informatico_public.py", ".gitignore"):
+            if p.name in ("test_informatico_public.py", ".gitignore", "deploy.local.json"):
                 continue
             rel = p.relative_to(ROOT)
             txt = p.read_text(encoding="utf-8")

@@ -12,7 +12,15 @@
     "radial_thickness_mm": 400.0,
     "width_mm": 600.0,
     "horizontal_thrust_kN": 27.0,
-    "heyman_kern_limit_mm": 66.667
+    "heyman_kern_limit_mm": 66.667,
+    "operating_eccentricity_mm": 18.0,
+    "extrados_area_m2": 4.6918,
+    "solar_reflectance_R": 0.96,
+    "emissivity_8_13um": 0.95,
+    "ambient_T_K": 303.15,
+    "sky_cooling_q_net_W_m2": 98.4273,
+    "sub_ambient_delta_T_C": -7.0775,
+    "bay_passive_cooling_W": 461.8
   },
   "tool_versions": {
     "python": "3.x-stdlib",
@@ -43,26 +51,26 @@
     {
       "filename": "x03_artifact.glb",
       "format": "GLB (glTF 2.0 Binary)",
-      "bytes": 5092,
-      "sha256": "6969bec819b1820eb7907823a6bf2684fcf49557f46382d27db3f1b9c647c01d"
+      "bytes": 5320,
+      "sha256": "24b2c319dba8cb61272c009d18649b93d854e5e221e96e018a3f31f6639c185b"
     },
     {
       "filename": "x03_artifact.step",
       "format": "STEP AP242 (ISO 10303-242)",
-      "bytes": 32748,
-      "sha256": "7f4a49d3f89d11ec3d0f7f77fba90d544628278b945d7b1ef777f13f2bca96ae"
+      "bytes": 32991,
+      "sha256": "7391a59c2dbb843a397ecd2d6e4b40f7bd1382659f76f2b495b4973b9670530a"
     },
     {
       "filename": "x03_artifact.3mf",
       "format": "3MF Core 1.2.3",
-      "bytes": 2347,
-      "sha256": "67f00ce8181b7f6d535f37644a934abd96fcc731f494fa5d899803344caec24f"
+      "bytes": 2494,
+      "sha256": "9a13b8033e558b108f1c5ef8f5b7b63b7006b04ba675e5f7c69d98a50dd49b04"
     },
     {
       "filename": "x03_artifact.dxf",
       "format": "DXF (Clean-Room ASCII R2000)",
-      "bytes": 4534,
-      "sha256": "6d58bf6296d3929bb91efca7ac724bc8e8652b2a0ef7533ed43d7d17709fc853"
+      "bytes": 4777,
+      "sha256": "f0bd81d74dc627ded2f39c3af7552fa8e95b9f7bdf2232c8d7ae1111fb422b04"
     }
   ],
   "fuzz_fixtures": []

@@ -32,8 +32,8 @@ PAGE: dict = {
     "slug": SLUG,
     "code": CODE,
     "date": "2026-11-10",
-    "order_label_en": "Step 13 of 13",
-    "order_label_es": "Paso 13 de 13",
+    "order_label_en": "Step 13 of 14",
+    "order_label_es": "Paso 13 de 14",
     "kicker_en": "Time & Gravity · T.12 · When the electromagnetic bath is silent, proper time still couples to every stress-energy tensor",
     "kicker_es": "Tiempo y Gravedad · T.12 · Cuando el baño electromagnético guarda silencio, el tiempo propio aún se acopla a todo tensor de energía-momento",
     "title_en": "Two Clocks That Only Meet in Gravity",
@@ -235,7 +235,7 @@ PAGE: dict = {
               "macroscópicas —órdenes de magnitud más allá de los pisos de ruido actuales de laboratorio— y se mantiene como PROPUESTO."),
         ),
         {"type": "spine"},
-        {"type": "h2", "id": "open", "en": "III · Where the thirteen-step track closes", "es": "III · Donde cierra la serie de trece pasos", "short_en": "III · Not said", "short_es": "III · No dicho"},
+        {"type": "h2", "id": "open", "en": "III · From dark-sector clocks to the infrared gauge–gravity bridge", "es": "III · De los relojes del sector oscuro al puente infrarrojo entre gravedad y campos gauge", "short_en": "III · Not said", "short_es": "III · No dicho"},
         P(
             C("OPEN", [PLANCK, CAR21],
               "What particles or fields make up the 84.3% of non-relativistic matter measured by gravitational lensing and the cosmic microwave "
@@ -244,12 +244,13 @@ PAGE: dict = {
               "Qué partículas o campos componen el 84.3% de la materia no relativista medida por lente gravitacional y por el fondo cósmico de "
               "microondas —y si ese sector se encuentra alguna vez con la materia ordinaria mediante algo distinto de la curvatura del espaciotiempo "
               "g_{μν}— sigue siendo una pregunta abierta."),
-            T(" This is the closing page of the thirteen-step track, and it returns to the hub's single thread: a clock measures proper time "
-              "along its worldline, the electromagnetic bath selects and broadcasts the pointer states of everything that scatters light, and "
-              "gravity tilts the rate of proper time for everything that carries energy—seen or unseen.",
-              " Esta es la página final de la serie de trece pasos, y regresa al hilo conductor del punto de partida: un reloj mide el tiempo propio "
-              "a lo largo de su línea de mundo, el baño electromagnético selecciona y difunde los estados puntero de todo lo que dispersa la luz, y "
-              "la gravedad inclina el ritmo del tiempo propio para todo lo que porta energía, visible o invisible."),
+            T(" This penultimate step of the fourteen-step track hands off to T.13 (Where Infrared Gravity Meets Gauge Theory) while holding to the "
+              "hub's single thread: a clock measures proper time along its worldline, the electromagnetic bath selects and broadcasts the pointer "
+              "states of everything that scatters light, and gravity tilts the rate of proper time for everything that carries energy—seen or unseen.",
+              " Este penúltimo paso de la serie de catorce pasos da paso a T.13 (Donde la Gravedad Infrarroja Toca las Teorías Gauge) manteniendo el "
+              "hilo conductor del punto de partida: un reloj mide el tiempo propio a lo largo de su línea de mundo, el baño electromagnético selecciona "
+              "y difunde los estados puntero de todo lo que dispersa la luz, y la gravedad inclina el ritmo del tiempo propio para todo lo que porta "
+              "energía, visible o invisible."),
         ),
         {"type": "change_box",
          "items": [
