@@ -886,9 +886,11 @@ class TimeGravityHumansAndPlatesTests(unittest.TestCase):
 
     def test_every_page_honors_the_humans_with_lineage_and_apparatus_medallions(self) -> None:
         slugs = ("", "t01", "t02", "t03", "t04", "t05", "t06", "t07", "t08", "t09", "t10", "t11", "t12")
+        html_files: list[Path] = []
         for slug in slugs:
             en = (TG / slug / "index.html") if slug else (TG / "index.html")
             es = (TG_ES / slug / "index.html") if slug else (TG_ES / "index.html")
+            html_files.extend([en, es])
             self.assertEqual(labels_of(en), labels_of(es), f"{slug or 'hub'}: EN/ES claim labels diverged")
             en_jump = ">The Humans</a>" if slug else ">Humans (1905–2026)</a>"
             es_jump = ">Las Personas</a>" if slug else ">Personas (1905–2026)</a>"
@@ -901,11 +903,19 @@ class TimeGravityHumansAndPlatesTests(unittest.TestCase):
                 self.assertGreaterEqual(txt.count('class="tg-human-card"'), 3, f"{path} has fewer than 3 human cards")
                 self.assertGreaterEqual(txt.count('class="tg-apparatus-svg"'), 3, f"{path} lacks apparatus SVG medallions")
                 self.assertIn(jump_label, txt, f"{path} lacks #humans jump pill")
+        self.assertEqual(len(html_files), 26)
         for app in ("rindler-wedge", "horn-antenna", "sonic-horizon"):
             self.assertIn(f'data-apparatus="{app}"', (TG / "t08" / "index.html").read_text(encoding="utf-8"))
         for app in ("kerr-ergosphere", "continued-fraction", "ligo-interferometer"):
             self.assertIn(f'data-apparatus="{app}"', (TG / "t09" / "index.html").read_text(encoding="utf-8"))
         self.assertIn('data-apparatus="ligo-interferometer"', (TG / "t10" / "index.html").read_text(encoding="utf-8"))
+        for root in (TG, TG_ES):
+            t11_txt = (root / "t11" / "index.html").read_text(encoding="utf-8")
+            for app in ("pointer-darwinism", "photon-scattering", "cavity-buckminster"):
+                self.assertIn(f'data-apparatus="{app}"', t11_txt)
+            t12_txt = (root / "t12" / "index.html").read_text(encoding="utf-8")
+            for app in ("bullet-cluster-lensing", "dark-clock-comparison", "underground-crystal"):
+                self.assertIn(f'data-apparatus="{app}"', t12_txt)
 
     def test_every_step_has_its_own_bespoke_plate_d_visual_intuition_bridge(self) -> None:
         seen_titles: set[str] = set()
