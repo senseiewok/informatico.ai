@@ -380,6 +380,60 @@ def generate_essay_plates() -> dict[str, str]:
     p6_bytes = _encode_png(w, h, b6)
     (PLATES_DIR / "essay06.png").write_bytes(p6_bytes)
     hashes["essay06"] = hashlib.sha256(p6_bytes).hexdigest()[:8]
+
+    # Plate 7: essay07.png (Parallel Horizon & Quantum Island: 1.547σ -> 2.211σ ceiling + D=75µm island + 2.04K valley + 90° '+' null)
+    b7 = _make_canvas(w, h, stone)
+    _fill_rect(b7, w, h, 36, 36, 1164, 594, vellum)
+    # Left panel: Parallel horizon expansion curve from 51.2 µm to 73.14 µm ceiling + green D = 75 µm island above 28.3 µm Casimir wall
+    lx0, ly0, lw, lh = 95, 515, 455, 390
+    # Quantum island corridor above 73.14 µm ceiling (y = 200..125)
+    _fill_rect(b7, w, h, lx0, 125, lx0 + lw, 205, (215, 236, 224), 0.72)
+    _draw_line(b7, w, h, lx0, ly0, lx0 + lw, ly0, 2.8, ink)
+    _draw_line(b7, w, h, lx0, ly0, lx0, 125, 2.8, ink)
+    # Casimir + 2R floor line (y = 415)
+    _draw_line(b7, w, h, lx0, 415, lx0 + lw, 415, 3.0, sienna, 0.9)
+    # 73.14 µm asymptotic parallel ceiling line (y = 205)
+    _draw_line(b7, w, h, lx0, 205, lx0 + lw, 205, 3.2, minium, 0.92)
+    # Monotone parallel horizon curve rising from 51.18 µm (y = 300) toward 73.14 µm (y = 205)
+    prev_hx, prev_hy = float(lx0), 300.0
+    for step_i in range(1, 33):
+        u = step_i / 32.0
+        hx = lx0 + u * lw
+        frac = (u * u) / (0.14 + u * u)
+        hy = 300.0 - 92.0 * frac
+        _draw_line(b7, w, h, prev_hx, prev_hy, hx, hy, 4.6, minium)
+        prev_hx, prev_hy = hx, hy
+    # D = 60 µm naive trap point (minium warning ring) vs D = 75 µm quantum island benchmark disc (verdigris + prussian)
+    _draw_disc(b7, w, h, lx0 + 0.62 * lw, 262.0, 9.0, minium)
+    _draw_disc(b7, w, h, lx0 + 0.72 * lw, 168.0, 13.5, verdigris)
+    _draw_ring(b7, w, h, lx0 + 0.72 * lw, 168.0, 22.0, 3.0, prussian)
+    # Center divider
+    _draw_line(b7, w, h, 600, 54, 600, 576, 3.0, ink, 0.85)
+    # Right-top: 2.04 K isobaric cryogenic valley curve (T^-1/2 gas + T^6 photon)
+    rx0, ry0, rw = 665, 295, 435
+    _draw_line(b7, w, h, rx0, ry0, rx0 + rw, ry0, 2.4, rule)
+    pv_x, pv_y = float(rx0), 175.0
+    for k_i in range(1, 33):
+        u = k_i / 32.0
+        tk = 0.7 + 2.5 * u
+        val = 0.55 * (tk ** -0.5) + 0.012 * (tk ** 3.8)
+        vx = rx0 + u * rw
+        vy = ry0 - min(165.0, max(22.0, val * 155.0))
+        _draw_line(b7, w, h, pv_x, pv_y, vx, vy, 4.0, prussian)
+        pv_x, pv_y = vx, vy
+    # Valley minimum marker around T* = 2.04 K (u ~ 0.54)
+    _draw_disc(b7, w, h, rx0 + 0.54 * rw, 228.0, 10.5, sienna)
+    # Right-bottom: Midpoint-centred '+' 90° orthogonal null cross geometry
+    ncx, ncy, arm = 882.0, 435.0, 82.0
+    _draw_ring(b7, w, h, ncx, ncy, arm, 2.4, rule, 0.9)
+    _draw_line(b7, w, h, ncx - arm, ncy, ncx + arm, ncy, 4.8, prussian)
+    _draw_line(b7, w, h, ncx, ncy - arm, ncx, ncy + arm, 4.8, verdigris)
+    for dx_p, dy_p, col_p in ((-arm, 0.0, prussian), (arm, 0.0, prussian), (0.0, -arm, verdigris), (0.0, arm, verdigris)):
+        _draw_disc(b7, w, h, ncx + dx_p, ncy + dy_p, 8.5, col_p)
+    _draw_disc(b7, w, h, ncx, ncy, 7.5, sienna)
+    p7_bytes = _encode_png(w, h, b7)
+    (PLATES_DIR / "essay07.png").write_bytes(p7_bytes)
+    hashes["essay07"] = hashlib.sha256(p7_bytes).hexdigest()[:8]
     return hashes
 
 
@@ -653,6 +707,69 @@ def render_instrument(essay: dict, is_es: bool = False) -> str:
             <input type="range" min="1" max="8" step="1" value="4" data-cs-input="ndd">
           </label>
           <button type="button" class="tp-cta" data-cs-knockout aria-pressed="false" data-en="Toggle Retired 44 µm / White-Noise Defect" data-es="Alternar Defecto de 44 µm Retirado / Ruido Blanco">Toggle Retired 44 µm / White-Noise Defect</button>
+        </div>
+      </div>
+      <p class="tp-essay-status" data-cs-status role="status"></p>
+    </section>"""
+
+    if kind == "parallel_horizon":
+        svg_aria = (
+            "Ancho crítico híbrido paralelo exacto frente al recast de 33.08 micrómetros, negatividad cuántica criogénica y control nulo ortogonal a 90 grados"
+            if is_es
+            else "Exact parallel hybrid critical width against the 33.08-micrometre recast, cryogenic quantum negativity, and 90-degree orthogonal null control"
+        )
+        grp_theta_aria = "Seleccionar ángulo relativo 3-D de Stern-Gerlach" if is_es else "Select 3-D Stern-Gerlach skew angle"
+        grp_ens_aria = "Seleccionar ensamble termodinámico de vacío criogénico" if is_es else "Select cryogenic vacuum ensemble"
+        return f"""    <section id="instrument" class="tp-essay-observatory" data-cs-instrument="parallel_horizon" aria-labelledby="inst-heading">
+      <div class="tp-essay-obs-head">
+        <p class="tp-kicker" data-en="Interactive 3-D Parallel Horizon, Cryogenic Valley &amp; 90° Null Observatory · ES.07" data-es="Observatorio Interactivo de Horizonte Paralelo 3-D, Valle Criogénico y Nulo a 90° · ES.07">Interactive 3-D Parallel Horizon, Cryogenic Valley &amp; 90° Null Observatory · ES.07</p>
+        <h2 id="inst-heading" class="tp-h2" data-en="Exact Closed-Form Horizon (1.547σ → 2.211σ), D = 75 µm Quantum Island &amp; '+' Null Cross" data-es="Horizonte Cerrado Exacto (1.547σ → 2.211σ), Isla Cuántica en D = 75 µm y Cruz Nula '+'">Exact Closed-Form Horizon (1.547σ → 2.211σ), D = 75 µm Quantum Island &amp; '+' Null Cross</h2>
+      </div>
+      <div class="tp-essay-obs-grid">
+        <svg class="tp-essay-svg" viewBox="0 0 560 260" role="img" aria-label="{svg_aria}">
+          <rect x="8" y="8" width="544" height="244" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule)"/>
+          <text x="24" y="40" fill="var(--tp-ink)" font-size="12" font-weight="700" data-en="1 · Exact Parallel Hybrid Critical Width σ_c(D, Δx, θ) vs 33.08 µm Recast" data-es="1 · Ancho Crítico Híbrido Paralelo Exacto σ_c(D, Δx, θ) frente a 33.08 µm">1 · Exact Parallel Hybrid Critical Width σ_c(D, Δx, θ) vs 33.08 µm Recast</text>
+          <rect x="24" y="50" width="230" height="18" rx="4" fill="var(--tp-vellum)" stroke="var(--tp-rule)"/>
+          <rect data-cs-bar="sigmac" x="24" y="50" width="157.6" height="18" rx="4" fill="var(--tp-prussian)"/>
+          <line x1="150.8" y1="45" x2="150.8" y2="73" stroke="var(--tp-minium)" stroke-width="2.2" stroke-dasharray="3 2"/>
+          <text data-cs-read="sigmac" x="268" y="64" fill="var(--tp-ink)" font-family="monospace" font-size="12.5">σ_c = 41.12 µm &gt; 33.08 µm</text>
+
+          <text x="24" y="116" fill="var(--tp-ink)" font-size="12" font-weight="700" data-en="2 · Unitary Quantum BMV Negativity N_Q(t = 2.5 s) under Cryogenic Bath" data-es="2 · Negatividad BMV Cuántica Unitaria N_Q(t = 2.5 s) en Baño Criogénico">2 · Unitary Quantum BMV Negativity N_Q(t = 2.5 s) under Cryogenic Bath</text>
+          <rect x="24" y="126" width="230" height="18" rx="4" fill="var(--tp-vellum)" stroke="var(--tp-rule)"/>
+          <rect data-cs-bar="negq" x="24" y="126" width="205.3" height="18" rx="4" fill="var(--tp-verdigris)"/>
+          <text data-cs-read="negq" x="268" y="140" fill="var(--tp-ink)" font-family="monospace" font-size="12.5">N_Q = 0.446 · Δφ = 3.01 rad</text>
+
+          <text x="24" y="192" fill="var(--tp-ink)" font-size="12" font-weight="700" data-en="3 · Classical-Hybrid Smeared Channel max_t N_hyb(t) at σ_95 = 33.08 µm" data-es="3 · Canal Híbrido Clásico Difuminado máx_t N_hyb(t) en σ_95 = 33.08 µm">3 · Classical-Hybrid Smeared Channel max_t N_hyb(t) at σ_95 = 33.08 µm</text>
+          <rect x="24" y="202" width="230" height="18" rx="4" fill="var(--tp-vellum)" stroke="var(--tp-rule)"/>
+          <rect data-cs-bar="negh" x="24" y="202" width="8.0" height="18" rx="4" fill="var(--tp-minium)"/>
+          <text data-cs-read="negh" x="268" y="216" fill="var(--tp-ink)" font-family="monospace" font-size="12.5" data-en="N_hyb = 0.0000 (Classically Dark)" data-es="N_hyb = 0.0000 (Clásicamente Oscuro)">N_hyb = 0.0000 (Classically Dark)</text>
+        </svg>
+        <div class="tp-essay-controls">
+          <div class="tp-essay-btn-stack" role="group" aria-label="{grp_theta_aria}">
+            <button type="button" class="tp-cta" data-ph-theta="0" aria-pressed="true" data-en="θ = 0° Parallel Arms" data-es="θ = 0° Brazos Paralelos">θ = 0° Parallel Arms</button>
+            <button type="button" class="tp-cta" data-ph-theta="45" aria-pressed="false" data-en="θ = 45° Skew Signature" data-es="θ = 45° Firma Sesgada">θ = 45° Skew Signature</button>
+            <button type="button" class="tp-cta" data-ph-theta="90" aria-pressed="false" data-en="θ = 90° Midpoint '+' Null Cross" data-es="θ = 90° Cruz Nula '+' Centrada">θ = 90° Midpoint '+' Null Cross</button>
+          </div>
+          <div class="tp-essay-btn-stack" role="group" aria-label="{grp_ens_aria}">
+            <button type="button" class="tp-cta" data-ph-ens="isobaric" aria-pressed="true" data-en="Isobaric P = 2.7×10⁻¹⁶ Pa (2.04 K Valley)" data-es="Isobárico P = 2.7×10⁻¹⁶ Pa (Valle 2.04 K)">Isobaric P = 2.7×10⁻¹⁶ Pa (2.04 K Valley)</button>
+            <button type="button" class="tp-cta" data-ph-ens="isochoric" aria-pressed="false" data-en="Sealed Isochoric Cell (n = const)" data-es="Celda Isocórica Sellada (n = const)">Sealed Isochoric Cell (n = const)</button>
+          </div>
+          <label class="tp-essay-ctrl">
+            <span data-en="Parallel centre-to-centre gap D (µm, Casimir floor 28.3 µm)" data-es="Separación paralela centro a centro D (µm, piso Casimir 28.3 µm)">Parallel centre-to-centre gap D (µm, Casimir floor 28.3 µm)</span>
+            <strong data-cs-read="gap">D = 75 µm (Island ≥ 73.14 µm)</strong>
+            <input type="range" min="35" max="110" step="1" value="75" data-cs-input="gap">
+          </label>
+          <label class="tp-essay-ctrl">
+            <span data-en="Superposition split Δx (µm)" data-es="División de superposición Δx (µm)">Superposition split Δx (µm)</span>
+            <strong data-cs-read="split">Δx = 250 µm</strong>
+            <input type="range" min="15" max="300" step="5" value="250" data-cs-input="split">
+          </label>
+          <label class="tp-essay-ctrl">
+            <span data-en="Cryogenic bath temperature T (K, m = 10⁻¹⁴ kg)" data-es="Temperatura del baño criogénico T (K, m = 10⁻¹⁴ kg)">Cryogenic bath temperature T (K, m = 10⁻¹⁴ kg)</span>
+            <strong data-cs-read="temp">T = 2.0 K (γ = 2.20e-2 s⁻¹)</strong>
+            <input type="range" min="0.6" max="3.6" step="0.1" value="2.0" data-cs-input="temp">
+          </label>
+          <button type="button" class="tp-cta" data-cs-knockout aria-pressed="false" data-en="Toggle Naive 51.2 µm / Uncentred-90° Defect" data-es="Alternar Defecto de 51.2 µm / Esquina 90°">Toggle Naive 51.2 µm / Uncentred-90° Defect</button>
         </div>
       </div>
       <p class="tp-essay-status" data-cs-status role="status"></p>
@@ -954,7 +1071,7 @@ def render_essay_page(essay: dict, essays: list[dict], catalog: dict, lang: str 
       </a>
     </nav>
     <p class="tp-pager-all">
-      <a href="../" data-en="All 6 Cross-Scale Essays →" data-es="Los 6 Ensayos entre Escalas →">All 6 Cross-Scale Essays →</a> ·
+      <a href="../" data-en="All {len(essays)} Cross-Scale Essays →" data-es="Los {len(essays)} Ensayos entre Escalas →">All {len(essays)} Cross-Scale Essays →</a> ·
       <a href="../../timegravity/" data-en="Time &amp; Gravity (T.00–T.12) →" data-es="Tiempo y Gravedad (T.00–T.12) →">Time &amp; Gravity (T.00–T.12) →</a>
     </p>
 {B.render_site_footer(rel_res)}
@@ -983,13 +1100,15 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
     ld = B._ld("CollectionPage", seo_t.replace(f" | {BRAND}", ""), seo_d, canon, lang, image=image, crumbs=crumbs)
     head = B.render_head(seo_t, seo_d, path, "website", image, rel_root, rel_res, ld, lang)
     cards_m1 = render_essay_cards(essays[:3], rel_res, is_es=is_es)
-    cards_m2 = render_essay_cards(essays[3:], rel_res, is_es=is_es)
+    cards_m2 = render_essay_cards(essays[3:6], rel_res, is_es=is_es)
+    cards_m3 = render_essay_cards(essays[6:], rel_res, is_es=is_es)
     aria_crumb = "Ruta de navegación" if is_es else "Breadcrumb"
     aria_rack1 = "Movimiento I: Pisos, Registros y Relojes" if is_es else "Movement I: Floors, Ledgers & Clocks"
     aria_rack2 = "Movimiento II: Celosías, Horizontes y Operadores Atemporales" if is_es else "Movement II: Frames, Horizons & Timeless Operators"
+    aria_rack3 = "Movimiento III: Horizontes Paralelos, Islas Cuánticas y Fronteras Epistémicas" if is_es else "Movement III: Parallel Horizons, Quantum Islands & Epistemic Boundaries"
 
     m2_section = ""
-    if essays[3:]:
+    if essays[3:6]:
         m2_section = f"""
     <section class="tp-issue-rack" aria-label="{aria_rack2}">
       <div class="tp-section-head">
@@ -998,6 +1117,19 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
       </div>
       <div class="tp-rack-grid">
 {cards_m2}
+      </div>
+    </section>"""
+
+    m3_section = ""
+    if essays[6:]:
+        m3_section = f"""
+    <section class="tp-issue-rack" aria-label="{aria_rack3}">
+      <div class="tp-section-head">
+        <p class="tp-kicker" data-en="Movement III · ES.07 · Parallel Smeared-Gravity Horizons, Cryogenic Valleys &amp; Epistemic Scope" data-es="Movimiento III · ES.07 · Horizontes Paralelos de Gravedad Difuminada, Valles Criogénicos y Alcance Epistémico">Movement III · ES.07 · Parallel Smeared-Gravity Horizons, Cryogenic Valleys &amp; Epistemic Scope</p>
+        <h2 class="tp-h2" data-en="The Parallel Horizon, the 75 µm Quantum Island, and Why This Is Not a Theory of Everything" data-es="El Horizonte Paralelo, la Isla Cuántica de 75 µm y por Qué Esto No Es una Teoría del Todo">The Parallel Horizon, the 75 µm Quantum Island, and Why This Is Not a Theory of Everything</h2>
+      </div>
+      <div class="tp-rack-grid">
+{cards_m3}
       </div>
     </section>"""
 
@@ -1013,12 +1145,12 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
       </ol>
     </nav>
     <section class="tp-hero">
-      <p class="tp-kicker" data-en="Featured Synthesis · 6 Standalone Essays · Two Movements &amp; Zero-Sorry Verification" data-es="Síntesis Destacada · 6 Ensayos Independientes · Dos Movimientos y Verificación Formal">Featured Synthesis · 6 Standalone Essays · Two Movements &amp; Zero-Sorry Verification</p>
+      <p class="tp-kicker" data-en="Featured Synthesis · 7 Standalone Essays · Three Movements &amp; Zero-Sorry Verification" data-es="Síntesis Destacada · 7 Ensayos Independientes · Tres Movimientos y Verificación Formal">Featured Synthesis · 7 Standalone Essays · Three Movements &amp; Zero-Sorry Verification</p>
       <h1 class="tp-h1" data-en="Cross-Scale Essays: Clocks, Stone, and Living Matter" data-es="Ensayos entre Escalas: Relojes, Piedra y Materia Viva">Cross-Scale Essays: Clocks, Stone, and Living Matter</h1>
-      <p class="tp-standfirst" data-en="Six standalone essays in two movements exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, and coupled timeless constraints—govern 10⁻¹⁴ kg quantum-gravity diamonds, space-frame trusses, black-hole horizons, and nanoscale biological channels." data-es="Seis ensayos independientes en dos movimientos sobre por qué las mismas ecuaciones matemáticas y reglas de verificación formal —fluctuación-disipación, procedencia epistémica, incertidumbre termodinámica, rango-nulidad y microcausalidad, supervivencia condicional de Doob y ligaduras atemporales acopladas— gobiernan diamantes de gravedad cuántica de 10⁻¹⁴ kg, celosías estructurales, horizontes de agujeros negros y canales biológicos a nanoescala.">Six standalone essays in two movements exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, and coupled timeless constraints—govern 10⁻¹⁴ kg quantum-gravity diamonds, space-frame trusses, black-hole horizons, and nanoscale biological channels.</p>
+      <p class="tp-standfirst" data-en="Seven standalone essays in three movements exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, coupled timeless constraints, and closed-form parallel horizons—govern 10⁻¹⁴ kg quantum-gravity diamonds, space-frame trusses, black-hole horizons, and nanoscale biological channels." data-es="Siete ensayos independientes en tres movimientos sobre por qué las mismas ecuaciones matemáticas y reglas de verificación formal —fluctuación-disipación, procedencia epistémica, incertidumbre termodinámica, rango-nulidad y microcausalidad, supervivencia condicional de Doob, ligaduras atemporales acopladas y horizontes paralelos cerrados— gobiernan diamantes de gravedad cuántica de 10⁻¹⁴ kg, celosías estructurales, horizontes de agujeros negros y canales biológicos a nanoescala.">Seven standalone essays in three movements exploring why the exact same mathematical equations and formal verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, coupled timeless constraints, and closed-form parallel horizons—govern 10⁻¹⁴ kg quantum-gravity diamonds, space-frame trusses, black-hole horizons, and nanoscale biological channels.</p>
       <div class="tp-series-rack-ctas">
         <a class="tp-cta tp-cta-primary" href="mesoscopic-floor/" data-en="Start Movement I · ES.01 The Mesoscopic Floor →" data-es="Iniciar Movimiento I · ES.01 El Piso Mesoscópico →">Start Movement I · ES.01 The Mesoscopic Floor →</a>
-        <a class="tp-cta" href="coupled-constraints-formal-proof/" data-en="Read Capstone · ES.06 Coupled Timeless Proof →" data-es="Leer Cierre · ES.06 Prueba Atemporal Acoplada →">Read Capstone · ES.06 Coupled Timeless Proof →</a>
+        <a class="tp-cta" href="loophole-free-parallel-horizon/" data-en="Read Capstone · ES.07 The Parallel Horizon &amp; 75 µm Island →" data-es="Leer Cierre · ES.07 El Horizonte Paralelo e Isla de 75 µm →">Read Capstone · ES.07 The Parallel Horizon &amp; 75 µm Island →</a>
         <a class="tp-cta" href="../timegravity/" data-en="Time &amp; Gravity Core Series (T.00–T.12) →" data-es="Serie Principal Tiempo y Gravedad (T.00–T.12) →">Time &amp; Gravity Core Series (T.00–T.12) →</a>
       </div>
     </section>
@@ -1030,7 +1162,7 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
       <div class="tp-rack-grid">
 {cards_m1}
       </div>
-    </section>{m2_section}
+    </section>{m2_section}{m3_section}
 {B.render_site_footer(rel_res)}
   </main>
   <script type="module" src="{rel_res}/modules/main.mjs"></script>

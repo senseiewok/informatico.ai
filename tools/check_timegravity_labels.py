@@ -47,6 +47,7 @@ from folios.timegravity import (  # noqa: E402
     LABELS,
     PAGES,
 )
+from timegravity_kernel_dispute import PARALLEL_DC_INF_OVER_SIGMA  # noqa: E402
 from timegravity_kernel_ladder import EW_MATCH_SIGMA_M  # noqa: E402
 
 WIDENING_EN_RE = re.compile(r"\b(only|all|never|every)\b", re.IGNORECASE)
@@ -55,6 +56,7 @@ EMPIRICAL_LABELS = frozenset({"MEASURED", "BOUND", "SINGLE RESULT"})
 # Kernel numeric anchors: (expected_value, max_rounding_tolerance)
 KERNEL_ANCHORS: dict[str, tuple[float, float]] = {
     "ew_recast_sigma_um": (EW_MATCH_SIGMA_M * 1e6, 0.6),
+    "parallel_hybrid_horizon_um": (PARALLEL_DC_INF_OVER_SIGMA * EW_MATCH_SIGMA_M * 1e6, 0.3),
 }
 
 RESEARCH = ROOT / "src" / "research"
@@ -395,7 +397,7 @@ def lint(planted_defect: bool = False, today: dt.date | None = None, mutation: s
             elif mutation == "derived_num_drift" and any(c.get("kernel") in KERNEL_ANCHORS for c in en_claims):
                 for lst in (en_claims, es_claims):
                     c_der = next(c for c in lst if c.get("kernel") in KERNEL_ANCHORS)
-                    c_der["text"] = re.sub(r"\b33(?:\.\d+)?\b", "49", c_der["text"])
+                    c_der["text"] = re.sub(r"\b(?:33|73)(?:\.\d+)?\b", "49", c_der["text"])
                 mutated = True
 
         if planted_defect and not planted_done:

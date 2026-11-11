@@ -59,7 +59,8 @@ def main(argv: list[str] | None = None) -> int:
         assert res["isl_ok"], "the map read with the 2020 data is not as expected: whole torque removed at the 2017 threshold, 2-3x the edge at the letter's, estimate at the edge, window above the 1e-15 kg floor only"
         assert res["timing_ok"], "the open-region timing is not as expected: hybrid negativity below 2e-3 at the quantum channel's full-entanglement time, peak 10-200x later and below 0.06"
         assert res["points_ok"], "the planar branch kernels do not reproduce the collinear 1-D kernels"
-        assert res["parallel_ok"], "the side-by-side thresholds are not as expected (hybrid about 0.65 of the gap, collapse about 0.44)"
+        assert res["parallel_ok"], "the side-by-side thresholds are not as expected (hybrid 0.65 of the gap at small splits down to 0.45 at large splits, collapse about 0.44)"
+        assert res["parallel_closed_ok"], "the closed-form 2-D/3-D skewed parallel hybrid negativity, horizon asymptotes (1.5471 σ to 2.2109 σ), θ = π/2 null symmetry, or γ_crit^hyb disagree with the 4×4 matrix kernel"
         assert res["proposals_ok"], "the published proposals on the map are not as expected (see check_dispute 4h)"
         assert res["decoh_ok"], "the decoherence comparison at the 2024 geometry is not as expected (quantum threshold = |omega_ent| to a part in ten thousand, hybrid thresholds 40-300x lower, nothing from the hybrid at 1e-3 /s)"
         assert res["aziz_ok"], "the Aziz & Howl amplitude is not as expected (25-34 orders below the quantum phase at laboratory masses; above their 0.1 at the Planck mass; M^6 and t^2 scaling)"
@@ -84,7 +85,7 @@ def main(argv: list[str] | None = None) -> int:
             "ktm_2017_exact_phases_with_ktm_dephasing_negativity": res["ktm_2017"]["exact_phases_with_ktm_dephasing_negativity"],
             "entangling_parts": res["entangling_parts"], "quantum_channel_negativity_2017": res["quantum_channel_negativity_2017"],
             "pure_collapse": {k: {"critical_sigma_m": v["critical_sigma_m"], "half_sigma_m": v["half_sigma_m"], "quantum_negativity": v["quantum_negativity"]} for k, v in res["pure_collapse"].items()},
-            "threshold_map": res["threshold_map"], "map_with_isl": res["map_with_isl"], "open_region_timing": res["open_region_timing"], "parallel_map": res["parallel_map"], "proposals": res["proposals"], "open_window_decoherence": res["open_window_decoherence"], "aziz_howl": res["aziz_howl"], "collapse_scaling": res["collapse_scaling"], "rijavec_tau_g_s": res["rijavec_tau_g_s"], "dephasing_threshold_per_s": res["dephasing_threshold_per_s"],
+            "threshold_map": res["threshold_map"], "map_with_isl": res["map_with_isl"], "open_region_timing": res["open_region_timing"], "parallel_map": res["parallel_map"], "parallel_dc0_over_sigma": res["parallel_dc0_over_sigma"], "parallel_dc_inf_over_sigma": res["parallel_dc_inf_over_sigma"], "proposals": res["proposals"], "open_window_decoherence": res["open_window_decoherence"], "aziz_howl": res["aziz_howl"], "collapse_scaling": res["collapse_scaling"], "rijavec_tau_g_s": res["rijavec_tau_g_s"], "dephasing_threshold_per_s": res["dephasing_threshold_per_s"],
         },
         "geometry_checks": {
             "critical_separation_matches_paper": "PASS",
@@ -98,6 +99,7 @@ def main(argv: list[str] | None = None) -> int:
             "map_against_2020_inverse_square_data": "PASS",
             "open_region_time_discriminator": "PASS",
             "planar_branches_parallel_map_and_published_proposals": "PASS",
+            "parallel_closed_form_and_skewed_null_control": "PASS",
             "decoherence_at_the_2024_geometry": "PASS",
             "aziz_howl_amplitude_on_the_map": "PASS",
             "planted_defect_knockout": "REJECTED_AS_EXPECTED",

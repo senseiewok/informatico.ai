@@ -713,6 +713,8 @@
         "collapse_over_gap": 0.473513613926
       }
     ],
+    "parallel_dc0_over_sigma": 1.54713396421,
+    "parallel_dc_inf_over_sigma": 2.21092762065,
     "proposals": [
       {
         "key": "bose2017",

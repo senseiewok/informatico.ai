@@ -592,6 +592,214 @@ function initWdwClock(root) {
   render();
 }
 
+function erfApprox(x) {
+  const s = x < 0 ? -1 : 1;
+  const ax = Math.abs(x);
+  const t = 1.0 / (1.0 + 0.3275911 * ax);
+  const poly = (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t;
+  return s * (1.0 - poly * Math.exp(-ax * ax));
+}
+
+function smearedF(r, sigma) {
+  if (r <= 1e-15) return 1.0 / (sigma * Math.sqrt(Math.PI));
+  return erfApprox(r / (2.0 * sigma)) / r;
+}
+
+function parallelHybridNegClosed(splitM, gapM, massKg, sigmaM, tS, thetaRad) {
+  const ct = Math.cos(thetaRad);
+  if (Math.abs(ct) < 1e-14) return 0.0;
+  const rSame = Math.sqrt(gapM * gapM + 0.5 * splitM * splitM * (1.0 - ct));
+  const rDiff = Math.sqrt(gapM * gapM + 0.5 * splitM * splitM * (1.0 + ct));
+  const a = smearedF(0.0, sigmaM) - smearedF(splitM, sigmaM);
+  const b = Math.abs(smearedF(rSame, sigmaM) - smearedF(rDiff, sigmaM));
+  const tau = (6.67430e-11 * massKg * massKg * tS) / (2.0 * HBAR);
+  const eMinus = Math.exp(-Math.max(0.0, 4.0 * (a - b) * tau));
+  const ePlus = Math.exp(-4.0 * (a + b) * tau);
+  const uPlus = 0.5 * (eMinus + ePlus);
+  const uMinus = 0.5 * (eMinus - ePlus);
+  const s = Math.sin(2.0 * b * tau);
+  const rad = Math.sqrt(uMinus * uMinus + 4.0 * Math.exp(-4.0 * a * tau) * s * s);
+  return Math.max(0.0, 0.25 * (uPlus + rad - 1.0));
+}
+
+function parallelCriticalSigmaM(splitM, gapM, thetaRad) {
+  const ct = Math.cos(thetaRad);
+  if (Math.abs(ct) < 1e-14) return Infinity;
+  let lo = 1e-8;
+  let hi = 2e-2;
+  for (let i = 0; i < 60; i += 1) {
+    const mid = 0.5 * (lo + hi);
+    const rSame = Math.sqrt(gapM * gapM + 0.5 * splitM * splitM * (1.0 - ct));
+    const rDiff = Math.sqrt(gapM * gapM + 0.5 * splitM * splitM * (1.0 + ct));
+    const a = smearedF(0.0, mid) - smearedF(splitM, mid);
+    const b = Math.abs(smearedF(rSame, mid) - smearedF(rDiff, mid));
+    if (Math.SQRT2 * b > a) hi = mid;
+    else lo = mid;
+  }
+  return 0.5 * (lo + hi);
+}
+
+function initParallelHorizon(root) {
+  const gapInput = root.querySelector('[data-cs-input="gap"]');
+  const splitInput = root.querySelector('[data-cs-input="split"]');
+  const tempInput = root.querySelector('[data-cs-input="temp"]');
+  const thetaBtns = root.querySelectorAll("button[data-ph-theta]");
+  const ensBtns = root.querySelectorAll("button[data-ph-ens]");
+  const koBtn = root.querySelector("[data-cs-knockout]");
+  const statusEl = root.querySelector("[data-cs-status]");
+  const barSigma = root.querySelector('[data-cs-bar="sigmac"]');
+  const barNegQ = root.querySelector('[data-cs-bar="negq"]');
+  const barNegH = root.querySelector('[data-cs-bar="negh"]');
+  const reads = {};
+  root.querySelectorAll("[data-cs-read]").forEach((el) => { reads[el.getAttribute("data-cs-read")] = el; });
+  let thetaDeg = 0;
+  let ensMode = "isobaric";
+  let knockout = false;
+
+  const SIGMA_95_UM = 33.08;
+  const MASS_KG = 1.0e-14;
+  const HOLD_S = 2.5;
+  // Exact 1 K benchmark prefactors from timegravity_kernel_decoherence at P = 2.7e-16 Pa, dx = 250 um, m = 10^-14 kg
+  const A_GAS_1K = 0.0290064;
+  const B_EM_1K = 2.32101e-5;
+  const B_SC_1K = 2.14194e-8;
+
+  const MSG = {
+    en: {
+      island: "Loophole-free quantum island verified: σ_c(D, Δx, θ) > 33.08 µm forces classical-hybrid negativity N_hyb(t) = 0 identically for all hold times t ≥ 0, while the unitary Newtonian channel retains strong macroscopic negativity N_Q.",
+      leak: "Hybrid leakage warning: at this (D, Δx, θ) geometry, σ_c < 33.08 µm! Even when D > 51.18 µm (such as D = 60 µm at Δx = 250 µm), Diósi–Penrose smeared gravity still produces a positive classical negativity pulse before self-decohering.",
+      null90: "Midpoint '+' orthogonal null control (θ = 90°): r_same = r_diff = √(D² + ½Δx²) exactly, cancelling Newtonian, Yukawa, and erf-smeared pair potentials to every multipole order while keeping apparatus, lasers, and screen unchanged.",
+      ko: "Naive small-split / uncentred-corner defect active: falsely extrapolates the 51.18 µm small-split horizon to large splits (hiding the D = 60 µm leak) and rotates 90° about an endpoint ('L' corner), creating a spurious multipole phase!",
+    },
+    es: {
+      island: "Isla cuántica sin resquicios verificada: σ_c(D, Δx, θ) > 33.08 µm fuerza N_hyb(t) = 0 idénticamente para todo t ≥ 0, mientras el canal newtoniano unitario preserva una fuerte negatividad macroscópica N_Q.",
+      leak: "Advertencia de fuga híbrida: en esta geometría (D, Δx, θ) resulta σ_c < 33.08 µm. Aun con D > 51.18 µm (como D = 60 µm con Δx = 250 µm), la gravedad difuminada genera un pulso positivo de negatividad clásica.",
+      null90: "Control nulo ortogonal centrado '+' (θ = 90°): r_same = r_diff = √(D² + ½Δx²) de forma exacta, anulando potenciales newtonianos, de Yukawa y erf en todo orden multipolar sin alterar láseres ni pantalla.",
+      ko: "Defecto de extrapolación corta / esquina 'L' activo: extrapola falsamente el umbral de 51.18 µm a divisiones grandes (ocultando la fuga en D = 60 µm) y gira 90° sobre un extremo en 'L', induciendo una fase espuria.",
+    },
+  };
+
+  function render() {
+    const dUm = Number(gapInput ? gapInput.value : 75);
+    const dxUm = Number(splitInput ? splitInput.value : 250);
+    const tempK = Number(tempInput ? tempInput.value : 2.0);
+    const isEs = lang() === "es";
+
+    const dM = dUm * 1e-6;
+    const dxM = dxUm * 1e-6;
+    const thRad = (thetaDeg * Math.PI) / 180.0;
+
+    let sigmaCUm = parallelCriticalSigmaM(dxM, dM, thRad) * 1e6;
+    if (knockout && thetaDeg !== 90) {
+      sigmaCUm = dUm / 1.547134;
+    }
+
+    const dxRatio = (dxUm / 250.0) * (dxUm / 250.0);
+    const gammaPhot = (B_EM_1K * Math.pow(tempK, 6) + B_SC_1K * Math.pow(tempK, 9)) * dxRatio;
+    const gammaGas = ensMode === "isobaric"
+      ? A_GAS_1K * Math.pow(tempK, -0.5)
+      : A_GAS_1K * Math.pow(tempK, 0.5);
+    const gammaTot = gammaGas + gammaPhot;
+
+    let dPhi = 0.0;
+    if (thetaDeg === 90 && knockout) {
+      const rLL = dM;
+      const rLR = Math.hypot(dM, dxM);
+      const rRR = Math.sqrt(dM * dM + 2.0 * dxM * dxM);
+      dPhi = ((6.67430e-11 * MASS_KG * MASS_KG * HOLD_S) / HBAR) * Math.abs((2.0 / rLR) - (1.0 / rLL) - (1.0 / rRR));
+    } else if (thetaDeg !== 90) {
+      const ct = Math.cos(thRad);
+      const rSame = Math.sqrt(dM * dM + 0.5 * dxM * dxM * (1.0 - ct));
+      const rDiff = Math.sqrt(dM * dM + 0.5 * dxM * dxM * (1.0 + ct));
+      dPhi = ((6.67430e-11 * MASS_KG * MASS_KG * HOLD_S) / HBAR) * 2.0 * Math.abs((1.0 / rSame) - (1.0 / rDiff));
+    }
+
+    const eta = Math.exp(-gammaTot * HOLD_S);
+    const negQ = Math.max(0.0, 0.25 * (eta * eta + 2.0 * eta * Math.abs(Math.sin(0.5 * dPhi)) - 1.0));
+
+    let negHybMax = 0.0;
+    if (!knockout && Number.isFinite(sigmaCUm) && sigmaCUm < SIGMA_95_UM) {
+      for (let k = -20; k <= 32; k += 1) {
+        const tProbe = Math.pow(10.0, k / 16.0);
+        const nh = parallelHybridNegClosed(dxM, dM, MASS_KG, SIGMA_95_UM * 1e-6, tProbe, thRad);
+        if (nh > negHybMax) negHybMax = nh;
+      }
+    }
+
+    if (reads.gap) {
+      const tag = dUm >= 73.14
+        ? (isEs ? "Isla ≥ 73.14 µm" : "Island ≥ 73.14 µm")
+        : (isEs ? "Bajo techo 73.14 µm" : "Below 73.14 µm ceiling");
+      reads.gap.textContent = `D = ${dUm} µm (${tag})`;
+    }
+    if (reads.split) reads.split.textContent = `Δx = ${dxUm} µm`;
+    if (reads.temp) reads.temp.textContent = `T = ${tempK.toFixed(1)} K (γ = ${gammaTot.toExponential(2)} s⁻¹)`;
+
+    if (reads.sigmac) {
+      if (!Number.isFinite(sigmaCUm)) {
+        reads.sigmac.textContent = isEs ? "σ_c = ∞ (Nulo exacto 90°)" : "σ_c = ∞ (Exact 90° Null)";
+      } else {
+        const cmp = sigmaCUm > SIGMA_95_UM ? ">" : "<";
+        reads.sigmac.textContent = `σ_c = ${sigmaCUm.toFixed(2)} µm ${cmp} 33.08 µm`;
+      }
+    }
+    if (reads.negq) reads.negq.textContent = `N_Q = ${negQ.toFixed(3)} · Δφ = ${dPhi.toFixed(2)} rad`;
+    if (reads.negh) {
+      reads.negh.textContent = negHybMax > 0
+        ? (isEs ? `N_hyb = ${negHybMax.toFixed(4)} (Fuga Clásica)` : `N_hyb = ${negHybMax.toFixed(4)} (Classical Leak)`)
+        : (isEs ? "N_hyb = 0.0000 (Clásicamente Oscuro)" : "N_hyb = 0.0000 (Classically Dark)");
+    }
+
+    const sigBarFrac = !Number.isFinite(sigmaCUm) ? 1.0 : Math.min(1.0, sigmaCUm / 60.0);
+    if (barSigma) barSigma.setAttribute("width", Math.max(8, sigBarFrac * 230).toFixed(1));
+    if (barNegQ) barNegQ.setAttribute("width", Math.max(8, (negQ / 0.50) * 230).toFixed(1));
+    if (barNegH) barNegH.setAttribute("width", Math.max(8, Math.min(1.0, negHybMax * 18.0) * 230).toFixed(1));
+
+    if (statusEl) {
+      const L = MSG[lang()];
+      if (knockout) {
+        statusEl.textContent = L.ko;
+        statusEl.setAttribute("data-state", "defect");
+      } else if (thetaDeg === 90) {
+        statusEl.textContent = L.null90;
+        statusEl.setAttribute("data-state", "pass");
+      } else if (sigmaCUm < SIGMA_95_UM) {
+        statusEl.textContent = L.leak;
+        statusEl.setAttribute("data-state", "defect");
+      } else {
+        statusEl.textContent = L.island;
+        statusEl.setAttribute("data-state", "pass");
+      }
+    }
+  }
+
+  [gapInput, splitInput, tempInput].forEach((el) => { if (el) el.addEventListener("input", render); });
+  thetaBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      thetaDeg = Number(btn.getAttribute("data-ph-theta") || 0);
+      thetaBtns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      render();
+    });
+  });
+  ensBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      ensMode = btn.getAttribute("data-ph-ens") || "isobaric";
+      ensBtns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      render();
+    });
+  });
+  if (koBtn) {
+    koBtn.addEventListener("click", () => {
+      knockout = !knockout;
+      koBtn.setAttribute("aria-pressed", String(knockout));
+      render();
+    });
+  }
+  window.addEventListener("tp-lang-change", render);
+  root.setAttribute("data-cs-ready", "true");
+  render();
+}
+
 export function initCrossScaleEssays(scope = document) {
   const once = (sel, fn) => scope.querySelectorAll(sel).forEach((el) => {
     if (!el.hasAttribute("data-cs-ready")) fn(el);
@@ -603,6 +811,7 @@ export function initCrossScaleEssays(scope = document) {
   once('[data-cs-instrument="kinematic"]', initKinematic);
   once('[data-cs-instrument="island_page"]', initIslandPage);
   once('[data-cs-instrument="wdw_clock"]', initWdwClock);
+  once('[data-cs-instrument="parallel_horizon"]', initParallelHorizon);
 }
 
 initCrossScaleEssays(document);

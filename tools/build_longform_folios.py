@@ -2018,7 +2018,7 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
         </ol>
       </section>
       <section class="tp-contents-bounties" aria-label="Cross-Scale Featured Essays">
-        <h3><a href="{_href(rel_res, 'essays/')}" data-en="Cross-Scale Featured Essays · 6 Standalone Syntheses (ES.01–ES.06)" data-es="Ensayos Destacados entre Escalas · 6 Síntesis Independientes (ES.01–ES.06)">Cross-Scale Featured Essays · 6 Standalone Syntheses (ES.01–ES.06)</a></h3>
+        <h3><a href="{_href(rel_res, 'essays/')}" data-en="Cross-Scale Featured Essays · 7 Standalone Syntheses (ES.01–ES.07)" data-es="Ensayos Destacados entre Escalas · 7 Síntesis Independientes (ES.01–ES.07)">Cross-Scale Featured Essays · 7 Standalone Syntheses (ES.01–ES.07)</a></h3>
         <ol>
             {essay_items_html}
         </ol>
@@ -2258,9 +2258,9 @@ def render_cross_scale_essays_showcase(rel_res: str, lang: str = "en") -> str:
     hub_href = _href(rel_res, "essays/")
     return f"""
     <section class="tp-cross-scale-showcase" id="cross-scale-essays" aria-labelledby="cross-scale-essays-heading">
-      <p class="tp-kicker" data-en="Featured Companion Synthesis · 6 Standalone Essays · ES.01–ES.06" data-es="Síntesis Compañera Destacada · 6 Ensayos Independientes · ES.01–ES.06">Featured Companion Synthesis · 6 Standalone Essays · ES.01–ES.06</p>
+      <p class="tp-kicker" data-en="Featured Companion Synthesis · 7 Standalone Essays · ES.01–ES.07" data-es="Síntesis Compañera Destacada · 7 Ensayos Independientes · ES.01–ES.07">Featured Companion Synthesis · 7 Standalone Essays · ES.01–ES.07</p>
       <h2 id="cross-scale-essays-heading" class="tp-h2"><a href="{hub_href}" data-en="Cross-Scale Essays: Clocks, Stone, and Living Matter" data-es="Ensayos entre Escalas: Relojes, Piedra y Materia Viva">Cross-Scale Essays: Clocks, Stone, and Living Matter</a></h2>
-      <p class="tp-standfirst" data-en="Two editorial movements—Foundations &amp; Bounds (ES.01–ES.03) and Constraints &amp; Formal Proof (ES.04–ES.06)—tracing how fluctuation-dissipation floors, DERIVED (NOT MEASURED) parent gates, Q_TUR ≥ 2 bounds, rank-nullity rigidity, Doob conditional survival, and a 64×64 Page–Wootters / Lean 4 proof unite falling clocks, stone vaults, and living pores." data-es="Dos movimientos editoriales —Fundamentos y Cotas (ES.01–ES.03) y Restricciones y Prueba Formal (ES.04–ES.06)— que muestran cómo los pisos de fluctuación-disipación, las compuertas DERIVADO (NO MEDIDO), las cotas Q_TUR ≥ 2, la rigidez rango-nulidad, la supervivencia condicional de Doob y una prueba Page–Wootters 64×64 / Lean 4 unen relojes en caída, bóvedas de piedra y poros vivos.">Two editorial movements—Foundations &amp; Bounds (ES.01–ES.03) and Constraints &amp; Formal Proof (ES.04–ES.06)—tracing how fluctuation-dissipation floors, DERIVED (NOT MEASURED) parent gates, Q_TUR ≥ 2 bounds, rank-nullity rigidity, Doob conditional survival, and a 64×64 Page–Wootters / Lean 4 proof unite falling clocks, stone vaults, and living pores.</p>
+      <p class="tp-standfirst" data-en="Three editorial movements—Foundations &amp; Bounds (ES.01–ES.03), Constraints &amp; Formal Proof (ES.04–ES.06), and Parallel Horizons &amp; Quantum Islands (ES.07)—tracing how fluctuation-dissipation floors, DERIVED (NOT MEASURED) parent gates, Q_TUR ≥ 2 bounds, rank-nullity rigidity, Doob conditional survival, Page–Wootters / Lean 4 proofs, and the 73.14 µm parallel horizon unite falling clocks, stone vaults, and living pores." data-es="Tres movimientos editoriales —Fundamentos y Cotas (ES.01–ES.03), Restricciones y Prueba Formal (ES.04–ES.06) y Horizontes Paralelos e Islas Cuánticas (ES.07)— que muestran cómo los pisos de fluctuación-disipación, las compuertas DERIVADO (NO MEDIDO), las cotas Q_TUR ≥ 2, la rigidez rango-nulidad, la supervivencia condicional de Doob, las pruebas Page–Wootters / Lean 4 y el horizonte paralelo de 73.14 µm unen relojes en caída, bóvedas de piedra y poros vivos.">Three editorial movements—Foundations &amp; Bounds (ES.01–ES.03), Constraints &amp; Formal Proof (ES.04–ES.06), and Parallel Horizons &amp; Quantum Islands (ES.07)—tracing how fluctuation-dissipation floors, DERIVED (NOT MEASURED) parent gates, Q_TUR ≥ 2 bounds, rank-nullity rigidity, Doob conditional survival, Page–Wootters / Lean 4 proofs, and the 73.14 µm parallel horizon unite falling clocks, stone vaults, and living pores.</p>
       <div class="tp-cross-scale-grid">
 {cards_html}
       </div>
@@ -5683,7 +5683,7 @@ def render_llms_txt(catalog: dict) -> str:
             lines.append(f"- [Step {step_no} · {tg['code']} {tg['seo'][0]}]({page_url('timegravity/' + tg['slug'] + '/')}): {tg['seo'][1]}")
     lines.append("")
     from folios.essays import ESSAYS as CROSS_SCALE_ESSAYS  # noqa: E402
-    lines.append("## Cross-Scale Featured Essays · Clocks, Stone, and Living Matter (ES.01–ES.06)")
+    lines.append("## Cross-Scale Featured Essays · Clocks, Stone, and Living Matter (ES.01–ES.07)")
     lines.append("")
     lines.append(f"- [Cross-Scale Essays]({page_url('essays/')}): {PILLAR_SEO['essays'][1]}")
     for es_doc in CROSS_SCALE_ESSAYS:
@@ -5927,6 +5927,8 @@ def main() -> None:
     sys.modules.setdefault("build_longform_folios", sys.modules[__name__])
     import build_timegravity  # noqa: E402  (lazy: it imports this module)
     build_timegravity.write_pages(catalog)
+    import build_cross_scale_essays  # noqa: E402  (lazy: it imports this module)
+    build_cross_scale_essays.write_essay_pages(catalog)
 
     print(f"PASS: Built Informatico.ai hub + 4 pillar racks + {count} standalone 5-Act HTML Folios + Bounties hub + {b_count} standalone Bounty Folios + Tech & Tools hub + {t_count} standalone Toolbox Folios, each in English and Spanish (/{ES_PREFIX}) + sitemap.xml + robots.txt + llms.txt + 404.html.")
 
