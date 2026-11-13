@@ -6,7 +6,7 @@ Verifies:
   1. Weinberg (1964, 1965) soft Ward identities for s = 1 (charge conservation), s = 2 (universal gravitational
      coupling kappa_e = kappa_p, eta_WEP = 0), and s = 3 (full rank-4 quadratic obstruction forcing g_a = 0).
   2. Christodoulou (1991) / Strominger-Zhiboedov (2016) gravitational-wave memory strain step
-     Delta h_char = 2 G E_rad / (c^4 D_L) and proper separation holonomy Delta L / L_0 = (1/2) Delta h_+^mem
+     Delta h_char = G E_rad / (c^4 D_L) and proper separation holonomy Delta L / L_0 = (1/2) Delta h_+^mem
      checked against 5-point Gauss-Legendre flux quadrature to < 1e-12 on GW150914 and GW250114 fiducial benchmarks.
   3. Chiral and mixed gauge-gravitational anomaly cancellation (Adler 1969; Delbourgo-Salam 1972; Tooby-Smith 2025)
      for one Standard Model Weyl generation (6Y integer scaling): all four traces vanish iff N_c = 3.

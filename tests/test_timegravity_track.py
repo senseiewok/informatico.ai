@@ -901,7 +901,7 @@ class TimeGravityBatch7Tests(unittest.TestCase):
         gc = payload["geometry_checks"]
         self.assertLess(cn["s2_ward_vector_rel_norm"], 1e-14)
         self.assertGreater(gc["planted_s2_ward_rel_norm"], 1e-6)
-        self.assertAlmostEqual(cn["gw150914_delta_h_char"] * 1e22, 7.003, delta=0.02)
+        self.assertAlmostEqual(cn["gw150914_delta_h_char"] * 1e22, 3.502, delta=0.01)
         self.assertLess(cn["memory_quadrature_rel_err"], 1e-12)
         self.assertEqual(cn["sm_nc_unique"], 3)
         self.assertEqual(gc["planted_nc2_cubic_trace"], 54)

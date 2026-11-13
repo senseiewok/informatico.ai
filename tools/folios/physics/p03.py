@@ -17,7 +17,7 @@ FOLIO = {'category_code': 'P',
  'folio_id': 'P.03',
  'governing_law': 'η(γ̇) = η_∞ + (η_0 − η_∞)[1 + (λ γ̇)²]^((n−1)/2) · ξ_mesh ~ w^(−0.75)',
  'pillar': 'physics',
- 'primary_kernel': 'tools/physics_kernel.py',
+ 'primary_kernel': 'skills/physics/p03/verify_p03.py',
  'readouts': [{'label': 'Mesh Pore Size', 'value': '140.0 nm (Healthy) vs 49.5 nm (CF)'},
               {'label': 'Subdiffusion Exponent (alpha)',
                'value': '0.814 (65 nm LNP in Healthy)'},
@@ -56,11 +56,8 @@ FOLIO = {'category_code': 'P',
                 'kicker': 'SIDENOTE P.03 · DESIGN RULES FOR INHALED GENE THERAPY'},
  'sidenote_2': {'body': 'Inside dense mucin hydrogels, non-specific adhesive interactions and '
                         'spatial tortuosity convert ordinary Brownian motion into anomalous '
-                        'subdiffusion where MSD <Delta r^2(t)> ~ t^alpha with subdiffusion '
-                        'exponent alpha = 0.814 in healthy vs alpha < 0.20 in dehydrated '
-                        'sputum plugs.',
-                'kicker': 'SIDENOTE P.03-B · BROWNIAN SUBDIFFUSION & CONTINUOUS TIME RANDOM WALKS '
-                          '(DOI 10.1103/PhysRevLett.79.3286)'},
+                        'subdiffusion where MSD <Delta r^2(t)> ~ t^alpha with a model subdiffusion exponent alpha = 0.814 for healthy mucus vs alpha < 0.20 for dehydrated sputum plugs (kernel values, not measurements).',
+                'kicker': 'SIDENOTE P.03-B · PASSIVE MICRORHEOLOGY FROM THERMAL FLUCTUATIONS (DOI 10.1103/PhysRevLett.79.3286)'},
  'skill': {'description': 'AI-agnostic physical skill for complex fluid rheology, Carreau-Yasuda '
                           'shear thinning, and nanoparticle anomalous subdiffusion in airway '
                           'mucus.',
@@ -92,11 +89,10 @@ FOLIO = {'category_code': 'P',
                 'title': 'Aerosolized Particle Rheometer & HEPA H14 Clean-Air Filtration Loop'},
  'status_badge': 'REDATED REV 1.2',
  'steps': ['Stage 1 (Healthy Mesh, 2% solids): Mucin mesh pore size xi ≈ 140 nm allows 65 nm '
-           'PEGylated LNPs to diffuse freely (alpha ≈ 0.72).',
+           'PEGylated LNPs to diffuse nearly freely (model alpha ≈ 0.81).',
            'Stage 2 (Shear-Thinning Response): Ciliary shear rates (dot_gamma ~ 10 s^-1) reduce '
            'local gel viscosity by an order of magnitude via Carreau-Yasuda dynamics.',
-           'Stage 3 (Concentration Shock & Plug Formation): In CF sputum (8% solids), pore '
-           'size drops to 45 nm, sterically locking particles larger than 50 nm.',
+           'Stage 3 (Concentration Shock & Plug Formation): In CF sputum (8% solids), the model pore size drops to about 50 nm, sterically locking particles larger than 50 nm.',
            'Stage 4 (Subdiffusive Trapping): Particle trajectory collapses to alpha < 0.20, '
            'demonstrating the necessity of dense PEGylation and mucolytic co-delivery.'],
  'subtitle': 'Carreau-Yasuda shear-thinning, reptation tube dynamics, and anomalous subdiffusion '
@@ -168,8 +164,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'trajectories transition into anomalous subdiffusion, governed by transient steric '
               'caging and temporary adhesion to hydrophobic protein domains. Building on '
               "Pierre-Gilles de Gennes's 1979 scaling theory of semi-dilute polymer solutions and "
-              "MacKintosh, Käs, and Janmey's semiflexible network mechanics (Phys. Rev. Lett. "
-              '1995, DOI 10.1103/PhysRevLett.74.1250), soft-matter physicists proved that the '
+              "MacKintosh, Käs, and Janmey's semiflexible network mechanics (Phys. Rev. Lett. 1995, DOI 10.1103/PhysRevLett.75.4425), soft-matter physicists showed that"
+              ' the '
               'average mesh pore diameter shrinks as concentration increases according to a '
               'universal three-quarter power law, while the plateau elastic shear modulus surges '
               'sharply. When the mesh pore diameter drops below the physical dimension of an '
@@ -190,22 +186,19 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'surface charges that adhere to mucin fibers, its effective diffusion coefficient '
                 'plummets by four orders of magnitude, permanently trapping inhaled macromolecular '
                 'formulations in the superficial mucus blanket destined for rapid clearance.',
- 'pullquote': '"Increasing airway mucin solids from 2% (healthy) to 8% (CF) shrinks the '
-              'correlation mesh from 300 nm to 65 nm and multiplies zero-shear viscosity by more '
-              'than 200-fold."',
+ 'pullquote': '"Increasing airway mucin solids from 2% (healthy) to 8% (CF) shrinks this folio\'s model mesh from 140 nm to about 50 nm (ξ ~ w^-0.75) and raises zero-shear viscosity steeply."',
  'chronology': [('1972',
                  'Pierre Carreau formulates the non-linear shear-thinning constitutive equation '
                  'for entangled polymer fluids.'),
                 ('1979',
                  'Pierre-Gilles de Gennes establishes universal correlation-length scaling xi_mesh '
                  '~ w^{-3/4} in polymer gels.'),
-                ('2009',
-                 'Lai, Wang, Wirtz & Hanes quantify nanoparticle subdiffusion and PEG-corona slip '
-                 'in human CF sputum (DOI 10.1016/j.addr.2008.11.002).'),
-                ('2020',
+                ('1995',
                  'Thomas Mason & David Weitz formulate generalized Stokes-Einstein optical '
                  'microrheology of viscoelastic complex fluids (1995, DOI '
-                 '10.1103/PhysRevLett.74.1250).')],
+                 '10.1103/PhysRevLett.74.1250).'),
+                ('2009',
+                 'Lai, Wang & Hanes review mucus-penetrating nanoparticles and the dense PEG coatings that let them slip through mucus (DOI 10.1016/j.addr.2008.11.002).')],
  'act2_title': 'Act II — How It Actually Works: Mesh Correlation Scaling & Caged Hopping',
  'act2_analogy': 'Imagine trying to walk across a crowded airport terminal. If you are walking '
                  'alone with a smooth, compact backpack, you can weave effortlessly through the '
@@ -286,7 +279,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                   '(https://github.com/jax-md/jax-md, DOI 10.1088/1742-5468/ac3ae9) paired with '
                   'symbolic scaling-law regression in MilesCranmer/PySR (DOI '
                   '10.48550/arXiv.2305.01582) optimize stealth PEGylated nanoparticle radii r_p '
-                  'and mucolytic cleavage kinetics under Scite-audited soft-matter literature (DOI '
+                  'and mucolytic cleavage kinetics with the folio\'s references checked in the Scite citation index (DOI '
                   '10.1162/qss_a_00146).',
  'act4_deepening': 'The frontier of mucosal drug delivery centers on multiple-particle tracking '
                    'microrheology empowered by machine learning trajectory analytics. Using '
@@ -305,8 +298,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'accelerating the development of non-viral gene delivery platforms capable of '
                    'surmounting the most severe physiological mucus barriers.',
  'cf_bridge': 'In the SIMPLIFY trial era (NCT06350474) and for modulator-ineligible CF patients, '
-              'understanding how dornase alfa, hypertonic saline, and microbubble conditioning '
-              '(DOI 10.1073/pnas.0705326104) expand xi_mesh is essential for getting '
+              'understanding how dornase alfa and hypertonic saline change xi_mesh is essential for getting '
               'inhaled mRNA and base/prime editors across the sputum barrier.',
  'sources': ['de Gennes, P.-G. (1979). Scaling Concepts in Polymer Physics. Cornell University '
              'Press.',
@@ -355,9 +347,7 @@ DISPATCH = {'kicker': 'FRONTIER SOFT MATTER DISPATCH · DE GENNES SCALING & MUCI
              'Crossover in CF Sputum',
  'body': "Applying Pierre-Gilles de Gennes's polymer correlation scaling and Mason–Weitz "
          'generalized Stokes–Einstein microrheology (Phys. Rev. Lett. DOI '
-         '10.1103/PhysRevLett.74.1250), multiple-particle tracking studies (Lai et al. PNAS DOI '
-         '10.1073/pnas.0705326104) map the exact mesh-size threshold where inhaled mRNA lipid '
-         'nanoparticles escape mucin caging.'}
+         '10.1103/PhysRevLett.74.1250), multiple-particle tracking (Lai et al. PNAS 2007, DOI 10.1073/pnas.0608611104) showed that large polymeric nanoparticles with a dense PEG coating can move rapidly through fresh undiluted human mucus.'}
 
 META_3D = ('Carreau–Yasuda Entangled Mucin Mesh & Shear Furrow',
  'X/Z: Mucin Biopolymer Network Plane · Y: Viscoelastic Energy & Shear-Thinning Trough')

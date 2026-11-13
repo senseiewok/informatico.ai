@@ -3,7 +3,7 @@
 
 Instrument: an infrared consistency observatory combining Weinberg's s = 1, 2, >= 3 soft Ward residuals,
 Christodoulou / Strominger-Zhiboedov gravitational-wave displacement memory and baseline holonomy
-Delta h_char = 2 G E_rad / (c^4 D_L), Delta L / L_0 = (1/2) Delta h_+^mem, and one-loop Standard Model chiral and
+Delta h_char = G E_rad / (c^4 D_L), Delta L / L_0 = (1/2) Delta h_+^mem, and one-loop Standard Model chiral and
 mixed gauge-gravitational anomaly traces (6Y integer scaling) across colour multiplicity N_c, paired with the pure
 core Lean 4 Prelude formalization skills/timegravity/t13/HolonomySoftAnomaly.lean.
 Knockout / planted defect: perturbing species gravitational coupling kappa_e / kappa_p = 1 + 1e-5 violates the
@@ -34,6 +34,8 @@ W64 = "T13-WEINBERG1964"
 W65 = "T13-WEINBERG1965"
 ADL69 = "T13-ADLER1969"
 DEL72 = "T13-DELBOURGO1972"
+AGW84 = "T13-AGW1984"
+FAV09 = "T13-FAVATA2009"
 CHR91 = "T13-CHRIST1991"
 STR16 = "T13-STROM2016"
 HUB20 = "T13-HUBNER2020"
@@ -57,7 +59,7 @@ PAGE: dict = {
         "Lorentz invariance and gauge consistency place exact algebraic locks across gravity and particle physics. Weinberg's soft theorems "
         "force every massless spin-2 field to couple universally to energy-momentum, Strominger and Zhiboedov's infrared triangle ties "
         "soft gravitons to permanent gravitational-wave memory across free-falling clocks and mirrors, and one-loop mixed gauge–gravitational "
-        "anomaly cancellation joins chiral gauge traces to require exactly N_c = 3 quark colours per Standard Model generation."
+        "anomaly cancellation joins chiral gauge traces to require N_c = 3 quark colours once the hypercharges take their observed values."
     ),
     "standfirst_es": (
         "A energías de la escala de Planck la estructura cuántica microscópica del espaciotiempo sigue sin conocerse, pero en el límite "
@@ -65,7 +67,7 @@ PAGE: dict = {
         "la gravedad y la física de partículas. Los teoremas blandos de Weinberg obligan a todo campo sin masa de espín 2 a acoplarse de "
         "forma universal a la energía-momento, el triángulo infrarrojo de Strominger y Zhiboedov enlaza los gravitones blandos con la "
         "memoria permanente de ondas gravitacionales en espejos y relojes en caída libre, y la cancelación de anomalías mixtas "
-        "gauge-gravitacionales a un lazo se suma a las trazas quirales para exigir exactamente N_c = 3 colores de quarks por generación."
+        "gauge-gravitacionales a un lazo se suma a las trazas quirales para exigir N_c = 3 colores de quarks una vez que las hipercargas toman sus valores observados."
     ),
     "seo": (
         "Where Infrared Gravity Meets Gauge Theory",
@@ -75,8 +77,8 @@ PAGE: dict = {
     ),
     "reading_time_en": "16 min read",
     "reading_time_es": "16 min de lectura",
-    "central_number_en": "Weinberg s=2 Ward residual ||W^μ||/E_cm = 0 iff κ_e = κ_p (η = 0); GW150914 fiducial memory step Δh_char = 7.00×10⁻²² (ΔL_char = 1.40×10⁻¹⁸ m on 4 km, GL5 quadrature within 1.3e-16); all 4 SM chiral & mixed gravitational anomaly traces vanish iff N_c = 3 (12 Lean 4 Prelude theorems)",
-    "central_number_es": "Residuo de Ward s=2 de Weinberg ||W^μ||/E_cm = 0 sii κ_e = κ_p (η = 0); escalón fiducial de memoria en GW150914 Δh_char = 7.00×10⁻²² (ΔL_char = 1.40×10⁻¹⁸ m en 4 km, cuadratura GL5 dentro de 1.3e-16); las 4 trazas de anomalías quirales y gravitacionales del Modelo Estándar se anulan sii N_c = 3 (12 teoremas en Lean 4 Prelude)",
+    "central_number_en": "Weinberg s=2 Ward residual ||W^μ||/E_cm = 0 iff κ_e = κ_p (η = 0); GW150914 fiducial memory step Δh_char = 3.50×10⁻²² (ΔL_char = 7.00×10⁻¹⁹ m on 4 km, GL5 quadrature within 1.3e-16); all 4 SM chiral & mixed gravitational anomaly traces vanish iff N_c = 3 (12 Lean 4 Prelude theorems)",
+    "central_number_es": "Residuo de Ward s=2 de Weinberg ||W^μ||/E_cm = 0 sii κ_e = κ_p (η = 0); escalón fiducial de memoria en GW150914 Δh_char = 3.50×10⁻²² (ΔL_char = 7.00×10⁻¹⁹ m en 4 km, cuadratura GL5 dentro de 1.3e-16); las 4 trazas de anomalías quirales y gravitacionales del Modelo Estándar se anulan sii N_c = 3 (12 teoremas en Lean 4 Prelude)",
     "verifier": "skills/timegravity/t13/verify_t13_holonomy_soft.py",
     "generator": "skills/timegravity/t13/make_t13.py",
     "skill": "skills/timegravity/t13/SKILL.md",
@@ -85,7 +87,7 @@ PAGE: dict = {
     "open_question_es": "La consistencia infrarroja fija desde abajo el acoplamiento gravitacional universal, la memoria permanente de ondas y la cancelación de anomalías quirales: ¿qué testigo experimental en superposiciones submilimétricas o redes de relojes ópticos y nucleares pondrá a prueba primero dónde cede el espaciotiempo clásico por arriba?",
     "ledger_ids": [
         MICRO, EOT08, ABB16, ISI21, LVK25, LEE20, LEE21, TAN20, DIOSI87, PENROSE96, BOSE17, SCH24,
-        W64, W65, ADL69, DEL72, CHR91, STR16, HUB20, ZH24, TOOBY25,
+        W64, W65, ADL69, DEL72, AGW84, CHR91, FAV09, STR16, HUB20, ZH24, TOOBY25,
     ],
     "ai_line_en": (
         "AI contribution to the cited results: none. No AI system contributed to any measurement or theoretical derivation cited on this page; "
@@ -136,11 +138,11 @@ PAGE: dict = {
         {"type": "h2", "id": "soft", "en": "I · Universal free fall from the infrared S-matrix", "es": "I · Caída libre universal desde la matriz S infrarroja", "short_en": "I · Soft Theorems", "short_es": "I · Teoremas Blandos"},
         P(
             C("MEASURED", [MICRO, EOT08],
-              "Across fifteen orders of magnitude in length, matter falls at one rate in a gravitational field: in low Earth orbit the "
+              "From low Earth orbit to the laboratory bench, matter falls at one rate in a gravitational field: in low Earth orbit the "
               "MICROSCOPE drag-free differential accelerometer bounds the Eötvös ratio between platinum-rhodium and titanium cylinders to "
               "η = (−1.5 ± 2.7)×10⁻¹⁵, while rotating beryllium–titanium torsion pendulums in the Seattle Eöt-Wash laboratory bound "
               "composition-dependent accelerations toward Earth to η = (0.3 ± 1.8)×10⁻¹³.",
-              "A lo largo de quince órdenes de magnitud en escala espacial, la materia cae al mismo ritmo en un campo gravitacional: en órbita "
+              "De la órbita terrestre baja a la mesa de laboratorio, la materia cae al mismo ritmo en un campo gravitacional: en órbita "
               "terrestre baja el acelerómetro diferencial sin arrastre MICROSCOPE acota la razón de Eötvös entre cilindros de platino-rodio y "
               "titanio en η = (−1.5 ± 2.7)×10⁻¹⁵, mientras que péndulos rotatorios de torsión de berilio y titanio en el laboratorio Eöt-Wash "
               "de Seattle acotan aceleraciones dependientes de la composición hacia la Tierra en η = (0.3 ± 1.8)×10⁻¹³.",
@@ -217,7 +219,7 @@ PAGE: dict = {
          ]},
         {"type": "plate_d"},
         {"type": "h2", "id": "memory", "en": "II · Gravitational-wave memory and permanent baseline holonomy", "es": "II · Memoria de ondas gravitacionales y holonomía permanente de línea base", "short_en": "II · Memory Step", "short_es": "II · Escalón de Memoria"},
-        {"type": "equation", "text": "Δh_char^mem = 2 G E_rad / (c⁴ D_L),   Δh_+^mem(ι) = Δh_char^mem · sin²ι (17 + cos²ι) / 24,   ΔL / L₀ = (1/2) Δh_+^mem"},
+        {"type": "equation", "text": "Δh_char^mem = G E_rad / (c⁴ D_L),   Δh_+^mem(ι) = Δh_char^mem · sin²ι (17 + cos²ι) / 24,   ΔL / L₀ = (1/2) Δh_+^mem"},
         P(
             C("MEASURED", [ABB16, ISI21],
               "In September 2015 the twin 4000 m LIGO interferometers observed GW150914 from the inspiral and merger of two black holes at luminosity "
@@ -236,26 +238,27 @@ PAGE: dict = {
               scope=EMP_SCOPE),
         ),
         P(
-            C("DERIVED", [CHR91, STR16, ABB16],
+            C("DERIVED", [CHR91, FAV09, STR16, ABB16],
               "Demetrios Christodoulou proved in 1991 from the exact asymptotically flat vacuum Einstein equations that the stress-energy carried to "
-              "null infinity by gravitational waves themselves sources a permanent DC transverse-traceless strain offset Δh_+^mem of characteristic "
-              "scale Δh_char = 2 G E_rad / (c⁴ D_L), shifting the proper separation of free-falling mirrors or optical clocks by ΔL / L₀ = (1/2) Δh_+^mem; "
+              "null infinity by gravitational waves themselves sources a permanent DC transverse-traceless strain offset Δh_+^mem; for a quasi-circular "
+              "binary Favata's 2009 leading-quadrupole expression, written with the radiated energy, is Δh_+^mem = Δh_char sin²ι (17 + cos²ι) / 24 with "
+              "Δh_char = G E_rad / (c⁴ D_L), shifting the proper separation of free-falling mirrors or optical clocks by ΔL / L₀ = (1/2) Δh_+^mem; "
               "in 2016 Andrew Strominger and Alexander Zhiboedov proved that this displacement memory step, Bondi–Metzner–Sachs (BMS) supertranslation "
               "conservation at null infinity, and Weinberg's soft-graviton pole are Fourier and Ward transforms of one infrared triangle.",
               "Demetrios Christodoulou demostró en 1991 a partir de las ecuaciones exactas de Einstein en el vacío asintóticamente plano que la "
               "energía-momento transportada al infinito nulo por las propias ondas gravitacionales genera un escalón permanente de deformación "
-              "transversal sin traza Δh_+^mem de escala característica Δh_char = 2 G E_rad / (c⁴ D_L), desplazando la separación propia entre espejos "
+              "transversal sin traza Δh_+^mem; para una binaria cuasicircular la expresión cuadrupolar dominante de Favata (2009), escrita con la energía radiada, es Δh_+^mem = Δh_char sin²ι (17 + cos²ι) / 24 con Δh_char = G E_rad / (c⁴ D_L), desplazando la separación propia entre espejos "
               "o relojes en caída libre por ΔL / L₀ = (1/2) Δh_+^mem; en 2016 Andrew Strominger y Alexander Zhiboedov demostraron que este escalón de "
               "memoria, la conservación por supertraslaciones de Bondi–Metzner–Sachs (BMS) en el infinito nulo y el polo de gravitón blando de Weinberg "
               "son transformadas de Fourier y de Ward de un mismo triángulo infrarrojo.",
               parent=ABB16),
             T(" Evaluated on our kernel's fiducial GW150914 benchmark (E_rad = 3.0 M_⊙ c², D_L = 410 Mpc, L₀ = 4000 m), the characteristic step is "
-              "Δh_char = 7.00×10⁻²² (ΔL_char = 1.40×10⁻¹⁸ m, or edge-on quadrupole Δh_+ = 4.96×10⁻²² and ΔL = 9.92×10⁻¹⁹ m), and on a fiducial "
-              "400 Mpc GW250114-scale benchmark (at 3.0 M_⊙ c² fiducial radiated energy) Δh_char = 7.18×10⁻²² (ΔL_char = 1.44×10⁻¹⁸ m)—with "
+              "Δh_char = 3.50×10⁻²² (ΔL_char = 7.00×10⁻¹⁹ m, or edge-on quadrupole Δh_+ = 2.48×10⁻²² and ΔL = 4.96×10⁻¹⁹ m), and on a fiducial "
+              "400 Mpc GW250114-scale benchmark (at 3.0 M_⊙ c² fiducial radiated energy) Δh_char = 3.59×10⁻²² (ΔL_char = 7.18×10⁻¹⁹ m)—with "
               "5-point Gauss–Legendre quadrature of dE_rad/dt matching the closed-form hyperbolic-tangent step within 1.3×10⁻¹⁶.",
               " Evaluado en el punto fiducial de nuestro kernel para GW150914 (E_rad = 3.0 M_⊙ c², D_L = 410 Mpc, L₀ = 4000 m), el escalón característico "
-              "es Δh_char = 7.00×10⁻²² (ΔL_char = 1.40×10⁻¹⁸ m, o cuadrupolar de canto Δh_+ = 4.96×10⁻²² y ΔL = 9.92×10⁻¹⁹ m), y en un punto fiducial "
-              "de escala GW250114 a 400 Mpc (con 3.0 M_⊙ c² de energía radiada fiducial) Δh_char = 7.18×10⁻²² (ΔL_char = 1.44×10⁻¹⁸ m), coincidiendo "
+              "es Δh_char = 3.50×10⁻²² (ΔL_char = 7.00×10⁻¹⁹ m, o cuadrupolar de canto Δh_+ = 2.48×10⁻²² y ΔL = 4.96×10⁻¹⁹ m), y en un punto fiducial "
+              "de escala GW250114 a 400 Mpc (con 3.0 M_⊙ c² de energía radiada fiducial) Δh_char = 3.59×10⁻²² (ΔL_char = 7.18×10⁻¹⁹ m), coincidiendo "
               "la cuadratura de Gauss y Legendre de 5 puntos de dE_rad/dt con el escalón cerrado de tangente hiperbólica dentro de 1.3×10⁻¹⁶."),
         ),
         P(
@@ -269,27 +272,27 @@ PAGE: dict = {
               "Virgo por Hübner, Talbot, Lasky y Thrane (2020) fijan cotas superiores observacionales sobre la señal de memoria y proyectan su "
               "detección coherente acumulando cerca de 2000 detecciones binarias de clase O3.",
               scope=EMP_SCOPE),
-            T(" Across a space-borne 2.5×10⁹ m LISA baseline free of terrestrial seismic walls, that same 7.00×10⁻²² strain scale corresponds to a "
-              "0.88 pm proper separation step.",
+            T(" Across a space-borne 2.5×10⁹ m LISA baseline free of terrestrial seismic walls, that same 3.50×10⁻²² strain scale corresponds to a "
+              "0.44 pm proper separation step.",
               " A través de una línea base espacial tipo LISA de 2.5×10⁹ m libre del muro sísmico terrestre, esa misma escala de deformación de "
-              "7.00×10⁻²² equivale a un escalón de separación propia de 0.88 pm."),
+              "3.50×10⁻²² equivale a un escalón de separación propia de 0.44 pm."),
         ),
         {"type": "h2", "id": "anomaly", "en": "III · Chiral and mixed gauge–gravitational anomaly cancellation", "es": "III · Cancelación de anomalías quirales y mixtas gauge-gravitacionales", "short_en": "III · Anomaly Bridge", "short_es": "III · Puente de Anomalías"},
         {"type": "equation", "text": "Tr[6Y] = 2N_c − 4N_c + 2N_c − 6 + 6 = 0,   2 Tr[T_{SU(2)}²(6Y)] = N_c − 3 = 0,   Tr[(6Y)³] = −54(N_c − 3) = 0"},
         P(
-            C("DERIVED", [ADL69, DEL72, MICRO],
+            C("DERIVED", [ADL69, DEL72, AGW84, MICRO],
               "Gravity enters consistent chiral quantum field theory a second time at one loop: Adler (1969) showed that fermion triangle diagrams can "
-              "break classical chiral gauge symmetries, and Delbourgo and Salam (1972) computed the mixed gravitational triangle with one U(1)_Y "
-              "hypercharge vertex and two external gravitons, proving that diffeomorphism and hypercharge gauge invariance fail unless the sum of "
-              "left-handed Weyl hypercharges vanishes, Tr[Y] = 0. Parameterizing one Standard Model generation by integer hypercharges 6Y "
+              "break classical chiral gauge symmetries, and Delbourgo and Salam (1972) computed the fermion triangle with one chiral current and two external gravitons; applied to hypercharge, "
+              "as in Alvarez-Gaumé and Witten's 1984 treatment of gravitational anomalies, the U(1)_Y current stays conserved in a gravitational "
+              "background only if the sum of left-handed Weyl hypercharges vanishes, Tr[Y] = 0. Parameterizing one Standard Model generation by integer hypercharges 6Y "
               "(Q_L: 2N_c at +1, u_R^c: N_c at −4, d_R^c: N_c at +2, L_L: 2 at −3, e_R^c: 1 at +6) gives Tr[6Y] = 0 and 2 Tr[T_{SU(3)}²(6Y)] = "
-              "2(+1) − 4 + 2 = 0, while 2 Tr[T_{SU(2)}²(6Y)] = N_c − 3 and Tr[(6Y)³] = −54(N_c − 3) vanish if and only if N_c = 3.",
+              "2(+1) − 4 + 2 = 0, while 2 Tr[T_{SU(2)}²(6Y)] = N_c − 3 and Tr[(6Y)³] = −54(N_c − 3) vanish, with the hypercharges held at these observed values, if and only if N_c = 3.",
               "La gravedad entra por segunda vez en la consistencia de las teorías cuánticas quirales a un lazo: Adler (1969) mostró que los diagramas "
-              "triangulares de fermiones pueden romper simetrías gauge quirales clásicas, y Delbourgo y Salam (1972) calcularon el triángulo mixto "
-              "gravitacional con un vértice de hipercarga U(1)_Y y dos gravitones externos, demostrando que la invariancia bajo difeomorfismos e "
-              "hipercarga falla a menos que se anule la suma de hipercargas de Weyl zurdas, Tr[Y] = 0. Parametrizar una generación del Modelo Estándar "
+              "triangulares de fermiones pueden romper simetrías gauge quirales clásicas, y Delbourgo y Salam (1972) calcularon el triángulo de fermiones con una corriente quiral y dos gravitones externos; aplicado a la hipercarga, "
+              "como en el tratamiento de las anomalías gravitacionales de Alvarez-Gaumé y Witten (1984), la corriente U(1)_Y solo se conserva en un fondo "
+              "gravitacional si se anula la suma de hipercargas de Weyl zurdas, Tr[Y] = 0. Parametrizar una generación del Modelo Estándar "
               "con hipercargas enteras 6Y (Q_L: 2N_c en +1, u_R^c: N_c en −4, d_R^c: N_c en +2, L_L: 2 en −3, e_R^c: 1 en +6) arroja Tr[6Y] = 0 y "
-              "2 Tr[T_{SU(3)}²(6Y)] = 2(+1) − 4 + 2 = 0, mientras que 2 Tr[T_{SU(2)}²(6Y)] = N_c − 3 y Tr[(6Y)³] = −54(N_c − 3) se anulan si y solo si N_c = 3.",
+              "2 Tr[T_{SU(3)}²(6Y)] = 2(+1) − 4 + 2 = 0, mientras que 2 Tr[T_{SU(2)}²(6Y)] = N_c − 3 y Tr[(6Y)³] = −54(N_c − 3) se anulan, con las hipercargas fijas en estos valores observados, si y solo si N_c = 3.",
               parent=MICRO),
             T(" If the right-handed electron singlet e_R^c is omitted, the mixed gravitational trace jumps to Tr[6Y] = −6 ≠ 0; if quark colour "
               "multiplicity is perturbed to N_c = 2, SU(2)_L² × U(1)_Y fails at −1 and cubic U(1)_Y³ fails at +54.",
@@ -374,8 +377,8 @@ PAGE: dict = {
               "Una observación estadísticamente significativa, individual o en conjunto, de la memoria permanente de desplazamiento de ondas gravitacionales en LIGO–Virgo–KAGRA, Cosmic Explorer, Einstein Telescope o LISA movería la memoria gravitacional de DERIVADO / COTA a MEDIDO."),
              ("Discovering a fourth chiral fermion family with anomalous hypercharges or any composition-dependent violation of universal free fall (η ≠ 0) would force revision of the low-energy gauge–gravity effective theory.",
               "Descubrir una cuarta familia quiral de fermiones con hipercargas anómalas o cualquier violación dependiente de la composición en la caída libre universal (η ≠ 0) obligaría a revisar la teoría efectiva de baja energía entre campos gauge y gravedad."),
-             ("If the planted-defect run (κ_e / κ_p = 1 + 10⁻⁵ and N_c = 2) ever passed the soft-graviton Ward gate or anomaly gate, or if Gauss–Legendre memory quadrature diverged from 2 G E_rad / (c⁴ D_L) beyond 1e-12, the verifier exits 1 and halts the build.",
-              "Si la corrida con defecto plantado (κ_e / κ_p = 1 + 10⁻⁵ y N_c = 2) pasara alguna vez la compuerta de Ward o de anomalías, o si la cuadratura de Gauss y Legendre divergiera de 2 G E_rad / (c⁴ D_L) más allá de 1e-12, el verificador sale con código 1 y detiene la construcción."),
+             ("If the planted-defect run (κ_e / κ_p = 1 + 10⁻⁵ and N_c = 2) ever passed the soft-graviton Ward gate or anomaly gate, or if Gauss–Legendre memory quadrature diverged from G E_rad / (c⁴ D_L) beyond 1e-12, the verifier exits 1 and halts the build.",
+              "Si la corrida con defecto plantado (κ_e / κ_p = 1 + 10⁻⁵ y N_c = 2) pasara alguna vez la compuerta de Ward o de anomalías, o si la cuadratura de Gauss y Legendre divergiera de G E_rad / (c⁴ D_L) más allá de 1e-12, el verificador sale con código 1 y detiene la construcción."),
          ]},
         {"type": "ledger_table"},
     ],
@@ -384,8 +387,8 @@ PAGE: dict = {
          "On relativistic non-collinear e⁻ p⁺ → e⁻ p⁺ kinematics (E_cm = 5.17 GeV), the kernel verifies ||∑ η_a p_a^μ|| = 0, spin-1 charge residual 0, spin-2 Ward residual ||W^μ||/E_cm = 0 at κ_e = κ_p (Gram det = 464.4 > 0), and spin-3 rank-4 quadratic obstruction norm 0.367 > 0.",
          "Sobre cinemática relativista no colineal e⁻ p⁺ → e⁻ p⁺ (E_cm = 5.17 GeV), el kernel verifica ||∑ η_a p_a^μ|| = 0, residuo de carga de espín 1 igual a 0, residuo de Ward de espín 2 ||W^μ||/E_cm = 0 en κ_e = κ_p (det de Gram = 464.4 > 0) y norma de obstrucción cuadrática de espín 3 igual a 0.367 > 0."),
         ("Stage 2 · Christodoulou memory step vs GL5 quadrature", "Etapa 2 · Escalón de memoria de Christodoulou frente a cuadratura GL5",
-         "Composite 5-point Gauss–Legendre integration of d(Δh)/dt = (2G/c⁴D_L) dE_rad/dt across [-22τ_m, +22τ_m] matches the closed-form step Δh_char = 7.003×10⁻²² (ΔL_char = 1.401×10⁻¹⁸ m on 4 km) within 1.34×10⁻¹⁶.",
-         "La integración compuesta de Gauss y Legendre de 5 puntos de d(Δh)/dt = (2G/c⁴D_L) dE_rad/dt en [-22τ_m, +22τ_m] coincide con el escalón cerrado Δh_char = 7.003×10⁻²² (ΔL_char = 1.401×10⁻¹⁸ m en 4 km) dentro de 1.34×10⁻¹⁶."),
+         "Composite 5-point Gauss–Legendre integration of d(Δh)/dt = (G/c⁴D_L) dE_rad/dt across [-22τ_m, +22τ_m] matches the closed-form step Δh_char = 3.502×10⁻²² (ΔL_char = 7.003×10⁻¹⁹ m on 4 km) within 1.34×10⁻¹⁶.",
+         "La integración compuesta de Gauss y Legendre de 5 puntos de d(Δh)/dt = (G/c⁴D_L) dE_rad/dt en [-22τ_m, +22τ_m] coincide con el escalón cerrado Δh_char = 3.502×10⁻²² (ΔL_char = 7.003×10⁻¹⁹ m en 4 km) dentro de 1.34×10⁻¹⁶."),
         ("Stage 3 · Chiral & mixed gravitational anomaly polynomials + Lean 4 Prelude", "Etapa 3 · Polinomios de anomalías quirales y gravitacionales + Lean 4 Prelude",
          "Evaluates Tr[6Y], 2Tr[T_{SU(3)}²(6Y)], 2Tr[T_{SU(2)}²(6Y)] = N_c − 3, and Tr[(6Y)³] = −54(N_c − 3) across N_c ∈ {1..5}, and audits HolonomySoftAnomaly.lean (0 imports, 0 sorry, 12 theorems).",
          "Evalúa Tr[6Y], 2Tr[T_{SU(3)}²(6Y)], 2Tr[T_{SU(2)}²(6Y)] = N_c − 3 y Tr[(6Y)³] = −54(N_c − 3) en N_c ∈ {1..5}, y audita HolonomySoftAnomaly.lean (0 importaciones, 0 sorry, 12 teoremas)."),
@@ -406,6 +409,8 @@ PAGE: dict = {
         ("Weinberg, S. (1965). Infrared photons and gravitons. Physical Review, 140(2B), B516–B524.", "10.1103/PhysRev.140.B516"),
         ("Adler, S. L. (1969). Axial-vector vertex in spinor electrodynamics. Physical Review, 177(5), 2426–2438.", "10.1103/PhysRev.177.2426"),
         ("Delbourgo, R., & Salam, A. (1972). The gravitational correction to PCAC. Physics Letters B, 40(3), 381–382.", "10.1016/0370-2693(72)90825-8"),
+        ("Alvarez-Gaumé, L., & Witten, E. (1984). Gravitational anomalies. Nuclear Physics B, 234(2), 269–330.", "10.1016/0550-3213(84)90066-X"),
+        ("Favata, M. (2009). Nonlinear gravitational-wave memory from binary black hole mergers. The Astrophysical Journal Letters, 696(2), L159–L162.", "10.1088/0004-637X/696/2/L159"),
         ("Christodoulou, D. (1991). Nonlinear nature of gravitation and gravitational-wave experiments. Physical Review Letters, 67(12), 1486–1489.", "10.1103/PhysRevLett.67.1486"),
         ("Strominger, A., & Zhiboedov, A. (2016). Gravitational memory, BMS supertranslations and soft theorems. Journal of High Energy Physics, 2016(1), 086.", "10.1007/JHEP01(2016)086"),
         ("Hübner, M., Talbot, C., Lasky, P. D., & Thrane, E. (2020). Measuring gravitational-wave memory in the first LIGO/Virgo gravitational-wave transient catalog. Physical Review D, 101(2), 023011.", "10.1103/PhysRevD.101.023011"),
@@ -418,7 +423,7 @@ PAGE: dict = {
         ("Lee, J. G., Adelberger, E. G., Marcoline, F. V., Terrano, W. A., & Heckel, B. R. (2021). The Fourier–Bessel expansion applied to experimental probes of gravity and feeble short-range interactions. Classical and Quantum Gravity, 38(8), 085020.", "10.1088/1361-6382/abebf2"),
         ("Tan, W.-H., et al. (2020). Improvement for testing the gravitational inverse-square law at the submillimeter range. Physical Review Letters, 124(5), 051301.", "10.1103/PhysRevLett.124.051301"),
         ("Bose, S., et al. (2017). Spin entanglement witness for quantum gravity. Physical Review Letters, 119(24), 240401.", "10.1103/PhysRevLett.119.240401"),
-        ("Schut, M., Geraci, A., Bose, S., & Mazumdar, A. (2024). Micrometer-size spatial superpositions for the QGEM-protocol via screening and trapping. Physical Review Research, 6(4), 043193.", "10.1103/PhysRevResearch.6.043193"),
+        ("Schut, M., Geraci, A., Bose, S., & Mazumdar, A. (2024). Micrometer-size spatial superpositions for the QGEM-protocol via screening and trapping. Physical Review Research, 6(1), 013199.", "10.1103/PhysRevResearch.6.013199"),
         ("Zhang, C., Ooi, T., Higgins, J. S., Doyle, J. F., von der Wense, L., Beeks, K., Leitner, A., Kazakov, G. A., Li, P., Thirolf, P. G., Schumm, T., & Ye, J. (2024). Frequency ratio of the ²²⁹ᵐTh nuclear isomeric transition and the ⁸⁷Sr atomic clock. Nature, 633, 63–70.", "10.1038/s41586-024-07839-6"),
         ("Tooby-Smith, J. (2025). HepLean: Digitalising high energy physics. Computer Physics Communications, 308, 109457.", "10.1016/j.cpc.2024.109457"),
     ],

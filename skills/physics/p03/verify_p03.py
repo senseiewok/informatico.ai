@@ -16,7 +16,7 @@ FOLIO_METADATA = {
     "slug": "p03",
     "title": "Soft Matter Rheology and Anomalous Subdiffusion in Entangled Mucin Hydrogels",
     "governing_law": "η(γ̇) = η_∞ + (η_0 − η_∞)[1 + (λ γ̇)²]^((n−1)/2) · ξ_mesh ~ w^(−0.75)",
-    "primary_kernel": "tools/physics_kernel.py",
+    "primary_kernel": "skills/physics/p03/verify_p03.py",
     "primary_doi": "10.1103/PhysRevLett.74.1250",
     "scite_report": "https://scite.ai/reports/10.1103/PhysRevLett.74.1250",
     "benchmarks": [{"label": "Mesh Pore Size", "value": "140.0 nm (Healthy) vs 49.5 nm (CF)"}, {"label": "Subdiffusion Exponent (alpha)", "value": "0.814 (65 nm LNP in Healthy)"}, {"label": "Zero-Shear Viscosity", "value": "0.055 Pa·s (2% solids)"}, {"label": "Kernel Verification", "value": "PASS · VERIFIED"}],

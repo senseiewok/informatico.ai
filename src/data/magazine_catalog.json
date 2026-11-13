@@ -2754,7 +2754,7 @@
         "folio_id": "P.01",
         "governing_law": "σ_ij = −k_B (∂²S / ∂α_i ∂α_j)⁻¹ · A_r = k_B T ln(v_r⁺ / v_r⁻)",
         "pillar": "physics",
-        "primary_kernel": "tools/physics_kernel.py",
+        "primary_kernel": "skills/physics/p01/verify_p01.py",
         "readouts": [
           {
             "label": "Coupling Efficiency",
@@ -2840,7 +2840,7 @@
         "steps": [
           "Stage 1 (Uncoupled Kinetic Trap, G551D): Gating cross-covariance sigma_ATP,Cl ≈ 0.05 fails to transmit chemical affinity into pore dilation.",
           "Stage 2 (Fluctuation-Dissipation Coupling): Keizer matrix d sigma/dt = M sigma + sigma M^T + Gamma matches forward and backward reaction fluxes.",
-          "Stage 3 (Dual-Corrector Stabilization): Ivacaftor/Trikafta lowers activation barrier Delta G^‡ and restores coupling efficiency to 0.84.",
+          "Stage 3 (Potentiator Rescue, Model): In the kernel, a potentiator such as ivacaftor lowers activation barrier Delta G^‡ and restores the modelled coupling efficiency to 0.84.",
           "Stage 4 (Stationary NESS Cycle): Bounded dissipation-fluctuation ratio (1.12 <= 2.0) maintains stable open-state chloride conduction."
         ],
         "subtitle": "How Keizer's non-equilibrium fluctuation theory, Harada-Sasa dissipation, and Hill cycle flux diagrams quantify the energetic efficiency of ABC-transporter gating cycles and allosteric rescue.",
@@ -2874,7 +2874,7 @@
         "folio_id": "P.02",
         "governing_law": "∂_t θ_i = ω_0 + ∑_j K_ij sin(θ_j − θ_i − α) · v_wave = λ f_beat",
         "pillar": "physics",
-        "primary_kernel": "tools/physics_kernel.py",
+        "primary_kernel": "skills/physics/p02/verify_p02.py",
         "readouts": [
           {
             "label": "Beating Frequency",
@@ -2994,7 +2994,7 @@
         "folio_id": "P.03",
         "governing_law": "η(γ̇) = η_∞ + (η_0 − η_∞)[1 + (λ γ̇)²]^((n−1)/2) · ξ_mesh ~ w^(−0.75)",
         "pillar": "physics",
-        "primary_kernel": "tools/physics_kernel.py",
+        "primary_kernel": "skills/physics/p03/verify_p03.py",
         "readouts": [
           {
             "label": "Mesh Pore Size",
@@ -3038,8 +3038,8 @@
           "kicker": "SIDENOTE P.03 · DESIGN RULES FOR INHALED GENE THERAPY"
         },
         "sidenote_2": {
-          "body": "Inside dense mucin hydrogels, non-specific adhesive interactions and spatial tortuosity convert ordinary Brownian motion into anomalous subdiffusion where MSD <Delta r^2(t)> ~ t^alpha with subdiffusion exponent alpha = 0.814 in healthy vs alpha < 0.20 in dehydrated sputum plugs.",
-          "kicker": "SIDENOTE P.03-B · BROWNIAN SUBDIFFUSION & CONTINUOUS TIME RANDOM WALKS (DOI 10.1103/PhysRevLett.79.3286)"
+          "body": "Inside dense mucin hydrogels, non-specific adhesive interactions and spatial tortuosity convert ordinary Brownian motion into anomalous subdiffusion where MSD <Delta r^2(t)> ~ t^alpha with a model subdiffusion exponent alpha = 0.814 for healthy mucus vs alpha < 0.20 for dehydrated sputum plugs (kernel values, not measurements).",
+          "kicker": "SIDENOTE P.03-B · PASSIVE MICRORHEOLOGY FROM THERMAL FLUCTUATIONS (DOI 10.1103/PhysRevLett.79.3286)"
         },
         "skill": {
           "description": "AI-agnostic physical skill for complex fluid rheology, Carreau-Yasuda shear thinning, and nanoparticle anomalous subdiffusion in airway mucus.",
@@ -3078,9 +3078,9 @@
         },
         "status_badge": "REDATED REV 1.2",
         "steps": [
-          "Stage 1 (Healthy Mesh, 2% solids): Mucin mesh pore size xi ≈ 140 nm allows 65 nm PEGylated LNPs to diffuse freely (alpha ≈ 0.72).",
+          "Stage 1 (Healthy Mesh, 2% solids): Mucin mesh pore size xi ≈ 140 nm allows 65 nm PEGylated LNPs to diffuse nearly freely (model alpha ≈ 0.81).",
           "Stage 2 (Shear-Thinning Response): Ciliary shear rates (dot_gamma ~ 10 s^-1) reduce local gel viscosity by an order of magnitude via Carreau-Yasuda dynamics.",
-          "Stage 3 (Concentration Shock & Plug Formation): In CF sputum (8% solids), pore size drops to 45 nm, sterically locking particles larger than 50 nm.",
+          "Stage 3 (Concentration Shock & Plug Formation): In CF sputum (8% solids), the model pore size drops to about 50 nm, sterically locking particles larger than 50 nm.",
           "Stage 4 (Subdiffusive Trapping): Particle trajectory collapses to alpha < 0.20, demonstrating the necessity of dense PEGylation and mucolytic co-delivery."
         ],
         "subtitle": "Carreau-Yasuda shear-thinning, reptation tube dynamics, and anomalous subdiffusion exponents of gene delivery nanoparticles navigating the airway mucus mesh.",
@@ -3114,7 +3114,7 @@
         "folio_id": "P.04",
         "governing_law": "J_k = −D_k (∇c_k + (z_k F / RT) c_k ∇Φ) · dh_PCL/dt = L_p (ΔΠ_osm − ΔP_hydro)",
         "pillar": "physics",
-        "primary_kernel": "tools/physics_kernel.py",
+        "primary_kernel": "skills/physics/p04/verify_p04.py",
         "readouts": [
           {
             "label": "PCL Height",
@@ -3158,7 +3158,7 @@
           "kicker": "SIDENOTE P.04 · WHY MODULATORS MUST RESTORE OSMOTIC HEADROOM"
         },
         "sidenote_2": {
-          "body": "Button et al. proved that tethered cell-surface mucins form a grafted macromolecular brush acting as a secondary osmotic filter; when mucus layer osmotic modulus exceeds the PCL brush swelling pressure (Delta Pi > 2.5 kPa), water is sucked out, flattening the periciliary space.",
+          "body": "Button et al. showed that tethered cell-surface mucins form a grafted macromolecular brush acting as a secondary osmotic filter; when mucus layer osmotic modulus exceeds that of the PCL brush (about 300 Pa at full height in their measurements; this folio's kernel uses a 2.5 kPa threshold), water is drawn out, flattening the periciliary space.",
           "kicker": "SIDENOTE P.04-B · DONNAN SWELLING & GRAFTED POLYMER BRUSHES (DOI 10.1103/RevModPhys.80.839)"
         },
         "skill": {
@@ -3236,7 +3236,7 @@
         "kernel_verdict": "Not independently verified",
         "kernel_verdict_es": "Sin verificación independiente",
         "pillar": "physics",
-        "primary_kernel": "tools/physics_kernel.py",
+        "primary_kernel": "skills/physics/p05/verify_p05.py",
         "reading_time": "22 MIN READ",
         "readouts": [
           {
@@ -3352,7 +3352,7 @@
         "kernel_verdict": "Not independently verified",
         "kernel_verdict_es": "Sin verificación independiente",
         "pillar": "physics",
-        "primary_kernel": "tools/physics_kernel.py",
+        "primary_kernel": "skills/physics/p06/verify_p06.py",
         "reading_time": "22 MIN READ",
         "readouts": [
           {
@@ -3402,7 +3402,7 @@
         },
         "sidenote_2": {
           "body": "Flexible poly(beta-amino ester) and polysarcosine mRNA polyplexes leverage aspect-ratio reptation to traverse mucin pores that trap rigid spheres.",
-          "kicker": "SIDENOTE P.06-B · PRIME EDITING & INHALED POLYPLEXES (DOI 10.1002/adma.201805116)"
+          "kicker": "SIDENOTE P.06-B · INHALED mRNA POLYPLEXES (DOI 10.1002/adma.201805116)"
         },
         "skill": {
           "description": "AI-agnostic polymer physics skill for de Gennes reptation (tau_d ~ N^3, D_rep ~ N^-2), Doi-Edwards tube viscoelasticity, and kilobase nucleic-acid gel transport.",
@@ -3468,7 +3468,7 @@
         "kernel_verdict": "Partial: 1 of 4 readouts recomputed",
         "kernel_verdict_es": "Parcial: 1 de 4 lecturas recalculadas",
         "pillar": "physics",
-        "primary_kernel": "tools/physics_kernel.py",
+        "primary_kernel": "skills/physics/p07/verify_p07.py",
         "reading_time": "22 MIN READ",
         "readouts": [
           {
@@ -3493,7 +3493,7 @@
             "date": "2026-11-02",
             "edition": "REV 1.0",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified -C_p = 2.84 throat suction, -C_L = 3.38 Z-mode downforce, and h_crit = 19.0 mm Hopf stall boundary.",
-            "summary": "REV 1.0 (Published 2026-11-02): Inaugural Volume IV Formula 1 fluid physics monograph uniting Zhang-Toet-Zerihan ground-effect aerodynamics (DOI 10.1146/annurev.fluid.38.050304.092016) with 2026 FIA Active X/Z-mode wings and porpoising Hopf stability."
+            "summary": "REV 1.0 (Published 2026-11-02): Inaugural Volume IV Formula 1 fluid physics monograph uniting Zhang-Toet-Zerihan ground-effect aerodynamics (DOI 10.1115/1.2110263) with 2026 FIA Active X/Z-mode wings and porpoising Hopf stability."
           }
         ],
         "scite": {
@@ -3578,7 +3578,7 @@
         "kernel_verdict": "Discrepancy open: 2 readouts contradicted",
         "kernel_verdict_es": "Discrepancia abierta: 2 lecturas contradichas",
         "pillar": "physics",
-        "primary_kernel": "tools/physics_kernel.py",
+        "primary_kernel": "skills/physics/p08/verify_p08.py",
         "reading_time": "22 MIN READ",
         "readouts": [
           {
@@ -3694,7 +3694,7 @@
           "P.06"
         ],
         "pillar": "physics",
-        "primary_kernel": "tools/physics_kernel.py",
+        "primary_kernel": "skills/physics/p09/verify_p09.py",
         "reading_time": "22 MIN READ",
         "readouts": [
           {
@@ -3811,7 +3811,7 @@
           "P.08"
         ],
         "pillar": "physics",
-        "primary_kernel": "tools/physics_kernel.py",
+        "primary_kernel": "skills/physics/p10/verify_p10.py",
         "reading_time": "22 MIN READ",
         "readouts": [
           {
@@ -3916,12 +3916,12 @@
         ],
         "lineage_mode": "CONTINUATION · Continues P.05 WKB Quantum Tunneling & P.10 Topological Chern Invariants",
         "title": "Fault-Tolerant Quantum Computing & Clean Nitrogen Fixation: Surface-Code Stabilizers, Non-Abelian Anyon Braiding & FeMoCo Catalysis",
-        "subtitle": "Continuing Folio P.05's quantum tunneling and P.10's topological invariants: how surface-code parity checks in Stim, non-Abelian Majorana braiding, and PySCF active-space quantum simulation unlock ambient-temperature nitrogen fertilizer without fossil-fuel steam reforming.",
+        "subtitle": "Continuing Folio P.05's quantum tunneling and P.10's topological invariants: how surface-code parity checks in Stim, non-Abelian Majorana braiding, and PySCF active-space quantum simulation could one day inform the search for ambient-temperature nitrogen fertilizer without fossil-fuel steam reforming.",
         "date_published": "2026-11-07",
         "date_redated": "2026-11-07",
         "current_edition": "REV 1.0",
         "status_badge": "QUANTUM QEC & FEMOCO · REV 1.0",
-        "primary_kernel": "tools/physics_kernel.py",
+        "primary_kernel": "skills/physics/p11/verify_p11.py",
         "governing_law": "p_L ≈ 0.03 (p / p_th)^((d+1)/2) · [A_s, B_p] = 0 · H_FeMoCo |Ψ_0⟩ = E_0 |Ψ_0⟩",
         "colophon": {
           "identifier": "P.11 · Surface-Code Quantum Error Correction & FeMoCo Catalysis · Stim / PySCF",
@@ -3968,7 +3968,7 @@
           },
           {
             "label": "WEF Clean Fertilizer Verdict",
-            "value": "AMBIENT CATALYST PASS"
+            "value": "RESOURCE ESTIMATE ONLY"
           }
         ],
         "spec_plate": {
@@ -4029,18 +4029,18 @@
           "M.09"
         ],
         "lineage_mode": "SYNTHESIS · Synthesizes P.01 Non-Equilibrium Fluctuations, P.07 High-Re Aerodynamics & M.09 Continuum Transport",
-        "title": "Hilbert's Sixth Problem Resolved: Hard-Sphere Boltzmann Kinetics to Navier–Stokes Continuum & Neural Climate Operators",
-        "subtitle": "Synthesizing Folio P.01's statistical mechanics, P.07's aerodynamics, and M.09's continuum transport: how Yu Deng, Zaher Hani, and Xiao Ma (arXiv:2503.01800) rigorously derived incompressible Navier–Stokes from Newtonian particle collisions across arbitrary macroscopic times.",
+        "title": "Hilbert's Sixth Problem: A Proposed Derivation from Hard-Sphere Boltzmann Kinetics to Navier–Stokes Continuum & Neural Climate Operators",
+        "subtitle": "Synthesizing Folio P.01's statistical mechanics, P.07's aerodynamics, and M.09's continuum transport: how Yu Deng, Zaher Hani, and Xiao Ma (arXiv:2503.01800) report, in a preprint, a rigorous derivation of the fluid equations from Newtonian hard-sphere collisions over long times.",
         "date_published": "2026-11-07",
         "date_redated": "2026-11-10",
         "current_edition": "REV 1.4",
         "status_badge": "HILBERT 6TH + TUR · REV 1.4",
-        "primary_kernel": "tools/physics_kernel.py",
+        "primary_kernel": "skills/physics/p12/verify_p12.py",
         "governing_law": "Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² ≥ 2 · ∂_t f + v·∇_x f = (1/Kn) Q(f,f) ⇒ σ_visc = (2μ/T) S_ij S_ij ≥ 0",
         "colophon": {
           "identifier": "P.12 · Hilbert's 6th & TUR Bridge: Markov Jumps → Boltzmann → Navier–Stokes · arXiv:2503.01800",
           "kernels": "Barato–Seifert TUR (Q_TUR ≥ 2) · Boltzmann–Grad (N ε^(d−1) = 1/Kn) · Deng–Hani–Ma Trees · Chapman–Enskog σ_visc",
-          "benchmarks": "Q_TUR = 2.3617 ≥ 2 (A = 1.5 rad) · Kn = 10⁻⁴ ⇒ ||f_N − M_u||_L² ≤ C Kn · σ_visc = (2μ/T)S_ij S_ij > 0",
+          "benchmarks": "Q_TUR = 2.3617 ≥ 2 (A = 1.5) · Kn = 10⁻⁴ ⇒ ||f_N − M_u||_L² ≤ C Kn · σ_visc = (2μ/T)S_ij S_ij > 0",
           "bridge": "Synthesizes P.01/P.07/M.09/M.11 · Mesoscopic Markovian TUR Precision Floor ↔ Continuum Viscous Entropy"
         },
         "sliders": [
@@ -4063,18 +4063,18 @@
         ],
         "steps": [
           "Stage 1 (Level 1 — Mesoscopic Markovian TUR & Newtonian Hard Spheres): On non-equilibrium steady-state Markovian jump cycles (Barato & Seifert 2015, DOI 10.1103/PhysRevLett.114.158101), current precision obeys Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² ≥ 2 while N hard spheres evolve under Boltzmann–Grad scaling N ε^(d−1) = 1/Kn.",
-          "Stage 2 (Level 2 — Deng–Hani–Ma Long-Time Boltzmann Kinetic Limit, arXiv:2503.01800): Cutting cumulant recollision loops via layered Feynman interaction trees suppresses pathological memory correlations, proving convergence to the irreversible Boltzmann equation for arbitrarily long times.",
+          "Stage 2 (Level 2 — Deng–Hani–Ma Long-Time Boltzmann Kinetic Limit, arXiv:2408.07818 and arXiv:2503.01800): Cutting cumulant recollision loops via layered Feynman interaction trees suppresses pathological memory correlations, which the authors' 2024 preprint reports gives convergence to the Boltzmann equation over long times; the 2025 preprint builds on it to reach the fluid equations.",
           "Stage 3 (Level 3 — Chapman–Enskog Viscous Entropy Production Kn → 0, Continuing P.07, M.09 & M.11): As Kn → 0, local Maxwellian projection yields incompressible Navier–Stokes flow with strictly non-negative viscous entropy production σ_visc = (2μ/T) S_ij S_ij ≥ 0 (DOI 10.1007/s00222-003-0316-5).",
-          "Stage 4 (Thermodynamically Consistent Neural Climate Operators): Grounding Fourier Neural Operators in exact Boltzmann–Navier–Stokes conservation laws and positive dissipation (DOI 10.1016/j.jcp.2018.10.045) delivers 10,000× faster cyclone and flash-flood forecasts."
+          "Stage 4 (Thermodynamically Consistent Neural Climate Operators): Physics-informed neural networks (DOI 10.1016/j.jcp.2018.10.045) and neural operators can be constrained by conservation laws and positive dissipation; faster, trustworthy cyclone and flash-flood forecasts are this folio's outlook, not a reported result."
         ],
         "readouts": [
           {
             "label": "Markovian TUR Product Q_TUR",
-            "value": "2.3617 ≥ 2.0 (A = 1.5 rad PASS)"
+            "value": "2.3617 ≥ 2.0 (A = 1.5 PASS)"
           },
           {
             "label": "Hydrodynamic Convergence Error",
-            "value": "O(Kn) = 1.0 × 10⁻⁴ (EXACT)"
+            "value": "O(Kn) = 1.0 × 10⁻⁴ (MODEL SCALING)"
           },
           {
             "label": "Chapman–Enskog Viscous σ_visc",
@@ -4082,22 +4082,22 @@
           },
           {
             "label": "Hilbert's 6th + TUR Verdict",
-            "value": "BOLTZMANN → STOKES TUR QED"
+            "value": "KERNEL CHECKS PASS (NOT A PROOF)"
           }
         ],
         "spec_plate": {
           "division": "HILBERT'S SIXTH PROBLEM / STOCHASTIC TUR / HYDRODYNAMIC CONTINUUM LIMIT",
           "title": "Mesoscopic Markovian TUR to Boltzmann Kinetics, Navier–Stokes Viscous Dissipation & Neural Surrogates",
           "body": "Cross-scale synthesis linking Barato–Seifert Thermodynamic Uncertainty Relations (DOI 10.1103/PhysRevLett.114.158101) in NESS Markovian jump networks across the Deng–Hani–Ma Boltzmann–Grad limit (arXiv:2503.01800) to Chapman–Enskog viscous entropy production σ_visc = (2μ/T) S_ij S_ij ≥ 0 (DOI 10.1007/s00222-003-0316-5).",
-          "meta": "Barato–Seifert TUR DOI 10.1103/PhysRevLett.114.158101, Golse–Saint-Raymond DOI 10.1007/s00222-003-0316-5 & arXiv:2503.01800 verified"
+          "meta": "Barato–Seifert TUR DOI 10.1103/PhysRevLett.114.158101, Golse–Saint-Raymond DOI 10.1007/s00222-003-0316-5 & arXiv:2503.01800 (preprint) cited"
         },
         "sidenote_1": {
           "kicker": "SIDENOTE P.12-A · CROSS-FIELD ANALOGY · GEORGES SEURAT'S POINTILLISM & STADIUM CROWD WAVES",
-          "body": "Stand 5 cm from Georges Seurat's 'A Sunday on La Grande Jatte' and you see only discrete paint dots (Newton's atoms). Step back 5 meters and your eye integrates them into shimmering water (Navier–Stokes). Deng, Hani, and Ma proved the exact mathematical zoom lens between the two!"
+          "body": "Stand 5 cm from Georges Seurat's 'A Sunday on La Grande Jatte' and you see only discrete paint dots (Newton's atoms). Step back 5 meters and your eye integrates them into shimmering water (Navier–Stokes). Deng, Hani, and Ma's preprint proposes the rigorous mathematical zoom lens between the two."
         },
         "sidenote_2": {
           "kicker": "SIDENOTE P.12-B · BARATO–SEIFERT TUR SCOPE & CONTINUUM VISCOUS BRIDGE",
-          "body": "For time-homogeneous non-equilibrium steady-state Markovian jump networks (DOI 10.1103/PhysRevLett.114.158101), Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² ≥ 2 bounds current precision by entropy production; under Kn → 0 coarse-graining (arXiv:2503.01800), microscopic irreversibility projects onto continuum viscous dissipation σ_visc = (2μ/T) S_ij S_ij ≥ 0."
+          "body": "For time-homogeneous non-equilibrium steady-state Markovian jump networks (DOI 10.1103/PhysRevLett.114.158101), Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² ≥ 2 bounds current precision by entropy production; this folio's own bridge, not a theorem of either paper, is that under Kn → 0 coarse-graining (arXiv:2503.01800) microscopic irreversibility projects onto continuum viscous dissipation σ_visc = (2μ/T) S_ij S_ij ≥ 0."
         },
         "skill": {
           "filename": "hilbert-sixth-boltzmann-navier-stokes-SKILL.md",
@@ -4114,7 +4114,7 @@
             "edition": "REV 1.4",
             "date": "2026-11-10",
             "summary": "REV 1.4 (Redated 2026-11-10): Synthesized Barato & Seifert (2015, DOI 10.1103/PhysRevLett.114.158101) Thermodynamic Uncertainty Relation (Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² = A·coth(A/2) ≥ 2 for NESS Markovian jump networks, bridged to Folio M.11) across the Boltzmann–Grad hard-sphere limit (Kn → 0) into Chapman–Enskog Navier–Stokes viscous entropy production σ_visc = (2μ/T) S_ij S_ij ≥ 0 (DOI 10.1007/s00222-003-0316-5), with stdlib numerical verifier and --planted-defect entropy knockouts.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified Markovian steady-state TUR scope (Q_TUR = 2.3617 > 2 at A = 1.5 rad), hard-sphere collision invariants (< 1e-14), and positive Couette viscous dissipation σ_visc > 0."
+            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified Markovian steady-state TUR scope (Q_TUR = 2.3617 > 2 at A = 1.5), hard-sphere collision invariants (< 1e-14), and positive Couette viscous dissipation σ_visc > 0."
           },
           {
             "edition": "REV 1.0",

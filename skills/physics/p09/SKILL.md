@@ -31,4 +31,4 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Aerosol & LNP Verdict**: `97.4% INTACT mRNA · PASS`
 
 ## 5. Frontier Discovery & Contemporary Research Context (2024–2026)
-- **Sir Geoffrey Taylor's 49.3° Electrohydrodynamic Cone & Rayleigh Fission Limits Protect Inhaled mRNA Nanoparticles**: Completing the biophysical delivery sequence of Folios P.03, P.04, and P.06, Sir Geoffrey Ingram Taylor's P_{1/2}(cos θ_0) = 0 equilibrium cone (Proc. R. Soc. A DOI 10.1098/rspa.1964.0151) and Gañán-Calvo's cone-jet scaling generate monodisperse 2.4 μm bronchial droplets without shearing fragile 4.5 kb CFTR mRNA lipid nanoparticles.
+- **Sir Geoffrey Taylor's 49.3° Electrohydrodynamic Cone & Rayleigh Fission Limits Protect Inhaled mRNA Nanoparticles**: Completing the biophysical delivery sequence of Folios P.03, P.04, and P.06, Sir Geoffrey Ingram Taylor's P_{1/2}(cos θ_0) = 0 equilibrium cone (Proc. R. Soc. A DOI 10.1098/rspa.1964.0151) and Gañán-Calvo's cone-jet scaling are modelled here as generating monodisperse 2.4 μm bronchial droplets at low shear for fragile 4.5 kb CFTR mRNA lipid nanoparticles.

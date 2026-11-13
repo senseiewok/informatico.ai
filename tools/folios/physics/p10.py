@@ -25,7 +25,7 @@ FOLIO = {'category_code': 'P',
                  'Photonic Interference',
  'parent_folios': ['E.03', 'A.05', 'A.08', 'P.08'],
  'pillar': 'physics',
- 'primary_kernel': 'tools/physics_kernel.py',
+ 'primary_kernel': 'skills/physics/p10/verify_p10.py',
  'reading_time': '22 MIN READ',
  'readouts': [{'label': 'Topological Chern Invariant', 'value': 'C = +1 (Topological Phase)'},
               {'label': 'Relative Bandgap (Δω / ω_0)', 'value': '14.2% (|m_T − m_P| Gap)'},
@@ -146,9 +146,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'the glass or inserted a sharp right-angle corner, the light beam would '
                  'effortlessly glide around the defect without reflecting a single photon '
                  'backward.',
- 'act1_body': 'In 2008, Nobel laureate F. Duncan M. Haldane and Srinivas Raghu (Physical Review '
-              'Letters, DOI 10.1103/PhysRevLett.100.013904) proved that topological band '
-              'invariants are not restricted to quantum electrons in magnetic fields—they are a '
+ 'act1_body': 'In 2008, Nobel laureate F. Duncan M. Haldane and Srinivas Raghu (Physical Review Letters, DOI 10.1103/PhysRevLett.100.013904) showed theoretically that topological band invariants are not restricted to quantum electrons in magnetic fields—they are a '
               "universal property of Maxwell's and Helmholtz's wave equations whenever "
               'time-reversal symmetry (T) or spatial inversion symmetry (P) is broken in a '
               'periodic lattice. By embedding gyromagnetic ferrite rods in a honeycomb photonic '
@@ -193,11 +191,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'Whenever |m_T| > |m_P|, the Chern number jumps to |C| = 1, opening a '
                    'topological bandgap Delta_omega / omega_0 where a single chiral edge mode '
                    'traverses the gap and routes 99.9% of wave power around 90° corners without '
-                   'Fabry–Pérot back-reflection. Open-source quantum simulation toolkits and '
-                   'tensor-network libraries like ITensor/ITensors.jl '
-                   '(https://github.com/ITensor/ITensors.jl, DOI 10.21468/SciPostPhysCodeb.4) and '
-                   'Scite-verified smart indices (DOI 10.1162/qss_a_00146) provide exact '
-                   'computational validation for these protected topological invariants.',
+                   'Fabry–Pérot back-reflection. Chern numbers of such band structures can be computed numerically; open tensor-network libraries like ITensor/ITensors.jl (https://github.com/ITensor/ITensors.jl, DOI 10.21468/SciPostPhysCodeb.4) serve related lattice calculations, and the folio\'s references were checked in the Scite citation index (DOI 10.1162/qss_a_00146).',
  'act2_analogy': 'Everyday analogy: A conventional optical fiber is like a narrow two-way mountain '
                  'road where a fallen boulder forces traffic to stop and back up. A topological '
                  'Chern waveguide is like a divided multi-lane expressway where every single lane '
@@ -389,9 +383,7 @@ DISPATCH = {'kicker': 'FRONTIER WAVE PHYSICS DISPATCH · SYNTHESIZING E.03, A.05
  'headline': 'Haldane–Raghu Photonic Chern Insulators & Berry Curvature Route Light Around 90° '
              'Defects With Zero Backscatter',
  'body': 'Synthesizing the acoustic and optical wave monographs of Folios E.03, A.05, A.08, and '
-         'P.08, F. Duncan M. Haldane & Srinivas Raghu (Phys. Rev. Lett. DOI '
-         '10.1103/PhysRevLett.100.013904) proved that non-zero Berry curvature in gyromagnetic '
-         'honeycomb lattices creates topologically protected C = +1 chiral edge highways immune to '
+         'P.08, F. Duncan M. Haldane & Srinivas Raghu (Phys. Rev. Lett. DOI 10.1103/PhysRevLett.100.013904) proposed that non-zero Berry curvature in gyromagnetic photonic crystals can create topologically protected C = +1 chiral edge highways immune to '
          'disorder.'}
 
 META_3D = ('Haldane–Raghu Berry Curvature & Chiral Edge Highway',

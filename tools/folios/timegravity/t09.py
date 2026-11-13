@@ -30,8 +30,8 @@ PAGE: dict = {
     "slug": SLUG,
     "code": CODE,
     "date": "2026-11-10",
-    "order_label_en": "Step 10 of 13",
-    "order_label_es": "Paso 10 de 13",
+    "order_label_en": "Step 10 of 14",
+    "order_label_es": "Paso 10 de 14",
     "kicker_en": "Time & Gravity · T.09 · Where a newly merged horizon rings at frequencies fixed by mass and spin alone",
     "kicker_es": "Tiempo y Gravedad · T.09 · Donde un horizonte recién fusionado resuena a frecuencias fijadas solo por masa y espín",
     "title_en": "A Horizon Rings Like a Bell",
@@ -206,9 +206,9 @@ PAGE: dict = {
         P(
             C("PROPOSED", [ISI19],
               "In 2019 Isi, Giesler, Farr, Scheel and Teukolsky proposed testing the Kerr no-hair theorem right at the merger peak of GW150914 "
-              "by fitting the n = 0 fundamental and n = 1 first overtone together, reporting consistency with the Kerr mass and spin at 3.6σ.",
+              "by fitting the n = 0 fundamental and n = 1 first overtone together, reporting evidence for at least one overtone at 3.6σ and a remnant mass and spin in agreement with the full-signal values, a no-hair test at the 10 percent level.",
               "En 2019 Isi, Giesler, Farr, Scheel y Teukolsky propusieron poner a prueba el teorema de ausencia de pelo de Kerr justo en el pico "
-              "de fusión de GW150914 ajustando juntos el modo fundamental n = 0 y el primer sobretono n = 1, reportando consistencia con la masa y el espín de Kerr a 3.6σ."),
+              "de fusión de GW150914 ajustando juntos el modo fundamental n = 0 y el primer sobretono n = 1, reportando evidencia de al menos un sobretono a 3.6σ y una masa y un espín del remanente acordes con los valores de la señal completa, una prueba de ausencia de pelo al nivel del 10 por ciento."),
             T(" ", " "),
             C("OPEN", [ISI19, COTESTA],
               "In 2022 Cotesta, Carullo, Berti and Cardoso reanalysed the same GW150914 ringdown window and argued that evidence for the n = 1 "

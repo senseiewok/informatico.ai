@@ -17,13 +17,13 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
   - `s = 1` (soft photon, `ε_μ -> ε_μ + q_μ`): `Σ_a η_a q_a = 0` (charge conservation).
   - `s = 2` (soft graviton, `ε_{μν} -> ε_{μν} + q_{(μ} Λ_{ν)}`): `W^μ = Σ_a η_a κ_a p_a^μ = 0` for conserved external 4-momenta `Σ_a η_a p_a^μ = 0`, forcing universal coupling `κ_a = κ = √(32π G / c⁴)` (`η_WEP = 0`).
   - `s >= 3` (massless higher spin): full column rank of `{η_a p_a^{μ_1} ... p_a^{μ_{s-1}}}` forces `g_a = 0` (no macroscopic long-range `s >= 3` force).
-- **Gravitational-wave displacement memory & baseline holonomy**: `Δh_char^mem = 2 G E_rad / (c⁴ D_L)`, `Δh_+^mem(ι) = Δh_char^mem · sin²(ι)(17 + cos²(ι))/24`, shifting proper mirror/clock baseline separation by `ΔL / L_0 = (1/2) Δh_+^mem`.
+- **Gravitational-wave displacement memory & baseline holonomy**: `Δh_char^mem = G E_rad / (c⁴ D_L)`, `Δh_+^mem(ι) = Δh_char^mem · sin²(ι)(17 + cos²(ι))/24`, shifting proper mirror/clock baseline separation by `ΔL / L_0 = (1/2) Δh_+^mem`.
 - **Chiral & mixed gauge–gravitational anomaly cancellation (`6Y` integer scaling)**:
   - `Tr[grav² (6Y)](N_c) = 2 N_c - 4 N_c + 2 N_c - 6 + 6 = 0`
   - `2 Tr[T_{SU(3)}² (6Y)] = 2(+1) + (-4) + (+2) = 0`
   - `2 Tr[T_{SU(2)}² (6Y)](N_c) = N_c - 3 = 0 <=> N_c = 3`
   - `Tr[(6Y)³](N_c) = -54 (N_c - 3) = 0 <=> N_c = 3`
-- **Central numbers**: `||W^μ|| / E_cm = 0` at `κ_e / κ_p = 1`; on fiducial `GW150914` (`E_rad = 3.0 M_⊙ c²`, `D_L = 410 Mpc`, `L_0 = 4000 m`), `Δh_char = 7.003 × 10^{-22}` and `ΔL_char = 1.401 × 10^{-18} m` (`Δh_+(π/2) = 4.961 × 10^{-22}`, `ΔL(π/2) = 9.921 × 10^{-19} m`), matching 5-point Gauss–Legendre quadrature within `1.34e-16` (`< 1e-12`); all four Standard Model anomaly traces vanish exclusively at `N_c = 3`.
+- **Central numbers**: `||W^μ|| / E_cm = 0` at `κ_e / κ_p = 1`; on fiducial `GW150914` (`E_rad = 3.0 M_⊙ c²`, `D_L = 410 Mpc`, `L_0 = 4000 m`), `Δh_char = 3.502 × 10^{-22}` and `ΔL_char = 7.003 × 10^{-19} m` (`Δh_+(π/2) = 2.480 × 10^{-22}`, `ΔL(π/2) = 4.961 × 10^{-19} m`), matching 5-point Gauss–Legendre quadrature within `1.34e-16` (`< 1e-12`); all four Standard Model anomaly traces vanish exclusively at `N_c = 3`.
 - **Lean 4 Prelude companion**: `skills/timegravity/t13/HolonomySoftAnomaly.lean` (`0` `import`s, `0` `sorry`, `12` machine-clean theorems).
 - **Generator**: `python skills/timegravity/t13/make_t13.py`
 - **Verifier**: `python skills/timegravity/t13/verify_t13_holonomy_soft.py`
@@ -41,7 +41,9 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 | `T13-WEINBERG1964` | DERIVED | Weinberg 1964, S-matrix derivation of charge conservation, equivalence principle, and `s >= 3` obstruction | https://doi.org/10.1103/PhysRev.135.B1049 |
 | `T13-WEINBERG1965` | DERIVED | Weinberg 1965, all-orders infrared photons and gravitons | https://doi.org/10.1103/PhysRev.140.B516 |
 | `T13-ADLER1969` | DERIVED | Adler 1969, one-loop axial-vector chiral triangle anomaly | https://doi.org/10.1103/PhysRev.177.2426 |
-| `T13-DELBOURGO1972` | DERIVED | Delbourgo & Salam 1972, mixed chiral-gravitational anomaly `Tr[Y] = 0` | https://doi.org/10.1016/0370-2693(72)90825-8 |
+| `T13-DELBOURGO1972` | DERIVED | Delbourgo & Salam 1972, fermion triangle with one chiral current and two gravitons | https://doi.org/10.1016/0370-2693(72)90825-8 |
+| `T13-AGW1984` | DERIVED | Alvarez-Gaumé & Witten 1984, gravitational anomalies; mixed condition `Tr[Y] = 0` | https://doi.org/10.1016/0550-3213(84)90066-X |
+| `T13-FAVATA2009` | DERIVED | Favata 2009, leading-quadrupole memory `Δh_+ = (G E_rad / c⁴ D_L) sin²ι (17 + cos²ι) / 24` | https://doi.org/10.1088/0004-637X/696/2/L159 |
 | `T13-CHRIST1991` | DERIVED | Christodoulou 1991, nonlinear gravitational-wave displacement memory | https://doi.org/10.1103/PhysRevLett.67.1486 |
 | `T13-STROM2016` | DERIVED | Strominger & Zhiboedov 2016, infrared triangle of GW memory, BMS supertranslations & soft gravitons | https://doi.org/10.1007/JHEP01(2016)086 |
 | `T05-RECAST2026` | DERIVED | Track T.05 Fourier–Bessel recast (`σ > 33 µm` excluded; parallel hybrid geometry window) | https://doi.org/10.1103/PhysRevLett.124.101101 |
@@ -50,7 +52,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 | `T13-ZHANG2024` | SINGLE RESULT | Zhang et al. 2024, `229mTh` nuclear transition vs `87Sr` optical clock frequency ratio | https://doi.org/10.1038/s41586-024-07839-6 |
 | `T13-TOOBY2025` | SINGLE RESULT | Tooby-Smith 2025, PhysLean / HepLean Lean 4 formalization of SM anomaly cancellation | https://doi.org/10.1016/j.cpc.2024.109457 |
 | `T05-BOSE2017` | PROPOSED | Bose et al. 2017, gravitationally induced entanglement witness proposal | https://doi.org/10.1103/PhysRevLett.119.240401 |
-| `T05-SCHUT2024` | PROPOSED | Schut et al. 2024, side-by-side screened micro-diamond entanglement geometry | https://doi.org/10.1103/PhysRevResearch.6.043193 |
+| `T05-SCHUT2024` | PROPOSED | Schut et al. 2024, side-by-side screened micro-diamond entanglement geometry | https://doi.org/10.1103/PhysRevResearch.6.013199 |
 
 ## 3. Tool-neutral agent packet and security boundary (`security-runtime`)
 1. **Rebuild locally**: `python skills/timegravity/t13/make_t13.py`; standard library only; writes only under `src/research/timegravity/t13/files/`.
@@ -59,7 +61,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 
 ## 4. Deterministic verification and falsification rules
 1. On relativistic `2 -> 2` kinematics, `||Σ_a η_a p_a^μ|| < 1e-12`, `s = 1` charge Ward residual vanishes, `s = 2` Ward vector vanishes at `κ_e / κ_p = 1`, and `s = 3` symmetric momentum tensors have positive 4×4 Gram determinant with non-zero unit-coupling obstruction norm (`> 0.1`).
-2. Composite 5-point Gauss–Legendre quadrature of `d(Δh)/dt` matches the closed-form memory step `2 G E_rad / (c⁴ D_L)` within `1e-12`, and `ΔL / L_0 = (1/2) Δh` holds identically.
+2. Composite 5-point Gauss–Legendre quadrature of `d(Δh)/dt` matches the closed-form memory step `G E_rad / (c⁴ D_L)` within `1e-12`, and `ΔL / L_0 = (1/2) Δh` holds identically.
 3. All four chiral and mixed gauge–gravitational anomaly traces vanish at `N_c = 3` and fail for `N_c != 3` or omitted `e_R^c`.
 4. `HolonomySoftAnomaly.lean` contains `0` `import`s, `0` `sorry`/`admit`/`axiom`, `0` `^` operators, and `>= 9` theorems.
 5. Planted defect: setting `κ_e / κ_p = 1 + 10^{-5}` and `N_c = 2` breaks both the soft-graviton Ward identity and anomaly cancellation; `--planted-defect` exits `1`.

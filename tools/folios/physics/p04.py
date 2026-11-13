@@ -17,7 +17,7 @@ FOLIO = {'category_code': 'P',
  'folio_id': 'P.04',
  'governing_law': 'J_k = −D_k (∇c_k + (z_k F / RT) c_k ∇Φ) · dh_PCL/dt = L_p (ΔΠ_osm − ΔP_hydro)',
  'pillar': 'physics',
- 'primary_kernel': 'tools/physics_kernel.py',
+ 'primary_kernel': 'skills/physics/p04/verify_p04.py',
  'readouts': [{'label': 'PCL Height', 'value': '8.80 μm (Hydrated) vs 1.50 μm (CF)'},
               {'label': 'Net Solute Flux', 'value': '+1.50 μEq/(cm²·h) (Cl- Secretory)'},
               {'label': 'Hydration Status', 'value': 'HEALTHY_HYDRATED_PCL'},
@@ -54,10 +54,9 @@ FOLIO = {'category_code': 'P',
                         'above the 7 μm mechanical brush limit; below this threshold, ciliary '
                         'beating cannot resume regardless of anti-inflammatory therapy.',
                 'kicker': 'SIDENOTE P.04 · WHY MODULATORS MUST RESTORE OSMOTIC HEADROOM'},
- 'sidenote_2': {'body': 'Button et al. proved that tethered cell-surface mucins form a grafted '
+ 'sidenote_2': {'body': 'Button et al. showed that tethered cell-surface mucins form a grafted '
                         'macromolecular brush acting as a secondary osmotic filter; when '
-                        'mucus layer osmotic modulus exceeds the PCL brush swelling '
-                        'pressure (Delta Pi > 2.5 kPa), water is sucked out, flattening the '
+                        'mucus layer osmotic modulus exceeds that of the PCL brush (about 300 Pa at full height in their measurements; this folio\'s kernel uses a 2.5 kPa threshold), water is drawn out, flattening the '
                         'periciliary space.',
                 'kicker': 'SIDENOTE P.04-B · DONNAN SWELLING & GRAFTED POLYMER BRUSHES (DOI '
                           '10.1103/RevModPhys.80.839)'},
@@ -169,13 +168,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'including MUC1, MUC4, and MUC16. Respiratory health depends on a continuous '
               'thermodynamic tug-of-war between the compressive osmotic pressure exerted by the '
               'overlying secreted mucus layer and the restoring osmotic modulus of the grafted '
-              'periciliary brush. Extending classical neutral polymer brush theory to charged '
-              'polyelectrolyte systems, Philip Pincus, Boris Zhulina, and Michael Rubinstein '
-              '(Science 2012, DOI 10.1126/science.1223012) established that Donnan counterion '
-              'osmotic pressure inside a densely grafted polyanionic brush balances elastic chain '
-              'stretching. This internal osmotic pressure maintains a rigid mechanical cushion of '
-              'three kilopascals, preventing the overlying mucus blanket from collapsing the '
-              'cilia.',
+              'periciliary brush. In polyelectrolyte brush theory, Donnan counterion osmotic pressure inside a densely grafted polyanionic brush balances elastic chain stretching. Button and colleagues (Science 2012, DOI 10.1126/science.1223012) reported a minimal osmotic modulus of about 300 Pa for the periciliary brush, above the roughly 200 Pa of normal mucus, which keeps the overlying mucus blanket from compressing the cilia.',
  'act1_stakes': 'Classical epithelial physiology treated trans-epithelial ion transport through '
                 'equivalent electrical circuit models, predicting that ion flux alone determines '
                 'water movement according to simple hydrostatic pressure heads. However, this '
@@ -187,13 +180,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'two-gel osmotic competition, they will fail to predict the sudden, catastrophic '
                 'threshold of ciliary collapse. In healthy tissue, the brush swelling pressure '
                 'easily overcomes the mucus gel. But when chloride secretion fails and sodium '
-                'absorption runs unchecked, water is withdrawn until mucus osmotic pressure '
-                'surpasses the three kilopascal brush threshold. At that critical tipping point, '
+                'absorption runs unchecked, water is withdrawn until the mucus osmotic modulus surpasses that of the brush. At that critical tipping point, '
                 'water is violently extracted from the brush, triggering an abrupt mechanical '
                 'collapse from which cilia cannot spontaneously recover.',
- 'pullquote': '"The airway does not collapse because water disappears into thin air — it '
-              'collapses when dehydrated mucus concentration crosses ~6% solids and '
-              'its osmotic pressure crushes the 3.0 kPa periciliary brush."',
+ 'pullquote': '"The airway does not collapse because water disappears into thin air — it collapses when dehydrated mucus becomes concentrated enough that its osmotic modulus exceeds that of the periciliary brush."',
  'chronology': [('1887',
                  "Jacobus Henricus van 't Hoff formulates the thermodynamic law of osmotic "
                  'pressure Pi = c R T.'),
@@ -284,8 +274,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                   'polyelectrolyte molecular dynamics in jax-md/jax-md '
                   '(https://github.com/jax-md/jax-md, DOI 10.1088/1742-5468/ac3ae9) coupled with '
                   'equivariant electrostatic potentials in facebookresearch/fairchem (DOI '
-                  '10.1021/acscatal.0c04525) predict exact osmotic re-expansion curves under '
-                  'hypertonic saline or brush-grafted surfaces, verified via Scite (DOI '
+                  '10.1021/acscatal.0c04525) predict osmotic re-expansion curves under '
+                  'hypertonic saline or brush-grafted surfaces, with the folio\'s references checked in the Scite citation index (DOI '
                   '10.1162/qss_a_00146).',
  'act4_deepening': 'Modern biophysical investigation of the two-gel airway interface relies on '
                    'micro-optical coherence tomography (micro-OCT) paired with real-time deep '

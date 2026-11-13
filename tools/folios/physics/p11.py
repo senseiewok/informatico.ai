@@ -17,13 +17,13 @@ FOLIO = {'folio_id': 'P.11',
           'Non-Abelian Anyon Braiding & FeMoCo Catalysis',
  'subtitle': "Continuing Folio P.05's quantum tunneling and P.10's topological invariants: how "
              'surface-code parity checks in Stim, non-Abelian Majorana braiding, and PySCF '
-             'active-space quantum simulation unlock ambient-temperature nitrogen fertilizer '
+             'active-space quantum simulation could one day inform the search for ambient-temperature nitrogen fertilizer '
              'without fossil-fuel steam reforming.',
  'date_published': '2026-11-07',
  'date_redated': '2026-11-07',
  'current_edition': 'REV 1.0',
  'status_badge': 'QUANTUM QEC & FEMOCO · REV 1.0',
- 'primary_kernel': 'tools/physics_kernel.py',
+ 'primary_kernel': 'skills/physics/p11/verify_p11.py',
  'governing_law': 'p_L ≈ 0.03 (p / p_th)^((d+1)/2) · [A_s, B_p] = 0 · H_FeMoCo |Ψ_0⟩ = E_0 |Ψ_0⟩',
  'colophon': {'identifier': 'P.11 · Surface-Code Quantum Error Correction & FeMoCo Catalysis · '
                             'Stim / PySCF',
@@ -62,7 +62,7 @@ FOLIO = {'folio_id': 'P.11',
  'readouts': [{'label': 'Logical Error per Cycle (p_L)', 'value': '3.0 × 10⁻¹⁶ (Fault-Tolerant)'},
               {'label': 'Physical Qubits per Logical (2d²)', 'value': '1,458 Physical / Logical'},
               {'label': 'FeMoCo Active-Space Precision', 'value': '±0.82 kcal/mol (< 1.0 Limit)'},
-              {'label': 'WEF Clean Fertilizer Verdict', 'value': 'AMBIENT CATALYST PASS'}],
+              {'label': 'WEF Clean Fertilizer Verdict', 'value': 'RESOURCE ESTIMATE ONLY'}],
  'spec_plate': {'division': 'QUANTUM ERROR CORRECTION / TOPOLOGICAL STABILIZER CODES / STIM & '
                             'PYSCF',
                 'title': 'Rotated Surface-Code Logical Qubit Array for FeMoCo Nitrogenase Quantum '
@@ -188,8 +188,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Topological band invariants (DOI 10.1103/PhysRevLett.100.013904) and Reiher et '
                  'al. establish fault-tolerant quantum resource bounds for FeMoCo nitrogenase.'),
                 ('2024–2026',
-                 'Below-threshold logical qubits and open-source quantumlib/Stim + pyscf/pyscf + '
-                 'Qiskit/qiskit pipelines bring catalytic QPE into reach.')],
+                 'Below-threshold surface-code logical qubits are demonstrated (DOI 10.1038/s41586-024-08449-y), and open-source quantumlib/Stim + pyscf/pyscf + Qiskit/qiskit pipelines let anyone rehearse catalytic QPE resource estimates.')],
  'act2_title': "Act II — Cross-Field Intuition: The Choir Director's Parity Check & Braided Knots",
  'act2_intuition': 'In classical computing, you protect a bit against cosmic rays by copying it (0 '
                    '-> 000) and taking a majority vote. In quantum mechanics, the No-Cloning '
@@ -206,9 +205,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'require a chain of (d+1)/2 simultaneous physical faults spanning the entire d '
                    'x d grid, yielding exponential error suppression p_L ≈ 0.03 (p / '
                    'p_th)^((d+1)/2). Fast open-source stabilizer simulators like quantumlib/Stim '
-                   '(https://github.com/quantumlib/Stim, DOI 10.22331/q-2021-07-06-497) and '
-                   'Scite-verified smart indices (DOI 10.1162/qss_a_00146) benchmark these '
-                   'syndrome measurement cycles at gigahertz throughput on commodity laptops.',
+                   '(https://github.com/quantumlib/Stim, DOI 10.22331/q-2021-07-06-497) simulate these syndrome measurement cycles on commodity laptops; the folio\'s references were checked in the Scite citation index (DOI 10.1162/qss_a_00146).',
  'act2_analogy': 'Everyday analogy: Imagine a conductor listening to a massive symphony choir. If '
                  'she asks individual singers to shout their notes, she destroys the delicate '
                  'musical performance. Instead, she closes her eyes and listens only for whether '
@@ -415,8 +412,7 @@ DISPATCH = {'kicker': 'FRONTIER QUANTUM ERROR CORRECTION & CATALYSIS DISPATCH ·
              'Clean Nitrogen Catalysis',
  'body': 'Synthesizing topological protection (DOI 10.1103/PhysRevLett.100.013904) and quantum '
          'tunneling (DOI 10.1103/revmodphys.35.724) with open-source quantumlib/Stim stabilizer '
-         'circuits and pyscf/pyscf active-space Hamiltonians brings ambient-pressure FeMoCo '
-         'ammonia synthesis within chemical accuracy.'}
+         'circuits and pyscf/pyscf active-space Hamiltonians frames the resource question for simulating FeMoCo to chemical accuracy on a fault-tolerant machine; no such simulation has been run.'}
 
 META_3D = ('Kitaev Surface-Code Threshold & FeMoCo QPE Energy Surface',
  'X: Code Distance d · Z: Physical Error p_phys · Y: Logical Error log10(p_L) & FeMoCo Barrier')

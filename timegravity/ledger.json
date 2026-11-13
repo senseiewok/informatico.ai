@@ -963,7 +963,7 @@
       "collaboration": "Isi, Giesler, Farr, Scheel & Teukolsky (PRL)",
       "kind": "peer-reviewed",
       "review_by": "2028-11-10",
-      "note": "Testing the no-hair theorem withGW150914: claims evidence for the l=m=2, n=1 first overtone right at the merger peak and consistency with the Kerr mass and spin; the significance of the overtone in GW150914 is disputed in the literature."
+      "note": "Testing the no-hair theorem with GW150914: 'we find evidence of the fundamental quasinormal mode and at least one overtone ... with 3.6 sigma confidence' (A1 = 0 disfavoured at 3.6 sigma); remnant mass and spin from the ringdown agree with the full-signal values, 'a test of the no-hair theorem at the ~10% level'. The significance of the overtone in GW150914 is disputed in the literature (row T09-COTESTA2022)."
     },
     {
       "id": "T09-COTESTA2022",
@@ -1076,14 +1076,14 @@
       "note": "First dark matter search results from the LUX-ZEPLIN (LZ) experiment: sets a 90 % confidence upper limit on spin-independent WIMP-nucleon elastic scattering cross-sections down to 9.2 x 10^-48 cm^2 at 36 GeV/c^2."
     },
     {
-      "id": "T12-CARNEY2021",
+      "id": "T12-CARNEY2020",
       "label": "PROPOSED",
-      "doi": "10.1088/1367-2630/abd9e7",
-      "year": 2021,
-      "collaboration": "Carney, Hook, Liu, Taylor & Zhao (New Journal of Physics)",
+      "doi": "10.1103/PhysRevD.102.072003",
+      "year": 2020,
+      "collaboration": "Carney, Ghosh, Krnjaic & Taylor (Physical Review D)",
       "kind": "peer-reviewed",
-      "review_by": "2028-11-10",
-      "note": "Ultralight dark matter detection with mechanical quantum sensors: analyses the impulse and gravitational redshift signatures of dark-matter transits coupled purely through gravity across arrays of quantum-limited accelerometers and clocks."
+      "review_by": "2028-11-13",
+      "note": "Proposal for gravitational direct detection of dark matter: an array of quantum-limited mechanical impulse sensors 'may be capable of detecting the correlated gravitational force created by a passing dark matter particle'; the signal from Planck-scale dark matter is 'in principle detectable using a large number of gram-scale sensors in a meter-scale array with sufficiently low quantum noise'. A proposal about impulse sensors, not clocks; not performed. Replaces the 2021 New Journal of Physics row, whose paper assumes a non-gravitational coupling."
     },
     {
       "id": "T13-WEINBERG1964",
@@ -1123,7 +1123,17 @@
       "collaboration": "Delbourgo & Salam (Physics Letters B)",
       "kind": "peer-reviewed",
       "review_by": "2028-11-11",
-      "note": "The gravitational correction to PCAC: computes the one-loop mixed chiral-gravitational triangle diagram with two external gravitons, yielding the mixed gravitational-hypercharge trace condition Tr[Y] = 0."
+      "note": "The gravitational correction to PCAC: computes the one-loop fermion triangle with one axial current and two external gravitons, the gravitational contribution to the axial anomaly. The hypercharge condition Tr[Y] = 0 is drawn from it in later work (row T13-AGW1984)."
+    },
+    {
+      "id": "T13-AGW1984",
+      "label": "DERIVED",
+      "doi": "10.1016/0550-3213(84)90066-X",
+      "year": 1984,
+      "collaboration": "Alvarez-Gaumé & Witten (Nuclear Physics B)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-13",
+      "note": "Gravitational anomalies: the general treatment of gravitational and mixed gauge-gravitational anomalies; in four dimensions a U(1) gauge current coupled to Weyl fermions is conserved in a gravitational background only if the sum of the U(1) charges vanishes (Tr[Y] = 0 for hypercharge). Full text not read for this row; statement from the standard account of the paper, to be confirmed against the text at the next review."
     },
     {
       "id": "T13-CHRIST1991",
@@ -1134,6 +1144,16 @@
       "kind": "peer-reviewed",
       "review_by": "2028-11-11",
       "note": "Nonlinear nature of gravitation and gravitational-wave experiments: rigorous derivation from asymptotically flat vacuum Einstein equations that radiated gravitational-wave energy flux leaves a permanent nonlinear displacement step between free-falling test masses."
+    },
+    {
+      "id": "T13-FAVATA2009",
+      "label": "DERIVED",
+      "doi": "10.1088/0004-637X/696/2/L159",
+      "year": 2009,
+      "collaboration": "Favata (Astrophysical Journal Letters)",
+      "kind": "peer-reviewed",
+      "review_by": "2028-11-13",
+      "note": "Nonlinear gravitational-wave memory from binary black hole mergers: leading-order memory polarisation h_+^(mem) = (eta M / 384 pi R) sin^2 Theta (17 + cos^2 Theta) h^(mem) (Eq. 5), with h^(mem) the time integral of |I_22^(3)|^2 over eta M (Eq. 6). Read from arXiv:0902.3660. With the l = |m| = 2 energy flux E_rad = (1/16 pi) times that integral (this site's step), Delta h_+ = (G E_rad / c^4 R) sin^2 Theta (17 + cos^2 Theta) / 24."
     },
     {
       "id": "T13-STROM2016",

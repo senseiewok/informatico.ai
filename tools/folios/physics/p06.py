@@ -19,7 +19,7 @@ FOLIO = {'category_code': 'P',
  'kernel_verdict': 'Not independently verified',
  'kernel_verdict_es': 'Sin verificación independiente',
  'pillar': 'physics',
- 'primary_kernel': 'tools/physics_kernel.py',
+ 'primary_kernel': 'skills/physics/p06/verify_p06.py',
  'reading_time': '22 MIN READ',
  'readouts': [{'label': 'Reptation Coupling Efficiency', 'value': '0.88 (WT-Coupled)'},
               {'label': 'Tube Disengagement Ratio', 'value': '1.12 (D_rep ~ N^-2)'},
@@ -60,7 +60,7 @@ FOLIO = {'category_code': 'P',
  'sidenote_2': {'body': 'Flexible poly(beta-amino ester) and polysarcosine mRNA polyplexes '
                         'leverage aspect-ratio reptation to traverse mucin pores that trap rigid '
                         'spheres.',
-                'kicker': 'SIDENOTE P.06-B · PRIME EDITING & INHALED POLYPLEXES (DOI '
+                'kicker': 'SIDENOTE P.06-B · INHALED mRNA POLYPLEXES (DOI '
                           '10.1002/adma.201805116)'},
  'skill': {'description': 'AI-agnostic polymer physics skill for de Gennes reptation (tau_d ~ N^3, '
                           'D_rep ~ N^-2), Doi-Edwards tube viscoelasticity, and kilobase '
@@ -196,9 +196,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 ('1982',
                  'Lerman, Frisch & Lumpkin prove biased reptation governs kilobase DNA migration '
                  'in hydrogels.'),
-                ('2024',
-                 'Masao Doi & Sam Edwards derive the tube-reptation constitutive equation for '
-                 'entangled macromolecules (1978, DOI 10.1039/F29787401818).')],
+                ('1998',
+                 'Milner & McLeish add contour-length fluctuations to reptation theory for melts of linear '
+                 'polymers (DOI 10.1103/PhysRevLett.81.725).')],
  'act2_title': 'Act II — How It Actually Works: Rouse Modes vs. Doi–Edwards Tube Disengagement',
  'act2_analogy': 'Imagine trying to move a long string of cooked spaghetti through a tangled bowl '
                  'of pasta. If you wad the noodle up into a tight ball, it forms a bulky knot that '
@@ -277,7 +277,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                   '(https://github.com/jax-md/jax-md, DOI 10.1088/1742-5468/ac3ae9) with Pareto '
                   'symbolic regression in MilesCranmer/PySR (DOI 10.48550/arXiv.2305.01582) allows '
                   "polymer physicists to predict full G'(omega), G''(omega) master curves from "
-                  'molecular weight distributions, backed by Scite verification (DOI '
+                  'molecular weight distributions, with the folio\'s references checked in the Scite citation index (DOI '
                   '10.1162/qss_a_00146).',
  'act4_deepening': 'The biophysical optimization of kilobase genetic medicines increasingly '
                    'utilizes automated coarse-grained molecular dynamics engines and symbolic '
@@ -301,8 +301,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'and prime-editing SpCas9-M-MLV RT constructs (>6.3 kb) '
               'are among the largest genetic payloads in clinical medicine. '
               'Controlling whether these payloads compact into <75 nm spheres or reptate as '
-              'worm-like micelles/polyplexes (DOI 10.1002/adma.201805116) determines their success '
-              'in crossing CF airway mucus and reaching basal stem cells.',
+              'worm-like micelles/polyplexes (DOI 10.1002/adma.201805116) is, in this folio\'s model, one factor in whether they cross CF airway mucus.',
  'sources': ['de Gennes, P.-G. (1971). Reptation of a polymer chain in the presence of fixed '
              'obstacles. Journal of Chemical Physics, 55(2), 572–579.',
              'Doi, M., & Edwards, S. F. (1986). The Theory of Polymer Dynamics. Oxford University '
@@ -350,8 +349,7 @@ DISPATCH = {'kicker': 'FRONTIER POLYMER PHYSICS DISPATCH · DOI–EDWARDS REPTAT
              'Thread Nanopores',
  'body': "Extending Doi & Edwards's 1978 tube reptation theory (DOI 10.1039/F29787401789), recent "
          'dynamic tube-dilation and contour-length fluctuation theory (Milner & McLeish 1998, DOI '
-         '10.1103/PhysRevLett.81.725) and differentiable molecular dynamics (Schoenholz & Cubuk '
-         '2020, DOI 10.1088/1742-5468/ac3ae9) quantify contour-length fluctuations and convective '
+         '10.1103/PhysRevLett.81.725) and differentiable molecular dynamics (Schoenholz & Cubuk 2021, DOI 10.1088/1742-5468/ac3ae9) quantify contour-length fluctuations and convective '
          'constraint release to bypass reptation bottlenecks.'}
 
 META_3D = ('Doi–Edwards Curvilinear Polymer Reptation Canyon',

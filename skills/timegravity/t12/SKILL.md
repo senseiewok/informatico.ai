@@ -35,7 +35,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 | `T12-KENNEDY2020` | BOUND | Kennedy et al. 2020, JILA `87Sr` vs silicon cavity ultralight dark-matter bound | https://doi.org/10.1103/PhysRevLett.125.201302 |
 | `T12-FILZINGER2023` | BOUND | Filzinger et al. 2023, PTB `171Yb+` E3/E2 clock ratio dark-matter bound | https://doi.org/10.1103/PhysRevLett.130.253001 |
 | `T12-LZ2023` | BOUND | Aalbers et al. (LUX-ZEPLIN) 2023, WIMP-nucleon spin-independent cross-section bound | https://doi.org/10.1103/PhysRevLett.131.041002 |
-| `T12-CARNEY2021` | PROPOSED | Carney et al. 2021, mechanical sensor and clock array detection of gravitational dark matter | https://doi.org/10.1088/1367-2630/abd9e7 |
+| `T12-CARNEY2020` | PROPOSED | Carney, Ghosh, Krnjaic & Taylor 2020, mechanical impulse-sensor array for gravitational direct detection of dark matter | https://doi.org/10.1103/PhysRevD.102.072003 |
 
 ## 3. Tool-neutral agent packet and security boundary (`security-runtime`)
 1. **Rebuild locally**: `python skills/timegravity/t12/make_t12.py`; standard library only; writes only under `src/timegravity/t12/files/`.
@@ -59,5 +59,5 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Kernel `tools/timegravity_kernel_dark_clock.py`, generator, verifier, ledger rows above, and the ES module `src/modules/timegravity-slope.mjs`.
 
 ### Not on this page (T2/T3)
-- Direct laboratory detection of individual dark-matter transits through gravity alone (`T12-CARNEY2021`) is `PROPOSED` and requires Planck-mass-scale sensors far beyond current optical-clock or optomechanical noise floors.
+- Direct laboratory detection of individual dark-matter transits through gravity alone (`T12-CARNEY2020`) is `PROPOSED`: the paper targets Planck-scale dark matter with a large array of gram-scale impulse sensors at quantum noise levels not yet demonstrated.
 - The microscopic particle identity of dark matter (and whether it carries any non-gravitational portal coupling `d_e ≠ 0` or `σ_SI ≠ 0` below current `BOUND` limits) is `OPEN`.

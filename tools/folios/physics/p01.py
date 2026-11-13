@@ -18,7 +18,7 @@ FOLIO = {'category_code': 'P',
  'folio_id': 'P.01',
  'governing_law': 'σ_ij = −k_B (∂²S / ∂α_i ∂α_j)⁻¹ · A_r = k_B T ln(v_r⁺ / v_r⁻)',
  'pillar': 'physics',
- 'primary_kernel': 'tools/physics_kernel.py',
+ 'primary_kernel': 'skills/physics/p01/verify_p01.py',
  'readouts': [{'label': 'Coupling Efficiency', 'value': '0.88 (WT) vs 0.08 (G551D)'},
               {'label': 'Dissipation-Fluctuation Ratio', 'value': '1.12 (Coupled Cycle)'},
               {'label': 'Gating Regime', 'value': 'STABLE_COUPLED_CYCLE'},
@@ -98,8 +98,8 @@ FOLIO = {'category_code': 'P',
            'fails to transmit chemical affinity into pore dilation.',
            'Stage 2 (Fluctuation-Dissipation Coupling): Keizer matrix d sigma/dt = M sigma + sigma '
            'M^T + Gamma matches forward and backward reaction fluxes.',
-           'Stage 3 (Dual-Corrector Stabilization): Ivacaftor/Trikafta lowers activation barrier '
-           'Delta G^‡ and restores coupling efficiency to 0.84.',
+           'Stage 3 (Potentiator Rescue, Model): In the kernel, a potentiator such as ivacaftor lowers activation barrier '
+           'Delta G^‡ and restores the modelled coupling efficiency to 0.84.',
            'Stage 4 (Stationary NESS Cycle): Bounded dissipation-fluctuation ratio (1.12 <= 2.0) '
            'maintains stable open-state chloride conduction.'],
  'subtitle': "How Keizer's non-equilibrium fluctuation theory, Harada-Sasa dissipation, and Hill "
@@ -168,9 +168,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'affinity A_r = k_B T ln(v_r^+ / v_r^-), any measurable deviation from the '
               'equilibrium fluctuation-dissipation ratio directly quantifies the free energy '
               'dissipated into the thermal bath versus the mechanical work required to open the '
-              'channel pore. Single-molecule optical-tweezer calorimeters, patch-clamp recordings, '
-              'and Kramers–Moyal Markov-state reconstructions confirm that active transport '
-              'channels operate near a thermodynamic efficiency optimum. In this regime, cyclic '
+              'channel pore. Single-molecule recordings and Markov-state reconstructions are the tools for testing how close such channels run to a thermodynamic efficiency optimum. In this regime, cyclic '
               'loop currents within discrete Hill state-spaces balance rapid conformational '
               'switching against minimal overall entropy production (Harada & Sasa, DOI '
               '10.1103/PhysRevLett.95.130602; Seifert, DOI 10.1088/0034-4885/75/12/126001). By '
@@ -243,18 +241,14 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    '~ 18.4 k_B T) transmits mechanical strain through the intracellular coupling '
                    'loops (ICL1–ICL4) to pull open the transmembrane chloride pore with high '
                    'coupling efficiency (eta_c = 0.88). In the severe Class III gating mutation '
-                   'G551D, replacing a neutral glycine with a bulky negatively charged aspartate '
-                   'at the Walker motif uncouples domain dimerization from the pore gate, '
-                   'collapsing coupling efficiency to 0.08. The enzyme continues to hydrolyze '
-                   'fuel, but the mechanical hinge slips, trapping the channel in a closed state '
+                   'G551D, replacing a neutral glycine with a bulky negatively charged aspartate in the ABC signature motif of NBD1 uncouples domain dimerization from the pore gate, '
+                   'collapsing coupling efficiency to 0.08. In this folio\'s model the chemical drive no longer reaches the gate, trapping the channel in a closed state '
                    'until the potentiator drug ivacaftor (VX-770) wedges into the transmembrane '
                    'helices to restore mechanical continuity. By reconstructing the empirical '
                    'drift D^(1)(x) and diffusion tensor D^(2)(x) from single-molecule patch-clamp '
                    'dwell-time traces and simulating non-equilibrium free-energy landscapes in '
                    'jax-md/jax-md (https://github.com/jax-md/jax-md, DOI '
-                   '10.1088/1742-5468/ac3ae9), we demonstrate that allosteric small-molecule '
-                   'wedges restore the broken cross-covariance sigma_{ATP,pore} and return '
-                   'thermodynamic transport efficiency from 0.08 back to 0.88.',
+                   '10.1088/1742-5468/ac3ae9), this folio\'s kernel illustrates how an allosteric small-molecule wedge could restore the broken cross-covariance sigma_{ATP,pore}; the coupling efficiencies 0.88 and 0.08 are parameters of that model, not measured values.',
  'act2_deepening': 'At the fundamental physical level, non-equilibrium steady states are governed '
                    "by Keizer's generalized covariance matrix equation, where the rate of change "
                    'of state fluctuations equals the sum of drift-relaxation matrices and '
@@ -291,7 +285,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                   'sparse stochastic operator discovery in dynamicslab/pysindy (DOI '
                   '10.1073/pnas.1517384113) let biophysicists infer exact Hill cycle affinities '
                   'and allosteric rescue efficiencies directly from patch-clamp recordings, '
-                  'audited via Scite (DOI 10.1162/qss_a_00146).',
+                  'with the folio\'s references checked in the Scite citation index (DOI 10.1162/qss_a_00146).',
  'act4_deepening': 'The frontier of non-equilibrium biophysics lies in connecting single-molecule '
                    'experimental observations with automated physical model discovery. Modern '
                    'patch-clamp electrophysiology streams millions of stochastic transition '
@@ -320,7 +314,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'Seifert, U. (2012). Stochastic thermodynamics, fluctuation theorems and molecular '
              'machines. Reports on Progress in Physics, 75(12), 126001. DOI: '
              '10.1088/0034-4885/75/12/126001.',
-             'Csanády, L., Nairn, A. C., & Gadsby, D. C. (2006). Thermodynamics of conformational channel gating transitions. Journal of General Physiology, 128(5), 523–533. DOI: 10.1085/jgp.200609558.',
+             'Csanády, L., Nairn, A. C., & Gadsby, D. C. (2006). Thermodynamics of CFTR channel gating: A spreading conformational change initiates an irreversible gating cycle. Journal of General Physiology, 128(5), 523–533. DOI: 10.1085/jgp.200609558.',
              'Schoenholz, S. S., & Cubuk, E. D. (2021). JAX, M.D.: A framework for differentiable '
              'physics (jax-md/jax-md, https://github.com/jax-md/jax-md). Journal of Statistical '
              'Mechanics: Theory and Experiment, 2021(12), 124006. DOI: 10.1088/1742-5468/ac3ae9.',
@@ -367,8 +361,7 @@ DISPATCH = {'kicker': 'FRONTIER BIOPHYSICS DISPATCH · NON-EQUILIBRIUM ABC-trans
  'body': "Extending Keizer's fluctuation-dissipation theorem and Csanády's irreversible "
          'ABC-transporter gating cycle (J. Gen. Physiol. DOI 10.1085/jgp.200609558; Seifert Rep. '
          'Prog. Phys. DOI 10.1088/0034-4885/75/12/126001), next-generation triple modulators '
-         '(vanzacaftor/tezacaftor/deutivacaftor, Alyftrek DOI 10.58347/tml.2025.1724a) stabilize '
-         'the NBD1-NBD2 dimer to restore open probability P_o > 0.75.'}
+         '(vanzacaftor/tezacaftor/deutivacaftor, Alyftrek DOI 10.58347/tml.2025.1724a) are the clinical setting this gating framework is meant to describe; the folio does not model their binding sites or report a measured open probability.'}
 
 META_3D = ('Keizer Non-Equilibrium ATP Double-Well Landscape',
  'X: Conformational Reaction Coordinate · Z: Fluctuation Mode · Y: Tilted Free Energy ΔG(x)')
@@ -409,5 +402,4 @@ ES_TRANSLATION = {'title_es': 'Teoremas de Fluctuación-Disipación Fuera del Eq
             'catalítico y el poro de conducción iónica, abriendo nuevas rutas para el diseño '
             'molecular asistido por computadora.',
  'bridge_es': 'Cuantifica termodinámicamente cómo los moduladores triples '
-              '(elexacaftor/tezacaftor/ivacaftor y vanzacaftor/tezacaftor/deutivacaftor) restauran '
-              'la probabilidad de apertura P_o > 0.75 en el canal transportador ABC.'}
+              '(elexacaftor/tezacaftor/ivacaftor y vanzacaftor/tezacaftor/deutivacaftor) podrían restaurar la apertura del canal transportador ABC; el folio no reporta una probabilidad de apertura medida.'}

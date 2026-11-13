@@ -16,10 +16,10 @@ FOLIO_METADATA = {
     "slug": "p11",
     "title": "Fault-Tolerant Quantum Computing & Clean Nitrogen Fixation: Surface-Code Stabilizers, Non-Abelian Anyon Braiding & FeMoCo Catalysis",
     "governing_law": "p_L ≈ 0.03 (p / p_th)^((d+1)/2) · [A_s, B_p] = 0 · H_FeMoCo |Ψ_0⟩ = E_0 |Ψ_0⟩",
-    "primary_kernel": "tools/physics_kernel.py",
+    "primary_kernel": "skills/physics/p11/verify_p11.py",
     "primary_doi": "10.1103/PhysRevA.86.032324",
     "scite_report": "https://scite.ai/reports/10.1103/PhysRevA.86.032324",
-    "benchmarks": [{"label": "Logical Error per Cycle (p_L)", "value": "3.0 × 10⁻¹⁶ (Fault-Tolerant)"}, {"label": "Physical Qubits per Logical (2d²)", "value": "1,458 Physical / Logical"}, {"label": "FeMoCo Active-Space Precision", "value": "±0.82 kcal/mol (< 1.0 Limit)"}, {"label": "WEF Clean Fertilizer Verdict", "value": "AMBIENT CATALYST PASS"}],
+    "benchmarks": [{"label": "Logical Error per Cycle (p_L)", "value": "3.0 × 10⁻¹⁶ (Fault-Tolerant)"}, {"label": "Physical Qubits per Logical (2d²)", "value": "1,458 Physical / Logical"}, {"label": "FeMoCo Active-Space Precision", "value": "±0.82 kcal/mol (< 1.0 Limit)"}, {"label": "WEF Clean Fertilizer Verdict", "value": "RESOURCE ESTIMATE ONLY"}],
 }
 
 

@@ -21,7 +21,7 @@ FOLIO = {'category_code': 'P',
  'kernel_verdict': 'Partial: 1 of 4 readouts recomputed',
  'kernel_verdict_es': 'Parcial: 1 de 4 lecturas recalculadas',
  'pillar': 'physics',
- 'primary_kernel': 'tools/physics_kernel.py',
+ 'primary_kernel': 'skills/physics/p07/verify_p07.py',
  'reading_time': '22 MIN READ',
  'readouts': [{'label': 'Underfloor Suction Peak (−C_p)', 'value': '2.84 (at h_ride = 26 mm)'},
               {'label': 'Total Downforce Coefficient (−C_L)', 'value': '3.38 (L/D = 3.92 Z-Mode)'},
@@ -33,8 +33,7 @@ FOLIO = {'category_code': 'P',
                         '= 2.84 throat suction, -C_L = 3.38 Z-mode downforce, and h_crit = 19.0 mm '
                         'Hopf stall boundary.',
                 'summary': 'REV 1.0 (Published 2026-11-02): Inaugural Volume IV Formula 1 fluid '
-                           'physics monograph uniting Zhang-Toet-Zerihan ground-effect '
-                           'aerodynamics (DOI 10.1146/annurev.fluid.38.050304.092016) with 2026 '
+                           'physics monograph uniting Zhang-Toet-Zerihan ground-effect aerodynamics (DOI 10.1115/1.2110263) with 2026 '
                            'FIA Active X/Z-mode wings and porpoising Hopf stability.'}],
  'scite': {'doi': '10.1146/annurev.fluid.38.050304.092016',
            'fetched_on': '2026-11-08',
@@ -147,8 +146,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'learned to seal the underfloor low-pressure plenum hydrodynamically using '
               'co-rotating Lamb–Oseen floor-edge vortices (circulation Gamma_v = oint u . dl) and '
               'front-wing outwash structures that deflect turbulent tire-wake squirt away from the '
-              'diffuser throat (Zhang, Toet & Zerihan, Annual Review of Fluid Mechanics, DOI '
-              '10.1146/annurev.fluid.38.050304.092016). Yet when ground-effect Venturi tunnels '
+              'diffuser throat (Zhang, Toet & Zerihan, Applied Mechanics Reviews, DOI 10.1115/1.2110263). Yet when ground-effect Venturi tunnels '
               'returned to the global racing stage in 2022, a violent nonlinear aero-elastic '
               'instability re-emerged: porpoising. Below a critical ride height h_crit ~ 18–20 mm, '
               'adverse pressure gradients in the expanding rear diffuser trigger boundary-layer '
@@ -156,8 +154,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'chassis upward, underbody flow reattaches, and the car locks into a 5–7 Hz limit '
               'cycle. Under the landmark 2026 FIA Formula 1 Technical Regulations, teams pair '
               'sculpted Venturi tunnels with full-time Active Aerodynamics—switching between '
-              'high-downforce Z-Mode in corners and low-drag X-Mode (-40% drag, -30% downforce) on '
-              'straights—monitored during testing using Stokes-shifted UV and visible fluorescent '
+              'high-downforce Z-Mode in corners and low-drag X-Mode on straights—monitored during testing using Stokes-shifted UV and visible fluorescent '
               'flow-visualization dye waves.',
  'pullquote': '"A Formula 1 ground-effect floor is an inverted Venturi wing flying twenty '
               'millimetres above a moving boundary: two millimetres too high leaks the sealing '
@@ -172,7 +169,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Joseph Katz codifies race-car ground-effect vortex and stall regimes in Annual '
                  'Review of Fluid Mechanics (DOI 10.1146/annurev.fluid.38.050304.092016).'),
                 ('2026',
-                 'FIA 20th-Generation Formula 1 Regulations introduce coupled front/rear Active '
+                 'The 2026 FIA Formula 1 Technical Regulations introduce coupled front/rear Active '
                  'Aerodynamics (Z-Mode cornering vs. X-Mode low-drag straight-line shedding).')],
  'act2_title': 'Act II — How It Actually Works: Venturi Suction + Lamb–Oseen Vortex Sealing vs. '
                'Porpoising Stall',
@@ -191,8 +188,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'Hopf bifurcation into self-sustained porpoising. By feeding ride-height laser '
                    'and pressure-tap time series into MilesCranmer/PySR symbolic regression '
                    '(https://github.com/MilesCranmer/PySR, DOI 10.48550/arXiv.2305.01582) and '
-                   'dynamicslab/pysindy sparse PDE discovery (DOI 10.1073/pnas.1517384113), race '
-                   'engineers recover exact closed-form stall boundaries and switch active front '
+                   'dynamicslab/pysindy sparse PDE discovery (DOI 10.1073/pnas.1517384113), race engineers could recover closed-form stall boundaries and switch active front '
                    'and rear wing elements from high-downforce Z-Mode to low-drag X-Mode in '
                    'milliseconds.',
  'act2_analogy': 'Everyday analogy: Hold a stainless-steel spoon loosely by the handle and bring '
@@ -222,9 +218,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                   'schedules across every bump of a circuit. Coupling Fourier Neural Operators and '
                   'Chebyshev spectral boundary-layer solvers in DedalusProject/dedalus (DOI '
                   '10.1103/PhysRevResearch.2.023068) with Pareto-optimal symbolic equations from '
-                  'MilesCranmer/PySR (DOI 10.48550/arXiv.2305.01582) delivers real-time '
-                  'aeroelastic digital twins verified against wind-tunnel and Scite-audited fluid '
-                  'mechanics benchmarks (DOI 10.1162/qss_a_00146).',
+                  'MilesCranmer/PySR (DOI 10.48550/arXiv.2305.01582) is a route to real-time aeroelastic digital twins that would still need checking against wind-tunnel data, with the folio\'s references checked in the Scite citation index (DOI 10.1162/qss_a_00146).',
  'cf_bridge': 'Standalone Motorsport & Fluid Physics Flagship & Upstream Physical Thread: Written '
               'as a premier fluid-dynamics and aero-elasticity monograph for motorsport, '
               'aerospace, and vehicle physicists. Upstream physical case study: the '
@@ -235,8 +229,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'impaction.',
  'sources': ['Zhang, X., Toet, W., & Zerihan, J. (2006). Ground effect aerodynamics of race cars. '
              'Applied Mechanics Reviews, 59(1), 33–49. DOI: 10.1115/1.2110263.',
-             'Katz, J. (2006). Aerodynamics of race cars. Annual Review of Fluid Mechanics, 38, '
-             '27–48. DOI: 10.1146/annurev.fluid.38.050304.092016.',
+             'Katz, J. (2006). Aerodynamics of race cars. Annual Review of Fluid Mechanics, 38, 27–63. DOI: 10.1146/annurev.fluid.38.050304.092016.',
              'Stratford, B. S. (1959). The prediction of separation of the turbulent boundary '
              'layer. Journal of Fluid Mechanics, 5(1), 1–16.',
              'FIA (2026). 2026 Formula 1 Technical Regulations — Article 3: Aerodynamic Components '
@@ -378,8 +371,7 @@ DISPATCH = {'kicker': 'FRONTIER MOTORSPORT PHYSICS DISPATCH · 2026 FORMULA 1 AC
  'body': "Grounded in Joseph Katz's fluid mechanics of race-car aerodynamics (Annu. Rev. Fluid "
          'Mech. 2006, DOI 10.1146/annurev.fluid.38.050304.092016), the 2026 Formula 1 regulations '
          'pair underfloor Venturi diffusers with full-time Active Aerodynamics—switching between '
-         'high-downforce Z-Mode in corners and low-drag X-Mode on straights to suppress Hopf '
-         'bifurcation porpoising.'}
+         'high-downforce Z-Mode in corners and low-drag X-Mode on straights; this folio models porpoising as a Hopf bifurcation of the ride-height dynamics.'}
 
 META_3D = ('Formula 1 Venturi Ground-Effect & Active X/Z-Mode Suction',
  'X: Underfloor Ride Height h (mm) · Z: Streamwise Throat · Y: Venturi Suction −C_p & Vortex Seal')

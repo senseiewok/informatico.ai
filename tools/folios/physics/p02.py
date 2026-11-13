@@ -17,7 +17,7 @@ FOLIO = {'category_code': 'P',
  'folio_id': 'P.02',
  'governing_law': '∂_t θ_i = ω_0 + ∑_j K_ij sin(θ_j − θ_i − α) · v_wave = λ f_beat',
  'pillar': 'physics',
- 'primary_kernel': 'tools/physics_kernel.py',
+ 'primary_kernel': 'skills/physics/p02/verify_p02.py',
  'readouts': [{'label': 'Beating Frequency', 'value': '14.00 Hz (Healthy PCL)'},
               {'label': 'Metachronal Wave Velocity', 'value': '336.00 μm/s'},
               {'label': 'Kuramoto Order Parameter', 'value': '0.880 (High Coherence)'},
@@ -166,11 +166,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'coupling decaying with distance locks millions of autonomously oscillating cilia '
               'into a coherent metachronal wave that steadily sweeps foreign particles away. '
               "Building on Kuramoto's phase-lag formulation and Arthur Winfree's geometric "
-              'topology of biological clocks, G. B. Ermentrout and Nancy Kopell (SIAM J. Math. '
-              'Anal. 1984; J. Theor. Biol. 1986, DOI 10.1016/s0022-5193(86)80098-4) proved that '
-              'nearest-neighbor hydrodynamic coupling along an oscillator chain locks into a '
-              'unidirectional traveling wave once coupling exceeds a well-defined critical '
-              'threshold. This hydrodynamic coherence ensures that micro-scale mechanical work '
+              'topology of biological clocks, G. B. Ermentrout and Nancy Kopell (SIAM J. Math. Anal. 1984) showed that nearest-neighbor coupling along a chain of oscillators can lock into a traveling wave, and Fulford and Blake (J. Theor. Biol. 1986, DOI 10.1016/s0022-5193(86)80098-4) modelled muco-ciliary transport in the lung as a two-layer low-Reynolds-number flow. This hydrodynamic coherence ensures that micro-scale mechanical work '
               'translates into macro-scale fluid transport.',
  'act1_stakes': 'In macroscopic engineering, ships and pumps propel fluids by exploiting inertia, '
                 'where accelerating a mass of water forward pushes a hull forward. But at the '
@@ -282,8 +278,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                   '10.1073/pnas.1517384113) on high-speed phase-contrast video alongside spectral '
                   'Stokes-layer solvers in DedalusProject/dedalus (DOI '
                   '10.1103/PhysRevResearch.2.023068) extracts the exact empirical Kuramoto '
-                  'coupling strength K and order parameter R, grounded in Scite-verified citations '
-                  '(DOI 10.1162/qss_a_00146).',
+                  'coupling strength K and order parameter R, with the folio\'s references checked in the Scite citation index (DOI 10.1162/qss_a_00146).',
  'act4_deepening': 'Modern active-matter biophysics bridges micro-scale ciliary kinematics and '
                    'macro-scale organ-level transport using high-speed digital holographic '
                    'microscopy and automated computer vision. High-frame-rate video capture at '
@@ -306,8 +301,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'Cystic Fibrosis therapy. When CFTR modulators, ENaC '
               'blockers (ETD001), or inhaled mRNA lipid nanoparticles (LNPs) restore PCL height to 7.0 um, '
               'cilia unpin from the mucus gel, re-cross the Kuramoto synchronization '
-              'threshold K > K_c, and resume clearing Pseudomonas biofilms.',
- 'sources': ['Fulford, G. R., & Blake, J. R. (1986). Two-layer Newtonian and low-Reynolds-number propulsion mechanics (extending G. I. Taylor 1951). Journal of Theoretical Biology, 121(4), 381–402. DOI: 10.1016/s0022-5193(86)80098-4.',
+              'threshold K > K_c, and, in this model, mucus transport resumes.',
+ 'sources': ['Fulford, G. R., & Blake, J. R. (1986). Muco-ciliary transport in the lung. Journal of Theoretical Biology, 121(4), 381–402. DOI: 10.1016/s0022-5193(86)80098-4.',
              'Blake, J. R. (1972). A model for the micro-structure in ciliated organisms. Journal '
              'of Fluid Mechanics, 55(1), 1–23.',
              'Kuramoto, Y. (1984). Chemical Oscillations, Waves, and Turbulence. Springer.',
@@ -362,9 +357,8 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what airway epitheli
 DISPATCH = {'kicker': 'FRONTIER ACTIVE MATTER DISPATCH · HYDRODYNAMIC METACHRONAL COHERENCE',
  'headline': 'Kuramoto Phase Synchronization Explains How Airway Cilia Coordinate '
              'Mucociliary Clearance',
- 'body': 'Recent active-matter biophysics (Fulford & Blake (1986) DOI '
-         '10.1016/s0022-5193(86)80098-4; Kuramoto synchronization) demonstrates that hydrodynamic '
-         'Oseen coupling across periciliary liquid depth h_ASL = 7.2 μm locks millions of beating '
+ 'body': 'Active-matter modelling (Fulford & Blake (1986) DOI '
+         '10.1016/s0022-5193(86)80098-4; Kuramoto synchronization) describes how hydrodynamic Oseen coupling across a periciliary liquid depth near 7 μm can lock millions of beating '
          'cilia (12–15 Hz) into coherent antiplectic metachronal waves.'}
 
 META_3D = ('Kuramoto Symplectic Metachronal Ciliary Wave Train',

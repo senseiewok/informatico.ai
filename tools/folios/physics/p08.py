@@ -21,7 +21,7 @@ FOLIO = {'category_code': 'P',
  'kernel_verdict': 'Discrepancy open: 2 readouts contradicted',
  'kernel_verdict_es': 'Discrepancia abierta: 2 lecturas contradichas',
  'pillar': 'physics',
- 'primary_kernel': 'tools/physics_kernel.py',
+ 'primary_kernel': 'skills/physics/p08/verify_p08.py',
  'reading_time': '22 MIN READ',
  'readouts': [{'label': 'Constructive Peak Wavelength', 'value': 'λ_peak = 588 nm (Amber-Gold)'},
               {'label': 'Angular Color-Flop Blue Shift', 'value': 'Δλ = −24.2 nm (at θ_i = 28°)'},
@@ -172,8 +172,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'James Clerk Maxwell proves light and color are transverse electromagnetic waves '
                  'governed by dielectric permittivity epsilon(omega).'),
                 ('1913',
-                 'William Henry Bragg & William Lawrence Bragg derive the constructive '
-                 'wave-interference law 2 d sqrt(n^2 - sin^2 theta) = m lambda.'),
+                 'William Henry Bragg & William Lawrence Bragg derive the crystal diffraction law 2 d sin(theta) = m lambda; its thin-film analogue with refraction, 2 d sqrt(n^2 - sin^2 theta) = m lambda, is the form this folio uses.'),
                 ('1982',
                  'Robert L. Cook & Kenneth E. Torrance formulate the physical microfacet BRDF (DOI '
                  '10.1145/357290.357293) governing metallic automotive and architectural '
@@ -191,13 +190,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'BRDF f_r = k_d (rho / pi) + k_s (D_GGX * F_Fresnel * G_Smith) / (4 (n.l)(n.v)) '
                    "separates the angle-invariant Lambertian pigment lobe (dominant in Barragán's "
                    'mineral stucco, roughness alpha_r = 0.88) from the sharp specular microfacet '
-                   'lobe (dominant in automotive clearcoats, alpha_r = 0.04). Numerical spectral '
-                   'boundary-layer solvers like DedalusProject/dedalus '
-                   '(https://github.com/DedalusProject/dedalus, DOI '
-                   '10.1103/PhysRevResearch.2.023068) and Scite-verified benchmarks (DOI '
-                   '10.1162/qss_a_00146) confirm how microfacet slope distributions dictate the '
-                   'directional sharpness of specular highlights and prevent unphysical energy '
-                   'generation across grazing incident angles.',
+                   'lobe (dominant in automotive clearcoats, alpha_r = 0.04). In the Cook–Torrance model the microfacet slope distribution sets the directional sharpness of specular highlights and the geometric term limits reflectance at grazing angles. Open spectral solvers such as DedalusProject/dedalus (https://github.com/DedalusProject/dedalus, DOI 10.1103/PhysRevResearch.2.023068) are general PDE tools, and the folio\'s references were checked in the Scite citation index (DOI 10.1162/qss_a_00146).',
  'act2_analogy': 'Everyday analogy: Think of a swirling soap bubble floating in the sun or the '
                  'iridescent throat feathers of a hummingbird. Neither has a single drop of '
                  'colorful ink inside them. Their brilliant, shifting colors come purely from '
