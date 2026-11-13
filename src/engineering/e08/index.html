@@ -359,7 +359,7 @@
               <p class="tp-theorem-meta"><strong>Kernels:</strong> Peck–Mair Gaussian Trough · Anagnostou–Kovári Face Equilibrium · GNN Twin &middot; <strong>Benchmarks:</strong> D = 9.8 m · z_0 = 24.0 m · V_L = 0.75% ⇒ S_max = 18.8 mm &middot; <strong>Primary Anchor:</strong> <code>DOI 10.1680/geot.1993.43.2.315</code></p>
             </div>
             <p>
-              To elevate Folio <strong>E.08</strong> (<em>Earth-Pressure-Balance Tunnel Boring Machines (EPB-TBM), Peck–Mair Gaussian Settlement Troughs &amp; GNN Subsurface Digital Twins</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>S(y) = S_max exp(−y² / 2i²) · V_s = V_L (π D² / 4) · i = K (z_0 − z) · CSI 31 71 19</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>TBM Face Support Pressure (P_face)</em>) spanning the admissible interval <code>[80.0, 360.0]</code> with step resolution <code>&Delta; = 5.0</code> and canonical reference operating point <code> kPa210.0</code>; control parameter <code>P_2</code> (<em>Geotechnical Volume Loss Ratio (V_L)</em>) spanning the admissible interval <code>[0.2, 2.5]</code> with step resolution <code>&Delta; = 0.05</code> and canonical reference operating point <code>%0.75</code>. Over this bounded domain, the coupled kernels (<code>Peck–Mair Gaussian Trough · Anagnostou–Kovári Face Equilibrium · GNN Twin</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point certified by <code>skills/engineering/e08/verify_e08.py</code>.
+              To elevate Folio <strong>E.08</strong> (<em>Earth-Pressure-Balance Tunnel Boring Machines (EPB-TBM), Peck–Mair Gaussian Settlement Troughs &amp; GNN Subsurface Digital Twins</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>S(y) = S_max exp(−y² / 2i²) · V_s = V_L (π D² / 4) · i = K (z_0 − z) · CSI 31 71 19</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>TBM Face Support Pressure (P_face)</em>) spanning the admissible interval <code>[80.0, 360.0]</code> with step resolution <code>&Delta; = 5.0</code> and canonical reference operating point <code> kPa210.0</code>; control parameter <code>P_2</code> (<em>Geotechnical Volume Loss Ratio (V_L)</em>) spanning the admissible interval <code>[0.2, 2.5]</code> with step resolution <code>&Delta; = 0.05</code> and canonical reference operating point <code>%0.75</code>. Over this bounded domain, the coupled kernels (<code>Peck–Mair Gaussian Trough · Anagnostou–Kovári Face Equilibrium · GNN Twin</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point.
             </p>
             <p>
               Crucially, well-posedness across the <code>D = 9.8 m · z_0 = 24.0 m · V_L = 0.75% ⇒ S_max = 18.8 mm</code> regime requires that the governing operator preserve dimensional homogeneity, non-negativity of physical energy/entropy functionals, and strict monotony along the primary reaction or proof coordinate. Whenever a simplified model omits one of the coupled terms in <code>S(y) = S_max exp(−y² / 2i²) · V_s = V_L (π D² / 4) · i = K (z_0 − z) · CSI 31 71 19</code>, the resulting approximation violates boundary compatibility and diverges from the primary peer-reviewed evidence (<code>Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 575 citing publications (6 supporting, 183 mentioning, 0 contrasting) on subsurface and surface Peck-Mair Gaussian settlement troughs above bored tunnels in soft ground.</code>).
@@ -369,7 +369,7 @@
           <article class="tp-proof-chapter" id="ch-ii-2-e08">
             <h3 data-en="&sect; II.2 &middot; Four-Stage Proof &amp; Mechanism Decomposition (Stages 1&ndash;4)" data-es="&sect; II.2 &middot; Descomposici&oacute;n Demostrativa y Mecanismo en Cuatro Etapas (Etapas 1&ndash;4)">&sect; II.2 &middot; Four-Stage Proof &amp; Mechanism Decomposition (Stages 1&ndash;4)</h3>
             <p>
-              Rather than treating <code>S(y) = S_max exp(−y² / 2i²) · V_s = V_L (π D² / 4) · i = K (z_0 − z) · CSI 31 71 19</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>E.08</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III and the standalone verification suite in <code>skills/engineering/e08/verify_e08.py</code>:
+              Rather than treating <code>S(y) = S_max exp(−y² / 2i²) · V_s = V_L (π D² / 4) · i = K (z_0 − z) · CSI 31 71 19</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>E.08</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III:
             </p>
           <div class="tp-proof-stage-block">
             <h4><span data-en="Stage 1 Derivation &amp; State Transition" data-es="Derivaci&oacute;n y Transici&oacute;n de Estado &middot; Etapa 1">Stage 1 Derivation &amp; State Transition</span></h4>
@@ -404,24 +404,24 @@
           <article class="tp-proof-chapter" id="ch-ii-3-e08">
             <h3 data-en="&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds" data-es="&sect; II.3 &middot; Invariantes de Verificaci&oacute;n Determinista, Escalamiento Dimensional y Cotas de Estabilidad">&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds</h3>
             <p>
-              In our lab&rsquo;s formal verification architecture, prose explanations are never separated from executable proof certificates. Every quantitative claim in Folio <strong>E.08</strong> is governed by three machine-checked falsification rules embedded in <code>epb-tbm-peck-settlement-SKILL.md</code> and executed by <code>skills/engineering/e08/verify_e08.py</code>:
+              Folio <strong>E.08</strong> states three rules a careful reader can use to test its claims. They are listed as plain text in <code>epb-tbm-peck-settlement-SKILL.md</code>. No script in this repository executes them yet:
             </p>
             <ol class="tp-invariant-list">
           <li>
             <strong>Invariant E.08-R1:</strong> Compute trough inflection distance i = K * (z_0 - z) (with K = 0.50 for clays, 0.25-0.35 for sands) and tunnel cross-sectional area A_t = pi * D^2 / 4.
-            <span>Verified deterministically offline by <code>skills/engineering/e08/verify_e08.py</code> against primary anchor <code>DOI 10.1680/geot.1993.43.2.315</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1680/geot.1993.43.2.315</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant E.08-R2:</strong> Calculate centerline maximum settlement S_max = (V_L * A_t) / (sqrt(2 * pi) * i) and maximum transverse slope beta_max = 0.6065 * S_max / i at y = +/- i.
-            <span>Verified deterministically offline by <code>skills/engineering/e08/verify_e08.py</code> against primary anchor <code>DOI 10.1680/geot.1993.43.2.315</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1680/geot.1993.43.2.315</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant E.08-R3:</strong> Verify EPB face pressure P_face stays between active collapse pressure sigma_h,active + u_0 and passive blowout pressure sigma_v0.
-            <span>Verified deterministically offline by <code>skills/engineering/e08/verify_e08.py</code> against primary anchor <code>DOI 10.1680/geot.1993.43.2.315</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1680/geot.1993.43.2.315</code>. Not yet recomputed by a script in this repository.</span>
           </li>
             </ol>
             <p>
-              Together, Invariants <strong>E.08-R1</strong> through <strong>E.08-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. If any parameter perturbation or code edit violates these bounds, the automated verification gate rejects the build before publication.
+              Together, Invariants <strong>E.08-R1</strong> through <strong>E.08-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. These bounds are stated for the reader. No automated gate enforces them yet.
             </p>
           </article>
 
@@ -553,27 +553,27 @@
         <section class="tp-worked-verification-chapter" id="ch-iii-2-e08" aria-labelledby="ch-iii-2-heading-e08">
           <h3 id="ch-iii-2-heading-e08" data-en="&sect; III.2 &middot; Worked Numerical Verification &amp; Reference Telemetry Benchmark" data-es="&sect; III.2 &middot; Verificaci&oacute;n Num&eacute;rica Paso a Paso y Telemetr&iacute;a de Referencia">&sect; III.2 &middot; Worked Numerical Verification &amp; Reference Telemetry Benchmark</h3>
           <p>
-            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>S(y) = S_max exp(−y² / 2i²) · V_s = V_L (π D² / 4) · i = K (z_0 − z) · CSI 31 71 19</code> at the canonical benchmark configuration (<code>D = 9.8 m · z_0 = 24.0 m · V_L = 0.75% ⇒ S_max = 18.8 mm</code>). Substituting control parameter <code>P_1</code> (<em>TBM Face Support Pressure (P_face)</em>) spanning the admissible interval <code>[80.0, 360.0]</code> with step resolution <code>&Delta; = 5.0</code> and canonical reference operating point <code> kPa210.0</code>; control parameter <code>P_2</code> (<em>Geotechnical Volume Loss Ratio (V_L)</em>) spanning the admissible interval <code>[0.2, 2.5]</code> with step resolution <code>&Delta; = 0.05</code> and canonical reference operating point <code>%0.75</code> into the coupled Stage 1&ndash;4 equations yields the exact reference telemetry certified by our offline verification kernel: <strong>Trough Inflection Width (i = K z_0)</strong> converges to <code>12.0 m (K = 0.50, z_0 = 24 m)</code>; <strong>Centerline Max Settlement (S_max)</strong> converges to <code>18.8 mm (at V_L = 0.75%)</code>; <strong>Max Angular Distortion (β_max)</strong> converges to <code>1 / 1,050 (&lt; 1/500 Limit)</code>; <strong>Geotechnical TBM Verdict</strong> converges to <code>FACE STABLE · RANKINE PASS</code>.
+            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>S(y) = S_max exp(−y² / 2i²) · V_s = V_L (π D² / 4) · i = K (z_0 − z) · CSI 31 71 19</code> at the canonical benchmark configuration (<code>D = 9.8 m · z_0 = 24.0 m · V_L = 0.75% ⇒ S_max = 18.8 mm</code>). Substituting control parameter <code>P_1</code> (<em>TBM Face Support Pressure (P_face)</em>) spanning the admissible interval <code>[80.0, 360.0]</code> with step resolution <code>&Delta; = 5.0</code> and canonical reference operating point <code> kPa210.0</code>; control parameter <code>P_2</code> (<em>Geotechnical Volume Loss Ratio (V_L)</em>) spanning the admissible interval <code>[0.2, 2.5]</code> with step resolution <code>&Delta; = 0.05</code> and canonical reference operating point <code>%0.75</code> into the coupled Stage 1&ndash;4 equations yields the reference values stated in the essay: <strong>Trough Inflection Width (i = K z_0)</strong> converges to <code>12.0 m (K = 0.50, z_0 = 24 m)</code>; <strong>Centerline Max Settlement (S_max)</strong> converges to <code>18.8 mm (at V_L = 0.75%)</code>; <strong>Max Angular Distortion (β_max)</strong> converges to <code>1 / 1,050 (&lt; 1/500 Limit)</code>; <strong>Geotechnical TBM Verdict</strong> converges to <code>FACE STABLE · RANKINE PASS</code>.
           </p>
           <div class="tp-table-wrap">
             <table class="tp-table tp-telemetry-benchmark-table" aria-label="Reference numerical verification benchmark for Folio E.08">
               <thead>
                 <tr>
                   <th scope="col" data-en="Observable / Proof Metric" data-es="Observable / M&eacute;trica de Prueba">Observable / Proof Metric</th>
-                  <th scope="col" data-en="Certified Benchmark Value" data-es="Valor de Referencia Certificado">Certified Benchmark Value</th>
-                  <th scope="col" data-en="Deterministic Verifier" data-es="Verificador Determinista">Deterministic Verifier</th>
+                  <th scope="col" data-en="Reference Value" data-es="Valor de Referencia">Reference Value</th>
+                  <th scope="col" data-en="Where the value comes from" data-es="De d&oacute;nde viene el valor">Where the value comes from</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><th scope="row">Trough Inflection Width (i = K z_0)</th><td><code>12.0 m (K = 0.50, z_0 = 24 m)</code></td><td><code>skills/engineering/e08/verify_e08.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Centerline Max Settlement (S_max)</th><td><code>18.8 mm (at V_L = 0.75%)</code></td><td><code>skills/engineering/e08/verify_e08.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Max Angular Distortion (β_max)</th><td><code>1 / 1,050 (&lt; 1/500 Limit)</code></td><td><code>skills/engineering/e08/verify_e08.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Geotechnical TBM Verdict</th><td><code>FACE STABLE · RANKINE PASS</code></td><td><code>skills/engineering/e08/verify_e08.py</code> &middot; Verified</td></tr>
+                <tr><th scope="row">Trough Inflection Width (i = K z_0)</th><td><code>12.0 m (K = 0.50, z_0 = 24 m)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
+<tr><th scope="row">Centerline Max Settlement (S_max)</th><td><code>18.8 mm (at V_L = 0.75%)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
+<tr><th scope="row">Max Angular Distortion (β_max)</th><td><code>1 / 1,050 (&lt; 1/500 Limit)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
+<tr><th scope="row">Geotechnical TBM Verdict</th><td><code>FACE STABLE · RANKINE PASS</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
               </tbody>
             </table>
           </div>
           <p>
-            Every sensitivity bar in Plate E.08-B and every real-time readout card above is computed directly from these governing expressions with zero pre-baked lookup tables. Running <code>python skills/engineering/e08/verify_e08.py</code> from the repository root executes the same numerical assertions and confirms zero drift across all 48 Folios.
+            The values above are the essay's reference values. A script that recomputes them from the governing law is not yet part of this repository.
           </p>
         </section>
 
@@ -691,7 +691,7 @@
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Folio</span><span class="tp-colophon-val">E.08 · EPB-TBM Tunneling &amp; Peck–Mair Settlement · CSI 31 71 19 · VOL. 04</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Kernels</span><span class="tp-colophon-val">Peck–Mair Gaussian Trough · Anagnostou–Kovári Face Equilibrium · GNN Twin</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Benchmarks</span><span class="tp-colophon-val">D = 9.8 m · z_0 = 24.0 m · V_L = 0.75% ⇒ S_max = 18.8 mm</span></div>
-          <div class="tp-colophon-cell"><span class="tp-colophon-label">Verifier</span><span class="tp-colophon-val"><code>tools/continuum_verify.py</code></span></div>
+          <div class="tp-colophon-cell"><span class="tp-colophon-label">Lab kernel</span><span class="tp-colophon-val"><code>tools/continuum_verify.py</code></span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Edition</span><span class="tp-colophon-val">REV 1.0 · 2026-11-02</span></div>
         </div>
 
@@ -704,16 +704,15 @@
           <p>Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 575 citing publications (6 supporting, 183 mentioning, 0 contrasting) on subsurface and surface Peck-Mair Gaussian settlement troughs above bored tunnels in soft ground.</p>
         </div>
 
-        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion and Python verifier">
+        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion">
           <div class="tp-skill-header">
-            <span class="tp-skill-kicker">SKILL.md companion &amp; Python verifier</span>
+            <span class="tp-skill-kicker">SKILL.md companion &middot; plain text</span>
             <span class="tp-skill-compat">Works with Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3</span>
           </div>
-          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the exact governing equations of Folio E.08: a portable <code>SKILL.md</code>, a zero-dependency Python verifier (<code>verify_e08.py</code>), or the live telemetry as JSON.</p>
+          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the governing equations of Folio E.08 as plain text: a portable <code>SKILL.md</code>, or the live telemetry as JSON. Its reference values are stated in the essay and are not yet recomputed by a script in this repository.</p>
           <div class="tp-skill-actions">
             <button class="tp-skill-btn" type="button" data-skill-download="epb-tbm-peck-settlement-SKILL.md">Download SKILL.md (epb-tbm-peck-settlement-SKILL.md)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-skill-copy="true">Copy SKILL.md</button>
-            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-py-download="verify_e08.py">Download Python Tool (verify_e08.py)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-telemetry-copy="E.08">Copy Live Telemetry JSON</button>
           </div>
           <details class="tp-skill-source-details">
@@ -726,77 +725,39 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ---
 # Earth-Pressure-Balance Tunnel Boring Machines (EPB-TBM), Peck–Mair Gaussian Settlement Troughs &amp; GNN Subsurface Digital Twins (Folio E.08)
 
-## 1. Governing Law &amp; Tectonic Identity
-- **Folio**: `E.08 · EPB-TBM Tunneling &amp; Peck–Mair Settlement · CSI 31 71 19` (`REV 1.0`, Redated `2026-11-02`)
-- **Governing Equation**: `S(y) = S_max exp(−y² / 2i²) · V_s = V_L (π D² / 4) · i = K (z_0 − z) · CSI 31 71 19`
-- **Primary Verification Kernel**: `skills/engineering/e08/verify_e08.py`
-- **Verification Benchmarks**: `D = 9.8 m · z_0 = 24.0 m · V_L = 0.75% ⇒ S_max = 18.8 mm`
-- **Primary Scite Anchor DOI**: https://doi.org/10.1680/geot.1993.43.2.315 (Scite Report: https://scite.ai/reports/10.1680/geot.1993.43.2.315)
+A plain-text companion to the essay at https://informatico.ai/engineering/e08/ (`E.08 · EPB-TBM Tunneling &amp; Peck–Mair Settlement · CSI 31 71 19`, `REV 1.0`, redated `2026-11-02`).
 
-## 2. Deterministic Verification &amp; Falsification Rules
+## The governing relation
+`S(y) = S_max exp(−y² / 2i²) · V_s = V_L (π D² / 4) · i = K (z_0 − z) · CSI 31 71 19`
+
+## Rules the essay derives
 1. Compute trough inflection distance i = K * (z_0 - z) (with K = 0.50 for clays, 0.25-0.35 for sands) and tunnel cross-sectional area A_t = pi * D^2 / 4.
 2. Calculate centerline maximum settlement S_max = (V_L * A_t) / (sqrt(2 * pi) * i) and maximum transverse slope beta_max = 0.6065 * S_max / i at y = +/- i.
 3. Verify EPB face pressure P_face stays between active collapse pressure sigma_h,active + u_0 and passive blowout pressure sigma_v0.
 
-## 3. 4-Stage Physical &amp; Mathematical Mechanism
+## How it works, in four stages
 - Stage 1 (Anagnostou–Kovári Chamber Pressure Balance): At depth z_0 = 24.0 m, EPB chamber pressure P_face = 210 kPa balances lateral earth + pore water pressure without passive blowout.
 - Stage 2 (Foam-Conditioned Muck Rheology): Surfactant-polymer foam injection transforms excavated clay into a cohesive, low-permeability plastic paste (slump 120 mm) across the screw conveyor.
 - Stage 3 (Peck–Mair Subsurface Gaussian Propagation): Volume loss V_L = 0.75% across D = 9.8 m creates a trough of inflection width i = K z_0 = 12.0 m and centerline S_max = 18.8 mm.
 - Stage 4 (Graph Neural Network Subsurface Digital Twin): Real-time cutterhead torque and tail-void grout pressures update the GNN mesh to hold angular distortion β_max &lt; 1/500 beneath historic masonry.
 
-## 4. Reference Telemetry &amp; Acceptance Bounds
+## Reference values stated in the essay
 - **Trough Inflection Width (i = K z_0)**: `12.0 m (K = 0.50, z_0 = 24 m)`
 - **Centerline Max Settlement (S_max)**: `18.8 mm (at V_L = 0.75%)`
 - **Max Angular Distortion (β_max)**: `1 / 1,050 (&lt; 1/500 Limit)`
 - **Geotechnical TBM Verdict**: `FACE STABLE · RANKINE PASS`
 
-## 5. Frontier Discovery &amp; Contemporary Research Context (2024–2026)
+## What is and is not checked
+The reference values above are stated in the essay. No script in this repository recomputes them yet, so treat them as the essay&#x27;s claims and check them against the primary source before relying on them.
+
+## Primary source
+- https://doi.org/10.1680/geot.1993.43.2.315 (Scite report: https://scite.ai/reports/10.1680/geot.1993.43.2.315)
+- What the essay compares against: D = 9.8 m · z_0 = 24.0 m · V_L = 0.75% ⇒ S_max = 18.8 mm
+
+## Recent research context
 - **Graph Neural Networks &amp; Peck–Mair Gaussian Troughs Prevent Urban Settlement Ahead of the Cutterhead**: Building on Ralph Peck&#x27;s (1969) and Mair, Taylor &amp; Bracegirdle&#x27;s (Géotechnique DOI 10.1680/geot.1993.43.2.315) Gaussian subsurface settlement theory, modern Earth-Pressure-Balance Tunnel Boring Machines fuse real-time cutterhead torque, chamber pressure, and InSAR satellite radar into physics-constrained Graph Neural Networks to hold urban building distortion below 1/1,000.
 </code></pre>
           </details>
-          <pre class="tp-skill-pre" hidden><code data-py-source>#!/usr/bin/env python3
-&quot;&quot;&quot;Standalone Zero-Dependency Deterministic Verifier for Folio E.08 (e08).
-Primary Crossref Anchor DOI: https://doi.org/10.1680/geot.1993.43.2.315
-&quot;&quot;&quot;
-from __future__ import annotations
-
-import json
-import math
-import sys
-
-if hasattr(sys.stdout, &quot;reconfigure&quot;):
-    sys.stdout.reconfigure(encoding=&quot;utf-8&quot;)
-
-FOLIO_METADATA = {
-    &quot;folio_id&quot;: &quot;E.08&quot;,
-    &quot;slug&quot;: &quot;e08&quot;,
-    &quot;title&quot;: &quot;Earth-Pressure-Balance Tunnel Boring Machines (EPB-TBM), Peck–Mair Gaussian Settlement Troughs &amp; GNN Subsurface Digital Twins&quot;,
-    &quot;governing_law&quot;: &quot;S(y) = S_max exp(−y² / 2i²) · V_s = V_L (π D² / 4) · i = K (z_0 − z) · CSI 31 71 19&quot;,
-    &quot;primary_kernel&quot;: &quot;tools/continuum_verify.py&quot;,
-    &quot;primary_doi&quot;: &quot;10.1680/geot.1993.43.2.315&quot;,
-    &quot;scite_report&quot;: &quot;https://scite.ai/reports/10.1680/geot.1993.43.2.315&quot;,
-    &quot;benchmarks&quot;: [{&quot;label&quot;: &quot;Trough Inflection Width (i = K z_0)&quot;, &quot;value&quot;: &quot;12.0 m (K = 0.50, z_0 = 24 m)&quot;}, {&quot;label&quot;: &quot;Centerline Max Settlement (S_max)&quot;, &quot;value&quot;: &quot;18.8 mm (at V_L = 0.75%)&quot;}, {&quot;label&quot;: &quot;Max Angular Distortion (β_max)&quot;, &quot;value&quot;: &quot;1 / 1,050 (&lt; 1/500 Limit)&quot;}, {&quot;label&quot;: &quot;Geotechnical TBM Verdict&quot;, &quot;value&quot;: &quot;FACE STABLE · RANKINE PASS&quot;}],
-}
-
-
-def verify_folio_invariants(scale: float = 1.0) -&gt; dict:
-    &quot;&quot;&quot;Evaluate reference conservation and safety bounds for Folio E.08.&quot;&quot;&quot;
-    assert scale &gt; 0.0 and math.isfinite(scale), &quot;Scale factor must be positive and finite&quot;
-    return {
-        &quot;status&quot;: &quot;PASS&quot;,
-        &quot;verdict&quot;: &quot;PASS&quot;,
-        &quot;folio_id&quot;: FOLIO_METADATA[&quot;folio_id&quot;],
-        &quot;governing_law&quot;: FOLIO_METADATA[&quot;governing_law&quot;],
-        &quot;scale&quot;: round(scale, 4),
-        &quot;benchmarks&quot;: FOLIO_METADATA[&quot;benchmarks&quot;],
-    }
-
-
-if __name__ == &quot;__main__&quot;:
-    result = verify_folio_invariants()
-    print(json.dumps(result, indent=2, ensure_ascii=False))
-    sys.exit(0)
-</code></pre>
         </section>
 
         <section class="tp-rev-ledger" aria-label="Folio E.08 edition history and review">

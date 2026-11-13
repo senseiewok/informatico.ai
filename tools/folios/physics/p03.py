@@ -22,7 +22,7 @@ FOLIO = {'category_code': 'P',
               {'label': 'Subdiffusion Exponent (alpha)',
                'value': '0.814 (65 nm LNP in Healthy)'},
               {'label': 'Zero-Shear Viscosity', 'value': '0.055 Pa·s (2% solids)'},
-              {'label': 'Kernel Verification', 'value': 'PASS · VERIFIED'}],
+              {'label': 'Reference Values', 'value': 'STATED IN ESSAY'}],
  'revisions': [{'date': '2026-11-02',
                 'edition': 'REV 1.2',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified de '

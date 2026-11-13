@@ -2599,7 +2599,7 @@
           {
             "edition": "REV 1.4",
             "date": "2026-11-10",
-            "summary": "REV 1.4 (Redated 2026-11-10): Coupled 3D polyhedral graphic statics and negative-definite Airy stress surfaces (DOI 10.1016/j.cad.2015.01.006) with 8–13 μm atmospheric-window daytime radiative sky-cooling extrados coatings (Raman et al. 2014, DOI 10.1038/nature13883; Mandal et al. 2018 porous P(VdF-HFP), DOI 10.1126/science.aat9513), cross-linked directly to Toolbox X.03 STEP AP242/3MF/DXF/GLB voussoir assemblies and verified with numerical --planted-defect knockouts.",
+            "summary": "REV 1.4 (Redated 2026-11-10): Coupled 3D polyhedral graphic statics and negative-definite Airy stress surfaces (DOI 10.1016/j.cad.2015.01.006) with 8–13 μm atmospheric-window daytime radiative sky-cooling extrados coatings (Raman et al. 2014, DOI 10.1038/nature13883; Mandal et al. 2018 porous P(VdF-HFP), DOI 10.1126/science.aat9513), cross-linked directly to Toolbox X.03 STEP AP242/3MF/DXF/GLB voussoir assemblies with reference values stated in the essay.",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified Airy Hessian concavity (det(H_Φ) = +1.8416 > 0), dual cell nodal closure (< 1e-12 kN), daytime cooling flux q_net = 98.43 W/m² ≥ 80 W/m² (ΔT_eq = −7.08 °C), and X.03 CAD parity."
           },
           {
@@ -2769,8 +2769,8 @@
             "value": "STABLE_COUPLED_CYCLE"
           },
           {
-            "label": "Kernel Verification",
-            "value": "PASS · VERIFIED"
+            "label": "Reference Values",
+            "value": "STATED IN ESSAY"
           }
         ],
         "revisions": [
@@ -2889,8 +2889,8 @@
             "value": "0.880 (High Coherence)"
           },
           {
-            "label": "Kernel Verification",
-            "value": "PASS · VERIFIED"
+            "label": "Reference Values",
+            "value": "STATED IN ESSAY"
           }
         ],
         "revisions": [
@@ -3009,8 +3009,8 @@
             "value": "0.055 Pa·s (2% solids)"
           },
           {
-            "label": "Kernel Verification",
-            "value": "PASS · VERIFIED"
+            "label": "Reference Values",
+            "value": "STATED IN ESSAY"
           }
         ],
         "revisions": [
@@ -3129,8 +3129,8 @@
             "value": "HEALTHY_HYDRATED_PCL"
           },
           {
-            "label": "Kernel Verification",
-            "value": "PASS · VERIFIED"
+            "label": "Reference Values",
+            "value": "STATED IN ESSAY"
           }
         ],
         "revisions": [
@@ -4113,7 +4113,7 @@
           {
             "edition": "REV 1.4",
             "date": "2026-11-10",
-            "summary": "REV 1.4 (Redated 2026-11-10): Synthesized Barato & Seifert (2015, DOI 10.1103/PhysRevLett.114.158101) Thermodynamic Uncertainty Relation (Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² = A·coth(A/2) ≥ 2 for NESS Markovian jump networks, bridged to Folio M.11) across the Boltzmann–Grad hard-sphere limit (Kn → 0) into Chapman–Enskog Navier–Stokes viscous entropy production σ_visc = (2μ/T) S_ij S_ij ≥ 0 (DOI 10.1007/s00222-003-0316-5), with stdlib numerical verifier and --planted-defect entropy knockouts.",
+            "summary": "REV 1.4 (Redated 2026-11-10): Synthesized Barato & Seifert (2015, DOI 10.1103/PhysRevLett.114.158101) Thermodynamic Uncertainty Relation (Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² = A·coth(A/2) ≥ 2 for NESS Markovian jump networks, bridged to Folio M.11) across the Boltzmann–Grad hard-sphere limit (Kn → 0) into Chapman–Enskog Navier–Stokes viscous entropy production σ_visc = (2μ/T) S_ij S_ij ≥ 0 (DOI 10.1007/s00222-003-0316-5), with its reference values stated in the essay.",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified Markovian steady-state TUR scope (Q_TUR = 2.3617 > 2 at A = 1.5 rad), hard-sphere collision invariants (< 1e-14), and positive Couette viscous dissipation σ_visc > 0."
           },
           {

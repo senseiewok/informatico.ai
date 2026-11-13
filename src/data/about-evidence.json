@@ -88,16 +88,16 @@
     },
     {
       "id": "s6",
-      "sentence_en": "Informatico exports {value} portable SKILL.md companions and stdlib Python verifiers so any engineer can stress-test the same verification engine locally.",
-      "sentence_es": "Informatico exporta {value} compañeros SKILL.md portables y verificadores en Python estándar para que cualquier ingeniero pueda poner a prueba el mismo motor de verificación localmente.",
+      "sentence_en": "Informatico exports {value} portable SKILL.md companions as plain text so any engineer or agent can load the same governing relations locally; the Toolbox, Time and Gravity and cross-scale essay skills also ship a verifier that must fail under a planted defect.",
+      "sentence_es": "Informatico exporta {value} compañeros SKILL.md portables en texto plano para que cualquier ingeniero o agente cargue las mismas relaciones localmente; las habilidades de la Caja de Herramientas, Tiempo y Gravedad y los ensayos entre escalas incluyen además un verificador que debe fallar ante un defecto plantado.",
       "value": "60",
       "value_es": "60",
       "source_path": "informatico.ai/skills/ (48 Pillar + 6 Bounty + 6 Toolbox SKILL.md)",
       "command": "python -m unittest discover -s tests -p \"test_informatico_*.py\"",
       "date_read": "2026-11-08",
       "tier": "T1",
-      "limitation": "Counts exported SKILL.md companions across the 60 Informatico Folios; each verifier bounds a simplified physical or mathematical model.",
-      "limitation_es": "Cuenta los compañeros SKILL.md exportados en los 60 Folios de Informatico; cada verificador acota un modelo físico o matemático simplificado."
+      "limitation": "Counts exported SKILL.md companions across the 60 Informatico Folios; the pillar and bounty companions are text and their reference values are stated in the essay, not recomputed by a script.",
+      "limitation_es": "Cuenta los compañeros SKILL.md exportados en los 60 Folios de Informatico; los compañeros de pilares y retos son texto y sus valores de referencia se declaran en el ensayo, no se recalculan con un script."
     },
     {
       "id": "s7",

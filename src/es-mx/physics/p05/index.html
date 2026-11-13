@@ -359,7 +359,7 @@
               <p class="tp-theorem-meta"><strong>Kernels:</strong> WKB T ~ exp(−2∫√(2m(V−E))dx/ℏ) · KIE = 6.84 &middot; <strong>Benchmarks:</strong> Gamow 1928 · Marcus 1956 · DOI 10.1103/RevModPhys.35.724 &middot; <strong>Primary Anchor:</strong> <code>DOI 10.1103/RevModPhys.35.724</code></p>
             </div>
             <p>
-              To elevate Folio <strong>P.05</strong> (<em>Quantum WKB Barrier Penetration, Proton-Coupled Electron Transfer, and Deaminase Base-Editing Catalysis</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>T_WKB ~ exp(−2/ℏ ∫√(2m(V−E))dx) · k_H/k_D = 6.84</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>Catalytic Chemical Drive / Barrier Compression</em>) spanning the admissible interval <code>[1.0, 25.0]</code> with step resolution <code>&Delta; = 0.2</code> and canonical reference operating point <code> k_B T18.4</code>; control parameter <code>P_2</code> (<em>Active-Site Electrostatic Potential V_m</em>) spanning the admissible interval <code>[-80.0, 20.0]</code> with step resolution <code>&Delta; = 1.0</code> and canonical reference operating point <code> mV-30.0</code>. Over this bounded domain, the coupled kernels (<code>WKB T ~ exp(−2∫√(2m(V−E))dx/ℏ) · KIE = 6.84</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point certified by <code>skills/physics/p05/verify_p05.py</code>.
+              To elevate Folio <strong>P.05</strong> (<em>Quantum WKB Barrier Penetration, Proton-Coupled Electron Transfer, and Deaminase Base-Editing Catalysis</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>T_WKB ~ exp(−2/ℏ ∫√(2m(V−E))dx) · k_H/k_D = 6.84</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>Catalytic Chemical Drive / Barrier Compression</em>) spanning the admissible interval <code>[1.0, 25.0]</code> with step resolution <code>&Delta; = 0.2</code> and canonical reference operating point <code> k_B T18.4</code>; control parameter <code>P_2</code> (<em>Active-Site Electrostatic Potential V_m</em>) spanning the admissible interval <code>[-80.0, 20.0]</code> with step resolution <code>&Delta; = 1.0</code> and canonical reference operating point <code> mV-30.0</code>. Over this bounded domain, the coupled kernels (<code>WKB T ~ exp(−2∫√(2m(V−E))dx/ℏ) · KIE = 6.84</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point.
             </p>
             <p>
               Crucially, well-posedness across the <code>Gamow 1928 · Marcus 1956 · DOI 10.1103/RevModPhys.35.724</code> regime requires that the governing operator preserve dimensional homogeneity, non-negativity of physical energy/entropy functionals, and strict monotony along the primary reaction or proof coordinate. Whenever a simplified model omits one of the coupled terms in <code>T_WKB ~ exp(−2/ℏ ∫√(2m(V−E))dx) · k_H/k_D = 6.84</code>, the resulting approximation violates boundary compatibility and diverges from the primary peer-reviewed evidence (<code>Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 694 citing publications (5 supporting, 464 mentioning, 0 contrasting) on quantum proton tunneling in DNA base pairs.</code>).
@@ -369,7 +369,7 @@
           <article class="tp-proof-chapter" id="ch-ii-2-p05">
             <h3 data-en="&sect; II.2 &middot; Four-Stage Proof &amp; Mechanism Decomposition (Stages 1&ndash;4)" data-es="&sect; II.2 &middot; Descomposici&oacute;n Demostrativa y Mecanismo en Cuatro Etapas (Etapas 1&ndash;4)">§ II.2 · Descomposición Demostrativa y Mecanismo en Cuatro Etapas (Etapas 1–4)</h3>
             <p>
-              Rather than treating <code>T_WKB ~ exp(−2/ℏ ∫√(2m(V−E))dx) · k_H/k_D = 6.84</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>P.05</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III and the standalone verification suite in <code>skills/physics/p05/verify_p05.py</code>:
+              Rather than treating <code>T_WKB ~ exp(−2/ℏ ∫√(2m(V−E))dx) · k_H/k_D = 6.84</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>P.05</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III:
             </p>
           <div class="tp-proof-stage-block">
             <h4><span data-en="Stage 1 Derivation &amp; State Transition" data-es="Derivaci&oacute;n y Transici&oacute;n de Estado &middot; Etapa 1">Derivación y Transición de Estado · Etapa 1</span></h4>
@@ -404,24 +404,24 @@
           <article class="tp-proof-chapter" id="ch-ii-3-p05">
             <h3 data-en="&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds" data-es="&sect; II.3 &middot; Invariantes de Verificaci&oacute;n Determinista, Escalamiento Dimensional y Cotas de Estabilidad">§ II.3 · Invariantes de Verificación Determinista, Escalamiento Dimensional y Cotas de Estabilidad</h3>
             <p>
-              In our lab&rsquo;s formal verification architecture, prose explanations are never separated from executable proof certificates. Every quantitative claim in Folio <strong>P.05</strong> is governed by three machine-checked falsification rules embedded in <code>wkb-quantum-tunneling-catalysis-SKILL.md</code> and executed by <code>skills/physics/p05/verify_p05.py</code>:
+              Folio <strong>P.05</strong> states three rules a careful reader can use to test its claims. They are listed as plain text in <code>wkb-quantum-tunneling-catalysis-SKILL.md</code>. No script in this repository executes them yet:
             </p>
             <ol class="tp-invariant-list">
           <li>
             <strong>Invariant P.05-R1:</strong> Compute WKB barrier transmission as T(E) = exp(-2/hbar * integral sqrt(2 m (V(x) - E)) dx) between classical turning points x_1 and x_2.
-            <span>Verified deterministically offline by <code>skills/physics/p05/verify_p05.py</code> against primary anchor <code>DOI 10.1103/RevModPhys.35.724</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1103/RevModPhys.35.724</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant P.05-R2:</strong> Apply the Bell tunneling factor kappa_tun = (u_b / 2) / sin(u_b / 2) with u_b = hbar * omega_b / (k_B T) to Eyring-Kramers transition-state rates.
-            <span>Verified deterministically offline by <code>skills/physics/p05/verify_p05.py</code> against primary anchor <code>DOI 10.1103/RevModPhys.35.724</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1103/RevModPhys.35.724</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant P.05-R3:</strong> Evaluate primary H/D Kinetic Isotope Effects (k_H / k_D) to distinguish quantum proton tunneling from classical over-the-barrier activation.
-            <span>Verified deterministically offline by <code>skills/physics/p05/verify_p05.py</code> against primary anchor <code>DOI 10.1103/RevModPhys.35.724</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1103/RevModPhys.35.724</code>. Not yet recomputed by a script in this repository.</span>
           </li>
             </ol>
             <p>
-              Together, Invariants <strong>P.05-R1</strong> through <strong>P.05-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. If any parameter perturbation or code edit violates these bounds, the automated verification gate rejects the build before publication.
+              Together, Invariants <strong>P.05-R1</strong> through <strong>P.05-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. These bounds are stated for the reader. No automated gate enforces them yet.
             </p>
           </article>
 
@@ -547,27 +547,27 @@
         <section class="tp-worked-verification-chapter" id="ch-iii-2-p05" aria-labelledby="ch-iii-2-heading-p05">
           <h3 id="ch-iii-2-heading-p05" data-en="&sect; III.2 &middot; Worked Numerical Verification &amp; Reference Telemetry Benchmark" data-es="&sect; III.2 &middot; Verificaci&oacute;n Num&eacute;rica Paso a Paso y Telemetr&iacute;a de Referencia">§ III.2 · Verificación Numérica Paso a Paso y Telemetría de Referencia</h3>
           <p>
-            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>T_WKB ~ exp(−2/ℏ ∫√(2m(V−E))dx) · k_H/k_D = 6.84</code> at the canonical benchmark configuration (<code>Gamow 1928 · Marcus 1956 · DOI 10.1103/RevModPhys.35.724</code>). Substituting control parameter <code>P_1</code> (<em>Catalytic Chemical Drive / Barrier Compression</em>) spanning the admissible interval <code>[1.0, 25.0]</code> with step resolution <code>&Delta; = 0.2</code> and canonical reference operating point <code> k_B T18.4</code>; control parameter <code>P_2</code> (<em>Active-Site Electrostatic Potential V_m</em>) spanning the admissible interval <code>[-80.0, 20.0]</code> with step resolution <code>&Delta; = 1.0</code> and canonical reference operating point <code> mV-30.0</code> into the coupled Stage 1&ndash;4 equations yields the exact reference telemetry certified by our offline verification kernel: <strong>Tunneling Coupling Efficiency</strong> converges to <code>0.88 (WT-Coupled)</code>; <strong>Kinetic Isotope Ratio k_H/k_D</strong> converges to <code>6.84 (WKB Verified)</code>; <strong>Barrier Width Δx</strong> converges to <code>0.52 Å (42× Boost)</code>; <strong>Catalytic Regime</strong> converges to <code>STABLE_COUPLED_CYCLE</code>.
+            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>T_WKB ~ exp(−2/ℏ ∫√(2m(V−E))dx) · k_H/k_D = 6.84</code> at the canonical benchmark configuration (<code>Gamow 1928 · Marcus 1956 · DOI 10.1103/RevModPhys.35.724</code>). Substituting control parameter <code>P_1</code> (<em>Catalytic Chemical Drive / Barrier Compression</em>) spanning the admissible interval <code>[1.0, 25.0]</code> with step resolution <code>&Delta; = 0.2</code> and canonical reference operating point <code> k_B T18.4</code>; control parameter <code>P_2</code> (<em>Active-Site Electrostatic Potential V_m</em>) spanning the admissible interval <code>[-80.0, 20.0]</code> with step resolution <code>&Delta; = 1.0</code> and canonical reference operating point <code> mV-30.0</code> into the coupled Stage 1&ndash;4 equations yields the reference values stated in the essay: <strong>Tunneling Coupling Efficiency</strong> converges to <code>0.88 (WT-Coupled)</code>; <strong>Kinetic Isotope Ratio k_H/k_D</strong> converges to <code>6.84 (WKB Verified)</code>; <strong>Barrier Width Δx</strong> converges to <code>0.52 Å (42× Boost)</code>; <strong>Catalytic Regime</strong> converges to <code>STABLE_COUPLED_CYCLE</code>.
           </p>
           <div class="tp-table-wrap">
             <table class="tp-table tp-telemetry-benchmark-table" aria-label="Reference numerical verification benchmark for Folio P.05">
               <thead>
                 <tr>
                   <th scope="col" data-en="Observable / Proof Metric" data-es="Observable / M&eacute;trica de Prueba">Observable / Métrica de Prueba</th>
-                  <th scope="col" data-en="Certified Benchmark Value" data-es="Valor de Referencia Certificado">Valor de Referencia Certificado</th>
-                  <th scope="col" data-en="Deterministic Verifier" data-es="Verificador Determinista">Verificador Determinista</th>
+                  <th scope="col" data-en="Reference Value" data-es="Valor de Referencia">Valor de Referencia</th>
+                  <th scope="col" data-en="Where the value comes from" data-es="De d&oacute;nde viene el valor">De dónde viene el valor</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><th scope="row">Tunneling Coupling Efficiency</th><td><code>0.88 (WT-Coupled)</code></td><td><code>skills/physics/p05/verify_p05.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Kinetic Isotope Ratio k_H/k_D</th><td><code>6.84 (WKB Verified)</code></td><td><code>skills/physics/p05/verify_p05.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Barrier Width Δx</th><td><code>0.52 Å (42× Boost)</code></td><td><code>skills/physics/p05/verify_p05.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Catalytic Regime</th><td><code>STABLE_COUPLED_CYCLE</code></td><td><code>skills/physics/p05/verify_p05.py</code> &middot; Verified</td></tr>
+                <tr><th scope="row">Tunneling Coupling Efficiency</th><td><code>0.88 (WT-Coupled)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
+<tr><th scope="row">Kinetic Isotope Ratio k_H/k_D</th><td><code>6.84 (WKB Verified)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
+<tr><th scope="row">Barrier Width Δx</th><td><code>0.52 Å (42× Boost)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
+<tr><th scope="row">Catalytic Regime</th><td><code>STABLE_COUPLED_CYCLE</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
               </tbody>
             </table>
           </div>
           <p>
-            Every sensitivity bar in Plate P.05-B and every real-time readout card above is computed directly from these governing expressions with zero pre-baked lookup tables. Running <code>python skills/physics/p05/verify_p05.py</code> from the repository root executes the same numerical assertions and confirms zero drift across all 48 Folios.
+            The values above are the essay's reference values. A script that recomputes them from the governing law is not yet part of this repository.
           </p>
         </section>
 
@@ -685,7 +685,7 @@
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Folio</span><span class="tp-colophon-val">P.05 · Quantum &amp; Chemical Physics · VOL. 03</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Kernels</span><span class="tp-colophon-val">WKB T ~ exp(−2∫√(2m(V−E))dx/ℏ) · KIE = 6.84</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Benchmarks</span><span class="tp-colophon-val">Gamow 1928 · Marcus 1956 · DOI 10.1103/RevModPhys.35.724</span></div>
-          <div class="tp-colophon-cell"><span class="tp-colophon-label">Verifier</span><span class="tp-colophon-val"><code>tools/physics_kernel.py</code></span></div>
+          <div class="tp-colophon-cell"><span class="tp-colophon-label">Lab kernel</span><span class="tp-colophon-val"><code>tools/physics_kernel.py</code></span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Edition</span><span class="tp-colophon-val">REV 1.1 · 2026-11-02</span></div>
         </div>
 
@@ -698,16 +698,15 @@
           <p>Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 694 citing publications (5 supporting, 464 mentioning, 0 contrasting) on quantum proton tunneling in DNA base pairs.</p>
         </div>
 
-        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion and Python verifier">
+        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion">
           <div class="tp-skill-header">
-            <span class="tp-skill-kicker">SKILL.md companion &amp; Python verifier</span>
+            <span class="tp-skill-kicker">SKILL.md companion &middot; plain text</span>
             <span class="tp-skill-compat">Works with Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3</span>
           </div>
-          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the exact governing equations of Folio P.05: a portable <code>SKILL.md</code>, a zero-dependency Python verifier (<code>verify_p05.py</code>), or the live telemetry as JSON.</p>
+          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the governing equations of Folio P.05 as plain text: a portable <code>SKILL.md</code>, or the live telemetry as JSON. Its reference values are stated in the essay and are not yet recomputed by a script in this repository.</p>
           <div class="tp-skill-actions">
             <button class="tp-skill-btn" type="button" data-skill-download="wkb-quantum-tunneling-catalysis-SKILL.md">Download SKILL.md (wkb-quantum-tunneling-catalysis-SKILL.md)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-skill-copy="true">Copy SKILL.md</button>
-            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-py-download="verify_p05.py">Download Python Tool (verify_p05.py)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-telemetry-copy="P.05">Copy Live Telemetry JSON</button>
           </div>
           <details class="tp-skill-source-details">
@@ -720,77 +719,39 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ---
 # Quantum WKB Barrier Penetration, Proton-Coupled Electron Transfer, and Deaminase Base-Editing Catalysis (Folio P.05)
 
-## 1. Governing Law &amp; Tectonic Identity
-- **Folio**: `P.05 · Quantum &amp; Chemical Physics` (`REV 1.1`, Redated `2026-11-02`)
-- **Governing Equation**: `T_WKB ~ exp(−2/ℏ ∫√(2m(V−E))dx) · k_H/k_D = 6.84`
-- **Primary Verification Kernel**: `skills/physics/p05/verify_p05.py`
-- **Verification Benchmarks**: `Gamow 1928 · Marcus 1956 · DOI 10.1103/RevModPhys.35.724`
-- **Primary Scite Anchor DOI**: https://doi.org/10.1103/RevModPhys.35.724 (Scite Report: https://scite.ai/reports/10.1103/RevModPhys.35.724)
+A plain-text companion to the essay at https://informatico.ai/physics/p05/ (`P.05 · Quantum &amp; Chemical Physics`, `REV 1.1`, redated `2026-11-02`).
 
-## 2. Deterministic Verification &amp; Falsification Rules
+## The governing relation
+`T_WKB ~ exp(−2/ℏ ∫√(2m(V−E))dx) · k_H/k_D = 6.84`
+
+## Rules the essay derives
 1. Compute WKB barrier transmission as T(E) = exp(-2/hbar * integral sqrt(2 m (V(x) - E)) dx) between classical turning points x_1 and x_2.
 2. Apply the Bell tunneling factor kappa_tun = (u_b / 2) / sin(u_b / 2) with u_b = hbar * omega_b / (k_B T) to Eyring-Kramers transition-state rates.
 3. Evaluate primary H/D Kinetic Isotope Effects (k_H / k_D) to distinguish quantum proton tunneling from classical over-the-barrier activation.
 
-## 3. 4-Stage Physical &amp; Mathematical Mechanism
+## How it works, in four stages
 - Stage 1 (Marcus Environmental Reorganization λ): Thermal fluctuations align solvent and catalytic zinc dipoles to bring donor and acceptor orbitals into degeneracy.
 - Stage 2 (Promoting Vibration Donor-Acceptor Compression): Picosecond protein breathing modes compress the hydrogen-bond bridge from 2.90 Å to 2.58 Å (Δx = 0.52 Å).
 - Stage 3 (WKB Semiclassical Wave Penetration): Proton wavefunction tunnels through the 16.4 kcal/mol barrier with Bell correction κ_tun = (u_b/2)/sin(u_b/2) and KIE k_H/k_D = 6.84.
 - Stage 4 (TadA-8e Adenine Deamination Lock): Converts target adenosine to inosine (read as guanosine), restoring canonical CFTR splicing at 1717-1G&gt;A.
 
-## 4. Reference Telemetry &amp; Acceptance Bounds
+## Reference values stated in the essay
 - **Tunneling Coupling Efficiency**: `0.88 (WT-Coupled)`
 - **Kinetic Isotope Ratio k_H/k_D**: `6.84 (WKB Verified)`
 - **Barrier Width Δx**: `0.52 Å (42× Boost)`
 - **Catalytic Regime**: `STABLE_COUPLED_CYCLE`
 
-## 5. Frontier Discovery &amp; Contemporary Research Context (2024–2026)
+## What is and is not checked
+The reference values above are stated in the essay. No script in this repository recomputes them yet, so treat them as the essay&#x27;s claims and check them against the primary source before relying on them.
+
+## Primary source
+- https://doi.org/10.1103/RevModPhys.35.724 (Scite report: https://scite.ai/reports/10.1103/RevModPhys.35.724)
+- What the essay compares against: Gamow 1928 · Marcus 1956 · DOI 10.1103/RevModPhys.35.724
+
+## Recent research context
 - **Quantum Mechanical Proton Tunneling &amp; Kinetic Isotope Effects Guide High-Fidelity Adenine Base Editing**: Coupling Gamow–WKB quantum tunneling with Löwdin&#x27;s proton-transfer tautomeric model (Rev. Mod. Phys. DOI 10.1103/RevModPhys.35.724), engineered TadA deaminases and prime editors (Cell Reports Medicine DOI 10.1016/j.xcrm.2024.101544) correct stop-codon and splice-site CFTR mutations in patient-derived organoids without double-strand DNA breaks.
 </code></pre>
           </details>
-          <pre class="tp-skill-pre" hidden><code data-py-source>#!/usr/bin/env python3
-&quot;&quot;&quot;Standalone Zero-Dependency Deterministic Verifier for Folio P.05 (p05).
-Primary Crossref Anchor DOI: https://doi.org/10.1103/RevModPhys.35.724
-&quot;&quot;&quot;
-from __future__ import annotations
-
-import json
-import math
-import sys
-
-if hasattr(sys.stdout, &quot;reconfigure&quot;):
-    sys.stdout.reconfigure(encoding=&quot;utf-8&quot;)
-
-FOLIO_METADATA = {
-    &quot;folio_id&quot;: &quot;P.05&quot;,
-    &quot;slug&quot;: &quot;p05&quot;,
-    &quot;title&quot;: &quot;Quantum WKB Barrier Penetration, Proton-Coupled Electron Transfer, and Deaminase Base-Editing Catalysis&quot;,
-    &quot;governing_law&quot;: &quot;T_WKB ~ exp(−2/ℏ ∫√(2m(V−E))dx) · k_H/k_D = 6.84&quot;,
-    &quot;primary_kernel&quot;: &quot;tools/physics_kernel.py&quot;,
-    &quot;primary_doi&quot;: &quot;10.1103/RevModPhys.35.724&quot;,
-    &quot;scite_report&quot;: &quot;https://scite.ai/reports/10.1103/RevModPhys.35.724&quot;,
-    &quot;benchmarks&quot;: [{&quot;label&quot;: &quot;Tunneling Coupling Efficiency&quot;, &quot;value&quot;: &quot;0.88 (WT-Coupled)&quot;}, {&quot;label&quot;: &quot;Kinetic Isotope Ratio k_H/k_D&quot;, &quot;value&quot;: &quot;6.84 (WKB Verified)&quot;}, {&quot;label&quot;: &quot;Barrier Width Δx&quot;, &quot;value&quot;: &quot;0.52 Å (42× Boost)&quot;}, {&quot;label&quot;: &quot;Catalytic Regime&quot;, &quot;value&quot;: &quot;STABLE_COUPLED_CYCLE&quot;}],
-}
-
-
-def verify_folio_invariants(scale: float = 1.0) -&gt; dict:
-    &quot;&quot;&quot;Evaluate reference conservation and safety bounds for Folio P.05.&quot;&quot;&quot;
-    assert scale &gt; 0.0 and math.isfinite(scale), &quot;Scale factor must be positive and finite&quot;
-    return {
-        &quot;status&quot;: &quot;PASS&quot;,
-        &quot;verdict&quot;: &quot;PASS&quot;,
-        &quot;folio_id&quot;: FOLIO_METADATA[&quot;folio_id&quot;],
-        &quot;governing_law&quot;: FOLIO_METADATA[&quot;governing_law&quot;],
-        &quot;scale&quot;: round(scale, 4),
-        &quot;benchmarks&quot;: FOLIO_METADATA[&quot;benchmarks&quot;],
-    }
-
-
-if __name__ == &quot;__main__&quot;:
-    result = verify_folio_invariants()
-    print(json.dumps(result, indent=2, ensure_ascii=False))
-    sys.exit(0)
-</code></pre>
         </section>
 
         <section class="tp-rev-ledger" aria-label="Folio P.05 edition history and review">

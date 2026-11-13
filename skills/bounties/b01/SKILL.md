@@ -1,6 +1,6 @@
 ---
 name: bounty-b01-erdos-sidon-lean4
-description: Deterministic verification harness, 4-stage proof spine, and T0-T3 truth boundary for B.01 (BOUNTY-M1): Erdős Sidon B₂ Sets, Golomb Rulers & Anthropic Lean 4 Formalization Bounties.
+description: Governing law, 4-stage proof spine, and T0-T3 truth boundary for B.01 (BOUNTY-M1): Erdős Sidon B₂ Sets, Golomb Rulers & Anthropic Lean 4 Formalization Bounties. The proof harness is bounties/bounty_m1_erdos_sidon_lean4.py.
 license: MIT
 compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI Codex, Ollama (Qwen 3.8 / Gemma 4)
 ---
@@ -12,10 +12,10 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Prize / Challenge**: BOUNTY B.01 (M-1) · ERDŐS $500–$10K + AIMO $10M
 - **Official Registry**: [Erdős Problems Registry (#30 / #155)](https://www.erdosproblems.com/30)
 - **Governing Equation**: `∀ i ≤ j, k ≤ l: a_i + a_j = a_k + a_l ⇒ (i,j) = (k,l) · |A ∩ [1,N]| ≤ √N + N^(1/4) + 1`
-- **Primary Verification Harness**: `python bounties/bounty_m1_erdos_sidon_lean4.py`
+- **Proof harness (computes the reference results; no planted-defect mode yet)**: `python bounties/bounty_m1_erdos_sidon_lean4.py`
 - **Primary Scite Anchor DOI**: https://doi.org/10.4007/annals.2015.182.1.9 (Scite Report: https://scite.ai/reports/10.4007/annals.2015.182.1.9)
 
-## 2. Deterministic Verification & Falsification Rules
+## 2. Falsification Rules
 1. Pairwise Sum Uniqueness Invariant: For every finite subset A ⊂ [1, N], the sumset A + A must have cardinality exactly |A|(|A| + 1) / 2; a single duplicate sum immediately falsifies the B₂ property.
 2. Erdős–Turán Asymptotic Envelope: Every valid Sidon set in [1, N] must satisfy |A| ≤ √N + N^(1/4) + 1 (at N = 500, |A_MC| = 20 ≤ 28.0933; at N = 900, bound = 36.4772).
 3. Counterfactual Collision Threshold: Pushing candidate cardinality |A| above the Erdős–Turán envelope forces at least one pigeonhole difference collision (a_i + a_j = a_k + a_l) by Cauchy–Schwarz.
@@ -26,7 +26,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Stage 3: Erdős–Turán Sliding-Window Variance Bound — Apply Cauchy–Schwarz to the interval occupancy counts over window width m = ⌊N^(3/4)⌋ to bound |A ∩ [1, N]| ≤ √N + N^(1/4) + 1.
 - Stage 4: Lean 4 Decidable Finset Certification — Encode the finite B₂ collision check as a decidable proposition (by decide / norm_num) so any candidate counterexample or lower-bound ruler is verified without sorry.
 
-## 4. Certified Reference Telemetry (T0/T1)
+## 4. Reference Results Computed by the Harness (T0/T1)
 - **Mian–Chowla Greedy |A(N)|**: `20 elements (at N = 500)`
 - **Erdős–Turán Upper Bound**: `28.0933 (√N + N^(1/4) + 1)`
 - **Pairwise Sum Collisions**: `0 collisions (210 unique sums)`

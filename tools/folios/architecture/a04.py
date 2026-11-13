@@ -193,7 +193,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'shifting gerberette fulcrum eccentricity and truss rise alters tie-rod tension and clear-span '
                  'deflection.',
                  'Experiment 3 (Download the High-Tech Plug-In Megastructure Skill & Python Tool): Use the portable '
-                 'SKILL.md and Python verifier below to audit Open Building shearing-layer decoupling and exoskeleton '
+                 'SKILL.md below to study Open Building shearing-layer decoupling and exoskeleton '
                  'cantilever equilibrium.'],
  'human_ai_shift': 'Envisioning the Utopian City of the Future in the era of AI, programmable metamaterials, and '
                    "autonomous robotics completes the arc that Ron Herron's Walking City and Peter Cook's Plug-In City "

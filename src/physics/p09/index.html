@@ -359,7 +359,7 @@
               <p class="tp-theorem-meta"><strong>Kernels:</strong> Taylor P_{1/2}(cos θ_0) = 0 (49.3°) · Rayleigh Limit q_R · Gañán-Calvo Jet &middot; <strong>Benchmarks:</strong> Q = 1.20 μL/min · K = 0.45 S/m ⇒ d_drop = 2.42 μm · q/q_R = 0.68 &middot; <strong>Primary Anchor:</strong> <code>DOI 10.1098/rspa.1964.0151</code></p>
             </div>
             <p>
-              To elevate Folio <strong>P.09</strong> (<em>Electrohydrodynamic Taylor Cones (49.3°), Rayleigh Fission Limits &amp; Precision Monodisperse Aerosol Jet Physics</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>P_{1/2}(cos θ_0) = 0 ⇒ θ_T = 49.3° · q_R = 8π √(ε_0 γ R³) · d_drop ~ (ρ ε_0 Q³ / γ K)^(1/6)</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>Liquid Volumetric Flow Rate (Q)</em>) spanning the admissible interval <code>[0.2, 5.0]</code> with step resolution <code>&Delta; = 0.1</code> and canonical reference operating point <code> μL/min1.2</code>; control parameter <code>P_2</code> (<em>Formulation Conductivity (K_cond)</em>) spanning the admissible interval <code>[0.05, 1.5]</code> with step resolution <code>&Delta; = 0.05</code> and canonical reference operating point <code> S/m0.45</code>. Over this bounded domain, the coupled kernels (<code>Taylor P_{1/2}(cos θ_0) = 0 (49.3°) · Rayleigh Limit q_R · Gañán-Calvo Jet</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point certified by <code>skills/physics/p09/verify_p09.py</code>.
+              To elevate Folio <strong>P.09</strong> (<em>Electrohydrodynamic Taylor Cones (49.3°), Rayleigh Fission Limits &amp; Precision Monodisperse Aerosol Jet Physics</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>P_{1/2}(cos θ_0) = 0 ⇒ θ_T = 49.3° · q_R = 8π √(ε_0 γ R³) · d_drop ~ (ρ ε_0 Q³ / γ K)^(1/6)</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>Liquid Volumetric Flow Rate (Q)</em>) spanning the admissible interval <code>[0.2, 5.0]</code> with step resolution <code>&Delta; = 0.1</code> and canonical reference operating point <code> μL/min1.2</code>; control parameter <code>P_2</code> (<em>Formulation Conductivity (K_cond)</em>) spanning the admissible interval <code>[0.05, 1.5]</code> with step resolution <code>&Delta; = 0.05</code> and canonical reference operating point <code> S/m0.45</code>. Over this bounded domain, the coupled kernels (<code>Taylor P_{1/2}(cos θ_0) = 0 (49.3°) · Rayleigh Limit q_R · Gañán-Calvo Jet</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point.
             </p>
             <p>
               Crucially, well-posedness across the <code>Q = 1.20 μL/min · K = 0.45 S/m ⇒ d_drop = 2.42 μm · q/q_R = 0.68</code> regime requires that the governing operator preserve dimensional homogeneity, non-negativity of physical energy/entropy functionals, and strict monotony along the primary reaction or proof coordinate. Whenever a simplified model omits one of the coupled terms in <code>P_{1/2}(cos θ_0) = 0 ⇒ θ_T = 49.3° · q_R = 8π √(ε_0 γ R³) · d_drop ~ (ρ ε_0 Q³ / γ K)^(1/6)</code>, the resulting approximation violates boundary compatibility and diverges from the primary peer-reviewed evidence (<code>Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 3,324 citing publications (14 supporting, 677 mentioning, 0 contrasting) on Sir Geoffrey Ingram Taylor&#x27;s 1964 derivation of the 49.3-degree electrohydrodynamic equilibrium cone.</code>).
@@ -369,7 +369,7 @@
           <article class="tp-proof-chapter" id="ch-ii-2-p09">
             <h3 data-en="&sect; II.2 &middot; Four-Stage Proof &amp; Mechanism Decomposition (Stages 1&ndash;4)" data-es="&sect; II.2 &middot; Descomposici&oacute;n Demostrativa y Mecanismo en Cuatro Etapas (Etapas 1&ndash;4)">&sect; II.2 &middot; Four-Stage Proof &amp; Mechanism Decomposition (Stages 1&ndash;4)</h3>
             <p>
-              Rather than treating <code>P_{1/2}(cos θ_0) = 0 ⇒ θ_T = 49.3° · q_R = 8π √(ε_0 γ R³) · d_drop ~ (ρ ε_0 Q³ / γ K)^(1/6)</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>P.09</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III and the standalone verification suite in <code>skills/physics/p09/verify_p09.py</code>:
+              Rather than treating <code>P_{1/2}(cos θ_0) = 0 ⇒ θ_T = 49.3° · q_R = 8π √(ε_0 γ R³) · d_drop ~ (ρ ε_0 Q³ / γ K)^(1/6)</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>P.09</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III:
             </p>
           <div class="tp-proof-stage-block">
             <h4><span data-en="Stage 1 Derivation &amp; State Transition" data-es="Derivaci&oacute;n y Transici&oacute;n de Estado &middot; Etapa 1">Stage 1 Derivation &amp; State Transition</span></h4>
@@ -404,24 +404,24 @@
           <article class="tp-proof-chapter" id="ch-ii-3-p09">
             <h3 data-en="&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds" data-es="&sect; II.3 &middot; Invariantes de Verificaci&oacute;n Determinista, Escalamiento Dimensional y Cotas de Estabilidad">&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds</h3>
             <p>
-              In our lab&rsquo;s formal verification architecture, prose explanations are never separated from executable proof certificates. Every quantitative claim in Folio <strong>P.09</strong> is governed by three machine-checked falsification rules embedded in <code>taylor-cone-ehd-rayleigh-aerosol-SKILL.md</code> and executed by <code>skills/physics/p09/verify_p09.py</code>:
+              Folio <strong>P.09</strong> states three rules a careful reader can use to test its claims. They are listed as plain text in <code>taylor-cone-ehd-rayleigh-aerosol-SKILL.md</code>. No script in this repository executes them yet:
             </p>
             <ol class="tp-invariant-list">
           <li>
             <strong>Invariant P.09-R1:</strong> Verify Taylor cone onset voltage V_onset ~ sqrt(gamma * d_nozzle / epsilon_0) and equilibrium half-angle alpha_T = 49.29 deg from P_{1/2}(cos(pi - alpha_T)) = 0.
-            <span>Verified deterministically offline by <code>skills/physics/p09/verify_p09.py</code> against primary anchor <code>DOI 10.1098/rspa.1964.0151</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1098/rspa.1964.0151</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant P.09-R2:</strong> Compute Ganan-Calvo cone-jet droplet diameter d_drop ~ (rho * epsilon_0 * Q^3 / (gamma * K_cond))^(1/6) and verify 1.5 um &lt;= MMAD &lt;= 3.5 um for tracheobronchial targeting.
-            <span>Verified deterministically offline by <code>skills/physics/p09/verify_p09.py</code> against primary anchor <code>DOI 10.1098/rspa.1964.0151</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1098/rspa.1964.0151</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant P.09-R3:</strong> Enforce Rayleigh fissility stability q &lt; q_R = 8 * pi * sqrt(epsilon_0 * gamma * R^3) and Weber shear stability We_shear &lt; We_crit to prevent LNP rupture.
-            <span>Verified deterministically offline by <code>skills/physics/p09/verify_p09.py</code> against primary anchor <code>DOI 10.1098/rspa.1964.0151</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1098/rspa.1964.0151</code>. Not yet recomputed by a script in this repository.</span>
           </li>
             </ol>
             <p>
-              Together, Invariants <strong>P.09-R1</strong> through <strong>P.09-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. If any parameter perturbation or code edit violates these bounds, the automated verification gate rejects the build before publication.
+              Together, Invariants <strong>P.09-R1</strong> through <strong>P.09-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. These bounds are stated for the reader. No automated gate enforces them yet.
             </p>
           </article>
 
@@ -562,27 +562,27 @@
         <section class="tp-worked-verification-chapter" id="ch-iii-2-p09" aria-labelledby="ch-iii-2-heading-p09">
           <h3 id="ch-iii-2-heading-p09" data-en="&sect; III.2 &middot; Worked Numerical Verification &amp; Reference Telemetry Benchmark" data-es="&sect; III.2 &middot; Verificaci&oacute;n Num&eacute;rica Paso a Paso y Telemetr&iacute;a de Referencia">&sect; III.2 &middot; Worked Numerical Verification &amp; Reference Telemetry Benchmark</h3>
           <p>
-            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>P_{1/2}(cos θ_0) = 0 ⇒ θ_T = 49.3° · q_R = 8π √(ε_0 γ R³) · d_drop ~ (ρ ε_0 Q³ / γ K)^(1/6)</code> at the canonical benchmark configuration (<code>Q = 1.20 μL/min · K = 0.45 S/m ⇒ d_drop = 2.42 μm · q/q_R = 0.68</code>). Substituting control parameter <code>P_1</code> (<em>Liquid Volumetric Flow Rate (Q)</em>) spanning the admissible interval <code>[0.2, 5.0]</code> with step resolution <code>&Delta; = 0.1</code> and canonical reference operating point <code> μL/min1.2</code>; control parameter <code>P_2</code> (<em>Formulation Conductivity (K_cond)</em>) spanning the admissible interval <code>[0.05, 1.5]</code> with step resolution <code>&Delta; = 0.05</code> and canonical reference operating point <code> S/m0.45</code> into the coupled Stage 1&ndash;4 equations yields the exact reference telemetry certified by our offline verification kernel: <strong>Taylor Half-Angle (θ_T)</strong> converges to <code>49.29° (P_{1/2} Zero)</code>; <strong>Monodisperse Droplet (d_drop)</strong> converges to <code>2.42 μm (Bronchial Window)</code>; <strong>Rayleigh Charge Ratio (q/q_R)</strong> converges to <code>0.68 (&lt; 1.00 Stable)</code>; <strong>Aerosol &amp; LNP Verdict</strong> converges to <code>97.4% INTACT mRNA · PASS</code>.
+            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>P_{1/2}(cos θ_0) = 0 ⇒ θ_T = 49.3° · q_R = 8π √(ε_0 γ R³) · d_drop ~ (ρ ε_0 Q³ / γ K)^(1/6)</code> at the canonical benchmark configuration (<code>Q = 1.20 μL/min · K = 0.45 S/m ⇒ d_drop = 2.42 μm · q/q_R = 0.68</code>). Substituting control parameter <code>P_1</code> (<em>Liquid Volumetric Flow Rate (Q)</em>) spanning the admissible interval <code>[0.2, 5.0]</code> with step resolution <code>&Delta; = 0.1</code> and canonical reference operating point <code> μL/min1.2</code>; control parameter <code>P_2</code> (<em>Formulation Conductivity (K_cond)</em>) spanning the admissible interval <code>[0.05, 1.5]</code> with step resolution <code>&Delta; = 0.05</code> and canonical reference operating point <code> S/m0.45</code> into the coupled Stage 1&ndash;4 equations yields the reference values stated in the essay: <strong>Taylor Half-Angle (θ_T)</strong> converges to <code>49.29° (P_{1/2} Zero)</code>; <strong>Monodisperse Droplet (d_drop)</strong> converges to <code>2.42 μm (Bronchial Window)</code>; <strong>Rayleigh Charge Ratio (q/q_R)</strong> converges to <code>0.68 (&lt; 1.00 Stable)</code>; <strong>Aerosol &amp; LNP Verdict</strong> converges to <code>97.4% INTACT mRNA · PASS</code>.
           </p>
           <div class="tp-table-wrap">
             <table class="tp-table tp-telemetry-benchmark-table" aria-label="Reference numerical verification benchmark for Folio P.09">
               <thead>
                 <tr>
                   <th scope="col" data-en="Observable / Proof Metric" data-es="Observable / M&eacute;trica de Prueba">Observable / Proof Metric</th>
-                  <th scope="col" data-en="Certified Benchmark Value" data-es="Valor de Referencia Certificado">Certified Benchmark Value</th>
-                  <th scope="col" data-en="Deterministic Verifier" data-es="Verificador Determinista">Deterministic Verifier</th>
+                  <th scope="col" data-en="Reference Value" data-es="Valor de Referencia">Reference Value</th>
+                  <th scope="col" data-en="Where the value comes from" data-es="De d&oacute;nde viene el valor">Where the value comes from</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><th scope="row">Taylor Half-Angle (θ_T)</th><td><code>49.29° (P_{1/2} Zero)</code></td><td><code>skills/physics/p09/verify_p09.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Monodisperse Droplet (d_drop)</th><td><code>2.42 μm (Bronchial Window)</code></td><td><code>skills/physics/p09/verify_p09.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Rayleigh Charge Ratio (q/q_R)</th><td><code>0.68 (&lt; 1.00 Stable)</code></td><td><code>skills/physics/p09/verify_p09.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Aerosol &amp; LNP Verdict</th><td><code>97.4% INTACT mRNA · PASS</code></td><td><code>skills/physics/p09/verify_p09.py</code> &middot; Verified</td></tr>
+                <tr><th scope="row">Taylor Half-Angle (θ_T)</th><td><code>49.29° (P_{1/2} Zero)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
+<tr><th scope="row">Monodisperse Droplet (d_drop)</th><td><code>2.42 μm (Bronchial Window)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
+<tr><th scope="row">Rayleigh Charge Ratio (q/q_R)</th><td><code>0.68 (&lt; 1.00 Stable)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
+<tr><th scope="row">Aerosol &amp; LNP Verdict</th><td><code>97.4% INTACT mRNA · PASS</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
               </tbody>
             </table>
           </div>
           <p>
-            Every sensitivity bar in Plate P.09-B and every real-time readout card above is computed directly from these governing expressions with zero pre-baked lookup tables. Running <code>python skills/physics/p09/verify_p09.py</code> from the repository root executes the same numerical assertions and confirms zero drift across all 48 Folios.
+            The values above are the essay's reference values. A script that recomputes them from the governing law is not yet part of this repository.
           </p>
         </section>
 
@@ -700,7 +700,7 @@
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Folio</span><span class="tp-colophon-val">P.09 · Taylor Cone EHD &amp; Rayleigh Aerosol Physics · VOL. 05</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Kernels</span><span class="tp-colophon-val">Taylor P_{1/2}(cos θ_0) = 0 (49.3°) · Rayleigh Limit q_R · Gañán-Calvo Jet</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Benchmarks</span><span class="tp-colophon-val">Q = 1.20 μL/min · K = 0.45 S/m ⇒ d_drop = 2.42 μm · q/q_R = 0.68</span></div>
-          <div class="tp-colophon-cell"><span class="tp-colophon-label">Verifier</span><span class="tp-colophon-val"><code>tools/physics_kernel.py</code></span></div>
+          <div class="tp-colophon-cell"><span class="tp-colophon-label">Lab kernel</span><span class="tp-colophon-val"><code>tools/physics_kernel.py</code></span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Edition</span><span class="tp-colophon-val">REV 1.0 · 2026-11-03</span></div>
         </div>
 
@@ -713,16 +713,15 @@
           <p>Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 3,324 citing publications (14 supporting, 677 mentioning, 0 contrasting) on Sir Geoffrey Ingram Taylor&#x27;s 1964 derivation of the 49.3-degree electrohydrodynamic equilibrium cone.</p>
         </div>
 
-        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion and Python verifier">
+        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion">
           <div class="tp-skill-header">
-            <span class="tp-skill-kicker">SKILL.md companion &amp; Python verifier</span>
+            <span class="tp-skill-kicker">SKILL.md companion &middot; plain text</span>
             <span class="tp-skill-compat">Works with Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3</span>
           </div>
-          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the exact governing equations of Folio P.09: a portable <code>SKILL.md</code>, a zero-dependency Python verifier (<code>verify_p09.py</code>), or the live telemetry as JSON.</p>
+          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the governing equations of Folio P.09 as plain text: a portable <code>SKILL.md</code>, or the live telemetry as JSON. Its reference values are stated in the essay and are not yet recomputed by a script in this repository.</p>
           <div class="tp-skill-actions">
             <button class="tp-skill-btn" type="button" data-skill-download="taylor-cone-ehd-rayleigh-aerosol-SKILL.md">Download SKILL.md (taylor-cone-ehd-rayleigh-aerosol-SKILL.md)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-skill-copy="true">Copy SKILL.md</button>
-            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-py-download="verify_p09.py">Download Python Tool (verify_p09.py)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-telemetry-copy="P.09">Copy Live Telemetry JSON</button>
           </div>
           <details class="tp-skill-source-details">
@@ -735,77 +734,39 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ---
 # Electrohydrodynamic Taylor Cones (49.3°), Rayleigh Fission Limits &amp; Precision Monodisperse Aerosol Jet Physics (Folio P.09)
 
-## 1. Governing Law &amp; Tectonic Identity
-- **Folio**: `P.09 · Taylor Cone EHD &amp; Rayleigh Aerosol Physics` (`REV 1.0`, Redated `2026-11-03`)
-- **Governing Equation**: `P_{1/2}(cos θ_0) = 0 ⇒ θ_T = 49.3° · q_R = 8π √(ε_0 γ R³) · d_drop ~ (ρ ε_0 Q³ / γ K)^(1/6)`
-- **Primary Verification Kernel**: `skills/physics/p09/verify_p09.py`
-- **Verification Benchmarks**: `Q = 1.20 μL/min · K = 0.45 S/m ⇒ d_drop = 2.42 μm · q/q_R = 0.68`
-- **Primary Scite Anchor DOI**: https://doi.org/10.1098/rspa.1964.0151 (Scite Report: https://scite.ai/reports/10.1098/rspa.1964.0151)
+A plain-text companion to the essay at https://informatico.ai/physics/p09/ (`P.09 · Taylor Cone EHD &amp; Rayleigh Aerosol Physics`, `REV 1.0`, redated `2026-11-03`).
 
-## 2. Deterministic Verification &amp; Falsification Rules
+## The governing relation
+`P_{1/2}(cos θ_0) = 0 ⇒ θ_T = 49.3° · q_R = 8π √(ε_0 γ R³) · d_drop ~ (ρ ε_0 Q³ / γ K)^(1/6)`
+
+## Rules the essay derives
 1. Verify Taylor cone onset voltage V_onset ~ sqrt(gamma * d_nozzle / epsilon_0) and equilibrium half-angle alpha_T = 49.29 deg from P_{1/2}(cos(pi - alpha_T)) = 0.
 2. Compute Ganan-Calvo cone-jet droplet diameter d_drop ~ (rho * epsilon_0 * Q^3 / (gamma * K_cond))^(1/6) and verify 1.5 um &lt;= MMAD &lt;= 3.5 um for tracheobronchial targeting.
 3. Enforce Rayleigh fissility stability q &lt; q_R = 8 * pi * sqrt(epsilon_0 * gamma * R^3) and Weber shear stability We_shear &lt; We_crit to prevent LNP rupture.
 
-## 3. 4-Stage Physical &amp; Mathematical Mechanism
+## How it works, in four stages
 - Stage 1 (Taylor Equipotential Cone Equilibrium, DOI 10.1098/rspa.1964.0151): Balancing Maxwell electrostatic stress ½ ε_0 E_n² against Laplace pressure γ cot α / r fixes P_{1/2}(cos 130.7°) = 0 and θ_T = 49.3°.
 - Stage 2 (Gañán-Calvo Apex Cone-Jet Necking): Charge relaxation τ_e = ε / K accelerates a sub-micrometer liquid microjet from the cone tip without high-shear wall cavitation.
 - Stage 3 (Monodisperse Capillary Breakup in the 1.5–3.5 μm Window): At Q = 1.20 μL/min and K = 0.45 S/m, jet varicose breakup yields d_drop = 2.42 μm (GSD = 1.18) for deep bronchial deposition.
 - Stage 4 (Rayleigh Fission Guard &amp; Intact 4.5 kb mRNA Survival, Continuing P.06): Holds droplet charge ratio q / q_R = 0.68 &lt; 1.00, preserving 97.4% LNP lipid-bilayer encapsulation.
 
-## 4. Reference Telemetry &amp; Acceptance Bounds
+## Reference values stated in the essay
 - **Taylor Half-Angle (θ_T)**: `49.29° (P_{1/2} Zero)`
 - **Monodisperse Droplet (d_drop)**: `2.42 μm (Bronchial Window)`
 - **Rayleigh Charge Ratio (q/q_R)**: `0.68 (&lt; 1.00 Stable)`
 - **Aerosol &amp; LNP Verdict**: `97.4% INTACT mRNA · PASS`
 
-## 5. Frontier Discovery &amp; Contemporary Research Context (2024–2026)
+## What is and is not checked
+The reference values above are stated in the essay. No script in this repository recomputes them yet, so treat them as the essay&#x27;s claims and check them against the primary source before relying on them.
+
+## Primary source
+- https://doi.org/10.1098/rspa.1964.0151 (Scite report: https://scite.ai/reports/10.1098/rspa.1964.0151)
+- What the essay compares against: Q = 1.20 μL/min · K = 0.45 S/m ⇒ d_drop = 2.42 μm · q/q_R = 0.68
+
+## Recent research context
 - **Sir Geoffrey Taylor&#x27;s 49.3° Electrohydrodynamic Cone &amp; Rayleigh Fission Limits Protect Inhaled mRNA Nanoparticles**: Completing the biophysical delivery sequence of Folios P.03, P.04, and P.06, Sir Geoffrey Ingram Taylor&#x27;s P_{1/2}(cos θ_0) = 0 equilibrium cone (Proc. R. Soc. A DOI 10.1098/rspa.1964.0151) and Gañán-Calvo&#x27;s cone-jet scaling generate monodisperse 2.4 μm bronchial droplets without shearing fragile 4.5 kb CFTR mRNA lipid nanoparticles.
 </code></pre>
           </details>
-          <pre class="tp-skill-pre" hidden><code data-py-source>#!/usr/bin/env python3
-&quot;&quot;&quot;Standalone Zero-Dependency Deterministic Verifier for Folio P.09 (p09).
-Primary Crossref Anchor DOI: https://doi.org/10.1098/rspa.1964.0151
-&quot;&quot;&quot;
-from __future__ import annotations
-
-import json
-import math
-import sys
-
-if hasattr(sys.stdout, &quot;reconfigure&quot;):
-    sys.stdout.reconfigure(encoding=&quot;utf-8&quot;)
-
-FOLIO_METADATA = {
-    &quot;folio_id&quot;: &quot;P.09&quot;,
-    &quot;slug&quot;: &quot;p09&quot;,
-    &quot;title&quot;: &quot;Electrohydrodynamic Taylor Cones (49.3°), Rayleigh Fission Limits &amp; Precision Monodisperse Aerosol Jet Physics&quot;,
-    &quot;governing_law&quot;: &quot;P_{1/2}(cos θ_0) = 0 ⇒ θ_T = 49.3° · q_R = 8π √(ε_0 γ R³) · d_drop ~ (ρ ε_0 Q³ / γ K)^(1/6)&quot;,
-    &quot;primary_kernel&quot;: &quot;tools/physics_kernel.py&quot;,
-    &quot;primary_doi&quot;: &quot;10.1098/rspa.1964.0151&quot;,
-    &quot;scite_report&quot;: &quot;https://scite.ai/reports/10.1098/rspa.1964.0151&quot;,
-    &quot;benchmarks&quot;: [{&quot;label&quot;: &quot;Taylor Half-Angle (θ_T)&quot;, &quot;value&quot;: &quot;49.29° (P_{1/2} Zero)&quot;}, {&quot;label&quot;: &quot;Monodisperse Droplet (d_drop)&quot;, &quot;value&quot;: &quot;2.42 μm (Bronchial Window)&quot;}, {&quot;label&quot;: &quot;Rayleigh Charge Ratio (q/q_R)&quot;, &quot;value&quot;: &quot;0.68 (&lt; 1.00 Stable)&quot;}, {&quot;label&quot;: &quot;Aerosol &amp; LNP Verdict&quot;, &quot;value&quot;: &quot;97.4% INTACT mRNA · PASS&quot;}],
-}
-
-
-def verify_folio_invariants(scale: float = 1.0) -&gt; dict:
-    &quot;&quot;&quot;Evaluate reference conservation and safety bounds for Folio P.09.&quot;&quot;&quot;
-    assert scale &gt; 0.0 and math.isfinite(scale), &quot;Scale factor must be positive and finite&quot;
-    return {
-        &quot;status&quot;: &quot;PASS&quot;,
-        &quot;verdict&quot;: &quot;PASS&quot;,
-        &quot;folio_id&quot;: FOLIO_METADATA[&quot;folio_id&quot;],
-        &quot;governing_law&quot;: FOLIO_METADATA[&quot;governing_law&quot;],
-        &quot;scale&quot;: round(scale, 4),
-        &quot;benchmarks&quot;: FOLIO_METADATA[&quot;benchmarks&quot;],
-    }
-
-
-if __name__ == &quot;__main__&quot;:
-    result = verify_folio_invariants()
-    print(json.dumps(result, indent=2, ensure_ascii=False))
-    sys.exit(0)
-</code></pre>
         </section>
 
         <section class="tp-rev-ledger" aria-label="Folio P.09 edition history and review">

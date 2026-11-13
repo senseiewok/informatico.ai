@@ -359,7 +359,7 @@
               <p class="tp-theorem-meta"><strong>Kernels:</strong> Bragg–Snell Thin-Film Interference · Cook–Torrance Microfacet BRDF &middot; <strong>Benchmarks:</strong> n_f = 2.45 (TiO₂) · d = 245 nm ⇒ λ_peak = 588 nm · Flop Δλ = −24 nm &middot; <strong>Primary Anchor:</strong> <code>DOI 10.1145/357290.357293</code></p>
             </div>
             <p>
-              To elevate Folio <strong>P.08</strong> (<em>Electromagnetic Color Wave Physics: Bragg Thin-Film Interference, Gonioapparent Automotive Pearlescence &amp; Barragán Stucco Optics</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>Δ_OPD = 2 d √(n_f² − sin²θ_i) = m λ · f_r = k_d(ρ/π) + k_s(D F G) / [4(n·l)(n·v)]</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>Incident Viewing Angle (θ_i)</em>) spanning the admissible interval <code>[0.0, 75.0]</code> with step resolution <code>&Delta; = 1.0</code> and canonical reference operating point <code>°28.0</code>; control parameter <code>P_2</code> (<em>TiO₂ Nano-Oxide Film Thickness (d_film)</em>) spanning the admissible interval <code>[140.0, 360.0]</code> with step resolution <code>&Delta; = 5.0</code> and canonical reference operating point <code> nm245.0</code>. Over this bounded domain, the coupled kernels (<code>Bragg–Snell Thin-Film Interference · Cook–Torrance Microfacet BRDF</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point certified by <code>skills/physics/p08/verify_p08.py</code>.
+              To elevate Folio <strong>P.08</strong> (<em>Electromagnetic Color Wave Physics: Bragg Thin-Film Interference, Gonioapparent Automotive Pearlescence &amp; Barragán Stucco Optics</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>Δ_OPD = 2 d √(n_f² − sin²θ_i) = m λ · f_r = k_d(ρ/π) + k_s(D F G) / [4(n·l)(n·v)]</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>Incident Viewing Angle (θ_i)</em>) spanning the admissible interval <code>[0.0, 75.0]</code> with step resolution <code>&Delta; = 1.0</code> and canonical reference operating point <code>°28.0</code>; control parameter <code>P_2</code> (<em>TiO₂ Nano-Oxide Film Thickness (d_film)</em>) spanning the admissible interval <code>[140.0, 360.0]</code> with step resolution <code>&Delta; = 5.0</code> and canonical reference operating point <code> nm245.0</code>. Over this bounded domain, the coupled kernels (<code>Bragg–Snell Thin-Film Interference · Cook–Torrance Microfacet BRDF</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point.
             </p>
             <p>
               Crucially, well-posedness across the <code>n_f = 2.45 (TiO₂) · d = 245 nm ⇒ λ_peak = 588 nm · Flop Δλ = −24 nm</code> regime requires that the governing operator preserve dimensional homogeneity, non-negativity of physical energy/entropy functionals, and strict monotony along the primary reaction or proof coordinate. Whenever a simplified model omits one of the coupled terms in <code>Δ_OPD = 2 d √(n_f² − sin²θ_i) = m λ · f_r = k_d(ρ/π) + k_s(D F G) / [4(n·l)(n·v)]</code>, the resulting approximation violates boundary compatibility and diverges from the primary peer-reviewed evidence (<code>Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,524 citing publications (4 supporting, 405 mentioning, 0 contrasting) on Robert Cook &amp; Kenneth Torrance&#x27;s physical microfacet reflectance model for wavelength-dependent Fresnel and interference color shifts.</code>).
@@ -369,7 +369,7 @@
           <article class="tp-proof-chapter" id="ch-ii-2-p08">
             <h3 data-en="&sect; II.2 &middot; Four-Stage Proof &amp; Mechanism Decomposition (Stages 1&ndash;4)" data-es="&sect; II.2 &middot; Descomposici&oacute;n Demostrativa y Mecanismo en Cuatro Etapas (Etapas 1&ndash;4)">&sect; II.2 &middot; Four-Stage Proof &amp; Mechanism Decomposition (Stages 1&ndash;4)</h3>
             <p>
-              Rather than treating <code>Δ_OPD = 2 d √(n_f² − sin²θ_i) = m λ · f_r = k_d(ρ/π) + k_s(D F G) / [4(n·l)(n·v)]</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>P.08</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III and the standalone verification suite in <code>skills/physics/p08/verify_p08.py</code>:
+              Rather than treating <code>Δ_OPD = 2 d √(n_f² − sin²θ_i) = m λ · f_r = k_d(ρ/π) + k_s(D F G) / [4(n·l)(n·v)]</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>P.08</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III:
             </p>
           <div class="tp-proof-stage-block">
             <h4><span data-en="Stage 1 Derivation &amp; State Transition" data-es="Derivaci&oacute;n y Transici&oacute;n de Estado &middot; Etapa 1">Stage 1 Derivation &amp; State Transition</span></h4>
@@ -404,24 +404,24 @@
           <article class="tp-proof-chapter" id="ch-ii-3-p08">
             <h3 data-en="&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds" data-es="&sect; II.3 &middot; Invariantes de Verificaci&oacute;n Determinista, Escalamiento Dimensional y Cotas de Estabilidad">&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds</h3>
             <p>
-              In our lab&rsquo;s formal verification architecture, prose explanations are never separated from executable proof certificates. Every quantitative claim in Folio <strong>P.08</strong> is governed by three machine-checked falsification rules embedded in <code>color-wave-bragg-brdf-SKILL.md</code> and executed by <code>skills/physics/p08/verify_p08.py</code>:
+              Folio <strong>P.08</strong> states three rules a careful reader can use to test its claims. They are listed as plain text in <code>color-wave-bragg-brdf-SKILL.md</code>. No script in this repository executes them yet:
             </p>
             <ol class="tp-invariant-list">
           <li>
             <strong>Invariant P.08-R1:</strong> Calculate thin-film optical path difference Delta_OPD = 2 * d_film * sqrt(n_f^2 - sin^2(theta_i)) and constructive interference peak wavelength lambda_peak(theta_i).
-            <span>Verified deterministically offline by <code>skills/physics/p08/verify_p08.py</code> against primary anchor <code>DOI 10.1145/357290.357293</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1145/357290.357293</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant P.08-R2:</strong> Compute angular color-flop blue shift Delta_lambda(theta_i) = lambda_peak(theta_i) - lambda_peak(0) as viewing angle theta_i increases from normal (0 deg) to grazing.
-            <span>Verified deterministically offline by <code>skills/physics/p08/verify_p08.py</code> against primary anchor <code>DOI 10.1145/357290.357293</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1145/357290.357293</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant P.08-R3:</strong> Decompose surface reflectance via Cook-Torrance BRDF f_r = k_d*(rho/pi) + k_s*(D_GGX * F_Schlick * G_Smith) / (4*(n.l)*(n.v)) to contrast specular metallic coats with matte mineral plaster.
-            <span>Verified deterministically offline by <code>skills/physics/p08/verify_p08.py</code> against primary anchor <code>DOI 10.1145/357290.357293</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1145/357290.357293</code>. Not yet recomputed by a script in this repository.</span>
           </li>
             </ol>
             <p>
-              Together, Invariants <strong>P.08-R1</strong> through <strong>P.08-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. If any parameter perturbation or code edit violates these bounds, the automated verification gate rejects the build before publication.
+              Together, Invariants <strong>P.08-R1</strong> through <strong>P.08-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. These bounds are stated for the reader. No automated gate enforces them yet.
             </p>
           </article>
 
@@ -560,27 +560,27 @@
         <section class="tp-worked-verification-chapter" id="ch-iii-2-p08" aria-labelledby="ch-iii-2-heading-p08">
           <h3 id="ch-iii-2-heading-p08" data-en="&sect; III.2 &middot; Worked Numerical Verification &amp; Reference Telemetry Benchmark" data-es="&sect; III.2 &middot; Verificaci&oacute;n Num&eacute;rica Paso a Paso y Telemetr&iacute;a de Referencia">&sect; III.2 &middot; Worked Numerical Verification &amp; Reference Telemetry Benchmark</h3>
           <p>
-            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>Δ_OPD = 2 d √(n_f² − sin²θ_i) = m λ · f_r = k_d(ρ/π) + k_s(D F G) / [4(n·l)(n·v)]</code> at the canonical benchmark configuration (<code>n_f = 2.45 (TiO₂) · d = 245 nm ⇒ λ_peak = 588 nm · Flop Δλ = −24 nm</code>). Substituting control parameter <code>P_1</code> (<em>Incident Viewing Angle (θ_i)</em>) spanning the admissible interval <code>[0.0, 75.0]</code> with step resolution <code>&Delta; = 1.0</code> and canonical reference operating point <code>°28.0</code>; control parameter <code>P_2</code> (<em>TiO₂ Nano-Oxide Film Thickness (d_film)</em>) spanning the admissible interval <code>[140.0, 360.0]</code> with step resolution <code>&Delta; = 5.0</code> and canonical reference operating point <code> nm245.0</code> into the coupled Stage 1&ndash;4 equations yields the exact reference telemetry certified by our offline verification kernel: <strong>Constructive Peak Wavelength</strong> converges to <code>λ_peak = 588 nm (Amber-Gold)</code>; <strong>Angular Color-Flop Blue Shift</strong> converges to <code>Δλ = −24.2 nm (at θ_i = 28°)</code>; <strong>Fresnel–Cook Specular Gain</strong> converges to <code>F(θ_i) = 0.184 · GGX α_r = 0.04</code>; <strong>Wave Interference Verdict</strong> converges to <code>COHERENT GONIOAPPARENT · PASS</code>.
+            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>Δ_OPD = 2 d √(n_f² − sin²θ_i) = m λ · f_r = k_d(ρ/π) + k_s(D F G) / [4(n·l)(n·v)]</code> at the canonical benchmark configuration (<code>n_f = 2.45 (TiO₂) · d = 245 nm ⇒ λ_peak = 588 nm · Flop Δλ = −24 nm</code>). Substituting control parameter <code>P_1</code> (<em>Incident Viewing Angle (θ_i)</em>) spanning the admissible interval <code>[0.0, 75.0]</code> with step resolution <code>&Delta; = 1.0</code> and canonical reference operating point <code>°28.0</code>; control parameter <code>P_2</code> (<em>TiO₂ Nano-Oxide Film Thickness (d_film)</em>) spanning the admissible interval <code>[140.0, 360.0]</code> with step resolution <code>&Delta; = 5.0</code> and canonical reference operating point <code> nm245.0</code> into the coupled Stage 1&ndash;4 equations yields the reference values stated in the essay: <strong>Constructive Peak Wavelength</strong> converges to <code>λ_peak = 588 nm (Amber-Gold)</code>; <strong>Angular Color-Flop Blue Shift</strong> converges to <code>Δλ = −24.2 nm (at θ_i = 28°)</code>; <strong>Fresnel–Cook Specular Gain</strong> converges to <code>F(θ_i) = 0.184 · GGX α_r = 0.04</code>; <strong>Wave Interference Verdict</strong> converges to <code>COHERENT GONIOAPPARENT · PASS</code>.
           </p>
           <div class="tp-table-wrap">
             <table class="tp-table tp-telemetry-benchmark-table" aria-label="Reference numerical verification benchmark for Folio P.08">
               <thead>
                 <tr>
                   <th scope="col" data-en="Observable / Proof Metric" data-es="Observable / M&eacute;trica de Prueba">Observable / Proof Metric</th>
-                  <th scope="col" data-en="Certified Benchmark Value" data-es="Valor de Referencia Certificado">Certified Benchmark Value</th>
-                  <th scope="col" data-en="Deterministic Verifier" data-es="Verificador Determinista">Deterministic Verifier</th>
+                  <th scope="col" data-en="Reference Value" data-es="Valor de Referencia">Reference Value</th>
+                  <th scope="col" data-en="Where the value comes from" data-es="De d&oacute;nde viene el valor">Where the value comes from</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><th scope="row">Constructive Peak Wavelength</th><td><code>λ_peak = 588 nm (Amber-Gold)</code></td><td><code>skills/physics/p08/verify_p08.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Angular Color-Flop Blue Shift</th><td><code>Δλ = −24.2 nm (at θ_i = 28°)</code></td><td><code>skills/physics/p08/verify_p08.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Fresnel–Cook Specular Gain</th><td><code>F(θ_i) = 0.184 · GGX α_r = 0.04</code></td><td><code>skills/physics/p08/verify_p08.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Wave Interference Verdict</th><td><code>COHERENT GONIOAPPARENT · PASS</code></td><td><code>skills/physics/p08/verify_p08.py</code> &middot; Verified</td></tr>
+                <tr><th scope="row">Constructive Peak Wavelength</th><td><code>λ_peak = 588 nm (Amber-Gold)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
+<tr><th scope="row">Angular Color-Flop Blue Shift</th><td><code>Δλ = −24.2 nm (at θ_i = 28°)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
+<tr><th scope="row">Fresnel–Cook Specular Gain</th><td><code>F(θ_i) = 0.184 · GGX α_r = 0.04</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
+<tr><th scope="row">Wave Interference Verdict</th><td><code>COHERENT GONIOAPPARENT · PASS</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
               </tbody>
             </table>
           </div>
           <p>
-            Every sensitivity bar in Plate P.08-B and every real-time readout card above is computed directly from these governing expressions with zero pre-baked lookup tables. Running <code>python skills/physics/p08/verify_p08.py</code> from the repository root executes the same numerical assertions and confirms zero drift across all 48 Folios.
+            The values above are the essay's reference values. A script that recomputes them from the governing law is not yet part of this repository.
           </p>
         </section>
 
@@ -698,7 +698,7 @@
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Folio</span><span class="tp-colophon-val">P.08 · Electromagnetic Color Waves &amp; BRDF · Optics · VOL. 04</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Kernels</span><span class="tp-colophon-val">Bragg–Snell Thin-Film Interference · Cook–Torrance Microfacet BRDF</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Benchmarks</span><span class="tp-colophon-val">n_f = 2.45 (TiO₂) · d = 245 nm ⇒ λ_peak = 588 nm · Flop Δλ = −24 nm</span></div>
-          <div class="tp-colophon-cell"><span class="tp-colophon-label">Verifier</span><span class="tp-colophon-val"><code>tools/physics_kernel.py</code></span></div>
+          <div class="tp-colophon-cell"><span class="tp-colophon-label">Lab kernel</span><span class="tp-colophon-val"><code>tools/physics_kernel.py</code></span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Edition</span><span class="tp-colophon-val">REV 1.0 · 2026-11-02</span></div>
         </div>
 
@@ -711,16 +711,15 @@
           <p>Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,524 citing publications (4 supporting, 405 mentioning, 0 contrasting) on Robert Cook &amp; Kenneth Torrance&#x27;s physical microfacet reflectance model for wavelength-dependent Fresnel and interference color shifts.</p>
         </div>
 
-        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion and Python verifier">
+        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion">
           <div class="tp-skill-header">
-            <span class="tp-skill-kicker">SKILL.md companion &amp; Python verifier</span>
+            <span class="tp-skill-kicker">SKILL.md companion &middot; plain text</span>
             <span class="tp-skill-compat">Works with Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3</span>
           </div>
-          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the exact governing equations of Folio P.08: a portable <code>SKILL.md</code>, a zero-dependency Python verifier (<code>verify_p08.py</code>), or the live telemetry as JSON.</p>
+          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the governing equations of Folio P.08 as plain text: a portable <code>SKILL.md</code>, or the live telemetry as JSON. Its reference values are stated in the essay and are not yet recomputed by a script in this repository.</p>
           <div class="tp-skill-actions">
             <button class="tp-skill-btn" type="button" data-skill-download="color-wave-bragg-brdf-SKILL.md">Download SKILL.md (color-wave-bragg-brdf-SKILL.md)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-skill-copy="true">Copy SKILL.md</button>
-            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-py-download="verify_p08.py">Download Python Tool (verify_p08.py)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-telemetry-copy="P.08">Copy Live Telemetry JSON</button>
           </div>
           <details class="tp-skill-source-details">
@@ -733,77 +732,39 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ---
 # Electromagnetic Color Wave Physics: Bragg Thin-Film Interference, Gonioapparent Automotive Pearlescence &amp; Barragán Stucco Optics (Folio P.08)
 
-## 1. Governing Law &amp; Tectonic Identity
-- **Folio**: `P.08 · Electromagnetic Color Waves &amp; BRDF · Optics` (`REV 1.0`, Redated `2026-11-02`)
-- **Governing Equation**: `Δ_OPD = 2 d √(n_f² − sin²θ_i) = m λ · f_r = k_d(ρ/π) + k_s(D F G) / [4(n·l)(n·v)]`
-- **Primary Verification Kernel**: `skills/physics/p08/verify_p08.py`
-- **Verification Benchmarks**: `n_f = 2.45 (TiO₂) · d = 245 nm ⇒ λ_peak = 588 nm · Flop Δλ = −24 nm`
-- **Primary Scite Anchor DOI**: https://doi.org/10.1145/357290.357293 (Scite Report: https://scite.ai/reports/10.1145/357290.357293)
+A plain-text companion to the essay at https://informatico.ai/physics/p08/ (`P.08 · Electromagnetic Color Waves &amp; BRDF · Optics`, `REV 1.0`, redated `2026-11-02`).
 
-## 2. Deterministic Verification &amp; Falsification Rules
+## The governing relation
+`Δ_OPD = 2 d √(n_f² − sin²θ_i) = m λ · f_r = k_d(ρ/π) + k_s(D F G) / [4(n·l)(n·v)]`
+
+## Rules the essay derives
 1. Calculate thin-film optical path difference Delta_OPD = 2 * d_film * sqrt(n_f^2 - sin^2(theta_i)) and constructive interference peak wavelength lambda_peak(theta_i).
 2. Compute angular color-flop blue shift Delta_lambda(theta_i) = lambda_peak(theta_i) - lambda_peak(0) as viewing angle theta_i increases from normal (0 deg) to grazing.
 3. Decompose surface reflectance via Cook-Torrance BRDF f_r = k_d*(rho/pi) + k_s*(D_GGX * F_Schlick * G_Smith) / (4*(n.l)*(n.v)) to contrast specular metallic coats with matte mineral plaster.
 
-## 3. 4-Stage Physical &amp; Mathematical Mechanism
+## How it works, in four stages
 - Stage 1 (Maxwell Transverse Electromagnetic Wave Packet): Incident white daylight carries continuous spectral modes λ ∈ [380, 780] nm across the clearcoat dielectric boundary.
 - Stage 2 (Bragg–Snell Thin-Film Phase Addition): Inside a 245 nm TiO₂ nanolayer (n_f = 2.45) on mica platelets, optical path difference Δ_OPD = 2 d √(n_f² − sin²θ_i) selects λ_peak = 588 nm.
 - Stage 3 (Gonioapparent Automotive Blue-Shift Color Flop): Sweeping viewing angle θ_i from 0° to 65° along a curved car fender shrinks √(n_f² − sin²θ_i), shifting λ_peak blueward by −41 nm.
 - Stage 4 (Cook–Torrance Specular vs. Barragán Lambertian Limit): Low microfacet roughness (α_r = 0.04) concentrates metallic car highlights, while Barragán&#x27;s calcite stucco (α_r = 0.88) scatters hue uniformly.
 
-## 4. Reference Telemetry &amp; Acceptance Bounds
+## Reference values stated in the essay
 - **Constructive Peak Wavelength**: `λ_peak = 588 nm (Amber-Gold)`
 - **Angular Color-Flop Blue Shift**: `Δλ = −24.2 nm (at θ_i = 28°)`
 - **Fresnel–Cook Specular Gain**: `F(θ_i) = 0.184 · GGX α_r = 0.04`
 - **Wave Interference Verdict**: `COHERENT GONIOAPPARENT · PASS`
 
-## 5. Frontier Discovery &amp; Contemporary Research Context (2024–2026)
+## What is and is not checked
+The reference values above are stated in the essay. No script in this repository recomputes them yet, so treat them as the essay&#x27;s claims and check them against the primary source before relying on them.
+
+## Primary source
+- https://doi.org/10.1145/357290.357293 (Scite report: https://scite.ai/reports/10.1145/357290.357293)
+- What the essay compares against: n_f = 2.45 (TiO₂) · d = 245 nm ⇒ λ_peak = 588 nm · Flop Δλ = −24 nm
+
+## Recent research context
 - **Electromagnetic Interference &amp; Cook–Torrance Microfacet BRDFs Unite Automotive Paint Flop and Architectural Pigments**: Coupling Bragg–Snell thin-film optical path interference with Cook &amp; Torrance&#x27;s physical microfacet BRDF (ACM Trans. Graph. DOI 10.1145/357290.357293) explains why TiO2-coated mica nanoplatelets in curved sports-car finishes shift wavelength by −41 nm across viewing angles (&#x27;color flop&#x27;), whereas Luis Barragán&#x27;s porous calcite lime walls hold hue invariant across every angle.
 </code></pre>
           </details>
-          <pre class="tp-skill-pre" hidden><code data-py-source>#!/usr/bin/env python3
-&quot;&quot;&quot;Standalone Zero-Dependency Deterministic Verifier for Folio P.08 (p08).
-Primary Crossref Anchor DOI: https://doi.org/10.1145/357290.357293
-&quot;&quot;&quot;
-from __future__ import annotations
-
-import json
-import math
-import sys
-
-if hasattr(sys.stdout, &quot;reconfigure&quot;):
-    sys.stdout.reconfigure(encoding=&quot;utf-8&quot;)
-
-FOLIO_METADATA = {
-    &quot;folio_id&quot;: &quot;P.08&quot;,
-    &quot;slug&quot;: &quot;p08&quot;,
-    &quot;title&quot;: &quot;Electromagnetic Color Wave Physics: Bragg Thin-Film Interference, Gonioapparent Automotive Pearlescence &amp; Barragán Stucco Optics&quot;,
-    &quot;governing_law&quot;: &quot;Δ_OPD = 2 d √(n_f² − sin²θ_i) = m λ · f_r = k_d(ρ/π) + k_s(D F G) / [4(n·l)(n·v)]&quot;,
-    &quot;primary_kernel&quot;: &quot;tools/physics_kernel.py&quot;,
-    &quot;primary_doi&quot;: &quot;10.1145/357290.357293&quot;,
-    &quot;scite_report&quot;: &quot;https://scite.ai/reports/10.1145/357290.357293&quot;,
-    &quot;benchmarks&quot;: [{&quot;label&quot;: &quot;Constructive Peak Wavelength&quot;, &quot;value&quot;: &quot;λ_peak = 588 nm (Amber-Gold)&quot;}, {&quot;label&quot;: &quot;Angular Color-Flop Blue Shift&quot;, &quot;value&quot;: &quot;Δλ = −24.2 nm (at θ_i = 28°)&quot;}, {&quot;label&quot;: &quot;Fresnel–Cook Specular Gain&quot;, &quot;value&quot;: &quot;F(θ_i) = 0.184 · GGX α_r = 0.04&quot;}, {&quot;label&quot;: &quot;Wave Interference Verdict&quot;, &quot;value&quot;: &quot;COHERENT GONIOAPPARENT · PASS&quot;}],
-}
-
-
-def verify_folio_invariants(scale: float = 1.0) -&gt; dict:
-    &quot;&quot;&quot;Evaluate reference conservation and safety bounds for Folio P.08.&quot;&quot;&quot;
-    assert scale &gt; 0.0 and math.isfinite(scale), &quot;Scale factor must be positive and finite&quot;
-    return {
-        &quot;status&quot;: &quot;PASS&quot;,
-        &quot;verdict&quot;: &quot;PASS&quot;,
-        &quot;folio_id&quot;: FOLIO_METADATA[&quot;folio_id&quot;],
-        &quot;governing_law&quot;: FOLIO_METADATA[&quot;governing_law&quot;],
-        &quot;scale&quot;: round(scale, 4),
-        &quot;benchmarks&quot;: FOLIO_METADATA[&quot;benchmarks&quot;],
-    }
-
-
-if __name__ == &quot;__main__&quot;:
-    result = verify_folio_invariants()
-    print(json.dumps(result, indent=2, ensure_ascii=False))
-    sys.exit(0)
-</code></pre>
         </section>
 
         <section class="tp-rev-ledger" aria-label="Folio P.08 edition history and review">
