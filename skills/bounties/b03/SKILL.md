@@ -1,10 +1,10 @@
 ---
 name: bounty-b03-simp-carbon-slab
-description: Deterministic verification harness, 4-stage proof spine, and T0-T3 truth boundary for B.03 (BOUNTY-E1): $100M XPRIZE Carbon Removal & IStructE Benchmark: Sub-45 kg CO₂e/m² SIMP Mineralized Slabs.
+description: Deterministic verification harness, 4-stage proof spine, and T0-T3 truth boundary for B.03 (BOUNTY-E1): After the $100M XPRIZE Carbon Removal: A Sub-45 kg CO₂e/m² SIMP Mineralized Slab Design Study.
 license: MIT
 compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI Codex, Ollama (Qwen 3.8 / Gemma 4)
 ---
-# $100M XPRIZE Carbon Removal & IStructE Benchmark: Sub-45 kg CO₂e/m² SIMP Mineralized Slabs (B.03 · BOUNTY-E1)
+# After the $100M XPRIZE Carbon Removal: A Sub-45 kg CO₂e/m² SIMP Mineralized Slab Design Study (B.03 · BOUNTY-E1)
 
 ## 1. Governing Law, Prize Registry & Canonical URL
 - **Bounty Folio**: `B.03` (`BOUNTY-E1` · `REV 1.2`, Redated `2026-11-08`)
@@ -16,7 +16,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Primary Scite Anchor DOI**: https://doi.org/10.1007/s001580050176 (Scite Report: https://scite.ai/reports/10.1007/s001580050176)
 
 ## 2. Deterministic Verification & Falsification Rules
-1. Embodied Carbon Ceiling (IStructE SCORS A+): Net cradle-to-gate embodied carbon e_net = 148.0(V/V₀) - m_CO₂ must remain strictly below 45.0 kg CO₂e/m².
+1. Embodied Carbon Ceiling (folio design target): Net cradle-to-gate embodied carbon e_net = 148.0(V/V₀) - m_CO₂ must remain strictly below 45.0 kg CO₂e/m².
 2. Serviceability Deflection & Compliance Bound: Normalized structural compliance c/c₀ = 1.0 + 0.40(1 - V/V₀)^1.35 must remain strictly below 1.35 to satisfy span-to-depth L/250 deflection limits.
 3. Dual Pareto Feasibility Window: At m_CO₂ = 12.4 kg/m², V/V₀ must lie inside [0.22, 0.38]—below 0.22 the slab is too flexible (c/c₀ > 1.35), and above 0.38 it exceeds 45.0 kg CO₂e/m².
 
@@ -30,7 +30,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Net Embodied Carbon e_net**: `39.40 kg CO₂e/m² (< 45.0 target)`
 - **Normalized Compliance c / c₀**: `1.224 (< 1.35 L/250 deflection limit)`
 - **Mass Reduction vs. Solid Slab**: `65.0% concrete mass saved`
-- **IStructE A+ & XPRIZE Verdict**: `PASS · SUB-45 KG CO₂E/M²`
+- **Verifier Verdict (Worked Example)**: `PASS · SUB-45 KG CO₂E/M²`
 
 ## 5. Exact T0–T3 Truth Boundary
 ### Certified in Repository Today (T0/T1)
@@ -39,4 +39,4 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Ready for immediate community showcase submission on FEniCS Discourse and open structural engineering benchmark repositories.
 
 ### Open Global Prize Horizon (T2/T3)
-- XPRIZE Carbon Removal ($100M) & IStructE Structural Awards: Require full-scale physical load testing (ACI 318 / EN 1992-1-1 four-point bending to ultimate failure) and third-party ISO 14040/14044 cradle-to-grave LCA verification.
+- XPRIZE Carbon Removal ($100M, a carbon-dioxide removal competition that has closed) & IStructE Structural Awards: any real claim about a slab would require full-scale physical load testing (ACI 318 / EN 1992-1-1 four-point bending to ultimate failure) and third-party ISO 14040/14044 cradle-to-grave LCA verification.

@@ -2334,6 +2334,24 @@ def render_pillar_or_folio_page(pillar: str, folios: list[dict], active_folio: d
 
 
 
+BOUNTY_BOUNDARY_EN = (
+    "Independent study, not a prize entry. Informatico.ai has not entered, won or been awarded any prize, bounty or award "
+    "named on this page, and is not affiliated with or endorsed by their organizers. PASS means the folio's own worked "
+    "example is consistent with the formulas it cites; it is not a judgment by any prize."
+)
+BOUNTY_BOUNDARY_ES = (
+    "Estudio independiente, no una participación en un premio. Informatico.ai no ha participado, ganado ni recibido ningún "
+    "premio, recompensa o galardón nombrado en esta página, y no está afiliado ni avalado por sus organizadores. APROBADO "
+    "significa que el ejemplo desarrollado del propio folio es consistente con las fórmulas que cita; no es un dictamen de ningún premio."
+)
+
+
+def bounty_boundary_html() -> str:
+    """The fixed notice printed on every bounty page, the bounties hub and the home crucible (tests assert it)."""
+    return (f'<p class="tp-spec-meta tp-bounty-boundary" data-en="{esc(BOUNTY_BOUNDARY_EN)}" '
+            f'data-es="{esc(BOUNTY_BOUNDARY_ES)}">{esc(BOUNTY_BOUNDARY_EN)}</p>')
+
+
 def _bounty_category(slug: str) -> str:
     if slug in ("b01", "b06"):
         return "math"
@@ -2400,6 +2418,7 @@ def render_bounty_crucible_section(rel_res: str = ".") -> str:
         <p class="tp-standfirst" data-en="Our 4-Seat Multi-Family Council audited 16 active mathematical bounties, quantum computing prizes, and net-zero engineering awards (bounty_crucible_council_ledger.json) to select six high-impact open problems. Each Bounty Folio (B.01–B.06 at /bounties/b01/ through /bounties/b06/) tells the complete human story of the prize, walks through the 4-stage mathematical derivation, hands you a live counterfactual proof workbench, states the exact T0–T3 truth boundary, and embeds the zero-dependency Python verifier and SKILL.md companion." data-es="Nuestro Consejo Multifamiliar de 4 asientos auditó 16 recompensas matemáticas activas, premios de computación cuántica y retos de ingeniería (bounty_crucible_council_ledger.json) para elegir seis problemas abiertos de alto impacto. Cada Folio (B.01–B.06 en /bounties/b01/ a /bounties/b06/) relata la historia del problema, desarrolla la demostración en 4 etapas, ofrece un laboratorio contrafactual en vivo, define la frontera de verdad T0–T3 e integra el verificador en Python y su SKILL.md.">Our 4-Seat Multi-Family Council audited 16 active mathematical bounties, quantum computing prizes, and net-zero engineering awards (bounty_crucible_council_ledger.json) to select six high-impact open problems. Each Bounty Folio (B.01–B.06 at /bounties/b01/ through /bounties/b06/) tells the complete human story of the prize, walks through the 4-stage mathematical derivation, hands you a live counterfactual proof workbench, states the exact T0–T3 truth boundary, and embeds the zero-dependency Python verifier and SKILL.md companion.</p>
       </div>
 
+      {bounty_boundary_html()}
       <div class="tp-bounty-filter-bar" role="group" aria-label="Filter open bounties by discipline">
         <button type="button" class="tp-bounty-filter-btn" data-bounty-filter="all" aria-pressed="true" data-en="All 6 Bounty Folios (B.01–B.06)" data-es="Los 6 Folios de Retos (B.01–B.06)">All 6 Bounty Folios (B.01–B.06)</button>
         <button type="button" class="tp-bounty-filter-btn" data-bounty-filter="math" aria-pressed="false" data-en="Mathematics &amp; Lean 4 (B.01 · B.06)" data-es="Matemáticas y Lean 4 (B.01 · B.06)">Mathematics &amp; Lean 4 (B.01 · B.06)</button>
@@ -3067,14 +3086,14 @@ def render_bounties_hub(catalog: dict, lang: str = "en") -> str:
       <p class="tp-standfirst" data-en="{esc(hook_en)}" data-es="{esc(hook_es)}">{esc(hook_en)}</p>
       <div class="tp-studio-quickstart" role="region" aria-label="30-Second Bounty Quick-Start Guide">
         <div class="tp-studio-quickstart-head">
-          <span class="tp-studio-quickstart-badge" data-en="⚡ 30-SECOND BOUNTY QUICK-START · VERIFIED BENCHMARKS &amp; PYTHON HARNESSES" data-es="⚡ GUÍA RÁPIDA DE 30 SEGUNDOS · BENCHMARKS VERIFICADOS Y CÓDIGO PYTHON">⚡ 30-SECOND BOUNTY QUICK-START · VERIFIED BENCHMARKS &amp; PYTHON HARNESSES</span>
+          <span class="tp-studio-quickstart-badge" data-en="⚡ 30-SECOND BOUNTY QUICK-START · WORKED EXAMPLES &amp; PYTHON HARNESSES" data-es="⚡ GUÍA RÁPIDA DE 30 SEGUNDOS · EJEMPLOS DESARROLLADOS Y CÓDIGO PYTHON">⚡ 30-SECOND BOUNTY QUICK-START · WORKED EXAMPLES &amp; PYTHON HARNESSES</span>
           <span class="tp-studio-quickstart-sub" data-en="Built for independent researchers, theorem-proving teams, and open-science challengers." data-es="Diseñado para investigadores independientes, equipos de demostración formal y retadores abiertos.">Built for independent researchers, theorem-proving teams, and open-science challengers.</span>
         </div>
         <div class="tp-studio-steps-grid">
           <div class="tp-studio-step-card">
             <span class="tp-studio-step-num" data-en="Step 1 · Pick Any Prize Folio" data-es="Paso 1 · Elige un Folio de Premio">Step 1 · Pick Any Prize Folio</span>
             <h2 class="tp-studio-step-title" data-en="Erdős · XPRIZE · Holcim · PhysLean" data-es="Erdős · XPRIZE · Holcim · PhysLean">Erdős · XPRIZE · Holcim · PhysLean</h2>
-            <p data-en="Open any of the 6 Bounty Folios (B.01–B.06) below to read the plain-language distillation, 4-stage proof derivation, and official prize registry rules." data-es="Abre cualquiera de los 6 Folios de Retos (B.01–B.06) para leer la explicación accesible, la derivación en 4 etapas y las reglas del registro oficial.">Open any of the 6 Bounty Folios (B.01–B.06) below to read the plain-language distillation, 4-stage proof derivation, and official prize registry rules.</p>
+            <p data-en="Open any of the 6 Bounty Folios (B.01–B.06) below to read the plain-language distillation, 4-stage proof derivation, and a link to each prize's own rules." data-es="Abre cualquiera de los 6 Folios de Retos (B.01–B.06) para leer la explicación accesible, la derivación en 4 etapas y las reglas del registro oficial.">Open any of the 6 Bounty Folios (B.01–B.06) below to read the plain-language distillation, 4-stage proof derivation, and a link to each prize's own rules.</p>
           </div>
           <div class="tp-studio-step-card">
             <span class="tp-studio-step-num" data-en="Step 2 · Test the Counterfactual Workbench" data-es="Paso 2 · Prueba el Laboratorio Contrafactual">Step 2 · Test the Counterfactual Workbench</span>
@@ -3704,6 +3723,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
         <span class="tp-studio-quickstart-badge" data-en="⚡ EXPLORE THIS BOUNTY IN 30 SECONDS · {esc(fid)} ({esc(bid)})" data-es="⚡ EXPLORA ESTE RETO EN 30 SEGUNDOS · {esc(fid)} ({esc(bid)})">⚡ EXPLORE THIS BOUNTY IN 30 SECONDS · {esc(fid)} ({esc(bid)})</span>
         <span class="tp-studio-quickstart-sub" data-en="{esc(bounty['badge_en'])}" data-es="{esc(bounty['badge_es'])}">{esc(bounty['badge_en'])}</span>
       </div>
+      {bounty_boundary_html()}
       <div class="tp-studio-steps-grid">
         <div class="tp-studio-step-card">
           <span class="tp-studio-step-num" data-en="Step 1 · Official Prize &amp; Registry" data-es="Paso 1 · Premio y Registro Oficial">Step 1 · Official Prize &amp; Registry</span>
@@ -3816,7 +3836,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
             <div class="tp-theorem-box" role="region" aria-label="Formal Governing Law and Verification Anchor">
               <span class="tp-kicker" data-en="CANONICAL GOVERNING OPERATOR &middot; BOUNTY {esc(fid)} ({esc(bid)})" data-es="OPERADOR GOBERNANTE CANÓNICO &middot; RETO {esc(fid)} ({esc(bid)})">CANONICAL GOVERNING OPERATOR &middot; BOUNTY {esc(fid)} ({esc(bid)})</span>
               <p class="tp-theorem-eq"><code>{esc(bounty['governing_law'])}</code></p>
-              <p class="tp-theorem-meta"><strong>Prize Track:</strong> <span data-en="{esc(bounty['badge_en'])}" data-es="{esc(bounty['badge_es'])}">{esc(bounty['badge_en'])}</span> &middot; <strong>Verifier:</strong> <code>{esc(verifier_rel)}</code> &middot; <strong>Primary Anchor:</strong> <code>DOI {doi_raw}</code></p>
+              <p class="tp-theorem-meta"><strong>Related prize (not entered):</strong> <span data-en="{esc(bounty['badge_en'])}" data-es="{esc(bounty['badge_es'])}">{esc(bounty['badge_en'])}</span> &middot; <strong>Verifier:</strong> <code>{esc(verifier_rel)}</code> &middot; <strong>Primary Anchor:</strong> <code>DOI {doi_raw}</code></p>
             </div>
             <p>
               To make Bounty <strong>{esc(fid)}</strong> (<em>{esc(bounty['title'])}</em>) directly inspectable by prize committees, open-source maintainers, and researchers, we define the exact state-space manifold on which the governing operator <code>{esc(bounty['governing_law'])}</code> acts. Let the system state be parameterized by {sliders_prose}. Over this bounded domain, the deterministic harness <code>{esc(verifier_rel)}</code> maps every admissible input configuration to a unique, reproducible equilibrium or deductive certificate.

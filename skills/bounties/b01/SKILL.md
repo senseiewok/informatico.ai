@@ -1,15 +1,15 @@
 ---
 name: bounty-b01-erdos-sidon-lean4
-description: Deterministic verification harness, 4-stage proof spine, and T0-T3 truth boundary for B.01 (BOUNTY-M1): Erdős Sidon B₂ Sets, Golomb Rulers & Anthropic Lean 4 Formalization Bounties.
+description: Deterministic verification harness, 4-stage proof spine, and T0-T3 truth boundary for B.01 (BOUNTY-M1): Erdős Sidon B₂ Sets, Golomb Rulers & Lean 4 Formalization.
 license: MIT
 compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI Codex, Ollama (Qwen 3.8 / Gemma 4)
 ---
-# Erdős Sidon B₂ Sets, Golomb Rulers & Anthropic Lean 4 Formalization Bounties (B.01 · BOUNTY-M1)
+# Erdős Sidon B₂ Sets, Golomb Rulers & Lean 4 Formalization (B.01 · BOUNTY-M1)
 
 ## 1. Governing Law, Prize Registry & Canonical URL
 - **Bounty Folio**: `B.01` (`BOUNTY-M1` · `REV 1.2`, Redated `2026-11-08`)
 - **Canonical URL**: https://informatico.ai/bounties/b01/ (Spanish: https://informatico.ai/es-mx/bounties/b01/)
-- **Prize / Challenge**: BOUNTY B.01 (M-1) · ERDŐS $500–$10K + AIMO $10M
+- **Prize / Challenge**: BOUNTY B.01 (M-1) · ERDŐS #30 ($1,000) + AIMO
 - **Official Registry**: [Erdős Problems Registry (#30 / #155)](https://www.erdosproblems.com/30)
 - **Governing Equation**: `∀ i ≤ j, k ≤ l: a_i + a_j = a_k + a_l ⇒ (i,j) = (k,l) · |A ∩ [1,N]| ≤ √N + N^(1/4) + 1`
 - **Primary Verification Harness**: `python bounties/bounty_m1_erdos_sidon_lean4.py`
@@ -30,7 +30,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Mian–Chowla Greedy |A(N)|**: `20 elements (at N = 500)`
 - **Erdős–Turán Upper Bound**: `28.0933 (√N + N^(1/4) + 1)`
 - **Pairwise Sum Collisions**: `0 collisions (210 unique sums)`
-- **Lean 4 / B₂ Invariant Verdict**: `PASS · ZERO COLLISIONS`
+- **B₂ Invariant Check (Python, Worked Example)**: `PASS · ZERO COLLISIONS`
 
 ## 5. Exact T0–T3 Truth Boundary
 ### Certified in Repository Today (T0/T1)
