@@ -24,7 +24,7 @@ When submitting open-source benchmark companions, formalization links, or techni
    - All 48 Folios (100% of Volume I–VI essays) are verified against primary Crossref DOIs (`data/folio-citations.cache.json`), and link directly to open-source formalization repositories:
      - [`anthropics/formal-math`](https://github.com/anthropics/formal-math) (`ETHIsFalse.lean`, `EightSquare.lean`, `ThreeSUM_APSP.lean`, `Zeta23.lean`, `XiPrime.lean`)
      - [`anthropics/fermats-last-theorem`](https://github.com/anthropics/fermats-last-theorem) (`13,000,000+` lines of Lean 4, zero `sorry`)
-     - [`anthropics/theorem-riscv`](https://github.com/anthropics/theorem-riscv) (`180,000,000+` lines of Rocq RISC-V formal verification)
+     - `anthropics/theorem-riscv` (cited in earlier editions as `180,000,000+` lines of Rocq RISC-V verification; not publicly reachable when checked on 2026-11-13, unverified)
 4. **Single-Owner Repository Integrity (`@senseiewok` Only)**
    - To guarantee provenance and prevent unverified third-party code injection into the publishing ledger, `senseiewok/informatico.ai` enforces GitHub interaction limits (`collaborators_only`), `CODEOWNERS` protection (`* @senseiewok`), and automated closure of any external pull request (`.github/workflows/lock-external-prs.yml`).
 

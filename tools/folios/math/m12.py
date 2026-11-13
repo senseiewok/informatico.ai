@@ -317,7 +317,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                   '(https://github.com/open-quantum-safe/liboqs) with open-source Lean 4 formal '
                   'proof repositories (https://github.com/anthropics/formal-math, '
                   'https://github.com/anthropics/fermats-last-theorem, '
-                  'https://github.com/anthropics/theorem-riscv, https://github.com/teorth/pfr, and '
+                  'https://github.com/teorth/pfr, and '
                   'https://github.com/deepseek-ai/DeepSeek-Prover-V2), humanity gains both '
                   'unbreakable digital privacy in the quantum era and a universal formal truth '
                   'engine where AI and human mathematicians collaborate with zero hallucination.',
@@ -326,8 +326,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'societies. In modern open-source verification pipelines, human mathematicians '
                    'architect the broad proof blueprints and security definitions, while automated '
                    'AI provers discharge tens of thousands of subordinate type-checking '
-                   'obligations across libraries like anthropics/formal-math, '
-                   'anthropics/theorem-riscv, and leanprover-community/mathlib4. This co-design '
+                   'obligations across libraries like anthropics/formal-math and leanprover-community/mathlib4. This co-design '
                    'workflow eliminates implementation bugs in critical post-quantum libraries '
                    'such as open-quantum-safe/liboqs before deployment into web browsers, '
                    'financial backbones, and satellite communication links. Compelling open '

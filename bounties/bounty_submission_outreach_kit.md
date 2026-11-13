@@ -123,6 +123,8 @@ Public GitHub Repository (54 SKILL.md & Python Verifiers): https://github.com/se
 
 ### Email 4 — `FEniCS Project` (`dolfinx`) & `PyPSA` Community Showcase (Folios `E.11`, `E.12` · `BOUNTY-E1`)
 
+> Do not send as written: `anthropics/theorem-riscv` was not publicly reachable when checked on 2026-11-13, so the 180M-line RISC-V claim in this email and in Folio E.12 is unverified.
+
 - **To:** FEniCS Discourse (`https://fenicsproject.discourse.group/` `#showcase`) & PyPSA Community
 - **Subject:** Showcase: Interactive Monographs on SIMP Topology Optimization (`FEniCS/dolfinx`) & Verified Renewable Grid Inertia (`PyPSA` + `Rocq RISC-V`)
 

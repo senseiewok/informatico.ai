@@ -15,7 +15,7 @@ FOLIO_METADATA = {
     "folio_id": "E.12",
     "slug": "e12",
     "title": "Machine-Checked Silicon-to-Grid Safety: 180M-Line Rocq RISC-V Verification, Control Barrier Functions & Firefly-Synchronized Renewable Grids",
-    "governing_law": "sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e · anthropics/theorem-riscv",
+    "governing_law": "sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e · Anthropic theorem-riscv",
     "primary_kernel": "tools/continuum_verify.py",
     "primary_doi": "10.1109/TAC.2016.2638961",
     "scite_report": "https://scite.ai/reports/10.1109/TAC.2016.2638961",

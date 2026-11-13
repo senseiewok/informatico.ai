@@ -71,9 +71,7 @@ FOLIO = {'folio_id': 'M.03',
  'revisions': [{'edition': 'REV 1.3',
                 'date': '2026-11-06',
                 'summary': 'REV 1.3 (Redated 2026-11-06): Expanded extremal combinatorics '
-                           'benchmark with Google DeepMind AlphaProof Nexus (Science 2026 pure '
-                           'O-sequence h-vector log-concavity h_k^2 >= h_{k-1}*h_{k+1} up to '
-                           'degree d = 7), Gemini Deep Think IMO 2025 Gold (35/42), and FirstProof '
+                           'benchmark with a pure O-sequence h-vector log-concavity check (h_k^2 >= h_{k-1}*h_{k+1} up to degree d = 7; earlier editions credited a DeepMind \'AlphaProof Nexus\' Science paper for which no resolvable source was found), Gemini Deep Think IMO 2025 Gold (35/42), and FirstProof '
                            '(10/10 research problems).',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Gemma 4 31B + Ornith 1.5 '
                         '35B): Verified small-case pure O-sequence log-concavity circuit breaker '

@@ -61,9 +61,7 @@ FOLIO = {'slug': 'b03',
  'external_links': [('XPRIZE Carbon Removal ($100M)',
                      'https://www.xprize.org/prizes/carbonremoval'),
                     ('IStructE Structural Carbon Benchmark', 'https://www.istructe.org/'),
-                    ('FEniCS/dolfinx (Finite Element PDE)', 'https://github.com/FEniCS/dolfinx'),
-                    ('anthropics/theorem-riscv (Rocq Proof)',
-                     'https://github.com/anthropics/theorem-riscv')],
+                    ('FEniCS/dolfinx (Finite Element PDE)', 'https://github.com/FEniCS/dolfinx')],
  'act1_dropcap': 'Cement production generates roughly 8% of global carbon dioxide emissions, and '
                  'in a typical commercial building frame, flat two-way floor slabs consume more '
                  'concrete than columns, shear walls, and foundations combined. Because a solid '
