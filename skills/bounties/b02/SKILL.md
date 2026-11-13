@@ -36,7 +36,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ### Certified in Repository Today (T0/T1)
 - Zero-dependency surface-code threshold and FeMoCo active-volume resource estimator in bounties/bounty_p1_surface_code_femoco.py (< 0.05s runtime).
 - Re-evaluates the Fowler et al. (2012) logical error scaling formula; the 114 + 180 tile layout is this folio's illustrative choice, not a figure taken from Reiher et al. (2017).
-- Not submitted anywhere: it could be offered as an open educational resource-estimation example, for instance to Unitary Foundation's Metriq.info registry.
+- Suitable as an open educational resource-estimation example, for instance for Unitary Foundation's Metriq.info registry.
 
 ### Open Global Prize Horizon (T2/T3)
 - XPRIZE Quantum Applications ($5M purse): Requires formal team registration and a novel quantum algorithm paper reducing logical T-count or qubit footprint beyond state-of-the-art THC/qDRIFT baselines.

@@ -162,7 +162,7 @@ FOLIO = {'slug': 'b02',
  't0_t1_certified': ['Zero-dependency surface-code threshold and FeMoCo active-volume resource '
                      'estimator in bounties/bounty_p1_surface_code_femoco.py (< 0.05s runtime).',
                      'Re-evaluates the Fowler et al. (2012) logical error scaling formula; the 114 + 180 tile layout is this folio\'s illustrative choice, not a figure taken from Reiher et al. (2017).',
-                     'Not submitted anywhere: it could be offered as an open educational resource-estimation example, for instance to Unitary Foundation\'s Metriq.info registry.'
+                     'Suitable as an open educational resource-estimation example, for instance for Unitary Foundation\'s Metriq.info registry.'
                      ""],
  't2_t3_open_horizon': ['XPRIZE Quantum Applications ($5M purse): Requires formal team '
                         'registration and a novel quantum algorithm paper reducing logical T-count '
@@ -480,8 +480,8 @@ FOLIO = {'slug': 'b02',
                          'who_es': 'XPRIZE Quantum Applications y Unitary Foundation',
                          'title_en': 'Standardized Open Resource Benchmarks',
                          'title_es': 'Estándares Abiertos de Recursos Tolerantes a Fallos',
-                         'summary_en': 'This folio\'s worked example: sub-threshold d = 27 (P_L = 3 × 10⁻¹⁶, 428,652 qubits) for a 54-electron FeMoCo model; not submitted to any prize or registry.',
-                         'summary_es': 'Ejemplo desarrollado de este folio: régimen d = 27 (P_L = 3 × 10⁻¹⁶, 428,652 qubits) para un modelo de FeMoCo de 54 electrones; no enviado a ningún premio ni registro.',
+                         'summary_en': 'This folio\'s worked example: sub-threshold d = 27 (P_L = 3 × 10⁻¹⁶, 428,652 qubits) for a 54-electron FeMoCo model; a worked example, not a prize result.',
+                         'summary_es': 'Ejemplo desarrollado de este folio: régimen d = 27 (P_L = 3 × 10⁻¹⁶, 428,652 qubits) para un modelo de FeMoCo de 54 electrones; un ejemplo desarrollado, no un resultado de premio.',
                          'roadblock_en': 'Physical quantum processors must still scale from ~10³ '
                                          'to 4.3 × 10⁵ sub-threshold qubits.',
                          'roadblock_es': 'Los procesadores cuánticos físicos aún deben escalar de '
@@ -736,7 +736,7 @@ FOLIO = {'slug': 'b02',
                         'Verificación exacta del escalamiento asintótico de error lógico de Fowler '
                         'et al. (2012) y de los conteos de teselas lógicas de Reiher et al. (2017) '
                         '/ THC.',
-                        'No se ha enviado a ningún registro: podría ofrecerse como ejemplo educativo abierto de estimación de recursos, por ejemplo a Metriq.info de Unitary Foundation.'],
+                        'Adecuado como ejemplo educativo abierto de estimación de recursos, por ejemplo para el registro Metriq.info de Unitary Foundation.'],
  't2_t3_open_horizon_es': ['XPRIZE Quantum Applications (bolsa de 5 millones de dólares): Requiere '
                            'registro formal de equipo y un artículo original de algoritmo cuántico '
                            'que reduzca el conteo lógico de compuertas T o la huella de qubits más '

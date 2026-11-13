@@ -2335,12 +2335,12 @@ def render_pillar_or_folio_page(pillar: str, folios: list[dict], active_folio: d
 
 
 BOUNTY_BOUNDARY_EN = (
-    "Independent study, not a prize entry. Informatico.ai has not entered, won or been awarded any prize, bounty or award "
+    "Independent study, not a prize entry. Informatico.ai has not won or been awarded any prize, bounty or award "
     "named on this page, and is not affiliated with or endorsed by their organizers. PASS means the folio's own worked "
     "example is consistent with the formulas it cites; it is not a judgment by any prize."
 )
 BOUNTY_BOUNDARY_ES = (
-    "Estudio independiente, no una participación en un premio. Informatico.ai no ha participado, ganado ni recibido ningún "
+    "Estudio independiente, no una participación en un premio. Informatico.ai no ha ganado ni recibido ningún "
     "premio, recompensa o galardón nombrado en esta página, y no está afiliado ni avalado por sus organizadores. APROBADO "
     "significa que el ejemplo desarrollado del propio folio es consistente con las fórmulas que cita; no es un dictamen de ningún premio."
 )
@@ -3836,7 +3836,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
             <div class="tp-theorem-box" role="region" aria-label="Formal Governing Law and Verification Anchor">
               <span class="tp-kicker" data-en="CANONICAL GOVERNING OPERATOR &middot; BOUNTY {esc(fid)} ({esc(bid)})" data-es="OPERADOR GOBERNANTE CANÓNICO &middot; RETO {esc(fid)} ({esc(bid)})">CANONICAL GOVERNING OPERATOR &middot; BOUNTY {esc(fid)} ({esc(bid)})</span>
               <p class="tp-theorem-eq"><code>{esc(bounty['governing_law'])}</code></p>
-              <p class="tp-theorem-meta"><strong>Related prize (not entered):</strong> <span data-en="{esc(bounty['badge_en'])}" data-es="{esc(bounty['badge_es'])}">{esc(bounty['badge_en'])}</span> &middot; <strong>Verifier:</strong> <code>{esc(verifier_rel)}</code> &middot; <strong>Primary Anchor:</strong> <code>DOI {doi_raw}</code></p>
+              <p class="tp-theorem-meta"><strong>Related prize (context only):</strong> <span data-en="{esc(bounty['badge_en'])}" data-es="{esc(bounty['badge_es'])}">{esc(bounty['badge_en'])}</span> &middot; <strong>Verifier:</strong> <code>{esc(verifier_rel)}</code> &middot; <strong>Primary Anchor:</strong> <code>DOI {doi_raw}</code></p>
             </div>
             <p>
               To make Bounty <strong>{esc(fid)}</strong> (<em>{esc(bounty['title'])}</em>) directly inspectable by prize committees, open-source maintainers, and researchers, we define the exact state-space manifold on which the governing operator <code>{esc(bounty['governing_law'])}</code> acts. Let the system state be parameterized by {sliders_prose}. Over this bounded domain, the deterministic harness <code>{esc(verifier_rel)}</code> maps every admissible input configuration to a unique, reproducible equilibrium or deductive certificate.

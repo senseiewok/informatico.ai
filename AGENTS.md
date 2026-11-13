@@ -9,7 +9,7 @@ README for coding agents (`Claude Code`, `GitHub Copilot`, `Cursor`, `Antigravit
 - **4 Core Pillars (`48` Folios):** Civil Engineering & Construction (`E.01`–`E.12`), Architecture & Tectonics (`A.01`–`A.12`), Multiscale & Quantum Physics (`P.01`–`P.12`), and Formal & Pure Mathematics (`M.01`–`M.12`).
 - **Open-Bounty & Prize Crucible (`B.01`–`B.06`):** Six grand-challenge benchmark monographs (`bounties/`).
 - **Tech & Tools · The Toolbox (`X.01`–`X.06`):** Six open-source 3D CAD, BIM, and studio fabrication folios (`toolchain/`).
-- **Time & Gravity (`T.00`–`T.12`):** Thirteen-step physics series governed by a 6-label primary-literature claim ledger (`tools/folios/timegravity/`).
+- **Time & Gravity (`T.00`–`T.13`):** Fourteen-step physics series governed by a 6-label primary-literature claim ledger (`tools/folios/timegravity/`).
 - **Cross-Scale Essays (`ES.01`–`ES.11`):** Eleven syntheses (`essays/`) with SVG observatories, stdlib verifiers, and zero-`sorry` Lean 4 specs (`skills/essays/`).
 - **Essay Zero (`/about/`):** Verification architecture, epistemic boundaries, and the open-research bridge.
 
