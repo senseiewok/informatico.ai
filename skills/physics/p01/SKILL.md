@@ -21,7 +21,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 3. 4-Stage Physical & Mathematical Mechanism
 - Stage 1 (Uncoupled Kinetic Trap, G551D): Gating cross-covariance sigma_ATP,Cl ≈ 0.05 fails to transmit chemical affinity into pore dilation.
 - Stage 2 (Fluctuation-Dissipation Coupling): Keizer matrix d sigma/dt = M sigma + sigma M^T + Gamma matches forward and backward reaction fluxes.
-- Stage 3 (Dual-Corrector Stabilization): Ivacaftor/Trikafta lowers activation barrier Delta G^‡ and restores coupling efficiency to 0.84.
+- Stage 3 (Potentiator Rescue, Model): In the kernel, a potentiator such as ivacaftor lowers activation barrier Delta G^‡ and restores the modelled coupling efficiency to 0.84.
 - Stage 4 (Stationary NESS Cycle): Bounded dissipation-fluctuation ratio (1.12 <= 2.0) maintains stable open-state chloride conduction.
 
 ## 4. Reference Telemetry & Acceptance Bounds
@@ -31,4 +31,4 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Kernel Verification**: `PASS · VERIFIED`
 
 ## 5. Frontier Discovery & Contemporary Research Context (2024–2026)
-- **Single-Molecule Non-Equilibrium Thermodynamics Decodes ATP-Driven ABC-transporter Channel Gating**: Extending Keizer's fluctuation-dissipation theorem and Csanády's irreversible ABC-transporter gating cycle (J. Gen. Physiol. DOI 10.1085/jgp.200609558; Seifert Rep. Prog. Phys. DOI 10.1088/0034-4885/75/12/126001), next-generation triple modulators (vanzacaftor/tezacaftor/deutivacaftor, Alyftrek DOI 10.58347/tml.2025.1724a) stabilize the NBD1-NBD2 dimer to restore open probability P_o > 0.75.
+- **Single-Molecule Non-Equilibrium Thermodynamics Decodes ATP-Driven ABC-transporter Channel Gating**: Extending Keizer's fluctuation-dissipation theorem and Csanády's irreversible ABC-transporter gating cycle (J. Gen. Physiol. DOI 10.1085/jgp.200609558; Seifert Rep. Prog. Phys. DOI 10.1088/0034-4885/75/12/126001), next-generation triple modulators (vanzacaftor/tezacaftor/deutivacaftor, Alyftrek DOI 10.58347/tml.2025.1724a) are the clinical setting this gating framework is meant to describe; the folio does not model their binding sites or report a measured open probability.

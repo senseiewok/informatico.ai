@@ -26,7 +26,7 @@ All **48 Informatico.ai Folios** (and **40 CF Folios** = **88 total essays**) pa
   - **FEniCS Project (`dolfinx`) & PyPSA Community Showcases** (`BOUNTY-E1` · Folios `E.11`, `E.12`): Welcomes interactive browser companions with downloadable Python verifiers and AI `SKILL.md` specs.
 - **Track B — DO NOT Email a Cash-Prize Claim Yet (Requires Novel Proof or Physical Hardware Pilot First):**
   - **Erdős Cash Bounties (\$500–\$10,000)** require a **new mathematical proof of an unsolved (`OPEN`) problem** verified in Lean 4 (`0 sorry`).
-  - **XPRIZE Quantum (\$5M), XPRIZE Carbon Removal (\$100M), Global Cooling Prize (\$3M), and Holcim Awards (\$1M)** require formal portal registration during open competition windows plus either a novel quantum algorithm paper (`XPRIZE Quantum`) or instrumented physical hardware prototypes (`XPRIZE Carbon`, `Holcim`).
+  - **XPRIZE Quantum (\$5M), XPRIZE Carbon Removal (\$100M), Global Cooling Prize (\$3M), and Holcim Awards (\$1M)** require formal portal registration during open competition windows plus either a novel quantum algorithm paper (`XPRIZE Quantum`) or instrumented physical hardware prototypes (`XPRIZE Carbon`, `Holcim`). Two of these have closed: XPRIZE Carbon Removal and the Global Cooling Prize. The 45 kg CO₂e/m² slab line and the vault and sky-cooling thresholds on the bounty pages are the folios' own design targets, not criteria of any prize.
 
 ---
 
@@ -122,6 +122,8 @@ Public GitHub Repository (54 SKILL.md & Python Verifiers): https://github.com/se
 ---
 
 ### Email 4 — `FEniCS Project` (`dolfinx`) & `PyPSA` Community Showcase (Folios `E.11`, `E.12` · `BOUNTY-E1`)
+
+> Do not send as written: `anthropics/theorem-riscv` was not publicly reachable when checked on 2026-11-13, so the 180M-line RISC-V claim in this email and in Folio E.12 is unverified.
 
 - **To:** FEniCS Discourse (`https://fenicsproject.discourse.group/` `#showcase`) & PyPSA Community
 - **Subject:** Showcase: Interactive Monographs on SIMP Topology Optimization (`FEniCS/dolfinx`) & Verified Renewable Grid Inertia (`PyPSA` + `Rocq RISC-V`)

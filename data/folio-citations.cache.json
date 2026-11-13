@@ -5179,5 +5179,122 @@
     "total_smart_citations": 1212,
     "unclassified": 62,
     "year": 2018
+  },
+  "doi:10.1016/0550-3213(84)90066-x": {
+    "fetched": "2026-11-13",
+    "first_author": "Alvarez-Gaumé",
+    "found": true,
+    "journal": "Nuclear Physics B",
+    "title": "Gravitational anomalies",
+    "year": 1984
+  },
+  "doi:10.1088/0004-637x/696/2/l159": {
+    "fetched": "2026-11-13",
+    "first_author": "Favata",
+    "found": true,
+    "journal": "The Astrophysical Journal",
+    "title": "NONLINEAR GRAVITATIONAL-WAVE MEMORY FROM BINARY BLACK HOLE MERGERS",
+    "year": 2009
+  },
+  "doi:10.1103/physrevd.102.072003": {
+    "fetched": "2026-11-13",
+    "first_author": "Carney",
+    "found": true,
+    "journal": "Physical Review D",
+    "title": "Proposal for gravitational direct detection of dark matter",
+    "year": 2020
+  },
+  "scite:10.1016/0550-3213(84)90066-x": {
+    "citing_publications": 1667,
+    "classification_provenance": "Scite ML citation classification",
+    "contrasting": 1,
+    "fetched": "2026-11-13",
+    "found": true,
+    "mentioning": 1352,
+    "retracted": false,
+    "supporting": 51,
+    "total_smart_citations": 1410,
+    "unclassified": 6
+  },
+  "scite:10.1088/0004-637x/696/2/l159": {
+    "citing_publications": 210,
+    "classification_provenance": "Scite ML citation classification",
+    "contrasting": 0,
+    "fetched": "2026-11-13",
+    "found": true,
+    "mentioning": 208,
+    "retracted": false,
+    "supporting": 5,
+    "total_smart_citations": 213,
+    "unclassified": 0
+  },
+  "scite:10.1103/physrevd.102.072003": {
+    "citing_publications": 100,
+    "classification_provenance": "Scite ML citation classification",
+    "contrasting": 0,
+    "fetched": "2026-11-13",
+    "found": true,
+    "mentioning": 60,
+    "retracted": false,
+    "supporting": 0,
+    "total_smart_citations": 60,
+    "unclassified": 0
+  },
+  "doi:10.1103/physrevlett.75.4425": {
+    "fetched": "2026-11-13",
+    "first_author": "MacKintosh",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "Elasticity of Semiflexible Biopolymer Networks",
+    "year": 1995
+  },
+  "doi:10.1073/pnas.0608611104": {
+    "fetched": "2026-11-13",
+    "first_author": "Lai",
+    "found": true,
+    "journal": "Proceedings of the National Academy of Sciences",
+    "title": "Rapid transport of large polymeric nanoparticles in fresh undiluted human mucus",
+    "year": 2007
+  },
+  "doi:10.1038/s41586-024-08449-y": {
+    "fetched": "2026-11-13",
+    "first_author": "Google Quantum AI and Collaborators",
+    "found": true,
+    "journal": "Nature",
+    "title": "Quantum error correction below the surface code threshold",
+    "year": 2025
+  },
+  "doi:10.1007/3-540-07171-7_1": {
+    "fetched": "2026-11-13",
+    "first_author": "Lanford",
+    "found": true,
+    "journal": "Lecture Notes in Physics",
+    "title": "Time evolution of large classical systems",
+    "year": 1975
+  },
+  "doi:10.1103/physrevlett.116.120601": {
+    "fetched": "2026-11-13",
+    "first_author": "Gingrich",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "Dissipation Bounds All Steady-State Current Fluctuations",
+    "year": 2016
+  },
+  "doi:10.48550/arxiv.2010.08895": {
+    "fetched": "2026-11-13",
+    "first_author": "Li",
+    "found": true,
+    "journal": "arXiv",
+    "title": "Fourier Neural Operator for Parametric Partial Differential Equations",
+    "year": 2020,
+    "registry": "DataCite (preprint)"
+  },
+  "doi:10.1016/j.matpur.2009.01.013": {
+    "fetched": "2026-11-13",
+    "first_author": "Golse",
+    "found": true,
+    "journal": "Journal de Mathématiques Pures et Appliquées",
+    "title": "The incompressible Navier–Stokes limit of the Boltzmann equation for hard cutoff potentials",
+    "year": 2009
   }
 }

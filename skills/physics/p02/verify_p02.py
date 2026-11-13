@@ -16,7 +16,7 @@ FOLIO_METADATA = {
     "slug": "p02",
     "title": "Active Matter Hydrodynamics and Ciliary Metachronal Wave Synchronization",
     "governing_law": "∂_t θ_i = ω_0 + ∑_j K_ij sin(θ_j − θ_i − α) · v_wave = λ f_beat",
-    "primary_kernel": "tools/physics_kernel.py",
+    "primary_kernel": "skills/physics/p02/verify_p02.py",
     "primary_doi": "10.1016/s0022-5193(86)80098-4",
     "scite_report": "https://scite.ai/reports/10.1016/s0022-5193(86)80098-4",
     "benchmarks": [{"label": "Beating Frequency", "value": "14.00 Hz (Healthy PCL)"}, {"label": "Metachronal Wave Velocity", "value": "336.00 μm/s"}, {"label": "Kuramoto Order Parameter", "value": "0.880 (High Coherence)"}, {"label": "Kernel Verification", "value": "PASS · VERIFIED"}],

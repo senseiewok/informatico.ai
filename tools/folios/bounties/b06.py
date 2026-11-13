@@ -76,8 +76,8 @@ FOLIO = {'slug': 'b06',
                  'gravitational, mixed non-Abelian, and cubic hypercharge anomalies cancel to '
                  'zero.',
  'act1_body': "Joseph Tooby-Smith's HEPLean / PhysLean library (DOI 10.1016/j.cpc.2024.109457) "
-              "brings Lean 4's dependent type theory to theoretical physics, formalizing over "
-              '1,850 theorems across Standard Model anomaly cancellation, Lorentz groups, Maxwell '
+              "brings Lean 4's dependent type theory to theoretical physics, formalizing results across Standard Model anomaly cancellation,"
+              ' Lorentz groups, Maxwell '
               "electrodynamics, and Wick's theorem. Paired with Matthew Fishman, Steven White, and "
               "Miles Stoudenmire's ITensors.jl (DOI 10.21468/SciPostPhysCodeb.4) and Giuseppe "
               "Carleo and Filippo Vicentini's NetKet (DOI 10.21468/SciPostPhysCodeb.7), our "
@@ -126,7 +126,7 @@ FOLIO = {'slug': 'b06',
  'readouts': [{'label': 'PhysLean Cubic Trace Tr[Y³]', 'value': '0.000000000000 (Anomaly-Free)'},
               {'label': 'Critical TFIM Energy E₀ / N', 'value': '−1.27323954 (−4 / π exact)'},
               {'label': 'CFT Entanglement S_vN(128)', 'value': '0.8828 nats ≤ ln(χ) = 4.1589'},
-              {'label': 'PhysLean & MPS Gate Verdict', 'value': 'PASS · ANOMALY-FREE & AREA-LAW'}],
+              {'label': 'Verifier Verdict (Worked Example)', 'value': 'PASS · ANOMALY-FREE & AREA-LAW'}],
  'steps': ['Stage 1: Weyl Multiplet Assignment in PhysLean — Declare the five chiral SU(3)_C × '
            'SU(2)_L × U(1)_Y representations per generation: Q_L(3,2,1/6), u_R^c(3,1,-2/3), '
            'd_R^c(3,1,1/3), L_L(1,2,-1/2), e_R^c(1,1,1).',
@@ -148,8 +148,7 @@ FOLIO = {'slug': 'b06',
            'equal -4/π = -1.27323954.'],
  'sidenote_1': {'kicker': 'SIDENOTE B.06-A · KNOCKING OUT COLOR N_c = 3',
                 'body': 'If quarks did not come in N_c = 3 colors, the weak mixed trace 2 N_c(1/6) '
-                        '+ 2(-1/2) = (N_c - 3)/3 would fail to vanish, proving that lepton-quark '
-                        'anomaly cancellation requires exactly three colors!'},
+                        '+ 2(-1/2) = (N_c - 3)/3 would fail to vanish: with the hypercharges held at their observed values, lepton-quark anomaly cancellation requires three colors.'},
  'sidenote_2': {'kicker': 'SIDENOTE B.06-B · AREA LAW VS. VOLUME LAW',
                 'body': 'Gapped 1D ground states obey an area law S_vN = O(1), while 1D conformal '
                         'critical points grow only logarithmically as (c/6) ln(L), allowing '
@@ -169,7 +168,7 @@ FOLIO = {'slug': 'b06',
                      '(2022, DOI 10.21468/SciPostPhysCodeb.7).',
                      'Ready for immediate community showcase submission to HEPLean/PhysLean Zulip '
                      'and ITensors / NetKet showcases.'],
- 't2_t3_open_horizon': ['HEPLean / PhysLean Open Formalization Bounties: Submitting 0-sorry Lean 4 '
+ 't2_t3_open_horizon': ['HEPLean / PhysLean open formalization work (no cash prize is named here): submitting 0-sorry Lean 4 '
                         'pull requests formalizing renormalization group flows, lattice gauge '
                         'bounds, or BSM anomaly classification directly in HEPLean/PhysLean.'],
  'sources': ['Tooby-Smith, J. (2024). HepLean: Digitalising high energy physics. Computer Physics '
@@ -288,8 +287,7 @@ FOLIO = {'slug': 'b06',
                    'fifteen chiral Weyl fields transform under SU(3)_C × SU(2)_L × U(1)_Y: quark '
                    'doublets Q_L(3,2,1/6), up-singlets u_R^c(ō3,1,-2/3), down-singlets '
                    'd_R^c(ō3,1,1/3), lepton doublets L_L(1,2,-1/2), and positrons e_R^c(1,1,1). In '
-                   'Joseph Tooby-Smith’s PhysLean library, four anomaly trace theorems are proved '
-                   'with zero axioms over the rational field ℚ: the gravitational trace Tr[Y] = 0, '
+                   'Joseph Tooby-Smith’s PhysLean library, the Standard Model anomaly cancellation conditions are formalized over the rational field ℚ; the four traces this folio checks are the gravitational trace Tr[Y] = 0, '
                    'the non-Abelian weak mixed trace Tr[τ^2 Y] = 0, the color mixed trace Tr[λ^2 '
                    'Y] = 0, and the celebrated cubic trace Tr[Y^3] = 6(1/6)^3 + 3(-2/3)^3 + '
                    '3(1/3)^3 + 2(-1/2)^3 + 1(1)^3 = 0. If quarks lacked three colors (N_c ≠ 3), '
@@ -365,8 +363,7 @@ FOLIO = {'slug': 'b06',
             'triangulares de un lazo que destruyen la unitariedad a menos que se anulen cuatro '
             'trazas algebraicas de hipercarga: la traza gravitacional Tr[Y], la traza débil mixta '
             'Tr[τ^2 Y], la traza de color Tr[λ^2 Y] y la suma cúbica Tr[Y^3] = 0. Esta identidad '
-            'fundamental, formalizada en Lean 4 mediante PhysLean, demuestra que la neutralidad de '
-            'la materia y la existencia de tres colores son consecuencias geométricas necesarias. '
+            'fundamental, formalizada en Lean 4 mediante PhysLean, muestra que, con las hipercargas observadas, la cancelación exige tres colores. '
             'En paralelo, en la cadena cuántica de Ising en su punto crítico con carga central c = '
             '1/2, la entropía de entrelazamiento de Calabrese–Cardy escala logarítmicamente según '
             'S_vN(128) = 0.8828 nats. Los estados de producto matricial (MPS) en ITensors.jl '
@@ -543,7 +540,7 @@ FOLIO = {'slug': 'b06',
                     'cúbica de hipercarga se cancelen exactamente a cero.',
  'act1_body_es': 'La biblioteca HEPLean / PhysLean de Joseph Tooby-Smith (DOI '
                  '10.1016/j.cpc.2024.109457) lleva la teoría de tipos dependientes de Lean 4 a la '
-                 'física teórica, formalizando más de 1,850 teoremas sobre cancelación de '
+                 'física teórica, formalizando resultados sobre cancelación de '
                  'anomalías del Modelo Estándar, grupos de Lorentz, electrodinámica de Maxwell y '
                  'el teorema de Wick. En combinación con ITensors.jl de Matthew Fishman, Steven '
                  'White y Miles Stoudenmire (DOI 10.21468/SciPostPhysCodeb.4) y NetKet de Giuseppe '
@@ -610,8 +607,7 @@ FOLIO = {'slug': 'b06',
                       'en Lean 4 con la teoría conforme de la información cuántica. En el sector '
                       'gauge, para cada generación de quince campos de Weyl bajo SU(3)_C × SU(2)_L '
                       '× U(1)_Y—Q_L(3,2,1/6), u_R^c(3̄,1,-2/3), d_R^c(3̄,1,1/3), L_L(1,2,-1/2) y '
-                      'e_R^c(1,1,1)—la biblioteca PhysLean demuestra sobre el cuerpo racional ℚ '
-                      'con cero axiomas que Tr[Y] = 0, Tr[τ²Y] = 0, Tr[λ²Y] = 0 y Tr[Y³] = 6(1/6)³ '
+                      'e_R^c(1,1,1)—la biblioteca PhysLean formaliza sobre el cuerpo racional ℚ las condiciones de cancelación; las trazas que este folio comprueba son Tr[Y] = 0, Tr[τ²Y] = 0, Tr[λ²Y] = 0 y Tr[Y³] = 6(1/6)³ '
                       '+ 3(-2/3)³ + 3(1/3)³ + 2(-1/2)³ + 1(1)³ = 0. En paralelo, sobre la cadena '
                       'crítica de Ising en campo transversal 1D (g = J = 1), la solución exacta de '
                       'Pierre Pfeuty fija la densidad de energía del estado base en E₀/N = -4/π = '
@@ -637,8 +633,7 @@ FOLIO = {'slug': 'b06',
                       'truncamiento de entrelazamiento es rechazado de inmediato.',
  'sidenote_1_es': {'kicker': 'NOTA AL MARGEN B.06-A · QUÉ PASA SI N_c ≠ 3 COLORES',
                    'body': 'Si los quarks no vinieran en N_c = 3 colores, la traza débil mixta 2 '
-                           'N_c(1/6) + 2(-1/2) = (N_c - 3)/3 no se anularía, probando que la '
-                           'cancelación de anomalías quark-leptón exige exactamente tres colores.'},
+                           'N_c(1/6) + 2(-1/2) = (N_c - 3)/3 no se anularía: con las hipercargas fijas en sus valores observados, la cancelación de anomalías quark-leptón exige tres colores.'},
  'sidenote_2_es': {'kicker': 'NOTA AL MARGEN B.06-B · LEY DE ÁREA VS. LEY DE VOLUMEN',
                    'body': 'Los estados base 1D con brecha de energía obedecen una ley de área '
                            'S_vN = O(1), mientras que los puntos críticos conformes 1D crecen solo '

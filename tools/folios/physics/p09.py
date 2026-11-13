@@ -25,7 +25,7 @@ FOLIO = {'category_code': 'P',
                  'Donnan Fields & P.06 4.5 kb Payloads',
  'parent_folios': ['P.03', 'P.04', 'P.06'],
  'pillar': 'physics',
- 'primary_kernel': 'tools/physics_kernel.py',
+ 'primary_kernel': 'skills/physics/p09/verify_p09.py',
  'reading_time': '22 MIN READ',
  'readouts': [{'label': 'Taylor Half-Angle (θ_T)', 'value': '49.29° (P_{1/2} Zero)'},
               {'label': 'Monodisperse Droplet (d_drop)', 'value': '2.42 μm (Bronchial Window)'},
@@ -193,11 +193,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'diameter d_drop ~ (rho * epsilon_0 * Q^3 / (gamma * K_cond))^(1/6), keeping '
                    'aerodynamic diameter inside the 1.5–3.5 um deep-lung deposition window while '
                    'holding capillary-electrostatic shear well below the lipid nanoparticle '
-                   'bilayer rupture threshold. Molecular catalysis datasets like '
-                   'facebookresearch/fairchem (https://github.com/facebookresearch/fairchem, DOI '
-                   '10.1021/acscatal.0c04525) and Scite-verified fluid citations (DOI '
-                   '10.1162/qss_a_00146) confirm the structural fidelity of macromolecules '
-                   'processed through low-shear electrohydrodynamic cones.',
+                   'bilayer rupture threshold. Whether fragile macromolecules stay intact through a low-shear electrohydrodynamic cone has to be measured case by case; open molecular datasets such as facebookresearch/fairchem (https://github.com/facebookresearch/fairchem, DOI 10.1021/acscatal.0c04525) do not address it, and the folio\'s references were checked in the Scite citation index (DOI 10.1162/qss_a_00146).',
  'act2_analogy': 'Everyday analogy: Pulling thick honey with a metal spoon creates a clumsy, '
                  'uneven string that spatters unpredictably when it snaps. But if you hold an '
                  'electrically charged plastic comb or balloon near a slow, steady trickle of tap '
@@ -228,7 +224,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'airways (generations 4–16) without oropharyngeal impaction (> 5 um) or '
               'alveolar exhalation (< 0.8 um). Taylor-cone EHD and low-shear vibrating-mesh '
               'atomization generate monodisperse 2.4 um droplets (GSD <= 1.22) at gentle apex '
-              'shear rates, preserving >96% LNP encapsulation efficiency prior to '
+              'shear rates, with a kernel target of >96% LNP encapsulation efficiency (a design goal, not a measurement) prior to '
               'mucin mesh percolation (Folio E.01 / P.03).',
  'sources': ['Taylor, G. I. (1964). Disintegration of water drops in an electric field. '
              'Proceedings of the Royal Society of London. Series A, Mathematical and Physical '
@@ -391,9 +387,8 @@ DISPATCH = {'kicker': 'FRONTIER AEROSOL PHYSICS DISPATCH · COMPLETING P.03, P.0
              'Protect Inhaled mRNA Nanoparticles',
  'body': 'Completing the biophysical delivery sequence of Folios P.03, P.04, and P.06, Sir '
          "Geoffrey Ingram Taylor's P_{1/2}(cos θ_0) = 0 equilibrium cone (Proc. R. Soc. A DOI "
-         "10.1098/rspa.1964.0151) and Gañán-Calvo's cone-jet scaling generate monodisperse 2.4 μm "
-         'bronchial droplets without shearing fragile 4.5 kb CFTR mRNA lipid '
-         'nanoparticles.'}
+         "10.1098/rspa.1964.0151) and Gañán-Calvo's cone-jet scaling are modelled here as generating monodisperse 2.4 μm bronchial droplets at low shear for fragile 4.5 kb CFTR mRNA lipid nanoparticles."
+         ''}
 
 META_3D = ('Taylor 49.3° Electrohydrodynamic Cone-Jet Potential',
  'X/Z: Radial Meniscus Coordinate · Y: Equipotential P_{1/2}(cos θ) Cone & Monodisperse Jet')

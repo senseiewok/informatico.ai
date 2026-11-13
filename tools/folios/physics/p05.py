@@ -19,7 +19,7 @@ FOLIO = {'category_code': 'P',
  'kernel_verdict': 'Not independently verified',
  'kernel_verdict_es': 'Sin verificación independiente',
  'pillar': 'physics',
- 'primary_kernel': 'tools/physics_kernel.py',
+ 'primary_kernel': 'skills/physics/p05/verify_p05.py',
  'reading_time': '22 MIN READ',
  'readouts': [{'label': 'Tunneling Coupling Efficiency', 'value': '0.88 (WT-Coupled)'},
               {'label': 'Kinetic Isotope Ratio k_H/k_D', 'value': '6.84 (WKB Verified)'},
@@ -156,9 +156,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'roughly half an Angstrom can quantum-mechanically tunnel through a narrow '
               'hydrogen-bond potential barrier at physiological temperatures. In 1956, Rudolph '
               'Marcus unified solvent reorganization energy with non-adiabatic donor-acceptor '
-              'orbital coupling, and Judith Klinman later demonstrated substantial primary kinetic '
-              'isotope effects that definitively proved enzymes utilize picosecond promoting '
-              'vibrations to compress donor-acceptor distances and induce proton tunneling. In '
+              'orbital coupling, and Judith Klinman and others later measured large primary kinetic isotope effects in enzymes, evidence for hydrogen tunneling that is often interpreted through protein motions compressing donor-acceptor distances. In '
               '1963, Per-Olov Löwdin proposed in Reviews of Modern Physics (DOI '
               '10.1103/RevModPhys.35.724) that quantum proton transfer across Watson–Crick '
               'hydrogen bonds could generate rare tautomeric base-pair conformations that fool DNA '
@@ -193,7 +191,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 ('1956',
                  'Rudolph A. Marcus derives the reorganization free-energy theory of electron and '
                  'proton transfer (1992 Nobel Prize).'),
-                ('2026',
+                ('1963',
                  'Per-Olov Löwdin formulates quantum-mechanical proton tunneling across '
                  'hydrogen-bonded double-well potentials (1963, DOI 10.1103/RevModPhys.35.724).')],
  'act2_title': 'Act II — How It Actually Works: WKB Action Integral + Bell Tunneling Correction',
@@ -277,7 +275,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                   '10.21468/SciPostPhysCodeb.7), Lindblad open-system master equations in '
                   'qutip/qutip, and ab-initio coupled-cluster potential surfaces in pyscf/pyscf '
                   'enable precision engineering of deuterated small molecules and tautomeric '
-                  'base-pair analogues with full Scite citation verification (DOI '
+                  'base-pair analogues with the folio\'s references checked in the Scite citation index (DOI '
                   '10.1162/qss_a_00146).',
  'act4_deepening': 'The design of modern precision base editors increasingly relies on hybrid '
                    'quantum-mechanical and molecular-mechanical (QM/MM) simulation suites coupled '
@@ -296,10 +294,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'stabilize the transition-state zinc complex, harnessing quantum tunneling '
                    'mechanics to repair previously uncorrectable genetic nonsense and canonical '
                    'splice mutations.',
- 'cf_bridge': 'Adenine base editors (ABEs) and cytidine base editors (CBEs) directly repair Class '
-              'I nonsense and canonical splice mutations in CFTR — such as '
-              'mRNA-delivered base-editing rescue of the '
-              '1717-1G>A splice mutation and W1282X / R553X stop '
+ 'cf_bridge': 'Adenine base editors (ABEs) are designed to revert the G>A and C>T transitions behind many Class I nonsense and canonical splice mutations in CFTR — candidate targets include the 1717-1G>A splice mutation and W1282X / R553X stop '
               'codons — via zinc-assisted proton-coupled deamination.',
  'sources': ['Gamow, G. (1928). Zur Quantentheorie des Atomkernes. Zeitschrift für Physik, 51, '
              '204–212.',
@@ -346,10 +341,7 @@ DISPATCH = {'kicker': 'FRONTIER QUANTUM BIOLOGY DISPATCH · WKB PROTON TUNNELING
  'headline': 'Quantum Mechanical Proton Tunneling & Kinetic Isotope Effects Guide High-Fidelity '
              'Adenine Base Editing',
  'body': "Coupling Gamow–WKB quantum tunneling with Löwdin's proton-transfer tautomeric model "
-         '(Rev. Mod. Phys. DOI 10.1103/RevModPhys.35.724), engineered TadA deaminases and prime '
-         'editors (Cell Reports Medicine DOI 10.1016/j.xcrm.2024.101544) correct '
-         'stop-codon and splice-site CFTR mutations in patient-derived organoids '
-         'without double-strand DNA breaks.'}
+         '(Rev. Mod. Phys. DOI 10.1103/RevModPhys.35.724), this folio asks whether tunneling matters in deaminase base editing, a hypothesis and not a published result; separately, prime editing has functionally corrected CF-causing CFTR mutations in human organoids and airway epithelial cells (Cell Reports Medicine, DOI 10.1016/j.xcrm.2024.101544).'}
 
 META_3D = ('WKB Quantum Proton-Tunneling Barrier & Wave Packet',
  'X: Proton Transfer Coordinate · Z: Deaminase Pocket · Y: Barrier Height V(x) & Tunneling Tail')

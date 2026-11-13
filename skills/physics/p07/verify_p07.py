@@ -16,7 +16,7 @@ FOLIO_METADATA = {
     "slug": "p07",
     "title": "Formula 1 Ground-Effect Venturi Aerodynamics, 2026 Active X/Z-Mode Wings, Outwash Vortex Sealing & Porpoising Limit Cycles",
     "governing_law": "C_p = 1 − (U/U_∞)² · Γ_v = ∮ u·dl · m z̈ + c_a(z) ż + k_s z = −½ρU²A C_L(z, δ_wing)",
-    "primary_kernel": "tools/physics_kernel.py",
+    "primary_kernel": "skills/physics/p07/verify_p07.py",
     "primary_doi": "10.1146/annurev.fluid.38.050304.092016",
     "scite_report": "https://scite.ai/reports/10.1146/annurev.fluid.38.050304.092016",
     "benchmarks": [{"label": "Underfloor Suction Peak (−C_p)", "value": "2.84 (at h_ride = 26 mm)"}, {"label": "Total Downforce Coefficient (−C_L)", "value": "3.38 (L/D = 3.92 Z-Mode)"}, {"label": "Edge Vortex Circulation (Γ_v)", "value": "4.65 m²/s (Vortex Sealed)"}, {"label": "Aero-Elastic Stability Verdict", "value": "ATTACHED · ZERO PORPOISING"}],

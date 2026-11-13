@@ -7,7 +7,7 @@
     What is machine-verified here:
       1. Exact SI dimensional homogeneity (`SIDim`, `Int^3` exponent lattice) of the universal
          gravitational coupling `κ² = 32πG/c⁴`, the Christodoulou / Strominger-Zhiboedov
-         gravitational-wave memory strain step `Δh^mem = 2 G E_rad / (c⁴ D_L)`, and the proper
+         gravitational-wave memory strain step `Δh^mem = G E_rad / (c⁴ D_L)`, and the proper
          interferometer / clock-baseline separation shift `ΔL = (1/2) L₀ Δh^mem`.
       2. Weinberg (1964, 1965) infrared soft Ward identities over exact integer-scaled kinematics:
          - Spin `s = 1` soft-photon gauge invariance forces total charge conservation `q₁ + q₂ = q₃ + q₄`.
@@ -73,7 +73,7 @@ def KappaSq  : SIDim := sub GravG (smul 4 Velocity)
 /-- Theorem 1 (`t13_si_homogeneity`):
     Kernel-verified (`rfl`) SI dimensional homogeneity of:
       (1) Universal squared Einstein coupling `[G / c⁴] = M⁻¹ L⁻¹ T²`;
-      (2) Memory strain step `[2 G E_rad / (c⁴ D_L)] = zero` (dimensionless strain);
+      (2) Memory strain step `[G E_rad / (c⁴ D_L)] = zero` (dimensionless strain);
       (3) Proper baseline memory shift `[(1/2) L₀ Δh^mem] = Length`;
       (4) Squared Planck length `[ħ G / c³] = L²`. -/
 theorem t13_si_homogeneity :

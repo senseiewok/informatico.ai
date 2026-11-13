@@ -18,7 +18,7 @@ BOUNTY_METADATA = {
     "primary_kernel": "bounties/bounty_p1_surface_code_femoco.py",
     "primary_doi": "10.1103/PhysRevA.86.032324",
     "scite_report": "https://scite.ai/reports/10.1103/PhysRevA.86.032324",
-    "benchmarks": [{"label": "Logical Error / Round P_L", "value": "3.00 \u00d7 10\u207b\u00b9\u2076 (at d = 27, p = 0.001)"}, {"label": "Active-Volume Logical Tiles", "value": "294 tiles (114 data + 180 factory)"}, {"label": "Total Physical Qubit Footprint", "value": "428,652 physical qubits"}, {"label": "XPRIZE / QEC Threshold Verdict", "value": "PASS \u00b7 FAULT-TOLERANT REGIME"}],
+    "benchmarks": [{"label": "Logical Error / Round P_L", "value": "3.00 \u00d7 10\u207b\u00b9\u2076 (at d = 27, p = 0.001)"}, {"label": "Active-Volume Logical Tiles", "value": "294 tiles (114 data + 180 factory)"}, {"label": "Total Physical Qubit Footprint", "value": "428,652 physical qubits"}, {"label": "Verifier Verdict (Worked Example)", "value": "PASS \u00b7 FAULT-TOLERANT REGIME"}],
 }
 
 def verify_bounty_invariants(scale: float = 1.0) -> dict:

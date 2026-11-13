@@ -35,7 +35,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 | `T11-EVERETT1957` | PROPOSED | Everett 1957, relative-state formulation of quantum mechanics | https://doi.org/10.1103/RevModPhys.29.454 |
 | `T06-DIOSI1989` | PROPOSED | Diósi 1989, gravitational self-energy objective reduction | https://doi.org/10.1103/PhysRevA.40.1165 |
 | `T06-PENROSE1996` | PROPOSED | Penrose 1996, gravity's role in quantum state reduction | https://doi.org/10.1007/BF02105068 |
-| `T06-DONADI2020` | BOUND | Donadi et al. 2020, VIP-2 underground Ge X-ray bound on parameter-free Diósi–Penrose | https://doi.org/10.1038/s41567-020-1008-4 |
+| `T06-DONADI2020` | BOUND | Donadi et al. 2020, underground germanium-detector (Gran Sasso) X-ray bound on parameter-free Diósi–Penrose | https://doi.org/10.1038/s41567-020-1008-4 |
 
 ## 3. Tool-neutral agent packet and security boundary (`security-runtime`)
 1. **Rebuild locally**: `python skills/timegravity/t11/make_t11.py`; standard library only; writes only under `src/timegravity/t11/files/`.

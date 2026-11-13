@@ -23,13 +23,11 @@ FOLIO = {'slug': 'b02',
  'why_en': 'Industrial Haber–Bosch fertilizer plants burn massive amounts of natural gas at 450 °C '
            'and 200 atmospheres, emitting nearly 1.8% of global CO₂, while soil bacteria fix '
            'nitrogen at room temperature using the FeMoCo [Fe₇MoS₉C] enzyme cofactor. Simulating '
-           "FeMoCo's strongly correlated electrons is a flagship benchmark of the $5M XPRIZE "
-           "Quantum Applications and Unitary Foundation's Metriq registry.",
+           "FeMoCo's strongly correlated electrons is the kind of application-scale problem that the $5M XPRIZE Quantum Applications and Unitary Foundation's Metriq registry exist to encourage.",
  'why_es': 'El proceso industrial Haber–Bosch para fabricar fertilizantes opera a 450 °C y 200 '
            'atmósferas y emite cerca del 1.8% del CO₂ mundial, mientras que las bacterias del '
            'suelo fijan nitrógeno a temperatura ambiente con el cofactor FeMoCo [Fe₇MoS₉C]. '
-           'Simular sus electrones fuertemente correlacionados es un reto central del XPRIZE '
-           'Quantum Applications ($5M) y de Metriq.info.',
+           'Simular sus electrones fuertemente correlacionados es el tipo de problema a escala de aplicación que el XPRIZE Quantum Applications ($5M) y Metriq.info buscan impulsar.',
  'governing_law': 'P_L = 0.03 (p_phys / p_th)^((d+1)/2) · Q_phys = 2 · N_tiles · d² (d = 27 ⇒ P_L '
                   '= 3.00 × 10⁻¹⁶)',
  'pass_pill_en': 'PASS · P_L = 3.00e-16 · 428,652 Qubits',
@@ -98,7 +96,7 @@ FOLIO = {'slug': 'b02',
                  'megahertz stabilizer syndrome sampling.'),
                 ('2024–2026',
                  'XPRIZE Quantum Applications ($5M) and Unitary Foundation (Metriq.info / '
-                 'unitaryHACK) standardize open fault-tolerant resource benchmarks.')],
+                 'unitaryHACK) encourage open, reproducible quantum benchmarks.')],
  'act2_intuition': 'A planar rotated surface code of odd distance d arranges 2d² physical qubits '
                    'on a checkerboard of X-type and Z-type four-body stabilizers. Any error chain '
                    'shorter than (d+1)/2 is uniquely paired by minimum-weight perfect matching '
@@ -124,7 +122,7 @@ FOLIO = {'slug': 'b02',
               {'label': 'Active-Volume Logical Tiles',
                'value': '294 tiles (114 data + 180 factory)'},
               {'label': 'Total Physical Qubit Footprint', 'value': '428,652 physical qubits'},
-              {'label': 'XPRIZE / QEC Threshold Verdict', 'value': 'PASS · FAULT-TOLERANT REGIME'}],
+              {'label': 'Verifier Verdict (Worked Example)', 'value': 'PASS · FAULT-TOLERANT REGIME'}],
  'steps': ['Stage 1: PySCF Active-Space Hamiltonian & Qubitization — Extract the 54-electron, '
            '54-orbital FeMoCo active-space integrals in PySCF and compress the Coulomb tensor via '
            'tensor hypercontraction (THC) for qubitized walk operators.',
@@ -163,10 +161,9 @@ FOLIO = {'slug': 'b02',
                  'collapses completely.'],
  't0_t1_certified': ['Zero-dependency surface-code threshold and FeMoCo active-volume resource '
                      'estimator in bounties/bounty_p1_surface_code_femoco.py (< 0.05s runtime).',
-                     'Exact verification of Fowler et al. (2012) asymptotic logical error scaling '
-                     'and Reiher et al. (2017) / THC logical tile counts.',
-                     'Ready for immediate submission as an open educational and '
-                     "resource-estimation benchmark on Unitary Foundation's Metriq.info registry."],
+                     'Re-evaluates the Fowler et al. (2012) logical error scaling formula; the 114 + 180 tile layout is this folio\'s illustrative choice, not a figure taken from Reiher et al. (2017).',
+                     'Suitable as an open educational resource-estimation example, for instance for Unitary Foundation\'s Metriq.info registry.'
+                     ""],
  't2_t3_open_horizon': ['XPRIZE Quantum Applications ($5M purse): Requires formal team '
                         'registration and a novel quantum algorithm paper reducing logical T-count '
                         'or qubit footprint beyond state-of-the-art THC/qDRIFT baselines.',
@@ -219,7 +216,7 @@ FOLIO = {'slug': 'b02',
                 "viable path forward is topological quantum error correction using Kitaev's "
                 'rotated surface code, which weaves hundreds of noisy physical qubits into a '
                 'single ultra-stable logical qubit. The $5M XPRIZE Quantum Applications and '
-                "Unitary Foundation's Metriq registry benchmark this grand challenge: how many "
+                "Unitary Foundation's Metriq registry frame the question this folio works through: how many "
                 'physical qubits are genuinely required to run a full FeMoCo simulation? By '
                 "integrating Craig Gidney's megahertz stabilizer simulator (Stim) with ab-initio "
                 'quantum chemistry engines (PySCF), researchers can rigorously evaluate the '
@@ -402,8 +399,7 @@ FOLIO = {'slug': 'b02',
                     'this surface-code quilt suppresses logical errors exponentially. Five years '
                     'later, Markus Reiher and collaborators calculated the first concrete qubit '
                     'budget for FeMoCo, and in 2021 Craig Gidney released Stim, making it possible '
-                    'to test millions of syndrome cycles in seconds and powering today’s open '
-                    'XPRIZE Quantum and Unitary Foundation benchmarks.',
+                    'to test millions of syndrome cycles in seconds a tool now widely used in open quantum error-correction work.',
  'easy_history_es': 'En 1909, los químicos alemanes Fritz Haber y Carl Bosch descubrieron cómo '
                     'capturar el nitrógeno del aire para fabricar fertilizantes agrícolas, salvando '
                     'del hambre a miles de millones de personas. Sin embargo, su receta industrial '
@@ -426,8 +422,7 @@ FOLIO = {'slug': 'b02',
                     'físico baja del umbral del 1%, ampliar este código de superficie reduce el '
                     'error lógico de forma exponencial. En 2017, Markus Reiher y su equipo '
                     'calcularon el primer presupuesto cuántico para FeMoCo, y en 2021 Craig Gidney '
-                    'lanzó Stim, permitiendo simular millones de ciclos en segundos e impulsando '
-                    'los retos abiertos de XPRIZE Quantum y Unitary Foundation.',
+                    'lanzó Stim, permitiendo simular millones de ciclos en segundos una herramienta hoy muy usada en el trabajo abierto de corrección cuántica de errores.',
  'history_milestones': [{'year': '1997',
                          'who_en': 'Alexei Kitaev',
                          'who_es': 'Alexei Kitaev',
@@ -485,10 +480,8 @@ FOLIO = {'slug': 'b02',
                          'who_es': 'XPRIZE Quantum Applications y Unitary Foundation',
                          'title_en': 'Standardized Open Resource Benchmarks',
                          'title_es': 'Estándares Abiertos de Recursos Tolerantes a Fallos',
-                         'summary_en': 'Certifies sub-threshold d = 27 (P_L = 3 × 10⁻¹⁶, 428,652 '
-                                       'qubits) for 54-electron FeMoCo catalysis on Metriq.info.',
-                         'summary_es': 'Certifica el régimen d = 27 (P_L = 3 × 10⁻¹⁶, 428,652 '
-                                       'qubits) para la catálisis de 54 electrones de FeMoCo en Metriq.',
+                         'summary_en': 'This folio\'s worked example: sub-threshold d = 27 (P_L = 3 × 10⁻¹⁶, 428,652 qubits) for a 54-electron FeMoCo model; a worked example, not a prize result.',
+                         'summary_es': 'Ejemplo desarrollado de este folio: régimen d = 27 (P_L = 3 × 10⁻¹⁶, 428,652 qubits) para un modelo de FeMoCo de 54 electrones; un ejemplo desarrollado, no un resultado de premio.',
                          'roadblock_en': 'Physical quantum processors must still scale from ~10³ '
                                          'to 4.3 × 10⁵ sub-threshold qubits.',
                          'roadblock_es': 'Los procesadores cuánticos físicos aún deben escalar de '
@@ -554,7 +547,7 @@ FOLIO = {'slug': 'b02',
                    'de errores cuánticos mediante el código de superficie rotado de Kitaev, que '
                    'entreteje cientos de qubits físicos ruidosos en un solo qubit lógico '
                    'ultraestable. El premio XPRIZE Quantum Applications de 5 millones de dólares y '
-                   'el registro Metriq de Unitary Foundation evalúan este gran desafío: ¿cuántos '
+                   'el registro Metriq de Unitary Foundation enmarcan la pregunta que este folio recorre: ¿cuántos '
                    'qubits físicos se requieren genuinamente para ejecutar una simulación completa '
                    'de FeMoCo? Al integrar el simulador estabilizador de megahertz de Craig Gidney '
                    '(Stim) con motores de química cuántica ab-initio (PySCF), los investigadores '
@@ -743,8 +736,7 @@ FOLIO = {'slug': 'b02',
                         'Verificación exacta del escalamiento asintótico de error lógico de Fowler '
                         'et al. (2012) y de los conteos de teselas lógicas de Reiher et al. (2017) '
                         '/ THC.',
-                        'Listo para envío inmediato como banco de pruebas educativo y de estimación '
-                        'de recursos en el registro Metriq.info de Unitary Foundation.'],
+                        'Adecuado como ejemplo educativo abierto de estimación de recursos, por ejemplo para el registro Metriq.info de Unitary Foundation.'],
  't2_t3_open_horizon_es': ['XPRIZE Quantum Applications (bolsa de 5 millones de dólares): Requiere '
                            'registro formal de equipo y un artículo original de algoritmo cuántico '
                            'que reduzca el conteo lógico de compuertas T o la huella de qubits más '

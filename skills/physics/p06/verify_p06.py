@@ -16,7 +16,7 @@ FOLIO_METADATA = {
     "slug": "p06",
     "title": "de Gennes Polymer Reptation (D_rep ~ N⁻²), Doi–Edwards Tube Relaxation, and Kilobase Genetic Cargo Transport",
     "governing_law": "τ_d = L_tube² / (π² D_curv) ~ N³ · D_rep ~ N⁻²",
-    "primary_kernel": "tools/physics_kernel.py",
+    "primary_kernel": "skills/physics/p06/verify_p06.py",
     "primary_doi": "10.1039/F29787401818",
     "scite_report": "https://scite.ai/reports/10.1039/F29787401818",
     "benchmarks": [{"label": "Reptation Coupling Efficiency", "value": "0.88 (WT-Coupled)"}, {"label": "Tube Disengagement Ratio", "value": "1.12 (D_rep ~ N^-2)"}, {"label": "Confining Tube Diameter", "value": "85.0 nm (N > N_e)"}, {"label": "Transport Regime", "value": "STABLE_COUPLED_CYCLE"}],

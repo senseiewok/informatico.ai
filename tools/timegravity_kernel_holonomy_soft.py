@@ -19,7 +19,7 @@ T.13  Where Infrared Gravity Meets Gauge Theory:
       2. Christodoulou (1991) / Strominger-Zhiboedov (2016) Gravitational-Wave Memory & Arm Holonomy:
          Radiated gravitational-wave energy E_rad at luminosity distance D_L leaves a permanent DC
          transverse-traceless strain step of characteristic scale
-           Delta h_char^mem = 2 G E_rad / (c^4 D_L),
+           Delta h_char^mem = G E_rad / (c^4 D_L),
          and leading quadrupole inclination profile Delta h_+^mem(iota) = Delta h_char^mem * sin^2(iota)*(17 + cos^2(iota))/24,
          shifting free-falling test-mass / optical-clock proper separation permanently by
            Delta L / L_0 = (1 / 2) Delta h_+^mem.
@@ -210,8 +210,9 @@ def memory_strain_step(
     """Compute Christodoulou / Strominger-Zhiboedov gravitational-wave memory strain and arm shift."""
     e_rad_j = e_rad_solar * M_SUN * (C ** 2)
     d_l_m = d_l_mpc * MPC_M
-    # Characteristic infrared memory scale: Delta h_char = 2 G E_rad / (c^4 D_L)
-    dh_char = 2.0 * G_NEWTON * e_rad_j / ((C ** 4) * d_l_m)
+    # Characteristic infrared memory scale: Delta h_char = G E_rad / (c^4 D_L)
+    # Favata 2009 (ApJL 696, L159), Eq. (5), with the l = m = 2 energy flux: Delta h_+ = dh_char * sin^2(i) (17 + cos^2(i)) / 24
+    dh_char = G_NEWTON * e_rad_j / ((C ** 4) * d_l_m)
     phi_inc = memory_inclination_factor(iota_rad)
     dh_plus_inclined = dh_char * phi_inc
 

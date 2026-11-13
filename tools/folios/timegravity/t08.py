@@ -30,8 +30,8 @@ PAGE: dict = {
     "slug": SLUG,
     "code": CODE,
     "date": "2026-11-10",
-    "order_label_en": "Step 9 of 13",
-    "order_label_es": "Paso 9 de 13",
+    "order_label_en": "Step 9 of 14",
+    "order_label_es": "Paso 9 de 14",
     "kicker_en": "Time & Gravity · T.08 · Where a causal boundary turns a pure vacuum into a thermal bath",
     "kicker_es": "Tiempo y Gravedad · T.08 · Donde una frontera causal convierte un vacío puro en un baño térmico",
     "title_en": "A Horizon Has a Temperature",
@@ -114,10 +114,10 @@ PAGE: dict = {
             C("MEASURED", [PR60, GPA80],
               "Clocks at different heights or accelerations tick at different rates, with fractional shift Δf/f = g Δz / c²: "
               "the 22.5-metre tower measurement of 1960 and the 10,000-kilometre suborbital hydrogen-maser flight of 1980 "
-              "confirmed Einstein's gravitational redshift to 7×10⁻⁵.",
+              "confirmed Einstein's gravitational redshift, to 10 percent in the tower and to 7×10⁻⁵ in the maser flight.",
               "Los relojes a distintas alturas o aceleraciones marcan el paso a ritmos distintos, con desplazamiento fraccionario Δf/f = g Δz / c²: "
               "la medición en la torre de 22.5 metros en 1960 y el vuelo suborbital del máser de hidrógeno a 10,000 kilómetros en 1980 "
-              "confirmaron el corrimiento al rojo gravitacional de Einstein a 7×10⁻⁵."),
+              "confirmaron el corrimiento al rojo gravitacional de Einstein, al 10 por ciento en la torre y a 7×10⁻⁵ en el vuelo del máser."),
             T(" ", " "),
             C("MEASURED", [PENZIAS, MATHER],
               "And a thermal radiation bath follows Planck's Bose–Einstein occupation law n̄(ω) = 1/(e^{ħω/k_B T} − 1): "

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Open Bounties — Folio B.03: $100M XPRIZE Carbon Removal & IStructE Benchmark: Sub-45 kg CO₂e/m² SIMP Mineralized Slabs."""
+"""Open Bounties — Folio B.03: After the $100M XPRIZE Carbon Removal: A Sub-45 kg CO₂e/m² SIMP Mineralized Slab Design Study."""
 
 
 FOLIO = {'slug': 'b03',
@@ -11,13 +11,10 @@ FOLIO = {'slug': 'b03',
  'pillar_label_es': 'Ingeniería Civil y Estructuras Cero Neto',
  'badge_en': 'BOUNTY B.03 (E-1) · $100M XPRIZE CARBON + ISTRUCTE',
  'badge_es': 'RETO B.03 (E-1) · $100M XPRIZE CARBON + ISTRUCTE',
- 'title': '$100M XPRIZE Carbon Removal & IStructE Benchmark: Sub-45 kg CO₂e/m² SIMP Mineralized '
-          'Slabs',
- 'title_es': 'XPRIZE Carbon Removal ($100M) e IStructE: Losas Estructurales SIMP Bajo 45 kg '
-             'CO₂e/m²',
+ 'title': 'After the $100M XPRIZE Carbon Removal: A Sub-45 kg CO₂e/m² SIMP Mineralized Slab Design Study',
+ 'title_es': 'Tras el XPRIZE Carbon Removal ($100M): Estudio de Diseño de Losas SIMP Bajo 45 kg CO₂e/m²',
  'subtitle': 'How Bendsøe–Sigmund SIMP topology optimization in FEniCS/dolfinx and carbonated '
-             'mineral curing slash structural floor embodied carbon by 73% while preserving '
-             'stiffness compliance.',
+             'mineral curing could cut structural floor embodied carbon by 73% in this folio\'s model while keeping stiffness within its compliance limit.',
  'subtitle_es': 'Cómo la optimización topológica SIMP de Bendsøe–Sigmund en FEniCS/dolfinx y el '
                 'curado por mineralización de CO₂ reducen 73% el carbono incorporado manteniendo '
                 'la rigidez estructural.',
@@ -64,9 +61,7 @@ FOLIO = {'slug': 'b03',
  'external_links': [('XPRIZE Carbon Removal ($100M)',
                      'https://www.xprize.org/prizes/carbonremoval'),
                     ('IStructE Structural Carbon Benchmark', 'https://www.istructe.org/'),
-                    ('FEniCS/dolfinx (Finite Element PDE)', 'https://github.com/FEniCS/dolfinx'),
-                    ('anthropics/theorem-riscv (Rocq Proof)',
-                     'https://github.com/anthropics/theorem-riscv')],
+                    ('FEniCS/dolfinx (Finite Element PDE)', 'https://github.com/FEniCS/dolfinx')],
  'act1_dropcap': 'Cement production generates roughly 8% of global carbon dioxide emissions, and '
                  'in a typical commercial building frame, flat two-way floor slabs consume more '
                  'concrete than columns, shear walls, and foundations combined. Because a solid '
@@ -81,9 +76,7 @@ FOLIO = {'slug': 'b03',
               "solver carves branching isostatic ribs along Michell's principal "
               'tension-compression trajectories. When robotic 3D extrusion (Folio E.10) prints '
               'those voided ribs and cures them via accelerated carbonate mineralization (CaO + '
-              'CO₂ → CaCO₃), net embodied carbon drops from 148.0 kg CO₂e/m² to 39.40 kg '
-              'CO₂e/m²—clearing the 45.0 kg CO₂e/m² IStructE SCORS A+ and XPRIZE Carbon Removal '
-              'mineralization benchmark.',
+              'CO₂ → CaCO₃), net embodied carbon drops from 148.0 kg CO₂e/m² to 39.40 kg CO₂e/m² in the kernel\'s mass balance, below this folio\'s own 45.0 kg CO₂e/m² design target. That target is not a criterion of XPRIZE Carbon Removal, which judged carbon-dioxide removal at scale, and no slab has been built or tested.',
  'pullquote': 'Bone never wastes calcium where stress is zero; SIMP topology optimization gives '
               'concrete floor slabs the same evolutionary intelligence.',
  'chronology': [('1904',
@@ -97,8 +90,7 @@ FOLIO = {'slug': 'b03',
                  'FEniCS/dolfinx (DOI 10.1145/3524456) and robotic 3D concrete printing enable '
                  'full-scale ribbed funicular floor slabs saving 60–70% concrete.'),
                 ('2024–2026',
-                 '$100M XPRIZE Carbon Removal and IStructE SCORS A+ establish sub-45 kg CO₂e/m² '
-                 'net embodied carbon targets for mineralized structural elements.')],
+                 'The $100M XPRIZE Carbon Removal and the IStructE SCORS rating scale put embodied and removed carbon on the agenda; the sub-45 kg CO₂e/m² line is this folio\'s own target.')],
  'act2_intuition': 'As you remove volume fraction V/V₀ from a solid slab, embodied carbon falls '
                    'linearly as e_net = e₀(V/V₀) - m_CO₂, while structural compliance c/c₀ (the '
                    'inverse of stiffness) rises gently along the Michell–SIMP Pareto curve c/c₀ = '
@@ -123,7 +115,7 @@ FOLIO = {'slug': 'b03',
               {'label': 'Normalized Compliance c / c₀',
                'value': '1.224 (< 1.35 L/250 deflection limit)'},
               {'label': 'Mass Reduction vs. Solid Slab', 'value': '65.0% concrete mass saved'},
-              {'label': 'IStructE A+ & XPRIZE Verdict', 'value': 'PASS · SUB-45 KG CO₂E/M²'}],
+              {'label': 'Verifier Verdict (Worked Example)', 'value': 'PASS · SUB-45 KG CO₂E/M²'}],
  'steps': ['Stage 1: FEniCS/dolfinx Linear Elasticity Assembly — Discretize the floor bay Ω and '
            'solve K(ρ) u = f under factored gravity load 1.2D + 1.6L.',
            'Stage 2: SIMP Power-Law Penalization & Sensitivity Filter — Evaluate ∂c/∂ρ_e = -p '
@@ -134,7 +126,7 @@ FOLIO = {'slug': 'b03',
            'Stage 4: Carbonate Mineralization Mass Balance — Sequester m_CO₂ = 12.4 kg CO₂e/m² '
            'into recycled calcium-silicate aggregates during curing, yielding e_net = 148.0 × 0.35 '
            '- 12.4 = 39.40 kg CO₂e/m².'],
- 'rules': ['Embodied Carbon Ceiling (IStructE SCORS A+): Net cradle-to-gate embodied carbon e_net '
+ 'rules': ['Embodied Carbon Ceiling (folio design target): Net cradle-to-gate embodied carbon e_net '
            '= 148.0(V/V₀) - m_CO₂ must remain strictly below 45.0 kg CO₂e/m².',
            'Serviceability Deflection & Compliance Bound: Normalized structural compliance c/c₀ = '
            '1.0 + 0.40(1 - V/V₀)^1.35 must remain strictly below 1.35 to satisfy span-to-depth '
@@ -166,8 +158,7 @@ FOLIO = {'slug': 'b03',
                      '10.1007/s001580050176) mathematical formulation.',
                      'Ready for immediate community showcase submission on FEniCS Discourse and '
                      'open structural engineering benchmark repositories.'],
- 't2_t3_open_horizon': ['XPRIZE Carbon Removal ($100M) & IStructE Structural Awards: Require '
-                        'full-scale physical load testing (ACI 318 / EN 1992-1-1 four-point '
+ 't2_t3_open_horizon': ['XPRIZE Carbon Removal ($100M, a carbon-dioxide removal competition that has closed) & IStructE Structural Awards: any real claim about a slab would require full-scale physical load testing (ACI 318 / EN 1992-1-1 four-point '
                         'bending to ultimate failure) and third-party ISO 14040/14044 '
                         'cradle-to-grave LCA verification.'],
  'sources': ['Sigmund, O. (2001). A 99 line topology optimization code written in Matlab. '
@@ -194,8 +185,7 @@ FOLIO = {'slug': 'b03',
                       'out bird bones and human thigh bones—leaving behind only a graceful lattice '
                       'of arching ribs where forces actually travel? And what if, instead of '
                       'releasing greenhouse gases, the curing concrete permanently trapped '
-                      'captured carbon dioxide as solid stone? That is the breakthrough of this '
-                      'bounty: cutting slab weight by nearly two-thirds while locking carbon away '
+                      'captured carbon dioxide as solid stone? That is the design goal of this folio: cutting slab weight by nearly two-thirds while locking carbon away '
                       'forever.',
  'act1_stakes': 'Cement production is responsible for roughly eight percent of all global carbon '
                 'dioxide emissions—surpassing the climate footprint of commercial aviation and '
@@ -210,12 +200,7 @@ FOLIO = {'slug': 'b03',
                 'understood since the era of Robert Maillart and Pier Luigi Nervi that material '
                 'near the neutral axis carries negligible stress, yet manual formwork complexity '
                 'historically made curved ribs economically impractical. The climate crisis has '
-                'inverted this calculus. The Institution of Structural Engineers SCORS climate '
-                'rating system and the hundred-million-dollar XPRIZE Carbon Removal challenge '
-                'demand cradle-to-gate embodied carbon below forty-five kilograms of carbon '
-                'dioxide equivalent per square meter—a benchmark fundamentally unreachable with '
-                'conventional flat slabs, which average nearly one hundred fifty kilograms per '
-                'square meter. Achieving this target requires pairing algorithmic Solid Isotropic '
+                'inverted this calculus. The Institution of Structural Engineers SCORS rating scale and the hundred-million-dollar XPRIZE Carbon Removal competition have pushed embodied and removed carbon up the agenda. This folio sets its own design target of forty-five kilograms of carbon dioxide equivalent per square meter, far below the roughly one hundred fifty kilograms per square meter its model assigns to a conventional flat slab. Achieving this target requires pairing algorithmic Solid Isotropic '
                 'Material with Penalization topology optimization in open-source finite-element '
                 'solvers with accelerated carbonation curing. By carving sixty-five percent of '
                 'parasitic mass along principal stress trajectories and mineralizing captured gas '
@@ -264,7 +249,7 @@ FOLIO = {'slug': 'b03',
                      'force_b_title': 'Mineralized CO2 Uptake (m_CO2)',
                      'force_b_sub': 'Permanently locks gaseous CO2 into solid calcium carbonate '
                                     'rock',
-                     'threshold_title': 'IStructE SCORS A+ & XPRIZE Gate',
+                     'threshold_title': 'Folio Design Target',
                      'threshold_eq': 'e_net < 45.0 kg CO2e/m2 and c/c0 < 1.35',
                      'threshold_sub': 'Net carbon below 45 kg CO2e/m2 while keeping slab '
                                       'deflection safe',
@@ -366,7 +351,7 @@ FOLIO = {'slug': 'b03',
             'neta incorporada: con una fracción volumétrica V/V₀ = 0.35, el carbono de manufactura '
             'baja de 148.0 a 51.80 kg CO₂e/m², mientras que la mineralización de m_CO₂ = 12.4 '
             'kg/m² mediante carbonatación acelerada de portlandita fija el valor en 39.40 kg '
-            'CO₂e/m², superando el límite de 45.0 kg CO₂e/m² de IStructE SCORS A+. '
+            'CO₂e/m², por debajo de la meta de diseño de 45.0 kg CO₂e/m² de este folio. '
             'Simultáneamente, la razón de flexibilidad c/c₀ = 1 + 0.40(1 − V/V₀)^1.35 se sitúa en '
             '1.224, manteniéndose con holgura por debajo del umbral de servicio de 1.35 '
             'correspondiente a la deflexión límite L/250 de las normas Eurocódigo 2 y ACI 318.',
@@ -399,9 +384,7 @@ FOLIO = {'slug': 'b03',
                     'concrete extrusion eliminated expensive wooden molds, while accelerated '
                     'carbonate mineralization (injecting captured CO₂ gas during curing so it '
                     'turns permanently into solid limestone CaCO₃ inside the slab) turned concrete '
-                    'from a climate liability into a permanent carbon sink—driving floor emissions '
-                    'below the 45 kg CO₂e/m² IStructE A+ and $100M XPRIZE Carbon Removal '
-                    'threshold.',
+                    'from a climate liability into a permanent carbon sink—which is how this folio\'s model brings floor emissions below its own 45 kg CO₂e/m² design target.',
  'easy_history_es': 'En 1904, el ingeniero australiano Anthony George Maldon Michell planteó una '
                     'pregunta que aún inspira a toda la ingeniería estructural: ¿cuál es la '
                     'estructura más ligera posible capaz de sostener una carga dada entre apoyos? '
@@ -425,9 +408,7 @@ FOLIO = {'slug': 'b03',
                     'motores abiertos de elementos finitos como FEniCS/dolfinx unidos a la '
                     'impresión 3D robótica eliminaron las cimbras costosas, mientras que la '
                     'mineralización acelerada de carbonatos (inyectar CO₂ capturado durante el '
-                    'curado para transformarlo en piedra caliza CaCO₃ permanente) redujo la huella '
-                    'neta por debajo del umbral de 45 kg CO₂e/m² de IStructE SCORS A+ y del XPRIZE '
-                    'Carbon Removal.',
+                    'curado para transformarlo en piedra caliza CaCO₃ permanente) que es como el modelo de este folio lleva la huella neta por debajo de su propia meta de diseño de 45 kg CO₂e/m².',
  'history_milestones': [{'year': '1904',
                          'who_en': 'A. G. M. Michell',
                          'who_es': 'A. G. M. Michell',
@@ -488,8 +469,8 @@ FOLIO = {'slug': 'b03',
                          'roadblock_es': 'Requiere secuestro químico permanente de CO₂ dentro de '
                                          'la matriz para bajar de 45 kg CO₂e/m².'},
                         {'year': '2024–2026',
-                         'who_en': 'XPRIZE Carbon Removal & IStructE SCORS A+',
-                         'who_es': 'XPRIZE Carbon Removal e IStructE SCORS A+',
+                         'who_en': 'This folio\'s design study',
+                         'who_es': 'Estudio de diseño de este folio',
                          'title_en': 'Sub-45 kg CO₂e/m² Mineralized Structural Slabs',
                          'title_es': 'Losas Mineralizadas Bajo 45 kg CO₂e/m²',
                          'summary_en': 'Combines V/V₀ = 0.35 SIMP ribs with 12.4 kg/m² carbonate '
@@ -540,9 +521,7 @@ FOLIO = {'slug': 'b03',
                  'isostáticas ramificadas a lo largo de las trayectorias principales de tensión y '
                  'compresión de Michell. Cuando la extrusión robótica 3D (Folio E.10) imprime esas '
                  'nervaduras aligeradas y las cura mediante mineralización acelerada de carbonatos '
-                 '(CaO + CO₂ → CaCO₃), el carbono incorporado neto cae de 148.0 kg CO₂e/m² a 39.40 '
-                 'kg CO₂e/m², superando con holgura la meta de 45.0 kg CO₂e/m² de IStructE SCORS '
-                 'A+ y del premio XPRIZE Carbon Removal.',
+                 '(CaO + CO₂ → CaCO₃), el carbono incorporado neto cae de 148.0 kg CO₂e/m² a 39.40 kg CO₂e/m² en el balance de masa del kernel, por debajo de la meta de diseño de 45.0 kg CO₂e/m² de este folio. Esa meta no es un criterio del XPRIZE Carbon Removal, que evaluó la remoción de dióxido de carbono a gran escala, y ninguna losa se ha construido ni ensayado.',
  'act1_stakes_es': 'La fabricación de cemento es responsable de aproximadamente el ocho por ciento '
                    'de todas las emisiones globales de dióxido de carbono, superando la huella '
                    'climática de la aviación comercial y el transporte marítimo combinados. En un '
@@ -554,11 +533,7 @@ FOLIO = {'slug': 'b03',
                    '\n'
                    'Históricamente, las losas prismáticas macizas se volvieron el estándar '
                    'universal porque armar cimbras planas de madera era barato en el siglo XX, '
-                   'aunque resultara desastroso para el presupuesto global de carbono. Hoy el '
-                   'sistema de calificación climática SCORS del Institution of Structural '
-                   'Engineers (IStructE) y el reto XPRIZE Carbon Removal de cien millones de '
-                   'dólares exigen una huella neta inferior a 45 kg CO₂e/m², una meta inalcanzable '
-                   'con losas macizas convencionales (~148 kg CO₂e/m²). Al combinar la '
+                   'aunque resultara desastroso para el presupuesto global de carbono. La escala de calificación SCORS del Institution of Structural Engineers (IStructE) y la competencia XPRIZE Carbon Removal de cien millones de dólares han dado prioridad al carbono incorporado y removido. Este folio fija su propia meta de diseño de 45 kg CO₂e/m², muy por debajo de los ~148 kg CO₂e/m² que su modelo asigna a una losa maciza convencional. Al combinar la '
                    'optimización topológica SIMP en FEniCS/dolfinx con el curado por carbonatación '
                    'mineralizada, retiramos el 65% de la masa parásita y encerramos dióxido de '
                    'carbono como carbonato de calcio sólido permanente.',
@@ -681,7 +656,7 @@ FOLIO = {'slug': 'b03',
               'Etapa 4: Balance de Masa de Mineralización de Carbonatos — Secuestra m_CO₂ = 12.4 '
               'kg CO₂e/m² en agregados de silicato de calcio durante el curado, obteniendo e_net = '
               '148.0 × 0.35 - 12.4 = 39.40 kg CO₂e/m².'],
- 'rules_es': ['Techo de Carbono Incorporado (IStructE SCORS A+): El carbono incorporado neto de '
+ 'rules_es': ['Techo de Carbono Incorporado (meta de diseño del folio): El carbono incorporado neto de '
               'cuna a puerta e_net = 148.0(V/V₀) - m_CO₂ debe mantenerse estrictamente por debajo '
               'de 45.0 kg CO₂e/m².',
               'Cota de Deflexión de Servicio y Flexibilidad: La flexibilidad estructural '
@@ -696,7 +671,6 @@ FOLIO = {'slug': 'b03',
                         '2022, DOI 10.1145/3524456) y Sigmund (2001, DOI 10.1007/s001580050176).',
                         'Listo para envío inmediato a la galería comunitaria de FEniCS Discourse y '
                         'repositorios abiertos de ingeniería estructural.'],
- 't2_t3_open_horizon_es': ['XPRIZE Carbon Removal ($100M) e IStructE Structural Awards: Requieren '
-                           'ensayos físicos de carga a escala real hasta la falla (flexión en '
+ 't2_t3_open_horizon_es': ['XPRIZE Carbon Removal ($100M, una competencia de remoción de dióxido de carbono ya cerrada) e IStructE Structural Awards: cualquier afirmación real sobre una losa requeriría ensayos físicos de carga a escala real hasta la falla (flexión en '
                            'cuatro puntos según ACI 318 / EN 1992-1-1) y verificación de análisis '
                            'de ciclo de vida ISO 14040/14044 por terceros.']}

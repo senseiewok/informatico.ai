@@ -31,4 +31,4 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Bulk-Boundary Verdict**: `BACKSCATTER-FREE · PASS`
 
 ## 5. Frontier Discovery & Contemporary Research Context (2024–2026)
-- **Haldane–Raghu Photonic Chern Insulators & Berry Curvature Route Light Around 90° Defects With Zero Backscatter**: Synthesizing the acoustic and optical wave monographs of Folios E.03, A.05, A.08, and P.08, F. Duncan M. Haldane & Srinivas Raghu (Phys. Rev. Lett. DOI 10.1103/PhysRevLett.100.013904) proved that non-zero Berry curvature in gyromagnetic honeycomb lattices creates topologically protected C = +1 chiral edge highways immune to disorder.
+- **Haldane–Raghu Photonic Chern Insulators & Berry Curvature Route Light Around 90° Defects With Zero Backscatter**: Synthesizing the acoustic and optical wave monographs of Folios E.03, A.05, A.08, and P.08, F. Duncan M. Haldane & Srinivas Raghu (Phys. Rev. Lett. DOI 10.1103/PhysRevLett.100.013904) proposed that non-zero Berry curvature in gyromagnetic photonic crystals can create topologically protected C = +1 chiral edge highways immune to disorder.

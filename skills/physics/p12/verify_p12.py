@@ -14,12 +14,12 @@ if hasattr(sys.stdout, "reconfigure"):
 FOLIO_METADATA = {
     "folio_id": "P.12",
     "slug": "p12",
-    "title": "Hilbert's Sixth Problem Resolved: Hard-Sphere Boltzmann Kinetics to Navier–Stokes Continuum & Neural Climate Operators",
+    "title": "Hilbert's Sixth Problem: A Proposed Derivation from Hard-Sphere Boltzmann Kinetics to Navier–Stokes Continuum & Neural Climate Operators",
     "governing_law": "Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² ≥ 2 · ∂_t f + v·∇_x f = (1/Kn) Q(f,f) ⇒ σ_visc = (2μ/T) S_ij S_ij ≥ 0",
-    "primary_kernel": "tools/physics_kernel.py",
+    "primary_kernel": "skills/physics/p12/verify_p12.py",
     "primary_doi": "10.1007/s00222-003-0316-5",
     "scite_report": "https://scite.ai/reports/10.1007/s00222-003-0316-5",
-    "benchmarks": [{"label": "Markovian TUR Product Q_TUR", "value": "2.3617 ≥ 2.0 (A = 1.5 rad PASS)"}, {"label": "Hydrodynamic Convergence Error", "value": "O(Kn) = 1.0 × 10⁻⁴ (EXACT)"}, {"label": "Chapman–Enskog Viscous σ_visc", "value": "6.20 × 10⁻⁴ W/(m³·K) > 0"}, {"label": "Hilbert's 6th + TUR Verdict", "value": "BOLTZMANN → STOKES TUR QED"}],
+    "benchmarks": [{"label": "Markovian TUR Product Q_TUR", "value": "2.3617 ≥ 2.0 (A = 1.5 PASS)"}, {"label": "Hydrodynamic Convergence Error", "value": "O(Kn) = 1.0 × 10⁻⁴ (MODEL SCALING)"}, {"label": "Chapman–Enskog Viscous σ_visc", "value": "6.20 × 10⁻⁴ W/(m³·K) > 0"}, {"label": "Hilbert's 6th + TUR Verdict", "value": "KERNEL CHECKS PASS (NOT A PROOF)"}],
 }
 
 

@@ -31,4 +31,4 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Kernel Verification**: `PASS · VERIFIED`
 
 ## 5. Frontier Discovery & Contemporary Research Context (2024–2026)
-- **Kuramoto Phase Synchronization Explains How Airway Cilia Coordinate Mucociliary Clearance**: Recent active-matter biophysics (Fulford & Blake (1986) DOI 10.1016/s0022-5193(86)80098-4; Kuramoto synchronization) demonstrates that hydrodynamic Oseen coupling across periciliary liquid depth h_ASL = 7.2 μm locks millions of beating cilia (12–15 Hz) into coherent antiplectic metachronal waves.
+- **Kuramoto Phase Synchronization Explains How Airway Cilia Coordinate Mucociliary Clearance**: Active-matter modelling (Fulford & Blake (1986) DOI 10.1016/s0022-5193(86)80098-4; Kuramoto synchronization) describes how hydrodynamic Oseen coupling across a periciliary liquid depth near 7 μm can lock millions of beating cilia (12–15 Hz) into coherent antiplectic metachronal waves.

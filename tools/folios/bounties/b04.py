@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Open Bounties — Folio B.04: $1M Holcim Awards & $3M Global Cooling Prize: Zero-Rebar 3D Graphic Statics Vaults & Sky-Cooling."""
+"""Open Bounties — Folio B.04: $1M Holcim Awards & $3M Global Cooling Prize: A Zero-Rebar 3D Graphic Statics Vault & Sky-Cooling Design Study."""
 
 
 FOLIO = {'slug': 'b04',
@@ -11,10 +11,8 @@ FOLIO = {'slug': 'b04',
  'pillar_label_es': 'Arquitectura · Bóvedas sin Acero y Enfriamiento Radiativo',
  'badge_en': 'BOUNTY B.04 (A-1) · $1M HOLCIM + $3M COOLING PRIZE',
  'badge_es': 'RETO B.04 (A-1) · $1M HOLCIM + $3M COOLING PRIZE',
- 'title': '$1M Holcim Awards & $3M Global Cooling Prize: Zero-Rebar 3D Graphic Statics Vaults & '
-          'Sky-Cooling',
- 'title_es': 'Premios Holcim ($1M) y Global Cooling ($3M): Bóvedas 3D sin Acero y Enfriamiento '
-             'Radiativo',
+ 'title': '$1M Holcim Awards & $3M Global Cooling Prize: A Zero-Rebar 3D Graphic Statics Vault & Sky-Cooling Design Study',
+ 'title_es': 'Premios Holcim ($1M) y Global Cooling ($3M): Estudio de Diseño de Bóvedas 3D sin Acero y Enfriamiento Radiativo',
  'subtitle': 'How Maxwell–Rankine 3D polyhedral graphic statics in COMPAS and 8–13 μm porous '
              'fluoropolymer membranes span 16 m with zero steel rebar and cool 5.2 °C below midday '
              'ambient air using zero electricity.',
@@ -63,7 +61,7 @@ FOLIO = {'slug': 'b04',
                        'Daytime Radiative Sky-Cooling Roofs & Phase-Change Walls')],
  'external_links': [('Holcim Awards for Sustainable Construction ($1M)',
                      'https://www.holcimfoundation.org/'),
-                    ('Global Cooling Prize ($3M Benchmark)', 'https://globalcoolingprize.org/'),
+                    ('Global Cooling Prize ($3M, 2018–2021)', 'https://globalcoolingprize.org/'),
                     ('compas-dev/compas (ETH Zürich BRG)', 'https://github.com/compas-dev/compas'),
                     ('NREL/EnergyPlus (Building Thermal Engine)',
                      'https://github.com/NREL/EnergyPlus')],
@@ -73,16 +71,11 @@ FOLIO = {'slug': 'b04',
                  "whose outward normals n_f are parallel to the bars, then Minkowski's theorem (∑ "
                  'A_f n_f = 0) guarantees exact 3D static equilibrium without solving a single '
                  'matrix equation.',
- 'act1_body': "At ETH Zürich's Block Research Group, Masaaki Akbarzadeh, Tom Van Mele, and "
+ 'act1_body': "At ETH Zürich's Block Research Group, Masoud Akbarzadeh, Tom Van Mele, and "
               'Philippe Block implemented Maxwell–Rankine 3D polyhedral graphic statics inside the '
-              'open-source COMPAS framework (DOI 10.1016/j.cad.2015.01.006), enabling unreinforced '
-              'vaulted floors that cut concrete mass by 72% and require 0.0 kg of tensile steel '
-              'rebar. When that funicular shell is crowned with a porous P(VdF-HFP) radiative '
+              'open-source COMPAS framework (DOI 10.1016/j.cad.2015.01.006), the basis for this folio\'s unreinforced vault model, which uses 72% less concrete than a flat slab and 0.0 kg of tensile steel rebar. When that funicular shell is crowned with a porous P(VdF-HFP) radiative '
               'sky-cooling membrane (Mandal et al. 2018, DOI 10.1126/science.aat9513; Raman et al. '
-              '2014, DOI 10.1038/nature13883) exhibiting solar reflectance R_sol = 0.97 and '
-              'mid-infrared window emissivity ε_8-13μm = 0.96, the roof radiates 98.4 W/m² net '
-              'cooling power at solar noon and chills the vault 5.2 °C below ambient air with zero '
-              'compressor electricity.',
+              '2014, DOI 10.1038/nature13883) taken in the model at solar reflectance R_sol = 0.97 and mid-infrared window emissivity ε_8-13μm = 0.96 (Mandal et al. report about 0.96 and 0.97), the kernel\'s roof radiates 98.4 W/m² net cooling power at solar noon and sits 5.2 °C below ambient air with zero compressor electricity. No such vault has been built.',
  'pullquote': 'Gravity wants to compress stone, and the cold night of deep space sits just ten '
               'kilometers overhead even at noon; architecture needs only the right geometry and '
               'wavelength to partner with both.',
@@ -123,9 +116,9 @@ FOLIO = {'slug': 'b04',
               'unit': 'R_sol = '}],
  'readouts': [{'label': 'Horizontal Vault Thrust H',
                'value': '100.00 kN (f/L = 0.160 · 0 kg rebar)'},
-              {'label': 'Net Noon Sky Cooling q_net', 'value': '98.4 W/m² (≥ 80.0 W/m² target)'},
-              {'label': 'Sub-Ambient ΔT at Noon', 'value': '−5.2 °C (≤ −4.5 °C benchmark)'},
-              {'label': 'Holcim & Cooling Prize Verdict',
+              {'label': 'Net Noon Sky Cooling q_net', 'value': '98.4 W/m² (≥ 80.0 W/m² folio target)'},
+              {'label': 'Sub-Ambient ΔT at Noon', 'value': '−5.2 °C (≤ −4.5 °C folio target)'},
+              {'label': 'Verifier Verdict (Worked Example)',
                'value': 'PASS · ZERO-REBAR + SUB-AMBIENT'}],
  'steps': ['Stage 1: COMPAS 3D Reciprocal Force Polyhedron — Construct the closed dual force cells '
            'satisfying ∑ A_f n_f = 0 so every interior vault face is strictly in compression (0 kg '
@@ -167,7 +160,7 @@ FOLIO = {'slug': 'b04',
                      '10.1126/science.aat9513).',
                      'Ready for immediate community showcase submission to ETH Zürich COMPAS '
                      'discussions and NREL EnergyPlus teaching resources.'],
- 't2_t3_open_horizon': ['Holcim Awards ($1M) & Global Cooling Prize ($3M): Require a commissioned '
+ 't2_t3_open_horizon': ['Holcim Awards ($1M) & Global Cooling Prize ($3M, closed in 2021): any real claim would require a commissioned '
                         'architectural project or instrumented outdoor climate-chamber prototype '
                         'demonstrating year-round weathering and hygrometric condensation '
                         'control.'],
@@ -217,10 +210,7 @@ FOLIO = {'slug': 'b04',
                 'centuries without tensile rebar, relying entirely on funicular compression thrust '
                 'lines. However, drafting and certifying complex three-dimensional masonry '
                 'geometries once required laborious physical plaster mock-ups or conservative '
-                'empirical formulas. Today, the one-million-dollar Holcim Awards for Sustainable '
-                'Construction and the three-million-dollar Global Cooling Prize demand an '
-                'unprecedented leap: eliminating structural tensile reinforcement entirely while '
-                'delivering sub-ambient passive daytime cooling. Meeting this dual mandate '
+                'empirical formulas. The one-million-dollar Holcim Awards for Sustainable Construction reward built projects, and the three-million-dollar Global Cooling Prize (2018–2021) sought a far lower-impact room air conditioner. Neither sets the criteria used here: eliminating structural tensile reinforcement while delivering sub-ambient passive daytime cooling is this folio\'s own design brief, borrowed from their ambition. Meeting this dual mandate '
                 "requires synthesizing James Clerk Maxwell's 3D polyhedral graphic statics in "
                 'open-source computational frameworks with photonic sky-cooling polymers. Spanning '
                 'sixteen meters with zero steel rebar, these funicular tile shells cut concrete '
@@ -271,7 +261,7 @@ FOLIO = {'slug': 'b04',
                      'force_b_title': 'Photonic Solar Albedo (R_sol)',
                      'force_b_sub': 'Reflecting 97% of solar photons allows 8-13 um heat emission '
                                     'to space',
-                     'threshold_title': 'Holcim & Cooling Prize Frontier',
+                     'threshold_title': 'Folio Design Target',
                      'threshold_eq': 'rebar = 0 kg, q_net >= 80 W/m2, DT <= -4.5 C',
                      'threshold_sub': 'Zero steel rebar with net sub-ambient cooling under 1000 '
                                       'W/m2 sun',
@@ -399,8 +389,8 @@ FOLIO = {'slug': 'b04',
                     'much sunlight. Between 2014 and 2018, Aaswath Raman and Jyotirmoy Mandal '
                     'invented nanoporous fluoropolymer coatings that reflect 97% of solar light '
                     'while beaming 96% of mid-infrared heat through the atmospheric '
-                    "window—allowing ETH Zürich's COMPAS zero-rebar vaults to cool 5.2 °C below "
-                    'midday ambient air with zero electricity.',
+                    "window—the ingredients this folio combines, on paper, with compression-only vaults designed in ETH Zürich's COMPAS framework."
+                    '',
  'easy_history_es': 'Durante miles de años, los maestros constructores de Roma, el mundo islámico, '
                     'España y México levantaron bóvedas de piedra y tabique (como la bóveda '
                     'catalana y la bóveda tabicada mexicana) que han permanecido en pie por siglos '
@@ -470,8 +460,8 @@ FOLIO = {'slug': 'b04',
                          'roadblock_es': 'Los espejos fotónicos depositados al vacío resultan '
                                          'demasiado costosos para techos arquitectónicos.'},
                         {'year': '2015',
-                         'who_en': 'Masaaki Akbarzadeh, Tom Van Mele & Philippe Block',
-                         'who_es': 'Masaaki Akbarzadeh, Tom Van Mele y Philippe Block',
+                         'who_en': 'Masoud Akbarzadeh, Tom Van Mele & Philippe Block',
+                         'who_es': 'Masoud Akbarzadeh, Tom Van Mele y Philippe Block',
                          'title_en': '3D Polyhedral Graphic Statics in COMPAS',
                          'title_es': 'Estática Gráfica Poliédrica 3D en COMPAS',
                          'summary_en': 'Implements Maxwell–Rankine 3D force polyhedra in '
@@ -485,8 +475,8 @@ FOLIO = {'slug': 'b04',
                          'roadblock_es': 'Las bóvedas muy rebajadas generan empujes horizontales '
                                          'altos H = qL²/(8f) si no se equilibra la relación f/L.'},
                         {'year': '2018–2026',
-                         'who_en': 'Jyotirmoy Mandal et al. & Holcim / Cooling Prize',
-                         'who_es': 'Jyotirmoy Mandal et al. y Premios Holcim / Cooling',
+                         'who_en': 'Jyotirmoy Mandal et al. & this folio\'s design study',
+                         'who_es': 'Jyotirmoy Mandal et al. y el estudio de diseño de este folio',
                          'title_en': 'Porous P(VdF-HFP) Sky-Cooled Funicular Vaults',
                          'title_es': 'Bóvedas Funiculares con Membrana Porosa P(VdF-HFP)',
                          'summary_en': 'Pairs 16 m zero-rebar COMPAS vaults (H = 100 kN) with '
@@ -527,18 +517,13 @@ FOLIO = {'slug': 'b04',
                     'son paralelas a dichas barras, entonces el teorema de Minkowski (∑ A_f n_f = '
                     '0) garantiza el equilibrio estático tridimensional exacto sin resolver una '
                     'sola ecuación matricial.',
- 'act1_body_es': 'En el Block Research Group de ETH Zürich, Masaaki Akbarzadeh, Tom Van Mele y '
+ 'act1_body_es': 'En el Block Research Group de ETH Zürich, Masoud Akbarzadeh, Tom Van Mele y '
                  'Philippe Block implementaron la estática gráfica poliédrica 3D de '
                  'Maxwell–Rankine dentro del entorno abierto COMPAS (DOI '
-                 '10.1016/j.cad.2015.01.006), permitiendo diseñar entrepisos y cubiertas '
-                 'abovedadas sin refuerzo que reducen la masa de concreto en 72% y requieren 0.0 '
-                 'kg de varilla de acero en tensión. Cuando esa cáscara funicular se recubre con '
+                 '10.1016/j.cad.2015.01.006), la base del modelo de bóveda sin refuerzo de este folio, que usa 72% menos concreto que una losa plana y 0.0 kg de varilla de acero en tensión. Cuando esa cáscara funicular se recubre con '
                  'una membrana porosa de P(VdF-HFP) de enfriamiento radiativo diurno (Mandal et '
                  'al. 2018, DOI 10.1126/science.aat9513; Raman et al. 2014, DOI '
-                 '10.1038/nature13883) con reflectancia solar R_sol = 0.97 y emisividad en la '
-                 'ventana infrarroja ε_8-13μm = 0.96, la cubierta irradia 98.4 W/m² de potencia '
-                 'neta de enfriamiento al mediodía solar y reduce la temperatura de la bóveda 5.2 '
-                 '°C por debajo del aire ambiente con cero electricidad de compresores.',
+                 '10.1038/nature13883) tomada en el modelo con reflectancia solar R_sol = 0.97 y emisividad en la ventana infrarroja ε_8-13μm = 0.96 (Mandal et al. reportan cerca de 0.96 y 0.97), la cubierta del kernel irradia 98.4 W/m² de potencia neta de enfriamiento al mediodía solar y queda 5.2 °C por debajo del aire ambiente con cero electricidad de compresores. Ninguna bóveda así se ha construido.',
  'act1_stakes_es': 'En las regiones cálidas y áridas, el aire acondicionado mecánico y los '
                    'materiales estructurales representan los dos mayores motores de emisiones '
                    'urbanas de gases de efecto invernadero. El enfriamiento de espacios por sí '
@@ -551,9 +536,7 @@ FOLIO = {'slug': 'b04',
                    'Históricamente, los maestros constructores desde Roma hasta Cataluña y México '
                    'demostraron que las bóvedas de piedra y tabique podían cubrir grandes salones '
                    'durante siglos sin acero de refuerzo, apoyándose en líneas de empuje '
-                   'funiculares en compresión pura. Hoy los premios Holcim ($1M) y Global Cooling '
-                   'Prize ($3M) exigen eliminar el acero estructural y lograr enfriamiento pasivo '
-                   'bajo el ambiente a pleno sol. Al unir los poliedros de fuerza 3D de Maxwell en '
+                   'funiculares en compresión pura. Los premios Holcim ($1M) reconocen proyectos construidos y el Global Cooling Prize ($3M, 2018–2021) buscó un aire acondicionado de mucho menor impacto. Ninguno fija los criterios usados aquí: eliminar el acero estructural y lograr enfriamiento pasivo bajo el ambiente a pleno sol es el encargo de diseño propio de este folio. Al unir los poliedros de fuerza 3D de Maxwell en '
                    'COMPAS con polímeros fotónicos nanoporosos, estas bóvedas cubren 16 metros con '
                    '0 kg de acero e irradian calor directamente hacia el espacio profundo.',
  'pullquote_es': 'La gravedad quiere comprimir la piedra, y la noche helada del espacio profundo '
@@ -677,7 +660,6 @@ FOLIO = {'slug': 'b04',
                         '10.1126/science.aat9513).',
                         'Listo para envío inmediato a los foros de COMPAS en ETH Zürich y recursos '
                         'docentes de NREL EnergyPlus.'],
- 't2_t3_open_horizon_es': ['Premios Holcim ($1M) y Global Cooling Prize ($3M): Requieren un '
-                           'proyecto arquitectónico comisionado o un prototipo exterior '
+ 't2_t3_open_horizon_es': ['Premios Holcim ($1M) y Global Cooling Prize ($3M, cerrado en 2021): cualquier afirmación real requeriría un proyecto arquitectónico comisionado o un prototipo exterior '
                            'instrumentado que demuestre intemperismo anual y control de '
                            'condensación higrométrica.']}

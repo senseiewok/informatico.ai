@@ -28,7 +28,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Logical Error per Cycle (p_L)**: `3.0 × 10⁻¹⁶ (Fault-Tolerant)`
 - **Physical Qubits per Logical (2d²)**: `1,458 Physical / Logical`
 - **FeMoCo Active-Space Precision**: `±0.82 kcal/mol (< 1.0 Limit)`
-- **WEF Clean Fertilizer Verdict**: `AMBIENT CATALYST PASS`
+- **WEF Clean Fertilizer Verdict**: `RESOURCE ESTIMATE ONLY`
 
 ## 5. Frontier Discovery & Contemporary Research Context (2024–2026)
-- **Below-Threshold Surface-Code Stabilizers & Open-Source Quantum Chemistry Unlock Clean Nitrogen Catalysis**: Synthesizing topological protection (DOI 10.1103/PhysRevLett.100.013904) and quantum tunneling (DOI 10.1103/revmodphys.35.724) with open-source quantumlib/Stim stabilizer circuits and pyscf/pyscf active-space Hamiltonians brings ambient-pressure FeMoCo ammonia synthesis within chemical accuracy.
+- **Below-Threshold Surface-Code Stabilizers & Open-Source Quantum Chemistry Unlock Clean Nitrogen Catalysis**: Synthesizing topological protection (DOI 10.1103/PhysRevLett.100.013904) and quantum tunneling (DOI 10.1103/revmodphys.35.724) with open-source quantumlib/Stim stabilizer circuits and pyscf/pyscf active-space Hamiltonians frames the resource question for simulating FeMoCo to chemical accuracy on a fault-tolerant machine; no such simulation has been run.

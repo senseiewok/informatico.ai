@@ -25,7 +25,7 @@ FOLIO = {'folio_id': 'E.12',
  'status_badge': 'SILICON-TO-GRID · REV 1.0',
  'primary_kernel': 'tools/continuum_verify.py',
  'governing_law': 'sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e · '
-                  'anthropics/theorem-riscv',
+                  'Anthropic theorem-riscv',
  'colophon': {'identifier': 'E.12 · Machine-Checked RISC-V & Grid Control Barrier Functions · IEEE '
                             '1547-2025',
               'kernels': 'Ames Control Barrier Function h(x) ≥ 0 · Kuramoto Swing Equation · '
@@ -58,9 +58,7 @@ FOLIO = {'folio_id': 'E.12',
            'Every millisecond, a real-time QP filter enforces L_f h(x) + L_g h(x)u ≥ −α(h(x)), '
            'guaranteeing the state x never crosses the blackout boundary h(x) = 0.',
            'Stage 4 (Anthropic Machine-Checked RISC-V Silicon Execution): The protection '
-           'controller executes on open-source RISC-V hardware formally verified across 180 '
-           'million lines of Rocq/Kami proof (anthropics/theorem-riscv), eliminating hardware '
-           'instruction bugs.'],
+           'controller executes on open-source RISC-V hardware that would be formally verified in Rocq/Kami, which would rule out hardware instruction bugs. The 180-million-line proof cited for this in earlier editions (Anthropic theorem-riscv) was not publicly reachable when checked on 2026-11-13 and is unverified here.'],
  'readouts': [{'label': 'Grid Frequency Nadir (f_min)', 'value': '59.82 Hz (IEEE 1547 Safe)'},
               {'label': 'Max Rate of Change (RoCoF)', 'value': '0.42 Hz/s (< 0.50 Limit)'},
               {'label': 'CBF Forward Invariance h(x)', 'value': '+0.18 Hz (STRICTLY SAFE)'},
@@ -71,7 +69,7 @@ FOLIO = {'folio_id': 'E.12',
                 'body': 'Distributed battery and solar grid-forming inverters governed by '
                         'Nagumo-invariant Control Barrier Function (CBF-QP) safety filters running '
                         'on Rocq/Kami formally verified RISC-V processors '
-                        '(anthropics/theorem-riscv).',
+                        '(Anthropic theorem-riscv).',
                 'meta': 'Optimal energy control DOI 10.1080/00207179.2014.900705 & Chao Sun DOI '
                         '10.1109/tcst.2014.2359176 verified'},
  'sidenote_1': {'kicker': 'SIDENOTE E.12-A · CROSS-FIELD ANALOGY · 10,000 FIREFLIES FLASHING AS '
@@ -82,10 +80,7 @@ FOLIO = {'folio_id': 'E.12',
                         'in unison, modelled in open-source PyPSA/PyPSA.'},
  'sidenote_2': {'kicker': 'SIDENOTE E.12-B · ANTHROPIC THEOREM SOLUTIONS · 180M LINES OF ROCQ '
                           'SILICON PROOF',
-                'body': 'In anthropics/theorem-riscv, AI agents helped complete a 180-million-line '
-                        'Rocq/Kami formal proof of a Linux-capable RISC-V processor+MMU, ensuring '
-                        'the chip running the CBF safety filter cannot suffer a subtle hardware '
-                        'divide or page-table bug.'},
+                'body': 'Earlier editions described a 180-million-line Rocq/Kami proof of a Linux-capable RISC-V processor+MMU in a repository named Anthropic theorem-riscv. That repository was not publicly reachable when checked on 2026-11-13, so the figure is unverified here. What stands is the design point: a formally verified processor would rule out subtle hardware divide or page-table bugs under the CBF safety filter.'},
  'skill': {'filename': 'verified-riscv-cbf-grid-sync-SKILL.md',
            'name': 'verified-riscv-cbf-grid-sync',
            'description': 'AI-agnostic cyber-physical systems skill for Virtual Synchronous '
@@ -96,12 +91,12 @@ FOLIO = {'folio_id': 'E.12',
                      'Bound grid Rate of Change of Frequency (RoCoF) |df/dt| <= Delta_P / (2 * '
                      'H_virt * S_base) below 0.5 Hz/s under N-1 contingency.',
                      'Target formally verified open-source RISC-V execution pipelines '
-                     '(anthropics/theorem-riscv) for safety-critical relay firmware.']},
+                     '(Anthropic theorem-riscv) for safety-critical relay firmware.']},
  'revisions': [{'edition': 'REV 1.0',
                 'date': '2026-11-07',
                 'summary': 'REV 1.0 (Published 2026-11-07): Volume VI Cyber-Physical '
                            'Infrastructure monograph synthesizing E.06, P.02, and M.07 (DOI '
-                           '10.1080/00207179.2014.900705) with anthropics/theorem-riscv and '
+                           '10.1080/00207179.2014.900705) with Anthropic theorem-riscv and '
                            'PyPSA/PyPSA.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): '
                         'Verified Kuramoto swing equation, CBF-QP Lie derivatives, and Rocq RISC-V '
@@ -185,7 +180,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'mathematically sound algorithms can crash if underlying microprocessors harbor '
               'hardware errata, researchers utilized automated proof assistants to complete a '
               '180-million-line formal proof in Rocq/Kami '
-              '(https://github.com/anthropics/theorem-riscv, with mathematical formalizations in '
+              '(a repository not publicly reachable when checked on 2026-11-13, with mathematical formalizations in '
               'mathlib, DOI 10.1145/3372885.3373824), verifying that the open-source RISC-V '
               'processor and memory-management unit execute instructions with absolute logical '
               'correctness.',
@@ -219,9 +214,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  "Ames's Control Barrier Function QP filters establish provable cyber-physical "
                  'safety.'),
                 ('2025–2026',
-                 "Anthropic's anthropics/theorem-riscv completes a 180M-line Rocq/Kami formal "
-                 'verification of a Linux-capable RISC-V core + MMU for safety-critical '
-                 'infrastructure.')],
+                 "Earlier editions of this folio cite a 180M-line Rocq/Kami verification of a Linux-capable RISC-V core + MMU (Anthropic theorem-riscv); the repository was not publicly reachable when checked on 2026-11-13 and the claim is unverified here."
+                 '')],
  'act2_title': 'Act II — Cross-Field Intuition: Firefly Phase-Locking + Invisible Mathematical '
                'Guardrails',
  'act2_analogy': 'Everyday analogy: Imagine thousands of fireflies flashing in unison across a '
@@ -272,7 +266,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'Quadratic Program (CBF-QP) filters high-level power dispatch commands, '
                    'minimally adjusting them only when the state trajectory nears the boundary '
                    'h(x) = 0. Crucially, this optimization filter runs on RISC-V hardware verified '
-                   'across 180 million lines of proof in Rocq/Kami (anthropics/theorem-riscv), '
+                   'across 180 million lines of proof in Rocq/Kami (Anthropic theorem-riscv), '
                    'ensuring that execution never suffers from hardware errata or pipeline '
                    'stalling.',
  'act2_deepening': 'At the intersection of power electronics and formal logic, stability requires '
@@ -287,7 +281,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'derivative of the barrier function h(x) along system trajectories, the '
                    'quadratic program continuously computes the minimal control intervention '
                    'needed to preserve Nagumo invariance. Down at the silicon level, the '
-                   "anthropics/theorem-riscv formal verification proves that the processor's "
+                   "Anthropic theorem-riscv formal verification proves that the processor's "
                    'arithmetic logic unit, pipelined instruction decoder, and virtual memory '
                    'management unit conform unconditionally to the RISC-V ISA specification. '
                    'Hardware interrupts from grid sensors are guaranteed to trigger safety '
@@ -307,7 +301,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'act4_human_ai': 'By combining open-source continental grid planners '
                   '(https://github.com/PyPSA/PyPSA) with Control Barrier Function safety filters '
                   'and formally verified open-source RISC-V processors '
-                  '(https://github.com/anthropics/theorem-riscv and '
+                  '(a repository not publicly reachable when checked on 2026-11-13 and '
                   'https://github.com/anthropics/formal-math), humanity can retire fossil-fuel '
                   'peaker plants without sacrificing a millisecond of grid stability—ensuring '
                   'hospitals, water treatment plants, and cities run on 100% clean energy.',
@@ -336,7 +330,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'Control, 62(8), 3861–3876. DOI: 10.1109/TAC.2016.2638961.',
              'Anthropic Formal Verification Team (2026). Formal verification of a Linux-capable '
              'RISC-V processor and MMU in Rocq/Kami (180M lines). GitHub: '
-             'https://github.com/anthropics/theorem-riscv.',
+             'a repository not publicly reachable when checked on 2026-11-13.',
              'Ames, A. D., Xu, X., Grizzle, J. W., & Tabuada, P. (2017). Control Barrier Function '
              'Based Quadratic Programs for Safety Critical Systems. IEEE Transactions on Automatic '
              'Control.',
@@ -348,7 +342,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'Transactions on Control Systems Technology, 23(3), 1197–1204. DOI: '
              '10.1109/tcst.2014.2359176.',
              'Open-Source Stack: PyPSA/PyPSA (https://github.com/PyPSA/PyPSA) + '
-             'anthropics/theorem-riscv (https://github.com/anthropics/theorem-riscv).',
+             'Anthropic theorem-riscv (a repository not publicly reachable when checked on 2026-11-13).',
              'The mathlib Community (2020). The Lean mathematical library '
              '(leanprover-community/mathlib4 & anthropics/formal-math, '
              'https://github.com/anthropics/formal-math). CPP 2020, 367–381. DOI: '
@@ -382,7 +376,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         '            <rect x="386" y="46" width="242" height="52" rx="6" fill="var(--tp-stone)" '
         'fill-opacity="0.3" stroke="var(--tp-prussian)" stroke-width="1.8"/>\n'
         '            <text x="400" y="68" font-size="9.5" font-weight="600" '
-        'fill="var(--tp-prussian)">anthropics/theorem-riscv (180M LoC)</text>\n'
+        'fill="var(--tp-prussian)">Anthropic theorem-riscv (180M LoC)</text>\n'
         '            <text x="400" y="86" font-size="9" fill="var(--tp-verdigris)">CPU + MMU '
         'Formal Proof: 0 Hardware Bugs</text>\n'
         '            <path d="M 386 146 Q 426 112 466 146 T 546 146 T 626 146" fill="none" '
@@ -406,7 +400,7 @@ DISPATCH = {'kicker': 'FRONTIER CYBER-PHYSICAL & SILICON VERIFICATION DISPATCH �
            'PYPSA',
  'headline': '180-Million-Line Rocq RISC-V Hardware Proof & Control Barrier Functions Secure '
              '100%-Renewable Grids',
- 'body': "Pairing Anthropic's machine-checked RISC-V processor proof (anthropics/theorem-riscv) "
+ 'body': "Pairing Anthropic's machine-checked RISC-V processor proof (Anthropic theorem-riscv) "
          "with Aaron Ames's Control Barrier Function QP filters, constrained optimal energy "
          'control (DOI 10.1080/00207179.2014.900705), and open-source PyPSA/PyPSA grid models '
          'eliminates both hardware errata and frequency collapse.'}
@@ -444,8 +438,6 @@ ES_TRANSLATION = {'title_es': 'Seguridad Verificada del Silicio a la Red Eléctr
             'basado en Funciones de Barrera de Control (CBF) hace que la zona de operación segura '
             'sea invariante hacia adelante, bloqueando comandos que pongan en riesgo la red antes '
             'de alcanzar el umbral de disparo por bajo voltaje. En la práctica contemporánea, '
-            'estos algoritmos se ejecutan en microprocesadores RISC-V verificados formalmente en '
-            'Rocq mediante computadora, garantizando que la protección del sistema no falle debido '
-            'a fallas de hardware en momentos críticos.',
+            'estos algoritmos se ejecutarían en microprocesadores RISC-V verificados formalmente en Rocq, lo que descartaría fallas de hardware en momentos críticos. La prueba de 180 millones de líneas citada en ediciones anteriores (Anthropic theorem-riscv) no era accesible públicamente al revisarla el 2026-11-13 y aquí queda sin verificar.',
  'bridge_es': 'La invariancia positiva de Nagumo en filtros CBF-QP sobre hardware RISC-V '
               'verificado en Rocq garantiza que el sistema nunca cruce el umbral de fallo.'}

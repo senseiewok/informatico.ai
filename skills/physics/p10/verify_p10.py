@@ -16,7 +16,7 @@ FOLIO_METADATA = {
     "slug": "p10",
     "title": "Topological Photonics, Haldane–Raghu Photonic Chern Insulators, Berry Curvature & Backscatter-Free Chiral Edge Waveguides",
     "governing_law": "C_n = (1/2π) ∮_{BZ} Ω_n(k) d²k ∈ ℤ · Ω_n = i⟨∇_k u_n | × | ∇_k u_n⟩ · |m_T| > |m_P| ⇒ |C| = 1",
-    "primary_kernel": "tools/physics_kernel.py",
+    "primary_kernel": "skills/physics/p10/verify_p10.py",
     "primary_doi": "10.1103/PhysRevLett.100.013904",
     "scite_report": "https://scite.ai/reports/10.1103/PhysRevLett.100.013904",
     "benchmarks": [{"label": "Topological Chern Invariant", "value": "C = +1 (Topological Phase)"}, {"label": "Relative Bandgap (Δω / ω_0)", "value": "14.2% (|m_T − m_P| Gap)"}, {"label": "Forward Defect Transmission", "value": "99.8% (vs 34.2% Trivial)"}, {"label": "Bulk-Boundary Verdict", "value": "BACKSCATTER-FREE · PASS"}],

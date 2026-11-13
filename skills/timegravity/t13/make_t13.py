@@ -52,7 +52,7 @@ def build_reference() -> dict:
         "construction": (
             "Weinberg soft theorems: sum_a eta_a q_a = 0 (s=1), sum_a eta_a kappa_a p_a^mu = 0 => kappa_a = kappa (s=2), "
             "sum_a eta_a g_a p_a^mu p_a^nu = 0 => g_a = 0 (s>=3); "
-            "Memory holonomy: Delta h_char = 2 G E_rad / (c^4 D_L), Delta L / L_0 = (1/2) Delta h_+^mem; "
+            "Memory holonomy: Delta h_char = G E_rad / (c^4 D_L), Delta L / L_0 = (1/2) Delta h_+^mem; "
             "Anomaly cancellation (6Y): Tr[6Y] = 0, Tr[SU(3)^2(6Y)] = 0, Tr[SU(2)^2(6Y)] = N_c - 3, Tr[(6Y)^3] = -54(N_c - 3)"
         ),
         "clean": clean,

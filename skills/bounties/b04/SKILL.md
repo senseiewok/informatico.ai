@@ -1,10 +1,10 @@
 ---
 name: bounty-b04-graphic-statics-sky-cooling
-description: Deterministic verification harness, 4-stage proof spine, and T0-T3 truth boundary for B.04 (BOUNTY-A1): $1M Holcim Awards & $3M Global Cooling Prize: Zero-Rebar 3D Graphic Statics Vaults & Sky-Cooling.
+description: Deterministic verification harness, 4-stage proof spine, and T0-T3 truth boundary for B.04 (BOUNTY-A1): $1M Holcim Awards & $3M Global Cooling Prize: A Zero-Rebar 3D Graphic Statics Vault & Sky-Cooling Design Study.
 license: MIT
 compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI Codex, Ollama (Qwen 3.8 / Gemma 4)
 ---
-# $1M Holcim Awards & $3M Global Cooling Prize: Zero-Rebar 3D Graphic Statics Vaults & Sky-Cooling (B.04 · BOUNTY-A1)
+# $1M Holcim Awards & $3M Global Cooling Prize: A Zero-Rebar 3D Graphic Statics Vault & Sky-Cooling Design Study (B.04 · BOUNTY-A1)
 
 ## 1. Governing Law, Prize Registry & Canonical URL
 - **Bounty Folio**: `B.04` (`BOUNTY-A1` · `REV 1.2`, Redated `2026-11-08`)
@@ -28,9 +28,9 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 
 ## 4. Certified Reference Telemetry (T0/T1)
 - **Horizontal Vault Thrust H**: `100.00 kN (f/L = 0.160 · 0 kg rebar)`
-- **Net Noon Sky Cooling q_net**: `98.4 W/m² (≥ 80.0 W/m² target)`
-- **Sub-Ambient ΔT at Noon**: `−5.2 °C (≤ −4.5 °C benchmark)`
-- **Holcim & Cooling Prize Verdict**: `PASS · ZERO-REBAR + SUB-AMBIENT`
+- **Net Noon Sky Cooling q_net**: `98.4 W/m² (≥ 80.0 W/m² folio target)`
+- **Sub-Ambient ΔT at Noon**: `−5.2 °C (≤ −4.5 °C folio target)`
+- **Verifier Verdict (Worked Example)**: `PASS · ZERO-REBAR + SUB-AMBIENT`
 
 ## 5. Exact T0–T3 Truth Boundary
 ### Certified in Repository Today (T0/T1)
@@ -39,4 +39,4 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Ready for immediate community showcase submission to ETH Zürich COMPAS discussions and NREL EnergyPlus teaching resources.
 
 ### Open Global Prize Horizon (T2/T3)
-- Holcim Awards ($1M) & Global Cooling Prize ($3M): Require a commissioned architectural project or instrumented outdoor climate-chamber prototype demonstrating year-round weathering and hygrometric condensation control.
+- Holcim Awards ($1M) & Global Cooling Prize ($3M, closed in 2021): any real claim would require a commissioned architectural project or instrumented outdoor climate-chamber prototype demonstrating year-round weathering and hygrometric condensation control.

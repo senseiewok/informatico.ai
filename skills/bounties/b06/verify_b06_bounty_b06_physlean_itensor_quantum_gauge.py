@@ -18,7 +18,7 @@ BOUNTY_METADATA = {
     "primary_kernel": "bounties/bounty_m2_physlean_itensor_quantum_gauge.py",
     "primary_doi": "10.1016/j.cpc.2024.109457",
     "scite_report": "https://scite.ai/reports/10.1016/j.cpc.2024.109457",
-    "benchmarks": [{"label": "PhysLean Cubic Trace Tr[Y\u00b3]", "value": "0.000000000000 (Anomaly-Free)"}, {"label": "Critical TFIM Energy E\u2080 / N", "value": "\u22121.27323954 (\u22124 / \u03c0 exact)"}, {"label": "CFT Entanglement S_vN(128)", "value": "0.8828 nats \u2264 ln(\u03c7) = 4.1589"}, {"label": "PhysLean & MPS Gate Verdict", "value": "PASS \u00b7 ANOMALY-FREE & AREA-LAW"}],
+    "benchmarks": [{"label": "PhysLean Cubic Trace Tr[Y\u00b3]", "value": "0.000000000000 (Anomaly-Free)"}, {"label": "Critical TFIM Energy E\u2080 / N", "value": "\u22121.27323954 (\u22124 / \u03c0 exact)"}, {"label": "CFT Entanglement S_vN(128)", "value": "0.8828 nats \u2264 ln(\u03c7) = 4.1589"}, {"label": "Verifier Verdict (Worked Example)", "value": "PASS \u00b7 ANOMALY-FREE & AREA-LAW"}],
 }
 
 def verify_bounty_invariants(scale: float = 1.0) -> dict:

@@ -16,7 +16,7 @@ FOLIO_METADATA = {
     "slug": "p09",
     "title": "Electrohydrodynamic Taylor Cones (49.3°), Rayleigh Fission Limits & Precision Monodisperse Aerosol Jet Physics",
     "governing_law": "P_{1/2}(cos θ_0) = 0 ⇒ θ_T = 49.3° · q_R = 8π √(ε_0 γ R³) · d_drop ~ (ρ ε_0 Q³ / γ K)^(1/6)",
-    "primary_kernel": "tools/physics_kernel.py",
+    "primary_kernel": "skills/physics/p09/verify_p09.py",
     "primary_doi": "10.1098/rspa.1964.0151",
     "scite_report": "https://scite.ai/reports/10.1098/rspa.1964.0151",
     "benchmarks": [{"label": "Taylor Half-Angle (θ_T)", "value": "49.29° (P_{1/2} Zero)"}, {"label": "Monodisperse Droplet (d_drop)", "value": "2.42 μm (Bronchial Window)"}, {"label": "Rayleigh Charge Ratio (q/q_R)", "value": "0.68 (< 1.00 Stable)"}, {"label": "Aerosol & LNP Verdict", "value": "97.4% INTACT mRNA · PASS"}],

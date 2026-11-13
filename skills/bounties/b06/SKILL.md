@@ -30,7 +30,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **PhysLean Cubic Trace Tr[Y³]**: `0.000000000000 (Anomaly-Free)`
 - **Critical TFIM Energy E₀ / N**: `−1.27323954 (−4 / π exact)`
 - **CFT Entanglement S_vN(128)**: `0.8828 nats ≤ ln(χ) = 4.1589`
-- **PhysLean & MPS Gate Verdict**: `PASS · ANOMALY-FREE & AREA-LAW`
+- **Verifier Verdict (Worked Example)**: `PASS · ANOMALY-FREE & AREA-LAW`
 
 ## 5. Exact T0–T3 Truth Boundary
 ### Certified in Repository Today (T0/T1)
@@ -39,4 +39,4 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Ready for immediate community showcase submission to HEPLean/PhysLean Zulip and ITensors / NetKet showcases.
 
 ### Open Global Prize Horizon (T2/T3)
-- HEPLean / PhysLean Open Formalization Bounties: Submitting 0-sorry Lean 4 pull requests formalizing renormalization group flows, lattice gauge bounds, or BSM anomaly classification directly in HEPLean/PhysLean.
+- HEPLean / PhysLean open formalization work (no cash prize is named here): submitting 0-sorry Lean 4 pull requests formalizing renormalization group flows, lattice gauge bounds, or BSM anomaly classification directly in HEPLean/PhysLean.

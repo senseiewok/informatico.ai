@@ -16,7 +16,7 @@ FOLIO_METADATA = {
     "slug": "p04",
     "title": "Electrokinetics, Donnan Equilibrium, and the Catastrophic Osmotic Collapse of the Periciliary Layer",
     "governing_law": "J_k = −D_k (∇c_k + (z_k F / RT) c_k ∇Φ) · dh_PCL/dt = L_p (ΔΠ_osm − ΔP_hydro)",
-    "primary_kernel": "tools/physics_kernel.py",
+    "primary_kernel": "skills/physics/p04/verify_p04.py",
     "primary_doi": "10.1126/science.1223012",
     "scite_report": "https://scite.ai/reports/10.1126/science.1223012",
     "benchmarks": [{"label": "PCL Height", "value": "8.80 μm (Hydrated) vs 1.50 μm (CF)"}, {"label": "Net Solute Flux", "value": "+1.50 μEq/(cm²·h) (Cl- Secretory)"}, {"label": "Hydration Status", "value": "HEALTHY_HYDRATED_PCL"}, {"label": "Kernel Verification", "value": "PASS · VERIFIED"}],

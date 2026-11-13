@@ -232,8 +232,8 @@ PLATE_CAPTIONS = {
         "una trayectoria que pasa junto a dos círculos de reloj a la izquierda, y una curva suave en forma de escalón de diferencia de tiempo propio acumulada contra el tiempo a la derecha",
     ),
     "T.13": (
-        "Left: an oscillatory binary-merger gravitational wave riding onto Christodoulou's permanent DC displacement memory step Δh_char = 2 G E_rad / (c⁴ D_L), shifting proper arm separation by ΔL = (1/2) L_0 Δh. Right: Weinberg's spin-2 soft Ward residual and the Standard Model chiral and mixed gauge–gravitational anomaly polynomials crossing zero together exclusively at N_c = 3 quark colours.",
-        "Izquierda: una onda gravitacional oscilatoria de fusión binaria montada sobre el escalón permanente de memoria de desplazamiento de Christodoulou Δh_char = 2 G E_rad / (c⁴ D_L), desplazando la separación propia del brazo en ΔL = (1/2) L_0 Δh. Derecha: el residuo blando de Ward de espín 2 de Weinberg y los polinomios de anomalías quirales y mixtas del Modelo Estándar cruzando cero simultáneamente en N_c = 3 colores de quarks.",
+        "Left: an oscillatory binary-merger gravitational wave riding onto Christodoulou's permanent DC displacement memory step Δh_char = G E_rad / (c⁴ D_L), shifting proper arm separation by ΔL = (1/2) L_0 Δh. Right: Weinberg's spin-2 soft Ward residual and the Standard Model chiral and mixed gauge–gravitational anomaly polynomials crossing zero together exclusively at N_c = 3 quark colours.",
+        "Izquierda: una onda gravitacional oscilatoria de fusión binaria montada sobre el escalón permanente de memoria de desplazamiento de Christodoulou Δh_char = G E_rad / (c⁴ D_L), desplazando la separación propia del brazo en ΔL = (1/2) L_0 Δh. Derecha: el residuo blando de Ward de espín 2 de Weinberg y los polinomios de anomalías quirales y mixtas del Modelo Estándar cruzando cero simultáneamente en N_c = 3 colores de quarks.",
         "an oscillating gravitational wave settling onto a permanent upward step on the left, and anomaly residual lines crossing zero together at N_c equals 3 on the right",
         "una onda gravitacional oscilante que se asienta en un escalón permanente hacia arriba a la izquierda, y líneas de residuos de anomalías que cruzan cero juntas en N_c igual a 3 a la derecha",
     ),
@@ -1485,7 +1485,7 @@ def holonomy_soft_instrument(page: dict) -> str:
 {predict_block(page)}
         <svg class="tg-stage" viewBox="0 0 920 420" role="img" aria-labelledby="tg-stage-title-t13 tg-stage-desc-t13" data-lx0="{lx0}" data-lx1="{lx1}" data-ly0="{ly0}" data-ly1="{ly1}" data-rx0="{rx0}" data-rx1="{rx1}" data-ry0="{ry0}" data-ry1="{ry1}" data-rymid="{ry_mid}">
           <title id="tg-stage-title-t13">Gravitational-wave displacement memory step and infrared gauge-gravity Ward and anomaly residuals</title>
-          <desc id="tg-stage-desc-t13">Left: oscillatory merger wave plus permanent DC memory strain step Delta h_char = 2 G E_rad / (c^4 D_L). Right: Weinberg s=2 soft Ward residual and the Standard Model chiral and mixed gravitational anomaly traces vanishing together at N_c = 3.</desc>
+          <desc id="tg-stage-desc-t13">Left: oscillatory merger wave plus permanent DC memory strain step Delta h_char = G E_rad / (c^4 D_L). Right: Weinberg s=2 soft Ward residual and the Standard Model chiral and mixed gravitational anomaly traces vanishing together at N_c = 3.</desc>
           <text x="{(lx0 + lx1) / 2:.0f}" y="38" text-anchor="middle" font-size="11" font-weight="700" data-en="Christodoulou memory step Δh(t) &amp; arm offset ΔL" data-es="Escalón de memoria de Christodoulou Δh(t) y desplazamiento ΔL">Christodoulou memory step Δh(t) &amp; arm offset ΔL</text>
           <line class="tg-axis" x1="{lx0}" y1="{ly0}" x2="{lx0}" y2="{ly1}"/>
           <line class="tg-axis" x1="{lx0}" y1="{y_zero}" x2="{lx1}" y2="{y_zero}" stroke-dasharray="4 3"/>
@@ -2100,7 +2100,7 @@ def plate_d(page: dict) -> str:
                 '<path d="M 38 156 L 96 156 C 128 156, 146 118, 178 118 L 260 118" fill="none" stroke="var(--tp-minium)" stroke-width="2.4"/>'
                 '<line x1="38" y1="156" x2="260" y2="156" stroke="var(--tp-rule-strong)" stroke-width="1.1" stroke-dasharray="3 3"/>'
                 '<circle cx="216" cy="118" r="4" fill="var(--tp-verdigris)"/>'
-                '<text x="150" y="178" text-anchor="middle" font-size="8.2" fill="var(--tp-graphite)" data-en="Δh_char = 2GE_rad/(c⁴D_L) · W^μ = 0 · N_c = 3" data-es="Δh_char = 2GE_rad/(c⁴D_L) · W^μ = 0 · N_c = 3">Δh_char = 2GE_rad/(c⁴D_L) · W^μ = 0 · N_c = 3</text>'
+                '<text x="150" y="178" text-anchor="middle" font-size="8.2" fill="var(--tp-graphite)" data-en="Δh_char = GE_rad/(c⁴D_L) · W^μ = 0 · N_c = 3" data-es="Δh_char = GE_rad/(c⁴D_L) · W^μ = 0 · N_c = 3">Δh_char = GE_rad/(c⁴D_L) · W^μ = 0 · N_c = 3</text>'
             ),
             "p2_on_en": "▲ Consistent IR EFT: κ_e = κ_p, N_c = 3",
             "p2_on_es": "▲ EFT infrarroja consistente: κ_e = κ_p, N_c = 3",
@@ -3588,8 +3588,8 @@ HUMANS_DATA: dict[str, dict] = {
                 "place_es": "Universidad de Nueva York, Universidad de Harvard y Catálogos LIGO/Virgo",
                 "story_en": "In 1991 Demetrios Christodoulou proved from the nonlinear vacuum Einstein equations that gravitational-wave energy flux leaves a permanent displacement step between free-falling test masses after a wave train passes. Twenty-five years later Andrew Strominger and Alexander Zhiboedov showed that displacement memory, BMS supertranslations, and Weinberg's soft graviton theorem form one infrared triangle.",
                 "story_es": "En 1991 Demetrios Christodoulou demostró desde las ecuaciones no lineales de Einstein en el vacío que el flujo de energía de ondas gravitacionales deja un escalón permanente de desplazamiento entre masas en caída libre. Veinticinco años después Andrew Strominger y Alexander Zhiboedov mostraron que la memoria, las supertraslaciones BMS y el gravitón blando forman un solo triángulo infrarrojo.",
-                "spec_en": "Nonlinear GW memory Δh_char = 2GE_rad/(c⁴D_L) (DERIVED)",
-                "spec_es": "Memoria gravitacional Δh_char = 2GE_rad/(c⁴D_L) (DERIVADO)",
+                "spec_en": "Nonlinear GW memory Δh_char = GE_rad/(c⁴D_L) (DERIVED)",
+                "spec_es": "Memoria gravitacional Δh_char = GE_rad/(c⁴D_L) (DERIVADO)",
                 "doi": "10.1103/PhysRevLett.67.1486",
             },
             {

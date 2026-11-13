@@ -30,13 +30,13 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Logical Error / Round P_L**: `3.00 × 10⁻¹⁶ (at d = 27, p = 0.001)`
 - **Active-Volume Logical Tiles**: `294 tiles (114 data + 180 factory)`
 - **Total Physical Qubit Footprint**: `428,652 physical qubits`
-- **XPRIZE / QEC Threshold Verdict**: `PASS · FAULT-TOLERANT REGIME`
+- **Verifier Verdict (Worked Example)**: `PASS · FAULT-TOLERANT REGIME`
 
 ## 5. Exact T0–T3 Truth Boundary
 ### Certified in Repository Today (T0/T1)
 - Zero-dependency surface-code threshold and FeMoCo active-volume resource estimator in bounties/bounty_p1_surface_code_femoco.py (< 0.05s runtime).
-- Exact verification of Fowler et al. (2012) asymptotic logical error scaling and Reiher et al. (2017) / THC logical tile counts.
-- Ready for immediate submission as an open educational and resource-estimation benchmark on Unitary Foundation's Metriq.info registry.
+- Re-evaluates the Fowler et al. (2012) logical error scaling formula; the 114 + 180 tile layout is this folio's illustrative choice, not a figure taken from Reiher et al. (2017).
+- Suitable as an open educational resource-estimation example, for instance for Unitary Foundation's Metriq.info registry.
 
 ### Open Global Prize Horizon (T2/T3)
 - XPRIZE Quantum Applications ($5M purse): Requires formal team registration and a novel quantum algorithm paper reducing logical T-count or qubit footprint beyond state-of-the-art THC/qDRIFT baselines.
