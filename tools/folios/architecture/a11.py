@@ -103,8 +103,8 @@ FOLIO = {'folio_id': 'A.11',
                            'with 8–13 μm atmospheric-window daytime radiative sky-cooling extrados '
                            'coatings (Raman et al. 2014, DOI 10.1038/nature13883; Mandal et al. 2018 '
                            'porous P(VdF-HFP), DOI 10.1126/science.aat9513), cross-linked directly to '
-                           'Toolbox X.03 STEP AP242/3MF/DXF/GLB voussoir assemblies and verified '
-                           'with numerical --planted-defect knockouts.',
+                           'Toolbox X.03 STEP AP242/3MF/DXF/GLB voussoir assemblies with reference '
+                           'values stated in the essay.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): '
                         'Verified Airy Hessian concavity (det(H_Φ) = +1.8416 > 0), dual cell nodal '
                         'closure (< 1e-12 kN), daytime cooling flux q_net = 98.43 W/m² ≥ 80 W/m² '

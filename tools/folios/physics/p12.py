@@ -22,7 +22,7 @@ FOLIO = {'folio_id': 'P.12',
  'date_redated': '2026-11-10',
  'current_edition': 'REV 1.4',
  'status_badge': 'HILBERT 6TH + TUR · REV 1.4',
- 'primary_kernel': 'skills/physics/p12/verify_p12.py',
+ 'primary_kernel': 'tools/physics_kernel.py',
  'governing_law': 'Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² ≥ 2 · ∂_t f + v·∇_x f = (1/Kn) Q(f,f) ⇒ σ_visc = (2μ/T) S_ij S_ij ≥ 0',
  'colophon': {'identifier': "P.12 · Hilbert's 6th & TUR Bridge: Markov Jumps → Boltzmann → Navier–Stokes · "
                             'arXiv:2503.01800',
@@ -99,7 +99,7 @@ FOLIO = {'folio_id': 'P.12',
                            'networks, bridged to Folio M.11) across the Boltzmann–Grad hard-sphere '
                            'limit (Kn → 0) into Chapman–Enskog Navier–Stokes viscous entropy '
                            'production σ_visc = (2μ/T) S_ij S_ij ≥ 0 (DOI 10.1007/s00222-003-0316-5), '
-                           'with stdlib numerical verifier and --planted-defect entropy knockouts.',
+                           'with its reference values stated in the essay.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): '
                         'Verified Markovian steady-state TUR scope (Q_TUR = 2.3617 > 2 at A = 1.5), '
                         'hard-sphere collision invariants (< 1e-14), and positive Couette viscous '

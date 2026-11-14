@@ -9,7 +9,7 @@ Every Grand-Challenge Bounty harness (`bounties/`) and interactive Folio compani
 When submitting open-source benchmark companions, formalization links, or technical baselines to prize registries (`XPRIZE Quantum Applications`, `Unitary Foundation unitaryHACK`, `Erdős Problems / AIMO`, `XPRIZE Carbon Removal / IStructE`, `Holcim Awards / Global Cooling Prize`), this repository provides **four layers of verifiable cryptographic proof**:
 
 1. **Immutable Git Tree & Commit SHA (`git rev-parse HEAD`)**
-   - Every commit on [`https://github.com/senseiewok/informatico.ai/commits/main`](https://github.com/senseiewok/informatico.ai/commits/main) records the cryptographic hash of all 54 `SKILL.md` monographs (48 Pillar Folios + 6 Bounty Folios), 54 zero-dependency Python verifiers (`skills/<pillar>/<slug>/verify_<slug>.py`), 6 Grand-Challenge bounty harnesses (`bounties/`), and the offline Crossref DOI citation cache (`data/folio-citations.cache.json`).
+   - Every commit on [`https://github.com/senseiewok/informatico.ai/commits/main`](https://github.com/senseiewok/informatico.ai/commits/main) records the cryptographic hash of all 54 `SKILL.md` monographs (48 Pillar Folios + 6 Bounty Folios), the proof harnesses under `bounties/`, and the verifiers under `skills/` (Toolbox, Time & Gravity and cross-scale essays; the pillar and bounty skills are plain text), 6 Grand-Challenge bounty harnesses (`bounties/`), and the offline Crossref DOI citation cache (`data/folio-citations.cache.json`).
 2. **Zero-Dependency Deterministic Reproduction (`< 3 seconds`)**
    - Any reviewer, prize judge, or automated CI runner can verify the exact numerical claims from a clean Python 3.10+ standard-library environment without external dependencies:
      ```bash
@@ -48,4 +48,8 @@ When submitting open-source benchmark companions, formalization links, or techni
 
 - **Genesis Publishing Commit SHA (`main`)**: [`1d9bebaf7bb60348d942f3cb05916305fc304ef0`](https://github.com/senseiewok/informatico.ai/commit/1d9bebaf7bb60348d942f3cb05916305fc304ef0) (`1d9beba`)
 - **Live Commit Verification Link**: [https://github.com/senseiewok/informatico.ai/commit/1d9bebaf7bb60348d942f3cb05916305fc304ef0](https://github.com/senseiewok/informatico.ai/commit/1d9bebaf7bb60348d942f3cb05916305fc304ef0)
-- **Verification Status**: `54/54` Folios & Bounties PASS (`skills/verify_all_48_folios.py`) · `6/6` Bounty Harnesses PASS (`bounties/run_all_bounties.py`) · `fail=0` Crossref Citations (`tools/check_folio_citations.py --offline`).
+- **Verification Status**: every verifier under `skills/` passes and fails under its planted defect (`skills/verify_all_48_folios.py`) · `6/6` Bounty Harnesses PASS (`bounties/run_all_bounties.py`) · `fail=0` Crossref Citations (`tools/check_folio_citations.py --offline`).
+
+## Correction, 2026-11-13
+
+On 2026-11-13, 54 generated placeholder scripts were removed from `skills/` (48 pillar essays and 6 bounty skills). They stored each essay's values as text and printed PASS without computing anything. Those skills are now plain-text `SKILL.md` files, and `skills/verify_all_48_folios.py` now rejects any verifier that cannot fail. The earlier files remain in git history.

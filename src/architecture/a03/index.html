@@ -360,7 +360,7 @@
               <p class="tp-theorem-meta"><strong>Kernels:</strong> 1:50 Multi-Story Shaft + 1:5 Damper Sill &middot; <strong>Benchmarks:</strong> EN ISO 52022-3 Solar Factor g_tot &amp; Buoyancy Draft &middot; <strong>Primary Anchor:</strong> <code>DOI 10.1016/j.enbuild.2006.03.013</code></p>
             </div>
             <p>
-              To elevate Folio <strong>A.03</strong> (<em>Double-Skin Facade Buoyancy Stack Ventilation, Cavity Plumes, and 1:5 Acoustic Damper Louvers</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>Double-Skin Cavity Stack Height (H)</em>) spanning the admissible interval <code>[3.5, 18.0]</code> with step resolution <code>&Delta; = 0.5</code> and canonical reference operating point <code> m9.0</code>; control parameter <code>P_2</code> (<em>Solar Cavity Temperature Rise (ΔT_cav)</em>) spanning the admissible interval <code>[2.0, 20.0]</code> with step resolution <code>&Delta; = 0.4</code> and canonical reference operating point <code> K11.2</code>. Over this bounded domain, the coupled kernels (<code>1:50 Multi-Story Shaft + 1:5 Damper Sill</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point certified by <code>skills/architecture/a03/verify_a03.py</code>.
+              To elevate Folio <strong>A.03</strong> (<em>Double-Skin Facade Buoyancy Stack Ventilation, Cavity Plumes, and 1:5 Acoustic Damper Louvers</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>Double-Skin Cavity Stack Height (H)</em>) spanning the admissible interval <code>[3.5, 18.0]</code> with step resolution <code>&Delta; = 0.5</code> and canonical reference operating point <code> m9.0</code>; control parameter <code>P_2</code> (<em>Solar Cavity Temperature Rise (ΔT_cav)</em>) spanning the admissible interval <code>[2.0, 20.0]</code> with step resolution <code>&Delta; = 0.4</code> and canonical reference operating point <code> K11.2</code>. Over this bounded domain, the coupled kernels (<code>1:50 Multi-Story Shaft + 1:5 Damper Sill</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point.
             </p>
             <p>
               Crucially, well-posedness across the <code>EN ISO 52022-3 Solar Factor g_tot &amp; Buoyancy Draft</code> regime requires that the governing operator preserve dimensional homogeneity, non-negativity of physical energy/entropy functionals, and strict monotony along the primary reaction or proof coordinate. Whenever a simplified model omits one of the coupled terms in <code>Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11</code>, the resulting approximation violates boundary compatibility and diverges from the primary peer-reviewed evidence (<code>Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 864 citing publications (2 supporting, 334 mentioning, 0 contrasting) — double-skin facade thermosiphon stack buoyancy (Delta_p = 3.92 Pa) and Nabil &amp; Mardaljevic Useful Daylight Illuminance (DOI 10.1016/j.enbuild.2006.03.013) verified.</code>).
@@ -370,7 +370,7 @@
           <article class="tp-proof-chapter" id="ch-ii-2-a03">
             <h3 data-en="&sect; II.2 &middot; Four-Stage Proof &amp; Mechanism Decomposition (Stages 1&ndash;4)" data-es="&sect; II.2 &middot; Descomposici&oacute;n Demostrativa y Mecanismo en Cuatro Etapas (Etapas 1&ndash;4)">&sect; II.2 &middot; Four-Stage Proof &amp; Mechanism Decomposition (Stages 1&ndash;4)</h3>
             <p>
-              Rather than treating <code>Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>A.03</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III and the standalone verification suite in <code>skills/architecture/a03/verify_a03.py</code>:
+              Rather than treating <code>Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>A.03</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III:
             </p>
           <div class="tp-proof-stage-block">
             <h4><span data-en="Stage 1 Derivation &amp; State Transition" data-es="Derivaci&oacute;n y Transici&oacute;n de Estado &middot; Etapa 1">Stage 1 Derivation &amp; State Transition</span></h4>
@@ -405,24 +405,24 @@
           <article class="tp-proof-chapter" id="ch-ii-3-a03">
             <h3 data-en="&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds" data-es="&sect; II.3 &middot; Invariantes de Verificaci&oacute;n Determinista, Escalamiento Dimensional y Cotas de Estabilidad">&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds</h3>
             <p>
-              In our lab&rsquo;s formal verification architecture, prose explanations are never separated from executable proof certificates. Every quantitative claim in Folio <strong>A.03</strong> is governed by three machine-checked falsification rules embedded in <code>double-skin-facade-buoyancy-SKILL.md</code> and executed by <code>skills/architecture/a03/verify_a03.py</code>:
+              Folio <strong>A.03</strong> states three rules a careful reader can use to test its claims. They are listed as plain text in <code>double-skin-facade-buoyancy-SKILL.md</code>. No script in this repository executes them yet:
             </p>
             <ol class="tp-invariant-list">
           <li>
             <strong>Invariant A.03-R1:</strong> Compute buoyancy stack pressure delta_p_stack = rho_0 * g * H * (T_cav - T_ext) / T_ext and mass flow m_dot = rho * A_eff * sqrt(2 * delta_p / zeta_tot).
-            <span>Verified deterministically offline by <code>skills/architecture/a03/verify_a03.py</code> against primary anchor <code>DOI 10.1016/j.enbuild.2006.03.013</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1016/j.enbuild.2006.03.013</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant A.03-R2:</strong> Verify total solar energy transmittance g_tot &lt;= 0.15 under EN ISO 52022-3 when exterior irradiance exceeds 500 W/m^2.
-            <span>Verified deterministically offline by <code>skills/architecture/a03/verify_a03.py</code> against primary anchor <code>DOI 10.1016/j.enbuild.2006.03.013</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1016/j.enbuild.2006.03.013</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant A.03-R3:</strong> Ensure cavity depth D &gt;= 500 mm for maintenance access or specify sealed dry-air Closed Cavity Facade (CCF) modules.
-            <span>Verified deterministically offline by <code>skills/architecture/a03/verify_a03.py</code> against primary anchor <code>DOI 10.1016/j.enbuild.2006.03.013</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1016/j.enbuild.2006.03.013</code>. Not yet recomputed by a script in this repository.</span>
           </li>
             </ol>
             <p>
-              Together, Invariants <strong>A.03-R1</strong> through <strong>A.03-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. If any parameter perturbation or code edit violates these bounds, the automated verification gate rejects the build before publication.
+              Together, Invariants <strong>A.03-R1</strong> through <strong>A.03-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. These bounds are stated for the reader. No automated gate enforces them yet.
             </p>
           </article>
 
@@ -550,27 +550,27 @@
         <section class="tp-worked-verification-chapter" id="ch-iii-2-a03" aria-labelledby="ch-iii-2-heading-a03">
           <h3 id="ch-iii-2-heading-a03" data-en="&sect; III.2 &middot; Worked Numerical Verification &amp; Reference Telemetry Benchmark" data-es="&sect; III.2 &middot; Verificaci&oacute;n Num&eacute;rica Paso a Paso y Telemetr&iacute;a de Referencia">&sect; III.2 &middot; Worked Numerical Verification &amp; Reference Telemetry Benchmark</h3>
           <p>
-            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11</code> at the canonical benchmark configuration (<code>EN ISO 52022-3 Solar Factor g_tot &amp; Buoyancy Draft</code>). Substituting control parameter <code>P_1</code> (<em>Double-Skin Cavity Stack Height (H)</em>) spanning the admissible interval <code>[3.5, 18.0]</code> with step resolution <code>&Delta; = 0.5</code> and canonical reference operating point <code> m9.0</code>; control parameter <code>P_2</code> (<em>Solar Cavity Temperature Rise (ΔT_cav)</em>) spanning the admissible interval <code>[2.0, 20.0]</code> with step resolution <code>&Delta; = 0.4</code> and canonical reference operating point <code> K11.2</code> into the coupled Stage 1&ndash;4 equations yields the exact reference telemetry certified by our offline verification kernel: <strong>Buoyancy Stack Draft (Δp)</strong> converges to <code>3.92 Pa</code>; <strong>Induced Cavity Velocity</strong> converges to <code>0.84 m/s (142 m³/h·m)</code>; <strong>Total Solar Factor (g_tot)</strong> converges to <code>0.11 (EN ISO 52022-3)</code>; <strong>Circadian &amp; Purge Verdict</strong> converges to <code>24.21 ACH · 285 EML PASS</code>.
+            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11</code> at the canonical benchmark configuration (<code>EN ISO 52022-3 Solar Factor g_tot &amp; Buoyancy Draft</code>). Substituting control parameter <code>P_1</code> (<em>Double-Skin Cavity Stack Height (H)</em>) spanning the admissible interval <code>[3.5, 18.0]</code> with step resolution <code>&Delta; = 0.5</code> and canonical reference operating point <code> m9.0</code>; control parameter <code>P_2</code> (<em>Solar Cavity Temperature Rise (ΔT_cav)</em>) spanning the admissible interval <code>[2.0, 20.0]</code> with step resolution <code>&Delta; = 0.4</code> and canonical reference operating point <code> K11.2</code> into the coupled Stage 1&ndash;4 equations yields the reference values stated in the essay: <strong>Buoyancy Stack Draft (Δp)</strong> converges to <code>3.92 Pa</code>; <strong>Induced Cavity Velocity</strong> converges to <code>0.84 m/s (142 m³/h·m)</code>; <strong>Total Solar Factor (g_tot)</strong> converges to <code>0.11 (EN ISO 52022-3)</code>; <strong>Circadian &amp; Purge Verdict</strong> converges to <code>24.21 ACH · 285 EML PASS</code>.
           </p>
           <div class="tp-table-wrap">
             <table class="tp-table tp-telemetry-benchmark-table" aria-label="Reference numerical verification benchmark for Folio A.03">
               <thead>
                 <tr>
                   <th scope="col" data-en="Observable / Proof Metric" data-es="Observable / M&eacute;trica de Prueba">Observable / Proof Metric</th>
-                  <th scope="col" data-en="Certified Benchmark Value" data-es="Valor de Referencia Certificado">Certified Benchmark Value</th>
-                  <th scope="col" data-en="Deterministic Verifier" data-es="Verificador Determinista">Deterministic Verifier</th>
+                  <th scope="col" data-en="Reference Value" data-es="Valor de Referencia">Reference Value</th>
+                  <th scope="col" data-en="Where the value comes from" data-es="De d&oacute;nde viene el valor">Where the value comes from</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><th scope="row">Buoyancy Stack Draft (Δp)</th><td><code>3.92 Pa</code></td><td><code>skills/architecture/a03/verify_a03.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Induced Cavity Velocity</th><td><code>0.84 m/s (142 m³/h·m)</code></td><td><code>skills/architecture/a03/verify_a03.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Total Solar Factor (g_tot)</th><td><code>0.11 (EN ISO 52022-3)</code></td><td><code>skills/architecture/a03/verify_a03.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Circadian &amp; Purge Verdict</th><td><code>24.21 ACH · 285 EML PASS</code></td><td><code>skills/architecture/a03/verify_a03.py</code> &middot; Verified</td></tr>
+                <tr><th scope="row">Buoyancy Stack Draft (Δp)</th><td><code>3.92 Pa</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
+<tr><th scope="row">Induced Cavity Velocity</th><td><code>0.84 m/s (142 m³/h·m)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
+<tr><th scope="row">Total Solar Factor (g_tot)</th><td><code>0.11 (EN ISO 52022-3)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
+<tr><th scope="row">Circadian &amp; Purge Verdict</th><td><code>24.21 ACH · 285 EML PASS</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
               </tbody>
             </table>
           </div>
           <p>
-            Every sensitivity bar in Plate A.03-B and every real-time readout card above is computed directly from these governing expressions with zero pre-baked lookup tables. Running <code>python skills/architecture/a03/verify_a03.py</code> from the repository root executes the same numerical assertions and confirms zero drift across all 48 Folios.
+            The values above are the essay's reference values. A script that recomputes them from the governing law is not yet part of this repository.
           </p>
         </section>
 
@@ -689,7 +689,7 @@
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Folio</span><span class="tp-colophon-val">A.03 · Facade Thermodynamics · VOL. 02</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Kernels</span><span class="tp-colophon-val">1:50 Multi-Story Shaft + 1:5 Damper Sill</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Benchmarks</span><span class="tp-colophon-val">EN ISO 52022-3 Solar Factor g_tot &amp; Buoyancy Draft</span></div>
-          <div class="tp-colophon-cell"><span class="tp-colophon-label">Verifier</span><span class="tp-colophon-val"><code>tools/tectonic_verify.py</code></span></div>
+          <div class="tp-colophon-cell"><span class="tp-colophon-label">Lab kernel</span><span class="tp-colophon-val"><code>tools/tectonic_verify.py</code></span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Edition</span><span class="tp-colophon-val">REV 1.2 · 2026-11-02</span></div>
         </div>
 
@@ -702,16 +702,15 @@
           <p>Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 864 citing publications (2 supporting, 334 mentioning, 0 contrasting) — double-skin facade thermosiphon stack buoyancy (Delta_p = 3.92 Pa) and Nabil &amp; Mardaljevic Useful Daylight Illuminance (DOI 10.1016/j.enbuild.2006.03.013) verified.</p>
         </div>
 
-        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion and Python verifier">
+        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion">
           <div class="tp-skill-header">
-            <span class="tp-skill-kicker">SKILL.md companion &amp; Python verifier</span>
+            <span class="tp-skill-kicker">SKILL.md companion &middot; plain text</span>
             <span class="tp-skill-compat">Works with Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3</span>
           </div>
-          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the exact governing equations of Folio A.03: a portable <code>SKILL.md</code>, a zero-dependency Python verifier (<code>verify_a03.py</code>), or the live telemetry as JSON.</p>
+          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the governing equations of Folio A.03 as plain text: a portable <code>SKILL.md</code>, or the live telemetry as JSON. Its reference values are stated in the essay and are not yet recomputed by a script in this repository.</p>
           <div class="tp-skill-actions">
             <button class="tp-skill-btn" type="button" data-skill-download="double-skin-facade-buoyancy-SKILL.md">Download SKILL.md (double-skin-facade-buoyancy-SKILL.md)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-skill-copy="true">Copy SKILL.md</button>
-            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-py-download="verify_a03.py">Download Python Tool (verify_a03.py)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-telemetry-copy="A.03">Copy Live Telemetry JSON</button>
           </div>
           <details class="tp-skill-source-details">
@@ -724,77 +723,39 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ---
 # Double-Skin Facade Buoyancy Stack Ventilation, Cavity Plumes, and 1:5 Acoustic Damper Louvers (Folio A.03)
 
-## 1. Governing Law &amp; Tectonic Identity
-- **Folio**: `A.03 · Facade Thermodynamics` (`REV 1.2`, Redated `2026-11-02`)
-- **Governing Equation**: `Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11`
-- **Primary Verification Kernel**: `skills/architecture/a03/verify_a03.py`
-- **Verification Benchmarks**: `EN ISO 52022-3 Solar Factor g_tot &amp; Buoyancy Draft`
-- **Primary Scite Anchor DOI**: https://doi.org/10.1016/j.enbuild.2006.03.013 (Scite Report: https://scite.ai/reports/10.1016/j.enbuild.2006.03.013)
+A plain-text companion to the essay at https://informatico.ai/architecture/a03/ (`A.03 · Facade Thermodynamics`, `REV 1.2`, redated `2026-11-02`).
 
-## 2. Deterministic Verification &amp; Falsification Rules
+## The governing relation
+`Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11`
+
+## Rules the essay derives
 1. Compute buoyancy stack pressure delta_p_stack = rho_0 * g * H * (T_cav - T_ext) / T_ext and mass flow m_dot = rho * A_eff * sqrt(2 * delta_p / zeta_tot).
 2. Verify total solar energy transmittance g_tot &lt;= 0.15 under EN ISO 52022-3 when exterior irradiance exceeds 500 W/m^2.
 3. Ensure cavity depth D &gt;= 500 mm for maintenance access or specify sealed dry-air Closed Cavity Facade (CCF) modules.
 
-## 3. 4-Stage Physical &amp; Mathematical Mechanism
+## How it works, in four stages
 - Stage 1 (Solar Shortwave Absorption): Incident solar irradiance I_sol = 650 W/m² heats the ventilated blind positioned in the outer third of the 600 mm cavity.
 - Stage 2 (Hydrostatic Buoyancy Pressure Drive): Density reduction drives Δp_stack = ρ_0 g H (ΔT / T_ext) = 3.92 Pa across a 9.0 m two-story shaft.
 - Stage 3 (Bernoulli Discharge &amp; Damper Loss Balance): Balances buoyancy drive against inlet/outlet louver loss coefficients ζ_in + ζ_out + f·(H/D_h).
 - Stage 4 (1:5 Acoustic Baffle Sill Node A-12): Mineral-wool lined labyrinth damper provides R_w = 46 dB street noise attenuation while maintaining C_d = 0.62.
 
-## 4. Reference Telemetry &amp; Acceptance Bounds
+## Reference values stated in the essay
 - **Buoyancy Stack Draft (Δp)**: `3.92 Pa`
 - **Induced Cavity Velocity**: `0.84 m/s (142 m³/h·m)`
 - **Total Solar Factor (g_tot)**: `0.11 (EN ISO 52022-3)`
 - **Circadian &amp; Purge Verdict**: `24.21 ACH · 285 EML PASS`
 
-## 5. Frontier Discovery &amp; Contemporary Research Context (2024–2026)
+## What is and is not checked
+The reference values above are stated in the essay. No script in this repository recomputes them yet, so treat them as the essay&#x27;s claims and check them against the primary source before relying on them.
+
+## Primary source
+- https://doi.org/10.1016/j.enbuild.2006.03.013 (Scite report: https://scite.ai/reports/10.1016/j.enbuild.2006.03.013)
+- What the essay compares against: EN ISO 52022-3 Solar Factor g_tot &amp; Buoyancy Draft
+
+## Recent research context
 - **Double-Skin Curtain Wall Buoyancy Plumes Pair 24.21 ACH Purge with CIE S 026 Circadian Daylight**: Uniting Saelens, Roels &amp; Hens&#x27;s double-skin facade thermosiphon stack mechanics (Energy and Buildings DOI 10.1016/j.enbuild.2006.03.013; Delta_p_stack = 3.92 Pa, g_tot = 0.11) with Nabil &amp; Mardaljevic&#x27;s Useful Daylight Illuminance (DOI 10.1016/j.enbuild.2006.03.013) and circadian biology (DOI 10.1038/nature13883), outer-third cavity blinds deliver 285 EML morning circadian stimulus while exhausting solar heat and airborne aerosols.
 </code></pre>
           </details>
-          <pre class="tp-skill-pre" hidden><code data-py-source>#!/usr/bin/env python3
-&quot;&quot;&quot;Standalone Zero-Dependency Deterministic Verifier for Folio A.03 (a03).
-Primary Crossref Anchor DOI: https://doi.org/10.1016/j.enbuild.2006.03.013
-&quot;&quot;&quot;
-from __future__ import annotations
-
-import json
-import math
-import sys
-
-if hasattr(sys.stdout, &quot;reconfigure&quot;):
-    sys.stdout.reconfigure(encoding=&quot;utf-8&quot;)
-
-FOLIO_METADATA = {
-    &quot;folio_id&quot;: &quot;A.03&quot;,
-    &quot;slug&quot;: &quot;a03&quot;,
-    &quot;title&quot;: &quot;Double-Skin Facade Buoyancy Stack Ventilation, Cavity Plumes, and 1:5 Acoustic Damper Louvers&quot;,
-    &quot;governing_law&quot;: &quot;Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11&quot;,
-    &quot;primary_kernel&quot;: &quot;tools/tectonic_verify.py&quot;,
-    &quot;primary_doi&quot;: &quot;10.1016/j.enbuild.2006.03.013&quot;,
-    &quot;scite_report&quot;: &quot;https://scite.ai/reports/10.1016/j.enbuild.2006.03.013&quot;,
-    &quot;benchmarks&quot;: [{&quot;label&quot;: &quot;Buoyancy Stack Draft (Δp)&quot;, &quot;value&quot;: &quot;3.92 Pa&quot;}, {&quot;label&quot;: &quot;Induced Cavity Velocity&quot;, &quot;value&quot;: &quot;0.84 m/s (142 m³/h·m)&quot;}, {&quot;label&quot;: &quot;Total Solar Factor (g_tot)&quot;, &quot;value&quot;: &quot;0.11 (EN ISO 52022-3)&quot;}, {&quot;label&quot;: &quot;Circadian &amp; Purge Verdict&quot;, &quot;value&quot;: &quot;24.21 ACH · 285 EML PASS&quot;}],
-}
-
-
-def verify_folio_invariants(scale: float = 1.0) -&gt; dict:
-    &quot;&quot;&quot;Evaluate reference conservation and safety bounds for Folio A.03.&quot;&quot;&quot;
-    assert scale &gt; 0.0 and math.isfinite(scale), &quot;Scale factor must be positive and finite&quot;
-    return {
-        &quot;status&quot;: &quot;PASS&quot;,
-        &quot;verdict&quot;: &quot;PASS&quot;,
-        &quot;folio_id&quot;: FOLIO_METADATA[&quot;folio_id&quot;],
-        &quot;governing_law&quot;: FOLIO_METADATA[&quot;governing_law&quot;],
-        &quot;scale&quot;: round(scale, 4),
-        &quot;benchmarks&quot;: FOLIO_METADATA[&quot;benchmarks&quot;],
-    }
-
-
-if __name__ == &quot;__main__&quot;:
-    result = verify_folio_invariants()
-    print(json.dumps(result, indent=2, ensure_ascii=False))
-    sys.exit(0)
-</code></pre>
         </section>
 
         <section class="tp-rev-ledger" aria-label="Folio A.03 edition history and review">

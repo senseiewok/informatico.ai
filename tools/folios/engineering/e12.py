@@ -34,7 +34,7 @@ FOLIO = {'folio_id': 'E.12',
  'date_redated': '2026-11-14',
  'current_edition': 'REV 1.1',
  'status_badge': 'SILICON-TO-GRID · REV 1.1',
- 'primary_kernel': 'skills/engineering/e12/verify_e12.py',
+ 'primary_kernel': 'tools/continuum_verify.py',
  'governing_law': 'sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e',
  'colophon': {'identifier': 'E.12 · RISC-V & Grid Control Barrier Functions',
               'kernels': 'Control Barrier Function h(x) ≥ 0 (Ames et al. 2017) · Swing Equation · '

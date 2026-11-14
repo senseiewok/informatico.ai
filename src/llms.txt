@@ -2,7 +2,7 @@
 
 > 48 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
 
-Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (84 SKILL.md companions, Python verifiers, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
+Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (84 SKILL.md companions, 35 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
 
 ## Civil Engineering & Construction
 

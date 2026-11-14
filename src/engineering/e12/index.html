@@ -361,7 +361,7 @@
               <p class="tp-theorem-meta"><strong>Kernels:</strong> Control Barrier Function h(x) ≥ 0 (Ames et al. 2017) · Swing Equation · Kami / Coq (Rocq) processor-proof precedents &middot; <strong>Benchmarks:</strong> Model values: RoCoF 0.42 Hz/s · h(x_grid) = +0.72 Hz · processor proof assumed, not shown &middot; <strong>Primary Anchor:</strong> <code>DOI 10.1109/TAC.2016.2638961</code></p>
             </div>
             <p>
-              To elevate Folio <strong>E.12</strong> (<em>Silicon-to-Grid Safety: Control Barrier Functions, Firefly-Synchronized Renewable Grids &amp; the Case for a Verified Relay Processor</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>Virtual Synchronous Inertia Constant (H_virt)</em>) spanning the admissible interval <code>[1.0, 8.0]</code> with step resolution <code>&Delta; = 0.2</code> and canonical reference operating point <code> s4.8</code>; control parameter <code>P_2</code> (<em>CBF Barrier Rate (α_CBF; higher = later intervention)</em>) spanning the admissible interval <code>[0.5, 5.0]</code> with step resolution <code>&Delta; = 0.1</code> and canonical reference operating point <code> s⁻¹2.4</code>. Over this bounded domain, the coupled kernels (<code>Control Barrier Function h(x) ≥ 0 (Ames et al. 2017) · Swing Equation · Kami / Coq (Rocq) processor-proof precedents</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point certified by <code>skills/engineering/e12/verify_e12.py</code>.
+              To elevate Folio <strong>E.12</strong> (<em>Silicon-to-Grid Safety: Control Barrier Functions, Firefly-Synchronized Renewable Grids &amp; the Case for a Verified Relay Processor</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>Virtual Synchronous Inertia Constant (H_virt)</em>) spanning the admissible interval <code>[1.0, 8.0]</code> with step resolution <code>&Delta; = 0.2</code> and canonical reference operating point <code> s4.8</code>; control parameter <code>P_2</code> (<em>CBF Barrier Rate (α_CBF; higher = later intervention)</em>) spanning the admissible interval <code>[0.5, 5.0]</code> with step resolution <code>&Delta; = 0.1</code> and canonical reference operating point <code> s⁻¹2.4</code>. Over this bounded domain, the coupled kernels (<code>Control Barrier Function h(x) ≥ 0 (Ames et al. 2017) · Swing Equation · Kami / Coq (Rocq) processor-proof precedents</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point.
             </p>
             <p>
               Crucially, well-posedness across the <code>Model values: RoCoF 0.42 Hz/s · h(x_grid) = +0.72 Hz · processor proof assumed, not shown</code> regime requires that the governing operator preserve dimensional homogeneity, non-negativity of physical energy/entropy functionals, and strict monotony along the primary reaction or proof coordinate. Whenever a simplified model omits one of the coupled terms in <code>sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e</code>, the resulting approximation violates boundary compatibility and diverges from the primary peer-reviewed evidence (<code>Scite index entry for Ames, Xu, Grizzle &amp; Tabuada 2017 (DOI 10.1109/TAC.2016.2638961), checked 2026-11-08: 3,385 citing publications (8 supporting, 2,361 mentioning, 0 contrasting) and no retraction notice. These counts describe that one paper, not this folio.</code>).
@@ -371,7 +371,7 @@
           <article class="tp-proof-chapter" id="ch-ii-2-e12">
             <h3 data-en="&sect; II.2 &middot; Four-Stage Proof &amp; Mechanism Decomposition (Stages 1&ndash;4)" data-es="&sect; II.2 &middot; Descomposici&oacute;n Demostrativa y Mecanismo en Cuatro Etapas (Etapas 1&ndash;4)">&sect; II.2 &middot; Four-Stage Proof &amp; Mechanism Decomposition (Stages 1&ndash;4)</h3>
             <p>
-              Rather than treating <code>sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>E.12</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III and the standalone verification suite in <code>skills/engineering/e12/verify_e12.py</code>:
+              Rather than treating <code>sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>E.12</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III:
             </p>
           <div class="tp-proof-stage-block">
             <h4><span data-en="Stage 1 Derivation &amp; State Transition" data-es="Derivaci&oacute;n y Transici&oacute;n de Estado &middot; Etapa 1">Stage 1 Derivation &amp; State Transition</span></h4>
@@ -406,24 +406,24 @@
           <article class="tp-proof-chapter" id="ch-ii-3-e12">
             <h3 data-en="&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds" data-es="&sect; II.3 &middot; Invariantes de Verificaci&oacute;n Determinista, Escalamiento Dimensional y Cotas de Estabilidad">&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds</h3>
             <p>
-              In our lab&rsquo;s formal verification architecture, prose explanations are never separated from executable proof certificates. Every quantitative claim in Folio <strong>E.12</strong> is governed by three machine-checked falsification rules embedded in <code>verified-riscv-cbf-grid-sync-SKILL.md</code> and executed by <code>skills/engineering/e12/verify_e12.py</code>:
+              Folio <strong>E.12</strong> states three rules a careful reader can use to test its claims. They are listed as plain text in <code>verified-riscv-cbf-grid-sync-SKILL.md</code>. No script in this repository executes them yet:
             </p>
             <ol class="tp-invariant-list">
           <li>
             <strong>Invariant E.12-R1:</strong> Enforce Nagumo forward invariance of safe set C = {x : h(x) &gt;= 0} via CBF constraint L_f h(x) + L_g h(x) * u &gt;= -alpha * h(x).
-            <span>Verified deterministically offline by <code>skills/engineering/e12/verify_e12.py</code> against primary anchor <code>DOI 10.1109/TAC.2016.2638961</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1109/TAC.2016.2638961</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant E.12-R2:</strong> Bound grid Rate of Change of Frequency |df/dt| &lt;= f_0 * Delta_P / (2 * H_virt * S_base); the folio model targets less than 0.5 Hz/s after the loss of one large unit.
-            <span>Verified deterministically offline by <code>skills/engineering/e12/verify_e12.py</code> against primary anchor <code>DOI 10.1109/TAC.2016.2638961</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1109/TAC.2016.2638961</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant E.12-R3:</strong> Treat processor correctness as a stated assumption. Cite published machine-checked RISC-V work (Kami, DOI <a class="tp-cite-link" href="https://doi.org/10.1145/3110268" target="_blank" rel="noopener noreferrer">DOI 10.1145/3110268</a> <a class="tp-scite-badge-link" href="https://scite.ai/reports/10.1145/3110268" target="_blank" rel="noopener noreferrer" title="Inspect Scite Smart Citation report for 10.1145/3110268">[Scite &#8599;]</a>; Erbsen et al. 2021, DOI <a class="tp-cite-link" href="https://doi.org/10.1145/3453483.3454065" target="_blank" rel="noopener noreferrer">DOI 10.1145/3453483.3454065</a> <a class="tp-scite-badge-link" href="https://scite.ai/reports/10.1145/3453483.3454065" target="_blank" rel="noopener noreferrer" title="Inspect Scite Smart Citation report for 10.1145/3453483.3454065">[Scite &#8599;]</a>) and never claim a verified relay processor without a public proof artifact.
-            <span>Verified deterministically offline by <code>skills/engineering/e12/verify_e12.py</code> against primary anchor <code>DOI 10.1109/TAC.2016.2638961</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1109/TAC.2016.2638961</code>. Not yet recomputed by a script in this repository.</span>
           </li>
             </ol>
             <p>
-              Together, Invariants <strong>E.12-R1</strong> through <strong>E.12-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. If any parameter perturbation or code edit violates these bounds, the automated verification gate rejects the build before publication.
+              Together, Invariants <strong>E.12-R1</strong> through <strong>E.12-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. These bounds are stated for the reader. No automated gate enforces them yet.
             </p>
           </article>
 
@@ -457,7 +457,7 @@
           <div class="tp-plate-head">
             <span>Plate E.12-A &amp; E.12-B · Control Barrier Function h(x) ≥ 0 (Ames et al. 2017) · Swing Equation · Kami / Coq (Rocq) processor-proof precedents</span>
             <div class="tp-plate-head-actions">
-              <span>Deterministic Kernel: skills/engineering/e12/verify_e12.py</span>
+              <span>Deterministic Kernel: tools/continuum_verify.py</span>
               <button type="button" class="tp-fullscreen-btn tp-layout-toggle-btn" data-plate-layout-toggle="true" aria-pressed="true" title="Toggle Side-by-Side Split Workbench vs. Stacked Cinema">Split Workbench ◫</button>
             </div>
           </div>
@@ -559,27 +559,27 @@
         <section class="tp-worked-verification-chapter" id="ch-iii-2-e12" aria-labelledby="ch-iii-2-heading-e12">
           <h3 id="ch-iii-2-heading-e12" data-en="&sect; III.2 &middot; Worked Numerical Verification &amp; Reference Telemetry Benchmark" data-es="&sect; III.2 &middot; Verificaci&oacute;n Num&eacute;rica Paso a Paso y Telemetr&iacute;a de Referencia">&sect; III.2 &middot; Worked Numerical Verification &amp; Reference Telemetry Benchmark</h3>
           <p>
-            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e</code> at the canonical benchmark configuration (<code>Model values: RoCoF 0.42 Hz/s · h(x_grid) = +0.72 Hz · processor proof assumed, not shown</code>). Substituting control parameter <code>P_1</code> (<em>Virtual Synchronous Inertia Constant (H_virt)</em>) spanning the admissible interval <code>[1.0, 8.0]</code> with step resolution <code>&Delta; = 0.2</code> and canonical reference operating point <code> s4.8</code>; control parameter <code>P_2</code> (<em>CBF Barrier Rate (α_CBF; higher = later intervention)</em>) spanning the admissible interval <code>[0.5, 5.0]</code> with step resolution <code>&Delta; = 0.1</code> and canonical reference operating point <code> s⁻¹2.4</code> into the coupled Stage 1&ndash;4 equations yields the exact reference telemetry certified by our offline verification kernel: <strong>Grid Frequency Nadir (f_min)</strong> converges to <code>59.82 Hz (model value)</code>; <strong>Initial RoCoF Before Filter</strong> converges to <code>0.42 Hz/s (&lt; 0.50 model limit)</code>; <strong>CBF Barrier Margin h(x)</strong> converges to <code>+0.72 Hz above 59.1 Hz trip (model)</code>; <strong>CBF Filter State</strong> converges to <code>IDLE · constraint slack (model)</code>.
+            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e</code> at the canonical benchmark configuration (<code>Model values: RoCoF 0.42 Hz/s · h(x_grid) = +0.72 Hz · processor proof assumed, not shown</code>). Substituting control parameter <code>P_1</code> (<em>Virtual Synchronous Inertia Constant (H_virt)</em>) spanning the admissible interval <code>[1.0, 8.0]</code> with step resolution <code>&Delta; = 0.2</code> and canonical reference operating point <code> s4.8</code>; control parameter <code>P_2</code> (<em>CBF Barrier Rate (α_CBF; higher = later intervention)</em>) spanning the admissible interval <code>[0.5, 5.0]</code> with step resolution <code>&Delta; = 0.1</code> and canonical reference operating point <code> s⁻¹2.4</code> into the coupled Stage 1&ndash;4 equations yields the reference values stated in the essay: <strong>Grid Frequency Nadir (f_min)</strong> converges to <code>59.82 Hz (model value)</code>; <strong>Initial RoCoF Before Filter</strong> converges to <code>0.42 Hz/s (&lt; 0.50 model limit)</code>; <strong>CBF Barrier Margin h(x)</strong> converges to <code>+0.72 Hz above 59.1 Hz trip (model)</code>; <strong>CBF Filter State</strong> converges to <code>IDLE · constraint slack (model)</code>.
           </p>
           <div class="tp-table-wrap">
             <table class="tp-table tp-telemetry-benchmark-table" aria-label="Reference numerical verification benchmark for Folio E.12">
               <thead>
                 <tr>
                   <th scope="col" data-en="Observable / Proof Metric" data-es="Observable / M&eacute;trica de Prueba">Observable / Proof Metric</th>
-                  <th scope="col" data-en="Certified Benchmark Value" data-es="Valor de Referencia Certificado">Certified Benchmark Value</th>
-                  <th scope="col" data-en="Deterministic Verifier" data-es="Verificador Determinista">Deterministic Verifier</th>
+                  <th scope="col" data-en="Reference Value" data-es="Valor de Referencia">Reference Value</th>
+                  <th scope="col" data-en="Where the value comes from" data-es="De d&oacute;nde viene el valor">Where the value comes from</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><th scope="row">Grid Frequency Nadir (f_min)</th><td><code>59.82 Hz (model value)</code></td><td><code>skills/engineering/e12/verify_e12.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Initial RoCoF Before Filter</th><td><code>0.42 Hz/s (&lt; 0.50 model limit)</code></td><td><code>skills/engineering/e12/verify_e12.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">CBF Barrier Margin h(x)</th><td><code>+0.72 Hz above 59.1 Hz trip (model)</code></td><td><code>skills/engineering/e12/verify_e12.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">CBF Filter State</th><td><code>IDLE · constraint slack (model)</code></td><td><code>skills/engineering/e12/verify_e12.py</code> &middot; Verified</td></tr>
+                <tr><th scope="row">Grid Frequency Nadir (f_min)</th><td><code>59.82 Hz (model value)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
+<tr><th scope="row">Initial RoCoF Before Filter</th><td><code>0.42 Hz/s (&lt; 0.50 model limit)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
+<tr><th scope="row">CBF Barrier Margin h(x)</th><td><code>+0.72 Hz above 59.1 Hz trip (model)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
+<tr><th scope="row">CBF Filter State</th><td><code>IDLE · constraint slack (model)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td></tr>
               </tbody>
             </table>
           </div>
           <p>
-            Every sensitivity bar in Plate E.12-B and every real-time readout card above is computed directly from these governing expressions with zero pre-baked lookup tables. Running <code>python skills/engineering/e12/verify_e12.py</code> from the repository root executes the same numerical assertions and confirms zero drift across all 48 Folios.
+            The values above are the essay's reference values. A script that recomputes them from the governing law is not yet part of this repository.
           </p>
         </section>
 
@@ -703,7 +703,7 @@
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Folio</span><span class="tp-colophon-val">E.12 · RISC-V &amp; Grid Control Barrier Functions · VOL. 06</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Kernels</span><span class="tp-colophon-val">Control Barrier Function h(x) ≥ 0 (Ames et al. 2017) · Swing Equation · Kami / Coq (Rocq) processor-proof precedents</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Benchmarks</span><span class="tp-colophon-val">Model values: RoCoF 0.42 Hz/s · h(x_grid) = +0.72 Hz · processor proof assumed, not shown</span></div>
-          <div class="tp-colophon-cell"><span class="tp-colophon-label">Verifier</span><span class="tp-colophon-val"><code>skills/engineering/e12/verify_e12.py</code></span></div>
+          <div class="tp-colophon-cell"><span class="tp-colophon-label">Lab kernel</span><span class="tp-colophon-val"><code>tools/continuum_verify.py</code></span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Edition</span><span class="tp-colophon-val">REV 1.1 · 2026-11-14</span></div>
         </div>
 
@@ -716,16 +716,15 @@
           <p>Scite index entry for Ames, Xu, Grizzle &amp; Tabuada 2017 (DOI 10.1109/TAC.2016.2638961), checked 2026-11-08: 3,385 citing publications (8 supporting, 2,361 mentioning, 0 contrasting) and no retraction notice. These counts describe that one paper, not this folio.</p>
         </div>
 
-        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion and Python verifier">
+        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion">
           <div class="tp-skill-header">
-            <span class="tp-skill-kicker">SKILL.md companion &amp; Python verifier</span>
+            <span class="tp-skill-kicker">SKILL.md companion &middot; plain text</span>
             <span class="tp-skill-compat">Works with Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3</span>
           </div>
-          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the exact governing equations of Folio E.12: a portable <code>SKILL.md</code>, a zero-dependency Python verifier (<code>verify_e12.py</code>), or the live telemetry as JSON.</p>
+          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the governing equations of Folio E.12 as plain text: a portable <code>SKILL.md</code>, or the live telemetry as JSON. Its reference values are stated in the essay and are not yet recomputed by a script in this repository.</p>
           <div class="tp-skill-actions">
             <button class="tp-skill-btn" type="button" data-skill-download="verified-riscv-cbf-grid-sync-SKILL.md">Download SKILL.md (verified-riscv-cbf-grid-sync-SKILL.md)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-skill-copy="true">Copy SKILL.md</button>
-            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-py-download="verify_e12.py">Download Python Tool (verify_e12.py)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-telemetry-copy="E.12">Copy Live Telemetry JSON</button>
           </div>
           <details class="tp-skill-source-details">
@@ -738,77 +737,39 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ---
 # Silicon-to-Grid Safety: Control Barrier Functions, Firefly-Synchronized Renewable Grids &amp; the Case for a Verified Relay Processor (Folio E.12)
 
-## 1. Governing Law &amp; Tectonic Identity
-- **Folio**: `E.12 · RISC-V &amp; Grid Control Barrier Functions` (`REV 1.1`, Redated `2026-11-14`)
-- **Governing Equation**: `sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e`
-- **Primary Verification Kernel**: `skills/engineering/e12/verify_e12.py`
-- **Verification Benchmarks**: `Model values: RoCoF 0.42 Hz/s · h(x_grid) = +0.72 Hz · processor proof assumed, not shown`
-- **Primary Scite Anchor DOI**: https://doi.org/10.1109/TAC.2016.2638961 (Scite Report: https://scite.ai/reports/10.1109/TAC.2016.2638961)
+A plain-text companion to the essay at https://informatico.ai/engineering/e12/ (`E.12 · RISC-V &amp; Grid Control Barrier Functions`, `REV 1.1`, redated `2026-11-14`).
 
-## 2. Deterministic Verification &amp; Falsification Rules
+## The governing relation
+`sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e`
+
+## Rules the essay derives
 1. Enforce Nagumo forward invariance of safe set C = {x : h(x) &gt;= 0} via CBF constraint L_f h(x) + L_g h(x) * u &gt;= -alpha * h(x).
 2. Bound grid Rate of Change of Frequency |df/dt| &lt;= f_0 * Delta_P / (2 * H_virt * S_base); the folio model targets less than 0.5 Hz/s after the loss of one large unit.
 3. Treat processor correctness as a stated assumption. Cite published machine-checked RISC-V work (Kami, DOI 10.1145/3110268; Erbsen et al. 2021, DOI 10.1145/3453483.3454065) and never claim a verified relay processor without a public proof artifact.
 
-## 3. 4-Stage Physical &amp; Mathematical Mechanism
+## How it works, in four stages
 - Stage 1 (Firefly-Style Phase-Locking on the Power Grid, Continuing P.02): Solar and battery grid-forming inverters hold a common rhythm through coupled phase angles θ_i, M d²θ_i/dt² + D dθ_i/dt = P_i − ∑ K_ij sin(θ_i − θ_j), a member of the coupled-oscillator family studied in &#x27;Synchronization in complex oscillator networks and smart grids&#x27; (Dörfler, Chertkov &amp; Bullo 2013, DOI 10.1073/pnas.1212134110). The firefly is an analogy, not the same equation.
 - Stage 2 (Synthetic Inertia via Virtual Synchronous Machines): In the folio model, when a 1.2 GW loss hits, battery inverters inject power proportional to −H_virt dω/dt, in the manner of synchronverters (Zhong &amp; Weiss 2011, DOI 10.1109/TIE.2010.2048839), and at the default H_virt = 4.8 s the initial Rate of Change of Frequency (RoCoF) is 0.42 Hz/s. It stays below 0.5 Hz/s only for H_virt above about 4.0 s.
 - Stage 3 (Control Barrier Function Quadratic Program Filter, Continuing M.07): A real-time QP filter enforces L_f h(x) + L_g h(x)u ≥ −α(h(x)). For the modelled dynamics, and while the QP stays feasible, the state x does not leave the safe set h(x) ≥ 0 (Ames et al. 2017, DOI 10.1109/TAC.2016.2638961).
 - Stage 4 (Processor Layer, a Design Assumption): The filter is only as sound as the chip that runs it. Machine-checked RISC-V processors exist at small scale: Kami (Choi et al. 2017, DOI 10.1145/3110268) and the embedded system of Erbsen et al. (2021, DOI 10.1145/3453483.3454065), both in the Coq proof assistant, now named Rocq. This folio knows of no published machine-checked proof for the processor of a grid protection relay; here it is assumed, not shown.
 
-## 4. Reference Telemetry &amp; Acceptance Bounds
+## Reference values stated in the essay
 - **Grid Frequency Nadir (f_min)**: `59.82 Hz (model value)`
 - **Initial RoCoF Before Filter**: `0.42 Hz/s (&lt; 0.50 model limit)`
 - **CBF Barrier Margin h(x)**: `+0.72 Hz above 59.1 Hz trip (model)`
 - **CBF Filter State**: `IDLE · constraint slack (model)`
 
-## 5. Frontier Discovery &amp; Contemporary Research Context (2024–2026)
+## What is and is not checked
+The reference values above are stated in the essay. No script in this repository recomputes them yet, so treat them as the essay&#x27;s claims and check them against the primary source before relying on them.
+
+## Primary source
+- https://doi.org/10.1109/TAC.2016.2638961 (Scite report: https://scite.ai/reports/10.1109/TAC.2016.2638961)
+- What the essay compares against: Model values: RoCoF 0.42 Hz/s · h(x_grid) = +0.72 Hz · processor proof assumed, not shown
+
+## Recent research context
 - **Control Barrier Functions and Virtual Inertia for Low-Inertia Grids, with a Verified Processor as the Missing Layer**: Low-inertia grids are an active research field (Milano et al. 2018, DOI 10.23919/PSCC.2018.8450880). This folio pairs Control Barrier Function QP filters (Ames et al. 2017, DOI 10.1109/TAC.2016.2638961) with a reduced virtual-inertia model, and points to machine-checked RISC-V work in Coq (Choi et al. 2017, DOI 10.1145/3110268; Erbsen et al. 2021, DOI 10.1145/3453483.3454065) as the precedent for a verified protection processor, which this folio assumes and does not show.
 </code></pre>
           </details>
-          <pre class="tp-skill-pre" hidden><code data-py-source>#!/usr/bin/env python3
-&quot;&quot;&quot;Standalone Zero-Dependency Deterministic Verifier for Folio E.12 (e12).
-Primary Crossref Anchor DOI: https://doi.org/10.1109/TAC.2016.2638961
-&quot;&quot;&quot;
-from __future__ import annotations
-
-import json
-import math
-import sys
-
-if hasattr(sys.stdout, &quot;reconfigure&quot;):
-    sys.stdout.reconfigure(encoding=&quot;utf-8&quot;)
-
-FOLIO_METADATA = {
-    &quot;folio_id&quot;: &quot;E.12&quot;,
-    &quot;slug&quot;: &quot;e12&quot;,
-    &quot;title&quot;: &quot;Silicon-to-Grid Safety: Control Barrier Functions, Firefly-Synchronized Renewable Grids &amp; the Case for a Verified Relay Processor&quot;,
-    &quot;governing_law&quot;: &quot;sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e&quot;,
-    &quot;primary_kernel&quot;: &quot;skills/engineering/e12/verify_e12.py&quot;,
-    &quot;primary_doi&quot;: &quot;10.1109/TAC.2016.2638961&quot;,
-    &quot;scite_report&quot;: &quot;https://scite.ai/reports/10.1109/TAC.2016.2638961&quot;,
-    &quot;benchmarks&quot;: [{&quot;label&quot;: &quot;Grid Frequency Nadir (f_min)&quot;, &quot;value&quot;: &quot;59.82 Hz (model value)&quot;}, {&quot;label&quot;: &quot;Initial RoCoF Before Filter&quot;, &quot;value&quot;: &quot;0.42 Hz/s (&lt; 0.50 model limit)&quot;}, {&quot;label&quot;: &quot;CBF Barrier Margin h(x)&quot;, &quot;value&quot;: &quot;+0.72 Hz above 59.1 Hz trip (model)&quot;}, {&quot;label&quot;: &quot;CBF Filter State&quot;, &quot;value&quot;: &quot;IDLE · constraint slack (model)&quot;}],
-}
-
-
-def verify_folio_invariants(scale: float = 1.0) -&gt; dict:
-    &quot;&quot;&quot;Evaluate reference conservation and safety bounds for Folio E.12.&quot;&quot;&quot;
-    assert scale &gt; 0.0 and math.isfinite(scale), &quot;Scale factor must be positive and finite&quot;
-    return {
-        &quot;status&quot;: &quot;PASS&quot;,
-        &quot;verdict&quot;: &quot;PASS&quot;,
-        &quot;folio_id&quot;: FOLIO_METADATA[&quot;folio_id&quot;],
-        &quot;governing_law&quot;: FOLIO_METADATA[&quot;governing_law&quot;],
-        &quot;scale&quot;: round(scale, 4),
-        &quot;benchmarks&quot;: FOLIO_METADATA[&quot;benchmarks&quot;],
-    }
-
-
-if __name__ == &quot;__main__&quot;:
-    result = verify_folio_invariants()
-    print(json.dumps(result, indent=2, ensure_ascii=False))
-    sys.exit(0)
-</code></pre>
         </section>
 
         <section class="tp-rev-ledger" aria-label="Folio E.12 edition history and review">
@@ -828,7 +789,7 @@ if __name__ == &quot;__main__&quot;:
             <div class="tp-council-seat"><span class="tp-council-role">Formal &amp; physical review</span><span class="tp-council-model">Gemini 4 Argon + Gemma 4 31B</span><span class="tp-council-verdict">Approved</span></div>
             <div class="tp-council-seat"><span class="tp-council-role">Synthesis review</span><span class="tp-council-model">Qwen 3.8 27B + Ornith 1.5 35B</span><span class="tp-council-verdict">Approved</span></div>
             <div class="tp-council-seat"><span class="tp-council-role">Citation audit</span><span class="tp-council-model">tools/check_folio_citations.py</span><span class="tp-council-verdict">Verified</span></div>
-            <div class="tp-council-seat"><span class="tp-council-role">Deterministic kernel</span><span class="tp-council-model">skills/engineering/e12/verify_e12.py</span><span class="tp-council-verdict">Pass</span></div>
+            <div class="tp-council-seat"><span class="tp-council-role">Deterministic kernel</span><span class="tp-council-model">tools/continuum_verify.py</span><span class="tp-council-verdict">Pass</span></div>
           </div>
         </section>
       </div>

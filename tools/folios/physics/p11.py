@@ -23,7 +23,7 @@ FOLIO = {'folio_id': 'P.11',
  'date_redated': '2026-11-07',
  'current_edition': 'REV 1.0',
  'status_badge': 'QUANTUM QEC & FEMOCO · REV 1.0',
- 'primary_kernel': 'skills/physics/p11/verify_p11.py',
+ 'primary_kernel': 'tools/physics_kernel.py',
  'governing_law': 'p_L ≈ 0.03 (p / p_th)^((d+1)/2) · [A_s, B_p] = 0 · H_FeMoCo |Ψ_0⟩ = E_0 |Ψ_0⟩',
  'colophon': {'identifier': 'P.11 · Surface-Code Quantum Error Correction & FeMoCo Catalysis · '
                             'Stim / PySCF',

@@ -1284,7 +1284,7 @@
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.1",
         "status_badge": "SILICON-TO-GRID · REV 1.1",
-        "primary_kernel": "skills/engineering/e12/verify_e12.py",
+        "primary_kernel": "tools/continuum_verify.py",
         "governing_law": "sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e",
         "colophon": {
           "identifier": "E.12 · RISC-V & Grid Control Barrier Functions",
@@ -2611,7 +2611,7 @@
           {
             "edition": "REV 1.4",
             "date": "2026-11-10",
-            "summary": "REV 1.4 (Redated 2026-11-10): Coupled 3D polyhedral graphic statics and negative-definite Airy stress surfaces (DOI 10.1016/j.cad.2015.01.006) with 8–13 μm atmospheric-window daytime radiative sky-cooling extrados coatings (Raman et al. 2014, DOI 10.1038/nature13883; Mandal et al. 2018 porous P(VdF-HFP), DOI 10.1126/science.aat9513), cross-linked directly to Toolbox X.03 STEP AP242/3MF/DXF/GLB voussoir assemblies and verified with numerical --planted-defect knockouts.",
+            "summary": "REV 1.4 (Redated 2026-11-10): Coupled 3D polyhedral graphic statics and negative-definite Airy stress surfaces (DOI 10.1016/j.cad.2015.01.006) with 8–13 μm atmospheric-window daytime radiative sky-cooling extrados coatings (Raman et al. 2014, DOI 10.1038/nature13883; Mandal et al. 2018 porous P(VdF-HFP), DOI 10.1126/science.aat9513), cross-linked directly to Toolbox X.03 STEP AP242/3MF/DXF/GLB voussoir assemblies with reference values stated in the essay.",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified Airy Hessian concavity (det(H_Φ) = +1.8416 > 0), dual cell nodal closure (< 1e-12 kN), daytime cooling flux q_net = 98.43 W/m² ≥ 80 W/m² (ΔT_eq = −7.08 °C), and X.03 CAD parity."
           },
           {
@@ -2766,7 +2766,7 @@
         "folio_id": "P.01",
         "governing_law": "σ_ij = −k_B (∂²S / ∂α_i ∂α_j)⁻¹ · A_r = k_B T ln(v_r⁺ / v_r⁻)",
         "pillar": "physics",
-        "primary_kernel": "skills/physics/p01/verify_p01.py",
+        "primary_kernel": "tools/physics_kernel.py",
         "readouts": [
           {
             "label": "Coupling Efficiency",
@@ -2781,8 +2781,8 @@
             "value": "STABLE_COUPLED_CYCLE"
           },
           {
-            "label": "Kernel Verification",
-            "value": "PASS · VERIFIED"
+            "label": "Reference Values",
+            "value": "STATED IN ESSAY"
           }
         ],
         "revisions": [
@@ -2886,7 +2886,7 @@
         "folio_id": "P.02",
         "governing_law": "∂_t θ_i = ω_0 + ∑_j K_ij sin(θ_j − θ_i − α) · v_wave = λ f_beat",
         "pillar": "physics",
-        "primary_kernel": "skills/physics/p02/verify_p02.py",
+        "primary_kernel": "tools/physics_kernel.py",
         "readouts": [
           {
             "label": "Beating Frequency",
@@ -2901,8 +2901,8 @@
             "value": "0.880 (High Coherence)"
           },
           {
-            "label": "Kernel Verification",
-            "value": "PASS · VERIFIED"
+            "label": "Reference Values",
+            "value": "STATED IN ESSAY"
           }
         ],
         "revisions": [
@@ -3006,7 +3006,7 @@
         "folio_id": "P.03",
         "governing_law": "η(γ̇) = η_∞ + (η_0 − η_∞)[1 + (λ γ̇)²]^((n−1)/2) · ξ_mesh ~ w^(−0.75)",
         "pillar": "physics",
-        "primary_kernel": "skills/physics/p03/verify_p03.py",
+        "primary_kernel": "tools/physics_kernel.py",
         "readouts": [
           {
             "label": "Mesh Pore Size",
@@ -3021,8 +3021,8 @@
             "value": "0.055 Pa·s (2% solids)"
           },
           {
-            "label": "Kernel Verification",
-            "value": "PASS · VERIFIED"
+            "label": "Reference Values",
+            "value": "STATED IN ESSAY"
           }
         ],
         "revisions": [
@@ -3126,7 +3126,7 @@
         "folio_id": "P.04",
         "governing_law": "J_k = −D_k (∇c_k + (z_k F / RT) c_k ∇Φ) · dh_PCL/dt = L_p (ΔΠ_osm − ΔP_hydro)",
         "pillar": "physics",
-        "primary_kernel": "skills/physics/p04/verify_p04.py",
+        "primary_kernel": "tools/physics_kernel.py",
         "readouts": [
           {
             "label": "PCL Height",
@@ -3141,8 +3141,8 @@
             "value": "HEALTHY_HYDRATED_PCL"
           },
           {
-            "label": "Kernel Verification",
-            "value": "PASS · VERIFIED"
+            "label": "Reference Values",
+            "value": "STATED IN ESSAY"
           }
         ],
         "revisions": [
@@ -3248,7 +3248,7 @@
         "kernel_verdict": "Not independently verified",
         "kernel_verdict_es": "Sin verificación independiente",
         "pillar": "physics",
-        "primary_kernel": "skills/physics/p05/verify_p05.py",
+        "primary_kernel": "tools/physics_kernel.py",
         "reading_time": "22 MIN READ",
         "readouts": [
           {
@@ -3364,7 +3364,7 @@
         "kernel_verdict": "Not independently verified",
         "kernel_verdict_es": "Sin verificación independiente",
         "pillar": "physics",
-        "primary_kernel": "skills/physics/p06/verify_p06.py",
+        "primary_kernel": "tools/physics_kernel.py",
         "reading_time": "22 MIN READ",
         "readouts": [
           {
@@ -3480,7 +3480,7 @@
         "kernel_verdict": "Partial: 1 of 4 readouts recomputed",
         "kernel_verdict_es": "Parcial: 1 de 4 lecturas recalculadas",
         "pillar": "physics",
-        "primary_kernel": "skills/physics/p07/verify_p07.py",
+        "primary_kernel": "tools/physics_kernel.py",
         "reading_time": "22 MIN READ",
         "readouts": [
           {
@@ -3587,10 +3587,10 @@
         "date_redated": "2026-11-14",
         "folio_id": "P.08",
         "governing_law": "Δ_OPD = 2 d √(n_f² − sin²θ_i) = m λ · f_r = k_d(ρ/π) + k_s(D F G) / [4(n·l)(n·v)]",
-        "kernel_verdict": "Recomputed: 2 of 4 readouts follow from the stated law",
-        "kernel_verdict_es": "Recalculado: 2 de 4 lecturas se siguen de la ley indicada",
+        "kernel_verdict": "Partial: 2 of 4 readouts recomputed",
+        "kernel_verdict_es": "Parcial: 2 de 4 lecturas recalculadas",
         "pillar": "physics",
-        "primary_kernel": "skills/physics/p08/verify_p08.py",
+        "primary_kernel": "tools/physics_kernel.py",
         "reading_time": "22 MIN READ",
         "readouts": [
           {
@@ -3712,7 +3712,7 @@
           "P.06"
         ],
         "pillar": "physics",
-        "primary_kernel": "skills/physics/p09/verify_p09.py",
+        "primary_kernel": "tools/physics_kernel.py",
         "reading_time": "22 MIN READ",
         "readouts": [
           {
@@ -3829,7 +3829,7 @@
           "P.08"
         ],
         "pillar": "physics",
-        "primary_kernel": "skills/physics/p10/verify_p10.py",
+        "primary_kernel": "tools/physics_kernel.py",
         "reading_time": "22 MIN READ",
         "readouts": [
           {
@@ -3939,7 +3939,7 @@
         "date_redated": "2026-11-07",
         "current_edition": "REV 1.0",
         "status_badge": "QUANTUM QEC & FEMOCO · REV 1.0",
-        "primary_kernel": "skills/physics/p11/verify_p11.py",
+        "primary_kernel": "tools/physics_kernel.py",
         "governing_law": "p_L ≈ 0.03 (p / p_th)^((d+1)/2) · [A_s, B_p] = 0 · H_FeMoCo |Ψ_0⟩ = E_0 |Ψ_0⟩",
         "colophon": {
           "identifier": "P.11 · Surface-Code Quantum Error Correction & FeMoCo Catalysis · Stim / PySCF",
@@ -4053,7 +4053,7 @@
         "date_redated": "2026-11-10",
         "current_edition": "REV 1.4",
         "status_badge": "HILBERT 6TH + TUR · REV 1.4",
-        "primary_kernel": "skills/physics/p12/verify_p12.py",
+        "primary_kernel": "tools/physics_kernel.py",
         "governing_law": "Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² ≥ 2 · ∂_t f + v·∇_x f = (1/Kn) Q(f,f) ⇒ σ_visc = (2μ/T) S_ij S_ij ≥ 0",
         "colophon": {
           "identifier": "P.12 · Hilbert's 6th & TUR Bridge: Markov Jumps → Boltzmann → Navier–Stokes · arXiv:2503.01800",
@@ -4131,7 +4131,7 @@
           {
             "edition": "REV 1.4",
             "date": "2026-11-10",
-            "summary": "REV 1.4 (Redated 2026-11-10): Synthesized Barato & Seifert (2015, DOI 10.1103/PhysRevLett.114.158101) Thermodynamic Uncertainty Relation (Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² = A·coth(A/2) ≥ 2 for NESS Markovian jump networks, bridged to Folio M.11) across the Boltzmann–Grad hard-sphere limit (Kn → 0) into Chapman–Enskog Navier–Stokes viscous entropy production σ_visc = (2μ/T) S_ij S_ij ≥ 0 (DOI 10.1007/s00222-003-0316-5), with stdlib numerical verifier and --planted-defect entropy knockouts.",
+            "summary": "REV 1.4 (Redated 2026-11-10): Synthesized Barato & Seifert (2015, DOI 10.1103/PhysRevLett.114.158101) Thermodynamic Uncertainty Relation (Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² = A·coth(A/2) ≥ 2 for NESS Markovian jump networks, bridged to Folio M.11) across the Boltzmann–Grad hard-sphere limit (Kn → 0) into Chapman–Enskog Navier–Stokes viscous entropy production σ_visc = (2μ/T) S_ij S_ij ≥ 0 (DOI 10.1007/s00222-003-0316-5), with its reference values stated in the essay.",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified Markovian steady-state TUR scope (Q_TUR = 2.3617 > 2 at A = 1.5), hard-sphere collision invariants (< 1e-14), and positive Couette viscous dissipation σ_visc > 0."
           },
           {

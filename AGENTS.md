@@ -4,7 +4,7 @@ README for coding agents (`Claude Code`, `GitHub Copilot`, `Cursor`, `Antigravit
 
 ## Repository Purpose
 
-`informatico.ai` publishes zero-build, bilingual (`en` + `es-MX`) interactive scientific and engineering monographs with live WebGL2/SVG observatories, portable `SKILL.md` companions, and zero-dependency Python stdlib verifiers across:
+`informatico.ai` publishes zero-build, bilingual (`en` + `es-MX`) interactive scientific and engineering monographs with live WebGL2/SVG observatories, portable `SKILL.md` companions, and stdlib verifiers where one exists, across:
 
 - **4 Core Pillars (`48` Folios):** Civil Engineering & Construction (`E.01`–`E.12`), Architecture & Tectonics (`A.01`–`A.12`), Multiscale & Quantum Physics (`P.01`–`P.12`), and Formal & Pure Mathematics (`M.01`–`M.12`).
 - **Open-Bounty & Prize Crucible (`B.01`–`B.06`):** Six grand-challenge benchmark monographs (`bounties/`).
@@ -30,6 +30,8 @@ Never hand-edit generated HTML, catalog JSON, or companion skill outputs in isol
    Regenerates `src/data/magazine_catalog.json`, `src/informatico.css`, `skills/{engineering,architecture,physics,math,bounties,toolchain}/**`, and all bilingual pages under `src/` and `src/es-mx/` (`sitemap.xml`, `llms.txt`, `404.html`).
 
 ## Offline Verification Gate
+
+**Verifiers are earned:** the generator never writes one; a `verify_*.py` must fail under `--planted-defect`.
 
 Run all four deterministic offline gates from the repository root before opening or updating a pull request:
 

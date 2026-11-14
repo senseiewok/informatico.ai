@@ -15,6 +15,7 @@ import { initPhysicsDiscoveryCrucible } from "./physics-discovery-crucible.mjs";
 import { initGlbViewers } from "./glb-viewer.mjs";
 import { initTraceSentence } from "./trace-sentence.mjs";
 import { initFeaturedSpotlight } from "./featured-spotlight.mjs";
+import { initLabLink } from "./lab-link.mjs";
 
 function bootMagazine(scope = document) {
   initThemePlate();
@@ -29,6 +30,7 @@ function bootMagazine(scope = document) {
   initTraceSentence(scope);
 }
 
+initLabLink();
 bootMagazine(document);
 initFolioRouter((newArticleRoot) => {
   bootMagazine(newArticleRoot);
