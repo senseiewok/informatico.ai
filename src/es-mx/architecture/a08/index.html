@@ -359,7 +359,7 @@
               <p class="tp-theorem-meta"><strong>Kernels:</strong> Planck 8–13 μm Sky Window · Stefan Moving-Boundary PCM Storage &middot; <strong>Benchmarks:</strong> R_solar = 97.0% · ε_LWIR = 95.0% · P_net = +86.4 W/m² (−6.2 °C) &middot; <strong>Primary Anchor:</strong> <code>DOI 10.1038/nature13883</code></p>
             </div>
             <p>
-              To elevate Folio <strong>A.08</strong> (<em>AI-Designed Daytime Radiative Sky-Cooling Photonic Roofs (8–13 μm Window) &amp; Stefan Phase-Change Envelopes</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>P_net = P_rad(T) − P_atm(T_a) − (1 − R_sol)I_sol − h_c(T_a − T) · s(t) = 2λ_s√(α t) · CSI 07 54 00</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>Solar Waveband Reflectance (R_solar)</em>) spanning the admissible interval <code>[0.85, 0.99]</code> with step resolution <code>&Delta; = 0.005</code> and canonical reference operating point <code>R = 0.97</code>; control parameter <code>P_2</code> (<em>8–13 μm Sky-Window Emissivity (ε_LWIR)</em>) spanning the admissible interval <code>[0.65, 0.99]</code> with step resolution <code>&Delta; = 0.01</code> and canonical reference operating point <code>ε = 0.95</code>. Over this bounded domain, the coupled kernels (<code>Planck 8–13 μm Sky Window · Stefan Moving-Boundary PCM Storage</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point certified by <code>skills/architecture/a08/verify_a08.py</code>.
+              To elevate Folio <strong>A.08</strong> (<em>AI-Designed Daytime Radiative Sky-Cooling Photonic Roofs (8–13 μm Window) &amp; Stefan Phase-Change Envelopes</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>P_net = P_rad(T) − P_atm(T_a) − (1 − R_sol)I_sol − h_c(T_a − T) · s(t) = 2λ_s√(α t) · CSI 07 54 00</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>Solar Waveband Reflectance (R_solar)</em>) spanning the admissible interval <code>[0.85, 0.99]</code> with step resolution <code>&Delta; = 0.005</code> and canonical reference operating point <code>R = 0.97</code>; control parameter <code>P_2</code> (<em>8–13 μm Sky-Window Emissivity (ε_LWIR)</em>) spanning the admissible interval <code>[0.65, 0.99]</code> with step resolution <code>&Delta; = 0.01</code> and canonical reference operating point <code>ε = 0.95</code>. Over this bounded domain, the coupled kernels (<code>Planck 8–13 μm Sky Window · Stefan Moving-Boundary PCM Storage</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point.
             </p>
             <p>
               Crucially, well-posedness across the <code>R_solar = 97.0% · ε_LWIR = 95.0% · P_net = +86.4 W/m² (−6.2 °C)</code> regime requires that the governing operator preserve dimensional homogeneity, non-negativity of physical energy/entropy functionals, and strict monotony along the primary reaction or proof coordinate. Whenever a simplified model omits one of the coupled terms in <code>P_net = P_rad(T) − P_atm(T_a) − (1 − R_sol)I_sol − h_c(T_a − T) · s(t) = 2λ_s√(α t) · CSI 07 54 00</code>, the resulting approximation violates boundary compatibility and diverges from the primary peer-reviewed evidence (<code>Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 3,769 citing publications (15 supporting, 2,634 mentioning, 1 contrasting) on Raman, Fan et al. daytime radiative cooling below ambient air temperature under direct sunlight via the 8-13 um atmospheric transparency window.</code>).
@@ -369,7 +369,7 @@
           <article class="tp-proof-chapter" id="ch-ii-2-a08">
             <h3 data-en="&sect; II.2 &middot; Four-Stage Proof &amp; Mechanism Decomposition (Stages 1&ndash;4)" data-es="&sect; II.2 &middot; Descomposici&oacute;n Demostrativa y Mecanismo en Cuatro Etapas (Etapas 1&ndash;4)">§ II.2 · Descomposición Demostrativa y Mecanismo en Cuatro Etapas (Etapas 1–4)</h3>
             <p>
-              Rather than treating <code>P_net = P_rad(T) − P_atm(T_a) − (1 − R_sol)I_sol − h_c(T_a − T) · s(t) = 2λ_s√(α t) · CSI 07 54 00</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>A.08</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III and the standalone verification suite in <code>skills/architecture/a08/verify_a08.py</code>:
+              Rather than treating <code>P_net = P_rad(T) − P_atm(T_a) − (1 − R_sol)I_sol − h_c(T_a − T) · s(t) = 2λ_s√(α t) · CSI 07 54 00</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>A.08</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III:
             </p>
           <div class="tp-proof-stage-block">
             <h4><span data-en="Stage 1 Derivation &amp; State Transition" data-es="Derivaci&oacute;n y Transici&oacute;n de Estado &middot; Etapa 1">Derivación y Transición de Estado · Etapa 1</span></h4>
@@ -404,24 +404,24 @@
           <article class="tp-proof-chapter" id="ch-ii-3-a08">
             <h3 data-en="&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds" data-es="&sect; II.3 &middot; Invariantes de Verificaci&oacute;n Determinista, Escalamiento Dimensional y Cotas de Estabilidad">§ II.3 · Invariantes de Verificación Determinista, Escalamiento Dimensional y Cotas de Estabilidad</h3>
             <p>
-              In our lab&rsquo;s formal verification architecture, prose explanations are never separated from executable proof certificates. Every quantitative claim in Folio <strong>A.08</strong> is governed by three machine-checked falsification rules embedded in <code>radiative-sky-cooling-stefan-pcm-SKILL.md</code> and executed by <code>skills/architecture/a08/verify_a08.py</code>:
+              Folio <strong>A.08</strong> states three rules a careful reader can use to test its claims. They are listed as plain text in <code>radiative-sky-cooling-stefan-pcm-SKILL.md</code>. No script in this repository executes them yet:
             </p>
             <ol class="tp-invariant-list">
           <li>
             <strong>Invariant A.08-R1:</strong> Evaluate net radiative cooling flux P_net(T) = epsilon_LWIR * sigma * T^4 - P_atm(T_amb) - (1 - R_solar) * I_solar - h_c * (T_amb - T).
-            <span>Verified deterministically offline by <code>skills/architecture/a08/verify_a08.py</code> against primary anchor <code>DOI 10.1038/nature13883</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1038/nature13883</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant A.08-R2:</strong> Require R_solar &gt;= 0.94 across 0.3-2.5 um and epsilon_LWIR &gt;= 0.90 across 8-13 um to achieve daytime sub-ambient cooling under I_solar = 1000 W/m^2.
-            <span>Verified deterministically offline by <code>skills/architecture/a08/verify_a08.py</code> against primary anchor <code>DOI 10.1038/nature13883</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1038/nature13883</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant A.08-R3:</strong> Compute Stefan phase-change melting front depth s(t) = 2 * lambda_s * sqrt(alpha_th * t) where lambda_s * exp(lambda_s^2) * erf(lambda_s) = Ste / sqrt(pi).
-            <span>Verified deterministically offline by <code>skills/architecture/a08/verify_a08.py</code> against primary anchor <code>DOI 10.1038/nature13883</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1038/nature13883</code>. Not yet recomputed by a script in this repository.</span>
           </li>
             </ol>
             <p>
-              Together, Invariants <strong>A.08-R1</strong> through <strong>A.08-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. If any parameter perturbation or code edit violates these bounds, the automated verification gate rejects the build before publication.
+              Together, Invariants <strong>A.08-R1</strong> through <strong>A.08-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. These bounds are stated for the reader. No automated gate enforces them yet.
             </p>
           </article>
 
@@ -552,27 +552,27 @@
         <section class="tp-worked-verification-chapter" id="ch-iii-2-a08" aria-labelledby="ch-iii-2-heading-a08">
           <h3 id="ch-iii-2-heading-a08" data-en="&sect; III.2 &middot; Worked Numerical Verification &amp; Reference Telemetry Benchmark" data-es="&sect; III.2 &middot; Verificaci&oacute;n Num&eacute;rica Paso a Paso y Telemetr&iacute;a de Referencia">§ III.2 · Verificación Numérica Paso a Paso y Telemetría de Referencia</h3>
           <p>
-            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>P_net = P_rad(T) − P_atm(T_a) − (1 − R_sol)I_sol − h_c(T_a − T) · s(t) = 2λ_s√(α t) · CSI 07 54 00</code> at the canonical benchmark configuration (<code>R_solar = 97.0% · ε_LWIR = 95.0% · P_net = +86.4 W/m² (−6.2 °C)</code>). Substituting control parameter <code>P_1</code> (<em>Solar Waveband Reflectance (R_solar)</em>) spanning the admissible interval <code>[0.85, 0.99]</code> with step resolution <code>&Delta; = 0.005</code> and canonical reference operating point <code>R = 0.97</code>; control parameter <code>P_2</code> (<em>8–13 μm Sky-Window Emissivity (ε_LWIR)</em>) spanning the admissible interval <code>[0.65, 0.99]</code> with step resolution <code>&Delta; = 0.01</code> and canonical reference operating point <code>ε = 0.95</code> into the coupled Stage 1&ndash;4 equations yields the exact reference telemetry certified by our offline verification kernel: <strong>Absorbed Solar Flux (P_sun)</strong> converges to <code>30.0 W/m² (R_sol = 97.0%)</code>; <strong>Net Sky Cooling Power (P_net)</strong> converges to <code>+86.4 W/m² (Noon Sun)</code>; <strong>Sub-Ambient Temp Drop (ΔT_sub)</strong> converges to <code>−6.2 °C Below Ambient</code>; <strong>Envelope Energy Verdict</strong> converges to <code>ZERO-ENERGY COOLING · PASS</code>.
+            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>P_net = P_rad(T) − P_atm(T_a) − (1 − R_sol)I_sol − h_c(T_a − T) · s(t) = 2λ_s√(α t) · CSI 07 54 00</code> at the canonical benchmark configuration (<code>R_solar = 97.0% · ε_LWIR = 95.0% · P_net = +86.4 W/m² (−6.2 °C)</code>). Substituting control parameter <code>P_1</code> (<em>Solar Waveband Reflectance (R_solar)</em>) spanning the admissible interval <code>[0.85, 0.99]</code> with step resolution <code>&Delta; = 0.005</code> and canonical reference operating point <code>R = 0.97</code>; control parameter <code>P_2</code> (<em>8–13 μm Sky-Window Emissivity (ε_LWIR)</em>) spanning the admissible interval <code>[0.65, 0.99]</code> with step resolution <code>&Delta; = 0.01</code> and canonical reference operating point <code>ε = 0.95</code> into the coupled Stage 1&ndash;4 equations yields the reference values stated in the essay: <strong>Absorbed Solar Flux (P_sun)</strong> converges to <code>30.0 W/m² (R_sol = 97.0%)</code>; <strong>Net Sky Cooling Power (P_net)</strong> converges to <code>+86.4 W/m² (Noon Sun)</code>; <strong>Sub-Ambient Temp Drop (ΔT_sub)</strong> converges to <code>−6.2 °C Below Ambient</code>; <strong>Envelope Energy Verdict</strong> converges to <code>ZERO-ENERGY COOLING · PASS</code>.
           </p>
           <div class="tp-table-wrap">
             <table class="tp-table tp-telemetry-benchmark-table" aria-label="Reference numerical verification benchmark for Folio A.08">
               <thead>
                 <tr>
                   <th scope="col" data-en="Observable / Proof Metric" data-es="Observable / M&eacute;trica de Prueba">Observable / Métrica de Prueba</th>
-                  <th scope="col" data-en="Certified Benchmark Value" data-es="Valor de Referencia Certificado">Valor de Referencia Certificado</th>
-                  <th scope="col" data-en="Deterministic Verifier" data-es="Verificador Determinista">Verificador Determinista</th>
+                  <th scope="col" data-en="Reference Value" data-es="Valor de Referencia">Valor de Referencia</th>
+                  <th scope="col" data-en="Where the value comes from" data-es="De d&oacute;nde viene el valor">De dónde viene el valor</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><th scope="row">Absorbed Solar Flux (P_sun)</th><td><code>30.0 W/m² (R_sol = 97.0%)</code></td><td><code>skills/architecture/a08/verify_a08.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Net Sky Cooling Power (P_net)</th><td><code>+86.4 W/m² (Noon Sun)</code></td><td><code>skills/architecture/a08/verify_a08.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Sub-Ambient Temp Drop (ΔT_sub)</th><td><code>−6.2 °C Below Ambient</code></td><td><code>skills/architecture/a08/verify_a08.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Envelope Energy Verdict</th><td><code>ZERO-ENERGY COOLING · PASS</code></td><td><code>skills/architecture/a08/verify_a08.py</code> &middot; Verified</td></tr>
+                <tr><th scope="row">Absorbed Solar Flux (P_sun)</th><td><code>30.0 W/m² (R_sol = 97.0%)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
+<tr><th scope="row">Net Sky Cooling Power (P_net)</th><td><code>+86.4 W/m² (Noon Sun)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
+<tr><th scope="row">Sub-Ambient Temp Drop (ΔT_sub)</th><td><code>−6.2 °C Below Ambient</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
+<tr><th scope="row">Envelope Energy Verdict</th><td><code>ZERO-ENERGY COOLING · PASS</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
               </tbody>
             </table>
           </div>
           <p>
-            Every sensitivity bar in Plate A.08-B and every real-time readout card above is computed directly from these governing expressions with zero pre-baked lookup tables. Running <code>python skills/architecture/a08/verify_a08.py</code> from the repository root executes the same numerical assertions and confirms zero drift across all 48 Folios.
+            The values above are the essay's reference values. A script that recomputes them from the governing law is not yet part of this repository.
           </p>
         </section>
 
@@ -690,7 +690,7 @@
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Folio</span><span class="tp-colophon-val">A.08 · Photonic Sky-Cooling &amp; Stefan PCM · CSI 07 54 00 · VOL. 04</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Kernels</span><span class="tp-colophon-val">Planck 8–13 μm Sky Window · Stefan Moving-Boundary PCM Storage</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Benchmarks</span><span class="tp-colophon-val">R_solar = 97.0% · ε_LWIR = 95.0% · P_net = +86.4 W/m² (−6.2 °C)</span></div>
-          <div class="tp-colophon-cell"><span class="tp-colophon-label">Verifier</span><span class="tp-colophon-val"><code>tools/tectonic_verify.py</code></span></div>
+          <div class="tp-colophon-cell"><span class="tp-colophon-label">Lab kernel</span><span class="tp-colophon-val"><code>tools/tectonic_verify.py</code></span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Edition</span><span class="tp-colophon-val">REV 1.0 · 2026-11-02</span></div>
         </div>
 
@@ -703,16 +703,15 @@
           <p>Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 3,769 citing publications (15 supporting, 2,634 mentioning, 1 contrasting) on Raman, Fan et al. daytime radiative cooling below ambient air temperature under direct sunlight via the 8-13 um atmospheric transparency window.</p>
         </div>
 
-        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion and Python verifier">
+        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion">
           <div class="tp-skill-header">
-            <span class="tp-skill-kicker">SKILL.md companion &amp; Python verifier</span>
+            <span class="tp-skill-kicker">SKILL.md companion &middot; plain text</span>
             <span class="tp-skill-compat">Works with Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3</span>
           </div>
-          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the exact governing equations of Folio A.08: a portable <code>SKILL.md</code>, a zero-dependency Python verifier (<code>verify_a08.py</code>), or the live telemetry as JSON.</p>
+          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the governing equations of Folio A.08 as plain text: a portable <code>SKILL.md</code>, or the live telemetry as JSON. Its reference values are stated in the essay and are not yet recomputed by a script in this repository.</p>
           <div class="tp-skill-actions">
             <button class="tp-skill-btn" type="button" data-skill-download="radiative-sky-cooling-stefan-pcm-SKILL.md">Download SKILL.md (radiative-sky-cooling-stefan-pcm-SKILL.md)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-skill-copy="true">Copy SKILL.md</button>
-            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-py-download="verify_a08.py">Download Python Tool (verify_a08.py)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-telemetry-copy="A.08">Copy Live Telemetry JSON</button>
           </div>
           <details class="tp-skill-source-details">
@@ -725,77 +724,39 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ---
 # AI-Designed Daytime Radiative Sky-Cooling Photonic Roofs (8–13 μm Window) &amp; Stefan Phase-Change Envelopes (Folio A.08)
 
-## 1. Governing Law &amp; Tectonic Identity
-- **Folio**: `A.08 · Photonic Sky-Cooling &amp; Stefan PCM · CSI 07 54 00` (`REV 1.0`, Redated `2026-11-02`)
-- **Governing Equation**: `P_net = P_rad(T) − P_atm(T_a) − (1 − R_sol)I_sol − h_c(T_a − T) · s(t) = 2λ_s√(α t) · CSI 07 54 00`
-- **Primary Verification Kernel**: `skills/architecture/a08/verify_a08.py`
-- **Verification Benchmarks**: `R_solar = 97.0% · ε_LWIR = 95.0% · P_net = +86.4 W/m² (−6.2 °C)`
-- **Primary Scite Anchor DOI**: https://doi.org/10.1038/nature13883 (Scite Report: https://scite.ai/reports/10.1038/nature13883)
+A plain-text companion to the essay at https://informatico.ai/architecture/a08/ (`A.08 · Photonic Sky-Cooling &amp; Stefan PCM · CSI 07 54 00`, `REV 1.0`, redated `2026-11-02`).
 
-## 2. Deterministic Verification &amp; Falsification Rules
+## The governing relation
+`P_net = P_rad(T) − P_atm(T_a) − (1 − R_sol)I_sol − h_c(T_a − T) · s(t) = 2λ_s√(α t) · CSI 07 54 00`
+
+## Rules the essay derives
 1. Evaluate net radiative cooling flux P_net(T) = epsilon_LWIR * sigma * T^4 - P_atm(T_amb) - (1 - R_solar) * I_solar - h_c * (T_amb - T).
 2. Require R_solar &gt;= 0.94 across 0.3-2.5 um and epsilon_LWIR &gt;= 0.90 across 8-13 um to achieve daytime sub-ambient cooling under I_solar = 1000 W/m^2.
 3. Compute Stefan phase-change melting front depth s(t) = 2 * lambda_s * sqrt(alpha_th * t) where lambda_s * exp(lambda_s^2) * erf(lambda_s) = Ste / sqrt(pi).
 
-## 3. 4-Stage Physical &amp; Mathematical Mechanism
+## How it works, in four stages
 - Stage 1 (Mie Pore &amp; Multilayer Bragg Solar Reflection, 0.3–2.5 μm): Hierarchical nano/micro-pores scatter 97.0% of 1,000 W/m² midday solar irradiance, limiting solar heat gain to 30 W/m².
 - Stage 2 (Selective Phonon Emission in the 8–13 μm Window): C-F and Si-O vibrational modes radiate 116.4 W/m² directly through the transparent atmospheric window toward 3 K outer space.
 - Stage 3 (Sub-Ambient Equilibrium Below Air Temperature): Net cooling power P_net = +86.4 W/m² drives roof equilibrium ΔT = −6.2 °C below ambient outdoor air without compressors.
 - Stage 4 (Stefan Phase-Change Thermal Ceiling Buffer): Coupled 21 °C bio-PCM ceiling panels absorb indoor sensible loads along moving melting front s(t) = 2λ_s√(α t).
 
-## 4. Reference Telemetry &amp; Acceptance Bounds
+## Reference values stated in the essay
 - **Absorbed Solar Flux (P_sun)**: `30.0 W/m² (R_sol = 97.0%)`
 - **Net Sky Cooling Power (P_net)**: `+86.4 W/m² (Noon Sun)`
 - **Sub-Ambient Temp Drop (ΔT_sub)**: `−6.2 °C Below Ambient`
 - **Envelope Energy Verdict**: `ZERO-ENERGY COOLING · PASS`
 
-## 5. Frontier Discovery &amp; Contemporary Research Context (2024–2026)
+## What is and is not checked
+The reference values above are stated in the essay. No script in this repository recomputes them yet, so treat them as the essay&#x27;s claims and check them against the primary source before relying on them.
+
+## Primary source
+- https://doi.org/10.1038/nature13883 (Scite report: https://scite.ai/reports/10.1038/nature13883)
+- What the essay compares against: R_solar = 97.0% · ε_LWIR = 95.0% · P_net = +86.4 W/m² (−6.2 °C)
+
+## Recent research context
 - **Generative Inverse-Designed Photonic Membranes Beam Building Heat Straight Through the 8–13 μm Sky Window**: Extending Raman, Anoma, Zhu, Rephaeli &amp; Fan&#x27;s landmark daytime radiative cooling breakthrough (Nature DOI 10.1038/nature13883), 2025–2026 AI-designed hierarchical porous polymer membranes and Fabry–Pérot structural-color roofs achieve 97% solar reflectance and 95% 8–13 μm sky-window emissivity—delivering 86.4 W/m² of passive midday cooling into Stefan PCM ceiling batteries.
 </code></pre>
           </details>
-          <pre class="tp-skill-pre" hidden><code data-py-source>#!/usr/bin/env python3
-&quot;&quot;&quot;Standalone Zero-Dependency Deterministic Verifier for Folio A.08 (a08).
-Primary Crossref Anchor DOI: https://doi.org/10.1038/nature13883
-&quot;&quot;&quot;
-from __future__ import annotations
-
-import json
-import math
-import sys
-
-if hasattr(sys.stdout, &quot;reconfigure&quot;):
-    sys.stdout.reconfigure(encoding=&quot;utf-8&quot;)
-
-FOLIO_METADATA = {
-    &quot;folio_id&quot;: &quot;A.08&quot;,
-    &quot;slug&quot;: &quot;a08&quot;,
-    &quot;title&quot;: &quot;AI-Designed Daytime Radiative Sky-Cooling Photonic Roofs (8–13 μm Window) &amp; Stefan Phase-Change Envelopes&quot;,
-    &quot;governing_law&quot;: &quot;P_net = P_rad(T) − P_atm(T_a) − (1 − R_sol)I_sol − h_c(T_a − T) · s(t) = 2λ_s√(α t) · CSI 07 54 00&quot;,
-    &quot;primary_kernel&quot;: &quot;tools/tectonic_verify.py&quot;,
-    &quot;primary_doi&quot;: &quot;10.1038/nature13883&quot;,
-    &quot;scite_report&quot;: &quot;https://scite.ai/reports/10.1038/nature13883&quot;,
-    &quot;benchmarks&quot;: [{&quot;label&quot;: &quot;Absorbed Solar Flux (P_sun)&quot;, &quot;value&quot;: &quot;30.0 W/m² (R_sol = 97.0%)&quot;}, {&quot;label&quot;: &quot;Net Sky Cooling Power (P_net)&quot;, &quot;value&quot;: &quot;+86.4 W/m² (Noon Sun)&quot;}, {&quot;label&quot;: &quot;Sub-Ambient Temp Drop (ΔT_sub)&quot;, &quot;value&quot;: &quot;−6.2 °C Below Ambient&quot;}, {&quot;label&quot;: &quot;Envelope Energy Verdict&quot;, &quot;value&quot;: &quot;ZERO-ENERGY COOLING · PASS&quot;}],
-}
-
-
-def verify_folio_invariants(scale: float = 1.0) -&gt; dict:
-    &quot;&quot;&quot;Evaluate reference conservation and safety bounds for Folio A.08.&quot;&quot;&quot;
-    assert scale &gt; 0.0 and math.isfinite(scale), &quot;Scale factor must be positive and finite&quot;
-    return {
-        &quot;status&quot;: &quot;PASS&quot;,
-        &quot;verdict&quot;: &quot;PASS&quot;,
-        &quot;folio_id&quot;: FOLIO_METADATA[&quot;folio_id&quot;],
-        &quot;governing_law&quot;: FOLIO_METADATA[&quot;governing_law&quot;],
-        &quot;scale&quot;: round(scale, 4),
-        &quot;benchmarks&quot;: FOLIO_METADATA[&quot;benchmarks&quot;],
-    }
-
-
-if __name__ == &quot;__main__&quot;:
-    result = verify_folio_invariants()
-    print(json.dumps(result, indent=2, ensure_ascii=False))
-    sys.exit(0)
-</code></pre>
         </section>
 
         <section class="tp-rev-ledger" aria-label="Folio A.08 edition history and review">

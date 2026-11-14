@@ -359,7 +359,7 @@
               <p class="tp-theorem-meta"><strong>Kernels:</strong> ASCE 7-22 Ch. 17 · Bilinear LRB Hysteresis · T_M = 2.85 s &middot; <strong>Benchmarks:</strong> Risk Category IV Hospital · E_loop = 4 Q_d (D_M − D_y) &middot; <strong>Primary Anchor:</strong> <code>DOI 10.1061/9780784415788</code></p>
             </div>
             <p>
-              To elevate Folio <strong>E.06</strong> (<em>Nonlinear Structural Dynamics, ASCE 7-22 Inelastic Response Spectra &amp; Seismic Base-Isolation Dampers</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>M ü + C u̇ + F_s(u) = −M ü_g(t) · V_b = C_s W · μ_Δ = Δ_max / Δ_y</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>Design Spectral Acceleration (S_DS)</em>) spanning the admissible interval <code>[0.4, 1.8]</code> with step resolution <code>&Delta; = 0.05</code> and canonical reference operating point <code> g1.0</code>; control parameter <code>P_2</code> (<em>Effective Hysteretic Damping (β_eff)</em>) spanning the admissible interval <code>[0.06, 0.32]</code> with step resolution <code>&Delta; = 0.01</code> and canonical reference operating point <code> (22%)0.22</code>. Over this bounded domain, the coupled kernels (<code>ASCE 7-22 Ch. 17 · Bilinear LRB Hysteresis · T_M = 2.85 s</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point certified by <code>skills/engineering/e06/verify_e06.py</code>.
+              To elevate Folio <strong>E.06</strong> (<em>Nonlinear Structural Dynamics, ASCE 7-22 Inelastic Response Spectra &amp; Seismic Base-Isolation Dampers</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>M ü + C u̇ + F_s(u) = −M ü_g(t) · V_b = C_s W · μ_Δ = Δ_max / Δ_y</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>Design Spectral Acceleration (S_DS)</em>) spanning the admissible interval <code>[0.4, 1.8]</code> with step resolution <code>&Delta; = 0.05</code> and canonical reference operating point <code> g1.0</code>; control parameter <code>P_2</code> (<em>Effective Hysteretic Damping (β_eff)</em>) spanning the admissible interval <code>[0.06, 0.32]</code> with step resolution <code>&Delta; = 0.01</code> and canonical reference operating point <code> (22%)0.22</code>. Over this bounded domain, the coupled kernels (<code>ASCE 7-22 Ch. 17 · Bilinear LRB Hysteresis · T_M = 2.85 s</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point.
             </p>
             <p>
               Crucially, well-posedness across the <code>Risk Category IV Hospital · E_loop = 4 Q_d (D_M − D_y)</code> regime requires that the governing operator preserve dimensional homogeneity, non-negativity of physical energy/entropy functionals, and strict monotony along the primary reaction or proof coordinate. Whenever a simplified model omits one of the coupled terms in <code>M ü + C u̇ + F_s(u) = −M ü_g(t) · V_b = C_s W · μ_Δ = Δ_max / Δ_y</code>, the resulting approximation violates boundary compatibility and diverges from the primary peer-reviewed evidence (<code>Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 445 citing publications (0 supporting, 57 mentioning, 0 contrasting) on ASCE/SEI 7-22 seismic isolation design, inelastic response spectra, and bilinear lead-rubber bearing hysteresis.</code>).
@@ -369,7 +369,7 @@
           <article class="tp-proof-chapter" id="ch-ii-2-e06">
             <h3 data-en="&sect; II.2 &middot; Four-Stage Proof &amp; Mechanism Decomposition (Stages 1&ndash;4)" data-es="&sect; II.2 &middot; Descomposici&oacute;n Demostrativa y Mecanismo en Cuatro Etapas (Etapas 1&ndash;4)">§ II.2 · Descomposición Demostrativa y Mecanismo en Cuatro Etapas (Etapas 1–4)</h3>
             <p>
-              Rather than treating <code>M ü + C u̇ + F_s(u) = −M ü_g(t) · V_b = C_s W · μ_Δ = Δ_max / Δ_y</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>E.06</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III and the standalone verification suite in <code>skills/engineering/e06/verify_e06.py</code>:
+              Rather than treating <code>M ü + C u̇ + F_s(u) = −M ü_g(t) · V_b = C_s W · μ_Δ = Δ_max / Δ_y</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>E.06</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III:
             </p>
           <div class="tp-proof-stage-block">
             <h4><span data-en="Stage 1 Derivation &amp; State Transition" data-es="Derivaci&oacute;n y Transici&oacute;n de Estado &middot; Etapa 1">Derivación y Transición de Estado · Etapa 1</span></h4>
@@ -404,24 +404,24 @@
           <article class="tp-proof-chapter" id="ch-ii-3-e06">
             <h3 data-en="&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds" data-es="&sect; II.3 &middot; Invariantes de Verificaci&oacute;n Determinista, Escalamiento Dimensional y Cotas de Estabilidad">§ II.3 · Invariantes de Verificación Determinista, Escalamiento Dimensional y Cotas de Estabilidad</h3>
             <p>
-              In our lab&rsquo;s formal verification architecture, prose explanations are never separated from executable proof certificates. Every quantitative claim in Folio <strong>E.06</strong> is governed by three machine-checked falsification rules embedded in <code>asce7-seismic-base-isolation-SKILL.md</code> and executed by <code>skills/engineering/e06/verify_e06.py</code>:
+              Folio <strong>E.06</strong> states three rules a careful reader can use to test its claims. They are listed as plain text in <code>asce7-seismic-base-isolation-SKILL.md</code>. No script in this repository executes them yet:
             </p>
             <ol class="tp-invariant-list">
           <li>
             <strong>Invariant E.06-R1:</strong> Compute secant isolator stiffness k_eff = Q_d / D_M + k_d and effective isolated period T_M = 2 * pi * sqrt(W / (g * k_eff)).
-            <span>Verified deterministically offline by <code>skills/engineering/e06/verify_e06.py</code> against primary anchor <code>DOI 10.1061/9780784415788</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1061/9780784415788</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant E.06-R2:</strong> Evaluate bilinear hysteretic loop energy E_loop = 4 * Q_d * (D_M - D_y), equivalent viscous damping beta_eff = E_loop / (2 * pi * k_eff * D_M^2), and ASCE 7-22 damping factor B_M.
-            <span>Verified deterministically offline by <code>skills/engineering/e06/verify_e06.py</code> against primary anchor <code>DOI 10.1061/9780784415788</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1061/9780784415788</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant E.06-R3:</strong> Verify design displacement D_M = (g * S_D1 * T_M) / (4 * pi^2 * B_M) stays within seismic moat clearance and Risk Category IV inter-story drift stays below 0.010 h_sx.
-            <span>Verified deterministically offline by <code>skills/engineering/e06/verify_e06.py</code> against primary anchor <code>DOI 10.1061/9780784415788</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1061/9780784415788</code>. Not yet recomputed by a script in this repository.</span>
           </li>
             </ol>
             <p>
-              Together, Invariants <strong>E.06-R1</strong> through <strong>E.06-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. If any parameter perturbation or code edit violates these bounds, the automated verification gate rejects the build before publication.
+              Together, Invariants <strong>E.06-R1</strong> through <strong>E.06-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. These bounds are stated for the reader. No automated gate enforces them yet.
             </p>
           </article>
 
@@ -555,27 +555,27 @@
         <section class="tp-worked-verification-chapter" id="ch-iii-2-e06" aria-labelledby="ch-iii-2-heading-e06">
           <h3 id="ch-iii-2-heading-e06" data-en="&sect; III.2 &middot; Worked Numerical Verification &amp; Reference Telemetry Benchmark" data-es="&sect; III.2 &middot; Verificaci&oacute;n Num&eacute;rica Paso a Paso y Telemetr&iacute;a de Referencia">§ III.2 · Verificación Numérica Paso a Paso y Telemetría de Referencia</h3>
           <p>
-            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>M ü + C u̇ + F_s(u) = −M ü_g(t) · V_b = C_s W · μ_Δ = Δ_max / Δ_y</code> at the canonical benchmark configuration (<code>Risk Category IV Hospital · E_loop = 4 Q_d (D_M − D_y)</code>). Substituting control parameter <code>P_1</code> (<em>Design Spectral Acceleration (S_DS)</em>) spanning the admissible interval <code>[0.4, 1.8]</code> with step resolution <code>&Delta; = 0.05</code> and canonical reference operating point <code> g1.0</code>; control parameter <code>P_2</code> (<em>Effective Hysteretic Damping (β_eff)</em>) spanning the admissible interval <code>[0.06, 0.32]</code> with step resolution <code>&Delta; = 0.01</code> and canonical reference operating point <code> (22%)0.22</code> into the coupled Stage 1&ndash;4 equations yields the exact reference telemetry certified by our offline verification kernel: <strong>Isolated Period &amp; Damping</strong> converges to <code>T_M = 2.85 s (B_M = 1.54)</code>; <strong>Isolator Displacement D_M</strong> converges to <code>232 mm (Moat Limit 400 mm)</code>; <strong>Seismic Base Shear Ratio</strong> converges to <code>V_b / W = 0.142 g (−74%)</code>; <strong>ASCE 7-22 Cat IV Verdict</strong> converges to <code>IMMEDIATE OCCUPANCY PASS</code>.
+            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>M ü + C u̇ + F_s(u) = −M ü_g(t) · V_b = C_s W · μ_Δ = Δ_max / Δ_y</code> at the canonical benchmark configuration (<code>Risk Category IV Hospital · E_loop = 4 Q_d (D_M − D_y)</code>). Substituting control parameter <code>P_1</code> (<em>Design Spectral Acceleration (S_DS)</em>) spanning the admissible interval <code>[0.4, 1.8]</code> with step resolution <code>&Delta; = 0.05</code> and canonical reference operating point <code> g1.0</code>; control parameter <code>P_2</code> (<em>Effective Hysteretic Damping (β_eff)</em>) spanning the admissible interval <code>[0.06, 0.32]</code> with step resolution <code>&Delta; = 0.01</code> and canonical reference operating point <code> (22%)0.22</code> into the coupled Stage 1&ndash;4 equations yields the reference values stated in the essay: <strong>Isolated Period &amp; Damping</strong> converges to <code>T_M = 2.85 s (B_M = 1.54)</code>; <strong>Isolator Displacement D_M</strong> converges to <code>232 mm (Moat Limit 400 mm)</code>; <strong>Seismic Base Shear Ratio</strong> converges to <code>V_b / W = 0.142 g (−74%)</code>; <strong>ASCE 7-22 Cat IV Verdict</strong> converges to <code>IMMEDIATE OCCUPANCY PASS</code>.
           </p>
           <div class="tp-table-wrap">
             <table class="tp-table tp-telemetry-benchmark-table" aria-label="Reference numerical verification benchmark for Folio E.06">
               <thead>
                 <tr>
                   <th scope="col" data-en="Observable / Proof Metric" data-es="Observable / M&eacute;trica de Prueba">Observable / Métrica de Prueba</th>
-                  <th scope="col" data-en="Certified Benchmark Value" data-es="Valor de Referencia Certificado">Valor de Referencia Certificado</th>
-                  <th scope="col" data-en="Deterministic Verifier" data-es="Verificador Determinista">Verificador Determinista</th>
+                  <th scope="col" data-en="Reference Value" data-es="Valor de Referencia">Valor de Referencia</th>
+                  <th scope="col" data-en="Where the value comes from" data-es="De d&oacute;nde viene el valor">De dónde viene el valor</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><th scope="row">Isolated Period &amp; Damping</th><td><code>T_M = 2.85 s (B_M = 1.54)</code></td><td><code>skills/engineering/e06/verify_e06.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Isolator Displacement D_M</th><td><code>232 mm (Moat Limit 400 mm)</code></td><td><code>skills/engineering/e06/verify_e06.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Seismic Base Shear Ratio</th><td><code>V_b / W = 0.142 g (−74%)</code></td><td><code>skills/engineering/e06/verify_e06.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">ASCE 7-22 Cat IV Verdict</th><td><code>IMMEDIATE OCCUPANCY PASS</code></td><td><code>skills/engineering/e06/verify_e06.py</code> &middot; Verified</td></tr>
+                <tr><th scope="row">Isolated Period &amp; Damping</th><td><code>T_M = 2.85 s (B_M = 1.54)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
+<tr><th scope="row">Isolator Displacement D_M</th><td><code>232 mm (Moat Limit 400 mm)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
+<tr><th scope="row">Seismic Base Shear Ratio</th><td><code>V_b / W = 0.142 g (−74%)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
+<tr><th scope="row">ASCE 7-22 Cat IV Verdict</th><td><code>IMMEDIATE OCCUPANCY PASS</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
               </tbody>
             </table>
           </div>
           <p>
-            Every sensitivity bar in Plate E.06-B and every real-time readout card above is computed directly from these governing expressions with zero pre-baked lookup tables. Running <code>python skills/engineering/e06/verify_e06.py</code> from the repository root executes the same numerical assertions and confirms zero drift across all 48 Folios.
+            The values above are the essay's reference values. A script that recomputes them from the governing law is not yet part of this repository.
           </p>
         </section>
 
@@ -693,7 +693,7 @@
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Folio</span><span class="tp-colophon-val">E.06 · Seismic Structural Dynamics · CSI 13 48 00 · VOL. 03</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Kernels</span><span class="tp-colophon-val">ASCE 7-22 Ch. 17 · Bilinear LRB Hysteresis · T_M = 2.85 s</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Benchmarks</span><span class="tp-colophon-val">Risk Category IV Hospital · E_loop = 4 Q_d (D_M − D_y)</span></div>
-          <div class="tp-colophon-cell"><span class="tp-colophon-label">Verifier</span><span class="tp-colophon-val"><code>tools/continuum_verify.py</code></span></div>
+          <div class="tp-colophon-cell"><span class="tp-colophon-label">Lab kernel</span><span class="tp-colophon-val"><code>tools/continuum_verify.py</code></span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Edition</span><span class="tp-colophon-val">REV 1.1 · 2026-11-02</span></div>
         </div>
 
@@ -706,16 +706,15 @@
           <p>Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 445 citing publications (0 supporting, 57 mentioning, 0 contrasting) on ASCE/SEI 7-22 seismic isolation design, inelastic response spectra, and bilinear lead-rubber bearing hysteresis.</p>
         </div>
 
-        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion and Python verifier">
+        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion">
           <div class="tp-skill-header">
-            <span class="tp-skill-kicker">SKILL.md companion &amp; Python verifier</span>
+            <span class="tp-skill-kicker">SKILL.md companion &middot; plain text</span>
             <span class="tp-skill-compat">Works with Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3</span>
           </div>
-          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the exact governing equations of Folio E.06: a portable <code>SKILL.md</code>, a zero-dependency Python verifier (<code>verify_e06.py</code>), or the live telemetry as JSON.</p>
+          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the governing equations of Folio E.06 as plain text: a portable <code>SKILL.md</code>, or the live telemetry as JSON. Its reference values are stated in the essay and are not yet recomputed by a script in this repository.</p>
           <div class="tp-skill-actions">
             <button class="tp-skill-btn" type="button" data-skill-download="asce7-seismic-base-isolation-SKILL.md">Download SKILL.md (asce7-seismic-base-isolation-SKILL.md)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-skill-copy="true">Copy SKILL.md</button>
-            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-py-download="verify_e06.py">Download Python Tool (verify_e06.py)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-telemetry-copy="E.06">Copy Live Telemetry JSON</button>
           </div>
           <details class="tp-skill-source-details">
@@ -728,77 +727,39 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ---
 # Nonlinear Structural Dynamics, ASCE 7-22 Inelastic Response Spectra &amp; Seismic Base-Isolation Dampers (Folio E.06)
 
-## 1. Governing Law &amp; Tectonic Identity
-- **Folio**: `E.06 · Seismic Structural Dynamics · CSI 13 48 00` (`REV 1.1`, Redated `2026-11-02`)
-- **Governing Equation**: `M ü + C u̇ + F_s(u) = −M ü_g(t) · V_b = C_s W · μ_Δ = Δ_max / Δ_y`
-- **Primary Verification Kernel**: `skills/engineering/e06/verify_e06.py`
-- **Verification Benchmarks**: `Risk Category IV Hospital · E_loop = 4 Q_d (D_M − D_y)`
-- **Primary Scite Anchor DOI**: https://doi.org/10.1061/9780784415788 (Scite Report: https://scite.ai/reports/10.1061/9780784415788)
+A plain-text companion to the essay at https://informatico.ai/engineering/e06/ (`E.06 · Seismic Structural Dynamics · CSI 13 48 00`, `REV 1.1`, redated `2026-11-02`).
 
-## 2. Deterministic Verification &amp; Falsification Rules
+## The governing relation
+`M ü + C u̇ + F_s(u) = −M ü_g(t) · V_b = C_s W · μ_Δ = Δ_max / Δ_y`
+
+## Rules the essay derives
 1. Compute secant isolator stiffness k_eff = Q_d / D_M + k_d and effective isolated period T_M = 2 * pi * sqrt(W / (g * k_eff)).
 2. Evaluate bilinear hysteretic loop energy E_loop = 4 * Q_d * (D_M - D_y), equivalent viscous damping beta_eff = E_loop / (2 * pi * k_eff * D_M^2), and ASCE 7-22 damping factor B_M.
 3. Verify design displacement D_M = (g * S_D1 * T_M) / (4 * pi^2 * B_M) stays within seismic moat clearance and Risk Category IV inter-story drift stays below 0.010 h_sx.
 
-## 3. 4-Stage Physical &amp; Mathematical Mechanism
+## How it works, in four stages
 - Stage 1 (Fixed-Base Resonance Amplification): An unisolated T_fixed = 0.65 s frame sits on the S_DS = 1.00 g spectral plateau, experiencing high floor accelerations and inter-story drift.
 - Stage 2 (Lead-Rubber Period Lengthening, T_M = 2.85 s): CSI 13 48 00 elastomeric bearings shift the fundamental period out to the 1/T velocity-controlled branch, cutting spectral acceleration by 72%.
 - Stage 3 (Bilinear Lead-Core Hysteretic Energy Dissipation): Plastic shear yielding of the central lead plug dissipates E_loop = 4 Q_d (D_M − D_y) per cycle (β_eff = 22%, damping factor B_M = 1.54).
 - Stage 4 (ASCE 7-22 Risk Category IV Verification): Certifies isolator displacement D_M = 232 mm (&lt; 400 mm moat limit), base shear C_s = 0.142 W, and superstructure drift ≤ 0.32%.
 
-## 4. Reference Telemetry &amp; Acceptance Bounds
+## Reference values stated in the essay
 - **Isolated Period &amp; Damping**: `T_M = 2.85 s (B_M = 1.54)`
 - **Isolator Displacement D_M**: `232 mm (Moat Limit 400 mm)`
 - **Seismic Base Shear Ratio**: `V_b / W = 0.142 g (−74%)`
 - **ASCE 7-22 Cat IV Verdict**: `IMMEDIATE OCCUPANCY PASS`
 
-## 5. Frontier Discovery &amp; Contemporary Research Context (2024–2026)
+## What is and is not checked
+The reference values above are stated in the essay. No script in this repository recomputes them yet, so treat them as the essay&#x27;s claims and check them against the primary source before relying on them.
+
+## Primary source
+- https://doi.org/10.1061/9780784415788 (Scite report: https://scite.ai/reports/10.1061/9780784415788)
+- What the essay compares against: Risk Category IV Hospital · E_loop = 4 Q_d (D_M − D_y)
+
+## Recent research context
 - **ASCE 7-22 Chapter 17 Multi-Period MCE_R Spectra &amp; Bilinear Lead-Rubber Hospital Isolation**: Uniting Maurice Biot&#x27;s 1932 response spectrum and William Robinson&#x27;s Lead-Rubber Bearing (LRB), the ASCE/SEI 7-22 standard (DOI 10.1061/9780784415788) introduces site-specific multi-period MCE_R spectra that shift Risk Category IV hospitals and Cryo-EM/GMP gene-therapy suites (PDB 8EIQ) to T_M = 2.85 s, slashing seismic base shear by 74%.
 </code></pre>
           </details>
-          <pre class="tp-skill-pre" hidden><code data-py-source>#!/usr/bin/env python3
-&quot;&quot;&quot;Standalone Zero-Dependency Deterministic Verifier for Folio E.06 (e06).
-Primary Crossref Anchor DOI: https://doi.org/10.1061/9780784415788
-&quot;&quot;&quot;
-from __future__ import annotations
-
-import json
-import math
-import sys
-
-if hasattr(sys.stdout, &quot;reconfigure&quot;):
-    sys.stdout.reconfigure(encoding=&quot;utf-8&quot;)
-
-FOLIO_METADATA = {
-    &quot;folio_id&quot;: &quot;E.06&quot;,
-    &quot;slug&quot;: &quot;e06&quot;,
-    &quot;title&quot;: &quot;Nonlinear Structural Dynamics, ASCE 7-22 Inelastic Response Spectra &amp; Seismic Base-Isolation Dampers&quot;,
-    &quot;governing_law&quot;: &quot;M ü + C u̇ + F_s(u) = −M ü_g(t) · V_b = C_s W · μ_Δ = Δ_max / Δ_y&quot;,
-    &quot;primary_kernel&quot;: &quot;tools/continuum_verify.py&quot;,
-    &quot;primary_doi&quot;: &quot;10.1061/9780784415788&quot;,
-    &quot;scite_report&quot;: &quot;https://scite.ai/reports/10.1061/9780784415788&quot;,
-    &quot;benchmarks&quot;: [{&quot;label&quot;: &quot;Isolated Period &amp; Damping&quot;, &quot;value&quot;: &quot;T_M = 2.85 s (B_M = 1.54)&quot;}, {&quot;label&quot;: &quot;Isolator Displacement D_M&quot;, &quot;value&quot;: &quot;232 mm (Moat Limit 400 mm)&quot;}, {&quot;label&quot;: &quot;Seismic Base Shear Ratio&quot;, &quot;value&quot;: &quot;V_b / W = 0.142 g (−74%)&quot;}, {&quot;label&quot;: &quot;ASCE 7-22 Cat IV Verdict&quot;, &quot;value&quot;: &quot;IMMEDIATE OCCUPANCY PASS&quot;}],
-}
-
-
-def verify_folio_invariants(scale: float = 1.0) -&gt; dict:
-    &quot;&quot;&quot;Evaluate reference conservation and safety bounds for Folio E.06.&quot;&quot;&quot;
-    assert scale &gt; 0.0 and math.isfinite(scale), &quot;Scale factor must be positive and finite&quot;
-    return {
-        &quot;status&quot;: &quot;PASS&quot;,
-        &quot;verdict&quot;: &quot;PASS&quot;,
-        &quot;folio_id&quot;: FOLIO_METADATA[&quot;folio_id&quot;],
-        &quot;governing_law&quot;: FOLIO_METADATA[&quot;governing_law&quot;],
-        &quot;scale&quot;: round(scale, 4),
-        &quot;benchmarks&quot;: FOLIO_METADATA[&quot;benchmarks&quot;],
-    }
-
-
-if __name__ == &quot;__main__&quot;:
-    result = verify_folio_invariants()
-    print(json.dumps(result, indent=2, ensure_ascii=False))
-    sys.exit(0)
-</code></pre>
         </section>
 
         <section class="tp-rev-ledger" aria-label="Folio E.06 edition history and review">

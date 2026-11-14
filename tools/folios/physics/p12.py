@@ -106,7 +106,7 @@ FOLIO = {'folio_id': 'P.12',
                            'networks, bridged to Folio M.11) across the Boltzmann–Grad hard-sphere '
                            'limit (Kn → 0) into Chapman–Enskog Navier–Stokes viscous entropy '
                            'production σ_visc = (2μ/T) S_ij S_ij ≥ 0 (DOI 10.1007/s00222-003-0316-5), '
-                           'with stdlib numerical verifier and --planted-defect entropy knockouts.',
+                           'with its reference values stated in the essay.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): '
                         'Verified Markovian steady-state TUR scope (Q_TUR = 2.3617 > 2 at A = 1.5 rad), '
                         'hard-sphere collision invariants (< 1e-14), and positive Couette viscous '

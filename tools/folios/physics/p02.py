@@ -21,7 +21,7 @@ FOLIO = {'category_code': 'P',
  'readouts': [{'label': 'Beating Frequency', 'value': '14.00 Hz (Healthy PCL)'},
               {'label': 'Metachronal Wave Velocity', 'value': '336.00 μm/s'},
               {'label': 'Kuramoto Order Parameter', 'value': '0.880 (High Coherence)'},
-              {'label': 'Kernel Verification', 'value': 'PASS · VERIFIED'}],
+              {'label': 'Reference Values', 'value': 'STATED IN ESSAY'}],
  'revisions': [{'date': '2026-11-02',
                 'edition': 'REV 1.2',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '

@@ -359,7 +359,7 @@
               <p class="tp-theorem-meta"><strong>Kernels:</strong> Carreau-Yasuda Viscoelasticity · Mesh Scaling xi ~ w^(-0.75) &middot; <strong>Benchmarks:</strong> Multiple-Particle Tracking (MPT) · MUC5AC / MUC5B Hydrogels &middot; <strong>Primary Anchor:</strong> <code>DOI 10.1103/PhysRevLett.74.1250</code></p>
             </div>
             <p>
-              To elevate Folio <strong>P.03</strong> (<em>Soft Matter Rheology and Anomalous Subdiffusion in Entangled Mucin Hydrogels</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>η(γ̇) = η_∞ + (η_0 − η_∞)[1 + (λ γ̇)²]^((n−1)/2) · ξ_mesh ~ w^(−0.75)</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>Mucin Solids Fraction (w)</em>) spanning the admissible interval <code>[1.0, 10.0]</code> with step resolution <code>&Delta; = 0.5</code> and canonical reference operating point <code>%2.0</code>; control parameter <code>P_2</code> (<em>Nanoparticle Diameter (d_p)</em>) spanning the admissible interval <code>[20.0, 150.0]</code> with step resolution <code>&Delta; = 5.0</code> and canonical reference operating point <code>nm65.0</code>. Over this bounded domain, the coupled kernels (<code>Carreau-Yasuda Viscoelasticity · Mesh Scaling xi ~ w^(-0.75)</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point certified by <code>skills/physics/p03/verify_p03.py</code>.
+              To elevate Folio <strong>P.03</strong> (<em>Soft Matter Rheology and Anomalous Subdiffusion in Entangled Mucin Hydrogels</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>η(γ̇) = η_∞ + (η_0 − η_∞)[1 + (λ γ̇)²]^((n−1)/2) · ξ_mesh ~ w^(−0.75)</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>Mucin Solids Fraction (w)</em>) spanning the admissible interval <code>[1.0, 10.0]</code> with step resolution <code>&Delta; = 0.5</code> and canonical reference operating point <code>%2.0</code>; control parameter <code>P_2</code> (<em>Nanoparticle Diameter (d_p)</em>) spanning the admissible interval <code>[20.0, 150.0]</code> with step resolution <code>&Delta; = 5.0</code> and canonical reference operating point <code>nm65.0</code>. Over this bounded domain, the coupled kernels (<code>Carreau-Yasuda Viscoelasticity · Mesh Scaling xi ~ w^(-0.75)</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point.
             </p>
             <p>
               Crucially, well-posedness across the <code>Multiple-Particle Tracking (MPT) · MUC5AC / MUC5B Hydrogels</code> regime requires that the governing operator preserve dimensional homogeneity, non-negativity of physical energy/entropy functionals, and strict monotony along the primary reaction or proof coordinate. Whenever a simplified model omits one of the coupled terms in <code>η(γ̇) = η_∞ + (η_0 − η_∞)[1 + (λ γ̇)²]^((n−1)/2) · ξ_mesh ~ w^(−0.75)</code>, the resulting approximation violates boundary compatibility and diverges from the primary peer-reviewed evidence (<code>Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,778 citing publications (36 supporting, 1,783 mentioning, 3 contrasting) on non-linear rheology and viscoelastic microrheology of biological biopolymer hydrogels.</code>).
@@ -369,7 +369,7 @@
           <article class="tp-proof-chapter" id="ch-ii-2-p03">
             <h3 data-en="&sect; II.2 &middot; Four-Stage Proof &amp; Mechanism Decomposition (Stages 1&ndash;4)" data-es="&sect; II.2 &middot; Descomposici&oacute;n Demostrativa y Mecanismo en Cuatro Etapas (Etapas 1&ndash;4)">§ II.2 · Descomposición Demostrativa y Mecanismo en Cuatro Etapas (Etapas 1–4)</h3>
             <p>
-              Rather than treating <code>η(γ̇) = η_∞ + (η_0 − η_∞)[1 + (λ γ̇)²]^((n−1)/2) · ξ_mesh ~ w^(−0.75)</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>P.03</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III and the standalone verification suite in <code>skills/physics/p03/verify_p03.py</code>:
+              Rather than treating <code>η(γ̇) = η_∞ + (η_0 − η_∞)[1 + (λ γ̇)²]^((n−1)/2) · ξ_mesh ~ w^(−0.75)</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>P.03</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III:
             </p>
           <div class="tp-proof-stage-block">
             <h4><span data-en="Stage 1 Derivation &amp; State Transition" data-es="Derivaci&oacute;n y Transici&oacute;n de Estado &middot; Etapa 1">Derivación y Transición de Estado · Etapa 1</span></h4>
@@ -404,24 +404,24 @@
           <article class="tp-proof-chapter" id="ch-ii-3-p03">
             <h3 data-en="&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds" data-es="&sect; II.3 &middot; Invariantes de Verificaci&oacute;n Determinista, Escalamiento Dimensional y Cotas de Estabilidad">§ II.3 · Invariantes de Verificación Determinista, Escalamiento Dimensional y Cotas de Estabilidad</h3>
             <p>
-              In our lab&rsquo;s formal verification architecture, prose explanations are never separated from executable proof certificates. Every quantitative claim in Folio <strong>P.03</strong> is governed by three machine-checked falsification rules embedded in <code>mucus-soft-matter-SKILL.md</code> and executed by <code>skills/physics/p03/verify_p03.py</code>:
+              Folio <strong>P.03</strong> states three rules a careful reader can use to test its claims. They are listed as plain text in <code>mucus-soft-matter-SKILL.md</code>. No script in this repository executes them yet:
             </p>
             <ol class="tp-invariant-list">
           <li>
             <strong>Invariant P.03-R1:</strong> Scale mesh pore diameter as xi = 140 * (2.0 / w)^0.75 nm.
-            <span>Verified deterministically offline by <code>skills/physics/p03/verify_p03.py</code> against primary anchor <code>DOI 10.1103/PhysRevLett.74.1250</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1103/PhysRevLett.74.1250</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant P.03-R2:</strong> Compute subdiffusion exponent alpha(d_p, xi) to verify penetration window.
-            <span>Verified deterministically offline by <code>skills/physics/p03/verify_p03.py</code> against primary anchor <code>DOI 10.1103/PhysRevLett.74.1250</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1103/PhysRevLett.74.1250</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant P.03-R3:</strong> Trigger mucus plug alert when solids fraction w &gt;= 7.0%.
-            <span>Verified deterministically offline by <code>skills/physics/p03/verify_p03.py</code> against primary anchor <code>DOI 10.1103/PhysRevLett.74.1250</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1103/PhysRevLett.74.1250</code>. Not yet recomputed by a script in this repository.</span>
           </li>
             </ol>
             <p>
-              Together, Invariants <strong>P.03-R1</strong> through <strong>P.03-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. If any parameter perturbation or code edit violates these bounds, the automated verification gate rejects the build before publication.
+              Together, Invariants <strong>P.03-R1</strong> through <strong>P.03-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. These bounds are stated for the reader. No automated gate enforces them yet.
             </p>
           </article>
 
@@ -539,8 +539,8 @@
               <span id="out-r2" class="tp-readout-v">0.055 Pa·s (2% solids)</span>
             </div>
             <div id="out-status-box" class="tp-readout-box" data-alert="false">
-              <span class="tp-readout-k">Kernel Verification</span>
-              <span id="out-status" class="tp-readout-v">PASS · VERIFIED</span>
+              <span class="tp-readout-k">Reference Values</span>
+              <span id="out-status" class="tp-readout-v">STATED IN ESSAY</span>
             </div>
           </div>
         </div>
@@ -548,27 +548,27 @@
         <section class="tp-worked-verification-chapter" id="ch-iii-2-p03" aria-labelledby="ch-iii-2-heading-p03">
           <h3 id="ch-iii-2-heading-p03" data-en="&sect; III.2 &middot; Worked Numerical Verification &amp; Reference Telemetry Benchmark" data-es="&sect; III.2 &middot; Verificaci&oacute;n Num&eacute;rica Paso a Paso y Telemetr&iacute;a de Referencia">§ III.2 · Verificación Numérica Paso a Paso y Telemetría de Referencia</h3>
           <p>
-            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>η(γ̇) = η_∞ + (η_0 − η_∞)[1 + (λ γ̇)²]^((n−1)/2) · ξ_mesh ~ w^(−0.75)</code> at the canonical benchmark configuration (<code>Multiple-Particle Tracking (MPT) · MUC5AC / MUC5B Hydrogels</code>). Substituting control parameter <code>P_1</code> (<em>Mucin Solids Fraction (w)</em>) spanning the admissible interval <code>[1.0, 10.0]</code> with step resolution <code>&Delta; = 0.5</code> and canonical reference operating point <code>%2.0</code>; control parameter <code>P_2</code> (<em>Nanoparticle Diameter (d_p)</em>) spanning the admissible interval <code>[20.0, 150.0]</code> with step resolution <code>&Delta; = 5.0</code> and canonical reference operating point <code>nm65.0</code> into the coupled Stage 1&ndash;4 equations yields the exact reference telemetry certified by our offline verification kernel: <strong>Mesh Pore Size</strong> converges to <code>140.0 nm (Healthy) vs 49.5 nm (CF)</code>; <strong>Subdiffusion Exponent (alpha)</strong> converges to <code>0.814 (65 nm LNP in Healthy)</code>; <strong>Zero-Shear Viscosity</strong> converges to <code>0.055 Pa·s (2% solids)</code>; <strong>Kernel Verification</strong> converges to <code>PASS · VERIFIED</code>.
+            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>η(γ̇) = η_∞ + (η_0 − η_∞)[1 + (λ γ̇)²]^((n−1)/2) · ξ_mesh ~ w^(−0.75)</code> at the canonical benchmark configuration (<code>Multiple-Particle Tracking (MPT) · MUC5AC / MUC5B Hydrogels</code>). Substituting control parameter <code>P_1</code> (<em>Mucin Solids Fraction (w)</em>) spanning the admissible interval <code>[1.0, 10.0]</code> with step resolution <code>&Delta; = 0.5</code> and canonical reference operating point <code>%2.0</code>; control parameter <code>P_2</code> (<em>Nanoparticle Diameter (d_p)</em>) spanning the admissible interval <code>[20.0, 150.0]</code> with step resolution <code>&Delta; = 5.0</code> and canonical reference operating point <code>nm65.0</code> into the coupled Stage 1&ndash;4 equations yields the reference values stated in the essay: <strong>Mesh Pore Size</strong> converges to <code>140.0 nm (Healthy) vs 49.5 nm (CF)</code>; <strong>Subdiffusion Exponent (alpha)</strong> converges to <code>0.814 (65 nm LNP in Healthy)</code>; <strong>Zero-Shear Viscosity</strong> converges to <code>0.055 Pa·s (2% solids)</code>; <strong>Reference Values</strong> converges to <code>STATED IN ESSAY</code>.
           </p>
           <div class="tp-table-wrap">
             <table class="tp-table tp-telemetry-benchmark-table" aria-label="Reference numerical verification benchmark for Folio P.03">
               <thead>
                 <tr>
                   <th scope="col" data-en="Observable / Proof Metric" data-es="Observable / M&eacute;trica de Prueba">Observable / Métrica de Prueba</th>
-                  <th scope="col" data-en="Certified Benchmark Value" data-es="Valor de Referencia Certificado">Valor de Referencia Certificado</th>
-                  <th scope="col" data-en="Deterministic Verifier" data-es="Verificador Determinista">Verificador Determinista</th>
+                  <th scope="col" data-en="Reference Value" data-es="Valor de Referencia">Valor de Referencia</th>
+                  <th scope="col" data-en="Where the value comes from" data-es="De d&oacute;nde viene el valor">De dónde viene el valor</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><th scope="row">Mesh Pore Size</th><td><code>140.0 nm (Healthy) vs 49.5 nm (CF)</code></td><td><code>skills/physics/p03/verify_p03.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Subdiffusion Exponent (alpha)</th><td><code>0.814 (65 nm LNP in Healthy)</code></td><td><code>skills/physics/p03/verify_p03.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Zero-Shear Viscosity</th><td><code>0.055 Pa·s (2% solids)</code></td><td><code>skills/physics/p03/verify_p03.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Kernel Verification</th><td><code>PASS · VERIFIED</code></td><td><code>skills/physics/p03/verify_p03.py</code> &middot; Verified</td></tr>
+                <tr><th scope="row">Mesh Pore Size</th><td><code>140.0 nm (Healthy) vs 49.5 nm (CF)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
+<tr><th scope="row">Subdiffusion Exponent (alpha)</th><td><code>0.814 (65 nm LNP in Healthy)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
+<tr><th scope="row">Zero-Shear Viscosity</th><td><code>0.055 Pa·s (2% solids)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
+<tr><th scope="row">Reference Values</th><td><code>STATED IN ESSAY</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
               </tbody>
             </table>
           </div>
           <p>
-            Every sensitivity bar in Plate P.03-B and every real-time readout card above is computed directly from these governing expressions with zero pre-baked lookup tables. Running <code>python skills/physics/p03/verify_p03.py</code> from the repository root executes the same numerical assertions and confirms zero drift across all 48 Folios.
+            The values above are the essay's reference values. A script that recomputes them from the governing law is not yet part of this repository.
           </p>
         </section>
 
@@ -686,7 +686,7 @@
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Folio</span><span class="tp-colophon-val">P.03 · Soft Matter &amp; Subdiffusion · VOL. 02</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Kernels</span><span class="tp-colophon-val">Carreau-Yasuda Viscoelasticity · Mesh Scaling xi ~ w^(-0.75)</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Benchmarks</span><span class="tp-colophon-val">Multiple-Particle Tracking (MPT) · MUC5AC / MUC5B Hydrogels</span></div>
-          <div class="tp-colophon-cell"><span class="tp-colophon-label">Verifier</span><span class="tp-colophon-val"><code>tools/physics_kernel.py</code></span></div>
+          <div class="tp-colophon-cell"><span class="tp-colophon-label">Lab kernel</span><span class="tp-colophon-val"><code>tools/physics_kernel.py</code></span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Edition</span><span class="tp-colophon-val">REV 1.2 · 2026-11-02</span></div>
         </div>
 
@@ -699,16 +699,15 @@
           <p>Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,778 citing publications (36 supporting, 1,783 mentioning, 3 contrasting) on non-linear rheology and viscoelastic microrheology of biological biopolymer hydrogels.</p>
         </div>
 
-        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion and Python verifier">
+        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion">
           <div class="tp-skill-header">
-            <span class="tp-skill-kicker">SKILL.md companion &amp; Python verifier</span>
+            <span class="tp-skill-kicker">SKILL.md companion &middot; plain text</span>
             <span class="tp-skill-compat">Works with Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3</span>
           </div>
-          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the exact governing equations of Folio P.03: a portable <code>SKILL.md</code>, a zero-dependency Python verifier (<code>verify_p03.py</code>), or the live telemetry as JSON.</p>
+          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the governing equations of Folio P.03 as plain text: a portable <code>SKILL.md</code>, or the live telemetry as JSON. Its reference values are stated in the essay and are not yet recomputed by a script in this repository.</p>
           <div class="tp-skill-actions">
             <button class="tp-skill-btn" type="button" data-skill-download="mucus-soft-matter-SKILL.md">Download SKILL.md (mucus-soft-matter-SKILL.md)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-skill-copy="true">Copy SKILL.md</button>
-            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-py-download="verify_p03.py">Download Python Tool (verify_p03.py)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-telemetry-copy="P.03">Copy Live Telemetry JSON</button>
           </div>
           <details class="tp-skill-source-details">
@@ -721,77 +720,38 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ---
 # Soft Matter Rheology and Anomalous Subdiffusion in Entangled Mucin Hydrogels (Folio P.03)
 
-## 1. Governing Law &amp; Tectonic Identity
-- **Folio**: `P.03 · Soft Matter &amp; Subdiffusion` (`REV 1.2`, Redated `2026-11-02`)
-- **Governing Equation**: `η(γ̇) = η_∞ + (η_0 − η_∞)[1 + (λ γ̇)²]^((n−1)/2) · ξ_mesh ~ w^(−0.75)`
-- **Primary Verification Kernel**: `skills/physics/p03/verify_p03.py`
-- **Verification Benchmarks**: `Multiple-Particle Tracking (MPT) · MUC5AC / MUC5B Hydrogels`
-- **Primary Scite Anchor DOI**: https://doi.org/10.1103/PhysRevLett.74.1250 (Scite Report: https://scite.ai/reports/10.1103/PhysRevLett.74.1250)
+A plain-text companion to the essay at https://informatico.ai/physics/p03/ (`P.03 · Soft Matter &amp; Subdiffusion`, `REV 1.2`, redated `2026-11-02`).
 
-## 2. Deterministic Verification &amp; Falsification Rules
+## The governing relation
+`η(γ̇) = η_∞ + (η_0 − η_∞)[1 + (λ γ̇)²]^((n−1)/2) · ξ_mesh ~ w^(−0.75)`
+
+## Rules the essay derives
 1. Scale mesh pore diameter as xi = 140 * (2.0 / w)^0.75 nm.
 2. Compute subdiffusion exponent alpha(d_p, xi) to verify penetration window.
 3. Trigger mucus plug alert when solids fraction w &gt;= 7.0%.
 
-## 3. 4-Stage Physical &amp; Mathematical Mechanism
+## How it works, in four stages
 - Stage 1 (Healthy Mesh, 2% solids): Mucin mesh pore size xi ≈ 140 nm allows 65 nm PEGylated LNPs to diffuse freely (alpha ≈ 0.72).
 - Stage 2 (Shear-Thinning Response): Ciliary shear rates (dot_gamma ~ 10 s^-1) reduce local gel viscosity by an order of magnitude via Carreau-Yasuda dynamics.
 - Stage 3 (Concentration Shock &amp; Plug Formation): In CF sputum (8% solids), pore size drops to 45 nm, sterically locking particles larger than 50 nm.
 - Stage 4 (Subdiffusive Trapping): Particle trajectory collapses to alpha &lt; 0.20, demonstrating the necessity of dense PEGylation and mucolytic co-delivery.
 
-## 4. Reference Telemetry &amp; Acceptance Bounds
+## Reference values stated in the essay
 - **Mesh Pore Size**: `140.0 nm (Healthy) vs 49.5 nm (CF)`
 - **Subdiffusion Exponent (alpha)**: `0.814 (65 nm LNP in Healthy)`
 - **Zero-Shear Viscosity**: `0.055 Pa·s (2% solids)`
-- **Kernel Verification**: `PASS · VERIFIED`
 
-## 5. Frontier Discovery &amp; Contemporary Research Context (2024–2026)
+## What is and is not checked
+The reference values above are stated in the essay. No script in this repository recomputes them yet, so treat them as the essay&#x27;s claims and check them against the primary source before relying on them.
+
+## Primary source
+- https://doi.org/10.1103/PhysRevLett.74.1250 (Scite report: https://scite.ai/reports/10.1103/PhysRevLett.74.1250)
+- What the essay compares against: Multiple-Particle Tracking (MPT) · MUC5AC / MUC5B Hydrogels
+
+## Recent research context
 - **Single-Particle Tracking Reveals Anomalous Subdiffusion to Normal Diffusion Crossover in CF Sputum**: Applying Pierre-Gilles de Gennes&#x27;s polymer correlation scaling and Mason–Weitz generalized Stokes–Einstein microrheology (Phys. Rev. Lett. DOI 10.1103/PhysRevLett.74.1250), multiple-particle tracking studies (Lai et al. PNAS DOI 10.1073/pnas.0705326104) map the exact mesh-size threshold where inhaled mRNA lipid nanoparticles escape mucin caging.
 </code></pre>
           </details>
-          <pre class="tp-skill-pre" hidden><code data-py-source>#!/usr/bin/env python3
-&quot;&quot;&quot;Standalone Zero-Dependency Deterministic Verifier for Folio P.03 (p03).
-Primary Crossref Anchor DOI: https://doi.org/10.1103/PhysRevLett.74.1250
-&quot;&quot;&quot;
-from __future__ import annotations
-
-import json
-import math
-import sys
-
-if hasattr(sys.stdout, &quot;reconfigure&quot;):
-    sys.stdout.reconfigure(encoding=&quot;utf-8&quot;)
-
-FOLIO_METADATA = {
-    &quot;folio_id&quot;: &quot;P.03&quot;,
-    &quot;slug&quot;: &quot;p03&quot;,
-    &quot;title&quot;: &quot;Soft Matter Rheology and Anomalous Subdiffusion in Entangled Mucin Hydrogels&quot;,
-    &quot;governing_law&quot;: &quot;η(γ̇) = η_∞ + (η_0 − η_∞)[1 + (λ γ̇)²]^((n−1)/2) · ξ_mesh ~ w^(−0.75)&quot;,
-    &quot;primary_kernel&quot;: &quot;tools/physics_kernel.py&quot;,
-    &quot;primary_doi&quot;: &quot;10.1103/PhysRevLett.74.1250&quot;,
-    &quot;scite_report&quot;: &quot;https://scite.ai/reports/10.1103/PhysRevLett.74.1250&quot;,
-    &quot;benchmarks&quot;: [{&quot;label&quot;: &quot;Mesh Pore Size&quot;, &quot;value&quot;: &quot;140.0 nm (Healthy) vs 49.5 nm (CF)&quot;}, {&quot;label&quot;: &quot;Subdiffusion Exponent (alpha)&quot;, &quot;value&quot;: &quot;0.814 (65 nm LNP in Healthy)&quot;}, {&quot;label&quot;: &quot;Zero-Shear Viscosity&quot;, &quot;value&quot;: &quot;0.055 Pa·s (2% solids)&quot;}, {&quot;label&quot;: &quot;Kernel Verification&quot;, &quot;value&quot;: &quot;PASS · VERIFIED&quot;}],
-}
-
-
-def verify_folio_invariants(scale: float = 1.0) -&gt; dict:
-    &quot;&quot;&quot;Evaluate reference conservation and safety bounds for Folio P.03.&quot;&quot;&quot;
-    assert scale &gt; 0.0 and math.isfinite(scale), &quot;Scale factor must be positive and finite&quot;
-    return {
-        &quot;status&quot;: &quot;PASS&quot;,
-        &quot;verdict&quot;: &quot;PASS&quot;,
-        &quot;folio_id&quot;: FOLIO_METADATA[&quot;folio_id&quot;],
-        &quot;governing_law&quot;: FOLIO_METADATA[&quot;governing_law&quot;],
-        &quot;scale&quot;: round(scale, 4),
-        &quot;benchmarks&quot;: FOLIO_METADATA[&quot;benchmarks&quot;],
-    }
-
-
-if __name__ == &quot;__main__&quot;:
-    result = verify_folio_invariants()
-    print(json.dumps(result, indent=2, ensure_ascii=False))
-    sys.exit(0)
-</code></pre>
         </section>
 
         <section class="tp-rev-ledger" aria-label="Folio P.03 edition history and review">

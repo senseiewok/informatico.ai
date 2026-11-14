@@ -1,6 +1,6 @@
 ---
 name: bounty-b02-surface-code-femoco
-description: Deterministic verification harness, 4-stage proof spine, and T0-T3 truth boundary for B.02 (BOUNTY-P1): $5M XPRIZE Quantum Applications & Unitary Foundation: Surface-Code Thresholds & FeMoCo Catalysis.
+description: Governing law, 4-stage proof spine, and T0-T3 truth boundary for B.02 (BOUNTY-P1): $5M XPRIZE Quantum Applications & Unitary Foundation: Surface-Code Thresholds & FeMoCo Catalysis. The proof harness is bounties/bounty_p1_surface_code_femoco.py.
 license: MIT
 compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI Codex, Ollama (Qwen 3.8 / Gemma 4)
 ---
@@ -12,10 +12,10 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Prize / Challenge**: BOUNTY B.02 (P-1) · $5M XPRIZE QUANTUM + UNITARYHACK
 - **Official Registry**: [Metriq.info Quantum Benchmark Registry](https://metriq.info/)
 - **Governing Equation**: `P_L = 0.03 (p_phys / p_th)^((d+1)/2) · Q_phys = 2 · N_tiles · d² (d = 27 ⇒ P_L = 3.00 × 10⁻¹⁶)`
-- **Primary Verification Harness**: `python bounties/bounty_p1_surface_code_femoco.py`
+- **Proof harness (computes the reference results; no planted-defect mode yet)**: `python bounties/bounty_p1_surface_code_femoco.py`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1103/PhysRevA.86.032324 (Scite Report: https://scite.ai/reports/10.1103/PhysRevA.86.032324)
 
-## 2. Deterministic Verification & Falsification Rules
+## 2. Falsification Rules
 1. Sub-Threshold Suppression Invariant: Fault-tolerant exponential suppression holds if and only if p_phys < p_th = 0.01; at p_phys ≥ p_th, increasing code distance d degrades rather than improves logical fidelity.
 2. Deep-Circuit Survival Ceiling: Simulating FeMoCo's 10¹⁰ Toffoli/T gates requires per-round logical error P_L < 10⁻¹²; at p_phys = 0.001 and d = 27, P_L = 3.00 × 10⁻¹⁶ passes with >3 orders of magnitude margin.
 3. Physical Qubit Footprint Conservation: Total physical qubits scale strictly as Q_phys = 2 × (N_data + N_factory) × d² = 2 × 294 × 27² = 428,652.
@@ -26,7 +26,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Stage 3: Code Distance Selection for Deep Toffoli Circuits — Choose odd code distance d = 27 so the exponent (d+1)/2 = 14 drives P_L = 0.03 × 10⁻¹⁴ = 3.00 × 10⁻¹⁶ below the 10⁻¹² deep-circuit survival ceiling.
 - Stage 4: Active-Volume Tile & Magic-State Footprint — Sum 114 logical data/routing tiles and 180 magic-state distillation tiles (294 tiles × 2d² = 428,652 physical qubits).
 
-## 4. Certified Reference Telemetry (T0/T1)
+## 4. Reference Results Computed by the Harness (T0/T1)
 - **Logical Error / Round P_L**: `3.00 × 10⁻¹⁶ (at d = 27, p = 0.001)`
 - **Active-Volume Logical Tiles**: `294 tiles (114 data + 180 factory)`
 - **Total Physical Qubit Footprint**: `428,652 physical qubits`

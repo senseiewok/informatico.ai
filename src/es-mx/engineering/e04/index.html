@@ -359,7 +359,7 @@
               <p class="tp-theorem-meta"><strong>Kernels:</strong> ε = NTU / (1 + NTU) (Balanced Counter-Current) &middot; <strong>Benchmarks:</strong> Sensible ε_s = 88.2% · Latent ε_l = 79.4% &middot; <strong>Primary Anchor:</strong> <code>DOI 10.1115/1.3644004</code></p>
             </div>
             <p>
-              To elevate Folio <strong>E.04</strong> (<em>Counter-Current Enthalpy Recovery Exchangers: Effectiveness–NTU, Membrane Sorption, and Frost Limits</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>ε = NTU / (1 + NTU) · Bi_m = h_m δ_m / D_w · CSI 23 72 23</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>Sensible Transfer Units (NTU_s)</em>) spanning the admissible interval <code>[1.0, 12.0]</code> with step resolution <code>&Delta; = 0.1</code> and canonical reference operating point <code>NTU = 7.5</code>; control parameter <code>P_2</code> (<em>Membrane Moisture NTU (NTU_m)</em>) spanning the admissible interval <code>[0.5, 8.0]</code> with step resolution <code>&Delta; = 0.1</code> and canonical reference operating point <code>NTU_m = 3.85</code>. Over this bounded domain, the coupled kernels (<code>ε = NTU / (1 + NTU) (Balanced Counter-Current)</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point certified by <code>skills/engineering/e04/verify_e04.py</code>.
+              To elevate Folio <strong>E.04</strong> (<em>Counter-Current Enthalpy Recovery Exchangers: Effectiveness–NTU, Membrane Sorption, and Frost Limits</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>ε = NTU / (1 + NTU) · Bi_m = h_m δ_m / D_w · CSI 23 72 23</code> acts. Let the system state be parameterized by control parameter <code>P_1</code> (<em>Sensible Transfer Units (NTU_s)</em>) spanning the admissible interval <code>[1.0, 12.0]</code> with step resolution <code>&Delta; = 0.1</code> and canonical reference operating point <code>NTU = 7.5</code>; control parameter <code>P_2</code> (<em>Membrane Moisture NTU (NTU_m)</em>) spanning the admissible interval <code>[0.5, 8.0]</code> with step resolution <code>&Delta; = 0.1</code> and canonical reference operating point <code>NTU_m = 3.85</code>. Over this bounded domain, the coupled kernels (<code>ε = NTU / (1 + NTU) (Balanced Counter-Current)</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point.
             </p>
             <p>
               Crucially, well-posedness across the <code>Sensible ε_s = 88.2% · Latent ε_l = 79.4%</code> regime requires that the governing operator preserve dimensional homogeneity, non-negativity of physical energy/entropy functionals, and strict monotony along the primary reaction or proof coordinate. Whenever a simplified model omits one of the coupled terms in <code>ε = NTU / (1 + NTU) · Bi_m = h_m δ_m / D_w · CSI 23 72 23</code>, the resulting approximation violates boundary compatibility and diverges from the primary peer-reviewed evidence (<code>Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,942 citing publications (19 supporting, 1,078 mentioning, 0 contrasting) on mucociliary transport and airway surface liquid thermodynamic hydration.</code>).
@@ -369,7 +369,7 @@
           <article class="tp-proof-chapter" id="ch-ii-2-e04">
             <h3 data-en="&sect; II.2 &middot; Four-Stage Proof &amp; Mechanism Decomposition (Stages 1&ndash;4)" data-es="&sect; II.2 &middot; Descomposici&oacute;n Demostrativa y Mecanismo en Cuatro Etapas (Etapas 1&ndash;4)">§ II.2 · Descomposición Demostrativa y Mecanismo en Cuatro Etapas (Etapas 1–4)</h3>
             <p>
-              Rather than treating <code>ε = NTU / (1 + NTU) · Bi_m = h_m δ_m / D_w · CSI 23 72 23</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>E.04</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III and the standalone verification suite in <code>skills/engineering/e04/verify_e04.py</code>:
+              Rather than treating <code>ε = NTU / (1 + NTU) · Bi_m = h_m δ_m / D_w · CSI 23 72 23</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>E.04</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III:
             </p>
           <div class="tp-proof-stage-block">
             <h4><span data-en="Stage 1 Derivation &amp; State Transition" data-es="Derivaci&oacute;n y Transici&oacute;n de Estado &middot; Etapa 1">Derivación y Transición de Estado · Etapa 1</span></h4>
@@ -404,24 +404,24 @@
           <article class="tp-proof-chapter" id="ch-ii-3-e04">
             <h3 data-en="&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds" data-es="&sect; II.3 &middot; Invariantes de Verificaci&oacute;n Determinista, Escalamiento Dimensional y Cotas de Estabilidad">§ II.3 · Invariantes de Verificación Determinista, Escalamiento Dimensional y Cotas de Estabilidad</h3>
             <p>
-              In our lab&rsquo;s formal verification architecture, prose explanations are never separated from executable proof certificates. Every quantitative claim in Folio <strong>E.04</strong> is governed by three machine-checked falsification rules embedded in <code>counter-current-enthalpy-exchanger-SKILL.md</code> and executed by <code>skills/engineering/e04/verify_e04.py</code>:
+              Folio <strong>E.04</strong> states three rules a careful reader can use to test its claims. They are listed as plain text in <code>counter-current-enthalpy-exchanger-SKILL.md</code>. No script in this repository executes them yet:
             </p>
             <ol class="tp-invariant-list">
           <li>
             <strong>Invariant E.04-R1:</strong> For balanced counter-current flow (C_min / C_max = 1), compute effectiveness epsilon = NTU / (1 + NTU).
-            <span>Verified deterministically offline by <code>skills/engineering/e04/verify_e04.py</code> against primary anchor <code>DOI 10.1115/1.3644004</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1115/1.3644004</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant E.04-R2:</strong> Evaluate membrane latent NTU_m = A_tot * U_m / m_dot_da where 1/U_m = 2/h_m + delta_m / D_eff_membrane.
-            <span>Verified deterministically offline by <code>skills/engineering/e04/verify_e04.py</code> against primary anchor <code>DOI 10.1115/1.3644004</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1115/1.3644004</code>. Not yet recomputed by a script in this repository.</span>
           </li>
           <li>
             <strong>Invariant E.04-R3:</strong> Verify exhaust plate surface temperature T_plate_cold &gt; T_frost(omega_exhaust) to prevent ice occlusion.
-            <span>Verified deterministically offline by <code>skills/engineering/e04/verify_e04.py</code> against primary anchor <code>DOI 10.1115/1.3644004</code>.</span>
+            <span>Stated in the essay; primary anchor <code>DOI 10.1115/1.3644004</code>. Not yet recomputed by a script in this repository.</span>
           </li>
             </ol>
             <p>
-              Together, Invariants <strong>E.04-R1</strong> through <strong>E.04-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. If any parameter perturbation or code edit violates these bounds, the automated verification gate rejects the build before publication.
+              Together, Invariants <strong>E.04-R1</strong> through <strong>E.04-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. These bounds are stated for the reader. No automated gate enforces them yet.
             </p>
           </article>
 
@@ -551,27 +551,27 @@
         <section class="tp-worked-verification-chapter" id="ch-iii-2-e04" aria-labelledby="ch-iii-2-heading-e04">
           <h3 id="ch-iii-2-heading-e04" data-en="&sect; III.2 &middot; Worked Numerical Verification &amp; Reference Telemetry Benchmark" data-es="&sect; III.2 &middot; Verificaci&oacute;n Num&eacute;rica Paso a Paso y Telemetr&iacute;a de Referencia">§ III.2 · Verificación Numérica Paso a Paso y Telemetría de Referencia</h3>
           <p>
-            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>ε = NTU / (1 + NTU) · Bi_m = h_m δ_m / D_w · CSI 23 72 23</code> at the canonical benchmark configuration (<code>Sensible ε_s = 88.2% · Latent ε_l = 79.4%</code>). Substituting control parameter <code>P_1</code> (<em>Sensible Transfer Units (NTU_s)</em>) spanning the admissible interval <code>[1.0, 12.0]</code> with step resolution <code>&Delta; = 0.1</code> and canonical reference operating point <code>NTU = 7.5</code>; control parameter <code>P_2</code> (<em>Membrane Moisture NTU (NTU_m)</em>) spanning the admissible interval <code>[0.5, 8.0]</code> with step resolution <code>&Delta; = 0.1</code> and canonical reference operating point <code>NTU_m = 3.85</code> into the coupled Stage 1&ndash;4 equations yields the exact reference telemetry certified by our offline verification kernel: <strong>Sensible Effectiveness (ε_s)</strong> converges to <code>88.2% (NTU = 7.5)</code>; <strong>Latent Moisture Recovery (ε_l)</strong> converges to <code>79.4% (NTU_m = 3.85)</code>; <strong>Frost-Free Outdoor Limit</strong> converges to <code>-12.5 °C (vs -3.0 °C Sensible)</code>; <strong>Enthalpy Verification</strong> converges to <code>PASS · BALANCED NTU</code>.
+            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>ε = NTU / (1 + NTU) · Bi_m = h_m δ_m / D_w · CSI 23 72 23</code> at the canonical benchmark configuration (<code>Sensible ε_s = 88.2% · Latent ε_l = 79.4%</code>). Substituting control parameter <code>P_1</code> (<em>Sensible Transfer Units (NTU_s)</em>) spanning the admissible interval <code>[1.0, 12.0]</code> with step resolution <code>&Delta; = 0.1</code> and canonical reference operating point <code>NTU = 7.5</code>; control parameter <code>P_2</code> (<em>Membrane Moisture NTU (NTU_m)</em>) spanning the admissible interval <code>[0.5, 8.0]</code> with step resolution <code>&Delta; = 0.1</code> and canonical reference operating point <code>NTU_m = 3.85</code> into the coupled Stage 1&ndash;4 equations yields the reference values stated in the essay: <strong>Sensible Effectiveness (ε_s)</strong> converges to <code>88.2% (NTU = 7.5)</code>; <strong>Latent Moisture Recovery (ε_l)</strong> converges to <code>79.4% (NTU_m = 3.85)</code>; <strong>Frost-Free Outdoor Limit</strong> converges to <code>-12.5 °C (vs -3.0 °C Sensible)</code>; <strong>Enthalpy Verification</strong> converges to <code>PASS · BALANCED NTU</code>.
           </p>
           <div class="tp-table-wrap">
             <table class="tp-table tp-telemetry-benchmark-table" aria-label="Reference numerical verification benchmark for Folio E.04">
               <thead>
                 <tr>
                   <th scope="col" data-en="Observable / Proof Metric" data-es="Observable / M&eacute;trica de Prueba">Observable / Métrica de Prueba</th>
-                  <th scope="col" data-en="Certified Benchmark Value" data-es="Valor de Referencia Certificado">Valor de Referencia Certificado</th>
-                  <th scope="col" data-en="Deterministic Verifier" data-es="Verificador Determinista">Verificador Determinista</th>
+                  <th scope="col" data-en="Reference Value" data-es="Valor de Referencia">Valor de Referencia</th>
+                  <th scope="col" data-en="Where the value comes from" data-es="De d&oacute;nde viene el valor">De dónde viene el valor</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><th scope="row">Sensible Effectiveness (ε_s)</th><td><code>88.2% (NTU = 7.5)</code></td><td><code>skills/engineering/e04/verify_e04.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Latent Moisture Recovery (ε_l)</th><td><code>79.4% (NTU_m = 3.85)</code></td><td><code>skills/engineering/e04/verify_e04.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Frost-Free Outdoor Limit</th><td><code>-12.5 °C (vs -3.0 °C Sensible)</code></td><td><code>skills/engineering/e04/verify_e04.py</code> &middot; Verified</td></tr>
-<tr><th scope="row">Enthalpy Verification</th><td><code>PASS · BALANCED NTU</code></td><td><code>skills/engineering/e04/verify_e04.py</code> &middot; Verified</td></tr>
+                <tr><th scope="row">Sensible Effectiveness (ε_s)</th><td><code>88.2% (NTU = 7.5)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
+<tr><th scope="row">Latent Moisture Recovery (ε_l)</th><td><code>79.4% (NTU_m = 3.85)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
+<tr><th scope="row">Frost-Free Outdoor Limit</th><td><code>-12.5 °C (vs -3.0 °C Sensible)</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
+<tr><th scope="row">Enthalpy Verification</th><td><code>PASS · BALANCED NTU</code></td><td data-en="Stated in the essay" data-es="Declarado en el ensayo">Declarado en el ensayo</td></tr>
               </tbody>
             </table>
           </div>
           <p>
-            Every sensitivity bar in Plate E.04-B and every real-time readout card above is computed directly from these governing expressions with zero pre-baked lookup tables. Running <code>python skills/engineering/e04/verify_e04.py</code> from the repository root executes the same numerical assertions and confirms zero drift across all 48 Folios.
+            The values above are the essay's reference values. A script that recomputes them from the governing law is not yet part of this repository.
           </p>
         </section>
 
@@ -689,7 +689,7 @@
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Folio</span><span class="tp-colophon-val">E.04 · Coupled Heat &amp; Mass Transfer · CSI 23 72 23 · VOL. 02</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Kernels</span><span class="tp-colophon-val">ε = NTU / (1 + NTU) (Balanced Counter-Current)</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Benchmarks</span><span class="tp-colophon-val">Sensible ε_s = 88.2% · Latent ε_l = 79.4%</span></div>
-          <div class="tp-colophon-cell"><span class="tp-colophon-label">Verifier</span><span class="tp-colophon-val"><code>tools/continuum_verify.py</code></span></div>
+          <div class="tp-colophon-cell"><span class="tp-colophon-label">Lab kernel</span><span class="tp-colophon-val"><code>tools/continuum_verify.py</code></span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Edition</span><span class="tp-colophon-val">REV 1.1 · 2026-11-02</span></div>
         </div>
 
@@ -702,16 +702,15 @@
           <p>Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,942 citing publications (19 supporting, 1,078 mentioning, 0 contrasting) on mucociliary transport and airway surface liquid thermodynamic hydration.</p>
         </div>
 
-        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion and Python verifier">
+        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion">
           <div class="tp-skill-header">
-            <span class="tp-skill-kicker">SKILL.md companion &amp; Python verifier</span>
+            <span class="tp-skill-kicker">SKILL.md companion &middot; plain text</span>
             <span class="tp-skill-compat">Works with Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3</span>
           </div>
-          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the exact governing equations of Folio E.04: a portable <code>SKILL.md</code>, a zero-dependency Python verifier (<code>verify_e04.py</code>), or the live telemetry as JSON.</p>
+          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the governing equations of Folio E.04 as plain text: a portable <code>SKILL.md</code>, or the live telemetry as JSON. Its reference values are stated in the essay and are not yet recomputed by a script in this repository.</p>
           <div class="tp-skill-actions">
             <button class="tp-skill-btn" type="button" data-skill-download="counter-current-enthalpy-exchanger-SKILL.md">Download SKILL.md (counter-current-enthalpy-exchanger-SKILL.md)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-skill-copy="true">Copy SKILL.md</button>
-            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-py-download="verify_e04.py">Download Python Tool (verify_e04.py)</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-telemetry-copy="E.04">Copy Live Telemetry JSON</button>
           </div>
           <details class="tp-skill-source-details">
@@ -724,77 +723,39 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ---
 # Counter-Current Enthalpy Recovery Exchangers: Effectiveness–NTU, Membrane Sorption, and Frost Limits (Folio E.04)
 
-## 1. Governing Law &amp; Tectonic Identity
-- **Folio**: `E.04 · Coupled Heat &amp; Mass Transfer · CSI 23 72 23` (`REV 1.1`, Redated `2026-11-02`)
-- **Governing Equation**: `ε = NTU / (1 + NTU) · Bi_m = h_m δ_m / D_w · CSI 23 72 23`
-- **Primary Verification Kernel**: `skills/engineering/e04/verify_e04.py`
-- **Verification Benchmarks**: `Sensible ε_s = 88.2% · Latent ε_l = 79.4%`
-- **Primary Scite Anchor DOI**: https://doi.org/10.1115/1.3644004 (Scite Report: https://scite.ai/reports/10.1115/1.3644004)
+A plain-text companion to the essay at https://informatico.ai/engineering/e04/ (`E.04 · Coupled Heat &amp; Mass Transfer · CSI 23 72 23`, `REV 1.1`, redated `2026-11-02`).
 
-## 2. Deterministic Verification &amp; Falsification Rules
+## The governing relation
+`ε = NTU / (1 + NTU) · Bi_m = h_m δ_m / D_w · CSI 23 72 23`
+
+## Rules the essay derives
 1. For balanced counter-current flow (C_min / C_max = 1), compute effectiveness epsilon = NTU / (1 + NTU).
 2. Evaluate membrane latent NTU_m = A_tot * U_m / m_dot_da where 1/U_m = 2/h_m + delta_m / D_eff_membrane.
 3. Verify exhaust plate surface temperature T_plate_cold &gt; T_frost(omega_exhaust) to prevent ice occlusion.
 
-## 3. 4-Stage Physical &amp; Mathematical Mechanism
+## How it works, in four stages
 - Stage 1 (Balanced Counter-Current Flow, C_r = 1.0): At NTU = 7.5, sensible effectiveness reaches ε_s = NTU / (1 + NTU) = 7.5 / 8.5 = 88.2%.
 - Stage 2 (Sulfonated Block-Copolymer Vapor Permeation): Water vapor selectively diffuses across the 25 μm dense membrane (Bi_m = 0.26) while blocking CO₂ and VOCs.
 - Stage 3 (Psychrometric Frost-Threshold Suppression): Latent moisture recovery lowers the exhaust air saturation line, extending frost-free operation down to T_oa = −12.5 °C.
 - Stage 4 (HEPA H14 &amp; Low-Pressure-Drop Channel Geometry): Laminar aspect-ratio channels (Nu = 7.54) keep core Δp = 118 Pa at 2.1 m/s.
 
-## 4. Reference Telemetry &amp; Acceptance Bounds
+## Reference values stated in the essay
 - **Sensible Effectiveness (ε_s)**: `88.2% (NTU = 7.5)`
 - **Latent Moisture Recovery (ε_l)**: `79.4% (NTU_m = 3.85)`
 - **Frost-Free Outdoor Limit**: `-12.5 °C (vs -3.0 °C Sensible)`
 - **Enthalpy Verification**: `PASS · BALANCED NTU`
 
-## 5. Frontier Discovery &amp; Contemporary Research Context (2024–2026)
+## What is and is not checked
+The reference values above are stated in the essay. No script in this repository recomputes them yet, so treat them as the essay&#x27;s claims and check them against the primary source before relying on them.
+
+## Primary source
+- https://doi.org/10.1115/1.3644004 (Scite report: https://scite.ai/reports/10.1115/1.3644004)
+- What the essay compares against: Sensible ε_s = 88.2% · Latent ε_l = 79.4%
+
+## Recent research context
 - **Sulfonated Block-Copolymer Enthalpy Cores Reach 79.4% Latent Moisture Recovery at Zero Pathogen Crossover**: Extending Kays &amp; London&#x27;s ε-NTU compact heat exchanger theory (1960, DOI 10.1115/1.3644004), modern sulfonated ionomer membranes selectively transport H2O vapor via solution-diffusion while blocking &gt;99.6% of viral/bacterial aerosols, protecting the 7.2 μm airway surface liquid down to −12.5 °C outdoor air.
 </code></pre>
           </details>
-          <pre class="tp-skill-pre" hidden><code data-py-source>#!/usr/bin/env python3
-&quot;&quot;&quot;Standalone Zero-Dependency Deterministic Verifier for Folio E.04 (e04).
-Primary Crossref Anchor DOI: https://doi.org/10.1115/1.3644004
-&quot;&quot;&quot;
-from __future__ import annotations
-
-import json
-import math
-import sys
-
-if hasattr(sys.stdout, &quot;reconfigure&quot;):
-    sys.stdout.reconfigure(encoding=&quot;utf-8&quot;)
-
-FOLIO_METADATA = {
-    &quot;folio_id&quot;: &quot;E.04&quot;,
-    &quot;slug&quot;: &quot;e04&quot;,
-    &quot;title&quot;: &quot;Counter-Current Enthalpy Recovery Exchangers: Effectiveness–NTU, Membrane Sorption, and Frost Limits&quot;,
-    &quot;governing_law&quot;: &quot;ε = NTU / (1 + NTU) · Bi_m = h_m δ_m / D_w · CSI 23 72 23&quot;,
-    &quot;primary_kernel&quot;: &quot;tools/continuum_verify.py&quot;,
-    &quot;primary_doi&quot;: &quot;10.1115/1.3644004&quot;,
-    &quot;scite_report&quot;: &quot;https://scite.ai/reports/10.1115/1.3644004&quot;,
-    &quot;benchmarks&quot;: [{&quot;label&quot;: &quot;Sensible Effectiveness (ε_s)&quot;, &quot;value&quot;: &quot;88.2% (NTU = 7.5)&quot;}, {&quot;label&quot;: &quot;Latent Moisture Recovery (ε_l)&quot;, &quot;value&quot;: &quot;79.4% (NTU_m = 3.85)&quot;}, {&quot;label&quot;: &quot;Frost-Free Outdoor Limit&quot;, &quot;value&quot;: &quot;-12.5 °C (vs -3.0 °C Sensible)&quot;}, {&quot;label&quot;: &quot;Enthalpy Verification&quot;, &quot;value&quot;: &quot;PASS · BALANCED NTU&quot;}],
-}
-
-
-def verify_folio_invariants(scale: float = 1.0) -&gt; dict:
-    &quot;&quot;&quot;Evaluate reference conservation and safety bounds for Folio E.04.&quot;&quot;&quot;
-    assert scale &gt; 0.0 and math.isfinite(scale), &quot;Scale factor must be positive and finite&quot;
-    return {
-        &quot;status&quot;: &quot;PASS&quot;,
-        &quot;verdict&quot;: &quot;PASS&quot;,
-        &quot;folio_id&quot;: FOLIO_METADATA[&quot;folio_id&quot;],
-        &quot;governing_law&quot;: FOLIO_METADATA[&quot;governing_law&quot;],
-        &quot;scale&quot;: round(scale, 4),
-        &quot;benchmarks&quot;: FOLIO_METADATA[&quot;benchmarks&quot;],
-    }
-
-
-if __name__ == &quot;__main__&quot;:
-    result = verify_folio_invariants()
-    print(json.dumps(result, indent=2, ensure_ascii=False))
-    sys.exit(0)
-</code></pre>
         </section>
 
         <section class="tp-rev-ledger" aria-label="Folio E.04 edition history and review">

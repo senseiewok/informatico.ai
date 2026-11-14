@@ -21,7 +21,7 @@ FOLIO = {'category_code': 'P',
  'readouts': [{'label': 'PCL Height', 'value': '8.80 μm (Hydrated) vs 1.50 μm (CF)'},
               {'label': 'Net Solute Flux', 'value': '+1.50 μEq/(cm²·h) (Cl- Secretory)'},
               {'label': 'Hydration Status', 'value': 'HEALTHY_HYDRATED_PCL'},
-              {'label': 'Kernel Verification', 'value': 'PASS · VERIFIED'}],
+              {'label': 'Reference Values', 'value': 'STATED IN ESSAY'}],
  'revisions': [{'date': '2026-11-02',
                 'edition': 'REV 1.2',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '

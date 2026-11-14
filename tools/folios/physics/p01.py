@@ -22,7 +22,7 @@ FOLIO = {'category_code': 'P',
  'readouts': [{'label': 'Coupling Efficiency', 'value': '0.88 (WT) vs 0.08 (G551D)'},
               {'label': 'Dissipation-Fluctuation Ratio', 'value': '1.12 (Coupled Cycle)'},
               {'label': 'Gating Regime', 'value': 'STABLE_COUPLED_CYCLE'},
-              {'label': 'Kernel Verification', 'value': 'PASS · VERIFIED'}],
+              {'label': 'Reference Values', 'value': 'STATED IN ESSAY'}],
  'revisions': [{'date': '2026-11-02',
                 'edition': 'REV 1.2',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '

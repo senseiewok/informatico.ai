@@ -321,7 +321,7 @@ def update_catalogs() -> dict:
             if item["slug"] in arch_readout4_patch and len(item.get("readouts", [])) == 3:
                 item["readouts"].append(arch_readout4_patch[item["slug"]])
             elif len(item.get("readouts", [])) == 3:
-                item["readouts"].append({"label": "Kernel Verification", "value": "PASS · VERIFIED"})
+                item["readouts"].append({"label": "Reference Values", "value": "STATED IN ESSAY"})
             if item["slug"] == "e03":
                 for ro in item.get("readouts", []):
                     if "0.994" in ro.get("value", ""):
@@ -372,7 +372,7 @@ def render_Controls_for_pillar(pillar: str, folio: dict, lf: dict) -> str:
     steps = folio["steps"]
     readouts = list(folio["readouts"])
     while len(readouts) < 4:
-        readouts.append({"label": "Kernel Verification", "value": "PASS · VERIFIED"})
+        readouts.append({"label": "Reference Values", "value": "STATED IN ESSAY"})
 
     step_btns = []
     for idx, st in enumerate(steps):
@@ -1025,7 +1025,8 @@ def render_multi_chapter_monograph_sections(
     cf_bridge_c = linkify_citations(esc(decf(lf.get("cf_bridge", ""))))
     doi_str = esc(scite.get("doi", ""))
     scite_sum_c = esc(decf(scite.get("summary", "")))
-    py_ver_rel = f"skills/{pillar}/{slug}/verify_{slug}.py"
+    _ver_name, _ver_src = _existing_skill_verifier(ROOT / "skills" / pillar / slug)
+    py_ver_rel = f"skills/{pillar}/{slug}/{_ver_name}" if _ver_name else ""
 
     chron = lf.get("chronology", [])
     first_era = f"{chron[0][0]} ({decf(' — '.join(chron[0][1:]))})" if chron else "classical foundational analysis"
@@ -1078,7 +1079,7 @@ def render_multi_chapter_monograph_sections(
         rules_items.append(
             f"""          <li>
             <strong>Invariant {esc(fid)}-R{r_idx}:</strong> {rule_c}
-            <span>Verified deterministically offline by <code>{esc(py_ver_rel)}</code> against primary anchor <code>DOI {doi_str}</code>.</span>
+            {_stage_note(py_ver_rel, doi_str)}
           </li>"""
         )
     rules_list_html = "\n".join(rules_items)
@@ -1096,7 +1097,7 @@ def render_multi_chapter_monograph_sections(
               <p class="tp-theorem-meta"><strong>Kernels:</strong> {kernels_c} &middot; <strong>Benchmarks:</strong> {bench_c} &middot; <strong>Primary Anchor:</strong> <code>DOI {doi_str}</code></p>
             </div>
             <p>
-              To elevate Folio <strong>{esc(fid)}</strong> (<em>{esc(decf_title(folio["title"]))}</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>{gov_law}</code> acts. Let the system state be parameterized by {sliders_prose}. Over this bounded domain, the coupled kernels (<code>{kernels_c}</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point certified by <code>{esc(py_ver_rel)}</code>.
+              To elevate Folio <strong>{esc(fid)}</strong> (<em>{esc(decf_title(folio["title"]))}</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>{gov_law}</code> acts. Let the system state be parameterized by {sliders_prose}. Over this bounded domain, the coupled kernels (<code>{kernels_c}</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point{_ii1_tail(py_ver_rel)}.
             </p>
             <p>
               Crucially, well-posedness across the <code>{bench_c}</code> regime requires that the governing operator preserve dimensional homogeneity, non-negativity of physical energy/entropy functionals, and strict monotony along the primary reaction or proof coordinate. Whenever a simplified model omits one of the coupled terms in <code>{gov_law}</code>, the resulting approximation violates boundary compatibility and diverges from the primary peer-reviewed evidence (<code>{scite_sum_c}</code>).
@@ -1106,7 +1107,7 @@ def render_multi_chapter_monograph_sections(
           <article class="tp-proof-chapter" id="ch-ii-2-{esc(slug)}">
             <h3 data-en="&sect; II.2 &middot; Four-Stage Proof &amp; Mechanism Decomposition (Stages 1&ndash;4)" data-es="&sect; II.2 &middot; Descomposici&oacute;n Demostrativa y Mecanismo en Cuatro Etapas (Etapas 1&ndash;4)">&sect; II.2 &middot; Four-Stage Proof &amp; Mechanism Decomposition (Stages 1&ndash;4)</h3>
             <p>
-              Rather than treating <code>{gov_law}</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>{esc(fid)}</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III and the standalone verification suite in <code>{esc(py_ver_rel)}</code>:
+              Rather than treating <code>{gov_law}</code> as an opaque black-box formula, we decompose the proof and physical mechanism of Folio <strong>{esc(fid)}</strong> into four clear, verifiable stages. True scientific tools do not ask for blind trust; they invite inspection. Each stage represents a rigorous transformation of the state vector—corresponding one-to-one with the 4-stage interactive stepper in Act III{_ii2_tail(py_ver_rel)}:
             </p>
 {stages_html}
           </article>
@@ -1114,13 +1115,13 @@ def render_multi_chapter_monograph_sections(
           <article class="tp-proof-chapter" id="ch-ii-3-{esc(slug)}">
             <h3 data-en="&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds" data-es="&sect; II.3 &middot; Invariantes de Verificaci&oacute;n Determinista, Escalamiento Dimensional y Cotas de Estabilidad">&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds</h3>
             <p>
-              In our lab&rsquo;s formal verification architecture, prose explanations are never separated from executable proof certificates. Every quantitative claim in Folio <strong>{esc(fid)}</strong> is governed by three machine-checked falsification rules embedded in <code>{esc(skill.get("filename", "SKILL.md"))}</code> and executed by <code>{esc(py_ver_rel)}</code>:
+              {_ii3_intro(py_ver_rel, fid, skill.get("filename", "SKILL.md"))}
             </p>
             <ol class="tp-invariant-list">
 {rules_list_html}
             </ol>
             <p>
-              Together, Invariants <strong>{esc(fid)}-R1</strong> through <strong>{esc(fid)}-R{len(skill.get("rules", []))}</strong> close the epistemic loop between symbolic derivation and numerical execution. If any parameter perturbation or code edit violates these bounds, the automated verification gate rejects the build before publication.
+              Together, Invariants <strong>{esc(fid)}-R1</strong> through <strong>{esc(fid)}-R{len(skill.get("rules", []))}</strong> close the epistemic loop between symbolic derivation and numerical execution. {_ii3_gate(py_ver_rel)}
             </p>
           </article>
 
@@ -1147,7 +1148,7 @@ def render_multi_chapter_monograph_sections(
     for ro in readouts:
         r_lbl = esc(decf_title(ro.get("label", "")))
         r_val = esc(decf(ro.get("value", "")))
-        readout_rows.append(f'<tr><th scope="row">{r_lbl}</th><td><code>{r_val}</code></td><td><code>{esc(py_ver_rel)}</code> &middot; Verified</td></tr>')
+        readout_rows.append(f'<tr><th scope="row">{r_lbl}</th><td><code>{r_val}</code></td>{_readout_source_cell(py_ver_rel)}</tr>')
         readout_prose_bits.append(f"<strong>{r_lbl}</strong> converges to <code>{r_val}</code>")
     readouts_table_rows = "\n".join(readout_rows)
     readouts_summary_prose = "; ".join(readout_prose_bits)
@@ -1156,15 +1157,15 @@ def render_multi_chapter_monograph_sections(
         <section class="tp-worked-verification-chapter" id="ch-iii-2-{esc(slug)}" aria-labelledby="ch-iii-2-heading-{esc(slug)}">
           <h3 id="ch-iii-2-heading-{esc(slug)}" data-en="&sect; III.2 &middot; Worked Numerical Verification &amp; Reference Telemetry Benchmark" data-es="&sect; III.2 &middot; Verificaci&oacute;n Num&eacute;rica Paso a Paso y Telemetr&iacute;a de Referencia">&sect; III.2 &middot; Worked Numerical Verification &amp; Reference Telemetry Benchmark</h3>
           <p>
-            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>{gov_law}</code> at the canonical benchmark configuration (<code>{bench_c}</code>). Substituting {sliders_prose} into the coupled Stage 1&ndash;4 equations yields the exact reference telemetry certified by our offline verification kernel: {readouts_summary_prose}.
+            To verify the interactive observatory above by hand or inside an independent computational notebook, we evaluate the governing law <code>{gov_law}</code> at the canonical benchmark configuration (<code>{bench_c}</code>). Substituting {sliders_prose} into the coupled Stage 1&ndash;4 equations yields {_iii2_values(py_ver_rel)}: {readouts_summary_prose}.
           </p>
           <div class="tp-table-wrap">
             <table class="tp-table tp-telemetry-benchmark-table" aria-label="Reference numerical verification benchmark for Folio {esc(fid)}">
               <thead>
                 <tr>
                   <th scope="col" data-en="Observable / Proof Metric" data-es="Observable / M&eacute;trica de Prueba">Observable / Proof Metric</th>
-                  <th scope="col" data-en="Certified Benchmark Value" data-es="Valor de Referencia Certificado">Certified Benchmark Value</th>
-                  <th scope="col" data-en="Deterministic Verifier" data-es="Verificador Determinista">Deterministic Verifier</th>
+                  <th scope="col" data-en="Reference Value" data-es="Valor de Referencia">Reference Value</th>
+                  <th scope="col" data-en="Where the value comes from" data-es="De d&oacute;nde viene el valor">Where the value comes from</th>
                 </tr>
               </thead>
               <tbody>
@@ -1173,7 +1174,7 @@ def render_multi_chapter_monograph_sections(
             </table>
           </div>
           <p>
-            Every sensitivity bar in Plate {esc(fid)}-B and every real-time readout card above is computed directly from these governing expressions with zero pre-baked lookup tables. Running <code>python {esc(py_ver_rel)}</code> from the repository root executes the same numerical assertions and confirms zero drift across all 48 Folios.
+            {_iii2_run(py_ver_rel)}
           </p>
         </section>"""
 
@@ -1196,6 +1197,95 @@ def render_multi_chapter_monograph_sections(
     return act1_subchapter_html, act2_proof_spine_html, act3_worked_verification_html, act4_transfer_html
 
 
+def _existing_skill_verifier(skill_dir: Path) -> tuple[str, str]:
+    """Return (filename, source) of a skill's verifier, or ("", "") when it has none.
+
+    A skill is `verified` only when a hand-written verifier is on disk. This generator never writes
+    one and never deletes one: a script that prints PASS without computing anything is worse than
+    no script. skills/verify_all_48_folios.py decides whether a script on disk is acceptable.
+    """
+    found = sorted(skill_dir.glob("verify_*.py")) if skill_dir.is_dir() else []
+    if not found:
+        return "", ""
+    return found[0].name, found[0].read_text(encoding="utf-8")
+
+
+def _verifier_count() -> int:
+    """How many verifiers are on disk. Copy that quotes a number reads it here, so it cannot go stale."""
+    return len(list((ROOT / "skills").glob("*/*/verify_*.py")))
+
+
+def _ii1_tail(py_ver_rel: str) -> str:
+    return f" recomputed by <code>{esc(py_ver_rel)}</code>" if py_ver_rel else ""
+
+
+def _ii3_gate(py_ver_rel: str) -> str:
+    if py_ver_rel:
+        return "If a code edit violates these bounds, the verifier fails."
+    return "These bounds are stated for the reader. No automated gate enforces them yet."
+
+
+def _stage_note(py_ver_rel: str, doi_str: str) -> str:
+    if py_ver_rel:
+        return f"<span>Recomputed offline by <code>{esc(py_ver_rel)}</code>; primary anchor <code>DOI {doi_str}</code>.</span>"
+    return (f"<span>Stated in the essay; primary anchor <code>DOI {doi_str}</code>. "
+            f"Not yet recomputed by a script in this repository.</span>")
+
+
+def _ii2_tail(py_ver_rel: str) -> str:
+    return f" and the standalone verifier in <code>{esc(py_ver_rel)}</code>" if py_ver_rel else ""
+
+
+def _ii3_intro(py_ver_rel: str, fid: str, skill_filename: str) -> str:
+    if py_ver_rel:
+        return (f"Every quantitative claim in Folio <strong>{esc(fid)}</strong> is tied to three falsification rules "
+                f"listed in <code>{esc(skill_filename)}</code> and executed by <code>{esc(py_ver_rel)}</code>:")
+    return (f"Folio <strong>{esc(fid)}</strong> states three rules a careful reader can use to test its claims. "
+            f"They are listed as plain text in <code>{esc(skill_filename)}</code>. "
+            f"No script in this repository executes them yet:")
+
+
+def _readout_source_cell(py_ver_rel: str) -> str:
+    if py_ver_rel:
+        return f'<td><code>{esc(py_ver_rel)}</code> &middot; <span data-en="recomputed" data-es="recalculado">recomputed</span></td>'
+    return '<td data-en="Stated in the essay" data-es="Declarado en el ensayo">Stated in the essay</td>'
+
+
+def _iii2_values(py_ver_rel: str) -> str:
+    return "the reference values recomputed by the verifier" if py_ver_rel else "the reference values stated in the essay"
+
+
+def _iii2_run(py_ver_rel: str) -> str:
+    if py_ver_rel:
+        return (f"Running <code>python {esc(py_ver_rel)}</code> from the repository root recomputes these values, "
+                f"and its planted-defect mode must fail.")
+    return ("The values above are the essay's reference values. A script that recomputes them from the governing law "
+            "is not yet part of this repository.")
+
+
+def _pillar_skill_box(fid: str, py_filename: str, py_verifier_src: str) -> dict:
+    """The parts of the skill box that differ between a text skill and a verified one."""
+    if py_filename:
+        return {
+            "aria": "Downloadable SKILL.md companion and Python verifier",
+            "kicker": "SKILL.md companion &amp; Python verifier",
+            "desc": (f"Give any AI agent or engineering pipeline the governing equations of Folio {esc(fid)}: a portable "
+                     f"<code>SKILL.md</code>, a zero-dependency Python verifier (<code>{esc(py_filename)}</code>), or the live telemetry as JSON."),
+            "button": (f'\n            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" '
+                       f'data-py-download="{esc(py_filename)}">Download Python Verifier ({esc(py_filename)})</button>'),
+            "source": f'\n          <pre class="tp-skill-pre" hidden><code data-py-source>{esc(py_verifier_src)}</code></pre>',
+        }
+    return {
+        "aria": "Downloadable SKILL.md companion",
+        "kicker": "SKILL.md companion &middot; plain text",
+        "desc": (f"Give any AI agent or engineering pipeline the governing equations of Folio {esc(fid)} as plain text: a portable "
+                 f"<code>SKILL.md</code>, or the live telemetry as JSON. Its reference values are stated in the essay and are not yet "
+                 f"recomputed by a script in this repository."),
+        "button": "",
+        "source": "",
+    }
+
+
 def _build_pillar_skill_and_verifier(pillar: str, folio: dict) -> tuple[str, str, str]:
     """Return (skill_md, py_verifier_src, py_filename) for a Pillar Folio E/A/P/M."""
     slug = folio["slug"]
@@ -1211,86 +1301,48 @@ def _build_pillar_skill_and_verifier(pillar: str, folio: dict) -> tuple[str, str
     skill = folio["skill"]
     skill_rules = "\n".join(f"{i+1}. {decf_title(r)}" for i, r in enumerate(skill["rules"]))
     skill_steps = "\n".join(f"- {decf_title(s)}" for s in folio["steps"])
-    skill_benchmarks = "\n".join(f"- **{decf_title(ro['label'])}**: `{decf_title(ro['value'])}`" for ro in folio["readouts"])
+    skill_benchmarks = "\n".join(f"- **{decf_title(ro['label'])}**: `{decf_title(ro['value'])}`" for ro in folio["readouts"] if ro["label"] != "Reference Values")
     primary_doi = scite.get("doi", "")
-    py_filename = f"verify_{slug}.py"
-    py_ver_rel = f"skills/{pillar}/{slug}/{py_filename}"
+    py_filename, py_verifier_src = _existing_skill_verifier(ROOT / "skills" / pillar / slug)
     disc_head = decf_title(disc["headline"])
     disc_body = decf(disc.get("body", ""))
+    if py_filename:
+        check_md = (
+            "## Check it yourself\n"
+            "This skill ships a verifier that recomputes its values. Its planted-defect mode must fail:\n\n"
+            f"```\npython skills/{pillar}/{slug}/{py_filename}\npython skills/{pillar}/{slug}/{py_filename} --planted-defect\n```\n\n"
+        )
+    else:
+        check_md = (
+            "## What is and is not checked\n"
+            "The reference values above are stated in the essay. No script in this repository recomputes them yet, "
+            "so treat them as the essay's claims and check them against the primary source before relying on them.\n\n"
+        )
+    source_md = (
+        f"- https://doi.org/{primary_doi} (Scite report: https://scite.ai/reports/{primary_doi})\n" if primary_doi
+        else "- See the source list in the essay.\n"
+    )
     skill_md = (
         f"---\nname: {skill['name']}\n"
         f"description: {decf_title(skill['description'])}\n"
         f"license: MIT\n"
         f"compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI Codex, Ollama (Qwen 3.8 / Gemma 4)\n"
         f"---\n# {decf_title(folio['title'])} (Folio {fid})\n\n"
-        f"## 1. Governing Law & Tectonic Identity\n"
-        f"- **Folio**: `{col['identifier']}` (`{folio['current_edition']}`, Redated `{folio['date_redated']}`)\n"
-        f"- **Governing Equation**: `{folio['governing_law']}`\n"
-        f"- **Primary Verification Kernel**: `{py_ver_rel}`\n"
-        f"- **Verification Benchmarks**: `{decf_title(col['benchmarks'])}`\n"
-        f"- **Primary Scite Anchor DOI**: https://doi.org/{primary_doi} (Scite Report: https://scite.ai/reports/{primary_doi})\n\n"
-        f"## 2. Deterministic Verification & Falsification Rules\n"
-        f"{skill_rules}\n\n"
-        f"## 3. 4-Stage Physical & Mathematical Mechanism\n"
-        f"{skill_steps}\n\n"
-        f"## 4. Reference Telemetry & Acceptance Bounds\n"
-        f"{skill_benchmarks}\n\n"
-        f"## 5. Frontier Discovery & Contemporary Research Context (2024–2026)\n"
-        f"- **{disc_head}**: {disc_body}\n"
+        f"A plain-text companion to the essay at https://informatico.ai/{pillar}/{slug}/ "
+        f"(`{col['identifier']}`, `{folio['current_edition']}`, redated `{folio['date_redated']}`).\n\n"
+        f"## The governing relation\n`{folio['governing_law']}`\n\n"
+        f"## Rules the essay derives\n{skill_rules}\n\n"
+        f"## How it works, in four stages\n{skill_steps}\n\n"
+        f"## Reference values stated in the essay\n{skill_benchmarks}\n\n"
+        f"{check_md}"
+        f"## Primary source\n{source_md}- What the essay compares against: {decf_title(col['benchmarks'])}\n\n"
+        f"## Recent research context\n- **{disc_head}**: {disc_body}\n"
     )
-    benchmarks_clean = [
-        {"label": decf_title(ro["label"]), "value": decf_title(ro["value"])}
-        for ro in folio["readouts"]
-    ]
-    py_verifier_src = (
-        f'#!/usr/bin/env python3\n'
-        f'"""Standalone Zero-Dependency Deterministic Verifier for Folio {fid} ({slug}).\n'
-        f'Primary Crossref Anchor DOI: https://doi.org/{primary_doi}\n'
-        f'"""\n'
-        f'from __future__ import annotations\n\n'
-        f'import json\n'
-        f'import math\n'
-        f'import sys\n\n'
-        f'if hasattr(sys.stdout, "reconfigure"):\n'
-        f'    sys.stdout.reconfigure(encoding="utf-8")\n\n'
-        f'FOLIO_METADATA = {{\n'
-        f'    "folio_id": {json.dumps(fid, ensure_ascii=False)},\n'
-        f'    "slug": {json.dumps(slug, ensure_ascii=False)},\n'
-        f'    "title": {json.dumps(decf_title(folio["title"]), ensure_ascii=False)},\n'
-        f'    "governing_law": {json.dumps(folio["governing_law"], ensure_ascii=False)},\n'
-        f'    "primary_kernel": {json.dumps(folio["primary_kernel"], ensure_ascii=False)},\n'
-        f'    "primary_doi": {json.dumps(primary_doi, ensure_ascii=False)},\n'
-        f'    "scite_report": {json.dumps("https://scite.ai/reports/" + primary_doi, ensure_ascii=False)},\n'
-        f'    "benchmarks": {json.dumps(benchmarks_clean, ensure_ascii=False)},\n'
-        f'}}\n\n\n'
-        f'def verify_folio_invariants(scale: float = 1.0) -> dict:\n'
-        f'    """Evaluate reference conservation and safety bounds for Folio {fid}."""\n'
-        f'    assert scale > 0.0 and math.isfinite(scale), "Scale factor must be positive and finite"\n'
-        f'    return {{\n'
-        f'        "status": "PASS",\n'
-        f'        "verdict": "PASS",\n'
-        f'        "folio_id": FOLIO_METADATA["folio_id"],\n'
-        f'        "governing_law": FOLIO_METADATA["governing_law"],\n'
-        f'        "scale": round(scale, 4),\n'
-        f'        "benchmarks": FOLIO_METADATA["benchmarks"],\n'
-        f'    }}\n\n\n'
-        f'if __name__ == "__main__":\n'
-        f'    result = verify_folio_invariants()\n'
-        f'    print(json.dumps(result, indent=2, ensure_ascii=False))\n'
-        f'    sys.exit(0)\n'
-    )
-    existing_dir = ROOT / "skills" / pillar / slug
-    existing_py = existing_dir / py_filename
-    existing_md = existing_dir / "SKILL.md"
-    if existing_py.is_file() and "--planted-defect" in existing_py.read_text(encoding="utf-8"):
-        py_verifier_src = existing_py.read_text(encoding="utf-8")
-        if existing_md.is_file():
-            skill_md = existing_md.read_text(encoding="utf-8")
     return skill_md, py_verifier_src, py_filename
 
 
 def write_pillar_skills(catalog: dict) -> None:
-    """Write skills/{engineering,architecture,physics,math}/{slug}/{SKILL.md,verify_<slug>.py}."""
+    """Write skills/{engineering,architecture,physics,math}/{slug}/SKILL.md. Never writes or deletes a verifier."""
     skills_dir = ROOT / "skills"
     if not skills_dir.is_dir():
         return
@@ -1299,11 +1351,8 @@ def write_pillar_skills(catalog: dict) -> None:
             slug = f["slug"]
             sdir = skills_dir / pillar / slug
             sdir.mkdir(parents=True, exist_ok=True)
-            for old_py in sdir.glob("verify_*.py"):
-                old_py.unlink()
-            skill_md, py_verifier_src, py_filename = _build_pillar_skill_and_verifier(pillar, f)
-            (sdir / "SKILL.md").write_text(skill_md, encoding="utf-8")
-            (sdir / py_filename).write_text(py_verifier_src, encoding="utf-8")
+            skill_md, _py_src, _py_name = _build_pillar_skill_and_verifier(pillar, f)
+            (sdir / "SKILL.md").write_text(skill_md, encoding="utf-8")   # a verifier on disk is hand-written: left alone
 
 
 def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
@@ -1334,6 +1383,7 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
 
     skill = folio["skill"]
     skill_md, py_verifier_src, py_filename = _build_pillar_skill_and_verifier(pillar, folio)
+    skill_box = _pillar_skill_box(fid, py_filename, py_verifier_src)
 
     rev_buttons = []
     for idx, rev in enumerate(folio["revisions"]):
@@ -1608,7 +1658,7 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Folio</span><span class="tp-colophon-val">{esc(col["identifier"])} · {esc(vol_code)}</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Kernels</span><span class="tp-colophon-val">{esc(decf_title(col["kernels"]))}</span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Benchmarks</span><span class="tp-colophon-val">{esc(decf_title(col["benchmarks"]))}</span></div>
-          <div class="tp-colophon-cell"><span class="tp-colophon-label">Verifier</span><span class="tp-colophon-val"><code>{esc(folio["primary_kernel"])}</code></span></div>
+          <div class="tp-colophon-cell"><span class="tp-colophon-label">Lab kernel</span><span class="tp-colophon-val"><code>{esc(folio["primary_kernel"])}</code></span></div>
           <div class="tp-colophon-cell"><span class="tp-colophon-label">Edition</span><span class="tp-colophon-val">{esc(folio["current_edition"])} · {esc(folio["date_redated"])}</span></div>
         </div>
 
@@ -1621,23 +1671,21 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
           <p>{esc(decf(scite.get("summary", "")))}</p>
         </div>
 
-        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion and Python verifier">
+        <section class="tp-skill-box" aria-label="{skill_box["aria"]}">
           <div class="tp-skill-header">
-            <span class="tp-skill-kicker">SKILL.md companion &amp; Python verifier</span>
+            <span class="tp-skill-kicker">{skill_box["kicker"]}</span>
             <span class="tp-skill-compat">Works with Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3</span>
           </div>
-          <p class="tp-skill-desc">Give any AI agent or engineering pipeline the exact governing equations of Folio {esc(fid)}: a portable <code>SKILL.md</code>, a zero-dependency Python verifier (<code>{esc(py_filename)}</code>), or the live telemetry as JSON.</p>
+          <p class="tp-skill-desc">{skill_box["desc"]}</p>
           <div class="tp-skill-actions">
             <button class="tp-skill-btn" type="button" data-skill-download="{esc(skill["filename"])}">Download SKILL.md ({esc(skill["filename"])})</button>
-            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-skill-copy="true">Copy SKILL.md</button>
-            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-py-download="{esc(py_filename)}">Download Python Tool ({esc(py_filename)})</button>
+            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-skill-copy="true">Copy SKILL.md</button>{skill_box["button"]}
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-telemetry-copy="{esc(fid)}">Copy Live Telemetry JSON</button>
           </div>
           <details class="tp-skill-source-details">
             <summary class="tp-skill-source-summary">Show the <code>SKILL.md</code> source</summary>
             <pre class="tp-skill-pre"><code data-skill-source>{esc(skill_md)}</code></pre>
-          </details>
-          <pre class="tp-skill-pre" hidden><code data-py-source>{esc(py_verifier_src)}</code></pre>
+          </details>{skill_box["source"]}
         </section>
 
         <section class="tp-rev-ledger" aria-label="Folio {esc(fid)} edition history and review">
@@ -2449,7 +2497,7 @@ def render_bounty_crucible_section(rel_res: str = ".") -> str:
             <text x="0" y="11" text-anchor="middle" font-size="8.5" fill="var(--tp-prussian)">PhysLean + MPS</text>
           </g>
           <text x="460" y="31" text-anchor="middle" font-size="10" font-weight="700" fill="currentColor" data-en="6 DEDICATED BOUNTY FOLIOS (/bounties/b01..b06/) · LEAN 4 · STIM · PYSCF · FENICS · COMPAS · PYSR · PHYSLEAN" data-es="6 FOLIOS DEDICADOS DE RETOS (/bounties/b01..b06/) · LEAN 4 · STIM · PYSCF · FENICS · COMPAS · PYSR · PHYSLEAN">6 DEDICATED BOUNTY FOLIOS (/bounties/b01..b06/) · LEAN 4 · STIM · PYSCF · FENICS · COMPAS · PYSR · PHYSLEAN</text>
-          <text x="460" y="151" text-anchor="middle" font-size="9.5" fill="var(--tp-verdigris)" data-en="Click any Bounty Folio (B.01–B.06) to read the full story, interactive proof workbench, T0–T3 truth boundary &amp; Python verifier" data-es="Haz clic en cualquier Folio de Reto (B.01–B.06) para abrir su historia, laboratorio de prueba, frontera T0–T3 y código verificador">Click any Bounty Folio (B.01–B.06) to read the full story, interactive proof workbench, T0–T3 truth boundary &amp; Python verifier</text>
+          <text x="460" y="151" text-anchor="middle" font-size="9.5" fill="var(--tp-verdigris)" data-en="Click any Bounty Folio (B.01–B.06) to read the full story, interactive proof workbench, T0–T3 truth boundary &amp; proof harness" data-es="Haz clic en cualquier Folio de Reto (B.01–B.06) para abrir su historia, laboratorio de prueba, frontera T0–T3 y script de prueba">Click any Bounty Folio (B.01–B.06) to read the full story, interactive proof workbench, T0–T3 truth boundary &amp; proof harness</text>
         </svg>
       </div>
 
@@ -2457,7 +2505,7 @@ def render_bounty_crucible_section(rel_res: str = ".") -> str:
 {cards_joined}
       </div>
       <div class="tp-bounty-grounding-note" role="note" aria-label="Grounding and GitHub Cryptographic Publishing Proof">
-        <p><span data-en="Grounding &amp; GitHub Cryptographic Publishing Proof (T0–T3 Truth Boundary): Every Informatico.ai Folio and Bounty Monograph is verified against primary Crossref DOIs (48/48 Folios passing tools/check_folio_citations.py --offline with zero errors) and ships with a deterministic Python verifier and portable SKILL.md. Our public GitHub repository acts as a timestamped cryptographic prior-art and reproducibility ledger: every commit SHA records the exact deterministic execution of bounties/run_all_bounties.py (6/6 PASS) and skills/verify_all_48_folios.py (54/54 PASS) for community registries (Metriq.info, unitaryHACK, erdosproblems.com, COMPAS &amp; FEniCS showcases), while formal cash prize claims require either a new 0-sorry proof of an unsolved problem or a registered physical prototype pilot." data-es="Rigor y Prueba Criptográfica de Publicación en GitHub (Frontera de Verdad T0–T3): Cada Folio y Monografía de Reto de Informatico.ai está verificado contra DOIs primarios en Crossref (48/48 Folios aprobados con cero errores) e incluye un verificador determinista en Python y un SKILL.md portátil. Nuestro repositorio público en GitHub funciona como registro criptográfico de publicación y reproducibilidad: cada commit SHA certifica la ejecución determinista de bounties/run_all_bounties.py (6/6 PASS) y skills/verify_all_48_folios.py (54/54 PASS) para registros comunitarios (Metriq.info, unitaryHACK, erdosproblems.com, COMPAS y FEniCS), mientras que reclamar un premio en efectivo exige una nueva demostración sin sorry o un prototipo físico registrado.">Grounding &amp; GitHub Cryptographic Publishing Proof (T0–T3 Truth Boundary): Every Informatico.ai Folio and Bounty Monograph is verified against primary Crossref DOIs (48/48 Folios passing tools/check_folio_citations.py --offline with zero errors) and ships with a deterministic Python verifier and portable SKILL.md. Our public GitHub repository acts as a timestamped cryptographic prior-art and reproducibility ledger: every commit SHA records the exact deterministic execution of bounties/run_all_bounties.py (6/6 PASS) and skills/verify_all_48_folios.py (54/54 PASS) for community registries (Metriq.info, unitaryHACK, erdosproblems.com, COMPAS &amp; FEniCS showcases), while formal cash prize claims require either a new 0-sorry proof of an unsolved problem or a registered physical prototype pilot.</span></p>
+        <p><span data-en="Grounding &amp; GitHub Cryptographic Publishing Proof (T0–T3 Truth Boundary): Every Informatico.ai Folio and Bounty Monograph is verified against primary Crossref DOIs (48/48 Folios passing tools/check_folio_citations.py --offline with zero errors) and ships with a portable SKILL.md; the Toolbox, Time and Gravity and cross-scale essay skills also ship a verifier that must fail under a planted defect. Our public GitHub repository acts as a timestamped cryptographic prior-art and reproducibility ledger: every commit SHA records the exact deterministic execution of bounties/run_all_bounties.py (6/6 PASS) and skills/verify_all_48_folios.py (every verifier passes, and fails under its planted defect) for community registries (Metriq.info, unitaryHACK, erdosproblems.com, COMPAS &amp; FEniCS showcases), while formal cash prize claims require either a new 0-sorry proof of an unsolved problem or a registered physical prototype pilot." data-es="Rigor y Prueba Criptográfica de Publicación en GitHub (Frontera de Verdad T0–T3): Cada Folio y Monografía de Reto de Informatico.ai está verificado contra DOIs primarios en Crossref (48/48 Folios aprobados con cero errores) e incluye un SKILL.md portátil; las habilidades de la Caja de Herramientas, Tiempo y Gravedad y los ensayos entre escalas incluyen además un verificador que debe fallar ante un defecto plantado. Nuestro repositorio público en GitHub funciona como registro criptográfico de publicación y reproducibilidad: cada commit SHA certifica la ejecución determinista de bounties/run_all_bounties.py (6/6 PASS) y skills/verify_all_48_folios.py (cada verificador aprueba, y falla ante su defecto plantado) para registros comunitarios (Metriq.info, unitaryHACK, erdosproblems.com, COMPAS y FEniCS), mientras que reclamar un premio en efectivo exige una nueva demostración sin sorry o un prototipo físico registrado.">Grounding &amp; GitHub Cryptographic Publishing Proof (T0–T3 Truth Boundary): Every Informatico.ai Folio and Bounty Monograph is verified against primary Crossref DOIs (48/48 Folios passing tools/check_folio_citations.py --offline with zero errors) and ships with a portable SKILL.md; the Toolbox, Time and Gravity and cross-scale essay skills also ship a verifier that must fail under a planted defect. Our public GitHub repository acts as a timestamped cryptographic prior-art and reproducibility ledger: every commit SHA records the exact deterministic execution of bounties/run_all_bounties.py (6/6 PASS) and skills/verify_all_48_folios.py (every verifier passes, and fails under its planted defect) for community registries (Metriq.info, unitaryHACK, erdosproblems.com, COMPAS &amp; FEniCS showcases), while formal cash prize claims require either a new 0-sorry proof of an unsolved problem or a registered physical prototype pilot.</span></p>
         <p class="tp-bounty-grounding-links">
           <a class="tp-cite-link" href="{bounties_hub_href}" data-en="Open Bounties Hub (/bounties/) &rarr;" data-es="Abrir Centro de Retos (/es-mx/bounties/) &rarr;">Open Bounties Hub (/bounties/) &rarr;</a> ·
           <a class="tp-cite-link" href="https://github.com/senseiewok/informatico.ai" target="_blank" rel="noopener noreferrer">github.com/senseiewok/informatico.ai &rarr;</a> ·
@@ -2910,7 +2958,7 @@ def _build_bounty_skill_and_verifier(bounty: dict) -> tuple[str, str, str]:
     py_filename = f"verify_{slug}_{skill_name.replace('-', '_')}.py"
     skill_md = (
         f"---\nname: {skill_name}\n"
-        f"description: Deterministic verification harness, 4-stage proof spine, and T0-T3 truth boundary for {fid} ({bid}): {bounty['title']}.\n"
+        f"description: Governing law, 4-stage proof spine, and T0-T3 truth boundary for {fid} ({bid}): {bounty['title']}. The proof harness is {bounty['verifier_script']}.\n"
         f"license: MIT\n"
         f"compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI Codex, Ollama (Qwen 3.8 / Gemma 4)\n"
         f"---\n# {bounty['title']} ({fid} · {bid})\n\n"
@@ -2920,62 +2968,24 @@ def _build_bounty_skill_and_verifier(bounty: dict) -> tuple[str, str, str]:
         f"- **Prize / Challenge**: {bounty['badge_en']}\n"
         f"- **Official Registry**: [{reg_name}]({reg_url})\n"
         f"- **Governing Equation**: `{bounty['governing_law']}`\n"
-        f"- **Primary Verification Harness**: `python {bounty['verifier_script']}`\n"
+        f"- **Proof harness (computes the reference results; no planted-defect mode yet)**: `python {bounty['verifier_script']}`\n"
         f"- **Primary Scite Anchor DOI**: https://doi.org/{primary_doi} (Scite Report: https://scite.ai/reports/{primary_doi})\n\n"
-        f"## 2. Deterministic Verification & Falsification Rules\n"
+        f"## 2. Falsification Rules\n"
         f"{rules_md}\n\n"
         f"## 3. 4-Stage Formal Proof & Benchmark Mechanism\n"
         f"{steps_md}\n\n"
-        f"## 4. Certified Reference Telemetry (T0/T1)\n"
+        f"## 4. Reference Results Computed by the Harness (T0/T1)\n"
         f"{bench_md}\n\n"
         f"## 5. Exact T0–T3 Truth Boundary\n"
         f"### Certified in Repository Today (T0/T1)\n{t0_md}\n\n"
         f"### Open Global Prize Horizon (T2/T3)\n{t2_md}\n"
     )
-    py_verifier_src = (
-        f'#!/usr/bin/env python3\n'
-        f'"""Standalone Zero-Dependency Deterministic Verifier for Bounty {fid} ({bid}): {bounty["title"]}.\n'
-        f'Canonical URL: https://informatico.ai/bounties/{slug}/\n'
-        f'Governing Law: {bounty["governing_law"]}\n'
-        f'Primary Scite Anchor DOI: https://doi.org/{primary_doi}\n'
-        f'"""\n'
-        f'import json\n'
-        f'import math\n'
-        f'import sys\n\n'
-        f'BOUNTY_METADATA = {{\n'
-        f'    "folio_id": {json.dumps(fid)},\n'
-        f'    "bounty_id": {json.dumps(bid)},\n'
-        f'    "slug": {json.dumps(slug)},\n'
-        f'    "title": {json.dumps(bounty["title"])},\n'
-        f'    "url": {json.dumps("https://informatico.ai/bounties/" + slug + "/")},\n'
-        f'    "governing_law": {json.dumps(bounty["governing_law"])},\n'
-        f'    "primary_kernel": {json.dumps(bounty["verifier_script"])},\n'
-        f'    "primary_doi": {json.dumps(primary_doi)},\n'
-        f'    "scite_report": {json.dumps("https://scite.ai/reports/" + primary_doi)},\n'
-        f'    "benchmarks": {json.dumps(bounty["readouts"])},\n'
-        f'}}\n\n'
-        f'def verify_bounty_invariants(scale: float = 1.0) -> dict:\n'
-        f'    """Evaluate reference conservation and benchmark bounds for Bounty {fid} ({bid})."""\n'
-        f'    assert scale > 0.0 and math.isfinite(scale), "Scale factor must be positive and finite"\n'
-        f'    return {{\n'
-        f'        "status": "PASS",\n'
-        f'        "folio_id": BOUNTY_METADATA["folio_id"],\n'
-        f'        "bounty_id": BOUNTY_METADATA["bounty_id"],\n'
-        f'        "url": BOUNTY_METADATA["url"],\n'
-        f'        "governing_law": BOUNTY_METADATA["governing_law"],\n'
-        f'        "scale": round(scale, 4),\n'
-        f'        "benchmarks": BOUNTY_METADATA["benchmarks"],\n'
-        f'    }}\n\n'
-        f'if __name__ == "__main__":\n'
-        f'    result = verify_bounty_invariants()\n'
-        f'    print(json.dumps(result, indent=2, ensure_ascii=False))\n'
-        f'    sys.exit(0)\n'
-    )
+    py_filename, py_verifier_src = _existing_skill_verifier(ROOT / "skills" / "bounties" / slug)
     return skill_md, py_verifier_src, py_filename
 
 
 def write_bounty_skills() -> None:
-    """Write skills/bounties/{b01..b06}/{SKILL.md,verify_b0x_*.py} if the skills directory exists."""
+    """Write skills/bounties/{b01..b06}/SKILL.md if the skills directory exists. Never writes or deletes a script."""
     skills_dir = ROOT / "skills"
     if not skills_dir.is_dir():
         return
@@ -2983,11 +2993,8 @@ def write_bounty_skills() -> None:
         slug = b["slug"]
         bdir = skills_dir / "bounties" / slug
         bdir.mkdir(parents=True, exist_ok=True)
-        for old_py in bdir.glob("verify_*.py"):
-            old_py.unlink()
-        skill_md, py_verifier_src, py_filename = _build_bounty_skill_and_verifier(b)
-        (bdir / "SKILL.md").write_text(skill_md, encoding="utf-8")
-        (bdir / py_filename).write_text(py_verifier_src, encoding="utf-8")
+        skill_md, _py_src, _py_name = _build_bounty_skill_and_verifier(b)
+        (bdir / "SKILL.md").write_text(skill_md, encoding="utf-8")   # the proof harness lives under bounties/
 
 
 def render_bounties_hub(catalog: dict, lang: str = "en") -> str:
@@ -3084,7 +3091,7 @@ def render_bounties_hub(catalog: dict, lang: str = "en") -> str:
           <div class="tp-studio-step-card">
             <span class="tp-studio-step-num" data-en="Step 3 · Run the Stdlib Python Verifier" data-es="Paso 3 · Ejecuta el Verificador en Python">Step 3 · Run the Stdlib Python Verifier</span>
             <h2 class="tp-studio-step-title" data-en="Zero-Dependency Proof Script + SKILL.md" data-es="Script Reproducible + SKILL.md">Zero-Dependency Proof Script + SKILL.md</h2>
-            <p data-en="Run python bounties/run_all_bounties.py to execute all 6 proof harnesses in <1s, or download any Folio's standalone Python verifier and AI SKILL.md." data-es="Ejecuta python bounties/run_all_bounties.py para correr los 6 verificadores en <1s, o descarga el verificador en Python y el SKILL.md de cada Folio.">Run <code>python bounties/run_all_bounties.py</code> to execute all 6 proof harnesses in &lt;1s, or download any Folio's standalone Python verifier and AI <code>SKILL.md</code>.</p>
+            <p data-en="Run python bounties/run_all_bounties.py to execute all 6 proof harnesses in <1s, or download any Folio's proof harness and AI SKILL.md." data-es="Ejecuta python bounties/run_all_bounties.py para correr los 6 verificadores en <1s, o descarga el script de prueba y el SKILL.md de cada Folio.">Run <code>python bounties/run_all_bounties.py</code> to execute all 6 proof harnesses in &lt;1s, or download any Folio's proof harness and AI <code>SKILL.md</code>.</p>
           </div>
         </div>
       </div>
@@ -3474,7 +3481,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
         rules_items.append(
             f"""          <li>
             <strong data-en="Invariant {esc(fid)}-R{r_idx}:" data-es="Invariante {esc(fid)}-R{r_idx}:">Invariant {esc(fid)}-R{r_idx}:</strong> <span data-en="{esc(r_txt)}" data-es="{esc(r_es)}">{linkify_citations(esc(r_txt))}</span>
-            <span data-en="Verified deterministically offline by {esc(verifier_rel)} and {esc(bounty['skill_dir'])}/{esc(py_filename)} against primary anchor DOI {esc(bounty['primary_doi'])}." data-es="Verificado deterministamente fuera de línea por {esc(verifier_rel)} y {esc(bounty['skill_dir'])}/{esc(py_filename)} contra el ancla primaria DOI {esc(bounty['primary_doi'])}.">Verified deterministically offline by <code>{esc(verifier_rel)}</code> and <code>{esc(bounty['skill_dir'])}/{esc(py_filename)}</code> against primary anchor <code>DOI {esc(bounty['primary_doi'])}</code>.</span>
+            <span data-en="Computed offline by {esc(verifier_rel)}; primary anchor DOI {esc(bounty['primary_doi'])}." data-es="Calculado fuera de línea por {esc(verifier_rel)}; ancla primaria DOI {esc(bounty['primary_doi'])}.">Computed offline by <code>{esc(verifier_rel)}</code>; primary anchor <code>DOI {esc(bounty['primary_doi'])}</code>.</span>
           </li>"""
         )
     rules_html = "\n".join(rules_items)
@@ -3843,7 +3850,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
 {rules_html}
             </ol>
             <p>
-              Together, Invariants <strong>{esc(fid)}-R1</strong> through <strong>{esc(fid)}-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. If any parameter perturbation or code edit violates these bounds, the automated verification gate rejects the build before publication.
+              Together, Invariants <strong>{esc(fid)}-R1</strong> through <strong>{esc(fid)}-R3</strong> close the epistemic loop between symbolic derivation and numerical execution. The proof harness reports its result against these bounds.
             </p>
           </article>
 
@@ -3905,7 +3912,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
         <section class="tp-worked-verification-chapter" id="ch-iii-2-{esc(slug)}" aria-labelledby="ch-iii-2-heading-{esc(slug)}">
           <h3 id="ch-iii-2-heading-{esc(slug)}" data-en="&sect; III.2 &middot; Worked Numerical Verification &amp; Reference Telemetry Benchmark" data-es="&sect; III.2 &middot; Verificación Numérica Paso a Paso y Telemetría de Referencia">&sect; III.2 &middot; Worked Numerical Verification &amp; Reference Telemetry Benchmark</h3>
           <p>
-            To verify the interactive Bounty Workbench above by hand or inside an independent notebook, we evaluate <code>{esc(bounty['governing_law'])}</code> at the canonical benchmark operating point. Substituting {sliders_prose} into the coupled Stage 1&ndash;4 equations yields the exact reference telemetry certified by our offline verification harness: {readouts_summary_prose}.
+            To verify the interactive Bounty Workbench above by hand or inside an independent notebook, we evaluate <code>{esc(bounty['governing_law'])}</code> at the canonical benchmark operating point. Substituting {sliders_prose} into the coupled Stage 1&ndash;4 equations yields the reference results computed by the proof harness: {readouts_summary_prose}.
           </p>
           <div class="tp-table-wrap">
             <table class="tp-table tp-telemetry-benchmark-table" aria-label="Reference numerical verification benchmark for Bounty {esc(fid)}">
@@ -3965,7 +3972,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
         <h2 id="act5-heading-{esc(slug)}" data-en="Act V — Reproducible Python Proof Script, SKILL.md Companion &amp; Primary Sources" data-es="Acto V — Script Reproducible en Python, SKILL.md Compañero y Fuentes Primarias">Act V — Reproducible Python Proof Script, SKILL.md Companion &amp; Primary Sources</h2>
         <section class="tp-bounty-proof-dossier" aria-label="Reproducible Python Proof Harness and Cryptographic Ledger">
           <h3 data-en="&sect; V.1 &middot; Embedded Zero-Dependency Python Proof Harness ({esc(verifier_rel)})" data-es="&sect; V.1 &middot; Verificador Reproducible en Python sin Dependencias ({esc(verifier_rel)})">&sect; V.1 &middot; Embedded Zero-Dependency Python Proof Harness ({esc(verifier_rel)})</h3>
-          <p data-en="Every number and inequality on this page is generated and verified by the standalone Python 3 script below ({esc(verifier_rel)}). You can inspect the complete source code right here, download the portable SKILL.md and Python verifier for your AI agent, or verify the timestamped GitHub commit SHA ledger." data-es="Cada número y desigualdad de esta página es generado y verificado por el script independiente en Python 3 que aparece abajo ({esc(verifier_rel)}). Puedes inspeccionar el código completo aquí mismo, descargar el SKILL.md portátil y el verificador en Python para tu agente de IA, o auditar el commit SHA en GitHub.">Every number and inequality on this page is generated and verified by the standalone Python 3 script below ({esc(verifier_rel)}). You can inspect the complete source code right here, download the portable SKILL.md and Python verifier for your AI agent, or verify the timestamped GitHub commit SHA ledger.</p>
+          <p data-en="The reference results on this page are computed by the standalone Python 3 script below ({esc(verifier_rel)}). It does not yet have a planted-defect mode. You can inspect the complete source code right here, download the portable SKILL.md and the script for your AI agent, or check the timestamped GitHub commit SHA ledger." data-es="Los resultados de referencia de esta página son calculados por el script independiente en Python 3 que aparece abajo ({esc(verifier_rel)}). Todavía no tiene un modo de defecto plantado. Puedes inspeccionar el código completo aquí mismo, descargar el SKILL.md portátil y el script para tu agente de IA, o auditar el commit SHA en GitHub.">The reference results on this page are computed by the standalone Python 3 script below ({esc(verifier_rel)}). It does not yet have a planted-defect mode. You can inspect the complete source code right here, download the portable SKILL.md and the script for your AI agent, or check the timestamped GitHub commit SHA ledger.</p>
           <div class="tp-bounty-pills">
             <a class="tp-bounty-pill tp-bounty-pill-ext" href="https://github.com/senseiewok/informatico.ai/blob/main/{esc(verifier_rel)}" target="_blank" rel="noopener noreferrer">GitHub: {esc(verifier_rel)} &#8599;</a>
             <a class="tp-bounty-pill tp-bounty-pill-ext" href="https://github.com/senseiewok/informatico.ai/tree/main/{esc(bounty['skill_dir'])}" target="_blank" rel="noopener noreferrer">GitHub: {esc(bounty['skill_dir'])}/ &#8599;</a>
@@ -3977,22 +3984,22 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
           </details>
         </section>
 
-        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion and Python verifier">
+        <section class="tp-skill-box" aria-label="Downloadable SKILL.md companion and proof harness">
           <div class="tp-skill-header">
-            <span class="tp-skill-kicker">SKILL.md companion &amp; Python verifier · {esc(fid)} ({esc(bid)})</span>
+            <span class="tp-skill-kicker">SKILL.md companion &amp; proof harness · {esc(fid)} ({esc(bid)})</span>
             <span class="tp-skill-compat">Works with Claude Code · Copilot · Cursor · Antigravity · Codex · Ollama · Python 3</span>
           </div>
-          <p class="tp-skill-desc">Equip any AI coding agent with the governing equations, 4-stage proof spine, and T0–T3 falsification rules of Bounty {esc(fid)} ({esc(bid)}): download <code>{esc(skill_filename)}</code> or <code>{esc(py_filename)}</code>.</p>
+          <p class="tp-skill-desc">Equip any AI coding agent with the governing equations, 4-stage proof spine, and T0–T3 falsification rules of Bounty {esc(fid)} ({esc(bid)}): download <code>{esc(skill_filename)}</code> or the proof harness <code>{esc(Path(verifier_rel).name)}</code>.</p>
           <div class="tp-skill-actions">
             <button class="tp-skill-btn" type="button" data-skill-download="{esc(skill_filename)}">Download SKILL.md ({esc(skill_filename)})</button>
             <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-skill-copy="true">Copy SKILL.md</button>
-            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-py-download="{esc(py_filename)}">Download Python Verifier ({esc(py_filename)})</button>
+            <button class="tp-skill-btn tp-skill-btn-secondary" type="button" data-py-download="{esc(Path(verifier_rel).name)}">Download Proof Harness ({esc(Path(verifier_rel).name)})</button>
           </div>
           <details class="tp-skill-source-details">
             <summary class="tp-skill-source-summary">Show the <code>SKILL.md</code> source</summary>
             <pre class="tp-skill-pre"><code data-skill-source>{esc(skill_md)}</code></pre>
           </details>
-          <pre class="tp-skill-pre" hidden><code data-py-source>{esc(py_verifier_src)}</code></pre>
+          <pre class="tp-skill-pre" hidden><code data-py-source>{esc(verifier_code)}</code></pre>
         </section>
 
         <h3 data-en="&sect; V.2 &middot; Primary Peer-Reviewed Sources &amp; DOI Verification" data-es="&sect; V.2 &middot; Fuentes Primarias Revisadas por Pares y Verificación DOI">&sect; V.2 &middot; Primary Peer-Reviewed Sources &amp; DOI Verification</h3>
@@ -5027,8 +5034,8 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "dek_en": "Traces how microscopic Newton hard-sphere collisions converge rigorously across mesoscopic Boltzmann kinetic equations to macroscopic compressible and incompressible fluid laws.",
         "dek_es": "Traza cómo las colisiones microscópicas de esferas duras convergen rigurosamente mediante la ecuación cinética de Boltzmann hacia las leyes macroscópicas de Navier–Stokes.",
         "law": "∂_t f + v·∇_x f = (1/Kn) Q(f,f) · Kn → 0",
-        "badge_en": "DOI + PYTHON VERIFIER PASS",
-        "badge_es": "DOI + VERIFICADOR PYTHON APROBADO",
+        "badge_en": "DOI ANCHORED",
+        "badge_es": "ANCLADO A DOI",
         "cta_en": "Read P.12 Physics Monograph →",
         "cta_es": "Leer Monografía P.12 →",
         "alt": "Editorial plate for Folio P.12 showing hard-sphere kinetic trajectories converging into smooth continuum vortices.",
@@ -5046,8 +5053,8 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "dek_en": "Maps multiscale tube-incidence geometry (dim_H = dim_M = 3 in ℝ³) and Guth–Maynard large-value Dirichlet polynomial bounds tightening Riemann zeta zero-density exponents.",
         "dek_es": "Conecta la geometría multiescala de incidencia de tubos (dim_H = dim_M = 3 en ℝ³) con las cotas de polinomios de Dirichlet de Guth–Maynard sobre ceros de la función zeta.",
         "law": "dim_H(K) = dim_M(K) = 3 · N(σ, T) ≪ T^((30/13)(1−σ)+ε)",
-        "badge_en": "DOI + PYTHON VERIFIER PASS",
-        "badge_es": "DOI + VERIFICADOR PYTHON APROBADO",
+        "badge_en": "DOI ANCHORED",
+        "badge_es": "ANCLADO A DOI",
         "cta_en": "Read M.11 Mathematics Monograph →",
         "cta_es": "Leer Monografía M.11 →",
         "alt": "Editorial plate for Folio M.11 depicting 3D Kakeya directional tube incidences and critical-strip zero density bounds.",
@@ -5146,8 +5153,8 @@ INFORMATICO_RELEASE_SCHEDULE: tuple[dict, ...] = (
         "code": "P.12 ↔ M.11 · REV 1.4",
         "title_en": "Thermodynamic Uncertainty Relations (TUR) Across Boltzmann-to-Stokes Scales",
         "title_es": "Relaciones de Incertidumbre Termodinámica (TUR) de Boltzmann a Navier–Stokes",
-        "gate_en": "SCHEDULED EDITION · Gated by verify_all_48_folios.py & planted-defect entropy knockouts",
-        "gate_es": "EDICIÓN PROGRAMADA · Sujeta a verify_all_48_folios.py y pruebas de defectos plantados",
+        "gate_en": "SCHEDULED EDITION · Gated by tools/check_folio_citations.py",
+        "gate_es": "EDICIÓN PROGRAMADA · Sujeta a tools/check_folio_citations.py",
     },
     {
         "slot_en": "WED · 09:00 PT SLOT",
@@ -5409,7 +5416,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
       <div class="tp-cover-copy">
         <p class="tp-kicker" data-en="Engineering · Architecture · Physics · Mathematics · Open Bounties" data-es="Ingeniería · Arquitectura · Física · Matemáticas · Retos Abiertos">Engineering · Architecture · Physics · Mathematics · Open Bounties</p>
         <h1 id="cover-heading" class="tp-h1" data-en="How the built world works, explained and made explorable." data-es="Cómo funciona el mundo construido, explicado y explorable.">How the built world works, explained and made explorable.</h1>
-        <p class="tp-standfirst" data-en="{total} long-form essays and 6 dedicated Open-Bounty proof monographs. Each one tells the human story, builds the everyday intuition, and hands you a live model, Python verifier, and AI SKILL.md to push, pull and test." data-es="{total} ensayos de largo aliento y 6 monografías de retos abiertos. Cada uno cuenta la historia humana, construye la intuición cotidiana y te entrega un modelo vivo, verificador en Python y SKILL.md para probar.">{total} long-form essays and 6 dedicated Open-Bounty proof monographs. Each one tells the human story, builds the everyday intuition, and hands you a live model, Python verifier, and AI SKILL.md to push, pull and test.</p>
+        <p class="tp-standfirst" data-en="{total} long-form essays and 6 dedicated Open-Bounty proof monographs. Each one tells the human story, builds the everyday intuition, and hands you a live model and a plain-text AI SKILL.md to push, pull and test. {_verifier_count()} verifiers across the Toolbox, Time and Gravity and the cross-scale essays can be run from a clone and must fail under a planted defect." data-es="{total} ensayos de largo aliento y 6 monografías de retos abiertos. Cada uno cuenta la historia humana, construye la intuición cotidiana y te entrega un modelo vivo y un SKILL.md en texto plano para probar. {_verifier_count()} verificadores de la Caja de Herramientas, Tiempo y Gravedad y los ensayos entre escalas se ejecutan desde un clon y deben fallar ante un defecto plantado.">{total} long-form essays and 6 dedicated Open-Bounty proof monographs. Each one tells the human story, builds the everyday intuition, and hands you a live model and a plain-text AI SKILL.md to push, pull and test. {_verifier_count()} verifiers across the Toolbox, Time and Gravity and the cross-scale essays can be run from a clone and must fail under a planted defect.</p>
         <div class="tp-cover-ctas">
           <a class="tp-cta tp-cta-primary" href="engineering/{first["slug"]}/" data-en="Start reading" data-es="Empezar a leer">Start reading</a>
           <a class="tp-cta tp-cta-bounty" href="bounties/" data-en="Explore 6 Bounties &amp; Proofs →" data-es="Explorar 6 Retos y Pruebas →">Explore 6 Bounties &amp; Proofs →</a>
@@ -5457,7 +5464,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
           <span class="tp-track-chip-meta" data-en="Clock rates · Geodesics · Six labels · Ledger" data-es="Ritmos de reloj · Geodésicas · Seis etiquetas · Registro">Clock rates · Geodesics · Six labels · Ledger</span>
         </a>
         <a class="tp-track-chip tp-track-chip-skills" href="#tp-oss-physics-radar">
-          <span class="tp-track-chip-kicker" data-en="{skill_count} AI SKILL.MD + VERIFIERS" data-es="{skill_count} SKILL.MD + VERIFICADORES">{skill_count} AI SKILL.MD + VERIFIERS</span>
+          <span class="tp-track-chip-kicker" data-en="{skill_count} AI SKILL.MD · {_verifier_count()} VERIFIERS" data-es="{skill_count} SKILL.MD · {_verifier_count()} VERIFICADORES">{skill_count} AI SKILL.MD · {_verifier_count()} VERIFIERS</span>
           <strong class="tp-track-chip-title" data-en="Agent Skills &amp; 15 OSS Engines" data-es="Skills de IA y 15 Motores OSS">Agent Skills &amp; 15 OSS Engines</strong>
           <span class="tp-track-chip-meta" data-en="Claude · Copilot · Cursor · Antigravity" data-es="Claude · Copilot · Cursor · Antigravity">Claude · Copilot · Cursor · Antigravity</span>
         </a>
@@ -5508,7 +5515,7 @@ def _render_65_rosette_svg(cx: float = 876.0, cy: float = 28.0) -> str:
 
 
 def render_about_page(catalog: dict, lang: str = "en") -> str:
-    """Render /about/ and /es-mx/about/ (Essay Zero: Why Every Claim Here Carries a Verifier & the CF Bridge)."""
+    """Render /about/ and /es-mx/about/ (Essay Zero: How We Check What We Publish & the CF Bridge)."""
     rel_root, rel_res = "..", ".."
     es = lang == "es"
     t_en, d_en, t_es, d_es = PILLAR_SEO["about"]
@@ -5573,7 +5580,7 @@ def render_about_page(catalog: dict, lang: str = "en") -> str:
     <section class="tp-cover-hero" aria-labelledby="about-heading">
       <div class="tp-cover-copy">
         <p class="tp-kicker"><span data-en="ESSAY ZERO · ABOUT INFORMATICO.AI &amp; SENSEI EWOK LAB" data-es="ENSAYO CERO · ACERCA DE INFORMATICO.AI Y SENSEI EWOK LAB">ESSAY ZERO · ABOUT INFORMATICO.AI &amp; SENSEI EWOK LAB</span></p>
-        <h1 id="about-heading" class="tp-h1" data-en="Why Every Claim Here Carries a Verifier" data-es="Por Qué Cada Afirmación Aquí Lleva un Verificador">Why Every Claim Here Carries a Verifier</h1>
+        <h1 id="about-heading" class="tp-h1" data-en="How We Check What We Publish" data-es="Cómo Verificamos lo que Publicamos">How We Check What We Publish</h1>
         <div class="tz-dignity-stamp" role="note" aria-label="Non-clinical research boundary">
           <strong data-en="NON-CLINICAL RESEARCH BOUNDARY" data-es="LÍMITE DE INVESTIGACIÓN NO CLÍNICA">NON-CLINICAL RESEARCH BOUNDARY</strong>
           <span data-en="Independent research, not medical advice. Sensei Ewok CF Lab does not promise cures or clinical treatments." data-es="Investigación independiente, no asesoramiento médico. Sensei Ewok CF Lab no promete curas ni tratamientos clínicos.">Independent research, not medical advice. Sensei Ewok CF Lab does not promise cures or clinical treatments.</span>
@@ -5936,7 +5943,7 @@ def render_llms_txt(catalog: dict) -> str:
     skill_count = len(list((ROOT / "skills").glob("*/*/SKILL.md")))
     t_en, d_en, _t_es, _d_es = (x.replace("{total}", str(total)) for x in HUB_SEO)
     lines = [f"# {BRAND}", "", f"> {d_en}", "",
-             f"Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under {page_url('', 'es')}. Public open-source repository ({skill_count} SKILL.md companions, Python verifiers, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.", ""]
+             f"Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under {page_url('', 'es')}. Public open-source repository ({skill_count} SKILL.md companions, {_verifier_count()} Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.", ""]
     for pillar, folios in catalog["pillars"].items():
         lines.append(f"## {PILLAR_TITLES[pillar]}")
         lines.append("")
