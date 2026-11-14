@@ -14,12 +14,12 @@ if hasattr(sys.stdout, "reconfigure"):
 FOLIO_METADATA = {
     "folio_id": "A.06",
     "slug": "a06",
-    "title": "Net-Zero Water & Greywater Constructed Wetlands: Subsurface Darcy Filtration, UV-C Photolysis, and Pathogen-Free Plumbing (CSI 22 13 00)",
+    "title": "Net-Zero Water & Greywater Constructed Wetlands: Subsurface Darcy Filtration, UV-C Photolysis, and Pathogen-Control Plumbing (CSI 22 13 00)",
     "governing_law": "C_out = C* + (C_in−C*)e^(−kτ) · 5.4-Log UV-C",
     "primary_kernel": "tools/tectonic_verify.py",
     "primary_doi": "10.1201/9781420012514",
     "scite_report": "https://scite.ai/reports/10.1201/9781420012514",
-    "benchmarks": [{"label": "Wetland BOD_5 Reduction", "value": "95.1% (140 → 6.8 mg/L)"}, {"label": "UV-C Pathogen Inactivation", "value": "5.4-Log (45 mJ/cm²)"}, {"label": "Thermal Loop Equilibrium", "value": "60.0 °C (v = 0.65 m/s)"}, {"label": "ASHRAE 188 Verdict", "value": "ZERO BIOFILM VERIFIED"}],
+    "benchmarks": [{"label": "Wetland BOD_5 Reduction", "value": "95.1% (140 → 6.8 mg/L)"}, {"label": "UV-C Log Reduction (Model)", "value": "5.4-Log (45 mJ/cm²)"}, {"label": "Thermal Loop Design Target", "value": "60.0 °C (v = 0.65 m/s)"}, {"label": "Design Check (Model)", "value": "DESIGN TARGETS MET (MODEL)"}],
 }
 
 

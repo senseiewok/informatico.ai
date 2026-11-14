@@ -640,14 +640,14 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
         "en": [
             ("WETLAND", "Subsurface gravel root-zone biofilter governed by Kadlec-Knight P-k-C* kinetics", "Act I"),
             ("BIOFILM", "Pipe-wall microbial slime layer prevented by 60°C thermal loop circulation", "Act II"),
-            ("STERILE", "Pathogen-free clinical water regime achieved via 254 nm UV-C irradiation", "Act IV"),
+            ("STERILE", "Target condition for clinical water that UV-C dosing and hot recirculation aim toward", "Act IV"),
             ("REED", "Phragmites aquatic plant pumping oxygen into the rhizosphere gravel bed", "Act II"),
             ("GRAVEL", "Porous mineral substrate supporting nitrifying bacteria in greywater beds", "Act III"),
             ("UVC", "Short-wave germicidal ultraviolet light band that dimerizesopportunistic DNA", "Act III"),
         ],
         "es": [
             ("HUMEDAL", "Filtro biológico fitodepurador gobernado por la cinética de Kadlec y Knight", "Acto I"),
-            ("ESTERIL", "Condición libre de patógenos lograda con luz UV-C y recirculación térmica", "Acto IV"),
+            ("ESTERIL", "Condición objetivo del agua clínica que buscan la luz UV-C y la recirculación térmica", "Acto IV"),
             ("GRAVA", "Lecho granular subsuperficial donde las raíces oxigenan el agua gris", "Acto III"),
             ("RAIZ", "Zona de la rizosfera vegetal que aloja consorcios bacterianos depuradores", "Acto II"),
             ("TUBO", "Conducto hidráulico clínico mantenido sobre 60 °C según la norma ASHRAE 188", "Acto II"),

@@ -1486,8 +1486,8 @@ export function initPlateSolvers(scope = document) {
         const logRed = 5.4 * (hUv / 45.0);
         if (thrustOut) thrustOut.textContent = `${rem.toFixed(1)}% (140 → ${cOut.toFixed(1)} mg/L)`;
         if (kernOut) kernOut.textContent = `${logRed.toFixed(1)}-Log (${hUv.toFixed(0)} mJ/cm²)`;
-        if (outR2) outR2.textContent = `60.0 °C (v = 0.65 m/s)`;
-        if (statusOut) statusOut.textContent = rem >= 85.0 && logRed >= 4.0 ? "ZERO BIOFILM VERIFIED" : "INCOMPLETE PURGE WARNING";
+        if (outR2) outR2.textContent = `60.0 °C (v = 0.65 m/s)`; // fixed design target, not computed
+        if (statusOut) statusOut.textContent = rem >= 85.0 && logRed >= 4.0 ? "DESIGN TARGETS MET (MODEL)" : "BELOW DESIGN TARGETS (MODEL)";
         if (statusBox) statusBox.setAttribute("data-alert", rem >= 85.0 && logRed >= 4.0 ? "false" : "true");
         return;
       }
@@ -2181,20 +2181,23 @@ export function initPlateSolvers(scope = document) {
         return;
       }
       if (slug === "p08") {
-        const dNm = v0;
-        const thetaDeg = v1;
-        if (atpOut) atpOut.textContent = `d_film = ${dNm.toFixed(0)} nm`;
-        if (vmOut) vmOut.textContent = `θ_1 = ${thetaDeg.toFixed(0)}°`;
-        if (inlineAtp) inlineAtp.textContent = `d_film = ${dNm.toFixed(0)} nm`;
+        // Folio P.08 law: 2 d sqrt(n_f^2 - sin^2 θ_i) = m λ, read in second order (m = 2).
+        // The first slider is the viewing angle θ_i, the second the film thickness d.
+        const thetaDeg = v0;
+        const dNm = v1;
+        if (atpOut) atpOut.textContent = `θ_i = ${thetaDeg.toFixed(0)}°`;
+        if (vmOut) vmOut.textContent = `d_film = ${dNm.toFixed(0)} nm`;
+        if (inlineAtp) inlineAtp.textContent = `θ_i = ${thetaDeg.toFixed(0)}°`;
         const nFilm = 2.45;
+        const order = 2.0;
         const sinTheta = Math.sin((thetaDeg * Math.PI) / 180.0);
-        const lamMax = 2.0 * dNm * Math.sqrt(Math.max(1.0, nFilm * nFilm - sinTheta * sinTheta));
-        const lam0 = 2.0 * dNm * nFilm;
-        const dLam = lamMax - lam0;
-        if (effOut) effOut.textContent = `λ_max = ${lamMax.toFixed(0)} nm (θ_1 = ${thetaDeg.toFixed(0)}°)`;
-        if (ratioOut) ratioOut.textContent = `Δλ = ${dLam.toFixed(0)} nm (Gonioapparent Shift)`;
-        if (outR2) outR2.textContent = `FI = 14.8 (vs 1.08 Barragán Stucco)`;
-        if (statusOut) statusOut.textContent = "BRAGG & KUBELKA-MUNK VERIFIED";
+        const lam0 = (2.0 * dNm * nFilm) / order;
+        const lamTheta = (2.0 * dNm * Math.sqrt(nFilm * nFilm - sinTheta * sinTheta)) / order;
+        const dLam = lamTheta - lam0;
+        const visible = lam0 >= 380.0 && lam0 <= 780.0;
+        if (effOut) effOut.textContent = `λ_peak = ${lam0.toFixed(0)} nm at 0° (m = 2)`;
+        if (ratioOut) ratioOut.textContent = `Δλ = ${dLam.toFixed(1).replace("-", "−")} nm (at θ_i = ${thetaDeg.toFixed(0)}°)`;
+        if (statusOut) statusOut.textContent = visible ? "PEAK IN VISIBLE BAND (MODEL)" : "PEAK OUTSIDE VISIBLE BAND (MODEL)";
         return;
       }
       if (slug === "p09") {

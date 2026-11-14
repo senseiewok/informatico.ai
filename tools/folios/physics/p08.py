@@ -7,27 +7,36 @@ SLUG = 'p08'
 PILLAR = 'physics'
 
 FOLIO = {'category_code': 'P',
- 'colophon': {'benchmarks': 'n_f = 2.45 (TiO₂) · d = 245 nm ⇒ λ_peak = 588 nm · Flop Δλ = −24 nm',
+ 'colophon': {'benchmarks': 'n_f = 2.45 (TiO₂) · d = 240 nm, m = 2 ⇒ λ_peak = 588 nm · Flop Δλ = −10.9 nm at 28°',
               'bridge': 'Automotive Gonioapparent Flop ↔ A.07 Barragán Stucco & M.08 Color '
                         'Geodesics',
               'identifier': 'P.08 · Electromagnetic Color Waves & BRDF · Optics',
               'kernels': 'Bragg–Snell Thin-Film Interference · Cook–Torrance Microfacet BRDF'},
- 'current_edition': 'REV 1.0',
+ 'current_edition': 'REV 1.1',
  'date_published': '2026-11-02',
- 'date_redated': '2026-11-02',
+ 'date_redated': '2026-11-14',
  'folio_id': 'P.08',
  'governing_law': 'Δ_OPD = 2 d √(n_f² − sin²θ_i) = m λ · f_r = k_d(ρ/π) + k_s(D F G) / '
                   '[4(n·l)(n·v)]',
- 'kernel_verdict': 'Discrepancy open: 2 readouts contradicted',
- 'kernel_verdict_es': 'Discrepancia abierta: 2 lecturas contradichas',
+ 'kernel_verdict': 'Recomputed: 2 of 4 readouts follow from the stated law',
+ 'kernel_verdict_es': 'Recalculado: 2 de 4 lecturas se siguen de la ley indicada',
  'pillar': 'physics',
  'primary_kernel': 'skills/physics/p08/verify_p08.py',
  'reading_time': '22 MIN READ',
- 'readouts': [{'label': 'Constructive Peak Wavelength', 'value': 'λ_peak = 588 nm (Amber-Gold)'},
-              {'label': 'Angular Color-Flop Blue Shift', 'value': 'Δλ = −24.2 nm (at θ_i = 28°)'},
-              {'label': 'Fresnel–Cook Specular Gain', 'value': 'F(θ_i) = 0.184 · GGX α_r = 0.04'},
-              {'label': 'Wave Interference Verdict', 'value': 'COHERENT GONIOAPPARENT · PASS'}],
- 'revisions': [{'date': '2026-11-02',
+ 'readouts': [{'label': 'Constructive Peak Wavelength', 'value': 'λ_peak = 588 nm at 0° (m = 2)'},
+              {'label': 'Angular Color-Flop Blue Shift', 'value': 'Δλ = −10.9 nm (at θ_i = 28°)'},
+              {'label': 'Fresnel–Cook Specular Gain', 'value': 'F ≈ 0.18 (fixed illustrative value) · GGX α_r = 0.04'},
+              {'label': 'Wave Interference Verdict', 'value': 'PEAK IN VISIBLE BAND (MODEL)'}],
+ 'revisions': [{'date': '2026-11-14',
+                'edition': 'REV 1.1',
+                'opus': 'Review: numbers recomputed by hand from the stated law by an independent reviewer.',
+                'summary': 'REV 1.1 (Redated 2026-11-14): Grounding revision. The numbers printed in REV 1.0 did '
+                           'not follow from the folio law: 245 nm gives 600 nm, not 588 nm, and the shift at 28° is '
+                           '−10.9 nm, not −24.2 nm. The film is now 240 nm read in second order, the colour '
+                           'descriptions match the computed wavelengths, and the page says that the law neglects '
+                           'the half-wave phase shift on reflection. The interactive lab had its two sliders '
+                           'swapped and is fixed.'},
+               {'date': '2026-11-02',
                 'edition': 'REV 1.0',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'exact Snell-Bragg cos(theta_t) = sqrt(1 - sin^2(theta_i)/n_f^2) '
@@ -48,16 +57,13 @@ FOLIO = {'category_code': 'P',
                       "Cook & Kenneth Torrance's physical microfacet reflectance model for "
                       'wavelength-dependent Fresnel and interference color shifts.'},
  'sidenote_1': {'body': "A sports car's compound-curved fender sweeps surface normals n(x) through "
-                        "90° in a single glance, turning Bragg's sin²θ_i phase law into a living "
-                        'sculpture of shifting wavelengths. A flat 12-meter wall by Luis Barragán '
+                        "90° in a single glance, turning the sin²θ_i term of the interference condition into a living sculpture of shifting wavelengths."
+                        ' A flat 12-meter wall by Luis Barragán '
                         'has constant surface normal—so it relies on Kubelka–Munk diffuse cavity '
                         'bounces instead.',
                 'kicker': 'SIDENOTE P.08-A · WHY CURVED CAR BODIES LOVE GONIOAPPARENT FLOP WHILE '
                           'WALLS LOVE MATTE'},
- 'sidenote_2': {'body': 'The exact same Bragg–Snell equation Δ_OPD = 2 d √(n² − sin²θ) used to '
-                        'design pearlescent automotive pigments is used in clinical white-light '
-                        'interferometry to measure the 7 μm airway surface liquid and '
-                        'tear-film lipid layers.',
+ 'sidenote_2': {'body': 'The exact same Bragg–Snell equation Δ_OPD = 2 d √(n² − sin²θ) used to design pearlescent automotive pigments is the kind of relation that thin-film interferometry uses to estimate the thickness of thin transparent layers such as the tear film.',
                 'kicker': 'SIDENOTE P.08-B · SPECIFICATION PLATE · THIN-FILM INTERFEROMETRY IN '
                           'BIOPHYSICS'},
  'skill': {'description': 'AI-agnostic wave-optics and surface-physics skill for Bragg thin-film '
@@ -85,26 +91,21 @@ FOLIO = {'category_code': 'P',
               'min': 140.0,
               'step': 5.0,
               'unit': ' nm',
-              'value': 245.0}],
+              'value': 240.0}],
  'slug': 'p08',
  'spec_plate': {'body': 'Three-stage OEM/motorsport basecoat-pearlescent-clearcoat system '
-                        '(synthetic fluorophlogopite mica platelets encapsulated in 245 nm rutile '
-                        'TiO2) benchmarked at 15°, 45°, and 110° aspecular angles per ASTM E2539.',
+                        '(synthetic fluorophlogopite mica platelets encapsulated in 240 nm rutile TiO2) benchmarked at 15°, 45°, and 110° aspecular angles per ASTM E2539.',
                 'division': 'ASTM E2539 / AUTOMOTIVE & ARCHITECTURAL SPECTROPHOTOMETRY',
-                'meta': 'Cook-Torrance BRDF (DOI 10.1145/357290.357293) & Bragg transfer-matrix '
-                        'verified',
+                'meta': 'Cook-Torrance BRDF (DOI 10.1145/357290.357293) · simplified thin-film condition (model)',
                 'title': 'Multi-Angle (15° / 45° / 110°) Gonioapparent Pearlescent Clearcoat vs. '
                          'Mineral Matte Standard'},
- 'status_badge': 'COLOR WAVE PHYSICS · REV 1.0',
+ 'status_badge': 'COLOR WAVE PHYSICS · REV 1.1',
  'steps': ['Stage 1 (Maxwell Transverse Electromagnetic Wave Packet): Incident white daylight '
            'carries continuous spectral modes λ ∈ [380, 780] nm across the clearcoat dielectric '
            'boundary.',
-           'Stage 2 (Bragg–Snell Thin-Film Phase Addition): Inside a 245 nm TiO₂ nanolayer (n_f = '
-           '2.45) on mica platelets, optical path difference Δ_OPD = 2 d √(n_f² − sin²θ_i) selects '
-           'λ_peak = 588 nm.',
+           'Stage 2 (Bragg–Snell Thin-Film Phase Addition): Inside a 240 nm TiO₂ nanolayer (n_f = 2.45) on mica platelets, optical path difference Δ_OPD = 2 d √(n_f² − sin²θ_i) = m λ selects, in second order (m = 2) at normal incidence, λ_peak = 588 nm.',
            'Stage 3 (Gonioapparent Automotive Blue-Shift Color Flop): Sweeping viewing angle θ_i '
-           'from 0° to 65° along a curved car fender shrinks √(n_f² − sin²θ_i), shifting λ_peak '
-           'blueward by −41 nm.',
+           'from 0° to 65° along a curved car fender shrinks √(n_f² − sin²θ_i), shifting λ_peak blueward by about −42 nm for the 240 nm film.',
            'Stage 4 (Cook–Torrance Specular vs. Barragán Lambertian Limit): Low microfacet '
            "roughness (α_r = 0.04) concentrates metallic car highlights, while Barragán's calcite "
            'stucco (α_r = 0.88) scatters hue uniformly.'],
@@ -132,14 +133,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'wavelength-dependent Fresnel and interference color shifts.'},
  'act1_title': 'Act I — Color Is an Electromagnetic Wave: From Thomas Young & Bragg Interference '
                'to Automotive Pearlescent Lacquers & Barragán Stucco',
- 'act1_dropcap': 'On a raw November afternoon in 1801, the English polymath and physician Thomas '
-                 'Young stood before his skeptical colleagues at the Royal Society of London to '
-                 'challenge a century of dogma. Sir Isaac Newton had declared that light was a '
-                 'stream of tiny bullet-like corpuscles, but Young presented a radically different '
-                 'vision: color was a continuous rhythmic vibration. By splitting a narrow beam of '
-                 'sunlight with a thin card and watching the overlapping bands on the opposite '
-                 'wall, Young measured the microscopic wavelengths of visible light for the very '
-                 'first time. Violet was a rapid flutter scarcely four hundred nanometers from '
+ 'act1_dropcap': 'In the first years of the nineteenth century the English physician and polymath Thomas Young argued before the Royal Society of London that light is a wave. Isaac Newton had favored tiny corpuscles; Young proposed that color is a periodic vibration, and he used interference, including measurements of the colored rings seen in thin films, to estimate the wavelengths of visible light. Violet was a rapid flutter scarcely four hundred nanometers from '
                  'crest to crest, while deep red stretched out toward seven hundred nanometers. '
                  'Six decades later, James Clerk Maxwell proved that these luminous undulations '
                  'were oscillating electric and magnetic fields traveling across space, setting '
@@ -150,8 +144,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'modern multi-layer automotive pearlescent coat, synthetic mica platelets coated '
               'with a nanometric layer of high-index titanium dioxide (TiO2, refractive index n_f '
               '= 2.45, thickness d_film ~ 180–320 nm) are suspended parallel to the curved '
-              "carbon-fiber bodywork. By William Lawrence Bragg's and Augustin-Jean Fresnel's "
-              'thin-film interference law, the optical path difference between waves reflecting '
+              "carbon-fiber bodywork. By the thin-film interference condition (Young, Fresnel),"
+              ' the optical path difference between waves reflecting '
               'from the top and bottom of the TiO2 nanolayer is Delta_OPD = 2 d_film sqrt(n_f^2 - '
               'sin^2(theta_i)). As a viewer walks past a curved car fender or watches an F1 car '
               'corner, the incidence angle theta_i sweeps from 0 deg (normal) to 70 deg (grazing), '
@@ -161,13 +155,11 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               "Conversely, Barragán's coarse volcanic-lime plaster intentionally destroys specular "
               'coherence via random Mie/Kubelka–Munk cavity scattering, holding dominant hue '
               'invariant across every viewing angle.',
- 'pullquote': '"Walk around a pearlescent sports car and its curved bodywork shifts from '
-              'gold-crimson to deep violet because oblique viewing shrinks the Bragg optical path '
+ 'pullquote': '"Walk around a pearlescent sports car and its curved bodywork shifts from yellow-gold toward green because oblique viewing shrinks the Bragg optical path '
               'difference; walk past a Luis Barragán stucco wall and its hue stands still like a '
               'monument."',
  'chronology': [('1801',
-                 'Thomas Young establishes the wave theory of light, measuring the nanometer '
-                 'wavelengths of red, yellow, and violet waves via double-slit interference.'),
+                 'Thomas Young presents his wave theory of light to the Royal Society and estimates the wavelengths of colors from interference in thin films; his double-slit demonstration follows a few years later.'),
                 ('1865',
                  'James Clerk Maxwell proves light and color are transverse electromagnetic waves '
                  'governed by dielectric permittivity epsilon(omega).'),
@@ -180,13 +172,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'act2_title': 'Act II — How It Actually Works: Bragg–Fresnel Thin-Film Wave Interference vs. '
                'Microfacet BRDF',
  'act2_intuition': 'For a dielectric TiO2-coated mica flake of thickness d_film and refractive '
-                   'index n_f = 2.45 embedded in clearcoat, half-wave phase inversion at the '
-                   'high-index boundary produces first-order constructive interference at '
-                   'wavelength lambda_peak(theta_i) = 4 * d_film * sqrt(n_f^2 - sin^2(theta_i)) '
-                   '(or for m-th order phase-matched Fabry–Pérot stacks, lambda_peak = (2 / m) * '
-                   'd_film * sqrt(n_f^2 - sin^2(theta_i))). Increasing the viewing angle theta_i '
-                   'from 0 deg to 65 deg decreases cos(theta_t), shifting lambda_peak blueward by '
-                   "Delta_lambda ~ 45–65 nm ('gonioapparent flop'). Meanwhile, the Cook–Torrance "
+                   'index n_f = 2.45 embedded in clearcoat, this folio uses the simplified condition lambda_peak(theta_i) = (2 / m) * d_film * sqrt(n_f^2 - sin^2(theta_i)), read in second order (m = 2). It neglects the half-wave phase shift on reflection at the high-index boundary; including it would replace m by m - 1/2 and move every peak, so the wavelengths here are model values, not a pigment specification. Increasing the viewing angle theta_i '
+                   'from 0 deg to 65 deg decreases cos(theta_t), shifting lambda_peak blueward by about 42 nm for the 240 nm film (\'gonioapparent flop\').'
+                   " Meanwhile, the Cook–Torrance "
                    'BRDF f_r = k_d (rho / pi) + k_s (D_GGX * F_Fresnel * G_Smith) / (4 (n.l)(n.v)) '
                    "separates the angle-invariant Lambertian pigment lobe (dominant in Barragán's "
                    'mineral stucco, roughness alpha_r = 0.88) from the sharp specular microfacet '
@@ -203,8 +191,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Bragg constructive interference wavelength lambda_peak shift blueward while '
                  'Fresnel specular reflectance surges.',
                  'Experiment 2 (TiO2 Nano-Coating Thickness Tuning): Drag Dielectric Oxide '
-                 'Thickness d_film from 140 nm (azure-cyan wave interference) to 310 nm '
-                 '(copper-crimson interference) and inspect the reflected electromagnetic wave '
+                 'Thickness d_film from 160 nm (model peak near 392 nm, violet) to 310 nm (model peak near 760 nm, deep red) and inspect the reflected electromagnetic wave '
                  'packet.',
                  'Experiment 3 (Automotive Pearl vs. Barragán Stucco BRDF): Click Stages 1 to 4 to '
                  'compare coherent Bragg thin-film phase addition, Cook–Torrance GGX microfacet '
@@ -220,10 +207,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               "A.07 (Barragán's architectural pigment radiosity) and Folio M.08 (Riemannian "
               'differential geometry of color space). Upstream optical-physics case study: '
               'the exact Bragg–Snell thin-film interference law Delta_OPD = 2 d sqrt(n^2 - sin^2 '
-              'theta) that creates color flop on a pearlescent car fender is the physical '
-              'mechanism of tear-film and airway-surface-liquid white-light '
-              'interferometry—allowing non-contact optical measurement of micrometer-thick '
-              'biological fluid films to sub-nanometer precision.',
+              'theta) that creates color flop on a pearlescent car fender is the same physics that thin-film interferometry relies on when it estimates the thickness of thin transparent layers such as the tear film. No measurement of that kind is made or cited in this folio.',
  'sources': ['Young, T. (1802). On the theory of light and colours (Bakerian Lecture). '
              'Philosophical Transactions of the Royal Society of London, 92, 12–48.',
              'Cook, R. L., & Torrance, K. E. (1982). A reflectance model for computer graphics. '
@@ -261,12 +245,11 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         '            <text x="50" y="24" font-size="11" font-weight="600" '
         'fill="currentColor">Bragg Thin-Film Interference (Automotive TiO₂ Mica)</text>\n'
         '            <text x="55" y="115" font-size="10" fill="var(--tp-prussian)">TiO₂ Dielectric '
-        'Layer (n_f = 2.45 · d_film = 245 nm)</text>\n'
+        'Layer (n_f = 2.45 · d_film = 240 nm)</text>\n'
         '            <text x="55" y="142" font-size="9.5" fill="currentColor">Mica / Aluminum '
         'Flake Substrate</text>\n'
         '            <text id="tp-p08-lambda-text" x="50" y="176" font-size="10.5" '
-        'font-weight="600" fill="var(--tp-verdigris)">Constructive Peak λ_peak = 588 nm · Flop '
-        'Shift Δλ = −24 nm</text>\n'
+        'font-weight="600" fill="var(--tp-verdigris)">Constructive Peak λ_peak = 588 nm (m = 2) · Flop Shift Δλ = −10.9 nm at 28°</text>\n'
         '            <text x="50" y="196" font-size="9.5" fill="currentColor">Δ_OPD = 2 d √(n_f² − '
         'sin²θ_i) = m λ</text>\n'
         '            <line x1="365" y1="22" x2="365" y2="195" stroke="currentColor" '
@@ -295,8 +278,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'the back face. When those two reflected ripples line up crest-to-crest, '
                       'they boost each other into a dazzling pure color. Because the distance '
                       'through that thin film changes depending on the angle you look from, the '
-                      'color shifts as you walk past. That is why a sports car fender ripples from '
-                      'gold to blue under the sun.',
+                      'color shifts as you walk past. That is why a sports car fender ripples from gold toward green under the sun.',
  'act1_stakes': "From Newton's colorful glass rings to modern dielectric mirrors, understanding "
                 'thin-film interference transformed our mastery of optics. Early classical optics '
                 'treated surfaces as flat geometric planes that simply reflected light according '
@@ -305,9 +287,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'thickness or excessive roughness, phase coherence across the wave packet '
                 'collapses into a dull gray haze. Modern automotive paints and architectural '
                 'coatings must navigate the knife-edge boundary between specular wave coherence '
-                'and diffuse scattering. If dielectric layer thickness drifts by merely fifteen '
-                'nanometers during factory curing, constructive interference drifts across the '
-                'spectrum from warm golden amber into cold green. Classical reflection models '
+                'and diffuse scattering. If dielectric layer thickness drifts by fifteen nanometers, the model\'s second-order peak moves by about 37 nanometers, from gold toward yellow-green. Classical reflection models '
                 'cannot capture these subtle chromatic shifts without tracking phase addition '
                 'across multi-layer dielectric stacks. Mastering nanometer film tolerances and '
                 'microfacet angle distributions is therefore essential for both photorealistic '
@@ -317,12 +297,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'the coated surface straight on, light passes deeply through the film before '
                       'bouncing back, producing a warm baseline tone like rich gold or amber. As '
                       'you tilt your perspective toward a steep glancing angle along a car fender, '
-                      'the path through the film shortens geometrically, shifting the amplified '
-                      'color toward shorter, cooler wavelengths like emerald green and royal blue. '
+                      'the path through the film shortens geometrically, shifting the amplified color toward shorter, cooler wavelengths, from gold toward green. '
                       'The second knob is the Nano-Oxide Film Thickness. Making the transparent '
                       'oxide layer thicker increases the physical round-trip distance inside the '
-                      'film, tuning the starting color all the way from violet through green to '
-                      'fiery red. Together, these two controls determine whether a painted surface '
+                      'film, moving the starting peak from the ultraviolet, through the whole visible band, into the infrared across the slider\'s range. Together, these two controls determine whether a painted surface '
                       'glows with dramatic metallic flop or scatters light evenly into a soft '
                       'matte finish.',
  'distill_diagram': {'analogy_title': 'Sunlight on an Iridescent Soap Bubble',
@@ -340,12 +318,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'light across stratified dielectric media is governed by the Fresnel '
                    'coefficients and the transfer-matrix method. When an electromagnetic wave '
                    'encounters the interface between the clearcoat resin (refractive index n = '
-                   '1.50) and the titanium dioxide platelet (refractive index n = 2.45), electric '
-                   'field boundary continuity enforces a 180-degree phase jump for the externally '
-                   'reflected wave. The internally reflected wave travels through the high-index '
-                   'nanolayer twice, accumulating an optical path phase delay. Constructive '
-                   'reinforcement occurs only when this phase delay equals an exact integer '
-                   'multiple of the wavelength. Furthermore, the Cook–Torrance microfacet '
+                   '1.50) and the titanium dioxide platelet (refractive index n = 2.45), the externally reflected wave picks up a 180-degree phase jump. The internally reflected wave travels through the high-index nanolayer twice, accumulating an optical path phase delay. A full treatment adds that jump to the path delay, which turns the integer condition into a half-integer one; the folio\'s interactive model leaves it out for simplicity. Furthermore, the Cook–Torrance microfacet '
                    'distribution function D_GGX governs how many microscopic mirror facets are '
                    "tilted toward the half-vector between incoming sunlight and the observer's "
                    'eye. Geometric shadow-masking factors prevent microfacets from blocking each '
@@ -383,8 +356,8 @@ DISPATCH = {'kicker': 'FRONTIER WAVE OPTICS DISPATCH · BRAGG THIN-FILM PEARLESC
              'Flop and Architectural Pigments',
  'body': "Coupling Bragg–Snell thin-film optical path interference with Cook & Torrance's physical "
          'microfacet BRDF (ACM Trans. Graph. DOI 10.1145/357290.357293) explains why TiO2-coated '
-         'mica nanoplatelets in curved sports-car finishes shift wavelength by −41 nm across '
-         "viewing angles ('color flop'), whereas Luis Barragán's porous calcite lime walls hold "
+         'mica nanoplatelets in curved sports-car finishes shift the model peak by about −42 nm between 0° and 65° (\'color flop\')'
+         ", whereas Luis Barragán's porous calcite lime walls hold "
          'hue invariant across every angle.'}
 
 META_3D = ('Bragg Thin-Film Interference & Pearlescent Goniochromism',
@@ -398,9 +371,7 @@ ES_TRANSLATION = {'title_es': 'Física de Ondas Electromagnéticas del Color: In
  'why_es': 'Una pompa de jabón o la pluma de un colibrí no contienen tintes: sus colores '
            'iridiscentes nacen cuando las ondas de luz rebotan en las caras superior e inferior de '
            'una nanolámina transparente y suman sus crestas.',
- 'bridge_es': 'La interferometría de película delgada de Bragg permite diseñar biosensores ópticos '
-              'sin marcadores para detectar la unión de fármacos al canal CFTR y medir '
-              'el espesor nanométrico de películas lagrimales y mucosas.',
+ 'bridge_es': 'La misma física de interferencia en película delgada es la que usa la interferometría para estimar el espesor de capas transparentes delgadas, como la película lagrimal. Este folio no realiza ni cita mediciones de ese tipo.',
  'plain_es': 'En palabras sencillas, la luz no viaja como un rayo rígido, sino como diminutas olas '
              'que avanzan por un estanque. La luz blanca del sol contiene olas de todos los '
              'colores vibrando al mismo tiempo. La mayoría de los objetos que vemos a diario '
@@ -412,7 +383,7 @@ ES_TRANSLATION = {'title_es': 'Física de Ondas Electromagnéticas del Color: In
              'película. Si ambas ondas reflejadas coinciden cresta con cresta, se suman y crean un '
              'color puro y brillante. Como el trayecto a través de esa película cambia según el '
              'ángulo desde donde mires, el tono se transforma mágicamente al caminar junto al '
-             'auto, pasando de un dorado cálido a un azul zafiro.',
+             'auto, pasando de un dorado cálido hacia el verde.',
  'deep_es': 'La física profunda del color electromagnético se basa en el equilibrio entre dos '
             'fenómenos: la interferencia constructiva de ondas en películas delgadas de Bragg y la '
             'dispersión difusa en microfacetas rugosas. El primer control ajusta el ángulo de '

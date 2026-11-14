@@ -19,7 +19,7 @@ FOLIO_METADATA = {
     "primary_kernel": "skills/physics/p08/verify_p08.py",
     "primary_doi": "10.1145/357290.357293",
     "scite_report": "https://scite.ai/reports/10.1145/357290.357293",
-    "benchmarks": [{"label": "Constructive Peak Wavelength", "value": "λ_peak = 588 nm (Amber-Gold)"}, {"label": "Angular Color-Flop Blue Shift", "value": "Δλ = −24.2 nm (at θ_i = 28°)"}, {"label": "Fresnel–Cook Specular Gain", "value": "F(θ_i) = 0.184 · GGX α_r = 0.04"}, {"label": "Wave Interference Verdict", "value": "COHERENT GONIOAPPARENT · PASS"}],
+    "benchmarks": [{"label": "Constructive Peak Wavelength", "value": "λ_peak = 588 nm at 0° (m = 2)"}, {"label": "Angular Color-Flop Blue Shift", "value": "Δλ = −10.9 nm (at θ_i = 28°)"}, {"label": "Fresnel–Cook Specular Gain", "value": "F ≈ 0.18 (fixed illustrative value) · GGX α_r = 0.04"}, {"label": "Wave Interference Verdict", "value": "PEAK IN VISIBLE BAND (MODEL)"}],
 }
 
 

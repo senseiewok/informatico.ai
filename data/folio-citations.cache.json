@@ -5360,5 +5360,37 @@
     "journal": "Journal of Open Research Software",
     "title": "PyPSA: Python for Power System Analysis",
     "year": 2018
+  },
+  "doi:10.1128/aem.03327-16": {
+    "fetched": "2026-11-14",
+    "first_author": "Kotay",
+    "found": true,
+    "journal": "Applied and Environmental Microbiology",
+    "title": "Spread from the Sink to the Patient:\n                    <i>In Situ</i>\n                    Study Using Green Fluorescent Protein (GFP)-Expressing Escherichia coli To Model Bacterial Dispersion from Hand-Washing Sink-Trap Reservoirs",
+    "year": 2017
+  },
+  "doi:10.1086/676882": {
+    "fetched": "2026-11-14",
+    "first_author": "Saiman",
+    "found": true,
+    "journal": "Infection Control &amp; Hospital Epidemiology",
+    "title": "Infection Prevention and Control Guideline for Cystic Fibrosis: 2013 Update",
+    "year": 2014
+  },
+  "doi:10.1016/j.watres.2005.10.030": {
+    "fetched": "2026-11-14",
+    "first_author": "Hijnen",
+    "found": true,
+    "journal": "Water Research",
+    "title": "Inactivation credit of UV radiation for viruses, bacteria and protozoan (oo)cysts in water: A review",
+    "year": 2006
+  },
+  "doi:10.1016/j.ecoleng.2005.07.010": {
+    "fetched": "2026-11-14",
+    "first_author": "Vymazal",
+    "found": true,
+    "journal": "Ecological Engineering",
+    "title": "Horizontal sub-surface flow and hybrid constructed wetlands systems for wastewater treatment",
+    "year": 2005
   }
 }
