@@ -18,7 +18,7 @@ Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio 
 - [E.09 Self-Healing Concrete: Bacterial and Crystalline](https://informatico.ai/engineering/e09/): How Bacillus pseudofirmus spores and crystalline admixtures seal microcracks in concrete by growing calcium carbonate, tracked with ultrasonic coda waves.
 - [E.10 3D Concrete Printing: Extrusion and Buildability](https://informatico.ai/engineering/e10/): How Nicolas Roussel's thixotropic structuration and Suiker's buckling laws decide whether a robot-printed concrete wall stands without formwork.
 - [E.11 SIMP Topology Optimization and Inerter Damping](https://informatico.ai/engineering/e11/): How Bendsøe and Sigmund's bone-like topology optimization and Formula 1 flywheel inerters cut floor concrete by 65% while calming wind sway in towers.
-- [E.12 Verified RISC-V Silicon and Firefly Grid Control](https://informatico.ai/engineering/e12/): How Anthropic's 180-million-line Rocq proof for RISC-V chips, Control Barrier Functions and firefly phase-locking stabilize renewable power grids.
+- [E.12 RISC-V Silicon and Firefly Grid Control Barriers](https://informatico.ai/engineering/e12/): How Control Barrier Functions and firefly-style phase-locking can steady renewable grids, and what a machine-checked RISC-V chip would add beneath.
 
 ## Architecture
 

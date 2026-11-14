@@ -5179,5 +5179,218 @@
     "total_smart_citations": 1212,
     "unclassified": 62,
     "year": 2018
+  },
+  "doi:10.1016/0550-3213(84)90066-x": {
+    "fetched": "2026-11-13",
+    "first_author": "Alvarez-Gaumé",
+    "found": true,
+    "journal": "Nuclear Physics B",
+    "title": "Gravitational anomalies",
+    "year": 1984
+  },
+  "doi:10.1088/0004-637x/696/2/l159": {
+    "fetched": "2026-11-13",
+    "first_author": "Favata",
+    "found": true,
+    "journal": "The Astrophysical Journal",
+    "title": "NONLINEAR GRAVITATIONAL-WAVE MEMORY FROM BINARY BLACK HOLE MERGERS",
+    "year": 2009
+  },
+  "doi:10.1103/physrevd.102.072003": {
+    "fetched": "2026-11-13",
+    "first_author": "Carney",
+    "found": true,
+    "journal": "Physical Review D",
+    "title": "Proposal for gravitational direct detection of dark matter",
+    "year": 2020
+  },
+  "scite:10.1016/0550-3213(84)90066-x": {
+    "citing_publications": 1667,
+    "classification_provenance": "Scite ML citation classification",
+    "contrasting": 1,
+    "fetched": "2026-11-13",
+    "found": true,
+    "mentioning": 1352,
+    "retracted": false,
+    "supporting": 51,
+    "total_smart_citations": 1410,
+    "unclassified": 6
+  },
+  "scite:10.1088/0004-637x/696/2/l159": {
+    "citing_publications": 210,
+    "classification_provenance": "Scite ML citation classification",
+    "contrasting": 0,
+    "fetched": "2026-11-13",
+    "found": true,
+    "mentioning": 208,
+    "retracted": false,
+    "supporting": 5,
+    "total_smart_citations": 213,
+    "unclassified": 0
+  },
+  "scite:10.1103/physrevd.102.072003": {
+    "citing_publications": 100,
+    "classification_provenance": "Scite ML citation classification",
+    "contrasting": 0,
+    "fetched": "2026-11-13",
+    "found": true,
+    "mentioning": 60,
+    "retracted": false,
+    "supporting": 0,
+    "total_smart_citations": 60,
+    "unclassified": 0
+  },
+  "doi:10.1103/physrevlett.75.4425": {
+    "fetched": "2026-11-13",
+    "first_author": "MacKintosh",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "Elasticity of Semiflexible Biopolymer Networks",
+    "year": 1995
+  },
+  "doi:10.1073/pnas.0608611104": {
+    "fetched": "2026-11-13",
+    "first_author": "Lai",
+    "found": true,
+    "journal": "Proceedings of the National Academy of Sciences",
+    "title": "Rapid transport of large polymeric nanoparticles in fresh undiluted human mucus",
+    "year": 2007
+  },
+  "doi:10.1038/s41586-024-08449-y": {
+    "fetched": "2026-11-13",
+    "first_author": "Google Quantum AI and Collaborators",
+    "found": true,
+    "journal": "Nature",
+    "title": "Quantum error correction below the surface code threshold",
+    "year": 2025
+  },
+  "doi:10.1007/3-540-07171-7_1": {
+    "fetched": "2026-11-13",
+    "first_author": "Lanford",
+    "found": true,
+    "journal": "Lecture Notes in Physics",
+    "title": "Time evolution of large classical systems",
+    "year": 1975
+  },
+  "doi:10.1103/physrevlett.116.120601": {
+    "fetched": "2026-11-13",
+    "first_author": "Gingrich",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "Dissipation Bounds All Steady-State Current Fluctuations",
+    "year": 2016
+  },
+  "doi:10.48550/arxiv.2010.08895": {
+    "fetched": "2026-11-13",
+    "first_author": "Li",
+    "found": true,
+    "journal": "arXiv",
+    "title": "Fourier Neural Operator for Parametric Partial Differential Equations",
+    "year": 2020,
+    "registry": "DataCite (preprint)"
+  },
+  "doi:10.1016/j.matpur.2009.01.013": {
+    "fetched": "2026-11-13",
+    "first_author": "Golse",
+    "found": true,
+    "journal": "Journal de Mathématiques Pures et Appliquées",
+    "title": "The incompressible Navier–Stokes limit of the Boltzmann equation for hard cutoff potentials",
+    "year": 2009
+  },
+  "doi:10.1145/3110268": {
+    "fetched": "2026-11-14",
+    "first_author": "Choi",
+    "found": true,
+    "journal": "Proceedings of the ACM on Programming Languages",
+    "title": "Kami: a platform for high-level parametric hardware specification and its modular verification",
+    "year": 2017
+  },
+  "doi:10.1145/3453483.3454065": {
+    "fetched": "2026-11-14",
+    "first_author": "Erbsen",
+    "found": true,
+    "journal": "Proceedings of the 42nd ACM SIGPLAN International Conference on Programming Language Design and Implementation",
+    "title": "Integration verification across software and hardware for a simple embedded system",
+    "year": 2021
+  },
+  "doi:10.1073/pnas.1212134110": {
+    "fetched": "2026-11-14",
+    "first_author": "Dörfler",
+    "found": true,
+    "journal": "Proceedings of the National Academy of Sciences",
+    "title": "Synchronization in complex oscillator networks and smart grids",
+    "year": 2013
+  },
+  "doi:10.23919/pscc.2018.8450880": {
+    "fetched": "2026-11-14",
+    "first_author": "Milano",
+    "found": true,
+    "journal": "2018 Power Systems Computation Conference (PSCC)",
+    "title": "Foundations and Challenges of Low-Inertia Systems (Invited Paper)",
+    "year": 2018
+  },
+  "doi:10.1109/tie.2010.2048839": {
+    "fetched": "2026-11-14",
+    "first_author": "Zhong",
+    "found": true,
+    "journal": "IEEE Transactions on Industrial Electronics",
+    "title": "Synchronverters: Inverters That Mimic Synchronous Generators",
+    "year": 2011
+  },
+  "doi:10.1126/science.159.3821.1319": {
+    "fetched": "2026-11-14",
+    "first_author": "Buck",
+    "found": true,
+    "journal": "Science",
+    "title": "Mechanism of Rhythmic Synchronous Flashing of Fireflies",
+    "year": 1968
+  },
+  "doi:10.1007/bfb0013365": {
+    "fetched": "2026-11-14",
+    "first_author": "Kuramoto",
+    "found": true,
+    "journal": "Lecture Notes in Physics",
+    "title": "Self-entrainment of a population of coupled non-linear oscillators",
+    "year": 2005
+  },
+  "doi:10.5334/jors.188": {
+    "fetched": "2026-11-14",
+    "first_author": "Brown",
+    "found": true,
+    "journal": "Journal of Open Research Software",
+    "title": "PyPSA: Python for Power System Analysis",
+    "year": 2018
+  },
+  "doi:10.1128/aem.03327-16": {
+    "fetched": "2026-11-14",
+    "first_author": "Kotay",
+    "found": true,
+    "journal": "Applied and Environmental Microbiology",
+    "title": "Spread from the Sink to the Patient:\n                    <i>In Situ</i>\n                    Study Using Green Fluorescent Protein (GFP)-Expressing Escherichia coli To Model Bacterial Dispersion from Hand-Washing Sink-Trap Reservoirs",
+    "year": 2017
+  },
+  "doi:10.1086/676882": {
+    "fetched": "2026-11-14",
+    "first_author": "Saiman",
+    "found": true,
+    "journal": "Infection Control &amp; Hospital Epidemiology",
+    "title": "Infection Prevention and Control Guideline for Cystic Fibrosis: 2013 Update",
+    "year": 2014
+  },
+  "doi:10.1016/j.watres.2005.10.030": {
+    "fetched": "2026-11-14",
+    "first_author": "Hijnen",
+    "found": true,
+    "journal": "Water Research",
+    "title": "Inactivation credit of UV radiation for viruses, bacteria and protozoan (oo)cysts in water: A review",
+    "year": 2006
+  },
+  "doi:10.1016/j.ecoleng.2005.07.010": {
+    "fetched": "2026-11-14",
+    "first_author": "Vymazal",
+    "found": true,
+    "journal": "Ecological Engineering",
+    "title": "Horizontal sub-surface flow and hybrid constructed wetlands systems for wastewater treatment",
+    "year": 2005
   }
 }

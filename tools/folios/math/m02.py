@@ -72,12 +72,11 @@ FOLIO = {'folio_id': 'M.02',
                 'date': '2026-11-06',
                 'summary': 'REV 1.3 (Redated 2026-11-06): Added Guth-Maynard (30/13)(1-sigma) '
                            'zero-density breakthrough (c(3/4) = 15/26 = 0.5769 < 0.600, 1.0400x '
-                           'Markovian spectral relaxation speedup) and OpenAI lean-qrh '
-                           'Quasi-Riemann Hypothesis (sigma > 7/8) with 722 -> 719 Weil quadratic '
+                           'Markovian spectral relaxation speedup) and OpenAI\'s quasi-Riemann hypothesis formalization (openai/math, zero-free half-plane sigma > 7/8) with 722 -> 719 Weil quadratic '
                            'functional sign-parity quarantine.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Gemma 4 31B + Ornith 1.5 '
                         '35B): Verified Guth-Maynard 30/13 exponent at sigma = 3/4 and O(V+E) '
-                        'dependency-cone quarantine of the 3 sign-flip lemmas in OpenAI lean-qrh.'},
+                        'dependency-cone quarantine of the 3 sign-flip lemmas in OpenAI\'s quasi-Riemann formalization (openai/math).'},
                {'edition': 'REV 1.2',
                 'date': '2026-11-02',
                 'summary': 'REV 1.2 (Redated 2026-11-02): Re-verified Ingham-Huxley zero-density '
@@ -183,8 +182,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'Challenge/XiPrime.lean Lean 4 Repository '
              '(https://github.com/anthropics/formal-math).',
              'Guth, L., & Maynard, J. (2024). New large value estimates for Dirichlet polynomials '
-             '(30/13 zero-density bound). arXiv:2405.10935; OpenAI Formal Math QRH '
-             '(https://github.com/openai/formal-math-qrh).',
+             '(30/13 zero-density bound). arXiv:2405.20552; OpenAI Formal Math QRH '
+             '(https://github.com/openai/math).',
              'The mathlib Community (2020). The Lean mathematical library '
              '(leanprover-community/mathlib4 & anthropics/formal-math, '
              'https://github.com/anthropics/formal-math). CPP 2020, 367–381. DOI: '

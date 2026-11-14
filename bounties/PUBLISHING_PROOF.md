@@ -24,7 +24,6 @@ When submitting open-source benchmark companions, formalization links, or techni
    - All 48 Folios (100% of Volume I–VI essays) are verified against primary Crossref DOIs (`data/folio-citations.cache.json`), and link directly to open-source formalization repositories:
      - [`anthropics/formal-math`](https://github.com/anthropics/formal-math) (`ETHIsFalse.lean`, `EightSquare.lean`, `ThreeSUM_APSP.lean`, `Zeta23.lean`, `XiPrime.lean`)
      - [`anthropics/fermats-last-theorem`](https://github.com/anthropics/fermats-last-theorem) (`13,000,000+` lines of Lean 4, zero `sorry`)
-     - [`anthropics/theorem-riscv`](https://github.com/anthropics/theorem-riscv) (`180,000,000+` lines of Rocq RISC-V formal verification)
 4. **Single-Owner Repository Integrity (`@senseiewok` Only)**
    - To guarantee provenance and prevent unverified third-party code injection into the publishing ledger, `senseiewok/informatico.ai` enforces GitHub interaction limits (`collaborators_only`), `CODEOWNERS` protection (`* @senseiewok`), and automated closure of any external pull request (`.github/workflows/lock-external-prs.yml`).
 
@@ -32,7 +31,9 @@ When submitting open-source benchmark companions, formalization links, or techni
 
 ## 2. Benchmark Proof Summary Table
 
-| Bounty ID | Target Grand Challenge / Registry | Verifier Script | Deterministic Output | Folio Companions |
+`PASS` below means a harness reproduces its own worked example. It is not a prize result, and none of these prizes has been won or awarded to this project. XPRIZE Carbon Removal and the Global Cooling Prize are closed competitions; the 45 kg CO₂e/m² slab line and the vault and sky-cooling thresholds are the folios' own design targets.
+
+| Bounty ID | Related Grand Challenge / Registry (context only) | Verifier Script | Deterministic Output | Folio Companions |
 | :--- | :--- | :--- | :--- | :--- |
 | **`BOUNTY-M1` (`B.01`)** — [https://informatico.ai/bounties/b01/](https://informatico.ai/bounties/b01/) | Erdős Problems (`#30` / `#155` Sidon $B_2$ sets) & `$10M` AIMO / Lean 4 | [`bounties/bounty_m1_erdos_sidon_lean4.py`](bounty_m1_erdos_sidon_lean4.py) | `N=500: \|A\|=20 <= 28.09 · Unique sums=True · PASS` | `M.11`, `M.12` |
 | **`BOUNTY-P1` (`B.02`)** — [https://informatico.ai/bounties/b02/](https://informatico.ai/bounties/b02/) | `$5M` XPRIZE Quantum Applications & Unitary Foundation `unitaryHACK` | [`bounties/bounty_p1_surface_code_femoco.py`](bounty_p1_surface_code_femoco.py) | `d=27, p_phys=0.001 -> P_L=3.00e-16, Q_phys=428,652 · PASS` | `P.11`, `P.12` |

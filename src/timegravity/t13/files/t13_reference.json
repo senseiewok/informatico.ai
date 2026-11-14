@@ -1,7 +1,7 @@
 {
   "folio_id": "T.13",
   "title": "Where Infrared Gravity Meets Gauge Theory",
-  "construction": "Weinberg soft theorems: sum_a eta_a q_a = 0 (s=1), sum_a eta_a kappa_a p_a^mu = 0 => kappa_a = kappa (s=2), sum_a eta_a g_a p_a^mu p_a^nu = 0 => g_a = 0 (s>=3); Memory holonomy: Delta h_char = 2 G E_rad / (c^4 D_L), Delta L / L_0 = (1/2) Delta h_+^mem; Anomaly cancellation (6Y): Tr[6Y] = 0, Tr[SU(3)^2(6Y)] = 0, Tr[SU(2)^2(6Y)] = N_c - 3, Tr[(6Y)^3] = -54(N_c - 3)",
+  "construction": "Weinberg soft theorems: sum_a eta_a q_a = 0 (s=1), sum_a eta_a kappa_a p_a^mu = 0 => kappa_a = kappa (s=2), sum_a eta_a g_a p_a^mu p_a^nu = 0 => g_a = 0 (s>=3); Memory holonomy: Delta h_char = G E_rad / (c^4 D_L), Delta L / L_0 = (1/2) Delta h_+^mem; Anomaly cancellation (6Y): Tr[6Y] = 0, Tr[SU(3)^2(6Y)] = 0, Tr[SU(2)^2(6Y)] = N_c - 3, Tr[(6Y)^3] = -54(N_c - 3)",
   "clean": {
     "step": "T.13",
     "planted_defect": false,
@@ -34,10 +34,10 @@
         "iota_rad": 1.57079632679,
         "inclination_factor": 0.708333333333,
         "arm_length_m": 4000.0,
-        "delta_h_char": 7.00325934447e-22,
-        "delta_h_plus_inclined": 4.96064203566e-22,
-        "delta_l_char_m": 1.40065186889e-18,
-        "delta_l_inclined_m": 9.92128407133e-19
+        "delta_h_char": 3.50162967223e-22,
+        "delta_h_plus_inclined": 2.48032101783e-22,
+        "delta_l_char_m": 7.00325934447e-19,
+        "delta_l_inclined_m": 4.96064203566e-19
       },
       "gw250114_fiducial": {
         "e_rad_solar": 3.0,
@@ -47,10 +47,10 @@
         "iota_rad": 1.57079632679,
         "inclination_factor": 0.708333333333,
         "arm_length_m": 4000.0,
-        "delta_h_char": 7.17834082808e-22,
-        "delta_h_plus_inclined": 5.08465808655e-22,
-        "delta_l_char_m": 1.43566816562e-18,
-        "delta_l_inclined_m": 1.01693161731e-18
+        "delta_h_char": 3.58917041404e-22,
+        "delta_h_plus_inclined": 2.54232904328e-22,
+        "delta_l_char_m": 7.17834082808e-19,
+        "delta_l_inclined_m": 5.08465808655e-19
       },
       "gw150914_on_lisa_arm": {
         "e_rad_solar": 3.0,
@@ -60,14 +60,14 @@
         "iota_rad": 1.57079632679,
         "inclination_factor": 0.708333333333,
         "arm_length_m": 2500000000.0,
-        "delta_h_char": 7.00325934447e-22,
-        "delta_h_plus_inclined": 4.96064203566e-22,
-        "delta_l_char_m": 8.75407418058e-13,
-        "delta_l_inclined_m": 6.20080254458e-13
+        "delta_h_char": 3.50162967223e-22,
+        "delta_h_plus_inclined": 2.48032101783e-22,
+        "delta_l_char_m": 4.37703709029e-13,
+        "delta_l_inclined_m": 3.10040127229e-13
       },
       "flux_quadrature": {
-        "dh_quadrature": 7.00325934447e-22,
-        "dh_closed_form": 7.00325934447e-22,
+        "dh_quadrature": 3.50162967223e-22,
+        "dh_closed_form": 3.50162967223e-22,
         "quadrature_rel_err": 1.34279688129e-16,
         "quadrature_window_rel_err": 1.34279688129e-16
       }

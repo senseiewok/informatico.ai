@@ -36,4 +36,4 @@ The reference values above are stated in the essay. No script in this repository
 - What the essay compares against: m_T = 0.55 > m_P = 0.25 ⇒ C = +1 · Δω/ω_0 = 14.2% · T_forward = 99.8%
 
 ## Recent research context
-- **Haldane–Raghu Photonic Chern Insulators & Berry Curvature Route Light Around 90° Defects With Zero Backscatter**: Synthesizing the acoustic and optical wave monographs of Folios E.03, A.05, A.08, and P.08, F. Duncan M. Haldane & Srinivas Raghu (Phys. Rev. Lett. DOI 10.1103/PhysRevLett.100.013904) proved that non-zero Berry curvature in gyromagnetic honeycomb lattices creates topologically protected C = +1 chiral edge highways immune to disorder.
+- **Haldane–Raghu Photonic Chern Insulators & Berry Curvature Route Light Around 90° Defects With Zero Backscatter**: Synthesizing the acoustic and optical wave monographs of Folios E.03, A.05, A.08, and P.08, F. Duncan M. Haldane & Srinivas Raghu (Phys. Rev. Lett. DOI 10.1103/PhysRevLett.100.013904) proposed that non-zero Berry curvature in gyromagnetic photonic crystals can create topologically protected C = +1 chiral edge highways immune to disorder.

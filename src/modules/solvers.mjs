@@ -1486,8 +1486,8 @@ export function initPlateSolvers(scope = document) {
         const logRed = 5.4 * (hUv / 45.0);
         if (thrustOut) thrustOut.textContent = `${rem.toFixed(1)}% (140 → ${cOut.toFixed(1)} mg/L)`;
         if (kernOut) kernOut.textContent = `${logRed.toFixed(1)}-Log (${hUv.toFixed(0)} mJ/cm²)`;
-        if (outR2) outR2.textContent = `60.0 °C (v = 0.65 m/s)`;
-        if (statusOut) statusOut.textContent = rem >= 85.0 && logRed >= 4.0 ? "ZERO BIOFILM VERIFIED" : "INCOMPLETE PURGE WARNING";
+        if (outR2) outR2.textContent = `60.0 °C (v = 0.65 m/s)`; // fixed design target, not computed
+        if (statusOut) statusOut.textContent = rem >= 85.0 && logRed >= 4.0 ? "DESIGN TARGETS MET (MODEL)" : "BELOW DESIGN TARGETS (MODEL)";
         if (statusBox) statusBox.setAttribute("data-alert", rem >= 85.0 && logRed >= 4.0 ? "false" : "true");
         return;
       }
@@ -2007,18 +2007,37 @@ export function initPlateSolvers(scope = document) {
         return;
       }
       if (slug === "e12") {
-        const uOpt = v0;
-        const hCbf = v1;
-        if (phiLabel) phiLabel.textContent = `u_opt = ${uOpt.toFixed(2)}`;
-        if (radLabel) radLabel.textContent = `h(x) = ${hCbf.toFixed(2)} Hz`;
-        if (inlinePhi) inlinePhi.textContent = `u_opt = ${uOpt.toFixed(2)}`;
-        const ePj = (0.048 + 0.024 * (1.0 - uOpt)).toFixed(3);
-        const safe = hCbf >= 0.15;
-        if (kappaOut) kappaOut.textContent = `${ePj} pJ / MAC (vs 2.40 pJ CMOS)`;
-        if (deffOut) deffOut.textContent = `Δf_margin = +${hCbf.toFixed(2)} Hz (CBF Safe)`;
-        if (outR2) outR2.textContent = `180M-Line Rocq RISC-V Verified`;
-        if (percOut) percOut.textContent = safe ? "FORWARD INVARIANT · ZERO BLACKOUT" : "CBF BOUNDARY PROXIMITY ALERT";
-        if (percBox) percBox.setAttribute("data-alert", safe ? "false" : "true");
+        // Reduced model of Folio E.12 (illustrative, not a grid simulation):
+        // a 1.2 GW loss on a 17.86 GW base gives RoCoF_0 = K / H_virt with K = f_0 ΔP / (2 S_base) = 2.016 Hz;
+        // fast reserves close the deficit linearly over T_d = 6/7 s; the protection boundary is 59.1 Hz;
+        // the CBF filter enforces df/dt >= -α h with h = f - 59.1 Hz.
+        const hVirt = Math.max(0.5, v0);
+        const alphaCbf = Math.max(0.05, v1);
+        if (phiLabel) phiLabel.textContent = `H_virt = ${hVirt.toFixed(1)} s`;
+        if (radLabel) radLabel.textContent = `α_CBF = ${alphaCbf.toFixed(1)} s⁻¹`;
+        if (inlinePhi) inlinePhi.textContent = `H_virt = ${hVirt.toFixed(1)} s`;
+        const K = 2.016;
+        const tD = 6.0 / 7.0;
+        const fTrip = 59.1;
+        const rocof0 = K / hVirt;
+        const steps = 240;
+        const dt = tD / steps;
+        let f = 60.0;
+        let maxCorr = 0.0;
+        for (let i = 0; i < steps; i += 1) {
+          const nominal = -rocof0 * (1.0 - (i * dt) / tD);
+          const rate = Math.max(nominal, -alphaCbf * (f - fTrip));
+          maxCorr = Math.max(maxCorr, rate - nominal);
+          f += rate * dt;
+        }
+        const extraMw = Math.round((maxCorr * hVirt / K) * 1200.0);
+        const filterActive = extraMw > 0;
+        const rocofOk = rocof0 < 0.5;
+        if (kappaOut) kappaOut.textContent = `${f.toFixed(2)} Hz (model value)`;
+        if (deffOut) deffOut.textContent = `${rocof0.toFixed(2)} Hz/s (${rocofOk ? "< 0.50 model limit" : "above 0.50 model limit"})`;
+        if (outR2) outR2.textContent = `+${(f - fTrip).toFixed(2)} Hz above 59.1 Hz trip (model)`;
+        if (percOut) percOut.textContent = filterActive ? `ACTIVE · +${extraMw} MW requested (model)` : "IDLE · constraint slack (model)";
+        if (percBox) percBox.setAttribute("data-alert", rocofOk && !filterActive ? "false" : "true");
         return;
       }
 
@@ -2162,20 +2181,23 @@ export function initPlateSolvers(scope = document) {
         return;
       }
       if (slug === "p08") {
-        const dNm = v0;
-        const thetaDeg = v1;
-        if (atpOut) atpOut.textContent = `d_film = ${dNm.toFixed(0)} nm`;
-        if (vmOut) vmOut.textContent = `θ_1 = ${thetaDeg.toFixed(0)}°`;
-        if (inlineAtp) inlineAtp.textContent = `d_film = ${dNm.toFixed(0)} nm`;
+        // Folio P.08 law: 2 d sqrt(n_f^2 - sin^2 θ_i) = m λ, read in second order (m = 2).
+        // The first slider is the viewing angle θ_i, the second the film thickness d.
+        const thetaDeg = v0;
+        const dNm = v1;
+        if (atpOut) atpOut.textContent = `θ_i = ${thetaDeg.toFixed(0)}°`;
+        if (vmOut) vmOut.textContent = `d_film = ${dNm.toFixed(0)} nm`;
+        if (inlineAtp) inlineAtp.textContent = `θ_i = ${thetaDeg.toFixed(0)}°`;
         const nFilm = 2.45;
+        const order = 2.0;
         const sinTheta = Math.sin((thetaDeg * Math.PI) / 180.0);
-        const lamMax = 2.0 * dNm * Math.sqrt(Math.max(1.0, nFilm * nFilm - sinTheta * sinTheta));
-        const lam0 = 2.0 * dNm * nFilm;
-        const dLam = lamMax - lam0;
-        if (effOut) effOut.textContent = `λ_max = ${lamMax.toFixed(0)} nm (θ_1 = ${thetaDeg.toFixed(0)}°)`;
-        if (ratioOut) ratioOut.textContent = `Δλ = ${dLam.toFixed(0)} nm (Gonioapparent Shift)`;
-        if (outR2) outR2.textContent = `FI = 14.8 (vs 1.08 Barragán Stucco)`;
-        if (statusOut) statusOut.textContent = "BRAGG & KUBELKA-MUNK VERIFIED";
+        const lam0 = (2.0 * dNm * nFilm) / order;
+        const lamTheta = (2.0 * dNm * Math.sqrt(nFilm * nFilm - sinTheta * sinTheta)) / order;
+        const dLam = lamTheta - lam0;
+        const visible = lam0 >= 380.0 && lam0 <= 780.0;
+        if (effOut) effOut.textContent = `λ_peak = ${lam0.toFixed(0)} nm at 0° (m = 2)`;
+        if (ratioOut) ratioOut.textContent = `Δλ = ${dLam.toFixed(1).replace("-", "−")} nm (at θ_i = ${thetaDeg.toFixed(0)}°)`;
+        if (statusOut) statusOut.textContent = visible ? "PEAK IN VISIBLE BAND (MODEL)" : "PEAK OUTSIDE VISIBLE BAND (MODEL)";
         return;
       }
       if (slug === "p09") {

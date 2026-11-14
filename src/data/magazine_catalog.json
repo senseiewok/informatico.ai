@@ -1278,19 +1278,19 @@
           "M.07"
         ],
         "lineage_mode": "SYNTHESIS · Synthesizes E.06 Infrastructure Resilience, P.02 Kuramoto Synchronization & M.07 Optimal Control",
-        "title": "Machine-Checked Silicon-to-Grid Safety: 180M-Line Rocq RISC-V Verification, Control Barrier Functions & Firefly-Synchronized Renewable Grids",
-        "subtitle": "Synthesizing Folio E.06's critical infrastructure protection, P.02's Kuramoto oscillators, and M.07's optimal control: how Anthropic's machine-checked RISC-V circuits, Ames Control Barrier Functions, and Virtual Synchronous Machine inverters stabilize 100%-renewable power grids.",
+        "title": "Silicon-to-Grid Safety: Control Barrier Functions, Firefly-Synchronized Renewable Grids & the Case for a Verified Relay Processor",
+        "subtitle": "Synthesizing Folio E.06's critical infrastructure protection, P.02's Kuramoto oscillators, and M.07's optimal control: how virtual synchronous machine inverters and Control Barrier Functions can steady a low-inertia renewable grid, and what a machine-checked RISC-V processor would add underneath.",
         "date_published": "2026-11-07",
-        "date_redated": "2026-11-07",
-        "current_edition": "REV 1.0",
-        "status_badge": "SILICON-TO-GRID · REV 1.0",
+        "date_redated": "2026-11-14",
+        "current_edition": "REV 1.1",
+        "status_badge": "SILICON-TO-GRID · REV 1.1",
         "primary_kernel": "tools/continuum_verify.py",
-        "governing_law": "sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e · anthropics/theorem-riscv",
+        "governing_law": "sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e",
         "colophon": {
-          "identifier": "E.12 · Machine-Checked RISC-V & Grid Control Barrier Functions · IEEE 1547-2025",
-          "kernels": "Ames Control Barrier Function h(x) ≥ 0 · Kuramoto Swing Equation · Rocq/Kami theorem-riscv",
-          "benchmarks": "RoCoF ≤ 0.42 Hz/s · h(x_grid) ≥ +0.18 Hz · 180M-Line Rocq Proof = 0 Silicon Bugs",
-          "bridge": "Synthesizes E.06/P.02/M.07 · Southeast Asian Firefly Phase-Locking ↔ 100%-Renewable Grid Forming Inverters"
+          "identifier": "E.12 · RISC-V & Grid Control Barrier Functions",
+          "kernels": "Control Barrier Function h(x) ≥ 0 (Ames et al. 2017) · Swing Equation · Kami / Coq (Rocq) processor-proof precedents",
+          "benchmarks": "Model values: RoCoF 0.42 Hz/s · h(x_grid) = +0.72 Hz · processor proof assumed, not shown",
+          "bridge": "Synthesizes E.06/P.02/M.07 · Firefly Phase-Locking ↔ Grid-Forming Inverters"
         },
         "sliders": [
           {
@@ -1302,7 +1302,7 @@
             "unit": " s"
           },
           {
-            "label": "CBF Safety Damping Rate (α_CBF)",
+            "label": "CBF Barrier Rate (α_CBF; higher = later intervention)",
             "min": 0.5,
             "max": 5.0,
             "step": 0.1,
@@ -1311,59 +1311,65 @@
           }
         ],
         "steps": [
-          "Stage 1 (Firefly Kuramoto Phase-Locking on the Power Grid, Continuing P.02): Millions of solar and battery grid-forming inverters synchronize phase angles θ_i like Southeast Asian mangrove fireflies via M d²θ_i/dt² + D dθ_i/dt = P_i − ∑ K_ij sin(θ_i − θ_j).",
-          "Stage 2 (Synthetic Rotational Inertia via Virtual Synchronous Machines): When a 1.2 GW cloud shadow or line fault hits, battery inverters inject instantaneous power proportional to −H_virt dω/dt, holding Rate of Change of Frequency (RoCoF) below 0.5 Hz/s.",
-          "Stage 3 (Ames Control Barrier Function Quadratic Program Filter, Continuing M.07): Every millisecond, a real-time QP filter enforces L_f h(x) + L_g h(x)u ≥ −α(h(x)), guaranteeing the state x never crosses the blackout boundary h(x) = 0.",
-          "Stage 4 (Anthropic Machine-Checked RISC-V Silicon Execution): The protection controller executes on open-source RISC-V hardware formally verified across 180 million lines of Rocq/Kami proof (anthropics/theorem-riscv), eliminating hardware instruction bugs."
+          "Stage 1 (Firefly-Style Phase-Locking on the Power Grid, Continuing P.02): Solar and battery grid-forming inverters hold a common rhythm through coupled phase angles θ_i, M d²θ_i/dt² + D dθ_i/dt = P_i − ∑ K_ij sin(θ_i − θ_j), a member of the coupled-oscillator family studied in 'Synchronization in complex oscillator networks and smart grids' (Dörfler, Chertkov & Bullo 2013, DOI 10.1073/pnas.1212134110). The firefly is an analogy, not the same equation.",
+          "Stage 2 (Synthetic Inertia via Virtual Synchronous Machines): In the folio model, when a 1.2 GW loss hits, battery inverters inject power proportional to −H_virt dω/dt, in the manner of synchronverters (Zhong & Weiss 2011, DOI 10.1109/TIE.2010.2048839), and at the default H_virt = 4.8 s the initial Rate of Change of Frequency (RoCoF) is 0.42 Hz/s. It stays below 0.5 Hz/s only for H_virt above about 4.0 s.",
+          "Stage 3 (Control Barrier Function Quadratic Program Filter, Continuing M.07): A real-time QP filter enforces L_f h(x) + L_g h(x)u ≥ −α(h(x)). For the modelled dynamics, and while the QP stays feasible, the state x does not leave the safe set h(x) ≥ 0 (Ames et al. 2017, DOI 10.1109/TAC.2016.2638961).",
+          "Stage 4 (Processor Layer, a Design Assumption): The filter is only as sound as the chip that runs it. Machine-checked RISC-V processors exist at small scale: Kami (Choi et al. 2017, DOI 10.1145/3110268) and the embedded system of Erbsen et al. (2021, DOI 10.1145/3453483.3454065), both in the Coq proof assistant, now named Rocq. This folio knows of no published machine-checked proof for the processor of a grid protection relay; here it is assumed, not shown."
         ],
         "readouts": [
           {
             "label": "Grid Frequency Nadir (f_min)",
-            "value": "59.82 Hz (IEEE 1547 Safe)"
+            "value": "59.82 Hz (model value)"
           },
           {
-            "label": "Max Rate of Change (RoCoF)",
-            "value": "0.42 Hz/s (< 0.50 Limit)"
+            "label": "Initial RoCoF Before Filter",
+            "value": "0.42 Hz/s (< 0.50 model limit)"
           },
           {
-            "label": "CBF Forward Invariance h(x)",
-            "value": "+0.18 Hz (STRICTLY SAFE)"
+            "label": "CBF Barrier Margin h(x)",
+            "value": "+0.72 Hz above 59.1 Hz trip (model)"
           },
           {
-            "label": "Silicon Proof Certificate",
-            "value": "ROCQ/KAMI VERIFIED · 0 BUGS"
+            "label": "CBF Filter State",
+            "value": "IDLE · constraint slack (model)"
           }
         ],
         "spec_plate": {
-          "division": "IEEE 1547-2025 / IEC 61850 / FORMALLY VERIFIED RISC-V",
-          "title": "Grid-Forming Virtual Synchronous Inverters on Machine-Checked RISC-V Protection Silicon",
-          "body": "Distributed battery and solar grid-forming inverters governed by Nagumo-invariant Control Barrier Function (CBF-QP) safety filters running on Rocq/Kami formally verified RISC-V processors (anthropics/theorem-riscv).",
-          "meta": "Optimal energy control DOI 10.1080/00207179.2014.900705 & Chao Sun DOI 10.1109/tcst.2014.2359176 verified"
+          "division": "GRID-FORMING INVERTERS / CBF-QP / RISC-V (PROOF ASSUMED)",
+          "title": "Grid-Forming Virtual Synchronous Inverters with a Control Barrier Function Safety Filter",
+          "body": "Distributed battery and solar grid-forming inverters governed by a Control Barrier Function (CBF-QP) safety filter. The filter is specified to run on a RISC-V processor whose formal proof is a design assumption of this folio, modelled on published Coq (Rocq) and Kami work.",
+          "meta": "Anchors: Ames et al. 2017, DOI 10.1109/TAC.2016.2638961 · Dörfler, Chertkov & Bullo 2013, DOI 10.1073/pnas.1212134110"
         },
         "sidenote_1": {
-          "kicker": "SIDENOTE E.12-A · CROSS-FIELD ANALOGY · 10,000 FIREFLIES FLASHING AS ONE",
-          "body": "Old coal and hydro turbines stabilized the 60 Hz grid with spinning steel weight. Solar panels have zero moving parts—until we program inverters with the exact Kuramoto phase-sync law that lets 10,000 fireflies flash in unison, modelled in open-source PyPSA/PyPSA."
+          "kicker": "SIDENOTE E.12-A · CROSS-FIELD ANALOGY · FIREFLIES FLASHING AS ONE",
+          "body": "Coal and hydro turbines steadied the 60 Hz grid with spinning steel. Solar panels have no moving parts, so grid-forming inverters are programmed to behave like a rotating machine and to fall into step with their neighbours, much as fireflies along a riverbank come to flash together. The network that such inverters would sit in can be described in the open-source toolbox PyPSA/PyPSA; the swing dynamics on this page are the folio's own reduced model."
         },
         "sidenote_2": {
-          "kicker": "SIDENOTE E.12-B · ANTHROPIC THEOREM SOLUTIONS · 180M LINES OF ROCQ SILICON PROOF",
-          "body": "In anthropics/theorem-riscv, AI agents helped complete a 180-million-line Rocq/Kami formal proof of a Linux-capable RISC-V processor+MMU, ensuring the chip running the CBF safety filter cannot suffer a subtle hardware divide or page-table bug."
+          "kicker": "SIDENOTE E.12-B · VERIFIED HARDWARE · WHAT HAS BEEN PROVED SO FAR",
+          "body": "Kami (Choi et al. 2017, DOI 10.1145/3110268) is a library for the Coq proof assistant, now named Rocq, for specifying and verifying hardware; its case study covers multicore systems with pipelined cores implementing the base integer subset of RISC-V. Erbsen et al. (2021, DOI 10.1145/3453483.3454065) report a simple embedded system whose application software, device drivers, compiler and RISC-V processor are one object in Coq with a machine-checked proof of functional correctness. Neither is a grid relay. A verified protection processor is the open step this folio argues for."
         },
         "skill": {
           "filename": "verified-riscv-cbf-grid-sync-SKILL.md",
           "name": "verified-riscv-cbf-grid-sync",
-          "description": "AI-agnostic cyber-physical systems skill for Virtual Synchronous Machine (VSM) grid-forming inverters, Ames Control Barrier Function (CBF-QP) forward invariance, and Rocq/Kami verified RISC-V execution.",
+          "description": "AI-agnostic cyber-physical systems skill for Virtual Synchronous Machine (VSM) grid-forming inverters, Control Barrier Function (CBF-QP) forward invariance, and the published Coq (Rocq) and Kami precedents for machine-checked RISC-V processors.",
           "rules": [
             "Enforce Nagumo forward invariance of safe set C = {x : h(x) >= 0} via CBF constraint L_f h(x) + L_g h(x) * u >= -alpha * h(x).",
-            "Bound grid Rate of Change of Frequency (RoCoF) |df/dt| <= Delta_P / (2 * H_virt * S_base) below 0.5 Hz/s under N-1 contingency.",
-            "Target formally verified open-source RISC-V execution pipelines (anthropics/theorem-riscv) for safety-critical relay firmware."
+            "Bound grid Rate of Change of Frequency |df/dt| <= f_0 * Delta_P / (2 * H_virt * S_base); the folio model targets less than 0.5 Hz/s after the loss of one large unit.",
+            "Treat processor correctness as a stated assumption. Cite published machine-checked RISC-V work (Kami, DOI 10.1145/3110268; Erbsen et al. 2021, DOI 10.1145/3453483.3454065) and never claim a verified relay processor without a public proof artifact."
           ]
         },
         "revisions": [
           {
+            "edition": "REV 1.1",
+            "date": "2026-11-14",
+            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. REV 1.0 rested its processor layer on a 180-million-line RISC-V proof attributed to Anthropic; no public source for that proof was found on 2026-11-13, so it has been removed. The processor layer now cites Kami (DOI 10.1145/3110268) and Erbsen et al. 2021 (DOI 10.1145/3453483.3454065) and is marked as a design assumption. The opening no longer places Yoshiki Kuramoto on a riverbank; the firefly observations are credited to Buck & Buck 1968 (DOI 10.1126/science.159.3821.1319). Numbers on the page are labelled as model values.",
+            "opus": "Review: new references checked by DOI in Crossref, and all but the PyPSA paper in the Scite index; one blind frontier review applied; the Kami and Erbsen et al. descriptions were written from their abstracts."
+          },
+          {
             "edition": "REV 1.0",
             "date": "2026-11-07",
-            "summary": "REV 1.0 (Published 2026-11-07): Volume VI Cyber-Physical Infrastructure monograph synthesizing E.06, P.02, and M.07 (DOI 10.1080/00207179.2014.900705) with anthropics/theorem-riscv and PyPSA/PyPSA.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified Kuramoto swing equation, CBF-QP Lie derivatives, and Rocq RISC-V formal verification provenance."
+            "summary": "REV 1.0 (Published 2026-11-07): Volume VI Cyber-Physical Infrastructure monograph synthesizing E.06, P.02, and M.07 with Control Barrier Functions (DOI 10.1109/TAC.2016.2638961) and PyPSA/PyPSA.",
+            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): reviewed the swing equation and the CBF-QP Lie-derivative condition. Its statement on the provenance of the processor proof is withdrawn in REV 1.1."
           }
         ],
         "volume": 6,
@@ -1378,7 +1384,7 @@
           "mentioning": 2361,
           "contrasting": 0,
           "retracted": false,
-          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 3,385 citing publications (8 supporting, 2,361 mentioning, 0 contrasting) — Primary optimal energy recovery and constrained control anchor (Limebeer et al. 2014, DOI 10.1080/00207179.2014.900705; Chao Sun et al. 2015, DOI 10.1109/tcst.2014.2359176) extended to CBF-QP grid-forming inverters."
+          "summary": "Scite index entry for Ames, Xu, Grizzle & Tabuada 2017 (DOI 10.1109/TAC.2016.2638961), checked 2026-11-08: 3,385 citing publications (8 supporting, 2,361 mentioning, 0 contrasting) and no retraction notice. These counts describe that one paper, not this folio."
         }
       }
     ],
@@ -1958,18 +1964,18 @@
         "slug": "a06",
         "pillar": "architecture",
         "category_code": "A",
-        "title": "Net-Zero Water & Greywater Constructed Wetlands: Subsurface Darcy Filtration, UV-C Photolysis, and Pathogen-Free Plumbing (CSI 22 13 00)",
-        "subtitle": "How Kadlec–Knight subsurface reed beds recycle 95% of building greywater outside while 60 °C thermal loops and 254 nm UV-C reactors eradicate Pseudomonas and Legionella inside.",
+        "title": "Net-Zero Water & Greywater Constructed Wetlands: Subsurface Darcy Filtration, UV-C Photolysis, and Pathogen-Control Plumbing (CSI 22 13 00)",
+        "subtitle": "How a modelled subsurface reed bed removes about 95% of greywater BOD_5 outside, while 60 °C recirculation and a 254 nm UV-C reactor are design targets meant to limit growth of Pseudomonas and Legionella inside.",
         "date_published": "2026-11-01",
-        "date_redated": "2026-11-02",
-        "current_edition": "REV 1.1",
-        "status_badge": "REDATED REV 1.1",
+        "date_redated": "2026-11-14",
+        "current_edition": "REV 1.2",
+        "status_badge": "REDATED REV 1.2",
         "primary_kernel": "tools/tectonic_verify.py",
         "colophon": {
           "identifier": "A.06 · Hydro-Tectonics · CSI 22 13 00",
           "kernels": "Kadlec-Knight k-C* · Chick-Watson 5.4-Log UV-C",
-          "benchmarks": "ASHRAE 188 · 95.1% BOD_5 Removal",
-          "bridge": "Zero-Biofilm Plumbing ↔ CF P. aeruginosa Shield"
+          "benchmarks": "Model values: 95.1% BOD_5 removal · 5.4-log UV-C design dose",
+          "bridge": "Biofilm-Control Plumbing ↔ CF Infection-Prevention Context"
         },
         "sliders": [
           {
@@ -1990,10 +1996,10 @@
           }
         ],
         "steps": [
-          "Stage 1 (Subsurface Horizontal Darcy Filtration): Greywater flows 150 mm beneath dry washed basalt gravel (φ = 0.38, K_s = 120 m/d) with zero open-water aerosols.",
-          "Stage 2 (Rhizosphere Biofilm Oxidation): Phragmites root-zone oxygen transfer drives Kadlec-Knight exponential BOD_5 decay from 140 mg/L to 6.8 mg/L (τ = 3.2 d).",
-          "Stage 3 (Dead-Leg-Free 60 °C Potable Recirculation): Copper-silver / stainless manifold maintains v ≥ 0.6 m/s and T ≥ 60 °C up to every point-of-use mixing valve.",
-          "Stage 4 (254 nm UV-C Photolysis & Thermal Trap Purge): Delivers H = 45 mJ/cm² UV-C fluence (5.4-log pathogen reduction) plus self-heating sink traps."
+          "Stage 1 (Subsurface Horizontal Darcy Filtration): Greywater flows 150 mm beneath dry washed basalt gravel (φ = 0.38, K_s = 120 m/d) with no open water surface.",
+          "Stage 2 (Rhizosphere Biofilm Oxidation): Phragmites root-zone oxygen transfer drives Kadlec-Knight exponential BOD_5 decay from 140 mg/L to 6.8 mg/L (τ = 3.2 d) in the folio model.",
+          "Stage 3 (Dead-Leg-Free 60 °C Potable Recirculation): Copper-silver / stainless manifold designed to target v ≥ 0.6 m/s and T ≥ 60 °C up to every point-of-use mixing valve (design target, not measured).",
+          "Stage 4 (254 nm UV-C Photolysis & Thermal Trap Purge): Delivers H = 45 mJ/cm² UV-C fluence (a 5.4-log reduction in the folio's Chick-Watson model) plus self-heating sink traps."
         ],
         "readouts": [
           {
@@ -2001,48 +2007,54 @@
             "value": "95.1% (140 → 6.8 mg/L)"
           },
           {
-            "label": "UV-C Pathogen Inactivation",
+            "label": "UV-C Log Reduction (Model)",
             "value": "5.4-Log (45 mJ/cm²)"
           },
           {
-            "label": "Thermal Loop Equilibrium",
+            "label": "Thermal Loop Design Target",
             "value": "60.0 °C (v = 0.65 m/s)"
           },
           {
-            "label": "ASHRAE 188 / CF Verdict",
-            "value": "ZERO BIOFILM VERIFIED"
+            "label": "Design Check (Model)",
+            "value": "DESIGN TARGETS MET (MODEL)"
           }
         ],
         "sidenote_1": {
           "kicker": "SIDENOTE A.06-A · SUBSURFACE HYDRAULIC GRADE LINE",
-          "body": "Keeping the Darcy water table 150 mm below the gravel surface eliminates mosquito vectors, odor, and human contact with untreated greywater."
+          "body": "Keeping the Darcy water table 150 mm below the gravel surface limits mosquito breeding, odor, and human contact with untreated greywater."
         },
         "sidenote_2": {
           "kicker": "SIDENOTE A.06-B · SPECIFICATION PLATE · CSI 22 13 00 / 22 42 00",
-          "body": "Offset drain clinical washbasin with automated 65 °C thermal P-trap disinfection cycle, preventing P. aeruginosa droplet splash-back (DOI 10.1201/9781420012514)."
+          "body": "Offset drain clinical washbasin with an automated 65 °C thermal P-trap cycle, intended to reduce droplet dispersal from the drain. Kotay et al. (2017, DOI 10.1128/AEM.03327-16) modelled sink-trap dispersal with a marker organism; this fixture is a design proposal and has not been tested."
         },
         "skill": {
           "filename": "netzero-water-pathogen-plumbing-SKILL.md",
           "name": "netzero-water-pathogen-plumbing",
-          "description": "AI-agnostic architectural hydro-engineering skill for Kadlec-Knight subsurface constructed wetlands and ASHRAE 188 zero-biofilm clinical plumbing.",
+          "description": "AI-agnostic architectural hydro-engineering skill for Kadlec-Knight subsurface constructed wetlands and biofilm-control clinical plumbing design targets.",
           "rules": [
             "Size subsurface horizontal-flow wetlands via Darcy's law Q = K_s A_c S and Kadlec-Knight kinetics C_out = C* + (C_in - C*) exp(-k_v * tau).",
             "Maintain potable hot-water recirculation >= 60 C at velocity >= 0.6 m/s with zero dead-legs > 1.5 pipe diameters.",
-            "Enforce Chick-Watson 254 nm UV-C fluence H >= 40 mJ/cm^2 and non-splashing offset drains in clinical environments."
+            "Apply the folio's design targets of a 4-log model reduction (254 nm UV-C fluence H >= 34 mJ/cm^2 at 0.12 log per mJ/cm^2) and non-splashing offset drains; report log reductions as model values, never as measured outcomes."
           ]
         },
         "revisions": [
           {
+            "edition": "REV 1.2",
+            "date": "2026-11-14",
+            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. Earlier editions said the design eradicates pathogens and showed a zero-biofilm verdict; nothing here was measured, so those statements are withdrawn and every number is labelled as a model value. Claims about sink drains and Cystic Fibrosis had been attributed to a wetlands textbook; they now cite Kotay et al. 2017 (DOI 10.1128/AEM.03327-16) and the CF infection prevention guideline (DOI 10.1086/676882). The opening scene about Käthe Seidel was not sourced and is replaced by a plain account.",
+            "opus": "Review: new references checked by DOI in Crossref and the Scite index."
+          },
+          {
             "edition": "REV 1.1",
             "date": "2026-11-02",
-            "summary": "REV 1.1 (Redated 2026-11-02): Certified 95.1% Kadlec-Knight BOD_5 greywater reduction and 5.4-log Chick-Watson UV-C / 60 °C thermal pathogen purge (zero-biofilm plumbing).",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Chick-Watson UV-C fluence H = 45 mJ/cm^2 and ASHRAE 188 zero-dead-leg hot-water recirculation."
+            "summary": "REV 1.1 (Redated 2026-11-02): Modelled 95.1% Kadlec-Knight BOD_5 greywater reduction and a 5.4-log Chick-Watson UV-C design dose with a 60 °C thermal loop.",
+            "opus": "Council review of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.2: nothing was measured, and ASHRAE 188 does not prescribe this design."
           },
           {
             "edition": "REV 1.0",
             "date": "2026-11-01",
-            "summary": "REV 1.0 (Published 2026-11-01): Initial 5-Act monograph coupling net-zero subsurface greywater wetlands with pathogen-free CSI 22 13 00 clinical plumbing.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Kadlec-Knight plug-flow retention time (3.2 d) and Chick-Watson 5.4-log UV-C inactivation of P. aeruginosa."
+            "summary": "REV 1.0 (Published 2026-11-01): Initial 5-Act monograph coupling net-zero subsurface greywater wetlands with CSI 22 13 00 clinical plumbing.",
+            "opus": "Council review of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified inactivation' wording is withdrawn in REV 1.2: nothing was measured."
           }
         ],
         "governing_law": "C_out = C* + (C_in−C*)e^(−kτ) · 5.4-Log UV-C",
@@ -2058,7 +2070,7 @@
           "mentioning": 1217,
           "contrasting": 3,
           "retracted": false,
-          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,371 citing publications (66 supporting, 1,217 mentioning, 3 contrasting) on domestic and clinical water/steam disinfection of CF Pseudomonas aeruginosa pathogens."
+          "summary": "Scite index entry for Kadlec & Wallace, Treatment Wetlands (DOI 10.1201/9781420012514), checked 2026-11-08: 1,371 citing publications (66 supporting, 1,217 mentioning, 3 contrasting) and no retraction notice. The book is about treatment wetlands, not clinical disinfection."
         }
       },
       {
@@ -2840,7 +2852,7 @@
         "steps": [
           "Stage 1 (Uncoupled Kinetic Trap, G551D): Gating cross-covariance sigma_ATP,Cl ≈ 0.05 fails to transmit chemical affinity into pore dilation.",
           "Stage 2 (Fluctuation-Dissipation Coupling): Keizer matrix d sigma/dt = M sigma + sigma M^T + Gamma matches forward and backward reaction fluxes.",
-          "Stage 3 (Dual-Corrector Stabilization): Ivacaftor/Trikafta lowers activation barrier Delta G^‡ and restores coupling efficiency to 0.84.",
+          "Stage 3 (Potentiator Rescue, Model): In the kernel, a potentiator such as ivacaftor lowers activation barrier Delta G^‡ and restores the modelled coupling efficiency to 0.84.",
           "Stage 4 (Stationary NESS Cycle): Bounded dissipation-fluctuation ratio (1.12 <= 2.0) maintains stable open-state chloride conduction."
         ],
         "subtitle": "How Keizer's non-equilibrium fluctuation theory, Harada-Sasa dissipation, and Hill cycle flux diagrams quantify the energetic efficiency of ABC-transporter gating cycles and allosteric rescue.",
@@ -3038,8 +3050,8 @@
           "kicker": "SIDENOTE P.03 · DESIGN RULES FOR INHALED GENE THERAPY"
         },
         "sidenote_2": {
-          "body": "Inside dense mucin hydrogels, non-specific adhesive interactions and spatial tortuosity convert ordinary Brownian motion into anomalous subdiffusion where MSD <Delta r^2(t)> ~ t^alpha with subdiffusion exponent alpha = 0.814 in healthy vs alpha < 0.20 in dehydrated sputum plugs.",
-          "kicker": "SIDENOTE P.03-B · BROWNIAN SUBDIFFUSION & CONTINUOUS TIME RANDOM WALKS (DOI 10.1103/PhysRevLett.79.3286)"
+          "body": "Inside dense mucin hydrogels, non-specific adhesive interactions and spatial tortuosity convert ordinary Brownian motion into anomalous subdiffusion where MSD <Delta r^2(t)> ~ t^alpha with a model subdiffusion exponent alpha = 0.814 for healthy mucus vs alpha < 0.20 for dehydrated sputum plugs (kernel values, not measurements).",
+          "kicker": "SIDENOTE P.03-B · PASSIVE MICRORHEOLOGY FROM THERMAL FLUCTUATIONS (DOI 10.1103/PhysRevLett.79.3286)"
         },
         "skill": {
           "description": "AI-agnostic physical skill for complex fluid rheology, Carreau-Yasuda shear thinning, and nanoparticle anomalous subdiffusion in airway mucus.",
@@ -3078,9 +3090,9 @@
         },
         "status_badge": "REDATED REV 1.2",
         "steps": [
-          "Stage 1 (Healthy Mesh, 2% solids): Mucin mesh pore size xi ≈ 140 nm allows 65 nm PEGylated LNPs to diffuse freely (alpha ≈ 0.72).",
+          "Stage 1 (Healthy Mesh, 2% solids): Mucin mesh pore size xi ≈ 140 nm allows 65 nm PEGylated LNPs to diffuse nearly freely (model alpha ≈ 0.81).",
           "Stage 2 (Shear-Thinning Response): Ciliary shear rates (dot_gamma ~ 10 s^-1) reduce local gel viscosity by an order of magnitude via Carreau-Yasuda dynamics.",
-          "Stage 3 (Concentration Shock & Plug Formation): In CF sputum (8% solids), pore size drops to 45 nm, sterically locking particles larger than 50 nm.",
+          "Stage 3 (Concentration Shock & Plug Formation): In CF sputum (8% solids), the model pore size drops to about 50 nm, sterically locking particles larger than 50 nm.",
           "Stage 4 (Subdiffusive Trapping): Particle trajectory collapses to alpha < 0.20, demonstrating the necessity of dense PEGylation and mucolytic co-delivery."
         ],
         "subtitle": "Carreau-Yasuda shear-thinning, reptation tube dynamics, and anomalous subdiffusion exponents of gene delivery nanoparticles navigating the airway mucus mesh.",
@@ -3158,7 +3170,7 @@
           "kicker": "SIDENOTE P.04 · WHY MODULATORS MUST RESTORE OSMOTIC HEADROOM"
         },
         "sidenote_2": {
-          "body": "Button et al. proved that tethered cell-surface mucins form a grafted macromolecular brush acting as a secondary osmotic filter; when mucus layer osmotic modulus exceeds the PCL brush swelling pressure (Delta Pi > 2.5 kPa), water is sucked out, flattening the periciliary space.",
+          "body": "Button et al. showed that tethered cell-surface mucins form a grafted macromolecular brush acting as a secondary osmotic filter; when mucus layer osmotic modulus exceeds that of the PCL brush (about 300 Pa at full height in their measurements; this folio's kernel uses a 2.5 kPa threshold), water is drawn out, flattening the periciliary space.",
           "kicker": "SIDENOTE P.04-B · DONNAN SWELLING & GRAFTED POLYMER BRUSHES (DOI 10.1103/RevModPhys.80.839)"
         },
         "skill": {
@@ -3402,7 +3414,7 @@
         },
         "sidenote_2": {
           "body": "Flexible poly(beta-amino ester) and polysarcosine mRNA polyplexes leverage aspect-ratio reptation to traverse mucin pores that trap rigid spheres.",
-          "kicker": "SIDENOTE P.06-B · PRIME EDITING & INHALED POLYPLEXES (DOI 10.1002/adma.201805116)"
+          "kicker": "SIDENOTE P.06-B · INHALED mRNA POLYPLEXES (DOI 10.1002/adma.201805116)"
         },
         "skill": {
           "description": "AI-agnostic polymer physics skill for de Gennes reptation (tau_d ~ N^3, D_rep ~ N^-2), Doi-Edwards tube viscoelasticity, and kilobase nucleic-acid gel transport.",
@@ -3493,7 +3505,7 @@
             "date": "2026-11-02",
             "edition": "REV 1.0",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified -C_p = 2.84 throat suction, -C_L = 3.38 Z-mode downforce, and h_crit = 19.0 mm Hopf stall boundary.",
-            "summary": "REV 1.0 (Published 2026-11-02): Inaugural Volume IV Formula 1 fluid physics monograph uniting Zhang-Toet-Zerihan ground-effect aerodynamics (DOI 10.1146/annurev.fluid.38.050304.092016) with 2026 FIA Active X/Z-mode wings and porpoising Hopf stability."
+            "summary": "REV 1.0 (Published 2026-11-02): Inaugural Volume IV Formula 1 fluid physics monograph uniting Zhang-Toet-Zerihan ground-effect aerodynamics (DOI 10.1115/1.2110263) with 2026 FIA Active X/Z-mode wings and porpoising Hopf stability."
           }
         ],
         "scite": {
@@ -3565,40 +3577,46 @@
       {
         "category_code": "P",
         "colophon": {
-          "benchmarks": "n_f = 2.45 (TiO₂) · d = 245 nm ⇒ λ_peak = 588 nm · Flop Δλ = −24 nm",
+          "benchmarks": "n_f = 2.45 (TiO₂) · d = 240 nm, m = 2 ⇒ λ_peak = 588 nm · Flop Δλ = −10.9 nm at 28°",
           "bridge": "Automotive Gonioapparent Flop ↔ A.07 Barragán Stucco & M.08 Color Geodesics",
           "identifier": "P.08 · Electromagnetic Color Waves & BRDF · Optics",
           "kernels": "Bragg–Snell Thin-Film Interference · Cook–Torrance Microfacet BRDF"
         },
-        "current_edition": "REV 1.0",
+        "current_edition": "REV 1.1",
         "date_published": "2026-11-02",
-        "date_redated": "2026-11-02",
+        "date_redated": "2026-11-14",
         "folio_id": "P.08",
         "governing_law": "Δ_OPD = 2 d √(n_f² − sin²θ_i) = m λ · f_r = k_d(ρ/π) + k_s(D F G) / [4(n·l)(n·v)]",
-        "kernel_verdict": "Discrepancy open: 2 readouts contradicted",
-        "kernel_verdict_es": "Discrepancia abierta: 2 lecturas contradichas",
+        "kernel_verdict": "Partial: 2 of 4 readouts recomputed",
+        "kernel_verdict_es": "Parcial: 2 de 4 lecturas recalculadas",
         "pillar": "physics",
         "primary_kernel": "tools/physics_kernel.py",
         "reading_time": "22 MIN READ",
         "readouts": [
           {
             "label": "Constructive Peak Wavelength",
-            "value": "λ_peak = 588 nm (Amber-Gold)"
+            "value": "λ_peak = 588 nm at 0° (m = 2)"
           },
           {
             "label": "Angular Color-Flop Blue Shift",
-            "value": "Δλ = −24.2 nm (at θ_i = 28°)"
+            "value": "Δλ = −10.9 nm (at θ_i = 28°)"
           },
           {
             "label": "Fresnel–Cook Specular Gain",
-            "value": "F(θ_i) = 0.184 · GGX α_r = 0.04"
+            "value": "F ≈ 0.18 (fixed illustrative value) · GGX α_r = 0.04"
           },
           {
             "label": "Wave Interference Verdict",
-            "value": "COHERENT GONIOAPPARENT · PASS"
+            "value": "PEAK IN VISIBLE BAND (MODEL)"
           }
         ],
         "revisions": [
+          {
+            "date": "2026-11-14",
+            "edition": "REV 1.1",
+            "opus": "Review: numbers recomputed by hand from the stated law by an independent reviewer.",
+            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The numbers printed in REV 1.0 did not follow from the folio law: 245 nm gives 600 nm, not 588 nm, and the shift at 28° is −10.9 nm, not −24.2 nm. The film is now 240 nm read in second order, the colour descriptions match the computed wavelengths, and the page says that the law neglects the half-wave phase shift on reflection. The interactive lab had its two sliders swapped and is fixed."
+          },
           {
             "date": "2026-11-02",
             "edition": "REV 1.0",
@@ -3617,11 +3635,11 @@
           "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 1,524 citing publications (4 supporting, 405 mentioning, 0 contrasting) on Robert Cook & Kenneth Torrance's physical microfacet reflectance model for wavelength-dependent Fresnel and interference color shifts."
         },
         "sidenote_1": {
-          "body": "A sports car's compound-curved fender sweeps surface normals n(x) through 90° in a single glance, turning Bragg's sin²θ_i phase law into a living sculpture of shifting wavelengths. A flat 12-meter wall by Luis Barragán has constant surface normal—so it relies on Kubelka–Munk diffuse cavity bounces instead.",
+          "body": "A sports car's compound-curved fender sweeps surface normals n(x) through 90° in a single glance, turning the sin²θ_i term of the interference condition into a living sculpture of shifting wavelengths. A flat 12-meter wall by Luis Barragán has constant surface normal—so it relies on Kubelka–Munk diffuse cavity bounces instead.",
           "kicker": "SIDENOTE P.08-A · WHY CURVED CAR BODIES LOVE GONIOAPPARENT FLOP WHILE WALLS LOVE MATTE"
         },
         "sidenote_2": {
-          "body": "The exact same Bragg–Snell equation Δ_OPD = 2 d √(n² − sin²θ) used to design pearlescent automotive pigments is used in clinical white-light interferometry to measure the 7 μm airway surface liquid and tear-film lipid layers.",
+          "body": "The exact same Bragg–Snell equation Δ_OPD = 2 d √(n² − sin²θ) used to design pearlescent automotive pigments is the kind of relation that thin-film interferometry uses to estimate the thickness of thin transparent layers such as the tear film.",
           "kicker": "SIDENOTE P.08-B · SPECIFICATION PLATE · THIN-FILM INTERFEROMETRY IN BIOPHYSICS"
         },
         "skill": {
@@ -3649,21 +3667,21 @@
             "min": 140.0,
             "step": 5.0,
             "unit": " nm",
-            "value": 245.0
+            "value": 240.0
           }
         ],
         "slug": "p08",
         "spec_plate": {
-          "body": "Three-stage OEM/motorsport basecoat-pearlescent-clearcoat system (synthetic fluorophlogopite mica platelets encapsulated in 245 nm rutile TiO2) benchmarked at 15°, 45°, and 110° aspecular angles per ASTM E2539.",
+          "body": "Three-stage OEM/motorsport basecoat-pearlescent-clearcoat system (synthetic fluorophlogopite mica platelets encapsulated in 240 nm rutile TiO2) benchmarked at 15°, 45°, and 110° aspecular angles per ASTM E2539.",
           "division": "ASTM E2539 / AUTOMOTIVE & ARCHITECTURAL SPECTROPHOTOMETRY",
-          "meta": "Cook-Torrance BRDF (DOI 10.1145/357290.357293) & Bragg transfer-matrix verified",
+          "meta": "Cook-Torrance BRDF (DOI 10.1145/357290.357293) · simplified thin-film condition (model)",
           "title": "Multi-Angle (15° / 45° / 110°) Gonioapparent Pearlescent Clearcoat vs. Mineral Matte Standard"
         },
-        "status_badge": "COLOR WAVE PHYSICS · REV 1.0",
+        "status_badge": "COLOR WAVE PHYSICS · REV 1.1",
         "steps": [
           "Stage 1 (Maxwell Transverse Electromagnetic Wave Packet): Incident white daylight carries continuous spectral modes λ ∈ [380, 780] nm across the clearcoat dielectric boundary.",
-          "Stage 2 (Bragg–Snell Thin-Film Phase Addition): Inside a 245 nm TiO₂ nanolayer (n_f = 2.45) on mica platelets, optical path difference Δ_OPD = 2 d √(n_f² − sin²θ_i) selects λ_peak = 588 nm.",
-          "Stage 3 (Gonioapparent Automotive Blue-Shift Color Flop): Sweeping viewing angle θ_i from 0° to 65° along a curved car fender shrinks √(n_f² − sin²θ_i), shifting λ_peak blueward by −41 nm.",
+          "Stage 2 (Bragg–Snell Thin-Film Phase Addition): Inside a 240 nm TiO₂ nanolayer (n_f = 2.45) on mica platelets, optical path difference Δ_OPD = 2 d √(n_f² − sin²θ_i) = m λ selects, in second order (m = 2) at normal incidence, λ_peak = 588 nm.",
+          "Stage 3 (Gonioapparent Automotive Blue-Shift Color Flop): Sweeping viewing angle θ_i from 0° to 65° along a curved car fender shrinks √(n_f² − sin²θ_i), shifting λ_peak blueward by about −42 nm for the 240 nm film.",
           "Stage 4 (Cook–Torrance Specular vs. Barragán Lambertian Limit): Low microfacet roughness (α_r = 0.04) concentrates metallic car highlights, while Barragán's calcite stucco (α_r = 0.88) scatters hue uniformly."
         ],
         "subtitle": "How transverse electromagnetic waves (λ ∈ [380, 780] nm) produce angle-dependent color flop in TiO₂-mica automotive pearlescent finishes via Bragg interference vs. angle-invariant serenity in Luis Barragán's mineral lime walls.",
@@ -3916,7 +3934,7 @@
         ],
         "lineage_mode": "CONTINUATION · Continues P.05 WKB Quantum Tunneling & P.10 Topological Chern Invariants",
         "title": "Fault-Tolerant Quantum Computing & Clean Nitrogen Fixation: Surface-Code Stabilizers, Non-Abelian Anyon Braiding & FeMoCo Catalysis",
-        "subtitle": "Continuing Folio P.05's quantum tunneling and P.10's topological invariants: how surface-code parity checks in Stim, non-Abelian Majorana braiding, and PySCF active-space quantum simulation unlock ambient-temperature nitrogen fertilizer without fossil-fuel steam reforming.",
+        "subtitle": "Continuing Folio P.05's quantum tunneling and P.10's topological invariants: how surface-code parity checks in Stim, non-Abelian Majorana braiding, and PySCF active-space quantum simulation could one day inform the search for ambient-temperature nitrogen fertilizer without fossil-fuel steam reforming.",
         "date_published": "2026-11-07",
         "date_redated": "2026-11-07",
         "current_edition": "REV 1.0",
@@ -3968,7 +3986,7 @@
           },
           {
             "label": "WEF Clean Fertilizer Verdict",
-            "value": "AMBIENT CATALYST PASS"
+            "value": "RESOURCE ESTIMATE ONLY"
           }
         ],
         "spec_plate": {
@@ -4029,8 +4047,8 @@
           "M.09"
         ],
         "lineage_mode": "SYNTHESIS · Synthesizes P.01 Non-Equilibrium Fluctuations, P.07 High-Re Aerodynamics & M.09 Continuum Transport",
-        "title": "Hilbert's Sixth Problem Resolved: Hard-Sphere Boltzmann Kinetics to Navier–Stokes Continuum & Neural Climate Operators",
-        "subtitle": "Synthesizing Folio P.01's statistical mechanics, P.07's aerodynamics, and M.09's continuum transport: how Yu Deng, Zaher Hani, and Xiao Ma (arXiv:2503.01800) rigorously derived incompressible Navier–Stokes from Newtonian particle collisions across arbitrary macroscopic times.",
+        "title": "Hilbert's Sixth Problem: A Proposed Derivation from Hard-Sphere Boltzmann Kinetics to Navier–Stokes Continuum & Neural Climate Operators",
+        "subtitle": "Synthesizing Folio P.01's statistical mechanics, P.07's aerodynamics, and M.09's continuum transport: how Yu Deng, Zaher Hani, and Xiao Ma (arXiv:2503.01800) report, in a preprint, a rigorous derivation of the fluid equations from Newtonian hard-sphere collisions over long times.",
         "date_published": "2026-11-07",
         "date_redated": "2026-11-10",
         "current_edition": "REV 1.4",
@@ -4040,7 +4058,7 @@
         "colophon": {
           "identifier": "P.12 · Hilbert's 6th & TUR Bridge: Markov Jumps → Boltzmann → Navier–Stokes · arXiv:2503.01800",
           "kernels": "Barato–Seifert TUR (Q_TUR ≥ 2) · Boltzmann–Grad (N ε^(d−1) = 1/Kn) · Deng–Hani–Ma Trees · Chapman–Enskog σ_visc",
-          "benchmarks": "Q_TUR = 2.3617 ≥ 2 (A = 1.5 rad) · Kn = 10⁻⁴ ⇒ ||f_N − M_u||_L² ≤ C Kn · σ_visc = (2μ/T)S_ij S_ij > 0",
+          "benchmarks": "Q_TUR = 2.3617 ≥ 2 (A = 1.5) · Kn = 10⁻⁴ ⇒ ||f_N − M_u||_L² ≤ C Kn · σ_visc = (2μ/T)S_ij S_ij > 0",
           "bridge": "Synthesizes P.01/P.07/M.09/M.11 · Mesoscopic Markovian TUR Precision Floor ↔ Continuum Viscous Entropy"
         },
         "sliders": [
@@ -4063,18 +4081,18 @@
         ],
         "steps": [
           "Stage 1 (Level 1 — Mesoscopic Markovian TUR & Newtonian Hard Spheres): On non-equilibrium steady-state Markovian jump cycles (Barato & Seifert 2015, DOI 10.1103/PhysRevLett.114.158101), current precision obeys Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² ≥ 2 while N hard spheres evolve under Boltzmann–Grad scaling N ε^(d−1) = 1/Kn.",
-          "Stage 2 (Level 2 — Deng–Hani–Ma Long-Time Boltzmann Kinetic Limit, arXiv:2503.01800): Cutting cumulant recollision loops via layered Feynman interaction trees suppresses pathological memory correlations, proving convergence to the irreversible Boltzmann equation for arbitrarily long times.",
+          "Stage 2 (Level 2 — Deng–Hani–Ma Long-Time Boltzmann Kinetic Limit, arXiv:2408.07818 and arXiv:2503.01800): Cutting cumulant recollision loops via layered Feynman interaction trees suppresses pathological memory correlations, which the authors' 2024 preprint reports gives convergence to the Boltzmann equation over long times; the 2025 preprint builds on it to reach the fluid equations.",
           "Stage 3 (Level 3 — Chapman–Enskog Viscous Entropy Production Kn → 0, Continuing P.07, M.09 & M.11): As Kn → 0, local Maxwellian projection yields incompressible Navier–Stokes flow with strictly non-negative viscous entropy production σ_visc = (2μ/T) S_ij S_ij ≥ 0 (DOI 10.1007/s00222-003-0316-5).",
-          "Stage 4 (Thermodynamically Consistent Neural Climate Operators): Grounding Fourier Neural Operators in exact Boltzmann–Navier–Stokes conservation laws and positive dissipation (DOI 10.1016/j.jcp.2018.10.045) delivers 10,000× faster cyclone and flash-flood forecasts."
+          "Stage 4 (Thermodynamically Consistent Neural Climate Operators): Physics-informed neural networks (DOI 10.1016/j.jcp.2018.10.045) and neural operators can be constrained by conservation laws and positive dissipation; faster, trustworthy cyclone and flash-flood forecasts are this folio's outlook, not a reported result."
         ],
         "readouts": [
           {
             "label": "Markovian TUR Product Q_TUR",
-            "value": "2.3617 ≥ 2.0 (A = 1.5 rad PASS)"
+            "value": "2.3617 ≥ 2.0 (A = 1.5 PASS)"
           },
           {
             "label": "Hydrodynamic Convergence Error",
-            "value": "O(Kn) = 1.0 × 10⁻⁴ (EXACT)"
+            "value": "O(Kn) = 1.0 × 10⁻⁴ (MODEL SCALING)"
           },
           {
             "label": "Chapman–Enskog Viscous σ_visc",
@@ -4082,22 +4100,22 @@
           },
           {
             "label": "Hilbert's 6th + TUR Verdict",
-            "value": "BOLTZMANN → STOKES TUR QED"
+            "value": "KERNEL CHECKS PASS (NOT A PROOF)"
           }
         ],
         "spec_plate": {
           "division": "HILBERT'S SIXTH PROBLEM / STOCHASTIC TUR / HYDRODYNAMIC CONTINUUM LIMIT",
           "title": "Mesoscopic Markovian TUR to Boltzmann Kinetics, Navier–Stokes Viscous Dissipation & Neural Surrogates",
           "body": "Cross-scale synthesis linking Barato–Seifert Thermodynamic Uncertainty Relations (DOI 10.1103/PhysRevLett.114.158101) in NESS Markovian jump networks across the Deng–Hani–Ma Boltzmann–Grad limit (arXiv:2503.01800) to Chapman–Enskog viscous entropy production σ_visc = (2μ/T) S_ij S_ij ≥ 0 (DOI 10.1007/s00222-003-0316-5).",
-          "meta": "Barato–Seifert TUR DOI 10.1103/PhysRevLett.114.158101, Golse–Saint-Raymond DOI 10.1007/s00222-003-0316-5 & arXiv:2503.01800 verified"
+          "meta": "Barato–Seifert TUR DOI 10.1103/PhysRevLett.114.158101, Golse–Saint-Raymond DOI 10.1007/s00222-003-0316-5 & arXiv:2503.01800 (preprint) cited"
         },
         "sidenote_1": {
           "kicker": "SIDENOTE P.12-A · CROSS-FIELD ANALOGY · GEORGES SEURAT'S POINTILLISM & STADIUM CROWD WAVES",
-          "body": "Stand 5 cm from Georges Seurat's 'A Sunday on La Grande Jatte' and you see only discrete paint dots (Newton's atoms). Step back 5 meters and your eye integrates them into shimmering water (Navier–Stokes). Deng, Hani, and Ma proved the exact mathematical zoom lens between the two!"
+          "body": "Stand 5 cm from Georges Seurat's 'A Sunday on La Grande Jatte' and you see only discrete paint dots (Newton's atoms). Step back 5 meters and your eye integrates them into shimmering water (Navier–Stokes). Deng, Hani, and Ma's preprint proposes the rigorous mathematical zoom lens between the two."
         },
         "sidenote_2": {
           "kicker": "SIDENOTE P.12-B · BARATO–SEIFERT TUR SCOPE & CONTINUUM VISCOUS BRIDGE",
-          "body": "For time-homogeneous non-equilibrium steady-state Markovian jump networks (DOI 10.1103/PhysRevLett.114.158101), Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² ≥ 2 bounds current precision by entropy production; under Kn → 0 coarse-graining (arXiv:2503.01800), microscopic irreversibility projects onto continuum viscous dissipation σ_visc = (2μ/T) S_ij S_ij ≥ 0."
+          "body": "For time-homogeneous non-equilibrium steady-state Markovian jump networks (DOI 10.1103/PhysRevLett.114.158101), Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² ≥ 2 bounds current precision by entropy production; this folio's own bridge, not a theorem of either paper, is that under Kn → 0 coarse-graining (arXiv:2503.01800) microscopic irreversibility projects onto continuum viscous dissipation σ_visc = (2μ/T) S_ij S_ij ≥ 0."
         },
         "skill": {
           "filename": "hilbert-sixth-boltzmann-navier-stokes-SKILL.md",
@@ -4114,7 +4132,7 @@
             "edition": "REV 1.4",
             "date": "2026-11-10",
             "summary": "REV 1.4 (Redated 2026-11-10): Synthesized Barato & Seifert (2015, DOI 10.1103/PhysRevLett.114.158101) Thermodynamic Uncertainty Relation (Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² = A·coth(A/2) ≥ 2 for NESS Markovian jump networks, bridged to Folio M.11) across the Boltzmann–Grad hard-sphere limit (Kn → 0) into Chapman–Enskog Navier–Stokes viscous entropy production σ_visc = (2μ/T) S_ij S_ij ≥ 0 (DOI 10.1007/s00222-003-0316-5), with its reference values stated in the essay.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified Markovian steady-state TUR scope (Q_TUR = 2.3617 > 2 at A = 1.5 rad), hard-sphere collision invariants (< 1e-14), and positive Couette viscous dissipation σ_visc > 0."
+            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified Markovian steady-state TUR scope (Q_TUR = 2.3617 > 2 at A = 1.5), hard-sphere collision invariants (< 1e-14), and positive Couette viscous dissipation σ_visc > 0."
           },
           {
             "edition": "REV 1.0",
@@ -4348,8 +4366,8 @@
           {
             "edition": "REV 1.3",
             "date": "2026-11-06",
-            "summary": "REV 1.3 (Redated 2026-11-06): Added Guth-Maynard (30/13)(1-sigma) zero-density breakthrough (c(3/4) = 15/26 = 0.5769 < 0.600, 1.0400x Markovian spectral relaxation speedup) and OpenAI lean-qrh Quasi-Riemann Hypothesis (sigma > 7/8) with 722 -> 719 Weil quadratic functional sign-parity quarantine.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Gemma 4 31B + Ornith 1.5 35B): Verified Guth-Maynard 30/13 exponent at sigma = 3/4 and O(V+E) dependency-cone quarantine of the 3 sign-flip lemmas in OpenAI lean-qrh."
+            "summary": "REV 1.3 (Redated 2026-11-06): Added Guth-Maynard (30/13)(1-sigma) zero-density breakthrough (c(3/4) = 15/26 = 0.5769 < 0.600, 1.0400x Markovian spectral relaxation speedup) and OpenAI's quasi-Riemann hypothesis formalization (openai/math, zero-free half-plane sigma > 7/8) with 722 -> 719 Weil quadratic functional sign-parity quarantine.",
+            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Gemma 4 31B + Ornith 1.5 35B): Verified Guth-Maynard 30/13 exponent at sigma = 3/4 and O(V+E) dependency-cone quarantine of the 3 sign-flip lemmas in OpenAI's quasi-Riemann formalization (openai/math)."
           },
           {
             "edition": "REV 1.2",
@@ -4468,7 +4486,7 @@
           {
             "edition": "REV 1.3",
             "date": "2026-11-06",
-            "summary": "REV 1.3 (Redated 2026-11-06): Expanded extremal combinatorics benchmark with Google DeepMind AlphaProof Nexus (Science 2026 pure O-sequence h-vector log-concavity h_k^2 >= h_{k-1}*h_{k+1} up to degree d = 7), Gemini Deep Think IMO 2025 Gold (35/42), and FirstProof (10/10 research problems).",
+            "summary": "REV 1.3 (Redated 2026-11-06): Expanded extremal combinatorics benchmark with a pure O-sequence h-vector log-concavity check (h_k^2 >= h_{k-1}*h_{k+1} up to degree d = 7; earlier editions credited a DeepMind 'AlphaProof Nexus' Science paper for which no resolvable source was found), Gemini Deep Think IMO 2025 Gold (35/42), and FirstProof (10/10 research problems).",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Gemma 4 31B + Ornith 1.5 35B): Verified small-case pure O-sequence log-concavity circuit breaker (d <= 7), FunSearch 512-cap invariant, and AlphaEvolve Rank-48 tensor exponent."
           },
           {
@@ -5285,7 +5303,7 @@
         ],
         "lineage_mode": "CONTINUATION · Continues M.02 Riemann Zeta Zero-Density in Lean 4 & P.08 Wave Interference",
         "title": "Resolution of the 3D Kakeya Conjecture & Breaking Ingham's 1940 Riemann Barrier: Wang–Zahl Graininess, Guth–Maynard 30/13 & Lean 4",
-        "subtitle": "Continuing Folio M.02's Lean 4 Zeta23/XiPrime spectral bounds and P.08's wave superposition: how Hong Wang and Joshua Zahl (arXiv:2502.17655) proved dim_H(K) = 3 for 3D Besicovitch needle sets while Larry Guth and James Maynard (arXiv:2405.10935) broke Ingham's 84-year prime-gap barrier.",
+        "subtitle": "Continuing Folio M.02's Lean 4 Zeta23/XiPrime spectral bounds and P.08's wave superposition: how Hong Wang and Joshua Zahl (arXiv:2502.17655) proved dim_H(K) = 3 for 3D Besicovitch needle sets while Larry Guth and James Maynard (arXiv:2405.20552) broke Ingham's 84-year prime-gap barrier.",
         "date_published": "2026-11-07",
         "date_redated": "2026-11-07",
         "current_edition": "REV 1.0",
@@ -5293,7 +5311,7 @@
         "primary_kernel": "tools/formal_verifier.py",
         "governing_law": "dim_H(K) = dim_M(K) = 3 (∀ K ⊂ ℝ³) · N(σ, T) ≪ T^((30/13)(1−σ)+o(1)) · anthropics/formal-math",
         "colophon": {
-          "identifier": "M.11 · 3D Kakeya Conjecture (arXiv:2502.17655) & Guth–Maynard 30/13 (arXiv:2405.10935)",
+          "identifier": "M.11 · 3D Kakeya Conjecture (arXiv:2502.17655) & Guth–Maynard 30/13 (arXiv:2405.20552)",
           "kernels": "Wang–Zahl Multi-Scale Sticky/Plany/Grainy Induction · Guth–Maynard Large-Value Energy · Lean 4 Zeta23",
           "benchmarks": "dim_H(K_3D) = 3.000 · B_GM = 30/13 ≈ 2.3077 < 12/5 = 2.400 · Prime Gap θ = 17/30",
           "bridge": "Continues M.02/P.08 · Parallel-Parking a Pencil in 3D Space ↔ Compressed Sensing MRI & Prime Distribution"
@@ -5319,7 +5337,7 @@
         "steps": [
           "Stage 1 (Besicovitch's 1919 Needle Paradox & The 3D Kakeya Conjecture): A unit needle can be rotated 360° inside a set of arbitrarily tiny volume (measure zero), yet the Kakeya Conjecture asserts its fractal Hausdorff dimension in ℝ³ must still be the full 3.000.",
           "Stage 2 (Wang–Zahl 2025 Resolution of 3D Kakeya, arXiv:2502.17655): Hong Wang and Joshua Zahl classify δ-tube packs into sticky, plany, and grainy configurations and use polynomial partitioning + induction on scales to prove ∑ |T_i ∩ T_j| cannot concentrate below dimension 3.",
-          "Stage 3 (Guth–Maynard 2024 Decoupling Breaks Ingham's 1940 Barrier, arXiv:2405.10935): Bounding large values of Dirichlet polynomials via 6th-order energy decoupling lowers the Riemann zero-density exponent from Huxley's 12/5 = 2.40 (DOI 10.1007/BF01418933) to 30/13 ≈ 2.3077.",
+          "Stage 3 (Guth–Maynard 2024 Decoupling Breaks Ingham's 1940 Barrier, arXiv:2405.20552): Bounding large values of Dirichlet polynomials via 6th-order energy decoupling lowers the Riemann zero-density exponent from Huxley's 12/5 = 2.40 (DOI 10.1007/BF01418933) to 30/13 ≈ 2.3077.",
           "Stage 4 (Anthropic Lean 4 Formalization in anthropics/formal-math): The zero-free region and prime-gap consequences (p_{n+1} − p_n ≪ p_n^(17/30)) connect directly to machine-checked Lean 4 blueprints in anthropics/formal-math (Zeta23 & Challenge/XiPrime.lean)."
         ],
         "readouts": [
@@ -5343,8 +5361,8 @@
         "spec_plate": {
           "division": "HARMONIC ANALYSIS / ANALYTIC NUMBER THEORY / LEAN 4 FORMALIZATION",
           "title": "Wang–Zahl 3D Kakeya Tube Multiplicity & Guth–Maynard 30/13 Riemann Zero-Density Bound",
-          "body": "Multi-scale δ-tube incidence bounds proving the 3D Kakeya conjecture (arXiv:2502.17655) paired with large-value Dirichlet polynomial decoupling (arXiv:2405.10935, Huxley DOI 10.1007/BF01418933, Conrey DOI 10.1515/crll.1989.399.1) and anthropics/formal-math.",
-          "meta": "Huxley (1971) DOI 10.1007/BF01418933, Conrey (1989) DOI 10.1515/crll.1989.399.1, arXiv:2502.17655 & arXiv:2405.10935 verified"
+          "body": "Multi-scale δ-tube incidence bounds proving the 3D Kakeya conjecture (arXiv:2502.17655) paired with large-value Dirichlet polynomial decoupling (arXiv:2405.20552, Huxley DOI 10.1007/BF01418933, Conrey DOI 10.1515/crll.1989.399.1) and anthropics/formal-math.",
+          "meta": "Huxley (1971) DOI 10.1007/BF01418933, Conrey (1989) DOI 10.1515/crll.1989.399.1, arXiv:2502.17655 & arXiv:2405.20552 verified"
         },
         "sidenote_1": {
           "kicker": "SIDENOTE M.11-A · CROSS-FIELD ANALOGY · PARALLEL-PARKING A PENCIL & FASTER HOSPITAL MRI SCANS",
@@ -5352,7 +5370,7 @@
         },
         "sidenote_2": {
           "kicker": "SIDENOTE M.11-B · ANTHROPIC THEOREM SOLUTIONS · LEAN 4 ZETA23 & XIPRIME",
-          "body": "Inspect the machine-checked Lean 4 formalizations of Riemann zeta zero-density estimates and critical-line bounds directly in https://github.com/anthropics/formal-math (Zeta23 and Challenge/XiPrime.lean) and https://github.com/openai/formal-math-qrh."
+          "body": "Inspect the machine-checked Lean 4 formalizations of Riemann zeta zero-density estimates and critical-line bounds directly in https://github.com/anthropics/formal-math (Zeta23 and Challenge/XiPrime.lean) and https://github.com/openai/math."
         },
         "skill": {
           "filename": "kakeya-3d-guth-maynard-zero-density-SKILL.md",
@@ -5368,7 +5386,7 @@
           {
             "edition": "REV 1.0",
             "date": "2026-11-07",
-            "summary": "REV 1.0 (Published 2026-11-07): Volume VI Mathematics flagship continuing Folio M.02 (Huxley DOI 10.1007/BF01418933, Conrey DOI 10.1515/crll.1989.399.1) via Wang–Zahl's 3D Kakeya proof (arXiv:2502.17655), Guth–Maynard 30/13 (arXiv:2405.10935), and anthropics/formal-math.",
+            "summary": "REV 1.0 (Published 2026-11-07): Volume VI Mathematics flagship continuing Folio M.02 (Huxley DOI 10.1007/BF01418933, Conrey DOI 10.1515/crll.1989.399.1) via Wang–Zahl's 3D Kakeya proof (arXiv:2502.17655), Guth–Maynard 30/13 (arXiv:2405.20552), and anthropics/formal-math.",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified 3D Kakeya tube overlap exponent, Guth-Maynard 30/13 vs. Huxley 12/5, and prime gap exponent 17/30."
           }
         ],
@@ -5384,7 +5402,7 @@
           "mentioning": 914,
           "contrasting": 2,
           "retracted": false,
-          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 555 citing publications (13 supporting, 914 mentioning, 2 contrasting) — Primary Riemann zero-density and prime-gap anchor (Huxley 1971, DOI 10.1007/BF01418933; Conrey 1989, DOI 10.1515/crll.1989.399.1) extended by Guth–Maynard (arXiv:2405.10935), Wang–Zahl (arXiv:2502.17655), and anthropics/formal-math."
+          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 555 citing publications (13 supporting, 914 mentioning, 2 contrasting) — Primary Riemann zero-density and prime-gap anchor (Huxley 1971, DOI 10.1007/BF01418933; Conrey 1989, DOI 10.1515/crll.1989.399.1) extended by Guth–Maynard (arXiv:2405.20552), Wang–Zahl (arXiv:2502.17655), and anthropics/formal-math."
         }
       },
       {
@@ -5604,9 +5622,9 @@
       "volume": 6,
       "code": "VOL. 06",
       "roman": "Volume VI",
-      "kicker": "VOLUME VI (VOL. 06) · QUANTUM ERROR CORRECTION, HILBERT'S 6TH PROBLEM, 3D KAKEYA, LEAN 4 FORMAL COMPLEXITY, 3D GRAPHIC STATICS, TENSEGRITY SKY-COOLING, SIMP TOPOLOGY & VERIFIED RISC-V GRIDS · 8 FOLIOS",
-      "title": "Fault-Tolerant Quantum Computing, Hilbert's Sixth Problem, 3D Kakeya & Guth–Maynard 30/13, Anthropic Lean 4 Complexity & Post-Quantum Lattices, 3D Graphic Statics, Tensegrity Sky-Cooling, SIMP Topology & Verified RISC-V Grids",
-      "subtitle": "Eight Volume VI monographs (E.11–E.12, A.11–A.12, P.11–P.12, M.11–M.12) selected by a 3-Seat Multi-Family Council & Jury to explain humanity's highest-value scientific breakthroughs and WEF grand challenges through vivid cross-field analogies, open-source software, and formal AI verification: Bendsøe–Sigmund SIMP topology optimization & Formula 1 inerter dampers (E.11), Anthropic's 180M-line Rocq RISC-V proof & firefly-synchronized renewable grids (E.12), Maxwell 3D polyhedral graphic statics & zero-rebar stone/tile vaults (A.11), Pellegrino tensegrity cable domes & 8–13 μm radiative sky-cooling canopies (A.12), Kitaev surface-code quantum error correction & FeMoCo clean nitrogen catalysis (P.11), Deng–Hani–Ma's resolution of Hilbert's 6th Problem from Newton to Navier–Stokes (P.12), Wang–Zahl's 3D Kakeya proof & Guth–Maynard's 30/13 Riemann zero-density bound (M.11), and Anthropic's Lean 4 complexity proofs paired with NIST FIPS 203 post-quantum crystal lattices (M.12).",
+      "kicker": "VOLUME VI (VOL. 06) · QUANTUM ERROR CORRECTION, HILBERT'S 6TH PROBLEM, 3D KAKEYA, LEAN 4 FORMAL COMPLEXITY, 3D GRAPHIC STATICS, TENSEGRITY SKY-COOLING, SIMP TOPOLOGY & CONTROL-BARRIER GRIDS · 8 FOLIOS",
+      "title": "Fault-Tolerant Quantum Computing, Hilbert's Sixth Problem, 3D Kakeya & Guth–Maynard 30/13, Anthropic Lean 4 Complexity & Post-Quantum Lattices, 3D Graphic Statics, Tensegrity Sky-Cooling, SIMP Topology & Control-Barrier Renewable Grids",
+      "subtitle": "Eight Volume VI monographs (E.11–E.12, A.11–A.12, P.11–P.12, M.11–M.12) selected by a 3-Seat Multi-Family Council & Jury to explain humanity's highest-value scientific breakthroughs and WEF grand challenges through vivid cross-field analogies, open-source software, and formal AI verification: Bendsøe–Sigmund SIMP topology optimization & Formula 1 inerter dampers (E.11), Control Barrier Functions, firefly-synchronized renewable grids & the published precedents for verified RISC-V processors (E.12), Maxwell 3D polyhedral graphic statics & zero-rebar stone/tile vaults (A.11), Pellegrino tensegrity cable domes & 8–13 μm radiative sky-cooling canopies (A.12), Kitaev surface-code quantum error correction & FeMoCo clean nitrogen catalysis (P.11), Deng–Hani–Ma's resolution of Hilbert's 6th Problem from Newton to Navier–Stokes (P.12), Wang–Zahl's 3D Kakeya proof & Guth–Maynard's 30/13 Riemann zero-density bound (M.11), and Anthropic's Lean 4 complexity proofs paired with NIST FIPS 203 post-quantum crystal lattices (M.12).",
       "cadence": "Hourly Zero-Token Sentinel Gate + 12h Deep-Craft Atelier Heartbeat (:05 Math, :15 Arch, :20 Civil Eng, :40 Phys)",
       "folios": [
         "e11",

@@ -36,4 +36,4 @@ The reference values above are stated in the essay. No script in this repository
 - What the essay compares against: −C_p,peak = 2.84 · −C_L = 3.38 (Z-Mode) · −40% Drag (X-Mode)
 
 ## Recent research context
-- **2026 FIA Active X/Z-Mode Wings & Lamb–Oseen Vortex Sealing Tame Ground-Effect Porpoising**: Grounded in Joseph Katz's fluid mechanics of race-car aerodynamics (Annu. Rev. Fluid Mech. 2006, DOI 10.1146/annurev.fluid.38.050304.092016), the 2026 Formula 1 regulations pair underfloor Venturi diffusers with full-time Active Aerodynamics—switching between high-downforce Z-Mode in corners and low-drag X-Mode on straights to suppress Hopf bifurcation porpoising.
+- **2026 FIA Active X/Z-Mode Wings & Lamb–Oseen Vortex Sealing Tame Ground-Effect Porpoising**: Grounded in Joseph Katz's fluid mechanics of race-car aerodynamics (Annu. Rev. Fluid Mech. 2006, DOI 10.1146/annurev.fluid.38.050304.092016), the 2026 Formula 1 regulations pair underfloor Venturi diffusers with full-time Active Aerodynamics—switching between high-downforce Z-Mode in corners and low-drag X-Mode on straights; this folio models porpoising as a Hopf bifurcation of the ride-height dynamics.

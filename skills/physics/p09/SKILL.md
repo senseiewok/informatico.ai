@@ -36,4 +36,4 @@ The reference values above are stated in the essay. No script in this repository
 - What the essay compares against: Q = 1.20 μL/min · K = 0.45 S/m ⇒ d_drop = 2.42 μm · q/q_R = 0.68
 
 ## Recent research context
-- **Sir Geoffrey Taylor's 49.3° Electrohydrodynamic Cone & Rayleigh Fission Limits Protect Inhaled mRNA Nanoparticles**: Completing the biophysical delivery sequence of Folios P.03, P.04, and P.06, Sir Geoffrey Ingram Taylor's P_{1/2}(cos θ_0) = 0 equilibrium cone (Proc. R. Soc. A DOI 10.1098/rspa.1964.0151) and Gañán-Calvo's cone-jet scaling generate monodisperse 2.4 μm bronchial droplets without shearing fragile 4.5 kb CFTR mRNA lipid nanoparticles.
+- **Sir Geoffrey Taylor's 49.3° Electrohydrodynamic Cone & Rayleigh Fission Limits Protect Inhaled mRNA Nanoparticles**: Completing the biophysical delivery sequence of Folios P.03, P.04, and P.06, Sir Geoffrey Ingram Taylor's P_{1/2}(cos θ_0) = 0 equilibrium cone (Proc. R. Soc. A DOI 10.1098/rspa.1964.0151) and Gañán-Calvo's cone-jet scaling are modelled here as generating monodisperse 2.4 μm bronchial droplets at low shear for fragile 4.5 kb CFTR mRNA lipid nanoparticles.

@@ -17,7 +17,7 @@ FOLIO = {'folio_id': 'M.11',
           'Wang–Zahl Graininess, Guth–Maynard 30/13 & Lean 4',
  'subtitle': "Continuing Folio M.02's Lean 4 Zeta23/XiPrime spectral bounds and P.08's wave "
              'superposition: how Hong Wang and Joshua Zahl (arXiv:2502.17655) proved dim_H(K) = 3 '
-             'for 3D Besicovitch needle sets while Larry Guth and James Maynard (arXiv:2405.10935) '
+             'for 3D Besicovitch needle sets while Larry Guth and James Maynard (arXiv:2405.20552) '
              "broke Ingham's 84-year prime-gap barrier.",
  'date_published': '2026-11-07',
  'date_redated': '2026-11-07',
@@ -27,7 +27,7 @@ FOLIO = {'folio_id': 'M.11',
  'governing_law': 'dim_H(K) = dim_M(K) = 3 (∀ K ⊂ ℝ³) · N(σ, T) ≪ T^((30/13)(1−σ)+o(1)) · '
                   'anthropics/formal-math',
  'colophon': {'identifier': 'M.11 · 3D Kakeya Conjecture (arXiv:2502.17655) & Guth–Maynard 30/13 '
-                            '(arXiv:2405.10935)',
+                            '(arXiv:2405.20552)',
               'kernels': 'Wang–Zahl Multi-Scale Sticky/Plany/Grainy Induction · Guth–Maynard '
                          'Large-Value Energy · Lean 4 Zeta23',
               'benchmarks': 'dim_H(K_3D) = 3.000 · B_GM = 30/13 ≈ 2.3077 < 12/5 = 2.400 · Prime '
@@ -54,7 +54,7 @@ FOLIO = {'folio_id': 'M.11',
            'Joshua Zahl classify δ-tube packs into sticky, plany, and grainy configurations and '
            'use polynomial partitioning + induction on scales to prove ∑ |T_i ∩ T_j| cannot '
            'concentrate below dimension 3.',
-           "Stage 3 (Guth–Maynard 2024 Decoupling Breaks Ingham's 1940 Barrier, arXiv:2405.10935): "
+           "Stage 3 (Guth–Maynard 2024 Decoupling Breaks Ingham's 1940 Barrier, arXiv:2405.20552): "
            'Bounding large values of Dirichlet polynomials via 6th-order energy decoupling lowers '
            "the Riemann zero-density exponent from Huxley's 12/5 = 2.40 (DOI 10.1007/BF01418933) "
            'to 30/13 ≈ 2.3077.',
@@ -71,10 +71,10 @@ FOLIO = {'folio_id': 'M.11',
                          'Zero-Density Bound',
                 'body': 'Multi-scale δ-tube incidence bounds proving the 3D Kakeya conjecture '
                         '(arXiv:2502.17655) paired with large-value Dirichlet polynomial '
-                        'decoupling (arXiv:2405.10935, Huxley DOI 10.1007/BF01418933, Conrey DOI '
+                        'decoupling (arXiv:2405.20552, Huxley DOI 10.1007/BF01418933, Conrey DOI '
                         '10.1515/crll.1989.399.1) and anthropics/formal-math.',
                 'meta': 'Huxley (1971) DOI 10.1007/BF01418933, Conrey (1989) DOI '
-                        '10.1515/crll.1989.399.1, arXiv:2502.17655 & arXiv:2405.10935 verified'},
+                        '10.1515/crll.1989.399.1, arXiv:2502.17655 & arXiv:2405.20552 verified'},
  'sidenote_1': {'kicker': 'SIDENOTE M.11-A · CROSS-FIELD ANALOGY · PARALLEL-PARKING A PENCIL & '
                           'FASTER HOSPITAL MRI SCANS',
                 'body': 'How much room do you need to turn a pencil 360° in every 3D direction? '
@@ -85,7 +85,7 @@ FOLIO = {'folio_id': 'M.11',
                 'body': 'Inspect the machine-checked Lean 4 formalizations of Riemann zeta '
                         'zero-density estimates and critical-line bounds directly in '
                         'https://github.com/anthropics/formal-math (Zeta23 and '
-                        'Challenge/XiPrime.lean) and https://github.com/openai/formal-math-qrh.'},
+                        'Challenge/XiPrime.lean) and https://github.com/openai/math.'},
  'skill': {'filename': 'kakeya-3d-guth-maynard-zero-density-SKILL.md',
            'name': 'kakeya-3d-guth-maynard-zero-density',
            'description': 'AI-agnostic harmonic analysis and analytic number theory skill for the '
@@ -103,7 +103,7 @@ FOLIO = {'folio_id': 'M.11',
                 'summary': 'REV 1.0 (Published 2026-11-07): Volume VI Mathematics flagship '
                            'continuing Folio M.02 (Huxley DOI 10.1007/BF01418933, Conrey DOI '
                            "10.1515/crll.1989.399.1) via Wang–Zahl's 3D Kakeya proof "
-                           '(arXiv:2502.17655), Guth–Maynard 30/13 (arXiv:2405.10935), and '
+                           '(arXiv:2502.17655), Guth–Maynard 30/13 (arXiv:2405.20552), and '
                            'anthropics/formal-math.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): '
                         'Verified 3D Kakeya tube overlap exponent, Guth-Maynard 30/13 vs. Huxley '
@@ -123,7 +123,7 @@ FOLIO = {'folio_id': 'M.11',
                       'publications (13 supporting, 914 mentioning, 2 contrasting) — Primary '
                       'Riemann zero-density and prime-gap anchor (Huxley 1971, DOI '
                       '10.1007/BF01418933; Conrey 1989, DOI 10.1515/crll.1989.399.1) extended by '
-                      'Guth–Maynard (arXiv:2405.10935), Wang–Zahl (arXiv:2502.17655), and '
+                      'Guth–Maynard (arXiv:2405.20552), Wang–Zahl (arXiv:2502.17655), and '
                       'anthropics/formal-math.'}}
 
 LONGFORM_DATA = {'reading_time': '22 MIN READ',
@@ -142,7 +142,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'publications (13 supporting, 914 mentioning, 2 contrasting) — Primary '
                       'Riemann zero-density and prime-gap anchor (Huxley 1971, DOI '
                       '10.1007/BF01418933; Conrey 1989, DOI 10.1515/crll.1989.399.1) extended by '
-                      'Guth–Maynard (arXiv:2405.10935), Wang–Zahl (arXiv:2502.17655), and '
+                      'Guth–Maynard (arXiv:2405.20552), Wang–Zahl (arXiv:2502.17655), and '
                       'anthropics/formal-math.'},
  'act1_title': 'Act I — Cool Fact & Human Story: Parallel-Parking a Pencil in Zero Volume—and How '
                'It Unlocks Both Prime Numbers and Faster MRI Scans',
@@ -177,7 +177,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'act1_body': 'Between May 2024 and February 2025, a century of mathematical resistance cracked '
               'through twin historic breakthroughs. First, Larry Guth and Fields Medalist James '
               'Maynard developed deep decoupling bounds for Dirichlet polynomials in an epochal '
-              "preprint (arXiv:2405.10935), shattering Albert Ingham's 1940 barrier and Martin "
+              "preprint (arXiv:2405.20552), shattering Albert Ingham's 1940 barrier and Martin "
               "Huxley's 1971 exponent of 12/5 = 2.40 (Inventiones Mathematicae, DOI "
               "10.1007/BF01418933; connected to Brian Conrey's critical line theorem, DOI "
               '10.1515/crll.1989.399.1). Guth and Maynard established the new zero-density '
@@ -192,7 +192,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               "formalization repositories led by Anthropic's formal mathematics team "
               '(https://github.com/anthropics/formal-math, specifically Zeta23 and '
               'Challenge/XiPrime.lean) alongside open verification initiatives '
-              '(https://github.com/openai/formal-math-qrh).',
+              '(https://github.com/openai/math).',
  'act1_stakes': 'The resolution of the three-dimensional Kakeya Conjecture and the shattering of '
                 "Ingham's prime-gap barrier represent a masterclass in modern mathematical "
                 'synthesis. For decades, harmonic analysts, number theorists, and signal engineers '
@@ -220,7 +220,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  '10.1007/BF01418933); Brian Conrey proves > 2/5 of zeros lie on σ = 1/2 (DOI '
                  '10.1515/crll.1989.399.1).'),
                 ('2024',
-                 "Larry Guth and James Maynard (arXiv:2405.10935) break Ingham's 84-year barrier "
+                 "Larry Guth and James Maynard (arXiv:2405.20552) break Ingham's 84-year barrier "
                  'with the 30/13 ≈ 2.3077 zero-density exponent.'),
                 ('2025–2026',
                  'Hong Wang and Joshua Zahl resolve the 3D Kakeya Conjecture (arXiv:2502.17655) '
@@ -307,7 +307,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'act4_title': "Act IV — Imagining Humanity's Future: AI + Lean 4 Formal Blueprints & "
                'Compressed-Sensing Medical Imaging',
  'act4_human_ai': 'By translating human breakthroughs like Wang–Zahl (arXiv:2502.17655) and '
-                  'Guth–Maynard (arXiv:2405.10935) into open-source Lean 4 formal verification '
+                  'Guth–Maynard (arXiv:2405.20552) into open-source Lean 4 formal verification '
                   'blueprints—joining https://github.com/anthropics/formal-math, '
                   'https://github.com/teorth/pfr, and '
                   'https://github.com/deepseek-ai/DeepSeek-Prover-V2—mathematicians and AI agents '
@@ -339,7 +339,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'Wang, H., & Zahl, J. (2025). Volume estimates for unions of convex sets, and the '
              'Kakeya set conjecture in three dimensions. arXiv:2502.17655.',
              'Guth, L., & Maynard, J. (2024). New large value estimates for Dirichlet polynomials. '
-             'arXiv:2405.10935.',
+             'arXiv:2405.20552.',
              'Huxley, M. N. (1971). On the difference between consecutive primes. Inventiones '
              'Mathematicae, 15(2), 164–170. DOI: 10.1007/BF01418933.',
              'Conrey, J. B. (1989). More than two fifths of the zeros of the Riemann zeta function '
@@ -391,7 +391,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         '            <text x="374" y="56" font-size="9" fill="var(--tp-minium)">Ingham (1940) / '
         'Huxley 12/5 = 2.400</text>\n'
         '            <text x="374" y="132" font-size="9.5" fill="var(--tp-verdigris)">Guth–Maynard '
-        '30/13 ≈ 2.3077 (arXiv:2405.10935)</text>\n'
+        '30/13 ≈ 2.3077 (arXiv:2405.20552)</text>\n'
         '            <text x="366" y="176" font-size="9.5" fill="var(--tp-prussian)">Prime Gap '
         'Bound: p_{n+1} − p_n ≪ p_n^(17/30)</text>\n'
         '            <text x="44" y="206" font-size="10" '
@@ -414,7 +414,7 @@ DISPATCH = {'kicker': 'FRONTIER HARMONIC ANALYSIS & LEAN 4 DISPATCH · 3D KAKEYA
  'body': "Continuing Folio M.02's Lean 4 Zeta23 and Challenge/XiPrime.lean formalizations "
          '(https://github.com/anthropics/formal-math, Huxley DOI 10.1007/BF01418933), Hong Wang '
          'and Joshua Zahl (arXiv:2502.17655) proved dim_H(K) = 3 in R^3 while Larry Guth and James '
-         'Maynard (arXiv:2405.10935) lowered the Riemann zero-density exponent to 30/13.'}
+         'Maynard (arXiv:2405.20552) lowered the Riemann zero-density exponent to 30/13.'}
 
 META_3D = ('Wang–Zahl 3D Kakeya Tube Overlap & Guth–Maynard 30/13 Surface',
  'X: Tube Scale −log10(δ) · Z: Critical Strip σ · Y: Zero-Density Exponent & Tube Multiplicity')
@@ -423,7 +423,7 @@ ES_TRANSLATION = {'title_es': 'Resolución de la Conjetura de Kakeya 3D y Ruptur
              'Wang–Zahl, Guth–Maynard 30/13 y Lean 4',
  'subtitle_es': 'Continuando los Folios M.02 y P.08: cómo Hong Wang y Joshua Zahl '
                 '(arXiv:2502.17655) demostraron dim_H(K) = 3 para conjuntos de agujas en 3D '
-                'mientras Guth y Maynard (arXiv:2405.10935) rompieron el récord de 84 años sobre '
+                'mientras Guth y Maynard (arXiv:2405.20552) rompieron el récord de 84 años sobre '
                 'ceros de Riemann.',
  'why_es': 'Estacionar un lápiz en todas las direcciones 3D posibles exige llenar las tres '
            'dimensiones fractales completas; esta misma ley geométrica acelera 5 veces las '

@@ -35,4 +35,4 @@ The reference values above are stated in the essay. No script in this repository
 - What the essay compares against: High-Speed Video Cilia Kinematics (14 Hz)
 
 ## Recent research context
-- **Kuramoto Phase Synchronization Explains How Airway Cilia Coordinate Mucociliary Clearance**: Recent active-matter biophysics (Fulford & Blake (1986) DOI 10.1016/s0022-5193(86)80098-4; Kuramoto synchronization) demonstrates that hydrodynamic Oseen coupling across periciliary liquid depth h_ASL = 7.2 μm locks millions of beating cilia (12–15 Hz) into coherent antiplectic metachronal waves.
+- **Kuramoto Phase Synchronization Explains How Airway Cilia Coordinate Mucociliary Clearance**: Active-matter modelling (Fulford & Blake (1986) DOI 10.1016/s0022-5193(86)80098-4; Kuramoto synchronization) describes how hydrodynamic Oseen coupling across a periciliary liquid depth near 7 μm can lock millions of beating cilia (12–15 Hz) into coherent antiplectic metachronal waves.

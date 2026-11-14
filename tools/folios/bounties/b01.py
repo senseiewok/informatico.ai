@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Open Bounties — Folio B.01: Erdős Sidon B₂ Sets, Golomb Rulers & Anthropic Lean 4 Formalization Bounties."""
+"""Open Bounties — Folio B.01: Erdős Sidon B₂ Sets, Golomb Rulers & Lean 4 Formalization."""
 
 FOLIO = {'slug': 'b01',
  'folio_id': 'B.01',
@@ -8,9 +8,9 @@ FOLIO = {'slug': 'b01',
  'plate_slug': 'b01',
  'pillar_label_en': 'Mathematics & Lean 4 Formalization',
  'pillar_label_es': 'Matemáticas y Formalización en Lean 4',
- 'badge_en': 'BOUNTY B.01 (M-1) · ERDŐS $500–$10K + AIMO $10M',
- 'badge_es': 'RETO B.01 (M-1) · ERDŐS $500–$10K + AIMO $10M',
- 'title': 'Erdős Sidon B₂ Sets, Golomb Rulers & Anthropic Lean 4 Formalization Bounties',
+ 'badge_en': 'BOUNTY B.01 (M-1) · ERDŐS #30 ($1,000) + AIMO',
+ 'badge_es': 'RETO B.01 (M-1) · ERDŐS #30 ($1,000) + AIMO',
+ 'title': 'Erdős Sidon B₂ Sets, Golomb Rulers & Lean 4 Formalization',
  'title_es': 'Conjuntos de Sidon B₂ de Erdős, Reglas de Golomb y Formalización en Lean 4',
  'subtitle': 'How greedy Mian–Chowla constructions, the Erdős–Turán √N + N^(1/4) + 1 upper bound, '
              'and machine-checked Lean 4 blueprints bound pairwise-distinct sum sets and prune '
@@ -62,8 +62,7 @@ FOLIO = {'slug': 'b01',
                  'born from Fourier series: how many integers can you pack into the interval [1, '
                  'N] if every pairwise sum a_i + a_j (with i ≤ j) must be strictly distinct? Erdős '
                  'and Paul Turán proved in 1941 that any such B₂ sequence satisfies |A ∩ [1, N]| ≤ '
-                 '√N + N^(1/4) + 1, and Erdős offered a $500–$1,000 cash bounty (Erdős Problem '
-                 '#30) to anyone who could prove or disprove whether the error term is O(N^ε)—or '
+                 '√N + N^(1/4) + 1, and a $1,000 prize is listed for Erdős Problem #30 to anyone who could prove or disprove whether the error term is O(N^ε)—or '
                  'even determine whether |A ∩ [1, N]| = √N + O(1).',
  'act1_body': 'Over ninety years later, the exact secondary asymptotic term of Sidon sets remains '
               'one of the most famous open problems in additive combinatorics (tracked live on '
@@ -72,10 +71,8 @@ FOLIO = {'slug': 'b01',
               'these extremal structures. By pairing greedy Mian–Chowla constructions and '
               'finite-field Singer difference sets with zero-sorry formal proof verification in '
               "Lean 4—exemplified by Terence Tao's Polynomial Freiman–Ruzsa blueprint (teorth/pfr) "
-              "and Anthropic's 13-million-line formalization of Fermat's Last Theorem "
-              '(anthropics/fermats-last-theorem) and Challenge/XiPrime.lean '
-              '(anthropics/formal-math)—every candidate construction and upper-bound lemma can be '
-              'machine-checked with zero hand-waving.',
+              "and Anthropic's Lean 4 repositories (anthropics/fermats-last-theorem, anthropics/formal-math)—a candidate construction or upper-bound lemma can in principle be machine-checked. This folio does not do that: its check is a Python script, and it does not address Problem #30."
+              '',
  'pullquote': 'A Sidon set is a mathematical crystal in which every pair of atoms casts a unique '
               'shadow; Lean 4 turns the search for those crystals from fragile human casework into '
               'an infallible compiler check.',
@@ -121,7 +118,7 @@ FOLIO = {'slug': 'b01',
  'readouts': [{'label': 'Mian–Chowla Greedy |A(N)|', 'value': '20 elements (at N = 500)'},
               {'label': 'Erdős–Turán Upper Bound', 'value': '28.0933 (√N + N^(1/4) + 1)'},
               {'label': 'Pairwise Sum Collisions', 'value': '0 collisions (210 unique sums)'},
-              {'label': 'Lean 4 / B₂ Invariant Verdict', 'value': 'PASS · ZERO COLLISIONS'}],
+              {'label': 'B₂ Invariant Check (Python, Worked Example)', 'value': 'PASS · ZERO COLLISIONS'}],
  'steps': ['Stage 1: Lexicographic Mian–Chowla Greedy Generation — Iteratively append the smallest '
            'integer c ∈ [1, N] whose pairwise sums {c + a : a ∈ A} ∪ {2c} are completely disjoint '
            'from all previously recorded sums.',
@@ -220,8 +217,7 @@ FOLIO = {'slug': 'b01',
                 'pen-and-paper scratchwork into the crucible of automated theorem proving. '
                 'Competitions like the $10M AI Mathematical Olympiad (AIMO) and open formalization '
                 "repositories like Anthropic's formal-math and Terence Tao's Polynomial "
-                'Freiman–Ruzsa project (teorth/pfr) use Sidon set bounds as proving grounds for '
-                'artificial intelligence. Translating these delicate combinatorial arguments into '
+                'Freiman–Ruzsa project (teorth/pfr) are where formal and AI-assisted mathematics is being tested; neither is about Sidon sets specifically. Translating these delicate combinatorial arguments into '
                 'machine-checked Lean 4 blueprints guarantees that no hidden edge-case or '
                 'computational hallucination can compromise the algorithms that run our radar '
                 'networks and deep-space arrays.',
@@ -515,10 +511,7 @@ FOLIO = {'slug': 'b01',
                  'abordan estas estructuras extremales. Al combinar construcciones voraces de '
                  'Mian–Chowla y conjuntos de diferencias de Singer sobre cuerpos finitos con la '
                  'verificación formal sin atajos (zero-sorry) en Lean 4—ejemplificada por el '
-                 'proyecto Polynomial Freiman–Ruzsa de Terence Tao (teorth/pfr) y la formalización '
-                 'de 13 millones de líneas del Último Teorema de Fermat de Anthropic '
-                 '(anthropics/fermats-last-theorem) junto con Challenge/XiPrime.lean '
-                 '(anthropics/formal-math)—cada construcción candidata y cada lema de cota superior '
+                 'proyecto Polynomial Freiman–Ruzsa de Terence Tao (teorth/pfr) y los repositorios en Lean 4 de Anthropic (anthropics/fermats-last-theorem, anthropics/formal-math)—cada construcción candidata y cada lema de cota superior '
                  'se verifica mecánicamente sin dejar cabos sueltos.',
  'act1_stakes_es': 'Cuando los radioastrónomos construyen arreglos gigantescos de telescopios a lo '
                    'largo de desiertos enteros, o los ingenieros diseñan radares de arreglo en '
@@ -542,8 +535,7 @@ FOLIO = {'slug': 'b01',
                    'la demostración automática de teoremas. Competencias como el premio AI '
                    'Mathematical Olympiad (AIMO) de 10 millones de dólares y repositorios abiertos '
                    'como formal-math de Anthropic y el proyecto Polynomial Freiman–Ruzsa de '
-                   'Terence Tao (teorth/pfr) utilizan las cotas de conjuntos de Sidon como campo '
-                   'de pruebas para la inteligencia artificial. Traducir estos delicados argumentos '
+                   'Terence Tao (teorth/pfr) son donde se pone a prueba la matemática formal y asistida por IA; ninguno trata específicamente de conjuntos de Sidon. Traducir estos delicados argumentos '
                    'combinatorios a planos verificados en Lean 4 garantiza que ningún caso '
                    'extremo oculto ni alucinación computacional comprometa los algoritmos que '
                    'operan nuestras redes de radar y arreglos de espacio profundo.',

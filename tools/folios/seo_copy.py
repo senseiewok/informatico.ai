@@ -83,10 +83,10 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "Cómo la optimización topológica tipo hueso de Bendsøe y Sigmund y los volantes de inercia de Fórmula 1 reducen 65% el concreto y frenan el viento.",
     ),
     "e12": (
-        "Verified RISC-V Silicon and Firefly Grid Control",
-        "How Anthropic's 180-million-line Rocq proof for RISC-V chips, Control Barrier Functions and firefly phase-locking stabilize renewable power grids.",
-        "Silicio RISC-V Verificado y Control de Red Renovable",
-        "Cómo la prueba de 180 millones de líneas en Rocq para RISC-V, las funciones de barrera y la sincronización de luciérnagas estabilizan la red eléctrica.",
+        "RISC-V Silicon and Firefly Grid Control Barriers",
+        "How Control Barrier Functions and firefly-style phase-locking can steady renewable grids, and what a machine-checked RISC-V chip would add beneath.",
+        "Silicio RISC-V y Barreras de Control en la Red",
+        "Cómo las funciones de barrera y la sincronización tipo luciérnaga pueden estabilizar la red renovable, y qué aportaría un chip RISC-V verificado.",
     ),
     # ---- Pillar II: Architecture
     "a01": (

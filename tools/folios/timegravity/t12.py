@@ -26,7 +26,7 @@ JOOS = "T11-JOOS1985"
 KEN20 = "T12-KENNEDY2020"
 FIL23 = "T12-FILZINGER2023"
 LZ23 = "T12-LZ2023"
-CAR21 = "T12-CARNEY2021"
+CAR21 = "T12-CARNEY2020"
 
 PAGE: dict = {
     "slug": SLUG,
@@ -205,14 +205,14 @@ PAGE: dict = {
               "Because pure gravity shifts co-located clocks identically, comparing two co-located optical clocks of different electronic sensitivity "
               "ΔK_α tests whether dark matter also carries a non-gravitational portal coupling d_e to the electromagnetic fine-structure constant α: "
               "JILA comparisons of ⁸⁷Sr against a cryogenic silicon cavity (2020) and PTB multi-year comparisons of the ¹⁷¹Yb⁺ electric-octupole (E3) "
-              "and electric-quadrupole (E2) transitions (2023) set upper bounds on |d_e| across ultralight scalar masses 10⁻²¹ eV ≤ m_φ c² ≤ 10⁻¹⁴ eV, "
+              "and electric-quadrupole (E2) transitions (2023) set upper bounds on |d_e| for ultralight scalar masses (10⁻²¹ eV to 10⁻¹⁶ eV in the JILA comparison), "
               "while underground liquid-xenon recoil searches such as LUX-ZEPLIN (2023) bound spin-independent WIMP–nucleon cross-sections down to "
               "9.2×10⁻⁴⁸ cm² at 36 GeV/c².",
               "Como la gravedad pura desplaza por igual a los relojes colocalizados, comparar dos relojes ópticos colocalizados con distinta "
               "sensibilidad electrónica ΔK_α pone a prueba si la materia oscura porta además un acoplamiento escalar no gravitacional d_e con la "
               "constante de estructura fina α: las comparaciones en JILA de ⁸⁷Sr contra una cavidad criogénica de silicio (2020) y las comparaciones "
               "multianuales en PTB de las transiciones octupolar eléctrica (E3) y cuadrupolar eléctrica (E2) de ¹⁷¹Yb⁺ (2023) fijan cotas superiores "
-              "sobre |d_e| para masas escalares ultraligeras 10⁻²¹ eV ≤ m_φ c² ≤ 10⁻¹⁴ eV, mientras que búsquedas subterráneas en xenón líquido como "
+              "sobre |d_e| para masas escalares ultraligeras (de 10⁻²¹ eV a 10⁻¹⁶ eV en la comparación de JILA), mientras que búsquedas subterráneas en xenón líquido como "
               "LUX-ZEPLIN (2023) acotan la sección eficaz espín-independiente WIMP–nucleón hasta 9.2×10⁻⁴⁸ cm² a 36 GeV/c²."),
             T(" At the local galactic dark-matter density ρ_DM = 0.4 GeV/cm³ and m_φ c² = 10⁻¹⁵ eV (Compton frequency 0.242 Hz), the dimensionless "
               "Planck-normalised field amplitude is Φ_Pl = 7.20×10⁻¹⁶; if d_e = 0 (purely gravitational coupling), the co-located clock ratio modulation "
@@ -223,16 +223,16 @@ PAGE: dict = {
         ),
         P(
             C("PROPOSED", [CAR21],
-              "In 2021 Carney, Hook, Liu, Taylor and Zhao analysed whether arrays of quantum-limited mechanical sensors and clocks could detect "
-              "compact dark-matter transits through their gravitational impulse and redshift alone, without assuming any electromagnetic or nuclear "
+              "In 2020 Carney, Ghosh, Krnjaic and Taylor proposed that an array of quantum-limited mechanical impulse sensors could detect "
+              "a passing dark-matter particle through its gravitational pull alone, without assuming any electromagnetic or nuclear "
               "portal coupling.",
-              "En 2021 Carney, Hook, Liu, Taylor y Zhao analizaron si arreglos de sensores mecánicos y relojes limitados cuánticamente podrían "
-              "detectar tránsitos de materia oscura compacta solo mediante su impulso y corrimiento al rojo gravitacional, sin suponer ningún "
+              "En 2020 Carney, Ghosh, Krnjaic y Taylor propusieron que un arreglo de sensores mecánicos de impulso limitados cuánticamente podría "
+              "detectar una partícula de materia oscura que pasa solo mediante su atracción gravitacional, sin suponer ningún "
               "acoplamiento electromagnético ni nuclear."),
-            T(" That proposal requires Planck-mass-scale sensitivity and sub-femtosecond proper-time resolution across macroscopic baselines—orders "
-              "of magnitude beyond current laboratory noise floors—and stays PROPOSED.",
-              " Esa propuesta requiere sensibilidad a escala de la masa de Planck y resolución de tiempo propio subfemtosegundo en líneas base "
-              "macroscópicas —órdenes de magnitud más allá de los pisos de ruido actuales de laboratorio— y se mantiene como PROPUESTO."),
+            T(" The paper's own target is Planck-scale dark matter, with a large number of gram-scale sensors in a metre-scale array with sufficiently low quantum noise; "
+              "it is a proposal about impulse sensors, not clocks, and stays PROPOSED.",
+              " El objetivo del propio artículo es materia oscura a la escala de Planck, con un gran número de sensores a escala de gramos en un arreglo "
+              "a escala de metros con ruido cuántico suficientemente bajo; es una propuesta sobre sensores de impulso, no sobre relojes, y se mantiene como PROPUESTO."),
         ),
         {"type": "spine"},
         {"type": "h2", "id": "open", "en": "III · From dark-sector clocks to the infrared gauge–gravity bridge", "es": "III · De los relojes del sector oscuro al puente infrarrojo entre gravedad y campos gauge", "short_en": "III · Not said", "short_es": "III · No dicho"},
@@ -296,6 +296,6 @@ PAGE: dict = {
         ("Kennedy, C. J., Oelker, E., Robinson, J. M., Bothwell, T., Kedar, D., Milner, W. R., Marti, G. E., Derevianko, A., & Ye, J. (2020). Precision metrology meets cosmology: Improved constraints on ultralight dark matter from atom-cavity frequency comparisons. Physical Review Letters, 125(20), 201302.", "10.1103/PhysRevLett.125.201302"),
         ("Filzinger, M., Döring, S., Steinel, M., Huntemann, N., et al. (2023). Improved limits on the coupling of ultralight bosonic dark matter to photons from optical atomic clock comparisons. Physical Review Letters, 130(25), 253001.", "10.1103/PhysRevLett.130.253001"),
         ("Aalbers, J., et al. (LUX-ZEPLIN Collaboration). (2023). First dark matter search results from the LUX-ZEPLIN (LZ) experiment. Physical Review Letters, 131(4), 041002.", "10.1103/PhysRevLett.131.041002"),
-        ("Carney, D., Hook, A., Liu, Z., Taylor, J. M., & Zhao, Y. (2021). Ultralight dark matter detection with mechanical quantum sensors. New Journal of Physics, 23(2), 023041.", "10.1088/1367-2630/abd9e7"),
+        ("Carney, D., Ghosh, S., Krnjaic, G., & Taylor, J. M. (2020). Proposal for gravitational direct detection of dark matter. Physical Review D, 102(7), 072003.", "10.1103/PhysRevD.102.072003"),
     ],
 }

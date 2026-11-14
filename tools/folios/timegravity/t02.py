@@ -28,8 +28,8 @@ WILL = "T01-WILL2014"
 PAGE: dict = {
     "slug": SLUG,
     "code": CODE,
-    "order_label_en": "Step 2 of 13",
-    "order_label_es": "Paso 2 de 13",
+    "order_label_en": "Step 2 of 14",
+    "order_label_es": "Paso 2 de 14",
     "kicker_en": "Time & Gravity · T.02 · The 'slide' made into a measured identity",
     "kicker_es": "Tiempo y Gravedad · T.02 · El 'deslizarse' convertido en una identidad medida",
     "title_en": "Everyone Moves at One Rate",

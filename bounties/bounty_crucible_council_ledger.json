@@ -200,14 +200,13 @@
       "title_en": "$100M XPRIZE Carbon Removal & IStructE Net-Zero Structural Slab Challenge",
       "title_es": "XPRIZE Carbon Removal ($100M) y Reto IStructE de Losas Estructurales Cero Neto",
       "prize_badge": "$100M XPRIZE CARBON + ISTRUCTE AWARD",
-      "cool_fact": "Replacing flat reinforced concrete slabs with FEniCS/dolfinx SIMP topology-optimized Michell ribs (Folio E.11) printed via Roussel 3DCP (Folio E.10) and cured with mineralized CO2 (Folio E.09) slashes floor carbon from 180 kg CO2e/m² below the 45 kg CO2e/m² award threshold—turning city buildings into permanent limestone carbon sinks.",
-      "cross_field_analogy": "Combining the hollow trabecular arches of an eagle's wing bone with coral-reef calcium carbonate mineralization—verified on bug-free anthropics/theorem-riscv control silicon.",
+      "cool_fact": "Replacing flat reinforced concrete slabs with FEniCS/dolfinx SIMP topology-optimized Michell ribs (Folio E.11) printed via Roussel 3DCP (Folio E.10) and cured with mineralized CO2 (Folio E.09) slashes floor carbon from 180 kg CO2e/m² below the folio's own 45 kg CO2e/m² design target—turning city buildings into permanent limestone carbon sinks.",
+      "cross_field_analogy": "Combining the hollow trabecular arches of an eagle's wing bone with coral-reef calcium carbonate mineralization.",
       "governing_law": "e_CO2 = ρ_c V_frac c_clinker − Δm_CaCO3 ≤ 45 kg CO2e/m² · c(ρ) = Uᵀ K(ρ) U",
       "open_source_stack": [
         "https://github.com/senseiewok/informatico.ai",
         "https://github.com/FEniCS/dolfinx",
-        "https://github.com/PyPSA/PyPSA",
-        "https://github.com/anthropics/theorem-riscv"
+        "https://github.com/PyPSA/PyPSA"
       ],
       "how_to_participate": "Balance SIMP volume fraction V/V_0 against CO2 carbonate mineralization uptake to achieve a negative-or-sub-45 kg CO2e/m² structural floor rating."
     },
@@ -256,7 +255,7 @@
       {
         "bounty_id": "BOUNTY-E1",
         "target": "FEniCS Project Community Showcase & PyPSA Open-Grid Gallery",
-        "action_on_publish": "Submit immediately on publication as an interactive educational benchmark for FEniCS/dolfinx SIMP topology optimization (Folio E.11) and PyPSA + Rocq RISC-V grid safety (Folio E.12)."
+        "action_on_publish": "Submit immediately on publication as an interactive educational benchmark for FEniCS/dolfinx SIMP topology optimization (Folio E.11) and grid safety with Control Barrier Functions (Folio E.12)."
       }
     ]
   },

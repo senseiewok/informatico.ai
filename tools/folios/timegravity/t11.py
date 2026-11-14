@@ -32,8 +32,8 @@ PAGE: dict = {
     "slug": SLUG,
     "code": CODE,
     "date": "2026-11-10",
-    "order_label_en": "Step 12 of 13",
-    "order_label_es": "Paso 12 de 13",
+    "order_label_en": "Step 12 of 14",
+    "order_label_es": "Paso 12 de 14",
     "kicker_en": "Time & Gravity · T.11 · How the photon bath selects pointer states and broadcasts a classical record",
     "kicker_es": "Tiempo y Gravedad · T.11 · Cómo el baño de fotones selecciona estados puntero y difunde un registro clásico",
     "title_en": "What Selects the World a Clock Sees?",
@@ -217,13 +217,13 @@ PAGE: dict = {
               "Joos and Zeh derived in 1985 the long-wavelength dipole Rayleigh scattering rate of thermal photons off a dielectric sphere of "
               "radius R and permittivity ε: the localization parameter Λ_sc scales as R⁶ T_e⁹ Re[(ε − 1)/(ε + 2)]², so even the 2.725 K cosmic "
               "microwave background localizes a R = 10 µm dust grain across Δx = 10 µm on a one-second timescale (τ_CMB = 1.63 s for ε = 5.7, or "
-              "0.61 s in the conducting limit Λ_CMB = 1.64×10⁶ cm⁻² s⁻¹), whereas 300 K room-temperature photons localize the same split in "
-              "6.89×10⁻¹⁹ s.",
+              "0.61 s in the conducting limit Λ_CMB = 1.64×10⁶ cm⁻² s⁻¹), whereas at 300 K the same formula gives "
+              "6.89×10⁻¹⁹ s, a figure outside its long-wavelength range (room-temperature thermal wavelengths are about the size of the grain) and to be read only as far shorter than any laboratory time.",
               "Joos y Zeh derivaron en 1985 la tasa de dispersión dipolar de Rayleigh de longitud de onda larga de fotones térmicos sobre una esfera "
               "dieléctrica de radio R y permitividad ε: el parámetro de localización Λ_sc escala como R⁶ T_e⁹ Re[(ε − 1)/(ε + 2)]², de modo que "
               "incluso el fondo cósmico de microondas de 2.725 K localiza un grano de polvo de R = 10 µm a través de Δx = 10 µm en una escala de un "
-              "segundo (τ_CMB = 1.63 s para ε = 5.7, o 0.61 s en el límite conductor Λ_CMB = 1.64×10⁶ cm⁻² s⁻¹), mientras que los fotones a 300 K "
-              "localizan la misma separación en 6.89×10⁻¹⁹ s.",
+              "segundo (τ_CMB = 1.63 s para ε = 5.7, o 0.61 s en el límite conductor Λ_CMB = 1.64×10⁶ cm⁻² s⁻¹), mientras que a 300 K la misma fórmula da "
+              "6.89×10⁻¹⁹ s, una cifra fuera de su intervalo de longitud de onda larga (las longitudes de onda térmicas a temperatura ambiente son del tamaño del grano) que solo debe leerse como mucho más corta que cualquier tiempo de laboratorio.",
               parent=MATHER),
             T(" Because of the sixth power in radius R⁶, shrinking the sphere tenfold from a 10 µm dust grain to the 1 µm diamond microsphere of "
               "T.05 reduces Λ_sc by exactly 10⁶ (lengthening τ_CMB to 1.63×10⁶ s and τ_300K to 0.69 ps). And for an electromagnetically uncoupled "
@@ -249,9 +249,9 @@ PAGE: dict = {
               "superposiciones a una tasa física."),
             T(" ", " "),
             C("BOUND", [DONADI],
-              "As examined on T.06, underground X-ray searches such as VIP-2 bound the parameter-free Diósi–Penrose cutoff to r₀ > 0.54×10⁻¹⁰ m "
+              "As examined on T.06, an underground germanium-detector search at Gran Sasso bounds the parameter-free Diósi–Penrose cutoff to r₀ > 0.54×10⁻¹⁰ m "
               "while leaving softer smearing scales open.",
-              "Como se examinó en T.06, las búsquedas subterráneas de rayos X como VIP-2 acotan el corte libre de parámetros de Diósi y Penrose a "
+              "Como se examinó en T.06, una búsqueda subterránea con detector de germanio en Gran Sasso acota el corte libre de parámetros de Diósi y Penrose a "
               "r₀ > 0.54×10⁻¹⁰ m dejando abiertas escalas de suavizado mayores."),
         ),
         P(

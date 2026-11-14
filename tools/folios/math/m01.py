@@ -190,8 +190,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'exponential complexity? JCSS, 63(4), 512–530.',
              'Buzzard, K., & Anthropic Formal Math Team (2024–2026). Lean 4 Formalization of '
              "Fermat's Last Theorem (https://github.com/anthropics/fermats-last-theorem), ETH "
-             '#3-SAT Sparsification & Refutation (https://github.com/anthropics/formal-math), and '
-             '180M-Line Rocq RISC-V Verification (https://github.com/anthropics/theorem-riscv).',
+             '#3-SAT Sparsification & Refutation (https://github.com/anthropics/formal-math), and, in earlier editions, a RISC-V proof repository that was not publicly reachable when checked on 2026-11-13.',
              'The mathlib Community (2020). The Lean mathematical library '
              '(leanprover-community/mathlib4 & anthropics/formal-math, '
              'https://github.com/anthropics/formal-math). CPP 2020, 367–381. DOI: '

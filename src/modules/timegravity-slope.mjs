@@ -1705,13 +1705,13 @@ function initHolonomySoft(root) {
 
     const eRadJ = eRadSolar * M_SUN_KG * C * C;
     const dlM = dlMpc * MPC_SI_M;
-    const dhChar = (2.0 * G_NEWTON_SI * eRadJ) / (C ** 4 * dlM);
+    const dhChar = (G_NEWTON_SI * eRadJ) / (C ** 4 * dlM);
     const dlLigo = 0.5 * 4000.0 * dhChar;
 
-    // Scale memory waveform height relative to fiducial GW150914 (7.003e-22 -> full scale)
+    // Scale memory waveform height relative to fiducial GW150914 (3.502e-22 -> full scale)
     const yZero = ly1 - 44;
     const maxRise = yZero - (ly0 + 34);
-    const scaleRatio = Math.min(1.18, Math.max(0.08, (dhChar / 7.00326e-22) * 0.78));
+    const scaleRatio = Math.min(1.18, Math.max(0.08, (dhChar / 3.50163e-22) * 0.78));
     const risePx = maxRise * scaleRatio;
     const yStep = yZero - risePx;
 
