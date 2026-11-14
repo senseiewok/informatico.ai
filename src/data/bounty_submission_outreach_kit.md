@@ -7,7 +7,7 @@ All **48 Informatico.ai Folios** (and **40 CF Folios** = **88 total essays**) pa
 | Folio | Primary Anchor DOI (Crossref Verified) | Open-Source / Formal Verification Stack |
 | :--- | :--- | :--- |
 | **`E.11`** | `10.1007/s001580050176` (Sigmund 2001 SIMP) & `10.1109/TAC.2002.803532` (Smith 2002 Inerter) | `FEniCS/dolfinx` + `anthropics/formal-math` |
-| **`E.12`** | `10.1109/TAC.2016.2638961` (Ames et al. 2017 Control Barrier Functions) | `anthropics/theorem-riscv` + `PyPSA/PyPSA` |
+| **`E.12`** | `10.1109/TAC.2016.2638961` (Ames et al. 2017 Control Barrier Functions) | `PyPSA/PyPSA` |
 | **`A.11`** | `10.1016/j.cad.2015.01.006` (Akbarzadeh, Van Mele & Block 2015 3D Graphic Statics) | `compas-dev/compas` |
 | **`A.12`** | `10.1126/science.aat9513` (Mandal et al. 2018 Porous Radiative Sky-Cooling, *Science*) | `NREL/EnergyPlus` + `compas-dev/compas` |
 | **`P.11`** | `10.1103/PhysRevA.86.032324` (Fowler et al. 2012 Surface Codes) & `10.1073/pnas.1619152114` (Reiher et al. 2017 FeMoCo) | `quantumlib/Stim` + `pyscf/pyscf` |
@@ -26,7 +26,7 @@ All **48 Informatico.ai Folios** (and **40 CF Folios** = **88 total essays**) pa
   - **FEniCS Project (`dolfinx`) & PyPSA Community Showcases** (`BOUNTY-E1` · Folios `E.11`, `E.12`): Welcomes interactive browser companions with downloadable Python verifiers and AI `SKILL.md` specs.
 - **Track B — DO NOT Email a Cash-Prize Claim Yet (Requires Novel Proof or Physical Hardware Pilot First):**
   - **Erdős Cash Bounties (\$500–\$10,000)** require a **new mathematical proof of an unsolved (`OPEN`) problem** verified in Lean 4 (`0 sorry`).
-  - **XPRIZE Quantum (\$5M), XPRIZE Carbon Removal (\$100M), Global Cooling Prize (\$3M), and Holcim Awards (\$1M)** require formal portal registration during open competition windows plus either a novel quantum algorithm paper (`XPRIZE Quantum`) or instrumented physical hardware prototypes (`XPRIZE Carbon`, `Holcim`).
+  - **XPRIZE Quantum (\$5M), XPRIZE Carbon Removal (\$100M), Global Cooling Prize (\$3M), and Holcim Awards (\$1M)** require formal portal registration during open competition windows plus either a novel quantum algorithm paper (`XPRIZE Quantum`) or instrumented physical hardware prototypes (`XPRIZE Carbon`, `Holcim`). Two of these have closed: XPRIZE Carbon Removal and the Global Cooling Prize. The 45 kg CO₂e/m² slab line and the vault and sky-cooling thresholds on the bounty pages are the folios' own design targets, not criteria of any prize.
 
 ---
 
@@ -123,8 +123,10 @@ Public GitHub Repository (54 SKILL.md & Python Verifiers): https://github.com/se
 
 ### Email 4 — `FEniCS Project` (`dolfinx`) & `PyPSA` Community Showcase (Folios `E.11`, `E.12` · `BOUNTY-E1`)
 
+> Review before sending: Folio E.12 describes the network side with PyPSA but does not run a PyPSA simulation; its numbers come from the folio's own reduced model. The RISC-V proof cited in the first edition has been removed (no public source found on 2026-11-13).
+
 - **To:** FEniCS Discourse (`https://fenicsproject.discourse.group/` `#showcase`) & PyPSA Community
-- **Subject:** Showcase: Interactive Monographs on SIMP Topology Optimization (`FEniCS/dolfinx`) & Verified Renewable Grid Inertia (`PyPSA` + `Rocq RISC-V`)
+- **Subject:** Showcase: Interactive Monographs on SIMP Topology Optimization (`FEniCS/dolfinx`) & Renewable Grid Inertia with Control Barrier Functions (`PyPSA`)
 
 ```text
 Dear FEniCS & PyPSA Maintainers,
@@ -135,8 +137,8 @@ We just published Folios E.11 and E.12 in Volume VI of Informatico.ai (in Englis
 - Dedicated Bounty Folio B.05 (BOUNTY-P2 Symbolic PDE Discovery Story, Proof & Code): https://informatico.ai/bounties/b05/ (ES-MX: https://informatico.ai/es-mx/bounties/b05/)
 - Folio E.11 (SIMP Topology Optimization, Michell Funicular Trusses & Skyscraper Inerter Damping): https://informatico.ai/engineering/e11/
   (Anchored to Sigmund 2001, DOI 10.1007/s001580050176, and Smith 2002, DOI 10.1109/TAC.2002.803532; links directly to FEniCS/dolfinx)
-- Folio E.12 (Machine-Checked Silicon-to-Grid Safety: 180M-Line Rocq RISC-V Verification, Control Barrier Functions & Firefly-Synchronized Grids): https://informatico.ai/engineering/e12/
-  (Anchored to Ames et al. 2017, DOI 10.1109/TAC.2016.2638961; links directly to PyPSA/PyPSA and anthropics/theorem-riscv)
+- Folio E.12 (Silicon-to-Grid Safety: Control Barrier Functions, Firefly-Synchronized Renewable Grids & the Case for a Verified Relay Processor): https://informatico.ai/engineering/e12/
+  (Anchored to Ames et al. 2017, DOI 10.1109/TAC.2016.2638961; links directly to PyPSA/PyPSA)
 
 Each essay pairs an interactive SVG/WebGL2 workbench with a downloadable Python verifier and an AI-agnostic SKILL.md file so readers can move seamlessly from browser intuition to FEniCS/dolfinx and PyPSA scripts.
 

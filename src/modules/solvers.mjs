@@ -2007,18 +2007,37 @@ export function initPlateSolvers(scope = document) {
         return;
       }
       if (slug === "e12") {
-        const uOpt = v0;
-        const hCbf = v1;
-        if (phiLabel) phiLabel.textContent = `u_opt = ${uOpt.toFixed(2)}`;
-        if (radLabel) radLabel.textContent = `h(x) = ${hCbf.toFixed(2)} Hz`;
-        if (inlinePhi) inlinePhi.textContent = `u_opt = ${uOpt.toFixed(2)}`;
-        const ePj = (0.048 + 0.024 * (1.0 - uOpt)).toFixed(3);
-        const safe = hCbf >= 0.15;
-        if (kappaOut) kappaOut.textContent = `${ePj} pJ / MAC (vs 2.40 pJ CMOS)`;
-        if (deffOut) deffOut.textContent = `Δf_margin = +${hCbf.toFixed(2)} Hz (CBF Safe)`;
-        if (outR2) outR2.textContent = `180M-Line Rocq RISC-V Verified`;
-        if (percOut) percOut.textContent = safe ? "FORWARD INVARIANT · ZERO BLACKOUT" : "CBF BOUNDARY PROXIMITY ALERT";
-        if (percBox) percBox.setAttribute("data-alert", safe ? "false" : "true");
+        // Reduced model of Folio E.12 (illustrative, not a grid simulation):
+        // a 1.2 GW loss on a 17.86 GW base gives RoCoF_0 = K / H_virt with K = f_0 ΔP / (2 S_base) = 2.016 Hz;
+        // fast reserves close the deficit linearly over T_d = 6/7 s; the protection boundary is 59.1 Hz;
+        // the CBF filter enforces df/dt >= -α h with h = f - 59.1 Hz.
+        const hVirt = Math.max(0.5, v0);
+        const alphaCbf = Math.max(0.05, v1);
+        if (phiLabel) phiLabel.textContent = `H_virt = ${hVirt.toFixed(1)} s`;
+        if (radLabel) radLabel.textContent = `α_CBF = ${alphaCbf.toFixed(1)} s⁻¹`;
+        if (inlinePhi) inlinePhi.textContent = `H_virt = ${hVirt.toFixed(1)} s`;
+        const K = 2.016;
+        const tD = 6.0 / 7.0;
+        const fTrip = 59.1;
+        const rocof0 = K / hVirt;
+        const steps = 240;
+        const dt = tD / steps;
+        let f = 60.0;
+        let maxCorr = 0.0;
+        for (let i = 0; i < steps; i += 1) {
+          const nominal = -rocof0 * (1.0 - (i * dt) / tD);
+          const rate = Math.max(nominal, -alphaCbf * (f - fTrip));
+          maxCorr = Math.max(maxCorr, rate - nominal);
+          f += rate * dt;
+        }
+        const extraMw = Math.round((maxCorr * hVirt / K) * 1200.0);
+        const filterActive = extraMw > 0;
+        const rocofOk = rocof0 < 0.5;
+        if (kappaOut) kappaOut.textContent = `${f.toFixed(2)} Hz (model value)`;
+        if (deffOut) deffOut.textContent = `${rocof0.toFixed(2)} Hz/s (${rocofOk ? "< 0.50 model limit" : "above 0.50 model limit"})`;
+        if (outR2) outR2.textContent = `+${(f - fTrip).toFixed(2)} Hz above 59.1 Hz trip (model)`;
+        if (percOut) percOut.textContent = filterActive ? `ACTIVE · +${extraMw} MW requested (model)` : "IDLE · constraint slack (model)";
+        if (percBox) percBox.setAttribute("data-alert", rocofOk && !filterActive ? "false" : "true");
         return;
       }
 

@@ -1278,19 +1278,19 @@
           "M.07"
         ],
         "lineage_mode": "SYNTHESIS · Synthesizes E.06 Infrastructure Resilience, P.02 Kuramoto Synchronization & M.07 Optimal Control",
-        "title": "Machine-Checked Silicon-to-Grid Safety: 180M-Line Rocq RISC-V Verification, Control Barrier Functions & Firefly-Synchronized Renewable Grids",
-        "subtitle": "Synthesizing Folio E.06's critical infrastructure protection, P.02's Kuramoto oscillators, and M.07's optimal control: how Anthropic's machine-checked RISC-V circuits, Ames Control Barrier Functions, and Virtual Synchronous Machine inverters stabilize 100%-renewable power grids.",
+        "title": "Silicon-to-Grid Safety: Control Barrier Functions, Firefly-Synchronized Renewable Grids & the Case for a Verified Relay Processor",
+        "subtitle": "Synthesizing Folio E.06's critical infrastructure protection, P.02's Kuramoto oscillators, and M.07's optimal control: how virtual synchronous machine inverters and Control Barrier Functions can steady a low-inertia renewable grid, and what a machine-checked RISC-V processor would add underneath.",
         "date_published": "2026-11-07",
-        "date_redated": "2026-11-07",
-        "current_edition": "REV 1.0",
-        "status_badge": "SILICON-TO-GRID · REV 1.0",
-        "primary_kernel": "tools/continuum_verify.py",
-        "governing_law": "sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e · Anthropic theorem-riscv",
+        "date_redated": "2026-11-14",
+        "current_edition": "REV 1.1",
+        "status_badge": "SILICON-TO-GRID · REV 1.1",
+        "primary_kernel": "skills/engineering/e12/verify_e12.py",
+        "governing_law": "sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e",
         "colophon": {
-          "identifier": "E.12 · Machine-Checked RISC-V & Grid Control Barrier Functions · IEEE 1547-2025",
-          "kernels": "Ames Control Barrier Function h(x) ≥ 0 · Kuramoto Swing Equation · Rocq/Kami theorem-riscv",
-          "benchmarks": "RoCoF ≤ 0.42 Hz/s · h(x_grid) ≥ +0.18 Hz · 180M-Line Rocq Proof = 0 Silicon Bugs",
-          "bridge": "Synthesizes E.06/P.02/M.07 · Southeast Asian Firefly Phase-Locking ↔ 100%-Renewable Grid Forming Inverters"
+          "identifier": "E.12 · RISC-V & Grid Control Barrier Functions",
+          "kernels": "Control Barrier Function h(x) ≥ 0 (Ames et al. 2017) · Swing Equation · Kami / Coq (Rocq) processor-proof precedents",
+          "benchmarks": "Model values: RoCoF 0.42 Hz/s · h(x_grid) = +0.72 Hz · processor proof assumed, not shown",
+          "bridge": "Synthesizes E.06/P.02/M.07 · Firefly Phase-Locking ↔ Grid-Forming Inverters"
         },
         "sliders": [
           {
@@ -1302,7 +1302,7 @@
             "unit": " s"
           },
           {
-            "label": "CBF Safety Damping Rate (α_CBF)",
+            "label": "CBF Barrier Rate (α_CBF; higher = later intervention)",
             "min": 0.5,
             "max": 5.0,
             "step": 0.1,
@@ -1311,59 +1311,65 @@
           }
         ],
         "steps": [
-          "Stage 1 (Firefly Kuramoto Phase-Locking on the Power Grid, Continuing P.02): Millions of solar and battery grid-forming inverters synchronize phase angles θ_i like Southeast Asian mangrove fireflies via M d²θ_i/dt² + D dθ_i/dt = P_i − ∑ K_ij sin(θ_i − θ_j).",
-          "Stage 2 (Synthetic Rotational Inertia via Virtual Synchronous Machines): When a 1.2 GW cloud shadow or line fault hits, battery inverters inject instantaneous power proportional to −H_virt dω/dt, holding Rate of Change of Frequency (RoCoF) below 0.5 Hz/s.",
-          "Stage 3 (Ames Control Barrier Function Quadratic Program Filter, Continuing M.07): Every millisecond, a real-time QP filter enforces L_f h(x) + L_g h(x)u ≥ −α(h(x)), guaranteeing the state x never crosses the blackout boundary h(x) = 0.",
-          "Stage 4 (Anthropic Machine-Checked RISC-V Silicon Execution): The protection controller executes on open-source RISC-V hardware that would be formally verified in Rocq/Kami, which would rule out hardware instruction bugs. The 180-million-line proof cited for this in earlier editions (Anthropic theorem-riscv) was not publicly reachable when checked on 2026-11-13 and is unverified here."
+          "Stage 1 (Firefly-Style Phase-Locking on the Power Grid, Continuing P.02): Solar and battery grid-forming inverters hold a common rhythm through coupled phase angles θ_i, M d²θ_i/dt² + D dθ_i/dt = P_i − ∑ K_ij sin(θ_i − θ_j), a member of the coupled-oscillator family studied in 'Synchronization in complex oscillator networks and smart grids' (Dörfler, Chertkov & Bullo 2013, DOI 10.1073/pnas.1212134110). The firefly is an analogy, not the same equation.",
+          "Stage 2 (Synthetic Inertia via Virtual Synchronous Machines): In the folio model, when a 1.2 GW loss hits, battery inverters inject power proportional to −H_virt dω/dt, in the manner of synchronverters (Zhong & Weiss 2011, DOI 10.1109/TIE.2010.2048839), and at the default H_virt = 4.8 s the initial Rate of Change of Frequency (RoCoF) is 0.42 Hz/s. It stays below 0.5 Hz/s only for H_virt above about 4.0 s.",
+          "Stage 3 (Control Barrier Function Quadratic Program Filter, Continuing M.07): A real-time QP filter enforces L_f h(x) + L_g h(x)u ≥ −α(h(x)). For the modelled dynamics, and while the QP stays feasible, the state x does not leave the safe set h(x) ≥ 0 (Ames et al. 2017, DOI 10.1109/TAC.2016.2638961).",
+          "Stage 4 (Processor Layer, a Design Assumption): The filter is only as sound as the chip that runs it. Machine-checked RISC-V processors exist at small scale: Kami (Choi et al. 2017, DOI 10.1145/3110268) and the embedded system of Erbsen et al. (2021, DOI 10.1145/3453483.3454065), both in the Coq proof assistant, now named Rocq. This folio knows of no published machine-checked proof for the processor of a grid protection relay; here it is assumed, not shown."
         ],
         "readouts": [
           {
             "label": "Grid Frequency Nadir (f_min)",
-            "value": "59.82 Hz (IEEE 1547 Safe)"
+            "value": "59.82 Hz (model value)"
           },
           {
-            "label": "Max Rate of Change (RoCoF)",
-            "value": "0.42 Hz/s (< 0.50 Limit)"
+            "label": "Initial RoCoF Before Filter",
+            "value": "0.42 Hz/s (< 0.50 model limit)"
           },
           {
-            "label": "CBF Forward Invariance h(x)",
-            "value": "+0.18 Hz (STRICTLY SAFE)"
+            "label": "CBF Barrier Margin h(x)",
+            "value": "+0.72 Hz above 59.1 Hz trip (model)"
           },
           {
-            "label": "Silicon Proof Certificate",
-            "value": "ROCQ/KAMI VERIFIED · 0 BUGS"
+            "label": "CBF Filter State",
+            "value": "IDLE · constraint slack (model)"
           }
         ],
         "spec_plate": {
-          "division": "IEEE 1547-2025 / IEC 61850 / FORMALLY VERIFIED RISC-V",
-          "title": "Grid-Forming Virtual Synchronous Inverters on Machine-Checked RISC-V Protection Silicon",
-          "body": "Distributed battery and solar grid-forming inverters governed by Nagumo-invariant Control Barrier Function (CBF-QP) safety filters running on Rocq/Kami formally verified RISC-V processors (Anthropic theorem-riscv).",
-          "meta": "Optimal energy control DOI 10.1080/00207179.2014.900705 & Chao Sun DOI 10.1109/tcst.2014.2359176 verified"
+          "division": "GRID-FORMING INVERTERS / CBF-QP / RISC-V (PROOF ASSUMED)",
+          "title": "Grid-Forming Virtual Synchronous Inverters with a Control Barrier Function Safety Filter",
+          "body": "Distributed battery and solar grid-forming inverters governed by a Control Barrier Function (CBF-QP) safety filter. The filter is specified to run on a RISC-V processor whose formal proof is a design assumption of this folio, modelled on published Coq (Rocq) and Kami work.",
+          "meta": "Anchors: Ames et al. 2017, DOI 10.1109/TAC.2016.2638961 · Dörfler, Chertkov & Bullo 2013, DOI 10.1073/pnas.1212134110"
         },
         "sidenote_1": {
-          "kicker": "SIDENOTE E.12-A · CROSS-FIELD ANALOGY · 10,000 FIREFLIES FLASHING AS ONE",
-          "body": "Old coal and hydro turbines stabilized the 60 Hz grid with spinning steel weight. Solar panels have zero moving parts—until we program inverters with the exact Kuramoto phase-sync law that lets 10,000 fireflies flash in unison, modelled in open-source PyPSA/PyPSA."
+          "kicker": "SIDENOTE E.12-A · CROSS-FIELD ANALOGY · FIREFLIES FLASHING AS ONE",
+          "body": "Coal and hydro turbines steadied the 60 Hz grid with spinning steel. Solar panels have no moving parts, so grid-forming inverters are programmed to behave like a rotating machine and to fall into step with their neighbours, much as fireflies along a riverbank come to flash together. The network that such inverters would sit in can be described in the open-source toolbox PyPSA/PyPSA; the swing dynamics on this page are the folio's own reduced model."
         },
         "sidenote_2": {
-          "kicker": "SIDENOTE E.12-B · ANTHROPIC THEOREM SOLUTIONS · 180M LINES OF ROCQ SILICON PROOF",
-          "body": "Earlier editions described a 180-million-line Rocq/Kami proof of a Linux-capable RISC-V processor+MMU in a repository named Anthropic theorem-riscv. That repository was not publicly reachable when checked on 2026-11-13, so the figure is unverified here. What stands is the design point: a formally verified processor would rule out subtle hardware divide or page-table bugs under the CBF safety filter."
+          "kicker": "SIDENOTE E.12-B · VERIFIED HARDWARE · WHAT HAS BEEN PROVED SO FAR",
+          "body": "Kami (Choi et al. 2017, DOI 10.1145/3110268) is a library for the Coq proof assistant, now named Rocq, for specifying and verifying hardware; its case study covers multicore systems with pipelined cores implementing the base integer subset of RISC-V. Erbsen et al. (2021, DOI 10.1145/3453483.3454065) report a simple embedded system whose application software, device drivers, compiler and RISC-V processor are one object in Coq with a machine-checked proof of functional correctness. Neither is a grid relay. A verified protection processor is the open step this folio argues for."
         },
         "skill": {
           "filename": "verified-riscv-cbf-grid-sync-SKILL.md",
           "name": "verified-riscv-cbf-grid-sync",
-          "description": "AI-agnostic cyber-physical systems skill for Virtual Synchronous Machine (VSM) grid-forming inverters, Ames Control Barrier Function (CBF-QP) forward invariance, and Rocq/Kami verified RISC-V execution.",
+          "description": "AI-agnostic cyber-physical systems skill for Virtual Synchronous Machine (VSM) grid-forming inverters, Control Barrier Function (CBF-QP) forward invariance, and the published Coq (Rocq) and Kami precedents for machine-checked RISC-V processors.",
           "rules": [
             "Enforce Nagumo forward invariance of safe set C = {x : h(x) >= 0} via CBF constraint L_f h(x) + L_g h(x) * u >= -alpha * h(x).",
-            "Bound grid Rate of Change of Frequency (RoCoF) |df/dt| <= Delta_P / (2 * H_virt * S_base) below 0.5 Hz/s under N-1 contingency.",
-            "Target formally verified open-source RISC-V execution pipelines (Anthropic theorem-riscv) for safety-critical relay firmware."
+            "Bound grid Rate of Change of Frequency |df/dt| <= f_0 * Delta_P / (2 * H_virt * S_base); the folio model targets less than 0.5 Hz/s after the loss of one large unit.",
+            "Treat processor correctness as a stated assumption. Cite published machine-checked RISC-V work (Kami, DOI 10.1145/3110268; Erbsen et al. 2021, DOI 10.1145/3453483.3454065) and never claim a verified relay processor without a public proof artifact."
           ]
         },
         "revisions": [
           {
+            "edition": "REV 1.1",
+            "date": "2026-11-14",
+            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. REV 1.0 rested its processor layer on a 180-million-line RISC-V proof attributed to Anthropic; no public source for that proof was found on 2026-11-13, so it has been removed. The processor layer now cites Kami (DOI 10.1145/3110268) and Erbsen et al. 2021 (DOI 10.1145/3453483.3454065) and is marked as a design assumption. The opening no longer places Yoshiki Kuramoto on a riverbank; the firefly observations are credited to Buck & Buck 1968 (DOI 10.1126/science.159.3821.1319). Numbers on the page are labelled as model values.",
+            "opus": "Review: new references checked by DOI in Crossref, and all but the PyPSA paper in the Scite index; one blind frontier review applied; the Kami and Erbsen et al. descriptions were written from their abstracts."
+          },
+          {
             "edition": "REV 1.0",
             "date": "2026-11-07",
-            "summary": "REV 1.0 (Published 2026-11-07): Volume VI Cyber-Physical Infrastructure monograph synthesizing E.06, P.02, and M.07 (DOI 10.1080/00207179.2014.900705) with Anthropic theorem-riscv and PyPSA/PyPSA.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified Kuramoto swing equation, CBF-QP Lie derivatives, and Rocq RISC-V formal verification provenance."
+            "summary": "REV 1.0 (Published 2026-11-07): Volume VI Cyber-Physical Infrastructure monograph synthesizing E.06, P.02, and M.07 with Control Barrier Functions (DOI 10.1109/TAC.2016.2638961) and PyPSA/PyPSA.",
+            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): reviewed the swing equation and the CBF-QP Lie-derivative condition. Its statement on the provenance of the processor proof is withdrawn in REV 1.1."
           }
         ],
         "volume": 6,
@@ -1378,7 +1384,7 @@
           "mentioning": 2361,
           "contrasting": 0,
           "retracted": false,
-          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 3,385 citing publications (8 supporting, 2,361 mentioning, 0 contrasting) — Primary optimal energy recovery and constrained control anchor (Limebeer et al. 2014, DOI 10.1080/00207179.2014.900705; Chao Sun et al. 2015, DOI 10.1109/tcst.2014.2359176) extended to CBF-QP grid-forming inverters."
+          "summary": "Scite index entry for Ames, Xu, Grizzle & Tabuada 2017 (DOI 10.1109/TAC.2016.2638961), checked 2026-11-08: 3,385 citing publications (8 supporting, 2,361 mentioning, 0 contrasting) and no retraction notice. These counts describe that one paper, not this folio."
         }
       }
     ],
@@ -5604,9 +5610,9 @@
       "volume": 6,
       "code": "VOL. 06",
       "roman": "Volume VI",
-      "kicker": "VOLUME VI (VOL. 06) · QUANTUM ERROR CORRECTION, HILBERT'S 6TH PROBLEM, 3D KAKEYA, LEAN 4 FORMAL COMPLEXITY, 3D GRAPHIC STATICS, TENSEGRITY SKY-COOLING, SIMP TOPOLOGY & VERIFIED RISC-V GRIDS · 8 FOLIOS",
-      "title": "Fault-Tolerant Quantum Computing, Hilbert's Sixth Problem, 3D Kakeya & Guth–Maynard 30/13, Anthropic Lean 4 Complexity & Post-Quantum Lattices, 3D Graphic Statics, Tensegrity Sky-Cooling, SIMP Topology & Verified RISC-V Grids",
-      "subtitle": "Eight Volume VI monographs (E.11–E.12, A.11–A.12, P.11–P.12, M.11–M.12) selected by a 3-Seat Multi-Family Council & Jury to explain humanity's highest-value scientific breakthroughs and WEF grand challenges through vivid cross-field analogies, open-source software, and formal AI verification: Bendsøe–Sigmund SIMP topology optimization & Formula 1 inerter dampers (E.11), Anthropic's 180M-line Rocq RISC-V proof & firefly-synchronized renewable grids (E.12), Maxwell 3D polyhedral graphic statics & zero-rebar stone/tile vaults (A.11), Pellegrino tensegrity cable domes & 8–13 μm radiative sky-cooling canopies (A.12), Kitaev surface-code quantum error correction & FeMoCo clean nitrogen catalysis (P.11), Deng–Hani–Ma's resolution of Hilbert's 6th Problem from Newton to Navier–Stokes (P.12), Wang–Zahl's 3D Kakeya proof & Guth–Maynard's 30/13 Riemann zero-density bound (M.11), and Anthropic's Lean 4 complexity proofs paired with NIST FIPS 203 post-quantum crystal lattices (M.12).",
+      "kicker": "VOLUME VI (VOL. 06) · QUANTUM ERROR CORRECTION, HILBERT'S 6TH PROBLEM, 3D KAKEYA, LEAN 4 FORMAL COMPLEXITY, 3D GRAPHIC STATICS, TENSEGRITY SKY-COOLING, SIMP TOPOLOGY & CONTROL-BARRIER GRIDS · 8 FOLIOS",
+      "title": "Fault-Tolerant Quantum Computing, Hilbert's Sixth Problem, 3D Kakeya & Guth–Maynard 30/13, Anthropic Lean 4 Complexity & Post-Quantum Lattices, 3D Graphic Statics, Tensegrity Sky-Cooling, SIMP Topology & Control-Barrier Renewable Grids",
+      "subtitle": "Eight Volume VI monographs (E.11–E.12, A.11–A.12, P.11–P.12, M.11–M.12) selected by a 3-Seat Multi-Family Council & Jury to explain humanity's highest-value scientific breakthroughs and WEF grand challenges through vivid cross-field analogies, open-source software, and formal AI verification: Bendsøe–Sigmund SIMP topology optimization & Formula 1 inerter dampers (E.11), Control Barrier Functions, firefly-synchronized renewable grids & the published precedents for verified RISC-V processors (E.12), Maxwell 3D polyhedral graphic statics & zero-rebar stone/tile vaults (A.11), Pellegrino tensegrity cable domes & 8–13 μm radiative sky-cooling canopies (A.12), Kitaev surface-code quantum error correction & FeMoCo clean nitrogen catalysis (P.11), Deng–Hani–Ma's resolution of Hilbert's 6th Problem from Newton to Navier–Stokes (P.12), Wang–Zahl's 3D Kakeya proof & Guth–Maynard's 30/13 Riemann zero-density bound (M.11), and Anthropic's Lean 4 complexity proofs paired with NIST FIPS 203 post-quantum crystal lattices (M.12).",
       "cadence": "Hourly Zero-Token Sentinel Gate + 12h Deep-Craft Atelier Heartbeat (:05 Math, :15 Arch, :20 Civil Eng, :40 Phys)",
       "folios": [
         "e11",

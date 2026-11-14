@@ -5296,5 +5296,69 @@
     "journal": "Journal de Mathématiques Pures et Appliquées",
     "title": "The incompressible Navier–Stokes limit of the Boltzmann equation for hard cutoff potentials",
     "year": 2009
+  },
+  "doi:10.1145/3110268": {
+    "fetched": "2026-11-14",
+    "first_author": "Choi",
+    "found": true,
+    "journal": "Proceedings of the ACM on Programming Languages",
+    "title": "Kami: a platform for high-level parametric hardware specification and its modular verification",
+    "year": 2017
+  },
+  "doi:10.1145/3453483.3454065": {
+    "fetched": "2026-11-14",
+    "first_author": "Erbsen",
+    "found": true,
+    "journal": "Proceedings of the 42nd ACM SIGPLAN International Conference on Programming Language Design and Implementation",
+    "title": "Integration verification across software and hardware for a simple embedded system",
+    "year": 2021
+  },
+  "doi:10.1073/pnas.1212134110": {
+    "fetched": "2026-11-14",
+    "first_author": "Dörfler",
+    "found": true,
+    "journal": "Proceedings of the National Academy of Sciences",
+    "title": "Synchronization in complex oscillator networks and smart grids",
+    "year": 2013
+  },
+  "doi:10.23919/pscc.2018.8450880": {
+    "fetched": "2026-11-14",
+    "first_author": "Milano",
+    "found": true,
+    "journal": "2018 Power Systems Computation Conference (PSCC)",
+    "title": "Foundations and Challenges of Low-Inertia Systems (Invited Paper)",
+    "year": 2018
+  },
+  "doi:10.1109/tie.2010.2048839": {
+    "fetched": "2026-11-14",
+    "first_author": "Zhong",
+    "found": true,
+    "journal": "IEEE Transactions on Industrial Electronics",
+    "title": "Synchronverters: Inverters That Mimic Synchronous Generators",
+    "year": 2011
+  },
+  "doi:10.1126/science.159.3821.1319": {
+    "fetched": "2026-11-14",
+    "first_author": "Buck",
+    "found": true,
+    "journal": "Science",
+    "title": "Mechanism of Rhythmic Synchronous Flashing of Fireflies",
+    "year": 1968
+  },
+  "doi:10.1007/bfb0013365": {
+    "fetched": "2026-11-14",
+    "first_author": "Kuramoto",
+    "found": true,
+    "journal": "Lecture Notes in Physics",
+    "title": "Self-entrainment of a population of coupled non-linear oscillators",
+    "year": 2005
+  },
+  "doi:10.5334/jors.188": {
+    "fetched": "2026-11-14",
+    "first_author": "Brown",
+    "found": true,
+    "journal": "Journal of Open Research Software",
+    "title": "PyPSA: Python for Power System Analysis",
+    "year": 2018
   }
 }

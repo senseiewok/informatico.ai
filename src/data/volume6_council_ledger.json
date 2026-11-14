@@ -2,6 +2,7 @@
   "schema_version": "1.0",
   "volume": 6,
   "volume_label": "VOL. 06 — SIMP TOPOLOGY & ROCQ SILICON INTERLOCKS, 3D GRAPHIC STATICS & TENSEGRITY DOMES, MAJORANA TETRONS & HILBERT'S SIXTH PROBLEM, AND 3D KAKEYA & LEAN 4 ETH REFUTATION",
+  "grounding_note": "2026-11-14: This ledger records council proposals, not verified results. The repository anthropics/theorem-riscv named below, and the 180-million-line RISC-V proof attributed to it, had no public source when checked on 2026-11-13. Folio E.12 REV 1.1 does not rely on it.",
   "archive_context_ingested": {
     "catalog_path": "src/data/magazine_catalog.json",
     "prior_volumes_ingested": [

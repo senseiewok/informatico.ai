@@ -14,12 +14,12 @@ if hasattr(sys.stdout, "reconfigure"):
 FOLIO_METADATA = {
     "folio_id": "E.12",
     "slug": "e12",
-    "title": "Machine-Checked Silicon-to-Grid Safety: 180M-Line Rocq RISC-V Verification, Control Barrier Functions & Firefly-Synchronized Renewable Grids",
-    "governing_law": "sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e · Anthropic theorem-riscv",
-    "primary_kernel": "tools/continuum_verify.py",
+    "title": "Silicon-to-Grid Safety: Control Barrier Functions, Firefly-Synchronized Renewable Grids & the Case for a Verified Relay Processor",
+    "governing_law": "sup_u [L_f h(x) + L_g h(x) u] ≥ −α(h(x)) · M dΔω/dt + D Δω = P_m − P_e",
+    "primary_kernel": "skills/engineering/e12/verify_e12.py",
     "primary_doi": "10.1109/TAC.2016.2638961",
     "scite_report": "https://scite.ai/reports/10.1109/TAC.2016.2638961",
-    "benchmarks": [{"label": "Grid Frequency Nadir (f_min)", "value": "59.82 Hz (IEEE 1547 Safe)"}, {"label": "Max Rate of Change (RoCoF)", "value": "0.42 Hz/s (< 0.50 Limit)"}, {"label": "CBF Forward Invariance h(x)", "value": "+0.18 Hz (STRICTLY SAFE)"}, {"label": "Silicon Proof Certificate", "value": "ROCQ/KAMI VERIFIED · 0 BUGS"}],
+    "benchmarks": [{"label": "Grid Frequency Nadir (f_min)", "value": "59.82 Hz (model value)"}, {"label": "Initial RoCoF Before Filter", "value": "0.42 Hz/s (< 0.50 model limit)"}, {"label": "CBF Barrier Margin h(x)", "value": "+0.72 Hz above 59.1 Hz trip (model)"}, {"label": "CBF Filter State", "value": "IDLE · constraint slack (model)"}],
 }
 
 
