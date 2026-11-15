@@ -22,7 +22,7 @@ FOLIO = {'folio_id': 'A.01',
               'kernels': '1:50 Section + 1:5 Nodal Loupe',
               'benchmarks': 'Model: middle-third rule |e| ≤ t/6 (geometric factor ≥ 3)',
               'bridge': 'Illustrative thermal-bridge node (ISO 10211 / ISO 13788 calculation methods)'},
- 'steps': ['Stage 1 (Dead-Load Catenary): Under self-weight alone, the inverted catenary thrust line follows the centre line of the vault (e = 0 mm).',
+ 'steps': ['Stage 1 (Dead-Load Catenary): Under self-weight, the inverted catenary thrust line follows the centre line of the vault (e = 0 mm).',
            'Stage 2 (Asymmetric Haunch Load): Live load at the quarter-span shifts the funicular thrust line toward '
            'the extrados at the loaded haunch; at the default e = 32 mm the geometric factor is t/(2|e|) = 600/64 = 9.38.',
            'Stage 3 (Maxwell-Cremona Reciprocal Dual): With q = 24 kN/m, L = 18 m and f = 4.5 m, the horizontal ray H = qL²/(8f) = 216.0 kN and the vertical reaction V = qL/2 = 216.0 kN close the force polygon.',
@@ -181,8 +181,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'steel pins, the invisible line of squeezing force must stay safely buried deep inside the '
                       'middle of each block. If that line wanders too close to the outside edge, the opposite face '
                       'cracks open like an opening door hinge. Modern builders also face a quiet second threat at the '
-                      'chilly base: keeping that heavy stone boundary warm and dry so winter frost never rots the '
-                      'foundation or breeds mold in the air.',
+                      'chilly base: keeping that heavy stone boundary warm and dry so winter frost does not rot the '
+                      'foundation or breed mold in the air.',
  'act1_body': "Two centuries after Hooke, graphic statics took shape in the work of Karl Culmann, James Clerk Maxwell (1864, DOI 10.1080/14786446408643663) and Luigi Cremona: a drawing of a structure's form can be paired with a reciprocal drawing of its forces, so that forces can be read off with a ruler. Between 1898 and 1908 Antoni Gaudí used a hanging model of weighted cords to shape the church of the Colònia Güell. In 1966 Jacques Heyman brought these ideas into plastic limit analysis in his paper The Stone Skeleton (DOI 10.1016/0020-7683(66)90018-7), later expanded into a book (DOI 10.1017/CBO9781107050310). He assumed that masonry has no tensile strength, effectively unlimited compressive strength, and does not slide. Under those assumptions a vault is safe if a thrust line in equilibrium with the loads can be found that lies wholly within the masonry. More recently, three-dimensional graphic statics (Akbarzadeh, Van Mele and Block 2015, DOI 10.1016/j.cad.2015.01.006) and open tools such as compas-dev/compas (https://github.com/compas-dev/compas) have extended these methods to shells. This folio does not run those tools; its numbers come from the two formulas shown.",
  'act1_stakes': 'For centuries, medieval master masons relied on secret proportional geometric ratios guarded in lodge '
                 'sketchbooks to size massive exterior flying buttresses. But geometric rules of thumb only work when '
@@ -252,7 +252,7 @@ META_3D = ('Heyman Biaxial Catenary Masonry Groin Vault',
 
 ES_TRANSLATION = {'title_es': 'Superficies Foniculares de Empuje, Duales de Maxwell–Cremona y Tectónica Nodal 1:5',
  'subtitle_es': 'Cómo una bóveda de piedra a compresión pura se sostiene cuando su línea de empuje queda dentro de la mampostería (teorema de seguridad de Heyman), revisada aquí con la regla clásica, más estricta, del tercio medio (|e| ≤ t/6), junto con un nodo de arranque ilustrativo a escala 1:5 cuya superficie interior se modela por encima del punto de rocío.',
- 'why_es': 'Una cadena colgante adopta por gravedad la forma exacta de tracción pura; al invertirla como un arco de '
+ 'why_es': 'Una cadena colgante adopta por gravedad una forma de tracción pura; al invertirla como un arco de '
            'piedra (catenaria invertida de Hooke y Gaudí), toda la estructura trabaja en compresión pura sin doblarse.',
  'bridge_es': 'Este puente es modesto. Las superficies más frías que el punto de rocío del aire interior acumulan condensación, y los materiales que permanecen húmedos pueden favorecer el crecimiento de moho. La aspergilosis broncopulmonar alérgica es una complicación reconocida en personas con Fibrosis Quística (Stevens et al. 2003, DOI 10.1086/376525). Este folio es un estudio de física de edificios: no midió ningún edificio, no reporta resultados de salud y no es una recomendación médica ni de control de infecciones; las personas con FQ deben seguir las indicaciones de su equipo de atención.',
  'plain_es': 'Para comprender cómo se sostiene una bóveda de piedra, imaginen apoyar dos libros gruesos sobre una mesa '
@@ -261,7 +261,7 @@ ES_TRANSLATION = {'title_es': 'Superficies Foniculares de Empuje, Duales de Maxw
              'afuera los vence y ambos caen de golpe sobre la mesa. La piedra y el ladrillo son materiales '
              'extraordinarios cuando se comprimen, pero carecen de fuerza para resistir tensiones que intenten '
              'separarlos. Cuando los bloques descansan unos sobre otros sin varillas de acero, la línea invisible de '
-             'fuerza debe viajar siempre por el tercio central de cada pieza. Si esa fuerza se desvía hacia el borde '
+             'fuerza debe viajar por el tercio central de cada pieza. Si esa fuerza se desvía hacia el borde '
              'exterior, la junta contraria se abre como una bisagra. En la arquitectura actual, los constructores '
              'también deben resolver un segundo dilema en la base: aislar térmicamente el apoyo para que el frío '
              'exterior no condense la humedad interior en moho.',
