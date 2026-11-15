@@ -499,14 +499,13 @@ EGG = {
     "button_es": "Levantar el cofre",
     "close_en": "Close the bonnet",
     "close_es": "Cerrar el cofre",
-    "caption_en": "A Mk7.5 Golf GTI in Dark Iron Blue Metallic, on BBS wheels.",
-    "caption_es": "Un Golf GTI Mk7.5 en Dark Iron Blue Metallic, con rines BBS.",
+    "caption_en": "A Mk7.5 Golf GTI with a Cobb Stage 2 tune and BBS wheels, in Dark Iron Blue Metallic.",
+    "caption_es": "Un Golf GTI Mk7.5 con reprogramación Cobb Stage 2 y rines BBS, en Dark Iron Blue Metallic.",
     "alt_en": "A Mk7.5 Golf GTI with its bonnet up and the engine bay showing.",
     "alt_es": "Un Golf GTI Mk7.5 con el cofre levantado y el compartimento del motor a la vista.",
     # Maintainer decision 2026-11-15: the caption names the paint and the wheel maker; the owner is the source
     # for both (retail paint pages stay off the page). The BBS link points to the maker, not to a product claim.
-    "link_label": "BBS",
-    "link_url": "https://www.bbs.com/",
+    "links": [("Cobb", "https://www.cobbtuning.com/"), ("BBS", "https://www.bbs.com/")],
     "image": "images/classics/golf-gti-hood-up.jpg",
     "width": 1030,
     "height": 870,
@@ -519,8 +518,7 @@ EGG_SIDE = {
     "alt_en": "The same Mk7.5 Golf GTI at speed on a circuit, seen from the side, with two helmeted people inside.",
     "alt_es": "El mismo Golf GTI Mk7.5 a velocidad en un circuito, visto de lado, con dos personas con casco adentro.",
     # Maintainer, 2026-11-15: the wheel maker is linked; the address was given by the maintainer.
-    "link_label": "MOMO",
-    "link_url": "https://momo.com/",
+    "links": [("MOMO", "https://momo.com/")],
     "image": "images/classics/golf-gti-side-track.jpg",
     "width": 1024,
     "height": 682,

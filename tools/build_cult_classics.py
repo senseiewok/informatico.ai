@@ -439,19 +439,16 @@ def render_mk7_extras(is_es: bool) -> str:
 
 
 def linked_caption(item: dict, is_es: bool) -> str:
-    """A caption with one maker's name linked (built per language: a link cannot sit inside a data-en/data-es swap)."""
-    text = item["caption_es"] if is_es else item["caption_en"]
-    before, _sep, after = text.partition(item["link_label"])
-    return f'{t(before)}<a href="{a(item["link_url"])}" rel="noopener noreferrer">{t(item["link_label"])}</a>{t(after)}'
+    """A caption with each maker's name linked once (built per language: a link cannot sit inside a data-en/data-es
+    swap). Names the parts on the car in the photo; makes no performance claim."""
+    out = t(item["caption_es"] if is_es else item["caption_en"])
+    for label, url in item["links"]:
+        out = out.replace(t(label), f'<a href="{a(url)}" rel="noopener noreferrer">{t(label)}</a>', 1)
+    return out
 
 
 def egg_caption(is_es: bool) -> str:
-    """The caption with the wheel maker linked (built per language: a link cannot sit inside a data-en/data-es swap)."""
-    e = C.EGG
-    text = e["caption_es"] if is_es else e["caption_en"]
-    label = e["link_label"]
-    before, _sep, after = text.partition(label)
-    return f'{t(before)}<a href="{a(e["link_url"])}" rel="noopener noreferrer">{t(label)}</a>{t(after)}'
+    return linked_caption(C.EGG, is_es)
 
 
 def gti_rim(cx: float, cy: float) -> str:

@@ -90,14 +90,17 @@ class CultClassicPages(unittest.TestCase):
 
     def test_easter_egg_caption_is_the_maintainers_decision(self):
         # Maintainer decision 2026-11-15: name the paint and the wheel maker, link the maker, name no owner.
-        self.assertEqual(C.EGG["caption_en"], "A Mk7.5 Golf GTI in Dark Iron Blue Metallic, on BBS wheels.")
-        self.assertEqual(C.EGG["caption_es"], "Un Golf GTI Mk7.5 en Dark Iron Blue Metallic, con rines BBS.")
+        self.assertEqual(C.EGG["caption_en"], "A Mk7.5 Golf GTI with a Cobb Stage 2 tune and BBS wheels, in Dark Iron Blue Metallic.")
+        self.assertEqual(C.EGG["caption_es"], "Un Golf GTI Mk7.5 con reprogramación Cobb Stage 2 y rines BBS, en Dark Iron Blue Metallic.")
         owner = re.compile(r"\b(my|mine|our|owner|owned|mi|mío|nuestro|dueño)\b", re.I)
         for key in ("caption_en", "caption_es", "alt_en", "alt_es"):
             self.assertIsNone(owner.search(C.EGG[key]), key)
         for page in (EN, ES):
             self.assertIn('<a href="https://www.bbs.com/" rel="noopener noreferrer">BBS</a>', page.read_text(encoding="utf-8"))
             self.assertIn('<a href="https://momo.com/" rel="noopener noreferrer">MOMO</a>', page.read_text(encoding="utf-8"))
+            self.assertIn('<a href="https://www.cobbtuning.com/" rel="noopener noreferrer">Cobb</a>', page.read_text(encoding="utf-8"))
+        # A caption may name parts; it may not state performance figures for the photographed car.
+        self.assertIsNone(re.search(r"\\d+\\s?(?:hp|PS|bhp|Nm|lb-ft|kW)", C.EGG['caption_en'] + C.EGG['caption_es']))
         # Two photographs ship with the feature (maintainer, 2026-11-15): hood-up and side-on track.
         self.assertEqual(sorted(p.name for p in PHOTO.parent.iterdir()), sorted([PHOTO.name, Path(C.EGG_SIDE['image']).name]))
 
