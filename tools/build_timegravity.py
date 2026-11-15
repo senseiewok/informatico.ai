@@ -3160,7 +3160,7 @@ HUMANS_DATA: dict[str, dict] = {
                 "story_es": "Peres (1996) y Wootters (1998) dieron las medidas exactas de entrelazamiento de dos qubits; Kafri, Taylor y Milburn (2014) derivaron el ruido mínimo de un canal clásico de medición y retroalimentación. En 2025–2026, Trillo y Navascués, Aziz y Howl, Marletto, Oppenheim, Vedral y Wilson, Diósi, y Schneider et al. abrieron la disputa sobre qué zanjaría un testigo positivo.",
                 "spec_en": "Three channels at equal weight · Page label OPEN",
                 "spec_es": "Tres canales con el mismo peso · Etiqueta de página ABIERTO",
-                "doi": "10.1103/PhysRevLett.134.100201",
+                "doi": "10.1103/PhysRevD.111.L121101",
             },
             {
                 "icon": "torsion-pendulum",
@@ -3226,7 +3226,7 @@ HUMANS_DATA: dict[str, dict] = {
                 "story_es": "En 2026 la colaboración XENONnT analizó 1.16 toneladas-año de exposición de xenón líquido para llevar el límite de radiación a R0 > 4.9 × 10⁻¹⁰ m (90 %). Entretanto, Yaakov Fein, Markus Arndt y colaboradores observaron interferencia de ondas de materia en moléculas de más de 25,000 unidades de masa atómica en Viena (2019), y Jonathan Oppenheim y colegas acotaron la difusión gravitatoria (2023).",
                 "spec_en": "XENONnT 1.16 t·yr (R0 > 4.9 Å) & 25,000 amu molecules",
                 "spec_es": "XENONnT 1.16 t·año (R0 > 4.9 Å) y moléculas de 25,000 uma",
-                "doi": "10.1103/mp49-4422",
+                "doi": "10.1103/2jm3-4976",
             },
         ],
     },
