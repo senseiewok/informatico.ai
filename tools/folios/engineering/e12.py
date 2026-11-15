@@ -90,7 +90,7 @@ FOLIO = {'folio_id': 'E.12',
                         'together. The network that such inverters would sit in can be described '
                         'in the open-source toolbox PyPSA/PyPSA; the swing dynamics on this page '
                         "are the folio's own reduced model."},
- 'sidenote_2': {'kicker': 'SIDENOTE E.12-B · VERIFIED HARDWARE · WHAT HAS BEEN PROVED SO FAR',
+ 'sidenote_2': {'kicker': 'SIDENOTE E.12-B · VERIFIED HARDWARE · HARDWARE CHECKED SO FAR',
                 'body': 'Kami (Choi et al. 2017, DOI 10.1145/3110268) is a library for the Coq '
                         'proof assistant, now named Rocq, for specifying and verifying hardware; '
                         'its case study covers multicore systems with pipelined cores '
@@ -211,13 +211,13 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'operators and protection systems to respond. A protection controller is also a '
                 'computer, and a logic or arithmetic fault in its processor could make it '
                 'misbehave at the moment it is needed. Machine-checked verification is one way '
-                'to remove that class of fault: it proves that a processor design meets its '
+                'to remove that class of fault: it checks that a processor design meets its '
                 'specification, under the assumptions the proof states. It says nothing about '
                 'manufacturing defects, sensors or the grid model itself.',
  'pullquote': '"When a power grid runs on sunlight and software instead of spinning turbines, '
-              'this folio argues for two layers: a Control Barrier Function that keeps the modelled state inside a safe set, and a processor whose correctness is proved, not assumed. The first is published mathematics. The second, for grid relays, is a design assumption here."',
+              'this folio argues for two layers: a Control Barrier Function that keeps the modelled state inside a safe set, and a processor with a verified design, not assumed. The first is published mathematics. The second, for grid relays, is a design assumption here."',
  'chronology': [('1942',
-                 'Mitio Nagumo proves the subtangentiality theorem for forward-invariant safe sets '
+                 'Mitio Nagumo states the subtangentiality theorem for forward-invariant safe sets '
                  'in differential equations.'),
                 ('1968',
                  'John and Elisabeth Buck report on the mechanism of rhythmic synchronous '
@@ -279,7 +279,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    "admissible set C = {x : h(x) >= 0}. By Nagumo's theorem, forward invariance of this safe set holds if the control input u satisfies the Control Barrier Function condition L_f h(x) + L_g h(x) u + alpha(h(x)) >= 0 at all times (for continuously differentiable h with nonzero gradient on the boundary, an extended class-K function alpha, and a locally Lipschitz closed loop)."
                    ' A '
                    'real-time Quadratic Program (CBF-QP) filters high-level power dispatch '
-                   'commands, adjusting them minimally and only when the barrier constraint would otherwise be violated. The guarantee belongs to the model: it holds while '
+                   'commands, adjusting them minimally and only when the barrier constraint would otherwise be violated. The model bounds hold while '
                    'the QP is feasible, the inverter has the power headroom the QP asks for, and '
                    'the processor computes what the algorithm specifies. That last condition is what machine-checked hardware addresses. The laboratory on this page fixes Delta_P = 1.2 GW on a 17.86 GW base, so RoCoF = 2.016 / H_virt Hz/s; it assumes fast reserves close the deficit linearly over 0.86 s, and it places the protection boundary at 59.1 Hz, so h = f - 59.1 Hz. The 0.5 Hz/s limit and the 59.1 Hz boundary are choices of this model, not values taken from a grid standard.',
  'act2_deepening': 'At the intersection of power electronics and formal logic, stability requires '
@@ -301,7 +301,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Experiment 3 (Quantum · WEF & Counterfactual Overlays): Click [⚛ Quantum · WEF] '
                  'and [⚡ Counterfactual] to inspect the overlays for grid synchronization and for '
                  'the processor-layer assumption.'],
- 'act4_title': "Act IV — Imagining Humanity's Future: Clean Grids with Provable Safety Margins",
+ 'act4_title': "Act IV — Imagining Humanity's Future: Clean Grids with Formal Safety Margins",
  'act4_human_ai': 'Open-source grid planners (https://github.com/PyPSA/PyPSA), Control Barrier '
                   'Function safety filters and machine-checked processors each exist today. '
                   'Joined together, they sketch a path by which a grid could retire fossil-fuel '
