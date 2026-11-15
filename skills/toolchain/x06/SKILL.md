@@ -41,14 +41,14 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Stage 3: Euler–Poincaré & Betti-Number Certification — Verify 3F = 2E (96 = 96), χ = V − E + F = 16 − 48 + 32 = 0, genus g = (2 − χ)/2 = 1, and first Betti number β₁ = 2g = 2.
 - Stage 4: Signed Void Subtraction & Multi-Format Export — Confirm V_mesh = (80² − 24²) × 60 = 349,440.0 mm³ and φ = 0.0900 across x06_artifact.glb, x06_artifact.3mf, and x06_artifact.step, and run the planted-defect knockout.
 
-## 6. Certified Reference Telemetry (T0/T1)
+## 6. Verified Reference Telemetry (T0/T1)
 - **Euler–Poincaré & Genus**: `V=16, E=48, F=32 · χ=0 (g=1)`
 - **Surface Betti Numbers**: `β₀ = 1 · β₁ = 2 · β₂ = 1`
 - **Solid Volume & Porosity φ**: `349,440 mm³ · φ = 9.00%`
 - **GLB / 3MF / STEP Verdict**: `PASS · DEFECT REJECTED`
 
 ## 7. Exact T0–T3 Truth Boundary
-### Certified Geometry in Repository Today (T0/T1)
+### Verified Geometry in Repository Today (T0/T1)
 - Deterministic generator (skills/toolchain/x06/make_x06.py) emitting genus-1 toroidal unit-cell artifacts in .glb, .3mf, and .step formats.
 - Stdlib topological verifier (verify_x06_toolchain_x06_topological_metamaterial_cell.py) certifying χ = V − E + F = 0, genus g = 1, β₁ = 2, signed volume 349,440.0 mm³, and planted-defect rejection.
 - Cross-pillar bridge connecting Engineering (E.03), Physics (P.10), and Mathematics (M.10).

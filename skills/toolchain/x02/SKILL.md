@@ -41,14 +41,14 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Stage 3: Deterministic 3MF ZIP & GLB Binary Packaging — Package the identical 16-vertex, 28-triangle topology into 3MF Core 1.2.3 XML (fixed ZIP timestamp) and Khronos GLB binary buffers with embedded provenance metadata.
 - Stage 4: Cross-Format Round-Trip & Chordal Deviation Audit — Verify that STEP, 3MF, and GLB agree on vertex/face counts and analytical volume, and bound circular bore discretization error via h = R(1 − cos(π/N)).
 
-## 6. Certified Reference Telemetry (T0/T1)
+## 6. Verified Reference Telemetry (T0/T1)
 - **Exact B-Rep / Mesh Volume**: `43,200.0 mm³ (ΔV = 0.00%)`
 - **Chordal Sagitta Error h(N)**: `0.0722 mm (at R=15, N=32)`
 - **STEP AP242 Schema Audit**: `CLOSED_SHELL · 28 FACES PASS`
 - **3MF & GLB Parity Verdict**: `PASS · SHA-256 VERIFIED`
 
 ## 7. Exact T0–T3 Truth Boundary
-### Certified Geometry in Repository Today (T0/T1)
+### Verified Geometry in Repository Today (T0/T1)
 - Deterministic generator (skills/toolchain/x02/make_x02.py) emitting byte-reproducible STEP AP242 (.step), 3MF Core 1.2.3 (.3mf), and glTF 2.0 (.glb) solids.
 - Stdlib cross-format verifier (verify_x02_toolchain_x02_parametric_step_3mf_roundtrip.py) checking ISO-10303-21 AP242 B-rep entities, 3MF ZIP XML structure, GLB manifoldness, and V = 43,200.0 mm³.
 - Explicit Round-Trip Survival Matrix documenting what survives across STEP AP242, 3MF, and GLB (units, topology, colors, provenance).
