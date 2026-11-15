@@ -79,32 +79,31 @@ end SIDim
 def sq (x : Int) : Int := x * x
 
 /-- Self-contained ring helpers built strictly from `Int.mul_add`, `Int.mul_comm`,
-    `Int.mul_assoc`, `Int.neg_mul_neg`, `Int.ofNat`, and `omega`. -/
-def ofNat_mul_ofNat_eq (a b : Nat) : Int.ofNat a * Int.ofNat b = Int.ofNat (a * b) := rfl
+    `Int.mul_assoc`, `Int.neg_mul_neg`, `Int.ofNat`, `omega`, and `grind`. -/
+theorem ofNat_mul_ofNat_eq (a b : Nat) : Int.ofNat a * Int.ofNat b = Int.ofNat (a * b) := rfl
 
-def add_mul_int (a b c : Int) : (a + b) * c = a * c + b * c := by
+theorem add_mul_int (a b c : Int) : (a + b) * c = a * c + b * c := by
   rw [Int.mul_comm (a + b) c, Int.mul_add c a b, Int.mul_comm c a, Int.mul_comm c b]
 
-def mul_sub_int (a b c : Int) : a * (b - c) = a * b - a * c := by
+theorem mul_sub_int (a b c : Int) : a * (b - c) = a * b - a * c := by
   have hbc : (b - c) + c = b := by omega
   have hm : a * ((b - c) + c) = a * (b - c) + a * c := Int.mul_add a (b - c) c
   rw [hbc] at hm
   omega
 
-def sub_mul_int (a b c : Int) : (a - b) * c = a * c - b * c := by
+theorem sub_mul_int (a b c : Int) : (a - b) * c = a * c - b * c := by
   rw [Int.mul_comm (a - b) c, mul_sub_int c a b, Int.mul_comm c a, Int.mul_comm c b]
 
-def mul_left_comm_int (a b c : Int) : a * (b * c) = b * (a * c) := by
+theorem mul_left_comm_int (a b c : Int) : a * (b * c) = b * (a * c) := by
   rw [← Int.mul_assoc a b c, Int.mul_comm a b, Int.mul_assoc b a c]
 
-def mul_self_pair (x y : Int) : (x * y) * (x * y) = (x * x) * (y * y) := by
-  rw [Int.mul_assoc (x * y) x y, mul_left_comm_int y x y, ← Int.mul_assoc x x (y * y)]
+theorem mul_self_pair (x y : Int) : (x * y) * (x * y) = (x * x) * (y * y) := by
+  grind
 
-def mul_cross_swap (a1 b1 a2 b2 : Int) : (a1 * b1) * (a2 * b2) = (a1 * b2) * (a2 * b1) := by
-  rw [Int.mul_assoc (a1 * b1) a2 b2, mul_left_comm_int b1 a2 b2, Int.mul_comm b1 b2,
-      mul_left_comm_int a2 b2 b1, ← Int.mul_assoc a1 b2 (a2 * b1)]
+theorem mul_cross_swap (a1 b1 a2 b2 : Int) : (a1 * b1) * (a2 * b2) = (a1 * b2) * (a2 * b1) := by
+  grind
 
-def neg_mul_int (a b : Int) : (-a) * b = -(a * b) := by
+theorem neg_mul_int (a b : Int) : (-a) * b = -(a * b) := by
   have h0b : (0 : Int) * b = 0 := by
     have h00 : ((0 : Int) + 0) * b = (0 : Int) * b + (0 : Int) * b := add_mul_int 0 0 b
     have hzz : (0 : Int) + 0 = 0 := rfl
@@ -124,11 +123,11 @@ theorem sq_nonneg : ∀ x : Int, 0 ≤ sq x := by
   cases x with
   | ofNat n =>
     rw [ofNat_mul_ofNat_eq n n]
-    omega
+    grind
   | negSucc n =>
-    have hn : Int.negSucc n = -Int.ofNat (n + 1) := by omega
+    have hn : Int.negSucc n = -Int.ofNat (n + 1) := by grind
     rw [hn, Int.neg_mul_neg (Int.ofNat (n + 1)) (Int.ofNat (n + 1)), ofNat_mul_ofNat_eq (n + 1) (n + 1)]
-    omega
+    grind
 
 /-- Theorem 3 (`two_point_cauchy_schwarz_lagrange`):
     Two-point Lagrange / Cauchy–Schwarz identity and non-negativity over `Int`:
@@ -181,7 +180,7 @@ def orth_res1 (d1 d2 v1 v2 : Int) : Int :=
 def orth_res2 (d1 d2 v1 v2 : Int) : Int :=
   (sq v1 + sq v2) * d2 - (d1 * v1 + d2 * v2) * v2
 
-def orth_res1_factor (d1 d2 v1 v2 : Int) :
+theorem orth_res1_factor (d1 d2 v1 v2 : Int) :
     orth_res1 d1 d2 v1 v2 = v2 * (d1 * v2 - d2 * v1) := by
   unfold orth_res1 sq
   have h1 : (v1 * v1 + v2 * v2) * d1 = (v1 * v1) * d1 + (v2 * v2) * d1 := add_mul_int (v1 * v1) (v2 * v2) d1
@@ -194,7 +193,7 @@ def orth_res1_factor (d1 d2 v1 v2 : Int) :
     mul_sub_int v2 (d1 * v2) (d2 * v1)
   omega
 
-def orth_res2_factor (d1 d2 v1 v2 : Int) :
+theorem orth_res2_factor (d1 d2 v1 v2 : Int) :
     orth_res2 d1 d2 v1 v2 = -(v1 * (d1 * v2 - d2 * v1)) := by
   unfold orth_res2 sq
   have h1 : (v1 * v1 + v2 * v2) * d2 = (v1 * v1) * d2 + (v2 * v2) * d2 := add_mul_int (v1 * v1) (v2 * v2) d2

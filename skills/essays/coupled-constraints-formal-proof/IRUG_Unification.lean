@@ -159,7 +159,7 @@ theorem bilateral_echo_gradient_cancellation :
   intro jGrav gA gB zA zB
   unfold echo_half_step
   rw [Int.neg_mul_neg zA zB]
-  omega
+  grind
 
 /-- 5. Quasistatic `1/N_dd^2` CPMG Suppression vs Memoryless Markovian Lindblad Invariance. -/
 def cpmg_quasistatic_nhz (gamma_lowf_nhz n_dd : Nat) : Nat :=

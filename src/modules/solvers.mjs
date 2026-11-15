@@ -552,7 +552,7 @@ export function initUniversalSvgAndControlAnimations(scope = document) {
             "font-weight": "700",
             fill: "var(--tp-verdigris)",
             opacity: "0.86",
-          }, "0 sorryAx · QED");
+          }, "MODEL DIAGRAM");
           loomGroup.appendChild(octagram);
           loomGroup.appendChild(qedSeal);
           loomGroup.appendChild(qedVerdictLabel);
@@ -1092,12 +1092,12 @@ export function initUniversalSvgAndControlAnimations(scope = document) {
         } else {
           qedVerdictLabel.textContent =
             folioCat === "M"
-              ? "0 sorryAx · QED"
+              ? "MODEL DIAGRAM"
               : folioCat === "P"
-              ? "PHASE COHERENT"
+              ? "MODEL DIAGRAM"
               : folioCat === "E"
-              ? "SAFETY PASS"
-              : "ΣF = 0 CLOSED";
+              ? "MODEL DIAGRAM"
+              : "ΣF = 0 (MODEL)";
           qedVerdictLabel.setAttribute("fill", "var(--tp-verdigris)");
         }
       }
@@ -1409,8 +1409,8 @@ export function initPlateSolvers(scope = document) {
         const sf = 3.74 * (0.64 / Math.max(0.1, util));
         if (thrustOut) thrustOut.textContent = `${vlap.toFixed(1)} kN`;
         if (kernOut) kernOut.textContent = `${mlap.toFixed(2)} kN·m`;
-        if (outR2) outR2.textContent = `${util.toFixed(2)} ${util <= 1.0 ? "≤ 1.00 (SAFE)" : "> 1.00 (OVERSTRESS)"}`;
-        if (statusOut) statusOut.textContent = util <= 1.0 ? `SF = ${sf.toFixed(2)} · EN 1995-1-1 PASS` : "NOTCH SHEAR EXCEEDED";
+        if (outR2) outR2.textContent = `${util.toFixed(2)} ${util <= 1.0 ? "≤ 1.00 (model)" : "> 1.00 (model)"}`;
+        if (statusOut) statusOut.textContent = util <= 1.0 ? `SF = ${sf.toFixed(2)} (model value)` : "NOTCH SHEAR ABOVE CAPACITY (MODEL)";
         if (statusBox) statusBox.setAttribute("data-alert", util <= 1.0 ? "false" : "true");
         return;
       }
@@ -1426,8 +1426,8 @@ export function initPlateSolvers(scope = document) {
         const ach = (24.21 * (vel / 0.84)).toFixed(2);
         if (thrustOut) thrustOut.textContent = `${dp.toFixed(2)} Pa`;
         if (kernOut) kernOut.textContent = `${vel.toFixed(2)} m/s (${flow} m³/h·m)`;
-        if (outR2) outR2.textContent = `0.11 (EN ISO 52022-3)`;
-        if (statusOut) statusOut.textContent = `${ach} ACH · 285 EML PASS`;
+        if (outR2) outR2.textContent = `0.11 (assumed; EN ISO 52022-3 method)`;
+        if (statusOut) statusOut.textContent = `${ach} ACH · 285 EML (illustrative)`;
         return;
       }
       if (slug === "a04") {
@@ -1439,10 +1439,9 @@ export function initPlateSolvers(scope = document) {
         const vpReaction = 4800.0;
         const tieTension = vpReaction * (a / c);
         const sf = 3.12 * (1280.0 / Math.max(100.0, tieTension));
-        if (thrustOut) thrustOut.textContent = `48.0 m (100% Column-Free)`;
-        if (kernOut) kernOut.textContent = `${tieTension.toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} kN (SF = ${sf.toFixed(2)})`;
+        if (thrustOut) thrustOut.textContent = `About 48 m (column-free floors)`;
+        if (kernOut) kernOut.textContent = `${tieTension.toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} kN (SF = ${sf.toFixed(2)}, illustrative)`;
         if (outR2) outR2.textContent = `τ_pod = 15 yr / τ_frame = 100 yr`;
-        if (statusOut) statusOut.textContent = sf >= 1.5 ? "ISOSTATIC EXOSKELETON PASS" : "TIE-ROD YIELD WARNING";
         if (statusBox) statusBox.setAttribute("data-alert", sf >= 1.5 ? "false" : "true");
 
         const a04Truss1 = document.getElementById("tp-a04-truss-1");
@@ -1455,7 +1454,7 @@ export function initPlateSolvers(scope = document) {
           if (a04Truss2) a04Truss2.setAttribute("d", `M 175 130 Q 340 ${camberY2} 505 130`);
         }
         if (a04Label) {
-          a04Label.textContent = `Archigram → Foster / Rogers / Rice Exoskeleton · T_tie = ${tieTension.toFixed(0)} kN · 48.0 m Clear Span`;
+          a04Label.textContent = `Exoskeleton model · T_tie = ${tieTension.toFixed(0)} kN (assumed V_p = 4,800 kN)`;
         }
         return;
       }
@@ -1468,10 +1467,10 @@ export function initPlateSolvers(scope = document) {
         const t60 = 0.62 * (-Math.log(1.0 - 0.44)) / Math.max(0.05, -Math.log(1.0 - alpha));
         const sti = Math.min(0.88, Math.max(0.42, 0.74 - 0.22 * (t60 - 0.62)));
         const c50 = (4.8 - 6.5 * (t60 - 0.62)).toFixed(1);
-        if (thrustOut) thrustOut.textContent = `${t60.toFixed(2)} s (vs 1.85 s)`;
-        if (kernOut) kernOut.textContent = `${sti.toFixed(2)} (${sti >= 0.68 ? "Excellent ≥ 0.68" : "Degraded < 0.68"})`;
-        if (outR2) outR2.textContent = `${Number(c50) >= 0 ? "+" : ""}${c50} dB (QRD p=${pQrd})`;
-        if (statusOut) statusOut.textContent = sti >= 0.68 ? "SAFE KERN & ACOUSTIC PASS" : "REVERBERATION EXCEEDS LIMIT";
+        if (thrustOut) thrustOut.textContent = `${t60.toFixed(2)} s (vs 1.85 s illustrative untreated)`;
+        if (kernOut) kernOut.textContent = `${sti.toFixed(2)} (${sti >= 0.68 ? "folio target ≥ 0.68" : "below folio target 0.68"})`;
+        if (outR2) outR2.textContent = `${Number(c50) >= 0 ? "+" : ""}${c50} dB`;
+        if (statusOut) statusOut.textContent = "ILLUSTRATIVE VALUES VS FOLIO TARGETS (NOT MEASURED)";
         if (statusBox) statusBox.setAttribute("data-alert", sti >= 0.68 ? "false" : "true");
         return;
       }
@@ -1487,114 +1486,76 @@ export function initPlateSolvers(scope = document) {
         if (thrustOut) thrustOut.textContent = `${rem.toFixed(1)}% (140 → ${cOut.toFixed(1)} mg/L)`;
         if (kernOut) kernOut.textContent = `${logRed.toFixed(1)}-Log (${hUv.toFixed(0)} mJ/cm²)`;
         if (outR2) outR2.textContent = `60.0 °C (v = 0.65 m/s)`; // fixed design target, not computed
-        if (statusOut) statusOut.textContent = rem >= 85.0 && logRed >= 4.0 ? "DESIGN TARGETS MET (MODEL)" : "BELOW DESIGN TARGETS (MODEL)";
+        if (statusOut) statusOut.textContent = rem >= 85.0 && logRed >= 4.0 ? "MODEL VALUES ABOVE FOLIO TARGETS (85% BOD, 4-LOG)" : "MODEL VALUES BELOW FOLIO TARGETS (85% BOD, 4-LOG)";
         if (statusBox) statusBox.setAttribute("data-alert", rem >= 85.0 && logRed >= 4.0 ? "false" : "true");
         return;
       }
       if (slug === "a07") {
-        const ks = v0;
-        const f12 = v1;
-        if (riseLabel) riseLabel.textContent = `K/S = ${ks.toFixed(2)}`;
-        if (loadLabel) loadLabel.textContent = `F_12 = ${f12.toFixed(2)}`;
-        if (inlineRise) inlineRise.textContent = `K/S = ${ks.toFixed(2)}`;
+        const thetaSun = v0;
+        const ks = v1;
+        const f12 = 0.61; // folio assumption
+        if (riseLabel) riseLabel.textContent = `${thetaSun.toFixed(1)}°`;
+        if (loadLabel) loadLabel.textContent = `K/S = ${ks.toFixed(2)}`;
+        if (inlineRise) inlineRise.textContent = `θ_sun = ${thetaSun.toFixed(1)}°`;
         const rInf = Math.max(0.05, 1.0 + ks - Math.sqrt(ks * ks + 2.0 * ks));
         const bGain = 1.0 / Math.max(0.15, 1.0 - rInf * f12);
-        const dE00 = (3.4 + 24.5 * f12 * (1.0 - rInf)).toFixed(1);
-        if (thrustOut) thrustOut.textContent = `${(rInf * 100.0).toFixed(1)}% (K/S = ${ks.toFixed(2)})`;
-        if (kernOut) kernOut.textContent = `${bGain.toFixed(2)}× (F_12 = ${f12.toFixed(2)})`;
-        if (outR2) outR2.textContent = `ΔE_00 = ${dE00} (Warm Gold Shift)`;
-        if (statusOut) statusOut.textContent = f12 >= 0.25 ? "BARRAGÁN RADIANT HARMONY · PASS" : "LOW COURTYARD INTER-REFLECTION";
-        if (statusBox) statusBox.setAttribute("data-alert", f12 >= 0.25 ? "false" : "true");
+        if (thrustOut) thrustOut.textContent = `${rInf.toFixed(3)} (at K/S = ${ks.toFixed(2)})`;
+        if (kernOut) kernOut.textContent = `+${((bGain - 1.0) * 100.0).toFixed(1)}% (assumed F_12 = 0.61)`;
         return;
       }
       if (slug === "a08") {
-        const epsWin = v0;
-        const rSol = v1;
-        if (riseLabel) riseLabel.textContent = `ε_8-13 = ${epsWin.toFixed(2)}`;
-        if (loadLabel) loadLabel.textContent = `R_solar = ${rSol.toFixed(3)}`;
-        if (inlineRise) inlineRise.textContent = `ε_8-13 = ${epsWin.toFixed(2)}`;
-        const pRad = 158.0 * epsWin;
-        const pSol = 920.0 * (1.0 - rSol);
-        const pNet = pRad - 34.0 - pSol;
-        const dT = Math.min(-0.5, -(pNet / 16.5));
-        if (thrustOut) thrustOut.textContent = `${pNet >= 0 ? "+" : ""}${pNet.toFixed(1)} W/m² (Noon Sun)`;
-        if (kernOut) kernOut.textContent = `${dT.toFixed(1)} °C vs Ambient`;
-        if (outR2) outR2.textContent = `T_m = 23.5 °C (185 kJ/kg)`;
-        if (statusOut) statusOut.textContent = pNet >= 40.0 ? "SUB-AMBIENT DAYTIME COOLING PASS" : "SOLAR PARASITIC HEATING WARNING";
-        if (statusBox) statusBox.setAttribute("data-alert", pNet >= 40.0 ? "false" : "true");
+        // The readouts are the folio's stated model values; the lab only updates the slider labels.
+        if (riseLabel) riseLabel.textContent = `R = ${v0.toFixed(3)}`;
+        if (loadLabel) loadLabel.textContent = `ε = ${v1.toFixed(2)}`;
+        if (inlineRise) inlineRise.textContent = `R = ${v0.toFixed(3)}`;
         return;
       }
       if (slug === "a09") {
         const dMc = v0;
         const hMm = v1;
-        if (riseLabel) riseLabel.textContent = `ΔMC = +${dMc.toFixed(1)}%`;
-        if (loadLabel) loadLabel.textContent = `h = ${hMm.toFixed(1)} mm`;
+        if (riseLabel) riseLabel.textContent = `${dMc.toFixed(1)}%`;
+        if (loadLabel) loadLabel.textContent = `${hMm.toFixed(1)} mm`;
         if (inlineRise) inlineRise.textContent = `ΔMC = +${dMc.toFixed(1)}%`;
         const kappa = (1.42 * (dMc / 6.0) * (6.0 / Math.max(2.0, hMm)));
         const tipMm = Math.min(240.0, 0.5 * kappa * 0.425 * 0.425 * 1000.0);
         const ventPct = Math.min(92.0, Math.max(12.0, 64.5 * (kappa / 1.42)));
         if (thrustOut) thrustOut.textContent = `${kappa.toFixed(2)} m⁻¹ (R = ${(1.0 / Math.max(0.1, kappa)).toFixed(2)} m)`;
         if (kernOut) kernOut.textContent = `${tipMm.toFixed(1)} mm (at L = 425 mm)`;
-        if (outR2) outR2.textContent = `${ventPct.toFixed(1)}% Free Area (0 W)`;
-        if (statusOut) statusOut.textContent = kappa >= 0.45 ? "ZERO-ENERGY ACTUATION · PASS" : "LOW HYGROSCOPIC STROKE";
+        if (outR2) outR2.textContent = `${ventPct.toFixed(1)}% Free Area (Illustrative)`;
+        if (statusOut) statusOut.textContent = kappa >= 0.45 ? "ACTUATION WITHOUT MOTORS (MODEL)" : "LOW HYGROSCOPIC STROKE (MODEL)";
         if (statusBox) statusBox.setAttribute("data-alert", kappa >= 0.45 ? "false" : "true");
         return;
       }
       if (slug === "a10") {
+        // Folio A.10 model: cos φ = sin α cos(θ/2), ν_xy = −tan² φ, tan(γ_2/2) = cos α tan(γ_1/2) with γ_1 = θ.
+        // SHGC is the folio's stated model value and is not recomputed here.
         const thetaDeg = v0;
         const alphaDeg = v1;
-        if (riseLabel) riseLabel.textContent = `θ = ${thetaDeg.toFixed(0)}°`;
-        if (loadLabel) loadLabel.textContent = `α = ${alphaDeg.toFixed(0)}°`;
+        if (riseLabel) riseLabel.textContent = `${thetaDeg.toFixed(0)}°`;
+        if (loadLabel) loadLabel.textContent = `${alphaDeg.toFixed(0)}°`;
         if (inlineRise) inlineRise.textContent = `θ = ${thetaDeg.toFixed(0)}°`;
         const alphaRad = (alphaDeg * Math.PI) / 180.0;
         const thetaRad = (thetaDeg * Math.PI) / 180.0;
-        const cosPhi = Math.min(0.99, Math.sin(alphaRad) * Math.cos(thetaRad * 0.5));
-        const sinPhi = Math.sqrt(Math.max(1e-4, 1.0 - cosPhi * cosPhi));
-        const tanPhi = sinPhi / Math.max(0.08, cosPhi);
+        const cosPhi = Math.min(0.9999, Math.sin(alphaRad) * Math.cos(thetaRad / 2.0));
+        const tanPhi = Math.sqrt(Math.max(0.0, 1.0 - cosPhi * cosPhi)) / cosPhi;
         const nuXy = -(tanPhi * tanPhi);
-        const shgc = Math.max(0.11, 0.58 * (1.0 - 0.78 * Math.cos(thetaRad)));
-        const gamma2 = (2.0 * Math.atan(Math.cos(alphaRad) * Math.tan(Math.max(0.1, Math.PI * 0.5 - thetaRad * 0.5))) * 180.0) / Math.PI;
-        if (thrustOut) thrustOut.textContent = `${nuXy.toFixed(2)} (Auxetic −tan² φ)`;
-        if (kernOut) kernOut.textContent = `SHGC = ${shgc.toFixed(2)} (−${((1.0 - shgc / 0.60) * 100.0).toFixed(1)}% Solar)`;
-        if (outR2) outR2.textContent = `γ_2 = ${gamma2.toFixed(1)}° (1-DOF Isometric)`;
-        if (statusOut) statusOut.textContent = shgc <= 0.32 ? "RIGID-FOLDABLE · ZERO JAM" : "HIGH SOLAR TRANSMISSION";
-        if (statusBox) statusBox.setAttribute("data-alert", shgc <= 0.32 ? "false" : "true");
+        const gamma2 = (2.0 * Math.atan(Math.cos(alphaRad) * Math.tan(thetaRad / 2.0)) * 180.0) / Math.PI;
+        if (thrustOut) thrustOut.textContent = `${nuXy.toFixed(2).replace("-", "−")} (Model, −tan² φ)`;
+        if (outR2) outR2.textContent = `${gamma2.toFixed(1)}° (Model, γ_1 = θ)`;
         return;
       }
       if (slug === "a11") {
-        const lSpan = v0;
-        const fRatio = v1;
-        if (riseLabel) riseLabel.textContent = `L = ${lSpan.toFixed(1)} m`;
-        if (loadLabel) loadLabel.textContent = `f/L = ${fRatio.toFixed(2)}`;
-        if (inlineRise) inlineRise.textContent = `L = ${lSpan.toFixed(1)} m`;
-        const qLoad = 8.0;
-        const fRise = Math.max(0.5, lSpan * fRatio);
-        const hThrust = (qLoad * lSpan * lSpan) / (8.0 * fRise);
-        const co2Save = Math.min(82.0, Math.max(45.0, 72.0 - Math.abs(fRatio - 0.16) * 90.0));
-        const safe = fRatio >= 0.12 && hThrust <= 480.0;
-        if (thrustOut) thrustOut.textContent = `H = ${hThrust.toFixed(0)} kN (f = ${fRise.toFixed(2)} m)`;
-        if (kernOut) kernOut.textContent = `−${co2Save.toFixed(0)}% Embodied Concrete (0 kg Rebar)`;
-        if (outR2) outR2.textContent = `Σ A_k n_k = 0 (3D Minkowski Closed)`;
-        if (statusOut) statusOut.textContent = safe ? "COMPRESSION-ONLY · ZERO REBAR" : "HIGH HORIZONTAL THRUST / TIE ALERT";
-        if (statusBox) statusBox.setAttribute("data-alert", safe ? "false" : "true");
+        // The readouts are the folio's illustrative model values; the lab only updates the slider labels.
+        if (riseLabel) riseLabel.textContent = `ζ = ${v0.toFixed(2)}`;
+        if (loadLabel) loadLabel.textContent = `f/L = ${v1.toFixed(2)}`;
+        if (inlineRise) inlineRise.textContent = `ζ = ${v0.toFixed(2)}`;
         return;
       }
       if (slug === "a12") {
-        const epsIr = v0;
-        const rSolar = v1;
-        if (riseLabel) riseLabel.textContent = `ε_8-13 = ${epsIr.toFixed(2)}`;
-        if (loadLabel) loadLabel.textContent = `R_solar = ${rSolar.toFixed(3)}`;
-        if (inlineRise) inlineRise.textContent = `ε_8-13 = ${epsIr.toFixed(2)}`;
-        const qRad = 158.0 * epsIr;
-        const qSol = 1000.0 * (1.0 - rSolar);
-        const qNet = qRad - 23.3 - qSol;
-        const dT = -(qNet / 18.9);
-        const safe = qNet >= 60.0 && dT <= -3.0;
-        if (thrustOut) thrustOut.textContent = `q_net = ${qNet >= 0 ? "+" : ""}${qNet.toFixed(1)} W/m² (Noon Sun)`;
-        if (kernOut) kernOut.textContent = `ΔT_sub = ${dT.toFixed(1)} °C vs Ambient`;
-        if (outR2) outR2.textContent = `s = 1, m = 1 (Super-Stable Tensegrity)`;
-        if (statusOut) statusOut.textContent = safe ? "PASSIVE SKY-COOLING · ZERO GRID" : "SOLAR ABSORPTION HEATING ALERT";
-        if (statusBox) statusBox.setAttribute("data-alert", safe ? "false" : "true");
+        // The readouts are the folio's illustrative model values; the lab only updates the slider labels.
+        if (riseLabel) riseLabel.textContent = `${v0.toFixed(0)} kN`;
+        if (loadLabel) loadLabel.textContent = `ε = ${v1.toFixed(2)}`;
+        if (inlineRise) inlineRise.textContent = `t_0 = ${v0.toFixed(0)} kN`;
         return;
       }
 
@@ -1613,12 +1574,12 @@ export function initPlateSolvers(scope = document) {
       if (inlineRise) inlineRise.textContent = "f = " + rise.toFixed(2) + " m";
       if (thrustOut) thrustOut.textContent = thrustH.toFixed(1) + " kN";
       if (kernOut) kernOut.textContent = (asym * 1000).toFixed(0) + " / 100 mm";
-      if (statusOut) {
-        statusOut.textContent = safe
-          ? "SAFE KERN HARMONY (SF " + safetyFactor.toFixed(2) + ")"
-          : "DESIGN TUNING: CENTER THRUST WITHIN KERN (|e| ≤ t/6)";
+      // Slot 3 is the middle-third check; slot 4 (thermal node) is a stated value and is not touched.
+      if (outR2) {
+        outR2.textContent = safe
+          ? "INSIDE MIDDLE THIRD (SF " + safetyFactor.toFixed(2) + ")"
+          : "OUTSIDE MIDDLE THIRD (|e| > t/6, MODEL)";
       }
-      if (statusBox) statusBox.setAttribute("data-alert", safe ? "false" : "true");
 
       if (archPath) {
         const apexY = Math.round(175 - (rise - 2.5) * 24);
@@ -1665,200 +1626,40 @@ export function initPlateSolvers(scope = document) {
       const qedOut = document.getElementById("tp-readout-qed");
       const stage4Dot = document.getElementById("tp-svg-stage-4");
 
+      // Slider labels in the folio's own units. For these folios the readouts are the essay's stated values;
+      // the lab does not model them, so it only updates the labels.
+      const LABEL_UNITS = { m01: ["p = ", "α = "], m03: ["n = ", "rank = "], m04: ["K = ", "d_R = "], m05: ["k_aux = ", "α = "], m06: ["d_poly = ", "α = "], m07: [" kW", " modes"], m08: [" K", "t = "], m09: ["t = ", "ε = "], m10: [" nm", "σ = "], m11: ["δ = ", "σ = "], m12: ["k = ", "η = "] };
+      const decimals = (el) => ((el.step || "1").split(".")[1] || "").length;
+      const fmt = (el, unit) => {
+        const v = parseFloat(el.value).toFixed(decimals(el));
+        return unit.includes("=") ? `${unit}${v}` : `${v}${unit}`;
+      };
+      if (LABEL_UNITS[slug]) {
+        const [u0, u1] = LABEL_UNITS[slug];
+        const t0 = fmt(mathPrimeInput, u0);
+        if (pLabel) pLabel.textContent = t0;
+        if (cLabel) cLabel.textContent = fmt(mathClauseInput, u1);
+        if (inlineP) {
+          const name = (document.querySelector('label[for="tp-math-prime"] span')?.textContent || "").replace(/\s*\(.*\)\s*$/, "").trim();
+          inlineP.textContent = u0.includes("=") || !name ? t0 : `${name} = ${t0}`;
+        }
+        return;
+      }
+
       if (slug === "m02") {
+        // Folio M.02: total zero-density exponent c(σ)(1 − σ): Ingham 3(1 − σ)/(2 − σ) below σ = 3/4,
+        // Huxley 12(1 − σ)/5 from σ = 3/4 (they agree at 3/4). The other readouts are stated values.
         const sigma = v0;
-        const logT = v1;
         if (pLabel) pLabel.textContent = `σ = ${sigma.toFixed(2)}`;
-        if (cLabel) cLabel.textContent = `log T = ${logT.toFixed(1)}`;
+        if (cLabel) cLabel.textContent = `log T = ${v1.toFixed(1)}`;
         if (inlineP) inlineP.textContent = `σ = ${sigma.toFixed(2)}`;
-        const cIng = (3.0 * (1.0 - sigma)) / (2.0 - sigma);
-        const cHux = (12.0 * (1.0 - sigma)) / 5.0;
-        const cEff = Math.min(cIng, cHux);
-        const gap = 0.418 * (sigma / 0.75) * (10.0 / Math.max(4.0, logT));
-        if (barrierOut) barrierOut.textContent = `${cEff.toFixed(3)} (at σ = ${sigma.toFixed(2)})`;
-        if (fluxOut) fluxOut.textContent = `${gap.toFixed(3)}`;
-        if (ethOut) ethOut.textContent = `0 sorryAx (log T = ${logT.toFixed(1)})`;
-        if (qedOut) qedOut.textContent = sigma >= 0.75 ? "HUXLEY REGIME · 0 sorryAx" : "INGHAM REGIME · 0 sorryAx";
+        const ingham = (3.0 * (1.0 - sigma)) / (2.0 - sigma);
+        const huxley = (12.0 * (1.0 - sigma)) / 5.0;
+        const at = Math.abs(sigma - 0.75) < 1e-9;
+        const total = sigma < 0.75 ? ingham : huxley;
+        const who = at ? "Ingham and Huxley agree" : sigma < 0.75 ? "Ingham" : "Huxley";
+        if (barrierOut) barrierOut.textContent = `${total.toFixed(3)} (at σ = ${sigma.toFixed(2)}, ${who})`;
         return;
-      }
-      if (slug === "m03") {
-        const n = Math.round(v0);
-        const rank = Math.round(v1);
-        if (pLabel) pLabel.textContent = `n = ${n}`;
-        if (cLabel) cLabel.textContent = `rank = ${rank}`;
-        if (inlineP) inlineP.textContent = `n = ${n}`;
-        const capMap = { 3: 9, 4: 20, 5: 45, 6: 112, 7: 236, 8: 512 };
-        const capSize = capMap[n] || Math.round(Math.pow(2.2202, n));
-        const omega4 = (Math.log(rank) / Math.log(4)).toFixed(4);
-        if (barrierOut) barrierOut.textContent = `${capSize} vectors (FunSearch)`;
-        if (fluxOut) fluxOut.textContent = `2.7551^${n} Upper Bound`;
-        if (ethOut) ethOut.textContent = `${rank} ${rank < 49 ? "< 49 (AlphaEvolve)" : "(Strassen 49)"}`;
-        if (qedOut) qedOut.textContent = `log_4(${rank}) = ${omega4}`;
-        return;
-      }
-      if (slug === "m04") {
-        const K = v0;
-        const dR = v1;
-        if (pLabel) pLabel.textContent = `K = ${K.toFixed(1)}`;
-        if (cLabel) cLabel.textContent = `d_R = ${dR.toFixed(2)}`;
-        if (inlineP) inlineP.textContent = `K = ${K.toFixed(1)}`;
-        if (barrierOut) barrierOut.textContent = `≤ 2 · ${K.toFixed(1)}^12 Cosets`;
-        if (fluxOut) fluxOut.textContent = `22,028,942 Verified Edges`;
-        if (ethOut) ethOut.textContent = `100% Formalized (0 sorry)`;
-        if (qedOut) qedOut.textContent = `Δd_R ≤ -${(dR / 12.0).toFixed(3)} (at d_R = ${dR.toFixed(2)})`;
-        return;
-      }
-      if (slug === "m05") {
-        const kAux = Math.round(v0);
-        const alpha = v1;
-        if (pLabel) pLabel.textContent = `k_aux = ${kAux}`;
-        if (cLabel) cLabel.textContent = `α = ${alpha.toFixed(2)}`;
-        if (inlineP) inlineP.textContent = `k_aux = ${kAux}`;
-        const inv = 14 + kAux * 11;
-        const rate = Math.min(96.0, 54.0 + kAux * 10.0);
-        const rmsd = (1.26 / Math.max(1, kAux)).toFixed(2);
-        if (barrierOut) barrierOut.textContent = `14 → ${inv} Invariants`;
-        if (fluxOut) fluxOut.textContent = `${rate.toFixed(1)}% (AlphaGeometry 2)`;
-        if (ethOut) ethOut.textContent = `det(B_5) = 0 (${rmsd} Å)`;
-        if (qedOut) qedOut.textContent = kAux >= 2 ? "QED VERIFIED (DD+AR)" : "AUXILIARY ANCHOR REQUIRED";
-        return;
-      }
-      if (slug === "m06") {
-        const dPoly = Math.round(v0);
-        const alpha = v1;
-        if (pLabel) pLabel.textContent = `d_poly = ${dPoly}`;
-        if (cLabel) cLabel.textContent = `α = ${alpha.toFixed(2)}`;
-        if (inlineP) inlineP.textContent = `d_poly = ${dPoly}`;
-        const speedup = (2.96 * dPoly).toFixed(1);
-        const prm = Math.min(99.2, 74.6 + dPoly * 4.0).toFixed(1);
-        const s3 = (0.385 * (alpha / 4.26)).toFixed(3);
-        if (barrierOut) barrierOut.textContent = `${speedup}× (at n = 4,096)`;
-        if (fluxOut) fluxOut.textContent = `${prm}% (vs 41.2% ORM)`;
-        if (ethOut) ethOut.textContent = `2^(${s3} n)`;
-        if (qedOut) qedOut.textContent = "QED VERIFIED (Sub-Cubic)";
-        return;
-      }
-      if (slug === "m07") {
-        const lSoc = v0;
-        const kModes = Math.round(v1);
-        if (pLabel) pLabel.textContent = `λ_soc = ${lSoc.toFixed(2)}`;
-        if (cLabel) cLabel.textContent = `k_max = ${kModes}`;
-        if (inlineP) inlineP.textContent = `λ_soc = ${lSoc.toFixed(2)}`;
-        const dtGain = -(0.18 + 0.31 * (lSoc / 1.42) * Math.min(1.15, kModes / 24.0));
-        const fnoMs = (0.45 + 0.032 * kModes).toFixed(2);
-        if (barrierOut) barrierOut.textContent = `${dtGain.toFixed(2)} s / Lap (350 kW MGU-K)`;
-        if (fluxOut) fluxOut.textContent = `3.98 / 4.00 MJ (SoC Neutral)`;
-        if (ethOut) ethOut.textContent = `${fnoMs} ms (1,150× vs RANS)`;
-        if (qedOut) qedOut.textContent = Math.abs(lSoc - 1.42) <= 0.35 ? "PONTRYAGIN OPTIMAL · PASS" : "ENERGY DEPLETION DRIFT";
-        if (qedBox) qedBox.setAttribute("data-alert", Math.abs(lSoc - 1.42) <= 0.35 ? "false" : "true");
-        return;
-      }
-      if (slug === "m08") {
-        const kCurv = v0;
-        const mScale = v1;
-        if (pLabel) pLabel.textContent = `κ_g = ${kCurv.toFixed(2)}`;
-        if (cLabel) cLabel.textContent = `g_scale = ${mScale.toFixed(2)}×`;
-        if (inlineP) inlineP.textContent = `κ_g = ${kCurv.toFixed(2)}`;
-        const dsRiem = (14.2 * mScale * (1.0 - 0.142 * kCurv)).toFixed(1);
-        const abney = (6.8 * kCurv).toFixed(1);
-        if (barrierOut) barrierOut.textContent = `Δs_R = ${dsRiem} JND (−14.2% vs Euclidean)`;
-        if (fluxOut) fluxOut.textContent = `+${abney}° Hue Bend (Geodesic)`;
-        if (ethOut) ethOut.textContent = `dim(N_C) = N − 3 (Metamers)`;
-        if (qedOut) qedOut.textContent = "SCHRÖDINGER METRIC · QED PASS";
-        return;
-      }
-      if (slug === "m09") {
-        const tGeo = v0;
-        const epsSink = v1;
-        if (pLabel) pLabel.textContent = `t = ${tGeo.toFixed(2)}`;
-        if (cLabel) cLabel.textContent = `ε = ${epsSink.toFixed(2)}`;
-        if (inlineP) inlineP.textContent = `t = ${tGeo.toFixed(2)}`;
-        const w2Sq = (4.82 + 0.45 * epsSink).toFixed(2);
-        const muT = (-1.10 * (1.0 - tGeo) + 1.10 * tGeo).toFixed(2);
-        const sigT = (0.95 * (1.0 - tGeo) + 1.35 * tGeo).toFixed(2);
-        const iters = Math.max(6, Math.round(18.0 * (0.05 / Math.max(0.01, epsSink))));
-        if (barrierOut) barrierOut.textContent = `W_2² = ${w2Sq} (Bures–Wasserstein)`;
-        if (fluxOut) fluxOut.textContent = `μ_t = ${muT} · σ_t = ${sigT}`;
-        if (ethOut) ethOut.textContent = `${iters} Iterations (ε = ${epsSink.toFixed(2)})`;
-        if (qedOut) qedOut.textContent = "HJB GEODESIC · QED PASS";
-        if (qedBox) qedBox.setAttribute("data-alert", "false");
-        return;
-      }
-      if (slug === "m10") {
-        const epsNm = v0;
-        const sigNoise = v1;
-        if (pLabel) pLabel.textContent = `ε = ${epsNm.toFixed(0)} nm`;
-        if (cLabel) cLabel.textContent = `σ = ${sigNoise.toFixed(2)}`;
-        if (inlineP) inlineP.textContent = `ε = ${epsNm.toFixed(0)} nm`;
-        const b0 = epsNm < 35.0 ? 4 : 1;
-        const b1 = epsNm >= 38.0 && epsNm <= 116.0 ? 3 : 1;
-        const chi = b0 - b1;
-        const rCrit = Math.max(48.0, 116.0 - 42.0 * sigNoise);
-        const pass = rCrit >= 65.0;
-        if (barrierOut) barrierOut.textContent = `β₀ = ${b0} · β₁ = ${b1} · β₂ = 0`;
-        if (fluxOut) fluxOut.textContent = `χ = β₀ − β₁ + β₂ = ${chi}`;
-        if (ethOut) ethOut.textContent = `r_crit = ${rCrit.toFixed(0)} nm (> 65 nm LNP)`;
-        if (qedOut) qedOut.textContent = pass ? "PERCOLATING · BOTTLENECK PASS" : "THROAT PINCHED BELOW 65 NM";
-        if (qedBox) qedBox.setAttribute("data-alert", pass ? "false" : "true");
-        return;
-      }
-      if (slug === "m11") {
-        const kCard = Math.round(v0);
-        const sigZero = v1;
-        if (pLabel) pLabel.textContent = `|A| = ${kCard}`;
-        if (cLabel) cLabel.textContent = `σ = ${sigZero.toFixed(2)}`;
-        if (inlineP) inlineP.textContent = `|A| = ${kCard}`;
-        const nHorizon = 900;
-        const erdosTur = Math.floor(Math.sqrt(nHorizon) + Math.pow(nHorizon, 0.25) + 1.0);
-        const guthMaynard = (30.0 * (1.0 - sigZero)) / 13.0;
-        const pass = kCard <= erdosTur;
-        if (barrierOut) barrierOut.textContent = `dim_H(K) = 3.00 (Wang–Zahl 3D Kakeya)`;
-        if (fluxOut) fluxOut.textContent = `N(σ,T) ≪ T^(${guthMaynard.toFixed(3)}+ε) (θ = 13/30)`;
-        if (ethOut) ethOut.textContent = `|A| = ${kCard} / ${erdosTur} Bound (N = 900)`;
-        if (qedOut) qedOut.textContent = pass ? "SIDON B₂ COLLISION-FREE · 0 SORRY" : "PIGEONHOLE SUM COLLISION (> 36)";
-        if (qedBox) qedBox.setAttribute("data-alert", pass ? "false" : "true");
-        return;
-      }
-      if (slug === "m12") {
-        const nDim = Math.round(v0);
-        const kMod = Math.round(v1);
-        if (pLabel) pLabel.textContent = `n = ${nDim}`;
-        if (cLabel) cLabel.textContent = `k = ${kMod} (ML-KEM-${kMod * 256})`;
-        if (inlineP) inlineP.textContent = `n = ${nDim}`;
-        const naiveMults = Math.pow(nDim, 3);
-        const eightSqMults = Math.round(Math.pow(nDim, 2.755));
-        const secBits = kMod === 2 ? 128 : kMod === 3 ? 192 : 256;
-        if (barrierOut) barrierOut.textContent = `${eightSqMults.toLocaleString("en-US")} mults (vs ${naiveMults.toLocaleString("en-US")} n³)`;
-        if (fluxOut) fluxOut.textContent = `${secBits}-bit Post-Quantum (NIST FIPS 203)`;
-        if (ethOut) ethOut.textContent = `ETHIsFalse.lean · EightSquare.lean`;
-        if (qedOut) qedOut.textContent = kMod >= 3 ? "LEAN 4 KERNEL QED · 0 SORRYAX" : "ML-KEM-512 BASELINE LEVEL 1";
-        if (qedBox) qedBox.setAttribute("data-alert", kMod >= 3 ? "false" : "true");
-        return;
-      }
-
-      const pVal = Math.round(v0);
-      const clauseDensity = v1;
-      const isPythagorean = pVal === 2;
-      const unbridgedPeak = 8.39;
-      const bridgedPeak = isPythagorean ? 9.85 : Math.max(2.65, 3.59 - (pVal - 5) * 0.08);
-      const fluxPct = isPythagorean ? 18.5 : Math.min(89.5, 68.4 + (pVal - 5) * 2.4);
-      const s3Exponent = Math.max(0.08, 0.385 * (clauseDensity / 4.26));
-
-      if (pLabel) pLabel.textContent = "p = " + pVal;
-      if (cLabel) cLabel.textContent = "α = " + clauseDensity.toFixed(2);
-      if (inlineP) inlineP.textContent = "p = " + pVal;
-      if (barrierOut) barrierOut.textContent = bridgedPeak.toFixed(2) + " kcal/mol (vs " + unbridgedPeak + ")";
-      if (fluxOut) fluxOut.textContent = fluxPct.toFixed(1) + "%";
-      if (ethOut) ethOut.textContent = "2^(" + s3Exponent.toFixed(3) + " n)";
-      if (qedOut) {
-        qedOut.textContent = isPythagorean
-          ? "CLASSICAL HARMONY (p = 2 Pythagorean Solutions: 3² + 4² = 5²)"
-          : "QED VERIFIED (29,500 Lemmas · Human + AI Proof)";
-      }
-      if (qedBox) qedBox.setAttribute("data-alert", isPythagorean ? "true" : "false");
-      if (stage4Dot) {
-        const cy = isPythagorean ? 44 : Math.round(115 - (clauseDensity - 4.26) * 8);
-        stage4Dot.setAttribute("cy", String(cy));
       }
     };
     mathPrimeInput.addEventListener("input", updateMath);
@@ -1899,10 +1700,9 @@ export function initPlateSolvers(scope = document) {
         const rSq = ((reZ - 1.0) * (reZ - 1.0) + imZ * imZ) / ((reZ + 1.0) * (reZ + 1.0) + imZ * imZ);
         const alphaP = 1.0 - rSq;
         if (kappaOut) kappaOut.textContent = `${dv.toFixed(3)} mm (at ${f0.toFixed(0)} Hz)`;
-        if (deffOut) deffOut.textContent = `Z_s / Z_0 = ${reZ.toFixed(2)} ${imZ >= 0 ? "+" : "-"} ${Math.abs(imZ).toFixed(2)} i`;
-        if (outR2) outR2.textContent = `α_peak = ${alphaP.toFixed(3)} (${alphaP >= 0.90 ? "Critical Match" : "Detuned"})`;
-        if (percOut) percOut.textContent = alphaP >= 0.85 ? "CLASS A · ZERO FIBER" : "SUB-OPTIMAL IMPEDANCE";
-        if (percBox) percBox.setAttribute("data-alert", alphaP >= 0.85 ? "false" : "true");
+        const atRes = Math.abs(imZ) < 0.005;
+        if (deffOut) deffOut.textContent = `Z_s / Z_0 = ${reZ.toFixed(2)} ${imZ >= 0 ? "+" : "-"} ${Math.abs(imZ).toFixed(2)} i (model${atRes ? ", at resonance" : ""})`;
+        if (outR2) outR2.textContent = `α_peak = ${alphaP.toFixed(4)} (model, ${alphaP >= 0.90 ? "near critical match" : "detuned"})`;
         return;
       }
       if (slug === "e04") {
@@ -1916,94 +1716,80 @@ export function initPlateSolvers(scope = document) {
         const tFrost = -3.0 - 9.5 * (epsL / 79.4);
         if (kappaOut) kappaOut.textContent = `${epsS.toFixed(1)}% (NTU = ${ntuS.toFixed(1)})`;
         if (deffOut) deffOut.textContent = `${epsL.toFixed(1)}% (NTU_m = ${ntuM.toFixed(2)})`;
-        if (outR2) outR2.textContent = `${tFrost.toFixed(1)} °C (vs -3.0 °C Sensible)`;
-        if (percOut) percOut.textContent = epsS >= 75.0 ? "PASS · BALANCED NTU" : "LOW RECOVERY WARNING";
-        if (percBox) percBox.setAttribute("data-alert", epsS >= 75.0 ? "false" : "true");
+        if (outR2) outR2.textContent = `${tFrost.toFixed(1)} °C (illustrative linear estimate; -3.0 °C sensible-only)`;
         return;
       }
       if (slug === "e07") {
+        // Folio E.07: reduced velocity U / (f_α B) with B = 36 m and f_α implied by its stated 6.15 at 52 m/s.
+        // The damping and PINN readouts are the folio's illustrative values and are not recomputed here.
         const uWind = v0;
-        const gapM = v1;
-        if (phiLabel) phiLabel.textContent = `${uWind.toFixed(0)} m/s`;
-        if (radLabel) radLabel.textContent = `${gapM.toFixed(1)} m`;
-        if (inlinePhi) inlinePhi.textContent = `U = ${uWind.toFixed(0)} m/s`;
-        const uCrit = 54.0 + 4.0 * gapM;
-        const zeta = 0.038 * (1.0 - Math.pow(uWind / uCrit, 1.8));
-        const safe = uWind < uCrit * 0.85;
-        if (kappaOut) kappaOut.textContent = `U_crit = ${uCrit.toFixed(1)} m/s (vs 54.0 m/s)`;
-        if (deffOut) deffOut.textContent = `ζ_eff = ${(zeta * 100.0).toFixed(2)}% (at U = ${uWind.toFixed(0)} m/s)`;
-        if (outR2) outR2.textContent = `1.8 ms (R² = 0.994 vs Wind Tunnel)`;
-        if (percOut) percOut.textContent = safe ? "AEROELASTIC STABLE · PASS" : "FLUTTER BOUNDARY WARNING";
-        if (percBox) percBox.setAttribute("data-alert", safe ? "false" : "true");
+        const lamPde = v1;
+        const fAlpha = 52.0 / (6.15 * 36.0);
+        const uCrit = 76.4;
+        if (phiLabel) phiLabel.textContent = `${uWind.toFixed(1)} m/s`;
+        if (radLabel) radLabel.textContent = `λ = ${lamPde.toFixed(2)}`;
+        if (inlinePhi) inlinePhi.textContent = `U = ${uWind.toFixed(1)} m/s`;
+        if (kappaOut) kappaOut.textContent = `${(uWind / (fAlpha * 36.0)).toFixed(2)} (U = ${uWind.toFixed(1)} m/s, B = 36 m)`;
+        const stable = uWind < uCrit;
+        if (percOut) percOut.textContent = stable ? "STABLE IN MODEL (ζ_net > 0)" : "FLUTTER IN MODEL (U ≥ U_crit = 76.4 m/s)";
+        if (percBox) percBox.setAttribute("data-alert", stable ? "false" : "true");
         return;
       }
       if (slug === "e08") {
-        const vlPct = v0;
-        const pFace = v1;
-        if (phiLabel) phiLabel.textContent = `V_L = ${vlPct.toFixed(2)}%`;
-        if (radLabel) radLabel.textContent = `${pFace.toFixed(0)} kPa`;
-        if (inlinePhi) inlinePhi.textContent = `V_L = ${vlPct.toFixed(2)}%`;
+        // Folio E.08: Peck trough. V_s = V_L π D² / 4, S_max = V_s / (√(2π) i), i = K z_0 = 0.50 × 24 m = 12.0 m,
+        // D = 9.8 m, β_max ≈ 0.606 S_max / i. Face pressure does not enter this law; the verdict assumes face balance.
+        const pFace = v0;
+        const vlPct = v1;
+        if (phiLabel) phiLabel.textContent = `${pFace.toFixed(1)} kPa`;
+        if (radLabel) radLabel.textContent = `${vlPct.toFixed(2)}%`;
+        if (inlinePhi) inlinePhi.textContent = `P_face = ${pFace.toFixed(1)} kPa`;
         const dTun = 9.8;
-        const iTrough = 11.0;
-        const sMaxMm = (0.313 * (vlPct / 100.0) * dTun * dTun / iTrough) * 1000.0 * (225.0 / Math.max(120.0, pFace));
-        const betaMax = (0.606 * (sMaxMm / 1000.0)) / iTrough;
-        const safe = sMaxMm <= 15.0 && pFace >= 180.0;
-        if (kappaOut) kappaOut.textContent = `S_max = ${sMaxMm.toFixed(1)} mm (V_L = ${vlPct.toFixed(2)}%)`;
-        if (deffOut) deffOut.textContent = `i = 11.0 m (z_0 = 22.0 m)`;
-        if (outR2) outR2.textContent = `β_max = 1 / ${Math.round(1.0 / Math.max(1e-5, betaMax)).toLocaleString("en-US")} (< 1 / 500)`;
-        if (percOut) percOut.textContent = safe ? "GREENFIELD SAFE · GNN VERIFIED" : "SETTLEMENT / FACE PRESSURE ALERT";
-        if (percBox) percBox.setAttribute("data-alert", safe ? "false" : "true");
+        const iTrough = 12.0;
+        const vs = (vlPct / 100.0) * Math.PI * dTun * dTun / 4.0;
+        const sMax = vs / (Math.sqrt(2.0 * Math.PI) * iTrough);
+        const invBeta = iTrough / (0.606 * sMax);
+        const inside = invBeta >= 500.0;
+        if (deffOut) deffOut.textContent = `${(sMax * 1000.0).toFixed(1)} mm (at V_L = ${vlPct.toFixed(2)}%)`;
+        if (outR2) outR2.textContent = `1 / ${(Math.round(invBeta / 10.0) * 10).toLocaleString("en-US")} (${inside ? "<" : ">"} 1/500 model limit)`;
+        if (percOut) percOut.textContent = inside ? "WITHIN MODEL WINDOW (ASSUMED FACE BALANCE)" : "OUTSIDE MODEL WINDOW (β > 1/500)";
+        if (percBox) percBox.setAttribute("data-alert", inside ? "false" : "true");
         return;
       }
       if (slug === "e09") {
-        const w0Mm = v0;
-        const kHeal = v1;
-        if (phiLabel) phiLabel.textContent = `w_0 = ${w0Mm.toFixed(2)} mm`;
-        if (radLabel) radLabel.textContent = `k_heal = ${kHeal.toFixed(2)}×`;
-        if (inlinePhi) inlinePhi.textContent = `w_0 = ${w0Mm.toFixed(2)} mm`;
-        const sealFrac = Math.min(0.985, Math.max(0.25, 0.94 * (0.30 / Math.max(0.10, w0Mm)) * (0.75 + 0.25 * kHeal)));
-        const wRem = w0Mm * (1.0 - sealFrac);
-        const leakRed = (1.0 - Math.pow(1.0 - sealFrac, 3)) * 100.0;
-        const cwiRec = Math.min(99.2, sealFrac * 102.5);
-        const safe = sealFrac >= 0.80;
-        if (kappaOut) kappaOut.textContent = `${(sealFrac * 100.0).toFixed(1)}% (w_rem = ${wRem.toFixed(3)} mm)`;
-        if (deffOut) deffOut.textContent = `−${leakRed.toFixed(2)}% Darcy Cutoff`;
-        if (outR2) outR2.textContent = `${cwiRec.toFixed(1)}% (Δv/v Restored)`;
-        if (percOut) percOut.textContent = safe ? "AUTOGENOUS SEAL · PASS" : "PARTIAL SEAL · W_0 > 0.50 MM";
-        if (percBox) percBox.setAttribute("data-alert", safe ? "false" : "true");
+        // The readouts are the folio's illustrative values; the lab only updates the slider labels.
+        if (phiLabel) phiLabel.textContent = `${v0.toFixed(2)} mm`;
+        if (radLabel) radLabel.textContent = `${v1.toFixed(2)}×`;
+        if (inlinePhi) inlinePhi.textContent = `w_0 = ${v0.toFixed(2)} mm`;
         return;
       }
       if (slug === "e10") {
+        // Folio E.10 linear model: τ_0(t) = τ_00 + A_thix t against gravity shear ρ g v t / √3,
+        // with ρ = 2,200 kg/m³ and τ_00 = 420 Pa (the folio's stated assumptions). H_buck is not computed.
         const aThix = v0;
         const vBuild = v1;
-        if (phiLabel) phiLabel.textContent = `A_thix = ${aThix.toFixed(2)} Pa/s`;
-        if (radLabel) radLabel.textContent = `v_build = ${vBuild.toFixed(2)} m/hr`;
+        if (phiLabel) phiLabel.textContent = `${aThix.toFixed(2)} Pa/s`;
+        if (radLabel) radLabel.textContent = `${vBuild.toFixed(1)} m/hr`;
         if (inlinePhi) inlinePhi.textContent = `A_thix = ${aThix.toFixed(2)} Pa/s`;
-        const sfYield = (aThix / 0.85) * (1.60 / Math.max(0.4, vBuild)) * 1.68;
-        const hCrit = Math.min(5.2, Math.max(0.65, 2.84 * Math.pow(aThix / 0.85, 0.65) * Math.pow(1.60 / Math.max(0.4, vBuild), 0.45)));
-        const layers = Math.round(hCrit / 0.05);
-        const safe = sfYield >= 1.15 && hCrit >= 1.80;
-        if (kappaOut) kappaOut.textContent = `${hCrit.toFixed(2)} m (${layers} Layers)`;
-        if (deffOut) deffOut.textContent = `SF = ${sfYield.toFixed(2)} (${safe ? "Plastic Safe" : "Yield Risk"})`;
-        if (outR2) outR2.textContent = sfYield >= 1.4 ? "ELASTIC-PLASTIC BALANCED" : "BUCKLING / PLASTIC LIMIT";
-        if (percOut) percOut.textContent = safe ? "BUILDABILITY PASS · 0 FORMWORK" : "COLLAPSE / BUCKLING WARNING";
-        if (percBox) percBox.setAttribute("data-alert", safe ? "false" : "true");
+        const v = vBuild / 3600.0;
+        const rate = (2200.0 * 9.81 * v) / Math.sqrt(3.0);
+        const yields = aThix < rate;
+        const hPlast = yields ? v * (420.0 / (rate - aThix)) : Infinity;
+        if (kappaOut) kappaOut.textContent = yields ? `H ≈ ${hPlast.toFixed(2)} m (ρ = 2,200 kg/m³ assumed)` : "No plastic limit in this linear model";
+        if (deffOut) deffOut.textContent = `A_thix ${aThix.toFixed(2)} ${yields ? "<" : "≥"} ρgv/√3 ≈ ${rate.toFixed(1)} Pa/s`;
+        if (percOut) percOut.textContent = yields ? "NOT BUILDABLE AT THESE SETTINGS (model)" : "NO PLASTIC COLLAPSE (model; buckling not checked)";
+        if (percBox) percBox.setAttribute("data-alert", yields ? "true" : "false");
         return;
       }
       if (slug === "e11") {
-        const rhoBar = v0;
-        const betaInerter = v1;
-        if (phiLabel) phiLabel.textContent = `ρ̄ = ${rhoBar.toFixed(2)}`;
-        if (radLabel) radLabel.textContent = `β = ${betaInerter.toFixed(2)}`;
-        if (inlinePhi) inlinePhi.textContent = `ρ̄ = ${rhoBar.toFixed(2)}`;
-        const co2PerM2 = (280.0 * rhoBar * 0.56) - (280.0 * rhoBar * 0.088);
-        const rmsRed = Math.min(58.0, (1.0 - 1.0 / Math.sqrt(1.0 + 3.2 * betaInerter)) * 100.0);
-        const safe = co2PerM2 <= 45.0 && rhoBar >= 0.28;
-        if (kappaOut) kappaOut.textContent = `${co2PerM2.toFixed(1)} kg CO₂e/m² (vs 156.8 Baseline)`;
-        if (deffOut) deffOut.textContent = `−${rmsRed.toFixed(1)}% Wind RMS Sway (β = ${betaInerter.toFixed(2)})`;
-        if (outR2) outR2.textContent = `p = 3.0 SIMP · L_span / 250 Pass`;
-        if (percOut) percOut.textContent = safe ? "SUB-45 KG CO2E/M² · BOUNTY E-1 PASS" : "EMBODIED CARBON / DEFLECTION ALERT";
-        if (percBox) percBox.setAttribute("data-alert", safe ? "false" : "true");
+        // Folio E.11: compliance by the rough scaling c ∝ 1/(V/V_0) and volume reduction 1 − V/V_0 (both stated
+        // as illustrative). The inerter and filter readouts are fixed values from the folio.
+        const vFrac = v0;
+        const muB = v1;
+        if (phiLabel) phiLabel.textContent = `V/V_0 = ${vFrac.toFixed(2)}`;
+        if (radLabel) radLabel.textContent = `μ_b = ${muB.toFixed(2)}`;
+        if (inlinePhi) inlinePhi.textContent = `V/V_0 = ${vFrac.toFixed(2)}`;
+        if (kappaOut) kappaOut.textContent = `≈ ${(1.0 / Math.max(0.05, vFrac)).toFixed(1)}× (c ∝ 1/(V/V_0), illustrative)`;
+        if (deffOut) deffOut.textContent = `−${((1.0 - vFrac) * 100.0).toFixed(0)}% (1 − V/V_0; CO2e assumed proportional)`;
         return;
       }
       if (slug === "e12") {
@@ -2050,17 +1836,13 @@ export function initPlateSolvers(scope = document) {
       const percolating = phi > phiC;
       const dEffRatio = percolating ? Math.pow((phi - phiC) / (1.0 - phiC), 1.3) : 0.0;
 
-      if (phiLabel) phiLabel.textContent = "phi = " + phi.toFixed(3);
-      if (radLabel) radLabel.textContent = "a_f = " + radiusNm.toFixed(1) + " nm";
-      if (inlinePhi) inlinePhi.textContent = "phi = " + phi.toFixed(3);
+      if (phiLabel) phiLabel.textContent = "φ = " + phi.toFixed(3);
+      if (radLabel) radLabel.textContent = "a_f = " + radiusNm.toFixed(1);
+      if (inlinePhi) inlinePhi.textContent = "φ = " + phi.toFixed(3);
       if (kappaOut) kappaOut.textContent = brinkmanLen.toFixed(2) + " nm";
       if (deffOut) deffOut.textContent = dEffRatio.toFixed(3) + " D_0";
-      if (percOut) {
-        percOut.textContent = percolating
-          ? "SUPERCRITICAL PERCOLATING PATHWAY (phi > 0.593)"
-          : "HYDRATION OPPORTUNITY: RAISE POROSITY ABOVE φ_c = 0.593";
-      }
-      if (percBox) percBox.setAttribute("data-alert", percolating ? "false" : "true");
+      // Slot 3 is the percolation regime; slot 4 (Helmholtz-Hodge) is a stated property and is not touched.
+      if (outR2) outR2.textContent = percolating ? "SUPERCRITICAL (φ > 0.5927, model)" : "SUBCRITICAL (φ ≤ 0.5927, model)";
       if (engPoint) {
         const cx = Math.round(60 + ((phi - 0.45) / 0.47) * 530);
         const cy = percolating ? Math.round(180 - dEffRatio * 145) : 185;
@@ -2092,17 +1874,12 @@ export function initPlateSolvers(scope = document) {
       const statusOut = document.getElementById("out-status");
 
       if (slug === "p02") {
-        const kCoup = v0;
-        const hPcl = v1;
-        if (atpOut) atpOut.textContent = `${kCoup.toFixed(2)} K/σ`;
-        if (vmOut) vmOut.textContent = `${hPcl.toFixed(1)} μm`;
-        if (inlineAtp) inlineAtp.textContent = `K/σ = ${kCoup.toFixed(2)}`;
-        const rSync = kCoup <= 1.0 ? 0.18 * kCoup : Math.sqrt(1.0 - 1.0 / (kCoup * kCoup)) * Math.min(1.0, hPcl / 6.5);
-        const vMcc = (42.8 * rSync * Math.max(0.05, (hPcl - 3.0) / 4.0)).toFixed(1);
-        if (effOut) effOut.textContent = `R = ${rSync.toFixed(2)} (K/K_c = ${kCoup.toFixed(2)})`;
-        if (ratioOut) ratioOut.textContent = `${vMcc} μm/s (h_PCL = ${hPcl.toFixed(1)} μm)`;
-        if (outR2) outR2.textContent = `f_beat = ${(14.2 * Math.min(1.0, hPcl / 6.0)).toFixed(1)} Hz`;
-        if (statusOut) statusOut.textContent = rSync >= 0.65 && hPcl >= 5.5 ? "METACHRONAL WAVE LOCKED" : "CILIARY PHASE ARREST";
+        const hPcl = v0;
+        const solids = v1;
+        if (atpOut) atpOut.textContent = `${hPcl.toFixed(1)} μm`;
+        if (vmOut) vmOut.textContent = `${solids.toFixed(1)} %`;
+        if (inlineAtp) inlineAtp.textContent = `h_PCL = ${hPcl.toFixed(1)} μm`;
+        // The readouts on this page are the essay's stated reference values; this lab does not model them, so it only updates the slider labels.
         return;
       }
       if (slug === "p03") {
@@ -2111,73 +1888,43 @@ export function initPlateSolvers(scope = document) {
         if (atpOut) atpOut.textContent = `${phiM.toFixed(1)} %`;
         if (vmOut) vmOut.textContent = `${dpNm.toFixed(0)} nm`;
         if (inlineAtp) inlineAtp.textContent = `φ = ${phiM.toFixed(1)}%`;
-        const xiNm = 140.0 * Math.pow(2.0 / phiM, 0.75);
-        const alphaSub = Math.max(0.18, Math.min(0.96, 1.0 - 0.186 * Math.pow(dpNm / xiNm, 1.5)));
-        if (effOut) effOut.textContent = `ξ = ${xiNm.toFixed(1)} nm (at ${phiM.toFixed(1)}% mucin)`;
-        if (ratioOut) ratioOut.textContent = `α = ${alphaSub.toFixed(3)} (d_p / ξ = ${(dpNm / xiNm).toFixed(2)})`;
-        if (outR2) outR2.textContent = `D_eff / D_0 = ${Math.exp(-Math.pow(dpNm / xiNm, 1.45)).toFixed(3)}`;
-        if (statusOut) statusOut.textContent = alphaSub >= 0.65 ? "ERGODIC MUCUS PENETRATION" : "SUBDIFFUSIVE MESH TRAPPING";
+        // The readouts on this page are the essay's stated reference values; this lab does not model them, so it only updates the slider labels.
         return;
       }
       if (slug === "p04") {
-        const cMuc = v0;
-        const clFlux = v1;
-        if (atpOut) atpOut.textContent = `${cMuc.toFixed(1)} wt%`;
-        if (vmOut) vmOut.textContent = `${clFlux.toFixed(0)} mM`;
-        if (inlineAtp) inlineAtp.textContent = `c_mucus = ${cMuc.toFixed(1)} wt%`;
-        const cEff = cMuc * (85.0 / Math.max(25.0, clFlux));
-        const piMuc = 0.25 * Math.pow(cEff / 2.0, 2.65);
-        const hPcl = piMuc <= 3.0 ? 7.0 : 7.0 * Math.pow(3.0 / piMuc, 0.38);
-        if (effOut) effOut.textContent = `Π_mucus = ${piMuc.toFixed(2)} kPa (vs Π_PCL = 3.0 kPa)`;
-        if (ratioOut) ratioOut.textContent = `h_PCL = ${hPcl.toFixed(2)} μm`;
-        if (outR2) outR2.textContent = `J_Cl = ${clFlux.toFixed(0)} mM Efflux`;
-        if (statusOut) statusOut.textContent = piMuc <= 3.0 ? "HYDRATED BRUSH · PASS" : "HYPERCONCENTRATED COLLAPSE (> 3 kPa)";
+        const cftr = v0;
+        const enac = v1;
+        if (atpOut) atpOut.textContent = `${cftr.toFixed(2)} x`;
+        if (vmOut) vmOut.textContent = `${enac.toFixed(2)} x`;
+        if (inlineAtp) inlineAtp.textContent = `CFTR factor = ${cftr.toFixed(2)}`;
+        // The readouts on this page are the essay's stated reference values; this lab does not model them, so it only updates the slider labels.
         return;
       }
       if (slug === "p05") {
         const v0Bar = v0;
         const dvMv = v1;
-        if (atpOut) atpOut.textContent = `${v0Bar.toFixed(1)} kcal/mol`;
+        if (atpOut) atpOut.textContent = `${v0Bar.toFixed(1)} k_B T`;
         if (vmOut) vmOut.textContent = `${dvMv.toFixed(0)} mV`;
-        if (inlineAtp) inlineAtp.textContent = `V_0 = ${v0Bar.toFixed(1)} kcal/mol`;
-        const vEff = v0Bar + 0.025 * (dvMv + 30.0);
-        const twoGamma = 6.84 * Math.sqrt(Math.max(2.0, vEff) / 14.2);
-        const tWkb = Math.exp(-twoGamma);
-        const kie = (7.4 * Math.exp(0.18 * (twoGamma - 6.84))).toFixed(2);
-        if (effOut) effOut.textContent = `T_WKB = ${tWkb.toExponential(2)} (2γ = ${twoGamma.toFixed(2)})`;
-        if (ratioOut) ratioOut.textContent = `KIE (k_H / k_D) = ${kie}`;
-        if (outR2) outR2.textContent = `k_deam = ${(4.8 * (tWkb / 1.07e-3)).toFixed(2)} s⁻¹`;
-        if (statusOut) statusOut.textContent = vEff <= 16.5 ? "QUANTUM TUNNELING ACTIVE" : "BARRIER SUPPRESSED";
+        if (inlineAtp) inlineAtp.textContent = `drive = ${v0Bar.toFixed(1)} k_B T`;
+        // The readouts on this page are the essay's stated reference values; this lab does not model them, so it only updates the slider labels.
         return;
       }
       if (slug === "p06") {
         const nNe = v0;
         const vmBias = v1;
-        if (atpOut) atpOut.textContent = `${nNe.toFixed(1)} N/N_e`;
+        if (atpOut) atpOut.textContent = `${nNe.toFixed(1)} k_B T`;
         if (vmOut) vmOut.textContent = `${vmBias.toFixed(0)} mV`;
-        if (inlineAtp) inlineAtp.textContent = `N/N_e = ${nNe.toFixed(1)}`;
-        const dRep = (1.0 / Math.pow(nNe, 2.0)) * (1.0 + 0.008 * Math.abs(vmBias));
-        const tauD = (0.42 * Math.pow(nNe / 10.0, 3.0)).toFixed(2);
-        if (effOut) effOut.textContent = `D_rep / D_0 = ${dRep.toExponential(2)} (N/N_e = ${nNe.toFixed(1)})`;
-        if (ratioOut) ratioOut.textContent = `τ_d = ${tauD} ms ( ~ N³)`;
-        if (outR2) outR2.textContent = `a_tube = 85.0 nm`;
-        if (statusOut) statusOut.textContent = nNe <= 20.0 ? "REPTATION PASSAGE VERIFIED" : "ENTANGLEMENT BOTTLENECK";
+        if (inlineAtp) inlineAtp.textContent = `drive = ${nNe.toFixed(1)} k_B T`;
+        // The readouts on this page are the essay's stated reference values; this lab does not model them, so it only updates the slider labels.
         return;
       }
       if (slug === "p07") {
         const hMm = v0;
         const xMode = v1;
         if (atpOut) atpOut.textContent = `h = ${hMm.toFixed(0)} mm`;
-        if (vmOut) vmOut.textContent = `α_X = ${xMode.toFixed(2)}`;
+        if (vmOut) vmOut.textContent = `δ_wing = ${xMode.toFixed(0)}°`;
         if (inlineAtp) inlineAtp.textContent = `h = ${hMm.toFixed(0)} mm`;
-        const porpoising = hMm < 18.0;
-        const cl = porpoising ? 2.15 : 3.42 * (28.0 / Math.max(18.0, hMm)) * (1.0 - 0.28 * xMode);
-        const cd = 0.88 * (1.0 - 0.42 * xMode);
-        const ld = cl / Math.max(0.2, cd);
-        if (effOut) effOut.textContent = `−C_L = ${cl.toFixed(2)} (${(cl * 7.83).toFixed(1)} kN @ 300 km/h)`;
-        if (ratioOut) ratioOut.textContent = `L / D = ${ld.toFixed(2)} (−${(xMode * 42.0).toFixed(0)}% Drag in X-Mode)`;
-        if (outR2) outR2.textContent = `h_crit = 17.5 mm (f_p = 6.2 Hz)`;
-        if (statusOut) statusOut.textContent = porpoising ? "PORPOISING STALL LIMIT CYCLE!" : "VORTEX SEALED · ZERO PORPOISING";
+        // The readouts on this page are the essay's stated reference values; this lab does not model them, so it only updates the slider labels.
         return;
       }
       if (slug === "p08") {
@@ -2210,9 +1957,9 @@ export function initPlateSolvers(scope = document) {
         const qRatio = Math.min(1.12, 0.68 * Math.pow(kCond / 0.45, 0.22));
         const inWindow = dDrop >= 1.4 && dDrop <= 3.8 && qRatio < 0.98;
         if (effOut) effOut.textContent = `49.29° (P_{1/2} Zero)`;
-        if (ratioOut) ratioOut.textContent = `d_drop = ${dDrop.toFixed(2)} μm (Bronchial)`;
-        if (outR2) outR2.textContent = `q / q_R = ${qRatio.toFixed(2)} (${qRatio < 1.0 ? "< 1.00 Stable" : "Fission!"})`;
-        if (statusOut) statusOut.textContent = inWindow ? "97.4% INTACT mRNA · PASS" : "OUTSIDE BRONCHIAL / RAYLEIGH WINDOW";
+        if (ratioOut) ratioOut.textContent = `${dDrop.toFixed(2)} μm (${dDrop >= 1.4 && dDrop <= 3.8 ? "Bronchial Window" : "Outside Bronchial Window"})`;
+        if (outR2) outR2.textContent = `${qRatio.toFixed(2)} (${qRatio < 1.0 ? "< 1.00 Stable" : "≥ 1.00 Fission"})`;
+        if (statusOut) statusOut.textContent = inWindow ? "INSIDE MODEL WINDOW" : "OUTSIDE MODEL WINDOW";
         return;
       }
       if (slug === "p10") {
@@ -2225,10 +1972,10 @@ export function initPlateSolvers(scope = document) {
         const chern = mT > mP ? 1 : 0;
         const gapPct = Math.abs(mT - mP) * 47.3;
         const transPct = chern === 1 ? Math.max(96.5, 99.9 - 0.4 * sigDef) : Math.max(18.0, 92.0 - 85.0 * sigDef);
-        if (effOut) effOut.textContent = `C = ${chern === 1 ? "+1 (Topological)" : "0 (Trivial)"}`;
-        if (ratioOut) ratioOut.textContent = `Δω / ω_0 = ${gapPct.toFixed(1)}%`;
-        if (outR2) outR2.textContent = `T = ${transPct.toFixed(1)}% (σ = ${sigDef.toFixed(2)})`;
-        if (statusOut) statusOut.textContent = chern === 1 ? "BACKSCATTER-FREE · PASS" : "TRIVIAL PHASE · BACKSCATTERING";
+        if (effOut) effOut.textContent = `C = ${chern === 1 ? "+1 (Topological Phase)" : "0 (Trivial Phase)"}`;
+        if (ratioOut) ratioOut.textContent = `${gapPct.toFixed(1)}% (|m_T − m_P| Gap)`;
+        if (outR2) outR2.textContent = `${transPct.toFixed(1)}% (illustrative model)`;
+        if (statusOut) statusOut.textContent = chern === 1 ? "EDGE MODE EXPECTED (C ≠ 0)" : "NO PROTECTED EDGE MODE (C = 0)";
         return;
       }
       if (slug === "p11") {
@@ -2242,10 +1989,11 @@ export function initPlateSolvers(scope = document) {
         const pLog = 0.03 * Math.pow(pPhys / pTh, expHalf);
         const nPhys = 2 * dCode * dCode;
         const safe = pPhys < pTh && pLog <= 1e-12;
-        if (effOut) effOut.textContent = `p_L = ${pLog.toExponential(2)} / cycle`;
-        if (ratioOut) ratioOut.textContent = `2d² = ${nPhys.toLocaleString("en-US")} Physical Qubits / Logical`;
-        if (outR2) outR2.textContent = `FeMoco CAS(54e,54o) · −1.8% Global CO₂`;
-        if (statusOut) statusOut.textContent = safe ? "BELOW THRESHOLD · FEMOCO QEC PASS" : "ABOVE THRESHOLD / LOGICAL DRIFT";
+        const sup = (s) => s.replace(/[-0-9]/g, (c) => "⁻⁰¹²³⁴⁵⁶⁷⁸⁹"["-0123456789".indexOf(c)]);
+        const [mant, ex] = pLog.toExponential(1).split("e");
+        if (effOut) effOut.textContent = `${mant} × 10${sup(String(Number(ex)))} (${pLog <= 1e-12 ? "Fault-Tolerant" : "Above Target"})`;
+        if (ratioOut) ratioOut.textContent = `${nPhys.toLocaleString("en-US")} Physical / Logical`;
+        if (statusOut) statusOut.textContent = safe ? "RESOURCE ESTIMATE ONLY" : "ABOVE THRESHOLD (MODEL)";
         return;
       }
       if (slug === "p12") {
@@ -2253,44 +2001,20 @@ export function initPlateSolvers(scope = document) {
         const reK = v1;
         const kn = Math.pow(10, -negLogKn);
         if (atpOut) atpOut.textContent = `Kn = ${kn.toExponential(1)}`;
-        if (vmOut) vmOut.textContent = `Re = ${(reK * 1000).toLocaleString("en-US")}`;
+        if (vmOut) vmOut.textContent = `Re = ${Math.round(reK * 1000).toLocaleString("en-US")}`;
         if (inlineAtp) inlineAtp.textContent = `Kn = ${kn.toExponential(1)}`;
         const safe = negLogKn >= 2.0;
-        if (effOut) effOut.textContent = `||f_ε − M|| = ${kn.toExponential(1)} O(Kn)`;
-        if (ratioOut) ratioOut.textContent = `ν = 1.51 × 10⁻⁵ m²/s (Chapman–Enskog)`;
-        if (outR2) outR2.textContent = `10 days in < 60 s (GraphCast + PDE Guard)`;
-        if (statusOut) statusOut.textContent = safe ? "NEWTON → NAVIER–STOKES QED" : "RAREFIED KNUDSEN REGIME (Kn > 0.01)";
+        const sup = (s) => s.replace(/[-0-9]/g, (c) => "⁻⁰¹²³⁴⁵⁶⁷⁸⁹"["-0123456789".indexOf(c)]);
+        const [mant, ex] = kn.toExponential(1).split("e");
+        if (ratioOut) ratioOut.textContent = `O(Kn) = ${mant} × 10${sup(String(Number(ex)))} (MODEL SCALING)`;
+        if (statusOut) statusOut.textContent = safe ? "KERNEL CHECKS PASS (NOT A PROOF)" : "RAREFIED REGIME (Kn > 0.01): CONTINUUM LIMIT NOT REACHED";
         return;
       }
 
-      const atpAffinity = v0;
-      const vmPotential = v1;
-
-      const vmFactor = Math.max(0.6, Math.min(1.1, 1.0 - 0.003 * (vmPotential + 30.0)));
-      const rawEff = (atpAffinity / (atpAffinity + 2.5)) * vmFactor;
-      const couplingEfficiency = Math.max(0.05, Math.min(0.95, rawEff));
-
-      const ratio = couplingEfficiency > 0.4
-        ? Math.max(1.02, 1.12 * (0.88 / couplingEfficiency))
-        : Math.min(12.0, 1.12 + 8.0 * Math.pow((0.4 - couplingEfficiency) / 0.35, 2));
-
-      const isCoupled = couplingEfficiency >= 0.75 && ratio <= 2.0;
-      const isLowDrive = couplingEfficiency < 0.25 || ratio > 4.0;
-      const statusText = isCoupled
-        ? "COUPLED BIOENERGETIC HARMONY (Open Channel Conductance)"
-        : isLowDrive
-          ? "MODULATOR OPPORTUNITY: BOOST ATP / ALLOSTERIC COUPLING"
-          : "TRANSITIONAL RESCUE PATHWAY (Partial Conductance)";
-
-      if (atpOut) atpOut.textContent = atpAffinity.toFixed(1) + " k_B T";
-      if (vmOut) vmOut.textContent = vmPotential.toFixed(0) + " mV";
-      if (inlineAtp) inlineAtp.textContent = "Delta_mu_ATP = " + atpAffinity.toFixed(1) + " k_BT";
-      if (effOut) effOut.textContent = couplingEfficiency.toFixed(2) + (isCoupled ? " (WT-Coupled)" : isLowDrive ? " (Modulator Target)" : " (Rescued)");
-      if (ratioOut) ratioOut.textContent = ratio.toFixed(2);
-      if (statusOut) {
-        statusOut.textContent = statusText;
-        statusOut.setAttribute("data-alert", isLowDrive ? "true" : "false");
-      }
+      // P.01: the readouts are the essay's stated reference values; the lab updates the slider labels only.
+      if (atpOut) atpOut.textContent = v0.toFixed(1) + " kJ/mol";
+      if (vmOut) vmOut.textContent = v1.toFixed(0) + " mV";
+      if (inlineAtp) inlineAtp.textContent = "A_ATP = " + v0.toFixed(1) + " kJ/mol";
     };
     physAtpInput.addEventListener("input", updatePhys);
     physVmInput.addEventListener("input", updatePhys);
@@ -2313,12 +2037,21 @@ export function initPlateSolvers(scope = document) {
 
       const n = 0.65;
       const K = 8.5;
+      // Folio E.02 page model: full Herschel–Bulkley pipe flow, τ(r) = τ_w r / R, shear rate ((τ − τ_0)/K)^(1/n)
+      // outside the plug, Q = 2π ∫ u(r) r dr, integrated numerically. No wall lubrication layer is modelled.
       let qM3Hr = 0.0;
       if (!needsSuperplasticizer) {
-        const uPlug = (n / (n + 1.0)) * Math.pow(dpPaM / (2.0 * K), 1.0 / n) * Math.pow(pipeRadiusM * (1.0 - plugRatio), (n + 1.0) / n);
-        const qPlug = Math.PI * Math.pow(pipeRadiusM * plugRatio, 2.0) * uPlug;
-        const qAnnulus = Math.PI * Math.pow(pipeRadiusM, 2.0) * uPlug * 0.62;
-        qM3Hr = (qPlug + qAnnulus) * 3600.0;
+        const steps = 400;
+        const dr = pipeRadiusM / steps;
+        let u = 0.0;
+        let q = 0.0;
+        for (let i = steps; i > 0; i -= 1) {
+          const r = (i - 0.5) * dr;
+          const tau = (tauWall * r) / pipeRadiusM;
+          if (tau > tau0) u += Math.pow((tau - tau0) / K, 1.0 / n) * dr;
+          q += 2.0 * Math.PI * u * r * dr;
+        }
+        qM3Hr = q * 3600.0;
       }
 
       const tau0Val = document.getElementById("tp-e02-tau0-val");
@@ -2335,11 +2068,11 @@ export function initPlateSolvers(scope = document) {
       if (dpVal) dpVal.textContent = dpKpa.toFixed(2) + " kPa/m";
       if (wallOut) wallOut.textContent = tauWall.toFixed(1) + " Pa";
       if (plugOut) plugOut.textContent = (plugRatio * 100).toFixed(1) + "% (" + (plugRatio * pipeRadiusM * 1000).toFixed(1) + " mm)";
-      if (flowOut) flowOut.textContent = needsSuperplasticizer ? "0.0 m³/hr (Dose PCE)" : qM3Hr.toFixed(1) + " m³/hr (" + (qM3Hr * 1.308).toFixed(1) + " yd³/hr)";
+      if (flowOut) flowOut.textContent = needsSuperplasticizer ? "0.0 m³/hr (τ_w ≤ τ_0, model)" : qM3Hr.toFixed(1) + " m³/hr (" + (qM3Hr * 1.308).toFixed(1) + " yd³/hr) · model, K = 8.5 Pa·sⁿ, n = 0.65";
       if (statusOut) {
         statusOut.textContent = needsSuperplasticizer
-          ? "RHEOLOGY TUNING: DOSE PCE DISPERSANT OR RAISE ΔP/L (τ_w > τ_0)"
-          : "STEADY MOBILIZED PUMPING (r_p/R = " + (plugRatio * 100).toFixed(0) + "% · Ready to Cast)";
+          ? "NOT MOBILIZED IN THE MODEL (τ_w ≤ τ_0)"
+          : "MOBILIZED IN THE MODEL (τ_w > τ_0)";
       }
       if (statusBox) statusBox.setAttribute("data-alert", needsSuperplasticizer ? "true" : "false");
 
@@ -2356,7 +2089,7 @@ export function initPlateSolvers(scope = document) {
       }
       if (plugRadiusText) {
         plugRadiusText.textContent = needsSuperplasticizer
-          ? "Yield Threshold: Dose PCE to Mobilize Core (r_p = R)"
+          ? "Plug fills the pipe (τ_w ≤ τ_0, model)"
           : "Plug Core: r_p = " + (plugRatio * pipeRadiusM * 1000).toFixed(1) + " mm (" + (plugRatio * 100).toFixed(0) + "% R)";
       }
       if (velocityProfilePath && velocityPlugLine) {
@@ -2423,13 +2156,13 @@ export function initPlateSolvers(scope = document) {
       if (dqVal) dqVal.textContent = dq.toFixed(0) + " kPa";
       if (cvVal) cvVal.textContent = cv.toFixed(1) + " m²/yr";
       if (inlineDq) inlineDq.textContent = "Delta_q = " + dq.toFixed(0) + " kPa";
-      if (uOut) uOut.textContent = (uAvgClamped * 100).toFixed(1) + "% (S_c = " + settlementMm.toFixed(1) + " mm)";
-      if (qultOut) qultOut.textContent = qUlt.toFixed(0) + " kN (FS = " + fs.toFixed(2) + ")";
-      if (ruOut) ruOut.textContent = "r_u = " + ru.toFixed(2) + " (σ'_v = " + sigmaVPrime.toFixed(0) + " kPa)";
+      if (uOut) uOut.textContent = (uAvgClamped * 100).toFixed(1) + "% (S_c = " + settlementMm.toFixed(1) + " mm, model)";
+      if (qultOut) qultOut.textContent = Math.round(qUlt).toLocaleString("en-US") + " kN (FS = " + fs.toFixed(2) + ", model)";
+      if (ruOut) ruOut.textContent = ru.toFixed(2) + " (σ'_v = " + sigmaVPrime.toFixed(0) + " kPa)";
       if (statusOut) {
         statusOut.textContent = needsWickDrains
-          ? "DESIGN WINDOW: ADD PVD WICK DRAINS TO ACCELERATE c_v (FS ≥ 2.0)"
-          : "SAFE CFA BEARING · CONSOLIDATED (FS = " + fs.toFixed(2) + ")";
+          ? "MODEL FS < 2.0 OR r_u ≥ 0.70 · ILLUSTRATIVE, NOT A SITE DESIGN"
+          : "MODEL FS ≥ 2.0 · ILLUSTRATIVE, NOT A SITE DESIGN";
       }
       if (statusBox) statusBox.setAttribute("data-alert", needsWickDrains ? "true" : "false");
 
@@ -2457,7 +2190,17 @@ export function initPlateSolvers(scope = document) {
       const sds = parseFloat(e06SdsInput.value) || 1.00;
       const betaEff = parseFloat(e06DampInput.value) || 0.22;
       const tM = 2.85;
-      const bM = Math.max(0.8, Math.pow(betaEff / 0.05, 0.30));
+      const bTable = [[0.02, 0.8], [0.05, 1.0], [0.10, 1.2], [0.20, 1.5], [0.30, 1.7], [0.40, 1.9], [0.50, 2.0]];
+      const b = Math.max(0.02, Math.min(0.50, betaEff));
+      let bM = 2.0;
+      for (let i = 1; i < bTable.length; i += 1) {
+        if (b <= bTable[i][0]) {
+          const [x0, y0] = bTable[i - 1];
+          const [x1, y1] = bTable[i];
+          bM = y0 + ((b - x0) / (x1 - x0)) * (y1 - y0);
+          break;
+        }
+      }
       const sd1 = sds * 0.60;
       const gMm = 9810.0;
       const dMMm = (gMm * sd1 * tM) / (4.0 * Math.PI * Math.PI * bM);
@@ -2478,12 +2221,12 @@ export function initPlateSolvers(scope = document) {
       if (dampVal) dampVal.textContent = (betaEff * 100).toFixed(1) + "%";
       if (inlineSds) inlineSds.textContent = "S_DS = " + sds.toFixed(2) + " g";
       if (tmOut) tmOut.textContent = "T_M = " + tM.toFixed(2) + " s (B_M = " + bM.toFixed(2) + ")";
-      if (dmOut) dmOut.textContent = dMMm.toFixed(0) + " mm (Moat 400 mm)";
-      if (csOut) csOut.textContent = "V_b / W = " + csIsolated.toFixed(3) + " g (-" + reductionPct.toFixed(0) + "%)";
+      if (dmOut) dmOut.textContent = dMMm.toFixed(0) + " mm (assumed moat 400 mm)";
+      if (csOut) csOut.textContent = "V_b / W = " + csIsolated.toFixed(3) + " (−" + reductionPct.toFixed(0) + "% vs S_DS)";
       if (statusOut) {
         statusOut.textContent = moatExceeded
-          ? "DESIGN TUNING: INCREASE LEAD-PLUG DAMPING β_eff OR MOAT CLEARANCE"
-          : "IMMEDIATE OCCUPANCY RESILIENCE (D_M = " + dMMm.toFixed(0) + " mm · Hospital Safe)";
+          ? "EXCEEDS ASSUMED MOAT · NOT A CODE CHECK"
+          : "WITHIN ASSUMED MOAT · NOT A CODE CHECK";
       }
       if (statusBox) statusBox.setAttribute("data-alert", moatExceeded ? "true" : "false");
 

@@ -14,11 +14,9 @@ FOLIO = {'slug': 'x05',
  'title': 'Topology-Optimized Structural Struts to Watertight 3MF & Build-Plate Overhang Audit',
  'title_es': 'Puntales Estructurales Optimizados por Topología a 3MF Hermético y Auditoría de '
              'Voladizo',
- 'subtitle': 'How to convert variable-density SIMP structural struts into guaranteed 2-manifold '
-             '3MF and GLB meshes while auditing frustum volume conservation and build-plate '
+ 'subtitle': 'How to convert variable-density SIMP structural struts into 3MF and GLB meshes, check them for closed 2-manifold topology, and audit frustum volume conservation and build-plate '
              'overhang angles θ = arccos(−n · ẑ) in pure Python.',
- 'subtitle_es': 'Cómo convertir puntales estructurales SIMP de densidad variable en mallas 3MF y '
-                'GLB 2-variedad garantizadas auditando la conservación de volumen de tronco '
+ 'subtitle_es': 'Cómo convertir puntales estructurales SIMP de densidad variable en mallas 3MF y GLB, revisar que sean 2-variedades cerradas y auditar la conservación de volumen de tronco '
                 'piramidal y los ángulos de voladizo θ = arccos(−n · ẑ) en Python puro.',
  'why_en': 'When engineers and makers run topology optimization (like the Bendsøe–Sigmund SIMP '
            'method in Folio E.11), raw voxel density fields often turn into jagged, non-manifold '
@@ -224,7 +222,7 @@ FOLIO = {'slug': 'x05',
                       'slender bone-like struts, the resulting digital models frequently contain '
                       'broken edges, holes, and microscopic cracks. This browser workbench takes '
                       'variable-density structural struts and builds them directly as clean, '
-                      'watertight solid bodies with mathematically guaranteed outer skins. You can '
+                      'watertight solid bodies whose outer skins are checked for closure. You can '
                       'examine every junction live in your browser, audit the exact volume of '
                       'metal or plastic required, and ensure the side walls never lean so steeply '
                       'that a three-dimensional printer requires wasteful temporary support '
@@ -326,8 +324,7 @@ FOLIO = {'slug': 'x05',
              'Cuando los programas de optimización eliminan material sobrante para dejar puntales '
              'delgados parecidos a huesos, las mallas resultantes suelen contener agujeros, caras '
              'invertidas y grietas microscópicas. Este entorno interactivo genera puntales '
-             'estructurales de sección variable garantizando cuerpos sólidos herméticos sin un '
-             'solo error topológico. Desde su navegador, ustedes pueden ajustar las dimensiones '
+             'estructurales de sección variable y revisa que formen cuerpos sólidos herméticos. Desde su navegador, ustedes pueden ajustar las dimensiones '
              'del puntal en tiempo real, auditar el volumen exacto de material necesario y '
              'verificar que las paredes nunca se inclinen tanto como para requerir soportes '
              'temporales que desperdicien filamento o resina. Una vez aprobada la geometría, '
@@ -345,9 +342,7 @@ FOLIO = {'slug': 'x05',
             'arctan(Δw / Δz) resulta en 14.04°, manteniéndose holgadamente por debajo del umbral '
             'crítico de 45.0°. Simultáneamente, la estructura de semi-aristas verifica el cierre '
             '2-variedad bajo la característica de Euler–Poincaré χ = V − E + F = 2 y la condición '
-            'de frontera cerrada 2E = 3F. Esta validación analítica garantiza que los archivos 3MF '
-            'y STEP exportados mantengan propiedades físicas verificables para simulaciones '
-            'mecánicas posteriores.',
+            'de frontera cerrada 2E = 3F. Esta revisión analítica comprueba esas condiciones en los archivos 3MF y STEP exportados antes de usarlos en simulaciones mecánicas.',
  'distill_diagram': {'analogy_title': 'The Tapered Trunk & Brick Corbel',
                      'analogy_sub': 'Corbel steps and flared branches stand firm without '
                                     'falsework.',

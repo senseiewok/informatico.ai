@@ -41,7 +41,7 @@ FOLIO = {'folio_id': 'P.12',
              {'label': 'Macroscopic Reynolds Number (Re / 10³)',
               'min': 0.5,
               'max': 8.0,
-              'step': 0.5,
+              'step': 0.1,
               'value': 4.2,
               'unit': '×10³ Re'}],
  'steps': ['Stage 1 (Level 1 — Mesoscopic Markovian TUR & Newtonian Hard Spheres): On non-equilibrium '

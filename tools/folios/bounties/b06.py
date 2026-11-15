@@ -15,10 +15,10 @@ FOLIO = {'slug': 'b06',
           '(ITensors.jl + NetKet)',
  'title_es': 'Física Gauge Verificada en PhysLean y Criticidad Cuántica con Redes Tensoriales '
              '(ITensors.jl + NetKet)',
- 'subtitle': 'How HEPLean/PhysLean certifies Standard Model U(1)_Y × SU(2)_L × SU(3)_C chiral '
+ 'subtitle': 'How HEPLean/PhysLean formalizes Standard Model U(1)_Y × SU(2)_L × SU(3)_C chiral '
              'anomaly cancellation in Lean 4 while ITensors.jl and NetKet bound critical '
              'entanglement entropy.',
- 'subtitle_es': 'Cómo HEPLean/PhysLean certifica en Lean 4 la cancelación de anomalías quirales '
+ 'subtitle_es': 'Cómo HEPLean/PhysLean formaliza en Lean 4 la cancelación de anomalías quirales '
                 'del Modelo Estándar mientras ITensors.jl y NetKet acotan la entropía de '
                 'entrelazamiento crítico.',
  'why_en': 'Why does the electric charge of a proton exactly cancel the charge of an electron, '
@@ -397,8 +397,8 @@ FOLIO = {'slug': 'b06',
                     'proved via Conformal Field Theory that critical 1D quantum chains only grow '
                     'their entanglement logarithmically as S_vN(L) = (c/6) ln(L) + s₁. Today, '
                     "between 2022 and 2026, Joseph Tooby-Smith's PhysLean (HEPLean) library "
-                    'certifies Standard Model anomaly cancellation with zero sorry axioms in Lean '
-                    "4, while Matthew Fishman, Steven White, and Miles Stoudenmire's ITensors.jl "
+                    'formalizes Standard Model anomaly cancellation conditions in Lean 4 (as its '
+                    "authors describe it; not re-checked here), while Matthew Fishman, Steven White, and Miles Stoudenmire's ITensors.jl "
                     'and NetKet compress critical quantum chains into Matrix Product States.',
  'easy_history_es': 'En 1969, los físicos Stephen Adler, John Bell y Roman Jackiw descubrieron una '
                     'trampa inquietante en el corazón de la teoría cuántica de campos. Incluso '
@@ -422,8 +422,8 @@ FOLIO = {'slug': 'b06',
                     'y John Cardy demostraron que en un punto crítico cuántico 1D la entropía de '
                     'entrelazamiento crece solo logarítmicamente como S_vN(L) = (c/6) ln(L) + s₁. '
                     'Hoy, entre 2022 y 2026, la biblioteca PhysLean (HEPLean) de Joseph '
-                    'Tooby-Smith certifica formalmente en Lean 4 la cancelación de anomalías del '
-                    'Modelo Estándar sin un solo sorry, mientras ITensors.jl y NetKet comprimen '
+                    'Tooby-Smith formaliza en Lean 4 las condiciones de cancelación de anomalías del '
+                    'Modelo Estándar (según la describen sus autores; no se revisó aquí), mientras ITensors.jl y NetKet comprimen '
                     'cadenas críticas en estados de producto matricial (MPS).',
  'history_milestones': [{'year': '1969',
                          'who_en': 'Stephen Adler, John Bell & Roman Jackiw',
@@ -618,8 +618,8 @@ FOLIO = {'slug': 'b06',
                      'convergencia entre la conceptualización matemática humana y el rigor '
                      'computacional verificado por máquina. Los físicos teóricos proponen '
                      'extensiones del Modelo Estándar y arquitecturas de redes tensoriales, '
-                     'mientras que PhysLean en Lean 4 certifica cada identidad racional de '
-                     'hipercarga mediante tácticas formales (norm_num, ring) sin errores de signo, '
+                     'mientras que PhysLean en Lean 4 comprueba identidades racionales de '
+                     'hipercarga mediante tácticas formales (norm_num, ring), '
                      'e ITensors.jl junto con NetKet optimizan estados cuánticos variacionales y '
                      'estados de producto matricial.',
  'act4_deepening_es': 'La piedra angular de la credibilidad en física computacional es la '

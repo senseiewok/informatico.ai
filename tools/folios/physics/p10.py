@@ -7,7 +7,7 @@ SLUG = 'p10'
 PILLAR = 'physics'
 
 FOLIO = {'category_code': 'P',
- 'colophon': {'benchmarks': 'm_T = 0.55 > m_P = 0.25 ⇒ C = +1 · Δω/ω_0 = 14.2% · T_forward = 99.8%',
+ 'colophon': {'benchmarks': 'm_T = 0.55 > m_P = 0.25 ⇒ C = +1 · Δω/ω_0 = 14.2% · T_forward = 99.8% (illustrative model)',
               'bridge': 'Synthesizes E.03/A.05/P.08 · Topological Ring Biosensor ↔ '
                         'Single-LNP Sizing',
               'identifier': 'P.10 · Haldane–Raghu Topological Photonics & Berry Curvature',
@@ -29,8 +29,8 @@ FOLIO = {'category_code': 'P',
  'reading_time': '22 MIN READ',
  'readouts': [{'label': 'Topological Chern Invariant', 'value': 'C = +1 (Topological Phase)'},
               {'label': 'Relative Bandgap (Δω / ω_0)', 'value': '14.2% (|m_T − m_P| Gap)'},
-              {'label': 'Forward Defect Transmission', 'value': '99.8% (vs 34.2% Trivial)'},
-              {'label': 'Bulk-Boundary Verdict', 'value': 'BACKSCATTER-FREE · PASS'}],
+              {'label': 'Forward Defect Transmission', 'value': '99.8% (illustrative model)'},
+              {'label': 'Bulk-Boundary Verdict', 'value': 'EDGE MODE EXPECTED (C ≠ 0)'}],
  'revisions': [{'date': '2026-11-03',
                 'edition': 'REV 1.0',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
@@ -102,9 +102,7 @@ FOLIO = {'category_code': 'P',
            'Stage 3 (Quantized Berry Flux & Chern Number C = +1): Integrating Berry curvature '
            'Ω_-(k) across the Brillouin zone yields C = +1, guaranteeing a chiral gapless boundary '
            'state.',
-           'Stage 4 (Backscatter-Free 90° Bend & Defect Bypass): Even under strong structural '
-           'disorder σ_def = 0.30, the one-way edge wave maintains 99.8% forward transmission (vs. '
-           '34% in trivial guides).'],
+           'Stage 4 (Backscatter-Free 90° Bend & Defect Bypass): In the folio\'s illustrative model, with disorder σ_def = 0.30 the one-way edge wave keeps 99.8% forward transmission; the figure is not taken from an experiment.'],
  'subtitle': 'Synthesizing the wave-physics archive of Folios E.03, A.05, A.08, and P.08: how '
              "Haldane & Raghu's non-zero Berry curvature Ω_n(k) and integer Chern numbers route "
              'waves around sharp defects with zero reflection.',
@@ -332,8 +330,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                      'force_b_title': 'Lattice Defect Disorder σ_def',
                      'force_b_sub': 'Introduces sharp 90-degree bends and missing lattice rods',
                      'threshold_title': 'Chern Inversion Transition |m_T| > |m_P|',
-                     'threshold_pass': 'Quantized Chern C = +1 edge highway with 99.8% '
-                                       'transmission',
+                     'threshold_pass': 'Quantized Chern C = +1 edge mode (model transmission 99.8%)',
                      'threshold_fail': 'Trivial Anderson localization with 65% destructive '
                                        'reflection'},
  'act2_deepening': 'The deeper mathematical mechanism linking bulk topology to boundary transport '

@@ -30,7 +30,7 @@ FOLIO = {'category_code': 'P',
  'readouts': [{'label': 'Taylor Half-Angle (θ_T)', 'value': '49.29° (P_{1/2} Zero)'},
               {'label': 'Monodisperse Droplet (d_drop)', 'value': '2.42 μm (Bronchial Window)'},
               {'label': 'Rayleigh Charge Ratio (q/q_R)', 'value': '0.68 (< 1.00 Stable)'},
-              {'label': 'Aerosol & LNP Verdict', 'value': '97.4% INTACT mRNA · PASS'}],
+              {'label': 'Aerosol & LNP Verdict', 'value': 'INSIDE MODEL WINDOW'}],
  'revisions': [{'date': '2026-11-03',
                 'edition': 'REV 1.0',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified root '
@@ -105,9 +105,7 @@ FOLIO = {'category_code': 'P',
            'Stage 3 (Monodisperse Capillary Breakup in the 1.5–3.5 μm Window): At Q = 1.20 μL/min '
            'and K = 0.45 S/m, jet varicose breakup yields d_drop = 2.42 μm (GSD = 1.18) for deep '
            'bronchial deposition.',
-           'Stage 4 (Rayleigh Fission Guard & Intact 4.5 kb mRNA Survival, Continuing P.06): Holds '
-           'droplet charge ratio q / q_R = 0.68 < 1.00, preserving 97.4% LNP '
-           'lipid-bilayer encapsulation.'],
+           'Stage 4 (Rayleigh Fission Guard & Intact 4.5 kb mRNA Survival, Continuing P.06): Holds droplet charge ratio q / q_R = 0.68 < 1.00, below the Rayleigh limit. How much encapsulated cargo survives spraying is not modelled here.'],
  'subtitle': 'Completing the biophysical delivery sequence of Folios P.03, P.04, and P.06: how Sir '
              "Geoffrey Taylor's P_{1/2}(cos θ_0) = 0 equilibrium cone and Rayleigh charge limits "
              'govern precision aerosol generation.',

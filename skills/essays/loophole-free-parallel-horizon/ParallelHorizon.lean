@@ -144,7 +144,7 @@ theorem orthogonal_cross_exact_null :
   constructor
   · intro dSq hSq scale
     unfold r_same_sq_scaled r_diff_sq_scaled
-    omega
+    grind
   · intro v_iso
     unfold cross_phase4
     omega
@@ -215,7 +215,7 @@ theorem hybrid_dephasing_margin_monotonicity :
     omega
   · intro gM2 s2b slack hbar_gamma
     rw [Nat.mul_add]
-    omega
+    grind
 
 /-- 7. Universal Parallel Hybrid Horizon & Loophole-Free `75 µm` Quantum Island Bounds (1 nm integer scale).
     Encodes the `DERIVED (NOT MEASURED)` corridor from `σ_95 = 33,079 nm` (`33.08 µm` Eöt-Wash recast):

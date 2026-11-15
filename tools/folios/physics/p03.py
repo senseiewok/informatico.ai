@@ -79,10 +79,7 @@ FOLIO = {'category_code': 'P',
               'unit': 'nm',
               'value': 65.0}],
  'slug': 'p03',
- 'spec_plate': {'body': 'De Gennes reptation scaling and generalized Stokes-Einstein relation '
-                        '(GSER) predicting size-exclusion cutoff and transport regimes for '
-                        'non-viral nucleic acid carriers in certified clean air delivery test '
-                        'loops.',
+ 'spec_plate': {'body': 'Illustrative bench sketch, not a tested product: an aerosol particle-tracking rheometer with a HEPA-filtered air loop, used to read the de Gennes and generalized Stokes-Einstein (GSER) scalings discussed in this folio.',
                 'division': 'CSI MASTERFORMAT 11 53 43 / 23 41 33',
                 'meta': 'Lai et al. PNAS 2007 · Suk et al. Biomaterials 2009 · EN 1822 H14 HEPA '
                         '99.995% Retention',

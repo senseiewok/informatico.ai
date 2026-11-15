@@ -51,6 +51,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 
 TOOLS_DIR = Path(__file__).resolve().parents[2]
 if str(TOOLS_DIR) not in sys.path:
@@ -82,6 +83,9 @@ _SUB_SUP_DIGITS = str.maketrans("⁰¹²³⁴⁵⁶⁷⁸⁹⁻₀₁₂₃₄�
 _NUM_RE = re.compile(r"(?<![A-Za-z])[-−]?\d+(?:,\d{3})*(?:\.\d+)?(?:[eE][-−+]?\d+)?")
 
 _KERNEL_MEMO: dict[str, object] = {}
+
+
+_LEAN_SECONDS = [0.0]  # wall time spent in the Lean compiler, read by the verifier's runtime budget
 
 
 def extract_number_tokens(text: str) -> list[str]:
@@ -545,11 +549,15 @@ def verify_lean_seven_gate_crown(lean_path: Path | None = None, planted_defect: 
                 tf.write(lean_raw)
                 tmp_path = Path(tf.name)
             try:
+                _t_lean = time.perf_counter()
                 proc = subprocess.run([lean_bin, str(tmp_path)], capture_output=True, text=True, timeout=60, check=False)
+                _LEAN_SECONDS[0] += time.perf_counter() - _t_lean
             finally:
                 tmp_path.unlink(missing_ok=True)
         else:
+            _t_lean = time.perf_counter()
             proc = subprocess.run([lean_bin, str(target)], capture_output=True, text=True, timeout=60, check=False)
+            _LEAN_SECONDS[0] += time.perf_counter() - _t_lean
         combined_out = (proc.stdout + proc.stderr).strip()
         lean_compiler_ok = proc.returncode == 0 and "warning:" not in combined_out
         lean_compiler_stderr = combined_out[:400]

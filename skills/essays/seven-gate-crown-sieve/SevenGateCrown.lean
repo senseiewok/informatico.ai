@@ -82,25 +82,25 @@ end SIDim
 
 /-- Self-contained `Int` ring helpers built strictly from core Prelude `Int.mul_add`,
     `Int.mul_comm`, `Int.mul_assoc`, `Int.neg_mul_neg`, `Int.ofNat`, `Int.negSucc`,
-    `Nat.succ`, `Or.inl`, `Or.inr`, and `omega`. -/
+    `Nat.succ`, `Or.inl`, `Or.inr`, `omega`, and `grind`. -/
 def sq (x : Int) : Int := x * x
 def cube (x : Int) : Int := x * (x * x)
 
-def ofNat_mul_ofNat_eq (a b : Nat) : Int.ofNat a * Int.ofNat b = Int.ofNat (a * b) := rfl
+abbrev ofNat_mul_ofNat_eq (a b : Nat) : Int.ofNat a * Int.ofNat b = Int.ofNat (a * b) := rfl
 
-def add_mul_int (a b c : Int) : (a + b) * c = a * c + b * c := by
+abbrev add_mul_int (a b c : Int) : (a + b) * c = a * c + b * c := by
   rw [Int.mul_comm (a + b) c, Int.mul_add c a b, Int.mul_comm c a, Int.mul_comm c b]
 
-def mul_sub_int (a b c : Int) : a * (b - c) = a * b - a * c := by
+abbrev mul_sub_int (a b c : Int) : a * (b - c) = a * b - a * c := by
   have hbc : (b - c) + c = b := by omega
   have hm : a * ((b - c) + c) = a * (b - c) + a * c := Int.mul_add a (b - c) c
   rw [hbc] at hm
   omega
 
-def sub_mul_int (a b c : Int) : (a - b) * c = a * c - b * c := by
+abbrev sub_mul_int (a b c : Int) : (a - b) * c = a * c - b * c := by
   rw [Int.mul_comm (a - b) c, mul_sub_int c a b, Int.mul_comm c a, Int.mul_comm c b]
 
-def neg_mul_int (a b : Int) : (-a) * b = -(a * b) := by
+abbrev neg_mul_int (a b : Int) : (-a) * b = -(a * b) := by
   have h0b : (0 : Int) * b = 0 := by
     have h00 : ((0 : Int) + 0) * b = (0 : Int) * b + (0 : Int) * b := add_mul_int 0 0 b
     have hzz : (0 : Int) + 0 = 0 := rfl
@@ -113,28 +113,28 @@ def neg_mul_int (a b : Int) : (-a) * b = -(a * b) := by
   rw [hz, h0b] at hexp
   omega
 
-def mul_neg_int (a b : Int) : a * (-b) = -(a * b) := by
+abbrev mul_neg_int (a b : Int) : a * (-b) = -(a * b) := by
   rw [Int.mul_comm a (-b), neg_mul_int b a, Int.mul_comm b a]
 
-def mul_left_comm_int (a b c : Int) : a * (b * c) = b * (a * c) := by
+abbrev mul_left_comm_int (a b c : Int) : a * (b * c) = b * (a * c) := by
   rw [← Int.mul_assoc a b c, Int.mul_comm a b, Int.mul_assoc b a c]
 
-def mul_self_pair (x y : Int) : (x * y) * (x * y) = (x * x) * (y * y) := by
-  rw [Int.mul_assoc (x * y) x y, mul_left_comm_int y x y, ← Int.mul_assoc x x (y * y)]
+abbrev mul_self_pair (x y : Int) : (x * y) * (x * y) = (x * x) * (y * y) := by
+  grind
 
-def sq_nonneg_int (x : Int) : 0 ≤ sq x := by
+abbrev sq_nonneg_int (x : Int) : 0 ≤ sq x := by
   unfold sq
   cases x with
   | ofNat n =>
     rw [ofNat_mul_ofNat_eq n n]
-    omega
+    grind
   | negSucc n =>
-    have hn : Int.negSucc n = -Int.ofNat (Nat.succ n) := by omega
+    have hn : Int.negSucc n = -Int.ofNat (Nat.succ n) := by grind
     rw [hn, Int.neg_mul_neg (Int.ofNat (Nat.succ n)) (Int.ofNat (Nat.succ n)),
         ofNat_mul_ofNat_eq (Nat.succ n) (Nat.succ n)]
-    omega
+    grind
 
-def mul_eq_zero_nat (m n : Nat) : m * n = 0 → m = 0 ∨ n = 0 := by
+abbrev mul_eq_zero_nat (m n : Nat) : m * n = 0 → m = 0 ∨ n = 0 := by
   cases m with
   | zero =>
     intro _
@@ -148,14 +148,14 @@ def mul_eq_zero_nat (m n : Nat) : m * n = 0 → m = 0 ∨ n = 0 := by
       intro h
       cases h
 
-def mul_eq_zero_int (a b : Int) : a * b = 0 → a = 0 ∨ b = 0 := by
+abbrev mul_eq_zero_int (a b : Int) : a * b = 0 → a = 0 ∨ b = 0 := by
   cases a with
   | ofNat m =>
     cases b with
     | ofNat n =>
       intro h
       rw [ofNat_mul_ofNat_eq m n] at h
-      have hmn : m * n = 0 := by omega
+      have hmn : m * n = 0 := by grind
       cases mul_eq_zero_nat m n hmn with
       | inl hm =>
         rw [hm]
@@ -165,9 +165,9 @@ def mul_eq_zero_int (a b : Int) : a * b = 0 → a = 0 ∨ b = 0 := by
         exact Or.inr rfl
     | negSucc n =>
       intro h
-      have hb : Int.negSucc n = -Int.ofNat (Nat.succ n) := by omega
+      have hb : Int.negSucc n = -Int.ofNat (Nat.succ n) := by grind
       rw [hb, mul_neg_int (Int.ofNat m) (Int.ofNat (Nat.succ n)), ofNat_mul_ofNat_eq m (Nat.succ n)] at h
-      have hmn : m * Nat.succ n = 0 := by omega
+      have hmn : m * Nat.succ n = 0 := by grind
       cases mul_eq_zero_nat m (Nat.succ n) hmn with
       | inl hm =>
         rw [hm]
@@ -178,9 +178,9 @@ def mul_eq_zero_int (a b : Int) : a * b = 0 → a = 0 ∨ b = 0 := by
     cases b with
     | ofNat n =>
       intro h
-      have ha : Int.negSucc m = -Int.ofNat (Nat.succ m) := by omega
+      have ha : Int.negSucc m = -Int.ofNat (Nat.succ m) := by grind
       rw [ha, neg_mul_int (Int.ofNat (Nat.succ m)) (Int.ofNat n), ofNat_mul_ofNat_eq (Nat.succ m) n] at h
-      have hmn : Nat.succ m * n = 0 := by omega
+      have hmn : Nat.succ m * n = 0 := by grind
       cases mul_eq_zero_nat (Nat.succ m) n hmn with
       | inl hm =>
         cases hm
@@ -189,22 +189,22 @@ def mul_eq_zero_int (a b : Int) : a * b = 0 → a = 0 ∨ b = 0 := by
         exact Or.inr rfl
     | negSucc n =>
       intro h
-      have ha : Int.negSucc m = -Int.ofNat (Nat.succ m) := by omega
-      have hb : Int.negSucc n = -Int.ofNat (Nat.succ n) := by omega
+      have ha : Int.negSucc m = -Int.ofNat (Nat.succ m) := by grind
+      have hb : Int.negSucc n = -Int.ofNat (Nat.succ n) := by grind
       rw [ha, hb, Int.neg_mul_neg (Int.ofNat (Nat.succ m)) (Int.ofNat (Nat.succ n)),
           ofNat_mul_ofNat_eq (Nat.succ m) (Nat.succ n)] at h
-      have hmn : Nat.succ m * Nat.succ n = 0 := by omega
+      have hmn : Nat.succ m * Nat.succ n = 0 := by grind
       cases mul_eq_zero_nat (Nat.succ m) (Nat.succ n) hmn with
       | inl hm =>
         cases hm
       | inr hn =>
         cases hn
 
-def cube_neg_int (x : Int) : cube (-x) = -cube x := by
+abbrev cube_neg_int (x : Int) : cube (-x) = -cube x := by
   unfold cube
   rw [Int.neg_mul_neg x x, neg_mul_int x (x * x)]
 
-def cube_add_two (u : Int) :
+abbrev cube_add_two (u : Int) :
     cube (u + 2) = cube u + 6 * sq u + 12 * u + 8 := by
   unfold cube sq
   rw [add_mul_int u 2 (u + 2), Int.mul_add u u 2, Int.mul_add 2 u 2, Int.mul_comm u 2]
@@ -220,7 +220,7 @@ def cube_add_two (u : Int) :
   rw [h24]
   omega
 
-def three_cube_pair_sm (u : Int) :
+abbrev three_cube_pair_sm (u : Int) :
     3 * cube u + 3 * cube (-(u + 2)) = -(18 * sq u) - 36 * u - 24 := by
   rw [cube_neg_int (u + 2), cube_add_two u, mul_neg_int 3 (cube u + 6 * sq u + 12 * u + 8)]
   rw [Int.mul_add 3 (cube u + 6 * sq u + 12 * u) 8]
@@ -233,7 +233,7 @@ def three_cube_pair_sm (u : Int) :
   rw [h36, h312, h38]
   omega
 
-def quad_sm_roots (u : Int) :
+abbrev quad_sm_roots (u : Int) :
     (u + 4) * (u - 2) = sq u + 2 * u - 8 := by
   unfold sq
   rw [add_mul_int u 4 (u - 2), mul_sub_int u u 2, mul_sub_int 4 u 2, Int.mul_comm u 2]
@@ -397,7 +397,7 @@ theorem vacuum_length_scale_window_ordering :
     rho_lambda_planck18_fJm3 < rho_lambda_kapner_fJm3 := by
   refine ⟨by decide, by decide, by decide, by decide, by decide, by decide, by decide, by decide⟩
 
-def sq_add_one (u : Int) : sq (u + 1) = sq u + 2 * u + 1 := by
+abbrev sq_add_one (u : Int) : sq (u + 1) = sq u + 2 * u + 1 := by
   unfold sq
   rw [add_mul_int u 1 (u + 1), Int.mul_add u u 1, Int.mul_add 1 u 1, Int.mul_comm u 1]
   omega
@@ -420,7 +420,7 @@ theorem stelle_ghost_vs_weierstrass_positivity :
     rw [sq_add_one u] at hsq
     omega
 
-def sq_three_sub_twenty (u : Int) :
+abbrev sq_three_sub_twenty (u : Int) :
     sq (3 * u - 20) = 9 * sq u - 120 * u + 400 := by
   unfold sq
   rw [sub_mul_int (3 * u) 20 (3 * u - 20), mul_sub_int (3 * u) (3 * u) 20, mul_sub_int 20 (3 * u) 20]

@@ -6,7 +6,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ---
 # Monge–Kantorovich Optimal Transport, Benamou–Brenier Wasserstein-2 Geodesic Fluid Dynamics, Sinkhorn Entropic Regularization & Flow Matching (Folio M.09)
 
-A plain-text companion to the essay at https://informatico.ai/math/m09/ (`M.09 · Benamou–Brenier Wasserstein-2 Optimal Transport`, `REV 1.0`, redated `2026-11-03`).
+A plain-text companion to the essay at https://informatico.ai/math/m09/ (`M.09 · Benamou–Brenier Wasserstein-2 Optimal Transport`, `REV 1.1`, redated `2026-11-14`).
 
 ## The governing relation
 `W_2²(μ_0, μ_1) = inf ∫_0^1 ∫ ρ|v|² dx dt · ∂_t ρ + ∇·(ρ∇ψ) = 0 · ∂_t ψ + ½|∇ψ|² = 0`
@@ -20,20 +20,20 @@ A plain-text companion to the essay at https://informatico.ai/math/m09/ (`M.09 �
 - Stage 1 (Monge–Kantorovich Convex Duality): Relaxes Monge's transport map T_# μ_0 = μ_1 into Kantorovich's linear program over couplings π ∈ Π(μ_0, μ_1).
 - Stage 2 (Brenier Polar Factorization Theorem): Proves the unique L²-optimal transport map is the gradient of a convex potential T(x) = ∇Φ(x) = x + ∇ψ_0(x).
 - Stage 3 (Benamou–Brenier Dynamic Fluid Geodesic, DOI 10.1007/s002110050002): Evolves density ρ_t along constant-velocity geodesics ∂_t ρ + ∇·(ρ∇ψ) = 0 with HJB optimality ∂_t ψ + ½|∇ψ|² = 0.
-- Stage 4 (Cuturi Sinkhorn Scaling & Generative Flow Matching, Continuing M.04/M.07): Entropic penalty ε KL(π || μ_0⊗μ_1) converges in 18 GPU matrix-scaling steps.
+- Stage 4 (Cuturi Sinkhorn Scaling, Continuing M.04/M.07): The entropic penalty ε KL(π || μ_0⊗μ_1) turns the problem into alternating matrix scalings. The 18-step count shown is an illustrative value; the real count depends on ε and the stopping tolerance.
 
 ## Reference values stated in the essay
-- **Squared Wasserstein Distance (W_2²)**: `4.82 (Bures–Wasserstein)`
-- **Geodesic Mean & Variance (t=0.5)**: `μ_t = 0.00 · σ_t = 1.15`
-- **Sinkhorn Scaling Convergence**: `18 Iterations (ε = 0.05)`
-- **Otto–Wasserstein Verdict**: `HJB GEODESIC · QED PASS`
+- **Squared Wasserstein Distance (W_2², model)**: `4.82 (illustrative Gaussian pair)`
+- **Geodesic Mean & Std. Dev. (t=0.5, model)**: `μ_t = 0.00 · σ_t = 1.15 (illustrative)`
+- **Sinkhorn Scaling Convergence (model)**: `18 iterations at ε = 0.05 (illustrative)`
+- **Model Geometry**: `Benamou–Brenier geodesic (teaching model)`
 
 ## What is and is not checked
 The reference values above are stated in the essay. No script in this repository recomputes them yet, so treat them as the essay's claims and check them against the primary source before relying on them.
 
 ## Primary source
 - https://doi.org/10.1007/s002110050002 (Scite report: https://scite.ai/reports/10.1007/s002110050002)
-- What the essay compares against: W_2²(μ_0, μ_1) = 4.82 · t = 0.50 McCann Geodesic · ε = 0.05 (18 Sinkhorn Steps)
+- What the essay compares against: Illustrative model values: W_2²(μ_0, μ_1) = 4.82 · t = 0.50 · ε = 0.05 (18 Sinkhorn steps)
 
 ## Recent research context
-- **Benamou–Brenier Dynamic Optimal Transport Unites Fluid Mechanics, Generative Flow Matching & Single-Cell Biology**: Synthesizing Folio M.04's entropic distance, Folio M.07's Pontryagin/HJB optimal control, and Folio M.08's Riemannian geodesics, Jean-David Benamou & Yann Brenier (Numer. Math. DOI 10.1007/s002110050002) reformulated Monge–Kantorovich Wasserstein-2 transport as a pressureless Hamilton–Jacobi fluid geodesic.
+- **Benamou–Brenier Dynamic Optimal Transport: Where Fluid Mechanics Meets Probability**: Synthesizing Folio M.04's entropic distance, Folio M.07's Pontryagin/HJB optimal control, and Folio M.08's Riemannian geodesics, Jean-David Benamou & Yann Brenier (Numer. Math. DOI 10.1007/s002110050002) reformulated Monge–Kantorovich Wasserstein-2 transport as a pressureless Hamilton–Jacobi fluid geodesic.

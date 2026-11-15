@@ -78,39 +78,39 @@ theorem four_gate_sieve_si_homogeneity :
 end SIDim
 
 /-- Self-contained `Int` ring helpers built strictly from core Prelude `Int.mul_add`,
-    `Int.mul_comm`, `Int.mul_assoc`, `Int.neg_mul_neg`, `Int.ofNat`, `Int.negSucc`, and `omega`. -/
+    `Int.mul_comm`, `Int.mul_assoc`, `Int.neg_mul_neg`, `Int.ofNat`, `Int.negSucc`, `omega`, and `grind`. -/
 def sq (x : Int) : Int := x * x
 
-def ofNat_mul_ofNat_eq (a b : Nat) : Int.ofNat a * Int.ofNat b = Int.ofNat (a * b) := rfl
+abbrev ofNat_mul_ofNat_eq (a b : Nat) : Int.ofNat a * Int.ofNat b = Int.ofNat (a * b) := rfl
 
-def add_mul_int (a b c : Int) : (a + b) * c = a * c + b * c := by
+abbrev add_mul_int (a b c : Int) : (a + b) * c = a * c + b * c := by
   rw [Int.mul_comm (a + b) c, Int.mul_add c a b, Int.mul_comm c a, Int.mul_comm c b]
 
-def mul_sub_int (a b c : Int) : a * (b - c) = a * b - a * c := by
+abbrev mul_sub_int (a b c : Int) : a * (b - c) = a * b - a * c := by
   have hbc : (b - c) + c = b := by omega
   have hm : a * ((b - c) + c) = a * (b - c) + a * c := Int.mul_add a (b - c) c
   rw [hbc] at hm
   omega
 
-def sub_mul_int (a b c : Int) : (a - b) * c = a * c - b * c := by
+abbrev sub_mul_int (a b c : Int) : (a - b) * c = a * c - b * c := by
   rw [Int.mul_comm (a - b) c, mul_sub_int c a b, Int.mul_comm c a, Int.mul_comm c b]
 
-def mul_left_comm_int (a b c : Int) : a * (b * c) = b * (a * c) := by
+abbrev mul_left_comm_int (a b c : Int) : a * (b * c) = b * (a * c) := by
   rw [← Int.mul_assoc a b c, Int.mul_comm a b, Int.mul_assoc b a c]
 
-def mul_self_pair (x y : Int) : (x * y) * (x * y) = (x * x) * (y * y) := by
-  rw [Int.mul_assoc (x * y) x y, mul_left_comm_int y x y, ← Int.mul_assoc x x (y * y)]
+abbrev mul_self_pair (x y : Int) : (x * y) * (x * y) = (x * x) * (y * y) := by
+  grind
 
-def sq_nonneg_int (x : Int) : 0 ≤ sq x := by
+abbrev sq_nonneg_int (x : Int) : 0 ≤ sq x := by
   unfold sq
   cases x with
   | ofNat n =>
     rw [ofNat_mul_ofNat_eq n n]
-    omega
+    grind
   | negSucc n =>
-    have hn : Int.negSucc n = -Int.ofNat (n + 1) := by omega
+    have hn : Int.negSucc n = -Int.ofNat (n + 1) := by grind
     rw [hn, Int.neg_mul_neg (Int.ofNat (n + 1)) (Int.ofNat (n + 1)), ofNat_mul_ofNat_eq (n + 1) (n + 1)]
-    omega
+    grind
 
 /-- Theorem 2 (`partial_fraction_uv_split`):
     Denominator-cleared fourth-order partial-fraction UV decomposition over `Int`:
@@ -128,7 +128,7 @@ theorem partial_fraction_uv_split :
   · rw [add_mul_int (sq k) (sq m) num]
     omega
 
-def sq_two_sub_int (x s : Int) :
+abbrev sq_two_sub_int (x s : Int) :
     sq (2 * x - s) = 4 * sq x - 4 * (x * s) + sq s := by
   unfold sq
   rw [sub_mul_int (2 * x) s (2 * x - s), mul_sub_int (2 * x) (2 * x) s, mul_sub_int s (2 * x) s]
@@ -137,7 +137,7 @@ def sq_two_sub_int (x s : Int) :
   rw [h22]
   omega
 
-def sq_two_add_int (x s : Int) :
+abbrev sq_two_add_int (x s : Int) :
     sq (2 * x + s) = 4 * sq x + 4 * (x * s) + sq s := by
   unfold sq
   rw [add_mul_int (2 * x) s (2 * x + s), Int.mul_add (2 * x) (2 * x) s, Int.mul_add s (2 * x) s]
@@ -146,7 +146,7 @@ def sq_two_add_int (x s : Int) :
   rw [h22]
   omega
 
-def sheet_pref_diff (q kap s sig2 : Int) :
+abbrev sheet_pref_diff (q kap s sig2 : Int) :
     sig2 * ((sq kap - sq q) * sig2 - (kap - q) * s) =
       (sq (kap * sig2) - sq (q * sig2)) - ((kap * sig2) * s - (q * sig2) * s) := by
   rw [mul_sub_int sig2 ((sq kap - sq q) * sig2) ((kap - q) * s)]
@@ -162,7 +162,7 @@ def sheet_pref_diff (q kap s sig2 : Int) :
     rw [← Int.mul_assoc sig2 q s, Int.mul_comm sig2 q]
   rw [h1, h2]
 
-def sheet_pref_add2 (kap s sig2 : Int) :
+abbrev sheet_pref_add2 (kap s sig2 : Int) :
     sig2 * (2 * (kap * s)) = 2 * ((kap * sig2) * s) := by
   rw [mul_left_comm_int sig2 2 (kap * s), ← Int.mul_assoc sig2 kap s, Int.mul_comm sig2 kap]
 
