@@ -431,50 +431,41 @@ No obstante, determinar la capacidad teórica exacta de estos arreglos libres de
           <p data-en="Pick four consecutive numbers: {1, 2, 3, 4}. Add the outer pair (1 + 4 = 5) and the inner pair (2 + 3 = 5). Boom—a collision! Those four numbers fail the Sidon B₂ test immediately. Now space them out by doubling: {1, 2, 4, 8}. Let us check all 10 possible pairs (including doubles): 1+1=2, 1+2=3, 2+2=4, 1+4=5, 2+4=6, 4+4=8, 1+8=9, 2+8=10, 4+8=12, and 8+8=16. All 10 sums are 100% distinct! If you try to tighten the last mark from 8 down to 7—testing {1, 2, 4, 7}—you quickly spot that 4 + 4 = 8 and 1 + 7 = 8 collide at 8, so the greedy Mian–Chowla rule rejects 7 and picks 8. That tiny mental check is the exact engine running inside our verifier up to N = 500." data-es="Elige cuatro números consecutivos: {1, 2, 3, 4}. Suma el par exterior (1 + 4 = 5) y el par interior (2 + 3 = 5). ¡Choque inmediato! Esos cuatro números fallan la prueba de Sidon B₂ al instante. Ahora sepáralos duplicando: {1, 2, 4, 8}. Revisemos los 10 pares posibles (incluyendo dobles): 1+1=2, 1+2=3, 2+2=4, 1+4=5, 2+4=6, 4+4=8, 1+8=9, 2+8=10, 4+8=12 y 8+8=16. ¡Las 10 sumas son 100% distintas! Si intentas apretar el último número de 8 a 7 para probar {1, 2, 4, 7}, verás que 4 + 4 = 8 y 1 + 7 = 8 chocan en el 8; por eso la regla voraz de Mian–Chowla descarta el 7 y elige el 8. Ese mismo cálculo mental es el motor exacto que nuestro verificador ejecuta hasta N = 500.">Elige cuatro números consecutivos: {1, 2, 3, 4}. Suma el par exterior (1 + 4 = 5) y el par interior (2 + 3 = 5). ¡Choque inmediato! Esos cuatro números fallan la prueba de Sidon B₂ al instante. Ahora sepáralos duplicando: {1, 2, 4, 8}. Revisemos los 10 pares posibles (incluyendo dobles): 1+1=2, 1+2=3, 2+2=4, 1+4=5, 2+4=6, 4+4=8, 1+8=9, 2+8=10, 4+8=12 y 8+8=16. ¡Las 10 sumas son 100% distintas! Si intentas apretar el último número de 8 a 7 para probar {1, 2, 4, 7}, verás que 4 + 4 = 8 y 1 + 7 = 8 chocan en el 8; por eso la regla voraz de Mian–Chowla descarta el 7 y elige el 8. Ese mismo cálculo mental es el motor exacto que nuestro verificador ejecuta hasta N = 500.</p>
         </div>
                 <figure class="tp-distill-figure" role="group" aria-label="Plate B.01-D Visual Intuition Bridge">
-          <svg class="tp-distill-svg" viewBox="0 0 920 228" role="img" aria-labelledby="tp-distill-title-b01">
-            <title id="tp-distill-title-b01">Plate B.01-D Visual Intuition Bridge: from The Antique Brass Weight Balance to Interval Horizon N versus Candidate Set Cardinality |A| and Erdős–Turán B₂ Collision Barrier</title>
-            <rect x="6" y="6" width="908" height="216" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
-            <rect x="20" y="20" width="266" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-prussian)" stroke-width="1.5"/>
-            <text x="34" y="40" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-prussian)" data-en="1 · EVERYDAY ANALOGY (B.01)" data-es="1 · ANALOGÍA COTIDIANA (B.01)">1 · ANALOGÍA COTIDIANA (B.01)</text>
-            <text x="34" y="60" font-size="10.4" font-weight="700" fill="var(--tp-ink)">The Antique Brass Weight Balance</text>
-            <text x="34" y="78" font-size="9.1" fill="var(--tp-graphite)">Every pair of brass weights must</text>
-            <text x="34" y="92" font-size="9.1" fill="var(--tp-graphite)">drop into a unique numbered slot</text>
-            <rect x="32" y="106" width="242" height="30" rx="5" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1"/>
-            <text x="42" y="125" font-family="var(--font-mono, monospace)" font-size="8.6" font-weight="600" fill="var(--tp-prussian)">Slider 1: Interval Horizon N</text>
-            <rect x="32" y="144" width="242" height="30" rx="5" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1"/>
-            <text x="42" y="163" font-family="var(--font-mono, monospace)" font-size="8.6" font-weight="600" fill="var(--tp-verdigris)">Slider 2: Candidate Set Cardinality |A|</text>
-
-            <path d="M 288 104 L 312 104" stroke="var(--tp-prussian)" stroke-width="2" stroke-dasharray="4 3"/>
-            <polygon points="312,99 320,104 312,109" fill="var(--tp-prussian)"/>
-
-            <rect x="322" y="20" width="276" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-rule-strong)" stroke-width="1.5"/>
-            <text x="336" y="40" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-ink)" data-en="2 · TWO COMPETING FORCES" data-es="2 · DOS FUERZAS EN COMPETENCIA">2 · DOS FUERZAS EN COMPETENCIA</text>
-            <rect x="334" y="48" width="252" height="60" rx="6" fill="var(--tp-stone)" stroke="var(--tp-prussian)" stroke-width="1.2"/>
-            <text x="344" y="65" font-size="9.6" font-weight="700" fill="var(--tp-prussian)">&#9650; Interval Horizon N</text>
-            <text x="344" y="80" font-size="8.7" fill="var(--tp-graphite)">Expands the numerical span and raises</text>
-            <text x="344" y="93" font-size="8.7" fill="var(--tp-graphite)">the Erdős–Turán ceiling</text>
-            <rect x="334" y="116" width="252" height="60" rx="6" fill="var(--tp-stone)" stroke="var(--tp-minium)" stroke-width="1.2"/>
-            <text x="344" y="133" font-size="9.6" font-weight="700" fill="var(--tp-minium)">&#9660; Candidate Set Cardinality |A|</text>
-            <text x="344" y="148" font-size="8.7" fill="var(--tp-graphite)">Generates |A|(|A|+1)/2 pairwise sums</text>
-            <text x="344" y="161" font-size="8.7" fill="var(--tp-graphite)">that compete for space</text>
-
-            <path d="M 600 104 L 624 104" stroke="var(--tp-verdigris)" stroke-width="2" stroke-dasharray="4 3"/>
-            <polygon points="624,99 632,104 624,109" fill="var(--tp-verdigris)"/>
-
-            <rect x="634" y="20" width="266" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-verdigris)" stroke-width="1.5"/>
-            <text x="648" y="39" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-verdigris)" data-en="3 · CRITICAL TIPPING POINT" data-es="3 · UMBRAL CRÍTICO DE FASE">3 · UMBRAL CRÍTICO DE FASE</text>
-            <text x="648" y="56" font-size="9.6" font-weight="700" fill="var(--tp-ink)">Erdős–Turán B₂ Collision Barrier</text>
-            <rect x="646" y="64" width="242" height="54" rx="6" fill="var(--tp-stone)" stroke="var(--tp-verdigris)" stroke-width="1.2"/>
-            <text x="656" y="80" font-family="var(--font-mono, monospace)" font-size="8.5" font-weight="700" fill="var(--tp-verdigris)">&#10003; STABLE / CERTIFIED REGIME</text>
-            <text x="656" y="94" font-size="8.5" fill="var(--tp-ink)">Zero sum collisions: |A| ≤ 28.09;</text>
-            <text x="656" y="106" font-size="8.5" fill="var(--tp-ink)">all 210 pairwise sums distinct</text>
-            <rect x="646" y="124" width="242" height="54" rx="6" fill="var(--tp-stone)" stroke="var(--tp-minium)" stroke-width="1.2"/>
-            <text x="656" y="140" font-family="var(--font-mono, monospace)" font-size="8.5" font-weight="700" fill="var(--tp-minium)">&#9888; CRITICAL BREAKDOWN REGIME</text>
-            <text x="656" y="154" font-size="8.5" fill="var(--tp-ink)">Pigeonhole collapse: |A| &gt; 28 forces</text>
-            <text x="656" y="166" font-size="8.5" fill="var(--tp-ink)">duplicate pairwise sums</text>
-
-            <text x="460" y="208" text-anchor="middle" font-family="var(--font-mono, monospace)" font-size="8.9" font-weight="700" fill="var(--tp-prussian)">PLATE B.01-D · VISUAL INTUITION BRIDGE → GOVERNING OPERATOR: ∀ i ≤ j, k ≤ l: a_i + a_j = a_k + a_l ⇒ (i,j) = (k,l) · |A ∩ [1,N]| ≤ √N</text>
-          </svg>
+          <div class="tp-distill-grid">
+            <section class="tp-distill-card tp-distill-card--analogy">
+              <p class="tp-distill-kicker" data-en="1 · EVERYDAY ANALOGY (B.01)" data-es="1 · ANALOGÍA COTIDIANA (B.01)">1 · ANALOGÍA COTIDIANA (B.01)</p>
+              <h4 class="tp-distill-title">The Antique Brass Weight Balance</h4>
+              <p class="tp-distill-text">Every pair of brass weights must drop into a unique numbered slot </p>
+              <p class="tp-distill-chip tp-distill-chip--a">Slider 1: Interval Horizon N</p>
+              <p class="tp-distill-chip tp-distill-chip--b">Slider 2: Candidate Set Cardinality |A|</p>
+            </section>
+            <span class="tp-distill-arrow" aria-hidden="true">&#10140;</span>
+            <section class="tp-distill-card tp-distill-card--forces">
+              <p class="tp-distill-kicker" data-en="2 · TWO COMPETING FORCES" data-es="2 · DOS FUERZAS EN COMPETENCIA">2 · DOS FUERZAS EN COMPETENCIA</p>
+              <div class="tp-distill-sub tp-distill-sub--a">
+                <h4 class="tp-distill-title">&#9650; Interval Horizon N</h4>
+                <p class="tp-distill-text">Expands the numerical span and raises the Erdős–Turán ceiling </p>
+              </div>
+              <div class="tp-distill-sub tp-distill-sub--bad">
+                <h4 class="tp-distill-title">&#9660; Candidate Set Cardinality |A|</h4>
+                <p class="tp-distill-text">Generates |A|(|A|+1)/2 pairwise sums that compete for space </p>
+              </div>
+            </section>
+            <span class="tp-distill-arrow" aria-hidden="true">&#10140;</span>
+            <section class="tp-distill-card tp-distill-card--threshold">
+              <p class="tp-distill-kicker" data-en="3 · CRITICAL TIPPING POINT" data-es="3 · UMBRAL CRÍTICO DE FASE">3 · UMBRAL CRÍTICO DE FASE</p>
+              <h4 class="tp-distill-title">Erdős–Turán B₂ Collision Barrier</h4>
+              <div class="tp-distill-sub tp-distill-sub--ok">
+                <p class="tp-distill-kicker">&#10003; STABLE / CERTIFIED REGIME</p>
+                <p class="tp-distill-text">Zero sum collisions: |A| ≤ 28.09; all 210 pairwise sums distinct </p>
+              </div>
+              <div class="tp-distill-sub tp-distill-sub--bad">
+                <p class="tp-distill-kicker">&#9888; CRITICAL BREAKDOWN REGIME</p>
+                <p class="tp-distill-text">Pigeonhole collapse: |A| &gt; 28 forces duplicate pairwise sums </p>
+              </div>
+            </section>
+          </div>
+          <p class="tp-distill-foot">PLATE B.01-D · VISUAL INTUITION BRIDGE → GOVERNING OPERATOR: ∀ i ≤ j, k ≤ l: a_i + a_j = a_k + a_l ⇒ (i,j) = (k,l) · |A ∩ [1,N]| ≤ √N + N^(1/4) + 1</p>
           <figcaption class="tp-distill-caption">
             <strong>Plate B.01-D · Visual Intuition Bridge:</strong> Before diving into the formal equations, follow how the everyday physical analogy (left) sets two competing mechanisms in tension (center) around a sharp tipping point (right) that you can test directly with the two sliders in Act III.
           </figcaption>

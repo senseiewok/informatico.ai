@@ -296,50 +296,41 @@
           <p><strong>How the Two Sliders Work in Plain Words:</strong> To understand how persistent homology discovers hidden passages, imagine adjusting two controls on a virtual microscope. The first control gradually expands the detection bubble around every point in your material from a tiny radius of fifteen nanometers up to a generous one hundred forty nanometers. At small bubble sizes, the system registers only isolated specks. As you dial the bubble size outward, triangles and three-dimensional tetrahedra snap into place between neighboring points, revealing hollow loops and tunnels before eventually merging into a single solid cluster. The second control adds realistic measurement jitter to simulate noisy laboratory scans. As you increase the noise dial, short, flickering bars flutter along the baseline of the chart, but the primary horizontal bar corresponding to the genuine, percolating pore throat remains remarkably steady. Moving these dials together shows the scale at which an open channel forms in the model, a first geometric hint of whether a particle of a given size might fit.</p>
         </div>
                 <figure class="tp-distill-figure" role="group" aria-label="Plate M.10-D Visual Intuition Bridge">
-          <svg class="tp-distill-svg" viewBox="0 0 920 228" role="img" aria-labelledby="tp-distill-title-m10">
-            <title id="tp-distill-title-m10">Plate M.10-D Visual Intuition Bridge: from The Flooding Mountain Pass to Filtration Radius Scale ε versus Point Perturbation Noise σ and Critical Throat Percolation Bound</title>
-            <rect x="6" y="6" width="908" height="216" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
-            <rect x="20" y="20" width="266" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-prussian)" stroke-width="1.5"/>
-            <text x="34" y="40" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-prussian)" data-en="1 · EVERYDAY ANALOGY (M.10)" data-es="1 · ANALOGÍA COTIDIANA (M.10)">1 · EVERYDAY ANALOGY (M.10)</text>
-            <text x="34" y="60" font-size="10.4" font-weight="700" fill="var(--tp-ink)">The Flooding Mountain Pass</text>
-            <text x="34" y="78" font-size="9.1" fill="var(--tp-graphite)">Rising waters drown shallow puddles</text>
-            <text x="34" y="92" font-size="9.1" fill="var(--tp-graphite)">while connecting deep valleys</text>
-            <rect x="32" y="106" width="242" height="30" rx="5" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1"/>
-            <text x="42" y="125" font-family="var(--font-mono, monospace)" font-size="8.6" font-weight="600" fill="var(--tp-prussian)">Slider 1: Simplicial Filtration Scale</text>
-            <rect x="32" y="144" width="242" height="30" rx="5" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1"/>
-            <text x="42" y="163" font-family="var(--font-mono, monospace)" font-size="8.6" font-weight="600" fill="var(--tp-verdigris)">Slider 2: Point-Cloud Perturbation Noise</text>
-
-            <path d="M 288 104 L 312 104" stroke="var(--tp-prussian)" stroke-width="2" stroke-dasharray="4 3"/>
-            <polygon points="312,99 320,104 312,109" fill="var(--tp-prussian)"/>
-
-            <rect x="322" y="20" width="276" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-rule-strong)" stroke-width="1.5"/>
-            <text x="336" y="40" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-ink)" data-en="2 · TWO COMPETING FORCES" data-es="2 · DOS FUERZAS EN COMPETENCIA">2 · TWO COMPETING FORCES</text>
-            <rect x="334" y="48" width="252" height="60" rx="6" fill="var(--tp-stone)" stroke="var(--tp-prussian)" stroke-width="1.2"/>
-            <text x="344" y="65" font-size="9.6" font-weight="700" fill="var(--tp-prussian)">&#9650; Filtration Radius Scale ε</text>
-            <text x="344" y="80" font-size="8.7" fill="var(--tp-graphite)">Expands simplicial balls to detect</text>
-            <text x="344" y="93" font-size="8.7" fill="var(--tp-graphite)">cycle births and deaths</text>
-            <rect x="334" y="116" width="252" height="60" rx="6" fill="var(--tp-stone)" stroke="var(--tp-minium)" stroke-width="1.2"/>
-            <text x="344" y="133" font-size="9.6" font-weight="700" fill="var(--tp-minium)">&#9660; Point Perturbation Noise σ</text>
-            <text x="344" y="148" font-size="8.7" fill="var(--tp-graphite)">Injects spatial jitter bounded by</text>
-            <text x="344" y="161" font-size="8.7" fill="var(--tp-graphite)">Bottleneck Stability guarantees</text>
-
-            <path d="M 600 104 L 624 104" stroke="var(--tp-verdigris)" stroke-width="2" stroke-dasharray="4 3"/>
-            <polygon points="624,99 632,104 624,109" fill="var(--tp-verdigris)"/>
-
-            <rect x="634" y="20" width="266" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-verdigris)" stroke-width="1.5"/>
-            <text x="648" y="39" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-verdigris)" data-en="3 · CRITICAL TIPPING POINT" data-es="3 · UMBRAL CRÍTICO DE FASE">3 · CRITICAL TIPPING POINT</text>
-            <text x="648" y="56" font-size="9.6" font-weight="700" fill="var(--tp-ink)">Critical Throat Percolation Bound</text>
-            <rect x="646" y="64" width="242" height="54" rx="6" fill="var(--tp-stone)" stroke="var(--tp-verdigris)" stroke-width="1.2"/>
-            <text x="656" y="80" font-family="var(--font-mono, monospace)" font-size="8.5" font-weight="700" fill="var(--tp-verdigris)">&#10003; STABLE / CERTIFIED REGIME</text>
-            <text x="656" y="94" font-size="8.5" fill="var(--tp-ink)">Model: long H_1 bar is wider than a</text>
-            <text x="656" y="106" font-size="8.5" fill="var(--tp-ink)">65 nm particle</text>
-            <rect x="646" y="124" width="242" height="54" rx="6" fill="var(--tp-stone)" stroke="var(--tp-minium)" stroke-width="1.2"/>
-            <text x="656" y="140" font-family="var(--font-mono, monospace)" font-size="8.5" font-weight="700" fill="var(--tp-minium)">&#9888; CRITICAL BREAKDOWN REGIME</text>
-            <text x="656" y="154" font-size="8.5" fill="var(--tp-ink)">Model: a bottleneck below the</text>
-            <text x="656" y="166" font-size="8.5" fill="var(--tp-ink)">particle size would block it geometrically</text>
-
-            <text x="460" y="208" text-anchor="middle" font-family="var(--font-mono, monospace)" font-size="8.9" font-weight="700" fill="var(--tp-prussian)">PLATE M.10-D · VISUAL INTUITION BRIDGE → GOVERNING OPERATOR: ∂_{k−1} ∘ ∂_k = 0 · β_k^{i,j} = rank(H_k(K_i) → H_k(K_j)) · d_B(D(f), D(</text>
-          </svg>
+          <div class="tp-distill-grid">
+            <section class="tp-distill-card tp-distill-card--analogy">
+              <p class="tp-distill-kicker" data-en="1 · EVERYDAY ANALOGY (M.10)" data-es="1 · ANALOGÍA COTIDIANA (M.10)">1 · EVERYDAY ANALOGY (M.10)</p>
+              <h4 class="tp-distill-title">The Flooding Mountain Pass</h4>
+              <p class="tp-distill-text">Rising waters drown shallow puddles while connecting deep valleys </p>
+              <p class="tp-distill-chip tp-distill-chip--a">Slider 1: Simplicial Filtration Scale</p>
+              <p class="tp-distill-chip tp-distill-chip--b">Slider 2: Point-Cloud Perturbation Noise</p>
+            </section>
+            <span class="tp-distill-arrow" aria-hidden="true">&#10140;</span>
+            <section class="tp-distill-card tp-distill-card--forces">
+              <p class="tp-distill-kicker" data-en="2 · TWO COMPETING FORCES" data-es="2 · DOS FUERZAS EN COMPETENCIA">2 · TWO COMPETING FORCES</p>
+              <div class="tp-distill-sub tp-distill-sub--a">
+                <h4 class="tp-distill-title">&#9650; Filtration Radius Scale ε</h4>
+                <p class="tp-distill-text">Expands simplicial balls to detect cycle births and deaths </p>
+              </div>
+              <div class="tp-distill-sub tp-distill-sub--bad">
+                <h4 class="tp-distill-title">&#9660; Point Perturbation Noise σ</h4>
+                <p class="tp-distill-text">Injects spatial jitter bounded by Bottleneck Stability guarantees </p>
+              </div>
+            </section>
+            <span class="tp-distill-arrow" aria-hidden="true">&#10140;</span>
+            <section class="tp-distill-card tp-distill-card--threshold">
+              <p class="tp-distill-kicker" data-en="3 · CRITICAL TIPPING POINT" data-es="3 · UMBRAL CRÍTICO DE FASE">3 · CRITICAL TIPPING POINT</p>
+              <h4 class="tp-distill-title">Critical Throat Percolation Bound</h4>
+              <div class="tp-distill-sub tp-distill-sub--ok">
+                <p class="tp-distill-kicker">&#10003; STABLE / CERTIFIED REGIME</p>
+                <p class="tp-distill-text">Model: long H_1 bar is wider than a 65 nm particle </p>
+              </div>
+              <div class="tp-distill-sub tp-distill-sub--bad">
+                <p class="tp-distill-kicker">&#9888; CRITICAL BREAKDOWN REGIME</p>
+                <p class="tp-distill-text">Model: a bottleneck below the particle size would block it geometrically </p>
+              </div>
+            </section>
+          </div>
+          <p class="tp-distill-foot">PLATE M.10-D · VISUAL INTUITION BRIDGE → GOVERNING OPERATOR: ∂_{k−1} ∘ ∂_k = 0 · β_k^{i,j} = rank(H_k(K_i) → H_k(K_j)) · d_B(D(f), D(g)) ≤ ||f − g||_∞</p>
           <figcaption class="tp-distill-caption">
             <strong>Plate M.10-D · Visual Intuition Bridge:</strong> Before diving into the formal equations, follow how the everyday physical analogy (left) sets two competing mechanisms in tension (center) around a sharp tipping point (right) that you can test directly with the two sliders in Act III.
           </figcaption>

@@ -296,50 +296,41 @@
           <p><strong>How the Two Sliders Work in Plain Words:</strong> To understand how this post-quantum lock operates, consider two primary adjustments on our cryptographic dashboard. The first adjustment controls the geometric dimension or rank of the polynomial crystal lattice, toggling between rank two (ML-KEM-512, NIST security category 1), rank three (ML-KEM-768, category 3) and rank four (ML-KEM-1024, category 5). As you increase this rank, the lattice expands from 512 up to 1,024 dimensions, and the cost of the best known attacks rises steeply. The second adjustment regulates the width of the binomial noise fog injected into the public key. If the fog is too thin, clever algorithms might pinpoint the underlying lattice grid; if the fog is too thick, even the legitimate receiver might experience a rare decryption error. By dialing these controls in unison, you can see why FIPS 203 settles on its parameter sets: enough noise to hide the secret, little enough that decapsulation failures stay extremely rare. The dashboard curves are a teaching model, not a security estimate.</p>
         </div>
                 <figure class="tp-distill-figure" role="group" aria-label="Plate M.12-D Visual Intuition Bridge">
-          <svg class="tp-distill-svg" viewBox="0 0 920 228" role="img" aria-labelledby="tp-distill-title-m12">
-            <title id="tp-distill-title-m12">Plate M.12-D Visual Intuition Bridge: from The 768-Dimensional Egg Carton to Lattice Module Rank k versus Binomial Noise Width η and Quantum Security vs. Decryption Flaw</title>
-            <rect x="6" y="6" width="908" height="216" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
-            <rect x="20" y="20" width="266" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-prussian)" stroke-width="1.5"/>
-            <text x="34" y="40" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-prussian)" data-en="1 · EVERYDAY ANALOGY (M.12)" data-es="1 · ANALOGÍA COTIDIANA (M.12)">1 · EVERYDAY ANALOGY (M.12)</text>
-            <text x="34" y="60" font-size="10.4" font-weight="700" fill="var(--tp-ink)">The 768-Dimensional Egg Carton</text>
-            <text x="34" y="78" font-size="9.1" fill="var(--tp-graphite)">Retrieving a marble dropped into</text>
-            <text x="34" y="92" font-size="9.1" fill="var(--tp-graphite)">foggy high-dimensional valleys</text>
-            <rect x="32" y="106" width="242" height="30" rx="5" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1"/>
-            <text x="42" y="125" font-family="var(--font-mono, monospace)" font-size="8.6" font-weight="600" fill="var(--tp-prussian)">Slider 1: Module-LWE Lattice Rank</text>
-            <rect x="32" y="144" width="242" height="30" rx="5" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1"/>
-            <text x="42" y="163" font-family="var(--font-mono, monospace)" font-size="8.6" font-weight="600" fill="var(--tp-verdigris)">Slider 2: Centered Binomial Noise Width</text>
-
-            <path d="M 288 104 L 312 104" stroke="var(--tp-prussian)" stroke-width="2" stroke-dasharray="4 3"/>
-            <polygon points="312,99 320,104 312,109" fill="var(--tp-prussian)"/>
-
-            <rect x="322" y="20" width="276" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-rule-strong)" stroke-width="1.5"/>
-            <text x="336" y="40" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-ink)" data-en="2 · TWO COMPETING FORCES" data-es="2 · DOS FUERZAS EN COMPETENCIA">2 · TWO COMPETING FORCES</text>
-            <rect x="334" y="48" width="252" height="60" rx="6" fill="var(--tp-stone)" stroke="var(--tp-prussian)" stroke-width="1.2"/>
-            <text x="344" y="65" font-size="9.6" font-weight="700" fill="var(--tp-prussian)">&#9650; Lattice Module Rank k</text>
-            <text x="344" y="80" font-size="8.7" fill="var(--tp-graphite)">Scales crystal dimension from 512D to</text>
-            <text x="344" y="93" font-size="8.7" fill="var(--tp-graphite)">1024D against quantum SVP</text>
-            <rect x="334" y="116" width="252" height="60" rx="6" fill="var(--tp-stone)" stroke="var(--tp-minium)" stroke-width="1.2"/>
-            <text x="344" y="133" font-size="9.6" font-weight="700" fill="var(--tp-minium)">&#9660; Binomial Noise Width η</text>
-            <text x="344" y="148" font-size="8.7" fill="var(--tp-graphite)">Injects cryptographic fog while</text>
-            <text x="344" y="161" font-size="8.7" fill="var(--tp-graphite)">bounding decryption failure risk</text>
-
-            <path d="M 600 104 L 624 104" stroke="var(--tp-verdigris)" stroke-width="2" stroke-dasharray="4 3"/>
-            <polygon points="624,99 632,104 624,109" fill="var(--tp-verdigris)"/>
-
-            <rect x="634" y="20" width="266" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-verdigris)" stroke-width="1.5"/>
-            <text x="648" y="39" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-verdigris)" data-en="3 · CRITICAL TIPPING POINT" data-es="3 · UMBRAL CRÍTICO DE FASE">3 · CRITICAL TIPPING POINT</text>
-            <text x="648" y="56" font-size="9.6" font-weight="700" fill="var(--tp-ink)">Quantum Security vs. Decryption Flaw</text>
-            <rect x="646" y="64" width="242" height="54" rx="6" fill="var(--tp-stone)" stroke="var(--tp-verdigris)" stroke-width="1.2"/>
-            <text x="656" y="80" font-family="var(--font-mono, monospace)" font-size="8.5" font-weight="700" fill="var(--tp-verdigris)">&#10003; STABLE / CERTIFIED REGIME</text>
-            <text x="656" y="94" font-size="8.5" fill="var(--tp-ink)">ML-KEM-768: NIST category 3,</text>
-            <text x="656" y="106" font-size="8.5" fill="var(--tp-ink)">decapsulation failure 2^-164.8 (FIPS 203)</text>
-            <rect x="646" y="124" width="242" height="54" rx="6" fill="var(--tp-stone)" stroke="var(--tp-minium)" stroke-width="1.2"/>
-            <text x="656" y="140" font-family="var(--font-mono, monospace)" font-size="8.5" font-weight="700" fill="var(--tp-minium)">&#9888; CRITICAL BREAKDOWN REGIME</text>
-            <text x="656" y="154" font-size="8.5" fill="var(--tp-ink)">Insufficient lattice dimension</text>
-            <text x="656" y="166" font-size="8.5" fill="var(--tp-ink)">vulnerable to lattice reduction</text>
-
-            <text x="460" y="208" text-anchor="middle" font-family="var(--font-mono, monospace)" font-size="8.9" font-weight="700" fill="var(--tp-prussian)">PLATE M.12-D · VISUAL INTUITION BRIDGE → GOVERNING OPERATOR: b = A s + e (mod q) · q = 3329 · n = 256 · k ∈ {2, 3, 4} (NIST FIPS 203)</text>
-          </svg>
+          <div class="tp-distill-grid">
+            <section class="tp-distill-card tp-distill-card--analogy">
+              <p class="tp-distill-kicker" data-en="1 · EVERYDAY ANALOGY (M.12)" data-es="1 · ANALOGÍA COTIDIANA (M.12)">1 · EVERYDAY ANALOGY (M.12)</p>
+              <h4 class="tp-distill-title">The 768-Dimensional Egg Carton</h4>
+              <p class="tp-distill-text">Retrieving a marble dropped into foggy high-dimensional valleys </p>
+              <p class="tp-distill-chip tp-distill-chip--a">Slider 1: Module-LWE Lattice Rank</p>
+              <p class="tp-distill-chip tp-distill-chip--b">Slider 2: Centered Binomial Noise Width</p>
+            </section>
+            <span class="tp-distill-arrow" aria-hidden="true">&#10140;</span>
+            <section class="tp-distill-card tp-distill-card--forces">
+              <p class="tp-distill-kicker" data-en="2 · TWO COMPETING FORCES" data-es="2 · DOS FUERZAS EN COMPETENCIA">2 · TWO COMPETING FORCES</p>
+              <div class="tp-distill-sub tp-distill-sub--a">
+                <h4 class="tp-distill-title">&#9650; Lattice Module Rank k</h4>
+                <p class="tp-distill-text">Scales crystal dimension from 512D to 1024D against quantum SVP </p>
+              </div>
+              <div class="tp-distill-sub tp-distill-sub--bad">
+                <h4 class="tp-distill-title">&#9660; Binomial Noise Width η</h4>
+                <p class="tp-distill-text">Injects cryptographic fog while bounding decryption failure risk </p>
+              </div>
+            </section>
+            <span class="tp-distill-arrow" aria-hidden="true">&#10140;</span>
+            <section class="tp-distill-card tp-distill-card--threshold">
+              <p class="tp-distill-kicker" data-en="3 · CRITICAL TIPPING POINT" data-es="3 · UMBRAL CRÍTICO DE FASE">3 · CRITICAL TIPPING POINT</p>
+              <h4 class="tp-distill-title">Quantum Security vs. Decryption Flaw</h4>
+              <div class="tp-distill-sub tp-distill-sub--ok">
+                <p class="tp-distill-kicker">&#10003; STABLE / CERTIFIED REGIME</p>
+                <p class="tp-distill-text">ML-KEM-768: NIST category 3, decapsulation failure 2^-164.8 (FIPS 203) </p>
+              </div>
+              <div class="tp-distill-sub tp-distill-sub--bad">
+                <p class="tp-distill-kicker">&#9888; CRITICAL BREAKDOWN REGIME</p>
+                <p class="tp-distill-text">Insufficient lattice dimension vulnerable to lattice reduction </p>
+              </div>
+            </section>
+          </div>
+          <p class="tp-distill-foot">PLATE M.12-D · VISUAL INTUITION BRIDGE → GOVERNING OPERATOR: b = A s + e (mod q) · q = 3329 · n = 256 · k ∈ {2, 3, 4} (NIST FIPS 203)</p>
           <figcaption class="tp-distill-caption">
             <strong>Plate M.12-D · Visual Intuition Bridge:</strong> Before diving into the formal equations, follow how the everyday physical analogy (left) sets two competing mechanisms in tension (center) around a sharp tipping point (right) that you can test directly with the two sliders in Act III.
           </figcaption>

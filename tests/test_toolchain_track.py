@@ -151,7 +151,7 @@ class ToolchainTrackTests(unittest.TestCase):
                 self.assertIn('class="tp-plain-bridge-box"', txt, f"{page} missing 5-Pace plain bridge")
                 self.assertIn('class="tp-analogy-box"', txt, f"{page} missing 5-Pace tactile analogy")
                 self.assertIn('class="tp-distill-figure"', txt, f"{page} missing Plate D distillation figure")
-                self.assertIn('class="tp-distill-svg"', txt, f"{page} missing Plate D distillation SVG")
+                self.assertIn('class="tp-distill-grid"', txt, f"{page} missing Plate D distillation grid")
                 self.assertIn('class="tp-proof-spine"', txt, f"{page} missing formal proof spine")
                 if base == TOOLCHAIN_RESEARCH:
                     paras = re.findall(r"<p\b[^>]*>(.*?)</p>", txt, flags=re.S)
@@ -212,7 +212,7 @@ class ToolchainTrackTests(unittest.TestCase):
                 self.assertIn('class="tp-plain-bridge-box"', txt, f"{page} missing 5-Pace plain bridge")
                 self.assertIn('class="tp-analogy-box"', txt, f"{page} missing 5-Pace analogy box")
                 self.assertIn('class="tp-distill-figure"', txt, f"{page} missing Plate D distillation figure")
-                self.assertIn('class="tp-distill-svg"', txt, f"{page} missing Plate D distillation SVG")
+                self.assertIn('class="tp-distill-grid"', txt, f"{page} missing Plate D distillation grid")
                 self.assertIn("<tp-article-audio", txt, f"{page} missing <tp-article-audio>")
                 if base == bounties_res:
                     paras = re.findall(r"<p\b[^>]*>(.*?)</p>", txt, flags=re.S)

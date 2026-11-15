@@ -296,50 +296,41 @@
           <p><strong>How the Two Sliders Work in Plain Words:</strong> Let us see how our two adjustment knobs make quantum error correction work in practice. The first knob is the Surface-Code Distance. Think of this knob as increasing the size of a protective mesh. A larger code distance spreads a single piece of quantum information across hundreds of helper qubits in a grid. To cause an uncorrectable logical mistake, random noise would have to flip a continuous chain of qubits all the way across the entire board—an event that becomes exponentially unlikely as the grid expands. The second knob is the Physical Gate Error Rate, which represents the raw noise of the quantum processor hardware. When hardware error sits below the critical one-percent threshold, increasing the code distance drives logical errors down by trillions of times. But if physical noise creeps above that threshold, errors multiply faster than the helper qubits can detect them, causing the entire quantum memory to fail.</p>
         </div>
                 <figure class="tp-distill-figure" role="group" aria-label="Plate P.11-D Visual Intuition Bridge">
-          <svg class="tp-distill-svg" viewBox="0 0 920 228" role="img" aria-labelledby="tp-distill-title-p11">
-            <title id="tp-distill-title-p11">Plate P.11-D Visual Intuition Bridge: from Choir Director Listening to Harmony to Surface-Code Distance d versus Physical Gate Error p_phys and Fowler Fault-Tolerant Threshold p_th ≈ 1%</title>
-            <rect x="6" y="6" width="908" height="216" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
-            <rect x="20" y="20" width="266" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-prussian)" stroke-width="1.5"/>
-            <text x="34" y="40" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-prussian)" data-en="1 · EVERYDAY ANALOGY (P.11)" data-es="1 · ANALOGÍA COTIDIANA (P.11)">1 · EVERYDAY ANALOGY (P.11)</text>
-            <text x="34" y="60" font-size="10.4" font-weight="700" fill="var(--tp-ink)">Choir Director Listening to Harmony</text>
-            <text x="34" y="78" font-size="9.1" fill="var(--tp-graphite)">Detects voice clashes without</text>
-            <text x="34" y="92" font-size="9.1" fill="var(--tp-graphite)">forcing singers to reveal notes</text>
-            <rect x="32" y="106" width="242" height="30" rx="5" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1"/>
-            <text x="42" y="125" font-family="var(--font-mono, monospace)" font-size="8.6" font-weight="600" fill="var(--tp-prussian)">Slider 1: Surface-Code Distance</text>
-            <rect x="32" y="144" width="242" height="30" rx="5" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1"/>
-            <text x="42" y="163" font-family="var(--font-mono, monospace)" font-size="8.6" font-weight="600" fill="var(--tp-verdigris)">Slider 2: Physical Two-Qubit Gate Error</text>
-
-            <path d="M 288 104 L 312 104" stroke="var(--tp-prussian)" stroke-width="2" stroke-dasharray="4 3"/>
-            <polygon points="312,99 320,104 312,109" fill="var(--tp-prussian)"/>
-
-            <rect x="322" y="20" width="276" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-rule-strong)" stroke-width="1.5"/>
-            <text x="336" y="40" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-ink)" data-en="2 · TWO COMPETING FORCES" data-es="2 · DOS FUERZAS EN COMPETENCIA">2 · TWO COMPETING FORCES</text>
-            <rect x="334" y="48" width="252" height="60" rx="6" fill="var(--tp-stone)" stroke="var(--tp-prussian)" stroke-width="1.2"/>
-            <text x="344" y="65" font-size="9.6" font-weight="700" fill="var(--tp-prussian)">&#9650; Surface-Code Distance d</text>
-            <text x="344" y="80" font-size="8.7" fill="var(--tp-graphite)">Multiplies redundant checks and</text>
-            <text x="344" y="93" font-size="8.7" fill="var(--tp-graphite)">lengthens error-chain paths</text>
-            <rect x="334" y="116" width="252" height="60" rx="6" fill="var(--tp-stone)" stroke="var(--tp-minium)" stroke-width="1.2"/>
-            <text x="344" y="133" font-size="9.6" font-weight="700" fill="var(--tp-minium)">&#9660; Physical Gate Error p_phys</text>
-            <text x="344" y="148" font-size="8.7" fill="var(--tp-graphite)">Introduces hardware thermal and</text>
-            <text x="344" y="161" font-size="8.7" fill="var(--tp-graphite)">control noise per gate</text>
-
-            <path d="M 600 104 L 624 104" stroke="var(--tp-verdigris)" stroke-width="2" stroke-dasharray="4 3"/>
-            <polygon points="624,99 632,104 624,109" fill="var(--tp-verdigris)"/>
-
-            <rect x="634" y="20" width="266" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-verdigris)" stroke-width="1.5"/>
-            <text x="648" y="39" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-verdigris)" data-en="3 · CRITICAL TIPPING POINT" data-es="3 · UMBRAL CRÍTICO DE FASE">3 · CRITICAL TIPPING POINT</text>
-            <text x="648" y="56" font-size="9.6" font-weight="700" fill="var(--tp-ink)">Fowler Fault-Tolerant Threshold p_th ≈ 1%</text>
-            <rect x="646" y="64" width="242" height="54" rx="6" fill="var(--tp-stone)" stroke="var(--tp-verdigris)" stroke-width="1.2"/>
-            <text x="656" y="80" font-family="var(--font-mono, monospace)" font-size="8.5" font-weight="700" fill="var(--tp-verdigris)">&#10003; STABLE / CERTIFIED REGIME</text>
-            <text x="656" y="94" font-size="8.5" fill="var(--tp-ink)">Exponential error suppression down</text>
-            <text x="656" y="106" font-size="8.5" fill="var(--tp-ink)">to 10⁻¹⁶ per cycle</text>
-            <rect x="646" y="124" width="242" height="54" rx="6" fill="var(--tp-stone)" stroke="var(--tp-minium)" stroke-width="1.2"/>
-            <text x="656" y="140" font-family="var(--font-mono, monospace)" font-size="8.5" font-weight="700" fill="var(--tp-minium)">&#9888; CRITICAL BREAKDOWN REGIME</text>
-            <text x="656" y="154" font-size="8.5" fill="var(--tp-ink)">Noise cascades faster than checks,</text>
-            <text x="656" y="166" font-size="8.5" fill="var(--tp-ink)">corrupting quantum state</text>
-
-            <text x="460" y="208" text-anchor="middle" font-family="var(--font-mono, monospace)" font-size="8.9" font-weight="700" fill="var(--tp-prussian)">PLATE P.11-D · VISUAL INTUITION BRIDGE → GOVERNING OPERATOR: p_L ≈ 0.03 (p / p_th)^((d+1)/2) · [A_s, B_p] = 0 · H_FeMoCo |Ψ_0⟩ = E_0 </text>
-          </svg>
+          <div class="tp-distill-grid">
+            <section class="tp-distill-card tp-distill-card--analogy">
+              <p class="tp-distill-kicker" data-en="1 · EVERYDAY ANALOGY (P.11)" data-es="1 · ANALOGÍA COTIDIANA (P.11)">1 · EVERYDAY ANALOGY (P.11)</p>
+              <h4 class="tp-distill-title">Choir Director Listening to Harmony</h4>
+              <p class="tp-distill-text">Detects voice clashes without forcing singers to reveal notes </p>
+              <p class="tp-distill-chip tp-distill-chip--a">Slider 1: Surface-Code Distance</p>
+              <p class="tp-distill-chip tp-distill-chip--b">Slider 2: Physical Two-Qubit Gate Error</p>
+            </section>
+            <span class="tp-distill-arrow" aria-hidden="true">&#10140;</span>
+            <section class="tp-distill-card tp-distill-card--forces">
+              <p class="tp-distill-kicker" data-en="2 · TWO COMPETING FORCES" data-es="2 · DOS FUERZAS EN COMPETENCIA">2 · TWO COMPETING FORCES</p>
+              <div class="tp-distill-sub tp-distill-sub--a">
+                <h4 class="tp-distill-title">&#9650; Surface-Code Distance d</h4>
+                <p class="tp-distill-text">Multiplies redundant checks and lengthens error-chain paths </p>
+              </div>
+              <div class="tp-distill-sub tp-distill-sub--bad">
+                <h4 class="tp-distill-title">&#9660; Physical Gate Error p_phys</h4>
+                <p class="tp-distill-text">Introduces hardware thermal and control noise per gate </p>
+              </div>
+            </section>
+            <span class="tp-distill-arrow" aria-hidden="true">&#10140;</span>
+            <section class="tp-distill-card tp-distill-card--threshold">
+              <p class="tp-distill-kicker" data-en="3 · CRITICAL TIPPING POINT" data-es="3 · UMBRAL CRÍTICO DE FASE">3 · CRITICAL TIPPING POINT</p>
+              <h4 class="tp-distill-title">Fowler Fault-Tolerant Threshold p_th ≈ 1%</h4>
+              <div class="tp-distill-sub tp-distill-sub--ok">
+                <p class="tp-distill-kicker">&#10003; STABLE / CERTIFIED REGIME</p>
+                <p class="tp-distill-text">Exponential error suppression down to 10⁻¹⁶ per cycle </p>
+              </div>
+              <div class="tp-distill-sub tp-distill-sub--bad">
+                <p class="tp-distill-kicker">&#9888; CRITICAL BREAKDOWN REGIME</p>
+                <p class="tp-distill-text">Noise cascades faster than checks, corrupting quantum state </p>
+              </div>
+            </section>
+          </div>
+          <p class="tp-distill-foot">PLATE P.11-D · VISUAL INTUITION BRIDGE → GOVERNING OPERATOR: p_L ≈ 0.03 (p / p_th)^((d+1)/2) · [A_s, B_p] = 0 · H_FeMoCo |Ψ_0⟩ = E_0 |Ψ_0⟩</p>
           <figcaption class="tp-distill-caption">
             <strong>Plate P.11-D · Visual Intuition Bridge:</strong> Before diving into the formal equations, follow how the everyday physical analogy (left) sets two competing mechanisms in tension (center) around a sharp tipping point (right) that you can test directly with the two sliders in Act III.
           </figcaption>
