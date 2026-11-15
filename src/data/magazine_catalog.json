@@ -351,13 +351,13 @@
           {
             "edition": "REV 1.3",
             "date": "2026-11-14",
-            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. The sputum yield-stress and oscillatory-stress figures (11.5 Pa, 14.8 Pa), the claim that chest-wall oscillation \"liquefies\" mucus, and the claim that this would multiply nanoparticle penetration were withdrawn as unsourced; the airway link is now an analogy. The panel test and certification wording was withdrawn, the invented 1863 scene was replaced with plain dates, and the absorption readout was recomputed for zero reactance at resonance (0.9996). Critical coupling is now cited to Romero-García et al. (2016). A later review corrected the Womersley number definition (Wo = √2 r/δ_v), made the absorption range agree (125–315 Hz) and softened claims about what such panels achieve.",
+            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. The sputum yield-stress and oscillatory-stress figures (11.5 Pa, 14.8 Pa), the claim that chest-wall oscillation \"liquefies\" mucus, and the claim that this would multiply nanoparticle penetration were withdrawn as unsourced; the airway link is now an analogy. The panel test and formal compliance wording was withdrawn, the invented 1863 scene was replaced with plain dates, and the absorption readout was recomputed for zero reactance at resonance (0.9996). Critical coupling is now cited to Romero-García et al. (2016). A later review corrected the Womersley number definition (Wo = √2 r/δ_v), made the absorption range agree (125–315 Hz) and softened claims about what such panels achieve.",
             "opus": "Review: every DOI in the folio was checked in Crossref and the Scite index on 2026-11-14, and the repository name with the GitHub API. No simulation or acoustic test was run for this folio; its numbers are outputs of the closed-form model on the page."
           },
           {
             "edition": "REV 1.2",
             "date": "2026-11-02",
-            "summary": "REV 1.2 (Redated 2026-11-02): Verified sub-wavelength Helmholtz viscothermal acoustic metamaterials (delta_v = sqrt(2*nu/omega), CSI 09 84 13) and oscillatory shear liquefaction of CF sputum plugs with 4-Seat Multi-Lineage Council review.",
+            "summary": "REV 1.2 (Redated 2026-11-02): Verified sub-wavelength Helmholtz viscothermal acoustic metamaterials (delta_v = sqrt(2*nu/omega), CSI 09 84 13) and oscillatory shear liquefaction of CF sputum plugs with multi-model peer review.",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): checked that delta_v = 0.174 mm follows from the page formula. The word \"Verified\" in this note and in the notes below, the sputum liquefaction claim and the stress figures 14.8 Pa and 11.5 Pa are withdrawn in REV 1.3."
           },
           {
