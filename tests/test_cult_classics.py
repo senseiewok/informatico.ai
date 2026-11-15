@@ -90,8 +90,8 @@ class CultClassicPages(unittest.TestCase):
 
     def test_easter_egg_caption_is_the_maintainers_decision(self):
         # Maintainer decision 2026-11-15: name the paint and the wheel maker, link the maker, name no owner.
-        self.assertEqual(C.EGG["caption_en"], "A Mk7.5 Golf GTI with a Cobb Stage 2 tune and BBS wheels, in Dark Iron Blue Metallic.")
-        self.assertEqual(C.EGG["caption_es"], "Un Golf GTI Mk7.5 con reprogramación Cobb Stage 2 y rines BBS, en Dark Iron Blue Metallic.")
+        self.assertEqual(C.EGG["caption_en"], "A 2018 Mk7.5 Golf GTI with a Cobb Stage 2 tune and BBS wheels, in Dark Iron Blue Metallic.")
+        self.assertEqual(C.EGG["caption_es"], "Un Golf GTI Mk7.5 2018 con reprogramación Cobb Stage 2 y rines BBS, en Dark Iron Blue Metallic.")
         owner = re.compile(r"\b(my|mine|our|owner|owned|mi|mío|nuestro|dueño)\b", re.I)
         for key in ("caption_en", "caption_es", "alt_en", "alt_es"):
             self.assertIsNone(owner.search(C.EGG[key]), key)
