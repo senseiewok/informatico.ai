@@ -447,28 +447,65 @@ def egg_caption(is_es: bool) -> str:
     return f'{t(before)}<a href="{a(e["link_url"])}" rel="noopener noreferrer">{t(label)}</a>{t(after)}'
 
 
+def gti_rim(cx: float, cy: float) -> str:
+    """Generic twin five-spoke rim with the red brake caliper a stock GTI shows (no aftermarket or maker's design)."""
+    spokes = "".join(
+        f'<line x1="{cx + 4.5 * math.cos(a + d):.1f}" y1="{cy + 4.5 * math.sin(a + d):.1f}" '
+        f'x2="{cx + 14 * math.cos(a + d):.1f}" y2="{cy + 14 * math.sin(a + d):.1f}"/>'
+        for a in (i * 2 * math.pi / 5 for i in range(5)) for d in (-0.13, 0.13)
+    )
+    return (f'<g class="cc-egg-wheel"><circle class="cc-egg-tyre" cx="{cx}" cy="{cy}" r="19.4"/>'
+            f'<circle class="cc-egg-rim" cx="{cx}" cy="{cy}" r="15"/>'
+            f'<path class="cc-egg-caliper" d="M {cx - 10} {cy - 7} A 12 12 0 0 1 {cx + 2} {cy - 12}"/>'
+            f'<g class="cc-wheel">{spokes}<circle cx="{cx}" cy="{cy}" r="3.6"/></g></g>')
+
+
+def gti_profile() -> str:
+    """A stock Mk7.5 Golf GTI five-door in side elevation, facing left, laid out from the Mk7 Golf's published
+    proportions (overall length, wheelbase, front and rear overhangs, roof height, 18-inch wheels) and drawn freehand:
+    not traced, not modelled on any owner's car, no badge. The bonnet hinges at the screen base (100, 44)."""
+    body = ("M 24 96 L 20 90 Q 18 78 20 68 L 24 62 Q 60 50 100 44 L 140 20 Q 190 15 236 18 L 252 21 L 254 26 "
+            "L 249 27 Q 262 38 268 50 L 279 56 Q 283 72 281 90 L 274 96 L 257 96 A 23.5 23.5 0 0 0 210 96 "
+            "L 97 96 A 23.5 23.5 0 0 0 50 96 Z")
+    glass = "M 110 45 L 143 23 Q 190 20 226 22 L 246 42 Q 180 44 110 45 Z"
+    return f"""<rect class="cc-egg-glow" x="28" y="46" width="70" height="14" rx="5"/>
+                <path class="cc-egg-body" d="{body}"/>
+                <path class="cc-egg-glass" d="{glass}"/>
+                <line class="cc-egg-pillar" x1="176" y1="21" x2="172" y2="44"/>
+                <path class="cc-egg-cpillar" d="M 214 22 L 228 22 L 248 42 L 222 43 Z"/>
+                <path class="cc-egg-shoulder" d="M 28 60 Q 150 52 278 54"/>
+                <path class="cc-egg-skirt" d="M 98 92 L 209 92"/>
+                <path class="cc-egg-handle" d="M 148 52 L 158 52 M 196 51 L 205 51"/>
+                <path class="cc-egg-light" d="M 21 62 L 46 56 L 48 63 L 23 67 Z"/>
+                <line class="cc-egg-red" x1="20" y1="65" x2="47" y2="60"/>
+                <path class="cc-egg-grille" d="M 20 73 L 40 71 M 20 78 L 40 76 M 21 83 L 40 81"/>
+                <path class="cc-egg-taillight" d="M 268 50 L 280 56 L 280 63 L 268 59 Z"/>
+                <path class="cc-egg-exhaust" d="M 262 95 L 270 95"/>
+                <g class="cc-egg-hood"><path d="M 24 62 Q 60 50 100 44 L 101 48 Q 61 54 25 66 Z"/></g>
+                {gti_rim(73.6, 84.6)}{gti_rim(233.6, 84.6)}"""
+
+
 def render_egg(is_es: bool) -> str:
     e = C.EGG
-    k = 0.85  # the Mk7 silhouette's proportions in the parade
-    body = hatch_path(k)
     hint_en, hint_es = "There is one more car on this page.", "En esta página hay un auto más."
-    # The bonnet is a thin slab from the nose to the windscreen base; it hinges at the windscreen (95.5, 48.6).
-    car = f"""<svg class="cc-egg-car" viewBox="0 0 300 110" width="180" height="66" aria-hidden="true" focusable="false">
-                <rect class="cc-egg-glow" x="30" y="50" width="62" height="14" rx="5"/>
-                <path class="cc-egg-body" d="{body}"/>
-                <line class="cc-egg-red" x1="12" y1="68.3" x2="40" y2="68.3"/>
-                <g class="cc-egg-hood"><path d="M 21 60.3 L 95.5 48.6 L 96 52.4 L 21 64.3 Z"/></g>
-                {wheel(62, 92 - 17.6 + 6, 17.6)}{wheel(232, 92 - 17.6 + 6, 17.6)}
+    car = f"""<svg class="cc-egg-car" viewBox="0 0 300 110" width="200" height="73" aria-hidden="true" focusable="false">
+                {gti_profile()}
               </svg>"""
     return f"""          <div class="cc-egg">
             <button type="button" class="cc-egg-btn" aria-expanded="false" aria-controls="cc-egg-panel" data-label-open="{a(e['button_es'] if is_es else e['button_en'])}" data-label-close="{a(e['close_es'] if is_es else e['close_en'])}">
               {car}
               <span class="cc-egg-copy">{bi("span", hint_en, hint_es, "cc-egg-hint")}{bi("span", e["button_en"], e["button_es"], "cc-egg-label")}</span>
             </button>
-            <figure class="cc-egg-panel" id="cc-egg-panel" hidden>
-              <img src="../../{e['image']}" width="{e['width']}" height="{e['height']}" loading="lazy" decoding="async" alt="{a(e['alt_es'] if is_es else e['alt_en'])}">
-              <figcaption>{egg_caption(is_es)}</figcaption>
-            </figure>
+            <div class="cc-egg-panel" id="cc-egg-panel" hidden>
+              <figure class="cc-egg-photo">
+                <img src="../../{e['image']}" width="{e['width']}" height="{e['height']}" loading="lazy" decoding="async" alt="{a(e['alt_es'] if is_es else e['alt_en'])}">
+                <figcaption>{egg_caption(is_es)}</figcaption>
+              </figure>
+              <figure class="cc-egg-photo">
+                <img src="../../{C.EGG_SIDE['image']}" width="{C.EGG_SIDE['width']}" height="{C.EGG_SIDE['height']}" loading="lazy" decoding="async" alt="{a(C.EGG_SIDE['alt_es'] if is_es else C.EGG_SIDE['alt_en'])}">
+                {bi("figcaption", C.EGG_SIDE["caption_en"], C.EGG_SIDE["caption_es"])}
+              </figure>
+            </div>
           </div>
 """
 
