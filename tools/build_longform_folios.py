@@ -1993,7 +1993,7 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
           <section class="tp-contents-series" aria-label="Cult Classics">
             <h3><a href="{_href(rel_res, 'classics/golf-gti/')}" data-en="Applied Mechanics · Cult Classics" data-es="Mecánica Aplicada · Clásicos de Culto">Applied Mechanics · Cult Classics</a></h3>
             <ol>
-            <li data-contents-bounty-item data-search="cc.01 golf gti one brief eight answers un encargo ocho respuestas"><a href="{_href(rel_res, 'classics/golf-gti/')}"{' aria-current="page"' if active_slug == "golf-gti" else ""}><span class="tp-contents-id">CC.01</span> <span class="tp-contents-title" data-en="One Brief, Eight Answers: the Golf GTI" data-es="Un encargo, ocho respuestas: el Golf GTI">One Brief, Eight Answers: the Golf GTI</span></a></li>
+            <li data-contents-bounty-item data-search="cc.01 golf gti one brief eight answers un reto ocho respuestas"><a href="{_href(rel_res, 'classics/golf-gti/')}"{' aria-current="page"' if active_slug == "golf-gti" else ""}><span class="tp-contents-id">CC.01</span> <span class="tp-contents-title" data-en="One Brief, Eight Answers: the Golf GTI" data-es="Un reto, ocho respuestas: el Golf GTI">One Brief, Eight Answers: the Golf GTI</span></a></li>
             </ol>
           </section>"""
     cols = []
@@ -5041,7 +5041,7 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "plate_kind": "png",
         "plate_slug": "cc01",
         "title_en": "One Brief, Eight Answers: the Golf GTI as an Engineering Story",
-        "title_es": "Un encargo, ocho respuestas: el Golf GTI como historia de ingeniería",
+        "title_es": "Un reto, ocho respuestas: el Golf GTI como historia de ingeniería",
         "dek_en": "Eight generations, one engineering move each: injection, sixteen valves, turbo, two clutches, brake-based and clutch-pack differentials, software, with a ghost race of one magazine's Nordschleife times.",
         "dek_es": "Ocho generaciones, una jugada de ingeniería cada una: inyección, dieciséis válvulas, turbo, dos embragues, diferenciales por freno y por embrague, software, con una carrera fantasma de los tiempos de una revista en el Nordschleife.",
         "law": "Δt = 8:54 − 7:57 = 57 s · sport auto, Nordschleife, 2002 vs 2016",
@@ -5514,7 +5514,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         </a>
         <a class="tp-track-chip tp-track-chip-classic" href="classics/golf-gti/">
           <span class="tp-track-chip-kicker" data-en="CULT CLASSIC · CC.01 · NEW" data-es="CLÁSICO DE CULTO · CC.01 · NUEVO">CULT CLASSIC · CC.01 · NEW</span>
-          <strong class="tp-track-chip-title" data-en="One Brief, Eight Answers: the Golf GTI" data-es="Un encargo, ocho respuestas: el Golf GTI">One Brief, Eight Answers: the Golf GTI</strong>
+          <strong class="tp-track-chip-title" data-en="One Brief, Eight Answers: the Golf GTI" data-es="Un reto, ocho respuestas: el Golf GTI">One Brief, Eight Answers: the Golf GTI</strong>
           <span class="tp-track-chip-meta" data-en="8 generations · Differential bench · Ghost race" data-es="8 generaciones · Banco de diferenciales · Carrera fantasma">8 generations · Differential bench · Ghost race</span>
         </a>
         <a class="tp-track-chip tp-track-chip-skills" href="https://github.com/senseiewok/informatico.ai/tree/main/skills" rel="noopener noreferrer">

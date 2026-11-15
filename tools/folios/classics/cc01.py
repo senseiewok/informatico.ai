@@ -23,7 +23,7 @@ SEO = (
     "One Brief, Eight Answers: The Golf GTI as an Engineering Story",
     "Eight generations of the Golf GTI, one engineering move each: injection, sixteen valves, turbo, two clutches, "
     "brake-based and clutch-pack differentials, software. Sourced and interactive.",
-    "Un encargo, ocho respuestas: el Golf GTI como historia de ingeniería",
+    "Un reto, ocho respuestas: el Golf GTI como historia de ingeniería",
     "Ocho generaciones del Golf GTI, una jugada de ingeniería cada una: inyección, dieciséis válvulas, turbo, dos "
     "embragues, diferenciales por freno y por embrague, software. Con fuentes e interactivo.",
 )
@@ -160,7 +160,7 @@ HERO = {
     "kicker_en": "Cult Classics · CC.01 · Engineering",
     "kicker_es": "Clásicos de culto · CC.01 · Ingeniería",
     "title_en": "One Brief, Eight Answers",
-    "title_es": "Un encargo, ocho respuestas",
+    "title_es": "Un reto, ocho respuestas",
     "dek_en": "The Golf GTI, told one engineering move at a time.",
     "dek_es": "El Golf GTI, contado jugada de ingeniería por jugada de ingeniería.",
     "reading_en": "13 min read",
@@ -170,7 +170,7 @@ HERO = {
 BRIEF_NOTE = {
     "en": "The “brief” in the title is our framing, not Volkswagen’s: make a sensible family hatchback properly quick "
           "without making it any less sensible. Each card below shows how one generation answered it.",
-    "es": "El “encargo” del título es una lectura nuestra, no de Volkswagen: hacer que un hatchback familiar y sensato "
+    "es": "El “reto” del título es una lectura nuestra, no de Volkswagen: hacer que un hatchback familiar y sensato "
           "sea rápido de verdad sin que deje de ser sensato. Cada tarjeta muestra cómo respondió una generación.",
 }
 
@@ -488,7 +488,7 @@ CLOSING = [
               "and finally a controller that coordinates all of it. The brief, as we have framed it, stayed put.",
         "es": "En cincuenta años las respuestas cambiaron casi por completo: de ocho válvulas a dieciséis, de aspiración "
               "natural a un compresor y luego a los turbos, de un embrague a dos, de un diferencial abierto a los frenos y "
-              "luego a un paquete de embragues, y al final un controlador que coordina todo. El encargo, tal como lo "
+              "luego a un paquete de embragues, y al final un controlador que coordina todo. El reto, tal como lo "
               "planteamos, se quedó en su lugar.",
         "src": [],
     },
@@ -510,6 +510,17 @@ EGG = {
     "image": "images/classics/golf-gti-hood-up.jpg",
     "width": 1030,
     "height": 870,
+}
+
+# Second photo in the bonnet reveal (maintainer, 2026-11-15): the same car on track, people kept as shot, plate rebuilt.
+EGG_SIDE = {
+    "caption_en": "The same car on track.",
+    "caption_es": "El mismo auto en pista.",
+    "alt_en": "The same Mk7.5 Golf GTI at speed on a circuit, seen from the side, with two helmeted people inside.",
+    "alt_es": "El mismo Golf GTI Mk7.5 a velocidad en un circuito, visto de lado, con dos personas con casco adentro.",
+    "image": "images/classics/golf-gti-side-track.jpg",
+    "width": 1024,
+    "height": 682,
 }
 
 FOOTER_NOTE = {

@@ -405,12 +405,25 @@ li.cc-ghost-nolen .cc-ghost-key { background: transparent !important; color: var
 .cc-egg-btn:hover { border-color: var(--cc-red); transform: translateY(-1px); }
 .cc-egg-btn:focus-visible { outline: 3px solid var(--tp-prussian); outline-offset: 3px; }
 .cc-egg-car { flex: 0 0 auto; width: clamp(8rem, 30vw, 12rem); height: auto; overflow: visible; }
-.cc-egg-body, .cc-egg-car .cc-wheel circle, .cc-egg-car .cc-wheel line { fill: none; stroke: var(--cc-tint); stroke-width: 3; stroke-linejoin: round; }
-.cc-egg-red { stroke: var(--cc-red); stroke-width: 4; stroke-linecap: round; }
-.cc-egg-hood path { fill: var(--cc-tint); }
+.cc-egg-body { fill: var(--tp-vellum); stroke: var(--cc-ink); stroke-width: 2.2; stroke-linejoin: round; }
+.cc-egg-glass { fill: var(--tp-stone-deep); stroke: var(--cc-ink); stroke-width: 1.4; }
+.cc-egg-cpillar { fill: var(--cc-ink); }
+.cc-egg-pillar { stroke: var(--cc-ink); stroke-width: 2.6; }
+.cc-egg-handle { stroke: var(--cc-ink); stroke-width: 1.6; stroke-linecap: round; }
+.cc-egg-shoulder, .cc-egg-skirt { fill: none; stroke: var(--cc-ink); stroke-width: 1.2; opacity: 0.55; }
+.cc-egg-light { fill: var(--tp-stone); stroke: var(--cc-ink); stroke-width: 1.3; }
+.cc-egg-taillight { fill: var(--cc-red); opacity: 0.85; }
+.cc-egg-grille { fill: none; stroke: var(--cc-ink); stroke-width: 1.3; }
+.cc-egg-exhaust { stroke: var(--cc-ink); stroke-width: 3; stroke-linecap: round; }
+.cc-egg-tyre { fill: var(--cc-ink); }
+.cc-egg-rim { fill: var(--tp-stone-deep); stroke: var(--tp-vellum); stroke-width: 1.4; }
+.cc-egg-wheel .cc-wheel circle, .cc-egg-wheel line { fill: none; stroke: var(--tp-vellum); stroke-width: 1.8; }
+.cc-egg-caliper { fill: none; stroke: var(--cc-red); stroke-width: 3.5; stroke-linecap: round; }
+.cc-egg-red { stroke: var(--cc-red); stroke-width: 2.6; stroke-linecap: round; }
+.cc-egg-hood path { fill: var(--tp-vellum); stroke: var(--cc-ink); stroke-width: 1.6; stroke-linejoin: round; }
 .cc-egg-hood {
   transform-box: view-box;
-  transform-origin: 95.5px 48.6px;
+  transform-origin: 100px 44px;
   transition: transform 0.7s cubic-bezier(0.3, 1.5, 0.5, 1);
 }
 .cc-egg-glow { fill: #f6a23c; opacity: 0; transition: opacity 0.5s 0.2s; }
@@ -420,7 +433,10 @@ li.cc-ghost-nolen .cc-ghost-key { background: transparent !important; color: var
 .cc-egg-copy { display: grid; gap: 0.15rem; }
 .cc-egg-hint { font-size: 0.8rem; color: var(--tp-slate); font-style: italic; }
 .cc-egg-label { font-family: var(--tp-font-mono); font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cc-red); font-weight: 600; }
-.cc-egg-panel { position: relative; margin: 0.9rem 0 0; max-width: 40rem; overflow: hidden; border-radius: 6px; }
+.cc-egg-panel { position: relative; margin: 0.9rem 0 0; max-width: 64rem; overflow: hidden; border-radius: 6px; }
+.cc-egg-panel:not([hidden]) { display: grid; gap: 0.9rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 46rem) { .cc-egg-panel:not([hidden]) { grid-template-columns: 1fr 1.25fr; align-items: end; } }
+.cc-egg-photo { margin: 0; overflow: hidden; border-radius: 6px; }
 .cc-egg-panel img { display: block; width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--cc-rule); }
 .cc-egg-panel figcaption { font-size: 0.9rem; color: var(--tp-graphite); margin-top: 0.5rem; }
 .cc-egg.is-open .cc-egg-panel { animation: cc-egg-reveal 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.25s both; }
