@@ -1989,6 +1989,12 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
             <ol>
             {tg_items_html}
             </ol>
+          </section>
+          <section class="tp-contents-series" aria-label="Cult Classics">
+            <h3><a href="{_href(rel_res, 'classics/golf-gti/')}" data-en="Applied Mechanics · Cult Classics" data-es="Mecánica Aplicada · Clásicos de Culto">Applied Mechanics · Cult Classics</a></h3>
+            <ol>
+            <li data-contents-bounty-item data-search="cc.01 golf gti one brief eight answers un encargo ocho respuestas"><a href="{_href(rel_res, 'classics/golf-gti/')}"{' aria-current="page"' if active_slug == "golf-gti" else ""}><span class="tp-contents-id">CC.01</span> <span class="tp-contents-title" data-en="One Brief, Eight Answers: the Golf GTI" data-es="Un encargo, ocho respuestas: el Golf GTI">One Brief, Eight Answers: the Golf GTI</span></a></li>
+            </ol>
           </section>"""
     cols = []
     for p_key in ("engineering", "architecture", "physics", "math"):
@@ -2289,6 +2295,27 @@ def render_timegravity_series_rack(rel_res: str) -> str:
     </section>"""
 
 
+def render_cult_classics_rack(rel_res: str) -> str:
+    """Applied mechanics on /physics/: the Cult Classics features (CC.xx), one card each (tools/folios/classics/)."""
+    from folios.classics import cc01 as CC01  # noqa: E402
+    t_en, d_en, t_es, d_es = CC01.SEO
+    href = _href(rel_res, f"classics/{CC01.SLUG}/")
+    plate = _href(rel_res, "plates/cc01.png")
+    return f"""
+    <section class="tp-issue-rack tp-series-rack" aria-labelledby="cult-classics-heading" id="cult-classics">
+      <p class="tp-kicker" data-en="Applied Mechanics · Cult Classics · CC.01" data-es="Mecánica Aplicada · Clásicos de Culto · CC.01">Applied Mechanics · Cult Classics · CC.01</p>
+      <h2 id="cult-classics-heading" class="tp-h2"><a href="{href}" data-en="{esc(t_en)}" data-es="{esc(t_es)}">{esc(t_en)}</a></h2>
+      <div class="tp-rack-grid">
+        <a class="tp-rack-card tp-rack-card-classic" href="{href}" data-folio-slug="cc01">
+          <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb tp-rack-thumb-series" src="{plate}?v={_png_sha8('cc01')}" width="1200" height="630" loading="lazy" decoding="async" alt="Schematic hatchback silhouettes for CC.01"></span>
+          <span class="tp-rack-top"><span class="tp-rack-id">CC.01</span><span class="tp-rack-badge" data-en="{esc(CC01.HERO['reading_en'])}" data-es="{esc(CC01.HERO['reading_es'])}">{esc(CC01.HERO['reading_en'])}</span></span>
+          <strong class="tp-rack-title" data-en="{esc(CC01.HERO['title_en'])}" data-es="{esc(CC01.HERO['title_es'])}">{esc(CC01.HERO['title_en'])}</strong>
+          <span class="tp-rack-dek" data-en="{esc(d_en)}" data-es="{esc(d_es)}">{esc(d_en)}</span>
+        </a>
+      </div>
+    </section>"""
+
+
 def render_cross_scale_essays_showcase(rel_res: str, lang: str = "en") -> str:
     """Featured three-card showcase of Cross-Scale Companion Essays (/essays/, ES.01–ES.03)."""
     from folios.essays import ESSAYS as CROSS_SCALE_ESSAYS  # noqa: E402
@@ -2337,7 +2364,8 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
                                               image=image, crumbs=crumbs), lang)
     cards = render_rack_cards(pillar, folios, "./", "../plates/", eager=12)
     n = len(folios)
-    lead_series = (render_timegravity_series_rack(rel_res) + render_cross_scale_essays_showcase(rel_res, lang)) if pillar == "physics" else ""
+    lead_series = (render_timegravity_series_rack(rel_res) + render_cult_classics_rack(rel_res)
+                   + render_cross_scale_essays_showcase(rel_res, lang)) if pillar == "physics" else ""
     rack_cls = "tp-issue-rack tp-issue-rack-headed" if pillar == "physics" else "tp-issue-rack"
     rack_head = ""
     if pillar == "physics":
@@ -5005,23 +5033,23 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
 
 INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
     {
-        "code": "T.00",
-        "folio_id": "T.00–T.13",
-        "disc_en": "Physics Series · 14 Steps",
-        "disc_es": "Serie de Física · 14 Pasos",
-        "href": "timegravity/",
+        "code": "CC.01",
+        "folio_id": "CC.01",
+        "disc_en": "Cult Classics · Applied Mechanics",
+        "disc_es": "Clásicos de Culto · Mecánica Aplicada",
+        "href": "classics/golf-gti/",
         "plate_kind": "png",
-        "plate_slug": "t00",
-        "title_en": "Time & Gravity: Fourteen Steps from Falling Clocks to Open Horizons",
-        "title_es": "Tiempo y Gravedad: Catorce Pasos de los Relojes que Caen a los Horizontes Abiertos",
-        "dek_en": "Walks from everyday 1.09 × 10⁻¹⁶ m⁻¹ optical-clock slopes through 10⁻¹⁴ kg quantum-gravity interferometers, Page–Wootters relational time, and GW250114 Kerr horizons, with every claim under one of six labels a script checks.",
-        "dek_es": "Recorre desde la pendiente cotidiana de 1.09 × 10⁻¹⁶ m⁻¹ en relojes ópticos hasta interferómetros de gravedad cuántica de 10⁻¹⁴ kg, el tiempo relacional de Page–Wootters y horizontes de Kerr GW250114, con cada afirmación bajo una de seis etiquetas que comprueba un script.",
-        "law": "dτ/dt = √(1 + 2Φ/c²) · (Ĥ_C ⊗ I_S + I_C ⊗ Ĥ_S)|Ψ⟩⟩ = 0",
-        "badge_en": "MEASURED · DERIVED · BOUND · OPEN · EVERY CLAIM LABELLED",
-        "badge_es": "MEASURED · DERIVADO · BOUND · OPEN · CADA AFIRMACIÓN ETIQUETADA",
-        "cta_en": "Read the T.00–T.13 Series →",
-        "cta_es": "Leer la Serie T.00–T.13 →",
-        "alt": "Series track diagram for Time and Gravity (T.00 to T.12) spanning optical clock gradients, tabletop interferometry, Kerr horizons, and six epistemic badges.",
+        "plate_slug": "cc01",
+        "title_en": "One Brief, Eight Answers: the Golf GTI as an Engineering Story",
+        "title_es": "Un encargo, ocho respuestas: el Golf GTI como historia de ingeniería",
+        "dek_en": "Eight generations, one engineering move each: injection, sixteen valves, turbo, two clutches, brake-based and clutch-pack differentials, software, with a ghost race of one magazine's Nordschleife times.",
+        "dek_es": "Ocho generaciones, una jugada de ingeniería cada una: inyección, dieciséis válvulas, turbo, dos embragues, diferenciales por freno y por embrague, software, con una carrera fantasma de los tiempos de una revista en el Nordschleife.",
+        "law": "Δt = 8:54 − 7:57 = 57 s · sport auto, Nordschleife, 2002 vs 2016",
+        "badge_en": "VW · PRESS · 6 PAPERS · EVERY NUMBER STAMPED",
+        "badge_es": "VW · PRENSA · 6 ARTÍCULOS · CADA CIFRA SELLADA",
+        "cta_en": "Read CC.01 →",
+        "cta_es": "Leer CC.01 →",
+        "alt": "Schematic hatchback silhouettes with a red rule and a tartan band, the share plate for CC.01.",
     },
     {
         "code": "B.06",
@@ -5043,23 +5071,23 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "alt": "Editorial plate for Bounty B.06 illustrating chiral gauge anomaly cancellation and tensor-network entanglement geometry.",
     },
     {
-        "code": "P.12",
-        "folio_id": "P.12",
-        "disc_en": "Statistical & Continuum Physics",
-        "disc_es": "Física Estadística y del Continuo",
-        "href": "physics/p12/",
-        "plate_kind": "jpg",
-        "plate_slug": "p12",
-        "title_en": "Hilbert's Sixth Problem: Hard-Sphere Boltzmann Kinetics to Navier–Stokes",
-        "title_es": "El Sexto Problema de Hilbert: De la Cinética de Boltzmann a Navier–Stokes",
-        "dek_en": "Traces a 2025 preprint's proposed rigorous route from microscopic Newton hard-sphere collisions through the Boltzmann kinetic equation to macroscopic fluid laws.",
-        "dek_es": "Traza la ruta rigurosa que propone una prepublicación de 2025 desde las colisiones microscópicas de esferas duras, por la ecuación cinética de Boltzmann, hasta las leyes macroscópicas de Navier–Stokes.",
-        "law": "∂_t f + v·∇_x f = (1/Kn) Q(f,f) · Kn → 0",
-        "badge_en": "DOI ANCHORED",
-        "badge_es": "ANCLADO A DOI",
-        "cta_en": "Read P.12 Physics Monograph →",
-        "cta_es": "Leer Monografía P.12 →",
-        "alt": "Editorial plate for Folio P.12 showing hard-sphere kinetic trajectories converging into smooth continuum vortices.",
+        "code": "T.00",
+        "folio_id": "T.00–T.13",
+        "disc_en": "Physics Series · 14 Steps",
+        "disc_es": "Serie de Física · 14 Pasos",
+        "href": "timegravity/",
+        "plate_kind": "png",
+        "plate_slug": "t00",
+        "title_en": "Time & Gravity: Fourteen Steps from Falling Clocks to Open Horizons",
+        "title_es": "Tiempo y Gravedad: Catorce Pasos de los Relojes que Caen a los Horizontes Abiertos",
+        "dek_en": "Walks from everyday 1.09 × 10⁻¹⁶ m⁻¹ optical-clock slopes through 10⁻¹⁴ kg quantum-gravity interferometers, Page–Wootters relational time, and GW250114 Kerr horizons, with every claim under one of six labels a script checks.",
+        "dek_es": "Recorre desde la pendiente cotidiana de 1.09 × 10⁻¹⁶ m⁻¹ en relojes ópticos hasta interferómetros de gravedad cuántica de 10⁻¹⁴ kg, el tiempo relacional de Page–Wootters y horizontes de Kerr GW250114, con cada afirmación bajo una de seis etiquetas que comprueba un script.",
+        "law": "dτ/dt = √(1 + 2Φ/c²) · (Ĥ_C ⊗ I_S + I_C ⊗ Ĥ_S)|Ψ⟩⟩ = 0",
+        "badge_en": "MEASURED · DERIVED · BOUND · OPEN · EVERY CLAIM LABELLED",
+        "badge_es": "MEASURED · DERIVADO · BOUND · OPEN · CADA AFIRMACIÓN ETIQUETADA",
+        "cta_en": "Read the T.00–T.13 Series →",
+        "cta_es": "Leer la Serie T.00–T.13 →",
+        "alt": "Series track diagram for Time and Gravity (T.00 to T.12) spanning optical clock gradients, tabletop interferometry, Kerr horizons, and six epistemic badges.",
     },
     {
         "code": "M.11",
@@ -5489,21 +5517,19 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
           <strong class="tp-track-chip-title" data-en="One Brief, Eight Answers: the Golf GTI" data-es="Un encargo, ocho respuestas: el Golf GTI">One Brief, Eight Answers: the Golf GTI</strong>
           <span class="tp-track-chip-meta" data-en="8 generations · Differential bench · Ghost race" data-es="8 generaciones · Banco de diferenciales · Carrera fantasma">8 generations · Differential bench · Ghost race</span>
         </a>
-        <a class="tp-track-chip tp-track-chip-skills" href="#tp-oss-physics-radar">
+        <a class="tp-track-chip tp-track-chip-skills" href="https://github.com/senseiewok/informatico.ai/tree/main/skills" rel="noopener noreferrer">
           <span class="tp-track-chip-kicker" data-en="{skill_count} AI SKILL.MD · {_verifier_count()} VERIFIERS" data-es="{skill_count} SKILL.MD · {_verifier_count()} VERIFICADORES">{skill_count} AI SKILL.MD · {_verifier_count()} VERIFIERS</span>
-          <strong class="tp-track-chip-title" data-en="Agent Skills &amp; 15 OSS Engines" data-es="Skills de IA y 15 Motores OSS">Agent Skills &amp; 15 OSS Engines</strong>
+          <strong class="tp-track-chip-title" data-en="Agent Skills &amp; Verifiers" data-es="Skills de IA y Verificadores">Agent Skills &amp; Verifiers</strong>
           <span class="tp-track-chip-meta" data-en="Claude · Copilot · Cursor · Antigravity" data-es="Claude · Copilot · Cursor · Antigravity">Claude · Copilot · Cursor · Antigravity</span>
         </a>
       </nav>
     </section>
 {render_cover_rotating_spotlight_and_schedule(".")}
-{render_cover_timegravity_feature(".")}
-{render_cross_scale_essays_showcase(".", lang)}
 {rows_html}
 {render_toolchain_section(".")}
 {render_bounty_crucible_section(".")}
-{render_symbolic_physics_lab_section(".")}
-{render_oss_physics_radar_section(".")}
+{render_cover_timegravity_feature(".")}
+{render_cross_scale_essays_showcase(".", lang)}
 {render_folio_crossword_section("hub", "INFORMATICO.AI")}
 {render_site_footer(".")}
   </main>

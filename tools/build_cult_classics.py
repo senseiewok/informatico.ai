@@ -20,6 +20,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 import build_longform_folios as B  # noqa: E402
 from folios.classics import cc01 as C  # noqa: E402
+from folios.classics import cc01_mechanics as M  # noqa: E402
 from folios.seo_copy import BRAND  # noqa: E402
 
 RESEARCH = ROOT / "src"
@@ -126,9 +127,10 @@ def render_laps_section(is_es: bool) -> str:
     dots, legend, rows = [], [], []
     for i, (gen, car, year, ps, ts, secs, driver, tyres, cfg) in enumerate(C.LAPS):
         hue = ("cc-dot-a", "cc-dot-b", "cc-dot-c", "cc-dot-d", "cc-dot-e", "cc-dot-f", "cc-dot-g", "cc-dot-h")[i]
-        dots.append(f'<g class="cc-ghost {hue}" data-secs="{secs}"><circle r="9" cx="80" cy="60"/>'
+        nolen = "" if cfg else " cc-ghost-nolen"
+        dots.append(f'<g class="cc-ghost {hue}{nolen}" data-secs="{secs}"><circle r="9" cx="80" cy="60"/>'
                     f'<text x="80" y="64" text-anchor="middle">{i + 1}</text></g>')
-        legend.append(f'<li class="{hue}"><span class="cc-ghost-key" aria-hidden="true">{i + 1}</span> {t(gen)} · {t(car)} ({year})</li>')
+        legend.append(f'<li class="{hue}{nolen}"><span class="cc-ghost-key" aria-hidden="true">{i + 1}</span> {t(gen)} · {t(car)} ({year})</li>')
         cfg_cell = cfg if cfg else ("en blanco" if is_es else "blank")
         tyres_cell = tyres if tyres != "not stated" else ("no se indica" if is_es else "not stated")
         rows.append(f'<tr><td>{i + 1}</td><td>{t(gen)}</td><th scope="row">{t(car)}</th><td>{year}</td><td>{ps} PS</td>'
@@ -162,6 +164,105 @@ def render_laps_section(is_es: bool) -> str:
           {bi("p", x["caveat_en"], x["caveat_es"])}
           {cite(["wiki-nords", "vw-history"])}
         </div>
+      </section>"""
+
+
+def _nm(x: float) -> str:
+    return f"{round(x):,} Nm"
+
+
+def render_lab_section(is_es: bool) -> str:
+    """Part VI · Mechanics Lab: computed tables from cc01_mechanics (checked by skills/classics/cc01)."""
+    L = C.LAB
+    m = M.DIFF_MODEL
+    demand = m["demand_max_nm"]
+    modes = [("open", "Open differential", "Diferencial abierto"), ("xds", "XDS+ brake", "Freno XDS+"),
+             ("lock", "Clutch-pack lock", "Bloqueo por embragues")]
+    rows = []
+    for key, en, es in modes:
+        r = M.axle_split(demand, key)
+        rows.append(f'<tr data-mode="{key}">{bi("th", en, es, "", "scope=\"row\"")}<td class="cc-num">{_nm(r["road_in"])}</td>'
+                    f'<td class="cc-num">{_nm(r["road_out"])}</td><td class="cc-num">{_nm(r["brake"])}</td>'
+                    f'<td class="cc-num cc-strong">{_nm(r["road"])}</td></tr>')
+    dcols = [("Strategy", "Estrategia"), ("Inside wheel", "Rueda interior"), ("Outside wheel", "Rueda exterior"),
+             ("Brake", "Freno"), ("To the road", "Al camino")]
+    dhead = "".join(bi("th", en, es, "", 'scope="col"') for en, es in dcols)
+    g_in, g_out = M.grip_nm(m["load_in_n"]), M.grip_nm(m["load_out_n"])
+    inputs_en = (f"Inputs (MODEL): axle torque demand {round(demand):,} Nm, wheel radius {m['radius_m']} m, friction "
+                 f"coefficient {m['mu']}, inside load {round(m['load_in_n']):,} N, outside load {round(m['load_out_n']):,} N, "
+                 f"brake up to {round(m['brake_max_nm'])} Nm. Locking torque 1,600 Nm (VW). Grip limits: inside "
+                 f"{_nm(g_in)}, outside {_nm(g_out)}.")
+    inputs_es = (f"Entradas (MODELO): par pedido al eje {round(demand):,} Nm, radio de rueda {m['radius_m']} m, coeficiente "
+                 f"de fricción {m['mu']}, carga interior {round(m['load_in_n']):,} N, carga exterior {round(m['load_out_n']):,} N, "
+                 f"freno de hasta {round(m['brake_max_nm'])} Nm. Par de bloqueo 1,600 Nm (VW). Límites de agarre: interior "
+                 f"{_nm(g_in)}, exterior {_nm(g_out)}.")
+    lap_rows = []
+    for gen, car, year, ps, ts, secs, *_r, cfg in C.LAPS:
+        if not cfg:
+            continue
+        lap_rows.append(f'<tr><td>{t(gen)}</td><th scope="row">{t(car)}</th><td>{year}</td><td class="cc-num">{t(ts)}</td>'
+                        f'<td class="cc-num cc-strong" data-lap-kmh="{secs}">{M.lap_speed_kmh(secs):.1f} km/h</td></tr>')
+    lcols = [("Gen", "Gen"), ("Car, as listed", "Auto, como aparece"), ("Year", "Año"), ("Lap", "Vuelta"),
+             ("Average (DERIVED)", "Promedio (DERIVADO)")]
+    lhead = "".join(bi("th", en, es, "", 'scope="col"') for en, es in lcols)
+    q = M.QUARTER_MODEL
+    f_body, f_hop = M.quarter_car_hz(q["m_u_start"])
+    q_inputs_en = (f"Inputs (MODEL): sprung mass {round(q['m_s'])} kg, suspension rate {round(q['k_s']):,} N/m, tyre rate "
+                   f"{round(q['k_t']):,} N/m.")
+    q_inputs_es = (f"Entradas (MODELO): masa suspendida {round(q['m_s'])} kg, rigidez de suspensión {round(q['k_s']):,} N/m, "
+                   f"rigidez de llanta {round(q['k_t']):,} N/m.")
+    qlabel = "Masa no suspendida" if is_es else "Unsprung mass"
+    return f"""      <section class="cc-part cc-lab" id="part-6" aria-labelledby="part-6-h">
+        <header class="cc-part-head">
+          <p class="cc-part-num" aria-hidden="true">VI</p>
+          <h2 class="cc-h2 cc-part-title" id="part-6-h">{bi("span", "Part VI", "Parte VI")} · {bi("span", L["title_en"], L["title_es"])}</h2>
+          <p class="cc-part-years" data-en="Model · Derived · Verified by script" data-es="Modelo · Derivado · Verificado por script">Model · Derived · Verified by script</p>
+        </header>
+        {bi("p", L["intro_en"], L["intro_es"], "cc-lede cc-dropcap")}
+        <article class="cc-lab-block" id="lab-differential">
+          {bi("h3", L["diff_h_en"], L["diff_h_es"])}
+          {bi("p", L["diff_en"], L["diff_es"])}
+          <p class="cc-eq"><code>T_road,max(open) = 2 · μ · N_in · r</code><br><code>T_road(lock) = T_in + min(ΔT, 1,600 Nm, μ · N_out · r − T_in)</code></p>
+          <div class="cc-table-wrap"><table class="cc-table cc-lab-diff"><thead><tr>{dhead}</tr></thead><tbody>{''.join(rows)}</tbody></table></div>
+          {bi("p", inputs_en, inputs_es, "cc-small")}
+          {cite(["scamarcio2023", "kakalis2008", "vw-mk7-chassis"])}
+        </article>
+        <article class="cc-lab-block" id="lab-laps">
+          {bi("h3", L["laps_h_en"], L["laps_h_es"])}
+          {bi("p", L["laps_en"], L["laps_es"])}
+          <p class="cc-eq"><code>v̄ = 20,600 m ÷ t_lap</code></p>
+          <div class="cc-table-wrap"><table class="cc-table cc-lab-laps"><thead><tr>{lhead}</tr></thead><tbody>{''.join(lap_rows)}</tbody></table></div>
+          {cite(["wiki-nords"])}
+        </article>
+        <article class="cc-lab-block" id="lab-quarter-car">
+          {bi("h3", L["qc_h_en"], L["qc_h_es"])}
+          {bi("p", L["qc_en"], L["qc_es"])}
+          <p class="cc-eq"><code>m_s·m_u·ω⁴ − (m_s(k_s + k_t) + m_u·k_s)·ω² + k_s·k_t = 0,  f = ω / 2π</code></p>
+          <div class="cc-bench cc-qc" data-cc-qc data-ms="{q['m_s']}" data-ks="{q['k_s']}" data-kt="{q['k_t']}">
+            <svg class="cc-qc-svg" viewBox="0 0 220 240" width="220" height="240" role="img" aria-labelledby="cc-qc-title">
+              <title id="cc-qc-title">A body block on a spring above a wheel block on a tyre spring, on the road</title>
+              <rect class="cc-qc-body" x="50" y="20" width="120" height="50" rx="4"/>
+              <path class="cc-qc-spring" d="M110 70 l-14 8 l28 8 l-28 8 l28 8 l-28 8 l28 8 l-14 8"/>
+              <rect class="cc-qc-wheel" x="80" y="134" width="60" height="34" rx="4"/>
+              <path class="cc-qc-spring cc-qc-tyre" d="M110 168 l-10 6 l20 6 l-20 6 l20 6 l-10 6"/>
+              <line class="cc-qc-road" x1="20" y1="204" x2="200" y2="204"/>
+              <text class="cc-svg-label" x="176" y="50" data-en="body" data-es="carrocería">body</text>
+              <text class="cc-svg-label" x="146" y="156" data-en="wheel" data-es="rueda">wheel</text>
+            </svg>
+            <div class="cc-controls">
+              <label class="cc-range-label" for="cc-qc-range">{t(qlabel)}</label>
+              <input id="cc-qc-range" class="cc-range" type="range" min="{q['m_u_min']:.0f}" max="{q['m_u_max']:.0f}" value="{q['m_u_start']:.0f}" step="1" aria-valuetext="{q['m_u_start']:.0f} kg">
+              <p class="cc-readout cc-qc-readout" aria-live="polite"><span class="cc-qc-mu">{q['m_u_start']:.0f} kg</span> · <span data-en="body bounce" data-es="rebote de carrocería">body bounce</span> <strong class="cc-qc-body-hz">{f_body:.2f} Hz</strong> · <span data-en="wheel hop" data-es="salto de rueda">wheel hop</span> <strong class="cc-qc-hop-hz">{f_hop:.1f} Hz</strong></p>
+            </div>
+          </div>
+          {bi("p", q_inputs_en, q_inputs_es, "cc-small")}
+          {cite(["micromachines2026", "ahmadian2000", "woo2021"])}
+        </article>
+        <aside class="cc-interlude cc-verify-box" aria-labelledby="cc-verify-h">
+          {bi("h3", L["verify_h_en"], L["verify_h_es"], "cc-int-h", 'id="cc-verify-h"')}
+          {bi("p", L["verify_en"], L["verify_es"])}
+          <p class="cc-eq"><code>python skills/classics/cc01/verify_cc01_mechanics.py</code><br><code>python skills/classics/cc01/verify_cc01_mechanics.py --planted-defect</code></p>
+        </aside>
       </section>"""
 
 
@@ -348,8 +449,22 @@ def egg_caption(is_es: bool) -> str:
 
 def render_egg(is_es: bool) -> str:
     e = C.EGG
+    k = 0.85  # the Mk7 silhouette's proportions in the parade
+    body = hatch_path(k)
+    hint_en, hint_es = "There is one more car on this page.", "En esta página hay un auto más."
+    # The bonnet is a thin slab from the nose to the windscreen base; it hinges at the windscreen (95.5, 48.6).
+    car = f"""<svg class="cc-egg-car" viewBox="0 0 300 110" width="180" height="66" aria-hidden="true" focusable="false">
+                <rect class="cc-egg-glow" x="30" y="50" width="62" height="14" rx="5"/>
+                <path class="cc-egg-body" d="{body}"/>
+                <line class="cc-egg-red" x1="12" y1="68.3" x2="40" y2="68.3"/>
+                <g class="cc-egg-hood"><path d="M 21 60.3 L 95.5 48.6 L 96 52.4 L 21 64.3 Z"/></g>
+                {wheel(62, 92 - 17.6 + 6, 17.6)}{wheel(232, 92 - 17.6 + 6, 17.6)}
+              </svg>"""
     return f"""          <div class="cc-egg">
-            <button type="button" class="cc-egg-btn" aria-expanded="false" aria-controls="cc-egg-panel" data-label-open="{a(e['button_es'] if is_es else e['button_en'])}" data-label-close="{a(e['close_es'] if is_es else e['close_en'])}" data-en="{a(e['button_en'])}" data-es="{a(e['button_es'])}">{t(e['button_en'])}</button>
+            <button type="button" class="cc-egg-btn" aria-expanded="false" aria-controls="cc-egg-panel" data-label-open="{a(e['button_es'] if is_es else e['button_en'])}" data-label-close="{a(e['close_es'] if is_es else e['close_en'])}">
+              {car}
+              <span class="cc-egg-copy">{bi("span", hint_en, hint_es, "cc-egg-hint")}{bi("span", e["button_en"], e["button_es"], "cc-egg-label")}</span>
+            </button>
             <figure class="cc-egg-panel" id="cc-egg-panel" hidden>
               <img src="../../{e['image']}" width="{e['width']}" height="{e['height']}" loading="lazy" decoding="async" alt="{a(e['alt_es'] if is_es else e['alt_en'])}">
               <figcaption>{egg_caption(is_es)}</figcaption>
@@ -371,7 +486,7 @@ def render_diff_section(is_es: bool) -> str:
     return f"""      <section class="cc-observatory" id="differential" aria-labelledby="cc-diff-h">
         {bi("h2", "The differential bench", "El banco de diferenciales", "cc-h2", 'id="cc-diff-h"')}
         {bi("p", C.DIFF_TEXT["intro_en"], C.DIFF_TEXT["intro_es"], "cc-lede")}
-        <div class="cc-bench" data-cc-diff>
+        <div class="cc-bench" data-cc-diff data-r="{M.DIFF_MODEL['radius_m']}" data-mu="{M.DIFF_MODEL['mu']}" data-nin="{M.DIFF_MODEL['load_in_n']}" data-nout="{M.DIFF_MODEL['load_out_n']}" data-brake="{M.DIFF_MODEL['brake_max_nm']}" data-lock="{M.DIFF_MODEL['lock_max_nm']}" data-demand="{M.DIFF_MODEL['demand_max_nm']}">
           {render_diff_svg()}
           <div class="cc-controls">
             <fieldset class="cc-modes"><legend>{t(legend)}</legend>{radios}</fieldset>
@@ -516,7 +631,7 @@ def render_page(catalog: dict, lang: str = "en") -> str:
     desc = d_es if is_es else d_en
     canon = B.page_url(PATH, lang)
     image = "https://informatico.ai/plates/cc01.png"
-    crumbs = [(BRAND, B.page_url("", lang)), (C.CODE, canon)]
+    crumbs = [(BRAND, B.page_url("", lang)), ("Física" if is_es else "Physics", B.page_url("physics/", lang)), (C.CODE, canon)]
     ld = B._ld("ScholarlyArticle", title, desc, canon, lang, image=image, date_published=C.DATE,
                date_modified=C.DATE, crumbs=crumbs)
     head = B.render_head(f"{title} | {BRAND}", desc, PATH, "article", image, rel, rel, ld, lang)
@@ -527,19 +642,20 @@ def render_page(catalog: dict, lang: str = "en") -> str:
     opening = "\n".join(f'        {bi("p", p["en"], p["es"])}\n        {cite(p["src"])}' for p in C.OPENING)
     closing = "\n".join(f'        {bi("p", p["en"], p["es"])}' for p in C.CLOSING)
     jumps = [(f"#{p['id']}", f"{p['numeral']} · {p['title_en']}", f"{p['numeral']} · {p['title_es']}") for p in C.PARTS]
-    jumps += [("#ghost-race", "Ghost race", "Carrera fantasma"), ("#sources", "Sources", "Fuentes")]
+    jumps += [("#ghost-race", "Ghost race", "Carrera fantasma"), ("#part-6", "VI · Lab", "VI · Laboratorio"), ("#sources", "Sources", "Fuentes")]
     jump_html = " ".join(f'<a class="tp-essay-jump-pill" href="{jh}" data-en="{a(je)}" data-es="{a(js)}">{t(je)}</a>' for jh, je, js in jumps)
     aria_crumb = "Ruta de navegación" if is_es else "Breadcrumb"
     aria_jump = "Secciones" if is_es else "Sections"
     return f"""{head}
 <body class="tp-body tp-page-folio cc-page">
-{B.render_masthead(rel, "", lang)}
+{B.render_masthead(rel, "physics", lang)}
 {B.render_contents_dialog(rel, catalog, C.SLUG)}
 {render_parade()}
   <main id="main" class="tp-shell cc-shell" tabindex="-1">
     <nav class="tp-breadcrumb-bar" aria-label="{aria_crumb}">
       <ol class="tp-breadcrumb-list">
         <li class="tp-crumb-item"><a class="tp-crumb-link" href="../../">Informatico.ai</a></li>
+        <li class="tp-crumb-item"><a class="tp-crumb-link" href="../../physics/#cult-classics" data-en="Physics" data-es="Física">Physics</a></li>
         <li class="tp-crumb-item" aria-current="page"><span>{t(C.CODE)}</span></li>
       </ol>
     </nav>
@@ -558,6 +674,7 @@ def render_page(catalog: dict, lang: str = "en") -> str:
       </section>
 {parts}
 {render_laps_section(is_es)}
+{render_lab_section(is_es)}
 {render_silent(is_es)}
       <section class="cc-closing" aria-label="{a('Cierre' if is_es else 'Closing')}">
 {closing}

@@ -100,6 +100,24 @@ SOURCES = {
         "label": "Wikipedia, “List of Nürburgring Nordschleife lap times” (rows citing sport auto Supertests 01/2002, 11/2005, 09/2011, 08/2013, 07/2016, 12/2019, 11/2021); raw text read 2026-11-15",
         "url": "https://en.wikipedia.org/wiki/List_of_N%C3%BCrburgring_Nordschleife_lap_times",
     },
+    "scamarcio2023": {
+        "short": "Scamarcio et al. 2023",
+        "kind": "paper",
+        "label": "Scamarcio, Caponio, Mihalkov et al. (2023). Predictive Anti-Jerk and Traction Control for V2X Connected Electric Vehicles With Central Motor and Open Differential. IEEE Transactions on Vehicular Technology 72(6), 7221–7239",
+        "url": "https://doi.org/10.1109/tvt.2022.3143497",
+    },
+    "micromachines2026": {
+        "short": "Micromachines 2026",
+        "kind": "paper",
+        "label": "Electromechanical Modeling and Dimensionless Optimization of a Multilayer PZT-5H Energy Harvester for Vehicle Suspension Systems (2026). Micromachines 17(10), 1111",
+        "url": "https://doi.org/10.3390/mi17101111",
+    },
+    "ahmadian2000": {
+        "short": "Ahmadian & Pare 2000",
+        "kind": "paper",
+        "label": "Ahmadian & Pare (2000). A Quarter-Car Experimental Analysis of Alternative Semiactive Control Methods. Journal of Intelligent Material Systems and Structures 11(8), 604–612",
+        "url": "https://doi.org/10.1106/mr3w-5d8w-0lpl-wguq",
+    },
     "press-cs-s": {
         "short": "CarAdvice 2016",
         "kind": "press",
@@ -397,10 +415,10 @@ DIFF_TEXT = {
                   "embragues manda el par a la rueda exterior, lo que coincide con la descripción de Volkswagen: pasar el "
                   "par de la rueda con menos agarre a la que tiene más. El artículo estudió un deportivo de tracción "
                   "trasera, no un Golf.",
-    "caption_en": "Schematic, not a simulation: arrow lengths are illustrative. The only figure from Volkswagen is the "
-                  "front lock’s construction.",
-    "caption_es": "Esquema, no simulación: el largo de las flechas es ilustrativo. Lo único que viene de Volkswagen es "
-                  "cómo está construido el bloqueo delantero.",
+    "caption_en": "Computed, not measured: arrow lengths follow the Mechanics Lab model in Part VI, whose inputs are "
+                  "MODEL values except Volkswagen’s 1,600 Nm locking torque.",
+    "caption_es": "Calculado, no medido: el largo de las flechas sigue el modelo del Laboratorio de mecánica de la Parte "
+                  "VI, cuyas entradas son valores de MODELO, salvo el par de bloqueo de 1,600 Nm de Volkswagen.",
 }
 
 DCT_TEXT = {
@@ -794,11 +812,85 @@ LAPS_TEXT = {
                  "fue otra prueba, hecha por el fabricante, y no forma parte de esta comparación. En la lista no hay "
                  "tiempos de sport auto para el Mk1, Mk2 ni Mk3: no se indica.",
     "loop_en": "Schematic loop, not the Nordschleife’s shape. Each dot runs at the constant average speed its lap time "
-               "implies; real laps speed up and slow down. Time is compressed 100 to 1.",
+               "implies; real laps speed up and slow down. Time is compressed 100 to 1. Hollow dots mark rows where the list leaves the "
+               "track length blank.",
     "loop_es": "Circuito esquemático, no el trazado del Nordschleife. Cada punto corre a la velocidad promedio constante "
-               "que implica su tiempo; las vueltas reales aceleran y frenan. El tiempo está comprimido 100 a 1.",
+               "que implica su tiempo; las vueltas reales aceleran y frenan. El tiempo está comprimido 100 a 1. Los puntos huecos marcan las filas "
+               "donde la lista deja en blanco la longitud del circuito.",
 }
 
+
+# ---------------------------------------------------------------------------------------------------------------
+# Part VI · Mechanics Lab (2026-11-15 council: magazine-first article plus a computed physics companion, a SKILL.md
+# and a verifier). Numbers come from tools/folios/classics/cc01_mechanics.py; MODEL values are illustrative.
+# ---------------------------------------------------------------------------------------------------------------
+LAB = {
+    "title_en": "Mechanics Lab: the physics, worked",
+    "title_es": "Laboratorio de mecánica: la física, resuelta",
+    "intro_en": "The story above describes what each generation did. This part shows why it works, with three small models "
+                "you can run. Any number that is not from a source is marked MODEL: an illustrative value chosen to make "
+                "the mechanism visible, not a measurement of a Golf. A verifier in the repository recomputes every number "
+                "here and fails if one is wrong.",
+    "intro_es": "La historia de arriba describe lo que hizo cada generación. Esta parte muestra por qué funciona, con tres "
+                "modelos pequeños que puedes correr. Cualquier cifra que no venga de una fuente está marcada como MODELO: "
+                "un valor ilustrativo elegido para que se vea el mecanismo, no una medición de un Golf. Un verificador en "
+                "el repositorio recalcula cada número de aquí y falla si alguno está mal.",
+    "diff_h_en": "1 · Why an open differential runs out of grip",
+    "diff_h_es": "1 · Por qué un diferencial abierto se queda sin agarre",
+    "diff_en": "An open differential gives each driven wheel half the axle torque. A wheel can only push the road as hard as "
+               "its grip allows, roughly the friction coefficient times the load on it times the wheel radius. In a hard "
+               "corner the inside front wheel carries less load, so its limit is lower, and because both halves must stay "
+               "equal, the whole axle is capped at twice that smaller limit. Brake the inside wheel and the differential "
+               "can hold more torque before that wheel spins, so the outside wheel gets more. A clutch pack instead moves "
+               "torque directly from the faster, spinning wheel to the slower one, up to its locking torque. Volkswagen "
+               "gives 1,600 Nm for the Mk7 GTI Performance front lock. The table runs the same three cases at the top of "
+               "the throttle slider in the bench above.",
+    "diff_es": "Un diferencial abierto le da a cada rueda motriz la mitad del par del eje. Una rueda solo puede empujar el "
+               "camino tanto como su agarre lo permite, más o menos el coeficiente de fricción por la carga sobre ella por "
+               "el radio de la rueda. En una curva cerrada, la rueda delantera interior lleva menos carga, así que su "
+               "límite es más bajo, y como las dos mitades deben ser iguales, todo el eje queda limitado al doble de ese "
+               "límite menor. Si se frena la rueda interior, el diferencial puede sostener más par antes de que esa rueda "
+               "patine, y la rueda exterior recibe más. Un paquete de embragues, en cambio, pasa par directamente de la "
+               "rueda más rápida, la que patina, a la más lenta, hasta su par de bloqueo. Volkswagen da 1,600 Nm para el "
+               "bloqueo delantero del Mk7 GTI Performance. La tabla corre los mismos tres casos en el tope del acelerador "
+               "del banco de arriba.",
+    "laps_h_en": "2 · Lap times as average speeds",
+    "laps_h_es": "2 · Tiempos por vuelta como velocidades promedio",
+    "laps_en": "Divide the lap length by the lap time and you get an average speed. The source gives the 20,600 m sport auto "
+               "configuration only for the 2016 to 2021 rows, so only those four get a speed here; the older rows stay "
+               "blank rather than borrow a length the list does not state. These are DERIVED values, our arithmetic, and "
+               "an average hides every braking zone and straight.",
+    "laps_es": "Divide la longitud de la vuelta entre el tiempo y obtienes una velocidad promedio. La fuente da la "
+               "configuración de 20,600 m de sport auto solo para las filas de 2016 a 2021, así que solo esas cuatro "
+               "tienen velocidad aquí; las filas anteriores quedan en blanco en lugar de tomar prestada una longitud que la "
+               "lista no indica. Son valores DERIVADOS, nuestro cálculo, y un promedio esconde cada zona de frenado y cada "
+               "recta.",
+    "qc_h_en": "3 · Unsprung mass and the two ways a corner bounces",
+    "qc_h_es": "3 · Masa no suspendida y las dos formas en que rebota una esquina",
+    "qc_en": "Engineers model one corner of a car as two masses and two springs: the body on the suspension spring, and the "
+             "wheel on the tyre. The model has two natural frequencies, a slow body bounce and a fast wheel hop, found "
+             "from the masses and stiffnesses. Research on this model reports that unsprung mass mainly moves the wheel-hop "
+             "mode, tyre stiffness mainly shapes it too, and suspension stiffness sets the bounce; less wheel hop means "
+             "better road holding. Move the slider to change the unsprung mass and watch which frequency moves. The rates "
+             "are MODEL values, not a Golf’s.",
+    "qc_es": "Los ingenieros modelan una esquina del auto como dos masas y dos resortes: la carrocería sobre el resorte de "
+             "la suspensión y la rueda sobre la llanta. El modelo tiene dos frecuencias naturales, un rebote lento de la "
+             "carrocería y un salto rápido de la rueda, que salen de las masas y las rigideces. La investigación sobre este "
+             "modelo reporta que la masa no suspendida mueve sobre todo el modo de salto de la rueda, que la rigidez de la "
+             "llanta también lo define y que la rigidez de la suspensión fija el rebote; menos salto de rueda significa "
+             "mejor agarre al camino. Mueve el control para cambiar la masa no suspendida y observa qué frecuencia se "
+             "mueve. Las rigideces son valores de MODELO, no las de un Golf.",
+    "verify_h_en": "Run it yourself",
+    "verify_h_es": "Córrelo tú",
+    "verify_en": "The verifier lives at skills/classics/cc01/verify_cc01_mechanics.py, with a SKILL.md beside it. It uses only "
+                 "the Python standard library, recomputes the torque split, the lap speeds and the quarter-car frequencies "
+                 "with its own code, checks them against this page in both languages, and must fail when a defect is "
+                 "planted, for example a clutch pack that sends torque the wrong way.",
+    "verify_es": "El verificador está en skills/classics/cc01/verify_cc01_mechanics.py, con un SKILL.md al lado. Usa solo la "
+                 "biblioteca estándar de Python, recalcula el reparto de par, las velocidades por vuelta y las frecuencias "
+                 "del cuarto de auto con su propio código, las compara con esta página en los dos idiomas y debe fallar "
+                 "cuando se le planta un defecto, por ejemplo un paquete de embragues que manda el par al revés.",
+}
 
 # Phrases that may not appear anywhere on the page (tests/test_cult_classics.py).
 BANNED = [
