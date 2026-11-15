@@ -427,8 +427,8 @@ li.cc-ghost-nolen .cc-ghost-key { background: transparent !important; color: var
   transition: transform 0.7s cubic-bezier(0.3, 1.5, 0.5, 1);
 }
 .cc-egg-glow { fill: #f6a23c; opacity: 0; transition: opacity 0.5s 0.2s; }
-.cc-egg-btn:hover .cc-egg-hood, .cc-egg-btn:focus-visible .cc-egg-hood { transform: rotate(-9deg); }
-.cc-egg.is-open .cc-egg-hood { transform: rotate(-42deg); }
+.cc-egg-btn:hover .cc-egg-hood, .cc-egg-btn:focus-visible .cc-egg-hood { transform: rotate(9deg); }
+.cc-egg.is-open .cc-egg-hood { transform: rotate(42deg); }
 .cc-egg.is-open .cc-egg-glow { opacity: 0.85; }
 .cc-egg-copy { display: grid; gap: 0.15rem; }
 .cc-egg-hint { font-size: 0.8rem; color: var(--tp-slate); font-style: italic; }
