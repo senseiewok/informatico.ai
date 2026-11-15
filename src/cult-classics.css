@@ -353,10 +353,69 @@ html.cc-paused .cc-weight { animation-play-state: paused; }
 .cc-lap-svg text { font-family: var(--tp-font-mono); font-size: 12px; fill: var(--cc-ink); }
 
 /* easter egg */
-.cc-egg { margin-top: 1rem; }
-.cc-egg-panel { margin: 0.8rem 0 0; }
-.cc-egg-panel img { display: block; width: 100%; max-width: 36rem; height: auto; border-radius: 4px; border: 1px solid var(--cc-rule); }
-.cc-egg-panel figcaption { font-size: 0.86rem; color: var(--tp-slate); margin-top: 0.4rem; }
+/* easter egg: a drawn GTI whose bonnet peeks on hover and swings open to reveal the photo */
+.cc-egg { margin-top: 1.4rem; }
+.cc-egg-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 36rem;
+  padding: 0.7rem 1rem;
+  font: inherit;
+  text-align: left;
+  color: var(--cc-ink);
+  background: linear-gradient(100deg, var(--tp-stone-deep), var(--cc-paper) 70%);
+  border: 1.5px solid var(--tp-rule-strong);
+  border-left: 4px solid var(--cc-red);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.cc-egg-btn:hover { border-color: var(--cc-red); transform: translateY(-1px); }
+.cc-egg-btn:focus-visible { outline: 3px solid var(--tp-prussian); outline-offset: 3px; }
+.cc-egg-car { flex: 0 0 auto; width: clamp(8rem, 30vw, 12rem); height: auto; overflow: visible; }
+.cc-egg-body, .cc-egg-car .cc-wheel circle, .cc-egg-car .cc-wheel line { fill: none; stroke: var(--cc-tint); stroke-width: 3; stroke-linejoin: round; }
+.cc-egg-red { stroke: var(--cc-red); stroke-width: 4; stroke-linecap: round; }
+.cc-egg-hood path { fill: var(--cc-tint); }
+.cc-egg-hood {
+  transform-box: view-box;
+  transform-origin: 95.5px 48.6px;
+  transition: transform 0.7s cubic-bezier(0.3, 1.5, 0.5, 1);
+}
+.cc-egg-glow { fill: #f6a23c; opacity: 0; transition: opacity 0.5s 0.2s; }
+.cc-egg-btn:hover .cc-egg-hood, .cc-egg-btn:focus-visible .cc-egg-hood { transform: rotate(-9deg); }
+.cc-egg.is-open .cc-egg-hood { transform: rotate(-42deg); }
+.cc-egg.is-open .cc-egg-glow { opacity: 0.85; }
+.cc-egg-copy { display: grid; gap: 0.15rem; }
+.cc-egg-hint { font-size: 0.8rem; color: var(--tp-slate); font-style: italic; }
+.cc-egg-label { font-family: var(--tp-font-mono); font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cc-red); font-weight: 600; }
+.cc-egg-panel { position: relative; margin: 0.9rem 0 0; max-width: 40rem; overflow: hidden; border-radius: 6px; }
+.cc-egg-panel img { display: block; width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--cc-rule); }
+.cc-egg-panel figcaption { font-size: 0.9rem; color: var(--tp-graphite); margin-top: 0.5rem; }
+.cc-egg.is-open .cc-egg-panel { animation: cc-egg-reveal 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.25s both; }
+.cc-egg.is-open .cc-egg-panel img { animation: cc-egg-zoom 6s ease-out 0.25s both; }
+.cc-egg.is-open .cc-egg-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: calc(100% - 2.2rem);
+  background: linear-gradient(105deg, transparent 40%, rgba(176, 48, 30, 0.35) 48%, rgba(255, 255, 255, 0.5) 50%, transparent 58%);
+  transform: translateX(-120%);
+  animation: cc-egg-glint 1.1s ease-in-out 1s both;
+  pointer-events: none;
+}
+@keyframes cc-egg-reveal {
+  from { clip-path: circle(0% at 12% 0%); opacity: 0.4; }
+  to { clip-path: circle(150% at 12% 0%); opacity: 1; }
+}
+@keyframes cc-egg-zoom {
+  from { transform: scale(1.08); }
+  to { transform: scale(1); }
+}
+@keyframes cc-egg-glint {
+  to { transform: translateX(120%); }
+}
 
 /* ---------------------------------------------------------------- observatories */
 .cc-observatory { border-top: 1px solid var(--cc-rule); margin-top: 2.5rem; }
@@ -414,8 +473,6 @@ html.cc-paused .cc-weight { animation-play-state: paused; }
 }
 .cc-btn:hover { border-color: var(--cc-red); }
 .cc-btn-quiet { font-size: 0.8rem; padding: 0.3rem 0.7rem; font-weight: 500; }
-.cc-egg-btn { font: inherit; font-size: 0.85rem; padding: 0.35rem 0.8rem; border-radius: 999px; border: 1px dashed var(--tp-rule-strong); background: transparent; color: var(--tp-graphite); cursor: pointer; }
-.cc-egg-btn:hover { border-color: var(--cc-red); color: var(--cc-red); }
 .cc-btn:focus-visible, .cc-egg-btn:focus-visible, .cc-range:focus-visible, .cc-mode input:focus-visible { outline: 3px solid var(--tp-prussian); outline-offset: 2px; }
 
 /* sources */
@@ -431,6 +488,10 @@ html.cc-paused .cc-weight { animation-play-state: paused; }
   .cc-lane-5 { left: 8%; } .cc-lane-6 { left: 48%; } .cc-lane-7 { left: 80%; } .cc-lane-8 { left: 22%; }
   .cc-plate-disc, .cc-clutch .cc-clutch-move, .cc-slip path, .cc-caliper, .cc-shaft, .cc-gear circle, .cc-lane { transition: none; }
   .cc-motion { display: none; }
+  .cc-egg-hood, .cc-egg-glow, .cc-egg-btn { transition: none; }
+  .cc-egg-btn:hover .cc-egg-hood, .cc-egg-btn:focus-visible .cc-egg-hood { transform: none; }
+  .cc-egg.is-open .cc-egg-panel, .cc-egg.is-open .cc-egg-panel img, .cc-egg.is-open .cc-egg-panel::after { animation: none; }
+  .cc-egg.is-open .cc-egg-panel::after { display: none; }
 }
 @media (forced-colors: active) {
   .cc-parade, .cc-track { display: none; }

@@ -295,20 +295,22 @@ function initEgg() {
   const btn = document.querySelector(".cc-egg-btn");
   const panel = document.getElementById("cc-egg-panel");
   if (!btn || !panel) return;
-  btn.addEventListener("click", () => {
-    const open = panel.hidden;
+  const egg = btn.closest(".cc-egg");
+  const label = btn.querySelector(".cc-egg-label");
+  const setOpen = (open) => {
     panel.hidden = !open;
+    egg.classList.toggle("is-open", open);
     btn.setAttribute("aria-expanded", String(open));
-    btn.textContent = open ? btn.dataset.labelClose : btn.dataset.labelOpen;
-  });
+    if (label) label.textContent = open ? btn.dataset.labelClose : btn.dataset.labelOpen;
+    if (open && !reduceMotion.matches) panel.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  };
+  btn.addEventListener("click", () => setOpen(panel.hidden));
   document.addEventListener("keydown", (e) => {
     // Leave Escape to an open dialog (e.g. Contents) and to focus elsewhere on the page.
     if (e.defaultPrevented || document.querySelector("dialog[open]")) return;
     if (!btn.closest(".cc-egg").contains(document.activeElement)) return;
     if (e.key === "Escape" && !panel.hidden) {
-      panel.hidden = true;
-      btn.setAttribute("aria-expanded", "false");
-      btn.textContent = btn.dataset.labelOpen;
+      setOpen(false);
       btn.focus();
     }
   });

@@ -348,8 +348,22 @@ def egg_caption(is_es: bool) -> str:
 
 def render_egg(is_es: bool) -> str:
     e = C.EGG
+    k = 0.85  # the Mk7 silhouette's proportions in the parade
+    body = hatch_path(k)
+    hint_en, hint_es = "There is one more car on this page.", "En esta página hay un auto más."
+    # The bonnet is a thin slab from the nose to the windscreen base; it hinges at the windscreen (95.5, 48.6).
+    car = f"""<svg class="cc-egg-car" viewBox="0 0 300 110" width="180" height="66" aria-hidden="true" focusable="false">
+                <rect class="cc-egg-glow" x="30" y="50" width="62" height="14" rx="5"/>
+                <path class="cc-egg-body" d="{body}"/>
+                <line class="cc-egg-red" x1="12" y1="68.3" x2="40" y2="68.3"/>
+                <g class="cc-egg-hood"><path d="M 21 60.3 L 95.5 48.6 L 96 52.4 L 21 64.3 Z"/></g>
+                {wheel(62, 92 - 17.6 + 6, 17.6)}{wheel(232, 92 - 17.6 + 6, 17.6)}
+              </svg>"""
     return f"""          <div class="cc-egg">
-            <button type="button" class="cc-egg-btn" aria-expanded="false" aria-controls="cc-egg-panel" data-label-open="{a(e['button_es'] if is_es else e['button_en'])}" data-label-close="{a(e['close_es'] if is_es else e['close_en'])}" data-en="{a(e['button_en'])}" data-es="{a(e['button_es'])}">{t(e['button_en'])}</button>
+            <button type="button" class="cc-egg-btn" aria-expanded="false" aria-controls="cc-egg-panel" data-label-open="{a(e['button_es'] if is_es else e['button_en'])}" data-label-close="{a(e['close_es'] if is_es else e['close_en'])}">
+              {car}
+              <span class="cc-egg-copy">{bi("span", hint_en, hint_es, "cc-egg-hint")}{bi("span", e["button_en"], e["button_es"], "cc-egg-label")}</span>
+            </button>
             <figure class="cc-egg-panel" id="cc-egg-panel" hidden>
               <img src="../../{e['image']}" width="{e['width']}" height="{e['height']}" loading="lazy" decoding="async" alt="{a(e['alt_es'] if is_es else e['alt_en'])}">
               <figcaption>{egg_caption(is_es)}</figcaption>
