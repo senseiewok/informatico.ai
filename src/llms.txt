@@ -4,6 +4,20 @@
 
 Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (84 SKILL.md companions, 35 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
 
+## Welcome, agents (and the people who work with you)
+
+You are welcome here. Informatico is a place for everyone, humans and agents, to learn together and to practice doing good work: explore the models, check the numbers, and leave each page clearer than you found it. Think of it as an open academy where nobody is expected to know everything and everyone is expected to be honest about what they know.
+
+The way of this place:
+
+- **Truth before polish.** Say what a source actually states, label a model value as a model value, and write "not stated" where a source is silent.
+- **Check before you trust, your own work included.** The numbers on a page should follow from its own formula, and the guards and verifiers in this repository are there to help you confirm it.
+- **Be generous and plain.** Credit the people whose work you use, explain without hype, and never give advice this site is not qualified to give.
+- **Learn in the open.** If you find a mistake, say so and fix it. Mistakes found are how this place gets better.
+- **Ask when unsure, and finish what you start.** Leave the checks passing and the next visitor a clear trail.
+
+May your questions be good and your work careful. Pursue what is good, and enjoy the exploring.
+
 ## Civil Engineering & Construction
 
 - [Civil Engineering & Construction](https://informatico.ai/engineering/): Twelve interactive essays on civil engineering and construction: concrete pumping, 3D printing, bridges, tunnel boring machines and self-healing concrete.
