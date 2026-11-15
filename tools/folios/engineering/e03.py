@@ -91,7 +91,7 @@ FOLIO = {'folio_id': 'E.03',
                            'claim that chest-wall oscillation "liquefies" mucus, and the claim '
                            'that this would multiply nanoparticle penetration were withdrawn as '
                            'unsourced; the airway link is now an analogy. The panel test and '
-                           'certification wording was withdrawn, the invented 1863 scene was '
+                           'formal compliance wording was withdrawn, the invented 1863 scene was '
                            'replaced with plain dates, and the absorption readout was recomputed '
                            'for zero reactance at resonance (0.9996). Critical coupling is now '
                            'cited to Romero-García et al. (2016). A later review corrected the '
@@ -107,7 +107,7 @@ FOLIO = {'folio_id': 'E.03',
                 'summary': 'REV 1.2 (Redated 2026-11-02): Verified sub-wavelength Helmholtz '
                            'viscothermal acoustic metamaterials (delta_v = sqrt(2*nu/omega), CSI '
                            '09 84 13) and oscillatory shear liquefaction of CF sputum '
-                           'plugs with 4-Seat Multi-Lineage Council review.',
+                           'plugs with multi-model peer review.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): checked that '
                         'delta_v = 0.174 mm follows from the page formula. The word "Verified" in '
                         'this note and in the notes below, the sputum liquefaction claim and the '
@@ -282,7 +282,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'Critical coupling occurs at the exact intermediate transition where internal '
                    'viscothermal dissipation equals external radiation damping. At this optimal '
                    'balance point, destructive interference between the incoming wave and the tiny '
-                   'leakage wave annihilates all acoustic reflection. This produces a deep '
+                   'leakage wave suppresses acoustic reflection to near zero. This produces a deep '
                    'absorption notch whose bandwidth and peak frequency are exquisitely sensitive '
                    'to ambient temperature and fluid viscosity.',
  'walkthrough': ['Experiment 1 (Critical Impedance Match): Inspect the model absorption peak '
