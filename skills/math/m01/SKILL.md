@@ -18,7 +18,7 @@ A plain-text companion to the essay at https://informatico.ai/math/m01/ (`M.01 �
 
 ## How it works, in four stages
 - Stage 1 (Frey Curve & Semistability): Maps a^p + b^p = c^p to a semistable elliptic curve E/Q with minimal discriminant Δ_E = 2^(-8)(abc)^(2p).
-- Stage 2 (Ribet Level-Lowering): Proves the mod-p Galois representation ρ_{E,p} is modular of level N = 2, creating a high-energy deductive bottleneck.
+- Stage 2 (Ribet Level-Lowering): Establishes that the mod-p Galois representation ρ_{E,p} is modular of level N = 2, creating a high-energy deductive bottleneck.
 - Stage 3 (Taylor-Wiles R_Q = T_Q Patching): Auxiliary sets of primes Q_N make the comparison of R and T tractable. The folio draws this as a barrier falling from 8.39 to 3.59 in kcal/mol-style units; those two numbers are illustrative model values, not quantities found in the mathematics.
 - Stage 4 (Cusp Form Contradiction): Forces ρ_{E,p} into weight-2 cusp forms S_2(Γ_0(2)), where dim S_2(Γ_0(2)) = 0 closes the proof.
 
