@@ -448,39 +448,41 @@ def egg_caption(is_es: bool) -> str:
 
 
 def gti_rim(cx: float, cy: float) -> str:
-    """Multi-spoke rim with a red brake caliper peeking through (a generic GTI cue, no maker's design)."""
+    """Generic twin five-spoke rim with the red brake caliper a stock GTI shows (no aftermarket or maker's design)."""
     spokes = "".join(
-        f'<line x1="{cx + 5.5 * math.cos(a):.1f}" y1="{cy + 5.5 * math.sin(a):.1f}" '
-        f'x2="{cx + 13.5 * math.cos(a):.1f}" y2="{cy + 13.5 * math.sin(a):.1f}"/>'
-        for a in (i * math.pi / 5 for i in range(10))
+        f'<line x1="{cx + 4.5 * math.cos(a + d):.1f}" y1="{cy + 4.5 * math.sin(a + d):.1f}" '
+        f'x2="{cx + 14 * math.cos(a + d):.1f}" y2="{cy + 14 * math.sin(a + d):.1f}"/>'
+        for a in (i * 2 * math.pi / 5 for i in range(5)) for d in (-0.13, 0.13)
     )
-    return (f'<g class="cc-egg-wheel"><circle class="cc-egg-tyre" cx="{cx}" cy="{cy}" r="19"/>'
-            f'<circle cx="{cx}" cy="{cy}" r="14.5"/><path class="cc-egg-caliper" d="M {cx - 9} {cy - 8} A 12 12 0 0 1 {cx + 3} {cy - 12}"/>'
-            f'<g class="cc-wheel">{spokes}<circle cx="{cx}" cy="{cy}" r="4"/></g></g>')
+    return (f'<g class="cc-egg-wheel"><circle class="cc-egg-tyre" cx="{cx}" cy="{cy}" r="19.4"/>'
+            f'<circle class="cc-egg-rim" cx="{cx}" cy="{cy}" r="15"/>'
+            f'<path class="cc-egg-caliper" d="M {cx - 10} {cy - 7} A 12 12 0 0 1 {cx + 2} {cy - 12}"/>'
+            f'<g class="cc-wheel">{spokes}<circle cx="{cx}" cy="{cy}" r="3.6"/></g></g>')
 
 
 def gti_profile() -> str:
-    """A freehand Mk7.5 Golf GTI side profile (facing left), drawn from general proportions, not traced: low nose, long
-    gently rising bonnet, raked screen, flat roof into a hatch spoiler, thick C-pillar, shoulder line, side skirt, the red
-    stripe through the grille into the headlight, red calipers. The bonnet hinges at the screen base (100, 50)."""
-    body = ("M 16 87 L 9 82 Q 7 74 9 66 L 14 62 L 22 60 L 100 50 L 140 28 Q 178 24 212 28 L 224 30 L 224 33 "
-            "L 220 33 Q 246 40 262 52 L 268 58 Q 271 70 270 82 L 262 88 L 260 88 A 24 24 0 0 0 212 88 "
-            "L 92 88 A 24 24 0 0 0 44 88 Z")
-    glass = "M 110 49 L 143 31 Q 175 28 204 31 L 220 45 Z"
-    return f"""<rect class="cc-egg-glow" x="26" y="54" width="70" height="12" rx="5"/>
+    """A stock Mk7.5 Golf GTI five-door in side elevation, facing left, laid out from the Mk7 Golf's published
+    proportions (overall length, wheelbase, front and rear overhangs, roof height, 18-inch wheels) and drawn freehand:
+    not traced, not modelled on any owner's car, no badge. The bonnet hinges at the screen base (100, 44)."""
+    body = ("M 24 96 L 20 90 Q 18 78 20 68 L 24 62 Q 60 50 100 44 L 140 20 Q 190 15 236 18 L 252 21 L 254 26 "
+            "L 249 27 Q 262 38 268 50 L 279 56 Q 283 72 281 90 L 274 96 L 257 96 A 23.5 23.5 0 0 0 210 96 "
+            "L 97 96 A 23.5 23.5 0 0 0 50 96 Z")
+    glass = "M 110 45 L 143 23 Q 190 20 226 22 L 246 42 Q 180 44 110 45 Z"
+    return f"""<rect class="cc-egg-glow" x="28" y="46" width="70" height="14" rx="5"/>
                 <path class="cc-egg-body" d="{body}"/>
                 <path class="cc-egg-glass" d="{glass}"/>
-                <line class="cc-egg-pillar" x1="166" y1="30" x2="162" y2="48"/>
-                <path class="cc-egg-cpillar" d="M 204 31 L 222 31 L 244 44 L 220 45 Z"/>
-                <path class="cc-egg-shoulder" d="M 26 64 Q 140 58 262 54"/>
-                <path class="cc-egg-skirt" d="M 94 85 L 210 85"/>
-                <path class="cc-egg-light" d="M 10 64 L 30 61 L 34 66 L 12 69 Z"/>
-                <line class="cc-egg-red" x1="9" y1="66.5" x2="33" y2="63.4"/>
-                <path class="cc-egg-grille" d="M 9 72 L 26 70 M 9 76 L 26 74"/>
-                <path class="cc-egg-taillight" d="M 258 51 L 268 56 L 269 62 L 259 59 Z"/>
-                <path class="cc-egg-exhaust" d="M 262 87 L 268 87"/>
-                <g class="cc-egg-hood"><path d="M 22 60 L 100 50 L 101 54 L 23 64 Z"/></g>
-                {gti_rim(68, 88)}{gti_rim(236, 88)}"""
+                <line class="cc-egg-pillar" x1="176" y1="21" x2="172" y2="44"/>
+                <path class="cc-egg-cpillar" d="M 214 22 L 228 22 L 248 42 L 222 43 Z"/>
+                <path class="cc-egg-shoulder" d="M 28 60 Q 150 52 278 54"/>
+                <path class="cc-egg-skirt" d="M 98 92 L 209 92"/>
+                <path class="cc-egg-handle" d="M 148 52 L 158 52 M 196 51 L 205 51"/>
+                <path class="cc-egg-light" d="M 21 62 L 46 56 L 48 63 L 23 67 Z"/>
+                <line class="cc-egg-red" x1="20" y1="65" x2="47" y2="60"/>
+                <path class="cc-egg-grille" d="M 20 73 L 40 71 M 20 78 L 40 76 M 21 83 L 40 81"/>
+                <path class="cc-egg-taillight" d="M 268 50 L 280 56 L 280 63 L 268 59 Z"/>
+                <path class="cc-egg-exhaust" d="M 262 95 L 270 95"/>
+                <g class="cc-egg-hood"><path d="M 24 62 Q 60 50 100 44 L 101 48 Q 61 54 25 66 Z"/></g>
+                {gti_rim(73.6, 84.6)}{gti_rim(233.6, 84.6)}"""
 
 
 def render_egg(is_es: bool) -> str:
