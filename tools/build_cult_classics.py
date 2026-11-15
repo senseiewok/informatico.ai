@@ -447,18 +447,47 @@ def egg_caption(is_es: bool) -> str:
     return f'{t(before)}<a href="{a(e["link_url"])}" rel="noopener noreferrer">{t(label)}</a>{t(after)}'
 
 
+def gti_rim(cx: float, cy: float) -> str:
+    """Multi-spoke rim with a red brake caliper peeking through (a generic GTI cue, no maker's design)."""
+    spokes = "".join(
+        f'<line x1="{cx + 5.5 * math.cos(a):.1f}" y1="{cy + 5.5 * math.sin(a):.1f}" '
+        f'x2="{cx + 13.5 * math.cos(a):.1f}" y2="{cy + 13.5 * math.sin(a):.1f}"/>'
+        for a in (i * math.pi / 5 for i in range(10))
+    )
+    return (f'<g class="cc-egg-wheel"><circle class="cc-egg-tyre" cx="{cx}" cy="{cy}" r="19"/>'
+            f'<circle cx="{cx}" cy="{cy}" r="14.5"/><path class="cc-egg-caliper" d="M {cx - 9} {cy - 8} A 12 12 0 0 1 {cx + 3} {cy - 12}"/>'
+            f'<g class="cc-wheel">{spokes}<circle cx="{cx}" cy="{cy}" r="4"/></g></g>')
+
+
+def gti_profile() -> str:
+    """A freehand Mk7.5 Golf GTI side profile (facing left), drawn from general proportions, not traced: low nose, long
+    gently rising bonnet, raked screen, flat roof into a hatch spoiler, thick C-pillar, shoulder line, side skirt, the red
+    stripe through the grille into the headlight, red calipers. The bonnet hinges at the screen base (100, 50)."""
+    body = ("M 16 87 L 9 82 Q 7 74 9 66 L 14 62 L 22 60 L 100 50 L 140 28 Q 178 24 212 28 L 224 30 L 224 33 "
+            "L 220 33 Q 246 40 262 52 L 268 58 Q 271 70 270 82 L 262 88 L 260 88 A 24 24 0 0 0 212 88 "
+            "L 92 88 A 24 24 0 0 0 44 88 Z")
+    glass = "M 110 49 L 143 31 Q 175 28 204 31 L 220 45 Z"
+    return f"""<rect class="cc-egg-glow" x="26" y="54" width="70" height="12" rx="5"/>
+                <path class="cc-egg-body" d="{body}"/>
+                <path class="cc-egg-glass" d="{glass}"/>
+                <line class="cc-egg-pillar" x1="166" y1="30" x2="162" y2="48"/>
+                <path class="cc-egg-cpillar" d="M 204 31 L 222 31 L 244 44 L 220 45 Z"/>
+                <path class="cc-egg-shoulder" d="M 26 64 Q 140 58 262 54"/>
+                <path class="cc-egg-skirt" d="M 94 85 L 210 85"/>
+                <path class="cc-egg-light" d="M 10 64 L 30 61 L 34 66 L 12 69 Z"/>
+                <line class="cc-egg-red" x1="9" y1="66.5" x2="33" y2="63.4"/>
+                <path class="cc-egg-grille" d="M 9 72 L 26 70 M 9 76 L 26 74"/>
+                <path class="cc-egg-taillight" d="M 258 51 L 268 56 L 269 62 L 259 59 Z"/>
+                <path class="cc-egg-exhaust" d="M 262 87 L 268 87"/>
+                <g class="cc-egg-hood"><path d="M 22 60 L 100 50 L 101 54 L 23 64 Z"/></g>
+                {gti_rim(68, 88)}{gti_rim(236, 88)}"""
+
+
 def render_egg(is_es: bool) -> str:
     e = C.EGG
-    k = 0.85  # the Mk7 silhouette's proportions in the parade
-    body = hatch_path(k)
     hint_en, hint_es = "There is one more car on this page.", "En esta página hay un auto más."
-    # The bonnet is a thin slab from the nose to the windscreen base; it hinges at the windscreen (95.5, 48.6).
-    car = f"""<svg class="cc-egg-car" viewBox="0 0 300 110" width="180" height="66" aria-hidden="true" focusable="false">
-                <rect class="cc-egg-glow" x="30" y="50" width="62" height="14" rx="5"/>
-                <path class="cc-egg-body" d="{body}"/>
-                <line class="cc-egg-red" x1="12" y1="68.3" x2="40" y2="68.3"/>
-                <g class="cc-egg-hood"><path d="M 21 60.3 L 95.5 48.6 L 96 52.4 L 21 64.3 Z"/></g>
-                {wheel(62, 92 - 17.6 + 6, 17.6)}{wheel(232, 92 - 17.6 + 6, 17.6)}
+    car = f"""<svg class="cc-egg-car" viewBox="0 0 300 110" width="200" height="73" aria-hidden="true" focusable="false">
+                {gti_profile()}
               </svg>"""
     return f"""          <div class="cc-egg">
             <button type="button" class="cc-egg-btn" aria-expanded="false" aria-controls="cc-egg-panel" data-label-open="{a(e['button_es'] if is_es else e['button_en'])}" data-label-close="{a(e['close_es'] if is_es else e['close_en'])}">

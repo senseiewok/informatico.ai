@@ -405,12 +405,23 @@ li.cc-ghost-nolen .cc-ghost-key { background: transparent !important; color: var
 .cc-egg-btn:hover { border-color: var(--cc-red); transform: translateY(-1px); }
 .cc-egg-btn:focus-visible { outline: 3px solid var(--tp-prussian); outline-offset: 3px; }
 .cc-egg-car { flex: 0 0 auto; width: clamp(8rem, 30vw, 12rem); height: auto; overflow: visible; }
-.cc-egg-body, .cc-egg-car .cc-wheel circle, .cc-egg-car .cc-wheel line { fill: none; stroke: var(--cc-tint); stroke-width: 3; stroke-linejoin: round; }
-.cc-egg-red { stroke: var(--cc-red); stroke-width: 4; stroke-linecap: round; }
+.cc-egg-body { fill: var(--cc-tint); fill-opacity: 0.16; stroke: var(--cc-tint); stroke-width: 2.6; stroke-linejoin: round; }
+.cc-egg-glass { fill: var(--tp-stone-deep); stroke: var(--cc-tint); stroke-width: 1.6; }
+.cc-egg-cpillar { fill: var(--cc-tint); opacity: 0.9; }
+.cc-egg-pillar { stroke: var(--cc-tint); stroke-width: 3; }
+.cc-egg-shoulder, .cc-egg-skirt { fill: none; stroke: var(--cc-tint); stroke-width: 1.4; opacity: 0.7; }
+.cc-egg-light { fill: var(--tp-vellum); stroke: var(--cc-tint); stroke-width: 1.4; }
+.cc-egg-taillight { fill: var(--cc-red); opacity: 0.85; }
+.cc-egg-grille { fill: none; stroke: var(--cc-tint); stroke-width: 1.4; }
+.cc-egg-exhaust { stroke: var(--cc-tint); stroke-width: 3; stroke-linecap: round; }
+.cc-egg-tyre { fill: var(--cc-ink); }
+.cc-egg-wheel circle:not(.cc-egg-tyre), .cc-egg-wheel line { fill: none; stroke: var(--tp-vellum); stroke-width: 1.6; }
+.cc-egg-caliper { fill: none; stroke: var(--cc-red); stroke-width: 3.5; stroke-linecap: round; }
+.cc-egg-red { stroke: var(--cc-red); stroke-width: 2.6; stroke-linecap: round; }
 .cc-egg-hood path { fill: var(--cc-tint); }
 .cc-egg-hood {
   transform-box: view-box;
-  transform-origin: 95.5px 48.6px;
+  transform-origin: 100px 50px;
   transition: transform 0.7s cubic-bezier(0.3, 1.5, 0.5, 1);
 }
 .cc-egg-glow { fill: #f6a23c; opacity: 0; transition: opacity 0.5s 0.2s; }

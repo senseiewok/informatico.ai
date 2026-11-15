@@ -66,7 +66,7 @@ class CultClassicPages(unittest.TestCase):
         self.assertIn('<html lang="en">', EN.read_text(encoding="utf-8"))
         es = ES.read_text(encoding="utf-8")
         self.assertIn('<html lang="es-MX">', es)
-        self.assertIn("Un encargo, ocho respuestas", es)
+        self.assertIn("Un reto, ocho respuestas", es)
         for value in C.VALUE_ES.values():
             self.assertIn(value, es, "spec-plate value left in English on the Spanish page")
 
