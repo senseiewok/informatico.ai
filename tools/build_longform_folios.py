@@ -1998,6 +1998,12 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
             <ol>
             {tg_items_html}
             </ol>
+          </section>
+          <section class="tp-contents-series" aria-label="Cult Classics">
+            <h3><a href="{_href(rel_res, 'classics/golf-gti/')}" data-en="Applied Mechanics · Cult Classics" data-es="Mecánica Aplicada · Clásicos de Culto">Applied Mechanics · Cult Classics</a></h3>
+            <ol>
+            <li data-contents-bounty-item data-search="cc.01 golf gti one brief eight answers un encargo ocho respuestas"><a href="{_href(rel_res, 'classics/golf-gti/')}"{' aria-current="page"' if active_slug == "golf-gti" else ""}><span class="tp-contents-id">CC.01</span> <span class="tp-contents-title" data-en="One Brief, Eight Answers: the Golf GTI" data-es="Un encargo, ocho respuestas: el Golf GTI">One Brief, Eight Answers: the Golf GTI</span></a></li>
+            </ol>
           </section>"""
     cols = []
     for p_key in ("engineering", "architecture", "physics", "math"):
@@ -2298,6 +2304,27 @@ def render_timegravity_series_rack(rel_res: str) -> str:
     </section>"""
 
 
+def render_cult_classics_rack(rel_res: str) -> str:
+    """Applied mechanics on /physics/: the Cult Classics features (CC.xx), one card each (tools/folios/classics/)."""
+    from folios.classics import cc01 as CC01  # noqa: E402
+    t_en, d_en, t_es, d_es = CC01.SEO
+    href = _href(rel_res, f"classics/{CC01.SLUG}/")
+    plate = _href(rel_res, "plates/cc01.png")
+    return f"""
+    <section class="tp-issue-rack tp-series-rack" aria-labelledby="cult-classics-heading" id="cult-classics">
+      <p class="tp-kicker" data-en="Applied Mechanics · Cult Classics · CC.01" data-es="Mecánica Aplicada · Clásicos de Culto · CC.01">Applied Mechanics · Cult Classics · CC.01</p>
+      <h2 id="cult-classics-heading" class="tp-h2"><a href="{href}" data-en="{esc(t_en)}" data-es="{esc(t_es)}">{esc(t_en)}</a></h2>
+      <div class="tp-rack-grid">
+        <a class="tp-rack-card tp-rack-card-classic" href="{href}" data-folio-slug="cc01">
+          <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb tp-rack-thumb-series" src="{plate}?v={_png_sha8('cc01')}" width="1200" height="630" loading="lazy" decoding="async" alt="Schematic hatchback silhouettes for CC.01"></span>
+          <span class="tp-rack-top"><span class="tp-rack-id">CC.01</span><span class="tp-rack-badge" data-en="{esc(CC01.HERO['reading_en'])}" data-es="{esc(CC01.HERO['reading_es'])}">{esc(CC01.HERO['reading_en'])}</span></span>
+          <strong class="tp-rack-title" data-en="{esc(CC01.HERO['title_en'])}" data-es="{esc(CC01.HERO['title_es'])}">{esc(CC01.HERO['title_en'])}</strong>
+          <span class="tp-rack-dek" data-en="{esc(d_en)}" data-es="{esc(d_es)}">{esc(d_en)}</span>
+        </a>
+      </div>
+    </section>"""
+
+
 def render_cross_scale_essays_showcase(rel_res: str, lang: str = "en") -> str:
     """Featured three-card showcase of Cross-Scale Companion Essays (/essays/, ES.01–ES.03)."""
     from folios.essays import ESSAYS as CROSS_SCALE_ESSAYS  # noqa: E402
@@ -2346,7 +2373,8 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
                                               image=image, crumbs=crumbs), lang)
     cards = render_rack_cards(pillar, folios, "./", "../plates/", eager=12)
     n = len(folios)
-    lead_series = (render_timegravity_series_rack(rel_res) + render_cross_scale_essays_showcase(rel_res, lang)) if pillar == "physics" else ""
+    lead_series = (render_timegravity_series_rack(rel_res) + render_cult_classics_rack(rel_res)
+                   + render_cross_scale_essays_showcase(rel_res, lang)) if pillar == "physics" else ""
     rack_cls = "tp-issue-rack tp-issue-rack-headed" if pillar == "physics" else "tp-issue-rack"
     rack_head = ""
     if pillar == "physics":

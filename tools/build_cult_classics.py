@@ -516,7 +516,7 @@ def render_page(catalog: dict, lang: str = "en") -> str:
     desc = d_es if is_es else d_en
     canon = B.page_url(PATH, lang)
     image = "https://informatico.ai/plates/cc01.png"
-    crumbs = [(BRAND, B.page_url("", lang)), (C.CODE, canon)]
+    crumbs = [(BRAND, B.page_url("", lang)), ("Física" if is_es else "Physics", B.page_url("physics/", lang)), (C.CODE, canon)]
     ld = B._ld("ScholarlyArticle", title, desc, canon, lang, image=image, date_published=C.DATE,
                date_modified=C.DATE, crumbs=crumbs)
     head = B.render_head(f"{title} | {BRAND}", desc, PATH, "article", image, rel, rel, ld, lang)
@@ -533,13 +533,14 @@ def render_page(catalog: dict, lang: str = "en") -> str:
     aria_jump = "Secciones" if is_es else "Sections"
     return f"""{head}
 <body class="tp-body tp-page-folio cc-page">
-{B.render_masthead(rel, "", lang)}
+{B.render_masthead(rel, "physics", lang)}
 {B.render_contents_dialog(rel, catalog, C.SLUG)}
 {render_parade()}
   <main id="main" class="tp-shell cc-shell" tabindex="-1">
     <nav class="tp-breadcrumb-bar" aria-label="{aria_crumb}">
       <ol class="tp-breadcrumb-list">
         <li class="tp-crumb-item"><a class="tp-crumb-link" href="../../">Informatico.ai</a></li>
+        <li class="tp-crumb-item"><a class="tp-crumb-link" href="../../physics/#cult-classics" data-en="Physics" data-es="Física">Physics</a></li>
         <li class="tp-crumb-item" aria-current="page"><span>{t(C.CODE)}</span></li>
       </ol>
     </nav>
