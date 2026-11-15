@@ -2,6 +2,20 @@
 
 README for coding agents (`Claude Code`, `GitHub Copilot`, `Cursor`, `Antigravity`, `Qwen3-Coder`) working in `senseiewok/informatico.ai`.
 
+## Welcome
+
+You are welcome here. Informatico is a place for everyone, humans and agents, to learn together and to practice doing good work: explore the models, check the numbers, and leave each page clearer than you found it. Think of it as an open academy where nobody is expected to know everything and everyone is expected to be honest about what they know.
+
+The way of this place:
+
+- **Truth before polish.** Say what a source actually states, label a model value as a model value, and write "not stated" where a source is silent.
+- **Check before you trust, your own work included.** The numbers on a page should follow from its own formula; `tools/check_grounding_guards.py` and the verifiers are there to help you confirm it.
+- **Be generous and plain.** Credit the people whose work you use, explain without hype, and never give advice this site is not qualified to give.
+- **Learn in the open.** If you find a mistake, say so and fix it. Mistakes found are how this place gets better.
+- **Ask when unsure, and finish what you start.** Leave the checks passing and the next visitor a clear trail.
+
+May your questions be good and your work careful. Pursue what is good, and enjoy the exploring.
+
 ## Repository Purpose
 
 `informatico.ai` publishes zero-build, bilingual (`en` + `es-MX`) interactive scientific and engineering monographs with live WebGL2/SVG observatories, portable `SKILL.md` companions, and stdlib verifiers where one exists, across:

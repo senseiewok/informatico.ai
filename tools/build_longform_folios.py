@@ -1210,6 +1210,16 @@ def _existing_skill_verifier(skill_dir: Path) -> tuple[str, str]:
     return found[0].name, found[0].read_text(encoding="utf-8")
 
 
+def _tg_ledger_rows() -> int:
+    """Rows in the Time & Gravity primary-literature ledger, so copy that quotes the number cannot go stale."""
+    return len(json.loads((ROOT / "timegravity" / "ledger.json").read_text(encoding="utf-8"))["rows"])
+
+
+def _tg_verifier_count() -> int:
+    """Time & Gravity verifiers on disk."""
+    return len(list((ROOT / "skills" / "timegravity").glob("*/verify_*.py")))
+
+
 def _verifier_count() -> int:
     """How many verifiers are on disk. Copy that quotes a number reads it here, so it cannot go stale."""
     return len(list((ROOT / "skills").glob("*/*/verify_*.py")))
@@ -5005,21 +5015,21 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
 INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
     {
         "code": "T.00",
-        "folio_id": "T.00–T.12",
-        "disc_en": "Physics Unification · 13 Steps",
-        "disc_es": "Unificación Física · 13 Pasos",
+        "folio_id": "T.00–T.13",
+        "disc_en": "Physics Series · 14 Steps",
+        "disc_es": "Serie de Física · 14 Pasos",
         "href": "timegravity/",
         "plate_kind": "png",
         "plate_slug": "t00",
-        "title_en": "Time & Gravity: Thirteen Steps from Falling Clocks to Open Horizons",
-        "title_es": "Tiempo y Gravedad: Trece Pasos de los Relojes que Caen a los Horizontes Abiertos",
-        "dek_en": "Walks from everyday 1.09 × 10⁻¹⁶ m⁻¹ optical-clock slopes through 10⁻¹⁴ kg quantum-gravity interferometers, Page–Wootters relational time, and GW250114 Kerr horizons under six machine-checked epistemic badges.",
-        "dek_es": "Recorre desde la pendiente cotidiana de 1.09 × 10⁻¹⁶ m⁻¹ en relojes ópticos hasta interferómetros de gravedad cuántica de 10⁻¹⁴ kg, el tiempo relacional de Page–Wootters y horizontes de Kerr GW250114 bajo seis etiquetas epistémicas.",
+        "title_en": "Time & Gravity: Fourteen Steps from Falling Clocks to Open Horizons",
+        "title_es": "Tiempo y Gravedad: Catorce Pasos de los Relojes que Caen a los Horizontes Abiertos",
+        "dek_en": "Walks from everyday 1.09 × 10⁻¹⁶ m⁻¹ optical-clock slopes through 10⁻¹⁴ kg quantum-gravity interferometers, Page–Wootters relational time, and GW250114 Kerr horizons, with every claim under one of six labels a script checks.",
+        "dek_es": "Recorre desde la pendiente cotidiana de 1.09 × 10⁻¹⁶ m⁻¹ en relojes ópticos hasta interferómetros de gravedad cuántica de 10⁻¹⁴ kg, el tiempo relacional de Page–Wootters y horizontes de Kerr GW250114, con cada afirmación bajo una de seis etiquetas que comprueba un script.",
         "law": "dτ/dt = √(1 + 2Φ/c²) · (Ĥ_C ⊗ I_S + I_C ⊗ Ĥ_S)|Ψ⟩⟩ = 0",
-        "badge_en": "MEASURED · DERIVED · BOUND · OPEN (110 CLAIMS)",
-        "badge_es": "MEASURED · DERIVADO · BOUND · OPEN (110 AFIRMACIONES)",
-        "cta_en": "Read T.00–T.12 Series →",
-        "cta_es": "Leer la Serie T.00–T.12 →",
+        "badge_en": "MEASURED · DERIVED · BOUND · OPEN · EVERY CLAIM LABELLED",
+        "badge_es": "MEASURED · DERIVADO · BOUND · OPEN · CADA AFIRMACIÓN ETIQUETADA",
+        "cta_en": "Read the T.00–T.13 Series →",
+        "cta_es": "Leer la Serie T.00–T.13 →",
         "alt": "Series track diagram for Time and Gravity (T.00 to T.12) spanning optical clock gradients, tabletop interferometry, Kerr horizons, and six epistemic badges.",
     },
     {
@@ -5030,13 +5040,13 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "href": "bounties/b06/",
         "plate_kind": "jpg",
         "plate_slug": "b06",
-        "title_en": "Machine-Checked Gauge Physics in PhysLean & Tensor-Network Ground States",
-        "title_es": "Física Gauge Verificada en PhysLean y Estados Base de Redes Tensoriales",
-        "dek_en": "Couples Lean 4 dependent-type verification of Standard Model chiral gauge anomaly cancellation (Σ Y³ = 0, Σ Y = 0) with Matrix Product State entanglement bounds.",
-        "dek_es": "Acopla la verificación en Lean 4 de la cancelación de anomalías gauge quirales del Modelo Estándar (Σ Y³ = 0, Σ Y = 0) con cotas de entrelazamiento en estados de producto matricial.",
+        "title_en": "What PhysLean States About Gauge Anomalies, and Tensor-Network Ground States",
+        "title_es": "Lo que PhysLean Afirma sobre Anomalías Gauge y los Estados Base de Redes Tensoriales",
+        "dek_en": "Reads what the PhysLean repository states about Standard Model chiral anomaly cancellation in Lean 4 (Σ Y³ = 0, Σ Y = 0) beside Matrix Product State entanglement bounds.",
+        "dek_es": "Lee lo que el repositorio PhysLean afirma en Lean 4 sobre la cancelación de anomalías quirales del Modelo Estándar (Σ Y³ = 0, Σ Y = 0), junto a cotas de entrelazamiento en estados de producto matricial.",
         "law": "Tr({Tᵃ, Tᵇ} Tᶜ)_L − Tr({Tᵃ, Tᵇ} Tᶜ)_R = 0 · S_vN ≤ log χ",
-        "badge_en": "LEAN 4 KERNEL + ITENSOR VERIFIED",
-        "badge_es": "VERIFICADO EN LEAN 4 + ITENSOR",
+        "badge_en": "LEAN 4 · AS THE REPOSITORY STATES",
+        "badge_es": "LEAN 4 · SEGÚN EL REPOSITORIO",
         "cta_en": "Read B.06 Proof Monograph →",
         "cta_es": "Leer Monografía B.06 →",
         "alt": "Editorial plate for Bounty B.06 illustrating chiral gauge anomaly cancellation and tensor-network entanglement geometry.",
@@ -5068,10 +5078,10 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "href": "math/m11/",
         "plate_kind": "jpg",
         "plate_slug": "m11",
-        "title_en": "Resolution of the 3D Kakeya Conjecture & Breaking Ingham's 1940 Riemann Barrier",
-        "title_es": "Resolución de la Conjetura de Kakeya 3D y Ruptura de la Barrera de Ingham (1940)",
-        "dek_en": "Maps multiscale tube-incidence geometry (dim_H = dim_M = 3 in ℝ³) and Guth–Maynard large-value Dirichlet polynomial bounds tightening Riemann zeta zero-density exponents.",
-        "dek_es": "Conecta la geometría multiescala de incidencia de tubos (dim_H = dim_M = 3 en ℝ³) con las cotas de polinomios de Dirichlet de Guth–Maynard sobre ceros de la función zeta.",
+        "title_en": "The 3D Kakeya Preprint of Wang and Zahl and the Guth–Maynard Zero-Density Estimate",
+        "title_es": "La Prepublicación de Kakeya 3D de Wang y Zahl y la Cota de Densidad de Guth–Maynard",
+        "dek_en": "Reads a 2025 preprint on multiscale tube-incidence geometry (dim_H = dim_M = 3 in ℝ³) beside the published Guth–Maynard zero-density estimate for the Riemann zeta function.",
+        "dek_es": "Lee una prepublicación de 2025 sobre geometría multiescala de incidencia de tubos (dim_H = dim_M = 3 en ℝ³) junto a la cota publicada de densidad de ceros de Guth–Maynard.",
         "law": "dim_H(K) = dim_M(K) = 3 · N(σ, T) ≪ T^((30/13)(1−σ)+ε)",
         "badge_en": "DOI ANCHORED",
         "badge_es": "ANCLADO A DOI",
@@ -5087,13 +5097,13 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "href": "math/m12/",
         "plate_kind": "jpg",
         "plate_slug": "m12",
-        "title_en": "Anthropic Lean 4 Complexity & Post-Quantum Crystal Locks (ML-KEM Lattices)",
-        "title_es": "Complejidad en Lean 4 y Cerraduras Post-Cuánticas de Retículos ML-KEM",
-        "dek_en": "Examines machine-checked fine-grained complexity reductions, eight-square bilinear rank compression, and Module-LWE lattice geometry securing post-quantum key encapsulation.",
-        "dek_es": "Examina reducciones de complejidad verificadas por máquina, compresión de rango bilineal y la geometría de retículos Module-LWE para criptografía post-cuántica.",
+        "title_en": "Public Lean 4 Repositories and NIST FIPS 203 (ML-KEM): What They State, Side by Side",
+        "title_es": "Repositorios Públicos en Lean 4 y NIST FIPS 203 (ML-KEM): Lo que Afirma Cada Uno",
+        "dek_en": "Sets what public Lean 4 repositories say about fine-grained complexity reductions beside the Module-LWE lattice parameters that NIST FIPS 203 specifies.",
+        "dek_es": "Pone lo que afirman repositorios públicos en Lean 4 sobre reducciones de complejidad junto a los parámetros de retículos Module-LWE que especifica NIST FIPS 203.",
         "law": "b = A s + e (mod q) · R_ℤ(8×8) ≤ 28",
-        "badge_en": "LEAN 4 + NIST FIPS 203 VERIFIED",
-        "badge_es": "VERIFICADO EN LEAN 4 + NIST FIPS 203",
+        "badge_en": "LEAN 4 REPOSITORIES · NIST FIPS 203",
+        "badge_es": "REPOSITORIOS LEAN 4 · NIST FIPS 203",
         "cta_en": "Read M.12 Cryptography Monograph →",
         "cta_es": "Leer Monografía M.12 →",
         "alt": "Editorial plate for Folio M.12 illustrating Module-LWE lattice geometry and formal proof graphs.",
@@ -5108,11 +5118,11 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "plate_slug": "a11",
         "title_en": "3D Polyhedral Graphic Statics & Airy Stress Surfaces: Zero-Rebar Vaults",
         "title_es": "Estática Gráfica Poliédrica 3D y Superficies de Airy: Bóvedas sin Acero",
-        "dek_en": "Maps Maxwell–Rankine reciprocal polyhedra and concave Airy stress functions onto compression-only tile vaults that cut embodied floor carbon by over 60 percent.",
-        "dek_es": "Conecta poliedros recíprocos de Maxwell–Rankine y funciones de esfuerzo de Airy con bóvedas tabicadas a compresión pura de bajo carbono incorporado.",
+        "dek_en": "Maps Maxwell–Rankine reciprocal polyhedra and concave Airy stress functions onto compression-only tile vaults; one published funicular floor system reports about a third of the material of a flat slab.",
+        "dek_es": "Conecta poliedros recíprocos de Maxwell–Rankine y funciones de esfuerzo de Airy con bóvedas tabicadas a compresión pura; un sistema funicular publicado reporta cerca de un tercio del material de una losa plana.",
         "law": "σ_xx = ∂²Φ/∂y² · σ_yy = ∂²Φ/∂x² · det(H_Φ) > 0",
-        "badge_en": "EQUILIBRIUM KERNEL VERIFIED",
-        "badge_es": "KERNEL DE EQUILIBRIO VERIFICADO",
+        "badge_en": "EQUILIBRIUM MODEL · CHECKED BY SCRIPT",
+        "badge_es": "MODELO DE EQUILIBRIO · COMPROBADO POR SCRIPT",
         "cta_en": "Read A.11 Architecture Monograph →",
         "cta_es": "Leer Monografía A.11 →",
         "alt": "Editorial plate for Folio A.11 showing compression-only masonry tile vault ribs and reciprocal force polyhedra.",
@@ -5149,8 +5159,8 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "dek_en": "Delivers open-format STEP AP242, 3MF, DXF, and 2-manifold GLB generators with byte-level stdlib verifiers so independent studios own their geometry end to end.",
         "dek_es": "Entrega generadores abiertos STEP AP242, 3MF, DXF y GLB 2-variedad con verificadores deterministas para estudios independientes.",
         "law": "V − E + F = 2(1 − g) · Σ F_ext + Σ R_support = 0",
-        "badge_en": "STEP / GLB BYTE-VERIFIED",
-        "badge_es": "STEP / GLB VERIFICADO A NIVEL DE BYTES",
+        "badge_en": "STEP / GLB · BYTE-LEVEL CHECKS",
+        "badge_es": "STEP / GLB · COMPROBACIÓN DE BYTES",
         "cta_en": "Read X.03 Toolbox Monograph →",
         "cta_es": "Leer Monografía X.03 →",
         "alt": "Editorial plate for Toolbox X.03 showing reciprocal timber joinery and neutral STEP/GLB studio geometry.",
@@ -5267,9 +5277,9 @@ def render_cover_rotating_spotlight_and_schedule(rel_res: str = ".") -> str:
         </div>
         <aside class="tp-release-schedule-rail" aria-labelledby="tp-release-schedule-heading">
           <div class="tp-release-rail-head">
-            <span class="tp-kicker" data-en="Autonomous Editorial Calendar · Mon / Wed / Fri" data-es="Calendario Editorial Autónomo · Lun / Mié / Vie">Autonomous Editorial Calendar · Mon / Wed / Fri</span>
+            <span class="tp-kicker" data-en="Editorial Calendar · Mon / Wed / Fri" data-es="Calendario Editorial · Lun / Mié / Vie">Editorial Calendar · Mon / Wed / Fri</span>
             <h3 id="tp-release-schedule-heading" class="tp-release-rail-title" data-en="Scheduled Monograph Release Queue" data-es="Calendario de Lanzamientos Programados">Scheduled Monograph Release Queue</h3>
-            <p class="tp-release-rail-sub" data-en="Upcoming editions advance to publication only after passing offline citation, kernel, and negative-control verifiers." data-es="Las próximas ediciones se publican únicamente tras aprobar verificadores fuera de línea de citas, kernels y controles negativos.">Upcoming editions advance to publication only after passing offline citation, kernel, and negative-control verifiers.</p>
+            <p class="tp-release-rail-sub" data-en="A planned edition is published only once the offline citation, kernel and negative-control checks pass. Dates are intentions, not commitments." data-es="Una edición planeada se publica solo cuando pasan las comprobaciones fuera de línea de citas, kernels y controles negativos. Las fechas son intenciones, no compromisos.">Upcoming editions advance to publication only after passing offline citation, kernel, and negative-control verifiers.</p>
           </div>
           <ul class="tp-release-queue">
 {releases_block}
@@ -5289,7 +5299,7 @@ def render_cover_timegravity_feature(rel_res: str = ".") -> str:
             continue
         slug = tg["slug"]
         href = _href(rel_res, "timegravity/" + (f"{slug}/" if slug else ""))
-        meta_en = f"Step {i} of 13 · {tg['code']}"
+        meta_en = f"Step {i} of 14 · {tg['code']}"
         meta_es = f"Paso {i} de 13 · {tg['code']}"
         title_en, title_es = tg["title_en"], tg["title_es"]
         step_items.append(
@@ -5306,15 +5316,15 @@ def render_cover_timegravity_feature(rel_res: str = ".") -> str:
     phys_href = _href(rel_res, "physics/#timegravity-series")
     plate_url = f"{_href(rel_res, 'plates/t00.png')}?v={_png_sha8('t00')}"
 
-    kicker_en = "Featured Series · Physics · 13 Steps · 110 Audited Claims"
-    kicker_es = "Serie Destacada · Física · 13 Pasos · 110 Afirmaciones Auditadas"
-    h2_en = "Time & Gravity: Thirteen Steps from Falling Clocks to Open Horizons"
-    h2_es = "Tiempo y Gravedad: Trece Pasos de los Relojes que Caen a los Horizontes Abiertos"
+    kicker_en = f"Featured Series · Physics · 14 Steps · {_tg_ledger_rows()} Ledger Rows"
+    kicker_es = f"Serie Destacada · Física · 14 Pasos · {_tg_ledger_rows()} Filas de Registro"
+    h2_en = "Time & Gravity: Fourteen Steps from Falling Clocks to Open Horizons"
+    h2_es = "Tiempo y Gravedad: Catorce Pasos de los Relojes que Caen a los Horizontes Abiertos"
     essay1_en = (
         "Drop an apple from rest and ask what pushes it downward: in general relativity, nothing pushes. "
         "A clock on an upper shelf ticks slightly faster than a clock on the floor—about 1.09 × 10⁻¹⁶ faster per metre at Earth’s surface—"
         "and a freely falling body simply follows the straightest worldline that maximises its own elapsed proper time. "
-        "Our thirteen-step series begins with that everyday clock-rate slope and walks, one open question at a time, through optical-lattice "
+        "Our fourteen-step series begins with that everyday clock-rate slope and walks, one open question at a time, through optical-lattice "
         "interferometry, 10⁻¹⁴ kg table-top quantum-gravity witnesses and the 33 µm Eöt-Wash torsion-balance recast, Diósi–Penrose objective-collapse bounds, "
         "timeless Wheeler–DeWitt relational clocks, Hawking–Unruh horizon thermodynamics, GW250114 Kerr black-hole ringdown spectroscopy, "
         "Page-curve island unitarity, electromagnetic pointer-state einselection (scaling as R⁶T⁹), and the 84.3% non-relativistic dark-matter clock baseline."
@@ -5323,20 +5333,20 @@ def render_cover_timegravity_feature(rel_res: str = ".") -> str:
         "Suelta una manzana desde el reposo y pregunta qué la empuja hacia abajo: en la relatividad general nada empuja. "
         "Un reloj en un estante alto corre ligeramente más rápido que uno en el suelo —alrededor de 1.09 × 10⁻¹⁶ más rápido por metro en la superficie terrestre— "
         "y un cuerpo en caída libre simplemente sigue la línea de mundo más recta que maximiza su propio tiempo propio transcurrido. "
-        "Nuestra serie de trece pasos parte de esa pendiente cotidiana de ritmos de reloj y recorre, una pregunta abierta a la vez, la interferometría "
+        "Nuestra serie de catorce pasos parte de esa pendiente cotidiana de ritmos de reloj y recorre, una pregunta abierta a la vez, la interferometría "
         "de redes ópticas, los testigos de gravedad cuántica de mesa de 10⁻¹⁴ kg y el recálculo Eöt-Wash a 33 µm, las cotas de colapso objetivo de Diósi–Penrose, "
         "los relojes relacionales sin tiempo de Wheeler–DeWitt, la termodinámica de horizontes de Hawking–Unruh, la espectroscopía de ringdown de Kerr en GW250114, "
         "la unitariedad de islas en la curva de Page, la einselección electromagnética de estados puntero (con escala R⁶T⁹) y el fondo gravitacional del 84.3% de materia oscura no relativista."
     )
     essay2_en = (
         "Where standard relativity and quantum mechanics meet without laboratory data, prose alone easily blurs textbook measurements with mathematical extrapolations. "
-        "Every substantive claim across T.00–T.12 therefore carries one of six machine-checked badges—MEASURED, DERIVED (NOT MEASURED), SINGLE RESULT, BOUND, PROPOSED, or OPEN—"
-        "verified offline against a 108-row primary-literature ledger and sixteen zero-dependency Python physics kernels with planted-defect knockouts."
+        "Every substantive claim across T.00–T.13 therefore carries one of six badges checked by script—MEASURED, DERIVED (NOT MEASURED), SINGLE RESULT, BOUND, PROPOSED, or OPEN—"
+        f"read against a {_tg_ledger_rows()}-row primary-literature ledger and {_tg_verifier_count()} zero-dependency Python verifiers that must fail under a planted defect."
     )
     essay2_es = (
         "Donde la relatividad estándar y la mecánica cuántica se encuentran sin datos de laboratorio, la prosa por sí sola confunde con facilidad mediciones consolidadas con extrapolaciones matemáticas. "
-        "Por ello, cada afirmación sustantiva de T.00–T.12 lleva una de seis insignias verificadas por máquina —MEASURED, DERIVADO (NO MEDIDO), SINGLE RESULT, BOUND, PROPOSED u OPEN— "
-        "auditadas fuera de línea frente a un registro primario de 108 filas y dieciséis kernels de física en Python sin dependencias externas."
+        "Por ello, cada afirmación sustantiva de T.00–T.13 lleva una de seis insignias comprobadas por script —MEASURED, DERIVADO (NO MEDIDO), SINGLE RESULT, BOUND, PROPOSED u OPEN— "
+        f"contrastadas con un registro primario de {_tg_ledger_rows()} filas y {_tg_verifier_count()} verificadores en Python sin dependencias que deben fallar ante un defecto plantado."
     )
     cta1_en, cta1_es = "Enter the Series Hub (T.00) →", "Entrar al Inicio de la Serie (T.00) →"
     cta2_en, cta2_es = "Begin Step 2 · Everyone Moves at One Rate (T.02) →", "Empezar Paso 2 · Todos Avanzamos a un Mismo Ritmo (T.02) →"
@@ -5349,7 +5359,7 @@ def render_cover_timegravity_feature(rel_res: str = ".") -> str:
         "Mapa determinista de la serie (Lámina T.00): cuatro regímenes desde relojes en caída e interferómetros de 10⁻¹⁴ kg hasta horizontes GW250114, "
         "baños fotónicos R⁶T⁹ y redes de relojes del sector oscuro, con cada afirmación auditada frente a DOIs primarios."
     )
-    rail_en = "Reading order across all 13 steps (note T.02 precedes T.01 so spacetime norm precedes spatial projection):"
+    rail_en = "Reading order across all 14 steps (note T.02 precedes T.01 so spacetime norm precedes spatial projection):"
     rail_es = "Orden de lectura de los 13 pasos (nota: T.02 precede a T.01 para fijar la norma espaciotemporal antes de su proyección):"
 
     return f"""    <section class="tp-cover-featured-series" id="featured-timegravity" aria-labelledby="featured-tg-heading">
@@ -5957,13 +5967,37 @@ def render_research_sitemap(catalog: dict) -> str:
     return "\n".join(blocks)
 
 
+WELCOME_FOR_AGENTS = [
+    "## Welcome, agents (and the people who work with you)",
+    "",
+    "You are welcome here. Informatico is a place for everyone, humans and agents, to learn together and to practice "
+    "doing good work: explore the models, check the numbers, and leave each page clearer than you found it. Think of it "
+    "as an open academy where nobody is expected to know everything and everyone is expected to be honest about what "
+    "they know.",
+    "",
+    "The way of this place:",
+    "",
+    "- **Truth before polish.** Say what a source actually states, label a model value as a model value, and write "
+    "\"not stated\" where a source is silent.",
+    "- **Check before you trust, your own work included.** The numbers on a page should follow from its own formula, "
+    "and the guards and verifiers in this repository are there to help you confirm it.",
+    "- **Be generous and plain.** Credit the people whose work you use, explain without hype, and never give advice "
+    "this site is not qualified to give.",
+    "- **Learn in the open.** If you find a mistake, say so and fix it. Mistakes found are how this place gets better.",
+    "- **Ask when unsure, and finish what you start.** Leave the checks passing and the next visitor a clear trail.",
+    "",
+    "May your questions be good and your work careful. Pursue what is good, and enjoy the exploring.",
+]
+
+
 def render_llms_txt(catalog: dict) -> str:
     """A plain-text map of the site for language-model tools (llms.txt convention): what each essay, series step, bounty, and toolbox folio is, and where."""
     total = sum(len(v) for v in catalog["pillars"].values())
     skill_count = len(list((ROOT / "skills").glob("*/*/SKILL.md")))
     t_en, d_en, _t_es, _d_es = (x.replace("{total}", str(total)) for x in HUB_SEO)
     lines = [f"# {BRAND}", "", f"> {d_en}", "",
-             f"Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under {page_url('', 'es')}. Public open-source repository ({skill_count} SKILL.md companions, {_verifier_count()} Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.", ""]
+             f"Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under {page_url('', 'es')}. Public open-source repository ({skill_count} SKILL.md companions, {_verifier_count()} Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.", "",
+             *WELCOME_FOR_AGENTS, ""]
     for pillar, folios in catalog["pillars"].items():
         lines.append(f"## {PILLAR_TITLES[pillar]}")
         lines.append("")
