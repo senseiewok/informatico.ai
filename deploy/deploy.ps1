@@ -16,6 +16,14 @@
 
   Use -DryRun first: it logs in and shows everything, but uploads nothing.
 
+  FTP account: use one whose home directory is the domain's cPanel Document Root (cPanel > Domains shows
+  /informatico.ai). When you create it under cPanel > FTP Accounts, clear the suggested "public_html/<login>"
+  and enter just "informatico.ai". The script then sees informatico.css in the login folder and uploads there.
+  An account rooted inside public_html (the senseiewok.ai folder) lands every file in public_html/informatico.ai,
+  which the web serves as senseiewok.ai/informatico.ai/, not informatico.ai: each run reports success while the
+  site stays unchanged, and the next run finds the same files "changed" again. Check the "Upload target" line:
+  it should read "/ (your login folder)".
+
 .EXAMPLE
   ./deploy.ps1 -DryRun
   ./deploy.ps1
@@ -382,10 +390,25 @@ foreach ($f in $files) {
 "Uploaded $uploaded of $totalToPublish file(s) to $remoteLabel."
 
 # 3. Check the live site actually serves the new page.
-$title = [regex]::Match((Get-Content -Raw (Join-Path $src 'index.html')), '<title>(.*?)</title>').Groups[1].Value
+# Compare the live homepage with local src/index.html as UTF-8 bytes. Windows PowerShell 5.1's Get-Content reads
+# files as ANSI, which turned the title's em dash into "â€”" and made this check fail on a correct deploy.
+$utf8 = [System.Text.UTF8Encoding]::new($false)
+$localHome = [System.IO.File]::ReadAllText((Join-Path $src 'index.html'), $utf8).Replace("`r`n", "`n")
+$title = [regex]::Match($localHome, '<title>(.*?)</title>').Groups[1].Value
 try {
-    $live = Invoke-WebRequest -Uri $SiteUrl -UseBasicParsing -TimeoutSec 20 -Headers @{ 'Cache-Control' = 'no-cache' }
-    if ($title -and $live.Content -match [regex]::Escape($title)) { "Live check: $SiteUrl responds ($($live.StatusCode)) and shows '$title'." }
-    else { "Live check: $SiteUrl responds ($($live.StatusCode)) but doesn't show '$title' yet. It may be cached, or the upload folder may be wrong." }
+    Add-Type -AssemblyName System.Net.Http -ErrorAction SilentlyContinue
+    $hcLive = [System.Net.Http.HttpClient]::new()
+    try {
+        $hcLive.Timeout = [TimeSpan]::FromSeconds(20)
+        $hcLive.DefaultRequestHeaders.CacheControl = [System.Net.Http.Headers.CacheControlHeaderValue]::Parse('no-cache, no-store')
+        $liveBytes = $hcLive.GetByteArrayAsync("$($SiteUrl.TrimEnd('/'))/?nocache=$([DateTime]::UtcNow.Ticks)").GetAwaiter().GetResult()
+    } finally { $hcLive.Dispose() }
+    $liveHome = $utf8.GetString($liveBytes).Replace("`r`n", "`n")
+    if ($liveHome -ceq $localHome) { "Live check: $SiteUrl serves the same homepage as local src/index.html ('$title')." }
+    else {
+        "Live check: $SiteUrl responds but its homepage differs from local src/index.html."
+        "  If index.html was uploaded above, the FTP account is probably rooted in a different folder from the domain's"
+        "  cPanel Document Root (for example inside public_html). See 'FTP account' at the top of this script."
+    }
 }
 catch { "Live check: couldn't load $SiteUrl ($($_.Exception.Message)). The upload finished; check the site in a browser." }
