@@ -241,14 +241,16 @@ class TimeGravityTrackTests(unittest.TestCase):
         hub = (RESEARCH / "index.html").read_text(encoding="utf-8")
         self.assertIn('class="tp-track-chip tp-track-chip-timegravity" href="timegravity/"', hub)
         self.assertIn('id="featured-timegravity"', hub)
-        self.assertLess(hub.index('id="featured-timegravity"'), hub.index('id="pillar-engineering"'))
+        # 2026-11-15 homepage rebalance (two-seat review, build-with-changes): the pillars come first and the
+        # Time & Gravity band sits below them with the Cross-Scale Essays. This reverses the 2026-11-09 order.
+        self.assertLess(hub.index('id="pillar-engineering"'), hub.index('id="featured-timegravity"'))
         rail_start = hub.index('class="tp-featured-steps-rail"')
         rail = hub[rail_start:hub.index("</ol>", rail_start)]
         self.assertLess(rail.index('href="./timegravity/t02/"'), rail.index('href="./timegravity/t01/"'))
         es_hub = (RESEARCH / "es-mx" / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="timegravity/"', es_hub)
         self.assertIn('id="featured-timegravity"', es_hub)
-        self.assertLess(es_hub.index('id="featured-timegravity"'), es_hub.index('id="pillar-engineering"'))
+        self.assertLess(es_hub.index('id="pillar-engineering"'), es_hub.index('id="featured-timegravity"'))  # 2026-11-15
         phys = (RESEARCH / "physics" / "index.html").read_text(encoding="utf-8")
         es_phys = (RESEARCH / "es-mx" / "physics" / "index.html").read_text(encoding="utf-8")
         self.assertLess(phys.index('id="timegravity-series"'), phys.index("Standalone Physics Monographs"))

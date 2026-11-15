@@ -57,6 +57,23 @@ class FeaturedSpotlightTests(unittest.TestCase):
                 img_path = (base_dir / clean_src).resolve()
                 self.assertTrue(img_path.is_file(), f"{rel}: missing spotlight image {src} -> {img_path}")
 
+    def test_cover_opens_off_physics_and_caps_physics_slides(self) -> None:
+        """2026-11-15 homepage rebalance: slot 0 is not physics, physics holds at most 2 of 8 slots, and the cover
+        order is pillars first, then series and essays; the physics lab and radar stay on /physics/."""
+        import sys
+        sys.path.insert(0, str(ROOT / "tools"))
+        import build_longform_folios as B  # noqa: E402
+
+        rot = B.INFORMATICO_SPOTLIGHT_ROTATION
+        is_phys = [("physics" in r["disc_en"].lower() or r["href"].startswith(("physics/", "timegravity/"))) for r in rot]
+        self.assertFalse(is_phys[0], rot[0]["code"])
+        self.assertLessEqual(sum(is_phys), 2)
+        for rel in ("index.html", "es-mx/index.html"):
+            html = (RES / rel).read_text(encoding="utf-8")
+            self.assertLess(html.index('id="tp-featured-edition-desk"'), html.index('id="pillar-engineering"'), rel)
+            self.assertLess(html.index('id="pillar-engineering"'), html.index('id="featured-timegravity"'), rel)
+            self.assertLess(html.index('id="featured-timegravity"'), html.index('id="cross-scale-essays"'), rel)
+
     def test_spotlight_module_is_wired_without_innerhtml(self) -> None:
         mod_path = RES / "modules" / "featured-spotlight.mjs"
         main_path = RES / "modules" / "main.mjs"
