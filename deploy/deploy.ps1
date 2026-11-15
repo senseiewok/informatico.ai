@@ -19,8 +19,8 @@
   FTP account: use one whose home directory is the domain's cPanel Document Root (cPanel > Domains shows
   /informatico.ai). When you create it under cPanel > FTP Accounts, clear the suggested "public_html/<login>"
   and enter just "informatico.ai". The script then sees informatico.css in the login folder and uploads there.
-  An account rooted inside public_html (the senseiewok.ai folder) lands every file in public_html/informatico.ai,
-  which the web serves as senseiewok.ai/informatico.ai/, not informatico.ai: each run reports success while the
+  An account rooted inside public_html (another site's document root) lands every file in public_html/informatico.ai,
+  which the web serves under that other site's domain, not informatico.ai: each run reports success while the
   site stays unchanged, and the next run finds the same files "changed" again. Check the "Upload target" line:
   it should read "/ (your login folder)".
 
