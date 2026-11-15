@@ -40,7 +40,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_106_bilingual_pages_and_bounty_crucible_mounted(self) -> None:
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 188)
+        self.assertEqual(len(locs), 190)
         self.assertTrue((RESEARCH / "about" / "index.html").is_file())
         self.assertTrue((RESEARCH / "es-mx" / "about" / "index.html").is_file())
         hub_html = (RESEARCH / "index.html").read_text(encoding="utf-8")
