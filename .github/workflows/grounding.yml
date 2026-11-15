@@ -33,8 +33,13 @@ jobs:
 
       - name: Generated pages are up to date
         run: |
+          # The build also rewrites binary artifacts and line endings that differ between machines, so compare
+          # only the generated HTML text, ignoring line endings.
           python -X utf8 tools/build_longform_folios.py
-          if [ -n "$(git status --porcelain -- src)" ]; then git status --short -- src; echo "::error::src/ is out of date: run tools/build_longform_folios.py and commit"; exit 1; fi
+          if ! git diff --quiet --ignore-cr-at-eol --ignore-space-at-eol -- 'src/**/*.html'; then
+            git diff --stat --ignore-cr-at-eol --ignore-space-at-eol -- 'src/**/*.html' | tail -15
+            echo "::error::generated HTML is out of date: run tools/build_longform_folios.py and commit"; exit 1
+          fi
 
       - name: Withdrawn references and verdict language
         run: python -X utf8 tools/check_grounding_guards.py
