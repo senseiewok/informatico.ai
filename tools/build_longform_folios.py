@@ -5957,13 +5957,37 @@ def render_research_sitemap(catalog: dict) -> str:
     return "\n".join(blocks)
 
 
+WELCOME_FOR_AGENTS = [
+    "## Welcome, agents (and the people who work with you)",
+    "",
+    "You are welcome here. Informatico is a place for everyone, humans and agents, to learn together and to practice "
+    "doing good work: explore the models, check the numbers, and leave each page clearer than you found it. Think of it "
+    "as an open academy where nobody is expected to know everything and everyone is expected to be honest about what "
+    "they know.",
+    "",
+    "The way of this place:",
+    "",
+    "- **Truth before polish.** Say what a source actually states, label a model value as a model value, and write "
+    "\"not stated\" where a source is silent.",
+    "- **Check before you trust, your own work included.** The numbers on a page should follow from its own formula, "
+    "and the guards and verifiers in this repository are there to help you confirm it.",
+    "- **Be generous and plain.** Credit the people whose work you use, explain without hype, and never give advice "
+    "this site is not qualified to give.",
+    "- **Learn in the open.** If you find a mistake, say so and fix it. Mistakes found are how this place gets better.",
+    "- **Ask when unsure, and finish what you start.** Leave the checks passing and the next visitor a clear trail.",
+    "",
+    "May your questions be good and your work careful. Pursue what is good, and enjoy the exploring.",
+]
+
+
 def render_llms_txt(catalog: dict) -> str:
     """A plain-text map of the site for language-model tools (llms.txt convention): what each essay, series step, bounty, and toolbox folio is, and where."""
     total = sum(len(v) for v in catalog["pillars"].values())
     skill_count = len(list((ROOT / "skills").glob("*/*/SKILL.md")))
     t_en, d_en, _t_es, _d_es = (x.replace("{total}", str(total)) for x in HUB_SEO)
     lines = [f"# {BRAND}", "", f"> {d_en}", "",
-             f"Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under {page_url('', 'es')}. Public open-source repository ({skill_count} SKILL.md companions, {_verifier_count()} Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.", ""]
+             f"Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under {page_url('', 'es')}. Public open-source repository ({skill_count} SKILL.md companions, {_verifier_count()} Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.", "",
+             *WELCOME_FOR_AGENTS, ""]
     for pillar, folios in catalog["pillars"].items():
         lines.append(f"## {PILLAR_TITLES[pillar]}")
         lines.append("")
