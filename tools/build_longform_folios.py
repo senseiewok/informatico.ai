@@ -5493,6 +5493,11 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
           <strong class="tp-track-chip-title" data-en="Time &amp; Gravity (T.00–T.13)" data-es="Tiempo y Gravedad (T.00–T.13)">Time &amp; Gravity (T.00–T.13)</strong>
           <span class="tp-track-chip-meta" data-en="Clock rates · Geodesics · Six labels · Ledger" data-es="Ritmos de reloj · Geodésicas · Seis etiquetas · Registro">Clock rates · Geodesics · Six labels · Ledger</span>
         </a>
+        <a class="tp-track-chip tp-track-chip-classic" href="classics/golf-gti/">
+          <span class="tp-track-chip-kicker" data-en="CULT CLASSIC · CC.01 · NEW" data-es="CLÁSICO DE CULTO · CC.01 · NUEVO">CULT CLASSIC · CC.01 · NEW</span>
+          <strong class="tp-track-chip-title" data-en="One Brief, Eight Answers: the Golf GTI" data-es="Un encargo, ocho respuestas: el Golf GTI">One Brief, Eight Answers: the Golf GTI</strong>
+          <span class="tp-track-chip-meta" data-en="8 generations · Differential bench · Ghost race" data-es="8 generaciones · Banco de diferenciales · Carrera fantasma">8 generations · Differential bench · Ghost race</span>
+        </a>
         <a class="tp-track-chip tp-track-chip-skills" href="#tp-oss-physics-radar">
           <span class="tp-track-chip-kicker" data-en="{skill_count} AI SKILL.MD · {_verifier_count()} VERIFIERS" data-es="{skill_count} SKILL.MD · {_verifier_count()} VERIFICADORES">{skill_count} AI SKILL.MD · {_verifier_count()} VERIFIERS</span>
           <strong class="tp-track-chip-title" data-en="Agent Skills &amp; 15 OSS Engines" data-es="Skills de IA y 15 Motores OSS">Agent Skills &amp; 15 OSS Engines</strong>
@@ -5944,6 +5949,9 @@ def render_research_sitemap(catalog: dict) -> str:
     entries.append(("essays/", essays_date))
     for es_doc in CROSS_SCALE_ESSAYS:
         entries.append((f"essays/{es_doc['slug']}/", es_doc.get("date") or es_doc.get("published", essays_date)))
+    # Cult Classics (CC.xx): standalone features, no shelf page yet (tools/folios/classics/).
+    from folios.classics import cc01 as CC01  # noqa: E402
+    entries.append((f"classics/{CC01.SLUG}/", CC01.DATE))
     entries.append(("about/", newest_all))
 
     blocks = [
@@ -6035,6 +6043,11 @@ def render_llms_txt(catalog: dict) -> str:
     lines.append(f"- [Cross-Scale Essays]({page_url('essays/')}): {PILLAR_SEO['essays'][1]}")
     for es_doc in CROSS_SCALE_ESSAYS:
         lines.append(f"- [{es_doc['code']} {es_doc['seo'][0]}]({page_url('essays/' + es_doc['slug'] + '/')}): {es_doc['seo'][1]}")
+    lines.append("")
+    from folios.classics import cc01 as CC01  # noqa: E402
+    lines.append("## Cult Classics · Engineering Stories (CC.01)")
+    lines.append("")
+    lines.append(f"- [{CC01.CODE} {CC01.SEO[0]}]({page_url('classics/' + CC01.SLUG + '/')}): {CC01.SEO[1]}")
     lines.append("")
     lines.append("## About Informatico.ai & the Shared Verification Engine (Essay Zero)")
     lines.append("")
@@ -6276,6 +6289,8 @@ def main() -> None:
     build_timegravity.write_pages(catalog)
     import build_cross_scale_essays  # noqa: E402  (lazy: it imports this module)
     build_cross_scale_essays.write_essay_pages(catalog)
+    import build_cult_classics  # noqa: E402  (lazy: it imports this module)
+    build_cult_classics.write_pages(catalog)
 
     print(f"PASS: Built Informatico.ai hub + 4 pillar racks + {count} standalone 5-Act HTML Folios + Bounties hub + {b_count} standalone Bounty Folios + Tech & Tools hub + {t_count} standalone Toolbox Folios, each in English and Spanish (/{ES_PREFIX}) + sitemap.xml + robots.txt + llms.txt + 404.html.")
 
