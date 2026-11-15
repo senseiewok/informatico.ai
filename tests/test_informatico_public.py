@@ -132,7 +132,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
                     self.assertIn('tp-plain-bridge-box', txt, html_file)
                     self.assertIn('tp-analogy-box', txt, html_file)
                     self.assertIn('tp-distill-figure', txt, html_file)
-                    self.assertIn('tp-distill-svg', txt, html_file)
+                    self.assertIn('tp-distill-grid', txt, html_file)
                     self.assertGreaterEqual(txt.count("<h3"), 15, html_file)
         self.assertEqual(folio_count, 48)
 

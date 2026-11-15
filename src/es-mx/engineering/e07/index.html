@@ -297,50 +297,41 @@
           <p><strong>How the Two Sliders Work in Plain Words:</strong> To explore this aeroelastic behavior, our interactive laboratory provides two primary controls. The first control is Mean Wind Velocity, which sets the speed of the storm pushing against the suspended bridge deck. At gentle breezes, structural stiffness and natural material damping absorb every gust, keeping deck motion small and stable. As you slide the wind speed higher toward storm levels, the rushing airflow begins feeding rotational energy back into the deck, driving net damping toward zero. The second control is the Physics Loss Weight in our digital twin neural network. When this knob is set near zero, the artificial intelligence behaves like a naive pattern matcher, producing erratic, noisy stress guesses between the sparse vibration sensors. Turning this knob up forces the model to respect Newton&#x27;s laws of motion and beam elasticity, smoothly reconstructing internal bending stresses across every unmeasured meter of the span.</p>
         </div>
                 <figure class="tp-distill-figure" role="group" aria-label="Plate E.07-D Visual Intuition Bridge">
-          <svg class="tp-distill-svg" viewBox="0 0 920 228" role="img" aria-labelledby="tp-distill-title-e07">
-            <title id="tp-distill-title-e07">Plate E.07-D Visual Intuition Bridge: from Hand Out a Speeding Car Window to Mean Wind Speed (U_wind) versus PINN Physics Loss (lambda_pde) and Critical Flutter Velocity Tipping Point</title>
-            <rect x="6" y="6" width="908" height="216" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
-            <rect x="20" y="20" width="266" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-prussian)" stroke-width="1.5"/>
-            <text x="34" y="40" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-prussian)" data-en="1 · EVERYDAY ANALOGY (E.07)" data-es="1 · ANALOGÍA COTIDIANA (E.07)">1 · ANALOGÍA COTIDIANA (E.07)</text>
-            <text x="34" y="60" font-size="10.4" font-weight="700" fill="var(--tp-ink)">Hand Out a Speeding Car Window</text>
-            <text x="34" y="78" font-size="9.1" fill="var(--tp-graphite)">Tilting your palm catches wind and</text>
-            <text x="34" y="92" font-size="9.1" fill="var(--tp-graphite)">forces your wrist to twist upward</text>
-            <rect x="32" y="106" width="242" height="30" rx="5" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1"/>
-            <text x="42" y="125" font-family="var(--font-mono, monospace)" font-size="8.6" font-weight="600" fill="var(--tp-prussian)">Slider 1: Mean Wind Velocity</text>
-            <rect x="32" y="144" width="242" height="30" rx="5" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1"/>
-            <text x="42" y="163" font-family="var(--font-mono, monospace)" font-size="8.6" font-weight="600" fill="var(--tp-verdigris)">Slider 2: PINN Physics Loss Weight</text>
-
-            <path d="M 288 104 L 312 104" stroke="var(--tp-prussian)" stroke-width="2" stroke-dasharray="4 3"/>
-            <polygon points="312,99 320,104 312,109" fill="var(--tp-prussian)"/>
-
-            <rect x="322" y="20" width="276" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-rule-strong)" stroke-width="1.5"/>
-            <text x="336" y="40" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-ink)" data-en="2 · TWO COMPETING FORCES" data-es="2 · DOS FUERZAS EN COMPETENCIA">2 · DOS FUERZAS EN COMPETENCIA</text>
-            <rect x="334" y="48" width="252" height="60" rx="6" fill="var(--tp-stone)" stroke="var(--tp-prussian)" stroke-width="1.2"/>
-            <text x="344" y="65" font-size="9.6" font-weight="700" fill="var(--tp-prussian)">&#9650; Mean Wind Speed (U_wind)</text>
-            <text x="344" y="80" font-size="8.7" fill="var(--tp-graphite)">Pumps aeroelastic energy into deck</text>
-            <text x="344" y="93" font-size="8.7" fill="var(--tp-graphite)">pitch and vertical heave motions</text>
-            <rect x="334" y="116" width="252" height="60" rx="6" fill="var(--tp-stone)" stroke="var(--tp-minium)" stroke-width="1.2"/>
-            <text x="344" y="133" font-size="9.6" font-weight="700" fill="var(--tp-minium)">&#9660; PINN Physics Loss (lambda_pde)</text>
-            <text x="344" y="148" font-size="8.7" fill="var(--tp-graphite)">Enforces beam mechanics to eliminate</text>
-            <text x="344" y="161" font-size="8.7" fill="var(--tp-graphite)">sensor noise and wild guesses</text>
-
-            <path d="M 600 104 L 624 104" stroke="var(--tp-verdigris)" stroke-width="2" stroke-dasharray="4 3"/>
-            <polygon points="624,99 632,104 624,109" fill="var(--tp-verdigris)"/>
-
-            <rect x="634" y="20" width="266" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-verdigris)" stroke-width="1.5"/>
-            <text x="648" y="39" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-verdigris)" data-en="3 · CRITICAL TIPPING POINT" data-es="3 · UMBRAL CRÍTICO DE FASE">3 · UMBRAL CRÍTICO DE FASE</text>
-            <text x="648" y="56" font-size="9.6" font-weight="700" fill="var(--tp-ink)">Critical Flutter Velocity Tipping Point</text>
-            <rect x="646" y="64" width="242" height="54" rx="6" fill="var(--tp-stone)" stroke="var(--tp-verdigris)" stroke-width="1.2"/>
-            <text x="656" y="80" font-family="var(--font-mono, monospace)" font-size="8.5" font-weight="700" fill="var(--tp-verdigris)">&#10003; STABLE / CERTIFIED REGIME</text>
-            <text x="656" y="94" font-size="8.5" fill="var(--tp-ink)">Stable: Natural damping dissipates</text>
-            <text x="656" y="106" font-size="8.5" fill="var(--tp-ink)">aerodynamic wind energy</text>
-            <rect x="646" y="124" width="242" height="54" rx="6" fill="var(--tp-stone)" stroke="var(--tp-minium)" stroke-width="1.2"/>
-            <text x="656" y="140" font-family="var(--font-mono, monospace)" font-size="8.5" font-weight="700" fill="var(--tp-minium)">&#9888; CRITICAL BREAKDOWN REGIME</text>
-            <text x="656" y="154" font-size="8.5" fill="var(--tp-ink)">Flutter: Negative damping causes</text>
-            <text x="656" y="166" font-size="8.5" fill="var(--tp-ink)">self-amplifying deck twist</text>
-
-            <text x="460" y="208" text-anchor="middle" font-family="var(--font-mono, monospace)" font-size="8.9" font-weight="700" fill="var(--tp-prussian)">PLATE E.07-D · VISUAL INTUITION BRIDGE → GOVERNING OPERATOR: ζ_net = ζ_s − (ρ B⁴ / 2 I_α) A_2*(K) · L_total = L_data + λ_pde ‖R_pde‖²</text>
-          </svg>
+          <div class="tp-distill-grid">
+            <section class="tp-distill-card tp-distill-card--analogy">
+              <p class="tp-distill-kicker" data-en="1 · EVERYDAY ANALOGY (E.07)" data-es="1 · ANALOGÍA COTIDIANA (E.07)">1 · ANALOGÍA COTIDIANA (E.07)</p>
+              <h4 class="tp-distill-title">Hand Out a Speeding Car Window</h4>
+              <p class="tp-distill-text">Tilting your palm catches wind and forces your wrist to twist upward </p>
+              <p class="tp-distill-chip tp-distill-chip--a">Slider 1: Mean Wind Velocity</p>
+              <p class="tp-distill-chip tp-distill-chip--b">Slider 2: PINN Physics Loss Weight</p>
+            </section>
+            <span class="tp-distill-arrow" aria-hidden="true">&#10140;</span>
+            <section class="tp-distill-card tp-distill-card--forces">
+              <p class="tp-distill-kicker" data-en="2 · TWO COMPETING FORCES" data-es="2 · DOS FUERZAS EN COMPETENCIA">2 · DOS FUERZAS EN COMPETENCIA</p>
+              <div class="tp-distill-sub tp-distill-sub--a">
+                <h4 class="tp-distill-title">&#9650; Mean Wind Speed (U_wind)</h4>
+                <p class="tp-distill-text">Pumps aeroelastic energy into deck pitch and vertical heave motions </p>
+              </div>
+              <div class="tp-distill-sub tp-distill-sub--bad">
+                <h4 class="tp-distill-title">&#9660; PINN Physics Loss (lambda_pde)</h4>
+                <p class="tp-distill-text">Enforces beam mechanics to eliminate sensor noise and wild guesses </p>
+              </div>
+            </section>
+            <span class="tp-distill-arrow" aria-hidden="true">&#10140;</span>
+            <section class="tp-distill-card tp-distill-card--threshold">
+              <p class="tp-distill-kicker" data-en="3 · CRITICAL TIPPING POINT" data-es="3 · UMBRAL CRÍTICO DE FASE">3 · UMBRAL CRÍTICO DE FASE</p>
+              <h4 class="tp-distill-title">Critical Flutter Velocity Tipping Point</h4>
+              <div class="tp-distill-sub tp-distill-sub--ok">
+                <p class="tp-distill-kicker">&#10003; STABLE / CERTIFIED REGIME</p>
+                <p class="tp-distill-text">Stable: Natural damping dissipates aerodynamic wind energy </p>
+              </div>
+              <div class="tp-distill-sub tp-distill-sub--bad">
+                <p class="tp-distill-kicker">&#9888; CRITICAL BREAKDOWN REGIME</p>
+                <p class="tp-distill-text">Flutter: Negative damping causes self-amplifying deck twist </p>
+              </div>
+            </section>
+          </div>
+          <p class="tp-distill-foot">PLATE E.07-D · VISUAL INTUITION BRIDGE → GOVERNING OPERATOR: ζ_net = ζ_s − (ρ B⁴ / 2 I_α) A_2*(K) · L_total = L_data + λ_pde ‖R_pde‖² · CSI 05 12 00</p>
           <figcaption class="tp-distill-caption">
             <strong>Plate E.07-D · Visual Intuition Bridge:</strong> Before diving into the formal equations, follow how the everyday physical analogy (left) sets two competing mechanisms in tension (center) around a sharp tipping point (right) that you can test directly with the two sliders in Act III.
           </figcaption>

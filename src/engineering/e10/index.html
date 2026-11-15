@@ -296,50 +296,41 @@
           <p><strong>How the Two Sliders Work in Plain Words:</strong> To explore the physical boundaries of 3D concrete printing, our interactive simulation provides two primary controls. The first control is the Thixotropic Structuration Rate, which dictates how quickly the fresh mortar stiffens after leaving the nozzle. At low rates, the material remains soft and vulnerable to being crushed by the weight of upper layers. Sliding this rate higher accelerates the formation of microscopic chemical bonds, rapidly boosting the bottom layer&#x27;s load capacity. The second control is the Robotic Vertical Build Rate, which sets how fast the printer climbs as it deposits successive layers. Printing at high vertical speeds tests the material&#x27;s limits: if the gantry stacks fresh layers faster than the bottom can gain strength, the wall fails through either plastic crushing or elastic buckling. Adjusting both sliders reveals the printable operating window where the wall rises steadily and remains upright without forms.</p>
         </div>
                 <figure class="tp-distill-figure" role="group" aria-label="Plate E.10-D Visual Intuition Bridge">
-          <svg class="tp-distill-svg" viewBox="0 0 920 228" role="img" aria-labelledby="tp-distill-title-e10">
-            <title id="tp-distill-title-e10">Plate E.10-D Visual Intuition Bridge: from Piping Frosting on a Layer Cake to Thixotropic Structuration (A_thix) versus Vertical Build Rate (v_build) and Suiker Elastic Buckling vs. Plastic Collapse</title>
-            <rect x="6" y="6" width="908" height="216" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
-            <rect x="20" y="20" width="266" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-prussian)" stroke-width="1.5"/>
-            <text x="34" y="40" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-prussian)" data-en="1 · EVERYDAY ANALOGY (E.10)" data-es="1 · ANALOGÍA COTIDIANA (E.10)">1 · EVERYDAY ANALOGY (E.10)</text>
-            <text x="34" y="60" font-size="10.4" font-weight="700" fill="var(--tp-ink)">Piping Frosting on a Layer Cake</text>
-            <text x="34" y="78" font-size="9.1" fill="var(--tp-graphite)">Material must flow under nozzle</text>
-            <text x="34" y="92" font-size="9.1" fill="var(--tp-graphite)">pressure yet stand tall when placed</text>
-            <rect x="32" y="106" width="242" height="30" rx="5" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1"/>
-            <text x="42" y="125" font-family="var(--font-mono, monospace)" font-size="8.6" font-weight="600" fill="var(--tp-prussian)">Slider 1: Thixotropic Structuration Rate</text>
-            <rect x="32" y="144" width="242" height="30" rx="5" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1"/>
-            <text x="42" y="163" font-family="var(--font-mono, monospace)" font-size="8.6" font-weight="600" fill="var(--tp-verdigris)">Slider 2: Robotic Vertical Build Rate</text>
-
-            <path d="M 288 104 L 312 104" stroke="var(--tp-prussian)" stroke-width="2" stroke-dasharray="4 3"/>
-            <polygon points="312,99 320,104 312,109" fill="var(--tp-prussian)"/>
-
-            <rect x="322" y="20" width="276" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-rule-strong)" stroke-width="1.5"/>
-            <text x="336" y="40" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-ink)" data-en="2 · TWO COMPETING FORCES" data-es="2 · DOS FUERZAS EN COMPETENCIA">2 · TWO COMPETING FORCES</text>
-            <rect x="334" y="48" width="252" height="60" rx="6" fill="var(--tp-stone)" stroke="var(--tp-prussian)" stroke-width="1.2"/>
-            <text x="344" y="65" font-size="9.6" font-weight="700" fill="var(--tp-prussian)">&#9650; Thixotropic Structuration (A_thix)</text>
-            <text x="344" y="80" font-size="8.7" fill="var(--tp-graphite)">Rate at which resting mortar rebuilds</text>
-            <text x="344" y="93" font-size="8.7" fill="var(--tp-graphite)">internal static yield stress</text>
-            <rect x="334" y="116" width="252" height="60" rx="6" fill="var(--tp-stone)" stroke="var(--tp-minium)" stroke-width="1.2"/>
-            <text x="344" y="133" font-size="9.6" font-weight="700" fill="var(--tp-minium)">&#9660; Vertical Build Rate (v_build)</text>
-            <text x="344" y="148" font-size="8.7" fill="var(--tp-graphite)">Rate at which accumulating self-weight</text>
-            <text x="344" y="161" font-size="8.7" fill="var(--tp-graphite)">adds gravity shear to base</text>
-
-            <path d="M 600 104 L 624 104" stroke="var(--tp-verdigris)" stroke-width="2" stroke-dasharray="4 3"/>
-            <polygon points="624,99 632,104 624,109" fill="var(--tp-verdigris)"/>
-
-            <rect x="634" y="20" width="266" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-verdigris)" stroke-width="1.5"/>
-            <text x="648" y="39" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-verdigris)" data-en="3 · CRITICAL TIPPING POINT" data-es="3 · UMBRAL CRÍTICO DE FASE">3 · CRITICAL TIPPING POINT</text>
-            <text x="648" y="56" font-size="9.6" font-weight="700" fill="var(--tp-ink)">Suiker Elastic Buckling vs. Plastic Collapse</text>
-            <rect x="646" y="64" width="242" height="54" rx="6" fill="var(--tp-stone)" stroke="var(--tp-verdigris)" stroke-width="1.2"/>
-            <text x="656" y="80" font-family="var(--font-mono, monospace)" font-size="8.5" font-weight="700" fill="var(--tp-verdigris)">&#10003; STABLE / CERTIFIED REGIME</text>
-            <text x="656" y="94" font-size="8.5" fill="var(--tp-ink)">Printable: Bottom layer resists</text>
-            <text x="656" y="106" font-size="8.5" fill="var(--tp-ink)">shear while wall avoids buckling</text>
-            <rect x="646" y="124" width="242" height="54" rx="6" fill="var(--tp-stone)" stroke="var(--tp-minium)" stroke-width="1.2"/>
-            <text x="656" y="140" font-family="var(--font-mono, monospace)" font-size="8.5" font-weight="700" fill="var(--tp-minium)">&#9888; CRITICAL BREAKDOWN REGIME</text>
-            <text x="656" y="154" font-size="8.5" fill="var(--tp-ink)">Failure: Base layer squashes flat or</text>
-            <text x="656" y="166" font-size="8.5" fill="var(--tp-ink)">slender wall folds sideways</text>
-
-            <text x="460" y="208" text-anchor="middle" font-family="var(--font-mono, monospace)" font-size="8.9" font-weight="700" fill="var(--tp-prussian)">PLATE E.10-D · VISUAL INTUITION BRIDGE → GOVERNING OPERATOR: τ_0(t) = τ_{0,0} + A_thix t · H_plast = √3 τ_0(t)/(ρg) (von Mises)</text>
-          </svg>
+          <div class="tp-distill-grid">
+            <section class="tp-distill-card tp-distill-card--analogy">
+              <p class="tp-distill-kicker" data-en="1 · EVERYDAY ANALOGY (E.10)" data-es="1 · ANALOGÍA COTIDIANA (E.10)">1 · EVERYDAY ANALOGY (E.10)</p>
+              <h4 class="tp-distill-title">Piping Frosting on a Layer Cake</h4>
+              <p class="tp-distill-text">Material must flow under nozzle pressure yet stand tall when placed </p>
+              <p class="tp-distill-chip tp-distill-chip--a">Slider 1: Thixotropic Structuration Rate</p>
+              <p class="tp-distill-chip tp-distill-chip--b">Slider 2: Robotic Vertical Build Rate</p>
+            </section>
+            <span class="tp-distill-arrow" aria-hidden="true">&#10140;</span>
+            <section class="tp-distill-card tp-distill-card--forces">
+              <p class="tp-distill-kicker" data-en="2 · TWO COMPETING FORCES" data-es="2 · DOS FUERZAS EN COMPETENCIA">2 · TWO COMPETING FORCES</p>
+              <div class="tp-distill-sub tp-distill-sub--a">
+                <h4 class="tp-distill-title">&#9650; Thixotropic Structuration (A_thix)</h4>
+                <p class="tp-distill-text">Rate at which resting mortar rebuilds internal static yield stress </p>
+              </div>
+              <div class="tp-distill-sub tp-distill-sub--bad">
+                <h4 class="tp-distill-title">&#9660; Vertical Build Rate (v_build)</h4>
+                <p class="tp-distill-text">Rate at which accumulating self-weight adds gravity shear to base </p>
+              </div>
+            </section>
+            <span class="tp-distill-arrow" aria-hidden="true">&#10140;</span>
+            <section class="tp-distill-card tp-distill-card--threshold">
+              <p class="tp-distill-kicker" data-en="3 · CRITICAL TIPPING POINT" data-es="3 · UMBRAL CRÍTICO DE FASE">3 · CRITICAL TIPPING POINT</p>
+              <h4 class="tp-distill-title">Suiker Elastic Buckling vs. Plastic Collapse</h4>
+              <div class="tp-distill-sub tp-distill-sub--ok">
+                <p class="tp-distill-kicker">&#10003; STABLE / CERTIFIED REGIME</p>
+                <p class="tp-distill-text">Printable: Bottom layer resists shear while wall avoids buckling </p>
+              </div>
+              <div class="tp-distill-sub tp-distill-sub--bad">
+                <p class="tp-distill-kicker">&#9888; CRITICAL BREAKDOWN REGIME</p>
+                <p class="tp-distill-text">Failure: Base layer squashes flat or slender wall folds sideways </p>
+              </div>
+            </section>
+          </div>
+          <p class="tp-distill-foot">PLATE E.10-D · VISUAL INTUITION BRIDGE → GOVERNING OPERATOR: τ_0(t) = τ_{0,0} + A_thix t · H_plast = √3 τ_0(t)/(ρg) (von Mises)</p>
           <figcaption class="tp-distill-caption">
             <strong>Plate E.10-D · Visual Intuition Bridge:</strong> Before diving into the formal equations, follow how the everyday physical analogy (left) sets two competing mechanisms in tension (center) around a sharp tipping point (right) that you can test directly with the two sliders in Act III.
           </figcaption>

@@ -842,66 +842,57 @@ def render_inline_distillation_svg(fid: str, slug: str, folio: dict, lf: dict) -
     dd = lf.get("distill_diagram") or {}
     if not dd:
         return ""
-    a_title = esc(decf_title(dd.get("analogy_title", f"Everyday Analogy ({fid})"))[:44])
-    a_s1, a_s2 = [esc(decf_title(x)) for x in _wrap_svg_lines(dd.get("analogy_sub", ""), 36, 2)]
-    fa_title = esc(decf_title(dd.get("force_a_title", "Primary Driving Force"))[:44])
-    fa_s1, fa_s2 = [esc(decf_title(x)) for x in _wrap_svg_lines(dd.get("force_a_sub", ""), 38, 2)]
-    fb_title = esc(decf_title(dd.get("force_b_title", "Counter-Balancing Force"))[:44])
-    fb_s1, fb_s2 = [esc(decf_title(x)) for x in _wrap_svg_lines(dd.get("force_b_sub", ""), 38, 2)]
-    th_title = esc(decf_title(dd.get("threshold_title", "Critical Phase Threshold"))[:48])
-    tp_s1, tp_s2 = [esc(decf_title(x)) for x in _wrap_svg_lines(dd.get("threshold_pass", ""), 36, 2)]
-    tf_s1, tf_s2 = [esc(decf_title(x)) for x in _wrap_svg_lines(dd.get("threshold_fail", ""), 36, 2)]
+    a_title = esc(decf_title(dd.get("analogy_title", f"Everyday Analogy ({fid})")))
+    a_s1, a_s2 = esc(decf_title(str(dd.get("analogy_sub", "")))), ""
+    fa_title = esc(decf_title(dd.get("force_a_title", "Primary Driving Force")))
+    fa_s1, fa_s2 = esc(decf_title(str(dd.get("force_a_sub", "")))), ""
+    fb_title = esc(decf_title(dd.get("force_b_title", "Counter-Balancing Force")))
+    fb_s1, fb_s2 = esc(decf_title(str(dd.get("force_b_sub", "")))), ""
+    th_title = esc(decf_title(dd.get("threshold_title", "Critical Phase Threshold")))
+    tp_s1, tp_s2 = esc(decf_title(str(dd.get("threshold_pass", "")))), ""
+    tf_s1, tf_s2 = esc(decf_title(str(dd.get("threshold_fail", "")))), ""
 
     sliders = folio.get("sliders", [])
-    sl0_lbl = esc(decf_title(sliders[0]["label"].split("(")[0].strip())[:32]) if len(sliders) > 0 else "Primary Control"
-    sl1_lbl = esc(decf_title(sliders[1]["label"].split("(")[0].strip())[:32]) if len(sliders) > 1 else "Secondary Control"
-    gov_short = esc(decf_title(folio.get("governing_law", ""))[:72])
+    sl0_lbl = esc(decf_title(sliders[0]["label"].split("(")[0].strip())) if len(sliders) > 0 else "Primary Control"
+    sl1_lbl = esc(decf_title(sliders[1]["label"].split("(")[0].strip())) if len(sliders) > 1 else "Secondary Control"
+    gov_short = esc(decf_title(folio.get("governing_law", "")))
 
     return f"""        <figure class="tp-distill-figure" role="group" aria-label="Plate {esc(fid)}-D Visual Intuition Bridge">
-          <svg class="tp-distill-svg" viewBox="0 0 920 228" role="img" aria-labelledby="tp-distill-title-{esc(slug)}">
-            <title id="tp-distill-title-{esc(slug)}">Plate {esc(fid)}-D Visual Intuition Bridge: from {a_title} to {fa_title} versus {fb_title} and {th_title}</title>
-            <rect x="6" y="6" width="908" height="216" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
-            <rect x="20" y="20" width="266" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-prussian)" stroke-width="1.5"/>
-            <text x="34" y="40" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-prussian)" data-en="1 · EVERYDAY ANALOGY ({esc(fid)})" data-es="1 · ANALOGÍA COTIDIANA ({esc(fid)})">1 · EVERYDAY ANALOGY ({esc(fid)})</text>
-            <text x="34" y="60" font-size="10.4" font-weight="700" fill="var(--tp-ink)">{a_title}</text>
-            <text x="34" y="78" font-size="9.1" fill="var(--tp-graphite)">{a_s1}</text>
-            <text x="34" y="92" font-size="9.1" fill="var(--tp-graphite)">{a_s2}</text>
-            <rect x="32" y="106" width="242" height="30" rx="5" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1"/>
-            <text x="42" y="125" font-family="var(--font-mono, monospace)" font-size="8.6" font-weight="600" fill="var(--tp-prussian)">Slider 1: {sl0_lbl}</text>
-            <rect x="32" y="144" width="242" height="30" rx="5" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1"/>
-            <text x="42" y="163" font-family="var(--font-mono, monospace)" font-size="8.6" font-weight="600" fill="var(--tp-verdigris)">Slider 2: {sl1_lbl}</text>
-
-            <path d="M 288 104 L 312 104" stroke="var(--tp-prussian)" stroke-width="2" stroke-dasharray="4 3"/>
-            <polygon points="312,99 320,104 312,109" fill="var(--tp-prussian)"/>
-
-            <rect x="322" y="20" width="276" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-rule-strong)" stroke-width="1.5"/>
-            <text x="336" y="40" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-ink)" data-en="2 · TWO COMPETING FORCES" data-es="2 · DOS FUERZAS EN COMPETENCIA">2 · TWO COMPETING FORCES</text>
-            <rect x="334" y="48" width="252" height="60" rx="6" fill="var(--tp-stone)" stroke="var(--tp-prussian)" stroke-width="1.2"/>
-            <text x="344" y="65" font-size="9.6" font-weight="700" fill="var(--tp-prussian)">&#9650; {fa_title}</text>
-            <text x="344" y="80" font-size="8.7" fill="var(--tp-graphite)">{fa_s1}</text>
-            <text x="344" y="93" font-size="8.7" fill="var(--tp-graphite)">{fa_s2}</text>
-            <rect x="334" y="116" width="252" height="60" rx="6" fill="var(--tp-stone)" stroke="var(--tp-minium)" stroke-width="1.2"/>
-            <text x="344" y="133" font-size="9.6" font-weight="700" fill="var(--tp-minium)">&#9660; {fb_title}</text>
-            <text x="344" y="148" font-size="8.7" fill="var(--tp-graphite)">{fb_s1}</text>
-            <text x="344" y="161" font-size="8.7" fill="var(--tp-graphite)">{fb_s2}</text>
-
-            <path d="M 600 104 L 624 104" stroke="var(--tp-verdigris)" stroke-width="2" stroke-dasharray="4 3"/>
-            <polygon points="624,99 632,104 624,109" fill="var(--tp-verdigris)"/>
-
-            <rect x="634" y="20" width="266" height="168" rx="8" fill="var(--tp-vellum)" stroke="var(--tp-verdigris)" stroke-width="1.5"/>
-            <text x="648" y="39" font-family="var(--font-mono, monospace)" font-size="8.8" font-weight="700" fill="var(--tp-verdigris)" data-en="3 · CRITICAL TIPPING POINT" data-es="3 · UMBRAL CRÍTICO DE FASE">3 · CRITICAL TIPPING POINT</text>
-            <text x="648" y="56" font-size="9.6" font-weight="700" fill="var(--tp-ink)">{th_title}</text>
-            <rect x="646" y="64" width="242" height="54" rx="6" fill="var(--tp-stone)" stroke="var(--tp-verdigris)" stroke-width="1.2"/>
-            <text x="656" y="80" font-family="var(--font-mono, monospace)" font-size="8.5" font-weight="700" fill="var(--tp-verdigris)">&#10003; STABLE / CERTIFIED REGIME</text>
-            <text x="656" y="94" font-size="8.5" fill="var(--tp-ink)">{tp_s1}</text>
-            <text x="656" y="106" font-size="8.5" fill="var(--tp-ink)">{tp_s2}</text>
-            <rect x="646" y="124" width="242" height="54" rx="6" fill="var(--tp-stone)" stroke="var(--tp-minium)" stroke-width="1.2"/>
-            <text x="656" y="140" font-family="var(--font-mono, monospace)" font-size="8.5" font-weight="700" fill="var(--tp-minium)">&#9888; CRITICAL BREAKDOWN REGIME</text>
-            <text x="656" y="154" font-size="8.5" fill="var(--tp-ink)">{tf_s1}</text>
-            <text x="656" y="166" font-size="8.5" fill="var(--tp-ink)">{tf_s2}</text>
-
-            <text x="460" y="208" text-anchor="middle" font-family="var(--font-mono, monospace)" font-size="8.9" font-weight="700" fill="var(--tp-prussian)">PLATE {esc(fid)}-D · VISUAL INTUITION BRIDGE → GOVERNING OPERATOR: {gov_short}</text>
-          </svg>
+          <div class="tp-distill-grid">
+            <section class="tp-distill-card tp-distill-card--analogy">
+              <p class="tp-distill-kicker" data-en="1 · EVERYDAY ANALOGY ({esc(fid)})" data-es="1 · ANALOGÍA COTIDIANA ({esc(fid)})">1 · EVERYDAY ANALOGY ({esc(fid)})</p>
+              <h4 class="tp-distill-title">{a_title}</h4>
+              <p class="tp-distill-text">{a_s1} {a_s2}</p>
+              <p class="tp-distill-chip tp-distill-chip--a">Slider 1: {sl0_lbl}</p>
+              <p class="tp-distill-chip tp-distill-chip--b">Slider 2: {sl1_lbl}</p>
+            </section>
+            <span class="tp-distill-arrow" aria-hidden="true">&#10140;</span>
+            <section class="tp-distill-card tp-distill-card--forces">
+              <p class="tp-distill-kicker" data-en="2 · TWO COMPETING FORCES" data-es="2 · DOS FUERZAS EN COMPETENCIA">2 · TWO COMPETING FORCES</p>
+              <div class="tp-distill-sub tp-distill-sub--a">
+                <h4 class="tp-distill-title">&#9650; {fa_title}</h4>
+                <p class="tp-distill-text">{fa_s1} {fa_s2}</p>
+              </div>
+              <div class="tp-distill-sub tp-distill-sub--bad">
+                <h4 class="tp-distill-title">&#9660; {fb_title}</h4>
+                <p class="tp-distill-text">{fb_s1} {fb_s2}</p>
+              </div>
+            </section>
+            <span class="tp-distill-arrow" aria-hidden="true">&#10140;</span>
+            <section class="tp-distill-card tp-distill-card--threshold">
+              <p class="tp-distill-kicker" data-en="3 · CRITICAL TIPPING POINT" data-es="3 · UMBRAL CRÍTICO DE FASE">3 · CRITICAL TIPPING POINT</p>
+              <h4 class="tp-distill-title">{th_title}</h4>
+              <div class="tp-distill-sub tp-distill-sub--ok">
+                <p class="tp-distill-kicker">&#10003; STABLE / CERTIFIED REGIME</p>
+                <p class="tp-distill-text">{tp_s1} {tp_s2}</p>
+              </div>
+              <div class="tp-distill-sub tp-distill-sub--bad">
+                <p class="tp-distill-kicker">&#9888; CRITICAL BREAKDOWN REGIME</p>
+                <p class="tp-distill-text">{tf_s1} {tf_s2}</p>
+              </div>
+            </section>
+          </div>
+          <p class="tp-distill-foot">PLATE {esc(fid)}-D · VISUAL INTUITION BRIDGE → GOVERNING OPERATOR: {gov_short}</p>
           <figcaption class="tp-distill-caption">
             <strong>Plate {esc(fid)}-D · Visual Intuition Bridge:</strong> Before diving into the formal equations, follow how the everyday physical analogy (left) sets two competing mechanisms in tension (center) around a sharp tipping point (right) that you can test directly with the two sliders in Act III.
           </figcaption>
