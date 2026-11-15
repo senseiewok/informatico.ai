@@ -83,7 +83,7 @@ FOLIO = {'folio_id': 'A.09',
                 'summary': 'REV 1.0 (Published 2026-11-03): First edition, completing Folios A.02, E.04 & A.08 with '
                            "Timoshenko's 1925 bilayer curvature formula (DOI "
                            '10.1364/JOSA.11.000233) and hygroscopic wood skins.',
-                'opus': 'Council review of the formula only (Gemini 4 Argon + Qwen 3.8 27B). Its earlier \'verified\' wording is withdrawn in REV 1.1: the published curvature needed ply ratios that were not stated, and nothing was measured.'}],
+                'opus': 'Review of the formula only (Gemini 4 Argon + Qwen 3.8 27B). Its earlier \'verified\' wording is withdrawn in REV 1.1: the published curvature needed ply ratios that were not stated, and nothing was measured.'}],
  'volume': 5,
  'volume_code': 'VOL. 05',
  'reading_time': '22 MIN READ',
@@ -136,7 +136,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'unevenly across different grain directions. In twentieth-century construction, '
                 'the standard response was to over-engineer steel mechanical systems: motorized '
                 'louvers, motorized dampers, and electric actuators wired to electronic humidity '
-                'sensors. But motorized kinetic facades have proven notoriously fragile in '
+                'sensors. But motorized kinetic facades have repeatedly shown fragility in '
                 'real-world buildings. Mechanical linkages jam from wind-borne dust, electric '
                 'servo motors burn out after repetitive weather cycles, and electronic sensors '
                 'corrode in coastal air. When building owners face mounting maintenance costs, '
@@ -148,7 +148,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'architectural skin are no longer separate mechanical devices—they are the same '
               'piece of wood."',
  'chronology': [('1925',
-                 'Stephen Timoshenko publishes the exact analytical curvature theorem for '
+                 'Stephen Timoshenko publishes the analytical curvature theorem for '
                  'bi-material strips in JOSA (DOI 10.1364/JOSA.11.000233).'),
                 ('1997',
                  'Dawson, Vincent & Rocca describe how dead pine cone scales open and close through layers that respond differently to moisture (Nature, DOI 10.1038/37745).'),
@@ -161,7 +161,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'act2_analogy': 'Take two long strips of paper, wet only one strip with a damp sponge, and glue '
                  'them back-to-back. As the wet paper expands, the dry paper stays the same size, '
                  'forcing the glued strip to curl into a tight loop. Conifer pinecones use this '
-                 'exact trick, flexing their scales closed during downpours and popping open in '
+                 'trick, flexing their scales closed during downpours and popping open in '
                  'warm dry air. Programmable timber facades operate on the identical physical '
                  'principle, using natural grain anisotropy instead of mechanical gears.',
  'act2_plain_primer': 'To control this natural wood curling mechanism on a building facade, you '
@@ -204,7 +204,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'classical bilayer mechanics, the resulting uniform curvature is kappa = 6 * (1 '
                    '+ m)^2 * Delta_epsilon / (h * (3 * (1 + m)^2 + (1 + m * n) * (m^2 + 1 / (m * '
                    'n)))). At the defaults Delta_MC = 6 percent and h = 6 mm, Delta_epsilon = 0.0185. The folio assumes m = 2 and n = 10.6, which makes the geometry factor 0.46 and kappa = 1.42 per meter; with equal plies of equal stiffness (m = n = 1) the factor is 1.5 and kappa would be 4.62 per meter, so the result depends strongly on the lay-up. For a cantilevered facade petal of length L = 425 mm this curvature gives a '
-                   'tip deflection delta_tip of about 0.5 * kappa * L^2 = 128 mm (124 mm with the exact circular-arc expression). These are model values; no petal was built or tested.',
+                   'tip deflection delta_tip of about 0.5 * kappa * L^2 = 128 mm (124 mm with the circular-arc expression). These are model values; no petal was built or tested.',
  'act2_deepening': 'The mechanical interaction between moisture shift and bilayer thickness '
                    "reveals an essential engineering trade-off governed by Timoshenko's "
                    'denominator. Because curvature kappa scales inversely with total thickness h, '
@@ -326,7 +326,7 @@ ES_TRANSLATION = {'title_es': 'Pieles Arquitectónicas Programables de Madera Hi
              'largo de ellas. Si pegamos dos láminas delgadas de madera con las vetas cruzadas en '
              'direcciones opuestas, cuando el ambiente se vuelve húmedo, una lámina intenta crecer '
              'mientras la otra se resiste. Como están firmemente unidas con pegamento, la única '
-             'forma de liberar esa tensión es curvándose, exactamente igual a como una piña de '
+             'forma de liberar esa tensión es curvándose, de manera similar a como una piña de '
              'pino cierra sus escamas bajo la lluvia y las abre cuando sale el sol. Diseñando '
              'estas hojas de madera en las aberturas de un edificio, podrían abrirse solas '
              'para ventilar en días secos y cerrarse cuando el aire está húmedo.',
