@@ -30,9 +30,11 @@ class Visible(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.text: list[str] = []
         self.attrs: list[tuple[str, str, str]] = []
+        self.tags: list[str] = []
         self._skip = 0
 
     def handle_starttag(self, tag, attrs):
+        self.tags.append(tag)
         if tag in ("script", "style"):
             self._skip += 1
         for k, v in attrs:
@@ -63,15 +65,16 @@ class CultClassicPages(unittest.TestCase):
             self.assertIn(value, es, "spec-plate value left in English on the Spanish page")
 
     def test_no_inline_script_style_or_style_attribute(self):
+        sys.path.insert(0, str(ROOT / "deploy"))
+        from check_upload import _InlineScriptChecker  # noqa: E402  (HTML tokenizer, not a tag regex)
+
         for page in (EN, ES):
-            txt = page.read_text(encoding="utf-8")
-            self.assertNotRegex(txt, r"<style\b", page)
-            self.assertNotRegex(txt, r"\sstyle=", page)
-            for m in re.finditer(r"<script\b([^>]*)>(.*?)</script>", txt, re.S):
-                attrs, body = m.group(1), m.group(2)
-                if "src=" in attrs or "application/ld+json" in attrs:
-                    continue
-                self.assertEqual(body.strip(), "", f"{page}: executable inline script")
+            v = parse(page)
+            self.assertNotIn("style", v.tags, page)
+            self.assertFalse(any(k == "style" for _t, k, _v in v.attrs), f"{page}: style attribute")
+            checker = _InlineScriptChecker()
+            checker.feed(page.read_text(encoding="utf-8"))
+            self.assertFalse(checker.has_executable_inline_script, f"{page}: executable inline script")
 
     def test_no_unearned_superlatives_or_ownership(self):
         for page in (EN, ES):
