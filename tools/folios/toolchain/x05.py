@@ -101,15 +101,15 @@ FOLIO = {'slug': 'x05',
               'emphasized that mathematical convergence in an idealized finite-element grid does '
               'not guarantee physical manufacturability on factory floors. To bridge this divide, '
               'computer graphics engineers such as Emmett Lalish developed rigorous '
-              'boundary-representation algorithms, proving that constructive solid geometry could '
+              'boundary-representation algorithms, showing that constructive solid geometry can '
               'maintain strict manifold topology without floating-point leaks. Simultaneously, the '
               '3MF Consortium established Core Specification v1.2.3, replacing fragile legacy STL '
               'formats with structured XML archives containing verifiable vertex indices, unit '
               'definitions, and build-space orientations. Modern computational pipelines now '
               'enforce closed-volume invariants directly during lattice synthesis, generating '
-              'certified structural components that import into slicing engines without repair.',
+              'watertight structural components that import into slicing engines without repair.',
  'pullquote': 'Checking whether a mesh is watertight (3F = 2E) and measuring its facet overhang '
-              'angle θ = arccos(−n · ẑ) are pure theorems of Euclidean geometry; certifying a '
+              'angle θ = arccos(−n · ẑ) are pure theorems of Euclidean geometry; physical qualification of a '
               'physical part requires material testing that no software script can replace.',
  'chronology': [('1904',
                  'A. G. M. Michell derives the analytical minimum-weight truss layouts (Michell '
@@ -176,7 +176,7 @@ FOLIO = {'slug': 'x05',
            'containing [Content_Types].xml, _rels/.rels, and 3D/3dmodel.model, and verify_x05 must '
            'reject any flipped-normal mutation.'],
  'sidenote_1': {'kicker': 'SIDENOTE X.05-A · GEOMETRY VS. PHYSICAL FITNESS BOUNDARY',
-                'body': 'Measuring an overhang angle θ ≤ 45° or confirming 3F = 2E watertightness '
+                'body': 'Measuring an overhang angle θ ≤ 45° or checking 3F = 2E watertightness '
                         'only verifies the mathematical mesh. Actual additive manufacturing '
                         'depends on polymer rheology, layer adhesion, thermal warping, and nozzle '
                         'diameter.'},
@@ -212,7 +212,7 @@ FOLIO = {'slug': 'x05',
              'Sigmund, O. (2001). A 99 line topology optimization code written in Matlab. '
              'Structural and Multidisciplinary Optimization, 21(2), 120–127. DOI '
              '10.1007/s001580050176',
-             'Lalish, E. (2023–2026). Manifold: Guaranteed manifold triangular meshes '
+             'Lalish, E. (2023–2026). Manifold: Exact manifold triangular meshes '
              '(Apache-2.0). https://github.com/elalish/manifold',
              '3MF Consortium. (2023). 3MF Core Specification v1.2.3. '
              'https://github.com/3MFConsortium/spec_core'],
@@ -245,8 +245,8 @@ FOLIO = {'slug': 'x05',
                 'ruin delicate surface finishes. By executing rigorous topological and overhang '
                 'audits inside lightweight client environments before sending geometry to the '
                 'printer, independent teams bypass expensive enterprise modeling suites. They '
-                'produce certified, support-free structural struts that transition seamlessly from '
-                'algorithmic conception to flawless physical inspection on the factory floor.',
+                'produce clean, support-free structural struts that transition from '
+                'algorithmic conception to physical inspection on the factory floor.',
  'act2_analogy': 'Think of how an old oak tree tapers smoothly from its wide root collar to a '
                  'slender waist before flaring out to cradle heavy branches. The trunk stays '
                  'upright because its outer bark forms an unbroken, sealed boundary enclosing '
@@ -283,8 +283,8 @@ FOLIO = {'slug': 'x05',
                    'pillars. Concurrently, exact mesh volume is computed using the discrete '
                    'divergence theorem by summing oriented tetrahedral signed volumes 1/6 (v0 · '
                    '(v1 × v2)) across all twenty-eight facets. Comparing this signed sum against '
-                   'the analytical Moscow Papyrus frustum formula confirms absolute geometric '
-                   'fidelity, guaranteeing that subsequent structural FEA simulations receive '
+                   'the analytical Moscow Papyrus frustum formula checks geometric '
+                   'fidelity, ensuring that subsequent structural FEA simulations receive '
                    'exact volumetric mass distributions.',
  'act4_human_ai': 'Modern structural engineering reaches peak velocity when human domain intuition '
                   'couples with autonomous AI coding agents governed by deterministic verifiers. '
@@ -296,12 +296,12 @@ FOLIO = {'slug': 'x05',
                   'fabrication lab, the developer executes '
                   'verify_x05_toolchain_x05_simp_manifold_3mf.py. This independent Python '
                   'verification script parses the generated 3MF archive, validates its XML '
-                  'namespace headers, confirms 2-manifold edge matching (2E = 3F), recalculates '
-                  'frustum volumes, and guarantees zero overhang violations. By acting as an '
+                  'namespace headers, checks 2-manifold edge matching (2E = 3F), recalculates '
+                  'frustum volumes, and tests for zero overhang violations. By acting as an '
                   'unyielding mathematical judge, the deterministic script prevents AI '
                   'hallucinations from contaminating manufacturing pipelines, allowing small '
-                  'independent teams to produce enterprise-grade, certified aerospace components '
-                  'with absolute geometric confidence.',
+                  'independent teams to produce clean, reproducible engineering models '
+                  'with verified geometric bounds.',
  'act4_deepening': 'The geometric principles governing this structural strut form an intellectual '
                    'crossroads uniting civil engineering, high-performance aerodynamics, '
                    'rheological fabrication, and pure variational mathematics. When structural '

@@ -4191,10 +4191,10 @@ def _build_toolchain_skill_and_scripts(tool: dict) -> tuple[str, str, str, str]:
         f"{rules_md}\n\n"
         f"## 5. 4-Stage Geometry & Verification Pipeline\n"
         f"{steps_md}\n\n"
-        f"## 6. Certified Reference Telemetry (T0/T1)\n"
+        f"## 6. Verified Reference Telemetry (T0/T1)\n"
         f"{bench_md}\n\n"
         f"## 7. Exact T0–T3 Truth Boundary\n"
-        f"### Certified Geometry in Repository Today (T0/T1)\n{t0_md}\n\n"
+        f"### Verified Geometry in Repository Today (T0/T1)\n{t0_md}\n\n"
         f"### Educational Boundary & Edition 2 Horizon (T2/T3)\n{t2_md}\n"
     )
     return make_py_src, verify_py_src, verify_filename, skill_md
@@ -4535,7 +4535,7 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
               <strong>Byte-Level Invariant Closure:</strong> At Stage {idx_s} of Toolbox <strong>{esc(fid)}</strong> (<code>{esc(tid)}</code>), the generator <code>{esc(gen_rel)}</code> and stdlib verifier <code>{esc(verifier_rel)}</code> enforce the governing geometric law <code>{esc(tool['governing_law'])}</code> along with the companion invariant: <em>{linkify_citations(esc(matched_rule))}</em>
             </p>
             <p>
-              <strong>Small-Studio &amp; Free-Tool Verification:</strong> When a designer, architect, or independent engineer inspects Stage {idx_s} inside Blender 4.2+, FreeCAD 1.0, OrcaSlicer / PrusaSlicer, or QCAD / LibreCAD—or executes <code>python {esc(verifier_rel)}</code> on the command line—this stage guarantees that no unverified coordinate drift, inverted surface normal, non-manifold edge seam, or truncated binary chunk can propagate silently into downstream visualization, structural coordination, or digital fabrication workflows. Every output file in <code>src/toolchain/{esc(slug)}/files/</code> is locked by a deterministic SHA-256 hash in <code>manifest.json</code> so small studios can audit exact geometric provenance without any paid proprietary CAD seat.
+              <strong>Small-Studio &amp; Free-Tool Verification:</strong> When a designer, architect, or independent engineer inspects Stage {idx_s} inside Blender 4.2+, FreeCAD 1.0, OrcaSlicer / PrusaSlicer, or QCAD / LibreCAD—or executes <code>python {esc(verifier_rel)}</code> on the command line—this stage ensures that no unverified coordinate drift, inverted surface normal, non-manifold edge seam, or truncated binary chunk can propagate silently into downstream visualization, structural coordination, or digital fabrication workflows. Every output file in <code>src/toolchain/{esc(slug)}/files/</code> is locked by a deterministic SHA-256 hash in <code>manifest.json</code> so small studios can audit exact geometric provenance without any paid proprietary CAD seat.
             </p>
           </div>"""
         )
@@ -4770,7 +4770,7 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
           Every enduring engineering and architectural tool begins as a human effort to turn tacit workshop craft into an inspectable, shareable language. Tracing the evolution of Toolbox <strong>{esc(fid)}</strong> (<code>{esc(tid)}</code>) from its earliest formulation in {linkify_citations(esc(first_era))} to its modern open-toolchain implementation in {linkify_citations(esc(last_era))} reveals why closed binary formats and unverified polygon exports repeatedly stalled small practices. Whenever a studio or fabricator is forced to exchange geometry without an explicit mathematical invariant—here governed by <code>{esc(tool['governing_law'])}</code>—silent topological defects such as boundary cracks, flipped face normals, or missing clearance tolerances corrupt the handoff between design and physical making.
         </p>
         <p>
-          Resolving that bottleneck requires pairing neutral, royalty-free file specifications (<code>.glb</code>, <code>.step</code> AP242, <code>.3mf</code>, <code>.dxf</code>) with a zero-dependency code generator (<code>{esc(gen_rel)}</code>) and a deterministic byte-level verifier (<code>{esc(verifier_rel)}</code>). Within the parametric state space governed by {sliders_prose}, every exported file is treated not as an opaque drawing, but as a falsifiable mathematical certificate whose chronology of breakthroughs is summarized below:
+          Resolving that bottleneck requires pairing neutral, royalty-free file specifications (<code>.glb</code>, <code>.step</code> AP242, <code>.3mf</code>, <code>.dxf</code>) with a zero-dependency code generator (<code>{esc(gen_rel)}</code>) and a deterministic byte-level verifier (<code>{esc(verifier_rel)}</code>). Within the parametric state space governed by {sliders_prose}, every exported file is treated not as an opaque drawing, but as a falsifiable mathematical record whose chronology of breakthroughs is summarized below:
         </p>
         <div class="tp-table-wrap">
           <table class="tp-table tp-chronology" aria-label="Historical chronology for Toolbox {esc(fid)}">
@@ -4836,7 +4836,7 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
               <p><strong>Primary Structural Note ({esc(sn1['kicker'])}):</strong> {linkify_citations(esc(sn1['body']))}</p>
               <p><strong>Secondary Verification Note ({esc(sn2['kicker'])}):</strong> {linkify_citations(esc(sn2['body']))}</p>
               <p>
-                <strong>Why Every Verifier Must Prove It Can Fail:</strong> A verification script that always prints <code>PASS</code> is indistinguishable from a rubber stamp. That is why <code>{esc(verifier_rel)}</code> includes an automated planted-defect canary test: it clones the valid geometry in memory, injects the exact topological or kinematic defect described above, and asserts that the verifier rejects the corrupted artifact before certifying the baseline build.
+                <strong>Why Every Verifier Must Show It Can Fail:</strong> A verification script that always prints <code>PASS</code> is indistinguishable from a rubber stamp. That is why <code>{esc(verifier_rel)}</code> includes an automated planted-defect canary test: it clones the valid geometry in memory, injects the exact topological or kinematic defect described above, and asserts that the verifier rejects the corrupted artifact before accepting the baseline build.
               </p>
             </div>
           </article>
@@ -4871,11 +4871,11 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
         </div>
 
         <section class="tp-plate-card tp-bounty-workbench" data-toolchain-workbench="{esc(slug)}" aria-label="Interactive Toolbox Workbench for {esc(fid)}">
-          <div class="tp-symbolic-regime-bar" role="group" aria-label="Select certified geometry or planted-defect knockout mode">
-            <button type="button" class="tp-sym-regime-btn" data-tc-mode="benchmark" aria-pressed="true" data-en="⚛ Certified Geometry Regime (Verifier PASS)" data-es="⚛ Régimen Geométrico Certificado (Verificador PASS)">⚛ Certified Geometry Regime (Verifier PASS)</button>
+          <div class="tp-symbolic-regime-bar" role="group" aria-label="Select verified geometry or planted-defect knockout mode">
+            <button type="button" class="tp-sym-regime-btn" data-tc-mode="benchmark" aria-pressed="true" data-en="⚛ Verified Geometry Regime (Verifier PASS)" data-es="⚛ Régimen Geométrico Verificado (Verificador PASS)">⚛ Verified Geometry Regime (Verifier PASS)</button>
             <button type="button" class="tp-sym-regime-btn" data-tc-mode="knockout" aria-pressed="false" data-en="⚡ Planted-Defect / Boundary Knockout (Verifier FAIL)" data-es="⚡ Defecto Plantado / Violación de Umbral (FAIL)">⚡ Planted-Defect / Boundary Knockout (Verifier FAIL)</button>
           </div>
-          <p class="tp-sym-caption" data-tc-caption>Certified Geometry Regime ({esc(fid)}) — All 4 stage invariants satisfied ({esc(verifier_rel)}).</p>
+          <p class="tp-sym-caption" data-tc-caption>Verified Geometry Regime ({esc(fid)}) — All 4 stage invariants satisfied ({esc(verifier_rel)}).</p>
           <div class="tp-controls-row">
             <div class="tp-control-group">
               <label for="tp-tc-s0-{esc(slug)}">
@@ -4906,14 +4906,14 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
         <section class="tp-worked-verification-chapter" id="ch-iii-3-{esc(slug)}" aria-labelledby="ch-iii-3-heading-{esc(slug)}">
           <h3 id="ch-iii-3-heading-{esc(slug)}" data-en="&sect; III.3 &middot; Worked Byte-Level Verification &amp; Reference Telemetry Table" data-es="&sect; III.3 &middot; Verificación a Nivel de Bytes y Tabla de Telemetría de Referencia">&sect; III.3 &middot; Worked Byte-Level Verification &amp; Reference Telemetry Table</h3>
           <p>
-            To verify the interactive 3D Inspector and Workbench above by hand or inside an automated studio QA pipeline, we evaluate <code>{esc(tool['governing_law'])}</code> at the canonical baseline operating point ({sliders_prose}) on the committed artifacts in <code>src/toolchain/{esc(slug)}/files/</code>. The resulting geometric and topological telemetry is certified as follows: {readouts_summary_prose}.
+            To verify the interactive 3D Inspector and Workbench above by hand or inside an automated studio QA pipeline, we evaluate <code>{esc(tool['governing_law'])}</code> at the canonical baseline operating point ({sliders_prose}) on the committed artifacts in <code>src/toolchain/{esc(slug)}/files/</code>. The resulting geometric and topological telemetry is verified as follows: {readouts_summary_prose}.
           </p>
           <div class="tp-table-wrap">
             <table class="tp-table tp-telemetry-benchmark-table" aria-label="Reference numerical verification benchmark for Toolbox {esc(fid)}">
               <thead>
                 <tr>
                   <th scope="col" data-en="Geometry / Format Check" data-es="Verificación Geométrica / Formato">Geometry / Format Check</th>
-                  <th scope="col" data-en="Certified Artifact Value" data-es="Valor Certificado del Artefacto">Certified Artifact Value</th>
+                  <th scope="col" data-en="Verified Artifact Value" data-es="Valor Verificado del Artefacto">Verified Artifact Value</th>
                   <th scope="col" data-en="Stdlib Verifier" data-es="Verificador Stdlib">Stdlib Verifier</th>
                 </tr>
               </thead>
@@ -4931,10 +4931,10 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
         {act4_human_ai_html}
         {act4_deepening_html}
 
-        <h3 id="ch-iv-1-{esc(slug)}" data-en="&sect; IV.1 &middot; Certified Geometry in Repository (T0/T1) vs. Educational Boundary &amp; Edition 2 Horizon (T2/T3)" data-es="&sect; IV.1 &middot; Geometría Certificada en el Repositorio (T0/T1) vs. Frontera Educativa y Horizonte Edición 2 (T2/T3)">&sect; IV.1 &middot; Certified Geometry in Repository (T0/T1) vs. Educational Boundary &amp; Edition 2 Horizon (T2/T3)</h3>
+        <h3 id="ch-iv-1-{esc(slug)}" data-en="&sect; IV.1 &middot; Verified Geometry in Repository (T0/T1) vs. Educational Boundary &amp; Edition 2 Horizon (T2/T3)" data-es="&sect; IV.1 &middot; Geometría Verificada en el Repositorio (T0/T1) vs. Frontera Educativa y Horizonte Edición 2 (T2/T3)">&sect; IV.1 &middot; Verified Geometry in Repository (T0/T1) vs. Educational Boundary &amp; Edition 2 Horizon (T2/T3)</h3>
         <div class="tp-truth-boundary-grid" role="region" aria-label="T0 to T3 Epistemic Truth Boundary Matrix">
           <div class="tp-truth-col tp-truth-col-certified">
-            <span class="tp-truth-kicker" data-en="CERTIFIED GEOMETRY IN REPOSITORY · TIER T0 / T1" data-es="GEOMETRÍA CERTIFICADA EN EL REPOSITORIO · NIVEL T0 / T1">CERTIFIED GEOMETRY IN REPOSITORY · TIER T0 / T1</span>
+            <span class="tp-truth-kicker" data-en="VERIFIED GEOMETRY IN REPOSITORY · TIER T0 / T1" data-es="GEOMETRÍA VERIFICADA EN EL REPOSITORIO · NIVEL T0 / T1">VERIFIED GEOMETRY IN REPOSITORY · TIER T0 / T1</span>
             <h4 data-en="Deterministic Generator, Neutral 3D Files &amp; Byte-Level Verifier" data-es="Generador Determinista, Archivos 3D Neutrales y Verificador">Deterministic Generator, Neutral 3D Files &amp; Byte-Level Verifier</h4>
             <ul>
               {t0_html}

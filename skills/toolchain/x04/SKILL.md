@@ -41,14 +41,14 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Stage 3: Layered ASCII DXF Toolpath Serialization — Write x04_artifact.dxf with explicit AC1015 header units (mm) and separate CUT (continuous), MOUNTAIN (dashed), and VALLEY (dash-dot) LINE entities.
 - Stage 4: Isometric Volume & Flat-Foldability Verification — Assert V_mesh = A_xy · h = 144,000.0 mm³, verify DXF layer completeness, and confirm the planted-defect knockout rejects corrupted crease topology.
 
-## 6. Certified Reference Telemetry (T0/T1)
+## 6. Verified Reference Telemetry (T0/T1)
 - **Kawasaki Alternating Sum**: `78° − 102° + 102° − 78° = 0°`
 - **Maekawa Crease Parity |M−V|**: `|3 − 1| = 2 (FLAT-FOLDABLE)`
 - **Cavalieri / Divergence Volume**: `144,000.0 mm³ (χ = 2 PASS)`
 - **DXF Fabrication Layers**: `CUT · MOUNTAIN · VALLEY`
 
 ## 7. Exact T0–T3 Truth Boundary
-### Certified Geometry in Repository Today (T0/T1)
+### Verified Geometry in Repository Today (T0/T1)
 - Deterministic generator (skills/toolchain/x04/make_x04.py) emitting synchronized 3D (x04_artifact.glb, x04_artifact.3mf) and 2D (x04_artifact.dxf) files.
 - Stdlib verifier (verify_x04_toolchain_x04_miura_ori_dxf_fabricator.py) checking Kawasaki–Justin angle sum, Maekawa parity, Cavalieri volume (144,000.0 mm³), DXF layer structure, and planted-defect knockout.
 - Small-studio fabrication SKILL.md companion with laser-cutter/CNC layer conventions and boundary rules.
