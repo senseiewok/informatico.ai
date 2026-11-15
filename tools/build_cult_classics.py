@@ -438,6 +438,13 @@ def render_mk7_extras(is_es: bool) -> str:
 """
 
 
+def linked_caption(item: dict, is_es: bool) -> str:
+    """A caption with one maker's name linked (built per language: a link cannot sit inside a data-en/data-es swap)."""
+    text = item["caption_es"] if is_es else item["caption_en"]
+    before, _sep, after = text.partition(item["link_label"])
+    return f'{t(before)}<a href="{a(item["link_url"])}" rel="noopener noreferrer">{t(item["link_label"])}</a>{t(after)}'
+
+
 def egg_caption(is_es: bool) -> str:
     """The caption with the wheel maker linked (built per language: a link cannot sit inside a data-en/data-es swap)."""
     e = C.EGG
@@ -503,7 +510,7 @@ def render_egg(is_es: bool) -> str:
               </figure>
               <figure class="cc-egg-photo">
                 <img src="../../{C.EGG_SIDE['image']}" width="{C.EGG_SIDE['width']}" height="{C.EGG_SIDE['height']}" loading="lazy" decoding="async" alt="{a(C.EGG_SIDE['alt_es'] if is_es else C.EGG_SIDE['alt_en'])}">
-                {bi("figcaption", C.EGG_SIDE["caption_en"], C.EGG_SIDE["caption_es"])}
+                <figcaption>{linked_caption(C.EGG_SIDE, is_es)}</figcaption>
               </figure>
             </div>
           </div>

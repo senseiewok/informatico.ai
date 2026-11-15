@@ -518,6 +518,9 @@ EGG_SIDE = {
     "caption_es": "El mismo auto en pista, con rines MOMO.",
     "alt_en": "The same Mk7.5 Golf GTI at speed on a circuit, seen from the side, with two helmeted people inside.",
     "alt_es": "El mismo Golf GTI Mk7.5 a velocidad en un circuito, visto de lado, con dos personas con casco adentro.",
+    # Maintainer, 2026-11-15: the wheel maker is linked; the address was given by the maintainer.
+    "link_label": "MOMO",
+    "link_url": "https://momo.com/",
     "image": "images/classics/golf-gti-side-track.jpg",
     "width": 1024,
     "height": 682,

@@ -97,6 +97,7 @@ class CultClassicPages(unittest.TestCase):
             self.assertIsNone(owner.search(C.EGG[key]), key)
         for page in (EN, ES):
             self.assertIn('<a href="https://www.bbs.com/" rel="noopener noreferrer">BBS</a>', page.read_text(encoding="utf-8"))
+            self.assertIn('<a href="https://momo.com/" rel="noopener noreferrer">MOMO</a>', page.read_text(encoding="utf-8"))
         # Two photographs ship with the feature (maintainer, 2026-11-15): hood-up and side-on track.
         self.assertEqual(sorted(p.name for p in PHOTO.parent.iterdir()), sorted([PHOTO.name, Path(C.EGG_SIDE['image']).name]))
 
