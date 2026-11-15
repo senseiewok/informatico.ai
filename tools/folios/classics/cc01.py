@@ -75,6 +75,13 @@ SOURCES = {
         "label": "Volkswagen Newsroom, “Golf VII GTI (2013–2019)” archive entry",
         "url": "https://www.volkswagen-newsroom.com/en/golf-7-gti-20132019-20031",
     },
+    "vw-us-2018": {
+        "short": "VW US 2018 press kit",
+        "short_es": "VW EE. UU. kit de prensa 2018",
+        "kind": "vw",
+        "label": "Volkswagen of America Media, “2018 Golf GTI press kit” (220 hp at 4,700 rpm, 258 lb-ft, all trims)",
+        "url": "https://www.media.vw.com/en-us/press-kits/2018-golf-gti-press-kit",
+    },
     "vw-cs-s": {
         "short": "VW Clubsport S",
         "kind": "vw",
@@ -312,7 +319,7 @@ CARDS = [
         ],
     },
     {
-        "id": "mk7", "gen": "Mk7", "years": "2013–2019",
+        "id": "mk7", "gen": "Mk7", "years": "2013–2019 · Mk7.5 (2017)",
         "move_en": "A platform, and a clutch pack at the front axle",
         "move_es": "Una plataforma y un paquete de embragues en el eje delantero",
         "body_en": "The seventh generation sat on Volkswagen’s MQB platform, and VW says the GTI was up to 42 kg lighter "
@@ -320,20 +327,24 @@ CARDS = [
                    "added what VW calls a front differential lock: a multi-plate clutch between the right driveshaft and "
                    "the differential case, squeezed by a piston pump driven by an electric motor, with the locking torque "
                    "proportional to the pump pressure. The standard car used XDS+, which brakes the inside wheels. VW "
-                   "also lists progressive steering, a body 15 mm lower than lesser Golfs, and the 2017 update to 230 PS "
-                   "and 245 PS.",
+                   "also lists progressive steering and a body 15 mm lower than lesser Golfs. The 2017 facelift, which "
+                   "enthusiasts call the Mk7.5, brought 230 PS and 245 PS in Europe; in the United States it arrived as "
+                   "the 2018 model year, at 220 hp.",
         "body_es": "La séptima generación usó la plataforma MQB de Volkswagen, y VW dice que el GTI era hasta 42 kg más "
                    "ligero que su antecesor. Empezó con 220 PS, con un GTI Performance de 230 PS. El Performance sumó lo "
                    "que VW llama bloqueo del diferencial delantero: un embrague multidisco entre la flecha derecha y la "
                    "caja del diferencial, apretado por una bomba de pistón movida por un motor eléctrico, con un par de "
                    "bloqueo proporcional a la presión de la bomba. El auto estándar usaba XDS+, que frena las ruedas "
                    "interiores. VW también menciona la dirección progresiva, una carrocería 15 mm más baja que la de los "
-                   "Golf menos potentes y la actualización de 2017 a 230 PS y 245 PS.",
+                   "Golf menos potentes. La actualización de 2017, que los aficionados llaman Mk7.5, trajo 230 PS y 245 "
+                   "PS en Europa; en Estados Unidos llegó como modelo 2018, con 220 hp.",
         "plate": [
             ("Platform", "Plataforma", "MQB", "vw-mk7"),
             ("Weight vs Mk6 (VW)", "Peso vs Mk6 (VW)", "up to 42 kg lighter", "vw-mk7"),
             ("Front lock (Performance)", "Bloqueo delantero (Performance)", "Multi-plate, pump-pressurised", "vw-mk7-chassis"),
             ("Steering", "Dirección", "2.1 turns lock to lock (2.75 on lesser Golfs)", "vw-mk7-chassis"),
+            ("Facelift (Mk7.5)", "Actualización (Mk7.5)", "2017 in Europe", "vw-mk7"),
+            ("US model year", "Año modelo en EE. UU.", "2018, 220 hp", "vw-us-2018"),
         ],
         "egg": True,
     },
@@ -372,6 +383,8 @@ VALUE_ES = {
     "Multi-plate, pump-pressurised": "Multidisco, presión por bomba",
     "2.1 turns lock to lock (2.75 on lesser Golfs)": "2.1 vueltas de tope a tope (2.75 en Golf menos potentes)",
     "7-speed DSG": "DSG de 7 velocidades",
+    "2017 in Europe": "2017 en Europa",
+    "2018, 220 hp": "2018, 220 hp",
 }
 CLUBSPORT_S = {
     "en": "In 2016 the Golf GTI Clubsport S lapped the Nürburgring Nordschleife in 7:49.21, which Volkswagen announced as "
@@ -499,8 +512,8 @@ EGG = {
     "button_es": "Levantar el cofre",
     "close_en": "Close the bonnet",
     "close_es": "Cerrar el cofre",
-    "caption_en": "A Mk7.5 Golf GTI with a Cobb Stage 2 tune and BBS wheels, in Dark Iron Blue Metallic.",
-    "caption_es": "Un Golf GTI Mk7.5 con reprogramación Cobb Stage 2 y rines BBS, en Dark Iron Blue Metallic.",
+    "caption_en": "A 2018 Mk7.5 Golf GTI with a Cobb Stage 2 tune and BBS wheels, in Dark Iron Blue Metallic.",
+    "caption_es": "Un Golf GTI Mk7.5 2018 con reprogramación Cobb Stage 2 y rines BBS, en Dark Iron Blue Metallic.",
     "alt_en": "A Mk7.5 Golf GTI with its bonnet up and the engine bay showing.",
     "alt_es": "Un Golf GTI Mk7.5 con el cofre levantado y el compartimento del motor a la vista.",
     # Maintainer decision 2026-11-15: the caption names the paint and the wheel maker; the owner is the source
