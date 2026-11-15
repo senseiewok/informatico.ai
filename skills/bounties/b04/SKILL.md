@@ -33,7 +33,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Verifier Verdict (Worked Example)**: `PASS · ZERO-REBAR + SUB-AMBIENT`
 
 ## 5. Exact T0–T3 Truth Boundary
-### Certified in Repository Today (T0/T1)
+### Verified in Repository Today (T0/T1)
 - Deterministic 3D funicular thrust and 8–13 μm radiative sky-cooling verifier in bounties/bounty_a1_graphic_statics_sky_cooling.py (< 0.05s runtime).
 - Cross-checked against Akbarzadeh et al. (2015, DOI 10.1016/j.cad.2015.01.006) and Mandal et al. (2018, DOI 10.1126/science.aat9513).
 - Ready for immediate community showcase submission to ETH Zürich COMPAS discussions and NREL EnergyPlus teaching resources.

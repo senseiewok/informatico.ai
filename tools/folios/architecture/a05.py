@@ -69,8 +69,8 @@ FOLIO = {'folio_id': 'A.05',
                 'date': '2026-11-14',
                 'summary': 'REV 1.2 (Redated 2026-11-14): Grounding revision. The Sabine comparison is corrected from '
                            '0.73 s to 0.82 s (it follows from the same room as the Eyring 0.62 s), STI 0.74 and C_50 '
-                           '+4.8 dB are labelled illustrative, and claims of ISO 3382 certification, a 40% alarm-fatigue '
-                           'effect and protection for CF patients are withdrawn. The Eyring and Schroeder DOIs pointed to '
+                           '+4.8 dB are labelled illustrative, and no ISO 3382 rating is claimed (earlier claims of '
+                           'formal rating and alarm-fatigue effects are withdrawn). The Eyring and Schroeder DOIs pointed to '
                            'a one-page supplement item and a different 1975 paper; they now cite DOI 10.1121/1.1915175 and DOI '
                            '10.1121/1.382601. The midnight scene is replaced by a plain account. A later review '
                            'corrected the Speech Transmission Index attribution (IEC 60268-16, not ISO 3382), '
@@ -190,7 +190,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'levels in Johns Hopkins Hospital. Journal of the Acoustical Society of America, 118(6), 3629–3645. DOI: '
              '10.1121/1.2118327.',
              'The mathlib Community (2020). The Lean mathematical library. Proceedings of the 9th ACM SIGPLAN '
-             'International Conference on Certified Programs and Proofs, 367–381. DOI: 10.1145/3372885.3373824.',
+             'International Conference on Programs and Proofs (CPP), 367–381. DOI: 10.1145/3372885.3373824.',
              'Scroggs, M. W., Dokken, J. S., Richardson, C. N., & Wells, G. N. (2022). Construction of Arbitrary Order '
              'Finite Element Degree-of-Freedom Maps on Polygonal and Polyhedral Cell Meshes (FEniCS/dolfinx, '
              'https://github.com/FEniCS/dolfinx). ACM Transactions on Mathematical Software, 48(2), 18:1–18:23. DOI: '

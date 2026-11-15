@@ -69,7 +69,7 @@ FOLIO = {'slug': 'b04',
                  'and statics: if every node of a spatial truss is represented by a closed '
                  'polyhedral cell whose face areas A_f are proportional to the bar forces and '
                  "whose outward normals n_f are parallel to the bars, then Minkowski's theorem (∑ "
-                 'A_f n_f = 0) guarantees exact 3D static equilibrium without solving a single '
+                 'A_f n_f = 0) maintains exact 3D static equilibrium without solving a single '
                  'matrix equation.',
  'act1_body': "At ETH Zürich's Block Research Group, Masoud Akbarzadeh, Tom Van Mele, and "
               'Philippe Block implemented Maxwell–Rankine 3D polyhedral graphic statics inside the '
@@ -206,9 +206,9 @@ FOLIO = {'slug': 'b04',
                 'ingress, and spalling, typically limiting the operational life of modern concrete '
                 'structures to under a century before major structural repairs become mandatory. '
                 'Historically, master builders from ancient Rome to nineteenth-century Catalonia '
-                'proved that unreinforced masonry and tile vaults could span grand halls for '
+                'showed that unreinforced masonry and tile vaults could span grand halls for '
                 'centuries without tensile rebar, relying entirely on funicular compression thrust '
-                'lines. However, drafting and certifying complex three-dimensional masonry '
+                'lines. However, drafting and calculating complex three-dimensional masonry '
                 'geometries once required laborious physical plaster mock-ups or conservative '
                 'empirical formulas. The one-million-dollar Holcim Awards for Sustainable Construction reward built projects, and the three-million-dollar Global Cooling Prize (2018–2021) sought a far lower-impact room air conditioner. Neither sets the criteria used here: eliminating structural tensile reinforcement while delivering sub-ambient passive daytime cooling is this folio\'s own design brief, borrowed from their ambition. Meeting this dual mandate '
                 "requires synthesizing James Clerk Maxwell's 3D polyhedral graphic statics in "
@@ -252,7 +252,7 @@ FOLIO = {'slug': 'b04',
                       'reflectance to eighty-eight percent—the level of ordinary white roofing '
                       'paint. Instantly, absorbed solar heat jumps by ninety watts, net cooling '
                       'collapses to just 8.4 watts per square meter, and sub-ambient cooling '
-                      'vanishes, proving why precision photonic selectivity is essential.',
+                      'vanishes, showing why precision photonic selectivity is essential.',
  'distill_diagram': {'analogy_title': 'Braced Stone Arch & Cold Sky Radiator',
                      'analogy_sub': 'Compression arches carry load while deep space drains midday '
                                     'heat',
@@ -279,7 +279,7 @@ FOLIO = {'slug': 'b04',
                    "closed polyhedral cells. By Minkowski's theorem, outward face area normal "
                    'vectors of closed polyhedral cells satisfy sum(A_f n_f) = 0. Because every '
                    'edge in the form diagram is perpendicular to a corresponding polygonal face in '
-                   'the force diagram, closed convex force cells guarantee exact nodal equilibrium '
+                   'the force diagram, closed convex force cells satisfy exact nodal equilibrium '
                    'with strictly positive compressive forces throughout the shell. Consequently, '
                    'the 16.0-meter vault requires 0.0 kilograms of tensile rebar. Under uniform '
                    'line load q = 8.0 kN/m and crown rise f = 2.56 meters (f/L = 0.16), horizontal '
@@ -355,7 +355,7 @@ FOLIO = {'slug': 'b04',
  'deep_es': 'El Reto B.04 resuelve la descarbonización estructural y la refrigeración pasiva '
             'mediante estática gráfica poliédrica 3D y enfriamiento radiativo diurno. En el '
             'entorno COMPAS, el equilibrio de la cáscara funicular obedece el teorema de Minkowski '
-            'sum(A_f n_f) = 0 en celdas poliédricas cerradas, garantizando compresión pura sin '
+            'sum(A_f n_f) = 0 en celdas poliédricas cerradas, asegurando compresión pura sin '
             'varillas de acero (0 kg rebar). Para un claro de 16.0 metros con peralte de 2.56 '
             'metros y carga de 8.0 kN/m, el empuje horizontal es H = qL² / (8f) = 100.0 kN. En la '
             'cubierta, el balance térmico q_net = epsilon_IR sigma T^4 − q_atm − (1 − R_sol) I_sol '
@@ -378,7 +378,7 @@ FOLIO = {'slug': 'b04',
                     'later, in 1864, physicist James Clerk Maxwell discovered that '
                     'three-dimensional truss and arch forces can be drawn as closed geometric '
                     'polyhedra: if every face of the force polyhedron closes without a gap, the 3D '
-                    'vault is guaranteed to stand in exact compression equilibrium.\n'
+                    'vault stands in exact compression equilibrium.\n'
                     '\n'
                     'While masons mastered gravity, desert builders in ancient Persia mastered the '
                     'night sky—freezing water into ice inside shallow Yakhchāl ponds even when '
@@ -420,11 +420,11 @@ FOLIO = {'slug': 'b04',
                          'title_en': 'The Inverted Chain & 3D Reciprocal Force Polyhedra',
                          'title_es': 'La Cadena Invertida y los Poliedros Recíprocos de Fuerza 3D',
                          'summary_en': 'Hooke links catenary tension to arch compression; Maxwell '
-                                       'proves closed 3D polyhedral cells (∑ A_f n_f = 0) '
-                                       'guarantee static equilibrium.',
+                                       'shows closed 3D polyhedral cells (∑ A_f n_f = 0) '
+                                       'maintain static equilibrium.',
                          'summary_es': 'Hooke une la catenaria con el arco a compresión; Maxwell '
                                        'prueba que celdas poliédricas cerradas (∑ A_f n_f = 0) '
-                                       'garantizan equilibrio 3D.',
+                                       'mantienen equilibrio 3D.',
                          'roadblock_en': 'Constructing closed 3D reciprocal polyhedra for complex '
                                          'spatial shells is nearly impossible by hand drafting.',
                          'roadblock_es': 'Construir poliedros recíprocos 3D cerrados para cáscaras '
@@ -435,10 +435,10 @@ FOLIO = {'slug': 'b04',
                          'title_en': 'Catalan Tile Vaulting & The Safe Plastic Theorem',
                          'title_es': 'Bóvedas Tabicadas y el Teorema Plástico Seguro',
                          'summary_en': 'Guastavino spans grand halls with thin interlocking '
-                                       'terracotta tiles; Heyman proves masonry stands if a thrust '
+                                       'terracotta tiles; Heyman shows masonry stands if a thrust '
                                        'surface fits inside the section.',
                          'summary_es': 'Guastavino cubre grandes claros con bóvedas tabicadas; '
-                                       'Heyman demuestra que la mampostería es estable si la línea '
+                                       'Heyman muestra que la mampostería es estable si la línea '
                                        'de empuje cabe en la sección.',
                          'roadblock_en': '20th-century building codes favor flat steel-reinforced '
                                          'slabs, sidelining unreinforced masonry shells.',
@@ -452,7 +452,7 @@ FOLIO = {'slug': 'b04',
                          'summary_en': 'Demonstrates a photonic multilayer roof that cools 4.9 °C '
                                        'below ambient air under direct sunlight by radiating '
                                        'through the 8–13 μm window.',
-                         'summary_es': 'Demuestra un recubrimiento fotónico que enfría 4.9 °C bajo '
+                         'summary_es': 'Desarrolla un recubrimiento fotónico que enfría 4.9 °C bajo '
                                        'el aire ambiente a pleno sol irradiando por la ventana de '
                                        '8–13 μm.',
                          'roadblock_en': 'Vacuum-deposited hafnium/silica photonic mirrors are too '
@@ -515,7 +515,7 @@ FOLIO = {'slug': 'b04',
                     'representa mediante una celda poliédrica cerrada cuyas áreas de cara A_f son '
                     'proporcionales a las fuerzas en las barras y cuyas normales exteriores n_f '
                     'son paralelas a dichas barras, entonces el teorema de Minkowski (∑ A_f n_f = '
-                    '0) garantiza el equilibrio estático tridimensional exacto sin resolver una '
+                    '0) mantiene el equilibrio estático tridimensional exacto sin resolver una '
                     'sola ecuación matricial.',
  'act1_body_es': 'En el Block Research Group de ETH Zürich, Masoud Akbarzadeh, Tom Van Mele y '
                  'Philippe Block implementaron la estática gráfica poliédrica 3D de '
@@ -534,7 +534,7 @@ FOLIO = {'slug': 'b04',
                    'vulnerable a la corrosión.\n'
                    '\n'
                    'Históricamente, los maestros constructores desde Roma hasta Cataluña y México '
-                   'demostraron que las bóvedas de piedra y tabique podían cubrir grandes salones '
+                   'mostraron que las bóvedas de piedra y tabique podían cubrir grandes salones '
                    'durante siglos sin acero de refuerzo, apoyándose en líneas de empuje '
                    'funiculares en compresión pura. Los premios Holcim ($1M) reconocen proyectos construidos y el Global Cooling Prize ($3M, 2018–2021) buscó un aire acondicionado de mucho menor impacto. Ninguno fija los criterios usados aquí: eliminar el acero estructural y lograr enfriamiento pasivo bajo el ambiente a pleno sol es el encargo de diseño propio de este folio. Al unir los poliedros de fuerza 3D de Maxwell en '
                    'COMPAS con polímeros fotónicos nanoporosos, estas bóvedas cubren 16 metros con '
@@ -577,7 +577,7 @@ FOLIO = {'slug': 'b04',
                          'el ambiente. Finalmente, pulsa el botón [⚡ Counterfactual '
                          'Axiom-Knockout]: esto reduce la reflectancia a 0.88 (el nivel de una '
                          'pintura blanca común), haciendo que el calor solar absorbido suba a 120 '
-                         'W/m², desplomando el enfriamiento neto a 8.4 W/m² y demostrando por qué '
+                         'W/m², desplomando el enfriamiento neto a 8.4 W/m² y mostrando por qué '
                          'el albedo fotónico ≥ 0.952 es indispensable.',
  'act2_deepening_es': 'La física del Reto B.04 une el equilibrio poliédrico recíproco con la '
                       'radiación térmica de Planck a través de la ventana de transparencia '
@@ -585,7 +585,7 @@ FOLIO = {'slug': 'b04',
                       'Maxwell–Rankine modela la bóveda mediante dos redes duales recíprocas: el '
                       'diagrama de forma y el diagrama de fuerzas compuesto por celdas poliédricas '
                       'cerradas. Por el teorema de Minkowski, los vectores normales ponderados por '
-                      'área de cualquier poliedro cerrado satisfacen ∑ A_f n_f = 0, garantizando '
+                      'área de cualquier poliedro cerrado satisfacen ∑ A_f n_f = 0, asegurando '
                       'compresión pura en toda la cáscara con 0.0 kg de acero de refuerzo. Con '
                       'claro L = 16.0 m, carga lineal q = 8.0 kN/m y flecha f = 2.56 m (f/L = '
                       '0.16), el empuje horizontal analítico es H = qL² / (8f) = 100.0 kN. En la '
@@ -661,5 +661,5 @@ FOLIO = {'slug': 'b04',
                         'Listo para envío inmediato a los foros de COMPAS en ETH Zürich y recursos '
                         'docentes de NREL EnergyPlus.'],
  't2_t3_open_horizon_es': ['Premios Holcim ($1M) y Global Cooling Prize ($3M, cerrado en 2021): cualquier afirmación real requeriría un proyecto arquitectónico comisionado o un prototipo exterior '
-                           'instrumentado que demuestre intemperismo anual y control de '
+                           'instrumentado que evalúe intemperismo anual y control de '
                            'condensación higrométrica.']}

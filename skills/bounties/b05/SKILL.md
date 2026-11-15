@@ -33,7 +33,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Symbolic Discovery Gate**: `PASS · EXACT PDE RECOVERED`
 
 ## 5. Exact T0–T3 Truth Boundary
-### Certified in Repository Today (T0/T1)
+### Verified in Repository Today (T0/T1)
 - Deterministic STLSQ operator pruning and PySR Pareto MDL verifier in bounties/bounty_p2_pysr_pysindy_pde_discovery.py (< 0.05s runtime).
 - Cross-checked against Brunton, Proctor & Kutz (2016, DOI 10.1073/pnas.1517384113), de Silva et al. (2020, DOI 10.21105/joss.02104), and Burns et al. (2020, DOI 10.1103/PhysRevResearch.2.023068).
 - Mounted live on Informatico.ai's Cover, Physics Hub, and Math Hub via src/modules/physics-discovery-crucible.mjs.
