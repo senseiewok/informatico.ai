@@ -883,7 +883,7 @@ def render_inline_distillation_svg(fid: str, slug: str, folio: dict, lf: dict) -
               <p class="tp-distill-kicker" data-en="3 · CRITICAL TIPPING POINT" data-es="3 · UMBRAL CRÍTICO DE FASE">3 · CRITICAL TIPPING POINT</p>
               <h4 class="tp-distill-title">{th_title}</h4>
               <div class="tp-distill-sub tp-distill-sub--ok">
-                <p class="tp-distill-kicker">&#10003; STABLE / BENCHMARK REGIME</p>
+                <p class="tp-distill-kicker">&#10003; STABLE / NOMINAL REGIME</p>
                 <p class="tp-distill-text">{tp_s1} {tp_s2}</p>
               </div>
               <div class="tp-distill-sub tp-distill-sub--bad">
@@ -1126,7 +1126,7 @@ def render_multi_chapter_monograph_sections(
                 <strong>Secondary Coupling &amp; Regime Boundary ({sn2_kicker}):</strong> {linkify_citations(esc(sn2_body_c))}
               </p>
               <p>
-                <strong>Mathematical &amp; Physical Necessity of the Full Operator:</strong> Testing a theorem or physical law by knocking out its core hypothesis is one of the sharpest ways a human mind builds intuition. This counterfactual analysis illustrates <em>why</em> every coupling term in <code>{gov_law}</code> is indispensable: When the primary control parameter is dragged to its degenerate boundary in the Act III observatory below, the stabilizing restorative term vanishes, reproducing the exact classical collapse predicted by theory and showing that our solver is a genuine physical/mathematical engine rather than a static animation.
+                <strong>Mathematical &amp; Physical Necessity of the Full Operator:</strong> Testing a theorem or physical law by knocking out its core hypothesis is one of the sharpest ways a human mind builds intuition. This counterfactual analysis shows <em>why</em> every coupling term in <code>{gov_law}</code> is indispensable: When the primary control parameter is dragged to its degenerate boundary in the Act III observatory below, the stabilizing restorative term vanishes, reproducing the classical collapse predicted by theory and illustrating that our solver is an interactive computational model rather than a static animation.
               </p>
             </div>
           </article>

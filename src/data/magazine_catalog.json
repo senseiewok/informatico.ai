@@ -1411,7 +1411,7 @@
           "body": "Coal and hydro turbines steadied the 60 Hz grid with spinning steel. Solar panels have no moving parts, so grid-forming inverters are programmed to behave like a rotating machine and to fall into step with their neighbours, much as fireflies along a riverbank come to flash together. The network that such inverters would sit in can be described in the open-source toolbox PyPSA/PyPSA; the swing dynamics on this page are the folio's own reduced model."
         },
         "sidenote_2": {
-          "kicker": "SIDENOTE E.12-B · VERIFIED HARDWARE · WHAT HAS BEEN PROVED SO FAR",
+          "kicker": "SIDENOTE E.12-B · VERIFIED HARDWARE · HARDWARE CHECKED SO FAR",
           "body": "Kami (Choi et al. 2017, DOI 10.1145/3110268) is a library for the Coq proof assistant, now named Rocq, for specifying and verifying hardware; its case study covers multicore systems with pipelined cores implementing the base integer subset of RISC-V. Erbsen et al. (2021, DOI 10.1145/3453483.3454065) report a simple embedded system whose application software, device drivers, compiler and RISC-V processor are one object in Coq with a machine-checked proof of functional correctness. Neither is a grid relay. A verified protection processor is the open step this folio argues for."
         },
         "skill": {
