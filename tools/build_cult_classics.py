@@ -496,10 +496,16 @@ def render_egg(is_es: bool) -> str:
               {car}
               <span class="cc-egg-copy">{bi("span", hint_en, hint_es, "cc-egg-hint")}{bi("span", e["button_en"], e["button_es"], "cc-egg-label")}</span>
             </button>
-            <figure class="cc-egg-panel" id="cc-egg-panel" hidden>
-              <img src="../../{e['image']}" width="{e['width']}" height="{e['height']}" loading="lazy" decoding="async" alt="{a(e['alt_es'] if is_es else e['alt_en'])}">
-              <figcaption>{egg_caption(is_es)}</figcaption>
-            </figure>
+            <div class="cc-egg-panel" id="cc-egg-panel" hidden>
+              <figure class="cc-egg-photo">
+                <img src="../../{e['image']}" width="{e['width']}" height="{e['height']}" loading="lazy" decoding="async" alt="{a(e['alt_es'] if is_es else e['alt_en'])}">
+                <figcaption>{egg_caption(is_es)}</figcaption>
+              </figure>
+              <figure class="cc-egg-photo">
+                <img src="../../{C.EGG_SIDE['image']}" width="{C.EGG_SIDE['width']}" height="{C.EGG_SIDE['height']}" loading="lazy" decoding="async" alt="{a(C.EGG_SIDE['alt_es'] if is_es else C.EGG_SIDE['alt_en'])}">
+                {bi("figcaption", C.EGG_SIDE["caption_en"], C.EGG_SIDE["caption_es"])}
+              </figure>
+            </div>
           </div>
 """
 

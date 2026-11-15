@@ -433,7 +433,10 @@ li.cc-ghost-nolen .cc-ghost-key { background: transparent !important; color: var
 .cc-egg-copy { display: grid; gap: 0.15rem; }
 .cc-egg-hint { font-size: 0.8rem; color: var(--tp-slate); font-style: italic; }
 .cc-egg-label { font-family: var(--tp-font-mono); font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cc-red); font-weight: 600; }
-.cc-egg-panel { position: relative; margin: 0.9rem 0 0; max-width: 40rem; overflow: hidden; border-radius: 6px; }
+.cc-egg-panel { position: relative; margin: 0.9rem 0 0; max-width: 64rem; overflow: hidden; border-radius: 6px; }
+.cc-egg-panel:not([hidden]) { display: grid; gap: 0.9rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 46rem) { .cc-egg-panel:not([hidden]) { grid-template-columns: 1fr 1.25fr; align-items: end; } }
+.cc-egg-photo { margin: 0; overflow: hidden; border-radius: 6px; }
 .cc-egg-panel img { display: block; width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--cc-rule); }
 .cc-egg-panel figcaption { font-size: 0.9rem; color: var(--tp-graphite); margin-top: 0.5rem; }
 .cc-egg.is-open .cc-egg-panel { animation: cc-egg-reveal 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.25s both; }

@@ -97,8 +97,8 @@ class CultClassicPages(unittest.TestCase):
             self.assertIsNone(owner.search(C.EGG[key]), key)
         for page in (EN, ES):
             self.assertIn('<a href="https://www.bbs.com/" rel="noopener noreferrer">BBS</a>', page.read_text(encoding="utf-8"))
-        # Only one photograph ships with the feature.
-        self.assertEqual(sorted(p.name for p in PHOTO.parent.iterdir()), [PHOTO.name])
+        # Two photographs ship with the feature (maintainer, 2026-11-15): hood-up and side-on track.
+        self.assertEqual(sorted(p.name for p in PHOTO.parent.iterdir()), sorted([PHOTO.name, Path(C.EGG_SIDE['image']).name]))
 
     def test_lap_arithmetic_in_the_copy_follows_from_the_table(self):
         secs = {car: s for _g, car, _y, _ps, _ts, s, *_rest in C.LAPS}
@@ -117,7 +117,8 @@ class CultClassicPages(unittest.TestCase):
             self.assertIn(f">{ts}<", EN.read_text(encoding="utf-8"))
 
     def test_photo_carries_no_metadata(self):
-        data = PHOTO.read_bytes()
+      for photo in (PHOTO, SRC / C.EGG_SIDE['image']):
+        data = photo.read_bytes()
         self.assertTrue(data.startswith(b"\xff\xd8"), "not a JPEG")
         for marker in (b"Exif\x00\x00", b"http://ns.adobe.com/xap", b"ICC_PROFILE", b"GPS"):
             self.assertNotIn(marker, data[:65536], f"photo carries {marker!r}")
