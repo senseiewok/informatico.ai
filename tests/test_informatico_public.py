@@ -19,7 +19,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_all_48_skills_and_python_verifiers_exist_and_pass(self) -> None:
         skill_files = list(SKILLS.glob("*/*/SKILL.md"))
         py_files = list(SKILLS.glob("*/*/verify_*.py"))
-        self.assertEqual(len(skill_files), 84)
+        self.assertEqual(len(skill_files), 85)  # + skills/classics/cc01 (2026-11-15)
         self.assertGreaterEqual(len(py_files), 1)
         for py in py_files:  # a verifier that cannot fail is not a verifier
             self.assertIn("--planted-defect", py.read_text(encoding="utf-8"), py.name)
@@ -45,14 +45,14 @@ class PublicInformaticoRepoTests(unittest.TestCase):
         self.assertTrue((RESEARCH / "es-mx" / "about" / "index.html").is_file())
         hub_html = (RESEARCH / "index.html").read_text(encoding="utf-8")
         self.assertIn('id="tp-bounty-crucible"', hub_html)
-        self.assertIn('id="tp-symbolic-physics-lab"', hub_html)
-        self.assertIn('id="tp-oss-physics-radar"', hub_html)
         self.assertIn("https://github.com/senseiewok/informatico.ai", hub_html)
-        self.assertIn("https://github.com/HEPLean/PhysLean", hub_html)
-        self.assertIn("https://github.com/MilesCranmer/PySR", hub_html)
-        self.assertIn("https://github.com/dynamicslab/pysindy", hub_html)
-        self.assertIn("https://github.com/DedalusProject/dedalus", hub_html)
-        self.assertIn("https://github.com/itensor/ITensors.jl", hub_html)
+        # 2026-11-15 homepage rebalance: the Symbolic Physics Lab and the OSS Physics Radar live on /physics/ and
+        # /math/ (asserted below), not on the cover; their engine links are checked on /physics/.
+        self.assertNotIn('id="tp-symbolic-physics-lab"', hub_html)
+        self.assertNotIn('id="tp-oss-physics-radar"', hub_html)
+        phys_html = (RESEARCH / "physics" / "index.html").read_text(encoding="utf-8")
+        for repo in ("HEPLean/PhysLean", "MilesCranmer/PySR", "dynamicslab/pysindy", "DedalusProject/dedalus", "itensor/ITensors.jl"):
+            self.assertIn(f"https://github.com/{repo}", phys_html)
         self.assertIn('class="tp-cover-track-strip"', hub_html)
         self.assertTrue((RESEARCH / "bounties" / "index.html").is_file())
         self.assertTrue((RESEARCH / "es-mx" / "bounties" / "index.html").is_file())

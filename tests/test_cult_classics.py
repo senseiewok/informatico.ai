@@ -49,6 +49,12 @@ class Visible(HTMLParser):
             self.text.append(data)
 
 
+def parse_text(html: str) -> list[str]:
+    v = Visible()
+    v.feed(html)
+    return v.text
+
+
 def parse(path: Path) -> Visible:
     v = Visible()
     v.feed(path.read_text(encoding="utf-8"))
@@ -161,6 +167,41 @@ class CultClassicPages(unittest.TestCase):
         js = JS.read_text(encoding="utf-8")
         for bad in ("innerHTML", "outerHTML", "insertAdjacentHTML", ".style.", "eval(", "new Function"):
             self.assertNotIn(bad, js, bad)
+
+    def test_mechanics_lab_verifier_passes_and_every_knockout_fails(self):
+        import subprocess
+        verify = ROOT / "skills" / "classics" / "cc01" / "verify_cc01_mechanics.py"
+        self.assertTrue((verify.parent / "SKILL.md").is_file())
+        ok = subprocess.run([sys.executable, "-X", "utf8", str(verify)], capture_output=True, text=True, encoding="utf-8", timeout=60)
+        self.assertEqual(ok.returncode, 0, ok.stdout + ok.stderr)
+        self.assertIn('"status": "PASS"', ok.stdout)
+        for variant in ("", "=open-factor", "=config", "=swap-k"):
+            bad = subprocess.run([sys.executable, "-X", "utf8", str(verify), "--planted-defect" + variant],
+                                 capture_output=True, text=True, encoding="utf-8", timeout=60)
+            self.assertNotEqual(bad.returncode, 0, f"knockout {variant or 'lsd-direction'} passed")
+
+    def test_lab_labels_model_values_and_cites_its_physics(self):
+        txt = EN.read_text(encoding="utf-8")
+        self.assertIn('id="part-6"', txt)
+        self.assertIn("Inputs (MODEL)", txt)
+        for key in ("scamarcio2023", "micromachines2026", "ahmadian2000", "kakalis2008"):
+            self.assertIn(f'href="#src-{key}"', txt)
+        self.assertEqual(txt.count('data-lap-kmh="'), 4)  # only rows with a stated track length
+        self.assertEqual(txt.count("cc-ghost-nolen"), 8)  # 4 hollow dots + 4 hollow legend keys
+
+    def test_both_languages_print_the_same_figures(self):
+        """Every number with a unit (PS, Nm, km/h, Hz, kg, mm, s, lap times) appears in both languages."""
+        unit = re.compile(r"\b\d[\d,.]*\s?(?:PS|Nm|km/h|Hz|kg|mm|N/m)\b|\b\d:\d\d(?:\.\d\d)?\b")
+
+        def figures(page: Path) -> set[str]:
+            html = page.read_text(encoding="utf-8")
+            body = html[html.index('<article class="cc-feature"'):html.index('id="sources"')]
+            text = " ".join(parse_text(body))
+            return {re.sub(r"\s", "", m) for m in unit.findall(text)}
+
+        en, es = figures(EN), figures(ES)
+        self.assertEqual(en - es, set(), "figures only in English")
+        self.assertEqual(es - en, set(), "figures only in Spanish")
 
     def test_sitemap_and_llms_list_the_feature(self):
         xml = (SRC / "sitemap.xml").read_text(encoding="utf-8")

@@ -155,50 +155,56 @@ function initDiff() {
   const slip = bench.querySelectorAll(".cc-slip path");
   const caliper = bench.querySelector(".cc-caliper");
   const plates = bench.querySelectorAll(".cc-plate-disc");
-  const GRIP = 0.35; // share of full throttle the unloaded inside tyre can take before it spins (illustrative)
+  // Same model as tools/folios/classics/cc01_mechanics.py (inputs come from the page; MODEL values except the lock).
+  const d = bench.dataset;
+  const P = { r: +d.r, mu: +d.mu, nin: +d.nin, nout: +d.nout, brake: +d.brake, lock: +d.lock, demand: +d.demand };
+  const gIn = P.mu * P.nin * P.r;
+  const gOut = P.mu * P.nout * P.r;
+  const split = (T, mode) => {
+    const half = T / 2;
+    let rin, rout, brake = 0;
+    if (mode === "open") {
+      rin = rout = Math.min(half, gIn);
+    } else if (mode === "xds") {
+      const side = Math.min(half, gIn + P.brake, gOut);
+      brake = Math.max(0, side - gIn);
+      rin = side - brake;
+      rout = side;
+    } else {
+      rin = Math.min(half, gIn);
+      const transfer = Math.min(Math.max(0, T - 2 * rin), P.lock, gOut - rin);
+      rout = rin + Math.max(0, transfer);
+    }
+    return { rin, rout, brake, road: rin + rout, spinning: half > gIn + 1e-9 };
+  };
+  const nm = (x) => `${Math.round(x).toLocaleString("en-US")} Nm`;
+  const SCALE = 80 / (P.demand / 2); // arrow pixels per newton-metre
 
   const update = () => {
     const mode = (bench.querySelector("input[name=cc-diff-mode]:checked") || {}).value || "open";
     const th = Number(range.value) / 100;
-    const excess = Math.max(0, th - GRIP);
-    let spin = excess / (1 - GRIP);
-    let inside = Math.min(th, GRIP);
-    let outside = inside;
-    let brake = 0;
-    let squeeze = 0;
-    if (mode === "xds" && spin > 0) {
-      brake = spin;
-      spin *= 0.4;
-      outside = inside + excess * 0.55;
-    } else if (mode === "lock") {
-      squeeze = th;
-      spin *= 0.15;
-      outside = inside + excess * 0.85;
-    }
-    tIn.setAttribute("x2", String(150 - 10 - inside * 80));
-    tOut.setAttribute("x2", String(210 + 10 + outside * 80));
-    slip.forEach((p, i) => p.setAttribute("opacity", String(Math.min(1, spin * (i ? 0.7 : 1.2)))));
-    caliper.setAttribute("opacity", String(brake > 0 ? 0.35 + 0.65 * brake : 0));
+    const T = th * P.demand;
+    const s = split(T, mode);
+    const unused = Math.max(0, T - s.road - s.brake);
+    const spin = T > 0 ? Math.min(1, unused / (T / 2)) : 0;
+    tIn.setAttribute("x2", String(150 - 10 - s.rin * SCALE));
+    tOut.setAttribute("x2", String(210 + 10 + s.rout * SCALE));
+    slip.forEach((p, i) => p.setAttribute("opacity", String(Math.min(1, spin * (i ? 0.9 : 1.4)))));
+    caliper.setAttribute("opacity", String(s.brake > 0 ? 0.35 + 0.65 * (s.brake / P.brake) : 0));
+    const squeeze = mode === "lock" ? th : 0;
     plates.forEach((p) => {
       const i = Number(p.dataset.i);
       p.setAttribute("transform", `translate(${(-(i - 2) * 2.2 * squeeze).toFixed(2)} 0)`);
     });
 
     let msg;
-    if (th === 0) {
+    if (T === 0) {
       msg = L("Throttle closed: both wheels grip.", "Acelerador cerrado: las dos ruedas agarran.");
-    } else if (spin === 0 && excess === 0) {
-      msg = L("Light throttle: both tyres take the torque, the inside one is close to its limit.",
-              "Poco acelerador: las dos llantas toman el par; la interior está cerca de su límite.");
-    } else if (mode === "open") {
-      msg = L("Open: the light inside wheel spins, and both sides get only what that wheel can hold.",
-              "Abierto: la rueda interior ligera patina y los dos lados reciben solo lo que esa rueda aguanta.");
-    } else if (mode === "xds") {
-      msg = L("XDS+: a brake pulse slows the spinning inside wheel, so the differential can push more torque outside.",
-              "XDS+: un pulso de freno frena la rueda interior que patina, y el diferencial puede mandar más par afuera.");
     } else {
-      msg = L("Clutch-pack lock: pump pressure squeezes the plates and torque moves from the faster inside wheel to the outside.",
-              "Bloqueo por embragues: la presión de la bomba aprieta los discos y el par pasa de la rueda interior, más rápida, a la exterior.");
+      msg = L(`Demand ${nm(T)} · inside ${nm(s.rin)} · outside ${nm(s.rout)}` + (s.brake ? ` · brake ${nm(s.brake)}` : "") +
+              ` · to the road ${nm(s.road)}` + (s.spinning ? " · inside wheel at its grip limit." : "."),
+              `Pedido ${nm(T)} · interior ${nm(s.rin)} · exterior ${nm(s.rout)}` + (s.brake ? ` · freno ${nm(s.brake)}` : "") +
+              ` · al camino ${nm(s.road)}` + (s.spinning ? " · rueda interior en su límite de agarre." : "."));
     }
     readout.textContent = msg;
     range.setAttribute("aria-valuetext", `${Math.round(th * 100)}%`); // the live readout says the rest
@@ -295,27 +301,58 @@ function initEgg() {
   const btn = document.querySelector(".cc-egg-btn");
   const panel = document.getElementById("cc-egg-panel");
   if (!btn || !panel) return;
-  btn.addEventListener("click", () => {
-    const open = panel.hidden;
+  const egg = btn.closest(".cc-egg");
+  const label = btn.querySelector(".cc-egg-label");
+  const setOpen = (open) => {
     panel.hidden = !open;
+    egg.classList.toggle("is-open", open);
     btn.setAttribute("aria-expanded", String(open));
-    btn.textContent = open ? btn.dataset.labelClose : btn.dataset.labelOpen;
-  });
+    if (label) label.textContent = open ? btn.dataset.labelClose : btn.dataset.labelOpen;
+    if (open && !reduceMotion.matches) panel.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  };
+  btn.addEventListener("click", () => setOpen(panel.hidden));
   document.addEventListener("keydown", (e) => {
     // Leave Escape to an open dialog (e.g. Contents) and to focus elsewhere on the page.
     if (e.defaultPrevented || document.querySelector("dialog[open]")) return;
     if (!btn.closest(".cc-egg").contains(document.activeElement)) return;
     if (e.key === "Escape" && !panel.hidden) {
-      panel.hidden = true;
-      btn.setAttribute("aria-expanded", "false");
-      btn.textContent = btn.dataset.labelOpen;
+      setOpen(false);
       btn.focus();
     }
   });
 }
 
+// ---------------------------------------------------------------- quarter car: two natural frequencies
+function initQuarterCar() {
+  const box = document.querySelector("[data-cc-qc]");
+  if (!box) return;
+  const range = box.querySelector("#cc-qc-range");
+  const ms = +box.dataset.ms, ks = +box.dataset.ks, kt = +box.dataset.kt;
+  const muOut = box.querySelector(".cc-qc-mu");
+  const bodyOut = box.querySelector(".cc-qc-body-hz");
+  const hopOut = box.querySelector(".cc-qc-hop-hz");
+  const wheel = box.querySelector(".cc-qc-wheel");
+  const hz = (mu) => {
+    const a = ms * mu, b = -(ms * (ks + kt) + mu * ks), c = ks * kt;
+    const disc = Math.sqrt(b * b - 4 * a * c);
+    return [Math.sqrt((-b - disc) / (2 * a)) / (2 * Math.PI), Math.sqrt((-b + disc) / (2 * a)) / (2 * Math.PI)];
+  };
+  const update = () => {
+    const mu = Number(range.value);
+    const [fb, fh] = hz(mu);
+    muOut.textContent = `${mu} kg`;
+    bodyOut.textContent = `${fb.toFixed(2)} Hz`;
+    hopOut.textContent = `${fh.toFixed(1)} Hz`;
+    wheel.setAttribute("height", String(24 + (mu - 30) * 0.8));
+    range.setAttribute("aria-valuetext", `${mu} kg`);
+  };
+  range.addEventListener("input", update);
+  update();
+}
+
 initPause();
 initParade();
+initQuarterCar();
 initTrack();
 initRace();
 initDiff();
