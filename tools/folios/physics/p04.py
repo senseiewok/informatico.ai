@@ -267,10 +267,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'controls to observe electro-osmotic coupling across the epithelium.'],
  'act4_title': 'Act IV — Human + AI Co-Design & the Structural & Civil Engineering Specification '
                'Bridge',
- 'act4_human_ai': 'Coupled Nernst–Planck + Rubinstein–Boucher two-gel osmotic solvers predict the '
-                  'exact threshold of CFTR functional rescue (~15–20% of wild-type Cl- '
-                  'transport) needed to keep Pi_mucus below the 3.0 kPa brush '
-                  'collapse line. Differentiable Poisson–Boltzmann and coarse-grained '
+ 'act4_human_ai': 'In this folio, a coupled Nernst–Planck + Rubinstein–Boucher two-gel osmotic '
+                  'teaching model shows how a change in chloride transport moves Pi_mucus '
+                  'relative to the model\'s 3.0 kPa brush collapse line; the line is a model '
+                  'value, not a clinical threshold. Differentiable Poisson–Boltzmann and coarse-grained '
                   'polyelectrolyte molecular dynamics in jax-md/jax-md '
                   '(https://github.com/jax-md/jax-md, DOI 10.1088/1742-5468/ac3ae9) coupled with '
                   'equivariant electrostatic potentials in facebookresearch/fairchem (DOI '

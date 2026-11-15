@@ -12,19 +12,20 @@ FOLIO = {'folio_id': 'A.07',
  'category_code': 'A',
  'title': "Luis Barragán's Chromatic Tectonics, Kubelka–Munk Pigment Radiosity & Emotional Spatial "
           'Wavefields',
- 'subtitle': 'How Luis Barragán, Chucho Reyes Ferreira, and Josef Albers transformed raw mineral '
-             'pigments (Rosa Mexicano, Cobalt Ultramarine, Cadmium Ochre) and Mexican sunlight '
-             'into living electromagnetic wave cavities.',
+ 'subtitle': 'How Luis Barragán, with his friend Chucho Reyes Ferreira, worked with saturated '
+             'color (Rosa Mexicano, cobalt blue, ochre) and Mexican sunlight, and how Josef Albers '
+             'taught color relativity—read here through a simple model of pigment scattering and '
+             'inter-reflection.',
  'date_published': '2026-11-02',
- 'date_redated': '2026-11-02',
- 'current_edition': 'REV 1.0',
- 'status_badge': 'CHROMATIC ARCHITECTURE · REV 1.0',
+ 'date_redated': '2026-11-14',
+ 'current_edition': 'REV 1.1',
+ 'status_badge': 'CHROMATIC ARCHITECTURE · REV 1.1',
  'primary_kernel': 'tools/tectonic_verify.py',
  'governing_law': 'K/S = (1 − R_∞)² / (2 R_∞) · B(x,λ) = E(x,λ) + ρ(x,λ) ∫ B(y,λ) F(x,y) dA_y · '
                   'CSI 09 24 00',
  'colophon': {'identifier': 'A.07 · Barragán Chromatic Tectonics & Radiosity · CSI 09 24 00',
               'kernels': 'Kubelka–Munk Two-Flux Pigment Law · Fredholm Spectral Radiosity',
-              'benchmarks': 'Casa Gilardi (1976) · Torres de Satélite (1957) · R_∞ = 0.391',
+              'benchmarks': 'Model values: R_∞ = 0.389 at K/S = 0.48 · +31.1% bounce gain at F_12 = 0.61 (illustrative)',
               'bridge': 'Barragán Mineral Stucco Radiosity ↔ P.08 Thin-Film Car Paint & M.08 Color '
                         'Geodesics'},
  'sliders': [{'label': 'Incident Solar Elevation (θ_sun)',
@@ -36,40 +37,40 @@ FOLIO = {'folio_id': 'A.07',
              {'label': 'Kubelka–Munk Pigment Ratio (K/S)',
               'min': 0.05,
               'max': 2.5,
-              'step': 0.05,
+              'step': 0.01,
               'value': 0.48,
               'unit': 'K/S = '}],
  'steps': ['Stage 1 (Golden Corridor Spectral Filtering, λ ≈ 582 nm): Sunlight entering Casa '
-           "Gilardi's yellow-glazed hall strips short-wave blue light, pre-warming the spectral "
-           'power distribution.',
-           'Stage 2 (Kubelka–Munk Mineral Lime Scattering): Unpolished volcanic-sand lime stucco '
-           'with K/S = 0.48 yields diffuse reflectance R_∞ = 1 + K/S − √((K/S)² + 2 K/S) = 0.391 '
-           'with zero specular glare.',
-           'Stage 3 (Fredholm Wall-to-Water Chromatic Radiosity): Multi-bounce inter-reflection '
-           'between the Rosa Mexicano pier (615 nm) and Cobalt pool (465 nm) amplifies ambient '
-           'chroma by +31.4%.',
-           'Stage 4 (Torres de Satélite Highway Parallax & Albers Contrast): Monumental 52 m '
-           'striated concrete prisms shift apparent hue saturation across automotive viewing '
-           'velocities.'],
- 'readouts': [{'label': 'Kubelka–Munk Reflectance (R_∞)', 'value': '0.391 (at K/S = 0.48)'},
-              {'label': 'Inter-Reflected Chroma Gain', 'value': '+31.4% (Fredholm Cavity)'},
-              {'label': 'Dominant Wavelength Pair', 'value': '615 nm Rosa · 465 nm Cobalt'},
-              {'label': 'Tectonic Light Verdict', 'value': 'LAMBERTIAN SERENITY · PASS'}],
+           "Gilardi's yellow-glazed corridor loses much of its short-wave blue light, warming the "
+           'light that reaches the room (582 nm is an illustrative dominant wavelength).',
+           'Stage 2 (Kubelka–Munk Lime Scattering): For an assumed K/S = 0.48, the infinite-thickness '
+           'diffuse reflectance is R_∞ = 1 + K/S − √((K/S)² + 2 K/S) = 1.48 − 1.091 = 0.389; the '
+           'surface is assumed matte (Lambertian).',
+           'Stage 3 (Wall-to-Water Inter-Reflection): In a simplified one-bounce-series model, the '
+           'gain 1 / (1 − R_∞ F_12) = 1 / (1 − 0.389 × 0.61) gives +31.1% for an assumed view factor F_12 = 0.61; '
+           'it is an illustrative model value, not a measured change in color.',
+           'Stage 4 (Torres de Satélite Highway Parallax & Albers Contrast): The towers, the tallest '
+           'about 52 m high, were designed to be seen from cars on the highway, so their silhouettes '
+           'shift as viewers move.'],
+ 'readouts': [{'label': 'Kubelka–Munk Reflectance (R_∞, Model)', 'value': '0.389 (at K/S = 0.48)'},
+              {'label': 'Inter-Reflection Gain (Illustrative)', 'value': '+31.1% (assumed F_12 = 0.61)'},
+              {'label': 'Dominant Wavelength Pair (Illustrative)', 'value': '615 nm Rosa · 465 nm Cobalt'},
+              {'label': 'Surface Assumption (Model)', 'value': 'LAMBERTIAN SURFACES ASSUMED'}],
  'spec_plate': {'division': 'CSI MASTERFORMAT 09 24 00 / 09 91 00',
                 'title': 'Artisanal Volcanic-Sand Slaked Lime Stucco & Mineral Oxide / Cochineal '
                          'Wash',
                 'body': 'Three-coat hand-troweled slaked calcium-hydroxide lime plaster (Ca(OH)2 '
                         'carbonating to calcite CaCO3) with coarse volcanic tezontle/basalt '
                         'aggregate and UV-stable inorganic mineral oxide & ultramarine pigments.',
-                'meta': 'Kubelka–Munk K/S calibrated · Zero-gloss Lambertian matte (85° sheen < 2 '
-                        'GU)'},
+                'meta': 'Design proposal · K/S = 0.48 and 85° gloss < 2 GU are targets, not '
+                        'measurements'},
  'sidenote_1': {'kicker': 'SIDENOTE A.07-A · BARRAGÁN, CHUCHO REYES & THE AUTOMOBILE AT TORRES DE '
                           'SATÉLITE',
-                'body': "Before painting a full-scale wall, Luis Barragán and Jesús 'Chucho' Reyes "
-                        'Ferreira tested gouache-on-cardboard panels directly in Mexican sunlight. '
-                        'At Torres de Satélite (1957, with Mathias Goeritz), they scaled those '
-                        'planes to 52 meters specifically to be read from a moving car at 80 '
-                        'km/h.'},
+                'body': "The painter and collector Jesús 'Chucho' Reyes Ferreira was a close friend of "
+                        'Luis Barragán and is often credited with influencing his use of color. Torres '
+                        'de Satélite (1957–58), designed by Barragán and Mathias Goeritz, stands '
+                        'beside a highway and was meant to be seen from moving cars; the tallest '
+                        'tower is about 52 meters.'},
  'sidenote_2': {'kicker': 'SIDENOTE A.07-B · SPECIFICATION PLATE · CSI 09 24 00 / KUBELKA–MUNK '
                           'OPTICS',
                 'body': 'Unlike synthetic acrylic film paints that form a specular plastic skin, '
@@ -87,15 +88,27 @@ FOLIO = {'folio_id': 'A.07',
                      'rho_i(lambda) * sum_j F_ij * B_j(lambda) across 380-780 nm.',
                      'Maintain matte mineral surface roughness (85-degree specular gloss < 2 GU) '
                      'so diffuse chromatic bounce dominates over specular glare.']},
- 'revisions': [{'edition': 'REV 1.0',
+ 'revisions': [{'edition': 'REV 1.1',
+                'date': '2026-11-14',
+                'summary': 'REV 1.1 (Redated 2026-11-14): Grounding revision. The Kubelka–Munk '
+                           'reflectance at K/S = 0.48 is corrected from 0.391 to 0.389 (and 0.21 to '
+                           '0.22 at K/S = 1.40), and the chroma gain (+31.1% at F_12 = 0.61) is now labelled an '
+                           'illustrative value with its assumed view factor. Claims that tuned color '
+                           'regulates melanopsin pathways and calms patients, the PASS verdict, '
+                           'unsourced anecdotes (gouache tests, 80 km/h) and an invented-looking '
+                           'quotation are withdrawn; two uncited sources were removed.',
+                'opus': 'Review: references checked by DOI in Crossref and the Scite index; Scite '
+                        'found no paper supporting a saturation gain from inter-reflection, so it is '
+                        'labelled the folio\'s own model.'},
+               {'edition': 'REV 1.0',
                 'date': '2026-11-02',
                 'summary': 'REV 1.0 (Published 2026-11-02): Inaugural Volume IV architectural '
                            "color monograph uniting Luis Barragan's Casa Gilardi & Torres de "
                            "Satelite, Josef Albers's Interaction of Color, and Paul Kubelka's "
                            'radiative scattering law (DOI 10.1364/JOSA.38.000448).',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
-                        'exact Kubelka-Munk identity R_inf = 0.3912 at K/S = 0.48 and two-surface '
-                        'Fredholm cavity amplification.'}],
+                'opus': 'Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its '
+                        "earlier 'verified' wording is withdrawn in REV 1.1: R_inf at K/S = 0.48 is "
+                        '0.389, not 0.3912, and the cavity amplification was not computed.'}],
  'volume': 4,
  'volume_code': 'VOL. 04',
  'reading_time': '22 MIN READ',
@@ -107,10 +120,7 @@ FOLIO = {'folio_id': 'A.07',
            'mentioning': 1206,
            'contrasting': 0,
            'retracted': False,
-           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,781 '
-                      'citing publications (15 supporting, 1,206 mentioning, 0 contrasting) on '
-                      "Paul Kubelka's optical theory of diffusely scattering pigmented layers and "
-                      'chromatic radiosity in architectural surfaces.'}}
+           'summary': 'Scite index entry for Kubelka, New contributions to the optics of intensely light-scattering materials, Part I (DOI 10.1364/JOSA.38.000448), checked 2026-11-08: 2,781 citing publications (15 supporting, 1,206 mentioning, 0 contrasting) and no retraction notice. The paper is about scattering layers; it says nothing about architecture or this folio\'s numbers.'}}
 
 LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'word_count': '4,650 WORDS',
@@ -121,25 +131,17 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
            'mentioning': 1206,
            'contrasting': 0,
            'retracted': False,
-           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,781 '
-                      'citing publications (15 supporting, 1,206 mentioning, 0 contrasting) on '
-                      "Paul Kubelka's optical theory of diffusely scattering pigmented layers and "
-                      'chromatic radiosity in architectural surfaces.'},
+           'summary': 'Scite index entry for Kubelka, New contributions to the optics of intensely light-scattering materials, Part I (DOI 10.1364/JOSA.38.000448), checked 2026-11-08: 2,781 citing publications (15 supporting, 1,206 mentioning, 0 contrasting) and no retraction notice. The paper is about scattering layers; it says nothing about architecture or this folio\'s numbers.'},
  'act1_title': "Act I — Luis Barragán's Emotional Architecture, Chucho Reyes, Josef Albers & the "
                'Wave Radiosity of Color',
- 'act1_dropcap': 'Stepping into the quiet interior of Casa Gilardi in Tacubaya, sunlight slices '
-                 'through yellow-stained glass down an ochre corridor, striking a lone crimson '
-                 'column standing ankle-deep in a quiet cobalt reflecting pool. The water is '
-                 'clear, yet the entire room glows as though the air itself had been turned into '
-                 'liquid color. In 1980, when accepting the Pritzker Architecture Prize, Luis '
-                 'Barragán described this serene resonance as emotional architecture. Trained as a '
-                 'civil and hydraulic engineer in Guadalajara, Barragán rejected cold corporate '
-                 'modernism. Alongside the folk painter Jesús Reyes Ferreira and the sculptor '
-                 'Mathias Goeritz, he proved that vibrant pigment is neither cosmetic ornament nor '
-                 'superficial paint. Hand-troweled with volcanic sand and slaked lime, his '
-                 'monumental planes capture raw Mexican sunlight, transforming quiet domestic '
-                 'courtyards into glowing sanctuaries where color becomes a living, breathing '
-                 'structural presence.',
+ 'act1_dropcap': 'In Casa Gilardi in Tacubaya, Mexico City (completed 1976), a corridor lit through '
+                 'yellow glass leads to an indoor pool where a freestanding red wall rises from '
+                 'the water against blue walls. Luis Barragán trained as an engineer in '
+                 'Guadalajara and became known for walls of saturated color and quiet enclosed '
+                 'gardens. He received the Pritzker Architecture Prize in 1980, and his acceptance '
+                 'speech spoke of beauty, silence and serenity. His friend the painter Jesús '
+                 "'Chucho' Reyes Ferreira and the sculptor Mathias Goeritz, who in 1953 wrote a "
+                 "manifesto of 'emotional architecture', were close collaborators and influences.",
  'act1_plain_bridge': 'In plain words, think about what happens when light hits a painted wall in '
                       'your home. Shiny modern latex paint acts like a mirror, bouncing harsh '
                       'glare straight into your eyes and washing out the color. Luis Barragán did '
@@ -151,18 +153,17 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'once. When two of these textured walls face each other across a courtyard '
                       'or a pool of water, the colored light bounces back and forth like echoes '
                       'between canyon walls. The red wall warms the blue pool, the blue water '
-                      'softens the red, and the air between them fills with a soft, radiant glow '
-                      'that calms the human nervous system without any electrical fixtures.',
- 'act1_body': 'In Casa Estudio Luis Barragán (1948), the highway monument Torres de Satélite '
-              '(1957, conceived with Goeritz to be experienced at automotive velocity!), the '
-              'equestrian pools of Cuadra San Cristóbal (1968), and his final masterpiece Casa '
-              'Gilardi (1976), Barragán and Reyes smeared unpolished volcanic-sand lime stucco '
-              'with raw mineral pigments—Rosa Mexicano (bougainvillea magenta-red, dominant '
-              'wavelength lambda_dom ~ 615 nm), Cobalt-Ultramarine (lambda_dom ~ 465 nm), and '
-              'Cadmium Marigold (lambda_dom ~ 582 nm). Simultaneously at Black Mountain College '
-              'and Yale, Josef Albers (Interaction of Color, 1963) proved that two adjacent color '
-              "planes alter each other's perceived lightness and hue through retinal lateral "
-              'inhibition and physical inter-reflection. Physically, when zenith daylight enters '
+                      'softens the red, and the air between them fills with a soft glow.',
+ 'act1_body': 'In his house and studio in Mexico City (1948), the highway monument Torres de '
+              'Satélite (1957–58, with Goeritz, meant to be seen from moving cars), the horse '
+              'pools of Cuadra San Cristóbal (1966–68), and Casa Gilardi (1976), Barragán used '
+              'large planes of saturated color—a magenta-pink often called Rosa Mexicano, deep '
+              'blues and warm yellows. The dominant wavelengths this folio assigns them (about '
+              '615 nm, 465 nm and 582 nm) are illustrative, not measurements of the buildings. '
+              'Separately, at Black Mountain College and Yale, Josef Albers (Interaction of '
+              'Color, 1963) showed through classroom exercises that the same color looks '
+              'different depending on the colors around it. Physically, the folio models the '
+              'pool room as follows: when zenith daylight enters '
               "Casa Gilardi's yellow-glazed corridor and strikes the freestanding crimson column "
               'rising from the cobalt pool, multiple diffuse bounces obey Paul Kubelka and Franz '
               "Munk's two-flux radiative transfer law K/S = (1 - R_inf)^2 / (2 R_inf) (DOI "
@@ -170,27 +171,26 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'lambda) = E(x, lambda) + rho(x, lambda) int B(y, lambda) F(x, y) dA_y.',
  'act1_stakes': 'For centuries, master builders in the Mediterranean, North Africa, and colonial '
                 'Mexico used lime washes tinted with earth oxides to temper blinding desert glare. '
-                'Traditional plasterers knew by touch that fresh lime carbonate absorbs pigment '
-                'deeply, creating durable, breatheable surfaces that never trap moisture or peel. '
+                'Lime plasters are vapor-permeable, so a well-made lime wall lets moisture escape '
+                'rather than trapping it behind a film. '
                 'But during the mid-twentieth century, the construction industry abandoned slaked '
                 'lime in favor of quick-drying acrylic latex paints and planar glass curtain '
-                'walls. The consequences were disastrous for spatial quality: smooth plastic films '
-                'produce intense specular glare at glancing angles while trapping internal '
-                'moisture that causes bubbling, blistering, and fungal rot behind the paint layer. '
+                'walls. Smooth glossy films can produce specular glare at glancing angles, and on '
+                'damp masonry a less permeable paint layer can blister. '
                 'When architects rely on generic color swatches under artificial fluorescent '
                 'lighting, the colors look dead and artificial under natural daylight. Without '
                 'understanding diffuse scattering and mutual radiosity, modern interiors either '
                 'feel sterile and washed out or degenerate into cavernous spaces plagued by visual '
                 'fatigue and harsh contrast.',
- 'pullquote': '"In Luis Barragán\'s Casa Gilardi, the freestanding Rosa Mexicano wall does not '
-              'merely sit in the cobalt pool—it acts as a secondary spectral emitter whose bounced '
-              'light dyes the water and air around it."',
+ 'pullquote': "Editorial note: in Casa Gilardi the freestanding red wall does not merely sit in "
+              'the blue pool—light bounced from it tints the water and the walls around it.',
  'chronology': [('1931',
                  'Paul Kubelka & Franz Munk formulate the two-flux absorption-to-scattering '
                  'differential theory of pigmented coatings (K/S = (1 - R_inf)^2 / 2 R_inf).'),
-                ('1957',
-                 'Luis Barragán & Mathias Goeritz erect the 52-meter chromatic concrete prisms of '
-                 'Torres de Satélite in Mexico City for the moving automobile.'),
+                ('1957–58',
+                 'Luis Barragán & Mathias Goeritz build Torres de Satélite beside a highway in the '
+                 'Mexico City area, five colored concrete towers up to about 52 meters tall, meant to '
+                 'be seen from moving cars.'),
                 ('1963',
                  'Josef Albers publishes Interaction of Color at Yale University Press, codifying '
                  'simultaneous contrast and chromatic relativity.'),
@@ -228,9 +228,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                      'force_b_title': 'Pigment Ratio Knob (K/S)',
                      'force_b_sub': 'Balances wavelength absorption against crystal lattice '
                                     'scattering',
-                     'threshold_title': 'Critical Scattering Ratio (K/S ≈ 0.48)',
-                     'threshold_pass': 'Velvety Lambertian radiance with +31% inter-reflected '
-                                       'chroma',
+                     'threshold_title': 'Chosen Pigment Ratio (K/S = 0.48, design value)',
+                     'threshold_pass': 'Matte diffuse color with about +31% bounce gain '
+                                       '(illustrative)',
                      'threshold_fail': 'Specular glare below 0.1 or dark muddy absorption above '
                                        '2.0'},
  'act2_intuition': "Why does a mineral lime-wash wall in Barragán's Casa Gilardi feel velvety and "
@@ -239,13 +239,17 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'calcite micro-crystals scatter incident electromagnetic waves across visible '
                    'wavelengths internally with scattering coefficient S, while iron-oxide, '
                    'ultramarine, or cochineal pigments absorb complementary wavelengths with '
-                   'absorption coefficient K. Paul Kubelka and Franz Munk proved that '
-                   'infinite-thickness diffuse reflectance follows R_inf = 1 + (K/S) - '
-                   'sqrt((K/S)^2 + 2(K/S)). When sunlight at elevation angle theta_sun strikes '
+                   'absorption coefficient K. In the two-flux theory of Paul Kubelka and Franz '
+                   'Munk, an opaque layer has diffuse reflectance R_inf = 1 + (K/S) - '
+                   'sqrt((K/S)^2 + 2(K/S)) (Kubelka 1948, DOI 10.1364/JOSA.38.000448); at K/S = '
+                   '0.48 this gives 0.389. When sunlight at elevation angle theta_sun strikes '
                    'Wall 1 with reflectance spectrum rho_1(lambda) facing Wall 2 with '
-                   'rho_2(lambda) across an enclosure with geometric view factor F_12, the '
-                   'infinite geometric series of mutual spectral bounces multiplies chromatic '
-                   'saturation by (1 - rho_1(lambda) * rho_2(lambda) * F_12^2)^(-1). '
+                   'rho_2(lambda), and the view factors between them are F_12 and F_21, the '
+                   'geometric series of mutual bounces multiplies the light in each band by '
+                   '(1 - rho_1(lambda) * rho_2(lambda) * F_12 * F_21)^(-1). Bands the walls '
+                   'reflect strongly gain most, which is the folio\'s simplified account of why '
+                   'the bounced light looks more strongly colored; it is a model, not a '
+                   'measurement of these rooms. '
                    'Simultaneously, Fresnel reflection off the interior water pool '
                    'R_water(theta_sun) redirects incident solar rays onto the ceiling, forming '
                    'dynamic caustics that dance across the textured stucco and heighten spatial '
@@ -258,69 +262,48 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'spills onto the upper half of the freestanding Rosa Mexicano wall. Because the '
                    "pigment's absorption coefficient K is low for red wavelengths but high for "
                    'blue, the wall absorbs the short waves while backscattering long red '
-                   'wavelengths across the room. As you increase the pigment ratio K/S past 0.48, '
-                   'the multiple-bounce denominator acts as a non-linear color amplifier: each '
-                   'successive reflection strips away remaining neutral daylight wavelengths, '
-                   'concentrating the dominant spectral peak. What emerges is not merely colored '
-                   'illumination, but an electromagnetic resonance cavity where physical surfaces '
-                   'dissolve into pure spatial atmosphere.',
+                   'wavelengths across the room. In the model, each successive reflection removes '
+                   'more of the weakly reflected bands, so the bounced light becomes more strongly '
+                   'colored even as it grows dimmer; raising K/S makes each wall darker overall but '
+                   'its color purer. This is the folio\'s qualitative reading of the formula, not a '
+                   'measured result.',
  'walkthrough': ['Experiment 1 (Solar Shaft & Casa Gilardi Pool): Sweep Incident Solar Elevation '
                  'theta_sun from 18 deg (low golden afternoon sun) to 68 deg (high Mexican '
                  'zenith). Watch the sunlight shaft move across the Rosa Mexicano wall into the '
                  'cobalt water plane.',
                  'Experiment 2 (Kubelka–Munk Pigment Ratio K/S): Adjust Pigment '
                  'Absorption-to-Scattering Ratio K/S from 0.12 (chalky pastel lime wash, R_inf = '
-                 '0.62) to 1.40 (saturated Rosa Mexicano / Cobalt mineral wash, R_inf = 0.21) and '
-                 'inspect the multi-bounce radiosity spectrum.',
+                 '0.62) to 1.40 (saturated mineral wash, R_inf = 0.22) and inspect the model '
+                 'multi-bounce spectrum.',
                  'Experiment 3 (Barragán & Albers 4-Stage Chromatic Sequence): Click Stages 1 to 4 '
                  'to trace golden corridor spectral pre-filtering, Kubelka–Munk subsurface pigment '
                  'scattering, Fredholm wall-to-water radiosity coupling, and Torres de Satélite '
                  'kinetic parallax.'],
  'act4_title': 'Act IV — Chromatic Tectonics, Automotive Sculpture & Upstream Discovery Threads',
- 'act4_human_ai': 'Contemporary architectural lighting and spectral ray-tracing engines solve the '
-                  'full wavelength-resolved Fredholm radiosity equation across 81 spectral bands '
-                  '(380–780 nm in 5 nm steps) rather than crude 3-channel RGB approximations, '
-                  'preserving the true emotional resonance of mineral pigments across changing sky '
-                  'conditions.',
- 'act4_deepening': 'Today, computational architects collaborate with artificial intelligence '
-                   'models to orchestrate these chromatic wavefields with unprecedented precision. '
-                   'Instead of relying on static three-channel RGB rendering engines that flatten '
-                   'spectral nuances, contemporary design workflows integrate wavelength-resolved '
-                   'radiosity solvers that track eighty-one distinct spectral bins across the '
-                   'visible spectrum. Generative neural algorithms optimize window apertures, '
-                   'ceiling geometry, and pigment concentrations simultaneously, ensuring that '
-                   'seasonal solar shifts continuously tune interior illumination without causing '
-                   'glare or thermal overheating. Open frontier questions remain at the '
-                   'intersection of material science and biophilic design: How can bio-based '
-                   'mineral binders replicate the self-healing calcite lattices of historic '
-                   'Mexican slaked lime while meeting modern low-carbon curing schedules? How can '
-                   'dynamic daylighting algorithms predict the emotional and autonomic responses '
-                   'of hospital patients recovering in chromatically tuned healing spaces? By '
-                   "bridging Barragán's poetic intuition with spectral physics, human and machine "
-                   'architects transform raw daylight into enduring emotional sanctuary.',
- 'cf_bridge': 'Standalone Architectural Flagship & Cross-Pillar Wave Thread: Folio A.07 anchors '
-              'our Volume IV exploration of Color as an Electromagnetic Wave across Architecture '
-              '(Luis Barragán & Josef Albers), Physics (Folio P.08 on Bragg thin-film interference '
-              "& automotive pearlescent car finishes vs. Barragán's matte mineral lime), and "
-              'Mathematics (Folio M.08 on Schrödinger–Helmholtz Riemannian color geodesics). '
-              'Upstream thread for healing environments: circadian and chromatic spectral tuning '
-              'in clinical recovery spaces directly regulates melanopsin ipRGC pathways and '
-              'autonomic calm without artificial glare.',
- 'sources': ['Barragán, L. (1980). Pritzker Architecture Prize Laureate Acceptance Speech. '
-             'Dumbarton Oaks, Washington, D.C.',
+ 'act4_human_ai': 'Spectral renderers can solve the radiosity equation band by band, for example '
+                  'in 81 bands from 380 to 780 nm in 5 nm steps, instead of three RGB channels. '
+                  'That keeps more of the difference between pigments under changing skies; this '
+                  'folio describes the approach and did not run such a renderer.',
+ 'act4_deepening': 'A proposal, not a description of current practice: designers could pair '
+                   'wavelength-resolved radiosity solvers with optimization tools to explore window '
+                   'openings, ceiling geometry and pigment choices together, checking glare and '
+                   'overheating as they go. Open questions remain in materials science: can '
+                   'bio-based mineral binders match the self-healing behavior reported for '
+                   'historic lime plasters while meeting modern low-carbon schedules? This folio '
+                   'makes no claim about how colored rooms affect health or recovery.',
+ 'cf_bridge': 'This folio has no Cystic Fibrosis bridge. It is a standalone architecture folio '
+              'and a thread across pillars on color as an electromagnetic wave: Architecture '
+              '(Luis Barragán and Josef Albers), Physics (Folio P.08 on thin-film interference in '
+              "car finishes, in contrast to Barragán's matte lime) and Mathematics (Folio M.08 on "
+              'color geometry). It makes no health claim.',
+ 'sources': ['Barragán, L. (1980). Pritzker Architecture Prize acceptance speech. The Pritzker '
+             'Architecture Prize.',
              'Kubelka, P. (1948). New contributions to the optics of intensely light-scattering '
              'materials. Part I. Journal of the Optical Society of America, 38(5), 448–457. DOI: '
              '10.1364/JOSA.38.000448.',
              'Albers, J. (1963). Interaction of Color. Yale University Press, New Haven.',
              'Zanco, F. (Ed.). (2001). Luis Barragán: The Quiet Revolution. Barragan Foundation / '
-             'Vitra Design Museum & CSI MasterFormat 09 24 00 Portland Cement & Lime Plastering.',
-             'Peyré, G., & Cuturi, M. (2019). Computational optimal transport: With applications '
-             'to data science (PythonOT/POT, https://github.com/PythonOT/POT). Foundations and '
-             'Trends in Machine Learning, 11(5–6), 355–607. DOI: 10.1561/2200000073.',
-             'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
-             'context of citations and classifies their intent using deep learning '
-             '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
-             '10.1162/qss_a_00146.'],
+             'Vitra Design Museum.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Luis Barragan Casa '
         'Gilardi chromatic radiosity section showing golden corridor light, Rosa Mexicano wall, '
         'and cobalt pool">\n'
@@ -344,8 +327,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         '            <text x="168" y="168" font-size="10" fill="#ffffff">Cobalt Water Plane (465 '
         'nm)</text>\n'
         '            <text id="tp-a07-wall-label" x="168" y="204" font-size="10.5" '
-        'fill="var(--tp-prussian)">Kubelka–Munk R_∞ = 0.391 · Rosa Mexicano Bounce = '
-        '+31.4%</text>\n'
+        'fill="var(--tp-prussian)">Kubelka–Munk R_∞ = 0.389 · Bounce Gain ≈ +31% '
+        '(model)</text>\n'
         '            <line x1="420" y1="24" x2="420" y2="195" stroke="currentColor" '
         'stroke-opacity="0.2"/>\n'
         '            <text x="435" y="34" font-size="11" font-weight="600" '
@@ -370,50 +353,49 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a Luis Barragan
 
 DISPATCH = {'kicker': 'FRONTIER CHROMATIC ARCHITECTURE DISPATCH · LUIS BARRAGÁN, JOSEF ALBERS & SPECTRAL '
            'RADIOSITY',
- 'headline': "Wavelength-Resolved Kubelka–Munk Radiosity Decodes Luis Barragán's Emotional "
-             'Architecture of Color',
- 'body': "Combining Paul Kubelka's two-flux pigment scattering theory (JOSA DOI "
-         "10.1364/JOSA.38.000448) and Josef Albers's Interaction of Color (1963) with 81-band "
-         "spectral Fredholm radiosity reveals how Luis Barragán's Casa Gilardi (1976) and "
-         'highway-scale Torres de Satélite (1957) use matte mineral lime cavities to amplify '
-         'chromatic saturation by +31.4% without specular glare.'}
+ 'headline': "A Kubelka–Munk and Radiosity Reading of Luis Barragán's Architecture of "
+             'Color',
+ 'body': "Using Paul Kubelka's two-flux pigment scattering theory (JOSA DOI "
+         "10.1364/JOSA.38.000448) alongside Josef Albers's Interaction of Color (1963), this "
+         "folio models how matte colored walls in rooms like Luis Barragán's Casa Gilardi "
+         '(1976) reflect and inter-reflect light: R_∞ = 0.389 at K/S = 0.48, and an '
+         'illustrative bounce gain of about +31% for an assumed view factor. It measured no '
+         'building.'}
 
 META_3D = ('Luis Barragán Kubelka–Munk Chromatic Radiosity Basin',
  'X: Pigmented Stucco K/S Ratio · Z: Courtyard Bounces · Y: Spectral Reflectance & Hue Shift')
 
 ES_TRANSLATION = {'title_es': 'Tectónica Cromática de Luis Barragán, Radiosidad de Pigmentos de Kubelka–Munk y '
              'Campos de Onda Espaciales',
- 'subtitle_es': 'Cómo Luis Barragán, Chucho Reyes Ferreira y Josef Albers transformaron pigmentos '
-                'minerales (Rosa Mexicano, Azul Cobalto, Ocre Cadmio) y la luz de México en '
-                'cavidades vivas de ondas electromagnéticas.',
+ 'subtitle_es': 'Cómo Luis Barragán, junto con su amigo Chucho Reyes Ferreira, trabajó con colores '
+                'intensos (rosa mexicano, azul cobalto, ocre) y la luz de México, y cómo Josef '
+                'Albers enseñó la relatividad del color, leído aquí con un modelo sencillo de '
+                'dispersión de pigmentos e interreflexión.',
  'why_es': 'Acercar una flor amarilla bajo la barbilla proyecta un resplandor dorado sobre la piel '
            'porque la luz rebota entre los pétalos; Barragán escaló ese fenómeno a muros de cal y '
            'espejos de agua que tiñen la luz del espacio.',
- 'bridge_es': 'La transferencia radiativa de Kubelka–Munk y la sintonización espectral de espacios '
-              'arquitectónicos informan tanto el diseño de entornos clínicos serenos como la '
-              'oximetría óptica no invasiva.',
+ 'bridge_es': 'Esta ficha no tiene puente con la Fibrosis Quística: es una ficha de arquitectura '
+              'que conecta con otras sobre el color como onda electromagnética, y no hace '
+              'afirmaciones de salud.',
  'plain_es': 'En palabras sencillas, imaginen lo que sucede cuando la luz del sol entra a una '
-             'habitación pintada. La pintura de plástico moderna refleja un brillo deslumbrante '
-             'que cansa la vista. Luis Barragán hizo exactamente lo contrario en la Ciudad de '
-             'México y Guadalajara. Mezcló pigmentos minerales como el rosa mexicano, el azul '
-             'cobalto y el amarillo ocre directamente en un aplanado rústico de cal viva y arena '
-             'volcánica de tezontle. Al no tener barniz brillante, los rayos del sol penetran '
+             'habitación pintada. La pintura brillante moderna puede reflejar un destello '
+             'que cansa la vista. Luis Barragán buscó lo contrario: muros mate de color '
+             'intenso, como el rosa mexicano, el azul cobalto y el amarillo ocre. En el modelo de '
+             'esta ficha, el color va mezclado en un aplanado rústico de cal apagada y arena '
+             'volcánica. Al no tener barniz brillante, los rayos del sol penetran '
              'entre millones de cristales microscópicos de cal antes de rebotar suavemente en '
              'todas direcciones. Cuando dos muros con estas texturas se colocan frente a frente, '
              'como en la célebre alberca interior de la Casa Gilardi, la luz rebota una y otra vez '
-             'entre el agua y los aplanados, tiñendo el aire con un resplandor dorado y sereno. '
-             'Esta arquitectura emocional demuestra que el color no es un simple adorno, sino una '
-             'presencia física viva que calma la mente y dignifica la vida cotidiana.',
+             'entre el agua y los aplanados, llenando el espacio de un resplandor de color. En '
+             'la obra de Barragán el color no es un simple adorno, sino parte de la arquitectura.',
  'deep_es': 'A nivel físico y matemático, esta atmósfera luminosa surge del acoplamiento entre dos '
             'fuerzas: la dispersión cristalina de la cal y la absorción espectral del pigmento '
             'mineral, descritas por la ecuación de transferencia radiativa de Kubelka–Munk. Si la '
             'proporción entre absorción y dispersión es demasiado baja, el muro luce blanquecino y '
             'sin vida; si es excesiva, la superficie se torna oscura y absorbe la luz en lugar de '
-            'multiplicarla. En el umbral óptimo cercano a 0.48, cada rebote sucesivo entre el muro '
-            'rosa y el espejo de agua azul amplifica la saturación cromática en más del treinta '
-            'por ciento sin producir deslumbramiento. En la práctica contemporánea, los '
-            'arquitectos combinan simulaciones computacionales de radiosidad espectral con '
-            'aplanados artesanales de cal apagada. Esta colaboración entre modelos de computadora '
-            'y saberes tradicionales permite proyectar edificios de salud y vivienda donde la luz '
-            'natural regula los ciclos circadianos y el bienestar emocional sin requerir costosas '
-            'luminarias eléctricas.'}
+            'multiplicarla. Con una proporción de 0.48, la reflectancia del modelo es 0.389, y '
+            'con un factor de vista supuesto de 0.61 los rebotes entre el muro y el agua aumentan '
+            'la luz reflejada en cerca de 31 por ciento; es un valor ilustrativo del modelo, no '
+            'una medición. Un proyectista podría combinar simulaciones de radiosidad espectral con '
+            'aplanados artesanales de cal apagada. Esta ficha no afirma efectos del color sobre '
+            'la salud.'}

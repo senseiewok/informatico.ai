@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Folio A.06 (ARCHITECTURE): Net-Zero Water & Greywater Constructed Wetlands: Subsurface Darcy Filtration, UV-C Photolysis, and Pathogen-Control Plumbing (CSI 22 13 00)."""
+"""Folio A.06 (ARCHITECTURE): Net-Zero Water & Greywater Constructed Wetlands: Subsurface Darcy Filtration, UV-C Photolysis and Hot-Water Recirculation (Design Study)."""
 from __future__ import annotations
 
 SLUG = 'a06'
@@ -10,14 +10,14 @@ FOLIO = {'folio_id': 'A.06',
  'slug': 'a06',
  'pillar': 'architecture',
  'category_code': 'A',
- 'title': 'Net-Zero Water & Greywater Constructed Wetlands: Subsurface Darcy Filtration, UV-C Photolysis, and Pathogen-Control Plumbing (CSI 22 13 00)',
- 'subtitle': 'How a modelled subsurface reed bed removes about 95% of greywater BOD_5 outside, while 60 °C recirculation and a 254 nm UV-C reactor are design targets meant to limit growth of Pseudomonas and Legionella inside.',
+ 'title': 'Net-Zero Water & Greywater Constructed Wetlands: Subsurface Darcy Filtration, UV-C Photolysis and Hot-Water Recirculation (Design Study)',
+ 'subtitle': 'How a modelled subsurface reed bed removes about 95% of greywater BOD_5 outside, while 60 °C recirculation and a 254 nm UV-C reactor are design targets meant to limit growth of opportunistic waterborne bacteria inside.',
  'date_published': '2026-11-01',
  'date_redated': '2026-11-14',
  'current_edition': 'REV 1.2',
  'status_badge': 'REDATED REV 1.2',
  'primary_kernel': 'tools/tectonic_verify.py',
- 'colophon': {'identifier': 'A.06 · Hydro-Tectonics · CSI 22 13 00',
+ 'colophon': {'identifier': 'A.06 · Hydro-Tectonics',
               'kernels': 'Kadlec-Knight k-C* · Chick-Watson 5.4-Log UV-C',
               'benchmarks': 'Model values: 95.1% BOD_5 removal · 5.4-log UV-C design dose',
               'bridge': 'Biofilm-Control Plumbing ↔ CF Infection-Prevention Context'},
@@ -33,18 +33,19 @@ FOLIO = {'folio_id': 'A.06',
               'step': 1.0,
               'value': 45.0,
               'unit': ' mJ/cm²'}],
- 'steps': ['Stage 1 (Subsurface Horizontal Darcy Filtration): Greywater flows 150 mm beneath dry washed basalt gravel '
-           '(φ = 0.38, K_s = 120 m/d) with no open water surface.',
+ 'steps': ['Stage 1 (Subsurface Horizontal Darcy Filtration): Greywater flows through washed basalt gravel '
+           '(φ = 0.38, K_s = 120 m/d) with its water level 150 mm below the gravel surface and no open water surface '
+           '(a 0.80 m deep bed: 0.65 m saturated below a 150 mm dry layer).',
            'Stage 2 (Rhizosphere Biofilm Oxidation): Phragmites root-zone oxygen transfer drives Kadlec-Knight '
-           'exponential BOD_5 decay from 140 mg/L to 6.8 mg/L (τ = 3.2 d) in the folio model.',
+           'exponential BOD_5 decay from 140 mg/L to 6.8 mg/L (τ = 3.2 d) in the folio model, with the folio\'s assumed C* = 3.0 mg/L and k = 1.12 per day.',
            'Stage 3 (Dead-Leg-Free 60 °C Potable Recirculation): Copper-silver / stainless manifold designed to target v ≥ 0.6 m/s and T ≥ 60 °C up to every point-of-use mixing valve (design target, not measured).',
            'Stage 4 (254 nm UV-C Photolysis & Thermal Trap Purge): Delivers H = 45 mJ/cm² UV-C fluence (a 5.4-log reduction in the folio\'s Chick-Watson model) plus self-heating sink traps.'],
  'readouts': [{'label': 'Wetland BOD_5 Reduction', 'value': '95.1% (140 → 6.8 mg/L)'},
               {'label': 'UV-C Log Reduction (Model)', 'value': '5.4-Log (45 mJ/cm²)'},
               {'label': 'Thermal Loop Design Target', 'value': '60.0 °C (v = 0.65 m/s)'},
-              {'label': 'Design Check (Model)', 'value': 'DESIGN TARGETS MET (MODEL)'}],
+              {'label': 'Design Check (Model)', 'value': 'MODEL VALUES ABOVE FOLIO TARGETS (85% BOD, 4-LOG)'}],
  'sidenote_1': {'kicker': 'SIDENOTE A.06-A · SUBSURFACE HYDRAULIC GRADE LINE',
-                'body': 'Keeping the Darcy water table 150 mm below the gravel surface limits mosquito breeding, odor, and human contact with untreated greywater.'},
+                'body': 'Keeping the Darcy water table 150 mm below the gravel surface (a 0.80 m bed with 0.65 m saturated depth) is meant to limit mosquito breeding, odor, and human contact with untreated greywater.'},
  'sidenote_2': {'kicker': 'SIDENOTE A.06-B · SPECIFICATION PLATE · CSI 22 13 00 / 22 42 00',
                 'body': 'Offset drain clinical washbasin with an automated 65 °C thermal P-trap cycle, intended to reduce droplet dispersal from the drain. Kotay et al. (2017, DOI 10.1128/AEM.03327-16) modelled sink-trap dispersal with a marker organism; this fixture is a design proposal and has not been tested.'},
  'skill': {'filename': 'netzero-water-pathogen-plumbing-SKILL.md',
@@ -52,8 +53,8 @@ FOLIO = {'folio_id': 'A.06',
            'description': 'AI-agnostic architectural hydro-engineering skill for Kadlec-Knight subsurface constructed wetlands and biofilm-control clinical plumbing design targets.',
            'rules': ["Size subsurface horizontal-flow wetlands via Darcy's law Q = K_s A_c S and Kadlec-Knight "
                      'kinetics C_out = C* + (C_in - C*) exp(-k_v * tau).',
-                     'Maintain potable hot-water recirculation >= 60 C at velocity >= 0.6 m/s with zero dead-legs > '
-                     '1.5 pipe diameters.',
+                     'This folio\'s own design target (not a standard or a clinical requirement): potable hot-water recirculation >= 60 C at velocity >= 0.6 m/s, '
+                     'with no stagnant dead-legs.',
                      'Apply the folio\'s design targets of a 4-log model reduction (254 nm UV-C fluence H >= 34 mJ/cm^2 at 0.12 log per mJ/cm^2) and non-splashing offset drains; report log reductions as model values, never as measured outcomes.']},
  'revisions': [{'edition': 'REV 1.2',
                 'date': '2026-11-14',
@@ -63,7 +64,10 @@ FOLIO = {'folio_id': 'A.06',
                            'Claims about sink drains and Cystic Fibrosis had been attributed to a wetlands '
                            'textbook; they now cite Kotay et al. 2017 (DOI 10.1128/AEM.03327-16) and the CF '
                            'infection prevention guideline (DOI 10.1086/676882). The opening scene about Käthe '
-                           'Seidel was not sourced and is replaced by a plain account.',
+                           'Seidel was not sourced and is replaced by a plain account. '
+                           'A later review corrected the title (the CSI 22 13 00 label and "pathogen-control" are removed), '
+                           'stated the assumed wetland constants and a consistent bed depth, and softened the readout verdict '
+                           'and the Spanish text.',
                 'opus': 'Review: new references checked by DOI in Crossref and the Scite index.'},
                {'edition': 'REV 1.1',
                 'date': '2026-11-02',
@@ -72,7 +76,7 @@ FOLIO = {'folio_id': 'A.06',
                {'edition': 'REV 1.0',
                 'date': '2026-11-01',
                 'summary': 'REV 1.0 (Published 2026-11-01): Initial 5-Act monograph coupling net-zero subsurface '
-                           'greywater wetlands with CSI 22 13 00 clinical plumbing.',
+                           'greywater wetlands with clinical plumbing.',
                 'opus': 'Council review of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B). Its earlier \'verified inactivation\' wording is withdrawn in REV 1.2: nothing was measured.'}],
  'governing_law': 'C_out = C* + (C_in−C*)e^(−kτ) · 5.4-Log UV-C',
  'volume': 3,
@@ -98,7 +102,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
            'contrasting': 3,
            'retracted': False,
            'summary': 'Scite index entry for Kadlec & Wallace, Treatment Wetlands (DOI 10.1201/9781420012514), checked 2026-11-08: 1,371 citing publications (66 supporting, 1,217 mentioning, 3 contrasting) and no retraction notice. The book is about treatment wetlands, not clinical disinfection.'},
- 'act1_title': 'Act I — From Roman Cisterns to Net-Zero Bio-Engineered Wetlands & Pathogen-Control Plumbing',
+ 'act1_title': 'Act I — From Roman Cisterns to Net-Zero Bio-Engineered Wetlands & Hot-Water Recirculation Design',
  'act1_dropcap': 'The German botanist Käthe Seidel began experiments with wetland plants for wastewater treatment in the 1950s (see Vymazal 2005, DOI 10.1016/j.ecoleng.2005.07.010, for this history). The idea was that common wetland plants, and the microbes around their roots, could do part of the work of a treatment plant. Later designers ran wastewater horizontally through gravel beds planted with reeds such as Phragmites australis, keeping the water below a dry surface.'
                  ' Recycling water inside a building raises a second problem, which this folio takes up: how to encourage living biology outside while keeping microbial growth in the indoor plumbing under control.',
  'act1_body': 'In high-performance regenerative architecture, water management must resolve the tension between '
@@ -121,7 +125,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'wetlands follow the first-order Kadlec-Knight plug-flow model, C_out = C* + (C_in - C*) * exp(-k_v '
                    '* tau_HRT), as described in Kadlec and Wallace (Treatment Wetlands, 2nd ed., DOI 10.1201/9781420012514). '
                    'Operating beneath a dry basalt gravel mulch cap avoids an open water surface while Phragmites '
-                   'root zones supply oxygen to micro-aerobic biofilms, giving 95.1% BOD_5 removal across a 3.2-day retention time in the model. Inside the potable loop, ASHRAE Standard 188 addresses Legionella risk management in building water systems; it does not prescribe this design. The folio\'s own targets are continuous recirculation at or above 60 degrees Celsius and 0.6 meters per second, with no stagnant dead-legs. Downstream, an inline annular 254-nanometer UV-C '
+                   'root zones supply oxygen to micro-aerobic biofilms, giving 95.1% BOD_5 removal across a 3.2-day retention time in the model (with C_in = 140 mg/L and the folio\'s assumed C* = 3.0 mg/L and k = 1.12 per day, C_out = 3.0 + 137 × e^(−1.12 × 3.2) = 6.8 mg/L). Inside the potable loop, ASHRAE Standard 188 addresses Legionella risk management in building water systems; it does not prescribe this design. The folio\'s own targets are continuous recirculation at or above 60 degrees Celsius and 0.6 meters per second, with no stagnant dead-legs. Downstream, an inline annular 254-nanometer UV-C '
                    'photoreactor delivers a germicidal fluence of H = 45 millijoules per square centimeter, which the folio\'s Chick-Watson model converts to a 5.4-log reduction (0.12 log per mJ/cm²). That rate constant is a design assumption. Hijnen et al. (2006, DOI 10.1016/j.watres.2005.10.030) review UV inactivation credit across viruses, bacteria and protozoa; the folio\'s own inference is that a single constant cannot represent every organism. '
                    'Nothing here was simulated in DedalusProject/dedalus (https://github.com/DedalusProject/dedalus, DOI 10.1103/PhysRevResearch.2.023068) or dynamicslab/pysindy (DOI 10.1073/pnas.1517384113); they are named as tools a reader could use to test the design.',
  'act2_analogy': 'Everyday analogy: Think of the difference between a swampy puddle and a high-alpine brook. A warm '
@@ -130,7 +134,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'stays sparkling, oxygenated, and clean. Bio-engineered plumbing aims to imitate that mountain stream: '
                  'subsurface gravel beds naturally filter outdoor greywater, while continuous hot circulation and '
                  'ultraviolet light help keep indoor pipes clean.',
- 'walkthrough': ['Experiment 1 (Subsurface Wetland Sizing): Check that a 48 m^2 basalt-gravel bed (porosity phi = 0.38, depth 0.65 m) at a design flow of 3.7 m^3/d gives a 3.2-day retention time and, in the model, a 95.1% BOD_5 reduction.',
+ 'walkthrough': ['Experiment 1 (Subsurface Wetland Sizing): Check that a 48 m^2 basalt-gravel bed (porosity phi = 0.38, 0.80 m deep with a 150 mm dry layer on top, so 0.65 m saturated depth) at a design flow of 3.7 m^3/d gives a retention time of 48 × 0.65 × 0.38 / 3.7 = 3.2 days and, in the model with the assumed C* = 3.0 mg/L and k = 1.12 per day, a 95.1% BOD_5 reduction (140 → 6.8 mg/L).',
                  'Experiment 2 (Chick–Watson UV-C Inactivation): Trace how 254 nm UV-C fluence at H = 45 mJ/cm^2 '
                  'gives a 5.4-log reduction in the folio\'s single-constant model.',
                  'Experiment 3 (Sink-Trap Droplet Design Proposal): Inspect the CSI 22 13 00 self-heating thermal trap detail (proposed, untested) meant to reduce drain-splash droplets at clinical washbasins.'],
@@ -173,7 +177,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         'stroke="var(--tp-prussian)" stroke-width="2"/>\n'
         '            <line x1="375" y1="62" x2="615" y2="165" stroke="var(--tp-minium)" stroke-width="2.8"/>\n'
         '            <text x="360" y="34" font-size="11" fill="var(--tp-prussian)">Potable Loop: 60°C Purge + 254 nm '
-        'UV-C (CSI 22 13 00)</text>\n'
+        'UV-C (design targets)</text>\n'
         '            <text x="385" y="92" font-size="11" fill="var(--tp-minium)">Chick-Watson H = 45 mJ/cm² → 5.4-Log '
         'Reduction</text>\n'
         '            <text x="385" y="148" font-size="11" fill="currentColor">Design target: limit sink-trap biofilm (not measured)</text>\n'
@@ -195,9 +199,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'recycling from interior potable distribution networks. Open tools such as DedalusProject/dedalus (https://github.com/DedalusProject/dedalus, DOI 10.1103/PhysRevResearch.2.023068) for transport equations and dynamicslab/pysindy (DOI 10.1073/pnas.1517384113) for fitting rate laws could be used to study such a system; this folio does not run them. Its recirculating thermal loop and 254-nanometer UV-C reactor are design targets meant to limit biofilm growth near the point of use, not a tested installation.',
  'act1_stakes': 'From Roman aqueducts to nineteenth-century municipal water grids, urban architecture operated on an '
                 'unsustainable linear throughput model: extract potable water from distant reservoirs, use it once, '
-                'and dump municipal effluent into coastal waterways. In response to regional water shortages, early '
-                'green building initiatives aggressively introduced low-flow plumbing fixtures, reclaimed greywater '
-                'cisterns, and unmonitored storage tanks. Conservation by rule of thumb can create a new risk. Reducing flow rates in oversized pipes can leave stagnant dead-legs where water sits lukewarm, between thirty and forty degrees Celsius. Under these conditions, opportunistic waterborne bacteria can colonize pipe walls and form biofilms that are harder to disinfect. Droplets from showerheads and sink drains are one route by which such organisms can reach people. Realizing true net-zero water requires mastering both ecological '
+                'and dump municipal effluent into coastal waterways. Water-saving measures such as '
+                'low-flow plumbing fixtures and reclaimed greywater cisterns reduce demand on municipal supply. Conservation by rule of thumb can create a new risk. Reducing flow rates in oversized pipes can leave stagnant dead-legs where water sits lukewarm, between thirty and forty degrees Celsius. Under these conditions, opportunistic waterborne bacteria can colonize pipe walls and form biofilms that are harder to disinfect. Droplets from showerheads and sink drains are one route by which such organisms can reach people. Realizing true net-zero water requires mastering both ecological '
                 'wetland biology outside and clinical thermal disinfection inside.',
  'act2_plain_primer': 'In the interactive laboratory below, you calibrate the dual biological barriers of a net-zero '
                       'water building. The first slider sets the hydraulic retention time of the outdoor gravel '
@@ -222,16 +225,13 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'wetlands follow the first-order Kadlec-Knight plug-flow model, C_out = C* + (C_in - C*) * exp(-k_v '
                    '* tau_HRT), as described in Kadlec and Wallace (Treatment Wetlands, 2nd ed., DOI 10.1201/9781420012514). '
                    'Operating beneath a dry basalt gravel mulch cap avoids an open water surface while Phragmites '
-                   'root zones supply oxygen to micro-aerobic biofilms, giving 95.1% BOD_5 removal across a 3.2-day retention time in the model. Inside the potable loop, ASHRAE Standard 188 addresses Legionella risk management in building water systems; it does not prescribe this design. The folio\'s own targets are continuous recirculation at or above 60 degrees Celsius and 0.6 meters per second, with no stagnant dead-legs. Downstream, an inline annular 254-nanometer UV-C '
+                   'root zones supply oxygen to micro-aerobic biofilms, giving 95.1% BOD_5 removal across a 3.2-day retention time in the model (with C_in = 140 mg/L and the folio\'s assumed C* = 3.0 mg/L and k = 1.12 per day, C_out = 3.0 + 137 × e^(−1.12 × 3.2) = 6.8 mg/L). Inside the potable loop, ASHRAE Standard 188 addresses Legionella risk management in building water systems; it does not prescribe this design. The folio\'s own targets are continuous recirculation at or above 60 degrees Celsius and 0.6 meters per second, with no stagnant dead-legs. Downstream, an inline annular 254-nanometer UV-C '
                    'photoreactor delivers a germicidal fluence of H = 45 millijoules per square centimeter, which the folio\'s Chick-Watson model converts to a 5.4-log reduction (0.12 log per mJ/cm²). That rate constant is a design assumption. Hijnen et al. (2006, DOI 10.1016/j.watres.2005.10.030) review UV inactivation credit across viruses, bacteria and protozoa; the folio\'s own inference is that a single constant cannot represent every organism. '
                    'Nothing here was simulated in DedalusProject/dedalus (https://github.com/DedalusProject/dedalus, DOI 10.1103/PhysRevResearch.2.023068) or dynamicslab/pysindy (DOI 10.1073/pnas.1517384113); they are named as tools a reader could use to test the design.',
  'act2_deepening': "The wetland and the potable loop work at different scales and never share water. In the subsurface reed bed, Darcy's law Q = K_s * A_c * S sets the horizontal seepage through basalt gravel. If the hydraulic retention time is cut too short by overloading the bed with greywater, organic matter passes through the root zone unoxidized and the outlet turns more turbid. That matters for reuse: if greywater were later disinfected with UV for non-potable uses, turbid effluent would scatter the light and need a higher dose. In this design the potable UV-C reactor never receives greywater; the two systems stay separate. At clinical sink basins, offset drains and self-heating P-traps are proposed to reduce drain droplets (untested).",
- 'act4_deepening': 'In modern architectural hydro-engineering, building engineers and AI digital twin agents could manage water quality with predictive analytics. This is a proposal; no such system exists here. Alongside periodic manual testing, plumbing networks could monitor flow velocities, return-loop temperatures, and UV transmittance sensors across every vertical pipe riser. If occupancy drops on an inpatient hospital floor over a holiday weekend, an agent could detect likely stagnation and start targeted high-temperature flush cycles meant to reduce it. Outside, weather-aware algorithms could adjust greywater dosing across wetland gravel cells ahead of heavy rain. An active '
-                   'frontier challenge focuses on closed-loop decentralized biosensors: can microfluidic '
-                   'DNA-sequencing chips integrated directly into clinical plumbing manifolds continuously monitor '
-                   'microbial biodiversity, autonomously alerting infection control teams to emerging '
-                   'antibiotic-resistant genetic markers before waterborne biofilms can colonize patient care areas? '
-                   'Such integration would make net-zero water a public-health design question as well as a conservation goal.'}
+ 'act4_deepening': 'In modern architectural hydro-engineering, building engineers and AI digital twin agents could manage water quality with predictive analytics. This is a proposal; no such system exists here. Alongside periodic manual testing, plumbing networks could monitor flow velocities, return-loop temperatures, and UV transmittance sensors across every vertical pipe riser. If occupancy drops on an inpatient hospital floor over a holiday weekend, an agent could flag likely stagnation for building staff to review. Outside, weather-aware algorithms could adjust greywater dosing across wetland gravel cells ahead of heavy rain. An open '
+                   'question, stated as a question and not a result: could biosensors integrated into building plumbing '
+                   'monitor the microbial community in the water? Whether that would be useful is untested, and this folio draws no conclusion.'}
 
 PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a regenerative hospital courtyard with subsurface constructed '
         'botanical wetlands and a UV-C water manifold would look like (artistic impression, not a measured '
@@ -240,30 +240,28 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a regenerative 
             'imagining a hospital courtyard integrating terraced subsurface gravel-reed wetlands above a '
             'stainless-steel UV-C water purification vault.'}
 
-DISPATCH = {'kicker': 'FRONTIER PLUMBING-DESIGN DISPATCH · LEGIONELLA RISK MANAGEMENT & PATHOGEN-CONTROL PLUMBING',
+DISPATCH = {'kicker': 'FRONTIER PLUMBING-DESIGN DISPATCH · LEGIONELLA RISK MANAGEMENT & HOT-WATER RECIRCULATION',
  'headline': 'Sink Drains as Bacterial Reservoirs: What Thermal Recirculation and UV-C Are Designed to Limit',
  'body': 'Kotay et al. (2017, DOI 10.1128/AEM.03327-16) used a fluorescent marker organism to model bacterial dispersion from hand-washing sink traps. This folio pairs an external Kadlec–Knight greywater wetland with an internal 45 mJ/cm² UV-C and 60 °C recirculation loop as a design response; the 5.4-log figure is a model value, not a measured result.'}
 
 META_3D = ('Terraced Subsurface Wetland & UV-C Fluence Basin',
  'X: Hydraulic Residence Path · Z: Reed-Bed Width · Y: Kadlec–Knight BOD Decay & UV-C Dose')
 
-ES_TRANSLATION = {'title_es': 'Humedales Construidos de Agua Neta Cero: Filtración Subsuperficial de Darcy, Fotólisis UV-C y Plomería para Control de Patógenos (CSI 22 13 00)',
- 'subtitle_es': 'Cómo un lecho subsuperficial modelado reduce alrededor del 95% de la DBO_5 de las aguas grises en el exterior, mientras la recirculación a 60 °C y un reactor UV-C de 254 nm son metas de diseño para limitar el crecimiento de Pseudomonas y Legionella en el interior.',
+ES_TRANSLATION = {'title_es': 'Agua Neta Cero y Humedales Construidos para Aguas Grises: Filtración Subsuperficial de Darcy, Fotólisis UV-C y Recirculación de Agua Caliente (Estudio de Diseño)',
+ 'subtitle_es': 'Cómo un lecho subsuperficial de carrizos, modelado, elimina alrededor del 95% de la DBO_5 de las aguas grises en el exterior, mientras la recirculación a 60 °C y un reactor UV-C de 254 nm son metas de diseño para limitar el crecimiento de bacterias oportunistas transmitidas por el agua en el interior.',
  'why_es': 'Una manguera estancada al sol desarrolla biopelículas en pocos días, mientras que un arroyo de montaña en '
            'flujo continuo bajo luz ultravioleta tiende a permanecer limpio.',
  'bridge_es': 'Kotay et al. 2017 usaron un organismo marcador para modelar cómo las bacterias pueden dispersarse desde el sifón de un lavabo (DOI 10.1128/AEM.03327-16). Existe una guía de prevención y control de infecciones para Fibrosis Quística (Saiman et al. 2014, DOI 10.1086/676882). Este folio es un estudio de diseño de plomería: no reporta resultados clínicos, no es una recomendación de control de infecciones y no sustituye las indicaciones del equipo de atención.',
  'plain_es': 'El agua en los edificios modernos suele tratarse como un recurso desechable de un solo uso: entra agua '
              'potable limpia por los grifos, se utiliza una sola vez y se va directamente al drenaje. Al mismo tiempo, '
-             'el agua tibia estancada dentro de tuberías mal diseñadas puede acumular biopelículas viscosas de '
-             'bacterias, como una manguera de jardín olvidada bajo el sol de verano. En edificios ecológicos y '
-             'hospitales modernos, el agua debe cumplir dos funciones opuestas a la vez. En los jardines exteriores, '
-             'lechos de grava sembrados con carrizos y juncos filtran de manera natural las aguas grises de lavabos y '
-             'regaderas mediante las raíces de las plantas, tratándolas para reutilizarlas en inodoros y riego. '
-             'Mientras tanto, en las tuberías interiores, el agua caliente se mantiene en circulación continua a sesenta grados antes de las válvulas mezcladoras y pasa por cámaras de luz ultravioleta que dañan el material genético de las bacterias para que menos de ellas puedan multiplicarse, como una barrera más antes del grifo.',
+             'el agua que permanece quieta dentro de tuberías tibias puede desarrollar capas viscosas de '
+             'bacterias, como una manguera de jardín olvidada bajo el sol de verano. En hospitales y '
+             'edificios limpios, el agua debe cumplir dos funciones opuestas a la vez. En el patio exterior, '
+             'lechos de grava sembrados con carrizos resistentes filtran de manera natural el agua de lavabos y '
+             'regaderas mediante las raíces de las plantas, limpiándola para poder reutilizarla en inodoros y riego de jardines. '
+             'Mientras tanto, dentro de las tuberías de agua potable del edificio, el agua se mantiene en circulación constante a temperaturas altas y pasa por cámaras de luz ultravioleta intensa. Esta luz ultravioleta daña el material genético de las bacterias presentes en el agua para que menos de ellas puedan multiplicarse, una barrera más en el camino al grifo.',
  'deep_es': 'La ingeniería hidrosanitaria sustentable opera bajo un esquema biológico dual: biorremediación ecológica en el exterior y control térmico y por luz ultravioleta en el interior (metas de diseño). En el humedal subsuperficial, las '
-            'aguas grises fluyen bajo una capa seca de grava volcánica donde, en el modelo del folio, la rizosfera reduce alrededor del noventa y cinco por ciento de la DBO_5; mantener el agua bajo la grava limita el contacto con la superficie. En las '
-            'redes interiores de agua potable, el diseño del folio usa recirculación continua a sesenta grados Celsius para evitar zonas de estancamiento donde proliferan patógenos oportunistas como '
-            'Pseudomonas y Legionella. Complementariamente, un reactor ultravioleta en línea de 254 nanómetros aplica '
-            'una dosis germicida que, en el modelo del folio, equivale a 5.4 reducciones logarítmicas; es un valor de diseño, no una medición. En la práctica profesional, los ingenieros modelan estos sistemas mediante '
-            'herramientas computacionales en computadora, diseñando lavabos clínicos con desagües desfasados que '
-            'buscan reducir las gotas y salpicaduras del desagüe.'}
+            'aguas grises fluyen bajo una capa seca de grava volcánica donde, en el modelo del folio, la rizosfera reduce alrededor del noventa y cinco por ciento de la DBO_5 (con C_ent = 140 mg/L y los valores supuestos del folio C* = 3.0 mg/L y k = 1.12 por día, C_sal = 3.0 + 137 × e^(−1.12 × 3.2) = 6.8 mg/L); mantener el agua bajo la grava busca limitar el contacto con la superficie. En las '
+            'redes interiores de agua potable, las metas de diseño del folio son la recirculación continua a 60 °C o más, sin ramales estancados. Complementariamente, un reactor ultravioleta en línea de 254 nanómetros aplica '
+            'una dosis germicida que, en el modelo del folio, equivale a 5.4 reducciones logarítmicas; es un valor de diseño, no una medición. Herramientas computacionales abiertas podrían usarse para estudiar un sistema así; este folio no las ejecutó. '
+            'Un lavabo clínico con desagüe desfasado se propone para reducir las gotas del desagüe (sin probar).'}

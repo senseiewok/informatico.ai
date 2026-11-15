@@ -12,8 +12,8 @@ All **48 Informatico.ai Folios** (and **40 CF Folios** = **88 total essays**) pa
 | **`A.12`** | `10.1126/science.aat9513` (Mandal et al. 2018 Porous Radiative Sky-Cooling, *Science*) | `NREL/EnergyPlus` + `compas-dev/compas` |
 | **`P.11`** | `10.1103/PhysRevA.86.032324` (Fowler et al. 2012 Surface Codes) & `10.1073/pnas.1619152114` (Reiher et al. 2017 FeMoCo) | `quantumlib/Stim` + `pyscf/pyscf` |
 | **`P.12`** | `10.1007/s00222-003-0316-5` (Golse & Saint-Raymond 2003 Boltzmann-to-Navier–Stokes) & `arXiv:2503.01800` (Deng–Hani–Ma 2025) | `FEniCS/dolfinx` + `GraphCast` |
-| **`M.11`** | `10.4007/annals.2015.182.1.9` (Bourgain & Demeter 2015 $\ell^2$ Decoupling) & `arXiv:2502.17655` (Wang–Zahl 2025 3D Kakeya) | `anthropics/formal-math` (`Zeta23.lean`, `Challenge/XiPrime.lean`) |
-| **`M.12`** | `10.1145/1568318.1568324` (Regev 2009 Learning With Errors) & `NIST FIPS 203` (ML-KEM) | `anthropics/formal-math` (`ETHIsFalse.lean`, `EightSquare.lean`) + `open-quantum-safe/liboqs` |
+| **`M.11`** | `10.4007/annals.2015.182.1.9` (Bourgain & Demeter 2015 $\ell^2$ Decoupling) & `arXiv:2502.17655` (Wang–Zahl 2025 3D Kakeya preprint) | `anthropics/formal-math`: README read 2026-11-14 lists `zeta23` (Alpöge–Furman), not Wang–Zahl or Guth–Maynard; `zeta23/Challenge/XiPrime.lean` in its file tree |
+| **`M.12`** | `10.1145/1568318.1568324` (Regev 2009 Learning With Errors) & `NIST FIPS 203` (ML-KEM) | `anthropics/formal-math`: README read 2026-11-14 lists `zeta23`, `3sum-apsp`, `eth` (not built here); no `ETHIsFalse.lean` or `EightSquare.lean` in its file tree that day + `open-quantum-safe/liboqs` |
 
 ---
 
@@ -64,6 +64,8 @@ Public GitHub Repository (54 SKILL.md & Python Verifiers): https://github.com/se
 
 ### Email 2 — Lean Prover Community / `erdosproblems.com` Educational Showcase (Folios `M.01`, `M.02`, `M.11`, `M.12` · `BOUNTY-M1`)
 
+> Do not send as written: the M.01, M.11 and M.12 lines were corrected on 2026-11-14 (no line count appears in the fermats-last-theorem README; ETHIsFalse.lean and EightSquare.lean do not appear in the formal-math file tree), but the M.04 line and the "Counterfactual Axiom Knockout" wording were not re-checked; confirm them against the folios first.
+
 - **To:** Lean Zulip `#formalization` / `#general` showcase thread (or educational link note to `erdosproblems.com` maintainer)
 - **Subject:** Interactive Bilingual Explorable Monographs for Lean 4 Formalizations (`fermats-last-theorem`, `formal-math`, `pfr`, `equational_theories`) + Open-Bounty Crucible
 
@@ -75,11 +77,11 @@ We have published Volume VI of Informatico.ai, an open-access bilingual (EN + ES
 - Dedicated Bounty Folio B.01 (BOUNTY-M1 Erdős Sidon Sets & Lean 4 Story, Proof & Code): https://informatico.ai/bounties/b01/ (ES-MX: https://informatico.ai/es-mx/bounties/b01/)
 - Dedicated Bounty Folio B.06 (BOUNTY-M2 PhysLean Gauge Anomaly & DMRG Story, Proof & Code): https://informatico.ai/bounties/b06/ (ES-MX: https://informatico.ai/es-mx/bounties/b06/)
 - All 6 Open-Bounty & Prize Folios Hub: https://informatico.ai/bounties/
-- Folio M.01 (Fermat's Last Theorem & 13M-Line Lean 4 Blueprint): https://informatico.ai/math/m01/
+- Folio M.01 (Fermat's Last Theorem, read beside the anthropics/fermats-last-theorem Lean 4 repository): https://informatico.ai/math/m01/
 - Folio M.02 (Riemann Zero-Density & Challenge/XiPrime.lean): https://informatico.ai/math/m02/
 - Folio M.04 (Polynomial Freiman-Ruzsa teorth/pfr & 22M Magma Graph): https://informatico.ai/math/m04/
-- Folio M.11 (Wang-Zahl 3D Kakeya & Guth-Maynard 30/13 Zero-Density): https://informatico.ai/math/m11/
-- Folio M.12 (Anthropic formal-math ETHIsFalse.lean, EightSquare.lean & NIST FIPS 203 Lattices): https://informatico.ai/math/m12/
+- Folio M.11 (The 3D Kakeya Preprint of Wang and Zahl and the Guth-Maynard Zero-Density Estimate): https://informatico.ai/math/m11/
+- Folio M.12 (Public Lean 4 Repositories and NIST FIPS 203 (ML-KEM): What They State, Side by Side): https://informatico.ai/math/m12/
 
 Note on Grounding: These essays are educational interactive companions and deterministic numeric verifiers (not new claims on open Erdős cash bounties). Each Folio links directly to the primary repositories (anthropics/fermats-last-theorem, anthropics/formal-math, teorth/pfr, teorth/equational_theories) and includes an interactive Counterfactual Axiom Knockout mode plus a downloadable Python verifier and SKILL.md.
 

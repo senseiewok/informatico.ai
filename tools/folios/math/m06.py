@@ -12,18 +12,19 @@ FOLIO = {'folio_id': 'M.06',
  'category_code': 'M',
  'title': 'Sub-Cubic Fine-Grained Reductions (3SUM → APSP) and Step-Level Process Supervision '
           '(PRM800K)',
- 'subtitle': "How Ryan Williams's circuit-polynomial APSP speedup and step-level Process Reward "
-             'Models prune exponential hallucinations in formal proof trees and genomic off-target '
-             'scans.',
+ 'subtitle': "Ryan Williams's circuit-complexity algorithm for All-Pairs Shortest Paths, a "
+             "repository README's statement of a polynomial improvement for APSP and 3SUM, and "
+             "OpenAI's step-level process-supervision paper. Comparisons with proof search or "
+             "genomics are this folio's own analogies.",
  'date_published': '2026-11-01',
- 'date_redated': '2026-11-02',
- 'current_edition': 'REV 1.1',
- 'status_badge': 'REDATED REV 1.1',
+ 'date_redated': '2026-11-14',
+ 'current_edition': 'REV 1.2',
+ 'status_badge': 'REDATED REV 1.2',
  'primary_kernel': 'tools/discovery/formal_proof_thermodynamic_landscape.py',
  'colophon': {'identifier': 'M.06 · Fine-Grained Complexity & PRM',
               'kernels': 'Williams APSP · 3SUM · Step-Level PRM',
-              'benchmarks': 'SIAM 10.1137/15M1024524 · PRM800K',
-              'bridge': 'Sub-Cubic Pruning ↔ pegRNA Off-Target Scan'},
+              'benchmarks': 'SIAM 10.1137/15M1024524 · PRM800K (arXiv:2305.20050)',
+              'bridge': 'Search pruning ↔ screening many candidates (analogy only)'},
  'sliders': [{'label': 'Polynomial Block Degree Parameter (d_poly)',
               'min': 2,
               'max': 11,
@@ -38,42 +39,78 @@ FOLIO = {'folio_id': 'M.06',
               'unit': 'α = '}],
  'steps': ['Stage 1 (Min-Plus Distance Product): Formulates All-Pairs Shortest Paths as (A ⋆ '
            'B)_{ij} = min_k (A_{ik} + B_{kj}) over n = 4,096 vertices.',
-           'Stage 2 (Razborov-Smolensky Polynomial Batching): Compresses B = 2^(Θ(√log n)) '
-           'comparisons into low-degree polynomials over GF(2).',
-           'Stage 3 (Step-Level Process Verification): Evaluates P(step_k valid | context) at '
-           'every proof node, pruning invalid tactics immediately.',
-           'Stage 4 (Certified Horizon Convergence): Achieves 14.8× sub-cubic speedup and lifts '
-           '20-step proof validity from 41.2% (ORM) to 94.6% (PRM).'],
- 'readouts': [{'label': 'Sub-Cubic Speedup Factor', 'value': '14.8× (at n = 4,096)'},
-              {'label': '20-Step PRM Proof Validity', 'value': '94.6% (vs 41.2% ORM)'},
-              {'label': 'ETH #3-SAT Lower Bound', 'value': '2^(0.385 n)'},
-              {'label': 'Verification Kernel Verdict', 'value': 'QED VERIFIED (Sub-Cubic)'}],
+           'Stage 2 (Razborov-Smolensky Polynomial Batching): Williams uses Razborov-Smolensky '
+           'polynomials over F_2 to reduce a min-plus product to a relatively small number of '
+           'rectangular matrix products (SIAM J. Comput. 2018, abstract).',
+           'Stage 3 (Step-Level Scoring): A process reward model scores each step of a solution. '
+           'Lightman et al. report that process supervision significantly outperformed outcome '
+           'supervision on problems from the MATH dataset (arXiv:2305.20050).',
+           'Stage 4 (Illustrative Numbers): The figures on this page are illustrative. A cubic '
+           'count at n = 4,096 is 4,096³ = 6.87 × 10^10 operations; 14.8 is an assumed divisor '
+           'that no theorem implies. A 20-step chain whose validity is the product of per-step '
+           'probabilities gives 0.9566^20 ≈ 41.2% and 0.99723^20 ≈ 94.6%. None of these is a '
+           'measured result.'],
+ 'readouts': [{'label': 'Assumed Speedup Divisor', 'value': '14.8× at n = 4,096 (assumed, illustrative)'},
+              {'label': '20-Step Chain Validity (model)', 'value': '94.6% vs 41.2% (from assumed per-step probabilities 0.99723 and 0.9566)'},
+              {'label': 'ETH Status (see M.01)', 'value': 'formal-math eth README states it refutes ETH (not checked here)'},
+              {'label': 'Verification Status', 'value': 'nothing verified by this site'}],
  'sidenote_1': {'kicker': 'SIDENOTE M.06-A · SIAM DOI 10.1137/15M1024524',
-                'body': 'Ryan Williams broke the 50-year O(n^3) barrier for dense All-Pairs '
-                        'Shortest Paths using circuit-complexity polynomials without fast matrix '
-                        'multiplication.'},
- 'sidenote_2': {'kicker': 'SIDENOTE M.06-B · PRIME EDITING OFF-TARGET VERIFICATION',
-                'body': 'Step-level thermodynamic verification prunes invalid pegRNA '
-                        'reverse-transcriptase templates before synthesis (DOI '
-                        '10.1016/j.xcrm.2024.101544).'},
+                'body': "Williams's abstract describes a randomized algorithm that computes the "
+                        'min-plus product, and so APSP, in time n^3/2^(Ω(log n)^(1/2)) on the real '
+                        'RAM, where earlier algorithms took O(n^3/log^c n) for c ≤ 2. It uses '
+                        'Razborov-Smolensky polynomials to reduce the product to rectangular '
+                        'matrix products over F_2; a deterministic version runs in n^3/2^(log^δ n) '
+                        'for some δ > 0.'},
+ 'sidenote_2': {'kicker': 'SIDENOTE M.06-B · A LOOSE ANALOGY',
+                'body': 'The folio compares pruning a search early with screening many candidate '
+                        'sequences. This is an analogy only. Nothing here was run on a genome, and '
+                        'nothing here is a method for designing guide RNAs.'},
  'skill': {'filename': 'fine-grained-prm-SKILL.md',
            'name': 'fine-grained-prm',
            'description': 'AI-agnostic skill for fine-grained complexity reductions (3SUM/APSP/OV) '
                           'and step-level process reward verification.',
-           'rules': ['Replace naive O(n^3) min-plus loops with blocked polynomial/tensor '
-                     'evaluations when scanning dense distance graphs.',
-                     'Verify every intermediate reasoning step k with a deterministic checker '
-                     'rather than relying on final-answer outcome supervision.',
-                     'Enforce fine-grained SETH/ETH/APSP lower-bound guards before attempting '
-                     'exact dynamic programming on large graphs.']},
- 'revisions': [{'edition': 'REV 1.1',
+           'rules': ['Do not present the n^3/2^(Ω(√log n)) APSP bound as a practical speedup: it is an '
+                     'asymptotic result with an unspecified constant, and no speedup at a given n '
+                     'follows from it.',
+                     'Check each intermediate reasoning step with an exact checker where one '
+                     'exists, and say when a step score is only a model estimate.',
+                     'State fine-grained hypotheses (3SUM, APSP, SETH, ETH) as conjectures, and '
+                     'report a claim that refutes one as the claim of its source, not as '
+                     'established.']},
+ 'revisions': [{'edition': 'REV 1.2',
+                'date': '2026-11-14',
+                'summary': 'REV 1.2 (Redated 2026-11-14): Grounding revision. The speedup of '
+                           '14.8x at n = 4,096, the validity figures 41.2% and 94.6%, and the '
+                           'bound 2^(0.385 n) were presented as results; none follows from the '
+                           'cited papers. The first two are now labelled as illustrative, with the '
+                           'per-step probabilities that produce the validity figures stated, and '
+                           'the third is removed. Williams (2018) is described as its abstract '
+                           'does, as a randomized algorithm that uses rectangular matrix products '
+                           '(the earlier text said it needs no fast matrix multiplication). The '
+                           'opening scene of two researchers in Berkeley and Stanford, the '
+                           "'QED verified' labels, the wrong DOI attached to an antisense "
+                           'oligonucleotide, and the claim that the method prunes genome-wide '
+                           'off-target edits in seconds are removed; the Cystic Fibrosis section '
+                           'is shortened to a labelled analogy. The Alman and Vassilevska Williams '
+                           'result is reported as a statement of the repository README and of '
+                           'the preprint, which this site has not checked.',
+                'opus': 'Review: DOIs checked in Crossref and the Scite index on 2026-11-14; the '
+                        'Williams abstract and the Lightman et al. arXiv abstract were read, and '
+                        'the Vassilevska Williams-Williams subcubic equivalences were checked '
+                        'with Scite check_claim. Vassilevska Williams & Williams (DOI '
+                        '10.1145/3186893), Gajentaan & Overmars (DOI '
+                        '10.1016/0925-7721(95)00022-2) and Lightman et al. (arXiv:2305.20050) were '
+                        'added to the source list.'},
+               {'edition': 'REV 1.1',
                 'date': '2026-11-02',
                 'summary': 'REV 1.1 (Redated 2026-11-02): Certified Williams sub-cubic APSP '
                            'circuit polynomials and step-level PRM800K process reward supervision '
-                           'with 4-Seat Frontier Council review.',
+                           'with 4-Seat Frontier Council review. (REV 1.2: "certified" wording '
+                           'withdrawn.)',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'exp(c √log n) sub-cubic divisor and step-level survival probability '
-                        'prod_{k=1}^L p_k.'},
+                        'prod_{k=1}^L p_k. (REV 1.2: "verified" wording withdrawn; the product '
+                        'formula is a model, and the divisor has no stated constant.)'},
                {'edition': 'REV 1.0',
                 'date': '2026-11-01',
                 'summary': 'REV 1.0 (Published 2026-11-01): Initial 5-Act monograph uniting '
@@ -81,8 +118,8 @@ FOLIO = {'folio_id': 'M.06',
                            'Reward verification.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'exp(c √log n) sub-cubic divisor and step-level survival probability '
-                        'prod_{k=1}^L p_k.'}],
- 'governing_law': 'O(n³ / 2^(Ω(√log n))) APSP · Step-Level PRM',
+                        'prod_{k=1}^L p_k. (REV 1.2: "verified" wording withdrawn.)'}],
+ 'governing_law': 'O(n³ / 2^(Ω(√log n))) APSP (randomized) · Step-Level PRM',
  'volume': 3,
  'volume_code': 'VOL. 03',
  'reading_time': '22 MIN READ',
@@ -94,9 +131,10 @@ FOLIO = {'folio_id': 'M.06',
            'mentioning': 100,
            'contrasting': 0,
            'retracted': False,
-           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 148 citing '
-                      'publications (0 supporting, 100 mentioning, 0 contrasting) on Williams '
-                      'sub-cubic All-Pairs Shortest Paths circuit-polynomial reduction.'}}
+           'summary': 'Scite index entry for Williams 2018 (DOI 10.1137/15M1024524), checked '
+                      '2026-11-08: 148 citing publications (0 supporting, 100 mentioning, 0 '
+                      'contrasting) and no retraction notice. These counts describe that one '
+                      'paper, not this folio.'}}
 
 LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'word_count': '4,650 WORDS',
@@ -107,64 +145,79 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
            'mentioning': 100,
            'contrasting': 0,
            'retracted': False,
-           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 148 citing '
-                      'publications (0 supporting, 100 mentioning, 0 contrasting) on Williams '
-                      'sub-cubic All-Pairs Shortest Paths circuit-polynomial reduction.'},
+           'summary': 'Scite index entry for Williams 2018 (DOI 10.1137/15M1024524), checked '
+                      '2026-11-08: 148 citing publications (0 supporting, 100 mentioning, 0 '
+                      'contrasting) and no retraction notice. These counts describe that one '
+                      'paper, not this folio.'},
  'act1_title': 'Act I — The Quadratic Wall in Polynomial Time and the Rise of Fine-Grained '
                'Complexity',
- 'act1_dropcap': 'In the early nineteen-seventies, two pioneering computer scientists named Stephen Cook and Richard Karp drew a monumental boundary across the landscape of computation, dividing problems into tractable polynomial tasks and intractable exponential labyrinths. For decades, researchers celebrated any algorithm that ran in polynomial time as an unqualified practical victory. Yet as the digital age advanced into the twenty-first century, that classical dividing line began to fray. When scientists confronted datasets containing millions of genetic sequences or proof trees spanning hundreds of thousands of logical deductions, an algorithm requiring cubic time was scarcely better than an outright impossibility, demanding centuries of continuous supercomputing. In Berkeley and Stanford, Virginia Vassilevska Williams and Ryan Williams realized that polynomial time was not a single flat plain, but a rugged terrain of hidden computational walls, launching a quest to discover whether fundamental graph algorithms could break through their cubic barriers.',
- 'act1_plain_bridge': 'In plain words, this research confronts the hidden wall that slows down everyday computer calculations. Imagine planning a road trip across the entire continent while trying to find the shortest driving route between every pair of towns. If you examine every possible connecting highway between thousands of cities one by one, your computer gets hopelessly bogged down. Even though finding the shortest path is technically possible, checking every combination takes far too long when networks grow large. For decades, engineers believed this calculation could never run substantially faster. But computer scientists discovered that you do not need to inspect every route individually. By grouping regional highway clusters together, an algorithm can rule out thousands of slow detours in a single stroke. This breakthrough speeds up everyday navigation apps, helps logistics companies route delivery trucks efficiently, and allows geneticists to compare millions of DNA strands without overloading computer servers.',
- 'act1_body': "In 2014 and 2018, Ryan Williams shattered a forty-year algorithmic barrier by proving that the All-Pairs Shortest Paths problem can be solved in sub-cubic time via circuit complexity (SIAM Journal on Computing, DOI 10.1137/15M1024524). Instead of executing naive cubic comparisons across all intermediate vertices, his algorithm partitions the graph into logarithmic blocks, translating min-plus distance comparisons into low-degree polynomial systems over finite fields. By evaluating these polynomials simultaneously using fast rectangular matrix multiplication, the algorithm shaves a super-polylogarithmic factor off the classical cubic runtime without violating the Strong Exponential Time Hypothesis. Around the same time, researchers in artificial intelligence realized that automated multi-step mathematical reasoning faced an identical scaling bottleneck: evaluating proof trees only by final outcomes allowed single early errors to poison downstream search paths. Coupling Williams's sub-cubic algebraic batching with step-by-step process verification transformed intractable tree search into an efficient, certified reasoning pipeline capable of navigating massive formal proof graphs without combinatorial explosion.",
- 'act1_stakes': 'The emergence of fine-grained complexity and step-level verification fundamentally altered how scientists establish the computational limits of mathematical truth. For decades, complexity theorists could only prove conditional barriers based on unproven conjectures like P versus NP, leaving open whether everyday algorithms could be subtly accelerated. By weaving 3SUM, All-Pairs Shortest Paths, and Orthogonal Vectors into a web of fine-grained reductions, researchers proved that hundreds of seemingly unrelated algorithmic problems share identical computational bottlenecks. Concurrently, formal proof engineers faced a parallel challenge: verifying thousands of intricate lemma steps in proof assistants like Lean 4 often stalled because tactic search trees exploded exponentially. Introducing step-level Process Reward Models resolved this bottleneck by scoring individual logical inferences at generation time, pruning invalid proof attempts before computational resources were wasted. This dual breakthrough bridges theoretical complexity with practical verification, ensuring that both graph algorithms and machine-checked mathematical libraries operate within provably optimal, certified execution bounds.',
- 'pullquote': '"Polynomial time is not enough when n is the human genome or a 30,000-lemma proof '
-              'tree; fine-grained reductions and step-level verification prune the search horizon '
-              'before it explodes."',
+ 'act1_dropcap': 'In the early 1970s Stephen Cook and Richard Karp showed how to separate problems that can be solved in polynomial time from NP-complete ones, which are believed to need far more. Polynomial time is not always fast enough: an algorithm that takes cubic time on a graph with n nodes needs about n^3 steps. Fine-grained complexity asks which polynomial exponents can be improved. Its central conjectures concern 3SUM, All-Pairs Shortest Paths (APSP) and the Strong Exponential Time Hypothesis. In 2010 Virginia Vassilevska Williams and Ryan Williams showed that APSP is subcubic-equivalent to several other problems (published in the Journal of the ACM, 2018, DOI 10.1145/3186893), and in 2018 Ryan Williams published an algorithm that takes a factor 2^(Ω(√log n)) off the cubic running time for APSP.',
+ 'act1_plain_bridge': 'In plain words, this research is about the shortest route between every pair of towns in a large road network. Checking every possible connection one by one takes a number of steps that grows roughly with the cube of the number of towns, which becomes a problem for big networks. For a long time nobody knew how to do substantially better than a modest saving. Williams showed how to save a factor that grows slowly with the size of the network, and a recent repository README states a much larger polynomial improvement, which this site has not checked. This folio makes no claim about navigation apps, logistics or genetics.',
+ 'act1_body': "Ryan Williams's paper in the SIAM Journal on Computing (2018, DOI 10.1137/15M1024524) gives a randomized algorithm for the min-plus product, and so for APSP, that runs in time n^3/2^(Ω(√log n)) on the real RAM, where earlier algorithms took O(n^3/log^c n) for c ≤ 2. It applies Razborov-Smolensky polynomials to reduce the min-plus product to a relatively small number of rectangular matrix products over F_2, each computed by a method due to Coppersmith. The README of the repository anthropics/formal-math lists a 3sum-apsp project whose stated result, due to Alman and Vassilevska Williams (arXiv:2610.06783), is that 3SUM can be solved in O(n^1.9992) steps and APSP in O(n^2.99942) steps on integers of polynomial size; a later preprint by Chan (arXiv:2610.42012) refers to this result as announced by those authors. Both are reported statements: this site has not built the project or checked the proofs. Separately, Lightman et al. (arXiv:2305.20050) compare outcome supervision, which rewards only a final answer, with process supervision, which rewards each step, for models solving problems from the MATH dataset.",
+ 'act1_stakes': 'Fine-grained complexity ties the exact exponent of many problems to a few conjectures. Vassilevska Williams and Williams showed that APSP is subcubic-equivalent to several other problems (DOI 10.1145/3186893), and Gajentaan and Overmars showed that many problems in computational geometry are 3SUM-hard, meaning a truly subquadratic algorithm for any of them would give one for 3SUM (DOI 10.1016/0925-7721(95)00022-2). A statement that refutes one of these hypotheses is a very large claim and needs independent expert review. The folio sets this beside process supervision only as an analogy: in both cases a long chain is only as good as its steps.',
+ 'pullquote': 'A long chain is only as reliable as its steps: if each of 20 steps is valid with '
+              'probability p, the whole chain is valid with probability p^20, which is why '
+              'step-level scoring is attractive.',
  'chronology': [('1995',
-                 'Gajentaan & Overmars establish 3SUM-hardness across computational geometry.'),
+                 'Gajentaan & Overmars introduce 3SUM-hardness in computational geometry '
+                 '(DOI 10.1016/0925-7721(95)00022-2).'),
                 ('2010',
                  'Virginia Vassilevska Williams & Ryan Williams prove sub-cubic equivalences '
-                 'around APSP and triangle detection.'),
+                 'around APSP and triangle detection (journal version DOI 10.1145/3186893).'),
                 ('2018',
-                 'Ryan Williams proves O(n^3 / 2^{Omega(sqrt(log n))}) APSP via Razborov–Smolensky '
-                 'circuit polynomials (DOI 10.1137/15M1024524).'),
+                 'Ryan Williams gives a randomized O(n^3 / 2^{Omega(sqrt(log n))}) algorithm for '
+                 'APSP using Razborov–Smolensky polynomials (DOI 10.1137/15M1024524).'),
                 ('2023',
-                 'Lightman et al. (PRM800K) prove step-level process supervision outperforms '
-                 'outcome supervision in multi-step math.')],
+                 'Lightman et al. report that process supervision significantly outperforms '
+                 'outcome supervision on MATH problems (arXiv:2305.20050).'),
+                ('2026',
+                 'Alman & Vassilevska Williams, as listed in the formal-math README, state '
+                 'O(n^1.9992) for 3SUM and O(n^2.99942) for APSP (arXiv:2610.06783); not checked '
+                 'by this site.')],
  'act2_title': 'Act II — How It Actually Works: Razborov–Smolensky Polynomials + Step-Level PRM',
  'act2_analogy': 'Everyday analogy: Imagine planning connecting flights across four thousand regional airports during a holiday storm. If you inspect every single layover combination one by one, you must evaluate billions of possibilities, and your computer freezes. Instead, an experienced travel coordinator groups neighboring airports into regional hubs. By checking weather patterns across whole regional corridors at once, you rule out thousands of delayed connecting routes in a single pass, finding the fastest itinerary without getting overwhelmed.',
- 'act2_plain_primer': 'To see how this batching shortcut works in practice, you can explore two intuitive control knobs. The first knob controls the grouping size, deciding how many regional cities or logical steps are bundled into each algebraic package. If you keep the grouping parameter at zero, the computer checks each connection individually, forcing the calculation into a slow, grinding crawl. But as you dial the grouping knob higher, the computer translates multiple comparisons into algebraic polynomials, evaluating hundreds of routes in parallel. The second knob measures constraint density, tracking how many overlapping rules or scheduling limits crowd into the network. When constraints are sparse, paths remain open and flexible. However, as constraint crowding approaches the critical boundary, conflict points multiply rapidly. By balancing these two knobs, you can watch the algorithm shave hours off computation time while instantly pruning dead-end branches, proving that smart algebraic batching outsmarts brute force.',
- 'distill_diagram': {'analogy_title': 'Regional Airport Hub Routing', 'analogy_sub': 'Batching regional hubs eliminates dominated layovers in one pass', 'force_a_title': 'Polynomial Block Degree (d_poly)', 'force_a_sub': 'Compresses comparison blocks into low-degree polynomial systems', 'force_b_title': 'Constraint Clause Density (alpha)', 'force_b_sub': 'Clause crowding ratio driving fine-grained hardness transitions', 'threshold_title': 'Sub-Cubic Circuit Complexity Barrier', 'threshold_pass': '14.8x speedup on 4,096 nodes; step PRM lifts validity to 94.6%', 'threshold_fail': 'Naive cubic search burns 6.87e10 ops with unpruned logical drift'},
- 'act2_intuition': 'The classical Floyd–Warshall algorithm evaluates the min-plus distance product (A * B)_{ij} = min_k (A_{ik} + B_{kj}) across n vertices, demanding cubic comparisons that stall on large graphs. Ryan Williams broke this limit by grouping intermediate vertices into blocks of size B = 2^{Theta(sqrt(log n))}, converting the boolean comparisons into low-degree polynomial circuits over finite fields (SIAM Journal on Computing, DOI 10.1137/15M1024524). By evaluating these polynomial batches with fast rectangular matrix multiplication, the algorithm achieves a 14.8-fold speedup on graphs with 4,096 nodes. Simultaneously, multi-step automated reasoning faces an analogous bottleneck: searching proof trees using only final outcome rewards allows hallucinations at early steps to poison the entire exploration. Integrating formal complexity reductions in anthropics/formal-math and leanprover-community/mathlib4 (DOI 10.1145/3372885.3373824; https://github.com/anthropics/formal-math) with step-level Process Reward Models evaluates validity at each deduction node. This halts invalid branches immediately, lifting multi-step proof validity from 41.2% under outcome-only supervision to 94.6% under step-verified guidance.',
- 'act2_deepening': 'At a deeper theoretical level, fine-grained reductions weave three foundational conjectures into a unified web: the 3SUM hypothesis, the All-Pairs Shortest Paths conjecture, and the Strong Exponential Time Hypothesis. Under classical assumptions, computing min-plus matrix multiplication was believed to require n^3 operations, meaning no truly sub-cubic algorithm could exist. Ryan Williams circumvented this barrier by employing the Razborov–Smolensky polynomial method from circuit complexity. By expressing threshold gates as probabilistic polynomials of degree d_poly over GF(2), small blocks of min-plus comparisons are compressed into algebraic matrix products. As you adjust the polynomial block degree slider, you control the balance between circuit approximation error and batching throughput. Coupling this block degree with the clause density slider demonstrates how fine-grained hardness transitions govern search spaces: when clause density approaches the satisfiability threshold, branching factor surges, but step-level process scoring prunes invalid branches exponentially, ensuring the sub-cubic pipeline maintains provable correctness without unbounded backtracking.',
- 'walkthrough': ["Experiment 1 (Sub-Cubic Speedup): Inspect how Williams's exp(c * sqrt(log n)) "
-                 'divisor reduces 6.87 x 10^10 naive cubic operations at n = 4,096 by 14.8x.',
-                 'Experiment 2 (Step-Level PRM vs. Outcome-Only): Observe how pruning invalid '
-                 'proof steps at depth k raises 20-step proof validity from 41.2% (ORM) to 94.6% '
-                 '(PRM + Lean 4 kernel).',
-                 'Experiment 3 (Interactive Clause Density): Drag the complexity slider alpha to '
-                 'see how fine-grained hardness scales across constraint graphs.'],
+ 'act2_plain_primer': 'To see how this batching shortcut works in practice, you can explore two intuitive control knobs. The first knob controls the grouping size, deciding how many regional cities or logical steps are bundled into each algebraic package. If you keep the grouping parameter at zero, the computer checks each connection individually, forcing the calculation into a slow, grinding crawl. But as you dial the grouping knob higher, the computer translates multiple comparisons into algebraic polynomials, evaluating hundreds of routes in parallel. The second knob measures constraint density, tracking how many overlapping rules or scheduling limits crowd into the network. When constraints are sparse, paths remain open and flexible. However, as constraint crowding approaches the critical boundary, conflict points multiply rapidly. The two knobs drive an illustration with assumed numbers; they are not measurements of any algorithm.',
+ 'distill_diagram': {'analogy_title': 'Regional Airport Hub Routing', 'analogy_sub': 'Batching regional hubs eliminates dominated layovers in one pass', 'force_a_title': 'Polynomial Block Degree (d_poly)', 'force_a_sub': 'Compresses comparison blocks into low-degree polynomial systems', 'force_b_title': 'Constraint Clause Density (alpha)', 'force_b_sub': 'Clause crowding ratio driving fine-grained hardness transitions', 'threshold_title': 'Sub-Cubic Circuit Complexity Barrier', 'threshold_pass': 'Illustrative: an assumed 14.8x divisor at n = 4,096; modelled 20-step validity 94.6%', 'threshold_fail': 'Naive cubic search needs 4,096^3 = 6.87e10 operations'},
+ 'act2_intuition': 'The classical Floyd–Warshall algorithm evaluates the min-plus distance product (A * B)_{ij} = min_k (A_{ik} + B_{kj}) across n vertices, using about n^3 comparisons. Ryan Williams applied Razborov–Smolensky polynomials to reduce the min-plus product to a relatively small number of rectangular matrix products over F_2 (SIAM Journal on Computing, DOI 10.1137/15M1024524), which gives a running time of n^3/2^(Ω(√log n)). That is an asymptotic statement with an unspecified constant, so it does not say what the speedup is at n = 4,096; the divisor 14.8 on this page is an assumed illustrative value. Separately, multi-step reasoning has an analogous issue: if each of 20 steps is valid independently with probability p, the whole chain is valid with probability p^20. With p = 0.9566 that is about 41.2%, and with p = 0.99723 about 94.6%. These are the two numbers the page shows; they come from the assumed per-step probabilities and are not measurements of any outcome-supervised or process-supervised model.',
+ 'act2_deepening': 'Fine-grained reductions tie together three conjectures: the 3SUM hypothesis, the All-Pairs Shortest Paths conjecture and the Strong Exponential Time Hypothesis. Under those conjectures, computing the min-plus matrix product was believed to need about n^3 operations up to sub-polynomial factors. Williams does not contradict that belief, since his saving is a factor of 2^(Ω(√log n)), which is smaller than any polynomial in n. The README of the 3sum-apsp project states a polynomial saving for APSP, which would contradict the APSP conjecture; this site has not checked that claim. The page\'s sliders are illustrative controls: they are not parameters of Williams\'s algorithm and they do not model the satisfiability threshold.',
+ 'walkthrough': ["Experiment 1 (Illustrative Divisor): With the assumed divisor 14.8, 6.87 × 10^10 "
+                 'naive cubic operations at n = 4,096 become about 4.6 × 10^9. The divisor is not '
+                 "implied by Williams's bound.",
+                 'Experiment 2 (Chain Validity): With assumed per-step probabilities 0.9566 and '
+                 '0.99723, a 20-step chain is valid with probability about 41.2% and 94.6% '
+                 'respectively. These are model values, not measurements.',
+                 'Experiment 3 (Sliders): Drag the complexity slider alpha to see the '
+                 'illustration change; it is not a measurement of any algorithm.'],
  'act4_title': 'Act IV — Human + AI Co-Design & the Structural & Civil Engineering Specification '
                'Bridge',
- 'act4_human_ai': 'Frontier AI models act as step-level tactic generators scored by a Process Reward Model, while sub-cubic graph verifiers and Lean 4 typecheckers guarantee zero silent logical drift. Formalizing fine-grained complexity reductions and circuit-polynomial upper bounds in anthropics/formal-math (https://github.com/anthropics/formal-math) and leanprover-community/mathlib4 (DOI 10.1145/3372885.3373824) prevents subtle index-boundary bugs while guiding AI algorithm synthesis toward provably sub-cubic kernels, audited via Scite Smart Citations (DOI 10.1162/qss_a_00146).',
- 'act4_deepening': 'The combination of sub-cubic graph algorithms and step-level process reward models defines a powerful architecture for scalable AI theorem proving. In modern formal verification systems, generative language models propose candidate mathematical lemmas, while step-level verifiers score the probability that each intermediate deduction is sound before expanding the search frontier. This prevents unverified hallucinations from compounding down deep proof trees. Concurrently, sub-cubic verifiers check equivalence relations across massive dependency graphs, ensuring global consistency across thousands of lemmas. Looking toward future frontiers, this hybrid framework opens exciting avenues in algorithm design and computational complexity. Key open challenges include discovering truly sub-cubic algorithms for All-Pairs Shortest Paths that shave polynomial factors rather than sub-polynomial terms, and establishing unconditional hardness bounds that do not rely on unproven hypotheses. By uniting fine-grained complexity reductions with machine-checked interactive theorem proving, researchers are establishing a transparent, scalable engine for autonomous scientific discovery.',
- 'cf_bridge': 'Designing prime-editing pegRNAs (DOI 10.1016/j.xcrm.2024.101544, PMID 42015509) and '
-              'antisense oligonucleotides (SPL84 for 3849+10kb C->T, DOI '
-              '10.1137/15M1024524) requires scanning millions of off-target genomic windows '
-              'and RNA secondary-structure folding paths. Sub-cubic distance-product reductions '
-              'and step-level thermodynamic verification prune off-target edits across GRCh38 in '
-              'seconds.',
+ 'act4_human_ai': 'Models that propose proof steps can be scored step by step, and a proof assistant such as Lean 4 checks the steps it is given. The folio did not run either, and it does not claim that step-level scoring prevents errors in practice; Lightman et al. report an improvement on a math benchmark, nothing more. Mathlib (DOI 10.1145/3372885.3373824) is the community library Lean projects build on, and the anthropics/formal-math README lists a 3sum-apsp project whose statement this site has not checked.',
+ 'act4_deepening': 'In systems that combine a language model with a proof assistant, one could score the model\'s intermediate deductions before expanding the search. That is a possibility, not a description of a system the folio has tested. If the README statement of a polynomial saving for APSP were confirmed by experts, it would be a major result; that is not something this site can assess.',
+ 'cf_bridge': 'This bridge is an analogy the folio draws and nothing more. A study of prime '
+              'editing for CF-causing CFTR variants in human organoids and airway cells exists '
+              '(Cell Reports Medicine, DOI 10.1016/j.xcrm.2024.101544). The folio only borrows '
+              'the general picture of screening many candidates and pruning early. It makes no '
+              'claim about how guides are designed or about any speed, and nothing here is '
+              'medical advice.',
  'sources': ['Williams, R. (2018). Faster All-Pairs Shortest Paths via Circuit Complexity. SIAM '
              'Journal on Computing, 47(5), 1965–1985. DOI: 10.1137/15M1024524.',
-             'Williams, V. V., & Alman, J. (2018–2026). Fine-grained 3SUM-APSP reductions and '
-             'Anthropic Lean 4 3sum-apsp & eth formalizations '
-             '(https://github.com/anthropics/formal-math, arXiv:2610.06783).',
-             "Lightman, H., et al. (2023). Let's Verify Step by Step (PRM800K). arXiv:2305.20050; "
-             'DeepSeek-Prover-V2 subgoal decomposition '
-             '(https://github.com/deepseek-ai/DeepSeek-Prover-V2, arXiv:2504.21801).',
-             'The mathlib Community (2020). The Lean mathematical library '
-             '(leanprover-community/mathlib4 & anthropics/formal-math, '
-             'https://github.com/anthropics/formal-math). CPP 2020, 367–381. DOI: '
-             '10.1145/3372885.3373824.',
+             'Williams, V. V., & Williams, R. R. (2018). Subcubic equivalences between '
+             'path, matrix, and triangle problems. Journal of the ACM, 65(5). DOI: '
+             '10.1145/3186893.',
+             'Gajentaan, A., & Overmars, M. H. (1995). On a class of O(n²) problems in '
+             'computational geometry. Computational Geometry, 5(3), 165–185. DOI: '
+             '10.1016/0925-7721(95)00022-2.',
+             'Alman, J., & Vassilevska Williams, V. (2026). Truly subquadratic 3SUM and truly '
+             'subcubic APSP via triangles in sparse lopsided graphs. arXiv:2610.06783. Listed as '
+             'the 3sum-apsp project in anthropics/formal-math '
+             '(https://github.com/anthropics/formal-math); README read 2026-11-14. Not built or '
+             'checked by this site. Referred to by Chan et al., arXiv:2610.42012.',
+             "Lightman, H., et al. (2023). Let's verify step by step (PRM800K). arXiv:2305.20050.",
+             'The mathlib Community (2020). The Lean mathematical library. Proceedings of the '
+             '9th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP '
+             '2020), 367–381. DOI: 10.1145/3372885.3373824.',
+             'Bulcaen, M., et al. (2024). Prime editing functionally corrects cystic '
+             'fibrosis-causing CFTR mutations in human organoids and airway epithelial cells. '
+             'Cell Reports Medicine, 5(5), 101544. DOI: 10.1016/j.xcrm.2024.101544.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
              'context of citations and classifies their intent using deep learning '
              '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
@@ -183,9 +236,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         '            <text x="275" y="42" font-size="11" fill="var(--tp-minium)">Naive '
         'Floyd-Warshall O(n^3) + Outcome-Only Search</text>\n'
         '            <text x="315" y="84" font-size="11" fill="var(--tp-verdigris)">Williams '
-        'Sub-Cubic APSP + Step-Level PRM (14.8x Speedup)</text>\n'
+        'Sub-Cubic APSP + Step-Level PRM (assumed 14.8x, illustrative)</text>\n'
         '            <text x="210" y="204" font-size="11" fill="currentColor">Graph / Proof '
-        'Horizon n (up to 4,096 Nodes · 94.6% Certified)</text>\n'
+        'Horizon n (up to 4,096 Nodes · 94.6% modelled)</text>\n'
         '          </svg>'}
 
 PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a pruned polynomial circuit tree revealing an '
@@ -195,30 +248,36 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a pruned polyno
             'geometric visualization imagining a hierarchical circuit tree where unverified '
             'branches are pruned away to leave a verified shortest path.'}
 
-DISPATCH = {'kicker': 'FRONTIER COMPLEXITY & AI DISPATCH · WILLIAMS SUB-CUBIC APSP & OPENAI PRM800K',
- 'headline': 'Anthropic/Community Lean 4 Fine-Grained Reductions (3SUM → APSP) Meet Step-Level '
+DISPATCH = {'kicker': 'FINE-GRAINED COMPLEXITY & PROCESS SUPERVISION · WILLIAMS APSP, A REPOSITORY STATEMENT, '
+           'AND PRM800K · REPORTED, NOT CHECKED HERE',
+ 'headline': "Williams's APSP Algorithm, a Repository's Statement on 3SUM and APSP, and Step-Level "
              'Process Supervision',
- 'body': "Combining Ryan Williams's sub-cubic O(n^3 / 2^{Ω(√log n)}) All-Pairs Shortest Paths "
-         "algorithm (SIAM J. Comput. DOI 10.1137/15M1024524) with Lightman et al.'s step-level "
-         'Process Reward Models (PRM800K, arXiv:2305.20050), Anthropic Lean 4 3sum-apsp & eth '
-         'formalizations (https://github.com/anthropics/formal-math, arXiv:2610.06783), and '
-         'prime-editing off-target verification (Cell Reports Medicine DOI '
-         '10.1016/j.xcrm.2024.101544) prunes exponential hallucinations at every intermediate '
-         'step.'}
+ 'body': "Ryan Williams's randomized All-Pairs Shortest Paths algorithm runs in time "
+         "n^3 / 2^(Ω(√log n)) (SIAM J. Comput. DOI 10.1137/15M1024524). The README of "
+         'anthropics/formal-math lists a 3sum-apsp project whose stated result, by Alman and '
+         'Vassilevska Williams (arXiv:2610.06783), is a polynomial saving for 3SUM and APSP. '
+         "Lightman et al. (PRM800K, arXiv:2305.20050) report that step-level process supervision "
+         'outperformed outcome supervision on MATH problems. This site reports these results and '
+         'has not checked the repository or the preprint.'}
 
 META_3D = ('Williams (min,+) Tropical Matrix Shortcut Trough',
  'X: Source Vertex Index i · Z: Target Vertex Index j · Y: Sub-Cubic Shortest-Path Potential')
 
 ES_TRANSLATION = {'title_es': 'Reducciones Subcúbicas de Grano Fino (3SUM → APSP) y Supervisión de Procesos Paso a '
              'Paso (PRM800K)',
- 'subtitle_es': 'Cómo la aceleración polinomial en circuitos de Ryan Williams para Caminos Más '
-                'Cortos entre Todos los Pares (APSP) y los Modelos de Recompensa de Procesos podan '
-                'alucinaciones exponenciales en pruebas formales y genómica.',
+ 'subtitle_es': 'El algoritmo de Ryan Williams, basado en complejidad de circuitos, para Caminos '
+                'Más Cortos entre Todos los Pares (APSP), lo que afirma el README de un '
+                'repositorio sobre una mejora polinomial para APSP y 3SUM, y el artículo de '
+                'supervisión por pasos de OpenAI. Las comparaciones con la búsqueda de pruebas o '
+                'la genómica son analogías de este folio.',
  'why_es': 'En vez de verificar uno por uno todos los vuelos de conexión entre 4,000 aeropuertos '
            '(O(n³)), agrupas los centros regionales en paquetes algebraicos y descartas rutas '
            'dominadas en bloque.',
- 'bridge_es': 'La verificación paso a paso (PRM) y el empaquetamiento subcúbico aceleran el '
-              'cribado genómico de sitios fuera de blanco (off-target) para editores de bases y '
-              'prime editing en CFTR.',
- 'plain_es': 'En palabras sencillas, esta investigación enfrenta el muro invisible que vuelve lentas a las computadoras cuando resuelven redes enormes. Imaginen que desean encontrar la ruta más rápida entre miles de ciudades para un servicio de paquetería. Si la computadora revisa cada carretera y cada escala una por una, el cálculo tarda semanas en completarse. Durante casi medio siglo, los ingenieros pensaron que este límite cúbico era insuperable. Sin embargo, los científicos descubrieron que no hace falta examinar cada conexión por separado. Al agrupar ciudades vecinas en paquetes algebraicos inteligentes, un algoritmo puede descartar miles de rutas lentas en un solo paso. Al mismo tiempo, este método ayuda a la inteligencia artificial a no cometer errores en cadenas lógicas largas: revisando cada deducción paso a paso, el sistema descarta desvíos equivocados antes de que arruinen el resultado final. Hoy, estas técnicas optimizan aplicaciones de mapas satelitales y aceleran la comparación de millones de secuencias genéticas en servidores modernos.',
- 'deep_es': 'La aceleración subcúbica se comprende examinando la interacción entre el grado de agrupamiento polinomial y la densidad de restricciones del sistema. En el primer deslizador, incrementar el grado del polinomio comprime grandes bloques de comparaciones de distancias en multiplicaciones matriciales rápidas, logrando una aceleración de casi quince veces sobre redes de miles de nodos. En el segundo deslizador, la densidad de restricciones mide la saturación de condiciones lógicas que conducen a transiciones de fase en la dificultad computacional. La aportación de Ryan Williams demostró que los circuitos booleanos pueden eludir barreras temporales clásicas sin violar las hipótesis fundamentales de complejidad fina. Al acoplar este empaquetamiento algebraico con modelos de recompensa de procesos paso a paso en computadora, el sistema evalúa la validez de cada deducción individual en tiempo real. Esto eleva la precisión de pruebas matemáticas largas de un 41% a más del 94%, demostrando que la supervisión granular erradica alucinaciones y garantiza una verificación científica rigurosa.'}
+ 'bridge_es': 'Es solo una analogía de este folio: existe un estudio de edición prime para '
+              'variantes de CFTR que causan fibrosis quística en organoides humanos y células de '
+              'las vías respiratorias (Cell Reports Medicine, DOI 10.1016/j.xcrm.2024.101544). '
+              'El folio toma prestada únicamente la imagen general de examinar muchos candidatos '
+              'y podar pronto. No afirma nada sobre cómo se diseñan las guías ni sobre ninguna '
+              'velocidad, y nada de esto es consejo médico.',
+ 'plain_es': 'En palabras sencillas, esta investigación trata de la ruta más corta entre cada par de ciudades en una red grande de caminos. Revisar cada conexión posible una por una toma un número de pasos que crece aproximadamente con el cubo del número de ciudades, y eso se vuelve un problema en redes grandes. Durante mucho tiempo nadie supo cómo hacerlo sustancialmente mejor que con un ahorro modesto. Williams mostró cómo ahorrar un factor que crece lentamente con el tamaño de la red, y el README de un repositorio reciente afirma una mejora polinomial mucho mayor, que este sitio no ha revisado. Este folio no afirma nada sobre aplicaciones de navegación, logística ni genética.',
+ 'deep_es': 'La idea se comprende con dos ejemplos ilustrativos. El algoritmo aleatorizado de Ryan Williams para APSP corre en tiempo n^3 / 2^(Ω(√log n)); es un enunciado asintótico con una constante no especificada, así que no dice cuál es la aceleración con n = 4,096: el divisor 14.8 de esta página es un valor supuesto e ilustrativo. Por otro lado, si cada uno de 20 pasos es válido con probabilidad p, la cadena completa es válida con probabilidad p^20: con p = 0.9566 resulta cerca de 41.2 %, y con p = 0.99723, cerca de 94.6 %. Son valores del modelo, no mediciones. El README del proyecto 3sum-apsp afirma un ahorro polinomial para APSP, lo que contradiría la conjetura de APSP; este sitio no ha revisado esa afirmación. Los deslizadores son controles ilustrativos y no parámetros del algoritmo de Williams.'}

@@ -12,17 +12,20 @@ FOLIO = {'folio_id': 'M.04',
  'category_code': 'M',
  'title': 'Polynomial Freiman–Ruzsa (PFR) Entropy Calculus and the 22-Million Equational Magma '
           'Graph',
- 'subtitle': "How Terence Tao and the Lean FRO formalized Marton's conjecture via Ruzsa entropic "
-             'doubling and mapped all 4,694×4,694 universal algebra magma laws.',
+ 'subtitle': 'A reading of the entropy proof of the Polynomial Freiman–Ruzsa conjecture in '
+             'characteristic 2 (Gowers, Green, Manners and Tao), the public Lean 4 project whose '
+             "README says it formalizes that proof, and the Equational Theories project's "
+             '4,694 magma laws and 22,028,942 ordered pairs. The comparison with genetics is an '
+             'analogy.',
  'date_published': '2026-11-01',
- 'date_redated': '2026-11-02',
- 'current_edition': 'REV 1.1',
- 'status_badge': 'REDATED REV 1.1',
+ 'date_redated': '2026-11-14',
+ 'current_edition': 'REV 1.2',
+ 'status_badge': 'REDATED REV 1.2',
  'primary_kernel': 'tools/discovery/frontier_ai_math_catalog.py',
  'colophon': {'identifier': 'M.04 · Additive Combinatorics & Algebra',
-              'kernels': 'Lean 4 PFR Blueprint · 22,028,942 Magma Implications',
-              'benchmarks': 'Doubling |A + A| ≤ K|A| ⇒ Covered by ≤ K^C Cosets',
-              'bridge': 'Ruzsa Entropic Distance ↔ Epistatic Variant Rescue Clustering'},
+              'kernels': 'PFR entropy proof · Lean 4 project (README) · 22,028,942 magma-law pairs',
+              'benchmarks': 'Doubling |A + A| ≤ K|A| ⇒ covered by ≤ 2K^12 cosets (as stated in the project README)',
+              'bridge': 'Ruzsa entropic distance ↔ grouping variant profiles (analogy only)'},
  'sliders': [{'label': 'Additive Doubling Constant K (|A + A| / |A|)',
               'min': 1.2,
               'max': 8.0,
@@ -39,22 +42,30 @@ FOLIO = {'folio_id': 'M.04',
            'indicating hidden approximate subgroup structure.',
            'Stage 2 (Ruzsa Entropic Triangle Inequality): Defines entropic distance d(X, Y) = H(X '
            "- Y') - (H(X) + H(Y'))/2 and proves submodularity bounds.",
-           'Stage 3 (Tau-Minimizer Descent in Lean 4): Inductively compresses d(X, U_H) toward a '
-           'true subgroup uniform distribution U_H.',
-           'Stage 4 (Polynomial Coset Covering & Equational Graph): Proves A is covered by at most '
-           '2·K^12 cosets of H; paired with the complete 22,028,942-edge magma implication DAG.'],
- 'readouts': [{'label': 'Polynomial Coset Bound', 'value': '≤ 2 · K^12 Cosets'},
-              {'label': 'Equational Theories Graph', 'value': '22,028,942 Verified Edges'},
-              {'label': 'Lean 4 Blueprint Status', 'value': '100% Formalized (0 sorry)'},
-              {'label': 'Entropic Contraction Rate', 'value': 'Δd_R ≤ -d_R / 12'}],
- 'sidenote_1': {'kicker': 'SIDENOTE M.04-A · LEAN BLUEPRINT DECOMPOSITION',
-                'body': 'The PFR project demonstrated that human-authored LaTeX dependency '
-                        'blueprints paired with parallel Lean 4 tactic formalization can verify a '
-                        'major open conjecture in weeks rather than years.'},
- 'sidenote_2': {'kicker': 'SIDENOTE M.04-B · EPISTATIC CFTR MUTATION CLUSTERING',
-                'body': 'Ruzsa entropic distance provides a rigorous information-theoretic metric '
-                        'for testing whether double-mutant CFTR rescue profiles '
-                        'decompose into additive domain subgroups.'},
+           'Stage 3 (Tau-Minimizer): The proof studies a minimizer of an entropic functional τ and '
+           'uses it to show that d(X, U_H) is small for the uniform distribution U_H on a '
+           "subgroup H. This page's slider is a simplified picture of that step, not the "
+           "paper's argument.",
+           'Stage 4 (Polynomial Coset Covering): The theorem, as stated in the README of the '
+           'Lean project, says A is covered by at most 2·K^12 cosets of a subspace H of size at '
+           'most |A|. Separately, the Equational Theories project concerns 4,694 × 4,693 = '
+           '22,028,942 ordered pairs of magma laws.'],
+ 'readouts': [{'label': 'Polynomial Coset Bound', 'value': '≤ 2 · K^12 Cosets (per project README)'},
+              {'label': 'Equational Theories Pairs', 'value': '22,028,942 ordered pairs (4694 × 4693; progress not checked here)'},
+              {'label': 'Lean 4 Project Status', 'value': 'README: main proof formalized (not built here)'},
+              {'label': 'Entropic Contraction Picture', 'value': 'simplified illustration, not the paper\'s argument'}],
+ 'sidenote_1': {'kicker': 'SIDENOTE M.04-A · WHAT THE PROJECT README STATES',
+                'body': 'The README of teorth/pfr describes a Lean 4 formalization of the proof, '
+                        'with a human-written blueprint. It states that the main purpose was '
+                        'completed, and that a second stage, which developed consequences and an '
+                        'argument of Jyun-Jie Liao reducing the exponent 12 to 11, has also been '
+                        'completed. How long this took is not stated there, and no duration is '
+                        'claimed here.'},
+ 'sidenote_2': {'kicker': 'SIDENOTE M.04-B · A LOOSE ANALOGY',
+                'body': 'The folio compares measuring how far a distribution is from a clean '
+                        'structure with grouping measured profiles of related variants. This is '
+                        'an analogy only. It claims no use for CFTR data, and nothing here is '
+                        'medical advice.'},
  'skill': {'filename': 'pfr-entropic-combinatorics-SKILL.md',
            'name': 'pfr-entropic-combinatorics',
            'description': 'AI-agnostic additive combinatorics and universal algebra skill for '
@@ -62,11 +73,30 @@ FOLIO = {'folio_id': 'M.04',
                           'equational magma implication graphs.',
            'rules': ["Compute Ruzsa entropic distance d(X, Y) = H(X - Y') - 0.5*(H(X) + H(Y')) for "
                      "independent copies X, Y' on abelian groups.",
-                     'Enforce the Ruzsa triangle inequality d(X, Z) <= d(X, Y) + d(Y, Z) and PFR '
-                     'polynomial coset covering <= 2 * K^C.',
-                     'Verify transitive closure and finite counterexample models across equational '
-                     'magma laws.']},
- 'revisions': [{'edition': 'REV 1.1',
+                     'State the Ruzsa triangle inequality d(X, Z) <= d(X, Y) + d(Y, Z) and the PFR '
+                     'covering bound <= 2 * K^12 as results of the cited paper and project README.',
+                     'Treat an implication between magma laws as proven only when a Lean proof or a '
+                     'finite counterexample is cited, and say when you have not checked it.']},
+ 'revisions': [{'edition': 'REV 1.2',
+                'date': '2026-11-14',
+                'summary': 'REV 1.2 (Redated 2026-11-14): Grounding revision. The opening scene of '
+                           'Marton in a Budapest office in 1998, the claim that the Lean '
+                           'formalization took 21 days, and the claim that all 22,028,942 magma '
+                           'law pairs are resolved in a machine-checked graph are removed: the '
+                           'project READMEs do not say these things. The page now reports what the '
+                           'two READMEs state and that this site did not check them. The number '
+                           '22,028,942 is stated correctly as 4,694 × 4,693 ordered pairs (not '
+                           '4,694²). The links to data compression and encryption, the reference to '
+                           'anthropics/formal-math as part of these projects, and the AAV and '
+                           'lipid-nanoparticle passage are removed; the Cystic Fibrosis comparison '
+                           'is a labelled analogy.',
+                'opus': 'Review: DOIs checked in Crossref and the Scite index on 2026-11-14; both '
+                        'repository READMEs read on that date (teorth/pfr states the 2K^12 '
+                        'covering and the completed formalization; teorth/equational_theories '
+                        'states the 4,694 laws, 22,028,942 pairs and the 25 September 2024 launch). '
+                        'The Annals abstract was checked with Scite and states the result in '
+                        'characteristic 2.'},
+               {'edition': 'REV 1.1',
                 'date': '2026-11-02',
                 'summary': 'REV 1.1 (Redated 2026-11-02): Re-verified Polynomial Freiman-Ruzsa '
                            "(PFR) entropic doubling, Marton's conjecture bounds, and "
@@ -74,7 +104,8 @@ FOLIO = {'folio_id': 'M.04',
                            'review.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Ruzsa entropic triangle inequality submodularity and polynomial coset '
-                        'covering bound <= 2 * K^12.'},
+                        'covering bound <= 2 * K^12. (REV 1.2: this "verified" wording is '
+                        'withdrawn; the bound is as stated in the project README.)'},
                {'edition': 'REV 1.0',
                 'date': '2026-11-01',
                 'summary': 'REV 1.0 (Published 2026-11-01): Initial publication of the PFR '
@@ -82,8 +113,10 @@ FOLIO = {'folio_id': 'M.04',
                            'monograph.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Ruzsa entropic triangle inequality and 4,694² = 22,033,636 total magma '
-                        'law pairs (22,028,942 off-diagonal implications).'}],
- 'governing_law': 'Lean 4 PFR Blueprint · 22,028,942 Magma Implications',
+                        'law pairs (22,028,942 off-diagonal implications). (REV 1.2: the '
+                        'arithmetic is right, since 4,694 × 4,693 = 22,028,942; the "verified" '
+                        'wording is withdrawn.)'}],
+ 'governing_law': 'PFR entropy proof · Lean 4 project (README) · 22,028,942 magma-law pairs',
  'volume': 2,
  'volume_code': 'VOL. 02',
  'reading_time': '22 MIN READ',
@@ -95,75 +128,77 @@ FOLIO = {'folio_id': 'M.04',
            'mentioning': 14,
            'contrasting': 0,
            'retracted': False,
-           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 25 citing '
-                      'publications (0 supporting, 14 mentioning, 0 contrasting) on Gowers, Green, '
-                      "Manners & Tao's Polynomial Freiman-Ruzsa (PFR) entropic doubling proof and "
-                      'Lean 4 formalization.'}}
+           'summary': 'Scite index entry for Gowers, Green, Manners & Tao 2025 (DOI '
+                      '10.4007/annals.2025.201.2.5), checked 2026-11-08: 25 citing publications '
+                      '(0 supporting, 14 mentioning, 0 contrasting) and no retraction notice. '
+                      'These counts describe that one paper, not this folio.'}}
 
 LONGFORM_DATA = {'reading_time': '22 MIN READ',
- 'act1_dropcap': "In the quiet autumn of 1998, the Hungarian information theorist Katalin Marton sat in her Budapest office contemplating an elusive puzzle at the boundary of algebra and probability. For decades, combinatorists had studied sets of numbers whose pairwise sums produce surprisingly few new combinations. Classical theorems proved that such collections must resemble tidy geometric lattices, but the quantitative bounds were astronomical, growing exponentially like an unmanageable explosion. Marton looked past traditional point counting and viewed the puzzle through the lens of Claude Shannon's information theory. She conjectured that the true structural envelope should grow gracefully, bounded by a modest polynomial rate. For twenty-five years, Marton's polynomial conjecture hovered as an unclimbed peak in additive combinatorics, captivating theorists across continents who sought to understand whether approximate algebraic symmetries could be tamed with the smooth calculus of informational entropy.",
- 'act1_plain_bridge': 'In plain words, this puzzle asks how closely a messy collection of data points can resemble a tidy, organized grid. Imagine tossing a handful of coins onto a picnic blanket. If the coins land completely at random, adding their positions together creates an even wider, chaotic cloud. But if adding the points together produces very few new coordinates, the coins must secretly share a hidden alignment. Katalin Marton wanted to know if you can capture that hidden organization using a small number of orderly reference frames. This question touches our everyday digital lives in surprising ways. Whenever your computer compresses high-definition video, streams audio, or encrypts online messages, it searches for approximate symmetries to save storage space. Proving that approximate structures can always be covered by a modest number of tidy frames guarantees that data compression algorithms can run efficiently on home smartphones without crashing battery life.',
- 'act1_body': "In November 2023, Timothy Gowers, Ben Green, Freddie Manners, and Terence Tao announced a breakthrough resolution of Marton's conjecture by replacing brittle geometric counting with an information-theoretic Ruzsa entropic calculus (Annals of Mathematics 2025, DOI 10.4007/annals.2025.201.2.5). Instead of tallying raw subset cardinalities, their proof measured distance from uniform distributions using Shannon entropy, establishing a smooth descent functional that converges directly onto authentic subspace cosets. Within days of the paper's posting, Tao launched an open-source formalization project on GitHub (https://github.com/teorth/pfr). In an unprecedented demonstration of collaborative mathematics, a global community of contributors completely formalized the proof in the Lean 4 interactive theorem prover in just twenty-one days, finishing the computer verification before peer review even began. Less than a year later, the Equational Theories project scaled this blueprint methodology across universal algebra (https://github.com/teorth/equational_theories), mapping all 22,028,942 implication paths between magma laws into a verified, machine-checked directed acyclic graph.",
- 'act1_stakes': "The three-week verification of the Polynomial Freiman–Ruzsa theorem fundamentally transformed mathematical culture by demonstrating the power of interactive blueprints. Traditionally, checking a deep mathematical breakthrough required months of solitary refereeing by a few overburdened specialists, creating a dangerous backlog where unnoticed gaps could stall downstream progress. By leveraging Patrick Massot's blueprint tool, Tao and his collaborators decomposed the 30-page proof into a living directed acyclic graph of hundreds of atomic lemmas. Human mathematicians and automated reasoning scripts could claim independent leaves of the tree, write formal Lean 4 code, and merge verified sub-goals without coordination bottlenecks. The Lean kernel guaranteed that no faulty claim could compromise the global theorem. This milestone proved that massive open-source collaboration and automated type checking can compress years of verification into weeks, establishing a reproducible blueprint for auditing complex proofs, software compilers, and safety-critical engineering systems.",
- 'pullquote': 'By translating geometric sumsets |A + A| <= K|A| into Shannon entropy distances '
-              'd(X, Y), PFR turns a combinatorial jungle into a convex descent landscape that Lean '
-              '4 verified in 21 days.',
- 'pullquote_cite': 'Editorial Synthesis · Gowers, Green, Manners & Tao (2023) & Lean FRO Blueprint',
- 'chronology': [('1966–1973',
-                 'Gregory Freiman & Imre Ruzsa',
-                 'Prove structural theorems for sets with small doubling |A + A| <= K|A| using '
-                 'Ruzsa triangle inequalities.'),
-                ('1998',
+ 'act1_dropcap': "In additive combinatorics, a set A in F_2^n has small doubling if |A + A| <= K|A| for a modest constant K. The Polynomial Freiman–Ruzsa conjecture, attributed to Katalin Marton and widely known under that name, asks whether such a set must be covered by a number of cosets of a subspace that is only polynomial in K. In November 2023, Timothy Gowers, Ben Green, Freddie Manners and Terence Tao posted a proof in characteristic 2 (arXiv:2311.05762; Annals of Mathematics 2025, DOI 10.4007/annals.2025.201.2.5).",
+ 'act1_plain_bridge': 'In plain words, this puzzle asks how closely a messy collection of points must resemble a tidy, organized grid. Imagine tossing a handful of coins onto a blanket. If adding their positions together produces very few new positions, the coins must secretly share a hidden alignment. The conjecture says that such a set can be covered by a modest number of tidy frames, where "modest" means a polynomial in the doubling constant. This folio makes no claim about data compression, streaming or encryption.',
+ 'act1_body': "Gowers, Green, Manners and Tao prove the conjecture in characteristic 2 using Shannon entropy and an entropic version of Ruzsa distance (Annals of Mathematics 2025, DOI 10.4007/annals.2025.201.2.5). The repository https://github.com/teorth/pfr holds a Lean 4 formalization project whose README states that its main purpose, formalizing the proof, was completed, followed by a second stage developing consequences. The Equational Theories project (https://github.com/teorth/equational_theories), launched on 25 September 2024 according to its README, concerns the implications among 4,694 magma laws, that is 4,694 × 4,693 = 22,028,942 ordered pairs. Its README says that proven implications are verified in Lean and that other claims are tracked as conjectured. This site has not built either project and has not checked how far the second one has progressed.",
+ 'act1_stakes': "A blueprint splits a proof into small lemmas that different people can formalize independently, with a dependency graph showing what remains. The README of the PFR project links its blueprint and describes the formalization as completed. Whether this way of working carries over to other proofs is not something the folio assesses. A formalization also needs a reader to judge that the formal statement matches the statement intended.",
+ 'pullquote': 'By translating sumset size |A + A| <= K|A| into Shannon entropy distances d(X, Y), '
+              'the proof of PFR in characteristic 2 turns a counting problem into one about '
+              'entropy.',
+ 'pullquote_cite': 'Editorial Synthesis · Gowers, Green, Manners & Tao (2023)',
+ 'chronology': [('1960s–1990s',
+                 'Freiman & Ruzsa',
+                 'Develop the structure theory of sets with small doubling |A + A| <= K|A| '
+                 '(see Ruzsa 1999, Astérisque 258).'),
+                ('Date not stated here',
                  'Katalin Marton',
-                 'Formulates the Polynomial Freiman-Ruzsa (PFR) conjecture via '
-                 'information-theoretic entropy bounds.'),
+                 'The Polynomial Freiman-Ruzsa conjecture is attributed to her in the abstract of '
+                 'Gowers, Green, Manners & Tao.'),
                 ('Nov 2023',
                  'Gowers, Green, Manners & Tao',
-                 'Prove PFR in F_2^n (covering A by <= 2 K^12 cosets) using entropic Ruzsa '
-                 'distance descent.'),
-                ('Dec 2023',
-                 'Terence Tao & Lean 4 Community',
-                 'Complete the full machine-checked Lean 4 formalization of PFR in three weeks '
-                 "using Patrick Massot's Blueprint tool."),
-                ('2024–2026',
+                 'Prove PFR in F_2^n (covering A by <= 2 K^12 cosets, per the project README) '
+                 '(arXiv:2311.05762).'),
+                ('After Nov 2023',
+                 'teorth/pfr project',
+                 'README: formalization of the proof completed, then a second stage including an '
+                 'exponent reduction from 12 to 11 by Jyun-Jie Liao.'),
+                ('From Sep 2024',
                  'Equational Theories Project',
-                 'Resolves all 22,028,942 off-diagonal magma law implications in Lean 4 via '
-                 'automated theorem proving + human blueprints.')],
+                 'Launched 25 September 2024 (README); concerns 22,028,942 ordered pairs of '
+                 '4,694 magma laws.')],
  'act2_analogy': 'Everyday analogy: Imagine smoothing out a wrinkled bedsheet on a mattress. If you try to tug each wrinkle individually by hand, new folds pop up somewhere else across the fabric. But if you pour a cup of warm water over the sheet and run a steam iron across the surface, thermal energy and surface tension work together to relax the fabric smoothly into a flat, crisp plane without leaving a single crease behind.',
- 'act2_plain_primer': 'To see how informational smoothing works, you can explore two intuitive control knobs. The first knob measures the expansion rate, tracking how many new combinations appear when you add a set of points to itself. When this doubling knob is low, points stay bundled together in a tight cluster; but as you dial it higher, the points spread out across the space. The second knob measures informational distance, tracking how far our messy arrangement sits from a perfectly uniform grid. When this distance knob is high, the points are scattered like tangled wrinkles on our bedsheet analogy. As you lower the distance knob, the entropic steam iron smooths away local irregularities step by step. Together, these two knobs demonstrate that as long as the expansion rate remains bounded, the informational distance is guaranteed to contract toward zero. At that destination, all wrinkles disappear, revealing an exact, orderly mathematical grid.',
- 'distill_diagram': {'analogy_title': 'Wrinkled Bedsheet Steam Ironing', 'analogy_sub': 'Heat and tension relax wrinkles into a flat, crisp plane', 'force_a_title': 'Doubling Constant K (|A+A|/|A|)', 'force_a_sub': 'Controls subset expansion under pairwise vector addition', 'force_b_title': 'Ruzsa Entropic Distance d_R', 'force_b_sub': 'Measures deviation from uniform subgroup distribution', 'threshold_title': 'Marton Coset Covering Horizon', 'threshold_pass': 'Covered by at most 2 K^12 linear cosets; verified in Lean', 'threshold_fail': 'Exponential explosion 2^(K^C) traps combinatorial search'},
- 'act2_intuition': "Why did replacing combinatorial counting with Shannon entropy suddenly dissolve a 25-year roadblock? Because counting discrete elements in subset sumsets |A + A| is intrinsically brittle: adding or removing a few outlier points distorts geometric boundaries without altering core algebraic structure. In contrast, Shannon entropy H(X) = -sum p(x) log p(x) obeys smooth, submodular convexity inequalities that behave like potential energy in statistical physics. In the breakthrough by Gowers, Green, Manners, and Tao (Annals of Mathematics 2025, DOI 10.4007/annals.2025.201.2.5), the authors introduced the Ruzsa entropic distance d_R(X, Y) = H(X - Y') - 0.5 [H(X) + H(Y')], measuring how far random variables deviate from a genuine subgroup distribution. In the Lean 4 formalization within leanprover-community/mathlib4 and anthropics/formal-math (DOI 10.1145/3372885.3373824; https://github.com/anthropics/formal-math), the proof constructs an auxiliary minimization functional tau(X, Y) that strictly contracts entropic distance at every step. This continuous gradient descent guarantees that any subset with small doubling |A + A| <= K |A| is covered by at most 2 K^12 cosets of an authentic linear subspace.",
- 'act2_deepening': "The deep coupling between the additive doubling constant K and entropic distance d_R transforms an algebraic problem into information theory. When a set A in the binary vector space F_2^n satisfies |A + A| <= K |A|, drawing two independent uniform random variables X and Y from A yields an entropic distance d_R(X, Y) bounded by log K. If d_R(X, X) is strictly positive, the distribution cannot be uniform over a subspace. The proof designs an endomorphism that combines conditional distributions to produce a new random variable X' satisfying d_R(X', X') <= (1 - c) d_R(X, X) for a positive constant c. Iterating this contraction produces an exponential descent that drives entropic distance to zero. At zero entropic distance, the distribution locks onto the uniform distribution U_H over an exact linear subspace H. Coupling this descent with Ruzsa's covering lemma proves that A can be efficiently partitioned into at most 2 K^12 cosets, converting approximate group laws into exact linear algebraic structure.",
+ 'act2_plain_primer': 'To see how informational smoothing works, you can explore two intuitive control knobs. The first knob measures the expansion rate, tracking how many new combinations appear when you add a set of points to itself. When this doubling knob is low, points stay bundled together in a tight cluster; but as you dial it higher, the points spread out across the space. The second knob measures informational distance, tracking how far our messy arrangement sits from a perfectly uniform grid. When this distance knob is high, the points are scattered like tangled wrinkles on our bedsheet analogy. As you lower the distance knob, the entropic steam iron smooths away local irregularities step by step. Together, these two knobs are a picture, not the paper\'s argument: they suggest that when the expansion rate is bounded, the informational distance can be made small.',
+ 'distill_diagram': {'analogy_title': 'Wrinkled Bedsheet Steam Ironing', 'analogy_sub': 'Heat and tension relax wrinkles into a flat, crisp plane', 'force_a_title': 'Doubling Constant K (|A+A|/|A|)', 'force_a_sub': 'Controls subset expansion under pairwise vector addition', 'force_b_title': 'Ruzsa Entropic Distance d_R', 'force_b_sub': 'Measures deviation from uniform subgroup distribution', 'threshold_title': 'Marton Coset Covering Horizon', 'threshold_pass': 'Covered by at most 2 K^12 cosets (as stated in the project README)', 'threshold_fail': 'No polynomial covering bound'},
+ 'act2_intuition': "Why might replacing combinatorial counting with Shannon entropy help with a long-standing problem? Because counting discrete elements in subset sumsets |A + A| is intrinsically brittle: adding or removing a few outlier points distorts geometric boundaries without altering core algebraic structure. In contrast, Shannon entropy H(X) = -sum p(x) log p(x) obeys smooth, submodular convexity inequalities that behave like potential energy in statistical physics. In the breakthrough by Gowers, Green, Manners, and Tao (Annals of Mathematics 2025, DOI 10.4007/annals.2025.201.2.5), the authors introduced the Ruzsa entropic distance d_R(X, Y) = H(X - Y') - 0.5 [H(X) + H(Y')], measuring how far random variables deviate from a genuine subgroup distribution. The theorem, as stated in the README of the Lean 4 project teorth/pfr, is that any subset A of F_2^n with small doubling |A + A| <= K |A| is covered by at most 2 K^12 cosets of a subspace H of size at most |A|; the paper's argument is in the Annals (DOI 10.4007/annals.2025.201.2.5) and is not reproduced here.",
+ 'act2_deepening': "The coupling between the additive doubling constant K and entropic distance d_R turns an algebraic problem into one about information. When a set A in the binary vector space F_2^n satisfies |A + A| <= K |A|, drawing two independent uniform random variables X and Y from A yields an entropic distance d_R(X, Y) bounded by log K. If the distance is zero, the distribution is uniform on a subgroup. The proof then works with a minimizer of an entropic functional to show that the distance to such a uniform distribution must be small, and a covering argument turns that into the bound of at most 2 K^12 cosets. The page's contraction slider is a simplified picture of this, not the paper's argument; read the paper for the details.",
  'walkthrough': ['Experiment 1 (Follow the 4-Stage Entropic Descent): Click through Stages 1 -> 4 '
                  'above to trace how small doubling |A+A| <= K|A| maps to Ruzsa entropic distance '
                  'd(X, Y), tau-minimizer descent, and the 2 K^12 coset covering bound.',
                  'Experiment 2 (Explore the 22-Million Magma Implication Graph): Inspect the '
-                 'right-hand panel of the SVG schematic showing how 4,694 equational laws form a '
-                 'verified directed acyclic condensation graph.',
+                 'right-hand panel of the SVG schematic, a sketch of the 4,694 equational laws and the '
+                 '22,028,942 ordered pairs the project studies; it does not show verified '
+                 'results.',
                  'Experiment 3 (Apply Blueprint Decomposition): Use the portable SKILL.md below to '
                  'structure complex engineering or proof tasks as human-readable DAG blueprints '
                  'with independent machine-verifiable nodes.'],
- 'act4_human_ai': "The PFR and Equational Theories projects pioneered 'massively collaborative human + AI mathematics.' Because Lean 4's kernel guarantees that no contributor—human or AI—can break the global theorem by submitting a buggy lemma, hundreds of micro-tasks can be solved in parallel without central coordination bottlenecks. Combining Lean 4 Blueprint DAG decomposition with automated tactic synthesis in leanprover-community/mathlib4 and anthropics/formal-math (https://github.com/anthropics/formal-math, DOI 10.1145/3372885.3373824) enables parallel human-AI teams to verify 22-million-edge algebraic implication graphs with zero sorry axioms and full Scite citation provenance (DOI 10.1162/qss_a_00146).",
- 'act4_deepening': 'The collaborative methodology demonstrated in the PFR and Equational Theories projects provides a scalable template for formalizing mathematics. By decomposing a massive research agenda into a visual dependency graph of thousands of independent lemma nodes, research teams can distribute formalization across dozens of human contributors and automated tactic provers simultaneously. In the Equational Theories project, automated theorem provers and sat-solvers resolved millions of equational implications across 4,694 magma laws, while human mathematicians focused on high-level counterexamples and non-trivial equational derivations. Looking forward, this blueprint architecture opens profound frontier possibilities. Can similar entropic descent methods resolve the Polynomial Freiman–Ruzsa conjecture over general abelian groups, or settle non-abelian analogs in matrix groups? By integrating automated reasoning engines with living dependency blueprints, mathematicians are building global repositories of verified mathematical knowledge where every theoretical advance is certified against error and immediately reusable by artificial intelligence agents worldwide.',
- 'cf_bridge': 'Packaging a functional CFTR gene or prime-editing cassette inside an '
-              'adeno-associated virus (AAV, strict 4.7 kb limit) or compact lipid nanoparticle (LNP) '
-              'payload is an information-theoretic compression problem: we must preserve the '
-              'regulatory and catalytic subspace H (such as the mini-dR CFTR '
-              'construct) while minimizing sequence doubling and immunogenic entropy.',
- 'sources': ['Gowers, W. T., Green, B., Manners, F., & Tao, T. (2025). On a conjecture of Marton '
-             '(Polynomial Freiman-Ruzsa). Annals of Mathematics, 201(2), 515–549. DOI: '
-             '10.4007/annals.2025.201.2.5.',
-             'Tao, T., Dillies, Y., & Lean PFR Contributors (2023). Formalizing the Polynomial '
-             'Freiman-Ruzsa Conjecture in Lean 4 (https://github.com/teorth/pfr & '
-             'https://github.com/leanprover-community/mathlib4).',
-             'Bolan, L., Tao, T., et al. (2024). Equational Theories Project: 22,028,942 Magma Law '
-             'Implications in Lean 4 (https://github.com/teorth/equational_theories).',
+ 'act4_human_ai': "The READMEs of the PFR and Equational Theories projects describe open collaborations around Lean 4 proofs and, in the second case, a dashboard of proven and conjectured implications. Lean's kernel rejects a step that does not follow, so a mistaken lemma cannot enter the formal proof. This folio cannot say how many contributors were human or AI, or how the work compares with unassisted work. The anthropics/formal-math repository is not part of either project, and the folio draws no link to it. Mathlib (DOI 10.1145/3372885.3373824) is the library such projects build on.",
+ 'act4_deepening': 'Splitting a large proof or a large list of questions into small pieces that different people, or programs, can take on is one way to organize formalization. The Equational Theories README describes this for 4,694 magma laws; this folio has not checked how far the project got or which tools settled which pairs. Whether similar entropy methods work over other groups is a question for mathematicians and is not addressed here.',
+ 'cf_bridge': 'This bridge is an analogy the folio draws and nothing more. The folio compares '
+              'measuring how far a probability distribution is from a clean structure with '
+              'grouping measured profiles of related variants. It describes no gene-delivery '
+              'design, no sequence, and no result about CFTR, and nothing here is medical advice.',
+ 'sources': ['Gowers, W. T., Green, B., Manners, F., & Tao, T. (2025). On a conjecture of Marton. '
+             'Annals of Mathematics, 201(2), 515–549. DOI: 10.4007/annals.2025.201.2.5; '
+             'arXiv:2311.05762.',
+             'Repository: teorth/pfr, The Polynomial Freiman-Ruzsa Conjecture '
+             '(https://github.com/teorth/pfr). README read 2026-11-14; it states the 2K^12 '
+             'covering and that the formalization and a second stage were completed. Not built '
+             'or checked by this site.',
+             'Repository: teorth/equational_theories, Equational theories project '
+             '(https://github.com/teorth/equational_theories). README read 2026-11-14; it states '
+             '4,694 laws, 4,694 × 4,693 = 22,028,942 implications to be proven or disproven, '
+             'and that proven ones are verified in Lean. Progress not checked by this site.',
              "Ruzsa, I. Z. (1999). An analog of Freiman's theorem in groups. Astérisque, 258, "
              '323–326.',
-             'The mathlib Community (2020). The Lean mathematical library '
-             '(leanprover-community/mathlib4 & anthropics/formal-math, '
-             'https://github.com/anthropics/formal-math). CPP 2020, 367–381. DOI: '
-             '10.1145/3372885.3373824.',
+             'The mathlib Community (2020). The Lean mathematical library. Proceedings of the '
+             '9th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP '
+             '2020), 367–381. DOI: 10.1145/3372885.3373824.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
              'context of citations and classifies their intent using deep learning '
              '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
@@ -190,10 +225,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         'stroke-width="1.8"/>\n'
         '            <line x1="574" y1="86" x2="536" y2="138" stroke="currentColor" '
         'stroke-width="1.8"/>\n'
-        '            <text x="448" y="60" font-size="11" fill="currentColor">4,694² = 22.03M Magma '
-        'Laws</text>\n'
-        '            <text x="455" y="172" font-size="11" fill="var(--tp-verdigris)">100% Lean 4 '
-        'DAG Verified</text>\n'
+        '            <text x="448" y="60" font-size="11" fill="currentColor">4,694 × 4,693 = 22,028,942 '
+        'pairs</text>\n'
+        '            <text x="455" y="172" font-size="11" fill="var(--tp-verdigris)">Progress: see '
+        'project dashboard</text>\n'
         '          </svg>',
  'scite': {'doi': '10.4007/annals.2025.201.2.5',
            'fetched_on': '2026-11-08',
@@ -202,10 +237,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
            'mentioning': 14,
            'contrasting': 0,
            'retracted': False,
-           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 25 citing '
-                      'publications (0 supporting, 14 mentioning, 0 contrasting) on Gowers, Green, '
-                      "Manners & Tao's Polynomial Freiman-Ruzsa (PFR) entropic doubling proof and "
-                      'Lean 4 formalization.'},
+           'summary': 'Scite index entry for Gowers, Green, Manners & Tao 2025 (DOI '
+                      '10.4007/annals.2025.201.2.5), checked 2026-11-08: 25 citing publications '
+                      '(0 supporting, 14 mentioning, 0 contrasting) and no retraction notice. '
+                      'These counts describe that one paper, not this folio.'},
  'word_count': '4,650 WORDS'}
 
 PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a Polynomial Freiman-Ruzsa entropic coset '
@@ -216,28 +251,33 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a Polynomial Fr
             'approximate set A into <= 2 K^12 subgroup cosets alongside the 22,028,942-edge '
             'universal algebra magma implication graph.'}
 
-DISPATCH = {'kicker': 'FRONTIER FORMALIZATION DISPATCH · POLYNOMIAL FREIMAN–RUZSA (PFR) & 22M MAGMA DAG IN '
-           'LEAN 4',
- 'headline': "Gowers, Green, Manners & Tao's Shannon-Entropy Proof of PFR Formalized in Lean 4 "
-             'Alongside 22M Magma Laws',
+DISPATCH = {'kicker': 'POLYNOMIAL FREIMAN–RUZSA (PFR) · A LEAN 4 PROJECT README AND THE EQUATIONAL THEORIES '
+           'PROJECT, REPORTED NOT CHECKED HERE',
+ 'headline': "Gowers, Green, Manners & Tao's Shannon-Entropy Proof of PFR, and Two Public Lean 4 "
+             'Projects',
  'body': 'Published in Annals of Mathematics (Gowers, Green, Manners & Tao 2025, DOI '
-         '10.4007/annals.2025.201.2.5) and formalized in Lean 4 with zero sorryAx axioms alongside '
-         'the 22,028,942-edge Equational Theories magma implication graph, Ruzsa entropic distance '
-         'd_R(X, Y) proves polynomial coset covering (<= 2 K^12 cosets) and verifies additive combinatorics theorems in leanprover-community/mathlib4 (DOI 10.1145/3372885.3373824).'}
+         '10.4007/annals.2025.201.2.5), the proof covers a set A in F_2^n with |A + A| <= K|A| by '
+         'at most 2 K^12 cosets, as stated in the README of teorth/pfr, which also states that '
+         'its Lean 4 formalization was completed. The Equational Theories project concerns '
+         '4,694 magma laws and 22,028,942 ordered pairs. This site reports those statements and '
+         'has not built either project.'}
 
 META_3D = ('Polynomial Freiman–Ruzsa Entropic Gaussian Dome',
  'X/Z: Doubling Set Coset Coordinates · Y: Ruzsa Entropic Convolution Density')
 
 ES_TRANSLATION = {'title_es': 'Cálculo de Entropía Polinomial de Freiman–Ruzsa (PFR) y el Grafo Ecuacional de 22 '
              'Millones de Leyes de Magmas',
- 'subtitle_es': 'Cómo Terence Tao y la comunidad Lean 4 formalizaron la conjetura de Marton '
-                'mediante duplicación entrópica de Ruzsa y clasificaron las 4,694 × 4,694 leyes '
-                'universales de magmas.',
+ 'subtitle_es': 'Una lectura de la demostración entrópica de la conjetura polinomial de '
+                'Freiman–Ruzsa en característica 2 (Gowers, Green, Manners y Tao), del proyecto '
+                'público en Lean 4 que, según su README, la formaliza, y de las 4,694 leyes de '
+                'magmas y 22,028,942 pares ordenados del proyecto de Teorías Ecuacionales. La '
+                'comparación con la genética es una analogía.',
  'why_es': 'La distancia entrópica de Ruzsa mide cuánto se parece una nube desordenada de datos a '
            'una estructura algebraica limpia: si al sumar el conjunto consigo mismo apenas crece '
            'su entropía, está cubierto por pocos subgrupos.',
- 'bridge_es': 'La distancia entrópica y la información mutua permiten agrupar perfiles de rescate '
-              'epistático de miles de variantes raras de CFTR bajo combinaciones de '
-              'moduladores.',
- 'plain_es': 'En palabras sencillas, la conjetura de Freiman y Ruzsa estudia qué tan ordenado debe ser un grupo de datos cuando sus combinaciones no se dispersan. Imaginen que arrojan un puñado de monedas sobre una mesa: si cayeron al azar, al sumar sus coordenadas obtendrán una nube caótica mucho más extensa. Pero si al sumar los puntos entre sí casi no aparecen coordenadas nuevas, significa que las monedas comparten una alineación secreta. La matemática húngara Katalin Marton conjeturó en 1998 que esa estructura oculta se puede cubrir con un número muy pequeño y ordenado de marcos de referencia geométricos. Resolver este dilema no era un simple juego abstracto. Es la misma matemática que utilizan las computadoras para comprimir video en alta definición, transmitir música sin interrupciones y proteger mensajes cifrados en internet. Demostrar que los patrones casi ordenados pueden simplificarse de manera predecible garantiza que los teléfonos celulares y servidores procesen información masiva con rapidez y sin saturar su memoria.',
- 'deep_es': 'El núcleo de esta demostración se comprende a través de la relación entre la tasa de duplicación del conjunto y la distancia entrópica de Ruzsa. En el deslizador de duplicación, valores pequeños indican que el conjunto apenas crece al sumarse consigo mismo, lo que delata simetrías algebraicas latentes. Por su parte, la distancia entrópica de Ruzsa mide qué tan lejos se encuentra una distribución de probabilidades respecto a un subespacio lineal uniforme. La genialidad de Terence Tao y sus colaboradores consistió en sustituir el conteo rígido de puntos por la entropía de Shannon, convirtiendo un laberinto combinatorio en un descenso suave que reduce la distancia paso a paso. Cuando la distancia entrópica llega a cero, el conjunto embona con precisión en un subespacio auténtico. Mediante el uso del asistente formal Lean 4 en computadora, la comunidad matemática global verificó este teorema en solo veintiún días, demostrando que los planos interactivos permiten resolver problemas teóricos complejos con absoluta certeza y sin riesgo de errores humanos.'}
+ 'bridge_es': 'Es solo una analogía de este folio: se compara medir qué tan lejos está una '
+              'distribución de probabilidad de una estructura limpia con agrupar perfiles medidos '
+              'de variantes relacionadas. No describe ningún diseño de entrega génica, ninguna '
+              'secuencia ni ningún resultado sobre CFTR, y nada de esto es consejo médico.',
+ 'plain_es': 'En palabras sencillas, este acertijo pregunta qué tanto debe parecerse una colección desordenada de puntos a una cuadrícula ordenada. Imaginen que arrojan un puñado de monedas sobre una manta. Si al sumar sus posiciones casi no aparecen posiciones nuevas, las monedas comparten una alineación secreta. La conjetura dice que un conjunto así se puede cubrir con un número modesto de marcos ordenados, donde "modesto" significa un polinomio en la constante de duplicación. Este folio no afirma nada sobre compresión de datos, transmisión ni cifrado.',
+ 'deep_es': 'El núcleo de esta demostración se comprende a través de la relación entre la tasa de duplicación del conjunto y la distancia entrópica de Ruzsa. En el deslizador de duplicación, valores pequeños indican que el conjunto apenas crece al sumarse consigo mismo. Por su parte, la distancia entrópica de Ruzsa mide qué tan lejos se encuentra una distribución de probabilidades respecto a una distribución uniforme sobre un subgrupo. Gowers, Green, Manners y Tao sustituyen el conteo de puntos por la entropía de Shannon. El deslizador de contracción es solo una imagen simplificada, no el argumento del artículo. El README del proyecto teorth/pfr afirma que la formalización en Lean 4 de la demostración se completó, y el de Equational Theories describe 4,694 leyes y 22,028,942 pares ordenados; este sitio reporta esas afirmaciones y no ha compilado ni revisado ninguno de los dos proyectos.'}

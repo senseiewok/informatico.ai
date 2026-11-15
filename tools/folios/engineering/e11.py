@@ -17,11 +17,12 @@ FOLIO = {'folio_id': 'E.11',
           'Michell Funicular Trusses & Trabecular Bone Mechanics',
  'subtitle': "Continuing Folio E.10's robotic 3D concrete printing and A.01's funicular vaults: "
              'how Bendsøe–Sigmund SIMP topology optimization, Michell minimum-weight trusses, and '
-             'J-damper inerter flywheels cut structural concrete and steel by up to 70%.',
+             'flywheel inerters could reduce the material in floors while managing wind sway, '
+             'shown as an illustrative design study.',
  'date_published': '2026-11-07',
- 'date_redated': '2026-11-07',
- 'current_edition': 'REV 1.0',
- 'status_badge': 'TOPOLOGY & INERTER · REV 1.0',
+ 'date_redated': '2026-11-14',
+ 'current_edition': 'REV 1.1',
+ 'status_badge': 'TOPOLOGY & INERTER · REV 1.1',
  'primary_kernel': 'tools/continuum_verify.py',
  'governing_law': 'min_ρ c(ρ) = Uᵀ K(ρ) U · E_e(ρ_e) = E_min + ρ_e^p (E_0 − E_min) · F_inerter = b '
                   '(ü_2 − ü_1)',
@@ -29,14 +30,14 @@ FOLIO = {'folio_id': 'E.11',
                             'ACI 318',
               'kernels': 'Bendsøe–Sigmund SIMP Penalization · Michell Orthogonal Hencky Nets · '
                          'Smith Inerter b',
-              'benchmarks': 'V/V_0 = 0.35 · p = 3.0 · b/m = 0.18 ⇒ 65% Concrete Reduction & −44% '
-                            'RMS Wind Drift',
+              'benchmarks': 'V/V_0 = 0.35 · p = 3.0 ⇒ 1 − V/V_0 = 65% less slab concrete volume · '
+                            'b/m = 0.18 inerter ratio (drift reduction not computed)',
               'bridge': "Continues E.10/A.01 · Trabecular Bone Remodeling (Wolff's Law) ↔ Robotic "
                         '3DCP Funicular Floor Ribs'},
  'sliders': [{'label': 'Target Material Volume Fraction (V / V_0)',
               'min': 0.2,
               'max': 0.8,
-              'step': 0.02,
+              'step': 0.01,
               'value': 0.35,
               'unit': 'V/V_0 = '},
              {'label': 'Inerter Apparent-Mass Ratio (μ_b = b / m)',
@@ -46,40 +47,51 @@ FOLIO = {'folio_id': 'E.11',
               'value': 0.18,
               'unit': 'μ_b = '}],
  'steps': ["Stage 1 (Wolff's Trabecular Bone Remodeling & Principal Stress Trajectories): Under "
-           'gravity and wind loads, continuum finite elements in FEniCS/dolfinx compute principal '
+           'gravity and wind loads, a continuum finite-element model (FEniCS/dolfinx is one '
+           'open-source tool a reader could use; this folio ran no FE model) gives principal '
            'tensile and compressive stress trajectories σ_1, σ_2.',
            'Stage 2 (SIMP Power-Law Penalization & Helmholtz PDE Filtering): Element stiffness '
-           'E_e(ρ_e) = E_min + ρ_e^p (E_0 − E_min) with p = 3 drives intermediate densities toward '
-           '0/1 bone-like ribs while Helmholtz radius r_min prevents checkerboard mesh dependency.',
-           'Stage 3 (Convergence to Michell Orthogonal Funicular Trusses): Sensitivity filtering '
-           "converges onto Anthony Michell's 1904 orthogonal Hencky-net funicular ribs, ready for "
-           'robotic 3D concrete printing (Folio E.10) with 65% less cement.',
-           'Stage 4 (Formula 1 J-Damper Inerter Skyscraper Stabilization): A compact '
-           'rack-and-pinion flywheel inerter F = b(ü_2 − ü_1) multiplies apparent inertial mass '
-           '200-fold, suppressing vortex-shedding drift without heavy steel counterweights.'],
- 'readouts': [{'label': 'Structural Compliance Ratio (c / c_0)',
-               'value': '1.14× (Stiffness Preserved)'},
-              {'label': 'Embodied Cement Reduction', 'value': '−65.0% CO2e (V/V_0 = 0.35)'},
-              {'label': 'Inerter Apparent Mass Gain', 'value': '200× Physical Flywheel Mass'},
-              {'label': 'WEF Net-Zero Structural Verdict', 'value': 'PASS · ZERO CHECKERBOARD'}],
- 'spec_plate': {'division': 'CSI MASTERFORMAT 03 41 00 / ACI 318 / EUROCODE 2',
+           'E_e(ρ_e) = E_min + ρ_e^p (E_0 − E_min) with p = 3 pushes intermediate densities toward '
+           '0 or 1, while a filter radius r_min suppresses checkerboard patterns and mesh '
+           'dependency.',
+           'Stage 3 (Toward Michell-like Layouts): For simple load cases, optimized layouts tend to '
+           "resemble Anthony Michell's 1904 minimum-weight trusses. Keeping V/V_0 = 0.35 means 65% "
+           'less concrete volume in the optimized slab region than a solid slab of the same '
+           'envelope; whole-building savings would be smaller.',
+           'Stage 4 (Flywheel Inerter): A ball-screw or rack-and-pinion flywheel inerter F = b(ü_2 − '
+           'ü_1) has inertance b much larger than its own mass: for a ring flywheel on a screw, b = '
+           'm_fly (2π r / P)², so r = 45 mm and lead P = 20 mm give b ≈ 200 m_fly (illustrative). '
+           'Inerter-based devices have been studied for structural vibration suppression (Lazar et '
+           'al. 2013); the drift reduction in the lab is illustrative.'],
+ 'readouts': [{'label': 'Compliance Ratio (rough scaling, c / c_0)',
+               'value': '≈ 2.9× (c ∝ 1/(V/V_0), illustrative)'},
+              {'label': 'Slab Concrete Volume Reduction',
+               'value': '−65% (1 − V/V_0; CO2e assumed proportional)'},
+              {'label': 'Inerter Apparent Mass Gain',
+               'value': '≈ 200× flywheel mass (r = 45 mm, P = 20 mm)'},
+              {'label': 'Model Filter Status',
+               'value': 'FILTERED · no checkerboard in illustrative layout'}],
+ 'spec_plate': {'division': 'CSI MASTERFORMAT 03 41 00 (filing label)',
                 'title': 'Topology-Optimized Funicular Ribbed Floor Slabs & Tuned Inerter Mass '
-                         'Dampers',
-                'body': 'Robotic 3DCP formwork-free ribbed slabs generated via Helmholtz-filtered '
-                        'SIMP topology optimization (p = 3, r_min = 45 mm) paired with ball-screw '
-                        'flywheel inerters in tall building outriggers.',
-                'meta': 'Roussel (2018) DOI 10.1016/j.cemconres.2018.04.005 & Raissi PINN DOI '
-                        '10.1016/j.jcp.2018.10.045 verified'},
- 'sidenote_1': {'kicker': 'SIDENOTE E.11-A · CROSS-FIELD ANALOGY · YOUR THIGH BONE & FORMULA 1 '
-                          'SUSPENSION',
-                'body': 'Your femur is hollow where stress is zero and dense along principal '
-                        "stress lines (Wolff's Law). Pairing FEniCS/dolfinx SIMP optimization with "
-                        "Formula 1's 2005 McLaren J-damper inerter lets skyscrapers shed 65% of "
-                        'dead slab weight while staying rock-steady in typhoons.'},
- 'sidenote_2': {'kicker': 'SIDENOTE E.11-B · FORMAL VERIFICATION & OPEN-SOURCE SOLVERS',
+                         'Dampers (Design Study)',
+                'body': 'Design study: formwork-free 3D-printed ribbed slabs shaped by '
+                        'Helmholtz-filtered SIMP topology optimization (p = 3, r_min = 45 mm assumed) '
+                        'paired with ball-screw flywheel inerters in tall-building outriggers. Not '
+                        'designed to or checked against any code.',
+                'meta': 'Method: Sigmund (2001) DOI 10.1007/s001580050176 · Inerter: Smith (2002) '
+                        'DOI 10.1109/TAC.2002.803532'},
+ 'sidenote_1': {'kicker': 'SIDENOTE E.11-A · CROSS-FIELD ANALOGY · YOUR THIGH BONE & A FLYWHEEL',
+                'body': 'Your femur is dense along the main load paths and lighter elsewhere, an '
+                        "observation behind Wolff's Law. Topology optimization removes material in a "
+                        'similar spirit. Lighter floors make tall buildings livelier in wind, which '
+                        'is where inerter-based dampers could help; the inerter is widely described '
+                        'as first used in Formula 1 suspensions (Lazar et al. 2013).'},
+ 'sidenote_2': {'kicker': 'SIDENOTE E.11-B · SENSITIVITIES & OPEN-SOURCE SOLVERS',
                 'body': 'Adjoint sensitivities ∂c/∂ρ_e = −p ρ_e^(p−1)(E_0 − E_min) u_eᵀ k_0 u_e '
-                        'are computed in open-source FEniCS/dolfinx and accelerated 1,000× by '
-                        'Fourier Neural Operators (DOI 10.1016/j.jcp.2018.10.045).'},
+                        '(as in Sigmund 2001) could be computed in open-source FEniCS/dolfinx. '
+                        'Neural surrogates such as physics-informed neural networks (Raissi et al. '
+                        '2019) have been proposed to speed up such loops; this folio claims no '
+                        'speed-up.'},
  'skill': {'filename': 'simp-topology-inerter-damping-SKILL.md',
            'name': 'simp-topology-inerter-damping',
            'description': 'AI-agnostic structural engineering skill for Bendsøe-Sigmund SIMP '
@@ -91,15 +103,28 @@ FOLIO = {'folio_id': 'E.11',
                      'rho_tilde = rho to guarantee mesh-independent minimum member size.',
                      'Size two-terminal flywheel inerter inertance b (kg) via F = b * (a_2 - a_1) '
                      'to achieve target apparent-mass ratio mu_b = b / m_modal.']},
- 'revisions': [{'edition': 'REV 1.0',
+ 'revisions': [{'edition': 'REV 1.1',
+                'date': '2026-11-14',
+                'summary': 'REV 1.1 (Grounding pass 2026-11-14): Withdrew the "WEF Net-Zero PASS" '
+                           'verdict, the unsupported 1.14x compliance, 44% drift, 15 ms and 1,000x '
+                           'figures, and the claim that Smith invented the inerter for Formula 1 '
+                           '(the F1 link is now cited to Lazar et al. 2013 as a secondary account). '
+                           'Corrected a Raissi PINN DOI that was credited to Fourier Neural '
+                           'Operators, credited SIMP to Bendsøe 1989 rather than the 2001 99-line '
+                           'code, replaced an invented 1904 scene, and removed an AI-vendor '
+                           'repository and statements that the folio ran FEniCS.',
+                'opus': 'Review: all DOIs checked against Crossref and the Scite index on '
+                        '2026-11-14; 1 − 0.35 = 65% and (2π·45/20)² ≈ 200 recomputed by hand.'},
+               {'edition': 'REV 1.0',
                 'date': '2026-11-07',
                 'summary': 'REV 1.0 (Published 2026-11-07): Volume VI Civil Engineering flagship '
                            'continuing Folio E.10 (DOI 10.1016/j.cemconres.2018.04.005) via SIMP '
                            'continuum topology optimization, Michell trusses, and skyscraper '
                            'inerter damping.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): '
-                        'Verified SIMP adjoint sensitivity, Helmholtz filter length scale, and '
-                        'Smith inerter transfer function.'}],
+                        'Reviewed SIMP adjoint sensitivity, Helmholtz filter length scale, and '
+                        'Smith inerter transfer function. The word "Verified" is withdrawn in REV '
+                        '1.1: no FE run or measurement backed the headline numbers.'}],
  'volume': 6,
  'volume_code': 'VOL. 06',
  'reading_time': '22 MIN READ',
@@ -111,11 +136,10 @@ FOLIO = {'folio_id': 'E.11',
            'mentioning': 1181,
            'contrasting': 0,
            'retracted': False,
-           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,752 '
-                      'citing publications (18 supporting, 1,181 mentioning, 0 contrasting) — '
-                      'Primary anchor in low-carbon robotic 3D concrete printing and '
-                      'topology-optimized structural slabs, paired with Raissi et al. '
-                      'physics-informed neural operators (DOI 10.1016/j.jcp.2018.10.045).'}}
+           'summary': 'Scite index entry for Sigmund 2001, "A 99 line topology optimization code '
+                      'written in Matlab" (DOI 10.1007/s001580050176), fetched 2026-11-08: 2,752 '
+                      'citing publications (18 supporting, 1,181 mentioning, 0 contrasting) and no '
+                      'retraction notice. These counts describe that one paper, not this folio.'}}
 
 LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'word_count': '4,650 WORDS',
@@ -129,57 +153,50 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
            'mentioning': 1181,
            'contrasting': 0,
            'retracted': False,
-           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,752 '
-                      'citing publications (18 supporting, 1,181 mentioning, 0 contrasting) — '
-                      'Primary anchor in low-carbon robotic 3D concrete printing and '
-                      'topology-optimized structural slabs, paired with Raissi et al. '
-                      'physics-informed neural operators (DOI 10.1016/j.jcp.2018.10.045).'},
- 'act1_title': 'Act I — Cool Fact & Human Story: Why a Rectangular Concrete Floor Slab Wastes 70% '
-               'of Its Own Weight',
- 'act1_dropcap': 'In a quiet Melbourne study in the winter of 1904, the Australian engineer and '
-                 'mathematician Anthony Michell set down his fountain pen and contemplated a sheet '
-                 'of mathematical sketches. He had spent months analyzing how trusses carrying '
-                 'structural loads could be designed with the absolute minimum weight of material. '
-                 'Rather than assembling standard rectangular frames or heavy iron girders, '
-                 'Michell discovered that pure mathematical optimization produces curved, '
-                 'orthogonal spiderwebs of tension and compression ribs. These geometric webs '
-                 'looked uncannily like the delicate trabecular bone arches inside the human femur '
-                 'that anatomist Julius Wolff had documented twelve years earlier. Michell had '
-                 'formulated the universal mathematical theorem of minimum-weight structures, but '
-                 'Victorian industry had no practical way to cast metal or concrete into such '
-                 'intricate, organic paths. Builders continued pouring heavy solid slabs, '
-                 'unknowingly wasting up to seventy percent of their concrete simply to support '
-                 'the dead weight of the material itself.',
- 'act1_plain_bridge': 'In plain words, the concrete floors in most modern office buildings are '
-                      'surprisingly inefficient. Up to seventy percent of the concrete inside a '
-                      'flat ceiling slab does not carry people, furniture, or walls; it is only '
-                      'there to hold up the heavy weight of the slab itself because flat wooden '
-                      'formwork boxes are cheap to build. This waste matters because cement '
-                      'manufacturing generates roughly eight percent of all carbon dioxide '
-                      'emissions worldwide. Nature solves this problem far more intelligently: '
+           'summary': 'Scite index entry for Sigmund 2001, "A 99 line topology optimization code '
+                      'written in Matlab" (DOI 10.1007/s001580050176), fetched 2026-11-08: 2,752 '
+                      'citing publications (18 supporting, 1,181 mentioning, 0 contrasting) and no '
+                      'retraction notice. These counts describe that one paper, not this folio.'},
+ 'act1_title': 'Act I — Cool Fact & Human Story: Why a Solid Concrete Floor Slab Carries So '
+               'Much of Its Own Weight',
+ 'act1_dropcap': 'In 1904 the Australian engineer Anthony Michell published "The limits of '
+                 'economy of material in frame-structures" in the Philosophical Magazine (Michell '
+                 '1904). He asked how a truss carrying a given load could use the least material, '
+                 'and showed that the answers are often curved, crossing families of tension and '
+                 'compression members rather than rectangular frames. Twelve years earlier, in '
+                 '1892, the anatomist Julius Wolff had argued that bone adapts its internal '
+                 'structure to the loads it carries. The resemblance between the two is a '
+                 'popular analogy, not a proof. In Michell\'s day builders had no practical way to '
+                 'cast concrete or metal into such intricate shapes, so solid slabs remained the '
+                 'norm.',
+ 'act1_plain_bridge': 'In plain words, solid concrete floors are heavy, and in a long-span slab a '
+                      'large part of what the concrete carries is its own weight, because flat '
+                      'formwork is simple to build. This folio does not put a sourced percentage '
+                      'on that share. It matters because cement production is commonly estimated '
+                      'at up to about eight percent of carbon dioxide emissions worldwide (an '
+                      'estimate not sourced in this folio). Nature solves this problem far more intelligently: '
                       'your thigh bone is not a solid block of mineral, but a hollow cylinder '
-                      'supported by delicate internal arches where forces actually flow. Today, '
-                      'advanced computer algorithms mimic this bone growth, carving away every '
-                      'useless cubic inch of concrete where stress is low. Combined with robotic '
-                      'printing and compact spinning flywheel dampers adapted from Formula 1 '
-                      'racing cars, civil engineers can build floor slabs that use sixty-five '
-                      'percent less concrete while staying rock-steady during severe earthquakes '
-                      'and typhoons.',
- 'act1_body': "For a century, constructing Michell's optimal trusses was economically impossible "
-              'because intricate timber molds cost far more than the concrete saved. Today, Solid '
-              'Isotropic Material with Penalization (SIMP) topology optimization—pioneered by '
-              'Martin Bendsøe and Ole Sigmund (DOI 10.1007/s001580050176) — carves away low-stress '
-              'material from a finite-element mesh, while robotic concrete extruders (Roussel '
-              '2018, DOI 10.1016/j.cemconres.2018.04.005) print the resulting bone-like ribs '
-              'without formwork (CSI 03 41 00, ACI 318, Eurocode 2). However, shedding sixty-five '
-              'percent of slab mass makes tall buildings lighter and more flexible under turbulent '
-              'winds. To restore dynamic stability without adding dead weight, structural '
-              'engineers integrate mechanical inerters, invented by Malcolm C. Smith (IEEE Trans. '
-              'Autom. Control, DOI 10.1109/TAC.2002.803532) for Formula 1 racing. By driving a '
-              'compact flywheel through high-precision ball screws, a three-hundred-kilogram '
-              'inerter produces the apparent inertial resistance of sixty tons of steel, '
-              'dissipating wind-induced vortex vibrations while physics-informed neural operators '
-              '(Raissi 2019, DOI 10.1016/j.jcp.2018.10.045) accelerate design iterations.',
+                      'supported by internal struts where forces actually flow. Computer '
+                      'algorithms can mimic this idea, removing concrete where stress is low. '
+                      'Combined with robotic printing and compact flywheel dampers (inerters), '
+                      'this folio sketches how a floor region could use about sixty-five percent '
+                      'less concrete while sway is kept in check. It is a design study, not a '
+                      'tested building.',
+ 'act1_body': "For a century, building Michell-like optimal trusses in concrete was rarely "
+              'economic because intricate molds cost more than the concrete saved. Solid '
+              'Isotropic Material with Penalization (SIMP) topology optimization, introduced by '
+              'Martin Bendsøe (1989, DOI 10.1007/BF01650949) and made widely accessible by Ole '
+              "Sigmund's 99-line code (2001, DOI 10.1007/s001580050176), removes low-stress "
+              'material from a finite-element mesh, and printable concretes (Roussel 2018, DOI '
+              '10.1016/j.cemconres.2018.04.005) could in principle build the resulting ribs '
+              'without formwork. Removing slab mass makes tall buildings lighter and can make '
+              'them more responsive to wind. One way to add dynamic resistance without dead '
+              'weight is the inerter, a mechanical network element introduced by Malcolm C. '
+              'Smith (IEEE Trans. Autom. Control 2002, DOI 10.1109/TAC.2002.803532), later '
+              'studied for structural vibration suppression (Lazar et al. 2013). Driving a '
+              'flywheel through a ball screw, a 300 kg inerter with the 200x ratio above would '
+              'have an inertance of 60 tonnes (300 x 200 = 60,000 kg); this is an illustrative '
+              'calculation, not a product rating.',
  'act1_stakes': 'The global stakes of structural optimization connect urban growth directly to '
                 'climate resilience. With urban populations expanding, cities must construct '
                 'billions of square meters of floor area over the coming decades. Pouring '
@@ -189,39 +206,35 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'slabs deflect excessively, crack across tension zones, and transmit footstep '
                 'vibrations throughout the building. In supertall towers, lighter floors lower the '
                 'natural structural frequency, bringing the building into resonance with wind '
-                'gusts and causing sway sickness among occupants. Traditional tuned mass dampers '
-                'require hanging a five-hundred-ton steel pendulum inside the top floors, '
-                'occupying valuable real estate. By pairing topology-optimized funicular floor '
-                'geometry with tuned flywheel inerters, civil engineers break this historic '
-                'trade-off, creating ultra-lightweight structural systems that reduce embodied '
-                'carbon while providing superior damping against extreme windstorms and seismic '
-                'events.',
- 'pullquote': '"Nature never builds a solid rectangular femur, and a net-zero city never needs to '
-              'pour a solid rectangular slab: SIMP topology optimization carves away 65% of dead '
-              'concrete, while a Formula 1 flywheel inerter supplies 200 times its own weight in '
-              'virtual inertia."',
+                'gusts and causing discomfort for occupants. Traditional tuned mass dampers can '
+                'need a pendulum of hundreds of tonnes in the top floors, occupying valuable '
+                'space. Pairing topology-optimized floor geometry with tuned flywheel inerters is '
+                'one proposed way to ease this trade-off; this folio does not show that it '
+                'outperforms conventional damping.',
+ 'pullquote': '"Nature does not build a solid femur, and a floor need not be a solid slab: in this '
+              'design study, SIMP topology optimization keeps 35% of the concrete, while a '
+              'flywheel inerter can act like a mass far larger than its own."',
  'chronology': [('1892',
-                 "Julius Wolff formulates Wolff's Law: human trabecular bone remodels along "
-                 'principal tensile and compressive stress trajectories.'),
+                 'Julius Wolff publishes his law of bone transformation: bone adapts its internal '
+                 'structure to mechanical load.'),
                 ('1904',
-                 'Anthony G. M. Michell derives the exact optimality criteria for minimum-weight '
-                 'orthogonal funicular truss continua.'),
+                 'Anthony G. M. Michell publishes "The limits of economy of material in '
+                 'frame-structures" (DOI 10.1080/14786440409463229).'),
                 ('1989–2001',
-                 'Martin Bendsøe and Ole Sigmund establish the SIMP power-law topology '
-                 'optimization framework and 99-line open educational code.'),
-                ('2002–2026',
-                 "Malcolm Smith's mechanical inerter (F1 J-damper) merges with FEniCS/dolfinx "
-                 'topology optimization and robotic 3DCP slabs (DOI '
-                 '10.1016/j.cemconres.2018.04.005).')],
- 'act2_title': 'Act II — Cross-Field Intuition: Trabecular Bone Remodeling Meets the Formula 1 '
-               'J-Damper',
- 'act2_analogy': 'Everyday analogy: Look at a human femur: it is not a heavy solid rock, but a '
-                 'hollow tube reinforced inside by crisscrossing mineral arches placed precisely '
-                 'where your body weight bears down. Pairing bone-like floor slabs with a Formula '
-                 '1 flywheel damper is like giving a lightweight gymnast the momentum of a sumo '
-                 'wrestler. The building sheds two-thirds of its concrete weight, yet when typhoon '
-                 'winds shove against it, the spinning flywheel makes it resist sway like a '
-                 'heavyweight.',
+                 'Martin Bendsøe introduces the material-distribution approach behind SIMP (DOI '
+                 "10.1007/BF01650949); Ole Sigmund's 99-line educational code follows in 2001 "
+                 '(DOI 10.1007/s001580050176).'),
+                ('2002–2013',
+                 'Malcolm Smith introduces the inerter (DOI 10.1109/TAC.2002.803532); Lazar, '
+                 'Neild and Wagg study an inerter-based device for structural vibration '
+                 'suppression (DOI 10.1002/eqe.2390).')],
+ 'act2_title': 'Act II — Cross-Field Intuition: Trabecular Bone Remodeling Meets the Flywheel '
+               'Inerter',
+ 'act2_analogy': 'Everyday analogy: Look at a human femur: it is not a solid rock, but a hollow '
+                 'tube reinforced inside by crisscrossing struts along the paths where your weight '
+                 'bears down. Pairing bone-like floor slabs with a flywheel inerter is like giving '
+                 'a lightweight gymnast extra momentum: the floor is lighter, yet when wind pushes '
+                 'on the building, the spinning flywheel adds apparent inertia against sway.',
  'act2_plain_primer': 'To examine how advanced optimization lightens structures while preserving '
                       'stability, our interactive model provides two primary sliders. The first '
                       'control is the Target Material Volume Fraction, which specifies what '
@@ -232,11 +245,11 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'structures. The second control is the Inerter Apparent-Mass Ratio, which '
                       'adjusts the virtual inertial resistance provided by the mechanical flywheel '
                       'damper in the building core. Because shedding structural weight makes a '
-                      'tower more susceptible to wind gusts, increasing this inerter ratio '
-                      'multiplies the apparent dynamic mass dozens of times over. By balancing '
-                      'these two controls, you can observe how a building cuts embodied concrete '
-                      'by sixty-five percent while simultaneously suppressing wind vibrations.',
- 'distill_diagram': {'analogy_title': 'Trabecular Bone & Formula 1 Damper',
+                      'tower more susceptible to wind gusts, increasing this inerter ratio adds '
+                      'apparent dynamic mass. By balancing these two controls, you can explore, in '
+                      'an illustrative model, how cutting slab concrete by sixty-five percent '
+                      'interacts with wind response.',
+ 'distill_diagram': {'analogy_title': 'Trabecular Bone & Flywheel Damper',
                      'analogy_sub': 'Hollow bone arches save mass while spinning flywheels add '
                                     'inertia',
                      'force_a_title': 'Target Volume Fraction (V/V_0)',
@@ -246,8 +259,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                      'force_b_sub': 'Multiplies virtual resistance to suppress wind sway without '
                                     'weight',
                      'threshold_title': 'Checkerboard Mesh & Dynamic Resonance Limit',
-                     'threshold_pass': 'Optimized: Clean funicular paths with 44% reduced wind '
-                                       'drift',
+                     'threshold_pass': 'Optimized (model): clean funicular paths and lower '
+                                       'illustrative wind drift',
                      'threshold_fail': 'Failure: Unfiltered checkerboard mesh or excessive typhoon '
                                        'sway'},
  'act2_intuition': 'In SIMP continuum topology optimization, a design domain discretized into '
@@ -259,8 +272,12 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'disproportionately low stiffness relative to mass, adjoint sensitivity '
                    'gradients rapidly polarize densities toward zero or one. A Helmholtz PDE '
                    'filter -r_min^2 laplacian(rho_tilde) + rho_tilde = rho imposes a '
-                   'characteristic length scale r_min, eliminating checkerboard numerical '
-                   'instabilities and converging onto discrete Michell trusses. Simultaneously, '
+                   'characteristic length scale r_min, suppressing checkerboard numerical '
+                   'instabilities so layouts approach Michell-like trusses. As a rough rule of '
+                   "thumb (this folio's approximation, not a sourced result), the compliance of a "
+                   'stiffness-optimal layout grows roughly as 1/(V/V_0), so keeping 35% of the '
+                   'material gives c/c_0 of about 1/0.35 = 2.9 against the solid slab. '
+                   'Simultaneously, '
                    'building vibration under dynamic wind excitation is mitigated by a '
                    'two-terminal inerter. The device converts relative linear displacement into '
                    'high-speed flywheel rotation, exerting an inertial resisting force F = b (a_2 '
@@ -269,10 +286,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'act2_deepening': 'At a deeper theoretical level, the convergence of SIMP topology optimization '
                    'onto orthogonal funicular trusses reveals the mathematical kinship between '
                    "continuum mechanics and biological morphogenesis. Julius Wolff's 1892 "
-                   'hypothesis stated that bone adapts dynamically to mechanical stress '
-                   'trajectories; modern finite-element adjoint sensitivity analysis proves that '
-                   'minimizing elastic compliance under volume constraints produces the exact same '
-                   'orthogonal principal-stress trajectories predicted by Michell and Hencky. At '
+                   'hypothesis stated that bone adapts to mechanical stress; for simple load cases, '
+                   'compliance-minimizing layouts tend to follow principal-stress directions, as '
+                   "Michell's theory predicts. The parallel with bone is an analogy. At "
                    'element interfaces, the Helmholtz filter acts as an implicit diffusion '
                    'operator, preventing singular point loads from generating infinitely fine, '
                    'unprintable micro-struts. Meanwhile, the mechanical inerter breaks the '
@@ -280,43 +296,40 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'damper, the supplemental mass must physically reside inside the building, '
                    'imposing massive static gravity loads on columns and foundations. An inerter '
                    'decouples gravitational weight from dynamic resistance: the ball-screw '
-                   'mechanism translates minute millimeter displacements into thousands of '
-                   'revolutions per minute, creating enormous virtual inertia that absorbs kinetic '
-                   'energy through targeted viscous dissipation.',
+                   'mechanism turns small displacements into fast flywheel rotation, creating '
+                   'large apparent inertia; paired with a damper, it can help absorb vibration '
+                   'energy.',
  'walkthrough': ['Experiment 1 (SIMP Volume Fraction V/V_0): Drag Target Volume Fraction from 0.80 '
                  'down to 0.35. Watch lazy low-stress concrete dissolve away into a crisp Michell '
                  'funicular arch-and-tie rib network.',
                  'Experiment 2 (Inerter Apparent-Mass Ratio μ_b): Increase Inerter Mass Ratio b/m '
-                 'from 0.02 to 0.18. Observe peak wind-induced roof acceleration drop by 44% '
-                 'without adding structural dead weight.',
+                 'from 0.02 to 0.18. Observe the illustrative wind-response curve fall without '
+                 'adding structural dead weight (the size of the drop is not computed from a '
+                 'dynamic model).',
                  'Experiment 3 (Counterfactual Knockout ⚡): Click [⚡ Counterfactual] in the SVG '
                  'toolbar to knock out Helmholtz PDE filtering and watch checkerboard mesh '
                  'instability fracture the load path.'],
  'act4_title': "Act IV — Imagining Humanity's Future: Open-Source Solvers + AI Surrogates for "
-               '70%-Lighter Cities',
- 'act4_human_ai': 'By coupling open-source FEniCS/dolfinx finite-element scripts with '
-                  'physics-informed neural operators (Raissi et al. 2019, DOI '
-                  '10.1016/j.jcp.2018.10.045) and formal verification (anthropics/formal-math), an '
-                  'architect anywhere in the world can sketch a school or hospital floor plan and '
-                  'watch an AI surrogate compute the exact 3D Michell rib layout in 15 '
-                  'milliseconds—cutting embodied cement by 65% while robotic 3DCP extruders print '
-                  'the vaulted ceiling on site.',
- 'act4_deepening': 'Looking toward the future of sustainable cities, the combination of generative '
-                   'topology optimization, automated construction robotics, and physics-informed '
-                   'neural surrogates is poised to revolutionize the built environment. '
-                   'Contemporary architects utilize machine-learning surrogates trained on '
-                   'thousands of finite-element solutions to interactively sculpt building floors '
-                   'in real time, obtaining optimized rib topologies in fractions of a second. '
-                   'These organic geometry files stream directly to robotic 3D concrete printing '
-                   'gantries, which deposit low-carbon mortar along the principal stress lines '
-                   'without a single sheet of plywood formwork. Open frontier challenges center on '
+               'Lighter Floors',
+ 'act4_human_ai': 'By coupling open-source FEniCS/dolfinx finite-element scripts with neural '
+                  'surrogates such as physics-informed neural networks (Raissi et al. 2019, DOI '
+                  '10.1016/j.jcp.2018.10.045), an architect could one day sketch a school or '
+                  'hospital floor plan and get a quick approximate rib layout to refine with a full '
+                  'finite-element check. This is a proposal; the folio claims no speed or carbon '
+                  'figure for it.',
+ 'act4_deepening': 'Looking ahead, generative topology optimization, construction robotics, and '
+                   'neural surrogates could change how floors are designed. Surrogates trained on '
+                   'many finite-element solutions might let designers explore rib layouts '
+                   'interactively, and the resulting geometry could be sent to 3D concrete '
+                   'printers that deposit mortar along principal stress lines without plywood '
+                   'formwork. These are research directions, not current practice this folio '
+                   'sources. Open frontier challenges center on '
                    'integrating non-linear plastic buckling constraints directly into SIMP '
                    'formulation loops, certifying multi-axis inerter damper assemblies for '
                    'century-long seismic reliability, and developing circular recycling protocols '
                    "for fiber-reinforced cementitious composites. By harmonizing nature's "
                    'structural logic with modern computational mechanics and control theory, civil '
-                   'engineers can build resilient, light-filled architectural spaces that reduce '
-                   'the carbon footprint of global infrastructure by more than half.',
+                   'engineers could build lighter, resilient spaces with less embodied carbon.',
  'cf_bridge': 'Standalone Structural Topology & Damping Flagship (E.10 -> E.11): Engineered for '
               'structural, civil, and mechanical engineers designing minimum-weight slabs and '
               'tall-building tuned inerter dampers.',
@@ -325,28 +338,33 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              '10.1007/s001580050176.',
              'Smith, M. C. (2002). Synthesis of mechanical networks: the inerter. IEEE '
              'Transactions on Automatic Control, 47(10), 1648–1662. DOI: 10.1109/TAC.2002.803532.',
+             'Bendsøe, M. P. (1989). Optimal shape design as a material distribution problem. '
+             'Structural Optimization, 1(4), 193–202. DOI: 10.1007/BF01650949.',
              'Bendsøe, M. P., & Sigmund, O. (2003). Topology Optimization: Theory, Methods, and '
              'Applications. Springer.',
              'Michell, A. G. M. (1904). The limits of economy of material in frame-structures. '
-             'Philosophical Magazine, 8(47), 589–597.',
+             'Philosophical Magazine, 8(47), 589–597. DOI: 10.1080/14786440409463229.',
+             'Lazar, I. F., Neild, S. A., & Wagg, D. J. (2013). Using an inerter-based device for '
+             'structural vibration suppression. Earthquake Engineering & Structural Dynamics, '
+             '43(8), 1129–1147. DOI: 10.1002/eqe.2390.',
              'Roussel, N. (2018). Rheological requirements for printable concretes. Cement and '
              'Concrete Research, 112, 76–85. DOI: 10.1016/j.cemconres.2018.04.005.',
              'Raissi, M., Perdikaris, P., & Karniadakis, G. E. (2019). Physics-informed neural '
              'networks. Journal of Computational Physics, 378, 686–707. DOI: '
              '10.1016/j.jcp.2018.10.045.',
-             'Open-Source Stack: FEniCS/dolfinx PDE finite-element engine '
-             '(https://github.com/FEniCS/dolfinx) + anthropics/formal-math verification.',
+             'Open-source tool a reader could use: FEniCS/dolfinx finite-element engine '
+             '(https://github.com/FEniCS/dolfinx). This folio did not run it.',
              'Scroggs, M. W., Dokken, J. S., Richardson, C. N., & Wells, G. N. (2022). Construction of Arbitrary Order Finite Element Degree-of-Freedom Maps on Polygonal and Polyhedral Cell Meshes (FEniCS/dolfinx, https://github.com/FEniCS/dolfinx). ACM Transactions on Mathematical Software, 48(2), 18:1–18:23. DOI: 10.1145/3524456.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
              'context of citations and classifies their intent using deep learning '
              '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
              '10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="SIMP Continuum '
-        'Topology Optimization Michell Funicular Rib Slab and Formula 1 Flywheel Inerter Damper">\n'
+        'Topology Optimization Michell Funicular Rib Slab and Flywheel Inerter Damper">\n'
         '            <line x1="35" y1="188" x2="645" y2="188" stroke="currentColor" '
         'stroke-opacity="0.3"/>\n'
         '            <text x="44" y="24" font-size="10.5" font-weight="600" '
-        'fill="currentColor">SIMP Trabecular Slab (V/V_0 = 0.35 · −65% Cement)</text>\n'
+        'fill="currentColor">SIMP Trabecular Slab (V/V_0 = 0.35 · −65% slab volume)</text>\n'
         '            <rect x="44" y="42" width="320" height="118" rx="6" fill="var(--tp-stone)" '
         'fill-opacity="0.22" stroke="currentColor" stroke-opacity="0.25" stroke-dasharray="4,3"/>\n'
         '            <path d="M 52 152 Q 204 38 356 152" fill="none" stroke="var(--tp-prussian)" '
@@ -381,9 +399,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         'stroke-width="2.5"/>\n'
         '            </g>\n'
         '            <text x="406" y="176" font-size="9.5" fill="var(--tp-prussian)">Apparent Mass '
-        'b = 200× Physical Mass · −44% Wind Drift</text>\n'
-        '            <text x="44" y="206" font-size="10" fill="var(--tp-verdigris)">FEniCS/dolfinx '
-        '+ Neural Operator Surrogate: 15 ms Convergence · PASS</text>\n'
+        'b ≈ 200× flywheel mass (illustrative)</text>\n'
+        '            <text x="44" y="206" font-size="10" fill="var(--tp-verdigris)">Illustrative '
+        'layout · not an FE result</text>\n'
         '          </svg>'}
 
 PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a topology-optimized trabecular concrete vaulted '
@@ -391,16 +409,17 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a topology-opti
         'look like (artistic impression, not a measured structure)',
  'caption': 'Conceptual Vision Plate E.11-V (Imagining What It Would Look Like) · Artistic '
             'civil-engineering visualization (continuing Folios E.10 & A.01) imagining a '
-            'formwork-free trabecular concrete floor slab with 65% less cement paired with a '
-            'high-inertia flywheel damper.'}
+            'formwork-free trabecular concrete floor slab paired with a high-inertia flywheel '
+            'damper.'}
 
 DISPATCH = {'kicker': 'FRONTIER STRUCTURAL OPTIMIZATION DISPATCH · CONTINUING E.10 & A.01 · SIMP & INERTERS',
- 'headline': 'FEniCS/dolfinx Topology Optimization & Formula 1 Inerter Dampers Cut Structural Slab '
-             'Cement by 65%',
- 'body': 'Combining Bendsøe–Sigmund SIMP continuum topology optimization in FEniCS/dolfinx with '
-         "Nicolas Roussel's 3DCP rheology (DOI 10.1016/j.cemconres.2018.04.005) and Raissi "
-         'physics-informed neural operators (DOI 10.1016/j.jcp.2018.10.045) replaces solid flat '
-         'slabs with bone-like Michell ribs while flywheel inerters suppress wind drift.'}
+ 'headline': 'A Design Study: SIMP Topology Optimization and Flywheel Inerters for Lighter Floor '
+             'Slabs',
+ 'body': 'This folio sketches how Bendsøe–Sigmund SIMP topology optimization (Sigmund 2001, DOI '
+         '10.1007/s001580050176), printable concretes (Roussel 2018, DOI '
+         '10.1016/j.cemconres.2018.04.005) and Smith\'s inerter (DOI 10.1109/TAC.2002.803532) '
+         'could together replace solid flat slabs with bone-like ribs while inerters help manage '
+         'wind sway. Its figures are illustrative.'}
 
 META_3D = ('SIMP Compliance & Inerter Transfer Function Surface',
  'X: Volume Fraction V/V_0 · Z: Inerter Ratio μ_b · Y: Normalized Structural Compliance c/c_0')
@@ -408,24 +427,25 @@ META_3D = ('SIMP Compliance & Inerter Transfer Function Surface',
 ES_TRANSLATION = {'title_es': 'Optimización Topológica Continua SIMP y Amortiguadores Inerter en Rascacielos: '
              'Armaduras de Michell y Mecánica Ósea Trabecular',
  'subtitle_es': 'Continuando los Folios E.10 y A.01: cómo la optimización topológica SIMP de '
-                'Bendsøe–Sigmund, las armaduras mínimas de Michell y el inerter J-damper reducen '
-                'el concreto y el acero hasta en un 70%.',
- 'why_es': 'Tu fémur es hueco donde el esfuerzo es cero y denso solo donde fluyen las cargas; unir '
-           'nervaduras tipo hueso con un volante de inercia de Fórmula 1 permite construir '
-           'edificios con 65% menos cemento que resisten tifones sin oscilar.',
- 'plain_es': 'En palabras sencillas, los techos y pisos de concreto en los edificios '
-             'convencionales tienen un diseño sumamente ineficiente. Hasta el setenta por ciento '
-             'del concreto en una losa plana no soporta a las personas ni los muebles, sino que '
-             'está ahí únicamente para sostener el enorme peso propio de la losa, debido a que las '
-             'cimbras de madera planas son baratas de clavar. Este desperdicio es crítico porque '
-             'la producción de cemento genera cerca del ocho por ciento de las emisiones mundiales '
-             'de dióxido de carbono. La naturaleza resuelve este problema con mucha mayor '
+                'Bendsøe–Sigmund, las armaduras mínimas de Michell y los inerters de volante '
+                'podrían reducir el material de las losas sin descuidar la oscilación por viento, '
+                'como estudio de diseño ilustrativo.',
+ 'why_es': 'Tu fémur es denso a lo largo de las trayectorias de carga y más ligero en otras '
+           'partes; unir nervaduras tipo hueso con un volante de inercia (inerter) es una idea '
+           'para losas con menos concreto que sigan controlando la oscilación.',
+ 'plain_es': 'En palabras sencillas, las losas macizas de concreto son pesadas, y en un claro '
+             'largo buena parte de lo que carga el concreto es su propio peso, porque la cimbra '
+             'plana es sencilla de armar. Este folio no da un porcentaje con fuente para esa '
+             'proporción. Importa porque la producción de cemento suele estimarse en hasta cerca '
+             'del ocho por ciento de las emisiones mundiales de dióxido de carbono (estimación '
+             'sin fuente en este folio). La naturaleza resuelve este problema con mucha mayor '
              'elegancia: el fémur humano no es un bloque sólido de hueso, sino una estructura '
              'hueca reforzada por arcos internos donde realmente viajan las fuerzas. Hoy en día, '
-             'algoritmos de optimización topológica imitan este crecimiento óseo y eliminan el '
-             'material donde el esfuerzo es nulo. Combinados con amortiguadores rotativos de '
-             'Fórmula 1, podemos construir losas con sesenta y cinco por ciento menos concreto que '
-             'resisten sismos y vientos extremos sin vibrar.',
+             'algoritmos de optimización topológica siguen una idea parecida y eliminan material '
+             'donde el esfuerzo es bajo. Combinados con amortiguadores de volante (inerters), este '
+             'folio esboza una zona de losa con cerca de sesenta y cinco por ciento menos '
+             'concreto y la oscilación bajo control. Es un estudio de diseño, no un edificio '
+             'probado.',
  'deep_es': 'La optimización estructural de entrepisos equilibra dos demandas contrapuestas: '
             'reducir la masa para abatir la huella de carbono y mantener la rigidez dinámica para '
             'evitar oscilaciones excesivas por viento o sismo. Mediante el método SIMP, el '
@@ -436,8 +456,9 @@ ES_TRANSLATION = {'title_es': 'Optimización Topológica Continua SIMP y Amortig
             'Sin embargo, al retirar hasta dos tercios del concreto, la estructura se vuelve más '
             'ligera y sensible al viento. Para contrarrestar esto sin añadir peso muerto, los '
             'ingenieros acoplan inerters mecánicos que transforman el desplazamiento lineal en '
-            'rotación de alta velocidad, generando toneladas de masa aparente. En la práctica '
-            'moderna, este diseño conjunto permite imprimir losas nervadas sin cimbra con '
-            'reducciones sustanciales de cemento y desempeño dinámico superior.',
- 'bridge_es': 'La optimización topológica SIMP con filtrado PDE de Helmholtz en FEniCS/dolfinx '
-              'esculpe nervaduras funiculares listas para impresión 3D sin cimbra.'}
+            'rotación de alta velocidad, generando una masa aparente mucho mayor que la propia. '
+            'Este diseño conjunto es una propuesta: podría permitir imprimir losas nervadas sin '
+            'cimbra con menos cemento, pero este folio no lo demuestra.',
+ 'bridge_es': 'La optimización topológica SIMP con filtrado PDE de Helmholtz (que un lector podría '
+              'ejecutar en FEniCS/dolfinx; este folio no lo hizo) produce nervaduras funiculares '
+              'que podrían imprimirse en 3D sin cimbra.'}

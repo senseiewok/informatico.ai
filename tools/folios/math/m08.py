@@ -12,20 +12,21 @@ FOLIO = {'folio_id': 'M.08',
  'category_code': 'M',
  'title': 'Riemannian Differential Geometry of Color Perception: Helmholtz–Schrödinger Geodesics, '
           'MacAdam Metric Tensors & Grassmann Spectral Hilbert Projections',
- 'subtitle': "How Hermann Grassmann's infinite-dimensional spectral projection Π: L²([380,780] nm) "
-             "→ ℝ³ creates metamers and Erwin Schrödinger's curved Riemannian metric tensor ds² = "
-             'g_ij dx^i dx^j defines true geodesic hue paths.',
+ 'subtitle': 'How the linearity of color matching that Hermann Grassmann described, read in modern '
+             'terms as a projection Π: L²([380,780] nm) → ℝ³, creates metamers, and how a '
+             'Riemannian line element ds² = g_ij dx^i dx^j of the kind Erwin Schrödinger proposed '
+             'in 1920 defines curved paths between hues. The numbers shown are model values.',
  'date_published': '2026-11-02',
- 'date_redated': '2026-11-02',
- 'current_edition': 'REV 1.0',
- 'status_badge': 'RIEMANNIAN COLOR MATH · REV 1.0',
+ 'date_redated': '2026-11-14',
+ 'current_edition': 'REV 1.1',
+ 'status_badge': 'RIEMANNIAN COLOR MATH · REV 1.1',
  'primary_kernel': 'tools/discovery/formal_proof_thermodynamic_landscape.py',
  'governing_law': 'ds² = ∑ g_ij(x) dx^i dx^j · ẍ^k + Γ^k_ij ẋ^i ẋ^j = 0 · Π: L²([380,780]) → '
                   'ℝ³₊',
  'colophon': {'identifier': 'M.08 · Riemannian Color Manifold & Metamer Nullspace · CIE',
               'kernels': 'Helmholtz–Schrödinger Metric g_ij · MacAdam Ellipses · Cohen Metamer '
                          'Matrix',
-              'benchmarks': 'dim ker(Π) = ∞ · Abney Hue Drift = 0.0° · CIEDE2000 ΔE_00',
+              'benchmarks': 'dim ker(Π) = ∞ · model hue drift and ΔE_00 values are illustrative',
               'bridge': 'Schrödinger Color Geodesics ↔ A.07 Barragán Pigments & P.08 Wave '
                         'Interference'},
  'sliders': [{'label': 'Illuminant Blackbody Temp (T_illum)',
@@ -45,30 +46,35 @@ FOLIO = {'folio_id': 'M.08',
            "Stage 2 (Cohen's Fundamental Metamer Decomposition): Because dim ker(Π) = ∞, any "
            'spectrum decomposes into R(λ) = R*(λ) + B(λ), where metameric black B(λ) vanishes '
            'under D65 (6500 K) but emerges at sunset (3000 K).',
-           'Stage 3 (Helmholtz–Schrödinger Riemannian Metric Tensor g_ij): Local perceptual '
-           'threshold ellipses (MacAdam 1942) define the non-Euclidean Fisher–Rao metric ds² = ∑ '
-           'a_k (dx^k / x^k)².',
-           'Stage 4 (Geodesic Hue Integration vs. Abney Paradox): Solving ẍ^k + Γ^k_ij ẋ^i ẋ^j '
-           '= 0 between Cobalt (465 nm) and Rosa Mexicano (615 nm) eliminates the +9.4° Abney hue '
-           'distortion of flat RGB chords.'],
- 'readouts': [{'label': 'Riemannian Geodesic Distance', 'value': 'ds_geo = 42.8 JND (at t = 0.50)'},
-              {'label': 'Abney Chord Hue Distortion', 'value': '0.0° Geodesic (vs +9.4° Flat)'},
-              {'label': 'Illuminant Metamerism Index', 'value': 'ΔE_00 = 0.18 (at 6500 K D65)'},
-              {'label': 'Manifold Geometry Verdict', 'value': 'SCHRÖDINGER GEODESIC · QED'}],
- 'spec_plate': {'division': 'CIE 015:2018 / ISO/CIE 11664-6 (CIEDE2000 & SPECTRAL MANIFOLDS)',
+           "Stage 3 (Helmholtz-Type Line Element g_ij, the folio's model): Discrimination "
+           'ellipses such as those MacAdam measured in 1942 show that equal perceptual steps are '
+           'not equal Euclidean steps. The folio models this with a Helmholtz-type line element '
+           'ds² = ∑ a_k (dx^k / x^k)².',
+           'Stage 4 (Geodesic Hue Interpolation, model): Solvingẍ^k + Γ^k_ij ẋ^i ẋ^j '
+           '= 0 for that model metric between a cobalt blue and a magenta (rosa mexicano) gives a '
+           'curved path. The +9.4° hue difference from a flat RGB chord is an illustrative model '
+           'value, not a measured Abney-effect correction.'],
+ 'readouts': [{'label': 'Riemannian Geodesic Distance (model)',
+               'value': 'ds_geo = 42.8 (illustrative units, t = 0.50)'},
+              {'label': 'Chord vs. Geodesic Hue Difference (model)',
+               'value': '+9.4° for the flat chord (illustrative)'},
+              {'label': 'Illuminant Metamerism Index (model)',
+               'value': 'ΔE_00 = 0.18 at 6500 K (illustrative)'},
+              {'label': 'Model Geometry', 'value': 'Helmholtz-type metric (a model, not a proof)'}],
+ 'spec_plate': {'division': 'NAMED FOR CONTEXT: CIE 015:2018 (COLORIMETRY) / ISO/CIE 11664-6 '
+                            '(CIEDE2000)',
                 'title': '81-Band Spectral Reflectance Projection & Riemannian Geodesic '
                          'Colorimetry Kernel',
-                'body': '5 nm wavelength-resolved (380–780 nm) spectral power and reflectance '
-                        "integration kernel implementing Jozef Cohen's Matrix R projection and "
-                        'Schrödinger–CIEDE2000 Riemannian geodesic interpolation.',
-                'meta': 'Schrodinger (DOI 10.1002/andp.19203682202) & MacAdam (DOI '
-                        '10.1364/JOSA.32.000247) verified'},
- 'sidenote_1': {'kicker': "SIDENOTE M.08-A · HOW COLOR INSPIRED GRASSMANN'S EXTERIOR ALGEBRA & "
-                          "SCHRÖDINGER'S METRIC",
-                'body': 'Before quantum mechanics (1926), Erwin Schrödinger spent World War I and '
-                        '1920 deriving the Riemannian differential geometry of human color '
-                        'space—proving that constant-brightness surfaces and constant-hue lines '
-                        'are orthogonal geodesics under ds² = g_ij dx^i dx^j.'},
+                'body': 'Design study: a 5 nm wavelength-resolved (380–780 nm) spectral power and '
+                        "reflectance integration kernel using Jozef Cohen's matrix R projection "
+                        'and geodesic interpolation under a model Riemannian metric.',
+                'meta': 'Sources cited, not reproduced: Schrödinger 1920 (DOI '
+                        '10.1002/andp.19203682202) · MacAdam 1942 (DOI 10.1364/JOSA.32.000247)'},
+ 'sidenote_1': {'kicker': "SIDENOTE M.08-A · SCHRÖDINGER'S COLOR METRIC BEFORE QUANTUM MECHANICS",
+                'body': 'Six years before his 1926 wave equation, Erwin Schrödinger published a '
+                        'theory of color measurement in Annalen der Physik (1920) that treated '
+                        'color space with a Riemannian line element, building on earlier work by '
+                        'Helmholtz.'},
  'sidenote_2': {'kicker': "SIDENOTE M.08-B · SPECIFICATION PLATE · COHEN'S MATRIX R & "
                           'AUTOMOTIVE/ARCHITECTURAL METAMERISM',
                 'body': 'When an automotive metallic door panel repainted with a different pigment '
@@ -86,9 +92,22 @@ FOLIO = {'folio_id': 'M.08',
                      "Decompose R = P_R * R + (I - P_R) * R using Cohen's projection matrix P_R = "
                      'A * (A^T * A)^{-1} * A^T to isolate fundamental color from metameric blacks '
                      'in ker(Pi).',
-                     'Integrate Riemannian color geodesics under ds^2 = g_ij(x) dx^i dx^j rather '
-                     'than Euclidean chords to avoid Abney hue shifts.']},
- 'revisions': [{'edition': 'REV 1.0',
+                     'Integrate Riemannian color geodesics under a stated model metric ds^2 = '
+                     'g_ij(x) dx^i dx^j rather than Euclidean chords, and report that the hue '
+                     'paths depend on the chosen metric.']},
+ 'revisions': [{'edition': 'REV 1.1',
+                'date': '2026-11-14',
+                'summary': 'REV 1.1 (Redated 2026-11-14): Grounding revision. The geodesic '
+                           'distance, the +9.4° chord hue shift and the ΔE_00 value are now '
+                           "labelled as illustrative model values, and the 'QED' verdict and "
+                           "the claim that geodesics eliminate the Abney effect are withdrawn. "
+                           "The metric ds² = ∑ a_k (dx^k/x^k)² is called a Helmholtz-type model, "
+                           'not the Fisher–Rao metric; the claim that color inspired Grassmann\'s '
+                           'exterior algebra, the invented 1853 scene, and the Cystic Fibrosis '
+                           'line in the Spanish block are removed.',
+                'opus': 'Review: all DOIs checked in Crossref and the Scite index on 2026-11-14; '
+                        "Schrödinger 1920 and MacAdam 1942 found in Scite. No DOIs added."},
+               {'edition': 'REV 1.0',
                 'date': '2026-11-02',
                 'summary': 'REV 1.0 (Published 2026-11-02): Inaugural Volume IV mathematical '
                            "colorimetry monograph uniting Grassmann's spectral projection, Erwin "
@@ -97,7 +116,8 @@ FOLIO = {'folio_id': 'M.08',
                            '10.1364/JOSA.32.000247).',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'rank-3 projection operator P_R^2 = P_R idempotence, Christoffel geodesic '
-                        'curvature, and illuminant metamerism drift.'}],
+                        "curvature, and illuminant metamerism drift. (REV 1.1: this 'verified' "
+                        'wording is withdrawn; no measurement or independent check was run.)'}],
  'volume': 4,
  'volume_code': 'VOL. 04',
  'reading_time': '22 MIN READ',
@@ -129,20 +149,16 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'color space and geodesic hue paths.'},
  'act1_title': "Act I — From Hermann Grassmann's Exterior Algebra of Color to Erwin Schrödinger's "
                'Riemannian Color Manifolds',
- 'act1_dropcap': 'In the chill autumn of 1853 in Stettin, an unheralded gymnasium mathematics '
-                 'teacher named Hermann Grassmann published a paper on color mixing that turned '
-                 'optics upside down. Scientists had argued bitterly about whether colors were '
-                 'physical wave mixtures or human sensations, often confusing the mixing of '
-                 'colored light beams with the blending of muddy pigments. Grassmann perceived '
-                 'that while sunlight is composed of an infinite tapestry of electromagnetic waves '
-                 'across the rainbow, the human eye collapses this magnificent symphony down into '
-                 'just three basic receptors. Decades later in 1920, before formulating his famous '
-                 "quantum wave equation, Austrian physicist Erwin Schrödinger took Grassmann's "
-                 'discovery into the realm of curved geometry. Pondering how the human eye '
-                 'measures differences between shades, Schrödinger realized that perceptual color '
-                 'space is not flat like a tabletop. Instead, color forms a curved Riemannian '
-                 'landscape where the true shortest path between two hues bends like an airplane '
-                 'route arcing across the globe.',
+ 'act1_dropcap': 'In 1853 Hermann Grassmann, a schoolteacher in Stettin, published a short paper '
+                 'on color mixing in Annalen der Physik und Chemie. It stated what are now called '
+                 "Grassmann's laws: mixtures of colored lights combine additively, so that color "
+                 'matching behaves like a linear map into a space of three dimensions. Sunlight '
+                 'spans a continuum of wavelengths, yet a normal human eye matches colors with '
+                 'three kinds of cone. In 1920, six years before his wave equation, Erwin '
+                 'Schrödinger published a theory of color measurement in Annalen der Physik that '
+                 'gave color space a Riemannian line element, following earlier work by '
+                 'Helmholtz. In such a geometry the shortest path between two hues can bend, much '
+                 'as an airline route arcs across the globe.',
  'act1_plain_bridge': 'Have you ever noticed that a new sweater matches your favorite pants '
                       'perfectly in the bright fluorescent lighting of a department store, yet '
                       'looks embarrassingly mismatched once you step outside into the afternoon '
@@ -161,18 +177,16 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'contains an infinite-dimensional nullspace, two radically different electromagnetic '
               'wave distributions can produce identical cone signals whenever their difference '
               'lies inside that kernel. This mathematical mechanism creates metamerism. In 1920, '
-              'Erwin Schrödinger published his landmark three-part treatise on color metrics in '
-              'Annalen der Physik (DOI 10.1002/andp.19203682202), demonstrating that perceptual '
-              'discrimination is intrinsically non-Euclidean. Schrödinger equipped the color cone '
-              'with a curved Riemannian metric tensor, proving that constant-hue paths are not '
-              'flat straight lines in RGB space, but geodesics that solve Euler–Lagrange '
-              'differential equations and eliminate the notorious Abney hue-shift distortion. In '
-              '1942, David L. MacAdam experimentally verified this curvature by mapping '
-              'discrimination ellipses across chromaticity space in the Journal of the Optical '
-              'Society of America (DOI 10.1364/JOSA.32.000247). Modern colorimetry and graphics '
-              'engines build directly upon these metric ellipses, enabling precision pigment '
-              'formulation in architectural lime washes and automated spectrophotometry in '
-              'automotive finishes.',
+              'Erwin Schrödinger published his theory of color metrics, in three parts, in '
+              'Annalen der Physik (DOI 10.1002/andp.19203682202), describing color space with a '
+              'Riemannian line element rather than a flat Euclidean one. In such a model, paths '
+              'between hues are geodesics that solve Euler–Lagrange equations, and they depend on '
+              'which metric is chosen. In 1942, David L. MacAdam measured discrimination ellipses '
+              'across chromaticity space for one observer (Journal of the Optical Society of '
+              'America, DOI 10.1364/JOSA.32.000247); their unequal sizes and orientations show '
+              'that equal perceptual steps are not equal steps in the chromaticity diagram. '
+              'Later color-difference formulas, such as CIEDE2000, were built to approximate '
+              'this kind of non-uniformity.',
  'act1_stakes': 'The leap from flat color wheels to curved differential geometry resolved a '
                 'century of industrial and scientific frustration. Early textile dyers, printers, '
                 'and lighting engineers treated color matching as simple Euclidean geometry, '
@@ -180,30 +194,29 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'equal step in human perception. The results were notorious: displays clipped '
                 'delicate skin tones, automotive panels painted in different factory bays clashed '
                 'under evening headlights, and early color photography suffered unpredictable hue '
-                'shifts. By applying the tools of Bernhard Riemann and Albert Einstein to sensory '
-                'neuroscience, Schrödinger and MacAdam revealed that human perception is '
-                'fundamentally an information-geometric manifold. Today, this Riemannian framework '
-                'underpins everything from wide-gamut digital cinema cameras and surgical lighting '
-                'calibration to generative computer vision and neural radiance fields. '
+                'shifts. Schrödinger brought the tools of Riemannian geometry to color '
+                "perception, and MacAdam's measurements showed how uneven perceptual distances "
+                'are. Non-uniform color-difference metrics descended from this line of work are '
+                'used today in color management and quality control. '
                 'Understanding how high-dimensional wave phenomena project onto low-dimensional '
                 'curved perception bridges pure differential geometry with the physical realities '
                 'of human experience.',
- 'pullquote': '"Electromagnetic light waves live in an infinite-dimensional Hilbert space '
-              'L^2([380, 780] nm), human cones project them onto a 3D convex cone, and perception '
-              'measures distance with Erwin Schrödinger\'s curved Riemannian metric tensor g_ij."',
+ 'pullquote': '"Light spectra live in an infinite-dimensional space L^2([380, 780] nm), human '
+              'cones reduce them to three numbers, and a curved metric of the kind Schrödinger '
+              'proposed is one way to model how far apart two colors look."',
  'chronology': [('1853',
-                 "Hermann Grassmann formulates Grassmann's Laws of additive color vector spaces "
-                 'and the rank-3 spectral projection operator.'),
+                 "Hermann Grassmann states Grassmann's laws of additive color mixing, which in "
+                 'modern terms make color matching a linear map to three dimensions.'),
                 ('1920',
                  'Erwin Schrödinger publishes Grundlinien einer Theorie der Farbenmetrik im '
-                 'Tagessehen (DOI 10.1002/andp.19203682202), founding Riemannian color geometry.'),
+                 'Tagessehen (DOI 10.1002/andp.19203682202), a Riemannian theory of color '
+                 'measurement.'),
                 ('1942',
-                 'David L. MacAdam measures the 25 Riemannian metric tensor discrimination '
-                 'ellipses across CIE chromaticity space (DOI 10.1364/JOSA.32.000247).'),
+                 'David L. MacAdam measures 25 color-discrimination ellipses across CIE '
+                 'chromaticity space (DOI 10.1364/JOSA.32.000247).'),
                 ('2026',
-                 'Differentiable Riemannian color geodesics and spectral nullspace (metamer) '
-                 'solvers unify architectural daylighting, automotive paint QC, and neural '
-                 'rendering.')],
+                 'This folio combines spectral nullspace (metamer) projections with geodesics of '
+                 'a model metric, as a teaching study.')],
  'act2_title': "Act II — How It Actually Works: Grassmann's Infinite-Dimensional Nullspace + "
                'Schrödinger Geodesics',
  'act2_intuition': 'Let S(lambda, T_illum) be the illuminant spectral power distribution modeled '
@@ -213,32 +226,31 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'R(lambda) c_bar_k(lambda) d_lambda across cone sensitivities. Two surfaces R_1 '
                    'and R_2 are metameric under reference lighting S_0 when int S_0 (R_1 - R_2) '
                    'c_bar d_lambda = 0. When ambient sunlight cools from 6500 K noon sky to 3000 K '
-                   'golden hour, the spectral nullspace rotates and the CIEDE2000 color difference '
-                   'jumps! Under the Helmholtz–Schrödinger metric tensor g_ij = diag(a_1 / x_1^2, '
-                   'a_2 / x_2^2, a_3 / x_3^2), the Christoffel symbols Gamma^k_ii = -1 / x^k curve '
-                   'the space inward. Solving the geodesic equation x_ddot^k + Gamma^k_ij x_dot^i '
-                   'x_dot^j = 0 reveals that the perceived shortest path between Cobalt (465 nm) '
-                   'and Rosa Mexicano (615 nm) is an elegant arc, preventing the plus 9.4 degree '
-                   'Abney hue distortion produced by flat linear RGB interpolation.',
- 'act2_deepening': 'The deeper geometric revelation is that human color vision operates on a '
-                   'statistical manifold governed by the Fisher–Rao information metric. Because '
-                   'cone photoreceptors exhibit Poisson noise in their photon absorption counts, '
-                   'distinguishing two nearby spectral distributions requires calculating the '
-                   'Kullback–Leibler divergence between their firing rate distributions. In the '
-                   "infinitesimal limit, this divergence collapses into David MacAdam's metric "
-                   'tensor ellipses. When you adjust the illuminant temperature slider, you are '
+                   'golden hour, the projection changes and a pair that matched can show a '
+                   'CIEDE2000 color difference. For the folio\'s Helmholtz-type model metric g_ij '
+                   '= diag(a_1 / x_1^2, a_2 / x_2^2, a_3 / x_3^2), the nonzero Christoffel symbols '
+                   'are Gamma^k_kk = -1 / x^k. In the coordinates u_k = ln x_k this metric is '
+                   'flat, so its geodesics are straight lines in log space: x_k(t) = '
+                   'x_k(0)^(1-t) x_k(1)^t. The path between a cobalt blue and a magenta (rosa '
+                   'mexicano, a non-spectral color with no single wavelength) is therefore an arc '
+                   'in linear coordinates; the plus 9.4 degree hue difference from the flat RGB '
+                   'chord is an illustrative model value.',
+ 'act2_deepening': 'One modelling view, offered here as a hypothesis rather than an established '
+                   'result, treats color discrimination statistically: if cone photon counts are '
+                   'noisy, nearby spectra can be told apart only to the extent their response '
+                   'distributions differ, and an information metric of that kind would produce '
+                   'ellipses resembling MacAdam\'s. When you adjust the illuminant temperature '
+                   'slider, you are '
                    'rotating the projection subspace relative to the spectral reflectance '
                    'manifold, causing the metameric black component hidden in the '
                    'infinite-dimensional nullspace to emerge as a visible color shift. '
                    'Simultaneously, adjusting the geodesic slider traverses the Levi-Civita '
                    'connection on the Riemannian cone. Rather than passing through low-saturation '
                    'regions where brightness dips artificially, the geodesic balances brightness '
-                   'and chromaticity along an optimal energetic curve. Furthermore, because the '
-                   'metric tensor g_ij is strictly positive-definite across the physiological '
-                   'domain, every geodesic path is guaranteed to be unique and free of '
-                   'self-intersecting loops. This mathematical coupling between projection '
-                   'nullspaces and Riemannian geodesics guarantees that color appearance models '
-                   'remain physically grounded across changing environments.',
+                   'and chromaticity along the model\'s shortest curve. For the log-flat model '
+                   'metric used here each pair of colors has exactly one geodesic, but that is a '
+                   'property of this model, not of every color metric. Real color appearance '
+                   'also depends on adaptation and surroundings, which no single metric captures.',
  'act2_analogy': 'Everyday analogy: If you look at a flat paper map of the world, drawing a '
                  'straight ruler line between Seattle and Paris makes it seem like the shortest '
                  'flight path runs directly east across the Atlantic Ocean. But because the Earth '
@@ -269,18 +281,18 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                      'force_b_title': 'Geodesic Parameter t_geo',
                      'force_b_sub': 'Traces shortest metric path across curved perceptual '
                                     'coordinates',
-                     'threshold_title': 'Schrödinger Geodesic vs. Abney Shift',
-                     'threshold_pass': 'Curved geodesic eliminates +9.4 deg hue shift with zero '
-                                       'drift',
+                     'threshold_title': 'Model Geodesic vs. Flat Chord',
+                     'threshold_pass': 'Model geodesic avoids the illustrative +9.4 deg chord hue '
+                                       'shift',
                      'threshold_fail': 'Flat RGB chord detours through muddy purple and gray '
                                        'distortion'},
  'walkthrough': ['Experiment 1 (Illuminant Metamerism & Barragán Sunset Shift): Sweep Illuminant '
                  'Color Temperature T_illum from 6500 K (D65 midday sky) down to 2800 K (warm '
                  'sunset). Watch the Planckian locus shift and track the CIEDE2000 metamerism '
                  'divergence between mineral pigment and synthetic dye.',
-                 'Experiment 2 (Schrödinger Geodesic vs. Euclidean Abney Drift): Drag Geodesic '
-                 'Interpolation Parameter t_geo from 0.00 to 1.00 between Cobalt Ultramarine (465 '
-                 'nm) and Rosa Mexicano (615 nm), comparing the curved Riemannian geodesic arc '
+                 'Experiment 2 (Model Geodesic vs. Euclidean Chord): Drag Geodesic '
+                 'Interpolation Parameter t_geo from 0.00 to 1.00 between a cobalt ultramarine and '
+                 'a rosa mexicano magenta (labels illustrative), comparing the model geodesic arc '
                  'against the flat Euclidean chord across MacAdam ellipses.',
                  'Experiment 3 (Hilbert Projection & Metric Tensor Stepper): Click Stages 1 to 4 '
                  "to inspect infinite-dimensional wave spectra in L^2, Cohen's fundamental metamer "
@@ -290,44 +302,42 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'act4_human_ai': "Modern computer graphics and architectural material synthesis use Jozef Cohen's "
                   'fundamental metamer decomposition (splitting any reflectance spectrum R(lambda) '
                   'into its 3D fundamental component R* in row-space(Pi) plus a metameric black '
-                  'B(lambda) in ker(Pi)) paired with Riemannian manifold optimization to guarantee '
-                  'color constancy across day and night.',
- 'act4_deepening': 'The intersection of differential geometry and artificial intelligence is '
-                   'reshaping modern spectral rendering and material design. In contemporary '
-                   'visual engineering workflows, human artists establish expressive emotional '
-                   'palettes while neural networks, trained with differentiable Riemannian color '
-                   'metrics, ensure that physical materials maintain color constancy across '
-                   'varying daylight conditions. Generative diffusion models synthesize realistic '
-                   'bidirectional reflectance functions by constraining optimization trajectories '
-                   'directly to the MacAdam metric manifold, eliminating chromatic banding and '
-                   'boundary artifacts. Yet compelling mathematical frontiers remain open: how do '
+                  'B(lambda) in ker(Pi)) could be paired with optimization under a perceptual '
+                  'metric to reduce metamerism between materials under changing light. This is '
+                  'a proposal, not a description of current practice.',
+ 'act4_deepening': 'Differential geometry and machine learning could meet in spectral '
+                   'rendering and material design. One could imagine human artists setting '
+                   'palettes while optimizers trained with differentiable color-difference '
+                   'metrics search for materials that keep their appearance across daylight '
+                   'conditions. Whether such methods reduce banding or metamerism in practice is '
+                   'not something this folio has tested. Mathematical questions remain open: how do '
                    "we extend Schrödinger's Riemannian metric from isolated color patches to "
                    'complex, spatially varying textures where visual cortex receptive fields '
                    'introduce non-local contextual contrast? Furthermore, can we generalize these '
                    'information-geometric geodesics to hyperspectral satellite imaging and medical '
                    'diagnostic endoscopy, where sensors record hundreds of spectral bands beyond '
-                   'human vision? Answering these questions deepens our understanding of visual '
-                   'perception while providing verified mathematical tools for virtual reality, '
-                   'architectural daylight design, and autonomous robotics.',
+                   'human vision? Answering these questions could deepen our understanding of '
+                   'visual perception and inform tools for virtual reality, architectural '
+                   'daylight design, and robotics.',
  'cf_bridge': 'Standalone Pure & Applied Mathematics Flagship & Cross-Pillar Synthesis: Folio M.08 '
               'completes Volume IV Color Wave Triad alongside Architecture (Folio A.07 on Luis '
               "Barragán's chromatic walls) and Physics (Folio P.08 on Bragg thin-film wave "
-              'interference and automotive pearlescence). Upstream mathematical case '
-              "study: Erwin Schrödinger's Fisher–Rao / Shahshahani Riemannian metric ds^2 = sum "
-              '(dx^i)^2 / x^i on the positive cone is the exact information-geometric metric '
-              'governing evolutionary population genetics and single-cell transcriptomic '
-              'trajectories.',
+              'interference and automotive pearlescence). A related but different metric on the '
+              'positive cone, the Shahshahani metric ds^2 = sum (dx^i)^2 / x^i, appears in '
+              'population genetics; the resemblance to the color model here is a mathematical '
+              'analogy only.',
  'sources': ['Grassmann, H. (1853). Zur Theorie der Farbenmischung. Annalen der Physik und Chemie, '
              '165(5), 69–84.',
              'Schrödinger, E. (1920). Grundlinien einer Theorie der Farbenmetrik im Tagessehen '
              '(Outline of a Theory of Color Measurement for Daylight Vision). Annalen der Physik, '
-             '368(22), 397–426, 427–456, 481–520. DOI: 10.1002/andp.19203682202.',
+             '368(22), 481–520 (one of three parts; the DOI is for this part). DOI: '
+             '10.1002/andp.19203682202.',
              'MacAdam, D. L. (1942). Visual sensitivities to color differences in daylight. '
              'Journal of the Optical Society of America, 32(5), 247–274. DOI: '
              '10.1364/JOSA.32.000247.',
              'Koenderink, J. J. (2010). Color for the Sciences. MIT Press, Cambridge, MA.',
-             'Peyré, G., & Cuturi, M. (2019). Computational optimal transport: With applications '
-             'to data science (PythonOT/POT, https://github.com/PythonOT/POT). Foundations and '
+             'Peyré, G., & Cuturi, M. (2019). Computational Optimal Transport with Applications '
+             'to Data Sciences (PythonOT/POT, https://github.com/PythonOT/POT). Foundations and '
              'Trends in Machine Learning, 11(5–6), 355–607. DOI: 10.1561/2200000073.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
              'context of citations and classifies their intent using deep learning '
@@ -351,14 +361,14 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         '            <circle id="tp-m08-geo-dot" cx="205" cy="98" r="6" '
         'fill="var(--tp-prussian)"/>\n'
         '            <text x="52" y="22" font-size="11" font-weight="600" '
-        'fill="currentColor">Schrödinger Riemannian Geodesic vs. MacAdam Ellipses g_ij</text>\n'
-        '            <text x="85" y="168" font-size="9.5" fill="var(--tp-prussian)">465 nm '
+        'fill="currentColor">Model Riemannian Geodesic vs. Discrimination Ellipses</text>\n'
+        '            <text x="85" y="168" font-size="9.5" fill="var(--tp-prussian)">'
         'Cobalt</text>\n'
-        '            <text x="255" y="102" font-size="9.5" fill="var(--tp-minium)">615 nm Rosa '
+        '            <text x="255" y="102" font-size="9.5" fill="var(--tp-minium)">Rosa '
         'Mexicano</text>\n'
         '            <text id="tp-m08-de-text" x="65" y="202" font-size="10" '
-        'fill="var(--tp-verdigris)">Geodesic Arc ds = ∫√(g_ij dx^i dx^j) · Abney Hue Drift = '
-        '0.0°</text>\n'
+        'fill="var(--tp-verdigris)">Geodesic Arc ds = ∫√(g_ij dx^i dx^j) · Model Metric '
+        '(Illustrative)</text>\n'
         '            <line x1="375" y1="22" x2="375" y2="195" stroke="currentColor" '
         'stroke-opacity="0.2"/>\n'
         '            <text x="392" y="22" font-size="11" font-weight="600" '
@@ -384,30 +394,31 @@ PLATE_CAPTION = {'alt': "Conceptual visualization imagining what Erwin Schroding
 
 DISPATCH = {'kicker': 'FRONTIER MATHEMATICAL COLORIMETRY DISPATCH · SCHRÖDINGER RIEMANNIAN GEODESICS & '
            'METAMER NULLSPACES',
- 'headline': "Erwin Schrödinger's 1920 Riemannian Metric Tensor & Grassmann's Spectral Nullspace "
-             'Solve Hue Geodesics and Metamerism',
- 'body': "Connecting Hermann Grassmann's 1853 Hilbert-space projection operator with Erwin "
-         "Schrödinger's Riemannian color manifold (Annalen der Physik DOI "
-         "10.1002/andp.19203682202) and David MacAdam's metric tensor ellipses (JOSA DOI "
-         '10.1364/JOSA.32.000247) proves how geodesic paths eliminate the Abney hue-shift paradox '
-         'across architectural daylighting and automotive spectrophotometry.'}
+ 'headline': "Schrödinger's 1920 Color Metric and the Spectral Nullspace Behind Metamerism",
+ 'body': "A teaching study linking Grassmann's 1853 laws of color mixing, read as a projection "
+         "to three dimensions, with Erwin Schrödinger's Riemannian theory of color measurement "
+         "(Annalen der Physik DOI 10.1002/andp.19203682202) and David MacAdam's discrimination "
+         'ellipses (JOSA DOI 10.1364/JOSA.32.000247). Hue paths and values shown come from a '
+         'model metric.'}
 
 META_3D = ('Schrödinger Riemannian Color Manifold & MacAdam Geodesics',
  'X/Z: CIE Chromaticity Plane (x, y) · Y: Riemannian Metric ds² = g_ij dx^i dx^j & Geodesic Arc')
 
 ES_TRANSLATION = {'title_es': 'Geometría Diferencial Riemanniana de la Percepción del Color: Geodésicas de '
              'Helmholtz–Schrödinger, Tensores Métricos de MacAdam y Proyecciones de Grassmann',
- 'subtitle_es': 'Cómo la proyección espectral de Hermann Grassmann Π: L²([380,780] nm) → ℝ³ crea '
-                'metámeros y el tensor métrico riemanniano curvo de Erwin Schrödinger ds² = g_ij '
-                'dx^i dx^j define las verdaderas geodésicas del color.',
+ 'subtitle_es': 'Cómo la linealidad de la mezcla de colores que describió Hermann Grassmann, '
+                'leída hoy como una proyección Π: L²([380,780] nm) → ℝ³, crea metámeros, y cómo '
+                'un elemento de línea riemanniano ds² = g_ij dx^i dx^j como el que propuso Erwin '
+                'Schrödinger en 1920 define trayectorias curvas entre tonos. Las cifras son '
+                'valores del modelo.',
  'why_es': 'Volar de Ciudad de México a París en un mapa plano parece una línea recta horizontal, '
            'pero sobre la esfera curva de la Tierra la ruta más corta real (la geodésica) se '
            'arquea hacia el norte.',
  'plain_es': 'En 1853, el profesor Hermann Grassmann descubrió que aunque la luz solar contiene '
              'una infinidad de ondas electromagnéticas distintas, el ojo humano comprime toda esa '
              'riqueza en solo tres señales básicas en la retina. Años después, en 1920, el físico '
-             'Erwin Schrödinger demostró que el espacio donde percibimos los colores no es plano '
-             'como una mesa, sino curvo como la superficie de la Tierra. Seguro les ha pasado que '
+             'Erwin Schrödinger propuso describir el espacio de los colores con una geometría '
+             'curva, no plana como una mesa. Seguro les ha pasado que '
              'compran una prenda de vestir en una tienda y bajo las luces del mostrador se ve '
              'idéntica a sus pantalones, pero al salir a la luz del sol se nota una diferencia '
              'incómoda. Esto ocurre porque distintas combinaciones de ondas de luz pueden engañar '
@@ -422,12 +433,11 @@ ES_TRANSLATION = {'title_es': 'Geometría Diferencial Riemanniana de la Percepci
             'nulo infinito donde se originan los pares metaméricos, alterando la percepción visual '
             'entre pigmentos minerales y tintes sintéticos. Por otra parte, al unir dos tonos como '
             'el azul cobalto y el rosa mexicano, la distancia más corta no es una recta euclidiana '
-            'en el espacio RGB, sino una geodésica gobernada por el tensor métrico de Schrödinger '
-            'y las elipses de discriminación de MacAdam. Si se utiliza una mezcla lineal plana, la '
-            'trayectoria sufre una distorsión de tono de más de nueve grados conocida como el '
-            'efecto Abney. En contraste, la integración geodésica curva preserva la pureza '
-            'cromática constante, uniendo la geometría diferencial con el renderizado neuronal y '
-            'el control de calidad en acabados automotrices y arquitectónicos.',
- 'bridge_es': 'La métrica de información de Fisher–Rao y las variedades riemannianas curvas '
-              'permiten medir distancias verdaderas entre estados fisiológicos multivariados y '
-              'trayectorias de respuesta clínica en la Fibrosis Quística.'}
+            'en el espacio RGB, sino una geodésica de una métrica modelo, inspirada en la de '
+            'Schrödinger y en las elipses de discriminación que midió MacAdam. En el modelo, la '
+            'mezcla lineal plana se desvía unos 9.4 grados de tono respecto a la geodésica; es un '
+            'valor ilustrativo, no una corrección medida del efecto Abney.',
+ 'bridge_es': 'Este folio completa la tríada del color del Volumen IV junto con A.07 (los muros '
+              'de Luis Barragán) y P.08 (interferencia en películas delgadas). Una métrica '
+              'parecida pero distinta, la de Shahshahani, aparece en genética de poblaciones; el '
+              'parecido es solo una analogía matemática.'}

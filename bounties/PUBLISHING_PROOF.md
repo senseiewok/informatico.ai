@@ -22,8 +22,9 @@ When submitting open-source benchmark companions, formalization links, or techni
      ```
 3. **Offline Primary Literature & Theorem Verification**
    - All 48 Folios (100% of Volume I–VI essays) are verified against primary Crossref DOIs (`data/folio-citations.cache.json`), and link directly to open-source formalization repositories:
-     - [`anthropics/formal-math`](https://github.com/anthropics/formal-math) (`ETHIsFalse.lean`, `EightSquare.lean`, `ThreeSUM_APSP.lean`, `Zeta23.lean`, `XiPrime.lean`)
-     - [`anthropics/fermats-last-theorem`](https://github.com/anthropics/fermats-last-theorem) (`13,000,000+` lines of Lean 4, zero `sorry`)
+     - [`anthropics/formal-math`](https://github.com/anthropics/formal-math): its README, read on 2026-11-14, lists three Lean 4 projects, `zeta23`, `3sum-apsp` and `eth` (the last described there as refuting the Exponential Time Hypothesis, a statement this project has not checked). Files named `ETHIsFalse.lean`, `EightSquare.lean` and `ThreeSUM_APSP.lean`, cited in earlier versions of this page, do not appear in the repository's file tree read the same day.
+     - [`anthropics/fermats-last-theorem`](https://github.com/anthropics/fermats-last-theorem): its README, read on 2026-11-14, describes a complete, machine-checked Lean 4 proof of Fermat's Last Theorem in which no module contains `sorry` or an added `axiom`. That README states no line count; the `13,000,000+` lines given in earlier versions of this page are withdrawn.
+     - These are the repositories' own statements. This project has not built either repository.
 4. **Single-Owner Repository Integrity (`@senseiewok` Only)**
    - To guarantee provenance and prevent unverified third-party code injection into the publishing ledger, `senseiewok/informatico.ai` enforces GitHub interaction limits (`collaborators_only`), `CODEOWNERS` protection (`* @senseiewok`), and automated closure of any external pull request (`.github/workflows/lock-external-prs.yml`).
 

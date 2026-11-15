@@ -12,18 +12,20 @@ FOLIO = {'folio_id': 'M.05',
  'category_code': 'M',
  'title': 'Neuro-Symbolic Deductive Search (AlphaGeometry 2): Auxiliary Constructions and '
           'Allosteric Pocket Triangulation',
- 'subtitle': 'How coupling a symbolic Deductive Database + Algebraic Rules (DD+AR) engine with '
-             'neural auxiliary point generation solves Olympiad geometry and locks 3D Cryo-EM '
-             'pharmacophore triangles.',
+ 'subtitle': 'How AlphaGeometry couples a symbolic Deductive Database + Algebraic Rules (DD+AR) '
+             'engine with a neural model that proposes auxiliary points, as reported in Nature '
+             'and in a follow-up report on AlphaGeometry2. The comparison with fixing a shape by '
+             "adding a support point is this folio's own picture, and any link to protein "
+             'structure is an analogy.',
  'date_published': '2026-11-01',
- 'date_redated': '2026-11-02',
- 'current_edition': 'REV 1.1',
- 'status_badge': 'REDATED REV 1.1',
+ 'date_redated': '2026-11-14',
+ 'current_edition': 'REV 1.2',
+ 'status_badge': 'REDATED REV 1.2',
  'primary_kernel': 'tools/discovery/frontier_ai_math_catalog.py',
  'colophon': {'identifier': 'M.05 · Synthetic & Distance Geometry',
               'kernels': 'DD+AR Closure · Cayley-Menger det(B_5)=0',
-              'benchmarks': 'AlphaGeometry 2 (84% IMO) · Euclid Elements',
-              'bridge': 'Auxiliary Anchor X_aux ↔ Allosteric TM8 Pocket Lock'},
+              'benchmarks': 'AlphaGeometry 25 of 30 (Nature) · AlphaGeometry2 84% of IMO 2000-2024 geometry (arXiv)',
+              'bridge': 'Auxiliary point ↔ added support point (analogy only)'},
  'sliders': [{'label': 'Auxiliary Construction Depth (k_aux Anchors)',
               'min': 1,
               'max': 8,
@@ -42,20 +44,23 @@ FOLIO = {'folio_id': 'M.05',
            'algebraic angle/ratio/area chasing until saturation.',
            'Stage 3 (Neural Auxiliary Construction X_aux): Proposes the missing auxiliary '
            'point/circle that bridges disconnected deductive components.',
-           'Stage 4 (Cayley-Menger 3D Rigidity Lock): Verifies det(B_{n+1}) = 0 Euclidean '
-           'embeddability, locking TM2-TM8-TM11 pocket coordinates to 0.42 Å.'],
- 'readouts': [{'label': 'Deductive Closure Gain', 'value': '14 → 47 Invariants'},
-              {'label': 'IMO Geometry Solve Rate', 'value': '84.0% (AlphaGeometry 2)'},
-              {'label': 'Cayley-Menger Rigidity', 'value': 'det(B_5) = 0 (0.42 Å)'},
-              {'label': 'Symbolic Kernel Verdict', 'value': 'QED VERIFIED (DD+AR)'}],
+           'Stage 4 (Cayley-Menger Check): Five points in three-dimensional space must satisfy '
+           'det(B_5) = 0 for their squared distances. The page uses this only to illustrate a '
+           'rigidity condition; it is not a protein calculation.'],
+ 'readouts': [{'label': 'Deductive Closure Gain', 'value': '14 → 47 Invariants (fixed illustrative values)'},
+              {'label': 'IMO Geometry Solve Rate', 'value': '84% of IMO 2000-2024 geometry problems (AlphaGeometry2 report)'},
+              {'label': 'Cayley-Menger Condition', 'value': 'det(B_5) = 0 for five points in R^3'},
+              {'label': 'Symbolic Kernel Run', 'value': 'not run here (reported by the papers)'}],
  'sidenote_1': {'kicker': 'SIDENOTE M.05-A · NATURE DOI 10.1038/s41586-023-06747-5',
-                'body': 'AlphaGeometry trained purely on 100M synthetic theorems without human '
-                        'demonstrations, discovering generalized auxiliary constructions in '
-                        'olympiad geometry.'},
- 'sidenote_2': {'kicker': 'SIDENOTE M.05-B · ALLOSTERIC TRIANGULATION IN PDB 8EIQ',
-                'body': 'In the F508del transmembrane channel, elexacaftor (resolved in PDB 8EIQ, '
-                        'and next-generation corrector vanzacaftor/VX-121) supplies the auxiliary '
-                        'vertex X_aux that triangulates TM2, TM8, and TM11 into a rigid frame.'},
+                'body': 'The Nature paper reports training on about 100 million synthetic '
+                        'theorems and proofs, with no human demonstrations, and that '
+                        'AlphaGeometry solved 25 of 30 olympiad-level test problems, against 10 '
+                        'for the previous best method.'},
+ 'sidenote_2': {'kicker': 'SIDENOTE M.05-B · A LOOSE ANALOGY',
+                'body': 'Adding one support point can fix the shape of a wobbly frame, which is '
+                        'the picture behind an auxiliary construction. The folio draws this '
+                        'picture beside protein structures only as an analogy and makes no claim '
+                        'about how any drug works.'},
  'skill': {'filename': 'neuro-symbolic-geometry-SKILL.md',
            'name': 'neuro-symbolic-geometry',
            'description': 'AI-agnostic skill for neuro-symbolic DD+AR deductive closure, auxiliary '
@@ -64,16 +69,37 @@ FOLIO = {'folio_id': 'M.05',
                      'chasing (AR) before invoking neural auxiliary proposals.',
                      'Verify 3D Euclidean distance matrices via the Cayley-Menger determinant '
                      'det(B_{n+1}) = 0 and alternating sign minors.',
-                     'Map auxiliary geometric anchors to allosteric pharmacophore triangles in '
-                     'structural biology.']},
- 'revisions': [{'edition': 'REV 1.1',
+                     'Say plainly when a geometric picture is only an analogy for a biological '
+                     'structure, and make no claim about how any drug works.']},
+ 'revisions': [{'edition': 'REV 1.2',
+                'date': '2026-11-14',
+                'summary': 'REV 1.2 (Redated 2026-11-14): Grounding revision. Earlier editions '
+                           'said that AlphaGeometry reached IMO gold-medal level (the Nature '
+                           'paper says 25 of 30 problems, approaching an average gold medallist; '
+                           'the 84% figure is from the separate AlphaGeometry2 report, '
+                           'arXiv:2502.03544), presented the numbers 14 to 47 and 0.42 Å as '
+                           'results, and said that neuro-symbolic triangulation identifies how '
+                           'elexacaftor and vanzacaftor hold the CFTR helices TM2, TM8 and TM11 '
+                           'in place. None of those statements is supported by the sources; the '
+                           'invented opening scene of Euclid in Alexandria, the claims about '
+                           'robotic surgery and self-driving cars, and the "QED verified" labels '
+                           'are removed. The numbers 14 and 47 are marked as fixed illustrative '
+                           'values, the 0.42 Å figure is withdrawn, and the Cystic Fibrosis '
+                           'section is shortened to a labelled analogy.',
+                'opus': 'Review: DOIs checked in Crossref and the Scite index on 2026-11-14; the '
+                        '25 of 30 result, the 100 million synthetic theorems and the 84% versus '
+                        '54% figures were read in the Nature abstract and the arXiv abstract. '
+                        'Chervonyi et al. 2025 (arXiv:2502.03544) was added to the source list.'},
+               {'edition': 'REV 1.1',
                 'date': '2026-11-02',
                 'summary': 'REV 1.1 (Redated 2026-11-02): Certified AlphaGeometry 2 neuro-symbolic '
                            'DD+AR deductive closure and Cayley-Menger 3D distance geometry with '
-                           '4-Seat Frontier Council review.',
+                           '4-Seat Frontier Council review. (REV 1.2: "certified" wording '
+                           'withdrawn.)',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Cayley-Menger determinant det(B_5) = 0 and auxiliary anchor triangulation '
-                        'to transmembrane helices TM2-TM8-TM11.'},
+                        'to transmembrane helices TM2-TM8-TM11. (REV 1.2: "verified" wording '
+                        'withdrawn; the helix claim has no source.)'},
                {'edition': 'REV 1.0',
                 'date': '2026-11-01',
                 'summary': 'REV 1.0 (Published 2026-11-01): Initial 5-Act monograph on '
@@ -81,7 +107,7 @@ FOLIO = {'folio_id': 'M.05',
                            'pocket rigidity.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Cayley-Menger determinant rank conditions and DD+AR fixed-point '
-                        'termination.'}],
+                        'termination. (REV 1.2: "verified" wording withdrawn.)'}],
  'governing_law': 'DD+AR Closure · Cayley-Menger det(B_5) = 0',
  'volume': 3,
  'volume_code': 'VOL. 03',
@@ -94,9 +120,11 @@ FOLIO = {'folio_id': 'M.05',
            'mentioning': 90,
            'contrasting': 0,
            'retracted': False,
-           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 378 citing '
-                      'publications (0 supporting, 90 mentioning, 0 contrasting) on AlphaGeometry '
-                      'neuro-symbolic olympiad geometry deduction.'}}
+           'summary': 'Scite index entry for Trinh et al. 2024 (DOI 10.1038/s41586-023-06747-5), '
+                      'checked 2026-11-08: 378 citing publications (0 supporting, 90 mentioning, 0 '
+                      'contrasting). The entry also lists a correction notice (DOI '
+                      '10.1038/s41586-024-07115-7). These counts describe that one paper, not '
+                      'this folio.'}}
 
 LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'word_count': '4,650 WORDS',
@@ -107,72 +135,79 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
            'mentioning': 90,
            'contrasting': 0,
            'retracted': False,
-           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 378 citing '
-                      'publications (0 supporting, 90 mentioning, 0 contrasting) on AlphaGeometry '
-                      'neuro-symbolic olympiad geometry deduction.'},
+           'summary': 'Scite index entry for Trinh et al. 2024 (DOI 10.1038/s41586-023-06747-5), '
+                      'checked 2026-11-08: 378 citing publications (0 supporting, 90 mentioning, 0 '
+                      'contrasting). The entry also lists a correction notice (DOI '
+                      '10.1038/s41586-024-07115-7). These counts describe that one paper, not '
+                      'this folio.'},
  'act1_title': "Act I — From Euclid's Hidden Auxiliary Lines to AlphaGeometry's Neuro-Symbolic "
                'Search',
- 'act1_dropcap': "In the sun-bleached library of Alexandria around three hundred years before the common era, the Greek geometer Euclid sat unrolling papyrus scrolls of geometric diagrams. When composing the forty-seventh proposition of his first book of the Elements—the immortal theorem connecting the squares constructed along the borders of a right-angled triangle—he encountered an impasse that pure axiom recitation could not cross. To reveal the hidden equality of areas, Euclid had to perform a creative leap of the imagination: drawing an invisible line from the right-angled peak downward through the opposite square. That single auxiliary altitude bisected the intractable figure into pairs of congruent triangles, allowing the proof to fall into place like tumbling dominoes. For two millennia, this creative act remained geometry's deepest mystery. Applying known axioms was routine, but conjuring the invisible auxiliary line from empty parchment required human spark that machines could never replicate.",
- 'act1_plain_bridge': 'In plain words, solving a challenging geometry problem is like navigating through a locked, unfamiliar house in total darkness. You possess a keyring full of familiar rules about angles, parallel lines, and circles. Yet standing in the entryway, none of your existing keys fit the locked doors blocking your path. The breakthrough happens when you discover an invisible light switch: adding a single helper line or auxiliary landmark into the drawing. Suddenly, hidden pathways illuminate, and your existing tools unlock every doorway effortlessly. For decades, computer programs were completely blind to this trick because they could only test rules on lines already drawn on the page. Teaching artificial intelligence to imagine helpful new landmarks revolutionized automated reasoning. Today, this exact spatial intuition powers robotic surgery, helps self-driving cars perceive three-dimensional street intersections, and assists architects in designing stable buildings that resist earthquakes without requiring wasteful structural reinforcement.',
- 'act1_body': "In 2024 and 2025, Trieu Trinh, Thang Luong, and colleagues at Google DeepMind broke this 2,300-year algorithmic bottleneck by pairing a fast symbolic deduction engine with a neural transformer trained on one hundred million synthetic geometric proofs (Nature, DOI 10.1038/s41586-023-06747-5). The symbolic engine—combining a Deductive Database with Algebraic Area and Distance Chasing—exhaustively evaluates all immediate geometric consequences of known axioms. Whenever symbolic deduction reaches a fixed-point standstill, the neural network acts like an experienced geometer, proposing a strategic auxiliary point, circumcircle, or reflection line. Once this new vertex is introduced, the deterministic engine resumes computation, instantly tracing newly unlocked incidence invariants. In AlphaGeometry 2, expanding the symbolic core to handle continuous loci, angle equations, and rapid distance calculations elevated the system's International Mathematical Olympiad solve rate from 54% to 84%, matching the performance of the world's finest human gold medalists without requiring a single human training demonstration.",
- 'act1_stakes': 'The emergence of neuro-symbolic geometry bridged a fundamental chasm that had divided artificial intelligence research for over six decades. Early pioneers like Wu Wen-Tsun demonstrated that geometry could be translated into high-dimensional polynomial coordinate systems, but coordinate elimination yielded sprawling algebraic expressions that obscured human geometric intuition. Conversely, modern generative language models could sketch intuitive diagrams but frequently hallucinated false intersections and impossible proportions. AlphaGeometry unified these opposing philosophies into an infallible cooperative loop. The neural network provides creative heuristic intuition, imagining non-obvious auxiliary landmarks, while the symbolic deduction engine serves as an unbending algebraic judge. No auxiliary proposal is retained unless deterministic evaluation proves that it advances the proof toward terminal closure. This neuro-symbolic synergy guarantees that computer-generated proofs remain both human-interpretable and mathematically bulletproof, establishing a verified methodology for automated reasoning in physics, structural engineering, and autonomous robotics.',
- 'pullquote': '"Symbolic deduction alone is blind to objects that do not yet exist in the diagram; '
-              'neural intuition invents the auxiliary vertex, and deterministic DD+AR algebra '
-              'proves its necessity."',
+ 'act1_dropcap': "Euclid's Elements, written around 300 BCE, proves in Book I, Proposition 47 that in a right-angled triangle the square on the hypotenuse equals the sum of the squares on the other two sides. The standard proof adds auxiliary lines to the figure, joining vertices of the squares to opposite corners, which creates pairs of triangles of equal area. Knowing which extra line to draw is the creative step, and it is the step that automated geometry provers found hardest.",
+ 'act1_plain_bridge': 'In plain words, solving a challenging geometry problem can feel like finding your way through a dark house. You have a ring of familiar rules about angles, parallel lines and circles, but none of them seem to open the next door. Sometimes the way forward is to add a helper line or point to the drawing, after which the rules you already have apply again. A program that only applies rules to what is already drawn cannot do this. AlphaGeometry pairs such a rule-applying engine with a neural model that suggests helper points. This folio makes no claim that the method is used outside geometry problems.',
+ 'act1_body': "In January 2024, Trieu Trinh, Yuhuai Wu, Quoc Le, He He and Thang Luong reported AlphaGeometry in Nature (DOI 10.1038/s41586-023-06747-5). A neural language model, trained from scratch on about 100 million synthetic theorems and proofs, guides a symbolic deduction engine. The engine combines a Deductive Database with Algebraic Rules, working through the consequences of the premises; when it stalls, the neural model proposes an auxiliary construction and the engine resumes. On a test set of 30 olympiad-level problems the paper reports 25 solved, against 10 for the previous best method, which its authors describe as approaching an average International Mathematical Olympiad gold medallist. A follow-up report on AlphaGeometry2 (Chervonyi et al., arXiv:2502.03544) states that it raised the solving rate on IMO geometry problems from 2000 to 2024 from 54% to 84%.",
+ 'act1_stakes': 'Computer proofs in geometry have followed two main routes. Algebraic methods, such as the one developed by Wu Wen-Tsun and described in the book by Chou, Gao and Zhang (1994), translate a problem into polynomial equations. Synthetic methods apply deduction rules that resemble the steps of a human proof. AlphaGeometry combines a rule-based symbolic engine with a neural model that proposes auxiliary constructions. Because the symbolic engine carries out each deduction, a proof it outputs can be checked step by step, and the Nature paper reports that the proofs are human-readable. The folio does not claim that the method extends to other fields.',
+ 'pullquote': 'Symbolic deduction can only use objects that are already in the diagram; a neural '
+              'model proposes an auxiliary point, and the symbolic engine then checks whether it '
+              'helps.',
  'chronology': [('300 BCE',
-                 "Euclid's Elements introduces synthetic auxiliary constructions (Book I, Prop. 47 "
-                 "'Bride's Chair')."),
-                ('1841',
-                 'Arthur Cayley & Karl Menger formulate the determinant criteria for Euclidean '
-                 'distance embeddings in R^k.'),
-                ('1977',
-                 'Wu Wen-Tsun introduces algebraic mechanization of geometry via Ritt–Wu '
+                 "Euclid's Elements uses auxiliary constructions in proofs such as Book I, Prop. "
+                 "47 ('Bride's Chair')."),
+                ('1841 and 1928',
+                 'Arthur Cayley (1841) and Karl Menger (1928) give determinant criteria for when '
+                 'a set of distances can be realised by points in Euclidean space.'),
+                ('Late 1970s',
+                 'Wu Wen-Tsun develops algebraic mechanization of geometry theorem proving via '
                  'characteristic sets.'),
                 ('2024',
                  'Trinh et al. publish AlphaGeometry in Nature (DOI 10.1038/s41586-023-06747-5), '
-                 'reaching IMO gold-medal level via neuro-symbolic DD+AR.')],
+                 'reporting 25 of 30 olympiad-level problems solved.'),
+                ('2025',
+                 'Chervonyi et al. report AlphaGeometry2 solving 84% of IMO geometry problems from '
+                 '2000 to 2024, against 54% for the first version (arXiv:2502.03544).')],
  'act2_title': 'Act II — How It Actually Works: DD+AR Closure + Cayley–Menger Distance Rigidity',
  'act2_analogy': 'Everyday analogy: Imagine assembling a wobbly four-bar picture frame from wooden slats pinned loosely at the four corners. If you nudge the top rail, the entire square distorts into a leaning rhombus because the corner joints can swivel freely. However, if you nail a single diagonal wooden slat across two opposite corners, the wobbly square instantly locks into two rigid triangles that cannot flex or sway no matter how hard you push.',
- 'act2_plain_primer': 'To see how geometric locking works in practice, you can explore two intuitive control knobs. The first knob controls the auxiliary construction depth, determining how many helper pins or diagonal braces the computer is allowed to introduce into the diagram. With zero helper pins, a loose diagram wanders aimlessly with excess degrees of freedom. But as you dial in one or two auxiliary anchors, the system triangulates loose hinges, drastically shrinking ambiguity. The second knob sets constraint density, measuring how many geometric rules—such as parallel lines, equal angles, and circular tangents—crush into the workspace. When rules are sparse, shapes drift like loose scaffolding. But as constraint crowding approaches the critical threshold, adding a single diagonal cross-brace causes the entire system to snap into an unshakeable, rigid structure. Together, these two knobs demonstrate how a single well-placed landmark can transform a hopelessly wobbly puzzle into an airtight mathematical theorem.',
- 'distill_diagram': {'analogy_title': 'Diagonal Cross-Braced Truss', 'analogy_sub': 'Single diagonal slat locks wobbly frame into rigid triangles', 'force_a_title': 'Auxiliary Anchor Depth (k_aux)', 'force_a_sub': 'Number of neural helper points proposed to bridge stalled logic', 'force_b_title': 'Constraint Graph Density (alpha)', 'force_b_sub': 'Ratio of geometric incidences to vertices in deductive closure', 'threshold_title': 'Cayley-Menger Rigidity Barrier', 'threshold_pass': 'Deductive closure jumps 14 to 47 invariants with 0.42 A lock', 'threshold_fail': 'Under-constrained linkages drift in unbridged search space'},
- 'act2_intuition': 'In neuro-symbolic distance geometry, a geometric diagram or molecular binding pocket is governed by two coupled formal systems: symbolic incidence rules and the Cayley–Menger metric determinant det(B_{n+1}) = 0. The symbolic engine (DD+AR) tracks collinearities, concyclic points, and ratio symmetries using structured forward-chaining rules. However, when an under-constrained configuration lacks enough base relations, symbolic propagation stalls at an incomplete deductive fixed point. This is where the neural transformer intervenes: it evaluates the incomplete hypergraph and proposes a specific auxiliary anchor X_aux (such as a circumcenter reflection or harmonic pole). Injecting this single vertex into the system acts exactly like inserting a diagonal member into a planar truss. In Euclidean three-space, the Cayley–Menger determinant enforces that pairwise squared distances embed without metric distortion. As demonstrated by Trinh et al. (Nature 2024, DOI 10.1038/s41586-023-06747-5), introducing the auxiliary vertex X_aux expands the deductive closure from 14 base incidences to 47 proven invariants, collapsing excess degrees of freedom into a rigid coordinate lock with 0.42-angstrom precision.',
- 'act2_deepening': 'The deeper mathematical mechanism couples discrete hypergraph saturation with continuous distance matrix geometry. In the symbolic phase, the Deductive Database maintains an equivalence graph over angles and ratios, while Algebraic Rules apply vector and area formulas like the law of sines. When this closure saturates without proving the theorem, the system forms a partial distance matrix D where entries d_{ij}^2 are known only for certain vertex pairs. Determining whether this partial matrix can complete into a rigid configuration in R^3 is governed by the Cayley–Menger determinant det(B_5) = 0 for every subset of five vertices. By adjusting the auxiliary depth slider k_aux, the neural model generates candidate vertices that complete missing matrix entries. Coupling this depth to the constraint density slider alpha reveals a sharp phase boundary: at low clause densities, the graph is flexible and admits multiple embeddings; but once alpha crosses the critical connectivity threshold, a single auxiliary anchor locks all Gram eigenvalues, proving geometric rigidity with deterministic algebraic certainty.',
- 'walkthrough': ['Experiment 1 (Auxiliary Anchor Injection): Inspect how adding 1 neuro-symbolic '
-                 'auxiliary anchor X_aux expands the deductive closure from 14 base incidences to '
-                 '47 proven invariants.',
-                 'Experiment 2 (Prime & Clause Slider Coupling): Adjust the interactive sliders to '
-                 'compare symbolic search branching with and without auxiliary lemma pruning.',
-                 'Experiment 3 (3D Pocket Rigidity): Follow Steps 1 to 4 to see how Cayley–Menger '
-                 'distance bounds lock the TM8 helix hinge of the F508del transmembrane channel.'],
+ 'act2_plain_primer': 'To see how geometric locking works in practice, you can explore two intuitive control knobs. The first knob controls the auxiliary construction depth, determining how many helper pins or diagonal braces the computer is allowed to introduce into the diagram. With zero helper pins, a loose diagram wanders aimlessly with excess degrees of freedom. But as you dial in one or two auxiliary anchors, the system triangulates loose hinges, drastically shrinking ambiguity. The second knob sets constraint density, measuring how many geometric rules—such as parallel lines, equal angles, and circular tangents—crush into the workspace. When rules are sparse, shapes drift like loose scaffolding. But as constraint crowding approaches the critical threshold, adding a single diagonal cross-brace causes the entire system to snap into an unshakeable, rigid structure. Together, these two knobs are a picture of how a single well-placed point can turn a wobbly frame into a rigid one; they are not data from AlphaGeometry.',
+ 'distill_diagram': {'analogy_title': 'Diagonal Cross-Braced Truss', 'analogy_sub': 'Single diagonal slat locks wobbly frame into rigid triangles', 'force_a_title': 'Auxiliary Anchor Depth (k_aux)', 'force_a_sub': 'Number of neural helper points proposed to bridge stalled logic', 'force_b_title': 'Constraint Graph Density (alpha)', 'force_b_sub': 'Ratio of geometric incidences to vertices in deductive closure', 'threshold_title': 'Cayley-Menger Rigidity Barrier', 'threshold_pass': 'Deductive closure grows from 14 to 47 invariants (fixed illustrative values)', 'threshold_fail': 'Under-constrained linkages stay flexible without an added point'},
+ 'act2_intuition': 'In the symbolic part of AlphaGeometry, the engine (DD+AR) tracks collinearities, concyclic points and ratio relations using forward-chaining rules. When the premises do not give enough relations, the symbolic propagation stalls at an incomplete fixed point. This is where the neural model intervenes: it proposes an auxiliary construction X_aux, such as a new point or circle, after which the symbolic engine resumes. Adding one such point acts like inserting a diagonal member into a planar truss, which is the folio\'s picture. Separately, the Cayley–Menger determinant gives a condition on squared distances: five points in Euclidean three-space satisfy det(B_5) = 0. The numbers 14 and 47 on this page are fixed illustrative values for the size of a deductive closure before and after adding a point; they are not results from Trinh et al.',
+ 'act2_deepening': 'In the symbolic phase, the Deductive Database keeps relations among angles and ratios, while Algebraic Rules apply vector and area formulas such as the law of sines. When this closure saturates without proving the theorem, an auxiliary point can add new relations. The Cayley–Menger determinant is a classical condition on a matrix of squared distances: for five points in R^3 it must vanish. The two sliders on this page, auxiliary depth and constraint density, drive an illustration and are not AlphaGeometry parameters; the page does not claim a phase boundary or a rigidity proof.',
+ 'walkthrough': ['Experiment 1 (Auxiliary Anchor Injection): Inspect how adding 1 auxiliary '
+                 'point X_aux changes an illustrative deductive closure from 14 base incidences to '
+                 '47 invariants (fixed illustrative values).',
+                 'Experiment 2 (Depth & Density Sliders): Adjust the interactive sliders to '
+                 'see the illustration change; they are not measurements of AlphaGeometry.',
+                 'Experiment 3 (Cayley–Menger Condition): Follow Steps 1 to 4 to see the '
+                 'condition det(B_5) = 0 for five points in three-dimensional space.'],
  'act4_title': 'Act IV — Human + AI Co-Design & the Structural & Civil Engineering Specification '
                'Bridge',
- 'act4_human_ai': 'Human structural biologists identify conserved allosteric motifs while neuro-symbolic geometry engines exhaustively search auxiliary pharmacophore triangles that satisfy exact Cayley–Menger steric and hydrogen-bond distance bounds. Coupling neuro-symbolic DD+AR closure (DOI 10.1038/s41586-023-06747-5) with formal Euclidean and Lorentzian geometry tactics in HEPLean/PhysLean (https://github.com/HEPLean/PhysLean, DOI 10.1016/j.cpc.2024.109457) and leanprover-community/mathlib4 (DOI 10.1145/3372885.3373824) lets structural engineers and protein architects certify 3D rigid-body triangulations with Scite-verified grounding (DOI 10.1162/qss_a_00146).',
- 'act4_deepening': 'The success of AlphaGeometry 2 points toward a broad paradigm shift in computational mathematics and physical sciences. In automated reasoning workflows, human researchers establish the architectural specifications—defining symmetry groups, conservation laws, and invariant objectives—while neuro-symbolic agents explore vast geometric configuration spaces that defeat human spatial visualization. By feeding symbolic traces back into interactive theorem provers like Lean 4, every auxiliary deduction is verified without risk of geometric degeneracy. Looking toward the horizon, this hybrid methodology offers powerful applications for molecular biology and materials design. Open frontier challenges include generalizing auxiliary distance chaining from Euclidean flat space to non-Euclidean manifolds, modeling relativistic geometries in Lorentzian spacetime, and predicting allosteric transitions in macro-molecular complexes. By replacing unguided neural generation with rigorous symbolic kernels, scientists can systematically discover optimal structural trusses, design synthetic enzymes, and solve longstanding geometric conjectures with machine-checked mathematical integrity.',
- 'cf_bridge': 'Corrector drugs such as elexacaftor (VX-445, resolved in PDB 8EIQ alongside '
-              'tezacaftor and ivacaftor) and next-generation corrector vanzacaftor (VX-121, DOI '
-              '10.58347/tml.2025.1724a) target the allosteric crevice across transmembrane '
-              'helices TM2, TM8, and TM11 in the F508del chloride channel. Neuro-symbolic '
-              'auxiliary triangulation identifies the exact three-point hydrogen-bond + '
-              'hydrophobic bridge that locks the unruly TM8 helix into its wild-type Euclidean '
-              'coordinates.',
+ 'act4_human_ai': 'A proof assistant such as Lean can check geometric arguments step by step. The HepLean paper (DOI 10.1016/j.cpc.2024.109457; the project is now hosted as leanprover-community/physlib) and Mathlib (DOI 10.1145/3372885.3373824) are libraries a reader could look at. This folio ran no such checks, and it makes no claim about structural biology or engineering.',
+ 'act4_deepening': 'One can imagine feeding the symbolic traces of a geometry prover into a proof assistant such as Lean 4 so that each deduction is checked. That is a possibility, not something this folio did or has seen reported. Open questions in this area, such as extending auxiliary-construction search beyond Euclidean plane geometry, are not addressed here.',
+ 'cf_bridge': 'This bridge is an analogy the folio draws and nothing more. Fiedorczuk & Chen '
+              '(2022, DOI 10.1126/science.ade2216; PDB 8EIQ) report cryo-electron microscopy '
+              'structures of Δ508 CFTR with modulators. The folio borrows only the picture of an '
+              'added point fixing a shape. It makes no claim about how any drug works, and nothing '
+              'here is medical advice.',
  'sources': ['Trinh, T. H., Wu, Y., Le, Q. V., He, H., & Luong, T. (2024). Solving olympiad '
              'geometry without human demonstrations. Nature, 625, 476–482. DOI: '
              '10.1038/s41586-023-06747-5.',
+             'Chervonyi, Y., Trinh, T. H., Olšák, M., et al. (2025). Gold-medalist performance in '
+             'solving olympiad geometry with AlphaGeometry2. arXiv:2502.03544.',
              'Chou, S. C., Gao, X. S., & Zhang, J. Z. (1994). Machine Proofs in Geometry: '
              'Automated Production of Readable Proofs for Geometry Theorems. World Scientific.',
              'Fiedorczuk, K., & Chen, J. (2022). Molecular structures reveal synergistic rescue '
              'of Δ508 CFTR by Trikafta modulators (PDB 8EIQ). Science, 378(6617), 284–290. '
-             'DOI: 10.1126/science.ade2216; The Medical Letter (2025), DOI: 10.58347/tml.2025.1724a.',
-             'Tooby-Smith, J. (2025). HepLean / PhysLean: Digitalising high energy and '
-             'mathematical physics in Lean 4 (HEPLean/PhysLean, '
-             'https://github.com/HEPLean/PhysLean). Computer Physics Communications, 308, 109457. '
-             'DOI: 10.1016/j.cpc.2024.109457.',
+             'DOI: 10.1126/science.ade2216.',
+             'Tooby-Smith, J. (2025). HepLean: Digitalising high energy physics. Computer Physics '
+             'Communications, 308, 109457. DOI: 10.1016/j.cpc.2024.109457 (repository now '
+             'leanprover-community/physlib, formerly HEPLean/PhysLean).',
+             'The mathlib Community (2020). The Lean mathematical library. Proceedings of the '
+             '9th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP '
+             '2020), 367–381. DOI: 10.1145/3372885.3373824.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
              'context of citations and classifies their intent using deep learning '
              '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
              '10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Neuro-symbolic '
-        'auxiliary construction X_aux locking TM2-TM8-TM11 Cayley-Menger pocket">\n'
+        'auxiliary construction X_aux fixing a triangle (illustration)">\n'
         '            <circle cx="220" cy="112" r="78" fill="none" stroke="currentColor" '
         'stroke-opacity="0.35" stroke-width="1.5"/>\n'
         '            <polygon points="155,152 285,152 220,42" fill="var(--tp-prussian)" '
@@ -184,22 +219,22 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         'stroke-width="2" stroke-dasharray="4,3"/>\n'
         '            <line x1="220" y1="42" x2="220" y2="112" stroke="var(--tp-minium)" '
         'stroke-width="2" stroke-dasharray="4,3"/>\n'
-        '            <text x="120" y="172" font-size="11" fill="currentColor">TM2 (Arg134)</text>\n'
-        '            <text x="255" y="172" font-size="11" fill="currentColor">TM11 '
-        '(Trp1098)</text>\n'
-        '            <text x="195" y="30" font-size="11" fill="currentColor">TM8 Hinge</text>\n'
-        '            <text x="232" y="114" font-size="11" fill="var(--tp-minium)">X_aux (VX-445 / '
-        '8EIQ)</text>\n'
+        '            <text x="120" y="172" font-size="11" fill="currentColor">Point A</text>\n'
+        '            <text x="255" y="172" font-size="11" fill="currentColor">Point B'
+        '</text>\n'
+        '            <text x="195" y="30" font-size="11" fill="currentColor">Point C</text>\n'
+        '            <text x="232" y="114" font-size="11" fill="var(--tp-minium)">X_aux (auxiliary '
+        'point)</text>\n'
         '            <rect x="375" y="45" width="265" height="130" fill="none" '
         'stroke="var(--tp-verdigris)" stroke-width="1.8"/>\n'
         '            <text x="390" y="72" font-size="11" fill="var(--tp-verdigris)">DD+AR + '
         'Cayley-Menger Closure</text>\n'
         '            <text x="390" y="98" font-size="11" fill="currentColor">Base Incidences: 14 → '
-        'Proven: 47</text>\n'
-        '            <text x="390" y="122" font-size="11" fill="currentColor">det(B_5) = 0 (3D '
-        'Rigid Embedding)</text>\n'
-        '            <text x="390" y="146" font-size="11" fill="var(--tp-prussian)">RMSD Lock: '
-        '0.42 Å (QED Verified)</text>\n'
+        'Closure: 47 (illustrative)</text>\n'
+        '            <text x="390" y="122" font-size="11" fill="currentColor">det(B_5) = 0 for '
+        '5 points in R^3</text>\n'
+        '            <text x="390" y="146" font-size="11" fill="var(--tp-prussian)">Illustration '
+        'only, not a measurement</text>\n'
         '          </svg>'}
 
 PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what Euclidean compass-and-straightedge constructions '
@@ -209,28 +244,33 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what Euclidean compa
             'geometric visualization imagining brass compass-and-straightedge circles and a '
             'crimson auxiliary point locking a 3D triangulated truss.'}
 
-DISPATCH = {'kicker': 'FRONTIER NEURO-SYMBOLIC DISPATCH · DEEPMIND ALPHAGEOMETRY 2 (IMO GOLD)',
- 'headline': 'AlphaGeometry 2 Reaches 84% Olympiad Geometry Solve Rate via Symbolic DD+AR + Neural '
-             'Auxiliary Points',
- 'body': 'Published in Nature by Trinh, Luong & colleagues (DOI 10.1038/s41586-023-06747-5) and '
-         'extended in AlphaGeometry 2, neuro-symbolic deductive search trained on 100M synthetic '
-         'theorems invents auxiliary geometric constructions X_aux that lock under-constrained '
-         'incidence graphs—mirroring how elexacaftor (in PDB 8EIQ) and next-generation corrector '
-         'vanzacaftor (DOI 10.58347/tml.2025.1724a) triangulate helices TM2–TM8–TM11.'}
+DISPATCH = {'kicker': 'REPORTED RESULTS · DEEPMIND ALPHAGEOMETRY AND ALPHAGEOMETRY2',
+ 'headline': 'AlphaGeometry Reports 25 of 30 Olympiad Problems; AlphaGeometry2 Reports 84% of IMO '
+             'Geometry 2000–2024',
+ 'body': 'Published in Nature by Trinh, Wu, Le, He & Luong (DOI 10.1038/s41586-023-06747-5), '
+         'AlphaGeometry pairs a symbolic deduction engine with a neural model, trained on about '
+         '100 million synthetic theorems, that proposes auxiliary constructions, and reports 25 '
+         'of 30 olympiad-level test problems solved. A follow-up report on AlphaGeometry2 '
+         '(arXiv:2502.03544) states an 84% solving rate on IMO geometry problems from 2000 to '
+         '2024. This site reports these results and did not reproduce them.'}
 
 META_3D = ('AlphaGeometry 2 Polyhedral Tropical Roof',
  'X/Z: Tropical Valuation Plane · Y: Piecewise-Linear Tropical Polynomial & Auxiliary Cone')
 
 ES_TRANSLATION = {'title_es': 'Búsqueda Deductiva Neuro-Simbólica (AlphaGeometry 2): Construcciones Auxiliares y '
              'Triangulación de Bolsillos Alostéricos',
- 'subtitle_es': 'Cómo el acoplamiento de un motor simbólico de Base de Datos Deductiva + Reglas '
-                'Algebraicas (DD+AR) con generación neuronal de puntos auxiliares resuelve '
-                'geometría de Olimpiada y triangula sitios de unión en Cryo-EM.',
+ 'subtitle_es': 'Cómo AlphaGeometry acopla un motor simbólico de Base de Datos Deductiva + Reglas '
+                'Algebraicas (DD+AR) con un modelo neuronal que propone puntos auxiliares, según '
+                'lo reportado en Nature y en un informe posterior sobre AlphaGeometry2. La '
+                'comparación con fijar una forma añadiendo un punto de apoyo es una imagen de '
+                'este folio, y cualquier vínculo con la estructura de proteínas es una analogía.',
  'why_es': 'Un marco cuadrado de cuatro barras se deforma fácilmente hasta que añades una sola '
            'barra diagonal (una construcción auxiliar), la cual bloquea toda la estructura en '
            'triángulos rígidos.',
- 'bridge_es': 'Triangular tres hélices transmembrana (TM2–TM8–TM11) mediante un punto '
-              'de anclaje auxiliar es el mecanismo geométrico exacto con el que elexacaftor '
-              '(en PDB 8EIQ) y vanzacaftor estabilizan el canal transmembrana.',
- 'plain_es': 'En palabras sencillas, resolver un problema difícil de geometría es como entrar en una habitación oscura donde no encontramos el interruptor. Tenemos muchas reglas sobre ángulos y triángulos en la memoria, pero ninguna parece encajar con las líneas dibujadas en la hoja. El gran secreto de los matemáticos, desde la antigua Grecia hasta hoy, ha sido imaginar una línea o un punto auxiliar que antes no existía. Al trazar esa pequeña guía invisible, las figuras ocultas se iluminan y el problema se resuelve con facilidad. Durante décadas, las computadoras eran incapaces de hacer esto porque solo podían revisar las líneas que ya estaban en la pantalla. El sistema AlphaGeometry superó este límite combinando una red neuronal que intuye qué punto auxiliar conviene dibujar con un motor lógico que comprueba si la idea es correcta. Hoy, esta misma intuición espacial ayuda a las computadoras a guiar robots quirúrgicos con alta precisión y a diseñar automóviles autónomos seguros.',
- 'deep_es': 'Para entender este avance geométrico, debemos observar la relación entre la profundidad de construcción auxiliar y la densidad de restricciones de la figura. En el primer deslizador, agregar puntos de anclaje auxiliares permite triangular bisagras sueltas que de otro modo tendrían demasiados grados de libertad. En el segundo deslizador, la densidad de restricciones mide cuántas condiciones de paralelismo, perpendicularidad o tangencia saturan el sistema. Si la densidad es baja, la figura oscila como un marco flojo; pero al alcanzar el umbral crítico, un solo punto auxiliar bloquea la estructura completa en un poliedro rígido. En tres dimensiones, el determinante de Cayley–Menger garantiza que las distancias calculadas correspondan a una geometría euclidiana real sin distorsión métrica. Gracias a la combinación de intuición neuronal y deducción simbólica en computadora, AlphaGeometry demostró que las máquinas pueden alcanzar nivel de medalla de oro olímpica resolviendo teoremas complejos de forma transparente, auditable y sin alucinaciones numéricas.'}
+ 'bridge_es': 'Es solo una analogía de este folio: Fiedorczuk y Chen (2022, DOI '
+              '10.1126/science.ade2216; PDB 8EIQ) reportan estructuras de crio-microscopía '
+              'electrónica de la CFTR Δ508 con moduladores. El folio toma prestada únicamente la '
+              'imagen de un punto añadido que fija una forma. No afirma nada sobre cómo actúa '
+              'ningún medicamento, y nada de esto es consejo médico.',
+ 'plain_es': 'En palabras sencillas, resolver un problema difícil de geometría puede sentirse como andar por una casa a oscuras. Tenemos un manojo de reglas conocidas sobre ángulos, paralelas y círculos, pero ninguna parece abrir la siguiente puerta. A veces el camino es añadir una línea o un punto auxiliar al dibujo, y entonces las reglas que ya teníamos vuelven a servir. Un programa que solo aplica reglas a lo que ya está dibujado no puede hacer eso. AlphaGeometry combina un motor que aplica reglas con un modelo neuronal que sugiere puntos auxiliares. Este folio no afirma que el método se use fuera de los problemas de geometría.',
+ 'deep_es': 'Para entender este tema, conviene observar que, en la parte simbólica, el motor DD+AR sigue relaciones de colinealidad, puntos concíclicos y razones; cuando se queda sin relaciones nuevas, el modelo neuronal propone una construcción auxiliar y el motor continúa. Un solo punto añadido actúa como una diagonal en una armadura plana, que es la imagen de este folio. El determinante de Cayley–Menger es una condición clásica sobre las distancias al cuadrado: cinco puntos en el espacio euclidiano tridimensional cumplen det(B_5) = 0. Los números 14 y 47 de esta página son valores ilustrativos fijos, y los dos deslizadores impulsan una ilustración; no son mediciones de AlphaGeometry. El artículo de Nature reporta 25 de 30 problemas resueltos, y un informe posterior sobre AlphaGeometry2 reporta 84 % de los problemas de geometría de la IMO de 2000 a 2024; este sitio reporta esos resultados y no los reprodujo.'}

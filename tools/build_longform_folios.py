@@ -4538,7 +4538,7 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
             f'<tr><th scope="row">{esc(lbl_en)}</th>'
             f'<td><code>{esc(val)}</code></td><td><code>{esc(verifier_rel)}</code> &middot; PASS</td></tr>'
         )
-        readout_prose_bits.append(f"<strong>{esc(lbl_en)}</strong> certifies <code>{esc(val)}</code>")
+        readout_prose_bits.append(f"<strong>{esc(lbl_en)}</strong> reads <code>{esc(val)}</code>")
     readouts_boxes_html = "\n".join(readout_boxes)
     readouts_table_html = "\n                ".join(readout_rows)
     readouts_summary_prose = "; ".join(readout_prose_bits)

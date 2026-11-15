@@ -20,13 +20,13 @@ A plain-text companion to the essay at https://informatico.ai/physics/p09/ (`P.0
 - Stage 1 (Taylor Equipotential Cone Equilibrium, DOI 10.1098/rspa.1964.0151): Balancing Maxwell electrostatic stress ½ ε_0 E_n² against Laplace pressure γ cot α / r fixes P_{1/2}(cos 130.7°) = 0 and θ_T = 49.3°.
 - Stage 2 (Gañán-Calvo Apex Cone-Jet Necking): Charge relaxation τ_e = ε / K accelerates a sub-micrometer liquid microjet from the cone tip without high-shear wall cavitation.
 - Stage 3 (Monodisperse Capillary Breakup in the 1.5–3.5 μm Window): At Q = 1.20 μL/min and K = 0.45 S/m, jet varicose breakup yields d_drop = 2.42 μm (GSD = 1.18) for deep bronchial deposition.
-- Stage 4 (Rayleigh Fission Guard & Intact 4.5 kb mRNA Survival, Continuing P.06): Holds droplet charge ratio q / q_R = 0.68 < 1.00, preserving 97.4% LNP lipid-bilayer encapsulation.
+- Stage 4 (Rayleigh Fission Guard & Intact 4.5 kb mRNA Survival, Continuing P.06): Holds droplet charge ratio q / q_R = 0.68 < 1.00, below the Rayleigh limit. How much encapsulated cargo survives spraying is not modelled here.
 
 ## Reference values stated in the essay
 - **Taylor Half-Angle (θ_T)**: `49.29° (P_{1/2} Zero)`
 - **Monodisperse Droplet (d_drop)**: `2.42 μm (Bronchial Window)`
 - **Rayleigh Charge Ratio (q/q_R)**: `0.68 (< 1.00 Stable)`
-- **Aerosol & LNP Verdict**: `97.4% INTACT mRNA · PASS`
+- **Aerosol & LNP Verdict**: `INSIDE MODEL WINDOW`
 
 ## What is and is not checked
 The reference values above are stated in the essay. No script in this repository recomputes them yet, so treat them as the essay's claims and check them against the primary source before relying on them.

@@ -12,19 +12,20 @@ FOLIO = {'folio_id': 'E.03',
  'category_code': 'E',
  'title': 'Sub-Wavelength Acoustic Metamaterial Helmholtz Arrays and Viscothermal Boundary-Layer '
           'Damping',
- 'subtitle': 'How coiled-space quarter-wave resonators and micro-slit viscothermal boundary layers '
-             'δ_v = √(2ν/ω) achieve near-unity low-frequency sound absorption in 1/19th of a '
-             'wavelength.',
+ 'subtitle': 'How coiled-space resonators and viscothermal boundary layers δ_v = √(2ν/ω) can '
+             'absorb low-frequency sound in panels far thinner than a quarter wavelength; the '
+             'design study on this page targets about 1/19 of a wavelength.',
  'date_published': '2026-10-31',
- 'date_redated': '2026-11-02',
- 'current_edition': 'REV 1.2',
- 'status_badge': 'CIVIL & ACOUSTICS · REV 1.2',
+ 'date_redated': '2026-11-14',
+ 'current_edition': 'REV 1.3',
+ 'status_badge': 'CIVIL & ACOUSTICS · REV 1.3',
  'primary_kernel': 'tools/continuum_verify.py',
  'governing_law': 'δ_v = √(2ν/ω) · Z_s = ρ_0 c_0 ⇒ α = 1.0 · CSI 09 84 13',
  'colophon': {'identifier': 'E.03 · Acoustic Metamaterials & Viscothermal Damping · CSI 09 84 13',
               'kernels': 'δ_v = √(2ν/ω) · Z_s = R_v + i ω M_a − i ρ c² / (ω V_cav)',
-              'benchmarks': 'Critical Coupling R_v = ρ_0 c_0 ⇒ α = 0.998 · δ_v = 0.174 mm',
-              'bridge': 'Oscillatory Stokes Boundary Layer ↔ HFCWO Airway Oscillations'},
+              'benchmarks': 'Model values: δ_v = 0.174 mm at 160 Hz · α = 0.9996 for Z_s/Z_0 = '
+                            '1.04 at resonance',
+              'bridge': 'Oscillatory Boundary Layers ↔ Airway Oscillation Devices (an analogy)'},
  'sliders': [{'label': 'Resonant Frequency (f_0)',
               'min': 80.0,
               'max': 400.0,
@@ -42,49 +43,75 @@ FOLIO = {'folio_id': 'E.03',
            'Stage 2 (Complex Effective Density & Bulk Modulus): When neck radius r_neck = 0.65 mm '
            'approaches 3.7 δ_v, viscous shear dissipates acoustic kinetic energy.',
            'Stage 3 (Critical Impedance Matching, Z_s = Z_0): Reactance vanishes at Helmholtz '
-           'resonance ω_0 while resistance matches ρ_0 c_0 = 413 Pa·s/m.',
-           'Stage 4 (Broadband Detuned Rainbow Array): Coupling 8 detuned coiled cavities spans '
-           '125–315 Hz inside a 110 mm timber ceiling panel.'],
+           'resonance ω_0 while resistance matches ρ_0 c_0 ≈ 413 Pa·s/m. The page sets the '
+           'resistance to 1.04 ρ_0 c_0 at the default neck radius, a fixed model value.',
+           'Stage 4 (Broadband Detuned Array): A design idea, not a built panel: several '
+           'detuned coiled cavities could spread absorption over roughly 125–315 Hz in a panel '
+           'about 110 mm deep (1/19 of the 2.14 m wavelength at 160 Hz).'],
  'readouts': [{'label': 'Viscous Boundary Layer (δ_v)', 'value': '0.174 mm (at 160 Hz)'},
-              {'label': 'Normalized Surface Impedance', 'value': 'Z_s / Z_0 = 1.04 + 0.08 i'},
-              {'label': 'Peak Absorption Coefficient', 'value': 'α_peak = 0.998 (Critical Match)'},
-              {'label': 'Acoustic Verdict', 'value': 'CLASS A · ZERO FIBER'}],
+              {'label': 'Normalized Surface Impedance', 'value': 'Z_s / Z_0 = 1.04 + 0.00 i (model, at resonance)'},
+              {'label': 'Peak Absorption Coefficient', 'value': 'α_peak = 0.9996 (model, near critical match)'},
+              {'label': 'Acoustic Verdict', 'value': 'DESIGN TARGET · NOT TESTED'}],
  'spec_plate': {'division': 'CSI MASTERFORMAT 09 84 13 / 09 54 26',
                 'title': 'Micro-Slit Timber Helmholtz Metamaterial Ceiling Baffle (Node E-09)',
-                'body': 'Zero-fiber, cleanroom-compatible CNC-slotted cross-laminated beech '
-                        'acoustic panel with internal coiled labyrinth cavities tuned for 125–500 '
-                        'Hz low-frequency modal absorption (α_w = 0.90, Class A).',
-                'meta': 'ISO 354 reverberation chamber tested · Hospital & cleanroom fiber-free '
-                        'certified'},
- 'sidenote_1': {'kicker': 'SIDENOTE E.03-A · OSCILLATORY STOKES LAYER IN HFCWO VEST THERAPY',
-                'body': 'The same Womersley number Wo = r √(ω/ν) that governs viscous acoustic '
-                        'damping in a Helmholtz neck governs oscillatory air-mucus '
-                        'shear during 12–18 Hz High-Frequency Chest Wall Oscillation (HFCWO) in CF '
-                        'care.'},
+                'body': 'Illustrative design sketch, not a tested product: a fiber-free, '
+                        'CNC-slotted timber panel with internal coiled cavities aimed at '
+                        '125–315 Hz. The figures α_w = 0.90 (which would be Class A under ISO '
+                        '11654) are design targets; nothing was measured.',
+                'meta': 'Design sketch · ISO 354 (reverberation-room measurement) would be the '
+                        'test to run; none was run and no certification exists'},
+ 'sidenote_1': {'kicker': 'SIDENOTE E.03-A · AN ANALOGY: OSCILLATING FLOW IN THE AIRWAYS',
+                'body': 'The Womersley number Wo = r √(ω/ν) compares a channel radius with the '
+                        'viscous boundary layer of an oscillating flow, in a resonator neck or '
+                        'in any tube. Airway clearance devices also make air oscillate, so the '
+                        'same dimensionless number can be written for them; that is an analogy '
+                        'offered by this folio, not a model of any therapy.'},
  'sidenote_2': {'kicker': 'SIDENOTE E.03-B · SPECIFICATION PLATE · CSI 09 84 13 / 09 54 26',
-                'body': 'Micro-slit timber Helmholtz metamaterial ceiling baffles (Class A, α_w = '
-                        '0.90) providing cleanroom-grade low-frequency modal dissipation without '
-                        'loose mineral fibers.'},
+                'body': 'Design sketch of a micro-slit timber Helmholtz ceiling baffle with a '
+                        'target α_w = 0.90 and no loose mineral fibers. These are targets, not '
+                        'test results.'},
  'skill': {'filename': 'acoustic-helmholtz-metamaterial-SKILL.md',
            'name': 'acoustic-helmholtz-metamaterial',
            'description': 'AI-agnostic acoustics and wave-mechanics engineering skill for '
                           'sub-wavelength Helmholtz resonator arrays, Stinson viscothermal '
                           'boundary-layer impedance, and critical coupling.',
            'rules': ['Compute viscous boundary layer thickness delta_v = sqrt(2 * nu / omega) and '
-                     'Womersley shear number s = r_neck / delta_v.',
+                     'Womersley number Wo = r_neck * sqrt(omega / nu) = sqrt(2) * r_neck / '
+                     'delta_v (so the ratio r_neck / delta_v equals Wo / sqrt(2)).',
                      'Enforce critical coupling condition Re(Z_surface) = rho_0 * c_0 and '
                      'Im(Z_surface) = 0 at target resonance omega_0 for unity absorption.',
-                     'Include end-correction length delta_l = 0.85 * r_neck * (1 - 1.25 * '
-                     'sqrt(porosity)) in effective neck inductance.']},
- 'revisions': [{'edition': 'REV 1.2',
+                     'Include an end-correction length in the effective neck inductance; the '
+                     'approximate form delta_l = 0.85 * r_neck * (1 - 1.25 * sqrt(porosity)) is '
+                     "this folio's working choice and should be checked against an acoustics "
+                     'reference before design use.']},
+ 'revisions': [{'edition': 'REV 1.3',
+                'date': '2026-11-14',
+                'summary': 'REV 1.3 (Redated 2026-11-14): Grounding revision. The sputum '
+                           'yield-stress and oscillatory-stress figures (11.5 Pa, 14.8 Pa), the '
+                           'claim that chest-wall oscillation "liquefies" mucus, and the claim '
+                           'that this would multiply nanoparticle penetration were withdrawn as '
+                           'unsourced; the airway link is now an analogy. The panel test and '
+                           'certification wording was withdrawn, the invented 1863 scene was '
+                           'replaced with plain dates, and the absorption readout was recomputed '
+                           'for zero reactance at resonance (0.9996). Critical coupling is now '
+                           'cited to Romero-García et al. (2016). A later review corrected the '
+                           'Womersley number definition (Wo = √2 r/δ_v), made the absorption '
+                           'range agree (125–315 Hz) and softened claims about what such panels '
+                           'achieve.',
+                'opus': 'Review: every DOI in the folio was checked in Crossref and the Scite '
+                        'index on 2026-11-14, and the repository name with the GitHub API. No '
+                        'simulation or acoustic test was run for this folio; its numbers are '
+                        'outputs of the closed-form model on the page.'},
+               {'edition': 'REV 1.2',
                 'date': '2026-11-02',
                 'summary': 'REV 1.2 (Redated 2026-11-02): Verified sub-wavelength Helmholtz '
                            'viscothermal acoustic metamaterials (delta_v = sqrt(2*nu/omega), CSI '
                            '09 84 13) and oscillatory shear liquefaction of CF sputum '
                            'plugs with 4-Seat Multi-Lineage Council review.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
-                        'critical impedance matching alpha = 0.998 and oscillatory shear tau_osc = '
-                        '14.8 Pa > tau_y = 11.5 Pa.'},
+                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): checked that '
+                        'delta_v = 0.174 mm follows from the page formula. The word "Verified" in '
+                        'this note and in the notes below, the sputum liquefaction claim and the '
+                        'stress figures 14.8 Pa and 11.5 Pa are withdrawn in REV 1.3.'},
                {'edition': 'REV 1.1',
                 'date': '2026-11-01',
                 'summary': 'REV 1.1 (Redated 2026-11-01): Added Womersley oscillatory shear bridge '
@@ -109,9 +136,11 @@ FOLIO = {'folio_id': 'E.03',
            'mentioning': 307,
            'contrasting': 0,
            'retracted': False,
-           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 658 citing '
-                      'publications (4 supporting, 307 mentioning, 0 contrasting) — verified '
-                      'biopolymer yield-stress rheology and acoustic shear liquification.'}}
+           'summary': 'Scite index entry for Yang & Sheng 2017 (DOI '
+                      '10.1146/annurev-matsci-070616-124032), as recorded 2026-11-08: 658 citing '
+                      'publications (4 supporting, 307 mentioning, 0 contrasting) and no '
+                      'retraction notice. These counts describe that one paper, not this '
+                      'folio.'}}
 
 LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'word_count': '4,650 WORDS',
@@ -122,87 +151,75 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
            'mentioning': 307,
            'contrasting': 0,
            'retracted': False,
-           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 658 citing '
-                      'publications (4 supporting, 307 mentioning, 0 contrasting) — verified '
-                      'biopolymer yield-stress rheology and acoustic shear liquification.'},
+           'summary': 'Scite index entry for Yang & Sheng 2017 (DOI '
+                      '10.1146/annurev-matsci-070616-124032), as recorded 2026-11-08: 658 citing '
+                      'publications (4 supporting, 307 mentioning, 0 contrasting) and no '
+                      'retraction notice. These counts describe that one paper, not this '
+                      'folio.'},
  'act1_title': "Act I — Helmholtz Resonators, Rayleigh's Viscothermal Layers, and "
                'Deep-Subwavelength Metamaterials',
- 'act1_dropcap': 'In the winter of 1863, inside his Heidelberg laboratory, the German physician '
-                 'and physicist Hermann von Helmholtz held a hollow brass sphere to his ear. The '
-                 'sphere was fitted with two openings: a narrow funnel pressed against his ear '
-                 'canal and an open circular neck facing the room. By carefully sizing the volume '
-                 'of the cavity and the diameter of the neck, Helmholtz could listen to a noisy '
-                 'orchestral chord and hear a single, isolated harmonic overtone ring out with '
-                 'startling clarity. Three decades later, Lord Rayleigh unraveled the quiet '
-                 'mystery occurring inside that narrow neck. He proved that as sound waves '
-                 'oscillate furiously within a constricted tube, viscous air friction and thermal '
-                 'conduction bleed acoustic energy directly into microscopic heat. In 1991, '
-                 'Michael Stinson completed the mathematical picture, formulating the exact '
-                 'equations governing how viscothermal boundary layers dissipate sound inside '
-                 'microscopic channels.',
+ 'act1_dropcap': 'In 1863 the German physician and physicist Hermann von Helmholtz published '
+                 'Die Lehre von den Tonempfindungen (On the Sensations of Tone). In it he '
+                 'described hollow resonators with a narrow neck, tuned by their volume and '
+                 'opening, which he used to pick out single tones from a complex sound. The '
+                 'resonator now carries his name. Later in the nineteenth century, physicists '
+                 'including Lord Rayleigh analysed how viscous friction and heat conduction at '
+                 'the walls of narrow tubes turn sound energy into heat. In 1991 Michael Stinson '
+                 'published a general treatment of plane sound waves in narrow and wide tubes '
+                 'of any cross-section (DOI 10.1121/1.400379), which is still a standard '
+                 'reference for these viscothermal losses.',
  'act1_plain_bridge': 'Have you ever blown gently across the top of an empty glass bottle to make '
                       'a low musical hum? That pleasant tone is a physical resonance. The air '
                       'trapped in the bottle neck bounces back and forth against the springy '
                       'cushion of air resting inside the main chamber. Acoustic engineers use this '
                       'exact same bottle effect to swallow loud, unwanted sounds. Normally, '
-                      'trapping low-pitched rumble like freeway noise, industrial exhaust, or '
-                      'ocean waves requires enormous, bulky barriers as thick as a mattress. But '
-                      'by folding long, narrow passages into spiral mazes inside a compact wall '
-                      'panel, engineers can capture deep sound waves within remarkably slim '
-                      'structures. When the incoming sound waves squeeze through these tiny '
-                      'corridors, air rubs against the solid walls, turning noisy vibrations into '
-                      'harmless microscopic heat. This allows us to build whisper-quiet '
-                      'ventilation systems, effective coastal wave barriers, and peaceful '
-                      'buildings without wasting valuable floor space.',
- 'act1_body': 'In twenty-first-century civil and architectural acoustics, engineers revolutionized '
-              'sound control by folding labyrinthine coiled channels into sub-wavelength '
-              'metamaterial cells. Traditional quarter-wave acoustic absorbers require structural '
-              'thicknesses equal to one-fourth of the acoustic wavelength, making low-frequency '
-              'attenuation beneath two hundred hertz architecturally impractical. By folding '
-              'coiled-space labyrinthine channels into deep-subwavelength unit cells (Yang and '
-              'Sheng, Annual Review of Materials Research, DOI '
-              '10.1146/annurev-matsci-070616-124032), modern designers compress bulky resonators '
-              'to less than one-twentieth of the incident wavelength. Inside these tightly coiled '
+                      'absorbing low-pitched rumble like freeway noise or industrial exhaust '
+                      'takes thick, bulky absorbers. But by folding long, narrow passages into '
+                      'spiral mazes inside a compact wall panel, researchers have shown that deep '
+                      'sound can be absorbed in much thinner structures. When the incoming sound '
+                      'waves squeeze through these tiny corridors, air rubs against the solid '
+                      'walls, turning vibration into a little heat. This is one way designers '
+                      'hope to treat low-frequency noise in ventilation systems and buildings '
+                      'without giving up as much floor space.',
+ 'act1_body': 'Over the past two decades, acoustics researchers have folded long, narrow '
+              'channels into thin sub-wavelength cells. Conventional porous or micro-perforated '
+              'absorbers typically need a depth on the order of a quarter wavelength, which makes '
+              'absorbing sound below about two hundred hertz bulky. Labyrinthine and '
+              'coiled-space designs can absorb low-frequency sound in panels much thinner than '
+              'that (reviewed by Yang and Sheng, Annual Review of Materials Research, DOI '
+              '10.1146/annurev-matsci-070616-124032); the design on this page targets about one '
+              'nineteenth of the wavelength. Inside these tightly coiled '
               'channels, viscous friction and heat exchange govern wave dissipation through the '
               'Stinson viscothermal boundary layers delta_v = sqrt(2 nu / omega) and delta_h = '
-              'sqrt(2 kappa / (rho_0 C_p omega)) (DOI 10.1121/1.400379). When resonator dimensions '
-              'are tuned so internal viscothermal dissipation perfectly matches external acoustic '
-              'radiation, the system achieves critical impedance matching Z_eff = rho_0 c_0. Under '
-              'this condition, incoming sound waves enter the metamaterial array without '
-              'reflecting back into the room, dissipating completely within the microscopic wall '
-              'boundaries of the labyrinth.',
- 'act1_stakes': 'When architectural acousticians rely on lossless Helmholtz approximations that '
-                'ignore viscothermal boundary layers, real-world noise control installations fail '
-                'completely. In mechanical equipment rooms, power plants, and high-velocity '
-                'ventilation systems, designing resonators based solely on geometric cavity volume '
-                'leads to severe mistuning. Without factoring in viscous air shearing along the '
-                'resonator neck walls, designers miscalculate the natural resonant frequency by '
-                'fifteen to twenty-five percent. As a result, the built baffle misses the '
-                'offensive tonal rumble, allowing low-frequency vibrations to travel unchecked '
-                'through ductwork and structural floor slabs. In severe cases, high-amplitude '
-                'acoustic standing waves excite structural resonances, causing fatigue cracking in '
-                'steel conduits and building partitions while exposing occupants to chronic '
-                'low-frequency noise distress. Modern acoustic engineering prevents these costly '
-                'installation failures by coupling full viscothermal boundary layer equations with '
-                'sub-wavelength metamaterial geometry. By designing for exact impedance matching '
-                'rather than idealized resonance, engineers construct ultra-compact silencers that '
-                'reliably absorb high-energy acoustic noise.',
- 'pullquote': '"When oscillatory acoustic shear stress tau_osc = 14.8 Pa crosses the 11.5 Pa '
-              'Herschel–Bulkley yield threshold, solid-like CF sputum undergoes a '
-              'reversible solid-to-liquid transition (G\'\' > G\')."',
+              'sqrt(2 kappa / (rho_0 C_p omega)) (Stinson 1991, DOI 10.1121/1.400379). When a '
+              "resonator's internal losses exactly balance the energy it leaks back out, the "
+              'critical coupling condition holds and absorption at resonance can reach 100% '
+              '(Romero-García et al. 2016, Scientific Reports, DOI 10.1038/srep19519). In '
+              'impedance terms this means Z_eff = rho_0 c_0 with no reactance, so incoming '
+              'sound is not reflected back into the room.',
+ 'act1_stakes': 'Resonator models that leave out the viscothermal boundary layers can predict '
+                'the wrong resonance and the wrong amount of damping, so a built absorber may '
+                'miss the tone it was meant to treat. How large the error is depends on the '
+                'geometry; this page does not give a general figure. Low-frequency noise from '
+                'fans, ducts and machinery is hard to control precisely because ordinary '
+                'absorbers need so much depth. Designing for impedance matching, with the '
+                'boundary-layer losses included, is the approach the critical-coupling '
+                'literature takes to make compact absorbers work.',
+ 'pullquote': '"A resonator absorbs best not when it is most lossy, but when its losses '
+              'exactly balance the energy it leaks back out."',
  'chronology': [('1863',
-                 'Hermann von Helmholtz invents the acoustic cavity resonator in Die Lehre von den '
+                 'Hermann von Helmholtz describes his tuned cavity resonators in Die Lehre von den '
                  'Tonempfindungen.'),
                 ('1896',
-                 'Lord Rayleigh derives the viscous and thermal acoustic boundary layers in narrow '
-                 'tubes.'),
+                 "The second edition of Lord Rayleigh's The Theory of Sound treats sound in "
+                 'narrow tubes with viscous and thermal losses.'),
                 ('1991',
-                 'Michael R. Stinson formulates the exact complex density and compressibility '
-                 'functions for viscothermal slits.'),
-                ('2025',
-                 'Multimode thixo-viscoelastoplastic rheological characterization of human CF '
-                 'airway mucus (PMID 41388033).')],
- 'act2_title': 'Act II — How It Actually Works: Critical Coupling & Yield-Stress Liquification',
+                 'Michael R. Stinson publishes his treatment of plane sound waves in narrow and '
+                 'wide tubes of arbitrary cross-section (DOI 10.1121/1.400379).'),
+                ('2016',
+                 'Romero-García and colleagues demonstrate perfect and broadband absorption by '
+                 'critically coupled sub-wavelength resonators (DOI 10.1038/srep19519).')],
+ 'act2_title': 'Act II — How It Actually Works: Critical Coupling & Viscothermal Loss',
  'act2_analogy': 'Think of an acoustic resonator like a child on a playground swing. Pushing the '
                  'swing at its natural tempo builds huge motion with very little effort. In our '
                  'acoustic system, incoming sound waves act as the rhythmically pushing hands, and '
@@ -222,7 +239,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'with the solid walls where viscous friction absorbs energy. If the neck is '
                       'too wide, the air glides through with barely any resistance; if it is too '
                       'narrow, sound cannot enter the bottle. Tuning both dials aligns the tempo '
-                      'and friction, trapping incoming noise completely.',
+                      'and friction so that, in the model, the resonator absorbs nearly all of the '
+                      'sound at its resonance.',
  'distill_diagram': {'analogy_title': 'Playground Swing & Tuned Resonator',
                      'analogy_sub': 'Friction absorbs push energy when pushed at exact natural '
                                     'rhythm.',
@@ -237,18 +255,17 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                                        'neck.'},
  'act2_intuition': 'Perfect acoustic absorption occurs when the radiative leakage rate of a '
                    'resonator precisely balances its internal viscothermal dissipation rate — a '
-                   'physical condition known as critical impedance matching (Z_eff = rho_0 c_0), '
-                   'yielding an absorption coefficient alpha = 0.998 at resonance. When sound '
+                   'physical condition known as critical coupling (Z_eff = rho_0 c_0). With the '
+                   "page's model resistance of 1.04 rho_0 c_0 and zero reactance at resonance, "
+                   'the absorption coefficient is alpha = 1 − (0.04/2.04)² ≈ 0.9996. When sound '
                    'enters the narrow neck of radius r_neck, oscillatory air motion forms a '
                    'viscous boundary layer delta_v = sqrt(2 nu / omega) along the inner perimeter '
                    'where shear stress converts acoustic momentum into heat. Simultaneously, '
                    'thermal diffusion creates a thermal boundary layer delta_h where pressure '
-                   'fluctuations undergo irreversible thermodynamic relaxation. When we simulate '
-                   'coupled viscothermal wave propagation across complex metamaterial labyrinthine '
-                   'unit cells using Chebyshev–Fourier spectral PDE solvers in '
-                   'DedalusProject/dedalus (DOI 10.1103/PhysRevResearch.2.023068), matching '
-                   'internal pore resistance to the free-field acoustic impedance eliminates wave '
-                   'reflections completely. By tuning the neck radius relative to the viscothermal '
+                   'fluctuations undergo irreversible thermodynamic relaxation. In the ideal '
+                   'model, matching the internal resistance to the free-field acoustic impedance '
+                   'removes the reflected wave; no numerical simulation was run for this folio. By '
+                   'tuning the neck radius relative to the viscothermal '
                    'layer thickness, engineers ensure the acoustic impedance possesses zero '
                    'imaginary reactance and an acoustic resistance identical to air, allowing deep '
                    'sub-wavelength panels to absorb loud low-frequency sound without requiring '
@@ -268,28 +285,27 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'leakage wave annihilates all acoustic reflection. This produces a deep '
                    'absorption notch whose bandwidth and peak frequency are exquisitely sensitive '
                    'to ambient temperature and fluid viscosity.',
- 'walkthrough': ['Experiment 1 (Critical Impedance Match): Inspect the absorption peak alpha(f) = '
-                 '0.998 at the Helmholtz resonance where Im(Z_s) = 0 and Re(Z_s) = rho_0 c_0.',
-                 'Experiment 2 (Yield-Stress Crossing): Compare the resting CF sputum yield '
-                 'stress (tau_y = 11.5 Pa) against the 15 Hz oscillatory shear stress (tau_osc = '
-                 '14.8 Pa), yielding a 1.29x liquefaction margin.',
-                 'Experiment 3 (Microbubble Conditioning): Follow the 4-stage stepper to see how '
-                 'acoustic shear + mucolytic conditioning opens percolation pathways for inhaled '
-                 'nanocarriers.'],
+ 'walkthrough': ['Experiment 1 (Critical Impedance Match): Inspect the model absorption peak '
+                 'alpha ≈ 0.9996 at the Helmholtz resonance, where Im(Z_s) = 0 and Re(Z_s) = '
+                 '1.04 rho_0 c_0.',
+                 'Experiment 2 (Neck Radius): Move the neck radius away from 0.65 mm and watch '
+                 'the model resistance drift from rho_0 c_0 and the peak absorption fall: too '
+                 'wide and the resonator is under-damped, too narrow and it is over-damped.',
+                 'Experiment 3 (4-Stage Stepper): Follow the stepper from the oscillatory '
+                 'boundary layer to the detuned-array design idea.'],
  'act4_title': 'Act IV — Human + AI Co-Design & the Structural & Civil Engineering Specification '
                'Bridge',
- 'act4_human_ai': 'Differentiable Stinson viscothermal solvers allow AI optimization loops to '
-                  'invert target airway or room impedance spectra into 3D-printable '
-                  'coiled-space metamaterial geometries in seconds. Combining spectral '
-                  'Helmholtz–Stinson boundary-layer solvers in DedalusProject/dedalus '
-                  '(https://github.com/DedalusProject/dedalus, DOI '
-                  '10.1103/PhysRevResearch.2.023068) with finite-element acoustic eigenmode '
-                  'optimization in FEniCS/dolfinx (DOI 10.1145/3524456) lets engineers synthesize '
-                  '3D-printable sub-wavelength metamaterial silencers and shear-liquification '
-                  'waveguides with Scite-verified literature provenance (DOI 10.1162/qss_a_00146).',
- 'act4_deepening': 'Modern acoustic engineering relies on generative human and artificial '
-                   'intelligence co-design to solve complex architectural noise problems. '
-                   'Designers define target sound absorption spectra for noisy hospital cooling '
+ 'act4_human_ai': 'A proposal, not something this folio has done: a differentiable Stinson '
+                  'viscothermal model could sit inside an optimization loop that turns a target '
+                  'room absorption spectrum into a 3D-printable coiled geometry. Readers who '
+                  'want to try this could use open spectral solvers such as '
+                  'DedalusProject/dedalus (https://github.com/DedalusProject/dedalus, DOI '
+                  '10.1103/PhysRevResearch.2.023068) or the FEniCS/dolfinx finite-element library '
+                  '(one of its method papers: DOI 10.1145/3524456). Neither was run here. '
+                  'References were checked in the Scite index (DOI 10.1162/qss_a_00146).',
+ 'act4_deepening': 'A research direction, not settled practice: generative design, with '
+                   'people and algorithms working together, could help with hard architectural '
+                   'noise problems. In such a workflow, designers would define target sound absorption spectra for noisy hospital cooling '
                    'towers, data centers, or high-speed rail corridors, while evolutionary '
                    'algorithms search thousands of labyrinthine space-coiling topologies to '
                    'discover optimal sub-wavelength metamaterials. Physics-based surrogate solvers '
@@ -301,24 +317,37 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'adaptive metamaterials with electro-pneumatically actuated necks capable of '
                    'dynamically shifting their absorption frequencies to track moving machinery '
                    'speeds. By marrying automated algorithmic optimization with rigorous '
-                   'mechanical and acoustic testing, engineering teams develop ultra-compact '
-                   'sound-deadening architectural facades that drastically reduce urban noise '
-                   'pollution while minimizing embodied carbon and material usage across modern '
-                   'built environments.',
- 'cf_bridge': 'High-Frequency Chest Wall Oscillation (HFCWO, NCT07175012) and oscillatory positive '
-              'expiratory pressure (OPEP) devices operate at 12–15 Hz specifically to generate '
-              'tau_osc = 14.8 Pa > tau_y = 11.5 Pa across generations 4–12 of the bronchial tree. '
-              'Liquefying the airway mucus gel prior to inhaling mRNA lipid nanoparticles (LNPs) or '
-              'bacteriophages multiplies nanoparticle penetration depth across the airway '
-              'surface.',
- 'sources': ['Yang, M., & Sheng, P. (2017). Sound Absorption Structures: From Porous Media to Acoustic Metamaterials (building on Helmholtz 1863). Annual Review of Materials Research, 47, 83–114. DOI: 10.1146/annurev-matsci-070616-124032.',
+                   'mechanical and acoustic testing, engineers might one day produce '
+                   'ultra-compact sound-absorbing facade panels. That is a proposal: this folio '
+                   'has built and tested nothing, and how much such panels would reduce urban '
+                   'noise is not known.',
+ 'cf_bridge': 'An analogy, offered modestly: airway clearance devices such as chest-wall '
+              'oscillation vests and oscillatory positive expiratory pressure (OPEP) devices '
+              'also make air move back and forth, and sputum is a yield-stress, thixotropic '
+              'material (Figueroa-Landeta et al. 2025, DOI 10.1038/s41598-025-16178-z). Whether '
+              'and how much oscillation changes sputum is a clinical research question: in one '
+              'small crossover trial in people with Cystic Fibrosis, Radtke et al. (2018, DOI '
+              '10.1186/s12890-018-0661-1) measured sputum rheology after exercise with and '
+              'without OPEP. This page does not model the airways, makes no claim about any '
+              'therapy, and is not medical advice.',
+ 'sources': ['Yang, M., & Sheng, P. (2017). Sound Absorption Structures: From Porous Media to '
+             'Acoustic Metamaterials. Annual Review of Materials Research, 47, 83–114. DOI: '
+             '10.1146/annurev-matsci-070616-124032.',
              'Stinson, M. R. (1991). The propagation of plane sound waves in narrow and wide '
              'circular tubes, and generalization to uniform tubes of arbitrary cross-sectional '
-             'shape. JASA, 89(2), 550–558.',
-             'Yang, M., & Sheng, P. (2017). Sound absorption structures: From porous media to '
-             'acoustic metamaterials. Annual Review of Materials Research, 47, 83–114.',
-             'Thixo-viscoelastoplastic rheological characterisation of human bronchial mucus '
-             '(2025). PMID: 41388033.',
+             'shape. The Journal of the Acoustical Society of America, 89(2), 550–558. DOI: '
+             '10.1121/1.400379.',
+             'Romero-García, V., Theocharis, G., Richoux, O., Merkel, A., Tournat, V., et al. '
+             '(2016). Perfect and broadband acoustic absorption by critically '
+             'coupled sub-wavelength resonators. Scientific Reports, 6, 19519. DOI: '
+             '10.1038/srep19519.',
+             'Figueroa-Landeta, M., et al. (2025). Thixo-viscoelastoplastic rheological '
+             'characterisation of human mucus using a multimode BMP constitutive equation '
+             'approach. Scientific Reports, 15, 43747. DOI: 10.1038/s41598-025-16178-z.',
+             'Radtke, T., et al. (2018). Acute effects of combined exercise and oscillatory '
+             'positive expiratory pressure therapy on sputum properties and lung diffusing '
+             'capacity in cystic fibrosis: a randomized, controlled, crossover trial. BMC '
+             'Pulmonary Medicine, 18, 99. DOI: 10.1186/s12890-018-0661-1.',
              'Burns, K. J., Vasil, G. M., Oishi, J. S., Lecoanet, D., & Brown, B. P. (2020). '
              'Dedalus: A flexible framework for numerical simulations with spectral methods '
              '(DedalusProject/dedalus, https://github.com/DedalusProject/dedalus). Physical Review '
@@ -328,8 +357,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
              '10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Viscothermal '
-        'Helmholtz absorption peak and Herschel-Bulkley airway mucus yield-stress '
-        'crossing">\n'
+        'Helmholtz absorption peak at critical coupling (model)">\n'
         '            <line x1="60" y1="180" x2="620" y2="180" stroke="currentColor" '
         'stroke-opacity="0.4"/>\n'
         '            <line x1="60" y1="25" x2="60" y2="180" stroke="currentColor" '
@@ -341,11 +369,11 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         'stroke-width="1.8" stroke-dasharray="5,4"/>\n'
         '            <circle cx="310" cy="32" r="6" fill="var(--tp-verdigris)"/>\n'
         '            <text x="195" y="22" font-size="11" fill="var(--tp-verdigris)">Critical '
-        "Coupling Peak: α = 0.998 · τ_osc = 14.8 Pa (G'' &gt; G')</text>\n"
-        '            <text x="415" y="88" font-size="11" fill="var(--tp-minium)">CF Sputum '
-        'Yield Threshold τ_y = 11.5 Pa</text>\n'
-        '            <text x="225" y="202" font-size="11" fill="currentColor">Oscillatory '
-        'Frequency &amp; Shear Coupling Regime</text>\n'
+        'Coupling Peak (model): α ≈ 0.9996 at f_0</text>\n'
+        '            <text x="415" y="88" font-size="11" fill="var(--tp-minium)">Reference line: '
+        'α = 0.5 (illustrative)</text>\n'
+        '            <text x="225" y="202" font-size="11" fill="currentColor">Frequency around '
+        'the Helmholtz resonance f_0</text>\n'
         '          </svg>'}
 
 PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a labyrinthine coiled-space acoustic and seismic '
@@ -357,42 +385,45 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a labyrinthine 
             'lattice.'}
 
 DISPATCH = {'kicker': 'FRONTIER METAMATERIAL DISPATCH · SUB-WAVELENGTH ACOUSTIC DAMPING',
- 'headline': 'Coiled-Space Labyrinthine Metamaterials & Multimode Thixotropic Airway Mucus '
-             'Liquefaction',
- 'body': "Building on Helmholtz (1863) and Stinson's viscothermal wave theory (1991), modern "
-         'coiled-space acoustic metamaterials (DOI 10.1146/annurev-matsci-070616-124032) achieve α '
-         '= 0.998 absorption in 1/19th of a wavelength, while 2025 multimode '
-         'thixo-viscoelastoplastic rheometry (PMID 41388033; trial NCT07175012) confirms that 15 '
-         'Hz oscillatory shear (τ_osc = 14.8 Pa) liquefies CF airway mucus plugs above τ_y = '
-         '11.5 Pa.'}
+ 'headline': 'Critically Coupled Resonators Absorb Low-Frequency Sound in Thin Panels',
+ 'body': "Building on Helmholtz (1863) and Stinson's viscothermal theory (1991, DOI "
+         '10.1121/1.400379), coiled-space and labyrinthine absorbers can work at depths far '
+         'below a quarter wavelength (review: DOI 10.1146/annurev-matsci-070616-124032). '
+         'Romero-García and colleagues (2016, DOI 10.1038/srep19519) showed that when a '
+         "resonator's losses balance its leakage, absorption at resonance can reach 100%."}
 
 META_3D = ('Coiled Helmholtz Labyrinthine Ring Resonator',
  'X/Z: Sub-Wavelength Cell Plane · Y: Acoustic Impedance & Quarter-Wave Absorption Well')
 
 ES_TRANSLATION = {'title_es': 'Arreglos de Metamateriales Acústicos Sub-Longitud de Onda de Helmholtz y '
              'Amortiguamiento Viscotérmico',
- 'subtitle_es': 'Cómo los resonadores de cuarto de onda en espacio enrollado y las capas límite '
-                'viscotérmicas δ_v = √(2ν/ω) logran absorción acústica casi total en 1/19 de la '
-                'longitud de onda.',
+ 'subtitle_es': 'Cómo los resonadores en espacio enrollado y las capas límite viscotérmicas '
+                'δ_v = √(2ν/ω) pueden absorber sonido grave en paneles mucho más delgados que un '
+                'cuarto de longitud de onda; el estudio de diseño de esta página apunta a cerca '
+                'de 1/19 de la longitud de onda.',
  'why_es': 'Un laberinto acústico enrollado obliga a las ondas sonoras graves a recorrer un camino '
            'largo dentro de un panel delgado, disipando el ruido de baja frecuencia en calor '
            'microscópico.',
- 'bridge_es': 'Los principios de resonancia acústica de baja frecuencia y capas límite '
-              'viscotérmicas fundamentan los dispositivos de oscilación de alta frecuencia de la '
-              'pared torácica y PEP oscilatorio para movilizar secreciones bronquiales.',
- 'plain_es': 'En el invierno de 1863, el médico y físico alemán Hermann von Helmholtz sostenía '
-             'esferas huecas de latón junto a su oído para aislar tonos musicales puros a partir '
-             'de sonidos complejos. Treinta años después, Lord Rayleigh demostró que el aire que '
-             'vibra dentro de estos cuellos estrechos roza contra las paredes sólidas, disipando '
-             'la energía sonora en calor mediante fricción viscosa. En nuestra vida cotidiana, '
+ 'bridge_es': 'Una analogía modesta: los chalecos de oscilación de la pared torácica y los '
+              'dispositivos de PEP oscilatorio también hacen oscilar el aire, y el esputo es un '
+              'material con esfuerzo de fluencia. Cuánto cambia el esputo con la oscilación es '
+              'una pregunta de investigación clínica; esta página no modela ninguna terapia ni '
+              'es consejo médico.',
+ 'plain_es': 'En 1863, el médico y físico alemán Hermann von Helmholtz publicó Die Lehre von den '
+             'Tonempfindungen, donde describió resonadores huecos con un cuello estrecho que '
+             'usaba para aislar tonos puros dentro de sonidos complejos. Más adelante en el siglo '
+             'XIX, físicos como Lord Rayleigh analizaron cómo el aire que vibra en tubos '
+             'estrechos roza contra las paredes y convierte la energía sonora en calor. En nuestra vida cotidiana, '
              'todos hemos soplado sobre la boca de una botella vacía para generar un silbido '
              'grave; ese tono musical surge del rebote del aire dentro del cuello contra el '
              'volumen de la botella. Los ingenieros acústicos aprovechan este principio para '
-             'eliminar ruidos molestos en edificios e industrias. Al enrollar canales largos y '
-             'delgados en paneles compactos, podemos atrapar sonidos graves sin necesidad de '
-             'construir muros gruesos. El aire roza contra los canales interiores y transforma las '
-             'vibraciones ruidosas en calor microscópico inofensivo, creando espacios tranquilos '
-             'de forma eficiente.',
+             'absorber ruidos no deseados. Normalmente, absorber ruido grave exige absorbedores '
+             'gruesos y voluminosos. Al enrollar canales largos y delgados en paneles '
+             'compactos, los investigadores han mostrado que el sonido grave puede absorberse en '
+             'estructuras mucho más delgadas. El aire roza contra los canales interiores y '
+             'convierte la vibración en un poco de calor. Es una de las formas con las que '
+             'los diseñadores esperan tratar el ruido de baja frecuencia en sistemas de '
+             'ventilación y edificios sin ceder tanto espacio útil.',
  'deep_es': 'La absorción acústica casi perfecta se logra al emparejar dos fuerzas contrarias: la '
             'fuga de radiación sonora de la cavidad y la disipación interna en las capas límite '
             'viscotérmicas. Este fenómeno se conoce como acoplamiento de impedancia crítica. '
@@ -400,8 +431,8 @@ ES_TRANSLATION = {'title_es': 'Arreglos de Metamateriales Acústicos Sub-Longitu
             'capa límite viscosa y otra térmica donde la energía se convierte en calor. Si el '
             'radio del cuello es demasiado amplio, el aire pasa sin suficiente resistencia y el '
             'sonido rebota; si es excesivamente angosto, el aire no logra penetrar en la cavidad. '
-            'El punto óptimo equilibra la frecuencia natural y la fricción del cuello, eliminando '
-            'por completo el eco reflejado. En la ingeniería civil y arquitectónica moderna, los '
-            'diseñadores modelan estas cavidades en una computadora para fabricar silenciadores '
-            'compactos mediante impresión tridimensional, mitigando el ruido de turbinas y '
-            'sistemas de ventilación con un espesor estructural mínimo.'}
+            'El punto óptimo equilibra la frecuencia natural y la fricción del cuello; en el '
+            'modelo ideal, eso elimina la onda reflejada. Como propuesta, no como práctica '
+            'establecida, un modelo viscotérmico diferenciable podría ayudar a proponer '
+            'geometrías enrolladas imprimibles en 3D a partir de un espectro de absorción '
+            'objetivo; esta página no construyó ni probó ninguna.'}

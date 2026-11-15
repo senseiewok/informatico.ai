@@ -16,22 +16,23 @@ FOLIO = {'folio_id': 'M.10',
  'title': 'Persistent Homology, Vietoris–Rips Simplicial Filtrations, Betti Barcodes & Topological '
           'Percolation Thresholds in Disordered Media',
  'subtitle': "Closing the 40-Folio circle back to Folio E.01's porous percolation and P.03's mucin "
-             "hydrogels: how Edelsbrunner, Letscher & Zomorodian's persistent homology extracts "
-             'exact percolating pore throats across scales.',
+             "hydrogels: how Edelsbrunner, Letscher & Zomorodian's persistent homology tracks "
+             'pores and tunnels across scales. The barcodes shown come from a synthetic teaching '
+             'model, not from real samples.',
  'date_published': '2026-11-03',
- 'date_redated': '2026-11-03',
- 'current_edition': 'REV 1.0',
- 'status_badge': 'PERSISTENT HOMOLOGY · REV 1.0',
+ 'date_redated': '2026-11-14',
+ 'current_edition': 'REV 1.1',
+ 'status_badge': 'PERSISTENT HOMOLOGY · REV 1.1',
  'primary_kernel': 'tools/discovery/frontier_ai_math_catalog.py',
  'governing_law': '∂_{k−1} ∘ ∂_k = 0 · β_k^{i,j} = rank(H_k(K_i) → H_k(K_j)) · d_B(D(f), D(g)) ≤ '
                   '||f − g||_∞',
  'colophon': {'identifier': 'M.10 · Persistent Homology & Topological Percolation Barcodes',
               'kernels': 'Vietoris–Rips Filtration · Z_2 Boundary Reduction ∂_k · Bottleneck '
                          'Stability',
-              'benchmarks': 'ε = 65 nm · β_0 = 1, β_1 = 3, χ = −2 · Percolating Throat r_crit = '
-                            '116 nm',
-              'bridge': 'Completes E.01/P.03/M.05 · Cryo-ET Mucin H_1 Barcode ↔ 65 nm '
-                        'SORT-LNP Passage'},
+              'benchmarks': 'Synthetic model: ε = 65 nm · β_0 = 1, β_1 = 3, χ = −2 · longest H_1 bar '
+                            'ends at 116 nm (illustrative)',
+              'bridge': 'Completes E.01/P.03/M.05 · a proposed pore-size analysis, not a measured '
+                        'result'},
  'sliders': [{'label': 'Simplicial Filtration Scale (ε)',
               'min': 15.0,
               'max': 140.0,
@@ -50,34 +51,40 @@ FOLIO = {'folio_id': 'M.10',
            'Stage 2 (Chain Complex & Z_2 Boundary Reduction ∂_{k−1} ∘ ∂_k = 0, DOI '
            '10.1007/s00454-002-2885-2): Reduces boundary matrices to pair each k-cycle birth b_i '
            'with its bounding (k+1)-simplex death d_i.',
-           'Stage 3 (Cohen-Steiner Bottleneck Stability Guarantee): Perturbation σ_noise = 0.08 '
-           'shifts persistence points by at most d_B ≤ ||f − g||_∞, cleanly separating short '
-           'diagonal noise from long structural bars.',
-           'Stage 4 (Critical Percolation Throat Certification, Completing E.01 & P.03): '
-           'Identifies spanning H_1 pore-throat interval [38 nm, 116 nm], proving a 65 nm '
-           'SORT-LNP percolates through the treated mesh.'],
- 'readouts': [{'label': 'Betti Numbers (β_0, β_1, β_2)', 'value': 'β₀ = 1 · β₁ = 3 · β₂ = 0'},
+           'Stage 3 (Cohen-Steiner Bottleneck Stability): By the stability theorem of '
+           'Cohen-Steiner, Edelsbrunner & Harer, a perturbation moves persistence points by at '
+           'most d_B ≤ ||f − g||_∞, so short bars near the diagonal can be read as noise and long '
+           'bars as structure. σ_noise = 0.08 is the model setting.',
+           'Stage 4 (Pore-Throat Reading, Completing E.01 & P.03): In the synthetic model the '
+           'longest H_1 interval is [38 nm, 116 nm]. Robins et al. (2016) relate persistence '
+           'features of this kind to percolating length scales in micro-CT images of porous '
+           'materials. Whether a given particle passes through a real mesh also depends on '
+           'chemistry and binding, which topology alone does not settle.'],
+ 'readouts': [{'label': 'Betti Numbers (β_0, β_1, β_2, model)', 'value': 'β₀ = 1 · β₁ = 3 · β₂ = 0'},
               {'label': 'Euler–Poincaré Invariant (χ)', 'value': 'χ = β₀ − β₁ + β₂ = −2'},
-              {'label': 'Max H_1 Percolation Throat',
-               'value': 'r_crit = 116 nm (> 65 nm LNP)'},
-              {'label': 'Topological Stability Verdict', 'value': 'PERCOLATING · BOTTLENECK PASS'}],
+              {'label': 'Longest H_1 Bar Death Scale (model)',
+               'value': '116 nm (synthetic point cloud)'},
+              {'label': 'Model Reading', 'value': 'Long bar stands out from noise (not a measurement)'}],
  'spec_plate': {'division': 'ALGEBRAIC TOPOLOGY & 3D POROUS TOMOGRAPHY / TDA',
-                'title': 'Vietoris–Rips & Alpha-Complex Persistent Homology Percolation Certifier',
-                'body': 'Exact Z_2 sparse boundary-matrix reducer and Wasserstein/Bottleneck '
-                        'persistence diagram analyzer for 3D micro-CT concrete cores (E.01/E.09) '
-                        'and cryo-ET airway mucin hydrogels (P.03).',
-                'meta': 'Edelsbrunner, Letscher & Zomorodian (2002) DOI 10.1007/s00454-002-2885-2 '
-                        'verified'},
+                'title': 'Vietoris–Rips & Alpha-Complex Persistent Homology Pore Analyzer (Design '
+                         'Study)',
+                'body': 'Design study: a Z_2 sparse boundary-matrix reducer and '
+                        'Wasserstein/Bottleneck persistence diagram analyzer that could be applied '
+                        'to 3D micro-CT images of concrete cores (E.01/E.09) or to imaged mucin '
+                        'hydrogels (P.03). No such images were analyzed here.',
+                'meta': 'Method source cited, not reproduced: Edelsbrunner, Letscher & Zomorodian '
+                        '(2002) DOI 10.1007/s00454-002-2885-2'},
  'sidenote_1': {'kicker': 'SIDENOTE M.10-A · CLOSING THE 40-FOLIO LOOP FROM E.01 TO M.10',
-                'body': 'Folio E.01 introduced continuum percolation (φ_c = 0.5927) and '
-                        'Helmholtz–Hodge decomposition; Folio M.10 provides the exact '
-                        'algebraic-topology theorem that extracts percolating cycles from raw 3D '
-                        'point clouds.'},
- 'sidenote_2': {'kicker': 'SIDENOTE M.10-B · BOTTLENECK STABILITY AGAINST CRYO-ET IMAGING NOISE',
-                'body': 'Because cryo-electron tomograms of CF sputum have low '
-                        'signal-to-noise ratios, classical thresholding fails; persistent '
-                        "homology's Bottleneck Stability Theorem guarantees robust pore-throat "
-                        'sizing.'},
+                'body': 'Folio E.01 introduced percolation (the square-lattice site threshold p_c '
+                        '≈ 0.5927) and Helmholtz–Hodge decomposition; Folio M.10 adds persistent '
+                        'homology, a way to track connected pieces and loops in 3D point clouds '
+                        'across scales.'},
+ 'sidenote_2': {'kicker': 'SIDENOTE M.10-B · BOTTLENECK STABILITY AND NOISY IMAGES',
+                'body': 'Noisy tomograms make single-threshold segmentation fragile. The '
+                        'Bottleneck Stability Theorem bounds how far noise can move persistence '
+                        'points, which is why persistence is attractive for noisy images; how '
+                        'well it sizes pores in a particular biological sample would have to be '
+                        'tested.'},
  'skill': {'filename': 'persistent-homology-betti-percolation-SKILL.md',
            'name': 'persistent-homology-betti-percolation',
            'description': 'AI-agnostic algebraic-topology and porous-media skill for '
@@ -89,9 +96,23 @@ FOLIO = {'folio_id': 'M.10',
                      'beta_k.',
                      'Filter out topological noise features with persistence lifetime (d_i - b_i) '
                      '<= 2 * sigma_noise under the Cohen-Steiner Bottleneck Stability bound.',
-                     'Compare the birth/death scale of the spanning H_1 / H_2 percolation cycle '
-                     'against therapeutic nanoparticle hydrodynamic diameter d_LNP.']},
- 'revisions': [{'edition': 'REV 1.0',
+                     'Compare the birth/death scale of the dominant H_1 / H_2 cycle with a '
+                     'particle diameter only as a first geometric screen, and state that '
+                     'transport also depends on chemistry and binding.']},
+ 'revisions': [{'edition': 'REV 1.1',
+                'date': '2026-11-14',
+                'summary': 'REV 1.1 (Redated 2026-11-14): Grounding revision. The Betti numbers '
+                           'and the 38–116 nm bar are now labelled as values from a synthetic '
+                           "teaching model, and the 'certifies 65 nm LNP passage' and 'BOTTLENECK "
+                           "PASS' wording is withdrawn. The invented before-and-after pore radii "
+                           'for CF sputum under therapy (42 nm to 118 nm) are removed; the bridge '
+                           'now describes a proposed analysis with no clinical claim. E.01\'s '
+                           '0.5927 is identified as the square-lattice site threshold.',
+                'opus': 'Review: all DOIs checked in Crossref and the Scite index on 2026-11-14. '
+                        'Added DOIs for Cohen-Steiner, Edelsbrunner & Harer (10.1007/s00454-006-1276-5), '
+                        'Carlsson (10.1090/S0273-0979-09-01249-X) and Robins et al. '
+                        '(10.1002/2015WR017937).'},
+               {'edition': 'REV 1.0',
                 'date': '2026-11-03',
                 'summary': 'REV 1.0 (Published 2026-11-03): Crowning 40th Folio of Informatico.ai '
                            'Volume V, completing the circle back to Folio E.01 & P.03 via '
@@ -99,7 +120,9 @@ FOLIO = {'folio_id': 'M.10',
                            '10.1007/s00454-002-2885-2).',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'chain complex exactness partial^2 = 0, Euler-Poincare alternation chi = '
-                        'beta_0 - beta_1 + beta_2, and H_1 throat percolation threshold.'}],
+                        'beta_0 - beta_1 + beta_2, and H_1 throat percolation threshold. (REV '
+                        "1.1: this 'verified' wording is withdrawn for the throat threshold, "
+                        'which is a synthetic model value.)'}],
  'volume': 5,
  'volume_code': 'VOL. 05',
  'reading_time': '22 MIN READ',
@@ -144,10 +167,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'topology was considered too abstract for messy real-world data. If scientists '
                  'gathered a three-dimensional cloud of laser scanner points from a porous rock or '
                  'a delicate biological matrix, choosing how closely to connect the dots was an '
-                 'impossible guessing game. In 2002, computer scientists Herbert Edelsbrunner, '
-                 'David Letscher, and Afra Zomorodian revolutionized the field by showing that one '
-                 'should never choose a single threshold. Instead, by watching shapes form across '
-                 'expanding scales, true structures emerge as persistent musical bars.',
+                 'difficult choice. In 2002, computer scientists Herbert Edelsbrunner, David '
+                 'Letscher, and Afra Zomorodian published a way around it: instead of choosing a '
+                 'single threshold, watch shapes form across expanding scales and record how long '
+                 'each feature persists.',
  'act1_plain_bridge': 'Have you ever looked closely at a dry kitchen sponge and wondered whether a '
                       'tiny drop of water can travel all the way through from one side to the '
                       'other? If you look through a powerful microscope, you see a tangled jungle '
@@ -173,12 +196,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'Stability Theorem, establishing that persistence diagrams are mathematically stable '
               'against experimental measurement noise. By connecting combinatorial matrix '
               'reductions directly to coordinate-free topological invariants, their algorithm '
-              'unlocked multi-scale structural analysis for modern automated scientific '
-              'laboratories. Today, persistent homology serves as an unbribable topological '
-              'certifier across structural engineering and biophysics, measuring percolation '
-              'thresholds in porous concrete cores and identifying the exact pore throat '
-              'dimensions required for therapeutic nanoparticles to navigate through dense '
-              'macromolecular networks.',
+              'opened multi-scale structural analysis to computation. In porous materials, Robins '
+              'et al. (2016, Water Resources Research, DOI 10.1002/2015WR017937) related '
+              'persistence features to percolating length scales in micro-CT images. Applying '
+              'the same reading to biological meshes is a direction this folio proposes.',
  'act1_stakes': 'The development of persistent homology transformed algebraic topology from a '
                 'purely theoretical branch of pure mathematics into an indispensable computational '
                 'tool for twenty-first-century engineering. For generations, materials scientists '
@@ -189,15 +210,13 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'foundation was watertight or that a drug-delivery pathway was blocked. By '
                 'grounding shape analysis in boundary operators where the boundary of a boundary '
                 'is identically zero, persistent homology replaced human guesswork with '
-                'mathematical invariants. Today, topological data analysis is deployed across '
-                'multiple high-stakes disciplines: detecting micro-fractures in aerospace '
-                'composites before catastrophic failure, classifying complex neuronal wiring in '
-                'connectome mapping, and identifying structural cavities in viral protein shells '
-                'for antiviral drug discovery. Topology provides the qualitative bedrock upon '
-                'which quantitative physical models can reliably build.',
+                'mathematical invariants. Topological data analysis has since been explored in '
+                'many fields, from materials to neuroscience (see Carlsson 2009 for an early '
+                'survey). Topology gives a qualitative description on which quantitative '
+                'physical models can build.',
  'pullquote': '"Persistent homology turns a static threshold guess into a movie of growing '
               'simplicial complexes: noise flickers in and out near the diagonal, while the true '
-              'percolating pore channel stands out as an immortal bar across scales."',
+              'pore channel stands out as a long bar across scales."',
  'chronology': [('1895',
                  'Henri Poincaré publishes Analysis Situs, introducing simplicial complexes, '
                  'boundary operators partial_k, and homology groups H_k.'),
@@ -207,9 +226,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 ('2007',
                  'Cohen-Steiner, Edelsbrunner & Harer prove the Bottleneck Stability Theorem '
                  'd_B(D(f), D(g)) <= ||f - g||_inf for persistence diagrams.'),
-                ('2026',
-                 'Persistent homology barcodes quantify 3D micro-CT pore connectivity in civil '
-                 'geomaterials (E.01/E.09) and cryo-ET airway mucin meshes (P.03).')],
+                ('2016',
+                 'Robins, Saadatfar, Delgado-Friedrichs & Sheppard relate persistence to '
+                 'percolating length scales in micro-CT images of porous materials (DOI '
+                 '10.1002/2015WR017937).')],
  'act2_title': 'Act II — How It Actually Works: Vietoris–Rips Boundary Reduction ∂_{k-1} ∘ ∂_k = 0 '
                '+ Betti Persistence Barcodes',
  'act2_intuition': 'Let X = {x_1, ..., x_n} be a discrete point cloud in three-dimensional '
@@ -225,9 +245,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'column reduction transforms the boundary matrix into a paired list where each '
                    'simplex that births a cycle at radius b_i is paired with the simplex that '
                    'seals it at death radius d_i. In porous media, the persistence interval [b*, '
-                   'd*] of the dominant spanning beta_1 bar reveals the exact physical bottleneck: '
-                   'here, the critical throat radius r_crit = 116 nm comfortably exceeds a 65 nm '
-                   'lipid nanoparticle (LNP).',
+                   'd*] of the dominant beta_1 bar gives a geometric length scale for the '
+                   'bottleneck: in this synthetic model the bar dies at 116 nm, larger than a 65 '
+                   'nm particle. That is a geometric screen, not proof that a particle passes.',
  'act2_deepening': 'The deeper algebraic power of persistent homology rests upon the '
                    'Cohen-Steiner, Edelsbrunner, and Harer Bottleneck Stability Theorem, which '
                    'establishes that d_B(D(f), D(g)) <= ||f - g||_infinity. When spatial '
@@ -238,11 +258,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'narrow band along the main diagonal line b = d. In contrast, genuine '
                    'percolating cycles possess large persistence lifetimes (d_i - b_i) that '
                    'project far into the upper-left quadrant of the diagram. When analyzing porous '
-                   'geomaterials or biopolymer meshes, the birth of the spanning beta_1 cycle '
-                   'represents the exact geometric moment when disjoint fluid pockets coalesce '
-                   'into a global percolating highway. Coupling the simplicial scale slider with '
-                   'the noise parameter proves that this percolation threshold is not an artifact '
-                   'of scan resolution, but a robust topological invariant of the physical medium.',
+                   'geomaterials or biopolymer meshes, the birth of a long-lived beta_1 cycle '
+                   'marks the scale at which separate pockets join into loops. Moving the scale '
+                   'slider and the noise slider together shows, in the model, that such a long '
+                   'bar survives small perturbations, as the stability theorem predicts.',
  'act2_analogy': 'Everyday analogy: Imagine slowly flooding a mountainous landscape with rising '
                  'floodwaters. At first, you see countless isolated puddles forming in shallow '
                  'dips in the soil; as the water rises slightly higher, these puddles merge and '
@@ -263,9 +282,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'simulate noisy laboratory scans. As you increase the noise dial, short, '
                       'flickering bars flutter along the baseline of the chart, but the primary '
                       'horizontal bar corresponding to the genuine, percolating pore throat '
-                      'remains remarkably steady. Moving these dials together reveals the exact '
-                      'threshold where an open channel forms, certifying whether a therapeutic '
-                      'particle can squeeze through.',
+                      'remains remarkably steady. Moving these dials together shows the scale '
+                      'at which an open channel forms in the model, a first geometric hint of '
+                      'whether a particle of a given size might fit.',
  'distill_diagram': {'analogy_title': 'The Flooding Mountain Pass',
                      'analogy_sub': 'Rising waters drown shallow puddles while connecting deep '
                                     'valleys',
@@ -275,9 +294,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                      'force_b_sub': 'Injects spatial jitter bounded by Bottleneck Stability '
                                     'guarantees',
                      'threshold_title': 'Critical Throat Percolation Bound',
-                     'threshold_pass': 'Spanning H_1 bar certifies 65 nm LNP passage',
-                     'threshold_fail': 'Narrow pore bottleneck below 38 nm blocks nanoparticle '
-                                       'transport'},
+                     'threshold_pass': 'Model: long H_1 bar is wider than a 65 nm particle',
+                     'threshold_fail': 'Model: a bottleneck below the particle size would block '
+                                       'it geometrically'},
  'walkthrough': ['Experiment 1 (Filtration Scale Radius epsilon): Drag Simplicial Filtration '
                  'Radius epsilon from 15 nm up to 140 nm. Watch isolated beta_0 components merge '
                  'into a connected complex while 1D percolating tunnels (beta_1) are born and '
@@ -288,52 +307,49 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'rock-solid under the Bottleneck Stability bound.',
                  'Experiment 3 (From Poincaré Homology to E.01/P.03 Percolation): Step through '
                  'Stages 1 to 4 to inspect Vietoris–Rips simplex birth, Z_2 boundary matrix '
-                 'reduction, Betti barcode lifetimes, and critical pore-throat certification.'],
+                 'reduction, Betti barcode lifetimes, and the model pore-throat reading.'],
  'act4_title': 'Act IV — Topological Data Analysis in Porous Media, Archive Closure & CF '
                'Mucus Mesh Tomography',
- 'act4_human_ai': "By pairing Folio E.01's Darcy–Brinkman continuum solvers and Folio E.09's "
-                  'concrete micro-CT scans with persistent homology, materials scientists extract '
-                  'exact pore-throat bottlenecks from 3D X-ray tomograms without hand-tuned binary '
-                  'segmentation.',
+ 'act4_human_ai': "Pairing Folio E.01's Darcy–Brinkman continuum solvers and Folio E.09's "
+                  'concrete micro-CT scans with persistent homology could let materials '
+                  'scientists read pore-throat scales from 3D X-ray tomograms with less '
+                  'hand-tuned segmentation, along the lines of Robins et al. (2016).',
  'act4_deepening': 'As automated laboratory instruments generate massive three-dimensional image '
                    'datasets, combining persistent homology with deep neural representations '
-                   'creates powerful co-design workflows. Human researchers establish the physical '
-                   'questions and boundary constraints, while topological machine-learning '
-                   'pipelines extract multi-scale persistence landscapes from gigabyte-scale '
-                   'micro-CT concrete scans and cryo-electron tomograms. By feeding Betti curve '
-                   'representations directly into geometric deep learning models, engineers '
-                   'predict fluid permeability, compressive failure modes, and acoustic damping '
-                   'without performing expensive finite-element mesh generation. Major open '
+                   'could support co-design workflows. Human researchers would set the physical '
+                   'questions and boundary constraints, while topological pipelines extract '
+                   'persistence summaries from large micro-CT scans and tomograms. Feeding Betti '
+                   'curve summaries into learning models to predict permeability or failure '
+                   'without full finite-element meshing is a research idea, not an established '
+                   'practice described here. Major open '
                    'mathematical questions remain on the horizon: how can we efficiently compute '
                    'multi-parameter persistent homology when systems depend simultaneously on '
                    'temperature, pore pressure, and filtration scale, given that commutative '
                    'algebra forbids simple barcode decompositions over multi-graded polynomial '
-                   'rings? Resolving these multi-parameter barriers will provide civil engineers, '
-                   'hydrologists, and nanomedicine researchers with certified topological '
-                   'guarantees for evaluating groundwater contaminant transport, geothermal energy '
-                   'extraction, and targeted macromolecular drug delivery through complex human '
-                   'tissues.',
+                   'rings? Progress on multi-parameter persistence could give civil engineers, '
+                   'hydrologists, and materials researchers better topological summaries for '
+                   'questions such as groundwater transport and geothermal extraction.',
  'cf_bridge': 'Crowning Volume V Triad Synthesis (E.01 + P.03 + M.05 -> M.10): This 40th Folio '
-              'closes the architectural loop back to Folio E.01. In cryo-electron tomography '
-              '(cryo-ET) of Cystic Fibrosis sputum (Folio P.03), mucin '
-              'polymers form a disordered 3D network where geometric pore diameter varies wildly. '
-              'Computing the H_1 and H_2 persistent homology barcodes of the distance-transform '
-              'field rigorously determines the maximum percolating sphere radius r_crit (e.g., '
-              'shifting r_crit from 42 nm in untreated CF sputum to 118 nm after mucolytic '
-              '+ hypertonic saline therapy), certifying when a 65 nm SORT-LNP (Folio '
-              'P.09) can traverse the mesh.',
+              'closes the architectural loop back to Folio E.01. A proposed analysis, not a '
+              'result: mucus and sputum form disordered 3D networks (Folio P.03), and persistent '
+              'homology of an imaged network could, in principle, give a geometric pore-size '
+              'scale to compare with particle sizes such as those discussed in Folio P.09. No '
+              'images were analyzed for this folio, no pore sizes for any patient sample are '
+              'reported, and nothing here is clinical or treatment guidance.',
  'sources': ['Edelsbrunner, H., Letscher, D., & Zomorodian, A. (2002). Topological persistence and '
              'simplification. Discrete & Computational Geometry, 28(4), 511–533. DOI: '
              '10.1007/s00454-002-2885-2.',
              'Cohen-Steiner, D., Edelsbrunner, H., & Harer, J. (2007). Stability of persistence '
-             'diagrams. Discrete & Computational Geometry, 37(1), 103–120.',
+             'diagrams. Discrete & Computational Geometry, 37(1), 103–120. DOI: '
+             '10.1007/s00454-006-1276-5.',
              'Carlsson, G. (2009). Topology and data. Bulletin of the American Mathematical '
-             'Society, 46(2), 255–308.',
+             'Society, 46(2), 255–308. DOI: 10.1090/S0273-0979-09-01249-X.',
              'Robins, V., Saadatfar, M., Delgado-Friedrichs, O., & Sheppard, A. P. (2016). '
              'Percolating length scales from topological persistence analysis of micro-CT images '
-             'of porous materials. Water Resources Research, 52(1), 315–329.',
-             'Peyré, G., & Cuturi, M. (2019). Computational optimal transport: With applications '
-             'to data science (PythonOT/POT, https://github.com/PythonOT/POT). Foundations and '
+             'of porous materials. Water Resources Research, 52(1), 315–329. DOI: '
+             '10.1002/2015WR017937.',
+             'Peyré, G., & Cuturi, M. (2019). Computational Optimal Transport with Applications '
+             'to Data Sciences (PythonOT/POT, https://github.com/PythonOT/POT). Foundations and '
              'Trends in Machine Learning, 11(5–6), 355–607. DOI: 10.1561/2200000073.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
              'context of citations and classifies their intent using deep learning '
@@ -374,11 +390,11 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         'stroke-width="3"/>\n'
         '            <line id="tp-m10-eps-scan" x1="495" y1="42" x2="495" y2="176" '
         'stroke="var(--tp-minium)" stroke-width="1.8" stroke-dasharray="4,3"/>\n'
-        '            <text x="380" y="102" font-size="9.5" fill="var(--tp-verdigris)">Spanning H₁ '
-        'Percolation Throat [b*, d*] = [38, 116 nm]</text>\n'
+        '            <text x="380" y="102" font-size="9.5" fill="var(--tp-verdigris)">Longest H₁ '
+        'Bar (Model) [b*, d*] = [38, 116 nm]</text>\n'
         '            <text id="tp-m10-stab-text" x="380" y="206" font-size="10" '
-        'fill="var(--tp-prussian)">Bottleneck Stability d_B ≤ ||f − g||_∞ · 65 nm LNP '
-        'PASS</text>\n'
+        'fill="var(--tp-prussian)">Bottleneck Stability d_B ≤ ||f − g||_∞ · Synthetic '
+        'Model</text>\n'
         '          </svg>'}
 
 PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a 3D Vietoris-Rips simplicial complex filtration '
@@ -392,12 +408,11 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a 3D Vietoris-R
 
 DISPATCH = {'kicker': 'FRONTIER ALGEBRAIC TOPOLOGY DISPATCH · COMPLETING E.01, P.03 & M.05 · PERSISTENT '
            'HOMOLOGY',
- 'headline': 'Edelsbrunner–Zomorodian Persistent Homology & Betti Barcodes Pinpoint Percolation '
-             'Throats in 3D Porous Media',
+ 'headline': 'Persistent Homology & Betti Barcodes as a Way to Read Pore Scales in 3D Porous Media',
  'body': "Closing the 40-Folio arc back to Folio E.01's continuum percolation and Folio P.03's "
          "mucin hydrogels, Edelsbrunner, Letscher & Zomorodian's persistent homology (Discrete "
          'Comput. Geom. DOI 10.1007/s00454-002-2885-2) tracks Vietoris–Rips H_0/H_1/H_2 Betti '
-         'barcodes across filtration scales to certify 65 nm nanoparticle passage.'}
+         'barcodes across filtration scales; this folio shows the idea on a synthetic model.'}
 
 META_3D = ('Vietoris–Rips Filtration & Betti Percolation Landscape',
  'X: Filtration Scale ε (nm) · Z: Cycle Homology Class · Y: Persistence Lifetime (d_i − b_i)')
@@ -405,8 +420,9 @@ META_3D = ('Vietoris–Rips Filtration & Betti Percolation Landscape',
 ES_TRANSLATION = {'title_es': 'Homología Persistente, Filtraciones Simpliciales de Vietoris–Rips, Códigos de Barras '
              'de Betti y Umbrales Topológicos de Percolación en Medios Desordenados',
  'subtitle_es': 'Cerrando el círculo de 40 Folios hacia E.01 y P.03: cómo la homología persistente '
-                'de Edelsbrunner, Letscher y Zomorodian identifica gargantas de poro percolantes '
-                'mediante códigos de barras de Betti.',
+                'de Edelsbrunner, Letscher y Zomorodian sigue poros y túneles a través de las '
+                'escalas. Los códigos de barras que se muestran vienen de un modelo sintético de '
+                'enseñanza, no de muestras reales.',
  'why_es': 'Imagina inundar lentamente una cordillera: los charcos pequeños aparecen y desaparecen '
            'rápido (barras cortas de ruido), mientras que los pasos de montaña profundos que '
            'conectan valles enteros destacan como barras largas e indestructibles.',
@@ -418,8 +434,8 @@ ES_TRANSLATION = {'title_es': 'Homología Persistente, Filtraciones Simpliciales
              'agua puede atravesarla de lado a lado. Si intentan medir el tamaño de los orificios '
              'eligiendo una regla fija, cometerán errores graves: si la medida es muy pequeña, '
              'cada partícula parecerá aislada; si es muy grande, la esponja parecerá un bloque '
-             'impenetrable. En 2002, Herbert Edelsbrunner y Afra Zomorodian resolvieron este '
-             'dilema creando la homología persistente. En lugar de tomar una sola fotografía fija, '
+             'impenetrable. En 2002, Herbert Edelsbrunner, David Letscher y Afra Zomorodian '
+             'publicaron una salida a este dilema: la homología persistente. En lugar de tomar una sola fotografía fija, '
              'el método graba una película continua donde las burbujas crecen sobre los datos: el '
              'ruido desaparece rápidamente, mientras que los verdaderos canales abiertos '
              'sobreviven y destacan con total claridad.',
@@ -432,12 +448,13 @@ ES_TRANSLATION = {'title_es': 'Homología Persistente, Filtraciones Simpliciales
             'ruido en los datos. El Teorema de Estabilidad del Cuello de Botella garantiza que las '
             'perturbaciones experimentales solo muevan los puntos cerca de la diagonal, '
             'manteniendo inalterables las barras largas que representan estructuras físicas '
-            'genuinas. En medios porosos desordenados, la barra de homología de dimensión uno más '
-            'duradera define con precisión la garganta crítica de percolación de 116 nanómetros. '
-            'Esta certificación matemática confirma si nanopartículas de 65 nanómetros pueden '
-            'atravesar la red porosa, eliminando el sesgo humano en tomografías de geomateriales y '
-            'mallas de hidrogel.',
- 'bridge_es': 'Calcular los códigos de barras de homología persistente H₁ y H₂ sobre tomografías '
-              'crio-electrónicas de esputo en la Fibrosis Quística determina el radio crítico '
-              'exacto r_crit del poro percolante para certificar el paso de nanopartículas de 65 '
-              'nm.'}
+            'genuinas. En el modelo sintético, la barra de dimensión uno más duradera termina en '
+            '116 nanómetros, más que el tamaño de una partícula de 65 nanómetros. Es una primera '
+            'señal geométrica, no una prueba de que la partícula pase; Robins y colaboradores '
+            '(2016) relacionaron este tipo de rasgos con escalas de percolación en microtomografías '
+            'de materiales porosos.',
+ 'bridge_es': 'Un análisis propuesto, no un resultado: la homología persistente de una red de '
+              'moco o esputo obtenida por imagen podría, en principio, dar una escala geométrica '
+              'de poro para compararla con el tamaño de partículas como las del Folio P.09. No se '
+              'analizaron imágenes para este folio, no se reportan tamaños de poro de ninguna '
+              'muestra de pacientes y nada aquí es una guía clínica ni de tratamiento.'}

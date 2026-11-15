@@ -6,34 +6,34 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ---
 # Kinetic Origami & Miura-Ori Deployable Biomimetic Facades: Isometric Crease Kinematics, Auxetic Poisson Ratio Inversion & Solar Mashrabiya Envelopes (Folio A.10)
 
-A plain-text companion to the essay at https://informatico.ai/architecture/a10/ (`A.10 · Kinetic Origami & Auxetic Mashrabiya Facades · CSI 10 71 13`, `REV 1.0`, redated `2026-11-03`).
+A plain-text companion to the essay at https://informatico.ai/architecture/a10/ (`A.10 · Kinetic Origami & Auxetic Mashrabiya Facades · CSI 10 71 13`, `REV 1.1`, redated `2026-11-14`).
 
 ## The governing relation
 `tan(γ_2/2) = cos α · tan(γ_1/2) · ν_xy = −tan² φ < 0 · Kawasaki ∑ α_{2i} = π · CSI 10 71 13`
 
 ## Rules the essay derives
 1. Enforce Kawasaki's flat-foldability theorem sum(alpha_even) = sum(alpha_odd) = pi and Maekawa's mountain-valley rule |M - V| = 2 at every interior degree-4 vertex.
-2. Compute semi-width angle phi from cos(phi) = sin(alpha) * cos(theta / 2) and evaluate auxetic in-plane Poisson ratio nu_xy = -tan^2(phi) < 0.
-3. Couple facade deployment angle theta to solar altitude to hold effective SHGC <= 0.22 during peak insolation while maintaining >= 250 EML circadian daylighting.
+2. Compute the semi-width angle phi from this folio's simplified parametrization cos(phi) = sin(alpha) * cos(theta / 2) and evaluate the in-plane Poisson ratio nu_xy = -tan^2(phi) < 0 (about -0.37 at alpha = 64, theta = 36); note that Schenk & Guest (2013) parametrize the fold differently.
+3. Couple facade deployment angle theta to solar altitude; treat SHGC <= 0.22 at peak insolation and >= 250 EML daylight as this folio's own design targets and report SHGC as a model value, not a measurement.
 
 ## How it works, in four stages
-- Stage 1 (Kawasaki & Maekawa Flat-Foldable Vertex, Continuing M.05): Four rigid parallelogram facets meet with alternating sector angles summing to π, creating a 1-DOF mechanism.
-- Stage 2 (Spherical Trigonometry Dihedral Coupling): Primary fold angle θ = 36° drives secondary crease dihedral γ_2 via tan(γ_2/2) = cos α · tan(γ_1/2) with zero facet membrane strain.
-- Stage 3 (Schenk–Guest Auxetic Poisson Inversion, DOI 10.1073/pnas.1217998110): In-plane kinematics yield negative Poisson ratio ν_xy = −tan² φ = −1.38, expanding biaxially without jamming.
-- Stage 4 (Adaptive Mashrabiya Solar & Circadian Control, Continuing A.03/A.04): Cuts peak Solar Heat Gain Coefficient to SHGC = 0.19 (−68.4% cooling load) while preserving 285 EML daylight.
+- Stage 1 (Kawasaki & Maekawa Flat-Foldable Vertex, Continuing M.05): Four rigid parallelogram facets meet at a degree-4 vertex whose alternate sector angles sum to π. In the ideal rigid model this leaves a single degree of freedom.
+- Stage 2 (Spherical Trigonometry Dihedral Coupling): Taking the primary fold angle γ_1 = θ = 36° and α = 64°, the relation tan(γ_2/2) = cos α · tan(γ_1/2) gives a secondary fold angle γ_2 ≈ 16.2°. The facets are assumed rigid, so they do not stretch.
+- Stage 3 (Auxetic Poisson Ratio, after Schenk & Guest 2013, DOI 10.1073/pnas.1217998110): Schenk and Guest showed that a Miura-ori sheet has a negative in-plane Poisson ratio. In this folio's simplified parametrization, cos φ = sin α · cos(θ/2) gives φ ≈ 31.3° and ν_xy = −tan² φ ≈ −0.37 at the default settings.
+- Stage 4 (Mashrabiya-Inspired Solar Shading, Continuing A.03/A.04): With an assumed bare-glazing SHGC_glass = 0.60 and shading effectiveness η_shade = 0.845, the folio's rule SHGC = SHGC_glass · (1 − η_shade · cos θ) gives 0.19 at θ = 36°, a 68.4% cut in solar heat gain through the glazing in the model. Cooling-energy savings and daylight levels are not computed here.
 
 ## Reference values stated in the essay
-- **In-Plane Poisson Ratio (ν_xy)**: `−1.38 (Auxetic −tan² φ)`
-- **Effective Facade SHGC**: `0.19 (−68.4% Solar Gain)`
-- **Coupled Dihedral Angle (γ_2)**: `142.6° (1-DOF Isometric)`
-- **Kinematic Envelope Verdict**: `RIGID-FOLDABLE · ZERO JAM`
+- **In-Plane Poisson Ratio (ν_xy)**: `−0.37 (Model, −tan² φ)`
+- **Effective Facade SHGC**: `0.19 (Model, −68.4% vs Bare Glazing)`
+- **Coupled Dihedral Angle (γ_2)**: `16.2° (Model, γ_1 = θ)`
+- **Kinematic Model Check**: `ONE DEGREE OF FREEDOM (IDEAL RIGID MODEL)`
 
 ## What is and is not checked
 The reference values above are stated in the essay. No script in this repository recomputes them yet, so treat them as the essay's claims and check them against the primary source before relying on them.
 
 ## Primary source
 - https://doi.org/10.1073/pnas.1217998110 (Scite report: https://scite.ai/reports/10.1073/pnas.1217998110)
-- What the essay compares against: α = 64° · θ = 36° ⇒ ν_xy = −1.38 · SHGC = 0.19 (−68.4% Solar Load)
+- What the essay compares against: Model values: α = 64° · θ = 36° ⇒ ν_xy ≈ −0.37 (folio parametrization) · SHGC = 0.19 (assumed SHGC_glass = 0.60, η_shade = 0.845)
 
 ## Recent research context
-- **Miura-Ori Spherical Vertex Kinematics & Negative Poisson Ratios Drive Deployable Solar Mashrabiya Envelopes**: Uniting Folio A.04's High-Tech exoskeletons, Folio A.03's circadian daylighting, and Folio M.05's distance rigidity, Mark Schenk & Simon Guest's folded metamaterial theory (PNAS DOI 10.1073/pnas.1217998110) proves how degree-4 Miura-ori creases achieve auxetic Poisson inversion (ν_xy = −tan² φ < 0) and slash facade solar heat gain by 68%.
+- **Miura-Ori Spherical Vertex Kinematics & Negative Poisson Ratios Drive Deployable Solar Mashrabiya Envelopes**: Schenk & Guest showed that a Miura-folded sheet has a negative in-plane Poisson ratio (PNAS, DOI 10.1073/pnas.1217998110). This design study, continuing Folios A.04, A.03 and M.05, uses that geometry for a proposed one-actuator solar screen: in the folio's simplified model ν_xy ≈ −0.37 and SHGC = 0.19 at the default settings. Model values, not measurements.

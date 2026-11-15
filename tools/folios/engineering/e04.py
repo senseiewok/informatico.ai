@@ -12,20 +12,20 @@ FOLIO = {'folio_id': 'E.04',
  'category_code': 'E',
  'title': 'Counter-Current Enthalpy Recovery Exchangers: Effectiveness–NTU, Membrane Sorption, and '
           'Frost Limits',
- 'subtitle': 'Coupled sensible heat and latent water-vapor transfer across selective '
-             'polymer-electrolyte membranes—maintaining 88.2% sensible and 79.4% latent recovery '
-             'without exhaust-side frost occlusion.',
+ 'subtitle': 'Coupled sensible heat and latent water-vapor transfer across selective polymer '
+             'membranes, with model values of 88.2% sensible and 79.4% latent effectiveness at '
+             'the default settings and a simple frost-limit estimate.',
  'date_published': '2026-11-01',
- 'date_redated': '2026-11-02',
- 'current_edition': 'REV 1.1',
- 'status_badge': 'CIVIL & HVAC · REV 1.1',
+ 'date_redated': '2026-11-14',
+ 'current_edition': 'REV 1.2',
+ 'status_badge': 'CIVIL & HVAC · REV 1.2',
  'primary_kernel': 'tools/continuum_verify.py',
  'governing_law': 'ε = NTU / (1 + NTU) · Bi_m = h_m δ_m / D_w · CSI 23 72 23',
  'colophon': {'identifier': 'E.04 · Coupled Heat & Mass Transfer · CSI 23 72 23',
               'kernels': 'ε = NTU / (1 + NTU) (Balanced Counter-Current)',
-              'benchmarks': 'Sensible ε_s = 88.2% · Latent ε_l = 79.4%',
-              'bridge': 'Selective Vapor Permeation ↔ Airway Surface Liquid (ASL) '
-                        'Humidification'},
+              'benchmarks': 'Model values: ε_s = 7.5/8.5 = 88.2% · ε_l = 3.85/4.85 = 79.4%',
+              'bridge': 'Counter-Current Exchange ↔ How the Nose Warms and Humidifies Air (an '
+                        'analogy)'},
  'sliders': [{'label': 'Sensible Transfer Units (NTU_s)',
               'min': 1.0,
               'max': 12.0,
@@ -35,40 +35,46 @@ FOLIO = {'folio_id': 'E.04',
              {'label': 'Membrane Moisture NTU (NTU_m)',
               'min': 0.5,
               'max': 8.0,
-              'step': 0.1,
+              'step': 0.05,
               'value': 3.85,
               'unit': 'NTU_m = '}],
  'steps': ['Stage 1 (Balanced Counter-Current Flow, C_r = 1.0): At NTU = 7.5, sensible '
            'effectiveness reaches ε_s = NTU / (1 + NTU) = 7.5 / 8.5 = 88.2%.',
-           'Stage 2 (Sulfonated Block-Copolymer Vapor Permeation): Water vapor selectively '
-           'diffuses across the 25 μm dense membrane (Bi_m = 0.26) while blocking CO₂ and VOCs.',
-           'Stage 3 (Psychrometric Frost-Threshold Suppression): Latent moisture recovery lowers '
-           'the exhaust air saturation line, extending frost-free operation down to T_oa = −12.5 '
-           '°C.',
-           'Stage 4 (HEPA H14 & Low-Pressure-Drop Channel Geometry): Laminar aspect-ratio channels '
-           '(Nu = 7.54) keep core Δp = 118 Pa at 2.1 m/s.'],
+           'Stage 2 (Membrane Vapor Permeation): Water vapor dissolves into and diffuses across '
+           'a dense hydrophilic membrane. The page assumes a 25 μm membrane with Bi_m = 0.26, '
+           'illustrative values; how well a real membrane holds back other gases depends on the '
+           'product and was not modelled.',
+           'Stage 3 (Frost Threshold): Moving moisture across the membrane lowers the dew point '
+           'of the exhaust stream, so frost starts at colder outdoor temperatures. The page '
+           'uses a simple linear estimate, T_frost = −3.0 − 9.5 (ε_l / 79.4%) °C, which gives '
+           '−12.5 °C at the defaults; it is an illustration, not a psychrometric calculation.',
+           'Stage 4 (Channel Geometry): Fully developed laminar flow between wide parallel '
+           'plates has Nu ≈ 7.54 at constant wall temperature. The core pressure drop of 118 Pa '
+           'at 2.1 m/s is a fixed illustrative value.'],
  'readouts': [{'label': 'Sensible Effectiveness (ε_s)', 'value': '88.2% (NTU = 7.5)'},
               {'label': 'Latent Moisture Recovery (ε_l)', 'value': '79.4% (NTU_m = 3.85)'},
-              {'label': 'Frost-Free Outdoor Limit', 'value': '-12.5 °C (vs -3.0 °C Sensible)'},
-              {'label': 'Enthalpy Verification', 'value': 'PASS · BALANCED NTU'}],
+              {'label': 'Frost-Free Outdoor Limit', 'value': '-12.5 °C (illustrative linear estimate; -3.0 °C sensible-only)'},
+              {'label': 'Model Status', 'value': 'MODEL VALUES · BALANCED FLOW (C_r = 1)'}],
  'spec_plate': {'division': 'CSI MASTERFORMAT 23 72 23 / 23 41 33',
                 'title': 'Counter-Current Polymer-Membrane Enthalpy Core & HEPA H14 Clean-Air '
                          'Module',
-                'body': 'Passive House Institute certified counter-current enthalpy recovery '
-                        'exchanger with selective ionomer vapor membrane (<0.4% exhaust air '
-                        'transfer ratio EATR) and medical-grade HEPA H14 filtration.',
-                'meta': 'PHI & Eurovent certified · EN 308 psychrometric performance curve '
-                        'included'},
- 'sidenote_1': {'kicker': 'SIDENOTE E.04-A · NASAL TURBINATES AS BIOLOGICAL COUNTER-CURRENT '
-                          'EXCHANGERS',
-                'body': 'Human nasal turbinates and conducting airways operate on the '
-                        'exact same coupled sensible-latent counter-current exchange law to keep '
-                        'periciliary Airway Surface Liquid (ASL) hydrated at 37 °C and '
-                        '100% RH.'},
+                'body': 'Illustrative design sketch, not a certified product: a counter-current '
+                        'enthalpy recovery core with a vapor-selective membrane and a separate '
+                        'HEPA filter stage. A low exhaust air transfer ratio (EATR) would be a '
+                        'design target to be measured; no value was measured for this page.',
+                'meta': 'Design sketch · no Passive House or Eurovent certification and no EN '
+                        '308 test stand behind this plate'},
+ 'sidenote_1': {'kicker': 'SIDENOTE E.04-A · AN ANALOGY: THE NOSE AS A HEAT AND MOISTURE '
+                          'EXCHANGER',
+                'body': 'The nose warms and humidifies inhaled air and recovers some heat and '
+                        'water when we breathe out. That resembles an enthalpy exchanger, but it '
+                        'works by alternating flow over the same moist lining rather than by two '
+                        'streams on either side of a membrane. The comparison is an analogy '
+                        'offered by this folio.'},
  'sidenote_2': {'kicker': 'SIDENOTE E.04-B · SPECIFICATION PLATE · CSI 23 72 23 / 23 41 33',
-                'body': 'Counter-current polymer-membrane enthalpy recovery core with selective '
-                        'ionomer vapor permeation (<0.4% EATR) and medical-grade HEPA H14 '
-                        'filtration.'},
+                'body': 'Design sketch of a counter-current polymer-membrane enthalpy core with a '
+                        'separate HEPA filter stage. Leakage and filtration figures would have to '
+                        'be measured; none are claimed here.'},
  'skill': {'filename': 'counter-current-enthalpy-exchanger-SKILL.md',
            'name': 'counter-current-enthalpy-exchanger',
            'description': 'AI-agnostic thermal and psychrometric engineering skill for '
@@ -78,17 +84,34 @@ FOLIO = {'folio_id': 'E.04',
                      'epsilon = NTU / (1 + NTU).',
                      'Evaluate membrane latent NTU_m = A_tot * U_m / m_dot_da where 1/U_m = 2/h_m '
                      '+ delta_m / D_eff_membrane.',
-                     'Verify exhaust plate surface temperature T_plate_cold > '
-                     'T_frost(omega_exhaust) to prevent ice occlusion.']},
- 'revisions': [{'edition': 'REV 1.1',
+                     'Check exhaust plate surface temperature T_plate_cold > '
+                     'T_frost(omega_exhaust) to avoid ice blockage.']},
+ 'revisions': [{'edition': 'REV 1.2',
+                'date': '2026-11-14',
+                'summary': 'REV 1.2 (Redated 2026-11-14): Grounding revision. The certification '
+                           'claims on the specification plate (Passive House, Eurovent, EN 308), '
+                           'the "zero pathogen crossover" and ">99.6% aerosol" claims, and the '
+                           'advice about equipment for bedrooms of people with Cystic Fibrosis '
+                           'were withdrawn as unsourced; the airway link is now an analogy. A '
+                           'chronology entry that dated the 1960 Journal of Applied Mechanics '
+                           'record to 1986 was corrected, the invented 1915 and 1955 scenes were '
+                           'replaced with plain dates, and the frost limit is now labelled as an '
+                           'illustrative linear estimate.',
+                'opus': 'Review: every DOI in the folio was checked in Crossref and the Scite '
+                        'index on 2026-11-14, and the repository names with the GitHub API. No '
+                        'simulation or test was run for this folio; the effectiveness values '
+                        'follow from epsilon = NTU / (1 + NTU).'},
+               {'edition': 'REV 1.1',
                 'date': '2026-11-02',
                 'summary': 'REV 1.1 (Redated 2026-11-02): Verified Kays & London counter-current '
                            'enthalpy recovery (epsilon = NTU / (1 + NTU), CSI 23 72 23) and '
                            'selective vapor permeation across polymer membranes with 4-Seat '
                            'Multi-Lineage Council review.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
-                        'sensible recovery epsilon_s = 88.2% (NTU = 7.5), latent recovery '
-                        'epsilon_l = 79.4%, and frost limit suppression to -12.5 °C.'},
+                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): checked that '
+                        'epsilon_s = 88.2% (NTU = 7.5) and epsilon_l = 79.4% follow from the page '
+                        'formula. The word "Verified" in this note and the note below is '
+                        'withdrawn in REV 1.2, and the -12.5 °C frost limit is an illustrative '
+                        'estimate, not a verified result.'},
                {'edition': 'REV 1.0',
                 'date': '2026-11-01',
                 'summary': 'REV 1.0 (Published 2026-11-01): Initial publication of counter-current '
@@ -107,10 +130,10 @@ FOLIO = {'folio_id': 'E.04',
            'mentioning': 1078,
            'contrasting': 0,
            'retracted': False,
-           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,942 '
-                      'citing publications (19 supporting, 1,078 mentioning, 0 contrasting) on '
-                      'mucociliary transport and airway surface liquid thermodynamic '
-                      'hydration.'}}
+           'summary': 'Scite index entry for the Compact Heat Exchangers record by Kays (DOI '
+                      '10.1115/1.3644004), as recorded 2026-11-08: 2,942 citing publications (19 '
+                      'supporting, 1,078 mentioning, 0 contrasting) and no retraction notice. '
+                      'These counts describe that one record, not this folio.'}}
 
 LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'word_count': '4,650 WORDS',
@@ -121,25 +144,21 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
            'mentioning': 1078,
            'contrasting': 0,
            'retracted': False,
-           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,942 '
-                      'citing publications (19 supporting, 1,078 mentioning, 0 contrasting) on '
-                      'mucociliary transport and airway surface liquid thermodynamic '
-                      'hydration.'},
+           'summary': 'Scite index entry for the Compact Heat Exchangers record by Kays (DOI '
+                      '10.1115/1.3644004), as recorded 2026-11-08: 2,942 citing publications (19 '
+                      'supporting, 1,078 mentioning, 0 contrasting) and no retraction notice. '
+                      'These counts describe that one record, not this folio.'},
  'act1_title': "Act I — Wilhelm Nusselt, Kays & London's NTU Method, and Counter-Current Enthalpy "
                'Recovery',
- 'act1_dropcap': 'During the damp winter of 1915 in Munich, the mechanical engineer Wilhelm '
-                 'Nusselt investigated how thermal energy and moisture travel across thin moving '
-                 'boundaries of air. By analyzing laminar flow adjacent to solid surfaces, Nusselt '
-                 'demonstrated that thermal conduction and vapor diffusion share the exact same '
-                 'underlying mathematical harmony. Four decades later, in sunny California, '
-                 'William Kays and Alexander London stood before rows of experimental finned coils '
-                 'at Stanford University. Seeking lighter, more efficient heat exchangers for '
-                 'modern aircraft and industrial buildings, they published their groundbreaking '
-                 'monograph on compact heat exchangers in 1955. Kays and London introduced a '
-                 'practical metric called the Number of Transfer Units, proving that arranging two '
-                 'fluid streams in opposing, counter-current directions shatters the fifty-percent '
-                 'efficiency barrier inherent in parallel flow, capturing almost all available '
-                 'thermal energy without requiring impossible amounts of machinery.',
+ 'act1_dropcap': 'In 1915 the German engineer Wilhelm Nusselt published a paper that applied '
+                 'similarity (dimensionless) analysis to convective heat transfer; the Nusselt '
+                 'number is named after him, and the same kind of analysis was later carried '
+                 'over to mass transfer. In 1955 William Kays and Alexander London of Stanford '
+                 'University published the first edition of Compact Heat Exchangers, a book of '
+                 'design data that made the effectiveness–NTU method a standard tool. That method '
+                 'shows a simple fact: with two streams of equal heat capacity, a parallel-flow '
+                 'exchanger can never recover more than half of the available heat, while a '
+                 'counter-flow exchanger approaches full recovery as it is made larger.',
  'act1_plain_bridge': 'Imagine two long trains traveling on adjacent tracks in opposite directions '
                       'during a freezing winter day. One train is warm and bustling with '
                       'passengers, while the other train is cold and empty. If passengers on the '
@@ -153,53 +172,45 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'leaving the building warms and humidifies fresh, chilly outdoor air '
                       'entering the rooms through thin membrane sheets. The two air streams never '
                       'touch, yet heat and fresh moisture glide right through.',
- 'act1_body': "Nature discovered Kays and London's counter-current theorem long before human "
-              'engineers formalized the equations: human nasal turbinates and avian respiratory '
-              'tracts act as regenerative enthalpy exchangers that condition inhaled air before it '
-              'reaches delicate tissues. Modern selectively permeable polymer membranes replicate '
-              'this counter-current architecture inside high-performance building energy recovery '
-              'ventilators and clinical air conditioners. Building upon William Kays and Alexander '
+ 'act1_body': 'Noses do something similar: the nasal lining warms and humidifies inhaled air '
+              'and takes back some heat and water on the way out, though by alternating flow '
+              'rather than two separate streams. Building energy recovery ventilators use '
+              'vapor-permeable polymer membranes to exchange heat and moisture between outgoing '
+              'and incoming air. Building upon William Kays and Alexander '
               "London's Effectiveness–NTU formalism (Compact Heat Exchangers, DOI "
               "10.1115/1.3644004) and Wilhelm Nusselt's fully developed laminar duct heat transfer "
               'asymptotes, contemporary enthalpy recovery cores interleave microscopic hygroscopic '
               'membranes that simultaneously transfer sensible heat and latent water-vapor '
               'enthalpy. In these dense membrane blocks, exhaust air flows opposite to incoming '
               'outdoor air across sub-micron channels. Sensible energy conducts across the polymer '
-              'skin while moisture dissolves into hydrophilic domains, diffusing down vapor '
-              'pressure gradients without allowing airborne pollutants, viruses, or hazardous '
-              'exhaust fumes to cross between streams. This balanced exchange maintains optimal '
-              'indoor comfort while slashing building heating and cooling loads.',
- 'act1_stakes': 'When mechanical engineers design energy recovery ventilators using simplified '
-                'sensible-only heat transfer equations, real-world systems experience severe '
-                'performance collapse during extreme weather. In freezing winter climates, '
-                'ignoring latent moisture transport causes warm exhaust air to reach its dew point '
-                'within the core channels. As condensed water accumulates against cold membrane '
-                'surfaces, it freezes into solid frost dams that strangle ventilation airflow, '
-                'spike fan power consumption, and burst fragile membrane seals. Conversely, during '
-                'humid summer conditions, failing to model coupled moisture diffusion leads to '
-                'chronic indoor over-humidification, fostering toxic mold blooms and degrading '
-                'mass timber structural frames. In high-occupancy hospitals and cleanrooms, '
-                'specifying cheap porous heat wheels instead of true counter-current selective '
-                'membranes risks cross-stream aerosol recirculation, spreading airborne pathogens '
-                'between isolation wards. Modern HVAC engineering avoids these building failures '
-                'by coupling rigorous effectiveness-NTU formulations with membrane sorption '
-                'isotherms, ensuring continuous enthalpy exchange while actively suppressing '
-                'sub-zero frost formation.',
- 'pullquote': '"At NTU = 4.2 in a balanced counter-current membrane core, sensible effectiveness '
-              'reaches 80.8% and latent moisture recovery hits 73.9% — preventing evaporative '
-              'collapse of the 7-micron airway surface liquid."',
+              'skin while moisture dissolves into hydrophilic domains and diffuses down the '
+              'vapor pressure gradient. Dense membranes are meant to keep the two air streams '
+              'apart; how much air, odour or contaminant still crosses is a property of each '
+              'product and has to be measured. Recovering heat and moisture this way can reduce '
+              'heating and cooling loads.',
+ 'act1_stakes': 'Designing an energy recovery ventilator with sensible-only equations misses '
+                'what happens to water. In freezing weather, warm exhaust air can cool below its '
+                'dew point inside the core, and the condensate can freeze and block channels, '
+                'which is why exchangers need defrost strategies. Moisture-permeable membrane '
+                'cores move some of that water to the incoming air before it condenses, which '
+                'the literature reports can reduce condensation and frost compared with plain '
+                'plate exchangers (for example Van Vu & Dvořák 2017, DOI '
+                '10.1051/epjconf/201714302080). In humid weather, the coupled moisture transfer '
+                'also matters for indoor humidity. Engineers handle these cases by combining '
+                'effectiveness–NTU models with membrane sorption data; this page shows a '
+                'simplified version.',
+ 'pullquote': '"With two equal streams, parallel flow can recover at most half the heat; counter '
+              'flow approaches all of it as the exchanger grows."',
  'chronology': [('1915',
-                 'Wilhelm Nusselt establishes the fundamental dimensionless groups of '
-                 'boundary-layer heat and mass transfer.'),
+                 'Wilhelm Nusselt applies similarity analysis to convective heat transfer.'),
                 ('1955',
-                 'William Kays & Alexander London publish Compact Heat Exchangers and the '
-                 'epsilon-NTU design method.'),
-                ('1986',
-                 'Kays & London codify counter-current effectiveness and NTU heat and mass '
-                 'transfer curves for compact exchangers (DOI 10.1115/1.3644004).'),
-                ('2019',
-                 'Selective polymer-membrane enthalpy exchangers achieve >73% latent moisture '
-                 'recovery with zero pathogen crossover.')],
+                 'William Kays & Alexander London publish the first edition of Compact Heat '
+                 'Exchangers, built on the effectiveness–NTU design method.'),
+                ('1960',
+                 'A Journal of Applied Mechanics record of Compact Heat Exchangers (DOI '
+                 '10.1115/1.3644004) documents the book in the engineering literature.'),
+                ('1984',
+                 'Kays & London publish the third edition of Compact Heat Exchangers.')],
  'act2_title': 'Act II — How It Actually Works: Sensible Conduction + Solution-Diffusion Vapor '
                'Transport',
  'act2_analogy': 'Think of two commuter trains passing each other in opposite directions on a '
@@ -245,10 +256,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    '(1 + NTU) under balanced heat capacity rates (C_r = 1) asymptotically '
                    'approaches unity as surface area expands. In contrast, parallel-flow '
                    'exchangers remain thermodynamically constrained below fifty percent efficiency '
-                   'regardless of membrane size. By optimizing channel aspect ratio and membrane '
-                   'sorptivity, modern cores achieve over eighty-five percent total enthalpy '
-                   'recovery while keeping surface temperatures safely above the frost threshold, '
-                   'preventing condensate freezing without energy-intensive pre-heaters.',
+                   'regardless of membrane size. Channel shape and membrane sorptivity set how '
+                   'many transfer units a real core reaches; in this model, the default NTU = 7.5 '
+                   'gives 88.2% sensible effectiveness. Real cores report lower or higher figures '
+                   'depending on airflow and design, and their frost behaviour must be tested.',
  'act2_deepening': 'The coupled transfer of sensible heat and water vapor involves intricate '
                    'conjugate boundary layer mechanics on either side of the selective membrane. '
                    'Within the narrow flow channels, developing velocity and thermal boundary '
@@ -265,54 +276,59 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'and crystallizes into frost. Advanced multi-scale modeling resolves these '
                    'conjugate gradients, allowing engineers to tailor membrane thickness and '
                    'channel spacing to prevent frost inception.',
- 'walkthrough': ['Experiment 1 (Counter-Current vs. Parallel Flow): Verify that at NTU_s = 4.2 and '
+ 'walkthrough': ['Experiment 1 (Counter-Current vs. Parallel Flow): Check that at NTU_s = 4.2 and '
                  'C_r = 1.0, counter-current effectiveness is 4.2 / 5.2 = 80.8%, whereas parallel '
                  'flow plateaus at (1 - e^-8.4)/2 = 50.0%.',
-                 'Experiment 2 (Latent Moisture Balance): Observe how NTU_l = 2.83 yields '
-                 'epsilon_l = 73.9%, holding indoor relative humidity at 45–50% RH without '
-                 'condensation frosting.',
-                 'Experiment 3 (Epithelial Evaporation Shield): Trace how delivering air at 37 deg '
-                 'C and 44 mg/L water vapor eliminates evaporative osmotic flux from the 7 um '
-                 'periciliary layer.'],
+                 'Experiment 2 (Latent Moisture Balance): Observe how NTU_m = 2.83 yields '
+                 'epsilon_l = 2.83 / 3.83 = 73.9%, and how the illustrative frost estimate moves '
+                 'with it.',
+                 'Experiment 3 (4-Stage Stepper): Follow the stepper from balanced counter-flow '
+                 'to membrane permeation, the frost estimate and the channel geometry.'],
  'act4_title': 'Act IV — Human + AI Co-Design & the Structural & Civil Engineering Specification '
                'Bridge',
- 'act4_human_ai': 'Psychrometric AI controllers couple weather forecasts and room occupancy '
-                  'sensors with exact epsilon-NTU + Guggenheim–Anderson–de Boer (GAB) sorption '
-                  'isotherms to hold clinical air within a 1% RH band. High-order Chebyshev '
-                  'spectral advection-diffusion simulations in DedalusProject/dedalus '
-                  '(https://github.com/DedalusProject/dedalus, DOI '
-                  '10.1103/PhysRevResearch.2.023068) paired with symbolic Graetz–Nusselt '
-                  'correlation discovery in MilesCranmer/PySR (DOI 10.48550/arXiv.2305.01582) '
-                  'allow HVAC and cleanroom engineers to co-optimize pressure drop Delta P and '
-                  'total enthalpy effectiveness under ASHRAE 62.1 and Scite citation verification '
-                  '(DOI 10.1162/qss_a_00146).',
- 'act4_deepening': 'The next generation of building energy recovery relies on human and artificial '
-                   'intelligence co-design of smart psychrometric control architectures. On-site '
-                   'building management systems link distributed temperature and humidity sensors '
-                   'with physics-informed surrogate models running on local microprocessors. These '
-                   'algorithms continuously predict indoor moisture accumulation, outdoor weather '
+ 'act4_human_ai': 'A proposal, not a description of installed systems: a controller could '
+                  'combine weather forecasts and occupancy sensors with effectiveness–NTU models '
+                  'and membrane sorption isotherms (for example the '
+                  'Guggenheim–Anderson–de Boer form) to manage humidity and frost risk. Readers '
+                  'who want to explore this could use open tools such as the Dedalus spectral '
+                  'solver (DedalusProject/dedalus, https://github.com/DedalusProject/dedalus, DOI '
+                  '10.1103/PhysRevResearch.2.023068) or symbolic regression with PySR '
+                  '(MilesCranmer/PySR, DOI 10.48550/arXiv.2305.01582). Neither was run for this '
+                  'folio. Ventilation rates are set by standards such as ASHRAE 62.1, which this '
+                  'page does not apply. References were checked in the Scite index (DOI '
+                  '10.1162/qss_a_00146).',
+ 'act4_deepening': 'A possible next step for building energy recovery, offered as a research '
+                   'direction: building management systems could link temperature and humidity '
+                   'sensors with physics-informed surrogate models running locally. Such '
+                   'algorithms would predict indoor moisture accumulation, outdoor weather '
                    'shifts, and internal frost risk in real time, dynamically modulating bypass '
                    'damper positions and variable-speed fan velocities to maximize heat recovery '
                    'while avoiding defrost penalty cycles. Human mechanical engineers define '
                    'health guidelines, ventilation rates, and indoor air quality standards while '
                    'reviewing automated fault detection reports. Open research frontiers '
                    'investigate novel metal-organic framework coatings and biomimetic membrane '
-                   'channels that selectively transport water vapor while demonstrating complete '
-                   'impermeability to microscopic gaseous contaminants and volatile organic '
-                   'compounds. By harmonizing intelligent automated control with advanced '
-                   'materials science, modern engineering delivers ultra-low-energy buildings that '
-                   'safeguard human respiratory health across fluctuating global climates.',
- 'cf_bridge': 'In Cystic Fibrosis, loss of CFTR chloride secretion '
-              'leaves the 7 um airway surface liquid (ASL) osmotically fragile. '
-              'Breathing cold, dry winter air (<20% RH) strips moisture from the upper bronchial '
-              'tree, accelerating mucociliary collapse. Counter-current membrane enthalpy recovery '
-              'in CF bedrooms and heated humidified high-flow therapy preserves the 44 mg/L '
-              'saturation boundary so cilia can keep beating at 12–15 Hz.',
+                   'channels that transport water vapor while holding back other gases and '
+                   'volatile organic compounds as well as possible. Better ventilation and lower '
+                   'energy use are the goals; this folio makes no claim about health outcomes.',
+ 'cf_bridge': 'An analogy, not a recommendation: in the airways, a thin liquid layer lines the '
+              'surface, and in Cystic Fibrosis, reduced CFTR function leaves that layer '
+              'dehydrated. In the gel-on-brush model of Button et al. (Science 2012, DOI '
+              '10.1126/science.1223012), dehydrated mucus can compress the periciliary layer '
+              'and slow clearance. The nose and airways warm and humidify inhaled air much as '
+              'an enthalpy exchanger conditions supply air. This page models building '
+              'ventilation only; it makes no claim about humidifiers, ventilators or any care '
+              'for people with CF and is not medical advice.',
  'sources': ['Kays, W. M., & London, A. L. (1984). Compact Heat Exchangers (3rd ed.). McGraw-Hill.',
              'Zhang, L. Z. (2012). Conjugate Heat and Mass Transfer in Heat Mass Exchanger Ducts. '
              'Academic Press.',
-             'Kays, W. M., & London, A. L. (1960). Compact Heat Exchangers. Journal of Applied '
-             'Mechanics, 27(2), 377. DOI: 10.1115/1.3644004.',
+             'Kays, W. M. (1960). Compact Heat Exchangers [record of the Kays & London book]. '
+             'Journal of Applied Mechanics, 27(2), 377. DOI: 10.1115/1.3644004.',
+             'Van Vu, N., & Dvořák, V. (2017). Evaluating the moisture transfer of membranes for '
+             'total heat exchanger. EPJ Web of Conferences, 143, 02080. DOI: '
+             '10.1051/epjconf/201714302080.',
+             'Button, B., et al. (2012). A Periciliary Brush Promotes the Lung Health by '
+             'Separating the Mucus Layer from Airway Epithelia. Science, 337(6097), 937–941. '
+             'DOI: 10.1126/science.1223012.',
              'ASHRAE (2021). ASHRAE Handbook — Fundamentals: Psychrometrics and Air-to-Air Energy '
              'Recovery.',
              'Burns, K. J., Vasil, G. M., Oishi, J. S., Lecoanet, D., & Brown, B. P. (2020). '
@@ -354,12 +370,13 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a laser-welded 
             'membranes.'}
 
 DISPATCH = {'kicker': 'FRONTIER THERMODYNAMICS DISPATCH · SELECTIVE IONOMER MEMBRANES',
- 'headline': 'Sulfonated Block-Copolymer Enthalpy Cores Reach 79.4% Latent Moisture Recovery at '
-             'Zero Pathogen Crossover',
- 'body': "Extending Kays & London's ε-NTU compact heat exchanger theory (1960, DOI "
-         '10.1115/1.3644004), modern sulfonated ionomer membranes selectively transport H2O vapor '
-         'via solution-diffusion while blocking >99.6% of viral/bacterial aerosols, protecting the '
-         '7.2 μm airway surface liquid down to −12.5 °C outdoor air.'}
+ 'headline': 'Membrane Enthalpy Cores Move Water Vapor as Well as Heat',
+ 'body': "Extending Kays & London's ε-NTU compact heat exchanger method (record: DOI "
+         '10.1115/1.3644004), membrane enthalpy cores move water vapor by solution-diffusion as '
+         'well as heat, which can reduce condensation and frost in cold weather (Van Vu & '
+         'Dvořák 2017, DOI 10.1051/epjconf/201714302080). At the default settings this page '
+         'models 79.4% latent effectiveness; its frost limit of −12.5 °C is an illustrative '
+         'estimate.'}
 
 META_3D = ('Cross-Corrugated Chevron Enthalpy Exchanger',
  'X: Supply Air Channel · Z: Exhaust Counter-Flow · Y: Psychrometric Enthalpy Transfer Surface')
@@ -367,20 +384,23 @@ META_3D = ('Cross-Corrugated Chevron Enthalpy Exchanger',
 ES_TRANSLATION = {'title_es': 'Intercambiadores de Recuperación de Entalpía a Contracorriente: Efectividad–NTU, '
              'Sorción en Membrana y Límites de Escarcha',
  'subtitle_es': 'Transferencia acoplada de calor sensible y vapor de agua latente a través de '
-                'membranas selectivas de electrolito polimérico, logrando 88.2% de recuperación '
-                'térmica sin oclusión por escarcha.',
+                'membranas poliméricas selectivas, con valores de modelo de 88.2% de efectividad '
+                'sensible y 79.4% latente en la configuración inicial, y una estimación sencilla '
+                'del límite de escarcha.',
  'why_es': 'Como dos trenes que se cruzan en sentido opuesto intercambiando termos calientes '
            'ventana por ventana, el flujo a contracorriente recupera casi toda la energía térmica '
            'y la humedad sin mezclar el aire viciado con el aire limpio.',
- 'bridge_es': 'El acondicionamiento higrotérmico a contracorriente modela cómo las vías '
-              'respiratorias superiores calientan y humidifican el aire inspirado para proteger la '
-              'capa líquida periciliar (PCL) pulmonar.',
- 'plain_es': 'En 1915, el ingeniero Wilhelm Nusselt descubrió en Múnich que el calor y la humedad '
-             'viajan a través del aire siguiendo principios matemáticos idénticos. Años más tarde, '
-             'en 1955, William Kays y Alexander London demostraron en la Universidad de Stanford '
-             'que hacer circular dos corrientes de aire en sentidos opuestos permite capturar casi '
-             'toda la energía térmica disponible, superando el límite del cincuenta por ciento del '
-             'flujo paralelo. Para entenderlo de manera sencilla, imaginen dos trenes que avanzan '
+ 'bridge_es': 'Una analogía, no una recomendación: la nariz y las vías respiratorias '
+              'calientan y humidifican el aire inspirado, algo parecido a lo que hace un '
+              'intercambiador de entalpía con el aire de suministro. Esta página modela solo la '
+              'ventilación de edificios y no es consejo médico.',
+ 'plain_es': 'En 1915, el ingeniero alemán Wilhelm Nusselt publicó un análisis de semejanza '
+             '(adimensional) de la transferencia de calor por convección. En 1955, William Kays y '
+             'Alexander London, de la Universidad de Stanford, publicaron la primera edición de '
+             'Compact Heat Exchangers, que difundió el método de efectividad–NTU. Ese método '
+             'muestra que, con dos corrientes iguales, el flujo paralelo nunca recupera más de la '
+             'mitad del calor, mientras que el flujo a contracorriente se acerca a recuperarlo '
+             'todo. Para entenderlo de manera sencilla, imaginen dos trenes que avanzan '
              'en direcciones contrarias durante una tarde helada: si los pasajeros comparten '
              'termos de café caliente a través de las ventanillas, el tren frío absorbe casi todo '
              'el calor del tren cálido antes de separarse. En las edificaciones modernas, los '
@@ -395,8 +415,7 @@ ES_TRANSLATION = {'title_es': 'Intercambiadores de Recuperación de Entalpía a 
             'extremadamente fríos surge un umbral crítico: si el aire húmedo de extracción se '
             'enfría por debajo de su punto de rocío y de congelación, el agua condensada se '
             'convierte en escarcha sólida, bloqueando el paso del aire. En la ingeniería civil '
-            'contemporánea, los especialistas utilizan modelos numéricos en computadora para '
-            'calcular el número de unidades de transferencia térmica y de humedad. Esto permite '
-            'programar sistemas automatizados que modulan el flujo de ventilación y evitan la '
-            'congelación del núcleo, garantizando aire limpio, confortable y con un consumo '
-            'energético mínimo en hospitales y edificios residenciales.'}
+            'contemporánea, los especialistas usan modelos numéricos para calcular el número de '
+            'unidades de transferencia térmica y de humedad, y diseñar estrategias de '
+            'descongelamiento. En esta página, el límite de escarcha de −12.5 °C es una '
+            'estimación ilustrativa, no un resultado de prueba.'}

@@ -79,34 +79,33 @@ end SIDim
 
 /-- Self-contained `Int` ring helpers built strictly from core Prelude `Int.mul_add`,
     `Int.mul_comm`, `Int.mul_assoc`, `Int.neg_mul_neg`, `Int.ofNat`, `Int.negSucc`,
-    `Nat.mul_add`, `False.elim`, `Or.inl`, `Or.inr`, and `omega`. -/
+    `Nat.mul_add`, `False.elim`, `Or.inl`, `Or.inr`, `omega`, and `grind`. -/
 def sq (x : Int) : Int := x * x
 
-def ofNat_mul_ofNat_eq (a b : Nat) : Int.ofNat a * Int.ofNat b = Int.ofNat (a * b) := rfl
+theorem ofNat_mul_ofNat_eq (a b : Nat) : Int.ofNat a * Int.ofNat b = Int.ofNat (a * b) := rfl
 
-def add_mul_int (a b c : Int) : (a + b) * c = a * c + b * c := by
+theorem add_mul_int (a b c : Int) : (a + b) * c = a * c + b * c := by
   rw [Int.mul_comm (a + b) c, Int.mul_add c a b, Int.mul_comm c a, Int.mul_comm c b]
 
-def mul_sub_int (a b c : Int) : a * (b - c) = a * b - a * c := by
+theorem mul_sub_int (a b c : Int) : a * (b - c) = a * b - a * c := by
   have hbc : (b - c) + c = b := by omega
   have hm : a * ((b - c) + c) = a * (b - c) + a * c := Int.mul_add a (b - c) c
   rw [hbc] at hm
   omega
 
-def sub_mul_int (a b c : Int) : (a - b) * c = a * c - b * c := by
+theorem sub_mul_int (a b c : Int) : (a - b) * c = a * c - b * c := by
   rw [Int.mul_comm (a - b) c, mul_sub_int c a b, Int.mul_comm c a, Int.mul_comm c b]
 
-def mul_left_comm_int (a b c : Int) : a * (b * c) = b * (a * c) := by
+theorem mul_left_comm_int (a b c : Int) : a * (b * c) = b * (a * c) := by
   rw [← Int.mul_assoc a b c, Int.mul_comm a b, Int.mul_assoc b a c]
 
-def mul_self_pair (x y : Int) : (x * y) * (x * y) = (x * x) * (y * y) := by
-  rw [Int.mul_assoc (x * y) x y, mul_left_comm_int y x y, ← Int.mul_assoc x x (y * y)]
+theorem mul_self_pair (x y : Int) : (x * y) * (x * y) = (x * x) * (y * y) := by
+  grind
 
-def mul_cross_swap (a1 b1 a2 b2 : Int) : (a1 * b1) * (a2 * b2) = (a1 * b2) * (a2 * b1) := by
-  rw [Int.mul_assoc (a1 * b1) a2 b2, mul_left_comm_int b1 a2 b2, Int.mul_comm b1 b2,
-      mul_left_comm_int a2 b2 b1, ← Int.mul_assoc a1 b2 (a2 * b1)]
+theorem mul_cross_swap (a1 b1 a2 b2 : Int) : (a1 * b1) * (a2 * b2) = (a1 * b2) * (a2 * b1) := by
+  grind
 
-def neg_mul_int (a b : Int) : (-a) * b = -(a * b) := by
+theorem neg_mul_int (a b : Int) : (-a) * b = -(a * b) := by
   have h0b : (0 : Int) * b = 0 := by
     have h00 : ((0 : Int) + 0) * b = (0 : Int) * b + (0 : Int) * b := add_mul_int 0 0 b
     have hzz : (0 : Int) + 0 = 0 := rfl
@@ -118,14 +117,14 @@ def neg_mul_int (a b : Int) : (-a) * b = -(a * b) := by
   have hexp : ((-a) + a) * b = (-a) * b + a * b := add_mul_int (-a) a b
   omega
 
-def mul_neg_int (a b : Int) : a * (-b) = -(a * b) := by
+theorem mul_neg_int (a b : Int) : a * (-b) = -(a * b) := by
   rw [Int.mul_comm a (-b), neg_mul_int b a, Int.mul_comm b a]
 
-def nat_succ_mul_succ_pos (n m : Nat) : 1 ≤ (n + 1) * (m + 1) := by
+theorem nat_succ_mul_succ_pos (n m : Nat) : 1 ≤ (n + 1) * (m + 1) := by
   rw [Nat.mul_add]
   omega
 
-def int_eq_zero_of_mul_eq_zero {a b : Int} (h : a * b = 0) : a = 0 ∨ b = 0 := by
+theorem int_eq_zero_of_mul_eq_zero {a b : Int} (h : a * b = 0) : a = 0 ∨ b = 0 := by
   cases a with
   | ofNat n =>
     cases n with
@@ -139,16 +138,16 @@ def int_eq_zero_of_mul_eq_zero {a b : Int} (h : a * b = 0) : a = 0 ∨ b = 0 := 
           exfalso
           rw [ofNat_mul_ofNat_eq (n1 + 1) (m1 + 1)] at h
           have hp : 1 ≤ (n1 + 1) * (m1 + 1) := nat_succ_mul_succ_pos n1 m1
-          omega
+          grind
       | negSucc m1 =>
         exfalso
-        have hb : Int.negSucc m1 = -Int.ofNat (m1 + 1) := by omega
+        have hb : Int.negSucc m1 = -Int.ofNat (m1 + 1) := by grind
         rw [hb, mul_neg_int (Int.ofNat (n1 + 1)) (Int.ofNat (m1 + 1)),
             ofNat_mul_ofNat_eq (n1 + 1) (m1 + 1)] at h
         have hp : 1 ≤ (n1 + 1) * (m1 + 1) := nat_succ_mul_succ_pos n1 m1
-        omega
+        grind
   | negSucc n1 =>
-    have ha : Int.negSucc n1 = -Int.ofNat (n1 + 1) := by omega
+    have ha : Int.negSucc n1 = -Int.ofNat (n1 + 1) := by grind
     cases b with
     | ofNat m =>
       cases m with
@@ -158,37 +157,37 @@ def int_eq_zero_of_mul_eq_zero {a b : Int} (h : a * b = 0) : a = 0 ∨ b = 0 := 
         rw [ha, neg_mul_int (Int.ofNat (n1 + 1)) (Int.ofNat (m1 + 1)),
             ofNat_mul_ofNat_eq (n1 + 1) (m1 + 1)] at h
         have hp : 1 ≤ (n1 + 1) * (m1 + 1) := nat_succ_mul_succ_pos n1 m1
-        omega
+        grind
     | negSucc m1 =>
       exfalso
-      have hb : Int.negSucc m1 = -Int.ofNat (m1 + 1) := by omega
+      have hb : Int.negSucc m1 = -Int.ofNat (m1 + 1) := by grind
       rw [ha, hb, Int.neg_mul_neg (Int.ofNat (n1 + 1)) (Int.ofNat (m1 + 1)),
           ofNat_mul_ofNat_eq (n1 + 1) (m1 + 1)] at h
       have hp : 1 ≤ (n1 + 1) * (m1 + 1) := nat_succ_mul_succ_pos n1 m1
-      omega
+      grind
 
-def int_cancel_left {d x : Int} (hd : d ≠ 0) (h : d * x = 0) : x = 0 := by
+theorem int_cancel_left {d x : Int} (hd : d ≠ 0) (h : d * x = 0) : x = 0 := by
   cases int_eq_zero_of_mul_eq_zero h with
   | inl hd0 => exact False.elim (hd hd0)
   | inr hx0 => exact hx0
 
-def int_eq_zero_of_sq_eq_zero {x : Int} (h : x * x = 0) : x = 0 := by
+theorem int_eq_zero_of_sq_eq_zero {x : Int} (h : x * x = 0) : x = 0 := by
   cases int_eq_zero_of_mul_eq_zero h with
   | inl hx0 => exact hx0
   | inr hx0 => exact hx0
 
-def sq_nonneg_int (x : Int) : 0 ≤ sq x := by
+theorem sq_nonneg_int (x : Int) : 0 ≤ sq x := by
   unfold sq
   cases x with
   | ofNat n =>
     rw [ofNat_mul_ofNat_eq n n]
-    omega
+    grind
   | negSucc n =>
-    have hn : Int.negSucc n = -Int.ofNat (n + 1) := by omega
+    have hn : Int.negSucc n = -Int.ofNat (n + 1) := by grind
     rw [hn, Int.neg_mul_neg (Int.ofNat (n + 1)) (Int.ofNat (n + 1)), ofNat_mul_ofNat_eq (n + 1) (n + 1)]
-    omega
+    grind
 
-def two_point_lagrange_id (a1 a2 b1 b2 : Int) :
+theorem two_point_lagrange_id (a1 a2 b1 b2 : Int) :
     (sq a1 + sq a2) * (sq b1 + sq b2) = sq (a1 * b1 + a2 * b2) + sq (a1 * b2 - a2 * b1) := by
   unfold sq
   have h_lhs : (a1 * a1 + a2 * a2) * (b1 * b1 + b2 * b2) =
@@ -309,7 +308,7 @@ theorem z2_parity_invariance_of_ising_sum :
 def branch_disp (b : Bool) (h : Int) : Int :=
   if b then h else -h
 
-def branch_disp_sq (b : Bool) (h : Int) : sq (branch_disp b h) = sq h := by
+theorem branch_disp_sq (b : Bool) (h : Int) : sq (branch_disp b h) = sq h := by
   cases b with
   | false =>
     change (-h) * (-h) = h * h
@@ -317,15 +316,15 @@ def branch_disp_sq (b : Bool) (h : Int) : sq (branch_disp b h) = sq h := by
   | true =>
     rfl
 
-def branch_neg_disp_sq (b : Bool) (h : Int) : sq (0 - branch_disp b h) = sq h := by
+theorem branch_neg_disp_sq (b : Bool) (h : Int) : sq (0 - branch_disp b h) = sq h := by
   cases b with
   | false =>
     have h0 : 0 - (-h) = h := by omega
-    unfold branch_disp
+    change sq (0 - (-h)) = sq h
     rw [h0]
   | true =>
     have h0 : 0 - h = -h := by omega
-    unfold branch_disp
+    change sq (0 - h) = sq h
     rw [h0]
     unfold sq
     exact Int.neg_mul_neg h h
@@ -361,7 +360,7 @@ def dot3 (u v : Vec3) : Int :=
 
 def zeroVec3 : Vec3 := ⟨0, 0, 0⟩
 
-def vec3_eq_zero (u : Vec3) (hx : u.x = 0) (hy : u.y = 0) (hz : u.z = 0) : u = zeroVec3 := by
+theorem vec3_eq_zero (u : Vec3) (hx : u.x = 0) (hy : u.y = 0) (hz : u.z = 0) : u = zeroVec3 := by
   cases u with
   | mk ux uy uz =>
     change ux = 0 at hx
@@ -386,9 +385,9 @@ theorem euclidean_r3_three_orthogonal_obstruction :
       u = zeroVec3 ∨ v = zeroVec3 ∨ w = zeroVec3 := by
   intro d u v w hd hru hrv hrw huv huw hvw
   unfold dot3 at hru hrv hrw huv huw hvw
-  have hux0 : d * u.x = 0 := by omega
-  have hvx0 : d * v.x = 0 := by omega
-  have hwx0 : d * w.x = 0 := by omega
+  have hux0 : d * u.x = 0 := by grind
+  have hvx0 : d * v.x = 0 := by grind
+  have hwx0 : d * w.x = 0 := by grind
   have ux0 : u.x = 0 := int_cancel_left hd hux0
   have vx0 : v.x = 0 := int_cancel_left hd hvx0
   have wx0 : w.x = 0 := int_cancel_left hd hwx0

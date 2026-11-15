@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Folio M.02 (MATH): Riemann Zeta Zero-Density Estimates, Large Sieve Inequalities, and XiPrime Spectral Bounds."""
+"""Folio M.02 (MATH): Riemann Zeta Zero-Density Estimates and Large Sieve Inequalities."""
 from __future__ import annotations
 
 SLUG = 'm02'
@@ -10,24 +10,23 @@ FOLIO = {'folio_id': 'M.02',
  'slug': 'm02',
  'pillar': 'math',
  'category_code': 'M',
- 'title': 'Riemann Zeta Zero-Density Estimates, Large Sieve Inequalities, and XiPrime Spectral '
-          'Bounds',
- 'subtitle': "Inside Anthropic's formal-math Zeta23 and XiPrime Lean 4 proofs: bounding exceptions "
-             'to the critical line Re(s) = 1/2 and mapping spectral gaps to Markovian channel '
-             'relaxation.',
+ 'title': 'Riemann Zeta Zero-Density Estimates and Large Sieve Inequalities',
+ 'subtitle': 'Classical zero-density estimates for the Riemann zeta function, and what a public '
+             'Lean 4 repository README states about a recent critical-line result. The comparison '
+             "with Markov-chain relaxation is this folio's own analogy.",
  'date_published': '2026-10-24',
- 'date_redated': '2026-11-06',
- 'current_edition': 'REV 1.3',
- 'status_badge': 'REDATED REV 1.3',
+ 'date_redated': '2026-11-14',
+ 'current_edition': 'REV 1.4',
+ 'status_badge': 'REDATED REV 1.4',
  'primary_kernel': 'tools/discovery/formal_proof_thermodynamic_landscape.py',
  'colophon': {'identifier': 'M.02 · Analytic Number Theory',
-              'kernels': 'Zeta23 · Challenge/XiPrime.lean · Large Sieve',
-              'benchmarks': 'Ingham-Huxley Zero-Density N(σ, T) ≤ T^(c(1-σ))',
-              'bridge': 'Cheeger-Fiedler Spectral Gap ↔ CFTR Burst Relaxation'},
+              'kernels': 'Zero-density estimates · Large Sieve · Zeta23 (README statement)',
+              'benchmarks': 'Ingham-Huxley Zero-Density N(σ, T) ≪ T^(c(1-σ)+ε), total exponent 3/5 at σ = 3/4',
+              'bridge': 'Spectral gap ↔ Markov-chain relaxation (analogy only)'},
  'sliders': [{'label': 'Real Part Threshold σ in Critical Strip (1/2 ≤ σ ≤ 1)',
               'min': 0.52,
               'max': 0.98,
-              'step': 0.02,
+              'step': 0.01,
               'value': 0.75,
               'unit': 'σ = '},
              {'label': 'Dirichlet Polynomial Length Parameter (log T)',
@@ -36,47 +35,73 @@ FOLIO = {'folio_id': 'M.02',
               'step': 0.5,
               'value': 10.0,
               'unit': 'log T = '}],
- 'steps': ['Stage 1 (Dirichlet Polynomial Mollification): Constructs a mollifier M(s) to dampen '
-           'normal oscillations of ζ(s) off the critical line Re(s) = 1/2.',
+ 'steps': ['Stage 1 (Dirichlet Polynomial Mollification): A mollifier M(s) is a short Dirichlet '
+           'polynomial chosen so that ζ(s)M(s) stays close to 1 away from zeros; it is a standard '
+           'tool for studying zeros near the critical line Re(s) = 1/2.',
            'Stage 2 (Montgomery-Halász Large Sieve): Bounds mean-value L² norms of Dirichlet '
            'polynomials over well-spaced frequencies t_r ∈ [0, T].',
            'Stage 3 (Zero-Detectors & Huxley-Ingham Exponent): Combines zero-detecting polynomials '
            'with fourth-power moment bounds on Re(s) = 1/2.',
-           'Stage 4 (XiPrime.lean Spectral Barrier): Certifies in Lean 4 that zero-density '
-           'exceptions decay as T^(A(1-σ)(3-2σ)), locking spectral relaxation.'],
- 'readouts': [{'label': 'Zero-Density Exponent c(σ)', 'value': '0.600 (at σ = 0.75)'},
-              {'label': 'Spectral Gap Ratio (λ_2 / λ_max)', 'value': '0.418'},
-              {'label': 'XiPrime Lean 4 Status', 'value': '0 sorryAx (Complete)'},
-              {'label': 'Cheeger Inequality Bound', 'value': 'h_G² / 2 ≤ λ_2 ≤ 2 h_G'}],
- 'sidenote_1': {'kicker': 'SIDENOTE M.02-A · CHALLENGE/XIPRIME.LEAN VERIFICATION',
-                'body': 'In anthropics/formal-math, Challenge/XiPrime.lean formalizes the '
-                        "derivative bounds of the completed Riemann xi function ξ'(s), eliminating "
-                        'unverified asymptotic hand-waving in the critical strip.'},
- 'sidenote_2': {'kicker': 'SIDENOTE M.02-B · MARKOVIAN CHANNEL RELAXATION',
-                'body': 'The spectral gap between the leading eigenvalue and off-critical '
-                        'exceptions directly governs mixing time τ_mix = 1/λ_2 in continuous-time '
-                        'Markov chains of CFTR open/closed pore bursts.'},
+           'Stage 4 (The Resulting Bound): Zero-density estimates of the form N(σ, T) ≪ '
+           'T^(c(1-σ)+ε) limit how many zeros can lie off the critical line. Ingham gives '
+           'c = 3/(2-σ) and Huxley gives c = 12/5; at σ = 3/4 both give c = 12/5 and the total '
+           "exponent c(1-σ) = 3/5. Comparing this with a spectral gap is the folio's own "
+           'analogy.'],
+ 'readouts': [{'label': 'Total Zero-Density Exponent c(σ)(1-σ)', 'value': '0.600 (at σ = 0.75, Ingham and Huxley agree)'},
+              {'label': 'Spectral Gap Ratio (λ_2 / λ_max)', 'value': '0.418 (fixed illustrative value)'},
+              {'label': 'Zeta23 Statement in formal-math', 'value': 'stated by its README (not built or checked here)'},
+              {'label': 'Cheeger Inequality Bound', 'value': 'h_G² / 2 ≤ λ_2 ≤ 2 h_G (classical)'}],
+ 'sidenote_1': {'kicker': 'SIDENOTE M.02-A · WHAT THE REPOSITORY STATES',
+                'body': 'The README of anthropics/formal-math lists a Zeta23 project whose statement '
+                        'is that more than two thirds of the zeros of the Riemann zeta function are '
+                        'simple and on the critical line (Alpöge–Furman, arXiv:2608.13637). This '
+                        'site has not built it and does not check the mathematics. The same project contains zeta23/Challenge/XiPrime.lean, whose header describes it as a challenge about the zeros of ξ′ (the derivative of the completed zeta function); this folio does not use it, and its proof status was not checked here.'},
+ 'sidenote_2': {'kicker': 'SIDENOTE M.02-B · A LOOSE ANALOGY WITH MARKOV CHAINS',
+                'body': 'For a reversible continuous-time Markov chain, the relaxation time is the '
+                        'reciprocal of the spectral gap, τ = 1/λ_2. The folio places this picture '
+                        'beside zero-density bounds only as an analogy: no mathematics passes '
+                        'between the zeros of zeta and the gating of an ion channel.'},
  'skill': {'filename': 'zeta-spectral-zero-density-SKILL.md',
            'name': 'zeta-spectral-zero-density',
            'description': 'AI-agnostic analytic number theory and spectral gap skill for Riemann '
                           'zeta zero-density bounds N(sigma, T), large sieve inequalities, and '
                           'Cheeger-Fiedler mixing times.',
-           'rules': ['Bound zero-density exceptions N(sigma, T) in 1/2 < sigma <= 1 using Ingham '
-                     'N(sigma, T) <= T^(3(1-sigma)/(2-sigma) + eps) and Huxley N(sigma, T) <= '
-                     'T^(12(1-sigma)/5 + eps).',
-                     'Verify Cheeger-Fiedler spectral conductance bounds h_G^2 / (2 d_max) <= '
-                     'lambda_2 <= 2 h_G for Markovian relaxation.',
-                     'Require zero sorryAx axioms in transitive Lean 4 dependency cones for '
-                     'XiPrime spectral lemmas.']},
- 'revisions': [{'edition': 'REV 1.3',
+           'rules': ['Quote zero-density exponents N(sigma, T) <= T^(c(1-sigma) + eps) with their sources: '
+                     'Ingham c = 3/(2-sigma) and Huxley c = 12/5 (both give total exponent 3/5 at '
+                     'sigma = 3/4), and Guth-Maynard c = 30/13.',
+                     'State the Cheeger-Fiedler inequalities h_G^2 / 2 <= lambda_2 <= 2 h_G as '
+                     'classical results, and say when a Markov-chain picture is only an analogy.',
+                     'When citing a Lean 4 repository, report what its README states and whether '
+                     'you built it; do not assert that it is free of sorry unless you checked.']},
+ 'revisions': [{'edition': 'REV 1.4',
+                'date': '2026-11-14',
+                'summary': 'REV 1.4 (Redated 2026-11-14): Grounding revision. Earlier editions '
+                           "said in the site's own voice that a Lean 4 file Challenge/XiPrime.lean "
+                           "had 'zero sorryAx', and attributed zero-density estimates to the Zeta23 "
+                           'project. That file (zeta23/Challenge/XiPrime.lean) concerns the zeros of ξ′, not zero-density estimates, and its sorry status was not checked here; the README describes Zeta23 as a statement about zeros that are simple '
+                           'and on the critical line (Alpöge–Furman, arXiv:2608.13637), which this '
+                           'site reports without checking. The Ingham reference now has its correct '
+                           'DOI and pages, the unrelated DOIs attached to the Montgomery-Odlyzko '
+                           'sentence and to the Cheeger-Fiedler comparison are removed, and the '
+                           'Cystic Fibrosis section is shortened to a labelled analogy. The opening '
+                           'scene and the encryption claims are replaced by a plain account of '
+                           'Riemann (1859).',
+                'opus': 'Review: DOIs checked in Crossref and the Scite index on 2026-11-14 '
+                        '(Huxley, Conrey, Guth-Maynard, mathlib); the Guth-Maynard 30/13 exponent, '
+                        "the Huxley exponent and Ingham's exponent were checked with Scite "
+                        'check_claim. Guth-Maynard (DOI 10.4007/annals.2026.203.2.6) and the '
+                        'correct Ingham DOI were added to the source list.'},
+               {'edition': 'REV 1.3',
                 'date': '2026-11-06',
-                'summary': 'REV 1.3 (Redated 2026-11-06): Added Guth-Maynard (30/13)(1-sigma) '
-                           'zero-density breakthrough (c(3/4) = 15/26 = 0.5769 < 0.600, 1.0400x '
-                           'Markovian spectral relaxation speedup) and OpenAI\'s quasi-Riemann hypothesis formalization (openai/math, zero-free half-plane sigma > 7/8) with 722 -> 719 Weil quadratic '
-                           'functional sign-parity quarantine.',
+                'summary': 'REV 1.3 (Redated 2026-11-06): Added the Guth-Maynard (30/13)(1-sigma) '
+                           'zero-density bound (total exponent 15/26 = 0.5769 at sigma = 3/4, below '
+                           "0.600) and a reference to OpenAI's openai/math repository. (REV 1.4: "
+                           "the '1.0400x Markovian spectral relaxation speedup' and the '722 -> 719 "
+                           "sign-parity' account have no source and are withdrawn.)",
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Gemma 4 31B + Ornith 1.5 '
-                        '35B): Verified Guth-Maynard 30/13 exponent at sigma = 3/4 and O(V+E) '
-                        'dependency-cone quarantine of the 3 sign-flip lemmas in OpenAI\'s quasi-Riemann formalization (openai/math).'},
+                        '35B): Verified Guth-Maynard 30/13 exponent at sigma = 3/4. (REV 1.4: the '
+                        "'quarantine of 3 sign-flip lemmas' wording is withdrawn; it has no "
+                        'source.)'},
                {'edition': 'REV 1.2',
                 'date': '2026-11-02',
                 'summary': 'REV 1.2 (Redated 2026-11-02): Re-verified Ingham-Huxley zero-density '
@@ -86,21 +111,23 @@ FOLIO = {'folio_id': 'M.02',
                            'review.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Ingham-Huxley crossover at sigma = 3/4 (c = 0.600) and zero sorryAx '
-                        'contamination in Challenge/XiPrime.lean.'},
+                        'contamination in Challenge/XiPrime.lean. (REV 1.4: the \'zero sorryAx\' wording is withdrawn; the file exists as zeta23/Challenge/XiPrime.lean, but this site ran no such check.)'},
                {'edition': 'REV 1.1',
                 'date': '2026-11-01',
                 'summary': 'REV 1.1 (Redated 2026-11-01): Added Challenge/XiPrime.lean spectral '
-                           'barrier trace and Cheeger-Fiedler Markovian mixing bridge.',
+                           'barrier trace and Cheeger-Fiedler Markovian mixing bridge. (REV 1.4: withdrawn as a zero-density trace; XiPrime.lean concerns the zeros of ξ′.)',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Ingham-Huxley crossover at σ = 3/4 where both exponents equal 6/5 · (1 - '
-                        'σ).'},
+                        'σ). (REV 1.4: the exponents at that point are 12/5 · (1 - σ) and '
+                        '3/(2-σ) · (1 - σ), both 3/5 at σ = 3/4; the 6/5 wording was wrong.)'},
                {'edition': 'REV 1.0',
                 'date': '2026-10-24',
                 'summary': 'REV 1.0 (Published 2026-10-24): Initial formal-math Zeta23 '
                            'zero-density monograph.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
-                        'Montgomery-Halász large sieve orthogonality constants.'}],
- 'governing_law': 'Zeta23 · Challenge/XiPrime.lean · Large Sieve',
+                        'Montgomery-Halász large sieve orthogonality constants. (REV 1.4: this '
+                        "'verified' wording is withdrawn.)"}],
+ 'governing_law': 'Zero-density estimates · Large Sieve · Zeta23 (README statement)',
  'volume': 1,
  'volume_code': 'VOL. 01',
  'reading_time': '22 MIN READ',
@@ -112,21 +139,20 @@ FOLIO = {'folio_id': 'M.02',
            'mentioning': 12,
            'contrasting': 0,
            'retracted': False,
-           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 230 citing '
-                      'publications (1 supporting, 12 mentioning, 0 contrasting) on Conrey '
-                      'critical-line mollifier (> 2/5 zeros on Re(s) = 1/2), Huxley zero-density '
-                      '(DOI 10.1007/BF01418933), and XiPrime spectral bounds.'}}
+           'summary': 'Scite index entry for Conrey 1989 (DOI 10.1515/crll.1989.399.1), checked '
+                      '2026-11-08: 230 citing publications (1 supporting, 12 mentioning, 0 '
+                      'contrasting) and no retraction notice. These counts describe that one '
+                      'paper, not this folio.'}}
 
 LONGFORM_DATA = {'reading_time': '22 MIN READ',
- 'act1_dropcap': 'In November 1859, a frail thirty-three-year-old German mathematician named Bernhard Riemann submitted a modest eight-page manuscript to the Berlin Academy of Sciences to mark his election as a corresponding member. Titled simply on the number of prime numbers less than a given magnitude, the paper set aside centuries of tedious integer counting and recast the distribution of primes as a problem of pure wave mechanics. Riemann extended the classical zeta function across the mysterious landscape of the complex numbers and proposed a daring conjecture: that every non-trivial frequency where the function vanishes aligns along a razor-thin vertical meridian. Because prime numbers behave like fundamental acoustic notes, Riemann realized that any stray harmonic wandering away from this line would generate wild, disruptive oscillations across arithmetic. With that quiet eight-page revelation, Riemann launched the deepest, most enduring quest in modern mathematical physics.',
- 'act1_plain_bridge': 'In plain words, Riemann wondered how nature spaces out indivisible numbers along the infinite timeline. Prime numbers—such as two, three, five, and seven—are the fundamental chemical atoms of arithmetic, since every whole number multiplies together from them. When you glance at a list of primes, they appear scattered at random, like scattered pebbles on a gravel path. Yet Riemann discovered that their spacing obeys a hidden musical harmony, governed by a chorus of cosmic frequencies. If these frequencies stay in perfect balance, prime numbers spread out smoothly and predictably across the number line. That predictability is vital for our modern connected world. Every secure communication, from banking passwords to internet shopping, relies on the dependable behavior of prime numbers. Knowing that no rogue waves disrupt their spacing guarantees that our digital encryption keys remain rock solid and mathematically unbreakable.',
- 'act1_body': 'While the unconditional Riemann Hypothesis remains unsolved, twentieth-century number theorists—including Albert Ingham, Hugh Montgomery, and Martin Huxley—discovered a powerful practical alternative known as zero-density estimation. Even if hypothetical rogue zeros wander off the critical line, harmonic sieve methods prove that their occurrences must decay exponentially as height increases (Huxley 1972, DOI 10.1007/BF01418933). Conrey demonstrated that more than two-fifths of all zeros reside precisely on the critical meridian, while Montgomery and Odlyzko uncovered remarkable statistical alignments with the Gaussian Unitary Ensemble from quantum physics (DOI 10.1515/crll.1989.399.1). In 2025 and 2026, formal mathematics projects translated these complex contour estimates and sieve inequalities into machine-checked Lean 4 repositories (https://github.com/anthropics/formal-math). By formalizing the completed xi function and bounding its derivatives, researchers proved that the density of potential exceptions decays fast enough to guarantee macroscopic prime distribution bounds without a single unverified asymptotic hand-wave.',
- 'act1_stakes': 'In classical analytic number theory, human proofs often span dozens of dense pages filled with delicate stationary-phase approximations, contour deformations, and intricate epsilon-delta bookkeeping. A single sign error, an off-by-one exponent, or an overlooked logarithmic power in a remainder integral can quietly invalidate decades of published literature across the globe. The transition to computer-verified proofs marks a decisive and historic turning point in mathematical rigor. In formal environments such as the Lean 4 proof assistant, every continuous contour integration, Cauchy residue calculation, and arithmetic sieve bound must resolve into certified type-theoretic derivations. Formalizing milestone projects like Zeta23 and XiPrime establishes an unshakeable computational baseline: researchers know with mathematical certainty that intermediate inequalities hold across all parameter ranges without hidden assumptions or hand-waving. Furthermore, this machine-checked scaffolding empowers mathematicians to test novel Dirichlet mollifiers and explore fine-grained zero-free corridors, transforming speculative explorations into permanently verified scientific milestones.',
- 'pullquote': 'You do not always need to prove that an error can never occur; in both prime number '
-              'theory and ion-channel physics, bounding the spectral density of exceptions is '
-              'enough to guarantee macroscopic stability.',
+ 'act1_dropcap': 'In 1859, on his election as a corresponding member of the Berlin Academy of Sciences, Bernhard Riemann submitted an eight-page paper, "Über die Anzahl der Primzahlen unter einer gegebenen Grösse" (On the number of primes less than a given magnitude). It studies the zeta function as a function of a complex variable and ties the distribution of the primes to the places where that function is zero. In it Riemann remarked that it is very likely that all the non-trivial zeros lie on the vertical line Re(s) = 1/2. That statement is now called the Riemann Hypothesis, and it has not been proved.',
+ 'act1_plain_bridge': 'In plain words, Riemann asked how the primes are spread along the number line. Primes such as two, three, five and seven are the building blocks of whole numbers, since every whole number is a product of them. They look scattered at random, yet counting them is closely tied to where the zeta function vanishes. The Riemann Hypothesis says that all the non-trivial zeros sit on one line; nobody has proved it. Prime numbers are also used in public-key cryptography, but this folio makes no claim that any result discussed here makes a code safe or unsafe.',
+ 'act1_body': 'While the Riemann Hypothesis remains unproved, number theorists including Albert Ingham, Hugh Montgomery and Martin Huxley proved zero-density estimates: bounds on how many zeros can lie off the critical line, of the form N(sigma, T) <= T^(c(1-sigma) + eps) (Ingham 1940, DOI 10.1093/qmath/os-11.1.201; Huxley 1972, DOI 10.1007/BF01418933). Conrey showed that more than two-fifths of the zeros lie on the critical line (DOI 10.1515/crll.1989.399.1). More recently Guth and Maynard proved new large value estimates for Dirichlet polynomials, which give the smaller exponent 30/13 in place of 12/5 (arXiv:2405.20552, DOI 10.4007/annals.2026.203.2.6; the folio does not state the range of sigma where it applies). The README of the repository anthropics/formal-math lists a Lean 4 project, zeta23, whose stated result is that more than two thirds of the zeros are simple and on the critical line (Alpöge and Furman, arXiv:2608.13637). This site has not built that project and does not check the mathematics.',
+ 'act1_stakes': 'Analytic number theory proofs can run to dozens of dense pages, and a slip in an exponent or a remainder term can be hard to spot. A proof assistant such as Lean 4 checks each step against a small trusted kernel, which is why formalization is attractive for this kind of argument. Whether a particular repository delivers that depends on what is actually built and checked, and this site reports what repository READMEs state without having built them. A formalization also only shows that a statement follows from its assumptions; the statement itself still has to be read and judged by people.',
+ 'pullquote': 'Even without proving that off-line zeros cannot exist, bounding how many there can '
+              'be is enough for many results about the primes.',
  'pullquote_cite': 'Editorial Synthesis · Zero-Density Estimates from Ingham (1940) to '
-                   'Challenge/XiPrime.lean',
+                   'Guth–Maynard (2024)',
  'chronology': [('1859',
                  'Bernhard Riemann',
                  'Connects prime distribution pi(x) to the complex zeros of the analytic '
@@ -134,60 +160,62 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 ('1940',
                  'Albert E. Ingham',
                  'Proves the zero-density bound N(sigma, T) <= T^(3(1-sigma)/(2-sigma) + eps) '
-                 'using Dirichlet polynomial mean values.'),
+                 '(DOI 10.1093/qmath/os-11.1.201).'),
                 ('1971–1972',
-                 'Hugh Montgomery & Martin Huxley',
-                 "Combine Halász's large sieve method with fourth-power moments to establish the "
-                 '12/5 zero-density exponent for sigma > 3/4.'),
+                 'Martin Huxley',
+                 'Proves N(sigma, T) <= T^(12(1-sigma)/5 + eps), the bound that is smaller than '
+                 "Ingham's for sigma > 3/4 (DOI 10.1007/BF01418933)."),
                 ('2024',
-                 'Maynard & Guth',
-                 'Break the 50-year Ingham-Huxley barrier at sigma = 3/4 using decoupling and '
-                 'energy bounds on Dirichlet polynomials.'),
-                ('2025–2026',
-                 'Anthropic formal-math (Zeta23 & XiPrime)',
-                 'Machine-verifies completed xi-function derivative bounds (XiPrime.lean) and '
-                 'zero-density lemmas in Lean 4.')],
+                 'Guth & Maynard',
+                 'Prove new large value estimates for Dirichlet polynomials and, as a '
+                 'consequence, N(sigma, T) <= T^(30(1-sigma)/13 + o(1)) (arXiv:2405.20552).'),
+                ('2026',
+                 'anthropics/formal-math README',
+                 'Lists a Lean 4 project, zeta23, for the Alpöge–Furman critical-line result '
+                 '(arXiv:2608.13637); not built or checked by this site.')],
  'act2_analogy': 'Everyday analogy: Imagine tuning a sensitive radio receiver in a crowded auditorium where hundreds of people are humming different musical pitches. If the singers hum randomly, their voices cancel out into a soft, harmless murmur. For a deafening feedback squeal to occur, hundreds of independent singers must suddenly synchronize their breath and hit the exact same note simultaneously. The Large Sieve proves that acoustic energy is strictly finite, meaning massive feedback spikes can happen only in rare, isolated bursts.',
- 'act2_plain_primer': 'To see how this acoustic balance works in practice, you can explore two intuitive control knobs. The first knob acts like an acoustic threshold dial, moving from the safe centerline out toward the dangerous edge of the concert hall. Near the center, almost all frequencies cancel out naturally, so no runaway signals can take hold. But as you dial this threshold knob toward the outer boundary, you are checking whether any rogue waves manage to survive. The second knob sets the listening window, stretching the duration over which you monitor the crowd. At short time scales, random fluctuations might occasionally seem loud. However, as you expand the observation window, the total energy of the room enforces strict limits: singers who waste energy shouting at one pitch cannot sustain noise elsewhere. Together, these two knobs reveal that rogue waves cannot crowd together, proving that the overall choir remains stable.',
- 'distill_diagram': {'analogy_title': 'Concert Hall Acoustic Choir', 'analogy_sub': 'Destructive interference cancels random hums into quiet murmurs', 'force_a_title': 'Critical Strip Coordinate (sigma)', 'force_a_sub': 'Distance from critical line Re(s) = 1/2 toward the unit boundary', 'force_b_title': 'Dirichlet Window Length (log T)', 'force_b_sub': 'Total frequency observation span bounding mean-square energy', 'threshold_title': 'Huxley-Ingham Crossover Barrier (sigma = 3/4)', 'threshold_pass': 'Exponential decay N(sigma, T) <= T^(c(1-sigma)) verified in Lean', 'threshold_fail': 'Rogue zeros penetrate zero-free corridor, destabilizing primes'},
- 'act2_intuition': "Think of a Dirichlet polynomial sum a_n n^(-sigma - it) as a vast ensemble of rotating phasors in the complex plane, each spinning at an angular frequency proportional to log(n). Under typical conditions, these rotating vectors interfere destructively, keeping the total sum bounded. For the Riemann zeta function to hit zero far off the critical meridian (for instance, at real coordinate sigma = 0.80), thousands of distinct prime frequencies must abruptly conspire to point in the exact same phase direction. In open-source formalizations like Challenge/XiPrime.lean within anthropics/formal-math and leanprover-community/mathlib4 (DOI 10.1145/3372885.3373824), the Montgomery–Halász Large Sieve treats these frequencies like orthogonal vectors in a Hilbert space. If a signal concentrates massive L^2 spectral energy at a single frequency height t_1, it starves alternative heights from aligning. At the critical transition sigma = 3/4, Ingham's convex bound and Huxley's fourth-power moment bound (DOI 10.1007/BF01418933) intersect at exponent c(0.75) = 0.600, establishing an impenetrable barrier that guarantees spectral decay.",
- 'act2_deepening': "The mathematical coupling between the threshold coordinate sigma and the observation window log T is governed by the duality between Dirichlet series and continuous operator spectra. To isolate hypothetical zeros, analytic number theorists construct mollifiers—finite Dirichlet polynomials M(s) crafted so that the product zeta(s) M(s) approximates unity across typical frequencies. Where a zero occurs, the product deviates markedly from one, converting a delicate root-finding challenge into an L^2 energy concentration problem. By applying Halász's lemma, the sum over well-spaced frequencies t_r is bounded by the norm of an operator matrix whose off-diagonal entries decay like 1 / |t_r - t_s|. As the observation parameter log T increases, these orthogonality constraints tighten dramatically. Near the critical line where sigma approaches one-half, the bound requires delicate high-moment cancellations; but as sigma pushes rightward past the three-quarter mark, the zero-detecting exponent plunges linearly. This mathematical machinery proves that rogue zeros, if they exist at all, remain powerless to disrupt global arithmetic stability.",
+ 'act2_plain_primer': 'To see how this acoustic balance works in practice, you can explore two intuitive control knobs. The first knob acts like an acoustic threshold dial, moving from the safe centerline out toward the dangerous edge of the concert hall. Near the center, almost all frequencies cancel out naturally, so no runaway signals can take hold. But as you dial this threshold knob toward the outer boundary, you are checking whether any rogue waves manage to survive. The second knob sets the listening window, stretching the duration over which you monitor the crowd. At short time scales, random fluctuations might occasionally seem loud. However, as you expand the observation window, the total energy of the room enforces strict limits: singers who waste energy shouting at one pitch cannot sustain noise elsewhere. Together, these two knobs illustrate, as an analogy, why zero-density bounds say that off-line zeros cannot crowd together.',
+ 'distill_diagram': {'analogy_title': 'Concert Hall Acoustic Choir', 'analogy_sub': 'Destructive interference cancels random hums into quiet murmurs', 'force_a_title': 'Critical Strip Coordinate (sigma)', 'force_a_sub': 'Distance from critical line Re(s) = 1/2 toward the unit boundary', 'force_b_title': 'Dirichlet Window Length (log T)', 'force_b_sub': 'Total frequency observation span bounding mean-square energy', 'threshold_title': 'Huxley-Ingham Crossover Barrier (sigma = 3/4)', 'threshold_pass': 'Zero-density bound N(sigma, T) <= T^(c(1-sigma) + eps) (Ingham, Huxley)', 'threshold_fail': 'More zeros off the critical line than the bound allows'},
+ 'act2_intuition': "Think of a Dirichlet polynomial sum a_n n^(-sigma - it) as a vast ensemble of rotating phasors in the complex plane, each spinning at an angular frequency proportional to log(n). Under typical conditions, these rotating vectors interfere destructively, keeping the total sum bounded. For the Riemann zeta function to hit zero far off the critical meridian (for instance, at real coordinate sigma = 0.80), thousands of distinct prime frequencies must abruptly conspire to point in the exact same phase direction. In the Montgomery–Halász large sieve, these frequencies are treated like nearly orthogonal vectors in a Hilbert space. If a signal concentrates massive L^2 spectral energy at a single frequency height t_1, it starves alternative heights from aligning. At sigma = 3/4, Ingham's bound (DOI 10.1093/qmath/os-11.1.201) and Huxley's bound (DOI 10.1007/BF01418933) give the same total exponent, 3(0.25)/1.25 = 12(0.25)/5 = 0.600; Ingham's is the smaller below sigma = 3/4 and Huxley's is the smaller above it.",
+ 'act2_deepening': "The mathematical coupling between the threshold coordinate sigma and the observation window log T is governed by the duality between Dirichlet series and continuous operator spectra. To isolate hypothetical zeros, analytic number theorists construct mollifiers—finite Dirichlet polynomials M(s) crafted so that the product zeta(s) M(s) approximates unity across typical frequencies. Where a zero occurs, the product deviates markedly from one, converting a delicate root-finding challenge into an L^2 energy concentration problem. By applying Halász's lemma, the sum over well-spaced frequencies t_r is bounded by the norm of an operator matrix whose off-diagonal entries decay like 1 / |t_r - t_s|. As the observation parameter log T increases, these orthogonality constraints tighten dramatically. Near the critical line where sigma approaches one-half, the bound requires delicate high-moment cancellations; but as sigma pushes rightward past the three-quarter mark, the zero-detecting exponent plunges linearly. This machinery limits how many zeros can lie off the critical line; it does not rule them out.",
  'walkthrough': ['Experiment 1 (Trace the 4-Stage Mollifier & Sieve Pipeline): Step through Stages '
                  '1 -> 4 above to see how Dirichlet mollification M(s), Large Sieve L^2 '
-                 'orthogonality, and Huxley-Ingham zero-detectors culminate in XiPrime.lean.',
+                 'orthogonality, and Huxley-Ingham zero-detectors lead to a zero-density bound.',
                  'Experiment 2 (Inspect the sigma = 3/4 Crossover): Observe in the SVG phase '
                  "diagram below how Ingham's hyperbolic curve (1/2 < sigma <= 3/4) hands off "
                  "smoothly to Huxley's linear slope at sigma = 0.75.",
-                 'Experiment 3 (Verify the Cheeger-Fiedler Spectral Gap): Compare the spectral gap '
-                 'ratio lambda_2 / lambda_max = 0.418 in the readout strip with the Cheeger '
-                 'conductance inequality h_G^2 / 2 <= lambda_2 <= 2 h_G.'],
- 'act4_human_ai': "Analytic number theory is famous for 'epsilon-delta bookkeeping' where a single sign slip in a stationary-phase integral can invalidate a 40-page paper. By pairing human harmonic-analysis intuition with Lean 4 formal verification in Challenge/XiPrime.lean, researchers can test bold new mollifier designs while the proof assistant enforces every explicit constant and contour boundary. By combining formal complex-analytic tactics in anthropics/formal-math (https://github.com/anthropics/formal-math) and leanprover-community/mathlib4 (DOI 10.1145/3372885.3373824) with numerical GUE spectral spacing checks, AI proof assistants verify explicit zero-free region bounds and Turán inequalities with zero unverified assumptions, anchored by Scite Smart Citations (DOI 10.1162/qss_a_00146).",
- 'act4_deepening': 'The formalization of zero-density estimates highlights how modern AI proof assistants transform frontier analytic research. Translating complex contour shifts and mollifier bounds into Lean 4 requires decomposing intricate analytic arguments into modular lemmas that automated reasoning agents can systematically verify. In this workflow, human researchers formulate the high-level architecture—selecting contour paths, defining mollifier coefficients, and establishing energy partitions—while AI tactic generators discharge tedious matrix inequalities and verify explicit error bounds. Looking forward, this collaborative framework opens new horizons in the study of L-functions. Open frontier challenges, such as lowering the zero-density exponent below the Huxley threshold or verifying the subconvexity hypothesis for higher-degree automorphic representations, require evaluating thousands of coupled multi-dimensional integrals. By combining interactive theorem provers with generative proof search, mathematicians can systematically explore vast design spaces of mollifiers, accelerating discoveries in spectral theory and ensuring that future analytic milestones are grounded in verifiable machine-checked truth.',
- 'cf_bridge': 'A single CFTR chloride channel flickering between closed (C_1, C_2) and '
-              'open-burst (O) states is governed by a continuous-time Markov generator Q whose '
-              'relaxation time tau_relax = 1 / Re(lambda_2) depends on its spectral gap. Just as '
-              'zero-density bounds prevent rogue zeta zeros from destabilizing prime counts, '
-              'Cheeger-Fiedler spectral bounds certify that potentiators (ivacaftor) stabilize the '
-              'open-pore burst state without permitting rogue sub-conductance traps.',
+                 'Experiment 3 (Read the Cheeger-Fiedler Spectral Gap): The spectral gap '
+                 'ratio lambda_2 / lambda_max = 0.418 in the readout strip is a fixed illustrative '
+                 'value, shown beside the classical Cheeger conductance inequality '
+                 'h_G^2 / 2 <= lambda_2 <= 2 h_G.'],
+ 'act4_human_ai': "Analytic number theory involves a lot of 'epsilon-delta bookkeeping', where a slip in a constant can be hard to find. Lean 4 formalization is one response: a proof assistant checks each step. The README of anthropics/formal-math (https://github.com/anthropics/formal-math) lists a zeta23 project, and whether it builds is something this site has not checked. Mathlib (DOI 10.1145/3372885.3373824) is the community library that Lean projects like this build on. Nothing in this folio shows that AI systems speed up work on zero-density estimates.",
+ 'act4_deepening': 'The formalization of zero-density estimates highlights how modern AI proof assistants transform frontier analytic research. Translating complex contour shifts and mollifier bounds into Lean 4 requires decomposing intricate analytic arguments into modular lemmas that automated reasoning agents can systematically verify. One plausible division of labour is that human researchers choose the high-level architecture, such as contour paths, mollifier coefficients and energy partitions, while automated tactics handle routine inequalities. That is a possibility, not a description of any project the folio has checked. Lowering the zero-density exponent below the Huxley value is an example of an open problem in this area (Guth and Maynard have since done so near sigma = 3/4); whether formalization or AI search will help with the next steps is not something this folio can say.',
+ 'cf_bridge': 'This bridge is an analogy the folio draws and nothing more. A Markov model of '
+              'an ion channel moving between closed and open states has a relaxation time set by '
+              'the spectral gap of its generator, and the folio places that picture beside '
+              'zero-density bounds. Number theory says nothing about a real CFTR channel or about '
+              'any drug, and nothing here is medical advice.',
  'sources': ['Riemann, B. (1859). Über die Anzahl der Primzahlen unter einer gegebenen Grösse. '
              'Monatsberichte der Berliner Akademie.',
-             'Ingham, A. E. (1940). On the estimation of N(sigma, T). Quarterly Journal of '
-             'Mathematics, os-11(1), 291–292.',
+             'Ingham, A. E. (1940). On the estimation of N(σ, T). Quarterly Journal of '
+             'Mathematics, os-11(1), 201–202. DOI: 10.1093/qmath/os-11.1.201.',
              'Huxley, M. N. (1972). On the difference between consecutive primes. Inventiones '
              'Mathematicae, 15(2), 164–170. DOI: 10.1007/BF01418933.',
              'Conrey, J. B. (1989). More than two fifths of the zeros of the Riemann zeta function '
              'are on the critical line. J. Reine Angew. Math., 399, 1–26. DOI: '
              '10.1515/crll.1989.399.1.',
-             'Anthropic Formal Math Team (2025–2026). Zeta23 (arXiv:2608.13637) & '
-             'Challenge/XiPrime.lean Lean 4 Repository '
-             '(https://github.com/anthropics/formal-math).',
-             'Guth, L., & Maynard, J. (2024). New large value estimates for Dirichlet polynomials '
-             '(30/13 zero-density bound). arXiv:2405.20552; OpenAI Formal Math QRH '
-             '(https://github.com/openai/math).',
-             'The mathlib Community (2020). The Lean mathematical library '
-             '(leanprover-community/mathlib4 & anthropics/formal-math, '
-             'https://github.com/anthropics/formal-math). CPP 2020, 367–381. DOI: '
-             '10.1145/3372885.3373824.',
+             'Guth, L., & Maynard, J. (2026). New large value estimates for Dirichlet polynomials. '
+             'Annals of Mathematics, 203(2). DOI: 10.4007/annals.2026.203.2.6; arXiv:2405.20552.',
+             'Alpöge, L., & Furman, R. (2026). More than two thirds of the zeta zeros are simple '
+             'and on the critical line. arXiv:2608.13637. Listed as the zeta23 project in '
+             'anthropics/formal-math (https://github.com/anthropics/formal-math); README read '
+             '2026-11-14. Not built or checked by this site. The project also contains zeta23/Challenge/XiPrime.lean (zeros of ξ′), which this folio does not rely on.',
+             'Repository: openai/math (https://github.com/openai/math), cited in an earlier edition '
+             'for a zero-free region result (zero-free in Re s > 7/8 for every Dirichlet '
+             'L-function); this site has not checked it.',
+             'The mathlib Community (2020). The Lean mathematical library. Proceedings of the '
+             '9th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP '
+             '2020), 367–381. DOI: 10.1145/3372885.3373824.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
              'context of citations and classifies their intent using deep learning '
              '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
@@ -214,7 +242,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         '            <text x="110" y="62" font-size="11" fill="var(--tp-prussian)">Ingham: '
         '3(1-σ)/(2-σ)</text>\n'
         '            <text x="415" y="132" font-size="11" fill="var(--tp-verdigris)">Huxley: '
-        '12(1-σ)/5 · XiPrime Verified</text>\n'
+        '12(1-σ)/5</text>\n'
         '          </svg>',
  'scite': {'doi': '10.1515/crll.1989.399.1',
            'fetched_on': '2026-11-08',
@@ -223,10 +251,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
            'mentioning': 12,
            'contrasting': 0,
            'retracted': False,
-           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 230 citing '
-                      'publications (1 supporting, 12 mentioning, 0 contrasting) on Conrey '
-                      'critical-line mollifier (> 2/5 zeros on Re(s) = 1/2), Huxley zero-density '
-                      '(DOI 10.1007/BF01418933), and XiPrime spectral bounds.'},
+           'summary': 'Scite index entry for Conrey 1989 (DOI 10.1515/crll.1989.399.1), checked '
+                      '2026-11-08: 230 citing publications (1 supporting, 12 mentioning, 0 '
+                      'contrasting) and no retraction notice. These counts describe that one '
+                      'paper, not this folio.'},
  'word_count': '4,650 WORDS'}
 
 PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a 3D analytic landscape of harmonic poles and '
@@ -236,29 +264,31 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a 3D analytic l
             'geometric landscape imagining harmonic pole peaks and zero-free critical strip '
             'valleys across the complex plane.'}
 
-DISPATCH = {'kicker': 'FRONTIER SPECTRAL PROOF DISPATCH · LEAN 4 ZETA23, XIPRIME & ZERO-DENSITY ESTIMATES',
- 'headline': 'Machine-Checked Riemann XiPrime Bounds, Conrey Mollifiers & Huxley Zero-Density '
-             'Crossover',
- 'body': "Uniting Martin Huxley's zero-density estimate N(sigma, T) <= T^(12(1-sigma)/5 + eps) "
-         "(Invent. Math. DOI 10.1007/BF01418933) and J. B. Conrey's critical-line mollifier (> 2/5 "
-         'of Riemann zeros on Re(s) = 1/2, J. Reine Angew. Math. DOI 10.1515/crll.1989.399.1) with '
-         "Anthropic's Lean 4 Zeta23 and Challenge/XiPrime.lean formalizations, spectral gap bounds "
-         'map directly onto Cheeger-Fiedler Markovian relaxation in CFTR ion channel '
-         'gating (DOI 10.1085/jgp.200609558).'}
+DISPATCH = {'kicker': 'ZERO-DENSITY ESTIMATES · A LEAN 4 REPOSITORY STATEMENT, REPORTED NOT CHECKED HERE',
+ 'headline': "Huxley's Zero-Density Bound, Conrey's Critical-Line Result and a Lean 4 Repository "
+             'Statement',
+ 'body': "Martin Huxley's zero-density estimate N(sigma, T) <= T^(12(1-sigma)/5 + eps) "
+         "(Invent. Math. DOI 10.1007/BF01418933) and J. B. Conrey's result that more than 2/5 "
+         'of the zeros of zeta lie on Re(s) = 1/2 (J. Reine Angew. Math. DOI '
+         '10.1515/crll.1989.399.1) are classical. The README of anthropics/formal-math also '
+         'lists a Lean 4 project, zeta23, for a more recent critical-line result. This site '
+         'reports that statement and has not built the project or checked the mathematics.'}
 
-META_3D = ('Riemann XiPrime Critical-Line Zero-Free Canyon',
+META_3D = ('Riemann Critical-Line Zero-Density Canyon',
  'X: Real Part σ - 1/2 · Z: Imaginary Height t · Y: Log-Modulus |ξ(s)| & Zero-Density Cliffs')
 
-ES_TRANSLATION = {'title_es': 'Estimaciones de Densidad de Ceros de la Función Zeta de Riemann, Desigualdades de '
-             'Gran Criba y Cotas Espectrales de XiPrime',
- 'subtitle_es': 'Dentro de las pruebas formales Zeta23 y XiPrime en Lean 4: acotando excepciones a '
-                'la línea crítica Re(s) = 1/2 y mapeando brechas espectrales a la relajación '
-                'markoviana de canales iónicos.',
+ES_TRANSLATION = {'title_es': 'Estimaciones de Densidad de Ceros de la Función Zeta de Riemann y Desigualdades de '
+             'Gran Criba',
+ 'subtitle_es': 'Estimaciones clásicas de densidad de ceros de la función zeta de Riemann y lo que '
+                'afirma el README de un repositorio público en Lean 4 sobre un resultado reciente '
+                'en la línea crítica. La comparación con la relajación de cadenas de Markov es una '
+                'analogía de este folio.',
  'why_es': 'La Gran Criba de Montgomery–Halász trata las frecuencias como vectores casi '
            'ortogonales: si una señal concentra demasiada energía en una frecuencia, no puede '
            'acumularla simultáneamente en todas las demás.',
- 'bridge_es': 'La brecha espectral de Cheeger–Fiedler de una matriz de transición markoviana '
-              'determina el tiempo exacto de relajación entre los estados cerrado y abierto del '
-              'canal de cloruro CFTR.',
- 'plain_es': 'En palabras sencillas, Bernhard Riemann se preguntó cómo están distribuidos los números primos a lo largo de la recta numérica infinita. Los primos, como dos, tres, cinco y siete, son los componentes fundamentales de toda la aritmética, ya que cualquier número entero se forma multiplicándolos entre sí. Aunque a simple vista parecen esparcidos al azar, Riemann descubrió que su cadencia responde a una sinfonía de frecuencias en el plano complejo. Si estas frecuencias se mantienen alineadas en una franja muy precisa, los números primos se distribuyen de forma suave y predecible. Esta armonía no es solo un enigma teórico: es el cimiento de la seguridad informática moderna. Cada vez que iniciamos sesión en un banco o compramos en internet, las computadoras confían en que la distribución de los primos no sufrirá oscilaciones imprevistas. Demostrar que las posibles irregularidades son insignificantes garantiza que los códigos de protección digital permanezcan blindados frente a ataques.',
- 'deep_es': 'Para comprender las cotas de densidad de ceros, conviene analizar la competencia entre la coordenada real sigma y la ventana de observación logarítmica. En el deslizador de sigma, acercarse a la línea crítica revela oscilaciones complejas, mientras que desplazarse hacia la derecha comprime exponencialmente cualquier posible desviación. Por su parte, al ampliar la ventana temporal de observación, el método de la Gran Criba demuestra que la energía espectral disponible es estrictamente finita. Si un conjunto de frecuencias gasta energía concentrándose en un punto, resulta imposible que genere resonancias fuera de balance en otras alturas. En el punto de cruce donde sigma vale tres cuartos, las cotas de Ingham y Huxley convergen, fijando una barrera infranqueable que asegura la estabilidad estadística de los números primos. Gracias a las herramientas de verificación en computadora dentro de Lean 4, estas estimaciones analíticas ya no dependen de cálculos manuales propensos a errores en los signos, consolidando un certificado matemático permanente e incorruptible.'}
+ 'bridge_es': 'Es solo una analogía de este folio: en un modelo de Markov de un canal iónico entre '
+              'estados cerrado y abierto, el tiempo de relajación depende de la brecha espectral '
+              'del generador. La teoría de números no dice nada sobre un canal CFTR real ni sobre '
+              'ningún medicamento, y nada de esto es consejo médico.',
+ 'plain_es': 'En palabras sencillas, Bernhard Riemann se preguntó cómo están distribuidos los números primos a lo largo de la recta numérica. Los primos, como dos, tres, cinco y siete, son los ladrillos de los números enteros, porque todo entero se forma multiplicándolos. A simple vista parecen esparcidos al azar, pero contarlos está muy ligado a los lugares donde se anula la función zeta. La Hipótesis de Riemann dice que todos los ceros no triviales están sobre una misma recta; nadie la ha demostrado. Los números primos también se usan en la criptografía de clave pública, pero este folio no afirma que ningún resultado de los aquí tratados haga más seguro o menos seguro ningún código.',
+ 'deep_es': 'Para comprender las cotas de densidad de ceros, conviene observar la relación entre la coordenada real sigma y la ventana de observación logarítmica. En el deslizador de sigma, cerca de la línea crítica las cotas son más débiles, y al desplazarse hacia la derecha el exponente baja. Al ampliar la ventana de observación, la gran criba limita la energía disponible: si un conjunto de frecuencias concentra energía en un punto, le queda menos para otras alturas. En sigma igual a tres cuartos, las cotas de Ingham y de Huxley dan el mismo exponente total, 0.600. Estas cotas limitan cuántos ceros pueden estar fuera de la línea crítica; no los descartan. El README de anthropics/formal-math afirma contener un proyecto en Lean 4 sobre un resultado reciente en la línea crítica; este sitio reporta esa afirmación y no ha compilado el proyecto ni revisado la matemática.'}

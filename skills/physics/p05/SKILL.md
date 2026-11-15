@@ -24,7 +24,7 @@ A plain-text companion to the essay at https://informatico.ai/physics/p05/ (`P.0
 
 ## Reference values stated in the essay
 - **Tunneling Coupling Efficiency**: `0.88 (WT-Coupled)`
-- **Kinetic Isotope Ratio k_H/k_D**: `6.84 (WKB Verified)`
+- **Kinetic Isotope Ratio k_H/k_D**: `6.84 (WKB model value)`
 - **Barrier Width Δx**: `0.52 Å (42× Boost)`
 - **Catalytic Regime**: `STABLE_COUPLED_CYCLE`
 

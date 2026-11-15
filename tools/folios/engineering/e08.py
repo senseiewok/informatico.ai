@@ -16,9 +16,9 @@ FOLIO = {'folio_id': 'E.08',
              'S(y) = S_max exp(−y² / 2i²) governs urban underground tunneling, coupled with Graph '
              'Neural Network subsurface digital twins.',
  'date_published': '2026-11-02',
- 'date_redated': '2026-11-02',
- 'current_edition': 'REV 1.0',
- 'status_badge': 'CIVIL & GEOTECH TUNNELING · REV 1.0',
+ 'date_redated': '2026-11-14',
+ 'current_edition': 'REV 1.1',
+ 'status_badge': 'CIVIL & GEOTECH TUNNELING · REV 1.1',
  'primary_kernel': 'tools/continuum_verify.py',
  'governing_law': 'S(y) = S_max exp(−y² / 2i²) · V_s = V_L (π D² / 4) · i = K (z_0 − z) · CSI 31 '
                   '71 19',
@@ -26,8 +26,7 @@ FOLIO = {'folio_id': 'E.08',
               'kernels': 'Peck–Mair Gaussian Trough · Anagnostou–Kovári Face Equilibrium · GNN '
                          'Twin',
               'benchmarks': 'D = 9.8 m · z_0 = 24.0 m · V_L = 0.75% ⇒ S_max = 18.8 mm',
-              'bridge': 'EPB Foam Yield-Stress Conditioning ↔ Two-Phase Viscoelastic Gel '
-                        'Mobilization'},
+              'bridge': 'EPB Foam Yield-Stress Conditioning ↔ Yield-Stress Gel Flow (analogy only)'},
  'sliders': [{'label': 'TBM Face Support Pressure (P_face)',
               'min': 80.0,
               'max': 360.0,
@@ -40,55 +39,47 @@ FOLIO = {'folio_id': 'E.08',
               'step': 0.05,
               'value': 0.75,
               'unit': '%'}],
- 'steps': ['Stage 1 (Anagnostou–Kovári Chamber Pressure Balance): At depth z_0 = 24.0 m, EPB '
-           'chamber pressure P_face = 210 kPa balances lateral earth + pore water pressure without '
-           'passive blowout.',
-           'Stage 2 (Foam-Conditioned Muck Rheology): Surfactant-polymer foam injection transforms '
-           'excavated clay into a cohesive, low-permeability plastic paste (slump 120 mm) across '
-           'the screw conveyor.',
-           'Stage 3 (Peck–Mair Subsurface Gaussian Propagation): Volume loss V_L = 0.75% across D '
-           '= 9.8 m creates a trough of inflection width i = K z_0 = 12.0 m and centerline S_max = '
-           '18.8 mm.',
-           'Stage 4 (Graph Neural Network Subsurface Digital Twin): Real-time cutterhead torque '
-           'and tail-void grout pressures update the GNN mesh to hold angular distortion β_max < '
-           '1/500 beneath historic masonry.'],
+ 'steps': ['Stage 1 (Chamber Pressure Balance, after Anagnostou & Kovári 1996): At depth z_0 = 24.0 m, the model EPB chamber pressure P_face = 210 kPa is taken to sit between the active (collapse) and passive (blowout) limits. The folio states no soil profile, so this is an assumed operating point, not a computed face-stability check.',
+           'Stage 2 (Foam-Conditioned Muck Rheology): Surfactant-polymer foam injection turns excavated clay into a cohesive, low-permeability plastic paste that can pass the screw conveyor. The 120 mm slump is an illustrative target.',
+           'Stage 3 (Peck Gaussian Trough): Volume loss V_L = 0.75% across D = 9.8 m gives V_s = 0.566 m³ per metre of tunnel; with inflection width i = K z_0 = 12.0 m the centerline settlement is S_max = V_s / (√(2π) i) = 18.8 mm.',
+           'Stage 4 (Graph Neural Network Subsurface Digital Twin, a Proposal): Cutterhead torque and tail-void grout pressures could update a GNN model whose aim is to keep the trough slope β_max below 1/500 beneath masonry buildings. No such network was built for this folio.'],
  'readouts': [{'label': 'Trough Inflection Width (i = K z_0)',
                'value': '12.0 m (K = 0.50, z_0 = 24 m)'},
               {'label': 'Centerline Max Settlement (S_max)', 'value': '18.8 mm (at V_L = 0.75%)'},
-              {'label': 'Max Angular Distortion (β_max)', 'value': '1 / 1,050 (< 1/500 Limit)'},
-              {'label': 'Geotechnical TBM Verdict', 'value': 'FACE STABLE · RANKINE PASS'}],
- 'spec_plate': {'division': 'CSI MASTERFORMAT 31 71 19 / ACI 533',
+              {'label': 'Max Trough Slope (β_max)', 'value': '1 / 1,050 (< 1/500 model limit)'},
+              {'label': 'Geotechnical TBM Verdict', 'value': 'WITHIN MODEL WINDOW (ASSUMED FACE BALANCE)'}],
+ 'spec_plate': {'division': 'CSI MASTERFORMAT 31 71 19 / PRECAST SEGMENTAL LINING',
                 'title': '9.8 m Earth-Pressure-Balance TBM & Precast Fiber-Reinforced Segmental '
                          'Lining',
                 'body': 'Pressurized EPB shield excavation with automated two-component tail-void '
                         'backfill grouting, EPDM elastomeric gasketed C60/75 precast concrete '
-                        'tunnel rings, and real-time InSAR + GNN settlement monitoring.',
-                'meta': 'Mair-Taylor-Bracegirdle (1993) verified · Max building distortion β ≤ '
-                        '1/500'},
+                        'tunnel rings, and real-time InSAR + GNN settlement monitoring. A design sketch, not a project specification.',
+                'meta': 'Anchor: Mair, Taylor & Bracegirdle 1993, DOI 10.1680/geot.1993.43.2.315 · β ≤ 1/500 is the limit chosen for this model'},
  'sidenote_1': {'kicker': 'SIDENOTE E.08-A · CONSERVATION OF SOIL VOLUME IN PECK–MAIR TROUGHS',
                 'body': 'Integrating S(y) = S_max exp(−y² / 2i²) from −∞ to +∞ yields V_s = √(2π) '
-                        '· i · S_max. Equating V_s to V_L · (π D² / 4) proves that S_max is '
+                        '· i · S_max. Equating V_s to V_L · (π D² / 4) shows that, with i = K z_0, S_max is '
                         'inversely proportional to depth z_0 while maximum slope occurs at y = '
                         '±i.'},
  'sidenote_2': {'kicker': 'SIDENOTE E.08-B · SPECIFICATION PLATE · CSI 31 71 19 / GNN SUBSURFACE '
                           'TWIN',
-                'body': 'Graph Neural Networks represent borehole stratigraphy and tunnel ring '
-                        'nodes as a message-passing graph constrained by Mohr–Coulomb yield '
-                        'surfaces, predicting settlement troughs 50 m ahead of the TBM face.'},
+                'body': 'A Graph Neural Network could represent borehole stratigraphy and tunnel rings as nodes of a message-passing graph, constrained by Mohr–Coulomb yield surfaces, to forecast the settlement trough some tens of metres ahead of the TBM face. This is a proposed architecture; the folio trained no network and reports no forecast accuracy.'},
  'skill': {'filename': 'epb-tbm-peck-settlement-SKILL.md',
            'name': 'epb-tbm-peck-settlement',
            'description': 'AI-agnostic geotechnical and tunneling civil engineering skill for '
                           'EPB-TBM face pressure equilibrium, Peck-Mair Gaussian settlement '
                           'troughs, and GNN subsurface digital twins.',
-           'rules': ['Compute trough inflection distance i = K * (z_0 - z) (with K = 0.50 for '
-                     'clays, 0.25-0.35 for sands) and tunnel cross-sectional area A_t = pi * D^2 / '
+           'rules': ['Compute trough inflection distance i = K * (z_0 - z) (K about 0.5 for clays at the surface, lower for sands; treat constant K below the surface as a simplification) and tunnel cross-sectional area A_t = pi * D^2 / '
                      '4.',
                      'Calculate centerline maximum settlement S_max = (V_L * A_t) / (sqrt(2 * pi) '
                      '* i) and maximum transverse slope beta_max = 0.6065 * S_max / i at y = +/- '
                      'i.',
                      'Verify EPB face pressure P_face stays between active collapse pressure '
                      'sigma_h,active + u_0 and passive blowout pressure sigma_v0.']},
- 'revisions': [{'edition': 'REV 1.0',
+ 'revisions': [{'edition': 'REV 1.1',
+                'date': '2026-11-14',
+                'summary': 'REV 1.1 (Redated 2026-11-14): Grounding revision. The Graph Neural Network digital twin is now described as a proposal: no network was built, and the claims of 50 m look-ahead forecasts, "GNN PASS" and a "Rankine pass" verdict are withdrawn. The 1/500 slope limit is labelled as the choice of this model, not a value taken from a named standard, and the page now says that a constant K below the surface is a simplification of what Mair, Taylor & Bracegirdle (1993) reported. The Brunel opening is cut back to the commonly told account, and the foam note is marked as an analogy.',
+                'opus': 'Review: references checked by DOI in the Scite index on 2026-11-14; S_max = 18.8 mm and the slope 1/1,050 were recomputed by hand from the stated law.'},
+               {'edition': 'REV 1.0',
                 'date': '2026-11-02',
                 'summary': 'REV 1.0 (Published 2026-11-02): Inaugural Volume IV geotechnical & '
                            'underground tunneling monograph uniting Peck-Mair Gaussian settlement '
@@ -96,7 +87,7 @@ FOLIO = {'folio_id': 'E.08',
                            'mechanics and GNN subsurface digital twins.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'exact Gaussian integral V_s = sqrt(2*pi)*i*S_max = 0.565 m^3/m and S_max '
-                        '= 18.8 mm at V_L = 0.75%, D = 9.8 m, i = 12.0 m.'}],
+                        '= 18.8 mm at V_L = 0.75%, D = 9.8 m, i = 12.0 m. This was an arithmetic check only; no other verification is claimed.'}],
  'volume': 4,
  'volume_code': 'VOL. 04',
  'reading_time': '22 MIN READ',
@@ -108,10 +99,7 @@ FOLIO = {'folio_id': 'E.08',
            'mentioning': 183,
            'contrasting': 0,
            'retracted': False,
-           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 575 citing '
-                      'publications (6 supporting, 183 mentioning, 0 contrasting) on subsurface '
-                      'and surface Peck-Mair Gaussian settlement troughs above bored tunnels in '
-                      'soft ground.'}}
+           'summary': 'Scite index entry for Mair, Taylor & Bracegirdle 1993 (DOI 10.1680/geot.1993.43.2.315), fetched 2026-11-08: 575 citing publications (6 supporting, 183 mentioning, 0 contrasting) and no retraction notice. These counts describe that one paper, not this folio.'}}
 
 LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'word_count': '4,650 WORDS',
@@ -122,24 +110,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
            'mentioning': 183,
            'contrasting': 0,
            'retracted': False,
-           'summary': 'Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 575 citing '
-                      'publications (6 supporting, 183 mentioning, 0 contrasting) on subsurface '
-                      'and surface Peck-Mair Gaussian settlement troughs above bored tunnels in '
-                      'soft ground.'},
+           'summary': 'Scite index entry for Mair, Taylor & Bracegirdle 1993 (DOI 10.1680/geot.1993.43.2.315), fetched 2026-11-08: 575 citing publications (6 supporting, 183 mentioning, 0 contrasting) and no retraction notice. These counts describe that one paper, not this folio.'},
  'act1_title': "Act I — From Marc Brunel's Thames Shield to Earth-Pressure-Balance TBMs & "
                'Subsurface AI Digital Twins',
- 'act1_dropcap': 'In the damp chill of Chatham Dockyard in 1818, the French-born engineer Marc '
-                 'Isambard Brunel peered through a magnifying glass at a soft-bodied marine '
-                 'mollusk called the shipworm. He watched in fascination as the creature used tiny '
-                 'shell plates on its head to grind through submerged oak timbers, immediately '
-                 'lining its newly excavated burrow with a smooth, protective calcium coating to '
-                 "prevent collapse. Inspired by the creature's elegant subterranean rhythm, Brunel "
-                 "patented the world's first tunneling shield and embarked on excavating beneath "
-                 'the tidal currents of the River Thames. For eighteen years, miners faced '
-                 'quicksand blowouts, noxious gases, and sudden riverbed fractures before '
-                 'completing the historic bore. Brunel proved that soft ground could be conquered, '
-                 'but he left behind an enduring geotechnical mystery: how does the removal of '
-                 'soil deep underground inevitably reshape the surface of the city above?',
+ 'act1_dropcap': 'In 1818 the French-born engineer Marc Isambard Brunel patented a tunnelling shield. The account usually given is that the idea came from the shipworm, a marine mollusc that bores through submerged timber with the shell plates at its head and lines the burrow behind it with a hard calcareous layer. Brunel and his son Isambard Kingdom Brunel then used a shield to drive a tunnel beneath the River Thames. Work began in 1825 and, after floods and long stoppages, the tunnel opened in 1843. It showed that soft, waterlogged ground could be tunnelled, and it left a question that tunnel engineers still work on: how does removing soil deep underground reshape the surface of the city above?',
  'act1_plain_bridge': 'In plain words, digging a giant subway tunnel beneath an active city is '
                       'like scooping sand from the bottom of an hourglass. When a massive boring '
                       'machine cuts through waterlogged clay twenty meters below ground, it '
@@ -151,25 +125,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'dip sinks unevenly beneath a historic cathedral or brick building, walls '
                       'crack and foundations tilt. To prevent damage, modern tunneling machines '
                       'pressurize conditioned soil paste directly against the cutting face while '
-                      'pumping cement grout around the newly placed concrete rings. Geotechnical '
-                      'engineers use graph-based artificial intelligence to monitor ground motion '
-                      'continuously, keeping street settlement so small that city life above '
-                      'continues undisturbed.',
- 'act1_body': 'In 1969, Ralph B. Peck synthesized field observations from major subway excavations '
-              'worldwide at the Mexico City soil mechanics conference, demonstrating that surface '
-              'settlement above a circular tunnel follows an inverted Gaussian bell curve. Two '
-              'decades later, Robert J. Mair, R. N. Taylor, and A. Bracegirdle (Géotechnique, DOI '
-              '10.1680/geot.1993.43.2.315) proved that this Gaussian profile extends through '
-              'subsurface horizons at every depth, establishing that the trough inflection width '
-              'scales directly with remaining soil overburden. Today, ten-meter-diameter '
-              'Earth-Pressure-Balance Tunnel Boring Machines (EPB-TBMs, CSI 31 71 19, ACI 533) '
-              'excavate beneath dense metropolitan centers by pressurizing foam-conditioned muck '
-              'inside the cutterhead plenum. This pressurized paste balances lateral earth and '
-              'pore-water pressure, preventing face collapse. By coupling real-time telemetry from '
-              'cutterhead thrust cylinders and tail-void grout pumps with Graph Neural Network '
-              '(GNN) subsurface digital twins, geotechnical engineers forecast settlement troughs '
-              'fifty meters ahead of the machine, ensuring angular distortion remains well within '
-              'safe historical building tolerances.',
+                      'pumping cement grout around the newly placed concrete rings. This folio also sketches how graph-based machine learning could help forecast ground movement from machine data. That part is a proposal, not a description of a system in service.',
+ 'act1_body': 'In 1969, Ralph B. Peck drew together field observations from soft-ground tunnels in his state-of-the-art report to the Mexico City soil mechanics conference, and showed that the surface settlement across a tunnel is well described by an inverted Gaussian bell curve. In 1993, Robert J. Mair, R. N. Taylor, and A. Bracegirdle (Géotechnique, DOI 10.1680/geot.1993.43.2.315) examined settlement profiles below the surface in clays. They found these too can be described by Gaussian curves, but that the troughs at depth are wider than a constant K in i = K (z_0 − z) would give. This folio keeps a constant K = 0.5 and works at the surface, where that value is a common choice for clays. Today, Earth-Pressure-Balance Tunnel Boring Machines (EPB-TBMs) of about ten metres diameter excavate beneath cities by pressurizing foam-conditioned muck in the chamber behind the cutterhead. This pressurized paste balances earth and pore-water pressure at the face (Anagnostou & Kovári 1996, DOI 10.1016/0886-7798(96)00017-X). The folio proposes that telemetry from thrust cylinders and tail-void grout pumps could feed a Graph Neural Network (GNN) model that forecasts the settlement trough ahead of the machine. No such model was built here, and no forecast distance or accuracy is claimed. CSI MasterFormat 31 71 19 is named only to classify the work.',
  'act1_stakes': 'The practical stakes of urban tunneling are measured in the preservation of '
                 'ancient architecture and modern utility networks. When an earth pressure balance '
                 'shield loses face pressure, even for a few minutes, saturated silt and gravel can '
@@ -178,9 +135,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'heaves the street upward, shearing underground gas mains and cracking water '
                 'distribution pipes. The most subtle danger is differential settlement: when one '
                 'corner of a masonry structure settles more than another, shear stresses '
-                'accumulate in unreinforced mortar joints. Once angular distortion exceeds one '
-                'unit in five hundred, plaster cracks, door frames jam, and structural brickwork '
-                'begins to detach. Avoiding these failures requires continuous equilibrium between '
+                'accumulate in unreinforced mortar joints. A slope of about one in five hundred is a limit often quoted in foundation engineering for the onset of cracking in buildings; this folio adopts it as its model threshold and does not take it from a named standard. Avoiding damage requires continuous equilibrium between '
                 'excavation rate and support pressure, turning geotechnical tunneling into a '
                 'delicate balance of material rheology, ground mechanics, and predictive '
                 'subsurface modeling.',
@@ -194,11 +149,11 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Ralph B. Peck establishes the empirical Gaussian surface settlement trough S(y) '
                  '= S_max exp(-y^2 / 2i^2) and volume loss V_L.'),
                 ('1993',
-                 'Mair, Taylor & Bracegirdle prove subsurface Gaussian scaling and centrifugal '
-                 'face-collapse bounds in Géotechnique (DOI 10.1680/geot.1993.43.2.315).'),
+                 'Mair, Taylor & Bracegirdle publish subsurface settlement profiles above tunnels in clays in Géotechnique (DOI 10.1680/geot.1993.43.2.315).'),
+                ('1996',
+                 'Anagnostou & Kovári publish face stability conditions for earth-pressure-balanced shields (DOI 10.1016/0886-7798(96)00017-X).'),
                 ('2026',
-                 'Physics-constrained GNN subsurface digital twins integrate EPB-TBM cutterhead '
-                 'telemetry for real-time urban settlement control.')],
+                 'This folio proposes, as a design study, a physics-constrained GNN subsurface digital twin fed by EPB-TBM telemetry.')],
  'act2_title': 'Act II — How It Actually Works: EPB Chamber Pressure Balance + Peck–Mair Gaussian '
                'Troughs',
  'act2_analogy': 'Everyday analogy: Imagine slicing a spoon through a bowl of moist chocolate '
@@ -238,30 +193,18 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'equilibrium with in-situ horizontal effective stress and pore water pressure '
                    "sigma_h0 = K_0 sigma'_v + u_0. If chamber pressure drops below active Rankine "
                    'limit equilibrium, soil slumps into the cutterhead, producing a volume loss '
-                   'fraction V_L. By soil mass conservation, the total volume of the surface '
-                   'settlement trough V_s per unit tunnel advance equals V_L (pi D^2 / 4). Ralph '
-                   'Peck and Robert Mair demonstrated that this volume distributes into an '
-                   'inverted Gaussian curve S(y) = S_max exp(-y^2 / [2 i^2]), where the inflection '
-                   'distance i = K (z_0 - z) governs the trough width. Centerline maximum '
-                   'settlement is S_max = V_s / (sqrt(2 pi) i). The maximum ground slope occurs '
-                   'precisely at y = +-i, producing an angular distortion beta_max = 0.6065 S_max '
-                   '/ i that must remain below 1/500 to protect surface structures, historical '
-                   'buildings, and sensitive subsurface utility conduits from shear distortion.',
+                   'fraction V_L. Assuming the ground deforms at constant volume, as is usual for clays in the short term, the volume of the surface settlement trough V_s per unit tunnel advance equals V_L (pi D^2 / 4). Following Peck, this volume is distributed as an inverted Gaussian curve S(y) = S_max exp(-y^2 / [2 i^2]), where the inflection distance i = K (z_0 - z) sets the trough width. Centerline maximum settlement is S_max = V_s / (sqrt(2 pi) i). The maximum ground slope occurs at y = +-i and equals beta_max = 0.6065 S_max / i. With D = 9.8 m, V_L = 0.75%, K = 0.5 and z_0 = 24 m these give V_s = 0.566 m^3/m, i = 12.0 m, S_max = 18.8 mm and beta_max = 1/1,050. The model keeps beta_max below 1/500, a limit chosen for this folio. The face pressure slider is not tied to V_L by a stated law: the 210 kPa default is an assumed operating point.',
  'act2_deepening': 'At the microscopic scale, the behavior of excavated soil inside the '
                    'pressurized plenum depends on foam conditioning rheology. Dry or sticky clay '
                    'clumps into dense masses that jam the cutterhead and adhere to the screw '
                    'conveyor, causing erratic pressure spikes and uncontrolled volume loss. '
                    'Injecting surfactant-polymer foam transforms stiff cohesive soil into a '
-                   'homogeneous, low-permeability plastic paste with an engineered slump of 120 to '
-                   '180 millimeters. This conditioned paste acts as a continuous hydraulic '
+                   'homogeneous, low-permeability plastic paste (the slump of 120 to '
+                   '180 millimeters used here is illustrative). This conditioned paste acts as a continuous hydraulic '
                    'cushion, transmitting thrust evenly across the tunnel face. Meanwhile, behind '
                    'the shield, rapid injection of two-component cementitious grout into the '
                    'annular tail void prevents the surrounding soil from relaxing into the gap '
-                   'left by the steel shell. Graph Neural Networks model this three-dimensional '
-                   'interaction by representing geological borehole strata, cutterhead sensors, '
-                   'and individual segmental lining rings as connected nodes. By training on '
-                   'historical geotechnical records and real-time machine telemetry, the network '
-                   'predicts settlement bowl evolution as ground conditions change.',
+                   'left by the steel shell. A Graph Neural Network could model this three-dimensional interaction by representing borehole strata, cutterhead sensors and individual lining rings as connected nodes, trained on past geotechnical records and machine telemetry. That is the proposal of this folio; it has not been built or tested here.',
  'walkthrough': ['Experiment 1 (Chamber Pressure vs. Face Stability): Drag TBM Face Support '
                  'Pressure P_face from 240 kPa down toward 110 kPa. Watch face stability ratio '
                  'N_face climb and induce higher Volume Loss V_L.',
@@ -273,39 +216,14 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'tail-void grouting, and GNN digital-twin settlement prediction.'],
  'act4_title': 'Act IV — Geotechnical Tunneling Telemetry, Lab Sustainability & Upstream Discovery '
                'Threads',
- 'act4_human_ai': 'In metropolitan subway and deep utility tunneling, GNN subsurface digital twins '
-                  'ingest real-time TBM cutterhead torque, screw-conveyor mass flow, and InSAR '
-                  'satellite interferometry to adjust bentonite/polymer foam injection and '
-                  'tail-void grout pressure ring by ring. Coupling 3D elastoplastic finite-element '
-                  'excavation staging in FEniCS/dolfinx (https://github.com/FEniCS/dolfinx, DOI '
-                  '10.1145/3524456) with sparse settlement-trough identification in '
-                  'dynamicslab/pysindy (DOI 10.1073/pnas.1517384113) lets tunnel engineers '
-                  'continuously tune EPB chamber pressure and tail-void grouting under '
-                  'Scite-verified geotechnical benchmarks (DOI 10.1162/qss_a_00146).',
- 'act4_deepening': 'In the modern era of subterranean infrastructure, human tunneling engineers '
-                   'work alongside autonomous artificial intelligence to navigate complex urban '
-                   'geology. Next-generation boring machines combine downhole seismic look-ahead '
-                   'sensors with real-time digital twins that analyze cutterhead torque, disc '
-                   'cutter wear rates, and muck weight hundreds of times per second. When the '
-                   'machine approaches an unmapped geological fault or soft clay pocket, the AI '
-                   'model recommends optimal foam injection ratios and face pressure adjustments '
-                   'before the cutting wheels make contact. Important frontier questions remain '
+ 'act4_human_ai': 'In subway and utility tunnelling, a GNN subsurface digital twin could take in TBM cutterhead torque, screw-conveyor mass flow and InSAR satellite interferometry, and suggest adjustments to foam injection and tail-void grout pressure ring by ring. A reader who wants to try this could stage an elastoplastic finite-element excavation in FEniCS/dolfinx (https://github.com/FEniCS/dolfinx, DOI 10.1145/3524456) and fit sparse models to settlement data with dynamicslab/pysindy (Brunton et al. 2016, DOI 10.1073/pnas.1517384113). Both tools are named as starting points; the folio ran neither.',
+ 'act4_deepening': 'Looking ahead, tunnelling engineers could work with machine-learning models to read complex urban geology. A boring machine could combine seismic look-ahead sensing with a digital twin that follows cutterhead torque, cutter wear and muck weight, and that suggests foam ratios and face pressure adjustments as the ground changes. This is a possible direction, not a description of machines in service. Important questions remain '
                    'active areas of study: accurately predicting three-dimensional ground response '
                    'around skewed tunnel intersections, managing pore-pressure dissipation over '
                    'decades to prevent long-term secondary consolidation settlement, and designing '
                    'circular precast segmental linings that incorporate fiber-optic sensors to '
-                   'monitor ground pressures throughout their century-long service lives. By '
-                   'combining empirical ground mechanics with machine-checked digital models, '
-                   'engineers construct resilient underground transit networks beneath the densest '
-                   'cities on Earth.',
- 'cf_bridge': 'Standalone Geotechnical Civil Engineering Flagship & Upstream Thread to Follow: '
-              'Written for geotechnical, tunneling, and underground civil engineers designing '
-              'urban TBM infrastructure (CSI 31 71 19, ACI 318 precast segmental linings). '
-              'Upstream physical thread for the lab: the surfactant/polymer foam conditioning of '
-              'cohesive clays inside an EPB-TBM plenum (lowering yield stress tau_0 and '
-              'interfacial adhesion so muck flows through the screw conveyor without clogging) '
-              'obeys the same two-phase yield-stress dispersion laws as polymeric hydrogel '
-              'mobilization in biological ducts.',
+                   'monitor ground pressures throughout their service lives. Empirical ground mechanics and data-driven models, used together and checked against field measurements, are one route to building underground transit beneath dense cities with less surface damage.',
+ 'cf_bridge': 'Standalone geotechnical folio, written for geotechnical and tunnelling engineers. A note on analogy for readers of the other folios: foam conditioning lowers the yield stress and stickiness of clay so that it flows through the screw conveyor, and yield-stress fluids are also the language used to describe gels in other fields. The resemblance is one of vocabulary and general fluid mechanics. This folio does not model any biological fluid, and nothing here bears on health or treatment.',
  'sources': ['Peck, R. B. (1969). Deep excavations and tunneling in soft ground. Proceedings of '
              'the 7th International Conference on Soil Mechanics and Foundation Engineering, '
              'Mexico City, State-of-the-Art Volume, 225–290.',
@@ -314,9 +232,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              '10.1680/geot.1993.43.2.315.',
              'Anagnostou, G., & Kovári, K. (1996). Face stability conditions with '
              'earth-pressure-balanced shields. Tunnelling and Underground Space Technology, 11(2), '
-             '165–173.',
-             'ACI Committee 533 / ACI 318 & CSI MasterFormat 31 71 19 Excavation by Tunnel Boring '
-             'Machine.',
+             '165–173. DOI: 10.1016/0886-7798(96)00017-X.',
+             'Brunton, S. L., Proctor, J. L., & Kutz, J. N. (2016). Discovering governing equations from data by sparse identification of nonlinear dynamical systems (dynamicslab/pysindy, https://github.com/dynamicslab/pysindy). PNAS, 113(15), 3932–3937. DOI: 10.1073/pnas.1517384113.',
+             'CSI MasterFormat 31 71 19, Tunnel Excavation by Tunnel Boring Machine (classification only; no threshold on this page is taken from it).',
              'Scroggs, M. W., Dokken, J. S., Richardson, C. N., & Wells, G. N. (2022). Construction of Arbitrary Order Finite Element Degree-of-Freedom Maps on Polygonal and Polyhedral Cell Meshes (FEniCS/dolfinx, https://github.com/FEniCS/dolfinx). ACM Transactions on Mathematical Software, 48(2), 18:1–18:23. DOI: 10.1145/3524456.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
              'context of citations and classifies their intent using deep learning '
@@ -349,7 +267,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         'm</text>\n'
         '            <text id="tp-e08-tbm-text" x="195" y="204" font-size="10.5" '
         'fill="var(--tp-verdigris)">EPB-TBM (D = 9.8 m · z_0 = 24.0 m) · P_face = 210 kPa · GNN '
-        'Twin PASS</text>\n'
+        'Twin (proposed)</text>\n'
         '          </svg>'}
 
 PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a 10-meter Earth-Pressure-Balance Tunnel Boring '
@@ -362,13 +280,8 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a 10-meter Eart
             'Network digital twin monitors the Peck–Mair Gaussian settlement trough.'}
 
 DISPATCH = {'kicker': 'FRONTIER GEOTECHNICAL DISPATCH · EPB-TBM TELEMETRY & GNN SUBSURFACE DIGITAL TWINS',
- 'headline': 'Graph Neural Networks & Peck–Mair Gaussian Troughs Prevent Urban Settlement Ahead of '
-             'the Cutterhead',
- 'body': "Building on Ralph Peck's (1969) and Mair, Taylor & Bracegirdle's (Géotechnique DOI "
-         '10.1680/geot.1993.43.2.315) Gaussian subsurface settlement theory, modern '
-         'Earth-Pressure-Balance Tunnel Boring Machines fuse real-time cutterhead torque, chamber '
-         'pressure, and InSAR satellite radar into physics-constrained Graph Neural Networks to '
-         'hold urban building distortion below 1/1,000.'}
+ 'headline': 'Could Graph Neural Networks and Peck–Mair Gaussian Troughs Forecast Urban Settlement Ahead of the Cutterhead?',
+ 'body': "Building on Ralph Peck's (1969) Gaussian settlement trough and the subsurface profiles of Mair, Taylor & Bracegirdle (Géotechnique, DOI 10.1680/geot.1993.43.2.315), this folio proposes that cutterhead torque, chamber pressure and InSAR satellite radar from an Earth-Pressure-Balance Tunnel Boring Machine could feed a physics-constrained Graph Neural Network. In the folio's worked example the trough slope is 1/1,050. Nothing was trained or deployed."}
 
 META_3D = ('EPB-TBM Peck–Mair Gaussian Settlement Trough',
  'X: Transverse Offset x / i · Z: Tunnel Face Advance · Y: Subsurface Volume-Loss Settlement S(x)')
@@ -390,22 +303,12 @@ ES_TRANSLATION = {'title_es': 'Tuneladoras de Equilibrio de Presión de Tierras 
              'del suelo y crea una depresión suave en forma de cuenco sobre la calle, conocida '
              'como cubeta de asentamiento. Si ese hundimiento ocurre de forma dispareja bajo un '
              'edificio histórico o tuberías de agua, los muros se agrietan y las estructuras '
-             'sufren daños. Las tuneladoras modernas evitan esto inyectando lodos y espumas a '
-             'presión controlada frente a la cabeza de corte, mientras sistemas de inteligencia '
-             'artificial monitorean el terreno en tiempo real.',
+             'sufren daños. Las tuneladoras modernas reducen este riesgo inyectando espumas a presión controlada frente a la cabeza de corte y lechada alrededor de los anillos. Este folio plantea además, como propuesta, que modelos de aprendizaje automático basados en grafos podrían ayudar a pronosticar el movimiento del terreno; no describe un sistema en operación.',
  'deep_es': 'La estabilidad del frente de excavación depende del equilibrio entre dos presiones '
             'fundamentales: la presión de soporte en la cámara de la tuneladora y el empuje '
             'combinado del suelo y el agua subterránea. Si la presión de soporte desciende por '
             'debajo del límite activo de Rankine, el frente colapsa hacia la máquina, '
             'incrementando la pérdida volumétrica y profundizando la cubeta gaussiana en la '
             'superficie. Por el contrario, si la presión de la cámara es excesiva, el suelo se '
-            'fractura y la calle se levanta peligrosamente. El umbral crítico de diseño exige que '
-            'la distorsión angular de la superficie no supere uno entre quinientos para proteger '
-            'mamposterías y cimentaciones urbanas. En la práctica moderna de ingeniería '
-            'geotécnica, este balance se logra acondicionando el suelo con espumas poliméricas e '
-            'inyectando lechada en el espacio anular del escudo, mientras redes neuronales de '
-            'grafos en computadora integran la telemetría de avance para predecir asentamientos '
-            'con decenas de metros de anticipación.',
- 'bridge_es': 'El acondicionamiento reológico de suelos con espumas tensoactivas en cámaras '
-              'EPB-TBM comparte las leyes constitutivas de flujo bifásico con los surfactantes '
-              'pulmonares y agentes mucolíticos.'}
+            'fractura y la calle se levanta. El modelo del folio mantiene la pendiente máxima de la cubeta por debajo de uno entre quinientos, un límite elegido para este modelo y no tomado de una norma. Con D = 9.8 m, V_L = 0.75 %, K = 0.5 y z_0 = 24 m, la ley de Peck da S_max = 18.8 mm y una pendiente de 1/1,050. En la práctica, el balance se busca acondicionando el suelo con espumas e inyectando lechada en el espacio anular del escudo. El folio propone que una red neuronal de grafos podría integrar la telemetría de avance para pronosticar asentamientos; esa red no se construyó ni se probó aquí.',
+ 'bridge_es': 'El acondicionamiento con espumas reduce el esfuerzo de fluencia de la arcilla para que fluya por el tornillo sinfín; los fluidos con esfuerzo de fluencia también se usan para describir geles en otros campos. Es solo una analogía: este folio no modela ningún fluido biológico ni trata de salud.'}
