@@ -33,7 +33,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Verifier Verdict (Worked Example)**: `PASS · ANOMALY-FREE & AREA-LAW`
 
 ## 5. Exact T0–T3 Truth Boundary
-### Certified in Repository Today (T0/T1)
+### Verified in Repository Today (T0/T1)
 - Deterministic Standard Model four-trace anomaly verifier and 1D critical TFIM entanglement harness in bounties/bounty_m2_physlean_itensor_quantum_gauge.py (< 0.05s runtime).
 - Cross-checked against Tooby-Smith (2024, DOI 10.1016/j.cpc.2024.109457), Fishman et al. (2022, DOI 10.21468/SciPostPhysCodeb.4), and Vicentini et al. (2022, DOI 10.21468/SciPostPhysCodeb.7).
 - Ready for immediate community showcase submission to HEPLean/PhysLean Zulip and ITensors / NetKet showcases.

@@ -33,7 +33,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Verifier Verdict (Worked Example)**: `PASS · FAULT-TOLERANT REGIME`
 
 ## 5. Exact T0–T3 Truth Boundary
-### Certified in Repository Today (T0/T1)
+### Verified in Repository Today (T0/T1)
 - Zero-dependency surface-code threshold and FeMoCo active-volume resource estimator in bounties/bounty_p1_surface_code_femoco.py (< 0.05s runtime).
 - Re-evaluates the Fowler et al. (2012) logical error scaling formula; the 114 + 180 tile layout is this folio's illustrative choice, not a figure taken from Reiher et al. (2017).
 - Suitable as an open educational resource-estimation example, for instance for Unitary Foundation's Metriq.info registry.

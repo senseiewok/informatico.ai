@@ -136,7 +136,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'unevenly across different grain directions. In twentieth-century construction, '
                 'the standard response was to over-engineer steel mechanical systems: motorized '
                 'louvers, motorized dampers, and electric actuators wired to electronic humidity '
-                'sensors. But motorized kinetic facades have proven notoriously fragile in '
+                'sensors. But motorized kinetic facades have often been notoriously fragile in '
                 'real-world buildings. Mechanical linkages jam from wind-borne dust, electric '
                 'servo motors burn out after repetitive weather cycles, and electronic sensors '
                 'corrode in coastal air. When building owners face mounting maintenance costs, '

@@ -58,9 +58,9 @@ FOLIO = {'folio_id': 'A.02',
                      'splitting stress exceeds f_{t,90,d}.']},
  'revisions': [{'edition': 'REV 1.3',
                 'date': '2026-11-14',
-                'summary': 'REV 1.3 (Redated 2026-11-14): Grounding revision. The SAFE / PASS verdicts and the '
-                           'claims that the model proves gridshells safe, that COMPAS computed the buckling factor, '
-                           'and that these domes cut embodied carbon by about 60% were unsourced and are withdrawn; '
+                'summary': 'REV 1.3 (Redated 2026-11-14): Grounding revision. The model does not prove gridshells safe; '
+                           'earlier SAFE / PASS claims, buckling claims from COMPAS, '
+                           'and an unsourced 60% embodied carbon reduction claim are withdrawn; '
                            'the utilization 0.64 and SF 3.74 are now labelled illustrative values. The bending moment '
                            'now states its assumed member length (L = 1.493 m), the invented Song and Leonardo scenes '
                            'are replaced by a plain account, and the CF section no longer makes health claims.',
@@ -355,7 +355,7 @@ ES_TRANSLATION = {'title_es': 'Retículas Recíprocas de Madera (Nexorades), Mom
  'deep_es': 'El comportamiento estructural de una cáscara recíproca de madera depende de dos parámetros fundamentales: '
             'la relación de traslape entre vigas y la fuerza cortante en cada ensamble. Al ajustar la posición del '
             'traslape, se define la curvatura de la cúpula y el tamaño del óculo central que permite la entrada de luz '
-            'natural. Sin embargo, al desfasar las piezas verticalmente, la compresión de la cúpula se transforma en '
+            'natural. No obstante, al desfasar las piezas verticalmente, la compresión de la cúpula se transforma en '
             'un fuerte momento de flexión y esfuerzo cortante en la muesca de unión. Si la carga de nieve sobrepasa el '
             'límite que revisa el Eurocódigo 5, las fibras de la madera pueden abrirse a lo largo del grano en una '
             'falla repentina. Por eso es común reforzar las muescas con tornillos de rosca completa contra la tensión '
