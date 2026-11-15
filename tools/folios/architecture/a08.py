@@ -272,8 +272,8 @@ ES_TRANSLATION = {'title_es': 'Cubiertas Fotónicas de Enfriamiento Radiativo Di
  'bridge_es': 'Este folio es de física de edificios y no tiene contenido sobre Fibrosis Quística. Deja una pregunta abierta: un cuarto que se mantiene unos grados más fresco sin red eléctrica podría servir para almacenamiento donde la electricidad falla. Un techo unos 6 °C por debajo del aire exterior no es refrigeración ni alcanza el intervalo de 2 a 8 °C que requieren muchos medicamentos. Nada de esto es una indicación sobre cómo guardar medicamentos.',
  'plain_es': 'En palabras sencillas, imaginen que el techo de un edificio pudiera mantenerse más fresco que el aire bajo el rayo del sol sin usar electricidad. Todos los '
              'objetos emiten calor en forma de ondas infrarrojas invisibles. Normalmente, la '
-             'atmósfera de la Tierra atrapa ese calor como si fuera una cobija térmica. Sin '
-             'embargo, existe una ventana natural en el aire por donde ciertas ondas de calor '
+             'atmósfera de la Tierra atrapa ese calor como si fuera una cobija térmica. No '
+             'obstante, existe una ventana natural en el aire por donde ciertas ondas de calor '
              'pueden salir sin ningún obstáculo hacia el espacio exterior, el cual se encuentra a '
              'temperaturas cercanas al cero absoluto. En 2014 un equipo de Stanford midió una superficie que se mantuvo 4.9 °C por debajo del aire a pleno sol (Raman et al., DOI 10.1038/nature13883), y en 2018 otro grupo reportó un recubrimiento de polímero poroso con un comportamiento parecido (Mandal et al., DOI 10.1126/science.aat9513). Estas superficies hacen dos cosas a la vez: reflejan alrededor del 96 o 97 por ciento de la luz solar para no calentarse y emiten calor hacia el espacio a través de esa ventana en la atmósfera. El resultado es una superficie que se '
              'mantiene unos grados más fresca que el aire exterior a pleno mediodía.',

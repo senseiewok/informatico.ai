@@ -61,8 +61,8 @@ FOLIO = {'folio_id': 'A.03',
                      'code requirement), or sealed dry-air Closed Cavity Facade (CCF) modules.']},
  'revisions': [{'edition': 'REV 1.3',
                 'date': '2026-11-14',
-                'summary': 'REV 1.3 (Redated 2026-11-14): Grounding revision. Claims of pathogen clearance, '
-                           'protected sleep and immunity, a certified design and a PASS verdict are withdrawn: nothing '
+                'summary': 'REV 1.3 (Redated 2026-11-14): Grounding revision. No design was certified '
+                           'and no pathogen clearance measured; earlier claims of protected sleep and immunity are withdrawn: nothing '
                            'was measured. The circadian sentences had cited a radiative-cooling paper (DOI '
                            '10.1038/nature13883); they now cite Berson et al. 2002 (DOI 10.1126/science.1067262) and '
                            'Brown et al. 2022 (DOI 10.1371/journal.pbio.3001571). The stack draft now states its '
@@ -70,7 +70,7 @@ FOLIO = {'folio_id': 'A.03',
                            'account. A later review withdrew the "lung" '
                            'pullquote, the unsourced claims about mid-century glazing and the Paimio sanatorium source, '
                            'and softened outcome statements in the plain-language text and the Spanish text.',
-                'opus': 'Review: references checked by DOI in Crossref and the Scite index; Scite confirmed the '
+                'opus': 'Review: references checked by DOI in Crossref and the Scite index; Scite indexed the '
                         '250 lux melanopic EDI daytime recommendation in Brown et al. 2022.'},
                {'edition': 'REV 1.2',
                 'date': '2026-11-02',

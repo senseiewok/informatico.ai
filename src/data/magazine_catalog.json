@@ -1522,13 +1522,13 @@
           {
             "edition": "REV 1.4",
             "date": "2026-11-14",
-            "summary": "REV 1.4 (Redated 2026-11-14): Grounding revision. Earlier editions called the middle-third rule \"Heyman's Safe Theorem\"; Heyman's theorem only needs a thrust line inside the masonry, and the text now says so. Statements that the thermal node was verified or certified, and that it prevents mould or infection in healthcare settings, are withdrawn: nothing was measured. An unsourced scene about Hooke and Wren and an unsourced 70% concrete-saving figure are removed.",
+            "summary": "REV 1.4 (Redated 2026-11-14): Grounding revision. Earlier editions called the middle-third rule \"Heyman's Safe Theorem\"; Heyman's theorem only needs a thrust line inside the masonry, and the text now says so. No verification or certification of the thermal node was performed, and claims of preventing mould or infection in healthcare settings are withdrawn: nothing was measured. An unsourced scene about Hooke and Wren and an unsourced 70% concrete-saving figure are removed.",
             "opus": "Review: references checked by DOI in Crossref and the Scite index; model numbers recomputed from the stated formulas."
           },
           {
             "edition": "REV 1.3",
             "date": "2026-11-02",
-            "summary": "REV 1.3 (Redated 2026-11-02): Reported a +7.08 °C margin between the illustrative surface temperature and the dew point. The earlier wording (verified, certified, preventing fungal reservoirs in healthcare settings) is withdrawn in REV 1.4.",
+            "summary": "REV 1.3 (Redated 2026-11-02): Reported a +7.08 °C margin between the illustrative surface temperature and the dew point. No certification or fungal-reservoir prevention was measured; earlier wording is withdrawn in REV 1.4.",
             "opus": "Council review of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B); the earlier word \"verified\" is withdrawn in REV 1.4 because nothing was measured. Arithmetic reviewed:horizontal thrust H = 216.0 kN, kern safety factor SF = 9.38, and f_Rsi >= 0.70 condensation protection."
           },
           {
@@ -1650,7 +1650,7 @@
           {
             "edition": "REV 1.3",
             "date": "2026-11-14",
-            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. The SAFE / PASS verdicts and the claims that the model proves gridshells safe, that COMPAS computed the buckling factor, and that these domes cut embodied carbon by about 60% were unsourced and are withdrawn; the utilization 0.64 and SF 3.74 are now labelled illustrative values. The bending moment now states its assumed member length (L = 1.493 m), the invented Song and Leonardo scenes are replaced by a plain account, and the CF section no longer makes health claims.",
+            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. The model does not prove gridshells safe; earlier SAFE / PASS claims, buckling claims from COMPAS, and an unsourced 60% embodied carbon reduction claim are withdrawn; the utilization 0.64 and SF 3.74 are now labelled illustrative values. The bending moment now states its assumed member length (L = 1.493 m), the invented Song and Leonardo scenes are replaced by a plain account, and the CF section no longer makes health claims.",
             "opus": "Review: references checked by DOI in Crossref and the Scite index; Scite search found no source for the 4x-6x span claim, so it was removed."
           },
           {
@@ -1772,8 +1772,8 @@
           {
             "edition": "REV 1.3",
             "date": "2026-11-14",
-            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. Claims of pathogen clearance, protected sleep and immunity, a certified design and a PASS verdict are withdrawn: nothing was measured. The circadian sentences had cited a radiative-cooling paper (DOI 10.1038/nature13883); they now cite Berson et al. 2002 (DOI 10.1126/science.1067262) and Brown et al. 2022 (DOI 10.1371/journal.pbio.3001571). The stack draft now states its assumptions (T_ext ≈ 303 K, ζ_tot ≈ 9.3), and the opening scene is replaced by a plain account. A later review withdrew the \"lung\" pullquote, the unsourced claims about mid-century glazing and the Paimio sanatorium source, and softened outcome statements in the plain-language text and the Spanish text.",
-            "opus": "Review: references checked by DOI in Crossref and the Scite index; Scite confirmed the 250 lux melanopic EDI daytime recommendation in Brown et al. 2022."
+            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. No design was certified and no pathogen clearance measured; earlier claims of protected sleep and immunity are withdrawn: nothing was measured. The circadian sentences had cited a radiative-cooling paper (DOI 10.1038/nature13883); they now cite Berson et al. 2002 (DOI 10.1126/science.1067262) and Brown et al. 2022 (DOI 10.1371/journal.pbio.3001571). The stack draft now states its assumptions (T_ext ≈ 303 K, ζ_tot ≈ 9.3), and the opening scene is replaced by a plain account. A later review withdrew the \"lung\" pullquote, the unsourced claims about mid-century glazing and the Paimio sanatorium source, and softened outcome statements in the plain-language text and the Spanish text.",
+            "opus": "Review: references checked by DOI in Crossref and the Scite index; Scite indexed the 250 lux melanopic EDI daytime recommendation in Brown et al. 2022."
           },
           {
             "edition": "REV 1.2",
@@ -2023,7 +2023,7 @@
           {
             "edition": "REV 1.2",
             "date": "2026-11-14",
-            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. The Sabine comparison is corrected from 0.73 s to 0.82 s (it follows from the same room as the Eyring 0.62 s), STI 0.74 and C_50 +4.8 dB are labelled illustrative, and claims of ISO 3382 certification, a 40% alarm-fatigue effect and protection for CF patients are withdrawn. The Eyring and Schroeder DOIs pointed to a one-page supplement item and a different 1975 paper; they now cite DOI 10.1121/1.1915175 and DOI 10.1121/1.382601. The midnight scene is replaced by a plain account. A later review corrected the Speech Transmission Index attribution (IEC 60268-16, not ISO 3382), made the NC-28 threshold consistent, softened outcome claims in the plain-language and Spanish text, and changed the readout verdict and the Scite record.",
+            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. The Sabine comparison is corrected from 0.73 s to 0.82 s (it follows from the same room as the Eyring 0.62 s), STI 0.74 and C_50 +4.8 dB are labelled illustrative, and no ISO 3382 rating is claimed (earlier claims of formal rating and alarm-fatigue effects are withdrawn). The Eyring and Schroeder DOIs pointed to a one-page supplement item and a different 1975 paper; they now cite DOI 10.1121/1.1915175 and DOI 10.1121/1.382601. The midnight scene is replaced by a plain account. A later review corrected the Speech Transmission Index attribution (IEC 60268-16, not ISO 3382), made the NC-28 threshold consistent, softened outcome claims in the plain-language and Spanish text, and changed the readout verdict and the Scite record.",
             "opus": "Review: references checked by DOI in Crossref and the Scite index; Scite literature supports that Eyring gives shorter times than Sabine in absorptive rooms."
           },
           {
@@ -2731,7 +2731,7 @@
           {
             "edition": "REV 1.5",
             "date": "2026-11-14",
-            "summary": "REV 1.5 (Redated 2026-11-14): Grounding revision. The opening scene of Maxwell at Glenlair and the claim that Rafael Guastavino built Grand Central's vaults in 1913 using Maxwell's principle were not sourced and are replaced by a plain account. The 70-72% concrete and carbon figures are replaced by a published one-third-of-the-material figure for an unreinforced funicular floor (Küpfer et al. 2025); 'PASS', 'certified' and 'guaranteed' wording for things nobody measured is withdrawn, and the sky-cooling numbers now state the assumptions they follow from. The 80 W/m² and −4.5 °C thresholds are labelled as this folio's own design targets.",
+            "summary": "REV 1.5 (Redated 2026-11-14): Grounding revision. The opening scene of Maxwell at Glenlair and the claim that Rafael Guastavino built Grand Central's vaults in 1913 using Maxwell's principle were not sourced and are replaced by a plain account. The 70-72% concrete and carbon figures are replaced by a published one-third-of-the-material figure for an unreinforced funicular floor (Küpfer et al. 2025); no pass, certification or guarantee is claimed for things nobody measured (earlier wording is withdrawn), and the sky-cooling numbers now state the assumptions they follow from. The 80 W/m² and −4.5 °C thresholds are labelled as this folio's own design targets.",
             "opus": "Review: references checked by DOI in Crossref and Scite; central claims checked against the Scite index; arithmetic recomputed from the stated balance."
           },
           {

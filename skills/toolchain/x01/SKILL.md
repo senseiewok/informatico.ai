@@ -41,14 +41,14 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Stage 3: Euler–Poincaré Characteristic & Divergence-Theorem Volume — Compute χ = V − E + F = 2 − 2g and integrate V_mesh = (1/6) ∑ v_0 · (v_1 × v_2) to certify exact agreement with the analytical solid volume (24,000.0 mm³).
 - Stage 4: Malformed-Binary Fuzz Suite & Planted-Defect Knockout — Run the parser and topological verifier against 4 malformed GLB fuzz files (truncated header, chunk OOB, vertex index OOB, flipped normal) and assert that every defect fails.
 
-## 6. Certified Reference Telemetry (T0/T1)
+## 6. Verified Reference Telemetry (T0/T1)
 - **GLB Binary Header & Chunks**: `glTF v2 · 1,708 B (PASS)`
 - **2-Manifold Topology (V, E, F)**: `V=14, E=36, F=24 · χ=2`
 - **Divergence Signed Volume**: `24,000.0 mm³ (err = 0.00%)`
 - **Fuzz & Knockout Gate**: `4/4 Fuzz + Defect REJECTED`
 
 ## 7. Exact T0–T3 Truth Boundary
-### Certified Geometry in Repository Today (T0/T1)
+### Verified Geometry in Repository Today (T0/T1)
 - Zero-dependency WebGL2 GLB loader and interactive orbit/wireframe/clipping inspector in src/modules/glb-viewer.mjs.
 - Deterministic Python stdlib generator (skills/toolchain/x01/make_x01.py) emitting x01_artifact.glb, x01_artifact.step, x01_artifact.3mf, manifest.json, and 4 malformed fuzz fixtures.
 - Byte-level stdlib verifier (verify_x01_toolchain_x01_glb_inspector_validator.py) certifying χ = 2, V = 24,000.0 mm³, SHA-256 manifest match, 4/4 fuzz rejection, and planted-defect knockout.

@@ -33,7 +33,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Verifier Verdict (Worked Example)**: `PASS · SUB-45 KG CO₂E/M²`
 
 ## 5. Exact T0–T3 Truth Boundary
-### Certified in Repository Today (T0/T1)
+### Verified in Repository Today (T0/T1)
 - Deterministic SIMP compliance-carbon Pareto verifier in bounties/bounty_e1_simp_carbon_slab.py (< 0.05s runtime).
 - Verified FEniCS/dolfinx (Scroggs et al., 2022, DOI 10.1145/3524456) and Sigmund (2001, DOI 10.1007/s001580050176) mathematical formulation.
 - Ready for immediate community showcase submission on FEniCS Discourse and open structural engineering benchmark repositories.

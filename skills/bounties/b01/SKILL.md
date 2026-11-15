@@ -33,7 +33,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **B₂ Invariant Check (Python, Worked Example)**: `PASS · ZERO COLLISIONS`
 
 ## 5. Exact T0–T3 Truth Boundary
-### Certified in Repository Today (T0/T1)
+### Verified in Repository Today (T0/T1)
 - Deterministic Mian–Chowla greedy B₂ sequence generator and exact O(|A|²) pairwise-sum collision verifier in bounties/bounty_m1_erdos_sidon_lean4.py (< 0.05s runtime).
 - Exact numerical verification of the Erdős–Turán (1941) upper bound √N + N^(1/4) + 1 across N ∈ [100, 900] with zero dependencies.
 - Direct architectural and pedagogical bridge to Anthropic's open-source Lean 4 repositories (anthropics/formal-math and anthropics/fermats-last-theorem) and Terence Tao's teorth/pfr blueprint.

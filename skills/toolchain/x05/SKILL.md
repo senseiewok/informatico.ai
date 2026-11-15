@@ -41,14 +41,14 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Stage 3: Analytical Moscow-Papyrus Frustum Integration — Compute V_exact = ∑_{k=1}^3 (16/3)(A_{k-1} + A_k + √(A_{k-1}A_k)) = 46,080.0 mm³ and verify exact match with the divergence-theorem mesh volume.
 - Stage 4: Facet Normal Overhang Audit & 3MF Packaging — Evaluate θ_f = arctan(Δhw / Δz) = 14.036° across the flared upper section, package x05_artifact.3mf, .glb, and .step, and run the planted-defect knockout.
 
-## 6. Certified Reference Telemetry (T0/T1)
+## 6. Verified Reference Telemetry (T0/T1)
 - **3-Stage Frustum Volume**: `46,080.0 mm³ (ΔV = 0.00%)`
 - **2-Manifold Closure (V, E, F)**: `V=16, E=42, F=28 · χ=2`
 - **Max Wall Overhang Angle θ**: `14.04° ≤ 45.0° (GEOMETRY)`
 - **3MF / GLB / STEP Gate**: `PASS · DEFECT REJECTED`
 
 ## 7. Exact T0–T3 Truth Boundary
-### Certified Geometry in Repository Today (T0/T1)
+### Verified Geometry in Repository Today (T0/T1)
 - Deterministic generator (skills/toolchain/x05/make_x05.py) producing byte-reproducible x05_artifact.3mf, x05_artifact.glb, and x05_artifact.step.
 - Stdlib verifier (verify_x05_toolchain_x05_simp_manifold_3mf.py) checking 2-manifold closure (χ = 2), frustum volume conservation (46,080.0 mm³), 3MF XML structure, and planted-defect rejection.
 - Portable SKILL.md companion with explicit geometry-only boundary guardrails.

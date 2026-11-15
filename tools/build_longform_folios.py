@@ -3025,7 +3025,7 @@ def _build_bounty_skill_and_verifier(bounty: dict) -> tuple[str, str, str]:
         f"## 4. Reference Results Computed by the Harness (T0/T1)\n"
         f"{bench_md}\n\n"
         f"## 5. Exact T0–T3 Truth Boundary\n"
-        f"### Certified in Repository Today (T0/T1)\n{t0_md}\n\n"
+        f"### Verified in Repository Today (T0/T1)\n{t0_md}\n\n"
         f"### Open Global Prize Horizon (T2/T3)\n{t2_md}\n"
     )
     py_filename, py_verifier_src = _existing_skill_verifier(ROOT / "skills" / "bounties" / slug)
@@ -3216,7 +3216,7 @@ def render_bounty_history_visual(bounty: dict) -> str:
     svg_body = "\n      ".join(svg_nodes)
     svg_html = (
         f'<svg class="tp-history-visual-svg" viewBox="0 0 920 185" role="img" '
-        f'aria-label="Chronological pioneer timeline from foundational discovery to modern certified benchmark for Bounty {esc(fid)}">\n'
+        f'aria-label="Chronological pioneer timeline from foundational discovery to modern verified benchmark for Bounty {esc(fid)}">\n'
         f'      {svg_body}\n'
         f'    </svg>'
     )
@@ -3419,7 +3419,7 @@ def render_bounty_crucible_svg(bounty: dict) -> str:
       <path data-bw-harmonic d="M 344 236 Q 404 218 464 236 T 584 236" fill="none" stroke="var(--tp-verdigris)" stroke-width="1.5" stroke-dasharray="4,3"/>
       <polyline data-bw-curve points="344,218 402,172 468,110 524,97 584,74" fill="none" stroke="var(--tp-prussian)" stroke-width="2.8"/>
       <circle data-bw-dot cx="468" cy="110" r="7.5" fill="var(--tp-verdigris)" stroke="var(--tp-vellum)" stroke-width="2"/>
-      <text data-bw-status-pill x="462" y="278" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--tp-verdigris)">PASS · T0/T1 CERTIFIED</text>
+      <text data-bw-status-pill x="462" y="278" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--tp-verdigris)">PASS · T0/T1 BENCHMARK</text>
 
       <!-- Panel 3: 4-Stage Invariant Margin Waterfall -->
       <rect x="620" y="10" width="290" height="288" rx="8" fill="var(--tp-stone)" stroke="var(--tp-rule-strong)" stroke-width="1.2"/>
@@ -3515,7 +3515,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
               <strong data-en="Operator Coupling &amp; Invariant Closure:" data-es="Acoplamiento de Operadores y Clausura de Invariantes:">Operator Coupling &amp; Invariant Closure:</strong> <span data-en="At Stage {idx_s} of the Bounty {esc(fid)} ({esc(bid)}) derivation chain, the intermediate state maps directly onto the governing law {esc(bounty['governing_law'])} under benchmark harness {esc(verifier_rel)}. To ensure that deductive or physical flux is conserved without unverified hand-waving as the system advances from Stage {idx_s} toward terminal convergence, the transition operator enforces the companion verification constraint: {esc(matched_rule)} Every numerical trajectory and readout in the Act III interactive workbench below evaluates this exact stage transfer function in real time." data-es="En la Etapa {idx_s} de la cadena de derivación del Reto {esc(fid)} ({esc(bid)}), el estado intermedio se proyecta directamente sobre la ley gobernante {esc(bounty['governing_law'])} bajo el arnés de verificación {esc(verifier_rel)}. Para asegurar que el flujo deductivo o físico se conserve sin suposiciones no verificadas a medida que el sistema avanza desde la Etapa {idx_s} hacia la convergencia terminal, el operador de transición impone la restricción de verificación complementaria: {esc(matched_rule_es)} Cada trayectoria numérica y lectura en el laboratorio interactivo del Acto III evalúa exactamente esta función de transferencia de etapa en tiempo real.">At Stage {idx_s} of the Bounty {esc(fid)} ({esc(bid)}) derivation chain, the intermediate state maps directly onto the governing law <code>{esc(bounty['governing_law'])}</code> under benchmark harness <code>{esc(verifier_rel)}</code>. To ensure that deductive or physical flux is conserved without unverified hand-waving as the system advances from Stage {idx_s} toward terminal convergence, the transition operator enforces the companion verification constraint: <em>{linkify_citations(esc(matched_rule))}</em> Every numerical trajectory and readout in the Act III interactive workbench below evaluates this exact stage transfer function in real time.</span>
             </p>
             <p>
-              <strong data-en="Open-Science Reproducibility &amp; Falsification Check:" data-es="Reproducibilidad en Ciencia Abierta y Prueba de Falsación:">Open-Science Reproducibility &amp; Falsification Check:</strong> <span data-en="When an independent researcher, student, or prize auditor inspects Stage {idx_s} inside {esc(verifier_rel)} or executes python {esc(bounty['skill_dir'])}/{esc(py_filename)} locally, this stage acts as a hard mathematical firewall against silent approximation drift. Rather than relying on proprietary solvers or opaque cloud checkpoints, Stage {idx_s} exposes its exact intermediate state variables, dimensional scaling factors, and residual tolerances so any contributor worldwide can test, perturb, or extend the proof certificate using 100% Free and Open-Source Software." data-es="Cuando un investigador independiente, estudiante o auditor del premio inspecciona la Etapa {idx_s} dentro de {esc(verifier_rel)} o ejecuta python {esc(bounty['skill_dir'])}/{esc(py_filename)} localmente, esta etapa actúa como un cortafuegos matemático estricto contra desviaciones silenciosas de aproximación. En lugar de depender de solvers propietarios o checkpoints cerrados en la nube, la Etapa {idx_s} expone sus variables de estado intermedias, factores de escala dimensional y tolerancias residuales para que cualquier persona en el mundo pueda verificar, perturbar o extender el certificado de prueba con software 100% libre y de código abierto.">When an independent researcher, student, or prize auditor inspects Stage {idx_s} inside <code>{esc(verifier_rel)}</code> or executes <code>python {esc(bounty['skill_dir'])}/{esc(py_filename)}</code> locally, this stage acts as a hard mathematical firewall against silent approximation drift. Rather than relying on proprietary solvers or opaque cloud checkpoints, Stage {idx_s} exposes its exact intermediate state variables, dimensional scaling factors, and residual tolerances so any contributor worldwide can test, perturb, or extend the proof certificate using 100% Free and Open-Source Software.</span>
+              <strong data-en="Open-Science Reproducibility &amp; Falsification Check:" data-es="Reproducibilidad en Ciencia Abierta y Prueba de Falsación:">Open-Science Reproducibility &amp; Falsification Check:</strong> <span data-en="When an independent researcher, student, or prize auditor inspects Stage {idx_s} inside {esc(verifier_rel)} or executes python {esc(bounty['skill_dir'])}/{esc(py_filename)} locally, this stage acts as a hard mathematical firewall against silent approximation drift. Rather than relying on proprietary solvers or opaque cloud checkpoints, Stage {idx_s} exposes its exact intermediate state variables, dimensional scaling factors, and residual tolerances so any contributor worldwide can test, perturb, or extend the proof harness using 100% Free and Open-Source Software." data-es="Cuando un investigador independiente, estudiante o auditor del premio inspecciona la Etapa {idx_s} dentro de {esc(verifier_rel)} o ejecuta python {esc(bounty['skill_dir'])}/{esc(py_filename)} localmente, esta etapa actúa como un cortafuegos matemático estricto contra desviaciones silenciosas de aproximación. En lugar de depender de solvers propietarios o checkpoints cerrados en la nube, la Etapa {idx_s} expone sus variables de estado intermedias, factores de escala dimensional y tolerancias residuales para que cualquier persona en el mundo pueda verificar, perturbar o extender el arnés de prueba con software 100% libre y de código abierto.">When an independent researcher, student, or prize auditor inspects Stage {idx_s} inside <code>{esc(verifier_rel)}</code> or executes <code>python {esc(bounty['skill_dir'])}/{esc(py_filename)}</code> locally, this stage acts as a hard mathematical firewall against silent approximation drift. Rather than relying on proprietary solvers or opaque cloud checkpoints, Stage {idx_s} exposes its exact intermediate state variables, dimensional scaling factors, and residual tolerances so any contributor worldwide can test, perturb, or extend the proof harness using 100% Free and Open-Source Software.</span>
             </p>
           </div>"""
         )
@@ -3819,7 +3819,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
         <p><strong>Actos I y II — Historia del premio, ley gobernante y prueba en 4 etapas:</strong> <em>{esc(bounty['title_es'])}</em> — {esc(bounty['subtitle_es'])} Este Folio dedicado verifica la ley gobernante <code>{esc(bounty['governing_law'])}</code> mediante <code>{esc(verifier_rel)}</code>. <strong>Por qué importa:</strong> {esc(bounty['why_es'])}</p>
         {es_plain_html}
         {es_deep_html}
-        <p><strong>Actos III, IV y V — Laboratorio interactivo, frontera T0–T3 y código reproducible:</strong> explora los deslizadores contrafactuales abajo, revisa qué está certificado hoy en nuestro repositorio (T0/T1) frente al horizonte abierto del premio (T2/T3) y descarga el verificador en Python y su <code>SKILL.md</code>.</p>
+        <p><strong>Actos III, IV y V — Laboratorio interactivo, frontera T0–T3 y código reproducible:</strong> explora los deslizadores contrafactuales abajo, revisa qué está verificado hoy en nuestro repositorio (T0/T1) frente al horizonte abierto del premio (T2/T3) y descarga el verificador en Python y su <code>SKILL.md</code>.</p>
       </div>
     </details>
 
@@ -3838,7 +3838,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
           Tracing the intellectual arc of Bounty <strong>{esc(fid)}</strong> (<code>{esc(bid)}</code>) from its foundational milestone in {linkify_citations(esc(first_era))} to the modern benchmark frontier in {linkify_citations(esc(last_era))} reveals why un-coupled heuristic approximations repeatedly stalled at a hard analytical or physical barrier. Whenever investigators attempted to treat the governing relation <code>{esc(bounty['governing_law'])}</code> as a linearized or unverified empirical rule, higher-order coupling terms across the state space amplified truncation error or violated physical conservation. What appeared for decades to be an intractable bottleneck was, in reality, a sharp phase boundary in the operator domain itself.
         </p>
         <p>
-          Resolving the benchmark regime of Bounty <strong>{esc(fid)}</strong> (<code>{esc(bid)}</code>) requires shifting from unverified qualitative hand-waving to a deterministic operator formulation anchored in <code>{esc(verifier_rel)}</code>. Specifically, the system trajectory is governed by {sliders_prose}. Within this state space, any valid proof certificate or engineering synthesis must simultaneously satisfy local conservation laws, global boundary compatibility, and strict falsification gates—setting the stage for our four-chapter formal derivation in Act II.
+          Resolving the benchmark regime of Bounty <strong>{esc(fid)}</strong> (<code>{esc(bid)}</code>) requires shifting from unverified qualitative hand-waving to a deterministic operator formulation anchored in <code>{esc(verifier_rel)}</code>. Specifically, the system trajectory is governed by {sliders_prose}. Within this state space, any valid proof verification or engineering synthesis must simultaneously satisfy local conservation laws, global boundary compatibility, and strict falsification gates—setting the stage for our four-chapter formal derivation in Act II.
         </p>
 
         <blockquote class="tp-pullquote"><p data-en="{esc(bounty['pullquote'])}" data-es="{esc(bounty.get('pullquote_es', bounty['pullquote']))}">{esc(bounty['pullquote'])}</p></blockquote>
@@ -3875,7 +3875,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
               <p class="tp-theorem-meta"><strong>Related prize (context only):</strong> <span data-en="{esc(bounty['badge_en'])}" data-es="{esc(bounty['badge_es'])}">{esc(bounty['badge_en'])}</span> &middot; <strong>Verifier:</strong> <code>{esc(verifier_rel)}</code> &middot; <strong>Primary Anchor:</strong> <code>DOI {doi_raw}</code></p>
             </div>
             <p>
-              To make Bounty <strong>{esc(fid)}</strong> (<em>{esc(bounty['title'])}</em>) directly inspectable by prize committees, open-source maintainers, and researchers, we define the exact state-space manifold on which the governing operator <code>{esc(bounty['governing_law'])}</code> acts. Let the system state be parameterized by {sliders_prose}. Over this bounded domain, the deterministic harness <code>{esc(verifier_rel)}</code> maps every admissible input configuration to a unique, reproducible equilibrium or deductive certificate.
+              To make Bounty <strong>{esc(fid)}</strong> (<em>{esc(bounty['title'])}</em>) directly inspectable by prize committees, open-source maintainers, and researchers, we define the exact state-space manifold on which the governing operator <code>{esc(bounty['governing_law'])}</code> acts. Let the system state be parameterized by {sliders_prose}. Over this bounded domain, the deterministic harness <code>{esc(verifier_rel)}</code> maps every admissible input configuration to a unique, reproducible equilibrium or deductive verification.
             </p>
             <p>
               Crucially, well-posedness across the benchmark regime requires that the governing operator preserve dimensional homogeneity, non-negativity of physical energy or combinatorial density functionals, and strict monotony along the primary reaction or proof coordinate (<code>{esc(bounty['scite_summary'])}</code>). Whenever a simplified heuristic omits one of the coupled terms in <code>{esc(bounty['governing_law'])}</code>, the resulting approximation violates boundary compatibility and triggers our automated falsification gate.
@@ -3913,7 +3913,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
                 <strong><span data-en="Secondary Coupling &amp; Regime Boundary ({esc(sn2['kicker'])}):" data-es="Acoplamiento Secundario y Límite de Régimen ({esc(sn2_es.get('kicker', sn2['kicker']))}):">Secondary Coupling &amp; Regime Boundary ({esc(sn2['kicker'])}):</span></strong> <span data-en="{esc(sn2['body'])}" data-es="{esc(sn2_es.get('body', sn2['body']))}">{linkify_citations(esc(sn2['body']))}</span>
               </p>
               <p>
-                <strong>Mathematical &amp; Physical Necessity of the Full Operator:</strong> This counterfactual knockout analysis proves why every hypothesis and coupling term in <code>{esc(bounty['governing_law'])}</code> is necessary. Clicking <strong>[⚡ Counterfactual Axiom-Knockout]</strong> or dragging the sliders past the critical threshold in the Act III workbench below reproduces the exact failure mode predicted by theory.
+                <strong>Mathematical &amp; Physical Necessity of the Full Operator:</strong> This counterfactual knockout analysis shows why every hypothesis and coupling term in <code>{esc(bounty['governing_law'])}</code> is necessary. Clicking <strong>[⚡ Counterfactual Axiom-Knockout]</strong> or dragging the sliders past the critical threshold in the Act III workbench below reproduces the exact failure mode predicted by theory.
               </p>
             </div>
           </article>
@@ -3929,14 +3929,14 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
 
         <section class="tp-plate-card tp-bounty-workbench" data-bounty-workbench="{esc(slug)}" aria-label="Interactive Bounty Proof Workbench for {esc(fid)}">
           <div class="tp-symbolic-regime-bar" role="group" aria-label="Select benchmark or counterfactual mode">
-            <button type="button" class="tp-sym-regime-btn" data-bounty-mode="benchmark" aria-pressed="true" data-en="⚛ Certified Benchmark Regime (T0/T1 PASS)" data-es="⚛ Régimen de Referencia Certificado (T0/T1 PASS)">⚛ Certified Benchmark Regime (T0/T1 PASS)</button>
+            <button type="button" class="tp-sym-regime-btn" data-bounty-mode="benchmark" aria-pressed="true" data-en="⚛ Verified Benchmark Regime (T0/T1 PASS)" data-es="⚛ Régimen de Referencia Verificado (T0/T1 PASS)">⚛ Verified Benchmark Regime (T0/T1 PASS)</button>
             <button type="button" class="tp-sym-regime-btn" data-bounty-mode="knockout" aria-pressed="false" data-en="⚡ Counterfactual Axiom-Knockout (Boundary Violation)" data-es="⚡ Supresión Contrafactual de Axiomas (Violación de Umbral)">⚡ Counterfactual Axiom-Knockout (Boundary Violation)</button>
             <button type="button" class="tp-sym-regime-btn" data-bounty-mode="sweep" aria-pressed="false" data-en="▶ Auto-Sweep Animation" data-es="▶ Animación de Barrido Automático">▶ Auto-Sweep Animation</button>
           </div>
           <div class="tp-bounty-svg-wrap" role="region" aria-label="Interactive trajectory and stage verification chart for {esc(fid)}">
             {render_bounty_crucible_svg(bounty)}
           </div>
-          <p class="tp-sym-caption" data-bw-caption data-en="Certified Benchmark Regime ({esc(fid)}) — All 4 stage invariants satisfied ({esc(verifier_rel)})." data-es="Régimen de Referencia Certificado ({esc(fid)}) — Las 4 etapas e invariantes se cumplen ({esc(verifier_rel)}).">Certified Benchmark Regime ({esc(fid)}) — All 4 stage invariants satisfied ({esc(verifier_rel)}).</p>
+          <p class="tp-sym-caption" data-bw-caption data-en="Verified Benchmark Regime ({esc(fid)}) — All 4 stage invariants satisfied ({esc(verifier_rel)})." data-es="Régimen de Referencia Verificado ({esc(fid)}) — Las 4 etapas e invariantes se cumplen ({esc(verifier_rel)}).">Verified Benchmark Regime ({esc(fid)}) — All 4 stage invariants satisfied ({esc(verifier_rel)}).</p>
           <div class="tp-controls-row">
             <div class="tp-control-group">
               <label for="tp-bw-s0-{esc(slug)}">
@@ -3968,7 +3968,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
               <thead>
                 <tr>
                   <th scope="col" data-en="Observable / Proof Metric" data-es="Observable / Métrica de Prueba">Observable / Proof Metric</th>
-                  <th scope="col" data-en="Certified Benchmark Value" data-es="Valor de Referencia Certificado">Certified Benchmark Value</th>
+                  <th scope="col" data-en="Verified Benchmark Value" data-es="Valor de Referencia Verificado">Verified Benchmark Value</th>
                   <th scope="col" data-en="Deterministic Verifier" data-es="Verificador Determinista">Deterministic Verifier</th>
                 </tr>
               </thead>
@@ -3983,15 +3983,15 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
         </section>
 
         <h2 id="act4-heading-{esc(slug)}" data-en="Act IV — Exact T0–T3 Epistemic Truth Boundary &amp; Companion Folio Synthesis ({esc(fid)})" data-es="Acto IV — Frontera Epistémica de Verdad T0–T3 y Síntesis con Folios Compañeros ({esc(fid)})">Act IV — Exact T0–T3 Epistemic Truth Boundary &amp; Companion Folio Synthesis ({esc(fid)})</h2>
-        <p data-en="When submitting technical work to global mathematical registries (erdosproblems.com, Lean 4 blueprints), quantum benchmark trackers (Metriq.info, unitaryHACK), or engineering prize committees (XPRIZE, IStructE, Holcim, COMPAS, FEniCS), intellectual honesty requires stating with surgical precision what is deterministically certified in software today (T0/T1) versus what remains an open theoretical conjecture or physical prototype requirement (T2/T3)." data-es="Al presentar trabajo técnico ante registros matemáticos globales (erdosproblems.com, Lean 4), plataformas de benchmarks cuánticos (Metriq.info, unitaryHACK) o comités de premios de ingeniería (XPRIZE, IStructE, Holcim, COMPAS, FEniCS), la honestidad intelectual exige distinguir con precisión quirúrgica qué está certificado hoy en código determinista (T0/T1) frente a lo que permanece como conjetura abierta o requisito de prototipo físico (T2/T3).">When submitting technical work to global mathematical registries (erdosproblems.com, Lean 4 blueprints), quantum benchmark trackers (Metriq.info, unitaryHACK), or engineering prize committees (XPRIZE, IStructE, Holcim, COMPAS, FEniCS), intellectual honesty requires stating with surgical precision what is deterministically certified in software today (T0/T1) versus what remains an open theoretical conjecture or physical prototype requirement (T2/T3).</p>
+        <p data-en="When submitting technical work to global mathematical registries (erdosproblems.com, Lean 4 blueprints), quantum benchmark trackers (Metriq.info, unitaryHACK), or engineering prize committees (XPRIZE, IStructE, Holcim, COMPAS, FEniCS), intellectual honesty requires stating with surgical precision what is deterministically verified in software today (T0/T1) versus what remains an open theoretical conjecture or physical prototype requirement (T2/T3)." data-es="Al presentar trabajo técnico ante registros matemáticos globales (erdosproblems.com, Lean 4), plataformas de benchmarks cuánticos (Metriq.info, unitaryHACK) o comités de premios de ingeniería (XPRIZE, IStructE, Holcim, COMPAS, FEniCS), la honestidad intelectual exige distinguir con precisión quirúrgica qué está verificado hoy en código determinista (T0/T1) frente a lo que permanece como conjetura abierta o requisito de prototipo físico (T2/T3).">When submitting technical work to global mathematical registries (erdosproblems.com, Lean 4 blueprints), quantum benchmark trackers (Metriq.info, unitaryHACK), or engineering prize committees (XPRIZE, IStructE, Holcim, COMPAS, FEniCS), intellectual honesty requires stating with surgical precision what is deterministically verified in software today (T0/T1) versus what remains an open theoretical conjecture or physical prototype requirement (T2/T3).</p>
         {act4_human_ai_html}
         {act4_deepening_html}
 
-        <h3 data-en="&sect; IV.1 &middot; Certified Repository Benchmark (T0/T1) vs. Open Global Prize Horizon (T2/T3)" data-es="&sect; IV.1 &middot; Benchmark Certificado en el Repositorio (T0/T1) vs. Horizonte Abierto del Premio (T2/T3)">&sect; IV.1 &middot; Certified Repository Benchmark (T0/T1) vs. Open Global Prize Horizon (T2/T3)</h3>
+        <h3 data-en="&sect; IV.1 &middot; Verified Repository Benchmark (T0/T1) vs. Open Global Prize Horizon (T2/T3)" data-es="&sect; IV.1 &middot; Benchmark Verificado en el Repositorio (T0/T1) vs. Horizonte Abierto del Premio (T2/T3)">&sect; IV.1 &middot; Verified Repository Benchmark (T0/T1) vs. Open Global Prize Horizon (T2/T3)</h3>
         <div class="tp-truth-boundary-grid" role="region" aria-label="T0 to T3 Epistemic Truth Boundary Matrix">
           <div class="tp-truth-col tp-truth-col-certified">
-            <span class="tp-truth-kicker" data-en="CERTIFIED IN THIS REPOSITORY TODAY · TIER T0 / T1" data-es="CERTIFICADO HOY EN ESTE REPOSITORIO · NIVEL T0 / T1">CERTIFIED IN THIS REPOSITORY TODAY · TIER T0 / T1</span>
-            <h4 data-en="Deterministic Benchmark &amp; Reproducible Proof Certificate" data-es="Benchmark Determinista y Certificado de Prueba Reproducible">Deterministic Benchmark &amp; Reproducible Proof Certificate</h4>
+            <span class="tp-truth-kicker" data-en="VERIFIED IN THIS REPOSITORY TODAY · TIER T0 / T1" data-es="VERIFICADO HOY EN ESTE REPOSITORIO · NIVEL T0 / T1">VERIFIED IN THIS REPOSITORY TODAY · TIER T0 / T1</span>
+            <h4 data-en="Deterministic Benchmark &amp; Reproducible Proof Harness" data-es="Benchmark Determinista y Arnés de Prueba Reproducible">Deterministic Benchmark &amp; Reproducible Proof Harness</h4>
             <ul>
               {t0_html}
             </ul>
@@ -4191,10 +4191,10 @@ def _build_toolchain_skill_and_scripts(tool: dict) -> tuple[str, str, str, str]:
         f"{rules_md}\n\n"
         f"## 5. 4-Stage Geometry & Verification Pipeline\n"
         f"{steps_md}\n\n"
-        f"## 6. Certified Reference Telemetry (T0/T1)\n"
+        f"## 6. Verified Reference Telemetry (T0/T1)\n"
         f"{bench_md}\n\n"
         f"## 7. Exact T0–T3 Truth Boundary\n"
-        f"### Certified Geometry in Repository Today (T0/T1)\n{t0_md}\n\n"
+        f"### Verified Geometry in Repository Today (T0/T1)\n{t0_md}\n\n"
         f"### Educational Boundary & Edition 2 Horizon (T2/T3)\n{t2_md}\n"
     )
     return make_py_src, verify_py_src, verify_filename, skill_md
@@ -4535,7 +4535,7 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
               <strong>Byte-Level Invariant Closure:</strong> At Stage {idx_s} of Toolbox <strong>{esc(fid)}</strong> (<code>{esc(tid)}</code>), the generator <code>{esc(gen_rel)}</code> and stdlib verifier <code>{esc(verifier_rel)}</code> enforce the governing geometric law <code>{esc(tool['governing_law'])}</code> along with the companion invariant: <em>{linkify_citations(esc(matched_rule))}</em>
             </p>
             <p>
-              <strong>Small-Studio &amp; Free-Tool Verification:</strong> When a designer, architect, or independent engineer inspects Stage {idx_s} inside Blender 4.2+, FreeCAD 1.0, OrcaSlicer / PrusaSlicer, or QCAD / LibreCAD—or executes <code>python {esc(verifier_rel)}</code> on the command line—this stage guarantees that no unverified coordinate drift, inverted surface normal, non-manifold edge seam, or truncated binary chunk can propagate silently into downstream visualization, structural coordination, or digital fabrication workflows. Every output file in <code>src/toolchain/{esc(slug)}/files/</code> is locked by a deterministic SHA-256 hash in <code>manifest.json</code> so small studios can audit exact geometric provenance without any paid proprietary CAD seat.
+              <strong>Small-Studio &amp; Free-Tool Verification:</strong> When a designer, architect, or independent engineer inspects Stage {idx_s} inside Blender 4.2+, FreeCAD 1.0, OrcaSlicer / PrusaSlicer, or QCAD / LibreCAD—or executes <code>python {esc(verifier_rel)}</code> on the command line—this stage ensures that no unverified coordinate drift, inverted surface normal, non-manifold edge seam, or truncated binary chunk can propagate silently into downstream visualization, structural coordination, or digital fabrication workflows. Every output file in <code>src/toolchain/{esc(slug)}/files/</code> is locked by a deterministic SHA-256 hash in <code>manifest.json</code> so small studios can audit exact geometric provenance without any paid proprietary CAD seat.
             </p>
           </div>"""
         )
@@ -4770,7 +4770,7 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
           Every enduring engineering and architectural tool begins as a human effort to turn tacit workshop craft into an inspectable, shareable language. Tracing the evolution of Toolbox <strong>{esc(fid)}</strong> (<code>{esc(tid)}</code>) from its earliest formulation in {linkify_citations(esc(first_era))} to its modern open-toolchain implementation in {linkify_citations(esc(last_era))} reveals why closed binary formats and unverified polygon exports repeatedly stalled small practices. Whenever a studio or fabricator is forced to exchange geometry without an explicit mathematical invariant—here governed by <code>{esc(tool['governing_law'])}</code>—silent topological defects such as boundary cracks, flipped face normals, or missing clearance tolerances corrupt the handoff between design and physical making.
         </p>
         <p>
-          Resolving that bottleneck requires pairing neutral, royalty-free file specifications (<code>.glb</code>, <code>.step</code> AP242, <code>.3mf</code>, <code>.dxf</code>) with a zero-dependency code generator (<code>{esc(gen_rel)}</code>) and a deterministic byte-level verifier (<code>{esc(verifier_rel)}</code>). Within the parametric state space governed by {sliders_prose}, every exported file is treated not as an opaque drawing, but as a falsifiable mathematical certificate whose chronology of breakthroughs is summarized below:
+          Resolving that bottleneck requires pairing neutral, royalty-free file specifications (<code>.glb</code>, <code>.step</code> AP242, <code>.3mf</code>, <code>.dxf</code>) with a zero-dependency code generator (<code>{esc(gen_rel)}</code>) and a deterministic byte-level verifier (<code>{esc(verifier_rel)}</code>). Within the parametric state space governed by {sliders_prose}, every exported file is treated not as an opaque drawing, but as a falsifiable mathematical record whose chronology of breakthroughs is summarized below:
         </p>
         <div class="tp-table-wrap">
           <table class="tp-table tp-chronology" aria-label="Historical chronology for Toolbox {esc(fid)}">
@@ -4836,7 +4836,7 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
               <p><strong>Primary Structural Note ({esc(sn1['kicker'])}):</strong> {linkify_citations(esc(sn1['body']))}</p>
               <p><strong>Secondary Verification Note ({esc(sn2['kicker'])}):</strong> {linkify_citations(esc(sn2['body']))}</p>
               <p>
-                <strong>Why Every Verifier Must Prove It Can Fail:</strong> A verification script that always prints <code>PASS</code> is indistinguishable from a rubber stamp. That is why <code>{esc(verifier_rel)}</code> includes an automated planted-defect canary test: it clones the valid geometry in memory, injects the exact topological or kinematic defect described above, and asserts that the verifier rejects the corrupted artifact before certifying the baseline build.
+                <strong>Why Every Verifier Must Show It Can Fail:</strong> A verification script that always prints <code>PASS</code> is indistinguishable from a rubber stamp. That is why <code>{esc(verifier_rel)}</code> includes an automated planted-defect canary test: it clones the valid geometry in memory, injects the exact topological or kinematic defect described above, and asserts that the verifier rejects the corrupted artifact before accepting the baseline build.
               </p>
             </div>
           </article>
@@ -4871,11 +4871,11 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
         </div>
 
         <section class="tp-plate-card tp-bounty-workbench" data-toolchain-workbench="{esc(slug)}" aria-label="Interactive Toolbox Workbench for {esc(fid)}">
-          <div class="tp-symbolic-regime-bar" role="group" aria-label="Select certified geometry or planted-defect knockout mode">
-            <button type="button" class="tp-sym-regime-btn" data-tc-mode="benchmark" aria-pressed="true" data-en="⚛ Certified Geometry Regime (Verifier PASS)" data-es="⚛ Régimen Geométrico Certificado (Verificador PASS)">⚛ Certified Geometry Regime (Verifier PASS)</button>
+          <div class="tp-symbolic-regime-bar" role="group" aria-label="Select verified geometry or planted-defect knockout mode">
+            <button type="button" class="tp-sym-regime-btn" data-tc-mode="benchmark" aria-pressed="true" data-en="⚛ Verified Geometry Regime (Verifier PASS)" data-es="⚛ Régimen Geométrico Verificado (Verificador PASS)">⚛ Verified Geometry Regime (Verifier PASS)</button>
             <button type="button" class="tp-sym-regime-btn" data-tc-mode="knockout" aria-pressed="false" data-en="⚡ Planted-Defect / Boundary Knockout (Verifier FAIL)" data-es="⚡ Defecto Plantado / Violación de Umbral (FAIL)">⚡ Planted-Defect / Boundary Knockout (Verifier FAIL)</button>
           </div>
-          <p class="tp-sym-caption" data-tc-caption>Certified Geometry Regime ({esc(fid)}) — All 4 stage invariants satisfied ({esc(verifier_rel)}).</p>
+          <p class="tp-sym-caption" data-tc-caption>Verified Geometry Regime ({esc(fid)}) — All 4 stage invariants satisfied ({esc(verifier_rel)}).</p>
           <div class="tp-controls-row">
             <div class="tp-control-group">
               <label for="tp-tc-s0-{esc(slug)}">
@@ -4906,14 +4906,14 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
         <section class="tp-worked-verification-chapter" id="ch-iii-3-{esc(slug)}" aria-labelledby="ch-iii-3-heading-{esc(slug)}">
           <h3 id="ch-iii-3-heading-{esc(slug)}" data-en="&sect; III.3 &middot; Worked Byte-Level Verification &amp; Reference Telemetry Table" data-es="&sect; III.3 &middot; Verificación a Nivel de Bytes y Tabla de Telemetría de Referencia">&sect; III.3 &middot; Worked Byte-Level Verification &amp; Reference Telemetry Table</h3>
           <p>
-            To verify the interactive 3D Inspector and Workbench above by hand or inside an automated studio QA pipeline, we evaluate <code>{esc(tool['governing_law'])}</code> at the canonical baseline operating point ({sliders_prose}) on the committed artifacts in <code>src/toolchain/{esc(slug)}/files/</code>. The resulting geometric and topological telemetry is certified as follows: {readouts_summary_prose}.
+            To verify the interactive 3D Inspector and Workbench above by hand or inside an automated studio QA pipeline, we evaluate <code>{esc(tool['governing_law'])}</code> at the canonical baseline operating point ({sliders_prose}) on the committed artifacts in <code>src/toolchain/{esc(slug)}/files/</code>. The resulting geometric and topological telemetry is verified as follows: {readouts_summary_prose}.
           </p>
           <div class="tp-table-wrap">
             <table class="tp-table tp-telemetry-benchmark-table" aria-label="Reference numerical verification benchmark for Toolbox {esc(fid)}">
               <thead>
                 <tr>
                   <th scope="col" data-en="Geometry / Format Check" data-es="Verificación Geométrica / Formato">Geometry / Format Check</th>
-                  <th scope="col" data-en="Certified Artifact Value" data-es="Valor Certificado del Artefacto">Certified Artifact Value</th>
+                  <th scope="col" data-en="Verified Artifact Value" data-es="Valor Verificado del Artefacto">Verified Artifact Value</th>
                   <th scope="col" data-en="Stdlib Verifier" data-es="Verificador Stdlib">Stdlib Verifier</th>
                 </tr>
               </thead>
@@ -4931,10 +4931,10 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
         {act4_human_ai_html}
         {act4_deepening_html}
 
-        <h3 id="ch-iv-1-{esc(slug)}" data-en="&sect; IV.1 &middot; Certified Geometry in Repository (T0/T1) vs. Educational Boundary &amp; Edition 2 Horizon (T2/T3)" data-es="&sect; IV.1 &middot; Geometría Certificada en el Repositorio (T0/T1) vs. Frontera Educativa y Horizonte Edición 2 (T2/T3)">&sect; IV.1 &middot; Certified Geometry in Repository (T0/T1) vs. Educational Boundary &amp; Edition 2 Horizon (T2/T3)</h3>
+        <h3 id="ch-iv-1-{esc(slug)}" data-en="&sect; IV.1 &middot; Verified Geometry in Repository (T0/T1) vs. Educational Boundary &amp; Edition 2 Horizon (T2/T3)" data-es="&sect; IV.1 &middot; Geometría Verificada en el Repositorio (T0/T1) vs. Frontera Educativa y Horizonte Edición 2 (T2/T3)">&sect; IV.1 &middot; Verified Geometry in Repository (T0/T1) vs. Educational Boundary &amp; Edition 2 Horizon (T2/T3)</h3>
         <div class="tp-truth-boundary-grid" role="region" aria-label="T0 to T3 Epistemic Truth Boundary Matrix">
           <div class="tp-truth-col tp-truth-col-certified">
-            <span class="tp-truth-kicker" data-en="CERTIFIED GEOMETRY IN REPOSITORY · TIER T0 / T1" data-es="GEOMETRÍA CERTIFICADA EN EL REPOSITORIO · NIVEL T0 / T1">CERTIFIED GEOMETRY IN REPOSITORY · TIER T0 / T1</span>
+            <span class="tp-truth-kicker" data-en="VERIFIED GEOMETRY IN REPOSITORY · TIER T0 / T1" data-es="GEOMETRÍA VERIFICADA EN EL REPOSITORIO · NIVEL T0 / T1">VERIFIED GEOMETRY IN REPOSITORY · TIER T0 / T1</span>
             <h4 data-en="Deterministic Generator, Neutral 3D Files &amp; Byte-Level Verifier" data-es="Generador Determinista, Archivos 3D Neutrales y Verificador">Deterministic Generator, Neutral 3D Files &amp; Byte-Level Verifier</h4>
             <ul>
               {t0_html}

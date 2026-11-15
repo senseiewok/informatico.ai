@@ -41,14 +41,14 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Stage 3: 4-Format Studio Exchange & A.11 Extrados Coupling — Emit x03_artifact.glb, x03_artifact.step (AP242 B-rep), x03_artifact.3mf, and x03_artifact.dxf while evaluating 8–13 μm radiative sky-cooling flux across the 4.69 m² extrados shell.
 - Stage 4: Heyman Kern, Sky-Cooling & Divergence-Volume Verification — Certify |e| ≤ t/6 = 66.7 mm, q_net = 98.4 W/m² ≥ 80 W/m² (ΔT_eq = −7.08 °C ≤ −4.5 °C), exact 3D volume match (1.7724 × 10⁹ mm³), and planted-defect rejection.
 
-## 6. Certified Reference Telemetry (T0/T1)
+## 6. Verified Reference Telemetry (T0/T1)
 - **7-Voussoir Topology (V, E, F)**: `V=56, E=126, F=84 · χ=14`
 - **Thrust H & Heyman Kern**: `H = 27.0 kN · |e| = 18.0 ≤ 66.7 mm`
 - **A.11 Sky-Cooling Extrados**: `q_net = 98.4 W/m² · ΔT_eq = −7.08 °C`
 - **4-Format Export Verdict**: `STEP AP242 · 3MF · DXF · GLB PASS`
 
 ## 7. Exact T0–T3 Truth Boundary
-### Certified Geometry in Repository Today (T0/T1)
+### Verified Geometry in Repository Today (T0/T1)
 - Deterministic 4-format generator (skills/toolchain/x03/make_x03.py) emitting x03_artifact.glb, x03_artifact.step (AP242), x03_artifact.3mf, and x03_artifact.dxf.
 - Byte-level stdlib verifier (verify_x03_toolchain_x03_small_architect_vault_kit.py) certifying 7-block watertightness (χ = 14), H = 27.0 kN, A.11 sky-cooling flux (q_net = 98.4 W/m², ΔT_eq = −7.08 °C), exact volume match, and planted-defect knockout.
 - Portable SKILL.md companion tailored for small architecture studios using Blender, FreeCAD, COMPAS, and QCAD Community Edition / LibreCAD.
