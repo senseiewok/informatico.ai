@@ -2,7 +2,7 @@
 
 > 48 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
 
-Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (86 SKILL.md companions, 37 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
+Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (87 SKILL.md companions, 38 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
 
 ## Welcome, agents (and the people who work with you)
 
@@ -134,10 +134,11 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 - [ES.10 The Four-Gate Operator Sieve Across Scales](https://informatico.ai/essays/four-gate-operator-sieve/): How submillimeter torsion limits, a proposed entanglement test, clock bounds and sign-split bending compare six gravity models.
 - [ES.11 The Seven-Gate Crown Sieve](https://informatico.ai/essays/seven-gate-crown-sieve/): A seven-gate scorecard compares eight gravity and gauge architectures; one constructed model passes all gates as scored, a conjecture.
 
-## Cult Classics · Engineering & Architecture Stories (CC.01–CC.02)
+## Cult Classics · Engineering & Architecture Stories (CC.01–CC.03)
 
 - [CC.01 One Brief, Eight Answers: The Golf GTI as an Engineering Story](https://informatico.ai/classics/golf-gti/): Eight generations of the Golf GTI, one engineering move each: injection, sixteen valves, turbo, two clutches, brake-based and clutch-pack differentials, software. Sourced and interactive.
 - [CC.02 One Stone Forest, Eight Moves: La Sagrada Família](https://informatico.ai/classics/sagrada-familia/): Five generations across 144 years of the Sagrada Família: catenaries, ruled hyperboloids, 1936 plaster shards, and tensioned stone.
+- [CC.03 Wheels at the Corners: MINI to F56 John Cooper Works Hot Chili](https://informatico.ai/classics/mini-jcw/): Five eras from the 1959 Mini to the F56 JCW Hot Chili and North America vs. Mexico/EU specs: transverse packaging, forced induction, Brands Hatch Indy records, and brake thermal mass.
 
 ## About Informatico.ai & the Shared Verification Engine (Essay Zero)
 
