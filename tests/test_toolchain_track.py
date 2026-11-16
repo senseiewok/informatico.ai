@@ -225,11 +225,11 @@ class ToolchainTrackTests(unittest.TestCase):
             [f"e{i:02d}" for i in range(1, 13)]
             + [f"a{i:02d}" for i in range(1, 13)]
             + [f"p{i:02d}" for i in range(1, 13)]
-            + [f"m{i:02d}" for i in range(1, 13)]
+            + [f"m{i:02d}" for i in range(1, 16)]
             + [f"b{i:02d}" for i in range(1, 7)]
             + [f"x{i:02d}" for i in range(1, 7)]
         )
-        self.assertEqual(len(all_slugs), 60)
+        self.assertEqual(len(all_slugs), 63)
         hashes: dict[str, str] = {}
         plates_dir = RESEARCH / "plates"
         for s in all_slugs:

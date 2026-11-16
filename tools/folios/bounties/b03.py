@@ -9,8 +9,8 @@ FOLIO = {'slug': 'b03',
  'plate_slug': 'b03',
  'pillar_label_en': 'Civil Engineering & Net-Zero Structures',
  'pillar_label_es': 'Ingeniería Civil y Estructuras Cero Neto',
- 'badge_en': 'BOUNTY B.03 (E-1) · $100M XPRIZE CARBON + ISTRUCTE',
- 'badge_es': 'RETO B.03 (E-1) · $100M XPRIZE CARBON + ISTRUCTE',
+ 'badge_en': 'GRAND CHALLENGE B.03 (E-1) · XPRIZE CARBON (CLOSED 2025) + ISTRUCTE',
+ 'badge_es': 'GRAN RETO B.03 (E-1) · XPRIZE CARBON (CERRADO 2025) + ISTRUCTE',
  'title': 'After the $100M XPRIZE Carbon Removal: A Sub-45 kg CO₂e/m² SIMP Mineralized Slab Design Study',
  'title_es': 'Tras el XPRIZE Carbon Removal ($100M): Estudio de Diseño de Losas SIMP Bajo 45 kg CO₂e/m²',
  'subtitle': 'How Bendsøe–Sigmund SIMP topology optimization in FEniCS/dolfinx and carbonated '
@@ -39,8 +39,8 @@ FOLIO = {'slug': 'b03',
  'scite_summary': 'Sigmund (2001) SIMP topology optimization and Smith (2002) mechanical inerter '
                   'synthesis verified against Crossref and Scite.',
  'date_published': '2026-11-04',
- 'date_redated': '2026-11-08',
- 'current_edition': 'REV 1.2',
+ 'date_redated': '2026-11-15',
+ 'current_edition': 'REV 1.3',
  'reading_time': '14 MIN READ',
  'companion_folios': [('engineering',
                        'e11',
@@ -58,9 +58,10 @@ FOLIO = {'slug': 'b03',
                        'e10',
                        'Folio E.10',
                        '3D Concrete Printing Thixotropy & Suiker Buckling')],
- 'external_links': [('XPRIZE Carbon Removal ($100M)',
+ 'external_links': [('XPRIZE Carbon Removal ($100M, Closed Apr 2025)',
                      'https://www.xprize.org/prizes/carbonremoval'),
-                    ('IStructE Structural Carbon Benchmark', 'https://www.istructe.org/'),
+                    ('IStructE Structural Awards (Commissioned Built Structures Only)',
+                     'https://www.istructe.org/'),
                     ('FEniCS/dolfinx (Finite Element PDE)', 'https://github.com/FEniCS/dolfinx')],
  'act1_dropcap': 'Cement production generates roughly 8% of global carbon dioxide emissions, and '
                  'in a typical commercial building frame, flat two-way floor slabs consume more '
@@ -158,9 +159,12 @@ FOLIO = {'slug': 'b03',
                      '10.1007/s001580050176) mathematical formulation.',
                      'Ready for immediate community showcase submission on FEniCS Discourse and '
                      'open structural engineering benchmark repositories.'],
- 't2_t3_open_horizon': ['XPRIZE Carbon Removal ($100M, a carbon-dioxide removal competition that has closed) & IStructE Structural Awards: any real claim about a slab would require full-scale physical load testing (ACI 318 / EN 1992-1-1 four-point '
-                        'bending to ultimate failure) and third-party ISO 14040/14044 '
-                        'cradle-to-grave LCA verification.'],
+ 't2_t3_open_horizon': ['XPRIZE Carbon Removal ($100M, concluded April 2025 with awards to Mati '
+                        'Carbon $50M, NetZero $15M, Vaulted Deep $8M, and UNDO $5M) & IStructE '
+                        'Structural Awards (commissioned built structures only): any real claim '
+                        'about a slab would require full-scale physical load testing (ACI 318 / EN '
+                        '1992-1-1 four-point bending to ultimate failure) and third-party ISO '
+                        '14040/14044 cradle-to-grave LCA verification.'],
  'sources': ['Sigmund, O. (2001). A 99 line topology optimization code written in Matlab. '
              'Structural and Multidisciplinary Optimization, 21(2), 120–127. DOI '
              '10.1007/s001580050176',
@@ -671,6 +675,9 @@ FOLIO = {'slug': 'b03',
                         '2022, DOI 10.1145/3524456) y Sigmund (2001, DOI 10.1007/s001580050176).',
                         'Listo para envío inmediato a la galería comunitaria de FEniCS Discourse y '
                         'repositorios abiertos de ingeniería estructural.'],
- 't2_t3_open_horizon_es': ['XPRIZE Carbon Removal ($100M, una competencia de remoción de dióxido de carbono ya cerrada) e IStructE Structural Awards: cualquier afirmación real sobre una losa requeriría ensayos físicos de carga a escala real hasta la falla (flexión en '
-                           'cuatro puntos según ACI 318 / EN 1992-1-1) y verificación de análisis '
-                           'de ciclo de vida ISO 14040/14044 por terceros.']}
+ 't2_t3_open_horizon_es': ['XPRIZE Carbon Removal ($100M, concluido en abril de 2025 con premios a Mati '
+                           'Carbon $50M, NetZero $15M, Vaulted Deep $8M y UNDO $5M) e IStructE '
+                           'Structural Awards (solo obras construidas): cualquier afirmación real '
+                           'sobre una losa requeriría ensayos físicos de carga a escala real hasta '
+                           'la falla (flexión en cuatro puntos según ACI 318 / EN 1992-1-1) y '
+                           'verificación de análisis de ciclo de vida ISO 14040/14044 por terceros.']}

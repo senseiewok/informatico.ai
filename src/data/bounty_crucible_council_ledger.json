@@ -1,8 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "feature_id": "tp-bounty-crucible",
-  "title": "Informatico.ai Special Feature — The Open-Bounty & Grand-Challenge Prize Crucible",
+  "title": "Informatico.ai Special Feature — Grand Challenges & Open Problems Crucible",
   "date_convened": "2026-11-07",
+  "date_redated": "2026-11-15",
+  "status_audit_note": "2026-11-15 audit: XTX Markets closed AIMO Prize (2026-09-16) and funded SAIR Challenges (Folios M.13–M.15); XPRIZE Quantum closed to new entrants (May 2026); XPRIZE Carbon closed (Apr 2025); Holcim 8th cycle closed (Feb/Nov 2025); Global Cooling closed (2021); unitaryHACK 2026 concluded (June 2026). Active routes: Erdős #30, Unitary Microgrants/Metriq, SAIR (M.13–M.15), and PhysLean/SRBench PRs.",
   "council_protocol": "4-Seat Multi-Family Nomination (16 Candidates) + Independent Selection Jury (Law 18 & ai-loop-council)",
   "council_seats": [
     {
@@ -30,8 +32,8 @@
     {
       "id": "M-cand-1",
       "pillar": "math",
-      "name": "Erdős Problems Cash Bounties (erdosproblems.com #1–#1000, e.g. Sidon B_2 Sets & Unit Fractions) + Lean 4 Formalization",
-      "prize": "$500–$10,000 per Erdős bounty + AIMO Progress Prize ($10M pool)",
+      "name": "Erdős Problems Cash Bounties (erdosproblems.com #30 Open) + SAIR Successor Math Challenges (M.13–M.15; AIMO Closed 2026-09-16)",
+      "prize": "$500–$10,000 per Erdős bounty + SAIR Challenges (XTX Reallocation; AIMO Ended)",
       "selected": true
     },
     {
@@ -58,8 +60,8 @@
     {
       "id": "P-cand-1",
       "pillar": "physics",
-      "name": "XPRIZE Quantum Applications ($5M Google Quantum AI + GESDA) + Unitary Foundation unitaryHACK Open-Source Quantum Bounties",
-      "prize": "$5,000,000 XPRIZE + $20,000+ unitaryHACK / Metriq Rolling Bounties",
+      "name": "XPRIZE Quantum Applications (Closed May 2026 to New Entrants) + Unitary Foundation Rolling Microgrants (<= $4,000) & Metriq",
+      "prize": "$5,000,000 XPRIZE (12 Finalists Only) + <= $4,000 Unitary Microgrants (unitaryHACK 2026 Concluded June 2026)",
       "selected": true
     },
     {
@@ -86,8 +88,8 @@
     {
       "id": "E-cand-1",
       "pillar": "engineering",
-      "name": "XPRIZE Carbon Removal ($100M) & IStructE Structural Awards: Sub-50 kg CO2e/m² Topology-Optimized Mineralized Slabs",
-      "prize": "$100,000,000 XPRIZE Carbon Removal + IStructE Sustainability Medal",
+      "name": "XPRIZE Carbon Removal (Concluded Apr 2025) & IStructE Structural Awards (Built Structures Only): Sub-50 kg CO2e/m² Slabs",
+      "prize": "$100,000,000 XPRIZE (Concluded Apr 2025) + IStructE Built-Work Awards",
       "selected": true
     },
     {
@@ -114,8 +116,8 @@
     {
       "id": "A-cand-1",
       "pillar": "architecture",
-      "name": "Holcim Foundation Awards ($1M) & Global Cooling Prize ($3M): Zero-Rebar Vaults + Sub-Ambient 8–13 μm Sky-Cooling Envelopes",
-      "prize": "$1,000,000 Holcim Awards + $3,000,000 Global Cooling Prize",
+      "name": "Holcim Foundation Awards (8th Cycle Concluded Feb/Nov 2025) & Global Cooling Prize (Closed 2021): Zero-Rebar Vaults",
+      "prize": "$1,000,000 Holcim (8th Cycle Concluded 2025) + $3,000,000 Cooling Prize (Closed 2021)",
       "selected": true
     },
     {
@@ -152,17 +154,17 @@
       ],
       "title_en": "Erdős $500–$10,000 Bounties & Anthropic Lean 4 Formalization Crucible",
       "title_es": "Recompensas de Erdős ($500–$10,000) y Crisol de Formalización en Lean 4",
-      "prize_badge": "ERDŐS BOUNTIES + AIMO $10M + LEAN 4",
-      "cool_fact": "Paul Erdős offered cash checks from $25 to $10,000 for open problems in combinatorics and number theory; in 2025–2026, AI agents + Lean 4 formalization (including Anthropic's 13-million-line Fermat's Last Theorem proof in anthropics/fermats-last-theorem and Challenge/XiPrime.lean in anthropics/formal-math) began closing out decades-old conjectures with zero human hand-waving.",
+      "prize_badge": "ERDŐS #30 ($1,000 OPEN) · AIMO ARCHIVED · LEAN 4",
+      "cool_fact": "Paul Erdős offered cash checks from $25 to $10,000 for open problems in combinatorics and number theory (Problem #30 remains open); XTX Markets closed the AIMO Prize on 2026-09-16 (~$1.62M awarded) and shifted philanthropy to Lean FRO ($10M), Mathlib ($10M), and SAIR research challenges (Folios M.13–M.15).",
       "cross_field_analogy": "Like placing radio towers along a highway so no two pairs of towers share the exact same distance (a Golomb ruler / Sidon B_2 set): prevents wireless interference in 6G and radar arrays while bounding prime gaps.",
-      "governing_law": "a_i + a_j = a_k + a_l ⇒ {i,j} = {k,l} · |A ∩ [1,N]| ≤ √N + N^(1/4) + 1 · 0 sorry in Lean 4",
+      "governing_law": "a_i + a_j = a_k + a_l ⇒ {i,j} = {k,l} · |A ∩ [1,N]| ≤ √N + N^(1/4) + 1",
       "open_source_stack": [
         "https://github.com/senseiewok/informatico.ai",
-        "https://github.com/anthropics/fermats-last-theorem",
-        "https://github.com/anthropics/formal-math",
-        "https://github.com/teorth/equational_theories"
+        "https://www.erdosproblems.com/30",
+        "https://competition.sair.foundation/",
+        "https://github.com/anthropics/formal-math"
       ],
-      "how_to_participate": "Use the live Sidon B_2 & Lean 4 Proof Crucible to test dense projective-plane constructions and export a zero-sorry Lean 4 tactic skeleton."
+      "how_to_participate": "Run the Sidon B_2 verifier locally; see erdosproblems.com/30 for Problem #30 and Folios M.13–M.15 for active SAIR mathematics challenges."
     },
     {
       "bounty_id": "BOUNTY-P1",
@@ -173,10 +175,10 @@
         "P.11",
         "P.12"
       ],
-      "title_en": "$5M XPRIZE Quantum Applications & Unitary Foundation `unitaryHACK` Bounties",
-      "title_es": "XPRIZE Quantum Applications ($5M) y Recompensas Abiertas `unitaryHACK`",
-      "prize_badge": "$5M XPRIZE QUANTUM + UNITARYHACK",
-      "cool_fact": "The $5M XPRIZE Quantum Applications (Google Quantum AI + GESDA) rewards quantum algorithms that solve UN Sustainable Development Goals like room-temperature FeMoCo fertilizer, while Unitary Foundation's unitaryHACK pays cash bounties to anyone who closes open GitHub issues in quantumlib/Stim, PySCF, Qiskit, PennyLane, and Mitiq.",
+      "title_en": "$5M XPRIZE Quantum Applications (Finalists Only) & Unitary Foundation Microgrants",
+      "title_es": "XPRIZE Quantum Applications ($5M, Finalistas) y Microbecas Unitary Foundation",
+      "prize_badge": "XPRIZE (CLOSED MAY 2026) + UNITARY MICROGRANTS",
+      "cool_fact": "The $5M XPRIZE Quantum Applications closed to new entrants in May 2026 (7 Phase I + 5 Wildcard finalists), and unitaryHACK 2026 concluded 3–17 June 2026; active open participation continues via Unitary Foundation rolling microgrants (<= $4,000) and self-service Metriq.info benchmarks alongside quantumlib/Stim and PySCF.",
       "cross_field_analogy": "Like untangling a knotted headphone cord using ZX-calculus 'spider fusion' rules: every non-Clifford T-gate you cancel in software saves 1,458 physical superconducting qubits in the dilution refrigerator!",
       "governing_law": "N_phys = 2 d² N_log + N_factory(T_count) · p_L ≈ 0.03 (p/p_th)^((d+1)/2) · ΔE ≤ 1.0 kcal/mol",
       "open_source_stack": [
@@ -199,7 +201,7 @@
       ],
       "title_en": "$100M XPRIZE Carbon Removal & IStructE Net-Zero Structural Slab Challenge",
       "title_es": "XPRIZE Carbon Removal ($100M) y Reto IStructE de Losas Estructurales Cero Neto",
-      "prize_badge": "$100M XPRIZE CARBON + ISTRUCTE AWARD",
+      "prize_badge": "XPRIZE CARBON (CONCLUDED APR 2025) + ISTRUCTE (BUILT WORKS)",
       "cool_fact": "Replacing flat reinforced concrete slabs with FEniCS/dolfinx SIMP topology-optimized Michell ribs (Folio E.11) printed via Roussel 3DCP (Folio E.10) and cured with mineralized CO2 (Folio E.09) slashes floor carbon from 180 kg CO2e/m² below the folio's own 45 kg CO2e/m² design target—turning city buildings into permanent limestone carbon sinks.",
       "cross_field_analogy": "Combining the hollow trabecular arches of an eagle's wing bone with coral-reef calcium carbonate mineralization.",
       "governing_law": "e_CO2 = ρ_c V_frac c_clinker − Δm_CaCO3 ≤ 45 kg CO2e/m² · c(ρ) = Uᵀ K(ρ) U",
@@ -221,7 +223,7 @@
       ],
       "title_en": "$1M Holcim Sustainable Construction & $3M Global Cooling Prize Canopy",
       "title_es": "Premio Holcim ($1M) y Global Cooling Prize ($3M) de Envolventes sin Red Eléctrica",
-      "prize_badge": "$1M HOLCIM + $3M COOLING PRIZE",
+      "prize_badge": "8TH HOLCIM (CONCLUDED 2025) + COOLING PRIZE (CLOSED 2021)",
       "cool_fact": "Air conditioning consumes 10% of global electricity, yet a 52 mm compression-only vault (designed in open-source compas-dev/compas) or a 12 kg/m² tensegrity dome clad in an 8–13 μm radiative sky-cooling membrane (modeled in NREL/EnergyPlus) drops interior temperatures by 5.2 °C under direct midday sun with zero grid electricity and zero steel rebar.",
       "cross_field_analogy": "Uniting Rafael Guastavino's self-supporting terracotta cathedral shells with the Saharan silver ant's infrared-beaming prism hairs.",
       "governing_law": "det(H_Φ) > 0 (0 kg Rebar) · q_cool(8–13 μm) = P_rad(T_s) − P_atm − P_sun ≥ 95 W/m²",
@@ -234,30 +236,31 @@
     }
   ],
   "grounding_and_submission_protocol": {
-    "citation_verifier": "python -X utf8 tools/check_folio_citations.py --include-informatico --offline (88/88 essays PASS, fail=0, warn=0, unchecked=0)",
-    "truth_boundary_rule": "Interactive monographs provide T0/T1 Crossref-grounded equations, open-source Python verifiers, and downloadable SKILL.md companions. Never claim an official cash bounty or XPRIZE without either a novel 0-sorry Lean 4 proof of an unsolved problem or an instrumented physical hardware pilot.",
+    "citation_verifier": "python -X utf8 tools/check_folio_citations.py --include-informatico --offline (91/91 essays PASS, fail=0, warn=0, unchecked=0)",
+    "truth_boundary_rule": "Interactive monographs provide T0/T1 Crossref-grounded equations, open-source Python verifiers, and downloadable SKILL.md companions. Never claim an official cash bounty or XPRIZE without either a peer-checked Lean 4 proof of an OPEN problem or an instrumented physical hardware pilot.",
     "submit_on_publish_channels": [
       {
         "bounty_id": "BOUNTY-P1",
-        "target": "Unitary Foundation — Metriq.info & unitaryHACK Community Showcase",
-        "action_on_publish": "Submit immediately on publication: register Folio P.11's Stim + PySCF interactive benchmark and SKILL.md on Metriq.info and share with Unitary Foundation community channels."
+        "target": "Unitary Foundation — Rolling Microgrants (<= $4,000) & Metriq.info (unitaryHACK 2026 concluded June 2026)",
+        "action_on_publish": "Submit open QEC benchmark proposals via unitary.foundation/grants/ and log reproducible Stim + PySCF baselines directly on Metriq.info (XPRIZE Quantum closed to new entrants May 2026)."
       },
       {
         "bounty_id": "BOUNTY-M1",
-        "target": "erdosproblems.com (Thomas Bloom) & Lean Zulip Formalization Showcase",
-        "action_on_publish": "Submit educational/literature link & Lean 4 blueprint visualizer on publication (Folios M.01, M.02, M.11, M.12); reserve cash-bounty claims strictly for when a new 0-sorry Lean 4 proof of an OPEN Erdős problem is completed."
+        "target": "erdosproblems.com/30 (Open) & SAIR Foundation Challenges (Folios M.13–M.15; AIMO Closed 2026-09-16)",
+        "action_on_publish": "Track open Erdős Problem #30 ($1,000) on erdosproblems.com/30 and route active Lean 4 / formal-math work to SAIR Foundation challenges covered individually in Folios M.13–M.15."
       },
       {
         "bounty_id": "BOUNTY-A1",
-        "target": "ETH Zürich Block Research Group (COMPAS Showcase) & NREL EnergyPlus Community",
-        "action_on_publish": "Submit immediately on publication as an open bilingual (EN + ES-MX) interactive educational monograph showcasing compas-dev/compas 3D graphic statics (Folio A.11) and 8-13 um radiative cooling (Folio A.12)."
+        "target": "ETH Zürich Block Research Group (COMPAS Showcase) & NREL EnergyPlus Community (Holcim 8th Cycle & Cooling Prize Concluded)",
+        "action_on_publish": "Publish as an open bilingual (EN + ES-MX) educational study for compas-dev/compas 3D graphic statics (Folio A.11) and 8-13 um radiative cooling (Folio A.12)."
       },
       {
         "bounty_id": "BOUNTY-E1",
-        "target": "FEniCS Project Community Showcase & PyPSA Open-Grid Gallery",
-        "action_on_publish": "Submit immediately on publication as an interactive educational benchmark for FEniCS/dolfinx SIMP topology optimization (Folio E.11) and grid safety with Control Barrier Functions (Folio E.12)."
+        "target": "FEniCS Project Community Showcase & PyPSA Open-Grid Gallery (XPRIZE Carbon Concluded Apr 2025)",
+        "action_on_publish": "Publish as an interactive educational benchmark for FEniCS/dolfinx SIMP topology optimization (Folio E.11) and grid safety with Control Barrier Functions (Folio E.12)."
       }
     ]
   },
+  "grounding_note": "Informatico.ai is an independent study and reproducible monograph site, not a prize entrant or organizer. No prize, bounty, or award named in Folios B.01–B.06 has been won or awarded to this project. Statuses audited 2026-11-15: Erdős #30 ($1,000) remains open; AIMO closed 2026-09-16 with XTX funding reallocated to Lean FRO, Mathlib, and SAIR challenges (Folios M.13–M.15); XPRIZE Quantum closed to new entrants May 2026 and unitaryHACK 2026 concluded June 2026 (rolling Unitary microgrants <= $4,000 and Metriq.info remain open); XPRIZE Carbon concluded Apr 2025; Holcim 8th cycle closed Feb/Nov 2025; Global Cooling Prize closed 2021.",
   "public_repository": "https://github.com/senseiewok/informatico.ai"
 }

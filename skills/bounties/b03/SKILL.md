@@ -7,10 +7,10 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 # After the $100M XPRIZE Carbon Removal: A Sub-45 kg CO₂e/m² SIMP Mineralized Slab Design Study (B.03 · BOUNTY-E1)
 
 ## 1. Governing Law, Prize Registry & Canonical URL
-- **Bounty Folio**: `B.03` (`BOUNTY-E1` · `REV 1.2`, Redated `2026-11-08`)
+- **Bounty Folio**: `B.03` (`BOUNTY-E1` · `REV 1.3`, Redated `2026-11-15`)
 - **Canonical URL**: https://informatico.ai/bounties/b03/ (Spanish: https://informatico.ai/es-mx/bounties/b03/)
-- **Prize / Challenge**: BOUNTY B.03 (E-1) · $100M XPRIZE CARBON + ISTRUCTE
-- **Official Registry**: [XPRIZE Carbon Removal ($100M)](https://www.xprize.org/prizes/carbonremoval)
+- **Prize / Challenge**: GRAND CHALLENGE B.03 (E-1) · XPRIZE CARBON (CLOSED 2025) + ISTRUCTE
+- **Official Registry**: [XPRIZE Carbon Removal ($100M, Closed Apr 2025)](https://www.xprize.org/prizes/carbonremoval)
 - **Governing Equation**: `e_net = e_0 (V/V_0) − m_CO2 = 39.40 kg CO₂e/m² < 45.0 · c/c_0 = 1 + 0.40(1 − V/V_0)^1.35 = 1.224 < 1.35`
 - **Proof harness (computes the reference results; no planted-defect mode yet)**: `python bounties/bounty_e1_simp_carbon_slab.py`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1007/s001580050176 (Scite Report: https://scite.ai/reports/10.1007/s001580050176)
@@ -39,4 +39,4 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Ready for immediate community showcase submission on FEniCS Discourse and open structural engineering benchmark repositories.
 
 ### Open Global Prize Horizon (T2/T3)
-- XPRIZE Carbon Removal ($100M, a carbon-dioxide removal competition that has closed) & IStructE Structural Awards: any real claim about a slab would require full-scale physical load testing (ACI 318 / EN 1992-1-1 four-point bending to ultimate failure) and third-party ISO 14040/14044 cradle-to-grave LCA verification.
+- XPRIZE Carbon Removal ($100M, concluded April 2025 with awards to Mati Carbon $50M, NetZero $15M, Vaulted Deep $8M, and UNDO $5M) & IStructE Structural Awards (commissioned built structures only): any real claim about a slab would require full-scale physical load testing (ACI 318 / EN 1992-1-1 four-point bending to ultimate failure) and third-party ISO 14040/14044 cradle-to-grave LCA verification.

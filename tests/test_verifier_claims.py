@@ -115,7 +115,7 @@ class VerifierClaimTests(unittest.TestCase):
     def test_home_counts_verifiers_from_disk(self) -> None:
         count = len(runner.discover())
         home = (SRC / "index.html").read_text(encoding="utf-8")
-        self.assertIn(f"{count} verifiers across the Toolbox, Time and Gravity and the cross-scale essays", home)
+        self.assertIn(f"{count} verifiers across Mathematics, the Toolbox, Time and Gravity and the cross-scale essays", home)
         self.assertNotIn("hands you a live model, Python verifier, and AI SKILL.md", home)
 
 

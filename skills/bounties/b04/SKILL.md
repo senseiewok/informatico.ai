@@ -7,10 +7,10 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 # $1M Holcim Awards & $3M Global Cooling Prize: A Zero-Rebar 3D Graphic Statics Vault & Sky-Cooling Design Study (B.04 · BOUNTY-A1)
 
 ## 1. Governing Law, Prize Registry & Canonical URL
-- **Bounty Folio**: `B.04` (`BOUNTY-A1` · `REV 1.2`, Redated `2026-11-08`)
+- **Bounty Folio**: `B.04` (`BOUNTY-A1` · `REV 1.3`, Redated `2026-11-15`)
 - **Canonical URL**: https://informatico.ai/bounties/b04/ (Spanish: https://informatico.ai/es-mx/bounties/b04/)
-- **Prize / Challenge**: BOUNTY B.04 (A-1) · $1M HOLCIM + $3M COOLING PRIZE
-- **Official Registry**: [Holcim Awards for Sustainable Construction ($1M)](https://www.holcimfoundation.org/)
+- **Prize / Challenge**: GRAND CHALLENGE B.04 (A-1) · 8TH HOLCIM (CLOSED 2025) + COOLING PRIZE (2021)
+- **Official Registry**: [Holcim Foundation Awards (8th Cycle Concluded Nov 2025, Commissioned Projects)](https://www.holcimfoundation.org/)
 - **Governing Equation**: `∑ A_f n_f = 0 (H = qL²/8f = 100 kN, 0 kg rebar) · q_net = ε_IR σ T⁴ − q_atm − (1 − R_sol) I_sol = 98.4 W/m² (ΔT = −5.2 °C)`
 - **Proof harness (computes the reference results; no planted-defect mode yet)**: `python bounties/bounty_a1_graphic_statics_sky_cooling.py`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1016/j.cad.2015.01.006 (Scite Report: https://scite.ai/reports/10.1016/j.cad.2015.01.006)
@@ -39,4 +39,4 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Ready for immediate community showcase submission to ETH Zürich COMPAS discussions and NREL EnergyPlus teaching resources.
 
 ### Open Global Prize Horizon (T2/T3)
-- Holcim Awards ($1M) & Global Cooling Prize ($3M, closed in 2021): any real claim would require a commissioned architectural project or instrumented outdoor climate-chamber prototype demonstrating year-round weathering and hygrometric condensation control.
+- Holcim Foundation Awards (8th cycle closed February 2025, winners named Venice November 2025, commissioned buildings only) & Global Cooling Prize ($3M, closed 2021): any real claim would require a commissioned architectural project or instrumented outdoor climate-chamber prototype demonstrating year-round weathering and hygrometric condensation control.

@@ -9,8 +9,8 @@ FOLIO = {'slug': 'b04',
  'plate_slug': 'b04',
  'pillar_label_en': 'Architecture · Zero-Rebar & Passive Sky-Cooling',
  'pillar_label_es': 'Arquitectura · Bóvedas sin Acero y Enfriamiento Radiativo',
- 'badge_en': 'BOUNTY B.04 (A-1) · $1M HOLCIM + $3M COOLING PRIZE',
- 'badge_es': 'RETO B.04 (A-1) · $1M HOLCIM + $3M COOLING PRIZE',
+ 'badge_en': 'GRAND CHALLENGE B.04 (A-1) · 8TH HOLCIM (CLOSED 2025) + COOLING PRIZE (2021)',
+ 'badge_es': 'GRAN RETO B.04 (A-1) · HOLCIM 8ª ED. (2025) + COOLING PRIZE (2021)',
  'title': '$1M Holcim Awards & $3M Global Cooling Prize: A Zero-Rebar 3D Graphic Statics Vault & Sky-Cooling Design Study',
  'title_es': 'Premios Holcim ($1M) y Global Cooling ($3M): Estudio de Diseño de Bóvedas 3D sin Acero y Enfriamiento Radiativo',
  'subtitle': 'How Maxwell–Rankine 3D polyhedral graphic statics in COMPAS and 8–13 μm porous '
@@ -40,8 +40,8 @@ FOLIO = {'slug': 'b04',
  'scite_summary': 'Akbarzadeh, Van Mele & Block (2015) 3D polyhedral graphic statics and Mandal et '
                   'al. (2018, Science) radiative sky-cooling verified against Crossref and Scite.',
  'date_published': '2026-11-04',
- 'date_redated': '2026-11-08',
- 'current_edition': 'REV 1.2',
+ 'date_redated': '2026-11-15',
+ 'current_edition': 'REV 1.3',
  'reading_time': '14 MIN READ',
  'companion_folios': [('architecture',
                        'a11',
@@ -59,9 +59,9 @@ FOLIO = {'slug': 'b04',
                        'a08',
                        'Folio A.08',
                        'Daytime Radiative Sky-Cooling Roofs & Phase-Change Walls')],
- 'external_links': [('Holcim Awards for Sustainable Construction ($1M)',
+ 'external_links': [('Holcim Foundation Awards (8th Cycle Concluded Nov 2025, Commissioned Projects)',
                      'https://www.holcimfoundation.org/'),
-                    ('Global Cooling Prize ($3M, 2018–2021)', 'https://globalcoolingprize.org/'),
+                    ('Global Cooling Prize ($3M, Closed 2021 Archive)', 'https://globalcoolingprize.org/'),
                     ('compas-dev/compas (ETH Zürich BRG)', 'https://github.com/compas-dev/compas'),
                     ('NREL/EnergyPlus (Building Thermal Engine)',
                      'https://github.com/NREL/EnergyPlus')],
@@ -160,7 +160,9 @@ FOLIO = {'slug': 'b04',
                      '10.1126/science.aat9513).',
                      'Ready for immediate community showcase submission to ETH Zürich COMPAS '
                      'discussions and NREL EnergyPlus teaching resources.'],
- 't2_t3_open_horizon': ['Holcim Awards ($1M) & Global Cooling Prize ($3M, closed in 2021): any real claim would require a commissioned '
+ 't2_t3_open_horizon': ['Holcim Foundation Awards (8th cycle closed February 2025, winners named '
+                        'Venice November 2025, commissioned buildings only) & Global Cooling '
+                        'Prize ($3M, closed 2021): any real claim would require a commissioned '
                         'architectural project or instrumented outdoor climate-chamber prototype '
                         'demonstrating year-round weathering and hygrometric condensation '
                         'control.'],
@@ -210,7 +212,7 @@ FOLIO = {'slug': 'b04',
                 'centuries without tensile rebar, relying entirely on funicular compression thrust '
                 'lines. However, drafting and calculating complex three-dimensional masonry '
                 'geometries once required laborious physical plaster mock-ups or conservative '
-                'empirical formulas. The one-million-dollar Holcim Awards for Sustainable Construction reward built projects, and the three-million-dollar Global Cooling Prize (2018–2021) sought a far lower-impact room air conditioner. Neither sets the criteria used here: eliminating structural tensile reinforcement while delivering sub-ambient passive daytime cooling is this folio\'s own design brief, borrowed from their ambition. Meeting this dual mandate '
+                'empirical formulas. The Holcim Awards for Sustainable Construction (8th cycle closed February 2025, winners named November 2025) reward commissioned built projects, and the three-million-dollar Global Cooling Prize (2018–2021) sought a far lower-impact room air conditioner. Neither accepts speculative submissions or sets the criteria used here: eliminating structural tensile reinforcement while delivering sub-ambient passive daytime cooling is this folio\'s own design brief, borrowed from their ambition. Meeting this dual mandate '
                 "requires synthesizing James Clerk Maxwell's 3D polyhedral graphic statics in "
                 'open-source computational frameworks with photonic sky-cooling polymers. Spanning '
                 'sixteen meters with zero steel rebar, these funicular tile shells cut concrete '
@@ -536,7 +538,7 @@ FOLIO = {'slug': 'b04',
                    'Históricamente, los maestros constructores desde Roma hasta Cataluña y México '
                    'mostraron que las bóvedas de piedra y tabique podían cubrir grandes salones '
                    'durante siglos sin acero de refuerzo, apoyándose en líneas de empuje '
-                   'funiculares en compresión pura. Los premios Holcim ($1M) reconocen proyectos construidos y el Global Cooling Prize ($3M, 2018–2021) buscó un aire acondicionado de mucho menor impacto. Ninguno fija los criterios usados aquí: eliminar el acero estructural y lograr enfriamiento pasivo bajo el ambiente a pleno sol es el encargo de diseño propio de este folio. Al unir los poliedros de fuerza 3D de Maxwell en '
+                   'funiculares en compresión pura. Los premios Holcim (8.ª edición cerrada en febrero de 2025, ganadores nombrados en noviembre de 2025) reconocen únicamente obras comisionadas y el Global Cooling Prize ($3M, 2018–2021) concluyó tras premiar un aire acondicionado de mucho menor impacto. Ninguno fija los criterios usados aquí: eliminar el acero estructural y lograr enfriamiento pasivo bajo el ambiente a pleno sol es el encargo de diseño propio de este folio. Al unir los poliedros de fuerza 3D de Maxwell en '
                    'COMPAS con polímeros fotónicos nanoporosos, estas bóvedas cubren 16 metros con '
                    '0 kg de acero e irradian calor directamente hacia el espacio profundo.',
  'pullquote_es': 'La gravedad quiere comprimir la piedra, y la noche helada del espacio profundo '
@@ -660,6 +662,8 @@ FOLIO = {'slug': 'b04',
                         '10.1126/science.aat9513).',
                         'Listo para envío inmediato a los foros de COMPAS en ETH Zürich y recursos '
                         'docentes de NREL EnergyPlus.'],
- 't2_t3_open_horizon_es': ['Premios Holcim ($1M) y Global Cooling Prize ($3M, cerrado en 2021): cualquier afirmación real requeriría un proyecto arquitectónico comisionado o un prototipo exterior '
-                           'instrumentado que evalúe intemperismo anual y control de '
-                           'condensación higrométrica.']}
+ 't2_t3_open_horizon_es': ['Premios Holcim (8.ª edición cerrada en febrero de 2025, ganadores en '
+                           'noviembre de 2025, solo obras comisionadas) y Global Cooling Prize ($3M, '
+                           'cerrado en 2021): cualquier afirmación real requeriría un proyecto '
+                           'arquitectónico comisionado o un prototipo exterior instrumentado que '
+                           'evalúe intemperismo anual y control de condensación higrométrica.']}

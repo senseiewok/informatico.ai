@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2",
   "law": "Law 8 & Law 17 — Human-Scale Grounded Scientific Plate Generation & 4-Seat Image Selection Council",
-  "total_plates_replaced": 61,
-  "magazine_plates_count": 61,
+  "total_plates_replaced": 64,
+  "magazine_plates_count": 64,
   "council_seats": [
     "gemini-4-argon (Physical Specification & Structural Plausibility Seat)",
     "claude-opus-5.5 (Human Perceptual Impact & Tactile Craft Seat)",
@@ -680,6 +680,39 @@
       "bytes": 422382,
       "zero_baked_text_verified": true,
       "sha256": "98f12fbd49e3eb85cd5a585ef34cdb120d077e3e4c0d2a9c586cde610885f756"
+    },
+    {
+      "plate_id": "m13",
+      "path": "src/plates/m13.jpg",
+      "governing_specification": "Sapphire-and-vellum keystone observatory filtering computational search threads through an obsidian crystal aperture into three parallel beams",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 447281,
+      "zero_baked_text_verified": true,
+      "sha256": "22548190abd8f7d0b10c1983e5b5c5a925c5b089118692e18745ebe43fc8499e"
+    },
+    {
+      "plate_id": "m14",
+      "path": "src/plates/m14.jpg",
+      "governing_specification": "Twin sculpted copper and glass genus-2 handlebody ribbon loops paired with untangled verdigris rings and brass dividers on travertine",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 260350,
+      "zero_baked_text_verified": true,
+      "sha256": "ad7492a11bd7049bef9313ec5eade31937dd3d4331e5e210777a742e466c359b"
+    },
+    {
+      "plate_id": "m15",
+      "path": "src/plates/m15.jpg",
+      "governing_specification": "Precision brass and Prussian-blue steel armillary sphere enclosing a 24-facet emerald polyhedron casting prism mosaic shadows",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 290518,
+      "zero_baked_text_verified": true,
+      "sha256": "df26bdda6274fe61519ef7decf7f411e0ac59243cb544cbdca039f126f772e68"
     }
   ]
 }
