@@ -242,8 +242,13 @@ class CultClassicPages(unittest.TestCase):
             self.assertIn(f'href="#src-{key}"', en_html)
             self.assertIn(f'id="src-{key}"', en_html)
         for p in (SRC / "engineering" / "index.html", SRC / "es-mx" / "engineering" / "index.html"):
-            self.assertIn('id="cult-classics-eng"', p.read_text(encoding="utf-8"))
+            txt = p.read_text(encoding="utf-8")
+            self.assertIn('id="cult-classics-eng"', txt)
+            self.assertIn('Standalone Engineering Monographs', txt)
+            self.assertLess(txt.index('Standalone Engineering Monographs'), txt.index('id="cult-classics-eng"'))
         for p in (SRC / "physics" / "index.html", SRC / "es-mx" / "physics" / "index.html"):
+            self.assertNotIn('id="cult-classics"', p.read_text(encoding="utf-8"))
+        for p in (SRC / "index.html", SRC / "es-mx" / "index.html"):
             self.assertIn('id="cult-classics"', p.read_text(encoding="utf-8"))
         audio_js = (SRC / "modules" / "article-audio.mjs").read_text(encoding="utf-8")
         self.assertIn("GTI_ACT_DEFS", audio_js)

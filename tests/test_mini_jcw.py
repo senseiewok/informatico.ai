@@ -264,6 +264,17 @@ class MiniJcwPages(unittest.TestCase):
         self.assertEqual(en - es, set(), f"figures only in English: {en - es}")
         self.assertEqual(es - en, set(), f"figures only in Spanish: {es - en}")
 
+    def test_brands_hatch_ghost_race_start_finish_and_engineering_crumbs(self) -> None:
+        import build_mini_jcw as M  # noqa: E402
+        self.assertTrue(M.BRANDS_INDY_LOOP.startswith("M 252 107 "))
+        self.assertTrue(M.BRANDS_INDY_LOOP.endswith(" 252 107 Z"))
+        self.assertIn('window.addEventListener("tp-lang-change", paintReadout)', JS.read_text(encoding="utf-8"))
+        for page in (EN, ES):
+            txt = page.read_text(encoding="utf-8")
+            self.assertIn('href="../../engineering/#cult-classics-eng"', txt)
+            self.assertIn('<line class="cc-loop-flag" x1="250" y1="89" x2="254" y2="125"/>', txt)
+            self.assertEqual(txt.count('<circle r="9" cx="252" cy="107"/>'), 8)
+
     def test_sitemap_and_llms_list_the_feature(self) -> None:
         xml = (SRC / "sitemap.xml").read_text(encoding="utf-8")
         self.assertIn(f"<loc>https://informatico.ai/classics/{C.SLUG}/</loc>", xml)
