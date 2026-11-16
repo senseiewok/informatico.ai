@@ -15,7 +15,7 @@
 
 const PASSPORT_STORAGE_KEY = "informatico.passport.v1";
 const PUZZLE_KEY_PREFIX = "informatico.puzzle.v1.";
-const TOTAL_PUZZLE_TARGETS = 49; // Cover Hub + 40 Folios (82 bilingual puzzles total)
+const TOTAL_PUZZLE_TARGETS = 50; // Cover Hub + 48 Folios + CC.02 (100 bilingual puzzles total)
 
 const memoryFallbackStore = new Map();
 

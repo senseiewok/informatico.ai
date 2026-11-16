@@ -1,0 +1,1021 @@
+/* CC.02 · La Sagrada Família Architecture Masterpiece.
+   Uses the site --tp-* palette tokens so light Limestone Paper and dark Blueprint themes stay synchronized.
+   Motion: transforms and opacity only; static under prefers-reduced-motion; pausable via html.sf-paused (WCAG 2.2.2).
+   Zero negative horizontal margins so mobile (375px) and desktop (1440px) maintain 0 px horizontal overflow. */
+
+.sf-page {
+  --sf-red: var(--tp-minium);
+  --sf-ink: var(--tp-ink);
+  --sf-rule: var(--tp-rule);
+  --sf-paper: var(--tp-vellum);
+  --sf-porphyry: #8d3028;
+  --sf-basalt: #27303d;
+  --sf-granite: #6b7685;
+  --sf-sandstone: #b88746;
+  --sf-azure: var(--tp-prussian);
+  --sf-emerald: var(--tp-verdigris);
+  --sf-amber: var(--tp-sienna);
+  --sf-stage-bg: #0e141b;
+  --sf-stage-line: rgba(240, 246, 252, 0.16);
+}
+html[data-theme="blueprint"] .sf-page,
+html[data-theme="dark"] .sf-page {
+  --sf-porphyry: #ff9b8a;
+  --sf-basalt: #8fa7c7;
+  --sf-granite: #b4c2d4;
+  --sf-sandstone: #e3b975;
+}
+
+/* ---------------------------------------------------------------- fixed geometric backdrop */
+.sf-catenary-backdrop {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.34;
+}
+.sf-shell {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+.sf-layer path,
+.sf-layer line {
+  fill: none;
+}
+.sf-layer-grid path,
+.sf-layer-grid line {
+  stroke: var(--tp-rule);
+  stroke-width: 1.2;
+}
+.sf-layer-cords path {
+  stroke: var(--tp-prussian);
+  stroke-width: 1.6;
+  stroke-dasharray: 10 8;
+  opacity: 0.45;
+}
+.sf-layer-spires path {
+  stroke: var(--sf-red);
+  stroke-width: 1.8;
+  opacity: 0.25;
+}
+
+.sf-skyline-lanes {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.sf-skyline-lane {
+  position: absolute;
+  right: 2vw;
+  opacity: 0.06;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.sf-skyline-lane.is-current {
+  opacity: 0.16;
+  transform: translateY(-4px);
+}
+
+/* ---------------------------------------------------------------- sticky 8-era rail */
+.sf-era-rail {
+  position: sticky;
+  top: 4.1rem;
+  z-index: 4;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.4rem;
+  overflow-x: auto;
+  max-width: 100%;
+  padding: 0.5rem 0;
+  margin: 0.5rem 0 1.2rem;
+  background: var(--tp-stone);
+  border-bottom: 1px solid var(--sf-rule);
+  scrollbar-width: thin;
+}
+.sf-era-chip {
+  flex: 0 0 auto;
+  font-family: var(--tp-font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  padding: 0.32rem 0.68rem;
+  border: 1.5px solid var(--tp-rule-strong);
+  border-radius: 999px;
+  color: var(--sf-ink);
+  text-decoration: none;
+  background: var(--sf-paper);
+  white-space: nowrap;
+}
+.sf-era-chip:hover,
+.sf-era-chip.is-current {
+  border-color: var(--sf-red);
+  color: var(--sf-red);
+}
+.sf-era-chip.is-current {
+  background: var(--tp-minium-soft);
+  font-weight: 600;
+}
+.sf-era-chip:focus-visible {
+  outline: 3px solid var(--tp-prussian);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------- hero, editorial typography & structural divider */
+.sf-feature {
+  max-width: 78rem;
+  margin: 0 auto;
+  min-width: 0;
+}
+.sf-hero {
+  padding-block: 1.5rem 1.25rem;
+  border-bottom: 1px solid var(--sf-rule);
+}
+.sf-hero .sf-h1 {
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+.sf-hero .sf-h1::after,
+.sf-h2::after {
+  content: "";
+  display: block;
+  width: 3.8rem;
+  height: 3px;
+  margin-top: 0.5rem;
+  background: var(--sf-red);
+}
+.sf-h2 {
+  font-family: var(--tp-font-editorial);
+  font-size: clamp(1.42rem, 2.3vw, 2rem);
+  margin: 2.2rem 0 0.9rem;
+}
+.sf-brief {
+  max-width: 52rem;
+  font-style: italic;
+  color: var(--tp-graphite);
+  border-left: 3px solid var(--sf-red);
+  padding-left: 0.95rem;
+}
+.sf-hero-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0.75rem 0;
+}
+.sf-opening,
+.sf-closing {
+  max-width: 48rem;
+  font-family: var(--tp-font-editorial);
+  font-size: 1.09rem;
+  line-height: 1.72;
+}
+.sf-lede {
+  max-width: 52rem;
+  line-height: 1.65;
+}
+.sf-small {
+  font-size: 0.87rem;
+  color: var(--tp-slate);
+  max-width: 52rem;
+  line-height: 1.55;
+}
+.sf-footnote {
+  font-size: 0.86rem;
+  color: var(--tp-slate);
+  border-top: 1px solid var(--sf-rule);
+  padding-top: 1rem;
+  margin-top: 2rem;
+}
+
+/* ---------------------------------------------------------------- parts, openers & cards */
+.sf-part {
+  margin-top: 3.4rem;
+  min-width: 0;
+}
+.sf-part::before,
+.sf-sources::before {
+  content: "";
+  display: block;
+  height: 10px;
+  margin: 2rem 0 0;
+  background:
+    repeating-linear-gradient(90deg, var(--tp-prussian-soft) 0 10px, transparent 10px 28px),
+    repeating-linear-gradient(90deg, rgba(176, 48, 30, 0.25) 0 4px, transparent 4px 28px);
+  border-block: 1px solid var(--sf-rule);
+}
+.sf-part-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: end;
+  column-gap: 1rem;
+  border-bottom: 1px solid var(--tp-rule-strong);
+  padding-bottom: 0.65rem;
+  margin-bottom: 1.4rem;
+}
+.sf-part-num {
+  grid-row: span 2;
+  margin: 0;
+  font-family: var(--tp-font-editorial);
+  font-size: clamp(3.4rem, 8vw, 6.2rem);
+  line-height: 0.85;
+  color: var(--sf-red);
+}
+.sf-part-title {
+  margin: 0;
+}
+.sf-part-title::after {
+  display: none;
+}
+.sf-part-years {
+  margin: 0.25rem 0 0;
+  font-family: var(--tp-font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--tp-slate);
+}
+.sf-part-opener-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.4rem;
+  align-items: start;
+  margin-bottom: 1.6rem;
+}
+@media (min-width: 64rem) {
+  .sf-part-opener-grid {
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.85fr);
+  }
+}
+.sf-part-opener {
+  font-family: var(--tp-font-editorial);
+  font-size: 1.1rem;
+  line-height: 1.72;
+  min-width: 0;
+}
+.sf-dropcap::first-letter {
+  float: left;
+  font-size: 3.5em;
+  line-height: 0.82;
+  padding: 0.08em 0.12em 0 0;
+  color: var(--sf-red);
+  font-weight: 600;
+}
+.sf-pull {
+  font-family: var(--tp-font-editorial);
+  font-size: clamp(1.2rem, 2vw, 1.52rem);
+  line-height: 1.38;
+  font-style: italic;
+  color: var(--tp-graphite);
+  border-block: 2px solid var(--sf-ink);
+  padding: 0.9rem 0;
+  margin: 0;
+}
+
+.sf-card {
+  background: var(--sf-paper);
+  border: 1px solid var(--sf-rule);
+  border-top: 3px solid var(--sf-red);
+  border-radius: 5px;
+  padding: 1.2rem 1.35rem 1.35rem;
+  margin: 0 0 1.4rem;
+  box-shadow: var(--tp-shadow-card);
+  scroll-margin-top: 5.5rem;
+  min-width: 0;
+}
+.sf-card-era {
+  font-family: var(--tp-font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--sf-red);
+}
+.sf-card-years {
+  color: var(--tp-slate);
+  margin-left: 0.45rem;
+}
+.sf-card-move {
+  margin: 0.25rem 0 0.6rem;
+  font-size: 1.28rem;
+}
+.sf-card-body {
+  line-height: 1.65;
+  max-width: 62ch;
+}
+
+/* Quarry / masonry specification plate */
+.sf-plate {
+  font-family: var(--tp-font-mono);
+  font-size: 0.82rem;
+  border: 1.5px solid var(--tp-rule-strong);
+  border-radius: 6px;
+  padding: 0.75rem 0.95rem 0.55rem;
+  margin: 1rem 0 0.45rem;
+  background:
+    radial-gradient(circle at 10px 10px, var(--tp-rule-strong) 0 2px, transparent 2.5px),
+    radial-gradient(circle at calc(100% - 10px) 10px, var(--tp-rule-strong) 0 2px, transparent 2.5px),
+    var(--tp-stone);
+}
+.sf-plate-row {
+  display: grid;
+  grid-template-columns: minmax(8rem, 36%) minmax(0, 1fr);
+  gap: 0.6rem;
+  padding: 0.25rem 0;
+  border-bottom: 1px dashed var(--sf-rule);
+}
+.sf-plate-row dt {
+  color: var(--tp-slate);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.74rem;
+}
+.sf-plate-row dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.sf-plate-foot {
+  margin: 0.45rem 0 0;
+  font-size: 0.7rem;
+  color: var(--tp-slate);
+  text-align: right;
+}
+@media (max-width: 40rem) {
+  .sf-plate-row,
+  .sf-anat-row {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+}
+
+/* Source stamps */
+.sf-stamp {
+  display: inline-block;
+  font-family: var(--tp-font-mono);
+  font-size: 0.67rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  padding: 0.02rem 0.34rem;
+  text-decoration: none;
+  vertical-align: 0.08em;
+  color: var(--tp-prussian);
+}
+.sf-stamp-eng {
+  color: var(--tp-verdigris);
+}
+.sf-stamp-paper {
+  color: var(--tp-sienna);
+}
+.sf-cite {
+  margin: 0.25rem 0 1rem;
+}
+
+/* Interludes & tables */
+.sf-interlude {
+  background: var(--tp-stone-deep);
+  border-radius: 6px;
+  padding: 1.05rem 1.3rem;
+  margin: 1.6rem 0;
+  min-width: 0;
+}
+.sf-int-h {
+  margin: 0 0 0.6rem;
+  font-size: 1.12rem;
+}
+.sf-table-wrap {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.sf-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.89rem;
+}
+.sf-table th,
+.sf-table td {
+  text-align: left;
+  padding: 0.44rem 0.62rem;
+  border-bottom: 1px solid var(--sf-rule);
+  vertical-align: top;
+}
+.sf-table thead th {
+  font-family: var(--tp-font-mono);
+  font-size: 0.73rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--tp-slate);
+}
+.sf-num {
+  font-family: var(--tp-font-mono);
+  white-space: nowrap;
+}
+.sf-strong {
+  font-weight: 700;
+  color: var(--sf-red);
+}
+.sf-anat-row {
+  display: grid;
+  grid-template-columns: minmax(9rem, 28%) minmax(0, 1fr);
+  gap: 0.8rem;
+  padding: 0.48rem 0;
+  border-bottom: 1px solid var(--sf-rule);
+}
+.sf-anat-row dt {
+  font-weight: 600;
+}
+.sf-anat-row dd {
+  margin: 0;
+}
+
+/* ---------------------------------------------------------------- coupled 2D-to-3D stereotomy atelier */
+.sf-observatory {
+  border-top: 1px solid var(--sf-rule);
+  margin-top: 2.6rem;
+  padding-top: 0.4rem;
+  min-width: 0;
+}
+.sf-atelier-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.2rem;
+  margin-top: 1rem;
+  align-items: stretch;
+}
+@media (min-width: 62rem) {
+  .sf-atelier-grid {
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 1.08fr);
+  }
+}
+.sf-panel {
+  background: var(--sf-paper);
+  border: 1px solid var(--tp-rule-strong);
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+.sf-panel-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--sf-rule);
+  padding-bottom: 0.45rem;
+}
+.sf-panel-tag {
+  font-family: var(--tp-font-mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--tp-prussian);
+  font-weight: 600;
+}
+.sf-svg-stage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  background: var(--tp-stone);
+  border: 1px solid var(--sf-rule);
+}
+.sf-funicular-axis {
+  stroke: var(--tp-rule-strong);
+  stroke-width: 1.2;
+}
+.sf-funicular-parabola {
+  fill: none;
+  stroke: var(--tp-slate);
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+}
+.sf-funicular-catenary {
+  fill: none;
+  stroke: var(--sf-red);
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sf-funicular-buttress {
+  fill: none;
+  stroke: var(--tp-slate);
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+}
+.sf-funicular-column {
+  stroke: var(--sf-porphyry);
+  stroke-width: 6.5;
+  stroke-linecap: round;
+}
+.sf-funicular-load {
+  fill: none;
+  stroke: var(--tp-sienna);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sf-funicular-node {
+  fill: var(--sf-paper);
+  stroke: var(--sf-ink);
+  stroke-width: 2;
+}
+.sf-svg-caption-text {
+  font-family: var(--tp-font-mono);
+  font-size: 11px;
+  fill: var(--tp-ink);
+}
+.sf-svg-sub-text {
+  font-family: var(--tp-font-ui);
+  font-size: 11px;
+  fill: var(--tp-slate);
+}
+
+/* Dark WebGL2 Stereotomy Canvas Stage */
+.sf-canvas-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 5px;
+  background: var(--sf-stage-bg);
+  border: 1px solid var(--tp-rule-strong);
+}
+.sf-webgl-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: pan-y;
+}
+.sf-webgl-canvas:active {
+  cursor: grabbing;
+}
+.sf-webgl-canvas:focus-visible {
+  outline: 3px solid var(--tp-prussian);
+  outline-offset: -3px;
+}
+
+.sf-pill-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.sf-pill-btn {
+  font-family: var(--tp-font-mono);
+  font-size: 0.76rem;
+  padding: 0.34rem 0.65rem;
+  border-radius: 4px;
+  border: 1.5px solid var(--tp-rule-strong);
+  background: var(--tp-stone);
+  color: var(--sf-ink);
+  cursor: pointer;
+}
+.sf-pill-btn[aria-pressed="true"] {
+  border-color: var(--sf-red);
+  background: var(--tp-minium-soft);
+  color: var(--sf-red);
+  font-weight: 700;
+}
+.sf-pill-btn:focus-visible,
+.sf-btn:focus-visible,
+.sf-range:focus-visible,
+.sf-check input:focus-visible {
+  outline: 3px solid var(--tp-prussian);
+  outline-offset: 2px;
+}
+
+.sf-controls-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.65rem;
+}
+@media (min-width: 34rem) {
+  .sf-controls-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.sf-control-group {
+  display: grid;
+  gap: 0.25rem;
+  min-width: 0;
+}
+.sf-range-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.sf-range-val {
+  font-family: var(--tp-font-mono);
+  color: var(--sf-red);
+}
+.sf-range {
+  width: 100%;
+  accent-color: var(--sf-red);
+}
+.sf-check-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.2rem;
+  align-items: center;
+}
+.sf-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  font-size: 0.86rem;
+  cursor: pointer;
+}
+.sf-readout {
+  font-family: var(--tp-font-mono);
+  font-size: 0.82rem;
+  line-height: 1.48;
+  background: var(--tp-stone);
+  border-left: 3px solid var(--tp-prussian);
+  padding: 0.55rem 0.75rem;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.sf-btn {
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.44rem 0.85rem;
+  border-radius: 4px;
+  border: 1.5px solid var(--sf-ink);
+  background: var(--sf-paper);
+  color: var(--sf-ink);
+  cursor: pointer;
+}
+.sf-btn:hover {
+  border-color: var(--sf-red);
+  color: var(--sf-red);
+}
+.sf-btn-quiet {
+  font-size: 0.8rem;
+  padding: 0.3rem 0.72rem;
+  font-weight: 500;
+}
+.sf-export-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+.sf-science {
+  background: var(--tp-prussian-soft);
+  border-left: 3px solid var(--tp-prussian);
+  padding: 0.72rem 0.95rem 0.25rem;
+  margin: 1rem 0;
+  font-size: 0.93rem;
+}
+
+/* ---------------------------------------------------------------- column hierarchy, towers & light benches */
+.sf-bench {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.2rem;
+  align-items: center;
+  background: var(--sf-paper);
+  border: 1px solid var(--sf-rule);
+  border-radius: 6px;
+  padding: 1rem 1.15rem;
+  margin-top: 0.9rem;
+}
+@media (min-width: 54rem) {
+  .sf-bench {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+  }
+}
+.sf-controls {
+  display: grid;
+  gap: 0.68rem;
+  min-width: 0;
+}
+.sf-star-ghost-a {
+  fill: none;
+  stroke: var(--tp-prussian);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+}
+.sf-star-ghost-b {
+  fill: none;
+  stroke: var(--tp-sienna);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 3;
+}
+.sf-star-core {
+  fill: var(--tp-minium-soft);
+  stroke: var(--sf-porphyry);
+  stroke-width: 2.5;
+}
+.sf-star-void {
+  fill: var(--tp-stone);
+  stroke: var(--sf-ink);
+  stroke-width: 1.4;
+}
+
+/* Towers & PT stress trapezoid */
+.sf-tower-bar {
+  fill: var(--tp-stone-deep);
+  stroke: var(--sf-ink);
+  stroke-width: 1.4;
+}
+.sf-tower-bar-jc {
+  fill: var(--tp-minium-soft);
+  stroke: var(--sf-red);
+  stroke-width: 2;
+}
+.sf-tower-bar-ulm {
+  fill: var(--tp-prussian-soft);
+  stroke: var(--tp-prussian);
+  stroke-width: 1.4;
+}
+.sf-datum-line {
+  stroke: var(--tp-verdigris);
+  stroke-width: 2;
+  stroke-dasharray: 6 4;
+}
+.sf-stress-comp {
+  fill: var(--tp-verdigris-soft);
+  stroke: var(--tp-verdigris);
+  stroke-width: 2;
+}
+.sf-stress-tens {
+  fill: var(--tp-minium-soft);
+  stroke: var(--sf-red);
+  stroke-width: 2.2;
+}
+
+/* Light rays */
+.sf-light-ray {
+  stroke-width: 0;
+  opacity: 0.34;
+  transition: opacity 0.25s ease;
+}
+.sf-ray-dawn {
+  fill: #2aa39a;
+}
+.sf-ray-noon {
+  fill: #f0c45d;
+}
+.sf-ray-dusk {
+  fill: #d95a34;
+}
+.sf-nave-outline {
+  fill: none;
+  stroke: var(--sf-ink);
+  stroke-width: 2;
+}
+
+/* ---------------------------------------------------------------- plaster-shard workshop drawer (easter egg) */
+.sf-drawer {
+  margin-top: 1.4rem;
+}
+.sf-drawer-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 40rem;
+  padding: 0.72rem 1rem;
+  font: inherit;
+  text-align: left;
+  color: var(--sf-ink);
+  background: linear-gradient(100deg, var(--tp-stone-deep), var(--sf-paper) 72%);
+  border: 1.5px solid var(--tp-rule-strong);
+  border-left: 4px solid var(--sf-red);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.sf-drawer-btn:hover {
+  border-color: var(--sf-red);
+  transform: translateY(-1px);
+}
+.sf-drawer-btn:focus-visible {
+  outline: 3px solid var(--tp-prussian);
+  outline-offset: 3px;
+}
+.sf-shard-svg {
+  flex: 0 0 auto;
+  width: clamp(6.5rem, 22vw, 9.5rem);
+  height: auto;
+}
+.sf-shard-body {
+  fill: var(--tp-vellum);
+  stroke: var(--sf-ink);
+  stroke-width: 1.8;
+}
+.sf-shard-ruling {
+  stroke: var(--sf-red);
+  stroke-width: 1.3;
+  opacity: 0.75;
+}
+.sf-shard-lid {
+  transform-box: fill-box;
+  transform-origin: 20px 25px;
+  transition: transform 0.55s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+.sf-drawer-btn:hover .sf-shard-lid,
+.sf-drawer-btn:focus-visible .sf-shard-lid {
+  transform: rotate(-8deg);
+}
+.sf-drawer.is-open .sf-shard-lid {
+  transform: rotate(-32deg);
+}
+.sf-drawer-copy {
+  display: grid;
+  gap: 0.15rem;
+}
+.sf-drawer-hint {
+  font-size: 0.82rem;
+  color: var(--tp-slate);
+  font-style: italic;
+}
+.sf-drawer-label {
+  font-family: var(--tp-font-mono);
+  font-size: 0.84rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--sf-red);
+  font-weight: 600;
+}
+.sf-drawer-panel {
+  position: relative;
+  margin: 0.95rem 0 0;
+  max-width: 68rem;
+  overflow: hidden;
+  border-radius: 6px;
+}
+.sf-drawer-panel:not([hidden]) {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (min-width: 48rem) {
+  .sf-drawer-panel:not([hidden]) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+.sf-drawer-photo {
+  margin: 0;
+}
+.sf-drawer-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid var(--sf-rule);
+}
+.sf-drawer-photo figcaption {
+  font-size: 0.89rem;
+  color: var(--tp-graphite);
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+.sf-drawer.is-open .sf-drawer-panel {
+  animation: sf-panel-reveal 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes sf-panel-reveal {
+  from { clip-path: inset(0 0 100% 0); opacity: 0.5; }
+  to { clip-path: inset(0 0 0% 0); opacity: 1; }
+}
+
+/* ---------------------------------------------------------------- Part VI Lab, What Sources Don't Say & Sources */
+.sf-lab .sf-part-num {
+  color: var(--tp-prussian);
+}
+.sf-lab-block {
+  margin: 2rem 0;
+  max-width: 56rem;
+}
+.sf-lab-block h3 {
+  font-family: var(--tp-font-editorial);
+  font-size: 1.28rem;
+  margin-bottom: 0.42rem;
+}
+.sf-lab-block > p {
+  line-height: 1.65;
+}
+.sf-eq {
+  font-family: var(--tp-font-mono);
+  font-size: 0.84rem;
+  background: var(--tp-prussian-soft);
+  border-left: 3px solid var(--tp-prussian);
+  padding: 0.62rem 0.9rem;
+  overflow-x: auto;
+  line-height: 1.85;
+}
+.sf-eq code {
+  white-space: nowrap;
+}
+.sf-verify-box {
+  border-left: 4px solid var(--tp-prussian);
+}
+.sf-silent {
+  font-size: 0.95rem;
+  border: 1px dashed var(--tp-rule-strong);
+  border-radius: 6px;
+  padding: 0.5rem 1.25rem 0.75rem;
+  margin-top: 3rem;
+  max-width: 52rem;
+}
+.sf-silent .sf-h2 {
+  font-size: 1.18rem;
+  margin-top: 0.6rem;
+}
+.sf-silent-row {
+  margin-bottom: 0.95rem;
+}
+.sf-silent dt {
+  font-weight: 600;
+}
+.sf-silent dd {
+  margin: 0.22rem 0 0;
+  color: var(--tp-graphite);
+}
+.sf-source-list {
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.56;
+}
+.sf-source-list li {
+  margin-bottom: 0.45rem;
+  scroll-margin-top: 5.2rem;
+}
+.sf-source-list li:target {
+  background: var(--tp-highlight);
+}
+
+/* ---------------------------------------------------------------- reduced motion, forced colours, print */
+html.sf-paused .sf-skyline-lane,
+html.sf-paused .sf-drawer-panel {
+  animation-play-state: paused;
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sf-skyline-lane,
+  .sf-shard-lid,
+  .sf-drawer-btn,
+  .sf-light-ray {
+    transition: none;
+  }
+  .sf-drawer-btn:hover .sf-shard-lid,
+  .sf-drawer-btn:focus-visible .sf-shard-lid {
+    transform: none;
+  }
+  .sf-drawer.is-open .sf-drawer-panel {
+    animation: none;
+  }
+  .sf-motion {
+    display: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .sf-catenary-backdrop,
+  .sf-skyline-lanes {
+    display: none;
+  }
+  .sf-funicular-catenary,
+  .sf-funicular-column,
+  .sf-star-core,
+  .sf-stress-comp,
+  .sf-stress-tens {
+    stroke: CanvasText;
+  }
+  .sf-card,
+  .sf-panel,
+  .sf-bench {
+    border-color: CanvasText;
+  }
+}
+
+@media print {
+  .sf-catenary-backdrop,
+  .sf-skyline-lanes,
+  .sf-motion,
+  .sf-drawer,
+  .tp-essay-jump-bar,
+  .sf-era-rail,
+  .sf-export-row {
+    display: none;
+  }
+  .sf-card,
+  .sf-panel,
+  .sf-bench {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+}
