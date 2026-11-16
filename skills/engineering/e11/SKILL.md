@@ -13,7 +13,7 @@ A plain-text companion to the essay at https://informatico.ai/engineering/e11/ (
 
 ## Rules the essay derives
 1. Penalize intermediate element densities via SIMP law E_e(rho_e) = E_min + rho_e^p * (E_0 - E_min) with p >= 3 and E_min = 1e-9 * E_0.
-2. Apply Helmholtz PDE density filter -r_min^2 * laplacian(rho_tilde) + rho_tilde = rho to guarantee mesh-independent minimum member size.
+2. Apply Helmholtz PDE density filter -r_min^2 * laplacian(rho_tilde) + rho_tilde = rho to enforce a mesh-independent minimum member size.
 3. Size two-terminal flywheel inerter inertance b (kg) via F = b * (a_2 - a_1) to achieve target apparent-mass ratio mu_b = b / m_modal.
 
 ## How it works, in four stages
