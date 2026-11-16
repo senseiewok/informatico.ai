@@ -97,25 +97,50 @@ def render_era_rail() -> str:
     chips = []
     for i, c in enumerate(C.CARDS):
         cls = "sf-era-chip is-current" if i == 0 else "sf-era-chip"
-        aria = ' aria-current="true"' if i == 0 else ""
+        aria = ' aria-current="step"' if i == 0 else ""
         chips.append(
             f'<a class="{cls}" href="#move-{a(c["id"])}" data-move="{a(c["id"])}"{aria} '
             f'data-en="{a(c["era"])}" data-es="{a(c["era"])}">{t(c["era"])}</a>'
         )
-    return f'      <nav class="sf-era-rail" aria-label="Architecture moves timeline">{"".join(chips)}</nav>'
+    return f'        <nav class="sf-era-rail" aria-label="Architecture moves chronological ruler">{"".join(chips)}</nav>'
 
 
-# --------------------------------------------------------------------------------------------- editorial cards & drawer
+# --------------------------------------------------------------------------------------------- editorial cards, inline figures & drawer
 
 def _media_map() -> dict[str, dict]:
     return {item["id"]: item for item in (*C.PHOTOS, *C.PLATES)}
+
+
+def render_inline_figure(item: dict, is_es: bool, extra_cls: str = "", include_id: bool = True) -> str:
+    vg = C.VISUAL_GALLERY_TEXT
+    is_photo = item["kind"] == "photo"
+    badge_en = f"{vg['badge_photo_en']} · {item['license']}" if is_photo else f"{vg['badge_render_en']} · {item['era']}"
+    badge_es = f"{vg['badge_photo_es']} · {item['license']}" if is_photo else f"{vg['badge_render_es']} · {item.get('era_es', item['era'])}"
+    badge_cls = "sf-media-badge sf-media-badge-photo" if is_photo else "sf-media-badge sf-media-badge-render"
+    alt_txt = item["alt_es"] if is_es else item["alt_en"]
+    fig_id = f' id="{a(item["id"])}"' if include_id else ""
+    cls_str = f"sf-inline-figure {extra_cls}".strip()
+    return f"""        <figure class="{a(cls_str)}" data-sf-media-kind="{a(item['kind'])}" data-sf-media-id="{a(item['id'])}"{fig_id}>
+          <div class="sf-inline-head">
+            {bi("span", item["era"], item.get("era_es", item["era"]), "sf-inline-era")}
+            <span class="{badge_cls}" data-en="{a(badge_en)}" data-es="{a(badge_es)}">{t(badge_es if is_es else badge_en)}</span>
+          </div>
+          <div class="sf-inline-frame" data-sf-open-media-frame="{a(item['id'])}">
+            <img src="../../{a(item['image'])}" width="{item['width']}" height="{item['height']}" loading="lazy" decoding="async" alt="{a(alt_txt)}" data-alt-en="{a(item['alt_en'])}" data-alt-es="{a(item['alt_es'])}">
+          </div>
+          {bi("figcaption", item["caption_en"], item["caption_es"])}
+          <div class="sf-inline-foot">
+            {cite(item["src"])}
+            <button type="button" class="sf-btn sf-btn-quiet sf-zoom-btn" data-sf-open-media="{a(item['id'])}" data-en="Fullscreen plate" data-es="Ampliar lámina">{t('Ampliar lámina' if is_es else 'Fullscreen plate')}</button>
+          </div>
+        </figure>"""
 
 
 def render_media_figure(item: dict, is_es: bool, in_gallery: bool = False) -> str:
     vg = C.VISUAL_GALLERY_TEXT
     is_photo = item["kind"] == "photo"
     badge_en = f"{vg['badge_photo_en']} · {item['license']}" if is_photo else f"{vg['badge_render_en']} · {item['era']}"
-    badge_es = f"{vg['badge_photo_es']} · {item['license']}" if is_photo else f"{vg['badge_render_es']} · {item['era']}"
+    badge_es = f"{vg['badge_photo_es']} · {item['license']}" if is_photo else f"{vg['badge_render_es']} · {item.get('era_es', item['era'])}"
     badge_cls = "sf-media-badge sf-media-badge-photo" if is_photo else "sf-media-badge sf-media-badge-render"
     alt_txt = item["alt_es"] if is_es else item["alt_en"]
     fig_id = f' id="{a(item["id"])}"' if not in_gallery else ""
@@ -130,7 +155,7 @@ def render_media_figure(item: dict, is_es: bool, in_gallery: bool = False) -> st
             <span class="{badge_cls}" data-en="{a(badge_en)}" data-es="{a(badge_es)}">{t(badge_es if is_es else badge_en)}</span>
             <button type="button" class="sf-btn sf-btn-quiet sf-zoom-btn" data-sf-open-media="{a(item['id'])}"{extra_btn} data-en="Inspect plate" data-es="Ampliar lámina">{t('Ampliar lámina' if is_es else 'Inspect plate')}</button>
           </div>
-          <div class="sf-media-frame">
+          <div class="sf-media-frame" data-sf-open-media-frame="{a(item['id'])}">
             <img src="../../{a(item['image'])}" width="{item['width']}" height="{item['height']}" loading="lazy" decoding="async" alt="{a(alt_txt)}" data-alt-en="{a(item['alt_en'])}" data-alt-es="{a(item['alt_es'])}">
           </div>
           {bi("figcaption", item["caption_en"], item["caption_es"])}
@@ -138,19 +163,9 @@ def render_media_figure(item: dict, is_es: bool, in_gallery: bool = False) -> st
         </figure>"""
 
 
-def render_media_diptych(item_ids: tuple[str, str], is_es: bool, title_en: str, title_es: str) -> str:
-    by_id = _media_map()
-    cards = "\n".join(render_media_figure(by_id[mid], is_es, in_gallery=False) for mid in item_ids)
-    return f"""      <aside class="sf-diptych-wrap" aria-label="{a(title_es if is_es else title_en)}">
-        <p class="tp-kicker">{bi("span", title_en, title_es)}</p>
-        <div class="sf-diptych">
-{cards}
-        </div>
-      </aside>"""
-
-
 def render_plaster_drawer(is_es: bool) -> str:
     e = C.EGG_BUTTON
+    sn = C.SHARD_DRAWER_NOTES
     open_txt = e["button_es"] if is_es else e["button_en"]
     close_txt = e["close_es"] if is_es else e["close_en"]
     shard_svg = """<svg class="sf-shard-svg" viewBox="0 0 180 90" width="144" height="72" aria-hidden="true" focusable="false">
@@ -164,20 +179,26 @@ def render_plaster_drawer(is_es: bool) -> str:
                   <line class="sf-shard-ruling" x1="36" y1="23" x2="144" y2="23"/>
                 </g>
               </svg>"""
-    by_id = _media_map()
-    figs = [render_media_figure(by_id["photo-1988-site"], is_es), render_media_figure(by_id["plate-stereotomy-atelier"], is_es)]
+    steps_html = "".join(
+        f'<div class="sf-anat-row">{bi("dt", t_en, t_es)}{bi("dd", b_en, b_es)}</div>'
+        for t_en, t_es, b_en, b_es in sn["steps"]
+    )
     return f"""          <div class="sf-drawer">
             <button type="button" class="sf-drawer-btn" aria-expanded="false" aria-controls="sf-drawer-panel" data-label-open="{a(open_txt)}" data-label-close="{a(close_txt)}">
               {shard_svg}
               <span class="sf-drawer-copy">{bi("span", e["hint_en"], e["hint_es"], "sf-drawer-hint")}{bi("span", e["button_en"], e["button_es"], "sf-drawer-label")}</span>
             </button>
-            <div class="sf-drawer-panel" id="sf-drawer-panel" hidden>
-{chr(10).join(figs)}
+            <div class="sf-drawer-panel sf-drawer-protocol" id="sf-drawer-panel" hidden>
+              {bi("h4", sn["title_en"], sn["title_es"], "sf-int-h")}
+              {bi("p", sn["intro_en"], sn["intro_es"], "sf-small")}
+              <dl>{steps_html}</dl>
+              {cite(sn["src"])}
             </div>
           </div>"""
 
 
 def render_card(card: dict, is_es: bool) -> str:
+    by_id = _media_map()
     rows = []
     for en, es, value, key in card["plate"]:
         rows.append(
@@ -186,17 +207,24 @@ def render_card(card: dict, is_es: bool) -> str:
         )
     drawer = render_plaster_drawer(is_es) if card.get("egg") else ""
     aria_plate = f"Ficha técnica {card['era']}" if is_es else f"Specification plate {card['era']}"
+    media_id = card.get("inline_media")
+    inline_fig = render_inline_figure(by_id[media_id], is_es, "sf-move-figure") if media_id and media_id in by_id else ""
     return f"""        <article class="sf-card" id="move-{a(card['id'])}" data-move="{a(card['id'])}">
           <header>
             <p class="sf-card-era"><span>{t(card['era'])}</span> <span class="sf-card-years">{t(card['years'])}</span></p>
             {bi("h3", card["title_en"], card["title_es"], "sf-card-move")}
           </header>
-          {bi("p", card["body_en"], card["body_es"], "sf-card-body")}
-          <div class="sf-plate" role="group" aria-label="{a(aria_plate)}">
-            <dl>{''.join(rows)}</dl>
-            <p class="sf-plate-foot" data-en="Sources consulted {a(C.ACCESSED)}" data-es="Fuentes consultadas {a(C.ACCESSED)}">Sources consulted {t(C.ACCESSED)}</p>
-          </div>
+          <div class="sf-card-split">
+            <div class="sf-card-main">
+              {bi("p", card["body_en"], card["body_es"], "sf-card-body")}
+              <div class="sf-plate" role="group" aria-label="{a(aria_plate)}">
+                <dl>{''.join(rows)}</dl>
+                <p class="sf-plate-foot" data-en="Sources consulted {a(C.ACCESSED)}" data-es="Fuentes consultadas {a(C.ACCESSED)}">Sources consulted {t(C.ACCESSED)}</p>
+              </div>
 {drawer}
+            </div>
+{inline_fig}
+          </div>
         </article>"""
 
 
@@ -436,7 +464,7 @@ def render_polar_radar(is_es: bool) -> str:
 
 
 def render_visual_gallery_section(is_es: bool) -> str:
-    """Filterable 10-item Visual Media Archive paired with a CSP-safe native <dialog> lightbox."""
+    """Single unified 14-item Visual Media Archive paired with a zero-jump CSP-safe native <dialog> lightbox."""
     vg = C.VISUAL_GALLERY_TEXT
     cards = "\n".join(render_media_figure(item, is_es, in_gallery=True) for item in (*C.PHOTOS, *C.PLATES))
     btns = (
@@ -444,6 +472,8 @@ def render_visual_gallery_section(is_es: bool) -> str:
         f'<button type="button" class="sf-pill-btn" data-sf-filter="photo" aria-pressed="false" data-en="{a(vg["photos_en"])}" data-es="{a(vg["photos_es"])}">{t(vg["photos_es"] if is_es else vg["photos_en"])}</button>'
         f'<button type="button" class="sf-pill-btn" data-sf-filter="render" aria-pressed="false" data-en="{a(vg["renders_en"])}" data-es="{a(vg["renders_es"])}">{t(vg["renders_es"] if is_es else vg["renders_en"])}</button>'
     )
+    hint_en = "← / → Prev & Next · Esc Close"
+    hint_es = "← / → Anterior y Siguiente · Esc Cerrar"
     return f"""      <section class="sf-observatory" id="visuals" data-sf-gallery aria-labelledby="sf-vis-h">
         <p class="tp-kicker">{bi("span", vg["kicker_en"], vg["kicker_es"])}</p>
         {bi("h2", vg["title_en"], vg["title_es"], "sf-h2", 'id="sf-vis-h"')}
@@ -455,6 +485,7 @@ def render_visual_gallery_section(is_es: bool) -> str:
         <dialog class="sf-lightbox" id="sf-lightbox" aria-labelledby="sf-lb-badge" aria-describedby="sf-lb-cap">
           <div class="sf-lightbox-bar">
             <span class="sf-panel-tag" id="sf-lb-badge">MEDIA</span>
+            {bi("span", hint_en, hint_es, "sf-lb-hint")}
             <div class="sf-pill-bar">
               <button type="button" class="sf-btn sf-btn-quiet" data-sf-lb-prev data-en="Prev" data-es="Anterior">{t("Anterior" if is_es else "Prev")}</button>
               <button type="button" class="sf-btn sf-btn-quiet" data-sf-lb-next data-en="Next" data-es="Siguiente">{t("Siguiente" if is_es else "Next")}</button>
@@ -477,32 +508,7 @@ def render_part(part: dict, is_es: bool) -> str:
         opener_paras.append(f'          {bi("p", p["en"], p["es"], cls)}\n          {cite(p["src"])}')
     cards_html = "\n".join(render_card(cards[cid], is_es) for cid in part["cards"])
     interlude_html = render_interlude(part["interlude"], is_es)
-    part_visuals = ""
-    if part["id"] == "part-1":
-        part_visuals = render_media_diptych(
-            ("photo-catenary-model", "plate-reus-forge"),
-            is_es,
-            "Part I Visual Study · Hanging-Chain Statics Photo & Reus Coppersmith Visualization",
-            "Estudio visual Parte I · Foto de maqueta funicular e imaginación del taller de Reus",
-        )
-    elif part["id"] == "part-2":
-        part_visuals = (
-            render_tectonic_loupe_section(is_es)
-            + "\n"
-            + render_media_diptych(
-                ("photo-nativity-facade", "photo-nave-columns"),
-                is_es,
-                "Part II Site Photographs · Exterior Parabolic Spires & Interior Four-Stone Tree Canopy",
-                "Fotografías Parte II · Campanarios del Nacimiento y bosque interior de cuatro piedras",
-            )
-        )
-    elif part["id"] == "part-4":
-        part_visuals = render_media_diptych(
-            ("plate-nave-forest", "plate-tensioned-crown"),
-            is_es,
-            "Part IV Conceptual Studies · Interior Stained-Glass Forest & Hollow Post-Tensioned Stone",
-            "Estudios conceptuales Parte IV · Vitrales en el bosque pétreo y paneles huecos pretensados",
-        )
+    part_visuals = render_tectonic_loupe_section(is_es) if part["id"] == "part-2" else ""
     return f"""      <section class="sf-part" id="{a(part['id'])}" aria-labelledby="{a(part['id'])}-h">
         <header class="sf-part-head">
           <p class="sf-part-num" aria-hidden="true">{t(part['numeral'])}</p>
@@ -518,6 +524,131 @@ def render_part(part: dict, is_es: bool) -> str:
 {cards_html}
 {interlude_html}
 {part_visuals}
+      </section>"""
+
+
+def render_architects_study_section(is_es: bool) -> str:
+    """For architects and students: 4 Ruled Surfaces Stereotomy Atlas, Grammar Table & 6-Station Lineage Explorer."""
+    ax = C.ARCHITECTS_STUDY
+    quadric_cards = "".join(
+        f"""          <article class="sf-quadric-card">
+            {bi("h3", s["name_en"], s["name_es"], "sf-card-move")}
+            {bi("p", s["rule_en"], s["rule_es"], "sf-small")}
+            <p class="sf-quadric-loc">{bi("span", s["where_en"], s["where_es"])}</p>
+          </article>"""
+        for s in ax["surfaces"]
+    )
+    quadrics_svg = """<svg class="sf-svg-stage sf-quadrics-svg" viewBox="0 0 760 175" width="760" height="175" role="img" aria-labelledby="sf-quad-svg-t">
+              <title id="sf-quad-svg-t">Straight-line ruling generators on Hyperboloid, Hypar Saddle, Helicoid, and 1909 Sinusoidal Conoid</title>
+              <g transform="translate(20 15)">
+                <rect class="sf-panel-outline" x="0" y="0" width="165" height="145" rx="4"/>
+                <line class="sf-hyp-ruling-pos" x1="32" y1="26" x2="128" y2="112"/>
+                <line class="sf-hyp-ruling-pos" x1="56" y1="26" x2="140" y2="112"/>
+                <line class="sf-hyp-ruling-pos" x1="82" y1="26" x2="145" y2="112"/>
+                <line class="sf-hyp-ruling-neg" x1="133" y1="26" x2="37" y2="112"/>
+                <line class="sf-hyp-ruling-neg" x1="109" y1="26" x2="25" y2="112"/>
+                <line class="sf-hyp-ruling-neg" x1="83" y1="26" x2="20" y2="112"/>
+                <text class="sf-svg-caption-text" x="82" y="134" text-anchor="middle">1 · Hyperboloid</text>
+              </g>
+              <g transform="translate(205 15)">
+                <rect class="sf-panel-outline" x="0" y="0" width="165" height="145" rx="4"/>
+                <line class="sf-hyp-ruling-pos" x1="25" y1="30" x2="140" y2="54"/>
+                <line class="sf-hyp-ruling-pos" x1="25" y1="68" x2="140" y2="70"/>
+                <line class="sf-hyp-ruling-pos" x1="25" y1="106" x2="140" y2="86"/>
+                <line class="sf-hyp-ruling-neg" x1="32" y1="26" x2="54" y2="112"/>
+                <line class="sf-hyp-ruling-neg" x1="82" y1="26" x2="82" y2="112"/>
+                <line class="sf-hyp-ruling-neg" x1="132" y1="26" x2="110" y2="112"/>
+                <text class="sf-svg-caption-text" x="82" y="134" text-anchor="middle">2 · Hypar Saddle</text>
+              </g>
+              <g transform="translate(390 15)">
+                <rect class="sf-panel-outline" x="0" y="0" width="165" height="145" rx="4"/>
+                <line class="sf-funicular-axis" x1="82" y1="22" x2="82" y2="114"/>
+                <line class="sf-hyp-ruling-pos" x1="82" y1="108" x2="140" y2="108"/>
+                <line class="sf-hyp-ruling-pos" x1="82" y1="88" x2="128" y2="72"/>
+                <line class="sf-hyp-ruling-pos" x1="82" y1="68" x2="102" y2="46"/>
+                <line class="sf-hyp-ruling-neg" x1="82" y1="48" x2="40" y2="34"/>
+                <line class="sf-hyp-ruling-neg" x1="82" y1="28" x2="24" y2="48"/>
+                <text class="sf-svg-caption-text" x="82" y="134" text-anchor="middle">3 · Helicoid (±π/2n)</text>
+              </g>
+              <g transform="translate(575 15)">
+                <rect class="sf-panel-outline" x="0" y="0" width="165" height="145" rx="4"/>
+                <line class="sf-funicular-axis" x1="22" y1="36" x2="143" y2="36"/>
+                <line class="sf-hyp-ruling-pos" x1="26" y1="36" x2="26" y2="102"/>
+                <line class="sf-hyp-ruling-pos" x1="54" y1="36" x2="54" y2="78"/>
+                <line class="sf-hyp-ruling-pos" x1="82" y1="36" x2="82" y2="108"/>
+                <line class="sf-hyp-ruling-pos" x1="110" y1="36" x2="110" y2="78"/>
+                <line class="sf-hyp-ruling-pos" x1="138" y1="36" x2="138" y2="102"/>
+                <path class="sf-funicular-catenary" d="M 22 102 Q 54 66 82 108 T 143 102"/>
+                <text class="sf-svg-caption-text" x="82" y="134" text-anchor="middle">4 · 1909 Conoid</text>
+              </g>
+            </svg>"""
+    ghead = "".join(bi("th", en, es, "", 'scope="col"') for en, es in zip(ax["grammar_head_en"], ax["grammar_head_es"]))
+    grows = "".join(
+        f'<tr>{bi("th", r_en, r_es, "", "scope=\"row\"")}{bi("td", f_en, f_es, "sf-num")}{bi("td", w_en, w_es)}<td>{stamp(skey)}</td></tr>'
+        for r_en, r_es, f_en, f_es, w_en, w_es, skey in ax["grammar_rows"]
+    )
+
+    lin_btns = []
+    lin_svg_nodes = []
+    lin_cards = []
+    lin_sr_rows = []
+    node_xs = (68, 200, 332, 464, 596, 728)
+    for idx, node in enumerate(ax["lineage"]):
+        pressed = "true" if idx == 0 else "false"
+        active = " sf-relay-seg is-active" if idx == 0 else " sf-relay-seg"
+        lbl_en = f"{node['year']} · {node['short_en']}"
+        lbl_es = f"{node['year']} · {node['short_es']}"
+        lin_btns.append(
+            f'<button type="button" class="sf-pill-btn" data-sf-lineage-btn="{idx}" aria-pressed="{pressed}" '
+            f'data-en="{a(lbl_en)}" data-es="{a(lbl_es)}">{t(lbl_es if is_es else lbl_en)}</button>'
+        )
+        lin_svg_nodes.append(
+            f'<g class="{active.strip()}" data-sf-lineage-node="{idx}">'
+            f'<rect class="sf-relay-bar" x="{node_xs[idx] - 58}" y="18" width="116" height="28" rx="4"/>'
+            f'<text class="sf-svg-caption-text" x="{node_xs[idx]}" y="36" text-anchor="middle">{t(node["short_es"] if is_es else node["short_en"])}</text>'
+            f'<text class="sf-svg-sub-text" x="{node_xs[idx]}" y="66" text-anchor="middle">{t(node["year"])}</text></g>'
+        )
+        hid = "" if idx == 0 else " hidden"
+        lin_cards.append(
+            f"""          <article class="sf-relay-card sf-lineage-card" data-sf-lineage-card="{idx}"{hid}>
+            <div class="sf-relay-head">
+              {bi("h3", node["title_en"], node["title_es"], "sf-card-move")}
+              <span class="sf-panel-tag">{t(node["who_en"])}</span>
+            </div>
+            {bi("p", node["note_en"], node["note_es"], "sf-card-body")}
+            {bi("p", node["boundary_en"], node["boundary_es"], "sf-small")}
+            {cite(node["src"])}
+          </article>"""
+        )
+        lin_sr_rows.append(
+            f"<tr><th scope='row'>{t(node['year'])} · {t(node['who_en'])}</th><td>{t(node['note_en'])}</td><td>{t(node['boundary_en'])}</td></tr>"
+        )
+    lineage_svg = f"""<svg class="sf-svg-stage sf-relay-stage" viewBox="0 0 796 84" width="796" height="84" role="img" aria-labelledby="sf-lin-svg-t">
+              <title id="sf-lin-svg-t">Architectural and structural scholarship lineage connecting Gaudí to Frei Otto, Candela, Dieste, Heyman, Block, and Burry (1963 to 2026)</title>
+              <desc>Interactive six-station scholarly timeline connecting historiography, limit theorems, physical hanging models, ruled shells, Thrust Network Analysis, and Basilica digital stereotomy.</desc>
+              <line class="sf-funicular-axis" x1="20" y1="32" x2="776" y2="32"/>
+              {"".join(lin_svg_nodes)}
+            </svg>"""
+    return f"""      <section class="sf-observatory sf-architects-study" id="architects-study" aria-labelledby="sf-arch-study-h">
+        <p class="tp-kicker">{bi("span", ax["kicker_en"], ax["kicker_es"])}</p>
+        {bi("h2", ax["title_en"], ax["title_es"], "sf-h2", 'id="sf-arch-study-h"')}
+        {bi("p", ax["intro_en"], ax["intro_es"], "sf-lede")}
+        {quadrics_svg}
+        <div class="sf-quadric-cards">
+{quadric_cards}
+        </div>
+        <div class="sf-interlude">
+          {bi("h3", "Architect’s Constructive & Proportional Grammar", "Gramática constructiva y proporcional para estudio", "sf-int-h")}
+          <div class="sf-table-wrap"><table class="sf-table"><thead><tr>{ghead}</tr></thead><tbody>{grows}</tbody></table></div>
+        </div>
+        <div class="sf-lineage-box" data-sf-lineage>
+          {bi("h3", ax["lineage_title_en"], ax["lineage_title_es"], "sf-int-h")}
+          {bi("p", ax["lineage_intro_en"], ax["lineage_intro_es"], "sf-small")}
+          <div class="sf-pill-bar" role="group" aria-label="Architectural lineage stations">{"".join(lin_btns)}</div>
+          {lineage_svg}
+{chr(10).join(lin_cards)}
+          <table class="sr-only"><caption>Architectural scholarship lineage stations (1963–2026)</caption><thead><tr><th>Station</th><th>Focus</th><th>Scope boundary</th></tr></thead><tbody>{"".join(lin_sr_rows)}</tbody></table>
+        </div>
       </section>"""
 
 
@@ -616,6 +747,7 @@ def render_atelier_section(is_es: bool) -> str:
 def render_relay_section(is_es: bool) -> str:
     """Five-generation human continuity observatory (1882–2026+)."""
     rx = C.RELAY_TEXT
+    by_id = _media_map()
     btns = []
     segs = []
     cards = []
@@ -637,18 +769,24 @@ def render_relay_section(is_es: bool) -> str:
             f"</g>"
         )
         hid = "" if i == 0 else " hidden"
+        mid = g.get("media_id")
+        relay_fig = render_inline_figure(by_id[mid], is_es, "sf-relay-portrait") if mid and mid in by_id else ""
+        card_body = f"""            <div class="sf-relay-main">
+              <div class="sf-relay-head">
+                {bi("h3", g["title_en"], g["title_es"], "sf-card-move")}
+                <span class="sf-panel-tag">{t(g["elevation"])}</span>
+              </div>
+              <dl class="sf-relay-grid">
+                <div class="sf-relay-row">{bi("dt", "Who held the site", "Quién sostuvo la obra")}{bi("dd", g["hands_en"], g["hands_es"])}</div>
+                <div class="sf-relay-row">{bi("dt", "Historical crucible", "Prueba histórica")}{bi("dd", g["challenge_en"], g["challenge_es"])}</div>
+                <div class="sf-relay-row">{bi("dt", "Gift handed forward", "Legado al relevo siguiente")}{bi("dd", g["gift_en"], g["gift_es"])}</div>
+              </dl>
+              {cite(g["src"])}
+            </div>"""
         cards.append(
-            f"""          <article class="sf-relay-card" data-sf-relay-card="{i}"{hid}>
-            <div class="sf-relay-head">
-              {bi("h3", g["title_en"], g["title_es"], "sf-card-move")}
-              <span class="sf-panel-tag">{t(g["elevation"])}</span>
-            </div>
-            <dl class="sf-relay-grid">
-              <div class="sf-relay-row">{bi("dt", "Who held the site", "Quién sostuvo la obra")}{bi("dd", g["hands_en"], g["hands_es"])}</div>
-              <div class="sf-relay-row">{bi("dt", "Historical crucible", "Prueba histórica")}{bi("dd", g["challenge_en"], g["challenge_es"])}</div>
-              <div class="sf-relay-row">{bi("dt", "Gift handed forward", "Legado al relevo siguiente")}{bi("dd", g["gift_en"], g["gift_es"])}</div>
-            </dl>
-            {cite(g["src"])}
+            f"""          <article class="sf-relay-card{' sf-relay-card-media' if relay_fig else ''}" data-sf-relay-card="{i}"{hid}>
+{card_body}
+{relay_fig}
           </article>"""
         )
 
@@ -823,9 +961,10 @@ def render_benches_section(is_es: bool) -> str:
                 <input id="sf-solar-range" class="sf-range" type="range" min="7.0" max="19.0" step="0.25" value="9.5" aria-valuetext="09:30">
               </div>
               <p class="sf-readout" data-sf-light-readout aria-live="polite">09:30 · East Nativity glass · MODEL Eyring stone RT60 ≈ 4.6 s</p>
-              {cite(["eyring1930", "zhaoburry2024", "yoshikawa2004"])}
+              {cite(["eyring1930", "zhaoburry2024", "yoshikawa2004", "alambeigi2024"])}
             </div>
           </div>
+          {render_inline_figure(_media_map()["photo-stained-glass"], is_es, "sf-light-figure")}
         </div>
 {render_polar_radar(is_es)}
       </section>"""
@@ -1055,28 +1194,33 @@ def render_page(catalog: dict, lang: str = "en") -> str:
     head = head.replace("</head>", f'  <link rel="stylesheet" href="{rel}/sagrada-familia.css">\n</head>')
 
     h = C.HERO
+    ht = C.HERO_TRIBUTE
+    sketch_item = _media_map()["plate-gaudi-sketch"]
     pause_label = ("Pausar movimiento", "Reanudar movimiento") if is_es else ("Pause motion", "Resume motion")
     opening = "\n".join(f'        {bi("p", p["en"], p["es"])}\n        {cite(p["src"])}' for p in C.OPENING)
     parts = "\n".join(render_part(p, is_es) for p in C.PARTS)
     closing = "\n".join(f'        {bi("p", p["en"], p["es"])}' for p in C.CLOSING)
 
-    jumps = [("#relay", "5 Generations", "5 Generaciones")]
-    jumps += [(f"#{p['id']}", f"{p['numeral']} · {p['title_en']}", f"{p['numeral']} · {p['title_es']}") for p in C.PARTS]
-    jumps += [
-        ("#tectonic-section", "1:500 ↔ 1:10 Section", "Sección 1:500 ↔ 1:10"),
+    jumps = [
+        ("#relay", "5 Generations", "5 Generaciones"),
+        ("#part-1", "Eight Moves (1882–2026+)", "Ocho Hitos (1882–2026+)"),
+        ("#tectonic-section", "1:500 ↔ 1:10", "Sección 1:500 ↔ 1:10"),
         ("#atelier", "2D ↔ 3D Atelier", "Atelier 2D ↔ 3D"),
         ("#benches", "Benches", "Bancos"),
-        ("#visuals", "Visual Archive", "Archivo Visual"),
+        ("#architects-study", "Architects’ Study", "Estudio Arquitectónico"),
         ("#part-6", "VI · Lab", "VI · Laboratorio"),
-        ("#act-puzzle-cc02", "Crossword", "Crucigrama"),
+        ("#visuals", "Visual Archive (14)", "Archivo Visual (14)"),
         ("#sources", "Sources", "Fuentes"),
     ]
-    hero_diptych = render_media_diptych(
-        ("photo-1909-escoles", "photo-2026-cross"),
-        is_es,
-        "1909 → 2026 Documentary Diptych · From Workers’ Brick Schools to the 172.5 m Cross",
-        "Díptico documental 1909 → 2026 · De las Escuelas obreras a la Cruz de 172.5 m",
-    )
+    hero_sketch = render_inline_figure(sketch_item, is_es, "sf-hero-sketch", include_id=True)
+    honor_roll = f"""        <aside class="sf-honor-roll" aria-label="{a(ht['kicker_es'] if is_es else ht['kicker_en'])}">
+          <p class="tp-kicker">{bi("span", ht["kicker_en"], ht["kicker_es"])}</p>
+          <dl class="sf-honor-dl">
+            <div class="sf-honor-row">{bi("dt", ht["architects_label_en"], ht["architects_label_es"])}{bi("dd", ht["architects_en"], ht["architects_es"])}</div>
+            <div class="sf-honor-row">{bi("dt", ht["makers_label_en"], ht["makers_label_es"])}{bi("dd", ht["makers_en"], ht["makers_es"])}</div>
+          </dl>
+          {cite(ht["src"])}
+        </aside>"""
     jump_html = " ".join(f'<a class="tp-essay-jump-pill" href="{jh}" data-en="{a(je)}" data-es="{a(js)}">{t(es_or_en(je, js, is_es))}</a>' for jh, je, js in jumps)
     aria_crumb = "Ruta de navegación" if is_es else "Breadcrumb"
     aria_jump = "Secciones" if is_es else "Sections"
@@ -1097,27 +1241,35 @@ def render_page(catalog: dict, lang: str = "en") -> str:
     </nav>
     <article class="sf-feature tp-prose" data-folio-id="{a(C.CODE)}">
       <header class="sf-hero tp-hero">
-        <p class="tp-kicker">{bi("span", h["kicker_en"], h["kicker_es"])} · {bi("span", h["reading_en"], h["reading_es"])}</p>
-        <h1 class="tp-h1 sf-h1" data-en="{a(h['title_en'])}" data-es="{a(h['title_es'])}">{t(h['title_en'])}</h1>
-        {bi("p", h["dek_en"], h["dek_es"], "tp-standfirst")}
+        <div class="sf-hero-grid">
+          <div class="sf-hero-copy">
+            <p class="tp-kicker">{bi("span", h["kicker_en"], h["kicker_es"])} · {bi("span", h["reading_en"], h["reading_es"])}</p>
+            <h1 class="tp-h1 sf-h1" data-en="{a(h['title_en'])}" data-es="{a(h['title_es'])}">{t(h['title_en'])}</h1>
+            {bi("p", h["dek_en"], h["dek_es"], "tp-standfirst")}
+            {bi("p", C.BRIEF_NOTE["en"], C.BRIEF_NOTE["es"], "sf-brief")}
+          </div>
+{hero_sketch}
+        </div>
+{honor_roll}
         <div class="sf-hero-tools">
           <button type="button" class="sf-btn sf-btn-quiet" data-sf-pause aria-pressed="false" data-label-pause="{a(pause_label[0])}" data-label-resume="{a(pause_label[1])}">{t(pause_label[0])}</button>
           <tp-article-audio data-folio="{a(C.CODE)}" data-reading-time="{a(h['reading_es'] if is_es else h['reading_en'])}"></tp-article-audio>
         </div>
-        {bi("p", C.BRIEF_NOTE["en"], C.BRIEF_NOTE["es"], "sf-brief")}
       </header>
       <nav class="tp-essay-jump-bar" aria-label="{aria_jump}">{jump_html}</nav>
-{render_era_rail()}
       <section class="sf-opening" aria-label="{a('Inicio' if is_es else 'Opening')}">
 {opening}
       </section>
-{hero_diptych}
 {render_relay_section(is_es)}
+      <div class="sf-chronology-track">
+{render_era_rail()}
 {parts}
+      </div>
 {render_atelier_section(is_es)}
 {render_benches_section(is_es)}
-{render_visual_gallery_section(is_es)}
+{render_architects_study_section(is_es)}
 {render_lab_section(is_es)}
+{render_visual_gallery_section(is_es)}
 {crossword}
 {render_silent(is_es)}
       <section class="sf-closing" aria-label="{a('Cierre' if is_es else 'Closing')}">

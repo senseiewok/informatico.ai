@@ -12,7 +12,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 
 ## 1. Page and files
 - **Page**: https://informatico.ai/classics/golf-gti/#part-6 (Spanish: https://informatico.ai/es-mx/classics/golf-gti/#part-6)
-- **Models**: `tools/folios/classics/cc01_mechanics.py` (used by the page builder)
+- **Models**: `tools/folios/classics/cc01_mechanics.py` (diff split, lap average speed, quarter-car eigenfrequencies, plus Model 4 `corner_load_and_yaw` & Model 5 `dct_shift_kinematics` used by the page builder)
 - **Content and data**: `tools/folios/classics/cc01.py` (lap table, sources, copy)
 - **Builder**: `python tools/build_cult_classics.py`
 - **Verifier**: `python skills/classics/cc01/verify_cc01_mechanics.py`
@@ -29,6 +29,8 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Clutch-pack lock** (torque only from the faster wheel to the slower): `T_out = T_in + min(T − 2·T_in, 1,600 Nm, T_grip,out − T_in)`
 - **Average lap speed**: `v̄ = 20,600 m ÷ t_lap`, only for rows where the source states that length
 - **Quarter car**: `m_s·m_u·ω⁴ − (m_s(k_s + k_t) + m_u·k_s)·ω² + k_s·k_t = 0`, `f = ω / 2π`
+- **Corner load transfer & direct yaw moment (Model 4)**: `ΔF_z = a_y · (ΔF_z,ref / a_y,ref)`, `M_z = ((T_out − T_in) / r_w) · (b_f / 2)`
+- **Coaxial DCT upshift handover (Model 5)**: `Δω = Δrpm · (2π / 60)`, `E_slip = 0.5 · T_in · |Δω| · t_overlap`
 
 ## 3. Sources
 | What | Source |

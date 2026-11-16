@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import shutil
 import struct
 import subprocess
 import sys
@@ -100,12 +101,17 @@ class SagradaMasterpieceTests(unittest.TestCase):
                 self.assertNotIn(phrase.lower(), visible, f"{page}: banned phrase {phrase!r}")
 
         txt = EN.read_text(encoding="utf-8")
-        self.assertEqual(len(C.SOURCES), 29)
+        self.assertEqual(len(C.SOURCES), 41)
         used = set(re.findall(r'href="#src-([a-z0-9-]+)"', txt))
         listed = set(re.findall(r'<li id="src-([a-z0-9-]+)"', txt))
         self.assertEqual(listed, set(C.SOURCES))
         self.assertTrue(used <= listed, used - listed)
         self.assertEqual(used, listed, f"listed but uncited sources: {listed - used}")
+        for doi_key in (
+            "collins1963", "tomlow1989", "block2006", "pedreschi2007",
+            "cassinello2010", "veenendaal2012", "liddell2015", "samper2015", "alambeigi2024",
+        ):
+            self.assertIn(doi_key, used, f"missing expected scholar source {doi_key}")
         legacy_404 = ("/en/architecture", "/en/the-columns", "/en/towers", "/en/tower-of-jesus-christ")
         for key, src in C.SOURCES.items():
             self.assertIn(src["kind"], C.KIND_LABEL, key)
@@ -120,7 +126,7 @@ class SagradaMasterpieceTests(unittest.TestCase):
 
     def test_conceptual_plates_zero_metadata_and_labeled(self) -> None:
         all_media = [*C.PHOTOS, *C.PLATES]
-        self.assertEqual(len(all_media), 10)
+        self.assertEqual(len(all_media), 14)
         expected_names = sorted(Path(p["image"]).name for p in all_media)
         actual_names = sorted(p.name for p in IMG_DIR.iterdir())
         self.assertEqual(actual_names, expected_names)
@@ -134,7 +140,7 @@ class SagradaMasterpieceTests(unittest.TestCase):
                 self.assertNotIn(marker, raw[:65536], f"{path.name}: contains metadata {marker!r}")
             digests.add(hashlib.sha256(raw).hexdigest())
 
-        self.assertEqual(len(digests), 10, "duplicate SHA-256 detected among CC.02 visual assets")
+        self.assertEqual(len(digests), 14, "duplicate SHA-256 detected among CC.02 visual assets")
 
         for plate_info in C.PLATES:
             self.assertIn("Conceptual visualization", plate_info["alt_en"])
@@ -168,11 +174,50 @@ class SagradaMasterpieceTests(unittest.TestCase):
         self.assertIn('data-sf-loupe', txt)
         self.assertIn('data-sf-sankey', txt)
         self.assertIn('data-sf-radar', txt)
+        self.assertIn('data-sf-lineage', txt)
+        self.assertIn('id="architects-study"', txt)
+        self.assertIn('sf-hero-sketch', txt)
+        self.assertIn('sf-honor-roll', txt)
+        self.assertNotIn('sf-diptych-wrap', txt)
+        self.assertEqual(len(re.findall(r'class="sf-inline-figure sf-move-figure"', txt)), 8)
+        self.assertEqual(len(re.findall(r'class="sf-gallery-grid"', txt)), 1)
         self.assertIn('data-sf-gallery', txt)
         self.assertIn('<dialog class="sf-lightbox" id="sf-lightbox"', txt)
         es_txt = ES.read_text(encoding="utf-8")
-        for attr in ('data-sf-loupe', 'data-sf-sankey', 'data-sf-radar', 'data-sf-gallery', 'id="sf-lightbox"'):
+        for attr in ('data-sf-loupe', 'data-sf-sankey', 'data-sf-radar', 'data-sf-lineage', 'id="architects-study"', 'sf-hero-sketch', 'data-sf-gallery', 'id="sf-lightbox"'):
             self.assertIn(attr, es_txt)
+        self.assertNotIn('sf-diptych-wrap', es_txt)
+        audio_js = (SRC / "modules" / "article-audio.mjs").read_text(encoding="utf-8")
+        for marker in (
+            "splitIntoSpeechChunks",
+            "resolveSectionDefs",
+            "SAGRADA_ACT_DEFS",
+            "_playMediaElementTrack",
+            "export function sanitizeAudioTrackPath",
+        ):
+            self.assertIn(marker, audio_js)
+        for bad in ("innerHTML", "outerHTML", "insertAdjacentHTML", ".style.", "eval(", "new Function"):
+            self.assertNotIn(bad, audio_js, f"CSP violation in article-audio.mjs: {bad}")
+        node_bin = shutil.which("node")
+        if node_bin:
+            mod_uri = (SRC / "modules" / "article-audio.mjs").resolve().as_uri()
+            probe = (
+                f'globalThis.HTMLElement = class {{}};'
+                f'const {{ sanitizeAudioTrackPath }} = await import({json.dumps(mod_uri)});'
+                f'const good = ["../../audio/a01-en.mp3", "../../../audio/a01-es.mp3", "/audio/x06-en.mp3"];'
+                f'for (const g of good) {{ if (sanitizeAudioTrackPath(g) !== g) throw new Error("rejected: " + g); }}'
+                f'const bad = ["javascript:alert(1)", "data:text/html,<script>alert(1)</script>", '
+                f'"https://evil.example/audio/a01-en.mp3", "../../audio/../index.html"];'
+                f'for (const b of bad) {{ if (sanitizeAudioTrackPath(b) !== "") throw new Error("accepted: " + b); }}'
+            )
+            node_res = subprocess.run(
+                [node_bin, "--input-type=module", "-e", probe],
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                timeout=15,
+            )
+            self.assertEqual(node_res.returncode, 0, node_res.stdout + node_res.stderr)
         for i in range(5):
             self.assertIn(f'data-sf-gen="{i}"', txt)
             self.assertIn(f'data-sf-relay-card="{i}"', txt)

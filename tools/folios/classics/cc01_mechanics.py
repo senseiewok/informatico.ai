@@ -93,3 +93,77 @@ def quarter_car_hz(m_u: float, q: dict = QUARTER_MODEL) -> tuple[float, float]:
     disc = math.sqrt(b * b - 4 * a * c)
     lo, hi = (-b - disc) / (2 * a), (-b + disc) / (2 * a)
     return math.sqrt(lo) / (2 * math.pi), math.sqrt(hi) / (2 * math.pi)
+
+
+# --------------------------------------------------------------------------------------------- 4. corner load + yaw ----
+CORNER_YAW_MODEL = {
+    "static_wheel_n": 4000.0,     # MODEL: static corner load on level road (average of 2600 N and 5400 N), N
+    "transfer_ref_n": 1400.0,     # MODEL: lateral weight shift magnitude at ay = 0.70 g
+    "ay_ref_g": 0.70,             # MODEL: reference lateral acceleration (g) restoring 2600 N / 5400 N in DIFF_MODEL
+    "track_front_m": 1.54,        # MODEL: front track width for direct yaw-moment couple M_z, m
+}
+
+
+def corner_load_and_yaw(
+    ay_g: float,
+    demand_nm: float,
+    mode: str,
+    m: dict = DIFF_MODEL,
+    c: dict = CORNER_YAW_MODEL,
+) -> dict:
+    """Couple lateral acceleration a_y (g) to front tyre vertical loads N_in / N_out and compute net drive + yaw moment."""
+    ay_clamped = max(0.0, min(1.05, float(ay_g)))
+    delta_n = min(c["static_wheel_n"] - 400.0, c["transfer_ref_n"] * (ay_clamped / c["ay_ref_g"]))
+    n_in = c["static_wheel_n"] - delta_n
+    n_out = c["static_wheel_n"] + delta_n
+    local_diff = dict(m, load_in_n=n_in, load_out_n=n_out)
+    res = axle_split(float(demand_nm), mode, local_diff)
+    fx_in = res["road_in"] / m["radius_m"]
+    fx_out = res["road_out"] / m["radius_m"]
+    # Yaw moment around vehicle CoG from front tractive differential force: (Fx_out - Fx_in) * (track / 2)
+    yaw_knm = ((fx_out - fx_in) * (c["track_front_m"] * 0.5)) / 1000.0
+    return {
+        "ay_g": ay_clamped,
+        "load_in_n": n_in,
+        "load_out_n": n_out,
+        "road_in": res["road_in"],
+        "road_out": res["road_out"],
+        "brake": res["brake"],
+        "road": res["road"],
+        "unused": res["unused"],
+        "grip_in": res["grip_in"],
+        "grip_out": res["grip_out"],
+        "yaw_knm": yaw_knm,
+    }
+
+
+# --------------------------------------------------------------------------------------------- 5. coaxial 6-spd DCT ----
+DCT_SHIFT_MODEL = {
+    "ratios": [3.46, 2.05, 1.30, 0.90, 0.72, 0.58],  # MODEL: illustrative 6-speed overdrive ratios
+    "final_drive": 4.06,                              # MODEL: final drive ratio
+    "rpm_shift": 6000.0,                              # MODEL: illustrative upshift engine speed
+    "torque_in_nm": 280.0,                            # MODEL: illustrative crankshaft torque during powershift
+    "overlap_s": 0.20,                                # MODEL: clutch handover overlap duration, s
+}
+
+
+def dct_shift_kinematics(gear_from: int, d: dict = DCT_SHIFT_MODEL) -> dict:
+    """Coaxial odd/even shaft speed step and friction slip energy across a 1->2..5->6 powershift."""
+    idx = max(0, min(len(d["ratios"]) - 2, int(gear_from) - 1))
+    r_cur = d["ratios"][idx]
+    r_next = d["ratios"][idx + 1]
+    omega_in = d["rpm_shift"] * (2.0 * math.pi / 60.0)
+    # Output shaft angular speed matches wheel rate dictated by current ratio before slip completes
+    omega_out = omega_in / r_cur
+    delta_omega = omega_in - omega_out * r_next
+    slip_energy_kj = (0.5 * d["torque_in_nm"] * abs(delta_omega) * d["overlap_s"]) / 1000.0
+    ratio_drop_pct = (1.0 - r_next / r_cur) * 100.0
+    return {
+        "shift_label": f"{idx + 1}→{idx + 2}",
+        "r_cur": r_cur,
+        "r_next": r_next,
+        "ratio_drop_pct": ratio_drop_pct,
+        "delta_rpm": abs(delta_omega) * (60.0 / (2.0 * math.pi)),
+        "wheel_torque_nm": d["torque_in_nm"] * r_next * d["final_drive"],
+        "slip_energy_kj": slip_energy_kj,
+    }

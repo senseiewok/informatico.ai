@@ -2304,8 +2304,8 @@ def render_timegravity_series_rack(rel_res: str) -> str:
     </section>"""
 
 
-def render_cult_classics_rack(rel_res: str) -> str:
-    """Applied mechanics on /physics/: the Cult Classics features (CC.xx), one card each (tools/folios/classics/)."""
+def render_cult_classics_rack(rel_res: str, section_id: str = "cult-classics") -> str:
+    """Applied mechanics showcase on /physics/ and /engineering/: the Cult Classics features (CC.01 & CC.03)."""
     from folios.classics import cc01 as CC01  # noqa: E402
     from folios.classics import cc03 as CC03  # noqa: E402
     _t1, d1_en, _t1_es, d1_es = CC01.SEO
@@ -2314,10 +2314,11 @@ def render_cult_classics_rack(rel_res: str) -> str:
     href3 = _href(rel_res, f"classics/{CC03.SLUG}/")
     plate1 = _href(rel_res, "plates/cc01.png")
     plate3 = _href(rel_res, "plates/cc03.png")
+    heading_id = f"{section_id}-heading"
     return f"""
-    <section class="tp-issue-rack tp-series-rack" aria-labelledby="cult-classics-heading" id="cult-classics">
+    <section class="tp-issue-rack tp-series-rack" aria-labelledby="{heading_id}" id="{section_id}">
       <p class="tp-kicker" data-en="Applied Mechanics · Cult Classics · CC.01 &amp; CC.03" data-es="Mecánica Aplicada · Clásicos de Culto · CC.01 y CC.03">Applied Mechanics · Cult Classics · CC.01 &amp; CC.03</p>
-      <h2 id="cult-classics-heading" class="tp-h2" data-en="Cult Classics · Engineering on Wheels" data-es="Clásicos de Culto · Ingeniería sobre ruedas">Cult Classics · Engineering on Wheels</h2>
+      <h2 id="{heading_id}" class="tp-h2" data-en="Cult Classics · Engineering on Wheels" data-es="Clásicos de Culto · Ingeniería sobre ruedas">Cult Classics · Engineering on Wheels</h2>
       <div class="tp-rack-grid">
         <a class="tp-rack-card tp-rack-card-classic" href="{href1}" data-folio-slug="cc01">
           <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb tp-rack-thumb-series" src="{plate1}?v={_png_sha8('cc01')}" width="1200" height="630" loading="lazy" decoding="async" alt="Schematic hatchback silhouettes for CC.01"></span>
@@ -2419,6 +2420,14 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
         rack_head = """      <div class="tp-issue-rack-head">
         <p class="tp-kicker" data-en="Standalone Architecture Monographs · A.01–A.12" data-es="Monografías Independientes de Arquitectura · A.01–A.12">Standalone Architecture Monographs · A.01–A.12</p>
         <h2 class="tp-h2" data-en="Twelve Structural &amp; Geometric Monographs" data-es="Doce Monografías Estructurales y Geométricas">Twelve Structural &amp; Geometric Monographs</h2>
+      </div>
+"""
+    elif pillar == "engineering":
+        lead_series = render_cult_classics_rack(rel_res, "cult-classics-eng")
+        rack_cls = "tp-issue-rack tp-issue-rack-headed"
+        rack_head = """      <div class="tp-issue-rack-head">
+        <p class="tp-kicker" data-en="Standalone Engineering Monographs · E.01–E.12" data-es="Monografías Independientes de Ingeniería · E.01–E.12">Standalone Engineering Monographs · E.01–E.12</p>
+        <h2 class="tp-h2" data-en="Twelve Systems &amp; Mechanics Monographs" data-es="Doce Monografías de Sistemas y Mecánica">Twelve Systems &amp; Mechanics Monographs</h2>
       </div>
 """
     else:
@@ -5168,10 +5177,10 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "title_en": "One Brief, Eight Answers: the Golf GTI as an Engineering Story",
         "title_es": "Un reto, ocho respuestas: el Golf GTI como historia de ingeniería",
         "dek_en": "Eight generations, one engineering move each: injection, sixteen valves, turbo, two clutches, brake-based and clutch-pack differentials, software, with a ghost race of one magazine's Nordschleife times.",
-        "dek_es": "Ocho generaciones, una jugada de ingeniería cada una: inyección, dieciséis válvulas, turbo, dos embragues, diferenciales por freno y por embrague, software, con una carrera fantasma de los tiempos de una revista en el Nordschleife.",
+        "dek_es": "Ocho generaciones, una decisión de ingeniería cada una: inyección, dieciséis válvulas, turbo, dos embragues, diferenciales por freno y por embrague, software, con una carrera fantasma de los tiempos de una revista en el Nordschleife.",
         "law": "Δt = 8:54 − 7:57 = 57 s · sport auto, Nordschleife, 2002 vs 2016",
-        "badge_en": "VW · PRESS · 6 PAPERS · EVERY NUMBER STAMPED",
-        "badge_es": "VW · PRENSA · 6 ARTÍCULOS · CADA CIFRA SELLADA",
+        "badge_en": "VW · PRESS · 15 PAPERS · 3D WEBGL2 · GLB & DXF",
+        "badge_es": "VW · PRENSA · 15 ARTÍCULOS · 3D WEBGL2 · GLB Y DXF",
         "cta_en": "Read CC.01 →",
         "cta_es": "Leer CC.01 →",
         "alt": "Schematic hatchback silhouettes with a red rule and a tartan band, the share plate for CC.01.",
@@ -5583,7 +5592,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         <a class="tp-track-chip tp-track-chip-classic" href="classics/golf-gti/">
           <span class="tp-track-chip-kicker" data-en="CULT CLASSIC · CC.01" data-es="CLÁSICO DE CULTO · CC.01">CULT CLASSIC · CC.01</span>
           <strong class="tp-track-chip-title" data-en="One Brief, Eight Answers: the Golf GTI" data-es="Un reto, ocho respuestas: el Golf GTI">One Brief, Eight Answers: the Golf GTI</strong>
-          <span class="tp-track-chip-meta" data-en="8 generations · Differential bench · Ghost race" data-es="8 generaciones · Banco de diferenciales · Carrera fantasma">8 generations · Differential bench · Ghost race</span>
+          <span class="tp-track-chip-meta" data-en="2D Cornering ↔ 3D WebGL2 · GLB &amp; DXF · 14 Plates" data-es="Curva 2D ↔ WebGL2 3D · GLB y DXF · 14 Láminas">2D Cornering ↔ 3D WebGL2 · GLB &amp; DXF · 14 Plates</span>
         </a>
         <a class="tp-track-chip tp-track-chip-classic" href="classics/sagrada-familia/">
           <span class="tp-track-chip-kicker" data-en="CULT CLASSIC · CC.02" data-es="CLÁSICO DE CULTO · CC.02">CULT CLASSIC · CC.02</span>
