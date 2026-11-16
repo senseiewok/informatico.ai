@@ -41,7 +41,7 @@ FOLIO = {'folio_id': 'M.04',
  'steps': ['Stage 1 (Small Doubling Hypothesis): A subset A ⊂ F_2^n satisfies |A + A| ≤ K|A|, '
            'indicating hidden approximate subgroup structure.',
            'Stage 2 (Ruzsa Entropic Triangle Inequality): Defines entropic distance d(X, Y) = H(X '
-           "- Y') - (H(X) + H(Y'))/2 and proves submodularity bounds.",
+           "- Y') - (H(X) + H(Y'))/2 and evaluates submodularity bounds.",
            'Stage 3 (Tau-Minimizer): The proof studies a minimizer of an entropic functional τ and '
            'uses it to show that d(X, U_H) is small for the uniform distribution U_H on a '
            "subgroup H. This page's slider is a simplified picture of that step, not the "
@@ -75,7 +75,7 @@ FOLIO = {'folio_id': 'M.04',
                      "independent copies X, Y' on abelian groups.",
                      'State the Ruzsa triangle inequality d(X, Z) <= d(X, Y) + d(Y, Z) and the PFR '
                      'covering bound <= 2 * K^12 as results of the cited paper and project README.',
-                     'Treat an implication between magma laws as proven only when a Lean proof or a '
+                     'Treat an implication between magma laws as established only when a Lean proof or a '
                      'finite counterexample is cited, and say when you have not checked it.']},
  'revisions': [{'edition': 'REV 1.2',
                 'date': '2026-11-14',
@@ -136,7 +136,7 @@ FOLIO = {'folio_id': 'M.04',
 LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'act1_dropcap': "In additive combinatorics, a set A in F_2^n has small doubling if |A + A| <= K|A| for a modest constant K. The Polynomial Freiman–Ruzsa conjecture, attributed to Katalin Marton and widely known under that name, asks whether such a set must be covered by a number of cosets of a subspace that is only polynomial in K. In November 2023, Timothy Gowers, Ben Green, Freddie Manners and Terence Tao posted a proof in characteristic 2 (arXiv:2311.05762; Annals of Mathematics 2025, DOI 10.4007/annals.2025.201.2.5).",
  'act1_plain_bridge': 'In plain words, this puzzle asks how closely a messy collection of points must resemble a tidy, organized grid. Imagine tossing a handful of coins onto a blanket. If adding their positions together produces very few new positions, the coins must secretly share a hidden alignment. The conjecture says that such a set can be covered by a modest number of tidy frames, where "modest" means a polynomial in the doubling constant. This folio makes no claim about data compression, streaming or encryption.',
- 'act1_body': "Gowers, Green, Manners and Tao prove the conjecture in characteristic 2 using Shannon entropy and an entropic version of Ruzsa distance (Annals of Mathematics 2025, DOI 10.4007/annals.2025.201.2.5). The repository https://github.com/teorth/pfr holds a Lean 4 formalization project whose README states that its main purpose, formalizing the proof, was completed, followed by a second stage developing consequences. The Equational Theories project (https://github.com/teorth/equational_theories), launched on 25 September 2024 according to its README, concerns the implications among 4,694 magma laws, that is 4,694 × 4,693 = 22,028,942 ordered pairs. Its README says that proven implications are verified in Lean and that other claims are tracked as conjectured. This site has not built either project and has not checked how far the second one has progressed.",
+ 'act1_body': "Gowers, Green, Manners and Tao establish the conjecture in characteristic 2 using Shannon entropy and an entropic version of Ruzsa distance (Annals of Mathematics 2025, DOI 10.4007/annals.2025.201.2.5). The repository https://github.com/teorth/pfr holds a Lean 4 formalization project whose README states that its main purpose, formalizing the proof, was completed, followed by a second stage developing consequences. The Equational Theories project (https://github.com/teorth/equational_theories), launched on 25 September 2024 according to its README, concerns the implications among 4,694 magma laws, that is 4,694 × 4,693 = 22,028,942 ordered pairs. Its README says that accepted implications are verified in Lean and that other claims are tracked as conjectured. This site has not built either project and has not checked how far the second one has progressed.",
  'act1_stakes': "A blueprint splits a proof into small lemmas that different people can formalize independently, with a dependency graph showing what remains. The README of the PFR project links its blueprint and describes the formalization as completed. Whether this way of working carries over to other proofs is not something the folio assesses. A formalization also needs a reader to judge that the formal statement matches the statement intended.",
  'pullquote': 'By translating sumset size |A + A| <= K|A| into Shannon entropy distances d(X, Y), '
               'the proof of PFR in characteristic 2 turns a counting problem into one about '
@@ -152,7 +152,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Gowers, Green, Manners & Tao.'),
                 ('Nov 2023',
                  'Gowers, Green, Manners & Tao',
-                 'Prove PFR in F_2^n (covering A by <= 2 K^12 cosets, per the project README) '
+                 'Establish PFR in F_2^n (covering A by <= 2 K^12 cosets, per the project README) '
                  '(arXiv:2311.05762).'),
                 ('After Nov 2023',
                  'teorth/pfr project',
@@ -177,7 +177,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Experiment 3 (Apply Blueprint Decomposition): Use the portable SKILL.md below to '
                  'structure complex engineering or proof tasks as human-readable DAG blueprints '
                  'with independent machine-verifiable nodes.'],
- 'act4_human_ai': "The READMEs of the PFR and Equational Theories projects describe open collaborations around Lean 4 proofs and, in the second case, a dashboard of proven and conjectured implications. Lean's kernel rejects a step that does not follow, so a mistaken lemma cannot enter the formal proof. This folio cannot say how many contributors were human or AI, or how the work compares with unassisted work. The anthropics/formal-math repository is not part of either project, and the folio draws no link to it. Mathlib (DOI 10.1145/3372885.3373824) is the library such projects build on.",
+ 'act4_human_ai': "The READMEs of the PFR and Equational Theories projects describe open collaborations around Lean 4 proofs and, in the second case, a dashboard of verified and conjectured implications. Lean's kernel rejects a step that does not follow, so a mistaken lemma cannot enter the formal proof. This folio cannot say how many contributors were human or AI, or how the work compares with unassisted work. The anthropics/formal-math repository is not part of either project, and the folio draws no link to it. Mathlib (DOI 10.1145/3372885.3373824) is the library such projects build on.",
  'act4_deepening': 'Splitting a large proof or a large list of questions into small pieces that different people, or programs, can take on is one way to organize formalization. The Equational Theories README describes this for 4,694 magma laws; this folio has not checked how far the project got or which tools settled which pairs. Whether similar entropy methods work over other groups is a question for mathematicians and is not addressed here.',
  'cf_bridge': 'This bridge is an analogy the folio draws and nothing more. The folio compares '
               'measuring how far a probability distribution is from a clean structure with '
@@ -192,12 +192,12 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'or checked by this site.',
              'Repository: teorth/equational_theories, Equational theories project '
              '(https://github.com/teorth/equational_theories). README read 2026-11-14; it states '
-             '4,694 laws, 4,694 × 4,693 = 22,028,942 implications to be proven or disproven, '
-             'and that proven ones are verified in Lean. Progress not checked by this site.',
+             '4,694 laws, 4,694 × 4,693 = 22,028,942 implications to be decided or refuted, '
+             'and that verified ones are checked in Lean. Progress not checked by this site.',
              "Ruzsa, I. Z. (1999). An analog of Freiman's theorem in groups. Astérisque, 258, "
              '323–326.',
              'The mathlib Community (2020). The Lean mathematical library. Proceedings of the '
-             '9th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP '
+             '9th ACM SIGPLAN CPP Conference (CPP '
              '2020), 367–381. DOI: 10.1145/3372885.3373824.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
              'context of citations and classifies their intent using deep learning '
