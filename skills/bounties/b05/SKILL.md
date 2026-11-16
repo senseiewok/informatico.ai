@@ -7,9 +7,9 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 # Pareto Symbolic Regression (PySR) & Sparse PDE Discovery (PySINDy + Dedalus) from Noisy Sensor Fields (B.05 · BOUNTY-P2)
 
 ## 1. Governing Law, Prize Registry & Canonical URL
-- **Bounty Folio**: `B.05` (`BOUNTY-P2` · `REV 1.2`, Redated `2026-11-08`)
+- **Bounty Folio**: `B.05` (`BOUNTY-P2` · `REV 1.3`, Redated `2026-11-15`)
 - **Canonical URL**: https://informatico.ai/bounties/b05/ (Spanish: https://informatico.ai/es-mx/bounties/b05/)
-- **Prize / Challenge**: BOUNTY B.05 (P-2) · PYSR + PYSINDY + DEDALUS
+- **Prize / Challenge**: GRAND CHALLENGE B.05 (P-2) · PYSR + PYSINDY + DEDALUS
 - **Official Registry**: [MilesCranmer/PySR (Symbolic Regression)](https://github.com/MilesCranmer/PySR)
 - **Governing Equation**: `u_t = −1.00 u·u_x + 0.10 u_xx (∀ |ξ_k| < λ = 0.05 ⇒ ξ_k = 0) · L_MDL = (N/2) ln(MSE) + λ_MDL C_tree = −1360.87 nats`
 - **Proof harness (computes the reference results; no planted-defect mode yet)**: `python bounties/bounty_p2_pysr_pysindy_pde_discovery.py`
@@ -39,4 +39,4 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Mounted live on Informatico.ai's Cover, Physics Hub, and Math Hub via src/modules/physics-discovery-crucible.mjs.
 
 ### Open Global Prize Horizon (T2/T3)
-- SRBench & PySR / PySINDy Open Benchmarks: Extending automated symbolic discovery to 3D turbulent closure tensors with guaranteed energy-conserving symmetries in Lean 4.
+- SRBench & PySR / PySINDy Open Research Track (open-source benchmark, no cash prize): Extending automated symbolic discovery to 3D turbulent closure tensors with energy-conserving symmetries checked in Lean 4.

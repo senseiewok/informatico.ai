@@ -119,7 +119,7 @@ def url_to_file(url: str) -> Path | None:
 class SeoCopyBudgets(unittest.TestCase):
     def test_every_essay_has_hand_written_copy_in_both_languages(self):
         slugs = {d.name for p in PILLARS for d in (RESEARCH / p).iterdir() if d.is_dir()}
-        self.assertEqual(len(slugs), 48)
+        self.assertEqual(len(slugs), 51)
         self.assertEqual(set(FOLIO_SEO), slugs)
 
     def test_titles_and_descriptions_are_whole_and_within_budget(self):
@@ -140,14 +140,14 @@ class SeoCopyBudgets(unittest.TestCase):
             i = 0 if key == "en" else 2
             titles = [v[i] for v in FOLIO_SEO.values()] + [v[i] for v in BOUNTY_SEO.values()]
             descs = [v[i + 1] for v in FOLIO_SEO.values()] + [v[i + 1] for v in BOUNTY_SEO.values()]
-            self.assertEqual(len(set(titles)), 54, f"duplicate {key} title")
-            self.assertEqual(len(set(descs)), 54, f"duplicate {key} description")
+            self.assertEqual(len(set(titles)), 57, f"duplicate {key} title")
+            self.assertEqual(len(set(descs)), 57, f"duplicate {key} description")
         for p, (t_en, d_en, t_es, d_es) in PILLAR_SEO.items():
             for t in (t_en, t_es):
                 self.assertTrue(20 <= len(t) <= 70, f"{p}: {t!r}")
             for d in (d_en, d_es):
                 self.assertTrue(110 <= len(d) <= 158 and d.endswith("."), f"{p}: {d!r}")
-        t_en, d_en, t_es, d_es = (x.replace("{total}", "48") for x in HUB_SEO)
+        t_en, d_en, t_es, d_es = (x.replace("{total}", "51") for x in HUB_SEO)
         self.assertTrue(20 <= len(t_en) <= 70 and 20 <= len(t_es) <= 70)
         self.assertTrue(110 <= len(d_en) <= 158 and 110 <= len(d_es) <= 158)
 
@@ -155,7 +155,7 @@ class SeoCopyBudgets(unittest.TestCase):
 class BuiltPages(unittest.TestCase):
     def test_45_pages_each_have_a_spanish_twin_with_reciprocal_hreflang(self):
         listed = pages()
-        self.assertEqual(len(listed), 61)
+        self.assertEqual(len(listed), 64)
         for path, en_file, es_file in listed:
             self.assertTrue(es_file.is_file(), f"missing Spanish twin of /{path}")
             en, es = parse(en_file), parse(es_file)
@@ -277,14 +277,14 @@ class SiteFiles(unittest.TestCase):
     def test_sitemap_lists_both_languages_with_alternates_and_real_dates(self):
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 194)
-        self.assertEqual(len(set(locs)), 194)
-        self.assertEqual(sum("/es-mx/" in u for u in locs), 97)
+        self.assertEqual(len(locs), 200)
+        self.assertEqual(len(set(locs)), 200)
+        self.assertEqual(sum("/es-mx/" in u for u in locs), 100)
         self.assertNotIn("lang=es", xml)
         for loc in locs:
             self.assertIsNotNone(url_to_file(loc))
             self.assertTrue(url_to_file(loc).is_file(), loc)
-        self.assertEqual(xml.count('hreflang="es-MX"'), 194)
+        self.assertEqual(xml.count('hreflang="es-MX"'), 200)
         dates = set(re.findall(r"<lastmod>([^<]+)</lastmod>", xml))
         for d in dates:
             self.assertRegex(d, r"^\d{4}-\d{2}-\d{2}$")
@@ -293,7 +293,7 @@ class SiteFiles(unittest.TestCase):
         text = (RESEARCH / "llms.txt").read_text(encoding="utf-8")
         self.assertTrue(text.startswith("# Informatico.ai\n"))
         urls = re.findall(r"\]\((https://informatico\.ai/[^)]*)\)", text)
-        self.assertEqual(len(urls), 96)  # CC.01 + CC.02 + CC.03 + 4 hubs + 48 essays + bounties hub + 6 bounty folios + toolbox hub + 6 tools + Time & Gravity hub + T.01-T.13 + Cross-Scale Essays hub + 11 essays + about
+        self.assertEqual(len(urls), 99)  # CC.01 + CC.02 + CC.03 + 4 hubs + 51 essays + bounties hub + 6 bounty folios + toolbox hub + 6 tools + Time & Gravity hub + T.01-T.13 + Cross-Scale Essays hub + 11 essays + about
         for u in urls:
             self.assertTrue(url_to_file(u).is_file(), u)
 

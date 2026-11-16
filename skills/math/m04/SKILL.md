@@ -14,11 +14,11 @@ A plain-text companion to the essay at https://informatico.ai/math/m04/ (`M.04 �
 ## Rules the essay derives
 1. Compute Ruzsa entropic distance d(X, Y) = H(X - Y') - 0.5*(H(X) + H(Y')) for independent copies X, Y' on abelian groups.
 2. State the Ruzsa triangle inequality d(X, Z) <= d(X, Y) + d(Y, Z) and the PFR covering bound <= 2 * K^12 as results of the cited paper and project README.
-3. Treat an implication between magma laws as proven only when a Lean proof or a finite counterexample is cited, and say when you have not checked it.
+3. Treat an implication between magma laws as established only when a Lean proof or a finite counterexample is cited, and say when you have not checked it.
 
 ## How it works, in four stages
 - Stage 1 (Small Doubling Hypothesis): A subset A ⊂ F_2^n satisfies |A + A| ≤ K|A|, indicating hidden approximate subgroup structure.
-- Stage 2 (Ruzsa Entropic Triangle Inequality): Defines entropic distance d(X, Y) = H(X - Y') - (H(X) + H(Y'))/2 and proves submodularity bounds.
+- Stage 2 (Ruzsa Entropic Triangle Inequality): Defines entropic distance d(X, Y) = H(X - Y') - (H(X) + H(Y'))/2 and evaluates submodularity bounds.
 - Stage 3 (Tau-Minimizer): The proof studies a minimizer of an entropic functional τ and uses it to show that d(X, U_H) is small for the uniform distribution U_H on a subgroup H. This page's slider is a simplified picture of that step, not the paper's argument.
 - Stage 4 (Polynomial Coset Covering): The theorem, as stated in the README of the Lean project, says A is covered by at most 2·K^12 cosets of a subspace H of size at most |A|. Separately, the Equational Theories project concerns 4,694 × 4,693 = 22,028,942 ordered pairs of magma laws.
 

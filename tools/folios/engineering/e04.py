@@ -88,7 +88,7 @@ FOLIO = {'folio_id': 'E.04',
                      'T_frost(omega_exhaust) to avoid ice blockage.']},
  'revisions': [{'edition': 'REV 1.2',
                 'date': '2026-11-14',
-                'summary': 'REV 1.2 (Redated 2026-11-14): Grounding revision. The certification '
+                'summary': 'REV 1.2 (Redated 2026-11-14): Grounding revision. Unverified compliance '
                            'claims on the specification plate (Passive House, Eurovent, EN 308), '
                            'the "zero pathogen crossover" and ">99.6% aerosol" claims, and the '
                            'advice about equipment for bedrooms of people with Cystic Fibrosis '
@@ -411,7 +411,7 @@ ES_TRANSLATION = {'title_es': 'Intercambiadores de Recuperación de Entalpía a 
             'conducción de calor sensible y la difusión de humedad latente a través de membranas '
             'poliméricas selectivas. La configuración a contracorriente mantiene una diferencia de '
             'temperatura y presión de vapor casi uniforme a lo largo de los canales, permitiendo '
-            'eficiencias térmicas superiores al ochenta y cinco por ciento. Sin embargo, en climas '
+            'eficiencias térmicas superiores al ochenta y cinco por ciento. No obstante, en climas '
             'extremadamente fríos surge un umbral crítico: si el aire húmedo de extracción se '
             'enfría por debajo de su punto de rocío y de congelación, el agua condensada se '
             'convierte en escarcha sólida, bloqueando el paso del aire. En la ingeniería civil '

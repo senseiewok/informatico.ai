@@ -556,6 +556,8 @@ function initLightbox() {
     else if (e.key === "ArrowRight") { showAt(activeIndex + 1); e.preventDefault(); }
   });
   window.addEventListener("tp-lang-change", () => { if (dialog.open) showAt(activeIndex); });
+}
+
 // ---------------------------------------------------------------- jump-bar scroll spy
 function initJumpSpy() {
   const pills = [...document.querySelectorAll('.tp-essay-jump-pill[href^="#"]')];
@@ -1309,5 +1311,3 @@ initEgg();
 initVisualGalleryAndLightbox();
 initJumpScrollSpy();
 initLightbox();
-initLoadTransfer();
-initBrakeThermal();

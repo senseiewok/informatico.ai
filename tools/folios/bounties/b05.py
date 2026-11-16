@@ -9,8 +9,8 @@ FOLIO = {'slug': 'b05',
  'plate_slug': 'b05',
  'pillar_label_en': 'Physics · Symbolic Regression & Sparse PDE Discovery',
  'pillar_label_es': 'Física · Regresión Simbólica y Descubrimiento de EDPs',
- 'badge_en': 'BOUNTY B.05 (P-2) · PYSR + PYSINDY + DEDALUS',
- 'badge_es': 'RETO B.05 (P-2) · PYSR + PYSINDY + DEDALUS',
+ 'badge_en': 'GRAND CHALLENGE B.05 (P-2) · PYSR + PYSINDY + DEDALUS',
+ 'badge_es': 'GRAN RETO B.05 (P-2) · PYSR + PYSINDY + DEDALUS',
  'title': 'Pareto Symbolic Regression (PySR) & Sparse PDE Discovery (PySINDy + Dedalus) from Noisy '
           'Sensor Fields',
  'title_es': 'Regresión Simbólica de Pareto (PySR) y Descubrimiento Disperso de EDPs (PySINDy + '
@@ -41,8 +41,8 @@ FOLIO = {'slug': 'b05',
  'scite_summary': 'Brunton, Proctor & Kutz (2016) SINDy sparse discovery and Cranmer (2023) PySR '
                   'Pareto symbolic regression verified against Crossref and Scite.',
  'date_published': '2026-11-04',
- 'date_redated': '2026-11-08',
- 'current_edition': 'REV 1.2',
+ 'date_redated': '2026-11-15',
+ 'current_edition': 'REV 1.3',
  'reading_time': '14 MIN READ',
  'companion_folios': [('physics',
                        'p12',
@@ -166,9 +166,9 @@ FOLIO = {'slug': 'b05',
                      'and Burns et al. (2020, DOI 10.1103/PhysRevResearch.2.023068).',
                      "Mounted live on Informatico.ai's Cover, Physics Hub, and Math Hub via "
                      'src/modules/physics-discovery-crucible.mjs.'],
- 't2_t3_open_horizon': ['SRBench & PySR / PySINDy Open Benchmarks: Extending automated symbolic '
-                        'discovery to 3D turbulent closure tensors with guaranteed '
-                        'energy-conserving symmetries in Lean 4.'],
+ 't2_t3_open_horizon': ['SRBench & PySR / PySINDy Open Research Track (open-source benchmark, no '
+                        'cash prize): Extending automated symbolic discovery to 3D turbulent '
+                        'closure tensors with energy-conserving symmetries checked in Lean 4.'],
  'sources': ['Brunton, S. L., Proctor, J. L., & Kutz, J. N. (2016). Discovering governing '
              'equations from data by sparse identification of nonlinear dynamical systems. '
              'Proceedings of the National Academy of Sciences, 113(15), 3932–3937. DOI '
@@ -666,6 +666,7 @@ FOLIO = {'slug': 'b05',
                         'Montado en vivo en la Portada, el Hub de Física y el Hub de Matemáticas '
                         'de Informatico.ai mediante '
                         'src/modules/physics-discovery-crucible.mjs.'],
- 't2_t3_open_horizon_es': ['SRBench y Retos Abiertos de PySR / PySINDy: Extender el descubrimiento '
-                           'simbólico automatizado a tensores de cierre turbulento 3D con '
-                           'simetrías de conservación de energía garantizadas en Lean 4.']}
+ 't2_t3_open_horizon_es': ['SRBench y Pista Abierta de PySR / PySINDy (referencia de código '
+                           'abierto sin premio monetario): Extender el descubrimiento simbólico '
+                           'automatizado a tensores de cierre turbulento 3D con simetrías de '
+                           'conservación de energía verificadas en Lean 4.']}

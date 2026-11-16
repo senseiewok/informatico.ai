@@ -8,8 +8,8 @@ FOLIO = {'slug': 'b02',
  'plate_slug': 'b02',
  'pillar_label_en': 'Quantum Physics & Fault-Tolerant QEC',
  'pillar_label_es': 'Física Cuántica y Corrección de Errores Tolerante a Fallos',
- 'badge_en': 'BOUNTY B.02 (P-1) · $5M XPRIZE QUANTUM + UNITARYHACK',
- 'badge_es': 'RETO B.02 (P-1) · $5M XPRIZE QUANTUM + UNITARYHACK',
+ 'badge_en': 'GRAND CHALLENGE B.02 (P-1) · XPRIZE FINALISTS-ONLY + UNITARY MICROGRANTS',
+ 'badge_es': 'GRAN RETO B.02 (P-1) · XPRIZE CERRADO + MICROBECAS UNITARY',
  'title': '$5M XPRIZE Quantum Applications & Unitary Foundation: Surface-Code Thresholds & FeMoCo '
           'Catalysis',
  'title_es': 'XPRIZE Quantum ($5M) y Unitary Foundation: Umbrales de Código de Superficie y '
@@ -23,11 +23,15 @@ FOLIO = {'slug': 'b02',
  'why_en': 'Industrial Haber–Bosch fertilizer plants burn massive amounts of natural gas at 450 °C '
            'and 200 atmospheres, emitting nearly 1.8% of global CO₂, while soil bacteria fix '
            'nitrogen at room temperature using the FeMoCo [Fe₇MoS₉C] enzyme cofactor. Simulating '
-           "FeMoCo's strongly correlated electrons is the kind of application-scale problem that the $5M XPRIZE Quantum Applications and Unitary Foundation's Metriq registry exist to encourage.",
+           "FeMoCo's strongly correlated electrons is the application-scale benchmark explored by "
+           'the $5M XPRIZE Quantum Applications (closed to new entrants in May 2026) and Unitary '
+           "Foundation's open Metriq registry.",
  'why_es': 'El proceso industrial Haber–Bosch para fabricar fertilizantes opera a 450 °C y 200 '
            'atmósferas y emite cerca del 1.8% del CO₂ mundial, mientras que las bacterias del '
            'suelo fijan nitrógeno a temperatura ambiente con el cofactor FeMoCo [Fe₇MoS₉C]. '
-           'Simular sus electrones fuertemente correlacionados es el tipo de problema a escala de aplicación que el XPRIZE Quantum Applications ($5M) y Metriq.info buscan impulsar.',
+           'Simular sus electrones fuertemente correlacionados es el tipo de referencia a escala '
+           'de aplicación que inspiraron XPRIZE Quantum Applications (cerrado a nuevos equipos en '
+           'mayo de 2026) y el registro abierto Metriq.info.',
  'governing_law': 'P_L = 0.03 (p_phys / p_th)^((d+1)/2) · Q_phys = 2 · N_tiles · d² (d = 27 ⇒ P_L '
                   '= 3.00 × 10⁻¹⁶)',
  'pass_pill_en': 'PASS · P_L = 3.00e-16 · 428,652 Qubits',
@@ -40,8 +44,8 @@ FOLIO = {'slug': 'b02',
                   'FeMoCo quantum phase estimation resource bounds verified against Crossref and '
                   'Scite.',
  'date_published': '2026-11-04',
- 'date_redated': '2026-11-08',
- 'current_edition': 'REV 1.2',
+ 'date_redated': '2026-11-15',
+ 'current_edition': 'REV 1.3',
  'reading_time': '15 MIN READ',
  'companion_folios': [('physics',
                        'p11',
@@ -59,8 +63,11 @@ FOLIO = {'slug': 'b02',
                        'm12',
                        'Folio M.12',
                        'Anthropic Lean 4 Complexity & Post-Quantum Lattices')],
- 'external_links': [('Metriq.info Quantum Benchmark Registry', 'https://metriq.info/'),
-                    ('Unitary Foundation unitaryHACK Bounties', 'https://unitaryhack.dev/'),
+ 'external_links': [('Metriq.info Quantum Benchmark Registry (Self-Service)', 'https://metriq.info/'),
+                    ('Unitary Foundation Microgrants (Rolling <= $4,000)',
+                     'https://unitary.foundation/grants/'),
+                    ('unitaryHACK Archive (2026 Cycle Concluded June 2026)',
+                     'https://unitaryhack.dev/'),
                     ('quantumlib/Stim (Stabilizer QEC)', 'https://github.com/quantumlib/Stim'),
                     ('pyscf/pyscf (Electronic Structure)', 'https://github.com/pyscf/pyscf')],
  'act1_dropcap': "Why can't even the world's largest classical supercomputer calculate the exact "
@@ -73,9 +80,9 @@ FOLIO = {'slug': 'b02',
               'active-space energy to chemical accuracy (1.6 mHa = 1 kcal/mol) in polynomial time, '
               'but only if every logical gate survives billions of syndrome-extraction cycles '
               'without a single logical bit-flip or phase-flip error. The $5M XPRIZE Quantum '
-              'Applications challenges researchers to produce rigorous fault-tolerant resource '
-              "estimates for high-impact SDG problems, while Unitary Foundation's Metriq.info and "
-              "unitaryHACK reward open-source benchmarks built on Craig Gidney's megahertz "
+              'Applications competition (now in finalist evaluation after closing to new entrants in May 2026) challenged researchers to produce rigorous fault-tolerant resource '
+              "estimates for high-impact SDG problems, while Unitary Foundation's self-service Metriq.info and "
+              "rolling microgrants support open benchmarks built on Craig Gidney's megahertz "
               "stabilizer simulator (quantumlib/Stim) and Qiming Sun's ab-initio quantum chemistry "
               'engine (pyscf/pyscf).',
  'pullquote': 'Below the 1% surface-code threshold, adding physical qubits flips quantum noise '
@@ -95,8 +102,10 @@ FOLIO = {'slug': 'b02',
                  'Craig Gidney releases quantumlib/Stim (DOI 10.22331/q-2021-07-06-497), enabling '
                  'megahertz stabilizer syndrome sampling.'),
                 ('2024–2026',
-                 'XPRIZE Quantum Applications ($5M) and Unitary Foundation (Metriq.info / '
-                 'unitaryHACK) encourage open, reproducible quantum benchmarks.')],
+                 'XPRIZE Quantum Applications ($5M) selects 7 Phase I (Dec 2025) and 5 Wildcard '
+                 '(May 2026) finalists and closes to new entrants; unitaryHACK 2026 concludes '
+                 '(3–17 June 2026), leaving rolling Unitary Foundation microgrants (<= $4,000) '
+                 'and self-service Metriq.info benchmarks active.')],
  'act2_intuition': 'A planar rotated surface code of odd distance d arranges 2d² physical qubits '
                    'on a checkerboard of X-type and Z-type four-body stabilizers. Any error chain '
                    'shorter than (d+1)/2 is uniquely paired by minimum-weight perfect matching '
@@ -164,12 +173,14 @@ FOLIO = {'slug': 'b02',
                      'Re-evaluates the Fowler et al. (2012) logical error scaling formula; the 114 + 180 tile layout is this folio\'s illustrative choice, not a figure taken from Reiher et al. (2017).',
                      'Suitable as an open educational resource-estimation example, for instance for Unitary Foundation\'s Metriq.info registry.'
                      ""],
- 't2_t3_open_horizon': ['XPRIZE Quantum Applications ($5M purse): Requires formal team '
-                        'registration and a novel quantum algorithm paper reducing logical T-count '
-                        'or qubit footprint beyond state-of-the-art THC/qDRIFT baselines.',
-                        'Unitary Foundation unitaryHACK Cash Bounties: Awarded during the annual '
-                        'hackathon window for merged pull requests resolving tagged issues in '
-                        'Stim, PySCF, Mitiq, PennyLane, or Qiskit.'],
+ 't2_t3_open_horizon': ['XPRIZE Quantum Applications ($5M purse, closed to new entrants May 2026): '
+                        'Only the 12 Phase I and Wildcard finalists remain eligible to compete in '
+                        'the competition itself; this page stands as a reference resource study.',
+                        'Active open participation routes: Submit rolling Unitary Foundation '
+                        'microgrant proposals (up to $4,000 via unitary.foundation/grants/), log '
+                        'reproducible benchmarks directly at metriq.info, or contribute open '
+                        'issues/PRs to quantumlib/Stim and pyscf/pyscf (annual unitaryHACK 2026 '
+                        'ran 3–17 June 2026).'],
  'sources': ['Fowler, A. G., Mariantoni, M., Martinis, J. M., & Cleland, A. N. (2012). Surface '
              'codes: Towards practical large-scale quantum computation. Physical Review A, 86(3), '
              '032324. DOI 10.1103/PhysRevA.86.032324',
@@ -215,8 +226,8 @@ FOLIO = {'slug': 'b02',
                 'vibrations destroy fragile quantum superpositions in mere microseconds. The only '
                 "viable path forward is topological quantum error correction using Kitaev's "
                 'rotated surface code, which weaves hundreds of noisy physical qubits into a '
-                'single ultra-stable logical qubit. The $5M XPRIZE Quantum Applications and '
-                "Unitary Foundation's Metriq registry frame the question this folio works through: how many "
+                'single ultra-stable logical qubit. The $5M XPRIZE Quantum Applications (closed to '
+                "new entrants May 2026) and Unitary Foundation's Metriq registry frame the question this folio works through: how many "
                 'physical qubits are genuinely required to run a full FeMoCo simulation? By '
                 "integrating Craig Gidney's megahertz stabilizer simulator (Stim) with ab-initio "
                 'quantum chemistry engines (PySCF), researchers can rigorously evaluate the '
@@ -519,11 +530,12 @@ FOLIO = {'slug': 'b02',
                  'pueden resolver la energía del espacio activo de FeMoCo con precisión química '
                  '(1.6 mHa = 1 kcal/mol) en tiempo polinomial, pero solo si cada compuerta lógica '
                  'sobrevive a miles de millones de ciclos de extracción de síndromes sin un solo '
-                 'error lógico de inversión de bit o de fase. El premio XPRIZE Quantum Applications '
-                 'de 5 millones de dólares reta a los investigadores a producir estimaciones '
+                 'error lógico de inversión de bit o de fase. La competencia XPRIZE Quantum Applications '
+                 'de 5 millones de dólares (cerrada a nuevos participantes en mayo de 2026, con 12 finalistas) '
+                 'retó a los investigadores a producir estimaciones '
                  'rigurosas de recursos tolerantes a fallos para problemas de alto impacto '
-                 'ambiental, mientras que el registro Metriq.info y unitaryHACK de Unitary '
-                 'Foundation premian los bancos de pruebas de código abierto construidos sobre el '
+                 'ambiental, mientras que el registro abierto Metriq.info y las microbecas continuas de Unitary '
+                 'Foundation impulsan los bancos de pruebas de código abierto construidos sobre el '
                  'simulador estabilizador de megahertz de Craig Gidney (quantumlib/Stim) y el motor '
                  'de química cuántica ab-initio de Qiming Sun (pyscf/pyscf).',
  'act1_stakes_es': 'Reemplazar el centenario proceso Haber–Bosch por una fijación catalítica limpia '
@@ -546,8 +558,8 @@ FOLIO = {'slug': 'b02',
                    'cuestión de microsegundos. El único camino viable es la corrección topológica '
                    'de errores cuánticos mediante el código de superficie rotado de Kitaev, que '
                    'entreteje cientos de qubits físicos ruidosos en un solo qubit lógico '
-                   'ultraestable. El premio XPRIZE Quantum Applications de 5 millones de dólares y '
-                   'el registro Metriq de Unitary Foundation enmarcan la pregunta que este folio recorre: ¿cuántos '
+                   'ultraestable. El premio XPRIZE Quantum Applications de 5 millones de dólares (cerrado '
+                   'a nuevos equipos en mayo de 2026) y el registro abierto Metriq de Unitary Foundation enmarcan la pregunta que este folio recorre: ¿cuántos '
                    'qubits físicos se requieren genuinamente para ejecutar una simulación completa '
                    'de FeMoCo? Al integrar el simulador estabilizador de megahertz de Craig Gidney '
                    '(Stim) con motores de química cuántica ab-initio (PySCF), los investigadores '
@@ -737,11 +749,10 @@ FOLIO = {'slug': 'b02',
                         'et al. (2012) y de los conteos de teselas lógicas de Reiher et al. (2017) '
                         '/ THC.',
                         'Adecuado como ejemplo educativo abierto de estimación de recursos, por ejemplo para el registro Metriq.info de Unitary Foundation.'],
- 't2_t3_open_horizon_es': ['XPRIZE Quantum Applications (bolsa de 5 millones de dólares): Requiere '
-                           'registro formal de equipo y un artículo original de algoritmo cuántico '
-                           'que reduzca el conteo lógico de compuertas T o la huella de qubits más '
-                           'allá de las líneas base actuales THC/qDRIFT.',
-                           'Recompensas en Efectivo unitaryHACK de Unitary Foundation: Otorgadas '
-                           'durante la ventana anual del hackathon por pull requests fusionados que '
-                           'resuelvan problemas etiquetados en Stim, PySCF, Mitiq, PennyLane o '
-                           'Qiskit.']}
+ 't2_t3_open_horizon_es': ['XPRIZE Quantum Applications (bolsa de $5M, cerrado a nuevos equipos en mayo de 2026): '
+                           'Solo los 12 finalistas de Fase I (dic 2025) y Wildcard (mayo 2026) '
+                           'continúan en competencia; este folio permanece como estudio de referencia.',
+                           'Rutas abiertas vigentes: Postular a las microbecas continuas de Unitary '
+                           'Foundation (hasta $4,000 USD en unitary.foundation/grants/), registrar '
+                           'bancos reproducibles en metriq.info o colaborar en PRs en quantumlib/Stim '
+                           'y pyscf/pyscf (la edición unitaryHACK 2026 concluyó del 3 al 17 de junio de 2026).']}

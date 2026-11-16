@@ -7,10 +7,10 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 # Erdős Sidon B₂ Sets, Golomb Rulers & Lean 4 Formalization (B.01 · BOUNTY-M1)
 
 ## 1. Governing Law, Prize Registry & Canonical URL
-- **Bounty Folio**: `B.01` (`BOUNTY-M1` · `REV 1.2`, Redated `2026-11-08`)
+- **Bounty Folio**: `B.01` (`BOUNTY-M1` · `REV 1.3`, Redated `2026-11-15`)
 - **Canonical URL**: https://informatico.ai/bounties/b01/ (Spanish: https://informatico.ai/es-mx/bounties/b01/)
-- **Prize / Challenge**: BOUNTY B.01 (M-1) · ERDŐS #30 ($1,000) + AIMO
-- **Official Registry**: [Erdős Problems Registry (#30 / #155)](https://www.erdosproblems.com/30)
+- **Prize / Challenge**: GRAND CHALLENGE B.01 (M-1) · ERDŐS #30 (OPEN) · AIMO ARCHIVED
+- **Official Registry**: [Erdős Problems Registry (#30 / #155 — Open)](https://www.erdosproblems.com/30)
 - **Governing Equation**: `∀ i ≤ j, k ≤ l: a_i + a_j = a_k + a_l ⇒ (i,j) = (k,l) · |A ∩ [1,N]| ≤ √N + N^(1/4) + 1`
 - **Proof harness (computes the reference results; no planted-defect mode yet)**: `python bounties/bounty_m1_erdos_sidon_lean4.py`
 - **Primary Scite Anchor DOI**: https://doi.org/10.4007/annals.2015.182.1.9 (Scite Report: https://scite.ai/reports/10.4007/annals.2015.182.1.9)
@@ -39,5 +39,5 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Direct architectural and pedagogical bridge to Anthropic's open-source Lean 4 repositories (anthropics/formal-math and anthropics/fermats-last-theorem) and Terence Tao's teorth/pfr blueprint.
 
 ### Open Global Prize Horizon (T2/T3)
-- Erdős Problem #30 ($1,000 cash prize): Prove or disprove whether |A ∩ [1, N]| = √N + O(N^ε) for every ε > 0 (or tighten the 1941 N^(1/4) exponent via a new 0-sorry Lean 4 theorem).
-- Erdős Problem #155: Prove whether the maximum Sidon cardinality function f(N) satisfies f(N + √N) ≥ f(N) + 1 for all sufficiently large N.
+- Erdős Problem #30 ($1,000 open prize on erdosproblems.com/30): Determine whether |A ∩ [1, N]| = √N + O(N^ε) for every ε > 0 (or tighten the 1941 N^(1/4) exponent via a public mathematical paper checked in Lean 4).
+- Historical context & successor route (AIMO closed 2026-09-16): XTX Markets concluded the AIMO Prize in September 2026 and reallocated funding toward Lean FRO, Mathlib, and SAIR research competitions covered individually in Folios M.13–M.15 (https://competition.sair.foundation/).

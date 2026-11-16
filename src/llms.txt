@@ -1,8 +1,8 @@
 # Informatico.ai
 
-> 48 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
+> 51 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
 
-Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (87 SKILL.md companions, 38 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
+Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (90 SKILL.md companions, 41 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
 
 ## Welcome, agents (and the people who work with you)
 
@@ -68,7 +68,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 
 ## Mathematics
 
-- [Mathematics](https://informatico.ai/math/): Twelve interactive essays on mathematics: Fermat's Last Theorem and a Lean 4 repository, F1 optimal control, the geometry of color and optimal transport.
+- [Mathematics](https://informatico.ai/math/): Fifteen interactive essays on mathematics: Fermat's Last Theorem, Lean 4 kernel reflection, Andrews–Curtis, Inverse Galois and optimal transport.
 - [M.01 Fermat's Last Theorem and a Public Lean 4 Repository](https://informatico.ai/math/m01/): A reading of the Taylor–Wiles patching argument behind Fermat's Last Theorem and of a public Lean 4 repository whose README says it formalises the proof.
 - [M.02 Riemann Zeta Zero-Density Estimates](https://informatico.ai/math/m02/): Classical zero-density estimates for the Riemann zeta function, and what a public Lean 4 repository README states about a recent critical-line result.
 - [M.03 Cap Sets, FunSearch and AlphaEvolve](https://informatico.ai/math/m03/): What Google DeepMind's FunSearch and AlphaEvolve papers report: a 512-point cap set in eight dimensions and 48 products for 4×4 complex matrices.
@@ -81,10 +81,13 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 - [M.10 Persistent Homology and Percolating Pores](https://informatico.ai/math/m10/): How persistent homology of Edelsbrunner, Letscher and Zomorodian tracks pores and tunnels across scales, shown on a synthetic model, not real samples.
 - [M.11 The 3D Kakeya Conjecture and Riemann Zero Bounds](https://informatico.ai/math/m11/): Hong Wang and Joshua Zahl's preprint on 3D Kakeya sets and Guth and Maynard's zero-density estimate, two separate results read side by side.
 - [M.12 Public Lean 4 Repositories and Post-Quantum ML-KEM](https://informatico.ai/math/m12/): What the README of the public Lean 4 repository anthropics/formal-math says it contains, beside the NIST FIPS 203 lattice standard; none checked here.
+- [M.13 The SAIR Lean Kernel Challenge and Reflection](https://informatico.ai/math/m13/): How a minimal Lean kernel separates untrusted tactic search from type checking, using binary reflection to turn linear steps into logarithmic reduction.
+- [M.14 Andrews–Curtis Moves and Akbulut–Kirby Pairs](https://informatico.ai/math/m14/): Why trivial two-relator presentations in combinatorial group theory must lengthen intermediate words before collapsing under three allowed moves.
+- [M.15 Inverse Galois Theory, IGP24 and Frobenius Cycles](https://informatico.ai/math/m15/): How Dedekind factorization modulo unramified primes samples Frobenius cycles in Galois groups and guides rational polynomial discovery at degree 24.
 
-## Open-Bounty & Prize Crucible (B.01–B.06)
+## Grand Challenges & Open Problems Crucible (B.01–B.06)
 
-- [Open-Bounty & Prize Crucible](https://informatico.ai/bounties/): Six interactive folios with worked-example Python scripts and AI skills on Erdős Lean 4 problems and prize themes; independent studies, not prize entries.
+- [Grand Challenges & Open Problems Crucible](https://informatico.ai/bounties/): Six interactive folios with worked-example Python scripts and AI skills on Erdős Problem #30 and closed prize themes; independent studies, not entries.
 - [B.01 (BOUNTY-M1) Erdős Sidon Sets and Lean 4 Formalization Bounties](https://informatico.ai/bounties/b01/): How Mian–Chowla greedy sequences, the Erdős–Turán upper bound and Lean 4 blueprints bear on Sidon sets, with a Python worked example of the check.
 - [B.02 (BOUNTY-P1) Surface Codes and FeMoCo: XPRIZE Quantum Context](https://informatico.ai/bounties/b02/): A worked example of how surface-code stabilizers in Stim and PySCF active-space models give a qubit-count estimate for nitrogen fixation; not a prize entry.
 - [B.03 (BOUNTY-E1) SIMP Floor Slab Study: XPRIZE Carbon Context](https://informatico.ai/bounties/b03/): A design study of how SIMP topology optimization in FEniCS and carbonated mineral curing could cut slab embodied carbon below 45 kg per square meter.

@@ -307,6 +307,24 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "Repositorios Lean 4 Públicos y ML-KEM Post-Cuántico",
         "Lo que dice el README del repositorio público anthropics/formal-math que contiene, junto al estándar de retículos NIST FIPS 203; nada comprobado aquí.",
     ),
+    "m13": (
+        "The SAIR Lean Kernel Challenge and Reflection",
+        "How a minimal Lean kernel separates untrusted tactic search from type checking, using binary reflection to turn linear steps into logarithmic reduction.",
+        "El Reto del Kernel de Lean de SAIR y la Reflexión",
+        "Cómo un núcleo mínimo de Lean separa la búsqueda de tácticas de la comprobación de tipos, usando reflexión binaria para comprimir pasos lineales largos.",
+    ),
+    "m14": (
+        "Andrews–Curtis Moves and Akbulut–Kirby Pairs",
+        "Why trivial two-relator presentations in combinatorial group theory must lengthen intermediate words before collapsing under three allowed moves.",
+        "Movimientos Andrews–Curtis y Pares Akbulut–Kirby",
+        "Por qué ciertas presentaciones triviales con dos relatores deben alargar palabras intermedias antes de colapsar bajo los tres movimientos permitidos.",
+    ),
+    "m15": (
+        "Inverse Galois Theory, IGP24 and Frobenius Cycles",
+        "How Dedekind factorization modulo unramified primes samples Frobenius cycles in Galois groups and guides rational polynomial discovery at degree 24.",
+        "Problema Inverso de Galois, IGP24 y Frobenius",
+        "Cómo la factorización de Dedekind módulo primos no ramificados muestrea ciclos de Frobenius y guía la búsqueda racional de polinomios de grado 24.",
+    ),
 }
 
 # pillar -> (title_en, description_en, title_es, description_es); titles are complete (brand included).
@@ -331,15 +349,15 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "math": (
         "Mathematics Essays: Lean 4 Repositories & More | Informatico.ai",
-        "Twelve interactive essays on mathematics: Fermat's Last Theorem and a Lean 4 repository, F1 optimal control, the geometry of color and optimal transport.",
+        "Fifteen interactive essays on mathematics: Fermat's Last Theorem, Lean 4 kernel reflection, Andrews–Curtis, Inverse Galois and optimal transport.",
         "Ensayos de Matemáticas: Repositorios Lean 4 y Más | Informatico.ai",
-        "Doce ensayos interactivos de matemáticas: el Último Teorema de Fermat y un repositorio Lean 4, control óptimo en F1, geometría del color y transporte óptimo.",
+        "Quince ensayos interactivos de matemáticas: Fermat y un kernel Lean 4, Andrews–Curtis, Problema Inverso de Galois, Kakeya y transporte óptimo.",
     ),
     "bounties": (
-        "Open-Bounty & Grand-Challenge Proof Crucible | Informatico.ai",
-        "Six interactive folios with worked-example Python scripts and AI skills on Erdős Lean 4 problems and prize themes; independent studies, not prize entries.",
-        "Crisol de Premios y Retos Abiertos con Pruebas | Informatico.ai",
-        "Seis folios interactivos con scripts de ejemplo en Python y habilidades de IA sobre Erdős en Lean 4 y premios; estudios independientes, sin participar.",
+        "Grand Challenges & Open Problems Crucible | Informatico.ai",
+        "Six interactive folios with worked-example Python scripts and AI skills on Erdős Problem #30 and closed prize themes; independent studies, not entries.",
+        "Crisol de Grandes Retos y Problemas Abiertos | Informatico.ai",
+        "Seis folios interactivos con scripts en Python y habilidades de IA sobre Erdős #30 y grandes retos pasados; estudios independientes, sin participar.",
     ),
     "toolchain": (
         "Tech & Tools · The 3D CAD & Open Toolbox | Informatico.ai",

@@ -981,6 +981,7 @@ li.cc-ghost-nolen .cc-ghost-key { background: transparent !important; color: var
 }
 .cc-media-card .cc-cite { margin-top: auto; margin-bottom: 0; }
 .cc-inline-media { margin: 1.1rem 0 0; }
+.cc-hero-sketch .cc-media-frame { height: auto; aspect-ratio: 4 / 3; }
 .cc-visuals { border-top: 1px solid var(--cc-rule); margin-top: 2.5rem; padding-top: 1.2rem; }
 .cc-visuals-grid {
   display: grid;
@@ -1023,19 +1024,26 @@ dialog.cc-lightbox::backdrop { background: rgba(12, 16, 22, 0.78); }
 .cc-lightbox-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .cc-lb-hint { font-family: var(--tp-font-mono); font-size: 0.74rem; color: var(--tp-slate); }
 .cc-lightbox-stage {
+  min-width: 0;
   min-height: 0;
-  display: grid;
-  place-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem;
+  box-sizing: border-box;
   background: #101419;
   border-radius: 4px;
   overflow: hidden;
 }
 #cc-lightbox-img, #cc-lb-img {
   display: block;
+  width: 100%;
+  height: 100%;
   max-width: 100%;
   max-height: 100%;
-  width: auto;
-  height: auto;
+  margin: 0;
   object-fit: contain;
 }
 #cc-lb-cap, .cc-lightbox-cap { max-width: none; margin: 0; font-size: 0.88rem; }

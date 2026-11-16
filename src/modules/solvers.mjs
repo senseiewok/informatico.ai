@@ -1628,7 +1628,7 @@ export function initPlateSolvers(scope = document) {
 
       // Slider labels in the folio's own units. For these folios the readouts are the essay's stated values;
       // the lab does not model them, so it only updates the labels.
-      const LABEL_UNITS = { m01: ["p = ", "α = "], m03: ["n = ", "rank = "], m04: ["K = ", "d_R = "], m05: ["k_aux = ", "α = "], m06: ["d_poly = ", "α = "], m07: [" kW", " modes"], m08: [" K", "t = "], m09: ["t = ", "ε = "], m10: [" nm", "σ = "], m11: ["δ = ", "σ = "], m12: ["k = ", "η = "] };
+      const LABEL_UNITS = { m01: ["p = ", "α = "], m03: ["n = ", "rank = "], m04: ["K = ", "d_R = "], m05: ["k_aux = ", "α = "], m06: ["d_poly = ", "α = "], m07: [" kW", " modes"], m08: [" K", "t = "], m09: ["t = ", "ε = "], m10: [" nm", "σ = "], m11: ["δ = ", "σ = "], m12: ["k = ", "η = "], m13: ["n = ", "d_rec = "], m14: ["k = ", "moves = "], m15: ["P = ", "deg = "] };
       const decimals = (el) => ((el.step || "1").split(".")[1] || "").length;
       const fmt = (el, unit) => {
         const v = parseFloat(el.value).toFixed(decimals(el));

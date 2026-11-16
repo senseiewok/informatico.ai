@@ -442,7 +442,7 @@ ES_TRANSLATION = {'title_es': 'Mecánica de Suelos de Terzaghi, Pilotes Profundo
              'separar los granos, y los ingenieros lo evalúan por separado. Los pilotes '
              'profundos de concreto que llevan la carga a capas más firmes son una herramienta '
              'para eso, no una garantía.',
- 'deep_es': 'El principio de esfuerzo efectivo de Terzaghi demuestra que la resistencia del suelo '
+ 'deep_es': 'El principio de esfuerzo efectivo de Terzaghi establece que la resistencia del suelo '
             'depende del esfuerzo neto sobre los granos minerales una vez restada la presión de '
             'poro. Cuando una sobrecarga actúa sobre arcillas saturadas, la disipación '
             'hidrodinámica del agua sigue una ecuación diferencial de difusión, transfiriendo '

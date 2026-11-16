@@ -28,7 +28,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 3. Deterministic verification and falsification rules
 1. Pure-Python Jacobi diagonalization on dense DCT-II rotated reduced density matrices matches `min(k, 6 − k) ln 2` across `k = 0..6` to `< 10⁻¹²` with `Tr ρ = 1`.
 2. `2N = 12`-qubit (`4096`-state) CPTP subalgebra partial trace preserves `Tr ρ_undressed = 1` (`0%` discard, `V_Doob = 0`) while matching `k ln 2` (`4.1589 nats` at `k = 6`) to `< 10⁻¹²`.
-3. Asymmetric `2⁶ = 64`-path branching survival tree confirms discrete harmonicity `|(P h)(k) − h(k)| < 10⁻¹⁵`, tilted stochasticity, and path-sum `D_KL(ℙ^h ‖ ℙ) = −6 ln(1 − γ)` to `< 10⁻¹⁴`.
+3. Asymmetric `2⁶ = 64`-path branching survival tree verifies discrete harmonicity `|(P h)(k) − h(k)| < 10⁻¹⁵`, tilted stochasticity, and path-sum `D_KL(ℙ^h ‖ ℙ) = −6 ln(1 − γ)` to `< 10⁻¹⁴`.
 4. Epistemic and proportional guardrails: `Geng et al. (2026)` stays `PROPOSED` (`0%` discard, never strawmanned as run-rejection), QES saddles stay `DERIVED` (never `MEASURED`), combined `CFTR / cystic fibrosis` prose mentions stay `≤ 3` (`< 12%` of `<p>` blocks, zero clinical claims), `8–10` DOIs resolve offline in `data/folio-citations.cache.json`, and `100%` EN / `es-MX` numeric token parity holds.
 5. **Planted-defect gate (`--planted-defect`)**: disables the `k > 3` island turnover, sets `V_Doob = 0` on `γ = 0.25` post-selection, strawmans Regime 2 as run-rejection, and promotes unmeasured saddles to `MEASURED`; the verifier exits `1`.
 
