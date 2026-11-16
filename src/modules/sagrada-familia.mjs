@@ -1188,10 +1188,273 @@ function initWorkshopDrawer() {
   });
 }
 
+// ---------------------------------------------------------------- Five-Generation Torch Relay (1882-2026+)
+function initGenerationsRelay() {
+  const root = document.querySelector("[data-sf-relay]");
+  if (!root) return;
+  const btns = [...root.querySelectorAll("[data-sf-gen]")];
+  const segs = [...root.querySelectorAll("[data-sf-seg]")];
+  const cards = [...root.querySelectorAll("[data-sf-relay-card]")];
+
+  const activate = (idx) => {
+    btns.forEach((btn) => btn.setAttribute("aria-pressed", String(Number(btn.dataset.sfGen) === idx)));
+    segs.forEach((seg) => seg.classList.toggle("is-active", Number(seg.dataset.sfSeg) === idx));
+    cards.forEach((card) => { card.hidden = Number(card.dataset.sfRelayCard) !== idx; });
+  };
+
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => activate(Number(btn.dataset.sfGen) || 0));
+  });
+  segs.forEach((seg) => {
+    seg.addEventListener("click", () => activate(Number(seg.dataset.sfSeg) || 0));
+  });
+}
+
+// ---------------------------------------------------------------- 1936 Plaster-Shard Algebraic Recovery Bench
+function initShardRecoveryBench() {
+  const root = document.querySelector("[data-sf-shard]");
+  if (!root) return;
+  const range = root.querySelector("#sf-caliper-range");
+  const valEl = root.querySelector("#sf-caliper-val");
+  const readout = root.querySelector("[data-sf-shard-readout]");
+  const polyTrue = root.querySelector(".sf-shard-true");
+  const polyFree = root.querySelector(".sf-shard-freeform");
+  const polyRuled = root.querySelector(".sf-shard-ruled");
+  const polyPiece = root.querySelector(".sf-shard-piece");
+  if (!range || !polyRuled) return;
+
+  const aTrue = 1.80;
+  const cTrue = 2.40;
+  const kTrue = (aTrue / cTrue) * (aTrue / cTrue);
+  const z1 = 0.20;
+  const z2 = 0.55;
+  const zTarget = 3.00;
+  const rTrue = (z) => Math.sqrt(aTrue * aTrue + kTrue * z * z);
+  const r1 = rTrue(z1);
+  const r2 = rTrue(z2);
+  const dr1 = (kTrue * z1) / r1;
+  const d2r1 = (kTrue * aTrue * aTrue) / (r1 * r1 * r1);
+  const rFree = (z) => r1 + dr1 * (z - z1) + 0.5 * d2r1 * (z - z1) * (z - z1);
+
+  const svgX = (r) => (75 + ((r - 1.5) / 1.8) * 215).toFixed(1);
+  const svgY = (z) => (220 - (z / zTarget) * 190).toFixed(1);
+  const buildPts = (fn, zStart, zEnd, steps) => {
+    const pts = [];
+    for (let i = 0; i <= steps; i += 1) {
+      const z = zStart + (zEnd - zStart) * (i / steps);
+      pts.push(`${svgX(fn(z))},${svgY(z)}`);
+    }
+    return pts.join(" ");
+  };
+
+  if (polyTrue) polyTrue.setAttribute("points", buildPts(rTrue, 0, zTarget, 15));
+  if (polyFree) polyFree.setAttribute("points", buildPts(rFree, z1, zTarget, 14));
+  if (polyPiece) polyPiece.setAttribute("points", buildPts(rTrue, z1, z2, 4));
+
+  const render = () => {
+    const epsMm = Number(range.value) || 0;
+    const delta = epsMm * 0.001;
+    const r1m = r1 + delta;
+    const r2m = r2 - delta;
+    const kRec = (r2m * r2m - r1m * r1m) / (z2 * z2 - z1 * z1);
+    const aRec2 = Math.max(0.01, r1m * r1m - kRec * z1 * z1);
+    const aRec = Math.sqrt(aRec2);
+    const cRec = aRec / Math.sqrt(Math.max(1e-6, kRec));
+    const rRuled = (z) => Math.sqrt(Math.max(0.01, aRec2 + kRec * z * z));
+    const ruledErrMm = Math.abs(rRuled(zTarget) - rTrue(zTarget)) * 1000.0;
+    const freeErrMm = Math.abs(rFree(zTarget) - rTrue(zTarget)) * 1000.0;
+
+    polyRuled.setAttribute("points", buildPts(rRuled, 0, zTarget, 15));
+    const txt = `${epsMm.toFixed(1)} mm`;
+    if (valEl) valEl.textContent = txt;
+    range.setAttribute("aria-valuetext", txt);
+    if (readout) {
+      readout.textContent = `${L("MODEL recovered", "MODELO recuperado")} a = ${aRec.toFixed(3)} m · c = ${cRec.toFixed(3)} m · ${L("Ruled rim err", "Error reglado")} = ${ruledErrMm.toFixed(1)} mm vs ${L("Freeform drift", "Deriva libre")} = ${freeErrMm.toFixed(1)} mm`;
+    }
+  };
+
+  range.addEventListener("input", render);
+  window.addEventListener("tp-lang-change", render);
+  render();
+}
+
+// ---------------------------------------------------------------- Dual-Scale 1:500 <-> 1:10 Tectonic Loupe
+function initTectonicLoupe() {
+  const root = document.querySelector("[data-sf-loupe]");
+  if (!root) return;
+  const btns = [...root.querySelectorAll("[data-sf-node]")];
+  const dots = [...root.querySelectorAll("[data-sf-node-dot]")];
+  const views = [...root.querySelectorAll("[data-sf-loupe-view]")];
+  const cards = [...root.querySelectorAll("[data-sf-node-card]")];
+
+  const activate = (idx) => {
+    btns.forEach((b) => b.setAttribute("aria-pressed", String(Number(b.dataset.sfNode) === idx)));
+    dots.forEach((d) => d.classList.toggle("is-active", Number(d.dataset.sfNodeDot) === idx));
+    views.forEach((v) => {
+      const active = Number(v.dataset.sfLoupeView) === idx;
+      v.classList.toggle("is-active", active);
+      if (active) v.removeAttribute("hidden");
+      else v.setAttribute("hidden", "");
+    });
+    cards.forEach((c) => { c.hidden = Number(c.dataset.sfNodeCard) !== idx; });
+  };
+
+  btns.forEach((b) => b.addEventListener("click", () => activate(Number(b.dataset.sfNode) || 0)));
+  dots.forEach((d) => d.addEventListener("click", () => activate(Number(d.dataset.sfNodeDot) || 0)));
+}
+
+// ---------------------------------------------------------------- Alluvial / Sankey Gravity-Flux Conservation Ribbon
+function initSankeyRibbon() {
+  const root = document.querySelector("[data-sf-sankey]");
+  if (!root) return;
+  const btns = [...root.querySelectorAll("[data-sf-loadpath]")];
+  const modes = [...root.querySelectorAll("[data-sf-sankey-mode]")];
+  const readout = root.querySelector("[data-sf-sankey-readout]");
+  let active = "gaudi";
+
+  const sync = () => {
+    btns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.sfLoadpath === active)));
+    modes.forEach((m) => {
+      const show = m.dataset.sfSankeyMode === active;
+      m.classList.toggle("is-active", show);
+      if (show) m.removeAttribute("hidden");
+      else m.setAttribute("hidden", "");
+    });
+    if (readout) {
+      readout.textContent = active === "gaudi"
+        ? L(readout.dataset.gaudiEn, readout.dataset.gaudiEs)
+        : L(readout.dataset.gothicEn, readout.dataset.gothicEs);
+    }
+  };
+
+  btns.forEach((b) => b.addEventListener("click", () => { active = b.dataset.sfLoadpath || "gaudi"; sync(); }));
+  window.addEventListener("tp-lang-change", sync);
+  sync();
+}
+
+// ---------------------------------------------------------------- 6-Axis Polar Structural & Acoustic Radar
+function initPolarRadar() {
+  const root = document.querySelector("[data-sf-radar]");
+  if (!root) return;
+  const btns = [...root.querySelectorAll("[data-sf-radar-era]")];
+  const poly = root.querySelector(".sf-radar-poly");
+  const readout = root.querySelector("[data-sf-radar-readout]");
+  if (!poly || btns.length === 0) return;
+
+  const cx = 240;
+  const cy = 160;
+  const rMax = 94;
+  const angles = Array.from({ length: 6 }, (_, i) => -Math.PI / 2 + i * (Math.PI / 3));
+  let currentBtn = btns.find((b) => b.getAttribute("aria-pressed") === "true") || btns[btns.length - 1];
+
+  const render = () => {
+    btns.forEach((b) => b.setAttribute("aria-pressed", String(b === currentBtn)));
+    const scores = (currentBtn.dataset.scores || "98,95,97,94,92,88").split(",").map(Number);
+    const pts = scores.map((sc, i) => {
+      const r = rMax * (Math.max(0, Math.min(100, sc || 0)) / 100);
+      return `${(cx + r * Math.cos(angles[i])).toFixed(1)},${(cy + r * Math.sin(angles[i])).toFixed(1)}`;
+    }).join(" ");
+    poly.setAttribute("points", pts);
+    if (readout) {
+      const eraLabel = L(currentBtn.dataset.en, currentBtn.dataset.es);
+      const eraNote = L(currentBtn.dataset.noteEn, currentBtn.dataset.noteEs);
+      readout.textContent = `${eraLabel} · ${eraNote}`;
+    }
+  };
+
+  btns.forEach((b) => b.addEventListener("click", () => { currentBtn = b; render(); }));
+  window.addEventListener("tp-lang-change", render);
+  render();
+}
+
+// ---------------------------------------------------------------- Filterable 10-Plate Archive & Native <dialog> Lightbox
+function initVisualGalleryAndLightbox() {
+  const gallery = document.querySelector("[data-sf-gallery]");
+  const dialog = document.getElementById("sf-lightbox");
+  if (!gallery) return;
+
+  const filterBtns = [...gallery.querySelectorAll("[data-sf-filter]")];
+  const galleryCards = [...gallery.querySelectorAll(".sf-gallery-grid .sf-media-card")];
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const mode = btn.dataset.sfFilter || "all";
+      filterBtns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      galleryCards.forEach((card) => {
+        card.hidden = mode !== "all" && card.dataset.sfMediaKind !== mode;
+      });
+    });
+  });
+
+  if (!dialog) return;
+  const imgEl = document.getElementById("sf-lightbox-img");
+  const badgeEl = document.getElementById("sf-lb-badge");
+  const capEl = document.getElementById("sf-lb-cap");
+  const prevBtn = dialog.querySelector("[data-sf-lb-prev]");
+  const nextBtn = dialog.querySelector("[data-sf-lb-next]");
+  const closeBtn = dialog.querySelector("[data-sf-lb-close]");
+
+  const items = [...gallery.querySelectorAll(".sf-gallery-grid .sf-media-card")].map((card) => {
+    const btn = card.querySelector("[data-sf-open-media]");
+    const thumb = card.querySelector(".sf-media-frame img");
+    return {
+      id: btn ? btn.dataset.sfOpenMedia : "",
+      thumbSrc: (thumb && thumb.getAttribute("src")) || "",
+      data: btn ? btn.dataset : {},
+    };
+  });
+  let activeIndex = 0;
+  let openerEl = null;
+
+  const showAt = (idx) => {
+    if (items.length === 0) return;
+    activeIndex = (idx + items.length) % items.length;
+    const item = items[activeIndex];
+    const d = item.data;
+    if (imgEl) {
+      imgEl.setAttribute("src", item.thumbSrc || "");
+      imgEl.setAttribute("alt", L(d.altEn, d.altEs));
+    }
+    if (badgeEl) badgeEl.textContent = L(d.badgeEn, d.badgeEs);
+    if (capEl) capEl.textContent = L(d.capEn, d.capEs);
+  };
+
+  document.querySelectorAll("[data-sf-open-media]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      openerEl = btn;
+      const idx = items.findIndex((x) => x.id === btn.dataset.sfOpenMedia);
+      showAt(idx >= 0 ? idx : 0);
+      if (typeof dialog.showModal === "function") dialog.showModal();
+    });
+  });
+
+  if (prevBtn) prevBtn.addEventListener("click", () => showAt(activeIndex - 1));
+  if (nextBtn) nextBtn.addEventListener("click", () => showAt(activeIndex + 1));
+  if (closeBtn) closeBtn.addEventListener("click", () => dialog.close());
+  dialog.addEventListener("click", (e) => {
+    if (e.target === dialog) dialog.close();
+  });
+  dialog.addEventListener("close", () => {
+    if (openerEl && typeof openerEl.focus === "function") openerEl.focus();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (!dialog.open) return;
+    if (e.key === "ArrowLeft") { showAt(activeIndex - 1); e.preventDefault(); }
+    else if (e.key === "ArrowRight") { showAt(activeIndex + 1); e.preventDefault(); }
+  });
+  window.addEventListener("tp-lang-change", () => { if (dialog.open) showAt(activeIndex); });
+}
+
 initPause();
 initEraRailAndParallax();
+initGenerationsRelay();
+initTectonicLoupe();
 initCoupledAtelier();
+initSankeyRibbon();
 initColumnHierarchy();
+initShardRecoveryBench();
 initTowersAndPostTension();
 initLightAndAcoustics();
+initPolarRadar();
+initVisualGalleryAndLightbox();
 initWorkshopDrawer();

@@ -255,3 +255,55 @@ def panel_decompression(prestress_kn: float | None = None, wind_kpa: float | Non
         "sigma_max_mpa": sigma_max_mpa,
         "compressed_joint": sigma_min_mpa >= 0.0,
     }
+
+
+# ------------------------------------------------------------------ 5. 1936 plaster-shard algebraic recovery vs drift --
+SHARD_RECOVERY_MODEL = {
+    "a_true_m": 1.80,       # MODEL: circular hyperboloid throat radius a, m
+    "c_true_m": 2.40,       # MODEL: vertical focal scale c, m
+    "z1_m": 0.20,           # MODEL: lower caliper chord elevation on 0.35 m plaster shard, m
+    "z2_m": 0.55,           # MODEL: upper caliper chord elevation on 0.35 m plaster shard, m
+    "z_target_m": 3.00,     # MODEL: full upper vault rim height reconstructed from shard, m
+    "caliper_err_mm": 0.0,  # MODEL: default caliper perturbation magnitude, mm
+    "caliper_max_mm": 2.0,  # MODEL: maximum caliper noise range for interactive slider, mm
+}
+
+
+def shard_vault_recovery(caliper_err_mm: float = 0.0, s: dict = SHARD_RECOVERY_MODEL) -> dict:
+    """Recover global hyperboloid parameters (a, c) from two local chord radii vs local unruled Taylor drift."""
+    a_t, c_t = s["a_true_m"], s["c_true_m"]
+    z1, z2, zt = s["z1_m"], s["z2_m"], s["z_target_m"]
+
+    def r_true(z: float) -> float:
+        return a_t * math.sqrt(1.0 + (z / c_t) ** 2)
+
+    delta_m = float(caliper_err_mm) / 1000.0
+    # Apply opposite-sign perturbation at z1 and z2 to represent worst-case angular tilt across the shard
+    r1 = r_true(z1) + delta_m
+    r2 = r_true(z2) - delta_m
+
+    # Linear system in z^2: r^2(z) = A + M * z^2 where A = a^2 and M = (a/c)^2
+    slope_m = (r2 * r2 - r1 * r1) / (z2 * z2 - z1 * z1)
+    intercept_a = r1 * r1 - slope_m * z1 * z1
+    a_rec = math.sqrt(max(intercept_a, 1e-9))
+    c_rec = a_rec / math.sqrt(max(slope_m, 1e-9))
+    r_ruled_top = math.sqrt(max(intercept_a + slope_m * zt * zt, 1e-9))
+
+    # Compare against unruled freeform quadratic Taylor continuation from z1
+    q1 = math.sqrt(1.0 + (z1 / c_t) ** 2)
+    dr1 = (a_t * z1) / (c_t * c_t * q1)
+    d2r1 = (a_t / (c_t * c_t)) / (q1 ** 3)
+    dz = zt - z1
+    r_free_top = r_true(z1) + dr1 * dz + 0.5 * d2r1 * dz * dz
+
+    r_true_top = r_true(zt)
+    return {
+        "caliper_err_mm": float(caliper_err_mm),
+        "r_true_top_m": r_true_top,
+        "a_rec_m": a_rec,
+        "c_rec_m": c_rec,
+        "r_ruled_top_m": r_ruled_top,
+        "ruled_err_mm": abs(r_ruled_top - r_true_top) * 1000.0,
+        "r_free_top_m": r_free_top,
+        "freeform_err_mm": abs(r_free_top - r_true_top) * 1000.0,
+    }

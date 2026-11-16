@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Verify CC.02 · Stereotomy & Mechanics Lab (La Sagrada Família): hyperboloids, catenaries, twisted columns, PT stone.
+"""Verify CC.02 · Stereotomy & Mechanics Lab (La Sagrada Família): hyperboloids, catenaries, twisted columns, PT stone, shard recovery.
 
 Standard library only. Reads MODEL inputs from cc02_mechanics.py, independently re-derives every surface, integral,
-cross-section, and stress metric, and verifies every table cell printed on both the EN and ES-MX pages.
+cross-section, stress metric, and shard recovery curve, and verifies every table cell printed on both EN and ES-MX pages.
 
   python skills/classics/cc02/verify_cc02_sagrada.py                                -> exit 0 and PASS
   python skills/classics/cc02/verify_cc02_sagrada.py --planted-defect               -> exit 1 (non-tangent ruling)
-  python skills/classics/cc02/verify_cc02_sagrada.py --planted-defect=parabola-catenary | twist-pinch | unprestressed-wind
+  python skills/classics/cc02/verify_cc02_sagrada.py --planted-defect=parabola-catenary | twist-pinch | unprestressed-wind | shard-freeform
 """
 from __future__ import annotations
 
@@ -22,7 +22,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from folios.classics import cc02_mechanics as M  # noqa: E402  (inputs only; formulas are re-derived here)
 
-PINNED_SHA256 = "e40e2077ad9a52c0d77f4029a93a2d51c7b99bf8cdef48d055f9572d0df7674c"
+PINNED_SHA256 = "b3c88a4fd9e97ea0115dca545b13de44b24215238e59e7448060e42984c625c3"
 PAGES = (
     ROOT / "src" / "classics" / "sagrada-familia" / "index.html",
     ROOT / "src" / "es-mx" / "classics" / "sagrada-familia" / "index.html",
@@ -40,6 +40,7 @@ def canonical_inputs() -> bytes:
         "tiers": [list(r) for r in M.COLUMN_TIERS],
         "towers": [list(r) for r in M.TOWERS_LEDGER],
         "panel": M.TOWER_PANEL_MODEL,
+        "shard": M.SHARD_RECOVERY_MODEL,
     }
     return json.dumps(payload, sort_keys=True, ensure_ascii=False).encode("utf-8")
 
@@ -242,9 +243,66 @@ def check_panel(tp: dict) -> tuple[dict[int, dict], list[str]]:
     return {0: r_zero, int(tp["prestress_kn"]): r_pt}, errs
 
 
+# ------------------------------------------------------------------------------------ 5. 1936 Plaster-Shard recovery ----
+def shard_recovery_case(eps_mm: float, sm: dict, planted: str = DEFECT) -> dict:
+    a_t, c_t = sm["a_true_m"], sm["c_true_m"]
+    z1, z2, z_top = sm["z1_m"], sm["z2_m"], sm["z_target_m"]
+    k_t = (a_t / c_t) ** 2
+    r_true = lambda z: math.sqrt(a_t * a_t + k_t * z * z)
+    r1 = r_true(z1)
+    r2 = r_true(z2)
+    r_true_top = r_true(z_top)
+
+    dr1 = (k_t * z1) / r1
+    d2r1 = (k_t * a_t * a_t) / (r1 ** 3)
+    dz = z_top - z1
+    r_free_top = r1 + dr1 * dz + 0.5 * d2r1 * dz * dz
+    freeform_err_mm = abs(r_free_top - r_true_top) * 1000.0
+
+    delta = eps_mm * 0.001
+    r1_m = r1 + delta
+    r2_m = r2 - delta
+    if planted == "shard-freeform":
+        # Defect: extrapolate unruled local quadratic Taylor expansion instead of global hyperboloid Vandermonde law
+        r_rec_top = r1_m + dr1 * dz + 0.5 * d2r1 * dz * dz
+        a_rec = 0.0
+        c_rec = 0.0
+    else:
+        k_rec = (r2_m * r2_m - r1_m * r1_m) / (z2 * z2 - z1 * z1)
+        a_rec_2 = r1_m * r1_m - k_rec * z1 * z1
+        a_rec = math.sqrt(a_rec_2)
+        c_rec = a_rec / math.sqrt(k_rec)
+        r_rec_top = math.sqrt(a_rec_2 + k_rec * z_top * z_top)
+
+    ruled_err_mm = abs(r_rec_top - r_true_top) * 1000.0
+    return {
+        "a_rec_m": a_rec,
+        "c_rec_m": c_rec,
+        "r_ruled_top_m": r_rec_top,
+        "ruled_err_mm": ruled_err_mm,
+        "freeform_err_mm": freeform_err_mm,
+    }
+
+
+def check_shard_recovery(sm: dict) -> tuple[dict[str, dict], float, list[str]]:
+    errs: list[str] = []
+    rows: dict[str, dict] = {}
+    free_mm = 0.0
+    for eps in (0.0, 0.5, 1.0):
+        res = shard_recovery_case(eps, sm)
+        rows[f"{eps:.1f}"] = res
+        free_mm = res["freeform_err_mm"]
+        if eps == 0.0 and res["ruled_err_mm"] > 1e-4:
+            errs.append(f"shard recovery at 0.0 mm noise drifted by {res['ruled_err_mm']:.3f} mm")
+        if res["ruled_err_mm"] >= 0.25 * free_mm:
+            errs.append(f"shard recovery at {eps:.1f} mm ({res['ruled_err_mm']:.2f} mm) not strictly bounded below freeform ({free_mm:.1f} mm)")
+    return rows, free_mm, errs
+
+
 # ------------------------------------------------------------------------------------ Page DOM value cross-checks ----
 def check_pages(hyp: dict, fun_rows: dict[int, dict], gap_mm: float,
-                cols: dict[int, tuple[dict, dict]], pt: dict[int, dict]) -> list[str]:
+                cols: dict[int, tuple[dict, dict]], pt: dict[int, dict],
+                shard_rows: dict[str, dict], freeform_err_mm: float) -> list[str]:
     errs: list[str] = []
     for page in PAGES:
         if not page.is_file():
@@ -304,6 +362,21 @@ def check_pages(hyp: dict, fun_rows: dict[int, dict], gap_mm: float,
             if len(nums) != 3 or any(abs(a - b) > 0.01 for a, b in zip(nums, want)):
                 errs.append(f"{rel}: PT row F_pt={f_key} shows {nums}, recomputed {[round(x, 3) for x in want]}")
 
+        # 1936 shard algebraic recovery rows
+        for eps_key, sr in shard_rows.items():
+            srow = re.search(rf'<tr data-caliper-mm="{re.escape(eps_key)}">(.*?)</tr>', html, re.S)
+            if not srow:
+                errs.append(f"{rel}: missing shard recovery row eps={eps_key}")
+                continue
+            nums = [float(x) for x in re.findall(r'<td[^>]*>([-+\d.]+)\s*(?:m|mm)<', srow.group(1))]
+            want = [sr["a_rec_m"], sr["c_rec_m"], sr["r_ruled_top_m"], sr["ruled_err_mm"]]
+            if len(nums) != 4 or any(abs(a - b) > 0.02 for a, b in zip(nums, want)):
+                errs.append(f"{rel}: shard row eps={eps_key} shows {nums}, recomputed {[round(x, 4) for x in want]}")
+
+        mfree = re.search(r'class="sf-freeform-err-mm">([\d.]+) mm<', html)
+        if not mfree or abs(float(mfree.group(1)) - freeform_err_mm) > 0.25:
+            errs.append(f"{rel}: shard freeform drift mismatch vs {freeform_err_mm:.1f} mm")
+
     return errs
 
 
@@ -317,9 +390,10 @@ def main() -> int:
     fun_rows, gap_mm, f_errs = check_funicular(M.FUNICULAR_MODEL)
     cols, c_errs = check_columns_and_skyline(M.COLUMN_MODEL)
     pt_rows, p_errs = check_panel(M.TOWER_PANEL_MODEL)
-    page_errs = check_pages(hyp, fun_rows, gap_mm, cols, pt_rows)
+    shard_rows, free_mm, s_errs = check_shard_recovery(M.SHARD_RECOVERY_MODEL)
+    page_errs = check_pages(hyp, fun_rows, gap_mm, cols, pt_rows, shard_rows, free_mm)
 
-    fails.extend(h_errs + f_errs + c_errs + p_errs + page_errs)
+    fails.extend(h_errs + f_errs + c_errs + p_errs + s_errs + page_errs)
     status = "FAIL" if fails else "PASS"
     print(json.dumps({
         "verifier": "cc02-sagrada-stereotomy",
@@ -331,6 +405,8 @@ def main() -> int:
         "catenary_gap_mm": round(gap_mm, 1),
         "porphyry_sigma_top_mpa": round(cols[12][1]["stress_mpa"], 2),
         "pt_sigma_min_mpa": round(pt_rows[1200]["sigma_min"], 3),
+        "shard_1mm_ruled_err_mm": round(shard_rows["1.0"]["ruled_err_mm"], 2),
+        "shard_freeform_err_mm": round(free_mm, 1),
     }, ensure_ascii=False))
     return 1 if fails else 0
 

@@ -107,6 +107,48 @@ def render_era_rail() -> str:
 
 # --------------------------------------------------------------------------------------------- editorial cards & drawer
 
+def _media_map() -> dict[str, dict]:
+    return {item["id"]: item for item in (*C.PHOTOS, *C.PLATES)}
+
+
+def render_media_figure(item: dict, is_es: bool, in_gallery: bool = False) -> str:
+    vg = C.VISUAL_GALLERY_TEXT
+    is_photo = item["kind"] == "photo"
+    badge_en = f"{vg['badge_photo_en']} · {item['license']}" if is_photo else f"{vg['badge_render_en']} · {item['era']}"
+    badge_es = f"{vg['badge_photo_es']} · {item['license']}" if is_photo else f"{vg['badge_render_es']} · {item['era']}"
+    badge_cls = "sf-media-badge sf-media-badge-photo" if is_photo else "sf-media-badge sf-media-badge-render"
+    alt_txt = item["alt_es"] if is_es else item["alt_en"]
+    fig_id = f' id="{a(item["id"])}"' if not in_gallery else ""
+    extra_btn = (
+        f' data-alt-en="{a(item["alt_en"])}" data-alt-es="{a(item["alt_es"])}"'
+        f' data-cap-en="{a(item["caption_en"])}" data-cap-es="{a(item["caption_es"])}"'
+        f' data-badge-en="{a(badge_en)}" data-badge-es="{a(badge_es)}" data-kind="{a(item["kind"])}"'
+        if in_gallery else ""
+    )
+    return f"""        <figure class="sf-media-card" data-sf-media-kind="{a(item['kind'])}" data-sf-media-id="{a(item['id'])}"{fig_id}>
+          <div class="sf-media-head">
+            <span class="{badge_cls}" data-en="{a(badge_en)}" data-es="{a(badge_es)}">{t(badge_es if is_es else badge_en)}</span>
+            <button type="button" class="sf-btn sf-btn-quiet sf-zoom-btn" data-sf-open-media="{a(item['id'])}"{extra_btn} data-en="Inspect plate" data-es="Ampliar lámina">{t('Ampliar lámina' if is_es else 'Inspect plate')}</button>
+          </div>
+          <div class="sf-media-frame">
+            <img src="../../{a(item['image'])}" width="{item['width']}" height="{item['height']}" loading="lazy" decoding="async" alt="{a(alt_txt)}" data-alt-en="{a(item['alt_en'])}" data-alt-es="{a(item['alt_es'])}">
+          </div>
+          {bi("figcaption", item["caption_en"], item["caption_es"])}
+          {cite(item["src"])}
+        </figure>"""
+
+
+def render_media_diptych(item_ids: tuple[str, str], is_es: bool, title_en: str, title_es: str) -> str:
+    by_id = _media_map()
+    cards = "\n".join(render_media_figure(by_id[mid], is_es, in_gallery=False) for mid in item_ids)
+    return f"""      <aside class="sf-diptych-wrap" aria-label="{a(title_es if is_es else title_en)}">
+        <p class="tp-kicker">{bi("span", title_en, title_es)}</p>
+        <div class="sf-diptych">
+{cards}
+        </div>
+      </aside>"""
+
+
 def render_plaster_drawer(is_es: bool) -> str:
     e = C.EGG_BUTTON
     open_txt = e["button_es"] if is_es else e["button_en"]
@@ -122,16 +164,8 @@ def render_plaster_drawer(is_es: bool) -> str:
                   <line class="sf-shard-ruling" x1="36" y1="23" x2="144" y2="23"/>
                 </g>
               </svg>"""
-    figs = []
-    for p in C.PLATES:
-        alt_txt = p["alt_es"] if is_es else p["alt_en"]
-        figs.append(
-            f"""              <figure class="sf-drawer-photo">
-                <img src="../../{a(p['image'])}" width="{p['width']}" height="{p['height']}" loading="lazy" decoding="async" alt="{a(alt_txt)}" data-alt-en="{a(p['alt_en'])}" data-alt-es="{a(p['alt_es'])}">
-                {bi("figcaption", p["caption_en"], p["caption_es"])}
-                {cite(p["src"])}
-              </figure>"""
-        )
+    by_id = _media_map()
+    figs = [render_media_figure(by_id["photo-1988-site"], is_es), render_media_figure(by_id["plate-stereotomy-atelier"], is_es)]
     return f"""          <div class="sf-drawer">
             <button type="button" class="sf-drawer-btn" aria-expanded="false" aria-controls="sf-drawer-panel" data-label-open="{a(open_txt)}" data-label-close="{a(close_txt)}">
               {shard_svg}
@@ -203,7 +237,7 @@ def render_interlude(kind: str, is_es: bool) -> str:
         return f"""          <aside class="sf-interlude" aria-labelledby="sf-int-stone">
             {bi("h3", "The four-stone hierarchical progression", "La progresión jerárquica de cuatro piedras", "sf-int-h", 'id="sf-int-stone"')}
             <div class="sf-table-wrap"><table class="sf-table"><thead><tr>{head}</tr></thead><tbody>{rows}</tbody></table></div>
-            {cite(["sf-columns", "grima2007"])}
+            {cite(["sf-booklets", "barrios2006", "grima2007"])}
           </aside>"""
     if kind == "towers-ledger":
         cols = (("Structure / Tower", "Estructura / Torre"), ("Elevation", "Elevación"), ("Attribution", "Atribución"))
@@ -215,9 +249,224 @@ def render_interlude(kind: str, is_es: bool) -> str:
         return f"""          <aside class="sf-interlude" aria-labelledby="sf-int-towers">
             {bi("h3", "18 Basilica spires vs. Ulm Minster &amp; Montjuïc", "Las 18 torres frente a Ulm y Montjuïc", "sf-int-h", 'id="sf-int-towers"')}
             <div class="sf-table-wrap"><table class="sf-table"><thead><tr>{head}</tr></thead><tbody>{rows}</tbody></table></div>
-            {cite(["sf-towers", "sf-centenary"])}
+            {cite(["sf-cross-2026", "sf-evangelists", "sf-inauguration-2026"])}
           </aside>"""
     return ""
+
+
+def render_tectonic_loupe_section(is_es: bool) -> str:
+    """Dual-scale 1:500 Basilica elevation hotspots paired with 1:10 stereotomy detail views."""
+    lx = C.TECTONIC_LOUPE_TEXT
+    btns = "".join(
+        f'<button type="button" class="sf-pill-btn" data-sf-node="{i}" aria-pressed="{"true" if i == 0 else "false"}" '
+        f'data-en="{a(n["short_en"])}" data-es="{a(n["short_es"])}">{t(n["short_es"] if is_es else n["short_en"])}</button>'
+        for i, n in enumerate(C.LOUPE_NODES)
+    )
+    info_cards = []
+    for i, n in enumerate(C.LOUPE_NODES):
+        hid = "" if i == 0 else " hidden"
+        info_cards.append(
+            f"""            <div class="sf-loupe-detail" data-sf-node-card="{i}"{hid}>
+              <div class="sf-relay-head">{bi("h3", n["title_en"], n["title_es"], "sf-card-move")}<span class="sf-panel-tag">{t(n["elev"])}</span></div>
+              {bi("p", n["summary_en"], n["summary_es"], "sf-small")}
+              {cite(n["src"])}
+            </div>"""
+        )
+    sec_svg = """<svg class="sf-svg-stage" viewBox="0 0 260 320" width="260" height="320" role="img" aria-labelledby="sf-sec-500-t">
+              <title id="sf-sec-500-t">1:500 Basilica schematic elevation with four clickable structural scale markers</title>
+              <line class="sf-funicular-axis" x1="20" y1="290" x2="240" y2="290"/>
+              <path class="sf-loupe-sec-hull" d="M 52 290 L 58 210 L 82 210 L 94 140 L 112 72 L 130 28 L 148 72 L 166 140 L 178 210 L 202 210 L 208 290 Z"/>
+              <line class="sf-funicular-column" x1="92" y1="290" x2="96" y2="210"/>
+              <line class="sf-funicular-column" x1="168" y1="290" x2="164" y2="210"/>
+              <line class="sf-stress-tens" x1="130" y1="18" x2="130" y2="38"/>
+              <line class="sf-stress-tens" x1="122" y1="26" x2="138" y2="26"/>
+              <g class="sf-loupe-node is-active" data-sf-node-dot="0"><circle cx="92" cy="290" r="8"/><text class="sf-svg-sub-text" x="108" y="294">0 m</text></g>
+              <g class="sf-loupe-node" data-sf-node-dot="1"><circle cx="96" cy="240" r="8"/><text class="sf-svg-sub-text" x="112" y="244">24 m</text></g>
+              <g class="sf-loupe-node" data-sf-node-dot="2"><circle cx="130" cy="204" r="8"/><text class="sf-svg-sub-text" x="145" y="208">45–60 m</text></g>
+              <g class="sf-loupe-node" data-sf-node-dot="3"><circle cx="130" cy="48" r="8"/><text class="sf-svg-sub-text" x="146" y="52">172.5 m</text></g>
+            </svg>"""
+    loupe_svg = """<svg class="sf-svg-stage" viewBox="0 0 320 260" width="320" height="260" role="img" aria-labelledby="sf-loupe-10-t">
+              <title id="sf-loupe-10-t">1:10 architectural stereotomy and joint detail matching selected zone</title>
+              <g class="sf-loupe-view is-active" data-sf-loupe-view="0">
+                <rect class="sf-panel-outline" x="50" y="185" width="220" height="36" rx="2"/>
+                <rect class="sf-loupe-sec-hull" x="104" y="45" width="112" height="140" rx="4"/>
+                <line class="sf-funicular-catenary" x1="125" y1="45" x2="125" y2="215"/>
+                <line class="sf-funicular-catenary" x1="160" y1="45" x2="160" y2="215"/>
+                <line class="sf-funicular-catenary" x1="195" y1="45" x2="195" y2="215"/>
+                <text class="sf-svg-caption-text" x="160" y="32" text-anchor="middle">1:10 Crypt Bearing Plinth (1882)</text>
+              </g>
+              <g class="sf-loupe-view" data-sf-loupe-view="1" hidden>
+                <rect class="sf-loupe-sec-hull" x="132" y="138" width="56" height="96"/>
+                <polygon class="sf-star-core" points="124,132 160,104 196,132 160,152"/>
+                <line class="sf-funicular-column" x1="142" y1="120" x2="72" y2="38"/>
+                <line class="sf-funicular-column" x1="160" y1="112" x2="160" y2="34"/>
+                <line class="sf-funicular-column" x1="178" y1="120" x2="248" y2="38"/>
+                <text class="sf-svg-caption-text" x="160" y="24" text-anchor="middle">1:10 Ellipsoid Branch Knot</text>
+              </g>
+              <g class="sf-loupe-view" data-sf-loupe-view="2" hidden>
+                <path class="sf-hyp-ruling-pos" d="M 60 56 Q 160 112 260 56"/>
+                <path class="sf-hyp-ruling-pos" d="M 76 206 Q 160 144 244 206"/>
+                <line class="sf-hyp-ruling-neg" x1="68" y1="60" x2="220" y2="202"/>
+                <line class="sf-hyp-ruling-neg" x1="252" y1="60" x2="100" y2="202"/>
+                <circle class="sf-star-core" cx="160" cy="130" r="24"/>
+                <text class="sf-svg-caption-text" x="160" y="30" text-anchor="middle">1:10 Ruled Hyperboloid Oculus Ring</text>
+              </g>
+              <g class="sf-loupe-view" data-sf-loupe-view="3" hidden>
+                <rect class="sf-panel-outline" x="92" y="54" width="136" height="162" rx="4"/>
+                <rect class="sf-loupe-sec-hull" x="122" y="84" width="76" height="102" rx="2"/>
+                <line class="sf-duct-line" x1="107" y1="42" x2="107" y2="228"/>
+                <line class="sf-duct-line" x1="213" y1="42" x2="213" y2="228"/>
+                <line class="sf-stress-tens" x1="160" y1="40" x2="160" y2="82"/>
+                <text class="sf-svg-caption-text" x="160" y="28" text-anchor="middle">1:10 Hollow PT Panel &amp; Rods</text>
+              </g>
+            </svg>"""
+    return f"""      <section class="sf-observatory" id="tectonic-section" data-sf-loupe aria-labelledby="sf-loupe-h">
+        <p class="tp-kicker">{bi("span", lx["kicker_en"], lx["kicker_es"])}</p>
+        {bi("h2", lx["title_en"], lx["title_es"], "sf-h2", 'id="sf-loupe-h"')}
+        {bi("p", lx["intro_en"], lx["intro_es"], "sf-lede")}
+        <div class="sf-pill-bar" role="group" aria-label="Structural scale selector">{btns}</div>
+        <div class="sf-loupe-grid">
+          <div class="sf-panel">
+            <div class="sf-panel-head">{bi("span", "1:500 Schematic Section", "Sección esquemática 1:500", "sf-panel-tag")}<span class="sf-panel-tag">SVG · CLICK NODE</span></div>
+            {sec_svg}
+          </div>
+          <div class="sf-panel">
+            <div class="sf-panel-head">{bi("span", "1:10 Nodal Stereotomy Loupe", "Lupa estereotómica 1:10", "sf-panel-tag")}<span class="sf-panel-tag">DETAIL VIEW</span></div>
+            {loupe_svg}
+{chr(10).join(info_cards)}
+          </div>
+        </div>
+      </section>"""
+
+
+def render_sankey_ribbon(is_es: bool) -> str:
+    """Alluvial / Sankey conservation ribbon comparing branched piers vs flying-buttress thrust split."""
+    sx = C.SANKEY_TEXT
+    btn_g = f'<button type="button" class="sf-pill-btn" data-sf-loadpath="gaudi" aria-pressed="true" data-en="Gaudí Branched Canopy" data-es="Bosque ramificado (Gaudí)">{t("Bosque ramificado (Gaudí)" if is_es else "Gaudí Branched Canopy")}</button>'
+    btn_c = f'<button type="button" class="sf-pill-btn" data-sf-loadpath="gothic" aria-pressed="false" data-en="Gothic Flying-Buttress Split" data-es="Arbotantes góticos">{t("Arbotantes góticos" if is_es else "Gothic Flying-Buttress Split")}</button>'
+    svg = """<svg class="sf-svg-stage sf-sankey-svg" viewBox="0 0 640 210" width="640" height="210" role="img" aria-labelledby="sf-sankey-t">
+              <title id="sf-sankey-t">Alluvial gravity load path diagram comparing branched internal piers against external flying buttresses</title>
+              <rect class="sf-loupe-sec-hull" x="28" y="64" width="24" height="82" rx="3"/>
+              <text class="sf-svg-caption-text" x="16" y="48" text-anchor="start">360 kN Vault</text>
+              <g class="is-active" data-sf-sankey-mode="gaudi">
+                <path class="sf-sankey-flow sf-sankey-primary" d="M 52 84 C 170 84, 210 66, 320 66 L 560 66"/>
+                <path class="sf-sankey-flow sf-sankey-secondary" d="M 52 126 C 170 126, 210 132, 320 132 L 560 132"/>
+                <rect class="sf-star-core" x="560" y="42" width="24" height="114" rx="3"/>
+                <text class="sf-svg-sub-text" x="305" y="48" text-anchor="middle">180 kN primary piers + 180 kN aisle piers (internal)</text>
+                <text class="sf-svg-caption-text" x="572" y="182" text-anchor="end">External crutches: 0 kN</text>
+              </g>
+              <g data-sf-sankey-mode="gothic" hidden>
+                <path class="sf-sankey-flow sf-sankey-primary" d="M 52 90 C 170 90, 210 74, 320 74 L 560 74"/>
+                <path class="sf-sankey-flow sf-sankey-crutch" d="M 52 134 C 170 134, 210 170, 320 170 L 560 170"/>
+                <rect class="sf-star-core" x="560" y="54" width="24" height="44" rx="3"/>
+                <rect class="sf-loupe-sec-hull" x="560" y="152" width="24" height="36" rx="3"/>
+                <text class="sf-svg-sub-text" x="305" y="56" text-anchor="middle">240 kN vertical shaft</text>
+                <text class="sf-svg-sub-text" x="305" y="192" text-anchor="middle">120 kN lateral thrust bypassed externally</text>
+              </g>
+            </svg>"""
+    return f"""        <div class="sf-sankey-box" data-sf-sankey>
+          <div class="sf-panel-head">
+            {bi("span", sx["kicker_en"], sx["kicker_es"], "sf-panel-tag")}
+            <span class="sf-panel-tag">SVG · ALLUVIAL FLOW</span>
+          </div>
+          {bi("h3", sx["title_en"], sx["title_es"], "sf-card-move")}
+          {bi("p", sx["intro_en"], sx["intro_es"], "sf-small")}
+          <div class="sf-pill-bar" role="group" aria-label="Load path comparison">{btn_g}{btn_c}</div>
+          <div class="sf-svg-scroll">{svg}</div>
+          <p class="sf-readout" data-sf-sankey-readout aria-live="polite" data-gaudi-en="{a(sx['readout_gaudi_en'])}" data-gaudi-es="{a(sx['readout_gaudi_es'])}" data-gothic-en="{a(sx['readout_gothic_en'])}" data-gothic-es="{a(sx['readout_gothic_es'])}">{t(sx['readout_gaudi_es'] if is_es else sx['readout_gaudi_en'])}</p>
+          <table class="sr-only"><caption>MODEL 360 kN canopy load split comparison</caption><thead><tr><th>Topology</th><th>Internal Piers</th><th>External Flying Buttresses</th></tr></thead><tbody><tr><td>Gaudí Branched Canopy</td><td>360 kN</td><td>0 kN</td></tr><tr><td>Gothic Split</td><td>240 kN</td><td>120 kN</td></tr></tbody></table>
+          {cite(sx["src"])}
+        </div>"""
+
+
+def render_polar_radar(is_es: bool) -> str:
+    """6-Axis Polar Structural & Acoustic Comparative Radar (MODEL comparative index 0-100)."""
+    rx = C.RADAR_TEXT
+    axes_en, axes_es = rx["axes_en"], rx["axes_es"]
+    cx, cy, r_max = 240.0, 160.0, 94.0
+    angles = [-math.pi / 2 + i * (math.pi / 3) for i in range(6)]
+    rings = ""
+    for frac in (0.33, 0.66, 1.0):
+        pts = " ".join(f"{cx + r_max * frac * math.cos(th):.1f},{cy + r_max * frac * math.sin(th):.1f}" for th in angles)
+        rings += f'<polygon class="sf-funicular-parabola" points="{pts}"/>'
+    spokes = "".join(
+        f'<line class="sf-funicular-axis" x1="{cx:.1f}" y1="{cy:.1f}" x2="{cx + r_max * math.cos(th):.1f}" y2="{cy + r_max * math.sin(th):.1f}"/>'
+        for th in angles
+    )
+    labels = ""
+    for i, th in enumerate(angles):
+        lx = cx + (r_max + 20) * math.cos(th)
+        ly = cy + (r_max + 20) * math.sin(th) + 4
+        anc = "middle" if abs(math.cos(th)) < 0.25 else ("start" if math.cos(th) > 0 else "end")
+        labels += f'<text class="sf-svg-sub-text" x="{lx:.1f}" y="{ly:.1f}" text-anchor="{anc}" data-en="{a(axes_en[i])}" data-es="{a(axes_es[i])}">{t(axes_es[i] if is_es else axes_en[i])}</text>'
+    init_scores = C.RADAR_ERAS[-1]["scores"]
+    init_pts = " ".join(f"{cx + r_max * (sc / 100.0) * math.cos(angles[i]):.1f},{cy + r_max * (sc / 100.0) * math.sin(angles[i]):.1f}" for i, sc in enumerate(init_scores))
+    era_btns = "".join(
+        f'<button type="button" class="sf-pill-btn" data-sf-radar-era="{a(e["id"])}" '
+        f'data-scores="{",".join(str(x) for x in e["scores"])}" '
+        f'data-note-en="{a(e["note_en"])}" data-note-es="{a(e["note_es"])}" '
+        f'aria-pressed="{"true" if idx == len(C.RADAR_ERAS) - 1 else "false"}" '
+        f'data-en="{a(e["label_en"])}" data-es="{a(e["label_es"])}">{t(e["label_es"] if is_es else e["label_en"])}</button>'
+        for idx, e in enumerate(C.RADAR_ERAS)
+    )
+    sr_rows = "".join(
+        f"<tr><th scope='row'>{t(e['label_en'])}</th>" + "".join(f"<td>{sc}</td>" for sc in e["scores"]) + "</tr>"
+        for e in C.RADAR_ERAS
+    )
+    init_e = C.RADAR_ERAS[-1]
+    return f"""        <div class="sf-part sf-radar-panel" data-sf-radar aria-labelledby="sf-radar-h">
+          <p class="tp-kicker">{bi("span", rx["kicker_en"], rx["kicker_es"])}</p>
+          {bi("h2", rx["title_en"], rx["title_es"], "sf-h2", 'id="sf-radar-h"')}
+          {bi("p", rx["intro_en"], rx["intro_es"], "sf-lede")}
+          <div class="sf-bench">
+            <svg class="sf-svg-stage sf-radar-svg" viewBox="0 0 480 320" width="480" height="320" role="img" aria-labelledby="sf-radar-t">
+              <title id="sf-radar-t">Six-axis polar structural and acoustic envelope comparison (MODEL comparative index 0 to 100)</title>
+              {rings}{spokes}
+              <polygon class="sf-radar-poly" points="{init_pts}"/>
+              {labels}
+            </svg>
+            <div class="sf-controls">
+              <div class="sf-pill-bar" role="group" aria-label="Era radar comparison selector">{era_btns}</div>
+              <p class="sf-readout" data-sf-radar-readout aria-live="polite">{t(init_e['note_es'] if is_es else init_e['note_en'])}</p>
+              <table class="sr-only"><caption>MODEL 6-axis comparative structural and acoustic scores</caption><thead><tr><th>Era</th>{"".join(f"<th>{t(ax)}</th>" for ax in axes_en)}</tr></thead><tbody>{sr_rows}</tbody></table>
+              {cite(rx["src"])}
+            </div>
+          </div>
+        </div>"""
+
+
+def render_visual_gallery_section(is_es: bool) -> str:
+    """Filterable 10-item Visual Media Archive paired with a CSP-safe native <dialog> lightbox."""
+    vg = C.VISUAL_GALLERY_TEXT
+    cards = "\n".join(render_media_figure(item, is_es, in_gallery=True) for item in (*C.PHOTOS, *C.PLATES))
+    btns = (
+        f'<button type="button" class="sf-pill-btn" data-sf-filter="all" aria-pressed="true" data-en="{a(vg["all_en"])}" data-es="{a(vg["all_es"])}">{t(vg["all_es"] if is_es else vg["all_en"])}</button>'
+        f'<button type="button" class="sf-pill-btn" data-sf-filter="photo" aria-pressed="false" data-en="{a(vg["photos_en"])}" data-es="{a(vg["photos_es"])}">{t(vg["photos_es"] if is_es else vg["photos_en"])}</button>'
+        f'<button type="button" class="sf-pill-btn" data-sf-filter="render" aria-pressed="false" data-en="{a(vg["renders_en"])}" data-es="{a(vg["renders_es"])}">{t(vg["renders_es"] if is_es else vg["renders_en"])}</button>'
+    )
+    return f"""      <section class="sf-observatory" id="visuals" data-sf-gallery aria-labelledby="sf-vis-h">
+        <p class="tp-kicker">{bi("span", vg["kicker_en"], vg["kicker_es"])}</p>
+        {bi("h2", vg["title_en"], vg["title_es"], "sf-h2", 'id="sf-vis-h"')}
+        {bi("p", vg["intro_en"], vg["intro_es"], "sf-lede")}
+        <div class="sf-pill-bar" role="group" aria-label="Visual media filter">{btns}</div>
+        <div class="sf-gallery-grid">
+{cards}
+        </div>
+        <dialog class="sf-lightbox" id="sf-lightbox" aria-labelledby="sf-lb-badge" aria-describedby="sf-lb-cap">
+          <div class="sf-lightbox-bar">
+            <span class="sf-panel-tag" id="sf-lb-badge">MEDIA</span>
+            <div class="sf-pill-bar">
+              <button type="button" class="sf-btn sf-btn-quiet" data-sf-lb-prev data-en="Prev" data-es="Anterior">{t("Anterior" if is_es else "Prev")}</button>
+              <button type="button" class="sf-btn sf-btn-quiet" data-sf-lb-next data-en="Next" data-es="Siguiente">{t("Siguiente" if is_es else "Next")}</button>
+              <button type="button" class="sf-btn" data-sf-lb-close data-en="Close" data-es="Cerrar">{t("Cerrar" if is_es else "Close")}</button>
+            </div>
+          </div>
+          <div class="sf-lightbox-stage">
+            <img id="sf-lightbox-img" src="../../images/sagrada-familia/photo-2026-completed-cross.jpg" width="1280" height="1855" decoding="async" alt="">
+          </div>
+          <p class="sf-small" id="sf-lb-cap"></p>
+        </dialog>
+      </section>"""
 
 
 def render_part(part: dict, is_es: bool) -> str:
@@ -228,6 +477,32 @@ def render_part(part: dict, is_es: bool) -> str:
         opener_paras.append(f'          {bi("p", p["en"], p["es"], cls)}\n          {cite(p["src"])}')
     cards_html = "\n".join(render_card(cards[cid], is_es) for cid in part["cards"])
     interlude_html = render_interlude(part["interlude"], is_es)
+    part_visuals = ""
+    if part["id"] == "part-1":
+        part_visuals = render_media_diptych(
+            ("photo-catenary-model", "plate-reus-forge"),
+            is_es,
+            "Part I Visual Study · Hanging-Chain Statics Photo & Reus Coppersmith Visualization",
+            "Estudio visual Parte I · Foto de maqueta funicular e imaginación del taller de Reus",
+        )
+    elif part["id"] == "part-2":
+        part_visuals = (
+            render_tectonic_loupe_section(is_es)
+            + "\n"
+            + render_media_diptych(
+                ("photo-nativity-facade", "photo-nave-columns"),
+                is_es,
+                "Part II Site Photographs · Exterior Parabolic Spires & Interior Four-Stone Tree Canopy",
+                "Fotografías Parte II · Campanarios del Nacimiento y bosque interior de cuatro piedras",
+            )
+        )
+    elif part["id"] == "part-4":
+        part_visuals = render_media_diptych(
+            ("plate-nave-forest", "plate-tensioned-crown"),
+            is_es,
+            "Part IV Conceptual Studies · Interior Stained-Glass Forest & Hollow Post-Tensioned Stone",
+            "Estudios conceptuales Parte IV · Vitrales en el bosque pétreo y paneles huecos pretensados",
+        )
     return f"""      <section class="sf-part" id="{a(part['id'])}" aria-labelledby="{a(part['id'])}-h">
         <header class="sf-part-head">
           <p class="sf-part-num" aria-hidden="true">{t(part['numeral'])}</p>
@@ -242,6 +517,7 @@ def render_part(part: dict, is_es: bool) -> str:
         </div>
 {cards_html}
 {interlude_html}
+{part_visuals}
       </section>"""
 
 
@@ -331,9 +607,96 @@ def render_atelier_section(is_es: bool) -> str:
         </div>
         <div class="sf-science">
           {bi("p", ax["science_en"], ax["science_es"])}
-          {cite(["heyman1966", "akbarzadeh2015"])}
+          {cite(["heyman1966", "huerta2006", "akbarzadeh2015"])}
         </div>
+{render_sankey_ribbon(is_es)}
       </section>"""
+
+
+def render_relay_section(is_es: bool) -> str:
+    """Five-generation human continuity observatory (1882–2026+)."""
+    rx = C.RELAY_TEXT
+    btns = []
+    segs = []
+    cards = []
+    # Proportional 1882–2026+ spans across 680 px SVG bar
+    seg_x = (16, 174, 294, 418, 538)
+    seg_w = (148, 110, 114, 110, 126)
+    for i, g in enumerate(C.GENERATIONS_RELAY):
+        pressed = "true" if i == 0 else "false"
+        active_cls = " sf-relay-seg is-active" if i == 0 else " sf-relay-seg"
+        btns.append(
+            f'<button type="button" class="sf-pill-btn" data-sf-gen="{i}" aria-pressed="{pressed}" '
+            f'data-en="{a(g["span_label"])}" data-es="{a(g["span_label_es"])}">{t(g["span_label_es"] if is_es else g["span_label"])}</button>'
+        )
+        segs.append(
+            f'<g class="{active_cls.strip()}" data-sf-seg="{i}">'
+            f'<rect class="sf-relay-bar" x="{seg_x[i]}" y="22" width="{seg_w[i]}" height="26" rx="4"/>'
+            f'<text class="sf-svg-caption-text" x="{seg_x[i] + seg_w[i] / 2:.1f}" y="39" text-anchor="middle">{t(g["years"])}</text>'
+            f'<text class="sf-svg-sub-text" x="{seg_x[i] + seg_w[i] / 2:.1f}" y="68" text-anchor="middle">Gen {i + 1}</text>'
+            f"</g>"
+        )
+        hid = "" if i == 0 else " hidden"
+        cards.append(
+            f"""          <article class="sf-relay-card" data-sf-relay-card="{i}"{hid}>
+            <div class="sf-relay-head">
+              {bi("h3", g["title_en"], g["title_es"], "sf-card-move")}
+              <span class="sf-panel-tag">{t(g["elevation"])}</span>
+            </div>
+            <dl class="sf-relay-grid">
+              <div class="sf-relay-row">{bi("dt", "Who held the site", "Quién sostuvo la obra")}{bi("dd", g["hands_en"], g["hands_es"])}</div>
+              <div class="sf-relay-row">{bi("dt", "Historical crucible", "Prueba histórica")}{bi("dd", g["challenge_en"], g["challenge_es"])}</div>
+              <div class="sf-relay-row">{bi("dt", "Gift handed forward", "Legado al relevo siguiente")}{bi("dd", g["gift_en"], g["gift_es"])}</div>
+            </dl>
+            {cite(g["src"])}
+          </article>"""
+        )
+
+    timeline_svg = f"""<svg class="sf-svg-stage sf-relay-stage" viewBox="0 0 680 88" width="680" height="88" role="img" aria-labelledby="sf-relay-svg-t">
+              <title id="sf-relay-svg-t">Five architectural generations carrying the Sagrada Família across 1882 to 2026+</title>
+              <line class="sf-funicular-axis" x1="16" y1="35" x2="664" y2="35"/>
+              {"".join(segs)}
+            </svg>"""
+    return f"""      <section class="sf-observatory sf-relay" id="relay" data-sf-relay aria-labelledby="sf-relay-h">
+        <p class="tp-kicker">{bi("span", rx["kicker_en"], rx["kicker_es"])}</p>
+        {bi("h2", rx["title_en"], rx["title_es"], "sf-h2", 'id="sf-relay-h"')}
+        {bi("p", rx["intro_en"], rx["intro_es"], "sf-lede")}
+        <div class="sf-pill-bar" role="group" aria-label="Generation relay selector">{"".join(btns)}</div>
+        {timeline_svg}
+{chr(10).join(cards)}
+      </section>"""
+
+
+def render_shard_svg() -> str:
+    """Multi-point 3.0 m hyperboloid profile recovered from a 0.35 m 1936 plaster shard vs unruled Taylor drift."""
+    p = M.SHARD_RECOVERY_MODEL
+    a_t, c_t = p["a_true_m"], p["c_true_m"]
+    k_t = (a_t / c_t) ** 2
+    z1, z2, z_top = p["z1_m"], p["z2_m"], p["z_target_m"]
+    r_true = lambda z: math.sqrt(a_t * a_t + k_t * z * z)
+    r1 = r_true(z1)
+    dr1 = (k_t * z1) / r1
+    d2r1 = (k_t * a_t * a_t) / (r1 ** 3)
+    r_free = lambda z: r1 + dr1 * (z - z1) + 0.5 * d2r1 * ((z - z1) ** 2)
+    pts_str = lambda fn, z0, z1_, steps: " ".join(
+        f"{75.0 + ((fn(z0 + (z1_ - z0) * i / steps) - 1.5) / 1.8) * 215.0:.1f},"
+        f"{220.0 - ((z0 + (z1_ - z0) * i / steps) / z_top) * 190.0:.1f}"
+        for i in range(steps + 1)
+    )
+    pts_t = pts_str(r_true, 0.0, z_top, 15)
+    pts_f = pts_str(r_free, z1, z_top, 14)
+    pts_p = pts_str(r_true, z1, z2, 4)
+    return f"""<svg class="sf-shard-recover-svg sf-svg-stage" viewBox="0 0 340 250" width="340" height="250" role="img" aria-labelledby="sf-shard-svg-t">
+              <title id="sf-shard-svg-t">Full 3.0 m hyperboloid profile recovered from a 0.35 m 1936 plaster shard vs unruled freeform Taylor drift</title>
+              <line class="sf-funicular-axis" x1="48" y1="220" x2="310" y2="220"/>
+              <line class="sf-funicular-axis" x1="48" y1="20" x2="48" y2="220"/>
+              <polyline class="sf-shard-true" points="{pts_t}"/>
+              <polyline class="sf-shard-freeform" points="{pts_f}"/>
+              <polyline class="sf-shard-ruled" points="{pts_t}"/>
+              <polyline class="sf-shard-piece" points="{pts_p}"/>
+              <text class="sf-svg-caption-text" x="56" y="24" data-en="z = 3.00 m vault rim" data-es="z = 3.00 m corona de bóveda">z = 3.00 m vault rim</text>
+              <text class="sf-svg-sub-text" x="180" y="200" data-en="0.35 m surviving shard" data-es="Fragmento 0.35 m">0.35 m surviving shard</text>
+            </svg>"""
 
 
 def render_benches_section(is_es: bool) -> str:
@@ -395,8 +758,25 @@ def render_benches_section(is_es: bool) -> str:
                 <label class="sf-range-label" for="sf-col-z-range"><span>{bi("span", "Shaft fraction z / H_shaft", "Fracción de altura z / H_fuste")}</span><span class="sf-range-val" id="sf-col-z-val">0.50</span></label>
                 <input id="sf-col-z-range" class="sf-range" type="range" min="0" max="100" step="1" value="50" aria-valuetext="0.50">
               </div>
-              <p class="sf-readout" data-sf-col-readout aria-live="polite">12-pt Red porphyry · H_total = 24 m · D_in = 2.10 m · A_net = {s12['area_net_m2']:.2f} m² · MODEL σ = {s12['stress_mpa']:.2f} MPa</p>
-              {cite(["sf-columns"])}
+              <p class="sf-readout" data-sf-col-readout aria-live="polite">{t(f"Pórfido rojo 12 puntas · H_total = 24 m · D_int = 2.10 m · A_neta = {s12['area_net_m2']:.2f} m² · MODELO σ = {s12['stress_mpa']:.2f} MPa" if is_es else f"12-pt Red porphyry · H_total = 24 m · D_in = 2.10 m · A_net = {s12['area_net_m2']:.2f} m² · MODEL σ = {s12['stress_mpa']:.2f} MPa")}</p>
+              {cite(["sf-booklets", "barrios2006"])}
+            </div>
+          </div>
+        </div>
+
+        <div class="sf-part" aria-labelledby="sf-shard-bench-h">
+          <p class="tp-kicker">{bi("span", C.SHARD_BENCH_TEXT["kicker_en"], C.SHARD_BENCH_TEXT["kicker_es"])}</p>
+          {bi("h2", C.SHARD_BENCH_TEXT["title_en"], C.SHARD_BENCH_TEXT["title_es"], "sf-h2", 'id="sf-shard-bench-h"')}
+          {bi("p", C.SHARD_BENCH_TEXT["intro_en"], C.SHARD_BENCH_TEXT["intro_es"], "sf-lede")}
+          <div class="sf-bench" data-sf-shard>
+            {render_shard_svg()}
+            <div class="sf-controls">
+              <div class="sf-control-group">
+                <label class="sf-range-label" for="sf-caliper-range"><span>{bi("span", "Shard caliper perturbation ±δr", "Error de calibrador ±δr")}</span><span class="sf-range-val" id="sf-caliper-val">0.0 mm</span></label>
+                <input id="sf-caliper-range" class="sf-range" type="range" min="0.0" max="{M.SHARD_RECOVERY_MODEL['caliper_max_mm']:.1f}" step="0.1" value="0.0" aria-valuetext="0.0 mm">
+              </div>
+              <p class="sf-readout" data-sf-shard-readout aria-live="polite">{t(f"MODELO recuperado a = 1.800 m · c = 2.400 m · Error reglado = 0.0 mm vs Deriva libre = {M.shard_vault_recovery(0.0)['freeform_err_mm']:.1f} mm" if is_es else f"MODEL recovered a = 1.800 m · c = 2.400 m · Ruled rim err = 0.0 mm vs Freeform drift = {M.shard_vault_recovery(0.0)['freeform_err_mm']:.1f} mm")}</p>
+              {cite(["burry1996", "sf-history"])}
             </div>
           </div>
         </div>
@@ -418,7 +798,7 @@ def render_benches_section(is_es: bool) -> str:
                 <input id="sf-wind-range" class="sf-range" type="range" min="{p_tp['wind_min_kpa']:.2f}" max="{p_tp['wind_max_kpa']:.2f}" step="0.05" value="{p_tp['wind_kpa']:.2f}" aria-valuetext="{p_tp['wind_kpa']:.2f} kPa">
               </div>
               <p class="sf-readout" data-sf-pt-readout aria-live="polite">MODEL M_wind = {pt0['m_wind_knm']:.2f} kN·m · σ_min = {pt0['sigma_min_mpa']:.2f} MPa · σ_max = {pt0['sigma_max_mpa']:.2f} MPa</p>
-              {cite(["sf-towers", "ingenia-arup", "sf-centenary"])}
+              {cite(["ingenia-arup", "sf-cross-2026", "sf-evangelists", "sf-inauguration-2026"])}
             </div>
           </div>
         </div>
@@ -443,10 +823,11 @@ def render_benches_section(is_es: bool) -> str:
                 <input id="sf-solar-range" class="sf-range" type="range" min="7.0" max="19.0" step="0.25" value="9.5" aria-valuetext="09:30">
               </div>
               <p class="sf-readout" data-sf-light-readout aria-live="polite">09:30 · East Nativity glass · MODEL Eyring stone RT60 ≈ 4.6 s</p>
-              {cite(["sf-architecture", "eyring1930"])}
+              {cite(["eyring1930", "zhaoburry2024", "yoshikawa2004"])}
             </div>
           </div>
         </div>
+{render_polar_radar(is_es)}
       </section>"""
 
 
@@ -533,6 +914,27 @@ def render_lab_section(is_es: bool) -> str:
     )
 
     hm = M.HYPERBOLOID_MODEL
+    sr0 = M.shard_vault_recovery(0.0)
+    shard_rows = []
+    for err in (0.0, 0.5, 1.0):
+        sr = M.shard_vault_recovery(err)
+        shard_rows.append(
+            f'<tr data-caliper-mm="{err:.1f}">'
+            f'<th scope="row" class="sf-num">±{err:.1f} mm</th>'
+            f'<td class="sf-num">{sr["a_rec_m"]:.4f} m</td>'
+            f'<td class="sf-num">{sr["c_rec_m"]:.4f} m</td>'
+            f'<td class="sf-num">{sr["r_ruled_top_m"]:.4f} m</td>'
+            f'<td class="sf-num sf-strong">{sr["ruled_err_mm"]:.2f} mm</td></tr>'
+        )
+    shead = "".join(
+        bi("th", en, es, "", 'scope="col"') for en, es in (
+            ("Caliper δr (MODEL)", "Error calibrador δr (MODELO)"),
+            ("Recovered a", "Radio a recuperado"),
+            ("Recovered c", "Escala c recuperada"),
+            ("Ruled r(3.0 m)", "Radio r(3.0 m) reglado"),
+            ("Ruled rim err", "Desvío en corona"),
+        )
+    )
     return f"""      <section class="sf-part sf-lab" id="part-6" aria-labelledby="part-6-h">
         <header class="sf-part-head">
           <p class="sf-part-num" aria-hidden="true">VI</p>
@@ -546,7 +948,7 @@ def render_lab_section(is_es: bool) -> str:
           {bi("p", L["hyp_en"], L["hyp_es"])}
           <p class="sf-eq"><code>r(u, v) = (a(cos u − s·v·sin u), b(sin u + s·v·cos u), v·c)</code> · <code>(x/a)² + (y/b)² − (z/c)² = 1</code></p>
           <p class="sf-small">{bi("span", f"MODEL throat a = {hm['a_m']:.2f} m, b = {hm['b_m']:.2f} m, c = {hm['c_m']:.2f} m, |v| ≤ {hm['v_max']:.2f}:", f"Garganta MODELO a = {hm['a_m']:.2f} m, b = {hm['b_m']:.2f} m, c = {hm['c_m']:.2f} m, |v| ≤ {hm['v_max']:.2f}:")} <strong data-hyp-throat>{hyp['area_throat_m2']:.2f} m²</strong> → <strong data-hyp-top>{hyp['area_top_m2']:.2f} m²</strong> (<span data-hyp-ratio>{hyp['aperture_ratio']:.4f}×</span>, pitch <span data-hyp-pitch>{hyp['ruling_pitch_deg']:.2f}°</span>).</p>
-          {cite(["sf-architecture", "cortes2019"])}
+          {cite(["sf-booklets", "cortes2019"])}
         </article>
 
         <article class="sf-lab-block" id="lab-funicular">
@@ -555,7 +957,7 @@ def render_lab_section(is_es: bool) -> str:
           <p class="sf-eq"><code>y(x) = a·[cosh(L/(2a) + α₀) − cosh(|x|/a + α₀)], α₀ = arcsinh(W_top / 2H), θ = arctan(H / V)</code></p>
           <div class="sf-table-wrap"><table class="sf-table"><thead><tr>{fhead}</tr></thead><tbody>{''.join(fun_rows)}</tbody></table></div>
           <p class="sf-small">{bi("span", f"Unloaded equal-span, equal-rise catenary vs. parabola maximum vertical separation (MODEL span L = {fmod['span_m']:.1f} m, a = {fmod['catenary_a_m']:.1f} m):", f"Separación vertical máxima catenaria vs. parábola de igual claro y flecha (MODELO L = {fmod['span_m']:.1f} m, a = {fmod['catenary_a_m']:.1f} m):")} <strong class="sf-cat-gap-mm">{eq0['catenary_parabola_max_gap_mm']:.1f} mm</strong>.</p>
-          {cite(["heyman1966", "akbarzadeh2015"])}
+          {cite(["heyman1966", "huerta2006", "akbarzadeh2015"])}
         </article>
 
         <article class="sf-lab-block" id="lab-columns">
@@ -563,7 +965,7 @@ def render_lab_section(is_es: bool) -> str:
           {bi("p", L["col_en"], L["col_es"])}
           <p class="sf-eq"><code>H_total = 2n m · H_shaft = 10·D_in · θ(z) = ±(π / 2n)·(z / H_shaft)</code></p>
           <div class="sf-table-wrap"><table class="sf-table"><thead><tr>{chead}</tr></thead><tbody>{''.join(col_rows)}</tbody></table></div>
-          {cite(["sf-columns", "grima2007"])}
+          {cite(["barrios2006", "grima2007"])}
         </article>
 
         <article class="sf-lab-block" id="lab-post-tension">
@@ -572,6 +974,15 @@ def render_lab_section(is_es: bool) -> str:
           <p class="sf-eq"><code>σ_min = (F_pt + N_dead) / A_net − M_wind / Z_net ≥ 0</code></p>
           <div class="sf-table-wrap"><table class="sf-table"><thead><tr>{pthead}</tr></thead><tbody>{''.join(pt_rows)}</tbody></table></div>
           {cite(["ingenia-arup", "rodriguez2017"])}
+        </article>
+
+        <article class="sf-lab-block" id="lab-shard">
+          {bi("h3", L["shard_h_en"], L["shard_h_es"])}
+          {bi("p", L["shard_en"], L["shard_es"])}
+          <p class="sf-eq"><code>r²(z) = a² + (a²/c²)·z² · z₁ = 0.20 m, z₂ = 0.55 m → r(3.00 m)</code></p>
+          <div class="sf-table-wrap"><table class="sf-table"><thead><tr>{shead}</tr></thead><tbody>{''.join(shard_rows)}</tbody></table></div>
+          <p class="sf-small">{bi("span", "Unruled quadratic Taylor extrapolation from the same z₁ = 0.20 m fragment diverges at z = 3.00 m by:", "La extrapolación libre cuadrática de Taylor desde el mismo fragmento z₁ = 0.20 m se desvía en z = 3.00 m por:")} <strong class="sf-freeform-err-mm">{sr0['freeform_err_mm']:.1f} mm</strong>.</p>
+          {cite(["burry1996", "gomez2009"])}
         </article>
 
         <aside class="sf-interlude sf-verify-box" aria-labelledby="sf-verify-h">
@@ -606,11 +1017,13 @@ def render_sources(is_es: bool) -> str:
     note_en = (
         f"All read on {C.ACCESSED}. Basílica marks official Basílica de la Sagrada Família publications; Engineering marks "
         "Ingenia / Royal Academy of Engineering coverage; Paper marks peer-reviewed journal articles checked in Crossref "
-        "and Scite on the same day with zero retractions."
+        "and Scite on the same day with zero retractions; Photo Archive marks Wikimedia Commons documentary photographs under "
+        "Public Domain, CC0, or CC BY attribution."
     )
     note_es = (
         f"Todas consultadas el {C.ACCESSED}. Basílica marca publicaciones oficiales del templo; Ingeniería marca cobertura técnica "
-        "de Ingenia / Royal Academy of Engineering; Artículo marca artículos arbitrados revisados en Crossref y Scite el mismo día sin retractaciones."
+        "de Ingenia / Royal Academy of Engineering; Artículo marca artículos arbitrados revisados en Crossref y Scite el mismo día "
+        "sin retractaciones; Archivo Fotográfico marca fotografías documentales de Wikimedia Commons en Dominio Público, CC0 o CC BY."
     )
     return f"""      <section class="sf-sources" id="sources" aria-labelledby="sf-src-h">
         {bi("h2", "Sources", "Fuentes", "sf-h2", 'id="sf-src-h"')}
@@ -647,14 +1060,23 @@ def render_page(catalog: dict, lang: str = "en") -> str:
     parts = "\n".join(render_part(p, is_es) for p in C.PARTS)
     closing = "\n".join(f'        {bi("p", p["en"], p["es"])}' for p in C.CLOSING)
 
-    jumps = [(f"#{p['id']}", f"{p['numeral']} · {p['title_en']}", f"{p['numeral']} · {p['title_es']}") for p in C.PARTS]
+    jumps = [("#relay", "5 Generations", "5 Generaciones")]
+    jumps += [(f"#{p['id']}", f"{p['numeral']} · {p['title_en']}", f"{p['numeral']} · {p['title_es']}") for p in C.PARTS]
     jumps += [
+        ("#tectonic-section", "1:500 ↔ 1:10 Section", "Sección 1:500 ↔ 1:10"),
         ("#atelier", "2D ↔ 3D Atelier", "Atelier 2D ↔ 3D"),
         ("#benches", "Benches", "Bancos"),
+        ("#visuals", "Visual Archive", "Archivo Visual"),
         ("#part-6", "VI · Lab", "VI · Laboratorio"),
         ("#act-puzzle-cc02", "Crossword", "Crucigrama"),
         ("#sources", "Sources", "Fuentes"),
     ]
+    hero_diptych = render_media_diptych(
+        ("photo-1909-escoles", "photo-2026-cross"),
+        is_es,
+        "1909 → 2026 Documentary Diptych · From Workers’ Brick Schools to the 172.5 m Cross",
+        "Díptico documental 1909 → 2026 · De las Escuelas obreras a la Cruz de 172.5 m",
+    )
     jump_html = " ".join(f'<a class="tp-essay-jump-pill" href="{jh}" data-en="{a(je)}" data-es="{a(js)}">{t(es_or_en(je, js, is_es))}</a>' for jh, je, js in jumps)
     aria_crumb = "Ruta de navegación" if is_es else "Breadcrumb"
     aria_jump = "Secciones" if is_es else "Sections"
@@ -689,9 +1111,12 @@ def render_page(catalog: dict, lang: str = "en") -> str:
       <section class="sf-opening" aria-label="{a('Inicio' if is_es else 'Opening')}">
 {opening}
       </section>
+{hero_diptych}
+{render_relay_section(is_es)}
 {parts}
 {render_atelier_section(is_es)}
 {render_benches_section(is_es)}
+{render_visual_gallery_section(is_es)}
 {render_lab_section(is_es)}
 {crossword}
 {render_silent(is_es)}

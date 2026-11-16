@@ -1,6 +1,7 @@
 """CC.02 (La Sagrada Família masterpiece): grounding, privacy, CSP, conceptual disclosure, WebGL2/CAD, and verifier."""
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import struct
@@ -98,32 +99,54 @@ class SagradaMasterpieceTests(unittest.TestCase):
                 self.assertNotIn(phrase.lower(), visible, f"{page}: banned phrase {phrase!r}")
 
         txt = EN.read_text(encoding="utf-8")
+        self.assertEqual(len(C.SOURCES), 29)
         used = set(re.findall(r'href="#src-([a-z0-9-]+)"', txt))
         listed = set(re.findall(r'<li id="src-([a-z0-9-]+)"', txt))
         self.assertEqual(listed, set(C.SOURCES))
         self.assertTrue(used <= listed, used - listed)
         self.assertEqual(used, listed, f"listed but uncited sources: {listed - used}")
+        legacy_404 = ("/en/architecture", "/en/the-columns", "/en/towers", "/en/tower-of-jesus-christ")
         for key, src in C.SOURCES.items():
             self.assertIn(src["kind"], C.KIND_LABEL, key)
             self.assertTrue(src["url"].startswith("https://"), key)
+            self.assertNotIn("BY-SA", src["label"].upper(), f"ShareAlike license conflict in {key}")
+            for slug in legacy_404:
+                self.assertNotIn(slug, src["url"], f"stale 404 slug in {key}")
             if src["kind"] == "paper":
                 self.assertTrue(src["url"].startswith("https://doi.org/10."), key)
+        for slug in legacy_404:
+            self.assertNotIn(f"sagradafamilia.org{slug}", txt)
 
     def test_conceptual_plates_zero_metadata_and_labeled(self) -> None:
-        expected_names = sorted(Path(p["image"]).name for p in C.PLATES)
+        all_media = [*C.PHOTOS, *C.PLATES]
+        self.assertEqual(len(all_media), 10)
+        expected_names = sorted(Path(p["image"]).name for p in all_media)
         actual_names = sorted(p.name for p in IMG_DIR.iterdir())
         self.assertEqual(actual_names, expected_names)
 
-        for plate_info in C.PLATES:
-            path = SRC / plate_info["image"]
+        digests: set[str] = set()
+        for media_info in all_media:
+            path = SRC / media_info["image"]
             raw = path.read_bytes()
             self.assertTrue(raw.startswith(b"\xff\xd8"), f"{path.name}: not a JPEG")
             for marker in (b"Exif\x00\x00", b"http://ns.adobe.com/xap", b"ICC_PROFILE", b"GPS"):
                 self.assertNotIn(marker, raw[:65536], f"{path.name}: contains metadata {marker!r}")
+            digests.add(hashlib.sha256(raw).hexdigest())
+
+        self.assertEqual(len(digests), 10, "duplicate SHA-256 detected among CC.02 visual assets")
+
+        for plate_info in C.PLATES:
             self.assertIn("Conceptual visualization", plate_info["alt_en"])
             self.assertIn("Conceptual visualization", plate_info["caption_en"])
             self.assertIn("Visualización conceptual", plate_info["alt_es"])
             self.assertIn("Visualización conceptual", plate_info["caption_es"])
+
+        for photo_info in C.PHOTOS:
+            self.assertNotIn("BY-SA", photo_info["license"].upper(), photo_info["id"])
+            self.assertTrue(
+                any(C.SOURCES[k]["url"].startswith("https://commons.wikimedia.org/wiki/File:") for k in photo_info["src"]),
+                f"missing Commons File source for {photo_info['id']}",
+            )
 
     def test_share_plate_png_dimensions(self) -> None:
         data = PLATE.read_bytes()
@@ -139,8 +162,24 @@ class SagradaMasterpieceTests(unittest.TestCase):
         self.assertIn('id="act-puzzle-cc02"', txt)
         self.assertIn('data-sf-export="glb"', txt)
         self.assertIn('data-sf-export="dxf"', txt)
+        self.assertIn('data-sf-relay', txt)
+        self.assertIn('data-sf-shard', txt)
+        self.assertIn('data-sf-loupe', txt)
+        self.assertIn('data-sf-sankey', txt)
+        self.assertIn('data-sf-radar', txt)
+        self.assertIn('data-sf-gallery', txt)
+        self.assertIn('<dialog class="sf-lightbox" id="sf-lightbox"', txt)
+        es_txt = ES.read_text(encoding="utf-8")
+        for attr in ('data-sf-loupe', 'data-sf-sankey', 'data-sf-radar', 'data-sf-gallery', 'id="sf-lightbox"'):
+            self.assertIn(attr, es_txt)
+        for i in range(5):
+            self.assertIn(f'data-sf-gen="{i}"', txt)
+            self.assertIn(f'data-sf-relay-card="{i}"', txt)
         self.assertIn('id="sf-webgl-canvas"', txt)
-        for rid in ("sf-lantern-range", "sf-catenary-a-range", "sf-col-z-range", "sf-fpt-range", "sf-wind-range", "sf-solar-range"):
+        for rid in (
+            "sf-lantern-range", "sf-catenary-a-range", "sf-col-z-range",
+            "sf-caliper-range", "sf-fpt-range", "sf-wind-range", "sf-solar-range",
+        ):
             self.assertIn(f'for="{rid}"', txt)
             self.assertRegex(txt, rf'<input id="{rid}" class="sf-range" type="range"[^>]*aria-valuetext=')
 
@@ -155,13 +194,13 @@ class SagradaMasterpieceTests(unittest.TestCase):
         self.assertIn("@media (forced-colors: active)", css)
         self.assertIn("@media print", css)
 
-    def test_verifier_passes_and_four_knockouts_fail(self) -> None:
+    def test_verifier_passes_and_five_knockouts_fail(self) -> None:
         verify = ROOT / "skills" / "classics" / "cc02" / "verify_cc02_sagrada.py"
         self.assertTrue((verify.parent / "SKILL.md").is_file())
         ok = subprocess.run([sys.executable, "-X", "utf8", str(verify)], capture_output=True, text=True, encoding="utf-8", timeout=60)
         self.assertEqual(ok.returncode, 0, ok.stdout + ok.stderr)
         self.assertIn('"status": "PASS"', ok.stdout)
-        for variant in ("", "=parabola-catenary", "=twist-pinch", "=unprestressed-wind"):
+        for variant in ("", "=parabola-catenary", "=twist-pinch", "=unprestressed-wind", "=shard-freeform"):
             bad = subprocess.run(
                 [sys.executable, "-X", "utf8", str(verify), "--planted-defect" + variant],
                 capture_output=True,

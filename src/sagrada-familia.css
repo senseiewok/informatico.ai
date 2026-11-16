@@ -957,6 +957,308 @@ html[data-theme="dark"] .sf-page {
   background: var(--tp-highlight);
 }
 
+/* ---------------------------------------------------------------- 5-generation relay & shard recovery bench */
+.sf-relay {
+  display: grid;
+  gap: 1rem;
+}
+.sf-relay-stage {
+  max-height: 98px;
+}
+.sf-relay-seg {
+  cursor: pointer;
+}
+.sf-relay-seg .sf-relay-bar {
+  fill: var(--tp-stone-deep);
+  stroke: var(--tp-rule-strong);
+  stroke-width: 1.3;
+  transition: fill 0.18s ease, stroke 0.18s ease;
+}
+.sf-relay-seg.is-active .sf-relay-bar {
+  fill: var(--sf-paper);
+  fill: color-mix(in srgb, var(--sf-paper) 88%, var(--sf-red));
+  stroke: var(--sf-red);
+  stroke-width: 2.2;
+}
+.sf-relay-seg.is-active .sf-svg-caption-text {
+  fill: var(--sf-red);
+  font-weight: 700;
+}
+.sf-relay-card {
+  background: var(--sf-paper);
+  border: 1px solid var(--tp-rule-strong);
+  border-left: 3px solid var(--sf-red);
+  border-radius: 6px;
+  padding: 1rem 1.15rem;
+}
+.sf-relay-card[hidden] {
+  display: none;
+}
+.sf-relay-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.65rem;
+}
+.sf-relay-grid {
+  margin: 0 0 0.65rem 0;
+  display: grid;
+  gap: 0.55rem;
+}
+.sf-relay-row {
+  display: grid;
+  gap: 0.18rem;
+}
+.sf-relay-row dt {
+  font-family: var(--tp-font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tp-graphite);
+}
+.sf-relay-row dd {
+  margin: 0;
+  line-height: 1.56;
+}
+.sf-shard-true {
+  fill: none;
+  stroke: var(--tp-rule-strong);
+  stroke-width: 1.6;
+  stroke-dasharray: 4 3;
+}
+.sf-shard-freeform {
+  fill: none;
+  stroke: var(--sf-amber);
+  stroke-width: 2.2;
+  stroke-dasharray: 6 4;
+}
+.sf-shard-ruled {
+  fill: none;
+  stroke: var(--sf-emerald);
+  stroke-width: 2.6;
+}
+.sf-shard-piece {
+  fill: none;
+  stroke: var(--sf-red);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+/* ---------------------------------------------------------------- media cards, diptychs, loupe, sankey, radar, lightbox */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.sf-diptych-wrap {
+  margin: 1.8rem 0;
+  padding: 1.1rem;
+  background: var(--tp-stone);
+  border: 1px solid var(--tp-rule);
+  border-top: 2px solid var(--sf-azure);
+  border-radius: 6px;
+}
+.sf-diptych {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.05rem;
+  margin-top: 0.7rem;
+}
+.sf-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 275px), 1fr));
+  gap: 1rem;
+  margin-top: 0.9rem;
+}
+.sf-media-card {
+  margin: 0;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 0.55rem;
+  padding: 0.85rem;
+  background: var(--sf-paper);
+  border: 1px solid var(--tp-rule-strong);
+  border-radius: 6px;
+}
+.sf-media-card[hidden],
+.sf-loupe-detail[hidden],
+.sf-loupe-view:not(.is-active),
+[data-sf-sankey-mode]:not(.is-active) {
+  display: none;
+}
+.sf-loupe-sec-hull {
+  fill: var(--tp-stone-deep);
+  stroke: var(--sf-ink);
+  stroke-width: 1.6;
+}
+.sf-hyp-ruling-pos {
+  fill: none;
+  stroke: var(--sf-azure);
+  stroke-width: 2.2;
+}
+.sf-hyp-ruling-neg {
+  fill: none;
+  stroke: var(--sf-red);
+  stroke-width: 1.8;
+  stroke-dasharray: 5 3;
+}
+.sf-duct-line {
+  fill: none;
+  stroke: var(--sf-emerald);
+  stroke-width: 2.4;
+  stroke-dasharray: 4 2;
+}
+.sf-media-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.45rem;
+}
+.sf-media-badge {
+  font-family: var(--tp-font-mono);
+  font-size: 0.68rem;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.48rem;
+  border-radius: 3px;
+  border: 1px solid var(--tp-rule-strong);
+}
+.sf-media-badge-photo {
+  color: var(--sf-emerald);
+  background: var(--tp-stone);
+  border-color: var(--sf-emerald);
+}
+.sf-media-badge-render {
+  color: var(--sf-amber);
+  background: var(--tp-stone);
+  border-color: var(--sf-amber);
+}
+.sf-zoom-btn {
+  font-size: 0.74rem;
+  padding: 0.24rem 0.6rem;
+}
+.sf-media-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 22%;
+  border-radius: 4px;
+  border: 1px solid var(--tp-rule);
+}
+.sf-media-card figcaption {
+  font-size: 0.89rem;
+  line-height: 1.5;
+  color: var(--tp-graphite);
+}
+.sf-loupe-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: 1.1rem;
+  margin-top: 0.8rem;
+}
+@media (max-width: 48rem) {
+  .sf-diptych,
+  .sf-loupe-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.sf-loupe-node circle {
+  fill: var(--sf-paper);
+  stroke: var(--sf-azure);
+  stroke-width: 2;
+  cursor: pointer;
+}
+.sf-loupe-node.is-active circle {
+  fill: var(--sf-red);
+  stroke: var(--sf-red);
+}
+.sf-loupe-node text {
+  cursor: pointer;
+}
+.sf-svg-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.sf-sankey-box {
+  margin-top: 1.4rem;
+  padding: 1rem;
+  background: var(--sf-paper);
+  border: 1px solid var(--tp-rule-strong);
+  border-radius: 6px;
+}
+.sf-sankey-flow {
+  fill: none;
+  stroke-linecap: round;
+  opacity: 0.78;
+}
+.sf-sankey-primary {
+  stroke: var(--sf-emerald);
+  stroke-width: 22;
+}
+.sf-sankey-secondary {
+  stroke: var(--sf-azure);
+  stroke-width: 18;
+}
+.sf-sankey-crutch {
+  stroke: var(--sf-red);
+  stroke-width: 14;
+  stroke-dasharray: 8 4;
+}
+.sf-radar-panel {
+  margin-top: 1.6rem;
+}
+.sf-radar-poly {
+  fill: color-mix(in srgb, var(--sf-red) 20%, transparent);
+  stroke: var(--sf-red);
+  stroke-width: 2.4;
+}
+dialog.sf-lightbox {
+  max-width: min(92vw, 1080px);
+  width: min(92vw, 1080px);
+  max-height: 92vh;
+  padding: 1rem 1.15rem;
+  background: var(--sf-paper);
+  color: var(--sf-ink);
+  border: 1px solid var(--tp-rule-strong);
+  border-radius: 8px;
+}
+dialog.sf-lightbox[open] {
+  display: grid;
+  gap: 0.75rem;
+}
+dialog.sf-lightbox::backdrop {
+  background: rgba(11, 14, 20, 0.8);
+}
+.sf-lightbox-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+}
+.sf-lightbox-stage img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 70vh;
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: 4px;
+  border: 1px solid var(--tp-rule);
+}
+
 /* ---------------------------------------------------------------- reduced motion, forced colours, print */
 html.sf-paused .sf-skyline-lane,
 html.sf-paused .sf-drawer-panel {
@@ -968,7 +1270,8 @@ html.sf-paused .sf-drawer-panel {
   .sf-skyline-lane,
   .sf-shard-lid,
   .sf-drawer-btn,
-  .sf-light-ray {
+  .sf-light-ray,
+  .sf-relay-seg .sf-relay-bar {
     transition: none;
   }
   .sf-drawer-btn:hover .sf-shard-lid,
@@ -992,12 +1295,24 @@ html.sf-paused .sf-drawer-panel {
   .sf-funicular-column,
   .sf-star-core,
   .sf-stress-comp,
-  .sf-stress-tens {
+  .sf-stress-tens,
+  .sf-shard-true,
+  .sf-shard-freeform,
+  .sf-shard-ruled,
+  .sf-shard-piece,
+  .sf-sankey-flow,
+  .sf-radar-poly,
+  .sf-hyp-ruling-pos,
+  .sf-hyp-ruling-neg,
+  .sf-duct-line {
     stroke: CanvasText;
   }
   .sf-card,
   .sf-panel,
-  .sf-bench {
+  .sf-bench,
+  .sf-relay-card,
+  .sf-media-card,
+  dialog.sf-lightbox {
     border-color: CanvasText;
   }
 }
@@ -1009,7 +1324,8 @@ html.sf-paused .sf-drawer-panel {
   .sf-drawer,
   .tp-essay-jump-bar,
   .sf-era-rail,
-  .sf-export-row {
+  .sf-export-row,
+  dialog.sf-lightbox {
     display: none;
   }
   .sf-card,
