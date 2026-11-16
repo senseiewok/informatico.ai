@@ -237,28 +237,27 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'knife rests on the blade of the next one, the knives lock together firmly over the center. You '
                       'can press your thumb down on the middle of that weave and it will not fall into the cup. No '
                       'single knife is long enough to span the whole rim on its own, but working together, they form a '
-                      'self-supporting bridge. In modern timber architecture, builders use this exact interlocking '
-                      'trick to cover massive halls using short, sustainable boards instead of gigantic old-growth '
+                      'self-supporting bridge. In modern timber architecture, builders use this interlocking '
+                      'arrangement to cover halls using short boards instead of large old-growth '
                       'tree trunks. Because the pieces lean on one another at simple notches, the roof carries heavy '
                       'snow loads while using light, locally harvested wood.',
  'act1_body': "From Leonardo da Vinci's sketches in the Codex Atlanticus to Villard de Honnecourt's medieval floor grillages and contemporary timber pavilions, reciprocal frames assemble short members into closed polygonal fans. In her book Reciprocal Frame Architecture (DOI 10.4324/9780080556000), Olga Popovic Larsen describes how in these systems each member rests on the next, so no single node gathers many members. Asefi and Bahremandi-Tolou review the design challenges of such frames in architecture (Journal of Building Engineering, DOI 10.1016/j.jobe.2019.100867). Designers today could pair form-finding tools such as compas-dev/compas (https://github.com/compas-dev/compas; see DOI 10.1016/j.cad.2015.01.006 for the underlying three-dimensional graphic statics) with timber connection rules from EN 1995-1-1. This folio does not run those tools, and it makes no embodied-carbon claim; its numbers come from the lap-moment formula shown.",
  'act1_stakes': 'Traditional carpentry depended on complex mortise-and-tenon joints secured with dry wooden pegs, but '
-                'sizing reciprocal frames purely by eye carries dangerous structural vulnerabilities. Because each '
+                'sizing reciprocal frames without calculation risks unpredicted joint rotation and splitting. Because each '
                 'beam rests on its neighbor with an eccentric vertical offset, the axial compression that naturally '
-                'stabilizes a dome gets converted into intense localized bending and shear at every notched joint. If '
+                'stabilizes a dome gets converted into localized bending and shear at every notched joint. If '
                 'carpenters cut a notch too deep, they sever the long wood fibers that carry tensile bending stress, '
                 'concentrating splitting forces perpendicular to the grain. Under the weight of heavy winter snow or '
-                'shifting wind gusts, an unreinforced notch can shear cleanly along the grain line. Because the system '
-                'is mutually dependent, the failure of a single lap joint triggers an immediate domino effect, '
-                'destabilizing adjacent members and causing the entire reciprocal shell to snap downward in '
-                'catastrophic elastic buckling. Modern engineers must therefore verify both local notch shear stresses '
-                'and global lattice stability simultaneously.',
+                'shifting wind gusts, an unreinforced notch can shear along the grain line. Because the system '
+                'is mutually dependent, the failure of a single lap joint redistributes load to adjacent joints '
+                'and can lead to elastic buckling. '
+                'Engineers therefore check both notch shear and global stability.',
  'act2_analogy': 'Everyday analogy: Interlock four index fingers in a closed pinwheel loop, where each fingertip '
                  'presses down on the knuckle of the next. Pressing downward in the center makes the circle tighten '
-                 'against your palms with surprising rigidity. However, if one knuckle slips sideways or if you press '
-                 'too hard near the delicate nail bed, the interlocking grip instantly unravels. Reciprocal timber '
-                 'frames balance this exact trade-off: mutual geometric support creates strength, but localized joint '
-                 'shearing must be rigorously reinforced.',
+                 'against your palms with clear stiffness. However, if one knuckle slips sideways or if you press '
+                 'too hard near the delicate nail bed, the interlocking grip loosens. Reciprocal timber '
+                 'frames balance this trade-off: mutual geometric support creates strength, but localized joint '
+                 'shearing requires reinforcement.',
  'act2_plain_primer': 'In the digital workshop below, you explore how two architectural sliders govern the stability '
                       'of a reciprocal timber shell. The first slider adjusts the engagement ratio, which dictates how '
                       'far along the length of each beam the neighboring timber rests. When you slide this value '
@@ -295,14 +294,14 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'overall geometry and safety margin of the gridshell. Increasing the engagement ratio shifts the '
                    'lap connection toward the mid-span of the receiving beam, which increases the vertical rise of the '
                    'dome through cumulative eccentric camber. However, this same geometric expansion elongates the '
-                   'cantilever arm a, multiplying the eccentric bending moment that the wood fibers must resist in '
+                   'cantilever arm a, increasing the eccentric bending moment that the wood fibers must resist in '
                    'flexure. If the lap shear force surges under heavy snow accumulation, the shear stress at the '
-                   'notch root escalates nonlinearly. Without perpendicular-to-grain screw reinforcement, the timber '
-                   'splits longitudinally along the grain boundary. Furthermore, because timber is an orthotropic '
+                   'notch root increases. Without perpendicular-to-grain screw reinforcement, the timber '
+                   'can split along the grain. Furthermore, because timber is an orthotropic '
                    'material with high longitudinal stiffness but low transverse shear resistance, slip within the '
                    'semi-rigid joints softens the global shell lattice. As rotational joint stiffness degrades, the '
                    'effective buckling length of each rib bay grows, lowering the global critical buckling threshold '
-                   'and precipitating snap-through instability.',
+                   'and lowering resistance to snap-through instability.',
  'act4_deepening': 'One proposal for practice, not a description of current use: instead of drawing hundreds of '
                    'bespoke lap notches by hand, a human architect could sketch the roof envelope and sightlines while '
                    'a geometry solver works out the closed-loop kinematics of the nexorade mesh and drafts five-axis '
@@ -340,24 +339,24 @@ META_3D = ('Nexorade Reciprocal 4-Beam Pinwheel Gridshell',
 ES_TRANSLATION = {'title_es': 'Retículas Recíprocas de Madera (Nexorades), Momentos de Traslape Excéntrico y Ensambles de Corte 1:5',
  'subtitle_es': 'Cinemática estructural de entramados recíprocos de madera sin herrajes metálicos donde cada viga '
                 'descansa sobre su vecina con excentricidad e_z, cubriendo grandes claros con piezas cortas.',
- 'why_es': 'Como cuatro cuchillos o vigas entrelazados en molinete sobre las bordes de un vaso, cada elemento sostiene '
-           'al siguiente y es sostenido por el anterior, salvando un claro mucho mayor que cualquier pieza individual.',
+ 'why_es': 'Como cuatro cuchillos o vigas entrelazados en molinete sobre los bordes de un vaso, cada elemento sostiene '
+           'al siguiente y es sostenido por el anterior, salvando un claro mayor que cualquier pieza individual.',
  'bridge_es': 'Es solo una analogía visual: así como cada viga recíproca sostiene a la siguiente, los dos dominios '
               'de unión a nucleótidos de la proteína CFTR se juntan en pareja alrededor del ATP (por ejemplo, la '
               'estructura PDB 8EIQ). Esta ficha no hace afirmaciones de salud ni es consejo médico.',
  'plain_es': 'Para entender cómo funciona una estructura recíproca de madera, coloquen cuatro cuchillos de mesa '
              'entrelazados en forma de molinete sobre la boca de una taza grande. Si el extremo de cada cuchillo '
-             'descansa sobre la hoja del siguiente, el conjunto se traba por sí solo en el centro con una firmeza '
-             'sorprendente. Ningún cuchillo es lo bastante largo para cruzar toda la boca de la taza por su cuenta, '
+             'descansa sobre la hoja del siguiente, el conjunto se traba por sí solo en el centro con firmeza. '
+             'Ningún cuchillo es lo bastante largo para cruzar toda la boca de la taza por su cuenta, '
              'pero trabajando en equipo forman un puente que se sostiene solo. En la arquitectura de madera se usa '
-             'este mismo truco para techar salas amplias con piezas cortas en lugar de troncos enormes. Como las piezas '
-             'se apoyan unas en otras en muescas sencillas, el techo puede cargar nieve usando madera ligera.',
+             'este principio para techar claros amplios con piezas cortas en lugar de troncos de gran tamaño. Como las piezas '
+             'se apoyan unas en otras en muescas sencillas, el techo puede soportar cargas de nieve usando madera ligera.',
  'deep_es': 'El comportamiento estructural de una cáscara recíproca de madera depende de dos parámetros fundamentales: '
             'la relación de traslape entre vigas y la fuerza cortante en cada ensamble. Al ajustar la posición del '
             'traslape, se define la curvatura de la cúpula y el tamaño del óculo central que permite la entrada de luz '
             'natural. No obstante, al desfasar las piezas verticalmente, la compresión de la cúpula se transforma en '
-            'un fuerte momento de flexión y esfuerzo cortante en la muesca de unión. Si la carga de nieve sobrepasa el '
-            'límite que revisa el Eurocódigo 5, las fibras de la madera pueden abrirse a lo largo del grano en una '
-            'falla repentina. Por eso es común reforzar las muescas con tornillos de rosca completa contra la tensión '
+            'un momento de flexión y esfuerzo cortante en la muesca de unión. Si la carga de nieve sobrepasa el '
+            'límite que revisa el Eurocódigo 5, las fibras de la madera pueden abrirse a lo largo del grano. '
+            'Por eso es común reforzar las muescas con tornillos de rosca completa contra la tensión '
             'perpendicular al grano. En este modelo, el momento de traslape de 5.15 kN·m supone una viga de 1.493 m; '
             'la utilización de 0.64 y el factor de pandeo de 3.74 son valores ilustrativos, no un cálculo de diseño.'}
