@@ -200,7 +200,7 @@ class CultClassicPages(unittest.TestCase):
 
         def figures(page: Path) -> set[str]:
             html = page.read_text(encoding="utf-8")
-            body = html[html.index('<article class="cc-feature"'):html.index('id="sources"')]
+            body = html[html.index('<article class="cc-feature'):html.index('id="sources"')]
             text = " ".join(parse_text(body))
             return {re.sub(r"\s", "", m) for m in unit.findall(text)}
 
@@ -213,6 +213,68 @@ class CultClassicPages(unittest.TestCase):
         self.assertIn(f"<loc>https://informatico.ai/classics/{C.SLUG}/</loc>", xml)
         self.assertIn(f"<loc>https://informatico.ai/es-mx/classics/{C.SLUG}/</loc>", xml)
         self.assertIn(f"https://informatico.ai/classics/{C.SLUG}/", (SRC / "llms.txt").read_text(encoding="utf-8"))
+
+    def test_revamp_monograph_sections_audio_crossword_and_racks(self):
+        en_html = EN.read_text(encoding="utf-8")
+        es_html = ES.read_text(encoding="utf-8")
+        self.assertEqual(len(C.SOURCES), 37)
+        self.assertNotIn("jugada", es_html.lower())
+        for needle in (
+            'id="relay"',
+            'id="axle-anatomy"',
+            'id="atelier"',
+            'id="cc-webgl-canvas"',
+            'data-cc-export="glb"',
+            'data-cc-export="dxf"',
+            'id="engineers-study"',
+            'id="visuals"',
+            'id="cc-lightbox"',
+            '<tp-article-audio data-folio="CC.01"',
+            'id="act-puzzle-cc01"',
+        ):
+            self.assertIn(needle, en_html, f"missing in EN: {needle}")
+            self.assertIn(needle, es_html, f"missing in ES: {needle}")
+        new_dois = (
+            "karnopp1974", "cronin1981", "pacejka1992", "hac1992", "zhao1999",
+            "abe2001", "fichera2004", "trachtler2004", "rubin2015",
+        )
+        for key in new_dois:
+            self.assertIn(f'href="#src-{key}"', en_html)
+            self.assertIn(f'id="src-{key}"', en_html)
+        for p in (SRC / "engineering" / "index.html", SRC / "es-mx" / "engineering" / "index.html"):
+            self.assertIn('id="cult-classics-eng"', p.read_text(encoding="utf-8"))
+        for p in (SRC / "physics" / "index.html", SRC / "es-mx" / "physics" / "index.html"):
+            self.assertIn('id="cult-classics"', p.read_text(encoding="utf-8"))
+        audio_js = (SRC / "modules" / "article-audio.mjs").read_text(encoding="utf-8")
+        self.assertIn("GTI_ACT_DEFS", audio_js)
+        self.assertIn("sanitizeAudioTrackPath", audio_js)
+
+    def test_gti_images_unique_zero_exif_law8_and_license_hygiene(self):
+        import hashlib
+        gti_dir = SRC / "images" / "golf-gti"
+        jpgs = sorted(gti_dir.glob("*.jpg"))
+        self.assertEqual(len(jpgs), 14)
+        digests = {hashlib.sha256(p.read_bytes()).hexdigest() for p in jpgs}
+        self.assertEqual(len(digests), 14, "duplicate image bytes detected")
+        for p in jpgs:
+            data = p.read_bytes()
+            self.assertEqual(data[:2], b"\xff\xd8", f"{p.name} not JPEG")
+            pos = 2
+            while pos + 4 <= len(data) and data[pos] == 0xFF:
+                marker = data[pos + 1]
+                if marker == 0xDA:  # SOS
+                    break
+                if 0xE1 <= marker <= 0xEF:
+                    self.fail(f"{p.name} contains metadata marker 0xFF{marker:02X}")
+                seg_len = int.from_bytes(data[pos + 2:pos + 4], "big")
+                pos += 2 + seg_len
+        for ph in C.PHOTOS:
+            self.assertNotIn("by-sa", ph["license"].lower())
+        for pl in C.PLATES:
+            self.assertIn("conceptual visualization", pl["alt_en"].lower())
+            self.assertIn("visualización conceptual", pl["alt_es"].lower())
+            self.assertIn("conceptual visualization", pl["caption_en"].lower())
+            self.assertIn("visualización conceptual", pl["caption_es"].lower())
 
 
 if __name__ == "__main__":

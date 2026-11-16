@@ -1336,6 +1336,26 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
             ("RED", "Conjunto de nodos conectados; un proyecto de Lean 4 puede organizarse como una red de dependencias entre lemas (Folio M.01)", "Acto IV"),
         ],
     },
+    "cc01": {
+        "title_en": "CC.01 · Golf GTI Chassis, Boost & Transaxle Crossword",
+        "title_es": "CC.01 · Crucigrama de Chasis, Turbo y Transmisión del Golf GTI",
+        "en": [
+            ("TORQUE", "Rotational turning effort (Nm) metered across open, brake-based, and clutch-pack front differentials", "Part IV"),
+            ("TARTAN", "Woven check seat textile pairing with the dimpled golf-ball knob in 1976", "Part I"),
+            ("TURBO", "Exhaust-driven compressor introduced as the mainline GTI petrol architecture from the 1998 Mk4", "Part III"),
+            ("CLUTCH", "Friction engagement element—doubled coaxially in the 2004 DSG and hydraulic front lock", "Part III"),
+            ("CAMBER", "Wheel tilt angle changing under lateral body roll on MacPherson struts", "Part IV"),
+            ("BRAKE", "Inside-wheel clamping force used by XDS to redirect open-differential drive torque", "Part IV"),
+        ],
+        "es": [
+            ("EMBRAGUE", "Elemento de fricción duplicado en flechas coaxiales DSG y en el paquete delantero VAQ", "Parte III"),
+            ("CHASIS", "Bastidor y geometría de suspensión rebajados 10 mm adelante y 20 mm atrás en el Mk1 de 1976", "Parte I"),
+            ("AGARRE", "Límite de tracción μ · N · r que topa un diferencial abierto al descargar la rueda interior", "Parte IV"),
+            ("FRENOS", "Sistema usado por XDS para morder el disco interior y enviar par al neumático exterior", "Parte IV"),
+            ("VOLANTE", "Mando de dirección progresiva con 2.1 vueltas de tope a tope frente a 2.75 en Golf base", "Parte IV"),
+            ("MOTOR", "Unidad de cuatro cilindros que evolucionó de 1.6 L atmosférico a 2.0 L turboalimentado", "Parte II"),
+        ],
+    },
     "cc02": {
         "title_en": "CC.02 · La Sagrada Família Stereotomy & Towers Crossword",
         "title_es": "CC.02 · Crucigrama de Estereotomía y Torres de la Sagrada Família",
