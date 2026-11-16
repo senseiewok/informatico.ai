@@ -27,7 +27,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 4. **Epistemic Scope & Preservation of ES.07's `D = 75 µm` Quantum Island**:
    - Across all `4` weighting and projection variants (`32.85 µm ≤ σ_95 ≤ 33.08 µm`), the infinite-split parallel hybrid ceiling `2.2109 σ_95` stays inside `72.63 µm..73.14 µm < 75.00 µm`, while separating linearized surrogate-grid projection (`DERIVED (NOT MEASURED)`) from a raw 95-run Eöt-Wash nonlinear profile refit.
 5. **Ten Zero-`sorry` Core Lean 4 Prelude Theorems (`SchurIdentifiability.lean`; `Tooby-Smith 2025`)**:
-   - Certifies `6` SI dimensional identities, `0 ≤ sq x`, 4-variable Cauchy–Schwarz–Lagrange identity, Schur Fisher bounds, Gram–Schmidt nuisance annihilation, Pythagorean Fisher decomposition, Kiefer–Wolfowitz trace saturation, `23 < 125 < 309` sub-`50 µm` gain, `75 µm` island preservation, and `n_pts < p_params` rank deficiency.
+   - Checks `6` SI dimensional identities, `0 ≤ sq x`, 4-variable Cauchy–Schwarz–Lagrange identity, Schur Fisher bounds, Gram–Schmidt nuisance annihilation, Pythagorean Fisher decomposition, Kiefer–Wolfowitz trace saturation, `23 < 125 < 309` sub-`50 µm` gain, the integer arithmetic behind the `75 µm` comparison, and `n_pts < p_params` rank deficiency.
 
 ## 3. Primary Crossref DOIs verified offline (`10 / 10` cached)
 | Source ID | Reference | DOI |

@@ -711,21 +711,17 @@ ESSAY: dict = {
     "title_en": "Multipartite Witnesses, Scaling Tomography & Active Clocks: Separating Quantum Gravity from Classical Hybrids Beyond Two Bodies",
     "title_es": "Testigos Multipartitos, Tomografía de Escalamiento y Relojes Activos: Cómo Separar la Gravedad Cuántica de Híbridos Clásicos Más Allá de Dos Cuerpos",
     "standfirst_en": (
-        "A two-body entanglement witness inside the D = 75 µm parallel quantum island excludes local classical channels "
-        "and σ ≤ 33.08 µm Diósi–Penrose hybrids, yet it still leaves three deeper questions open: can gravity generate "
+        "A two-body entanglement witness at the D = 75 µm parallel gap, if observed, would exclude local classical channels and—under our recast bound—σ ≤ 33.08 µm Diósi–Penrose hybrids, yet it would still leave three deeper questions open: can gravity generate "
         "irreducible three-body quantum coherence, how can an experimenter falsify higher-order classical-metric matter "
         "vertices whose strength lies 28 orders of magnitude lower, and what distinguishes passive center-of-mass action "
         "phases from relativistic proper-time dilation? Placing 3 interferometers on an equilateral prism of side "
-        "D = 75 µm yields an exact Position-Pointer Mermin Law reaching 3.6741 > 2√2 = 2.8284 at T = 2.0 K while "
-        "collective 3-body Diósi–Penrose gravity remains pinned at N_{1|23}^hyb = 0 (σ_c = 34.93 µm > 33.08 µm)."
+        "D = 75 µm yields a closed-form Position-Pointer Mermin Law whose calculated value is 3.6741 > 2√2 = 2.8284 at T = 2.0 K under stated vacuum assumptions (DERIVED, NOT MEASURED; no such experiment has been run), while modeled collective 3-body Diósi–Penrose gravity stays at N_{1|23}^hyb = 0 (σ_c = 34.93 µm > 33.08 µm)."
     ),
     "standfirst_es": (
-        "Un testigo bipartito dentro de la isla cuántica paralela en D = 75 µm descarta canales clásicos locales e "
-        "híbridos de Diósi–Penrose con σ ≤ 33.08 µm, pero deja abiertas tres preguntas mayores: ¿puede la gravedad crear "
+        "Un testigo bipartito en la separación paralela D = 75 µm, de observarse, descartaría canales clásicos locales y —bajo nuestra cota proyectada— híbridos de Diósi–Penrose con σ ≤ 33.08 µm, pero dejaría abiertas tres preguntas mayores: ¿puede la gravedad crear "
         "coherencia cuántica irreducible de tres cuerpos, cómo falsar acoplamientos métricos clásicos de orden superior "
         "situados 28 órdenes de magnitud más abajo, y qué distingue la fase de acción pasiva de la dilatación del tiempo "
-        "propio? Situar 3 interferómetros en un prisma equilátero de lado D = 75 µm entrega una Ley de Mermin exacta que "
-        "alcanza 3.6741 > 2√2 = 2.8284 a T = 2.0 K mientras Diósi–Penrose de 3 cuerpos permanece en N_{1|23}^hyb = 0 (σ_c = 34.93 µm > 33.08 µm)."
+        "propio? Situar 3 interferómetros en un prisma equilátero de lado D = 75 µm entrega una Ley de Mermin en forma cerrada cuyo valor calculado es 3.6741 > 2√2 = 2.8284 a T = 2.0 K bajo supuestos de vacío declarados (DERIVADO, NO MEDIDO; ningún experimento así se ha realizado), mientras el modelo de Diósi–Penrose de 3 cuerpos permanece en N_{1|23}^hyb = 0 (σ_c = 34.93 µm > 33.08 µm)."
     ),
     "card_dek_en": (
         "Exact 8 × 8 equilateral-prism Mermin witness (3.6741 > 2√2 = 2.8284 at 2.0 K), 34.93 µm 3-body hybrid bound, "
@@ -859,9 +855,7 @@ ESSAY: dict = {
                         "interferometers 1 and 2 entangle while interferometer 3 sits as an uncoupled spectator—can already "
                         "reach Tsirelson's bound 2√2 on M₃! Conflating 2.0 with 2.8284 would mistake ordinary pairwise "
                         "entanglement for irreducible three-body structure. At T = 2.0 K near the isobaric cryogenic valley "
-                        "(P = 2.7 × 10⁻¹⁶ Pa, cited γ_loc = 0.0220 s⁻¹, η = 0.9442 at t_π = 2.6120 s), the equilateral "
-                        "prism achieves ⟨M₃(t_π)⟩ = 3.6741 (collective negativity N_{1|23}^Q = 0.4457), surpassing 2.8284 "
-                        "by 0.8457 and certifying Genuine Tripartite Entanglement using only two Pauli Stern–Gerlach "
+                        "(P = 2.7 × 10⁻¹⁶ Pa, cited γ_loc = 0.0220 s⁻¹, η = 0.9442 at t_π = 2.6120 s), the model predicts ⟨M₃(t_π)⟩ = 3.6741 for the equilateral prism (collective negativity N_{1|23}^Q = 0.4457), 0.8457 above 2.8284; a measured value that high would witness Genuine Tripartite Entanglement using only two Pauli Stern–Gerlach "
                         "readout bases {X, Z} per mass."
                     ),
                     "es": (
@@ -870,9 +864,7 @@ ESSAY: dict = {
                         "ρ_AB ⊗ ρ_C —donde solo se entrelazan los interferómetros 1 y 2 mientras el 3 permanece desacoplado— "
                         "ya puede alcanzar la cota de Tsirelson 2√2 sobre M₃. Confundir 2.0 con 2.8284 tomaría un par "
                         "entrelazado ordinario por coherencia irreducible de tres cuerpos. A T = 2.0 K cerca del valle "
-                        "criogénico isobárico (P = 2.7 × 10⁻¹⁶ Pa, γ_loc = 0.0220 s⁻¹, η = 0.9442 en t_π = 2.6120 s), el "
-                        "prisma equilátero alcanza ⟨M₃(t_π)⟩ = 3.6741 (negatividad colectiva N_{1|23}^Q = 0.4457), superando "
-                        "2.8284 por 0.8457 solo con lecturas Stern–Gerlach en bases {X, Z}."
+                        "criogénico isobárico (P = 2.7 × 10⁻¹⁶ Pa, γ_loc = 0.0220 s⁻¹, η = 0.9442 en t_π = 2.6120 s), el modelo predice ⟨M₃(t_π)⟩ = 3.6741 para el prisma equilátero (negatividad colectiva N_{1|23}^Q = 0.4457), 0.8457 sobre 2.8284; un valor medido así de alto atestiguaría entrelazamiento tripartito genuino solo con lecturas Stern–Gerlach en bases {X, Z}."
                     ),
                 },
                 {
@@ -910,8 +902,7 @@ ESSAY: dict = {
                     "en": (
                         "Could collective gravitational pooling from two neighbours allow the σ-smeared classical hybrid "
                         "channel of Trillo and Navascués (2025) to breach the D = 75 µm island when a third mass is added? "
-                        "Integrating the exact 3-body Diósi–Penrose master equation on the 8 × 8 prism register proves two "
-                        "structural facts. First, the generator satisfies exact trace preservation and spatial no-signalling: "
+                        "Integrating the exact 3-body Diósi–Penrose master equation on the 8 × 8 prism register shows two structural facts numerically. First, the generator satisfies exact trace preservation and spatial no-signalling: "
                         "rotating mass 3's measurement basis locally leaves ρ₁₂ invariant to < 10⁻¹⁵, and decoupling mass 3 "
                         "(m₃ → 0 or R₃ → ∞) reduces Tr₃(ρ₁₂₃^DP) identically to ρ₁₂^DP (< 10⁻¹⁵). Second, pooling two "
                         "neighbours across bipartition 1|23 shifts the short-time partial-transpose threshold from "
@@ -926,8 +917,7 @@ ESSAY: dict = {
                     "es": (
                         "¿Podría la acción colectiva de dos vecinos permitir que el canal híbrido clásico difuminado en σ "
                         "de Trillo y Navascués (2025) penetre la isla de D = 75 µm al añadir una tercera masa? Integrar la "
-                        "ecuación maestra exacta de Diósi–Penrose de 3 cuerpos sobre el registro de 8 × 8 demuestra dos "
-                        "hechos estructurales. Primero, el generador cumple conservación exacta de traza y no señalización: "
+                        "ecuación maestra exacta de Diósi–Penrose de 3 cuerpos sobre el registro de 8 × 8 muestra numéricamente dos hechos estructurales. Primero, el generador cumple conservación exacta de traza y no señalización: "
                         "rotar localmente la base de la masa 3 deja ρ₁₂ invariante a < 10⁻¹⁵, y desacoplar la masa 3 "
                         "(m₃ → 0 o R₃ → ∞) reduce Tr₃(ρ₁₂₃^DP) exactamente a ρ₁₂^DP (< 10⁻¹⁵). Segundo, agrupar dos "
                         "vecinos en la bipartición 1|23 desplaza el umbral de transpuesta parcial desde √2 b(σ) = a(σ) "
@@ -1018,8 +1008,7 @@ ESSAY: dict = {
                 {
                     "type": "p",
                     "en": (
-                        "Crossing D = 75 µm eliminates local-operations-and-classical-communication mediators (Marletto & "
-                        "Vedral, 2017; Schneider et al., 2026) and σ ≤ 33.08 µm Diósi–Penrose hybrids, while Oppenheim "
+                        "An entanglement witness observed at D = 75 µm would exclude local-operations-and-classical-communication mediators (Marletto & Vedral, 2017; Schneider et al., 2026) and, under our recast bound, σ ≤ 33.08 µm Diósi–Penrose hybrids, while Oppenheim "
                         "et al. (2023) independently constrain Markovian diffusive classical gravity via stochastic momentum "
                         "diffusion. Yet Aziz and Howl (2025) highlighted a distinct theoretical loophole: higher-order "
                         "perturbative vertices coupling quantum-field matter propagators to an unquantized classical metric. "
@@ -1030,8 +1019,7 @@ ESSAY: dict = {
                         "m_atom⁴ ρ⁻²/³ M²⁰/³ t² D⁻²."
                     ),
                     "es": (
-                        "Cruzar D = 75 µm descarta mediadores LOCC (Marletto y Vedral, 2017; Schneider et al., 2026) e "
-                        "híbridos de Diósi–Penrose con σ ≤ 33.08 µm, mientras Oppenheim et al. (2023) acotan la gravedad "
+                        "Un testigo de entrelazamiento observado en D = 75 µm descartaría mediadores LOCC (Marletto y Vedral, 2017; Schneider et al., 2026) y, bajo nuestra cota proyectada, híbridos de Diósi–Penrose con σ ≤ 33.08 µm, mientras Oppenheim et al. (2023) acotan la gravedad "
                         "clásica difusiva markoviana mediante difusión de momento. Sin embargo, Aziz y Howl (2025) "
                         "señalaron otra vía teórica: vértices perturbativos de orden superior que acoplan campos cuánticos "
                         "de materia a una métrica clásica sin cuantizar. La precisión exige distinguir dos magnitudes en su "
@@ -1233,8 +1221,8 @@ ESSAY: dict = {
         },
         {
             "id": "lean4-multipartite-spine",
-            "h2_en": "V · Zero-Sorry Core Lean 4 Certification of the Multipartite & Clock Spine",
-            "h2_es": "V · Certificación sin Sorry en Lean 4 Base de la Columna Multipartita y de Relojes",
+            "h2_en": "V · Zero-Sorry Core Lean 4 Checks of the Multipartite & Clock Algebra",
+            "h2_es": "V · Comprobaciones sin Sorry en Lean 4 Base del Álgebra Multipartita y de Relojes",
             "short_en": "V · Lean 4 Proof Spine",
             "short_es": "V · Prueba en Lean 4",
             "blocks": [
@@ -1262,24 +1250,22 @@ ESSAY: dict = {
                 {
                     "type": "p",
                     "en": (
-                        "Theorems 2, 3, and 4 certify the multipartite Bell hierarchy: mermin_lhv_bound_all_64 proves "
+                        "Theorems 2, 3, and 4 check the multipartite Bell bounds by finite enumeration: mermin_lhv_bound_all_64 proves "
                         "−2 ≤ M₃ ≤ 2 across all 64 deterministic 3-local hidden-variable assignments; "
                         "svetlichny_biseparable_bound_and_quantum_witness proves −4 ≤ S₃ ≤ 4 across all 64 AB|C joint "
                         "assignments while witnessing M₃ = +4 on non-factorable joint correlations; and "
-                        "biseparable_threshold_integer_certificate proves 20,000² < 8 × 10,000² < 36,741² (2 < 2√2 < 3.6741). "
-                        "Theorems 5 through 9 certify the non-degenerate 3×-cleared scaling determinants (det = 36 ≠ 0 and "
+                        "biseparable_threshold_integer_certificate proves 20,000² < 8 × 10,000² < 36,741² (2 < 2√2 < 3.6741, where 3.6741 is the Python kernel's calculated value, not a measurement). Theorems 5 through 9 check the non-degenerate 3×-cleared scaling determinants (det = 36 ≠ 0 and "
                         "det = −24 ≠ 0), global Z₂ Ising-sum parity invariance, exact 2h² + d² nearest-neighbour equality "
                         "on the collinear (x̂, ŷ, x̂) stack, the general ℤ³ Euclidean three-orthogonal-vector obstruction via "
                         "2-D Lagrange and Cramer elimination, and the 3308 < 3493 < 4112 (33.08 µm < 34.93 µm < 41.12 µm) "
                         "3-body Diósi–Penrose horizon chain—all DERIVED (NOT MEASURED) and checked offline in < 6 s."
                     ),
                     "es": (
-                        "Los Teoremas 2, 3 y 4 certifican la jerarquía de Bell multipartita: mermin_lhv_bound_all_64 prueba "
+                        "Los Teoremas 2, 3 y 4 comprueban las cotas de Bell multipartitas por enumeración finita: mermin_lhv_bound_all_64 prueba "
                         "−2 ≤ M₃ ≤ 2 en las 64 asignaciones deterministas 3-locales; "
                         "svetlichny_biseparable_bound_and_quantum_witness prueba −4 ≤ S₃ ≤ 4 en las 64 asignaciones "
                         "conjuntas AB|C exhibiendo M₃ = +4 para correlaciones conjuntas no factorizables; y "
-                        "biseparable_threshold_integer_certificate demuestra 20,000² < 8 × 10,000² < 36,741² (2 < 2√2 < "
-                        "3.6741). Los Teoremas 5 al 9 certifican los determinantes de escalamiento 3× (det = 36 ≠ 0 y "
+                        "biseparable_threshold_integer_certificate demuestra 20,000² < 8 × 10,000² < 36,741² (2 < 2√2 < 3.6741, donde 3.6741 es el valor calculado por el kernel de Python, no una medición). Los Teoremas 5 al 9 comprueban los determinantes de escalamiento 3× (det = 36 ≠ 0 y "
                         "det = −24 ≠ 0), la invariancia de paridad Z₂ de Ising, la igualdad exacta 2h² + d² en la pila "
                         "colineal (x̂, ŷ, x̂), la obstrucción euclídea general en ℤ³ vía identidades 2-D de Lagrange y Cramer, "
                         "y la cadena 3308 < 3493 < 4112 (33.08 µm < 34.93 µm < 41.12 µm) de Diósi–Penrose de 3 cuerpos, "

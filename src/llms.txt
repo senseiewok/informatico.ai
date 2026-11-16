@@ -131,8 +131,8 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 - [ES.07 Parallel Gravity Horizons and the Quantum Island](https://informatico.ai/essays/loophole-free-parallel-horizon/): Exact closed-form parallel smeared-gravity horizons, torsion-balance limits, cryogenic valleys, and orthogonal null controls for tabletop entanglement.
 - [ES.08 Schur Complements and Nuisance Identifiability](https://informatico.ai/essays/schur-complements-nuisance-identifiability/): How Fisher Schur complements, Gram-Schmidt projections, and three-point optimal designs test short-range gravity and inverse problems.
 - [ES.09 Multipartite Gravity Witnesses and Active Clocks](https://informatico.ai/essays/multipartite-witnesses-active-clocks/): Tripartite Mermin witnesses, 3-body smeared-gravity bounds, ytterbium composition scaling, and proper-time quantum clocks for tabletop gravity.
-- [ES.10 The Four-Gate Operator Sieve Across Scales](https://informatico.ai/essays/four-gate-operator-sieve/): How submillimeter torsion limits, quantum entanglement, thermodynamic bounds and sign-split bending isolate consistent gravity models.
-- [ES.11 The Seven-Gate Crown Sieve](https://informatico.ai/essays/seven-gate-crown-sieve/): Seven physical gates eliminate gravitational and gauge architectures, leaving ghost-free entire UV gravity and chiral spinors as sole survivors.
+- [ES.10 The Four-Gate Operator Sieve Across Scales](https://informatico.ai/essays/four-gate-operator-sieve/): How submillimeter torsion limits, a proposed entanglement test, clock bounds and sign-split bending compare six gravity models.
+- [ES.11 The Seven-Gate Crown Sieve](https://informatico.ai/essays/seven-gate-crown-sieve/): A seven-gate scorecard compares eight gravity and gauge architectures; one constructed model passes all gates as scored, a conjecture.
 
 ## Cult Classics · Engineering Stories (CC.01)
 

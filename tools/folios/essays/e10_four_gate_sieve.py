@@ -849,9 +849,9 @@ ESSAY: dict = {
     "date": "2026-11-11",
     "seo": (
         "The Four-Gate Operator Sieve Across Scales",
-        "How submillimeter torsion limits, quantum entanglement, thermodynamic bounds and sign-split bending isolate consistent gravity models.",
+        "How submillimeter torsion limits, a proposed entanglement test, clock bounds and sign-split bending compare six gravity models.",
         "La Criba de Operadores de Cuatro Compuertas",
-        "Cómo límites de torsión submilimétrica, entrelazamiento cuántico, cotas termodinámicas y curvatura con signo aíslan modelos gravitatorios.",
+        "Cómo límites de torsión submilimétrica, una prueba de entrelazamiento propuesta, cotas de relojes y curvatura con signo comparan seis modelos.",
     ),
     "kicker_en": "Cross-Scale Essay · ES.10 · Fourth-Order Operators, Sign Razors & The 4-Gate Sieve",
     "kicker_es": "Ensayo Transescalar · ES.10 · Operadores de Cuarto Orden, Signos Físicos y la Criba de 4 Compuertas",
@@ -863,17 +863,13 @@ ESSAY: dict = {
         "Why does the fourth-order partial differential operator (−τ∇² + τℓ_b²∇⁴)w = p_⊥ regularize ultraviolet point "
         "singularities in both a 310.15 K fluid membrane (ℓ_b = 65.44 nm) and a 3-dimensional spatial brane, yet split "
         "sharply from General Relativity across dimension, sign, stiffness (3.68 × 10⁵⁴), and Lorentz symmetry? Solving "
-        "the exact combined (σ, ℓ_b) sheet kernel through ES.08's Schur projector pins a 27.22 µm signed bending bound on "
-        "Lee et al. (2020) Table 11.4 and joins Cassini's 43,479σ PPN test, ES.09's 2.0 K Mermin witness (3.6741 > 2.8284), "
-        "and thermodynamic clock bounds to filter 6 candidate gravity architectures down to 2 unconditional survivors."
+        "the exact combined (σ, ℓ_b) sheet kernel through ES.08's Schur projector gives a derived 27.22 µm signed bending bound from our recast of Lee et al. (2020) Table 11.4 and joins Cassini's PPN measurement (43,479σ from a γ_PPN = 0 scalar sheet), ES.09's calculated, not yet performed 2.0 K Mermin test (3.6741 > 2.8284), and thermodynamic clock bounds into a scorecard on which 2 of 6 candidate gravity architectures pass every gate as we scored them—a CONJECTURE about which models stay viable, not a measured result."
     ),
     "standfirst_es": (
         "¿Por qué el operador diferencial de cuarto orden (−τ∇² + τℓ_b²∇⁴)w = p_⊥ regulariza las singularidades puntuales "
         "ultravioleta tanto en una membrana fluida a 310.15 K (ℓ_b = 65.44 nm) como en una brana espacial de 3 dimensiones, "
         "pero diverge de la Relatividad General en dimensión, signo, rigidez (3.68 × 10⁵⁴) y simetría de Lorentz? Resolver "
-        "el núcleo combinado exacto (σ, ℓ_b) mediante el proyector de Schur de ES.08 fija una cota con signo de 27.22 µm en "
-        "la Tabla 11.4 de Lee et al. (2020) y, junto con Cassini (43,479σ), el testigo de Mermin de ES.09 a 2.0 K (3.6741 > 2.8284) "
-        "y las cotas de relojes, filtra 6 arquitecturas gravitatorias hasta 2 sobrevivientes incondicionales."
+        "el núcleo combinado exacto (σ, ℓ_b) mediante el proyector de Schur de ES.08 da una cota derivada con signo de 27.22 µm a partir de nuestra proyección de la Tabla 11.4 de Lee et al. (2020) y, junto con el resultado PPN de Cassini (43,479σ frente a una lámina escalar con γ_PPN = 0), la prueba de Mermin de ES.09 a 2.0 K, calculada y aún no realizada (3.6741 > 2.8284), y las cotas de relojes, arma una tabla de puntaje en la que 2 de 6 arquitecturas gravitatorias pasan todas las compuertas según las calificamos: una CONJETURA sobre qué modelos siguen viables, no un resultado medido."
     ),
     "card_dek_en": (
         "Exact (σ, ℓ_b) brane-sheet kernel (27.22 µm signed vs. 38.47 µm unsigned bound), −17.67% vs. +22.19% sign split, "
@@ -1274,8 +1270,7 @@ ESSAY: dict = {
                         "and ℓ_b < 27.22 µm), Gate 2 (Cassini γ_PPN = 1.000021 ± 0.000023, ghost-free Hilbert unitarity, and "
                         "Lorentz invariance), Gate 3 (ES.09's cryogenic 2.0 K equilateral-prism Mermin witness M₃ > 2√2 = "
                         "2.8284 at D = 75 µm, Δx = 250 µm, m = 10⁻¹⁴ kg, P = 2.7 × 10⁻¹⁶ Pa), and Gate 4 (universal T_μν "
-                        "proper-time clock redshift alongside Barato–Seifert thermodynamic uncertainty bounds)—turns isolated "
-                        "bounds into a sharp deductive sieve across 6 candidate gravitational architectures."
+                        "proper-time clock redshift alongside Barato–Seifert thermodynamic uncertainty bounds)—turns isolated bounds into a scorecard across 6 candidate gravitational architectures. Gates 1, 2, and 4 rest on published measurements or our recasts of them; Gate 3 is a calculated prediction for an experiment that has not been performed, so a FAIL under Gate 3 means predicted to fail, not observed to fail."
                     ),
                     "es": (
                         "Reunir los cuatro regímenes de precisión —Compuerta 1 (cotas de torsión bajo 50 µm ortogonales por "
@@ -1283,15 +1278,14 @@ ESSAY: dict = {
                         "sin fantasmas e invariancia de Lorentz), Compuerta 3 (el testigo tripartito de Mermin a 2.0 K de "
                         "ES.09 con M₃ > 2√2 = 2.8284 en D = 75 µm, Δx = 250 µm, m = 10⁻¹⁴ kg, P = 2.7 × 10⁻¹⁶ Pa) y Compuerta "
                         "4 (corrimiento de tiempo propio universal acoplado a T_μν y cotas termodinámicas de Barato–Seifert)— "
-                        "convierte límites aislados en una criba deductiva sobre 6 arquitecturas gravitatorias."
+                        "convierte límites aislados en una tabla de puntaje sobre 6 arquitecturas gravitatorias. Las Compuertas 1, 2 y 4 descansan en datos publicados o en nuestras proyecciones de ellos; la Compuerta 3 es una predicción calculada para un experimento que no se ha realizado, de modo que FALLA en la Compuerta 3 significa que se predice que falla, no que se observó que falla."
                     ),
                 },
                 {
                     "type": "p",
                     "en": (
-                        "Evaluating Gate 3 and Gate 4 numerically shows why classical single-dent pressure models fail even "
-                        "when tuned inside Gate 1. At hold time t_π = 2.6120 s (helium and 2.0 K photon localization rate "
-                        "γ_loc = 0.0220 s⁻¹, survival η = 0.9442), unitary quantum GR reaches ⟨M₃⟩ = 3.6741 > 2.8284, and a "
+                        "Evaluating Gate 3 and Gate 4 numerically shows why classical single-dent pressure models are predicted to fail even when tuned inside Gate 1. At hold time t_π = 2.6120 s (helium and 2.0 K photon localization rate "
+                        "γ_loc = 0.0220 s⁻¹, survival η = 0.9442), unitary quantum GR is calculated to reach ⟨M₃⟩ = 3.6741 > 2.8284, and a "
                         "quantized combined brane at (σ = 18 µm, ℓ_b = 18 µm)—safely inside Table ES.10-A's 23.34 µm signed "
                         "contour—retains 95.84% of the 75 µm Newtonian potential (−5.83% phase shift), achieving ⟨M₃⟩ = "
                         "3.6504 > 2.8284. By contrast, 3-body classical-hybrid Diósi–Penrose gravity at σ_95 = 33.08 µm drops "
@@ -1301,10 +1295,8 @@ ESSAY: dict = {
                         "proper-time clocks accumulate phase reversibly without collapse heating."
                     ),
                     "es": (
-                        "Evaluar numéricamente las Compuertas 3 y 4 muestra por qué los modelos clásicos de presión de una "
-                        "sola hendidura fallan incluso dentro de la Compuerta 1. En t_π = 2.6120 s (tasa de localización por "
-                        "helio y fotones a 2.0 K γ_loc = 0.0220 s⁻¹, supervivencia η = 0.9442), la Relatividad General "
-                        "cuántica alcanza ⟨M₃⟩ = 3.6741 > 2.8284, y una brana cuántica combinada en (σ = 18 µm, ℓ_b = 18 µm) "
+                        "Evaluar numéricamente las Compuertas 3 y 4 muestra por qué se predice que los modelos clásicos de presión de una sola hendidura fallen incluso dentro de la Compuerta 1. En t_π = 2.6120 s (tasa de localización por "
+                        "helio y fotones a 2.0 K γ_loc = 0.0220 s⁻¹, supervivencia η = 0.9442), se calcula que la Relatividad General cuántica alcanza ⟨M₃⟩ = 3.6741 > 2.8284, y una brana cuántica combinada en (σ = 18 µm, ℓ_b = 18 µm) "
                         "—dentro del contorno con signo de 23.34 µm de la Tabla ES.10-A— retiene el 95.84% del potencial a 75 µm (−5.83% en fase) "
                         "y logra ⟨M₃⟩ = 3.6504 > 2.8284. En cambio, la gravedad híbrida de Diósi–Penrose de 3 cuerpos en "
                         "σ_95 = 33.08 µm cae a ⟨M₃⟩_DP = 0.3227 ≤ 2.0, igual que una bicapa acuosa a 310.15 K. Y según Barato "
@@ -1314,10 +1306,10 @@ ESSAY: dict = {
                 },
                 {
                     "type": "table",
-                    "caption_en": "Table ES.10-B · Four-Gate Operator Sieve Scorecard Across 6 Candidate Gravitational Architectures",
-                    "caption_es": "Tabla ES.10-B · Matriz de la Criba de Operadores de Cuatro Compuertas sobre 6 Arquitecturas Candidatas",
-                    "headers_en": ["Candidate Architecture", "Gate 1 · Sub-50 µm Torsion", "Gate 2 · PPN, Unitarity & Lorentz", "Gate 3 · 2.0 K Mermin GTE", "Gate 4 · Clocks & TUR", "Verdict"],
-                    "headers_es": ["Arquitectura Candidata", "Compuerta 1 · Torsión < 50 µm", "Compuerta 2 · PPN, Unitariedad", "Compuerta 3 · Mermin 2.0 K", "Compuerta 4 · Relojes y TUR", "Veredicto"],
+                    "caption_en": "Table ES.10-B · Four-Gate Operator Sieve Scorecard Across 6 Candidate Gravitational Architectures (Author-Assigned Verdicts)",
+                    "caption_es": "Tabla ES.10-B · Matriz de la Criba de Operadores de Cuatro Compuertas sobre 6 Arquitecturas Candidatas (Veredictos Asignados por los Autores)",
+                    "headers_en": ["Candidate Architecture", "Gate 1 · Sub-50 µm Torsion", "Gate 2 · PPN, Unitarity & Lorentz", "Gate 3 · 2.0 K Mermin GTE (predicted, not run)", "Gate 4 · Clocks & TUR", "Verdict"],
+                    "headers_es": ["Arquitectura Candidata", "Compuerta 1 · Torsión < 50 µm", "Compuerta 2 · PPN, Unitariedad", "Compuerta 3 · Mermin 2.0 K (predicho, no realizado)", "Compuerta 4 · Relojes y TUR", "Veredicto"],
                     "rows": [
                         [
                             ("1. Scalar Sheet (−τ∇²w = p_⊥)", "1. Lámina Escalar (−τ∇²w = p_⊥)"),
@@ -1373,18 +1365,18 @@ ESSAY: dict = {
                     "type": "bridge",
                     "kicker_en": "Cross-Scale Methodological Synthesis · Operator Bridges Without Category Errors",
                     "kicker_es": "Síntesis Metodológica entre Escalas · Puentes de Operadores sin Errores de Categoría",
-                    "title_en": "Two Unconditional Survivors—and Why Mathematical Isomorphism Respects Physical Scale",
-                    "title_es": "Dos Sobrevivientes Incondicionales y por Qué el Isomorfismo Respeta la Escala Física",
+                    "title_en": "Two Architectures Pass Every Gate as Scored—and Why Mathematical Isomorphism Respects Physical Scale",
+                    "title_es": "Dos Arquitecturas Pasan Todas las Compuertas según el Puntaje y por Qué el Isomorfismo Respeta la Escala Física",
                     "paras": [
                         (
-                            "Across all 6 rows of Table ES.10-B, only 2 architectures clear every gate unconditionally: "
+                            "Across all 6 rows of Table ES.10-B, only 2 architectures pass every gate as we scored them: "
                             "Warped Extrinsic-Curvature Quantum Brane (Randall–Sundrum II with ℓ_AdS < 44 µm; Kapner et al., "
                             "2007) and Entropic / Canonical Quantum GR Effective Field Theory (Jacobson, 1995; Donoghue, "
                             "1994), with Hořava–Lifshitz spatial elasticity surviving conditionally under < 3 × 10⁻¹⁵ infrared "
                             "Lorentz tuning. Placing 310.15 K Helfrich bilayers beside 2.0 K interferometers reveals the exact "
                             "same partial-fraction Green's algebra and Schur-complement geometry while keeping their 3.68 × 10⁵⁴ "
                             "force hierarchy and quantum-versus-classical state spaces rigorously distinct.",
-                            "En las 6 filas de la Tabla ES.10-B, solo 2 arquitecturas superan cada compuerta sin condiciones: "
+                            "En las 6 filas de la Tabla ES.10-B, solo 2 arquitecturas pasan cada compuerta según las calificamos: "
                             "la Brana Cuántica de Curvatura Extrínseca (Randall–Sundrum II con ℓ_AdS < 44 µm; Kapner et al., "
                             "2007) y la Teoría Efectiva Cuántica / Entrópica de la Relatividad General (Jacobson, 1995; "
                             "Donoghue, 1994), quedando la elasticidad espacial de Hořava–Lifshitz condicionada a un ajuste "
@@ -1405,8 +1397,7 @@ ESSAY: dict = {
                 {
                     "type": "p",
                     "en": (
-                        "To guarantee that zero algebraic sign flips, dimensional slips, or overflow approximations hide "
-                        "between our stated PDEs and Table ES.10-B's verdicts, FourGateSieve.lean encodes 10 machine-checked "
+                        "To check the algebra, signs, and dimensions used between our stated PDEs and Table ES.10-B, FourGateSieve.lean encodes 10 machine-checked "
                         "theorems in pure core Lean 4 Prelude (namespace Informatico.Essays.ES10, 0 external imports, 0 sorry, "
                         "0 axiom, and 0 vacuous x − x subtractions). Theorem 1 (four_gate_sieve_si_homogeneity) verifies by "
                         "kernel computation (rfl) 6 SI dimensional identities: [κ / τ] = L², [κ τ] = F², [c⁴ / G] = F, "
@@ -1416,8 +1407,7 @@ ESSAY: dict = {
                         "4σ²-cleared integer arithmetic to −(2qσ² − s)² ≤ 0."
                     ),
                     "es": (
-                        "Para garantizar que ningún cambio de signo, desliz dimensional ni aproximación numérica se oculte "
-                        "entre nuestras ecuaciones y la Tabla ES.10-B, FourGateSieve.lean codifica 10 teoremas verificados en "
+                        "Para revisar el álgebra, los signos y las dimensiones usados entre nuestras ecuaciones y la Tabla ES.10-B, FourGateSieve.lean codifica 10 teoremas verificados en "
                         "Lean 4 Prelude puro (namespace Informatico.Essays.ES10, 0 importaciones externas, 0 sorry, 0 axiom y "
                         "0 restas vacuas x − x). El Teorema 1 (four_gate_sieve_si_homogeneity) verifica por reducción del "
                         "núcleo (rfl) 6 identidades SI: [κ / τ] = L², [κ τ] = F², [c⁴ / G] = F, [(c⁴ / G)² / (κ τ)] = 0, "
@@ -1429,52 +1419,45 @@ ESSAY: dict = {
                 {
                     "type": "p",
                     "en": (
-                        "The remaining 7 theorems lock every physical razor of the sieve—mirrored in Python by 3 exact "
+                        "The remaining 7 theorems check integer arithmetic and finite tables behind the sieve; they take the physical numbers as inputs from the Python kernel and do not derive them—mirrored in Python by 3 exact "
                         "multivariate Fraction polynomial checks (partial_fraction_poly_zero, sheet_branch1_poly_zero, and "
                         "sheet_branch2_poly_zero). Theorem 4 (gauss_flux_dimension_scaling) proves e_F(d) = 1 − d = −2 ↔ d = 3; "
                         "Theorem 5 (sign_split_bending_vs_warped_kk) proves −1767 < 0 < 2219 and universal sign opposition; "
-                        "Theorem 6 (signed_vs_unsigned_bound_tightening) certifies 27.22 µm < 38.47 µm at σ = 0, 23.34 µm < "
+                        "Theorem 6 (signed_vs_unsigned_bound_tightening) checks the orderings 27.22 µm < 38.47 µm at σ = 0, 23.34 µm < "
                         "36.24 µm at σ = 18 µm, and 7.83 µm < 28.69 µm at σ = 32 µm; Theorem 7 "
-                        "(cassini_scalar_rejection_43479_sigma) certifies 43,479 × 23 ≤ 1,000,021 < 43,480 × 23; Theorem 8 "
+                        "(cassini_scalar_rejection_43479_sigma) checks 43,479 × 23 ≤ 1,000,021 < 43,480 × 23; Theorem 8 "
                         "(pinching_force_hierarchy_10_54) proves 38 − (−16) = 54 and 3.68 × 10⁵⁴; Theorem 9 "
                         "(mermin_gte_window_separation) proves |M₃| ≤ 2 across all 64 local assignments alongside 0.3227 < "
-                        "2.0 < 2√2 < 3.6504 < 3.6741; and Theorem 10 (four_gate_sieve_survivors) proves exhaustively that only "
-                        "warpedRS2Brane and canonicalQuantumGR pass all 4 gates unconditionally."
+                        "2.0 < 2√2 < 3.6504 < 3.6741; and Theorem 10 (four_gate_sieve_survivors) proves by case analysis that, in the hand-entered PASS/FAIL table, only the warpedRS2Brane and canonicalQuantumGR rows are all PASS. That is a statement about the table, not evidence that either model describes gravity."
                     ),
                     "es": (
-                        "Los 7 teoremas restantes sellan cada filtro físico de la criba, respaldados en Python por 3 "
+                        "Los 7 teoremas restantes comprueban aritmética entera y tablas finitas detrás de la criba; toman los números físicos como entradas del kernel de Python y no los derivan, respaldados en Python por 3 "
                         "identidades polinómicas multivariables exactas sobre Fraction (partial_fraction_poly_zero, "
                         "sheet_branch1_poly_zero y sheet_branch2_poly_zero). El Teorema 4 (gauss_flux_dimension_scaling) "
                         "prueba e_F(d) = 1 − d = −2 ↔ d = 3; el Teorema 5 (sign_split_bending_vs_warped_kk) prueba −1767 < 0 < "
-                        "2219 y la oposición universal de signos; el Teorema 6 (signed_vs_unsigned_bound_tightening) certifica "
-                        "27.22 µm < 38.47 µm en σ = 0, 23.34 µm < 36.24 µm en σ = 18 µm y 7.83 µm < 28.69 µm en σ = 32 µm; el "
-                        "Teorema 7 (cassini_scalar_rejection_43479_sigma) certifica 43,479 × 23 ≤ 1,000,021 < 43,480 × 23; el "
+                        "2219 y la oposición universal de signos; el Teorema 6 (signed_vs_unsigned_bound_tightening) comprueba los órdenes 27.22 µm < 38.47 µm en σ = 0, 23.34 µm < 36.24 µm en σ = 18 µm y 7.83 µm < 28.69 µm en σ = 32 µm; el "
+                        "Teorema 7 (cassini_scalar_rejection_43479_sigma) comprueba 43,479 × 23 ≤ 1,000,021 < 43,480 × 23; el "
                         "Teorema 8 (pinching_force_hierarchy_10_54) prueba 38 − (−16) = 54 y 3.68 × 10⁵⁴; el Teorema 9 "
                         "(mermin_gte_window_separation) prueba |M₃| ≤ 2 en las 64 asignaciones locales junto con 0.3227 < 2.0 "
-                        "< 2√2 < 3.6504 < 3.6741; y el Teorema 10 (four_gate_sieve_survivors) demuestra que solo "
-                        "warpedRS2Brane y canonicalQuantumGR superan las 4 compuertas."
+                        "< 2√2 < 3.6504 < 3.6741; y el Teorema 10 (four_gate_sieve_survivors) prueba por análisis de casos que, en la tabla PASA/FALLA capturada a mano, solo las filas warpedRS2Brane y canonicalQuantumGR son todas PASA. Es un enunciado sobre la tabla, no evidencia de que alguno de los modelos describa la gravedad."
                     ),
                 },
                 {
                     "type": "p",
                     "en": (
-                        "Most importantly, the sieve hands next-generation sub-50 µm experiments a crisp, sign-resolved "
-                        "decision tree rather than unfalsifiable rhetoric. As torsion pendulums and 25 µm micro-cantilevers "
-                        "push Schur-projected sensitivity into the 10 µm to 44 µm corridor (where ES.08 proved a 13.20× Fisher "
-                        "information gain at s_min = 25 µm), a genuine positive excess scaling as +(2/3)(ℓ_AdS / r)² would "
+                        "The scorecard also suggests a sign-resolved decision tree for next-generation sub-50 µm experiments. As torsion pendulums and 25 µm micro-cantilevers "
+                        "push Schur-projected sensitivity into the 10 µm to 44 µm corridor (where ES.08 calculated a 13.20× Fisher information gain at s_min = 25 µm), a genuine positive excess scaling as +(2/3)(ℓ_AdS / r)² would "
                         "point toward warped Kaluza–Klein bulk leakage (Randall & Sundrum, 1999; Garriga & Tanaka, 2000), "
                         "whereas a negative deficit following Table ES.10-A's (σ, ℓ_b) contour below 27.22 µm would signal "
                         "spatial contact or Lifshitz bending softening, and an unbroken 1/r² law paired with M₃ > 2.8284 at "
-                        "D = 75 µm would isolate canonical quantum General Relativity."
+                        "D = 75 µm would be consistent with canonical quantum General Relativity without singling it out."
                     ),
                     "es": (
-                        "Ante todo, la criba entrega a los próximos experimentos bajo 50 µm un árbol de decisión resuelto por "
-                        "signo en lugar de retórica infalsable. Conforme las balanzas de torsión y los microcantiléveres a "
-                        "25 µm lleven la sensibilidad proyectada por Schur al corredor de 10 µm a 44 µm (donde ES.08 demostró "
-                        "una ganancia de Fisher de 13.20× en s_min = 25 µm), un exceso positivo +(2/3)(ℓ_AdS / r)² señalaría "
+                        "La tabla de puntaje también sugiere a los próximos experimentos bajo 50 µm un árbol de decisión resuelto por signo. Conforme las balanzas de torsión y los microcantiléveres a "
+                        "25 µm lleven la sensibilidad proyectada por Schur al corredor de 10 µm a 44 µm (donde ES.08 calculó una ganancia de Fisher de 13.20× en s_min = 25 µm), un exceso positivo +(2/3)(ℓ_AdS / r)² señalaría "
                         "fuga de Kaluza–Klein en volumen curvo (Randall y Sundrum, 1999; Garriga y Tanaka, 2000), un déficit "
                         "negativo según la Tabla ES.10-A bajo 27.22 µm indicaría suavizado espacial o flexión de Lifshitz, y una ley 1/r² intacta "
-                        "junto con M₃ > 2.8284 en D = 75 µm aislaría la Relatividad General cuántica canónica."
+                        "junto con M₃ > 2.8284 en D = 75 µm sería consistente con la Relatividad General cuántica canónica, sin señalarla como única."
                     ),
                 },
             ],
@@ -1560,8 +1543,8 @@ ESSAY: dict = {
             "citation": "Stelle, K. S. — Renormalization of higher-derivative quantum gravity, Physical Review D 16(4), 953–969",
             "doi": "10.1103/physrevd.16.953",
             "year": 1977,
-            "role_en": "Proves that Lorentzian 4-derivative quadratic gravity introduces a residue −1 massive spin-2 ghost excluded by Gate 2.",
-            "role_es": "Demuestra que la gravedad cuadrática relativista de 4 derivadas introduce un fantasma masivo de espín 2 con residuo −1 descartado en la Compuerta 2.",
+            "role_en": "Shows that Lorentzian 4-derivative quadratic gravity introduces a residue −1 massive spin-2 ghost, which we score as failing Gate 2.",
+            "role_es": "Muestra que la gravedad cuadrática relativista de 4 derivadas introduce un fantasma masivo de espín 2 con residuo −1, que calificamos como falla en la Compuerta 2.",
         },
         {
             "id": "ES10-DONOGHUE1994",

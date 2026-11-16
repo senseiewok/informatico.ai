@@ -808,9 +808,9 @@ ESSAY: dict = {
     "published": "2026-11-11",
     "seo": (
         "The Seven-Gate Crown Sieve",
-        "Seven physical gates eliminate gravitational and gauge architectures, leaving ghost-free entire UV gravity and chiral spinors as sole survivors.",
+        "A seven-gate scorecard compares eight gravity and gauge architectures; one constructed model passes all gates as scored, a conjecture.",
         "La Criba Corona de Siete Compuertas",
-        "Siete compuertas físicas filtran arquitecturas de gravedad y norma, dejando la gravedad entera sin fantasmas y espinores quirales como sobrevivientes.",
+        "Una tabla de siete compuertas compara ocho arquitecturas de gravedad y norma; un modelo construido las pasa todas según el puntaje: conjetura.",
     ),
     "kicker_en": "Cross-Scale Essay · ES.11 · Anomaly Locks, Null Horizons, Entire UV Gravity & The 7-Gate Crown Sieve",
     "kicker_es": "Ensayo Transescalar · ES.11 · Cerrojos de Anomalías, Horizontes Nulos, Gravedad Entera UV y la Criba de 7 Compuertas",
@@ -820,21 +820,19 @@ ESSAY: dict = {
     "title_es": "La Criba Corona de Siete Compuertas: Cerrojos de Anomalías Quirales, la Escala de Vacío de 88.11 µm y Gravedad Entera sin Fantasmas",
     "standfirst_en": (
         "Why does omitting mixed gravitational triangle cancellation [Grav]²U(1)_Y = 0 shatter electric charge quantization "
-        "along e(t) = [18(t² + 3)]^{1/3} (e(0) = 54^{1/3} ≈ 3.7798), why do sub-50 µm torsion pendulums rule out fat-graviton "
-        "cutoffs at the 84.89–88.11 µm dark-energy scale while leaving local Rindler null horizons untouched, and how can "
+        "along e(t) = [18(t² + 3)]^{1/3} (e(0) = 54^{1/3} ≈ 3.7798), why does our recast of sub-50 µm torsion limits disfavor a Gaussian graviton cutoff at the 84.89–88.11 µm dark-energy scale while leaving local Rindler null horizons untouched, and how can "
         "Newton's 1/r pole be softened at r → 0 without Stelle's spin-2 Ostrogradsky ghost? Extending ES.10's four mesoscopic "
         "gates with three cross-sector peaks—G5 (domain-wall Spin(10) chirality and the Geng–Marshak–Fermat cubic lock), "
         "G6 (Jacobson–Weinberg null-ray vacuum decoupling), and G7 (Weierstrass entire form factor exp(ℓ_*²q²) yielding "
-        "erf(r / 2ℓ_*) with ℓ_* < 32.98 µm)—filters 8 architectures down to 1 crown survivor verified in 12 Lean 4 theorems."
+        "erf(r / 2ℓ_*) with ℓ_* < 32.98 µm)—gives a scorecard on which 1 of 8 architectures—a model we constructed to meet all seven criteria—passes every gate. That is a CONJECTURE, not a derived theory of gravity: 12 Lean 4 theorems check the integer algebra and the PASS/FAIL table, not the physics."
     ),
     "standfirst_es": (
         "¿Por qué omitir el triángulo gravitatorio mixto [Grav]²U(1)_Y = 0 rompe la cuantización de la carga eléctrica sobre "
-        "e(t) = [18(t² + 3)]^{1/3} (e(0) = 54^{1/3} ≈ 3.7798), por qué los péndulos de torsión bajo 50 µm descartan cortes de "
-        "gravitón grueso en la escala oscura de 84.89–88.11 µm sin perturbar los horizontes nulos de Rindler y cómo suavizar "
+        "e(t) = [18(t² + 3)]^{1/3} (e(0) = 54^{1/3} ≈ 3.7798), por qué nuestra proyección de los límites de torsión bajo 50 µm desfavorece un corte gaussiano del gravitón en la escala oscura de 84.89–88.11 µm sin perturbar los horizontes nulos de Rindler y cómo suavizar "
         "el polo 1/r de Newton en r → 0 sin el fantasma de espín 2 de Stelle? Ampliar las cuatro compuertas de ES.10 con tres "
         "cumbres —G5 (quiralidad Spin(10) en pared de dominio y el cerrojo cúbico de Geng–Marshak–Fermat), G6 (desacoplamiento "
         "nulo de Jacobson–Weinberg) y G7 (factor entero de Weierstrass exp(ℓ_*²q²) que produce erf(r / 2ℓ_*) con ℓ_* < 32.98 µm)— "
-        "filtra 8 arquitecturas hasta 1 sobreviviente corona verificado en 12 teoremas de Lean 4."
+        "da una tabla de puntaje en la que 1 de 8 arquitecturas —un modelo que construimos para cumplir los siete criterios— pasa todas las compuertas. Es una CONJETURA, no una teoría derivada de la gravedad: 12 teoremas de Lean 4 comprueban el álgebra entera y la tabla PASA/FALLA, no la física."
     ),
     "card_dek_en": (
         "Geng–Marshak–Fermat cubic anomaly lock (e = 6 vs. 54^{1/3}), 88.11 µm dark-energy scale vs. 32.98 µm Schur bound, "
@@ -928,27 +926,26 @@ ESSAY: dict = {
                 {
                     "type": "p",
                     "en": (
-                        "Passing Gates G1 through G4 establishes spin-2 relativistic low-energy effective field theory, yet "
-                        "leaves three foundational cross-sector failure modes wide open. First, matter is chiral: left-handed "
+                        "Passing Gates G1 through G4 as scored is consistent with spin-2 relativistic low-energy effective field theory, yet leaves three foundational cross-sector failure modes wide open. First, matter is chiral: left-handed "
                         "quarks and leptons transform as non-Abelian doublets while right-handed partners are singlets, and "
                         "naive smooth 5-D circle compactification washes chirality out into vectorlike mirror pairs, whereas "
                         "decoupling gravity from 1-loop gauge triangles destroys charge quantization. Second, cosmic "
                         "acceleration defines an empirical vacuum energy density ρ_Λ whose fourth-root length scale "
                         "ℓ_Λ = (ℏc / ρ_Λ)^{1/4} ≈ 84.89–88.11 µm sits right inside the micrometre arena of torsion pendulums, "
-                        "demanding a sharp distinction between excluded propagator cutoffs and null-horizon thermodynamics. "
+                        "demanding a sharp distinction between disfavored propagator cutoffs and null-horizon thermodynamics. "
                         "Third, point-mass General Relativity retains Newton's 1/r ultraviolet divergence as r → 0, while "
                         "polynomial 4-derivative regulators (□ + ℓ_g²□²) cure r → 0 only by injecting Stelle's negative-norm "
                         "ghost. Elevating those three tests into Gates G5, G6, and G7 completes the Seven-Gate Crown Sieve."
                     ),
                     "es": (
-                        "Superar las Compuertas G1 a G4 respalda la teoría efectiva relativista de espín 2 a baja energía, "
+                        "Superar las Compuertas G1 a G4 según el puntaje es consistente con la teoría efectiva relativista de espín 2 a baja energía, "
                         "pero deja abiertos tres modos críticos de falla entre sectores. Primero, la materia es quiral: los "
                         "quarks y leptones izquierdos forman dobletes no abelianos mientras sus parejas derechas son singletes, "
                         "de modo que una compactificación suave en círculo 5-D diluye la quiralidad en pares vectoriales y "
                         "desacoplar la gravedad de los triángulos cuánticos a 1 lazo rompe la cuantización de la carga. Segundo, la "
                         "aceleración cósmica fija una densidad de vacío ρ_Λ cuya escala cuarta ℓ_Λ = (ℏc / ρ_Λ)^{1/4} ≈ "
                         "84.89–88.11 µm cae justo en el rango micrométrico de los péndulos de torsión, exigiendo separar "
-                        "cortes de propagador refutados y termodinámica de horizontes nulos. Tercero, la Relatividad General "
+                        "cortes de propagador desfavorecidos y termodinámica de horizontes nulos. Tercero, la Relatividad General "
                         "puntual conserva el polo 1/r cuando r → 0, mientras los reguladores polinomiales de 4 derivadas □ + ℓ_g²□² curan r → 0 "
                         "inyectando el fantasma de Stelle. Elevar esas tres pruebas a las Compuertas G5, G6 y G7 completa la Criba Corona."
                     ),
@@ -1028,21 +1025,19 @@ ESSAY: dict = {
                 {
                     "type": "p",
                     "en": (
-                        "Here the cross-sector joint consistency between spacetime curvature and gauge theory becomes "
-                        "undeniable. As Minahan, Ramond, and Warner (1990) pointed out, if one omits the mixed gravitational "
+                        "Here the gravitational anomaly condition does real work in the charge assignment. As Minahan, Ramond, and Warner (1990) pointed out, if one omits the mixed gravitational "
                         "triangle [Grav]²U(1)_Y = 6q + 3u + 3d + 2l + e = 0—treating chiral matter as a pure flat-space gauge "
-                        "theory—a continuous 1-parameter real family e(t) = [18(t² + 3)]^{1/3} survives! At the up–down "
+                        "theory—a continuous 1-parameter real family e(t) = [18(t² + 3)]^{1/3} survives. At the up–down "
                         "symmetric point t = 0 (u = d = −1), the equation reduces to e³ = 54, whose real root e = 54^{1/3} = "
                         "3 × 2^{1/3} ≈ 3.7798 is strictly irrational because 3³ = 27 < 54 < 64 = 4³, violating electric charge "
                         "quantization. Restoring [Grav]²U(1)_Y = 0 forces e = +6, turning (u + 4)³ + (d + 4)³ = 6³ = 216 under "
-                        "(u + 4) + (d + 4) = 6 into −18(u + 4)(u − 2) = 0 and isolating {u, d} = {−4, +2} as the unique chiral "
-                        "solution! Via 6Q_em = 6T₃ + y_int, this pins 6Q(u_L) = +4, 6Q(d_L) = −2, 6Q(ν_L) = 0, 6Q(e_L) = −6, "
+                        "(u + 4) + (d + 4) = 6 into −18(u + 4)(u − 2) = 0 and isolating {u, d} = {−4, +2} as the unique solution of these four conditions at this normalization. Via 6Q_em = 6T₃ + y_int, this pins 6Q(u_L) = +4, 6Q(d_L) = −2, 6Q(ν_L) = 0, 6Q(e_L) = −6, "
                         "exact Hydrogen neutrality 2(4) + (−2) + (−6) = 0, canonical trace Tr(y_int²) = 120, and 3 × 2 + 3 + "
                         "3 + 2 + 1 = 15 Weyl states that join the sterile singlet ν_R^c (y_int = 0) into 15 + 1 = 16 = 1 + 10 "
                         "+ 5 of the chiral spinor 16_+ of Spin(10) (Fritzsch & Minkowski, 1975)."
                     ),
                     "es": (
-                        "Aquí la consistencia conjunta entre curvatura espaciotemporal y teoría de norma resulta decisiva. "
+                        "Aquí la condición de anomalía gravitatoria hace un trabajo real en la asignación de cargas. "
                         "Como advirtieron Minahan, Ramond y Warner (1990), si se omite el triángulo gravitatorio mixto "
                         "[Grav]²U(1)_Y = 6q + 3u + 3d + 2l + e = 0 —tratando la materia quiral como teoría de norma en espacio "
                         "plano—, sobrevive una familia real continua de 1 parámetro e(t) = [18(t² + 3)]^{1/3}. En el punto "
@@ -1104,9 +1099,9 @@ ESSAY: dict = {
                         "and energy scale E_Λ = ℏc / ℓ_Λ = 2.24 meV (with Kapner et al., 2007's WMAP3 benchmark ρ_d = "
                         "3.8 keV/cm³ = 6.08827 × 10⁻¹⁰ J/m³ or 608,827 fJ/m³ yielding ℓ_Λ = 84.89 µm). Proposals such as "
                         "'fat-graviton' models attempted to explain ρ_Λ by cutting off graviton momentum transfer above ℓ_Λ⁻¹. "
-                        "Eöt-Wash torsion pendulums decisively falsify that mechanism: our signed Schur bounds ℓ_b < 27.22 µm "
+                        "Our recast of Eöt-Wash torsion limits disfavors a cutoff of that size when it is modeled as Gaussian (erf) or bending softening (DERIVED, NOT MEASURED; the collaboration's own fat-graviton limit is not stated here): our signed Schur bounds ℓ_b < 27.22 µm "
                         "and ℓ_* < 32.98 µm (alongside Lee et al., 2020's 38.60 µm Yukawa edge, 44.95 µm unsigned smearing, "
-                        "52.00 µm minimum gap, and ES.09's 75.00 µm Mermin gap) all sit strictly below 84.89 µm < 88.11 µm!"
+                        "52.00 µm minimum gap, and ES.09's 75.00 µm Mermin gap) all sit below 84.89 µm < 88.11 µm."
                     ),
                     "es": (
                         "Las observaciones cosmológicas sitúan una escala de longitud justo al lado de las pruebas de "
@@ -1115,8 +1110,7 @@ ESSAY: dict = {
                         "10⁻¹⁰ J/m³ (524,470 fJ/m³) define la longitud cuarta relativista ℓ_Λ = (ℏc / ρ_Λ)^{1/4} = 88.11 µm "
                         "y la energía E_Λ = ℏc / ℓ_Λ = 2.24 meV (mientras la referencia WMAP3 de Kapner et al., 2007 ρ_d = "
                         "3.8 keV/cm³ = 6.08827 × 10⁻¹⁰ J/m³ o 608,827 fJ/m³ entrega ℓ_Λ = 84.89 µm). Los modelos de 'gravitón "
-                        "grueso' intentaron explicar ρ_Λ apagando la gravedad sobre ℓ_Λ⁻¹. Los péndulos Eöt-Wash refutan ese "
-                        "mecanismo: las cotas de Schur con signo ℓ_b < 27.22 µm y ℓ_* < 32.98 µm (junto a 38.60 µm de Lee et al., "
+                        "grueso' intentaron explicar ρ_Λ apagando la gravedad sobre ℓ_Λ⁻¹. Nuestra proyección de los límites de torsión de Eöt-Wash desfavorece un corte de ese tamaño cuando se modela como suavizado gaussiano (erf) o de flexión (DERIVADO, NO MEDIDO; el límite propio de la colaboración para el gravitón grueso no se indica aquí): las cotas de Schur con signo ℓ_b < 27.22 µm y ℓ_* < 32.98 µm (junto a 38.60 µm de Lee et al., "
                         "2020, 44.95 µm sin signo, 52.00 µm de brecha mínima y 75.00 µm de Mermin en ES.09) quedan bajo 84.89 µm < 88.11 µm."
                     ),
                 },
@@ -1162,10 +1156,10 @@ ESSAY: dict = {
                 },
                 {
                     "type": "bridge",
-                    "kicker_en": "OPEN / PROPOSED Testable Correlation · Gauge Wall vs. Bulk-Singlet Compton Ladder",
-                    "kicker_es": "Correlación Comprobable ABIERTA / PROPUESTA · Pared de Norma frente a Escalera Singlete",
-                    "title_en": "Why Only Gravitons and ν_R^c Can Probe σ < 32.98 µm (ℏc = 197.32698 meV·µm)",
-                    "title_es": "Por Qué Solo el Gravitón y ν_R^c Pueden Sondear σ < 32.98 µm (ℏc = 197.32698 meV·µm)",
+                    "kicker_en": "CONJECTURE · Gauge Wall vs. Bulk-Singlet Compton Ladder",
+                    "kicker_es": "CONJETURA · Pared de Norma frente a Escalera Singlete",
+                    "title_en": "In This Model, Only Gravitons and ν_R^c Would Probe σ < 32.98 µm (ℏc = 197.32698 meV·µm)",
+                    "title_es": "En Este Modelo, Solo el Gravitón y ν_R^c Sondearían σ < 32.98 µm (ℏc = 197.32698 meV·µm)",
                     "paras": [
                         (
                             "How can quarks and charged leptons appear pointlike down to collider distances w_gauge ≤ 10⁻¹⁹ m "
@@ -1174,23 +1168,18 @@ ESSAY: dict = {
                             "gauge charges that confine their wavefunctions to the thin gauge wall. Only 2 fields in the entire "
                             "architecture carry 0 Standard Model gauge charge: the spin-2 graviton and the 16th state ν_R^c "
                             "(sterile singlet y_int = 0). Using ℏc = 0.19732698 eV·µm (197.32698 meV·µm), our signed bound "
-                            "σ < 32.98 µm sets M_* = ℏc / σ > 5.983 meV (3-D Gaussian FWHM 2√(2 ln 2)σ < 77.66 µm). Remarkably, "
-                            "the measured solar neutrino mass-splitting scale √(Δm₂₁²) = 8.61 meV corresponds to reduced Compton "
-                            "wavelength λ_{ν,2} = ℏ / (m₂c) = 22.92 µm—nested directly inside [3.94 µm, 32.98 µm] between the "
+                            "σ < 32.98 µm sets M_* = ℏc / σ > 5.983 meV (3-D Gaussian FWHM 2√(2 ln 2)σ < 77.66 µm). The solar neutrino mass-splitting scale √(Δm₂₁²) = 8.61 meV used in our verifier (taken from oscillation fits; no primary source is cited on this page) would correspond to reduced Compton wavelength λ_{ν,2} = ℏ / (m₂c) = 22.92 µm only if m₂ = √(Δm₂₁²), that is, only if the lightest mass m₁ were zero (m₁ is not stated in our sources)—nested directly inside [3.94 µm, 32.98 µm] between the "
                             "atmospheric scale √(Δm₃₁²) = 50.11 meV (λ_{ν,3} = 3.94 µm) and our 27.22–32.98 µm torsion bounds, "
-                            "below E_Λ = 2.24 meV (88.11 µm). We badge this bulk-singlet scale alignment strictly OPEN / PROPOSED: "
-                            "a falsifiable target for sub-30 µm torsion and absolute neutrino-mass experiments, not an established equality.",
+                            "below E_Λ = 2.24 meV (88.11 µm). We label this bulk-singlet scale alignment a CONJECTURE: a numerical coincidence of scales with no derivation behind it, offered as a target for sub-30 µm torsion and absolute neutrino-mass experiments, not an established relation.",
                             "¿Cómo pueden los quarks y leptones cargados lucir puntuales hasta escalas de colisionador "
                             "w_gauge ≤ 10⁻¹⁹ m mientras el ancho transversal gravitatorio σ ≡ ℓ_* podría medir decenas de "
                             "micrómetros? En el espinor de 16 estados de Spin(10) de la Compuerta G5, los 15 estados del Modelo "
                             "Estándar portan cargas SU(3)_C × SU(2)_L × U(1)_Y que los confinan a la delgada pared de norma. Solo "
                             "2 campos en toda la arquitectura tienen carga de norma 0: el gravitón de espín 2 y el estado 16 ν_R^c "
                             "(singlete estéril y_int = 0). Con ℏc = 0.19732698 eV·µm (197.32698 meV·µm), la cota con signo "
-                            "σ < 32.98 µm fija M_* = ℏc / σ > 5.983 meV (ancho 3-D FWHM 2√(2 ln 2)σ < 77.66 µm). De modo notable, "
-                            "la escala solar medida √(Δm₂₁²) = 8.61 meV equivale a una longitud de Compton λ_{ν,2} = ℏ / (m₂c) = "
-                            "22.92 µm —situada dentro de [3.94 µm, 32.98 µm] entre la escala atmosférica √(Δm₃₁²) = 50.11 meV "
+                            "σ < 32.98 µm fija M_* = ℏc / σ > 5.983 meV (ancho 3-D FWHM 2√(2 ln 2)σ < 77.66 µm). La escala solar √(Δm₂₁²) = 8.61 meV usada en nuestro verificador (tomada de ajustes de oscilaciones; esta página no cita una fuente primaria) equivaldría a una longitud de Compton λ_{ν,2} = ℏ / (m₂c) = 22.92 µm solo si m₂ = √(Δm₂₁²), es decir, solo si la masa más ligera m₁ fuera cero (m₁ no se indica en nuestras fuentes) —situada dentro de [3.94 µm, 32.98 µm] entre la escala atmosférica √(Δm₃₁²) = 50.11 meV "
                             "(λ_{ν,3} = 3.94 µm) y nuestras cotas de torsión de 27.22–32.98 µm, bajo E_Λ = 2.24 meV (88.11 µm)—. "
-                            "Etiquetamos esta alineación singlete estrictamente como ABIERTA / PROPUESTA: un blanco falsable bajo 30 µm, nunca una identidad probada.",
+                            "Etiquetamos esta alineación singlete como CONJETURA: una coincidencia numérica de escalas sin derivación que la respalde, ofrecida como blanco para experimentos bajo 30 µm, no una relación establecida.",
                         ),
                     ],
                 },
@@ -1271,12 +1260,10 @@ ESSAY: dict = {
                     "en": (
                         "Because erf(r / 2ℓ_*)/r is algebraically identical to a 3-D Gaussian contact footprint at ℓ_* ≡ σ, "
                         "our 12-point Schur-complement recast of the 120-fold Eöt-Wash wedge pendulum on Lee et al. (2020) "
-                        "Table 11.4 immediately pins ℓ_* < 32.98 µm against the signed α_95⁻ limit (best-mimic λ = 18.0 µm, "
+                        "Table 11.4 gives the derived bound ℓ_* < 32.98 µm against the signed α_95⁻ limit (best-mimic λ = 18.0 µm, "
                         "α_eff = −7.36) and ℓ_* < 44.95 µm against the unsigned |α_95| column (λ = 25.0 µm, α_eff = −6.40), "
                         "matching the auxiliary benchmark hierarchy 32.87 < 32.98 < 33.01 < 33.08 < 44.07 < 44.95 µm. Since "
-                        "75.00 / 32.98 = 2.2741 > 2.2109, the cryogenic 2.0 K Mermin entanglement window at D = 75 µm remains "
-                        "wide open: at ℓ_* = 18.0 µm, V(75 µm) retains 99.68% of Newton's pull and achieves ⟨M₃⟩ = 3.6740 > "
-                        "2√2 = 2.8284! Epistemic honesty requires an explicit boundary here: while exp(−ℓ_*²□) removes classical "
+                        "75.00 / 32.98 = 2.2741 > 2.2109, the proposed cryogenic 2.0 K Mermin test at D = 75 µm stays outside this bound: at ℓ_* = 18.0 µm, V(75 µm) retains 99.68% of Newton's pull and the calculated witness is ⟨M₃⟩ = 3.6740 > 2√2 = 2.8284. Epistemic honesty requires an explicit boundary here: while exp(−ℓ_*²□) removes classical "
                         "r = 0 singularities and tree-level ghosts (DERIVED, NOT MEASURED), its essential singularity at "
                         "q² = ∞ introduces micro-acausal dispersion inside r ≲ ℓ_*, and all-loop Lorentzian unitarity in "
                         "curved backgrounds remains actively OPEN."
@@ -1284,11 +1271,9 @@ ESSAY: dict = {
                     "es": (
                         "Como erf(r / 2ℓ_*)/r coincide algebraicamente con una huella gaussiana 3-D en ℓ_* ≡ σ, nuestra "
                         "proyección de Schur de 12 puntos del péndulo Eöt-Wash de 120 cuñas sobre la Tabla 11.4 de Lee et al. "
-                        "(2020) fija de inmediato ℓ_* < 32.98 µm frente a la columna con signo α_95⁻ (λ = 18.0 µm, α_eff = "
+                        "(2020) da la cota derivada ℓ_* < 32.98 µm frente a la columna con signo α_95⁻ (λ = 18.0 µm, α_eff = "
                         "−7.36) y ℓ_* < 44.95 µm frente a |α_95| sin signo (λ = 25.0 µm, α_eff = −6.40), respetando la jerarquía "
-                        "32.87 < 32.98 < 33.01 < 33.08 < 44.07 < 44.95 µm. Como 75.00 / 32.98 = 2.2741 > 2.2109, la ventana "
-                        "criogénica de Mermin a 2.0 K en D = 75 µm sigue abierta de par en par: en ℓ_* = 18.0 µm, V(75 µm) "
-                        "retiene el 99.68% del tirón newtoniano y alcanza ⟨M₃⟩ = 3.6740 > 2√2 = 2.8284. La honestidad "
+                        "32.87 < 32.98 < 33.01 < 33.08 < 44.07 < 44.95 µm. Como 75.00 / 32.98 = 2.2741 > 2.2109, la prueba criogénica de Mermin propuesta a 2.0 K en D = 75 µm queda fuera de esta cota: en ℓ_* = 18.0 µm, V(75 µm) retiene el 99.68% del tirón newtoniano y el testigo calculado es ⟨M₃⟩ = 3.6740 > 2√2 = 2.8284. La honestidad "
                         "epistémica exige aquí una frontera explícita: aunque exp(−ℓ_*²□) elimina el polo clásico r = 0 y los "
                         "fantasmas a nivel árbol (DERIVADO, NO MEDIDO), su singularidad esencial en q² = ∞ induce dispersión "
                         "microacausal dentro de r ≲ ℓ_*, y la unitariedad lorentziana a todos los lazos permanece ABIERTA."
@@ -1307,8 +1292,7 @@ ESSAY: dict = {
                     "type": "p",
                     "en": (
                         "Assembling all 7 gates side by side across 8 representative gravitational and matter architectures "
-                        "reveals why no single experiment or single sub-discipline can isolate a consistent physical framework "
-                        "alone. Scalar sheets fail Cassini PPN (43,479σ) and proper-time clock universality; Lorentzian □² "
+                        "gives a scorecard, not a derivation: G1, G2, and G4 rest on published measurements or our recasts of them, G3 is a calculated prediction for an experiment not yet performed, and G5–G7 are theoretical consistency criteria that we chose. In the list below, each failure is a failure as we scored it. Scalar sheets fail Cassini PPN (43,479σ) and proper-time clock universality; Lorentzian □² "
                         "quadratic gravity cures r → 0 only by failing Hilbert unitarity and quantum Mermin coherence via its "
                         "residue −1 ghost; classical-hybrid Diósi–Penrose dynamics fails 2.0 K Mermin GTE (0.3227 ≤ 2.0) and "
                         "anomalous clock heating; fat-graviton cutoffs at ℓ_Λ = 84.89–88.11 µm fail sub-50 µm Eöt-Wash bounds; "
@@ -1316,8 +1300,7 @@ ESSAY: dict = {
                         "smooth 5-D S¹ circle compactifications fail both sub-50 µm ISL and 4-D chirality (χ = 0)."
                     ),
                     "es": (
-                        "Reunir las 7 compuertas sobre 8 arquitecturas representativas de gravedad y materia revela por qué "
-                        "ningún experimento aislado ni una sola subdisciplina bastan por separado. Las láminas escalares fallan "
+                        "Reunir las 7 compuertas sobre 8 arquitecturas representativas de gravedad y materia da una tabla de puntaje, no una derivación: G1, G2 y G4 descansan en datos publicados o en nuestras proyecciones de ellos, G3 es una predicción calculada para un experimento aún no realizado, y G5–G7 son criterios teóricos de consistencia que elegimos. En la lista siguiente, cada falla es una falla según la calificamos. Las láminas escalares fallan "
                         "Cassini PPN (43,479σ) y los relojes de tiempo propio; la gravedad cuadrática □² regula r → 0 a costa "
                         "de perder unitariedad de Hilbert y coherencia de Mermin por su fantasma de residuo −1; el híbrido "
                         "clásico de Diósi–Penrose falla Mermin a 2.0 K (0.3227 ≤ 2.0) y calentamiento de relojes; el gravitón "
@@ -1327,8 +1310,8 @@ ESSAY: dict = {
                 },
                 {
                     "type": "table",
-                    "caption_en": "Table ES.11-B · The Seven-Gate Crown Sieve Across 8 Gravitational & Gauge Architectures (Certified in SevenGateCrown.lean)",
-                    "caption_es": "Tabla ES.11-B · La Criba Corona de Siete Compuertas sobre 8 Arquitecturas de Gravedad y Norma (Certificada en SevenGateCrown.lean)",
+                    "caption_en": "Table ES.11-B · The Seven-Gate Crown Sieve Across 8 Gravitational & Gauge Architectures (Author-Assigned Verdicts; Table Consistency Checked in SevenGateCrown.lean)",
+                    "caption_es": "Tabla ES.11-B · La Criba Corona de Siete Compuertas sobre 8 Arquitecturas de Gravedad y Norma (Veredictos Asignados por los Autores; Consistencia de la Tabla Comprobada en SevenGateCrown.lean)",
                     "headers_en": ["Candidate Architecture", "G1 <50 µm", "G2 PPN/Unit.", "G3 Mermin", "G4 Clocks", "G5 Chiral", "G6 Horizon", "G7 UV r→0", "Verdict"],
                     "headers_es": ["Arquitectura Candidata", "G1 <50 µm", "G2 PPN/Unit.", "G3 Mermin", "G4 Relojes", "G5 Quiral", "G6 Horiz.", "G7 UV r→0", "Veredicto"],
                     "rows": [
@@ -1418,40 +1401,36 @@ ESSAY: dict = {
                             ("PASS", "PASA"),
                             ("PASS", "PASA"),
                             ("PASS", "PASA"),
-                            ("1 / 1 (7-Gate Survivor)", "1 / 1 (Sobreviviente de 7 Compuertas)"),
+                            ("1 / 1 (Passes 7 Gates as Scored)", "1 / 1 (Pasa las 7 Compuertas según el Puntaje)"),
                         ],
                     ],
                 },
                 {
                     "type": "p",
                     "en": (
-                        "Every deductive step of this crown architecture is machine-checked without external libraries in "
-                        "SevenGateCrown.lean (pure core Lean 4 Prelude, 0 imports, 0 sorry, 0 axioms, 0 vacuous x − x "
+                        "The integer algebra behind this scorecard is machine-checked without external libraries in SevenGateCrown.lean (pure core Lean 4 Prelude, 0 imports, 0 sorry, 0 axioms, 0 vacuous x − x "
                         "subtractions) and mirrored by 4 exact multivariate Fraction polynomial checks in our standalone "
-                        "Python verifier. Across 12 theorems, Lean certifies: (1) SI dimensional homogeneity of ρ_Λ, ℓ_Λ⁴, "
+                        "Python verifier. Across 12 theorems, Lean proves integer identities, inequalities, and finite table checks for: (1) SI dimensional homogeneity of ρ_Λ, ℓ_Λ⁴, "
                         "ℏ/(mc), Gm²/r, c⁴/G, and Gm²t/(ℏr); (2) unique integer hypercharges {u, d} = {−4, +2} and e = 6; "
                         "(3) irrational charge failure 3³ < 54 < 4³ when [Grav]²U(1)_Y = 0 is omitted plus the vectorlike "
                         "(0, u, −u, 0, 0) branch; (4) Gell-Mann–Nishijima Hydrogen neutrality; (5) Spin(10) 15 + 1 = 16 "
-                        "counting, Tr(y_int²) = 120, and Jackiw–Rebbi sign reversal; (6) Jacobson null-ray vacuum decoupling; "
+                        "counting, Tr(y_int²) = 120, and Jackiw–Rebbi sign reversal; (6) the algebraic identity that a term proportional to the metric contracts to 0 on null vectors (the step used in Jacobson's argument); "
                         "(7) the 8-point micrometre scale ordering 27.22 < 32.98 < 38.60 < 44.95 < 52.00 < 75.00 < 84.89 < "
                         "88.11 µm; (8) Stelle's residue −1 versus Weierstrass quadratic positivity; (9) erf origin square "
                         "completion 3(480 − 40u + 3u²) = (3u − 20)² + 1040 ≥ 1040; (10) the Mermin entanglement margin "
-                        "22,109 × 3,298 < 10,000 × 7,500; (11) the 2 survivors of Gates G1–G6; and (12) the unique 7-gate "
-                        "crown corridor nonlocalChiralHorizonCrown."
+                        "22,109 × 3,298 < 10,000 × 7,500; (11) that 2 rows of the hand-entered table pass G1–G6; and (12) that only the nonlocalChiralHorizonCrown row passes all 7. Items (7), (10), (11), and (12) take their numbers and PASS/FAIL entries as inputs; Lean does not derive them, and none of this is evidence that the crown model describes nature."
                     ),
                     "es": (
-                        "Cada paso deductivo de esta arquitectura corona está verificado mecánicamente sin bibliotecas "
-                        "externas en SevenGateCrown.lean (Lean 4 Prelude puro, 0 imports, 0 sorry, 0 axiomas, 0 restas vacuas "
+                        "El álgebra entera detrás de esta tabla de puntaje está verificada mecánicamente sin bibliotecas externas en SevenGateCrown.lean (Lean 4 Prelude puro, 0 imports, 0 sorry, 0 axiomas, 0 restas vacuas "
                         "x − x) y respaldado por 4 identidades polinomiales exactas sobre Fraction en nuestro verificador "
-                        "independiente en Python. En 12 teoremas, Lean certifica: (1) homogeneidad dimensional SI de ρ_Λ, "
+                        "independiente en Python. En 12 teoremas, Lean prueba identidades enteras, desigualdades y comprobaciones finitas de tabla para: (1) homogeneidad dimensional SI de ρ_Λ, "
                         "ℓ_Λ⁴, ℏ/(mc), Gm²/r, c⁴/G y Gm²t/(ℏr); (2) unicidad entera {u, d} = {−4, +2} y e = 6; (3) falla "
                         "irracional 3³ < 54 < 4³ al omitir [Grav]²U(1)_Y = 0 y la rama vectorial (0, u, −u, 0, 0); (4) "
                         "neutralidad del hidrógeno de Gell-Mann–Nishijima; (5) conteo Spin(10) 15 + 1 = 16, Tr(y_int²) = 120 "
-                        "e inversión de signo de Jackiw–Rebbi; (6) desacoplamiento nulo de Jacobson; (7) el orden de 8 escalas "
+                        "e inversión de signo de Jackiw–Rebbi; (6) la identidad algebraica de que un término proporcional a la métrica se contrae a 0 sobre vectores nulos (el paso usado en el argumento de Jacobson); (7) el orden de 8 escalas "
                         "27.22 < 32.98 < 38.60 < 44.95 < 52.00 < 75.00 < 84.89 < 88.11 µm; (8) el residuo −1 de Stelle frente "
                         "a la positividad cuadrática de Weierstrass; (9) completación del cuadrado erf 3(480 − 40u + 3u²) = "
-                        "(3u − 20)² + 1040 ≥ 1040; (10) el margen de Mermin 22,109 × 3,298 < 10,000 × 7,500; (11) los 2 "
-                        "sobrevivientes de G1–G6; y (12) el corredor único de 7 compuertas nonlocalChiralHorizonCrown."
+                        "(3u − 20)² + 1040 ≥ 1040; (10) el margen de Mermin 22,109 × 3,298 < 10,000 × 7,500; (11) que 2 filas de la tabla capturada a mano pasan G1–G6; y (12) que solo la fila nonlocalChiralHorizonCrown pasa las 7. Los incisos (7), (10), (11) y (12) toman sus números y entradas PASA/FALLA como insumos; Lean no los deriva, y nada de esto es evidencia de que el modelo corona describa la naturaleza."
                     ),
                 },
             ],
@@ -1471,15 +1450,15 @@ ESSAY: dict = {
             ),
         },
         {
-            "label_en": "Sidenote 2 · Null Horizons Ignore ρ_vac Yet Exclude Fat Gravitons",
-            "label_es": "Nota al Margen 2 · El Horizonte Nulo Ignora ρ_vac y Refuta el Gravitón Grueso",
+            "label_en": "Sidenote 2 · Null Horizons Ignore ρ_vac; Our Recast Disfavors an 85 µm Cutoff",
+            "label_es": "Nota al Margen 2 · El Horizonte Nulo Ignora ρ_vac; Nuestra Proyección Desfavorece un Corte de 85 µm",
             "en": (
                 "Along g_μν k^μ k^ν = 0, T_μν^vac = −ρ_vac g_μν contributes 0 to horizon focusing, whereas cutting off "
-                "gravity at ℓ_Λ = 84.89–88.11 µm violates Eöt-Wash's 32.98 µm signed Schur bound."
+                "gravity at ℓ_Λ = 84.89–88.11 µm lies above our 32.98 µm signed Schur recast bound (DERIVED, NOT MEASURED)."
             ),
             "es": (
                 "Sobre g_μν k^μ k^ν = 0, T_μν^vac = −ρ_vac g_μν aporta 0 al enfoque del horizonte, mientras cortar la "
-                "gravedad en ℓ_Λ = 84.89–88.11 µm viola la cota con signo de Schur de 32.98 µm."
+                "gravedad en ℓ_Λ = 84.89–88.11 µm queda por encima de nuestra cota proyectada de Schur con signo de 32.98 µm (DERIVADO, NO MEDIDO)."
             ),
         },
         {
@@ -1601,8 +1580,8 @@ ESSAY: dict = {
             "citation": "Biswas, T., Gerwick, E., Koivisto, T., & Mazumdar, A. — Towards Singularity- and Ghost-Free Theories of Gravity, Physical Review Letters 108(3), 031101",
             "doi": "10.1103/physrevlett.108.031101",
             "year": 2012,
-            "role_en": "Proves via Weierstrass factorization that root-free entire form factor F(ℓ_*²q²) = exp(ℓ_*²q²) yields ghost-free erf(r / 2ℓ_*)/r gravity.",
-            "role_es": "Demuestra por Weierstrass que el factor entero sin raíces F(ℓ_*²q²) = exp(ℓ_*²q²) produce gravedad erf(r / 2ℓ_*)/r sin fantasmas.",
+            "role_en": "Argues via Weierstrass factorization that a root-free entire form factor F(ℓ_*²q²) = exp(ℓ_*²q²) yields erf(r / 2ℓ_*)/r gravity without tree-level ghosts.",
+            "role_es": "Argumenta por Weierstrass que el factor entero sin raíces F(ℓ_*²q²) = exp(ℓ_*²q²) produce gravedad erf(r / 2ℓ_*)/r sin fantasmas a nivel árbol.",
         },
         {
             "id": "ES11-BARATO2015",
