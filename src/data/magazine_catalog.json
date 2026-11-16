@@ -477,7 +477,7 @@
           {
             "edition": "REV 1.2",
             "date": "2026-11-14",
-            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. The certification claims on the specification plate (Passive House, Eurovent, EN 308), the \"zero pathogen crossover\" and \">99.6% aerosol\" claims, and the advice about equipment for bedrooms of people with Cystic Fibrosis were withdrawn as unsourced; the airway link is now an analogy. A chronology entry that dated the 1960 Journal of Applied Mechanics record to 1986 was corrected, the invented 1915 and 1955 scenes were replaced with plain dates, and the frost limit is now labelled as an illustrative linear estimate.",
+            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. Unverified compliance claims on the specification plate (Passive House, Eurovent, EN 308), the \"zero pathogen crossover\" and \">99.6% aerosol\" claims, and the advice about equipment for bedrooms of people with Cystic Fibrosis were withdrawn as unsourced; the airway link is now an analogy. A chronology entry that dated the 1960 Journal of Applied Mechanics record to 1986 was corrected, the invented 1915 and 1955 scenes were replaced with plain dates, and the frost limit is now labelled as an illustrative linear estimate.",
             "opus": "Review: every DOI in the folio was checked in Crossref and the Scite index on 2026-11-14, and the repository names with the GitHub API. No simulation or test was run for this folio; the effectiveness values follow from epsilon = NTU / (1 + NTU)."
           },
           {
