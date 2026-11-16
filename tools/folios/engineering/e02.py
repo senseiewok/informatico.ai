@@ -436,10 +436,10 @@ ES_TRANSLATION = {'title_es': 'Reología de Esfuerzo de Fluencia de Herschel–B
             'el gradiente de presión supera el umbral de fluencia, se genera un perfil de flujo '
             'tapón donde el núcleo central se traslada sin deformarse. El concreto real, además, '
             'forma una capa lubricante de pasta junto a la pared, que este modelo no incluye. '
-            'Sin embargo, si la presión cae por debajo de '
+            'Si la presión cae por debajo de '
             'este límite crítico o si el concreto reposa durante una pausa de colocación, los '
             'enlaces de hidratación aumentan el esfuerzo de fluencia en reposo, y reiniciar el '
             'bombeo puede requerir más presión. Como propuesta, no como práctica establecida, '
             'los sensores de presión de la línea podrían alimentar un modelo reológico que avise '
             'cuando el tapón se acerque a llenar el tubo. Esta página ofrece ese modelo como '
-            'herramienta de aprendizaje; ningún modelo garantiza una colocación.'}
+            'herramienta de aprendizaje; ningún cálculo sustituye las pruebas de colocación.'}
