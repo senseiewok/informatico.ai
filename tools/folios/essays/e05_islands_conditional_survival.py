@@ -515,7 +515,7 @@ ESSAY: dict = {
         "intact signal at step 6—what paid for that order? In harmonized natural units (nats), three distinct "
         "mechanisms often get conflated: a unitary quantum-extremal-surface saddle switch at 2.079 nats with 0% "
         "discarded runs, an undressed detector subalgebra that hides purity up to 4.159 nats with 0% discarded runs, "
-        "and a Doob h-transform that guarantees conditional survival across gamma = 0.25 hazards only by discarding "
+        "and a Doob h-transform that yields conditional survival across gamma = 0.25 hazards only by discarding "
         "82.20% of trajectories at a path-space cost of 1.726 nats."
     ),
     "standfirst_es": (
@@ -706,7 +706,7 @@ ESSAY: dict = {
                     "type": "p",
                     "en": (
                         "Begin with Don Page's two 1993 theorems (DERIVED mathematical physics). In Physical Review "
-                        "Letters 71, 1291 (1993), Page proved that if a bipartite Hilbert space of total dimension "
+                        "Letters 71, 1291 (1993), Page derived that if a bipartite Hilbert space of total dimension "
                         "m · n (with m ≤ n) sits in a Haar-random pure state, the average von Neumann entropy of "
                         "the smaller m-dimensional subsystem is S_Page(m, n) = Σ_{j=n+1}^{mn} (1 / j) − (m − 1) / (2n) "
                         "nats. Four months later, in Physical Review Letters 71, 3743 (1993), he applied that "
@@ -721,7 +721,7 @@ ESSAY: dict = {
                     ),
                     "es": (
                         "Comencemos con los dos teoremas de Don Page de 1993 (física matemática DERIVADA). En "
-                        "Physical Review Letters 71, 1291 (1993), Page demostró que si un espacio de Hilbert "
+                        "Physical Review Letters 71, 1291 (1993), Page derivó que si un espacio de Hilbert "
                         "bipartito de dimensión m · n (con m ≤ n) ocupa un estado puro aleatorio de Haar, la "
                         "entropía media de von Neumann del subsistema menor es S_Page(m, n) = Σ_{j=n+1}^{mn} "
                         "(1 / j) − (m − 1) / (2n) nats. Cuatro meses después, en Physical Review Letters 71, 3743 "
@@ -1253,7 +1253,7 @@ ESSAY: dict = {
             "doi": "10.1103/physrevlett.71.3743",
             "year": 1993,
             "role_en": "Shows unitary black-hole evaporation requires radiation entropy to turn over at the halfway point.",
-            "role_es": "Demuestra que la evaporación unitaria exige que la entropía de radiación gire a mitad del proceso.",
+            "role_es": "Muestra que la evaporación unitaria exige que la entropía de radiación gire a mitad del proceso.",
         },
         {
             "id": "ES05-CHETRITE2015",
@@ -1284,8 +1284,8 @@ ESSAY: dict = {
             "citation": "Penington, G. — Entanglement wedge reconstruction and the information paradox, Journal of High Energy Physics 2020(9), 002",
             "doi": "10.1007/jhep09(2020)002",
             "year": 2020,
-            "role_en": "Proves entanglement wedge reconstruction and generalized-entropy saddle switching in evaporating horizons.",
-            "role_es": "Demuestra la reconstrucción de la cuña de entrelazamiento y el cambio de silla en horizontes evaporantes.",
+            "role_en": "Derives entanglement wedge reconstruction and generalized-entropy saddle switching in evaporating horizons.",
+            "role_es": "Deriva la reconstrucción de la cuña de entrelazamiento y el cambio de silla en horizontes evaporantes.",
         },
         {
             "id": "ES05-LEE2022",
@@ -1293,7 +1293,7 @@ ESSAY: dict = {
             "doi": "10.1172/JCI154571",
             "year": 2022,
             "role_en": "Demonstrates in vitro reduction of premature termination hazard via release-factor eRF3a modulation.",
-            "role_es": "Demuestra in vitro la reducción del riesgo de terminación prematura modulando el factor eRF3a.",
+            "role_es": "Reporta in vitro la reducción del riesgo de terminación prematura modulando el factor eRF3a.",
         },
         {
             "id": "ES05-GENG2026",

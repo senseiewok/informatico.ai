@@ -1740,8 +1740,8 @@ def render_skill_box(essay: dict, is_es: bool = False) -> str:
     return f"""        <aside class="tp-plain-bridge-box tp-essay-skill-box" aria-label="{aria_skill}">
           {bi("span", "Portable AI SKILL.md & Deterministic Python Verifier", "Compañero SKILL.md Portable y Verificador en Python", "tp-plain-bridge-kicker")}
           {bi("p",
-              f"Run `python {vp}` locally (standard library only, zero network calls) to recompute every equation on this page, and `--planted-defect` to confirm the verifier fails closed when a regime or epistemic rule is broken.",
-              f"Ejecuta `python {vp}` localmente (solo biblioteca estándar, cero red) para recalcular cada ecuación de esta página, y `--planted-defect` para confirmar que el verificador falla en cerrado ante un defecto plantado.")}
+              f"Run `python {vp}` locally (standard library only, zero network calls) to recompute every equation on this page, and `--planted-defect` to check that the verifier fails closed when a regime or epistemic rule is broken.",
+              f"Ejecuta `python {vp}` localmente (solo biblioteca estándar, cero red) para recalcular cada ecuación de esta página, y `--planted-defect` para comprobar que el verificador falla en cerrado ante un defecto plantado.")}
           <p class="tp-series-rack-ctas">
             <a class="tp-cta" href="{a(gh_skill)}" target="_blank" rel="noopener noreferrer"><code>{t(sp)}</code> →</a>
             <a class="tp-cta" href="{a(gh_ver)}" target="_blank" rel="noopener noreferrer"><code>{t(vp)}</code> →</a>
