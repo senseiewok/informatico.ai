@@ -121,34 +121,55 @@ function initRace() {
   };
   const slowest = Math.max(...ghosts.map((g) => Number(g.dataset.secs)));
   let raf = 0;
+  let state = "idle"; // idle | running | snapshot | done
+  const initialEs = isEs();
+  const gapStr = () => (gapDec > 0 ? (slowest - fastest).toFixed(gapDec) : String(Math.round(slowest - fastest)));
+  const paintReadout = () => {
+    if (state === "idle") {
+      if (readout.dataset.en && readout.dataset.es) readout.textContent = L(readout.dataset.en, readout.dataset.es);
+    } else if (state === "running") {
+      readout.textContent = L("Green flag.", "Bandera verde.");
+    } else if (state === "snapshot") {
+      readout.textContent = L(
+        `Snapshot as the quickest car crosses the line at ${fmt(fastest)}; the others are short of it by their gap.`,
+        `Instantánea cuando el auto más rápido cruza la meta en ${fmt(fastest)}; los demás quedan atrás por su diferencia.`);
+    } else if (state === "done") {
+      readout.textContent = L(
+        `All eight home. First: ${fmt(fastest)}. Last: ${fmt(slowest)}. Gap: ${gapStr()} s.`,
+        `Los ocho en la meta. Primero: ${fmt(fastest)}. Último: ${fmt(slowest)}. Diferencia: ${gapStr()} s.`);
+    }
+    if (state !== "idle") {
+      btn.textContent = (isEs() === initialEs && btn.dataset.labelAgain) ? btn.dataset.labelAgain : L("Run it again", "Repetir");
+    } else {
+      btn.textContent = (isEs() === initialEs && btn.dataset.labelStart) ? btn.dataset.labelStart : L("Start the race", "Iniciar carrera");
+    }
+  };
   const run = () => {
     window.cancelAnimationFrame(raf);
     if (reduceMotion.matches) {
       snapshot();
-      readout.textContent = L(
-        `Snapshot as the quickest car crosses the line at ${fmt(fastest)}; the others are short of it by their gap.`,
-        `Instantánea cuando el auto más rápido cruza la meta en ${fmt(fastest)}; los demás quedan atrás por su diferencia.`);
-      btn.textContent = btn.dataset.labelAgain;
+      state = "snapshot";
+      paintReadout();
       return;
     }
     const t0 = performance.now();
-    readout.textContent = L("Green flag.", "Bandera verde.");
+    state = "running";
+    paintReadout();
     const tick = (now) => {
       const simSecs = ((now - t0) / 1000) * COMPRESS;
-      ghosts.forEach((g) => place(g, simSecs / Number(g.dataset.secs)));
       if (simSecs < slowest) {
+        ghosts.forEach((g) => place(g, simSecs / Number(g.dataset.secs)));
         raf = window.requestAnimationFrame(tick);
       } else {
-        const gap = gapDec > 0 ? (slowest - fastest).toFixed(gapDec) : String(Math.round(slowest - fastest));
-        readout.textContent = L(
-          `All eight home. First: ${fmt(fastest)}. Last: ${fmt(slowest)}. Gap: ${gap} s.`,
-          `Los ocho en la meta. Primero: ${fmt(fastest)}. Último: ${fmt(slowest)}. Diferencia: ${gap} s.`);
-        btn.textContent = btn.dataset.labelAgain;
+        ghosts.forEach((g) => place(g, 1));
+        state = "done";
+        paintReadout();
       }
     };
     raf = window.requestAnimationFrame(tick);
   };
   btn.addEventListener("click", run);
+  window.addEventListener("tp-lang-change", paintReadout);
 }
 
 // ---------------------------------------------------------------- differential bench (schematic, illustrative)
@@ -535,12 +556,21 @@ function initLightbox() {
     if (capEl) capEl.textContent = L(d.capEn || "", d.capEs || "");
   };
 
+  const openFor = (id, trigger) => {
+    openerEl = trigger;
+    const idx = items.findIndex((x) => x.id === id);
+    showAt(idx >= 0 ? idx : 0);
+    if (typeof dialog.showModal === "function") dialog.showModal();
+  };
+
   openers.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      openerEl = btn;
-      const idx = items.findIndex((x) => x.id === btn.dataset.ccOpenMedia);
-      showAt(idx >= 0 ? idx : 0);
-      if (typeof dialog.showModal === "function") dialog.showModal();
+    btn.addEventListener("click", () => openFor(btn.dataset.ccOpenMedia, btn));
+  });
+  document.querySelectorAll("[data-cc-open-media-frame]").forEach((frame) => {
+    frame.addEventListener("click", () => {
+      const card = frame.closest(".cc-media-card");
+      const btn = card && card.querySelector("[data-cc-open-media]");
+      openFor(frame.dataset.ccOpenMediaFrame, btn || frame);
     });
   });
   if (prevBtn) prevBtn.addEventListener("click", () => showAt(activeIndex - 1));

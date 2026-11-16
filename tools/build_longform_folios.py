@@ -2005,9 +2005,10 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
             <ol>
             {tg_items_html}
             </ol>
-          </section>
+          </section>"""
+    eng_series_html = f"""
           <section class="tp-contents-series" aria-label="Cult Classics">
-            <h3><a href="{_href(rel_res, 'classics/golf-gti/')}" data-en="Applied Mechanics · Cult Classics" data-es="Mecánica Aplicada · Clásicos de Culto">Applied Mechanics · Cult Classics</a></h3>
+            <h3><a href="{_href(rel_res, 'engineering/#cult-classics-eng')}" data-en="Applied Mechanics · Cult Classics" data-es="Mecánica Aplicada · Clásicos de Culto">Applied Mechanics · Cult Classics</a></h3>
             <ol>
             <li data-contents-bounty-item data-search="cc.01 golf gti one brief eight answers un reto ocho respuestas"><a href="{_href(rel_res, 'classics/golf-gti/')}"{' aria-current="page"' if active_slug == "golf-gti" else ""}><span class="tp-contents-id">CC.01</span> <span class="tp-contents-title" data-en="One Brief, Eight Answers: the Golf GTI" data-es="Un reto, ocho respuestas: el Golf GTI">One Brief, Eight Answers: the Golf GTI</span></a></li>
             <li data-contents-bounty-item data-search="cc.03 mini jcw john cooper works hot chili wheels at the corners ruedas en las esquinas brands hatch"><a href="{_href(rel_res, 'classics/mini-jcw/')}"{' aria-current="page"' if active_slug == "mini-jcw" else ""}><span class="tp-contents-id">CC.03</span> <span class="tp-contents-title" data-en="Wheels at the Corners: MINI to F56 JCW" data-es="Ruedas en las esquinas: del Mini al F56 JCW">Wheels at the Corners: MINI to F56 JCW</span></a></li>
@@ -2037,7 +2038,7 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
             )
         items_html = "\n            ".join(items)
         en, es = PILLAR_SHORT_TITLES[p_key], PILLAR_SHORT_TITLES_ES[p_key]
-        extra_col = tg_series_html if p_key == "physics" else (arch_series_html if p_key == "architecture" else "")
+        extra_col = {"engineering": eng_series_html, "architecture": arch_series_html, "physics": tg_series_html}.get(p_key, "")
         cols.append(
             f"""        <section class="tp-contents-col" data-pillar="{p_key}">
           <h3><a href="{_href(rel_res, p_key + "/")}" data-en="{esc(en)}" data-es="{esc(es)}">{esc(en)}</a></h3>
@@ -2321,7 +2322,7 @@ def render_timegravity_series_rack(rel_res: str) -> str:
 
 
 def render_cult_classics_rack(rel_res: str, section_id: str = "cult-classics") -> str:
-    """Applied mechanics showcase on /physics/ and /engineering/: the Cult Classics features (CC.01 & CC.03)."""
+    """Applied mechanics showcase on / and /engineering/: the Cult Classics features (CC.01 & CC.03)."""
     from folios.classics import cc01 as CC01  # noqa: E402
     from folios.classics import cc03 as CC03  # noqa: E402
     _t1, d1_en, _t1_es, d1_es = CC01.SEO
@@ -2422,8 +2423,7 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
     cards = render_rack_cards(pillar, folios, "./", "../plates/", eager=12)
     n = len(folios)
     if pillar == "physics":
-        lead_series = (render_timegravity_series_rack(rel_res) + render_cult_classics_rack(rel_res)
-                       + render_cross_scale_essays_showcase(rel_res, lang))
+        lead_series = render_timegravity_series_rack(rel_res) + render_cross_scale_essays_showcase(rel_res, lang)
         rack_cls = "tp-issue-rack tp-issue-rack-headed"
         rack_head = """      <div class="tp-issue-rack-head">
         <p class="tp-kicker" data-en="Standalone Physics Monographs · P.01–P.12" data-es="Monografías Independientes de Física · P.01–P.12">Standalone Physics Monographs · P.01–P.12</p>
@@ -2439,7 +2439,7 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
       </div>
 """
     elif pillar == "engineering":
-        lead_series = render_cult_classics_rack(rel_res, "cult-classics-eng")
+        lead_series = ""
         rack_cls = "tp-issue-rack tp-issue-rack-headed"
         rack_head = """      <div class="tp-issue-rack-head">
         <p class="tp-kicker" data-en="Standalone Engineering Monographs · E.01–E.12" data-es="Monografías Independientes de Ingeniería · E.01–E.12">Standalone Engineering Monographs · E.01–E.12</p>
@@ -2449,7 +2449,9 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
     else:
         lead_series, rack_cls, rack_head = "", "tp-issue-rack", ""
     extra_sections = ""
-    if pillar in ("physics", "math"):
+    if pillar == "engineering":
+        extra_sections = f"\n{render_cult_classics_rack(rel_res, 'cult-classics-eng')}"
+    elif pillar in ("physics", "math"):
         extra_sections = f"\n{render_symbolic_physics_lab_section(rel_res)}\n{render_oss_physics_radar_section(rel_res)}"
     kick_en = f"Pillar {PILLAR_ROMAN[pillar]} · {n} essays" + (" · 1 series of 14 steps" if pillar == "physics" else "")
     kick_es = f"Pilar {PILLAR_ROMAN[pillar]} · {n} ensayos" + (" · 1 serie de 14 pasos" if pillar == "physics" else "")
@@ -5534,7 +5536,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         <p class="tp-kicker" data-en="Pillar {PILLAR_ROMAN[p_key]} · {len(folios)} essays" data-es="Pilar {PILLAR_ROMAN[p_key]} · {len(folios)} ensayos">Pillar {PILLAR_ROMAN[p_key]} · {len(folios)} essays</p>
         <h2 id="pillar-{p_key}" class="tp-h2"><a href="{p_key}/" data-en="{esc(en)}" data-es="{esc(es_t)}">{esc(en)}</a></h2>
         <p class="tp-cover-hook" data-en="{esc(hook_en)}" data-es="{esc(hook_es)}">{esc(hook_en)}</p>
-        <a class="tp-cover-more" href="{p_key}/" data-en="See all {len(folios)} →" data-es="Ver los {len(folios)} →">See all {len(folios)} →</a>{'' if p_key != 'physics' else ' <a class="tp-cover-more" href="physics/#cult-classics" data-en="Cult Classics: CC.01 GTI &amp; CC.03 MINI JCW →" data-es="Clásicos de Culto: CC.01 GTI y CC.03 MINI JCW →">Cult Classics: CC.01 GTI &amp; CC.03 MINI JCW →</a>'}
+        <a class="tp-cover-more" href="{p_key}/" data-en="See all {len(folios)} →" data-es="Ver los {len(folios)} →">See all {len(folios)} →</a>{'' if p_key != 'engineering' else ' <a class="tp-cover-more" href="engineering/#cult-classics-eng" data-en="Cult Classics: CC.01 GTI &amp; CC.03 MINI JCW →" data-es="Clásicos de Culto: CC.01 GTI y CC.03 MINI JCW →">Cult Classics: CC.01 GTI &amp; CC.03 MINI JCW →</a>'}
       </div>
       <div class="tp-cover-row">
 {cards}
@@ -5573,7 +5575,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         <a class="tp-track-chip" href="engineering/">
           <span class="tp-track-chip-kicker" data-en="PILLAR I · 12 ESSAYS" data-es="PILAR I · 12 ENSAYOS">PILLAR I · 12 ESSAYS</span>
           <strong class="tp-track-chip-title" data-en="Engineering &amp; Construction" data-es="Ingeniería y Construcción">Engineering &amp; Construction</strong>
-          <span class="tp-track-chip-meta" data-en="12 Folios · Bridges, TBM, Seismic, SIMP" data-es="12 Folios · Puentes, TBM, Sismos, SIMP">12 Folios · Bridges, TBM, Seismic, SIMP</span>
+          <span class="tp-track-chip-meta" data-en="12 Folios · Bridges, TBM, SIMP · Cult Classics (CC.01 &amp; CC.03)" data-es="12 Folios · Puentes, TBM, SIMP · Clásicos (CC.01 y CC.03)">12 Folios · Bridges, TBM, SIMP · Cult Classics (CC.01 &amp; CC.03)</span>
         </a>
         <a class="tp-track-chip" href="architecture/">
           <span class="tp-track-chip-kicker" data-en="PILLAR II · 12 ESSAYS" data-es="PILAR II · 12 ENSAYOS">PILLAR II · 12 ENSAYOS</span>
@@ -5583,7 +5585,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         <a class="tp-track-chip" href="physics/">
           <span class="tp-track-chip-kicker" data-en="PILLAR III · 12 ESSAYS + 14-STEP SERIES" data-es="PILAR III · 12 ENSAYOS + SERIE DE 14 PASOS">PILLAR III · 12 ESSAYS + 14-STEP SERIES</span>
           <strong class="tp-track-chip-title" data-en="Multiscale &amp; Quantum Physics" data-es="Física Multiescala y Cuántica">Multiscale &amp; Quantum Physics</strong>
-          <span class="tp-track-chip-meta" data-en="Time &amp; Gravity (T.00–T.13) · Cult Classics (CC.01 &amp; CC.03)" data-es="Tiempo y Gravedad (T.00–T.13) · Clásicos (CC.01 y CC.03)">Time &amp; Gravity (T.00–T.13) · Cult Classics (CC.01 &amp; CC.03)</span>
+          <span class="tp-track-chip-meta" data-en="Time &amp; Gravity (T.00–T.13) · 11 Cross-Scale Essays" data-es="Tiempo y Gravedad (T.00–T.13) · 11 Ensayos entre Escalas">Time &amp; Gravity (T.00–T.13) · 11 Cross-Scale Essays</span>
         </a>
         <a class="tp-track-chip" href="math/">
           <span class="tp-track-chip-kicker" data-en="PILLAR IV · 15 ESSAYS" data-es="PILAR IV · 15 ENSAYOS">PILLAR IV · 15 ESSAYS</span>

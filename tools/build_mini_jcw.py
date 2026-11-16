@@ -134,11 +134,11 @@ def render_track_layers() -> str:
   </svg>"""
 
 
-# Schematic Brands Hatch Indy closed loop: Brabham Straight -> Paddock Hill -> Druids -> Graham Hill -> Cooper Straight -> Clearways
+# Schematic Brands Hatch Indy closed loop: Brabham Straight (start/finish flag at 252, 107) -> Paddock Hill -> Druids -> Graham Hill -> Cooper Straight -> Clearways -> Brabham Straight
 BRANDS_INDY_LOOP = (
-    "M 118 122 L 386 92 C 474 82 528 112 536 154 C 544 196 510 226 462 232 "
+    "M 252 107 L 386 92 C 474 82 528 112 536 154 C 544 196 510 226 462 232 "
     "L 420 238 C 384 244 374 270 398 294 L 440 330 C 464 352 454 398 386 392 "
-    "L 158 366 C 98 358 76 312 102 256 C 122 212 104 176 92 148 C 84 130 98 124 118 122 Z"
+    "L 158 366 C 98 358 76 312 102 256 C 122 212 104 176 92 148 C 84 130 98 124 118 122 L 252 107 Z"
 )
 
 
@@ -150,8 +150,8 @@ def render_laps_section(is_es: bool) -> str:
     for i, (_rid, era, car, year, ts, secs, driver, listed_mph, cfg, _skey) in enumerate(C.LAPS):
         hue = ("cc-dot-a", "cc-dot-b", "cc-dot-c", "cc-dot-d", "cc-dot-e", "cc-dot-f", "cc-dot-g", "cc-dot-h")[i]
         nolen = "" if cfg else " cc-ghost-nolen"
-        dots.append(f'<g class="cc-ghost {hue}{nolen}" data-secs="{secs}"><circle r="9" cx="118" cy="122"/>'
-                    f'<text x="118" y="125.5" text-anchor="middle">{i + 1}</text></g>')
+        dots.append(f'<g class="cc-ghost {hue}{nolen}" data-secs="{secs}"><circle r="9" cx="252" cy="107"/>'
+                    f'<text x="252" y="110.5" text-anchor="middle">{i + 1}</text></g>')
         legend.append(f'<li class="{hue}{nolen}"><span class="cc-ghost-key" aria-hidden="true">{i + 1}</span> {t(era)} · {t(car)} ({year})</li>')
         cfg_cell = cfg if cfg else ("en blanco" if is_es else "blank")
         mph_cell = listed_mph if listed_mph != "not stated" else ("no se indica" if is_es else "not stated")
@@ -170,7 +170,7 @@ def render_laps_section(is_es: bool) -> str:
             <title id="cc-loop-title">{t(svg_title)}</title>
             <path class="cc-loop-tar" d="{BRANDS_INDY_LOOP}"/>
             <path class="cc-loop-line" id="cc-loop-path" d="{BRANDS_INDY_LOOP}"/>
-            <line class="cc-loop-flag" x1="250" y1="90" x2="250" y2="122"/>
+            <line class="cc-loop-flag" x1="250" y1="89" x2="254" y2="125"/>
             <text class="cc-loop-corner" x="250" y="76" text-anchor="middle">Brabham Straight</text>
             <text class="cc-loop-corner" x="546" y="138" text-anchor="start">Paddock Hill</text>
             <text class="cc-loop-corner" x="492" y="250" text-anchor="start">Druids</text>
@@ -377,7 +377,7 @@ def render_media_figure(item: dict, is_es: bool, extra_cls: str = "", in_gallery
             <span class="{badge_cls}" data-en="{a(badge_en)}" data-es="{a(badge_es)}">{t(badge_es if is_es else badge_en)}</span>
             <button type="button" class="cc-btn cc-btn-quiet cc-zoom-btn"{zoom_attr} data-en="Inspect plate" data-es="Ampliar lámina">{t('Ampliar lámina' if is_es else 'Inspect plate')}</button>
           </div>
-          <div class="cc-media-frame">
+          <div class="cc-media-frame" data-cc-open-media-frame="{a(item['id'])}">
             <img src="../../{a(item['image'])}" width="{item['width']}" height="{item['height']}" loading="lazy" decoding="async" alt="{a(alt_txt)}" data-alt-en="{a(item['alt_en'])}" data-alt-es="{a(item['alt_es'])}">
           </div>
           <figcaption>{linked_caption(item, is_es)}</figcaption>
@@ -413,19 +413,27 @@ def render_card(card: dict, is_es: bool) -> str:
             f'{stamp(key)}</dd></div>'
         )
     egg = render_egg(is_es) if card.get("egg") else ""
-    photo_html = f'<div class="cc-inline-media">{render_media_figure(by_id[card["photo"]], is_es)}</div>' if card.get("photo") else ""
+    body_and_plate = f"""          {bi("p", card["body_en"], card["body_es"], "cc-card-body")}
+          <div class="cc-plate" role="group" aria-label="{a('Placa de especificaciones' if is_es else 'Spec plate')} {a(card['gen'])}">
+            <dl>{''.join(rows)}</dl>
+            <p class="cc-plate-foot" data-en="Read {a(C.ACCESSED)}" data-es="Consultado {a(C.ACCESSED)}">Read {t(C.ACCESSED)}</p>
+          </div>"""
+    if card.get("photo"):
+        inner = f"""          <div class="cc-card-split">
+            <div class="cc-card-main">
+{body_and_plate}
+            </div>
+{render_media_figure(by_id[card["photo"]], is_es, "cc-gen-figure")}
+          </div>"""
+    else:
+        inner = f"""{body_and_plate}
+{egg}"""
     return f"""        <article class="cc-card" id="{a(card['id'])}" data-gen="{a(card['gen'])}">
           <header class="cc-card-head">
             <p class="cc-card-gen"><span>{t(card['gen'])}</span> <span class="cc-card-years">{t(card['years'])}</span></p>
             {bi("h3", card["move_en"], card["move_es"], "cc-card-move")}
           </header>
-          {bi("p", card["body_en"], card["body_es"], "cc-card-body")}
-          <div class="cc-plate" role="group" aria-label="{a('Placa de especificaciones' if is_es else 'Spec plate')} {a(card['gen'])}">
-            <dl>{''.join(rows)}</dl>
-            <p class="cc-plate-foot" data-en="Read {a(C.ACCESSED)}" data-es="Consultado {a(C.ACCESSED)}">Read {t(C.ACCESSED)}</p>
-          </div>
-{photo_html}
-{egg}
+{inner}
         </article>"""
 
 
@@ -713,7 +721,7 @@ def render_page(catalog: dict, lang: str = "en") -> str:
     desc = d_es if is_es else d_en
     canon = B.page_url(PATH, lang)
     image = "https://informatico.ai/plates/cc03.png"
-    crumbs = [(BRAND, B.page_url("", lang)), ("Física" if is_es else "Physics", B.page_url("physics/", lang)), (C.CODE, canon)]
+    crumbs = [(BRAND, B.page_url("", lang)), ("Ingeniería" if is_es else "Engineering", B.page_url("engineering/", lang)), (C.CODE, canon)]
     ld = B._ld("ScholarlyArticle", title, desc, canon, lang, image=image, date_published=C.DATE,
                date_modified=C.DATE, crumbs=crumbs)
     head = B.render_head(f"{title} | {BRAND}", desc, PATH, "article", image, rel, rel, ld, lang)
@@ -747,14 +755,14 @@ def render_page(catalog: dict, lang: str = "en") -> str:
         </aside>"""
     return f"""{head}
 <body class="tp-body tp-page-folio cc-page cc-page-mini">
-{B.render_masthead(rel, "physics", lang)}
+{B.render_masthead(rel, "engineering", lang)}
 {B.render_contents_dialog(rel, catalog, C.SLUG)}
 {render_parade()}
   <main id="main" class="tp-shell cc-shell" tabindex="-1">
     <nav class="tp-breadcrumb-bar" aria-label="{aria_crumb}">
       <ol class="tp-breadcrumb-list">
         <li class="tp-crumb-item"><a class="tp-crumb-link" href="../../">Informatico.ai</a></li>
-        <li class="tp-crumb-item"><a class="tp-crumb-link" href="../../physics/#cult-classics" data-en="Physics" data-es="Física">Physics</a></li>
+        <li class="tp-crumb-item"><a class="tp-crumb-link" href="../../engineering/#cult-classics-eng" data-en="Engineering" data-es="Ingeniería">{"Ingeniería" if is_es else "Engineering"}</a></li>
         <li class="tp-crumb-item" aria-current="page"><span>{t(C.CODE)}</span></li>
       </ol>
     </nav>
