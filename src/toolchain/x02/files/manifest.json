@@ -61,8 +61,8 @@
     {
       "filename": "x02_artifact.3mf",
       "format": "3MF Core 1.2.3",
-      "bytes": 1775,
-      "sha256": "3c2014160dce4f63f26a3e2e539aa9c074015732092aa79229561f0b1d026b05"
+      "bytes": 1773,
+      "sha256": "5de5dcaeac7b090d12052e27b09b63f8c068a1b0fb962619e7665c449e637c1a"
     }
   ],
   "fuzz_fixtures": []

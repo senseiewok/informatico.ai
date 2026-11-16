@@ -22,6 +22,8 @@ import json
 import math
 import struct
 import zipfile
+import xml.etree.ElementTree as ET
+from xml.sax.saxutils import escape as xml_escape
 from pathlib import Path
 from typing import Any
 
@@ -445,13 +447,13 @@ def write_3mf(
         f'          <triangle v1="{i0}" v2="{i1}" v3="{i2}"/>'
         for i0, i1, i2 in triangles
     ]
-    prov_json = json.dumps(provenance, sort_keys=True).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    prov_json = xml_escape(json.dumps(provenance, sort_keys=True))
     model_xml = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<model unit="millimeter" xml:lang="en-US" xmlns="http://schemas.microsoft.com/3dmanufacturing/core/2015/02">\n'
-        f'  <metadata name="Title">{title}</metadata>\n'
+        f'  <metadata name="Title">{xml_escape(title)}</metadata>\n'
         '  <metadata name="License">CC0-1.0 / CC-BY-4.0 (Educational artifact; not certified for fitness)</metadata>\n'
-        f'  <metadata name="Boundary">{BOUNDARY_EN}</metadata>\n'
+        f'  <metadata name="Boundary">{xml_escape(BOUNDARY_EN)}</metadata>\n'
         f'  <metadata name="Provenance">{prov_json}</metadata>\n'
         '  <resources>\n'
         '    <object id="1" type="model">\n'
@@ -486,6 +488,23 @@ def write_3mf(
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(raw)
     return raw
+
+
+NS_3MF_CORE = "http://schemas.microsoft.com/3dmanufacturing/core/2015/02"
+
+
+def parse_3mf_model(model_bytes: bytes, name: str) -> ET.Element:
+    """Parse a 3MF model part as strict XML; raise AssertionError if a 3MF reader would refuse it."""
+    try:
+        root = ET.fromstring(model_bytes)
+    except ET.ParseError as exc:
+        raise AssertionError(f"{name} 3D/3dmodel.model is not well-formed XML: {exc}") from exc
+    if root.tag != f"{{{NS_3MF_CORE}}}model":
+        raise AssertionError(f"{name} 3D/3dmodel.model root is {root.tag}, not a 3MF core <model>")
+    ns = {"m": NS_3MF_CORE}
+    if not root.findall("m:resources/m:object/m:mesh/m:triangles/m:triangle", ns):
+        raise AssertionError(f"{name} 3D/3dmodel.model has no triangles")
+    return root
 
 
 def write_step_ap242(
@@ -1373,8 +1392,7 @@ def verify_folio_assets(
             with zipfile.ZipFile(io.BytesIO(raw), "r") as zf:
                 names = set(zf.namelist())
                 assert "3D/3dmodel.model" in names, f"{fp.name} missing 3D/3dmodel.model"
-                model_xml = zf.read("3D/3dmodel.model").decode("utf-8")
-                assert "<mesh>" in model_xml and "<triangles>" in model_xml, f"{fp.name} missing mesh XML"
+                parse_3mf_model(zf.read("3D/3dmodel.model"), fp.name)
         elif fp.suffix == ".dxf":
             txt = raw.decode("utf-8")
             assert "SECTION" in txt and "ENTITIES" in txt and "EOF" in txt, f"{fp.name} invalid DXF structure"
@@ -1510,6 +1528,20 @@ def verify_folio_assets(
     if mutated_topo["is_watertight"]:
         raise AssertionError(f"Planted-defect knockout failed to break manifoldness on {slug}!")
 
+    # 7. Planted-defect knockout for 3MF XML: a raw "&" in metadata must be refused by the parser.
+    bad_model = (
+        '<?xml version="1.0" encoding="UTF-8"?>'
+        f'<model unit="millimeter" xmlns="{NS_3MF_CORE}"><metadata name="Title">A & B</metadata>'
+        '<resources><object id="1" type="model"><mesh><vertices><vertex x="0" y="0" z="0"/></vertices>'
+        '<triangles><triangle v1="0" v2="0" v3="0"/></triangles></mesh></object></resources></model>'
+    ).encode("utf-8")
+    try:
+        parse_3mf_model(bad_model, "planted-defect")
+    except AssertionError:
+        xml_knockout = "REJECTED_AS_EXPECTED"
+    else:
+        raise AssertionError(f"3MF XML planted-defect knockout was accepted on {slug}!")
+
     out_payload: dict[str, Any] = {
         "status": "PASS",
         "folio_id": manifest["folio_id"],
@@ -1528,6 +1560,7 @@ def verify_folio_assets(
             "relative_volume_error": round(rel_vol_err, 8),
             "planted_defect_knockout": "REJECTED_AS_EXPECTED",
             "fuzz_fixtures_rejected": fuzz_rejected,
+            "threemf_xml_planted_defect": xml_knockout,
         },
         "verified_files": [f["filename"] for f in manifest["files"]],
     }
