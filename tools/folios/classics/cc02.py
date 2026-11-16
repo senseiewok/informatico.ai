@@ -1,12 +1,13 @@
 """CC.02 · One Stone Forest, Eight Moves — La Sagrada Família as an Engineering & Human Story (single source of truth).
 
 Every factual claim on the page sits beside a primary source verified on 2026-11-15: official Basílica de la Sagrada
-Família pages (live HTTP 200), Ingenia / Royal Academy of Engineering reporting, and 15 peer-reviewed articles checked in
-Crossref and Scite on 2026-11-15 (zero retractions).
+Família pages (live HTTP 200), Ingenia / Royal Academy of Engineering reporting, 24 peer-reviewed articles checked in
+Crossref and Scite on 2026-11-15 (zero retractions), and 9 non-ShareAlike Wikimedia Commons photographs (PD / CC0 / CC BY).
 
 - Model inputs for interactive benches live in tools/folios/classics/cc02_mechanics.py and are marked MODEL.
-- General mechanics and acoustics papers (Heyman 1966, Akbarzadeh et al. 2015, Eyring 1930) explain general principles
-  and did not test the Sagrada Família; the page states this beside each reference.
+- Comparative architectural and mechanics papers (Collins 1963, Heyman 1966, Block et al. 2006, Pedreschi 2007,
+  Cassinello et al. 2010, Veenendaal & Block 2012, Liddell 2015, Akbarzadeh et al. 2015, Eyring 1930) explain general
+  principles or parallel shell lineages outside the Basílica; the page states this beside each reference.
 - Anything a source does not state is labeled "not stated" and summarized in SILENT.
 """
 from __future__ import annotations
@@ -174,6 +175,67 @@ SOURCES = {
         "label": "Eyring, C. F. (1930). Reverberation Time in “Dead” Rooms. Journal of the Acoustical Society of America 1(2A), 217–241",
         "url": "https://doi.org/10.1121/1.1901884",
     },
+    "collins1963": {
+        "short": "Collins 1963",
+        "kind": "paper",
+        "label": "Collins, G. R. (1963). Antonio Gaudi: Structure and Form. Perspecta 8, 63",
+        "url": "https://doi.org/10.2307/1566905",
+    },
+    "tomlow1989": {
+        "short": "Tomlow 1989",
+        "kind": "paper",
+        "label": "Tomlow, J. (1989). El modelo colgante de Gaudí y su reconstrucción. Nuevos conocimientos para el diseño de la Iglesia de la Colonia Güell. Informes de la Construcción 41(404), 57–72",
+        "url": "https://doi.org/10.3989/ic.1989.v41.i404.1490",
+    },
+    "block2006": {
+        "short": "Block et al. 2006",
+        "kind": "paper",
+        "label": "Block, P., DeJong, M. & Ochsendorf, J. (2006). As Hangs the Flexible Line: Equilibrium of Masonry Arches. Nexus Network Journal 8(2), 13–24",
+        "url": "https://doi.org/10.1007/s00004-006-0015-9",
+    },
+    "pedreschi2007": {
+        "short": "Pedreschi 2007",
+        "kind": "paper",
+        "label": "Pedreschi, R. & Theodossopoulos, D. (2007). The double-curvature masonry vaults of Eladio Dieste. Proceedings of the Institution of Civil Engineers – Structures and Buildings 160(1), 3–11",
+        "url": "https://doi.org/10.1680/stbu.2007.160.1.3",
+    },
+    "cassinello2010": {
+        "short": "Cassinello et al. 2010",
+        "kind": "paper",
+        "label": "Cassinello, P., Schlaich, M. & Torroja, J. A. (2010). Félix Candela. En memoria (1910–1997). Del cascarón de hormigón a las estructuras ligeras del s. XXI. Informes de la Construcción 62(519), 5–26",
+        "url": "https://doi.org/10.3989/ic.10.040",
+    },
+    "veenendaal2012": {
+        "short": "Veenendaal & Block 2012",
+        "kind": "paper",
+        "label": "Veenendaal, D. & Block, P. (2012). An overview and comparison of structural form finding methods for general networks. International Journal of Solids and Structures 49(26), 3741–3753",
+        "url": "https://doi.org/10.1016/j.ijsolstr.2012.08.008",
+    },
+    "liddell2015": {
+        "short": "Liddell 2015",
+        "kind": "paper",
+        "label": "Liddell, I. (2015). Frei Otto and the development of gridshells. Case Studies in Structural Engineering 4, 39–49",
+        "url": "https://doi.org/10.1016/j.csse.2015.08.001",
+    },
+    "samper2015": {
+        "short": "Samper & Herrera 2015",
+        "kind": "paper",
+        "label": "Samper, A. & Herrera, B. (2015). Análisis de comparación fractal de la Sagrada Familia con las Catedrales Góticas. Informes de la Construcción 67(538), e072",
+        "url": "https://doi.org/10.3989/ic.13.119",
+    },
+    "alambeigi2024": {
+        "short": "Alambeigi et al. 2024",
+        "kind": "paper",
+        "label": "Alambeigi, P., Burry, J. & Burry, M. (2024). Auralising the soundscape of Sagrada Família Basilica: a virtual journey through sound. Architectural Science Review 67(6), 529–539",
+        "url": "https://doi.org/10.1080/00038628.2024.2326471",
+    },
+    "commons-gaudi-1924": {
+        "short": "1924 Gaudí portrait",
+        "short_es": "Retrato Gaudí 1924",
+        "kind": "photo",
+        "label": "Wikimedia Commons, “File:Brangulí - Gaudí Corpus Cat BCN 1924.jpg” (Josep Brangulí, 19 June 1924, Barcelona Corpus Christi procession; Public Domain)",
+        "url": "https://commons.wikimedia.org/wiki/File:Brangul%C3%AD_-_Gaud%C3%AD_Corpus_Cat_BCN_1924.jpg",
+    },
     "commons-escoles-1909": {
         "short": "1909 Schools photo",
         "short_es": "Foto Escuelas 1909",
@@ -195,6 +257,13 @@ SOURCES = {
         "label": "Wikimedia Commons, “File:Sagrada Familia, Nativity facade (26) (30489118703).jpg” (Richard Mortel, 12 Nov 2016; Creative Commons CC BY 2.0)",
         "url": "https://commons.wikimedia.org/wiki/File:Sagrada_Familia,_Nativity_facade_(26)_(30489118703).jpg",
     },
+    "commons-passion": {
+        "short": "Passion photo",
+        "short_es": "Foto Pasión",
+        "kind": "photo",
+        "label": "Wikimedia Commons, “File:Sagrada Familia, Passion Facade (14) (30487598513).jpg” (Richard Mortel, 12 Nov 2016; Creative Commons CC BY 2.0)",
+        "url": "https://commons.wikimedia.org/wiki/File:Sagrada_Familia,_Passion_Facade_(14)_(30487598513).jpg",
+    },
     "commons-1988": {
         "short": "1988 site photo",
         "short_es": "Foto obra 1988",
@@ -208,6 +277,13 @@ SOURCES = {
         "kind": "photo",
         "label": "Wikimedia Commons, “File:Sagrada Familia Multiple Columns (5839245513).jpg” (Tony Hisgett; Creative Commons CC BY 2.0)",
         "url": "https://commons.wikimedia.org/wiki/File:Sagrada_Familia_Multiple_Columns_(5839245513).jpg",
+    },
+    "commons-stained-glass": {
+        "short": "Stained glass photo",
+        "short_es": "Foto vitrales",
+        "kind": "photo",
+        "label": "Wikimedia Commons, “File:Sagrada Familia, stained glass windows (4) (31150823672).jpg” (Richard Mortel, 12 Nov 2016; Creative Commons CC BY 2.0)",
+        "url": "https://commons.wikimedia.org/wiki/File:Sagrada_Familia,_stained_glass_windows_(4)_(31150823672).jpg",
     },
     "commons-2026-cross": {
         "short": "2026 cross photo",
@@ -241,6 +317,20 @@ BRIEF_NOTE = {
     "es": "¿Cómo logra un taller humano sostener una obra inconclusa durante 144 años de guerras, incendios, planos perdidos y canteras agotadas? Sustituyendo el capricho privado por una ley geométrica compartida, para que constructores separados por un siglo retomen las mismas líneas rectas.",
 }
 
+HERO_TRIBUTE = {
+    "kicker_en": "In Honor of the Architects & Craftspeople · 1882–2026",
+    "kicker_es": "En honor a los arquitectos y maestros de obra · 1882–2026",
+    "architects_label_en": "Head Architects & Engineers",
+    "architects_label_es": "Directores e Ingenieros de Obra",
+    "architects_en": "Francisco de Paula del Villar · Antoni Gaudí · Domènec Sugrañes · Francesc de Paula Quintana · Isidre Puig i Boada · Lluís Bonet i Garí · Francesc Cardoner · Jordi Bonet i Armengol · Mark Burry · Jordi Faulí · Tristram Carfrae (Arup)",
+    "architects_es": "Francisco de Paula del Villar · Antoni Gaudí · Domènec Sugrañes · Francesc de Paula Quintana · Isidre Puig i Boada · Lluís Bonet i Garí · Francesc Cardoner · Jordi Bonet i Armengol · Mark Burry · Jordi Faulí · Tristram Carfrae (Arup)",
+    "makers_label_en": "Trades & Artists",
+    "makers_label_es": "Oficios y Creadores",
+    "makers_en": "Coppersmith Francesc Gaudí i Serra · 1939 plaster modelers · Stonecutters, bricklayers, crane operators · Sculptors Josep Maria Subirachs, Etsuro Sotoo, Xavier Medina-Campeny, Andrea Mastrovito · Glassmaster Joan Vila-Grau · Organ builder Blancafort",
+    "makers_es": "El calderero Francesc Gaudí i Serra · yeseros de 1939 · canteros, albañiles y gruistas · escultores Subirachs, Etsuro Sotoo, Xavier Medina-Campeny y Andrea Mastrovito · vitralista Joan Vila-Grau · organeros Blancafort",
+    "src": ["sf-history", "sf-gaudi", "sf-cross-2026", "ingenia-arup"],
+}
+
 OPENING = [
     {
         "en": "On February 20, 2026, cranes high above Barcelona’s Eixample set the final 4.5 m × 4.5 m × 4.9 m upper arm onto a 17 m ceramic-and-glass cross atop the Tower of Jesus Christ, completing its exterior silhouette at 172.5 m ahead of the June 10, 2026 centenary inauguration—one hundred years to the day after Antoni Gaudí died, roughly 5.2 m below Montjuïc hill (177.7 m).",
@@ -272,6 +362,7 @@ GENERATIONS_RELAY = [
         "gift_en": "Replaced private sketches with 3D polyfunicular string models, ruled surfaces, the 1909 workers’ Schools, and the completed Saint Barnabas tower (1925) as a built physical key for successors.",
         "gift_es": "Sustituyó los croquis privados por maquetas funiculares de cordeles, superficies regladas, las Escuelas de 1909 para los hijos de los obreros y la torre de San Bernabé (1925) como clave física para sus sucesores.",
         "elevation": "Crypt 0 m → St. Barnabas ~100 m",
+        "media_id": "photo-gaudi-1924",
         "src": ["sf-history", "sf-gaudi", "sf-humanism", "adell2005"],
     },
     {
@@ -360,6 +451,7 @@ CARDS = [
             ("Early spatial craft", "Oficio espacial temprano", "Coppersmithing from 1860", "sf-gaudi"),
             ("Guiding nature rule", "Principio de naturaleza", "Workshop tree as teacher", "sf-humanism"),
         ],
+        "inline_media": "plate-reus-forge",
         "egg": False,
     },
     {
@@ -378,6 +470,7 @@ CARDS = [
             ("First completed spire", "Primera aguja culminada", "Saint Barnabas (1925)", "sf-history"),
             ("Early concrete use", "Primeros hormigones", "Non-structural pinnacles & cores", "grima2007"),
         ],
+        "inline_media": "photo-catenary-model",
         "egg": False,
     },
     {
@@ -396,6 +489,7 @@ CARDS = [
             ("Column rule & tree", "Regla de columna y giro", "H_total = 2n m · 1:10 ratio", "barrios2006"),
             ("Naturalistic canopies", "Óptica de bosque", "Scale-invariant nave spectra", "dyakova2025"),
         ],
+        "inline_media": "photo-1909-escoles",
         "egg": False,
     },
     {
@@ -414,6 +508,7 @@ CARDS = [
             ("Shard parametric key", "Clave paramétrica del yeso", "Small fragments encode (a, c)", "burry1996"),
             ("Formwork evolution", "Evolución de cimbras", "Timber strings to precast", "gomez2009"),
         ],
+        "inline_media": "plate-stereotomy-atelier",
         "egg": True,
     },
     {
@@ -432,6 +527,7 @@ CARDS = [
             ("Trencadís glaze", "Vidriado en pináculos", "Ceramic weather armor", "gomezramio2014"),
             ("High-flow concrete", "Hormigón autocompactante", "Tight hyperboloid rebar pours", "rodriguez2017"),
         ],
+        "inline_media": "photo-passion-facade",
         "egg": False,
     },
     {
@@ -450,6 +546,7 @@ CARDS = [
             ("Distributed sound", "Acústica distribuida", "Vaults & Blancafort organ", "zhaoburry2024"),
             ("Bell music studies", "Campanas tubulares", "Tower acoustic propagation", "yoshikawa2004"),
         ],
+        "inline_media": "photo-nave-columns",
         "egg": False,
     },
     {
@@ -468,6 +565,7 @@ CARDS = [
             ("Structural innovation", "Innovación estructural", "Prefabricated post-tensioned stone", "ingenia-arup"),
             ("2026 cross ceremony", "Ceremonia del centenario", "2026-02-20 cross · 2026-06-10 blessing", "sf-inauguration-2026"),
         ],
+        "inline_media": "plate-tensioned-crown",
         "egg": False,
     },
     {
@@ -486,6 +584,7 @@ CARDS = [
             ("3D graphic statics link", "Estática gráfica 3D", "Akbarzadeh et al. 2015 theory", "akbarzadeh2015"),
             ("Colònia Güell benchmark", "Referencia Colònia Güell", "Cortés et al. 2019 hypar survey", "cortes2019"),
         ],
+        "inline_media": "photo-2026-cross",
         "egg": False,
     },
 ]
@@ -625,13 +724,57 @@ PARTS = [
 EGG_BUTTON = {
     "hint_en": "Open the 1936 plaster-shard workshop drawer.",
     "hint_es": "Abrir el cajón de fragmentos de yeso de 1936.",
-    "button_en": "Compare 1988 construction site vs. 1936 plaster atelier",
-    "button_es": "Comparar obra de 1988 y obrador de yesos de 1936",
+    "button_en": "Read the 3-step Quintana–Burry shard recovery field note",
+    "button_es": "Leer el protocolo Quintana–Burry en 3 pasos para fragmentos de 1936",
     "close_en": "Fold the workshop drawer shut",
     "close_es": "Cerrar el cajón del obrador",
 }
 
+SHARD_DRAWER_NOTES = {
+    "title_en": "1936 Plaster-Shard Workshop Field Protocol · How Ruled Law Survived Fire",
+    "title_es": "Protocolo de Obrador 1936 · Cómo sobrevivió la ley reglada al incendio",
+    "intro_en": "After July 1936 left the 1:10 and 1:25 studio casts in rubble, Francesc Quintana’s team and later Mark Burry followed three repeatable geometric steps rather than guessing curves by hand:",
+    "intro_es": "Después de que julio de 1936 redujera las maquetas 1:10 y 1:25 a fragmentos, el equipo de Francesc Quintana y luego Mark Burry aplicaron tres pasos geométricos repetibles en lugar de adivinar curvas a pulso:",
+    "steps": [
+        (
+            "1 · Straightedge generator test",
+            "1 · Prueba de recta generatriz",
+            "Place a straight timber or brass rule across the unbroken inner gypsum face: pairs of zero-gap contact directions identify the two straight ruling families of a hyperboloid or saddle.",
+            "Apoyar una regla recta de madera o latón sobre la cara intacta de yeso: dos direcciones sin luz bajo la regla revelan las dos familias rectas de un hiperboloide o paraboloide.",
+        ),
+        (
+            "2 · Throat axis & asymptotic pitch",
+            "2 · Eje de garganta y pendiente asintótica",
+            "Measure chord radius pairs r(z₁) and r(z₂) along two surviving rings: fitting r²(z) = a² + (a²/c²)z² separates rotational curvature from local tilt without needing the missing crown.",
+            "Medir pares de radios r(z₁) y r(z₂) en dos anillos conservados: ajustar r²(z) = a² + (a²/c²)z² fija la garganta y su apertura sin poseer la corona.",
+        ),
+        (
+            "3 · Physical template & Boolean trim",
+            "3 · Plantilla física y corte booleano",
+            "Join reconstructed plaster sectors where adjacent hyperboloids and paraboloids meet along planar seams, yielding repeatable stonecutting bevels for workshop masons and CNC wires.",
+            "Unir los sectores de yeso reconstruidos donde hiperboloides y paraboloides intersectan en juntas limpias, generando chaflanes repetibles para canteros y sierras CNC.",
+        ),
+    ],
+    "src": ["sf-history", "burry1996", "gomez2009"],
+}
+
 PHOTOS = [
+    {
+        "id": "photo-gaudi-1924",
+        "kind": "photo",
+        "era": "19 June 1924",
+        "era_es": "19 de junio de 1924",
+        "license": "Public Domain · Josep Brangulí",
+        "author": "Josep Brangulí (1924)",
+        "image": "images/sagrada-familia/photo-1924-gaudi-branguli.jpg",
+        "width": 512,
+        "height": 720,
+        "alt_en": "Historical June 1924 photograph by Josep Brangulí showing 71-year-old silver-bearded Antoni Gaudí in dark coat walking in profile at Barcelona’s Corpus Christi procession.",
+        "alt_es": "Fotografía histórica de junio de 1924 por Josep Brangulí mostrando a Antoni Gaudí a los 71 años, de barba blanca y abrigo oscuro de perfil durante el Corpus Christi en Barcelona.",
+        "caption_en": "Archival photograph (June 19, 1924): Antoni Gaudí at age 71 walking beside citizens in Barcelona, dedicating his final decade exclusively to the Basílica (Josep Brangulí, Public Domain).",
+        "caption_es": "Fotografía histórica (19 de junio de 1924): Antoni Gaudí a los 71 años caminando por Barcelona tras dedicar sus últimos doce años exclusivamente al templo (Josep Brangulí, Dominio público).",
+        "src": ["commons-gaudi-1924", "sf-gaudi"],
+    },
     {
         "id": "photo-1909-escoles",
         "kind": "photo",
@@ -678,9 +821,25 @@ PHOTOS = [
         "src": ["commons-nativity", "sf-history"],
     },
     {
+        "id": "photo-passion-facade",
+        "kind": "photo",
+        "era": "1954–1976 / 2016",
+        "license": "CC BY 2.0 · Richard Mortel",
+        "author": "Richard Mortel (2016)",
+        "image": "images/sagrada-familia/photo-passion-facade.jpg",
+        "width": 1280,
+        "height": 853,
+        "alt_en": "Photograph looking up the western Passion facade showing inclined bone-like diagonal stone buttress struts, angular hyperbolic paraboloid vaults, and sculpted groups.",
+        "alt_es": "Fotografía mirando hacia lo alto en la fachada occidental de la Pasión mostrando las columnas inclinadas en forma ósea, bóvedas de paraboloides hiperbólicos y grupos escultóricos.",
+        "caption_en": "Site photograph: western Passion facade begun in 1954—inclined stone struts align outside the glazing along the thrust resultant under angular hypar soffits (Richard Mortel, CC BY 2.0).",
+        "caption_es": "Fotografía del templo: fachada de la Pasión iniciada en 1954, con columnas pétreas inclinadas alineadas con la resultante de empuje bajo paraboloides facetados (Richard Mortel, CC BY 2.0).",
+        "src": ["commons-passion", "sf-history"],
+    },
+    {
         "id": "photo-1988-site",
         "kind": "photo",
         "era": "Spring 1988",
+        "era_es": "Primavera de 1988",
         "license": "Public Domain · J Dykstra",
         "author": "J Dykstra (1988)",
         "image": "images/sagrada-familia/photo-1988-construction.jpg",
@@ -708,9 +867,26 @@ PHOTOS = [
         "src": ["commons-nave-interior", "sf-booklets"],
     },
     {
+        "id": "photo-stained-glass",
+        "kind": "photo",
+        "era": "2016 Interior Light",
+        "era_es": "2016 · Luz interior",
+        "license": "CC BY 2.0 · Richard Mortel",
+        "author": "Richard Mortel (2016)",
+        "image": "images/sagrada-familia/photo-stained-glass-light.jpg",
+        "width": 1280,
+        "height": 853,
+        "alt_en": "Interior photograph of Joan Vila-Grau’s stained glass windows rising through hyperboloid stone mullions in emerald green, azure blue, and warm amber.",
+        "alt_es": "Fotografía interior de los vitrales de Joan Vila-Grau ascendiendo entre parteluces hiperboloides de piedra en tonos verde esmeralda, azul y ámbar cálido.",
+        "caption_en": "Interior light photograph: Joan Vila-Grau’s stained-glass bays graded from lower warm amber and blue-violet to upper foliage greens inside faceted stone mullions (Richard Mortel, CC BY 2.0).",
+        "caption_es": "Fotografía de luz interior: vitrales de Joan Vila-Grau graduados desde ámbar y azul profundos hacia verdes altos entre parteluces pétreos reglados (Richard Mortel, CC BY 2.0).",
+        "src": ["commons-stained-glass", "zhaoburry2024"],
+    },
+    {
         "id": "photo-2026-cross",
         "kind": "photo",
         "era": "August 2026",
+        "era_es": "Agosto de 2026",
         "license": "CC0 1.0 Public Domain · Hokky",
         "author": "Hokky / ほっきー (2026)",
         "image": "images/sagrada-familia/photo-2026-completed-cross.jpg",
@@ -725,6 +901,20 @@ PHOTOS = [
 ]
 
 PLATES = [
+    {
+        "id": "plate-gaudi-sketch",
+        "kind": "render",
+        "era": "Frontispiece Tribute",
+        "era_es": "Lámina Frontal · Homenaje",
+        "image": "images/sagrada-familia/sagrada-gaudi-ink-sketch.jpg",
+        "width": 1280,
+        "height": 714,
+        "alt_en": "Conceptual visualization in 1920s ink crosshatch style imagining elderly Antoni Gaudí holding brass dividers beside drafted hanging catenary chains and ruled hyperboloid drawings on vellum (artistic homage, not an archival drawing by Gaudí).",
+        "alt_es": "Visualización conceptual a pluma y sepia que imagina a Antoni Gaudí mayor sosteniendo un compás de puntas junto a dibujos de cadenas catenarias y un hiperboloide reglado sobre papel crema (homenaje artístico, no es un dibujo original de Gaudí).",
+        "caption_en": "Conceptual visualization: hand-sketched frontispiece tribute honoring Antoni Gaudí and five generations of site architects beside inverted catenaries and straight-ruled hyperboloids (artistic homage, not a period sketch).",
+        "caption_es": "Visualización conceptual: lámina frontal a pluma en homenaje a Antoni Gaudí y a cinco generaciones de arquitectos junto a catenarias invertidas e hiperboloides reglados (homenaje artístico, no es dibujo de época).",
+        "src": ["sf-gaudi", "sf-history"],
+    },
     {
         "id": "plate-reus-forge",
         "kind": "render",
@@ -742,6 +932,7 @@ PLATES = [
         "id": "plate-nave-forest",
         "kind": "render",
         "era": "Interior Vision",
+        "era_es": "Visión interior",
         "image": "images/sagrada-familia/sagrada-nave-forest.jpg",
         "width": 1280,
         "height": 720,
@@ -755,6 +946,7 @@ PLATES = [
         "id": "plate-stereotomy-atelier",
         "kind": "render",
         "era": "1936–1985 Studio",
+        "era_es": "Obrador 1936–1985",
         "image": "images/sagrada-familia/sagrada-stereotomy-atelier.jpg",
         "width": 1280,
         "height": 720,
@@ -768,6 +960,7 @@ PLATES = [
         "id": "plate-tensioned-crown",
         "kind": "render",
         "era": "2016–2026 Stone Panels",
+        "era_es": "Paneles 2016–2026",
         "image": "images/sagrada-familia/sagrada-post-tensioned-crown.jpg",
         "width": 1280,
         "height": 720,
@@ -900,22 +1093,222 @@ RADAR_ERAS = [
 ]
 
 VISUAL_GALLERY_TEXT = {
-    "kicker_en": "All Media Archive · 6 Verified Photos + 4 Conceptual Atelier Plates",
-    "kicker_es": "Archivo Visual Completo · 6 Fotos Documentales + 4 Láminas Conceptuales",
+    "kicker_en": "Complete Visual Archive · 9 Verified Photos + 5 Conceptual Plates",
+    "kicker_es": "Archivo Visual Completo · 9 Fotos Documentales + 5 Láminas Conceptuales",
     "title_en": "Inspect Every Photograph & Conceptual Visualization Fullscreen",
     "title_es": "Explora cada fotografía documental y lámina conceptual a pantalla completa",
-    "intro_en": "Filter between real historical and modern Wikimedia Commons site photographs (PD / CC0 / CC BY) and explicitly labeled AI-assisted conceptual visualizations, or open any card inside the accessible fullscreen plate viewer.",
-    "intro_es": "Filtra entre fotografías históricas y modernas reales de Wikimedia Commons (PD / CC0 / CC BY) y visualizaciones conceptuales asistidas por IA debidamente rotuladas, o abre cualquiera en el visor accesible.",
-    "all_en": "All 10 Media",
-    "all_es": "Las 10 vistas",
-    "photos_en": "Site & Archival Photos (6)",
-    "photos_es": "Fotos de archivo y obra (6)",
-    "renders_en": "Conceptual Plates (4)",
-    "renders_es": "Láminas conceptuales (4)",
+    "intro_en": "Filter between nine real historical and contemporary Wikimedia Commons site photographs (PD / CC0 / CC BY) and five explicitly labeled AI-assisted conceptual visualizations, or open any view inside the zero-jump fullscreen plate viewer.",
+    "intro_es": "Filtra entre nueve fotografías históricas y modernas reales de Wikimedia Commons (PD / CC0 / CC BY) y cinco visualizaciones conceptuales asistidas por IA debidamente rotuladas, o abre cualquier imagen en el visor a pantalla completa.",
+    "all_en": "All 14 Media",
+    "all_es": "Las 14 vistas",
+    "photos_en": "Site & Archival Photos (9)",
+    "photos_es": "Fotos de archivo y obra (9)",
+    "renders_en": "Conceptual Plates (5)",
+    "renders_es": "Láminas conceptuales (5)",
     "badge_photo_en": "SITE / ARCHIVAL PHOTO",
     "badge_photo_es": "FOTO DE OBRA / ARCHIVO",
     "badge_render_en": "CONCEPTUAL RENDER · AI-ASSISTED",
     "badge_render_es": "VISUALIZACIÓN CONCEPTUAL · IA",
+}
+
+ARCHITECTS_STUDY = {
+    "kicker_en": "For Architects & Engineers · Stereotomy Grammar & Form-Finding Lineage",
+    "kicker_es": "Para Arquitectos e Ingenieros · Gramática Estereotómica y Linaje Estructural",
+    "title_en": "How Studio Architects Study the Basílica: Ruled Surfaces & Structural Lineage",
+    "title_es": "Cómo estudian el templo los arquitectos: superficies regladas y linaje estructural",
+    "intro_en": "Students and practicing architects study the Sagrada Família as a Rosetta Stone joining hand masonry to computational optimization. Below are the four ruled surfaces cut directly by straight lines, a constructive proportions summary, and six scholarly chapters linking Gaudí to Frei Otto, Félix Candela, Eladio Dieste, Jacques Heyman, Philippe Block, and Mark Burry.",
+    "intro_es": "Estudiantes y arquitectos estudian la Sagrada Família como piedra de Rosetta entre la cantería manual y el diseño paramétrico. Abajo se reúnen las cuatro superficies engendradas por rectas, sus proporciones constructivas y seis capítulos académicos que conectan a Gaudí con Frei Otto, Félix Candela, Eladio Dieste, Jacques Heyman, Philippe Block y Mark Burry.",
+    "surfaces": [
+        {
+            "name_en": "One-Sheet Hyperboloid",
+            "name_es": "Hiperboloide de una hoja",
+            "rule_en": "Doubly ruled around an elliptical throat (a, b, c): two skew families of straight lines guide daylight oculi without curved scaffolding.",
+            "rule_es": "Doblemente reglado en torno a una garganta elíptica (a, b, c): dos familias oblicuas de rectas tallan óculos de luz sin cimbra curva.",
+            "where_en": "Nave vault sunlight diffusers (45–60 m) & tower windows",
+            "where_es": "Difusores cenitales de nave (45–60 m) y ventanales de torres",
+        },
+        {
+            "name_en": "Hyperbolic Paraboloid (Hypar)",
+            "name_es": "Paraboloide hiperbólico",
+            "rule_en": "Saddle surface doubly ruled along straight edge beams: stitches discrete hyperboloid throats smoothly into ribbed vaults and walls.",
+            "rule_es": "Superficie en silla doblemente reglada sobre vigas rectas: cose gargantas hiperboloides con nervaduras de bóveda y fachadas.",
+            "where_en": "Passion soffits, nave transitions & Colònia Güell portico",
+            "where_es": "Soffits de la Pasión, encuentros de nave y pórtico de Colònia Güell",
+        },
+        {
+            "name_en": "Helicoid",
+            "name_es": "Helicoide",
+            "rule_en": "Swept by rotating and translating a straight radius: counter-twisting ±π/(2n) turns n-star column profiles into 2n upward flutes.",
+            "rule_es": "Barrido al girar y elevar un radio recto: el doble contragiro ±π/(2n) transforma prismas de n puntas en 2n estrías superiores.",
+            "where_en": "Double-twisted nave shafts & spiral tower stairways",
+            "where_es": "Fustes arbóreos de doble giro y escaleras helicoidales",
+        },
+        {
+            "name_en": "Sinusoidal Conoid (1909)",
+            "name_es": "Conoide sinusoide (1909)",
+            "rule_en": "Ruled by horizontal-tilt straight bricks joining a level central girder to an alternating sine-wave eave over 9 cm-thin Catalan vaulting.",
+            "rule_es": "Reglado por rectas desde una viga central nivelada hasta un alero sinusoidal alternado en bóveda delgada de ladrillo.",
+            "where_en": "1909 Workers’ Parish Schools adjacent to Nativity site",
+            "where_es": "Escuelas Parroquiales de 1909 junto al frente del Nacimiento",
+        },
+    ],
+    "grammar_head_en": ("Studio Rule", "Formulation / Ratio", "Architectural Rationale", "Source"),
+    "grammar_head_es": ("Regla de taller", "Fórmula / Proporción", "Razón arquitectónica", "Fuente"),
+    "grammar_rows": [
+        (
+            "Urban ceiling vs. Montjuïc",
+            "Cota urbana vs. Montjuïc",
+            "172.5 m ≤ 177.7 m (−5.2 m margin)",
+            "172.5 m ≤ 177.7 m (−5.2 m margen)",
+            "No human steeple outranks the city’s mountain.",
+            "Ninguna torre supera la montaña natural de la ciudad.",
+            "sf-cross-2026",
+        ),
+        (
+            "Total pier height rule",
+            "Altura total de pilar",
+            "H_total = 2n m (n = 6, 8, 10, 12)",
+            "H_total = 2n m (n = 6, 8, 10, 12)",
+            "Matches star-polygon point count directly to nave span height.",
+            "Vincula puntas del polígono estrellado con la altura de nave.",
+            "barrios2006",
+        ),
+        (
+            "Shaft slenderness ratio",
+            "Esbeltez del fuste",
+            "H_shaft = 10·D_in",
+            "H_fuste = 10·D_int",
+            "Constant classical slenderness scaled across all four stone tiers.",
+            "Esbeltez constante escalada en los cuatro rangos de piedra.",
+            "barrios2006",
+        ),
+        (
+            "Four-stone compression ladder",
+            "Jerarquía de cuatro piedras",
+            "Sandstone → Granite → Basalt → Porphyry",
+            "Arenisca → Granito → Basalto → Pórfido",
+            "Denser igneous stone concentrates in heavily loaded crossing trunks.",
+            "La roca más resistente asume mayor carga axial en el crucero.",
+            "grima2007",
+        ),
+        (
+            "Funicular model scaling",
+            "Escala del modelo colgante",
+            "1:10 length · ~1:10,000 shot weight",
+            "1:10 longitud · ~1:10,000 perdigones",
+            "Analog physics solver finding zero-bending compression axes.",
+            "Solucionador físico analógico para ejes sin flexión.",
+            "tomlow1989",
+        ),
+        (
+            "Skyline fractal dimension",
+            "Dimensión fractal de perfil",
+            "Multi-scale skyline vs. Gothic comparison",
+            "Perfil multiescala frente al gótico",
+            "Quantifies hierarchical subdivision from base pinnacles to lanterns.",
+            "Cuantifica la subdivisión jerárquica de pináculos y cimborrios.",
+            "samper2015",
+        ),
+        (
+            "Aural & solar section",
+            "Sección lumínica y acústica",
+            "East–West glass · 1,492-pipe organ field",
+            "Vitrales Oriente–Poniente · órgano de 1,492 tubos",
+            "Directional chromatic daylight meets distributed nave auralisation.",
+            "Luz cromática horaria acoplada al paisaje sonoro de la nave.",
+            "alambeigi2024",
+        ),
+    ],
+    "lineage_title_en": "Structural & Architectural Lineage (1963–2026) · Click Any Scholarly Station",
+    "lineage_title_es": "Linaje Estructural y Arquitectónico (1963–2026) · Selecciona cada hito",
+    "lineage_intro_en": "Inspect how researchers and engineers studied Gaudí directly—and how comparative shell and funicular masters illuminated the same equilibrium principles outside Barcelona (explicitly labeled where they did not test the Basílica directly).",
+    "lineage_intro_es": "Explora cómo investigadores e ingenieros estudiaron a Gaudí directamente, y cómo maestros comparados de cáscaras y redes funiculares desarrollaron principios afines fuera de Barcelona (anotando explícitamente cuando no ensayaron la Basílica).",
+    "lineage": [
+        {
+            "id": "lin-collins",
+            "year": "1963",
+            "short_en": "Collins",
+            "short_es": "Collins",
+            "title_en": "George R. Collins · Structure & Form in Studio Pedagogy (1963)",
+            "title_es": "George R. Collins · Estructura y Forma en las escuelas de arquitectura (1963)",
+            "who_en": "George R. Collins (Perspecta 8)",
+            "note_en": "Introduced generations of post-war English-speaking architects to Gaudí’s structural logic—showing that parabolic profiles and leaning piers grew out of funicular equilibrium rather than arbitrary sculptural expressionism.",
+            "note_es": "Introdujo a generaciones de arquitectos en lengua inglesa a la lógica estructural de Gaudí, mostrando que sus perfiles parabólicos y pilares inclinados nacen del equilibrio funicular y no del capricho escultórico.",
+            "boundary_en": "Scope: architectural-history essay analyzing Gaudí’s structural works broadly.",
+            "boundary_es": "Alcance: ensayo de historia y estructura arquitectónica sobre la obra de Gaudí.",
+            "src": ["collins1963"],
+        },
+        {
+            "id": "lin-heyman",
+            "year": "1966 / 2006",
+            "short_en": "Heyman · Huerta",
+            "short_es": "Heyman · Huerta",
+            "title_en": "Jacques Heyman & Santiago Huerta · The Safe Theorem of Stone (1966–2006)",
+            "title_es": "Jacques Heyman y Santiago Huerta · Teorema de Seguridad en Piedra (1966–2006)",
+            "who_en": "Jacques Heyman (1966) · Santiago Huerta (2006)",
+            "note_en": "Heyman’s plastic limit framework (developed on classical Gothic masonry, not Barcelona tests) formalized why stone stands when an admissible thrust line remains inside the masonry; Huerta linked that theory directly to Gaudí’s hanging models.",
+            "note_es": "El marco límite de Heyman (formulado sobre bóvedas góticas, no ensayos en la Basílica) formalizó por qué la piedra resiste si la línea de empuje permanece dentro del espesor; Huerta lo enlazó directamente con las maquetas de Gaudí.",
+            "boundary_en": "Scope: Heyman 1966 analyzes general masonry limit analysis; Huerta 2006 analyzes Gaudí directly.",
+            "boundary_es": "Alcance: Heyman 1966 analiza mampostería clásica; Huerta 2006 analiza a Gaudí directamente.",
+            "src": ["heyman1966", "huerta2006"],
+        },
+        {
+            "id": "lin-otto",
+            "year": "1989 / 2015",
+            "short_en": "Tomlow · Otto",
+            "short_es": "Tomlow · Otto",
+            "title_en": "Frei Otto, Jos Tomlow & Ian Liddell · Hanging Nets & Gridshells (1989–2015)",
+            "title_es": "Frei Otto, Jos Tomlow e Ian Liddell · Redes colgantes y retículas (1989–2015)",
+            "who_en": "Jos Tomlow (1989) · Frei Otto / Ian Liddell (2015)",
+            "note_en": "Under Frei Otto’s Stuttgart institute, Tomlow physically reconstructed Gaudí’s 1:10 Colònia Güell hanging model, documenting how multi-directional weighted strings govern 3D equilibrium. Liddell’s Mannheimer Multihalle gridshell paper traces Otto’s parallel inversion of hanging chains into lightweight timber domes.",
+            "note_es": "En el instituto de Frei Otto en Stuttgart, Tomlow reconstruyó físicamente el modelo colgante 1:10 de la Colònia Güell, documentando cómo los cordeles con pesos hallan equilibrio en 3D. Liddell expone el linaje paralelo en la Multihalle de Mannheim con retículas de madera invertidas.",
+            "boundary_en": "Scope: Tomlow 1989 reconstructs Gaudí’s hanging model; Liddell 2015 studies Frei Otto’s timber gridshells outside Sagrada Família.",
+            "boundary_es": "Alcance: Tomlow 1989 reconstruye el modelo de Gaudí; Liddell 2015 estudia retículas de Frei Otto fuera de Barcelona.",
+            "src": ["tomlow1989", "liddell2015"],
+        },
+        {
+            "id": "lin-candela",
+            "year": "2007 / 2010",
+            "short_en": "Candela · Dieste",
+            "short_es": "Candela · Dieste",
+            "title_en": "Félix Candela & Eladio Dieste · Ruled Shells in Concrete & Brick (2007–2010)",
+            "title_es": "Félix Candela y Eladio Dieste · Cáscaras regladas en hormigón y ladrillo (2007–2010)",
+            "who_en": "P. Cassinello, M. Schlaich & J. A. Torroja (2010) · R. Pedreschi (2007)",
+            "note_en": "In 20th-century structural cousins, Félix Candela cast paper-thin concrete hyperbolic paraboloids on straight pine boards (documented in Cassinello et al. 2010) while Uruguay’s Eladio Dieste built sweeping Gaussian catenary brick vaults using pre-stressed brick masonry (Pedreschi 2007)—honoring the same straight-line ruled efficiency Gaudí pioneered in stone and the 1909 Schools.",
+            "note_es": "En linajes hermanos del siglo XX, Félix Candela coló paraboloides hiperbólicos ultradelgados de hormigón sobre tablas rectas de madera (Cassinello et al. 2010) y el uruguayo Eladio Dieste levantó bóvedas gausianas catenarias en ladrillo armado (Pedreschi 2007): compartiendo la economía constructiva de rectas regladas inaugurada por Gaudí.",
+            "boundary_en": "Scope: Comparative structural papers examining Candela and Dieste independently of the Sagrada Família site.",
+            "boundary_es": "Alcance: estudios comparativos de Candela y Dieste ajenos a mediciones en el templo barcelonés.",
+            "src": ["cassinello2010", "pedreschi2007"],
+        },
+        {
+            "id": "lin-block",
+            "year": "2006 / 2015",
+            "short_en": "Block · TNA",
+            "short_es": "Block · TNA",
+            "title_en": "Block, Ochsendorf, Veenendaal & Akbarzadeh · Thrust Network Analysis (2006–2015)",
+            "title_es": "Block, Ochsendorf, Veenendaal y Akbarzadeh · Redes de Empuje 3D (2006–2015)",
+            "who_en": "Block, DeJong & Ochsendorf (2006) · Veenendaal & Block (2012) · Akbarzadeh et al. (2015)",
+            "note_en": "Starting directly from “As Hangs the Flexible Line” (2006), Block and colleagues turned Hooke and Gaudí’s hanging strings into dual reciprocal form-and-force diagrams—scaling analog physical hanging models into fast 3D computational Thrust Network Analysis across compression vaults and polyhedral trusses.",
+            "note_es": "Partiendo de “As Hangs the Flexible Line” (2006), Block y colaboradores tradujeron el hilo colgante de Hooke y Gaudí en diagramas recíprocos de forma y fuerza, llevando las maquetas analógicas al análisis numérico 3D de redes de compresión.",
+            "boundary_en": "Scope: General form-finding and graphic-statics theory papers; did not measure Sagrada Família piers directly.",
+            "boundary_es": "Alcance: artículos teóricos generales de estática gráfica; no miden pilares de la Basílica.",
+            "src": ["block2006", "veenendaal2012", "akbarzadeh2015"],
+        },
+        {
+            "id": "lin-burry",
+            "year": "1996 / 2024",
+            "short_en": "Burry · Samper",
+            "short_es": "Burry · Samper",
+            "title_en": "Burry, Samper, Herrera & Alambeigi · Parametric, Fractal & Acoustic Basilica Studies",
+            "title_es": "Burry, Samper, Herrera y Alambeigi · Parametría, fractales y acústica del templo",
+            "who_en": "Burry (1996) · Samper & Herrera (2015) · Zhao & Burry (2024) · Alambeigi, Burry & Burry (2024)",
+            "note_en": "Site-specific studies inside the Basílica measure how parametric ruled definitions enabled post-war stone fabrication (Burry 1996), how skyline subdivisions register fractally against Gothic cathedrals (Samper & Herrera 2015), and how nave stone diffuses reverberant music from the altar organ through the stone canopy (Zhao & Burry 2024; Alambeigi et al. 2024).",
+            "note_es": "Estudios realizados directamente sobre la Basílica analizan cómo las ecuaciones regladas permitieron la estereotomía digital (Burry 1996), la dimensión fractal frente a catedrales góticas (Samper y Herrera 2015) y la difusión acústica desde el órgano hasta el bosque pétreo (Zhao y Burry 2024; Alambeigi et al. 2024).",
+            "boundary_en": "Scope: Direct scholarly investigations of the Sagrada Família Basílica.",
+            "boundary_es": "Alcance: investigaciones académicas directas sobre el templo de la Sagrada Família.",
+            "src": ["burry1996", "samper2015", "alambeigi2024", "zhaoburry2024"],
+        },
+    ],
 }
 
 PLATES_ES_SAFE = True
@@ -1081,8 +1474,8 @@ CLOSING = [
 ]
 
 FOOTER_NOTE = {
-    "en": "Independent educational monograph. Basílica dates, heights, and succession milestones are attributed to Basílica de la Sagrada Família; post-tensioned stone panel systems are attributed to Ingenia / Arup; all 15 peer-reviewed articles were checked in Crossref and Scite on 2026-11-15 with zero retractions. Values labeled MODEL illustrate mechanisms only and are not engineering calculations for construction.",
-    "es": "Monografía educativa independiente. Fechas, alturas y relevos se atribuyen a Basílica de la Sagrada Família; la ingeniería de paneles pretensados a Ingenia / Arup; los 15 artículos arbitrados se verificaron en Crossref y Scite el 2026-11-15 sin retractaciones. Los valores marcados MODELO ilustran mecanismos únicamente y no constituyen cálculo ni dictamen de obra.",
+    "en": "Independent educational monograph. Basílica dates, heights, and succession milestones are attributed to Basílica de la Sagrada Família; post-tensioned stone panel systems are attributed to Ingenia / Arup; all 24 peer-reviewed articles were checked in Crossref and Scite on 2026-11-15 with zero retractions. Values labeled MODEL illustrate mechanisms only and are not engineering calculations for construction.",
+    "es": "Monografía educativa independiente. Fechas, alturas y relevos se atribuyen a Basílica de la Sagrada Família; la ingeniería de paneles pretensados a Ingenia / Arup; los 24 artículos arbitrados se verificaron en Crossref y Scite el 2026-11-15 sin retractaciones. Los valores marcados MODELO ilustran mecanismos únicamente y no constituyen cálculo ni dictamen de obra.",
 }
 
 BANNED = [

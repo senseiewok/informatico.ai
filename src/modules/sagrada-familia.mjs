@@ -79,7 +79,7 @@ function initEraRailAndParallax() {
         const activeChip = chips.get(id);
         if (activeChip) {
           activeChip.classList.add("is-current");
-          activeChip.setAttribute("aria-current", "true");
+          activeChip.setAttribute("aria-current", "step");
         }
         lanes.forEach((lane) => lane.classList.remove("is-current"));
         const activeLane = lanes.get(id);
@@ -87,6 +87,24 @@ function initEraRailAndParallax() {
       });
     }, { rootMargin: "-38% 0px -52% 0px" });
     cards.forEach((c) => io.observe(c));
+  }
+
+  const jumpPills = [...document.querySelectorAll(".tp-essay-jump-pill[href^='#']")];
+  if (jumpPills.length && "IntersectionObserver" in window) {
+    const targetToPill = new Map();
+    jumpPills.forEach((pill) => {
+      const targetId = (pill.getAttribute("href") || "").slice(1);
+      const sec = targetId ? document.getElementById(targetId) : null;
+      if (sec) targetToPill.set(sec, pill);
+    });
+    const jumpIo = new IntersectionObserver((entries) => {
+      const visible = entries.filter((e) => e.isIntersecting);
+      if (!visible.length) return;
+      const pill = targetToPill.get(visible[0].target);
+      if (!pill) return;
+      jumpPills.forEach((p) => p.classList.toggle("is-active", p === pill));
+    }, { rootMargin: "-25% 0px -65% 0px" });
+    targetToPill.forEach((_, sec) => jumpIo.observe(sec));
   }
 
   const layers = [...document.querySelectorAll(".sf-catenary-backdrop .sf-layer")];
@@ -1419,13 +1437,19 @@ function initVisualGalleryAndLightbox() {
     if (capEl) capEl.textContent = L(d.capEn, d.capEs);
   };
 
+  const openMediaById = (mediaId, triggerEl = null) => {
+    openerEl = triggerEl || document.querySelector(`[data-sf-open-media="${mediaId}"]`);
+    const idx = items.findIndex((x) => x.id === mediaId);
+    showAt(idx >= 0 ? idx : 0);
+    if (typeof dialog.showModal === "function") dialog.showModal();
+  };
+
   document.querySelectorAll("[data-sf-open-media]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      openerEl = btn;
-      const idx = items.findIndex((x) => x.id === btn.dataset.sfOpenMedia);
-      showAt(idx >= 0 ? idx : 0);
-      if (typeof dialog.showModal === "function") dialog.showModal();
-    });
+    btn.addEventListener("click", () => openMediaById(btn.dataset.sfOpenMedia, btn));
+  });
+
+  document.querySelectorAll("[data-sf-open-media-frame]").forEach((frame) => {
+    frame.addEventListener("click", () => openMediaById(frame.dataset.sfOpenMediaFrame, frame));
   });
 
   if (prevBtn) prevBtn.addEventListener("click", () => showAt(activeIndex - 1));
@@ -1445,6 +1469,24 @@ function initVisualGalleryAndLightbox() {
   window.addEventListener("tp-lang-change", () => { if (dialog.open) showAt(activeIndex); });
 }
 
+// ---------------------------------------------------------------- Architectural Scholarship Lineage Explorer (1963-2026)
+function initLineageExplorer() {
+  const root = document.querySelector("[data-sf-lineage]");
+  if (!root) return;
+  const btns = [...root.querySelectorAll("[data-sf-lineage-btn]")];
+  const nodes = [...root.querySelectorAll("[data-sf-lineage-node]")];
+  const cards = [...root.querySelectorAll("[data-sf-lineage-card]")];
+
+  const activate = (idx) => {
+    btns.forEach((b) => b.setAttribute("aria-pressed", String(Number(b.dataset.sfLineageBtn) === idx)));
+    nodes.forEach((n) => n.classList.toggle("is-active", Number(n.dataset.sfLineageNode) === idx));
+    cards.forEach((c) => { c.hidden = Number(c.dataset.sfLineageCard) !== idx; });
+  };
+
+  btns.forEach((b) => b.addEventListener("click", () => activate(Number(b.dataset.sfLineageBtn) || 0)));
+  nodes.forEach((n) => n.addEventListener("click", () => activate(Number(n.dataset.sfLineageNode) || 0)));
+}
+
 initPause();
 initEraRailAndParallax();
 initGenerationsRelay();
@@ -1456,5 +1498,6 @@ initShardRecoveryBench();
 initTowersAndPostTension();
 initLightAndAcoustics();
 initPolarRadar();
+initLineageExplorer();
 initVisualGalleryAndLightbox();
 initWorkshopDrawer();

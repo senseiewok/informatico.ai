@@ -207,6 +207,12 @@ function cleanNarrationText(raw, lang = "en") {
   return normalizeScientificSpeech(raw, lang);
 }
 
+function isMobileTouchDevice() {
+  if (typeof navigator === "undefined") return false;
+  const ua = navigator.userAgent || "";
+  return /(android|iphone|ipad|ipod|mobile)/i.test(ua) || (/Macintosh/i.test(ua) && Number(navigator.maxTouchPoints) > 1);
+}
+
 export function scoreBrowserVoice(v, langCode) {
   if (!v || !v.lang) return -999;
   const vLang = v.lang.toLowerCase().replace("_", "-");
@@ -227,11 +233,78 @@ export function scoreBrowserVoice(v, langCode) {
   else if (v.localService === false) score += 55;
   if (/ava|emma|jenny|aria|dalia|elena|paulina|samantha|monica|female|woman/i.test(name)) score += 40;
 
+  if (isMobileTouchDevice() && v.localService !== false) {
+    score += 40;
+  }
+
   // Strongly penalize legacy 1990s SAPI5 / desktop robotic voices so they only run if zero neural/cloud voices exist
   if (/david|zira|mark|sabina|helena|hazel|hedda|hortense|espeak|festival|desktop/i.test(name)) {
     score -= 80;
   }
   return score;
+}
+
+export function splitIntoSpeechChunks(text, maxLen = 200) {
+  const clean = String(text || "").replace(/\s+/g, " ").trim();
+  if (!clean) return [];
+  const sentences = clean.split(/(?<=[.!?。])\s+/);
+  const chunks = [];
+  let buf = "";
+  for (let i = 0; i < sentences.length; i += 1) {
+    const s = sentences[i].trim();
+    if (!s) continue;
+    if (s.length <= maxLen) {
+      if (!buf) {
+        buf = s;
+      } else if (buf.length + 1 + s.length <= maxLen) {
+        buf += ` ${s}`;
+      } else {
+        chunks.push(buf);
+        buf = s;
+      }
+    } else {
+      if (buf) {
+        chunks.push(buf);
+        buf = "";
+      }
+      const words = s.split(/\s+/);
+      let piece = "";
+      for (let j = 0; j < words.length; j += 1) {
+        const w = words[j];
+        if (!piece) piece = w;
+        else if (piece.length + 1 + w.length <= maxLen) piece += ` ${w}`;
+        else {
+          chunks.push(piece);
+          piece = w;
+        }
+      }
+      if (piece) chunks.push(piece);
+    }
+  }
+  if (buf) chunks.push(buf);
+  return chunks;
+}
+
+const SAGRADA_ACT_DEFS = [
+  { id: "sf-story", selector: "#relay", labelEn: "I · Story & Relay", labelEs: "I · Historia y Relevo" },
+  { id: "sf-part1", selector: "#part-1", labelEn: "II · 1882–1926", labelEs: "II · 1882–1926" },
+  { id: "sf-part3", selector: "#part-3", labelEn: "III · 1936–2026+", labelEs: "III · 1936–2026+" },
+  { id: "sf-arch", selector: "#architects-study", labelEn: "IV · Architects", labelEs: "IV · Arquitectos" },
+  { id: "sf-lab", selector: "#part-6", labelEn: "V · Lab & Closing", labelEs: "V · Laboratorio" },
+];
+
+export function resolveSectionDefs(host) {
+  const articleScope = (host && (host.closest("#tp-active-folio-mount") || host.closest("main"))) || document;
+  if (articleScope.querySelector(".sf-feature")) {
+    return SAGRADA_ACT_DEFS;
+  }
+  return ACT_DEFS;
+}
+
+function localizedText(el, lang) {
+  if (!el) return "";
+  const attr = lang === "es" ? el.getAttribute("data-es") : el.getAttribute("data-en");
+  return attr && attr.trim() ? attr.trim() : el.textContent || "";
 }
 
 export function getRankedVoices(langCode) {
@@ -254,10 +327,37 @@ export function pickBestVoice(langCode, preferredURI = "") {
   return ranked[0];
 }
 
-function collectChaptersFromScope(host) {
+export function collectChaptersFromScope(host) {
   const articleScope = host.closest("#tp-active-folio-mount") || host.closest("main") || document;
   const hero = host.closest(".tp-hero") || articleScope.querySelector(".tp-hero") || articleScope;
   const lang = getActiveLang();
+
+  if (articleScope.querySelector(".sf-feature")) {
+    const pickMany = (selector) =>
+      Array.from(articleScope.querySelectorAll(selector))
+        .map((el) => cleanNarrationText(localizedText(el, lang), lang))
+        .filter(Boolean);
+    const titleTxt = cleanNarrationText(localizedText(hero.querySelector(".tp-h1"), lang), lang);
+    const dekTxt = cleanNarrationText(localizedText(hero.querySelector(".tp-standfirst"), lang), lang);
+    const briefTxt = cleanNarrationText(localizedText(hero.querySelector(".sf-brief"), lang), lang);
+    const openingTxt = pickMany(".sf-opening p:not(.sf-cite)").join(" ");
+    const part1Txt = pickMany("#part-1 .sf-part-opener p:not(.sf-cite), #part-1 .sf-card-body, #part-2 .sf-part-opener p:not(.sf-cite), #part-2 .sf-card-body").join(" ");
+    const part3Txt = pickMany("#part-3 .sf-part-opener p:not(.sf-cite), #part-3 .sf-card-body, #part-4 .sf-part-opener p:not(.sf-cite), #part-4 .sf-card-body").join(" ");
+    const archTxt = pickMany("#atelier > .sf-lede, #architects-study > .sf-lede, #architects-study .sf-lineage-card p:not(.sf-cite)").join(" ");
+    const labTxt = pickMany("#part-6 > .sf-lede, .sf-closing p:not(.sf-cite)").join(" ");
+    const texts = [
+      cleanNarrationText(`${titleTxt}. ${dekTxt} ${briefTxt} ${openingTxt}`, lang),
+      cleanNarrationText(part1Txt || openingTxt, lang),
+      cleanNarrationText(part3Txt || briefTxt, lang),
+      cleanNarrationText(archTxt || briefTxt, lang),
+      cleanNarrationText(labTxt || `${titleTxt}. ${briefTxt}`, lang),
+    ];
+    return SAGRADA_ACT_DEFS.map((act, idx) => ({
+      index: idx,
+      act,
+      text: texts[idx] || cleanNarrationText(`${titleTxt}. ${dekTxt}`, lang),
+    }));
+  }
 
   const h1 = hero.querySelector(".tp-h1");
   const standfirst = hero.querySelector(".tp-standfirst");
@@ -376,6 +476,9 @@ export class TpArticleAudioElement extends HTMLElement {
     this._paused = false;
     this._loading = false;
     this._loadToken = 0;
+    this._speechToken = 0;
+    this._speechTimer = 0;
+    this._usingMediaEl = false;
     this._unlocked = false;
     this._chapterIndex = 0;
     this._speedIndex = 0;
@@ -390,12 +493,25 @@ export class TpArticleAudioElement extends HTMLElement {
     this._chapters = [];
     this._built = false;
     this._onLangChange = () => this._handleLanguageSwitch();
+    this._onVoicesChanged = () => {
+      if (this._built) this._syncLabels();
+    };
   }
 
   connectedCallback() {
     if (!this._built) {
       this._buildDOM();
       this._built = true;
+    }
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      try {
+        window.speechSynthesis.getVoices();
+        if (typeof window.speechSynthesis.addEventListener === "function") {
+          window.speechSynthesis.addEventListener("voiceschanged", this._onVoicesChanged);
+        }
+      } catch (_e) {
+        /* ignore speechSynthesis discovery errors */
+      }
     }
     this._syncLabels();
     window.addEventListener("tp-lang-change", this._onLangChange);
@@ -404,6 +520,13 @@ export class TpArticleAudioElement extends HTMLElement {
   disconnectedCallback() {
     this.stop();
     window.removeEventListener("tp-lang-change", this._onLangChange);
+    if (typeof window !== "undefined" && "speechSynthesis" in window && typeof window.speechSynthesis.removeEventListener === "function") {
+      try {
+        window.speechSynthesis.removeEventListener("voiceschanged", this._onVoicesChanged);
+      } catch (_e) {
+        /* ignore */
+      }
+    }
   }
 
   attributeChangedCallback() {
@@ -582,10 +705,17 @@ export class TpArticleAudioElement extends HTMLElement {
     progress.setAttribute("value", "0");
     progress.setAttribute("aria-label", "Article narration progress");
     progress.addEventListener("click", (e) => {
-      if (!this._audioBuffer || !this._audioBuffer.duration) return;
       const rect = progress.getBoundingClientRect();
       if (!rect.width) return;
       const frac = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      if (this._usingMediaEl && this._audioEl && Number.isFinite(this._audioEl.duration) && this._audioEl.duration > 0) {
+        const seekSec = frac * this._audioEl.duration;
+        this._audioEl.currentTime = seekSec;
+        progress.setAttribute("value", String(Math.round(frac * 100)));
+        this._syncLabels(seekSec);
+        return;
+      }
+      if (!this._audioBuffer || !this._audioBuffer.duration) return;
       const seekSec = frac * this._audioBuffer.duration;
       if (this._playing && !this._paused) {
         this._unlockAudioContextSync();
@@ -604,12 +734,13 @@ export class TpArticleAudioElement extends HTMLElement {
     topRow.appendChild(statusGroup);
 
     // 5-Act Chapter Stepper Row
+    const defs = resolveSectionDefs(this);
     const chapterRow = document.createElement("div");
     chapterRow.className = "tp-audio-chapters";
     chapterRow.setAttribute("role", "group");
     chapterRow.setAttribute("aria-label", "Jump audio narration by Act");
 
-    this._chapterBtns = ACT_DEFS.map((act, idx) => {
+    this._chapterBtns = defs.map((act, idx) => {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "tp-audio-chapter-btn";
@@ -624,6 +755,7 @@ export class TpArticleAudioElement extends HTMLElement {
     const audioEl = document.createElement("audio");
     audioEl.preload = "none";
     audioEl.hidden = true;
+    audioEl.setAttribute("playsinline", "");
 
     this.appendChild(topRow);
     this.appendChild(chapterRow);
@@ -646,7 +778,8 @@ export class TpArticleAudioElement extends HTMLElement {
     const speed = SPEEDS[this._speedIndex];
     this._speedBtn.textContent = `${speed}×`;
 
-    const activeAct = ACT_DEFS[this._chapterIndex] || ACT_DEFS[0];
+    const defs = resolveSectionDefs(this);
+    const activeAct = defs[this._chapterIndex] || defs[0];
     const actTitle = lang === "es" ? activeAct.labelEs : activeAct.labelEn;
     const usingNeuralTrack = Boolean(this._getNeuralSrc(lang));
     const engineTag = usingNeuralTrack
@@ -657,8 +790,10 @@ export class TpArticleAudioElement extends HTMLElement {
         ? "Voz Natural"
         : "Natural Voice";
 
-    const totalSec = this._audioBuffer ? this._audioBuffer.duration : 0;
-    const timeStr = totalSec > 0 ? ` · ${formatTimeSec(currentSec)} / ${formatTimeSec(totalSec)}` : "";
+    const mediaDur = this._usingMediaEl && this._audioEl && Number.isFinite(this._audioEl.duration) ? this._audioEl.duration : 0;
+    const mediaPos = this._usingMediaEl && this._audioEl ? this._audioEl.currentTime || 0 : currentSec;
+    const totalSec = mediaDur > 0 ? mediaDur : (this._audioBuffer ? this._audioBuffer.duration : 0);
+    const timeStr = totalSec > 0 ? ` · ${formatTimeSec(mediaDur > 0 ? mediaPos : currentSec)} / ${formatTimeSec(totalSec)}` : "";
 
     if (this._loading) {
       this._playIcon.textContent = "⏳";
@@ -693,13 +828,13 @@ export class TpArticleAudioElement extends HTMLElement {
           : `Listen to Monograph (${readingTime.replace("READ", "AUDIO")})`;
       this._statusText.textContent =
         lang === "es"
-          ? `Audio IA Neural Bilingüe · ES-MX / EN · 5 Actos (${actTitle})`
-          : `Bilingual Neural AI Audio · EN / ES-MX · 5 Acts (${actTitle})`;
+          ? `Audio Bilingüe · ES-MX / EN · 5 Secciones (${actTitle})`
+          : `Bilingual Audio · EN / ES-MX · 5 Sections (${actTitle})`;
     }
 
     if (this._chapterBtns) {
       this._chapterBtns.forEach((btn, idx) => {
-        const def = ACT_DEFS[idx];
+        const def = defs[idx] || ACT_DEFS[idx];
         btn.textContent = lang === "es" ? def.labelEs : def.labelEn;
         btn.setAttribute("aria-pressed", idx === this._chapterIndex ? "true" : "false");
       });
@@ -756,6 +891,12 @@ export class TpArticleAudioElement extends HTMLElement {
       this.stop();
       return;
     }
+    if (this._usingMediaEl && this._audioEl && this._playing && !this._paused) {
+      this._audioEl.pause();
+      this._paused = true;
+      this._syncLabels(this._audioEl.currentTime || 0);
+      return;
+    }
     if (this._bufferSource && this._audioCtx && this._playing && !this._paused) {
       const speed = SPEEDS[this._speedIndex];
       const elapsed = (this._audioCtx.currentTime - this._bufferStartCtxTime) * speed;
@@ -768,7 +909,7 @@ export class TpArticleAudioElement extends HTMLElement {
       this._syncLabels(this._bufferOffsetSec);
       return;
     }
-    if (typeof window !== "undefined" && "speechSynthesis" in window && window.speechSynthesis.speaking) {
+    if (typeof window !== "undefined" && "speechSynthesis" in window && (window.speechSynthesis.speaking || this._playing)) {
       window.speechSynthesis.pause();
       this._paused = true;
       this._syncLabels();
@@ -777,6 +918,14 @@ export class TpArticleAudioElement extends HTMLElement {
 
   resume() {
     const lang = getActiveLang();
+    if (this._paused && this._usingMediaEl && this._audioEl && this._getNeuralSrc(lang)) {
+      this._paused = false;
+      this._playing = true;
+      const p = this._audioEl.play();
+      if (p && typeof p.catch === "function") p.catch(() => {});
+      this._syncLabels(this._audioEl.currentTime || 0);
+      return;
+    }
     if (this._paused && this._audioBuffer && this._getNeuralSrc(lang)) {
       this._unlockAudioContextSync();
       this._paused = false;
@@ -797,12 +946,25 @@ export class TpArticleAudioElement extends HTMLElement {
 
   stop() {
     this._loadToken += 1;
+    this._speechToken += 1;
+    if (this._speechTimer) {
+      clearTimeout(this._speechTimer);
+      this._speechTimer = 0;
+    }
     this._loading = false;
+    this._usingMediaEl = false;
     this._stopBufferSource();
     this._bufferOffsetSec = 0;
     if (this._audioEl) {
+      this._audioEl.ontimeupdate = null;
+      this._audioEl.onended = null;
+      this._audioEl.onerror = null;
       this._audioEl.pause();
-      this._audioEl.currentTime = 0;
+      try {
+        this._audioEl.currentTime = 0;
+      } catch (_e) {
+        /* ignore before metadata load */
+      }
     }
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
@@ -820,6 +982,11 @@ export class TpArticleAudioElement extends HTMLElement {
     const oldSpeed = SPEEDS[this._speedIndex];
     this._speedIndex = (this._speedIndex + 1) % SPEEDS.length;
     const newSpeed = SPEEDS[this._speedIndex];
+    if (this._usingMediaEl && this._audioEl && this._playing) {
+      this._audioEl.playbackRate = newSpeed;
+      this._syncLabels(this._audioEl.currentTime || 0);
+      return;
+    }
     if (this._bufferSource && this._audioCtx && this._playing && !this._paused) {
       const elapsed = (this._audioCtx.currentTime - this._bufferStartCtxTime) * oldSpeed;
       this._bufferOffsetSec = Math.min(
@@ -838,9 +1005,10 @@ export class TpArticleAudioElement extends HTMLElement {
   }
 
   jumpToChapter(index) {
-    const clamped = Math.max(0, Math.min(ACT_DEFS.length - 1, index));
+    const defs = resolveSectionDefs(this);
+    const clamped = Math.max(0, Math.min(defs.length - 1, index));
     this._chapterIndex = clamped;
-    const actDef = ACT_DEFS[clamped];
+    const actDef = defs[clamped];
     const articleScope = this.closest("#tp-active-folio-mount") || document;
     const targetHeading = articleScope.querySelector(actDef.selector);
     if (targetHeading && typeof targetHeading.scrollIntoView === "function") {
@@ -950,29 +1118,132 @@ export class TpArticleAudioElement extends HTMLElement {
     }
   }
 
+  _playMediaElementTrack(src, chapterIndex, lang, token) {
+    const el = this._audioEl;
+    if (!el || typeof el.play !== "function") return false;
+    const speed = SPEEDS[this._speedIndex];
+    const ratios = this._getChapterRatios(lang);
+    const startRatio = ratios[chapterIndex] || 0;
+
+    this._usingMediaEl = true;
+    if (el.getAttribute("src") !== src) {
+      el.setAttribute("src", src);
+    }
+    el.playbackRate = speed;
+
+    const applyInitialSeek = () => {
+      if (token !== this._loadToken || !this._usingMediaEl) return;
+      if (startRatio > 0 && Number.isFinite(el.duration) && el.duration > 0) {
+        try {
+          el.currentTime = startRatio * el.duration;
+        } catch (_e) {
+          /* ignore */
+        }
+      }
+    };
+    if (el.readyState >= 1) applyInitialSeek();
+    else el.addEventListener("loadedmetadata", applyInitialSeek, { once: true });
+
+    el.ontimeupdate = () => {
+      if (token !== this._loadToken || !this._playing || this._paused || !this._usingMediaEl) return;
+      const dur = Number.isFinite(el.duration) && el.duration > 0 ? el.duration : 0;
+      const pos = el.currentTime || 0;
+      if (dur > 0) {
+        const frac = Math.max(0, Math.min(1, pos / dur));
+        if (this._progressEl) this._progressEl.setAttribute("value", String(Math.round(frac * 100)));
+        let activeIdx = 0;
+        for (let i = ratios.length - 1; i >= 0; i -= 1) {
+          if (frac >= ratios[i] - 0.01) {
+            activeIdx = i;
+            break;
+          }
+        }
+        if (activeIdx !== this._chapterIndex) this._chapterIndex = activeIdx;
+      }
+      this._syncLabels(pos);
+    };
+
+    el.onended = () => {
+      if (token !== this._loadToken || !this._playing) return;
+      this._playing = false;
+      this._paused = false;
+      if (this._progressEl) this._progressEl.setAttribute("value", "100");
+      this._syncLabels(0);
+    };
+
+    el.onerror = () => {
+      if (token !== this._loadToken || !this._usingMediaEl) return;
+      this._usingMediaEl = false;
+      const ctx = this._unlockAudioContextSync();
+      if (ctx) {
+        this._playNeuralAudioTrack(src, chapterIndex, lang, token).then((ok) => {
+          if (token === this._loadToken && !ok && this._playing) {
+            this._playWebSpeechChapter(chapterIndex, lang, SPEEDS[this._speedIndex]);
+          }
+        });
+      } else {
+        this._playWebSpeechChapter(chapterIndex, lang, SPEEDS[this._speedIndex]);
+      }
+    };
+
+    this._loading = false;
+    this._playing = true;
+    this._paused = false;
+    this._syncLabels(0);
+    try {
+      const p = el.play();
+      if (p && typeof p.catch === "function") {
+        p.catch(() => {
+          if (token === this._loadToken && this._playing) {
+            el.onerror();
+          }
+        });
+      }
+      return true;
+    } catch (_err) {
+      this._usingMediaEl = false;
+      return false;
+    }
+  }
+
   playChapter(index) {
-    const clamped = Math.max(0, Math.min(ACT_DEFS.length - 1, index));
+    const defs = resolveSectionDefs(this);
+    const clamped = Math.max(0, Math.min(defs.length - 1, index));
     this._chapterIndex = clamped;
     const lang = getActiveLang();
     const speed = SPEEDS[this._speedIndex];
+    const isMobileTouch = isMobileTouchDevice();
 
+    this._speechToken += 1;
+    if (this._speechTimer) {
+      clearTimeout(this._speechTimer);
+      this._speechTimer = 0;
+    }
     this._stopBufferSource();
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
+    if (this._audioEl) {
+      this._audioEl.pause();
     }
 
-    const basePct = Math.round((clamped / ACT_DEFS.length) * 100);
+    const basePct = Math.round((clamped / defs.length) * 100);
     if (this._progressEl) {
       this._progressEl.setAttribute("value", String(basePct));
     }
 
-    // 1. Primary Engine: Single Pre-rendered Neural AI track via CSP-safe Web Audio API
+    // 1. Primary Engine: Pre-rendered Neural AI .mp3 track
     const customSrc = this._getNeuralSrc(lang);
     if (customSrc) {
+      if (typeof window !== "undefined" && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+      const token = (this._loadToken += 1);
+      // On mobile browsers (especially iOS Safari where hardware mute silences Web Audio), prefer native <audio> synchronously inside tap gesture
+      if (isMobileTouch && this._playMediaElementTrack(customSrc, clamped, lang, token)) {
+        return;
+      }
       const ctx = this._unlockAudioContextSync();
       if (ctx) {
-        const token = (this._loadToken += 1);
         const cached = AUDIO_BUFFER_CACHE.get(customSrc);
+        this._usingMediaEl = false;
         this._loading = !cached;
         this._playing = true;
         this._paused = false;
@@ -988,18 +1259,22 @@ export class TpArticleAudioElement extends HTMLElement {
       }
     }
 
-    // 2. Fallback Web Speech API Synthesis (EN-US / ES-MX) with Prosody Normalizer
+    // 2. Fallback Web Speech API Synthesis (EN-US / ES-MX) with sentence-chunked queue & Prosody Normalizer
+    this._usingMediaEl = false;
     this._playWebSpeechChapter(clamped, lang, speed);
   }
 
-  _playWebSpeechChapter(clamped, lang, speed) {
+  _playWebSpeechChapter(clamped, lang, speed, forceNoVoice = false) {
     this._chapters = collectChaptersFromScope(this);
+    const defs = resolveSectionDefs(this);
     const chapter = this._chapters[clamped] || this._chapters[0];
+    const chunks = splitIntoSpeechChunks(chapter ? chapter.text : "", 200);
 
     if (
       typeof window === "undefined" ||
       !("speechSynthesis" in window) ||
-      typeof SpeechSynthesisUtterance === "undefined"
+      typeof SpeechSynthesisUtterance === "undefined" ||
+      chunks.length === 0
     ) {
       this._playing = true;
       this._paused = false;
@@ -1007,53 +1282,88 @@ export class TpArticleAudioElement extends HTMLElement {
       return;
     }
 
-    window.speechSynthesis.cancel();
-    const utter = new SpeechSynthesisUtterance(chapter ? chapter.text : "");
-    utter.lang = lang === "es" ? "es-MX" : "en-US";
-    utter.rate = speed;
-    utter.pitch = 1.0;
-
-    const bestVoice = pickBestVoice(lang);
-    if (bestVoice) {
-      utter.voice = bestVoice;
+    const synth = window.speechSynthesis;
+    const token = (this._speechToken += 1);
+    if (this._speechTimer) {
+      clearTimeout(this._speechTimer);
+      this._speechTimer = 0;
     }
 
-    utter.onboundary = (ev) => {
-      if (!chapter || !chapter.text.length || typeof ev.charIndex !== "number") return;
-      const frac = Math.min(1, ev.charIndex / chapter.text.length);
-      const totalPct = Math.min(100, Math.round(((clamped + frac) / ACT_DEFS.length) * 100));
-      if (this._progressEl) {
-        this._progressEl.setAttribute("value", String(totalPct));
+    if (synth.paused) {
+      try {
+        synth.resume();
+      } catch (_e) {
+        /* ignore */
       }
-    };
+    }
+    const wasBusy = Boolean(synth.speaking || synth.pending);
+    if (wasBusy) {
+      synth.cancel();
+    }
 
-    utter.onend = () => {
-      if (!this._playing) return;
-      if (clamped + 1 < ACT_DEFS.length) {
-        this._playWebSpeechChapter(clamped + 1, lang, SPEEDS[this._speedIndex]);
-        this._chapterIndex = clamped + 1;
-        this._syncLabels();
-      } else {
-        this._playing = false;
-        this._paused = false;
-        if (this._progressEl) {
-          this._progressEl.setAttribute("value", "100");
-        }
-        this._syncLabels();
-      }
-    };
-
-    utter.onerror = () => {
-      this._playing = false;
-      this._paused = false;
-      this._syncLabels();
-    };
-
-    this._utterance = utter;
+    const bestVoice = forceNoVoice ? null : pickBestVoice(lang);
     this._playing = true;
     this._paused = false;
     this._syncLabels();
-    window.speechSynthesis.speak(utter);
+
+    const speakChunk = (chunkIdx, retriedDefault) => {
+      if (token !== this._speechToken || !this._playing) return;
+      if (chunkIdx >= chunks.length) {
+        if (clamped + 1 < defs.length) {
+          this._chapterIndex = clamped + 1;
+          this._playWebSpeechChapter(clamped + 1, lang, SPEEDS[this._speedIndex], retriedDefault);
+        } else {
+          this._playing = false;
+          this._paused = false;
+          if (this._progressEl) this._progressEl.setAttribute("value", "100");
+          this._syncLabels();
+        }
+        return;
+      }
+
+      const utter = new SpeechSynthesisUtterance(chunks[chunkIdx]);
+      utter.rate = SPEEDS[this._speedIndex] || speed;
+      utter.pitch = 1.0;
+      if (bestVoice && !retriedDefault) {
+        utter.voice = bestVoice;
+        utter.lang = bestVoice.lang ? bestVoice.lang.replace("_", "-") : (lang === "es" ? "es-MX" : "en-US");
+      } else {
+        utter.lang = lang === "es" ? "es-MX" : "en-US";
+      }
+
+      utter.onend = () => {
+        if (token !== this._speechToken || !this._playing) return;
+        const frac = (chunkIdx + 1) / chunks.length;
+        const totalPct = Math.min(100, Math.round(((clamped + frac) / defs.length) * 100));
+        if (this._progressEl) this._progressEl.setAttribute("value", String(totalPct));
+        speakChunk(chunkIdx + 1, retriedDefault);
+      };
+
+      utter.onerror = (ev) => {
+        if (token !== this._speechToken) return;
+        const errCode = ev && ev.error ? String(ev.error).toLowerCase() : "";
+        if (errCode === "canceled" || errCode === "interrupted") return;
+        if (!retriedDefault && bestVoice) {
+          speakChunk(chunkIdx, true);
+          return;
+        }
+        this._playing = false;
+        this._paused = false;
+        this._syncLabels();
+      };
+
+      this._utterance = utter;
+      synth.speak(utter);
+    };
+
+    if (wasBusy) {
+      this._speechTimer = setTimeout(() => {
+        this._speechTimer = 0;
+        speakChunk(0, forceNoVoice);
+      }, 45);
+    } else {
+      speakChunk(0, forceNoVoice);
+    }
   }
 }
 
