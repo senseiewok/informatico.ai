@@ -94,7 +94,7 @@ FOLIO = {'folio_id': 'E.06',
                 'summary': 'REV 1.2 (Redated 2026-11-14): Grounding revision. The readouts were '
                            'recomputed from the stated formula with S_D1 = 0.60 S_DS and B_M = '
                            '1.54 (D_M = 276 mm, not 232 mm; C_s = 0.137, not 0.142), and the '
-                           '"immediate occupancy pass", certification and prototype-testing '
+                           '"immediate occupancy pass", compliance and prototype-testing '
                            'claims were withdrawn because no code check or test was done. The '
                            'claims that isolation keeps facilities "never offline", the '
                            '"curative biomanufacturing" wording and a "sub-angstrom" description '
