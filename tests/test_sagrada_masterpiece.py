@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import shutil
 import struct
 import subprocess
 import sys
@@ -187,10 +188,36 @@ class SagradaMasterpieceTests(unittest.TestCase):
             self.assertIn(attr, es_txt)
         self.assertNotIn('sf-diptych-wrap', es_txt)
         audio_js = (SRC / "modules" / "article-audio.mjs").read_text(encoding="utf-8")
-        for marker in ("splitIntoSpeechChunks", "resolveSectionDefs", "SAGRADA_ACT_DEFS", "_playMediaElementTrack"):
+        for marker in (
+            "splitIntoSpeechChunks",
+            "resolveSectionDefs",
+            "SAGRADA_ACT_DEFS",
+            "_playMediaElementTrack",
+            "export function sanitizeAudioTrackPath",
+        ):
             self.assertIn(marker, audio_js)
         for bad in ("innerHTML", "outerHTML", "insertAdjacentHTML", ".style.", "eval(", "new Function"):
             self.assertNotIn(bad, audio_js, f"CSP violation in article-audio.mjs: {bad}")
+        node_bin = shutil.which("node")
+        if node_bin:
+            mod_uri = (SRC / "modules" / "article-audio.mjs").resolve().as_uri()
+            probe = (
+                f'globalThis.HTMLElement = class {{}};'
+                f'const {{ sanitizeAudioTrackPath }} = await import({json.dumps(mod_uri)});'
+                f'const good = ["../../audio/a01-en.mp3", "../../../audio/a01-es.mp3", "/audio/x06-en.mp3"];'
+                f'for (const g of good) {{ if (sanitizeAudioTrackPath(g) !== g) throw new Error("rejected: " + g); }}'
+                f'const bad = ["javascript:alert(1)", "data:text/html,<script>alert(1)</script>", '
+                f'"https://evil.example/audio/a01-en.mp3", "../../audio/../index.html"];'
+                f'for (const b of bad) {{ if (sanitizeAudioTrackPath(b) !== "") throw new Error("accepted: " + b); }}'
+            )
+            node_res = subprocess.run(
+                [node_bin, "--input-type=module", "-e", probe],
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                timeout=15,
+            )
+            self.assertEqual(node_res.returncode, 0, node_res.stdout + node_res.stderr)
         for i in range(5):
             self.assertIn(f'data-sf-gen="{i}"', txt)
             self.assertIn(f'data-sf-relay-card="{i}"', txt)

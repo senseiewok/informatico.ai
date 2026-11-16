@@ -9,6 +9,22 @@
 
 const SPEEDS = [1.15, 1.35, 1.5, 1.0, 0.85];
 
+const AUDIO_TRACK_PATH_RE = /^((?:\.\.\/){1,5}|\/)audio\/([a-zA-Z0-9_-]+)\.(mp3|ogg|wav|m4a)$/i;
+const SAFE_AUDIO_PREFIXES = ["/", "../", "../../", "../../../", "../../../../", "../../../../../"];
+const SAFE_AUDIO_EXTS = { mp3: ".mp3", ogg: ".ogg", wav: ".wav", m4a: ".m4a" };
+
+export function sanitizeAudioTrackPath(raw) {
+  if (typeof raw !== "string" || !raw) return "";
+  const match = AUDIO_TRACK_PATH_RE.exec(raw.trim());
+  if (!match) return "";
+  const prefix = SAFE_AUDIO_PREFIXES.find((p) => p === match[1]);
+  const ext = SAFE_AUDIO_EXTS[match[3].toLowerCase()];
+  if (!prefix || !ext) return "";
+  const safeStem = encodeURIComponent(match[2]);
+  const safeRel = "audio/" + safeStem + ext;
+  return prefix + safeRel;
+}
+
 const ACT_DEFS = [
   { id: "act-i", selector: '[id^="act1-heading"]', labelEn: "Act I · Story", labelEs: "Acto I · Historia", esIndex: 0 },
   { id: "act-ii", selector: '[id^="act2-heading"]', labelEn: "Act II · Intuition", labelEs: "Acto II · Intuición", esIndex: 0 },
@@ -539,15 +555,16 @@ export class TpArticleAudioElement extends HTMLElement {
   _getNeuralSrc(lang) {
     const raw = this.getAttribute(lang === "es" ? "data-audio-src-es" : "data-audio-src") || "";
     if (!raw) return "";
+    let candidate = raw;
     if (
       typeof window !== "undefined" &&
       window.location &&
       window.location.pathname.includes("/es-mx/") &&
       raw.startsWith("../../audio/")
     ) {
-      return `../${raw}`;
+      candidate = `../${raw}`;
     }
-    return raw;
+    return sanitizeAudioTrackPath(candidate);
   }
 
   _unlockAudioContextSync() {
@@ -1120,14 +1137,15 @@ export class TpArticleAudioElement extends HTMLElement {
 
   _playMediaElementTrack(src, chapterIndex, lang, token) {
     const el = this._audioEl;
-    if (!el || typeof el.play !== "function") return false;
+    const safeSrc = sanitizeAudioTrackPath(src);
+    if (!el || !safeSrc || typeof el.play !== "function") return false;
     const speed = SPEEDS[this._speedIndex];
     const ratios = this._getChapterRatios(lang);
     const startRatio = ratios[chapterIndex] || 0;
 
     this._usingMediaEl = true;
-    if (el.getAttribute("src") !== src) {
-      el.setAttribute("src", src);
+    if (el.getAttribute("src") !== safeSrc) {
+      el.setAttribute("src", safeSrc);
     }
     el.playbackRate = speed;
 
@@ -1176,7 +1194,7 @@ export class TpArticleAudioElement extends HTMLElement {
       this._usingMediaEl = false;
       const ctx = this._unlockAudioContextSync();
       if (ctx) {
-        this._playNeuralAudioTrack(src, chapterIndex, lang, token).then((ok) => {
+        this._playNeuralAudioTrack(safeSrc, chapterIndex, lang, token).then((ok) => {
           if (token === this._loadToken && !ok && this._playing) {
             this._playWebSpeechChapter(chapterIndex, lang, SPEEDS[this._speedIndex]);
           }
