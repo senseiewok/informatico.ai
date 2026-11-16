@@ -913,7 +913,7 @@ def render_futuristic_cadence_svg(folio_code: str = "INFORMATICO.AI") -> str:
           <circle class="tp-futuristic-reticle tp-futuristic-reticle-right" cx="926" cy="14" r="6.5" stroke="var(--tp-prussian)" stroke-width="1.15" stroke-dasharray="4 3"/>
           <circle class="tp-futuristic-node" cx="926" cy="14" r="2.3" fill="var(--tp-verdigris)"/>
           <text x="50" y="17" fill="var(--tp-graphite)" font-family="var(--font-mono, monospace)" font-size="8.2" font-weight="700" letter-spacing="0.06em">PHASE-LOCKED VECTOR TELEMETRY · {esc(folio_code)}</text>
-          <text x="910" y="17" text-anchor="end" fill="var(--tp-verdigris)" font-family="var(--font-mono, monospace)" font-size="8.2" font-weight="700" letter-spacing="0.06em">98 BILINGUAL CROSSWORDS · CLS 0.000</text>
+          <text x="910" y="17" text-anchor="end" fill="var(--tp-verdigris)" font-family="var(--font-mono, monospace)" font-size="8.2" font-weight="700" letter-spacing="0.06em">100 BILINGUAL CROSSWORDS · CLS 0.000</text>
         </svg>
       </div>"""
 
@@ -953,8 +953,8 @@ def render_folio_crossword_section(slug: str, folio_id: str) -> str:
         <div class="tp-puzzle-header-right">
           <span class="tp-cw-edition-badge" data-en="EN · INDEPENDENT ENGLISH EDITION (10×10)" data-es="ES-MX · EDICIÓN INDEPENDIENTE EN ESPAÑOL (10×10)">EN · INDEPENDENT ENGLISH EDITION (10×10)</span>
           <div class="tp-passport-bar" role="region" aria-label="Collector's Passport Crossword Progress">
-            <span class="tp-passport-count" data-en="0 / 49 Folios Sealed (EN: 0 · ES-MX: 0)" data-es="0 / 49 Folios Sellados (EN: 0 · ES-MX: 0)">0 / 49 Folios Sealed (EN: 0 · ES-MX: 0)</span>
-            <progress class="tp-passport-progress" max="98" value="0" aria-label="Total bilingual crosswords solved across Informatico.ai"></progress>
+            <span class="tp-passport-count" data-en="0 / 50 Folios Sealed (EN: 0 · ES-MX: 0)" data-es="0 / 50 Folios Sellados (EN: 0 · ES-MX: 0)">0 / 50 Folios Sealed (EN: 0 · ES-MX: 0)</span>
+            <progress class="tp-passport-progress" max="100" value="0" aria-label="Total bilingual crosswords solved across Informatico.ai"></progress>
           </div>
         </div>
       </div>
@@ -1996,6 +1996,13 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
             <li data-contents-bounty-item data-search="cc.01 golf gti one brief eight answers un reto ocho respuestas"><a href="{_href(rel_res, 'classics/golf-gti/')}"{' aria-current="page"' if active_slug == "golf-gti" else ""}><span class="tp-contents-id">CC.01</span> <span class="tp-contents-title" data-en="One Brief, Eight Answers: the Golf GTI" data-es="Un reto, ocho respuestas: el Golf GTI">One Brief, Eight Answers: the Golf GTI</span></a></li>
             </ol>
           </section>"""
+    arch_series_html = f"""
+          <section class="tp-contents-series" aria-label="Architecture Cult Classics">
+            <h3><a href="{_href(rel_res, 'classics/sagrada-familia/')}" data-en="Architecture · Cult Classics" data-es="Arquitectura · Clásicos de Culto">Architecture · Cult Classics</a></h3>
+            <ol>
+            <li data-contents-bounty-item data-search="cc.02 sagrada familia one stone forest eight moves un bosque de piedra ocho jugadas"><a href="{_href(rel_res, 'classics/sagrada-familia/')}"{' aria-current="page"' if active_slug == "sagrada-familia" else ""}><span class="tp-contents-id">CC.02</span> <span class="tp-contents-title" data-en="One Stone Forest, Eight Moves: La Sagrada Família" data-es="Un bosque de piedra, ocho jugadas: Sagrada Família">One Stone Forest, Eight Moves: La Sagrada Família</span></a></li>
+            </ol>
+          </section>"""
     cols = []
     for p_key in ("engineering", "architecture", "physics", "math"):
         items = []
@@ -2013,12 +2020,13 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
             )
         items_html = "\n            ".join(items)
         en, es = PILLAR_SHORT_TITLES[p_key], PILLAR_SHORT_TITLES_ES[p_key]
+        extra_col = tg_series_html if p_key == "physics" else (arch_series_html if p_key == "architecture" else "")
         cols.append(
             f"""        <section class="tp-contents-col" data-pillar="{p_key}">
           <h3><a href="{_href(rel_res, p_key + "/")}" data-en="{esc(en)}" data-es="{esc(es)}">{esc(en)}</a></h3>
           <ol>
             {items_html}
-          </ol>{tg_series_html if p_key == "physics" else ""}
+          </ol>{extra_col}
         </section>"""
         )
     cols_html = "\n".join(cols)
@@ -2316,6 +2324,27 @@ def render_cult_classics_rack(rel_res: str) -> str:
     </section>"""
 
 
+def render_architecture_classics_rack(rel_res: str) -> str:
+    """Architecture showcase on /architecture/: the CC.02 Sagrada Família feature (tools/folios/classics/cc02.py)."""
+    from folios.classics import cc02 as CC02  # noqa: E402
+    t_en, d_en, t_es, d_es = CC02.SEO
+    href = _href(rel_res, f"classics/{CC02.SLUG}/")
+    plate = _href(rel_res, "plates/cc02.png")
+    return f"""
+    <section class="tp-issue-rack tp-series-rack" aria-labelledby="cult-classics-arch-heading" id="cult-classics-arch">
+      <p class="tp-kicker" data-en="Architecture Showcase · Cult Classics · CC.02" data-es="Vitrina de Arquitectura · Clásicos de Culto · CC.02">Architecture Showcase · Cult Classics · CC.02</p>
+      <h2 id="cult-classics-arch-heading" class="tp-h2"><a href="{href}" data-en="{esc(t_en)}" data-es="{esc(t_es)}">{esc(t_en)}</a></h2>
+      <div class="tp-rack-grid">
+        <a class="tp-rack-card tp-rack-card-classic" href="{href}" data-folio-slug="cc02">
+          <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb tp-rack-thumb-series" src="{plate}?v={_png_sha8('cc02')}" width="1200" height="630" loading="lazy" decoding="async" alt="Schematic 18-spire parabolic skyline and ruled hyperboloid curves for CC.02"></span>
+          <span class="tp-rack-top"><span class="tp-rack-id">CC.02</span><span class="tp-rack-badge" data-en="{esc(CC02.HERO['reading_en'])}" data-es="{esc(CC02.HERO['reading_es'])}">{esc(CC02.HERO['reading_en'])}</span></span>
+          <strong class="tp-rack-title" data-en="{esc(CC02.HERO['title_en'])}" data-es="{esc(CC02.HERO['title_es'])}">{esc(CC02.HERO['title_en'])}</strong>
+          <span class="tp-rack-dek" data-en="{esc(d_en)}" data-es="{esc(d_es)}">{esc(d_en)}</span>
+        </a>
+      </div>
+    </section>"""
+
+
 def render_cross_scale_essays_showcase(rel_res: str, lang: str = "en") -> str:
     """Featured three-card showcase of Cross-Scale Companion Essays (/essays/, ES.01–ES.03)."""
     from folios.essays import ESSAYS as CROSS_SCALE_ESSAYS  # noqa: E402
@@ -2364,16 +2393,25 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
                                               image=image, crumbs=crumbs), lang)
     cards = render_rack_cards(pillar, folios, "./", "../plates/", eager=12)
     n = len(folios)
-    lead_series = (render_timegravity_series_rack(rel_res) + render_cult_classics_rack(rel_res)
-                   + render_cross_scale_essays_showcase(rel_res, lang)) if pillar == "physics" else ""
-    rack_cls = "tp-issue-rack tp-issue-rack-headed" if pillar == "physics" else "tp-issue-rack"
-    rack_head = ""
     if pillar == "physics":
+        lead_series = (render_timegravity_series_rack(rel_res) + render_cult_classics_rack(rel_res)
+                       + render_cross_scale_essays_showcase(rel_res, lang))
+        rack_cls = "tp-issue-rack tp-issue-rack-headed"
         rack_head = """      <div class="tp-issue-rack-head">
         <p class="tp-kicker" data-en="Standalone Physics Monographs · P.01–P.12" data-es="Monografías Independientes de Física · P.01–P.12">Standalone Physics Monographs · P.01–P.12</p>
         <h2 class="tp-h2" data-en="Twelve Multiscale &amp; Quantum Monographs" data-es="Doce Monografías Multiescala y Cuánticas">Twelve Multiscale &amp; Quantum Monographs</h2>
       </div>
 """
+    elif pillar == "architecture":
+        lead_series = render_architecture_classics_rack(rel_res)
+        rack_cls = "tp-issue-rack tp-issue-rack-headed"
+        rack_head = """      <div class="tp-issue-rack-head">
+        <p class="tp-kicker" data-en="Standalone Architecture Monographs · A.01–A.12" data-es="Monografías Independientes de Arquitectura · A.01–A.12">Standalone Architecture Monographs · A.01–A.12</p>
+        <h2 class="tp-h2" data-en="Twelve Structural &amp; Geometric Monographs" data-es="Doce Monografías Estructurales y Geométricas">Twelve Structural &amp; Geometric Monographs</h2>
+      </div>
+"""
+    else:
+        lead_series, rack_cls, rack_head = "", "tp-issue-rack", ""
     extra_sections = ""
     if pillar in ("physics", "math"):
         extra_sections = f"\n{render_symbolic_physics_lab_section(rel_res)}\n{render_oss_physics_radar_section(rel_res)}"
@@ -5033,23 +5071,23 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
 
 INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
     {
-        "code": "CC.01",
-        "folio_id": "CC.01",
-        "disc_en": "Cult Classics · Applied Mechanics",
-        "disc_es": "Clásicos de Culto · Mecánica Aplicada",
-        "href": "classics/golf-gti/",
+        "code": "CC.02",
+        "folio_id": "CC.02",
+        "disc_en": "Cult Classics · Architecture",
+        "disc_es": "Clásicos de Culto · Arquitectura",
+        "href": "classics/sagrada-familia/",
         "plate_kind": "png",
-        "plate_slug": "cc01",
-        "title_en": "One Brief, Eight Answers: the Golf GTI as an Engineering Story",
-        "title_es": "Un reto, ocho respuestas: el Golf GTI como historia de ingeniería",
-        "dek_en": "Eight generations, one engineering move each: injection, sixteen valves, turbo, two clutches, brake-based and clutch-pack differentials, software, with a ghost race of one magazine's Nordschleife times.",
-        "dek_es": "Ocho generaciones, una jugada de ingeniería cada una: inyección, dieciséis válvulas, turbo, dos embragues, diferenciales por freno y por embrague, software, con una carrera fantasma de los tiempos de una revista en el Nordschleife.",
-        "law": "Δt = 8:54 − 7:57 = 57 s · sport auto, Nordschleife, 2002 vs 2016",
-        "badge_en": "VW · PRESS · 6 PAPERS · EVERY NUMBER STAMPED",
-        "badge_es": "VW · PRENSA · 6 ARTÍCULOS · CADA CIFRA SELLADA",
-        "cta_en": "Read CC.01 →",
-        "cta_es": "Leer CC.01 →",
-        "alt": "Schematic hatchback silhouettes with a red rule and a tartan band, the share plate for CC.01.",
+        "plate_slug": "cc02",
+        "title_en": "One Stone Forest, Eight Moves: La Sagrada Família (1882–2026)",
+        "title_es": "Un bosque de piedra, ocho jugadas: La Sagrada Família (1882–2026)",
+        "dek_en": "Eight structural moves from Villar’s 1882 crypt to the 172.5 m June 2026 centenary cross: coupled 2D catenary-to-3D WebGL2 stereotomy, .GLB/.DXF export, 12/10/8/6-point columns, and post-tensioned stone panels.",
+        "dek_es": "Ocho jugadas estructurales desde la cripta de 1882 hasta la cruz del centenario de 172.5 m en 2026: estereotomía 2D↔3D WebGL2 con exportación .GLB/.DXF, columnas estrelladas y piedra pretensada.",
+        "law": "r(u,v) = (a(cos u ∓ v sin u), b(sin u ± v cos u), vc) · θ = arctan(H/V) · 172.5 m",
+        "badge_en": "BASÍLICA · ARUP · 9 DOIs · LIVE GLB + DXF",
+        "badge_es": "BASÍLICA · ARUP · 9 DOIs · GLB + DXF EN VIVO",
+        "cta_en": "Enter CC.02 Architecture Showcase →",
+        "cta_es": "Entrar a Vitrina CC.02 →",
+        "alt": "Schematic 18-spire parabolic skyline beneath Montjuïc datum and doubly-ruled hyperboloid lines for CC.02.",
     },
     {
         "code": "B.06",
@@ -5109,23 +5147,23 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "alt": "Editorial plate for Folio M.11 depicting 3D Kakeya directional tube incidences and critical-strip zero density bounds.",
     },
     {
-        "code": "M.12",
-        "folio_id": "M.12",
-        "disc_en": "Formal Complexity & Cryptography",
-        "disc_es": "Complejidad Formal y Criptografía",
-        "href": "math/m12/",
-        "plate_kind": "jpg",
-        "plate_slug": "m12",
-        "title_en": "Public Lean 4 Repositories and NIST FIPS 203 (ML-KEM): What They State, Side by Side",
-        "title_es": "Repositorios Públicos en Lean 4 y NIST FIPS 203 (ML-KEM): Lo que Afirma Cada Uno",
-        "dek_en": "Sets what public Lean 4 repositories say about fine-grained complexity reductions beside the Module-LWE lattice parameters that NIST FIPS 203 specifies.",
-        "dek_es": "Pone lo que afirman repositorios públicos en Lean 4 sobre reducciones de complejidad junto a los parámetros de retículos Module-LWE que especifica NIST FIPS 203.",
-        "law": "b = A s + e (mod q) · R_ℤ(8×8) ≤ 28",
-        "badge_en": "LEAN 4 REPOSITORIES · NIST FIPS 203",
-        "badge_es": "REPOSITORIOS LEAN 4 · NIST FIPS 203",
-        "cta_en": "Read M.12 Cryptography Monograph →",
-        "cta_es": "Leer Monografía M.12 →",
-        "alt": "Editorial plate for Folio M.12 illustrating Module-LWE lattice geometry and formal proof graphs.",
+        "code": "CC.01",
+        "folio_id": "CC.01",
+        "disc_en": "Cult Classics · Applied Mechanics",
+        "disc_es": "Clásicos de Culto · Mecánica Aplicada",
+        "href": "classics/golf-gti/",
+        "plate_kind": "png",
+        "plate_slug": "cc01",
+        "title_en": "One Brief, Eight Answers: the Golf GTI as an Engineering Story",
+        "title_es": "Un reto, ocho respuestas: el Golf GTI como historia de ingeniería",
+        "dek_en": "Eight generations, one engineering move each: injection, sixteen valves, turbo, two clutches, brake-based and clutch-pack differentials, software, with a ghost race of one magazine's Nordschleife times.",
+        "dek_es": "Ocho generaciones, una jugada de ingeniería cada una: inyección, dieciséis válvulas, turbo, dos embragues, diferenciales por freno y por embrague, software, con una carrera fantasma de los tiempos de una revista en el Nordschleife.",
+        "law": "Δt = 8:54 − 7:57 = 57 s · sport auto, Nordschleife, 2002 vs 2016",
+        "badge_en": "VW · PRESS · 6 PAPERS · EVERY NUMBER STAMPED",
+        "badge_es": "VW · PRENSA · 6 ARTÍCULOS · CADA CIFRA SELLADA",
+        "cta_en": "Read CC.01 →",
+        "cta_es": "Leer CC.01 →",
+        "alt": "Schematic hatchback silhouettes with a red rule and a tartan band, the share plate for CC.01.",
     },
     {
         "code": "A.11",
@@ -5513,9 +5551,14 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
           <span class="tp-track-chip-meta" data-en="Clock rates · Geodesics · Six labels · Ledger" data-es="Ritmos de reloj · Geodésicas · Seis etiquetas · Registro">Clock rates · Geodesics · Six labels · Ledger</span>
         </a>
         <a class="tp-track-chip tp-track-chip-classic" href="classics/golf-gti/">
-          <span class="tp-track-chip-kicker" data-en="CULT CLASSIC · CC.01 · NEW" data-es="CLÁSICO DE CULTO · CC.01 · NUEVO">CULT CLASSIC · CC.01 · NEW</span>
+          <span class="tp-track-chip-kicker" data-en="CULT CLASSIC · CC.01" data-es="CLÁSICO DE CULTO · CC.01">CULT CLASSIC · CC.01</span>
           <strong class="tp-track-chip-title" data-en="One Brief, Eight Answers: the Golf GTI" data-es="Un reto, ocho respuestas: el Golf GTI">One Brief, Eight Answers: the Golf GTI</strong>
           <span class="tp-track-chip-meta" data-en="8 generations · Differential bench · Ghost race" data-es="8 generaciones · Banco de diferenciales · Carrera fantasma">8 generations · Differential bench · Ghost race</span>
+        </a>
+        <a class="tp-track-chip tp-track-chip-classic" href="classics/sagrada-familia/">
+          <span class="tp-track-chip-kicker" data-en="CULT CLASSIC · CC.02 · NEW" data-es="CLÁSICO DE CULTO · CC.02 · NUEVO">CULT CLASSIC · CC.02 · NEW</span>
+          <strong class="tp-track-chip-title" data-en="One Stone Forest: La Sagrada Família" data-es="Un bosque de piedra: La Sagrada Família">One Stone Forest: La Sagrada Família</strong>
+          <span class="tp-track-chip-meta" data-en="2D Catenary ↔ 3D WebGL2 · GLB &amp; DXF · 172.5 m" data-es="Catenaria 2D ↔ WebGL2 3D · GLB y DXF · 172.5 m">2D Catenary ↔ 3D WebGL2 · GLB &amp; DXF · 172.5 m</span>
         </a>
         <a class="tp-track-chip tp-track-chip-skills" href="https://github.com/senseiewok/informatico.ai/tree/main/skills" rel="noopener noreferrer">
           <span class="tp-track-chip-kicker" data-en="{skill_count} AI SKILL.MD · {_verifier_count()} VERIFIERS" data-es="{skill_count} SKILL.MD · {_verifier_count()} VERIFICADORES">{skill_count} AI SKILL.MD · {_verifier_count()} VERIFIERS</span>
@@ -5968,7 +6011,9 @@ def render_research_sitemap(catalog: dict) -> str:
         entries.append((f"essays/{es_doc['slug']}/", es_doc.get("date") or es_doc.get("published", essays_date)))
     # Cult Classics (CC.xx): standalone features, no shelf page yet (tools/folios/classics/).
     from folios.classics import cc01 as CC01  # noqa: E402
+    from folios.classics import cc02 as CC02  # noqa: E402
     entries.append((f"classics/{CC01.SLUG}/", CC01.DATE))
+    entries.append((f"classics/{CC02.SLUG}/", CC02.DATE))
     entries.append(("about/", newest_all))
 
     blocks = [
@@ -6062,9 +6107,11 @@ def render_llms_txt(catalog: dict) -> str:
         lines.append(f"- [{es_doc['code']} {es_doc['seo'][0]}]({page_url('essays/' + es_doc['slug'] + '/')}): {es_doc['seo'][1]}")
     lines.append("")
     from folios.classics import cc01 as CC01  # noqa: E402
-    lines.append("## Cult Classics · Engineering Stories (CC.01)")
+    from folios.classics import cc02 as CC02  # noqa: E402
+    lines.append("## Cult Classics · Engineering & Architecture Stories (CC.01–CC.02)")
     lines.append("")
     lines.append(f"- [{CC01.CODE} {CC01.SEO[0]}]({page_url('classics/' + CC01.SLUG + '/')}): {CC01.SEO[1]}")
+    lines.append(f"- [{CC02.CODE} {CC02.SEO[0]}]({page_url('classics/' + CC02.SLUG + '/')}): {CC02.SEO[1]}")
     lines.append("")
     lines.append("## About Informatico.ai & the Shared Verification Engine (Essay Zero)")
     lines.append("")
@@ -6219,6 +6266,10 @@ def main() -> None:
     sys.modules.setdefault("build_longform_folios", sys.modules[__name__])
     import build_cross_scale_essays  # noqa: E402
     build_cross_scale_essays.write_essay_pages(catalog)
+    import build_cult_classics  # noqa: E402  (lazy: it imports this module)
+    build_cult_classics.write_plate()
+    import build_sagrada_masterpiece  # noqa: E402  (lazy: it imports this module)
+    build_sagrada_masterpiece.write_plate()
 
     res_dir = ROOT / "src"
     es_dir = res_dir / ES_PREFIX.strip("/")
@@ -6308,6 +6359,8 @@ def main() -> None:
     build_cross_scale_essays.write_essay_pages(catalog)
     import build_cult_classics  # noqa: E402  (lazy: it imports this module)
     build_cult_classics.write_pages(catalog)
+    import build_sagrada_masterpiece  # noqa: E402  (lazy: it imports this module)
+    build_sagrada_masterpiece.write_pages(catalog)
 
     print(f"PASS: Built Informatico.ai hub + 4 pillar racks + {count} standalone 5-Act HTML Folios + Bounties hub + {b_count} standalone Bounty Folios + Tech & Tools hub + {t_count} standalone Toolbox Folios, each in English and Spanish (/{ES_PREFIX}) + sitemap.xml + robots.txt + llms.txt + 404.html.")
 
