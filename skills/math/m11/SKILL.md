@@ -14,7 +14,7 @@ A plain-text companion to the essay at https://informatico.ai/math/m11/ (`M.11 �
 ## Rules the essay derives
 1. Bound the union volume of direction-separated delta-tubes in R^3 via |union T_i| >= C_eps * delta^eps * sum |T_i| to enforce dim_H(K) = dim_M(K) = 3.
 2. Evaluate the Guth-Maynard zero-density bound N(sigma, T) <= T^(30(1 - sigma)/13 + o(1)) as stated in its abstract, compared with Huxley's 12/5 = 2.40; 30/13 = 2.3077.
-3. Before citing a Lean repository as a formalisation of a theorem, read its README to confirm which theorem it covers, and report what the README said with the date you read it (the anthropics/formal-math README read on 2026-11-14 lists zeta23 as Alpöge–Furman and does not list Guth–Maynard).
+3. Before citing a Lean repository as a formalisation of a theorem, read its README to verify which theorem it covers, and report what the README said with the date you read it (the anthropics/formal-math README read on 2026-11-14 lists zeta23 as Alpöge–Furman and does not list Guth–Maynard).
 
 ## How it works, in four stages
 - Stage 1 (Besicovitch's 1919 Needle Paradox & The 3D Kakeya Conjecture): A unit needle can be rotated 360° inside a set of arbitrarily tiny volume (measure zero), yet the Kakeya Conjecture asserts its fractal Hausdorff dimension in ℝ³ must still be the full 3.000.

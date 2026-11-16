@@ -108,7 +108,7 @@ FOLIO = {'folio_id': 'M.11',
                      "sigma)/13 + o(1)) as stated in its abstract, compared with Huxley's 12/5 = "
                      '2.40; 30/13 = 2.3077.',
                      'Before citing a Lean repository as a formalisation of a theorem, read its '
-                     'README to confirm which theorem it covers, and report what the README said '
+                     'README to verify which theorem it covers, and report what the README said '
                      'with the date you read it (the anthropics/formal-math README read on '
                      '2026-11-14 lists zeta23 as Alpöge–Furman and does not list '
                      'Guth–Maynard).']},
@@ -228,10 +228,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'things pointing in many directions cannot pile up too much."',
  'chronology': [('1917–1940',
                  'Kakeya poses the needle problem; Besicovitch constructs measure-zero needle '
-                 'sets; Albert Ingham proves a zero-density estimate that stood at σ = 3/4.'),
+                 'sets; Albert Ingham publishes a zero-density estimate that stood at σ = 3/4.'),
                 ('1971–1989',
-                 'Martin Huxley proves the 12/5 = 2.40 zero-density exponent (DOI '
-                 '10.1007/BF01418933); Brian Conrey proves > 2/5 of zeros lie on σ = 1/2 (DOI '
+                 'Martin Huxley derives the 12/5 = 2.40 zero-density exponent (DOI '
+                 '10.1007/BF01418933); Brian Conrey calculates > 2/5 of zeros lie on σ = 1/2 (DOI '
                  '10.1515/crll.1989.399.1).'),
                 ('2024',
                  'Larry Guth and James Maynard (arXiv:2405.20552) post the 30/13 ≈ 2.3077 '
@@ -311,7 +311,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                   'critical-line theorem, the README of https://github.com/teorth/pfr describes '
                   'a Lean 4 formalisation of the polynomial Freiman–Ruzsa conjecture, and the '
                   'README of https://github.com/deepseek-ai/DeepSeek-Prover-V2 describes a '
-                  'language model for formal theorem proving in Lean 4. They suggest what such '
+                  'language model for formal mathematical reasoning in Lean 4. They suggest what such '
                   'work could look like for long harmonic-analysis arguments.',
  'act4_deepening': 'Turning long harmonic-analysis papers into formal proofs would be a large '
                    'project. Researchers could outline dependency blueprints while automated '
