@@ -7,9 +7,10 @@
   --cc-rule: var(--tp-rule);
   --cc-paper: var(--tp-vellum);
   --cc-tint: #3b4f6b;
+  --cc-gold: #b88928;
 }
 html[data-theme="blueprint"] .cc-page,
-html[data-theme="dark"] .cc-page { --cc-tint: #8fa7c7; }
+html[data-theme="dark"] .cc-page { --cc-tint: #8fa7c7; --cc-gold: #e5b95c; }
 
 /* ---------------------------------------------------------------- parade (background) */
 .cc-parade {
@@ -47,6 +48,7 @@ html[data-theme="dark"] .cc-page { --cc-tint: #8fa7c7; }
   stroke-linecap: round;
 }
 .cc-car-red { stroke: var(--cc-red); stroke-width: 3; stroke-linecap: round; }
+.cc-car-gold { stroke: var(--cc-gold); stroke-width: 2.8; stroke-linecap: round; }
 .cc-car-tint .cc-car-body { stroke: var(--cc-tint); stroke-width: 2.6; }
 .cc-wheel {
   transform-box: fill-box;
@@ -80,6 +82,13 @@ html.cc-paused .cc-weight { animation-play-state: paused; }
 .cc-layer-ribbon path { stroke: var(--tp-stone-deep); stroke-width: 120; stroke-linecap: round; }
 .cc-layer-centre path { stroke: var(--tp-rule-strong); stroke-width: 2; stroke-dasharray: 26 22; }
 .cc-layer-kerb path { stroke: var(--cc-red); stroke-width: 16; stroke-dasharray: 22 22; opacity: 0.35; }
+.cc-track-sketch { opacity: 0.42; }
+.cc-track-sketch .cc-layer-far path { stroke: var(--tp-slate); stroke-width: 1.4; stroke-dasharray: 6 3; }
+.cc-track-sketch .cc-layer-hatch path { stroke: var(--tp-rule-strong); stroke-width: 1; opacity: 0.45; }
+.cc-track-sketch .cc-layer-ribbon path { stroke: var(--tp-stone-deep); stroke-width: 92; stroke-linecap: round; opacity: 0.55; }
+.cc-track-sketch .cc-layer-edge path { stroke: var(--tp-slate); stroke-width: 1.6; stroke-dasharray: 18 4 6 4; opacity: 0.7; }
+.cc-track-sketch .cc-layer-centre path { stroke: var(--tp-rule-strong); stroke-width: 1.3; stroke-dasharray: 16 14; }
+.cc-track-sketch .cc-layer-kerb path { stroke: var(--cc-red); stroke-width: 10; stroke-dasharray: 14 14; opacity: 0.32; }
 
 /* ---------------------------------------------------------------- generation rail & chronology track */
 .cc-chronology-track {
@@ -369,6 +378,8 @@ li.cc-ghost-nolen .cc-ghost-key { background: transparent !important; color: var
 }
 .cc-stamp-press { color: var(--tp-verdigris); }
 .cc-stamp-paper { color: var(--tp-sienna); }
+.cc-stamp-club { color: var(--tp-verdigris); }
+.cc-stamp-ref { color: var(--tp-graphite); }
 .cc-stamp-photo { color: var(--tp-slate); }
 .cc-cite { margin: 0.2rem 0 1rem; }
 
@@ -453,6 +464,11 @@ li.cc-ghost-nolen .cc-ghost-key { background: transparent !important; color: var
 .cc-egg-wheel .cc-wheel circle, .cc-egg-wheel line { fill: none; stroke: var(--tp-vellum); stroke-width: 1.8; }
 .cc-egg-caliper { fill: none; stroke: var(--cc-red); stroke-width: 3.5; stroke-linecap: round; }
 .cc-egg-red { stroke: var(--cc-red); stroke-width: 2.6; stroke-linecap: round; }
+.cc-egg-gold { stroke: var(--cc-gold); stroke-width: 2.6; stroke-linecap: round; }
+.cc-egg-rim-gold { fill: var(--tp-stone-deep); stroke: var(--cc-gold); stroke-width: 1.6; }
+.cc-egg-wheel-gold .cc-wheel circle, .cc-egg-wheel-gold line { fill: none; stroke: var(--cc-gold); stroke-width: 1.6; }
+.cc-egg-roof-pillar { fill: var(--cc-ink); opacity: 0.86; }
+.cc-egg-mini .cc-egg-hood { transform-origin: 106px 44px; }
 .cc-egg-hood path { fill: var(--tp-vellum); stroke: var(--cc-ink); stroke-width: 1.6; stroke-linejoin: round; }
 .cc-egg-hood {
   transform-box: view-box;
@@ -469,7 +485,11 @@ li.cc-ghost-nolen .cc-ghost-key { background: transparent !important; color: var
 .cc-egg-panel { position: relative; margin: 0.9rem 0 0; max-width: 64rem; overflow: hidden; border-radius: 6px; }
 .cc-egg-panel:not([hidden]) { display: grid; gap: 0.9rem; grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 46rem) { .cc-egg-panel:not([hidden]) { grid-template-columns: 1fr 1.25fr; align-items: end; } }
+@media (min-width: 56rem) { .cc-egg-panel.cc-egg-panel-trio:not([hidden]) { grid-template-columns: 1.1fr 0.62fr 1.1fr; align-items: start; } }
+@media (min-width: 48rem) { .cc-egg-panel.cc-egg-panel-duo:not([hidden]) { grid-template-columns: 1fr 1fr; align-items: start; } }
 .cc-egg-photo { margin: 0; overflow: hidden; border-radius: 6px; }
+.cc-egg-photo-wide { grid-column: 1 / -1; }
+@media (min-width: 56rem) { .cc-egg-panel-trio .cc-egg-photo-wide { grid-column: auto; } }
 .cc-egg-panel img { display: block; width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--cc-rule); }
 .cc-egg-panel figcaption { font-size: 0.9rem; color: var(--tp-graphite); margin-top: 0.5rem; }
 .cc-egg.is-open .cc-egg-panel { animation: cc-egg-reveal 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s both; }
@@ -486,7 +506,7 @@ li.cc-ghost-nolen .cc-ghost-key { background: transparent !important; color: var
 }
 @keyframes cc-egg-reveal {
   from { clip-path: circle(0% at 12% 0%); opacity: 0.4; }
-  to { clip-path: circle(150% at 12% 0%); opacity: 1; }
+  to { clip-path: circle(165% at 12% 0%); opacity: 1; }
 }
 @keyframes cc-egg-zoom {
   from { transform: scale(1.08); }
@@ -553,6 +573,20 @@ li.cc-ghost-nolen .cc-ghost-key { background: transparent !important; color: var
 .cc-btn:hover { border-color: var(--cc-red); }
 .cc-btn-quiet { font-size: 0.8rem; padding: 0.3rem 0.7rem; font-weight: 500; }
 .cc-btn:focus-visible, .cc-egg-btn:focus-visible, .cc-range:focus-visible, .cc-mode input:focus-visible { outline: 3px solid var(--tp-prussian); outline-offset: 2px; }
+
+/* ---------------------------------------------------------------- CC.03 load-transfer & brake-thermal benches */
+.cc-load-svg .cc-load-body { fill: var(--tp-stone); stroke: var(--cc-ink); stroke-width: 2; }
+.cc-load-svg .cc-load-cg { fill: var(--cc-red); stroke: var(--tp-vellum); stroke-width: 1.5; }
+.cc-load-svg .cc-load-bar-in { fill: var(--tp-prussian); opacity: 0.82; transition: height 0.15s, y 0.15s; }
+.cc-load-svg .cc-load-bar-out { fill: var(--cc-red); opacity: 0.85; transition: height 0.15s, y 0.15s; }
+.cc-load-svg .cc-load-fy { stroke: var(--cc-gold); stroke-width: 4; stroke-linecap: round; }
+.cc-brake-svg .cc-brake-rotor { fill: var(--tp-stone-deep); stroke: var(--cc-ink); stroke-width: 2.2; }
+.cc-brake-svg .cc-brake-glow { fill: var(--cc-red); opacity: 0.15; transition: opacity 0.2s; }
+.cc-brake-svg .cc-brake-caliper { fill: var(--cc-red); stroke: var(--cc-ink); stroke-width: 1.5; }
+.cc-brake-svg .cc-brake-air { fill: none; stroke: var(--tp-prussian); stroke-width: 2; stroke-dasharray: 5 4; }
+.cc-loop-corner { font-family: var(--tp-font-mono); font-size: 9.5px; fill: var(--tp-slate); }
+.cc-dot-e.cc-ghost-nolen circle { stroke: #7a3e9d; } .cc-dot-f.cc-ghost-nolen circle { stroke: #b0301e; }
+.cc-dot-g.cc-ghost-nolen circle { stroke: #11161c; } .cc-dot-h.cc-ghost-nolen circle { stroke: #0e6e8c; }
 
 /* ---------------------------------------------------------------- hero tribute, honor roll, jump bar & inline figures */
 .cc-hero-grid {
@@ -946,6 +980,19 @@ li.cc-ghost-nolen .cc-ghost-key { background: transparent !important; color: var
   margin: 0.5rem 0 0.35rem;
 }
 .cc-media-card .cc-cite { margin-top: auto; margin-bottom: 0; }
+.cc-inline-media { margin: 1.1rem 0 0; }
+.cc-hero-sketch .cc-media-frame { height: auto; aspect-ratio: 4 / 3; }
+.cc-visuals { border-top: 1px solid var(--cc-rule); margin-top: 2.5rem; padding-top: 1.2rem; }
+.cc-visuals-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.1rem;
+  margin-top: 1rem;
+}
+@media (min-width: 48rem) {
+  .cc-visuals-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.cc-tp-jump-active, .tp-essay-jump-pill.is-current { border-color: var(--cc-red); color: var(--cc-red); font-weight: 600; }
 
 dialog.cc-lightbox {
   width: min(96vw, 76rem);
@@ -974,24 +1021,32 @@ dialog.cc-lightbox::backdrop { background: rgba(12, 16, 22, 0.78); }
   gap: 0.5rem 0.9rem;
 }
 .cc-lightbox-bar .cc-pill-bar { margin: 0; }
+.cc-lightbox-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .cc-lb-hint { font-family: var(--tp-font-mono); font-size: 0.74rem; color: var(--tp-slate); }
 .cc-lightbox-stage {
+  min-width: 0;
   min-height: 0;
-  display: grid;
-  place-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem;
+  box-sizing: border-box;
   background: #101419;
   border-radius: 4px;
   overflow: hidden;
 }
-#cc-lightbox-img {
+#cc-lightbox-img, #cc-lb-img {
   display: block;
+  width: 100%;
+  height: 100%;
   max-width: 100%;
   max-height: 100%;
-  width: auto;
-  height: auto;
+  margin: 0;
   object-fit: contain;
 }
-#cc-lb-cap { max-width: none; margin: 0; font-size: 0.88rem; }
+#cc-lb-cap, .cc-lightbox-cap { max-width: none; margin: 0; font-size: 0.88rem; }
 
 /* sources */
 .cc-source-list { padding-left: 1.2rem; font-size: 0.9rem; line-height: 1.55; }
@@ -1011,6 +1066,7 @@ dialog.cc-lightbox::backdrop { background: rgba(12, 16, 22, 0.78); }
   .cc-egg-btn:hover .cc-egg-hood, .cc-egg-btn:focus-visible .cc-egg-hood { transform: none; }
   .cc-egg.is-open .cc-egg-panel, .cc-egg.is-open .cc-egg-panel img, .cc-egg.is-open .cc-egg-panel::after { animation: none; }
   .cc-egg.is-open .cc-egg-panel::after { display: none; }
+  .cc-load-svg .cc-load-bar-in, .cc-load-svg .cc-load-bar-out, .cc-brake-svg .cc-brake-glow { transition: none; }
 }
 @media (forced-colors: active) {
   .cc-parade, .cc-track { display: none; }
@@ -1023,7 +1079,7 @@ dialog.cc-lightbox::backdrop { background: rgba(12, 16, 22, 0.78); }
 }
 @media print {
   .cc-parade, .cc-track, .cc-motion, .cc-egg, .cc-hero-tools, .tp-essay-jump-bar, .cc-gen-rail, .cc-race .cc-btn,
-  .cc-export-row, .cc-lightbox, [data-folio-puzzle] { display: none; }
+  .cc-export-row, .cc-lightbox, [data-folio-puzzle], .cc-zoom-btn { display: none; }
   .cc-card, .cc-inline-figure, .cc-media-card { box-shadow: none; break-inside: avoid; }
   .cc-layout { grid-template-columns: 1fr; }
 }

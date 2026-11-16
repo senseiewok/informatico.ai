@@ -18,7 +18,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 
 ## What is here
 
-Zero-build bilingual (`en` + `es-MX`) monographs: Engineering `E`, Architecture `A`, Physics `P`, Mathematics `M` (12 each), Bounties `B.01`–`B.06`, Toolbox `X.01`–`X.06`, Time & Gravity `T.00`–`T.13` (claim ledger with six labels), Essays `ES.01`–`ES.11`, and Essay Zero (`/about/`).
+Zero-build bilingual (`en` + `es-MX`) monographs: Engineering `E`, Architecture `A`, Physics `P`, Mathematics `M` (12 each), Bounties `B.01`–`B.06`, Toolbox `X.01`–`X.06`, Time & Gravity `T.00`–`T.13` (claim ledger with six labels), Essays `ES.01`–`ES.11`, Cult Classics `CC.01`–`CC.03` (`tools/folios/classics/`), and Essay Zero (`/about/`).
 
 ## Build: edit the source, then regenerate
 
@@ -27,6 +27,7 @@ Never hand-edit generated HTML, catalog JSON or companion skills. Edit the sourc
 - Folios: `tools/folios/{engineering,architecture,physics,math}/<slug>.py`
 - Bounties: `tools/folios/bounties/`; Toolbox: `tools/folios/toolchain/` + `tools/toolchain_uga.py`
 - Time & Gravity: `tools/folios/timegravity/` + `tools/build_timegravity.py`
+- Cult Classics: `tools/folios/classics/cc*.py` + `tools/build_cult_classics.py`, `tools/build_sagrada_masterpiece.py`, `tools/build_mini_jcw.py`
 - Crosswords, SEO, CSS: `tools/folio_puzzles_data.py`, `tools/folios/seo_copy.py`, `tools/folios/css_bundle.py`
 
 `python tools/build_longform_folios.py` rewrites the catalog, CSS, `skills/**`, every page under `src/` and `src/es-mx/`, `sitemap.xml`, `llms.txt` and `404.html`.
@@ -44,6 +45,7 @@ python tools/check_timegravity_labels.py
 
 - Every DOI, first author and year must match `data/folio-citations.cache.json`; keep prose faithful to its cited source; never blind regex substitutions.
 - Keep `BOUNDARY_EN` / `BOUNDARY_ES` exact; never claim structural certification or clinical advice.
+- Cult Classics & media hygiene: run US-English prose through `../cf-lab/.claude/skills/lab-voice/scripts/check-voice.py` and `../cf-lab/tasks/check_claim_strength.py`; accept only `Public Domain`, `CC0`, or `CC-BY` photos (zero ShareAlike), strip all JPEG `APP1–APP15`/`COM`/EXIF/XMP/GPS markers, disclose conceptual composites explicitly, and validate dynamic media `src` assignments against a strict relative-path allowlist before DOM mutation (`CodeQL` safe).
 
 ## Workspace and security
 

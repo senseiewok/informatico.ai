@@ -19,7 +19,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_all_48_skills_and_python_verifiers_exist_and_pass(self) -> None:
         skill_files = list(SKILLS.glob("*/*/SKILL.md"))
         py_files = list(SKILLS.glob("*/*/verify_*.py"))
-        self.assertEqual(len(skill_files), 89)  # + skills/classics/cc01, cc02 + m13..m15 (2026-11-15)
+        self.assertEqual(len(skill_files), 90)  # + skills/classics/cc01, cc02, cc03 + m13..m15 (2026-11-15)
         self.assertGreaterEqual(len(py_files), 1)
         for py in py_files:  # a verifier that cannot fail is not a verifier
             self.assertIn("--planted-defect", py.read_text(encoding="utf-8"), py.name)
@@ -40,7 +40,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_106_bilingual_pages_and_bounty_crucible_mounted(self) -> None:
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 198)
+        self.assertEqual(len(locs), 200)
         self.assertTrue((RESEARCH / "about" / "index.html").is_file())
         self.assertTrue((RESEARCH / "es-mx" / "about" / "index.html").is_file())
         hub_html = (RESEARCH / "index.html").read_text(encoding="utf-8")

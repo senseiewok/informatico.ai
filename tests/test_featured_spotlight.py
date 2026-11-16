@@ -19,10 +19,10 @@ class FeaturedSpotlightTests(unittest.TestCase):
 
             self.assertIn('id="tp-featured-edition-desk"', html, rel)
             slides = re.findall(r'<article class="tp-spotlight-slide" data-spotlight-slot="(\d+)"', html)
-            self.assertEqual(slides, ["0", "1", "2", "3", "4", "5", "6", "7"], rel)
+            self.assertEqual(slides, ["0", "1", "2", "3", "4", "5", "6", "7", "8"], rel)
 
             pills = re.findall(r'data-spotlight-pick="(\d+)"', html)
-            self.assertEqual(pills, ["0", "1", "2", "3", "4", "5", "6", "7"], rel)
+            self.assertEqual(pills, ["0", "1", "2", "3", "4", "5", "6", "7", "8"], rel)
 
             releases = re.findall(r'<li class="tp-release-item">', html)
             self.assertEqual(len(releases), 3, rel)
@@ -44,6 +44,7 @@ class FeaturedSpotlightTests(unittest.TestCase):
             )
             self.assertIsNotNone(desk_match, rel)
             desk_html = desk_match.group(0)
+            self.assertIn("classics/mini-jcw/", desk_html, rel)
             base_dir = page.parent
 
             for href in re.findall(r'href="([^"]+)"', desk_html):

@@ -5,6 +5,7 @@
 import { encodeCustomGlbBuffer } from "./glb-viewer.mjs";
 
 const isEs = () => (document.documentElement.lang || "").toLowerCase().startsWith("es");
+const ES = isEs;
 const L = (en, es) => (isEs() ? es : en);
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -98,7 +99,9 @@ function initRace() {
   if (!path || !ghosts.length || typeof path.getTotalLength !== "function") return;
   const total = path.getTotalLength();
   const fastest = Number(race.dataset.fastest);
-  const COMPRESS = 100; // 100 real seconds per animated second
+  const COMPRESS = Number(race.dataset.compress) || 100; // real seconds per animated second
+  const dec = Number(race.dataset.decimals) || 2;
+  const gapDec = Number(race.dataset.gapDecimals) || 0;
   const place = (g, frac) => {
     const p = path.getPointAtLength(total * Math.min(frac, 1));
     const c = g.querySelector("circle");
@@ -112,7 +115,8 @@ function initRace() {
   const snapshot = () => ghosts.forEach((g) => place(g, fastest / Number(g.dataset.secs)));
   const fmt = (s) => {
     const m = Math.floor(s / 60);
-    const r = (s - m * 60).toFixed(s % 1 ? 2 : 0).padStart(s % 1 ? 5 : 2, "0");
+    const hasFrac = Math.abs(s % 1) > 1e-6;
+    const r = (s - m * 60).toFixed(hasFrac ? dec : 0).padStart(hasFrac ? dec + 3 : 2, "0");
     return `${m}:${r}`;
   };
   const slowest = Math.max(...ghosts.map((g) => Number(g.dataset.secs)));
@@ -135,9 +139,10 @@ function initRace() {
       if (simSecs < slowest) {
         raf = window.requestAnimationFrame(tick);
       } else {
+        const gap = gapDec > 0 ? (slowest - fastest).toFixed(gapDec) : String(Math.round(slowest - fastest));
         readout.textContent = L(
-          `All eight home. First: ${fmt(fastest)}. Last: ${fmt(slowest)}. Gap: ${Math.round(slowest - fastest)} s.`,
-          `Los ocho en la meta. Primero: ${fmt(fastest)}. Último: ${fmt(slowest)}. Diferencia: ${Math.round(slowest - fastest)} s.`);
+          `All eight home. First: ${fmt(fastest)}. Last: ${fmt(slowest)}. Gap: ${gap} s.`,
+          `Los ocho en la meta. Primero: ${fmt(fastest)}. Último: ${fmt(slowest)}. Diferencia: ${gap} s.`);
         btn.textContent = btn.dataset.labelAgain;
       }
     };
@@ -361,6 +366,196 @@ function initQuarterCar() {
   };
   range.addEventListener("input", update);
   update();
+}
+
+// ---------------------------------------------------------------- CC.03 lateral load transfer bench (illustrative)
+function initLoadTransfer() {
+  const bench = document.querySelector("[data-cc-load]");
+  if (!bench) return;
+  const range = bench.querySelector("#cc-ay-range");
+  const readout = bench.querySelector(".cc-readout");
+  const barIn = bench.querySelector(".cc-load-bar-in");
+  const barOut = bench.querySelector(".cc-load-bar-out");
+  const body = bench.querySelector(".cc-load-body");
+  const cgDot = bench.querySelector(".cc-load-cg");
+  const fyInLine = bench.querySelector(".cc-load-fy-in");
+  const fyOutLine = bench.querySelector(".cc-load-fy-out");
+  const d = bench.dataset;
+  const maxle = +d.maxle, g = +d.g, mu0 = +d.mu0, kload = +d.kload;
+  const fz0 = 0.5 * maxle * g;
+  const fyWheel = (fz) => fz * (mu0 - kload * fz);
+  const fyFlat = 2 * fyWheel(fz0);
+  const specs = {
+    tall: { h: +d.htall, t: +d.ttall },
+    f56: { h: +d.hf56, t: +d.tf56 },
+    kart: { h: +d.hkart, t: +d.tkart },
+  };
+  const fmtN = (n) => `${Math.round(n).toLocaleString("en-US")} N`;
+
+  const update = () => {
+    const mode = (bench.querySelector("input[name=cc-load-mode]:checked") || {}).value || "f56";
+    const ay = Number(range.value) / 100;
+    const sp = specs[mode] || specs.f56;
+    const dfz = Math.min(maxle * g * ay * sp.h / sp.t, fz0);
+    const fzIn = fz0 - dfz;
+    const fzOut = fz0 + dfz;
+    const fyIn = fyWheel(fzIn);
+    const fyOut = fyWheel(fzOut);
+    const fyTotal = fyIn + fyOut;
+    const loss = Math.max(0, fyFlat - fyTotal);
+
+    const hIn = Math.max(8, (fzIn / (2 * fz0)) * 96);
+    const hOut = Math.max(8, (fzOut / (2 * fz0)) * 96);
+    barIn.setAttribute("y", (170 - hIn).toFixed(1));
+    barIn.setAttribute("height", hIn.toFixed(1));
+    barOut.setAttribute("y", (170 - hOut).toFixed(1));
+    barOut.setAttribute("height", hOut.toFixed(1));
+    const rollDeg = ay * (sp.h / sp.t) * 8.5;
+    body.setAttribute("transform", `rotate(${rollDeg.toFixed(2)} 180 120)`);
+    cgDot.setAttribute("cy", (124 - (sp.h - 0.49) * 140).toFixed(1));
+    fyInLine.setAttribute("x2", (84 + (fyIn / 6000) * 58).toFixed(1));
+    fyOutLine.setAttribute("x2", (276 + (fyOut / 6000) * 58).toFixed(1));
+
+    readout.textContent = L(
+      `${ay.toFixed(2)} g · ΔF_z ${fmtN(dfz)} · inside ${fmtN(fzIn)} · outside ${fmtN(fzOut)} · axle grip ${fmtN(fyTotal)} (loss ${fmtN(loss)})`,
+      `${ay.toFixed(2)} g · ΔF_z ${fmtN(dfz)} · interior ${fmtN(fzIn)} · exterior ${fmtN(fzOut)} · agarre eje ${fmtN(fyTotal)} (pérdida ${fmtN(loss)})`
+    );
+    range.setAttribute("aria-valuetext", `${ay.toFixed(2)} g`);
+  };
+  range.addEventListener("input", update);
+  bench.querySelectorAll("input[name=cc-load-mode]").forEach((r) => r.addEventListener("change", update));
+  update();
+}
+
+// ---------------------------------------------------------------- CC.03 front rotor adiabatic thermal rise
+function initBrakeThermal() {
+  const bench = document.querySelector("[data-cc-brake]");
+  if (!bench) return;
+  const range = bench.querySelector("#cc-brake-range");
+  const readout = bench.querySelector(".cc-readout");
+  const glow = bench.querySelector(".cc-brake-glow");
+  const rotor = bench.querySelector(".cc-brake-rotor");
+  const d = bench.dataset;
+  const mcar = +d.mcar, v2 = +d.v2, fshare = +d.fshare, cp = +d.cp, tamb = +d.tamb;
+  const masses = { small: +d.msmall, mid: +d.mmid, brembo: +d.mbrembo };
+  const radii = { small: 46, mid: 56, brembo: 64 };
+
+  const update = () => {
+    const key = (bench.querySelector("input[name=cc-brake-mode]:checked") || {}).value || "brembo";
+    const v1 = Number(range.value);
+    const v1ms = v1 / 3.6;
+    const v2ms = v2 / 3.6;
+    const ke = 0.5 * mcar * Math.max(0, v1ms * v1ms - v2ms * v2ms);
+    const edisc = 0.5 * fshare * ke;
+    const mdisc = masses[key] || masses.brembo;
+    const dt = edisc / (mdisc * cp);
+    const tpeak = tamb + dt;
+    const r = radii[key] || 64;
+    rotor.setAttribute("r", String(r));
+    glow.setAttribute("r", String(r - 4));
+    glow.setAttribute("opacity", Math.min(0.88, Math.max(0.08, dt / 340)).toFixed(2));
+    readout.textContent = L(
+      `${v1} → ${v2} km/h · ${(edisc / 1000).toFixed(1)} kJ/disc · ΔT +${dt.toFixed(1)} °C · peak ${tpeak.toFixed(1)} °C`,
+      `${v1} → ${v2} km/h · ${(edisc / 1000).toFixed(1)} kJ/disco · ΔT +${dt.toFixed(1)} °C · pico ${tpeak.toFixed(1)} °C`
+    );
+    range.setAttribute("aria-valuetext", `${v1} km/h`);
+  };
+  range.addEventListener("input", update);
+  bench.querySelectorAll("input[name=cc-brake-mode]").forEach((r) => r.addEventListener("change", update));
+  update();
+}
+
+// ---------------------------------------------------------------- jump-bar scroll-spy (sections in view)
+function initJumpScrollSpy() {
+  const pills = [...document.querySelectorAll(".tp-essay-jump-bar a[href^='#']")];
+  if (!pills.length || !("IntersectionObserver" in window)) return;
+  const map = new Map();
+  pills.forEach((a) => {
+    const id = (a.getAttribute("href") || "").slice(1);
+    const sec = id ? document.getElementById(id) : null;
+    if (sec) map.set(sec, a);
+  });
+  if (!map.size) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      pills.forEach((p) => { p.classList.remove("is-current"); p.removeAttribute("aria-current"); });
+      const active = map.get(e.target);
+      if (active) { active.classList.add("is-current"); active.setAttribute("aria-current", "true"); }
+    });
+  }, { rootMargin: "-25% 0px -65% 0px" });
+  map.forEach((_p, sec) => io.observe(sec));
+}
+
+// ---------------------------------------------------------------- near-fullscreen zero-jump visual lightbox
+function initLightbox() {
+  if (document.querySelector("[data-cc-gallery]")) return;
+  const dialog = document.getElementById("cc-lightbox");
+  const openers = [...document.querySelectorAll("[data-cc-open-media]")];
+  if (!dialog || !openers.length) return;
+  const imgEl = document.getElementById("cc-lb-img");
+  const badgeEl = document.getElementById("cc-lb-badge");
+  const capEl = document.getElementById("cc-lb-cap");
+  const prevBtn = dialog.querySelector("[data-cc-lb-prev]");
+  const nextBtn = dialog.querySelector("[data-cc-lb-next]");
+  const closeBtn = dialog.querySelector("[data-cc-lb-close]");
+
+  const SAFE_MEDIA_SRC_RE = /^(?:\.\.\/)+images\/(?:classics|mini-jcw)\/[a-z0-9-]+\.jpg$/;
+  const byId = new Map();
+  const items = [];
+  document.querySelectorAll(".cc-media-card[data-cc-media-id]").forEach((card) => {
+    const id = card.dataset.ccMediaId || "";
+    const btn = card.querySelector("[data-cc-open-media]");
+    const img = card.querySelector("img");
+    const rawSrc = (img && img.getAttribute("src")) || "";
+    const match = SAFE_MEDIA_SRC_RE.exec(rawSrc);
+    if (!id || !btn || !match || byId.has(id)) return;
+    const entry = {
+      id,
+      safeSrc: match[0],
+      data: btn.dataset,
+    };
+    byId.set(id, entry);
+    items.push(entry);
+  });
+  if (!items.length) return;
+
+  let activeIndex = 0;
+  let openerEl = null;
+
+  const showAt = (idx) => {
+    activeIndex = (idx + items.length) % items.length;
+    const item = items[activeIndex];
+    const d = item.data;
+    if (imgEl && SAFE_MEDIA_SRC_RE.test(item.safeSrc)) {
+      imgEl.setAttribute("src", item.safeSrc);
+      imgEl.setAttribute("alt", L(d.altEn || "", d.altEs || ""));
+    }
+    if (badgeEl) badgeEl.textContent = `${activeIndex + 1} / ${items.length} · ${L(d.badgeEn || "", d.badgeEs || "")}`;
+    if (capEl) capEl.textContent = L(d.capEn || "", d.capEs || "");
+  };
+
+  openers.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      openerEl = btn;
+      const idx = items.findIndex((x) => x.id === btn.dataset.ccOpenMedia);
+      showAt(idx >= 0 ? idx : 0);
+      if (typeof dialog.showModal === "function") dialog.showModal();
+    });
+  });
+  if (prevBtn) prevBtn.addEventListener("click", () => showAt(activeIndex - 1));
+  if (nextBtn) nextBtn.addEventListener("click", () => showAt(activeIndex + 1));
+  if (closeBtn) closeBtn.addEventListener("click", () => dialog.close());
+  dialog.addEventListener("click", (e) => { if (e.target === dialog) dialog.close(); });
+  dialog.addEventListener("close", () => {
+    if (openerEl && typeof openerEl.focus === "function") openerEl.focus();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (!dialog.open) return;
+    if (e.key === "ArrowLeft") { showAt(activeIndex - 1); e.preventDefault(); }
+    else if (e.key === "ArrowRight") { showAt(activeIndex + 1); e.preventDefault(); }
+  });
+  window.addEventListener("tp-lang-change", () => { if (dialog.open) showAt(activeIndex); });
 }
 
 // ---------------------------------------------------------------- jump-bar scroll spy
@@ -1091,6 +1286,7 @@ function initVisualGalleryAndLightbox() {
       if (it) paintSlide(it);
     }
   });
+
 }
 
 initPause();
@@ -1108,6 +1304,10 @@ initRace();
 initDiff();
 initDct();
 initSteer();
+initLoadTransfer();
+initBrakeThermal();
 initReveal();
 initEgg();
 initVisualGalleryAndLightbox();
+initJumpScrollSpy();
+initLightbox();

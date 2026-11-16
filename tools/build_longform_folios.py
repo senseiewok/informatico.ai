@@ -2010,6 +2010,7 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
             <h3><a href="{_href(rel_res, 'classics/golf-gti/')}" data-en="Applied Mechanics · Cult Classics" data-es="Mecánica Aplicada · Clásicos de Culto">Applied Mechanics · Cult Classics</a></h3>
             <ol>
             <li data-contents-bounty-item data-search="cc.01 golf gti one brief eight answers un reto ocho respuestas"><a href="{_href(rel_res, 'classics/golf-gti/')}"{' aria-current="page"' if active_slug == "golf-gti" else ""}><span class="tp-contents-id">CC.01</span> <span class="tp-contents-title" data-en="One Brief, Eight Answers: the Golf GTI" data-es="Un reto, ocho respuestas: el Golf GTI">One Brief, Eight Answers: the Golf GTI</span></a></li>
+            <li data-contents-bounty-item data-search="cc.03 mini jcw john cooper works hot chili wheels at the corners ruedas en las esquinas brands hatch"><a href="{_href(rel_res, 'classics/mini-jcw/')}"{' aria-current="page"' if active_slug == "mini-jcw" else ""}><span class="tp-contents-id">CC.03</span> <span class="tp-contents-title" data-en="Wheels at the Corners: MINI to F56 JCW" data-es="Ruedas en las esquinas: del Mini al F56 JCW">Wheels at the Corners: MINI to F56 JCW</span></a></li>
             </ol>
           </section>"""
     arch_series_html = f"""
@@ -2320,22 +2321,32 @@ def render_timegravity_series_rack(rel_res: str) -> str:
 
 
 def render_cult_classics_rack(rel_res: str, section_id: str = "cult-classics") -> str:
-    """Applied mechanics showcase on /physics/ and /engineering/: the Cult Classics feature (CC.01)."""
+    """Applied mechanics showcase on /physics/ and /engineering/: the Cult Classics features (CC.01 & CC.03)."""
     from folios.classics import cc01 as CC01  # noqa: E402
-    t_en, d_en, t_es, d_es = CC01.SEO
-    href = _href(rel_res, f"classics/{CC01.SLUG}/")
-    plate = _href(rel_res, "plates/cc01.png")
+    from folios.classics import cc03 as CC03  # noqa: E402
+    _t1, d1_en, _t1_es, d1_es = CC01.SEO
+    _t3, d3_en, _t3_es, d3_es = CC03.SEO
+    href1 = _href(rel_res, f"classics/{CC01.SLUG}/")
+    href3 = _href(rel_res, f"classics/{CC03.SLUG}/")
+    plate1 = _href(rel_res, "plates/cc01.png")
+    plate3 = _href(rel_res, "plates/cc03.png")
     heading_id = f"{section_id}-heading"
     return f"""
     <section class="tp-issue-rack tp-series-rack" aria-labelledby="{heading_id}" id="{section_id}">
-      <p class="tp-kicker" data-en="Applied Mechanics · Cult Classics · CC.01" data-es="Mecánica Aplicada · Clásicos de Culto · CC.01">Applied Mechanics · Cult Classics · CC.01</p>
-      <h2 id="{heading_id}" class="tp-h2"><a href="{href}" data-en="{esc(t_en)}" data-es="{esc(t_es)}">{esc(t_en)}</a></h2>
+      <p class="tp-kicker" data-en="Applied Mechanics · Cult Classics · CC.01 &amp; CC.03" data-es="Mecánica Aplicada · Clásicos de Culto · CC.01 y CC.03">Applied Mechanics · Cult Classics · CC.01 &amp; CC.03</p>
+      <h2 id="{heading_id}" class="tp-h2" data-en="Cult Classics · Engineering on Wheels" data-es="Clásicos de Culto · Ingeniería sobre ruedas">Cult Classics · Engineering on Wheels</h2>
       <div class="tp-rack-grid">
-        <a class="tp-rack-card tp-rack-card-classic" href="{href}" data-folio-slug="cc01">
-          <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb tp-rack-thumb-series" src="{plate}?v={_png_sha8('cc01')}" width="1200" height="630" loading="lazy" decoding="async" alt="Schematic hatchback silhouettes for CC.01"></span>
+        <a class="tp-rack-card tp-rack-card-classic" href="{href1}" data-folio-slug="cc01">
+          <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb tp-rack-thumb-series" src="{plate1}?v={_png_sha8('cc01')}" width="1200" height="630" loading="lazy" decoding="async" alt="Schematic hatchback silhouettes for CC.01"></span>
           <span class="tp-rack-top"><span class="tp-rack-id">CC.01</span><span class="tp-rack-badge" data-en="{esc(CC01.HERO['reading_en'])}" data-es="{esc(CC01.HERO['reading_es'])}">{esc(CC01.HERO['reading_en'])}</span></span>
           <strong class="tp-rack-title" data-en="{esc(CC01.HERO['title_en'])}" data-es="{esc(CC01.HERO['title_es'])}">{esc(CC01.HERO['title_en'])}</strong>
-          <span class="tp-rack-dek" data-en="{esc(d_en)}" data-es="{esc(d_es)}">{esc(d_en)}</span>
+          <span class="tp-rack-dek" data-en="{esc(d1_en)}" data-es="{esc(d1_es)}">{esc(d1_en)}</span>
+        </a>
+        <a class="tp-rack-card tp-rack-card-classic" href="{href3}" data-folio-slug="cc03">
+          <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb tp-rack-thumb-series" src="{plate3}?v={_png_sha8('cc03')}" width="1200" height="630" loading="lazy" decoding="async" alt="Schematic Mini silhouettes for CC.03"></span>
+          <span class="tp-rack-top"><span class="tp-rack-id">CC.03</span><span class="tp-rack-badge" data-en="{esc(CC03.HERO['reading_en'])}" data-es="{esc(CC03.HERO['reading_es'])}">{esc(CC03.HERO['reading_en'])}</span></span>
+          <strong class="tp-rack-title" data-en="{esc(CC03.HERO['title_en'])}" data-es="{esc(CC03.HERO['title_es'])}">{esc(CC03.HERO['title_en'])}</strong>
+          <span class="tp-rack-dek" data-en="{esc(d3_en)}" data-es="{esc(d3_es)}">{esc(d3_en)}</span>
         </a>
       </div>
     </section>"""
@@ -5191,6 +5202,25 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "alt": "Schematic hatchback silhouettes with a red rule and a tartan band, the share plate for CC.01.",
     },
     {
+        "code": "CC.03",
+        "folio_id": "CC.03",
+        "disc_en": "Cult Classics · Applied Mechanics",
+        "disc_es": "Clásicos de Culto · Mecánica Aplicada",
+        "href": "classics/mini-jcw/",
+        "plate_kind": "png",
+        "plate_slug": "cc03",
+        "title_en": "Wheels at the Corners: MINI to F56 John Cooper Works Hot Chili",
+        "title_es": "Ruedas en las esquinas: del Mini al F56 John Cooper Works Hot Chili",
+        "dek_en": "Five eras from Issigonis’s 1959 transverse package to the 2.0 L B48 F56 JCW Hot Chili and US vs. Mexico specs, with an eight-car Brands Hatch Indy ghost race, cornering grip bench, and brake thermal lab.",
+        "dek_es": "Cinco etapas desde el paquete transversal de 1959 hasta el F56 JCW Hot Chili 2.0 L B48 y las diferencias EE. UU. vs. México, con carrera fantasma en Brands Hatch Indy y laboratorio de agarre y frenos.",
+        "law": "ΔF_z = m_axle·g·a_y·h_cg/t · 170 kW = 228 hp SAE = 231 PS DIN",
+        "badge_en": "BMW/MINI · BRANDS HATCH · 6 DOIs · CHECKED BY SCRIPT",
+        "badge_es": "BMW/MINI · BRANDS HATCH · 6 DOIs · COMPROBADO POR SCRIPT",
+        "cta_en": "Read CC.03 →",
+        "cta_es": "Leer CC.03 →",
+        "alt": "Schematic Mini silhouettes from 1959 ADO15 to F56 JCW above a chequered rule, the share plate for CC.03.",
+    },
+    {
         "code": "A.11",
         "folio_id": "A.11",
         "disc_en": "Stereotomy & Graphic Statics",
@@ -5504,7 +5534,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         <p class="tp-kicker" data-en="Pillar {PILLAR_ROMAN[p_key]} · {len(folios)} essays" data-es="Pilar {PILLAR_ROMAN[p_key]} · {len(folios)} ensayos">Pillar {PILLAR_ROMAN[p_key]} · {len(folios)} essays</p>
         <h2 id="pillar-{p_key}" class="tp-h2"><a href="{p_key}/" data-en="{esc(en)}" data-es="{esc(es_t)}">{esc(en)}</a></h2>
         <p class="tp-cover-hook" data-en="{esc(hook_en)}" data-es="{esc(hook_es)}">{esc(hook_en)}</p>
-        <a class="tp-cover-more" href="{p_key}/" data-en="See all {len(folios)} →" data-es="Ver los {len(folios)} →">See all {len(folios)} →</a>
+        <a class="tp-cover-more" href="{p_key}/" data-en="See all {len(folios)} →" data-es="Ver los {len(folios)} →">See all {len(folios)} →</a>{'' if p_key != 'physics' else ' <a class="tp-cover-more" href="physics/#cult-classics" data-en="Cult Classics: CC.01 GTI &amp; CC.03 MINI JCW →" data-es="Clásicos de Culto: CC.01 GTI y CC.03 MINI JCW →">Cult Classics: CC.01 GTI &amp; CC.03 MINI JCW →</a>'}
       </div>
       <div class="tp-cover-row">
 {cards}
@@ -5553,7 +5583,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         <a class="tp-track-chip" href="physics/">
           <span class="tp-track-chip-kicker" data-en="PILLAR III · 12 ESSAYS + 14-STEP SERIES" data-es="PILAR III · 12 ENSAYOS + SERIE DE 14 PASOS">PILLAR III · 12 ESSAYS + 14-STEP SERIES</span>
           <strong class="tp-track-chip-title" data-en="Multiscale &amp; Quantum Physics" data-es="Física Multiescala y Cuántica">Multiscale &amp; Quantum Physics</strong>
-          <span class="tp-track-chip-meta" data-en="Time &amp; Gravity (T.00–T.13) · F1 Aero, QEC" data-es="Tiempo y Gravedad (T.00–T.13) · Aero F1, QEC">Time &amp; Gravity (T.00–T.13) · F1 Aero, QEC</span>
+          <span class="tp-track-chip-meta" data-en="Time &amp; Gravity (T.00–T.13) · Cult Classics (CC.01 &amp; CC.03)" data-es="Tiempo y Gravedad (T.00–T.13) · Clásicos (CC.01 y CC.03)">Time &amp; Gravity (T.00–T.13) · Cult Classics (CC.01 &amp; CC.03)</span>
         </a>
         <a class="tp-track-chip" href="math/">
           <span class="tp-track-chip-kicker" data-en="PILLAR IV · 15 ESSAYS" data-es="PILAR IV · 15 ENSAYOS">PILLAR IV · 15 ESSAYS</span>
@@ -5581,9 +5611,14 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
           <span class="tp-track-chip-meta" data-en="2D Cornering ↔ 3D WebGL2 · GLB &amp; DXF · 14 Plates" data-es="Curva 2D ↔ WebGL2 3D · GLB y DXF · 14 Láminas">2D Cornering ↔ 3D WebGL2 · GLB &amp; DXF · 14 Plates</span>
         </a>
         <a class="tp-track-chip tp-track-chip-classic" href="classics/sagrada-familia/">
-          <span class="tp-track-chip-kicker" data-en="CULT CLASSIC · CC.02 · NEW" data-es="CLÁSICO DE CULTO · CC.02 · NUEVO">CULT CLASSIC · CC.02 · NEW</span>
+          <span class="tp-track-chip-kicker" data-en="CULT CLASSIC · CC.02" data-es="CLÁSICO DE CULTO · CC.02">CULT CLASSIC · CC.02</span>
           <strong class="tp-track-chip-title" data-en="One Stone Forest: La Sagrada Família" data-es="Un bosque de piedra: La Sagrada Família">One Stone Forest: La Sagrada Família</strong>
           <span class="tp-track-chip-meta" data-en="2D Catenary ↔ 3D WebGL2 · GLB &amp; DXF · 172.5 m" data-es="Catenaria 2D ↔ WebGL2 3D · GLB y DXF · 172.5 m">2D Catenary ↔ 3D WebGL2 · GLB &amp; DXF · 172.5 m</span>
+        </a>
+        <a class="tp-track-chip tp-track-chip-classic" href="classics/mini-jcw/">
+          <span class="tp-track-chip-kicker" data-en="CULT CLASSIC · CC.03 · NEW" data-es="CLÁSICO DE CULTO · CC.03 · NUEVO">CULT CLASSIC · CC.03 · NEW</span>
+          <strong class="tp-track-chip-title" data-en="Wheels at the Corners: MINI JCW" data-es="Ruedas en las esquinas: MINI JCW">Wheels at the Corners: MINI JCW</strong>
+          <span class="tp-track-chip-meta" data-en="5 eras · Brands Hatch Indy · Grip &amp; brake lab" data-es="5 etapas · Brands Hatch Indy · Agarre y frenos">5 eras · Brands Hatch Indy · Grip &amp; brake lab</span>
         </a>
         <a class="tp-track-chip tp-track-chip-skills" href="https://github.com/senseiewok/informatico.ai/tree/main/skills" rel="noopener noreferrer">
           <span class="tp-track-chip-kicker" data-en="{skill_count} AI SKILL.MD · {_verifier_count()} VERIFIERS" data-es="{skill_count} SKILL.MD · {_verifier_count()} VERIFICADORES">{skill_count} AI SKILL.MD · {_verifier_count()} VERIFIERS</span>
@@ -5597,6 +5632,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
 {render_toolchain_section(".")}
 {render_bounty_crucible_section(".")}
 {render_cover_timegravity_feature(".")}
+{render_cult_classics_rack(".")}
 {render_cross_scale_essays_showcase(".", lang)}
 {render_folio_crossword_section("hub", "INFORMATICO.AI")}
 {render_site_footer(".")}
@@ -6037,8 +6073,10 @@ def render_research_sitemap(catalog: dict) -> str:
     # Cult Classics (CC.xx): standalone features, no shelf page yet (tools/folios/classics/).
     from folios.classics import cc01 as CC01  # noqa: E402
     from folios.classics import cc02 as CC02  # noqa: E402
+    from folios.classics import cc03 as CC03  # noqa: E402
     entries.append((f"classics/{CC01.SLUG}/", CC01.DATE))
     entries.append((f"classics/{CC02.SLUG}/", CC02.DATE))
+    entries.append((f"classics/{CC03.SLUG}/", CC03.DATE))
     entries.append(("about/", newest_all))
 
     blocks = [
@@ -6133,10 +6171,12 @@ def render_llms_txt(catalog: dict) -> str:
     lines.append("")
     from folios.classics import cc01 as CC01  # noqa: E402
     from folios.classics import cc02 as CC02  # noqa: E402
-    lines.append("## Cult Classics · Engineering & Architecture Stories (CC.01–CC.02)")
+    from folios.classics import cc03 as CC03  # noqa: E402
+    lines.append("## Cult Classics · Engineering & Architecture Stories (CC.01–CC.03)")
     lines.append("")
     lines.append(f"- [{CC01.CODE} {CC01.SEO[0]}]({page_url('classics/' + CC01.SLUG + '/')}): {CC01.SEO[1]}")
     lines.append(f"- [{CC02.CODE} {CC02.SEO[0]}]({page_url('classics/' + CC02.SLUG + '/')}): {CC02.SEO[1]}")
+    lines.append(f"- [{CC03.CODE} {CC03.SEO[0]}]({page_url('classics/' + CC03.SLUG + '/')}): {CC03.SEO[1]}")
     lines.append("")
     lines.append("## About Informatico.ai & the Shared Verification Engine (Essay Zero)")
     lines.append("")
@@ -6295,6 +6335,8 @@ def main() -> None:
     build_cult_classics.write_plate()
     import build_sagrada_masterpiece  # noqa: E402  (lazy: it imports this module)
     build_sagrada_masterpiece.write_plate()
+    import build_mini_jcw  # noqa: E402  (lazy: it imports this module)
+    build_mini_jcw.write_plate()
 
     res_dir = ROOT / "src"
     es_dir = res_dir / ES_PREFIX.strip("/")
@@ -6386,6 +6428,8 @@ def main() -> None:
     build_cult_classics.write_pages(catalog)
     import build_sagrada_masterpiece  # noqa: E402  (lazy: it imports this module)
     build_sagrada_masterpiece.write_pages(catalog)
+    import build_mini_jcw  # noqa: E402  (lazy: it imports this module)
+    build_mini_jcw.write_pages(catalog)
 
     print(f"PASS: Built Informatico.ai hub + 4 pillar racks + {count} standalone 5-Act HTML Folios + Bounties hub + {b_count} standalone Bounty Folios + Tech & Tools hub + {t_count} standalone Toolbox Folios, each in English and Spanish (/{ES_PREFIX}) + sitemap.xml + robots.txt + llms.txt + 404.html.")
 
