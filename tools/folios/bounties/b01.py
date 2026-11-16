@@ -8,8 +8,8 @@ FOLIO = {'slug': 'b01',
  'plate_slug': 'b01',
  'pillar_label_en': 'Mathematics & Lean 4 Formalization',
  'pillar_label_es': 'Matemáticas y Formalización en Lean 4',
- 'badge_en': 'BOUNTY B.01 (M-1) · ERDŐS #30 ($1,000) + AIMO',
- 'badge_es': 'RETO B.01 (M-1) · ERDŐS #30 ($1,000) + AIMO',
+ 'badge_en': 'GRAND CHALLENGE B.01 (M-1) · ERDŐS #30 (OPEN) · AIMO ARCHIVED',
+ 'badge_es': 'GRAN RETO B.01 (M-1) · ERDŐS #30 (ABIERTO) · AIMO ARCHIVADO',
  'title': 'Erdős Sidon B₂ Sets, Golomb Rulers & Lean 4 Formalization',
  'title_es': 'Conjuntos de Sidon B₂ de Erdős, Reglas de Golomb y Formalización en Lean 4',
  'subtitle': 'How greedy Mian–Chowla constructions, the Erdős–Turán √N + N^(1/4) + 1 upper bound, '
@@ -39,10 +39,11 @@ FOLIO = {'slug': 'b01',
  'scite_summary': 'Bourgain & Demeter (2015) l² decoupling and Erdős–Turán (1941) multiplicative '
                   'Sidon upper-bound framework verified against Crossref and Scite.',
  'date_published': '2026-11-04',
- 'date_redated': '2026-11-08',
- 'current_edition': 'REV 1.2',
+ 'date_redated': '2026-11-15',
+ 'current_edition': 'REV 1.3',
  'reading_time': '15 MIN READ',
- 'companion_folios': [('math', 'm11', 'Folio M.11', '3D Kakeya & Guth–Maynard 30/13 Riemann Bound'),
+ 'companion_folios': [('math', 'm13', 'Folio M.13', 'SAIR Lean Kernel Challenge & Trusted Computing Base'),
+                      ('math', 'm11', 'Folio M.11', '3D Kakeya & Guth–Maynard 30/13 Riemann Bound'),
                       ('math',
                        'm12',
                        'Folio M.12',
@@ -50,14 +51,14 @@ FOLIO = {'slug': 'b01',
                       ('math',
                        'm01',
                        'Folio M.01',
-                       "Fermat's Last Theorem 13M-Line Lean 4 Blueprint"),
-                      ('math', 'm04', 'Folio M.04', 'Polynomial Freiman–Ruzsa & 22M Magma Graph')],
- 'external_links': [('Erdős Problems Registry (#30 / #155)', 'https://www.erdosproblems.com/30'),
-                    ('AIMO $10M Mathematical Olympiad Prize', 'https://aimoprize.com/'),
+                       "Fermat's Last Theorem 13M-Line Lean 4 Blueprint")],
+ 'external_links': [('Erdős Problems Registry (#30 / #155 — Open)', 'https://www.erdosproblems.com/30'),
+                    ('XTX Markets Philanthropy Update (2026-09-16, AIMO Closed)',
+                     'https://aimoprize.com/updates/2026-09-16-update-on-xtx-markets-ai-philanthropy'),
+                    ('SAIR Foundation Math Competitions (M.13–M.15)',
+                     'https://competition.sair.foundation/'),
                     ('anthropics/formal-math (Lean 4)',
-                     'https://github.com/anthropics/formal-math'),
-                    ('anthropics/fermats-last-theorem',
-                     'https://github.com/anthropics/fermats-last-theorem')],
+                     'https://github.com/anthropics/formal-math')],
  'act1_dropcap': 'In 1932, the Hungarian mathematician Simon Sidon asked Paul Erdős a question '
                  'born from Fourier series: how many integers can you pack into the interval [1, '
                  'N] if every pairwise sum a_i + a_j (with i ≤ j) must be strictly distinct? Erdős '
@@ -93,9 +94,10 @@ FOLIO = {'slug': 'b01',
                  '10.4007/annals.2015.182.1.9), transforming exponential-sum bounds across '
                  'additive number theory.'),
                 ('2024–2026',
-                 'Thomas Bloom launches erdosproblems.com; Terence Tao (teorth/pfr) and Anthropic '
-                 '(anthropics/formal-math, anthropics/fermats-last-theorem) establish zero-sorry '
-                 'Lean 4 blueprints.')],
+                 'Thomas Bloom launches erdosproblems.com (Problem #30 remains open); XTX Markets '
+                 'closes the AIMO Prize on 2026-09-16 (~$1.62M awarded across AIMO 1–3 and Proof '
+                 'Pilot) and shifts funding to Lean FRO ($10M to 2030), the Mathlib Initiative '
+                 '($10M to 2030), and SAIR research challenges (Folios M.13–M.15).')],
  'act2_intuition': 'Why can a Sidon subset of {1, ..., N} never exceed roughly √N elements? '
                    'Because k elements generate k(k-1)/2 positive pairwise differences a_j - a_i, '
                    'and all of those differences must fit inside {1, ..., N-1} without a single '
@@ -164,11 +166,13 @@ FOLIO = {'slug': 'b01',
                      "Direct architectural and pedagogical bridge to Anthropic's open-source Lean "
                      '4 repositories (anthropics/formal-math and anthropics/fermats-last-theorem) '
                      "and Terence Tao's teorth/pfr blueprint."],
- 't2_t3_open_horizon': ['Erdős Problem #30 ($1,000 cash prize): Prove or disprove whether |A ∩ [1, '
-                        'N]| = √N + O(N^ε) for every ε > 0 (or tighten the 1941 N^(1/4) exponent '
-                        'via a new 0-sorry Lean 4 theorem).',
-                        'Erdős Problem #155: Prove whether the maximum Sidon cardinality function '
-                        'f(N) satisfies f(N + √N) ≥ f(N) + 1 for all sufficiently large N.'],
+ 't2_t3_open_horizon': ['Erdős Problem #30 ($1,000 open prize on erdosproblems.com/30): Determine whether '
+                        '|A ∩ [1, N]| = √N + O(N^ε) for every ε > 0 (or tighten the 1941 N^(1/4) '
+                        'exponent via a public mathematical paper checked in Lean 4).',
+                        'Historical context & successor route (AIMO closed 2026-09-16): XTX Markets '
+                        'concluded the AIMO Prize in September 2026 and reallocated funding toward '
+                        'Lean FRO, Mathlib, and SAIR research competitions covered individually in '
+                        'Folios M.13–M.15 (https://competition.sair.foundation/).'],
  'sources': ['Erdős, P., & Turán, P. (1941). On a problem of Sidon in additive number theory, and '
              'on some related problems. Journal of the London Mathematical Society, s1-16(4), '
              '212–215. DOI 10.1112/jlms/s1-16.4.212',
@@ -215,12 +219,14 @@ FOLIO = {'slug': 'b01',
                 "N^(1/4) wobble remains an unsolved $1,000 bounty on Thomas Bloom's "
                 'erdosproblems.com registry (Problem #30). Today, the stakes have transformed from '
                 'pen-and-paper scratchwork into the crucible of automated theorem proving. '
-                'Competitions like the $10M AI Mathematical Olympiad (AIMO) and open formalization '
-                "repositories like Anthropic's formal-math and Terence Tao's Polynomial "
-                'Freiman–Ruzsa project (teorth/pfr) are where formal and AI-assisted mathematics is being tested; neither is about Sidon sets specifically. Translating these delicate combinatorial arguments into '
-                'machine-checked Lean 4 blueprints guarantees that no hidden edge-case or '
-                'computational hallucination can compromise the algorithms that run our radar '
-                'networks and deep-space arrays.',
+                'During 2024–2026, formalization repositories like anthropics/formal-math and '
+                'Terence Tao\'s Polynomial Freiman–Ruzsa project (teorth/pfr) demonstrated how '
+                'combinatorial arguments can be checked in Lean 4; neither targets Sidon sets specifically. '
+                'The AI Mathematical Olympiad (AIMO) Prize itself closed on 16 September 2026 (with ~$1.62M '
+                'awarded across AIMO 1–3 and the Proof Pilot) as XTX Markets reallocated funding to Lean FRO, '
+                'Mathlib, and SAIR\'s three research challenges (Folios M.13–M.15). Translating delicate '
+                'combinatorial arguments into machine-checked Lean 4 blueprints ensures every step '
+                'passes the formal kernel before relying on downstream bounds for radar and antenna networks.',
  'act2_analogy': 'Everyday analogy: Imagine an antique hardware shop with a wall of numbered '
                  'pigeonholes from 1 to 2N, and you are given a set of numbered brass weights. '
                  'Whenever you select any two weights from your pocket and place them together in '
@@ -532,13 +538,15 @@ FOLIO = {'slug': 'b01',
                    'verdadero es √N + O(1) o permite una oscilación de orden N^(1/4) sigue siendo '
                    'un reto abierto de 1,000 dólares en el registro erdosproblems.com de Thomas '
                    'Bloom (Problema #30). Hoy, el desafío ha pasado del papel y lápiz al crisol de '
-                   'la demostración automática de teoremas. Competencias como el premio AI '
-                   'Mathematical Olympiad (AIMO) de 10 millones de dólares y repositorios abiertos '
-                   'como formal-math de Anthropic y el proyecto Polynomial Freiman–Ruzsa de '
-                   'Terence Tao (teorth/pfr) son donde se pone a prueba la matemática formal y asistida por IA; ninguno trata específicamente de conjuntos de Sidon. Traducir estos delicados argumentos '
-                   'combinatorios a planos verificados en Lean 4 garantiza que ningún caso '
-                   'extremo oculto ni alucinación computacional comprometa los algoritmos que '
-                   'operan nuestras redes de radar y arreglos de espacio profundo.',
+                   'Durante 2024–2026, repositorios abiertos como formal-math de Anthropic y '
+                   'teorth/pfr de Terence Tao mostraron cómo verificar argumentos combinatorios '
+                   'en Lean 4, aunque ninguno trata específicamente de conjuntos de Sidon. El '
+                   'propio AI Mathematical Olympiad (AIMO) Prize cerró el 16 de septiembre de 2026 '
+                   '(con ~$1.62M otorgados en AIMO 1–3 y el Proof Pilot) al reorientar XTX Markets '
+                   'su filantropía hacia Lean FRO, Mathlib y los tres retos de investigación de SAIR '
+                   '(Folios M.13–M.15). Traducir estos delicados argumentos combinatorios a planos '
+                   'verificados en Lean 4 asegura que ningún caso extremo comprometa los algoritmos '
+                   'de radar y arreglos de espacio profundo.',
  'pullquote_es': 'Un conjunto de Sidon es un cristal matemático donde cada par de átomos proyecta '
                  'una sombra única; Lean 4 transforma la búsqueda de esos cristales de un frágil '
                  'conteo manual a una verificación de compilador infalible.',
@@ -698,10 +706,10 @@ FOLIO = {'slug': 'b01',
                         'Puente arquitectónico y pedagógico directo hacia los repositorios abiertos '
                         'de Lean 4 de Anthropic (anthropics/formal-math y '
                         'anthropics/fermats-last-theorem) y el plano teorth/pfr de Terence Tao.'],
- 't2_t3_open_horizon_es': ['Problema de Erdős #30 (premio en efectivo de 1,000 dólares): Demostrar '
-                           'o refutar si |A ∩ [1, N]| = √N + O(N^ε) para todo ε > 0 (o afinar el '
-                           'exponente N^(1/4) de 1941 mediante un nuevo teorema en Lean 4 con '
-                           'cero sorry).',
-                           'Problema de Erdős #155: Demostrar si la función de cardinalidad máxima '
-                           'de Sidon f(N) satisface f(N + √N) ≥ f(N) + 1 para todo N '
-                           'suficientemente grande.']}
+ 't2_t3_open_horizon_es': ['Problema de Erdős #30 (premio vigente de $1,000 en erdosproblems.com/30): '
+                           'Determinar si |A ∩ [1, N]| = √N + O(N^ε) para todo ε > 0 (o afinar '
+                           'el exponente N^(1/4) de 1941 en un artículo público verificado en Lean 4).',
+                           'Contexto histórico y ruta sucesora (AIMO cerró 2026-09-16): XTX Markets '
+                           'concluyó el premio AIMO en septiembre de 2026 y reorientó los fondos '
+                           'hacia Lean FRO, Mathlib y las competencias SAIR cubiertas en los '
+                           'Folios M.13–M.15 (https://competition.sair.foundation/).']}

@@ -7,10 +7,10 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 # $5M XPRIZE Quantum Applications & Unitary Foundation: Surface-Code Thresholds & FeMoCo Catalysis (B.02 · BOUNTY-P1)
 
 ## 1. Governing Law, Prize Registry & Canonical URL
-- **Bounty Folio**: `B.02` (`BOUNTY-P1` · `REV 1.2`, Redated `2026-11-08`)
+- **Bounty Folio**: `B.02` (`BOUNTY-P1` · `REV 1.3`, Redated `2026-11-15`)
 - **Canonical URL**: https://informatico.ai/bounties/b02/ (Spanish: https://informatico.ai/es-mx/bounties/b02/)
-- **Prize / Challenge**: BOUNTY B.02 (P-1) · $5M XPRIZE QUANTUM + UNITARYHACK
-- **Official Registry**: [Metriq.info Quantum Benchmark Registry](https://metriq.info/)
+- **Prize / Challenge**: GRAND CHALLENGE B.02 (P-1) · XPRIZE FINALISTS-ONLY + UNITARY MICROGRANTS
+- **Official Registry**: [Metriq.info Quantum Benchmark Registry (Self-Service)](https://metriq.info/)
 - **Governing Equation**: `P_L = 0.03 (p_phys / p_th)^((d+1)/2) · Q_phys = 2 · N_tiles · d² (d = 27 ⇒ P_L = 3.00 × 10⁻¹⁶)`
 - **Proof harness (computes the reference results; no planted-defect mode yet)**: `python bounties/bounty_p1_surface_code_femoco.py`
 - **Primary Scite Anchor DOI**: https://doi.org/10.1103/PhysRevA.86.032324 (Scite Report: https://scite.ai/reports/10.1103/PhysRevA.86.032324)
@@ -39,5 +39,5 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Suitable as an open educational resource-estimation example, for instance for Unitary Foundation's Metriq.info registry.
 
 ### Open Global Prize Horizon (T2/T3)
-- XPRIZE Quantum Applications ($5M purse): Requires formal team registration and a novel quantum algorithm paper reducing logical T-count or qubit footprint beyond state-of-the-art THC/qDRIFT baselines.
-- Unitary Foundation unitaryHACK Cash Bounties: Awarded during the annual hackathon window for merged pull requests resolving tagged issues in Stim, PySCF, Mitiq, PennyLane, or Qiskit.
+- XPRIZE Quantum Applications ($5M purse, closed to new entrants May 2026): Only the 12 Phase I and Wildcard finalists remain eligible to compete in the competition itself; this page stands as a reference resource study.
+- Active open participation routes: Submit rolling Unitary Foundation microgrant proposals (up to $4,000 via unitary.foundation/grants/), log reproducible benchmarks directly at metriq.info, or contribute open issues/PRs to quantumlib/Stim and pyscf/pyscf (annual unitaryHACK 2026 ran 3–17 June 2026).

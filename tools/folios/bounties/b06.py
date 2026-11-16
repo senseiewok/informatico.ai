@@ -9,8 +9,8 @@ FOLIO = {'slug': 'b06',
  'plate_slug': 'b06',
  'pillar_label_en': 'Math & Quantum · Lean 4 Gauge Physics & Tensor Networks',
  'pillar_label_es': 'Matemáticas y Cuántica · Física Gauge en Lean 4 y Redes Tensoriales',
- 'badge_en': 'BOUNTY B.06 (M-2) · PHYSLEAN + ITENSORS.JL + NETKET',
- 'badge_es': 'RETO B.06 (M-2) · PHYSLEAN + ITENSORS.JL + NETKET',
+ 'badge_en': 'GRAND CHALLENGE B.06 (M-2) · PHYSLEAN (ACTIVE PRs) + ITENSORS + NETKET',
+ 'badge_es': 'GRAN RETO B.06 (M-2) · PHYSLEAN (PRs ACTIVOS) + ITENSORS + NETKET',
  'title': 'Machine-Checked Gauge Physics in PhysLean & Tensor-Network Quantum Criticality '
           '(ITensors.jl + NetKet)',
  'title_es': 'Física Gauge Verificada en PhysLean y Criticidad Cuántica con Redes Tensoriales '
@@ -42,8 +42,8 @@ FOLIO = {'slug': 'b06',
  'scite_summary': 'Tooby-Smith (2024) PhysLean/HepLean formalization in Lean 4 and Fishman, White '
                   '& Stoudenmire (2022) ITensors.jl verified against Crossref and Scite.',
  'date_published': '2026-11-04',
- 'date_redated': '2026-11-08',
- 'current_edition': 'REV 1.2',
+ 'date_redated': '2026-11-15',
+ 'current_edition': 'REV 1.3',
  'reading_time': '15 MIN READ',
  'companion_folios': [('math',
                        'm01',
@@ -168,9 +168,10 @@ FOLIO = {'slug': 'b06',
                      '(2022, DOI 10.21468/SciPostPhysCodeb.7).',
                      'Ready for immediate community showcase submission to HEPLean/PhysLean Zulip '
                      'and ITensors / NetKet showcases.'],
- 't2_t3_open_horizon': ['HEPLean / PhysLean open formalization work (no cash prize is named here): submitting 0-sorry Lean 4 '
-                        'pull requests formalizing renormalization group flows, lattice gauge '
-                        'bounds, or BSM anomaly classification directly in HEPLean/PhysLean.'],
+ 't2_t3_open_horizon': ['HEPLean / PhysLean active open-source formalization (pull requests welcome; '
+                        'no cash prize): submitting Lean 4 pull requests formalizing '
+                        'renormalization group flows, lattice gauge bounds, or BSM anomaly '
+                        'classification directly to HEPLean/PhysLean.'],
  'sources': ['Tooby-Smith, J. (2024). HepLean: Digitalising high energy physics. Computer Physics '
              'Communications, 308, 109457. DOI 10.1016/j.cpc.2024.109457',
              'Fishman, M., White, S. R., & Stoudenmire, E. M. (2022). The ITensor Software Library '
@@ -677,7 +678,7 @@ FOLIO = {'slug': 'b06',
                         '(2022, DOI 10.21468/SciPostPhysCodeb.7).',
                         'Listo para envío inmediato al Zulip de HEPLean/PhysLean y a las galerías '
                         'de ITensors / NetKet.'],
- 't2_t3_open_horizon_es': ['Retos Abiertos de Formalización en HEPLean / PhysLean: Envío de pull '
-                           'requests en Lean 4 con cero sorry formalizando flujos del grupo de '
-                           'renormalización, cotas de teorías gauge en el retículo o clasificación '
-                           'de anomalías BSM directamente en HEPLean/PhysLean.']}
+ 't2_t3_open_horizon_es': ['Formalización abierta en HEPLean / PhysLean (pull requests bienvenidos, '
+                           'sin premio monetario): envío de pull requests en Lean 4 sobre flujos del '
+                           'grupo de renormalización, cotas gauge en retículo o clasificación de '
+                           'anomalías BSM directamente en HEPLean/PhysLean.']}

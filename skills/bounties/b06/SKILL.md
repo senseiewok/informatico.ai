@@ -7,9 +7,9 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 # Machine-Checked Gauge Physics in PhysLean & Tensor-Network Quantum Criticality (ITensors.jl + NetKet) (B.06 · BOUNTY-M2)
 
 ## 1. Governing Law, Prize Registry & Canonical URL
-- **Bounty Folio**: `B.06` (`BOUNTY-M2` · `REV 1.2`, Redated `2026-11-08`)
+- **Bounty Folio**: `B.06` (`BOUNTY-M2` · `REV 1.3`, Redated `2026-11-15`)
 - **Canonical URL**: https://informatico.ai/bounties/b06/ (Spanish: https://informatico.ai/es-mx/bounties/b06/)
-- **Prize / Challenge**: BOUNTY B.06 (M-2) · PHYSLEAN + ITENSORS.JL + NETKET
+- **Prize / Challenge**: GRAND CHALLENGE B.06 (M-2) · PHYSLEAN (ACTIVE PRs) + ITENSORS + NETKET
 - **Official Registry**: [HEPLean/PhysLean (Lean 4 Physics)](https://github.com/HEPLean/PhysLean)
 - **Governing Equation**: `Tr[Y] = Tr[Y³] = Tr[τ²Y] = Tr[λ²Y] = 0 · S_vN(L) = (c/6) ln(L) + s_1 = 0.8828 ≤ ln(χ = 64) = 4.1589`
 - **Proof harness (computes the reference results; no planted-defect mode yet)**: `python bounties/bounty_m2_physlean_itensor_quantum_gauge.py`
@@ -39,4 +39,4 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Ready for immediate community showcase submission to HEPLean/PhysLean Zulip and ITensors / NetKet showcases.
 
 ### Open Global Prize Horizon (T2/T3)
-- HEPLean / PhysLean open formalization work (no cash prize is named here): submitting 0-sorry Lean 4 pull requests formalizing renormalization group flows, lattice gauge bounds, or BSM anomaly classification directly in HEPLean/PhysLean.
+- HEPLean / PhysLean active open-source formalization (pull requests welcome; no cash prize): submitting Lean 4 pull requests formalizing renormalization group flows, lattice gauge bounds, or BSM anomaly classification directly to HEPLean/PhysLean.
