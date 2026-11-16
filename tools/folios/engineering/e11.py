@@ -100,7 +100,7 @@ FOLIO = {'folio_id': 'E.11',
            'rules': ['Penalize intermediate element densities via SIMP law E_e(rho_e) = E_min + '
                      'rho_e^p * (E_0 - E_min) with p >= 3 and E_min = 1e-9 * E_0.',
                      'Apply Helmholtz PDE density filter -r_min^2 * laplacian(rho_tilde) + '
-                     'rho_tilde = rho to guarantee mesh-independent minimum member size.',
+                     'rho_tilde = rho to enforce a mesh-independent minimum member size.',
                      'Size two-terminal flywheel inerter inertance b (kg) via F = b * (a_2 - a_1) '
                      'to achieve target apparent-mass ratio mu_b = b / m_modal.']},
  'revisions': [{'edition': 'REV 1.1',
@@ -325,7 +325,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'formwork. These are research directions, not current practice this folio '
                    'sources. Open frontier challenges center on '
                    'integrating non-linear plastic buckling constraints directly into SIMP '
-                   'formulation loops, certifying multi-axis inerter damper assemblies for '
+                   'formulation loops, evaluating multi-axis inerter damper assemblies for '
                    'century-long seismic reliability, and developing circular recycling protocols '
                    "for fiber-reinforced cementitious composites. By harmonizing nature's "
                    'structural logic with modern computational mechanics and control theory, civil '
@@ -453,7 +453,7 @@ ES_TRANSLATION = {'title_es': 'Optimización Topológica Continua SIMP y Amortig
             'computadora, guiando la distribución de material hacia arcos de compresión y tensores '
             'inspirados en las armaduras de Michell. Para evitar patrones inestables de tablero de '
             'ajedrez, un filtro diferencial de Helmholtz asegura dimensiones mínimas imprimibles. '
-            'Sin embargo, al retirar hasta dos tercios del concreto, la estructura se vuelve más '
+            'No obstante, al retirar hasta dos tercios del concreto, la estructura se vuelve más '
             'ligera y sensible al viento. Para contrarrestar esto sin añadir peso muerto, los '
             'ingenieros acoplan inerters mecánicos que transforman el desplazamiento lineal en '
             'rotación de alta velocidad, generando una masa aparente mucho mayor que la propia. '
