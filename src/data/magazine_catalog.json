@@ -93,20 +93,20 @@
           {
             "edition": "REV 1.4",
             "date": "2026-11-14",
-            "summary": "REV 1.4 (Redated 2026-11-14): Grounding revision. A chronology entry that credited a 2009 work to Brinkman and Bear was removed: the DOI it carried (10.1007/BF02120313) is Brinkman's own 1949 paper. A claim that optimal-transport software had demonstrated a result about percolation was withdrawn, as were the unsourced figures about Cystic Fibrosis sputum and inhaled nanoparticles; the mucus link is now stated as an analogy. The threshold 0.5927 is identified as the square-lattice site value, and the walkthrough numbers were recomputed from the stated formula (8.73 nm and 19.64 nm).",
+            "summary": "REV 1.4 (Redated 2026-11-14): Grounding revision. A chronology entry that credited a 2009 work to Brinkman and Bear was removed: the DOI it carried (10.1007/BF02120313) is Brinkman's own 1949 paper. A claim that optimal-transport software had shown a result about percolation was withdrawn, as were the unsourced figures about Cystic Fibrosis sputum and inhaled nanoparticles; the mucus link is now stated as an analogy. The threshold 0.5927 is identified as the square-lattice site value, and the walkthrough numbers were recomputed from the stated formula (8.73 nm and 19.64 nm).",
             "opus": "Review: every DOI in the folio was checked in Crossref and the Scite index on 2026-11-14, and the repository names with the GitHub API. No simulation was run for this folio; the numbers are outputs of the closed-form model on the page."
           },
           {
             "edition": "REV 1.3",
             "date": "2026-11-02",
-            "summary": "REV 1.3 (Redated 2026-11-02): Verified Stokes-Brinkman porous continuum (sqrt(kappa)), discrete Helmholtz-Hodge decomposition, and Broadbent-Hammersley percolation (phi_c = 0.5927, CSI 03 30 00 / 07 16 00) with 4-Seat Multi-Lineage Council review.",
+            "summary": "REV 1.3 (Redated 2026-11-02): Verified Stokes-Brinkman porous continuum (sqrt(kappa)), discrete Helmholtz-Hodge decomposition, and Broadbent-Hammersley percolation (phi_c = 0.5927, CSI 03 30 00 / 07 16 00) with multi-model peer review.",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): checked that sqrt(kappa) = 13.09 nm follows from the page formula. The word \"Verified\" in this note and in the notes below, and the claim of parity with CSI specifications, are withdrawn in REV 1.4: CSI section numbers classify work and contain no such values."
           },
           {
             "edition": "REV 1.2",
             "date": "2026-11-01",
             "summary": "REV 1.2 (Redated 2026-11-01): Coupled civil capillary-active mineral lime mortar physics to capillary pore network percolation in mineral lime mortars and porous stone.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified exact √κ = 13.09 nm static and dynamic parity."
+            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified √κ = 13.09 nm static and dynamic parity."
           },
           {
             "edition": "REV 1.1",

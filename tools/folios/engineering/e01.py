@@ -93,7 +93,7 @@ FOLIO = {'folio_id': 'E.01',
                 'summary': 'REV 1.4 (Redated 2026-11-14): Grounding revision. A chronology entry '
                            'that credited a 2009 work to Brinkman and Bear was removed: the DOI '
                            'it carried (10.1007/BF02120313) is Brinkman\'s own 1949 paper. A claim '
-                           'that optimal-transport software had demonstrated a result about '
+                           'that optimal-transport software had shown a result about '
                            'percolation was withdrawn, as were the unsourced figures about Cystic '
                            'Fibrosis sputum and inhaled nanoparticles; the mucus link is now '
                            'stated as an analogy. The threshold 0.5927 is identified as the '
@@ -108,7 +108,7 @@ FOLIO = {'folio_id': 'E.01',
                 'summary': 'REV 1.3 (Redated 2026-11-02): Verified Stokes-Brinkman porous '
                            'continuum (sqrt(kappa)), discrete Helmholtz-Hodge decomposition, and '
                            'Broadbent-Hammersley percolation (phi_c = 0.5927, CSI 03 30 00 / 07 16 '
-                           '00) with 4-Seat Multi-Lineage Council review.',
+                           '00) with multi-model peer review.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): checked that '
                         'sqrt(kappa) = 13.09 nm follows from the page formula. The word '
                         '"Verified" in this note and in the notes below, and the claim of '
@@ -120,7 +120,7 @@ FOLIO = {'folio_id': 'E.01',
                            'lime mortar physics to capillary pore network percolation in mineral '
                            'lime mortars and porous stone.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
-                        'exact √κ = 13.09 nm static and dynamic parity.'},
+                        '√κ = 13.09 nm static and dynamic parity.'},
                {'edition': 'REV 1.1',
                 'date': '2026-10-28',
                 'summary': 'REV 1.1 (Redated 2026-10-28): Added discrete Helmholtz-Hodge flux '
@@ -178,7 +178,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'contaminants or choke under pressure. By understanding how fluid clings to '
                       'microscopic surfaces while trying to squeeze through tiny gaps, we can '
                       'design porous materials that let good things pass while keeping damage out.',
- 'act1_body': 'Together these three ideas underlie much of the modelling of fluid transport in disordered porous media. The same continuum mathematics is used in groundwater hydrology, membrane design, battery separators and breathable restoration mortars for historic masonry. This page joins Brinkman\'s viscous screening equation to a Carman–Kozeny-type permeability, k(phi) = d_f^2 phi^3 / [16 c_K (1 - phi)^2], with the Kozeny constant c_K set to 1 and d_f = 2 a_f, which gives sqrt(k) = a_f phi^(3/2) / (2 (1 - phi)). That choice of constant is the folio\'s simplification. When pore diameters approach the scale of the moving particles, Darcy drag alone cannot describe the shearing layers that develop near the solid walls; the Brinkman term does, over the length delta_B = sqrt(mu_eff k / mu). A reader who wants velocity profiles in a real geometry could discretize the mixed velocity-pressure Darcy–Brinkman form with an open-source finite-element library such as FEniCS/dolfinx (Scroggs et al. 2022, DOI 10.1145/3524456, describes part of its element machinery). No such simulation was run for this folio.',
+ 'act1_body': 'Together these three ideas underlie much of the modelling of fluid transport in disordered porous media. The same continuum mathematics is used in groundwater hydrology, membrane design, battery separators and breathable restoration mortars for historic masonry. This page joins Brinkman\'s viscous screening equation to a Carman–Kozeny-type permeability, k(phi) = d_f^2 phi^3 / [16 c_K (1 - phi)^2], with the Kozeny constant c_K set to 1 and d_f = 2 a_f, which gives sqrt(k) = a_f phi^(3/2) / (2 (1 - phi)). That choice of constant is the folio\'s simplification. When pore diameters approach the scale of the moving particles, Darcy drag by itself cannot describe the shearing layers that develop near the solid walls; the Brinkman term does, over the length delta_B = sqrt(mu_eff k / mu). A reader who wants velocity profiles in a real geometry could discretize the mixed velocity-pressure Darcy–Brinkman form with an open-source finite-element library such as FEniCS/dolfinx (Scroggs et al. 2022, DOI 10.1145/3524456, describes part of its element machinery). No such simulation was run for this folio.',
  'act1_stakes': 'Why this matters in buildings and ground: water that cannot leave a porous wall stays there. In masonry, trapped moisture that freezes, or that carries salts which crystallize as it dries, can generate pressures larger than the tensile strength of stone and mortar, and the surface spalls. In drainage layers and filters, fine sediment that settles into the pores narrows and disconnects the flow paths, and a layer that was meant to drain can begin to hold water back. Both problems come down to the two questions this folio studies: how much drag do the pore walls exert, and do the pores still connect? The model on this page is a teaching idealization of those questions. It is not a substitute for measured permeability or for a hygrothermal assessment of a real wall.',
  'pullquote': '"In the lattice model on this page, below the critical open fraction phi_c = 0.5927 the network does not merely slow '
               'a diffusing particle down: every open path it can reach is a finite cul-de-sac."',
@@ -254,7 +254,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'relative to the screening length, viscous boundary layers from opposite walls '
                    'overlap, creating an elevated apparent viscosity that severely restricts '
                    'throughput. Conversely, widening the pore throat pushes the screening zone '
-                   'toward the perimeter, establishing a low-resistance central core where '
+                   'toward the perimeter, forming a low-resistance central core where '
                    'convective velocity surges. Discrete Helmholtz–Hodge decomposition separates '
                    'this coupled field into curl-free potential flow driven by macroscale pressure '
                    'gradients and divergence-free rotational eddies trapped within pore crevices, '
@@ -339,7 +339,7 @@ ES_TRANSLATION = {'title_es': 'Continuo Poroso de Stokes–Brinkman, Descomposic
              'de la capa de arena. Para entenderlo de manera sencilla en nuestra vida diaria, piensen en '
              'cómo se mueve el agua dentro de una esponja de cocina o en un ladrillo de barro '
              'después de una lluvia intensa. Si los poros microscópicos están conectados entre sí, '
-             'el líquido avanza con libertad. Sin embargo, cuando el espacio vacío disminuye y '
+             'el líquido avanza con libertad. No obstante, cuando el espacio vacío disminuye y '
              'cruza un límite crítico, los caminos continuos se rompen por completo y el agua '
              'queda atrapada en rincones aislados. Este fenómeno, conocido como percolación, '
              'explica por qué algunos materiales de construcción respiran adecuadamente mientras '
