@@ -72,7 +72,8 @@ class SagradaMasterpieceTests(unittest.TestCase):
         self.assertIn('<html lang="en">', EN.read_text(encoding="utf-8"))
         es_html = ES.read_text(encoding="utf-8")
         self.assertIn('<html lang="es-MX">', es_html)
-        self.assertIn("Un bosque de piedra, ocho jugadas", es_html)
+        self.assertIn("Un bosque de piedra, ocho hitos", es_html)
+        self.assertNotIn("jugada", es_html.lower())
         for val_es in C.VALUE_ES.values():
             self.assertIn(val_es, es_html, f"missing translated plate value: {val_es!r}")
 
