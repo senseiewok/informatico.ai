@@ -2000,7 +2000,7 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
           <section class="tp-contents-series" aria-label="Architecture Cult Classics">
             <h3><a href="{_href(rel_res, 'classics/sagrada-familia/')}" data-en="Architecture · Cult Classics" data-es="Arquitectura · Clásicos de Culto">Architecture · Cult Classics</a></h3>
             <ol>
-            <li data-contents-bounty-item data-search="cc.02 sagrada familia one stone forest eight moves un bosque de piedra ocho jugadas"><a href="{_href(rel_res, 'classics/sagrada-familia/')}"{' aria-current="page"' if active_slug == "sagrada-familia" else ""}><span class="tp-contents-id">CC.02</span> <span class="tp-contents-title" data-en="One Stone Forest, Eight Moves: La Sagrada Família" data-es="Un bosque de piedra, ocho jugadas: Sagrada Família">One Stone Forest, Eight Moves: La Sagrada Família</span></a></li>
+            <li data-contents-bounty-item data-search="cc.02 sagrada familia one stone forest eight moves un bosque de piedra ocho hitos"><a href="{_href(rel_res, 'classics/sagrada-familia/')}"{' aria-current="page"' if active_slug == "sagrada-familia" else ""}><span class="tp-contents-id">CC.02</span> <span class="tp-contents-title" data-en="One Stone Forest, Eight Moves: La Sagrada Família" data-es="Un bosque de piedra, ocho hitos: Sagrada Família">One Stone Forest, Eight Moves: La Sagrada Família</span></a></li>
             </ol>
           </section>"""
     cols = []
@@ -5079,9 +5079,9 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "plate_kind": "png",
         "plate_slug": "cc02",
         "title_en": "One Stone Forest, Eight Moves: La Sagrada Família (1882–2026)",
-        "title_es": "Un bosque de piedra, ocho jugadas: La Sagrada Família (1882–2026)",
+        "title_es": "Un bosque de piedra, ocho hitos: La Sagrada Família (1882–2026)",
         "dek_en": "Eight structural moves from Villar’s 1882 crypt to the 172.5 m June 2026 centenary cross: coupled 2D catenary-to-3D WebGL2 stereotomy, .GLB/.DXF export, 12/10/8/6-point columns, and post-tensioned stone panels.",
-        "dek_es": "Ocho jugadas estructurales desde la cripta de 1882 hasta la cruz del centenario de 172.5 m en 2026: estereotomía 2D↔3D WebGL2 con exportación .GLB/.DXF, columnas estrelladas y piedra pretensada.",
+        "dek_es": "Ocho hitos estructurales desde la cripta de 1882 hasta la cruz del centenario de 172.5 m en 2026: estereotomía 2D↔3D WebGL2 con exportación .GLB/.DXF, columnas estrelladas y piedra pretensada.",
         "law": "r(u,v) = (a(cos u ∓ v sin u), b(sin u ± v cos u), vc) · θ = arctan(H/V) · 172.5 m",
         "badge_en": "BASÍLICA · ARUP · 9 DOIs · LIVE GLB + DXF",
         "badge_es": "BASÍLICA · ARUP · 9 DOIs · GLB + DXF EN VIVO",

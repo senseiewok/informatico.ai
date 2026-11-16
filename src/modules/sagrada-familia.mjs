@@ -1415,7 +1415,7 @@ function initVisualGalleryAndLightbox() {
       imgEl.setAttribute("src", item.thumbSrc || "");
       imgEl.setAttribute("alt", L(d.altEn, d.altEs));
     }
-    if (badgeEl) badgeEl.textContent = L(d.badgeEn, d.badgeEs);
+    if (badgeEl) badgeEl.textContent = `${activeIndex + 1} / ${items.length} · ${L(d.badgeEn, d.badgeEs)}`;
     if (capEl) capEl.textContent = L(d.capEn, d.capEs);
   };
 

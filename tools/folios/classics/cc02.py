@@ -19,7 +19,7 @@ ACCESSED = "2026-11-15"
 SEO = (
     "One Stone Forest, Eight Moves: La Sagrada Família",
     "Five generations across 144 years of the Sagrada Família: catenaries, ruled hyperboloids, 1936 plaster shards, and tensioned stone.",
-    "Un bosque de piedra, ocho jugadas: Sagrada Família",
+    "Un bosque de piedra, ocho hitos: Sagrada Família",
     "Cinco generaciones en 144 años de la Sagrada Família: catenarias, hiperboloides reglados, yesos de 1936 y piedra pretensada.",
 )
 
@@ -229,9 +229,9 @@ HERO = {
     "kicker_en": "Cult Classics · CC.02 · Architecture, Craft & Stereotomy",
     "kicker_es": "Clásicos de Culto · CC.02 · Arquitectura, Oficio y Estereotomía",
     "title_en": "One Stone Forest, Eight Moves",
-    "title_es": "Un bosque de piedra, ocho jugadas",
+    "title_es": "Un bosque de piedra, ocho hitos",
     "dek_en": "Five generations across 144 years of the Sagrada Família (1882–2026), told one structural and human move at a time.",
-    "dek_es": "Cinco generaciones en 144 años de la Sagrada Família (1882–2026), contadas jugada estructural y humana por jugada.",
+    "dek_es": "Cinco generaciones en 144 años de la Sagrada Família (1882–2026), recorridas en ocho hitos estructurales y humanos.",
     "reading_en": "22 min read",
     "reading_es": "24 min de lectura",
 }
@@ -1025,7 +1025,7 @@ LAB = {
     "title_en": "Stereotomy & Mechanics Lab: five models, worked in the open",
     "title_es": "Laboratorio de Estereotomía y Mecánica: cinco modelos resueltos",
     "intro_en": "The eight moves and five-generation relay above tell the human story. This lab puts numbers to five mechanisms behind that continuity: doubly-ruled hyperboloid straightness, catenary vs. parabolic equilibrium, counter-rotating star columns, post-tensioned stone decompression, and algebraic recovery from 1936 plaster shards. Every non-sourced input is labeled MODEL; the repository verifier recomputes every cell independently and fails under five planted defects.",
-    "intro_es": "Las ocho jugadas y el relevo de cinco generaciones cuentan la historia humana. Este laboratorio cifra cinco mecanismos detrás de esa continuidad: la rectitud del hiperboloide reglado, el equilibrio catenario frente a la parábola, las columnas de doble giro, la piedra pretensada y la recuperación algebraica de fragmentos de yeso de 1936. Toda entrada no tomada de fuentes primarias se etiqueta MODELO; el verificador recalcula cada celda y falla ante cinco defectos plantados.",
+    "intro_es": "Los ocho hitos y el relevo de cinco generaciones cuentan la historia humana. Este laboratorio cifra cinco mecanismos detrás de esa continuidad: la rectitud del hiperboloide reglado, el equilibrio catenario frente a la parábola, las columnas de doble giro, la piedra pretensada y la recuperación algebraica de fragmentos de yeso de 1936. Toda entrada no tomada de fuentes primarias se etiqueta MODELO; el verificador recalcula cada celda y falla ante cinco defectos plantados.",
     "hyp_h_en": "1 · Doubly-ruled one-sheet hyperboloid without curved formwork",
     "hyp_h_es": "1 · Hiperboloide de una hoja doblemente reglado sin cimbra curva",
     "hyp_en": "For fixed parameter u and family sign s in {+1, −1}, r(u, v) = (a(cos u − s·v·sin u), b(sin u + s·v·cos u), v·c) traces a straight line as v varies—yet satisfies (x/a)² + (y/b)² − (z/c)² = 1 across the funnel. Straight saw cuts or taut timber strings thus sweep out doubly curved stone openings. Dimensions below are MODEL throat parameters.",
@@ -1086,5 +1086,5 @@ FOOTER_NOTE = {
 }
 
 BANNED = [
-    "ordenador", "fichero", "vosotros", "miracle", "milagro", "unbreakable", "tallest possible",
+    "ordenador", "fichero", "vosotros", "miracle", "milagro", "unbreakable", "tallest possible", "jugada",
 ]
