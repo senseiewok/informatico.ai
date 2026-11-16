@@ -309,10 +309,21 @@ const SAGRADA_ACT_DEFS = [
   { id: "sf-lab", selector: "#part-6", labelEn: "V · Lab & Closing", labelEs: "V · Laboratorio" },
 ];
 
+const GTI_ACT_DEFS = [
+  { id: "cc-relay", selector: "#relay", labelEn: "I · 5 Eras", labelEs: "I · 5 Eras" },
+  { id: "cc-moves", selector: "#part-1", labelEn: "II · Mk1–Mk5", labelEs: "II · Mk1–Mk5" },
+  { id: "cc-grip", selector: "#part-4", labelEn: "III · Grip & 3D", labelEs: "III · Agarre y 3D" },
+  { id: "cc-study", selector: "#engineers-study", labelEn: "IV · Engineers", labelEs: "IV · Ingeniería" },
+  { id: "cc-lab", selector: "#part-6", labelEn: "V · Physics Lab", labelEs: "V · Laboratorio" },
+];
+
 export function resolveSectionDefs(host) {
   const articleScope = (host && (host.closest("#tp-active-folio-mount") || host.closest("main"))) || document;
   if (articleScope.querySelector(".sf-feature")) {
     return SAGRADA_ACT_DEFS;
+  }
+  if (articleScope.querySelector(".cc-feature")) {
+    return GTI_ACT_DEFS;
   }
   return ACT_DEFS;
 }
@@ -343,36 +354,69 @@ export function pickBestVoice(langCode, preferredURI = "") {
   return ranked[0];
 }
 
+function extractCustomFolioChapters(articleScope, hero, defs, selectors, briefSel, citeCls, lang) {
+  const pickMany = (selector) =>
+    Array.from(articleScope.querySelectorAll(selector))
+      .map((el) => cleanNarrationText(localizedText(el, lang), lang))
+      .filter(Boolean);
+  const titleTxt = cleanNarrationText(localizedText(hero.querySelector(".tp-h1"), lang), lang);
+  const dekTxt = cleanNarrationText(localizedText(hero.querySelector(".tp-standfirst"), lang), lang);
+  const briefTxt = cleanNarrationText(localizedText(hero.querySelector(briefSel), lang), lang);
+  const openingTxt = pickMany(selectors[0]).join(" ");
+  const texts = [
+    cleanNarrationText(`${titleTxt}. ${dekTxt} ${briefTxt} ${openingTxt}`, lang),
+    cleanNarrationText(pickMany(selectors[1]).join(" ") || openingTxt, lang),
+    cleanNarrationText(pickMany(selectors[2]).join(" ") || briefTxt, lang),
+    cleanNarrationText(pickMany(selectors[3]).join(" ") || briefTxt, lang),
+    cleanNarrationText(pickMany(selectors[4]).join(" ") || `${titleTxt}. ${briefTxt}`, lang),
+  ];
+  void citeCls;
+  return defs.map((act, idx) => ({
+    index: idx,
+    act,
+    text: texts[idx] || cleanNarrationText(`${titleTxt}. ${dekTxt}`, lang),
+  }));
+}
+
 export function collectChaptersFromScope(host) {
   const articleScope = host.closest("#tp-active-folio-mount") || host.closest("main") || document;
   const hero = host.closest(".tp-hero") || articleScope.querySelector(".tp-hero") || articleScope;
   const lang = getActiveLang();
 
   if (articleScope.querySelector(".sf-feature")) {
-    const pickMany = (selector) =>
-      Array.from(articleScope.querySelectorAll(selector))
-        .map((el) => cleanNarrationText(localizedText(el, lang), lang))
-        .filter(Boolean);
-    const titleTxt = cleanNarrationText(localizedText(hero.querySelector(".tp-h1"), lang), lang);
-    const dekTxt = cleanNarrationText(localizedText(hero.querySelector(".tp-standfirst"), lang), lang);
-    const briefTxt = cleanNarrationText(localizedText(hero.querySelector(".sf-brief"), lang), lang);
-    const openingTxt = pickMany(".sf-opening p:not(.sf-cite)").join(" ");
-    const part1Txt = pickMany("#part-1 .sf-part-opener p:not(.sf-cite), #part-1 .sf-card-body, #part-2 .sf-part-opener p:not(.sf-cite), #part-2 .sf-card-body").join(" ");
-    const part3Txt = pickMany("#part-3 .sf-part-opener p:not(.sf-cite), #part-3 .sf-card-body, #part-4 .sf-part-opener p:not(.sf-cite), #part-4 .sf-card-body").join(" ");
-    const archTxt = pickMany("#atelier > .sf-lede, #architects-study > .sf-lede, #architects-study .sf-lineage-card p:not(.sf-cite)").join(" ");
-    const labTxt = pickMany("#part-6 > .sf-lede, .sf-closing p:not(.sf-cite)").join(" ");
-    const texts = [
-      cleanNarrationText(`${titleTxt}. ${dekTxt} ${briefTxt} ${openingTxt}`, lang),
-      cleanNarrationText(part1Txt || openingTxt, lang),
-      cleanNarrationText(part3Txt || briefTxt, lang),
-      cleanNarrationText(archTxt || briefTxt, lang),
-      cleanNarrationText(labTxt || `${titleTxt}. ${briefTxt}`, lang),
-    ];
-    return SAGRADA_ACT_DEFS.map((act, idx) => ({
-      index: idx,
-      act,
-      text: texts[idx] || cleanNarrationText(`${titleTxt}. ${dekTxt}`, lang),
-    }));
+    return extractCustomFolioChapters(
+      articleScope,
+      hero,
+      SAGRADA_ACT_DEFS,
+      [
+        ".sf-opening p:not(.sf-cite)",
+        "#part-1 .sf-part-opener p:not(.sf-cite), #part-1 .sf-card-body, #part-2 .sf-part-opener p:not(.sf-cite), #part-2 .sf-card-body",
+        "#part-3 .sf-part-opener p:not(.sf-cite), #part-3 .sf-card-body, #part-4 .sf-part-opener p:not(.sf-cite), #part-4 .sf-card-body",
+        "#atelier > .sf-lede, #architects-study > .sf-lede, #architects-study .sf-lineage-card p:not(.sf-cite)",
+        "#part-6 > .sf-lede, .sf-closing p:not(.sf-cite)",
+      ],
+      ".sf-brief",
+      "sf-cite",
+      lang
+    );
+  }
+
+  if (articleScope.querySelector(".cc-feature")) {
+    return extractCustomFolioChapters(
+      articleScope,
+      hero,
+      GTI_ACT_DEFS,
+      [
+        ".cc-opening p:not(.cc-cite), #relay .cc-lede",
+        "#part-1 .cc-part-opener p:not(.cc-cite), #part-1 .cc-card-body, #part-2 .cc-part-opener p:not(.cc-cite), #part-2 .cc-card-body, #part-3 .cc-part-opener p:not(.cc-cite), #part-3 .cc-card-body",
+        "#part-4 .cc-part-opener p:not(.cc-cite), #part-4 .cc-card-body, #part-5 .cc-part-opener p:not(.cc-cite), #part-5 .cc-card-body, #atelier > .cc-lede",
+        "#engineers-study > .cc-lede, #engineers-study .cc-lineage-card p:not(.cc-cite), #ghost-race > .cc-lede",
+        "#part-6 > .cc-lede, .cc-closing p:not(.cc-cite)",
+      ],
+      ".cc-brief",
+      "cc-cite",
+      lang
+    );
   }
 
   const h1 = hero.querySelector(".tp-h1");
