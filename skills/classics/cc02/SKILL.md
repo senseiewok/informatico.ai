@@ -13,7 +13,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Page and files
 - **Page**: https://informatico.ai/classics/sagrada-familia/#part-6 (Spanish: https://informatico.ai/es-mx/classics/sagrada-familia/#part-6)
 - **Models**: `tools/folios/classics/cc02_mechanics.py` (used by the page builder)
-- **Content and data**: `tools/folios/classics/cc02.py` (eight historical moves, five generations relay, 23 sources, copy)
+- **Content and data**: `tools/folios/classics/cc02.py` (eight historical moves, five generations relay, 41 sources, copy)
 - **Builder**: `python -X utf8 tools/build_sagrada_masterpiece.py`
 - **Verifier**: `python -X utf8 skills/classics/cc02/verify_cc02_sagrada.py`
 - **Knockouts** (each must exit non-zero):
