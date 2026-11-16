@@ -300,14 +300,14 @@ def run_verification(planted_defect: bool = False) -> dict:
     assert t_en == "The Seven-Gate Crown Sieve" and len(t_en) == 26
     assert (
         d_en
-        == "Seven physical gates eliminate gravitational and gauge architectures, leaving ghost-free entire UV gravity and chiral spinors as sole survivors."
-        and len(d_en) == 144
+        == "A seven-gate scorecard compares eight gravity and gauge architectures; one constructed model passes all gates as scored, a conjecture."
+        and len(d_en) == 134
     )
     assert t_es == "La Criba Corona de Siete Compuertas" and len(t_es) == 35
     assert (
         d_es
-        == "Siete compuertas físicas filtran arquitecturas de gravedad y norma, dejando la gravedad entera sin fantasmas y espinores quirales como sobrevivientes."
-        and len(d_es) == 150
+        == "Una tabla de siete compuertas compara ocho arquitecturas de gravedad y norma; un modelo construido las pasa todas según el puntaje: conjetura."
+        and len(d_es) == 142
     )
     for t_str in (t_en, t_es):
         assert 18 <= len(t_str) <= 52, f"SEO title length {len(t_str)} outside 18..52: {t_str!r}"

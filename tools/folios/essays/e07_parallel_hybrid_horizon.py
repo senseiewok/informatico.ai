@@ -528,31 +528,26 @@ ESSAY: dict = {
     "kicker_es": "Ensayo Transescalar · ES.07 · Horizontes Paralelos de Gravedad Difuminada, Valles Criogénicos y Fronteras Epistémicas",
     "reading_time_en": "16 min read",
     "reading_time_es": "16 min de lectura",
-    "title_en": "The Parallel Horizon & The Loophole-Free Quantum Island: Exact Bounds, Cryogenic Valleys, and Why This Is Not a Theory of Everything",
-    "title_es": "El Horizonte Paralelo y la Isla Cuántica sin Resquicios: Cotas Exactas, Valles Criogénicos y por Qué Esto No Es una Teoría del Todo",
+    "title_en": "The Parallel Horizon & A Model-Conditional Quantum Island: Derived Bounds, Cryogenic Valleys, and Why This Is Not a Theory of Everything",
+    "title_es": "El Horizonte Paralelo y una Isla Cuántica Condicionada al Modelo: Cotas Derivadas, Valles Criogénicos y por Qué Esto No Es una Teoría del Todo",
     "standfirst_en": (
         "When two spatial superpositions sit side by side rather than in line, how far can Diósi–Penrose smeared "
         "classical gravity reach before its own self-decoherence extinguishes entanglement identically? Block-diagonalizing "
         "the 4 × 4 partial-transpose matrix in closed form reveals that the parallel hybrid horizon expands from "
-        "1.5471 σ at small splits to a universal ceiling of 2.2109 σ as Δx / σ → ∞. Combined with the 33.08 µm "
-        "Eöt-Wash torsion recast, every parallel gap above 73.14 µm is classically dark at all splits and times—opening "
-        "a clean quantum island around D = 75 µm with a hardware-free 90° null test, while leaving four sharp "
+        "1.5471 σ at small splits to a universal ceiling of 2.2109 σ as Δx / σ → ∞. Combined with our 33.08 µm recast of Eöt-Wash torsion limits (DERIVED, NOT MEASURED), this specific hybrid model produces no entanglement at parallel gaps above 73.14 µm—a BOUND that moves with the recast and would exceed 75 µm if a collaboration refit gave 36 µm (2.2109 × 36 µm ≈ 79.6 µm). That leaves a model-conditional window around D = 75 µm with a 90° null test, and four sharp "
         "epistemic boundaries between tabletop entanglement and a Theory of Everything."
     ),
     "standfirst_es": (
         "Cuando dos superposiciones espaciales se colocan en paralelo en vez de en línea, ¿hasta dónde alcanza la "
         "gravedad clásica difuminada de Diósi–Penrose antes de que su propia autodecoherencia anule el entrelazamiento? "
         "Diagonalizar por bloques la transpuesta parcial de 4 × 4 en forma cerrada revela que el horizonte híbrido "
-        "paralelo crece de 1.5471 σ a divisiones pequeñas hasta un techo universal de 2.2109 σ cuando Δx / σ → ∞. Junto "
-        "al recast de torsión de Eöt-Wash de 33.08 µm, toda separación paralela sobre 73.14 µm queda clásicamente a "
-        "oscuras, abriendo una isla cuántica en D = 75 µm con control nulo a 90° y cuatro fronteras epistémicas."
+        "paralelo crece de 1.5471 σ a divisiones pequeñas hasta un techo universal de 2.2109 σ cuando Δx / σ → ∞. Junto a nuestra proyección de 33.08 µm de los límites de torsión de Eöt-Wash (DERIVADO, NO MEDIDO), este modelo híbrido específico no produce entrelazamiento en separaciones paralelas sobre 73.14 µm: una COTA que se mueve con la proyección y que superaría 75 µm si un reajuste de la colaboración diera 36 µm (2.2109 × 36 µm ≈ 79.6 µm). Queda así una ventana condicionada al modelo en D = 75 µm con control nulo a 90° y cuatro fronteras epistémicas."
     ),
     "card_dek_en": (
-        "Closed-form parallel Diósi–Penrose block diagonalization (1.5471 σ to 2.2109 σ), the 73.14 µm universal "
-        "ceiling, the D = 75 µm quantum island, 2.04 K cryogenic valleys, 90° null controls, and 9 Lean 4 theorems."
+        "Closed-form parallel Diósi–Penrose block diagonalization (1.5471 σ to 2.2109 σ), the 73.14 µm model ceiling (recast-dependent), the D = 75 µm quantum island, 2.04 K cryogenic valleys, 90° null controls, and 9 Lean 4 theorems."
     ),
     "card_dek_es": (
-        "Diagonalización cerrada de Diósi–Penrose paralelo (1.5471 σ a 2.2109 σ), el techo universal de 73.14 µm, "
+        "Diagonalización cerrada de Diósi–Penrose paralelo (1.5471 σ a 2.2109 σ), el techo del modelo en 73.14 µm (dependiente de la proyección), "
         "la isla cuántica en D = 75 µm, valles criogénicos a 2.04 K, control nulo a 90° y 9 teoremas en Lean 4."
     ),
     "instrument_kind": "parallel_horizon",
@@ -691,8 +686,8 @@ ESSAY: dict = {
         },
         {
             "id": "loophole-free-island",
-            "h2_en": "II · Why the Parallel Horizon Expands to 2.2109 σ — And Where the Loophole-Free Island Opens",
-            "h2_es": "II · Por Qué el Horizonte Paralelo Crece hasta 2.2109 σ y Dónde se Abre la Isla sin Resquicios",
+            "h2_en": "II · Why the Parallel Horizon Expands to 2.2109 σ — And Where the Model-Conditional Island Opens",
+            "h2_es": "II · Por Qué el Horizonte Paralelo Crece hasta 2.2109 σ y Dónde se Abre la Isla Condicionada al Modelo",
             "short_en": "II · 73.14 µm Ceiling & Island",
             "short_es": "II · Techo de 73.14 µm e Isla",
             "blocks": [
@@ -746,8 +741,7 @@ ESSAY: dict = {
                         "parallel interferometer at D = 60 µm and Δx = 250 µm assuming 51.18 µm suffices: the exact formula "
                         "gives σ_c(60 µm, 250 µm) = 31.65 µm < 33.08 µm, so Diósi–Penrose classical gravity at σ = 33.0 µm "
                         "still generates peak negativity 0.0014! Stepping across the universal ceiling to D = 75 µm at "
-                        "Δx = 250 µm raises σ_c to 41.12 µm (and even as Δx → ∞, σ_c ≥ 33.92 µm > 33.08 µm), forcing "
-                        "N_hyb(t) = 0.0000 at every hold time t ≥ 0 without relying on environmental noise to kill the hybrid signal."
+                        "Δx = 250 µm raises σ_c to 41.12 µm (and even as Δx → ∞, σ_c ≥ 33.92 µm > 33.08 µm), so that in this model, at the recast value σ_95 = 33.08 µm, N_hyb(t) = 0.0000 at every hold time t ≥ 0 without relying on environmental noise to kill the hybrid signal."
                     ),
                     "es": (
                         "Esta expansión del 43% revela una trampa crítica de diseño y delimita a la vez un corredor cuántico "
@@ -756,8 +750,7 @@ ESSAY: dict = {
                         "usando 33.1 µm). Si alguien construye un interferómetro paralelo en D = 60 µm y Δx = 250 µm creyendo "
                         "que bastan 51.18 µm, la fórmula exacta arroja σ_c(60 µm, 250 µm) = 31.65 µm < 33.08 µm, por lo que "
                         "la gravedad híbrida en σ = 33.0 µm aún alcanza negatividad 0.0014. Al cruzar el techo hacia D = 75 µm "
-                        "con Δx = 250 µm, σ_c sube a 41.12 µm (y aun cuando Δx → ∞, σ_c ≥ 33.92 µm > 33.08 µm), forzando "
-                        "N_hyb(t) = 0.0000 en todo t ≥ 0 sin depender del ruido ambiental."
+                        "con Δx = 250 µm, σ_c sube a 41.12 µm (y aun cuando Δx → ∞, σ_c ≥ 33.92 µm > 33.08 µm), de modo que en este modelo, con el valor proyectado σ_95 = 33.08 µm, N_hyb(t) = 0.0000 en todo t ≥ 0 sin depender del ruido ambiental."
                     ),
                 },
                 {
@@ -866,7 +859,7 @@ ESSAY: dict = {
                 {
                     "type": "p",
                     "en": (
-                        "Even inside a loophole-free geometric and cryogenic corridor, an experimenter must prove that an "
+                        "Even inside this model-conditional geometric and cryogenic corridor, an experimenter must prove that an "
                         "observed entanglement witness came from 1 / r gravity rather than stray electrostatic patch charges, "
                         "magnetic Stern–Gerlach cross-talk, or common-mode vibrational noise. Rotating one interferometer's "
                         "Stern–Gerlach gradient axis by angle θ about its midpoint while keeping D = 75 µm, Δx = 250 µm, "
@@ -880,7 +873,7 @@ ESSAY: dict = {
                         "Δx = 250 µm) that would masquerade as false signal."
                     ),
                     "es": (
-                        "Incluso dentro de un corredor geométrico y criogénico libre de resquicios, un experimento debe "
+                        "Incluso dentro de este corredor geométrico y criogénico condicionado al modelo, un experimento debe "
                         "demostrar que el testigo medido proviene de la gravedad 1 / r y no de cargas parásitas, diafonía "
                         "magnética de Stern–Gerlach o vibraciones comunes. Girar un eje de Stern–Gerlach un ángulo θ sobre "
                         "su punto medio manteniendo idénticos D = 75 µm, Δx = 250 µm, masas, pulsos y pantalla ofrece un "
@@ -942,14 +935,14 @@ ESSAY: dict = {
                 {
                     "type": "p",
                     "en": (
-                        "Deriving a parameter-free classical-hybrid horizon at 73.14 µm and pairing it with Wheeler–DeWitt "
+                        "Deriving a classical-hybrid horizon at 73.14 µm whose only input is the recast value σ_95 and pairing it with Wheeler–DeWitt "
                         "clock constraints (Essay ES.06) and Eöt-Wash sub-millimetre data is genuinely clarifying: it turns "
                         "qualitative arguments about 'testing quantum gravity on a tabletop' into falsifiable inequalities "
                         "where every assumption has a street address. Precisely for that reason, scientific honesty requires "
                         "stating four strict boundaries that separate this result from a Theory of Everything."
                     ),
                     "es": (
-                        "Derivar un horizonte híbrido clásico libre de parámetros ajustables en 73.14 µm y acoplarlo con "
+                        "Derivar un horizonte híbrido clásico en 73.14 µm cuya única entrada es el valor proyectado σ_95 y acoplarlo con "
                         "restricciones de reloj de Wheeler–DeWitt (Ensayo ES.06) y datos submilimétricos de Eöt-Wash aporta "
                         "claridad real: convierte debates cualitativos sobre 'probar la gravedad cuántica en una mesa' en "
                         "desigualdades falsables. Precisamente por ello, la honestidad científica exige declarar cuatro "
@@ -966,9 +959,7 @@ ESSAY: dict = {
                         "resolve Planck-scale renormalization at 1.62 × 10⁻³⁵ m, select between string theory, loop quantum "
                         "gravity, or asymptotic safety, determine black-hole interior unitarity, or couple the Standard Model "
                         "gauge group SU(3) × SU(2) × U(1) to spacetime curvature. Second, model-conditional elimination: "
-                        "crossing D ≥ 73.14 µm rules out local-operations-and-classical-communication (LOCC) gravity channels "
-                        "and the Diósi–Penrose σ-smeared hybrid master equation of Trillo and Navascués (2025) under the "
-                        "33.08 µm recast, while Oppenheim et al. (2023) independently squeeze Markovian diffusive classical "
+                        "an entanglement witness observed at D ≥ 73.14 µm would rule out local-operations-and-classical-communication (LOCC) gravity channels (which cannot entangle at any distance) and, only if the 33.08 µm recast holds, the Diósi–Penrose σ-smeared hybrid master equation of Trillo and Navascués (2025), while Oppenheim et al. (2023) independently squeeze Markovian diffusive classical "
                         "gravity by 3.31 × 10¹⁶×; however, non-Markovian or higher-order quantum-field matter-vertex couplings "
                         "to classical metrics—such as Aziz and Howl (2025), whose predicted amplitude sits 25 to 34 orders of "
                         "magnitude below the Newtonian phase at 10⁻¹⁴ kg—must be discriminated by M⁶ t² scaling rather than "
@@ -980,9 +971,7 @@ ESSAY: dict = {
                         "atestiguaría la superposición cuántica coherente del potencial gravitatorio newtoniano —un hito "
                         "histórico—, pero no resuelve la renormalización a escala de Planck en 1.62 × 10⁻³⁵ m, no decide "
                         "entre cuerdas, lazos o seguridad asintótica, no fija el interior de agujeros negros ni acopla el "
-                        "grupo gauge SU(3) × SU(2) × U(1) a la curvatura. Segundo, eliminación condicional al modelo: cruzar "
-                        "D ≥ 73.14 µm descarta canales LOCC y la ecuación maestra híbrida difuminada en σ de Trillo y "
-                        "Navascués (2025) bajo el recast de 33.08 µm, mientras Oppenheim et al. (2023) comprimen la difusión "
+                        "grupo gauge SU(3) × SU(2) × U(1) a la curvatura. Segundo, eliminación condicional al modelo: un testigo de entrelazamiento observado en D ≥ 73.14 µm descartaría canales LOCC (que no entrelazan a ninguna distancia) y, solo si se sostiene la proyección de 33.08 µm, la ecuación maestra híbrida difuminada en σ de Trillo y Navascués (2025), mientras Oppenheim et al. (2023) comprimen la difusión "
                         "clásica markoviana por 3.31 × 10¹⁶×; sin embargo, acoplamientos de orden superior como Aziz y Howl "
                         "(2025) —cuya amplitud cae entre 25 y 34 órdenes de magnitud bajo la fase newtoniana en 10⁻¹⁴ kg— "
                         "requieren distinguirse por su escalamiento M⁶ t²."
@@ -1016,8 +1005,8 @@ ESSAY: dict = {
         },
         {
             "id": "lean4-parallel-spine",
-            "h2_en": "V · Zero-Sorry Core Lean 4 Certification of the Parallel Horizon Spine",
-            "h2_es": "V · Certificación sin Sorry en Lean 4 Base de la Columna Formal del Horizonte Paralelo",
+            "h2_en": "V · Zero-Sorry Core Lean 4 Checks of the Parallel Horizon Algebra",
+            "h2_es": "V · Comprobaciones sin Sorry en Lean 4 Base del Álgebra del Horizonte Paralelo",
             "short_en": "V · Lean 4 Proof Spine",
             "short_es": "V · Prueba en Lean 4",
             "blocks": [
@@ -1046,24 +1035,24 @@ ESSAY: dict = {
                 {
                     "type": "p",
                     "en": (
-                        "Theorems 3, 4, and 5 certify the 3-D skew geometry over universal integer polynomials: "
+                        "Theorems 3, 4, and 5 check the 3-D skew geometry as integer polynomial identities: "
                         "skew_parallel_midpoint_difference proves r_diff² − r_same² = Δx² cos θ with exact cancellation of D² "
                         "(the identity that eliminated 12-digit floating-point loss down to 1.4 × 10⁻¹⁴ in our Python kernel); "
-                        "orthogonal_cross_exact_null proves all-multipole cancellation at θ = 90°; and "
+                        "orthogonal_cross_exact_null proves r_same² = r_diff² at θ = 90° and that four equal branch potentials give zero cross-phase; and "
                         "uncentred_corner_nonzero_residue proves that an uncentred L-geometry leaves an exact +6 Δx⁴ fourth-"
                         "order numerator residue. Theorems 6 through 9 prove 3(k + 2)⁴ < (k + 2)⁸ for all k ∈ ℕ, environmental "
-                        "dephasing monotonicity, the 28,147 nm < 51,178 nm < 73,136 nm < 75,000 nm horizon chain, and the "
+                        "dephasing monotonicity, the integer ordering 28,147 < 51,178 < 73,136 < 75,000 (nm values entered from the Python kernel, not derived in Lean), and the "
                         "exact mass-pinch transition from open (10⁻¹⁵, 10⁻¹⁴, and 10⁻¹³ kg) to closed at 10⁻¹² kg (73,297 nm > "
                         "73,136 nm), mirrored by exact multivariate Fraction polynomial checks in verify_essay_parallel_horizon.py."
                     ),
                     "es": (
-                        "Los Teoremas 3, 4 y 5 certifican la geometría 3-D sesgada sobre polinomios enteros universales: "
+                        "Los Teoremas 3, 4 y 5 comprueban la geometría 3-D sesgada como identidades polinómicas enteras: "
                         "skew_parallel_midpoint_difference prueba r_diff² − r_same² = Δx² cos θ con cancelación exacta de D² "
                         "(la identidad que eliminó la pérdida de 12 dígitos de precisión hasta 1.4 × 10⁻¹⁴ en nuestro núcleo Python); "
-                        "orthogonal_cross_exact_null prueba la anulación multipolar en θ = 90°; y "
+                        "orthogonal_cross_exact_null prueba r_same² = r_diff² en θ = 90° y que cuatro potenciales de rama iguales dan fase cruzada cero; y "
                         "uncentred_corner_nonzero_residue demuestra el residuo de cuarto orden +6 Δx⁴ en geometrías 'L' "
                         "descentradas. Los Teoremas 6 al 9 prueban 3(k + 2)⁴ < (k + 2)⁸ para todo k ∈ ℕ, la monotonía frente "
-                        "al ruido, la cadena 28,147 nm < 51,178 nm < 73,136 nm < 75,000 nm y el cierre por masa entre "
+                        "al ruido, el orden entero 28,147 < 51,178 < 73,136 < 75,000 (valores en nm tomados del kernel de Python, no derivados en Lean) y el cierre por masa entre "
                         "10⁻¹⁵, 10⁻¹⁴ y 10⁻¹³ kg (abiertos) y 10⁻¹² kg (73,297 nm > 73,136 nm, cerrado)."
                     ),
                 },

@@ -1,10 +1,10 @@
 ---
 name: essay-es07-loophole-free-parallel-horizon
-description: Verify Cross-Scale Essay ES.07 (The Parallel Horizon and The Loophole-Free Quantum Island) - closed-form 2-D and 3-D skewed Diósi-Penrose parallel hybrid block diagonalization, 1.5471 sigma to 2.2109 sigma horizon expansion, 73.14 um Eöt-Wash ceiling, D = 75 um quantum island, 4 cryogenic vacuum ensembles, 90-degree midpoint null control, and 9 zero-sorry core Lean 4 theorems.
+description: Verify Cross-Scale Essay ES.07 (The Parallel Horizon and A Model-Conditional Quantum Island) - closed-form 2-D and 3-D skewed Diósi-Penrose parallel hybrid block diagonalization, 1.5471 sigma to 2.2109 sigma horizon expansion, 73.14 um recast-dependent model ceiling, D = 75 um quantum island, 4 cryogenic vacuum ensembles, 90-degree midpoint null control, and 9 zero-sorry core Lean 4 theorems.
 license: MIT
 compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI Codex, Ollama (Qwen 3.8 / Gemma 4)
 ---
-# The Parallel Horizon & The Loophole-Free Quantum Island: Exact Bounds, Cryogenic Valleys, and Why This Is Not a Theory of Everything (`ES.07` · Cross-Scale Essay)
+# The Parallel Horizon & A Model-Conditional Quantum Island: Derived Bounds, Cryogenic Valleys, and Why This Is Not a Theory of Everything (`ES.07` · Cross-Scale Essay)
 
 ## 1. Essay identity, canonical URLs, and owned artifacts
 - **Essay code & slug**: `ES.07` · `loophole-free-parallel-horizon` (dated `2026-11-10`, plate `essay07`, instrument `parallel_horizon`)
@@ -27,7 +27,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 4. **Four Sharp Epistemic Boundaries (Why This Is Not a Theory of Everything)**:
    - Separates weak-field IR Newtonian superposition from Planck-scale UV completion, distinguishes `σ`-smeared / Markovian diffusive bounds (`Oppenheim et al. 2023`) from higher-order matter-vertex couplings (`Aziz & Howl 2025`), separates published-table recasting from a raw 95-run Eöt-Wash refit, and enforces `DERIVED (NOT MEASURED)` provenance.
 5. **Nine Zero-`sorry` Core Lean 4 Prelude Theorems (`ParallelHorizon.lean`; `Tooby-Smith 2025`)**:
-   - Certifies `6` SI dimensional equations, partial-transpose discriminant positivity, `3-D` skewed midpoint difference (`r_diff² − r_same² = Δx² cos θ`), `θ = 90°` all-multipole nullity, uncentred `+6 Δx⁴` Taylor residue, `3(k+2)⁴ < (k+2)⁸`, dephasing monotonicity, and the `10⁻¹⁵..10⁻¹² kg` mass pinch.
+   - Checks `6` SI dimensional equations, partial-transpose discriminant positivity, `3-D` skewed midpoint difference (`r_diff² − r_same² = Δx² cos θ`), `θ = 90°` equality `r_same² = r_diff²`, uncentred `+6 Δx⁴` Taylor residue, `3(k+2)⁴ < (k+2)⁸`, dephasing monotonicity, and the `10⁻¹⁵..10⁻¹² kg` mass pinch.
 
 ## 3. Primary Crossref DOIs verified offline (`13 / 13` cached)
 | Source ID | Reference | DOI |

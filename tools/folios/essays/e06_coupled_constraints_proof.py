@@ -691,15 +691,14 @@ ESSAY: dict = {
     "standfirst_en": (
         "What survives when relational quantum clocks, sub-millimetre inverse-square torsion data, open-system "
         "spin echoes, and formal proof assistants inspect the same tabletop gravity geometry at once? Diagonalizing "
-        "a 64 × 64 Hermitian Wheeler–DeWitt constraint via 128 × 128 real Jacobi rotations, recasting Eöt-Wash "
-        "signed limits down to σ ≤ 33 µm, contrasting bilateral X_A ⊗ X_B pulses against unilateral erasures, "
+        "a 64 × 64 Hermitian Wheeler–DeWitt constraint via 128 × 128 real Jacobi rotations, recasting published Eöt-Wash signed limits into a derived σ ≤ 33 µm bound (our projection, not a collaboration result), contrasting bilateral X_A ⊗ X_B pulses against unilateral erasures, "
         "and auditing 10 core Lean 4 theorems show exactly what algebra can—and cannot—settle before a lab measurement."
     ),
     "standfirst_es": (
         "¿Qué sobrevive cuando relojes cuánticos relacionales, datos de torsión submilimétricos, ecos de espín en "
         "sistemas abiertos y asistentes de prueba formal examinan a la vez la misma geometría gravitatoria de mesa? "
         "Diagonalizar una restricción hermítica de Wheeler–DeWitt de 64 × 64 mediante rotaciones reales de Jacobi de "
-        "128 × 128, proyectar límites con signo de Eöt-Wash hasta σ ≤ 33 µm, contrastar pulsos bilaterales X_A ⊗ X_B "
+        "128 × 128, proyectar límites publicados con signo de Eöt-Wash a una cota derivada σ ≤ 33 µm (proyección nuestra, no un resultado de la colaboración), contrastar pulsos bilaterales X_A ⊗ X_B "
         "frente a borrados unilaterales y auditar 10 teoremas en Lean 4 muestra qué fija el álgebra antes de medir."
     ),
     "card_dek_en": (
@@ -848,8 +847,8 @@ ESSAY: dict = {
         },
         {
             "id": "torsion-and-oppenheim",
-            "h2_en": "II · Closing the Smeared-Gravity Escape Hatch: The 33 µm Recast and Oppenheim's Torque Ceiling",
-            "h2_es": "II · Cerrando la Vía de Gravedad Difuminada: El Límite de 33 µm y el Techo de Par de Oppenheim",
+            "h2_en": "II · Narrowing the Smeared-Gravity Escape Hatch: The 33 µm Recast and Oppenheim's Torque Ceiling",
+            "h2_es": "II · Acotando la Vía de Gravedad Difuminada: El Límite de 33 µm y el Techo de Par de Oppenheim",
             "short_en": "II · 33 µm & Torque Ceiling",
             "short_es": "II · 33 µm y Techo de Par",
             "blocks": [
@@ -878,24 +877,21 @@ ESSAY: dict = {
                 {
                     "type": "p",
                     "en": (
-                        "Coupling four independent experimental and environmental walls closes that escape hatch across every "
-                        "published proposal. Wall 1 (spontaneous X-ray emission in underground detectors) forces σ > 4.9 Å. "
+                        "Coupling four independent experimental and environmental walls narrows that escape hatch for the published proposals we mapped, conditional on our own recast of the torsion data (DERIVED, NOT MEASURED; see Essay ES.07, Section IV for its limits). Wall 1 (spontaneous X-ray emission in underground detectors) forces σ > 4.9 Å. "
                         "Wall 2 projects the erf(r / 2σ) / r torque deficit across the 120-fold Fourier–Bessel wedge pendulum "
                         "of Lee et al. (2020) onto all 66 signed 95% Yukawa profile rows from 5 µm to 8.9 mm. Because the data "
-                        "lean slightly positive in the 5 µm to 100 µm range, this full profile recast excludes σ > 33 µm at 95% "
-                        "confidence (σ_95 = 33.08 µm: σ = 33 µm sits just inside −7.3 versus −7.4, whereas σ = 35 µm is excluded "
-                        "at −10.2), superseding any single-point 52 µm comparison. That updated 33 µm wall eliminates Bose et al. "
-                        "(σ_c = 524.5 µm), Chevalier et al. (405.7 µm), Van De Kamp et al. (82.0 µm and 54.9 µm), and even the "
+                        "lean slightly positive in the 5 µm to 100 µm range, this full profile recast gives a derived bound σ ≤ 33 µm at the published 95% level (σ_95 = 33.08 µm: σ = 33 µm sits just inside −7.3 versus −7.4, whereas σ = 35 µm is excluded "
+                        "at −10.2), superseding any single-point 52 µm comparison. Under that 33 µm recast bound, the hybrid channel cannot entangle in the geometries of Bose et al. (σ_c = 524.5 µm), Chevalier et al. (405.7 µm), Van De Kamp et al. (82.0 µm and 54.9 µm), and even the "
                         "z = 30 µm screened parallel geometry of Schut et al. (2024) at σ_c = 39.4 µm > 33 µm."
                     ),
                     "es": (
-                        "Acoplar cuatro muros experimentales y ambientales cierra ese resquicio en todas las geometrías publicadas. "
+                        "Acoplar cuatro muros experimentales y ambientales estrecha ese resquicio para las propuestas publicadas que mapeamos, condicionado a nuestra propia proyección de los datos de torsión (DERIVADO, NO MEDIDO; véanse sus límites en el Ensayo ES.07, Sección IV). "
                         "El Muro 1 (radiación espontánea subterránea) exige σ > 4.9 Å. El Muro 2 proyecta el déficit de par "
                         "erf(r / 2σ) / r en el péndulo de 120 cuñas de Fourier–Bessel de Lee et al. (2020) contra las 66 filas "
                         "con signo al 95% entre 5 µm y 8.9 mm. Como el ajuste experimental se inclina ligeramente hacia valores "
-                        "positivos entre 5 µm y 100 µm, esta proyección completa excluye σ > 33 µm al 95% (σ_95 = 33.08 µm: "
+                        "positivos entre 5 µm y 100 µm, esta proyección completa da una cota derivada σ ≤ 33 µm al nivel publicado del 95% (σ_95 = 33.08 µm: "
                         "σ = 33 µm queda apenas permitido con −7.3 frente a −7.4, mientras σ = 35 µm cae excluido con −10.2), "
-                        "superando comparaciones puntuales a 52 µm. Este muro de 33 µm descarta a Bose et al. (σ_c = 524.5 µm), "
+                        "superando comparaciones puntuales a 52 µm. Bajo esa cota proyectada de 33 µm, el canal híbrido no puede entrelazar en las geometrías de Bose et al. (σ_c = 524.5 µm), "
                         "Chevalier et al. (405.7 µm), Van De Kamp et al. (82.0 µm y 54.9 µm) e incluso la geometría paralela "
                         "apantallada z = 30 µm de Schut et al. (2024) con σ_c = 39.4 µm > 33 µm."
                     ),
@@ -908,8 +904,7 @@ ESSAY: dict = {
                         "There Wall 4 (environmental dephasing) finishes the test: at σ = 33.1 µm, the hybrid channel's own "
                         "self-decoherence caps its dephasing tolerance at γ_crit = 7.87 × 10⁻⁵ s⁻¹ (2.17 × 10⁻⁴ s⁻¹ at σ = 20 µm), "
                         "so at a realistic cryogenic floor γ = 10⁻³ s⁻¹ hybrid negativity collapses to 0.0 while the unitary "
-                        "quantum channel (γ_crit = 9.83 × 10⁻³ s⁻¹) retains peak negativity 0.337. Independently, Oppenheim et al. "
-                        "(2023) proved that any consistent Markovian classical-gravity theory must inject stochastic gravitational "
+                        "quantum channel (γ_crit = 9.83 × 10⁻³ s⁻¹) retains peak negativity 0.337. Independently, Oppenheim et al. (2023) derived that any consistent Markovian classical-gravity theory must inject stochastic gravitational "
                         "momentum diffusion obeying ℓ_P² D_2 ≤ T σ_a² N r_N³ / G². Inserting the 0.0054 fN · m torque residual of "
                         "Lee et al. (2020) across the 18 mm lever arm of the platinum foil (N = 6.02 × 10²¹ atoms, "
                         "σ_a = 1.53 × 10⁻¹³ m/s²) at T = 10³ s and r_N = 1 fm pushes the admissible ceiling down to "
@@ -923,8 +918,7 @@ ESSAY: dict = {
                         "σ_c = 13.6 µm ≤ 33 µm— superan el Muro 2. Allí el Muro 4 (desfase ambiental) cierra la prueba: en "
                         "σ = 33.1 µm, la autodecoherencia híbrida limita su tolerancia a γ_crit = 7.87 × 10⁻⁵ s⁻¹ "
                         "(2.17 × 10⁻⁴ s⁻¹ en σ = 20 µm), de modo que a γ = 10⁻³ s⁻¹ la negatividad híbrida cae a 0.0 mientras "
-                        "el canal cuántico unitario (γ_crit = 9.83 × 10⁻³ s⁻¹) alcanza 0.337. En paralelo, Oppenheim et al. "
-                        "(2023) probaron que toda gravedad clásica markoviana consistente exige difusión de momento con "
+                        "el canal cuántico unitario (γ_crit = 9.83 × 10⁻³ s⁻¹) alcanza 0.337. En paralelo, Oppenheim et al. (2023) derivaron que toda gravedad clásica markoviana consistente exige difusión de momento con "
                         "ℓ_P² D_2 ≤ T σ_a² N r_N³ / G². Al insertar el residuo de par de 0.0054 fN · m de Lee et al. (2020) "
                         "en el brazo de 18 mm de la lámina de platino (N = 6.02 × 10²¹ átomos, σ_a = 1.53 × 10⁻¹³ m/s²) con "
                         "T = 10³ s y r_N = 1 fm, el techo cae a 3.02 × 10⁻²⁶ kg² · s · m⁻¹: una supresión de 3.31 × 10¹⁶× bajo "
@@ -1073,8 +1067,8 @@ ESSAY: dict = {
         },
         {
             "id": "zero-sorry-lean",
-            "h2_en": "IV · Non-Tautological Zero-Sorry Lean 4: Certifying the Deductive Spine Without Overclaiming Nature",
-            "h2_es": "IV · Lean 4 sin Sorry y No Tautológico: Certificar la Columna Deductiva sin Suplantar a la Naturaleza",
+            "h2_en": "IV · Non-Tautological Zero-Sorry Lean 4: Checking the Algebra Without Overclaiming Nature",
+            "h2_es": "IV · Lean 4 sin Sorry y No Tautológico: Revisar el Álgebra sin Suplantar a la Naturaleza",
             "short_en": "IV · Lean 4 Spine",
             "short_es": "IV · Columna Lean 4",
             "blocks": [
@@ -1107,7 +1101,7 @@ ESSAY: dict = {
                         "(3) universal 8-variable bipartite-local gauge invariance of cross_phase(ll, lr, rl, rr) = lr + rl − ll − rr "
                         "contrasted with the −4 λ non-local shift; (4) universal bilateral (−z_A)(−z_B) = z_A z_B versus "
                         "unilateral J_grav + (−J_grav) = 0 spin-echo parity and two-half-step gradient cancellation; "
-                        "(5) updated σ_95 = 33 µm 4-wall exclusion across all 7 benchmark proposal rows; and (6) the universal "
+                        "(5) a decide check over 7 benchmark proposal rows whose σ_c and γ_crit values we entered by hand from the Python kernel, confirming only that the table is evaluated consistently against σ_95 = 33 µm; and (6) the universal "
                         "Maxwell–Calladine constraint-rigidity identity (d_dof − r) − (e_constraints − r) = d_dof − e_constraints "
                         "locking su(4)'s 9 non-local generators at rank r = 9."
                     ),
@@ -1120,37 +1114,28 @@ ESSAY: dict = {
                         "e_low(q) = m_0 + q w y e_high(q) = (m_0 + q w)(s + α_num) por distributividad en Int; (3) invariancia "
                         "universal en 8 variables de cross_phase(ll, lr, rl, rr) = lr + rl − ll − rr frente al giro no local "
                         "−4 λ; (4) paridad universal bilateral (−z_A)(−z_B) = z_A z_B frente a la unilateral J_grav + (−J_grav) = 0 "
-                        "y cancelación de gradientes; (5) exclusión de 4 muros actualizada a σ_95 = 33 µm en las 7 filas de "
-                        "propuestas; y (6) la identidad universal de Maxwell–Calladine (d_dof − r) − (e_constraints − r) = "
+                        "y cancelación de gradientes; (5) una comprobación por decide sobre 7 filas de propuestas cuyos valores σ_c y γ_crit capturamos a mano desde el kernel de Python, que solo confirma que la tabla se evalúa de forma consistente frente a σ_95 = 33 µm; y (6) la identidad universal de Maxwell–Calladine (d_dof − r) − (e_constraints − r) = "
                         "d_dof − e_constraints que fija los 9 generadores no locales de su(4) en rango r = 9."
                     ),
                 },
                 {
                     "type": "analogy",
-                    "kicker_en": "Epistemic Guardrail · What a Zero-Sorry Proof Certifies (and Never Claims)",
-                    "kicker_es": "Salvaguarda Epistémica · Qué Certifica una Prueba sin Sorry (y Qué Jamás Reclama)",
+                    "kicker_en": "Epistemic Guardrail · What a Zero-Sorry Proof Checks (and Never Claims)",
+                    "kicker_es": "Salvaguarda Epistémica · Qué Comprueba una Prueba sin Sorry (y Qué Jamás Reclama)",
                     "title_en": "Lean 4 verifies the bridge trusses between assumptions and numbers, never the river itself",
                     "title_es": "Lean 4 verifica las armaduras entre hipótesis y números, jamás el río empírico",
                     "paras": [
                         (
                             "Imagine a structural engineer proving by exact integer statics that a 9-bar truss has 0 floppy "
-                            "mechanisms under stated pin loads. That proof guarantees zero hidden arithmetic errors in the "
-                            "blueprint—corresponding to our DERIVED (NOT MEASURED) epistemic badge. It does not prove without "
+                            "mechanisms under stated pin loads. That proof rules out arithmetic errors in the steps it covers—corresponding to our DERIVED (NOT MEASURED) epistemic badge. It does not prove without "
                             "going outdoors whether wind gusts at the canyon exceed those stated loads.",
                             "Imagina un ingeniero estructural que prueba con estática entera exacta que una celosía de 9 barras "
-                            "tiene 0 modos flexibles bajo cargas declaradas. Esa prueba garantiza cero errores aritméticos en el "
-                            "plano —nuestra etiqueta DERIVADO (NO MEDIDO)—, pero no demuestra sin salir al cañón qué ráfagas soplan allí.",
+                            "tiene 0 modos flexibles bajo cargas declaradas. Esa prueba descarta errores aritméticos en los pasos que cubre —nuestra etiqueta DERIVADO (NO MEDIDO)—, pero no demuestra sin salir al cañón qué ráfagas soplan allí.",
                         ),
                         (
-                            "Likewise, IRUG_Unification.lean certifies that IF nature obeys the stated Wheeler–DeWitt, "
-                            "Diósi–Penrose, or Lindblad generators AND the published 2020 Eöt-Wash limits hold, THEN η = 0, "
-                            "local phases cannot counterfeit Δφ, bilateral echoes preserve Z_A Z_B, and every mapped hybrid "
-                            "geometry falls outside the 33 µm + 10⁻³ s⁻¹ window. Whether gravity actually entangles 10⁻¹⁴ kg "
+                            "Likewise, IRUG_Unification.lean proves integer identities and finite table checks: the stated redshift expressions give η = 0, the cross-phase is unchanged by local shifts, bilateral sign flips preserve z_A z_B, and the 7 hand-entered proposal rows evaluate as listed against 33 µm and 10⁻³ s⁻¹. It does not prove that the Wheeler–DeWitt, Diósi–Penrose, or Lindblad models describe nature, nor that our recast of the 2020 Eöt-Wash limits is correct. Whether gravity actually entangles 10⁻¹⁴ kg "
                             "diamonds remains PROPOSED until two cryostats measure it.",
-                            "Del mismo modo, IRUG_Unification.lean certifica que SI la naturaleza sigue los generadores "
-                            "declarados de Wheeler–DeWitt, Diósi–Penrose o Lindblad Y rigen los límites Eöt-Wash de 2020, "
-                            "ENTONCES η = 0, las fases locales no falsifican Δφ, el eco bilateral conserva Z_A Z_B y toda "
-                            "geometría híbrida cae fuera de 33 µm + 10⁻³ s⁻¹. Si la gravedad entrelaza diamantes de 10⁻¹⁴ kg "
+                            "Del mismo modo, IRUG_Unification.lean prueba identidades enteras y comprobaciones finitas de tabla: las expresiones de corrimiento declaradas dan η = 0, la fase cruzada no cambia ante corrimientos locales, los cambios de signo bilaterales conservan z_A z_B y las 7 filas de propuestas capturadas a mano se evalúan como se listan frente a 33 µm y 10⁻³ s⁻¹. No prueba que los modelos de Wheeler–DeWitt, Diósi–Penrose o Lindblad describan la naturaleza, ni que nuestra proyección de los límites Eöt-Wash de 2020 sea correcta. Si la gravedad entrelaza diamantes de 10⁻¹⁴ kg "
                             "sigue siendo PROPUESTO hasta medirlo en laboratorio.",
                         ),
                     ],
@@ -1350,12 +1335,12 @@ ESSAY: dict = {
             "label_es": "Nota al Margen 4 · Lean 4 Puro sin Importaciones Externas",
             "en": (
                 "By formulating SIDim and cross-multiplied redshift numerators over core Int rather than Mathlib's ℚ, "
-                "IRUG_Unification.lean compiles in a bare Lean 4 toolchain using only rfl, decide, omega, and "
+                "IRUG_Unification.lean compiles in a bare Lean 4 toolchain using only rfl, decide, omega, grind, and "
                 "Int.mul_add / Int.neg_mul_neg, mirrored 1:1 by Python's exact fractions.Fraction ring check."
             ),
             "es": (
                 "Al formular SIDim y los numeradores de corrimiento sobre Int puro en vez de ℚ de Mathlib, "
-                "IRUG_Unification.lean compila en Lean 4 base usando solo rfl, decide, omega e Int.mul_add / "
+                "IRUG_Unification.lean compila en Lean 4 base usando solo rfl, decide, omega, grind e Int.mul_add / "
                 "Int.neg_mul_neg, replicado 1:1 por el anillo exacto fractions.Fraction en Python."
             ),
         },

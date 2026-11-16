@@ -646,23 +646,20 @@ ESSAY: dict = {
     "kicker_es": "Ensayo Transescalar · ES.08 · Complementos de Schur de Fisher, Proyección de Molestia y Diseño Óptimo",
     "reading_time_en": "16 min read",
     "reading_time_es": "16 min de lectura",
-    "title_en": "Schur Complements & Nuisance Identifiability: Floating Calibrations, 3-Point Optimal Designs, and Why Sloppy Fits Still Pin Short-Range Gravity",
+    "title_en": "Schur Complements & Nuisance Identifiability: Floating Calibrations, 3-Point Optimal Designs, and Why Sloppy Fits Still Constrain a Smeared-Gravity Recast",
     "title_es": "Complementos de Schur e Identificabilidad ante Parámetros de Molestia: Calibraciones Flotantes, Diseños Óptimos de 3 Puntos y Gravedad a Corta Distancia",
     "standfirst_en": (
         "When an inverse-square torsion balance floats both its overall Newtonian torque scale γ and its zero-separation "
-        "micrometre offset s₀, why does fitting away 79.05% of the raw constant-torque-noise Fisher information fail to "
-        "wash out the σ_95 ≈ 33 µm bound on Diósi–Penrose smeared gravity? Projecting the 120-fold Fourier–Bessel wedge "
+        "micrometre offset s₀, why does fitting away 79.05% of the raw constant-torque-noise Fisher information fail to wash out the σ_95 ≈ 33 µm recast bound on Diósi–Penrose smeared gravity? Projecting the 120-fold Fourier–Bessel wedge "
         "deficit onto the exact Schur-complement subspace orthogonal to span{1, s_min ∂_s ln T_N(s)} sharpens the match "
-        "to λ = 18 µm Yukawa down to 1.14%, yields σ_95^⊥ = 32.87 µm to 32.98 µm, certifies a saturated 3-point "
-        "Kiefer–Wolfowitz optimal design on 25 µm to 3000 µm, and exposes the same linear-algebraic identifiability law "
+        "to λ = 18 µm Yukawa down to 1.14%, yields σ_95^⊥ = 32.87 µm to 32.98 µm, finds numerically a saturated 3-point Kiefer–Wolfowitz optimal design on 25 µm to 3000 µm, and exposes the same linear-algebraic identifiability law "
         "across bridge digital twins, colorimetry, and cooperative biomolecular rescue."
     ),
     "standfirst_es": (
         "Cuando una balanza de torsión deja flotar tanto la escala newtoniana global γ como el desplazamiento micrométrico "
-        "de separación s₀, ¿por qué absorber el 79.05% de la información cruda de Fisher bajo ruido constante de par no "
-        "diluye la cota σ_95 ≈ 33 µm sobre la gravedad difuminada de Diósi–Penrose? Proyectar el déficit de Fourier–Bessel "
+        "de separación s₀, ¿por qué absorber el 79.05% de la información cruda de Fisher bajo ruido constante de par no diluye la cota proyectada σ_95 ≈ 33 µm sobre la gravedad difuminada de Diósi–Penrose? Proyectar el déficit de Fourier–Bessel "
         "de 120 cuñas al subespacio del complemento de Schur ortogonal a span{1, s_min ∂_s ln T_N(s)} afina el ajuste con "
-        "Yukawa en λ = 18 µm al 1.14%, fija σ_95^⊥ = 32.87 µm a 32.98 µm, certifica un diseño óptimo saturado de 3 puntos "
+        "Yukawa en λ = 18 µm al 1.14%, fija σ_95^⊥ = 32.87 µm a 32.98 µm, encuentra numéricamente un diseño óptimo saturado de 3 puntos "
         "de Kiefer–Wolfowitz entre 25 µm y 3000 µm, y revela la misma ley algebraica en puentes, colorimetría y biofísica."
     ),
     "card_dek_en": (
@@ -933,7 +930,7 @@ ESSAY: dict = {
                         "the intermediate hinge s₂ = 101.01 µm locks the logarithmic Newtonian slope ∂_s ln T_N(s) to "
                         "calibrate the separation offset s₀; and the innermost station s₁ = 25.00 µm captures the steep "
                         "non-Newtonian curvature that neither γ nor s₀ can imitate. Pushing the minimum separation of a "
-                        "12-point constant-torque-noise wedge campaign below 52 µm produces explosive Schur Fisher gains "
+                        "12-point constant-torque-noise wedge campaign below 52 µm produces large calculated Schur Fisher gains "
                         "at σ = 33 µm: from I_schur(52 µm) = 2.34 × 10⁻³⁵ N² m² up to 1.26 × 10⁻³⁴ N² m² at s_min = 35 µm "
                         "(a 5.36× boost) and 3.09 × 10⁻³⁴ N² m² at s_min = 25 µm (a 13.20× boost, cutting parameter "
                         "uncertainty by √13.20 = 3.63× at identical torque sensitivity!)."
@@ -943,8 +940,7 @@ ESSAY: dict = {
                         "escala newtoniana pura γ donde el suavizado erf ya cayó a cero; la estación intermedia s₂ = 101.01 µm "
                         "amarra la pendiente logarítmica ∂_s ln T_N(s) para calibrar s₀; y la estación interna s₁ = 25.00 µm "
                         "captura la curvatura no newtoniana abrupta que ni γ ni s₀ logran imitar. Bajar la separación mínima "
-                        "de una campaña de 12 puntos por debajo de 52 µm bajo ruido constante de par dispara la información "
-                        "de Schur en σ = 33 µm: desde I_schur(52 µm) = 2.34 × 10⁻³⁵ N² m² hasta 1.26 × 10⁻³⁴ N² m² en "
+                        "de una campaña de 12 puntos por debajo de 52 µm bajo ruido constante de par aumenta mucho la información de Schur calculada en σ = 33 µm: desde I_schur(52 µm) = 2.34 × 10⁻³⁵ N² m² hasta 1.26 × 10⁻³⁴ N² m² en "
                         "s_min = 35 µm (ganancia de 5.36×) y 3.09 × 10⁻³⁴ N² m² en s_min = 25 µm (ganancia de 13.20×, "
                         "reduciendo el error por √13.20 = 3.63×)."
                     ),
@@ -1114,23 +1110,23 @@ ESSAY: dict = {
                 {
                     "type": "p",
                     "en": (
-                        "What exactly has our Schur-complement audit proved, and what remains strictly outside its scope? "
+                        "What exactly has our Schur-complement audit shown, and what remains strictly outside its scope? "
                         "Within the published-table recast framework (Tier DERIVED (NOT MEASURED) from Lee et al., 2020), "
                         "replacing raw template regression by exact W-orthogonal nuisance projection eliminates the main "
                         "internal approximation of T.05: across all 4 combinations of weighting (W = I and W = diag(T_N²)) "
                         "and projection (raw and P_⊥), the 95% smearing bound stays tightly clustered inside 32.85 µm ≤ "
                         "σ_95 ≤ 33.08 µm—a spread of just 0.23 µm, more than 11 µm below the retired 44.07 µm single-gap "
                         "edge match. Consequently, the infinite-split parallel Diósi–Penrose hybrid ceiling 2.2109 σ_95 "
-                        "stays between 72.63 µm and 73.14 µm, leaving Essay ES.07's D = 75.00 µm quantum corridor intact."
+                        "stays between 72.63 µm and 73.14 µm, which stays below Essay ES.07's D = 75.00 µm window on this surrogate grid; a refit with the unpublished covariance could move it (see the three boundaries below)."
                     ),
                     "es": (
-                        "¿Qué demuestra exactamente nuestra auditoría por complemento de Schur y qué permanece fuera de su "
+                        "¿Qué muestra exactamente nuestra auditoría por complemento de Schur y qué permanece fuera de su "
                         "alcance? Dentro del marco de proyección sobre tablas publicadas —estatuto DERIVADO (NO MEDIDO) a "
                         "partir de Lee et al. (2020)—, sustituir la regresión cruda por proyección W-ortogonal exacta elimina "
                         "la principal aproximación interna de T.05: en las 4 combinaciones de pesos (W = I y W = diag(T_N²)) "
                         "y proyección (cruda y P_⊥), la cota al 95% permanece agrupada en 32.85 µm ≤ σ_95 ≤ 33.08 µm, una "
                         "dispersión de solo 0.23 µm, más de 11 µm bajo el valor retirado de 44.07 µm. Así, el techo híbrido "
-                        "paralelo 2.2109 σ_95 queda entre 72.63 µm y 73.14 µm, preservando la isla en D = 75.00 µm de ES.07."
+                        "paralelo 2.2109 σ_95 queda entre 72.63 µm y 73.14 µm, que queda bajo la ventana en D = 75.00 µm de ES.07 en esta malla sustituta; un reajuste con la covarianza no publicada podría moverlo (véanse las tres fronteras abajo)."
                     ),
                 },
                 {
@@ -1189,8 +1185,8 @@ ESSAY: dict = {
         },
         {
             "id": "lean4-schur-spine",
-            "h2_en": "V · Ten Zero-Sorry Core Lean 4 Theorems & Multivariate Rational Polynomial Certificates",
-            "h2_es": "V · Diez Teoremas sin Sorry en Lean 4 Base y Certificados Polinómicos Racionales Multivariables",
+            "h2_en": "V · Ten Zero-Sorry Core Lean 4 Theorems & Multivariate Rational Polynomial Checks",
+            "h2_es": "V · Diez Teoremas sin Sorry en Lean 4 Base y Comprobaciones Polinómicas Racionales Multivariables",
             "short_en": "V · Lean 4 Proof Spine",
             "short_es": "V · Prueba en Lean 4",
             "blocks": [
@@ -1206,7 +1202,7 @@ ESSAY: dict = {
                         "constant-torque-noise Fisher weight [(F L)² / σ_T²] = 0, and Yukawa wavenumber [1 / λ] = L⁻¹. "
                         "Theorems 2, 3, and 4 prove integer square non-negativity (0 ≤ sq x), the 4-variable Cauchy–Schwarz–"
                         "Lagrange identity (a₁² + a₂²)(b₁² + b₂²) − (a₁b₁ + a₂b₂)² = (a₁b₂ − a₂b₁)² ≥ 0, and the Schur "
-                        "Fisher inequality i_tt i_nn − i_tn² ≤ i_tt i_nn confirming that nuisance profiling never inflates information."
+                        "Fisher inequality i_tt i_nn − i_tn² ≤ i_tt i_nn the algebraic statement that nuisance profiling does not increase Fisher information."
                     ),
                     "es": (
                         "Siguiendo la disciplina formal de Tooby-Smith (2025) y de los Ensayos ES.06 y ES.07, el archivo "
@@ -1228,10 +1224,8 @@ ESSAY: dict = {
                         "(r₁² + r₂²), both independently verified as identically zero 4-variable polynomials over ℚ in "
                         "verify_essay_schur_identifiability.py. Theorem 7 (kiefer_wolfowitz_trace_identity) proves that "
                         "whenever 3 support directional variances satisfy d_i ≤ p while summing to 3p, every support point "
-                        "saturates d_i = p (3 × 1 = 3 for p = 3); Theorem 8 certifies the sub-50 µm integer-scaled Fisher "
-                        "chain 23 < 125 < 309 (> 5× at 35 µm and > 13× at 25 µm); Theorem 9 proves ∀ s_centi ∈ [3280, 3310], "
-                        "2211 s_centi < 7500 × 1000 (preserving D = 75.00 µm); and Theorem 10 certifies the Chebyshev "
-                        "rank-deficiency bound n_pts < p_params → ¬(p_params ≤ n_pts)."
+                        "saturates d_i = p (3 × 1 = 3 for p = 3); Theorem 8 checks the integer ordering 23 < 125 < 309 of Fisher values entered from the Python kernel (> 5× at 35 µm and > 13× at 25 µm); Theorem 9 proves ∀ s_centi ∈ [3280, 3310], "
+                        "2211 s_centi < 7500 × 1000 (the arithmetic behind the D = 75.00 µm comparison); and Theorem 10 proves the counting statement n_pts < p_params → ¬(p_params ≤ n_pts)."
                     ),
                     "es": (
                         "Los Teoremas 5 y 6 demuestran la aniquilación universal de Gram–Schmidt r₁ v₁ + r₂ v₂ = 0 y la "
@@ -1239,9 +1233,9 @@ ESSAY: dict = {
                         "verificadas además como polinomios idénticamente nulos en 4 variables sobre ℚ dentro de "
                         "verify_essay_schur_identifiability.py. El Teorema 7 (kiefer_wolfowitz_trace_identity) prueba que "
                         "si 3 varianzas direccionales cumplen d_i ≤ p y suman 3p, cada soporte satura d_i = p (3 × 1 = 3 "
-                        "para p = 3); el Teorema 8 certifica bajo 50 µm la cadena entera de Fisher 23 < 125 < 309 (> 5× a "
+                        "para p = 3); el Teorema 8 comprueba el orden entero 23 < 125 < 309 de valores de Fisher tomados del kernel de Python (> 5× a "
                         "35 µm y > 13× a 25 µm); el Teorema 9 prueba ∀ s_centi ∈ [3280, 3310], 2211 s_centi < 7500 × 1000 "
-                        "(preservando D = 75.00 µm); y el Teorema 10 certifica la cota de rango n_pts < p_params → ¬(p_params ≤ n_pts)."
+                        "(la aritmética detrás de la comparación con D = 75.00 µm); y el Teorema 10 prueba el enunciado de conteo n_pts < p_params → ¬(p_params ≤ n_pts)."
                     ),
                 },
             ],
