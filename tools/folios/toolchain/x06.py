@@ -101,9 +101,9 @@ FOLIO = {'slug': 'x06',
               'computational topology met sub-wavelength wave physics. In 2002, Herbert '
               'Edelsbrunner, David Letscher, and Afra Zomorodian published their foundational '
               'framework for persistent homology (Discrete & Computational Geometry, DOI '
-              '10.1007/s00454-002-2885-2), proving that multi-scale topological features could be '
+              '10.1007/s00454-002-2885-2), showing that multi-scale topological features could be '
               'computed algebraically using boundary matrices over binary fields. Four years '
-              'later, Nicholas Fang and his collaborators demonstrated in Nature Materials that '
+              'later, Nicholas Fang and his collaborators showed in Nature Materials that '
               'sub-wavelength acoustic metamaterials could manipulate ultrasonic sound waves by '
               'chaining pierced resonant cavities into periodic lattice arrays. By tuning the '
               'acoustic impedance of narrow neck channels, they achieved effective negative bulk '
@@ -134,14 +134,14 @@ FOLIO = {'slug': 'x06',
                    'χ = 2 with genus g = 0. Piercing a through-hole converts the exterior into a '
                    'closed orientable two-manifold of genus g = 1, identically matching a '
                    'geometric torus. In our discretized mesh of sixteen vertices, forty-eight '
-                   'edges, and thirty-two triangular facets, the Euler–Poincaré formula confirms χ '
+                   'edges, and thirty-two triangular facets, the Euler–Poincaré formula yields χ '
                    '= V − E + F = 16 − 48 + 32 = 0 = 2 − 2g. The corresponding surface Betti '
                    'numbers evaluate to β₀ = 1 (a single connected component), β₁ = 2 (two '
                    'independent non-contractible one-cycles winding around the central channel and '
                    'through the toroidal body), and β₂ = 1 (a single closed two-dimensional '
                    'enclosing boundary). Analytically, the solid volume obeys exact divergence '
                    'void subtraction: V = (L_o² − L_i²) H = (80² − 24²) × 60 = 349,440 mm³, '
-                   'establishing a baseline acoustic porosity φ = 0.090 with zero volumetric '
+                   'providing a baseline acoustic porosity φ = 0.090 with zero volumetric '
                    'leakage.',
  'sliders': [{'id': 'tp-tool-s0',
               'label': 'Acoustic Channel Width L_i',
@@ -166,10 +166,10 @@ FOLIO = {'slug': 'x06',
            'Stage 2: Annular Terrace Stitching & Opposite-Winding Channel Walls — Orient outer '
            'walls away from the origin, inner channel walls toward the channel axis, and stitch '
            'top/bottom annular terraces into a 32-triangle closed 2-torus.',
-           'Stage 3: Euler–Poincaré & Betti-Number Certification — Verify 3F = 2E (96 = 96), χ = V '
+           'Stage 3: Euler–Poincaré & Betti-Number Audit — Verify 3F = 2E (96 = 96), χ = V '
            '− E + F = 16 − 48 + 32 = 0, genus g = (2 − χ)/2 = 1, and first Betti number β₁ = 2g = '
            '2.',
-           'Stage 4: Signed Void Subtraction & Multi-Format Export — Confirm V_mesh = (80² − 24²) '
+           'Stage 4: Signed Void Subtraction & Multi-Format Export — Check V_mesh = (80² − 24²) '
            '× 60 = 349,440.0 mm³ and φ = 0.0900 across x06_artifact.glb, x06_artifact.3mf, and '
            'x06_artifact.step, and run the planted-defect knockout.'],
  'rules': ['Toroidal Euler–Poincaré Invariant: For a single connected closed orientable 2-manifold '
@@ -202,7 +202,7 @@ FOLIO = {'slug': 'x06',
  't0_t1_certified': ['Deterministic generator (skills/toolchain/x06/make_x06.py) emitting genus-1 '
                      'toroidal unit-cell artifacts in .glb, .3mf, and .step formats.',
                      'Stdlib topological verifier '
-                     '(verify_x06_toolchain_x06_topological_metamaterial_cell.py) certifying χ = V '
+                     '(verify_x06_toolchain_x06_topological_metamaterial_cell.py) testing χ = V '
                      '− E + F = 0, genus g = 1, β₁ = 2, signed volume 349,440.0 mm³, and '
                      'planted-defect rejection.',
                      'Cross-pillar bridge connecting Engineering (E.03), Physics (P.10), and '
@@ -229,7 +229,7 @@ FOLIO = {'slug': 'x06',
                       'resonator capable of silencing harsh engine hums or guiding ultrasound '
                       'waves. This interactive studio allows independent physicists, acoustic '
                       'engineers, and educators to design sub-wavelength metamaterial unit cells '
-                      'with mathematically certified topological invariants. You can adjust the '
+                      'with algebraically audited topological invariants. You can adjust the '
                       'internal sound tunnel width and overall cell height in real time, '
                       'inspecting the inward-facing acoustic channel and verifying that the '
                       'structure contains exactly one continuous through-hole. When your geometry '
@@ -275,7 +275,7 @@ FOLIO = {'slug': 'x06',
                       'deliberately corrupts the underlying geometry. It flips the vertex winding '
                       'order of a single triangular facet along the top annular terrace, breaking '
                       'the closed half-edge boundary condition. The Euler–Poincaré characteristic '
-                      'and genus invariants instantly fail their audit, visually demonstrating how '
+                      'and genus invariants instantly fail their audit, visually showing how '
                       'the software detects and rejects defective mesh topology before production.',
  'act2_deepening': 'At the algorithmic level, verifying the metamaterial unit cell requires '
                    'evaluating both algebraic topology and physical acoustic boundary conditions. '
@@ -289,7 +289,7 @@ FOLIO = {'slug': 'x06',
                    'inward-facing surface governs the viscothermal dissipation layer modeled by '
                    'the Johnson–Champoux–Allard equations. Computing the discrete divergence '
                    'theorem by summing signed tetrahedra yields identical results to analytical '
-                   'void subtraction (L_o² − L_i²) H, proving that the mesh encloses a perfectly '
+                   'void subtraction (L_o² − L_i²) H, showing that the mesh encloses a '
                    'watertight domain. This dual algebraic and geometric verification ensures that '
                    'sub-wavelength acoustic simulations evaluate real physical resonances rather '
                    'than artificial numerical boundary reflections.',
@@ -308,7 +308,7 @@ FOLIO = {'slug': 'x06',
                   'deterministic topological verification, human researchers eliminate silent mesh '
                   'corruption, ensuring every fabricated metamaterial unit cell performs reliably '
                   'in physical acoustic wave experiments.',
- 'act4_deepening': 'The topological invariants verified in this unit cell establish an '
+ 'act4_deepening': 'The topological invariants verified in this unit cell provide an '
                    'intellectual conduit connecting abstract data science, continuum acoustics, '
                    'quantum electrodynamics, and porous materials engineering. In topological data '
                    'analysis (Folio M.10), computing persistent homology barcodes via simplicial '
@@ -319,7 +319,7 @@ FOLIO = {'slug': 'x06',
                    'attenuation bands that trap low-frequency mechanical rumblings without '
                    'blocking steady airflow. When applied to optical waveguides in Folio P.10, '
                    'analogous geometric topologies yield non-zero integer Chern numbers, '
-                   'establishing topologically protected chiral edge states that guide laser '
+                   'yielding topologically protected chiral edge states that guide laser '
                    'photons around sharp structural corners without backscattering. Even in civil '
                    'hydrology and filtration physics (Folio E.01), Darcy–Brinkman percolation '
                    'across disordered porous media depends directly on whether connected toroidal '
@@ -331,7 +331,7 @@ FOLIO = {'slug': 'x06',
              'transformamos una caja simple en un resonador toroidal capaz de disipar zumbidos '
              'molestos o enfocar señales de ultrasonido. Este laboratorio digital permite a '
              'físicos independientes, ingenieros acústicos y docentes diseñar celdas unitarias de '
-             'metamateriales con invariantes topológicos certificados por computadora. Desde su '
+             'metamateriales con invariantes topológicos auditados por computadora. Desde su '
              'navegador, ustedes pueden ajustar el ancho del canal acústico interior y la altura '
              'de la celda en tiempo real, verificando que la estructura conserve exactamente un '
              'túnel pasante sin fisuras. Una vez aprobada la geometría, pueden descargar '
@@ -347,7 +347,7 @@ FOLIO = {'slug': 'x06',
             'estrictamente la relación de Euler–Poincaré: χ = V − E + F = 16 − 48 + 32 = 0 = 2 − '
             '2g, con números de Betti β₀ = 1, β₁ = 2 y β₂ = 1. El volumen auditado obedece la '
             'sustracción V = (L_o² − L_i²) H = (80² − 24²) × 60 = 349,440 mm³, fijando una '
-            'porosidad acústica base de φ = 0.090 sin fugas. Esta rigurosa formulación garantiza '
+            'porosidad acústica base de φ = 0.090 sin fugas. Esta rigurosa formulación ayuda a '
             'que las simulaciones por elementos finitos evalúen modos resonantes viscotermales '
             'auténticos y no artefactos causados por mallas abiertas.',
  'distill_diagram': {'analogy_title': 'The Pierced Clay & Bottle Neck',
