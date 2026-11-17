@@ -433,7 +433,7 @@ ES_TRANSLATION = {'title_es': 'Reología de Extrusión e Imprimibilidad en Impre
              'convencional, levantar un muro exige armar moldes de madera o acero, vaciar el '
              'concreto húmedo, esperar varios días a que endurezca y retirar la cimbra, lo cual '
              'genera enormes costos y desperdicio de madera. La impresión robótica elimina la '
-             'cimbra por completo depositando cordones de mortero capa por capa. Sin embargo, esto '
+             'cimbra por completo depositando cordones de mortero capa por capa. No obstante, esto '
              'plantea un reto físico extraordinario: dentro de las mangueras de bombeo, el '
              'material debe fluir suavemente como pasta de dientes para no atascar la máquina; '
              'pero en cuanto sale por la boquilla, debe endurecerse rápidamente como plastilina '

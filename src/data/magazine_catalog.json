@@ -717,7 +717,7 @@
           {
             "edition": "REV 1.2",
             "date": "2026-11-14",
-            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. The readouts were recomputed from the stated formula with S_D1 = 0.60 S_DS and B_M = 1.54 (D_M = 276 mm, not 232 mm; C_s = 0.137, not 0.142), and the \"immediate occupancy pass\", certification and prototype-testing claims were withdrawn because no code check or test was done. The claims that isolation keeps facilities \"never offline\", the \"curative biomanufacturing\" wording and a \"sub-angstrom\" description of PDB 8EIQ (a 3.0 Å structure) were withdrawn, and the invented 1932 scene was replaced with plain dates.",
+            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. The readouts were recomputed from the stated formula with S_D1 = 0.60 S_DS and B_M = 1.54 (D_M = 276 mm, not 232 mm; C_s = 0.137, not 0.142), and the \"immediate occupancy pass\", compliance and prototype-testing claims were withdrawn because no code check or test was done. The claims that isolation keeps facilities \"never offline\", the \"curative biomanufacturing\" wording and a \"sub-angstrom\" description of PDB 8EIQ (a 3.0 Å structure) were withdrawn, and the invented 1932 scene was replaced with plain dates.",
             "opus": "Review: every DOI in the folio was checked in Crossref and the Scite index on 2026-11-14, and the repository names with the GitHub API. No response-history or finite-element analysis was run for this folio."
           },
           {

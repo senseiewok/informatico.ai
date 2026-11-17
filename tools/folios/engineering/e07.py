@@ -296,7 +296,7 @@ ES_TRANSLATION = {'title_es': 'Flameo Aeroelástico de Puentes Colgantes de Gran
  'plain_es': 'En palabras sencillas, un puente colgante de gran claro funciona como una inmensa '
              'ala extendida sobre el agua. Cuando el viento sopla a través del estrecho, el aire '
              'empuja la estructura y genera pequeñas oscilaciones que la rigidez del acero '
-             'normalmente disipa. Sin embargo, al alcanzar una velocidad crítica de viento, ocurre '
+             'normalmente disipa. Pero al alcanzar una velocidad crítica de viento, ocurre '
              'un fenómeno peligroso llamado flameo aeroelástico: el aire comienza a empujar en '
              'sincronía con la torsión del tablero, inyectando energía en cada ciclo hasta que el '
              'puente se retuerce de manera descontrolada, tal como ocurrió en el famoso colapso de '
