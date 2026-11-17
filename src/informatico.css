@@ -1,4 +1,4 @@
-@layer page {
+@layer page { html { overflow-x: hidden; }
   :root,
   html[data-plate-theme="paper"],
   html[data-theme="paper"] {
@@ -6161,7 +6161,7 @@
     height: auto;
     padding: 1.1rem 1.25rem 1.5rem;
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: auto;
     overflow-wrap: anywhere;
     border: 0;
     border-left: 2px solid var(--tp-ink);
@@ -7193,3 +7193,15 @@
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
