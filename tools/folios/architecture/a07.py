@@ -203,9 +203,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'and your skin instantly lights up with a warm golden glow. The flower petals do '
                  'not generate light on their own; instead, sunlight dives into the translucent '
                  'cellular layers of the petal, picks up its intense yellow hue, and bounces onto '
-                 'your jaw. Luis Barragán scaled that exact childhood playground phenomenon up to '
-                 'the size of a building, turning textured masonry walls and quiet pools into '
-                 'giant glowing petals that illuminate each other.',
+                 'your jaw. Luis Barragán scaled that childhood playground phenomenon to architectural '
+                 'scale, turning textured masonry walls and quiet pools into giant glowing petals '
+                 'that illuminate each other.',
  'act2_plain_primer': 'To bring this playground buttercup effect into architecture, you only need '
                       'to adjust two physical knobs. The first knob controls the angle of the sun '
                       'in the sky as the day progresses from morning to noon. When the sun is low '
@@ -295,7 +295,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'and a thread across pillars on color as an electromagnetic wave: Architecture '
               '(Luis Barragán and Josef Albers), Physics (Folio P.08 on thin-film interference in '
               "car finishes, in contrast to Barragán's matte lime) and Mathematics (Folio M.08 on "
-              'color geometry). It makes no health claim.',
+              'color geometry, David MacAdam\'s daylight ellipses, and Scite citation context, '
+              'DOI 10.1364/JOSA.32.000247 and DOI 10.1162/qss_a_00146). It makes no health claim.',
  'sources': ['Barragán, L. (1980). Pritzker Architecture Prize acceptance speech. The Pritzker '
              'Architecture Prize.',
              'Kubelka, P. (1948). New contributions to the optics of intensely light-scattering '
@@ -303,7 +304,12 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              '10.1364/JOSA.38.000448.',
              'Albers, J. (1963). Interaction of Color. Yale University Press, New Haven.',
              'Zanco, F. (Ed.). (2001). Luis Barragán: The Quiet Revolution. Barragan Foundation / '
-             'Vitra Design Museum.'],
+             'Vitra Design Museum.',
+             'MacAdam, D. L. (1942). Visual sensitivities to color differences in daylight. '
+             'Journal of the Optical Society of America, 32(5), 247–274. DOI: 10.1364/JOSA.32.000247.',
+             'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
+             'context of citations and classifies their intent using deep learning (https://scite.ai). '
+             'Quantitative Science Studies, 2(3), 882–898. DOI: 10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Luis Barragan Casa '
         'Gilardi chromatic radiosity section showing golden corridor light, Rosa Mexicano wall, '
         'and cobalt pool">\n'
@@ -375,8 +381,10 @@ ES_TRANSLATION = {'title_es': 'Tectónica Cromática de Luis Barragán, Radiosid
            'porque la luz rebota entre los pétalos; Barragán escaló ese fenómeno a muros de cal y '
            'espejos de agua que tiñen la luz del espacio.',
  'bridge_es': 'Esta ficha no tiene puente con la Fibrosis Quística: es una ficha de arquitectura '
-              'que conecta con otras sobre el color como onda electromagnética, y no hace '
-              'afirmaciones de salud.',
+              'que conecta con otras sobre el color como onda electromagnética (física P.08 sobre '
+              'interferencia en acabados automotrices y matemáticas M.08 sobre geometría del color, '
+              'elipses de MacAdam y Scite, DOI 10.1364/JOSA.32.000247 y DOI 10.1162/qss_a_00146), '
+              'y no hace afirmaciones de salud.',
  'plain_es': 'En palabras sencillas, imaginen lo que sucede cuando la luz del sol entra a una '
              'habitación pintada. La pintura brillante moderna puede reflejar un destello '
              'que cansa la vista. Luis Barragán buscó lo contrario: muros mate de color '
