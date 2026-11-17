@@ -40,4 +40,4 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 
 ### Open Global Prize Horizon (T2/T3)
 - Erdős Problem #30 ($1,000 open prize on erdosproblems.com/30): Determine whether |A ∩ [1, N]| = √N + O(N^ε) for every ε > 0 (or tighten the 1941 N^(1/4) exponent via a public mathematical paper checked in Lean 4).
-- Historical context & successor route (AIMO closed 2026-09-16): XTX Markets concluded the AIMO Prize in September 2026 and reallocated funding toward Lean FRO, Mathlib, and SAIR research competitions covered individually in Folios M.13–M.15 (https://competition.sair.foundation/).
+- Historical context & successor route (AIMO closed 2026-09-16): XTX Markets concluded the AIMO Prize in September 2026 and reallocated funding toward Lean FRO, Mathlib, and SAIR research competitions.

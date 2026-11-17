@@ -42,8 +42,7 @@ class QuietHandler(http.server.SimpleHTTPRequestHandler):
 
 
 def pages() -> list[str]:
-    counts = {"math": 15}
-    return [f"/{pillar}/{code}{i:02d}/" for pillar, code in PILLARS for i in range(1, counts.get(pillar, 12) + 1)]
+    return [f"/{pillar}/{code}{i:02d}/" for pillar, code in PILLARS for i in range(1, 13)]
 
 
 def main() -> int:

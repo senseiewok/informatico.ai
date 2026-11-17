@@ -42,8 +42,7 @@ FOLIO = {'slug': 'b01',
  'date_redated': '2026-11-15',
  'current_edition': 'REV 1.3',
  'reading_time': '15 MIN READ',
- 'companion_folios': [('math', 'm13', 'Folio M.13', 'SAIR Lean Kernel Challenge & Trusted Computing Base'),
-                      ('math', 'm11', 'Folio M.11', '3D Kakeya & Guth–Maynard 30/13 Riemann Bound'),
+ 'companion_folios': [('math', 'm11', 'Folio M.11', '3D Kakeya & Guth–Maynard 30/13 Riemann Bound'),
                       ('math',
                        'm12',
                        'Folio M.12',
@@ -55,8 +54,6 @@ FOLIO = {'slug': 'b01',
  'external_links': [('Erdős Problems Registry (#30 / #155 — Open)', 'https://www.erdosproblems.com/30'),
                     ('XTX Markets Philanthropy Update (2026-09-16, AIMO Closed)',
                      'https://aimoprize.com/updates/2026-09-16-update-on-xtx-markets-ai-philanthropy'),
-                    ('SAIR Foundation Math Competitions (M.13–M.15)',
-                     'https://competition.sair.foundation/'),
                     ('anthropics/formal-math (Lean 4)',
                      'https://github.com/anthropics/formal-math')],
  'act1_dropcap': 'In 1932, the Hungarian mathematician Simon Sidon asked Paul Erdős a question '
@@ -97,7 +94,7 @@ FOLIO = {'slug': 'b01',
                  'Thomas Bloom launches erdosproblems.com (Problem #30 remains open); XTX Markets '
                  'closes the AIMO Prize on 2026-09-16 (~$1.62M awarded across AIMO 1–3 and Proof '
                  'Pilot) and shifts funding to Lean FRO ($10M to 2030), the Mathlib Initiative '
-                 '($10M to 2030), and SAIR research challenges (Folios M.13–M.15).')],
+                 '($10M to 2030), and SAIR research challenges.')],
  'act2_intuition': 'Why can a Sidon subset of {1, ..., N} never exceed roughly √N elements? '
                    'Because k elements generate k(k-1)/2 positive pairwise differences a_j - a_i, '
                    'and all of those differences must fit inside {1, ..., N-1} without a single '
@@ -171,8 +168,7 @@ FOLIO = {'slug': 'b01',
                         'exponent via a public mathematical paper checked in Lean 4).',
                         'Historical context & successor route (AIMO closed 2026-09-16): XTX Markets '
                         'concluded the AIMO Prize in September 2026 and reallocated funding toward '
-                        'Lean FRO, Mathlib, and SAIR research competitions covered individually in '
-                        'Folios M.13–M.15 (https://competition.sair.foundation/).'],
+                        'Lean FRO, Mathlib, and SAIR research competitions.'],
  'sources': ['Erdős, P., & Turán, P. (1941). On a problem of Sidon in additive number theory, and '
              'on some related problems. Journal of the London Mathematical Society, s1-16(4), '
              '212–215. DOI 10.1112/jlms/s1-16.4.212',
@@ -224,7 +220,7 @@ FOLIO = {'slug': 'b01',
                 'combinatorial arguments can be checked in Lean 4; neither targets Sidon sets specifically. '
                 'The AI Mathematical Olympiad (AIMO) Prize itself closed on 16 September 2026 (with ~$1.62M '
                 'awarded across AIMO 1–3 and the Proof Pilot) as XTX Markets reallocated funding to Lean FRO, '
-                'Mathlib, and SAIR\'s three research challenges (Folios M.13–M.15). Translating delicate '
+                'Mathlib, and SAIR\'s three research challenges. Translating delicate '
                 'combinatorial arguments into machine-checked Lean 4 blueprints ensures every step '
                 'passes the formal kernel before relying on downstream bounds for radar and antenna networks.',
  'act2_analogy': 'Everyday analogy: Imagine an antique hardware shop with a wall of numbered '
@@ -543,8 +539,8 @@ FOLIO = {'slug': 'b01',
                    'en Lean 4, aunque ninguno trata específicamente de conjuntos de Sidon. El '
                    'propio AI Mathematical Olympiad (AIMO) Prize cerró el 16 de septiembre de 2026 '
                    '(con ~$1.62M otorgados en AIMO 1–3 y el Proof Pilot) al reorientar XTX Markets '
-                   'su filantropía hacia Lean FRO, Mathlib y los tres retos de investigación de SAIR '
-                   '(Folios M.13–M.15). Traducir estos delicados argumentos combinatorios a planos '
+                   'su filantropía hacia Lean FRO, Mathlib y los tres retos de investigación de SAIR. '
+                   'Traducir estos delicados argumentos combinatorios a planos '
                    'verificados en Lean 4 asegura que ningún caso extremo comprometa los algoritmos '
                    'de radar y arreglos de espacio profundo.',
  'pullquote_es': 'Un conjunto de Sidon es un cristal matemático donde cada par de átomos proyecta '
@@ -711,5 +707,4 @@ FOLIO = {'slug': 'b01',
                            'el exponente N^(1/4) de 1941 en un artículo público verificado en Lean 4).',
                            'Contexto histórico y ruta sucesora (AIMO cerró 2026-09-16): XTX Markets '
                            'concluyó el premio AIMO en septiembre de 2026 y reorientó los fondos '
-                           'hacia Lean FRO, Mathlib y las competencias SAIR cubiertas en los '
-                           'Folios M.13–M.15 (https://competition.sair.foundation/).']}
+                           'hacia Lean FRO, Mathlib y las competencias SAIR.']}

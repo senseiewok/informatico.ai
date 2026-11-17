@@ -239,16 +239,6 @@ VOLUMES_SPEC = [
         "cadence": "Hourly Zero-Token Sentinel Gate + 12h Deep-Craft Atelier Heartbeat (:05 Math, :15 Arch, :20 Civil Eng, :40 Phys)",
         "folios": ["e11", "e12", "a11", "a12", "p11", "p12", "m11", "m12"],
     },
-    {
-        "volume": 7,
-        "code": "VOL. 07",
-        "roman": "Volume VII",
-        "kicker": "VOLUME VII (VOL. 07) · SAIR RESEARCH MATHEMATICS CHALLENGES (XTX 2026-09-16 REALIGNMENT): LEAN KERNEL, ANDREWS–CURTIS & INVERSE GALOIS · 3 FOLIOS",
-        "title": "The SAIR Lean Kernel Challenge, the Andrews–Curtis Conjecture & the Inverse Galois Problem (IGP24)",
-        "subtitle": "Three Volume VII mathematics monographs (M.13–M.15) following XTX Markets’ 16 September 2026 reallocation from AIMO toward foundational Lean infrastructure and SAIR Foundation research benchmarks: formal type-checking kernels and binary reflection reduction (M.13), Akbulut–Kirby balanced presentations under Andrews–Curtis moves (M.14), and Dedekind Frobenius cycle-type realizations over ℚ (M.15).",
-        "cadence": "Living Monograph Release · SAIR Research Mathematics Track",
-        "folios": ["m13", "m14", "m15"],
-    },
 ]
 
 
@@ -269,8 +259,8 @@ def get_volume_spec(vol_num: int) -> dict:
 def update_catalogs() -> dict:
     cat_path = ROOT / "src" / "data" / "magazine_catalog.json"
     catalog = json.loads(cat_path.read_text(encoding="utf-8"))
-    catalog["version"] = "7.0.0"
-    catalog["title"] = "Informatico.ai — 7-Volume, 51-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog"
+    catalog["version"] = "6.0.0"
+    catalog["title"] = "Informatico.ai — 6-Volume, 48-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog"
     catalog["total_volumes"] = len(VOLUMES_SPEC)
     catalog["volumes"] = VOLUMES_SPEC
 
@@ -285,6 +275,10 @@ def update_catalogs() -> dict:
                 for idx, ex in enumerate(catalog["pillars"][pillar]):
                     if ex["slug"] == item["slug"]:
                         catalog["pillars"][pillar][idx] = item
+        # Drop catalog entries whose builder module was withdrawn (M.13-M.15 on 2026-11-17), so a removed
+        # folio cannot linger in the catalog JSON that this function reads back on the next build.
+        registered = {item["slug"] for item in new_items}
+        catalog["pillars"][pillar] = [f for f in catalog["pillars"][pillar] if f["slug"] in registered]
 
     # Enforce 4-Pillar Order: I. Engineering & Construction, II. Architecture, III. Physics, IV. Mathematics
     ordered_pillars = {}
@@ -2568,7 +2562,7 @@ def render_bounty_crucible_section(rel_res: str = ".") -> str:
       <div class="tp-bounty-header">
         <p class="tp-kicker" data-en="Special Feature · 6 Grand-Challenge &amp; Open-Problem Folios (B.01–B.06)" data-es="Especial · 6 Folios de Grandes Retos y Problemas Abiertos (B.01–B.06)">Special Feature · 6 Grand-Challenge &amp; Open-Problem Folios (B.01–B.06)</p>
         <h2 id="bounty-crucible-heading" class="tp-h2"><a href="{bounties_hub_href}" data-en="Grand Challenges &amp; Open Problems Crucible: Six Problem Folios, Interactive Context &amp; Reproducible Harnesses" data-es="El Crisol de Grandes Retos y Problemas Abiertos: Seis Folios Dedicados con Historia, Prueba Interactiva y Código Reproducible">Grand Challenges &amp; Open Problems Crucible: Six Problem Folios, Interactive Context &amp; Reproducible Harnesses</a></h2>
-        <p class="tp-standfirst" data-en="Audited on 2026-11-15 against live competition notices (bounty_crucible_council_ledger.json): six dedicated Folios (B.01–B.06 at /bounties/b01/ through /bounties/b06/) track which avenues remain active (Erdős Problem #30, Unitary Foundation rolling microgrants and Metriq, PhysLean PRs, and successor SAIR math challenges covered in M.13–M.15) alongside concluded milestones (AIMO closed Sept 2026, XPRIZE Carbon 2025, Holcim 2025, Global Cooling 2021), each paired with a live counterfactual workbench and zero-dependency Python verifier." data-es="Auditado el 2026-11-15 frente a convocatorias vigentes (bounty_crucible_council_ledger.json): seis Folios (B.01–B.06 en /bounties/b01/ a /bounties/b06/) distinguen vías activas (Erdős #30, microbecas Unitary y Metriq, PRs en PhysLean y retos sucesores SAIR en M.13–M.15) de certámenes concluidos (AIMO en sept. 2026, XPRIZE Carbon 2025, Holcim 2025, Cooling Prize 2021), con laboratorio contrafactual y script en Python.">Audited on 2026-11-15 against live competition notices (bounty_crucible_council_ledger.json): six dedicated Folios (B.01–B.06 at /bounties/b01/ through /bounties/b06/) track which avenues remain active (Erdős Problem #30, Unitary Foundation rolling microgrants and Metriq, PhysLean PRs, and successor SAIR math challenges covered in M.13–M.15) alongside concluded milestones (AIMO closed Sept 2026, XPRIZE Carbon 2025, Holcim 2025, Global Cooling 2021), each paired with a live counterfactual workbench and zero-dependency Python verifier.</p>
+        <p class="tp-standfirst" data-en="Audited on 2026-11-15 against live competition notices (bounty_crucible_council_ledger.json): six dedicated Folios (B.01–B.06 at /bounties/b01/ through /bounties/b06/) track which avenues remain active (Erdős Problem #30, Unitary Foundation rolling microgrants and Metriq, and PhysLean PRs) alongside concluded milestones (AIMO closed Sept 2026, XPRIZE Carbon 2025, Holcim 2025, Global Cooling 2021), each paired with a live counterfactual workbench and zero-dependency Python verifier." data-es="Auditado el 2026-11-15 frente a convocatorias vigentes (bounty_crucible_council_ledger.json): seis Folios (B.01–B.06 en /bounties/b01/ a /bounties/b06/) distinguen vías activas (Erdős #30, microbecas Unitary y Metriq, y PRs en PhysLean) de certámenes concluidos (AIMO en sept. 2026, XPRIZE Carbon 2025, Holcim 2025, Cooling Prize 2021), con laboratorio contrafactual y script en Python.">Audited on 2026-11-15 against live competition notices (bounty_crucible_council_ledger.json): six dedicated Folios (B.01–B.06 at /bounties/b01/ through /bounties/b06/) track which avenues remain active (Erdős Problem #30, Unitary Foundation rolling microgrants and Metriq, and PhysLean PRs) alongside concluded milestones (AIMO closed Sept 2026, XPRIZE Carbon 2025, Holcim 2025, Global Cooling 2021), each paired with a live counterfactual workbench and zero-dependency Python verifier.</p>
       </div>
 
       {bounty_boundary_html()}
@@ -2629,7 +2623,7 @@ def render_bounty_crucible_section(rel_res: str = ".") -> str:
 {cards_joined}
       </div>
       <div class="tp-bounty-grounding-note" role="note" aria-label="Grounding and GitHub Cryptographic Publishing Proof">
-        <p><span data-en="Grounding &amp; GitHub Cryptographic Publishing Proof (T0–T3 Truth Boundary): Every Informatico.ai Folio and Grand-Challenge Monograph is verified against primary Crossref DOIs (51/51 Pillar Folios passing tools/check_folio_citations.py --offline with zero errors) and ships with a portable SKILL.md; Volume VII Math (M.13–M.15), the Toolbox, Time and Gravity and cross-scale essay skills also ship a verifier that must fail under a planted defect. Our public GitHub repository acts as a timestamped cryptographic prior-art and reproducibility ledger: every commit SHA records the exact deterministic execution of bounties/run_all_bounties.py (6/6 PASS) and skills/verify_all_48_folios.py (every verifier passes, and fails under its planted defect)." data-es="Rigor y Prueba Criptográfica de Publicación en GitHub (Frontera de Verdad T0–T3): Cada Folio y Monografía de Gran Reto de Informatico.ai está verificado contra DOIs primarios en Crossref (51/51 Folios de Pilar aprobados con cero errores) e incluye un SKILL.md portátil; Matemáticas Vol. VII (M.13–M.15), la Caja de Herramientas, Tiempo y Gravedad y los ensayos entre escalas incluyen además un verificador que debe fallar ante un defecto plantado. Nuestro repositorio público en GitHub funciona como registro criptográfico de publicación y reproducibilidad: cada commit SHA registra la ejecución determinista de bounties/run_all_bounties.py (6/6 PASS) y skills/verify_all_48_folios.py.">Grounding &amp; GitHub Cryptographic Publishing Proof (T0–T3 Truth Boundary): Every Informatico.ai Folio and Grand-Challenge Monograph is verified against primary Crossref DOIs (51/51 Pillar Folios passing tools/check_folio_citations.py --offline with zero errors) and ships with a portable SKILL.md; Volume VII Math (M.13–M.15), the Toolbox, Time and Gravity and cross-scale essay skills also ship a verifier that must fail under a planted defect. Our public GitHub repository acts as a timestamped cryptographic prior-art and reproducibility ledger: every commit SHA records the exact deterministic execution of bounties/run_all_bounties.py (6/6 PASS) and skills/verify_all_48_folios.py (every verifier passes, and fails under its planted defect).</span></p>
+        <p><span data-en="Grounding &amp; GitHub Cryptographic Publishing Proof (T0–T3 Truth Boundary): Every Informatico.ai Folio and Grand-Challenge Monograph is verified against primary Crossref DOIs (48/48 Pillar Folios passing tools/check_folio_citations.py --offline with zero errors) and ships with a portable SKILL.md; the Toolbox, Time and Gravity and cross-scale essay skills also ship a verifier that must fail under a planted defect. Our public GitHub repository acts as a timestamped cryptographic prior-art and reproducibility ledger: every commit SHA records the exact deterministic execution of bounties/run_all_bounties.py (6/6 PASS) and skills/verify_all_48_folios.py (every verifier passes, and fails under its planted defect)." data-es="Rigor y Prueba Criptográfica de Publicación en GitHub (Frontera de Verdad T0–T3): Cada Folio y Monografía de Gran Reto de Informatico.ai está verificado contra DOIs primarios en Crossref (48/48 Folios de Pilar aprobados con cero errores) e incluye un SKILL.md portátil; la Caja de Herramientas, Tiempo y Gravedad y los ensayos entre escalas incluyen además un verificador que debe fallar ante un defecto plantado. Nuestro repositorio público en GitHub funciona como registro criptográfico de publicación y reproducibilidad: cada commit SHA registra la ejecución determinista de bounties/run_all_bounties.py (6/6 PASS) y skills/verify_all_48_folios.py.">Grounding &amp; GitHub Cryptographic Publishing Proof (T0–T3 Truth Boundary): Every Informatico.ai Folio and Grand-Challenge Monograph is verified against primary Crossref DOIs (48/48 Pillar Folios passing tools/check_folio_citations.py --offline with zero errors) and ships with a portable SKILL.md; the Toolbox, Time and Gravity and cross-scale essay skills also ship a verifier that must fail under a planted defect. Our public GitHub repository acts as a timestamped cryptographic prior-art and reproducibility ledger: every commit SHA records the exact deterministic execution of bounties/run_all_bounties.py (6/6 PASS) and skills/verify_all_48_folios.py (every verifier passes, and fails under its planted defect).</span></p>
         <p class="tp-bounty-grounding-links">
           <a class="tp-cite-link" href="{bounties_hub_href}" data-en="Open Bounties Hub (/bounties/) &rarr;" data-es="Abrir Centro de Retos (/es-mx/bounties/) &rarr;">Open Bounties Hub (/bounties/) &rarr;</a> ·
           <a class="tp-cite-link" href="https://github.com/senseiewok/informatico.ai" target="_blank" rel="noopener noreferrer">github.com/senseiewok/informatico.ai &rarr;</a> ·
@@ -2791,7 +2785,7 @@ def render_oss_physics_radar_section(rel_res: str = ".") -> str:
 
       <div class="tp-oss-grounding-strip" role="region" aria-label="Epistemic and Scite Citation Grounding Telemetry">
         <span class="tp-oss-grounding-pill" data-en="✓ 15 / 15 Engines Primary-DOI &amp; Scite Grounded" data-es="✓ 15 / 15 Motores con DOI Primario y Scite">✓ 15 / 15 Engines Primary-DOI &amp; Scite Grounded</span>
-        <span class="tp-oss-grounding-pill" data-en="✓ 51 / 51 Pillar Folios Scite &amp; Crossref Verified (0 Retractions)" data-es="✓ 51 / 51 Folios de Pilar Verificados en Scite y Crossref (0 Retractaciones)">✓ 51 / 51 Pillar Folios Scite &amp; Crossref Verified (0 Retractions)</span>
+        <span class="tp-oss-grounding-pill" data-en="✓ 48 / 48 Pillar Folios Scite &amp; Crossref Verified (0 Retractions)" data-es="✓ 48 / 48 Folios de Pilar Verificados en Scite y Crossref (0 Retractaciones)">✓ 48 / 48 Pillar Folios Scite &amp; Crossref Verified (0 Retractions)</span>
         <span class="tp-oss-grounding-pill" data-en="✓ Deterministic Gate: check_folio_citations.py + scite-batch" data-es="✓ Compuerta Determinista: check_folio_citations.py + scite-batch">✓ Deterministic Gate: check_folio_citations.py + scite-batch</span>
       </div>
 
@@ -3019,7 +3013,7 @@ def render_oss_physics_radar_section(rel_res: str = ".") -> str:
           </div>
           <h3 class="tp-bounty-title" data-en="Scite Smart Citations &amp; Section-Polarity Engine: Supporting vs. Contrasting Evidence" data-es="Scite Smart Citations y Motor de Polaridad por Sección: Evidencia de Apoyo vs. Contraste">Scite Smart Citations &amp; Section-Polarity Engine: Supporting vs. Contrasting Evidence</h3>
           <code class="tp-oss-eq">P_scite = (N_supp − w_c·N_cont) / (N_supp + N_ment + N_cont + 1),  R_retract = 0</code>
-          <p class="tp-bounty-body" data-en="Classifies in-text citation statements across Introduction, Methods, Results, and Discussion into supporting, mentioning, or contrasting evidence while screening all 51 Pillar Folios and 15 Radar engines for retractions." data-es="Clasifica las citas dentro del texto en evidencia de apoyo, mención o contraste por sección (Introducción, Métodos, Resultados, Discusión) y audita los 51 Folios de Pilar y 15 motores contra retractaciones.">Classifies in-text citation statements across Introduction, Methods, Results, and Discussion into supporting, mentioning, or contrasting evidence while screening all 51 Pillar Folios and 15 Radar engines for retractions.</p>
+          <p class="tp-bounty-body" data-en="Classifies in-text citation statements across Introduction, Methods, Results, and Discussion into supporting, mentioning, or contrasting evidence while screening all 48 Pillar Folios and 15 Radar engines for retractions." data-es="Clasifica las citas dentro del texto en evidencia de apoyo, mención o contraste por sección (Introducción, Métodos, Resultados, Discusión) y audita los 48 Folios de Pilar y 15 motores contra retractaciones.">Classifies in-text citation statements across Introduction, Methods, Results, and Discussion into supporting, mentioning, or contrasting evidence while screening all 48 Pillar Folios and 15 Radar engines for retractions.</p>
           {_radar_scite_meta("10.1162/qss_a_00146")}
           <p class="tp-bounty-links">
             <a class="tp-cite-link" href="https://scite.ai" target="_blank" rel="noopener noreferrer">scite.ai</a> ·
@@ -3134,14 +3128,12 @@ def render_bounties_hub(catalog: dict, lang: str = "en") -> str:
     hook_en = (
         "Six dedicated problem monographs (B.01–B.06) audited on 2026-11-15: open Erdős Problem #30 ($1,000), the closed XPRIZE Quantum Applications "
         "(12 finalists) beside rolling Unitary Foundation microgrants (<= $4,000) and Metriq.info, closed XPRIZE Carbon Removal (Apr 2025) & IStructE built works, "
-        "closed Holcim 8th cycle (2025) & Global Cooling Prize (2021), open-source PySR/PySINDy PDE discovery, and PhysLean gauge PRs. "
-        "Following XTX Markets’ Sept 2026 close of AIMO, successor SAIR math challenges live in Folios M.13–M.15."
+        "closed Holcim 8th cycle (2025) & Global Cooling Prize (2021), open-source PySR/PySINDy PDE discovery, and PhysLean gauge PRs."
     )
     hook_es = (
         "Seis monografías dedicadas (B.01–B.06) auditadas el 2026-11-15: el reto abierto Erdős #30 ($1,000), XPRIZE Quantum cerrado a nuevos equipos (12 finalistas) "
         "junto a microbecas continuas Unitary (<= $4,000) y Metriq.info, XPRIZE Carbon (concluido abr. 2025) e IStructE (obras construidas), "
-        "Holcim 8.ª edición (cerrado 2025) y Global Cooling Prize (2021), PySR/PySINDy y PhysLean. Tras el cierre de AIMO por XTX Markets en sept. 2026, "
-        "los retos matemáticos SAIR sucesores se cubren en los Folios M.13–M.15."
+        "Holcim 8.ª edición (cerrado 2025) y Global Cooling Prize (2021), PySR/PySINDy y PhysLean."
     )
     crumbs = [(BRAND, page_url("", lang)), (title_es if es else title_en, canon)]
     image = "https://informatico.ai/plates/b01.jpg"
@@ -4084,7 +4076,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
         <section class="tp-transfer-chapter" id="ch-iv-3-{esc(slug)}" aria-labelledby="ch-iv-3-heading-{esc(slug)}">
           <h3 id="ch-iv-3-heading-{esc(slug)}" data-en="&sect; IV.2 &middot; Companion Folios, Official Prize Registries &amp; Cross-Disciplinary Transfer" data-es="&sect; IV.2 &middot; Folios Compañeros, Registros Oficiales del Premio y Transferencia Interdisciplinaria">&sect; IV.2 &middot; Companion Folios, Official Prize Registries &amp; Cross-Disciplinary Transfer</h3>
           <p>
-            Bounty <strong>{esc(fid)}</strong> (<code>{esc(bid)}</code>) is deeply coupled to our 51-Folio pillar archive and to open-source scientific registries. Explore the companion long-form Folios and external references below:
+            Bounty <strong>{esc(fid)}</strong> (<code>{esc(bid)}</code>) is deeply coupled to our 48-Folio pillar archive and to open-source scientific registries. Explore the companion long-form Folios and external references below:
           </p>
           <div class="tp-bounty-pills">
             {comp_pills_html}
@@ -5560,7 +5552,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
       <div class="tp-cover-copy">
         <p class="tp-kicker" data-en="Engineering · Architecture · Physics · Mathematics · Open Bounties" data-es="Ingeniería · Arquitectura · Física · Matemáticas · Retos Abiertos">Engineering · Architecture · Physics · Mathematics · Open Bounties</p>
         <h1 id="cover-heading" class="tp-h1" data-en="How the built world works, explained and made explorable." data-es="Cómo funciona el mundo construido, explicado y explorable.">How the built world works, explained and made explorable.</h1>
-        <p class="tp-standfirst" data-en="{total} long-form essays and 6 Grand-Challenge &amp; Open-Problem monographs. Each one tells the human story, builds the everyday intuition, and hands you a live model and a plain-text AI SKILL.md to push, pull and test. {_verifier_count()} verifiers across Mathematics, the Toolbox, Time and Gravity and the cross-scale essays can be run from a clone and must fail under a planted defect." data-es="{total} ensayos de largo aliento y 6 monografías de grandes retos y problemas abiertos. Cada uno cuenta la historia humana, construye la intuición cotidiana y te entrega un modelo vivo y un SKILL.md en texto plano para probar. {_verifier_count()} verificadores de Matemáticas, la Caja de Herramientas, Tiempo y Gravedad y los ensayos entre escalas se ejecutan desde un clon y deben fallar ante un defecto plantado.">{total} long-form essays and 6 Grand-Challenge &amp; Open-Problem monographs. Each one tells the human story, builds the everyday intuition, and hands you a live model and a plain-text AI SKILL.md to push, pull and test. {_verifier_count()} verifiers across Mathematics, the Toolbox, Time and Gravity and the cross-scale essays can be run from a clone and must fail under a planted defect.</p>
+        <p class="tp-standfirst" data-en="{total} long-form essays and 6 Grand-Challenge &amp; Open-Problem monographs. Each one tells the human story, builds the everyday intuition, and hands you a live model and a plain-text AI SKILL.md to push, pull and test. {_verifier_count()} verifiers across the Toolbox, Time and Gravity and the cross-scale essays can be run from a clone and must fail under a planted defect." data-es="{total} ensayos de largo aliento y 6 monografías de grandes retos y problemas abiertos. Cada uno cuenta la historia humana, construye la intuición cotidiana y te entrega un modelo vivo y un SKILL.md en texto plano para probar. {_verifier_count()} verificadores de la Caja de Herramientas, Tiempo y Gravedad y los ensayos entre escalas se ejecutan desde un clon y deben fallar ante un defecto plantado.">{total} long-form essays and 6 Grand-Challenge &amp; Open-Problem monographs. Each one tells the human story, builds the everyday intuition, and hands you a live model and a plain-text AI SKILL.md to push, pull and test. {_verifier_count()} verifiers across the Toolbox, Time and Gravity and the cross-scale essays can be run from a clone and must fail under a planted defect.</p>
         <div class="tp-cover-ctas">
           <a class="tp-cta tp-cta-primary" href="engineering/{first["slug"]}/" data-en="Start reading" data-es="Empezar a leer">Start reading</a>
           <a class="tp-cta tp-cta-bounty" href="bounties/" data-en="Explore 6 Bounties &amp; Proofs →" data-es="Explorar 6 Retos y Pruebas →">Explore 6 Bounties &amp; Proofs →</a>
@@ -5588,14 +5580,14 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
           <span class="tp-track-chip-meta" data-en="Time &amp; Gravity (T.00–T.13) · 11 Cross-Scale Essays" data-es="Tiempo y Gravedad (T.00–T.13) · 11 Ensayos entre Escalas">Time &amp; Gravity (T.00–T.13) · 11 Cross-Scale Essays</span>
         </a>
         <a class="tp-track-chip" href="math/">
-          <span class="tp-track-chip-kicker" data-en="PILLAR IV · 15 ESSAYS" data-es="PILAR IV · 15 ENSAYOS">PILLAR IV · 15 ESSAYS</span>
+          <span class="tp-track-chip-kicker" data-en="PILLAR IV · 12 ESSAYS" data-es="PILAR IV · 12 ENSAYOS">PILLAR IV · 12 ESSAYS</span>
           <strong class="tp-track-chip-title" data-en="Formal &amp; Pure Mathematics" data-es="Matemáticas Formales y Puras">Formal &amp; Pure Mathematics</strong>
-          <span class="tp-track-chip-meta" data-en="15 Folios · Lean Kernel, Kakeya, SAIR" data-es="15 Folios · Kernel Lean, Kakeya, SAIR">15 Folios · Lean Kernel, Kakeya, SAIR</span>
+          <span class="tp-track-chip-meta" data-en="12 Folios · Lean 4 FLT, Cap Sets, Kakeya" data-es="12 Folios · Lean 4 FLT, Cap Sets, Kakeya">12 Folios · Lean 4 FLT, Cap Sets, Kakeya</span>
         </a>
         <a class="tp-track-chip tp-track-chip-bounty" href="bounties/">
           <span class="tp-track-chip-kicker" data-en="6 GRAND-CHALLENGE FOLIOS" data-es="6 FOLIOS DE GRANDES RETOS">6 GRAND-CHALLENGE FOLIOS</span>
           <strong class="tp-track-chip-title" data-en="Grand Challenges &amp; Open Problems (B.01–B.06)" data-es="Grandes Retos y Problemas Abiertos (B.01–B.06)">Grand Challenges &amp; Open Problems (B.01–B.06)</strong>
-          <span class="tp-track-chip-meta" data-en="Erdős #30 (Open) · Unitary Microgrants · SAIR" data-es="Erdős #30 (Abierto) · Microbecas Unitary · SAIR">Erdős #30 (Open) · Unitary Microgrants · SAIR</span>
+          <span class="tp-track-chip-meta" data-en="Erdős #30 (Open) · Unitary Microgrants" data-es="Erdős #30 (Abierto) · Microbecas Unitary">Erdős #30 (Open) · Unitary Microgrants</span>
         </a>
         <a class="tp-track-chip tp-track-chip-toolchain" href="toolchain/">
           <span class="tp-track-chip-kicker" data-en="6 3D CAD &amp; STUDIO FOLIOS" data-es="6 FOLIOS CAD 3D Y ESTUDIO">6 3D CAD &amp; STUDIO FOLIOS</span>
@@ -6061,7 +6053,7 @@ def render_research_sitemap(catalog: dict) -> str:
     entries.append(("toolchain/", max(t["date_redated"] for t in TOOLCHAIN_FOLIOS)))
     for t in TOOLCHAIN_FOLIOS:
         entries.append((f"toolchain/{t['slug']}/", t["date_redated"]))
-    # Time & Gravity (T): the hub and every shipped page, beside the Folio count of 51 (tools/folios/timegravity/).
+    # Time & Gravity (T): the hub and every shipped page, beside the Folio count of 48 (tools/folios/timegravity/).
     entries.append(("timegravity/", TIMEGRAVITY_DATE))
     for tg in TIMEGRAVITY_PAGES:
         if tg["slug"]:

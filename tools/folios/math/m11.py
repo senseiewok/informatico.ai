@@ -231,7 +231,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'sets; Albert Ingham publishes a zero-density estimate that stood at σ = 3/4.'),
                 ('1971–1989',
                  'Martin Huxley derives the 12/5 = 2.40 zero-density exponent (DOI '
-                 '10.1007/BF01418933); Brian Conrey calculates > 2/5 of zeros lie on σ = 1/2 (DOI '
+                 '10.1007/BF01418933); Brian Conrey proves > 2/5 of zeros lie on σ = 1/2 (DOI '
                  '10.1515/crll.1989.399.1).'),
                 ('2024',
                  'Larry Guth and James Maynard (arXiv:2405.20552) post the 30/13 ≈ 2.3077 '
