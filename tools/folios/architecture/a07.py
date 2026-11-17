@@ -291,7 +291,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'bio-based mineral binders match the self-healing behavior reported for '
                    'historic lime plasters while meeting modern low-carbon schedules? This folio '
                    'makes no claim about how colored rooms affect health or recovery.',
- 'cf_bridge': 'This folio has no Cystic Fibrosis bridge. It is a standalone architecture folio '
+ 'cf_bridge': 'It is a standalone architecture folio '
               'and a thread across pillars on color as an electromagnetic wave: Architecture '
               '(Luis Barragán and Josef Albers), Physics (Folio P.08 on thin-film interference in '
               "car finishes, in contrast to Barragán's matte lime) and Mathematics (Folio M.08 on "
@@ -380,11 +380,6 @@ ES_TRANSLATION = {'title_es': 'Tectónica Cromática de Luis Barragán, Radiosid
  'why_es': 'Acercar una flor amarilla bajo la barbilla proyecta un resplandor dorado sobre la piel '
            'porque la luz rebota entre los pétalos; Barragán escaló ese fenómeno a muros de cal y '
            'espejos de agua que tiñen la luz del espacio.',
- 'bridge_es': 'Esta ficha no tiene puente con la Fibrosis Quística: es una ficha de arquitectura '
-              'que conecta con otras sobre el color como onda electromagnética (física P.08 sobre '
-              'interferencia en acabados automotrices y matemáticas M.08 sobre geometría del color, '
-              'elipses de MacAdam y Scite, DOI 10.1364/JOSA.32.000247 y DOI 10.1162/qss_a_00146), '
-              'y no hace afirmaciones de salud.',
  'plain_es': 'En palabras sencillas, imaginen lo que sucede cuando la luz del sol entra a una '
              'habitación pintada. La pintura brillante moderna puede reflejar un destello '
              'que cansa la vista. Luis Barragán buscó lo contrario: muros mate de color '

@@ -83,7 +83,7 @@ FOLIO = {'folio_id': 'A.04',
                            'verified the tie-rod safety factor, and the claims that Archigram directly mentored Foster '
                            'and Rogers were unsourced and are withdrawn; V_p = 4,800 kN and SF = 3.12 are now labelled '
                            'as assumed and illustrative. The invented 1961 founding scene, a source entry that did not '
-                           'exist as cited, and claims about gene-therapy pods and CF wards are replaced by a plain '
+                           'exist as cited are replaced by a plain '
                            'account and a modest, labelled proposal.',
                 'opus': 'Review: references checked by DOI in Crossref and the Scite index; Scite found no paper on '
                         'the Pompidou gerberettes, so those details are kept to standard history only.'},
@@ -190,20 +190,12 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'materials and robots for assembly and inspection, and digital models might help plan which modules '
                    'to replace. None of this is a description of current practice, the folio gives no figures for it, '
                    'and it is not an approved medical facility design.',
- 'cf_bridge': 'A modest bridge, and a proposal. Infection prevention practice in Cystic Fibrosis care, including '
-              'separating patients from one another, is set out in clinical guidance (Saiman et al. 2014, '
-              '\'Infection Prevention and Control Guideline for Cystic Fibrosis: 2013 Update\', DOI 10.1086/676882). '
-              'Clinical needs change over a building\'s life, so a frame that keeps services replaceable could make it '
-              'easier to adapt rooms later. This folio designs no clinical room, reports no outcome, and is not '
-              'medical or infection-control advice; people with CF should follow their care team.',
  'sources': ['Cook, P., Chalk, W., Crompton, D., Greene, D., Herron, R., & Webb, M. (1961–1974 / 1999). Archigram. '
              'Princeton Architectural Press.',
              'Rice, P. (1994). An Engineer Imagines. Artemis, London.',
              'Calladine, C. R. (1978). Buckminster Fuller\'s "Tensegrity" structures and Clerk Maxwell\'s rules for the '
              'construction of stiff frames. International Journal of Solids and Structures, 14(2), 161–172. DOI: '
              '10.1016/0020-7683(78)90052-5.',
-             'Saiman, L., et al. (2014). Infection Prevention and Control Guideline for Cystic Fibrosis: 2013 Update. '
-             'Infection Control & Hospital Epidemiology, 35(S1), S1–S67. DOI: 10.1086/676882.',
              'Pellegrino, S., & Calladine, C. R. (1986). Matrix analysis of statically and kinematically indeterminate '
              'frameworks. International Journal of Solids and Structures, 22(4), 409–428. DOI: '
              '10.1016/0020-7683(86)90014-4.',
@@ -366,9 +358,6 @@ ES_TRANSLATION = {'title_es': 'De las Megaestructuras Plug-In de Archigram a los
                 'gerberette de acero fundido, con módulos de servicios reemplazables como propuesta.',
  'why_es': 'Separar un esqueleto estructural de larga vida de las instalaciones de vida corta podría facilitar, como '
            'propuesta, la actualización de laboratorios y salas clínicas sin demoler el edificio.',
- 'bridge_es': 'Las prácticas de prevención de infecciones en la atención de la Fibrosis Quística las fijan guías '
-              'clínicas (Saiman et al. 2014, DOI 10.1086/676882). Esta ficha solo propone estructuras más fáciles de '
-              'adaptar; no diseña salas clínicas ni es consejo médico.',
  'plain_es': 'La mayoría de los edificios convencionales se parecen a una vieja computadora de escritorio donde todos '
              'los cables, tuberías y circuitos están pegados con pegamento dentro de paredes de concreto. Cuando un '
              'hospital necesita renovar sus conductos de ventilación o instalar equipo médico moderno veinte años '

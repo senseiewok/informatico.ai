@@ -27,8 +27,7 @@ FOLIO = {'folio_id': 'A.09',
  'colophon': {'identifier': 'A.09 · Hygroscopic Timber Skins & Timoshenko Curvature · CSI 06 18 00',
               'kernels': 'Timoshenko Bilayer Curvature · Orthotropic Wood Sorption (α_T vs. α_L)',
               'benchmarks': 'Model values: ΔMC = +6.0% · h = 6.0 mm · m = 2 · n = 10.6 ⇒ κ = 1.42 m⁻¹ · δ_tip = 128 mm',
-              'bridge': 'Completes A.02/E.04 · Wood Cell-Wall Swelling ↔ P.04 Periciliary '
-                        'Brush (Loose Analogy)'},
+              'bridge': 'Completes A.02/E.04 · Wood Cell-Wall Swelling'},
  'sliders': [{'label': 'Wood Moisture Content Shift (ΔMC)',
               'min': 1.0,
               'max': 12.0,
@@ -76,7 +75,7 @@ FOLIO = {'folio_id': 'A.09',
                      'L)) / kappa approx 0.5 * kappa * L^2, state the m and n used, and check rolling shear against the timber code that applies; report results as model values.']},
  'revisions': [{'edition': 'REV 1.1',
                 'date': '2026-11-14',
-                'summary': 'REV 1.1 (Redated 2026-11-14): Grounding revision. The curvature 1.42 m⁻¹ did not follow from the stated formula without the ply ratios, so the assumed m = 2 and n = 10.6 are now stated (equal plies would give 4.62 m⁻¹). The opening scenes about Timoshenko and Menges were not sourced and are replaced by a plain account; beech skins are no longer attributed to the Stuttgart projects. The PASS verdict, the 10,000-cycle claim and the statement that wood swelling obeys the same law as the airway periciliary brush are withdrawn; the last is now called an analogy.',
+                'summary': 'REV 1.1 (Redated 2026-11-14): Grounding revision. The curvature 1.42 m⁻¹ did not follow from the stated formula without the ply ratios, so the assumed m = 2 and n = 10.6 are now stated (equal plies would give 4.62 m⁻¹). The opening scenes about Timoshenko and Menges were not sourced and are replaced by a plain account; beech skins are no longer attributed to the Stuttgart projects. The PASS verdict and the 10,000-cycle claim are withdrawn.',
                 'opus': 'Review: references checked by DOI in Crossref and the Scite index; arithmetic recomputed from the stated formula.'},
                {'edition': 'REV 1.0',
                 'date': '2026-11-03',
@@ -243,7 +242,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'bio-inspired wax and nano-silicate coatings protect against ultraviolet fiber '
                    'degradation while preserving hygroscopic breathability? Long-term outdoor durability is the main unknown for any moving wood skin.',
  'cf_bridge': 'Written for architects, facade engineers, and mass-timber builders (CSI 06 '
-              '18 00 Glued-Laminated Construction, EN 1995-1-1). Loose analogy only: wood cell walls swell as they take up water, and Folio P.04 discusses how the hydration of the airway surface layer changes the height of the periciliary brush. Both are cases of a polymer network taking up water, but the materials and the physics differ, and this folio does not show that the same law governs both. It has no clinical content and nothing here bears on Cystic Fibrosis care.',
+              '18 00 Glued-Laminated Construction, EN 1995-1-1).',
  'sources': ['Timoshenko, S. (1925). Analysis of bi-metal thermostats. Journal of the Optical '
              'Society of America, 11(3), 233–255. DOI: 10.1364/JOSA.11.000233.',
              'Reichert, S., Menges, A., & Correa, D. (2015). Meteorosensitive architecture: '
@@ -318,7 +317,6 @@ ES_TRANSLATION = {'title_es': 'Pieles Arquitectónicas Programables de Madera Hi
  'why_es': 'Una piña de pino en la ventana se cierra sola cuando llueve y se abre cuando el aire '
            'está seco porque sus fibras externas e internas se expanden de forma distinta con la '
            'humedad, igual que una tira bimetálica natural.',
- 'bridge_es': 'Solo una analogía: las paredes celulares de la madera se hinchan al absorber agua, y el Folio P.04 trata cómo la hidratación de la superficie de la vía aérea cambia la altura del cepillo periciliar. En ambos casos una red de polímeros absorbe agua, pero los materiales y la física son distintos y este folio no demuestra que los rija la misma ley. No tiene contenido clínico ni relación con la atención de la Fibrosis Quística.',
  'plain_es': 'En palabras sencillas, imaginen una fachada de madera que se abre y se cierra sola '
              'con el clima sin tener un solo motor ni gastar electricidad. Piensen en lo que le '
              'ocurre a una puerta de madera en un día muy húmedo: absorbe vapor de agua del aire y '

@@ -21,7 +21,7 @@ FOLIO = {'folio_id': 'A.05',
  'colophon': {'identifier': 'A.05 · Architectural Acoustics · CSI 09 84 00',
               'kernels': 'T_60,Eyring = 0.62 s (model) · STI = 0.74 (illustrative)',
               'benchmarks': 'Model values: V = 2,400 m³, S ≈ 1,075 m², α_bar = 0.44 → Eyring 0.62 s, Sabine 0.82 s',
-              'bridge': 'Quieter, Clearer Rooms ↔ CF Clinic Conversations (context only)'},
+              'bridge': 'Quieter, Clearer Rooms'},
  'sliders': [{'label': 'Mean Acoustic Absorption Coefficient (α_bar)',
               'min': 0.12,
               'max': 0.72,
@@ -170,11 +170,6 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                   'check the quadratic-residue sequence in a proof library such as leanprover-community/mathlib4 (DOI '
                   '10.1145/3372885.3373824). Any real hall would then be measured to ISO 3382-1. This folio names those '
                   'tools as options; it did not run them.',
- 'cf_bridge': 'A modest bridge. In Cystic Fibrosis clinics, patients and clinicians may talk through masks and '
-              'over equipment noise, and noisy, reverberant rooms make speech harder to follow for anyone. Measured '
-              'hospital noise levels have been reported well above World Health Organization guideline values '
-              '(Busch-Vishniac et al. 2005, DOI 10.1121/1.2118327). This folio is a room-acoustics study: it reports no clinical outcome and is not medical advice; '
-              'people with CF should follow their care team.',
  'sources': ['Sabine, W. C. (1922). Collected Papers on Acoustics. Harvard University Press.',
              'Eyring, C. F. (1930). Reverberation time in "dead" rooms. Journal of the Acoustical Society of America, '
              '1(2A), 217–241. DOI: 10.1121/1.1915175.',
@@ -186,9 +181,6 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              '60268-16: Sound system equipment — Objective rating of speech intelligibility by speech transmission '
              'index. FGI Guidelines for Design and Construction of Hospitals (named as context; no threshold here is '
              'taken from them).',
-             'Busch-Vishniac, I. J., West, J. E., Barnhill, C., Hunter, T., Orellana, D., & Chivukula, R. (2005). Noise '
-             'levels in Johns Hopkins Hospital. Journal of the Acoustical Society of America, 118(6), 3629–3645. DOI: '
-             '10.1121/1.2118327.',
              'The mathlib Community (2020). The Lean mathematical library. Proceedings of the 9th ACM SIGPLAN '
              'International Conference on Programs and Proofs (CPP), 367–381. DOI: 10.1145/3372885.3373824.',
              'Scroggs, M. W., Dokken, J. S., Richardson, C. N., & Wells, G. N. (2022). Construction of Arbitrary Order '
@@ -314,12 +306,6 @@ ES_TRANSLATION = {'title_es': 'Reverberación Acústica de Sabin–Eyring, Bóve
                 'mejor.',
  'why_es': 'Escuchar en una sala con eco es como leer un texto borroso: las reflexiones tempranas (0–50 ms) enfocan '
            'cada sílaba, mientras que las reverberaciones tardías la vuelven ininteligible.',
- 'bridge_es': 'En las clínicas de Fibrosis Quística, pacientes y personal pueden hablar a través de cubrebocas y con ruido '
-              'de equipos, y las salas ruidosas y reverberantes dificultan entender el habla a cualquier persona. Se han '
-              'reportado niveles de ruido hospitalario muy por encima de los valores guía de la Organización Mundial de la '
-              'Salud (Busch-Vishniac et al. 2005, DOI 10.1121/1.2118327). Esta ficha es un estudio de acústica, no reporta '
-              'resultados clínicos y no es consejo médico; las personas con Fibrosis Quística deben seguir las '
-              'indicaciones de su equipo de atención.',
  'plain_es': 'Todos hemos experimentado lo incómodo que resulta conversar dentro de una habitación vacía con azulejos '
              'o en una cafetería ruidosa. Cuando hablamos, la voz rebota una y otra vez en las superficies duras, '
              'generando un eco molesto que se encalla y borra las palabras que siguen. Escuchar en un salón con '

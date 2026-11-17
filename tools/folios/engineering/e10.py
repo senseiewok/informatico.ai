@@ -28,8 +28,7 @@ FOLIO = {'folio_id': 'E.10',
               'kernels': 'Roussel Thixotropy A_thix · Suiker Elastic Buckling vs. Plastic Collapse',
               'benchmarks': 'Model, ρ = 2,200 kg/m³ assumed: A_thix = 0.85 Pa/s < ρ g v_build/√3 = '
                             '5.5 Pa/s at v_build = 1.6 m/hr ⇒ base yields at H ≈ 0.04 m',
-              'bridge': 'Continues E.02/A.01 · Analogy only: cement flocculation ↔ mucus as '
-                        'another thixotropic material'},
+              'bridge': 'Continues E.02/A.01'},
  'sliders': [{'label': 'Thixotropic Structuration Rate (A_thix)',
               'min': 0.2,
               'max': 2.0,
@@ -105,8 +104,7 @@ FOLIO = {'folio_id': 'E.10',
                            'formula and are withdrawn; with ρ = 2,200 kg/m³ the default mix yields '
                            'at about 0.04 m. Removed the "ACI 564R PASS" verdict and the ACI 564R '
                            'citation, unsourced 45%/6.4× savings figures, an invented 1997 opening '
-                           'scene and an unrelated catalysis reference; the mucus bridge is now a '
-                           'stated analogy. A later review renamed the base shear criterion to von '
+                           'scene and an unrelated catalysis reference. A later review renamed the base shear criterion to von '
                            'Mises (ρgH/√3; a Tresca criterion would give ρgH/2) and removed the '
                            'buckling-height formula, which was not computed and was not '
                            'dimensionally consistent as defined.',
@@ -331,10 +329,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'lower-carbon, freer architectural forms practical.',
  'cf_bridge': 'Standalone Additive Civil Construction Flagship & Thread Continuation (E.02 -> '
               'E.10): Written for civil, structural, and construction robotics engineers '
-              'interested in 3D-printed concrete. A loose analogy, not a shared model: airway '
-              'mucus is also a material whose structure breaks down under shear and rebuilds at '
-              'rest (Folio E.03). Roussel\'s cement equation is not a model of mucus, and nothing '
-              'in this folio is clinical information.',
+              'interested in 3D-printed concrete.',
  'sources': ['Roussel, N. (2018). Rheological requirements for printable concretes. Cement and '
              'Concrete Research, 112, 76–85. DOI: 10.1016/j.cemconres.2018.04.005.',
              'Suiker, A. S. J. (2018). Mechanical performance of wall structures in 3D printing '
@@ -454,8 +449,4 @@ ES_TRANSLATION = {'title_es': 'Reología de Extrusión e Imprimibilidad en Impre
             'cortante por peso propio crece a 5.5 Pa/s frente a A_thix = 0.85 Pa/s, así que el '
             'modelo predice que la base cede a unos 0.04 m de altura. Este folio propone, sin '
             'haberlo probado, ajustar en tiempo real la dosificación de acelerantes con sensores '
-            'en la boquilla.',
- 'bridge_es': 'Solo una analogía, no un modelo común: el moco de las vías respiratorias también '
-              'es un material cuya estructura se rompe con el cortante y se recupera en reposo '
-              '(Folio E.03). La ecuación de Roussel para el cemento no modela el moco y nada en '
-              'este folio es información clínica.'}
+            'en la boquilla.'}

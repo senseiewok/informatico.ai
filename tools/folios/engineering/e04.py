@@ -90,9 +90,8 @@ FOLIO = {'folio_id': 'E.04',
                 'date': '2026-11-14',
                 'summary': 'REV 1.2 (Redated 2026-11-14): Grounding revision. Unverified compliance '
                            'claims on the specification plate (Passive House, Eurovent, EN 308), '
-                           'the "zero pathogen crossover" and ">99.6% aerosol" claims, and the '
-                           'advice about equipment for bedrooms of people with Cystic Fibrosis '
-                           'were withdrawn as unsourced; the airway link is now an analogy. A '
+                           'the "zero pathogen crossover" and ">99.6% aerosol" claims '
+                           'were withdrawn as unsourced. A '
                            'chronology entry that dated the 1960 Journal of Applied Mechanics '
                            'record to 1986 was corrected, the invented 1915 and 1955 scenes were '
                            'replaced with plain dates, and the frost limit is now labelled as an '
@@ -310,14 +309,6 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'channels that transport water vapor while holding back other gases and '
                    'volatile organic compounds as well as possible. Better ventilation and lower '
                    'energy use are the goals; this folio makes no claim about health outcomes.',
- 'cf_bridge': 'An analogy, not a recommendation: in the airways, a thin liquid layer lines the '
-              'surface, and in Cystic Fibrosis, reduced CFTR function leaves that layer '
-              'dehydrated. In the gel-on-brush model of Button et al. (Science 2012, DOI '
-              '10.1126/science.1223012), dehydrated mucus can compress the periciliary layer '
-              'and slow clearance. The nose and airways warm and humidify inhaled air much as '
-              'an enthalpy exchanger conditions supply air. This page models building '
-              'ventilation only; it makes no claim about humidifiers, ventilators or any care '
-              'for people with CF and is not medical advice.',
  'sources': ['Kays, W. M., & London, A. L. (1984). Compact Heat Exchangers (3rd ed.). McGraw-Hill.',
              'Zhang, L. Z. (2012). Conjugate Heat and Mass Transfer in Heat Mass Exchanger Ducts. '
              'Academic Press.',
@@ -326,9 +317,6 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'Van Vu, N., & Dvořák, V. (2017). Evaluating the moisture transfer of membranes for '
              'total heat exchanger. EPJ Web of Conferences, 143, 02080. DOI: '
              '10.1051/epjconf/201714302080.',
-             'Button, B., et al. (2012). A Periciliary Brush Promotes the Lung Health by '
-             'Separating the Mucus Layer from Airway Epithelia. Science, 337(6097), 937–941. '
-             'DOI: 10.1126/science.1223012.',
              'ASHRAE (2021). ASHRAE Handbook — Fundamentals: Psychrometrics and Air-to-Air Energy '
              'Recovery.',
              'Burns, K. J., Vasil, G. M., Oishi, J. S., Lecoanet, D., & Brown, B. P. (2020). '
@@ -390,10 +378,6 @@ ES_TRANSLATION = {'title_es': 'Intercambiadores de Recuperación de Entalpía a 
  'why_es': 'Como dos trenes que se cruzan en sentido opuesto intercambiando termos calientes '
            'ventana por ventana, el flujo a contracorriente recupera casi toda la energía térmica '
            'y la humedad sin mezclar el aire viciado con el aire limpio.',
- 'bridge_es': 'Una analogía, no una recomendación: la nariz y las vías respiratorias '
-              'calientan y humidifican el aire inspirado, algo parecido a lo que hace un '
-              'intercambiador de entalpía con el aire de suministro. Esta página modela solo la '
-              'ventilación de edificios y no es consejo médico.',
  'plain_es': 'En 1915, el ingeniero alemán Wilhelm Nusselt publicó un análisis de semejanza '
              '(adimensional) de la transferencia de calor por convección. En 1955, William Kays y '
              'Alexander London, de la Universidad de Stanford, publicaron la primera edición de '

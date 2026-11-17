@@ -1018,6 +1018,7 @@ def render_multi_chapter_monograph_sections(
     bench_c = esc(decf_title(col.get("benchmarks", "")))
     bridge_c = esc(decf(col.get("bridge", "")))
     cf_bridge_c = linkify_citations(esc(decf(lf.get("cf_bridge", ""))))
+    cf_bridge_tail = f": {cf_bridge_c}" if cf_bridge_c else "."  # a folio may carry no bridge note
     doi_str = esc(scite.get("doi", ""))
     scite_sum_c = esc(decf(scite.get("summary", "")))
     _ver_name, _ver_src = _existing_skill_verifier(ROOT / "skills" / pillar / slug)
@@ -1081,6 +1082,14 @@ def render_multi_chapter_monograph_sections(
 
     sn1_kicker = esc(decf_title(folio.get("sidenote_1", {}).get("kicker", f"SIDENOTE {fid}-A")))
     sn2_kicker = esc(decf_title(sn2.get("kicker", f"SIDENOTE {fid}-B")))
+    sn1_knockout_html = (  # omitted when a folio has no first side note
+        f"""              <p>
+                <strong>Primary Counterfactual Knockout ({sn1_kicker}):</strong> {linkify_citations(esc(sn1_body_c))}
+              </p>
+"""
+        if sn1_body_c
+        else ""
+    )
 
     act2_proof_spine_html = f"""
         <section class="tp-proof-spine" aria-label="Multi-Chapter Formal Proof and Governing Derivation">
@@ -1123,10 +1132,7 @@ def render_multi_chapter_monograph_sections(
           <article class="tp-proof-chapter" id="ch-ii-4-{esc(slug)}">
             <h3 data-en="&sect; II.4 &middot; Counterfactual Axiom-Knockout &amp; Singular Boundary Anatomy" data-es="&sect; II.4 &middot; An&aacute;lisis Contrafactual de Supresi&oacute;n de Axiomas y Anatom&iacute;a de Frontera Singular">&sect; II.4 &middot; Counterfactual Axiom-Knockout &amp; Singular Boundary Anatomy</h3>
             <div class="tp-counterfactual-proof" role="region" aria-label="Counterfactual Axiom-Knockout Analysis">
-              <p>
-                <strong>Primary Counterfactual Knockout ({sn1_kicker}):</strong> {linkify_citations(esc(sn1_body_c))}
-              </p>
-              <p>
+{sn1_knockout_html}              <p>
                 <strong>Secondary Coupling &amp; Regime Boundary ({sn2_kicker}):</strong> {linkify_citations(esc(sn2_body_c))}
               </p>
               <p>
@@ -1182,7 +1188,7 @@ def render_multi_chapter_monograph_sections(
         <section class="tp-transfer-chapter" id="ch-iv-3-{esc(slug)}" aria-labelledby="ch-iv-3-heading-{esc(slug)}">
           <h3 id="ch-iv-3-heading-{esc(slug)}" data-en="&sect; IV.3 &middot; Cross-Disciplinary Continuum &amp; Systems Transfer" data-es="&sect; IV.3 &middot; Transferencia Interdisciplinaria de Sistemas y Continuo">&sect; IV.3 &middot; Cross-Disciplinary Continuum &amp; Systems Transfer</h3>
           <p>
-            <strong>Structural &amp; Mathematical Isomorphism (<code>{bridge_c}</code>):</strong> One of the defining principles of <em>Informatico.ai</em> is that deep governing operators transcend disciplinary silos. The exact mathematical structure of Folio <strong>{esc(fid)}</strong> (<code>{gov_law}</code>) reappears across coupled multiscale systems: {cf_bridge_c}
+            <strong>Structural &amp; Mathematical Isomorphism (<code>{bridge_c}</code>):</strong> One of the defining principles of <em>Informatico.ai</em> is that deep governing operators transcend disciplinary silos. The exact mathematical structure of Folio <strong>{esc(fid)}</strong> (<code>{gov_law}</code>) reappears across coupled multiscale systems{cf_bridge_tail}
           </p>
           <p>
             <strong>Living Edition &amp; Multi-Family Council Provenance (<code>{esc(folio.get("current_edition", "REV 1.0"))}</code>):</strong> {latest_rev_summary} {latest_rev_opus} By pairing multi-chapter mathematical and physical derivations with interactive WebGL2/SVG observatories and downloadable <code>SKILL.md</code> companions, Folio <strong>{esc(fid)}</strong> equips engineers, mathematicians, physicists, and AI agents with a permanent, falsifiable building block for frontier discovery.

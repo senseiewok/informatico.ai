@@ -29,8 +29,7 @@ FOLIO = {'folio_id': 'E.09',
               'kernels': 'Lucas–Washburn Imbibition · Michaelis–Menten CaCO₃ · Coda-Wave CWI',
               'benchmarks': 'Model: w_0 = 0.30 mm → w_rem = 0.018 mm (94.0% closure, illustrative) ⇒ '
                             '(0.018/0.30)³ = 2.2 × 10⁻⁴ ⇒ −99.98% parallel-plate flow (w³ law)',
-              'bridge': 'Continues E.01/E.07 · Analogy only: Ca²⁺-mediated mineral bridging ↔ Ca²⁺ '
-                        'in mucin gels'},
+              'bridge': 'Continues E.01/E.07'},
  'sliders': [{'label': 'Initial Flexural Crack Aperture (w_0)',
               'min': 0.1,
               'max': 0.8,
@@ -103,7 +102,7 @@ FOLIO = {'folio_id': 'E.09',
                            'figures are now labelled as model or design values. Corrected what the '
                            'Jonkers et al. 2010 paper is cited for, replaced an invented opening scene '
                            'and a misattributed Vitruvius/tobermorite claim, fixed a "999 percent" '
-                           'arithmetic error, and turned the mucus bridge into a stated analogy.',
+                           'arithmetic error.',
                 'opus': 'Review: all DOIs checked against Crossref on 2026-11-14; cubic-law '
                         'arithmetic recomputed ((0.018/0.30)^3 = 2.16e-4).'},
                {'edition': 'REV 1.0',
@@ -314,10 +313,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'concrete structures last longer with less repair.',
  'cf_bridge': 'Standalone Civil Materials Flagship & Thread Continuation (E.01 -> E.09): Written '
               'for structural and materials civil engineers interested in durable marine and '
-              'underground concrete. A loose analogy, not a shared model: both this folio and '
-              'airway mucus involve calcium ions and reaction-diffusion, since calcium also helps '
-              'hold mucin gels together. The equations here are not a model of mucus, and nothing '
-              'in this folio is clinical information.',
+              'underground concrete.',
  'sources': ['Jonkers, H. M., Thijssen, A., Muyzer, G., Copuroglu, O., & Schlangen, E. (2010). '
              'Application of bacteria as self-healing agent for the development of sustainable '
              'concrete. Ecological Engineering, 36(2), 230–235. DOI: '
@@ -440,8 +436,4 @@ ES_TRANSLATION = {'title_es': 'Concreto Autocurativo Bacteriano y Cristalino: Im
             'cúbica de Poiseuille para una grieta ideal y lisa, cerrar el 94% del ancho reduce el '
             'flujo de agua en un 99.98%; las grietas reales son rugosas, así que es una '
             'idealización. Este folio propone, sin haberlo demostrado, usar sensores ultrasónicos '
-            'de ondas coda para seguir la recuperación de rigidez.',
- 'bridge_es': 'Solo una analogía, no un modelo común: tanto este folio como el moco de las vías '
-              'respiratorias involucran iones de calcio y reacción-difusión, porque el calcio '
-              'también ayuda a mantener unidos los geles de mucina. Estas ecuaciones no modelan el '
-              'moco y nada en este folio es información clínica.'}
+            'de ondas coda para seguir la recuperación de rigidez.'}

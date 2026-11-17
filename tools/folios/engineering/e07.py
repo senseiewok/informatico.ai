@@ -23,7 +23,7 @@ FOLIO = {'folio_id': 'E.07',
  'colophon': {'identifier': 'E.07 · Bridge Aeroelastic Flutter & PINN SHM · CSI 05 12 00',
               'kernels': 'Scanlan Flutter Derivatives A_2*(K), H_1*(K) · Euler–Bernoulli PINN Loss',
               'benchmarks': 'Illustrative model values: U_crit = 76.4 m/s · PINN stress error 1.42% (8 sensors; no network trained)',
-              'bridge': 'Sparse Bridge Accelerometer PINNs ↔ Airway Impedance Inversion (mathematical analogy only)'},
+              'bridge': 'Sparse Bridge Accelerometer PINNs'},
  'sliders': [{'label': 'Mean Wind Velocity (U_wind)',
               'min': 20.0,
               'max': 85.0,
@@ -76,7 +76,7 @@ FOLIO = {'folio_id': 'E.07',
                      'equilibrium.']},
  'revisions': [{'edition': 'REV 1.1',
                 'date': '2026-11-14',
-                'summary': 'REV 1.1 (Redated 2026-11-14): Grounding revision. U_crit = 76.4 m/s, net damping +2.84% and the 1.42% PINN error are now labelled as illustrative model values: no wind-tunnel test was run and no network was trained, and the claims of wind-tunnel verification and AASHTO LRFD compliance are withdrawn. The Tacoma Narrows account is cut back to the documented record and cites Scanlan & Tomko 1971 (DOI 10.1061/JMCEA3.0001526) and Billah & Scanlan 1991 (DOI 10.1119/1.16590). Statements that such digital twins are deployed are now written as proposals, and the airway note is marked as a mathematical analogy.',
+                'summary': 'REV 1.1 (Redated 2026-11-14): Grounding revision. U_crit = 76.4 m/s, net damping +2.84% and the 1.42% PINN error are now labelled as illustrative model values: no wind-tunnel test was run and no network was trained, and the claims of wind-tunnel verification and AASHTO LRFD compliance are withdrawn. The Tacoma Narrows account is cut back to the documented record and cites Scanlan & Tomko 1971 (DOI 10.1061/JMCEA3.0001526) and Billah & Scanlan 1991 (DOI 10.1119/1.16590). Statements that such digital twins are deployed are now written as proposals.',
                 'opus': 'Review: references checked by DOI in the Scite index on 2026-11-14; the reduced velocity was recomputed by hand (B = 36 m is now stated).'},
                {'edition': 'REV 1.0',
                 'date': '2026-11-02',
@@ -206,7 +206,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                'Threads',
  'act4_human_ai': 'A bridge owner could combine sparse fiber-Bragg-grating (FBG) strain gauges and drone photogrammetry with a Physics-Informed Neural Network, so that inspection effort goes to the Orthotropic Steel Deck (OSD) weld details where the model estimates the highest stress ranges. This is a proposal; the folio reports no deployment.',
  'act4_deepening': 'Looking ahead, structural engineers and physics-informed machine learning could work together on how large bridges are designed and looked after. Instead of relying only on periodic manual inspection, a maintenance authority could run a digital twin that takes in data from fiber-optic sensors and uncrewed aerial vehicles and, during a storm, estimates where strain and fatigue damage are accumulating. None of this is claimed here as current practice. Open research questions remain: linking turbulence at small scales to the dynamics of a whole span, and keeping a neural surrogate trustworthy during an extreme event unlike anything in its training data. Grounding machine learning in continuum mechanics is one way to approach both, in the service of longer lives for existing spans and lighter new ones.',
- 'cf_bridge': 'Standalone civil engineering folio, written for structural, wind and bridge engineers. A note on analogy for readers of the other folios: estimating what happens inside a structure from a few sensors on its boundary is an inverse problem, and mathematics of the same kind appears in respiratory oscillometry (the forced oscillation technique), where airway mechanics are inferred from pressure and flow measured at the mouth. The resemblance is mathematical only. This folio does not model lungs, and nothing here is clinical guidance.',
+ 'cf_bridge': 'Standalone civil engineering folio, written for structural, wind and bridge engineers.',
  'sources': ['Scanlan, R. H., & Tomko, J. J. (1971). Airfoil and Bridge Deck Flutter Derivatives. '
              'Journal of the Engineering Mechanics Division (ASCE), 97(6), 1717–1737. DOI: 10.1061/JMCEA3.0001526.',
              'Billah, K. Y., & Scanlan, R. H. (1991). Resonance, Tacoma Narrows bridge failure, and undergraduate physics textbooks. American Journal of Physics, 59(2), 118–124. DOI: 10.1119/1.16590.',
@@ -308,5 +308,4 @@ ES_TRANSLATION = {'title_es': 'Flameo Aeroelástico de Puentes Colgantes de Gran
             'crítico, las fuerzas aerodinámicas superan la capacidad disipativa de la estructura, '
             'haciendo que la amortiguación neta se vuelva negativa. En este punto de inflexión, el '
             'tablero absorbe energía del flujo de aire y experimenta oscilaciones autoexcitadas de '
-            'flexión y torsión acopladas. Los ingenieros modelan estas fuerzas con las derivadas aeroelásticas de Scanlan (Scanlan y Tomko 1971, DOI 10.1061/JMCEA3.0001526). El folio propone además usar redes neuronales informadas por la física (Raissi et al. 2019, DOI 10.1016/j.jcp.2018.10.045), que penalizan el residuo de las ecuaciones de Euler–Bernoulli, para estimar esfuerzos entre sensores dispersos. Los valores de la página (U_crit = 76.4 m/s, amortiguamiento neto de +2.84 %, error de 1.42 %) son valores ilustrativos del modelo: no provienen de un túnel de viento ni de una red entrenada.',
- 'bridge_es': 'Estimar lo que ocurre dentro de una estructura a partir de pocos sensores en su frontera es un problema inverso, y matemáticas del mismo tipo aparecen en la oscilometría respiratoria. Es solo una analogía matemática: este folio no modela pulmones ni ofrece orientación clínica.'}
+            'flexión y torsión acopladas. Los ingenieros modelan estas fuerzas con las derivadas aeroelásticas de Scanlan (Scanlan y Tomko 1971, DOI 10.1061/JMCEA3.0001526). El folio propone además usar redes neuronales informadas por la física (Raissi et al. 2019, DOI 10.1016/j.jcp.2018.10.045), que penalizan el residuo de las ecuaciones de Euler–Bernoulli, para estimar esfuerzos entre sensores dispersos. Los valores de la página (U_crit = 76.4 m/s, amortiguamiento neto de +2.84 %, error de 1.42 %) son valores ilustrativos del modelo: no provienen de un túnel de viento ni de una red entrenada.'}
