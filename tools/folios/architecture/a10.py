@@ -26,7 +26,7 @@ FOLIO = {'folio_id': 'A.10',
  'colophon': {'identifier': 'A.10 · Kinetic Origami & Auxetic Mashrabiya Facades · CSI 10 71 13',
               'kernels': 'Miura-Ori Spherical Vertex Law · Schenk–Guest Auxetic ν_xy = −tan² φ',
               'benchmarks': 'Model values: α = 64° · θ = 36° ⇒ ν_xy ≈ −0.37 (folio parametrization) · SHGC = 0.19 (assumed SHGC_glass = 0.60, η_shade = 0.845)',
-              'bridge': 'Completes A.04/A.03/M.05 · Loose analogy only: one-degree-of-freedom hinged motion ↔ protein domain motion (not a model of CFTR)'},
+              'bridge': 'Completes A.04/A.03/M.05'},
  'sliders': [{'label': 'Origami Deployment Fold Angle (θ)',
               'min': 10.0,
               'max': 80.0,
@@ -73,7 +73,7 @@ FOLIO = {'folio_id': 'A.10',
                      "Couple facade deployment angle theta to solar altitude; treat SHGC <= 0.22 at peak insolation and >= 250 EML daylight as this folio's own design targets and report SHGC as a model value, not a measurement."]},
  'revisions': [{'edition': 'REV 1.1',
                 'date': '2026-11-14',
-                'summary': 'REV 1.1 (Redated 2026-11-14): Grounding revision. The opening scene of Miura folding paper at his desk was not sourced and is replaced by a plain account; the JAXA attribution (JAXA was founded in 2003) and the 1980 date are corrected to Miura\'s 1985 ISAS report. The Poisson ratio, secondary fold angle and SHGC now follow from the folio\'s own formulas (−0.37, 16.2°, 0.19 with stated assumptions); unsourced cooling-energy savings, wind testing, "zero jam" and a CFTR structure claim are withdrawn, and an unrelated graphic-statics source is removed.',
+                'summary': 'REV 1.1 (Redated 2026-11-14): Grounding revision. The opening scene of Miura folding paper at his desk was not sourced and is replaced by a plain account; the JAXA attribution (JAXA was founded in 2003) and the 1980 date are corrected to Miura\'s 1985 ISAS report. The Poisson ratio, secondary fold angle and SHGC now follow from the folio\'s own formulas (−0.37, 16.2°, 0.19 with stated assumptions); unsourced cooling-energy savings, wind testing and "zero jam" are withdrawn, and an unrelated graphic-statics source is removed.',
                 'opus': 'Review: references checked by DOI in Crossref; arithmetic recomputed from the stated formulas.'},
                {'edition': 'REV 1.0',
                 'date': '2026-11-03',
@@ -200,7 +200,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'recharge their own emergency backup batteries? By answering these questions, '
                    'architects and computational tools transform static curtain walls into '
                    'responsive, lifelike skins.',
- 'cf_bridge': 'Standalone kinetic-architecture folio (A.04 + A.03 + M.05 -> A.10), written for facade engineers, computational architects, and kinetic envelope designers (CSI 10 71 13 is the MasterFormat section for exterior sun control devices). It has no Cystic Fibrosis content. A loose analogy only: proteins such as CFTR also move as linked, nearly rigid domains, but origami kinematics is not a model of CFTR gating.',
+ 'cf_bridge': 'Standalone kinetic-architecture folio (A.04 + A.03 + M.05 -> A.10), written for facade engineers, computational architects, and kinetic envelope designers (CSI 10 71 13 is the MasterFormat section for exterior sun control devices).',
  'sources': ['Schenk, M., & Guest, S. D. (2013). Geometry of Miura-folded metamaterials. Proceedings of '
              'the National Academy of Sciences (PNAS), 110(9), 3276–3281. DOI: '
              '10.1073/pnas.1217998110.',
@@ -272,7 +272,6 @@ ES_TRANSLATION = {'title_es': 'Origami Cinético y Fachadas Biomiméticas Desple
  'why_es': 'A diferencia de una liga que se adelgaza al estirarla, un mapa plegado con el patrón '
            'Miura-ori se expande en ambas direcciones a la vez con un solo movimiento, permitiendo '
            'abrir o cerrar toda una fachada solar sin atascarse.',
- 'bridge_es': 'Este folio es de arquitectura cinética y no tiene contenido sobre Fibrosis Quística. Solo como analogía: proteínas como CFTR también se mueven como dominios casi rígidos unidos entre sí, pero la cinemática del origami no es un modelo de cómo se abre CFTR.',
  'plain_es': 'En palabras sencillas, imaginen un mapa de papel doblado con un patrón especial de '
              'rombos: al jalar suavemente dos de sus esquinas, todo el mapa se abre a lo ancho y a '
              'lo largo al mismo tiempo con un solo movimiento fluido. El ingeniero japonés Koryo Miura '

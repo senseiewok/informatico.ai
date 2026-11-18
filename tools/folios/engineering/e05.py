@@ -24,7 +24,7 @@ FOLIO = {'folio_id': 'E.05',
               'kernels': "σ'_v = σ_v − u · ∂u/∂t = c_v ∂²u/∂z² · CFA Bearing",
               'benchmarks': 'Model values at defaults: T_v = 0.320 · U_avg = 63.2% (H_dr = 6 m, t = '
                             '3.6 yr)',
-              'bridge': 'Terzaghi Consolidation ↔ Gel-on-Brush Airway Model (an analogy)'},
+              'bridge': 'Terzaghi Consolidation'},
  'sliders': [{'label': 'Foundation Surcharge Load (Δq)',
               'min': 40.0,
               'max': 260.0,
@@ -97,11 +97,7 @@ FOLIO = {'folio_id': 'E.05',
                      'liquefaction assessment needs a site-specific cyclic analysis.']},
  'revisions': [{'edition': 'REV 1.2',
                 'date': '2026-11-14',
-                'summary': 'REV 1.2 (Redated 2026-11-14): Grounding revision. The claim that '
-                           "Terzaghi's equation is \"mathematically identical\" to airway "
-                           'physics, the 3.5 kPa periciliary figure and the treatment language '
-                           'were withdrawn; the gel-on-brush link to Button et al. (2012) is now '
-                           'an analogy with their own figures. The source entry for DOI '
+                'summary': 'REV 1.2 (Redated 2026-11-14): Grounding revision. The source entry for DOI '
                            '10.1061/(ASCE)GT.1943-5606.0000073 was corrected to Gavin, Cadogan & '
                            'Casey, the readouts were recomputed from the page model (U_avg = '
                            '63.2%, Q_ult = 3,865 kN, r_u = 0.22), and the invented 1925 workshop '
@@ -336,20 +332,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'reinforce liquefiable sands in situ. Combining instrument records with '
                    'sound soil mechanics can make foundations more resilient, though no method '
                    'removes earthquake risk.',
- 'cf_bridge': 'An analogy, not a shared equation: Button et al. (Science 2012, DOI '
-              '10.1126/science.1223012) proposed a gel-on-brush model of the airway surface, in '
-              'which a mucus layer sits on a periciliary brush. In their account, when the '
-              'osmotic modulus of the mucus layer rises above that of the brush, the brush and '
-              'cilia are compressed and clearance slows or stops, as seen in Cystic Fibrosis. Water moving out of a compressed gel resembles water '
-              "draining from a loaded clay in Terzaghi's theory, but the paper does not use "
-              "Terzaghi's equation. This page makes no claim about any treatment and is not "
-              'medical advice.',
  'sources': ['Gavin, K. G., Cadogan, D., & Casey, P. (2009). Shaft Capacity of Continuous Flight '
              'Auger Piles in Sand. Journal of Geotechnical and Geoenvironmental Engineering, '
              '135(6), 790–798. DOI: 10.1061/(ASCE)GT.1943-5606.0000073.',
-             'Button, B., et al. (2012). A Periciliary Brush Promotes the Lung Health by '
-             'Separating the Mucus Layer from Airway Epithelia. Science, 337(6097), 937–941. '
-             'DOI: 10.1126/science.1223012.',
              'Terzaghi, K., Peck, R. B., & Mesri, G. (1996). Soil Mechanics in Engineering '
              'Practice (3rd ed.). Wiley.',
              'Seed, H. B., & Idriss, I. M. (1971). Simplified procedure for evaluating soil '
@@ -410,9 +395,7 @@ DISPATCH = {'kicker': 'FRONTIER GEOTECHNICAL DISPATCH · AUTOMATED CFA RIG TELEM
  'body': "One century after Karl Terzaghi's Erdbaumechanik (1925), continuous flight auger (CFA) "
          'piles are installed with rigs that record depth, torque and grout volume (FHWA GEC No. '
          '8), and field tests show how their shaft resistance develops in sand (Gavin, Cadogan & '
-         'Casey 2009, DOI 10.1061/(ASCE)GT.1943-5606.0000073). In a different field, Button and '
-         'colleagues (Science 2012, DOI 10.1126/science.1223012) described osmotic compression '
-         'of the airway periciliary brush, an idea this folio offers only as an analogy.'}
+         'Casey 2009, DOI 10.1061/(ASCE)GT.1943-5606.0000073).'}
 
 META_3D = ('Terzaghi Consolidation Dish & 4-Pile Bearing Cones',
  'X/Z: Foundation Mat Footprint · Y: Effective Stress Consolidation & CFA Pile Capacity')
@@ -424,10 +407,6 @@ ES_TRANSLATION = {'title_es': 'Mecánica de Suelos de Terzaghi, Pilotes Profundo
  'why_es': 'Al pisar una esponja empapada, primero se presuriza el agua atrapada; el esqueleto de '
            'la esponja sólo se comprime a medida que el agua escapa lentamente por los poros '
            '(consolidación de Terzaghi).',
- 'bridge_es': 'Una analogía, no una ecuación compartida: en el modelo de gel sobre cepillo '
-              'de Button y colegas (2012), cuando la capa de moco tiene un módulo osmótico '
-              'mayor que el del cepillo periciliar, lo comprime y la depuración se frena, como en '
-              'la Fibrosis Quística. Esta página no habla de tratamientos ni es consejo médico.',
  'plain_es': 'En 1925, el ingeniero austriaco Karl Terzaghi, entonces profesor en el Robert '
              'College de Constantinopla (Estambul), publicó Erdbaumechanik, el libro con el que '
              'suele fecharse el inicio de la mecánica de suelos moderna. Desde hacía mucho, las '

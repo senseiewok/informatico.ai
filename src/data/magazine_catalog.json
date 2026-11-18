@@ -1,7 +1,7 @@
 {
-  "version": "7.0.0",
-  "title": "Informatico.ai — 7-Volume, 51-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
-  "total_folios": 51,
+  "version": "6.0.0",
+  "title": "Informatico.ai — 6-Volume, 48-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
+  "total_folios": 48,
   "pillars": {
     "engineering": [
       {
@@ -73,7 +73,7 @@
         },
         "sidenote_1": {
           "kicker": "SIDENOTE E.01-A · AN ANALOGY FROM BIOLOGY",
-          "body": "Airway mucus is also a porous network: a mesh of mucin polymers with water-filled gaps. Whether a small particle can cross such a gel depends, as in stone, on the size of the gaps and on whether they connect. That resemblance is an analogy offered by this folio. The lattice threshold on this page was not measured in mucus, and nothing here is a statement about any treatment."
+          "body": ""
         },
         "sidenote_2": {
           "kicker": "SIDENOTE E.01-B · SPECIFICATION PLATE · CSI 03 30 00 / 07 16 00",
@@ -93,7 +93,7 @@
           {
             "edition": "REV 1.4",
             "date": "2026-11-14",
-            "summary": "REV 1.4 (Redated 2026-11-14): Grounding revision. A chronology entry that credited a 2009 work to Brinkman and Bear was removed: the DOI it carried (10.1007/BF02120313) is Brinkman's own 1949 paper. A claim that optimal-transport software had shown a result about percolation was withdrawn, as were the unsourced figures about Cystic Fibrosis sputum and inhaled nanoparticles; the mucus link is now stated as an analogy. The threshold 0.5927 is identified as the square-lattice site value, and the walkthrough numbers were recomputed from the stated formula (8.73 nm and 19.64 nm).",
+            "summary": "REV 1.4 (Redated 2026-11-14): Grounding revision. A chronology entry that credited a 2009 work to Brinkman and Bear was removed: the DOI it carried (10.1007/BF02120313) is Brinkman's own 1949 paper. A claim that optimal-transport software had shown a result about percolation was withdrawn. The threshold 0.5927 is identified as the square-lattice site value, and the walkthrough numbers were recomputed from the stated formula (8.73 nm and 19.64 nm).",
             "opus": "Review: every DOI in the folio was checked in Crossref and the Scite index on 2026-11-14, and the repository names with the GitHub API. No simulation was run for this folio; the numbers are outputs of the closed-form model on the page."
           },
           {
@@ -153,7 +153,7 @@
           "identifier": "E.02 · Concrete Yield Rheology · CSI 03 30 00",
           "kernels": "τ = τ_0 + K γ̇^n · Buckingham–Reiner Plug Flow",
           "benchmarks": "Model values: 125 mm pipe · τ_w = 75.0 Pa and r_p/R = 37.3% at defaults",
-          "bridge": "Concrete Slickline ↔ Yield-Stress Behaviour of Sputum (an analogy)"
+          "bridge": "Concrete Slickline"
         },
         "sliders": [
           {
@@ -209,7 +209,7 @@
         },
         "sidenote_2": {
           "kicker": "SIDENOTE E.02-B · SPECIFICATION PLATE · CSI 03 30 00 / ACI 304.2R",
-          "body": "Design sketch of a pumped self-consolidating concrete (target slump flow 650 mm, 125 mm steel line, PCE dispersant). Sputum is also a yield-stress material, but the study cited on this page described it with a different equation; the resemblance is an analogy, not a shared mechanism or equation."
+          "body": "Design sketch of a pumped self-consolidating concrete (target slump flow 650 mm, 125 mm steel line, PCE dispersant)."
         },
         "skill": {
           "filename": "herschel-bulkley-yield-rheology-SKILL.md",
@@ -225,7 +225,7 @@
           {
             "edition": "REV 1.4",
             "date": "2026-11-14",
-            "summary": "REV 1.4 (Redated 2026-11-14): Grounding revision. The claim that concrete and Cystic Fibrosis sputum obey the \"exact same\" equation, the sputum yield-stress and periciliary-stress figures, and the treatment language were withdrawn; the sputum link is now an analogy with a sourced statement about sputum rheology. The 2016 pumping paper is now credited to its real authors (Feys, Khayat & Khatib), the discharge readout was recomputed from the page model (not 48.2 m³/hr), and the invented 1922 laboratory scene was replaced with plain dates. A later review corrected the discharge to 6.6 m³/hr, the page model's full Herschel–Bulkley integral (the earlier 7.2 m³/hr rested on a hidden factor), described the wall lubrication layer as something the model leaves out, labelled the feedback argument as the folio's own inference, and softened outcome promises.",
+            "summary": "REV 1.4 (Redated 2026-11-14): Grounding revision. The 2016 pumping paper is now credited to its real authors (Feys, Khayat & Khatib), the discharge readout was recomputed from the page model (not 48.2 m³/hr), and the invented 1922 laboratory scene was replaced with plain dates. A later review corrected the discharge to 6.6 m³/hr, the page model's full Herschel–Bulkley integral (the earlier 7.2 m³/hr rested on a hidden factor), described the wall lubrication layer as something the model leaves out, labelled the feedback argument as the folio's own inference, and softened outcome promises.",
             "opus": "Review: every DOI in the folio was checked in Crossref and the Scite index on 2026-11-14, and the repository name with the GitHub API. No simulation, telemetry or field test stands behind this folio; its numbers come from the closed-form model on the page."
           },
           {
@@ -279,7 +279,7 @@
           "identifier": "E.03 · Acoustic Metamaterials & Viscothermal Damping · CSI 09 84 13",
           "kernels": "δ_v = √(2ν/ω) · Z_s = R_v + i ω M_a − i ρ c² / (ω V_cav)",
           "benchmarks": "Model values: δ_v = 0.174 mm at 160 Hz · α = 0.9996 for Z_s/Z_0 = 1.04 at resonance",
-          "bridge": "Oscillatory Boundary Layers ↔ Airway Oscillation Devices (an analogy)"
+          "bridge": "Oscillatory Boundary Layers"
         },
         "sliders": [
           {
@@ -330,8 +330,8 @@
           "meta": "Design sketch · ISO 354 (reverberation-room measurement) would be the test to run; none was run and no certification exists"
         },
         "sidenote_1": {
-          "kicker": "SIDENOTE E.03-A · AN ANALOGY: OSCILLATING FLOW IN THE AIRWAYS",
-          "body": "The Womersley number Wo = r √(ω/ν) compares a channel radius with the viscous boundary layer of an oscillating flow, in a resonator neck or in any tube. Airway clearance devices also make air oscillate, so the same dimensionless number can be written for them; that is an analogy offered by this folio, not a model of any therapy."
+          "kicker": "SIDENOTE E.03-A",
+          "body": "The Womersley number Wo = r √(ω/ν) compares a channel radius with the viscous boundary layer of an oscillating flow, in a resonator neck or in any tube."
         },
         "sidenote_2": {
           "kicker": "SIDENOTE E.03-B · SPECIFICATION PLATE · CSI 09 84 13 / 09 54 26",
@@ -351,19 +351,19 @@
           {
             "edition": "REV 1.3",
             "date": "2026-11-14",
-            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. The sputum yield-stress and oscillatory-stress figures (11.5 Pa, 14.8 Pa), the claim that chest-wall oscillation \"liquefies\" mucus, and the claim that this would multiply nanoparticle penetration were withdrawn as unsourced; the airway link is now an analogy. The panel test and formal compliance wording was withdrawn, the invented 1863 scene was replaced with plain dates, and the absorption readout was recomputed for zero reactance at resonance (0.9996). Critical coupling is now cited to Romero-García et al. (2016). A later review corrected the Womersley number definition (Wo = √2 r/δ_v), made the absorption range agree (125–315 Hz) and softened claims about what such panels achieve.",
+            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. The panel test and formal compliance wording was withdrawn, the invented 1863 scene was replaced with plain dates, and the absorption readout was recomputed for zero reactance at resonance (0.9996). Critical coupling is now cited to Romero-García et al. (2016). A later review corrected the Womersley number definition (Wo = √2 r/δ_v), made the absorption range agree (125–315 Hz) and softened claims about what such panels achieve.",
             "opus": "Review: every DOI in the folio was checked in Crossref and the Scite index on 2026-11-14, and the repository name with the GitHub API. No simulation or acoustic test was run for this folio; its numbers are outputs of the closed-form model on the page."
           },
           {
             "edition": "REV 1.2",
             "date": "2026-11-02",
-            "summary": "REV 1.2 (Redated 2026-11-02): Verified sub-wavelength Helmholtz viscothermal acoustic metamaterials (delta_v = sqrt(2*nu/omega), CSI 09 84 13) and oscillatory shear liquefaction of CF sputum plugs with multi-model peer review.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): checked that delta_v = 0.174 mm follows from the page formula. The word \"Verified\" in this note and in the notes below, the sputum liquefaction claim and the stress figures 14.8 Pa and 11.5 Pa are withdrawn in REV 1.3."
+            "summary": "REV 1.2 (Redated 2026-11-02): Verified sub-wavelength Helmholtz viscothermal acoustic metamaterials (delta_v = sqrt(2*nu/omega), CSI 09 84 13) with multi-model peer review.",
+            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): checked that delta_v = 0.174 mm follows from the page formula. The word \"Verified\" in this note and in the notes below is withdrawn in REV 1.3."
           },
           {
             "edition": "REV 1.1",
             "date": "2026-11-01",
-            "summary": "REV 1.1 (Redated 2026-11-01): Added Womersley oscillatory shear bridge to 15 Hz airway oscillation and CSI 09 84 13 cleanroom panel spec.",
+            "summary": "REV 1.1 (Redated 2026-11-01): Added CSI 09 84 13 cleanroom panel spec.",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified reflection coefficient |R|² = 0.002 at Z_s/Z_0 = 1.04 + 0.08i."
           },
           {
@@ -477,7 +477,7 @@
           {
             "edition": "REV 1.2",
             "date": "2026-11-14",
-            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. Unverified compliance claims on the specification plate (Passive House, Eurovent, EN 308), the \"zero pathogen crossover\" and \">99.6% aerosol\" claims, and the advice about equipment for bedrooms of people with Cystic Fibrosis were withdrawn as unsourced; the airway link is now an analogy. A chronology entry that dated the 1960 Journal of Applied Mechanics record to 1986 was corrected, the invented 1915 and 1955 scenes were replaced with plain dates, and the frost limit is now labelled as an illustrative linear estimate.",
+            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. Unverified compliance claims on the specification plate (Passive House, Eurovent, EN 308), the \"zero pathogen crossover\" and \">99.6% aerosol\" claims were withdrawn as unsourced. A chronology entry that dated the 1960 Journal of Applied Mechanics record to 1986 was corrected, the invented 1915 and 1955 scenes were replaced with plain dates, and the frost limit is now labelled as an illustrative linear estimate.",
             "opus": "Review: every DOI in the folio was checked in Crossref and the Scite index on 2026-11-14, and the repository names with the GitHub API. No simulation or test was run for this folio; the effectiveness values follow from epsilon = NTU / (1 + NTU)."
           },
           {
@@ -525,7 +525,7 @@
           "identifier": "E.05 · Geotechnical & Deep Foundations · CSI 31 63 23",
           "kernels": "σ'_v = σ_v − u · ∂u/∂t = c_v ∂²u/∂z² · CFA Bearing",
           "benchmarks": "Model values at defaults: T_v = 0.320 · U_avg = 63.2% (H_dr = 6 m, t = 3.6 yr)",
-          "bridge": "Terzaghi Consolidation ↔ Gel-on-Brush Airway Model (an analogy)"
+          "bridge": "Terzaghi Consolidation"
         },
         "sliders": [
           {
@@ -597,7 +597,7 @@
           {
             "edition": "REV 1.2",
             "date": "2026-11-14",
-            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. The claim that Terzaghi's equation is \"mathematically identical\" to airway physics, the 3.5 kPa periciliary figure and the treatment language were withdrawn; the gel-on-brush link to Button et al. (2012) is now an analogy with their own figures. The source entry for DOI 10.1061/(ASCE)GT.1943-5606.0000073 was corrected to Gavin, Cadogan & Casey, the readouts were recomputed from the page model (U_avg = 63.2%, Q_ult = 3,865 kN, r_u = 0.22), and the invented 1925 workshop scene and an unsourced 4.2 mm settlement result were removed. A later review corrected the page further: the pore-pressure ratio r_u is now described as a consolidation quantity, not a liquefaction result, the 0.65 and 0.35 capacity-reduction factors behind 3,865 kN are stated, and unsourced liquefaction and drainage claims were removed.",
+            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. The source entry for DOI 10.1061/(ASCE)GT.1943-5606.0000073 was corrected to Gavin, Cadogan & Casey, the readouts were recomputed from the page model (U_avg = 63.2%, Q_ult = 3,865 kN, r_u = 0.22), and the invented 1925 workshop scene and an unsourced 4.2 mm settlement result were removed. A later review corrected the page further: the pore-pressure ratio r_u is now described as a consolidation quantity, not a liquefaction result, the 0.65 and 0.35 capacity-reduction factors behind 3,865 kN are stated, and unsourced liquefaction and drainage claims were removed.",
             "opus": "Review: every DOI in the folio was checked in Crossref and the Scite index on 2026-11-14, and the repository names with the GitHub API. No finite-element analysis or site data stand behind this folio; its numbers come from the closed-form model and the stated assumptions."
           },
           {
@@ -717,7 +717,7 @@
           {
             "edition": "REV 1.2",
             "date": "2026-11-14",
-            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. The readouts were recomputed from the stated formula with S_D1 = 0.60 S_DS and B_M = 1.54 (D_M = 276 mm, not 232 mm; C_s = 0.137, not 0.142), and the \"immediate occupancy pass\", compliance and prototype-testing claims were withdrawn because no code check or test was done. The claims that isolation keeps facilities \"never offline\", the \"curative biomanufacturing\" wording and a \"sub-angstrom\" description of PDB 8EIQ (a 3.0 Å structure) were withdrawn, and the invented 1932 scene was replaced with plain dates.",
+            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. The readouts were recomputed from the stated formula with S_D1 = 0.60 S_DS and B_M = 1.54 (D_M = 276 mm, not 232 mm; C_s = 0.137, not 0.142), and the \"immediate occupancy pass\", compliance and prototype-testing claims were withdrawn because no code check or test was done. The claims that isolation keeps facilities \"never offline\", the \"curative biomanufacturing\" wording were withdrawn, and the invented 1932 scene was replaced with plain dates.",
             "opus": "Review: every DOI in the folio was checked in Crossref and the Scite index on 2026-11-14, and the repository names with the GitHub API. No response-history or finite-element analysis was run for this folio."
           },
           {
@@ -765,7 +765,7 @@
           "identifier": "E.07 · Bridge Aeroelastic Flutter & PINN SHM · CSI 05 12 00",
           "kernels": "Scanlan Flutter Derivatives A_2*(K), H_1*(K) · Euler–Bernoulli PINN Loss",
           "benchmarks": "Illustrative model values: U_crit = 76.4 m/s · PINN stress error 1.42% (8 sensors; no network trained)",
-          "bridge": "Sparse Bridge Accelerometer PINNs ↔ Airway Impedance Inversion (mathematical analogy only)"
+          "bridge": "Sparse Bridge Accelerometer PINNs"
         },
         "sliders": [
           {
@@ -837,7 +837,7 @@
           {
             "edition": "REV 1.1",
             "date": "2026-11-14",
-            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. U_crit = 76.4 m/s, net damping +2.84% and the 1.42% PINN error are now labelled as illustrative model values: no wind-tunnel test was run and no network was trained, and the claims of wind-tunnel verification and AASHTO LRFD compliance are withdrawn. The Tacoma Narrows account is cut back to the documented record and cites Scanlan & Tomko 1971 (DOI 10.1061/JMCEA3.0001526) and Billah & Scanlan 1991 (DOI 10.1119/1.16590). Statements that such digital twins are deployed are now written as proposals, and the airway note is marked as a mathematical analogy.",
+            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. U_crit = 76.4 m/s, net damping +2.84% and the 1.42% PINN error are now labelled as illustrative model values: no wind-tunnel test was run and no network was trained, and the claims of wind-tunnel verification and AASHTO LRFD compliance are withdrawn. The Tacoma Narrows account is cut back to the documented record and cites Scanlan & Tomko 1971 (DOI 10.1061/JMCEA3.0001526) and Billah & Scanlan 1991 (DOI 10.1119/1.16590). Statements that such digital twins are deployed are now written as proposals.",
             "opus": "Review: references checked by DOI in the Scite index on 2026-11-14; the reduced velocity was recomputed by hand (B = 36 m is now stated)."
           },
           {
@@ -998,7 +998,7 @@
           "identifier": "E.09 · Self-Healing Bio-Concrete · CSI 03 30 00",
           "kernels": "Lucas–Washburn Imbibition · Michaelis–Menten CaCO₃ · Coda-Wave CWI",
           "benchmarks": "Model: w_0 = 0.30 mm → w_rem = 0.018 mm (94.0% closure, illustrative) ⇒ (0.018/0.30)³ = 2.2 × 10⁻⁴ ⇒ −99.98% parallel-plate flow (w³ law)",
-          "bridge": "Continues E.01/E.07 · Analogy only: Ca²⁺-mediated mineral bridging ↔ Ca²⁺ in mucin gels"
+          "bridge": "Continues E.01/E.07"
         },
         "sliders": [
           {
@@ -1070,7 +1070,7 @@
           {
             "edition": "REV 1.1",
             "date": "2026-11-14",
-            "summary": "REV 1.1 (Grounding pass 2026-11-14): Withdrew the \"ACI 224R PASS\" verdict and other verification language; the healing limit, closure and stiffness figures are now labelled as model or design values. Corrected what the Jonkers et al. 2010 paper is cited for, replaced an invented opening scene and a misattributed Vitruvius/tobermorite claim, fixed a \"999 percent\" arithmetic error, and turned the mucus bridge into a stated analogy.",
+            "summary": "REV 1.1 (Grounding pass 2026-11-14): Withdrew the \"ACI 224R PASS\" verdict and other verification language; the healing limit, closure and stiffness figures are now labelled as model or design values. Corrected what the Jonkers et al. 2010 paper is cited for, replaced an invented opening scene and a misattributed Vitruvius/tobermorite claim, fixed a \"999 percent\" arithmetic error.",
             "opus": "Review: all DOIs checked against Crossref on 2026-11-14; cubic-law arithmetic recomputed ((0.018/0.30)^3 = 2.16e-4)."
           },
           {
@@ -1117,7 +1117,7 @@
           "identifier": "E.10 · 3D Concrete Printing Rheology & Buildability",
           "kernels": "Roussel Thixotropy A_thix · Suiker Elastic Buckling vs. Plastic Collapse",
           "benchmarks": "Model, ρ = 2,200 kg/m³ assumed: A_thix = 0.85 Pa/s < ρ g v_build/√3 = 5.5 Pa/s at v_build = 1.6 m/hr ⇒ base yields at H ≈ 0.04 m",
-          "bridge": "Continues E.02/A.01 · Analogy only: cement flocculation ↔ mucus as another thixotropic material"
+          "bridge": "Continues E.02/A.01"
         },
         "sliders": [
           {
@@ -1189,7 +1189,7 @@
           {
             "edition": "REV 1.1",
             "date": "2026-11-14",
-            "summary": "REV 1.1 (Grounding pass 2026-11-14): The headline figures H_crit = 2.84 m and SF = 1.68 did not follow from the folio's own plastic-collapse formula and are withdrawn; with ρ = 2,200 kg/m³ the default mix yields at about 0.04 m. Removed the \"ACI 564R PASS\" verdict and the ACI 564R citation, unsourced 45%/6.4× savings figures, an invented 1997 opening scene and an unrelated catalysis reference; the mucus bridge is now a stated analogy. A later review renamed the base shear criterion to von Mises (ρgH/√3; a Tresca criterion would give ρgH/2) and removed the buckling-height formula, which was not computed and was not dimensionally consistent as defined.",
+            "summary": "REV 1.1 (Grounding pass 2026-11-14): The headline figures H_crit = 2.84 m and SF = 1.68 did not follow from the folio's own plastic-collapse formula and are withdrawn; with ρ = 2,200 kg/m³ the default mix yields at about 0.04 m. Removed the \"ACI 564R PASS\" verdict and the ACI 564R citation, unsourced 45%/6.4× savings figures, an invented 1997 opening scene and an unrelated catalysis reference. A later review renamed the base shear criterion to von Mises (ρgH/√3; a Tresca criterion would give ρgH/2) and removed the buckling-height formula, which was not computed and was not dimensionally consistent as defined.",
             "opus": "Review: all DOIs checked against Crossref and the Scite index on 2026-11-14; plastic-collapse arithmetic recomputed by hand."
           },
           {
@@ -1600,7 +1600,7 @@
           "identifier": "A.02 · Reciprocal Timber Gridshells",
           "kernels": "1:50 Nexorade Bay + 1:5 Notched Lap Joint",
           "benchmarks": "Model values: M_lap = 5.15 kN·m (a = 0.373 m, λ = 0.25) · utilization 0.64 and SF 3.74 are illustrative",
-          "bridge": "Reciprocal Load Sharing ↔ CFTR NBD Dimer (a visual analogy only)"
+          "bridge": "Reciprocal Load Sharing"
         },
         "steps": [
           "Stage 1 (4-Valence Reciprocal Fan): Four GL28h larch members interlock in a pinwheel cyclic dependency so no more than two members meet at any single point.",
@@ -1650,7 +1650,7 @@
           {
             "edition": "REV 1.3",
             "date": "2026-11-14",
-            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. The model does not prove gridshells safe; earlier SAFE / PASS claims, buckling claims from COMPAS, and an unsourced 60% embodied carbon reduction claim are withdrawn; the utilization 0.64 and SF 3.74 are now labelled illustrative values. The bending moment now states its assumed member length (L = 1.493 m), the invented Song and Leonardo scenes are replaced by a plain account, and the CF section no longer makes health claims.",
+            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. The model does not prove gridshells safe; earlier SAFE / PASS claims, buckling claims from COMPAS, and an unsourced 60% embodied carbon reduction claim are withdrawn; the utilization 0.64 and SF 3.74 are now labelled illustrative values. The bending moment now states its assumed member length (L = 1.493 m), the invented Song and Leonardo scenes are replaced by a plain account.",
             "opus": "Review: references checked by DOI in Crossref and the Scite index; Scite search found no source for the 4x-6x span claim, so it was removed."
           },
           {
@@ -1722,7 +1722,7 @@
           "identifier": "A.03 · Facade Thermodynamics",
           "kernels": "1:50 Multi-Story Shaft + 1:5 Damper Sill",
           "benchmarks": "Model values: Δp = 3.92 Pa (ρ_0 = 1.2 kg/m³, H = 9.0 m, ΔT = 11.2 K, T_ext ≈ 303 K) · g_tot = 0.11 assumed",
-          "bridge": "Buoyancy Convective Clearance ↔ Airway Mucociliary Escalator (analogy only)"
+          "bridge": "Buoyancy Convective Clearance"
         },
         "steps": [
           "Stage 1 (Solar Shortwave Absorption): An assumed solar irradiance I_sol = 650 W/m² heats the ventilated blind positioned in the outer third of the 600 mm cavity.",
@@ -1910,7 +1910,7 @@
           {
             "edition": "REV 1.3",
             "date": "2026-11-14",
-            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. The PASS verdict, the claim that COMPAS verified the tie-rod safety factor, and the claims that Archigram directly mentored Foster and Rogers were unsourced and are withdrawn; V_p = 4,800 kN and SF = 3.12 are now labelled as assumed and illustrative. The invented 1961 founding scene, a source entry that did not exist as cited, and claims about gene-therapy pods and CF wards are replaced by a plain account and a modest, labelled proposal.",
+            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. The PASS verdict, the claim that COMPAS verified the tie-rod safety factor, and the claims that Archigram directly mentored Foster and Rogers were unsourced and are withdrawn; V_p = 4,800 kN and SF = 3.12 are now labelled as assumed and illustrative. The invented 1961 founding scene, a source entry that did not exist as cited are replaced by a plain account and a modest, labelled proposal.",
             "opus": "Review: references checked by DOI in Crossref and the Scite index; Scite found no paper on the Pompidou gerberettes, so those details are kept to standard history only."
           },
           {
@@ -1957,7 +1957,7 @@
           "identifier": "A.05 · Architectural Acoustics · CSI 09 84 00",
           "kernels": "T_60,Eyring = 0.62 s (model) · STI = 0.74 (illustrative)",
           "benchmarks": "Model values: V = 2,400 m³, S ≈ 1,075 m², α_bar = 0.44 → Eyring 0.62 s, Sabine 0.82 s",
-          "bridge": "Quieter, Clearer Rooms ↔ CF Clinic Conversations (context only)"
+          "bridge": "Quieter, Clearer Rooms"
         },
         "sliders": [
           {
@@ -2071,7 +2071,7 @@
           "identifier": "A.06 · Hydro-Tectonics",
           "kernels": "Kadlec-Knight k-C* · Chick-Watson 5.4-Log UV-C",
           "benchmarks": "Model values: 95.1% BOD_5 removal · 5.4-log UV-C design dose",
-          "bridge": "Biofilm-Control Plumbing ↔ CF Infection-Prevention Context"
+          "bridge": "Biofilm-Control Plumbing"
         },
         "sliders": [
           {
@@ -2137,7 +2137,7 @@
           {
             "edition": "REV 1.2",
             "date": "2026-11-14",
-            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. Earlier editions said the design eradicates pathogens and showed a zero-biofilm verdict; nothing here was measured, so those statements are withdrawn and every number is labelled as a model value. Claims about sink drains and Cystic Fibrosis had been attributed to a wetlands textbook; they now cite Kotay et al. 2017 (DOI 10.1128/AEM.03327-16) and the CF infection prevention guideline (DOI 10.1086/676882). The opening scene about Käthe Seidel was not sourced and is replaced by a plain account. A later review corrected the title (the CSI 22 13 00 label and \"pathogen-control\" are removed), stated the assumed wetland constants and a consistent bed depth, and softened the readout verdict and the Spanish text.",
+            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. Earlier editions said the design eradicates pathogens and showed a zero-biofilm verdict; nothing here was measured, so those statements are withdrawn and every number is labelled as a model value. The opening scene about Käthe Seidel was not sourced and is replaced by a plain account. A later review corrected the title (the CSI 22 13 00 label and \"pathogen-control\" are removed), stated the assumed wetland constants and a consistent bed depth, and softened the readout verdict and the Spanish text.",
             "opus": "Review: new references checked by DOI in Crossref and the Scite index."
           },
           {
@@ -2420,7 +2420,7 @@
           "identifier": "A.09 · Hygroscopic Timber Skins & Timoshenko Curvature · CSI 06 18 00",
           "kernels": "Timoshenko Bilayer Curvature · Orthotropic Wood Sorption (α_T vs. α_L)",
           "benchmarks": "Model values: ΔMC = +6.0% · h = 6.0 mm · m = 2 · n = 10.6 ⇒ κ = 1.42 m⁻¹ · δ_tip = 128 mm",
-          "bridge": "Completes A.02/E.04 · Wood Cell-Wall Swelling ↔ P.04 Periciliary Brush (Loose Analogy)"
+          "bridge": "Completes A.02/E.04 · Wood Cell-Wall Swelling"
         },
         "sliders": [
           {
@@ -2492,7 +2492,7 @@
           {
             "edition": "REV 1.1",
             "date": "2026-11-14",
-            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The curvature 1.42 m⁻¹ did not follow from the stated formula without the ply ratios, so the assumed m = 2 and n = 10.6 are now stated (equal plies would give 4.62 m⁻¹). The opening scenes about Timoshenko and Menges were not sourced and are replaced by a plain account; beech skins are no longer attributed to the Stuttgart projects. The PASS verdict, the 10,000-cycle claim and the statement that wood swelling obeys the same law as the airway periciliary brush are withdrawn; the last is now called an analogy.",
+            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The curvature 1.42 m⁻¹ did not follow from the stated formula without the ply ratios, so the assumed m = 2 and n = 10.6 are now stated (equal plies would give 4.62 m⁻¹). The opening scenes about Timoshenko and Menges were not sourced and are replaced by a plain account; beech skins are no longer attributed to the Stuttgart projects. The PASS verdict and the 10,000-cycle claim are withdrawn.",
             "opus": "Review: references checked by DOI in Crossref and the Scite index; arithmetic recomputed from the stated formula."
           },
           {
@@ -2540,7 +2540,7 @@
           "identifier": "A.10 · Kinetic Origami & Auxetic Mashrabiya Facades · CSI 10 71 13",
           "kernels": "Miura-Ori Spherical Vertex Law · Schenk–Guest Auxetic ν_xy = −tan² φ",
           "benchmarks": "Model values: α = 64° · θ = 36° ⇒ ν_xy ≈ −0.37 (folio parametrization) · SHGC = 0.19 (assumed SHGC_glass = 0.60, η_shade = 0.845)",
-          "bridge": "Completes A.04/A.03/M.05 · Loose analogy only: one-degree-of-freedom hinged motion ↔ protein domain motion (not a model of CFTR)"
+          "bridge": "Completes A.04/A.03/M.05"
         },
         "sliders": [
           {
@@ -2612,7 +2612,7 @@
           {
             "edition": "REV 1.1",
             "date": "2026-11-14",
-            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The opening scene of Miura folding paper at his desk was not sourced and is replaced by a plain account; the JAXA attribution (JAXA was founded in 2003) and the 1980 date are corrected to Miura's 1985 ISAS report. The Poisson ratio, secondary fold angle and SHGC now follow from the folio's own formulas (−0.37, 16.2°, 0.19 with stated assumptions); unsourced cooling-energy savings, wind testing, \"zero jam\" and a CFTR structure claim are withdrawn, and an unrelated graphic-statics source is removed.",
+            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The opening scene of Miura folding paper at his desk was not sourced and is replaced by a plain account; the JAXA attribution (JAXA was founded in 2003) and the 1980 date are corrected to Miura's 1985 ISAS report. The Poisson ratio, secondary fold angle and SHGC now follow from the folio's own formulas (−0.37, 16.2°, 0.19 with stated assumptions); unsourced cooling-energy savings, wind testing and \"zero jam\" are withdrawn, and an unrelated graphic-statics source is removed.",
             "opus": "Review: references checked by DOI in Crossref; arithmetic recomputed from the stated formulas."
           },
           {
@@ -5722,349 +5722,10 @@
           "retracted": false,
           "summary": "Scite Smart Citation Index (fetched 2026-11-08): 0 retractions; 2,512 citing publications (0 supporting, 708 mentioning, 0 contrasting) for Regev, On lattices, learning with errors, random linear codes, and cryptography (Journal of the ACM, 2009), the paper behind the LWE problem used in ML-KEM."
         }
-      },
-      {
-        "folio_id": "M.13",
-        "slug": "m13",
-        "pillar": "math",
-        "category_code": "M",
-        "parent_folios": [
-          "M.01",
-          "M.12"
-        ],
-        "lineage_mode": "CONTINUATION · Extends M.01 Formal Proof Checking & M.12 Lean 4 Context to the SAIR Lean Kernel Challenge",
-        "title": "The SAIR Lean Kernel Challenge: Trusted Type-Checking, Reflection & Proof-Term Reduction",
-        "subtitle": "Following XTX Markets’ 16 September 2026 reallocation of AI-for-math funding from AIMO to the SAIR Foundation, Mathlib, and Lean FRO: why separating untrusted tactic search from a small type-checking kernel makes proof checking tractable, and how reflection compresses unary Peano steps into logarithmic reduction.",
-        "date_published": "2026-11-15",
-        "date_redated": "2026-11-15",
-        "current_edition": "REV 1.0",
-        "status_badge": "SAIR LEAN KERNEL · VOL. VII",
-        "primary_kernel": "skills/math/m13/verify_m13_lean_kernel_reduction.py",
-        "governing_law": "Γ ⊢ t : T (de Bruijn kernel isolation) · Binary fast-doubling F_1024 mod (10⁹ + 7) = 754,854,590 in 33 modular muls vs. 1,024 unary steps",
-        "colophon": {
-          "identifier": "M.13 · SAIR Lean Kernel Challenge & Reflection Reduction (competition.sair.foundation)",
-          "kernels": "Dependently typed CIC kernel checking · Proof by reflection (Boutin 1997; Grégoire–Leroy 2002) · Fast binary doubling vs. unary Peano reduction",
-          "benchmarks": "F_1024 mod 1,000,000,007 = 754,854,590 · recursion depth 12 · 33 modular multiplications vs. 1,024 unary steps (31.03x step ratio)",
-          "bridge": "Extends M.01/M.12 · Tiny airport passport checker (kernel) vs. sprawling logistics network (elaborator)"
-        },
-        "sliders": [
-          {
-            "label": "Fibonacci Reduction Index (n)",
-            "min": 64,
-            "max": 2048,
-            "step": 64,
-            "value": 1024,
-            "unit": "n = "
-          },
-          {
-            "label": "Binary Doubling Call Depth (d_rec)",
-            "min": 7,
-            "max": 12,
-            "step": 1,
-            "value": 11,
-            "unit": "d_rec = "
-          }
-        ],
-        "steps": [
-          "Stage 1 (de Bruijn Criterion & Kernel Isolation): A proof assistant separates tactic heuristics and neural search in the elaborator from a compact, independent type-checker—the Lean 4 kernel (de Moura & Ullrich 2021, DOI 10.1007/978-3-030-79876-5_37)—so a bug in search cannot sneak an unsound theorem past Γ ⊢ t : T.",
-          "Stage 2 (The Definitional Reduction Bottleneck): Inside a formal kernel, evaluating arithmetic or algebraic normal forms step-by-step on unary Peano natural numbers forces O(n) or O(n²) term traversals, choking the type-checker even when the underlying mathematical argument is sound.",
-          "Stage 3 (Proof by Reflection & Compiled Reduction): Proof by reflection (Boutin 1997, DOI 10.1007/bfb0014565) and compiled strong reduction (Grégoire & Leroy 2002, DOI 10.1145/581478.581501) replace long proof terms with a decision algorithm plus one soundness lemma; binary fast doubling reduces F_1024 mod (10⁹ + 7) = 754,854,590 in 33 multiplications instead of 1,024 sequential steps.",
-          "Stage 4 (The SAIR Lean Kernel Challenge Landscape): On 16 September 2026, XTX Markets concluded the AIMO Prize and directed philanthropy toward Lean FRO ($10M to 2030), the Mathlib Initiative ($10M to 2030), and SAIR competitions including the Lean Kernel Challenge (https://competition.sair.foundation/), targeting high-throughput checking of complex proof terms."
-        ],
-        "readouts": [
-          {
-            "label": "Binary Reflection Output (F_1024 mod 1e9+7)",
-            "value": "754,854,590 (matches linear DP)"
-          },
-          {
-            "label": "Binary Doubling Work vs. Unary Steps",
-            "value": "33 modular muls vs. 1,024 steps (31.03x)"
-          },
-          {
-            "label": "Fast-Doubling Recursion Tree Depth",
-            "value": "12 frames (n = 1,024)"
-          },
-          {
-            "label": "Trusted Boundary",
-            "value": "Kernel checks Γ ⊢ t : T independent of search"
-          }
-        ],
-        "spec_plate": {
-          "division": "FORMAL TYPE THEORY / DEPENDENT KERNELS / ALGORITHMIC REDUCTION",
-          "title": "Lean 4 Kernel Architecture (de Moura & Ullrich 2021), Reflection & SAIR Research Track",
-          "body": "Contrasts O(n) unary term expansion inside a Calculus of Inductive Constructions kernel against O(log n) binary reflection (Boutin 1997; Grégoire & Leroy 2002), grounded in the SAIR Lean Kernel Challenge following XTX Markets’ 2026-09-16 announcement.",
-          "meta": "Verifier skills/math/m13/verify_m13_lean_kernel_reduction.py computes F_1024 mod 10^9+7 offline and rejects sign-corrupted doubling recurrences under --planted-defect."
-        },
-        "sidenote_1": {
-          "kicker": "SIDENOTE M.13-A · THE DE BRUIJN CRITERION",
-          "body": "Named after Automath pioneer N. G. de Bruijn, the criterion states that trust rests exclusively in a small, independently re-implementable kernel that checks explicit proof objects Γ ⊢ t : T, regardless of how complex or opaque the tactics or AI models generating t may be."
-        },
-        "sidenote_2": {
-          "kicker": "SIDENOTE M.13-B · XTX REALLOCATION (2026-09-16)",
-          "body": "XTX Markets’ 16 September 2026 philanthropy update ended the AIMO Prize (~$1.62M awarded across AIMO 1–3 and the Proof Pilot) and shifted resources to Lean FRO ($10M to 2030), Mathlib ($10M to 2030), and SAIR research challenges (competition.sair.foundation)."
-        },
-        "skill": {
-          "filename": "sair-lean-kernel-reduction-SKILL.md",
-          "name": "sair-lean-kernel-reduction",
-          "description": "AI-agnostic formal type-checking and kernel reduction skill for Folio M.13: de Bruijn isolation between elaborator search and kernel Γ ⊢ t : T checking, proof by reflection (Boutin 1997; Grégoire–Leroy 2002), and the binary fast-doubling verifier skills/math/m13/verify_m13_lean_kernel_reduction.py.",
-          "rules": [
-            "Keep search heuristics, LLM tactic synthesis, and elaborator macros outside the trusted computing base; trust only what passes an explicit, minimal Γ ⊢ t : T kernel checker.",
-            "Avoid unary Peano O(n) reduction inside kernel conversion checks; replace linear step-by-step witness chains with binary reflection identities F_{2k} = F_k (2 F_{k+1} - F_k) and explicit soundness lemmas.",
-            "Validate the binary vs. linear equivalence deterministically via python -X utf8 skills/math/m13/verify_m13_lean_kernel_reduction.py and test failure detection with --planted-defect."
-          ]
-        },
-        "revisions": [
-          {
-            "edition": "REV 1.0",
-            "date": "2026-11-15",
-            "summary": "REV 1.0 (Published 2026-11-15): Initial Volume VII SAIR Research Folio pairing the SAIR Lean Kernel Challenge (XTX 2026-09-16 shift) with de Moura & Ullrich (2021), Grégoire & Leroy (2002), Boutin (1997), and deterministic verifier verify_m13_lean_kernel_reduction.py.",
-            "opus": "All primary DOIs checked via Crossref and Scite (Moura 2021: 685 citing publications, 0 retractions); binary vs. linear Fibonacci reduction computed offline across 1,024 steps."
-          }
-        ],
-        "volume": 7,
-        "volume_code": "VOL. 07",
-        "reading_time": "20 MIN READ",
-        "word_count": "4,550 WORDS",
-        "scite": {
-          "doi": "10.1007/978-3-030-79876-5_37",
-          "fetched_on": "2026-11-15",
-          "citing_publications": 685,
-          "supporting": 0,
-          "mentioning": 370,
-          "contrasting": 0,
-          "retracted": false,
-          "summary": "Scite Smart Citation Index (fetched 2026-11-15): 0 retractions; 685 citing publications (0 supporting, 370 mentioning, 0 contrasting) for de Moura & Ullrich (2021), The Lean 4 Theorem Prover and Programming Language."
-        }
-      },
-      {
-        "folio_id": "M.14",
-        "slug": "m14",
-        "pillar": "math",
-        "category_code": "M",
-        "parent_folios": [
-          "M.04",
-          "M.10"
-        ],
-        "lineage_mode": "CONTINUATION · Couples M.04 Equational Rewrite Graphs & M.10 Low-Dimensional Topology to the SAIR Andrews–Curtis Challenge",
-        "title": "The Andrews–Curtis Conjecture & SAIR Challenge: Balanced Presentations, 4-Manifold Handles & Akbulut–Kirby Pairs",
-        "subtitle": "Formulated by Andrews and Curtis in 1965 and benchmarked by XTX-backed SAIR competitions: why a two-relator presentation of the trivial group can pass through deeper intermediate word lengths before collapsing via three elementary algebraic moves.",
-        "date_published": "2026-11-15",
-        "date_redated": "2026-11-15",
-        "current_edition": "REV 1.0",
-        "status_badge": "ANDREWS–CURTIS · VOL. VII",
-        "primary_kernel": "skills/math/m14/verify_m14_andrews_curtis_moves.py",
-        "governing_law": "AC moves {r_i ↦ r_i⁻¹, r_i ↦ r_i r_j (i≠j), r_i ↦ w r_i w⁻¹} · AK(2) = ⟨x, y | x y x = y x y, x² = y³⟩ (length 11) collapses to ⟨x, y | x, y⟩ (length 2) in 23 moves",
-        "colophon": {
-          "identifier": "M.14 · Andrews–Curtis Conjecture & SAIR Search Challenge (competition.sair.foundation)",
-          "kernels": "Free-group word reduction Engine ⟨x, y⟩ · Elementary Andrews–Curtis moves (INV, MUL, CONJ) · Akbulut–Kirby AK(n) presentation family",
-          "benchmarks": "AK(2) total length 11 → trivial length 2 in 23 AC moves (peak intermediate length 14); AK(3) starts at length 13 with |det| = 1 trivial abelianization",
-          "bridge": "Extends M.04/M.10 · Untangling a pair of knotted handlebody loops when intermediate loops must briefly lengthen"
-        },
-        "sliders": [
-          {
-            "label": "Akbulut–Kirby Parameter (k)",
-            "min": 1,
-            "max": 5,
-            "step": 1,
-            "value": 2,
-            "unit": "k = "
-          },
-          {
-            "label": "Elementary AC Move Trace Budget (moves)",
-            "min": 5,
-            "max": 30,
-            "step": 1,
-            "value": 23,
-            "unit": "moves = "
-          }
-        ],
-        "steps": [
-          "Stage 1 (Andrews & Curtis 1965): J. J. Andrews and M. L. Curtis (Proc. AMS, DOI 10.2307/2033843) asked whether every balanced finite presentation of the trivial group can be reduced to the empty identity ⟨x_1, …, x_n | x_1, …, x_n⟩ using only relator inversion, relator multiplication (i ≠ j), and free-group conjugation—excluding stabilization by extra generator/relator pairs.",
-          "Stage 2 (4-Manifold Topology & Akbulut–Kirby Pairs): Selman Akbulut and Robion Kirby (Topology 1985, DOI 10.1016/0040-9383(85)90010-2) constructed infinite families such as AK(n) = ⟨x, y | x y x = y x y, xⁿ = yⁿ⁺¹⟩ arising from 4-manifold handleslides, generating classic stress tests for combinatorial search.",
-          "Stage 3 (Non-Monotonic Search Landscapes & AK(2) Trace): Even simple trivializations are non-monotonic. Running skills/math/m14/verify_m14_andrews_curtis_moves.py replays 23 elementary AC moves on AK(2), temporarily swelling total relator length from 11 up to 14 before collapsing cleanly to ⟨x, y | x, y⟩ (length 2).",
-          "Stage 4 (AI Search & SAIR Challenge): Deep reinforcement learning and discrete search methods (Gukov et al. 2021, DOI 10.1088/2632-2153/abe91f) explore super-exponential AC move graphs; the SAIR Andrews–Curtis Conjecture Challenge (https://competition.sair.foundation/) benchmarks open search algorithms on harder balanced presentations."
-        ],
-        "readouts": [
-          {
-            "label": "AK(2) Initial → Peak → Final Length",
-            "value": "11 → 14 → 2 (⟨x, y | x, y⟩)"
-          },
-          {
-            "label": "Elementary AC Moves Replayed (AK(2))",
-            "value": "23 valid free-group moves"
-          },
-          {
-            "label": "AK(3) Initial Length & |det(Ab)|",
-            "value": "13 symbols · |det| = 1 (trivial Z⁰)"
-          },
-          {
-            "label": "Conjecture Open Status",
-            "value": "Open since 1965 (stable AC uses Tietze add)"
-          }
-        ],
-        "spec_plate": {
-          "division": "COMBINATORIAL GROUP THEORY / 4-MANIFOLD HANDLES / HEURISTIC SEARCH",
-          "title": "Andrews–Curtis (1965), Akbulut–Kirby Potential Counterexamples (1985) & ML Search (2021)",
-          "body": "Tracks free-group presentation reduction under restricted Nielsen-type moves without stabilization, contrasting abelianization checks against exact non-abelian word reduction for AK(2) and AK(3).",
-          "meta": "Verifier skills/math/m14/verify_m14_andrews_curtis_moves.py checks the explicit 23-step AK(2) AC trace and fails under --planted-defect by dropping conjugation inverses."
-        },
-        "sidenote_1": {
-          "kicker": "SIDENOTE M.14-A · STABLE VS. UNSTABLE MOVES",
-          "body": "If you allow adding and later removing a temporary extra generator z with relator z = 1 (stabilization), any two presentations of the same finitely presented group become Tietze-equivalent. The Andrews–Curtis Conjecture asks whether balanced trivial presentations ever force such temporary extra generators."
-        },
-        "sidenote_2": {
-          "kicker": "SIDENOTE M.14-B · NON-MONOTONIC VALLEY CROSSING",
-          "body": "Greedy solvers minimizing relator word length fail immediately on Akbulut–Kirby pairs because early AC moves must lengthen relators (11 → 14 symbols in AK(2)) to align opposite generator inverses before cancellation triggers."
-        },
-        "skill": {
-          "filename": "sair-andrews-curtis-moves-SKILL.md",
-          "name": "sair-andrews-curtis-moves",
-          "description": "AI-agnostic combinatorial group theory skill for Folio M.14: Andrews–Curtis equivalence moves in free groups ⟨x, y⟩, Akbulut–Kirby AK(n) benchmark presentations, and explicit replay via skills/math/m14/verify_m14_andrews_curtis_moves.py.",
-          "rules": [
-            "Allow strictly the three Andrews–Curtis operations: relator inversion r_i -> r_i^-1, relator multiplication r_i -> r_i r_j (i != j), and free-group conjugation r_i -> w r_i w^-1; never insert extra generators.",
-            "Maintain free-group cancellation g g^-1 -> eps at every multiplication and conjugation seam, and evaluate candidate reductions without assuming greedy length monotonicity.",
-            "Verify the explicit 23-move AK(2) trivialization trace offline with python -X utf8 skills/math/m14/verify_m14_andrews_curtis_moves.py and check --planted-defect detection."
-          ]
-        },
-        "revisions": [
-          {
-            "edition": "REV 1.0",
-            "date": "2026-11-15",
-            "summary": "REV 1.0 (Published 2026-11-15): Volume VII SAIR Research Folio introducing the Andrews–Curtis Conjecture (Andrews & Curtis 1965), Akbulut–Kirby families (1985), ML search benchmarks (Gukov et al. 2021), and exact AK(2) AC replay verifier verify_m14_andrews_curtis_moves.py.",
-            "opus": "All primary DOIs verified via Crossref and Scite (Andrews 1965: 36 citing publications, 0 retractions); explicit 23-step AK(2) reduction trace executed and checked cleanly."
-          }
-        ],
-        "volume": 7,
-        "volume_code": "VOL. 07",
-        "reading_time": "21 MIN READ",
-        "word_count": "4,620 WORDS",
-        "scite": {
-          "doi": "10.2307/2033843",
-          "fetched_on": "2026-11-15",
-          "citing_publications": 36,
-          "supporting": 0,
-          "mentioning": 1,
-          "contrasting": 0,
-          "retracted": false,
-          "summary": "Scite Smart Citation Index (fetched 2026-11-15): 0 retractions; 36 citing publications (0 supporting, 1 mentioning, 0 contrasting) for Andrews & Curtis (1965), Free groups and handlebodies."
-        }
-      },
-      {
-        "folio_id": "M.15",
-        "slug": "m15",
-        "pillar": "math",
-        "category_code": "M",
-        "parent_folios": [
-          "M.01",
-          "M.02"
-        ],
-        "lineage_mode": "CONTINUATION · Couples M.01 Galois Representations & M.02 Analytic Density to the SAIR Inverse Galois Challenge (IGP24)",
-        "title": "The Inverse Galois Problem & SAIR IGP24 Challenge: Rational Polynomial Realizations & Dedekind Frobenius Cycles",
-        "subtitle": "Emmy Noether’s century-old question meets SAIR’s IGP24 benchmark: hunting explicit polynomials f(x) ∈ ℤ[x] whose roots permute under a specified finite group G—including degree-24 groups where discriminants, height bounds, and Chebotarev cycle densities leave sharp arithmetic fingerprints.",
-        "date_published": "2026-11-15",
-        "date_redated": "2026-11-15",
-        "current_edition": "REV 1.0",
-        "status_badge": "INVERSE GALOIS IGP24 · VOL. VII",
-        "primary_kernel": "skills/math/m15/verify_m15_inverse_galois_dedekind.py",
-        "governing_law": "Gal(f/ℚ) ↪ S_n identified mod p via Frobenius cycle partitions (Dedekind) & Chebotarev density |C|/|G| · Test polynomial f(x) = x⁴ − x − 1 (Δ = −283, Gal = S₄): 13/50 = 0.260 vs. 6/24 = 0.250 4-cycles",
-        "colophon": {
-          "identifier": "M.15 · SAIR Inverse Galois Problem Challenge (IGP24 · competition.sair.foundation)",
-          "kernels": "Exact F_p[x] distinct-degree factorization (gcd(x^(p^d) − x, f)) · Dedekind cycle partition classifier · Chebotarev density check",
-          "benchmarks": "x⁴ − x − 1 (disc = −283): 50 unramified primes p ≠ 283 yield (4,)×13, (3,1)×18, (2,1,1)×11, (2,2)×7, (1,1,1,1)×1 → S₄ of order 24 (26.0% vs 25.0% 4-cycles)",
-          "bridge": "Extends M.01/M.02 · Shadow-casting armillary prism revealing a hidden symmetry group from mod-p cross-sections"
-        },
-        "sliders": [
-          {
-            "label": "Unramified Primes Sampled (P)",
-            "min": 20,
-            "max": 60,
-            "step": 5,
-            "value": 50,
-            "unit": "P = "
-          },
-          {
-            "label": "Polynomial Extension Degree (deg)",
-            "min": 4,
-            "max": 24,
-            "step": 1,
-            "value": 4,
-            "unit": "deg = "
-          }
-        ],
-        "steps": [
-          "Stage 1 (Hilbert–Noether Inverse Galois Problem): Does every finite group G occur as the Galois group Gal(K/ℚ) of some finite Galois extension K over the rational numbers ℚ? While symmetric, alternating, and solvable groups are settled (Shafarevich; Malle & Matzat, DOI 10.1007/978-3-662-55420-3), concrete minimal-degree polynomials for specific transitive subgroups—especially degree-24 benchmarks in SAIR’s IGP24—remain computationally demanding.",
-          "Stage 2 (Discriminant Ramification & Dedekind’s Theorem): Reducing a monic integer polynomial f(x) modulo any prime p not dividing its discriminant yields degrees of irreducible factors in F_p[x] that directly equal the cycle lengths of a genuine Frobenius permutation inside Gal(f/ℚ).",
-          "Stage 3 (Chebotarev Equidistribution & Frobenius Fingerprints): By Chebotarev’s density theorem and Dokchitser & Dokchitser’s invariant-resolvent framework (2013, DOI 10.2140/ant.2013.7.1325), each conjugacy class C ⊂ G occurs across unramified primes in proportion |C| / |G|. For f(x) = x⁴ − x − 1 (Δ = −283), sampling the first 50 unramified primes yields 13 four-cycles (26.0% vs. 6/24 = 25.0%), alongside 3-cycles and transpositions generating S₄.",
-          "Stage 4 (LMFDB, Transitive Group Classification & IGP24): Databases of number fields (Jones & Roberts 2014, DOI 10.1112/s1461157014000424) and Hulpke’s transitive permutation classification (2005, DOI 10.1016/j.jsc.2004.08.002) underpin modern Galois identification; SAIR’s IGP24 (https://competition.sair.foundation/) challenges solvers to construct missing explicit polynomials of degree 24."
-        ],
-        "readouts": [
-          {
-            "label": "Sampled Polynomial & Discriminant",
-            "value": "f(x) = x⁴ − x − 1 (Δ = −283)"
-          },
-          {
-            "label": "Observed 4-Cycle Share vs. Chebotarev",
-            "value": "13/50 = 26.0% vs. 6/24 = 25.0%"
-          },
-          {
-            "label": "Dedekind Subgroup Identification (50 Primes)",
-            "value": "All 5 S₄ classes present (order 24)"
-          },
-          {
-            "label": "SAIR IGP24 Benchmark Frontier",
-            "value": "Explicit polynomials at degree 24 over ℚ"
-          }
-        ],
-        "spec_plate": {
-          "division": "ALGEBRAIC NUMBER THEORY / GALOIS THEORY / COMPUTATIONAL ARITHMETIC",
-          "title": "Dedekind Frobenius Factorization, Dokchitser Resolvents (2013) & SAIR IGP24 Challenge",
-          "body": "Connects rational Galois realization theory (Malle & Matzat 2018; Jones & Roberts 2014; Hulpke 2005) and Dokchitser Frobenius identification (2013, DOI 10.2140/ant.2013.7.1325) with SAIR’s IGP24 degree-24 challenge.",
-          "meta": "Verifier skills/math/m15/verify_m15_inverse_galois_dedekind.py runs exact F_p[x] distinct-degree factorization over the first 50 unramified primes and fails under --planted-defect."
-        },
-        "sidenote_1": {
-          "kicker": "SIDENOTE M.15-A · WHY DEGREE 24 IN IGP24?",
-          "body": "Finding a polynomial realizing a finite group G of small degree is easy for S_n and A_n, yet by degree 24 there are 25,000 transitive permutation subgroups of S₂₄ (Hulpke 2005 / LMFDB extensions), and many non-solvable or twisted imprimitive groups lack known low-height rational polynomials."
-        },
-        "sidenote_2": {
-          "kicker": "SIDENOTE M.15-B · WHY SKIP p = 283?",
-          "body": "For x⁴ − x − 1, the depressed-quartic discriminant is 256(−1)³ − 27(−1)⁴ = −283. At the ramified prime p = 283, f(x) develops a repeated root factor in F_p[x], so Dedekind’s cycle correspondence strictly skips ramified primes."
-        },
-        "skill": {
-          "filename": "sair-inverse-galois-dedekind-SKILL.md",
-          "name": "sair-inverse-galois-dedekind",
-          "description": "AI-agnostic computational number theory skill for Folio M.15: Dedekind Frobenius cycle-type factorization in F_p[x], Chebotarev equidistribution, transitive group identification (Dokchitser 2013; Jones & Roberts 2014; Hulpke 2005), and verifier skills/math/m15/verify_m15_inverse_galois_dedekind.py.",
-          "rules": [
-            "Exclude primes dividing the polynomial discriminant disc(f) before invoking Dedekind’s theorem relating factor degrees in F_p[x] to cycle types in Gal(f/Q).",
-            "Compute exact Frobenius action via repeated p-th power composition x -> x^p mod (f, p) inside gcd(x^(p^d) - x, f), never linearized exponents p * d.",
-            "Run python -X utf8 skills/math/m15/verify_m15_inverse_galois_dedekind.py to audit all 50 unramified primes and test failure detection under --planted-defect."
-          ]
-        },
-        "revisions": [
-          {
-            "edition": "REV 1.0",
-            "date": "2026-11-15",
-            "summary": "REV 1.0 (Published 2026-11-15): Volume VII SAIR Research Folio pairing the SAIR Inverse Galois Problem Challenge (IGP24) with Dokchitser & Dokchitser (2013), Jones & Roberts (2014), Hulpke (2005), Malle & Matzat (2018), and finite-field Frobenius verifier verify_m15_inverse_galois_dedekind.py.",
-            "opus": "All 4 Galois/number-field DOIs checked via Crossref and Scite (Dokchitser 2013: 24 citing publications, 0 retractions); exact F_p[x] DDF verified across 50 unramified primes (13/50 4-cycles, disc = -283)."
-          }
-        ],
-        "volume": 7,
-        "volume_code": "VOL. 07",
-        "reading_time": "22 MIN READ",
-        "word_count": "4,680 WORDS",
-        "scite": {
-          "doi": "10.2140/ant.2013.7.1325",
-          "fetched_on": "2026-11-15",
-          "citing_publications": 24,
-          "supporting": 0,
-          "mentioning": 31,
-          "contrasting": 0,
-          "retracted": false,
-          "summary": "Scite Smart Citation Index (fetched 2026-11-15): 0 retractions; 24 citing publications (0 supporting, 31 mentioning, 0 contrasting) for Dokchitser & Dokchitser (2013), Identifying Frobenius elements in Galois groups."
-        }
       }
     ]
   },
-  "total_volumes": 7,
+  "total_volumes": 6,
   "volumes": [
     {
       "volume": 1,
@@ -6178,20 +5839,6 @@
         "p12",
         "m11",
         "m12"
-      ]
-    },
-    {
-      "volume": 7,
-      "code": "VOL. 07",
-      "roman": "Volume VII",
-      "kicker": "VOLUME VII (VOL. 07) · SAIR RESEARCH MATHEMATICS CHALLENGES (XTX 2026-09-16 REALIGNMENT): LEAN KERNEL, ANDREWS–CURTIS & INVERSE GALOIS · 3 FOLIOS",
-      "title": "The SAIR Lean Kernel Challenge, the Andrews–Curtis Conjecture & the Inverse Galois Problem (IGP24)",
-      "subtitle": "Three Volume VII mathematics monographs (M.13–M.15) following XTX Markets’ 16 September 2026 reallocation from AIMO toward foundational Lean infrastructure and SAIR Foundation research benchmarks: formal type-checking kernels and binary reflection reduction (M.13), Akbulut–Kirby balanced presentations under Andrews–Curtis moves (M.14), and Dedekind Frobenius cycle-type realizations over ℚ (M.15).",
-      "cadence": "Living Monograph Release · SAIR Research Mathematics Track",
-      "folios": [
-        "m13",
-        "m14",
-        "m15"
       ]
     }
   ]

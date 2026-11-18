@@ -4,7 +4,7 @@
   "title": "Informatico.ai Special Feature — Grand Challenges & Open Problems Crucible",
   "date_convened": "2026-11-07",
   "date_redated": "2026-11-15",
-  "status_audit_note": "2026-11-15 audit: XTX Markets closed AIMO Prize (2026-09-16) and funded SAIR Challenges (Folios M.13–M.15); XPRIZE Quantum closed to new entrants (May 2026); XPRIZE Carbon closed (Apr 2025); Holcim 8th cycle closed (Feb/Nov 2025); Global Cooling closed (2021); unitaryHACK 2026 concluded (June 2026). Active routes: Erdős #30, Unitary Microgrants/Metriq, SAIR (M.13–M.15), and PhysLean/SRBench PRs.",
+  "status_audit_note": "2026-11-15 audit: XTX Markets closed AIMO Prize (2026-09-16) and funded SAIR Challenges; XPRIZE Quantum closed to new entrants (May 2026); XPRIZE Carbon closed (Apr 2025); Holcim 8th cycle closed (Feb/Nov 2025); Global Cooling closed (2021); unitaryHACK 2026 concluded (June 2026). Active routes: Erdős #30, Unitary Microgrants/Metriq, SAIR, and PhysLean/SRBench PRs.",
   "council_protocol": "4-Seat Multi-Family Nomination (16 Candidates) + Independent Selection Jury (Law 18 & ai-loop-council)",
   "council_seats": [
     {
@@ -32,7 +32,7 @@
     {
       "id": "M-cand-1",
       "pillar": "math",
-      "name": "Erdős Problems Cash Bounties (erdosproblems.com #30 Open) + SAIR Successor Math Challenges (M.13–M.15; AIMO Closed 2026-09-16)",
+      "name": "Erdős Problems Cash Bounties (erdosproblems.com #30 Open) + SAIR Successor Math Challenges (AIMO Closed 2026-09-16)",
       "prize": "$500–$10,000 per Erdős bounty + SAIR Challenges (XTX Reallocation; AIMO Ended)",
       "selected": true
     },
@@ -155,7 +155,7 @@
       "title_en": "Erdős $500–$10,000 Bounties & Anthropic Lean 4 Formalization Crucible",
       "title_es": "Recompensas de Erdős ($500–$10,000) y Crisol de Formalización en Lean 4",
       "prize_badge": "ERDŐS #30 ($1,000 OPEN) · AIMO ARCHIVED · LEAN 4",
-      "cool_fact": "Paul Erdős offered cash checks from $25 to $10,000 for open problems in combinatorics and number theory (Problem #30 remains open); XTX Markets closed the AIMO Prize on 2026-09-16 (~$1.62M awarded) and shifted philanthropy to Lean FRO ($10M), Mathlib ($10M), and SAIR research challenges (Folios M.13–M.15).",
+      "cool_fact": "Paul Erdős offered cash checks from $25 to $10,000 for open problems in combinatorics and number theory (Problem #30 remains open); XTX Markets closed the AIMO Prize on 2026-09-16 (~$1.62M awarded) and shifted philanthropy to Lean FRO ($10M), Mathlib ($10M), and SAIR research challenges.",
       "cross_field_analogy": "Like placing radio towers along a highway so no two pairs of towers share the exact same distance (a Golomb ruler / Sidon B_2 set): prevents wireless interference in 6G and radar arrays while bounding prime gaps.",
       "governing_law": "a_i + a_j = a_k + a_l ⇒ {i,j} = {k,l} · |A ∩ [1,N]| ≤ √N + N^(1/4) + 1",
       "open_source_stack": [
@@ -164,7 +164,7 @@
         "https://competition.sair.foundation/",
         "https://github.com/anthropics/formal-math"
       ],
-      "how_to_participate": "Run the Sidon B_2 verifier locally; see erdosproblems.com/30 for Problem #30 and Folios M.13–M.15 for active SAIR mathematics challenges."
+      "how_to_participate": "Run the Sidon B_2 verifier locally; see erdosproblems.com/30 for Problem #30."
     },
     {
       "bounty_id": "BOUNTY-P1",
@@ -246,8 +246,8 @@
       },
       {
         "bounty_id": "BOUNTY-M1",
-        "target": "erdosproblems.com/30 (Open) & SAIR Foundation Challenges (Folios M.13–M.15; AIMO Closed 2026-09-16)",
-        "action_on_publish": "Track open Erdős Problem #30 ($1,000) on erdosproblems.com/30 and route active Lean 4 / formal-math work to SAIR Foundation challenges covered individually in Folios M.13–M.15."
+        "target": "erdosproblems.com/30 (Open) & SAIR Foundation Challenges (AIMO Closed 2026-09-16)",
+        "action_on_publish": "Track open Erdős Problem #30 ($1,000) on erdosproblems.com/30."
       },
       {
         "bounty_id": "BOUNTY-A1",
@@ -261,6 +261,6 @@
       }
     ]
   },
-  "grounding_note": "Informatico.ai is an independent study and reproducible monograph site, not a prize entrant or organizer. No prize, bounty, or award named in Folios B.01–B.06 has been won or awarded to this project. Statuses audited 2026-11-15: Erdős #30 ($1,000) remains open; AIMO closed 2026-09-16 with XTX funding reallocated to Lean FRO, Mathlib, and SAIR challenges (Folios M.13–M.15); XPRIZE Quantum closed to new entrants May 2026 and unitaryHACK 2026 concluded June 2026 (rolling Unitary microgrants <= $4,000 and Metriq.info remain open); XPRIZE Carbon concluded Apr 2025; Holcim 8th cycle closed Feb/Nov 2025; Global Cooling Prize closed 2021.",
+  "grounding_note": "Informatico.ai is an independent study and reproducible monograph site, not a prize entrant or organizer. No prize, bounty, or award named in Folios B.01–B.06 has been won or awarded to this project. Statuses audited 2026-11-15: Erdős #30 ($1,000) remains open; AIMO closed 2026-09-16 with XTX funding reallocated to Lean FRO, Mathlib, and SAIR challenges; XPRIZE Quantum closed to new entrants May 2026 and unitaryHACK 2026 concluded June 2026 (rolling Unitary microgrants <= $4,000 and Metriq.info remain open); XPRIZE Carbon concluded Apr 2025; Holcim 8th cycle closed Feb/Nov 2025; Global Cooling Prize closed 2021.",
   "public_repository": "https://github.com/senseiewok/informatico.ai"
 }

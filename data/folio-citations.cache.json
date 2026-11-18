@@ -5817,78 +5817,6 @@
     "title": "Author Correction: Solving olympiad geometry without human demonstrations",
     "year": 2024
   },
-  "doi:10.1145/581478.581501": {
-    "fetched": "2026-11-15",
-    "first_author": "Grégoire",
-    "found": true,
-    "journal": "Proceedings of the seventh ACM SIGPLAN international conference on Functional programming",
-    "title": "A compiled implementation of strong reduction",
-    "year": 2002
-  },
-  "doi:10.1007/bfb0014565": {
-    "fetched": "2026-11-15",
-    "first_author": "Boutin",
-    "found": true,
-    "journal": "Lecture Notes in Computer Science",
-    "title": "Using reflection to build efficient and certified decision procedures",
-    "year": 1997
-  },
-  "doi:10.2307/2033843": {
-    "fetched": "2026-11-15",
-    "first_author": "Andrews",
-    "found": true,
-    "journal": "Proceedings of the American Mathematical Society",
-    "title": "Free groups and handlebodies",
-    "year": 1965
-  },
-  "doi:10.1016/0040-9383(85)90010-2": {
-    "fetched": "2026-11-15",
-    "first_author": "Akbulut",
-    "found": true,
-    "journal": "Topology",
-    "title": "A potential smooth counterexample in dimension 4 to the Poincare conjecture, the Schoenflies conjecture, and the Andrews-Curtis conjecture",
-    "year": 1985
-  },
-  "doi:10.1088/2632-2153/abe91f": {
-    "fetched": "2026-11-15",
-    "first_author": "Gukov",
-    "found": true,
-    "journal": "Machine Learning: Science and Technology",
-    "title": "Learning to unknot",
-    "year": 2021
-  },
-  "doi:10.2140/ant.2013.7.1325": {
-    "fetched": "2026-11-15",
-    "first_author": "Dokchitser",
-    "found": true,
-    "journal": "Algebra &amp; Number Theory",
-    "title": "Identifying Frobenius elements in Galois groups",
-    "year": 2013
-  },
-  "doi:10.1112/s1461157014000424": {
-    "fetched": "2026-11-15",
-    "first_author": "Jones",
-    "found": true,
-    "journal": "LMS Journal of Computation and Mathematics",
-    "title": "A database of number fields",
-    "year": 2014
-  },
-  "doi:10.1016/j.jsc.2004.08.002": {
-    "fetched": "2026-11-15",
-    "first_author": "Hulpke",
-    "found": true,
-    "journal": "Journal of Symbolic Computation",
-    "title": "Constructing transitive permutation groups",
-    "year": 2005
-  },
-  "doi:10.1007/978-3-662-55420-3": {
-    "fetched": "2026-11-15",
-    "first_author": "Malle",
-    "found": true,
-    "journal": "Springer Monographs in Mathematics",
-    "title": "Inverse Galois Theory",
-    "year": 2018
-  },
   "scite:10.1007/978-3-030-79876-5_37": {
     "citing_publications": 685,
     "classification_provenance": "Scite ML citation classification",
@@ -5899,30 +5827,6 @@
     "retracted": false,
     "supporting": 0,
     "total_smart_citations": 370,
-    "unclassified": 0
-  },
-  "scite:10.2307/2033843": {
-    "citing_publications": 36,
-    "classification_provenance": "Scite ML citation classification",
-    "contrasting": 0,
-    "fetched": "2026-11-15",
-    "found": true,
-    "mentioning": 1,
-    "retracted": false,
-    "supporting": 0,
-    "total_smart_citations": 1,
-    "unclassified": 0
-  },
-  "scite:10.2140/ant.2013.7.1325": {
-    "citing_publications": 24,
-    "classification_provenance": "Scite ML citation classification",
-    "contrasting": 0,
-    "fetched": "2026-11-15",
-    "found": true,
-    "mentioning": 31,
-    "retracted": false,
-    "supporting": 0,
-    "total_smart_citations": 31,
     "unclassified": 0
   }
 }

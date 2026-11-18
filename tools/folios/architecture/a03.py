@@ -22,7 +22,7 @@ FOLIO = {'folio_id': 'A.03',
  'colophon': {'identifier': 'A.03 · Facade Thermodynamics',
               'kernels': '1:50 Multi-Story Shaft + 1:5 Damper Sill',
               'benchmarks': 'Model values: Δp = 3.92 Pa (ρ_0 = 1.2 kg/m³, H = 9.0 m, ΔT = 11.2 K, T_ext ≈ 303 K) · g_tot = 0.11 assumed',
-              'bridge': 'Buoyancy Convective Clearance ↔ Airway Mucociliary Escalator (analogy only)'},
+              'bridge': 'Buoyancy Convective Clearance'},
  'steps': ['Stage 1 (Solar Shortwave Absorption): An assumed solar irradiance I_sol = 650 W/m² heats the ventilated '
            'blind positioned in the outer third of the 600 mm cavity.',
            'Stage 2 (Hydrostatic Buoyancy Pressure Drive): Δp_stack = ρ_0 g H (ΔT / T_ext) = 1.2 × 9.81 × 9.0 × '
@@ -169,19 +169,11 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'DOI 10.1103/PhysRevResearch.2.023068) for cavity convection with a whole-building energy tool such as '
                    'NREL/EnergyPlus, and explore louver and damper settings together. This folio names those tools as '
                    'options a reader could use; it did not run them.',
- 'cf_bridge': 'People with Cystic Fibrosis often spend time each day on inhaled therapies, and some are treated in '
-              'hospital. Infection-prevention practice for CF care is set out in clinical guidance '
-              '(Saiman et al. 2014, DOI 10.1086/676882); this folio does not address it. '
-              'Daylight recommendations for healthy adults exist (Brown et al. 2022, DOI 10.1371/journal.pbio.3001571), '
-              'but this folio reports no clinical, sleep or infection outcome. It is a facade physics study and is not '
-              'medical or infection-control advice; people with CF should follow their care team.',
  'sources': ['Berson, D. M., Dunn, F. A., & Takao, M. (2002). Phototransduction by retinal ganglion cells that set the '
              'circadian clock. Science, 295(5557), 1070–1073. DOI: 10.1126/science.1067262.',
              'Brown, T. M., et al. (2022). Recommendations for daytime, evening, and nighttime indoor light exposure to '
              'best support physiology, sleep, and wakefulness in healthy adults. PLOS Biology, 20(3), e3001571. DOI: '
              '10.1371/journal.pbio.3001571.',
-             'Saiman, L., et al. (2014). Infection Prevention and Control Guideline for Cystic Fibrosis: 2013 Update. '
-             'Infection Control & Hospital Epidemiology, 35(S1), S1–S67. DOI: 10.1086/676882.',
              'Raman, A. P., Anoma, M. A., Zhu, L., Rephaeli, E., & Fan, S. (2014). Passive radiative cooling below '
              'ambient air temperature under direct sunlight. Nature, 515, 540–544. DOI: 10.1038/nature13883.',
              'Saelens, D., Roels, S., & Hens, H. (2008). Strategies to improve the energy performance of multiple-skin '
@@ -328,10 +320,6 @@ ES_TRANSLATION = {'title_es': 'Ventilación por Tiro de Flotabilidad en Fachadas
                 'cargas de enfriamiento.',
  'why_es': 'Una chimenea solar acristalada usa el propio calor del sol para hacer subir el aire caliente de la '
            'cavidad, mientras deja pasar la luz del día.',
- 'bridge_es': 'Las prácticas de prevención de infecciones en la atención de la Fibrosis Quística están descritas en '
-              'guías clínicas (Saiman et al. 2014, DOI 10.1086/676882); esta ficha no las aborda. Es un estudio de física '
-              'de fachadas, no reporta resultados clínicos y no es consejo médico ni de control de infecciones; las '
-              'personas con Fibrosis Quística deben seguir las indicaciones de su equipo de atención.',
  'plain_es': 'Todos hemos entrado a un automóvil estacionado bajo el sol del mediodía y sentido ese golpe sofocante de '
              'aire atrapado. El vidrio convencional deja pasar la hermosa luz solar, pero retiene el calor infrarrojo '
              'como un invernadero. En edificios de oficinas y hospitales, este sobrecalentamiento obliga a los '

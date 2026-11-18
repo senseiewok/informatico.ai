@@ -97,8 +97,7 @@ FOLIO = {'folio_id': 'E.06',
                            '"immediate occupancy pass", compliance and prototype-testing '
                            'claims were withdrawn because no code check or test was done. The '
                            'claims that isolation keeps facilities "never offline", the '
-                           '"curative biomanufacturing" wording and a "sub-angstrom" description '
-                           'of PDB 8EIQ (a 3.0 Å structure) were withdrawn, and the invented 1932 '
+                           '"curative biomanufacturing" wording were withdrawn, and the invented 1932 '
                            'scene was replaced with plain dates.',
                 'opus': 'Review: every DOI in the folio was checked in Crossref and the Scite '
                         'index on 2026-11-14, and the repository names with the GitHub API. No '
@@ -319,13 +318,6 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'isolation systems, civil engineers aim to help medical and technological '
                    'facilities keep working after strong earthquakes, while accepting that no '
                    'system removes the risk.',
- 'cf_bridge': 'Context rather than a claim: hospitals and research laboratories, including '
-              'those that study Cystic Fibrosis, depend on power, cold storage and stable '
-              'instruments. Cryo-electron microscopes, for example, produced the 3.0 Å structure '
-              'of the CFTR protein bound to elexacaftor, tezacaftor and ivacaftor deposited as '
-              'PDB 8EIQ, and such instruments are sensitive to vibration. Base isolation is one '
-              'way engineers reduce earthquake damage to such buildings. This page does not '
-              'model any real facility, and its numbers are not design values for one.',
  'sources': ['ASCE/SEI 7-22 (2022). Minimum Design Loads and Associated Criteria for Buildings and '
              'Other Structures, Chapter 17: Seismic Design Requirements for Seismically Isolated '
              'Structures. American Society of Civil Engineers. DOI: 10.1061/9780784415788.',
@@ -406,10 +398,6 @@ ES_TRANSLATION = {'title_es': 'Dinámica Estructural No Lineal, Espectros Inelá
  'why_es': 'Viajar de pie con las rodillas rígidas en el metro te derriba al primer frenazo, '
            'mientras que flexionar las piernas sobre rodamientos permite que el piso se mueva '
            'debajo de ti manteniendo estable el torso.',
- 'bridge_es': 'Como contexto, no como afirmación: hospitales y laboratorios, incluidos los '
-              'que estudian la Fibrosis Quística, dependen de energía, almacenamiento en frío e '
-              'instrumentos estables. El aislamiento de base es una de las formas de reducir el '
-              'daño sísmico en esos edificios; esta página no modela ninguna instalación real.',
  'plain_es': 'En su trabajo doctoral de 1932 en Caltech, el ingeniero de origen belga Maurice '
              'Anthony Biot introdujo la idea del espectro de respuesta sísmica: una curva que '
              'muestra cuánto responden estructuras sencillas con distintos periodos naturales a '

@@ -201,7 +201,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'atmospheric soot? How will municipal building codes and LEED rating systems '
                    'evolve to credit passive sub-ambient cooling against mandatory HVAC equipment '
                    'sizing? Those questions decide whether the idea is useful at the scale of a city.',
- 'cf_bridge': 'This is a building-physics folio for envelope architects, facade physicists, and HVAC designers (CSI 07 54 00 is the roofing section; ASHRAE Standard 90.1 is the energy standard for buildings). It has no Cystic Fibrosis content. One open question it leaves for later: a room that stays a few degrees cooler without grid power could be useful for storage in places with unreliable electricity. A roof about 6 °C below outdoor air is not refrigeration, and it cannot hold the 2–8 °C range that many medicines need. Nothing here is guidance on storing medicines.',
+ 'cf_bridge': 'This is a building-physics folio for envelope architects, facade physicists, and HVAC designers (CSI 07 54 00 is the roofing section; ASHRAE Standard 90.1 is the energy standard for buildings). One open question it leaves for later: a room that stays a few degrees cooler without grid power could be useful for storage in places with unreliable electricity. A roof about 6 °C below outdoor air is not refrigeration, and it cannot hold the 2–8 °C range that many medicines need. Nothing here is guidance on storing medicines.',
  'sources': ['Raman, A. P., Anoma, M. A., Zhu, L., Rephaeli, E., & Fan, S. (2014). Passive '
              'radiative cooling below ambient air temperature under direct sunlight. Nature, '
              '515(7528), 540–544. DOI: 10.1038/nature13883.',
@@ -269,7 +269,6 @@ ES_TRANSLATION = {'title_es': 'Cubiertas Fotónicas de Enfriamiento Radiativo Di
  'why_es': 'Un techo blanco común refleja la luz visible pero atrapa el calor infrarrojo; una '
            'cubierta fotónica actúa como un espejo selectivo que además abre una ventana térmica '
            'directa hacia el frío del espacio exterior.',
- 'bridge_es': 'Este folio es de física de edificios y no tiene contenido sobre Fibrosis Quística. Deja una pregunta abierta: un cuarto que se mantiene unos grados más fresco sin red eléctrica podría servir para almacenamiento donde la electricidad falla. Un techo unos 6 °C por debajo del aire exterior no es refrigeración ni alcanza el intervalo de 2 a 8 °C que requieren muchos medicamentos. Nada de esto es una indicación sobre cómo guardar medicamentos.',
  'plain_es': 'En palabras sencillas, imaginen que el techo de un edificio pudiera mantenerse más fresco que el aire bajo el rayo del sol sin usar electricidad. Todos los '
              'objetos emiten calor en forma de ondas infrarrojas invisibles. Normalmente, la '
              'atmósfera de la Tierra atrapa ese calor como si fuera una cobija térmica. No '

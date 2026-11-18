@@ -22,7 +22,7 @@ FOLIO = {'folio_id': 'A.02',
  'colophon': {'identifier': 'A.02 · Reciprocal Timber Gridshells',
               'kernels': '1:50 Nexorade Bay + 1:5 Notched Lap Joint',
               'benchmarks': 'Model values: M_lap = 5.15 kN·m (a = 0.373 m, λ = 0.25) · utilization 0.64 and SF 3.74 are illustrative',
-              'bridge': 'Reciprocal Load Sharing ↔ CFTR NBD Dimer (a visual analogy only)'},
+              'bridge': 'Reciprocal Load Sharing'},
  'steps': ['Stage 1 (4-Valence Reciprocal Fan): Four GL28h larch members interlock in a pinwheel cyclic dependency so '
            'no more than two members meet at any single point.',
            'Stage 2 (Eccentricity-Induced Dome Rise): An assumed vertical offset e_z = 85 mm at each lap joint '
@@ -63,7 +63,7 @@ FOLIO = {'folio_id': 'A.02',
                            'and an unsourced 60% embodied carbon reduction claim are withdrawn; '
                            'the utilization 0.64 and SF 3.74 are now labelled illustrative values. The bending moment '
                            'now states its assumed member length (L = 1.493 m), the invented Song and Leonardo scenes '
-                           'are replaced by a plain account, and the CF section no longer makes health claims.',
+                           'are replaced by a plain account.',
                 'opus': 'Review: references checked by DOI in Crossref and the Scite index; Scite search found no '
                         'source for the 4x-6x span claim, so it was removed.'},
                {'edition': 'REV 1.2',
@@ -171,11 +171,6 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'see DOI 10.1016/j.cad.2015.01.006 for the underlying graphic statics) with a finite-element library '
                    'such as FEniCS/dolfinx (DOI 10.1145/3524456) to explore these weaves and prepare cutting data. This '
                    'folio names those tools as options a reader could use; it did not run them.',
- 'cf_bridge': 'This bridge is an analogy, and a loose one. In a reciprocal frame each member holds up the next. In the '
-              'CFTR protein, the two nucleotide-binding domains come together as a pair around ATP, and published '
-              'structures show the F508del protein bound to the elexacaftor, tezacaftor and ivacaftor combination '
-              '(for example PDB entry 8EIQ). The folio makes no claim about indoor air, materials or health in CF '
-              'clinics, and it is not medical advice.',
  'sources': ['Leonardo da Vinci (c. 1478–1519). Codex Atlanticus. Biblioteca Ambrosiana, Milan.',
              'Otto, F., & Hennicke, J. (1974). IL 10: Gitterschalen / Grid Shells. Institute for Lightweight '
              'Structures, Stuttgart.',
@@ -192,9 +187,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'Scroggs, M. W., Dokken, J. S., Richardson, C. N., & Wells, G. N. (2022). Construction of Arbitrary Order '
              'Finite Element Degree-of-Freedom Maps on Polygonal and Polyhedral Cell Meshes (FEniCS/dolfinx, '
              'https://github.com/FEniCS/dolfinx). ACM Transactions on Mathematical Software, 48(2), 18:1–18:23. DOI: '
-             '10.1145/3524456.',
-             'RCSB Protein Data Bank entry 8EIQ: phosphorylated human delta F508 CFTR in complex with elexacaftor, '
-             'tezacaftor, ivacaftor and ATP/Mg. https://www.rcsb.org/structure/8EIQ'],
+             '10.1145/3524456.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Reciprocal 4-beam nexorade weave and '
         'Euler buckling margin">\n'
         '            <g transform="translate(70, 20)">\n'
@@ -330,8 +323,7 @@ DISPATCH = {'kicker': 'FRONTIER TIMBER TECTONICS DISPATCH · RECIPROCAL NEXORADE
          'Architecture (DOI 10.4324/9780080556000; Asefi & Bahremandi-Tolou, J. Build. Eng. 2019, DOI '
          '10.1016/j.jobe.2019.100867), this folio models a GL28h larch nexorade with an assumed eccentricity e_z = 85 '
          'mm, a lap moment of 5.15 kN·m, and illustrative values for notch utilization (0.64) and buckling (SF = '
-         '3.74). As a loose visual analogy only, the mutual support recalls the paired nucleotide-binding domains of '
-         'CFTR (PDB 8EIQ).'}
+         '3.74).'}
 
 META_3D = ('Nexorade Reciprocal 4-Beam Pinwheel Gridshell',
  'X/Z: Geodesic Timber Lattice Coordinates · Y: Reciprocal Lap-Joint Camber & Bending Moment')
@@ -341,9 +333,6 @@ ES_TRANSLATION = {'title_es': 'Retículas Recíprocas de Madera (Nexorades), Mom
                 'descansa sobre su vecina con excentricidad e_z, cubriendo grandes claros con piezas cortas.',
  'why_es': 'Como cuatro cuchillos o vigas entrelazados en molinete sobre los bordes de un vaso, cada elemento sostiene '
            'al siguiente y es sostenido por el anterior, salvando un claro mayor que cualquier pieza individual.',
- 'bridge_es': 'Es solo una analogía visual: así como cada viga recíproca sostiene a la siguiente, los dos dominios '
-              'de unión a nucleótidos de la proteína CFTR se juntan en pareja alrededor del ATP (por ejemplo, la '
-              'estructura PDB 8EIQ). Esta ficha no hace afirmaciones de salud ni es consejo médico.',
  'plain_es': 'Para entender cómo funciona una estructura recíproca de madera, coloquen cuatro cuchillos de mesa '
              'entrelazados en forma de molinete sobre la boca de una taza grande. Si el extremo de cada cuchillo '
              'descansa sobre la hoja del siguiente, el conjunto se traba por sí solo en el centro con firmeza. '

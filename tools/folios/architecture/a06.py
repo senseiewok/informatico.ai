@@ -20,7 +20,7 @@ FOLIO = {'folio_id': 'A.06',
  'colophon': {'identifier': 'A.06 · Hydro-Tectonics',
               'kernels': 'Kadlec-Knight k-C* · Chick-Watson 5.4-Log UV-C',
               'benchmarks': 'Model values: 95.1% BOD_5 removal · 5.4-log UV-C design dose',
-              'bridge': 'Biofilm-Control Plumbing ↔ CF Infection-Prevention Context'},
+              'bridge': 'Biofilm-Control Plumbing'},
  'sliders': [{'label': 'Wetland Hydraulic Retention Time (τ_HRT)',
               'min': 0.8,
               'max': 6.0,
@@ -61,9 +61,7 @@ FOLIO = {'folio_id': 'A.06',
                 'summary': 'REV 1.2 (Redated 2026-11-14): Grounding revision. Earlier editions said the design '
                            'eradicates pathogens and showed a zero-biofilm verdict; nothing here was measured, '
                            'so those statements are withdrawn and every number is labelled as a model value. '
-                           'Claims about sink drains and Cystic Fibrosis had been attributed to a wetlands '
-                           'textbook; they now cite Kotay et al. 2017 (DOI 10.1128/AEM.03327-16) and the CF '
-                           'infection prevention guideline (DOI 10.1086/676882). The opening scene about Käthe '
+                           'The opening scene about Käthe '
                            'Seidel was not sourced and is replaced by a plain account. '
                            'A later review corrected the title (the CSI 22 13 00 label and "pathogen-control" are removed), '
                            'stated the assumed wetland constants and a consistent bed depth, and softened the readout verdict '
@@ -142,7 +140,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'act4_human_ai': 'Digital-twin hydraulic network solvers could monitor return-loop temperatures, flow velocities, and UV-C sensor transmittance to find dead-leg stagnation zones across hospital floors. Reactive advection-dispersion-reaction PDE solvers in DedalusProject/dedalus '
                   '(https://github.com/DedalusProject/dedalus, DOI 10.1103/PhysRevResearch.2.023068) combined with '
                   'sparse kinetic rate identification in dynamicslab/pysindy (DOI 10.1073/pnas.1517384113) could let a building digital twin track hydraulic loading rates and UV-C fluence margins. This is a proposal, not a deployed system.',
- 'cf_bridge': 'Kotay et al. (2017, DOI 10.1128/AEM.03327-16) used a fluorescent marker organism to model how bacteria can disperse from hand-washing sink-trap reservoirs. An infection prevention and control guideline for Cystic Fibrosis has been published (Saiman et al. 2014, \'Infection Prevention and Control Guideline for Cystic Fibrosis: 2013 Update\', DOI 10.1086/676882). This folio is a plumbing design study. It reports no clinical outcome and is not infection-control advice; people with CF should follow their care team.',
+ 'cf_bridge': 'Kotay et al. (2017, DOI 10.1128/AEM.03327-16) used a fluorescent marker organism to model how bacteria can disperse from hand-washing sink-trap reservoirs. This folio is a plumbing design study. It reports no clinical outcome and is not infection-control advice.',
  'sources': ['ASHRAE Standard 188 (2021 edition; first published 2015). Legionellosis: Risk Management for Building Water Systems.',
              'Kadlec, R. H., & Wallace, S. (2008). Treatment Wetlands (2nd ed.). CRC Press. DOI: '
              '10.1201/9781420012514.',
@@ -150,8 +148,6 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'Study Using Green Fluorescent Protein (GFP)-Expressing Escherichia coli To Model Bacterial Dispersion from '
              'Hand-Washing Sink-Trap Reservoirs. Applied and Environmental Microbiology, 83(8), e03327-16. DOI: '
              '10.1128/AEM.03327-16.',
-             'Saiman, L., et al. (2014). Infection Prevention and Control Guideline for Cystic Fibrosis: 2013 Update. '
-             'Infection Control & Hospital Epidemiology, 35(S1), S1–S67. DOI: 10.1086/676882.',
              'Hijnen, W. A. M., Beerendonk, E. F., & Medema, G. J. (2006). Inactivation credit of UV radiation for viruses, '
              'bacteria and protozoan (oo)cysts in water: A review. Water Research, 40(1), 3–22. DOI: '
              '10.1016/j.watres.2005.10.030.',
@@ -210,7 +206,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'flushing and garden irrigation. The second slider controls the germicidal ultraviolet radiation '
                       'dose delivered inside the indoor potable water reactor. As you turn up this ultraviolet fluence '
                       'dial, ultraviolet light damages bacterial genetic material and keeps more of the organisms from reproducing. By balancing adequate '
-                      'natural wetland residence time with an adequate ultraviolet dose, the model building recycles water while meeting its two design targets. The readouts are model outputs, not measurements. They are not a safety threshold and not infection-control advice; people with CF should follow their care team.',
+                      'natural wetland residence time with an adequate ultraviolet dose, the model building recycles water while meeting its two design targets. The readouts are model outputs, not measurements. They are not a safety threshold and not infection-control advice.',
  'distill_diagram': {'analogy_title': 'Mountain Stream vs Stagnant Hose',
                      'analogy_sub': 'Steady flow and ultraviolet light discourage microbial slime',
                      'force_a_title': 'Wetland Retention Time (τ_HRT)',
@@ -251,7 +247,6 @@ ES_TRANSLATION = {'title_es': 'Agua Neta Cero y Humedales Construidos para Aguas
  'subtitle_es': 'Cómo un lecho subsuperficial de carrizos, modelado, elimina alrededor del 95% de la DBO_5 de las aguas grises en el exterior, mientras la recirculación a 60 °C y un reactor UV-C de 254 nm son metas de diseño para limitar el crecimiento de bacterias oportunistas transmitidas por el agua en el interior.',
  'why_es': 'Una manguera estancada al sol desarrolla biopelículas en pocos días, mientras que un arroyo de montaña en '
            'flujo continuo bajo luz ultravioleta tiende a permanecer limpio.',
- 'bridge_es': 'Kotay et al. 2017 usaron un organismo marcador para modelar cómo las bacterias pueden dispersarse desde el sifón de un lavabo (DOI 10.1128/AEM.03327-16). Existe una guía de prevención y control de infecciones para Fibrosis Quística (Saiman et al. 2014, DOI 10.1086/676882). Este folio es un estudio de diseño de plomería: no reporta resultados clínicos, no es una recomendación de control de infecciones y no sustituye las indicaciones del equipo de atención.',
  'plain_es': 'El agua en los edificios modernos suele tratarse como un recurso desechable de un solo uso: entra agua '
              'potable limpia por los grifos, se utiliza una sola vez y se va directamente al drenaje. Al mismo tiempo, '
              'el agua que permanece quieta dentro de tuberías tibias puede desarrollar capas viscosas de '

@@ -25,7 +25,7 @@ FOLIO = {'folio_id': 'E.03',
               'kernels': 'δ_v = √(2ν/ω) · Z_s = R_v + i ω M_a − i ρ c² / (ω V_cav)',
               'benchmarks': 'Model values: δ_v = 0.174 mm at 160 Hz · α = 0.9996 for Z_s/Z_0 = '
                             '1.04 at resonance',
-              'bridge': 'Oscillatory Boundary Layers ↔ Airway Oscillation Devices (an analogy)'},
+              'bridge': 'Oscillatory Boundary Layers'},
  'sliders': [{'label': 'Resonant Frequency (f_0)',
               'min': 80.0,
               'max': 400.0,
@@ -60,12 +60,10 @@ FOLIO = {'folio_id': 'E.03',
                         '11654) are design targets; nothing was measured.',
                 'meta': 'Design sketch · ISO 354 (reverberation-room measurement) would be the '
                         'test to run; none was run and no certification exists'},
- 'sidenote_1': {'kicker': 'SIDENOTE E.03-A · AN ANALOGY: OSCILLATING FLOW IN THE AIRWAYS',
+ 'sidenote_1': {'kicker': 'SIDENOTE E.03-A',
                 'body': 'The Womersley number Wo = r √(ω/ν) compares a channel radius with the '
                         'viscous boundary layer of an oscillating flow, in a resonator neck or '
-                        'in any tube. Airway clearance devices also make air oscillate, so the '
-                        'same dimensionless number can be written for them; that is an analogy '
-                        'offered by this folio, not a model of any therapy.'},
+                        'in any tube.'},
  'sidenote_2': {'kicker': 'SIDENOTE E.03-B · SPECIFICATION PLATE · CSI 09 84 13 / 09 54 26',
                 'body': 'Design sketch of a micro-slit timber Helmholtz ceiling baffle with a '
                         'target α_w = 0.90 and no loose mineral fibers. These are targets, not '
@@ -86,11 +84,7 @@ FOLIO = {'folio_id': 'E.03',
                      'reference before design use.']},
  'revisions': [{'edition': 'REV 1.3',
                 'date': '2026-11-14',
-                'summary': 'REV 1.3 (Redated 2026-11-14): Grounding revision. The sputum '
-                           'yield-stress and oscillatory-stress figures (11.5 Pa, 14.8 Pa), the '
-                           'claim that chest-wall oscillation "liquefies" mucus, and the claim '
-                           'that this would multiply nanoparticle penetration were withdrawn as '
-                           'unsourced; the airway link is now an analogy. The panel test and '
+                'summary': 'REV 1.3 (Redated 2026-11-14): Grounding revision. The panel test and '
                            'formal compliance wording was withdrawn, the invented 1863 scene was '
                            'replaced with plain dates, and the absorption readout was recomputed '
                            'for zero reactance at resonance (0.9996). Critical coupling is now '
@@ -106,16 +100,13 @@ FOLIO = {'folio_id': 'E.03',
                 'date': '2026-11-02',
                 'summary': 'REV 1.2 (Redated 2026-11-02): Verified sub-wavelength Helmholtz '
                            'viscothermal acoustic metamaterials (delta_v = sqrt(2*nu/omega), CSI '
-                           '09 84 13) and oscillatory shear liquefaction of CF sputum '
-                           'plugs with multi-model peer review.',
+                           '09 84 13) with multi-model peer review.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): checked that '
                         'delta_v = 0.174 mm follows from the page formula. The word "Verified" in '
-                        'this note and in the notes below, the sputum liquefaction claim and the '
-                        'stress figures 14.8 Pa and 11.5 Pa are withdrawn in REV 1.3.'},
+                        'this note and in the notes below is withdrawn in REV 1.3.'},
                {'edition': 'REV 1.1',
                 'date': '2026-11-01',
-                'summary': 'REV 1.1 (Redated 2026-11-01): Added Womersley oscillatory shear bridge '
-                           'to 15 Hz airway oscillation and CSI 09 84 13 cleanroom panel '
+                'summary': 'REV 1.1 (Redated 2026-11-01): Added CSI 09 84 13 cleanroom panel '
                            'spec.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'reflection coefficient |R|² = 0.002 at Z_s/Z_0 = 1.04 + 0.08i.'},
@@ -321,15 +312,6 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'ultra-compact sound-absorbing facade panels. That is a proposal: this folio '
                    'has built and tested nothing, and how much such panels would reduce urban '
                    'noise is not known.',
- 'cf_bridge': 'An analogy, offered modestly: airway clearance devices such as chest-wall '
-              'oscillation vests and oscillatory positive expiratory pressure (OPEP) devices '
-              'also make air move back and forth, and sputum is a yield-stress, thixotropic '
-              'material (Figueroa-Landeta et al. 2025, DOI 10.1038/s41598-025-16178-z). Whether '
-              'and how much oscillation changes sputum is a clinical research question: in one '
-              'small crossover trial in people with Cystic Fibrosis, Radtke et al. (2018, DOI '
-              '10.1186/s12890-018-0661-1) measured sputum rheology after exercise with and '
-              'without OPEP. This page does not model the airways, makes no claim about any '
-              'therapy, and is not medical advice.',
  'sources': ['Yang, M., & Sheng, P. (2017). Sound Absorption Structures: From Porous Media to '
              'Acoustic Metamaterials. Annual Review of Materials Research, 47, 83–114. DOI: '
              '10.1146/annurev-matsci-070616-124032.',
@@ -341,13 +323,6 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              '(2016). Perfect and broadband acoustic absorption by critically '
              'coupled sub-wavelength resonators. Scientific Reports, 6, 19519. DOI: '
              '10.1038/srep19519.',
-             'Figueroa-Landeta, M., et al. (2025). Thixo-viscoelastoplastic rheological '
-             'characterisation of human mucus using a multimode BMP constitutive equation '
-             'approach. Scientific Reports, 15, 43747. DOI: 10.1038/s41598-025-16178-z.',
-             'Radtke, T., et al. (2018). Acute effects of combined exercise and oscillatory '
-             'positive expiratory pressure therapy on sputum properties and lung diffusing '
-             'capacity in cystic fibrosis: a randomized, controlled, crossover trial. BMC '
-             'Pulmonary Medicine, 18, 99. DOI: 10.1186/s12890-018-0661-1.',
              'Burns, K. J., Vasil, G. M., Oishi, J. S., Lecoanet, D., & Brown, B. P. (2020). '
              'Dedalus: A flexible framework for numerical simulations with spectral methods '
              '(DedalusProject/dedalus, https://github.com/DedalusProject/dedalus). Physical Review '
@@ -404,11 +379,6 @@ ES_TRANSLATION = {'title_es': 'Arreglos de Metamateriales Acústicos Sub-Longitu
  'why_es': 'Un laberinto acústico enrollado obliga a las ondas sonoras graves a recorrer un camino '
            'largo dentro de un panel delgado, disipando el ruido de baja frecuencia en calor '
            'microscópico.',
- 'bridge_es': 'Una analogía modesta: los chalecos de oscilación de la pared torácica y los '
-              'dispositivos de PEP oscilatorio también hacen oscilar el aire, y el esputo es un '
-              'material con esfuerzo de fluencia. Cuánto cambia el esputo con la oscilación es '
-              'una pregunta de investigación clínica; esta página no modela ninguna terapia ni '
-              'es consejo médico.',
  'plain_es': 'En 1863, el médico y físico alemán Hermann von Helmholtz publicó Die Lehre von den '
              'Tonempfindungen, donde describió resonadores huecos con un cuello estrecho que '
              'usaba para aislar tonos puros dentro de sonidos complejos. Más adelante en el siglo '

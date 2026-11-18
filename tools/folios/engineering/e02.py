@@ -25,7 +25,7 @@ FOLIO = {'folio_id': 'E.02',
               'kernels': 'τ = τ_0 + K γ̇^n · Buckingham–Reiner Plug Flow',
               'benchmarks': 'Model values: 125 mm pipe · τ_w = 75.0 Pa and r_p/R = 37.3% at '
                             'defaults',
-              'bridge': 'Concrete Slickline ↔ Yield-Stress Behaviour of Sputum (an analogy)'},
+              'bridge': 'Concrete Slickline'},
  'sliders': [{'label': 'Concrete Yield Stress (τ_0)',
               'min': 5.0,
               'max': 100.0,
@@ -68,10 +68,7 @@ FOLIO = {'folio_id': 'E.02',
                         'paste-rich layer at the wall, which this simple model leaves out.'},
  'sidenote_2': {'kicker': 'SIDENOTE E.02-B · SPECIFICATION PLATE · CSI 03 30 00 / ACI 304.2R',
                 'body': 'Design sketch of a pumped self-consolidating concrete (target slump flow '
-                        '650 mm, 125 mm steel line, PCE dispersant). Sputum is also a '
-                        'yield-stress material, but the study cited on this page described it '
-                        'with a different equation; the resemblance is an analogy, not a shared '
-                        'mechanism or equation.'},
+                        '650 mm, 125 mm steel line, PCE dispersant).'},
  'skill': {'filename': 'herschel-bulkley-yield-rheology-SKILL.md',
            'name': 'herschel-bulkley-yield-rheology',
            'description': 'AI-agnostic civil and non-Newtonian fluid mechanics skill for '
@@ -86,11 +83,7 @@ FOLIO = {'folio_id': 'E.02',
                      'at the wall that a homogeneous model leaves out.']},
  'revisions': [{'edition': 'REV 1.4',
                 'date': '2026-11-14',
-                'summary': 'REV 1.4 (Redated 2026-11-14): Grounding revision. The claim that '
-                           'concrete and Cystic Fibrosis sputum obey the "exact same" equation, '
-                           'the sputum yield-stress and periciliary-stress figures, and the '
-                           'treatment language were withdrawn; the sputum link is now an analogy '
-                           'with a sourced statement about sputum rheology. The 2016 pumping '
+                'summary': 'REV 1.4 (Redated 2026-11-14): Grounding revision. The 2016 pumping '
                            'paper is now credited to its real authors (Feys, Khayat & Khatib), '
                            'the discharge readout was recomputed from the page model (not 48.2 '
                            'm³/hr), and the invented 1922 laboratory scene was replaced with '
@@ -319,14 +312,6 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'how lubrication layers behave at pipe bends and how newer low-carbon binders, '
                    'such as calcined clay cements, change yield stress and thixotropy. Human '
                    'judgment on site stays central; no model can guarantee a placement.',
- 'cf_bridge': 'An analogy, not a shared mechanism: sputum is also a yield-stress, '
-              'thixotropic material. A 2025 modelling study described the rheology of sputum '
-              'samples from healthy people and from people with Cystic Fibrosis or COPD with a '
-              'thixo-viscoelastoplastic constitutive model and reported that thixotropy '
-              'strongly affects how sputum flows (Figueroa-Landeta et al. 2025, Scientific '
-              'Reports, DOI 10.1038/s41598-025-16178-z). It used a different equation from the '
-              'Herschel–Bulkley law on this page. Nothing here describes how any treatment acts '
-              'on mucus, and this page is not medical advice.',
  'sources': ['Bingham, E. C. (1922). Fluidity and Plasticity. McGraw-Hill, New York.',
              'Herschel, W. H., & Bulkley, R. (1926). Konsistenzmessungen von Gummi-Benzollösungen. '
              'Kolloid-Zeitschrift, 39(4), 291–300. DOI: 10.1007/BF01432034.',
@@ -341,9 +326,6 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'Roussel, N. (2006). A thixotropy model for fresh fluid concretes: Theory, '
              'validation and applications. Cement and Concrete Research, 36(10), 1797–1806. '
              'DOI: 10.1016/j.cemconres.2006.05.025.',
-             'Figueroa-Landeta, M., et al. (2025). Thixo-viscoelastoplastic rheological '
-             'characterisation of human mucus using a multimode BMP constitutive equation '
-             'approach. Scientific Reports, 15, 43747. DOI: 10.1038/s41598-025-16178-z.',
              'Brunton, S. L., Proctor, J. L., & Kutz, J. N. (2016). Discovering governing '
              'equations from data by sparse identification of nonlinear dynamical systems '
              '(dynamicslab/pysindy, https://github.com/dynamicslab/pysindy). PNAS, 113(15), '
@@ -414,10 +396,6 @@ ES_TRANSLATION = {'title_es': 'Reología de Esfuerzo de Fluencia de Herschel–B
  'why_es': 'Al exprimir pasta dental o mortero por un tubo no se deforma todo el volumen: un '
            'cilindro sólido central se desliza intacto como un tapón sobre una delgada capa '
            'lubricante sometida a corte.',
- 'bridge_es': 'Una analogía, no un mecanismo común: el esputo también es un material con '
-              'esfuerzo de fluencia y tixotropía, como muestra un estudio de modelación de 2025 '
-              'con muestras de personas sanas y de personas con Fibrosis Quística o EPOC. Esta '
-              'página no describe ningún tratamiento ni es consejo médico.',
  'plain_es': 'En 1922, el químico Eugene Bingham publicó Fluidity and Plasticity, donde explicó '
              'que materiales como pinturas y suspensiones de arcilla no fluyen de manera '
              'convencional: requieren un esfuerzo mínimo antes de comenzar a moverse. En 1926, '

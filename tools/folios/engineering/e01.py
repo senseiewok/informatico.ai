@@ -62,12 +62,7 @@ FOLIO = {'folio_id': 'E.01',
                 'meta': 'Design sketch · a hygrothermal simulation to EN 15026 would be the next '
                         'step; none was run'},
  'sidenote_1': {'kicker': 'SIDENOTE E.01-A · AN ANALOGY FROM BIOLOGY',
-                'body': 'Airway mucus is also a porous network: a mesh of mucin polymers with '
-                        'water-filled gaps. Whether a small particle can cross such a gel '
-                        'depends, as in stone, on the size of the gaps and on whether they '
-                        'connect. That resemblance is an analogy offered by this folio. The '
-                        'lattice threshold on this page was not measured in mucus, and nothing '
-                        'here is a statement about any treatment.'},
+                'body': ''},
  'sidenote_2': {'kicker': 'SIDENOTE E.01-B · SPECIFICATION PLATE · CSI 03 30 00 / 07 16 00',
                 'body': 'Design sketch of a capillary-active mineral lime mortar and breathable '
                         'silicate coating (design targets φ = 0.68, μ ≤ 8). Real lime mortars '
@@ -94,9 +89,7 @@ FOLIO = {'folio_id': 'E.01',
                            'that credited a 2009 work to Brinkman and Bear was removed: the DOI '
                            'it carried (10.1007/BF02120313) is Brinkman\'s own 1949 paper. A claim '
                            'that optimal-transport software had shown a result about '
-                           'percolation was withdrawn, as were the unsourced figures about Cystic '
-                           'Fibrosis sputum and inhaled nanoparticles; the mucus link is now '
-                           'stated as an analogy. The threshold 0.5927 is identified as the '
+                           'percolation was withdrawn. The threshold 0.5927 is identified as the '
                            'square-lattice site value, and the walkthrough numbers were '
                            'recomputed from the stated formula (8.73 nm and 19.64 nm).',
                 'opus': 'Review: every DOI in the folio was checked in Crossref and the Scite '
@@ -288,7 +281,6 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'engineering teams can forecast progressive pore clogging and schedule targeted '
                    'breathable consolidation treatments before irreversible structural spalling '
                    'begins.',
- 'cf_bridge': 'An analogy, not a clinical statement: airway mucus is a hydrated polymer mesh, and in Cystic Fibrosis it is more concentrated than in health. Whether a particle can move through any mesh depends on the two things this folio models in stone, the size of the gaps and whether they connect. The lattice threshold phi_c = 0.5927 and the nanometre values on this page are model values; none was measured in mucus, and this folio makes no claim about any inhaled therapy or about care.',
  'sources': ['Darcy, H. (1856). Les Fontaines Publiques de la Ville de Dijon. Victor Dalmont, '
              'Paris.',
              'Broadbent, S. R., & Hammersley, J. M. (1957). Percolation processes: I. Crystals and '
@@ -331,7 +323,6 @@ ES_TRANSLATION = {'title_es': 'Continuo Poroso de Stokes–Brinkman, Descomposic
  'why_es': 'Imagina pedalear en bicicleta a través de un bosque: el apantallamiento de Brinkman es '
            'la resistencia combinada del aire y las ramas que rozas, mientras que la percolación '
            'determina si existe un sendero continuo para cruzar de un extremo a otro.',
- 'bridge_es': 'Una analogía, no una afirmación clínica: el moco de las vías respiratorias es una malla de polímeros hidratada, y en la Fibrosis Quística está más concentrado. Que una partícula pueda atravesar una malla depende del tamaño de los huecos y de que estén conectados, las mismas dos preguntas que este folio modela en piedra. Los valores de la página son del modelo; ninguno se midió en moco y el folio no afirma nada sobre terapias ni cuidados.',
  'plain_es': 'En 1856, el ingeniero francés Henry Darcy publicó su informe sobre las fuentes '
              'públicas de la ciudad de Dijon. '
              'Al medir el paso del agua a través de columnas de arena, concluyó que el '
