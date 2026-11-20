@@ -81,12 +81,13 @@ FOLIO = {'folio_id': 'A.04',
                 'date': '2026-11-14',
                 'summary': 'REV 1.3 (Redated 2026-11-14): Grounding revision. The PASS verdict, the claim that COMPAS '
                            'verified the tie-rod safety factor, and the claims that Archigram directly mentored Foster '
-                           'and Rogers were unsourced and are withdrawn; V_p = 4,800 kN and SF = 3.12 are now labelled '
-                           'as assumed and illustrative. The invented 1961 founding scene, a source entry that did not '
+                           'and Rogers were unsourced and are withdrawn; V_p = 4,800 kN and SF = 3.12 are now labeled '
+                           'as assumed and illustrative. The invented 1961 founding scene and a source entry that did not '
                            'exist as cited are replaced by a plain '
-                           'account and a modest, labelled proposal.',
-                'opus': 'Review: references checked by DOI in Crossref and the Scite index; Scite found no paper on '
-                        'the Pompidou gerberettes, so those details are kept to standard history only.'},
+                           'account and a modest, labeled proposal.',
+                'opus': 'Review: references checked by DOI in Crossref and the Scite index; Hamzeian (2018, DOI '
+                        '10.1201/9780429506208-91) documents the evolution of the Pompidou cast node, and the '
+                        'lever-model numbers come from the stated formulas.'},
                {'edition': 'REV 1.2',
                 'date': '2026-11-02',
                 'summary': 'REV 1.2 (Redated 2026-11-02): Revised the cast-steel gerberette lever model and Stewart Brand '
@@ -124,59 +125,68 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
            'contrasting': 0,
            'retracted': False,
            'summary': 'Scite index entry for Pellegrino & Calladine, Matrix analysis of statically and kinematically indeterminate frameworks (DOI 10.1016/0020-7683(86)90014-4), checked 2026-11-08: 833 citing publications (1 supporting, 499 mentioning, 0 contrasting) and no retraction notice. The paper is about framework rigidity; it says nothing about gerberettes or this folio\'s numbers.'},
- 'history_lead': 'Archigram began in London in 1961 as a small magazine. Its core group was Peter Cook, Warren Chalk, '
-                 'Dennis Crompton, David Greene, Ron Herron and Michael Webb. Their drawings asked why a building should '
-                 "stay fixed when the lives and technology inside it keep changing. In Cook's Plug-In City and Herron's "
-                 'Walking City (both 1964), large structural frames carry capsules that cranes could lift in and out. In '
-                 '1971 Renzo Piano and Richard Rogers, working with the engineers of Ove Arup & Partners including Peter '
-                 'Rice, won the competition for the Centre Pompidou in Paris, a building often described as sharing '
-                 "Archigram's spirit of exposed, adaptable structure.",
- 'history_body': "Archigram's drawings are widely seen as an influence on British High-Tech architecture; this folio does not document direct teaching links to Team 4 (Norman Foster and Richard Rogers) or to Jan Kaplický's Future Systems. At the Centre Pompidou, the engineering team including Peter Rice used cast-steel brackets called gerberettes that carry the floor trusses on short arms outside the column line and are tied down by slender exterior ties, giving column-free floors of about 48 m. Norman Foster's Hongkong and Shanghai Bank headquarters hangs groups of floors from steel masts. Maxwell's rule for stiff frames, extended by Calladine (DOI 10.1016/0020-7683(78)90052-5) and by Pellegrino and Calladine (DOI 10.1016/0020-7683(86)90014-4), counts bars, joints, states of self-stress s and mechanisms m: b - 3j + 6 = s - m. Designers today could explore such frames with open tools such as compas-dev/compas (https://github.com/compas-dev/compas; see DOI 10.1016/j.cad.2015.01.006 for the underlying graphic statics). This folio does not run those tools.",
- 'pullquote': 'What Archigram drew in 1964 as a utopian Plug-In megastructure, Piano, Rogers, Rice, and Foster '
-              'engineered in cast steel: pull the structure and mechanical lungs to the outside so the interior floor '
-              'plate can evolve forever.',
- 'pullquote_cite': "Editorial Synthesis · From Peter Cook & Ron Herron's Archigram (1961–1974) to British High-Tech "
-                   "(Pompidou, HSBC & Lloyd's)",
+ 'history_lead': 'Archigram began in London in 1961 as a small magazine by Peter Cook, Warren Chalk, Dennis Crompton, '
+                 'David Greene, Ron Herron, and Michael Webb (Cook et al. 1999). Their drawings asked why buildings '
+                 'stay fixed when uses and technology keep changing. In Plug-In City and Walking City (1964), cranes '
+                 'lift replaceable capsules onto a permanent frame (Beslioglu 2014, DOI 10.4995/vlc.2014.1829). In '
+                 '1971 Renzo Piano, Richard Rogers, and Ove Arup & Partners engineers including Peter Rice won the '
+                 'Centre Pompidou competition in Paris (Rice 1994; Hamzeian 2018, DOI 10.1201/9780429506208-91).',
+ 'history_body': "Archigram's drawings are widely seen as an influence on British High-Tech architecture; this folio "
+                 'does not document direct teaching links to Norman Foster, Richard Rogers, or Jan Kaplický. At the '
+                 'Centre Pompidou, Peter Rice and the Arup team evolved the cast-steel node from a friction collar into '
+                 'the gerberette bracket (Hamzeian 2018, DOI 10.1201/9780429506208-91; Rice 1994). Floor trusses bear '
+                 'on short gerberette arms outside the columns and are tied down at the outer tips. That layout '
+                 'leaves floors of about 48 m free of interior columns, and Norman Foster later hung floors from masts '
+                 'at HSBC Hong Kong. For rigid frames, James Clerk Maxwell introduced reciprocal force diagrams (1864, '
+                 'DOI 10.1080/14786446408643663). Calladine (1978, DOI 10.1016/0020-7683(78)90052-5) and Pellegrino '
+                 'and Calladine (1986, DOI 10.1016/0020-7683(86)90014-4) formalized the rule b − 3j + 6 = s − m for '
+                 'self-stress states s and mechanisms m. Designers today could model polyhedral frames with '
+                 'compas-dev/compas (https://github.com/compas-dev/compas; Akbarzadeh, Van Mele, and Block 2015, DOI '
+                 '10.1016/j.cad.2015.01.006); this folio does not run those tools.',
+ 'pullquote': 'What Archigram drew in 1964 as a Plug-In frame (Beslioglu 2014, DOI 10.4995/vlc.2014.1829), Piano, '
+              'Rogers, and Rice built in cast steel at the Pompidou (Rice 1994; Hamzeian 2018, DOI '
+              '10.1201/9780429506208-91): push structure and services outward so the floor plate stays open.',
+ 'pullquote_cite': 'Editorial Synthesis · Archigram (1964) to Centre Pompidou (1977) & Brand (1994)',
  'chronology': [('1961–1964',
                  'Archigram (Cook, Herron, Chalk, Crompton, Webb, Greene)',
-                 'Publish Archigram 1–4, Plug-In City, and Walking City, separating the permanent structural frame '
-                 'from clip-on modular capsules.'),
+                 'Publish Archigram 1–4, Plug-In City, and Walking City, separating the structural frame from '
+                 'clip-on capsules (Cook et al. 1999; Beslioglu 2014, DOI 10.4995/vlc.2014.1829).'),
                 ('1961–1972',
                  'Cedric Price (Fun Palace) & N. J. Habraken (Supports)',
-                 "Formulate cybernetic reconfigurable space frames and Open Building 'Support vs. Infill' structural "
-                 'theory.'),
+                 'Propose reconfigurable spatial matrices (Mathews 2006, DOI 10.1111/j.1531-314x.2006.00032.x) '
+                 'and separate shared structural supports from changeable infill (Habraken 2021, orig. 1961/1972, '
+                 'DOI 10.4324/9781003014713).'),
                 ('1971–1977',
                  'Renzo Piano, Richard Rogers & Peter Rice (Centre Pompidou)',
-                 'Realize an exposed exoskeleton with cast-steel gerberettes, color-coded exterior services and '
-                 'column-free floors of about 48 m.'),
+                 'Develop cast-steel gerberette brackets and exterior services, leaving floor plates of about 48 m '
+                 'column-free (Rice 1994; Hamzeian 2018, DOI 10.1201/9780429506208-91).'),
                 ('1978–1986',
                  "Norman Foster (HSBC Hong Kong) & Richard Rogers (Lloyd's)",
-                 'Build mast-suspended floors (HSBC) and exterior service towers with prefabricated service pods '
+                 'Hang floor trusses from exterior masts (HSBC) and place service towers outside main floor plates '
                  "(Lloyd's)."),
                 ('1994',
                  'Stewart Brand',
-                 'Publishes How Buildings Learn, describing a building as layers that change at different rates, from '
-                 'long-lived structure to short-lived services and space plan.')],
- 'intuition_lead': 'The structural mechanics of a high-tech exoskeleton rest on two elegant static principles. First, '
-                   'the cast-steel gerberette operates as a moment-free class-one lever pivoting on an exterior '
-                   'tubular steel column. By applying the vertical floor reaction V_p at cantilever distance a and '
-                   'restraining the outer tip with an exterior vertical tie rod at back-span c, the equilibrium '
-                   'tension force resolves precisely to T_tie = V_p * (a / c). This configuration converts intense '
-                   'mid-span bending into axial compression down the main column, C_col = V_p * (1 + a / c). With the '
-                   'folio\'s assumed V_p = 4,800 kN, a = 1.60 m and c = 6.00 m, T_tie = 1,280 kN and C_col = 6,080 kN. '
-                   'Second, the Maxwell-Calladine counting rule, b - 3j + 6 = s - m (Calladine, DOI '
-                   '10.1016/0020-7683(78)90052-5; Pellegrino and Calladine, DOI 10.1016/0020-7683(86)90014-4), relates '
-                   'bars and joints to states of self-stress s and mechanisms m; a frame with m = 0 has no internal '
-                   'mechanism. This folio assumes m = 0 for its frame and does not compute it, and the tie-rod safety '
-                   'factor of 3.12 is an illustrative value, not the result of a design check.',
- 'intuition_body': 'This folio reads the High-Tech answer to the lifecycle mismatch through two structural ideas. '
-                   'First, a perimeter frame can be checked for internal mechanisms with the Maxwell–Calladine counting '
-                   'rule (b - 3j + 6 = s - m in 3D; for a simple 2D truss, b = 2j - 3), and carrying loads in a '
-                   'perimeter frame or mast-and-gerberette exoskeleton is how the Pompidou keeps its floors free of '
-                   'interior columns. Second, by cantilevering the vertical floor reaction V_p at a short gerberette fulcrum distance a '
-                   '= 1.60 m outside the column line and anchoring the outer tip with a high-strength tension tie rod '
-                   'at distance c = 6.00 m (T_tie = V_p * a / c), bending moment is pulled out of the interior truss '
-                   'while leaving an exterior zone where service modules could be placed.',
+                 'Publishes How Buildings Learn, adapting Frank Duffy\'s shearing layers to explain why structure '
+                 '(30–300 yr) outlasts services (7–15 yr) and space plans (Brand 1994).')],
+ 'intuition_lead': 'This high-tech exoskeleton rests on two static ideas. First, the cast-steel gerberette acts as a '
+                   'class-one lever pivoting on an exterior steel column (Rice 1994; Hamzeian 2018, DOI '
+                   '10.1201/9780429506208-91). A floor reaction V_p acts at cantilever arm a outside the column, and '
+                   'an exterior tie rod restrains the outer tip at back-span c, giving T_tie = V_p * (a / c). Column '
+                   'compression then becomes C_col = V_p * (1 + a / c). With assumed inputs V_p = 4,800 kN, a = 1.60 m, '
+                   'and c = 6.00 m, the model yields T_tie = 1,280 kN and C_col = 6,080 kN. Second, the '
+                   'Maxwell–Calladine rule, b − 3j + 6 = s − m (Maxwell 1864, DOI 10.1080/14786446408643663; Calladine '
+                   '1978, DOI 10.1016/0020-7683(78)90052-5; Pellegrino & Calladine 1986, DOI '
+                   '10.1016/0020-7683(86)90014-4), relates bars and joints to states of self-stress s and mechanisms '
+                   'm. This folio assumes m = 0 without computing a frame matrix, and treats SF = 3.12 as an '
+                   'illustrative value.',
+ 'intuition_body': 'This folio reads the High-Tech response to lifecycle mismatch through two structural ideas. '
+                   'First, a perimeter frame can be checked for internal mechanisms with the Maxwell–Calladine rule '
+                   '(b − 3j + 6 = s − m in 3D, or b = 2j − 3 in 2D; Pellegrino & Calladine 1986, DOI '
+                   '10.1016/0020-7683(86)90014-4). Carrying loads on a perimeter exoskeleton helps keep interior '
+                   'floors free of columns, as at the Centre Pompidou (Rice 1994). Second, cantilevering V_p at '
+                   'arm a = 1.60 m and anchoring the outer tip at back-span c = 6.00 m shifts bending demand to an '
+                   'exterior tie rod (T_tie = V_p * a / c) while opening an outer zone for replaceable services '
+                   '(Brand 1994; Habraken 2021, DOI 10.4324/9781003014713).',
  'walkthrough': ['Experiment 1 (Trace the Archigram-to-High-Tech Lineage): Click Stages 1 -> 4 in the stepper above to '
                  "follow the path from Peter Cook's 1964 Plug-In City to the Pompidou gerberette lever model, the "
                  "High-Tech masts and service towers, and Stewart Brand's shearing layers.",
@@ -185,14 +195,27 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Experiment 3 (Read the Companion Skill): Use the portable SKILL.md below to study the gerberette lever '
                  'formula, the Maxwell-Calladine counting rule and shearing-layer thinking. It is a study aid, not a '
                  'design code.'],
- 'human_ai_shift': "A speculative coda, labelled as such: Ron Herron's Walking City and Peter Cook's Plug-In City "
-                   'imagined buildings whose parts could be swapped. Future frames might use lightweight lattice '
-                   'materials and robots for assembly and inspection, and digital models might help plan which modules '
-                   'to replace. None of this is a description of current practice, the folio gives no figures for it, '
-                   'and it is not an approved medical facility design.',
- 'sources': ['Cook, P., Chalk, W., Crompton, D., Greene, D., Herron, R., & Webb, M. (1961–1974 / 1999). Archigram. '
+ 'human_ai_shift': "A speculative coda, labeled as such: Ron Herron's Walking City and Peter Cook's Plug-In City "
+                   'imagined buildings whose parts could be swapped (Beslioglu 2014, DOI 10.4995/vlc.2014.1829). '
+                   'Future frames might use lightweight lattice materials and digital inspection logs to plan module '
+                   'replacement. None of this describes current practice, no figures are computed here, and it is not '
+                   'an approved medical facility design.',
+ 'sources': ['Maxwell, J. C. (1864). XLV. On reciprocal figures and diagrams of forces. The London, Edinburgh, and '
+             'Dublin Philosophical Magazine and Journal of Science, 27(182), 250–261. DOI: '
+             '10.1080/14786446408643663.',
+             'Cook, P., Chalk, W., Crompton, D., Greene, D., Herron, R., & Webb, M. (1961–1974 / 1999). Archigram. '
              'Princeton Architectural Press.',
+             'Beslioglu, B. (2014). The Critical Approach of "Plug" in Re-Conceptualisation of Architectural Program. '
+             'VLC arquitectura. Research Journal, 1(1), 59–76. DOI: 10.4995/vlc.2014.1829.',
+             'Mathews, S. (2006). The Fun Palace as Virtual Architecture: Cedric Price and the Practices of '
+             'Indeterminacy. Journal of Architectural Education, 59(3), 39–48. DOI: '
+             '10.1111/j.1531-314x.2006.00032.x.',
+             'Habraken, N. J. (2021; orig. 1961 / 1972). Supports: An Alternative to Mass Housing. Routledge. DOI: '
+             '10.4324/9781003014713.',
              'Rice, P. (1994). An Engineer Imagines. Artemis, London.',
+             "Hamzeian, B. (2018). The evolution of the cast node of the Pompidou Centre: From the 'friction collar' "
+             "to the 'gerberette'. Building Knowledge, Constructing Histories (6ICCH), Taylor & Francis. DOI: "
+             '10.1201/9780429506208-91.',
              'Calladine, C. R. (1978). Buckminster Fuller\'s "Tensegrity" structures and Clerk Maxwell\'s rules for the '
              'construction of stiff frames. International Journal of Solids and Structures, 14(2), 161–172. DOI: '
              '10.1016/0020-7683(78)90052-5.',
@@ -203,7 +226,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'Akbarzadeh, M., Van Mele, T., & Block, P. (2015). On the equilibrium of funicular polyhedral frames and '
              'convex polyhedral force diagrams. Computer-Aided Design, 63, 118–128. DOI: 10.1016/j.cad.2015.01.006. '
              '(Cited for graphic statics; compas-dev/compas, https://github.com/compas-dev/compas, is a separate '
-             'open-source framework.)'],
+             'open-source framework.)',
+             'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the context of citations '
+             'and classifies their intent using deep learning (https://scite.ai). Quantitative Science Studies, 2(3), '
+             '882–898. DOI: 10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Archigram Plug-In Megastructure to '
         'British High-Tech Exoskeleton Gerberette & Shearing Layers">\n'
         '            <rect id="tp-a04-bay" x="175" y="34" width="330" height="145" fill="var(--tp-stone)" '
@@ -227,8 +253,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         'fill-opacity="0.26" stroke="var(--tp-verdigris)" stroke-width="2"/>\n'
         '            <rect id="tp-a04-pod-3" x="548" y="142" width="68" height="36" rx="3" fill="var(--tp-verdigris)" '
         'fill-opacity="0.26" stroke="var(--tp-verdigris)" stroke-width="2"/>\n'
-        '            <text x="215" y="62" font-size="11" font-weight="700" fill="var(--tp-prussian)">100% Column-Free '
-        'Clear Span (48.0 m)</text>\n'
+        '            <text x="215" y="62" font-size="11" font-weight="700" fill="var(--tp-prussian)">Column-Free '
+        'Clear Span (~48 m)</text>\n'
         '            <text x="210" y="110" font-size="10.5" fill="currentColor">Reconfigurable Lab / Clinical Floor '
         'Plate (τ = 3–15 yr)</text>\n'
         '            <text x="210" y="158" font-size="10.5" fill="currentColor">Permanent Exoskeleton Mast &amp; Truss '
@@ -239,98 +265,89 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         '            <text id="tp-a04-svg-label" x="135" y="206" font-size="11" fill="currentColor">Archigram (1964) → '
         'Pompidou / Foster / Rogers High-Tech Exoskeleton (T_tie = 1,280 kN)</text>\n'
         '          </svg>',
- 'act1_dropcap': 'Archigram began in London in 1961 as a small magazine. Its core group was Peter Cook, Warren Chalk, '
-                 'Dennis Crompton, David Greene, Ron Herron and Michael Webb. Their drawings asked why a building should '
-                 "stay fixed when the lives and technology inside it keep changing. In Cook's Plug-In City and Herron's "
-                 'Walking City (both 1964), large structural frames carry capsules that cranes could lift in and out. In '
-                 '1971 Renzo Piano and Richard Rogers, working with the engineers of Ove Arup & Partners including Peter '
-                 'Rice, won the competition for the Centre Pompidou in Paris, a building often described as sharing '
-                 "Archigram's spirit of exposed, adaptable structure.",
- 'act1_plain_bridge': 'Most conventional buildings resemble old desktop computers where all the delicate chips, pipes, '
-                      'and wiring are glued permanently inside concrete walls. If a hospital needs to upgrade its '
-                      'ventilation ducts or install modern medical technology twenty years later, workers have to tear '
-                      'down walls or demolish the whole building. British high-tech architects inverted this logic by '
-                      "pushing the building's skeleton and mechanical guts onto the outside of the facade. By perching "
-                      'the structural columns outside and hanging elevators, water pipes, and air conditioning on the '
-                      'exterior, the interior rooms become wide, completely open halls without a single column in the '
-                      'way. Because the inside space is completely uncluttered, rooms can be reconfigured over a '
-                      'weekend. When specialized clinic capsules or cleanrooms wear out, a service crane can simply '
-                      'unbolt the old pod and plug in a brand-new module without disrupting the rest of the facility.',
- 'act1_body': "Archigram's drawings are widely seen as an influence on British High-Tech architecture; this folio does not document direct teaching links to Team 4 (Norman Foster and Richard Rogers) or to Jan Kaplický's Future Systems. At the Centre Pompidou, the engineering team including Peter Rice used cast-steel brackets called gerberettes that carry the floor trusses on short arms outside the column line and are tied down by slender exterior ties, giving column-free floors of about 48 m. Norman Foster's Hongkong and Shanghai Bank headquarters hangs groups of floors from steel masts. Maxwell's rule for stiff frames, extended by Calladine (DOI 10.1016/0020-7683(78)90052-5) and by Pellegrino and Calladine (DOI 10.1016/0020-7683(86)90014-4), counts bars, joints, states of self-stress s and mechanisms m: b - 3j + 6 = s - m. Designers today could explore such frames with open tools such as compas-dev/compas (https://github.com/compas-dev/compas; see DOI 10.1016/j.cad.2015.01.006 for the underlying graphic statics). This folio does not run those tools.",
- 'act1_stakes': 'Traditional institutional construction buries electrical conduits, drainage stacks, and heavy '
-                'ventilation ducts deep inside reinforced concrete floor slabs and structural masonry partitions. '
-                'While this traditional approach simplifies initial exterior waterproofing, it creates a fatal '
-                "lifecycle trap that architect Stewart Brand identified as pace layering failure. A building's "
-                'concrete structural frame easily lasts a century, but interior office layouts shift every three '
-                'years, and high-intensity clinical heating, ventilation, and air conditioning systems require '
-                'complete replacement after fifteen years. When mechanical ducts are entombed in structural concrete, '
-                'updating a surgical suite or research laboratory requires jackhammers, building-wide asbestos '
-                'abatement, and months of catastrophic downtime. Furthermore, attempting to push structures outward '
-                'into long-span cantilevers without rigorous kinematic analysis risks sudden instability: if an '
-                'exterior rocker arm or tension tie slips out of equilibrium, the unbraced perimeter frame can '
-                'experience severe eccentric twisting, causing floor trusses to deflect excessively or snap connection '
-                'bolts.',
- 'act2_analogy': 'Everyday analogy: Think of a playground seesaw. A parent sits close to the center pivot on a short '
-                 'lever arm, while a child sits far out on the opposite long arm. Because the child sits much further '
-                 'from the fulcrum, the child easily balances the heavier adult. A high-tech gerberette acts as this '
-                 'exact seesaw: the heavy floor beam presses on the short inner arm, while an exterior steel tension '
-                 'cable anchored far away balances the colossal load effortlessly.',
- 'act2_plain_primer': 'In the interactive laboratory below, you manipulate the mechanical balance of a high-tech '
-                      'cast-steel gerberette cantilever. The first slider adjusts the length of the short cantilever '
-                      'arm that reaches from the vertical column out to the floor truss fulcrum. Moving this arm '
-                      'outward increases the leverage that the massive interior floor plate exerts against the '
-                      "building's perimeter. The second slider changes the back-span distance to the exterior tension "
-                      'tie-rod, which anchors the outer tip of the steel bracket to the ground. When you lengthen this '
-                      'back-span, you increase the mechanical advantage of the tension cable, allowing a relatively '
-                      'slender steel rod to restrain immense interior floor weights. By tuning these two levers in '
-                      'harmony, you balance the seesaw perfectly. This balance neutralizes rotational bending on the '
-                      'main column, keeps the interior completely column-free, and leaves clear exterior space where '
-                      'cranes can plug in modular mechanical capsules.',
+ 'act1_dropcap': 'Archigram began in London in 1961 as a small magazine by Peter Cook, Warren Chalk, Dennis Crompton, '
+                 'David Greene, Ron Herron, and Michael Webb (Cook et al. 1999). Their drawings asked why buildings '
+                 'stay fixed when uses and technology keep changing. In Plug-In City and Walking City (1964), cranes '
+                 'lift replaceable capsules onto a permanent frame (Beslioglu 2014, DOI 10.4995/vlc.2014.1829). In '
+                 '1971 Renzo Piano, Richard Rogers, and Ove Arup & Partners engineers including Peter Rice won the '
+                 'Centre Pompidou competition in Paris (Rice 1994; Hamzeian 2018, DOI 10.1201/9780429506208-91).',
+ 'act1_plain_bridge': 'Most conventional buildings resemble a sealed desktop computer whose wires and pipes sit inside '
+                      'structural walls. When ducts or lab utilities need replacement, workers may have to open walls '
+                      'or partitions (Brand 1994). High-tech architects placed columns, ducts, and circulation outside '
+                      'the facade instead (Rice 1994). Separating a durable frame from replaceable services builds on '
+                      'Open Building support-and-infill thinking (Habraken 2021, DOI 10.4324/9781003014713), so '
+                      'interior rooms could stay open for future layouts.',
+ 'act1_body': "Archigram's drawings are widely seen as an influence on British High-Tech architecture; this folio "
+              'does not document direct teaching links to Norman Foster, Richard Rogers, or Jan Kaplický. At the '
+              'Centre Pompidou, Peter Rice and the Arup team evolved the cast-steel node from a friction collar into '
+              'the gerberette bracket (Hamzeian 2018, DOI 10.1201/9780429506208-91; Rice 1994). Floor trusses bear '
+              'on short gerberette arms outside the columns and are tied down at the outer tips. That layout leaves '
+              'floors of about 48 m free of interior columns, and Norman Foster later hung floors from masts at HSBC '
+              'Hong Kong. For rigid frames, James Clerk Maxwell introduced reciprocal force diagrams (1864, DOI '
+              '10.1080/14786446408643663). Calladine (1978, DOI 10.1016/0020-7683(78)90052-5) and Pellegrino and '
+              'Calladine (1986, DOI 10.1016/0020-7683(86)90014-4) formalized b − 3j + 6 = s − m for self-stress '
+              'states s and mechanisms m. Designers today could model polyhedral frames with compas-dev/compas '
+              '(https://github.com/compas-dev/compas; Akbarzadeh, Van Mele, and Block 2015, DOI '
+              '10.1016/j.cad.2015.01.006); this folio does not run those tools. Citation context was checked via Scite '
+              '(Nicholson et al. 2021, DOI 10.1162/qss_a_00146).',
+ 'act1_stakes': 'Conventional construction often embeds ducts, pipes, and wiring inside permanent concrete or masonry '
+                'elements. Stewart Brand adapted Frank Duffy\'s shearing layers to explain that mismatch: structure '
+                'may endure about 30 to 300 years, skin about 20 years, services 7 to 15 years, and space plans 3 to '
+                '30 years (Brand 1994). Habraken similarly proposed separating shared supports from changeable infill '
+                '(Habraken 2021, DOI 10.4324/9781003014713). Exoskeleton cantilevers also require static and '
+                'kinematic checks via Maxwell–Calladine counting (Pellegrino & Calladine 1986, DOI '
+                '10.1016/0020-7683(86)90014-4). Without those checks, ties and brackets might slip out of '
+                'equilibrium or allow unintended mechanisms.',
+ 'act2_analogy': 'Everyday analogy: Think of a playground seesaw. An adult sits close to the center pivot on a short '
+                 'arm, while a child sits far out on the long arm to balance the load. A gerberette bracket acts as a '
+                 'lever seesaw: the floor truss presses on a short inner arm, while an exterior steel tie rod at a '
+                 'wider back-span balances that load.',
+ 'act2_plain_primer': 'The interactive model below controls two geometric lengths of a cast-steel gerberette cantilever '
+                      '(Rice 1994; Hamzeian 2018, DOI 10.1201/9780429506208-91). The first slider sets the cantilever '
+                      'arm a from the column center to the floor truss bearing. Lengthening a increases the lever arm '
+                      'of the interior floor reaction. The second slider sets the back-span c from the column center to '
+                      'the exterior tension tie rod. Lengthening c increases the tie rod\'s leverage, reducing the '
+                      'model tension T_tie = V_p * (a / c) for a fixed floor reaction V_p and keeping bending out of '
+                      'the interior truss.',
  'distill_diagram': {'analogy_title': 'Playground Seesaw Lever Equilibrium',
                      'analogy_sub': 'Short floor lever balanced by long exterior tension tie',
                      'force_a_title': 'Floor Cantilever Arm (a)',
                      'force_a_sub': 'Magnifies floor reaction leverage across the rocker pivot',
                      'force_b_title': 'Tie-Rod Back-Span (c)',
-                     'force_b_sub': 'Lengthens cable leverage to balance colossal downward load',
+                     'force_b_sub': 'Lengthens cable leverage to balance downward floor load',
                      'threshold_title': 'Maxwell Rigidity & Tie-Rod Yield Bound',
                      'threshold_pass': 'Lever in balance; tie within its assumed capacity (model)',
                      'threshold_fail': 'Tie-rod overload; column flexural hinge; frame collapse'},
- 'act2_intuition': 'The structural mechanics of a high-tech exoskeleton rest on two elegant static principles. First, '
-                   'the cast-steel gerberette operates as a moment-free class-one lever pivoting on an exterior '
-                   'tubular steel column. By applying the vertical floor reaction V_p at cantilever distance a and '
-                   'restraining the outer tip with an exterior vertical tie rod at back-span c, the equilibrium '
-                   'tension force resolves precisely to T_tie = V_p * (a / c). This configuration converts intense '
-                   'mid-span bending into axial compression down the main column, C_col = V_p * (1 + a / c). With the '
-                   'folio\'s assumed V_p = 4,800 kN, a = 1.60 m and c = 6.00 m, T_tie = 1,280 kN and C_col = 6,080 kN. '
-                   'Second, the Maxwell-Calladine counting rule, b - 3j + 6 = s - m (Calladine, DOI '
-                   '10.1016/0020-7683(78)90052-5; Pellegrino and Calladine, DOI 10.1016/0020-7683(86)90014-4), relates '
-                   'bars and joints to states of self-stress s and mechanisms m; a frame with m = 0 has no internal '
-                   'mechanism. This folio assumes m = 0 for its frame and does not compute it, and the tie-rod safety '
-                   'factor of 3.12 is an illustrative value, not the result of a design check.',
- 'act2_deepening': 'The mathematical interaction between cantilever arm a and back-span c dictates the internal stress '
-                   'state of the entire building skeleton. As the cantilever arm a is lengthened, the downward floor '
-                   'load pivots further away from the column center, causing tie-rod tension T_tie to increase in '
-                   'direct linear proportion. To avoid excessive tension steel or foundation uplift piles, the '
-                   'back-span c must be widened, which pushes the exterior facade zone outward. This geometric '
-                   "trade-off directly governs Stewart Brand's shearing layer decoupling: the outer structural bay "
-                   'provides a dedicated structural zone for external elevators, color-coded ductwork, and modular '
-                   'laboratory capsules. Because the floor trusses transmit negligible bending moment into the '
-                   'columns, changes to floor stiffness do not alter global wind-drift resistance. However, if the '
-                   'tie-rod back-span c is restricted by narrow site boundaries, the lever ratio a/c spikes, '
-                   'escalating column compression and demanding heavy cast-steel pearlitic brackets capable of '
-                   'resisting severe shear stresses without brittle winter fracture.',
- 'act4_deepening': 'A proposal, not a description of current practice: a building model linked to strain gauges in '
-                   'cast-steel nodes could track how loads shift when modules are swapped, and crane-path simulations '
-                   'could help check that removing one module does not unbalance the exterior frame, with an engineer '
-                   'signing off each step. An open research challenge involves autonomous robotic maintenance swarms: can magnetic climbing '
-                   'robots and aerial drones continuously inspect tension tie-rods, detect microscopic fatigue cracks, '
-                   'and apply corrosion-resistant coatings in situ? If so, adaptable frames might last longer '
-                   'before major rebuilding; that remains a hope, not a result.',
- 'act4_human_ai': "A speculative coda, labelled as such: Ron Herron's Walking City and Peter Cook's Plug-In City "
-                  'imagined buildings whose parts could be swapped. Future frames might use lightweight lattice '
-                  'materials and robots for assembly and inspection, and digital models might help plan which modules '
-                  'to replace. None of this is a description of current practice, the folio gives no figures for it, '
-                  'and it is not an approved medical facility design.'}
+ 'act2_intuition': 'This high-tech exoskeleton rests on two static ideas. First, the cast-steel gerberette acts as a '
+                   'class-one lever pivoting on an exterior steel column (Rice 1994; Hamzeian 2018, DOI '
+                   '10.1201/9780429506208-91). A floor reaction V_p acts at cantilever arm a outside the column, and '
+                   'an exterior tie rod restrains the outer tip at back-span c, giving T_tie = V_p * (a / c). Column '
+                   'compression then becomes C_col = V_p * (1 + a / c). With assumed inputs V_p = 4,800 kN, a = 1.60 m, '
+                   'and c = 6.00 m, the model yields T_tie = 1,280 kN and C_col = 6,080 kN. Second, the '
+                   'Maxwell–Calladine rule, b − 3j + 6 = s − m (Maxwell 1864, DOI 10.1080/14786446408643663; Calladine '
+                   '1978, DOI 10.1016/0020-7683(78)90052-5; Pellegrino & Calladine 1986, DOI '
+                   '10.1016/0020-7683(86)90014-4), relates bars and joints to states of self-stress s and mechanisms '
+                   'm. This folio assumes m = 0 without computing a frame matrix, and treats SF = 3.12 as an '
+                   'illustrative value.',
+ 'act2_deepening': 'The ratio a / c sets both tie-rod tension and column compression in the lever model. Lengthening '
+                   'cantilever arm a increases T_tie linearly for a fixed V_p, so widening back-span c lowers tie '
+                   'demand and opens the exterior bay where modular services can sit (Brand 1994). Pinning floor '
+                   'trusses to gerberette pivots limits moment transfer into the perimeter columns (Rice 1994). '
+                   'Conversely, a tight site that restricts back-span c raises a / c, increasing both tie tension and '
+                   'bracket shear demand on cast-steel nodes (Hamzeian 2018, DOI 10.1201/9780429506208-91).',
+ 'act4_deepening': 'A proposal, not a description of current practice: strain gauges at cast-steel nodes could inform '
+                   'a structural model during module swaps, while crane-path simulations could help engineers check '
+                   'equilibrium at each step. Combining Habraken\'s support-and-infill split (Habraken 2021, DOI '
+                   '10.4324/9781003014713), Brand\'s shearing layers (Brand 1994), and matrix frame checks '
+                   '(Pellegrino & Calladine 1986, DOI 10.1016/0020-7683(86)90014-4) might help future facilities '
+                   'replace aging service pods without rebuilding the frame. Under the stated assumptions, whether '
+                   'that lowers lifecycle cost or downtime remains untested and depends on site details not modeled '
+                   'here.',
+ 'act4_human_ai': "A speculative coda, labeled as such: Ron Herron's Walking City and Peter Cook's Plug-In City "
+                  'imagined buildings whose parts could be swapped (Beslioglu 2014, DOI 10.4995/vlc.2014.1829). '
+                  'Future frames might use lightweight lattice materials and digital inspection logs to plan module '
+                  'replacement. None of this describes current practice, no figures are computed here, and it is not '
+                  'an approved medical facility design.'}
 
 PLATE_CAPTION = {'alt': "Conceptual visualization imagining what Archigram's Walking City and Plug-In City combined with British "
         'High-Tech cast-steel gerberette exoskeletons and modular cleanroom pods would look like (artistic impression, '
@@ -358,24 +375,18 @@ ES_TRANSLATION = {'title_es': 'De las Megaestructuras Plug-In de Archigram a los
                 'gerberette de acero fundido, con módulos de servicios reemplazables como propuesta.',
  'why_es': 'Separar un esqueleto estructural de larga vida de las instalaciones de vida corta podría facilitar, como '
            'propuesta, la actualización de laboratorios y salas clínicas sin demoler el edificio.',
- 'plain_es': 'La mayoría de los edificios convencionales se parecen a una vieja computadora de escritorio donde todos '
-             'los cables, tuberías y circuitos están pegados con pegamento dentro de paredes de concreto. Cuando un '
-             'hospital necesita renovar sus conductos de ventilación o instalar equipo médico moderno veinte años '
-             'después, los trabajadores tienen que demoler muros y paralizar las actividades. Los arquitectos del '
-             'movimiento High-Tech británico cambiaron esta lógica por completo al colocar el esqueleto estructural y '
-             'las instalaciones mecánicas en el exterior de la fachada. Al situar las columnas afuera y colgar '
-             'elevadores, tuberías y aire acondicionado en el perímetro, los pisos interiores se convierten en salones '
-             'inmensos totalmente libres de columnas. Este espacio despejado permite reorganizar consultorios en un '
-             'fin de semana. Además, cuando un quirófano o laboratorio se vuelve obsoleto, una grúa puede desconectar '
-             'el módulo antiguo y enchufar una cápsula nueva sin afectar el resto del edificio, asegurando una '
-             'adaptabilidad continua frente a las necesidades humanas.',
- 'deep_es': 'El principio estático que hace posible estas plantas libres de cuarenta y ocho metros es la gerberette de '
-            'acero fundido, que funciona como un balancín de palanca apoyado sobre las columnas exteriores. La pesada '
-            'losa del piso presiona sobre un brazo corto, mientras que un tirante vertical exterior anclado a mayor '
-            'distancia equilibra la carga mediante tensión pura. Esta disposición cancela los momentos de flexión en '
-            'las columnas interiores y concentra las cargas de gravedad en un exoesqueleto perimetral gobernado por el '
-            'conteo de rigidez de Maxwell-Calladine. En el modelo de esta ficha, con una reacción supuesta de 4,800 kN, '
-            'un brazo de 1.60 m y un tirante a 6.00 m, la tensión del tirante es de 1,280 kN; el factor de seguridad de '
-            '3.12 es ilustrativo y el índice de mecanismos m = 0 se supone, no se calcula. Separar la estructura '
-            'permanente de las instalaciones de corta vida podría, como propuesta, facilitar la adaptación de '
-            'laboratorios y salas clínicas.'}
+ 'plain_es': 'La mayoría de los edificios convencionales se parecen a una computadora sellada donde los cables y '
+             'tuberías quedan dentro de muros estructurales. Cuando un edificio requiere renovar conductos o redes '
+             'de servicios, las cuadrillas deben abrir muros y tabiques (Brand 1994). La arquitectura High-Tech '
+             'invirtió esa lógica al llevar las columnas, ductos y circulaciones hacia el exterior de la fachada '
+             '(Rice 1994). Separar la estructura duradera de las instalaciones reemplazables retoma el enfoque de '
+             'soporte y relleno de Habraken (DOI 10.4324/9781003014713) para mantener plantas interiores abiertas.',
+ 'deep_es': 'El modelo de planta libre de unos 48 m en el Centro Pompidou emplea piezas de acero fundido llamadas '
+            'gerberettes que evolucionaron de collarines de fricción a ménsulas articuladas (Rice 1994; Hamzeian '
+            '2018, DOI 10.1201/9780429506208-91). La losa apoya sobre un brazo corto exterior y un tirante vertical '
+            'más alejado equilibra la reacción mediante tensión pura, mientras la regla de Maxwell-Calladine '
+            '(DOI 10.1016/0020-7683(86)90014-4) evalúa rigidez y mecanismos. En este modelo, con una reacción '
+            'supuesta de 4,800 kN, un brazo de 1.60 m y un tirante a 6.00 m, la tensión del tirante es de 1,280 kN; '
+            'el factor de seguridad de 3.12 es ilustrativo y m = 0 se supone, no se calcula. Separar la estructura '
+            'de las instalaciones de corta vida es una propuesta apoyada en Brand (1994) y Habraken '
+            '(DOI 10.4324/9781003014713).'}
