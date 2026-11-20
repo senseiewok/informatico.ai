@@ -38,7 +38,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 5. 4-Stage Geometry & Verification Pipeline
 - Stage 1: Khronos GLB Binary Header & Chunk Bounds Audit — Unpack the 12-byte header (<3I: magic 0x46546C67, version 2, total_len) and verify that Chunk 0 (JSON) and Chunk 1 (BIN) byte offsets and accessor bufferViews lie strictly within the file.
 - Stage 2: Directed Half-Edge Manifold Closure (3F = 2E) — Build the directed half-edge table {(u, v)} across all triangles and assert zero degenerate triangles, zero duplicate half-edges, and 100% reverse half-edge pairing (v, u) ∈ E.
-- Stage 3: Euler–Poincaré Characteristic & Divergence-Theorem Volume — Compute χ = V − E + F = 2 − 2g and integrate V_mesh = (1/6) ∑ v_0 · (v_1 × v_2) to certify exact agreement with the analytical solid volume (24,000.0 mm³).
+- Stage 3: Euler–Poincaré Characteristic & Divergence-Theorem Volume — Compute χ = V − E + F = 2 − 2g and integrate V_mesh = (1/6) ∑ v_0 · (v_1 × v_2) to check numerical agreement with the analytical solid volume (24,000.0 mm³).
 - Stage 4: Malformed-Binary Fuzz Suite & Planted-Defect Knockout — Run the parser and topological verifier against 4 malformed GLB fuzz files (truncated header, chunk OOB, vertex index OOB, flipped normal) and assert that every defect fails.
 
 ## 6. Verified Reference Telemetry (T0/T1)
@@ -51,8 +51,8 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ### Verified Geometry in Repository Today (T0/T1)
 - Zero-dependency WebGL2 GLB loader and interactive orbit/wireframe/clipping inspector in src/modules/glb-viewer.mjs.
 - Deterministic Python stdlib generator (skills/toolchain/x01/make_x01.py) emitting x01_artifact.glb, x01_artifact.step, x01_artifact.3mf, manifest.json, and 4 malformed fuzz fixtures.
-- Byte-level stdlib verifier (verify_x01_toolchain_x01_glb_inspector_validator.py) certifying χ = 2, V = 24,000.0 mm³, SHA-256 manifest match, 4/4 fuzz rejection, and planted-defect knockout.
+- Byte-level stdlib verifier (verify_x01_toolchain_x01_glb_inspector_validator.py) checking χ = 2, V = 24,000.0 mm³, SHA-256 manifest match, 4/4 fuzz rejection, and planted-defect knockout.
 
 ### Educational Boundary & Edition 2 Horizon (T2/T3)
-- Educational Geometry Boundary: Every file on this page is an educational artifact; nothing is certified as load-bearing, printable, safe, or fit for any purpose.
+- Educational Geometry Boundary: Every file on this page is an educational artifact and is not certified as load-bearing, printable, safe, or fit for any purpose.
 - Future Edition 2 Extensions: Skeletal animation tracks, Draco/Meshopt compressed buffer views, and KTX2 GPU texture transcoding remain outside the v1 static-mesh subset.
