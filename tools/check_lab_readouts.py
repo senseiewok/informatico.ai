@@ -19,7 +19,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
-PILLARS = (("engineering", "e"), ("architecture", "a"), ("physics", "p"), ("math", "m"))
+PILLARS = (("engineering", "e", 13), ("architecture", "a", 12), ("physics", "p", 12), ("math", "m", 12))
 
 SWEEP_JS = """async () => {
   const n = (x) => (x || "").replace(/\\s+/g, " ").trim();
@@ -42,7 +42,7 @@ class QuietHandler(http.server.SimpleHTTPRequestHandler):
 
 
 def pages() -> list[str]:
-    return [f"/{pillar}/{code}{i:02d}/" for pillar, code in PILLARS for i in range(1, 13)]
+    return [f"/{pillar}/{code}{i:02d}/" for pillar, code, count in PILLARS for i in range(1, count + 1)]
 
 
 def main() -> int:

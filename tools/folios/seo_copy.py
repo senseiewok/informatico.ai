@@ -88,6 +88,12 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "Silicio RISC-V y Barreras de Control en la Red",
         "Cómo las funciones de barrera y la sincronización tipo luciérnaga pueden estabilizar la red renovable, y qué sumaría un chip RISC-V comprobado por máquina.",
     ),
+    "e13": (
+        "Biot 3D Poroelasticity and Fault Slip Margin",
+        "How Biot consolidation, Skempton pore-pressure coupling and Mohr-Coulomb friction frame fault slip risk during geologic carbon dioxide storage, in a model.",
+        "Poroelasticidad de Biot y Deslizamiento de Fallas",
+        "Cómo la consolidación de Biot, el acoplamiento de Skempton y la fricción de Mohr-Coulomb acotan el deslizamiento de fallas al inyectar CO2, en un modelo.",
+    ),
     # ---- Pillar II: Architecture
     "a01": (
         "Funicular Thrust Surfaces in Stone and Timber Shells",
@@ -313,9 +319,9 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
 PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     "engineering": (
         "Civil Engineering & Construction Essays | Informatico.ai",
-        "Twelve interactive essays on civil engineering and construction: concrete pumping, 3D printing, bridges, tunnel boring machines and self-healing concrete.",
+        "Thirteen interactive essays on civil engineering and construction: concrete pumping, 3D printing, bridges, tunnel boring machines and geomechanics.",
         "Ensayos de Ingeniería Civil y Construcción | Informatico.ai",
-        "Doce ensayos interactivos de ingeniería civil y construcción: bombeo e impresión 3D de concreto, puentes, tuneladoras y concreto autocurativo.",
+        "Trece ensayos interactivos de ingeniería civil y construcción: bombeo e impresión 3D de concreto, puentes, tuneladoras, concreto y geomecánica.",
     ),
     "architecture": (
         "Architecture Essays: Vaults, Color & Facades | Informatico.ai",
