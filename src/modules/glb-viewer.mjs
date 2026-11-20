@@ -793,6 +793,7 @@ function computeParametricScaleVec(slug, p0, p1) {
     return [cNow / cBase, 1.0, p1 / 6.0];
   }
   if (slug === "x05") return [p0 / 24.0, (p0 + p1) / 28.0, 1.0];
+  if (slug === "x07") return [p0 / 30.0, 1.0, p1 / 18.0];
   return [p0 / 24.0, p0 / 24.0, p1 / 60.0];
 }
 
@@ -884,6 +885,16 @@ export function initGlbViewers(scope = document) {
           `${overhangDeg.toFixed(2)}° ${pass ? "≤" : ">"} 45.0° (GEOMETRY)`,
           pass ? "PASS · DEFECT REJECTED" : "ALERT · OVERHANG > 45°",
         ];
+      } else if (slug === "x07") {
+        const vol = 47416.9102 * (p0 / 30.0) * (p1 / 18.0);
+        const nonDelaunay = knockoutActive ? "2 UNPAIRED · GB DRIFT" : (p1 <= 11 || p0 >= 40 ? "DELAUNAY VIOLATED (w < 0)" : "0/120 NON-DELAUNAY");
+        pass = !knockoutActive && p1 > 11 && p0 < 40;
+        out = [
+          knockoutActive ? "V=42, E=120, F=80 · 2 UNPAIRED" : "V=42, E=120, F=80 · χ=2",
+          knockoutActive ? "GB DRIFT != 4π rad" : "∑ δ_v = 4π = 12.5664 rad",
+          `${vol.toFixed(1)} mm³ · ${nonDelaunay}`,
+          pass ? "PASS · DEFECT REJECTED" : (knockoutActive ? "PLANTED DEFECT TRIGGERED" : "ALERT · COTANGENT WEIGHT < 0"),
+        ];
       } else {
         const vol = (6400.0 - p0 * p0) * p1;
         const phi = ((p0 * p0) / 6400.0) * 100.0;
@@ -949,6 +960,7 @@ export function initGlbViewers(scope = document) {
           if (slug === "x02") s0.value = "8";
           else if (slug === "x03") s1.value = "95";
           else if (slug === "x05") s1.value = "20";
+          else if (slug === "x07") s1.value = "9";
         } else if (s0 && s1) {
           if (slug === "x01") { s0.value = "40"; s1.value = "20"; }
           else if (slug === "x02") { s0.value = "32"; s1.value = "18"; }
@@ -956,6 +968,7 @@ export function initGlbViewers(scope = document) {
           else if (slug === "x04") { s0.value = "78"; s1.value = "6"; }
           else if (slug === "x05") { s0.value = "24"; s1.value = "4"; }
           else if (slug === "x06") { s0.value = "24"; s1.value = "60"; }
+          else if (slug === "x07") { s0.value = "30"; s1.value = "18"; }
         }
         updateWb();
       });

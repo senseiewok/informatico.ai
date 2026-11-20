@@ -1,7 +1,7 @@
 {
   "version": "7.0.0",
-  "title": "Informatico.ai — 7-Volume, 49-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
-  "total_folios": 49,
+  "title": "Informatico.ai — 7-Volume, 50-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
+  "total_folios": 50,
   "pillars": {
     "engineering": [
       {
@@ -6072,12 +6072,13 @@
       "volume": 7,
       "code": "VOL. 07",
       "roman": "Volume VII",
-      "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY, SKEMPTON COUPLING & FAULT SLIP MARGINS · 1 FOLIO",
-      "title": "Biot 3D Poroelasticity, Skempton Undrained Coupling & Mohr–Coulomb Fault Slip Margin in Geologic CO2 Storage",
-      "subtitle": "Volume VII inaugural monograph (E.13) continuing E.01 and E.05 to examine Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds across sedimentary basins and crystalline basement.",
+      "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY & FUNICULAR THIN-SHELL BUCKLING · 2 FOLIOS",
+      "title": "Biot 3D Poroelasticity & Heinz Isler's Thin-Shell Concrete Domes",
+      "subtitle": "Volume VII opens with Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage) and Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns).",
       "cadence": "Verifier-gated Living Edition release",
       "folios": [
-        "e13"
+        "e13",
+        "a13"
       ]
     }
   ]

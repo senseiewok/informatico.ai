@@ -355,9 +355,9 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "toolchain": (
         "Tech & Tools · The 3D CAD & Open Toolbox | Informatico.ai",
-        "Six interactive 3D CAD and open-tool folios with downloadable STEP, 3MF, GLB and DXF files, Python byte-level verifiers, and skills for small studios.",
+        "Seven interactive 3D CAD and open-tool folios with downloadable STEP, 3MF, GLB and DXF files, Python byte-level verifiers, and skills for small studios.",
         "Tecnología y Herramientas · Caja 3D y CAD | Informatico.ai",
-        "Seis folios interactivos de herramientas 3D y CAD abierto con archivos STEP, 3MF, GLB y DXF, verificadores en Python y habilidades para estudios.",
+        "Siete folios interactivos de herramientas 3D y CAD abierto con archivos STEP, 3MF, GLB y DXF, verificadores en Python y habilidades para estudios.",
     ),
     # Time & Gravity hub (/timegravity/): the track pages' own copy lives in tools/folios/timegravity/<slug>.py ("seo").
     "timegravity": (
@@ -380,7 +380,7 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
 }
 
-# Dedicated Tech & Tools · The Toolbox Folios (x01..x06) under /toolchain/<slug>/ and /es-mx/toolchain/<slug>/
+# Dedicated Tech & Tools · The Toolbox Folios (x01..x07) under /toolchain/<slug>/ and /es-mx/toolchain/<slug>/
 TOOLCHAIN_SEO: dict[str, tuple[str, str, str, str]] = {
     "x01": (
         "Zero-Build WebGL2 GLB Viewer and Manifold Validator",
@@ -417,6 +417,12 @@ TOOLCHAIN_SEO: dict[str, tuple[str, str, str, str]] = {
         "How pierced genus-one acoustic metamaterial unit cells are exported to GLB, 3MF and STEP while a Python verifier checks Euler and Betti invariants.",
         "Celdas de Metamateriales Topológicos y Betti 3D",
         "Cómo se exportan celdas unitarias de metamateriales acústicos de género uno a GLB, 3MF y STEP verificando sus invariantes de Euler y Betti en Python.",
+    ),
+    "x07": (
+        "Gauss–Bonnet Curvature & Cotangent Mesh Audit",
+        "How pure Python checks discrete Gauss–Bonnet closure, Meyer mixed Voronoi areas, and cotangent edge weights across GLB, 3MF, and STEP.",
+        "Curvatura Gauss–Bonnet y Auditoría Cotangente",
+        "Cómo Python comprueba el cierre de Gauss–Bonnet, las áreas mixtas de Meyer y los pesos cotangentes en archivos GLB, 3MF y STEP.",
     ),
 }
 

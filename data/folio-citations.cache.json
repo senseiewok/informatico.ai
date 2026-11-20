@@ -5986,5 +5986,37 @@
     "total_smart_citations": 12,
     "unclassified": 0,
     "year": 1991
+  },
+  "doi:10.1080/10586458.1993.10504266": {
+    "fetched": "2026-11-20",
+    "first_author": "Pinkall",
+    "found": true,
+    "journal": "Experimental Mathematics",
+    "title": "Computing Discrete Minimal Surfaces and Their Conjugates",
+    "year": 1993
+  },
+  "doi:10.1145/311535.311576": {
+    "fetched": "2026-11-20",
+    "first_author": "Desbrun",
+    "found": true,
+    "journal": "Proceedings of the 26th Annual Conference on Computer Graphics and Interactive Techniques (SIGGRAPH '99)",
+    "title": "Implicit Fairing of Irregular Meshes using Diffusion and Curvature Flow",
+    "year": 1999
+  },
+  "doi:10.1007/978-3-662-05105-4_2": {
+    "fetched": "2026-11-20",
+    "first_author": "Meyer",
+    "found": true,
+    "journal": "Visualization and Mathematics III",
+    "title": "Discrete Differential-Geometry Operators for Triangulated 2-Manifolds",
+    "year": 2003
+  },
+  "doi:10.1145/1508044.1508063": {
+    "fetched": "2026-11-20",
+    "first_author": "Wardetzky",
+    "found": true,
+    "journal": "Proceedings of the Fifth Eurographics Symposium on Geometry Processing (SGP '07)",
+    "title": "Discrete Laplace operators: no free lunch",
+    "year": 2007
   }
 }

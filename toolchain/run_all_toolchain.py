@@ -20,7 +20,7 @@ def main() -> int:
         [sys.executable, str(ROOT / "tools" / "toolchain_uga.py"), "--verify"],
         [sys.executable, str(ROOT / "tools" / "check_toolchain_claims.py")],
     ]
-    for slug in ("x01", "x02", "x03", "x04", "x05", "x06"):
+    for slug in ("x01", "x02", "x03", "x04", "x05", "x06", "x07"):
         tdir = ROOT / "skills" / "toolchain" / slug
         steps.append([sys.executable, str(tdir / f"make_{slug}.py")])
         for vpath in sorted(tdir.glob("verify_*.py")):
@@ -34,7 +34,7 @@ def main() -> int:
         for line in res.stdout.strip().splitlines():
             print(line)
 
-    print("PASS: All 6 Tech & Tools (The Toolbox) generators, byte-level verifiers, and claim gates passed.")
+    print("PASS: All 7 Tech & Tools (The Toolbox) generators, byte-level verifiers, and claim gates passed.")
     return 0
 
 

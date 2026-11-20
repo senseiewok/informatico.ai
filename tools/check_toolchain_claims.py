@@ -23,7 +23,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from toolchain_uga import BOUNDARY_EN, BOUNDARY_ES  # noqa: E402
 
-SLUGS = ("x01", "x02", "x03", "x04", "x05", "x06")
+SLUGS = ("x01", "x02", "x03", "x04", "x05", "x06", "x07")
 
 # Positive fitness claims that are forbidden unless preceded by a negation ("Nothing here", "nothing on this page", "Not ", "Never ", "Nada aquí", "No ")
 FORBIDDEN_POSITIVE_CLAIMS = re.compile(
@@ -310,7 +310,7 @@ def main() -> int:
         return 1
 
     print(
-        "PASS: Tech & Tools claim, boundary & global FOSS compliance gate verified (7 EN pages, 7 ES-MX pages, 6 manifests, 6 SKILL.md files, GCC-01..GCC-05, zero regex chimeras)."
+        "PASS: Tech & Tools claim, boundary & global FOSS compliance gate verified (8 EN pages, 8 ES-MX pages, 7 manifests, 7 SKILL.md files, GCC-01..GCC-05, zero regex chimeras)."
     )
     return 0
 

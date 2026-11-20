@@ -498,7 +498,7 @@
   </url>
   <url>
     <loc>https://informatico.ai/toolchain/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/toolchain/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/"/>
@@ -551,6 +551,14 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/x06/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/x06/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/toolchain/x06/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/toolchain/x07/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/toolchain/x07/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/x07/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/x07/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/toolchain/x07/"/>
   </url>
   <url>
     <loc>https://informatico.ai/timegravity/</loc>
@@ -1290,7 +1298,7 @@
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/toolchain/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/toolchain/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/"/>
@@ -1343,6 +1351,14 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/x06/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/x06/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/toolchain/x06/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/toolchain/x07/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/toolchain/x07/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/toolchain/x07/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/toolchain/x07/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/toolchain/x07/"/>
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/timegravity/</loc>
