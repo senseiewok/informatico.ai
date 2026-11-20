@@ -17,14 +17,14 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 
 ## 2. Falsification Rules
 1. Embodied Carbon Ceiling (folio design target): Net cradle-to-gate embodied carbon e_net = 148.0(V/V₀) - m_CO₂ must remain strictly below 45.0 kg CO₂e/m².
-2. Serviceability Deflection & Compliance Bound: Normalized structural compliance c/c₀ = 1.0 + 0.40(1 - V/V₀)^1.35 must remain strictly below 1.35 to satisfy span-to-depth L/250 deflection limits.
-3. Dual Pareto Feasibility Window: At m_CO₂ = 12.4 kg/m², V/V₀ must lie inside [0.22, 0.38]—below 0.22 the slab is too flexible (c/c₀ > 1.35), and above 0.38 it exceeds 45.0 kg CO₂e/m².
+2. Normalized Compliance Bound (model target): Normalized structural compliance surrogate c/c₀ = 1.0 + 0.40(1 - V/V₀)^1.35 must remain strictly below 1.35.
+3. Model Window on the Workbench: At m_CO₂ = 12.4 kg/m², keeping e_net < 45.0 kg CO₂e/m² requires V/V₀ < 0.3878 (at most 0.38 on the 0.01-step slider). Across the slider range [0.20, 0.70], c/c₀ is at most 1.296 (at V/V₀ = 0.20); in the algebraic surrogate curve, c/c₀ reaches 1.35 only below V/V₀ ≈ 0.0942.
 
 ## 3. 4-Stage Formal Proof & Benchmark Mechanism
-- Stage 1: FEniCS/dolfinx Linear Elasticity Assembly — Discretize the floor bay Ω and solve K(ρ) u = f under factored gravity load 1.2D + 1.6L.
-- Stage 2: SIMP Power-Law Penalization & Sensitivity Filter — Evaluate ∂c/∂ρ_e = -p ρ_e^(p-1) (E_0 - E_min) u_e^T k_0 u_e with Helmholtz filter radius r_min to eliminate checkerboard instabilities.
-- Stage 3: Optimality Criteria Update to V/V₀ = 0.35 — Converge the rib layout to volume fraction 0.35, certifying compliance ratio c/c₀ = 1.224 ≤ 1.35.
-- Stage 4: Carbonate Mineralization Mass Balance — Sequester m_CO₂ = 12.4 kg CO₂e/m² into recycled calcium-silicate aggregates during curing, yielding e_net = 148.0 × 0.35 - 12.4 = 39.40 kg CO₂e/m².
+- Conceptual Stage 1 (SIMP Context, Not Run in Script): Linear elasticity assembly K(ρ) u = f on floor domain Ω (as in FEniCS/dolfinx, DOI 10.1145/3524456).
+- Conceptual Stage 2 (SIMP Context, Not Run in Script): Power-law penalization E(ρ_e) with p = 3 and sensitivity filtering ∂c/∂ρ_e (Bendsøe 1989; Sigmund 2001, DOI 10.1007/s001580050176).
+- Conceptual Stage 3 & Surrogate Check: At reference fraction V/V₀ = 0.35, the surrogate compliance function gives c/c₀ = 1.0 + 0.40(1 - 0.35)^1.35 = 1.224 < 1.35.
+- Stage 4 (Evaluated by Harness): Subtract illustrative mineralization parameter m_CO₂ = 12.4 kg CO₂e/m² from 148.0 × 0.35 = 51.80 to get e_net = 39.40 kg CO₂e/m² < 45.0.
 
 ## 4. Reference Results Computed by the Harness (T0/T1)
 - **Net Embodied Carbon e_net**: `39.40 kg CO₂e/m² (< 45.0 target)`
@@ -34,9 +34,8 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 
 ## 5. Exact T0–T3 Truth Boundary
 ### Verified in Repository Today (T0/T1)
-- Deterministic SIMP compliance-carbon Pareto verifier in bounties/bounty_e1_simp_carbon_slab.py (< 0.05s runtime).
-- Verified FEniCS/dolfinx (Scroggs et al., 2022, DOI 10.1145/3524456) and Sigmund (2001, DOI 10.1007/s001580050176) mathematical formulation.
-- Ready for immediate community showcase submission on FEniCS Discourse and open structural engineering benchmark repositories.
+- Algebraic compliance-carbon model in bounties/bounty_e1_simp_carbon_slab.py (< 0.05s runtime; no finite-element solver or planted-defect mode yet).
+- References FEniCS/dolfinx (Scroggs et al., 2022, DOI 10.1145/3524456) and Sigmund (2001, DOI 10.1007/s001580050176) for the SIMP formulation.
 
 ### Open Global Prize Horizon (T2/T3)
-- XPRIZE Carbon Removal ($100M, concluded April 2025 with awards to Mati Carbon $50M, NetZero $15M, Vaulted Deep $8M, and UNDO $5M) & IStructE Structural Awards (commissioned built structures only): any real claim about a slab would require full-scale physical load testing (ACI 318 / EN 1992-1-1 four-point bending to ultimate failure) and third-party ISO 14040/14044 cradle-to-grave LCA verification.
+- XPRIZE Carbon Removal ($100M, concluded April 2025) & IStructE Structural Awards (commissioned built structures only): any real claim about a slab would require full-scale physical load testing (ACI 318 / EN 1992-1-1 four-point bending to ultimate failure) and third-party ISO 14040/14044 cradle-to-grave LCA review.
