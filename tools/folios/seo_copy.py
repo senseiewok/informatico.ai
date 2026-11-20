@@ -167,6 +167,12 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "Domos de Tensegridad y Cubiertas de Enfriamiento",
         "Un estudio de diseño sobre cómo la tensegridad de Snelson y Fuller podría sostener una membrana de enfriamiento radiativo de 8–13 μm sobre una plaza.",
     ),
+    "a13": (
+        "Heinz Isler's Thin-Shell Domes and Buckling",
+        "How inverted hanging cloth shapes compression-only concrete shells, and why inward dimples govern elastic buckling below Zoelly's classical limit.",
+        "Domos Delgados de Heinz Isler y Pandeo Elástico",
+        "Cómo una tela colgada invertida da forma a cáscaras de concreto en compresión, y por qué las abolladuras reducen el pandeo frente al límite clásico.",
+    ),
     # ---- Pillar III: Physics
     "p01": (
         "Fluctuation–Dissipation and Allosteric Gating Energy",

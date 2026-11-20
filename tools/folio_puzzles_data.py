@@ -1276,6 +1276,26 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
             ("RED", "Malla de cables en equilibrio; la matriz de equilibrio se analiza con descomposición en valores singulares (Pellegrino y Calladine, 1986)", "Acto III"),
         ],
     },
+    "a13": {
+        "title_en": "Folio A.13 · Heinz Isler Thin-Shell Domes & Buckling Knockdown Crossword",
+        "title_es": "Folio A.13 · Crucigrama de Cáscaras Delgadas de Heinz Isler y Pandeo",
+        "en": [
+            ("ISLER", "Swiss engineer Heinz, who presented hanging-cloth and pneumatic shell form-finding at Madrid in 1959", "Act I"),
+            ("ZOELLY", "Author of the 1915 classical elastic spherical-shell buckling pressure formula", "Act II"),
+            ("DIMPLE", "Localized inward shell defect that lowers buckling capacity more sharply than an outward bump", "Act II"),
+            ("SHELL", "Thin doubly curved roof carrying load mainly by in-plane membrane forces rather than bending", "Act I"),
+            ("CLOTH", "Hanging fabric soaked in plaster or frozen in winter air and inverted into compression", "Act I"),
+            ("CREEP", "Long-term concrete deformation that reduces effective modulus and lowers buckling resistance", "Act III"),
+        ],
+        "es": [
+            ("ISLER", "Ingeniero suizo que presentó en 1959 las telas colgadas invertidas para hallar formas de cáscaras", "Acto I"),
+            ("ZOELLY", "Autor en 1915 de la fórmula clásica de pandeo elástico para una esfera uniforme", "Acto II"),
+            ("TELA", "Lámina textil colgada en tracción pura que al endurecerse e invertirse trabaja en compresión", "Acto I"),
+            ("PANDEO", "Inestabilidad súbita que gobierna una cáscara delgada mucho antes de su aplastamiento", "Acto II"),
+            ("DOMO", "Casquete curvo idealizado de 31.6 m de claro analizado en este modelo", "Acto III"),
+            ("CARGA", "Peso propio y sobrecarga uniforme proyectada en planta dentro del modelo", "Acto III"),
+        ],
+    },
     "p11": {
         "title_en": "Folio P.11 · Surface-Code Quantum Error Correction & FeMoCo Nitrogen Catalysis Crossword",
         "title_es": "Folio P.11 · Crucigrama de Corrección Cuántica de Superficie y Catálisis de Nitrógeno",
