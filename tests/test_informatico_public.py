@@ -19,7 +19,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_all_48_skills_and_python_verifiers_exist_and_pass(self) -> None:
         skill_files = list(SKILLS.glob("*/*/SKILL.md"))
         py_files = list(SKILLS.glob("*/*/verify_*.py"))
-        self.assertEqual(len(skill_files), 87)  # + skills/classics/cc01, cc02, cc03 (2026-11-15); m13..m15 withdrawn 2026-11-17 (-3)
+        self.assertEqual(len(skill_files), 88)  # +1: skills/toolchain/x07; +3 classics; -3 m13..m15
         self.assertGreaterEqual(len(py_files), 1)
         for py in py_files:  # a verifier that cannot fail is not a verifier
             self.assertIn("--planted-defect", py.read_text(encoding="utf-8"), py.name)
@@ -35,12 +35,12 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_48_folios_citation_gate_passes_offline(self) -> None:
         res = subprocess.run([sys.executable, "-X", "utf8", str(ROOT / "tools" / "check_folio_citations.py"), "--offline"], capture_output=True, text=True, encoding="utf-8", timeout=30)
         self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
-        self.assertIn("SUMMARY essays=60 fail=0 warn=0 unchecked=0", res.stdout)  # -3: M.13-M.15 withdrawn 2026-11-17 (unreviewed automated content)
+        self.assertIn("SUMMARY essays=61 fail=0 warn=0 unchecked=0", res.stdout)  # +1: X.07; -3: M.13-M.15 withdrawn 2026-11-17
 
     def test_106_bilingual_pages_and_bounty_crucible_mounted(self) -> None:
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 194)  # -6: M.13-M.15 withdrawn 2026-11-17, EN + es-MX
+        self.assertEqual(len(locs), 196)  # +2: X.07 EN + es-MX; -6: M.13-M.15 withdrawn 2026-11-17
         self.assertTrue((RESEARCH / "about" / "index.html").is_file())
         self.assertTrue((RESEARCH / "es-mx" / "about" / "index.html").is_file())
         hub_html = (RESEARCH / "index.html").read_text(encoding="utf-8")
@@ -146,7 +146,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
             + [f"p{i:02d}" for i in range(1, 13)]
             + [f"m{i:02d}" for i in range(1, 13)]  # M.13-M.15 withdrawn 2026-11-17
             + [f"b{i:02d}" for i in range(1, 7)]
-            + [f"x{i:02d}" for i in range(1, 7)]
+            + [f"x{i:02d}" for i in range(1, 8)]
             + ["utopian-city-future"]
         )
         seen_hashes: dict[str, str] = {}
@@ -166,7 +166,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
             ("physics/index.html", 12),
             ("math/index.html", 12),  # -3: M.13-M.15 withdrawn 2026-11-17 (unreviewed automated content)
             ("bounties/index.html", 6),
-            ("toolchain/index.html", 6),
+            ("toolchain/index.html", 7),
         ):
             hub_txt = (RESEARCH / hub_rel).read_text(encoding="utf-8")
             thumbs = re.findall(r'<img class="tp-rack-thumb" src="([^"]+)"', hub_txt)

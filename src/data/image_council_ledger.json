@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2",
   "law": "Law 8 & Law 17 — Human-Scale Grounded Scientific Plate Generation & 4-Seat Image Selection Council",
-  "total_plates_replaced": 64,
-  "magazine_plates_count": 64,
+  "total_plates_replaced": 65,
+  "magazine_plates_count": 65,
   "council_seats": [
     "gemini-4-argon (Physical Specification & Structural Plausibility Seat)",
     "claude-opus-5.5 (Human Perceptual Impact & Tactile Craft Seat)",
@@ -669,6 +669,17 @@
       "bytes": 195751,
       "zero_baked_text_verified": true,
       "sha256": "6a6213f337a6f87f721ca6031eed6af482932fa2ed8a060d99cb8f25cc52cbdf"
+    },
+    {
+      "plate_id": "x07",
+      "path": "src/plates/x07.jpg",
+      "governing_specification": "Brushed-brass and oiled-oak subdivided geodesic polyhedron contrasting 5-triangle vertexes beside 6-triangle clusters, flanked by unmarked brass calipers and beveled protractor on cotton paper",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 204139,
+      "zero_baked_text_verified": true,
+      "sha256": "9c9860e39706e5d437134ca9b803b7c34e19b9d6414c20cc45f7f42402d3ec3b"
     },
     {
       "plate_id": "utopian-city-future",

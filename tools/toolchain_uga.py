@@ -1223,6 +1223,194 @@ def build_x06_geometry() -> dict[str, Any]:
     }
 
 
+def _make_subdivided_icosahedron(radii: tuple[float, float, float]) -> tuple[list[Vec3], list[Tri]]:
+    """Build a closed, CCW-oriented frequency-2 icosahedral dome (V=42, E=120, F=80) scaled by radii."""
+    phi = (1.0 + math.sqrt(5.0)) / 2.0
+    raw_verts = [
+        (-1.0,  phi, 0.0), ( 1.0,  phi, 0.0), (-1.0, -phi, 0.0), ( 1.0, -phi, 0.0),
+        ( 0.0, -1.0,  phi), ( 0.0,  1.0,  phi), ( 0.0, -1.0, -phi), ( 0.0,  1.0, -phi),
+        ( phi, 0.0, -1.0), ( phi, 0.0,  1.0), (-phi, 0.0, -1.0), (-phi, 0.0,  1.0),
+    ]
+    verts: list[Vec3] = [v_norm(v) for v in raw_verts]
+    base_faces: list[Tri] = [
+        (0, 11, 5), (0, 5, 1), (0, 1, 7), (0, 7, 10), (0, 10, 11),
+        (1, 5, 9), (5, 11, 4), (11, 10, 2), (10, 7, 6), (7, 1, 8),
+        (3, 9, 4), (3, 4, 2), (3, 2, 6), (3, 6, 8), (3, 8, 9),
+        (4, 9, 5), (2, 4, 11), (6, 2, 10), (8, 6, 7), (9, 8, 1),
+    ]
+    mid_cache: dict[tuple[int, int], int] = {}
+
+    def _midpoint(i: int, j: int) -> int:
+        key = (min(i, j), max(i, j))
+        if key not in mid_cache:
+            a, b = verts[i], verts[j]
+            mid_cache[key] = len(verts)
+            verts.append(v_norm(((a[0] + b[0]) * 0.5, (a[1] + b[1]) * 0.5, (a[2] + b[2]) * 0.5)))
+        return mid_cache[key]
+
+    sub_faces: list[Tri] = []
+    for i0, i1, i2 in base_faces:
+        a = _midpoint(i0, i1)
+        b = _midpoint(i1, i2)
+        c = _midpoint(i2, i0)
+        sub_faces.extend([(i0, a, c), (i1, b, a), (i2, c, b), (a, b, c)])
+
+    rx, ry, rz = radii
+    scaled_verts = [(v[0] * rx, v[1] * ry, v[2] * rz) for v in verts]
+    return scaled_verts, sub_faces
+
+
+def compute_x07_gauss_bonnet_audit(
+    vertices: list[Vec3],
+    triangles: list[Tri],
+    expected_chi: int = 2,
+) -> dict[str, Any]:
+    """Compute discrete Gauss-Bonnet deficit, Meyer mixed Voronoi areas, and cotangent edge weights."""
+    nv = len(vertices)
+    angle_sum = [0.0] * nv
+    mixed_area = [0.0] * nv
+    surface_area = 0.0
+    lap = [[0.0, 0.0, 0.0] for _ in range(nv)]
+    edge_opp: dict[tuple[int, int], list[tuple[float, float]]] = {}
+    min_angle = math.pi
+    max_angle = 0.0
+    obtuse_faces = 0
+
+    for i0, i1, i2 in triangles:
+        pts = (vertices[i0], vertices[i1], vertices[i2])
+        idxs = (i0, i1, i2)
+        cross = v_cross(v_sub(pts[1], pts[0]), v_sub(pts[2], pts[0]))
+        area = 0.5 * math.sqrt(v_dot(cross, cross))
+        if area <= 1e-12:
+            raise AssertionError(f"Degenerate zero-area triangle ({i0}, {i1}, {i2})")
+        surface_area += area
+
+        vecs = (
+            (v_sub(pts[1], pts[0]), v_sub(pts[2], pts[0])),
+            (v_sub(pts[2], pts[1]), v_sub(pts[0], pts[1])),
+            (v_sub(pts[0], pts[2]), v_sub(pts[1], pts[2])),
+        )
+        angles: list[float] = []
+        cots: list[float] = []
+        for u, v in vecs:
+            cr = v_cross(u, v)
+            sn = math.sqrt(v_dot(cr, cr))
+            cs = v_dot(u, v)
+            ang = math.atan2(sn, cs)
+            angles.append(ang)
+            cots.append(cs / max(sn, 1e-15))
+            if ang < min_angle:
+                min_angle = ang
+            if ang > max_angle:
+                max_angle = ang
+
+        for k in range(3):
+            angle_sum[idxs[k]] += angles[k]
+
+        if any(a > math.pi * 0.5 for a in angles):
+            obtuse_faces += 1
+            for k in range(3):
+                mixed_area[idxs[k]] += area * (0.5 if angles[k] > math.pi * 0.5 else 0.25)
+        else:
+            e01 = v_sub(pts[1], pts[0])
+            e12 = v_sub(pts[2], pts[1])
+            e20 = v_sub(pts[0], pts[2])
+            l2_01, l2_12, l2_20 = v_dot(e01, e01), v_dot(e12, e12), v_dot(e20, e20)
+            mixed_area[idxs[0]] += 0.125 * (l2_01 * cots[2] + l2_20 * cots[1])
+            mixed_area[idxs[1]] += 0.125 * (l2_12 * cots[0] + l2_01 * cots[2])
+            mixed_area[idxs[2]] += 0.125 * (l2_20 * cots[1] + l2_12 * cots[0])
+
+        for (u, v), ang_opp, cot_opp in (
+            ((idxs[1], idxs[2]), angles[0], cots[0]),
+            ((idxs[2], idxs[0]), angles[1], cots[1]),
+            ((idxs[0], idxs[1]), angles[2], cots[2]),
+        ):
+            ek = (min(u, v), max(u, v))
+            edge_opp.setdefault(ek, []).append((ang_opp, cot_opp))
+            w = 0.5 * cot_opp
+            for d in range(3):
+                lap[u][d] += w * (vertices[v][d] - vertices[u][d])
+                lap[v][d] += w * (vertices[u][d] - vertices[v][d])
+
+    deficits = [2.0 * math.pi - s for s in angle_sum]
+    gauss_bonnet_sum = sum(deficits)
+    expected_gb = 2.0 * math.pi * expected_chi
+    mixed_area_sum = sum(mixed_area)
+    k_gauss = [deficits[i] / max(mixed_area[i], 1e-12) for i in range(nv)]
+    edge_weights = [0.5 * sum(c for _, c in vals) for vals in edge_opp.values()]
+    non_delaunay_edges = sum(1 for w in edge_weights if w < -1e-12)
+    lap_sum = [sum(lap[i][d] for i in range(nv)) for d in range(3)]
+    lap_sum_norm = math.sqrt(sum(c * c for c in lap_sum))
+    dirichlet_energy = 0.0
+    for (u, v), vals in edge_opp.items():
+        w = 0.5 * sum(c for _, c in vals)
+        du = v_sub(vertices[u], vertices[v])
+        dirichlet_energy += 0.5 * w * v_dot(du, du)
+
+    return {
+        "gauss_bonnet_sum_rad": gauss_bonnet_sum,
+        "expected_gb_rad": expected_gb,
+        "gauss_bonnet_error_rad": abs(gauss_bonnet_sum - expected_gb),
+        "surface_area_mm2": surface_area,
+        "mixed_area_sum_mm2": mixed_area_sum,
+        "mixed_area_error_mm2": abs(surface_area - mixed_area_sum),
+        "vertex_gaussian_curvatures": k_gauss,
+        "k_min_mm_inv2": min(k_gauss),
+        "k_max_mm_inv2": max(k_gauss),
+        "min_angle_deg": math.degrees(min_angle),
+        "max_angle_deg": math.degrees(max_angle),
+        "obtuse_faces": obtuse_faces,
+        "total_edges": len(edge_opp),
+        "non_delaunay_edges": non_delaunay_edges,
+        "min_edge_weight": min(edge_weights),
+        "laplacian_sum_norm": lap_sum_norm,
+        "dirichlet_energy_mm2": dirichlet_energy,
+    }
+
+
+def build_x07_geometry() -> dict[str, Any]:
+    """X.07: Discrete Gauss-Bonnet & Cotangent-Laplacian Triaxial Geodesic Shell (V=42, E=120, F=80)."""
+    radii = (30.0, 24.0, 18.0)
+    vertices, triangles = _make_subdivided_icosahedron(radii)
+    audit = compute_x07_gauss_bonnet_audit(vertices, triangles, expected_chi=2)
+    k_vals = audit["vertex_gaussian_curvatures"]
+    k_lo, k_hi = min(k_vals), max(k_vals)
+    span = max(k_hi - k_lo, 1e-12)
+    colors: list[Vec3] = []
+    for kv in k_vals:
+        t = (kv - k_lo) / span
+        # Cool Prussian blue (low K) -> warm cream -> minium terracotta (high K)
+        r = 0.14 + 0.72 * t
+        g = 0.36 + 0.24 * (1.0 - abs(2.0 * t - 1.0))
+        b = 0.64 - 0.46 * t
+        colors.append((round(r, 4), round(g, 4), round(b, 4)))
+
+    pinched_verts, pinched_tris = _make_subdivided_icosahedron((30.0, 24.0, 9.0))
+    pinched_audit = compute_x07_gauss_bonnet_audit(pinched_verts, pinched_tris, expected_chi=2)
+    analytical_vol = signed_mesh_volume(vertices, triangles)
+
+    return {
+        "vertices": vertices,
+        "colors": colors,
+        "triangles": triangles,
+        "analytical_volume": analytical_vol,
+        "expected_euler_chi": 2,
+        "expected_bbox": ((-30.0, -24.0, -18.0), (30.0, 24.0, 18.0)),
+        "parameters": {
+            "semi_axes_mm": list(radii),
+            "subdivision_frequency": 2,
+            "euler_characteristic_chi": 2,
+            "gauss_bonnet_sum_rad": round(audit["gauss_bonnet_sum_rad"], 12),
+            "surface_area_mm2": round(audit["surface_area_mm2"], 6),
+            "non_delaunay_edges": audit["non_delaunay_edges"],
+            "min_edge_weight": round(audit["min_edge_weight"], 6),
+            "pinched_comparison_semi_axes_mm": [30.0, 24.0, 9.0],
+            "pinched_non_delaunay_edges": pinched_audit["non_delaunay_edges"],
+            "pinched_min_edge_weight": round(pinched_audit["min_edge_weight"], 6),
+        },
+    }
+
+
 BUILDERS = {
     "x01": build_x01_geometry,
     "x02": build_x02_geometry,
@@ -1230,6 +1418,7 @@ BUILDERS = {
     "x04": build_x04_geometry,
     "x05": build_x05_geometry,
     "x06": build_x06_geometry,
+    "x07": build_x07_geometry,
 }
 
 
@@ -1502,6 +1691,43 @@ def verify_folio_assets(
             "bay_passive_cooling_W": params.get("bay_passive_cooling_W"),
         }
 
+    # 5b. If X.07, verify discrete Gauss-Bonnet closure, Meyer mixed Voronoi area conservation,
+    #     Delaunay positive cotangent weights, and anisotropic non-Delaunay counterexample
+    x07_curvature_checks: dict[str, Any] | None = None
+    if slug == "x07":
+        gb_audit = compute_x07_gauss_bonnet_audit(vertices, triangles, expected_chi=topo["euler_characteristic"])
+        if gb_audit["gauss_bonnet_error_rad"] > 1e-10:
+            raise AssertionError(
+                f"x07 Gauss-Bonnet closure error {gb_audit['gauss_bonnet_error_rad']:.3e} > 1e-10 rad"
+            )
+        if gb_audit["mixed_area_error_mm2"] > 1e-8:
+            raise AssertionError(
+                f"x07 Meyer mixed-Voronoi area conservation error {gb_audit['mixed_area_error_mm2']:.3e} > 1e-8 mm^2"
+            )
+        if gb_audit["non_delaunay_edges"] != 0 or gb_audit["min_edge_weight"] <= 0.0:
+            raise AssertionError(
+                f"x07 baseline dome unexpectedly has non-Delaunay edges: {gb_audit['non_delaunay_edges']}"
+            )
+        if gb_audit["laplacian_sum_norm"] > 1e-10:
+            raise AssertionError(
+                f"x07 cotangent Laplacian divergence sum non-zero: {gb_audit['laplacian_sum_norm']:.3e}"
+            )
+        # Verify Wardetzky et al. (2007) no-free-lunch counterexample: pinched (30, 24, 9) breaks Delaunay positivity
+        pinched_v, pinched_t = _make_subdivided_icosahedron((30.0, 24.0, 9.0))
+        pinched_audit = compute_x07_gauss_bonnet_audit(pinched_v, pinched_t, expected_chi=2)
+        if pinched_audit["non_delaunay_edges"] <= 0 or pinched_audit["min_edge_weight"] >= 0.0:
+            raise AssertionError("x07 pinched counterexample failed to produce negative cotangent weights")
+        x07_curvature_checks = {
+            "gauss_bonnet_sum_rad": round(gb_audit["gauss_bonnet_sum_rad"], 12),
+            "gauss_bonnet_error_rad": gb_audit["gauss_bonnet_error_rad"],
+            "surface_area_mm2": round(gb_audit["surface_area_mm2"], 4),
+            "mixed_area_error_mm2": gb_audit["mixed_area_error_mm2"],
+            "non_delaunay_edges": gb_audit["non_delaunay_edges"],
+            "min_edge_weight": round(gb_audit["min_edge_weight"], 6),
+            "pinched_non_delaunay_edges": pinched_audit["non_delaunay_edges"],
+            "pinched_min_edge_weight": round(pinched_audit["min_edge_weight"], 6),
+        }
+
     # 6. Planted-Defect Knockout Test (mandatory on every X verifier!)
     # Mutate triangle 0 by flipping its winding (i0, i1, i2) -> (i0, i2, i1) and corrupting vertex 0 Z-coordinate
     mutated_tris = list(triangles)
@@ -1516,7 +1742,11 @@ def verify_folio_assets(
             extra_note = (
                 "; for X.03 also rejects |e| > t/6 = 66.7 mm and sub-threshold sky-cooling q_net < 80 W/m^2"
                 if slug == "x03"
-                else ""
+                else (
+                    "; for X.07 also breaks discrete Gauss-Bonnet closure sum(2*pi - sum theta) = 4*pi"
+                    if slug == "x07"
+                    else ""
+                )
             )
             raise AssertionError(
                 f"PLANTED_DEFECT_CAUGHT: Flipped triangle 0 normal broke watertightness "
@@ -1566,4 +1796,6 @@ def verify_folio_assets(
     }
     if x03_envelope_checks is not None:
         out_payload["x03_coupled_envelope_checks"] = x03_envelope_checks
+    if x07_curvature_checks is not None:
+        out_payload["x07_curvature_checks"] = x07_curvature_checks
     return out_payload
