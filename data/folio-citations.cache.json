@@ -1,4 +1,12 @@
 {
+  "doi:10.1002/2015wr017937": {
+    "fetched": "2026-11-14",
+    "first_author": "Robins",
+    "found": true,
+    "journal": "Water Resources Research",
+    "title": "Percolating length scales from topological persistence analysis of micro‐\n                    <scp>CT</scp>\n                    images of porous materials",
+    "year": 2016
+  },
   "doi:10.1002/adma.201805116": {
     "fetched": "2026-11-04",
     "first_author": "Patel",
@@ -39,6 +47,22 @@
     "title": "Grundlinien einer Theorie der Farbenmetrik im Tagessehen",
     "year": 1920
   },
+  "doi:10.1002/eqe.2390": {
+    "fetched": "2026-11-14",
+    "first_author": "Lazar",
+    "found": true,
+    "journal": "Earthquake Engineering &amp; Structural Dynamics",
+    "title": "Using an inerter‐based device for structural vibration suppression",
+    "year": 2014
+  },
+  "doi:10.1002/eqe.4290100408": {
+    "fetched": "2026-11-14",
+    "first_author": "Robinson",
+    "found": true,
+    "journal": "Earthquake Engineering &amp; Structural Dynamics",
+    "title": "Lead‐rubber hysteretic bearings suitable for protecting structures during earthquakes",
+    "year": 1982
+  },
   "doi:10.1002/ppul.26265": {
     "fetched": "2026-11-04",
     "first_author": "Sobotka",
@@ -46,6 +70,22 @@
     "journal": "Pediatric Pulmonology",
     "title": "Early childhood developmental skills of children with tracheostomies and ventilators recently discharged home",
     "year": 2022
+  },
+  "doi:10.1006/jcss.2001.1774": {
+    "fetched": "2026-11-14",
+    "first_author": "Impagliazzo",
+    "found": true,
+    "journal": "Journal of Computer and System Sciences",
+    "title": "Which Problems Have Strongly Exponential Complexity?",
+    "year": 2001
+  },
+  "doi:10.1007/3-540-07171-7_1": {
+    "fetched": "2026-11-13",
+    "first_author": "Lanford",
+    "found": true,
+    "journal": "Lecture Notes in Physics",
+    "title": "Time evolution of large classical systems",
+    "year": 1975
   },
   "doi:10.1007/978-3-030-79876-5_37": {
     "fetched": "2026-11-10",
@@ -63,6 +103,22 @@
     "title": "On the difference between consecutive primes",
     "year": 1971
   },
+  "doi:10.1007/bf01432034": {
+    "fetched": "2026-11-14",
+    "first_author": "Herschel",
+    "found": true,
+    "journal": "Kolloid-Zeitschrift",
+    "title": "Konsistenzmessungen von Gummi-Benzollösungen",
+    "year": 1926
+  },
+  "doi:10.1007/bf01461107": {
+    "fetched": "2026-11-14",
+    "first_author": "Lucas",
+    "found": true,
+    "journal": "Kolloid-Zeitschrift",
+    "title": "Ueber das Zeitgesetz des kapillaren Aufstiegs von Flüssigkeiten",
+    "year": 1918
+  },
   "doi:10.1007/bf01608499": {
     "fetched": "2026-11-10",
     "first_author": "Lindblad",
@@ -78,6 +134,14 @@
     "journal": "Communications in Mathematical Physics",
     "title": "The four laws of black hole mechanics",
     "year": 1973
+  },
+  "doi:10.1007/bf01650949": {
+    "fetched": "2026-11-14",
+    "first_author": "Bendsøe",
+    "found": true,
+    "journal": "Structural Optimization",
+    "title": "Optimal shape design as a material distribution problem",
+    "year": 1989
   },
   "doi:10.1007/bf01725541": {
     "fetched": "2026-11-10",
@@ -103,6 +167,14 @@
     "title": "A calculation of the viscous force exerted by a flowing fluid on a dense swarm of particles",
     "year": 1949
   },
+  "doi:10.1007/bf02165411": {
+    "fetched": "2026-11-14",
+    "first_author": "Strassen",
+    "found": true,
+    "journal": "Numerische Mathematik",
+    "title": "Gaussian elimination is not optimal",
+    "year": 1969
+  },
   "doi:10.1007/bf02345020": {
     "fetched": "2026-11-09",
     "first_author": "Hawking",
@@ -110,6 +182,14 @@
     "journal": "Communications In Mathematical Physics",
     "title": "Particle creation by black holes",
     "year": 1975
+  },
+  "doi:10.1007/bfb0013365": {
+    "fetched": "2026-11-14",
+    "first_author": "Kuramoto",
+    "found": true,
+    "journal": "Lecture Notes in Physics",
+    "title": "Self-entrainment of a population of coupled non-linear oscillators",
+    "year": 2005
   },
   "doi:10.1007/jhep01(2016)086": {
     "fetched": "2026-11-10",
@@ -142,6 +222,14 @@
     "journal": "Annales Henri Poincaré",
     "title": "Nonequilibrium Markov Processes Conditioned on Large Deviations",
     "year": 2014
+  },
+  "doi:10.1007/s00024-005-0026-6": {
+    "fetched": "2026-11-14",
+    "first_author": "Snieder",
+    "found": true,
+    "journal": "pure and applied geophysics",
+    "title": "The Theory of Coda Wave Interferometry",
+    "year": 2006
   },
   "doi:10.1007/s001580050176": {
     "fetched": "2026-11-07",
@@ -191,6 +279,14 @@
     "title": "Computing Persistent Homology",
     "year": 2004
   },
+  "doi:10.1007/s00454-006-1276-5": {
+    "fetched": "2026-11-14",
+    "first_author": "Cohen-Steiner",
+    "found": true,
+    "journal": "Discrete &amp; Computational Geometry",
+    "title": "Stability of Persistence Diagrams",
+    "year": 2007
+  },
   "doi:10.1016/0003-4916(75)90211-0": {
     "fetched": "2026-11-11",
     "first_author": "Fritzsch",
@@ -223,6 +319,14 @@
     "title": "Matrix analysis of statically and kinematically indeterminate frameworks",
     "year": 1986
   },
+  "doi:10.1016/0141-0296(91)90050-m": {
+    "fetched": "2026-11-20",
+    "first_author": "Ramm",
+    "found": true,
+    "journal": "Engineering Structures",
+    "title": "On shape finding methods and ultimate load analyses of reinforced concrete shells",
+    "year": 1991
+  },
   "doi:10.1016/0370-2693(72)90825-8": {
     "fetched": "2026-11-10",
     "first_author": "Delbourgo",
@@ -247,6 +351,30 @@
     "title": "A universal master equation for the gravitational violation of quantum mechanics",
     "year": 1987
   },
+  "doi:10.1016/0550-3213(84)90066-x": {
+    "fetched": "2026-11-13",
+    "first_author": "Alvarez-Gaumé",
+    "found": true,
+    "journal": "Nuclear Physics B",
+    "title": "Gravitational anomalies",
+    "year": 1984
+  },
+  "doi:10.1016/0886-7798(96)00017-x": {
+    "fetched": "2026-11-14",
+    "first_author": "Anagnostou",
+    "found": true,
+    "journal": "Tunnelling and Underground Space Technology",
+    "title": "Face stability conditions with earth-pressure-balanced shields",
+    "year": 1996
+  },
+  "doi:10.1016/0925-7721(95)00022-2": {
+    "fetched": "2026-11-14",
+    "first_author": "Gajentaan",
+    "found": true,
+    "journal": "Computational Geometry",
+    "title": "On a class of O(n2) problems in computational geometry",
+    "year": 1995
+  },
   "doi:10.1016/j.addr.2008.11.002": {
     "fetched": "2026-11-04",
     "first_author": "Lai",
@@ -254,6 +382,14 @@
     "journal": "Advanced Drug Delivery Reviews",
     "title": "Mucus-penetrating nanoparticles for drug and gene delivery to mucosal tissues",
     "year": 2009
+  },
+  "doi:10.1016/j.autcon.2003.08.012": {
+    "fetched": "2026-11-14",
+    "first_author": "Khoshnevis",
+    "found": true,
+    "journal": "Automation in Construction",
+    "title": "Automated construction by contour crafting—related robotics and information technologies",
+    "year": 2004
   },
   "doi:10.1016/j.bioactmat.2024.03.017": {
     "fetched": "2026-11-04",
@@ -270,6 +406,14 @@
     "journal": "Building and Environment",
     "title": "Strategies to improve the energy performance of multiple-skin facades",
     "year": 2008
+  },
+  "doi:10.1016/j.cad.2014.02.010": {
+    "fetched": "2026-11-14",
+    "first_author": "Reichert",
+    "found": true,
+    "journal": "Computer-Aided Design",
+    "title": "Meteorosensitive architecture: Biomimetic building skins based on materially embedded and hygroscopically enabled responsiveness",
+    "year": 2015
   },
   "doi:10.1016/j.cad.2015.01.006": {
     "fetched": "2026-11-07",
@@ -303,6 +447,14 @@
     "title": "Reconstructing the Deep Population History of Central and South America",
     "year": 2018
   },
+  "doi:10.1016/j.cell.2019.01.006": {
+    "fetched": "2026-11-14",
+    "first_author": "Schiebinger",
+    "found": true,
+    "journal": "Cell",
+    "title": "Optimal-Transport Analysis of Single-Cell Gene Expression Identifies Developmental Trajectories in Reprogramming",
+    "year": 2019
+  },
   "doi:10.1016/j.cell.2022.04.024": {
     "fetched": "2026-11-04",
     "first_author": "Nick",
@@ -311,6 +463,14 @@
     "title": "Host and pathogen response to bacteriophage engineered against Mycobacterium abscessus lung infection",
     "year": 2022
   },
+  "doi:10.1016/j.cemconcomp.2011.03.012": {
+    "fetched": "2026-11-14",
+    "first_author": "Wiktor",
+    "found": true,
+    "journal": "Cement and Concrete Composites",
+    "title": "Quantification of crack-healing in novel bacteria-based self-healing concrete",
+    "year": 2011
+  },
   "doi:10.1016/j.cemconcomp.2015.11.002": {
     "fetched": "2026-11-04",
     "first_author": "Feys",
@@ -318,6 +478,22 @@
     "journal": "Cement and Concrete Composites",
     "title": "How do concrete rheology, tribology, flow rate and pipe radius influence pumping pressure?",
     "year": 2016
+  },
+  "doi:10.1016/j.cemconres.2006.05.025": {
+    "fetched": "2026-11-14",
+    "first_author": "Roussel",
+    "found": true,
+    "journal": "Cement and Concrete Research",
+    "title": "A thixotropy model for fresh fluid concretes: Theory, validation and applications",
+    "year": 2006
+  },
+  "doi:10.1016/j.cemconres.2011.09.004": {
+    "fetched": "2026-11-14",
+    "first_author": "Roussel",
+    "found": true,
+    "journal": "Cement and Concrete Research",
+    "title": "The origins of thixotropy of fresh cement pastes",
+    "year": 2012
   },
   "doi:10.1016/j.cemconres.2018.04.005": {
     "fetched": "2026-11-04",
@@ -343,6 +519,14 @@
     "title": "HepLean: Digitalising high energy physics",
     "year": 2025
   },
+  "doi:10.1016/j.ecoleng.2005.07.010": {
+    "fetched": "2026-11-14",
+    "first_author": "Vymazal",
+    "found": true,
+    "journal": "Ecological Engineering",
+    "title": "Horizontal sub-surface flow and hybrid constructed wetlands systems for wastewater treatment",
+    "year": 2005
+  },
   "doi:10.1016/j.ecoleng.2008.12.036": {
     "fetched": "2026-11-04",
     "first_author": "Jonkers",
@@ -358,6 +542,14 @@
     "journal": "Energy and Buildings",
     "title": "Useful daylight illuminances: A replacement for daylight factors",
     "year": 2006
+  },
+  "doi:10.1016/j.ijmecsci.2018.01.010": {
+    "fetched": "2026-11-14",
+    "first_author": "Suiker",
+    "found": true,
+    "journal": "International Journal of Mechanical Sciences",
+    "title": "Mechanical performance of wall structures in 3D printing processes: Theory, design tools and experiments",
+    "year": 2018
   },
   "doi:10.1016/j.jcp.2018.10.045": {
     "fetched": "2026-11-04",
@@ -375,6 +567,14 @@
     "title": "Design challenges of reciprocal frame structures in architecture",
     "year": 2019
   },
+  "doi:10.1016/j.matpur.2009.01.013": {
+    "fetched": "2026-11-13",
+    "first_author": "Golse",
+    "found": true,
+    "journal": "Journal de Mathématiques Pures et Appliquées",
+    "title": "The incompressible Navier–Stokes limit of the Boltzmann equation for hard cutoff potentials",
+    "year": 2009
+  },
   "doi:10.1016/j.plrev.2013.08.002": {
     "fetched": "2026-11-09",
     "first_author": "Hameroff",
@@ -382,6 +582,14 @@
     "journal": "Physics of Life Reviews",
     "title": "Consciousness in the universe: A review of the 'Orch OR' theory",
     "year": 2014
+  },
+  "doi:10.1016/j.watres.2005.10.030": {
+    "fetched": "2026-11-14",
+    "first_author": "Hijnen",
+    "found": true,
+    "journal": "Water Research",
+    "title": "Inactivation credit of UV radiation for viruses, bacteria and protozoan (oo)cysts in water: A review",
+    "year": 2006
   },
   "doi:10.1016/j.xcrm.2024.101544": {
     "fetched": "2026-11-04",
@@ -423,6 +631,14 @@
     "title": "The Stone Skeleton",
     "year": 1995
   },
+  "doi:10.1017/s0305004100032680": {
+    "fetched": "2026-11-14",
+    "first_author": "Broadbent",
+    "found": true,
+    "journal": "Mathematical Proceedings of the Cambridge Philosophical Society",
+    "title": "Percolation processes",
+    "year": 1957
+  },
   "doi:10.1021/acscatal.0c04525": {
     "fetched": "2026-11-07",
     "first_author": "Chanussot",
@@ -430,6 +646,14 @@
     "journal": "ACS Catalysis",
     "title": "Open Catalyst 2020 (OC20) Dataset and Community Challenges",
     "year": 2021
+  },
+  "doi:10.1038/37745": {
+    "fetched": "2026-11-14",
+    "first_author": "Dawson",
+    "found": true,
+    "journal": "Nature",
+    "title": "How pine cones open",
+    "year": 1997
   },
   "doi:10.1038/nature01997": {
     "fetched": "2026-11-10",
@@ -583,6 +807,22 @@
     "title": "Quantum ground-state cooling of two librational modes of a nanorotor",
     "year": 2026
   },
+  "doi:10.1038/s41586-018-0393-7": {
+    "fetched": "2026-11-14",
+    "first_author": "Montoro",
+    "found": true,
+    "journal": "Nature",
+    "title": "A revised airway epithelial hierarchy includes CFTR-expressing ionocytes",
+    "year": 2018
+  },
+  "doi:10.1038/s41586-018-0394-6": {
+    "fetched": "2026-11-14",
+    "first_author": "Plasschaert",
+    "found": true,
+    "journal": "Nature",
+    "title": "A single-cell atlas of the airway epithelium reveals the CFTR-rich pulmonary ionocyte",
+    "year": 2018
+  },
   "doi:10.1038/s41586-019-1241-0": {
     "fetched": "2026-11-10",
     "first_author": "Muñoz de Nova",
@@ -639,6 +879,14 @@
     "title": "Mathematical discoveries from program search with large language models",
     "year": 2023
   },
+  "doi:10.1038/s41586-024-07115-7": {
+    "fetched": "2026-11-14",
+    "first_author": "Trinh",
+    "found": true,
+    "journal": "Nature",
+    "title": "Author Correction: Solving olympiad geometry without human demonstrations",
+    "year": 2024
+  },
   "doi:10.1038/s41586-024-07552-4": {
     "fetched": "2026-11-04",
     "first_author": "Durrant",
@@ -654,6 +902,14 @@
     "journal": "Nature",
     "title": "Frequency ratio of the 229mTh nuclear isomeric transition and the 87Sr atomic clock",
     "year": 2024
+  },
+  "doi:10.1038/s41586-024-08449-y": {
+    "fetched": "2026-11-13",
+    "first_author": "Google Quantum AI and Collaborators",
+    "found": true,
+    "journal": "Nature",
+    "title": "Quantum error correction below the surface code threshold",
+    "year": 2025
   },
   "doi:10.1038/s41586-025-09595-7": {
     "fetched": "2026-11-09",
@@ -671,6 +927,14 @@
     "title": "",
     "year": null
   },
+  "doi:10.1038/s41598-025-16178-z": {
+    "fetched": "2026-11-14",
+    "first_author": "Figueroa-Landeta",
+    "found": true,
+    "journal": "Scientific Reports",
+    "title": "Thixo-viscoelastoplastic rheological characterisation of human mucus using a multimode BMP constitutive equation approach",
+    "year": 2025
+  },
   "doi:10.1038/s42005-026-02514-w": {
     "fetched": "2026-11-09",
     "first_author": "Agafonova",
@@ -678,6 +942,14 @@
     "journal": "Communications Physics",
     "title": "One-milligram torsional pendulum toward experiments at the quantum-gravity interface",
     "year": 2026
+  },
+  "doi:10.1038/srep19519": {
+    "fetched": "2026-11-14",
+    "first_author": "Romero-García",
+    "found": true,
+    "journal": "Scientific Reports",
+    "title": "Perfect and broadband acoustic absorption by critically coupled sub-wavelength resonators",
+    "year": 2016
   },
   "doi:10.1039/f29787401789": {
     "fetched": "2026-11-04",
@@ -703,6 +975,14 @@
     "title": "<i>Planck</i>\n                    2018 results",
     "year": 2020
   },
+  "doi:10.1051/epjconf/201714302080": {
+    "fetched": "2026-11-14",
+    "first_author": "Van Vu",
+    "found": true,
+    "journal": "EPJ Web of Conferences",
+    "title": "Evaluating the moisture transfer of membranes for total heat exchanger",
+    "year": 2017
+  },
   "doi:10.1056/nejmra1813799": {
     "fetched": "2026-11-04",
     "first_author": "Boucher",
@@ -710,6 +990,14 @@
     "journal": "New England Journal of Medicine",
     "title": "Muco-Obstructive Lung Diseases",
     "year": 2019
+  },
+  "doi:10.1061/(asce)ae.1943-5568.0000430": {
+    "fetched": "2026-11-20",
+    "first_author": "Tang",
+    "found": true,
+    "journal": "Journal of Architectural Engineering",
+    "title": "Gridshell as Formwork: Proof of Concept for a New Technique for Constructing Thin Concrete Shells Supported by Gridshell as Formwork",
+    "year": 2020
   },
   "doi:10.1061/(asce)gt.1943-5606.0000073": {
     "fetched": "2026-11-04",
@@ -726,6 +1014,22 @@
     "journal": "",
     "title": "Minimum Design Loads and Associated Criteria for Buildings and Other Structures",
     "year": 2021
+  },
+  "doi:10.1061/jmcea3.0001526": {
+    "fetched": "2026-11-14",
+    "first_author": "Scanlan",
+    "found": true,
+    "journal": "Journal of the Engineering Mechanics Division",
+    "title": "Airfoil and Bridge Deck Flutter Derivatives",
+    "year": 1971
+  },
+  "doi:10.1061/jsfeaq.0001662": {
+    "fetched": "2026-11-14",
+    "first_author": "Seed",
+    "found": true,
+    "journal": "Journal of the Soil Mechanics and Foundations Division",
+    "title": "Simplified Procedure for Evaluating Soil Liquefaction Potential",
+    "year": 1971
   },
   "doi:10.1063/1.1716296": {
     "fetched": "2026-11-10",
@@ -751,6 +1055,14 @@
     "title": "Recent developments in the P\n                    <scp>y</scp>\n                    SCF program package",
     "year": 2020
   },
+  "doi:10.1073/pnas.0608611104": {
+    "fetched": "2026-11-13",
+    "first_author": "Lai",
+    "found": true,
+    "journal": "Proceedings of the National Academy of Sciences",
+    "title": "Rapid transport of large polymeric nanoparticles in fresh undiluted human mucus",
+    "year": 2007
+  },
   "doi:10.1073/pnas.0705326104": {
     "fetched": "2026-11-04",
     "first_author": "Champion",
@@ -758,6 +1070,14 @@
     "journal": "Proceedings of the National Academy of Sciences",
     "title": "Making polymeric micro- and nanoparticles of complex shapes",
     "year": 2007
+  },
+  "doi:10.1073/pnas.1212134110": {
+    "fetched": "2026-11-14",
+    "first_author": "Dörfler",
+    "found": true,
+    "journal": "Proceedings of the National Academy of Sciences",
+    "title": "Synchronization in complex oscillator networks and smart grids",
+    "year": 2013
   },
   "doi:10.1073/pnas.1217998110": {
     "fetched": "2026-11-04",
@@ -823,6 +1143,22 @@
     "title": "Fast and Accurate Computation of Polyhedral Mass Properties",
     "year": 1996
   },
+  "doi:10.1080/14786440409463229": {
+    "fetched": "2026-11-14",
+    "first_author": "Michell",
+    "found": true,
+    "journal": "The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science",
+    "title": "LVIII. <i>The limits of economy of material in frame-structures</i>",
+    "year": 1904
+  },
+  "doi:10.1080/14786446408643663": {
+    "fetched": "2026-11-14",
+    "first_author": "Maxwell",
+    "found": true,
+    "journal": "The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science",
+    "title": "XLV. <i>On reciprocal figures and diagrams of forces</i>",
+    "year": 1864
+  },
   "doi:10.1085/jgp.200609558": {
     "fetched": "2026-11-04",
     "first_author": "Csanády",
@@ -855,6 +1191,14 @@
     "title": "Measurement of the cosmic microwave background spectrum by the COBE FIRAS instrument",
     "year": 1994
   },
+  "doi:10.1086/376525": {
+    "fetched": "2026-11-14",
+    "first_author": "Stevens",
+    "found": true,
+    "journal": "Clinical Infectious Diseases",
+    "title": "Allergic Bronchopulmonary Aspergillosis in Cystic Fibrosis—State of the Art: Cystic Fibrosis Foundation Consensus Conference",
+    "year": 2003
+  },
   "doi:10.1086/508162": {
     "fetched": "2026-11-10",
     "first_author": "Clowe",
@@ -862,6 +1206,22 @@
     "journal": "The Astrophysical Journal",
     "title": "A Direct Empirical Proof of the Existence of Dark Matter",
     "year": 2006
+  },
+  "doi:10.1086/676882": {
+    "fetched": "2026-11-14",
+    "first_author": "Saiman",
+    "found": true,
+    "journal": "Infection Control &amp; Hospital Epidemiology",
+    "title": "Infection Prevention and Control Guideline for Cystic Fibrosis: 2013 Update",
+    "year": 2014
+  },
+  "doi:10.1088/0004-637x/696/2/l159": {
+    "fetched": "2026-11-13",
+    "first_author": "Favata",
+    "found": true,
+    "journal": "The Astrophysical Journal",
+    "title": "NONLINEAR GRAVITATIONAL-WAVE MEMORY FROM BINARY BLACK HOLE MERGERS",
+    "year": 2009
   },
   "doi:10.1088/0034-4885/75/12/126001": {
     "fetched": "2026-11-04",
@@ -935,6 +1295,22 @@
     "title": "JAX, M.D. A framework for differentiable physics*",
     "year": 2021
   },
+  "doi:10.1088/1755-1315/1554/1/012083": {
+    "fetched": "2026-11-14",
+    "first_author": "Küpfer",
+    "found": true,
+    "journal": "IOP Conference Series: Earth and Environmental Science",
+    "title": "Concrete floors: multi-criteria analysis of conventional and novel solutions",
+    "year": 2025
+  },
+  "doi:10.1090/s0273-0979-09-01249-x": {
+    "fetched": "2026-11-14",
+    "first_author": "Carlsson",
+    "found": true,
+    "journal": "Bulletin of the American Mathematical Society",
+    "title": "Topology and data",
+    "year": 2009
+  },
   "doi:10.1093/hmg/ddw153": {
     "fetched": "2026-11-04",
     "first_author": "Biosse Duplan",
@@ -942,6 +1318,14 @@
     "journal": "Human Molecular Genetics",
     "title": "Meckel’s and condylar cartilages anomalies in achondroplasia result in defective development and growth of the mandible",
     "year": 2016
+  },
+  "doi:10.1093/qmath/os-11.1.201": {
+    "fetched": "2026-11-14",
+    "first_author": "INGHAM",
+    "found": true,
+    "journal": "The Quarterly Journal of Mathematics",
+    "title": "ON THE ESTIMATION OF <i>N</i>(σ, <i>T</i>)",
+    "year": 1940
   },
   "doi:10.1098/rspa.1964.0151": {
     "fetched": "2026-11-04",
@@ -1093,6 +1477,14 @@
     "found": true,
     "journal": "Physical Review D",
     "title": "Measuring gravitational-wave memory in the first LIGO/Virgo gravitational-wave transient catalog",
+    "year": 2020
+  },
+  "doi:10.1103/physrevd.102.072003": {
+    "fetched": "2026-11-13",
+    "first_author": "Carney",
+    "found": true,
+    "journal": "Physical Review D",
+    "title": "Proposal for gravitational direct detection of dark matter",
     "year": 2020
   },
   "doi:10.1103/physrevd.111.l121101": {
@@ -1253,6 +1645,14 @@
     "found": true,
     "journal": "Physical Review Letters",
     "title": "Observation of Gravitational Waves from a Binary Black Hole Merger",
+    "year": 2016
+  },
+  "doi:10.1103/physrevlett.116.120601": {
+    "fetched": "2026-11-13",
+    "first_author": "Gingrich",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "Dissipation Bounds All Steady-State Current Fluctuations",
     "year": 2016
   },
   "doi:10.1103/physrevlett.116.221101": {
@@ -1455,6 +1855,14 @@
     "title": "Thermodynamics of spacetime: The Einstein equation of state",
     "year": 1995
   },
+  "doi:10.1103/physrevlett.75.4425": {
+    "fetched": "2026-11-13",
+    "first_author": "MacKintosh",
+    "found": true,
+    "journal": "Physical Review Letters",
+    "title": "Elasticity of Semiflexible Biopolymer Networks",
+    "year": 1995
+  },
   "doi:10.1103/physrevlett.77.1413": {
     "fetched": "2026-11-09",
     "first_author": "Peres",
@@ -1623,6 +2031,14 @@
     "title": "Velocity Predictors for Predictive Energy Management in Hybrid Electric Vehicles",
     "year": 2015
   },
+  "doi:10.1109/tie.2010.2048839": {
+    "fetched": "2026-11-14",
+    "first_author": "Zhong",
+    "found": true,
+    "journal": "IEEE Transactions on Industrial Electronics",
+    "title": "Synchronverters: Inverters That Mimic Synchronous Generators",
+    "year": 2011
+  },
   "doi:10.1112/jlms/s1-16.4.212": {
     "fetched": "2026-11-10",
     "first_author": "Erdös",
@@ -1638,6 +2054,14 @@
     "journal": "Applied Mechanics Reviews",
     "title": "Ground Effect Aerodynamics of Race Cars",
     "year": 2006
+  },
+  "doi:10.1115/1.3607667": {
+    "fetched": "2026-11-20",
+    "first_author": "Hutchinson",
+    "found": true,
+    "journal": "Journal of Applied Mechanics",
+    "title": "Imperfection Sensitivity of Externally Pressurized Spherical Shells",
+    "year": 1967
   },
   "doi:10.1115/1.3644004": {
     "fetched": "2026-11-04",
@@ -1655,6 +2079,30 @@
     "title": "A Portrait of an ISO STEP Tolerancing Standard as an Enabler of Smart Manufacturing Systems",
     "year": 2015
   },
+  "doi:10.1115/1.4040455": {
+    "fetched": "2026-11-20",
+    "first_author": "Gerasimidis",
+    "found": true,
+    "journal": "Journal of Applied Mechanics",
+    "title": "On Establishing Buckling Knockdowns for Imperfection-Sensitive Shell Structures",
+    "year": 2018
+  },
+  "doi:10.1115/1.4056801": {
+    "fetched": "2026-11-20",
+    "first_author": "Abbasi",
+    "found": true,
+    "journal": "Journal of Applied Mechanics",
+    "title": "Comparing the Buckling Strength of Spherical Shells With Dimpled Versus Bumpy Defects",
+    "year": 2023
+  },
+  "doi:10.1119/1.16590": {
+    "fetched": "2026-11-14",
+    "first_author": "Billah",
+    "found": true,
+    "journal": "American Journal of Physics",
+    "title": "Resonance, Tacoma Narrows bridge failure, and undergraduate physics textbooks",
+    "year": 1991
+  },
   "doi:10.1121/1.1901884": {
     "fetched": "2026-11-04",
     "first_author": "Eyring",
@@ -1663,6 +2111,22 @@
     "title": "Reverberation Time in “Dead” Rooms",
     "year": 1930
   },
+  "doi:10.1121/1.1915175": {
+    "fetched": "2026-11-14",
+    "first_author": "Eyring",
+    "found": true,
+    "journal": "The Journal of the Acoustical Society of America",
+    "title": "REVERBERATION TIME IN “DEAD” ROOMS",
+    "year": 1930
+  },
+  "doi:10.1121/1.2118327": {
+    "fetched": "2026-11-14",
+    "first_author": "Busch-Vishniac",
+    "found": true,
+    "journal": "The Journal of the Acoustical Society of America",
+    "title": "Noise levels in Johns Hopkins Hospital",
+    "year": 2005
+  },
   "doi:10.1121/1.380425": {
     "fetched": "2026-11-04",
     "first_author": "Schroeder",
@@ -1670,6 +2134,14 @@
     "journal": "The Journal of the Acoustical Society of America",
     "title": "Diffuse sound reflection by maximum−length sequences",
     "year": 1975
+  },
+  "doi:10.1121/1.382601": {
+    "fetched": "2026-11-14",
+    "first_author": "Schroeder",
+    "found": true,
+    "journal": "The Journal of the Acoustical Society of America",
+    "title": "Binaural dissimilarity and optimum ceilings for concert halls: More lateral sound diffusion",
+    "year": 1979
   },
   "doi:10.1121/1.400379": {
     "fetched": "2026-11-07",
@@ -1686,6 +2158,14 @@
     "journal": "Science Advances",
     "title": "Measuring gravity with milligram levitated masses",
     "year": 2024
+  },
+  "doi:10.1126/science.1067262": {
+    "fetched": "2026-11-14",
+    "first_author": "Berson",
+    "found": true,
+    "journal": "Science",
+    "title": "Phototransduction by Retinal Ganglion Cells That Set the Circadian Clock",
+    "year": 2002
   },
   "doi:10.1126/science.1192720": {
     "fetched": "2026-11-08",
@@ -1710,6 +2190,14 @@
     "journal": "Science",
     "title": "Minimal \"Self\" Peptides That Inhibit Phagocytic Clearance and Enhance Delivery of Nanoparticles",
     "year": 2013
+  },
+  "doi:10.1126/science.159.3821.1319": {
+    "fetched": "2026-11-14",
+    "first_author": "Buck",
+    "found": true,
+    "journal": "Science",
+    "title": "Mechanism of Rhythmic Synchronous Flashing of Fireflies",
+    "year": 1968
   },
   "doi:10.1126/science.177.4044.166": {
     "fetched": "2026-11-08",
@@ -1741,6 +2229,14 @@
     "found": true,
     "journal": "Science",
     "title": "Origami of thick panels",
+    "year": 2015
+  },
+  "doi:10.1126/science.aab3564": {
+    "fetched": "2026-11-14",
+    "first_author": "Shi",
+    "found": true,
+    "journal": "Science",
+    "title": "Keeping cool: Enhanced optical reflection and radiative heat dissipation in Saharan silver ants",
     "year": 2015
   },
   "doi:10.1126/science.aac6498": {
@@ -1791,6 +2287,14 @@
     "title": "Functional correction of the untreatable\n                    <i>CFTR</i>\n                    1717-1G&gt;A mutation through mRNA- and sgRNA-optimized base editing",
     "year": 2026
   },
+  "doi:10.1128/aem.03327-16": {
+    "fetched": "2026-11-14",
+    "first_author": "Kotay",
+    "found": true,
+    "journal": "Applied and Environmental Microbiology",
+    "title": "Spread from the Sink to the Patient:\n                    <i>In Situ</i>\n                    Study Using Green Fluorescent Protein (GFP)-Expressing Escherichia coli To Model Bacterial Dispersion from Hand-Washing Sink-Trap Reservoirs",
+    "year": 2017
+  },
   "doi:10.1128/jb.185.5.1485-1491.2003": {
     "fetched": "2026-11-04",
     "first_author": "Stewart",
@@ -1823,6 +2327,22 @@
     "title": "Digital geometry processing with discrete exterior calculus",
     "year": 2013
   },
+  "doi:10.1145/3110268": {
+    "fetched": "2026-11-14",
+    "first_author": "Choi",
+    "found": true,
+    "journal": "Proceedings of the ACM on Programming Languages",
+    "title": "Kami: a platform for high-level parametric hardware specification and its modular verification",
+    "year": 2017
+  },
+  "doi:10.1145/3186893": {
+    "fetched": "2026-11-14",
+    "first_author": "Williams",
+    "found": true,
+    "journal": "Journal of the ACM",
+    "title": "Subcubic Equivalences Between Path, Matrix, and Triangle Problems",
+    "year": 2018
+  },
   "doi:10.1145/3372885.3373824": {
     "fetched": "2026-11-07",
     "first_author": "The mathlib Community",
@@ -1830,6 +2350,14 @@
     "journal": "Proceedings of the 9th ACM SIGPLAN International Conference on Certified Programs and Proofs",
     "title": "The lean mathematical library",
     "year": 2020
+  },
+  "doi:10.1145/3453483.3454065": {
+    "fetched": "2026-11-14",
+    "first_author": "Erbsen",
+    "found": true,
+    "journal": "Proceedings of the 42nd ACM SIGPLAN International Conference on Programming Language Design and Implementation",
+    "title": "Integration verification across software and hardware for a simple embedded system",
+    "year": 2021
   },
   "doi:10.1145/3524456": {
     "fetched": "2026-11-07",
@@ -1927,6 +2455,14 @@
     "title": "",
     "year": null
   },
+  "doi:10.1186/s12890-018-0661-1": {
+    "fetched": "2026-11-14",
+    "first_author": "Radtke",
+    "found": true,
+    "journal": "BMC Pulmonary Medicine",
+    "title": "Acute effects of combined exercise and oscillatory positive expiratory pressure therapy on sputum properties and lung diffusing capacity in cystic fibrosis: a randomized, controlled, crossover trial",
+    "year": 2018
+  },
   "doi:10.1201/9781420012514": {
     "fetched": "2026-11-04",
     "first_author": "Kadlec",
@@ -1942,6 +2478,22 @@
     "journal": "Europhysics Letters (EPL)",
     "title": "Long-Range Forces in Heterogeneous Fluid Membranes",
     "year": 1993
+  },
+  "doi:10.1242/jcs.104.3.613": {
+    "fetched": "2026-11-14",
+    "first_author": "Ingber",
+    "found": true,
+    "journal": "Journal of Cell Science",
+    "title": "Cellular tensegrity: defining new rules of biological design that govern the cytoskeleton",
+    "year": 1993
+  },
+  "doi:10.1260/0266-3511.30.1.1": {
+    "fetched": "2026-11-20",
+    "first_author": "Tang",
+    "found": true,
+    "journal": "International Journal of Space Structures",
+    "title": "An Overview of Historical and Contemporary Concrete Shells, Their Construction and Factors in Their General Disappearance",
+    "year": 2015
   },
   "doi:10.12942/lrr-2003-1": {
     "fetched": "2026-11-08",
@@ -1998,6 +2550,14 @@
     "journal": "PLOS Biology",
     "title": "Dynamically Allocated Hub in Task-Evoked Network Predicts the Vulnerable Prefrontal Locus for Contextual Memory Retrieval in Macaques",
     "year": 2015
+  },
+  "doi:10.1371/journal.pbio.3001571": {
+    "fetched": "2026-11-14",
+    "first_author": "Brown",
+    "found": true,
+    "journal": "PLOS Biology",
+    "title": "Recommendations for daytime, evening, and nighttime indoor light exposure to best support physiology, sleep, and wakefulness in healthy adults",
+    "year": 2022
   },
   "doi:10.1371/journal.pgen.1007723": {
     "fetched": "2026-11-10",
@@ -2063,6 +2623,14 @@
     "title": "NetKet 3: Machine Learning Toolbox for Many-Body Quantum Systems",
     "year": 2022
   },
+  "doi:10.21809/rilemtechlett.2016.15": {
+    "fetched": "2026-11-14",
+    "first_author": "De Schutter",
+    "found": true,
+    "journal": "RILEM Technical Letters",
+    "title": "Pumping of Fresh Concrete: Insights and Challenges",
+    "year": 2016
+  },
   "doi:10.22331/q-2021-07-06-497": {
     "fetched": "2026-11-07",
     "first_author": "Gidney",
@@ -2087,6 +2655,22 @@
     "title": "Modular Elliptic Curves and Fermat's Last Theorem",
     "year": 1995
   },
+  "doi:10.2307/2118560": {
+    "fetched": "2026-11-14",
+    "first_author": "Taylor",
+    "found": true,
+    "journal": "The Annals of Mathematics",
+    "title": "Ring-Theoretic Properties of Certain Hecke Algebras",
+    "year": 1995
+  },
+  "doi:10.23919/pscc.2018.8450880": {
+    "fetched": "2026-11-14",
+    "first_author": "Milano",
+    "found": true,
+    "journal": "2018 Power Systems Computation Conference (PSCC)",
+    "title": "Foundations and Challenges of Low-Inertia Systems (Invited Paper)",
+    "year": 2018
+  },
   "doi:10.24033/bsmf.1494": {
     "fetched": "2026-11-10",
     "first_author": "Doob",
@@ -2095,6 +2679,38 @@
     "title": "Conditional brownian motion and the boundary limits of harmonic functions",
     "year": 1957
   },
+  "doi:10.3233/fde-150040": {
+    "fetched": "2026-11-14",
+    "first_author": "Karanouh",
+    "found": true,
+    "journal": "Journal of Facade Design and Engineering",
+    "title": "Innovations in dynamic architecture",
+    "year": 2015
+  },
+  "doi:10.3390/buildings13071794": {
+    "fetched": "2026-11-14",
+    "first_author": "Baskova",
+    "found": true,
+    "journal": "Buildings",
+    "title": "A Dynamic Model for Effective and Optimal Planning of Formwork in Construction Projects",
+    "year": 2023
+  },
+  "doi:10.3390/buildings13082052": {
+    "fetched": "2026-11-14",
+    "first_author": "López López",
+    "found": true,
+    "journal": "Buildings",
+    "title": "Multi-Level Numerical Modelling and Analysis of Tile Vaults",
+    "year": 2023
+  },
+  "doi:10.3390/polym18111306": {
+    "fetched": "2026-11-14",
+    "first_author": "Yang",
+    "found": true,
+    "journal": "Polymers",
+    "title": "Influence of Temperature on the Mechanical Behavior of Lead/Rubber Bearings",
+    "year": 2026
+  },
   "doi:10.4007/annals.2015.182.1.9": {
     "fetched": "2026-11-07",
     "first_author": "Bourgain",
@@ -2102,6 +2718,14 @@
     "journal": "Annals of Mathematics",
     "title": "The proof of the l^2 Decoupling Conjecture",
     "year": 2015
+  },
+  "doi:10.4007/annals.2017.185.1.7": {
+    "fetched": "2026-11-14",
+    "first_author": "Croot",
+    "found": true,
+    "journal": "Annals of Mathematics",
+    "title": "Progression-free sets in $\\mathbb{Z}_4^n$ are exponentially small",
+    "year": 2017
   },
   "doi:10.4007/annals.2017.185.1.8": {
     "fetched": "2026-11-04",
@@ -2119,6 +2743,14 @@
     "title": "On a conjecture of Marton",
     "year": 2025
   },
+  "doi:10.4007/annals.2026.203.2.6": {
+    "fetched": "2026-11-14",
+    "first_author": "Guth",
+    "found": true,
+    "journal": "Annals of Mathematics",
+    "title": "New large value estimates for Dirichlet polynomials",
+    "year": 2026
+  },
   "doi:10.4324/9780080556000": {
     "fetched": "2026-11-04",
     "first_author": "Popovic Larsen",
@@ -2126,6 +2758,15 @@
     "journal": "",
     "title": "Reciprocal Frame Architecture",
     "year": 2007
+  },
+  "doi:10.48550/arxiv.2010.08895": {
+    "fetched": "2026-11-13",
+    "first_author": "Li",
+    "found": true,
+    "journal": "arXiv",
+    "registry": "DataCite (preprint)",
+    "title": "Fourier Neural Operator for Parametric Partial Differential Equations",
+    "year": 2020
   },
   "doi:10.48550/arxiv.2205.01833": {
     "fetched": "2026-11-08",
@@ -2223,6 +2864,14 @@
     "registry": "DataCite (preprint)",
     "title": "Testing Gravitationally-Induced-Entanglement with Massive Particles and Quantum Clocks",
     "year": 2026
+  },
+  "doi:10.5334/jors.188": {
+    "fetched": "2026-11-14",
+    "first_author": "Brown",
+    "found": true,
+    "journal": "Journal of Open Research Software",
+    "title": "PyPSA: Python for Power System Analysis",
+    "year": 2018
   },
   "doi:10.58347/tml.2025.1724a": {
     "fetched": "2026-11-04",
@@ -2674,6 +3323,18 @@
     "unclassified": 1,
     "year": 1920
   },
+  "scite:10.1007/978-3-030-79876-5_37": {
+    "citing_publications": 685,
+    "classification_provenance": "Scite ML citation classification",
+    "contrasting": 0,
+    "fetched": "2026-11-15",
+    "found": true,
+    "mentioning": 370,
+    "retracted": false,
+    "supporting": 0,
+    "total_smart_citations": 370,
+    "unclassified": 0
+  },
   "scite:10.1007/bf01645742": {
     "citing_publications": 4730,
     "classification_provenance": "Scite ML citation classification",
@@ -2842,6 +3503,20 @@
     "unclassified": 7,
     "year": 1986
   },
+  "scite:10.1016/0141-0296(91)90050-m": {
+    "citing_publications": 51,
+    "contrasting": 0,
+    "fetched": "2026-11-20",
+    "found": true,
+    "journal": "Engineering Structures",
+    "mentioning": 12,
+    "retracted": false,
+    "supporting": 0,
+    "title": "On shape finding methods and ultimate load analyses of reinforced concrete shells",
+    "total_smart_citations": 12,
+    "unclassified": 0,
+    "year": 1991
+  },
   "scite:10.1016/0370-2693(72)90825-8": {
     "citing_publications": 327,
     "classification_provenance": "Scite ML citation classification",
@@ -2865,6 +3540,18 @@
     "supporting": 12,
     "total_smart_citations": 684,
     "unclassified": 2
+  },
+  "scite:10.1016/0550-3213(84)90066-x": {
+    "citing_publications": 1667,
+    "classification_provenance": "Scite ML citation classification",
+    "contrasting": 1,
+    "fetched": "2026-11-13",
+    "found": true,
+    "mentioning": 1352,
+    "retracted": false,
+    "supporting": 51,
+    "total_smart_citations": 1410,
+    "unclassified": 6
   },
   "scite:10.1016/j.addr.2008.11.002": {
     "citing_publications": 1851,
@@ -3548,6 +4235,18 @@
     "total_smart_citations": 2712,
     "unclassified": 62
   },
+  "scite:10.1088/0004-637x/696/2/l159": {
+    "citing_publications": 210,
+    "classification_provenance": "Scite ML citation classification",
+    "contrasting": 0,
+    "fetched": "2026-11-13",
+    "found": true,
+    "mentioning": 208,
+    "retracted": false,
+    "supporting": 5,
+    "total_smart_citations": 213,
+    "unclassified": 0
+  },
   "scite:10.1088/0034-4885/75/12/126001": {
     "citing_publications": 4173,
     "contrasting": 0,
@@ -3854,6 +4553,18 @@
     "retracted": false,
     "supporting": 2,
     "total_smart_citations": 120,
+    "unclassified": 0
+  },
+  "scite:10.1103/physrevd.102.072003": {
+    "citing_publications": 100,
+    "classification_provenance": "Scite ML citation classification",
+    "contrasting": 0,
+    "fetched": "2026-11-13",
+    "found": true,
+    "mentioning": 60,
+    "retracted": false,
+    "supporting": 0,
+    "total_smart_citations": 60,
     "unclassified": 0
   },
   "scite:10.1103/physrevd.111.l121101": {
@@ -5179,654 +5890,5 @@
     "total_smart_citations": 1212,
     "unclassified": 62,
     "year": 2018
-  },
-  "doi:10.1016/0550-3213(84)90066-x": {
-    "fetched": "2026-11-13",
-    "first_author": "Alvarez-Gaumé",
-    "found": true,
-    "journal": "Nuclear Physics B",
-    "title": "Gravitational anomalies",
-    "year": 1984
-  },
-  "doi:10.1088/0004-637x/696/2/l159": {
-    "fetched": "2026-11-13",
-    "first_author": "Favata",
-    "found": true,
-    "journal": "The Astrophysical Journal",
-    "title": "NONLINEAR GRAVITATIONAL-WAVE MEMORY FROM BINARY BLACK HOLE MERGERS",
-    "year": 2009
-  },
-  "doi:10.1103/physrevd.102.072003": {
-    "fetched": "2026-11-13",
-    "first_author": "Carney",
-    "found": true,
-    "journal": "Physical Review D",
-    "title": "Proposal for gravitational direct detection of dark matter",
-    "year": 2020
-  },
-  "scite:10.1016/0550-3213(84)90066-x": {
-    "citing_publications": 1667,
-    "classification_provenance": "Scite ML citation classification",
-    "contrasting": 1,
-    "fetched": "2026-11-13",
-    "found": true,
-    "mentioning": 1352,
-    "retracted": false,
-    "supporting": 51,
-    "total_smart_citations": 1410,
-    "unclassified": 6
-  },
-  "scite:10.1088/0004-637x/696/2/l159": {
-    "citing_publications": 210,
-    "classification_provenance": "Scite ML citation classification",
-    "contrasting": 0,
-    "fetched": "2026-11-13",
-    "found": true,
-    "mentioning": 208,
-    "retracted": false,
-    "supporting": 5,
-    "total_smart_citations": 213,
-    "unclassified": 0
-  },
-  "scite:10.1103/physrevd.102.072003": {
-    "citing_publications": 100,
-    "classification_provenance": "Scite ML citation classification",
-    "contrasting": 0,
-    "fetched": "2026-11-13",
-    "found": true,
-    "mentioning": 60,
-    "retracted": false,
-    "supporting": 0,
-    "total_smart_citations": 60,
-    "unclassified": 0
-  },
-  "doi:10.1103/physrevlett.75.4425": {
-    "fetched": "2026-11-13",
-    "first_author": "MacKintosh",
-    "found": true,
-    "journal": "Physical Review Letters",
-    "title": "Elasticity of Semiflexible Biopolymer Networks",
-    "year": 1995
-  },
-  "doi:10.1073/pnas.0608611104": {
-    "fetched": "2026-11-13",
-    "first_author": "Lai",
-    "found": true,
-    "journal": "Proceedings of the National Academy of Sciences",
-    "title": "Rapid transport of large polymeric nanoparticles in fresh undiluted human mucus",
-    "year": 2007
-  },
-  "doi:10.1038/s41586-024-08449-y": {
-    "fetched": "2026-11-13",
-    "first_author": "Google Quantum AI and Collaborators",
-    "found": true,
-    "journal": "Nature",
-    "title": "Quantum error correction below the surface code threshold",
-    "year": 2025
-  },
-  "doi:10.1007/3-540-07171-7_1": {
-    "fetched": "2026-11-13",
-    "first_author": "Lanford",
-    "found": true,
-    "journal": "Lecture Notes in Physics",
-    "title": "Time evolution of large classical systems",
-    "year": 1975
-  },
-  "doi:10.1103/physrevlett.116.120601": {
-    "fetched": "2026-11-13",
-    "first_author": "Gingrich",
-    "found": true,
-    "journal": "Physical Review Letters",
-    "title": "Dissipation Bounds All Steady-State Current Fluctuations",
-    "year": 2016
-  },
-  "doi:10.48550/arxiv.2010.08895": {
-    "fetched": "2026-11-13",
-    "first_author": "Li",
-    "found": true,
-    "journal": "arXiv",
-    "title": "Fourier Neural Operator for Parametric Partial Differential Equations",
-    "year": 2020,
-    "registry": "DataCite (preprint)"
-  },
-  "doi:10.1016/j.matpur.2009.01.013": {
-    "fetched": "2026-11-13",
-    "first_author": "Golse",
-    "found": true,
-    "journal": "Journal de Mathématiques Pures et Appliquées",
-    "title": "The incompressible Navier–Stokes limit of the Boltzmann equation for hard cutoff potentials",
-    "year": 2009
-  },
-  "doi:10.1145/3110268": {
-    "fetched": "2026-11-14",
-    "first_author": "Choi",
-    "found": true,
-    "journal": "Proceedings of the ACM on Programming Languages",
-    "title": "Kami: a platform for high-level parametric hardware specification and its modular verification",
-    "year": 2017
-  },
-  "doi:10.1145/3453483.3454065": {
-    "fetched": "2026-11-14",
-    "first_author": "Erbsen",
-    "found": true,
-    "journal": "Proceedings of the 42nd ACM SIGPLAN International Conference on Programming Language Design and Implementation",
-    "title": "Integration verification across software and hardware for a simple embedded system",
-    "year": 2021
-  },
-  "doi:10.1073/pnas.1212134110": {
-    "fetched": "2026-11-14",
-    "first_author": "Dörfler",
-    "found": true,
-    "journal": "Proceedings of the National Academy of Sciences",
-    "title": "Synchronization in complex oscillator networks and smart grids",
-    "year": 2013
-  },
-  "doi:10.23919/pscc.2018.8450880": {
-    "fetched": "2026-11-14",
-    "first_author": "Milano",
-    "found": true,
-    "journal": "2018 Power Systems Computation Conference (PSCC)",
-    "title": "Foundations and Challenges of Low-Inertia Systems (Invited Paper)",
-    "year": 2018
-  },
-  "doi:10.1109/tie.2010.2048839": {
-    "fetched": "2026-11-14",
-    "first_author": "Zhong",
-    "found": true,
-    "journal": "IEEE Transactions on Industrial Electronics",
-    "title": "Synchronverters: Inverters That Mimic Synchronous Generators",
-    "year": 2011
-  },
-  "doi:10.1126/science.159.3821.1319": {
-    "fetched": "2026-11-14",
-    "first_author": "Buck",
-    "found": true,
-    "journal": "Science",
-    "title": "Mechanism of Rhythmic Synchronous Flashing of Fireflies",
-    "year": 1968
-  },
-  "doi:10.1007/bfb0013365": {
-    "fetched": "2026-11-14",
-    "first_author": "Kuramoto",
-    "found": true,
-    "journal": "Lecture Notes in Physics",
-    "title": "Self-entrainment of a population of coupled non-linear oscillators",
-    "year": 2005
-  },
-  "doi:10.5334/jors.188": {
-    "fetched": "2026-11-14",
-    "first_author": "Brown",
-    "found": true,
-    "journal": "Journal of Open Research Software",
-    "title": "PyPSA: Python for Power System Analysis",
-    "year": 2018
-  },
-  "doi:10.1128/aem.03327-16": {
-    "fetched": "2026-11-14",
-    "first_author": "Kotay",
-    "found": true,
-    "journal": "Applied and Environmental Microbiology",
-    "title": "Spread from the Sink to the Patient:\n                    <i>In Situ</i>\n                    Study Using Green Fluorescent Protein (GFP)-Expressing Escherichia coli To Model Bacterial Dispersion from Hand-Washing Sink-Trap Reservoirs",
-    "year": 2017
-  },
-  "doi:10.1086/676882": {
-    "fetched": "2026-11-14",
-    "first_author": "Saiman",
-    "found": true,
-    "journal": "Infection Control &amp; Hospital Epidemiology",
-    "title": "Infection Prevention and Control Guideline for Cystic Fibrosis: 2013 Update",
-    "year": 2014
-  },
-  "doi:10.1016/j.watres.2005.10.030": {
-    "fetched": "2026-11-14",
-    "first_author": "Hijnen",
-    "found": true,
-    "journal": "Water Research",
-    "title": "Inactivation credit of UV radiation for viruses, bacteria and protozoan (oo)cysts in water: A review",
-    "year": 2006
-  },
-  "doi:10.1016/j.ecoleng.2005.07.010": {
-    "fetched": "2026-11-14",
-    "first_author": "Vymazal",
-    "found": true,
-    "journal": "Ecological Engineering",
-    "title": "Horizontal sub-surface flow and hybrid constructed wetlands systems for wastewater treatment",
-    "year": 2005
-  },
-  "doi:10.1016/j.cell.2019.01.006": {
-    "fetched": "2026-11-14",
-    "first_author": "Schiebinger",
-    "found": true,
-    "journal": "Cell",
-    "title": "Optimal-Transport Analysis of Single-Cell Gene Expression Identifies Developmental Trajectories in Reprogramming",
-    "year": 2019
-  },
-  "doi:10.1038/s41586-018-0393-7": {
-    "fetched": "2026-11-14",
-    "first_author": "Montoro",
-    "found": true,
-    "journal": "Nature",
-    "title": "A revised airway epithelial hierarchy includes CFTR-expressing ionocytes",
-    "year": 2018
-  },
-  "doi:10.1038/s41586-018-0394-6": {
-    "fetched": "2026-11-14",
-    "first_author": "Plasschaert",
-    "found": true,
-    "journal": "Nature",
-    "title": "A single-cell atlas of the airway epithelium reveals the CFTR-rich pulmonary ionocyte",
-    "year": 2018
-  },
-  "doi:10.1007/s00454-006-1276-5": {
-    "fetched": "2026-11-14",
-    "first_author": "Cohen-Steiner",
-    "found": true,
-    "journal": "Discrete &amp; Computational Geometry",
-    "title": "Stability of Persistence Diagrams",
-    "year": 2007
-  },
-  "doi:10.1090/s0273-0979-09-01249-x": {
-    "fetched": "2026-11-14",
-    "first_author": "Carlsson",
-    "found": true,
-    "journal": "Bulletin of the American Mathematical Society",
-    "title": "Topology and data",
-    "year": 2009
-  },
-  "doi:10.1002/2015wr017937": {
-    "fetched": "2026-11-14",
-    "first_author": "Robins",
-    "found": true,
-    "journal": "Water Resources Research",
-    "title": "Percolating length scales from topological persistence analysis of micro‐\n                    <scp>CT</scp>\n                    images of porous materials",
-    "year": 2016
-  },
-  "doi:10.4007/annals.2026.203.2.6": {
-    "fetched": "2026-11-14",
-    "first_author": "Guth",
-    "found": true,
-    "journal": "Annals of Mathematics",
-    "title": "New large value estimates for Dirichlet polynomials",
-    "year": 2026
-  },
-  "doi:10.1126/science.1067262": {
-    "fetched": "2026-11-14",
-    "first_author": "Berson",
-    "found": true,
-    "journal": "Science",
-    "title": "Phototransduction by Retinal Ganglion Cells That Set the Circadian Clock",
-    "year": 2002
-  },
-  "doi:10.1371/journal.pbio.3001571": {
-    "fetched": "2026-11-14",
-    "first_author": "Brown",
-    "found": true,
-    "journal": "PLOS Biology",
-    "title": "Recommendations for daytime, evening, and nighttime indoor light exposure to best support physiology, sleep, and wakefulness in healthy adults",
-    "year": 2022
-  },
-  "doi:10.1121/1.1915175": {
-    "fetched": "2026-11-14",
-    "first_author": "Eyring",
-    "found": true,
-    "journal": "The Journal of the Acoustical Society of America",
-    "title": "REVERBERATION TIME IN “DEAD” ROOMS",
-    "year": 1930
-  },
-  "doi:10.1121/1.382601": {
-    "fetched": "2026-11-14",
-    "first_author": "Schroeder",
-    "found": true,
-    "journal": "The Journal of the Acoustical Society of America",
-    "title": "Binaural dissimilarity and optimum ceilings for concert halls: More lateral sound diffusion",
-    "year": 1979
-  },
-  "doi:10.1121/1.2118327": {
-    "fetched": "2026-11-14",
-    "first_author": "Busch-Vishniac",
-    "found": true,
-    "journal": "The Journal of the Acoustical Society of America",
-    "title": "Noise levels in Johns Hopkins Hospital",
-    "year": 2005
-  },
-  "doi:10.1016/j.cemconcomp.2011.03.012": {
-    "fetched": "2026-11-14",
-    "first_author": "Wiktor",
-    "found": true,
-    "journal": "Cement and Concrete Composites",
-    "title": "Quantification of crack-healing in novel bacteria-based self-healing concrete",
-    "year": 2011
-  },
-  "doi:10.1007/bf01461107": {
-    "fetched": "2026-11-14",
-    "first_author": "Lucas",
-    "found": true,
-    "journal": "Kolloid-Zeitschrift",
-    "title": "Ueber das Zeitgesetz des kapillaren Aufstiegs von Flüssigkeiten",
-    "year": 1918
-  },
-  "doi:10.1007/s00024-005-0026-6": {
-    "fetched": "2026-11-14",
-    "first_author": "Snieder",
-    "found": true,
-    "journal": "pure and applied geophysics",
-    "title": "The Theory of Coda Wave Interferometry",
-    "year": 2006
-  },
-  "doi:10.1016/j.ijmecsci.2018.01.010": {
-    "fetched": "2026-11-14",
-    "first_author": "Suiker",
-    "found": true,
-    "journal": "International Journal of Mechanical Sciences",
-    "title": "Mechanical performance of wall structures in 3D printing processes: Theory, design tools and experiments",
-    "year": 2018
-  },
-  "doi:10.1016/j.cemconres.2011.09.004": {
-    "fetched": "2026-11-14",
-    "first_author": "Roussel",
-    "found": true,
-    "journal": "Cement and Concrete Research",
-    "title": "The origins of thixotropy of fresh cement pastes",
-    "year": 2012
-  },
-  "doi:10.1016/j.autcon.2003.08.012": {
-    "fetched": "2026-11-14",
-    "first_author": "Khoshnevis",
-    "found": true,
-    "journal": "Automation in Construction",
-    "title": "Automated construction by contour crafting—related robotics and information technologies",
-    "year": 2004
-  },
-  "doi:10.3390/buildings13071794": {
-    "fetched": "2026-11-14",
-    "first_author": "Baskova",
-    "found": true,
-    "journal": "Buildings",
-    "title": "A Dynamic Model for Effective and Optimal Planning of Formwork in Construction Projects",
-    "year": 2023
-  },
-  "doi:10.1007/bf01650949": {
-    "fetched": "2026-11-14",
-    "first_author": "Bendsøe",
-    "found": true,
-    "journal": "Structural Optimization",
-    "title": "Optimal shape design as a material distribution problem",
-    "year": 1989
-  },
-  "doi:10.1080/14786440409463229": {
-    "fetched": "2026-11-14",
-    "first_author": "Michell",
-    "found": true,
-    "journal": "The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science",
-    "title": "LVIII. <i>The limits of economy of material in frame-structures</i>",
-    "year": 1904
-  },
-  "doi:10.1002/eqe.2390": {
-    "fetched": "2026-11-14",
-    "first_author": "Lazar",
-    "found": true,
-    "journal": "Earthquake Engineering &amp; Structural Dynamics",
-    "title": "Using an inerter‐based device for structural vibration suppression",
-    "year": 2014
-  },
-  "doi:10.3233/fde-150040": {
-    "fetched": "2026-11-14",
-    "first_author": "Karanouh",
-    "found": true,
-    "journal": "Journal of Facade Design and Engineering",
-    "title": "Innovations in dynamic architecture",
-    "year": 2015
-  },
-  "doi:10.1088/1755-1315/1554/1/012083": {
-    "fetched": "2026-11-14",
-    "first_author": "Küpfer",
-    "found": true,
-    "journal": "IOP Conference Series: Earth and Environmental Science",
-    "title": "Concrete floors: multi-criteria analysis of conventional and novel solutions",
-    "year": 2025
-  },
-  "doi:10.3390/buildings13082052": {
-    "fetched": "2026-11-14",
-    "first_author": "López López",
-    "found": true,
-    "journal": "Buildings",
-    "title": "Multi-Level Numerical Modelling and Analysis of Tile Vaults",
-    "year": 2023
-  },
-  "doi:10.1242/jcs.104.3.613": {
-    "fetched": "2026-11-14",
-    "first_author": "Ingber",
-    "found": true,
-    "journal": "Journal of Cell Science",
-    "title": "Cellular tensegrity: defining new rules of biological design that govern the cytoskeleton",
-    "year": 1993
-  },
-  "doi:10.1126/science.aab3564": {
-    "fetched": "2026-11-14",
-    "first_author": "Shi",
-    "found": true,
-    "journal": "Science",
-    "title": "Keeping cool: Enhanced optical reflection and radiative heat dissipation in Saharan silver ants",
-    "year": 2015
-  },
-  "doi:10.1007/bf01432034": {
-    "fetched": "2026-11-14",
-    "first_author": "Herschel",
-    "found": true,
-    "journal": "Kolloid-Zeitschrift",
-    "title": "Konsistenzmessungen von Gummi-Benzollösungen",
-    "year": 1926
-  },
-  "doi:10.21809/rilemtechlett.2016.15": {
-    "fetched": "2026-11-14",
-    "first_author": "De Schutter",
-    "found": true,
-    "journal": "RILEM Technical Letters",
-    "title": "Pumping of Fresh Concrete: Insights and Challenges",
-    "year": 2016
-  },
-  "doi:10.1016/j.cemconres.2006.05.025": {
-    "fetched": "2026-11-14",
-    "first_author": "Roussel",
-    "found": true,
-    "journal": "Cement and Concrete Research",
-    "title": "A thixotropy model for fresh fluid concretes: Theory, validation and applications",
-    "year": 2006
-  },
-  "doi:10.1038/s41598-025-16178-z": {
-    "fetched": "2026-11-14",
-    "first_author": "Figueroa-Landeta",
-    "found": true,
-    "journal": "Scientific Reports",
-    "title": "Thixo-viscoelastoplastic rheological characterisation of human mucus using a multimode BMP constitutive equation approach",
-    "year": 2025
-  },
-  "doi:10.1038/srep19519": {
-    "fetched": "2026-11-14",
-    "first_author": "Romero-García",
-    "found": true,
-    "journal": "Scientific Reports",
-    "title": "Perfect and broadband acoustic absorption by critically coupled sub-wavelength resonators",
-    "year": 2016
-  },
-  "doi:10.1186/s12890-018-0661-1": {
-    "fetched": "2026-11-14",
-    "first_author": "Radtke",
-    "found": true,
-    "journal": "BMC Pulmonary Medicine",
-    "title": "Acute effects of combined exercise and oscillatory positive expiratory pressure therapy on sputum properties and lung diffusing capacity in cystic fibrosis: a randomized, controlled, crossover trial",
-    "year": 2018
-  },
-  "doi:10.1051/epjconf/201714302080": {
-    "fetched": "2026-11-14",
-    "first_author": "Van Vu",
-    "found": true,
-    "journal": "EPJ Web of Conferences",
-    "title": "Evaluating the moisture transfer of membranes for total heat exchanger",
-    "year": 2017
-  },
-  "doi:10.1061/jsfeaq.0001662": {
-    "fetched": "2026-11-14",
-    "first_author": "Seed",
-    "found": true,
-    "journal": "Journal of the Soil Mechanics and Foundations Division",
-    "title": "Simplified Procedure for Evaluating Soil Liquefaction Potential",
-    "year": 1971
-  },
-  "doi:10.1002/eqe.4290100408": {
-    "fetched": "2026-11-14",
-    "first_author": "Robinson",
-    "found": true,
-    "journal": "Earthquake Engineering &amp; Structural Dynamics",
-    "title": "Lead‐rubber hysteretic bearings suitable for protecting structures during earthquakes",
-    "year": 1982
-  },
-  "doi:10.3390/polym18111306": {
-    "fetched": "2026-11-14",
-    "first_author": "Yang",
-    "found": true,
-    "journal": "Polymers",
-    "title": "Influence of Temperature on the Mechanical Behavior of Lead/Rubber Bearings",
-    "year": 2026
-  },
-  "doi:10.1017/s0305004100032680": {
-    "fetched": "2026-11-14",
-    "first_author": "Broadbent",
-    "found": true,
-    "journal": "Mathematical Proceedings of the Cambridge Philosophical Society",
-    "title": "Percolation processes",
-    "year": 1957
-  },
-  "doi:10.1061/jmcea3.0001526": {
-    "fetched": "2026-11-14",
-    "first_author": "Scanlan",
-    "found": true,
-    "journal": "Journal of the Engineering Mechanics Division",
-    "title": "Airfoil and Bridge Deck Flutter Derivatives",
-    "year": 1971
-  },
-  "doi:10.1119/1.16590": {
-    "fetched": "2026-11-14",
-    "first_author": "Billah",
-    "found": true,
-    "journal": "American Journal of Physics",
-    "title": "Resonance, Tacoma Narrows bridge failure, and undergraduate physics textbooks",
-    "year": 1991
-  },
-  "doi:10.1016/0886-7798(96)00017-x": {
-    "fetched": "2026-11-14",
-    "first_author": "Anagnostou",
-    "found": true,
-    "journal": "Tunnelling and Underground Space Technology",
-    "title": "Face stability conditions with earth-pressure-balanced shields",
-    "year": 1996
-  },
-  "doi:10.1080/14786446408643663": {
-    "fetched": "2026-11-14",
-    "first_author": "Maxwell",
-    "found": true,
-    "journal": "The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science",
-    "title": "XLV. <i>On reciprocal figures and diagrams of forces</i>",
-    "year": 1864
-  },
-  "doi:10.1086/376525": {
-    "fetched": "2026-11-14",
-    "first_author": "Stevens",
-    "found": true,
-    "journal": "Clinical Infectious Diseases",
-    "title": "Allergic Bronchopulmonary Aspergillosis in Cystic Fibrosis—State of the Art: Cystic Fibrosis Foundation Consensus Conference",
-    "year": 2003
-  },
-  "doi:10.1016/j.cad.2014.02.010": {
-    "fetched": "2026-11-14",
-    "first_author": "Reichert",
-    "found": true,
-    "journal": "Computer-Aided Design",
-    "title": "Meteorosensitive architecture: Biomimetic building skins based on materially embedded and hygroscopically enabled responsiveness",
-    "year": 2015
-  },
-  "doi:10.1038/37745": {
-    "fetched": "2026-11-14",
-    "first_author": "Dawson",
-    "found": true,
-    "journal": "Nature",
-    "title": "How pine cones open",
-    "year": 1997
-  },
-  "doi:10.1006/jcss.2001.1774": {
-    "fetched": "2026-11-14",
-    "first_author": "Impagliazzo",
-    "found": true,
-    "journal": "Journal of Computer and System Sciences",
-    "title": "Which Problems Have Strongly Exponential Complexity?",
-    "year": 2001
-  },
-  "doi:10.2307/2118560": {
-    "fetched": "2026-11-14",
-    "first_author": "Taylor",
-    "found": true,
-    "journal": "The Annals of Mathematics",
-    "title": "Ring-Theoretic Properties of Certain Hecke Algebras",
-    "year": 1995
-  },
-  "doi:10.1093/qmath/os-11.1.201": {
-    "fetched": "2026-11-14",
-    "first_author": "INGHAM",
-    "found": true,
-    "journal": "The Quarterly Journal of Mathematics",
-    "title": "ON THE ESTIMATION OF <i>N</i>(σ, <i>T</i>)",
-    "year": 1940
-  },
-  "doi:10.1007/bf02165411": {
-    "fetched": "2026-11-14",
-    "first_author": "Strassen",
-    "found": true,
-    "journal": "Numerische Mathematik",
-    "title": "Gaussian elimination is not optimal",
-    "year": 1969
-  },
-  "doi:10.4007/annals.2017.185.1.7": {
-    "fetched": "2026-11-14",
-    "first_author": "Croot",
-    "found": true,
-    "journal": "Annals of Mathematics",
-    "title": "Progression-free sets in $\\mathbb{Z}_4^n$ are exponentially small",
-    "year": 2017
-  },
-  "doi:10.1016/0925-7721(95)00022-2": {
-    "fetched": "2026-11-14",
-    "first_author": "Gajentaan",
-    "found": true,
-    "journal": "Computational Geometry",
-    "title": "On a class of O(n2) problems in computational geometry",
-    "year": 1995
-  },
-  "doi:10.1145/3186893": {
-    "fetched": "2026-11-14",
-    "first_author": "Williams",
-    "found": true,
-    "journal": "Journal of the ACM",
-    "title": "Subcubic Equivalences Between Path, Matrix, and Triangle Problems",
-    "year": 2018
-  },
-  "doi:10.1038/s41586-024-07115-7": {
-    "fetched": "2026-11-14",
-    "first_author": "Trinh",
-    "found": true,
-    "journal": "Nature",
-    "title": "Author Correction: Solving olympiad geometry without human demonstrations",
-    "year": 2024
-  },
-  "scite:10.1007/978-3-030-79876-5_37": {
-    "citing_publications": 685,
-    "classification_provenance": "Scite ML citation classification",
-    "contrasting": 0,
-    "fetched": "2026-11-15",
-    "found": true,
-    "mentioning": 370,
-    "retracted": false,
-    "supporting": 0,
-    "total_smart_citations": 370,
-    "unclassified": 0
   }
 }

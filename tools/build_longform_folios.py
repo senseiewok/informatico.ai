@@ -239,6 +239,16 @@ VOLUMES_SPEC = [
         "cadence": "Hourly Zero-Token Sentinel Gate + 12h Deep-Craft Atelier Heartbeat (:05 Math, :15 Arch, :20 Civil Eng, :40 Phys)",
         "folios": ["e11", "e12", "a11", "a12", "p11", "p12", "m11", "m12"],
     },
+    {
+        "volume": 7,
+        "code": "VOL. 07",
+        "roman": "Volume VII",
+        "kicker": "VOLUME VII (VOL. 07) · HEINZ ISLER FUNICULAR SHELLS & IMPERFECTION BUCKLING · 1 FOLIO",
+        "title": "Heinz Isler's Thin-Shell Concrete Domes, Zoelly Classical Buckling & Imperfection Knockdowns",
+        "subtitle": "Volume VII opens with Architecture Folio A.13 continuing Folios A.01 and A.11 via Heinz Isler's inverted-hanging cloth form-finding, Zoelly (1915) classical elastic buckling, and spherical-shell imperfection sensitivity (Hutchinson 1967, Ramm & Mehlhorn 1991, Abbasi et al. 2023).",
+        "cadence": "Living Monograph Release · Pillar II Architecture",
+        "folios": ["a13"],
+    },
 ]
 
 
@@ -259,8 +269,9 @@ def get_volume_spec(vol_num: int) -> dict:
 def update_catalogs() -> dict:
     cat_path = ROOT / "src" / "data" / "magazine_catalog.json"
     catalog = json.loads(cat_path.read_text(encoding="utf-8"))
-    catalog["version"] = "6.0.0"
-    catalog["title"] = "Informatico.ai — 6-Volume, 48-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog"
+    total_pillar_folios = sum(len(v) for v in NEW_FOLIOS.values())
+    catalog["version"] = f"{len(VOLUMES_SPEC)}.0.0"
+    catalog["title"] = f"Informatico.ai — {len(VOLUMES_SPEC)}-Volume, {total_pillar_folios}-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog"
     catalog["total_volumes"] = len(VOLUMES_SPEC)
     catalog["volumes"] = VOLUMES_SPEC
 
@@ -2433,9 +2444,10 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
     elif pillar == "architecture":
         lead_series = render_architecture_classics_rack(rel_res)
         rack_cls = "tp-issue-rack tp-issue-rack-headed"
-        rack_head = """      <div class="tp-issue-rack-head">
-        <p class="tp-kicker" data-en="Standalone Architecture Monographs · A.01–A.12" data-es="Monografías Independientes de Arquitectura · A.01–A.12">Standalone Architecture Monographs · A.01–A.12</p>
-        <h2 class="tp-h2" data-en="Twelve Structural &amp; Geometric Monographs" data-es="Doce Monografías Estructurales y Geométricas">Twelve Structural &amp; Geometric Monographs</h2>
+        arch_last = f"A.{len(folios):02d}"
+        rack_head = f"""      <div class="tp-issue-rack-head">
+        <p class="tp-kicker" data-en="Standalone Architecture Monographs · A.01–{arch_last}" data-es="Monografías Independientes de Arquitectura · A.01–{arch_last}">Standalone Architecture Monographs · A.01–{arch_last}</p>
+        <h2 class="tp-h2" data-en="Structural &amp; Geometric Monographs ({len(folios)})" data-es="Monografías Estructurales y Geométricas ({len(folios)})">Structural &amp; Geometric Monographs ({len(folios)})</h2>
       </div>
 """
     elif pillar == "engineering":
@@ -2791,7 +2803,7 @@ def render_oss_physics_radar_section(rel_res: str = ".") -> str:
 
       <div class="tp-oss-grounding-strip" role="region" aria-label="Epistemic and Scite Citation Grounding Telemetry">
         <span class="tp-oss-grounding-pill" data-en="✓ 15 / 15 Engines Primary-DOI &amp; Scite Grounded" data-es="✓ 15 / 15 Motores con DOI Primario y Scite">✓ 15 / 15 Engines Primary-DOI &amp; Scite Grounded</span>
-        <span class="tp-oss-grounding-pill" data-en="✓ 48 / 48 Pillar Folios Scite &amp; Crossref Verified (0 Retractions)" data-es="✓ 48 / 48 Folios de Pilar Verificados en Scite y Crossref (0 Retractaciones)">✓ 48 / 48 Pillar Folios Scite &amp; Crossref Verified (0 Retractions)</span>
+        <span class="tp-oss-grounding-pill" data-en="✓ {sum(len(v) for v in NEW_FOLIOS.values())} / {sum(len(v) for v in NEW_FOLIOS.values())} Pillar Folios Scite &amp; Crossref Verified (0 Retractions)" data-es="✓ {sum(len(v) for v in NEW_FOLIOS.values())} / {sum(len(v) for v in NEW_FOLIOS.values())} Folios de Pilar Verificados en Scite y Crossref (0 Retractaciones)">✓ {sum(len(v) for v in NEW_FOLIOS.values())} / {sum(len(v) for v in NEW_FOLIOS.values())} Pillar Folios Scite &amp; Crossref Verified (0 Retractions)</span>
         <span class="tp-oss-grounding-pill" data-en="✓ Deterministic Gate: check_folio_citations.py + scite-batch" data-es="✓ Compuerta Determinista: check_folio_citations.py + scite-batch">✓ Deterministic Gate: check_folio_citations.py + scite-batch</span>
       </div>
 
@@ -5543,6 +5555,8 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         )
     rows_html = "\n".join(rows)
     first = catalog["pillars"]["engineering"][0]
+    arch_n = len(catalog["pillars"]["architecture"])
+    total_pillar_n = sum(len(v) for v in NEW_FOLIOS.values())
     strip_aria = (
         f"Informatico.ai: 4 Pilares, Serie Tiempo y Gravedad, 6 Retos y {skill_count} Skills de IA"
         if es
@@ -5576,9 +5590,9 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
           <span class="tp-track-chip-meta" data-en="12 Folios · Bridges, TBM, SIMP · Cult Classics (CC.01 &amp; CC.03)" data-es="12 Folios · Puentes, TBM, SIMP · Clásicos (CC.01 y CC.03)">12 Folios · Bridges, TBM, SIMP · Cult Classics (CC.01 &amp; CC.03)</span>
         </a>
         <a class="tp-track-chip" href="architecture/">
-          <span class="tp-track-chip-kicker" data-en="PILLAR II · 12 ESSAYS" data-es="PILAR II · 12 ENSAYOS">PILLAR II · 12 ENSAYOS</span>
+          <span class="tp-track-chip-kicker" data-en="PILLAR II · {arch_n} ESSAYS" data-es="PILAR II · {arch_n} ENSAYOS">PILLAR II · {arch_n} ESSAYS</span>
           <strong class="tp-track-chip-title" data-en="Architecture &amp; Tectonics" data-es="Arquitectura y Tectónica">Architecture &amp; Tectonics</strong>
-          <span class="tp-track-chip-meta" data-en="12 Folios · Vaults, Barragán, Sky-Cooling" data-es="12 Folios · Bóvedas, Barragán, Enfriamiento">12 Folios · Vaults, Barragán, Sky-Cooling</span>
+          <span class="tp-track-chip-meta" data-en="{arch_n} Folios · Vaults, Shells, Sky-Cooling" data-es="{arch_n} Folios · Bóvedas, Cáscaras, Enfriamiento">{arch_n} Folios · Vaults, Shells, Sky-Cooling</span>
         </a>
         <a class="tp-track-chip" href="physics/">
           <span class="tp-track-chip-kicker" data-en="PILLAR III · 12 ESSAYS + 14-STEP SERIES" data-es="PILAR III · 12 ENSAYOS + SERIE DE 14 PASOS">PILLAR III · 12 ESSAYS + 14-STEP SERIES</span>

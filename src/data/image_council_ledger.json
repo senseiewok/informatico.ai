@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2",
   "law": "Law 8 & Law 17 — Human-Scale Grounded Scientific Plate Generation & 4-Seat Image Selection Council",
-  "total_plates_replaced": 64,
-  "magazine_plates_count": 64,
+  "total_plates_replaced": 62,
+  "magazine_plates_count": 62,
   "council_seats": [
     "gemini-4-argon (Physical Specification & Structural Plausibility Seat)",
     "claude-opus-5.5 (Human Perceptual Impact & Tactile Craft Seat)",
@@ -273,6 +273,17 @@
       "bytes": 333555,
       "sha256": "de1da28f19f448b5062c2b58e2bc6f303ac03b6cd4bdd382e96ff722ff053218",
       "zero_baked_text_verified": true
+    },
+    {
+      "plate_id": "a13",
+      "path": "src/plates/a13.jpg",
+      "governing_specification": "Studio beechwood workbench with clamped inverted-hanging cotton catenary pouch beside cast-concrete wing-shell canopy model on three point supports",
+      "human_perceptual_grounding": "genre_5_studio_physical_model_argon_brief_zero_text_zero_duplicate",
+      "winning_engine": "image-generator-pro-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 148037,
+      "zero_baked_text_verified": true,
+      "sha256": "b506c2d7aac3d5bbdaf76dad87de3d4beaa7bb1698266b4b06a65d849796aaa0"
     },
     {
       "plate_id": "p01",

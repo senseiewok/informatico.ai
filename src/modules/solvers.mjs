@@ -1558,6 +1558,45 @@ export function initPlateSolvers(scope = document) {
         if (inlineRise) inlineRise.textContent = `t_0 = ${v0.toFixed(0)} kN`;
         return;
       }
+      if (slug === "a13") {
+        // Folio A.13 idealized spherical-cap model: R = (L^2 + 4 f^2)/(8 f), Zoelly p_cl, illustrative gamma_kd.
+        const tMm = v0;
+        const eGpa = v1;
+        const tM = tMm / 1000.0;
+        const spanM = 31.6;
+        const riseCapM = 4.2;
+        const radiusM = (spanM * spanM + 4.0 * riseCapM * riseCapM) / (8.0 * riseCapM);
+        const nu = 0.20;
+        const qSw = (2400.0 * 9.80665 * tM) / 1000.0;
+        const qTot = qSw + 1.20;
+        const sigmaMem = ((qTot * radiusM) / (2.0 * tM)) / 1000.0;
+        const cFac = 1.0 / Math.sqrt(3.0 * (1.0 - nu * nu));
+        const pCl = 2.0 * cFac * (eGpa * 1e6) * (tM / radiusM) * (tM / radiusM);
+        const gamma = 0.14 + 0.32 * Math.exp(-0.1 * Math.sqrt(radiusM / tM));
+        const pAct = gamma * pCl;
+        const lam = pAct / qTot;
+        if (riseLabel) riseLabel.textContent = `${tMm.toFixed(1)} mm`;
+        if (loadLabel) loadLabel.textContent = `${eGpa.toFixed(1)} GPa`;
+        if (inlineRise) inlineRise.textContent = `Shell Crown Thickness = ${tMm.toFixed(1)} mm`;
+        if (thrustOut) thrustOut.textContent = `${sigmaMem.toFixed(3)} MPa (Crown, Model Service Load)`;
+        if (kernOut) kernOut.textContent = `${pCl.toFixed(1)} kN/m² (Idealized Linear Elastic)`;
+        if (outR2) outR2.textContent = `γ_kd = ${gamma.toFixed(3)} ⇒ p_cr = ${pAct.toFixed(1)} kN/m² (Model)`;
+        if (statusOut) statusOut.textContent = `${lam.toFixed(1)} (Model Value · Not a Structural Check)`;
+        if (statusBox) statusBox.setAttribute("data-alert", lam >= 3.0 ? "false" : "true");
+        const actBar = document.getElementById("tp-a13-act-bar");
+        const pclLbl = document.getElementById("tp-a13-pcl-lbl");
+        const pactLbl = document.getElementById("tp-a13-pact-lbl");
+        const qLbl = document.getElementById("tp-a13-q-lbl");
+        if (actBar) {
+          const barH = Math.max(6, Math.min(122, Math.round((pAct / Math.max(1.0, pCl)) * 122 * 3.0)));
+          actBar.setAttribute("y", String(168 - barH));
+          actBar.setAttribute("height", String(barH));
+        }
+        if (pclLbl) pclLbl.textContent = `${pCl.toFixed(1)} kPa`;
+        if (pactLbl) pactLbl.textContent = `${pAct.toFixed(1)} kPa`;
+        if (qLbl) qLbl.textContent = `${qTot.toFixed(2)} kPa`;
+        return;
+      }
 
       const rise = v0;
       const asym = v1;
