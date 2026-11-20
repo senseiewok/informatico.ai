@@ -1,7 +1,7 @@
 {
-  "version": "6.0.0",
-  "title": "Informatico.ai — 6-Volume, 48-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
-  "total_folios": 48,
+  "version": "7.0.0",
+  "title": "Informatico.ai — 7-Volume, 49-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
+  "total_folios": 49,
   "pillars": {
     "engineering": [
       {
@@ -1451,6 +1451,120 @@
           "contrasting": 0,
           "retracted": false,
           "summary": "Scite index entry for Ames, Xu, Grizzle & Tabuada 2017 (DOI 10.1109/TAC.2016.2638961), checked 2026-11-08: 3,385 citing publications (8 supporting, 2,361 mentioning, 0 contrasting) and no retraction notice. These counts describe that one paper, not this folio."
+        }
+      },
+      {
+        "folio_id": "E.13",
+        "slug": "e13",
+        "pillar": "engineering",
+        "category_code": "E",
+        "parent_folios": [
+          "E.01",
+          "E.05"
+        ],
+        "lineage_mode": "CONTINUATION · Continues E.01 Porous Continuum & E.05 Terzaghi Effective Stress",
+        "title": "Biot 3D Poroelasticity, Skempton Undrained Coupling & Mohr–Coulomb Fault Slip Margin in Geologic CO2 Storage",
+        "subtitle": "Continuing Folio E.01's porous percolation and E.05's 1D Terzaghi consolidation: an illustrative geomechanical study coupling Biot's 3D effective-stress coefficient α = 1 − K_d/K_s, Rice–Cleary Skempton pore-pressure response B, and cohesionless Mohr–Coulomb fault slip tendency τ/σ'_n across sedimentary storage basins and critically stressed crystalline basement.",
+        "date_published": "2026-11-20",
+        "date_redated": "2026-11-20",
+        "current_edition": "REV 1.0",
+        "status_badge": "POROELASTIC GEOMECHANICS · REV 1.0",
+        "primary_kernel": "skills/engineering/e13/verify_e13_biot_poroelasticity.py",
+        "governing_law": "α = 1 − K_d / K_s · Δp_u = +B Δσ_mean · |τ| / (σ_n − α_fault(p_0 + Δp_inj)) < μ_f",
+        "colophon": {
+          "identifier": "E.13 · Biot Poroelasticity & Fault Slip Margin · REV 1.0",
+          "kernels": "Biot 3D Consolidation (1941) · Rice–Cleary Skempton B (1976) · Mohr–Coulomb Fault Slip Margin",
+          "benchmarks": "Model values (sedimentary k_0 = 0.72, Δp_inj = 4.5 MPa): α = 0.667 · B = 0.394 (brine) / 0.053 (CO2) · τ/σ'_n = 0.404 < 0.60 · Δp_crit = 9.40 MPa",
+          "bridge": "Continues E.01/E.05"
+        },
+        "sliders": [
+          {
+            "label": "Injection Reservoir Overpressure (Δp_inj)",
+            "min": 0.0,
+            "max": 20.0,
+            "step": 0.5,
+            "value": 4.5,
+            "unit": " MPa"
+          },
+          {
+            "label": "Horizontal-to-Vertical Stress Ratio (k_0 = σ_h / σ_v)",
+            "min": 0.56,
+            "max": 1.2,
+            "step": 0.02,
+            "value": 0.72,
+            "unit": "k_0 = "
+          }
+        ],
+        "steps": [
+          "Stage 1 (Biot–Willis 3D Effective Stress, Continuing E.05): Whereas Terzaghi's 1D soil limit treats solid grains as incompressible (α → 1), stiff porous sandstone with drained bulk modulus K_d = 12.0 GPa and solid mineral grain modulus K_s = 36.0 GPa carries part of the hydrostatic stress in its grain skeleton, yielding α = 1 − K_d / K_s = 0.667 (Biot 1941, DOI 10.1063/1.1712886; Biot & Willis 1957, DOI 10.1115/1.4011606).",
+          "Stage 2 (Skempton Undrained Pore-Pressure Response B): Under compression-positive geomechanics (Δp_u = +B Δσ_mean), Skempton (1954, DOI 10.1680/geot.1954.4.4.143) and Rice & Cleary (1976, DOI 10.1029/RG014i002p00227) write B = (1/K_d − 1/K_s) / [1/K_d − 1/K_s + φ(1/K_f − 1/K_s)]. For φ = 0.20 and brine bulk modulus K_f = 2.2 GPa, B = 0.394; replacing brine with compressible supercritical CO2 (K_f = 0.20 GPa) lowers B to 0.053 in the folio model.",
+          "Stage 3 (Mohr–Coulomb Fault Slip Margin & Stress-Regime Contrast): On a cohesionless fault dipping 60° (fault-plane angle β = 30° from vertical σ_v, normal 30° from σ_h; σ_v = 50.0 MPa, hydrostatic p_0 = 20.0 MPa, μ_f = 0.60, α_fault = 1.0, and uncoupled total stress σ_h = k_0 σ_v), a sedimentary stress ratio k_0 = 0.72 gives σ_n = 39.50 MPa, τ = 6.062 MPa, and Δp_crit = 9.40 MPa; at Δp_inj = 4.5 MPa, slip tendency τ/σ'_n = 0.404 stays below 0.60. In a critically stressed crystalline basement (k_0 = 0.60), Δp_crit drops to 0.57 MPa and Δp_inj = 4.5 MPa raises τ/σ'_n to 0.825 (> 0.60).",
+          "Stage 4 (Open Hypothesis, Tier T1–T2, and Falsification Condition): Hypothesis (Tier T1–T2): in stiff porous sedimentary storage reservoirs where stress ratio k_0 keeps Δp_inj < Δp_crit and compressible supercritical CO2 lowers undrained B while keeping overpressure moderate (Vilarrasa & Carrera 2015, DOI 10.1073/pnas.1413284112), fault slip tendency remains below μ_f; this hypothesis is falsified in any site where pore pressure reaches critically stressed basement faults (Zoback & Gorelick 2012, DOI 10.1073/pnas.1202473109; Ellsworth 2013, DOI 10.1126/science.1225942), drives σ'_n ≤ 0, or where coupled poroelastic stress transfer pushes |τ|/σ'_n ≥ μ_f."
+        ],
+        "readouts": [
+          {
+            "label": "Biot α & Skempton B (Brine / CO2)",
+            "value": "α = 0.667 · B = 0.394 / 0.053 (model)"
+          },
+          {
+            "label": "Fault Slip Tendency (|τ| / σ'_n)",
+            "value": "0.404 < 0.60 (Δp_crit = 9.40 MPa, model)"
+          },
+          {
+            "label": "Shear & Hydraulic Margins",
+            "value": "Slip +4.90 MPa · Tensile +11.50 MPa (model)"
+          },
+          {
+            "label": "Mohr–Coulomb Fault Status",
+            "value": "BELOW SLIP THRESHOLD (model, uncoupled σ_h)"
+          }
+        ],
+        "spec_plate": {
+          "division": "SUBSURFACE GEOMECHANICS / CSI 31 00 00 (FILING LABEL · DESIGN STUDY)",
+          "title": "Deep Saline Aquifer CO2 Storage Reservoir & Caprock Pressure-Management Envelope",
+          "body": "Illustrative geomechanical screening study, not a site-specific reservoir permit or injection design: tracks Biot matrix coupling (α = 0.667, passive lateral stress-path index η_poro = 0.444), cohesionless Mohr–Coulomb fault slip tendency (α_fault = 1.0, μ_f = 0.60, holding σ_h = k_0 σ_v uncoupled from Δp_inj), and minimum-principal-stress hydraulic fracture margin (min(σ_v, σ_h) − p_0 − Δp_inj = 11.50 MPa at defaults). Field characterization and coupled 3D multiphase flow-geomechanics modeling are required for any real injection project.",
+          "meta": "Primary anchors: Biot 1941 (DOI 10.1063/1.1712886) · Rice & Cleary 1976 (DOI 10.1029/RG014i002p00227) · Zoback & Gorelick 2012 (DOI 10.1073/pnas.1202473109) · Vilarrasa & Carrera 2015 (DOI 10.1073/pnas.1413284112) · Model values, not field measurements"
+        },
+        "sidenote_1": {
+          "kicker": "SIDENOTE E.13-A · OPEN SCIENTIFIC DEBATE · SEDIMENTARY RESERVOIRS VS. BASEMENT FAULTS",
+          "body": "Zoback & Gorelick (2012, DOI 10.1073/pnas.1202473109) warned that large-scale geologic carbon dioxide injection into brittle continental-interior rocks carries a substantial probability of triggering small-to-moderate earthquakes that could threaten caprock seal integrity. Vilarrasa & Carrera (2015, DOI 10.1073/pnas.1413284112; reply DOI 10.1073/pnas.1511302112) countered that soft sedimentary basins are less critically stressed than crystalline basement, while brine displacement and dissolution limit overpressure. Ellsworth (2013, DOI 10.1126/science.1225942) documented how deep wastewater injection near basement faults drove midcontinent seismicity, showing why basal fault proximity governs operational risk."
+        },
+        "sidenote_2": {
+          "kicker": "SIDENOTE E.13-B · MATRIX α, FAULT α_fault & UNCOUPLED TOTAL-STRESS CAVEAT",
+          "body": "Intact porous sandstone shares load across mineral grain contacts (α = 1 − K_d/K_s = 0.667), giving a lateral poroelastic stress-path index η_poro = α(1 − 2ν)/(1 − ν) = 0.444 at ν = 0.25. Along a damaged or open fault surface, conservative Mohr–Coulomb screening uses α_fault = 1.0 consistently in both σ'_n = σ_n − α_fault(p_0 + Δp_inj) and Δp_crit. In this reduced closed-form model, η_poro is reported passively while total horizontal stress remains uncoupled at σ_h = k_0 σ_v rather than adding η_poro Δp_inj."
+        },
+        "skill": {
+          "filename": "biot-poroelasticity-fault-slip-SKILL.md",
+          "name": "biot-poroelasticity-fault-slip",
+          "description": "AI-agnostic civil geomechanics skill for Biot 3D poroelasticity (alpha = 1 - K_d/K_s), Rice-Cleary Skempton B coupling, and cohesionless Mohr-Coulomb fault slip margin under subsurface fluid injection.",
+          "rules": [
+            "Compute intact-matrix Biot-Willis coefficient alpha = 1 - K_d / K_s (requiring 0 < K_d < K_s) and Skempton undrained coefficient B = (1/K_d - 1/K_s) / [1/K_d - 1/K_s + phi*(1/K_f - 1/K_s)] under compression-positive sign convention delta_p_u = +B * delta_sigma_mean.",
+            "Keep fault-plane Terzaghi effective stress alpha_fault = 1.0 distinct from matrix alpha, and apply alpha_fault consistently in both sigma_n_eff = sigma_n - alpha_fault*(p_0 + delta_p_inj) and critical_delta_p = (sigma_n - |tau|/mu_f)/alpha_fault - p_0; state explicitly when total stress sigma_h is held uncoupled from eta_poro * delta_p_inj.",
+            "Check both shear slip tendency |tau| / sigma_n_eff < mu_f and tensile hydraulic margin min(sigma_v, sigma_h) - (p_0 + delta_p_inj) > 0; treat sigma_n_eff <= 0 explicitly as tensile failure with undefined shear slip tendency.",
+            "Frame injection stability as a site-dependent Tier T1-T2 hypothesis bounded by stress ratio k_0 and basement fault proximity; never extrapolate closed-form screening outputs into site-specific permit claims."
+          ]
+        },
+        "revisions": [
+          {
+            "edition": "REV 1.0",
+            "date": "2026-11-20",
+            "summary": "REV 1.0 (Published 2026-11-20): Volume VII Civil & Geomechanical Engineering monograph continuing Folios E.01 & E.05 via Biot 3D poroelasticity (1941), Skempton & Rice–Cleary undrained pore-pressure coupling (1954, 1976), and Mohr–Coulomb fault slip stability across the Zoback–Gorelick (2012) vs. Vilarrasa–Carrera (2015) geologic CO2 storage debate.",
+            "opus": "Verification note: all eight DOIs in this folio were checked against Crossref and the Scite index on 2026-11-20 with zero retraction notices; all numerical outputs are recomputed offline by skills/engineering/e13/verify_e13_biot_poroelasticity.py and represent illustrative closed-form model outputs under uncoupled total horizontal stress rather than field measurements."
+          }
+        ],
+        "volume": 7,
+        "volume_code": "VOL. 07",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,700 WORDS",
+        "scite": {
+          "doi": "10.1063/1.1712886",
+          "fetched_on": "2026-11-20",
+          "citing_publications": 4896,
+          "supporting": 29,
+          "mentioning": 4865,
+          "contrasting": 2,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index entry for Biot 1941, \"General Theory of Three-Dimensional Consolidation\" (Journal of Applied Physics, DOI 10.1063/1.1712886), fetched 2026-11-20: 4,896 citing records (29 supporting, 4,865 mentioning, 2 contrasting) and no retraction notice. These counts describe that foundational paper, not this folio."
         }
       }
     ],
@@ -5725,7 +5839,7 @@
       }
     ]
   },
-  "total_volumes": 6,
+  "total_volumes": 7,
   "volumes": [
     {
       "volume": 1,
@@ -5839,6 +5953,18 @@
         "p12",
         "m11",
         "m12"
+      ]
+    },
+    {
+      "volume": 7,
+      "code": "VOL. 07",
+      "roman": "Volume VII",
+      "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY, SKEMPTON COUPLING & FAULT SLIP MARGINS · 1 FOLIO",
+      "title": "Biot 3D Poroelasticity, Skempton Undrained Coupling & Mohr–Coulomb Fault Slip Margin in Geologic CO2 Storage",
+      "subtitle": "Volume VII inaugural monograph (E.13) continuing E.01 and E.05 to examine Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds across sedimentary basins and crystalline basement.",
+      "cadence": "Verifier-gated Living Edition release",
+      "folios": [
+        "e13"
       ]
     }
   ]

@@ -1216,6 +1216,26 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
             ("GIRO", "Giro de las turbinas de acero, cuyo momento mecánico mantenía la frecuencia cerca de 60 ciclos por segundo y que disminuye con la energía solar y las baterías", "Acto I"),
         ],
     },
+    "e13": {
+        "title_en": "Folio E.13 · Biot 3D Poroelasticity & Fault Slip Margin Crossword",
+        "title_es": "Folio E.13 · Crucigrama de Poroelasticidad de Biot y Fallas",
+        "en": [
+            ("BIOT", "Maurice, who published the 3D consolidation theory in 1941 linking rock skeleton strain and pore fluid pressure", "Act I"),
+            ("SKEMPTON", "Geotechnical pioneer behind the undrained pore-pressure coefficient B = 0.394 in brine-saturated sandstone", "Act I"),
+            ("FAULT", "Planar rock discontinuity whose cohesionless slip tendency |tau|/sigma'_n stays below 0.60 at sedimentary k_0 = 0.72", "Act III"),
+            ("BRINE", "Saline formation water with bulk modulus 2.2 GPa; displacing it with supercritical CO2 drops B to 0.053 in the model", "Act II"),
+            ("STRESS", "Normal and shear traction across a fault; the ratio k_0 = sigma_h / sigma_v separates sedimentary basins from basement", "Act III"),
+            ("PORE", "Fluid-filled void space in sandstone whose pressure opposes clamping stress across mineral contacts and faults", "Act I"),
+        ],
+        "es": [
+            ("BIOT", "Físico que en 1941 formuló la teoría tridimensional de consolidación acoplando esqueleto rocoso y presión de poro", "Acto I"),
+            ("FALLA", "Discontinuidad en la roca cuya tendencia al deslizamiento sube al caer el esfuerzo normal efectivo en el modelo", "Acto III"),
+            ("PORO", "Cavidad en la arenisca cuya presión de fluido empuja hacia afuera frente al peso de la sobrecarga", "Acto I"),
+            ("ROCA", "Medio poroso rígido cuyo módulo drenado K_d = 12 GPa y módulo mineral K_s = 36 GPa dan alfa = 0.667", "Acto II"),
+            ("SELLO", "Estrato superior de baja permeabilidad sobre el acuífero salino en el almacenamiento geológico de CO2", "Acto I"),
+            ("ARENA", "Roca sedimentaria porosa (arenisca) menos críticamente esforzada que el basamento cristalino en el modelo", "Acto III"),
+        ],
+    },
     "a11": {
         "title_en": "Folio A.11 · 3D Polyhedral Graphic Statics, Airy Stress & Guastavino Vaults Crossword",
         "title_es": "Folio A.11 · Crucigrama de Estática Gráfica Poliédrica 3D y Bóvedas sin Acero",

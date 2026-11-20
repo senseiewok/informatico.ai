@@ -1674,8 +1674,10 @@ export function initPlateSolvers(scope = document) {
     engPhiInput.dataset.bound = "true";
     const updateEng = () => {
       const slug = getActiveSlug() || "e01";
-      const v0 = parseFloat(engPhiInput.value) || 0.72;
-      const v1 = parseFloat(engRadiusInput.value) || 12.0;
+      const p0 = parseFloat(engPhiInput.value);
+      const p1 = parseFloat(engRadiusInput.value);
+      const v0 = Number.isFinite(p0) ? p0 : 0.72;
+      const v1 = Number.isFinite(p1) ? p1 : 12.0;
 
       const phiLabel = document.getElementById("tp-eng-phi-val");
       const radLabel = document.getElementById("tp-eng-radius-val");
@@ -1824,6 +1826,63 @@ export function initPlateSolvers(scope = document) {
         if (outR2) outR2.textContent = `+${(f - fTrip).toFixed(2)} Hz above 59.1 Hz trip (model)`;
         if (percOut) percOut.textContent = filterActive ? `ACTIVE · +${extraMw} MW requested (model)` : "IDLE · constraint slack (model)";
         if (percBox) percBox.setAttribute("data-alert", rocofOk && !filterActive ? "false" : "true");
+        return;
+      }
+      if (slug === "e13") {
+        // Reduced model of Folio E.13 (Biot 3D poroelasticity, Skempton B, Mohr-Coulomb fault slip):
+        // K_d = 12.0 GPa, K_s = 36.0 GPa, phi = 0.20, K_f(brine) = 2.2 GPa, K_f(CO2) = 0.20 GPa,
+        // sigma_v = 50.0 MPa, p_0 = 20.0 MPa, beta = 30 deg, mu_f = 0.60, alpha_fault = 1.0 (uncoupled sigma_h = k_0 * sigma_v).
+        const deltaP = Number.isFinite(p0) ? Math.max(0.0, p0) : 4.5;
+        const k0 = Number.isFinite(p1) ? Math.max(0.1, p1) : 0.72;
+        if (phiLabel) phiLabel.textContent = `${deltaP.toFixed(1)} MPa`;
+        if (radLabel) radLabel.textContent = `k_0 = ${k0.toFixed(2)}`;
+        if (inlinePhi) inlinePhi.textContent = `Δp_inj = ${deltaP.toFixed(1)} MPa`;
+        const kd = 12.0;
+        const ks = 36.0;
+        const phiP = 0.20;
+        const alpha = 1.0 - kd / ks;
+        const cDrain = 1.0 / kd - 1.0 / ks;
+        const bBrine = cDrain / (cDrain + phiP * (1.0 / 2.2 - 1.0 / ks));
+        const bCo2 = cDrain / (cDrain + phiP * (1.0 / 0.20 - 1.0 / ks));
+        const sigmaV = 50.0;
+        const sigmaH = k0 * sigmaV;
+        const sigma3 = Math.min(sigmaV, sigmaH);
+        const betaRad = (30.0 * Math.PI) / 180.0;
+        const sigmaN = 0.5 * (sigmaV + sigmaH) - 0.5 * (sigmaV - sigmaH) * Math.cos(2.0 * betaRad);
+        const tau = Math.abs(0.5 * (sigmaV - sigmaH) * Math.sin(2.0 * betaRad));
+        const p0Hyd = 20.0;
+        const muF = 0.60;
+        const totalP = p0Hyd + deltaP;
+        const sigmaNEff = sigmaN - totalP;
+        const dpCrit = sigmaN - tau / muF - p0Hyd;
+        const slipMargin = dpCrit - deltaP;
+        const tensileMargin = sigma3 - totalP;
+        const tensileSafe = sigmaNEff > 0.0 && tensileMargin > 0.0;
+        const slipTend = sigmaNEff > 0.0 ? tau / sigmaNEff : Infinity;
+        const slipSafe = sigmaNEff > 0.0 && slipTend < muF;
+        if (kappaOut) kappaOut.textContent = `α = ${alpha.toFixed(3)} · B = ${bBrine.toFixed(3)} / ${bCo2.toFixed(3)} (model)`;
+        if (deffOut) {
+          const slipText = slipTend.toFixed(3) === "0.600" ? slipTend.toFixed(4) : slipTend.toFixed(3);
+          deffOut.textContent = sigmaNEff <= 0.0
+            ? `σ'_n ≤ 0 · tensile breach (Δp_crit = ${dpCrit.toFixed(2)} MPa, model)`
+            : `${slipText} ${slipSafe ? "<" : "≥"} 0.60 (Δp_crit = ${dpCrit.toFixed(2)} MPa, model)`;
+        }
+        const fmtSigned = (val) => `${val >= 0.0 ? "+" : ""}${val.toFixed(2)}`;
+        if (outR2) outR2.textContent = `Slip ${fmtSigned(slipMargin)} MPa · Tensile ${fmtSigned(tensileMargin)} MPa (model)`;
+        if (percOut) {
+          percOut.textContent = !tensileSafe
+            ? "TENSILE HYDRAULIC BREACH (model, uncoupled σ_h)"
+            : !slipSafe
+              ? "ABOVE MOHR–COULOMB SLIP THRESHOLD (model, uncoupled σ_h)"
+              : "BELOW SLIP THRESHOLD (model, uncoupled σ_h)";
+        }
+        if (percBox) percBox.setAttribute("data-alert", tensileSafe && slipSafe ? "false" : "true");
+        if (engPoint) {
+          const cx = Math.max(48, Math.min(330, Math.round(40 + Math.max(0, sigmaNEff) * 6.4)));
+          const cy = Math.max(38, Math.min(182, Math.round(184 - tau * 9.5)));
+          engPoint.setAttribute("cx", String(cx));
+          engPoint.setAttribute("cy", String(cy));
+        }
         return;
       }
 
