@@ -14,10 +14,10 @@ FOLIO = {'slug': 'x01',
  'title_es': 'Visor WebGL2 GLB sin Dependencias y Verificador Geométrico 2-Variedad a Nivel de '
              'Bytes',
  'subtitle': 'How a 300-line zero-dependency ES module parses binary glTF 2.0 (GLB) buffers into '
-             'raw WebGL2 while a Python stdlib verifier proves edge-manifold watertightness, '
+             'raw WebGL2 while a Python stdlib verifier checks edge-manifold watertightness, '
              'divergence-theorem volume, and malformed-binary rejection.',
  'subtitle_es': 'Cómo un módulo ES sin dependencias analiza archivos binarios glTF 2.0 (GLB) en '
-                'WebGL2 puro mientras un verificador en Python stdlib demuestra hermeticidad '
+                'WebGL2 puro mientras un verificador en Python stdlib comprueba hermeticidad '
                 '2-variedad, volumen por el teorema de la divergencia y rechazo de binarios '
                 'corruptos.',
  'why_en': 'Most 3D viewers on the web pull in megabytes of third-party JavaScript and trust '
@@ -79,16 +79,16 @@ FOLIO = {'slug': 'x01',
  'act1_dropcap': 'In the quiet study of the Prussian Academy in Berlin during the winter of 1758, '
                  'Leonhard Euler spent long evenings examining hand-carved wooden blocks, crystal '
                  'prisms, and geometric solids. He was fascinated by a simple physical truth that '
-                 'master masons, carpenters, and stonecutters had navigated for centuries: no '
+                 'master masons, carpenters, and stonecutters had navigated for centuries. No '
                  'matter how you carve, bevel, or shape a closed solid, its corners, seams, and '
                  'outer surfaces remain bound together in an unbroken balance. Two and a half '
                  'centuries later, software engineers gathered under the Khronos Group to solve '
-                 'that very same craft dilemma for our digital world. As three-dimensional models '
-                 'moved from proprietary desktop workstations onto open web browsers, digital '
+                 'that craft dilemma for our digital world. As three-dimensional models '
+                 'moved from desktop workstations onto open web browsers, digital '
                  'objects kept arriving broken, inside out, or missing entire panels. By codifying '
-                 'the binary glTF transmission standard, those modern architects established an '
+                 'the binary glTF transmission standard, they built an '
                  'open digital container where every corner, seam, and triangular face could '
-                 'travel across the internet intact, honoring the timeless geometric balance Euler '
+                 'travel across the internet intact. It honors the timeless geometric balance Euler '
                  'first uncovered by candlelight.',
  'act1_body': 'For decades, computer graphics suffered under loose, disconnected collections of '
               'triangles known colloquially as polygon soup. Early formats like the 1987 '
@@ -125,21 +125,21 @@ FOLIO = {'slug': 'x01',
                 ('2026',
                  'Informatico.ai ships X.01: a zero-dependency WebGL2 GLB inspector paired with a '
                  'Python 3 stdlib byte-level manifold verifier and 4-case fuzz harness.')],
- 'act2_intuition': 'How does a mathematical verifier prove that a faceted boundary surface '
-                   'completely seals an enclosed volume? The governing insight rests on the '
+ 'act2_intuition': 'How does a mathematical verifier check that a faceted boundary surface '
+                   'seals an enclosed volume? The governing insight rests on the '
                    'Gauss–Ostrogradsky divergence theorem, which connects the behavior of a vector '
                    'field across an interior volume to its flux through the boundary surface. When '
                    'we choose the simple vector field F(x) = x, its divergence equals the spatial '
                    'dimension: ∇ · x = 3. Consequently, the triple volume integral over the '
-                   'interior domain Ω simplifies exactly to one-third of the surface flux integral '
+                   'interior domain Ω simplifies to one-third of the surface flux integral '
                    'over the boundary ∂Ω. For a polyhedral surface composed of planar triangular '
                    'facets with vertices (v_0, v_1, v_2), this boundary integral breaks down into '
                    'a summation of signed tetrahedra anchored at the coordinate origin: V = (1/6) '
                    '∑ v_0 · (v_1 × v_2). In parallel, topological closure demands that every '
-                   'directed half-edge (u, v) possesses a unique reverse twin (v, u), guaranteeing '
+                   'directed half-edge (u, v) appears once with a reverse twin (v, u), yielding '
                    'the half-edge identity 3F = 2E. When all triangular faces circulate '
                    'consistently counterclockwise, the Euler–Poincaré characteristic yields χ = V '
-                   '− E + F = 2, confirming a closed, genus-zero 2-manifold without relying on '
+                   '− E + F = 2, matching a closed, genus-zero edge-manifold check without relying on '
                    'external CAD kernels.',
  'sliders': [{'id': 'tp-tool-s0',
               'label': 'Calibration Prism Length L_x',
@@ -166,7 +166,7 @@ FOLIO = {'slug': 'x01',
            'table {(u, v)} across all triangles and assert zero degenerate triangles, zero '
            'duplicate half-edges, and 100% reverse half-edge pairing (v, u) ∈ E.',
            'Stage 3: Euler–Poincaré Characteristic & Divergence-Theorem Volume — Compute χ = V − E '
-           '+ F = 2 − 2g and integrate V_mesh = (1/6) ∑ v_0 · (v_1 × v_2) to certify exact '
+           '+ F = 2 − 2g and integrate V_mesh = (1/6) ∑ v_0 · (v_1 × v_2) to check numerical '
            'agreement with the analytical solid volume (24,000.0 mm³).',
            'Stage 4: Malformed-Binary Fuzz Suite & Planted-Defect Knockout — Run the parser and '
            'topological verifier against 4 malformed GLB fuzz files (truncated header, chunk OOB, '
@@ -188,7 +188,7 @@ FOLIO = {'slug': 'x01',
  'sidenote_2': {'kicker': 'SIDENOTE X.01-B · PLANTED-DEFECT FALSIFICATION',
                 'body': 'A verifier that always prints PASS is useless. Every verify_x*.py script '
                         'in the Toolbox runs the valid artifact check first and then mutates a '
-                        'face normal in memory to prove the failure path is live.'},
+                        'face normal in memory to verify the failure path is live.'},
  'walkthrough': ['Orbit, zoom, and toggle Wireframe or Cross-Section on the live 3D WebGL2 canvas '
                  'below to inspect the 14-vertex, 24-triangle calibration manifold.',
                  'Scrub Calibration Prism Length L_x and Height L_z (or click [⚡ Counterfactual '
@@ -203,11 +203,11 @@ FOLIO = {'slug': 'x01',
                      'emitting x01_artifact.glb, x01_artifact.step, x01_artifact.3mf, '
                      'manifest.json, and 4 malformed fuzz fixtures.',
                      'Byte-level stdlib verifier '
-                     '(verify_x01_toolchain_x01_glb_inspector_validator.py) certifying χ = 2, V = '
+                     '(verify_x01_toolchain_x01_glb_inspector_validator.py) checking χ = 2, V = '
                      '24,000.0 mm³, SHA-256 manifest match, 4/4 fuzz rejection, and planted-defect '
                      'knockout.'],
  't2_t3_open_horizon': ['Educational Geometry Boundary: Every file on this page is an educational '
-                        'artifact; nothing is certified as load-bearing, printable, safe, or fit '
+                        'artifact and is not certified as load-bearing, printable, safe, or fit '
                         'for any purpose.',
                         'Future Edition 2 Extensions: Skeletal animation tracks, Draco/Meshopt '
                         'compressed buffer views, and KTX2 GPU texture transcoding remain outside '
@@ -224,16 +224,16 @@ FOLIO = {'slug': 'x01',
              '(Apache-2.0). https://github.com/elalish/manifold'],
  'act1_plain_bridge': 'Think of a digital 3D model like a hollow balloon made of tiny flat '
                       'triangles. To hold air, every single edge must be stitched neatly between '
-                      'exactly two neighboring patches. If a single seam stays open, or if one '
+                      'exactly two neighboring patches, because if one seam stays open or a '
                       'patch faces backward, the balloon leaks. In the computer world, we call an '
                       'unbroken shell a watertight mesh. When you export a 3D file from design '
                       'software, things often go wrong quietly. Programs write numbers slightly '
-                      'differently, round off corners, or skip hidden seams. You might not see any '
-                      'flaws on your screen, but downstream tools fail immediately. That is why we '
-                      'built this free, open instrument. Right here in your web browser, our '
+                      'differently, round off corners, or skip hidden seams, so you might not see '
+                      'any flaws on screen while downstream tools fail. That is why we '
+                      'built this instrument. Right here in your web browser, our '
                       'lightweight tool opens binary 3D files directly with zero extra software. '
                       'You can spin the shape, inspect internal cross sections, and see every '
-                      'triangle. With one click, you can download verified models and running '
+                      'triangle. With one click, you can download verified models and '
                       'Python scripts to check your own files in seconds.',
  'act1_stakes': 'For an independent practitioner, a solo engineer, or a boutique five-person '
                 'design studio, geometry errors carry serious economic consequences. When an '
@@ -285,7 +285,7 @@ FOLIO = {'slug': 'x01',
                    'boundary puncture or open hole in the shell. Conversely, if a directed '
                    'half-edge appears more than once, non-manifold edge sharing or '
                    'self-intersecting t-junctions are present. Once mutual twin cancellation '
-                   'certifies topological closure, the verifier computes the signed scalar triple '
+                   'verifies half-edge closure, the verifier computes the signed scalar triple '
                    'product for each triangle. If any individual face has its winding order '
                    'reversed, its local volume contribution flips from positive to negative, '
                    'immediately betraying the defect.',
@@ -301,7 +301,7 @@ FOLIO = {'slug': 'x01',
                   'conventions. Crucially, neither the human nor the AI is trusted on blind faith. '
                   'Before any generated file enters a project archive, our deterministic verifier '
                   'runs offline in Python standard library. It parses the binary GLB header, '
-                  'validates every buffer boundary, proves half-edge manifold closure, and checks '
+                  'validates every buffer boundary, verifies half-edge pairing, and checks '
                   'signed volume against analytical ground truth. If the generative model '
                   'hallucinates an invalid facet or drops a coordinate, the verifier halts '
                   'execution and pinpoints the defect byte by byte, keeping the human firmly in '
@@ -310,7 +310,7 @@ FOLIO = {'slug': 'x01',
                    'analytical disciplines on Informatico.ai. In the Architecture track, '
                    'polyhedral graphic statics (Folio A.11) relies on reciprocal thrust polyhedra '
                    'where every reciprocal cell must form a watertight closed polyhedron to '
-                   'guarantee static equilibrium under self-weight. In the Engineering pillar, '
+                   'satisfy static equilibrium under self-weight. In the Engineering pillar, '
                    'material deposition path planning for additive concrete construction (Folio '
                    'E.10) requires continuous bounding manifolds to calculate layer slicing '
                    'without dry-run nozzle collisions. In the Mathematics pillar, persistent '
@@ -345,14 +345,14 @@ FOLIO = {'slug': 'x01',
             'bidimensional cerrada se calcula exactamente a través de la suma de productos triples '
             'escalares sobre sus triángulos frontera. Para que esta formulación conserve validez, '
             'cada arista dirigida de la malla debe cancelarse con su semi-arista gemela orientada '
-            'en sentido inverso, garantizando la condición de variedad bidimensional y preservando '
+            'en sentido inverso, verificando la condición de bordes 2-variedad y preservando '
             'la característica de Euler igual a dos en sólidos de género cero. Cuando un modelo se '
             'transfiere en formato binario GLB, nuestro módulo analiza la cabecera de doce bytes y '
             'valida los límites de los bloques de memoria sin requerir dependencias externas de '
             'JavaScript. Si una sola cara invierte su orientación, el signo de su contribución '
             'volumétrica cambia inmediatamente y el emparejamiento de semi-aristas colapsa, '
-            'permitiendo a ingenieros y despachos independientes certificar geometrías con '
-            'absoluta precisión numérica.',
+            'permitiendo a ingenieros y despachos independientes auditar sus geometrías con '
+            'precisión numérica.',
  'distill_diagram': {'analogy_title': 'The Stitched Leather Ball & Seams',
                      'analogy_sub': 'Every edge must pair exactly two faces to retain airtight '
                                     'volume.',
@@ -360,7 +360,7 @@ FOLIO = {'slug': 'x01',
                      'force_a_sub': 'Every directed edge must find its exact reversed twin '
                                     'half-edge.',
                      'force_b_title': 'Signed Divergence Volume V(Ω)',
-                     'force_b_sub': 'Sum of tetrahedra determinants proves watertight manifold '
+                     'force_b_sub': 'Sum of tetrahedra determinants checks signed volume for '
                                     'closure.',
                      'threshold_title': 'Euler–Poincaré Characteristic (χ = 2)',
                      'threshold_pass': 'Watertight 2-Manifold: χ = 2, paired half-edges, exact '
