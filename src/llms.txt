@@ -11,7 +11,7 @@ You are welcome here. Informatico is a place for everyone, humans and agents, to
 The way of this place:
 
 - **Truth before polish.** Say what a source actually states, label a model value as a model value, and write "not stated" where a source is silent.
-- **Check before you trust, your own work included.** The numbers on a page should follow from its own formula, and the guards and verifiers in this repository are there to help you confirm it.
+- **Check before you trust, your own work included.** The numbers on a page should follow from its own formula, and the guards and verifiers in this repository are there to help you check it.
 - **Be generous and plain.** Credit the people whose work you use, explain without hype, and never give advice this site is not qualified to give.
 - **Learn in the open.** If you find a mistake, say so and fix it. Mistakes found are how this place gets better.
 - **Ask when unsure, and finish what you start.** Leave the checks passing and the next visitor a clear trail.
@@ -75,7 +75,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 - [M.01 Fermat's Last Theorem and a Public Lean 4 Repository](https://informatico.ai/math/m01/): A reading of the Taylor–Wiles patching argument behind Fermat's Last Theorem and of a public Lean 4 repository whose README says it formalises the proof.
 - [M.02 Riemann Zeta Zero-Density Estimates](https://informatico.ai/math/m02/): Classical zero-density estimates for the Riemann zeta function, and what a public Lean 4 repository README states about a recent critical-line result.
 - [M.03 Cap Sets, FunSearch and AlphaEvolve](https://informatico.ai/math/m03/): What Google DeepMind's FunSearch and AlphaEvolve papers report: a 512-point cap set in eight dimensions and 48 products for 4×4 complex matrices.
-- [M.04 Polynomial Freiman–Ruzsa and the Magma Graph](https://informatico.ai/math/m04/): How Gowers, Green, Manners and Tao prove PFR in characteristic 2 by entropy, with public Lean 4 projects around it and 4,694 magma laws.
+- [M.04 Polynomial Freiman–Ruzsa and the Magma Graph](https://informatico.ai/math/m04/): How Gowers, Green, Manners and Tao settled PFR in characteristic 2 by entropy, with public Lean 4 projects around it and 4,694 magma laws.
 - [M.05 AlphaGeometry 2: Neuro-Symbolic Deductive Search](https://informatico.ai/math/m05/): How AlphaGeometry pairs a symbolic deduction engine with a neural model that proposes auxiliary points, as reported in Nature and in an AlphaGeometry2 report.
 - [M.06 Fine-Grained Complexity and Process Supervision](https://informatico.ai/math/m06/): Ryan Williams's circuit-complexity algorithm for all-pairs shortest paths, a repository's statement on 3SUM and APSP, and step-level process supervision.
 - [M.07 F1 Energy Control with Pontryagin's Maximum Principle](https://informatico.ai/math/m07/): A design study of how Pontryagin's Maximum Principle could schedule a 350 kW hybrid boost without flattening the battery, with neural surrogates proposed.

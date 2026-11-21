@@ -24,7 +24,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Stage 1: Dedalus Chebyshev–Fourier Spectral Rollout — Integrate viscous Burgers shock dynamics u_t + u u_x = ν u_xx (ν = 0.10) on N = 200 spatiotemporal collocation nodes.
 - Stage 2: Noisy Operator Library Assembly — Construct Θ(u) = [1, u, u_x, u·u_x, u_xx, u³] contaminated by sensor noise amplitude σ = 0.02.
 - Stage 3: PySINDy STLSQ Hard-Thresholding — Zero out all terms with |ξ_k| < λ = 0.05, pruning spurious weights [0.0036, -0.0044, 0.0030, 0.0050] to exact zero while retaining [-0.9992, 0.0996].
-- Stage 4: PySR Pareto MDL Selection — Evaluate L_MDL = (N/2) ln(MSE) + 0.45 C_tree across complexity levels C_tree ∈ {3, 6, 11}, certifying the knee at C_tree = 6 (L_MDL = -1360.8705 nats).
+- Stage 4: PySR Pareto MDL Selection — Evaluate L_MDL = (N/2) ln(MSE) + 0.45 C_tree across complexity levels C_tree ∈ {3, 6, 11}, checking the knee at C_tree = 6 (L_MDL = -1360.8705 nats).
 
 ## 4. Reference Results Computed by the Harness (T0/T1)
 - **Recovered PDE Support**: `['u*u_x', 'u_xx'] (2 / 6 active)`

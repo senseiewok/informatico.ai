@@ -14,7 +14,7 @@ A plain-text companion to the essay at https://informatico.ai/math/m12/ (`M.12 Â
 ## Rules the essay derives
 1. Configure Module-LWE over polynomial ring R_q = Z_q[X]/(X^256 + 1) with prime modulus q = 3329 and module rank k in {2, 3, 4} (ML-KEM-512/768/1024).
 2. Take decapsulation failure rates from FIPS 203 Table 1 (2^-138.8, 2^-164.8 and 2^-174.8 for ML-KEM-512/768/1024) and noise widths from Table 2 (eta1 = 3, 2, 2; eta2 = 2) rather than deriving them from a rule of thumb.
-3. Before citing a Lean file, confirm it exists in the repository, and report its README claims as the repository's statements unless you have built it yourself.
+3. Before citing a Lean file, check that it exists in the repository, and report its README claims as the repository's statements unless you have built it yourself.
 
 ## How it works, in four stages
 - Stage 1 (Shor's Quantum Period-Finding): Shor's 1994 algorithm would let a large fault-tolerant quantum computer (Folio P.11) find the period r of a^x mod N in time polynomial in log N, which would break RSA and elliptic-curve cryptography. No quantum computer able to do this for cryptographic key sizes has been reported.
