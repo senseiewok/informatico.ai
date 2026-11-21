@@ -266,6 +266,9 @@ def get_volume_spec(vol_num: int) -> dict:
     return VOLUMES_SPEC[0]
 
 
+SYNC_SIBLINGS = "--sync-siblings" in sys.argv
+
+
 def update_catalogs() -> dict:
     cat_path = ROOT / "src" / "data" / "magazine_catalog.json"
     catalog = json.loads(cat_path.read_text(encoding="utf-8"))
@@ -359,9 +362,13 @@ def update_catalogs() -> dict:
     catalog["total_folios"] = total
     cat_path.write_text(json.dumps(catalog, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
-    # Sync to sibling repos only when running directly in main repo (avoid dirtying main checkouts from a worktree)
+    # A build never writes outside this repository unless asked to. The sibling mirrors (for example
+    # ../math/folios/catalog.json) used to be rewritten on every build from the main checkout; whenever a mirror
+    # was behind, that left an uncommitted change in the sibling's main checkout, and the lab's scheduler skips
+    # every schedule that sees one. Pass --sync-siblings (from a main checkout) to refresh the mirrors on purpose,
+    # then commit the result in the sibling repository.
     sibling_map = {}
-    if ".worktrees" not in ROOT.parts:
+    if SYNC_SIBLINGS and ".worktrees" not in ROOT.parts:
         for p_name in ('math', 'physics', 'architecture', 'engineering'):
             cand1 = ROOT.parent / p_name / 'folios' / 'catalog.json'
             if cand1.parent.exists():
