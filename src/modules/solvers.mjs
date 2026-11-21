@@ -314,6 +314,7 @@ export function initUniversalSvgAndControlAnimations(scope = document) {
       // Capture primary schematic curves on folios without custom [data-*] curve handlers so sliders visibly morph them
       if (!isTwoPanelCf) {
         primaryDynamicCurves = Array.from(svg.querySelectorAll("path, polyline")).filter((el) => {
+          if (el.getAttribute("data-custom-curve") === "1") return false;
           const stroke = el.getAttribute("stroke") || "";
           return stroke.includes("var(--tp-") && !el.closest(".tp-svg-live-layer");
         });
@@ -1972,6 +1973,71 @@ export function initPlateSolvers(scope = document) {
         if (engPoint) {
           const cx = Math.max(48, Math.min(348, Math.round(48 + (psi / 120.0) * 300)));
           const cy = Math.max(36, Math.min(184, Math.round(184 - (Math.abs(sigmaS) / 70.0) * 144)));
+          engPoint.setAttribute("cx", String(cx));
+          engPoint.setAttribute("cy", String(cy));
+        }
+        return;
+      }
+      if (slug === "e15") {
+        // Reduced closed-form model of Folio E.15 (Bazant Type II Size Effect Law + Hillerborg FPZ):
+        // B*f'_t = 4.20 MPa, E' = 34.0 GPa, f'_t = 3.20 MPa, g(alpha_0) = 1.12, g'(alpha_0) = 3.80.
+        const dMm = Number.isFinite(p0) ? Math.max(10.0, p0) : 400.0;
+        const d0Mm = Number.isFinite(p1) ? Math.max(10.0, p1) : 220.0;
+        if (phiLabel) phiLabel.textContent = `${dMm.toFixed(1)} mm`;
+        if (radLabel) radLabel.textContent = `${d0Mm.toFixed(1)} mm`;
+        if (inlinePhi) inlinePhi.textContent = `D = ${dMm.toFixed(1)} mm`;
+        const bft = 4.20;
+        const epGpa = 34.0;
+        const gA0 = 1.12;
+        const gpA0 = 3.80;
+        const betaB = dMm / d0Mm;
+        const retRatio = 1.0 / Math.sqrt(1.0 + betaB);
+        const sigmaN = bft * retRatio;
+        const slope = -betaB / (2.0 * (1.0 + betaB));
+        const gf = (bft * bft * d0Mm * gA0) / epGpa;
+        const cf = (d0Mm * gA0) / gpA0;
+        const slopeText = Math.abs(slope) < 0.0005 ? "0.000" : slope.toFixed(3).replace("-", "−");
+        if (kappaOut) kappaOut.textContent = `β_B = ${betaB.toFixed(3)} · G_f = ${gf.toFixed(2)} N/m (model)`;
+        if (deffOut) deffOut.textContent = `σ_N = ${sigmaN.toFixed(3)} MPa (${(retRatio * 100.0).toFixed(1)}% of B f'_t, model)`;
+        if (outR2) outR2.textContent = `s = ${slopeText} · c_f = ${cf.toFixed(2)} mm (model)`;
+        if (percOut) {
+          percOut.textContent = betaB <= 0.15
+            ? "QUASI-PLASTIC LIMIT (β_B <= 0.15, model)"
+            : betaB <= 10.0
+              ? "QUASI-BRITTLE TRANSITION (0.15 < β_B <= 10, model)"
+              : "LEFM BRITTLE ASYMPTOTE (β_B > 10, model)";
+        }
+        if (percBox) percBox.setAttribute("data-alert", betaB > 10.0 ? "true" : "false");
+        const logDMin = Math.log10(50.0);
+        const logDMax = Math.log10(2400.0);
+        const logSMin = Math.log10(0.6);
+        const logSMax = Math.log10(4.5);
+        const mapX = (dVal) => 52.0 + ((Math.log10(dVal) - logDMin) / (logDMax - logDMin)) * 296.0;
+        const mapY = (sVal) => Math.max(36.0, Math.min(180.0, 176.0 - ((Math.log10(sVal) - logSMin) / (logSMax - logSMin)) * 128.0));
+        const lefmLine = document.getElementById("tp-e15-lefm-line");
+        if (lefmLine) {
+          const xCross = Math.max(52.0, Math.min(348.0, mapX(d0Mm)));
+          const yPlastic = mapY(bft);
+          const sMaxD = bft * Math.sqrt(d0Mm / 2400.0);
+          lefmLine.setAttribute("x1", xCross.toFixed(1));
+          lefmLine.setAttribute("y1", yPlastic.toFixed(1));
+          lefmLine.setAttribute("x2", "348.0");
+          lefmLine.setAttribute("y2", mapY(sMaxD).toFixed(1));
+        }
+        const selCurve = document.getElementById("tp-e15-sel-curve");
+        if (selCurve) {
+          const pts = [];
+          const steps = 16;
+          for (let i = 0; i <= steps; i += 1) {
+            const dSample = 50.0 * Math.pow(2400.0 / 50.0, i / steps);
+            const sSample = bft / Math.sqrt(1.0 + dSample / d0Mm);
+            pts.push(`${i === 0 ? "M" : "L"} ${mapX(dSample).toFixed(1)} ${mapY(sSample).toFixed(1)}`);
+          }
+          selCurve.setAttribute("d", pts.join(" "));
+        }
+        if (engPoint) {
+          const cx = Math.max(52, Math.min(348, Math.round(mapX(dMm))));
+          const cy = Math.max(36, Math.min(180, Math.round(mapY(sigmaN))));
           engPoint.setAttribute("cx", String(cx));
           engPoint.setAttribute("cy", String(cy));
         }

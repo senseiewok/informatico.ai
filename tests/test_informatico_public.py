@@ -19,7 +19,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_all_48_skills_and_python_verifiers_exist_and_pass(self) -> None:
         skill_files = list(SKILLS.glob("*/*/SKILL.md"))
         py_files = list(SKILLS.glob("*/*/verify_*.py"))
-        self.assertEqual(len(skill_files), 91)  # +e14 (2026-11-21); +e13, +a13, +x07 (2026-11-20); cc01..cc03 (2026-11-15); m13..m15 withdrawn 2026-11-17 (-3)
+        self.assertEqual(len(skill_files), 92)  # +e15, +e14 (2026-11-21); +e13, +a13, +x07 (2026-11-20); cc01..cc03 (2026-11-15); m13..m15 withdrawn 2026-11-17 (-3)
         self.assertGreaterEqual(len(py_files), 1)
         for py in py_files:  # a verifier that cannot fail is not a verifier
             self.assertIn("--planted-defect", py.read_text(encoding="utf-8"), py.name)
@@ -35,12 +35,12 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_48_folios_citation_gate_passes_offline(self) -> None:
         res = subprocess.run([sys.executable, "-X", "utf8", str(ROOT / "tools" / "check_folio_citations.py"), "--offline"], capture_output=True, text=True, encoding="utf-8", timeout=30)
         self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
-        self.assertIn("SUMMARY essays=64 fail=0 warn=0 unchecked=0", res.stdout)  # +1: E.14 added 2026-11-21
+        self.assertIn("SUMMARY essays=65 fail=0 warn=0 unchecked=0", res.stdout)  # +1: E.15 added 2026-11-21
 
     def test_106_bilingual_pages_and_bounty_crucible_mounted(self) -> None:
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 202)  # +2: E.14 added 2026-11-21, EN + es-MX
+        self.assertEqual(len(locs), 204)  # +2: E.15 added 2026-11-21, EN + es-MX
         self.assertTrue((RESEARCH / "about" / "index.html").is_file())
         self.assertTrue((RESEARCH / "es-mx" / "about" / "index.html").is_file())
         hub_html = (RESEARCH / "index.html").read_text(encoding="utf-8")
@@ -134,14 +134,14 @@ class PublicInformaticoRepoTests(unittest.TestCase):
                     self.assertIn('tp-distill-figure', txt, html_file)
                     self.assertIn('tp-distill-grid', txt, html_file)
                     self.assertGreaterEqual(txt.count("<h3"), 15, html_file)
-        self.assertEqual(folio_count, 51)  # +1: E.14 added 2026-11-21
+        self.assertEqual(folio_count, 52)  # +1: E.15 added 2026-11-21
 
 
 
     def test_all_61_editorial_plates_have_unique_sha256_hashes_and_cache_busters(self) -> None:
         plates_dir = RESEARCH / "plates"
         expected_slugs = (
-            [f"e{i:02d}" for i in range(1, 15)]
+            [f"e{i:02d}" for i in range(1, 16)]
             + [f"a{i:02d}" for i in range(1, 14)]
             + [f"p{i:02d}" for i in range(1, 13)]
             + [f"m{i:02d}" for i in range(1, 13)]  # M.13-M.15 withdrawn 2026-11-17
@@ -160,8 +160,8 @@ class PublicInformaticoRepoTests(unittest.TestCase):
             seen_hashes[h] = slug
 
         for hub_rel, expected_count in (
-            ("index.html", 51),  # +1: E.14 added 2026-11-21
-            ("engineering/index.html", 14),
+            ("index.html", 52),  # +1: E.15 added 2026-11-21
+            ("engineering/index.html", 15),
             ("architecture/index.html", 13),
             ("physics/index.html", 12),
             ("math/index.html", 12),  # -3: M.13-M.15 withdrawn 2026-11-17 (unreviewed automated content)

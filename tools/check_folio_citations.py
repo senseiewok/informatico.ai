@@ -119,7 +119,8 @@ def check(folios: list[dict], cache: dict | None = None) -> list[str]:
                     m_yr = re.search(r"\((\d{4})", src)
                     if m_yr and cr_yr and abs(int(m_yr.group(1)) - int(cr_yr)) > 2:
                         findings.append(f"FAIL {fid}: SOURCE-YEAR-MISMATCH {d} ({m_yr.group(1)} != {cr_yr})")
-                    if cr_auth and len(cr_auth) >= 3 and cr_auth not in src_folded and "csanady" not in src_folded and "popovic larsen" not in cr_auth:
+                    bazant_ocr_ok = "ba<zant" in cr_auth and "bazant" in src_folded
+                    if cr_auth and len(cr_auth) >= 3 and cr_auth not in src_folded and "csanady" not in src_folded and "popovic larsen" not in cr_auth and not bazant_ocr_ok:
                         findings.append(f"FAIL {fid}: SOURCE-AUTHOR-MISMATCH {d} ('{rec.get('first_author')}' not in '{src[:80]}')")
     return findings
 
