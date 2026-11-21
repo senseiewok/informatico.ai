@@ -73,15 +73,16 @@ FOLIO = {'folio_id': 'E.09',
                         'Healing limit w_0 ≤ 0.45 mm is this folio\'s design assumption'},
  'sidenote_1': {'kicker': 'SIDENOTE E.09-A · CONTINUING FOLIO E.01 CAPILLARY & CUBIC POISEUILLE '
                           'SCALING',
-                'body': 'For ideal laminar flow between smooth parallel plates, flow per unit length '
-                        'scales as Q ∝ w³, so closing 90% of a crack\'s width would cut that flow by '
-                        'a factor of 1,000 (0.1³ = 10⁻³). Real cracks are rough, so treat this as an '
-                        'idealization.'},
+                'body': 'For laminar flow between smooth parallel plates, discharge scales as Q ∝ '
+                        'w³ (Witherspoon et al. 1980, DOI 10.1029/WR016i006p01016). Cutting crack '
+                        'width by 90% would lower ideal flow 1,000-fold (0.1³ = 10⁻³), though real '
+                        'rough fracture walls depart from smooth plates.'},
  'sidenote_2': {'kicker': 'SIDENOTE E.09-B · CODA-WAVE INTERFEROMETRY',
-                'body': 'Coda-Wave Interferometry (CWI) uses late-arriving, multiply scattered waves, '
-                        'which makes it sensitive to very small relative velocity changes (Snieder '
-                        '2006). Here it is proposed, not demonstrated, as a way to monitor healing '
-                        'in bridge decks (continuing Folio E.07).'},
+                'body': 'Coda-Wave Interferometry (CWI) uses late-arriving, multiply scattered waves '
+                        'to resolve tiny velocity changes Δv/v (Snieder 2006, DOI '
+                        '10.1007/s00024-005-0026-6; Larose & Hall 2009, DOI 10.1121/1.3079771). '
+                        'Here it is proposed, not tested, for bridge-deck healing (continuing Folio '
+                        'E.07).'},
  'skill': {'filename': 'self-healing-concrete-washburn-calcite-SKILL.md',
            'name': 'self-healing-concrete-washburn-calcite',
            'description': 'AI-agnostic civil materials engineering skill for Lucas-Washburn '
@@ -99,7 +100,7 @@ FOLIO = {'folio_id': 'E.09',
                 'date': '2026-11-14',
                 'summary': 'REV 1.1 (Grounding pass 2026-11-14): Withdrew the "ACI 224R PASS" verdict '
                            'and other verification language; the healing limit, closure and stiffness '
-                           'figures are now labelled as model or design values. Corrected what the '
+                           'figures are now labeled as model or design values. Corrected what the '
                            'Jonkers et al. 2010 paper is cited for, replaced an invented opening scene '
                            'and a misattributed Vitruvius/tobermorite claim, fixed a "999 percent" '
                            'arithmetic error.',
@@ -148,93 +149,81 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'retraction notice. These counts describe that one paper, not this folio.'},
  'act1_title': 'Act I — Picking Up the Thread from E.01 & E.07: From Roman Pozzolanic Seawalls to '
                'Living Self-Healing Concrete',
- 'act1_dropcap': 'Concrete is strong in compression and weak in tension, so it cracks, and those '
-                 'cracks let water and de-icing salts reach the steel inside. Builders have long '
-                 'known that some concretes partly seal their own fine cracks: in the first century '
-                 'BCE the Roman writer Vitruvius described how volcanic ash from the Bay of Naples '
-                 'set hard even under water. In 2010, Hendrik Jonkers and colleagues at Delft '
-                 'University of Technology published a study of a different idea: adding '
-                 'alkali-resistant, spore-forming bacteria and a nutrient to the mix, so that '
-                 'water entering a new crack could wake the spores and let them precipitate '
-                 'calcium carbonate in the crack (Jonkers et al. 2010).',
- 'act1_plain_bridge': 'In plain words, concrete is the most consumed building material on Earth, '
-                      'but it has one major weakness: it cracks easily when stretched. Even the '
-                      'strongest highway bridges and tunnel walls develop tiny hairline fissures '
-                      'over time. Once a tiny crack opens, rain and road salt seep inside, rusting '
-                      'the steel rebar hidden within and eventually causing entire slabs to '
-                      'crumble. Repairing these cracks by hand is costly and often means closing '
-                      'roads. Self-healing concrete is one research answer. Scientists mix dormant '
-                      'limestone-producing bacteria into the concrete along with a nutrient. The '
-                      'spores are chosen because they can survive the dry, alkaline stone; how long '
-                      'they stay viable is still being studied. When a crack forms, moisture leaks '
-                      'in and can wake the bacteria, which consume their nutrient and produce '
-                      'calcium carbonate that can partly or fully fill a fine crack before water '
-                      'reaches the steel.',
- 'act1_body': 'When a tensile microcrack opens in concrete, capillary suction governed by the '
-              'Lucas–Washburn law draws moisture inward from the exposed surface. In 2010, Hendrik '
-              'M. Jonkers and colleagues at TU Delft (Ecological Engineering, DOI '
-              '10.1016/j.ecoleng.2008.12.036) reported on alkali-resistant, spore-forming bacteria '
-              'as a self-healing agent for concrete. Later work from the same group placed the '
-              'spores and a calcium lactate nutrient inside porous expanded-clay particles and '
-              'quantified crack healing (Wiktor & Jonkers 2011). As water enters the fissure, the '
-              'spores can germinate and, consuming calcium lactate and dissolved oxygen, '
-              'precipitate calcium carbonate along the crack walls. In an idealized smooth '
-              'parallel-plate crack, flow follows the cubic Poiseuille law, so reducing crack '
-              'width by ninety percent would cut flow a thousand-fold (by 99.9 percent). This '
-              'folio also proposes embedded piezoelectric transducers using Ultrasonic Coda-Wave '
-              'Interferometry to track stiffness recovery over time; that pairing is a design '
-              'idea here, not a demonstrated system.',
- 'act1_stakes': 'The economic and ecological stakes of concrete degradation are large. Cement '
-                'production is commonly estimated at around eight percent of worldwide carbon '
-                'dioxide emissions (an estimate not sourced in this folio), so replacing concrete '
-                'early carries a real carbon cost. In marine docks, highway bridge decks, and underground '
-                'tunnels, microcracks as narrow as three-tenths of a millimeter provide expressway '
-                'conduits for chloride ions. Once chlorides reach embedded steel reinforcement, '
-                'protective passivation breaks down, producing expansive rust that spalls the '
-                'concrete cover and leads to sudden structural failures. Traditional epoxy '
-                'injections and surface sealants require dry weather, hazardous solvents, and '
-                'expensive manual labor that cannot access buried foundations or submerged piers. '
-                'If a healing material could reliably seal fine cracks after moisture contact, it '
-                'could lengthen the service life of exposed structures and reduce repair work; how '
-                'much is still an open research question, and this folio does not put a number on '
-                'it.',
+ 'act1_dropcap': 'Concrete is strong in compression and weak in tension, so it cracks and lets '
+                 'water and salts reach embedded steel (Van Tittelboom & De Belie 2013, DOI '
+                 '10.3390/ma6062182). In the first century BCE, Vitruvius described how volcanic '
+                 'ash from the Bay of Naples hardened even under water (De Architectura, Book II). '
+                 'In 2010, Hendrik Jonkers and colleagues tested adding alkali-resistant, '
+                 'spore-forming Bacillus bacteria and calcium lactate to concrete (DOI '
+                 '10.1016/j.ecoleng.2008.12.036). Water entering a crack could wake dormant '
+                 'spores to precipitate calcium carbonate in the gap (Jonkers et al. 2010).',
+ 'act1_plain_bridge': 'Concrete cracks easily when stretched, letting rain and de-icing salts seep '
+                      'toward the reinforcing steel (Van Tittelboom & De Belie 2013, DOI '
+                      '10.3390/ma6062182). Repairing hairline cracks by hand is costly and may '
+                      'require closing roads or tunnels. Self-healing concrete adds dormant '
+                      'mineral-forming bacteria and a calcium lactate nutrient to the mix (Jonkers '
+                      'et al. 2010, DOI 10.1016/j.ecoleng.2008.12.036). Spores are used because '
+                      'they can survive alkaline cement paste, though long-term viability is not yet '
+                      'established (Jonkers et al. 2010). When a crack admits water, spores may '
+                      'germinate and deposit calcium carbonate that could help seal narrow gaps '
+                      '(Wiktor & Jonkers 2011, DOI 10.1016/j.cemconcomp.2011.03.012).',
+ 'act1_body': 'Capillary suction governed by the Lucas–Washburn law pulls water into a tensile '
+              'microcrack (Lucas 1918, DOI 10.1007/BF01461107; Washburn 1921, DOI '
+              '10.1103/PhysRev.17.273). Jonkers et al. (2010, DOI 10.1016/j.ecoleng.2008.12.036) '
+              'screened alkali-resistant Bacillus spores as a self-healing additive. Wiktor and '
+              'Jonkers (2011, DOI 10.1016/j.cemconcomp.2011.03.012) immobilized spores and '
+              'calcium lactate in porous expanded-clay particles. After 100 days of immersion, '
+              'bacterial specimens healed cracks up to about 0.46 mm wide, versus 0.18 mm in '
+              'controls (Wiktor & Jonkers 2011). In an idealized smooth crack, cubic Poiseuille '
+              'flow scales as w³ (Witherspoon et al. 1980, DOI 10.1029/WR016i006p01016), so a 90% '
+              'width cut lowers laminar flow 1,000-fold under the stated assumptions. This folio '
+              'also proposes embedded coda-wave transducers (Snieder 2006, DOI '
+              '10.1007/s00024-005-0026-6; Larose & Hall 2009, DOI 10.1121/1.3079771); that '
+              'pairing is an untested design idea, not a field system.',
+ 'act1_stakes': 'Replacing cracked concrete carries a direct carbon cost. Global process emissions '
+                'from cement calcination (excluding kiln fuel) were estimated at 1.50 ± 0.12 Gt '
+                'CO₂ in 2018, about 4% of global fossil-fuel CO₂ emissions (Andrew 2019, DOI '
+                '10.5194/essd-11-1675-2019). In bridges, tunnels, and marine piers, cracks may let '
+                'chloride ions reach steel bars and drive expansive corrosion (De Muynck et al. '
+                '2010, DOI 10.1016/j.ecoleng.2009.02.006). Manual crack injection requires dry '
+                'access that submerged or buried foundations lack (Van Tittelboom & De Belie 2013, '
+                'DOI 10.3390/ma6062182). Autonomous sealing could extend service life if field '
+                'durability holds, though this folio assigns no life-cycle estimate.',
  'pullquote': '"In bacterial self-healing concrete, a new crack can act as a capillary trigger '
               'that wakes dormant spores to deposit mineral in the gap."',
  'chronology': [('c. 30–15 BCE',
                  'Vitruvius, De Architectura (Book II), describes volcanic ash from the Bay of '
                  'Naples (pozzolana) that sets hard even under water.'),
                 ('1918–1921',
-                 'Richard Lucas (1918) and Edward W. Washburn (1921) publish the capillary '
-                 'imbibition law z(t) = sqrt(gamma r cos(theta) t / (2 mu)).'),
-                ('2010',
-                 'Hendrik M. Jonkers et al. report alkali-resistant spore-forming bacteria as a '
-                 'self-healing agent for concrete (DOI 10.1016/j.ecoleng.2008.12.036).'),
+                 'Richard Lucas (1918, DOI 10.1007/BF01461107) and Edward W. Washburn (1921, DOI '
+                 '10.1103/PhysRev.17.273) publish the capillary imbibition law z(t) = sqrt(gamma r '
+                 'cos(theta) t / (2 mu)).'),
+                ('2010–2011',
+                 'Jonkers et al. (2010, DOI 10.1016/j.ecoleng.2008.12.036) introduce Bacillus '
+                 'spores in concrete; Wiktor & Jonkers (2011, DOI 10.1016/j.cemconcomp.2011.03.012) '
+                 'report healing up to 0.46 mm versus 0.18 mm in controls.'),
                 ('2026',
-                 'This folio proposes pairing Ultrasonic Coda-Wave Interferometry (CWI) monitoring '
-                 'with bacterial-crystalline admixtures (a design idea, not a deployed system).')],
+                 'This folio proposes pairing Ultrasonic Coda-Wave Interferometry (Snieder 2006, '
+                 'DOI 10.1007/s00024-005-0026-6) with bacterial admixtures (a design idea, not a '
+                 'deployed system).')],
  'act2_title': 'Act II — How It Actually Works: Lucas–Washburn Capillary Ingress + '
                'Michaelis–Menten Calcite Healing',
- 'act2_analogy': 'Everyday analogy: Consider what happens when you get a small paper cut on your '
-                 'finger. Blood platelets and fibrin immediately rush to the wound, forming a clot '
-                 'that weaves the skin back together from the edges inward. Self-healing '
-                 'bio-concrete behaves like living tissue. A hairline fracture acts as a capillary '
-                 'straw that sucks in rainwater, waking dormant limestone-making bacteria that '
-                 'weave a mineral scar of calcite across the fissure until it is watertight.',
- 'act2_plain_primer': 'To examine how biological healing works in practice, our interactive '
-                      'laboratory offers two key adjustments. The first control is the Initial '
-                      'Flexural Crack Width, which sets the size of the structural crack opened by '
-                      'bending loads. In the model, narrow fissures up to about three-tenths of a '
-                      'millimeter draw moisture rapidly and largely seal within twenty-eight days '
-                      '(an illustrative model behaviour, not a test result). Wider gaps '
-                      'require significantly more mineral volume to bridge, testing the physical '
-                      'limits of autonomous repair. The second control is the Spore and Catalyst '
-                      'Activity, which represents the dosage and metabolic rate of the '
-                      'encapsulated healing agents. Increasing this multiplier accelerates '
-                      'bacterial calcite production, speeding up how quickly mineral crystals '
-                      'bridge the crack gap. By experimenting with these two knobs, you can '
-                      'observe the cubic drop in idealized water flow: in the parallel-plate model, '
-                      'narrowing a crack by ninety percent cuts flow a thousand-fold. Real cracks '
-                      'are rough, so treat the curve as an idealization.',
+ 'act2_analogy': 'Everyday analogy: When you get a small paper cut, blood platelets and fibrin '
+                 'seal the wound from the edges inward. Self-healing concrete uses a crack in a '
+                 'roughly similar way: capillary suction draws in water that wakes dormant spores '
+                 'to deposit calcite across the gap (Jonkers et al. 2010, DOI '
+                 '10.1016/j.ecoleng.2008.12.036). The analogy ends at biology, because cement '
+                 'mineral precipitation has no living vascular tissue.',
+ 'act2_plain_primer': 'The interactive lab below varies two parameters. Initial Flexural Crack '
+                      'Width sets the opening created by bending loads. In this model, cracks '
+                      'around 0.30 mm draw water fast and approach closure within 28 days, an '
+                      'illustrative model behavior rather than a test result. Wider cracks need '
+                      'more mineral volume, reflecting experimental limits around 0.46 mm reported '
+                      'by Wiktor and Jonkers (2011, DOI 10.1016/j.cemconcomp.2011.03.012). Spore '
+                      'and Catalyst Activity scales the modeled precipitation rate. Raising it '
+                      'accelerates calcite bridging and shows the steep cubic drop in idealized '
+                      'Poiseuille flow (Witherspoon et al. 1980, DOI 10.1029/WR016i006p01016); real '
+                      'rough cracks do not follow smooth plates.',
  'distill_diagram': {'analogy_title': 'Paper Cut Healing on Human Skin',
                      'analogy_sub': 'Moisture wakes dormant bacteria to grow a mineral scar across '
                                     'cracks',
@@ -248,69 +237,55 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                      'threshold_pass': 'Sealed in model: over 90% calcite closure sharply cuts '
                                        'idealized flow',
                      'threshold_fail': 'Unsealed in model: gap exceeds assumed healing capacity'},
- 'act2_intuition': 'A flexural crack of initial aperture w_0 behaves as a parallel-plate capillary '
-                   'channel with hydraulic radius r_eff = w_0 / 2. Upon exposure to ambient water, '
-                   'surface tension pulls moisture to a penetration depth z(t) = sqrt([gamma w_0 '
-                   'cos(theta) / (4 mu)] t) governed by the Lucas–Washburn equation. Once wet, '
-                   'encapsulated Bacillus spores metabolize calcium lactate and oxygen, '
-                   'precipitating insoluble calcium carbonate via Michaelis–Menten kinetics dw/dt '
-                   '= -2 V_m V_max [Ca2+] / (K_m + [Ca2+]), where V_m = 36.9 cm^3/mol is the molar '
-                   'volume of calcite. As crystals accumulate along opposing crack faces, the '
-                   'effective aperture w narrows toward residual clearance w_rem. Because laminar '
-                   'seepage through a fracture scales with the cube of the aperture (the cubic '
-                   'Poiseuille law Q = [w^3 delta_P] / [12 mu L]), a ninety-four percent reduction '
-                   'in crack width gives (0.06)^3 = 2.2 x 10^-4 of the original flow, a 99.98% cut '
-                   'for an ideal smooth crack. The molar-volume closure law and the 94% figure are '
-                   "this folio's illustrative model, not fitted to data. Ultrasonic Coda-Wave "
-                   'Interferometry (CWI) records small relative velocity shifts delta_v / v in '
-                   'multiply scattered waves (Snieder 2006) and could be used to track stiffness '
-                   'change across a healed zone; the 55 kHz frequency is a design choice here.',
- 'act2_deepening': 'Underneath the macro-scale crack closure lies a coupled multi-scale process of '
-                   'chemical diffusion, bacterial viability, and crystallization kinetics. The '
-                   'interior of concrete is an extreme environment with a pore solution pH often '
-                   'exceeding twelve, which destroys most vegetative bacteria. Alkaliphilic '
-                   'Bacillus spores are chosen because spores resist harsh conditions, and research '
-                   'formulations add further protection by placing them inside porous expanded-clay '
-                   '(Wiktor & Jonkers 2011) or other carriers. When cracking '
-                   'ruptures the carriers, capillary action supplies water and atmospheric carbon '
-                   'dioxide diffuses inward. The bacteria produce carbonate ions that react with '
-                   'dissolved calcium ions, nucleating dense rhombohedral calcite crystals at the '
-                   'fissure boundary. Because calcite precipitation requires both dissolved '
-                   'calcium and oxygen, healing deep inside a crack can become transport-limited '
-                   '(this folio does not give a sourced depth). Some research formulations explore '
-                   'other bacterial pathways or crystalline mineral admixtures that react with '
-                   'unhydrated cement grains, aiming to improve sealing deeper in the member; this '
-                   'folio does not cite or test them.',
+ 'act2_intuition': 'Modeling a crack of initial width w_0 as an effective capillary tube of radius '
+                   'r_eff = w_0 / 2 in the cylindrical Lucas–Washburn law gives penetration depth '
+                   'z(t) = sqrt([gamma w_0 cos(theta) / (4 mu)] t) (Lucas 1918, DOI '
+                   '10.1007/BF01461107; Washburn 1921, DOI 10.1103/PhysRev.17.273); a strict '
+                   'planar slit replaces 4 mu with 3 mu. Once wet, alkaliphilic Bacillus spores '
+                   'oxidize calcium lactate to precipitate calcite (Jonkers et al. 2010, DOI '
+                   '10.1016/j.ecoleng.2008.12.036). This folio models closure via Michaelis–Menten '
+                   'kinetics dw/dt = -2 V_m V_max [Ca2+] / (K_m + [Ca2+]), using calcite molar '
+                   'volume V_m = 36.9 cm^3/mol. Under the stated assumptions for smooth parallel '
+                   'plates (Witherspoon et al. 1980, DOI 10.1029/WR016i006p01016), 94% closure gives '
+                   '(0.06)^3 = 2.2 x 10^-4 flow, a 99.98% cut. The caveat is that the closure law '
+                   'and 94% value are illustrative, not fitted to data. Ultrasonic CWI could track '
+                   'velocity shifts delta_v / v in scattered waves (Snieder 2006, DOI '
+                   '10.1007/s00024-005-0026-6; Larose & Hall 2009, DOI 10.1121/1.3079771); a '
+                   'proposed 55 kHz transducer frequency is an untested design choice.',
+ 'act2_deepening': 'Concrete pore water typically reaches about pH 12–13, destroying vegetative '
+                   'bacteria (Jonkers et al. 2010, DOI 10.1016/j.ecoleng.2008.12.036; Van '
+                   'Tittelboom & De Belie 2013, DOI 10.3390/ma6062182). Hardening cement paste '
+                   'also shrinks pores below approximately 1 µm, which may restrict unprotected '
+                   'spore survival (Jonkers et al. 2010). Immobilizing spores and calcium lactate '
+                   'inside expanded-clay carriers helps protect viability until cracking opens the '
+                   'capsule (Wiktor & Jonkers 2011, DOI 10.1016/j.cemconcomp.2011.03.012). '
+                   'Microbial carbonate precipitation depends on dissolved oxygen and calcium '
+                   'transport (De Muynck et al. 2010, DOI 10.1016/j.ecoleng.2009.02.006), so '
+                   'deep-crack sealing could become transport-limited. Crystalline admixtures offer '
+                   'an abiotic alternative that may react with unhydrated cement phases (Van '
+                   'Tittelboom & De Belie 2013, DOI 10.3390/ma6062182).',
  'walkthrough': ['Experiment 1 (Crack Aperture vs. Cubic Leakage Cutoff): Drag Initial Crack Width '
-                 'w_0 from 0.15 mm to 0.75 mm. Notice how unhealed Poiseuille water leakage scales '
-                 'as w_0^3, and watch how, in the model, calcite precipitation closes narrower '
-                 'cracks (< 0.45 mm, a design assumption) to >92% closure within 28 days.',
-                 'Experiment 2 (Bacterial & Crystalline Catalyst Dosage): Increase Spore & Mineral '
-                 'Precursor Activity k_heal from 0.40x to 2.20x. Watch the model calcite front '
-                 'bridge the fissure and the illustrative stiffness-recovery index rise toward its '
-                 'upper value.',
-                 'Experiment 3 (From Capillary Wetting to CWI Digital Twin): Step through Stages 1 '
-                 'to 4 to inspect Lucas–Washburn wetting, spore germination, rhombohedral calcite '
-                 'bridging, and proposed Coda-Wave Interferometry monitoring.'],
+                 'w_0 from 0.15 mm to 0.75 mm. Watch idealized smooth-plate flow scale as w_0^3 '
+                 '(Witherspoon et al. 1980) and see how the model closes widths w_0 <= 0.45 mm '
+                 '(a design assumption).',
+                 'Experiment 2 (Catalyst Dosage): Increase Activity k_heal from 0.40x to 2.20x. '
+                 'Observe the modeled calcite front bridge the gap and raise the illustrative '
+                 'stiffness-recovery index.',
+                 'Experiment 3 (Capillary Wetting to CWI): Step Stages 1–4 from Lucas–Washburn '
+                 'wetting to rhombohedral calcite bridging and proposed CWI sensing (Snieder '
+                 '2006; Larose & Hall 2009).'],
  'act4_title': 'Act IV — Infrastructure Longevity, Archive Lineage & Upstream Biophysical Threads',
- 'act4_human_ai': "By uniting Folio E.01's capillary pore physics and Folio E.07's PINN structural "
-                  'sensing with ultrasonic coda-wave monitoring, engineers could one day check '
-                  'crack closure inside submerged tunnel segments (Folio E.08) and coastal bridge '
-                  'piers without sending divers into hazardous currents. This is a proposal, not a '
-                  'deployed practice.',
- 'act4_deepening': 'Looking ahead, synthetic biology, computational materials science, and civil '
-                   'engineering could work together on these materials. One could imagine using '
-                   'physics-informed models to choose nutrient carrier geometry and spore '
-                   'distribution for marine and underground settings, and inspection robots with '
-                   'ultrasonic transducers feeding velocity data into digital twins that follow '
-                   'crack closure over the seasons. These are ideas for research, not current '
-                   'practice described by a source here. Open questions continue to '
-                   'guide active research: engineering bacterial strains capable of rapid calcite '
-                   'precipitation in freezing sub-zero temperatures, developing nutrient carriers '
-                   'that do not reduce the compressive strength of high-performance concrete '
-                   'mixes, and formulating standardized building codes for life-cycle durability '
-                   'assessments. If those questions are answered, biological healing could help '
-                   'concrete structures last longer with less repair.',
+ 'act4_human_ai': "Pairing Folio E.01's capillary physics and Folio E.07's sensing with Coda-Wave "
+                  'Interferometry (Larose & Hall 2009, DOI 10.1121/1.3079771) might help inspect '
+                  'submerged tunnel segments (Folio E.08) and coastal piers. This remains an '
+                  'untested proposal, not deployed practice.',
+ 'act4_deepening': 'Future work could link physics-informed models with ultrasonic transducers to '
+                   'track seasonal crack healing; these are research ideas, not verified practice. '
+                   'Open problems identified in reviews include cold-climate activity, carrier '
+                   'effects on compressive strength, and standardized durability testing (De '
+                   'Muynck et al. 2010, DOI 10.1016/j.ecoleng.2009.02.006; Van Tittelboom & De '
+                   'Belie 2013, DOI 10.3390/ma6062182). Solving those issues could help concrete '
+                   'structures last longer with less repair.',
  'cf_bridge': 'Standalone Civil Materials Flagship & Thread Continuation (E.01 -> E.09): Written '
               'for structural and materials civil engineers interested in durable marine and '
               'underground concrete.',
@@ -321,12 +296,25 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'Wiktor, V., & Jonkers, H. M. (2011). Quantification of crack-healing in novel '
              'bacteria-based self-healing concrete. Cement and Concrete Composites, 33(7), '
              '763–770. DOI: 10.1016/j.cemconcomp.2011.03.012.',
+             'De Muynck, W., De Belie, N., & Verstraete, W. (2010). Microbial carbonate '
+             'precipitation in construction materials: A review. Ecological Engineering, 36(2), '
+             '118–136. DOI: 10.1016/j.ecoleng.2009.02.006.',
+             'Van Tittelboom, K., & De Belie, N. (2013). Self-Healing in Cementitious Materials—A '
+             'Review. Materials, 6(6), 2182–2217. DOI: 10.3390/ma6062182.',
+             'Witherspoon, P. A., Wang, J. S. Y., Iwai, K., & Gale, J. E. (1980). Validity of '
+             'Cubic Law for fluid flow in a deformable rock fracture. Water Resources Research, '
+             '16(6), 1016–1024. DOI: 10.1029/WR016i006p01016.',
              'Washburn, E. W. (1921). The dynamics of capillary flow. Physical Review, 17(3), '
              '273–283. DOI: 10.1103/PhysRev.17.273.',
              'Lucas, R. (1918). Ueber das Zeitgesetz des kapillaren Aufstiegs von Flüssigkeiten. '
              'Kolloid-Zeitschrift, 23(1), 15–22. DOI: 10.1007/BF01461107.',
              'Snieder, R. (2006). The theory of coda wave interferometry. Pure and Applied '
              'Geophysics, 163(2–3), 455–473. DOI: 10.1007/s00024-005-0026-6.',
+             'Larose, E., & Hall, S. A. (2009). Monitoring stress related velocity variation in '
+             'concrete with a 2×10⁻⁵ relative resolution using diffuse ultrasound. The Journal of '
+             'the Acoustical Society of America, 125(4), 1853–1856. DOI: 10.1121/1.3079771.',
+             'Andrew, R. M. (2019). Global CO₂ emissions from cement production, 1928–2018. Earth '
+             'System Science Data, 11(4), 1675–1710. DOI: 10.5194/essd-11-1675-2019.',
              'CSI MasterFormat, Section 03 30 00 Cast-in-Place Concrete (used here only as a '
              'filing label; no threshold in this folio comes from a standard).',
              'Burns, K. J., Vasil, G. M., Oishi, J. S., Lecoanet, D., & Brown, B. P. (2020). '
@@ -406,34 +394,28 @@ META_3D = ('Lucas–Washburn Capillary & Calcite Self-Healing Fissure',
 
 ES_TRANSLATION = {'title_es': 'Concreto Autocurativo Bacteriano y Cristalino: Imbibición Capilar de Lucas–Washburn, '
              'Precipitación de Calcita de Fick–Michaelis–Menten y Gemelos Digitales de Ondas Coda',
- 'subtitle_es': 'Continuando los Folios E.01 y E.07: cómo las esporas de Bacillus pseudofirmus y '
-                'los aditivos cristalinos pueden sellar microfisuras por mineralización de CaCO₃, '
-                'con una propuesta de monitoreo por interferometría ultrasónica de ondas coda.',
- 'why_es': 'Igual que una cortadura en la piel activa plaquetas y fibrina para cerrar la herida '
-           'desde adentro, una microfisura en concreto bio-activo succiona agua por capilaridad y '
-           'despierta bacterias latentes que tejen una cicatriz de piedra caliza.',
- 'plain_es': 'En palabras sencillas, el concreto es el material de construcción más utilizado del '
-             'planeta, pero tiene una gran debilidad: se agrieta con facilidad cuando se somete a '
-             'esfuerzos de tensión. Con el paso de los años, cualquier puente carretero o túnel '
-             'subterráneo desarrolla microfisuras diminutas. Aunque midan menos de medio '
-             'milímetro, el agua de lluvia y las sales se filtran por ellas, oxidando las varillas '
-             'de acero internas y obligando a costosas reparaciones. El concreto autocurativo es '
-             'una respuesta que se investiga: se mezclan en el concreto esporas bacterianas '
-             'latentes junto con un nutriente. Se eligen esporas porque resisten el concreto seco '
-             'y alcalino; cuánto tiempo siguen viables todavía se estudia. Cuando se abre una '
-             'grieta, la humedad entra por capilaridad y puede despertar a las bacterias, que '
-             'consumen su alimento y producen carbonato de calcio capaz de rellenar en parte o por '
-             'completo una fisura fina antes de que el agua alcance el acero.',
- 'deep_es': 'El proceso de autocuración biológica enfrenta dos factores contrapuestos: la '
-            'velocidad de penetración del agua por succión capilar y la tasa de precipitación '
-            'mineral de calcita producida por las bacterias. Cuando una fisura se abre, la ley de '
-            'Lucas–Washburn gobierna la rápida entrada de humedad hacia el interior del elemento '
-            'estructural. Al mismo tiempo, las esporas de Bacillus metabolizan el lactato de '
-            'calcio siguiendo una cinética enzimática de Michaelis–Menten para precipitar '
-            'carbonato de calcio en las paredes de la grieta. En el modelo de este folio, el '
-            'límite de curación es un supuesto de diseño de 0.45 mm de ancho, por debajo del cual '
-            'el crecimiento de cristales logra más del noventa por ciento de cierre. Según la ley '
-            'cúbica de Poiseuille para una grieta ideal y lisa, cerrar el 94% del ancho reduce el '
-            'flujo de agua en un 99.98%; las grietas reales son rugosas, así que es una '
-            'idealización. Este folio propone, sin haberlo demostrado, usar sensores ultrasónicos '
-            'de ondas coda para seguir la recuperación de rigidez.'}
+ 'subtitle_es': 'Continuando los Folios E.01 y E.07: cómo esporas de Bacillus (Jonkers et al. 2010) '
+                'y aditivos cristalinos (Van Tittelboom & De Belie 2013) pueden sellar '
+                'microfisuras, mostrado aquí como un modelo ilustrativo con monitoreo propuesto por '
+                'ondas coda.',
+ 'why_es': 'Igual que una cortadura activa plaquetas y fibrina, una grieta fina succiona agua por '
+           'capilaridad y podría despertar esporas latentes para precipitar calcita (Jonkers et al. '
+           '2010). La analogía termina en la biología: la matriz mineral no tiene tejido vivo.',
+ 'plain_es': 'El concreto se agrieta al someterse a tensión y deja pasar agua y cloruros hacia el '
+             'acero de refuerzo (Van Tittelboom & De Belie 2013, DOI 10.3390/ma6062182). Reparar '
+             'fisuras a mano resulta costoso. Una línea de investigación mezcla esporas bacterianas '
+             'resistentes a la alcalinidad y lactato de calcio como nutriente (Jonkers et al. 2010, '
+             'DOI 10.1016/j.ecoleng.2008.12.036), aunque su viabilidad a largo plazo sigue en '
+             'estudio. Al entrar agua por una fisura, las esporas pueden germinar y depositar '
+             'carbonato de calcio: tras 100 días de inmersión, Wiktor y Jonkers (2011, DOI '
+             '10.1016/j.cemconcomp.2011.03.012) observaron cierre hasta 0.46 mm frente a 0.18 mm '
+             'en probetas de control.',
+ 'deep_es': 'El sellado combina imbibición capilar de Lucas–Washburn (Lucas 1918, DOI '
+            '10.1007/BF01461107; Washburn 1921, DOI 10.1103/PhysRev.17.273) con precipitación '
+            'bacteriana de calcita en una matriz de pH 12–13 (Jonkers et al. 2010; Van Tittelboom '
+            '& De Belie 2013). En placas lisas ideales, el flujo sigue la ley cúbica Q ∝ w³ '
+            '(Witherspoon et al. 1980, DOI 10.1029/WR016i006p01016): cerrar 94% de una fisura de '
+            '0.30 mm reduce el flujo ideal en 99.98%, aunque las grietas reales son rugosas. El '
+            'límite de 0.45 mm y la cinética de Michaelis–Menten aquí son supuestos ilustrativos. '
+            'Este folio propone, sin probarlo, usar ondas coda (Snieder 2006; Larose & Hall 2009, '
+            'DOI 10.1121/1.3079771) para vigilar la rigidez.'}
