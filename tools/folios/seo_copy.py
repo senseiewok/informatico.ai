@@ -325,6 +325,12 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "Repositorios Lean 4 Públicos y ML-KEM Post-Cuántico",
         "Lo que dice el README del repositorio público anthropics/formal-math que contiene, junto al estándar de retículos NIST FIPS 203; nada comprobado aquí.",
     ),
+    "m13": (
+        "Shannon Zero-Error Graph Capacity and Lovász Theta",
+        "How Shannon zero-error block codes, Lovász's theta umbrella and Haemers's rank bound meet on odd cycles, with the seven-cycle limit still open.",
+        "Capacidad de Error Cero de Shannon y Theta de Lovász",
+        "Cómo los códigos sin error de Shannon, el paraguas de Lovász y el rango de Haemers se cruzan en ciclos impares, con la brecha del ciclo de siete abierta.",
+    ),
 }
 
 # pillar -> (title_en, description_en, title_es, description_es); titles are complete (brand included).
@@ -349,9 +355,9 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "math": (
         "Mathematics Essays: Lean 4 Repositories & More | Informatico.ai",
-        "Twelve interactive essays on mathematics: Fermat's Last Theorem and a Lean 4 repository, F1 optimal control, the geometry of color and optimal transport.",
+        "Thirteen interactive essays on mathematics: Fermat's Last Theorem, zero-error graph capacity, F1 optimal control, color geometry and optimal transport.",
         "Ensayos de Matemáticas: Repositorios Lean 4 y Más | Informatico.ai",
-        "Doce ensayos interactivos de matemáticas: el Último Teorema de Fermat y un repositorio Lean 4, control óptimo en F1, geometría del color y transporte óptimo.",
+        "Trece ensayos interactivos de matemáticas: el Último Teorema de Fermat, capacidad de grafos sin error, control óptimo, color y transporte óptimo.",
     ),
     "bounties": (
         "Grand Challenges & Open Problems Crucible | Informatico.ai",

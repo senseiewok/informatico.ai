@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2",
   "law": "Law 8 & Law 17 — Human-Scale Grounded Scientific Plate Generation & 4-Seat Image Selection Council",
-  "total_plates_replaced": 66,
-  "magazine_plates_count": 66,
+  "total_plates_replaced": 67,
+  "magazine_plates_count": 67,
   "council_seats": [
     "gemini-4-argon (Physical Specification & Structural Plausibility Seat)",
     "claude-opus-5.5 (Human Perceptual Impact & Tactile Craft Seat)",
@@ -702,6 +702,17 @@
       "bytes": 214228,
       "zero_baked_text_verified": true,
       "sha256": "38f41f9e7e3ea875f4a8c4a16054efdee6b835517c7b4697c3648fa102b19ec5"
+    },
+    {
+      "plate_id": "m13",
+      "path": "src/plates/m13.jpg",
+      "governing_specification": "Tabletop editorial photograph on dark cleft slate and cream vellum paper featuring a brushed-brass pentagon ring with five turned ivory pegs beside a brass geometric umbrella-rib apparatus on a bronze bearing handle casting Prussian-slate and muted verdigris shadows",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 138957,
+      "zero_baked_text_verified": true,
+      "sha256": "cba5e3a1221adbe6a573f949639f65ae7761e9f0a623b8f4de3f756c41ec4d81"
     }
   ]
 }
