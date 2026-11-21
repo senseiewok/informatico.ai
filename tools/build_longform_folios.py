@@ -2105,7 +2105,7 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
     <div class="tp-contents-inner">
       <div class="tp-contents-head">
         <h2 id="tp-contents-title" data-en="Contents" data-es="Contenido">Contents</h2>
-        <input id="tp-contents-search" class="tp-contents-search" type="search" autocomplete="off" placeholder="Search {total} essays, 6 bounties, 6 tools &amp; 11 syntheses" aria-label="Search essays, bounties and tools">
+        <input id="tp-contents-search" class="tp-contents-search" type="search" autocomplete="off" placeholder="Search {total} essays, 6 bounties, 7 tools &amp; 12 syntheses" aria-label="Search essays, bounties and tools">
         <button type="button" class="tp-tool-btn tp-contents-close" data-close-contents aria-label="Close contents">Close</button>
       </div>
       <p id="tp-contents-empty" class="tp-contents-empty" hidden data-en="No essay matches that search." data-es="Ningún ensayo coincide con la búsqueda.">No essay matches that search.</p>
@@ -2125,7 +2125,7 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
         </ol>
       </section>
       <section class="tp-contents-bounties" aria-label="Cross-Scale Featured Essays">
-        <h3><a href="{_href(rel_res, 'essays/')}" data-en="Cross-Scale Featured Essays · 11 Standalone Syntheses (ES.01–ES.11)" data-es="Ensayos Destacados entre Escalas · 11 Síntesis Independientes (ES.01–ES.11)">Cross-Scale Featured Essays · 11 Standalone Syntheses (ES.01–ES.11)</a></h3>
+        <h3><a href="{_href(rel_res, 'essays/')}" data-en="Cross-Scale Featured Essays · 12 Standalone Syntheses (ES.01–ES.12)" data-es="Ensayos Destacados entre Escalas · 12 Síntesis Independientes (ES.01–ES.12)">Cross-Scale Featured Essays · 12 Standalone Syntheses (ES.01–ES.12)</a></h3>
         <ol>
             {essay_items_html}
         </ol>
@@ -2418,9 +2418,9 @@ def render_cross_scale_essays_showcase(rel_res: str, lang: str = "en") -> str:
     hub_href = _href(rel_res, "essays/")
     return f"""
     <section class="tp-cross-scale-showcase" id="cross-scale-essays" aria-labelledby="cross-scale-essays-heading">
-      <p class="tp-kicker" data-en="Featured Companion Synthesis · 11 Standalone Essays · ES.01–ES.11" data-es="Síntesis Compañera Destacada · 11 Ensayos Independientes · ES.01–ES.11">Featured Companion Synthesis · 11 Standalone Essays · ES.01–ES.11</p>
+      <p class="tp-kicker" data-en="Featured Companion Synthesis · 12 Standalone Essays · ES.01–ES.12" data-es="Síntesis Compañera Destacada · 12 Ensayos Independientes · ES.01–ES.12">Featured Companion Synthesis · 12 Standalone Essays · ES.01–ES.12</p>
       <h2 id="cross-scale-essays-heading" class="tp-h2"><a href="{hub_href}" data-en="Cross-Scale Essays: Clocks, Stone, and Living Matter" data-es="Ensayos entre Escalas: Relojes, Piedra y Materia Viva">Cross-Scale Essays: Clocks, Stone, and Living Matter</a></h2>
-      <p class="tp-standfirst" data-en="Four editorial movements—Foundations &amp; Bounds (ES.01–ES.03), Constraints &amp; Formal Proof (ES.04–ES.06), Horizons, Identifiability &amp; Multipartite Witnesses (ES.07–ES.09), and Movement IV · Coda &amp; Crown (ES.10–ES.11)—tracing how fluctuation-dissipation floors, DERIVED (NOT MEASURED) parent gates, Q_TUR ≥ 2 bounds, rank-nullity rigidity, Doob conditional survival, Page–Wootters / Lean 4 proofs, the 73.14 µm parallel horizon, Fisher Schur-complement identifiability, tripartite Mermin witnesses, signed biharmonic operator sieves, and the seven-gate chiral and entire-UV crown sieve connect falling clocks, stone vaults, and living pores." data-es="Cuatro movimientos editoriales —Fundamentos y Cotas (ES.01–ES.03), Restricciones y Prueba Formal (ES.04–ES.06), Horizontes, Identificabilidad y Testigos Multipartitos (ES.07–ES.09) y Movimiento IV · Coda y Corona (ES.10–ES.11)— que muestran cómo los pisos de fluctuación-disipación, las compuertas DERIVADO (NO MEDIDO), las cotas Q_TUR ≥ 2, la rigidez rango-nulidad, la supervivencia condicional de Doob, las pruebas Page–Wootters / Lean 4, el horizonte paralelo de 73.14 µm, el complemento de Schur de Fisher, los testigos Mermin, las cribas de operadores biarmónicos con signo y la criba corona de siete compuertas conectan relojes en caída, bóvedas de piedra y poros vivos.">Four editorial movements—Foundations &amp; Bounds (ES.01–ES.03), Constraints &amp; Formal Proof (ES.04–ES.06), Horizons, Identifiability &amp; Multipartite Witnesses (ES.07–ES.09), and Movement IV · Coda &amp; Crown (ES.10–ES.11)—tracing how fluctuation-dissipation floors, DERIVED (NOT MEASURED) parent gates, Q_TUR ≥ 2 bounds, rank-nullity rigidity, Doob conditional survival, Page–Wootters / Lean 4 proofs, the 73.14 µm parallel horizon, Fisher Schur-complement identifiability, tripartite Mermin witnesses, signed biharmonic operator sieves, and the seven-gate chiral and entire-UV crown sieve connect falling clocks, stone vaults, and living pores.</p>
+      <p class="tp-standfirst" data-en="Four editorial movements—Foundations &amp; Bounds (ES.01–ES.03), Constraints &amp; Formal Proof (ES.04–ES.06), Horizons, Identifiability &amp; Multipartite Witnesses (ES.07–ES.09), and Movement IV · Coda &amp; Crown (ES.10–ES.12)—tracing how fluctuation-dissipation floors, DERIVED (NOT MEASURED) parent gates, Q_TUR ≥ 2 bounds, rank-nullity rigidity, Doob conditional survival, Page–Wootters / Lean 4 proofs, the 73.14 µm parallel horizon, Fisher Schur-complement identifiability, tripartite Mermin witnesses, signed biharmonic operator sieves, the seven-gate chiral and entire-UV crown sieve, and iso-P_o cycle-affinity gates connect falling clocks, stone vaults, and living pores." data-es="Cuatro movimientos editoriales —Fundamentos y Cotas (ES.01–ES.03), Restricciones y Prueba Formal (ES.04–ES.06), Horizontes, Identificabilidad y Testigos Multipartitos (ES.07–ES.09) y Movimiento IV · Coda y Corona (ES.10–ES.12)— que muestran cómo los pisos de fluctuación-disipación, las compuertas DERIVADO (NO MEDIDO), las cotas Q_TUR ≥ 2, la rigidez rango-nulidad, la supervivencia condicional de Doob, las pruebas Page–Wootters / Lean 4, el horizonte paralelo de 73.14 µm, el complemento de Schur de Fisher, los testigos Mermin, las cribas de operadores biarmónicos con signo, la criba corona de siete compuertas y las compuertas de afinidad cíclica iso-P_o conectan relojes en caída, bóvedas de piedra y poros vivos.">Four editorial movements—Foundations &amp; Bounds (ES.01–ES.03), Constraints &amp; Formal Proof (ES.04–ES.06), Horizons, Identifiability &amp; Multipartite Witnesses (ES.07–ES.09), and Movement IV · Coda &amp; Crown (ES.10–ES.12)—tracing how fluctuation-dissipation floors, DERIVED (NOT MEASURED) parent gates, Q_TUR ≥ 2 bounds, rank-nullity rigidity, Doob conditional survival, Page–Wootters / Lean 4 proofs, the 73.14 µm parallel horizon, Fisher Schur-complement identifiability, tripartite Mermin witnesses, signed biharmonic operator sieves, the seven-gate chiral and entire-UV crown sieve, and iso-P_o cycle-affinity gates connect falling clocks, stone vaults, and living pores.</p>
       <div class="tp-cross-scale-grid">
 {cards_html}
       </div>
@@ -5611,7 +5611,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         <a class="tp-track-chip" href="physics/">
           <span class="tp-track-chip-kicker" data-en="PILLAR III · 12 ESSAYS + 14-STEP SERIES" data-es="PILAR III · 12 ENSAYOS + SERIE DE 14 PASOS">PILLAR III · 12 ESSAYS + 14-STEP SERIES</span>
           <strong class="tp-track-chip-title" data-en="Multiscale &amp; Quantum Physics" data-es="Física Multiescala y Cuántica">Multiscale &amp; Quantum Physics</strong>
-          <span class="tp-track-chip-meta" data-en="Time &amp; Gravity (T.00–T.13) · 11 Cross-Scale Essays" data-es="Tiempo y Gravedad (T.00–T.13) · 11 Ensayos entre Escalas">Time &amp; Gravity (T.00–T.13) · 11 Cross-Scale Essays</span>
+          <span class="tp-track-chip-meta" data-en="Time &amp; Gravity (T.00–T.13) · 12 Cross-Scale Essays" data-es="Tiempo y Gravedad (T.00–T.13) · 12 Ensayos entre Escalas">Time &amp; Gravity (T.00–T.13) · 12 Cross-Scale Essays</span>
         </a>
         <a class="tp-track-chip" href="math/">
           <span class="tp-track-chip-kicker" data-en="PILLAR IV · 12 ESSAYS" data-es="PILAR IV · 12 ENSAYOS">PILLAR IV · 12 ESSAYS</span>
@@ -6191,7 +6191,7 @@ def render_llms_txt(catalog: dict) -> str:
             lines.append(f"- [Step {step_no} · {tg['code']} {tg['seo'][0]}]({page_url('timegravity/' + tg['slug'] + '/')}): {tg['seo'][1]}")
     lines.append("")
     from folios.essays import ESSAYS as CROSS_SCALE_ESSAYS  # noqa: E402
-    lines.append("## Cross-Scale Featured Essays · Clocks, Stone, and Living Matter (ES.01–ES.11)")
+    lines.append("## Cross-Scale Featured Essays · Clocks, Stone, and Living Matter (ES.01–ES.12)")
     lines.append("")
     lines.append(f"- [Cross-Scale Essays]({page_url('essays/')}): {PILLAR_SEO['essays'][1]}")
     for es_doc in CROSS_SCALE_ESSAYS:

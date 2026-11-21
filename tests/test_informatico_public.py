@@ -19,7 +19,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_all_48_skills_and_python_verifiers_exist_and_pass(self) -> None:
         skill_files = list(SKILLS.glob("*/*/SKILL.md"))
         py_files = list(SKILLS.glob("*/*/verify_*.py"))
-        self.assertEqual(len(skill_files), 91)  # +e14 (2026-11-21); +e13, +a13, +x07 (2026-11-20); cc01..cc03 (2026-11-15); m13..m15 withdrawn 2026-11-17 (-3)
+        self.assertEqual(len(skill_files), 92)  # +ES.12 (2026-11-21); +e14 (2026-11-21); +e13, +a13, +x07 (2026-11-20); cc01..cc03 (2026-11-15); m13..m15 withdrawn 2026-11-17 (-3)
         self.assertGreaterEqual(len(py_files), 1)
         for py in py_files:  # a verifier that cannot fail is not a verifier
             self.assertIn("--planted-defect", py.read_text(encoding="utf-8"), py.name)
@@ -40,7 +40,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_106_bilingual_pages_and_bounty_crucible_mounted(self) -> None:
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 202)  # +2: E.14 added 2026-11-21, EN + es-MX
+        self.assertEqual(len(locs), 204)  # +2: ES.12 added 2026-11-21, EN + es-MX
         self.assertTrue((RESEARCH / "about" / "index.html").is_file())
         self.assertTrue((RESEARCH / "es-mx" / "about" / "index.html").is_file())
         hub_html = (RESEARCH / "index.html").read_text(encoding="utf-8")

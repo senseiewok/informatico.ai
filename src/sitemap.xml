@@ -682,7 +682,7 @@
   </url>
   <url>
     <loc>https://informatico.ai/essays/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/"/>
@@ -775,6 +775,14 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/seven-gate-crown-sieve/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/seven-gate-crown-sieve/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/seven-gate-crown-sieve/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/essays/cycle-affinity-tur-gates/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/cycle-affinity-tur-gates/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/cycle-affinity-tur-gates/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/cycle-affinity-tur-gates/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/cycle-affinity-tur-gates/"/>
   </url>
   <url>
     <loc>https://informatico.ai/classics/golf-gti/</loc>
@@ -1490,7 +1498,7 @@
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/essays/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/"/>
@@ -1583,6 +1591,14 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/seven-gate-crown-sieve/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/seven-gate-crown-sieve/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/seven-gate-crown-sieve/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/essays/cycle-affinity-tur-gates/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/cycle-affinity-tur-gates/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/cycle-affinity-tur-gates/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/cycle-affinity-tur-gates/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/cycle-affinity-tur-gates/"/>
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/classics/golf-gti/</loc>

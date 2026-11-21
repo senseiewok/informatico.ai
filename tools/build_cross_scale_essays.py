@@ -828,6 +828,60 @@ def generate_essay_plates() -> dict[str, str]:
     p11_bytes = _encode_png(w, h, b11)
     (PLATES_DIR / "essay11.png").write_bytes(p11_bytes)
     hashes["essay11"] = hashlib.sha256(p11_bytes).hexdigest()[:8]
+
+    # Plate 12: essay12.png (Cycle Affinity & Irreversible Gates: 3-state iso-P_o cycle ring vs 4-state burst peak f(t), zero text)
+    b12 = _make_canvas(w, h, stone)
+    _fill_rect(b12, w, h, 36, 36, 582, 594, vellum)
+    _fill_rect(b12, w, h, 618, 36, 1164, 594, vellum)
+    _draw_line(b12, w, h, 600, 54, 600, 576, 3.0, ink, 0.85)
+    # Left panel: 3-state cyclic network C1 - C2 - O with outer driven flux ring and invariant P_o = 0.40 band
+    rcx, rcy = 309.0, 290.0
+    _draw_ring(b12, w, h, rcx, rcy, 152.0, 3.4, prussian, 0.88)
+    _draw_ring(b12, w, h, rcx, rcy, 118.0, 2.0, minium, 0.55)
+    tri_nodes = [
+        (rcx, rcy - 138.0, prussian),
+        (rcx - 122.0, rcy + 78.0, sienna),
+        (rcx + 122.0, rcy + 78.0, verdigris),
+    ]
+    for i12 in range(3):
+        na, nb = tri_nodes[i12], tri_nodes[(i12 + 1) % 3]
+        _draw_line(b12, w, h, na[0], na[1], nb[0], nb[1], 3.2, ink, 0.78)
+    for nx12, ny12, ncol12 in tri_nodes:
+        _draw_disc(b12, w, h, nx12, ny12, 24.0, vellum)
+        _draw_ring(b12, w, h, nx12, ny12, 24.0, 4.2, ncol12)
+        _draw_disc(b12, w, h, nx12, ny12, 9.5, ncol12)
+    # Flat iso-P_o = 0.40 horizon bar at bottom of left panel
+    _draw_line(b12, w, h, 96.0, 520.0, 522.0, 520.0, 4.0, verdigris, 0.92)
+    for dot_i in range(6):
+        _draw_disc(b12, w, h, 116.0 + dot_i * 76.0, 520.0, 6.5, prussian)
+    # Right panel: 4-state exit-time PDF f_eq(t) monotone decay vs f_drv(t) peaked curve (t_peak = 94 ms)
+    rx0, ry_bot, rw12, rh12 = 668.0, 526.0, 444.0, 380.0
+    _draw_line(b12, w, h, rx0, ry_bot, rx0 + rw12, ry_bot, 2.8, ink, 0.9)
+    _draw_line(b12, w, h, rx0, ry_bot, rx0, ry_bot - rh12 - 16.0, 2.8, ink, 0.9)
+    from folios.essays.e12_cycle_affinity_gates import open_subspace_exit_pdf
+
+    e1_12, e2_12, k12_12, k21_12 = 1.0, 5.0, 8.0, 8.0
+    prev_eq12, prev_dr12 = None, None
+    for s_i in range(90):
+        tv = (s_i / 89.0) * 0.65
+        px12 = rx0 + (tv / 0.65) * rw12
+        feq = open_subspace_exit_pdf(e1_12, e2_12, k12_12, k21_12, 1.0 / 6.0, 5.0 / 6.0, tv)
+        fdr = open_subspace_exit_pdf(e1_12, e2_12, k12_12, k21_12, 1.0, 0.0, tv)
+        py_eq12 = ry_bot - min(1.0, feq / 4.6) * rh12
+        py_dr12 = ry_bot - min(1.0, fdr / 4.6) * rh12
+        if prev_eq12 is not None:
+            _draw_line(b12, w, h, prev_eq12[0], prev_eq12[1], px12, py_eq12, 3.2, minium, 0.9)
+            _draw_line(b12, w, h, prev_dr12[0], prev_dr12[1], px12, py_dr12, 4.4, verdigris, 0.96)
+        prev_eq12 = (px12, py_eq12)
+        prev_dr12 = (px12, py_dr12)
+    pk_x12 = rx0 + (0.094 / 0.65) * rw12
+    pk_y12 = ry_bot - (2.0166 / 4.6) * rh12
+    _draw_line(b12, w, h, pk_x12, ry_bot, pk_x12, pk_y12, 2.0, prussian, 0.7)
+    _draw_disc(b12, w, h, pk_x12, pk_y12, 9.5, verdigris)
+    _draw_ring(b12, w, h, pk_x12, pk_y12, 15.0, 2.6, prussian)
+    p12_bytes = _encode_png(w, h, b12)
+    (PLATES_DIR / "essay12.png").write_bytes(p12_bytes)
+    hashes["essay12"] = hashlib.sha256(p12_bytes).hexdigest()[:8]
     return hashes
 
 
@@ -1588,6 +1642,66 @@ def render_instrument(essay: dict, is_es: bool = False) -> str:
       <p class="tp-essay-status" data-cs-status role="status"></p>
     </section>"""
 
+    if kind == "cycle_affinity":
+        svg_aria = (
+            "Observatorio interactivo de afinidad cíclica iso-Po, piso Q_TUR mayor o igual que 2 y ruptura de monotonicidad en cuatro estados"
+            if is_es
+            else "Interactive iso-Po cycle affinity, Q_TUR >= 2 dissipation floor, and 4-state burst monotonicity observatory"
+        )
+        po_init = "P_o = 0.4000 (plano)" if is_es else "P_o = 0.4000 (flat)"
+        panel3_init = (
+            "3 · Densidad 4 Estados: Eq. (guiones) vs. Impulsada (sólida)"
+            if is_es
+            else "3 · 4-State Burst PDF: Eq. (dashed) vs. Driven O₁→O₂ (solid)"
+        )
+        return f"""    <section id="instrument" class="tp-essay-observatory" data-cs-instrument="cycle_affinity" aria-labelledby="inst-heading">
+      <div class="tp-essay-obs-head">
+        <p class="tp-kicker" data-en="Interactive Iso-P_o Cycle Affinity &amp; Burst Peak Observatory · ES.12" data-es="Observatorio Interactivo de Afinidad Cíclica Iso-P_o y Picos de Ráfaga · ES.12">Interactive Iso-P_o Cycle Affinity &amp; Burst Peak Observatory · ES.12</p>
+        <h2 id="inst-heading" class="tp-h2" data-en="Flat Scalar P_o = 0.40 vs. Cycle Affinity A(J), Heterogeneous Q_TUR ≥ 2 &amp; Dual-Open Burst Peak" data-es="Escalar Plano P_o = 0.40 frente a Afinidad A(J), Q_TUR ≥ 2 Heterogénea y Pico de Ráfaga">Flat Scalar P_o = 0.40 vs. Cycle Affinity A(J), Heterogeneous Q_TUR ≥ 2 &amp; Dual-Open Burst Peak</h2>
+      </div>
+      <div class="tp-essay-obs-grid">
+        <svg class="tp-essay-svg" viewBox="0 0 560 285" role="img" aria-label="{a(svg_aria)}">
+          <rect x="8" y="8" width="544" height="269" rx="10" fill="var(--tp-stone)" stroke="var(--tp-rule)"/>
+          <text x="24" y="34" fill="var(--tp-ink)" font-size="11.5" font-weight="700" data-en="1 · Stationary Open Fraction P_o (Identically 0.4000 across all J ≥ 0)" data-es="1 · Fracción Abierta Estacionaria P_o (Idéntica en 0.4000 para todo J ≥ 0)">1 · Stationary Open Fraction P_o (Identically 0.4000 across all J ≥ 0)</text>
+          <rect x="24" y="42" width="230" height="16" rx="4" fill="var(--tp-vellum)" stroke="var(--tp-rule)"/>
+          <rect data-cs-bar="po" x="24" y="42" width="92.0" height="16" rx="4" fill="var(--tp-verdigris)"/>
+          <text data-cs-read="po" x="266" y="55" fill="var(--tp-ink)" font-family="monospace" font-size="12">{po_init}</text>
+
+          <text x="24" y="86" fill="var(--tp-ink)" font-size="11.5" font-weight="700" data-en="2 · Cycle Affinity A = ln(Φ⁺/Φ⁻) &amp; Q_TUR ≥ 2 Floor" data-es="2 · Afinidad Cíclica A = ln(Φ⁺/Φ⁻) y Piso Q_TUR ≥ 2">2 · Cycle Affinity A = ln(Φ⁺/Φ⁻) &amp; Q_TUR ≥ 2 Floor</text>
+          <rect x="24" y="94" width="230" height="16" rx="4" fill="var(--tp-vellum)" stroke="var(--tp-rule)"/>
+          <rect data-cs-bar="aff" x="24" y="94" width="115.2" height="16" rx="4" fill="var(--tp-prussian)"/>
+          <text data-cs-read="aff" x="266" y="107" fill="var(--tp-ink)" font-family="monospace" font-size="12">A = 4.007 k_B T · Q_TUR = 2.320</text>
+
+          <text x="24" y="138" fill="var(--tp-ink)" font-size="11.5" font-weight="700" data-en="3 · 4-State Burst PDF: Eq. (dashed) vs. Driven O₁→O₂ (solid)" data-es="3 · Densidad 4 Estados: Eq. (guiones) vs. Impulsada (sólida)">{panel3_init}</text>
+          <line x1="28" y1="252" x2="528" y2="252" stroke="var(--tp-ink)" stroke-width="1.3"/>
+          <line x1="28" y1="154" x2="28" y2="252" stroke="var(--tp-ink)" stroke-width="1.3"/>
+          <polyline data-ca-curve="eq" points="28,159 80,192 140,214 220,231 320,242 420,248 528,251" fill="none" stroke="var(--tp-minium)" stroke-width="2.2" stroke-dasharray="5 3"/>
+          <polyline data-ca-curve="drv" points="28,231 58,214 98,209 150,216 220,229 340,242 528,250" fill="none" stroke="var(--tp-verdigris)" stroke-width="3.0"/>
+          <circle data-ca-peak cx="100.3" cy="209.9" r="5.5" fill="var(--tp-prussian)" stroke="var(--tp-vellum)" stroke-width="1.6"/>
+          <text data-cs-read="burst" x="266" y="170" fill="var(--tp-ink)" font-family="monospace" font-size="11.5">f'_drv(0) = +31.0 s⁻² · t_peak = 94 ms</text>
+        </svg>
+        <div class="tp-essay-controls">
+          <label class="tp-essay-ctrl">
+            <span data-en="Cycle driving flux J (s⁻¹)" data-es="Flujo cíclico impulsor J (s⁻¹)">Cycle driving flux J (s⁻¹)</span>
+            <strong data-cs-read="flux">4.0 s⁻¹</strong>
+            <input type="range" min="0" max="12" step="0.5" value="4.0" data-cs-input="flux">
+          </label>
+          <label class="tp-essay-ctrl">
+            <span data-en="Open internal rate k₁₂ (O₁ → O₂, s⁻¹)" data-es="Tasa interna abierta k₁₂ (O₁ → O₂, s⁻¹)">Open internal rate k₁₂ (O₁ → O₂, s⁻¹)</span>
+            <strong data-cs-read="k12">8.0 s⁻¹</strong>
+            <input type="range" min="1" max="16" step="0.5" value="8.0" data-cs-input="k12">
+          </label>
+          <div class="tp-essay-readout-box">
+            <div><span data-en="Flux Ratio Φ⁺ / Φ⁻:" data-es="Razón de Flujo Φ⁺ / Φ⁻:">Flux Ratio Φ⁺ / Φ⁻:</span> <strong data-cs-read="ratio">55.0×</strong></div>
+            <div><span data-en="Entropy Rate σ / k_B:" data-es="Tasa de Entropía σ / k_B:">Entropy Rate σ / k_B:</span> <strong data-cs-read="sigma">16.03 s⁻¹</strong></div>
+            <div><span data-en="Eq. Slope f'_eq(0):" data-es="Pendiente Eq. f'_eq(0):">Eq. Slope f'_eq(0):</span> <strong data-cs-read="eqslope">−42.3 s⁻²</strong></div>
+          </div>
+          <button type="button" class="tp-cta" data-cs-knockout aria-pressed="false" data-en="Toggle Equilibrium-Entry Conflation Defect" data-es="Alternar Defecto de Entrada en Equilibrio">Toggle Equilibrium-Entry Conflation Defect</button>
+        </div>
+      </div>
+      <p class="tp-essay-status" data-cs-status role="status"></p>
+    </section>"""
+
     svg_aria = (
         "Cota de la Relación de Incertidumbre Termodinámica en Q_TUR = 2 con punto operativo en vivo"
         if is_es
@@ -1918,7 +2032,7 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
     cards_m1 = render_essay_cards(essays[:3], rel_res, is_es=is_es)
     cards_m2 = render_essay_cards(essays[3:6], rel_res, is_es=is_es)
     cards_m3 = render_essay_cards(essays[6:9], rel_res, is_es=is_es)
-    cards_m4 = render_essay_cards(essays[9:11], rel_res, is_es=is_es)
+    cards_m4 = render_essay_cards(essays[9:12], rel_res, is_es=is_es)
     aria_crumb = "Ruta de navegación" if is_es else "Breadcrumb"
     aria_rack1 = "Movimiento I: Pisos, Registros y Relojes" if is_es else "Movement I: Floors, Ledgers & Clocks"
     aria_rack2 = "Movimiento II: Celosías, Horizontes y Operadores Atemporales" if is_es else "Movement II: Frames, Horizons & Timeless Operators"
@@ -1952,12 +2066,12 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
     </section>"""
 
     m4_section = ""
-    if essays[9:11]:
+    if essays[9:12]:
         m4_section = f"""
     <section class="tp-issue-rack" aria-label="{aria_rack4}">
       <div class="tp-section-head">
-        <p class="tp-kicker" data-en="Movement IV · Coda &amp; Crown · ES.10–ES.11" data-es="Movimiento IV · Coda y Corona · ES.10–ES.11">Movement IV · Coda &amp; Crown · ES.10–ES.11</p>
-        <h2 class="tp-h2" data-en="Signed Biharmonic Sieves, Chiral Anomaly Locking, and the Seven-Gate Crown" data-es="Cribas Biarmónicas con Signo, Bloqueo Quiral de Anomalías y la Corona de Siete Compuertas">Signed Biharmonic Sieves, Chiral Anomaly Locking, and the Seven-Gate Crown</h2>
+        <p class="tp-kicker" data-en="Movement IV · Coda &amp; Crown · ES.10–ES.12" data-es="Movimiento IV · Coda y Corona · ES.10–ES.12">Movement IV · Coda &amp; Crown · ES.10–ES.12</p>
+        <h2 class="tp-h2" data-en="Signed Biharmonic Sieves, Chiral Locking, and Irreversible Cycle Gates" data-es="Cribas Biarmónicas, Bloqueo Quiral y Compuertas Cíclicas Irreversibles">Signed Biharmonic Sieves, Chiral Locking, and Irreversible Cycle Gates</h2>
       </div>
       <div class="tp-rack-grid">
 {cards_m4}
@@ -1976,15 +2090,15 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
       </ol>
     </nav>
     <section class="tp-hero">
-      <p class="tp-kicker" data-en="Featured Synthesis · 11 Standalone Essays · Four Movements &amp; Zero-Sorry Verification" data-es="Síntesis entre Escalas · 11 Ensayos Independientes · Cuatro Movimientos y Verificación Formal">Featured Synthesis · 11 Standalone Essays · Four Movements &amp; Zero-Sorry Verification</p>
+      <p class="tp-kicker" data-en="Featured Synthesis · 12 Standalone Essays · Four Movements &amp; Formal Verification" data-es="Síntesis entre Escalas · 12 Ensayos Independientes · Cuatro Movimientos y Verificación Formal">Featured Synthesis · 12 Standalone Essays · Four Movements &amp; Formal Verification</p>
       <h1 class="tp-h1" data-en="Cross-Scale Essays: Clocks, Stone, and Living Matter" data-es="Ensayos entre Escalas: Relojes, Piedra y Materia Viva">Cross-Scale Essays: Clocks, Stone, and Living Matter</h1>
-      <p class="tp-standfirst" data-en="Eleven standalone essays in four movements exploring where the same mathematical structures and verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, coupled timeless constraints, closed-form parallel horizons, Fisher Schur-complement identifiability, tripartite Mermin / active-clock witnesses, the four-gate biharmonic operator sieve, and the seven-gate chiral and entire-UV crown sieve—recur in models of 10⁻¹⁴ kg matter-wave diamonds, space-frame trusses, black-hole horizons, and nanoscale biological membranes." data-es="Once ensayos independientes en cuatro movimientos sobre dónde las mismas estructuras matemáticas y reglas de verificación —fluctuación-disipación, procedencia epistémica, incertidumbre termodinámica, rango-nulidad y microcausalidad, supervivencia condicional de Doob, ligaduras atemporales acopladas, horizontes paralelos cerrados, complementos de Schur de Fisher, testigos Mermin / relojes activos, la criba de operadores de cuatro compuertas y la criba corona quiral y UV entera de siete compuertas— reaparecen en modelos de diamantes de ondas de materia de 10⁻¹⁴ kg, celosías estructurales, horizontes de agujeros negros y membranas biológicas a nanoescala.">Eleven standalone essays in four movements exploring where the same mathematical structures and verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, coupled timeless constraints, closed-form parallel horizons, Fisher Schur-complement identifiability, tripartite Mermin / active-clock witnesses, the four-gate biharmonic operator sieve, and the seven-gate chiral and entire-UV crown sieve—recur in models of 10⁻¹⁴ kg matter-wave diamonds, space-frame trusses, black-hole horizons, and nanoscale biological membranes.</p>
+      <p class="tp-standfirst" data-en="Twelve standalone essays in four movements exploring where the same mathematical structures and verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, coupled timeless constraints, closed-form parallel horizons, Fisher Schur-complement identifiability, tripartite Mermin / active-clock witnesses, the four-gate biharmonic operator sieve, the seven-gate chiral and entire-UV crown sieve, and iso-P_o cycle-affinity gates—recur in models of 10⁻¹⁴ kg matter-wave diamonds, space-frame trusses, black-hole horizons, and nanoscale biological membranes." data-es="Doce ensayos independientes en cuatro movimientos sobre dónde las mismas estructuras matemáticas y reglas de verificación —fluctuación-disipación, procedencia epistémica, incertidumbre termodinámica, rango-nulidad y microcausalidad, supervivencia condicional de Doob, ligaduras atemporales acopladas, horizontes paralelos cerrados, complementos de Schur de Fisher, testigos Mermin / relojes activos, la criba de operadores de cuatro compuertas, la criba corona de siete compuertas y las compuertas de afinidad cíclica iso-P_o— reaparecen en modelos de diamantes de ondas de materia de 10⁻¹⁴ kg, celosías estructurales, horizontes de agujeros negros y membranas biológicas a nanoescala.">Twelve standalone essays in four movements exploring where the same mathematical structures and verification rules—fluctuation-dissipation, epistemic parent-row provenance, thermodynamic uncertainty, rank–nullity microcausality, Doob conditional survival, coupled timeless constraints, closed-form parallel horizons, Fisher Schur-complement identifiability, tripartite Mermin / active-clock witnesses, the four-gate biharmonic operator sieve, the seven-gate chiral and entire-UV crown sieve, and iso-P_o cycle-affinity gates—recur in models of 10⁻¹⁴ kg matter-wave diamonds, space-frame trusses, black-hole horizons, and nanoscale biological membranes.</p>
       <div class="tp-series-rack-ctas">
         <a class="tp-cta tp-cta-primary" href="mesoscopic-floor/" data-en="Start Movement I · ES.01 The Mesoscopic Floor →" data-es="Iniciar Movimiento I · ES.01 El Piso Mesoscópico →">Start Movement I · ES.01 The Mesoscopic Floor →</a>
         <a class="tp-cta" href="loophole-free-parallel-horizon/" data-en="Enter Movement III · ES.07–ES.09 Horizons &amp; Multipartite Clocks →" data-es="Entrar al Movimiento III · ES.07–ES.09 Horizontes y Relojes →">Enter Movement III · ES.07–ES.09 Horizontes y Relojes →</a>
-        <a class="tp-cta" href="four-gate-operator-sieve/" data-en="Read Coda · ES.10 The Four-Gate Operator Sieve →" data-es="Leer Coda · ES.10 La Criba de Operadores de Cuatro Compuertas →">Read Coda · ES.10 The Four-Gate Operator Sieve →</a>
-        <a class="tp-cta" href="seven-gate-crown-sieve/" data-en="Read Crown · ES.11 The Seven-Gate Crown Sieve →" data-es="Leer Corona · ES.11 La Criba Corona de Siete Compuertas →">Read Crown · ES.11 The Seven-Gate Crown Sieve →</a>
-        <a class="tp-cta" href="../timegravity/" data-en="Time &amp; Gravity Core Series (T.00–T.12) →" data-es="Serie Principal Tiempo y Gravedad (T.00–T.12) →">Time &amp; Gravity Core Series (T.00–T.12) →</a>
+        <a class="tp-cta" href="seven-gate-crown-sieve/" data-en="Read ES.11 · The Seven-Gate Crown Sieve →" data-es="Leer ES.11 · La Criba Corona de Siete Compuertas →">Read ES.11 · The Seven-Gate Crown Sieve →</a>
+        <a class="tp-cta" href="cycle-affinity-tur-gates/" data-en="Read Coda · ES.12 Cycle Affinity &amp; Irreversible Gates →" data-es="Leer Coda · ES.12 Afinidad Cíclica y Compuertas →">Read Coda · ES.12 Cycle Affinity &amp; Irreversible Gates →</a>
+        <a class="tp-cta" href="../timegravity/" data-en="Time &amp; Gravity Core Series (T.00–T.13) →" data-es="Serie Principal Tiempo y Gravedad (T.00–T.13) →">Time &amp; Gravity Core Series (T.00–T.13) →</a>
       </div>
     </section>
     <section class="tp-issue-rack" aria-label="{aria_rack1}">
