@@ -119,7 +119,7 @@ def url_to_file(url: str) -> Path | None:
 class SeoCopyBudgets(unittest.TestCase):
     def test_every_essay_has_hand_written_copy_in_both_languages(self):
         slugs = {d.name for p in PILLARS for d in (RESEARCH / p).iterdir() if d.is_dir()}
-        self.assertEqual(len(slugs), 51)  # +1: E.14 added 2026-11-21
+        self.assertEqual(len(slugs), 52)  # +1: A.14 added 2026-11-21
         self.assertEqual(set(FOLIO_SEO), slugs)
 
     def test_titles_and_descriptions_are_whole_and_within_budget(self):
@@ -140,14 +140,14 @@ class SeoCopyBudgets(unittest.TestCase):
             i = 0 if key == "en" else 2
             titles = [v[i] for v in FOLIO_SEO.values()] + [v[i] for v in BOUNTY_SEO.values()]
             descs = [v[i + 1] for v in FOLIO_SEO.values()] + [v[i + 1] for v in BOUNTY_SEO.values()]
-            self.assertEqual(len(set(titles)), 57, f"duplicate {key} title")  # +1: E.14 added 2026-11-21
-            self.assertEqual(len(set(descs)), 57, f"duplicate {key} description")  # +1: E.14 added 2026-11-21
+            self.assertEqual(len(set(titles)), 58, f"duplicate {key} title")  # +1: A.14 added 2026-11-21
+            self.assertEqual(len(set(descs)), 58, f"duplicate {key} description")  # +1: A.14 added 2026-11-21
         for p, (t_en, d_en, t_es, d_es) in PILLAR_SEO.items():
             for t in (t_en, t_es):
                 self.assertTrue(20 <= len(t) <= 70, f"{p}: {t!r}")
             for d in (d_en, d_es):
                 self.assertTrue(110 <= len(d) <= 158 and d.endswith("."), f"{p}: {d!r}")
-        t_en, d_en, t_es, d_es = (x.replace("{total}", "51") for x in HUB_SEO)  # +1: E.14 added 2026-11-21
+        t_en, d_en, t_es, d_es = (x.replace("{total}", "52") for x in HUB_SEO)  # +1: A.14 added 2026-11-21
         self.assertTrue(20 <= len(t_en) <= 70 and 20 <= len(t_es) <= 70)
         self.assertTrue(110 <= len(d_en) <= 158 and 110 <= len(d_es) <= 158)
 
@@ -155,7 +155,7 @@ class SeoCopyBudgets(unittest.TestCase):
 class BuiltPages(unittest.TestCase):
     def test_45_pages_each_have_a_spanish_twin_with_reciprocal_hreflang(self):
         listed = pages()
-        self.assertEqual(len(listed), 64)  # +1: E.14 added 2026-11-21
+        self.assertEqual(len(listed), 65)  # +1: A.14 added 2026-11-21
         for path, en_file, es_file in listed:
             self.assertTrue(es_file.is_file(), f"missing Spanish twin of /{path}")
             en, es = parse(en_file), parse(es_file)
@@ -277,14 +277,14 @@ class SiteFiles(unittest.TestCase):
     def test_sitemap_lists_both_languages_with_alternates_and_real_dates(self):
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 202)  # +2: E.14 added 2026-11-21, EN + es-MX
-        self.assertEqual(len(set(locs)), 202)  # +2: E.14 added 2026-11-21, EN + es-MX
-        self.assertEqual(sum("/es-mx/" in u for u in locs), 101)  # +1: E.14 added 2026-11-21
+        self.assertEqual(len(locs), 204)  # +2: A.14 added 2026-11-21, EN + es-MX
+        self.assertEqual(len(set(locs)), 204)  # +2: A.14 added 2026-11-21, EN + es-MX
+        self.assertEqual(sum("/es-mx/" in u for u in locs), 102)  # +1: A.14 added 2026-11-21
         self.assertNotIn("lang=es", xml)
         for loc in locs:
             self.assertIsNotNone(url_to_file(loc))
             self.assertTrue(url_to_file(loc).is_file(), loc)
-        self.assertEqual(xml.count('hreflang="es-MX"'), 202)  # +2: E.14 added 2026-11-21
+        self.assertEqual(xml.count('hreflang="es-MX"'), 204)  # +2: A.14 added 2026-11-21
         dates = set(re.findall(r"<lastmod>([^<]+)</lastmod>", xml))
         for d in dates:
             self.assertRegex(d, r"^\d{4}-\d{2}-\d{2}$")
@@ -293,7 +293,7 @@ class SiteFiles(unittest.TestCase):
         text = (RESEARCH / "llms.txt").read_text(encoding="utf-8")
         self.assertTrue(text.startswith("# Informatico.ai\n"))
         urls = re.findall(r"\]\((https://informatico\.ai/[^)]*)\)", text)
-        self.assertEqual(len(urls), 100)  # +1: E.14 added 2026-11-21. CC.01-03 + 4 hubs + 51 essays + bounties hub + 6 bounty folios + toolbox hub + 7 tools + Time & Gravity hub + T.01-T.13 + Cross-Scale Essays hub + 11 essays + about
+        self.assertEqual(len(urls), 101)  # +1: A.14 added 2026-11-21. CC.01-03 + 4 hubs + 52 essays + bounties hub + 6 bounty folios + toolbox hub + 7 tools + Time & Gravity hub + T.01-T.13 + Cross-Scale Essays hub + 11 essays + about
         for u in urls:
             self.assertTrue(url_to_file(u).is_file(), u)
 

@@ -1,8 +1,8 @@
 # Informatico.ai
 
-> 51 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
+> 52 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
 
-Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (91 SKILL.md companions, 42 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 7 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
+Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (92 SKILL.md companions, 43 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 7 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
 
 ## Welcome, agents (and the people who work with you)
 
@@ -38,7 +38,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 
 ## Architecture
 
-- [Architecture](https://informatico.ai/architecture/): Twelve interactive essays on architecture: stone vaults, timber gridshells, Barragán's color, sky-cooling roofs and facades that move with humidity and sun.
+- [Architecture](https://informatico.ai/architecture/): Fourteen interactive essays on architecture: stone vaults, timber gridshells, thin concrete shells, Barragán's color and radiative sky-cooling roofs.
 - [A.01 Funicular Thrust Surfaces in Stone and Timber Shells](https://informatico.ai/architecture/a01/): How a compression-only stone vault stands when its thrust line stays inside the masonry, with a middle-third check and a modelled springer node.
 - [A.02 Reciprocal Timber Gridshells (Nexorades)](https://informatico.ai/architecture/a02/): How bolt-free reciprocal timber frames, where each beam rests on its neighbor, turn shell thrust into local bending and span large roofs with short pieces.
 - [A.03 Double-Skin Facades and Buoyancy Stack Ventilation](https://informatico.ai/architecture/a03/): How the thermosiphon stack effect and solar shading inside multi-story ventilated glass cavities could reduce cooling loads, in a stack-draft model.
@@ -52,6 +52,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 - [A.11 3D Polyhedral Graphic Statics and Stone Vaults](https://informatico.ai/architecture/a11/): How James Clerk Maxwell's reciprocal figures and polyhedral graphic statics, with tools like COMPAS, shape compression-only vaults, as a design study.
 - [A.12 Tensegrity Cable Domes and Sky-Cooling Canopies](https://informatico.ai/architecture/a12/): A design study of how the floating-compression tensegrity of Snelson and Fuller could carry an 8–13 μm radiative sky-cooling membrane over a civic canopy.
 - [A.13 Heinz Isler's Thin-Shell Domes and Buckling](https://informatico.ai/architecture/a13/): How inverted hanging cloth shapes compression-only concrete shells, and why inward dimples govern elastic buckling below Zoelly's classical limit.
+- [A.14 Felix Candela's Hypar Shells and Membrane Shear](https://informatico.ai/architecture/a14/): How straight timber boards form doubly curved hyperbolic paraboloid concrete umbrellas, and where Pucher's pure-shear model reaches its edge limits.
 
 ## Physics
 

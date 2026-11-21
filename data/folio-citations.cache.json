@@ -559,6 +559,22 @@
     "title": "Useful daylight illuminances: A replacement for daylight factors",
     "year": 2006
   },
+  "doi:10.1016/j.engstruct.2020.111156": {
+    "fetched": "2026-11-21",
+    "first_author": "Wang",
+    "found": true,
+    "journal": "Engineering Structures",
+    "title": "Structural evaluation of Félix Candela’s 8-sided hyperbolic paraboloidal umbrellas",
+    "year": 2020
+  },
+  "doi:10.1016/j.engstruct.2022.114577": {
+    "fetched": "2026-11-21",
+    "first_author": "Wang",
+    "found": true,
+    "journal": "Engineering Structures",
+    "title": "Structural analysis of Félix Candela’s hexagonal hyperbolic paraboloidal umbrellas",
+    "year": 2022
+  },
   "doi:10.1016/j.ijmecsci.2018.01.010": {
     "fetched": "2026-11-14",
     "first_author": "Suiker",
@@ -1094,6 +1110,14 @@
     "journal": "Journal of Geotechnical and Geoenvironmental Engineering",
     "title": "Shaft Capacity of Continuous Flight Auger Piles in Sand",
     "year": 2009
+  },
+  "doi:10.1061/(asce)st.1943-541x.0000144": {
+    "fetched": "2026-11-21",
+    "first_author": "Billington",
+    "found": true,
+    "journal": "Journal of Structural Engineering",
+    "title": "Structural Art and the Example of Félix Candela",
+    "year": 2010
   },
   "doi:10.1061/9780784415788": {
     "fetched": "2026-11-04",
@@ -2767,6 +2791,22 @@
     "title": "Capitalizing on the heterogeneous effects of CFTR nonsense and frameshift variants to inform therapeutic strategy for cystic fibrosis",
     "year": 2018
   },
+  "doi:10.14359/8024": {
+    "fetched": "2026-11-21",
+    "first_author": "",
+    "found": true,
+    "journal": "ACI Journal Proceedings",
+    "title": "General Formulas for Membrane Stresses in Hyperbolic Paraboloidical Shells",
+    "year": 1960
+  },
+  "doi:10.14359/8026": {
+    "fetched": "2026-11-21",
+    "first_author": "",
+    "found": true,
+    "journal": "ACI Journal Proceedings",
+    "title": "Hyperbolic Paraboloidal Umbrella Shells under Vertical Loads",
+    "year": 1960
+  },
   "doi:10.1515/crll.1989.399.1": {
     "fetched": "2026-11-04",
     "first_author": "",
@@ -2903,6 +2943,14 @@
     "title": "Conditional brownian motion and the boundary limits of harmonic functions",
     "year": 1957
   },
+  "doi:10.2749/101686611x13049248220564": {
+    "fetched": "2026-11-21",
+    "first_author": "Garlock",
+    "found": true,
+    "journal": "Structural Engineering International",
+    "title": "Eminent Structural Engineer: Félix Candela—Structural Artist of Thin Shell Concrete Forms",
+    "year": 2011
+  },
   "doi:10.3233/fde-150040": {
     "fetched": "2026-11-14",
     "first_author": "Karanouh",
@@ -2942,6 +2990,14 @@
     "journal": "Polymers",
     "title": "Influence of Temperature on the Mechanical Behavior of Lead/Rubber Bearings",
     "year": 2026
+  },
+  "doi:10.3989/ic.10.040": {
+    "fetched": "2026-11-21",
+    "first_author": "Cassinello",
+    "found": true,
+    "journal": "Informes de la Construcción",
+    "title": "Félix Candela. En memoria (1910-1997). Del cascarón de hormigón a las estructuras ligeras del s. XXI",
+    "year": 2010
   },
   "doi:10.4007/annals.2015.182.1.9": {
     "fetched": "2026-11-07",
