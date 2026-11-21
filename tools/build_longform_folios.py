@@ -243,11 +243,11 @@ VOLUMES_SPEC = [
         "volume": 7,
         "code": "VOL. 07",
         "roman": "Volume VII",
-        "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY & FUNICULAR THIN-SHELL BUCKLING · 2 FOLIOS",
-        "title": "Biot 3D Poroelasticity & Heinz Isler's Thin-Shell Concrete Domes",
-        "subtitle": "Volume VII opens with Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage) and Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns).",
+        "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY, VADOSE SUCTION & FUNICULAR THIN-SHELL BUCKLING · 3 FOLIOS",
+        "title": "Biot 3D Poroelasticity, Unsaturated Suction Stress & Heinz Isler's Thin-Shell Concrete Domes",
+        "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), and Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns).",
         "cadence": "Verifier-gated Living Edition release",
-        "folios": ["e13", "a13"],
+        "folios": ["e13", "e14", "a13"],
     },
 ]
 
@@ -2461,8 +2461,8 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
         lead_series = ""
         rack_cls = "tp-issue-rack tp-issue-rack-headed"
         rack_head = """      <div class="tp-issue-rack-head">
-        <p class="tp-kicker" data-en="Standalone Engineering Monographs · E.01–E.13" data-es="Monografías Independientes de Ingeniería · E.01–E.13">Standalone Engineering Monographs · E.01–E.13</p>
-        <h2 class="tp-h2" data-en="Thirteen Systems &amp; Mechanics Monographs" data-es="Trece Monografías de Sistemas y Mecánica">Thirteen Systems &amp; Mechanics Monographs</h2>
+        <p class="tp-kicker" data-en="Standalone Engineering Monographs · E.01–E.14" data-es="Monografías Independientes de Ingeniería · E.01–E.14">Standalone Engineering Monographs · E.01–E.14</p>
+        <h2 class="tp-h2" data-en="Fourteen Systems &amp; Mechanics Monographs" data-es="Catorce Monografías de Sistemas y Mecánica">Fourteen Systems &amp; Mechanics Monographs</h2>
       </div>
 """
     else:
@@ -5599,9 +5599,9 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
       </figure>
       <nav class="tp-cover-track-strip" aria-label="{strip_aria}">
         <a class="tp-track-chip" href="engineering/">
-          <span class="tp-track-chip-kicker" data-en="PILLAR I · 13 ESSAYS" data-es="PILAR I · 13 ENSAYOS">PILLAR I · 13 ESSAYS</span>
+          <span class="tp-track-chip-kicker" data-en="PILLAR I · 14 ESSAYS" data-es="PILAR I · 14 ENSAYOS">PILLAR I · 14 ESSAYS</span>
           <strong class="tp-track-chip-title" data-en="Engineering &amp; Construction" data-es="Ingeniería y Construcción">Engineering &amp; Construction</strong>
-          <span class="tp-track-chip-meta" data-en="13 Folios · Bridges, TBM, SIMP, Biot · Cult Classics (CC.01 &amp; CC.03)" data-es="13 Folios · Puentes, TBM, SIMP, Biot · Clásicos (CC.01 y CC.03)">13 Folios · Bridges, TBM, SIMP, Biot · Cult Classics (CC.01 &amp; CC.03)</span>
+          <span class="tp-track-chip-meta" data-en="14 Folios · Bridges, TBM, Biot, Suction · Cult Classics (CC.01 &amp; CC.03)" data-es="14 Folios · Puentes, TBM, Biot, Succión · Clásicos (CC.01 y CC.03)">14 Folios · Bridges, TBM, Biot, Suction · Cult Classics (CC.01 &amp; CC.03)</span>
         </a>
         <a class="tp-track-chip" href="architecture/">
           <span class="tp-track-chip-kicker" data-en="PILLAR II · {arch_n} ESSAYS" data-es="PILAR II · {arch_n} ENSAYOS">PILLAR II · {arch_n} ESSAYS</span>

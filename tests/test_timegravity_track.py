@@ -58,7 +58,7 @@ def run(cmd: list[str], timeout: int = 60) -> subprocess.CompletedProcess:
 class TimeGravityTrackTests(unittest.TestCase):
     def test_folio_count_is_still_48_and_the_track_sits_beside_it(self) -> None:
         count = sum(1 for p in ("math", "physics", "engineering", "architecture") for d in (RESEARCH / p).iterdir() if d.is_dir())
-        self.assertEqual(count, 50)  # +2: E.13, A.13 added 2026-11-20
+        self.assertEqual(count, 51)  # +1: E.14 added 2026-11-21
         self.assertFalse((RESEARCH / "physics" / "t01").exists(), "T pages must not live inside a pillar")
         self.assertTrue((TG / "index.html").is_file())
         self.assertTrue((TG / "t01" / "index.html").is_file())
@@ -264,7 +264,7 @@ class TimeGravityTrackTests(unittest.TestCase):
         self.assertIn("(https://informatico.ai/timegravity/)", llms)
         self.assertIn("(https://informatico.ai/timegravity/t01/)", llms)
         self.assertIn("(https://informatico.ai/timegravity/t13/)", llms)
-        self.assertIn("90 SKILL.md companions", llms)  # +E.13, +A.13, +X.07 (2026-11-20); CC.01..CC.03; m13..m15 withdrawn 2026-11-17 (-3)
+        self.assertIn("91 SKILL.md companions", llms)  # +E.14 (2026-11-21); +E.13, +A.13, +X.07 (2026-11-20); CC.01..CC.03; m13..m15 withdrawn 2026-11-17 (-3)
         self.assertLess(llms.index("timegravity/t02/"), llms.index("timegravity/t01/"))
         self.assertIn("## Time & Gravity", llms)
 
