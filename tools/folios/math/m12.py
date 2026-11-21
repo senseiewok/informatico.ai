@@ -113,9 +113,8 @@ FOLIO = {'folio_id': 'M.12',
                      '2^-164.8 and 2^-174.8 for ML-KEM-512/768/1024) and noise widths from Table '
                      '2 (eta1 = 3, 2, 2; eta2 = 2) rather than deriving them from a rule of '
                      'thumb.',
-                     'Before citing a Lean file, confirm it exists in the repository, and report '
-                     'its README claims as the repository\'s statements unless you have built it '
-                     'yourself.']},
+                     'Before citing a Lean file, check it exists in the repository, and report its '
+                     'README claims as repository statements unless you built it.']},
  'revisions': [{'edition': 'REV 1.1',
                 'date': '2026-11-14',
                 'summary': 'REV 1.1 (Redated 2026-11-14): Grounding revision. The files '
@@ -231,13 +230,13 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'Formalising a reduction in Lean 4 removes one source of doubt: a theorem whose '
                 'proof uses no sorry and no extra axioms has been checked by the kernel, though '
                 'the statement may still not say what was intended. Moving from factoring to '
-                'module lattices is the current best judgement of how to resist quantum '
+                'module lattices is the current best judgment of how to resist quantum '
                 'attackers; it is a well-studied bet, not a guarantee.',
  'pullquote': '"Human intuition can be fooled by a long reduction or a subtle edge case. A '
               'proof assistant checks each formal step, but only for the statement as written, '
               'and only if someone builds it."',
  'chronology': [('1994–1995',
-                 'Peter Shor publishes polynomial-time quantum factoring; Andrew Wiles proves '
+                 'Peter Shor publishes polynomial-time quantum factoring; Andrew Wiles resolves '
                  "Fermat's Last Theorem (DOI 10.2307/2118559)."),
                 ('2005–2018',
                  'Oded Regev introduces Learning With Errors (LWE) with a quantum reduction from '
@@ -332,7 +331,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                   'Lean 4 formalisations, the README of https://github.com/teorth/pfr describes '
                   'a Lean 4 formalisation of the polynomial Freiman–Ruzsa conjecture, and the '
                   'README of https://github.com/deepseek-ai/DeepSeek-Prover-V2 describes a '
-                  'language model for formal theorem proving in Lean 4. The libraries aim at '
+                  'language model for formal reasoning in Lean 4. The libraries aim at '
                   'privacy that resists known quantum attacks; the repositories, by their own '
                   'account, aim at mathematics whose formalised parts a proof checker accepts. '
                   'Neither offers unbreakable security or freedom from error.',
