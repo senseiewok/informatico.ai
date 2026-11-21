@@ -473,6 +473,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/math/m13/"/>
   </url>
   <url>
+    <loc>https://informatico.ai/math/m14/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/math/m14/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/math/m14/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/math/m14/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/math/m14/"/>
+  </url>
+  <url>
     <loc>https://informatico.ai/bounties/</loc>
     <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/bounties/"/>
@@ -1311,6 +1319,14 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/math/m13/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/math/m13/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/math/m13/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/math/m14/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/math/m14/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/math/m14/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/math/m14/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/math/m14/"/>
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/bounties/</loc>

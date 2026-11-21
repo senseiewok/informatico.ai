@@ -1,7 +1,7 @@
 {
   "version": "7.0.0",
-  "title": "Informatico.ai — 7-Volume, 52-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
-  "total_folios": 52,
+  "title": "Informatico.ai — 7-Volume, 55-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
+  "total_folios": 55,
   "pillars": {
     "engineering": [
       {
@@ -6406,6 +6406,120 @@
           "retracted": false,
           "summary": "Scite Smart Citation Index entry for Lovasz 1979, \"On the Shannon capacity of a graph\" (IEEE Transactions on Information Theory, DOI 10.1109/TIT.1979.1055985), fetched 2026-11-21: 1,779 citing publications (15 supporting, 1,482 mentioning, 0 contrasting) and zero retraction notices. These counts describe that foundational paper, not this folio."
         }
+      },
+      {
+        "folio_id": "M.14",
+        "slug": "m14",
+        "pillar": "math",
+        "category_code": "M",
+        "parent_folios": [
+          "M.09",
+          "M.12"
+        ],
+        "lineage_mode": "SYNTHESIS · Synthesizes M.09 Energy Transport & M.12 Lattice Geometry",
+        "title": "Sphere Packing in Dimensions 3, 4, 8 & 24: Cohn–Elkies Bounds, Modular Functions & Open Gaps",
+        "subtitle": "Synthesizing Folio M.09 energy transport and Folio M.12 lattice geometry: how Henry Cohn and Noam Elkies turned sphere packing into Fourier linear programming, how Maryna Viazovska and collaborators closed dimensions 8 and 24 via modular forms, and why dimension 4 and asymptotic space remain open.",
+        "date_published": "2026-11-21",
+        "date_redated": "2026-11-21",
+        "current_edition": "REV 1.0",
+        "status_badge": "SPHERE PACKING & LP BOUNDS · REV 1.0",
+        "primary_kernel": "skills/math/m14/verify_m14_sphere_packing.py",
+        "governing_law": "Δ_d ≤ Vol(B_d(r_cut/2)) · f(0)/f̂(0) · f(x) ≤ 0 (|x| ≥ r_cut) · f̂(t) ≥ 0 · Δ_8 = π⁴/384 · Δ_24 = π¹²/12!",
+        "colophon": {
+          "identifier": "M.14 · Sphere Packing, Cohn–Elkies LP & Open Gaps · REV 1.0",
+          "kernels": "Laguerre–Gaussian Fourier Eigenbasis · Descartes Shift Check · Golay G_24 Leech Enumeration",
+          "benchmarks": "Offline model values: Δ_8(E_8) = 0.253670 (τ_8 = 240; deg-5 LP 0.303541) · Δ_24(Λ_24) = 0.001930 (τ_24 = 196,560; deg-5 LP 0.008955) · d=4 open gap (0.616850 vs 0.672477)",
+          "bridge": "Synthesizes M.09/M.12"
+        },
+        "sliders": [
+          {
+            "label": "Euclidean Dimension (d)",
+            "min": 2,
+            "max": 24,
+            "step": 1,
+            "value": 8,
+            "unit": "d = "
+          },
+          {
+            "label": "Laguerre Polynomial Degree (M)",
+            "min": 3,
+            "max": 5,
+            "step": 2,
+            "value": 5,
+            "unit": "M = "
+          }
+        ],
+        "steps": [
+          "Stage 1 (Lattice Geometry & Kissing Numbers from d = 2 to d = 24): Packing equal spheres in Euclidean space asks what fraction of volume non-overlapping balls can fill. In dimension 2 the hexagonal lattice A_2 fills π/√12 ≈ 0.906900 with 6 neighbors; in dimension 3, Hales et al. (2017, DOI 10.1017/fmp.2017.1) completed the formal Flyspeck check of the Kepler conjecture at π/(3√2) ≈ 0.740480 with 12 neighbors. In dimension 4, the checkerboard lattice D_4 has density π²/16 ≈ 0.616850 and Musin (2008, DOI 10.4007/annals.2008.168.1) settled the kissing number at τ_4 = 24, yet packing optimality in dimension 4 remains open.",
+          "Stage 2 (Cohn–Elkies Fourier Linear Programming Duality): Cohn and Elkies (2003, DOI 10.4007/annals.2003.157.689) showed that any radial Schwartz function f with f(0) = f̂(0) > 0, dual non-negativity f̂(t) ≥ 0 everywhere, and primal non-positivity f(x) ≤ 0 for |x| ≥ r_cut yields an upper bound Δ_d ≤ Vol(B_d(r_cut/2)) · f(0)/f̂(0) via the Poisson summation formula. Writing f in the Fourier eigenbasis ψ_k(x) = L_k^(d/2−1)(2π|x|²) exp(−π|x|²) with exact eigenvalue (−1)^k lets our offline verifier construct rational Laguerre–Gaussian test polynomials whose shifted polynomial P(u_cut + w) has every coefficient ≤ 0.",
+          "Stage 3 (Viazovska’s Modular Magic Functions in d = 8 and d = 24): In 2017, Viazovska (DOI 10.4007/annals.2017.185.3.7) constructed an infinite modular-form eigenfunction matching the E_8 root lattice (τ_8 = 240, Δ_8 = π⁴/384 ≈ 0.253670) with double roots at every non-minimal shell √(2k). Days later, Cohn, Kumar, Miller, Radchenko, and Viazovska (DOI 10.4007/annals.2017.185.3.8) extended the modular construction to the 24-dimensional Leech lattice Λ_24 (Δ_24 = π¹²/12! ≈ 0.001930, τ_24 = 196,560 minimal vectors built from the 759 octads of the extended binary Golay code G_24), and later established universal optimality across radial potentials (2022, DOI 10.4007/annals.2022.196.3.3).",
+          "Stage 4 (Open Hypothesis, Tier T0–T2, and Falsification Condition): Hypothesis (Tier T0–T2): finite-degree Laguerre–Gaussian test functions shrink the Cohn–Elkies upper bound monotonically from degree 3 to degree 5 (0.346486 → 0.303541 in d = 8; 0.087466 → 0.008955 in d = 24; 0.700415 → 0.672477 in d = 4), yet leave a roughly 9.0% gap above D_4 in dimension 4 while recent preprints push high-dimensional lower bounds upward via graph independence (arXiv:2312.10026) and stochastic ellipsoids (arXiv:2504.05042). This polynomial gap hypothesis would be falsified if an explicit non-lattice packing in dimension 4 exceeded π²/16 or if an admissible degree-5 Laguerre polynomial dropped below 0.616850; our deterministic checks inspect finite dimensions only and do not re-derive the asymptotic preprint bounds."
+        ],
+        "readouts": [
+          {
+            "label": "Lattice Packing Density (Δ_d)",
+            "value": "0.253670 (E_8, π^4/384, τ = 240)"
+          },
+          {
+            "label": "Laguerre Cohn–Elkies Bound (M = 5)",
+            "value": "0.303541 (r_cut = 1.6683, model)"
+          },
+          {
+            "label": "Polynomial-to-Lattice Ratio",
+            "value": "1.1966x (Viazovska modular limit: 1.0000x)"
+          },
+          {
+            "label": "Dimension Optimality Status",
+            "value": "E_8 MATCHED BY VIAZOVSKA LP LIMIT (d = 8)"
+          }
+        ],
+        "spec_plate": {
+          "division": "COMBINATORIAL & HARMONIC GEOMETRY / COHN–ELKIES LINEAR PROGRAMMING",
+          "title": "Exact Rational Laguerre–Gaussian Bounds, E_8 & Golay G_24 Leech Lattice Enumeration",
+          "body": "Offline verification specification: under the Fourier transform f̂(t) = ∫ f(x) exp(−2πi x·t) dx, radial eigenfunctions L_k^(d/2−1)(2π|x|²) exp(−π|x|²) carry eigenvalue (−1)^k. Setting P̂(u) = (u + α)∏(u − s_j)² in exact rational arithmetic guarantees f̂(t) ≥ 0, while checking that every coefficient of shifted P(u_cut + w) is ≤ 0 establishes f(x) ≤ 0 for |x| ≥ r_cut. Finite-degree bounds (M = 3, 5) strictly bound lattice densities from above without reaching the infinite modular-form optimum.",
+          "meta": "Primary anchors: Rogers 1958 (DOI 10.1112/plms/s3-8.4.609) · Cohn & Elkies 2003 (DOI 10.4007/annals.2003.157.689) · Musin 2008 (DOI 10.4007/annals.2008.168.1) · Viazovska 2017 (DOI 10.4007/annals.2017.185.3.7) · CKMRV 2017 (DOI 10.4007/annals.2017.185.3.8)"
+        },
+        "sidenote_1": {
+          "kicker": "SIDENOTE M.14-A · FOURIER EIGENVALUE PARITY & WHY ODD POLYNOMIAL DEGREE MATTERS",
+          "body": "In the Laguerre–Gaussian radial basis ψ_k(x) = L_k^(d/2−1)(2π|x|²) exp(−π|x|²), even-index modes have Fourier eigenvalue +1 while odd-index modes have eigenvalue −1. Choosing an odd-degree dual polynomial P̂(u) = (u + α)∏(u − s_j)² keeps P̂(u) ≥ 0 everywhere on [0, ∞) via positive leading term +u^(2m+1), while the (−1)^(2m+1) flip drives the primal polynomial P(u) → −∞ as u → ∞ so f(x) ≤ 0 holds past r_cut."
+        },
+        "sidenote_2": {
+          "kicker": "SIDENOTE M.14-B · FROM THE 24-BIT GOLAY CODE G_24 TO 196,560 LEECH SPHERES",
+          "body": "The Leech lattice Λ_24 achieves density π¹²/12! ≈ 0.001930 without a single root vector of squared norm 2. Its 196,560 minimal vectors of squared norm 4 (unscaled norm² = 32 in (1/√8) ℤ²⁴ coordinates) decompose cleanly via the 4,096 codewords of the extended binary Golay code G_24: 1,104 Type A vectors of shape ((±4)², 0²²), 97,152 octad vectors from 759 weight-8 codewords (759 × 2⁷), and 98,304 parity vectors of shape ((±1)²³, ∓3) (24 × 2¹²), verified by direct codeword enumeration in verify_m14_sphere_packing.py."
+        },
+        "skill": {
+          "filename": "sphere-packing-cohn-elkies-SKILL.md",
+          "name": "sphere-packing-cohn-elkies",
+          "description": "AI-agnostic harmonic analysis and lattice geometry skill for Cohn-Elkies Fourier linear programming bounds, Laguerre-Gaussian radial eigenfunctions, E8 and Leech lattice kissing counts, and open packing gaps.",
+          "rules": [
+            "Fix the Fourier normalization f_hat(t) = integral f(x) exp(-2*pi*i x.t) dx so the radial eigenfunctions L_k^(d/2 - 1)(2*pi*|x|^2) exp(-pi*|x|^2) carry exact eigenvalue (-1)^k.",
+            "Check primal non-positivity f(x) <= 0 for |x| >= r_cut algebraically in exact rational arithmetic by checking that every coefficient of the shifted polynomial P(u_cut + w) is <= 0.",
+            "Distinguish settled kissing numbers from open packing densities: Musin (2008) settled tau_4 = 24 in dimension 4, while optimal sphere packing density Delta_4 >= pi^2/16 remains open.",
+            "Report asymptotic lower-bound preprints (Campos et al. arXiv:2312.10026; Klartag arXiv:2504.05042) as unrefereed high-dimensional scaling bounds separate from fixed-dimension finite checks."
+          ]
+        },
+        "revisions": [
+          {
+            "edition": "REV 1.0",
+            "date": "2026-11-21",
+            "summary": "REV 1.0 (Published 2026-11-21): Volume VII Mathematics monograph covering Rogers (1958), Cohn–Elkies Fourier linear programming (2003), Musin 4D kissing number (2008), Viazovska E_8 (2017), CKMRV Leech lattice & universal optimality (2017, 2022), Hales et al. Flyspeck (2017), and open dimension-4 and asymptotic packing gaps.",
+            "opus": "Verification note: all seven primary DOIs were checked against Crossref and Scite on 2026-11-21 with zero retraction notices; exact rational Laguerre–Gaussian bounds, Golay G_24 weight enumerator counts, and root-lattice kissing numbers are recomputed offline by skills/math/m14/verify_m14_sphere_packing.py."
+          }
+        ],
+        "volume": 7,
+        "volume_code": "VOL. 07",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,600 WORDS",
+        "scite": {
+          "doi": "10.4007/annals.2003.157.689",
+          "fetched_on": "2026-11-21",
+          "citing_publications": 377,
+          "supporting": 3,
+          "mentioning": 541,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index entry for Cohn & Elkies 2003, \"New upper bounds on sphere packings I\" (Annals of Mathematics, DOI 10.4007/annals.2003.157.689), fetched 2026-11-21: 377 citing publications (3 supporting, 541 mentioning, 0 contrasting) and no retraction notice. These counts describe that foundational paper, not this folio."
+        }
       }
     ]
   },
@@ -6529,15 +6643,18 @@
       "volume": 7,
       "code": "VOL. 07",
       "roman": "Volume VII",
-      "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY, VADOSE SUCTION, CONCRETE FRACTURE & FUNICULAR THIN-SHELL BUCKLING · 4 FOLIOS",
-      "title": "Biot 3D Poroelasticity, Unsaturated Suction Stress, Concrete Size Effect & Heinz Isler's Thin-Shell Domes",
-      "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), Engineering Folio E.15 (Hillerborg fictitious crack process zones, Bažant Type II Size Effect Law, and Bažant–Kazemi fracture energy regression in concrete), and Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns).",
+      "kicker": "VOLUME VII (VOL. 07) · POROELASTICITY, SUCTION, CONCRETE FRACTURE, THIN SHELLS, GRAPH CAPACITY & SPHERE PACKING · 7 FOLIOS",
+      "title": "Poroelasticity, Suction Stress, Concrete Size Effect, Isler and Candela Shells, Shannon Capacity & Sphere Packing",
+      "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), Engineering Folio E.15 (Hillerborg fictitious crack process zones, Bažant Type II Size Effect Law, and Bažant–Kazemi fracture energy regression in concrete), Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns), Architecture Folio A.14 (Félix Candela's doubly-ruled hyperbolic paraboloid concrete umbrellas, Pucher flat-projection membrane shear, and cantilevered edge boundaries), Mathematics Folio M.13 (Shannon zero-error graph capacity, Lovász's orthonormal theta sandwich, Haemers's rank-7 Schläfli separation, and the open seven-cycle gap), and Mathematics Folio M.14 (Sphere packing, Cohn–Elkies Fourier linear programming, Viazovska modular functions in dimensions 8 and 24, and the open dimension-4 gap).",
       "cadence": "Verifier-gated Living Edition release",
       "folios": [
         "e13",
         "e14",
         "e15",
-        "a13"
+        "a13",
+        "a14",
+        "m13",
+        "m14"
       ]
     }
   ]

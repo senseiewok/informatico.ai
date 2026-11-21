@@ -245,11 +245,11 @@ VOLUMES_SPEC = [
         "volume": 7,
         "code": "VOL. 07",
         "roman": "Volume VII",
-        "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY, VADOSE SUCTION, CONCRETE FRACTURE & FUNICULAR THIN-SHELL BUCKLING · 4 FOLIOS",
-        "title": "Biot 3D Poroelasticity, Unsaturated Suction Stress, Concrete Size Effect & Heinz Isler's Thin-Shell Domes",
-        "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), Engineering Folio E.15 (Hillerborg fictitious crack process zones, Bažant Type II Size Effect Law, and Bažant–Kazemi fracture energy regression in concrete), and Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns).",
+        "kicker": "VOLUME VII (VOL. 07) · POROELASTICITY, SUCTION, CONCRETE FRACTURE, THIN SHELLS, GRAPH CAPACITY & SPHERE PACKING · 7 FOLIOS",
+        "title": "Poroelasticity, Suction Stress, Concrete Size Effect, Isler and Candela Shells, Shannon Capacity & Sphere Packing",
+        "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), Engineering Folio E.15 (Hillerborg fictitious crack process zones, Bažant Type II Size Effect Law, and Bažant–Kazemi fracture energy regression in concrete), Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns), Architecture Folio A.14 (Félix Candela's doubly-ruled hyperbolic paraboloid concrete umbrellas, Pucher flat-projection membrane shear, and cantilevered edge boundaries), Mathematics Folio M.13 (Shannon zero-error graph capacity, Lovász's orthonormal theta sandwich, Haemers's rank-7 Schläfli separation, and the open seven-cycle gap), and Mathematics Folio M.14 (Sphere packing, Cohn–Elkies Fourier linear programming, Viazovska modular functions in dimensions 8 and 24, and the open dimension-4 gap).",
         "cadence": "Verifier-gated Living Edition release",
-        "folios": ["e13", "e14", "e15", "a13"],
+        "folios": ["e13", "e14", "e15", "a13", "a14", "m13", "m14"],
     },
 ]
 
@@ -977,8 +977,8 @@ def render_folio_crossword_section(slug: str, folio_id: str) -> str:
         <div class="tp-puzzle-header-right">
           <span class="tp-cw-edition-badge" data-en="EN · INDEPENDENT ENGLISH EDITION (10×10)" data-es="ES-MX · EDICIÓN INDEPENDIENTE EN ESPAÑOL (10×10)">EN · INDEPENDENT ENGLISH EDITION (10×10)</span>
           <div class="tp-passport-bar" role="region" aria-label="Collector's Passport Crossword Progress">
-            <span class="tp-passport-count" data-en="0 / 52 Folios Sealed (EN: 0 · ES-MX: 0)" data-es="0 / 52 Folios Sellados (EN: 0 · ES-MX: 0)">0 / 52 Folios Sealed (EN: 0 · ES-MX: 0)</span>
-            <progress class="tp-passport-progress" max="104" value="0" aria-label="Total bilingual crosswords solved across Informatico.ai"></progress>
+            <span class="tp-passport-count" data-en="0 / {sum(len(v) for v in NEW_FOLIOS.values())} Folios Sealed (EN: 0 · ES-MX: 0)" data-es="0 / {sum(len(v) for v in NEW_FOLIOS.values())} Folios Sellados (EN: 0 · ES-MX: 0)">0 / {sum(len(v) for v in NEW_FOLIOS.values())} Folios Sealed (EN: 0 · ES-MX: 0)</span>
+            <progress class="tp-passport-progress" max="{2 * sum(len(v) for v in NEW_FOLIOS.values())}" value="0" aria-label="Total bilingual crosswords solved across Informatico.ai"></progress>
           </div>
         </div>
       </div>
@@ -5573,6 +5573,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
     first = catalog["pillars"]["engineering"][0]
     arch_n = len(catalog["pillars"]["architecture"])
     math_n = len(catalog["pillars"]["math"])
+    eng_n = len(catalog["pillars"]["engineering"])
     total_pillar_n = sum(len(v) for v in NEW_FOLIOS.values())
     strip_aria = (
         f"Informatico.ai: 4 Pilares, Serie Tiempo y Gravedad, 6 Retos y {skill_count} Skills de IA"
@@ -5602,9 +5603,9 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
       </figure>
       <nav class="tp-cover-track-strip" aria-label="{strip_aria}">
         <a class="tp-track-chip" href="engineering/">
-          <span class="tp-track-chip-kicker" data-en="PILLAR I · 14 ESSAYS" data-es="PILAR I · 14 ENSAYOS">PILLAR I · 14 ESSAYS</span>
+          <span class="tp-track-chip-kicker" data-en="PILLAR I · {eng_n} ESSAYS" data-es="PILAR I · {eng_n} ENSAYOS">PILLAR I · {eng_n} ESSAYS</span>
           <strong class="tp-track-chip-title" data-en="Engineering &amp; Construction" data-es="Ingeniería y Construcción">Engineering &amp; Construction</strong>
-          <span class="tp-track-chip-meta" data-en="14 Folios · Bridges, TBM, Biot, Suction · Cult Classics (CC.01 &amp; CC.03)" data-es="14 Folios · Puentes, TBM, Biot, Succión · Clásicos (CC.01 y CC.03)">14 Folios · Bridges, TBM, Biot, Suction · Cult Classics (CC.01 &amp; CC.03)</span>
+          <span class="tp-track-chip-meta" data-en="{eng_n} Folios · Bridges, TBM, Biot, Suction · Cult Classics (CC.01 &amp; CC.03)" data-es="{eng_n} Folios · Puentes, TBM, Biot, Succión · Clásicos (CC.01 y CC.03)">{eng_n} Folios · Bridges, TBM, Biot, Suction · Cult Classics (CC.01 &amp; CC.03)</span>
         </a>
         <a class="tp-track-chip" href="architecture/">
           <span class="tp-track-chip-kicker" data-en="PILLAR II · {arch_n} ESSAYS" data-es="PILAR II · {arch_n} ENSAYOS">PILLAR II · {arch_n} ESSAYS</span>
@@ -5617,9 +5618,9 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
           <span class="tp-track-chip-meta" data-en="Time &amp; Gravity (T.00–T.13) · 12 Cross-Scale Essays" data-es="Tiempo y Gravedad (T.00–T.13) · 12 Ensayos entre Escalas">Time &amp; Gravity (T.00–T.13) · 12 Cross-Scale Essays</span>
         </a>
         <a class="tp-track-chip" href="math/">
-          <span class="tp-track-chip-kicker" data-en="PILLAR IV · 13 ESSAYS" data-es="PILAR IV · 13 ENSAYOS">PILLAR IV · 13 ESSAYS</span>
+          <span class="tp-track-chip-kicker" data-en="PILLAR IV · {math_n} ESSAYS" data-es="PILAR IV · {math_n} ENSAYOS">PILLAR IV · {math_n} ESSAYS</span>
           <strong class="tp-track-chip-title" data-en="Formal &amp; Pure Mathematics" data-es="Matemáticas Formales y Puras">Formal &amp; Pure Mathematics</strong>
-          <span class="tp-track-chip-meta" data-en="13 Folios · Lean 4 FLT, Cap Sets, Shannon Capacity" data-es="13 Folios · Lean 4 FLT, Cap Sets, Capacidad de Shannon">13 Folios · Lean 4 FLT, Cap Sets, Shannon Capacity</span>
+          <span class="tp-track-chip-meta" data-en="{math_n} Folios · Lean 4 FLT, Shannon Capacity, Sphere Packing" data-es="{math_n} Folios · Lean 4 FLT, Capacidad de Shannon, Empaquetamiento">{math_n} Folios · Lean 4 FLT, Shannon Capacity, Sphere Packing</span>
         </a>
         <a class="tp-track-chip tp-track-chip-bounty" href="bounties/">
           <span class="tp-track-chip-kicker" data-en="6 GRAND-CHALLENGE FOLIOS" data-es="6 FOLIOS DE GRANDES RETOS">6 GRAND-CHALLENGE FOLIOS</span>

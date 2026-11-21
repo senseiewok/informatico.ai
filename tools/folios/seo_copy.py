@@ -343,6 +343,12 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "Capacidad de Error Cero de Shannon y Theta de Lovász",
         "Cómo los códigos sin error de Shannon, el paraguas de Lovász y el rango de Haemers se cruzan en ciclos impares, con la brecha del ciclo de siete abierta.",
     ),
+    "m14": (
+        "Sphere Packing, Cohn–Elkies Bounds & Open Gaps",
+        "How Cohn–Elkies Fourier linear programming, Viazovska modular functions in dimensions 8 and 24, and Laguerre bounds meet open gaps in dimension four.",
+        "Empaquetamiento de Esferas y Cotas Cohn–Elkies",
+        "Cómo la programación lineal de Cohn–Elkies, las funciones modulares en dimensiones 8 y 24 y las cotas de Laguerre rodean la brecha de dimensión cuatro.",
+    ),
 }
 
 # pillar -> (title_en, description_en, title_es, description_es); titles are complete (brand included).
@@ -367,9 +373,9 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "math": (
         "Mathematics Essays: Lean 4 Repositories & More | Informatico.ai",
-        "Thirteen interactive essays on mathematics: Fermat's Last Theorem, zero-error graph capacity, F1 optimal control, color geometry and optimal transport.",
+        "Fourteen interactive essays on mathematics: Fermat's Last Theorem, zero-error graph capacity, sphere packing, optimal control and optimal transport.",
         "Ensayos de Matemáticas: Repositorios Lean 4 y Más | Informatico.ai",
-        "Trece ensayos interactivos de matemáticas: el Último Teorema de Fermat, capacidad de grafos sin error, control óptimo, color y transporte óptimo.",
+        "Catorce ensayos interactivos de matemáticas: el Último Teorema de Fermat, capacidad de grafos sin error, empaquetamiento de esferas y transporte óptimo.",
     ),
     "bounties": (
         "Grand Challenges & Open Problems Crucible | Informatico.ai",
