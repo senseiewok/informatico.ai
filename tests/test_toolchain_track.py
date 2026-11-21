@@ -225,11 +225,11 @@ class ToolchainTrackTests(unittest.TestCase):
             [f"e{i:02d}" for i in range(1, 15)]
             + [f"a{i:02d}" for i in range(1, 14)]
             + [f"p{i:02d}" for i in range(1, 13)]
-            + [f"m{i:02d}" for i in range(1, 13)]  # M.13-M.15 withdrawn 2026-11-17
+            + [f"m{i:02d}" for i in range(1, 13)] + ["m14"]  # M.13 in open PR; M.14 added 2026-11-21
             + [f"b{i:02d}" for i in range(1, 7)]
             + [f"x{i:02d}" for i in range(1, 8)]
         )
-        self.assertEqual(len(all_slugs), 64)  # +1: E.14 added 2026-11-21
+        self.assertEqual(len(all_slugs), 65)  # +1: M.14 added 2026-11-21
         hashes: dict[str, str] = {}
         plates_dir = RESEARCH / "plates"
         for s in all_slugs:

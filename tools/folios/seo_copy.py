@@ -325,6 +325,12 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "Repositorios Lean 4 Públicos y ML-KEM Post-Cuántico",
         "Lo que dice el README del repositorio público anthropics/formal-math que contiene, junto al estándar de retículos NIST FIPS 203; nada comprobado aquí.",
     ),
+    "m14": (
+        "Sphere Packing, Cohn–Elkies Bounds & Open Gaps",
+        "How Cohn–Elkies Fourier linear programming, Viazovska modular functions in dimensions 8 and 24, and Laguerre bounds meet open gaps in dimension four.",
+        "Empaquetamiento de Esferas y Cotas Cohn–Elkies",
+        "Cómo la programación lineal de Cohn–Elkies, las funciones modulares en dimensiones 8 y 24 y las cotas de Laguerre rodean la brecha de dimensión cuatro.",
+    ),
 }
 
 # pillar -> (title_en, description_en, title_es, description_es); titles are complete (brand included).
@@ -348,10 +354,10 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
         "Doce ensayos interactivos de física: aerodinámica de Fórmula 1, la física ondulatoria del color, cilios y moco, conos de Taylor y fotónica topológica.",
     ),
     "math": (
-        "Mathematics Essays: Lean 4 Repositories & More | Informatico.ai",
-        "Twelve interactive essays on mathematics: Fermat's Last Theorem and a Lean 4 repository, F1 optimal control, the geometry of color and optimal transport.",
-        "Ensayos de Matemáticas: Repositorios Lean 4 y Más | Informatico.ai",
-        "Doce ensayos interactivos de matemáticas: el Último Teorema de Fermat y un repositorio Lean 4, control óptimo en F1, geometría del color y transporte óptimo.",
+        "Mathematics Essays: Lean 4, Lattices & More | Informatico.ai",
+        "Thirteen interactive essays on mathematics: Fermat's Last Theorem, sphere packing bounds, F1 optimal control, color geometry and optimal transport.",
+        "Ensayos de Matemáticas: Lean 4, Retículos | Informatico.ai",
+        "Trece ensayos interactivos de matemáticas: el Último Teorema de Fermat, empaquetamiento de esferas, control óptimo en F1, color y transporte óptimo.",
     ),
     "bounties": (
         "Grand Challenges & Open Problems Crucible | Informatico.ai",

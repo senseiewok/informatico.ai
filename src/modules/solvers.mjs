@@ -1685,6 +1685,92 @@ export function initPlateSolvers(scope = document) {
         return;
       }
 
+      if (slug === "m14") {
+        const dRaw = parseFloat(mathPrimeInput.value);
+        const mRaw = parseFloat(mathClauseInput.value);
+        const dVal = Number.isFinite(dRaw) ? Math.max(2, Math.min(24, Math.round(dRaw))) : 8;
+        const mDeg = Number.isFinite(mRaw) && mRaw < 4 ? 3 : 5;
+        if (pLabel) pLabel.textContent = `d = ${dVal}`;
+        if (cLabel) cLabel.textContent = `M = ${mDeg}`;
+        if (inlineP) inlineP.textContent = `d = ${dVal}`;
+
+        // Exact lattice densities & offline Laguerre-Gaussian Cohn-Elkies bounds (from verify_m14_sphere_packing.py)
+        const LATTICE_MAP = {
+          2: { name: "A_2", formula: "π/√12", dens: Math.PI / Math.sqrt(12.0), tau: "6", settled: true, note: "A_2 MATCHED (FEJES TÓTH, d = 2)" },
+          3: { name: "D_3 (FCC)", formula: "π/(3√2)", dens: Math.PI / (3.0 * Math.sqrt(2.0)), tau: "12", settled: true, note: "FCC MATCHED (HALES FLYSPECK, d = 3)" },
+          4: { name: "D_4", formula: "π^2/16", dens: (Math.PI * Math.PI) / 16.0, tau: "24", settled: false, note: "OPEN DENSITY GAP (τ_4 = 24 BY MUSIN 2008)" },
+          5: { name: "D_5", formula: "π^2/(15√2)", dens: (Math.PI * Math.PI) / (15.0 * Math.sqrt(2.0)), tau: "40", settled: false, note: "OPEN DENSITY GAP (D_5 LATTICE BENCHMARK, d = 5)" },
+          6: { name: "E_6", formula: "π^3/(48√3)", dens: Math.pow(Math.PI, 3) / (48.0 * Math.sqrt(3.0)), tau: "72", settled: false, note: "OPEN DENSITY GAP (E_6 LATTICE BENCHMARK, d = 6)" },
+          7: { name: "E_7", formula: "π^3/105", dens: Math.pow(Math.PI, 3) / 105.0, tau: "126", settled: false, note: "OPEN DENSITY GAP (E_7 LATTICE BENCHMARK, d = 7)" },
+          8: { name: "E_8", formula: "π^4/384", dens: Math.pow(Math.PI, 4) / 384.0, tau: "240", settled: true, note: "E_8 MATCHED BY VIAZOVSKA LP LIMIT (d = 8)" },
+          24: { name: "Λ_24 (Leech)", formula: "π^12/12!", dens: Math.pow(Math.PI, 12) / 479001600.0, tau: "196,560", settled: true, note: "LEECH Λ_24 MATCHED BY CKMRV LP LIMIT (d = 24)" },
+        };
+        const CE_CERTS = {
+          4: { 3: { b: 0.700415, rc: 1.2162 }, 5: { b: 0.672477, rc: 1.3893 } },
+          8: { 3: { b: 0.346486, rc: 1.4776 }, 5: { b: 0.303541, rc: 1.6683 } },
+          24: { 3: { b: 0.087466, rc: 2.2508 }, 5: { b: 0.008955, rc: 2.3127 } },
+        };
+        const known = LATTICE_MAP[dVal];
+        const blichfeldtUpper = ((dVal + 2.0) / 2.0) * Math.pow(2.0, -0.5 * dVal);
+        const minkowskiLower = Math.pow(2.0, 1.0 - dVal);
+        const ceApprox = CE_CERTS[dVal] ? CE_CERTS[dVal][mDeg] : null;
+        const densShow = known ? known.dens : minkowskiLower;
+        const ceShow = ceApprox ? ceApprox.b : blichfeldtUpper;
+        const ratio = ceShow / Math.max(1e-9, densShow);
+
+        if (barrierOut) {
+          barrierOut.textContent = known
+            ? `${known.dens.toFixed(6)} (${known.name}, ${known.formula}, τ = ${known.tau})`
+            : `${densShow.toFixed(6)} (Minkowski lower floor 2^(1−d), open d = ${dVal})`;
+        }
+        if (fluxOut) {
+          fluxOut.textContent = ceApprox
+            ? `${ceApprox.b.toFixed(6)} (r_cut = ${ceApprox.rc.toFixed(4)}, model)`
+            : `${ceShow.toFixed(6)} (Blichfeldt 1929 upper bound (d+2)/2 · 2^(−d/2))`;
+        }
+        if (ethOut) {
+          ethOut.textContent = dVal === 8
+            ? `${ratio.toFixed(4)}x (Viazovska modular limit: 1.0000x)`
+            : dVal === 24
+              ? `${ratio.toFixed(4)}x (CKMRV modular limit: 1.0000x)`
+              : ceApprox
+                ? `${ratio.toFixed(4)}x (deg-${mDeg} LP vs ${known.name})`
+                : `${ratio.toFixed(4)}x (Blichfeldt upper vs baseline)`;
+        }
+        if (qedOut) {
+          qedOut.textContent = known ? known.note : `OPEN DIMENSION d = ${dVal} (BLICHFELDT UPPER = ${blichfeldtUpper.toFixed(5)})`;
+        }
+        if (qedBox) qedBox.setAttribute("data-alert", known && known.settled ? "false" : "true");
+
+        const latBar = document.getElementById("tp-m14-lat-bar");
+        const ceBar = document.getElementById("tp-m14-ce-bar");
+        const m14Pt = document.getElementById("tp-m14-point");
+        const statusLbl = document.getElementById("tp-m14-status-lbl");
+        const logMap = (val) => Math.max(8, Math.min(136, Math.round(136 - Math.min(1.0, Math.max(0.0, -Math.log10(Math.max(1e-4, val)) / 3.2)) * 124)));
+        const hLat = logMap(densShow);
+        const hCe = logMap(ceShow);
+        if (latBar) {
+          latBar.setAttribute("y", String(184 - hLat));
+          latBar.setAttribute("height", String(hLat));
+        }
+        if (ceBar) {
+          ceBar.setAttribute("y", String(184 - hCe));
+          ceBar.setAttribute("height", String(hCe));
+        }
+        if (m14Pt) {
+          const cx = Math.round(56 + ((dVal - 2) / 22.0) * 286);
+          const cy = 184 - hLat;
+          m14Pt.setAttribute("cx", String(cx));
+          m14Pt.setAttribute("cy", String(cy));
+        }
+        if (statusLbl) {
+          const tag = known ? known.name.split(" ")[0] : "Open";
+          const boundLabel = ceApprox ? `Deg-${mDeg} LP` : "Blichfeldt";
+          statusLbl.textContent = `d = ${dVal} (${tag}): Δ = ${densShow.toFixed(6)} · ${boundLabel} = ${ceShow.toFixed(6)}`;
+        }
+        return;
+      }
+
       if (slug === "m02") {
         // Folio M.02: total zero-density exponent c(σ)(1 − σ): Ingham 3(1 − σ)/(2 − σ) below σ = 3/4,
         // Huxley 12(1 − σ)/5 from σ = 3/4 (they agree at 3/4). The other readouts are stated values.

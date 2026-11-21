@@ -1396,6 +1396,26 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
             ("RED", "Conjunto de nodos conectados; un proyecto de Lean 4 puede organizarse como una red de dependencias entre lemas (Folio M.01)", "Acto IV"),
         ],
     },
+    "m14": {
+        "title_en": "Folio M.14 · Sphere Packing, Cohn–Elkies Bounds & E8/Leech Lattices Crossword",
+        "title_es": "Folio M.14 · Crucigrama de Empaquetamiento de Esferas y Cotas de Cohn–Elkies",
+        "en": [
+            ("LATTICE", "Periodic crystal grid of sphere centers such as A2, D4, E8, and Leech in 24 dimensions", "Act I"),
+            ("LEECH", "Unimodular 24-dimensional lattice with no roots and 196,560 minimal touching neighbors", "Act I"),
+            ("GOLAY", "Extended 24-bit binary code G24 whose 759 weight-8 octads construct the Leech lattice", "Act III"),
+            ("LAGUERRE", "Orthogonal polynomial family whose Gaussians are radial Fourier eigenfunctions", "Act II"),
+            ("KISSING", "Maximum number of unit spheres that can touch a central sphere without overlapping", "Act I"),
+            ("KEPLER", "Astronomer whose 1611 pyramid-stacking conjecture in 3D was formally checked in 2017", "Act I"),
+        ],
+        "es": [
+            ("RETICULO", "Malla periódica de centros de esferas como A2, D4, E8 o la red de Leech en dimensión 24", "Acto I"),
+            ("LEECH", "Red unimodular de 24 dimensiones sin raíces y con 196,560 vecinas tangentes", "Acto I"),
+            ("GOLAY", "Código binario extendido G24 de 4,096 palabras cuyas 759 octadas construyen Leech", "Acto III"),
+            ("LAGUERRE", "Polinomios ortogonales cuyas gaussianas son eigenfunciones radiales de Fourier", "Acto II"),
+            ("BESO", "Número máximo de esferas idénticas que tocan una esfera central sin traslape", "Acto I"),
+            ("KEPLER", "Astrónomo cuya conjetura de apilamiento de 1611 en 3D se formalizó en 2017", "Acto I"),
+        ],
+    },
     "cc01": {
         "title_en": "CC.01 · Golf GTI Chassis, Boost & Transaxle Crossword",
         "title_es": "CC.01 · Crucigrama de Chasis, Turbo y Transmisión del Golf GTI",
