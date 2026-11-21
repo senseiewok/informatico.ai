@@ -1088,7 +1088,7 @@
     "year": 2013
   },
   "doi:10.1073/pnas.1217998110": {
-    "fetched": "2026-11-04",
+    "fetched": "2026-11-20",
     "first_author": "Schenk",
     "found": true,
     "journal": "Proceedings of the National Academy of Sciences",
@@ -3370,6 +3370,54 @@
     "total_smart_citations": 21,
     "unclassified": 1,
     "year": 1920
+  },
+  "doi:10.1016/j.jobe.2023.106241": {
+    "fetched": "2026-11-20",
+    "first_author": "Kahramanoğlu",
+    "found": true,
+    "journal": "Journal of Building Engineering",
+    "title": "Enhancing visual comfort with Miura-ori-based responsive facade model",
+    "year": 2023
+  },
+  "doi:10.1016/j.scs.2023.104740": {
+    "fetched": "2026-11-20",
+    "first_author": "Meloni",
+    "found": true,
+    "journal": "Sustainable Cities and Society",
+    "title": "Origami-based adaptive facade for reducing reflected solar radiation in outdoor urban environments",
+    "year": 2023
+  },
+  "doi:10.1017/9781108778633": {
+    "fetched": "2026-11-20",
+    "first_author": "Hull",
+    "found": true,
+    "journal": "Cambridge University Press",
+    "title": "Origametry: Mathematical Methods in Paper Folding",
+    "year": 2020
+  },
+  "doi:10.1201/b10971-24": {
+    "fetched": "2026-11-20",
+    "first_author": "Tachi",
+    "found": true,
+    "journal": "Origami 5",
+    "title": "Rigid-Foldable Thick Origami",
+    "year": 2011
+  },
+  "doi:10.21625/archive.v1i1.113": {
+    "fetched": "2026-11-20",
+    "first_author": "El Semary",
+    "found": true,
+    "journal": "The Academic Research Community publication",
+    "title": "Modern Mashrabiyas with High-tech Daylight Responsive Systems",
+    "year": 2017
+  },
+  "doi:10.5339/connect.2017.qgbc.6": {
+    "fetched": "2026-11-20",
+    "first_author": "Attia",
+    "found": true,
+    "journal": "QScience Connect",
+    "title": "Evaluation of adaptive facades: The case study of Al Bahr Towers in the UAE",
+    "year": 2017
   },
   "scite:10.1007/978-3-030-79876-5_37": {
     "citing_publications": 685,

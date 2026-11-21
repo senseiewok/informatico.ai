@@ -2643,7 +2643,7 @@
         ],
         "lineage_mode": "REFERENCE_COMPLETION · Completes A.04 High-Tech Exoskeletons, A.03 Daylighting & M.05 Distance Rigidity",
         "title": "Kinetic Origami & Miura-Ori Deployable Biomimetic Facades: Isometric Crease Kinematics, Auxetic Poisson Ratio Inversion & Solar Mashrabiya Envelopes",
-        "subtitle": "Completing the deployable exoskeleton and daylighting threads of Folios A.04, A.03, and M.05: a design study of how Koryo Miura's fold and Schenk & Guest's analysis of folded metamaterials could drive adaptive, mashrabiya-inspired solar shading.",
+        "subtitle": "Completing Folios A.04, A.03, and M.05: a design study of how Koryo Miura's 1985 fold and Schenk & Guest's (2013) analysis of folded metamaterials could drive mashrabiya-inspired solar shading.",
         "date_published": "2026-11-03",
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.1",
@@ -2675,10 +2675,10 @@
           }
         ],
         "steps": [
-          "Stage 1 (Kawasaki & Maekawa Flat-Foldable Vertex, Continuing M.05): Four rigid parallelogram facets meet at a degree-4 vertex whose alternate sector angles sum to π. In the ideal rigid model this leaves a single degree of freedom.",
-          "Stage 2 (Spherical Trigonometry Dihedral Coupling): Taking the primary fold angle γ_1 = θ = 36° and α = 64°, the relation tan(γ_2/2) = cos α · tan(γ_1/2) gives a secondary fold angle γ_2 ≈ 16.2°. The facets are assumed rigid, so they do not stretch.",
-          "Stage 3 (Auxetic Poisson Ratio, after Schenk & Guest 2013, DOI 10.1073/pnas.1217998110): Schenk and Guest showed that a Miura-ori sheet has a negative in-plane Poisson ratio. In this folio's simplified parametrization, cos φ = sin α · cos(θ/2) gives φ ≈ 31.3° and ν_xy = −tan² φ ≈ −0.37 at the default settings.",
-          "Stage 4 (Mashrabiya-Inspired Solar Shading, Continuing A.03/A.04): With an assumed bare-glazing SHGC_glass = 0.60 and shading effectiveness η_shade = 0.845, the folio's rule SHGC = SHGC_glass · (1 − η_shade · cos θ) gives 0.19 at θ = 36°, a 68.4% cut in solar heat gain through the glazing in the model. Cooling-energy savings and daylight levels are not computed here."
+          "Stage 1 (Kawasaki & Maekawa Flat-Foldable Vertex, Continuing M.05): Four rigid parallelogram facets meet at a degree-4 vertex satisfying Kawasaki alternating-angle sums (π) and Maekawa mountain-valley parity (|M − V| = 2; Hull 2020, DOI 10.1017/9781108778633), leaving one degree of freedom in the ideal rigid sheet (Miura 1985).",
+          "Stage 2 (Spherical Trigonometry Dihedral Coupling): With primary fold angle γ_1 = θ = 36° and α = 64°, tan(γ_2/2) = cos α · tan(γ_1/2) yields secondary fold angle γ_2 ≈ 16.2° for zero-thickness facets (real thick panels require hinge-offset geometry; Tachi 2011, DOI 10.1201/b10971-24).",
+          "Stage 3 (Auxetic Poisson Ratio, after Schenk & Guest 2013, DOI 10.1073/pnas.1217998110): Schenk and Guest showed that a Miura-ori sheet exhibits a negative in-plane Poisson ratio. In this folio's simplified parametrization, cos φ = sin α · cos(θ/2) gives φ ≈ 31.3° and ν_xy = −tan² φ ≈ −0.37 at default settings.",
+          "Stage 4 (Mashrabiya-Inspired Solar Shading, Continuing A.03/A.04): With assumed bare-glazing SHGC_glass = 0.60 and shading effectiveness η_shade = 0.845, the folio's illustrative rule SHGC = SHGC_glass · (1 − η_shade · cos θ) gives 0.19 at θ = 36° (−68.4% solar heat gain in the model); published origami facade simulations (Meloni et al. 2023, DOI 10.1016/j.scs.2023.104740; Kahramanoğlu & Çakıcı Alp 2023, DOI 10.1016/j.jobe.2023.106241) motivate this study, though cooling loads and daylight are not computed here."
         ],
         "readouts": [
           {
@@ -2701,24 +2701,24 @@
         "spec_plate": {
           "division": "CSI MASTERFORMAT 10 71 13 / 08 44 13",
           "title": "Kinetic Miura-Ori PTFE & Anodized Aluminum Mashrabiya Solar Shading Screen",
-          "body": "Design proposal: outboard exoskeleton-mounted (continuing A.04) kinetic origami shading modules with stainless-steel vertex pins, PTFE membrane facets and linear actuators. Not a tested assembly.",
-          "meta": "Reference: Schenk & Guest (2013) DOI 10.1073/pnas.1217998110 · Al Bahar precedent: Karanouh & Kerber (2015) DOI 10.3233/fde-150040 · No wind or load testing was done for this folio"
+          "body": "Design proposal: outboard exoskeleton-mounted (continuing A.04) kinetic origami shading modules with stainless-steel vertex pins, PTFE membrane facets, and linear actuators. Not a tested assembly.",
+          "meta": "Reference: Schenk & Guest (2013) DOI 10.1073/pnas.1217998110 · Al Bahar precedent: Karanouh & Kerber (2015) DOI 10.3233/fde-150040; Attia (2017) DOI 10.5339/connect.2017.qgbc.6 · No wind or load testing was done for this folio"
         },
         "sidenote_1": {
           "kicker": "SIDENOTE A.10-A · CONTINUING FOLIO A.04 MAXWELL–CALLADINE & M.05 RIGIDITY",
-          "body": "While Folio A.04 designed space frames with zero internal mechanisms (m = 0), rigid origami intentionally engineers a single cooperative mechanism (m = 1) where all vertices move in lockstep."
+          "body": "While Folio A.04 treats space frames with zero internal mechanisms (m = 0), ideal rigid Miura-ori uses a single collective mechanism (m = 1) where facets fold in lockstep (Miura 1985; Schenk & Guest 2013, DOI 10.1073/pnas.1217998110)."
         },
         "sidenote_2": {
           "kicker": "SIDENOTE A.10-B · SPECIFICATION PLATE · CSI 10 71 13 (SOLAR MASHRABIYA)",
-          "body": "Historic mashrabiya screens are carved wooden lattices that temper sun and glare and give privacy. A kinetic origami screen is a modern design idea in the same spirit. This folio does not estimate how much cooling energy such a screen would save; that depends on climate, glazing and orientation."
+          "body": "Traditional mashrabiya latticework tempers sun, glare, and privacy (El Semary et al. 2017, DOI 10.21625/archive.v1i1.113), and contemporary dynamic screens extend that idea to responsive facades (Attia 2017, DOI 10.5339/connect.2017.qgbc.6). This folio does not estimate building cooling-energy savings; those depend on climate, glazing, and orientation, and any assembly remains untested."
         },
         "skill": {
           "filename": "kinetic-origami-miura-facade-SKILL.md",
           "name": "kinetic-origami-miura-facade",
           "description": "AI-agnostic architectural and mechanical-metamaterial skill for Miura-ori rigid origami kinematics, Kawasaki flat-foldability, Schenk-Guest negative Poisson ratio (nu_xy = -tan^2(phi)), and kinetic solar facades.",
           "rules": [
-            "Enforce Kawasaki's flat-foldability theorem sum(alpha_even) = sum(alpha_odd) = pi and Maekawa's mountain-valley rule |M - V| = 2 at every interior degree-4 vertex.",
-            "Compute the semi-width angle phi from this folio's simplified parametrization cos(phi) = sin(alpha) * cos(theta / 2) and evaluate the in-plane Poisson ratio nu_xy = -tan^2(phi) < 0 (about -0.37 at alpha = 64, theta = 36); note that Schenk & Guest (2013) parametrize the fold differently.",
+            "Enforce Kawasaki's flat-foldability theorem sum(alpha_even) = sum(alpha_odd) = pi and Maekawa's mountain-valley rule |M - V| = 2 at every interior degree-4 vertex (Hull 2020, DOI 10.1017/9781108778633).",
+            "Compute the semi-width angle phi from this folio's simplified parametrization cos(phi) = sin(alpha) * cos(theta / 2) and evaluate nu_xy = -tan^2(phi) < 0 (about -0.37 at alpha = 64, theta = 36); note that Schenk & Guest (2013, DOI 10.1073/pnas.1217998110) parametrize the fold differently.",
             "Couple facade deployment angle theta to solar altitude; treat SHGC <= 0.22 at peak insolation and >= 250 EML daylight as this folio's own design targets and report SHGC as a model value, not a measurement."
           ]
         },
@@ -2733,7 +2733,7 @@
             "edition": "REV 1.0",
             "date": "2026-11-03",
             "summary": "REV 1.0 (Published 2026-11-03): Volume V kinetic architecture monograph completing Folios A.04, A.03 & M.05 via Schenk & Guest's folded metamaterial kinematics (DOI 10.1073/pnas.1217998110) and Mashrabiya solar envelopes.",
-            "opus": "Council review (Gemini 4 Argon + Qwen 3.8 27B). Its 'verified' wording is withdrawn in REV 1.1: the value nu_xy = -1.38 did not follow from the folio's own formula, which gives about -0.37."
+            "opus": "Initial model review (2026-11-03; Gemini 4 Argon + Qwen 3.8 27B). Its 'verified' wording is withdrawn in REV 1.1: the value nu_xy = -1.38 did not follow from the folio's own formula, which gives about -0.37."
           }
         ],
         "volume": 5,
