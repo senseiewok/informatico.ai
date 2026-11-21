@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2",
   "law": "Law 8 & Law 17 — Human-Scale Grounded Scientific Plate Generation & 4-Seat Image Selection Council",
-  "total_plates_replaced": 64,
-  "magazine_plates_count": 64,
+  "total_plates_replaced": 65,
+  "magazine_plates_count": 65,
   "council_seats": [
     "gemini-4-argon (Physical Specification & Structural Plausibility Seat)",
     "claude-opus-5.5 (Human Perceptual Impact & Tactile Craft Seat)",
@@ -680,6 +680,17 @@
       "bytes": 422382,
       "zero_baked_text_verified": true,
       "sha256": "98f12fbd49e3eb85cd5a585ef34cdb120d077e3e4c0d2a9c586cde610885f756"
+    },
+    {
+      "plate_id": "e13",
+      "path": "src/plates/e13.jpg",
+      "governing_specification": "Geological cutaway block with stratified limestone overburden, arching Prussian-slate caprock seal, porous sandstone reservoir with verdigris CO2 plume diffusion around perforated steel wellbore, and 60-degree dipping crystalline basement fault",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 160879,
+      "zero_baked_text_verified": true,
+      "sha256": "c33cbbc40fa4efdd66e350aff4fa1bed1ff68c29b79f4ddb2fe2a60cd715c822"
     }
   ]
 }

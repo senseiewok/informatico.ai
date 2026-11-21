@@ -239,6 +239,16 @@ VOLUMES_SPEC = [
         "cadence": "Hourly Zero-Token Sentinel Gate + 12h Deep-Craft Atelier Heartbeat (:05 Math, :15 Arch, :20 Civil Eng, :40 Phys)",
         "folios": ["e11", "e12", "a11", "a12", "p11", "p12", "m11", "m12"],
     },
+    {
+        "volume": 7,
+        "code": "VOL. 07",
+        "roman": "Volume VII",
+        "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY & FUNICULAR THIN-SHELL BUCKLING · 2 FOLIOS",
+        "title": "Biot 3D Poroelasticity & Heinz Isler's Thin-Shell Concrete Domes",
+        "subtitle": "Volume VII opens with Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage) and Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns).",
+        "cadence": "Verifier-gated Living Edition release",
+        "folios": ["e13", "a13"],
+    },
 ]
 
 
@@ -259,8 +269,9 @@ def get_volume_spec(vol_num: int) -> dict:
 def update_catalogs() -> dict:
     cat_path = ROOT / "src" / "data" / "magazine_catalog.json"
     catalog = json.loads(cat_path.read_text(encoding="utf-8"))
-    catalog["version"] = "6.0.0"
-    catalog["title"] = "Informatico.ai — 6-Volume, 48-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog"
+    total_pillar_folios = sum(len(v) for v in NEW_FOLIOS.values())
+    catalog["version"] = f"{len(VOLUMES_SPEC)}.0.0"
+    catalog["title"] = f"Informatico.ai — {len(VOLUMES_SPEC)}-Volume, {total_pillar_folios}-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog"
     catalog["total_volumes"] = len(VOLUMES_SPEC)
     catalog["volumes"] = VOLUMES_SPEC
 
@@ -957,8 +968,8 @@ def render_folio_crossword_section(slug: str, folio_id: str) -> str:
         <div class="tp-puzzle-header-right">
           <span class="tp-cw-edition-badge" data-en="EN · INDEPENDENT ENGLISH EDITION (10×10)" data-es="ES-MX · EDICIÓN INDEPENDIENTE EN ESPAÑOL (10×10)">EN · INDEPENDENT ENGLISH EDITION (10×10)</span>
           <div class="tp-passport-bar" role="region" aria-label="Collector's Passport Crossword Progress">
-            <span class="tp-passport-count" data-en="0 / 50 Folios Sealed (EN: 0 · ES-MX: 0)" data-es="0 / 50 Folios Sellados (EN: 0 · ES-MX: 0)">0 / 50 Folios Sealed (EN: 0 · ES-MX: 0)</span>
-            <progress class="tp-passport-progress" max="100" value="0" aria-label="Total bilingual crosswords solved across Informatico.ai"></progress>
+            <span class="tp-passport-count" data-en="0 / 51 Folios Sealed (EN: 0 · ES-MX: 0)" data-es="0 / 51 Folios Sellados (EN: 0 · ES-MX: 0)">0 / 51 Folios Sealed (EN: 0 · ES-MX: 0)</span>
+            <progress class="tp-passport-progress" max="102" value="0" aria-label="Total bilingual crosswords solved across Informatico.ai"></progress>
           </div>
         </div>
       </div>
@@ -2101,7 +2112,7 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
         </ol>
       </section>
       <section class="tp-contents-bounties" aria-label="Tech and Tools Toolbox Folios">
-        <h3><a href="{_href(rel_res, 'toolchain/')}" data-en="Tech &amp; Tools · The Toolbox · 6 Open 3D CAD &amp; Studio Folios (X.01–X.06)" data-es="Tecnología y Herramientas · Caja de Herramientas 3D y CAD Abierto (X.01–X.06)">Tech &amp; Tools · The Toolbox · 6 Open 3D CAD &amp; Studio Folios (X.01–X.06)</a></h3>
+        <h3><a href="{_href(rel_res, 'toolchain/')}" data-en="Tech &amp; Tools · The Toolbox · 7 Open 3D CAD &amp; Studio Folios (X.01–X.07)" data-es="Tecnología y Herramientas · Caja de Herramientas 3D y CAD Abierto (X.01–X.07)">Tech &amp; Tools · The Toolbox · 7 Open 3D CAD &amp; Studio Folios (X.01–X.07)</a></h3>
         <ol>
             {tool_items_html}
         </ol>
@@ -2420,7 +2431,7 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
     head = render_head(seo_title, seo_desc, f"{pillar}/", "website", image,
                        rel_root, rel_res, _ld("CollectionPage", title_es if es else title_en, seo_desc, canon, lang,
                                               image=image, crumbs=crumbs), lang)
-    cards = render_rack_cards(pillar, folios, "./", "../plates/", eager=12)
+    cards = render_rack_cards(pillar, folios, "./", "../plates/", eager=len(folios))
     n = len(folios)
     if pillar == "physics":
         lead_series = render_timegravity_series_rack(rel_res) + render_cross_scale_essays_showcase(rel_res, lang)
@@ -2433,17 +2444,18 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
     elif pillar == "architecture":
         lead_series = render_architecture_classics_rack(rel_res)
         rack_cls = "tp-issue-rack tp-issue-rack-headed"
-        rack_head = """      <div class="tp-issue-rack-head">
-        <p class="tp-kicker" data-en="Standalone Architecture Monographs · A.01–A.12" data-es="Monografías Independientes de Arquitectura · A.01–A.12">Standalone Architecture Monographs · A.01–A.12</p>
-        <h2 class="tp-h2" data-en="Twelve Structural &amp; Geometric Monographs" data-es="Doce Monografías Estructurales y Geométricas">Twelve Structural &amp; Geometric Monographs</h2>
+        arch_last = f"A.{len(folios):02d}"
+        rack_head = f"""      <div class="tp-issue-rack-head">
+        <p class="tp-kicker" data-en="Standalone Architecture Monographs · A.01–{arch_last}" data-es="Monografías Independientes de Arquitectura · A.01–{arch_last}">Standalone Architecture Monographs · A.01–{arch_last}</p>
+        <h2 class="tp-h2" data-en="Structural &amp; Geometric Monographs ({len(folios)})" data-es="Monografías Estructurales y Geométricas ({len(folios)})">Structural &amp; Geometric Monographs ({len(folios)})</h2>
       </div>
 """
     elif pillar == "engineering":
         lead_series = ""
         rack_cls = "tp-issue-rack tp-issue-rack-headed"
         rack_head = """      <div class="tp-issue-rack-head">
-        <p class="tp-kicker" data-en="Standalone Engineering Monographs · E.01–E.12" data-es="Monografías Independientes de Ingeniería · E.01–E.12">Standalone Engineering Monographs · E.01–E.12</p>
-        <h2 class="tp-h2" data-en="Twelve Systems &amp; Mechanics Monographs" data-es="Doce Monografías de Sistemas y Mecánica">Twelve Systems &amp; Mechanics Monographs</h2>
+        <p class="tp-kicker" data-en="Standalone Engineering Monographs · E.01–E.13" data-es="Monografías Independientes de Ingeniería · E.01–E.13">Standalone Engineering Monographs · E.01–E.13</p>
+        <h2 class="tp-h2" data-en="Thirteen Systems &amp; Mechanics Monographs" data-es="Trece Monografías de Sistemas y Mecánica">Thirteen Systems &amp; Mechanics Monographs</h2>
       </div>
 """
     else:
@@ -2629,7 +2641,7 @@ def render_bounty_crucible_section(rel_res: str = ".") -> str:
 {cards_joined}
       </div>
       <div class="tp-bounty-grounding-note" role="note" aria-label="Grounding and GitHub Cryptographic Publishing Proof">
-        <p><span data-en="Grounding &amp; GitHub Cryptographic Publishing Proof (T0–T3 Truth Boundary): Every Informatico.ai Folio and Grand-Challenge Monograph is verified against primary Crossref DOIs (48/48 Pillar Folios passing tools/check_folio_citations.py --offline with zero errors) and ships with a portable SKILL.md; the Toolbox, Time and Gravity and cross-scale essay skills also ship a verifier that must fail under a planted defect. Our public GitHub repository acts as a timestamped cryptographic prior-art and reproducibility ledger: every commit SHA records the exact deterministic execution of bounties/run_all_bounties.py (6/6 PASS) and skills/verify_all_48_folios.py (every verifier passes, and fails under its planted defect)." data-es="Rigor y Prueba Criptográfica de Publicación en GitHub (Frontera de Verdad T0–T3): Cada Folio y Monografía de Gran Reto de Informatico.ai está verificado contra DOIs primarios en Crossref (48/48 Folios de Pilar aprobados con cero errores) e incluye un SKILL.md portátil; la Caja de Herramientas, Tiempo y Gravedad y los ensayos entre escalas incluyen además un verificador que debe fallar ante un defecto plantado. Nuestro repositorio público en GitHub funciona como registro criptográfico de publicación y reproducibilidad: cada commit SHA registra la ejecución determinista de bounties/run_all_bounties.py (6/6 PASS) y skills/verify_all_48_folios.py.">Grounding &amp; GitHub Cryptographic Publishing Proof (T0–T3 Truth Boundary): Every Informatico.ai Folio and Grand-Challenge Monograph is verified against primary Crossref DOIs (48/48 Pillar Folios passing tools/check_folio_citations.py --offline with zero errors) and ships with a portable SKILL.md; the Toolbox, Time and Gravity and cross-scale essay skills also ship a verifier that must fail under a planted defect. Our public GitHub repository acts as a timestamped cryptographic prior-art and reproducibility ledger: every commit SHA records the exact deterministic execution of bounties/run_all_bounties.py (6/6 PASS) and skills/verify_all_48_folios.py (every verifier passes, and fails under its planted defect).</span></p>
+        <p><span data-en="Grounding &amp; GitHub Cryptographic Publishing Proof (T0–T3 Truth Boundary): Every Informatico.ai Folio and Grand-Challenge Monograph is verified against primary Crossref DOIs (49/49 Pillar Folios passing tools/check_folio_citations.py --offline with zero errors) and ships with a portable SKILL.md; the Toolbox, Time and Gravity and cross-scale essay skills also ship a verifier that must fail under a planted defect. Our public GitHub repository acts as a timestamped cryptographic prior-art and reproducibility ledger: every commit SHA records the exact deterministic execution of bounties/run_all_bounties.py (6/6 PASS) and skills/verify_all_48_folios.py (every verifier passes, and fails under its planted defect)." data-es="Rigor y Prueba Criptográfica de Publicación en GitHub (Frontera de Verdad T0–T3): Cada Folio y Monografía de Gran Reto de Informatico.ai está verificado contra DOIs primarios en Crossref (49/49 Folios de Pilar aprobados con cero errores) e incluye un SKILL.md portátil; la Caja de Herramientas, Tiempo y Gravedad y los ensayos entre escalas incluyen además un verificador que debe fallar ante un defecto plantado. Nuestro repositorio público en GitHub funciona como registro criptográfico de publicación y reproducibilidad: cada commit SHA registra la ejecución determinista de bounties/run_all_bounties.py (6/6 PASS) y skills/verify_all_48_folios.py.">Grounding &amp; GitHub Cryptographic Publishing Proof (T0–T3 Truth Boundary): Every Informatico.ai Folio and Grand-Challenge Monograph is verified against primary Crossref DOIs (49/49 Pillar Folios passing tools/check_folio_citations.py --offline with zero errors) and ships with a portable SKILL.md; the Toolbox, Time and Gravity and cross-scale essay skills also ship a verifier that must fail under a planted defect. Our public GitHub repository acts as a timestamped cryptographic prior-art and reproducibility ledger: every commit SHA records the exact deterministic execution of bounties/run_all_bounties.py (6/6 PASS) and skills/verify_all_48_folios.py (every verifier passes, and fails under its planted defect).</span></p>
         <p class="tp-bounty-grounding-links">
           <a class="tp-cite-link" href="{bounties_hub_href}" data-en="Open Bounties Hub (/bounties/) &rarr;" data-es="Abrir Centro de Retos (/es-mx/bounties/) &rarr;">Open Bounties Hub (/bounties/) &rarr;</a> ·
           <a class="tp-cite-link" href="https://github.com/senseiewok/informatico.ai" target="_blank" rel="noopener noreferrer">github.com/senseiewok/informatico.ai &rarr;</a> ·
@@ -2791,7 +2803,7 @@ def render_oss_physics_radar_section(rel_res: str = ".") -> str:
 
       <div class="tp-oss-grounding-strip" role="region" aria-label="Epistemic and Scite Citation Grounding Telemetry">
         <span class="tp-oss-grounding-pill" data-en="✓ 15 / 15 Engines Primary-DOI &amp; Scite Grounded" data-es="✓ 15 / 15 Motores con DOI Primario y Scite">✓ 15 / 15 Engines Primary-DOI &amp; Scite Grounded</span>
-        <span class="tp-oss-grounding-pill" data-en="✓ 48 / 48 Pillar Folios Scite &amp; Crossref Verified (0 Retractions)" data-es="✓ 48 / 48 Folios de Pilar Verificados en Scite y Crossref (0 Retractaciones)">✓ 48 / 48 Pillar Folios Scite &amp; Crossref Verified (0 Retractions)</span>
+        <span class="tp-oss-grounding-pill" data-en="✓ {sum(len(v) for v in NEW_FOLIOS.values())} / {sum(len(v) for v in NEW_FOLIOS.values())} Pillar Folios Scite &amp; Crossref Verified (0 Retractions)" data-es="✓ {sum(len(v) for v in NEW_FOLIOS.values())} / {sum(len(v) for v in NEW_FOLIOS.values())} Folios de Pilar Verificados en Scite y Crossref (0 Retractaciones)">✓ {sum(len(v) for v in NEW_FOLIOS.values())} / {sum(len(v) for v in NEW_FOLIOS.values())} Pillar Folios Scite &amp; Crossref Verified (0 Retractions)</span>
         <span class="tp-oss-grounding-pill" data-en="✓ Deterministic Gate: check_folio_citations.py + scite-batch" data-es="✓ Compuerta Determinista: check_folio_citations.py + scite-batch">✓ Deterministic Gate: check_folio_citations.py + scite-batch</span>
       </div>
 
@@ -3019,7 +3031,7 @@ def render_oss_physics_radar_section(rel_res: str = ".") -> str:
           </div>
           <h3 class="tp-bounty-title" data-en="Scite Smart Citations &amp; Section-Polarity Engine: Supporting vs. Contrasting Evidence" data-es="Scite Smart Citations y Motor de Polaridad por Sección: Evidencia de Apoyo vs. Contraste">Scite Smart Citations &amp; Section-Polarity Engine: Supporting vs. Contrasting Evidence</h3>
           <code class="tp-oss-eq">P_scite = (N_supp − w_c·N_cont) / (N_supp + N_ment + N_cont + 1),  R_retract = 0</code>
-          <p class="tp-bounty-body" data-en="Classifies in-text citation statements across Introduction, Methods, Results, and Discussion into supporting, mentioning, or contrasting evidence while screening all 48 Pillar Folios and 15 Radar engines for retractions." data-es="Clasifica las citas dentro del texto en evidencia de apoyo, mención o contraste por sección (Introducción, Métodos, Resultados, Discusión) y audita los 48 Folios de Pilar y 15 motores contra retractaciones.">Classifies in-text citation statements across Introduction, Methods, Results, and Discussion into supporting, mentioning, or contrasting evidence while screening all 48 Pillar Folios and 15 Radar engines for retractions.</p>
+          <p class="tp-bounty-body" data-en="Classifies in-text citation statements across Introduction, Methods, Results, and Discussion into supporting, mentioning, or contrasting evidence while screening all 49 Pillar Folios and 15 Radar engines for retractions." data-es="Clasifica las citas dentro del texto en evidencia de apoyo, mención o contraste por sección (Introducción, Métodos, Resultados, Discusión) y audita los 49 Folios de Pilar y 15 motores contra retractaciones.">Classifies in-text citation statements across Introduction, Methods, Results, and Discussion into supporting, mentioning, or contrasting evidence while screening all 49 Pillar Folios and 15 Radar engines for retractions.</p>
           {_radar_scite_meta("10.1162/qss_a_00146")}
           <p class="tp-bounty-links">
             <a class="tp-cite-link" href="https://scite.ai" target="_blank" rel="noopener noreferrer">scite.ai</a> ·
@@ -4082,7 +4094,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
         <section class="tp-transfer-chapter" id="ch-iv-3-{esc(slug)}" aria-labelledby="ch-iv-3-heading-{esc(slug)}">
           <h3 id="ch-iv-3-heading-{esc(slug)}" data-en="&sect; IV.2 &middot; Companion Folios, Official Prize Registries &amp; Cross-Disciplinary Transfer" data-es="&sect; IV.2 &middot; Folios Compañeros, Registros Oficiales del Premio y Transferencia Interdisciplinaria">&sect; IV.2 &middot; Companion Folios, Official Prize Registries &amp; Cross-Disciplinary Transfer</h3>
           <p>
-            Bounty <strong>{esc(fid)}</strong> (<code>{esc(bid)}</code>) is deeply coupled to our 48-Folio pillar archive and to open-source scientific registries. Explore the companion long-form Folios and external references below:
+            Bounty <strong>{esc(fid)}</strong> (<code>{esc(bid)}</code>) is deeply coupled to our 49-Folio pillar archive and to open-source scientific registries. Explore the companion long-form Folios and external references below:
           </p>
           <div class="tp-bounty-pills">
             {comp_pills_html}
@@ -4353,9 +4365,9 @@ def render_toolchain_section(rel_res: str = ".") -> str:
     cards_joined = "\n\n".join(cards_html_list)
     return f"""    <section id="tp-toolchain-toolbox" class="tp-bounty-crucible" aria-labelledby="toolchain-toolbox-heading">
       <div class="tp-bounty-header">
-        <p class="tp-kicker" data-en="Special Feature · Tech &amp; Tools · The 3D CAD, Open BIM &amp; Small-Studio Toolbox (X.01–X.06)" data-es="Especial · Tecnología y Herramientas · Caja de Herramientas 3D, CAD Abierto y Pequeños Estudios (X.01–X.06)">Special Feature · Tech &amp; Tools · The 3D CAD, Open BIM &amp; Small-Studio Toolbox (X.01–X.06)</p>
+        <p class="tp-kicker" data-en="Special Feature · Tech &amp; Tools · The 3D CAD, Open BIM &amp; Small-Studio Toolbox (X.01–X.07)" data-es="Especial · Tecnología y Herramientas · Caja de Herramientas 3D, CAD Abierto y Pequeños Estudios (X.01–X.07)">Special Feature · Tech &amp; Tools · The 3D CAD, Open BIM &amp; Small-Studio Toolbox (X.01–X.07)</p>
         <h2 id="toolchain-toolbox-heading" class="tp-h2"><a href="{toolchain_hub_href}" data-en="Tech &amp; Tools · The Toolbox: Downloadable STEP, 3MF, GLB &amp; DXF Files, Byte-Level Verifiers &amp; Small-Studio Skills" data-es="Tecnología y Herramientas · La Caja de Herramientas: Archivos STEP, 3MF, GLB y DXF, Verificadores y Skills para Pequeños Estudios">Tech &amp; Tools · The Toolbox: Downloadable STEP, 3MF, GLB &amp; DXF Files, Byte-Level Verifiers &amp; Small-Studio Skills</a></h2>
-        <p class="tp-standfirst" data-en="Six dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.06 at /toolchain/x01/ through /toolchain/x06/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every Folio ships a deterministic Python generator (make_x01.py..make_x06.py), downloadable neutral files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, a live zero-build WebGL2 3D inspector, a stdlib byte-level verifier with planted-defect knockout, and a portable SKILL.md companion." data-es="Seis Folios dedicados de CAD 3D, fabricación y herramientas abiertas (X.01–X.06 en /es-mx/toolchain/x01/ a /es-mx/toolchain/x06/) diseñados para empoderar a pequeños despachos de arquitectura, ingenieros independientes, físicos y makers matemáticos. Cada Folio entrega un generador determinista en Python (make_x01.py..make_x06.py), archivos descargables (.glb, .step, .3mf, .dxf) con manifiesto SHA-256, un visor 3D WebGL2 sin dependencias, un verificador a nivel de bytes y su SKILL.md portátil.">Six dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.06 at /toolchain/x01/ through /toolchain/x06/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every Folio ships a deterministic Python generator (make_x01.py..make_x06.py), downloadable neutral files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, a live zero-build WebGL2 3D inspector, a stdlib byte-level verifier with planted-defect knockout, and a portable SKILL.md companion.</p>
+        <p class="tp-standfirst" data-en="Seven dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.07 at /toolchain/x01/ through /toolchain/x07/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every Folio ships a deterministic Python generator (make_x01.py..make_x07.py), downloadable neutral files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, a live zero-build WebGL2 3D inspector, a stdlib byte-level verifier with planted-defect knockout, and a portable SKILL.md companion." data-es="Siete Folios dedicados de CAD 3D, fabricación y herramientas abiertas (X.01–X.07 en /es-mx/toolchain/x01/ a /es-mx/toolchain/x07/) diseñados para empoderar a pequeños despachos de arquitectura, ingenieros independientes, físicos y makers matemáticos. Cada Folio entrega un generador determinista en Python (make_x01.py..make_x07.py), archivos descargables (.glb, .step, .3mf, .dxf) con manifiesto SHA-256, un visor 3D WebGL2 sin dependencias, un verificador a nivel de bytes y su SKILL.md portátil.">Seven dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.07 at /toolchain/x01/ through /toolchain/x07/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every Folio ships a deterministic Python generator (make_x01.py..make_x07.py), downloadable neutral files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, a live zero-build WebGL2 3D inspector, a stdlib byte-level verifier with planted-defect knockout, and a portable SKILL.md companion.</p>
       </div>
 
       <div class="tp-toolchain-boundary-banner" role="note" aria-label="Educational Geometry Boundary">
@@ -4365,10 +4377,10 @@ def render_toolchain_section(rel_res: str = ".") -> str:
       </div>
 
       <div class="tp-bounty-filter-bar" role="group" aria-label="Filter Tech and Tools Folios by field">
-        <button type="button" class="tp-bounty-filter-btn" data-toolchain-filter="all" aria-pressed="true" data-en="All 6 Toolbox Folios (X.01–X.06)" data-es="Las 6 Herramientas (X.01–X.06)">All 6 Toolbox Folios (X.01–X.06)</button>
+        <button type="button" class="tp-bounty-filter-btn" data-toolchain-filter="all" aria-pressed="true" data-en="All 7 Toolbox Folios (X.01–X.07)" data-es="Las 7 Herramientas (X.01–X.07)">All 7 Toolbox Folios (X.01–X.07)</button>
         <button type="button" class="tp-bounty-filter-btn" data-toolchain-filter="architecture" aria-pressed="false" data-en="Small Architects · Vaults &amp; Kinetic DXF (X.03 · X.04)" data-es="Pequeños Arquitectos · Bóvedas y DXF (X.03 · X.04)">Small Architects · Vaults &amp; Kinetic DXF (X.03 · X.04)</button>
         <button type="button" class="tp-bounty-filter-btn" data-toolchain-filter="engineering" aria-pressed="false" data-en="Independent Engineers · STEP &amp; 3MF (X.02 · X.05)" data-es="Ingenieros Independientes · STEP y 3MF (X.02 · X.05)">Independent Engineers · STEP &amp; 3MF (X.02 · X.05)</button>
-        <button type="button" class="tp-bounty-filter-btn" data-toolchain-filter="core" aria-pressed="false" data-en="Core WebGL2 &amp; Validator (X.01)" data-es="Visor WebGL2 y Validador (X.01)">Core WebGL2 &amp; Validator (X.01)</button>
+        <button type="button" class="tp-bounty-filter-btn" data-toolchain-filter="core" aria-pressed="false" data-en="Core WebGL2 &amp; Curvature (X.01 · X.07)" data-es="Visor WebGL2 y Curvatura (X.01 · X.07)">Core WebGL2 &amp; Curvature (X.01 · X.07)</button>
         <button type="button" class="tp-bounty-filter-btn" data-toolchain-filter="physics_math" aria-pressed="false" data-en="Physics &amp; Math Topology (X.06)" data-es="Topología Física y Matemática (X.06)">Physics &amp; Math Topology (X.06)</button>
       </div>
 
@@ -4389,15 +4401,15 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
     title_en = "Tech & Tools · The 3D CAD, Open BIM & Small-Studio Toolbox"
     title_es = "Tecnología y Herramientas · Caja de Herramientas 3D, CAD Abierto y Pequeños Estudios"
     hook_en = (
-        "Six standalone 3D CAD and open-toolchain monographs (X.01–X.06) empowering boutique architecture studios, "
+        "Seven standalone 3D CAD and open-toolchain monographs (X.01–X.07) empowering boutique architecture studios, "
         "independent civil and mechanical engineers, physicists, and math makers. Every Folio ships a deterministic Python "
-        "generator (make_x01.py..make_x06.py), downloadable neutral 3D/2D files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, "
+        "generator (make_x01.py..make_x07.py), downloadable neutral 3D/2D files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, "
         "a live zero-dependency WebGL2 3D inspector, a stdlib byte-level verifier with planted-defect knockout, and a portable SKILL.md."
     )
     hook_es = (
-        "Seis monografías dedicadas de CAD 3D y herramientas abiertas (X.01–X.06) diseñadas para empoderar a pequeños despachos de arquitectura, "
+        "Siete monografías dedicadas de CAD 3D y herramientas abiertas (X.01–X.07) diseñadas para empoderar a pequeños despachos de arquitectura, "
         "ingenieros civiles y mecánicos independientes, físicos y makers matemáticos. Cada Folio incluye su generador determinista en Python "
-        "(make_x01.py..make_x06.py), archivos descargables (.glb, .step, .3mf, .dxf) con manifiesto SHA-256, un visor 3D WebGL2 sin dependencias, "
+        "(make_x01.py..make_x07.py), archivos descargables (.glb, .step, .3mf, .dxf) con manifiesto SHA-256, un visor 3D WebGL2 sin dependencias, "
         "un verificador a nivel de bytes con prueba de defecto plantado y su SKILL.md portátil."
     )
     crumbs = [(BRAND, page_url("", lang)), (title_es if es else title_en, canon)]
@@ -4450,7 +4462,7 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
     </ol>
   </nav>
     <section class="tp-pillar-hero" aria-labelledby="pillar-heading">
-      <p class="tp-kicker" data-en="Tech &amp; Tools · The Toolbox · 6 Dedicated 3D CAD &amp; Studio Folios (X.01–X.06)" data-es="Tecnología y Herramientas · Caja de Herramientas · 6 Folios 3D y CAD Abierto (X.01–X.06)">Tech &amp; Tools · The Toolbox · 6 Dedicated 3D CAD &amp; Studio Folios (X.01–X.06)</p>
+      <p class="tp-kicker" data-en="Tech &amp; Tools · The Toolbox · 7 Dedicated 3D CAD &amp; Studio Folios (X.01–X.07)" data-es="Tecnología y Herramientas · Caja de Herramientas · 7 Folios 3D y CAD Abierto (X.01–X.07)">Tech &amp; Tools · The Toolbox · 7 Dedicated 3D CAD &amp; Studio Folios (X.01–X.07)</p>
       <h1 id="pillar-heading" class="tp-h1" data-en="{esc(title_en)}" data-es="{esc(title_es)}">{esc(title_en)}</h1>
       <p class="tp-standfirst" data-en="{esc(hook_en)}" data-es="{esc(hook_es)}">{esc(hook_en)}</p>
       <div class="tp-toolchain-boundary-banner" role="note" aria-label="Educational Geometry Boundary">
@@ -4467,7 +4479,7 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
           <div class="tp-studio-step-card">
             <span class="tp-studio-step-num" data-en="Step 1 · Grab Any 3D/CAD File" data-es="Paso 1 · Descarga el Archivo 3D/CAD">Step 1 · Grab Any 3D/CAD File</span>
             <h2 class="tp-studio-step-title" data-en="Download Open Neutral Geometry" data-es="Descarga Geometría Abierta y Neutral">Download Open Neutral Geometry</h2>
-            <p data-en="Every Toolbox Folio (X.01–X.06) below gives you instant 1-click downloads of watertight .glb meshes, ISO 10303-21 .step AP242 solids, .3mf print packages, and .dxf laser/CNC cut sheets." data-es="Cada Folio (X.01–X.06) te ofrece descarga directa en 1 clic de mallas .glb estancas, sólidos .step AP242, paquetes .3mf de impresión 3D y planos .dxf de corte láser/CNC.">Every Toolbox Folio (X.01–X.06) below gives you instant 1-click downloads of watertight .glb meshes, ISO 10303-21 .step AP242 solids, .3mf print packages, and .dxf laser/CNC cut sheets.</p>
+            <p data-en="Every Toolbox Folio (X.01–X.07) below gives you instant 1-click downloads of watertight .glb meshes, ISO 10303-21 .step AP242 solids, .3mf print packages, and .dxf laser/CNC cut sheets." data-es="Cada Folio (X.01–X.07) te ofrece descarga directa en 1 clic de mallas .glb estancas, sólidos .step AP242, paquetes .3mf de impresión 3D y planos .dxf de corte láser/CNC.">Every Toolbox Folio (X.01–X.07) below gives you instant 1-click downloads of watertight .glb meshes, ISO 10303-21 .step AP242 solids, .3mf print packages, and .dxf laser/CNC cut sheets.</p>
           </div>
           <div class="tp-studio-step-card">
             <span class="tp-studio-step-num" data-en="Step 2 · Open in Free Desktop Tools" data-es="Paso 2 · Ábrelo en Herramientas Gratuitas">Step 2 · Open in Free Desktop Tools</span>
@@ -4729,6 +4741,13 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
     es_plain_html = f"<p><strong>En Palabras Sencillas (Explicaci&oacute;n Accesible):</strong> {esc(plain_es_c)}</p>" if plain_es_c else ""
     es_deep_html = f"<p><strong>Mecanismo T&eacute;cnico, Fuerzas en Competencia y Umbral Cr&iacute;tico:</strong> {esc(deep_es_c)}</p>" if deep_es_c else ""
 
+    has_en_audio = (ROOT / "src" / "audio" / f"{slug}-en.mp3").is_file()
+    has_es_audio = (ROOT / "src" / "audio" / f"{slug}-es.mp3").is_file()
+    tc_audio_attrs = (
+        (f' data-audio-src="{rel_res}/audio/{esc(slug)}-en.mp3"' if has_en_audio else "")
+        + (f' data-audio-src-es="{rel_res}/audio/{esc(slug)}-es.mp3"' if has_es_audio else "")
+    )
+
     return f"""{head}
 <body class="tp-body tp-page-folio">
 {render_masthead(rel_res, "toolchain", lang)}
@@ -4810,7 +4829,7 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
       <a class="tp-act-pill" href="#act5-heading-{esc(slug)}" data-en="V · Code &amp; Verifier" data-es="V · Código y Verificador">V · Code &amp; Verifier</a>
     </nav>
 
-    <tp-article-audio class="tp-article-audio" data-folio="{esc(fid)}" data-reading-time="{esc(rt_en.upper())}" data-audio-src="{rel_res}/audio/{esc(slug)}-en.mp3" data-audio-src-es="{rel_res}/audio/{esc(slug)}-es.mp3"></tp-article-audio>
+    <tp-article-audio class="tp-article-audio" data-folio="{esc(fid)}" data-reading-time="{esc(rt_en.upper())}"{tc_audio_attrs}></tp-article-audio>
 
     <details class="tp-es-summary" lang="es-MX">
       <summary class="tp-es-toggle">
@@ -5096,7 +5115,7 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
       {_t_pager_card(prev_t, "prev")}
       {_t_pager_card(next_t, "next")}
     </nav>
-    <p class="tp-pager-all"><a href="{_href(rel_res, 'toolchain/')}" data-en="All 6 Tech &amp; Tools Folios (X.01–X.06) &rarr;" data-es="Las 6 Herramientas y Folios CAD 3D (X.01–X.06) &rarr;">All 6 Tech &amp; Tools Folios (X.01–X.06) &rarr;</a></p>
+    <p class="tp-pager-all"><a href="{_href(rel_res, 'toolchain/')}" data-en="All 7 Tech &amp; Tools Folios (X.01–X.07) &rarr;" data-es="Las 7 Herramientas y Folios CAD 3D (X.01–X.07) &rarr;">All 7 Tech &amp; Tools Folios (X.01–X.07) &rarr;</a></p>
 {render_site_footer(rel_res)}
   </main>
   <script type="module" src="{rel_res}/modules/main.mjs"></script>
@@ -5543,6 +5562,8 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         )
     rows_html = "\n".join(rows)
     first = catalog["pillars"]["engineering"][0]
+    arch_n = len(catalog["pillars"]["architecture"])
+    total_pillar_n = sum(len(v) for v in NEW_FOLIOS.values())
     strip_aria = (
         f"Informatico.ai: 4 Pilares, Serie Tiempo y Gravedad, 6 Retos y {skill_count} Skills de IA"
         if es
@@ -5571,14 +5592,14 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
       </figure>
       <nav class="tp-cover-track-strip" aria-label="{strip_aria}">
         <a class="tp-track-chip" href="engineering/">
-          <span class="tp-track-chip-kicker" data-en="PILLAR I · 12 ESSAYS" data-es="PILAR I · 12 ENSAYOS">PILLAR I · 12 ESSAYS</span>
+          <span class="tp-track-chip-kicker" data-en="PILLAR I · 13 ESSAYS" data-es="PILAR I · 13 ENSAYOS">PILLAR I · 13 ESSAYS</span>
           <strong class="tp-track-chip-title" data-en="Engineering &amp; Construction" data-es="Ingeniería y Construcción">Engineering &amp; Construction</strong>
-          <span class="tp-track-chip-meta" data-en="12 Folios · Bridges, TBM, SIMP · Cult Classics (CC.01 &amp; CC.03)" data-es="12 Folios · Puentes, TBM, SIMP · Clásicos (CC.01 y CC.03)">12 Folios · Bridges, TBM, SIMP · Cult Classics (CC.01 &amp; CC.03)</span>
+          <span class="tp-track-chip-meta" data-en="13 Folios · Bridges, TBM, SIMP, Biot · Cult Classics (CC.01 &amp; CC.03)" data-es="13 Folios · Puentes, TBM, SIMP, Biot · Clásicos (CC.01 y CC.03)">13 Folios · Bridges, TBM, SIMP, Biot · Cult Classics (CC.01 &amp; CC.03)</span>
         </a>
         <a class="tp-track-chip" href="architecture/">
-          <span class="tp-track-chip-kicker" data-en="PILLAR II · 12 ESSAYS" data-es="PILAR II · 12 ENSAYOS">PILLAR II · 12 ENSAYOS</span>
+          <span class="tp-track-chip-kicker" data-en="PILLAR II · {arch_n} ESSAYS" data-es="PILAR II · {arch_n} ENSAYOS">PILLAR II · {arch_n} ESSAYS</span>
           <strong class="tp-track-chip-title" data-en="Architecture &amp; Tectonics" data-es="Arquitectura y Tectónica">Architecture &amp; Tectonics</strong>
-          <span class="tp-track-chip-meta" data-en="12 Folios · Vaults, Barragán, Sky-Cooling" data-es="12 Folios · Bóvedas, Barragán, Enfriamiento">12 Folios · Vaults, Barragán, Sky-Cooling</span>
+          <span class="tp-track-chip-meta" data-en="{arch_n} Folios · Vaults, Shells, Sky-Cooling" data-es="{arch_n} Folios · Bóvedas, Cáscaras, Enfriamiento">{arch_n} Folios · Vaults, Shells, Sky-Cooling</span>
         </a>
         <a class="tp-track-chip" href="physics/">
           <span class="tp-track-chip-kicker" data-en="PILLAR III · 12 ESSAYS + 14-STEP SERIES" data-es="PILAR III · 12 ENSAYOS + SERIE DE 14 PASOS">PILLAR III · 12 ESSAYS + 14-STEP SERIES</span>
@@ -5596,8 +5617,8 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
           <span class="tp-track-chip-meta" data-en="Erdős #30 (Open) · Unitary Microgrants" data-es="Erdős #30 (Abierto) · Microbecas Unitary">Erdős #30 (Open) · Unitary Microgrants</span>
         </a>
         <a class="tp-track-chip tp-track-chip-toolchain" href="toolchain/">
-          <span class="tp-track-chip-kicker" data-en="6 3D CAD &amp; STUDIO FOLIOS" data-es="6 FOLIOS CAD 3D Y ESTUDIO">6 3D CAD &amp; STUDIO FOLIOS</span>
-          <strong class="tp-track-chip-title" data-en="Tech &amp; Tools · The Toolbox (X.01–X.06)" data-es="Tecnología y Herramientas (X.01–X.06)">Tech &amp; Tools · The Toolbox (X.01–X.06)</strong>
+          <span class="tp-track-chip-kicker" data-en="7 3D CAD &amp; STUDIO FOLIOS" data-es="7 FOLIOS CAD 3D Y ESTUDIO">7 3D CAD &amp; STUDIO FOLIOS</span>
+          <strong class="tp-track-chip-title" data-en="Tech &amp; Tools · The Toolbox (X.01–X.07)" data-es="Tecnología y Herramientas (X.01–X.07)">Tech &amp; Tools · The Toolbox (X.01–X.07)</strong>
           <span class="tp-track-chip-meta" data-en="STEP · 3MF · GLB · DXF · Small Architects" data-es="STEP · 3MF · GLB · DXF · Pequeños Estudios">STEP · 3MF · GLB · DXF · Small Architects</span>
         </a>
         <a class="tp-track-chip tp-track-chip-timegravity" href="timegravity/">
@@ -6129,7 +6150,7 @@ def render_llms_txt(catalog: dict) -> str:
     skill_count = len(list((ROOT / "skills").glob("*/*/SKILL.md")))
     t_en, d_en, _t_es, _d_es = (x.replace("{total}", str(total)) for x in HUB_SEO)
     lines = [f"# {BRAND}", "", f"> {d_en}", "",
-             f"Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under {page_url('', 'es')}. Public open-source repository ({skill_count} SKILL.md companions, {_verifier_count()} Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.", "",
+             f"Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under {page_url('', 'es')}. Public open-source repository ({skill_count} SKILL.md companions, {_verifier_count()} Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, {len(BOUNTY_FOLIOS)} Bounty Crucible harnesses & {len(TOOLCHAIN_FOLIOS)} Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.", "",
              *WELCOME_FOR_AGENTS, ""]
     for pillar, folios in catalog["pillars"].items():
         lines.append(f"## {PILLAR_TITLES[pillar]}")
@@ -6146,7 +6167,7 @@ def render_llms_txt(catalog: dict) -> str:
         b_title, b_desc = BOUNTY_SEO[b["slug"]][0], BOUNTY_SEO[b["slug"]][1]
         lines.append(f"- [{b['folio_id']} ({b['bounty_id']}) {b_title}]({page_url('bounties/' + b['slug'] + '/')}): {b_desc}")
     lines.append("")
-    lines.append("## Tech & Tools · The 3D CAD, Open BIM & Small-Studio Toolbox (X.01–X.06)")
+    lines.append("## Tech & Tools · The 3D CAD, Open BIM & Small-Studio Toolbox (X.01–X.07)")
     lines.append("")
     lines.append(f"- [Tech & Tools · The Toolbox]({page_url('toolchain/')}): {PILLAR_SEO['toolchain'][1]}")
     for t in TOOLCHAIN_FOLIOS:

@@ -88,6 +88,12 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "Silicio RISC-V y Barreras de Control en la Red",
         "Cómo las funciones de barrera y la sincronización tipo luciérnaga pueden estabilizar la red renovable, y qué sumaría un chip RISC-V comprobado por máquina.",
     ),
+    "e13": (
+        "Biot 3D Poroelasticity and Fault Slip Margin",
+        "How Biot consolidation, Skempton pore-pressure coupling and Mohr-Coulomb friction frame fault slip risk during geologic carbon dioxide storage, in a model.",
+        "Poroelasticidad de Biot y Deslizamiento de Fallas",
+        "Cómo la consolidación de Biot, el acoplamiento de Skempton y la fricción de Mohr-Coulomb acotan el deslizamiento de fallas al inyectar CO2, en un modelo.",
+    ),
     # ---- Pillar II: Architecture
     "a01": (
         "Funicular Thrust Surfaces in Stone and Timber Shells",
@@ -160,6 +166,12 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "A design study of how the floating-compression tensegrity of Snelson and Fuller could carry an 8–13 μm radiative sky-cooling membrane over a civic canopy.",
         "Domos de Tensegridad y Cubiertas de Enfriamiento",
         "Un estudio de diseño sobre cómo la tensegridad de Snelson y Fuller podría sostener una membrana de enfriamiento radiativo de 8–13 μm sobre una plaza.",
+    ),
+    "a13": (
+        "Heinz Isler's Thin-Shell Domes and Buckling",
+        "How inverted hanging cloth shapes compression-only concrete shells, and why inward dimples govern elastic buckling below Zoelly's classical limit.",
+        "Domos Delgados de Heinz Isler y Pandeo Elástico",
+        "Cómo una tela colgada invertida da forma a cáscaras de concreto en compresión, y por qué las abolladuras reducen el pandeo frente al límite clásico.",
     ),
     # ---- Pillar III: Physics
     "p01": (
@@ -313,9 +325,9 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
 PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     "engineering": (
         "Civil Engineering & Construction Essays | Informatico.ai",
-        "Twelve interactive essays on civil engineering and construction: concrete pumping, 3D printing, bridges, tunnel boring machines and self-healing concrete.",
+        "Thirteen interactive essays on civil engineering and construction: concrete pumping, 3D printing, bridges, tunnel boring machines and geomechanics.",
         "Ensayos de Ingeniería Civil y Construcción | Informatico.ai",
-        "Doce ensayos interactivos de ingeniería civil y construcción: bombeo e impresión 3D de concreto, puentes, tuneladoras y concreto autocurativo.",
+        "Trece ensayos interactivos de ingeniería civil y construcción: bombeo e impresión 3D de concreto, puentes, tuneladoras, concreto y geomecánica.",
     ),
     "architecture": (
         "Architecture Essays: Vaults, Color & Facades | Informatico.ai",
@@ -343,9 +355,9 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "toolchain": (
         "Tech & Tools · The 3D CAD & Open Toolbox | Informatico.ai",
-        "Six interactive 3D CAD and open-tool folios with downloadable STEP, 3MF, GLB and DXF files, Python byte-level verifiers, and skills for small studios.",
+        "Seven interactive 3D CAD and open-tool folios with downloadable STEP, 3MF, GLB and DXF files, Python byte-level verifiers, and skills for small studios.",
         "Tecnología y Herramientas · Caja 3D y CAD | Informatico.ai",
-        "Seis folios interactivos de herramientas 3D y CAD abierto con archivos STEP, 3MF, GLB y DXF, verificadores en Python y habilidades para estudios.",
+        "Siete folios interactivos de herramientas 3D y CAD abierto con archivos STEP, 3MF, GLB y DXF, verificadores en Python y habilidades para estudios.",
     ),
     # Time & Gravity hub (/timegravity/): the track pages' own copy lives in tools/folios/timegravity/<slug>.py ("seo").
     "timegravity": (
@@ -368,7 +380,7 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
 }
 
-# Dedicated Tech & Tools · The Toolbox Folios (x01..x06) under /toolchain/<slug>/ and /es-mx/toolchain/<slug>/
+# Dedicated Tech & Tools · The Toolbox Folios (x01..x07) under /toolchain/<slug>/ and /es-mx/toolchain/<slug>/
 TOOLCHAIN_SEO: dict[str, tuple[str, str, str, str]] = {
     "x01": (
         "Zero-Build WebGL2 GLB Viewer and Manifold Validator",
@@ -405,6 +417,12 @@ TOOLCHAIN_SEO: dict[str, tuple[str, str, str, str]] = {
         "How pierced genus-one acoustic metamaterial unit cells are exported to GLB, 3MF and STEP while a Python verifier checks Euler and Betti invariants.",
         "Celdas de Metamateriales Topológicos y Betti 3D",
         "Cómo se exportan celdas unitarias de metamateriales acústicos de género uno a GLB, 3MF y STEP verificando sus invariantes de Euler y Betti en Python.",
+    ),
+    "x07": (
+        "Gauss–Bonnet Curvature & Cotangent Mesh Audit",
+        "How pure Python checks discrete Gauss–Bonnet closure, Meyer mixed Voronoi areas, and cotangent edge weights across GLB, 3MF, and STEP.",
+        "Curvatura Gauss–Bonnet y Auditoría Cotangente",
+        "Cómo Python comprueba el cierre de Gauss–Bonnet, las áreas mixtas de Meyer y los pesos cotangentes en archivos GLB, 3MF y STEP.",
     ),
 }
 

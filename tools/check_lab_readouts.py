@@ -42,7 +42,12 @@ class QuietHandler(http.server.SimpleHTTPRequestHandler):
 
 
 def pages() -> list[str]:
-    return [f"/{pillar}/{code}{i:02d}/" for pillar, code in PILLARS for i in range(1, 13)]
+    return [
+        f"/{pillar}/{d.name}/"
+        for pillar, _code in PILLARS
+        for d in sorted((SRC / pillar).iterdir())
+        if d.is_dir()
+    ]
 
 
 def main() -> int:

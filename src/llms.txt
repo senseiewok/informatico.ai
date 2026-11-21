@@ -1,8 +1,8 @@
 # Informatico.ai
 
-> 48 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
+> 50 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
 
-Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (87 SKILL.md companions, 38 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 6 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
+Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (90 SKILL.md companions, 41 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 7 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
 
 ## Welcome, agents (and the people who work with you)
 
@@ -20,7 +20,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 
 ## Civil Engineering & Construction
 
-- [Civil Engineering & Construction](https://informatico.ai/engineering/): Twelve interactive essays on civil engineering and construction: concrete pumping, 3D printing, bridges, tunnel boring machines and self-healing concrete.
+- [Civil Engineering & Construction](https://informatico.ai/engineering/): Thirteen interactive essays on civil engineering and construction: concrete pumping, 3D printing, bridges, tunnel boring machines and geomechanics.
 - [E.01 Stokes–Brinkman Flow in Porous Materials](https://informatico.ai/engineering/e01/): How viscous shear and Darcy drag balance over the Brinkman screening length in porous limestone and mortars, with a lattice percolation model.
 - [E.02 Herschel–Bulkley Rheology of Pumped Concrete](https://informatico.ai/engineering/e02/): How the yield-stress rheology of Bingham, Herschel and Bulkley describes pipe pressure, a central plug core and the risk of blockage when pumping concrete.
 - [E.03 Acoustic Metamaterials: Helmholtz Sound Absorbers](https://informatico.ai/engineering/e03/): How coiled resonators and viscothermal boundary layers could absorb low-frequency sound in a panel about 1/19 of a wavelength thick, as a design target.
@@ -33,6 +33,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 - [E.10 3D Concrete Printing: Extrusion and Buildability](https://informatico.ai/engineering/e10/): How Nicolas Roussel's thixotropic structuration and Suiker's buckling analysis bear on whether a printed concrete wall can stand without formwork.
 - [E.11 SIMP Topology Optimization and Inerter Damping](https://informatico.ai/engineering/e11/): How Bendsøe and Sigmund's SIMP topology optimization, Michell trusses and flywheel inerters could lighten floor slabs, as a design study.
 - [E.12 RISC-V Silicon and Firefly Grid Control Barriers](https://informatico.ai/engineering/e12/): How Control Barrier Functions and firefly-style phase-locking can steady renewable grids, and what a machine-checked RISC-V chip would add beneath.
+- [E.13 Biot 3D Poroelasticity and Fault Slip Margin](https://informatico.ai/engineering/e13/): How Biot consolidation, Skempton pore-pressure coupling and Mohr-Coulomb friction frame fault slip risk during geologic carbon dioxide storage, in a model.
 
 ## Architecture
 
@@ -49,6 +50,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 - [A.10 Miura-Ori Origami Deployable Facades](https://informatico.ai/architecture/a10/): How Koryo Miura's fold and the folded metamaterials of Schenk and Guest drive adaptive, deployable solar facades inspired by the mashrabiya screen.
 - [A.11 3D Polyhedral Graphic Statics and Stone Vaults](https://informatico.ai/architecture/a11/): How James Clerk Maxwell's reciprocal figures and polyhedral graphic statics, with tools like COMPAS, shape compression-only vaults, as a design study.
 - [A.12 Tensegrity Cable Domes and Sky-Cooling Canopies](https://informatico.ai/architecture/a12/): A design study of how the floating-compression tensegrity of Snelson and Fuller could carry an 8–13 μm radiative sky-cooling membrane over a civic canopy.
+- [A.13 Heinz Isler's Thin-Shell Domes and Buckling](https://informatico.ai/architecture/a13/): How inverted hanging cloth shapes compression-only concrete shells, and why inward dimples govern elastic buckling below Zoelly's classical limit.
 
 ## Physics
 
@@ -92,15 +94,16 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 - [B.05 (BOUNTY-P2) PySR Symbolic Regression and PySINDy PDE Discovery](https://informatico.ai/bounties/b05/): How PySINDy sparse thresholding, Dedalus spectral solvers and PySR symbolic regression recover the viscous Burgers equation from noisy data in an example.
 - [B.06 (BOUNTY-M2) PhysLean Gauge Anomaly & ITensors.jl Entanglement](https://informatico.ai/bounties/b06/): How HEPLean/PhysLean treats Standard Model gauge anomaly cancellation in Lean 4, with ITensors.jl and NetKet entanglement bounds, in a worked Python example.
 
-## Tech & Tools · The 3D CAD, Open BIM & Small-Studio Toolbox (X.01–X.06)
+## Tech & Tools · The 3D CAD, Open BIM & Small-Studio Toolbox (X.01–X.07)
 
-- [Tech & Tools · The Toolbox](https://informatico.ai/toolchain/): Six interactive 3D CAD and open-tool folios with downloadable STEP, 3MF, GLB and DXF files, Python byte-level verifiers, and skills for small studios.
+- [Tech & Tools · The Toolbox](https://informatico.ai/toolchain/): Seven interactive 3D CAD and open-tool folios with downloadable STEP, 3MF, GLB and DXF files, Python byte-level verifiers, and skills for small studios.
 - [X.01 (TOOL-CORE-1) Zero-Build WebGL2 GLB Viewer and Manifold Validator](https://informatico.ai/toolchain/x01/): How a zero-dependency WebGL2 loader parses binary glTF 2.0 files while a Python stdlib verifier checks watertight topology and signed mesh volume.
 - [X.02 (TOOL-ENG-1) Code-First Parametric Solids: STEP, 3MF and GLB](https://informatico.ai/toolchain/x02/): How independent engineers generate parametric B-rep solids in Python and audit what survives across STEP AP242, 3MF and GLB with chordal tolerances.
 - [X.03 (TOOL-ARCH-1) Small Architect's Vault, Timber and Open BIM Kit](https://informatico.ai/toolchain/x03/): How small architecture studios generate compression-only stone and timber voussoir arches in Python and export STEP, 3MF, DXF and GLB files checked by script.
 - [X.04 (TOOL-ARCH-2) Miura-Ori Kinetic Screens: 3D GLB to Laser-Cut DXF](https://informatico.ai/toolchain/x04/): How small studios and makers generate deployable Miura-ori facade shells in 3D GLB and 3MF alongside layered 2D laser-cutter DXF crease patterns.
 - [X.05 (TOOL-FAB-1) SIMP Structural Lattices to Watertight 3MF Meshes](https://informatico.ai/toolchain/x05/): How variable-taper SIMP structural struts are synthesized as watertight 2-manifold 3MF, GLB and STEP meshes with frustum volume and overhang checks.
 - [X.06 (TOOL-PHYS-MATH-1) Topological Metamaterial Cells and Betti Verifier](https://informatico.ai/toolchain/x06/): How pierced genus-one acoustic metamaterial unit cells are exported to GLB, 3MF and STEP while a Python verifier checks Euler and Betti invariants.
+- [X.07 (TOOL-CORE-2) Gauss–Bonnet Curvature & Cotangent Mesh Audit](https://informatico.ai/toolchain/x07/): How pure Python checks discrete Gauss–Bonnet closure, Meyer mixed Voronoi areas, and cotangent edge weights across GLB, 3MF, and STEP.
 
 ## Time & Gravity · Fourteen Pages on an Open Problem (T.00–T.13)
 

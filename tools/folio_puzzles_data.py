@@ -1216,6 +1216,26 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
             ("GIRO", "Giro de las turbinas de acero, cuyo momento mecánico mantenía la frecuencia cerca de 60 ciclos por segundo y que disminuye con la energía solar y las baterías", "Acto I"),
         ],
     },
+    "e13": {
+        "title_en": "Folio E.13 · Biot 3D Poroelasticity & Fault Slip Margin Crossword",
+        "title_es": "Folio E.13 · Crucigrama de Poroelasticidad de Biot y Fallas",
+        "en": [
+            ("BIOT", "Maurice, who published the 3D consolidation theory in 1941 linking rock skeleton strain and pore fluid pressure", "Act I"),
+            ("SKEMPTON", "Geotechnical pioneer behind the undrained pore-pressure coefficient B = 0.394 in brine-saturated sandstone", "Act I"),
+            ("FAULT", "Planar rock discontinuity whose cohesionless slip tendency |tau|/sigma'_n stays below 0.60 at sedimentary k_0 = 0.72", "Act III"),
+            ("BRINE", "Saline formation water with bulk modulus 2.2 GPa; displacing it with supercritical CO2 drops B to 0.053 in the model", "Act II"),
+            ("STRESS", "Normal and shear traction across a fault; the ratio k_0 = sigma_h / sigma_v separates sedimentary basins from basement", "Act III"),
+            ("PORE", "Fluid-filled void space in sandstone whose pressure opposes clamping stress across mineral contacts and faults", "Act I"),
+        ],
+        "es": [
+            ("BIOT", "Físico que en 1941 formuló la teoría tridimensional de consolidación acoplando esqueleto rocoso y presión de poro", "Acto I"),
+            ("FALLA", "Discontinuidad en la roca cuya tendencia al deslizamiento sube al caer el esfuerzo normal efectivo en el modelo", "Acto III"),
+            ("PORO", "Cavidad en la arenisca cuya presión de fluido empuja hacia afuera frente al peso de la sobrecarga", "Acto I"),
+            ("ROCA", "Medio poroso rígido cuyo módulo drenado K_d = 12 GPa y módulo mineral K_s = 36 GPa dan alfa = 0.667", "Acto II"),
+            ("SELLO", "Estrato superior de baja permeabilidad sobre el acuífero salino en el almacenamiento geológico de CO2", "Acto I"),
+            ("ARENA", "Roca sedimentaria porosa (arenisca) menos críticamente esforzada que el basamento cristalino en el modelo", "Acto III"),
+        ],
+    },
     "a11": {
         "title_en": "Folio A.11 · 3D Polyhedral Graphic Statics, Airy Stress & Guastavino Vaults Crossword",
         "title_es": "Folio A.11 · Crucigrama de Estática Gráfica Poliédrica 3D y Bóvedas sin Acero",
@@ -1254,6 +1274,26 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
             ("BARRA", "Puntal aislado de acero en compresión que flota sin tocar ninguna otra barra", "Acto III"),
             ("SOL", "Luz solar; en el modelo, la membrana supuesta refleja 97% de 1,000 W/m2, un valor asumido", "Acto III"),
             ("RED", "Malla de cables en equilibrio; la matriz de equilibrio se analiza con descomposición en valores singulares (Pellegrino y Calladine, 1986)", "Acto III"),
+        ],
+    },
+    "a13": {
+        "title_en": "Folio A.13 · Heinz Isler Thin-Shell Domes & Buckling Knockdown Crossword",
+        "title_es": "Folio A.13 · Crucigrama de Cáscaras Delgadas de Heinz Isler y Pandeo",
+        "en": [
+            ("ISLER", "Swiss engineer Heinz, who presented hanging-cloth and pneumatic shell form-finding at Madrid in 1959", "Act I"),
+            ("ZOELLY", "Author of the 1915 classical elastic spherical-shell buckling pressure formula", "Act II"),
+            ("DIMPLE", "Localized inward shell defect that lowers buckling capacity more sharply than an outward bump", "Act II"),
+            ("SHELL", "Thin doubly curved roof carrying load mainly by in-plane membrane forces rather than bending", "Act I"),
+            ("CLOTH", "Hanging fabric soaked in plaster or frozen in winter air and inverted into compression", "Act I"),
+            ("CREEP", "Long-term concrete deformation that reduces effective modulus and lowers buckling resistance", "Act III"),
+        ],
+        "es": [
+            ("ISLER", "Ingeniero suizo que presentó en 1959 las telas colgadas invertidas para hallar formas de cáscaras", "Acto I"),
+            ("ZOELLY", "Autor en 1915 de la fórmula clásica de pandeo elástico para una esfera uniforme", "Acto II"),
+            ("TELA", "Lámina textil colgada en tracción pura que al endurecerse e invertirse trabaja en compresión", "Acto I"),
+            ("PANDEO", "Inestabilidad súbita que gobierna una cáscara delgada mucho antes de su aplastamiento", "Acto II"),
+            ("DOMO", "Casquete curvo idealizado de 31.6 m de claro analizado en este modelo", "Acto III"),
+            ("CARGA", "Peso propio y sobrecarga uniforme proyectada en planta dentro del modelo", "Acto III"),
         ],
     },
     "p11": {

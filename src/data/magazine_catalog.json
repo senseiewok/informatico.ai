@@ -1,7 +1,7 @@
 {
-  "version": "6.0.0",
-  "title": "Informatico.ai — 6-Volume, 48-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
-  "total_folios": 48,
+  "version": "7.0.0",
+  "title": "Informatico.ai — 7-Volume, 50-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
+  "total_folios": 50,
   "pillars": {
     "engineering": [
       {
@@ -1452,6 +1452,120 @@
           "retracted": false,
           "summary": "Scite index entry for Ames, Xu, Grizzle & Tabuada 2017 (DOI 10.1109/TAC.2016.2638961), checked 2026-11-08: 3,385 citing publications (8 supporting, 2,361 mentioning, 0 contrasting) and no retraction notice. These counts describe that one paper, not this folio."
         }
+      },
+      {
+        "folio_id": "E.13",
+        "slug": "e13",
+        "pillar": "engineering",
+        "category_code": "E",
+        "parent_folios": [
+          "E.01",
+          "E.05"
+        ],
+        "lineage_mode": "CONTINUATION · Continues E.01 Porous Continuum & E.05 Terzaghi Effective Stress",
+        "title": "Biot 3D Poroelasticity, Skempton Undrained Coupling & Mohr–Coulomb Fault Slip Margin in Geologic CO2 Storage",
+        "subtitle": "Continuing Folio E.01's porous percolation and E.05's 1D Terzaghi consolidation: an illustrative geomechanical study coupling Biot's 3D effective-stress coefficient α = 1 − K_d/K_s, Rice–Cleary Skempton pore-pressure response B, and cohesionless Mohr–Coulomb fault slip tendency τ/σ'_n across sedimentary storage basins and critically stressed crystalline basement.",
+        "date_published": "2026-11-20",
+        "date_redated": "2026-11-20",
+        "current_edition": "REV 1.0",
+        "status_badge": "POROELASTIC GEOMECHANICS · REV 1.0",
+        "primary_kernel": "skills/engineering/e13/verify_e13_biot_poroelasticity.py",
+        "governing_law": "α = 1 − K_d / K_s · Δp_u = +B Δσ_mean · |τ| / (σ_n − α_fault(p_0 + Δp_inj)) < μ_f",
+        "colophon": {
+          "identifier": "E.13 · Biot Poroelasticity & Fault Slip Margin · REV 1.0",
+          "kernels": "Biot 3D Consolidation (1941) · Rice–Cleary Skempton B (1976) · Mohr–Coulomb Fault Slip Margin",
+          "benchmarks": "Model values (sedimentary k_0 = 0.72, Δp_inj = 4.5 MPa): α = 0.667 · B = 0.394 (brine) / 0.053 (CO2) · τ/σ'_n = 0.404 < 0.60 · Δp_crit = 9.40 MPa",
+          "bridge": "Continues E.01/E.05"
+        },
+        "sliders": [
+          {
+            "label": "Injection Reservoir Overpressure (Δp_inj)",
+            "min": 0.0,
+            "max": 20.0,
+            "step": 0.5,
+            "value": 4.5,
+            "unit": " MPa"
+          },
+          {
+            "label": "Horizontal-to-Vertical Stress Ratio (k_0 = σ_h / σ_v)",
+            "min": 0.56,
+            "max": 1.2,
+            "step": 0.02,
+            "value": 0.72,
+            "unit": "k_0 = "
+          }
+        ],
+        "steps": [
+          "Stage 1 (Biot–Willis 3D Effective Stress, Continuing E.05): Whereas Terzaghi's 1D soil limit treats solid grains as incompressible (α → 1), stiff porous sandstone with drained bulk modulus K_d = 12.0 GPa and solid mineral grain modulus K_s = 36.0 GPa carries part of the hydrostatic stress in its grain skeleton, yielding α = 1 − K_d / K_s = 0.667 (Biot 1941, DOI 10.1063/1.1712886; Biot & Willis 1957, DOI 10.1115/1.4011606).",
+          "Stage 2 (Skempton Undrained Pore-Pressure Response B): Under compression-positive geomechanics (Δp_u = +B Δσ_mean), Skempton (1954, DOI 10.1680/geot.1954.4.4.143) and Rice & Cleary (1976, DOI 10.1029/RG014i002p00227) write B = (1/K_d − 1/K_s) / [1/K_d − 1/K_s + φ(1/K_f − 1/K_s)]. For φ = 0.20 and brine bulk modulus K_f = 2.2 GPa, B = 0.394; replacing brine with compressible supercritical CO2 (K_f = 0.20 GPa) lowers B to 0.053 in the folio model.",
+          "Stage 3 (Mohr–Coulomb Fault Slip Margin & Stress-Regime Contrast): On a cohesionless fault dipping 60° (fault-plane angle β = 30° from vertical σ_v, normal 30° from σ_h; σ_v = 50.0 MPa, hydrostatic p_0 = 20.0 MPa, μ_f = 0.60, α_fault = 1.0, and uncoupled total stress σ_h = k_0 σ_v), a sedimentary stress ratio k_0 = 0.72 gives σ_n = 39.50 MPa, τ = 6.062 MPa, and Δp_crit = 9.40 MPa; at Δp_inj = 4.5 MPa, slip tendency τ/σ'_n = 0.404 stays below 0.60. In a critically stressed crystalline basement (k_0 = 0.60), Δp_crit drops to 0.57 MPa and Δp_inj = 4.5 MPa raises τ/σ'_n to 0.825 (> 0.60).",
+          "Stage 4 (Open Hypothesis, Tier T1–T2, and Falsification Condition): Hypothesis (Tier T1–T2): in stiff porous sedimentary storage reservoirs where stress ratio k_0 keeps Δp_inj < Δp_crit and compressible supercritical CO2 lowers undrained B while keeping overpressure moderate (Vilarrasa & Carrera 2015, DOI 10.1073/pnas.1413284112), fault slip tendency remains below μ_f; this hypothesis is falsified in any site where pore pressure reaches critically stressed basement faults (Zoback & Gorelick 2012, DOI 10.1073/pnas.1202473109; Ellsworth 2013, DOI 10.1126/science.1225942), drives σ'_n ≤ 0, or where coupled poroelastic stress transfer pushes |τ|/σ'_n ≥ μ_f."
+        ],
+        "readouts": [
+          {
+            "label": "Biot α & Skempton B (Brine / CO2)",
+            "value": "α = 0.667 · B = 0.394 / 0.053 (model)"
+          },
+          {
+            "label": "Fault Slip Tendency (|τ| / σ'_n)",
+            "value": "0.404 < 0.60 (Δp_crit = 9.40 MPa, model)"
+          },
+          {
+            "label": "Shear & Hydraulic Margins",
+            "value": "Slip +4.90 MPa · Tensile +11.50 MPa (model)"
+          },
+          {
+            "label": "Mohr–Coulomb Fault Status",
+            "value": "BELOW SLIP THRESHOLD (model, uncoupled σ_h)"
+          }
+        ],
+        "spec_plate": {
+          "division": "SUBSURFACE GEOMECHANICS / CSI 31 00 00 (FILING LABEL · DESIGN STUDY)",
+          "title": "Deep Saline Aquifer CO2 Storage Reservoir & Caprock Pressure-Management Envelope",
+          "body": "Illustrative geomechanical screening study, not a site-specific reservoir permit or injection design: tracks Biot matrix coupling (α = 0.667, passive lateral stress-path index η_poro = 0.444), cohesionless Mohr–Coulomb fault slip tendency (α_fault = 1.0, μ_f = 0.60, holding σ_h = k_0 σ_v uncoupled from Δp_inj), and minimum-principal-stress hydraulic fracture margin (min(σ_v, σ_h) − p_0 − Δp_inj = 11.50 MPa at defaults). Field characterization and coupled 3D multiphase flow-geomechanics modeling are required for any real injection project.",
+          "meta": "Primary anchors: Biot 1941 (DOI 10.1063/1.1712886) · Rice & Cleary 1976 (DOI 10.1029/RG014i002p00227) · Zoback & Gorelick 2012 (DOI 10.1073/pnas.1202473109) · Vilarrasa & Carrera 2015 (DOI 10.1073/pnas.1413284112) · Model values, not field measurements"
+        },
+        "sidenote_1": {
+          "kicker": "SIDENOTE E.13-A · OPEN SCIENTIFIC DEBATE · SEDIMENTARY RESERVOIRS VS. BASEMENT FAULTS",
+          "body": "Zoback & Gorelick (2012, DOI 10.1073/pnas.1202473109) warned that large-scale geologic carbon dioxide injection into brittle continental-interior rocks carries a substantial probability of triggering small-to-moderate earthquakes that could threaten caprock seal integrity. Vilarrasa & Carrera (2015, DOI 10.1073/pnas.1413284112; reply DOI 10.1073/pnas.1511302112) countered that soft sedimentary basins are less critically stressed than crystalline basement, while brine displacement and dissolution limit overpressure. Ellsworth (2013, DOI 10.1126/science.1225942) documented how deep wastewater injection near basement faults drove midcontinent seismicity, showing why basal fault proximity governs operational risk."
+        },
+        "sidenote_2": {
+          "kicker": "SIDENOTE E.13-B · MATRIX α, FAULT α_fault & UNCOUPLED TOTAL-STRESS CAVEAT",
+          "body": "Intact porous sandstone shares load across mineral grain contacts (α = 1 − K_d/K_s = 0.667), giving a lateral poroelastic stress-path index η_poro = α(1 − 2ν)/(1 − ν) = 0.444 at ν = 0.25. Along a damaged or open fault surface, conservative Mohr–Coulomb screening uses α_fault = 1.0 consistently in both σ'_n = σ_n − α_fault(p_0 + Δp_inj) and Δp_crit. In this reduced closed-form model, η_poro is reported passively while total horizontal stress remains uncoupled at σ_h = k_0 σ_v rather than adding η_poro Δp_inj."
+        },
+        "skill": {
+          "filename": "biot-poroelasticity-fault-slip-SKILL.md",
+          "name": "biot-poroelasticity-fault-slip",
+          "description": "AI-agnostic civil geomechanics skill for Biot 3D poroelasticity (alpha = 1 - K_d/K_s), Rice-Cleary Skempton B coupling, and cohesionless Mohr-Coulomb fault slip margin under subsurface fluid injection.",
+          "rules": [
+            "Compute intact-matrix Biot-Willis coefficient alpha = 1 - K_d / K_s (requiring 0 < K_d < K_s) and Skempton undrained coefficient B = (1/K_d - 1/K_s) / [1/K_d - 1/K_s + phi*(1/K_f - 1/K_s)] under compression-positive sign convention delta_p_u = +B * delta_sigma_mean.",
+            "Keep fault-plane Terzaghi effective stress alpha_fault = 1.0 distinct from matrix alpha, and apply alpha_fault consistently in both sigma_n_eff = sigma_n - alpha_fault*(p_0 + delta_p_inj) and critical_delta_p = (sigma_n - |tau|/mu_f)/alpha_fault - p_0; state explicitly when total stress sigma_h is held uncoupled from eta_poro * delta_p_inj.",
+            "Check both shear slip tendency |tau| / sigma_n_eff < mu_f and tensile hydraulic margin min(sigma_v, sigma_h) - (p_0 + delta_p_inj) > 0; treat sigma_n_eff <= 0 explicitly as tensile failure with undefined shear slip tendency.",
+            "Frame injection stability as a site-dependent Tier T1-T2 hypothesis bounded by stress ratio k_0 and basement fault proximity; never extrapolate closed-form screening outputs into site-specific permit claims."
+          ]
+        },
+        "revisions": [
+          {
+            "edition": "REV 1.0",
+            "date": "2026-11-20",
+            "summary": "REV 1.0 (Published 2026-11-20): Volume VII Civil & Geomechanical Engineering monograph continuing Folios E.01 & E.05 via Biot 3D poroelasticity (1941), Skempton & Rice–Cleary undrained pore-pressure coupling (1954, 1976), and Mohr–Coulomb fault slip stability across the Zoback–Gorelick (2012) vs. Vilarrasa–Carrera (2015) geologic CO2 storage debate.",
+            "opus": "Verification note: all eight DOIs in this folio were checked against Crossref and the Scite index on 2026-11-20 with zero retraction notices; all numerical outputs are recomputed offline by skills/engineering/e13/verify_e13_biot_poroelasticity.py and represent illustrative closed-form model outputs under uncoupled total horizontal stress rather than field measurements."
+          }
+        ],
+        "volume": 7,
+        "volume_code": "VOL. 07",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,700 WORDS",
+        "scite": {
+          "doi": "10.1063/1.1712886",
+          "fetched_on": "2026-11-20",
+          "citing_publications": 4896,
+          "supporting": 29,
+          "mentioning": 4865,
+          "contrasting": 2,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index entry for Biot 1941, \"General Theory of Three-Dimensional Consolidation\" (Journal of Applied Physics, DOI 10.1063/1.1712886), fetched 2026-11-20: 4,896 citing records (29 supporting, 4,865 mentioning, 2 contrasting) and no retraction notice. These counts describe that foundational paper, not this folio."
+        }
       }
     ],
     "architecture": [
@@ -2880,6 +2994,119 @@
           "contrasting": 4,
           "retracted": false,
           "summary": "Scite index entry for Mandal et al., Hierarchically porous polymer coatings for highly efficient passive daytime radiative cooling (DOI 10.1126/science.aat9513), checked 2026-11-08: 2,317 citing publications (23 supporting, 1,629 mentioning, 4 contrasting) and no retraction notice. The counts describe that paper, not this folio's model."
+        }
+      },
+      {
+        "folio_id": "A.13",
+        "slug": "a13",
+        "pillar": "architecture",
+        "category_code": "A",
+        "parent_folios": [
+          "A.01",
+          "A.11"
+        ],
+        "lineage_mode": "CONTINUATION · Continues A.01 Funicular Thrust Surfaces & A.11 3D Polyhedral Graphic Statics",
+        "title": "Heinz Isler's Funicular Thin-Shell Domes: Inverted-Hanging Form-Finding, Zoelly Buckling & Imperfection Knockdowns",
+        "subtitle": "Continuing Folio A.01's 2D catenary thrust lines and A.11's 3D polyhedral force diagrams: a structural design study of Heinz Isler's physical form-finding—inverted hanging cloth, pneumatic membranes, and sculpted hills—coupled to an idealized spherical-cap model (31.6 m span, 4.2 m rise, 90 mm thickness) comparing Zoelly classical buckling against an illustrative imperfection-sensitivity knockdown curve.",
+        "date_published": "2026-11-20",
+        "date_redated": "2026-11-20",
+        "current_edition": "REV 1.0",
+        "status_badge": "ISLER SHELL BUCKLING · REV 1.0",
+        "primary_kernel": "skills/architecture/a13/verify_a13_isler_buckling.py",
+        "governing_law": "R = (L² + 4f²)/(8f) · σ_mem = q R / (2t) · p_cr^cl = 2E / √(3(1−ν²)) · (t/R)² · p_cr^act = γ_kd · p_cr^cl",
+        "colophon": {
+          "identifier": "A.13 · Heinz Isler Funicular Thin-Shell Domes & Imperfection Knockdowns · REV 1.0",
+          "kernels": "Inverted-Hanging Membrane Analogy · Zoelly Classical Shell Buckling · Imperfection Knockdown Curve",
+          "benchmarks": "Idealized spherical-cap model: L = 31.6 m · f = 4.2 m · R = 31.82 m · t = 90.0 mm · σ_mem = 0.587 MPa · p_cr^cl = 282.9 kN/m² · γ_kd = 0.189 · p_cr^act = 53.4 kN/m² · λ_b = 16.1",
+          "bridge": "Continues A.01/A.11 · Idealized spherical-cap stability model vs. free-edge shell form-finding"
+        },
+        "sliders": [
+          {
+            "label": "Shell Crown Thickness (t)",
+            "min": 40.0,
+            "max": 140.0,
+            "step": 5.0,
+            "value": 90.0,
+            "unit": " mm"
+          },
+          {
+            "label": "Concrete Elastic Modulus (E_c)",
+            "min": 15.0,
+            "max": 45.0,
+            "step": 1.0,
+            "value": 30.0,
+            "unit": " GPa"
+          }
+        ],
+        "steps": [
+          "Stage 1 (Inverted-Hanging Cloth & Pneumatic Form-Finding): In his 1959 IASS Madrid lecture (published 1961), Swiss engineer Heinz Isler grouped thin concrete shell form-finding into three physical experiments: freely shaped hills, inflated pneumatic membranes, and hanging textiles stiffened with plaster or frozen in winter air and inverted. Because a hanging sheet carries gravity load in pure membrane tension, its inverted rigid geometry channels uniform dead load along compression-only trajectories with minimal bending.",
+          "Stage 2 (Idealized Spherical-Cap Geometry & Uniform-Projection Membrane Stress): As a tractable analytical reference—distinct from Deitingen Süd's three-point free-edge wing shells, which share only the 90 mm double-rebar-cover thickness—the model evaluates a spherical cap of span L = 31.6 m and rise f = 4.2 m (curvature radius R = 31.82 m, rim half-angle φ_0 = 29.8°). At t = 90.0 mm (ρ = 2,400 kg/m³) plus 1.20 kN/m² superimposed load, uniform plan-projected gravity load is q = 3.318 kN/m² (neglecting the sec φ_0 = 1.152 slope factor at the rim and boundary haunches), giving crown compressive stress σ_mem = 0.587 MPa.",
+          "Stage 3 (Zoelly Classical Elastic Buckling & Post-Buckling Sensitivity): Because σ_mem = 0.587 MPa is under 2% of an assumed 35 MPa concrete compressive strength, crushing does not govern this model. Instead, thin doubly curved shells face elastic snap-through buckling. R. Zoelly's 1915 linear-elastic formula for an ideal uniform sphere under normal pressure gives p_cr^cl = 282.9 kN/m² at E = 30.0 GPa and ν = 0.20—an idealized upper bound that omits concrete creep, cracking (Ramm & Mehlhorn 1991, DOI 10.1016/0141-0296(91)90050-M), asymmetric snow, and edge bending.",
+          "Stage 4 (Illustrative Knockdown Curve & Tier T2 Hypothesis): Hutchinson (1967, DOI 10.1115/1.3607667), Gerasimidis et al. (2018, DOI 10.1115/1.4040455), and Abbasi, Derveni, and Reis (2023, DOI 10.1115/1.4056801) analyzed why tiny inward dimples sharply cut spherical shell buckling capacity below Zoelly's line. Applying an illustrative empirical-style knockdown function γ_kd = 0.14 + 0.32 exp(−0.1 √(R/t)) (NASA SP-8007 and Dulácska inspired, not a design code formula) at R/t = 353.5 yields γ_kd = 0.189, p_cr^act = 53.4 kN/m², and buckling ratio λ_b = 16.1. Hypothesis (Tier T2 model): elastic snap-through under inward dimples governs reserve rather than crushing; falsified for a physical shell if creep, cracking, asymmetric snow, or deeper inward dimples (δ_0 / t > 0.5) push collapse below λ_b = 3.0 or induce edge bending."
+        ],
+        "readouts": [
+          {
+            "label": "Membrane Compressive Stress",
+            "value": "0.587 MPa (Crown, Model Service Load)"
+          },
+          {
+            "label": "Zoelly Classical Buckling Pressure",
+            "value": "282.9 kN/m² (Idealized Linear Elastic)"
+          },
+          {
+            "label": "Illustrative Knockdown Pressure",
+            "value": "γ_kd = 0.189 ⇒ p_cr = 53.4 kN/m² (Model)"
+          },
+          {
+            "label": "Model Buckling Ratio (λ_b)",
+            "value": "16.1 (Model Value · Not a Structural Check)"
+          }
+        ],
+        "spec_plate": {
+          "division": "CSI MASTERFORMAT 03 31 00 / 03 38 00 / ACI 334R CONCRETE SHELL DESIGN STUDY",
+          "title": "Idealized Funicular Spherical-Cap Shell Model (90 mm Crown Reference)",
+          "body": "Analytical design study of an idealized spherical cap (L = 31.6 m, f = 4.2 m, R = 31.82 m, t = 90.0 mm) comparing Zoelly classical elastic buckling against an illustrative imperfection knockdown curve. Inspired by Heinz Isler's 90 mm double-rebar-cover Deitingen Süd shells, whose three-point free-edge geometry is more complex than a spherical cap. Model values only; not an engineered structural drawing or construction specification.",
+          "meta": "References: Ramm & Mehlhorn 1991 (DOI 10.1016/0141-0296(91)90050-M) · Hutchinson 1967 (DOI 10.1115/1.3607667) · Abbasi et al. 2023 (DOI 10.1115/1.4056801) · Tang 2015 (DOI 10.1260/0266-3511.30.1.1) · Model values, not measurements"
+        },
+        "sidenote_1": {
+          "kicker": "SIDENOTE A.13-A · DEITINGEN SÜD (1968) & THE 90 MM COVER DETAIL",
+          "body": "Heinz Isler's Deitingen Süd motorway canopies in Switzerland (1968) span 31.6 m across triangular wing shells supported on three points without edge beams (Tang 2015, DOI 10.1260/0266-3511.30.1.1). Their 90 mm thickness was set largely by construction durability—providing 20 mm concrete cover around double-layer reinforcement—rather than compressive crushing limits. Unlike our simplified spherical-cap benchmark, those free-edge wings rely on three-dimensional hanging-cloth curvature and upturned edge stiffening."
+        },
+        "sidenote_2": {
+          "kicker": "SIDENOTE A.13-B · INWARD DIMPLES VS. OUTWARD BUMPS (ABBASI ET AL. 2023)",
+          "body": "Flat plates hold post-buckling reserve after initial wrinkling, whereas doubly curved compression shells can snap inward suddenly when localized defects seed a dimple. Hutchinson (1967, DOI 10.1115/1.3607667) quantified this steep imperfection sensitivity, Gerasimidis et al. (2018, DOI 10.1115/1.4040455) examined localized dimples versus lateral probes, and Abbasi, Derveni, and Reis (2023, DOI 10.1115/1.4056801) showed that inward dimples cut spherical buckling strength more sharply than outward bumps of matching size."
+        },
+        "skill": {
+          "filename": "isler-thin-shell-buckling-SKILL.md",
+          "name": "isler-thin-shell-buckling",
+          "description": "AI-agnostic architectural engineering skill for idealized thin spherical-cap membrane stress, Zoelly (1915) classical elastic buckling, and illustrative imperfection-sensitivity knockdown bounds.",
+          "rules": [
+            "Compute spherical-cap curvature radius R = (L^2 + 4 * f^2) / (8 * f) and uniform-projection crown membrane stress sigma_mem = (q * R) / (2 * t); record the rim slope factor sec(phi_0) omitted by uniform plan projection.",
+            "Compute Zoelly (1915) classical elastic buckling pressure p_cr^cl = (2 * E / sqrt(3 * (1 - nu^2))) * (t / R)^2 and verify quadratic (t/R)^2 scaling when thickness doubles.",
+            "Apply an explicit empirical-style knockdown function gamma_kd(R/t) = 0.14 + 0.32 * exp(-0.1 * sqrt(R / t)) as an illustrative bound (not a code rule) and check that thin 15 mm caps drop below lambda_b = 3.0."
+          ]
+        },
+        "revisions": [
+          {
+            "edition": "REV 1.0",
+            "date": "2026-11-20",
+            "summary": "REV 1.0 (Published 2026-11-20): Volume VII Architecture monograph continuing Folios A.01 & A.11 via Heinz Isler's physical form-finding, Zoelly (1915) classical spherical shell buckling, Hutchinson (1967) imperfection sensitivity, Ramm & Mehlhorn (1991) nonlinear concrete shell analysis, and Abbasi et al. (2023) inward-dimple vs. outward-bump knockdown mechanics.",
+            "opus": "Independent verification: all 6 new DOIs checked via Crossref API, anchor paper checked via Scite tallies API (51 citing publications, 0 retractions), and spherical-cap equations recomputed offline by skills/architecture/a13/verify_a13_isler_buckling.py (with --planted-defect)."
+          }
+        ],
+        "volume": 7,
+        "volume_code": "VOL. 07",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,780 WORDS",
+        "scite": {
+          "doi": "10.1016/0141-0296(91)90050-M",
+          "fetched_on": "2026-11-20",
+          "citing_publications": 51,
+          "supporting": 0,
+          "mentioning": 12,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation index entry for Ramm & Mehlhorn, On shape finding methods and ultimate load analyses of reinforced concrete shells (Engineering Structures, 1991, DOI 10.1016/0141-0296(91)90050-M), checked 2026-11-20: 51 citing publications (0 supporting, 12 mentioning, 0 contrasting) and no retraction notice. The counts describe that paper, not this folio's idealized spherical-cap model."
         }
       }
     ],
@@ -5725,7 +5952,7 @@
       }
     ]
   },
-  "total_volumes": 6,
+  "total_volumes": 7,
   "volumes": [
     {
       "volume": 1,
@@ -5839,6 +6066,19 @@
         "p12",
         "m11",
         "m12"
+      ]
+    },
+    {
+      "volume": 7,
+      "code": "VOL. 07",
+      "roman": "Volume VII",
+      "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY & FUNICULAR THIN-SHELL BUCKLING · 2 FOLIOS",
+      "title": "Biot 3D Poroelasticity & Heinz Isler's Thin-Shell Concrete Domes",
+      "subtitle": "Volume VII opens with Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage) and Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns).",
+      "cadence": "Verifier-gated Living Edition release",
+      "folios": [
+        "e13",
+        "a13"
       ]
     }
   ]
