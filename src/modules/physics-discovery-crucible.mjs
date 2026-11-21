@@ -346,30 +346,67 @@ function bindBountyWorkbench(wb) {
         badge.setAttribute("fill", pass ? "var(--tp-verdigris)" : "var(--tp-minium)");
       }
     } else if (slug === "b05") {
-      // PySR + PySINDy: sigma = p0 (0.0..0.25), lambda = p1 (0.01..0.20)
-      const overfit = p0 * 0.25 >= p1;
-      const underfit = p1 > 0.10;
-      pass = !overfit && !underfit;
-      const activeCount = underfit ? 1 : overfit ? 4 : 2;
-      const mdl = pass ? -1360.87 + p0 * 120.0 : underfit ? -612.4 : -845.2 + p0 * 210.0;
+      // PySR + PySINDy synthetic benchmark (matches bounties/bounty_p2_pysr_pysindy_pde_discovery.py):
+      // sigma = p0 (0.0..0.25), lambda = p1 (0.01..0.20)
+      const libraryTerms = ["1", "u", "u_x", "u*u_x", "u_xx", "u^3"];
+      const trueWeights = [0.0, 0.0, 0.0, -1.0, 0.1, 0.0];
+      const spuriousDrift = [0.18, -0.22, 0.15, 0.04, -0.02, 0.25];
+      const rawWeights = trueWeights.map((t, k) => Math.round((t + p0 * spuriousDrift[k]) * 1e6) / 1e6);
+      const stlsqWeights = rawWeights.map((w) => (Math.abs(w) >= p1 ? w : 0.0));
+      const activeTerms = libraryTerms.filter((_, k) => Math.abs(stlsqWeights[k]) > 0.0);
+      const hasAdvection = activeTerms.includes("u*u_x");
+      const hasViscosity = activeTerms.includes("u_xx");
+      const spuriousTerms = activeTerms.filter((t) => t !== "u*u_x" && t !== "u_xx");
+      const overfit = spuriousTerms.length > 0;
+      const underfit = !hasAdvection || !hasViscosity;
+      const exactSupport = activeTerms.length === 2 && hasAdvection && hasViscosity;
+
+      // PySR Pareto Minimum Description Length: L_MDL = (N/2) * ln(MSE) + 0.45 * C_tree (N = 200)
+      const nSamples = 200;
+      const mdlPenalty = 0.45;
+      const mseC3 = 8.4e-3 + p0 * p0;
+      const mseC6 = 1.2e-6 + p0 * p0 * 0.05;
+      const mseC11 = 1.15e-6 + p0 * p0 * 0.049;
+      const mdlC3 = 0.5 * nSamples * Math.log(Math.max(mseC3, 1e-12)) + mdlPenalty * 3;
+      const mdlC6 = 0.5 * nSamples * Math.log(Math.max(mseC6, 1e-12)) + mdlPenalty * 6;
+      const mdlC11 = 0.5 * nSamples * Math.log(Math.max(mseC11, 1e-12)) + mdlPenalty * 11;
+      const paretoOptimal = mdlC6 <= mdlC3 && mdlC6 <= mdlC11;
+
+      pass = exactSupport && paretoOptimal;
+      const activeCount = activeTerms.length;
+      const bestIsC3 = mdlC3 <= mdlC6 && mdlC3 <= mdlC11;
+      const selectedC = underfit ? 3 : overfit ? 11 : !paretoOptimal ? (bestIsC3 ? 3 : 11) : 6;
+      const mdl = selectedC === 3 ? mdlC3 : selectedC === 11 ? mdlC11 : mdlC6;
+      const fmtMdl = (v, d) => (v < 0 ? `−${Math.abs(v).toFixed(d)}` : v.toFixed(d));
+      const termsStr = `[${activeTerms.map((t) => `'${t}'`).join(", ")}]`;
       out = [
         underfit
-          ? "['u*u_x'] (1 / 6 active · UNDERFIT)"
+          ? `${termsStr} (${activeCount} / 6 active · UNDERFIT)`
           : overfit
-          ? "['1', 'u*u_x', 'u_xx', 'u^3'] (4 / 6 · OVERFIT)"
+          ? `${termsStr} (${activeCount} / 6 · OVERFIT)`
           : "['u*u_x', 'u_xx'] (2 / 6 active)",
         underfit
-          ? "u_t = −1.00 u·u_x (viscous term lost)"
+          ? "u_t = −1.00 u·u_x (viscous term pruned)"
           : overfit
-          ? "u_t = −u·u_x + 0.10 u_xx + α u³"
+          ? "u_t = −u·u_x + 0.10 u_xx + spurious terms"
+          : !paretoOptimal
+          ? selectedC === 3
+            ? "u_t = −u·u_x (MDL favors C=3)"
+            : "u_t = −u·u_x + 0.10 u_xx + c·u³ (synthetic C=11 wins MDL)"
           : "u_t = −u·u_x + 0.10 u_xx",
-        `${mdl.toFixed(2)} nats (C_tree = ${underfit ? 3 : overfit ? 11 : 6})`,
-        pass ? "PASS · EXACT PDE RECOVERED" : underfit ? "ALERT · UNDERFIT (ν u_xx PRUNED)" : "ALERT · OVERFIT (SPURIOUS u³)",
+        `${fmtMdl(mdl, 2)} nats (C_tree = ${selectedC})`,
+        pass
+          ? "PASS · TARGET PDE SUPPORT"
+          : underfit
+          ? "ALERT · UNDERFIT (ν u_xx PRUNED)"
+          : overfit
+          ? "ALERT · OVERFIT (SPURIOUS TERMS)"
+          : "ALERT · PARETO KNEE LOST",
       ];
       stageRatios = [
         0.94,
         Math.max(0.28, 1.0 - p0 * 2.5),
-        pass ? 0.95 : 0.26,
+        exactSupport ? 0.95 : 0.26,
         pass ? 0.96 : 0.24,
       ];
       stageLabels = [
@@ -401,10 +438,12 @@ function bindBountyWorkbench(wb) {
       const badge = wb.querySelector("[data-bw-b05-badge]");
       if (badge) {
         badge.textContent = pass
-          ? "STLSQ EXACT · {u·u_x, u_xx} · MDL = -1360.9"
+          ? `STLSQ TARGET · {u·u_x, u_xx} · MDL = ${mdl.toFixed(1)}`
           : underfit
-          ? "UNDERFIT! λ > ν PRUNED VISCOSITY u_xx"
-          : "OVERFIT! NOISE EXCEEDS λ SHEARS (u³ LEAK)";
+          ? "UNDERFIT! λ > |ξ(u_xx)| PRUNED VISCOSITY"
+          : overfit
+          ? "OVERFIT! NOISE EXCEEDS λ SHEARS (SPURIOUS TERMS)"
+          : `PARETO ALERT · MDL = ${mdl.toFixed(1)}`;
         badge.setAttribute("fill", pass ? "var(--tp-verdigris)" : "var(--tp-minium)");
       }
     } else {

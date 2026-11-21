@@ -60,9 +60,37 @@ def evaluate_pysr_pysindy_discovery(
 
 
 def main() -> int:
-    rep = evaluate_pysr_pysindy_discovery()
+    planted_defect = "--planted-defect" in sys.argv
+    if planted_defect:
+        overfit_rep = evaluate_pysr_pysindy_discovery(noise_sigma=0.22, stlsq_lambda=0.05)
+        underfit_rep = evaluate_pysr_pysindy_discovery(noise_sigma=0.02, stlsq_lambda=0.15)
+        overfit_caught = (
+            overfit_rep["verdict"] == "FAIL"
+            and "u^3" in overfit_rep["active_pde_terms"]
+            and "u_xx" in overfit_rep["active_pde_terms"]
+        )
+        underfit_caught = (
+            underfit_rep["verdict"] == "FAIL"
+            and "u_xx" not in underfit_rep["active_pde_terms"]
+            and "u*u_x" in underfit_rep["active_pde_terms"]
+        )
+        rep = {
+            "bounty_id": "BOUNTY-P2",
+            "planted_defect": True,
+            "overfit_case": overfit_rep,
+            "underfit_case": underfit_rep,
+            "verdict": "FAIL" if (overfit_caught and underfit_caught) else "PASS",
+        }
+    else:
+        rep = evaluate_pysr_pysindy_discovery()
+
     if "--json" in sys.argv:
         print(json.dumps(rep, indent=2))
+    elif planted_defect:
+        print(
+            f"[BOUNTY-P2] planted-defect overfit={rep['overfit_case']['verdict']} "
+            f"underfit={rep['underfit_case']['verdict']} · {rep['verdict']}"
+        )
     else:
         print(
             f"[BOUNTY-P2] PySR+PySINDy terms={rep['active_pde_terms']} "
