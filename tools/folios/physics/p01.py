@@ -51,10 +51,11 @@ FOLIO = {'category_code': 'P',
                            'fluctuation-dissipation theory and reaction-diffusion non-linear '
                            'coupling in ABC-transporter gating.'}],
  'sidenote_1': {'body': 'While traditional pharmacology treats ABC-transporter gating as an '
-                        'on/off equilibrium switch, non-equilibrium physics proves G551D is an '
-                        'active dissipation sink where ATP hydrolysis is decoupled from pore work; '
-                        'ivacaftor acts as a physical synchronizer restoring '
-                        'fluctuation-dissipation coherence.',
+                        'on/off equilibrium switch, this folio\'s non-equilibrium model pictures a '
+                        'gating variant such as G551D as a dissipation sink where ATP hydrolysis is '
+                        'poorly coupled to pore work, and a potentiator as restoring that coupling. '
+                        'This is a physical analogy inside the model, not a measured mechanism of '
+                        'ivacaftor.',
                 'kicker': 'SIDENOTE P.01 · TWO-WAY TRANSFER TO ABC-TRANSPORTER MODULATOR THERAPY'},
  'sidenote_2': {'body': 'Harada and Sasa showed that broken detailed balance in steady-state '
                         'molecular motors produces an anomalous dissipation Q_hk = gamma integral '
@@ -252,8 +253,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'act2_deepening': 'At the fundamental physical level, non-equilibrium steady states are governed '
                    "by Keizer's generalized covariance matrix equation, where the rate of change "
                    'of state fluctuations equals the sum of drift-relaxation matrices and '
-                   'microscopic random fluxes. In an equilibrium system, Onsager reciprocity '
-                   'guarantees that the forward and backward fluxes balance across every '
+                   'microscopic random fluxes. In an equilibrium system, detailed balance '
+                   'means that the forward and backward fluxes balance across every '
                    'elementary step. When ATP chemical affinity drives the system far from '
                    'equilibrium, the Harada–Sasa relation demonstrates that broken detailed '
                    'balance generates anomalous dissipation directly proportional to the fuel '
@@ -374,7 +375,7 @@ ES_TRANSLATION = {'title_es': 'Teoremas de Fluctuación-Disipación Fuera del Eq
  'why_es': 'Un ciclo saludable de apertura del canal transportador ABC funciona como una cadena de '
            'bicicleta bien engranada al piñón (88% de eficiencia); la mutación G551D es una cadena '
            'suelta hasta que un potenciador alostérico vuelve a acoplarla.',
- 'plain_es': 'En 1905, Albert Einstein demostró que el movimiento aleatorio de granos de polen en '
+ 'plain_es': 'En 1905, Albert Einstein mostró que el movimiento aleatorio de granos de polen en '
              'agua reflejaba colisiones directas de átomos reales. Años después, la física '
              'comprendió que las máquinas moleculares de nuestras células van mucho más allá del '
              'equilibrio térmico: consumen combustible químico para girar en una sola dirección. '

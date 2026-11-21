@@ -27,7 +27,9 @@ def main() -> int:
             steps.append([sys.executable, str(vpath)])
 
     for cmd in steps:
-        res = subprocess.run(cmd, cwd=str(ROOT), capture_output=True, text=True)
+        # Children are started in UTF-8 mode and decoded as UTF-8: on Windows a child that inherits the console
+        # code page prints an en dash as byte 0x96, which a UTF-8 parent cannot decode.
+        res = subprocess.run([cmd[0], "-X", "utf8", *cmd[1:]], cwd=str(ROOT), capture_output=True, text=True, encoding="utf-8", errors="replace")
         if res.returncode != 0:
             print(f"FAIL: {' '.join(cmd)}\n{res.stdout}\n{res.stderr}", file=sys.stderr)
             return res.returncode

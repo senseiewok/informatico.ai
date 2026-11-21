@@ -153,7 +153,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'progeny jets. Eighty-two years later, in 1964, Sir Geoffrey Ingram Taylor '
               '(Proceedings of the Royal Society A, DOI 10.1098/rspa.1964.0151) solved the '
               'free-boundary Laplace equation around a conducting liquid meniscus in an electric '
-              'field, proving that electrostatic normal stress balances capillary Laplace pressure '
+              'field, showing that electrostatic normal stress balances capillary Laplace pressure '
               'everywhere on a cone only when the zero of the Legendre function of order 1/2 is '
               'satisfied: P_{1/2}(cos(theta_0)) = 0, which fixes the universal Taylor half-angle '
               "at theta_T = 180° - 130.7099° = 49.29° (49.3°). From John Fenn's Nobel-Prize "
@@ -170,7 +170,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'John Zeleny captures high-speed photographs of conical electrified liquid '
                  'menisci ejecting sub-micrometer jets.'),
                 ('1964',
-                 'Sir Geoffrey Ingram Taylor proves in Proc. R. Soc. A (DOI '
+                 'Sir Geoffrey Ingram Taylor shows in Proc. R. Soc. A (DOI '
                  '10.1098/rspa.1964.0151) that P_{1/2}(cos theta_0) = 0 fixes the equilibrium cone '
                  'half-angle at 49.3°.'),
                 ('2002',

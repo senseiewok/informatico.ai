@@ -160,7 +160,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'derived rigorously from a unified mathematical foundation? Specifically, if '
                  'gases and liquids are truly composed of trillions of tiny, hard-sphere atoms '
                  "colliding under Isaac Newton's strictly time-reversible laws of motion, can we "
-                 'prove that zooming out turns those individual billiard-ball collisions into the '
+                 'derive rigorously that zooming out turns those individual billiard-ball collisions into the '
                  'irreversible, smooth fluid equations that describe ocean waves, atmospheric '
                  'winds, and racing aerodynamics? For more than a century, mathematicians hit an '
                  "impenetrable barrier: Oscar Lanford's famous 1975 proof (DOI 10.1007/3-540-07171-7_1) held only for a fraction of the mean time between collisions, well under a nanosecond for air, before the tangled history of atomic collisions got out of control."
@@ -184,10 +184,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Ludwig Boltzmann formulates the kinetic equation and H-theorem; David Hilbert '
                  'poses Problem 6 at the 1900 Paris ICM.'),
                 ('1975',
-                 'Oscar Lanford proves the Boltzmann–Grad limit strictly for short times t < 0.2 '
+                 'Oscar Lanford derives the Boltzmann–Grad limit rigorously for short times t < 0.2 '
                  't_mfp before recollision graphs diverge.'),
                 ('2003–2015',
-                 'Golse & Saint-Raymond prove the Boltzmann-to-Navier–Stokes limit for bounded collision kernels (DOI '
+                 'Golse & Saint-Raymond derive the Boltzmann-to-Navier–Stokes limit rigorously for bounded collision kernels (DOI '
                  '10.1007/s00222-003-0316-5); Barato & Seifert formulate the Markovian '
                  'Thermodynamic Uncertainty Relation Q_TUR >= 2 (DOI 10.1103/PhysRevLett.114.158101).'),
                 ('2025–2026',
@@ -199,7 +199,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'mesoscopic current fluctuation precision connect to continuum friction? At '
                    'mesoscopic scales governed by time-homogeneous non-equilibrium steady-state '
                    '(NESS) Markovian jump networks under local detailed balance, Barato and Seifert '
-                   '(2015, DOI 10.1103/PhysRevLett.114.158101) proposed the Thermodynamic Uncertainty Relation, proved in general by Gingrich and colleagues in 2016 (DOI 10.1103/PhysRevLett.116.120601), Q_TUR = (Delta S / k_B) * Var(J) / <J>^2 >= 2: suppressing relative '
+                   '(2015, DOI 10.1103/PhysRevLett.114.158101) proposed the Thermodynamic Uncertainty Relation, derived in general by Gingrich and colleagues in 2016 (DOI 10.1103/PhysRevLett.116.120601), Q_TUR = (Delta S / k_B) * Var(J) / <J>^2 >= 2: suppressing relative '
                    'current variance Var(J)/<J>^2 requires paying at least 2 k_B of entropy '
                    'production (explicitly scoped to stationary Markovian jump and overdamped '
                    'Langevin dynamics). In the Boltzmann–Grad kinetic limit (N -> infinity, sphere '
@@ -323,7 +323,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'billiard balls bouncing and play the video in reverse, it looks perfectly '
                       'natural. Yet a cup of hot coffee never spontaneously un-spills, and '
                       'hurricanes swirl forward in time with relentless friction. For one hundred '
-                      'and twenty-five years, science could not mathematically prove how '
+                      'and twenty-five years, there was no rigorous derivation of how '
                       'reversible atomic bounces produce smooth, irreversible fluid currents. In 2025, three mathematicians posted a proof of that bridge, which their peers are still examining.',
  'act1_stakes': "Tracing this journey from Ludwig Boltzmann's 1872 H-theorem and David Hilbert's "
                 '1900 challenge to modern supercomputing illustrates what happens when physical '
@@ -428,7 +428,7 @@ ES_TRANSLATION = {'title_es': 'El Sexto Problema de Hilbert: Una Derivación Pro
              'sino billones de átomos diminutos rebotando entre sí como bolas de billar bajo leyes '
              'totalmente reversibles. Sin embargo, en el mundo real, los ríos y los huracanes '
              'fluyen siempre hacia adelante con fricción y viscosidad. Durante ciento veinticinco '
-             'años, la ciencia no lograba demostrar de forma matemáticamente rigurosa cómo los '
+             'años, la ciencia no tenía una derivación matemáticamente rigurosa de cómo los '
              'choques reversibles de átomos individuales se transforman en las ecuaciones '
              'continuas e irreversibles de los fluidos. En 2025, tres matemáticos publicaron una prepublicación con una demostración de ese puente, que sus colegas aún examinan.',
  'deep_es': 'La edición REV 1.4 une la termodinámica estocástica mesoscópica con la derivación propuesta para el Sexto Problema de Hilbert. En redes de saltos Markovianos en estado estacionario fuera '

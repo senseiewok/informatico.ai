@@ -19,7 +19,7 @@ A plain-text companion to the essay at https://informatico.ai/physics/p10/ (`P.1
 ## How it works, in four stages
 - Stage 1 (Honeycomb Dirac Degeneracy, Continuing P.08 Bragg Optics): Time-reversal & inversion-symmetric honeycomb photonic crystal exhibits gapless Dirac cones at K and K'.
 - Stage 2 (Haldane–Raghu Gyromagnetic Gap Opening, DOI 10.1103/PhysRevLett.100.013904): Breaking T-symmetry with m_T = 0.55 > m_P = 0.25 inverts the K' valley mass and opens a 14.2% topological bandgap.
-- Stage 3 (Quantized Berry Flux & Chern Number C = +1): Integrating Berry curvature Ω_-(k) across the Brillouin zone yields C = +1, guaranteeing a chiral gapless boundary state.
+- Stage 3 (Quantized Berry Flux & Chern Number C = +1): Integrating Berry curvature Ω_-(k) across the Brillouin zone yields C = +1, which implies a chiral gapless boundary state.
 - Stage 4 (Backscatter-Free 90° Bend & Defect Bypass): In the folio's illustrative model, with disorder σ_def = 0.30 the one-way edge wave keeps 99.8% forward transmission; the figure is not taken from an experiment.
 
 ## Reference values stated in the essay

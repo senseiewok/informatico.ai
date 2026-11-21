@@ -135,7 +135,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                'the Two-Gel Lung',
  'act1_dropcap': 'In the autumn of 1887 in Amsterdam, the Dutch physical chemist Jacobus Henricus '
                  "van 't Hoff formulated the universal thermodynamic laws of osmotic pressure, "
-                 'proving that dilute solutes dissolved in liquid exert an expansive mechanical '
+                 'showing that dilute solutes dissolved in liquid exert an expansive mechanical '
                  'pressure identical to molecules of gas filling an empty vessel. Nearly a century '
                  'later, in 1977, Shlomo Alexander and Pierre-Gilles de Gennes resolved how long '
                  'polymer chains behave when tethered closely together along a solid surface: '
@@ -194,7 +194,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Shlomo Alexander & Pierre-Gilles de Gennes establish the scaling physics of '
                  'surface-tethered polymer brushes.'),
                 ('2012',
-                 'Button, Rubinstein & Boucher prove the two-gel osmotic brush model of human '
+                 'Button, Rubinstein & Boucher publish the gel-on-brush model of human '
                  'airway surface liquid in Science.')],
  'act2_title': 'Act II — How It Actually Works: Two-Gel Osmotic Competition (Pi_mucus '
                'vs. Pi_PCL)',
@@ -349,10 +349,11 @@ DISPATCH = {'kicker': 'FRONTIER PULMONARY PHYSICS DISPATCH · THE TWO-GEL OSMOTI
  'headline': "Button, Rubinstein & Boucher's Gel-on-Brush Discovery Redefined Airway "
              'Surface Dehydration',
  'body': 'In a landmark Science study (Button, Rubinstein et al. (2012, Science DOI '
-         '10.1126/science.1223012)), researchers overturned the simple water-layer model of the '
-         'lung, proving that osmotic pressure competition between the mucus gel and '
-         'tethered periciliary mucin brush governs ciliary collapse in CF—now targeted by inhaled '
-         'ENaC blocker ETD001 (DOI 10.1016/j.jcf.2024.06.002, NCT06478706).'}
+         '10.1126/science.1223012)), researchers proposed a gel-on-brush model in place of the '
+         'simple water-layer picture of the lung, reporting that osmotic pressure competition between the mucus gel and '
+         'tethered periciliary mucin brush governs collapse of the periciliary layer. An inhaled '
+         'ENaC blocker, ETD001 (DOI 10.1016/j.jcf.2024.06.002), has been studied in a phase II trial in people with CF '
+         '(NCT06478706); this folio states no result of that trial.'}
 
 META_3D = ('Donnan–Nernst–Planck Periciliary Brush Terrace',
  'X: Epithelial-to-Lumen Distance · Z: Brush Graft Axis · Y: Donnan Electrostatic & Osmotic Step')
@@ -364,7 +365,7 @@ ES_TRANSLATION = {'title_es': 'Electrocinética, Equilibrio de Donnan y el Colap
  'why_es': 'Imagina un colchón firme de espuma (el cepillo periciliar PCL) sosteniendo una sábana '
            'ligera (moco sano al 2%); si reemplazas la sábana por un delantal de plomo (moco '
            'deshidratado al 8% en FQ), el colchón se aplasta.',
- 'plain_es': "En 1887, Jacobus Henricus van 't Hoff demostró que las sustancias disueltas en agua "
+ 'plain_es': "En 1887, Jacobus Henricus van 't Hoff mostró que las sustancias disueltas en agua "
              'ejercen una presión osmótica real, capaz de empujar y mover fluidos con enorme '
              'fuerza mecánica. En nuestras vías respiratorias, esta fuerza define una batalla '
              'vital entre dos geles. Para entenderlo de manera sencilla, imaginen un colchón de '
@@ -377,7 +378,7 @@ ES_TRANSLATION = {'title_es': 'Electrocinética, Equilibrio de Donnan y el Colap
              'esponja ejerce una succión osmótica tan potente que absorbe el agua del colchón de '
              'resortes, aplastándolo por completo y dejando a los cilios inmovilizados contra el '
              'suelo celular.',
- 'deep_es': 'El modelo de dos geles de Button, Rubinstein y Boucher demuestra que la hidratación '
+ 'deep_es': 'El modelo de dos geles de Button, Rubinstein y Boucher propone que la hidratación '
             'de la superficie respiratoria es una competencia termodinámica regida por el '
             'equilibrio de Donnan y las leyes de escala de polielectrolitos de Alexander-de '
             'Gennes. Dos fuerzas compiten continuamente: la presión osmótica de hinchamiento del '

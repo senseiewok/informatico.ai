@@ -10,14 +10,24 @@ Uses a warm, brisk Woman's Neural AI Voice (`en-US-AvaMultilingualNeural` & `es-
 paired with a Scientific & Mathematical Prosody Normalizer so equations, Greek symbols, units, and clinical/engineering
 acronyms are spoken naturally rather than spelled character-by-character.
 
+A track is tied to the exact text it speaks. The manifest stores a SHA-256 of each narration script, and a
+track whose script has changed since it was recorded is STALE: it may still be saying a sentence the page has
+since corrected or withdrawn. ``--check`` fails on a missing, unreadable, implausibly short or long, or stale
+track, and a build re-records exactly the missing and stale ones.
+
 Usage:
-  python tools/build_neural_audio.py           # Synthesize missing tracks (or --force to rebuild all)
-  python tools/build_neural_audio.py --check   # Deterministic offline verification of all MP3 tracks & manifests
+  python tools/build_neural_audio.py                  # Synthesize missing and stale tracks (--force rebuilds all)
+  python tools/build_neural_audio.py --check          # Offline: every track exists, parses as MP3, has a plausible length and matches its script
+  python tools/build_neural_audio.py --status         # Offline: the same findings as a report, never failing
+  python tools/build_neural_audio.py --dump-scripts D # Write each narration script to D/<slug>-<lang>.txt so the text can be linted
+
+Synthesis needs the ``edge-tts`` package and sends the narration text (public page text only) to its speech service.
 """
 from __future__ import annotations
 
 import argparse
 import asyncio
+import hashlib
 import json
 import re
 import subprocess
@@ -501,6 +511,106 @@ def compute_segment_offsets_ratios(segments: list[str]) -> list[float]:
     return ratios
 
 
+SEGMENT_JOIN = " ... "
+# Speech at rate +20% runs at roughly 15 to 20 characters a second in both voices. Outside these bounds a
+# track is truncated, silent, or not the narration of its script.
+MIN_CHARS_PER_SECOND = 7.0
+MAX_CHARS_PER_SECOND = 40.0
+
+_BITRATES = {  # kbit/s by (mpeg version 1 or 2, layer III)
+    1: (0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 0),
+    2: (0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160, 0),
+}
+_SAMPLE_RATES = {3: (44100, 48000, 32000), 2: (22050, 24000, 16000), 0: (11025, 12000, 8000)}
+
+
+def script_text(item: dict, lang: str) -> str:
+    """The exact text sent to the speech service for one track."""
+    return SEGMENT_JOIN.join(item[f"{lang}_segments"])
+
+
+def text_hash(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def mp3_duration_seconds(data: bytes) -> float | None:
+    """Duration from the MPEG audio frame headers (Layer III, MPEG 1, 2 or 2.5); None if the bytes are not an MP3 stream.
+
+    Pure Python and offline. It walks frame to frame, so a truncated or corrupted file gives a short duration or None
+    rather than whatever a tag claims.
+    """
+    pos = 0
+    if data[:3] == b"ID3" and len(data) > 10:
+        size = (data[6] & 0x7F) << 21 | (data[7] & 0x7F) << 14 | (data[8] & 0x7F) << 7 | (data[9] & 0x7F)
+        pos = 10 + size
+    seconds, frames, misses = 0.0, 0, 0
+    n = len(data)
+    while pos + 4 <= n:
+        b0, b1, b2 = data[pos], data[pos + 1], data[pos + 2]
+        version, layer = (b1 >> 3) & 0x3, (b1 >> 1) & 0x3
+        bitrate_index, rate_index, padding = (b2 >> 4) & 0xF, (b2 >> 2) & 0x3, (b2 >> 1) & 0x1
+        valid = b0 == 0xFF and (b1 & 0xE0) == 0xE0 and version != 1 and layer == 1 and bitrate_index not in (0, 15) and rate_index != 3
+        if not valid:
+            misses += 1
+            if frames == 0 and misses > 4096:
+                return None
+            pos += 1
+            continue
+        sample_rate = _SAMPLE_RATES[version][rate_index]
+        bitrate = _BITRATES[1 if version == 3 else 2][bitrate_index] * 1000
+        samples = 1152 if version == 3 else 576
+        length = (144 if version == 3 else 72) * bitrate // sample_rate + padding
+        if length < 24:
+            return None
+        seconds += samples / sample_rate
+        frames += 1
+        pos += length
+    return round(seconds, 2) if frames >= 10 else None
+
+
+def track_findings(item: dict, lang: str, recorded: dict | None) -> list[str]:
+    """Problems with one track: 'missing', 'invalid', 'duration', 'stale'. An empty list means it matches its script."""
+    path: Path = item[f"{lang}_out"]
+    if not path.is_file():
+        return ["missing"]
+    text = script_text(item, lang)
+    findings = []
+    duration = mp3_duration_seconds(path.read_bytes())
+    if duration is None:
+        findings.append("invalid")
+    else:
+        rate = len(text) / duration if duration else 0.0
+        if not (MIN_CHARS_PER_SECOND <= rate <= MAX_CHARS_PER_SECOND):
+            findings.append("duration")
+    if not recorded or recorded.get(f"{lang}_text_sha256") != text_hash(text):
+        findings.append("stale")
+    return findings
+
+
+def load_manifest_folios(path: Path) -> dict:
+    try:
+        return json.loads(path.read_text(encoding="utf-8")).get("folios", {})
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def manifest_entry(item: dict, prefix: str) -> dict:
+    entry = {
+        "folio_id": item["folio_id"],
+        "en_src": f"{prefix}/{item['slug']}-en.mp3",
+        "es_src": f"{prefix}/{item['slug']}-es.mp3",
+        "en_offsets": compute_segment_offsets_ratios(item["en_segments"]),
+        "es_offsets": compute_segment_offsets_ratios(item["es_segments"]),
+    }
+    for lang in ("en", "es"):
+        path: Path = item[f"{lang}_out"]
+        # The hash is written only for a track that exists, so a failed synthesis can never be recorded as current.
+        if path.is_file():
+            entry[f"{lang}_text_sha256"] = text_hash(script_text(item, lang))
+            entry[f"{lang}_seconds"] = mp3_duration_seconds(path.read_bytes())
+    return entry
+
+
 async def synthesize_one_track(
     text: str,
     voice: str,
@@ -568,12 +678,16 @@ async def generate_all(force: bool = False, informatico_only: bool = False) -> i
 
     sem = asyncio.Semaphore(8)
     tasks = []
+    recorded_inf = load_manifest_folios(SRC / "audio" / "manifest.json")
+    recorded_cf = load_manifest_folios(SRC / "cf" / "audio" / "manifest.json")
     for item in all_items:
-        en_text = " ... ".join(item["en_segments"])
-        es_text = " ... ".join(item["es_segments"])
+        recorded = (recorded_inf if item["domain"] == "informatico" else recorded_cf).get(item["slug"])
         es_voice = ES_VOICE_INF if item["domain"] == "informatico" else ES_VOICE_CF
-        tasks.append(synthesize_one_track(en_text, EN_VOICE, item["en_out"], ffmpeg_exe, sem, force=force))
-        tasks.append(synthesize_one_track(es_text, es_voice, item["es_out"], ffmpeg_exe, sem, force=force))
+        for lang, voice in (("en", EN_VOICE), ("es", es_voice)):
+            # Re-record a track that is missing, unreadable, of the wrong length or no longer matches its script.
+            redo = force or bool(track_findings(item, lang, recorded))
+            if redo:
+                tasks.append(synthesize_one_track(script_text(item, lang), voice, item[f"{lang}_out"], ffmpeg_exe, sem, force=True))
 
     print(f"Synthesizing {len(tasks)} bilingual Neural AI audio tracks ({len(all_items)} monographs) with {EN_VOICE} & {ES_VOICE_INF} ({SPEECH_RATE})...")
     await asyncio.gather(*tasks)
@@ -582,13 +696,7 @@ async def generate_all(force: bool = False, informatico_only: bool = False) -> i
         "engine": "neural-tts-v2-female-fast",
         "voices": {"en": EN_VOICE, "es": ES_VOICE_INF, "rate": SPEECH_RATE},
         "folios": {
-            item["slug"]: {
-                "folio_id": item["folio_id"],
-                "en_src": f"audio/{item['slug']}-en.mp3",
-                "es_src": f"audio/{item['slug']}-es.mp3",
-                "en_offsets": compute_segment_offsets_ratios(item["en_segments"]),
-                "es_offsets": compute_segment_offsets_ratios(item["es_segments"]),
-            }
+            item["slug"]: manifest_entry(item, "audio")
             for item in inf_items
         },
     }
@@ -601,13 +709,7 @@ async def generate_all(force: bool = False, informatico_only: bool = False) -> i
             "engine": "neural-tts-v2-female-fast",
             "voices": {"en": EN_VOICE, "es": ES_VOICE_CF, "rate": SPEECH_RATE},
             "folios": {
-                item["slug"]: {
-                    "folio_id": item["folio_id"],
-                    "en_src": f"cf/audio/{item['slug']}-en.mp3",
-                    "es_src": f"cf/audio/{item['slug']}-es.mp3",
-                    "en_offsets": compute_segment_offsets_ratios(item["en_segments"]),
-                    "es_offsets": compute_segment_offsets_ratios(item["es_segments"]),
-                }
+                item["slug"]: manifest_entry(item, "cf/audio")
                 for item in cf_items
             },
         }
@@ -618,49 +720,77 @@ async def generate_all(force: bool = False, informatico_only: bool = False) -> i
     return 0
 
 
-def check_all() -> int:
-    """Offline deterministic check that all Informatico (60) and CF (if present) MP3 tracks and manifests exist and are valid."""
+def audit() -> tuple[dict[str, list[str]], int]:
+    """Offline: findings per track ('audio/p01-en.mp3' -> ['stale']) and the number of tracks looked at."""
     inf_items = build_informatico_scripts()
     cf_items = build_cf_scripts()
-    errors: list[str] = []
-
+    recorded_inf = load_manifest_folios(SRC / "audio" / "manifest.json")
+    recorded_cf = load_manifest_folios(SRC / "cf" / "audio" / "manifest.json")
+    findings: dict[str, list[str]] = {}
     for item in inf_items + cf_items:
-        for _lang_key, path in (("en", item["en_out"]), ("es", item["es_out"])):
-            if not path.is_file():
-                errors.append(f"Missing neural audio track: {path.relative_to(ROOT).as_posix()}")
-            else:
-                size = path.stat().st_size
-                if size < 4096:
-                    errors.append(f"Audio track too small ({size} B): {path.relative_to(ROOT).as_posix()}")
-                head = path.read_bytes()[:4]
-                if not (head.startswith(b"ID3") or (len(head) >= 2 and head[0] == 0xFF and (head[1] & 0xE0) == 0xE0)):
-                    errors.append(f"Invalid MP3 header in {path.relative_to(ROOT).as_posix()}")
+        recorded = (recorded_inf if item["domain"] == "informatico" else recorded_cf).get(item["slug"])
+        for lang in ("en", "es"):
+            found = track_findings(item, lang, recorded)
+            if found:
+                findings[item[f"{lang}_out"].relative_to(ROOT).as_posix()] = found
+    extra = sorted(set(recorded_inf) - {i["slug"] for i in inf_items})
+    if extra:
+        findings["src/audio/manifest.json"] = [f"lists folios that no longer exist: {', '.join(extra)}"]
+    return findings, 2 * len(inf_items + cf_items)
 
-    inf_man_path = SRC / "audio" / "manifest.json"
-    if not inf_man_path.is_file():
-        errors.append(f"Missing audio manifest: {inf_man_path.relative_to(ROOT).as_posix()}")
-    else:
-        data = json.loads(inf_man_path.read_text(encoding="utf-8"))
-        folios = data.get("folios", {})
-        if len(folios) != len(inf_items):
-            errors.append(f"{inf_man_path.name}: expected {len(inf_items)} folios, got {len(folios)}")
 
-    if errors:
-        for e in errors[:20]:
-            print(f"FAIL: {e}")
+def report(findings: dict[str, list[str]], total: int) -> None:
+    kinds = {"missing": "no file", "invalid": "does not parse as MP3", "duration": "length does not fit its script", "stale": "script changed since it was recorded"}
+    for kind, meaning in kinds.items():
+        hits = sorted(path for path, found in findings.items() if kind in found)
+        if hits:
+            print(f"{kind.upper()} ({meaning}): {len(hits)} of {total}")
+            for path in hits[:12]:
+                print(f"  {path}")
+            if len(hits) > 12:
+                print(f"  ... and {len(hits) - 12} more")
+    for path, found in findings.items():
+        for line in found:
+            if line not in kinds:
+                print(f"FAIL: {path}: {line}")
+
+
+def check_all() -> int:
+    """Offline deterministic check: every track exists, parses as MP3, has a plausible length and matches its script."""
+    findings, total = audit()
+    if findings:
+        report(findings, total)
+        print(f"FAIL: {len(findings)} of {total} audio tracks need attention; run the build to re-record them.")
         return 1
-    print(f"PASS: All {len(inf_items)*2} Informatico + {len(cf_items)*2} CF bilingual Neural AI MP3 tracks and manifests verified.")
+    print(f"PASS: all {total} bilingual narration tracks exist, parse as MP3, have a plausible length and match their scripts.")
+    return 0
+
+
+def dump_scripts(out_dir: Path) -> int:
+    out_dir.mkdir(parents=True, exist_ok=True)
+    items = build_informatico_scripts() + build_cf_scripts()
+    for item in items:
+        for lang in ("en", "es"):
+            (out_dir / f"{item['slug']}-{lang}.txt").write_text(script_text(item, lang).replace(SEGMENT_JOIN, "\n\n") + "\n", encoding="utf-8")
+    print(f"Wrote {2 * len(items)} narration scripts to {out_dir}")
     return 0
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Build or check bilingual Neural AI audio tracks.")
-    parser.add_argument("--check", action="store_true", help="Verify all MP3 tracks and manifests offline.")
+    parser.add_argument("--check", action="store_true", help="Verify offline that every track exists, parses, has a plausible length and matches its script.")
+    parser.add_argument("--status", action="store_true", help="Print the same findings as --check and exit 0.")
+    parser.add_argument("--dump-scripts", type=Path, metavar="DIR", help="Write each narration script to DIR as text, for linting.")
     parser.add_argument("--force", action="store_true", help="Re-synthesize all tracks even if already present.")
     parser.add_argument("--informatico-only", action="store_true", help="Synthesize only the 60 Informatico Folios (120 tracks).")
     args = parser.parse_args(argv)
     if args.check:
         return check_all()
+    if args.status:
+        report(*audit())
+        return 0
+    if args.dump_scripts:
+        return dump_scripts(args.dump_scripts)
     return asyncio.run(generate_all(force=args.force, informatico_only=args.informatico_only))
 
 

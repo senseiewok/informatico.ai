@@ -92,7 +92,8 @@ function animate(durationMs, step) {
   const start = performance.now();
   let raf = 0;
   const tick = (now) => {
-    const frac = Math.min(1, (now - start) / durationMs);
+    // A frame timestamp can be earlier than the performance.now() taken above, which made frac negative and the sample index -1.
+    const frac = Math.max(0, Math.min(1, (now - start) / durationMs));
     step(frac);
     if (frac < 1) raf = requestAnimationFrame(tick);
   };
