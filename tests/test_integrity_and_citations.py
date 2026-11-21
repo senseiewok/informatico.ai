@@ -77,7 +77,7 @@ class AntiChimeraAndCitationGateTests(unittest.TestCase):
 
     def test_folio_citation_checker_passes_all_60_folios(self) -> None:
         folios = check_folio_citations.load_informatico_folios()
-        self.assertEqual(len(folios), 64)  # 51 pillar (+E.14, +E.13, +A.13) + 6 bounty + 7 toolchain (+X.07)
+        self.assertEqual(len(folios), 65)  # 52 pillar (+E.15, +E.14, +E.13, +A.13) + 6 bounty + 7 toolchain (+X.07)
         findings = check_folio_citations.check(folios)
         self.assertEqual(findings, [])
 
@@ -108,6 +108,24 @@ class AntiChimeraAndCitationGateTests(unittest.TestCase):
         self.assertTrue(
             any("SOURCE-AUTHOR-MISMATCH" in f for f in findings),
             f"Expected SOURCE-AUTHOR-MISMATCH in {findings}",
+        )
+
+        # Crossref OCR typo "Ba<zant" must pass only when the source actually cites Bažant, not another author.
+        bazant_cache = {
+            "doi:10.1007/bf00047063": {
+                "found": True,
+                "first_author": "Ba<zant",
+                "year": 1990,
+                "title": "Determination of fracture energy",
+            }
+        }
+        good_bazant = [{"id": "E.15-OK", "doi": "10.1007/BF00047063", "steps": [],
+                        "sources": ["Bažant, Z. P. (1990). Determination. DOI: 10.1007/BF00047063."]}]
+        bad_bazant = [{"id": "E.15-BAD", "doi": "10.1007/BF00047063", "steps": [],
+                       "sources": ["Smith, J. (1990). Determination. DOI: 10.1007/BF00047063."]}]
+        self.assertEqual(check_folio_citations.check(good_bazant, cache=bazant_cache), [])
+        self.assertTrue(
+            any("SOURCE-AUTHOR-MISMATCH" in f for f in check_folio_citations.check(bad_bazant, cache=bazant_cache))
         )
 
     def test_claude_security_perimeter_and_agents_md_present(self) -> None:

@@ -1,7 +1,7 @@
 {
   "version": "7.0.0",
-  "title": "Informatico.ai — 7-Volume, 51-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
-  "total_folios": 51,
+  "title": "Informatico.ai — 7-Volume, 52-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
+  "total_folios": 52,
   "pillars": {
     "engineering": [
       {
@@ -1679,6 +1679,121 @@
           "contrasting": 4,
           "retracted": false,
           "summary": "Scite Smart Citation Index entry for van Genuchten 1980, \"A Closed-form Equation for Predicting the Hydraulic Conductivity of Unsaturated Soils\" (Soil Science Society of America Journal, DOI 10.2136/sssaj1980.03615995004400050002x), fetched 2026-11-21: 27,857 citing records (105 supporting, 12,669 mentioning, 4 contrasting) and no retraction notice. These counts describe that foundational paper, not this folio."
+        }
+      },
+      {
+        "folio_id": "E.15",
+        "slug": "e15",
+        "pillar": "engineering",
+        "category_code": "E",
+        "parent_folios": [
+          "E.02",
+          "E.09",
+          "E.11"
+        ],
+        "lineage_mode": "CONTINUATION · Continues E.02 Concrete Rheology, E.09 Self-Healing & E.11 Compliance",
+        "title": "Quasi-Brittle Concrete Fracture, Bažant Size Effect Law & Hillerborg Process-Zone Scaling",
+        "subtitle": "Continuing Folio E.02's concrete placement, E.09's crack healing, and E.11's continuum stiffness: an illustrative fracture-mechanics study coupling Hillerborg's fictitious crack model, Bažant's Type II Size Effect Law, and Bažant–Kazemi regression for initial fracture energy and process-zone length across laboratory beams and deep concrete girders.",
+        "date_published": "2026-11-21",
+        "date_redated": "2026-11-21",
+        "current_edition": "REV 1.0",
+        "status_badge": "FRACTURE MECHANICS · REV 1.0",
+        "primary_kernel": "skills/engineering/e15/verify_e15_bazant_size_effect.py",
+        "governing_law": "σ_N(D) = B f'_t / √(1 + D / D_0) · β_B = D / D_0 · G_f = (B f'_t)² D_0 g(α_0) / E' · c_f = D_0 g(α_0) / g'(α_0)",
+        "colophon": {
+          "identifier": "E.15 · Bažant Size Effect & Concrete Fracture · REV 1.0",
+          "kernels": "Griffith LEFM (1921) · Hillerborg Fictitious Crack (1976) · Bažant Size Effect Law (1984, 1990)",
+          "benchmarks": "Model values (notched beam D = 400.0 mm, D_0 = 220.0 mm): β_B = 1.818 · σ_N = 2.502 MPa (59.6% of B f'_t) · s = −0.323 · G_f = 127.84 N/m · c_f = 64.84 mm (drops to σ_N = 1.322 MPa at D = 2000 mm)",
+          "bridge": "Continues E.02/E.09/E.11"
+        },
+        "sliders": [
+          {
+            "label": "Structural Depth (D)",
+            "min": 50.0,
+            "max": 2400.0,
+            "step": 50.0,
+            "value": 400.0,
+            "unit": " mm"
+          },
+          {
+            "label": "Transitional Size (D_0)",
+            "min": 80.0,
+            "max": 500.0,
+            "step": 10.0,
+            "value": 220.0,
+            "unit": " mm"
+          }
+        ],
+        "steps": [
+          "Stage 1 (From Griffith LEFM to Hillerborg's Fictitious Crack Zone): Griffith (1921, DOI 10.1098/rsta.1921.0006) showed that a sharp crack in a brittle solid grows when stored elastic energy release matches surface energy, scaling nominal strength as D^(−1/2). Concrete is not ideally brittle: ahead of a visible notch, microcracking and aggregate bridging form a finite Fracture Process Zone (FPZ). Hillerborg, Modéer, and Petersson (1976, DOI 10.1016/0008-8846(76)90007-7) modeled this softening zone via tensile strength f'_t, initial fracture energy G_f, and characteristic length l_ch = E' G_f / (f'_t)^2 (424.5 mm at E' = 34.0 GPa, f'_t = 3.20 MPa, G_f = 127.84 N/m).",
+          "Stage 2 (Bažant Type II Size Effect Law & Brittleness Number β_B): For geometrically similar notched members (notch ratio α_0 = a_0 / D > 0), Bažant (1984, DOI 10.1061/(ASCE)0733-9399(1984)110:4(518)) matched plastic yield at small D against LEFM at large D via σ_N(D) = B f'_t / √(1 + β_B), with brittleness number β_B = D / D_0. Using illustrative calibration B f'_t = 4.20 MPa and D_0 = 220.0 mm, a 100 mm laboratory beam reaches σ_N = 3.482 MPa (82.9% of B f'_t, β_B = 0.455), while a 400 mm beam drops to 2.502 MPa (59.6%, β_B = 1.818) and log–log slope s = −β_B / [2(1 + β_B)] steepens from −0.156 to −0.323.",
+          "Stage 3 (Bažant–Kazemi Regression for G_f and Process-Zone Length c_f): Bažant and Kazemi (1990, DOI 10.1007/BF00047063) inverted the size-effect curve into a linear relation Y = 1 / σ_N^2 = C D + A, where G_f = (B f'_t)^2 D_0 g(α_0) / E' and effective FPZ length c_f = D_0 g(α_0) / g'(α_0). With LEFM geometry factors g(α_0) = 1.12 and g'(α_0) = 3.80 at D_0 = 220.0 mm, the model yields G_f = 127.84 N/m and c_f = 64.84 mm. Doubling D_0 to 440.0 mm (a tougher aggregate mix at fixed B f'_t) raises G_f to 255.68 N/m, c_f to 129.68 mm, and 400 mm beam nominal strength to 3.040 MPa.",
+          "Stage 4 (Open Hypothesis, Tier T1–T2, and Falsification Condition): Hypothesis (Tier T1–T2): in geometrically similar notched concrete beams without distributed shear reinforcement, nominal failure stress declines along σ_N = B f'_t (1 + D / D_0)^(−1/2) toward Griffith D^(−1/2) scaling as structural depth grows; at D = 2000 mm (D_0 = 220 mm, β_B = 9.091), modeled σ_N falls to 1.322 MPa (31.5%, slope −0.450), whereas ignoring (1 + D / D_0) overpredicts capacity by 3.177× at 4.20 MPa. This Type II hypothesis is falsified in unnotched Type I beams governed by Weibull boundary-layer strength (Bažant & Yu 2009, DOI 10.1061/(ASCE)0733-9399(2009)135:2(78)), in heavily stirrup-confined or steel-fiber members that arrest localization, or where aggregate size d_a is comparable to D."
+        ],
+        "readouts": [
+          {
+            "label": "Brittleness & Fracture Energy",
+            "value": "β_B = 1.818 · G_f = 127.84 N/m (model)"
+          },
+          {
+            "label": "Nominal Strength & Retention",
+            "value": "σ_N = 2.502 MPa (59.6% of B f'_t, model)"
+          },
+          {
+            "label": "Log–Log Slope & FPZ Length",
+            "value": "s = −0.323 · c_f = 64.84 mm (model)"
+          },
+          {
+            "label": "Size-Effect Fracture Regime",
+            "value": "QUASI-BRITTLE TRANSITION (0.1 <= β_B <= 10, model)"
+          }
+        ],
+        "spec_plate": {
+          "division": "CONCRETE FRACTURE / CSI 03 30 00 (FILING LABEL · DESIGN STUDY)",
+          "title": "Bažant Type II Notched Concrete Fracture & Brittleness Scaling Screening Envelope",
+          "body": "Illustrative closed-form fracture-scaling study, not a structural code check (ACI 318 / fib Model Code) or member design: tracks Type II geometrically similar notched specimens (notch ratio α_0 > 0, LEFM shape factors g(α_0) = 1.12 and g'(α_0) = 3.80, E' = 34.0 GPa, B f'_t = 4.20 MPa, f'_t = 3.20 MPa). Holding B f'_t, E', g(α_0), and g'(α_0) constant while sweeping transitional size D_0 scales initial fracture energy G_f, process-zone length c_f, and Hillerborg l_ch linearly with D_0, comparing tougher versus more brittle mixes at constant small-scale plastic strength. Unnotched Type I members, stirrup reinforcement, and full-scale testing fall outside this reduced 2-slider curve.",
+          "meta": "Primary anchors: Griffith 1921 (DOI 10.1098/rsta.1921.0006) · Hillerborg et al. 1976 (DOI 10.1016/0008-8846(76)90007-7) · Bažant 1984 (DOI 10.1061/(ASCE)0733-9399(1984)110:4(518)) · Bažant & Kazemi 1990 (DOI 10.1007/BF00047063) · Model values, not laboratory test data"
+        },
+        "sidenote_1": {
+          "kicker": "SIDENOTE E.15-A · INITIAL FRACTURE ENERGY G_f VS. TOTAL WORK OF FRACTURE G_F",
+          "body": "Bažant and Kazemi (1990, DOI 10.1007/BF00047063) distinguish the initial fracture energy G_f—governed by the steep initial tangent of the cohesive softening curve and extracted from size-effect peak loads—from the larger total work of fracture G_F integrated under the entire softening tail. Peak-load structural size effect depends primarily on G_f and effective process-zone length c_f, whereas post-peak tail energy G_F governs late crack opening."
+        },
+        "sidenote_2": {
+          "kicker": "SIDENOTE E.15-B · TYPE II NOTCHED BOUNDARIES & CONSTANT-B f'_t PARAMETERIZATION",
+          "body": "This reduced 2-slider sweep holds B f'_t = 4.20 MPa, E' = 34.0 GPa, f'_t = 3.20 MPa, g(α_0) = 1.12, and g'(α_0) = 3.80 constant across D_0 ∈ [80, 500] mm, so G_f = (B f'_t)^2 D_0 g(α_0) / E', c_f, and l_ch all scale linearly with D_0 (comparing tougher versus more brittle mixes). The curve applies to notched Type II members (α_0 > 0); unnotched Type I beams retain a finite large-size asymptotic stress under Universal Size Effect Law (Bažant & Yu 2009, DOI 10.1061/(ASCE)0733-9399(2009)135:2(78))."
+        },
+        "skill": {
+          "filename": "bazant-size-effect-SKILL.md",
+          "name": "bazant-size-effect",
+          "description": "AI-agnostic civil structural fracture skill for Bazant Type II Size Effect Law, Hillerborg fictitious crack length l_ch, and Bazant-Kazemi extraction of fracture energy G_f and process-zone length c_f.",
+          "rules": [
+            "Enforce strictly positive finite parameters D, D_0, B*f_t, E', f_t, g(alpha_0), and g'(alpha_0) inside geometrically similar notched Type II members (alpha_0 = a_0 / D > 0).",
+            "Compute nominal strength via Bazant Type II Size Effect Law sigma_N = B*f_t / sqrt(1 + D/D_0) with brittleness number beta_B = D / D_0 and log-log slope s = -beta_B / (2*(1 + beta_B)), avoiding scale-invariant plastic extrapolation.",
+            "Check unit identity (MPa^2 * mm / GPa = N/m) when evaluating initial Mode I fracture energy G_f = (B*f_t)^2 * D_0 * g(alpha_0) / E', effective FPZ length c_f = D_0 * g(alpha_0) / g'(alpha_0), and Hillerborg characteristic length l_ch = E' * G_f / f_t^2 (mm).",
+            "Frame Type II size-effect scaling as a Tier T1-T2 structural screening hypothesis that stops at unnotched Type I beams, stirrup-confined or fiber-reinforced shear members, and code design checks."
+          ]
+        },
+        "revisions": [
+          {
+            "edition": "REV 1.0",
+            "date": "2026-11-21",
+            "summary": "REV 1.0 (Published 2026-11-21): Volume VII Civil & Structural Engineering monograph continuing Folios E.02, E.09 & E.11 via Griffith energy balance (1921), Hillerborg fictitious crack softening (1976), Bažant Type II Size Effect Law (1984), Bažant–Kazemi G_f/c_f regression (1990), Universal Size Effect Law (2009), and dam-concrete mesoscale fracture experiments (2024).",
+            "opus": "Verification note: all six primary DOIs in this folio were checked against Crossref and Scite on 2026-11-21 with zero retraction notices; all numerical outputs are recomputed offline by skills/engineering/e15/verify_e15_bazant_size_effect.py and represent illustrative closed-form fracture-scaling model values rather than laboratory test data."
+          }
+        ],
+        "volume": 7,
+        "volume_code": "VOL. 07",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,700 WORDS",
+        "scite": {
+          "doi": "10.1061/(ASCE)0733-9399(1984)110:4(518)",
+          "fetched_on": "2026-11-21",
+          "citing_publications": 1772,
+          "supporting": 35,
+          "mentioning": 707,
+          "contrasting": 1,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index entry for Bažant 1984, \"Size Effect in Blunt Fracture: Concrete, Rock, Metal\" (Journal of Engineering Mechanics, DOI 10.1061/(ASCE)0733-9399(1984)110:4(518)), fetched 2026-11-21: 1,772 citing records (35 supporting, 707 mentioning, 1 contrasting) and no retraction notice. These counts describe that foundational paper, not this folio."
         }
       }
     ],
@@ -6186,13 +6301,14 @@
       "volume": 7,
       "code": "VOL. 07",
       "roman": "Volume VII",
-      "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY, VADOSE SUCTION & FUNICULAR THIN-SHELL BUCKLING · 3 FOLIOS",
-      "title": "Biot 3D Poroelasticity, Unsaturated Suction Stress & Heinz Isler's Thin-Shell Concrete Domes",
-      "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), and Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns).",
+      "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY, VADOSE SUCTION, CONCRETE FRACTURE & FUNICULAR THIN-SHELL BUCKLING · 4 FOLIOS",
+      "title": "Biot 3D Poroelasticity, Unsaturated Suction Stress, Concrete Size Effect & Heinz Isler's Thin-Shell Domes",
+      "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), Engineering Folio E.15 (Hillerborg fictitious crack process zones, Bažant Type II Size Effect Law, and Bažant–Kazemi fracture energy regression in concrete), and Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns).",
       "cadence": "Verifier-gated Living Edition release",
       "folios": [
         "e13",
         "e14",
+        "e15",
         "a13"
       ]
     }

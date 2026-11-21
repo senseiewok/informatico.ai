@@ -100,6 +100,12 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "Succión en Suelos No Saturados y Laderas",
         "Cómo la retención de van Genuchten, la permeabilidad de Mualem y el esfuerzo de succión de Lu-Godt-Wu modelan fallas de ladera por lluvia.",
     ),
+    "e15": (
+        "Quasi-Brittle Concrete Size Effect Scaling",
+        "How Hillerborg's process zone and Bazant's Size Effect Law explain why deep concrete girders carry less nominal stress than small test beams.",
+        "Efecto de Tamaño y Fractura en Concreto",
+        "Cómo la zona de proceso de Hillerborg y la ley de Bažant explican por qué vigas profundas de concreto fallan a menor esfuerzo que probetas chicas.",
+    ),
     # ---- Pillar II: Architecture
     "a01": (
         "Funicular Thrust Surfaces in Stone and Timber Shells",

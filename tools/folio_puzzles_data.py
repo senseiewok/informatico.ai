@@ -1256,6 +1256,26 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
             ("PORO", "Espacio intergranular ocupado por agua y aire por encima del nivel freático", "Acto I"),
         ],
     },
+    "e15": {
+        "title_en": "Folio E.15 · Quasi-Brittle Concrete Fracture & Size Effect Law Crossword",
+        "title_es": "Folio E.15 · Crucigrama de Fractura en Concreto y Efecto de Tamaño",
+        "en": [
+            ("BAZANT", "Engineer who derived the Type II Size Effect Law connecting plastic yield and Griffith fracture", "Act I"),
+            ("NOTCH", "Saw-cut midspan starter flaw (alpha_0 > 0) required for Type II size-effect scaling", "Act II"),
+            ("CRACK", "Propagating tensile discontinuity preceded by an aggregate-bridged softening zone", "Act I"),
+            ("DEPTH", "Characteristic structural beam height D (mm) that drives brittleness number beta_B = D / D_0", "Act III"),
+            ("ENERGY", "Mode I fracture work G_f (N/m) extracted from linear 1 / sigma_N^2 vs. D regression", "Act II"),
+            ("BEAM", "Three-point bending concrete specimen tested across laboratory and girder scales", "Act I"),
+        ],
+        "es": [
+            ("GRIFFITH", "Físico que en 1921 relacionó la energía elástica liberada con el crecimiento frágil D^(-1/2)", "Acto I"),
+            ("ENTALLA", "Corte inicial de geometría similar requerido para la ley de tamaño Tipo II", "Acto II"),
+            ("GRIETAS", "Discontinuidades por tensión precedidas por microfisuración en la zona de proceso", "Acto I"),
+            ("PERALTE", "Altura estructural D de la viga que eleva la fragilidad beta_B = D / D_0", "Acto III"),
+            ("ENERGIA", "Trabajo inicial de fractura G_f obtenido mediante regresión lineal de 1 / sigma_N^2", "Acto II"),
+            ("VIGA", "Elemento estructural de concreto ensayado en flexión de tres puntos a distintas escalas", "Acto I"),
+        ],
+    },
     "a11": {
         "title_en": "Folio A.11 · 3D Polyhedral Graphic Statics, Airy Stress & Guastavino Vaults Crossword",
         "title_es": "Folio A.11 · Crucigrama de Estática Gráfica Poliédrica 3D y Bóvedas sin Acero",
