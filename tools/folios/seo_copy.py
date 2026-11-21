@@ -94,6 +94,12 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "Poroelasticidad de Biot y Deslizamiento de Fallas",
         "Cómo la consolidación de Biot, el acoplamiento de Skempton y la fricción de Mohr-Coulomb acotan el deslizamiento de fallas al inyectar CO2, en un modelo.",
     ),
+    "e14": (
+        "Unsaturated Suction Stress and Slope Instability",
+        "How van Genuchten retention, Mualem permeability and Lu-Godt-Wu suction stress model rainfall-induced slope collapse in silty loam and sand.",
+        "Succión en Suelos No Saturados y Laderas",
+        "Cómo la retención de van Genuchten, la permeabilidad de Mualem y el esfuerzo de succión de Lu-Godt-Wu modelan fallas de ladera por lluvia.",
+    ),
     # ---- Pillar II: Architecture
     "a01": (
         "Funicular Thrust Surfaces in Stone and Timber Shells",
@@ -325,9 +331,9 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
 PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     "engineering": (
         "Civil Engineering & Construction Essays | Informatico.ai",
-        "Thirteen interactive essays on civil engineering and construction: concrete pumping, 3D printing, bridges, tunnel boring machines and geomechanics.",
+        "Fourteen interactive essays on civil engineering and construction: concrete pumping, 3D printing, bridges, tunnel boring machines and geomechanics.",
         "Ensayos de Ingeniería Civil y Construcción | Informatico.ai",
-        "Trece ensayos interactivos de ingeniería civil y construcción: bombeo e impresión 3D de concreto, puentes, tuneladoras, concreto y geomecánica.",
+        "Catorce ensayos interactivos de ingeniería civil y construcción: bombeo e impresión 3D de concreto, puentes, tuneladoras, concreto y geomecánica.",
     ),
     "architecture": (
         "Architecture Essays: Vaults, Color & Facades | Informatico.ai",

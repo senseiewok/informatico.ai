@@ -1924,6 +1924,59 @@ export function initPlateSolvers(scope = document) {
         }
         return;
       }
+      if (slug === "e14") {
+        // Reduced closed-form model of Folio E.14 (van Genuchten-Mualem + Lu-Godt-Wu suction stress + infinite slope):
+        // alpha_vG = 0.02 kPa^-1, n = 1.60 (m = 0.375), gamma = 19.0 kN/m^3, c' = 2.0 kPa, phi' = 28.0 deg, z = 2.0 m.
+        const psi = Number.isFinite(p0) ? Math.max(0.0, p0) : 24.0;
+        const beta = Number.isFinite(p1) ? Math.max(5.0, Math.min(85.0, p1)) : 34.0;
+        if (phiLabel) phiLabel.textContent = `${psi.toFixed(1)} kPa`;
+        if (radLabel) radLabel.textContent = `${beta.toFixed(1)}°`;
+        if (inlinePhi) inlinePhi.textContent = `ψ = ${psi.toFixed(1)} kPa`;
+        const alphaVg = 0.02;
+        const nExp = 1.60;
+        const mExp = 1.0 - 1.0 / nExp;
+        let se = 1.0;
+        let kr = 1.0;
+        let sigmaS = 0.0;
+        if (psi > 0.0) {
+          se = Math.pow(1.0 + Math.pow(alphaVg * psi, nExp), -mExp);
+          const u = Math.min(1.0, Math.max(0.0, Math.pow(se, 1.0 / mExp)));
+          const inner = u >= 1.0 ? 1.0 : u <= 0.0 ? 0.0 : -Math.expm1(mExp * Math.log1p(-u));
+          kr = Math.sqrt(se) * inner * inner;
+          sigmaS = -se * psi;
+        }
+        const gamma = 19.0;
+        const cEff = 2.0;
+        const phiDeg = 28.0;
+        const zDepth = 2.0;
+        const betaRad = (beta * Math.PI) / 180.0;
+        const phiRad = (phiDeg * Math.PI) / 180.0;
+        const tanBeta = Math.tan(betaRad);
+        const tanPhi = Math.tan(phiRad);
+        const denomShear = gamma * zDepth * Math.sin(betaRad) * Math.cos(betaRad);
+        const sigmaNNet = gamma * zDepth * Math.cos(betaRad) * Math.cos(betaRad);
+        const sigmaNEff = sigmaNNet - sigmaS;
+        const fs = tanPhi / tanBeta + (cEff - sigmaS * tanPhi) / denomShear;
+        const sText = Math.abs(sigmaS) < 0.005 ? "0.00" : sigmaS.toFixed(2).replace("-", "−");
+        if (kappaOut) kappaOut.textContent = `S_e = ${se.toFixed(3)} · K_r = ${kr.toFixed(4)} (model)`;
+        if (deffOut) deffOut.textContent = `${sText} kPa (σ'_n = ${sigmaNEff.toFixed(2)} kPa, model)`;
+        if (outR2) outR2.textContent = `FS = ${fs.toFixed(3)} (τ = ${denomShear.toFixed(2)} kPa, model)`;
+        if (percOut) {
+          percOut.textContent = fs < 1.0
+            ? "BELOW LIMIT EQUILIBRIUM (FS < 1.0, model)"
+            : fs < 1.2
+              ? "MARGINAL EQUILIBRIUM (1.0 <= FS < 1.2, model)"
+              : "ABOVE LIMIT EQUILIBRIUM (FS >= 1.2, model)";
+        }
+        if (percBox) percBox.setAttribute("data-alert", fs >= 1.0 ? "false" : "true");
+        if (engPoint) {
+          const cx = Math.max(48, Math.min(348, Math.round(48 + (psi / 120.0) * 300)));
+          const cy = Math.max(36, Math.min(184, Math.round(184 - (Math.abs(sigmaS) / 70.0) * 144)));
+          engPoint.setAttribute("cx", String(cx));
+          engPoint.setAttribute("cy", String(cy));
+        }
+        return;
+      }
 
       const phi = v0;
       const radiusNm = v1;

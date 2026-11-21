@@ -1,8 +1,8 @@
 # Informatico.ai
 
-> 50 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
+> 51 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
 
-Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (90 SKILL.md companions, 41 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 7 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
+Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (91 SKILL.md companions, 42 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 7 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
 
 ## Welcome, agents (and the people who work with you)
 
@@ -20,7 +20,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 
 ## Civil Engineering & Construction
 
-- [Civil Engineering & Construction](https://informatico.ai/engineering/): Thirteen interactive essays on civil engineering and construction: concrete pumping, 3D printing, bridges, tunnel boring machines and geomechanics.
+- [Civil Engineering & Construction](https://informatico.ai/engineering/): Fourteen interactive essays on civil engineering and construction: concrete pumping, 3D printing, bridges, tunnel boring machines and geomechanics.
 - [E.01 Stokes–Brinkman Flow in Porous Materials](https://informatico.ai/engineering/e01/): How viscous shear and Darcy drag balance over the Brinkman screening length in porous limestone and mortars, with a lattice percolation model.
 - [E.02 Herschel–Bulkley Rheology of Pumped Concrete](https://informatico.ai/engineering/e02/): How the yield-stress rheology of Bingham, Herschel and Bulkley describes pipe pressure, a central plug core and the risk of blockage when pumping concrete.
 - [E.03 Acoustic Metamaterials: Helmholtz Sound Absorbers](https://informatico.ai/engineering/e03/): How coiled resonators and viscothermal boundary layers could absorb low-frequency sound in a panel about 1/19 of a wavelength thick, as a design target.
@@ -34,6 +34,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 - [E.11 SIMP Topology Optimization and Inerter Damping](https://informatico.ai/engineering/e11/): How Bendsøe and Sigmund's SIMP topology optimization, Michell trusses and flywheel inerters could lighten floor slabs, as a design study.
 - [E.12 RISC-V Silicon and Firefly Grid Control Barriers](https://informatico.ai/engineering/e12/): How Control Barrier Functions and firefly-style phase-locking can steady renewable grids, and what a machine-checked RISC-V chip would add beneath.
 - [E.13 Biot 3D Poroelasticity and Fault Slip Margin](https://informatico.ai/engineering/e13/): How Biot consolidation, Skempton pore-pressure coupling and Mohr-Coulomb friction frame fault slip risk during geologic carbon dioxide storage, in a model.
+- [E.14 Unsaturated Suction Stress and Slope Instability](https://informatico.ai/engineering/e14/): How van Genuchten retention, Mualem permeability and Lu-Godt-Wu suction stress model rainfall-induced slope collapse in silty loam and sand.
 
 ## Architecture
 

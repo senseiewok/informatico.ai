@@ -243,11 +243,11 @@ VOLUMES_SPEC = [
         "volume": 7,
         "code": "VOL. 07",
         "roman": "Volume VII",
-        "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY & FUNICULAR THIN-SHELL BUCKLING · 2 FOLIOS",
-        "title": "Biot 3D Poroelasticity & Heinz Isler's Thin-Shell Concrete Domes",
-        "subtitle": "Volume VII opens with Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage) and Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns).",
+        "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY, VADOSE SUCTION & FUNICULAR THIN-SHELL BUCKLING · 3 FOLIOS",
+        "title": "Biot 3D Poroelasticity, Unsaturated Suction Stress & Heinz Isler's Thin-Shell Concrete Domes",
+        "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), and Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns).",
         "cadence": "Verifier-gated Living Edition release",
-        "folios": ["e13", "a13"],
+        "folios": ["e13", "e14", "a13"],
     },
 ]
 
@@ -264,6 +264,9 @@ def get_volume_spec(vol_num: int) -> dict:
         if v["volume"] == vol_num:
             return v
     return VOLUMES_SPEC[0]
+
+
+SYNC_SIBLINGS = "--sync-siblings" in sys.argv
 
 
 def update_catalogs() -> dict:
@@ -359,9 +362,13 @@ def update_catalogs() -> dict:
     catalog["total_folios"] = total
     cat_path.write_text(json.dumps(catalog, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
-    # Sync to sibling repos only when running directly in main repo (avoid dirtying main checkouts from a worktree)
+    # A build never writes outside this repository unless asked to. The sibling mirrors (for example
+    # ../math/folios/catalog.json) used to be rewritten on every build from the main checkout; whenever a mirror
+    # was behind, that left an uncommitted change in the sibling's main checkout, and the lab's scheduler skips
+    # every schedule that sees one. Pass --sync-siblings (from a main checkout) to refresh the mirrors on purpose,
+    # then commit the result in the sibling repository.
     sibling_map = {}
-    if ".worktrees" not in ROOT.parts:
+    if SYNC_SIBLINGS and ".worktrees" not in ROOT.parts:
         for p_name in ('math', 'physics', 'architecture', 'engineering'):
             cand1 = ROOT.parent / p_name / 'folios' / 'catalog.json'
             if cand1.parent.exists():
@@ -2454,8 +2461,8 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
         lead_series = ""
         rack_cls = "tp-issue-rack tp-issue-rack-headed"
         rack_head = """      <div class="tp-issue-rack-head">
-        <p class="tp-kicker" data-en="Standalone Engineering Monographs · E.01–E.13" data-es="Monografías Independientes de Ingeniería · E.01–E.13">Standalone Engineering Monographs · E.01–E.13</p>
-        <h2 class="tp-h2" data-en="Thirteen Systems &amp; Mechanics Monographs" data-es="Trece Monografías de Sistemas y Mecánica">Thirteen Systems &amp; Mechanics Monographs</h2>
+        <p class="tp-kicker" data-en="Standalone Engineering Monographs · E.01–E.14" data-es="Monografías Independientes de Ingeniería · E.01–E.14">Standalone Engineering Monographs · E.01–E.14</p>
+        <h2 class="tp-h2" data-en="Fourteen Systems &amp; Mechanics Monographs" data-es="Catorce Monografías de Sistemas y Mecánica">Fourteen Systems &amp; Mechanics Monographs</h2>
       </div>
 """
     else:
@@ -5592,9 +5599,9 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
       </figure>
       <nav class="tp-cover-track-strip" aria-label="{strip_aria}">
         <a class="tp-track-chip" href="engineering/">
-          <span class="tp-track-chip-kicker" data-en="PILLAR I · 13 ESSAYS" data-es="PILAR I · 13 ENSAYOS">PILLAR I · 13 ESSAYS</span>
+          <span class="tp-track-chip-kicker" data-en="PILLAR I · 14 ESSAYS" data-es="PILAR I · 14 ENSAYOS">PILLAR I · 14 ESSAYS</span>
           <strong class="tp-track-chip-title" data-en="Engineering &amp; Construction" data-es="Ingeniería y Construcción">Engineering &amp; Construction</strong>
-          <span class="tp-track-chip-meta" data-en="13 Folios · Bridges, TBM, SIMP, Biot · Cult Classics (CC.01 &amp; CC.03)" data-es="13 Folios · Puentes, TBM, SIMP, Biot · Clásicos (CC.01 y CC.03)">13 Folios · Bridges, TBM, SIMP, Biot · Cult Classics (CC.01 &amp; CC.03)</span>
+          <span class="tp-track-chip-meta" data-en="14 Folios · Bridges, TBM, Biot, Suction · Cult Classics (CC.01 &amp; CC.03)" data-es="14 Folios · Puentes, TBM, Biot, Succión · Clásicos (CC.01 y CC.03)">14 Folios · Bridges, TBM, Biot, Suction · Cult Classics (CC.01 &amp; CC.03)</span>
         </a>
         <a class="tp-track-chip" href="architecture/">
           <span class="tp-track-chip-kicker" data-en="PILLAR II · {arch_n} ESSAYS" data-es="PILAR II · {arch_n} ENSAYOS">PILLAR II · {arch_n} ESSAYS</span>
