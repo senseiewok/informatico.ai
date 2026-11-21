@@ -66,7 +66,7 @@ FOLIO = {'slug': 'b06',
                     ('netket/netket (Neural Quantum States)', 'https://github.com/netket/netket'),
                     ('qutip/qutip (Open Quantum Systems)', 'https://github.com/qutip/qutip')],
  'act1_dropcap': 'In quantum field theory, a symmetry of the classical Lagrangian is not '
-                 'guaranteed to survive quantization: one-loop triangle Feynman diagrams coupling '
+                 'certain to survive quantization: one-loop triangle Feynman diagrams coupling '
                  'three chiral gauge currents can break gauge invariance and destroy unitarity '
                  'unless the fermion representations satisfy exact algebraic trace identities. In '
                  'a single generation of the Standard Model, fifteen Weyl fermion '
@@ -93,7 +93,7 @@ FOLIO = {'slug': 'b06',
                  'quantum electrodynamics.'),
                 ('1970',
                  'Pierre Pfeuty solves the 1D Transverse-Field Quantum Ising Model exactly, '
-                 'proving critical ground-state energy density E₀/N = -4/π.'),
+                 'showing critical ground-state energy density E₀/N = -4/π.'),
                 ('1992–2004',
                  'Steven White invents the Density Matrix Renormalization Group (DMRG); Pasquale '
                  'Calabrese and John Cardy derive CFT entanglement entropy S_vN(L) = (c/6) ln(L) + '
@@ -135,7 +135,7 @@ FOLIO = {'slug': 'b06',
            'Stage 3: Exact Pfeuty & Calabrese–Cardy Critical Scaling — Evaluate 1D critical '
            'Transverse-Field Ising ground-state energy density E₀/N = -4/π = -1.27323954 and '
            'entanglement entropy S_vN(L=128) = (0.5/6) ln(128) + 0.4785 = 0.882836 nats.',
-           'Stage 4: MPS Bond-Dimension Capacity Certification — Confirm that MPS bond capacity '
+           'Stage 4: MPS Bond-Dimension Capacity Check — Check that MPS bond capacity '
            'ln(χ) = ln(64) = 4.158883 nats strictly bounds S_vN(128) = 0.882836 nats.'],
  'rules': ['Standard Model Gauge Anomaly Cancellation: All four chiral trace invariants '
            '(gravitational Tr[Y], cubic U(1)_Y³ Tr[Y³], weak mixed Tr[τ²Y], and colour mixed '
@@ -214,16 +214,16 @@ FOLIO = {'slug': 'b06',
                 'recently, verifying these intricate cancellations across grand unified theories '
                 'relied on fragile manual blackboard algebra prone to sign errors. With Joseph '
                 'Tooby-Smith’s PhysLean library in Lean 4, theoretical physics now possesses '
-                'computer-verified formal proofs where chiral anomaly cancellation is certified '
-                'with zero sorry gaps. Simultaneously, in condensed-matter physics, the challenge '
+                'a library that sets out to give computer-checked formal proofs in this area, anomaly cancellation among them. This page did not build or check them. '
+                'Simultaneously, in condensed-matter physics, the challenge '
                 'of simulating quantum criticality long ran into an exponential wall: a system of '
                 'N interacting quantum spins occupies an intractable 2^N-dimensional Hilbert '
                 'space. Steven White’s Density Matrix Renormalization Group and modern '
                 'tensor-network frameworks like ITensors.jl and NetKet transformed this impasse. '
                 'Grounded in the Calabrese–Cardy conformal scaling law, Matrix Product States '
                 'compress quantum entanglement along a one-dimensional chain in polynomial time, '
-                'proving that critical states obey bounded logarithmic area laws and opening the '
-                'frontier of certified quantum simulation.',
+                'showing that critical states obey bounded logarithmic area laws and opening the '
+                'frontier of machine-checked quantum simulation.',
  'act2_analogy': 'Picture a delicate suspension bridge suspended between two sheer canyon walls. '
                  'To keep the road completely level without snapping cables, the bridge relies on '
                  'two distinct structural principles. First, the vertical suspension cables must '
@@ -250,8 +250,8 @@ FOLIO = {'slug': 'b06',
                       'providing a spacious capacity of ln(64) ≈ 4.16 nats against the required '
                       '0.88 nats. The second slider controls Hypercharge Perturbation δY, which '
                       'introduces an intentional flaw into the electric hypercharge assignments of '
-                      'Standard Model fermions. In the certified baseline regime (δY = 0.00), all '
-                      'four chiral anomaly traces vanish to machine precision, confirming that '
+                      'Standard Model fermions. In the baseline regime (δY = 0.00), all '
+                      'four chiral anomaly traces vanish to machine precision, showing that '
                       'quantum gauge theory remains mathematically sound. Now, test what happens '
                       'when you click the Counterfactual Knockout button or drag the controls. If '
                       'you push δY above zero, the cubic trace Tr[Y^3] instantly spikes, violating '
@@ -269,13 +269,13 @@ FOLIO = {'slug': 'b06',
                                     'chains.',
                      'threshold_title': 'Area-Law Capacity (ln χ ≥ S_vN)',
                      'threshold_eq': 'Tr[Y³] = 0 · S_vN(128) = 0.8828 ≤ ln(χ) = 4.1589',
-                     'threshold_sub': 'Guarantees anomaly-free gauge physics and faithful tensor '
+                     'threshold_sub': 'Gives anomaly-free gauge physics and faithful tensor '
                                       'states.',
                      'threshold_pass': 'Tr[Y³] = 0 (anomaly-free) & S_vN(128) = 0.883 ≤ ln(64) = '
                                        '4.159 nats.',
                      'threshold_fail': 'Anomaly: δY > 0 breaks Tr[Y³] = 0; Truncation: χ < 3 fails '
                                        'S_vN bound.',
-                     'caption': 'Plate B.06-D maps the twin pillars of certified quantum physics: '
+                     'caption': 'Plate B.06-D maps the twin pillars of machine-checked quantum physics: '
                                 'exact algebraic cancellation of chiral gauge anomalies in '
                                 'PhysLean and logarithmic area-law entanglement bounds in '
                                 'ITensors.jl. The diagram illustrates how vanishing trace '
@@ -294,13 +294,13 @@ FOLIO = {'slug': 'b06',
                    '3(1/3)^3 + 2(-1/2)^3 + 1(1)^3 = 0. If quarks lacked three colors (N_c ≠ 3), '
                    'the weak trace would yield (N_c - 3)/3 ≠ 0, breaking gauge invariance. In '
                    'parallel, the many-body sector investigates the 1D Transverse-Field Quantum '
-                   'Ising Model at criticality (g = J = 1). Pierre Pfeuty proved the exact '
+                   'Ising Model at criticality (g = J = 1). Pierre Pfeuty gave a proof of the exact '
                    'ground-state energy density E_0 / N = -4/π = -1.27323954. Conformal field '
                    'theory with central charge c = 1/2 dictates Calabrese–Cardy entanglement '
                    'entropy S_vN(L) = (c/6) ln(L) + s_1. At chain length L = 128, S_vN(128) = '
                    '(0.5/6) ln(128) + 0.4785 = 0.8828 nats. ITensors.jl represents this state as a '
                    'Matrix Product State whose bond dimension χ = 64 provides capacity ln(64) = '
-                   '4.1589 nats, rigorously bounding S_vN and guaranteeing polynomial compression.',
+                   '4.1589 nats, rigorously bounding S_vN and ensuring polynomial compression.',
  'act4_human_ai': 'In the modern era of theoretical and quantum physics, progress occurs at the '
                   'confluence of human mathematical conceptualization and machine-checked '
                   'computational rigor. Theoretical physicists identify the deep structural '
@@ -322,12 +322,12 @@ FOLIO = {'slug': 'b06',
                   'constraints and interpreting phase transitions. By integrating Lean 4 proof '
                   'assistants with Julia and Python tensor networks, researchers can explore novel '
                   'topological phases of matter and exotic gauge theories with absolute confidence '
-                  'that every algebraic identity and numerical boundary is machine-certified.',
+                  'while keeping track of which algebraic identities and numerical bounds a script has checked.',
  'act4_deepening': 'The cornerstone of scientific credibility in computational physics is '
                    'adversarial reproducibility. The standalone verifier '
                    'bounties/bounty_m2_physlean_itensor_quantum_gauge.py and its companion '
                    'SKILL.md provide an automated, zero-dependency gate that falsifies ungrounded '
-                   'assertions before any benchmark claim is certified. Operating in Python '
+                   'assertions before any benchmark claim is accepted. Operating in Python '
                    'standard library in under 0.05 seconds, the script performs a rigorous '
                    'two-pronged evaluation. First, it encodes the five Standard Model Weyl fermion '
                    'multiplets across their exact representation dimensions and evaluates the four '
@@ -337,11 +337,11 @@ FOLIO = {'slug': 'b06',
                    'dimension χ = 64 provides ample logarithmic capacity ln(64) ≈ 4.1589 nats to '
                    'bound the critical entanglement entropy S_vN ≈ 0.8828 nats. Second, the '
                    'verifier subjects the model to an adversarial planted-defect test. By '
-                   'injecting a synthetic hypercharge perturbation δY = 0.05, it confirms that the '
+                   'injecting a synthetic hypercharge perturbation δY = 0.05, it shows that the '
                    'cubic anomaly immediately breaches tolerance, forcing an explicit verification '
-                   'failure. Similarly, truncating bond dimension down to χ = 2 proves that '
+                   'failure. Similarly, truncating bond dimension down to χ = 2 shows that '
                    'capacity collapse triggers an immediate area-law violation. By demanding that '
-                   'invalid states fail unconditionally, this verification architecture guarantees '
+                   'invalid states fail unconditionally, this verification architecture ensures '
                    'that no generative AI agent or human contributor can claim benchmark '
                    'convergence on an inconsistent gauge model.',
  'plain_es': 'Para entender por qué los átomos de nuestro universo son eléctricamente estables, '
@@ -369,7 +369,7 @@ FOLIO = {'slug': 'b06',
             '1/2, la entropía de entrelazamiento de Calabrese–Cardy escala logarítmicamente según '
             'S_vN(128) = 0.8828 nats. Los estados de producto matricial (MPS) en ITensors.jl '
             'truncan el espacio de Hilbert mediante una dimensión de enlace χ = 64 cuya capacidad '
-            'ln(64) = 4.1589 nats acota estrictamente la entropía crítica, garantizando compresión '
+            'ln(64) = 4.1589 nats acota estrictamente la entropía crítica, asegurando compresión '
             'polinomial sin pérdida de fidelidad.',
  'easy_history_title_en': 'How Human Pioneers Reached This Frontier: From 1969 Triangle Anomalies '
                           '& DMRG Chains to PhysLean in Lean 4',
@@ -395,7 +395,7 @@ FOLIO = {'slug': 'b06',
                     'entangled quantum spins requires 2^N numbers, which overwhelms every computer '
                     'on Earth past N = 50. In 1992, Steven White invented the Density Matrix '
                     'Renormalization Group (DMRG), and in 2004 Pasquale Calabrese and John Cardy '
-                    'proved via Conformal Field Theory that critical 1D quantum chains only grow '
+                    'showed via Conformal Field Theory that critical 1D quantum chains only grow '
                     'their entanglement logarithmically as S_vN(L) = (c/6) ln(L) + s₁. Today, '
                     "between 2022 and 2026, Joseph Tooby-Smith's PhysLean (HEPLean) library "
                     'formalizes Standard Model anomaly cancellation conditions in Lean 4 (as its '
@@ -449,7 +449,7 @@ FOLIO = {'slug': 'b06',
                          'title_en': 'Exact Ising Criticality & Quark-Lepton Cancellation',
                          'title_es': 'Criticidad Exacta de Ising y Cancelación Quark-Leptón',
                          'summary_en': 'Pfeuty solves the 1D critical Ising model (E₀/N = −4/π); '
-                                       'Bouchiat–Iliopoulos–Meyer prove N_c = 3 quarks cancel '
+                                       'Bouchiat–Iliopoulos–Meyer show N_c = 3 quarks cancel '
                                        'lepton anomalies.',
                          'summary_es': 'Pfeuty resuelve el modelo crítico de Ising 1D (E₀/N = '
                                        '−4/π); Bouchiat–Iliopoulos–Meyer prueban que N_c = 3 '
@@ -479,10 +479,10 @@ FOLIO = {'slug': 'b06',
                          'title_en': 'Conformal Entanglement Entropy Scaling S_vN(L)',
                          'title_es': 'Escalamiento Conforme de la Entropía de Entrelazamiento '
                                      'S_vN(L)',
-                         'summary_en': 'Proves that 1D critical entanglement grows logarithmically '
+                         'summary_en': 'Shows that 1D critical entanglement grows logarithmically '
                                        'as S_vN(L) = (c/6) ln(L) + s₁, bounded by MPS capacity '
                                        'ln(χ).',
-                         'summary_es': 'Demuestra que el entrelazamiento crítico 1D crece como '
+                         'summary_es': 'Muestra que el entrelazamiento crítico 1D crece como '
                                        'S_vN(L) = (c/6) ln(L) + s₁, acotado por la capacidad MPS '
                                        'ln(χ).',
                          'roadblock_en': 'Separates formal mathematical physics proofs from '
@@ -496,9 +496,9 @@ FOLIO = {'slug': 'b06',
                          'title_en': 'Zero-Sorry Lean 4 Gauge Proofs & Tensor Networks',
                          'title_es': 'Pruebas Gauge Cero-Sorry en Lean 4 y Redes Tensoriales',
                          'summary_en': 'Machine-checks Tr[Y] = Tr[Y³] = Tr[τ²Y] = Tr[λ²Y] = 0 over '
-                                       'ℚ in Lean 4 while certifying S_vN(128) = 0.8828 ≤ ln(64) = '
+                                       'ℚ in Lean 4 while checking S_vN(128) = 0.8828 ≤ ln(64) = '
                                        '4.1589.',
-                         'summary_es': 'Certifica en Lean 4 que Tr[Y] = Tr[Y³] = Tr[τ²Y] = Tr[λ²Y] '
+                         'summary_es': 'Comprueba en Lean 4 que Tr[Y] = Tr[Y³] = Tr[τ²Y] = Tr[λ²Y] '
                                        '= 0 sobre ℚ y verifica S_vN(128) = 0.8828 ≤ ln(64) = '
                                        '4.1589.',
                          'roadblock_en': 'Formalizing full non-perturbative lattice gauge bounds '
@@ -627,7 +627,7 @@ FOLIO = {'slug': 'b06',
                       'reproducibilidad adversaria. El verificador autónomo '
                       'bounties/bounty_m2_physlean_itensor_quantum_gauge.py y su guía SKILL.md '
                       'ejecutan en menos de 0.05 segundos una evaluación doble sin dependencias '
-                      'externas: primero certifican que las cuatro trazas quirales del Modelo '
+                      'externas: primero comprueban que las cuatro trazas quirales del Modelo '
                       'Estándar se anulan dentro de 10⁻¹², que E₀/N = -4/π y que ln(64) = 4.1589 '
                       'nats acota S_vN(128) = 0.8828 nats; segundo, inyectan defectos sembrados '
                       '(δY = 0.05 y χ = 2) para demostrar que cualquier anomalía gauge o '
@@ -657,7 +657,7 @@ FOLIO = {'slug': 'b06',
               'Etapa 3: Escalamiento Crítico Exacto de Pfeuty y Calabrese–Cardy — Evalúa la '
               'densidad de energía crítica de Ising 1D E₀/N = -4/π = -1.27323954 y la entropía de '
               'entrelazamiento S_vN(L=128) = (0.5/6) ln(128) + 0.4785 = 0.882836 nats.',
-              'Etapa 4: Certificación de Capacidad de Dimensión de Enlace MPS — Confirma que la '
+              'Etapa 4: Comprobación de Capacidad de Dimensión de Enlace MPS — Comprueba que la '
               'capacidad logarítmica ln(χ) = ln(64) = 4.158883 nats acota estrictamente S_vN(128) '
               '= 0.882836 nats.'],
  'rules_es': ['Cancelación de Anomalías Gauge del Modelo Estándar: Los cuatro invariantes de traza '

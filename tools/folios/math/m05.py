@@ -92,7 +92,7 @@ FOLIO = {'folio_id': 'M.05',
                         'Chervonyi et al. 2025 (arXiv:2502.03544) was added to the source list.'},
                {'edition': 'REV 1.1',
                 'date': '2026-11-02',
-                'summary': 'REV 1.1 (Redated 2026-11-02): Certified AlphaGeometry 2 neuro-symbolic '
+                'summary': 'REV 1.1 (Redated 2026-11-02): AlphaGeometry 2 neuro-symbolic '
                            'DD+AR deductive closure and Cayley-Menger 3D distance geometry with '
                            '4-Seat Frontier Council review. (REV 1.2: "certified" wording '
                            'withdrawn.)',
@@ -142,7 +142,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'this folio.'},
  'act1_title': "Act I — From Euclid's Hidden Auxiliary Lines to AlphaGeometry's Neuro-Symbolic "
                'Search',
- 'act1_dropcap': "Euclid's Elements, written around 300 BCE, proves in Book I, Proposition 47 that in a right-angled triangle the square on the hypotenuse equals the sum of the squares on the other two sides. The standard proof adds auxiliary lines to the figure, joining vertices of the squares to opposite corners, which creates pairs of triangles of equal area. Knowing which extra line to draw is the creative step, and it is the step that automated geometry provers found hardest.",
+ 'act1_dropcap': "Euclid's Elements, written around 300 BCE, shows in Book I, Proposition 47 that in a right-angled triangle the square on the hypotenuse equals the sum of the squares on the other two sides. The standard proof adds auxiliary lines to the figure, joining vertices of the squares to opposite corners, which creates pairs of triangles of equal area. Knowing which extra line to draw is the creative step, and it is the step that automated geometry provers found hardest.",
  'act1_plain_bridge': 'In plain words, solving a challenging geometry problem can feel like finding your way through a dark house. You have a ring of familiar rules about angles, parallel lines and circles, but none of them seem to open the next door. Sometimes the way forward is to add a helper line or point to the drawing, after which the rules you already have apply again. A program that only applies rules to what is already drawn cannot do this. AlphaGeometry pairs such a rule-applying engine with a neural model that suggests helper points. This folio makes no claim that the method is used outside geometry problems.',
  'act1_body': "In January 2024, Trieu Trinh, Yuhuai Wu, Quoc Le, He He and Thang Luong reported AlphaGeometry in Nature (DOI 10.1038/s41586-023-06747-5). A neural language model, trained from scratch on about 100 million synthetic theorems and proofs, guides a symbolic deduction engine. The engine combines a Deductive Database with Algebraic Rules, working through the consequences of the premises; when it stalls, the neural model proposes an auxiliary construction and the engine resumes. On a test set of 30 olympiad-level problems the paper reports 25 solved, against 10 for the previous best method, which its authors describe as approaching an average International Mathematical Olympiad gold medallist. A follow-up report on AlphaGeometry2 (Chervonyi et al., arXiv:2502.03544) states that it raised the solving rate on IMO geometry problems from 2000 to 2024 from 54% to 84%.",
  'act1_stakes': 'Computer proofs in geometry have followed two main routes. Algebraic methods, such as the one developed by Wu Wen-Tsun and described in the book by Chou, Gao and Zhang (1994), translate a problem into polynomial equations. Synthetic methods apply deduction rules that resemble the steps of a human proof. AlphaGeometry combines a rule-based symbolic engine with a neural model that proposes auxiliary constructions. Because the symbolic engine carries out each deduction, a proof it outputs can be checked step by step, and the Nature paper reports that the proofs are human-readable. The folio does not claim that the method extends to other fields.',
@@ -156,7 +156,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Arthur Cayley (1841) and Karl Menger (1928) give determinant criteria for when '
                  'a set of distances can be realised by points in Euclidean space.'),
                 ('Late 1970s',
-                 'Wu Wen-Tsun develops algebraic mechanization of geometry theorem proving via '
+                 'Wu Wen-Tsun develops algebraic mechanization of geometry proof search via '
                  'characteristic sets.'),
                 ('2024',
                  'Trinh et al. publish AlphaGeometry in Nature (DOI 10.1038/s41586-023-06747-5), '
@@ -200,7 +200,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'Communications, 308, 109457. DOI: 10.1016/j.cpc.2024.109457 (repository now '
              'leanprover-community/physlib, formerly HEPLean/PhysLean).',
              'The mathlib Community (2020). The Lean mathematical library. Proceedings of the '
-             '9th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP '
+             '9th ACM SIGPLAN CPP conference (CPP '
              '2020), 367–381. DOI: 10.1145/3372885.3373824.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
              'context of citations and classifies their intent using deep learning '

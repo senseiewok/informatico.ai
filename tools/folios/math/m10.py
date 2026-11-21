@@ -103,7 +103,7 @@ FOLIO = {'folio_id': 'M.10',
                 'date': '2026-11-14',
                 'summary': 'REV 1.1 (Redated 2026-11-14): Grounding revision. The Betti numbers '
                            'and the 38–116 nm bar are now labelled as values from a synthetic '
-                           "teaching model, and the 'certifies 65 nm LNP passage' and 'BOTTLENECK "
+                           "teaching model, and the earlier wording about 65 nm LNP passage and the 'BOTTLENECK "
                            "PASS' wording is withdrawn. The invented before-and-after pore radii "
                            'for CF sputum under therapy (42 nm to 118 nm) are removed; the bridge '
                            'now describes a proposed analysis with no clinical claim. E.01\'s '
@@ -192,7 +192,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'topological cycles are born and eventually filled in. Using column reductions over '
               'binary field coefficients, each topological feature receives an exact birth scale '
               'and death scale, plotted as horizontal lines in a persistence barcode. In 2007, '
-              'David Cohen-Steiner, Herbert Edelsbrunner, and John Harer proved the Bottleneck '
+              'David Cohen-Steiner, Herbert Edelsbrunner, and John Harer gave a proof of the Bottleneck '
               'Stability Theorem, establishing that persistence diagrams are mathematically stable '
               'against experimental measurement noise. By connecting combinatorial matrix '
               'reductions directly to coordinate-free topological invariants, their algorithm '
@@ -224,7 +224,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Edelsbrunner, Letscher & Zomorodian establish Persistent Homology and filtration '
                  'pairing in Discrete & Computational Geometry (DOI 10.1007/s00454-002-2885-2).'),
                 ('2007',
-                 'Cohen-Steiner, Edelsbrunner & Harer prove the Bottleneck Stability Theorem '
+                 'Cohen-Steiner, Edelsbrunner & Harer give a proof of the Bottleneck Stability Theorem '
                  'd_B(D(f), D(g)) <= ||f - g||_inf for persistence diagrams.'),
                 ('2016',
                  'Robins, Saadatfar, Delgado-Friedrichs & Sheppard relate persistence to '
@@ -291,8 +291,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                      'force_a_title': 'Filtration Radius Scale ε',
                      'force_a_sub': 'Expands simplicial balls to detect cycle births and deaths',
                      'force_b_title': 'Point Perturbation Noise σ',
-                     'force_b_sub': 'Injects spatial jitter bounded by Bottleneck Stability '
-                                    'guarantees',
+                     'force_b_sub': 'Injects spatial jitter bounded by the Bottleneck Stability '
+                                    'theorem',
                      'threshold_title': 'Critical Throat Percolation Bound',
                      'threshold_pass': 'Model: long H_1 bar is wider than a 65 nm particle',
                      'threshold_fail': 'Model: a bottleneck below the particle size would block '
@@ -445,7 +445,7 @@ ES_TRANSLATION = {'title_es': 'Homología Persistente, Filtraciones Simpliciales
             'matrices de frontera, el algoritmo empareja el momento de nacimiento de cada ciclo '
             'topológico con su escala de desaparición, generando un código de barras de Betti. Los '
             'dos parámetros del sistema permiten explorar la escala de filtración y el nivel de '
-            'ruido en los datos. El Teorema de Estabilidad del Cuello de Botella garantiza que las '
+            'ruido en los datos. El Teorema de Estabilidad del Cuello de Botella asegura que las '
             'perturbaciones experimentales solo muevan los puntos cerca de la diagonal, '
             'manteniendo inalterables las barras largas que representan estructuras físicas '
             'genuinas. En el modelo sintético, la barra de dimensión uno más duradera termina en '

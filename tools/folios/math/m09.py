@@ -47,7 +47,7 @@ FOLIO = {'folio_id': 'M.09',
               'unit': 'ε = '}],
  'steps': ["Stage 1 (Monge–Kantorovich Convex Duality): Relaxes Monge's transport map T_# μ_0 = "
            "μ_1 into Kantorovich's linear program over couplings π ∈ Π(μ_0, μ_1).",
-           'Stage 2 (Brenier Polar Factorization Theorem): Proves the unique L²-optimal transport '
+           'Stage 2 (Brenier Polar Factorization Theorem): Gives the unique L²-optimal transport '
            'map is the gradient of a convex potential T(x) = ∇Φ(x) = x + ∇ψ_0(x).',
            'Stage 3 (Benamou–Brenier Dynamic Fluid Geodesic, DOI 10.1007/s002110050002): Evolves '
            'density ρ_t along constant-velocity geodesics ∂_t ρ + ∇·(ρ∇ψ) = 0 with HJB optimality '
@@ -265,7 +265,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'Schrödinger bridge freezes into the deterministic Monge transport map. '
                    'Conversely, setting epsilon higher introduces controlled thermal dispersion, '
                    'converting a stiff combinatorial matching into a strongly convex optimization '
-                   'problem with guaranteed linear convergence rates. This interplay between fluid '
+                   'problem with linear convergence rates. This interplay between fluid '
                    'geodesics and entropic regularization explains why generative flow matching '
                    'models can train neural velocity fields to follow straight, non-colliding '
                    'paths between ambient noise and structured physical data.',
