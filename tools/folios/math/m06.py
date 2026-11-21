@@ -103,7 +103,7 @@ FOLIO = {'folio_id': 'M.06',
                         'added to the source list.'},
                {'edition': 'REV 1.1',
                 'date': '2026-11-02',
-                'summary': 'REV 1.1 (Redated 2026-11-02): Certified Williams sub-cubic APSP '
+                'summary': 'REV 1.1 (Redated 2026-11-02): Williams sub-cubic APSP '
                            'circuit polynomials and step-level PRM800K process reward supervision '
                            'with 4-Seat Frontier Council review. (REV 1.2: "certified" wording '
                            'withdrawn.)',

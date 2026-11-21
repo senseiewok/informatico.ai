@@ -122,7 +122,7 @@ FOLIO = {'folio_id': 'M.03',
                            'tensor verification alongside FunSearch F_3^8 cap set bounds.',
                 'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'log_4(48) = 2.79248 < log_2(7) = 2.80735 asymptotic exponent '
-                        'improvement. (REV 1.4: arithmetic confirmed; "verified" wording '
+                        'improvement. (REV 1.4: arithmetic rechecked; "verified" wording '
                         'withdrawn.)'},
                {'edition': 'REV 1.0',
                 'date': '2026-10-29',

@@ -273,9 +273,9 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "m04": (
         "Polynomial Freiman–Ruzsa and the Magma Graph",
-        "How Gowers, Green, Manners and Tao prove PFR in characteristic 2 by entropy, with public Lean 4 projects around it and 4,694 magma laws.",
+        "How Gowers, Green, Manners and Tao settled PFR in characteristic 2 by entropy, with public Lean 4 projects around it and 4,694 magma laws.",
         "Freiman–Ruzsa Polinomial y el Grafo de Magmas",
-        "Cómo Gowers, Green, Manners y Tao demuestran PFR en característica 2 con entropía, con proyectos públicos en Lean 4 a su alrededor y 4,694 leyes de magmas.",
+        "Cómo Gowers, Green, Manners y Tao resolvieron PFR en característica 2 con entropía, con proyectos públicos en Lean 4 a su alrededor y 4,694 leyes de magmas.",
     ),
     "m05": (
         "AlphaGeometry 2: Neuro-Symbolic Deductive Search",

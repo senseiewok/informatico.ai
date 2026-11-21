@@ -327,7 +327,7 @@ FOLIO = {'slug': 'b02',
                   'decoders assist by optimizing magic-state distillation layouts, routing '
                   'multi-tile lattice surgeries, and discovering compressed tensor representations '
                   '(such as rank-reduced tensor hypercontraction) that dramatically slash logical '
-                  'Toffoli counts. To guarantee that every compiler optimization preserves '
+                  'Toffoli counts. To ensure that every compiler optimization preserves '
                   'physical validity, formal proof assistants like Lean 4 verify the underlying '
                   'Clifford group transformations and stabilizer commutativity relations without '
                   'human error. Initiatives like the $5M XPRIZE Quantum Applications and Unitary '
@@ -359,7 +359,7 @@ FOLIO = {'slug': 'b02',
                    'is introduced—such as omitting distillation factories or manipulating the '
                    'exponent (d+1)/2—the verifier rejects the submission with a detailed '
                    'diagnostic trace. This deterministic gatekeeping ensures that every benchmark '
-                   'certified by the lab represents genuine, peer-reviewed engineering reality.',
+                   'accepted by the lab has passed the same scripted checks. That is not peer review.',
  'plain_es': 'En palabras sencillas, para fabricar los fertilizantes que alimentan al planeta, las '
              'industrias queman enormes cantidades de gas natural a temperaturas infernales de 450 '
              'grados y presiones asombrosas, liberando casi el 2% de todo el dióxido de carbono '
@@ -382,7 +382,7 @@ FOLIO = {'slug': 'b02',
             'lógicos se suprimen exponencialmente siguiendo la ley P_L = 0.03 (p_phys / '
             'p_th)^((d+1)/2), siempre y cuando p_phys permanezca estrictamente por debajo del '
             'umbral de percolación p_th ≈ 0.01. Con una distancia d = 27 y p_phys = 0.001, la tasa '
-            'de error por ciclo se reduce a 3.00 × 10⁻¹⁶, garantizando la supervivencia del '
+            'de error por ciclo se reduce a 3.00 × 10⁻¹⁶, asegurando la supervivencia del '
             'circuito profundo con una huella de 428,652 qubits físicos (Q_phys = 2 · N_teselas · '
             'd²). Superar el 1% de error destruye la corrección y amplifica el ruido.',
  'easy_history_title_en': 'How Human Pioneers Reached This Frontier: From 1909 Fertilizer Furnaces & '
@@ -406,7 +406,7 @@ FOLIO = {'slug': 'b02',
                     'Alexei Kitaev proposed a radical solution—stitching qubits into a topological '
                     'checkerboard so errors are caught by neighborhood parity checks without '
                     'peeking at the fragile quantum state. In 2012, Austin Fowler and colleagues '
-                    'proved that once physical gate errors drop below a 1% threshold, widening '
+                    'showed that once physical gate errors drop below a 1% threshold, widening '
                     'this surface-code quilt suppresses logical errors exponentially. Five years '
                     'later, Markus Reiher and collaborators calculated the first concrete qubit '
                     'budget for FeMoCo, and in 2021 Craig Gidney released Stim, making it possible '
@@ -660,7 +660,7 @@ FOLIO = {'slug': 'b02',
                      'las fábricas de destilación de estados mágicos, enrutando cirugías de red '
                      'multitesela y descubriendo representaciones tensoriales comprimidas (como la '
                      'hipercontracción tensorial de rango reducido) que recortan drásticamente el '
-                     'conteo lógico de compuertas Toffoli. Para garantizar que cada optimización '
+                     'conteo lógico de compuertas Toffoli. Para asegurar que cada optimización '
                      'del compilador preserve la validez física, los asistentes de demostración '
                      'formal como Lean 4 verifican las transformaciones del grupo de Clifford y las '
                      'relaciones de conmutatividad de los estabilizadores sin error humano. '
@@ -698,8 +698,8 @@ FOLIO = {'slug': 'b02',
                       'datos. Si se introduce cualquier defecto sembrado—como omitir las fábricas '
                       'de destilación o manipular el exponente (d+1)/2—el verificador rechaza la '
                       'entrega con una traza diagnóstica detallada. Este control determinista '
-                      'asegura que cada banco de pruebas certificado por el laboratorio represente '
-                      'una realidad de ingeniería genuina y verificada por pares.',
+                      'asegura que cada banco de pruebas aceptado por el laboratorio haya pasado '
+                      'las mismas comprobaciones por script. Eso no es revisión por pares.',
  'sidenote_1_es': {'kicker': 'NOTA AL MARGEN B.02-A · TRANSICIÓN DE FASE DEL UMBRAL',
                    'body': 'Arrastrar p_phys a través de p_th = 0.01 en el banco de pruebas '
                            'dispara la transición de desorden de mecánica estadística del modelo '

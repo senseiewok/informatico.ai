@@ -47,11 +47,11 @@ FOLIO = {'slug': 'x02',
  'small_studio_kit_en': "Independent Engineer's Zero-Cost Stack (build123d Apache-2.0 + FreeCAD "
                         '1.0 + OrcaSlicer): Author parametric parts in Python, export ISO 10303-21 '
                         'STEP AP242 for CNC machine shops and 3MF for additive prototyping, and '
-                        'run verify_x02 to confirm zero volume drift between B-rep and mesh.',
+                        'run verify_x02 to check for zero volume drift between B-rep and mesh.',
  'small_studio_kit_es': 'Stack sin Costo para Ingenieros Independientes (build123d Apache-2.0 + '
                         'FreeCAD 1.0 + OrcaSlicer): Modela piezas paramétricas en Python, exporta '
                         'STEP AP242 (ISO 10303-21) para maquinado CNC y 3MF para manufactura '
-                        'aditiva, y ejecuta verify_x02 para certificar cero deriva volumétrica.',
+                        'aditiva, y ejecuta verify_x02 para comprobar cero deriva volumétrica.',
  'companion_folios': [('engineering',
                        'e10',
                        'Folio E.10',
@@ -105,7 +105,7 @@ FOLIO = {'slug': 'x02',
               'Python script generates our stepped structural clevis pedestal, producing an exact '
               'ISO STEP AP242 boundary representation alongside modern 3MF and binary GLB mesh '
               'files. Our byte-level verifier inspects all three formats simultaneously, '
-              'confirming that analytical volumes match exactly while measuring the chordal '
+              'showing that analytical volumes match exactly while measuring the chordal '
               'tessellation error introduced whenever smooth analytic surfaces are converted into '
               'faceted meshes.',
  'pullquote': 'Code-first CAD turns a mechanical drawing from an opaque binary blob into a pure '
@@ -245,7 +245,7 @@ FOLIO = {'slug': 'x02',
                 'file-checking workflows. Open, script-driven CAD coupled with offline '
                 'verification democratizes this entire engineering cycle. By parameterizing parts '
                 'in readable Python code and executing byte-level audits across STEP, 3MF, and GLB '
-                'exports, solo practitioners can mathematically prove geometric integrity, verify '
+                'exports, solo practitioners can check geometric integrity by script, verify '
                 'clearance limits, and collaborate seamlessly with machining facilities without '
                 'costly proprietary software.',
  'act2_analogy': 'Picture a master carpenter cutting a traditional Japanese watari-ago notched '
@@ -282,7 +282,7 @@ FOLIO = {'slug': 'x02',
                    'internal faces and sewing outer faces into a single MANIFOLD_SOLID_BREP '
                    'bounded by a CLOSED_SHELL entity. Each ADVANCED_FACE explicitly references its '
                    'underlying surface equation, boundary orientation flag, and bounding vertex '
-                   'loop. This topological rigor guarantees that every edge is shared by exactly '
+                   'loop. This topological rigor means that every edge is shared by exactly '
                    'two adjacent faces with opposing parameter orientations, ensuring that '
                    'analytical mass properties and volume integrals evaluate without approximation '
                    'drift across neutral CAD exchange formats.',
@@ -346,8 +346,8 @@ FOLIO = {'slug': 'x02',
             'valores bajos de facetas, esta discrepancia dimensional puede impedir el ensamblaje '
             'adecuado de pasadores y bujes mecánicos. Al combinar scripts de modelado paramétrico '
             'en Python con verificadores deterministas que operan a nivel de bytes, los ingenieros '
-            'independientes pueden certificar la equivalencia volumétrica entre representaciones '
-            'continuas y discretas, garantizando tolerancias de holgura controladas sin depender '
+            'independientes pueden comprobar la equivalencia volumétrica entre representaciones '
+            'continuas y discretas, asegurando tolerancias de holgura controladas sin depender '
             'de costosas plataformas comerciales.',
  'distill_diagram': {'analogy_title': 'The Notched Timber & Sliding Fit',
                      'analogy_sub': 'Exact planar faces and controlled tolerances ensure snug '

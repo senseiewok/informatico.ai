@@ -22,9 +22,9 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 
 ## 3. 4-Stage Formal Proof & Benchmark Mechanism
 - Stage 1: Lexicographic Mian–Chowla Greedy Generation — Iteratively append the smallest integer c ∈ [1, N] whose pairwise sums {c + a : a ∈ A} ∪ {2c} are completely disjoint from all previously recorded sums.
-- Stage 2: Quadratic Difference Packing & Pigeonhole Barrier — Certify that k = |A| elements generate k(k+1)/2 distinct sums in [2, 2N] and k(k-1)/2 distinct positive differences in [1, N-1].
+- Stage 2: Quadratic Difference Packing & Pigeonhole Barrier — Check that k = |A| elements generate k(k+1)/2 distinct sums in [2, 2N] and k(k-1)/2 distinct positive differences in [1, N-1].
 - Stage 3: Erdős–Turán Sliding-Window Variance Bound — Apply Cauchy–Schwarz to the interval occupancy counts over window width m = ⌊N^(3/4)⌋ to bound |A ∩ [1, N]| ≤ √N + N^(1/4) + 1.
-- Stage 4: Lean 4 Decidable Finset Certification — Encode the finite B₂ collision check as a decidable proposition (by decide / norm_num) so any candidate counterexample or lower-bound ruler is verified without sorry.
+- Stage 4: Lean 4 Decidable Finset Check — Encode the finite B₂ collision check as a decidable proposition (by decide / norm_num) so any candidate counterexample or lower-bound ruler is verified without sorry.
 
 ## 4. Reference Results Computed by the Harness (T0/T1)
 - **Mian–Chowla Greedy |A(N)|**: `20 elements (at N = 500)`

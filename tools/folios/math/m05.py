@@ -92,7 +92,7 @@ FOLIO = {'folio_id': 'M.05',
                         'Chervonyi et al. 2025 (arXiv:2502.03544) was added to the source list.'},
                {'edition': 'REV 1.1',
                 'date': '2026-11-02',
-                'summary': 'REV 1.1 (Redated 2026-11-02): Certified AlphaGeometry 2 neuro-symbolic '
+                'summary': 'REV 1.1 (Redated 2026-11-02): AlphaGeometry 2 neuro-symbolic '
                            'DD+AR deductive closure and Cayley-Menger 3D distance geometry with '
                            '4-Seat Frontier Council review. (REV 1.2: "certified" wording '
                            'withdrawn.)',
