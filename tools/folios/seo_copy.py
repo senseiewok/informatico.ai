@@ -103,7 +103,7 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
     # ---- Pillar II: Architecture
     "a01": (
         "Funicular Thrust Surfaces in Stone and Timber Shells",
-        "How a compression-only stone vault stands when its thrust line stays inside the masonry, with a middle-third check and a modelled springer node.",
+        "How a compression-only stone vault stands when its thrust line stays inside the masonry, with a middle-third check and a modeled springer node.",
         "Superficies Funiculares de Empuje en Bóvedas",
         "Cómo se sostiene una bóveda de piedra a compresión pura cuando su línea de empuje queda dentro de la mampostería, con revisión del tercio medio.",
     ),
@@ -273,9 +273,9 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "m04": (
         "Polynomial Freiman–Ruzsa and the Magma Graph",
-        "How Gowers, Green, Manners and Tao prove PFR in characteristic 2 by entropy, with public Lean 4 projects around it and 4,694 magma laws.",
+        "How Gowers, Green, Manners and Tao settled PFR in characteristic 2 by entropy, with public Lean 4 projects around it and 4,694 magma laws.",
         "Freiman–Ruzsa Polinomial y el Grafo de Magmas",
-        "Cómo Gowers, Green, Manners y Tao demuestran PFR en característica 2 con entropía, con proyectos públicos en Lean 4 a su alrededor y 4,694 leyes de magmas.",
+        "Cómo Gowers, Green, Manners y Tao resolvieron PFR en característica 2 con entropía, con proyectos públicos en Lean 4 a su alrededor y 4,694 leyes de magmas.",
     ),
     "m05": (
         "AlphaGeometry 2: Neuro-Symbolic Deductive Search",

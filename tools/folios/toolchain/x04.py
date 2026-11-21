@@ -26,7 +26,7 @@ FOLIO = {'slug': 'x04',
            'shading screens, acoustic baffles, and folded-plate canopies using laser cutters, CNC '
            'drag-knives, or sheet-metal brakes. Folio X.04 pairs a 3D thickened Miura-ori shell '
            '(.glb, .3mf) with a production-structured 2D clean-room ASCII DXF (R2000 standard) '
-           'flat pattern separated into CUT, MOUNTAIN, and VALLEY layers—while proving '
+           'flat pattern separated into CUT, MOUNTAIN, and VALLEY layers—while showing '
            'mathematically that every interior degree-4 vertex satisfies flat-foldability.',
  'why_es': 'Los estudios pequeños de arquitectura y talleres de fabricación digital suelen '
            'prototipar celosías solares adaptativas, paneles acústicos y cubiertas plegadas con '
@@ -88,19 +88,19 @@ FOLIO = {'slug': 'x04',
                  'celebrated its single-motion deployment, mathematicians like Toshikazu Kawasaki '
                  'and Jacques Justin recognized that Miura’s crease pattern obeyed profound local '
                  'geometric conservation laws. In twenty thirteen at Cambridge University, Mark '
-                 'Schenk and Simon Guest proved that this pattern behaves as a mechanical '
+                 'Schenk and Simon Guest showed that this pattern behaves as a mechanical '
                  'metamaterial, offering architecture a revolutionary pathway for rigid, auxetic '
                  'building envelopes.',
  'act1_body': 'The transition of Miura-ori from theoretical paper folding to physical '
               'architectural envelopes required solving rigorous kinematic and thickness '
               'constraints. In nineteen eighty-six and nineteen eighty-nine, Jacques Justin and '
-              'Toshikazu Kawasaki proved the flat-foldability theorem, establishing that a '
+              'Toshikazu Kawasaki gave a proof of the flat-foldability theorem, establishing that a '
               'four-crease vertex can fold flat if and only if the alternating sum of its '
-              'consecutive sector angles equals zero. Simultaneously, Jun Maekawa proved the '
+              'consecutive sector angles equals zero. Simultaneously, Jun Maekawa gave a proof of the '
               'topological parity theorem, showing that the difference between mountain and valley '
               'creases meeting at any flat-foldable degree-four node is strictly two. In twenty '
               'thirteen, Mark Schenk and Simon D. Guest published their groundbreaking mechanical '
-              'analysis in PNAS (DOI: 10.1073/pnas.1217998110), proving that folded origami sheets '
+              'analysis in PNAS (DOI: 10.1073/pnas.1217998110), showing that folded origami sheets '
               'exhibit out-of-plane bending stiffness coupled to negative in-plane Poisson’s '
               'ratios. Soon after, Yan Chen, Rui Peng, and Zhong You resolved the physical panel '
               'thickness problem in Science (DOI: 10.1126/science.aab2870), establishing spatial '
@@ -113,11 +113,11 @@ FOLIO = {'slug': 'x04',
                  'Koryo Miura invents the Miura-ori rigid origami fold at ISAS Tokyo for '
                  'deployable solar-panel arrays on space missions.'),
                 ('1986–1989',
-                 'Jacques Justin and Toshikazu Kawasaki independently prove that a single-vertex '
+                 'Jacques Justin and Toshikazu Kawasaki independently show that a single-vertex '
                  'crease pattern is flat-foldable if and only if its alternating sector angles sum '
                  'to zero.'),
                 ('2013',
-                 'Mark Schenk and Simon D. Guest prove in PNAS (DOI 10.1073/pnas.1217998110) that '
+                 'Mark Schenk and Simon D. Guest show in PNAS (DOI 10.1073/pnas.1217998110) that '
                  'Miura-ori sheets form negative-Poisson-ratio mechanical metamaterials.'),
                 ('2026',
                  'Informatico.ai ships X.04: synchronized 3D watertight GLB/3MF shell and 2D '
@@ -129,12 +129,12 @@ FOLIO = {'slug': 'x04',
                    '180°, the pattern folds completely flat without panel buckling. Crease '
                    'assignments at each degree-four junction obey Maekawa’s parity theorem, |M − '
                    'V| = |3 − 1| = 2, requiring that exactly three mountain creases meet one '
-                   'valley crease (or vice versa), guaranteeing topological non-intersection. When '
+                   'valley crease (or vice versa), ensuring topological non-intersection. When '
                    'panel thickness h = 6 mm is introduced to transform the zero-thickness mesh '
                    'into a physical CNC sheet, the material volume follows Cavalieri’s principle '
                    'and the divergence theorem: V = A_xy · h = 144,000.0 mm³, where A_xy '
                    'represents the projected planar area. The resulting solid maintains Euler '
-                   'characteristic χ = 2, proving watertight topological closure across all '
+                   'characteristic χ = 2, consistent with a closed, watertight surface across all '
                    'facets.',
  'sliders': [{'id': 'tp-tool-s0',
               'label': 'Parallelogram Sector Angle γ',
@@ -164,7 +164,7 @@ FOLIO = {'slug': 'x04',
            'explicit AC1015 header units (mm) and separate CUT (continuous), MOUNTAIN (dashed), '
            'and VALLEY (dash-dot) LINE entities.',
            'Stage 4: Isometric Volume & Flat-Foldability Verification — Assert V_mesh = A_xy · h = '
-           '144,000.0 mm³, verify DXF layer completeness, and confirm the planted-defect knockout '
+           '144,000.0 mm³, verify DXF layer completeness, and check that the planted-defect knockout '
            'rejects corrupted crease topology.'],
  'rules': ['Kawasaki–Justin Alternating Angle Invariant: At every interior degree-4 vertex with '
            'consecutive sector angles (α_1, α_2, α_3, α_4), flat-foldability requires α_1 − α_2 + '
@@ -290,7 +290,7 @@ FOLIO = {'slug': 'x04',
                   'the studio immediately runs '
                   'verify_x04_toolchain_x04_miura_ori_dxf_fabricator.py. This deterministic '
                   'verification harness checks every vertex against Kawasaki’s alternating sum, '
-                  'confirms Maekawa parity |M − V| = 2 across all crease nodes, and computes the '
+                  'checks Maekawa parity |M − V| = 2 across all crease nodes, and computes the '
                   'Cavalieri divergence volume of 144,000.0 mm³ to verify watertight manifold mesh '
                   'export. The AI acts as an agile parametric draftsperson, while the Python '
                   'verifier enforces unyielding geometric rigor. This symbiosis frees small '
@@ -300,7 +300,7 @@ FOLIO = {'slug': 'x04',
                    'Euclidean geometry, kinematic mechanisms, and climate-adaptive facades. It '
                    'directly operationalizes the architectural principles of Folio A.10, which '
                    'explores the auxetic mechanical metamaterials and dynamic solar tracking of '
-                   'Miura facades. The geometric rigor required to prove flat foldability connects '
+                   'Miura facades. The geometric rigor required to show flat foldability connects '
                    'to Folio M.05, where AlphaGeometry 2 synthesizes automated Euclidean proofs, '
                    'illustrating how discrete angle theorems govern continuous mechanical motion. '
                    'When large folding panels transfer self-weight and wind shear through '
@@ -330,7 +330,7 @@ FOLIO = {'slug': 'x04',
             'cada nodo de grado cuatro, la suma alternada de ángulos sectoriales satisface '
             'rigurosamente ∑_{i=1}^4 (−1)^i α_i = 78° − 102° + 102° − 78° = 0°, asegurando '
             'abatimiento planar sin distorsión elástica de las facetas. La paridad topológica de '
-            'los pliegues cumple |M − V| = |3 − 1| = 2, garantizando que tres pliegues en cresta '
+            'los pliegues cumple |M − V| = |3 − 1| = 2, asegurando que tres pliegues en cresta '
             'intersequen un pliegue en valle. Al asignar un espesor físico h = 6 mm para corte y '
             'maquinado CNC, el volumen del sólido sigue el principio de Cavalieri y el teorema de '
             'divergencia, totalizando V = A_xy · h = 144,000.0 mm³ con característica de Euler χ = '
