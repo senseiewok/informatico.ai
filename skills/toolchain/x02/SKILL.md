@@ -22,8 +22,8 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Primary Scite Anchor DOI**: https://doi.org/10.1115/1.4029050 (Scite Report: https://scite.ai/reports/10.1115/1.4029050)
 
 ## 2. Small-Studio & Independent-Practitioner Open-Tool Workflow
-- **EN**: Independent Engineer's Zero-Cost Stack (build123d Apache-2.0 + FreeCAD 1.0 + OrcaSlicer): Author parametric parts in Python, export ISO 10303-21 STEP AP242 for CNC machine shops and 3MF for additive prototyping, and run verify_x02 to confirm zero volume drift between B-rep and mesh.
-- **ES-MX**: Stack sin Costo para Ingenieros Independientes (build123d Apache-2.0 + FreeCAD 1.0 + OrcaSlicer): Modela piezas paramétricas en Python, exporta STEP AP242 (ISO 10303-21) para maquinado CNC y 3MF para manufactura aditiva, y ejecuta verify_x02 para certificar cero deriva volumétrica.
+- **EN**: Independent Engineer's Zero-Cost Stack (build123d Apache-2.0 + FreeCAD 1.0 + OrcaSlicer): Author parametric parts in Python, export ISO 10303-21 STEP AP242 for CNC machine shops and 3MF for additive prototyping, and run verify_x02 to check for zero volume drift between B-rep and mesh.
+- **ES-MX**: Stack sin Costo para Ingenieros Independientes (build123d Apache-2.0 + FreeCAD 1.0 + OrcaSlicer): Modela piezas paramétricas en Python, exporta STEP AP242 (ISO 10303-21) para maquinado CNC y 3MF para manufactura aditiva, y ejecuta verify_x02 para comprobar cero deriva volumétrica.
 
 ## 3. Tool-Neutral Agent Packet & Security Boundary (`security-runtime`)
 1. **Generate Deterministic 3D Artifacts Locally**: Run `python skills/toolchain/x02/make_x02.py` inside the repository working directory to emit `src/toolchain/x02/files/x02_artifact.*` and `manifest.json`.

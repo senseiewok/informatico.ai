@@ -503,6 +503,14 @@
     "title": "How do concrete rheology, tribology, flow rate and pipe radius influence pumping pressure?",
     "year": 2016
   },
+  "doi:10.1016/j.cemconres.2004.12.012": {
+    "fetched": "2026-11-21",
+    "first_author": "Cultrone",
+    "found": true,
+    "journal": "Cement and Concrete Research",
+    "title": "Forced and natural carbonation of lime-based mortars with and without additives: Mineralogical and textural changes",
+    "year": 2005
+  },
   "doi:10.1016/j.cemconres.2006.05.025": {
     "fetched": "2026-11-14",
     "first_author": "Roussel",
@@ -2239,6 +2247,14 @@
     "title": "The Fun Palace as Virtual Architecture",
     "year": 2006
   },
+  "doi:10.1111/j.1531-314x.2008.00234.x": {
+    "fetched": "2026-11-21",
+    "first_author": "Pelletier",
+    "found": true,
+    "journal": "Journal of Architectural Education",
+    "title": "Modeling the Void",
+    "year": 2008
+  },
   "doi:10.1112/jlms/s1-16.4.212": {
     "fetched": "2026-11-10",
     "first_author": "Erdös",
@@ -2591,6 +2607,14 @@
     "title": "Subcubic Equivalences Between Path, Matrix, and Triangle Problems",
     "year": 2018
   },
+  "doi:10.1145/325165.325171": {
+    "fetched": "2026-11-21",
+    "first_author": "Cohen",
+    "found": true,
+    "journal": "ACM SIGGRAPH Computer Graphics",
+    "title": "The hemi-cube",
+    "year": 1985
+  },
   "doi:10.1145/3372885.3373824": {
     "fetched": "2026-11-07",
     "first_author": "The mathlib Community",
@@ -2622,6 +2646,14 @@
     "journal": "ACM Transactions on Graphics",
     "title": "A Reflectance Model for Computer Graphics",
     "year": 1982
+  },
+  "doi:10.1145/800031.808601": {
+    "fetched": "2026-11-21",
+    "first_author": "Goral",
+    "found": true,
+    "journal": "Proceedings of the 11th annual conference on Computer graphics and interactive techniques",
+    "title": "Modeling the interaction of light between diffuse surfaces",
+    "year": 1984
   },
   "doi:10.1146/annurev-fluid-010719-060144": {
     "fetched": "2026-11-04",
@@ -2656,7 +2688,7 @@
     "year": 2020
   },
   "doi:10.1162/qss_a_00146": {
-    "fetched": "2026-11-07",
+    "fetched": "2026-11-21",
     "first_author": "Nicholson",
     "found": true,
     "journal": "Quantitative Science Studies",
@@ -2792,7 +2824,7 @@
     "year": 1938
   },
   "doi:10.1364/josa.32.000247": {
-    "fetched": "2026-11-04",
+    "fetched": "2026-11-21",
     "first_author": "MacAdam",
     "found": true,
     "journal": "Journal of the Optical Society of America",
@@ -2800,12 +2832,20 @@
     "year": 1942
   },
   "doi:10.1364/josa.38.000448": {
-    "fetched": "2026-11-04",
+    "fetched": "2026-11-21",
     "first_author": "Kubelka",
     "found": true,
     "journal": "Journal of the Optical Society of America",
     "title": "New Contributions to the Optics of Intensely Light-Scattering Materials Part I",
     "year": 1948
+  },
+  "doi:10.1364/josa.44.000330": {
+    "fetched": "2026-11-21",
+    "first_author": "Kubelka",
+    "found": true,
+    "journal": "Journal of the Optical Society of America",
+    "title": "New Contributions to the Optics of Intensely Light-Scattering Materials Part II: Nonhomogeneous Layers*",
+    "year": 1954
   },
   "doi:10.1371/journal.pbio.1002177": {
     "fetched": "2026-11-04",
@@ -2854,6 +2894,14 @@
     "journal": "Foundations and Trends® in Machine Learning",
     "title": "Computational Optimal Transport with Applications to Data Sciences",
     "year": 2019
+  },
+  "doi:10.1617/s11527-016-0829-1": {
+    "fetched": "2026-11-21",
+    "first_author": "Isebaert",
+    "found": true,
+    "journal": "Materials and Structures",
+    "title": "An empirical method for the estimation of permeability in natural hydraulic lime mortars",
+    "year": 2016
   },
   "doi:10.1680/geot.1954.4.4.143": {
     "fetched": "2026-11-20",
@@ -3006,6 +3054,30 @@
     "journal": "Polymers",
     "title": "Influence of Temperature on the Mechanical Behavior of Lead/Rubber Bearings",
     "year": 2026
+  },
+  "doi:10.3758/brm.40.1.304": {
+    "fetched": "2026-11-21",
+    "first_author": "Ruppertsberg",
+    "found": true,
+    "journal": "Behavior Research Methods",
+    "title": "Creating physically accurate visual stimuli for free: Spectral rendering with RADIANCE",
+    "year": 2008
+  },
+  "doi:10.3989/mc.2025.379124": {
+    "fetched": "2026-11-21",
+    "first_author": "Parra-Fernández",
+    "found": true,
+    "journal": "Materiales de Construcción",
+    "title": "Petrographic and petrophysical characterization of the main aerial and hydraulic mortars used in the construction and rehabilitation sectors",
+    "year": 2025
+  },
+  "doi:10.4000/ambiances.606": {
+    "fetched": "2026-11-21",
+    "first_author": "Coelho",
+    "found": true,
+    "journal": "Ambiances",
+    "title": "The Living Experience as a design content: from concept to appropriation",
+    "year": 2015
   },
   "doi:10.4007/annals.2015.182.1.9": {
     "fetched": "2026-11-07",
@@ -5918,12 +5990,12 @@
     "unclassified": 8
   },
   "scite:10.1364/josa.38.000448": {
-    "citing_publications": 2781,
+    "citing_publications": 2805,
     "contrasting": 0,
-    "fetched": "2026-11-08",
+    "fetched": "2026-11-21",
     "found": true,
     "journal": "Journal of the Optical Society of America",
-    "mentioning": 1206,
+    "mentioning": 1209,
     "retracted": false,
     "supporting": 15,
     "title": "New Contributions to the Optics of Intensely Light-Scattering Materials Part I",

@@ -106,7 +106,7 @@ FOLIO = {'slug': 'x03',
               'analysis for masonry. He formulated three core axioms: stone possesses zero tensile '
               'capacity, stone has infinite compressive strength compared to ambient loads, and '
               'sliding between voussoirs cannot occur. Under these assumptions, the Safe Theorem '
-              'guarantees that if any admissible thrust line can be drawn wholly within the arch '
+              'means that if any admissible thrust line can be drawn wholly within the arch '
               'boundaries in equilibrium with applied loads, the structure cannot collapse. James '
               'Clerk Maxwell’s eighteen sixty-four reciprocal force polygons and William Rankine’s '
               'graphic statics provided the geometric machinery to trace these equilibrium lines '
@@ -129,7 +129,7 @@ FOLIO = {'slug': 'x03',
                  'to closed equilibrium force polygons.'),
                 ('1966',
                  "Jacques Heyman publishes 'The Stone Skeleton' (DOI "
-                 '10.1016/0020-7683(66)90018-7), proving the lower-bound safe theorem of masonry '
+                 '10.1016/0020-7683(66)90018-7), giving a proof of the lower-bound safe theorem of masonry '
                  'arches.'),
                 ('2014–2018',
                  'Raman et al. (DOI 10.1038/nature13883) and Mandal et al. (DOI '
@@ -179,7 +179,7 @@ FOLIO = {'slug': 'x03',
            'Stage 3: 4-Format Studio Exchange & A.11 Extrados Coupling — Emit x03_artifact.glb, '
            'x03_artifact.step (AP242 B-rep), x03_artifact.3mf, and x03_artifact.dxf while '
            'evaluating 8–13 μm radiative sky-cooling flux across the 4.69 m² extrados shell.',
-           'Stage 4: Heyman Kern, Sky-Cooling & Divergence-Volume Verification — Certify |e| ≤ t/6 '
+           'Stage 4: Heyman Kern, Sky-Cooling & Divergence-Volume Verification — Check |e| ≤ t/6 '
            '= 66.7 mm, q_net = 98.4 W/m² ≥ 80 W/m² (ΔT_eq = −7.08 °C ≤ −4.5 °C), exact 3D volume '
            'match (1.7724 × 10⁹ mm³), and planted-defect rejection.'],
  'rules': ['Multi-Voussoir Topological Closure: Each of the N_v = 7 discrete voussoirs must be an '
@@ -215,7 +215,7 @@ FOLIO = {'slug': 'x03',
                      'x03_artifact.glb, x03_artifact.step (AP242), x03_artifact.3mf, and '
                      'x03_artifact.dxf.',
                      'Byte-level stdlib verifier '
-                     '(verify_x03_toolchain_x03_small_architect_vault_kit.py) certifying 7-block '
+                     '(verify_x03_toolchain_x03_small_architect_vault_kit.py) checking 7-block '
                      'watertightness (χ = 14), H = 27.0 kN, A.11 sky-cooling flux (q_net = 98.4 '
                      'W/m², ΔT_eq = −7.08 °C), exact volume match, and planted-defect knockout.',
                      'Portable SKILL.md companion tailored for small architecture studios using '
@@ -245,7 +245,7 @@ FOLIO = {'slug': 'x03',
              'architecture and structures (MIT License). https://github.com/compas-dev/compas'],
  'act1_plain_bridge': 'Every historic masonry arch that has stood for centuries quietly shows '
                       'that stone works best when squeezed together rather than pulled apart. For '
-                      'a small one-to-five person architectural studio, proving that a curved '
+                      'a small one-to-five person architectural studio, showing that a curved '
                       'vault or timber reciprocal roof will stand safely used to require expensive '
                       'proprietary software licenses that strained modest project budgets. This '
                       'interactive kit changes that equation by bringing classical thrust network '
@@ -260,7 +260,7 @@ FOLIO = {'slug': 'x03',
                 'expressive, sustainable structural designs. Dominant commercial software suites '
                 'charge thousands of dollars annually per seat, locking independent practices out '
                 'of advanced vault form-finding, reciprocal timber detailing, and unreinforced '
-                'masonry certification. As a result, small practices are pushed toward '
+                'masonry sign-off. As a result, small practices are pushed toward '
                 'conventional post-and-beam steel or reinforced concrete schemes that carry '
                 'massive embodied carbon penalties and demand heavy steel reinforcement. This '
                 'toolkit dismantles that financial barrier. By packaging classical limit state '

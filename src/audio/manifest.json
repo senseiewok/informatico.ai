@@ -305,6 +305,29 @@
       "es_text_sha256": "e80195c35e4f9d9a4db64c1af1f7d32c3605a3cf2ddd921aca7417e174bd6cf3",
       "es_seconds": 61.18
     },
+    "e14": {
+      "folio_id": "E.14",
+      "en_src": "audio/e14-en.mp3",
+      "es_src": "audio/e14-es.mp3",
+      "en_offsets": [
+        0.0,
+        0.1168,
+        0.3476,
+        0.6783,
+        0.7799
+      ],
+      "es_offsets": [
+        0.0,
+        0.285,
+        0.4704,
+        0.6869,
+        0.8678
+      ],
+      "en_text_sha256": "718bad319b5eac8290194e431427b57a2434ae1aa43302eeb8d7e30fc80a1c02",
+      "en_seconds": 74.18,
+      "es_text_sha256": "5218bc4c6a66946816b591eb4160419941eef41f68e3c81ee5aebabc047e0bf9",
+      "es_seconds": 82.61
+    },
     "a01": {
       "folio_id": "A.01",
       "en_src": "audio/a01-en.mp3",

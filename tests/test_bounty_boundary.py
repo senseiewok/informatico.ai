@@ -1,7 +1,9 @@
 """Guard: bounty pages must say plainly that they are not prize entries (grounding review, 2026-11-13)."""
 from __future__ import annotations
 
+import json
 import re
+import subprocess
 import sys
 import unittest
 from pathlib import Path
@@ -37,6 +39,47 @@ class BountyBoundaryTests(unittest.TestCase):
             html = page.read_text(encoding="utf-8")
             hit = PRIZE_VERDICT.search(html)
             self.assertIsNone(hit, f"{page}: {hit.group(0) if hit else ''}")
+
+    def test_b05_matches_verifier_mdl_and_rejects_planted_defect(self) -> None:
+        script = ROOT / "bounties" / "bounty_p2_pysr_pysindy_pde_discovery.py"
+        normal = subprocess.run(
+            [sys.executable, "-X", "utf8", str(script), "--json"],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            check=False,
+        )
+        self.assertEqual(normal.returncode, 0, normal.stdout + normal.stderr)
+        payload = json.loads(normal.stdout)
+        self.assertEqual(payload["verdict"], "PASS")
+        self.assertAlmostEqual(payload["pysr_mdl_score"], -1073.4509, places=4)
+
+        defect = subprocess.run(
+            [sys.executable, "-X", "utf8", str(script), "--planted-defect", "--json"],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            check=False,
+        )
+        self.assertNotEqual(defect.returncode, 0, defect.stdout + defect.stderr)
+        defect_payload = json.loads(defect.stdout)
+        self.assertEqual(defect_payload["verdict"], "FAIL")
+        self.assertEqual(defect_payload["overfit_case"]["verdict"], "FAIL")
+        self.assertEqual(defect_payload["overfit_case"]["active_pde_terms"], ["u*u_x", "u_xx", "u^3"])
+        self.assertEqual(defect_payload["underfit_case"]["verdict"], "FAIL")
+        self.assertEqual(defect_payload["underfit_case"]["active_pde_terms"], ["u*u_x"])
+
+        for path in (
+            SRC / "bounties" / "b05" / "index.html",
+            SRC / "es-mx" / "bounties" / "b05" / "index.html",
+            ROOT / "skills" / "bounties" / "b05" / "SKILL.md",
+            SRC / "modules" / "physics-discovery-crucible.mjs",
+        ):
+            text = path.read_text(encoding="utf-8")
+            self.assertNotIn("1360.87", text, path)
+            self.assertNotIn("1360.9", text, path)
+            if path.suffix != ".mjs":
+                self.assertIn("1073.45", text, path)
 
 
 if __name__ == "__main__":

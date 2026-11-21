@@ -59,8 +59,8 @@ FOLIO = {'slug': 'b01',
  'act1_dropcap': 'In 1932, the Hungarian mathematician Simon Sidon asked Paul Erdős a question '
                  'born from Fourier series: how many integers can you pack into the interval [1, '
                  'N] if every pairwise sum a_i + a_j (with i ≤ j) must be strictly distinct? Erdős '
-                 'and Paul Turán proved in 1941 that any such B₂ sequence satisfies |A ∩ [1, N]| ≤ '
-                 '√N + N^(1/4) + 1, and a $1,000 prize is listed for Erdős Problem #30 to anyone who could prove or disprove whether the error term is O(N^ε)—or '
+                 'and Paul Turán showed in 1941 that any such B₂ sequence satisfies |A ∩ [1, N]| ≤ '
+                 '√N + N^(1/4) + 1, and a $1,000 prize is listed for Erdős Problem #30 to anyone who could settle whether the error term is O(N^ε)—or '
                  'even determine whether |A ∩ [1, N]| = √N + O(1).',
  'act1_body': 'Over ninety years later, the exact secondary asymptotic term of Sidon sets remains '
               'one of the most famous open problems in additive combinatorics (tracked live on '
@@ -81,13 +81,13 @@ FOLIO = {'slug': 'b01',
                  'James Singer constructs optimal projective-plane difference sets over F_q, '
                  'establishing asymptotic lower bounds |A| ≥ √N - o(√N).'),
                 ('1941',
-                 'Paul Erdős and Paul Turán prove the canonical upper bound |A ∩ [1, N]| ≤ √N + '
+                 'Paul Erdős and Paul Turán give a proof of the canonical upper bound |A ∩ [1, N]| ≤ √N + '
                  'N^(1/4) + 1 (DOI 10.1112/jlms/s1-16.4.212).'),
                 ('1944',
                  'Abdul Majid Mian and Sarvadaman Chowla introduce the lexicographically first '
                  'greedy B₂ sequence (1, 2, 4, 8, 13, 21, 31, 45, ...).'),
                 ('2015',
-                 'Jean Bourgain and Ciprian Demeter prove l² decoupling (DOI '
+                 'Jean Bourgain and Ciprian Demeter establish l² decoupling (DOI '
                  '10.4007/annals.2015.182.1.9), transforming exponential-sum bounds across '
                  'additive number theory.'),
                 ('2024–2026',
@@ -121,13 +121,13 @@ FOLIO = {'slug': 'b01',
  'steps': ['Stage 1: Lexicographic Mian–Chowla Greedy Generation — Iteratively append the smallest '
            'integer c ∈ [1, N] whose pairwise sums {c + a : a ∈ A} ∪ {2c} are completely disjoint '
            'from all previously recorded sums.',
-           'Stage 2: Quadratic Difference Packing & Pigeonhole Barrier — Certify that k = |A| '
+           'Stage 2: Quadratic Difference Packing & Pigeonhole Barrier — Check that k = |A| '
            'elements generate k(k+1)/2 distinct sums in [2, 2N] and k(k-1)/2 distinct positive '
            'differences in [1, N-1].',
            'Stage 3: Erdős–Turán Sliding-Window Variance Bound — Apply Cauchy–Schwarz to the '
            'interval occupancy counts over window width m = ⌊N^(3/4)⌋ to bound |A ∩ [1, N]| ≤ √N + '
            'N^(1/4) + 1.',
-           'Stage 4: Lean 4 Decidable Finset Certification — Encode the finite B₂ collision check '
+           'Stage 4: Lean 4 Decidable Finset Check — Encode the finite B₂ collision check '
            'as a decidable proposition (by decide / norm_num) so any candidate counterexample or '
            'lower-bound ruler is verified without sorry.'],
  'rules': ['Pairwise Sum Uniqueness Invariant: For every finite subset A ⊂ [1, N], the sumset A + '
@@ -210,11 +210,11 @@ FOLIO = {'slug': 'b01',
                 '\n'
                 'Yet establishing the theoretical capacity of these collision-free arrays has '
                 'frustrated mathematicians for nearly a century. In 1941, Paul Erdős and Paul '
-                'Turán proved that any Sidon set in the interval [1, N] cannot contain more than '
+                'Turán showed that any Sidon set in the interval [1, N] cannot contain more than '
                 '√N + N^(1/4) + 1 integers, but whether the true ceiling is √N + O(1) or allows an '
                 "N^(1/4) wobble remains an unsolved $1,000 bounty on Thomas Bloom's "
                 'erdosproblems.com registry (Problem #30). Today, the stakes have transformed from '
-                'pen-and-paper scratchwork into the crucible of automated theorem proving. '
+                'pen-and-paper scratchwork into the crucible of machine-checked proof. '
                 'During 2024–2026, formalization repositories like anthropics/formal-math and '
                 'Terence Tao\'s Polynomial Freiman–Ruzsa project (teorth/pfr) demonstrated how '
                 'combinatorial arguments can be checked in Lean 4; neither targets Sidon sets specifically. '
@@ -263,7 +263,7 @@ FOLIO = {'slug': 'b01',
                      'force_b_sub': 'Generates |A|(|A|+1)/2 pairwise sums that compete for space',
                      'threshold_title': 'Erdős–Turán B₂ Collision Barrier',
                      'threshold_eq': '|A| ≤ √N + N^(1/4) + 1',
-                     'threshold_sub': 'Pigeonhole threshold: exceeding bound guarantees sum '
+                     'threshold_sub': 'Pigeonhole threshold: exceeding bound ensures sum '
                                       'collision',
                      'threshold_pass': 'Zero sum collisions: |A| ≤ 28.09; all 210 pairwise sums '
                                        'distinct',
@@ -282,7 +282,7 @@ FOLIO = {'slug': 'b01',
                    'Paul Turán shattered this loose constant in 1941 through an ingenious '
                    'sliding-window variance technique. By dividing the interval [1, N] into '
                    'overlapping sub-intervals of width m ≈ ⌊N^(3/4)⌋ and analyzing the indicator '
-                   'function of A through the Cauchy–Schwarz inequality, they proved that the '
+                   'function of A through the Cauchy–Schwarz inequality, they showed that the '
                    'local density fluctuations cannot conspire to beat the global difference '
                    'count. This forced the asymptotic upper envelope down to |A ∩ [1, N]| ≤ √N + '
                    'N^(1/4) + 1. At our benchmark horizon of N = 500, this formula yields 22.3607 '
@@ -292,7 +292,7 @@ FOLIO = {'slug': 'b01',
                    '{1, 2, 4, 8, 13, 21, 31, 45, 66, 81, 97, 123, 148, 182, 204, 252, 290, 361, '
                    '401, 475}, yielding exactly 20 elements. Projective-plane constructions by '
                    'James Singer over finite fields achieve p + 1 elements inside [1, p² + p + 1], '
-                   "matching the √N leading term and proving that Erdős's bound is asymptotically "
+                   "matching the √N leading term and showing that Erdős's bound is asymptotically "
                    'tight.',
  'act4_human_ai': 'The modern hunt for extremal Sidon sets and Golomb rulers showcases a powerful '
                   'paradigm shift in collaborative mathematics. For decades, researchers relied on '
@@ -311,7 +311,7 @@ FOLIO = {'slug': 'b01',
                   'subgoals and verify bounding lemmas with zero sorry escape-hatches. This '
                   'symbiosis transforms additive number theory: human mathematicians direct the '
                   'conceptual architecture and boundary heuristics, while AI and Lean 4 ensure '
-                  'that every candidate ruler and asymptotic proof step is mechanically certified '
+                  'that every candidate ruler and asymptotic proof step is mechanically checked '
                   'against logical error.',
  'act4_deepening': 'To maintain unshakeable scientific integrity across open bounty submissions, '
                    'the Informatico platform pairs every interactive monograph with a '
@@ -373,7 +373,7 @@ FOLIO = {'slug': 'b01',
                     'duplicate sums. Six years later, in 1938, American mathematician James Singer '
                     'discovered through the geometry of finite projective planes that you can pack '
                     'nearly √N numbers without a single collision, while Erdős and Paul Turán '
-                    'proved in 1941 that you can never exceed √N + N^(1/4) + 1.\n\n'
+                    'showed in 1941 that you can never exceed √N + N^(1/4) + 1.\n\n'
                     'What began as a pure curiosity on coffeehouse napkins soon turned into a '
                     'cornerstone of modern engineering. In the 1950s and 1960s, radio astronomers '
                     'and radar pioneers realized that Sidon sets—renamed Golomb rulers by Solomon '
@@ -382,9 +382,9 @@ FOLIO = {'slug': 'b01',
                     'Despite decades of supercomputer searches and cash prizes offered personally '
                     'by Erdős, narrowing the tiny gap between √N and √N + N^(1/4) + 1 resisted '
                     'every human attack. Today, between 2024 and 2026, a new generation passes the '
-                    'baton to collaborative human-AI theorem proving: using the Lean 4 proof '
+                    'baton to collaborative human-AI proof work: using the Lean 4 proof '
                     'assistant, researchers and AI agents translate delicate combinatorial bounds '
-                    'into machine-checked certificates where not a single hidden assumption can '
+                    'into machine-checked proofs where not a single hidden assumption can '
                     'slip through.',
  'easy_history_es': 'En 1932, el matemático húngaro Simon Sidon estudiaba cómo se comportan los '
                     'armónicos musicales y las ondas trigonométricas cuando sus frecuencias se '
@@ -410,7 +410,7 @@ FOLIO = {'slug': 'b01',
                     'Hoy, entre 2024 y 2026, una nueva generación entrega el relevo a la '
                     'demostración formal humano-IA: mediante el asistente Lean 4, matemáticos y '
                     'agentes de inteligencia artificial convierten estas cotas combinatorias en '
-                    'certificados verificados por máquina sin margen para el error.',
+                    'demostraciones verificadas por máquina sin margen para el error.',
  'history_milestones': [{'year': '1932',
                          'who_en': 'Simon Sidon & Paul Erdős',
                          'who_es': 'Simon Sidon y Paul Erdős',
@@ -443,7 +443,7 @@ FOLIO = {'slug': 'b01',
                          'title_en': 'The √N + N^(1/4) + 1 Sliding-Window Ceiling',
                          'title_es': 'El Techo √N + N^(1/4) + 1 por Ventana Deslizante',
                          'summary_en': 'Uses Cauchy–Schwarz variance over windows of width N^(3/4) '
-                                       'to prove |A| ≤ √N + N^(1/4) + 1.',
+                                       'to show |A| ≤ √N + N^(1/4) + 1.',
                          'summary_es': 'Aplica la varianza de Cauchy–Schwarz en ventanas de ancho '
                                        'N^(3/4) para probar |A| ≤ √N + N^(1/4) + 1.',
                          'roadblock_en': 'Cannot determine if the N^(1/4) error term is necessary '
@@ -468,9 +468,9 @@ FOLIO = {'slug': 'b01',
                          'who_es': 'Terence Tao, Thomas Bloom y Anthropic Lean 4',
                          'title_en': 'Zero-Sorry Machine-Checked Blueprints',
                          'title_es': 'Planos Formales en Lean 4 con Cero Sorry',
-                         'summary_en': 'Combinatorial bounds and decidable B₂ certificates move '
+                         'summary_en': 'Combinatorial bounds and decidable B₂ checks move '
                                        'into formal Lean 4 repositories with AI proof search.',
-                         'summary_es': 'Las cotas combinatorias y certificados B₂ decidibles pasan '
+                         'summary_es': 'Las cotas combinatorias y comprobaciones B₂ decidibles pasan '
                                        'a repositorios formales en Lean 4 con búsqueda por IA.',
                          'roadblock_en': 'Closing Erdős Problem #30 (N^(1/4) vs. N^ε) still awaits '
                                          'a new analytic-combinatorial lemma.',
@@ -627,8 +627,8 @@ FOLIO = {'slug': 'b01',
                      'cientos de submetas inductivas y verificar lemas de acotación sin un solo '
                      'atajo sorry. Esta simbiosis transforma la teoría aditiva de números: las '
                      'mentes humanas dirigen la arquitectura conceptual y las heurísticas de '
-                     'frontera, mientras la IA y Lean 4 garantizan que cada regla candidata y cada '
-                     'paso asintótico queden mecánicamente certificados contra cualquier error '
+                     'frontera, mientras la IA y Lean 4 aseguran que cada regla candidata y cada '
+                     'paso asintótico queden mecánicamente comprobados contra cualquier error '
                      'lógico.',
  'act4_deepening_es': 'Para mantener una integridad científica inquebrantable en las entregas de '
                       'retos abiertos, la plataforma Informatico acompaña cada monografía '
@@ -675,13 +675,13 @@ FOLIO = {'slug': 'b01',
  'steps_es': ['Etapa 1: Generación Voraz Lexicográfica de Mian–Chowla — Añade iterativamente el '
               'menor entero c ∈ [1, N] cuyas sumas por pares {c + a : a ∈ A} ∪ {2c} sean '
               'completamente disjuntas de todas las sumas registradas previamente.',
-              'Etapa 2: Empaquetamiento Cuadrático de Diferencias y Barrera del Palomar — Certifica '
+              'Etapa 2: Empaquetamiento Cuadrático de Diferencias y Barrera del Palomar — Comprueba '
               'que k = |A| elementos generan k(k+1)/2 sumas distintas en [2, 2N] y k(k-1)/2 '
               'diferencias positivas distintas en [1, N-1].',
               'Etapa 3: Cota de Varianza en Ventana Deslizante de Erdős–Turán — Aplica '
               'Cauchy–Schwarz a los conteos de ocupación en intervalos de ancho m = ⌊N^(3/4)⌋ para '
               'acotar |A ∩ [1, N]| ≤ √N + N^(1/4) + 1.',
-              'Etapa 4: Certificación Decidible de Finset en Lean 4 — Codifica la verificación '
+              'Etapa 4: Comprobación Decidible de Finset en Lean 4 — Codifica la verificación '
               'finita de colisiones B₂ como una proposición decidible (by decide / norm_num) para '
               'que cualquier contraejemplo candidato o regla de cota inferior se verifique sin '
               'sorry.'],
