@@ -752,8 +752,8 @@ ESSAY: dict = {
             },
             {
                 "id": "b",
-                "en": "⟨M₃⟩ exceeds 2.0, which already suffices to certify genuine tripartite entanglement, and Aziz–Howl classical-gravity coupling is composition-independent.",
-                "es": "⟨M₃⟩ supera 2.0, lo cual ya basta para certificar entrelazamiento tripartito genuino, y el acoplamiento clásico de Aziz–Howl es independiente de la composición.",
+                "en": "⟨M₃⟩ exceeds 2.0, which already suffices to witness genuine tripartite entanglement, and Aziz–Howl classical-gravity coupling is composition-independent.",
+                "es": "⟨M₃⟩ supera 2.0, lo cual ya basta para atestiguar entrelazamiento tripartito genuino, y el acoplamiento clásico de Aziz–Howl es independiente de la composición.",
             },
             {
                 "id": "c",
@@ -765,7 +765,7 @@ ESSAY: dict = {
         "explain_en": (
             "Because localization acts in the Z spatial-branch basis, Z_j Z_k suffers zero dephasing and −X_i Z_j Z_k "
             "decays linearly as η¹ rather than η³, yielding ⟨M₃(t_π)⟩ = η³ + 3η = 3.6741—clearing not merely the 2.0 "
-            "local bound (which biseparable 2-body entanglement can violate up to 2√2 = 2.8284) but certifying Genuine "
+            "local bound (which biseparable 2-body entanglement can violate up to 2√2 = 2.8284) but witnessing Genuine "
             "Tripartite Entanglement. Meanwhile, replacing ¹²C with ¹⁷³Yb at fixed M = 10⁻¹⁴ kg preserves passive "
             "Newtonian phase identically (1.0000×) while amplifying Aziz–Howl √ϑ_AH by 165.8× and ϑ_AH by 27,500×."
         ),
@@ -802,7 +802,7 @@ ESSAY: dict = {
                         "En los Ensayos ES.07 y ES.08, situar dos interferómetros paralelos de ondas de materia "
                         "Stern–Gerlach a separación D = 75 µm con división Δx = 250 µm y masa m = 10⁻¹⁴ kg (Bose et al., "
                         "2017; Marletto y Vedral, 2017; Schut et al., 2024) aisló una isla limpia de dos qubits sobre el "
-                        "techo híbrido de 73.14 µm. Sin embargo, un testigo bipartito solo explora correlaciones por pares. "
+                        "techo híbrido de 73.14 µm. No obstante, un testigo bipartito solo explora correlaciones por pares. "
                         "Colocar 3 interferómetros idénticos en los vértices de un triángulo equilátero de lado D = 75 µm "
                         "en el plano (x, y) —cada uno dividido ±Δx / 2 = ±125 µm en z— eleva el sistema a un registro de "
                         "8 × 8 donde cada par comparte r_same = 75.00 µm y r_diff = √(D² + Δx²) = 261.01 µm, con frecuencia "
@@ -1020,7 +1020,7 @@ ESSAY: dict = {
                     ),
                     "es": (
                         "Un testigo de entrelazamiento observado en D = 75 µm descartaría mediadores LOCC (Marletto y Vedral, 2017; Schneider et al., 2026) y, bajo nuestra cota proyectada, híbridos de Diósi–Penrose con σ ≤ 33.08 µm, mientras Oppenheim et al. (2023) acotan la gravedad "
-                        "clásica difusiva markoviana mediante difusión de momento. Sin embargo, Aziz y Howl (2025) "
+                        "clásica difusiva markoviana mediante difusión de momento. No obstante, Aziz y Howl (2025) "
                         "señalaron otra vía teórica: vértices perturbativos de orden superior que acoplan campos cuánticos "
                         "de materia a una métrica clásica sin cuantizar. La precisión exige distinguir dos magnitudes en su "
                         "Ec. 85: a densidad constante ρ (radio R ∝ ρ⁻¹/³ M¹/³), la amplitud impresa escala como "
@@ -1202,7 +1202,7 @@ ESSAY: dict = {
                             "η¹ rather than η³ is identical to parity-check syndrome extraction in surface-code quantum "
                             "error correction simulated at scale by Gidney (2021) (Bounty B.02): aligning readout operators "
                             "with the noise basis prevents spectator qubits from multiplying decoherence weight. And at the "
-                            "molecular scale, certifying M₃ > 2√2 = 2.8284 mirrors non-additive three-site allosteric "
+                            "molecular scale, witnessing M₃ > 2√2 = 2.8284 mirrors non-additive three-site allosteric "
                             "cooperativity in the CFTR anion channel studied in cystic fibrosis biophysics, where "
                             "simultaneous coupling across two nucleotide-binding domains and the regulatory domain governs "
                             "pore gating in ways pairwise domain marginals cannot capture.",
@@ -1210,7 +1210,7 @@ ESSAY: dict = {
                             "amortiguamiento η¹ en vez de η³ es idéntica a la extracción de síndromes de paridad en códigos "
                             "superficiales simulados a gran escala por Gidney (2021) (Bounty B.02): alinear los punteros "
                             "con la base del ruido evita multiplicar el peso de decoherencia. Y a escala molecular, "
-                            "certificar M₃ > 2√2 = 2.8284 refleja la cooperatividad alostérica no aditiva de tres sitios en "
+                            "atestiguar M₃ > 2√2 = 2.8284 refleja la cooperatividad alostérica no aditiva de tres sitios en "
                             "el canal CFTR estudiado en biofísica de fibrosis quística, donde el acoplamiento conjunto de "
                             "dos dominios de unión a nucleótidos y el dominio regulador gobierna la apertura más allá de "
                             "marginales por pares.",
@@ -1250,11 +1250,11 @@ ESSAY: dict = {
                 {
                     "type": "p",
                     "en": (
-                        "Theorems 2, 3, and 4 check the multipartite Bell bounds by finite enumeration: mermin_lhv_bound_all_64 proves "
+                        "Theorems 2, 3, and 4 check the multipartite Bell bounds by finite enumeration: mermin_lhv_bound_all_64 checks "
                         "−2 ≤ M₃ ≤ 2 across all 64 deterministic 3-local hidden-variable assignments; "
-                        "svetlichny_biseparable_bound_and_quantum_witness proves −4 ≤ S₃ ≤ 4 across all 64 AB|C joint "
+                        "svetlichny_biseparable_bound_and_quantum_witness checks −4 ≤ S₃ ≤ 4 across all 64 AB|C joint "
                         "assignments while witnessing M₃ = +4 on non-factorable joint correlations; and "
-                        "biseparable_threshold_integer_certificate proves 20,000² < 8 × 10,000² < 36,741² (2 < 2√2 < 3.6741, where 3.6741 is the Python kernel's calculated value, not a measurement). Theorems 5 through 9 check the non-degenerate 3×-cleared scaling determinants (det = 36 ≠ 0 and "
+                        "Theorem 4 checks the integer threshold inequality 20,000² < 8 × 10,000² < 36,741² (2 < 2√2 < 3.6741, where 3.6741 is the Python kernel's calculated value, not a measurement). Theorems 5 through 9 check the non-degenerate 3×-cleared scaling determinants (det = 36 ≠ 0 and "
                         "det = −24 ≠ 0), global Z₂ Ising-sum parity invariance, exact 2h² + d² nearest-neighbour equality "
                         "on the collinear (x̂, ŷ, x̂) stack, the general ℤ³ Euclidean three-orthogonal-vector obstruction via "
                         "2-D Lagrange and Cramer elimination, and the 3308 < 3493 < 4112 (33.08 µm < 34.93 µm < 41.12 µm) "
@@ -1264,8 +1264,8 @@ ESSAY: dict = {
                         "Los Teoremas 2, 3 y 4 comprueban las cotas de Bell multipartitas por enumeración finita: mermin_lhv_bound_all_64 prueba "
                         "−2 ≤ M₃ ≤ 2 en las 64 asignaciones deterministas 3-locales; "
                         "svetlichny_biseparable_bound_and_quantum_witness prueba −4 ≤ S₃ ≤ 4 en las 64 asignaciones "
-                        "conjuntas AB|C exhibiendo M₃ = +4 para correlaciones conjuntas no factorizables; y "
-                        "biseparable_threshold_integer_certificate demuestra 20,000² < 8 × 10,000² < 36,741² (2 < 2√2 < 3.6741, donde 3.6741 es el valor calculado por el kernel de Python, no una medición). Los Teoremas 5 al 9 comprueban los determinantes de escalamiento 3× (det = 36 ≠ 0 y "
+                        "conjuntas AB|C exhibiendo M₃ = +4 para correlaciones conjuntas no factorizables; y el "
+                        "Teorema 4 verifica la desigualdad entera de umbral 20,000² < 8 × 10,000² < 36,741² (2 < 2√2 < 3.6741, donde 3.6741 es el valor calculado por el kernel de Python, no una medición). Los Teoremas 5 al 9 comprueban los determinantes de escalamiento 3× (det = 36 ≠ 0 y "
                         "det = −24 ≠ 0), la invariancia de paridad Z₂ de Ising, la igualdad exacta 2h² + d² en la pila "
                         "colineal (x̂, ŷ, x̂), la obstrucción euclídea general en ℤ³ vía identidades 2-D de Lagrange y Cramer, "
                         "y la cadena 3308 < 3493 < 4112 (33.08 µm < 34.93 µm < 41.12 µm) de Diósi–Penrose de 3 cuerpos, "
@@ -1287,7 +1287,7 @@ ESSAY: dict = {
             "es": (
                 "En Δφ(t_π) = π sobre el prisma equilátero, trazar la masa 3 multiplica las coherencias fuera de la "
                 "diagonal de ρ₁₂ por cos(Δφ / 2) = cos(π / 2) = 0, convirtiendo el estado equivalente GHZ de 3 qubits en "
-                "una marginal de 2 cuerpos separable mientras ⟨M₃(t_π)⟩ = 3.6741 > 2.8284 certifica el entrelazamiento de 3 cuerpos."
+                "una marginal de 2 cuerpos separable mientras ⟨M₃(t_π)⟩ = 3.6741 > 2.8284 atestigua el entrelazamiento de 3 cuerpos."
             ),
         },
         {
@@ -1352,8 +1352,8 @@ ESSAY: dict = {
             "citation": "Marletto, C., & Vedral, V. — Gravitationally induced entanglement between two massive particles is sufficient evidence of quantum effects in gravity, Physical Review Letters 119(24), 240402",
             "doi": "10.1103/physrevlett.119.240402",
             "year": 2017,
-            "role_en": "Proves LOCC classical channels cannot entangle initially separable quantum masses.",
-            "role_es": "Demuestra que canales clásicos LOCC no pueden entrelazar masas cuánticas inicialmente separables.",
+            "role_en": "Shows LOCC classical channels cannot entangle initially separable quantum masses.",
+            "role_es": "Muestra que canales clásicos LOCC no pueden entrelazar masas cuánticas inicialmente separables.",
         },
         {
             "id": "ES09-GIDNEY2021",
@@ -1409,7 +1409,7 @@ ESSAY: dict = {
             "doi": "10.1088/1361-6382/ae6f62",
             "year": 2026,
             "role_en": "Demonstrates why classical gravitational fields without quantum mediator degrees of freedom fail to generate operational entanglement.",
-            "role_es": "Demuestra por qué campos gravitatorios clásicos sin grados cuánticos mediadores no generan entrelazamiento operacional.",
+            "role_es": "Muestra por qué campos gravitatorios clásicos sin grados cuánticos mediadores no generan entrelazamiento operacional.",
         },
         {
             "id": "ES09-SORCI2026",
@@ -1417,7 +1417,7 @@ ESSAY: dict = {
             "doi": "10.1103/qhj9-pc2b",
             "year": 2026,
             "role_en": "Demonstrates quantum proper-time interferometric signatures in trapped optical ion clock transitions.",
-            "role_es": "Demuestra firmas interferométricas cuánticas de tiempo propio en transiciones ópticas de relojes de iones.",
+            "role_es": "Muestra firmas interferométricas cuánticas de tiempo propio en transiciones ópticas de relojes de iones.",
         },
         {
             "id": "ES09-TOBAR2026",

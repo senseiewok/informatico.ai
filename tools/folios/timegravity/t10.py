@@ -258,8 +258,8 @@ PAGE: dict = {
         ),
         {"type": "change_box",
          "items": [
-             ("A second independent analysis confirming the GW250114 area result would raise that row from SINGLE RESULT to MEASURED alongside the GW150914 test.",
-              "Un segundo análisis independiente que confirmara el resultado de área de GW250114 subiría esa fila de RESULTADO ÚNICO a MEDIDO junto a la prueba de GW150914."),
+             ("A second independent analysis reproducing the GW250114 area result would raise that row from SINGLE RESULT to MEASURED alongside the GW150914 test.",
+              "Un segundo análisis independiente que reprodujera el resultado de área de GW250114 subiría esa fila de RESULTADO ÚNICO a MEDIDO junto a la prueba de GW150914."),
              ("Peer-reviewed publication of either 2025 or 2026 preprint would move its row from PROPOSED to DERIVED, and the dispute would be stated as a reviewed one.",
               "La publicación revisada por pares de cualquiera de las prepublicaciones de 2025 o 2026 movería su fila de PROPUESTO a DERIVADO, y la disputa se enunciaría como revisada."),
              ("If the toy's averaged entropies ever missed Page's formula by more than 0.03 nats at any cut, the verifier fails and the page does not build.",

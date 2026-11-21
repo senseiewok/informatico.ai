@@ -45,7 +45,7 @@ PAGE: dict = {
     ),
     "standfirst_es": (
         "La radiación de Hawking es de sesenta nanokelvin para un agujero negro de una masa solar, muy por debajo del cielo cósmico "
-        "de microondas. Sin embargo, la geometría clásica del horizonte de Kerr que sostiene la termodinámica de Bekenstein y Hawking "
+        "de microondas. No obstante, la geometría clásica del horizonte de Kerr que sostiene la termodinámica de Bekenstein y Hawking "
         "se pone a prueba directamente cada vez que dos agujeros negros se fusionan: el remanente se asienta radiando ondas gravitacionales "
         "amortiguadas —modos cuasinormales— cuyas frecuencias y tiempos de amortiguamiento dependen solo de su masa final M y su espín "
         "adimensional χ. Esta página resuelve las fracciones continuas de Leaver para esos modos, comprueba la identidad de horizonte de "
@@ -167,11 +167,11 @@ PAGE: dict = {
         P(
             C("DERIVED", [KERR, H71, SMARR, ABBOTT],
               "Kerr's 1963 exact vacuum metric places the outer event horizon at r_+ = (GM/c²)(1 + √(1 − χ²)) with area "
-              "A(M, χ) = 8π(GM/c²)²(1 + √(1 − χ²)), which Hawking's 1971 theorem proves cannot decrease in any classical merger; "
+              "A(M, χ) = 8π(GM/c²)²(1 + √(1 − χ²)), which Hawking's 1971 area theorem shows cannot decrease in any classical merger; "
               "Smarr's 1973 identity Mc² = (κc² / 4πG) A + 2 Ω_H J and the differential first law d(Mc²) = (κc² / 8πG) dA + Ω_H dJ "
               "tie the horizon's area, surface gravity κ, and angular velocity Ω_H into an exact thermodynamic balance.",
               "La métrica exacta de vacío de Kerr de 1963 sitúa el horizonte de sucesos exterior en r_+ = (GM/c²)(1 + √(1 − χ²)) con área "
-              "A(M, χ) = 8π(GM/c²)²(1 + √(1 − χ²)), la cual el teorema de Hawking de 1971 demuestra que no puede disminuir en ninguna fusión "
+              "A(M, χ) = 8π(GM/c²)²(1 + √(1 − χ²)), la cual el teorema de área de Hawking de 1971 establece que no puede disminuir en ninguna fusión "
               "clásica; la identidad de Smarr de 1973 Mc² = (κc² / 4πG) A + 2 Ω_H J y la primera ley diferencial d(Mc²) = (κc² / 8πG) dA + Ω_H dJ "
               "atan el área del horizonte, la gravedad superficial κ y la velocidad angular Ω_H en un balance termodinámico exacto.",
               parent=ABBOTT),

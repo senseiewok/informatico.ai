@@ -502,7 +502,7 @@ ESSAY: dict = {
                         "cualquiera de las ramas inscribe datos de trayectoria en el gas y destruye el testigo. El "
                         "otro depende del bombardeo térmico incesante del agua líquida para empujar la esfera de 50 nm "
                         "a través de micrómetros de gel poroso, pues a Reynolds nulo una esfera pasiva sin agitación "
-                        "queda inmóvil. Sin embargo, ambos pisan el piso mesoscópico: la franja de 1 nm a 10 µm donde "
+                        "queda inmóvil. No obstante, ambos pisan el piso mesoscópico: la franja de 1 nm a 10 µm donde "
                         "choques discretos, modos internos y campos continuos convergen por igual."
                     ),
                 },
@@ -598,7 +598,7 @@ ESSAY: dict = {
                         "optically trapped a 143 nm silica sphere (R = 71.5 nm) at room temperature and 9 × 10⁻⁹ mbar, "
                         "using real-time Kalman feedback to cool its center-of-mass motion to an average occupancy of "
                         "0.56 phonons, while Dania et al. (2024) levitated a silica nanoparticle in an ion Paul trap "
-                        "down to 7 × 10⁻¹¹ mbar, confirming that gas damping falls strictly linearly with pressure P "
+                        "down to 7 × 10⁻¹¹ mbar, measuring gas damping that falls linearly with pressure P "
                         "to quality factors exceeding 10¹⁰."
                     ),
                     "es": (
@@ -611,7 +611,7 @@ ESSAY: dict = {
                         "optomecánica en alto vacío: Magrini et al. (2021) atraparon ópticamente una esfera de sílice "
                         "de 143 nm (R = 71.5 nm) a temperatura ambiente y 9 × 10⁻⁹ mbar, enfriando su movimiento por "
                         "retroalimentación óptima de Kalman hasta 0.56 fonones, mientras Dania et al. (2024) levitaron "
-                        "sílice en una trampa de Paul hasta 7 × 10⁻¹¹ mbar, confirmando que el amortiguamiento por gas "
+                        "sílice en una trampa de Paul hasta 7 × 10⁻¹¹ mbar, midiendo un amortiguamiento por gas que "
                         "cae linealmente con la presión P hasta factores de calidad superiores a 10¹⁰."
                     ),
                 },
@@ -691,7 +691,7 @@ ESSAY: dict = {
                 {
                     "type": "p",
                     "en": (
-                        "In 2003, Hornberger et al. proved single-collision saturation experimentally by sending C₇₀ "
+                        "In 2003, Hornberger et al. observed single-collision saturation experimentally by sending C₇₀ "
                         "fullerene matter waves through controlled background gases in a Talbot–Lau interferometer, "
                         "and a year later Hackermüller et al. (2004) watched internal heating of C₇₀ above 1000 K "
                         "suppress interference fringes via emitted thermal photons. Apply both mechanisms to our "
@@ -705,7 +705,7 @@ ESSAY: dict = {
                         "would obtain 1.76 × 10¹⁰ s⁻¹—an error of 3.28 × 10¹¹ caused purely by ignoring λ_th << Δx."
                     ),
                     "es": (
-                        "En 2003, Hornberger et al. demostraron experimentalmente la saturación por colisión única "
+                        "En 2003, Hornberger et al. registraron experimentalmente la saturación por colisión única "
                         "haciendo pasar ondas de materia de fulerenos C₇₀ a través de gases controlados en un "
                         "interferómetro de Talbot–Lau, y un año después Hackermüller et al. (2004) observaron cómo "
                         "el calentamiento interno de C₇₀ por encima de 1000 K borraba las franjas por emisión de "
@@ -1130,7 +1130,7 @@ ESSAY: dict = {
             "doi": "10.1103/physrevlett.90.160401",
             "year": 2003,
             "role_en": "Demonstrates single-collision short-wavelength decoherence saturation in C₇₀ interferometry.",
-            "role_es": "Demuestra la saturación de decoherencia de onda corta por colisión única en interferometría de C₇₀.",
+            "role_es": "Muestra la saturación de decoherencia de onda corta por colisión única en interferometría de C₇₀.",
         },
         {
             "id": "ES01-HACKERMULLER2004",

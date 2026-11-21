@@ -47,7 +47,7 @@ PAGE: dict = {
     ),
     "standfirst_es": (
         "En T.11 el baño de fotones produjo un registro clásico al dispersarse sobre cargas y dipolos eléctricos, dejando sin huella óptica a todo "
-        "lo que tenga acoplamiento electromagnético nulo. Sin embargo, cinco sextas partes de la materia gravitante de nuestro universo no son luminosas. "
+        "lo que tenga acoplamiento electromagnético nulo. No obstante, cinco sextas partes de la materia gravitante de nuestro universo no son luminosas. "
         "Como la métrica de Einstein se acopla universalmente a todo tensor de energía-momento, un sector que jamás dispersa un fotón aún inclina el "
         "ritmo del tiempo propio, requiriendo dos relojes separados en el espacio para detectar un tránsito puramente gravitacional, o relojes "
         "colocalizados de distintas especies atómicas para acotar cualquier portal no gravitacional."
@@ -128,10 +128,10 @@ PAGE: dict = {
               "rayos X que contiene la mayor parte del gas bariónico ordinario."),
             T(" ", " "),
             C("MEASURED", [MICRO, PR60, CHOU],
-              "Meanwhile, laboratory and space tests confirm that gravitational proper-time redshift Δf/f = ΔΦ/c² is measured down to a 33 cm "
+              "Meanwhile, laboratory and space tests show that gravitational proper-time redshift Δf/f = ΔΦ/c² is measured down to a 33 cm "
               "height difference in optical aluminium-ion clocks and that the Weak Equivalence Principle holds to η = (−1.5 ± 2.7)×10⁻¹⁵ in "
               "MICROSCOPE.",
-              "Mientras tanto, las pruebas de laboratorio y espaciales confirman que el corrimiento al rojo gravitacional del tiempo propio "
+              "Mientras tanto, las pruebas de laboratorio y espaciales muestran que el corrimiento al rojo gravitacional del tiempo propio "
               "Δf/f = ΔΦ/c² se mide hasta en una diferencia de altura de 33 cm en relojes ópticos de iones de aluminio y que el Principio de "
               "Equivalencia Débil se cumple hasta η = (−1.5 ± 2.7)×10⁻¹⁵ en MICROSCOPE."),
         ),
@@ -144,7 +144,7 @@ PAGE: dict = {
                  "in the photon bath. Yet the sheet still dips wherever the ball rolls.",
                  "Imagina una bola de boliche invisible rodando sobre una lona tensa en un cuarto oscuro. Las linternas atraviesan la bola sin "
                  "proyectar sombra ni devolver un solo destello a tus ojos: en el lenguaje de T.11, la bola no se registra en el baño de fotones. "
-                 "Sin embargo, la lona se sigue hundiendo por donde pasa la bola.")),
+                 "No obstante, la lona se sigue hundiendo por donde pasa la bola.")),
              P(T("If you place two precision clocks at different spots on the sheet, the clock closer to the passing ball sits slightly deeper in "
                  "the gravitational dip and ticks a fraction slower while the ball goes by. Even if two sectors of matter never exchange a photon, "
                  "they still share the same spacetime geometry and meet through the rate of time.",

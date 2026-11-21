@@ -704,8 +704,8 @@ ESSAY: dict = {
         "choices": [
             {
                 "id": "a",
-                "en": "Scalar counting 18 − 18 = 0 guarantees 0 floppy modes in the 18-bar cube, while 54 rows overconstrain su(4) to 0 generators.",
-                "es": "El conteo escalar 18 − 18 = 0 garantiza 0 modos blandos en el cubo de 18 barras, mientras 54 filas reducen su(4) a 0 generadores.",
+                "en": "Scalar counting 18 − 18 = 0 ensures 0 floppy modes in the 18-bar cube, while 54 rows overconstrain su(4) to 0 generators.",
+                "es": "El conteo escalar 18 − 18 = 0 asegura 0 modos blandos en el cubo de 18 barras, mientras 54 filas reducen su(4) a 0 generadores.",
             },
             {
                 "id": "b",
@@ -915,7 +915,7 @@ ESSAY: dict = {
                         "symmetric 30° (π/6 rad) twist drops rank(R) to 11, creating N_self_stress = 1 global prestress "
                         "across all 12 members that stiffens N_floppy = 1 twist mode at quadratic order. Kane and "
                         "Lubensky (2014) extended R and Rᵀ to isostatic lattices (N_floppy − N_self_stress = 0), "
-                        "proving topological polarization shifts boundary zero modes across opposite crystal edges."
+                        "showing topological polarization shifts boundary zero modes across opposite crystal edges."
                     ),
                     "es": (
                         "Probemos por qué falla el conteo escalar sin rank(R). Con V = 8 y E = 18 ((3V − 6) − E = 0), "
@@ -927,7 +927,7 @@ ESSAY: dict = {
                         "3 puntales, D_mech = 12), un giro genérico de 0.7 rad da rank(R) = 12 y N_self_stress = 0, pero "
                         "el giro simétrico de 30° (π/6 rad) baja rank(R) a 11, creando N_self_stress = 1 pretensión en "
                         "los 12 miembros que rigidiza a orden cuadrático el modo N_floppy = 1. Kane y Lubensky (2014) "
-                        "extendieron R y Rᵀ a redes isostáticas (N_floppy − N_self_stress = 0), demostrando que una "
+                        "extendieron R y Rᵀ a redes isostáticas (N_floppy − N_self_stress = 0), mostrando que una "
                         "polarización topológica desplaza modos cero hacia bordes cristalinos opuestos."
                     ),
                 },
@@ -1022,7 +1022,7 @@ ESSAY: dict = {
                         "into 𝒜_B, preserving locality is equivalent to requiring zero Hilbert–Schmidt projection onto "
                         "all 9 non-local basis elements N_q = σ_a ⊗ σ_b across all 6 local generators. That yields an "
                         "explicit real normalizer-commutator matrix C_loc ∈ ℝ⁵⁴ˣ¹⁵ (6 × 9 = 54 rows, 15 columns). "
-                        "Running exact Gaussian elimination in our kernel proves rank(C_loc) = 9, nullity dim ker(C_loc) "
+                        "Running exact Gaussian elimination in our kernel yields rank(C_loc) = 9, nullity dim ker(C_loc) "
                         "= 15 − 9 = 6, and cokernel dim coker(C_loc) = 54 − 9 = 45 (index 6 − 45 = 15 − 54 = −39). "
                         "All 9 continuous Cartan–Weyl refactorization modes collapse (9 → 0; on B₁₅ alone, "
                         "‖C_loc e₁₅‖₂ = 4 > 0), leaving only the 6-dimensional local gauge algebra su(2)_A ⊕ su(2)_B, "
@@ -1039,7 +1039,7 @@ ESSAY: dict = {
                         "Como los conmutadores con L_m nunca mezclan 𝒜_A directamente con 𝒜_B, preservar la localidad "
                         "equivale a exigir proyección de Hilbert–Schmidt nula sobre los 9 operadores no locales "
                         "N_q = σ_a ⊗ σ_b para los 6 generadores locales. Eso define una matriz real explícita "
-                        "C_loc ∈ ℝ⁵⁴ˣ¹⁵ (6 × 9 = 54 filas, 15 columnas). La eliminación gaussiana exacta demuestra "
+                        "C_loc ∈ ℝ⁵⁴ˣ¹⁵ (6 × 9 = 54 filas, 15 columnas). La eliminación gaussiana exacta arroja "
                         "rank(C_loc) = 9, nulidad dim ker(C_loc) = 15 − 9 = 6 y conúcleo dim coker(C_loc) = 54 − 9 = 45 "
                         "(índice 6 − 45 = 15 − 54 = −39). Los 9 modos continuos de Cartan–Weyl colapsan (9 → 0; tan "
                         "solo en B₁₅ se cumple ‖C_loc e₁₅‖₂ = 4 > 0), dejando únicamente el álgebra local su(2)_A ⊕ "
@@ -1054,7 +1054,7 @@ ESSAY: dict = {
                     "formula": "(C_loc)_{(m,q), ν} = (1/4) Tr( N_q · (−i [B_ν, L_m]) ) ∈ ℝ^{54 × 15} ,    rank = 9 ,  dim ker = 6 ,  dim coker = 45",
                     "note_en": (
                         "Across m = 1..6 local Pauli generators L_m and q = 1..9 non-local Pauli pairs N_q, C_loc "
-                        "annihilates all 6 local generators and locks all 9 non-local Cartan–Weyl directions (9 → 0), "
+                        "vanishes on all 6 local generators and locks all 9 non-local Cartan–Weyl directions (9 → 0), "
                         "fixing 2-mass BMV negativity at 𝒩 = 0.078162 across every connected local unitary U_A ⊗ U_B."
                     ),
                     "note_es": (
@@ -1081,7 +1081,7 @@ ESSAY: dict = {
                         "Wootters (1983). In Page–Wootters quantum mechanics, a stationary universe state |Ψ⟩ ∈ ℋ_C ⊗ "
                         "ℋ_S obeys the Wheeler–DeWitt-like constraint (Ĥ_C ⊗ I_S + I_C ⊗ Ĥ_S)|Ψ⟩ = Ĉ|Ψ⟩ = 0, and "
                         "Schrödinger evolution emerges by conditioning |ψ(τ)⟩_S ∝ ⟨τ|_C Ψ⟩ on clock readings τ. In a "
-                        "2026 arXiv preprint (PROPOSED epistemic ceiling, unrefereed), Stoica (2026) proves that "
+                        "2026 arXiv preprint (PROPOSED epistemic ceiling, unrefereed), Stoica (2026) argues that "
                         "unitary transformations V̂ inside the commutant [V̂, Ĉ] = 0 preserve Ĉ|Ψ⟩ = 0 while remixing "
                         "ℋ_C and ℋ_S across slices, altering apparent conditional dynamics and subsystem entanglement "
                         "whenever Hilbert-space vectors and abstract spectra are all one specifies. What closes that "
@@ -1098,7 +1098,7 @@ ESSAY: dict = {
                         "|Ψ⟩ ∈ ℋ_C ⊗ ℋ_S satisface la restricción tipo Wheeler–DeWitt (Ĥ_C ⊗ I_S + I_C ⊗ Ĥ_S)|Ψ⟩ = "
                         "Ĉ|Ψ⟩ = 0, y la evolución emerge al condicionar |ψ(τ)⟩_S ∝ ⟨τ|_C Ψ⟩ en lecturas τ del reloj. "
                         "En una prepublicación de arXiv de 2026 (techo epistémico PROPOSED, sin revisión por pares), "
-                        "Stoica (2026) demuestra que unitarias V̂ dentro del conmutante [V̂, Ĉ] = 0 preservan Ĉ|Ψ⟩ = 0 "
+                        "Stoica (2026) argumenta que unitarias V̂ dentro del conmutante [V̂, Ĉ] = 0 preservan Ĉ|Ψ⟩ = 0 "
                         "pero mezclan ℋ_C y ℋ_S entre cortes, alterando la dinámica condicional y el entrelazamiento "
                         "aparente si solo se especifican vectores y espectros abstractos. Lo que cierra esa ambigüedad "
                         "en el laboratorio es la localidad operacional de redes de observables: una vez que el aparato "
@@ -1283,7 +1283,7 @@ ESSAY: dict = {
                         "Run verify_essay_tensegrity_microcausality.py --planted-defect—or toggle the planted-defect "
                         "switch in the kinematic observatory above—to watch both shortcuts fail deterministically. "
                         "In Map A, replacing Gaussian elimination with naive scalar counting max(0, 3V − 6 − E) "
-                        "falsely certifies both the coplanar-misplaced 18-bar cube (true rank 17, N_floppy = 1) and "
+                        "falsely passes both the coplanar-misplaced 18-bar cube (true rank 17, N_floppy = 1) and "
                         "misses the 30° tensegrity prestress state (true rank 11, N_self_stress = 1). In Map B, "
                         "dropping the 54 × 15 microcausality commutator map unleashes all 9 Cartan–Weyl zero modes "
                         "so U_nl(0.078484 rad) wipes out the 𝒩 = 0.078162 gravitational entanglement witness to 0. "
@@ -1294,7 +1294,7 @@ ESSAY: dict = {
                         "Ejecuta verify_essay_tensegrity_microcausality.py --planted-defect —o activa el interruptor "
                         "de defecto plantado en el observatorio cinemático— para ver fallar de forma determinista "
                         "ambos atajos. En el Mapa A, sustituir la eliminación gaussiana por el conteo escalar ingenuo "
-                        "max(0, 3V − 6 − E) certifica falsamente el cubo mal arriostrado de 18 barras (rango real 17, "
+                        "max(0, 3V − 6 − E) aprueba falsamente el cubo mal arriostrado de 18 barras (rango real 17, "
                         "N_floppy = 1) y omite el estado de pretensión de 30° en tensegridad (rango real 11, "
                         "N_self_stress = 1). En el Mapa B, suprimir el mapa conmutador 54 × 15 de microcausalidad "
                         "libera los 9 modos cero de Cartan–Weyl para que U_nl(0.078484 rad) borre el testigo "
@@ -1417,8 +1417,8 @@ ESSAY: dict = {
             "citation": "Marletto, C., & Vedral, V. — Gravitationally induced entanglement between two massive particles is sufficient evidence of quantum effects in gravity, Physical Review Letters 119(24), 240402",
             "doi": "10.1103/physrevlett.119.240402",
             "year": 2017,
-            "role_en": "Proves that entanglement generation between 2 spacelike-localized subsystems requires non-classical mediator observables.",
-            "role_es": "Demuestra que generar entrelazamiento entre 2 subsistemas espacialmente localizados exige observables mediadores no clásicos.",
+            "role_en": "Argues that entanglement generation between 2 spacelike-localized subsystems requires non-classical mediator observables.",
+            "role_es": "Argumenta que generar entrelazamiento entre 2 subsistemas espacialmente localizados exige observables mediadores no clásicos.",
         },
         {
             "id": "ES04-FIEDORCZUK2022",

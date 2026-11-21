@@ -1402,8 +1402,8 @@ ESSAY: dict = {
                         "0 axiom, and 0 vacuous x − x subtractions). Theorem 1 (four_gate_sieve_si_homogeneity) verifies by "
                         "kernel computation (rfl) 6 SI dimensional identities: [κ / τ] = L², [κ τ] = F², [c⁴ / G] = F, "
                         "[(c⁴ / G)² / (κ τ)] = 0, [Gℏ / (c³ r²)] = 0, and [G M² t / (ℏ D)] = 0. Theorem 2 "
-                        "(partial_fraction_uv_split) proves the cleared fourth-order UV split (1 + ℓ_b²k²) − k²ℓ_b² = 1, and "
-                        "Theorem 3 (combined_sheet_exponent_cancellation) proves that both erfc sheet branches collapse in "
+                        "(partial_fraction_uv_split) checks the cleared fourth-order UV split (1 + ℓ_b²k²) − k²ℓ_b² = 1, and "
+                        "Theorem 3 (combined_sheet_exponent_cancellation) checks that both erfc sheet branches collapse in "
                         "4σ²-cleared integer arithmetic to −(2qσ² − s)² ≤ 0."
                     ),
                     "es": (
@@ -1413,7 +1413,7 @@ ESSAY: dict = {
                         "núcleo (rfl) 6 identidades SI: [κ / τ] = L², [κ τ] = F², [c⁴ / G] = F, [(c⁴ / G)² / (κ τ)] = 0, "
                         "[Gℏ / (c³ r²)] = 0 y [G M² t / (ℏ D)] = 0. El Teorema 2 (partial_fraction_uv_split) prueba la "
                         "identidad UV (1 + ℓ_b²k²) − k²ℓ_b² = 1, y el Teorema 3 (combined_sheet_exponent_cancellation) "
-                        "demuestra que ambas ramas erfc colapsan con factor 4σ² a −(2qσ² − s)² ≤ 0."
+                        "verifica que ambas ramas erfc colapsan con factor 4σ² a −(2qσ² − s)² ≤ 0."
                     ),
                 },
                 {
@@ -1421,14 +1421,14 @@ ESSAY: dict = {
                     "en": (
                         "The remaining 7 theorems check integer arithmetic and finite tables behind the sieve; they take the physical numbers as inputs from the Python kernel and do not derive them—mirrored in Python by 3 exact "
                         "multivariate Fraction polynomial checks (partial_fraction_poly_zero, sheet_branch1_poly_zero, and "
-                        "sheet_branch2_poly_zero). Theorem 4 (gauss_flux_dimension_scaling) proves e_F(d) = 1 − d = −2 ↔ d = 3; "
-                        "Theorem 5 (sign_split_bending_vs_warped_kk) proves −1767 < 0 < 2219 and universal sign opposition; "
+                        "sheet_branch2_poly_zero). Theorem 4 (gauss_flux_dimension_scaling) checks e_F(d) = 1 − d = −2 ↔ d = 3; "
+                        "Theorem 5 (sign_split_bending_vs_warped_kk) checks −1767 < 0 < 2219 and universal sign opposition; "
                         "Theorem 6 (signed_vs_unsigned_bound_tightening) checks the orderings 27.22 µm < 38.47 µm at σ = 0, 23.34 µm < "
                         "36.24 µm at σ = 18 µm, and 7.83 µm < 28.69 µm at σ = 32 µm; Theorem 7 "
                         "(cassini_scalar_rejection_43479_sigma) checks 43,479 × 23 ≤ 1,000,021 < 43,480 × 23; Theorem 8 "
-                        "(pinching_force_hierarchy_10_54) proves 38 − (−16) = 54 and 3.68 × 10⁵⁴; Theorem 9 "
-                        "(mermin_gte_window_separation) proves |M₃| ≤ 2 across all 64 local assignments alongside 0.3227 < "
-                        "2.0 < 2√2 < 3.6504 < 3.6741; and Theorem 10 (four_gate_sieve_survivors) proves by case analysis that, in the hand-entered PASS/FAIL table, only the warpedRS2Brane and canonicalQuantumGR rows are all PASS. That is a statement about the table, not evidence that either model describes gravity."
+                        "(pinching_force_hierarchy_10_54) checks 38 − (−16) = 54 and 3.68 × 10⁵⁴; Theorem 9 "
+                        "(mermin_gte_window_separation) checks |M₃| ≤ 2 across all 64 local assignments alongside 0.3227 < "
+                        "2.0 < 2√2 < 3.6504 < 3.6741; and Theorem 10 (four_gate_sieve_survivors) checks by case analysis that, in the hand-entered PASS/FAIL table, only the warpedRS2Brane and canonicalQuantumGR rows are all PASS. That is a statement about the table, not evidence that either model describes gravity."
                     ),
                     "es": (
                         "Los 7 teoremas restantes comprueban aritmética entera y tablas finitas detrás de la criba; toman los números físicos como entradas del kernel de Python y no los derivan, respaldados en Python por 3 "

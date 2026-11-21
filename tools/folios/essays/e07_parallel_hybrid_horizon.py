@@ -629,7 +629,7 @@ ESSAY: dict = {
                         "smeared pair kernel f(r; σ) = erf(r / 2σ) / r and f(0; σ) = 1 / (σ √π), define the self-decoherence "
                         "rate parameter a = f(0; σ) − f(Δx; σ), the noise-dressed rate ã = a + ħ γ_env / (G m²), and the "
                         "cross-coupling rate b(θ) = |f(r_same(θ); σ) − f(r_diff(θ); σ)|. Writing f(r; σ) as the Gaussian "
-                        "integral (1 / σ √π) ∫₀¹ exp(−(r / 2σ)² u²) du proves the non-strict ordering 0 ≤ b(θ) ≤ a ≤ ã "
+                        "integral (1 / σ √π) ∫₀¹ exp(−(r / 2σ)² u²) du yields the non-strict ordering 0 ≤ b(θ) ≤ a ≤ ã "
                         "for every geometry: the exponential decay factor p − q = 4(ã − b)τ with τ = G m² t / (2ħ) is "
                         "non-negative at all times t ≥ 0, eliminating floating-point hyperbolic overflow even at t = 10⁸ s."
                     ),
@@ -640,7 +640,7 @@ ESSAY: dict = {
                         "r_same(θ) = √(D² + 0.5 Δx²(1 − cos θ)) y r_diff(θ) = √(D² + 0.5 Δx²(1 + cos θ)). Con el núcleo "
                         "f(r; σ) = erf(r / 2σ) / r y f(0; σ) = 1 / (σ √π), definimos la autodecoherencia a = f(0; σ) − f(Δx; σ), "
                         "la tasa vestida ã = a + ħ γ_env / (G m²) y el acoplamiento b(θ) = |f(r_same(θ); σ) − f(r_diff(θ); σ)|. "
-                        "Escribir f(r; σ) como (1 / σ √π) ∫₀¹ exp(−(r / 2σ)² u²) du demuestra 0 ≤ b(θ) ≤ a ≤ ã en toda geometría: el exponente "
+                        "Escribir f(r; σ) como (1 / σ √π) ∫₀¹ exp(−(r / 2σ)² u²) du arroja 0 ≤ b(θ) ≤ a ≤ ã en toda geometría: el exponente "
                         "p − q = 4(ã − b)τ con τ = G m² t / (2ħ) es no negativo para todo t ≥ 0, evitando desbordamientos incluso en t = 10⁸ s."
                     ),
                 },
@@ -859,7 +859,7 @@ ESSAY: dict = {
                 {
                     "type": "p",
                     "en": (
-                        "Even inside this model-conditional geometric and cryogenic corridor, an experimenter must prove that an "
+                        "Even inside this model-conditional geometric and cryogenic corridor, an experimenter must verify that an "
                         "observed entanglement witness came from 1 / r gravity rather than stray electrostatic patch charges, "
                         "magnetic Stern–Gerlach cross-talk, or common-mode vibrational noise. Rotating one interferometer's "
                         "Stern–Gerlach gradient axis by angle θ about its midpoint while keeping D = 75 µm, Δx = 250 µm, "
@@ -874,7 +874,7 @@ ESSAY: dict = {
                     ),
                     "es": (
                         "Incluso dentro de este corredor geométrico y criogénico condicionado al modelo, un experimento debe "
-                        "demostrar que el testigo medido proviene de la gravedad 1 / r y no de cargas parásitas, diafonía "
+                        "verificar que el testigo medido proviene de la gravedad 1 / r y no de cargas parásitas, diafonía "
                         "magnética de Stern–Gerlach o vibraciones comunes. Girar un eje de Stern–Gerlach un ángulo θ sobre "
                         "su punto medio manteniendo idénticos D = 75 µm, Δx = 250 µm, masas, pulsos y pantalla ofrece un "
                         "control nulo exacto sin cambiar piezas. Al recorrer θ = 0°, 30°, 45°, 60° y 90°, la fase newtoniana "
@@ -972,7 +972,7 @@ ESSAY: dict = {
                         "histórico—, pero no resuelve la renormalización a escala de Planck en 1.62 × 10⁻³⁵ m, no decide "
                         "entre cuerdas, lazos o seguridad asintótica, no fija el interior de agujeros negros ni acopla el "
                         "grupo gauge SU(3) × SU(2) × U(1) a la curvatura. Segundo, eliminación condicional al modelo: un testigo de entrelazamiento observado en D ≥ 73.14 µm descartaría canales LOCC (que no entrelazan a ninguna distancia) y, solo si se sostiene la proyección de 33.08 µm, la ecuación maestra híbrida difuminada en σ de Trillo y Navascués (2025), mientras Oppenheim et al. (2023) comprimen la difusión "
-                        "clásica markoviana por 3.31 × 10¹⁶×; sin embargo, acoplamientos de orden superior como Aziz y Howl "
+                        "clásica markoviana por 3.31 × 10¹⁶×; no obstante, acoplamientos de orden superior como Aziz y Howl "
                         "(2025) —cuya amplitud cae entre 25 y 34 órdenes de magnitud bajo la fase newtoniana en 10⁻¹⁴ kg— "
                         "requieren distinguirse por su escalamiento M⁶ t²."
                     ),
@@ -984,7 +984,7 @@ ESSAY: dict = {
                         "120-fold Fourier–Bessel erf deficit onto the 66 signed Yukawa rows of Lee et al. (2020) over "
                         "52 µm to 3000 µm, where the erf shape matches a λ ≈ 0.55 σ Yukawa template to within 2% to 4%. "
                         "Because we do not possess the unpublished separation-by-separation covariance weights or systematic "
-                        "nuisance parameters across the collaboration's 95 torsion runs, confirming whether the exact profile-"
+                        "nuisance parameters across the collaboration's 95 torsion runs, determining whether the exact profile-"
                         "likelihood limit sits at 31 µm, 33 µm, or 36 µm awaits a direct refit by the Eöt-Wash group. Fourth, "
                         "DERIVED (NOT MEASURED) status: spatial superpositions of 10⁻¹⁴ kg nanocrystals across Δx = 250 µm "
                         "sit roughly nine orders of magnitude in mass above today's largest macromolecular interferometers. "
@@ -995,7 +995,7 @@ ESSAY: dict = {
                         "σ_95 = 33.08 µm proyecta el déficit exacto de Fourier–Bessel de 120 cuñas sobre las 66 filas con "
                         "signo de Yukawa de Lee et al. (2020) entre 52 µm y 3000 µm, donde el perfil erf imita una forma de "
                         "Yukawa λ ≈ 0.55 σ dentro del 2% al 4%. Sin las ponderaciones internas de covarianza de las 95 "
-                        "corridas experimentales, confirmar si el límite exacto cae en 31 µm, 33 µm o 36 µm aguarda un "
+                        "corridas experimentales, determinar si el límite exacto cae en 31 µm, 33 µm o 36 µm aguarda un "
                         "reajuste directo sobre los datos originales. Cuarto, estatuto DERIVADO (NO MEDIDO): superponer "
                         "nanocristales de 10⁻¹⁴ kg a Δx = 250 µm supera por unos nueve órdenes de magnitud en masa los mayores "
                         "interferómetros macromoleculares actuales. La matemática traza la isla; solo el laboratorio navega."
@@ -1019,7 +1019,7 @@ ESSAY: dict = {
                         "verifies by kernel reduction that all 6 governing equations—the smeared pair rate, dimensionless "
                         "master-equation exponent, closed-form γ_crit^hyb, squared kinetic gas scattering rate, T⁹ thermal "
                         "blackbody photon rate, and R³ ħ c / d⁴ Casimir energy—carry exact SI integer dimension vectors. "
-                        "Theorem 2 (even_block_radicand_strict_pos) proves strict positivity of the partial-transpose "
+                        "Theorem 2 (even_block_radicand_strict_pos) verifies strict positivity of the partial-transpose "
                         "discriminant radicand whenever coherent cross-phase is non-zero."
                     ),
                     "es": (
@@ -1029,18 +1029,18 @@ ESSAY: dict = {
                         "por reducción del núcleo que las 6 ecuaciones rectoras —tasa par difuminada, exponente adimensional, "
                         "umbral cerrado γ_crit^hyb, tasa cinética de gas al cuadrado, tasa fotónica térmica T⁹ y energía de "
                         "Casimir R³ ħ c / d⁴— portan vectores exactos de dimensión SI. El Teorema 2 "
-                        "(even_block_radicand_strict_pos) demuestra la positividad estricta del discriminante par."
+                        "(even_block_radicand_strict_pos) verifica la positividad estricta del discriminante par."
                     ),
                 },
                 {
                     "type": "p",
                     "en": (
                         "Theorems 3, 4, and 5 check the 3-D skew geometry as integer polynomial identities: "
-                        "skew_parallel_midpoint_difference proves r_diff² − r_same² = Δx² cos θ with exact cancellation of D² "
+                        "skew_parallel_midpoint_difference checks r_diff² − r_same² = Δx² cos θ with exact cancellation of D² "
                         "(the identity that eliminated 12-digit floating-point loss down to 1.4 × 10⁻¹⁴ in our Python kernel); "
-                        "orthogonal_cross_exact_null proves r_same² = r_diff² at θ = 90° and that four equal branch potentials give zero cross-phase; and "
-                        "uncentred_corner_nonzero_residue proves that an uncentred L-geometry leaves an exact +6 Δx⁴ fourth-"
-                        "order numerator residue. Theorems 6 through 9 prove 3(k + 2)⁴ < (k + 2)⁸ for all k ∈ ℕ, environmental "
+                        "orthogonal_cross_exact_null verifies r_same² = r_diff² at θ = 90° and that four equal branch potentials give zero cross-phase; and "
+                        "uncentred_corner_nonzero_residue verifies that an uncentred L-geometry leaves an exact +6 Δx⁴ fourth-"
+                        "order numerator residue. Theorems 6 through 9 verify 3(k + 2)⁴ < (k + 2)⁸ for all k ∈ ℕ, environmental "
                         "dephasing monotonicity, the integer ordering 28,147 < 51,178 < 73,136 < 75,000 (nm values entered from the Python kernel, not derived in Lean), and the "
                         "exact mass-pinch transition from open (10⁻¹⁵, 10⁻¹⁴, and 10⁻¹³ kg) to closed at 10⁻¹² kg (73,297 nm > "
                         "73,136 nm), mirrored by exact multivariate Fraction polynomial checks in verify_essay_parallel_horizon.py."
@@ -1050,7 +1050,7 @@ ESSAY: dict = {
                         "skew_parallel_midpoint_difference prueba r_diff² − r_same² = Δx² cos θ con cancelación exacta de D² "
                         "(la identidad que eliminó la pérdida de 12 dígitos de precisión hasta 1.4 × 10⁻¹⁴ en nuestro núcleo Python); "
                         "orthogonal_cross_exact_null prueba r_same² = r_diff² en θ = 90° y que cuatro potenciales de rama iguales dan fase cruzada cero; y "
-                        "uncentred_corner_nonzero_residue demuestra el residuo de cuarto orden +6 Δx⁴ en geometrías 'L' "
+                        "uncentred_corner_nonzero_residue verifica el residuo de cuarto orden +6 Δx⁴ en geometrías 'L' "
                         "descentradas. Los Teoremas 6 al 9 prueban 3(k + 2)⁴ < (k + 2)⁸ para todo k ∈ ℕ, la monotonía frente "
                         "al ruido, el orden entero 28,147 < 51,178 < 73,136 < 75,000 (valores en nm tomados del kernel de Python, no derivados en Lean) y el cierre por masa entre "
                         "10⁻¹⁵, 10⁻¹⁴ y 10⁻¹³ kg (abiertos) y 10⁻¹² kg (73,297 nm > 73,136 nm, cerrado)."
@@ -1148,7 +1148,7 @@ ESSAY: dict = {
             "doi": "10.1088/1367-2630/aa7e73",
             "year": 2017,
             "role_en": "Demonstrates extreme cryogenic Penning-trap vacuum below 2.7 × 10⁻¹⁶ Pa anchoring the D = 75 µm benchmark.",
-            "role_es": "Demuestra vacío criogénico extremo bajo 2.7 × 10⁻¹⁶ Pa usado en el punto de referencia D = 75 µm.",
+            "role_es": "Logra vacío criogénico extremo bajo 2.7 × 10⁻¹⁶ Pa usado en el punto de referencia D = 75 µm.",
         },
         {
             "id": "ES07-BOSE2017",
@@ -1163,8 +1163,8 @@ ESSAY: dict = {
             "citation": "Marletto, C., & Vedral, V. — Gravitationally induced entanglement between two massive particles is sufficient evidence of quantum effects in gravity, Physical Review Letters 119(24), 240402",
             "doi": "10.1103/physrevlett.119.240402",
             "year": 2017,
-            "role_en": "Proves that LOCC classical mediators cannot generate entanglement from product states.",
-            "role_es": "Demuestra que mediadores clásicos LOCC no pueden generar entrelazamiento desde estados producto.",
+            "role_en": "Shows that LOCC classical mediators cannot generate entanglement from product states.",
+            "role_es": "Muestra que mediadores clásicos LOCC no pueden generar entrelazamiento desde estados producto.",
         },
         {
             "id": "ES07-LEE2020",

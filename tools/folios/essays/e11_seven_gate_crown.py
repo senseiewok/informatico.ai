@@ -1410,7 +1410,7 @@ ESSAY: dict = {
                     "en": (
                         "The integer algebra behind this scorecard is machine-checked without external libraries in SevenGateCrown.lean (pure core Lean 4 Prelude, 0 imports, 0 sorry, 0 axioms, 0 vacuous x − x "
                         "subtractions) and mirrored by 4 exact multivariate Fraction polynomial checks in our standalone "
-                        "Python verifier. Across 12 theorems, Lean proves integer identities, inequalities, and finite table checks for: (1) SI dimensional homogeneity of ρ_Λ, ℓ_Λ⁴, "
+                        "Python verifier. Across 12 theorems, Lean verifies integer identities, inequalities, and finite table checks for: (1) SI dimensional homogeneity of ρ_Λ, ℓ_Λ⁴, "
                         "ℏ/(mc), Gm²/r, c⁴/G, and Gm²t/(ℏr); (2) unique integer hypercharges {u, d} = {−4, +2} and e = 6; "
                         "(3) irrational charge failure 3³ < 54 < 4³ when [Grav]²U(1)_Y = 0 is omitted plus the vectorlike "
                         "(0, u, −u, 0, 0) branch; (4) Gell-Mann–Nishijima Hydrogen neutrality; (5) Spin(10) 15 + 1 = 16 "
@@ -1500,8 +1500,8 @@ ESSAY: dict = {
             "citation": "Jackiw, R., & Rebbi, C. — Solitons with fermion number ½, Physical Review D 13(12), 3398–3409",
             "doi": "10.1103/physrevd.13.3398",
             "year": 1976,
-            "role_en": "Proves that a sign-reversing scalar mass kink (−m₀ < 0 < +m₀) traps a single normalizable topological zero mode.",
-            "role_es": "Demuestra que un defecto escalar con inversión de signo (−m₀ < 0 < +m₀) atrapa un único modo cero topológico normalizable.",
+            "role_en": "Shows that a sign-reversing scalar mass kink (−m₀ < 0 < +m₀) traps a single normalizable topological zero mode.",
+            "role_es": "Muestra que un defecto escalar con inversión de signo (−m₀ < 0 < +m₀) atrapa un único modo cero topológico normalizable.",
         },
         {
             "id": "ES11-STELLE1977",
@@ -1509,7 +1509,7 @@ ESSAY: dict = {
             "doi": "10.1103/physrevd.16.953",
             "year": 1977,
             "role_en": "Shows that polynomial 4-derivative gravity 1/[q²(1 + ℓ_g²q²)] introduces a massive spin-2 Ostrogradsky ghost of residue −1.",
-            "role_es": "Demuestra que la gravedad polinomial de 4 derivadas 1/[q²(1 + ℓ_g²q²)] introduce un fantasma masivo de espín 2 con residuo −1.",
+            "role_es": "Muestra que la gravedad polinomial de 4 derivadas 1/[q²(1 + ℓ_g²q²)] introduce un fantasma masivo de espín 2 con residuo −1.",
         },
         {
             "id": "ES11-WEINBERG1989",
@@ -1532,8 +1532,8 @@ ESSAY: dict = {
             "citation": "Minahan, J. A., Ramond, P., & Warner, R. C. — Comment on anomaly cancellation in the standard model, Physical Review D 41(2), 715–716",
             "doi": "10.1103/physrevd.41.715",
             "year": 1990,
-            "role_en": "Proves that omitting [Grav]²U(1)_Y = 0 leaves the continuous real irrational-charge family e(t) = [18(t² + 3)]^{1/3} (e(0) = 54^{1/3}).",
-            "role_es": "Demuestra que omitir [Grav]²U(1)_Y = 0 deja abierta la familia irracional continua e(t) = [18(t² + 3)]^{1/3} (e(0) = 54^{1/3}).",
+            "role_en": "Shows that omitting [Grav]²U(1)_Y = 0 leaves the continuous real irrational-charge family e(t) = [18(t² + 3)]^{1/3} (e(0) = 54^{1/3}).",
+            "role_es": "Muestra que omitir [Grav]²U(1)_Y = 0 deja abierta la familia irracional continua e(t) = [18(t² + 3)]^{1/3} (e(0) = 54^{1/3}).",
         },
         {
             "id": "ES11-KAPLAN1992",
