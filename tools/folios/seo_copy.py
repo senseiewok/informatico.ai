@@ -185,6 +185,12 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "Domos Delgados de Heinz Isler y Pandeo Elástico",
         "Cómo una tela colgada invertida da forma a cáscaras de concreto en compresión, y por qué las abolladuras reducen el pandeo frente al límite clásico.",
     ),
+    "a14": (
+        "Felix Candela's Hypar Shells and Membrane Shear",
+        "How straight timber boards form doubly curved hyperbolic paraboloid concrete umbrellas, and where Pucher's pure-shear model reaches its edge limits.",
+        "Cascarones Reglados de Félix Candela y Cortante",
+        "Cómo tablas rectas cimbran paraguas de concreto en paraboloide hiperbólico, y dónde el modelo de cortante de Pucher encuentra su límite de borde.",
+    ),
     # ---- Pillar III: Physics
     "p01": (
         "Fluctuation–Dissipation and Allosteric Gating Energy",
@@ -331,6 +337,18 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "Repositorios Lean 4 Públicos y ML-KEM Post-Cuántico",
         "Lo que dice el README del repositorio público anthropics/formal-math que contiene, junto al estándar de retículos NIST FIPS 203; nada comprobado aquí.",
     ),
+    "m13": (
+        "Shannon Zero-Error Graph Capacity and Lovász Theta",
+        "How Shannon zero-error block codes, Lovász's theta umbrella and Haemers's rank bound meet on odd cycles, with the seven-cycle limit still open.",
+        "Capacidad de Error Cero de Shannon y Theta de Lovász",
+        "Cómo los códigos sin error de Shannon, el paraguas de Lovász y el rango de Haemers se cruzan en ciclos impares, con la brecha del ciclo de siete abierta.",
+    ),
+    "m14": (
+        "Sphere Packing, Cohn–Elkies Bounds & Open Gaps",
+        "How Cohn–Elkies Fourier linear programming, Viazovska modular functions in dimensions 8 and 24, and Laguerre bounds meet open gaps in dimension four.",
+        "Empaquetamiento de Esferas y Cotas Cohn–Elkies",
+        "Cómo la programación lineal de Cohn–Elkies, las funciones modulares en dimensiones 8 y 24 y las cotas de Laguerre rodean la brecha de dimensión cuatro.",
+    ),
 }
 
 # pillar -> (title_en, description_en, title_es, description_es); titles are complete (brand included).
@@ -343,9 +361,9 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "architecture": (
         "Architecture Essays: Vaults, Color & Facades | Informatico.ai",
-        "Twelve interactive essays on architecture: stone vaults, timber gridshells, Barragán's color, sky-cooling roofs and facades that move with humidity and sun.",
+        "Fourteen interactive essays on architecture: stone vaults, timber gridshells, thin concrete shells, Barragán's color and radiative sky-cooling roofs.",
         "Ensayos de Arquitectura: Bóvedas, Color y Fachadas | Informatico.ai",
-        "Doce ensayos interactivos de arquitectura: bóvedas de piedra, retículas de madera, el color de Barragán, techos que se enfrían y fachadas que se mueven.",
+        "Catorce ensayos interactivos de arquitectura: bóvedas de piedra, retículas, cascarones delgados, color de Barragán y techos de enfriamiento pasivo.",
     ),
     "physics": (
         "Physics Essays: F1 Aero, Color & Waves | Informatico.ai",
@@ -355,9 +373,9 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "math": (
         "Mathematics Essays: Lean 4 Repositories & More | Informatico.ai",
-        "Twelve interactive essays on mathematics: Fermat's Last Theorem and a Lean 4 repository, F1 optimal control, the geometry of color and optimal transport.",
+        "Fourteen interactive essays on mathematics: Fermat's Last Theorem, zero-error graph capacity, sphere packing, optimal control and optimal transport.",
         "Ensayos de Matemáticas: Repositorios Lean 4 y Más | Informatico.ai",
-        "Doce ensayos interactivos de matemáticas: el Último Teorema de Fermat y un repositorio Lean 4, control óptimo en F1, geometría del color y transporte óptimo.",
+        "Catorce ensayos interactivos de matemáticas: el Último Teorema de Fermat, capacidad de grafos sin error, empaquetamiento de esferas y transporte óptimo.",
     ),
     "bounties": (
         "Grand Challenges & Open Problems Crucible | Informatico.ai",
@@ -386,9 +404,9 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "essays": (
         "Cross-Scale Essays · Shared Laws & Verification | Informatico.ai",
-        "Eleven long-form essays where quantum decoherence, formal verification and porous-media thermodynamics connect falling clocks, stone and living systems.",
+        "Twelve long-form essays where quantum decoherence, formal verification and cycle thermodynamics connect falling clocks, stone and living systems.",
         "Ensayos entre Escalas · Leyes y Verificación | Informatico.ai",
-        "Once ensayos donde la decoherencia cuántica, la verificación formal y la termodinámica conectan relojes ópticos, medios porosos y sistemas biológicos.",
+        "Doce ensayos donde la decoherencia cuántica, la verificación formal y la termodinámica conectan relojes ópticos, medios porosos y sistemas vivos.",
     ),
 }
 

@@ -1,7 +1,7 @@
 {
   "version": "7.0.0",
-  "title": "Informatico.ai — 7-Volume, 52-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
-  "total_folios": 52,
+  "title": "Informatico.ai — 7-Volume, 55-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
+  "total_folios": 55,
   "pillars": {
     "engineering": [
       {
@@ -3337,6 +3337,120 @@
           "retracted": false,
           "summary": "Scite Smart Citation index entry for Ramm & Mehlhorn, On shape finding methods and ultimate load analyses of reinforced concrete shells (Engineering Structures, 1991, DOI 10.1016/0141-0296(91)90050-M), checked 2026-11-20: 51 citing publications (0 supporting, 12 mentioning, 0 contrasting) and no retraction notice. The counts describe that paper, not this folio's idealized spherical-cap model."
         }
+      },
+      {
+        "folio_id": "A.14",
+        "slug": "a14",
+        "pillar": "architecture",
+        "category_code": "A",
+        "parent_folios": [
+          "A.01",
+          "A.13"
+        ],
+        "lineage_mode": "CONTINUATION · Continues A.01 Funicular Thrust Surfaces & A.13 Heinz Isler Thin Shells",
+        "title": "Félix Candela's Hypar Ruled Shells: Hyperbolic Paraboloid Membrane Shear & Straight-Line Formwork",
+        "subtitle": "Continuing Folio A.01's funicular thrust surfaces and A.13's inverted-hanging concrete shells: a structural design study of how hyperbolic paraboloid (hypar) geometry uses straight timber plank rulings to form doubly curved 40 mm concrete umbrellas (12.0 m quadrant semi-span, 4.0 m rise), mapping Pucher's flat-projection membrane shear model (N_xy = 31.35 kN/m, σ_2 = -0.784 MPa) alongside cantilevered free-edge, valley-rib, and thin-shell buckling boundaries.",
+        "date_published": "2026-11-21",
+        "date_redated": "2026-11-21",
+        "current_edition": "REV 1.0",
+        "status_badge": "CANDELA HYPAR SHELL · REV 1.0",
+        "primary_kernel": "skills/architecture/a14/verify_a14_candela_hypar.py",
+        "governing_law": "z = (h / (a b)) x y · N_xy = (q_0 a b) / (2 h) · σ_1 = +N_xy / t · σ_2 = -N_xy / t · M_x = M_y = 0",
+        "colophon": {
+          "identifier": "A.14 · Félix Candela Hypar Ruled Shells & Pucher Membrane Shear · REV 1.0",
+          "kernels": "Doubly-Ruled Hypar Saddle · Pucher Flat-Projection Shear · 45-Degree Principal Arch-Tie Field",
+          "benchmarks": "Model values (not measurements): a = b = 12.0 m · h = 4.0 m · t = 40.0 mm · q_0 = 1.741 kN/m² · N_xy = 31.35 kN/m · σ_2 = -0.784 MPa · λ_comp = 20.1 · 80.0% shell-field thickness saving vs 200 mm slab · Q_storm = 8.0 L/s (576 m²)",
+          "bridge": "Continues A.01/A.13 · Idealized Pucher membrane shear vs. cantilevered free-edge & rib behavior"
+        },
+        "sliders": [
+          {
+            "label": "Hypar Quadrant Semi-Span (a = b)",
+            "min": 6.0,
+            "max": 18.0,
+            "step": 1.0,
+            "value": 12.0,
+            "unit": " m"
+          },
+          {
+            "label": "Hypar Corner Rise (h)",
+            "min": 1.0,
+            "max": 6.0,
+            "step": 0.5,
+            "value": 4.0,
+            "unit": " m"
+          }
+        ],
+        "steps": [
+          "Stage 1 (Doubly-Ruled Hypar Geometry & Unbent Timber Formwork): A hyperbolic paraboloid quadrant z(x, y) = (h / (a b)) x y has negative Gaussian curvature everywhere (an anticlastic saddle) yet contains two families of straight generating lines along constant x and constant y. Because every section parallel to the axes is a straight line, builders could assemble formwork from unbent straight timber planks without curved falsework (Cassinello et al. 2010, DOI 10.3989/ic.10.040; Garlock & Billington 2011, DOI 10.2749/101686611x13049248220564).",
+          "Stage 2 (Pucher Projected Membrane Equilibrium): Under uniform plan-projected gravity load q_0 = 1.741 kN/m² (40.0 mm concrete at ρ = 2,400 kg/m³ giving 0.941 kN/m² plus 0.80 kN/m² superimposed load), Pucher's 1934 projected equilibrium equation cancels normal membrane terms because ∂²z/∂x² = 0 and ∂²z/∂y² = 0 identically. In this idealized interior membrane model with supported edges, N_x = N_y = M_x = M_y = 0 and uniform shear becomes N_xy = (q_0 a b) / (2 h) = 31.35 kN/m.",
+          "Stage 3 (Diagonal Principal Arch-Tie Field & Thickness Ratio): Rotating 45 degrees onto the bisecting diagonals resolves pure shear into equal principal tension σ_1 = +N_xy / t = +0.784 MPa and principal compression σ_2 = -N_xy / t = -0.784 MPa. Against an allowable compressive threshold of 0.45 f_ck = 15.75 MPa (f_ck = 35 MPa), the model compressive ratio is λ_comp = 20.1, while the 40 mm shell field uses 80.0% less concrete volume than a 200 mm solid flat slab (excluding stem and ribs).",
+          "Stage 4 (Central Stormwater Funnel & Tier T2 Model Boundary): Grouping four quadrants into a 24.0 m by 24.0 m (576 m²) umbrella slopes rainwater inward toward a central hollow stem, collecting 8.0 L/s (28.8 m³/h) under 50 mm/h design rain. Hypothesis (Tier T2 analytical model): straight-ruled anticlastic curvature carries symmetric gravity load primarily in in-plane shear rather than bending. This flat-projection model is falsified for physical cantilevered umbrellas where slope-angle self-weight growth, free-edge boundary bending, valley-rib concentration, concrete creep, or thin-shell buckling (Ramm & Mehlhorn 1991, DOI 10.1016/0141-0296(91)90050-M; Wang et al. 2020, DOI 10.1016/j.engstruct.2020.111156) govern failure."
+        ],
+        "readouts": [
+          {
+            "label": "Membrane Shear Force (N_xy)",
+            "value": "31.35 kN/m (Uniform in Model Quadrant)"
+          },
+          {
+            "label": "Principal Compressive Stress (σ_2)",
+            "value": "-0.784 MPa (Quadrant Field, Model Service Load)"
+          },
+          {
+            "label": "Model Compressive Margin (λ_comp)",
+            "value": "λ_comp = 20.1 (80.0% Savings vs 200 mm)"
+          },
+          {
+            "label": "Stormwater Harvest Rate (50 mm/h)",
+            "value": "8.0 L/s (28.8 m³/h, 576 m² Model Roof)"
+          }
+        ],
+        "spec_plate": {
+          "division": "CSI MASTERFORMAT 03 31 00 / 03 38 00 · CONCRETE HYPAR DESIGN STUDY",
+          "title": "Doubly-Ruled Hyperbolic Paraboloid Umbrella Shell (40 mm Field Model)",
+          "body": "Analytical design study of an idealized 4-quadrant hyperbolic paraboloid umbrella (24.0 m by 24.0 m overall plan, a = b = 12.0 m quadrant semi-span, h = 4.0 m rise, 40.0 mm shell field thickness) using Pucher flat-projection membrane equilibrium. Model values only; omits slope-angle dead-weight amplification, cantilevered free-edge bending, valley ribs, reinforcement detailing, and creep buckling. Not an engineered structural drawing or construction plan.",
+          "meta": "References: Candela 1960 (DOI 10.14359/8024, 10.14359/8026) · Billington & Garlock 2010 (DOI 10.1061/(asce)st.1943-541x.0000144) · Wang et al. 2020 (DOI 10.1016/j.engstruct.2020.111156) · Model values, not measurements"
+        },
+        "sidenote_1": {
+          "kicker": "SIDENOTE A.14-A · OVER 800 THIN SHELLS IN MEXICO CITY & BEYOND",
+          "body": "Cassinello, Schlaich, and Torroja (2010, DOI 10.3989/ic.10.040) document how Spanish-born architect-engineer Félix Candela built more than 800 reinforced-concrete thin shells—chiefly in Mexico—pairing doubly curved strength with low-cost carpentry. Billington and Garlock (2010, DOI 10.1061/(asce)st.1943-541x.0000144) and Garlock and Billington (2011, DOI 10.2749/101686611x13049248220564) examine how Candela united economy, efficiency, and sculptural form."
+        },
+        "sidenote_2": {
+          "kicker": "SIDENOTE A.14-B · STRAIGHT RULINGS VS. CANTILEVER EDGE BENDING",
+          "body": "Because z = (h / (a b)) x y has zero second partial derivatives along the x and y axes, Pucher's 1934 projected membrane equation yields constant shear N_xy = q_0 a b / (2 h) when edges carry tangential shear. In physical cantilevered umbrellas (Candela 1960, DOI 10.14359/8026; Wang et al. 2020, DOI 10.1016/j.engstruct.2020.111156; Wang et al. 2022, DOI 10.1016/j.engstruct.2022.114577), free outer edges and central valley intersections alter shear flow and demand nonlinear ultimate-load analysis (Ramm & Mehlhorn 1991, DOI 10.1016/0141-0296(91)90050-M)."
+        },
+        "skill": {
+          "filename": "candela-hypar-membrane-shear-SKILL.md",
+          "name": "candela-hypar-membrane-shear",
+          "description": "AI-agnostic architectural and structural engineering skill for Félix Candela's doubly-ruled hyperbolic paraboloid (hypar) concrete shells, Pucher flat-projection membrane shear equilibrium, and idealized cantilever/rib bounds.",
+          "rules": [
+            "Define one quadrant of a hyperbolic paraboloid saddle as z(x, y) = (h / (a * b)) * x * y with twist parameter c = (a * b) / h.",
+            "Compute Pucher flat-projection membrane shear resultant as N_xy = (q_0 * a * b) / (2 * h) under uniform projected gravity load q_0, noting omitted slope-angle weight amplification.",
+            "Resolve 45-degree principal stresses as sigma_1 = +N_xy / t (tension) and sigma_2 = -N_xy / t (compression) in the idealized interior membrane model.",
+            "Evaluate compressive margin lambda_comp = (0.45 * f_ck) / |sigma_2| alongside shell-field thickness savings relative to a 200 mm slab, and flag free-edge bending and buckling limits."
+          ]
+        },
+        "revisions": [
+          {
+            "edition": "REV 1.0",
+            "date": "2026-11-21",
+            "summary": "REV 1.0 (Published 2026-11-21): Volume VII Architecture monograph continuing Folios A.01 & A.13 via Félix Candela's doubly-ruled hyperbolic paraboloid shells (1960 ACI papers), Pucher projected membrane shear (1934), central umbrella stormwater drainage, and modern multi-sided umbrella evaluations (Wang et al. 2020, 2022).",
+            "opus": "Independent verification: all 7 new DOIs checked via Crossref API, anchor paper checked via Scite tallies API (16 citing publications, 0 retractions), and hypar equilibrium equations recomputed offline by skills/architecture/a14/verify_a14_candela_hypar.py (with --planted-defect)."
+          }
+        ],
+        "volume": 7,
+        "volume_code": "VOL. 07",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,820 WORDS",
+        "scite": {
+          "doi": "10.14359/8024",
+          "fetched_on": "2026-11-21",
+          "citing_publications": 16,
+          "supporting": 0,
+          "mentioning": 0,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation index entry for Candela, General Formulas for Membrane Stresses in Hyperbolic Paraboloidical Shells (ACI Journal Proceedings, Vol. 57, 1960, DOI 10.14359/8024), checked 2026-11-21: 16 citing publications (0 supporting, 0 mentioning, 0 contrasting) and no retraction notice. Counts describe that paper, not this folio's model."
+        }
       }
     ],
     "physics": [
@@ -6178,6 +6292,234 @@
           "retracted": false,
           "summary": "Scite Smart Citation Index (fetched 2026-11-08): 0 retractions; 2,512 citing publications (0 supporting, 708 mentioning, 0 contrasting) for Regev, On lattices, learning with errors, random linear codes, and cryptography (Journal of the ACM, 2009), the paper behind the LWE problem used in ML-KEM."
         }
+      },
+      {
+        "folio_id": "M.13",
+        "slug": "m13",
+        "pillar": "math",
+        "category_code": "M",
+        "parent_folios": [
+          "M.03",
+          "M.06"
+        ],
+        "lineage_mode": "CONTINUATION · Extends M.03 Combinatorial Packing & M.06 Graph Complexity Bounds",
+        "title": "Shannon Zero-Error Graph Capacity, Lovász Theta Sandwich & the Open Seven-Cycle Gap",
+        "subtitle": "How Claude Shannon turned error-free messaging into packing squares on cyclic graphs, how László Lovász settled the five-cycle with a three-dimensional umbrella, why Willem Haemers separated geometric cones from capacity on twenty-seven lines, and why the seven-cycle limit stays open.",
+        "date_published": "2026-11-21",
+        "date_redated": "2026-11-21",
+        "current_edition": "REV 1.0",
+        "status_badge": "GRAPH CAPACITY · REV 1.0",
+        "primary_kernel": "skills/math/m13/verify_m13_shannon_capacity.py",
+        "governing_law": "α(G) ≤ Θ(G) ≤ ϑ(G) ≤ α*(G) ≤ χ̄(G) · ϑ(C_n) = n cos(π/n) / [1 + cos(π/n)]",
+        "colophon": {
+          "identifier": "M.13 · Zero-Error Capacity & Lovász Theta Sandwich · REV 1.0",
+          "kernels": "Shannon Strong Product G^k · Lovász Umbrella ϑ(G) · Haemers Minrank(S_bar) = 7",
+          "benchmarks": "C_5 (k = 2): α = 2 · Θ(C_5) = ϑ(C_5) = √5 ≈ 2.236068 · C_7 (k = 5): 367^(1/5) ≈ 3.257866 ≤ Θ(C_7) ≤ ϑ(C_7) ≈ 3.317667 (OPEN)",
+          "bridge": "Extends M.03/M.06 · Information-theoretic packing and spectral duality"
+        },
+        "sliders": [
+          {
+            "label": "Odd Cycle Length (n)",
+            "min": 5,
+            "max": 13,
+            "step": 2,
+            "value": 5,
+            "unit": "n = "
+          },
+          {
+            "label": "Codeword Block Length (k)",
+            "min": 1,
+            "max": 5,
+            "step": 1,
+            "value": 2,
+            "unit": "k = "
+          }
+        ],
+        "steps": [
+          "Stage 1 (Confusability Graphs and Strong Products, Shannon 1956): Claude Shannon (DOI 10.1109/TIT.1956.1056798) modeled a noisy discrete channel as a graph G whose vertices are input letters and whose edges connect pairs that can produce the same output. Zero-error words of length k form an independent set in the k-fold strong product G^k, yielding Θ(G) = sup_k α(G^k)^(1/k). For C_5, α(C_5) = 2, whereas the five pairs (i, 2i mod 5) form an independent set in C_5^2, giving Θ(C_5) ≥ √5.",
+          "Stage 2 (Lovász Orthonormal Umbrellas and Sandwich Inequality, 1979): László Lovász (DOI 10.1109/TIT.1979.1055985) defined ϑ(G) by placing unit vectors u_i in Euclidean space so non-adjacent vertices are orthogonal, minimizing max_i 1/(c · u_i)^2 over unit handles c. Because ϑ is multiplicative under strong products, α(G) ≤ Θ(G) ≤ ϑ(G) ≤ α*(G) ≤ χ̄(G). On odd cycles, ϑ(C_n) = n cos(π/n) / [1 + cos(π/n)], pinning Θ(C_5) = √5 ≈ 2.236068 via the 3D umbrella cos²φ = 1/√5.",
+          "Stage 3 (Haemers Minrank Separation on the Schläfli Complement, 1979): Willem Haemers (DOI 10.1109/TIT.1979.1056027) bounded Θ(G) above by the minimum rank of any matrix fitting G over a field. On the 27-line cubic-surface intersection graph S_bar = SRG(27, 10, 1, 5), spectrum {10^1, 1^20, (-5)^6} gives ϑ(S_bar) = 9, whereas A(S_bar) − I fits S_bar with exact rational rank 7. Thus Θ(S_bar) ≤ 7 < 9, and the diagonal in S ⊠ S_bar shows Θ(S ⊠ S_bar) ≥ 27 > 3 × 7 ≥ Θ(S) Θ(S_bar).",
+          "Stage 4 (Open Hypothesis on C_7, Tier T0–T1 Bounds, and Falsification Condition): For the seven-cycle C_7, Polak & Schrijver (2019, DOI 10.1016/j.ipl.2018.11.006) found 367 independent vertices in C_7^5, establishing Tier T0/T1 bounds 367^(1/5) ≈ 3.257866 ≤ Θ(C_7) ≤ ϑ(C_7) ≈ 3.317667. Whether Θ(C_7) equals ϑ(C_7) or stays strictly below it remains OPEN. Any strict algebraic upper bound below 3.317667 refutes equality Θ(C_7) = ϑ(C_7), while any block code with α(C_7^k)^(1/k) > 3.257866 tightens the lower floor."
+        ],
+        "readouts": [
+          {
+            "label": "Lovász Theta Upper Bound ϑ(C_n)",
+            "value": "2.236068 (closed Θ(C_5) = √5)"
+          },
+          {
+            "label": "Best Block-k Rate α(C_n^k)^(1/k)",
+            "value": "2.236068 at n = 5, k = 2"
+          },
+          {
+            "label": "Sandwich: α · ϑ · α* · χ̄",
+            "value": "2 ≤ 2.2361 ≤ 2.500 ≤ 3"
+          },
+          {
+            "label": "Open Capacity Gap ϑ − Rate",
+            "value": "0.000000 (CLOSED ON C_5)"
+          }
+        ],
+        "spec_plate": {
+          "division": "COMBINATORIAL INFORMATION THEORY / SEMIDEFINITE BOUNDS",
+          "title": "Odd-Cycle Zero-Error Packing Envelope, Lovász Orthonormal Umbrella & Haemers Rank Bound",
+          "body": "Exact discrete mathematics verification over odd cycles C_5 through C_13, strong products C_5^2 and C_7^2, and the 27-vertex Schläfli complement SRG(27, 10, 1, 5). Lower bounds for C_7^5 (367 codewords) are cited from Polak & Schrijver (2019); all C_5^2, C_7^2, Gram PSD eigenvalues, and exact rational Gaussian-elimination rank-7 checks are recomputed from scratch by verify_m13_shannon_capacity.py.",
+          "meta": "Primary anchors: Shannon 1956 (DOI 10.1109/TIT.1956.1056798) · Lovász 1979 (DOI 10.1109/TIT.1979.1055985) · Haemers 1979 (DOI 10.1109/TIT.1979.1056027) · Polak & Schrijver 2019 (DOI 10.1016/j.ipl.2018.11.006)"
+        },
+        "sidenote_1": {
+          "kicker": "SIDENOTE M.13-A · POLYNOMIAL-TIME SDP VS. NP-HARD ALPHA",
+          "body": "Grötschel, Lovász & Schrijver (1981, DOI 10.1007/BF02579273) showed via the ellipsoid method that ϑ(G) can be approximated to arbitrary rational precision in polynomial time, even though both α(G) and χ̄(G) are NP-hard. Whenever α(G) = χ̄(G) (perfect graphs), the sandwich collapses to equality and yields both quantities in polynomial time."
+        },
+        "sidenote_2": {
+          "kicker": "SIDENOTE M.13-B · NON-ADDITIVITY UNDER DISJOINT UNION (ALON 1998)",
+          "body": "Shannon asked in 1956 whether the capacity of a disjoint union equals the sum Θ(G ⊔ H) = Θ(G) + Θ(H). Noga Alon (1998, DOI 10.1007/PL00009824) constructed graphs G and H for which Θ(G) and Θ(H) are bounded while Θ(G ⊔ H) grows far larger, demonstrating that block-coding across two separate channels can mix codewords more efficiently than either channel separately."
+        },
+        "skill": {
+          "filename": "shannon-capacity-lovasz-theta-SKILL.md",
+          "name": "shannon-capacity-lovasz-theta",
+          "description": "AI-agnostic combinatorial information theory skill for Shannon zero-error graph capacity, the Lovasz theta sandwich alpha(G) <= Theta(G) <= vartheta(G) <= chi_bar(G), and Haemers minrank separation.",
+          "rules": [
+            "Model zero-error k-symbol block codes as independent sets in the strong product G^{\boxtimes k}, never the Cartesian box product, so symbol confusability across simultaneous coordinates is captured.",
+            "Enforce the Lovasz sandwich alpha(G) <= Theta(G) <= vartheta(G) <= alpha*(G) <= chi_bar(G) and compute odd-cycle theta values via n * cos(pi/n) / (1 + cos(pi/n)).",
+            "Never treat vartheta(G) as equal to Theta(G) in general: check algebraic minrank bounds such as Haemers rank(A(S_bar) - I) = 7 < 9 = vartheta(S_bar) on the 27-vertex Schlafli complement.",
+            "Keep Theta(C_7) explicitly labeled OPEN between the verified lower floor 367^(1/5) (~3.257866) and the Lovasz upper bound vartheta(C_7) (~3.317667)."
+          ]
+        },
+        "revisions": [
+          {
+            "edition": "REV 1.0",
+            "date": "2026-11-21",
+            "summary": "REV 1.0 (Published 2026-11-21): Volume VII Mathematics monograph continuing Folios M.03 & M.06 across Shannon (1956), Lovász (1979), Haemers (1979), Grötschel–Lovász–Schrijver (1981), Alon (1998), Bohman–Holzman (2003), and Polak–Schrijver (2019).",
+            "opus": "Verification note: all seven primary DOIs were checked against Crossref on 2026-11-21 with zero retraction notices; skills/math/m13/verify_m13_shannon_capacity.py recomputes odd-cycle bounds, the 3D C_5 umbrella, the 10-word C_7^2 packing, Gram PSD spectra, and exact rational rank 7 on the 27-vertex Schläfli complement."
+          }
+        ],
+        "volume": 7,
+        "volume_code": "VOL. 07",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,800 WORDS",
+        "scite": {
+          "doi": "10.1109/TIT.1979.1055985",
+          "fetched_on": "2026-11-21",
+          "citing_publications": 1779,
+          "supporting": 15,
+          "mentioning": 1482,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index entry for Lovasz 1979, \"On the Shannon capacity of a graph\" (IEEE Transactions on Information Theory, DOI 10.1109/TIT.1979.1055985), fetched 2026-11-21: 1,779 citing publications (15 supporting, 1,482 mentioning, 0 contrasting) and zero retraction notices. These counts describe that foundational paper, not this folio."
+        }
+      },
+      {
+        "folio_id": "M.14",
+        "slug": "m14",
+        "pillar": "math",
+        "category_code": "M",
+        "parent_folios": [
+          "M.09",
+          "M.12"
+        ],
+        "lineage_mode": "SYNTHESIS · Synthesizes M.09 Energy Transport & M.12 Lattice Geometry",
+        "title": "Sphere Packing in Dimensions 3, 4, 8 & 24: Cohn–Elkies Bounds, Modular Functions & Open Gaps",
+        "subtitle": "Synthesizing Folio M.09 energy transport and Folio M.12 lattice geometry: how Henry Cohn and Noam Elkies turned sphere packing into Fourier linear programming, how Maryna Viazovska and collaborators closed dimensions 8 and 24 via modular forms, and why dimension 4 and asymptotic space remain open.",
+        "date_published": "2026-11-21",
+        "date_redated": "2026-11-21",
+        "current_edition": "REV 1.0",
+        "status_badge": "SPHERE PACKING & LP BOUNDS · REV 1.0",
+        "primary_kernel": "skills/math/m14/verify_m14_sphere_packing.py",
+        "governing_law": "Δ_d ≤ Vol(B_d(r_cut/2)) · f(0)/f̂(0) · f(x) ≤ 0 (|x| ≥ r_cut) · f̂(t) ≥ 0 · Δ_8 = π⁴/384 · Δ_24 = π¹²/12!",
+        "colophon": {
+          "identifier": "M.14 · Sphere Packing, Cohn–Elkies LP & Open Gaps · REV 1.0",
+          "kernels": "Laguerre–Gaussian Fourier Eigenbasis · Descartes Shift Check · Golay G_24 Leech Enumeration",
+          "benchmarks": "Offline model values: Δ_8(E_8) = 0.253670 (τ_8 = 240; deg-5 LP 0.303541) · Δ_24(Λ_24) = 0.001930 (τ_24 = 196,560; deg-5 LP 0.008955) · d=4 open gap (0.616850 vs 0.672477)",
+          "bridge": "Synthesizes M.09/M.12"
+        },
+        "sliders": [
+          {
+            "label": "Euclidean Dimension (d)",
+            "min": 2,
+            "max": 24,
+            "step": 1,
+            "value": 8,
+            "unit": "d = "
+          },
+          {
+            "label": "Laguerre Polynomial Degree (M)",
+            "min": 3,
+            "max": 5,
+            "step": 2,
+            "value": 5,
+            "unit": "M = "
+          }
+        ],
+        "steps": [
+          "Stage 1 (Lattice Geometry & Kissing Numbers from d = 2 to d = 24): Packing equal spheres in Euclidean space asks what fraction of volume non-overlapping balls can fill. In dimension 2 the hexagonal lattice A_2 fills π/√12 ≈ 0.906900 with 6 neighbors; in dimension 3, Hales et al. (2017, DOI 10.1017/fmp.2017.1) completed the formal Flyspeck check of the Kepler conjecture at π/(3√2) ≈ 0.740480 with 12 neighbors. In dimension 4, the checkerboard lattice D_4 has density π²/16 ≈ 0.616850 and Musin (2008, DOI 10.4007/annals.2008.168.1) settled the kissing number at τ_4 = 24, yet packing optimality in dimension 4 remains open.",
+          "Stage 2 (Cohn–Elkies Fourier Linear Programming Duality): Cohn and Elkies (2003, DOI 10.4007/annals.2003.157.689) showed that any radial Schwartz function f with f(0) = f̂(0) > 0, dual non-negativity f̂(t) ≥ 0 everywhere, and primal non-positivity f(x) ≤ 0 for |x| ≥ r_cut yields an upper bound Δ_d ≤ Vol(B_d(r_cut/2)) · f(0)/f̂(0) via the Poisson summation formula. Writing f in the Fourier eigenbasis ψ_k(x) = L_k^(d/2−1)(2π|x|²) exp(−π|x|²) with exact eigenvalue (−1)^k lets our offline verifier construct rational Laguerre–Gaussian test polynomials whose shifted polynomial P(u_cut + w) has every coefficient ≤ 0.",
+          "Stage 3 (Viazovska’s Modular Magic Functions in d = 8 and d = 24): In 2017, Viazovska (DOI 10.4007/annals.2017.185.3.7) constructed an infinite modular-form eigenfunction matching the E_8 root lattice (τ_8 = 240, Δ_8 = π⁴/384 ≈ 0.253670) with double roots at every non-minimal shell √(2k). Days later, Cohn, Kumar, Miller, Radchenko, and Viazovska (DOI 10.4007/annals.2017.185.3.8) extended the modular construction to the 24-dimensional Leech lattice Λ_24 (Δ_24 = π¹²/12! ≈ 0.001930, τ_24 = 196,560 minimal vectors built from the 759 octads of the extended binary Golay code G_24), and later established universal optimality across radial potentials (2022, DOI 10.4007/annals.2022.196.3.3).",
+          "Stage 4 (Open Hypothesis, Tier T0–T2, and Falsification Condition): Hypothesis (Tier T0–T2): finite-degree Laguerre–Gaussian test functions shrink the Cohn–Elkies upper bound monotonically from degree 3 to degree 5 (0.346486 → 0.303541 in d = 8; 0.087466 → 0.008955 in d = 24; 0.700415 → 0.672477 in d = 4), yet leave a roughly 9.0% gap above D_4 in dimension 4 while recent preprints push high-dimensional lower bounds upward via graph independence (arXiv:2312.10026) and stochastic ellipsoids (arXiv:2504.05042). This polynomial gap hypothesis would be falsified if an explicit non-lattice packing in dimension 4 exceeded π²/16 or if an admissible degree-5 Laguerre polynomial dropped below 0.616850; our deterministic checks inspect finite dimensions only and do not re-derive the asymptotic preprint bounds."
+        ],
+        "readouts": [
+          {
+            "label": "Lattice Packing Density (Δ_d)",
+            "value": "0.253670 (E_8, π^4/384, τ = 240)"
+          },
+          {
+            "label": "Laguerre Cohn–Elkies Bound (M = 5)",
+            "value": "0.303541 (r_cut = 1.6683, model)"
+          },
+          {
+            "label": "Polynomial-to-Lattice Ratio",
+            "value": "1.1966x (Viazovska modular limit: 1.0000x)"
+          },
+          {
+            "label": "Dimension Optimality Status",
+            "value": "E_8 MATCHED BY VIAZOVSKA LP LIMIT (d = 8)"
+          }
+        ],
+        "spec_plate": {
+          "division": "COMBINATORIAL & HARMONIC GEOMETRY / COHN–ELKIES LINEAR PROGRAMMING",
+          "title": "Exact Rational Laguerre–Gaussian Bounds, E_8 & Golay G_24 Leech Lattice Enumeration",
+          "body": "Offline verification specification: under the Fourier transform f̂(t) = ∫ f(x) exp(−2πi x·t) dx, radial eigenfunctions L_k^(d/2−1)(2π|x|²) exp(−π|x|²) carry eigenvalue (−1)^k. Setting P̂(u) = (u + α)∏(u − s_j)² in exact rational arithmetic guarantees f̂(t) ≥ 0, while checking that every coefficient of shifted P(u_cut + w) is ≤ 0 establishes f(x) ≤ 0 for |x| ≥ r_cut. Finite-degree bounds (M = 3, 5) strictly bound lattice densities from above without reaching the infinite modular-form optimum.",
+          "meta": "Primary anchors: Rogers 1958 (DOI 10.1112/plms/s3-8.4.609) · Cohn & Elkies 2003 (DOI 10.4007/annals.2003.157.689) · Musin 2008 (DOI 10.4007/annals.2008.168.1) · Viazovska 2017 (DOI 10.4007/annals.2017.185.3.7) · CKMRV 2017 (DOI 10.4007/annals.2017.185.3.8)"
+        },
+        "sidenote_1": {
+          "kicker": "SIDENOTE M.14-A · FOURIER EIGENVALUE PARITY & WHY ODD POLYNOMIAL DEGREE MATTERS",
+          "body": "In the Laguerre–Gaussian radial basis ψ_k(x) = L_k^(d/2−1)(2π|x|²) exp(−π|x|²), even-index modes have Fourier eigenvalue +1 while odd-index modes have eigenvalue −1. Choosing an odd-degree dual polynomial P̂(u) = (u + α)∏(u − s_j)² keeps P̂(u) ≥ 0 everywhere on [0, ∞) via positive leading term +u^(2m+1), while the (−1)^(2m+1) flip drives the primal polynomial P(u) → −∞ as u → ∞ so f(x) ≤ 0 holds past r_cut."
+        },
+        "sidenote_2": {
+          "kicker": "SIDENOTE M.14-B · FROM THE 24-BIT GOLAY CODE G_24 TO 196,560 LEECH SPHERES",
+          "body": "The Leech lattice Λ_24 achieves density π¹²/12! ≈ 0.001930 without a single root vector of squared norm 2. Its 196,560 minimal vectors of squared norm 4 (unscaled norm² = 32 in (1/√8) ℤ²⁴ coordinates) decompose cleanly via the 4,096 codewords of the extended binary Golay code G_24: 1,104 Type A vectors of shape ((±4)², 0²²), 97,152 octad vectors from 759 weight-8 codewords (759 × 2⁷), and 98,304 parity vectors of shape ((±1)²³, ∓3) (24 × 2¹²), verified by direct codeword enumeration in verify_m14_sphere_packing.py."
+        },
+        "skill": {
+          "filename": "sphere-packing-cohn-elkies-SKILL.md",
+          "name": "sphere-packing-cohn-elkies",
+          "description": "AI-agnostic harmonic analysis and lattice geometry skill for Cohn-Elkies Fourier linear programming bounds, Laguerre-Gaussian radial eigenfunctions, E8 and Leech lattice kissing counts, and open packing gaps.",
+          "rules": [
+            "Fix the Fourier normalization f_hat(t) = integral f(x) exp(-2*pi*i x.t) dx so the radial eigenfunctions L_k^(d/2 - 1)(2*pi*|x|^2) exp(-pi*|x|^2) carry exact eigenvalue (-1)^k.",
+            "Check primal non-positivity f(x) <= 0 for |x| >= r_cut algebraically in exact rational arithmetic by checking that every coefficient of the shifted polynomial P(u_cut + w) is <= 0.",
+            "Distinguish settled kissing numbers from open packing densities: Musin (2008) settled tau_4 = 24 in dimension 4, while optimal sphere packing density Delta_4 >= pi^2/16 remains open.",
+            "Report asymptotic lower-bound preprints (Campos et al. arXiv:2312.10026; Klartag arXiv:2504.05042) as unrefereed high-dimensional scaling bounds separate from fixed-dimension finite checks."
+          ]
+        },
+        "revisions": [
+          {
+            "edition": "REV 1.0",
+            "date": "2026-11-21",
+            "summary": "REV 1.0 (Published 2026-11-21): Volume VII Mathematics monograph covering Rogers (1958), Cohn–Elkies Fourier linear programming (2003), Musin 4D kissing number (2008), Viazovska E_8 (2017), CKMRV Leech lattice & universal optimality (2017, 2022), Hales et al. Flyspeck (2017), and open dimension-4 and asymptotic packing gaps.",
+            "opus": "Verification note: all seven primary DOIs were checked against Crossref and Scite on 2026-11-21 with zero retraction notices; exact rational Laguerre–Gaussian bounds, Golay G_24 weight enumerator counts, and root-lattice kissing numbers are recomputed offline by skills/math/m14/verify_m14_sphere_packing.py."
+          }
+        ],
+        "volume": 7,
+        "volume_code": "VOL. 07",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,600 WORDS",
+        "scite": {
+          "doi": "10.4007/annals.2003.157.689",
+          "fetched_on": "2026-11-21",
+          "citing_publications": 377,
+          "supporting": 3,
+          "mentioning": 541,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index entry for Cohn & Elkies 2003, \"New upper bounds on sphere packings I\" (Annals of Mathematics, DOI 10.4007/annals.2003.157.689), fetched 2026-11-21: 377 citing publications (3 supporting, 541 mentioning, 0 contrasting) and no retraction notice. These counts describe that foundational paper, not this folio."
+        }
       }
     ]
   },
@@ -6301,15 +6643,18 @@
       "volume": 7,
       "code": "VOL. 07",
       "roman": "Volume VII",
-      "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY, VADOSE SUCTION, CONCRETE FRACTURE & FUNICULAR THIN-SHELL BUCKLING · 4 FOLIOS",
-      "title": "Biot 3D Poroelasticity, Unsaturated Suction Stress, Concrete Size Effect & Heinz Isler's Thin-Shell Domes",
-      "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), Engineering Folio E.15 (Hillerborg fictitious crack process zones, Bažant Type II Size Effect Law, and Bažant–Kazemi fracture energy regression in concrete), and Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns).",
+      "kicker": "VOLUME VII (VOL. 07) · POROELASTICITY, SUCTION, CONCRETE FRACTURE, THIN SHELLS, GRAPH CAPACITY & SPHERE PACKING · 7 FOLIOS",
+      "title": "Poroelasticity, Suction Stress, Concrete Size Effect, Isler and Candela Shells, Shannon Capacity & Sphere Packing",
+      "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), Engineering Folio E.15 (Hillerborg fictitious crack process zones, Bažant Type II Size Effect Law, and Bažant–Kazemi fracture energy regression in concrete), Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns), Architecture Folio A.14 (Félix Candela's doubly-ruled hyperbolic paraboloid concrete umbrellas, Pucher flat-projection membrane shear, and cantilevered edge boundaries), Mathematics Folio M.13 (Shannon zero-error graph capacity, Lovász's orthonormal theta sandwich, Haemers's rank-7 Schläfli separation, and the open seven-cycle gap), and Mathematics Folio M.14 (Sphere packing, Cohn–Elkies Fourier linear programming, Viazovska modular functions in dimensions 8 and 24, and the open dimension-4 gap).",
       "cadence": "Verifier-gated Living Edition release",
       "folios": [
         "e13",
         "e14",
         "e15",
-        "a13"
+        "a13",
+        "a14",
+        "m13",
+        "m14"
       ]
     }
   ]

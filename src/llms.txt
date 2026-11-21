@@ -1,8 +1,8 @@
 # Informatico.ai
 
-> 52 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
+> 55 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
 
-Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (92 SKILL.md companions, 43 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 7 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
+Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (96 SKILL.md companions, 47 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 7 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
 
 ## Welcome, agents (and the people who work with you)
 
@@ -39,7 +39,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 
 ## Architecture
 
-- [Architecture](https://informatico.ai/architecture/): Twelve interactive essays on architecture: stone vaults, timber gridshells, Barragán's color, sky-cooling roofs and facades that move with humidity and sun.
+- [Architecture](https://informatico.ai/architecture/): Fourteen interactive essays on architecture: stone vaults, timber gridshells, thin concrete shells, Barragán's color and radiative sky-cooling roofs.
 - [A.01 Funicular Thrust Surfaces in Stone and Timber Shells](https://informatico.ai/architecture/a01/): How a compression-only stone vault stands when its thrust line stays inside the masonry, with a middle-third check and a modeled springer node.
 - [A.02 Reciprocal Timber Gridshells (Nexorades)](https://informatico.ai/architecture/a02/): How bolt-free reciprocal timber frames, where each beam rests on its neighbor, turn shell thrust into local bending and span large roofs with short pieces.
 - [A.03 Double-Skin Facades and Buoyancy Stack Ventilation](https://informatico.ai/architecture/a03/): How the thermosiphon stack effect and solar shading inside multi-story ventilated glass cavities could reduce cooling loads, in a stack-draft model.
@@ -53,6 +53,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 - [A.11 3D Polyhedral Graphic Statics and Stone Vaults](https://informatico.ai/architecture/a11/): How James Clerk Maxwell's reciprocal figures and polyhedral graphic statics, with tools like COMPAS, shape compression-only vaults, as a design study.
 - [A.12 Tensegrity Cable Domes and Sky-Cooling Canopies](https://informatico.ai/architecture/a12/): A design study of how the floating-compression tensegrity of Snelson and Fuller could carry an 8–13 μm radiative sky-cooling membrane over a civic canopy.
 - [A.13 Heinz Isler's Thin-Shell Domes and Buckling](https://informatico.ai/architecture/a13/): How inverted hanging cloth shapes compression-only concrete shells, and why inward dimples govern elastic buckling below Zoelly's classical limit.
+- [A.14 Felix Candela's Hypar Shells and Membrane Shear](https://informatico.ai/architecture/a14/): How straight timber boards form doubly curved hyperbolic paraboloid concrete umbrellas, and where Pucher's pure-shear model reaches its edge limits.
 
 ## Physics
 
@@ -72,7 +73,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 
 ## Mathematics
 
-- [Mathematics](https://informatico.ai/math/): Twelve interactive essays on mathematics: Fermat's Last Theorem and a Lean 4 repository, F1 optimal control, the geometry of color and optimal transport.
+- [Mathematics](https://informatico.ai/math/): Fourteen interactive essays on mathematics: Fermat's Last Theorem, zero-error graph capacity, sphere packing, optimal control and optimal transport.
 - [M.01 Fermat's Last Theorem and a Public Lean 4 Repository](https://informatico.ai/math/m01/): A reading of the Taylor–Wiles patching argument behind Fermat's Last Theorem and of a public Lean 4 repository whose README says it formalises the proof.
 - [M.02 Riemann Zeta Zero-Density Estimates](https://informatico.ai/math/m02/): Classical zero-density estimates for the Riemann zeta function, and what a public Lean 4 repository README states about a recent critical-line result.
 - [M.03 Cap Sets, FunSearch and AlphaEvolve](https://informatico.ai/math/m03/): What Google DeepMind's FunSearch and AlphaEvolve papers report: a 512-point cap set in eight dimensions and 48 products for 4×4 complex matrices.
@@ -85,6 +86,8 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 - [M.10 Persistent Homology and Percolating Pores](https://informatico.ai/math/m10/): How persistent homology of Edelsbrunner, Letscher and Zomorodian tracks pores and tunnels across scales, shown on a synthetic model, not real samples.
 - [M.11 The 3D Kakeya Conjecture and Riemann Zero Bounds](https://informatico.ai/math/m11/): Hong Wang and Joshua Zahl's preprint on 3D Kakeya sets and Guth and Maynard's zero-density estimate, two separate results read side by side.
 - [M.12 Public Lean 4 Repositories and Post-Quantum ML-KEM](https://informatico.ai/math/m12/): What the README of the public Lean 4 repository anthropics/formal-math says it contains, beside the NIST FIPS 203 lattice standard; none checked here.
+- [M.13 Shannon Zero-Error Graph Capacity and Lovász Theta](https://informatico.ai/math/m13/): How Shannon zero-error block codes, Lovász's theta umbrella and Haemers's rank bound meet on odd cycles, with the seven-cycle limit still open.
+- [M.14 Sphere Packing, Cohn–Elkies Bounds & Open Gaps](https://informatico.ai/math/m14/): How Cohn–Elkies Fourier linear programming, Viazovska modular functions in dimensions 8 and 24, and Laguerre bounds meet open gaps in dimension four.
 
 ## Grand Challenges & Open Problems Crucible (B.01–B.06)
 
@@ -124,9 +127,9 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 - [Step 13 · T.12 Two Clocks That Only Meet in Gravity: Dark Sectors and Clock Networks](https://informatico.ai/timegravity/t12/): How universal metric coupling lets spatially separated clocks sense electromagnetically transparent matter while co-located optical clocks bound scalar portals.
 - [Step 14 · T.13 Where Infrared Gravity Meets Gauge Theory](https://informatico.ai/timegravity/t13/): Soft gravitons, gravitational wave memory, and mixed anomaly cancellation link equivalence and quark colour while UV quantum gravity stays open.
 
-## Cross-Scale Featured Essays · Clocks, Stone, and Living Matter (ES.01–ES.11)
+## Cross-Scale Featured Essays · Clocks, Stone, and Living Matter (ES.01–ES.12)
 
-- [Cross-Scale Essays](https://informatico.ai/essays/): Eleven long-form essays where quantum decoherence, formal verification and porous-media thermodynamics connect falling clocks, stone and living systems.
+- [Cross-Scale Essays](https://informatico.ai/essays/): Twelve long-form essays where quantum decoherence, formal verification and cycle thermodynamics connect falling clocks, stone and living systems.
 - [ES.01 The Mesoscopic Floor: From Vacuum to Hydrogels](https://informatico.ai/essays/mesoscopic-floor/): How one thermal bath governs falling diamonds in ultra-high vacuum and hindered nanoparticles in polymer hydrogels across nineteen Knudsen decades.
 - [ES.02 Derived, Not Measured: Six Evidence Labels](https://informatico.ai/essays/derived-not-measured/): Why machine-precision math deduced from a measured law is still not a measurement: six evidence labels, parent provenance, and eight mutation tests.
 - [ES.03 Barriers, Pores, and Autonomous Clocks](https://informatico.ai/essays/barriers-pores-clocks/): How the thermodynamic uncertainty relation, Brinkman porous screening, and Kramers barrier escape govern clocks, stone mortar, and protein pores.
@@ -138,6 +141,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 - [ES.09 Multipartite Gravity Witnesses and Active Clocks](https://informatico.ai/essays/multipartite-witnesses-active-clocks/): Tripartite Mermin witnesses, 3-body smeared-gravity bounds, ytterbium composition scaling, and proper-time quantum clocks for tabletop gravity.
 - [ES.10 The Four-Gate Operator Sieve Across Scales](https://informatico.ai/essays/four-gate-operator-sieve/): How submillimeter torsion limits, a proposed entanglement test, clock bounds and sign-split bending compare six gravity models.
 - [ES.11 The Seven-Gate Crown Sieve](https://informatico.ai/essays/seven-gate-crown-sieve/): A seven-gate scorecard compares eight gravity and gauge architectures; one constructed model passes all gates as scored, a conjecture.
+- [ES.12 Cycle Affinity and Irreversible Gates](https://informatico.ai/essays/cycle-affinity-tur-gates/): Closed-form Markov cycle models show why scalar open probability hides ATP-driven gating while flux asymmetry and burst peaks separate equilibrium.
 
 ## Cult Classics · Engineering & Architecture Stories (CC.01–CC.03)
 

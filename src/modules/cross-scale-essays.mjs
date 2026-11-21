@@ -2047,6 +2047,172 @@ function initSevenGateCrown(root) {
   render();
 }
 
+function initCycleAffinity(root) {
+  const fluxInput = root.querySelector('[data-cs-input="flux"]');
+  const k12Input = root.querySelector('[data-cs-input="k12"]');
+  const koBtn = root.querySelector("[data-cs-knockout]");
+  const statusEl = root.querySelector("[data-cs-status]");
+  const poBar = root.querySelector('[data-cs-bar="po"]');
+  const affBar = root.querySelector('[data-cs-bar="aff"]');
+  const eqCurve = root.querySelector('[data-ca-curve="eq"]');
+  const drvCurve = root.querySelector('[data-ca-curve="drv"]');
+  const peakDot = root.querySelector("[data-ca-peak]");
+  const reads = {};
+  root.querySelectorAll("[data-cs-read]").forEach((el) => {
+    reads[el.getAttribute("data-cs-read")] = el;
+  });
+  let knockout = false;
+
+  const PI = [0.35, 0.25, 0.40];
+  const W0 = [2.0, 1.5, 1.0];
+  const E1 = 1.0;
+  const E2 = 5.0;
+
+  function openPdf(e1, e2, k12, k21, p1, p2, t) {
+    const a = -(e1 + k12);
+    const b = k12;
+    const c = k21;
+    const d = -(e2 + k21);
+    const tr = a + d;
+    const disc = Math.sqrt(Math.max(0.0, (a - d) * (a - d) + 4.0 * b * c));
+    const l1 = 0.5 * (tr + disc);
+    const l2 = 0.5 * (tr - disc);
+    const el1 = Math.exp(l1 * t);
+    const el2 = Math.exp(l2 * t);
+    let m00; let m01; let m10; let m11;
+    if (Math.abs(l1 - l2) > 1e-12) {
+      m00 = ((a - l2) * el1 - (a - l1) * el2) / (l1 - l2);
+      m01 = (b * el1 - b * el2) / (l1 - l2);
+      m10 = (c * el1 - c * el2) / (l1 - l2);
+      m11 = ((d - l2) * el1 - (d - l1) * el2) / (l1 - l2);
+    } else {
+      m00 = (1.0 + (a - l1) * t) * el1;
+      m01 = b * t * el1;
+      m10 = c * t * el1;
+      m11 = (1.0 + (d - l1) * t) * el1;
+    }
+    return (p1 * m00 + p2 * m10) * e1 + (p1 * m01 + p2 * m11) * e2;
+  }
+
+  function render() {
+    const J = Number(fluxInput ? fluxInput.value : 4.0);
+    const k12 = Number(k12Input ? k12Input.value : 8.0);
+    const k21 = k12;
+    const isEs = lang() === "es";
+
+    const f12p = W0[0] + J; const f12m = W0[0];
+    const f23p = W0[1] + J; const f23m = W0[1];
+    const f31p = W0[2] + J; const f31m = W0[2];
+    const k12r = f12p / PI[0]; const k21r = f12m / PI[1];
+    const k23r = f23p / PI[1]; const k32r = f23m / PI[2];
+    const k31r = f31p / PI[2]; const k13r = f31m / PI[0];
+
+    const c2 = (k12r + k13r) + (k21r + k23r) + (k31r + k32r);
+    const c1 = ((k12r + k13r) * (k21r + k23r) - k12r * k21r)
+      + ((k12r + k13r) * (k31r + k32r) - k13r * k31r)
+      + ((k21r + k23r) * (k31r + k32r) - k23r * k32r);
+    const pPlus = k12r * k23r * k31r;
+    const pMinus = k13r * k32r * k21r;
+    const lam1 = (pPlus - pMinus) / c1;
+    const lam2 = ((pPlus + pMinus) - 2.0 * c2 * lam1 * lam1) / c1;
+    const ratio = (f12p * f23p * f31p) / (f12m * f23m * f31m);
+    const aff = J > 0 ? Math.log(ratio) : 0.0;
+    const sigma = lam1 * aff;
+    const qTur = J > 0 ? (sigma * lam2) / (lam1 * lam1) : 2.0;
+
+    const pOpenShown = knockout && J > 0 ? Math.min(0.95, 0.40 + 0.04 * J) : 0.40;
+    // At equilibrium (J === 0) without driving, stationary entry matches detailed-balance p_eq = (1/6, 5/6)
+    const p1Drv = (knockout || J === 0) ? (1.0 / 6.0) : 1.0;
+    const p2Drv = (knockout || J === 0) ? (5.0 / 6.0) : 0.0;
+    const slopeEq = -(0.2 * E1 ** 3 + 0.2 * E2 ** 3 + 0.2 * k12 * (E1 - E2) ** 2) / (0.2 * E1 + 0.2 * E2);
+    const slopeDrv = p1Drv * (k12 * E2 - E1 * (E1 + k12)) + p2Drv * (k21 * E1 - E2 * (E2 + k21));
+
+    let tPeak = 0.0;
+    let fPeak = -1.0;
+    for (let ms = 0; ms <= 650; ms += 1) {
+      const tm = ms * 0.001;
+      const fdrMs = openPdf(E1, E2, k12, k21, p1Drv, p2Drv, tm);
+      if (fdrMs > fPeak) {
+        fPeak = fdrMs;
+        tPeak = tm;
+      }
+    }
+
+    const eqPts = [];
+    const drvPts = [];
+    for (let i = 0; i <= 65; i += 1) {
+      const t = (i / 65.0) * 0.65;
+      const x = 28.0 + (t / 0.65) * 500.0;
+      const feq = openPdf(E1, E2, k12, k21, 1.0 / 6.0, 5.0 / 6.0, t);
+      const fdr = openPdf(E1, E2, k12, k21, p1Drv, p2Drv, t);
+      const yeq = 252.0 - Math.min(1.0, feq / 4.6) * 96.0;
+      const ydr = 252.0 - Math.min(1.0, fdr / 4.6) * 96.0;
+      eqPts.push(`${x.toFixed(1)},${yeq.toFixed(1)}`);
+      drvPts.push(`${x.toFixed(1)},${ydr.toFixed(1)}`);
+    }
+
+    if (eqCurve) eqCurve.setAttribute("points", eqPts.join(" "));
+    if (drvCurve) drvCurve.setAttribute("points", drvPts.join(" "));
+    if (peakDot) {
+      peakDot.setAttribute("cx", (28.0 + (tPeak / 0.65) * 500.0).toFixed(1));
+      peakDot.setAttribute("cy", (252.0 - Math.min(1.0, fPeak / 4.6) * 96.0).toFixed(1));
+    }
+
+    if (reads.flux) reads.flux.textContent = `${J.toFixed(1)} s⁻¹`;
+    if (reads.k12) reads.k12.textContent = `${k12.toFixed(1)} s⁻¹`;
+    if (reads.po) {
+      reads.po.textContent = knockout
+        ? `P_o = ${pOpenShown.toFixed(4)} (${isEs ? "DEFECTO" : "DEFECT"})`
+        : `P_o = 0.4000 (${isEs ? "plano" : "flat"})`;
+    }
+    if (reads.aff) {
+      reads.aff.textContent = J > 0
+        ? `A = ${aff.toFixed(3)} k_B T · Q_TUR = ${qTur.toFixed(3)}`
+        : "A = 0.000 k_B T · Q_TUR → 2.000";
+    }
+    if (reads.ratio) reads.ratio.textContent = `${ratio.toFixed(1)}×`;
+    if (reads.sigma) reads.sigma.textContent = `${sigma.toFixed(2)} s⁻¹`;
+    if (reads.eqslope) reads.eqslope.textContent = `${slopeEq.toFixed(1)} s⁻²`;
+    if (reads.burst) {
+      reads.burst.textContent = `f'_drv(0) = ${slopeDrv >= 0 ? "+" : ""}${slopeDrv.toFixed(1)} s⁻² · t_peak = ${(tPeak * 1000).toFixed(0)} ms`;
+    }
+
+    if (poBar) poBar.setAttribute("width", Math.max(8.0, pOpenShown * 230.0).toFixed(1));
+    if (affBar) affBar.setAttribute("width", Math.max(6.0, Math.min(230.0, (aff / 8.0) * 230.0)).toFixed(1));
+
+    if (statusEl) {
+      if (knockout) {
+        statusEl.textContent = isEs
+          ? "Defecto plantado activo: mezcla la entrada de equilibrio p_eq en la curva impulsada y permite que P_o derive con J, exactamente la confusión que rechaza el verificador."
+          : "Planted defect active: conflates equilibrium-flux entry into the driven curve and lets P_o drift with J—the exact error rejected by the Python verifier.";
+        statusEl.setAttribute("data-state", "defect");
+      } else if (J === 0) {
+        statusEl.textContent = isEs
+          ? "Equilibrio detallado (J = 0, A = 0): Φ⁺/Φ⁻ = 1.0 y f'_eq(0) ≤ 0; el sistema no consume energía."
+          : "Detailed balance (J = 0, A = 0): Φ⁺/Φ⁻ = 1.0 and f'_eq(0) ≤ 0; zero net cycle dissipation.";
+        statusEl.setAttribute("data-state", "pass");
+      } else {
+        statusEl.textContent = isEs
+          ? `Calibre iso-P_o activo: P_o = 0.4000 permanece plano mientras A = ${aff.toFixed(3)} k_B T, Q_TUR = ${qTur.toFixed(3)} ≥ 2 y f'_drv(0) = ${slopeDrv >= 0 ? "+" : ""}${slopeDrv.toFixed(1)} s⁻² separan los regímenes.`
+          : `Iso-P_o gauge active: P_o = 0.4000 stays flat while A = ${aff.toFixed(3)} k_B T, Q_TUR = ${qTur.toFixed(3)} ≥ 2, and f'_drv(0) = ${slopeDrv >= 0 ? "+" : ""}${slopeDrv.toFixed(1)} s⁻² separate the regimes.`;
+        statusEl.setAttribute("data-state", "pass");
+      }
+    }
+  }
+
+  [fluxInput, k12Input].forEach((el) => { if (el) el.addEventListener("input", render); });
+  if (koBtn) {
+    koBtn.addEventListener("click", () => {
+      knockout = !knockout;
+      koBtn.setAttribute("aria-pressed", String(knockout));
+      render();
+    });
+  }
+  window.addEventListener("tp-lang-change", render);
+  root.setAttribute("data-cs-ready", "true");
+  render();
+}
+
 export function initCrossScaleEssays(scope = document) {
   const once = (sel, fn) => scope.querySelectorAll(sel).forEach((el) => {
     if (!el.hasAttribute("data-cs-ready")) fn(el);
@@ -2063,6 +2229,7 @@ export function initCrossScaleEssays(scope = document) {
   once('[data-cs-instrument="multipartite_witness"]', initMultipartiteWitness);
   once('[data-cs-instrument="four_gate_sieve"]', initFourGateSieve);
   once('[data-cs-instrument="seven_gate_crown"]', initSevenGateCrown);
+  once('[data-cs-instrument="cycle_affinity"]', initCycleAffinity);
 }
 
 initCrossScaleEssays(document);

@@ -1598,6 +1598,86 @@ export function initPlateSolvers(scope = document) {
         if (qLbl) qLbl.textContent = `${qTot.toFixed(2)} kPa`;
         return;
       }
+      if (slug === "a14") {
+        // Folio A.14 idealized Pucher membrane shear model: N_xy = q_0 a b / (2 h), sigma_1,2 = +/- N_xy / t.
+        const aM = v0;
+        const hM = v1;
+        const tMm = 40.0;
+        const tM = tMm / 1000.0;
+        const qSw = (2400.0 * 9.80665 * tM) / 1000.0;
+        const qTot = qSw + 0.80;
+        const cTwist = (aM * aM) / hM;
+        const nXy = (qTot * cTwist) / 2.0;
+        const sig1 = (nXy / tM) / 1000.0;
+        const sig2 = -sig1;
+        const lamComp = (0.45 * 35.0) / Math.max(1e-9, Math.abs(sig2));
+        const areaM2 = 4.0 * aM * aM;
+        const qStormM3h = areaM2 * (50.0 / 1000.0);
+        const qStormLs = (qStormM3h / 3600.0) * 1000.0;
+        if (riseLabel) riseLabel.textContent = `${aM.toFixed(1)} m`;
+        if (loadLabel) loadLabel.textContent = `${hM.toFixed(1)} m`;
+        if (inlineRise) inlineRise.textContent = `a = b = ${aM.toFixed(1)} m`;
+        if (thrustOut) thrustOut.textContent = `${nXy.toFixed(2)} kN/m (Uniform in Model Quadrant)`;
+        if (kernOut) kernOut.textContent = `${sig2.toFixed(3)} MPa (Quadrant Field, Model Service Load)`;
+        if (outR2) outR2.textContent = `λ_comp = ${lamComp.toFixed(1)} (80.0% Savings vs 200 mm)`;
+        if (statusOut) statusOut.textContent = `${qStormLs.toFixed(1)} L/s (${qStormM3h.toFixed(1)} m³/h, ${areaM2.toFixed(0)} m² Model Roof)`;
+        if (statusBox) statusBox.setAttribute("data-alert", lamComp >= 3.0 ? "false" : "true");
+        const umbL = document.getElementById("tp-a14-umbrella-l");
+        const umbR = document.getElementById("tp-a14-umbrella-r");
+        const rule1 = document.getElementById("tp-a14-rule-1");
+        const rule2 = document.getElementById("tp-a14-rule-2");
+        const rainPath = document.getElementById("tp-a14-rain");
+        const spanLbl = document.getElementById("tp-a14-span-lbl");
+        const sig1Bar = document.getElementById("tp-a14-sig1-bar");
+        const sig2Bar = document.getElementById("tp-a14-sig2-bar");
+        const nxyDot = document.getElementById("tp-a14-nxy-dot");
+        const sig1Lbl = document.getElementById("tp-a14-sig1-lbl");
+        const sig2Lbl = document.getElementById("tp-a14-sig2-lbl");
+        const nxyLbl = document.getElementById("tp-a14-nxy-lbl");
+        const halfPx = 72 + ((aM - 6.0) / 12.0) * 78;
+        const dropPx = 15 + ((hM - 1.0) / 5.0) * 50;
+        const tipY = Math.round(130 - dropPx);
+        const lx = Math.round(198 - halfPx);
+        const rx = Math.round(198 + halfPx);
+        if (umbL) umbL.setAttribute("points", `${lx},${tipY} 198,130 198,144 ${lx},${tipY + 12}`);
+        if (umbR) umbR.setAttribute("points", `198,130 ${rx},${tipY} ${rx},${tipY + 12} 198,144`);
+        if (rule1) {
+          rule1.setAttribute("x1", String(Math.round(lx + halfPx * 0.2)));
+          rule1.setAttribute("y1", String(Math.round(tipY + dropPx * 0.2)));
+        }
+        if (rule2) {
+          rule2.setAttribute("x1", String(Math.round(rx - halfPx * 0.2)));
+          rule2.setAttribute("y1", String(Math.round(tipY + dropPx * 0.2)));
+        }
+        if (rainPath) {
+          rainPath.setAttribute("d", `M ${lx + 28} ${tipY - 4} L 184 116`);
+        }
+        if (spanLbl) spanLbl.textContent = `2a = ${(2.0 * aM).toFixed(1)} m · h = ${hM.toFixed(1)} m · Q = ${qStormLs.toFixed(1)} L/s`;
+        const barH = Math.max(8, Math.min(40, Math.round((sig1 / 3.0) * 36)));
+        if (sig1Bar) {
+          sig1Bar.setAttribute("y", String(100 - barH));
+          sig1Bar.setAttribute("height", String(barH));
+        }
+        if (sig2Bar) {
+          sig2Bar.setAttribute("y", "100");
+          sig2Bar.setAttribute("height", String(barH));
+        }
+        if (sig1Lbl) {
+          sig1Lbl.setAttribute("y", String(92 - barH));
+          sig1Lbl.textContent = `+${sig1.toFixed(3)} MPa`;
+        }
+        if (sig2Lbl) {
+          sig2Lbl.setAttribute("y", String(114 + barH));
+          sig2Lbl.textContent = `${sig2.toFixed(3)} MPa`;
+        }
+        if (nxyDot) {
+          const dotY = Math.max(54, Math.min(156, Math.round(156 - (nXy / 285.0) * 102)));
+          nxyDot.setAttribute("cy", String(dotY));
+          if (nxyLbl) nxyLbl.setAttribute("y", String(dotY - 14));
+        }
+        if (nxyLbl) nxyLbl.textContent = `${nXy.toFixed(2)} kN/m`;
+        return;
+      }
 
       const rise = v0;
       const asym = v1;
@@ -1686,6 +1766,92 @@ export function initPlateSolvers(scope = document) {
         return;
       }
 
+      if (slug === "m14") {
+        const dRaw = parseFloat(mathPrimeInput.value);
+        const mRaw = parseFloat(mathClauseInput.value);
+        const dVal = Number.isFinite(dRaw) ? Math.max(2, Math.min(24, Math.round(dRaw))) : 8;
+        const mDeg = Number.isFinite(mRaw) && mRaw < 4 ? 3 : 5;
+        if (pLabel) pLabel.textContent = `d = ${dVal}`;
+        if (cLabel) cLabel.textContent = `M = ${mDeg}`;
+        if (inlineP) inlineP.textContent = `d = ${dVal}`;
+
+        // Exact lattice densities & offline Laguerre-Gaussian Cohn-Elkies bounds (from verify_m14_sphere_packing.py)
+        const LATTICE_MAP = {
+          2: { name: "A_2", formula: "π/√12", dens: Math.PI / Math.sqrt(12.0), tau: "6", settled: true, note: "A_2 MATCHED (FEJES TÓTH, d = 2)" },
+          3: { name: "D_3 (FCC)", formula: "π/(3√2)", dens: Math.PI / (3.0 * Math.sqrt(2.0)), tau: "12", settled: true, note: "FCC MATCHED (HALES FLYSPECK, d = 3)" },
+          4: { name: "D_4", formula: "π^2/16", dens: (Math.PI * Math.PI) / 16.0, tau: "24", settled: false, note: "OPEN DENSITY GAP (τ_4 = 24 BY MUSIN 2008)" },
+          5: { name: "D_5", formula: "π^2/(15√2)", dens: (Math.PI * Math.PI) / (15.0 * Math.sqrt(2.0)), tau: "40", settled: false, note: "OPEN DENSITY GAP (D_5 LATTICE BENCHMARK, d = 5)" },
+          6: { name: "E_6", formula: "π^3/(48√3)", dens: Math.pow(Math.PI, 3) / (48.0 * Math.sqrt(3.0)), tau: "72", settled: false, note: "OPEN DENSITY GAP (E_6 LATTICE BENCHMARK, d = 6)" },
+          7: { name: "E_7", formula: "π^3/105", dens: Math.pow(Math.PI, 3) / 105.0, tau: "126", settled: false, note: "OPEN DENSITY GAP (E_7 LATTICE BENCHMARK, d = 7)" },
+          8: { name: "E_8", formula: "π^4/384", dens: Math.pow(Math.PI, 4) / 384.0, tau: "240", settled: true, note: "E_8 MATCHED BY VIAZOVSKA LP LIMIT (d = 8)" },
+          24: { name: "Λ_24 (Leech)", formula: "π^12/12!", dens: Math.pow(Math.PI, 12) / 479001600.0, tau: "196,560", settled: true, note: "LEECH Λ_24 MATCHED BY CKMRV LP LIMIT (d = 24)" },
+        };
+        const CE_CERTS = {
+          4: { 3: { b: 0.700415, rc: 1.2162 }, 5: { b: 0.672477, rc: 1.3893 } },
+          8: { 3: { b: 0.346486, rc: 1.4776 }, 5: { b: 0.303541, rc: 1.6683 } },
+          24: { 3: { b: 0.087466, rc: 2.2508 }, 5: { b: 0.008955, rc: 2.3127 } },
+        };
+        const known = LATTICE_MAP[dVal];
+        const blichfeldtUpper = ((dVal + 2.0) / 2.0) * Math.pow(2.0, -0.5 * dVal);
+        const minkowskiLower = Math.pow(2.0, 1.0 - dVal);
+        const ceApprox = CE_CERTS[dVal] ? CE_CERTS[dVal][mDeg] : null;
+        const densShow = known ? known.dens : minkowskiLower;
+        const ceShow = ceApprox ? ceApprox.b : blichfeldtUpper;
+        const ratio = ceShow / Math.max(1e-9, densShow);
+
+        if (barrierOut) {
+          barrierOut.textContent = known
+            ? `${known.dens.toFixed(6)} (${known.name}, ${known.formula}, τ = ${known.tau})`
+            : `${densShow.toFixed(6)} (Minkowski lower floor 2^(1−d), open d = ${dVal})`;
+        }
+        if (fluxOut) {
+          fluxOut.textContent = ceApprox
+            ? `${ceApprox.b.toFixed(6)} (r_cut = ${ceApprox.rc.toFixed(4)}, model)`
+            : `${ceShow.toFixed(6)} (Blichfeldt 1929 upper bound (d+2)/2 · 2^(−d/2))`;
+        }
+        if (ethOut) {
+          ethOut.textContent = dVal === 8
+            ? `${ratio.toFixed(4)}x (Viazovska modular limit: 1.0000x)`
+            : dVal === 24
+              ? `${ratio.toFixed(4)}x (CKMRV modular limit: 1.0000x)`
+              : ceApprox
+                ? `${ratio.toFixed(4)}x (deg-${mDeg} LP vs ${known.name})`
+                : `${ratio.toFixed(4)}x (Blichfeldt upper vs baseline)`;
+        }
+        if (qedOut) {
+          qedOut.textContent = known ? known.note : `OPEN DIMENSION d = ${dVal} (BLICHFELDT UPPER = ${blichfeldtUpper.toFixed(5)})`;
+        }
+        if (qedBox) qedBox.setAttribute("data-alert", known && known.settled ? "false" : "true");
+
+        const latBar = document.getElementById("tp-m14-lat-bar");
+        const ceBar = document.getElementById("tp-m14-ce-bar");
+        const m14Pt = document.getElementById("tp-m14-point");
+        const statusLbl = document.getElementById("tp-m14-status-lbl");
+        const logMap = (val) => Math.max(8, Math.min(136, Math.round(136 - Math.min(1.0, Math.max(0.0, -Math.log10(Math.max(1e-4, val)) / 3.2)) * 124)));
+        const hLat = logMap(densShow);
+        const hCe = logMap(ceShow);
+        if (latBar) {
+          latBar.setAttribute("y", String(184 - hLat));
+          latBar.setAttribute("height", String(hLat));
+        }
+        if (ceBar) {
+          ceBar.setAttribute("y", String(184 - hCe));
+          ceBar.setAttribute("height", String(hCe));
+        }
+        if (m14Pt) {
+          const cx = Math.round(56 + ((dVal - 2) / 22.0) * 286);
+          const cy = 184 - hLat;
+          m14Pt.setAttribute("cx", String(cx));
+          m14Pt.setAttribute("cy", String(cy));
+        }
+        if (statusLbl) {
+          const tag = known ? known.name.split(" ")[0] : "Open";
+          const boundLabel = ceApprox ? `Deg-${mDeg} LP` : "Blichfeldt";
+          statusLbl.textContent = `d = ${dVal} (${tag}): Δ = ${densShow.toFixed(6)} · ${boundLabel} = ${ceShow.toFixed(6)}`;
+        }
+        return;
+      }
+
       if (slug === "m02") {
         // Folio M.02: total zero-density exponent c(σ)(1 − σ): Ingham 3(1 − σ)/(2 − σ) below σ = 3/4,
         // Huxley 12(1 − σ)/5 from σ = 3/4 (they agree at 3/4). The other readouts are stated values.
@@ -1701,10 +1867,63 @@ export function initPlateSolvers(scope = document) {
         if (barrierOut) barrierOut.textContent = `${total.toFixed(3)} (at σ = ${sigma.toFixed(2)}, ${who})`;
         return;
       }
+
+      if (slug === "m13") {
+        // Folio M.13: Shannon Zero-Error Capacity & Lovasz Theta Sandwich on Odd Cycles C_n.
+        const rawN = Math.round(v0);
+        const n = rawN >= 5 ? (rawN % 2 === 1 ? rawN : rawN + 1) : 5;
+        const k = Math.max(1, Math.min(5, Math.round(v1)));
+        if (pLabel) pLabel.textContent = `n = ${n}`;
+        if (cLabel) cLabel.textContent = `k = ${k}`;
+        if (inlineP) inlineP.textContent = `n = ${n}`;
+        const alpha = Math.floor((n - 1) / 2);
+        const cosPiN = Math.cos(Math.PI / n);
+        const theta = (n * cosPiN) / (1.0 + cosPiN);
+        const alphaStar = n / 2.0;
+        const chiBar = Math.floor((n + 1) / 2);
+        let rate = alpha;
+        if (n === 5) {
+          rate = k === 1 ? 2.0 : Math.pow(Math.pow(5.0, Math.floor(k / 2)) * Math.pow(2.0, k % 2), 1.0 / k);
+        } else if (n === 7) {
+          const c7Rates = { 1: 3.0, 2: Math.sqrt(10.0), 3: Math.pow(33.0, 1.0 / 3.0), 4: Math.pow(108.0, 1.0 / 4.0), 5: Math.pow(367.0, 1.0 / 5.0) };
+          rate = c7Rates[k] || 3.0;
+        } else {
+          const c2Sizes = { 9: 18.0, 11: 26.0, 13: 38.0 };
+          const c2 = c2Sizes[n] || (alpha * alpha);
+          rate = k === 1 ? alpha : Math.pow(Math.pow(c2, Math.floor(k / 2)) * Math.pow(alpha, k % 2), 1.0 / k);
+        }
+        const gap = Math.max(0.0, theta - rate);
+        if (barrierOut) {
+          barrierOut.textContent = n === 5
+            ? `${theta.toFixed(6)} (closed Θ(C_5) = √5)`
+            : `${theta.toFixed(6)} (upper bound ϑ(C_${n}))`;
+        }
+        if (fluxOut) fluxOut.textContent = `${rate.toFixed(6)} at n = ${n}, k = ${k}`;
+        if (ethOut) ethOut.textContent = `${alpha} ≤ ${theta.toFixed(4)} ≤ ${alphaStar.toFixed(3)} ≤ ${chiBar}`;
+        if (qedOut) {
+          if (n === 5) {
+            qedOut.textContent = gap < 1e-6
+              ? `${gap.toFixed(6)} (CLOSED ON C_5)`
+              : k === 1
+                ? `${gap.toFixed(6)} (SINGLE USE k = 1)`
+                : `${gap.toFixed(6)} (ODD BLOCK k = ${k}; EVEN k CLOSES GAP)`;
+          } else {
+            qedOut.textContent = `${gap.toFixed(6)} (OPEN GAP)`;
+          }
+        }
+        const m13Dot = document.getElementById("tp-svg-math-point");
+        if (m13Dot) {
+          const pts = [[62, 152], [136, 126], [210, 98], [284, 72], [344, 50]];
+          const step = Math.min(4, Math.max(0, Math.round((n - 5) / 2)));
+          m13Dot.setAttribute("cx", String(pts[step][0]));
+          m13Dot.setAttribute("cy", String(pts[step][1]));
+        }
+        return;
+      }
     };
     mathPrimeInput.addEventListener("input", updateMath);
     mathClauseInput.addEventListener("input", updateMath);
-    if ((getActiveSlug() || "m01") === "m01") updateMath();
+    if ((getActiveSlug() || "m01") === "m01" || getActiveSlug() === "m13") updateMath();
   }
 
   // 5. Engineering Stokes-Brinkman (E.01), Acoustic Metamaterials (E.03) & Enthalpy Cores (E.04)

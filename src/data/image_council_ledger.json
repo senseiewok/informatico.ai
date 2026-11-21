@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2",
   "law": "Law 8 & Law 17 — Human-Scale Grounded Scientific Plate Generation & 4-Seat Image Selection Council",
-  "total_plates_replaced": 66,
-  "magazine_plates_count": 66,
+  "total_plates_replaced": 69,
+  "magazine_plates_count": 69,
   "council_seats": [
     "gemini-4-argon (Physical Specification & Structural Plausibility Seat)",
     "claude-opus-5.5 (Human Perceptual Impact & Tactile Craft Seat)",
@@ -713,6 +713,39 @@
       "bytes": 172948,
       "zero_baked_text_verified": true,
       "sha256": "a91dfff96c344df2439e565abd1695177c9e1ff0f6c68250fac1e65d7b2f2c3a"
+    },
+    {
+      "plate_id": "m13",
+      "path": "src/plates/m13.jpg",
+      "governing_specification": "Tabletop editorial photograph on dark cleft slate and cream vellum paper featuring a brushed-brass pentagon ring with five turned ivory pegs beside a brass geometric umbrella-rib apparatus on a bronze bearing handle casting Prussian-slate and muted verdigris shadows",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 138957,
+      "zero_baked_text_verified": true,
+      "sha256": "cba5e3a1221adbe6a573f949639f65ae7761e9f0a623b8f4de3f756c41ec4d81"
+    },
+    {
+      "plate_id": "m14",
+      "path": "src/plates/m14.jpg",
+      "governing_specification": "Raking-light tabletop macro photograph on warm cream limestone vellum paper showing brushed brass and frosted quartz spheres packed inside a dark anodized-slate Voronoi cell tray beside a smooth unmarked matte-steel ring gauge",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 150848,
+      "zero_baked_text_verified": true,
+      "sha256": "3ae3862ced611f0f6a859577d99c280d284a59f120c038545a145237c6383d28"
+    },
+    {
+      "plate_id": "a14",
+      "path": "src/plates/a14.jpg",
+      "governing_specification": "Tactile studio photograph on honed warm limestone workbench under raking 4500K north daylight: matte pale-gray cast-concrete 4-quadrant inverted hypar umbrella shell scale model with thin upturned edges and straight-line rulings over a carved stone catch-basin beside an uncast straight-slat basswood hypar formwork cradle and ungraduated brass dividers",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 147872,
+      "zero_baked_text_verified": true,
+      "sha256": "9fd412d60fa2a715a9127673b13a9d0055fb63bba15cd088861875cd22bcecbf"
     }
   ]
 }

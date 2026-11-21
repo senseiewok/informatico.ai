@@ -138,7 +138,7 @@
   </url>
   <url>
     <loc>https://informatico.ai/architecture/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/architecture/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/architecture/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/architecture/"/>
@@ -249,6 +249,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/architecture/a13/"/>
   </url>
   <url>
+    <loc>https://informatico.ai/architecture/a14/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/architecture/a14/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/architecture/a14/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/architecture/a14/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/architecture/a14/"/>
+  </url>
+  <url>
     <loc>https://informatico.ai/physics/</loc>
     <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/physics/"/>
@@ -354,7 +362,7 @@
   </url>
   <url>
     <loc>https://informatico.ai/math/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/math/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/math/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/math/"/>
@@ -455,6 +463,22 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/math/m12/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/math/m12/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/math/m12/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/math/m13/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/math/m13/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/math/m13/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/math/m13/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/math/m13/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/math/m14/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/math/m14/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/math/m14/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/math/m14/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/math/m14/"/>
   </url>
   <url>
     <loc>https://informatico.ai/bounties/</loc>
@@ -690,7 +714,7 @@
   </url>
   <url>
     <loc>https://informatico.ai/essays/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/"/>
@@ -783,6 +807,14 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/seven-gate-crown-sieve/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/seven-gate-crown-sieve/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/seven-gate-crown-sieve/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/essays/cycle-affinity-tur-gates/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/cycle-affinity-tur-gates/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/cycle-affinity-tur-gates/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/cycle-affinity-tur-gates/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/cycle-affinity-tur-gates/"/>
   </url>
   <url>
     <loc>https://informatico.ai/classics/golf-gti/</loc>
@@ -954,7 +986,7 @@
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/architecture/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/architecture/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/architecture/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/architecture/"/>
@@ -1065,6 +1097,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/architecture/a13/"/>
   </url>
   <url>
+    <loc>https://informatico.ai/es-mx/architecture/a14/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/architecture/a14/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/architecture/a14/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/architecture/a14/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/architecture/a14/"/>
+  </url>
+  <url>
     <loc>https://informatico.ai/es-mx/physics/</loc>
     <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/physics/"/>
@@ -1170,7 +1210,7 @@
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/math/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/math/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/math/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/math/"/>
@@ -1271,6 +1311,22 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/math/m12/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/math/m12/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/math/m12/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/math/m13/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/math/m13/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/math/m13/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/math/m13/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/math/m13/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/math/m14/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/math/m14/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/math/m14/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/math/m14/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/math/m14/"/>
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/bounties/</loc>
@@ -1506,7 +1562,7 @@
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/essays/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/"/>
@@ -1599,6 +1655,14 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/seven-gate-crown-sieve/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/seven-gate-crown-sieve/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/seven-gate-crown-sieve/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/essays/cycle-affinity-tur-gates/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/essays/cycle-affinity-tur-gates/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/essays/cycle-affinity-tur-gates/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/essays/cycle-affinity-tur-gates/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/essays/cycle-affinity-tur-gates/"/>
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/classics/golf-gti/</loc>
