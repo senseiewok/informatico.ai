@@ -1,7 +1,7 @@
 {
   "version": "7.0.0",
-  "title": "Informatico.ai — 7-Volume, 50-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
-  "total_folios": 50,
+  "title": "Informatico.ai — 7-Volume, 51-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
+  "total_folios": 51,
   "pillars": {
     "engineering": [
       {
@@ -1565,6 +1565,120 @@
           "contrasting": 2,
           "retracted": false,
           "summary": "Scite Smart Citation Index entry for Biot 1941, \"General Theory of Three-Dimensional Consolidation\" (Journal of Applied Physics, DOI 10.1063/1.1712886), fetched 2026-11-20: 4,896 citing records (29 supporting, 4,865 mentioning, 2 contrasting) and no retraction notice. These counts describe that foundational paper, not this folio."
+        }
+      },
+      {
+        "folio_id": "E.14",
+        "slug": "e14",
+        "pillar": "engineering",
+        "category_code": "E",
+        "parent_folios": [
+          "E.05",
+          "E.13"
+        ],
+        "lineage_mode": "CONTINUATION · Continues E.05 Terzaghi Effective Stress & E.13 Biot Poroelasticity",
+        "title": "Unsaturated Soil Suction Stress, van Genuchten–Mualem Water Retention & Rainfall-Induced Infinite-Slope Instability",
+        "subtitle": "Continuing Folio E.05's saturated Terzaghi effective stress and E.13's poroelastic fault margin: an illustrative geotechnical screening study coupling van Genuchten–Mualem retention S_e(ψ) and K_r(S_e), Lu–Godt–Wu closed-form suction stress σ^s = −S_e ψ, and infinite-slope limit equilibrium FS across wetting hillslopes and dry sands.",
+        "date_published": "2026-11-21",
+        "date_redated": "2026-11-21",
+        "current_edition": "REV 1.0",
+        "status_badge": "VADOSE GEOMECHANICS · REV 1.0",
+        "primary_kernel": "skills/engineering/e14/verify_e14_unsaturated_suction.py",
+        "governing_law": "S_e = [1 + (α_vG ψ)^n]^(−m) · σ^s = −S_e ψ · FS = tan φ' / tan β + (c' − σ^s tan φ') / (γ z sin β cos β)",
+        "colophon": {
+          "identifier": "E.14 · Unsaturated Suction Stress & Slope Margin · REV 1.0",
+          "kernels": "van Genuchten SWCC (1980) · Mualem K_r (1976) · Lu–Godt–Wu Suction Stress (2010)",
+          "benchmarks": "Model values (silty loam ψ = 24.0 kPa, β = 34.0°): S_e = 0.904 · K_r = 0.1662 · σ^s = −21.69 kPa · FS = 1.557 (collapses to 0.962 at ψ = 2.0 kPa)",
+          "bridge": "Continues E.05/E.13"
+        },
+        "sliders": [
+          {
+            "label": "Matric Suction at Slip Plane (ψ = u_a − u_w)",
+            "min": 0.0,
+            "max": 120.0,
+            "step": 2.0,
+            "value": 24.0,
+            "unit": " kPa"
+          },
+          {
+            "label": "Slope Inclination (β)",
+            "min": 20.0,
+            "max": 45.0,
+            "step": 0.5,
+            "value": 34.0,
+            "unit": "°"
+          }
+        ],
+        "steps": [
+          "Stage 1 (van Genuchten–Mualem Water Retention, Continuing E.05): Above the water table (ψ = u_a − u_w ≥ 0 kPa), soil pores hold both air and capillary water. van Genuchten (1980, DOI 10.2136/sssaj1980.03615995004400050002x) parameterizes effective saturation as S_e(ψ) = [1 + (α_vG ψ)^n]^(−m) with m = 1 − 1/n (requiring n > 1), and Mualem (1976, DOI 10.1029/WR012i003p00513) gives K_r(S_e) = S_e^(1/2) [1 − (1 − S_e^(1/m))^m]^2. In silty loam (α_vG = 0.02 kPa^−1, n = 1.60, m = 0.375) at ψ = 24.0 kPa, S_e = 0.904 and K_r = 0.1662.",
+          "Stage 2 (Lu–Godt–Wu Suction Stress σ^s and Pore-Exponent Split): Lu, Godt & Wu (2010, DOI 10.1029/2009WR008646) unify Bishop effective stress σ' = (σ − u_a) − σ^s via closed-form suction stress σ^s(ψ) = −S_e(ψ) ψ ≤ 0 (compression-positive convention, so negative σ^s pulls grains together). For silty loam (1 < n ≤ 2), |σ^s| rises monotonically (−21.69 kPa at ψ = 24.0 kPa; −65.34 kPa at ψ = 120.0 kPa). For clean sand (n = 2.68 > 2, α_vG = 0.145 kPa^−1), |σ^s| peaks at ψ_peak = 7.964 kPa (−4.52 kPa) and declines to −2.08 kPa by ψ = 40.0 kPa.",
+          "Stage 3 (Infinite-Slope Wetting Collapse While Still Unsaturated): Following Lu & Godt (2008, DOI 10.1029/2008WR006976) with steady uniform suction at z = 2.0 m, γ = 19.0 kN/m^3, c' = 2.0 kPa, and φ' = 28.0°, a steep silty-loam slope at β = 34.0° (> φ') stands at FS = 1.557 when ψ = 24.0 kPa. Rain wetting to ψ = 2.0 kPa drops FS to 0.962 (< 1.0) even before pore-water pressure turns positive, and saturation (ψ = 0 kPa, K_r = 1.0) drops FS to 0.902.",
+          "Stage 4 (Open Hypothesis, Tier T1–T2, and Falsification Condition): Hypothesis (Tier T1–T2): in shallow unsaturated hillslopes steeper than their drained friction angle (β > φ'), storm-triggered collapse below FS = 1.0 tracks the loss of S_e ψ during wetting rather than waiting for positive u_w, whereas setting Bishop χ = 1.0 on dry clean sand (ψ = 40.0 kPa, γ = 18.0 kN/m^3, c' = 0, φ' = 32°, β = 36°) falsely inflates FS from 0.936 to 2.320. This 1D steady-suction hypothesis is falsified where 3D topographic flow convergence, macropore bypass (Iverson 2000, DOI 10.1029/2000WR900090), wetting-branch hysteresis, or root cohesion governs field failure."
+        ],
+        "readouts": [
+          {
+            "label": "Effective Saturation & Conductivity",
+            "value": "S_e = 0.904 · K_r = 0.1662 (model)"
+          },
+          {
+            "label": "Lu–Godt–Wu Suction Stress (σ^s)",
+            "value": "−21.69 kPa (σ'_n = 47.81 kPa, model)"
+          },
+          {
+            "label": "Infinite-Slope Factor of Safety (FS)",
+            "value": "FS = 1.557 (τ = 17.62 kPa, model)"
+          },
+          {
+            "label": "Mohr–Coulomb Suction Regime",
+            "value": "ABOVE LIMIT EQUILIBRIUM (FS >= 1.2, model)"
+          }
+        ],
+        "spec_plate": {
+          "division": "VADOSE GEOTECHNICS / CSI 31 32 00 (FILING LABEL · DESIGN STUDY)",
+          "title": "Unsaturated Silty-Loam & Clean-Sand Hillslope Suction-Stress Screening Envelope",
+          "body": "Illustrative closed-form screening study, not a site geotechnical investigation or slope-stability design: prescribes steady uniform matric suction ψ ≥ 0 kPa at slip-plane depth z = 2.0 m with constant unit weight γ = 19.0 kN/m^3 (silty loam) or 18.0 kN/m^3 (clean sand), α_vG expressed in kPa^−1 (1 kPa ≈ 10.194 cm H2O), and atmospheric pore-air pressure u_a = 0. Below the water table (u_w > u_a, ψ < 0), behavior transitions to saturated Terzaghi effective stress. Transient Richards infiltration, wetting-drying hysteresis, and field tensiometry are required for any real slope assessment.",
+          "meta": "Primary anchors: van Genuchten 1980 (DOI 10.2136/sssaj1980.03615995004400050002x) · Mualem 1976 (DOI 10.1029/WR012i003p00513) · Lu, Godt & Wu 2010 (DOI 10.1029/2009WR008646) · Iverson 2000 (DOI 10.1029/2000WR900090) · Model values, not field measurements"
+        },
+        "sidenote_1": {
+          "kicker": "SIDENOTE E.14-A · FINE SILTY LOAM (n ≤ 2) VS. CLEAN SAND (n > 2) SUCTION PEAK",
+          "body": "Differentiating |σ^s(ψ)| = ψ [1 + (α_vG ψ)^n]^(−(n−1)/n) shows that d|σ^s|/dψ flips sign only when n > 2. In fine silty loam (n = 1.60 ≤ 2), adsorptive films and broad pore-size distributions sustain a monotonically growing tensile suction stress across the modeled suction range. In uniform clean sand (n = 2.68 > 2, α_vG = 0.145 kPa^−1), pendular capillary bridges break down past ψ_peak = 7.964 kPa (|σ^s| = 4.52 kPa), reducing |σ^s| to 2.08 kPa at ψ = 40.0 kPa and leaving dry sand at FS = 0.936 when β = 36° > φ' = 32°."
+        },
+        "sidenote_2": {
+          "kicker": "SIDENOTE E.14-B · STEADY PRESCRIBED ψ, CONSTANT γ & α_vG UNIT CONVENTION",
+          "body": "This reduced 2-slider model prescribes steady uniform ψ at z = 2.0 m and constant γ rather than integrating coupled transient Richards diffusion (Iverson 2000, DOI 10.1029/2000WR900090) or moisture-dependent unit weight γ(θ) (Lu & Godt 2008, DOI 10.1029/2008WR006976). Also check parameter units carefully: α_vG here uses kPa^−1 (matching ψ in kPa), whereas Carsel & Parrish soil tables report α in cm^−1 of water head (1 kPa ≈ 10.194 cm H2O). Below the water table (ψ < 0), saturated Terzaghi pore pressure applies."
+        },
+        "skill": {
+          "filename": "unsaturated-suction-slope-SKILL.md",
+          "name": "unsaturated-suction-slope",
+          "description": "AI-agnostic civil geotechnical skill for van Genuchten-Mualem unsaturated soil water retention, Lu-Godt-Wu closed-form suction stress sigma_s = -S_e * psi, and rainfall-induced infinite-slope Factor of Safety.",
+          "rules": [
+            "Enforce the physical domain psi = u_a - u_w >= 0 kPa, alpha_vg > 0 kPa^-1, and n > 1.0 (m = 1 - 1/n in (0, 1)) for van Genuchten effective saturation S_e(psi) = [1 + (alpha_vg * psi)^n]^(-m) and Mualem relative hydraulic conductivity K_r(S_e).",
+            "Compute Lu-Godt-Wu closed-form suction stress as sigma_s(psi) = -S_e(psi) * psi <= 0 (with sigma_s = 0 at psi = 0), keeping effective weighting chi = S_e rather than extrapolating Terzaghi chi = 1.0 into unsaturated soil.",
+            "Distinguish fine-grained monotonic retention (1 < n <= 2, silty loam where |sigma_s| grows monotonically with suction) from coarse-grained non-monotonic retention (n > 2, clean sand where |sigma_s| peaks near air-entry and declines toward zero upon drying).",
+            "Frame infinite-slope stability as a steady-suction, constant-gamma Tier T1-T2 screening hypothesis that requires 3D seepage, wetting-drying hysteresis, and field tensiometry before any site-level slope evaluation."
+          ]
+        },
+        "revisions": [
+          {
+            "edition": "REV 1.0",
+            "date": "2026-11-21",
+            "summary": "REV 1.0 (Published 2026-11-21): Volume VII Civil & Geotechnical Engineering monograph continuing Folios E.05 & E.13 via Mualem relative permeability (1976), Fredlund–Morgenstern–Widger unsaturated shear strength (1978), van Genuchten retention (1980), Iverson infiltration triggers (2000), and Lu–Godt–Wu closed-form suction stress (2008, 2010).",
+            "opus": "Verification note: all six primary DOIs in this folio were checked against Crossref on 2026-11-21 with zero retraction notices; all numerical outputs are recomputed offline by skills/engineering/e14/verify_e14_unsaturated_suction.py and represent illustrative closed-form steady-suction model outputs rather than field measurements."
+          }
+        ],
+        "volume": 7,
+        "volume_code": "VOL. 07",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,700 WORDS",
+        "scite": {
+          "doi": "10.2136/sssaj1980.03615995004400050002x",
+          "fetched_on": "2026-11-21",
+          "citing_publications": 27857,
+          "supporting": 105,
+          "mentioning": 12669,
+          "contrasting": 4,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index entry for van Genuchten 1980, \"A Closed-form Equation for Predicting the Hydraulic Conductivity of Unsaturated Soils\" (Soil Science Society of America Journal, DOI 10.2136/sssaj1980.03615995004400050002x), fetched 2026-11-21: 27,857 citing records (105 supporting, 12,669 mentioning, 4 contrasting) and no retraction notice. These counts describe that foundational paper, not this folio."
         }
       }
     ],
@@ -6072,12 +6186,13 @@
       "volume": 7,
       "code": "VOL. 07",
       "roman": "Volume VII",
-      "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY & FUNICULAR THIN-SHELL BUCKLING · 2 FOLIOS",
-      "title": "Biot 3D Poroelasticity & Heinz Isler's Thin-Shell Concrete Domes",
-      "subtitle": "Volume VII opens with Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage) and Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns).",
+      "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY, VADOSE SUCTION & FUNICULAR THIN-SHELL BUCKLING · 3 FOLIOS",
+      "title": "Biot 3D Poroelasticity, Unsaturated Suction Stress & Heinz Isler's Thin-Shell Concrete Domes",
+      "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), and Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns).",
       "cadence": "Verifier-gated Living Edition release",
       "folios": [
         "e13",
+        "e14",
         "a13"
       ]
     }

@@ -1236,6 +1236,26 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
             ("ARENA", "Roca sedimentaria porosa (arenisca) menos críticamente esforzada que el basamento cristalino en el modelo", "Acto III"),
         ],
     },
+    "e14": {
+        "title_en": "Folio E.14 · Unsaturated Soil Suction Stress & Slope Stability Crossword",
+        "title_es": "Folio E.14 · Crucigrama de Succión No Saturada y Estabilidad de Laderas",
+        "en": [
+            ("SUCTION", "Negative gauge pore-water pressure u_a - u_w above the water table that pulls unsaturated grains together", "Act I"),
+            ("MUALEM", "Hydrologist whose 1976 integral links water retention curves to relative hydraulic conductivity K_r(S_e)", "Act I"),
+            ("SLOPE", "Hillside inclined at angle beta; when beta exceeds drained friction phi', capillary clamping supports FS > 1", "Act III"),
+            ("SAND", "Coarse soil with exponent n = 2.68 > 2 whose suction stress peaks near 7.96 kPa and falls upon drying", "Act II"),
+            ("RAIN", "Storm infiltration that raises effective saturation S_e and lowers capillary clamping before u_w turns positive", "Act I"),
+            ("LOAM", "Silty fine-grained soil with n = 1.60 <= 2 where modeled |sigma^s| increases monotonically with suction", "Act II"),
+        ],
+        "es": [
+            ("SUCCION", "Presión negativa de poro u_a - u_w sobre el manto freático que mantiene unidas las partículas del suelo", "Acto I"),
+            ("MUALEM", "Hidrólogo que en 1976 vinculó la curva de retención de agua con la conductividad relativa K_r(S_e)", "Acto I"),
+            ("ARENA", "Suelo grueso (n = 2.68 > 2) cuyo esfuerzo de succión alcanza un pico y cae al secarse en el modelo", "Acto II"),
+            ("LIMO", "Suelo fino (n = 1.60 <= 2) en el que |sigma^s| crece de forma monótona al aumentar la succión", "Acto II"),
+            ("LLUVIA", "Infiltración pluvial que reduce la succión mátrica y puede disparar deslizamientos antes de saturar", "Acto I"),
+            ("PORO", "Espacio intergranular ocupado por agua y aire por encima del nivel freático", "Acto I"),
+        ],
+    },
     "a11": {
         "title_en": "Folio A.11 · 3D Polyhedral Graphic Statics, Airy Stress & Guastavino Vaults Crossword",
         "title_es": "Folio A.11 · Crucigrama de Estática Gráfica Poliédrica 3D y Bóvedas sin Acero",

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://informatico.ai/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/"/>
@@ -10,7 +10,7 @@
   </url>
   <url>
     <loc>https://informatico.ai/engineering/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/engineering/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/engineering/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/engineering/"/>
@@ -119,6 +119,14 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/engineering/e13/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/engineering/e13/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/engineering/e13/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/engineering/e14/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/engineering/e14/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/engineering/e14/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/engineering/e14/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/engineering/e14/"/>
   </url>
   <url>
     <loc>https://informatico.ai/architecture/</loc>
@@ -794,7 +802,7 @@
   </url>
   <url>
     <loc>https://informatico.ai/about/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/about/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/about/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/about/"/>
@@ -802,7 +810,7 @@
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/"/>
@@ -810,7 +818,7 @@
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/engineering/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/engineering/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/engineering/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/engineering/"/>
@@ -919,6 +927,14 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/engineering/e13/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/engineering/e13/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/engineering/e13/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/engineering/e14/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/engineering/e14/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/engineering/e14/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/engineering/e14/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/engineering/e14/"/>
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/architecture/</loc>
@@ -1594,7 +1610,7 @@
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/about/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/about/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/about/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/about/"/>

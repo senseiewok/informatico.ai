@@ -222,14 +222,14 @@ class ToolchainTrackTests(unittest.TestCase):
 
     def test_60_unique_plates_and_female_fast_audio_configuration(self) -> None:
         all_slugs = (
-            [f"e{i:02d}" for i in range(1, 14)]
+            [f"e{i:02d}" for i in range(1, 15)]
             + [f"a{i:02d}" for i in range(1, 14)]
             + [f"p{i:02d}" for i in range(1, 13)]
             + [f"m{i:02d}" for i in range(1, 13)]  # M.13-M.15 withdrawn 2026-11-17
             + [f"b{i:02d}" for i in range(1, 7)]
             + [f"x{i:02d}" for i in range(1, 8)]
         )
-        self.assertEqual(len(all_slugs), 63)  # +3: E.13, A.13, X.07 added 2026-11-20
+        self.assertEqual(len(all_slugs), 64)  # +1: E.14 added 2026-11-21
         hashes: dict[str, str] = {}
         plates_dir = RESEARCH / "plates"
         for s in all_slugs:

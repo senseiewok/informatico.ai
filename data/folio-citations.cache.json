@@ -95,6 +95,14 @@
     "title": "The Lean 4 Theorem Prover and Programming Language",
     "year": 2021
   },
+  "doi:10.1007/978-3-662-05105-4_2": {
+    "fetched": "2026-11-20",
+    "first_author": "Meyer",
+    "found": true,
+    "journal": "Visualization and Mathematics III",
+    "title": "Discrete Differential-Geometry Operators for Triangulated 2-Manifolds",
+    "year": 2003
+  },
   "doi:10.1007/bf01418933": {
     "fetched": "2026-11-04",
     "first_author": "Huxley",
@@ -319,6 +327,14 @@
     "title": "Matrix analysis of statically and kinematically indeterminate frameworks",
     "year": 1986
   },
+  "doi:10.1016/0141-0296(91)90050-m": {
+    "fetched": "2026-11-20",
+    "first_author": "Ramm",
+    "found": true,
+    "journal": "Engineering Structures",
+    "title": "On shape finding methods and ultimate load analyses of reinforced concrete shells",
+    "year": 1991
+  },
   "doi:10.1016/0370-2693(72)90825-8": {
     "fetched": "2026-11-10",
     "first_author": "Delbourgo",
@@ -527,6 +543,14 @@
     "title": "Application of bacteria as self-healing agent for the development of sustainable concrete",
     "year": 2010
   },
+  "doi:10.1016/j.ecoleng.2009.02.006": {
+    "fetched": "2026-11-20",
+    "first_author": "De Muynck",
+    "found": true,
+    "journal": "Ecological Engineering",
+    "title": "Microbial carbonate precipitation in construction materials: A review",
+    "year": 2010
+  },
   "doi:10.1016/j.enbuild.2006.03.013": {
     "fetched": "2026-11-04",
     "first_author": "Nabil",
@@ -559,6 +583,14 @@
     "title": "Design challenges of reciprocal frame structures in architecture",
     "year": 2019
   },
+  "doi:10.1016/j.jobe.2023.106241": {
+    "fetched": "2026-11-20",
+    "first_author": "Kahramanoğlu",
+    "found": true,
+    "journal": "Journal of Building Engineering",
+    "title": "Enhancing visual comfort with Miura-ori-based responsive facade model",
+    "year": 2023
+  },
   "doi:10.1016/j.matpur.2009.01.013": {
     "fetched": "2026-11-13",
     "first_author": "Golse",
@@ -574,6 +606,14 @@
     "journal": "Physics of Life Reviews",
     "title": "Consciousness in the universe: A review of the 'Orch OR' theory",
     "year": 2014
+  },
+  "doi:10.1016/j.scs.2023.104740": {
+    "fetched": "2026-11-20",
+    "first_author": "Meloni",
+    "found": true,
+    "journal": "Sustainable Cities and Society",
+    "title": "Origami-based adaptive facade for reducing reflected solar radiation in outdoor urban environments",
+    "year": 2023
   },
   "doi:10.1016/j.watres.2005.10.030": {
     "fetched": "2026-11-14",
@@ -607,6 +647,14 @@
     "title": "Muco-ciliary transport in the lung",
     "year": 1986
   },
+  "doi:10.1017/9781108778633": {
+    "fetched": "2026-11-20",
+    "first_author": "Hull",
+    "found": true,
+    "journal": "Cambridge University Press",
+    "title": "Origametry: Mathematical Methods in Paper Folding",
+    "year": 2020
+  },
   "doi:10.1017/cbo9780511735172": {
     "fetched": "2026-11-10",
     "first_author": "Demaine",
@@ -639,6 +687,30 @@
     "title": "Open Catalyst 2020 (OC20) Dataset and Community Challenges",
     "year": 2021
   },
+  "doi:10.1029/2000wr900090": {
+    "fetched": "2026-11-21",
+    "first_author": "Iverson",
+    "found": true,
+    "journal": "Water Resources Research",
+    "title": "Landslide triggering by rain infiltration",
+    "year": 2000
+  },
+  "doi:10.1029/2008wr006976": {
+    "fetched": "2026-11-21",
+    "first_author": "Lu",
+    "found": true,
+    "journal": "Water Resources Research",
+    "title": "Infinite slope stability under steady unsaturated seepage conditions",
+    "year": 2008
+  },
+  "doi:10.1029/2009wr008646": {
+    "fetched": "2026-11-21",
+    "first_author": "Lu",
+    "found": true,
+    "journal": "Water Resources Research",
+    "title": "A closed-form equation for effective stress in unsaturated soil",
+    "year": 2010
+  },
   "doi:10.1029/rg014i002p00227": {
     "fetched": "2026-11-20",
     "first_author": "Rice",
@@ -646,6 +718,22 @@
     "journal": "Reviews of Geophysics",
     "title": "Some basic stress diffusion solutions for fluid-saturated elastic porous media with compressible constituents",
     "year": 1976
+  },
+  "doi:10.1029/wr012i003p00513": {
+    "fetched": "2026-11-21",
+    "first_author": "Mualem",
+    "found": true,
+    "journal": "Water Resources Research",
+    "title": "A new model for predicting the hydraulic conductivity of unsaturated porous media",
+    "year": 1976
+  },
+  "doi:10.1029/wr016i006p01016": {
+    "fetched": "2026-11-20",
+    "first_author": "Witherspoon",
+    "found": true,
+    "journal": "Water Resources Research",
+    "title": "Validity of Cubic Law for fluid flow in a deformable rock fracture",
+    "year": 1980
   },
   "doi:10.1038/37745": {
     "fetched": "2026-11-14",
@@ -991,6 +1079,14 @@
     "title": "Muco-Obstructive Lung Diseases",
     "year": 2019
   },
+  "doi:10.1061/(asce)ae.1943-5568.0000430": {
+    "fetched": "2026-11-20",
+    "first_author": "Tang",
+    "found": true,
+    "journal": "Journal of Architectural Engineering",
+    "title": "Gridshell as Formwork: Proof of Concept for a New Technique for Constructing Thin Concrete Shells Supported by Gridshell as Formwork",
+    "year": 2020
+  },
   "doi:10.1061/(asce)gt.1943-5606.0000073": {
     "fetched": "2026-11-04",
     "first_author": "Gavin",
@@ -1158,6 +1254,14 @@
     "journal": "International Journal of Control",
     "title": "Optimal control of Formula One car energy recovery systems",
     "year": 2014
+  },
+  "doi:10.1080/10586458.1993.10504266": {
+    "fetched": "2026-11-20",
+    "first_author": "Pinkall",
+    "found": true,
+    "journal": "Experimental Mathematics",
+    "title": "Computing Discrete Minimal Surfaces and Their Conjugates",
+    "year": 1993
   },
   "doi:10.1080/10867651.1996.10487458": {
     "fetched": "2026-11-10",
@@ -2087,6 +2191,14 @@
     "title": "Ground Effect Aerodynamics of Race Cars",
     "year": 2006
   },
+  "doi:10.1115/1.3607667": {
+    "fetched": "2026-11-20",
+    "first_author": "Hutchinson",
+    "found": true,
+    "journal": "Journal of Applied Mechanics",
+    "title": "Imperfection Sensitivity of Externally Pressurized Spherical Shells",
+    "year": 1967
+  },
   "doi:10.1115/1.3644004": {
     "fetched": "2026-11-04",
     "first_author": "Kays",
@@ -2110,6 +2222,22 @@
     "journal": "Journal of Computing and Information Science in Engineering",
     "title": "A Portrait of an ISO STEP Tolerancing Standard as an Enabler of Smart Manufacturing Systems",
     "year": 2015
+  },
+  "doi:10.1115/1.4040455": {
+    "fetched": "2026-11-20",
+    "first_author": "Gerasimidis",
+    "found": true,
+    "journal": "Journal of Applied Mechanics",
+    "title": "On Establishing Buckling Knockdowns for Imperfection-Sensitive Shell Structures",
+    "year": 2018
+  },
+  "doi:10.1115/1.4056801": {
+    "fetched": "2026-11-20",
+    "first_author": "Abbasi",
+    "found": true,
+    "journal": "Journal of Applied Mechanics",
+    "title": "Comparing the Buckling Strength of Spherical Shells With Dimpled Versus Bumpy Defects",
+    "year": 2023
   },
   "doi:10.1119/1.16590": {
     "fetched": "2026-11-14",
@@ -2142,6 +2270,14 @@
     "journal": "The Journal of the Acoustical Society of America",
     "title": "Noise levels in Johns Hopkins Hospital",
     "year": 2005
+  },
+  "doi:10.1121/1.3079771": {
+    "fetched": "2026-11-20",
+    "first_author": "Larose",
+    "found": true,
+    "journal": "The Journal of the Acoustical Society of America",
+    "title": "Monitoring stress related velocity variation in concrete with a 2×10−5 relative resolution using diffuse ultrasound",
+    "year": 2009
   },
   "doi:10.1121/1.380425": {
     "fetched": "2026-11-04",
@@ -2335,6 +2471,22 @@
     "title": "Faster All-Pairs Shortest Paths via Circuit Complexity",
     "year": 2018
   },
+  "doi:10.1139/t78-029": {
+    "fetched": "2026-11-21",
+    "first_author": "Fredlund",
+    "found": true,
+    "journal": "Canadian Geotechnical Journal",
+    "title": "The shear strength of unsaturated soils",
+    "year": 1978
+  },
+  "doi:10.1145/1508044.1508063": {
+    "fetched": "2026-11-20",
+    "first_author": "Wardetzky",
+    "found": true,
+    "journal": "Proceedings of the Fifth Eurographics Symposium on Geometry Processing (SGP '07)",
+    "title": "Discrete Laplace operators: no free lunch",
+    "year": 2007
+  },
   "doi:10.1145/1568318.1568324": {
     "fetched": "2026-11-07",
     "first_author": "Regev",
@@ -2358,6 +2510,14 @@
     "journal": "Proceedings of the ACM on Programming Languages",
     "title": "Kami: a platform for high-level parametric hardware specification and its modular verification",
     "year": 2017
+  },
+  "doi:10.1145/311535.311576": {
+    "fetched": "2026-11-20",
+    "first_author": "Desbrun",
+    "found": true,
+    "journal": "Proceedings of the 26th Annual Conference on Computer Graphics and Interactive Techniques (SIGGRAPH '99)",
+    "title": "Implicit Fairing of Irregular Meshes using Diffusion and Curvature Flow",
+    "year": 1999
   },
   "doi:10.1145/3186893": {
     "fetched": "2026-11-14",
@@ -2503,6 +2663,14 @@
     "title": "Treatment Wetlands",
     "year": 2008
   },
+  "doi:10.1201/b10971-24": {
+    "fetched": "2026-11-20",
+    "first_author": "Tachi",
+    "found": true,
+    "journal": "Origami 5",
+    "title": "Rigid-Foldable Thick Origami",
+    "year": 2011
+  },
   "doi:10.1209/0295-5075/22/2/012": {
     "fetched": "2026-11-10",
     "first_author": "Goulian",
@@ -2518,6 +2686,14 @@
     "journal": "Journal of Cell Science",
     "title": "Cellular tensegrity: defining new rules of biological design that govern the cytoskeleton",
     "year": 1993
+  },
+  "doi:10.1260/0266-3511.30.1.1": {
+    "fetched": "2026-11-20",
+    "first_author": "Tang",
+    "found": true,
+    "journal": "International Journal of Space Structures",
+    "title": "An Overview of Historical and Contemporary Concrete Shells, Their Construction and Factors in Their General Disappearance",
+    "year": 2015
   },
   "doi:10.12942/lrr-2003-1": {
     "fetched": "2026-11-08",
@@ -2639,6 +2815,14 @@
     "title": "PySINDy: A Python package for the sparse identification of nonlinear dynamical systems from data",
     "year": 2020
   },
+  "doi:10.2136/sssaj1980.03615995004400050002x": {
+    "fetched": "2026-11-21",
+    "first_author": "van Genuchten",
+    "found": true,
+    "journal": "Soil Science Society of America Journal",
+    "title": "A Closed-form Equation for Predicting the Hydraulic Conductivity of Unsaturated Soils",
+    "year": 1980
+  },
   "doi:10.21468/scipostphyscodeb.4": {
     "fetched": "2026-11-07",
     "first_author": "Fishman",
@@ -2654,6 +2838,14 @@
     "journal": "SciPost Physics Codebases",
     "title": "NetKet 3: Machine Learning Toolbox for Many-Body Quantum Systems",
     "year": 2022
+  },
+  "doi:10.21625/archive.v1i1.113": {
+    "fetched": "2026-11-20",
+    "first_author": "El Semary",
+    "found": true,
+    "journal": "The Academic Research Community publication",
+    "title": "Modern Mashrabiyas with High-tech Daylight Responsive Systems",
+    "year": 2017
   },
   "doi:10.21809/rilemtechlett.2016.15": {
     "fetched": "2026-11-14",
@@ -2734,6 +2926,14 @@
     "journal": "Buildings",
     "title": "Multi-Level Numerical Modelling and Analysis of Tile Vaults",
     "year": 2023
+  },
+  "doi:10.3390/ma6062182": {
+    "fetched": "2026-11-20",
+    "first_author": "Van Tittelboom",
+    "found": true,
+    "journal": "Materials",
+    "title": "Self-Healing in Cementitious Materials—A Review",
+    "year": 2013
   },
   "doi:10.3390/polym18111306": {
     "fetched": "2026-11-14",
@@ -2913,6 +3113,14 @@
     "title": "The Critical Approach of ‘Plug’ in Re-Conceptualisation of Architectural Program",
     "year": 2014
   },
+  "doi:10.5194/essd-11-1675-2019": {
+    "fetched": "2026-11-20",
+    "first_author": "Andrew",
+    "found": true,
+    "journal": "Earth System Science Data",
+    "title": "Global CO <sub>2</sub> emissions from cement production, 1928–2018",
+    "year": 2019
+  },
   "doi:10.5334/jors.188": {
     "fetched": "2026-11-14",
     "first_author": "Brown",
@@ -2920,6 +3128,14 @@
     "journal": "Journal of Open Research Software",
     "title": "PyPSA: Python for Power System Analysis",
     "year": 2018
+  },
+  "doi:10.5339/connect.2017.qgbc.6": {
+    "fetched": "2026-11-20",
+    "first_author": "Attia",
+    "found": true,
+    "journal": "QScience Connect",
+    "title": "Evaluation of adaptive facades: The case study of Al Bahr Towers in the UAE",
+    "year": 2017
   },
   "doi:10.58347/tml.2025.1724a": {
     "fetched": "2026-11-04",
@@ -3371,54 +3587,6 @@
     "unclassified": 1,
     "year": 1920
   },
-  "doi:10.1016/j.jobe.2023.106241": {
-    "fetched": "2026-11-20",
-    "first_author": "Kahramanoğlu",
-    "found": true,
-    "journal": "Journal of Building Engineering",
-    "title": "Enhancing visual comfort with Miura-ori-based responsive facade model",
-    "year": 2023
-  },
-  "doi:10.1016/j.scs.2023.104740": {
-    "fetched": "2026-11-20",
-    "first_author": "Meloni",
-    "found": true,
-    "journal": "Sustainable Cities and Society",
-    "title": "Origami-based adaptive facade for reducing reflected solar radiation in outdoor urban environments",
-    "year": 2023
-  },
-  "doi:10.1017/9781108778633": {
-    "fetched": "2026-11-20",
-    "first_author": "Hull",
-    "found": true,
-    "journal": "Cambridge University Press",
-    "title": "Origametry: Mathematical Methods in Paper Folding",
-    "year": 2020
-  },
-  "doi:10.1201/b10971-24": {
-    "fetched": "2026-11-20",
-    "first_author": "Tachi",
-    "found": true,
-    "journal": "Origami 5",
-    "title": "Rigid-Foldable Thick Origami",
-    "year": 2011
-  },
-  "doi:10.21625/archive.v1i1.113": {
-    "fetched": "2026-11-20",
-    "first_author": "El Semary",
-    "found": true,
-    "journal": "The Academic Research Community publication",
-    "title": "Modern Mashrabiyas with High-tech Daylight Responsive Systems",
-    "year": 2017
-  },
-  "doi:10.5339/connect.2017.qgbc.6": {
-    "fetched": "2026-11-20",
-    "first_author": "Attia",
-    "found": true,
-    "journal": "QScience Connect",
-    "title": "Evaluation of adaptive facades: The case study of Al Bahr Towers in the UAE",
-    "year": 2017
-  },
   "scite:10.1007/978-3-030-79876-5_37": {
     "citing_publications": 685,
     "classification_provenance": "Scite ML citation classification",
@@ -3598,6 +3766,20 @@
     "total_smart_citations": 507,
     "unclassified": 7,
     "year": 1986
+  },
+  "scite:10.1016/0141-0296(91)90050-m": {
+    "citing_publications": 51,
+    "contrasting": 0,
+    "fetched": "2026-11-20",
+    "found": true,
+    "journal": "Engineering Structures",
+    "mentioning": 12,
+    "retracted": false,
+    "supporting": 0,
+    "title": "On shape finding methods and ultimate load analyses of reinforced concrete shells",
+    "total_smart_citations": 12,
+    "unclassified": 0,
+    "year": 1991
   },
   "scite:10.1016/0370-2693(72)90825-8": {
     "citing_publications": 327,
@@ -5972,139 +6154,5 @@
     "total_smart_citations": 1212,
     "unclassified": 62,
     "year": 2018
-  },
-  "doi:10.1016/0141-0296(91)90050-m": {
-    "fetched": "2026-11-20",
-    "first_author": "Ramm",
-    "found": true,
-    "journal": "Engineering Structures",
-    "title": "On shape finding methods and ultimate load analyses of reinforced concrete shells",
-    "year": 1991
-  },
-  "doi:10.1061/(asce)ae.1943-5568.0000430": {
-    "fetched": "2026-11-20",
-    "first_author": "Tang",
-    "found": true,
-    "journal": "Journal of Architectural Engineering",
-    "title": "Gridshell as Formwork: Proof of Concept for a New Technique for Constructing Thin Concrete Shells Supported by Gridshell as Formwork",
-    "year": 2020
-  },
-  "doi:10.1115/1.3607667": {
-    "fetched": "2026-11-20",
-    "first_author": "Hutchinson",
-    "found": true,
-    "journal": "Journal of Applied Mechanics",
-    "title": "Imperfection Sensitivity of Externally Pressurized Spherical Shells",
-    "year": 1967
-  },
-  "doi:10.1115/1.4040455": {
-    "fetched": "2026-11-20",
-    "first_author": "Gerasimidis",
-    "found": true,
-    "journal": "Journal of Applied Mechanics",
-    "title": "On Establishing Buckling Knockdowns for Imperfection-Sensitive Shell Structures",
-    "year": 2018
-  },
-  "doi:10.1115/1.4056801": {
-    "fetched": "2026-11-20",
-    "first_author": "Abbasi",
-    "found": true,
-    "journal": "Journal of Applied Mechanics",
-    "title": "Comparing the Buckling Strength of Spherical Shells With Dimpled Versus Bumpy Defects",
-    "year": 2023
-  },
-  "doi:10.1260/0266-3511.30.1.1": {
-    "fetched": "2026-11-20",
-    "first_author": "Tang",
-    "found": true,
-    "journal": "International Journal of Space Structures",
-    "title": "An Overview of Historical and Contemporary Concrete Shells, Their Construction and Factors in Their General Disappearance",
-    "year": 2015
-  },
-  "scite:10.1016/0141-0296(91)90050-m": {
-    "citing_publications": 51,
-    "contrasting": 0,
-    "fetched": "2026-11-20",
-    "found": true,
-    "journal": "Engineering Structures",
-    "mentioning": 12,
-    "retracted": false,
-    "supporting": 0,
-    "title": "On shape finding methods and ultimate load analyses of reinforced concrete shells",
-    "total_smart_citations": 12,
-    "unclassified": 0,
-    "year": 1991
-  },
-  "doi:10.1080/10586458.1993.10504266": {
-    "fetched": "2026-11-20",
-    "first_author": "Pinkall",
-    "found": true,
-    "journal": "Experimental Mathematics",
-    "title": "Computing Discrete Minimal Surfaces and Their Conjugates",
-    "year": 1993
-  },
-  "doi:10.1145/311535.311576": {
-    "fetched": "2026-11-20",
-    "first_author": "Desbrun",
-    "found": true,
-    "journal": "Proceedings of the 26th Annual Conference on Computer Graphics and Interactive Techniques (SIGGRAPH '99)",
-    "title": "Implicit Fairing of Irregular Meshes using Diffusion and Curvature Flow",
-    "year": 1999
-  },
-  "doi:10.1007/978-3-662-05105-4_2": {
-    "fetched": "2026-11-20",
-    "first_author": "Meyer",
-    "found": true,
-    "journal": "Visualization and Mathematics III",
-    "title": "Discrete Differential-Geometry Operators for Triangulated 2-Manifolds",
-    "year": 2003
-  },
-  "doi:10.1145/1508044.1508063": {
-    "fetched": "2026-11-20",
-    "first_author": "Wardetzky",
-    "found": true,
-    "journal": "Proceedings of the Fifth Eurographics Symposium on Geometry Processing (SGP '07)",
-    "title": "Discrete Laplace operators: no free lunch",
-    "year": 2007
-  },
-  "doi:10.5194/essd-11-1675-2019": {
-    "fetched": "2026-11-20",
-    "first_author": "Andrew",
-    "found": true,
-    "journal": "Earth System Science Data",
-    "title": "Global CO <sub>2</sub> emissions from cement production, 1928–2018",
-    "year": 2019
-  },
-  "doi:10.1029/wr016i006p01016": {
-    "fetched": "2026-11-20",
-    "first_author": "Witherspoon",
-    "found": true,
-    "journal": "Water Resources Research",
-    "title": "Validity of Cubic Law for fluid flow in a deformable rock fracture",
-    "year": 1980
-  },
-  "doi:10.3390/ma6062182": {
-    "fetched": "2026-11-20",
-    "first_author": "Van Tittelboom",
-    "found": true,
-    "journal": "Materials",
-    "title": "Self-Healing in Cementitious Materials—A Review",
-    "year": 2013
-  },
-  "doi:10.1016/j.ecoleng.2009.02.006": {
-    "fetched": "2026-11-20",
-    "first_author": "De Muynck",
-    "found": true,
-    "journal": "Ecological Engineering",
-    "title": "Microbial carbonate precipitation in construction materials: A review",
-    "year": 2010
-  },
-  "doi:10.1121/1.3079771": {
-    "fetched": "2026-11-20",
-    "first_author": "Larose",
-    "found": true,
-    "journal": "The Journal of the Acoustical Society of America",
-    "title": "Monitoring stress related velocity variation in concrete with a 2×10−5 relative resolution using diffuse ultrasound",
-    "year": 2009
   }
 }
