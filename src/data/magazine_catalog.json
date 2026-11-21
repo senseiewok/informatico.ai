@@ -1050,11 +1050,11 @@
         },
         "sidenote_1": {
           "kicker": "SIDENOTE E.09-A · CONTINUING FOLIO E.01 CAPILLARY & CUBIC POISEUILLE SCALING",
-          "body": "For ideal laminar flow between smooth parallel plates, flow per unit length scales as Q ∝ w³, so closing 90% of a crack's width would cut that flow by a factor of 1,000 (0.1³ = 10⁻³). Real cracks are rough, so treat this as an idealization."
+          "body": "For laminar flow between smooth parallel plates, discharge scales as Q ∝ w³ (Witherspoon et al. 1980, DOI 10.1029/WR016i006p01016). Cutting crack width by 90% would lower ideal flow 1,000-fold (0.1³ = 10⁻³), though real rough fracture walls depart from smooth plates."
         },
         "sidenote_2": {
           "kicker": "SIDENOTE E.09-B · CODA-WAVE INTERFEROMETRY",
-          "body": "Coda-Wave Interferometry (CWI) uses late-arriving, multiply scattered waves, which makes it sensitive to very small relative velocity changes (Snieder 2006). Here it is proposed, not demonstrated, as a way to monitor healing in bridge decks (continuing Folio E.07)."
+          "body": "Coda-Wave Interferometry (CWI) uses late-arriving, multiply scattered waves to resolve tiny velocity changes Δv/v (Snieder 2006, DOI 10.1007/s00024-005-0026-6; Larose & Hall 2009, DOI 10.1121/1.3079771). Here it is proposed, not tested, for bridge-deck healing (continuing Folio E.07)."
         },
         "skill": {
           "filename": "self-healing-concrete-washburn-calcite-SKILL.md",
@@ -1070,7 +1070,7 @@
           {
             "edition": "REV 1.1",
             "date": "2026-11-14",
-            "summary": "REV 1.1 (Grounding pass 2026-11-14): Withdrew the \"ACI 224R PASS\" verdict and other verification language; the healing limit, closure and stiffness figures are now labelled as model or design values. Corrected what the Jonkers et al. 2010 paper is cited for, replaced an invented opening scene and a misattributed Vitruvius/tobermorite claim, fixed a \"999 percent\" arithmetic error.",
+            "summary": "REV 1.1 (Grounding pass 2026-11-14): Withdrew the \"ACI 224R PASS\" verdict and other verification language; the healing limit, closure and stiffness figures are now labeled as model or design values. Corrected what the Jonkers et al. 2010 paper is cited for, replaced an invented opening scene and a misattributed Vitruvius/tobermorite claim, fixed a \"999 percent\" arithmetic error.",
             "opus": "Review: all DOIs checked against Crossref on 2026-11-14; cubic-law arithmetic recomputed ((0.018/0.30)^3 = 2.16e-4)."
           },
           {
