@@ -126,9 +126,9 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 - [Step 13 · T.12 Two Clocks That Only Meet in Gravity: Dark Sectors and Clock Networks](https://informatico.ai/timegravity/t12/): How universal metric coupling lets spatially separated clocks sense electromagnetically transparent matter while co-located optical clocks bound scalar portals.
 - [Step 14 · T.13 Where Infrared Gravity Meets Gauge Theory](https://informatico.ai/timegravity/t13/): Soft gravitons, gravitational wave memory, and mixed anomaly cancellation link equivalence and quark colour while UV quantum gravity stays open.
 
-## Cross-Scale Featured Essays · Clocks, Stone, and Living Matter (ES.01–ES.11)
+## Cross-Scale Featured Essays · Clocks, Stone, and Living Matter (ES.01–ES.12)
 
-- [Cross-Scale Essays](https://informatico.ai/essays/): Eleven long-form essays where quantum decoherence, formal verification and porous-media thermodynamics connect falling clocks, stone and living systems.
+- [Cross-Scale Essays](https://informatico.ai/essays/): Twelve long-form essays where quantum decoherence, formal verification and cycle thermodynamics connect falling clocks, stone and living systems.
 - [ES.01 The Mesoscopic Floor: From Vacuum to Hydrogels](https://informatico.ai/essays/mesoscopic-floor/): How one thermal bath governs falling diamonds in ultra-high vacuum and hindered nanoparticles in polymer hydrogels across nineteen Knudsen decades.
 - [ES.02 Derived, Not Measured: Six Evidence Labels](https://informatico.ai/essays/derived-not-measured/): Why machine-precision math deduced from a measured law is still not a measurement: six evidence labels, parent provenance, and eight mutation tests.
 - [ES.03 Barriers, Pores, and Autonomous Clocks](https://informatico.ai/essays/barriers-pores-clocks/): How the thermodynamic uncertainty relation, Brinkman porous screening, and Kramers barrier escape govern clocks, stone mortar, and protein pores.
@@ -140,6 +140,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 - [ES.09 Multipartite Gravity Witnesses and Active Clocks](https://informatico.ai/essays/multipartite-witnesses-active-clocks/): Tripartite Mermin witnesses, 3-body smeared-gravity bounds, ytterbium composition scaling, and proper-time quantum clocks for tabletop gravity.
 - [ES.10 The Four-Gate Operator Sieve Across Scales](https://informatico.ai/essays/four-gate-operator-sieve/): How submillimeter torsion limits, a proposed entanglement test, clock bounds and sign-split bending compare six gravity models.
 - [ES.11 The Seven-Gate Crown Sieve](https://informatico.ai/essays/seven-gate-crown-sieve/): A seven-gate scorecard compares eight gravity and gauge architectures; one constructed model passes all gates as scored, a conjecture.
+- [ES.12 Cycle Affinity and Irreversible Gates](https://informatico.ai/essays/cycle-affinity-tur-gates/): Closed-form Markov cycle models show why scalar open probability hides ATP-driven gating while flux asymmetry and burst peaks separate equilibrium.
 
 ## Cult Classics · Engineering & Architecture Stories (CC.01–CC.03)
 
