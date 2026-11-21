@@ -18,7 +18,7 @@ A plain-text companion to the essay at https://informatico.ai/math/m09/ (`M.09 �
 
 ## How it works, in four stages
 - Stage 1 (Monge–Kantorovich Convex Duality): Relaxes Monge's transport map T_# μ_0 = μ_1 into Kantorovich's linear program over couplings π ∈ Π(μ_0, μ_1).
-- Stage 2 (Brenier Polar Factorization Theorem): Proves the unique L²-optimal transport map is the gradient of a convex potential T(x) = ∇Φ(x) = x + ∇ψ_0(x).
+- Stage 2 (Brenier Polar Factorization Theorem): Shows the unique L²-optimal transport map is the gradient of a convex potential T(x) = ∇Φ(x) = x + ∇ψ_0(x).
 - Stage 3 (Benamou–Brenier Dynamic Fluid Geodesic, DOI 10.1007/s002110050002): Evolves density ρ_t along constant-velocity geodesics ∂_t ρ + ∇·(ρ∇ψ) = 0 with HJB optimality ∂_t ψ + ½|∇ψ|² = 0.
 - Stage 4 (Cuturi Sinkhorn Scaling, Continuing M.04/M.07): The entropic penalty ε KL(π || μ_0⊗μ_1) turns the problem into alternating matrix scalings. The 18-step count shown is an illustrative value; the real count depends on ε and the stopping tolerance.
 

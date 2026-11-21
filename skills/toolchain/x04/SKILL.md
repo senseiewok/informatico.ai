@@ -39,7 +39,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Stage 1: Degree-4 Crease Kinematics & Kawasaki–Maekawa Synthesis — Assign parallelogram sector angles (γ = 78°, π − γ = 102°) and 3 Mountain + 1 Valley creases at each interior vertex so ∑(−1)^i α_i = 0° and |M − V| = 2.
 - Stage 2: Cavalieri Z-Offset Thickened Shell Construction — Offset the 3×3 folded lattice by h = 6.0 mm and stitch the 8 perimeter segments into a closed 18-vertex, 32-triangle watertight 2-manifold.
 - Stage 3: Layered ASCII DXF Toolpath Serialization — Write x04_artifact.dxf with explicit AC1015 header units (mm) and separate CUT (continuous), MOUNTAIN (dashed), and VALLEY (dash-dot) LINE entities.
-- Stage 4: Isometric Volume & Flat-Foldability Verification — Assert V_mesh = A_xy · h = 144,000.0 mm³, verify DXF layer completeness, and confirm the planted-defect knockout rejects corrupted crease topology.
+- Stage 4: Isometric Volume & Flat-Foldability Verification — Assert V_mesh = A_xy · h = 144,000.0 mm³, verify DXF layer completeness, and check that the planted-defect knockout rejects corrupted crease topology.
 
 ## 6. Verified Reference Telemetry (T0/T1)
 - **Kawasaki Alternating Sum**: `78° − 102° + 102° − 78° = 0°`

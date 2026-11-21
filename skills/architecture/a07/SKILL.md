@@ -1,6 +1,6 @@
 ---
 name: barragan-kubelka-munk-radiosity
-description: AI-agnostic architectural daylighting and color-physics skill for Luis Barragan chromatic tectonics, Kubelka-Munk pigment reflectance, and Fredholm spectral radiosity.
+description: AI-agnostic architectural daylighting and color-physics skill for Luis Barragan chromatic tectonics, Kubelka-Munk pigment reflectance, and Fredholm diffuse radiosity.
 license: MIT
 compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI Codex, Ollama (Qwen 3.8 / Gemma 4)
 ---
@@ -12,15 +12,15 @@ A plain-text companion to the essay at https://informatico.ai/architecture/a07/ 
 `K/S = (1 − R_∞)² / (2 R_∞) · B(x,λ) = E(x,λ) + ρ(x,λ) ∫ B(y,λ) F(x,y) dA_y · CSI 09 24 00`
 
 ## Rules the essay derives
-1. Compute infinite-thickness Kubelka-Munk diffuse reflectance R_inf = 1 + (K/S) - sqrt((K/S)^2 + 2*(K/S)) from absorption K and scattering S.
-2. Solve wavelength-resolved enclosure radiosity B_i(lambda) = E_i(lambda) + rho_i(lambda) * sum_j F_ij * B_j(lambda) across 380-780 nm.
-3. Maintain matte mineral surface roughness (85-degree specular gloss < 2 GU) so diffuse chromatic bounce dominates over specular glare.
+1. Compute infinite-thickness Kubelka-Munk diffuse reflectance R_inf = 1 + (K/S) - sqrt((K/S)^2 + 2*(K/S)) from absorption K and scattering S (Kubelka 1948, DOI 10.1364/JOSA.38.000448).
+2. Solve wavelength-resolved diffuse radiosity B_i(lambda) = E_i(lambda) + rho_i(lambda) * sum_j F_ij * B_j(lambda) across 380-780 nm (Goral et al. 1984, DOI 10.1145/800031.808601; Ruppertsberg & Bloj 2008, DOI 10.3758/BRM.40.1.304).
+3. Specify matte, vapor-permeable lime plaster (Cultrone et al. 2005, DOI 10.1016/j.cemconres.2004.12.012; Parra-Fernández & Varas-Muriel 2025, DOI 10.3989/mc.2025.379124) with an unmeasured 85-degree gloss < 2 GU target so diffuse bounce dominates over specular glare.
 
 ## How it works, in four stages
-- Stage 1 (Golden Corridor Spectral Filtering, λ ≈ 582 nm): Sunlight entering Casa Gilardi's yellow-glazed corridor loses much of its short-wave blue light, warming the light that reaches the room (582 nm is an illustrative dominant wavelength).
-- Stage 2 (Kubelka–Munk Lime Scattering): For an assumed K/S = 0.48, the infinite-thickness diffuse reflectance is R_∞ = 1 + K/S − √((K/S)² + 2 K/S) = 1.48 − 1.091 = 0.389; the surface is assumed matte (Lambertian).
-- Stage 3 (Wall-to-Water Inter-Reflection): In a simplified one-bounce-series model, the gain 1 / (1 − R_∞ F_12) = 1 / (1 − 0.389 × 0.61) gives +31.1% for an assumed view factor F_12 = 0.61; it is an illustrative model value, not a measured change in color.
-- Stage 4 (Torres de Satélite Highway Parallax & Albers Contrast): The towers, the tallest about 52 m high, were designed to be seen from cars on the highway, so their silhouettes shift as viewers move.
+- Stage 1 (Corridor Spectral Filtering, λ ≈ 582 nm): In Casa Gilardi (1976; Coelho 2015, DOI 10.4000/ambiances.606), daylight passing yellow glazing loses short-wave blue light; about 582 nm is an illustrative dominant wavelength.
+- Stage 2 (Kubelka–Munk Scattering): For K/S = 0.48, Kubelka's infinite-thickness equation (1948, DOI 10.1364/JOSA.38.000448) gives R_∞ = 1 + K/S − √((K/S)² + 2 K/S) = 0.389, assuming a matte Lambertian layer.
+- Stage 3 (Enclosure Inter-Reflection): Following the diffuse radiosity balance (Goral et al. 1984, DOI 10.1145/800031.808601), a one-parameter enclosure series with effective return factor F_12 = 0.61 gives gain 1 / (1 − R_∞ F_12) − 1 ≈ +31.1% (multiplier 1.311) at R_∞ = 0.389—an illustrative model value, not a measured color shift.
+- Stage 4 (Torres de Satélite Parallax & Albers Contrast): Built by Barragán and Mathias Goeritz (1957–58; Pelletier 2008, DOI 10.1111/j.1531-314X.2008.00234.x), the towers—the tallest about 52 m—shift silhouette from moving cars while juxtaposed planes illustrate relational contrast (Albers 1963).
 
 ## Reference values stated in the essay
 - **Kubelka–Munk Reflectance (R_∞, Model)**: `0.389 (at K/S = 0.48)`
@@ -36,4 +36,4 @@ The reference values above are stated in the essay. No script in this repository
 - What the essay compares against: Model values: R_∞ = 0.389 at K/S = 0.48 · +31.1% bounce gain at F_12 = 0.61 (illustrative)
 
 ## Recent research context
-- **A Kubelka–Munk and Radiosity Reading of Luis Barragán's Architecture of Color**: Using Paul Kubelka's two-flux pigment scattering theory (JOSA DOI 10.1364/JOSA.38.000448) alongside Josef Albers's Interaction of Color (1963), this folio models how matte colored walls in rooms like Luis Barragán's Casa Gilardi (1976) reflect and inter-reflect light: R_∞ = 0.389 at K/S = 0.48, and an illustrative bounce gain of about +31% for an assumed view factor. It measured no building.
+- **A Kubelka–Munk and Radiosity Reading of Luis Barragán's Architecture of Color**: Combining Paul Kubelka's two-flux scattering law (1948, DOI 10.1364/JOSA.38.000448), diffuse radiosity (Goral et al. 1984, DOI 10.1145/800031.808601), and Josef Albers's Interaction of Color (1963), this folio models how matte walls in rooms such as Casa Gilardi (Coelho 2015, DOI 10.4000/ambiances.606) inter-reflect light: R_∞ = 0.389 at K/S = 0.48 and an illustrative +31.1% bounce gain at F_12 = 0.61. No building was measured.

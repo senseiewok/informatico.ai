@@ -29,17 +29,17 @@ FOLIO = {'slug': 'b05',
  'why_es': 'Los túneles de viento, boyas oceánicas y acelerómetros generan terabytes de datos '
            'ruidosos, pero una red neuronal de caja negra no revela qué términos físicos gobiernan '
            'el sistema. Combinar la poda dispersa de PySINDy con la frontera de Pareto de PySR '
-           'destila trayectorias ruidosas en ecuaciones diferenciales exactas y legibles.',
+           'destila trayectorias ruidosas en ecuaciones diferenciales compactas y legibles.',
  'governing_law': 'u_t = −1.00 u·u_x + 0.10 u_xx (∀ |ξ_k| < λ = 0.05 ⇒ ξ_k = 0) · L_MDL = (N/2) '
-                  'ln(MSE) + λ_MDL C_tree = −1360.87 nats',
- 'pass_pill_en': 'PASS · Support {u·u_x, u_xx} · MDL = −1360.9',
- 'pass_pill_es': 'APROBADO · Soporte {u·u_x, u_xx} · MDL = −1360.9',
+                  'ln(MSE) + λ_MDL C_tree = −1073.45 nats (model value at σ = 0.02)',
+ 'pass_pill_en': 'PASS · Support {u·u_x, u_xx} · MDL = −1073.5',
+ 'pass_pill_es': 'APROBADO · Soporte {u·u_x, u_xx} · MDL = −1073.5',
  'verifier_script': 'bounties/bounty_p2_pysr_pysindy_pde_discovery.py',
  'skill_dir': 'skills/bounties/b05',
  'skill_name': 'bounty-b05-pysr-pysindy-pde-discovery',
  'primary_doi': '10.1073/pnas.1517384113',
  'scite_summary': 'Brunton, Proctor & Kutz (2016) SINDy sparse discovery and Cranmer (2023) PySR '
-                  'Pareto symbolic regression verified against Crossref and Scite.',
+                  'Pareto symbolic regression checked against Crossref and Scite.',
  'date_published': '2026-11-04',
  'date_redated': '2026-11-15',
  'current_edition': 'REV 1.3',
@@ -74,19 +74,21 @@ FOLIO = {'slug': 'b05',
                  'Proctor, and J. Nathan Kutz (DOI 10.1073/pnas.1517384113) showed that most '
                  'physical governing laws are sparse in the space of candidate nonlinear '
                  'operators.',
- 'act1_body': 'Our open-source discovery benchmark couples three frontier engines: Dedalus (Burns '
-              'et al. 2020, DOI 10.1103/PhysRevResearch.2.023068) generates high-precision '
-              'Chebyshev–Fourier spectral trajectories of viscous shock waves; PySINDy (de Silva '
-              'et al. 2020, DOI 10.21105/joss.02104) applies Sequentially Thresholded Least '
-              'Squares (STLSQ) across the candidate operator library Θ(u) = [1, u, u_x, u·u_x, '
-              "u_xx, u³]; and Miles Cranmer's PySR (arXiv:2305.01582) scores candidate expression "
-              'trees by their Pareto Minimum Description Length L_MDL = (N/2) ln(MSE) + λ_MDL '
-              'C_tree. At sensor noise σ = 0.02 and sparsity cutoff λ = 0.05, the pipeline prunes '
-              'all four spurious noise terms to exact zero and recovers u_t = -1.00 u·u_x + 0.10 '
-              'u_xx with L_MDL = -1360.87 nats.',
+ 'act1_body': 'Open-source PDE discovery workflows combine three external libraries: Dedalus (Burns '
+              'et al. 2020, DOI 10.1103/PhysRevResearch.2.023068) for Chebyshev–Fourier spectral '
+              'rollouts of viscous shock waves; PySINDy (de Silva et al. 2020, DOI '
+              '10.21105/joss.02104) for Sequentially Thresholded Least Squares (STLSQ) across a '
+              'candidate operator library Θ(u) = [1, u, u_x, u·u_x, u_xx, u³]; and Miles Cranmer\'s '
+              'PySR (arXiv:2305.01582) for Pareto Minimum Description Length scoring L_MDL = (N/2) '
+              'ln(MSE) + λ_MDL C_tree. This folio\'s zero-dependency Python benchmark '
+              '(bounties/bounty_p2_pysr_pysindy_pde_discovery.py) does not invoke those external '
+              'packages at runtime; instead, it evaluates a self-contained synthetic 6-operator '
+              'model (N = 200). At sensor noise σ = 0.02 and sparsity cutoff λ = 0.05, the model '
+              'prunes all four spurious noise terms to zero and selects u_t = -1.00 u·u_x + 0.10 '
+              'u_xx with model value L_MDL = -1073.45 nats.',
  'pullquote': "Occam's razor is not a vague philosophical preference; on the Pareto frontier of "
-              'Minimum Description Length, the true physical law is a sharp geometric cliff where '
-              'error drops by four orders of magnitude.',
+              'Minimum Description Length, the target physical law sits at a sharp geometric knee '
+              'where modeled error drops by more than two orders of magnitude.',
  'chronology': [('2009',
                  'Michael Schmidt and Hod Lipson demonstrate automated discovery of Hamiltonian '
                  'and Lagrangian invariants from motion-capture data.'),
@@ -100,13 +102,18 @@ FOLIO = {'slug': 'b05',
                 ('2023–2026',
                  'Miles Cranmer releases PySR multi-population symbolic regression '
                  '(arXiv:2305.01582), uniting evolutionary tree search with deep neural priors.')],
- 'act2_intuition': 'In the presence of Gaussian sensor noise σ, ordinary least squares assigns '
+ 'act2_intuition': 'In the presence of sensor noise σ, ordinary least squares assigns '
                    'small non-zero weights ξ_k ≈ σ·d_k to every candidate operator in the library '
-                   '[1, u, u_x, u·u_x, u_xx, u³], producing an overfitted polynomial that diverges '
-                   'outside the training window. STLSQ eliminates every coefficient with |ξ_k| < λ '
-                   '= 0.05 and re-solves on the surviving support. As long as noise drift stays '
-                   'below λ (σ ≤ 0.18) and λ stays below the true viscosity ν = 0.10, the exact '
-                   'support {u·u_x, u_xx} is recovered with probability 1.',
+                   '[1, u, u_x, u·u_x, u_xx, u³], producing an overfitted polynomial that degrades '
+                   'outside the training window. STLSQ zeros every coefficient with |ξ_k| < λ '
+                   '= 0.05 and retains the surviving support. In this deterministic synthetic '
+                   'benchmark, as long as the largest spurious drift stays below λ (0.25 σ < λ, '
+                   'so σ < 0.20 at λ = 0.05) and λ stays at or below the perturbed viscosity weight '
+                   '|0.10 − 0.02 σ| (0.0996 at σ = 0.02), the target support {u·u_x, u_xx} is '
+                   'recovered; in addition, the synthetic Pareto MDL term favors C_tree = 6 over '
+                   'C_tree = 11 for σ ≥ 0.015 (below σ ≈ 0.0144, the fixed 1.15 × 10^{-6} floor of '
+                   'the C_tree = 11 curve triggers a Pareto alert even though STLSQ support stays '
+                   'clean).',
  'sliders': [{'id': 'tp-bounty-s0',
               'label': 'Trajectory Sensor Noise Amplitude σ',
               'min': 0.0,
@@ -123,47 +130,53 @@ FOLIO = {'slug': 'b05',
               'unit': 'λ = '}],
  'readouts': [{'label': 'Recovered PDE Support', 'value': "['u*u_x', 'u_xx'] (2 / 6 active)"},
               {'label': 'PySR Selected Governing Law', 'value': 'u_t = −u·u_x + 0.10 u_xx'},
-              {'label': 'Pareto MDL Score L_MDL', 'value': '−1360.87 nats (C_tree = 6)'},
-              {'label': 'Symbolic Discovery Gate', 'value': 'PASS · EXACT PDE RECOVERED'}],
- 'steps': ['Stage 1: Dedalus Chebyshev–Fourier Spectral Rollout — Integrate viscous Burgers shock '
-           'dynamics u_t + u u_x = ν u_xx (ν = 0.10) on N = 200 spatiotemporal collocation nodes.',
+              {'label': 'Pareto MDL Score L_MDL', 'value': '−1073.45 nats (C_tree = 6)'},
+              {'label': 'Symbolic Discovery Gate', 'value': 'PASS · TARGET PDE SUPPORT'}],
+ 'steps': ['Stage 1: Reference Viscous Burgers Setup — Specify the reference viscous Burgers PDE '
+           'u_t + u u_x = ν u_xx (ν = 0.10) on N = 200 sample points (external Dedalus '
+           'Chebyshev–Fourier spectral rollouts apply to full fields; the offline harness models '
+           'the 6-term operator weights directly).',
            'Stage 2: Noisy Operator Library Assembly — Construct Θ(u) = [1, u, u_x, u·u_x, u_xx, '
-           'u³] contaminated by sensor noise amplitude σ = 0.02.',
-           'Stage 3: PySINDy STLSQ Hard-Thresholding — Zero out all terms with |ξ_k| < λ = 0.05, '
-           'pruning spurious weights [0.0036, -0.0044, 0.0030, 0.0050] to exact zero while '
+           'u³] with synthetic sensor-drift amplitude σ = 0.02.',
+           'Stage 3: STLSQ Hard-Thresholding — Zero out all terms with |ξ_k| < λ = 0.05, '
+           'pruning spurious weights [0.0036, -0.0044, 0.0030, 0.0050] to zero while '
            'retaining [-0.9992, 0.0996].',
-           'Stage 4: PySR Pareto MDL Selection — Evaluate L_MDL = (N/2) ln(MSE) + 0.45 C_tree '
-           'across complexity levels C_tree ∈ {3, 6, 11}, certifying the knee at C_tree = 6 (L_MDL '
-           '= -1360.8705 nats).'],
- 'rules': ['Exact Support Recovery Invariant: STLSQ must recover the exact two-term support '
+           'Stage 4: Pareto MDL Selection — Evaluate L_MDL = (N/2) ln(MSE) + 0.45 C_tree '
+           'across complexity levels C_tree ∈ {3, 6, 11}, selecting the knee at C_tree = 6 (L_MDL '
+           '= -1073.4509 nats at σ = 0.02).'],
+ 'rules': ['Target Support Recovery Invariant: STLSQ must recover the two-term support '
            "['u*u_x', 'u_xx'] with zero false-positive operators and zero false-negative physical "
            'terms.',
            'Viscosity Survival Bound (Underfit Prevention): Sparsity cutoff λ must satisfy λ ≤ |ν '
-           '- 0.02 σ| ≈ 0.0996; setting λ > 0.10 prunes the viscous dissipation term ν u_xx and '
-           'leaves an inviscid shock truncation.',
+           '- 0.02 σ| = 0.0996 at σ = 0.02; setting λ ≥ 0.10 prunes the viscous dissipation term '
+           'ν u_xx and leaves an inviscid shock truncation.',
            'Noise Rejection Bound (Overfit Prevention): Threshold λ must exceed max_{k ∉ S} |σ · '
-           'd_k| = 0.25 σ; when σ > 4λ, spurious cubic u³ and linear u terms leak into the '
-           'discovered PDE.'],
+           'd_k| = 0.25 σ; when 0.25 σ ≥ λ (σ ≥ 4λ), spurious terms (starting with u³) leak into '
+           'the discovered PDE.'],
  'sidenote_1': {'kicker': 'SIDENOTE B.05-A · OVERFIT VS. UNDERFIT PHASE DIAGRAM',
-                'body': 'Scrubbing λ above 0.10 in the workbench deletes ν u_xx (underfit), '
+                'body': 'Scrubbing λ to 0.10 or above at σ = 0.02 deletes ν u_xx (underfit), '
                         'whereas scrubbing λ down to 0.01 at high noise σ = 0.15 admits spurious '
-                        'u³ terms (overfit).'},
+                        'terms including u³ (overfit). Below σ ≈ 0.0144, STLSQ keeps the clean '
+                        'support while the synthetic C_tree = 11 curve wins MDL.'},
  'sidenote_2': {'kicker': 'SIDENOTE B.05-B · WEAK FORMULATION FOR HIGH NOISE',
                 'body': 'Integrating Θ(u) against smooth compact test functions φ(x,t) (Weak '
-                        'SINDy) avoids differentiating raw noisy signals directly, extending '
-                        'recovery up to 20% noise.'},
- 'walkthrough': ['Verify the canonical benchmark at σ = 0.02 and λ = 0.05: active PDE terms are '
-                 "['u*u_x', 'u_xx'] and L_MDL = -1360.87 nats (PASS).",
-                 'Raise Sparsity Cutoff λ above 0.11 at σ = 0.02: observe the viscous diffusion '
+                        'SINDy) avoids differentiating raw noisy signals directly, improving '
+                        'robustness under high measurement noise.'},
+ 'walkthrough': ['Check the canonical synthetic benchmark at σ = 0.02 and λ = 0.05: active PDE '
+                 "terms are ['u*u_x', 'u_xx'] and model value L_MDL = -1073.45 nats (PASS).",
+                 'Raise Sparsity Cutoff λ above 0.10 at σ = 0.02: observe the viscous diffusion '
                  'term 0.10 u_xx get pruned away, triggering an UNDERFIT alert.',
                  'Raise Noise σ to 0.22 while lowering λ to 0.02 (or click [⚡ Counterfactual '
-                 'Axiom-Knockout]): watch spurious u³ and u operators cross the threshold, '
-                 'triggering an OVERFIT alert.'],
- 't0_t1_certified': ['Deterministic STLSQ operator pruning and PySR Pareto MDL verifier in '
-                     'bounties/bounty_p2_pysr_pysindy_pde_discovery.py (< 0.05s runtime).',
-                     'Cross-checked against Brunton, Proctor & Kutz (2016, DOI '
-                     '10.1073/pnas.1517384113), de Silva et al. (2020, DOI 10.21105/joss.02104), '
-                     'and Burns et al. (2020, DOI 10.1103/PhysRevResearch.2.023068).',
+                 'Axiom-Knockout]): watch spurious operators including u³ and u cross the '
+                 'threshold, triggering an OVERFIT alert.'],
+ 't0_t1_certified': ['Self-contained synthetic STLSQ operator pruning and Pareto MDL harness in '
+                     'bounties/bounty_p2_pysr_pysindy_pde_discovery.py (< 0.05s runtime, with '
+                     '--planted-defect overfit/underfit controls; does not execute Dedalus, '
+                     'PySINDy, PySR, or JAX-MD).',
+                     'Primary literature references checked against Brunton, Proctor & Kutz '
+                     '(2016, DOI 10.1073/pnas.1517384113), de Silva et al. (2020, DOI '
+                     '10.21105/joss.02104), and Burns et al. (2020, DOI '
+                     '10.1103/PhysRevResearch.2.023068).',
                      "Mounted live on Informatico.ai's Cover, Physics Hub, and Math Hub via "
                      'src/modules/physics-discovery-crucible.mjs.'],
  't2_t3_open_horizon': ['SRBench & PySR / PySINDy Open Research Track (open-source benchmark, no '
@@ -237,8 +250,8 @@ FOLIO = {'slug': 'b05',
                  'threshold is snipped away to absolute zero, leaving only the two thick, '
                  'fruit-bearing branches intact. Finally, the gardener counts the total weight of '
                  'the harvest versus the labor spent trimming (the Minimum Description Length, '
-                 'L_MDL), confirming that this exact two-branch configuration yields the sweetest '
-                 'fruit with zero wasted effort.',
+                 'L_MDL), showing that this two-branch configuration yields the cleanest balance '
+                 'between fit and simplicity.',
  'act2_plain_primer': 'In the interactive proof workbench below, you hold direct control over the '
                       'discovery crucible through two responsive sliders. The first slider adjusts '
                       'Trajectory Sensor Noise Amplitude σ, simulating how much electrical '
@@ -265,42 +278,39 @@ FOLIO = {'slug': 'b05',
                      'force_b_title': 'STLSQ Sparsity Sieve (λ)',
                      'force_b_sub': 'Hard-thresholds small weights (|ξ_k| < λ) to exact numerical '
                                     'zero.',
-                     'threshold_title': 'Viscous Survival Frontier (λ ≤ ν)',
-                     'threshold_eq': '0.25σ < λ ≤ ν = 0.10 (Support: {u·u_x, u_xx})',
+                     'threshold_title': 'Viscous Survival Frontier (λ ≤ 0.10 − 0.02σ)',
+                     'threshold_eq': '0.25σ < λ ≤ 0.10 − 0.02σ (STLSQ) · σ ≥ 0.015 (MDL knee)',
                      'threshold_sub': 'Balances noise rejection against viscous dissipation '
                                       'retention.',
-                     'threshold_pass': 'Exact support {u·u_x, u_xx} recovered with L_MDL = '
-                                       '-1360.87 nats.',
-                     'threshold_fail': 'Underfit: λ > 0.10 prunes ν u_xx; Overfit: σ > 4λ admits '
-                                       'fake u³.',
+                     'threshold_pass': 'Target support {u·u_x, u_xx} recovered with L_MDL = '
+                                       '−1073.45 nats at σ = 0.02.',
+                     'threshold_fail': 'Underfit: λ > 0.10 − 0.02σ; Overfit: 0.25σ ≥ λ; '
+                                       'Low-noise Pareto artifact: σ < 0.0144.',
                      'caption': 'Plate B.05-D illustrates how Sequentially Thresholded Least '
                                 'Squares and Pareto Minimum Description Length prune spurious '
-                                'sensor noise to discover the exact viscous Burgers PDE. By tuning '
-                                'threshold λ between sensor drift and physical viscosity ν, '
-                                'automated regression isolates true physical conservation laws '
-                                'without human bias.'},
- 'act2_deepening': 'The mathematical mechanics underpinning our discovery pipeline bridge '
-                   'high-resolution spectral integration with non-convex sparse optimization. In '
-                   'Stage 1, the Dedalus spectral engine discretizes the viscous Burgers equation '
-                   'u_t + u u_x = ν u_xx across N = 200 spatiotemporal Chebyshev–Fourier '
-                   'collocation nodes with true kinematic viscosity ν = 0.10. When simulated '
-                   'velocity trajectories are sampled by sensors with noise amplitude σ = 0.02, '
-                   'ordinary least-squares regression over the six-term candidate operator library '
-                   'Θ(u) = [1, u, u_x, u·u_x, u_xx, u^3] assigns small, non-zero spurious '
-                   'coefficients [0.0036, -0.0044, 0.0030, -0.9992, 0.0996, 0.0050] to every '
-                   'column. If uncorrected, these micro-coefficients corrupt long-term physical '
-                   'integration. Here, the Sequentially Thresholded Least Squares (STLSQ) '
-                   'algorithm intervenes: by enforcing the hard cutoff condition that any '
-                   'coefficient |ξ_k| < λ = 0.05 is set to exact zero, the four parasitic noise '
-                   'terms vanish simultaneously. The active support contracts strictly to {u·u_x, '
-                   'u_xx}. Next, Miles Cranmer’s PySR symbolic engine constructs candidate '
-                   'expression trees across varying complexities C_tree ∈ {3, 6, 11}. By '
-                   'evaluating the Minimum Description Length functional L_MDL = (N/2) ln(MSE) + '
-                   'λ_MDL C_tree with Occam penalty λ_MDL = 0.45, the model scores a sharp Pareto '
-                   'knee at C_tree = 6. At this knee, L_MDL drops to -1360.87 nats because the '
-                   'mean-squared error collapses by four orders of magnitude (1.2 × 10^{-6}), '
-                   'decisively rejecting both the underfit single-term model and the overfit cubic '
-                   'model.',
+                                'sensor noise to recover the viscous Burgers PDE in this model. '
+                                'By tuning threshold λ between sensor drift and physical '
+                                'viscosity ν, sparse regression isolates the two active '
+                                'operators.'},
+ 'act2_deepening': 'The mathematical mechanics illustrated by this benchmark link spectral fluid '
+                   'data (as generated by external solvers like Dedalus) with sparse thresholding '
+                   'and information-theoretic model selection. In the offline Python harness '
+                   '(bounties/bounty_p2_pysr_pysindy_pde_discovery.py), rather than running '
+                   'Dedalus, PySINDy, or PySR directly, Stage 1 fixes the viscous Burgers target '
+                   'u_t + u u_x = ν u_xx (ν = 0.10) across N = 200 sample points and uses simulated '
+                   'noisy operator weights at amplitude σ = 0.02 over the six-term library Θ(u) = [1, u, '
+                   'u_x, u·u_x, u_xx, u^3], yielding [0.0036, -0.0044, 0.0030, -0.9992, 0.0996, '
+                   '0.0050]. If uncorrected, those small parasitic weights corrupt long-term '
+                   'integration. Here, Sequentially Thresholded Least Squares (STLSQ) applies the '
+                   'hard cutoff |ξ_k| < λ = 0.05, zeroing all four spurious terms so the active '
+                   'support contracts to {u·u_x, u_xx}. Next, the Pareto Minimum Description '
+                   'Length functional L_MDL = (N/2) ln(MSE) + λ_MDL C_tree (with λ_MDL = 0.45) '
+                   'scores three complexity tiers C_tree ∈ {3, 6, 11}. At σ = 0.02, the synthetic '
+                   'MSE drops about 415-fold from 8.80 × 10^{-3} at C_tree = 3 (L_MDL = '
+                   '-471.95 nats) to 2.12 × 10^{-5} at C_tree = 6 (above the 1.2 × 10^{-6} '
+                   'noiseless floor), producing the Pareto knee at L_MDL = -1073.45 nats '
+                   '(-1073.4509 nats) and outscoring the overfit C_tree = 11 cubic model (-1073.35 '
+                   'nats).',
  'act4_human_ai': 'Solving open physical bounties on Informatico.ai requires an authentic '
                   'symbiosis between human domain intuition and high-performance symbolic '
                   'computation. Human aerodynamicists and continuum mechanicians bring deep '
@@ -324,26 +334,22 @@ FOLIO = {'slug': 'b05',
                   'partial differential equations for complex fluid instabilities, plasma '
                   'confinement regimes, and non-Newtonian polymer flows that would have taken '
                   'decades of manual mathematical trial and error to derive.',
- 'act4_deepening': 'In scientific computation and prize bounties, a verifier that merely prints '
-                   'PASS without adversarial stress testing is worse than useless: it breeds '
-                   'complacency and conceals subtle algorithmic bugs. The offline Python harness '
+ 'act4_deepening': 'In scientific computation, a check script that only prints PASS without '
+                   'negative controls hides algorithmic regressions. The offline Python harness '
                    'bounties/bounty_p2_pysr_pysindy_pde_discovery.py and its companion SKILL.md '
-                   'file enforce a strict, deterministic audit designed to reject ungrounded '
-                   'claims with zero external dependencies. The script operates on dual epistemic '
-                   'layers. First, it runs the forward discovery benchmark under baseline sensor '
-                   'parameters (σ = 0.02, λ = 0.05), certifying that STLSQ isolates the exact '
-                   'physical support {u·u_x, u_xx} and confirming that PySR’s Minimum Description '
-                   'Length selects C_tree = 6 at L_MDL = -1360.87 nats. Second, and most '
-                   'importantly, the harness executes an adversarial planted-defect suite. It '
-                   'deliberately introduces counterfactual perturbations—injecting excessive '
-                   'sensor noise (σ = 0.22) to verify that spurious cubic operator leakage '
-                   'triggers an immediate OVERFIT failure, and raising the sparsity threshold (λ = '
-                   '0.15) to prove that the premature deletion of physical viscosity triggers an '
-                   'UNDERFIT failure. By requiring that every failure path triggers an explicit '
-                   'non-zero exit code, our portable skill architecture guarantees that neither a '
-                   'hallucinating language model nor an inadvertent code regression can claim '
-                   'success on a compromised model. Every assertion is cryptographically '
-                   'reproducible, ensuring absolute scientific integrity before publication.',
+                   'run a self-contained deterministic synthetic benchmark with zero external '
+                   'dependencies (it does not invoke Dedalus, PySINDy, PySR, or JAX-MD). In '
+                   'normal mode, it evaluates the baseline synthetic parameters (σ = 0.02, λ = '
+                   '0.05), checking that STLSQ isolates the two-term support {u·u_x, u_xx} and '
+                   'that Pareto Minimum Description Length selects C_tree = 6 at model value '
+                   'L_MDL = -1073.4509 nats. Under --planted-defect, the script passes '
+                   'counterfactual perturbations through the same evaluator—excessive sensor '
+                   'noise (σ = 0.22 at λ = 0.05) so spurious u³ leakage triggers an OVERFIT '
+                   'failure, and an elevated sparsity cutoff (λ = 0.15 at σ = 0.02) so pruning '
+                   'physical viscosity triggers an UNDERFIT failure—and exits non-zero when '
+                   'both planted defects fail as expected. Requiring explicit non-zero failure '
+                   'codes keeps this synthetic benchmark reproducible and flags silent '
+                   'regressions before publication.',
  'plain_es': 'Para entender cómo una computadora puede descubrir leyes de la física a partir de '
              'mediciones ruidosas, imaginen a un jardinero que poda un huerto frutal después de '
              'una fuerte tormenta. Las ramas del árbol representan las fuerzas reales del agua en '
@@ -355,21 +361,21 @@ FOLIO = {'slug': 'b05',
              'herramienta utiliza una tijera matemática llamada umbral de dispersión: si una rama '
              'es más delgada que el corte del umbral, se elimina a cero de inmediato. De este '
              'modo, el algoritmo descarta el ruido engañoso y conserva únicamente las ecuaciones '
-             'fundamentales del fluido, limpias y exactas, permitiendo que cualquier estudiante o '
+             'fundamentales del fluido, limpias y compactas, permitiendo que cualquier estudiante o '
              'ingeniero comprenda la física sin fórmulas innecesarias.',
- 'deep_es': 'La recuperación exacta de ecuaciones diferenciales en derivadas parciales a partir de '
-            'señales experimentales contaminadas descansa en el balance riguroso entre la '
-            'minimización del error cuadrático y la penalización de complejidad estructural. En el '
-            'flujo no lineal de Burgers, la advección inercial -u·u_x tiende a generar frentes de '
-            'choque empinados, mientras que la difusión viscosa ν u_xx disipa energía a pequeña '
-            'escala con viscosidad cinemática ν = 0.10. Al incorporar ruido gaussiano de amplitud '
-            'σ, la regresión ordinaria activa espuriamente términos de orden superior como u^3 y '
-            'desplazamientos lineales. Mediante el algoritmo de mínimos cuadrados con umbral '
-            'secuencial (STLSQ), cualquier coeficiente cuyo valor absoluto sea inferior al umbral '
-            'de corte λ = 0.05 se anula numéricamente, aislando el soporte exacto {u·u_x, u_xx}. '
-            'La selección final se formaliza a través de la longitud mínima de descripción de '
-            'Pareto en PySR (L_MDL = -1360.87 nats), demostrando que cuando el umbral satisface '
-            '0.25σ < λ ≤ 0.10, el sistema garantiza convergencia sin subajuste ni sobreajuste.',
+ 'deep_es': 'La recuperación de ecuaciones diferenciales en derivadas parciales a partir de '
+            'señales experimentales contaminadas descansa en el balance entre la minimización '
+            'del error cuadrático y la penalización de complejidad estructural. En el flujo no '
+            'lineal de Burgers, la advección inercial -u·u_x genera frentes de choque empinados, '
+            'mientras que la difusión viscosa ν u_xx disipa energía a pequeña escala con '
+            'viscosidad cinemática ν = 0.10. Al incorporar deriva de ruido de amplitud σ en '
+            'nuestro banco sintético, la regresión ordinaria activa términos espurios como u^3 y '
+            'desplazamientos lineales. Mediante el umbralizado duro STLSQ, cualquier coeficiente '
+            'cuyo valor absoluto sea inferior a λ = 0.05 se anula a cero, aislando el soporte '
+            '{u·u_x, u_xx}. La selección final se formaliza con la longitud mínima de '
+            'descripción de Pareto (valor de modelo L_MDL = -1073.45 nats con σ = 0.02), '
+            'mostrando que cuando el umbral satisface 0.25σ < λ ≤ 0.10 − 0.02σ, este modelo '
+            'sintético recupera el soporte objetivo sin subajuste ni sobreajuste.',
  'easy_history_title_en': "How Human Pioneers Reached This Frontier: From Kepler's Mars Tables to "
                           'SINDy & PySR Symbolic Discovery',
  'easy_history_title_es': 'Cómo los Pioneros Humanos Llegaron a Esta Frontera: De las Tablas de '
@@ -483,17 +489,17 @@ FOLIO = {'slug': 'b05',
                         {'year': '2023–2026',
                          'who_en': 'Miles Cranmer (PySR) & Pareto MDL Crucible',
                          'who_es': 'Miles Cranmer (PySR) y el Crisol de Pareto MDL',
-                         'title_en': 'Minimum Description Length (L_MDL = −1360.87 nats)',
-                         'title_es': 'Longitud Mínima de Descripción (L_MDL = −1360.87 nats)',
+                         'title_en': 'Minimum Description Length (L_MDL = −1073.45 nats)',
+                         'title_es': 'Longitud Mínima de Descripción (L_MDL = −1073.45 nats)',
                          'summary_en': 'Scores symbolic trees via L_MDL = (N/2) ln(MSE) + λ_MDL '
-                                       'C_tree, certifying u_t = −u·u_x + 0.10 u_xx at the C_tree '
-                                       '= 6 cliff.',
+                                       'C_tree, selecting u_t = −u·u_x + 0.10 u_xx at the C_tree '
+                                       '= 6 knee.',
                          'summary_es': 'Evalúa árboles mediante L_MDL = (N/2) ln(MSE) + λ_MDL '
-                                       'C_tree, certificando u_t = −u·u_x + 0.10 u_xx en el '
-                                       'escalón C_tree = 6.',
-                         'roadblock_en': 'Extending guaranteed recovery to 3D turbulent closures '
-                                         'with formal symmetry verification in Lean 4.',
-                         'roadblock_es': 'Extender la recuperación garantizada a cierres '
+                                       'C_tree, seleccionando u_t = −u·u_x + 0.10 u_xx en la '
+                                       'rodilla C_tree = 6.',
+                         'roadblock_en': 'Extending reliable recovery to 3D turbulent closures '
+                                         'with formal symmetry checks in Lean 4.',
+                         'roadblock_es': 'Extender la recuperación confiable a cierres '
                                          'turbulentos 3D con verificación formal de simetrías en '
                                          'Lean 4.'}],
  'toy_model_title_en': 'Try It in Your Head in 20 Seconds: Snipping 4 Fake Noise Terms to Reveal a '
@@ -523,19 +529,21 @@ FOLIO = {'slug': 'b05',
                     'las ecuaciones de momento de los fluidos viscosos, buscaban la ley matemática '
                     'más simple capaz de explicar los datos sin parámetros espurios. En el siglo '
                     'XXI, Steven Brunton, Joshua Proctor y J. Nathan Kutz (DOI '
-                    '10.1073/pnas.1517384113) demostraron que la mayoría de las leyes físicas '
+                    '10.1073/pnas.1517384113) mostraron que la mayoría de las leyes físicas '
                     'rectoras son dispersas en el espacio de operadores no lineales candidatos.',
- 'act1_body_es': 'Nuestro banco de pruebas de descubrimiento abierto acopla tres motores de '
-                 'frontera: Dedalus (Burns et al. 2020, DOI 10.1103/PhysRevResearch.2.023068) '
-                 'genera trayectorias espectrales Chebyshev–Fourier de alta precisión de ondas de '
-                 'choque viscosas; PySINDy (de Silva et al. 2020, DOI 10.21105/joss.02104) aplica '
-                 'Mínimos Cuadrados con Umbral Secuencial (STLSQ) sobre la biblioteca de '
-                 'operadores candidatos Θ(u) = [1, u, u_x, u·u_x, u_xx, u³]; y PySR de Miles '
-                 'Cranmer (arXiv:2305.01582) califica los árboles de expresiones candidatos según '
-                 'su Longitud Mínima de Descripción de Pareto L_MDL = (N/2) ln(MSE) + λ_MDL '
-                 'C_tree. Con ruido de sensor σ = 0.02 y umbral de dispersión λ = 0.05, el flujo '
-                 'poda los cuatro términos espurios de ruido a cero exacto y recupera u_t = -1.00 '
-                 'u·u_x + 0.10 u_xx con L_MDL = -1360.87 nats.',
+ 'act1_body_es': 'Los flujos de descubrimiento abierto de EDPs combinan tres bibliotecas externas: '
+                 'Dedalus (Burns et al. 2020, DOI 10.1103/PhysRevResearch.2.023068) para '
+                 'trayectorias espectrales Chebyshev–Fourier de ondas de choque viscosas; PySINDy '
+                 '(de Silva et al. 2020, DOI 10.21105/joss.02104) para Mínimos Cuadrados con '
+                 'Umbral Secuencial (STLSQ) sobre una biblioteca de operadores candidatos Θ(u) = '
+                 '[1, u, u_x, u·u_x, u_xx, u³]; y PySR de Miles Cranmer (arXiv:2305.01582) para '
+                 'calificar árboles simbólicos con la Longitud Mínima de Descripción de Pareto '
+                 'L_MDL = (N/2) ln(MSE) + λ_MDL C_tree. El banco de pruebas en Python sin '
+                 'dependencias de este folio (bounties/bounty_p2_pysr_pysindy_pde_discovery.py) '
+                 'no ejecuta esos paquetes externos; en su lugar evalúa un modelo sintético '
+                 'autocontenido de 6 operadores (N = 200). Con ruido de sensor σ = 0.02 y umbral '
+                 'λ = 0.05, el modelo anula los cuatro términos espurios y selecciona u_t = -1.00 '
+                 'u·u_x + 0.10 u_xx con valor de modelo L_MDL = -1073.45 nats.',
  'act1_stakes_es': 'Durante siglos, descubrir las ecuaciones diferenciales que gobiernan la '
                    'naturaleza exigió generaciones de genio observacional. Hoy en día, los túneles '
                    'de viento, los reactores de fusión tokamak, las boyas oceánicas y los ensayos '
@@ -550,19 +558,25 @@ FOLIO = {'slug': 'b05',
                    'de Pareto mediante PySR representan un cambio de paradigma en la ciencia '
                    'automatizada. En lugar de ocultar la dinámica física dentro de millones de '
                    'pesos opacos, estos algoritmos interrogan series temporales ruidosas para '
-                   'aislar los operadores matemáticos exactos que impulsan el fenómeno, '
-                   'convirtiendo flujos crudos de sensores en conocimiento científico verificable.',
+                   'aislar los operadores matemáticos que impulsan el fenómeno, convirtiendo '
+                   'flujos crudos de sensores en conocimiento científico verificable.',
  'pullquote_es': 'La navaja de Occam no es una vaga preferencia filosófica; sobre la frontera de '
-                 'Pareto de la Longitud Mínima de Descripción, la verdadera ley física es un '
-                 'acantilado geométrico donde el error cae cuatro órdenes de magnitud.',
- 'act2_intuition_es': 'En presencia de ruido gaussiano de sensor σ, los mínimos cuadrados '
-                      'ordinarios asignan pequeños pesos no nulos ξ_k ≈ σ·d_k a cada operador '
-                      'candidato de la biblioteca [1, u, u_x, u·u_x, u_xx, u³], produciendo un '
-                      'polinomio sobreajustado que diverge fuera de la ventana de entrenamiento. '
-                      'STLSQ elimina todo coeficiente con |ξ_k| < λ = 0.05 y vuelve a resolver '
-                      'sobre el soporte sobreviviente. Siempre que la deriva de ruido se mantenga '
-                      'por debajo de λ (σ ≤ 0.18) y λ permanezca por debajo de la viscosidad real '
-                      'ν = 0.10, el soporte exacto {u·u_x, u_xx} se recupera con probabilidad 1.',
+                 'Pareto de la Longitud Mínima de Descripción, la ley física objetivo se sitúa en '
+                 'una rodilla geométrica donde el error modelado cae más de dos órdenes de '
+                 'magnitud.',
+ 'act2_intuition_es': 'En presencia de ruido de sensor σ, los mínimos cuadrados ordinarios '
+                      'asignan pequeños pesos no nulos ξ_k ≈ σ·d_k a cada operador candidato de '
+                      'la biblioteca [1, u, u_x, u·u_x, u_xx, u³], produciendo un polinomio '
+                      'sobreajustado que se degrada fuera de la ventana de entrenamiento. STLSQ '
+                      'anula todo coeficiente con |ξ_k| < λ = 0.05 y conserva el soporte '
+                      'sobreviviente. En este banco sintético determinista, mientras la deriva '
+                      'espuria máxima se mantenga debajo de λ (0.25 σ < λ, es decir σ < 0.20 en '
+                      'λ = 0.05) y λ no supere el peso viscoso perturbado |0.10 − 0.02 σ| '
+                      '(0.0996 en σ = 0.02), el soporte objetivo {u·u_x, u_xx} se recupera; '
+                      'además, la curva sintética MDL favorece C_tree = 6 sobre C_tree = 11 '
+                      'para σ ≥ 0.015 (debajo de σ ≈ 0.0144, el piso fijo 1.15 × 10^{-6} de '
+                      'C_tree = 11 dispara una alerta de Pareto aunque el soporte STLSQ siga '
+                      'limpio).',
  'act2_analogy_es': 'Imagina a un jardinero experimentado podando un huerto de manzanos al inicio '
                     'de la primavera. Los árboles representan los términos matemáticos candidatos '
                     'y sus ramas representan las posibles fuerzas físicas que actúan sobre el '
@@ -583,25 +597,28 @@ FOLIO = {'slug': 'b05',
                          'Dispersión STLSQ λ (de 0.01 a 0.20), actuando como un tamiz matemático '
                          'que anula cualquier término cuyo peso calculado sea menor que λ. En λ = '
                          '0.05 y σ = 0.02, el filtro elimina los cuatro términos de ruido y '
-                         'conserva la ecuación exacta de Burgers. Pero observa qué ocurre al '
+                         'conserva la ecuación de Burgers objetivo. Pero observa qué ocurre al '
                          'pulsar [⚡ Counterfactual Axiom-Knockout] o mover los controles fuera de '
-                         'la ventana segura: si subes λ por encima de 0.10, la tijera corta por '
-                         'error la viscosidad real 0.10 u_xx (SUBAJUSTE); si subes el ruido σ con '
-                         'un λ muy pequeño, se cuelan términos cúbicos falsos u³ (SOBREAJUSTE).',
- 'act2_deepening_es': 'La mecánica matemática de nuestro flujo de descubrimiento une la '
-                      'integración espectral de alta resolución con la optimización dispersa no '
-                      'convexa. En la Etapa 1, el motor espectral Dedalus discretiza la ecuación '
-                      'viscosa de Burgers u_t + u u_x = ν u_xx sobre N = 200 nodos de colocación '
-                      'Chebyshev–Fourier con viscosidad cinemática real ν = 0.10. Cuando las '
-                      'trayectorias de velocidad se muestrean con ruido σ = 0.02, la regresión '
-                      'ordinaria sobre Θ(u) = [1, u, u_x, u·u_x, u_xx, u³] asigna pesos espurios '
-                      '[0.0036, -0.0044, 0.0030, -0.9992, 0.0996, 0.0050]. Aquí interviene el '
-                      'algoritmo STLSQ: al imponer que todo coeficiente |ξ_k| < λ = 0.05 se anule '
-                      'exactamente, los cuatro términos parásitos desaparecen y el soporte se '
-                      'contrae a {u·u_x, u_xx}. A continuación, PySR evalúa el funcional de '
-                      'Longitud Mínima de Descripción L_MDL = (N/2) ln(MSE) + λ_MDL C_tree con '
-                      'λ_MDL = 0.45 sobre complejidades C_tree ∈ {3, 6, 11}, certificando la '
-                      'rodilla de Pareto en C_tree = 6 con L_MDL = -1360.87 nats.',
+                         'la ventana segura: si subes λ a 0.10 o más en σ = 0.02, la tijera corta '
+                         'la viscosidad 0.10 u_xx (SUBAJUSTE); si subes el ruido σ con un λ muy '
+                         'pequeño, se cuelan términos espurios como u³ (SOBREAJUSTE).',
+ 'act2_deepening_es': 'La mecánica matemática ilustrada por este banco vincula datos espectrales '
+                      'de fluidos (como los generados por Dedalus) con umbralizado disperso y '
+                      'selección de modelos por teoría de la información. En el arnés en Python '
+                      'sin conexión (bounties/bounty_p2_pysr_pysindy_pde_discovery.py), sin '
+                      'ejecutar Dedalus, PySINDy ni PySR directamente, la Etapa 1 fija la '
+                      'ecuación viscosa de Burgers u_t + u u_x = ν u_xx (ν = 0.10) sobre N = 200 '
+                      'puntos de muestra y modela pesos con deriva σ = 0.02 sobre Θ(u) = [1, u, '
+                      'u_x, u·u_x, u_xx, u³]: [0.0036, -0.0044, 0.0030, -0.9992, 0.0996, 0.0050]. '
+                      'STLSQ aplica el corte duro |ξ_k| < λ = 0.05, anulando los cuatro términos '
+                      'parásitos y contrayendo el soporte a {u·u_x, u_xx}. A continuación, el '
+                      'funcional de Longitud Mínima de Descripción L_MDL = (N/2) ln(MSE) + λ_MDL '
+                      'C_tree (λ_MDL = 0.45) evalúa C_tree ∈ {3, 6, 11}. En σ = 0.02, el MSE '
+                      'sintético cae unas 415 veces, de 8.80 × 10^{-3} en C_tree = 3 (L_MDL = '
+                      '-471.95 nats) a 2.12 × 10^{-5} en C_tree = 6 (sobre el piso sin ruido de '
+                      '1.2 × 10^{-6}), seleccionando la rodilla de Pareto en L_MDL = -1073.45 '
+                      'nats (-1073.4509 nats) frente al modelo cúbico sobreajustado C_tree = 11 '
+                      '(-1073.35 nats).',
  'act4_human_ai_es': 'Resolver retos abiertos de descubrimiento físico requiere una simbiosis '
                      'auténtica entre la intuición humana y el cálculo simbólico de alto '
                      'rendimiento. Los físicos e ingenieros humanos formulan los principios de '
@@ -611,58 +628,66 @@ FOLIO = {'slug': 'b05',
                      'árboles sintácticos evolutivos. Cada ecuación candidata propuesta por la '
                      'frontera de Pareto es auditada frente a simetrías físicas, consistencia '
                      'dimensional e invariancia galileana.',
- 'act4_deepening_es': 'En la computación científica, un verificador que solo imprime APROBADO sin '
-                      'pruebas adversarias oculta errores algorítmicos. El arnés autónomo en '
-                      'Python bounties/bounty_p2_pysr_pysindy_pde_discovery.py y su guía SKILL.md '
-                      'ejecutan una auditoría determinista en dos capas con cero dependencias '
-                      'externas: primero certifican que en σ = 0.02 y λ = 0.05 STLSQ aísla el '
-                      'soporte exacto {u·u_x, u_xx} y PySR selecciona C_tree = 6 con L_MDL = '
-                      '-1360.87 nats; segundo, inyectan defectos sembrados contrafactuales (ruido '
-                      'excesivo σ = 0.22 para provocar SOBREAJUSTE y umbral excesivo λ = 0.15 para '
-                      'provocar SUBAJUSTE), garantizando que cualquier desviación física falle de '
-                      'forma explícita y reproducible.',
+ 'act4_deepening_es': 'En la computación científica, un script de verificación que solo imprime '
+                      'APROBADO sin controles negativos oculta regresiones algorítmicas. El arnés '
+                      'en Python bounties/bounty_p2_pysr_pysindy_pde_discovery.py y su guía '
+                      'SKILL.md ejecutan un banco sintético determinista con cero dependencias '
+                      'externas (sin invocar Dedalus, PySINDy, PySR ni JAX-MD). En modo normal '
+                      'evalúa σ = 0.02 y λ = 0.05, comprobando que STLSQ aísla el soporte '
+                      '{u·u_x, u_xx} y que el criterio MDL selecciona C_tree = 6 con valor de '
+                      'modelo L_MDL = -1073.4509 nats. Con --planted-defect pasa perturbaciones '
+                      'contrafactuales por el mismo evaluador —ruido excesivo σ = 0.22 en λ = '
+                      '0.05 para provocar SOBREAJUSTE y umbral elevado λ = 0.15 en σ = 0.02 para '
+                      'provocar SUBAJUSTE— y devuelve código de salida distinto de cero cuando '
+                      'ambos defectos fallan según lo esperado.',
  'sidenote_1_es': {'kicker': 'NOTA AL MARGEN B.05-A · DIAGRAMA DE FASE SOBREAJUSTE VS. SUBAJUSTE',
-                   'body': 'Deslizar λ por encima de 0.10 en el banco de pruebas borra el término '
-                           'viscoso ν u_xx (subajuste), mientras que bajar λ a 0.01 con ruido alto '
-                           'σ = 0.15 deja pasar términos espurios u³ (sobreajuste).'},
+                   'body': 'Subir λ a 0.10 o más en σ = 0.02 borra el término viscoso ν u_xx '
+                           '(subajuste), mientras que bajar λ a 0.01 con ruido alto σ = 0.15 deja '
+                           'pasar términos espurios incluido u³ (sobreajuste). Debajo de σ ≈ '
+                           '0.0144, STLSQ conserva el soporte limpio pero la curva sintética '
+                           'C_tree = 11 domina el MDL.'},
  'sidenote_2_es': {'kicker': 'NOTA AL MARGEN B.05-B · FORMULACIÓN DÉBIL PARA RUIDO ALTO',
                    'body': 'Integrar Θ(u) contra funciones de prueba suaves de soporte compacto '
-                           'φ(x,t) (Weak SINDy) evita derivar señales ruidosas directamente, '
-                           'extendiendo la recuperación hasta un 20% de ruido.'},
- 'walkthrough_es': ['Verifica el punto de referencia canónico en σ = 0.02 y λ = 0.05: los términos '
-                    "activos de la EDP son ['u*u_x', 'u_xx'] y L_MDL = -1360.87 nats (APROBADO).",
-                    'Sube el Umbral de Corte de Dispersión λ por encima de 0.11 con σ = 0.02: '
+                           'φ(x,t) (Weak SINDy) evita derivar señales ruidosas directamente y '
+                           'mejora la robustez bajo ruido elevado.'},
+ 'walkthrough_es': ['Comprueba el banco sintético canónico en σ = 0.02 y λ = 0.05: los términos '
+                    "activos de la EDP son ['u*u_x', 'u_xx'] y el valor de modelo es L_MDL = "
+                    '-1073.45 nats (APROBADO).',
+                    'Sube el Umbral de Corte de Dispersión λ por encima de 0.10 con σ = 0.02: '
                     'observa cómo se poda el término de difusión viscosa 0.10 u_xx, disparando una '
                     'alerta de SUBAJUSTE (UNDERFIT).',
                     'Sube el Ruido σ a 0.22 mientras bajas λ a 0.02 (o pulsa [⚡ Counterfactual '
-                    'Axiom-Knockout]): observa cómo los operadores espurios u³ y u cruzan el '
+                    'Axiom-Knockout]): observa cómo operadores espurios como u³ y u cruzan el '
                     'umbral, disparando una alerta de SOBREAJUSTE (OVERFIT).'],
- 'steps_es': ['Etapa 1: Integración Espectral Chebyshev–Fourier en Dedalus — Integra la dinámica '
-              'de ondas de choque viscosas de Burgers u_t + u u_x = ν u_xx (ν = 0.10) sobre N = '
-              '200 nodos espaciotemporales de colocación.',
+ 'steps_es': ['Etapa 1: Configuración de Referencia de Burgers Viscoso — Define la EDP viscosa de '
+              'Burgers u_t + u u_x = ν u_xx (ν = 0.10) sobre N = 200 puntos de muestra (los '
+              'solucionadores espectrales externos como Dedalus integran campos completos; el '
+              'arnés sin conexión modela directamente los 6 pesos de operadores).',
               'Etapa 2: Ensamblaje de la Biblioteca de Operadores con Ruido — Construye Θ(u) = [1, '
-              'u, u_x, u·u_x, u_xx, u³] contaminada con amplitud de ruido de sensor σ = 0.02.',
-              'Etapa 3: Umbralizado Duro STLSQ en PySINDy — Anula todos los términos con |ξ_k| < λ '
-              '= 0.05, podando los pesos espurios [0.0036, -0.0044, 0.0030, 0.0050] a cero exacto '
-              'mientras conserva [-0.9992, 0.0996].',
-              'Etapa 4: Selección de Pareto MDL en PySR — Evalúa L_MDL = (N/2) ln(MSE) + 0.45 '
-              'C_tree sobre los niveles de complejidad C_tree ∈ {3, 6, 11}, certificando la '
-              'rodilla en C_tree = 6 (L_MDL = -1360.8705 nats).'],
- 'rules_es': ['Invariante de Recuperación de Soporte Exacto: STLSQ debe recuperar el soporte '
-              "exacto de dos términos ['u*u_x', 'u_xx'] con cero operadores falsos positivos y "
-              'cero términos físicos falsos negativos.',
+              'u, u_x, u·u_x, u_xx, u³] con amplitud sintética de deriva σ = 0.02.',
+              'Etapa 3: Umbralizado Duro STLSQ — Anula todos los términos con |ξ_k| < λ = 0.05, '
+              'podando los pesos espurios [0.0036, -0.0044, 0.0030, 0.0050] a cero mientras '
+              'conserva [-0.9992, 0.0996].',
+              'Etapa 4: Selección de Pareto MDL — Evalúa L_MDL = (N/2) ln(MSE) + 0.45 C_tree sobre '
+              'los niveles de complejidad C_tree ∈ {3, 6, 11}, seleccionando la rodilla en C_tree '
+              '= 6 (L_MDL = -1073.4509 nats en σ = 0.02).'],
+ 'rules_es': ['Invariante de Recuperación de Soporte Objetivo: STLSQ debe recuperar el soporte de '
+              "dos términos ['u*u_x', 'u_xx'] con cero operadores falsos positivos y cero términos "
+              'físicos falsos negativos.',
               'Cota de Supervivencia de Viscosidad (Prevención de Subajuste): El umbral de '
-              'dispersión λ debe satisfacer λ ≤ |ν - 0.02 σ| ≈ 0.0996; fijar λ > 0.10 poda el '
-              'término de disipación viscosa ν u_xx.',
+              'dispersión λ debe satisfacer λ ≤ |ν - 0.02 σ| = 0.0996 en σ = 0.02; fijar λ ≥ 0.10 '
+              'poda el término de disipación viscosa ν u_xx.',
               'Cota de Rechazo de Ruido (Prevención de Sobreajuste): El umbral λ debe superar '
-              'max_{k ∉ S} |σ · d_k| = 0.25 σ; cuando σ > 4λ, se filtran términos cúbicos u³ y '
-              'lineales espurios en la EDP descubierta.'],
- 't0_t1_certified_es': ['Verificador determinista de poda de operadores STLSQ y Pareto MDL de PySR '
-                        'en bounties/bounty_p2_pysr_pysindy_pde_discovery.py (tiempo de ejecución '
-                        '< 0.05 s).',
-                        'Verificado frente a Brunton, Proctor & Kutz (2016, DOI '
-                        '10.1073/pnas.1517384113), de Silva et al. (2020, DOI 10.21105/joss.02104) '
-                        'y Burns et al. (2020, DOI 10.1103/PhysRevResearch.2.023068).',
+              'max_{k ∉ S} |σ · d_k| = 0.25 σ; cuando 0.25 σ ≥ λ (σ ≥ 4λ), se filtran términos '
+              'espurios como u³ en la EDP descubierta.'],
+ 't0_t1_certified_es': ['Banco sintético autocontenido de poda STLSQ y Pareto MDL en '
+                        'bounties/bounty_p2_pysr_pysindy_pde_discovery.py (tiempo de ejecución '
+                        '< 0.05 s, con controles negativos --planted-defect; no ejecuta Dedalus, '
+                        'PySINDy, PySR ni JAX-MD).',
+                        'Referencias primarias cotejadas frente a Brunton, Proctor & Kutz (2016, '
+                        'DOI 10.1073/pnas.1517384113), de Silva et al. (2020, DOI '
+                        '10.21105/joss.02104) y Burns et al. (2020, DOI '
+                        '10.1103/PhysRevResearch.2.023068).',
                         'Montado en vivo en la Portada, el Hub de Física y el Hub de Matemáticas '
                         'de Informatico.ai mediante '
                         'src/modules/physics-discovery-crucible.mjs.'],

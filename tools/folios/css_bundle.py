@@ -3410,6 +3410,34 @@ REVAMP_CSS = r"""
     }
   }
 }
+
+  /* Phone width: a long file name, link or label must wrap inside its column instead of widening it.
+     Found by the 390 px Playwright sweep of 2026-11-21 (plate header actions, colophon, toolbox pills, skill source). */
+  .tp-plate-head,
+  .tp-plate-head-actions,
+  .tp-plate-head-actions > *,
+  .tp-colophon-grid,
+  .tp-colophon-cell,
+  .tp-bounty-pills,
+  .tp-bounty-pill,
+  .tp-method-body > *,
+  .tp-proof-spine > *,
+  .tp-proof-stage-block,
+  .tp-skill-source-summary {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 560px) {
+    .tp-colophon-grid,
+    .tp-method-body {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .tp-bounty-pill,
+    .tp-plate-head-actions > * {
+      white-space: normal;
+    }
+  }
 """
 
 
