@@ -16,15 +16,15 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Primary Scite Anchor DOI**: https://doi.org/10.1016/j.cpc.2024.109457 (Scite Report: https://scite.ai/reports/10.1016/j.cpc.2024.109457)
 
 ## 2. Falsification Rules
-1. Standard Model Gauge Anomaly Cancellation: All four chiral trace invariants (gravitational Tr[Y], cubic U(1)_Y³ Tr[Y³], weak mixed Tr[τ²Y], and colour mixed Tr[λ²Y]) must vanish identically (|Tr| < 10⁻¹²); any hypercharge drift δY ≠ 0 breaks quantum gauge invariance.
+1. Standard Model Gauge Anomaly Cancellation: All four chiral trace invariants (gravitational Tr[Y], cubic U(1)_Y³ Tr[Y³], weak mixed Tr[τ²Y], and color mixed Tr[λ²Y]) must vanish identically (|Tr| < 10⁻¹²); any hypercharge drift δY ≠ 0 breaks quantum gauge invariance.
 2. Calabrese–Cardy Entanglement Bound: To faithfully represent the critical Ising ground state at chain length L = 128 (c = 0.5, S_vN = 0.882836 nats), the MPS bond dimension must satisfy ln(χ) ≥ S_vN(L), i.e., χ ≥ 3.
 3. Pfeuty Ground-State Energy Invariant: Critical TFIM energy per site at g = J = 1 must equal -4/π = -1.27323954.
 
 ## 3. 4-Stage Formal Proof & Benchmark Mechanism
-- Stage 1: Weyl Multiplet Assignment in PhysLean — Declare the five chiral SU(3)_C × SU(2)_L × U(1)_Y representations per generation: Q_L(3,2,1/6), u_R^c(3,1,-2/3), d_R^c(3,1,1/3), L_L(1,2,-1/2), e_R^c(1,1,1).
-- Stage 2: Four-Trace Gauge Anomaly Cancellation — Verify Tr[Y] = 0, Tr[Y³] = 0, Tr[τ²Y] = 0, and Tr[λ²Y] = 0 to machine precision (and exactly over ℚ in Lean 4).
-- Stage 3: Exact Pfeuty & Calabrese–Cardy Critical Scaling — Evaluate 1D critical Transverse-Field Ising ground-state energy density E₀/N = -4/π = -1.27323954 and entanglement entropy S_vN(L=128) = (0.5/6) ln(128) + 0.4785 = 0.882836 nats.
-- Stage 4: MPS Bond-Dimension Capacity Certification — Confirm that MPS bond capacity ln(χ) = ln(64) = 4.158883 nats strictly bounds S_vN(128) = 0.882836 nats.
+- Stage 1 (Multiplet Table in Harness): Encode the five SU(3)_C × SU(2)_L × U(1)_Y Weyl multiplets per generation (PhysLean, DOI 10.1016/j.cpc.2024.109457): Q_L(3,2,1/6), u_R^c(3,1,-2/3), d_R^c(3,1,1/3), L_L(1,2,-1/2), e_R^c(1,1,1).
+- Stage 2 (Four-Trace Anomaly Sum in Harness): Evaluate Tr[Y], Tr[Y³], Tr[τ²Y], and Tr[λ²Y] in Python floating-point arithmetic (< 10⁻¹² tolerance; PhysLean reports the rational check over ℚ in Lean 4).
+- Stage 3 (Pfeuty & Calabrese–Cardy Formulas in Harness): Evaluate E₀/N = -4/π = -1.27323954 and S_vN(L=128) = (0.5/6) ln(128) + 0.4785 = 0.882836 nats (illustrative s_1 = 0.4785).
+- Stage 4 (MPS Bond-Capacity Check): Check that MPS bond capacity ln(χ) = ln(64) = 4.158883 nats bounds S_vN(128) = 0.882836 nats.
 
 ## 4. Reference Results Computed by the Harness (T0/T1)
 - **PhysLean Cubic Trace Tr[Y³]**: `0.000000000000 (Anomaly-Free)`
@@ -34,9 +34,8 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 
 ## 5. Exact T0–T3 Truth Boundary
 ### Verified in Repository Today (T0/T1)
-- Deterministic Standard Model four-trace anomaly verifier and 1D critical TFIM entanglement harness in bounties/bounty_m2_physlean_itensor_quantum_gauge.py (< 0.05s runtime).
-- Cross-checked against Tooby-Smith (2024, DOI 10.1016/j.cpc.2024.109457), Fishman et al. (2022, DOI 10.21468/SciPostPhysCodeb.4), and Vicentini et al. (2022, DOI 10.21468/SciPostPhysCodeb.7).
-- Ready for immediate community showcase submission to HEPLean/PhysLean Zulip and ITensors / NetKet showcases.
+- Algebraic Standard Model four-trace anomaly and 1D critical TFIM scaling harness in bounties/bounty_m2_physlean_itensor_quantum_gauge.py (< 0.05s runtime; no Lean 4 execution or planted-defect mode yet).
+- Primary references checked: Tooby-Smith (2025, DOI 10.1016/j.cpc.2024.109457), Fishman et al. (2022, DOI 10.21468/SciPostPhysCodeb.4), and Vicentini et al. (2022, DOI 10.21468/SciPostPhysCodeb.7).
 
 ### Open Global Prize Horizon (T2/T3)
 - HEPLean / PhysLean active open-source formalization (pull requests welcome; no cash prize): submitting Lean 4 pull requests formalizing renormalization group flows, lattice gauge bounds, or BSM anomaly classification directly to HEPLean/PhysLean.
