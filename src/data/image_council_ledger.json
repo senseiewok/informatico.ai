@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2",
   "law": "Law 8 & Law 17 — Human-Scale Grounded Scientific Plate Generation & 4-Seat Image Selection Council",
-  "total_plates_replaced": 66,
-  "magazine_plates_count": 66,
+  "total_plates_replaced": 67,
+  "magazine_plates_count": 67,
   "council_seats": [
     "gemini-4-argon (Physical Specification & Structural Plausibility Seat)",
     "claude-opus-5.5 (Human Perceptual Impact & Tactile Craft Seat)",
@@ -702,6 +702,17 @@
       "bytes": 214228,
       "zero_baked_text_verified": true,
       "sha256": "38f41f9e7e3ea875f4a8c4a16054efdee6b835517c7b4697c3648fa102b19ec5"
+    },
+    {
+      "plate_id": "a14",
+      "path": "src/plates/a14.jpg",
+      "governing_specification": "Tactile studio photograph on honed warm limestone workbench under raking 4500K north daylight: matte pale-gray cast-concrete 4-quadrant inverted hypar umbrella shell scale model with thin upturned edges and straight-line rulings over a carved stone catch-basin beside an uncast straight-slat basswood hypar formwork cradle and ungraduated brass dividers",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 147872,
+      "zero_baked_text_verified": true,
+      "sha256": "9fd412d60fa2a715a9127673b13a9d0055fb63bba15cd088861875cd22bcecbf"
     }
   ]
 }

@@ -243,11 +243,11 @@ VOLUMES_SPEC = [
         "volume": 7,
         "code": "VOL. 07",
         "roman": "Volume VII",
-        "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY, VADOSE SUCTION & FUNICULAR THIN-SHELL BUCKLING · 3 FOLIOS",
-        "title": "Biot 3D Poroelasticity, Unsaturated Suction Stress & Heinz Isler's Thin-Shell Concrete Domes",
-        "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), and Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns).",
+        "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY, VADOSE SUCTION & FUNICULAR SHELLS · 4 FOLIOS",
+        "title": "Biot 3D Poroelasticity, Unsaturated Suction Stress, Isler Domes & Candela Hypar Shells",
+        "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns), and Architecture Folio A.14 (Félix Candela's doubly-ruled hyperbolic paraboloid concrete umbrellas, Pucher flat-projection membrane shear, and cantilevered edge boundaries).",
         "cadence": "Verifier-gated Living Edition release",
-        "folios": ["e13", "e14", "a13"],
+        "folios": ["e13", "e14", "a13", "a14"],
     },
 ]
 
