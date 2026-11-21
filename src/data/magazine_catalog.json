@@ -2403,7 +2403,7 @@
         "pillar": "architecture",
         "category_code": "A",
         "title": "Luis Barragán's Chromatic Tectonics, Kubelka–Munk Pigment Radiosity & Emotional Spatial Wavefields",
-        "subtitle": "How Luis Barragán, with his friend Chucho Reyes Ferreira, worked with saturated color (Rosa Mexicano, cobalt blue, ochre) and Mexican sunlight, and how Josef Albers taught color relativity—read here through a simple model of pigment scattering and inter-reflection.",
+        "subtitle": "How Luis Barragán and Jesús 'Chucho' Reyes Ferreira worked with saturated color (Rosa Mexicano, cobalt blue, ochre) and Mexican daylight (Zanco 2001), alongside Josef Albers's color relativity (1963)—modeled here via Kubelka–Munk scattering (DOI 10.1364/JOSA.38.000448) and diffuse radiosity (Goral et al. 1984, DOI 10.1145/800031.808601).",
         "date_published": "2026-11-02",
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.1",
@@ -2412,7 +2412,7 @@
         "governing_law": "K/S = (1 − R_∞)² / (2 R_∞) · B(x,λ) = E(x,λ) + ρ(x,λ) ∫ B(y,λ) F(x,y) dA_y · CSI 09 24 00",
         "colophon": {
           "identifier": "A.07 · Barragán Chromatic Tectonics & Radiosity · CSI 09 24 00",
-          "kernels": "Kubelka–Munk Two-Flux Pigment Law · Fredholm Spectral Radiosity",
+          "kernels": "Kubelka–Munk Two-Flux Law · Fredholm Diffuse Radiosity",
           "benchmarks": "Model values: R_∞ = 0.389 at K/S = 0.48 · +31.1% bounce gain at F_12 = 0.61 (illustrative)",
           "bridge": "Barragán Mineral Stucco Radiosity ↔ P.08 Thin-Film Car Paint & M.08 Color Geodesics"
         },
@@ -2435,10 +2435,10 @@
           }
         ],
         "steps": [
-          "Stage 1 (Golden Corridor Spectral Filtering, λ ≈ 582 nm): Sunlight entering Casa Gilardi's yellow-glazed corridor loses much of its short-wave blue light, warming the light that reaches the room (582 nm is an illustrative dominant wavelength).",
-          "Stage 2 (Kubelka–Munk Lime Scattering): For an assumed K/S = 0.48, the infinite-thickness diffuse reflectance is R_∞ = 1 + K/S − √((K/S)² + 2 K/S) = 1.48 − 1.091 = 0.389; the surface is assumed matte (Lambertian).",
-          "Stage 3 (Wall-to-Water Inter-Reflection): In a simplified one-bounce-series model, the gain 1 / (1 − R_∞ F_12) = 1 / (1 − 0.389 × 0.61) gives +31.1% for an assumed view factor F_12 = 0.61; it is an illustrative model value, not a measured change in color.",
-          "Stage 4 (Torres de Satélite Highway Parallax & Albers Contrast): The towers, the tallest about 52 m high, were designed to be seen from cars on the highway, so their silhouettes shift as viewers move."
+          "Stage 1 (Corridor Spectral Filtering, λ ≈ 582 nm): In Casa Gilardi (1976; Coelho 2015, DOI 10.4000/ambiances.606), daylight passing yellow glazing loses short-wave blue light; about 582 nm is an illustrative dominant wavelength.",
+          "Stage 2 (Kubelka–Munk Scattering): For K/S = 0.48, Kubelka's infinite-thickness equation (1948, DOI 10.1364/JOSA.38.000448) gives R_∞ = 1 + K/S − √((K/S)² + 2 K/S) = 0.389, assuming a matte Lambertian layer.",
+          "Stage 3 (Enclosure Inter-Reflection): Following the diffuse radiosity balance (Goral et al. 1984, DOI 10.1145/800031.808601), a one-parameter enclosure series with effective return factor F_12 = 0.61 gives gain 1 / (1 − R_∞ F_12) − 1 ≈ +31.1% (multiplier 1.311) at R_∞ = 0.389—an illustrative model value, not a measured color shift.",
+          "Stage 4 (Torres de Satélite Parallax & Albers Contrast): Built by Barragán and Mathias Goeritz (1957–58; Pelletier 2008, DOI 10.1111/j.1531-314X.2008.00234.x), the towers—the tallest about 52 m—shift silhouette from moving cars while juxtaposed planes illustrate relational contrast (Albers 1963)."
         ],
         "readouts": [
           {
@@ -2460,55 +2460,55 @@
         ],
         "spec_plate": {
           "division": "CSI MASTERFORMAT 09 24 00 / 09 91 00",
-          "title": "Artisanal Volcanic-Sand Slaked Lime Stucco & Mineral Oxide / Cochineal Wash",
-          "body": "Three-coat hand-troweled slaked calcium-hydroxide lime plaster (Ca(OH)2 carbonating to calcite CaCO3) with coarse volcanic tezontle/basalt aggregate and UV-stable inorganic mineral oxide & ultramarine pigments.",
+          "title": "Slaked Lime Stucco & Mineral Pigment Wash (Design Proposal)",
+          "body": "Three-coat slaked calcium-hydroxide lime plaster (Ca(OH)2 carbonating to CaCO3 calcite; Cultrone et al. 2005, DOI 10.1016/j.cemconres.2004.12.012) with porous vapor permeability (Parra-Fernández & Varas-Muriel 2025, DOI 10.3989/mc.2025.379124; hydraulic lime permeability in Isebaert et al. 2016, DOI 10.1617/s11527-016-0829-1) and mineral oxide pigments.",
           "meta": "Design proposal · K/S = 0.48 and 85° gloss < 2 GU are targets, not measurements"
         },
         "sidenote_1": {
-          "kicker": "SIDENOTE A.07-A · BARRAGÁN, CHUCHO REYES & THE AUTOMOBILE AT TORRES DE SATÉLITE",
-          "body": "The painter and collector Jesús 'Chucho' Reyes Ferreira was a close friend of Luis Barragán and is often credited with influencing his use of color. Torres de Satélite (1957–58), designed by Barragán and Mathias Goeritz, stands beside a highway and was meant to be seen from moving cars; the tallest tower is about 52 meters."
+          "kicker": "SIDENOTE A.07-A · BARRAGÁN, CHUCHO REYES & TORRES DE SATÉLITE",
+          "body": "Painter and collector Jesús 'Chucho' Reyes Ferreira influenced Luis Barragán's palette (Zanco 2001). Torres de Satélite (1957–58), by Barragán and Mathias Goeritz, stands beside a highway for moving viewers; the tallest tower rises about 52 m (Pelletier 2008, DOI 10.1111/j.1531-314X.2008.00234.x)."
         },
         "sidenote_2": {
-          "kicker": "SIDENOTE A.07-B · SPECIFICATION PLATE · CSI 09 24 00 / KUBELKA–MUNK OPTICS",
-          "body": "Unlike synthetic acrylic film paints that form a specular plastic skin, carbonated limewash traps pigment grains inside a porous calcite crystal lattice—scattering light waves isotropically via Kubelka–Munk radiative transfer."
+          "kicker": "SIDENOTE A.07-B · SPECIFICATION PLATE · CSI 09 24 00 / CARBONATED LIME",
+          "body": "Unlike film-forming acrylic paints, carbonated lime plaster builds a porous CaCO3 calcite network (Cultrone et al. 2005, DOI 10.1016/j.cemconres.2004.12.012) that transmits water vapor (Parra-Fernández & Varas-Muriel 2025, DOI 10.3989/mc.2025.379124) and scatters light isotropically via Kubelka–Munk transfer (DOI 10.1364/JOSA.38.000448)."
         },
         "skill": {
           "filename": "barragan-kubelka-munk-radiosity-SKILL.md",
           "name": "barragan-kubelka-munk-radiosity",
-          "description": "AI-agnostic architectural daylighting and color-physics skill for Luis Barragan chromatic tectonics, Kubelka-Munk pigment reflectance, and Fredholm spectral radiosity.",
+          "description": "AI-agnostic architectural daylighting and color-physics skill for Luis Barragan chromatic tectonics, Kubelka-Munk pigment reflectance, and Fredholm diffuse radiosity.",
           "rules": [
-            "Compute infinite-thickness Kubelka-Munk diffuse reflectance R_inf = 1 + (K/S) - sqrt((K/S)^2 + 2*(K/S)) from absorption K and scattering S.",
-            "Solve wavelength-resolved enclosure radiosity B_i(lambda) = E_i(lambda) + rho_i(lambda) * sum_j F_ij * B_j(lambda) across 380-780 nm.",
-            "Maintain matte mineral surface roughness (85-degree specular gloss < 2 GU) so diffuse chromatic bounce dominates over specular glare."
+            "Compute infinite-thickness Kubelka-Munk diffuse reflectance R_inf = 1 + (K/S) - sqrt((K/S)^2 + 2*(K/S)) from absorption K and scattering S (Kubelka 1948, DOI 10.1364/JOSA.38.000448).",
+            "Solve wavelength-resolved diffuse radiosity B_i(lambda) = E_i(lambda) + rho_i(lambda) * sum_j F_ij * B_j(lambda) across 380-780 nm (Goral et al. 1984, DOI 10.1145/800031.808601; Ruppertsberg & Bloj 2008, DOI 10.3758/BRM.40.1.304).",
+            "Specify matte, vapor-permeable lime plaster (Cultrone et al. 2005, DOI 10.1016/j.cemconres.2004.12.012; Parra-Fernández & Varas-Muriel 2025, DOI 10.3989/mc.2025.379124) with an unmeasured 85-degree gloss < 2 GU target so diffuse bounce dominates over specular glare."
           ]
         },
         "revisions": [
           {
             "edition": "REV 1.1",
             "date": "2026-11-14",
-            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The Kubelka–Munk reflectance at K/S = 0.48 is corrected from 0.391 to 0.389 (and 0.21 to 0.22 at K/S = 1.40), and the chroma gain (+31.1% at F_12 = 0.61) is now labelled an illustrative value with its assumed view factor. Claims that tuned color regulates melanopsin pathways and calms patients, the PASS verdict, unsourced anecdotes (gouache tests, 80 km/h) and an invented-looking quotation are withdrawn; two uncited sources were removed.",
-            "opus": "Review: references checked by DOI in Crossref and the Scite index; Scite found no paper supporting a saturation gain from inter-reflection, so it is labelled the folio's own model."
+            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The Kubelka–Munk reflectance at K/S = 0.48 is corrected from 0.391 to 0.389 (and 0.21 to 0.22 at K/S = 1.40), and the chroma gain (+31.1% at F_12 = 0.61) is now labeled an illustrative value with its assumed view factor. Claims that tuned color regulates melanopsin pathways and calms patients, the PASS verdict, unsourced anecdotes (gouache tests, 80 km/h) and an invented-looking quotation are withdrawn; two uncited sources were removed.",
+            "opus": "Review: references checked by DOI in Crossref and the Scite index; Scite found no paper supporting a saturation gain from inter-reflection, so it is labeled the folio's own model."
           },
           {
             "edition": "REV 1.0",
             "date": "2026-11-02",
             "summary": "REV 1.0 (Published 2026-11-02): Inaugural Volume IV architectural color monograph uniting Luis Barragan's Casa Gilardi & Torres de Satelite, Josef Albers's Interaction of Color, and Paul Kubelka's radiative scattering law (DOI 10.1364/JOSA.38.000448).",
-            "opus": "Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.1: R_inf at K/S = 0.48 is 0.389, not 0.3912, and the cavity amplification was not computed."
+            "opus": "Initial model review (2026-11-02; Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.1: R_inf at K/S = 0.48 is 0.389, not 0.3912, and the cavity amplification was not computed."
           }
         ],
         "volume": 4,
         "volume_code": "VOL. 04",
-        "reading_time": "22 MIN READ",
-        "word_count": "4,650 WORDS",
+        "reading_time": "20 MIN READ",
+        "word_count": "4,330 WORDS",
         "scite": {
           "doi": "10.1364/JOSA.38.000448",
-          "fetched_on": "2026-11-08",
-          "citing_publications": 2781,
+          "fetched_on": "2026-11-21",
+          "citing_publications": 2805,
           "supporting": 15,
-          "mentioning": 1206,
+          "mentioning": 1209,
           "contrasting": 0,
           "retracted": false,
-          "summary": "Scite index entry for Kubelka, New contributions to the optics of intensely light-scattering materials, Part I (DOI 10.1364/JOSA.38.000448), checked 2026-11-08: 2,781 citing publications (15 supporting, 1,206 mentioning, 0 contrasting) and no retraction notice. The paper is about scattering layers; it says nothing about architecture or this folio's numbers."
+          "summary": "Scite index entry for Kubelka, New contributions to the optics of intensely light-scattering materials, Part I (DOI 10.1364/JOSA.38.000448), checked 2026-11-21: 2,805 citing publications (15 supporting, 1,209 mentioning, 0 contrasting) and no retraction notice. The paper is about scattering layers; it says nothing about architecture or this folio's numbers."
         }
       },
       {
