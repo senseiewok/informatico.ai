@@ -156,14 +156,14 @@ PAGE: dict = {
         ),
         P(
             C("DERIVED", [W64, W65, MICRO],
-              "In 1964 and 1965 Weinberg proved that when a soft massless boson of momentum q^μ → 0 is emitted from n external scattering legs "
+              "In 1964 and 1965 Weinberg showed that when a soft massless boson of momentum q^μ → 0 is emitted from n external scattering legs "
               "(incoming sign η_a = −1, outgoing sign η_a = +1, conserved momenta ∑_a η_a p_a^μ = 0), decoupling unphysical longitudinal "
               "polarizations imposes a strict hierarchy by spin s: for spin s = 1 (ε_μ → ε_μ + q_μ), the Ward residual ∑_a η_a q_a = 0 enforces "
               "additive charge conservation; for spin s = 2 (ε_{μν} → ε_{μν} + q_{(μ} Λ_{ν)}), the vector Ward residual W^μ = ∑_a η_a κ_a p_a^μ = 0 "
               "has linear solution κ_a = κ = √(32π G / c⁴) because external 4-momenta share no linear relation beyond ∑_a η_a p_a^μ = 0, deriving "
               "η = 0 from infrared Lorentz invariance; and for massless higher spins s ≥ 3, symmetric products ∑_a η_a g_a p_a^{μ₁}⋯p_a^{μ_{s−1}} = 0 "
               "are linearly independent across generic scattering angles, forcing g_a = 0 and ruling out macroscopic 1/r² forces of spin 3 or higher.",
-              "En 1964 y 1965 Weinberg demostró que cuando un bosón blando sin masa con momento q^μ → 0 se emite desde n patas externas de dispersión "
+              "En 1964 y 1965 Weinberg mostró que cuando un bosón blando sin masa con momento q^μ → 0 se emite desde n patas externas de dispersión "
               "(signo entrante η_a = −1, signo saliente η_a = +1, momentos conservados ∑_a η_a p_a^μ = 0), desacoplar las polarizaciones longitudinales "
               "no físicas impone una jerarquía estricta según el espín s: para espín s = 1 (ε_μ → ε_μ + q_μ), el residuo de Ward ∑_a η_a q_a = 0 exige "
               "la conservación aditiva de la carga; para espín s = 2 (ε_{μν} → ε_{μν} + q_{(μ} Λ_{ν)}), el residuo vectorial de Ward W^μ = ∑_a η_a κ_a p_a^μ = 0 "
@@ -239,16 +239,16 @@ PAGE: dict = {
         ),
         P(
             C("DERIVED", [CHR91, FAV09, STR16, ABB16],
-              "Demetrios Christodoulou proved in 1991 from the exact asymptotically flat vacuum Einstein equations that the stress-energy carried to "
+              "Demetrios Christodoulou showed in 1991 from the exact asymptotically flat vacuum Einstein equations that the stress-energy carried to "
               "null infinity by gravitational waves themselves sources a permanent DC transverse-traceless strain offset Δh_+^mem; for a quasi-circular "
               "binary Favata's 2009 leading-quadrupole expression, written with the radiated energy, is Δh_+^mem = Δh_char sin²ι (17 + cos²ι) / 24 with "
               "Δh_char = G E_rad / (c⁴ D_L), shifting the proper separation of free-falling mirrors or optical clocks by ΔL / L₀ = (1/2) Δh_+^mem; "
-              "in 2016 Andrew Strominger and Alexander Zhiboedov proved that this displacement memory step, Bondi–Metzner–Sachs (BMS) supertranslation "
+              "in 2016 Andrew Strominger and Alexander Zhiboedov showed that this displacement memory step, Bondi–Metzner–Sachs (BMS) supertranslation "
               "conservation at null infinity, and Weinberg's soft-graviton pole are Fourier and Ward transforms of one infrared triangle.",
-              "Demetrios Christodoulou demostró en 1991 a partir de las ecuaciones exactas de Einstein en el vacío asintóticamente plano que la "
+              "Demetrios Christodoulou mostró en 1991 a partir de las ecuaciones exactas de Einstein en el vacío asintóticamente plano que la "
               "energía-momento transportada al infinito nulo por las propias ondas gravitacionales genera un escalón permanente de deformación "
               "transversal sin traza Δh_+^mem; para una binaria cuasicircular la expresión cuadrupolar dominante de Favata (2009), escrita con la energía radiada, es Δh_+^mem = Δh_char sin²ι (17 + cos²ι) / 24 con Δh_char = G E_rad / (c⁴ D_L), desplazando la separación propia entre espejos "
-              "o relojes en caída libre por ΔL / L₀ = (1/2) Δh_+^mem; en 2016 Andrew Strominger y Alexander Zhiboedov demostraron que este escalón de "
+              "o relojes en caída libre por ΔL / L₀ = (1/2) Δh_+^mem; en 2016 Andrew Strominger y Alexander Zhiboedov mostraron que este escalón de "
               "memoria, la conservación por supertraslaciones de Bondi–Metzner–Sachs (BMS) en el infinito nulo y el polo de gravitón blando de Weinberg "
               "son transformadas de Fourier y de Ward de un mismo triángulo infrarrojo.",
               parent=ABB16),
@@ -319,10 +319,10 @@ PAGE: dict = {
             C("MEASURED", [LEE20, TAN20],
               "Walking back across the fourteen-step track shows both the reach and the strict boundary of infrared consistency: at sub-millimetre "
               "distances, precision torsion pendulums at Seattle Eöt-Wash (52 µm gap, 38.6 µm unit-strength Yukawa limit) and Wuhan HUST (48 µm scale) "
-              "confirm Newton's inverse-square attraction without deviation down to tens of micrometres.",
+              "match Newton's inverse-square attraction without deviation down to tens of micrometres.",
               "Recorrer de vuelta los catorce pasos de la serie muestra tanto el alcance como la frontera estricta de la consistencia infrarroja: en "
               "distancias submilimétricas, los péndulos de torsión de precisión en Eöt-Wash de Seattle (brecha de 52 µm, límite de Yukawa de intensidad "
-              "unitaria en 38.6 µm) y HUST en Wuhan (escala de 48 µm) confirman la atracción de inverso del cuadrado sin desviaciones hasta decenas de micrómetros.",
+              "unitaria en 38.6 µm) y HUST en Wuhan (escala de 48 µm) miden la atracción de inverso del cuadrado sin desviaciones hasta decenas de micrómetros.",
               scope=EMP_SCOPE),
             T(" ", " "),
             C("DERIVED", [LEE21, DIOSI87, PENROSE96, LEE20, SCH24],

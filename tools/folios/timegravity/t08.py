@@ -114,10 +114,10 @@ PAGE: dict = {
             C("MEASURED", [PR60, GPA80],
               "Clocks at different heights or accelerations tick at different rates, with fractional shift Δf/f = g Δz / c²: "
               "the 22.5-metre tower measurement of 1960 and the 10,000-kilometre suborbital hydrogen-maser flight of 1980 "
-              "confirmed Einstein's gravitational redshift, to 10 percent in the tower and to 7×10⁻⁵ in the maser flight.",
+              "measured Einstein's gravitational redshift, to 10 percent in the tower and to 7×10⁻⁵ in the maser flight.",
               "Los relojes a distintas alturas o aceleraciones marcan el paso a ritmos distintos, con desplazamiento fraccionario Δf/f = g Δz / c²: "
               "la medición en la torre de 22.5 metros en 1960 y el vuelo suborbital del máser de hidrógeno a 10,000 kilómetros en 1980 "
-              "confirmaron el corrimiento al rojo gravitacional de Einstein, al 10 por ciento en la torre y a 7×10⁻⁵ en el vuelo del máser."),
+              "midieron el corrimiento al rojo gravitacional de Einstein, al 10 por ciento en la torre y a 7×10⁻⁵ en el vuelo del máser."),
             T(" ", " "),
             C("MEASURED", [PENZIAS, MATHER],
               "And a thermal radiation bath follows Planck's Bose–Einstein occupation law n̄(ω) = 1/(e^{ħω/k_B T} − 1): "
@@ -170,11 +170,11 @@ PAGE: dict = {
         P(
             C("DERIVED", [BW, UNRUH, PR60, MATHER],
               "A clock with uniform proper acceleration a follows the hyperbola X² − c²T² = (c²/a)², bounded by a causal horizon at X = ±cT "
-              "where its proper-time rate dτ = (aξ/c²) dt vanishes; Bisognano and Wichmann proved in 1975 that the Minkowski vacuum restricted "
+              "where its proper-time rate dτ = (aξ/c²) dt vanishes; Bisognano and Wichmann showed in 1975 that the Minkowski vacuum restricted "
               "to the right Rindler wedge is a thermal state with respect to Lorentz boosts, and Unruh showed in 1976 that an accelerated detector "
               "responds as if immersed in a Planck bath at T_U = ħa / (2π k_B c).",
               "Un reloj con aceleración propia uniforme a sigue la hipérbola X² − c²T² = (c²/a)², acotada por un horizonte causal en X = ±cT "
-              "donde su ritmo de tiempo propio dτ = (aξ/c²) dt se anula; Bisognano y Wichmann demostraron en 1975 que el vacío de Minkowski "
+              "donde su ritmo de tiempo propio dτ = (aξ/c²) dt se anula; Bisognano y Wichmann mostraron en 1975 que el vacío de Minkowski "
               "restringido a la cuña derecha de Rindler es un estado térmico respecto a los impulsos de Lorentz, y Unruh mostró en 1976 que un "
               "detector acelerado responde como si estuviera sumergido en un baño de Planck a T_U = ħa / (2π k_B c).",
               parent=PR60),
@@ -229,8 +229,8 @@ PAGE: dict = {
         ),
         {"type": "change_box",
          "items": [
-             ("An independent laboratory confirmation of spontaneous thermal emission across a horizon analogue in a second collaboration and platform would raise the analogue-kinematics claim from SINGLE RESULT to MEASURED, still fenced as fluid kinematics.",
-              "Una confirmación de laboratorio independiente de emisión térmica espontánea a través de un horizonte análogo en una segunda colaboración y plataforma subiría la afirmación de cinemática análoga de RESULTADO ÚNICO a MEDIDO, aún acotada como cinemática de fluidos."),
+             ("An independent laboratory replication of spontaneous thermal emission across a horizon analogue in a second collaboration and platform would raise the analogue-kinematics claim from SINGLE RESULT to MEASURED, still fenced as fluid kinematics.",
+              "Una replicación de laboratorio independiente de emisión térmica espontánea a través de un horizonte análogo en una segunda colaboración y plataforma subiría la afirmación de cinemática análoga de RESULTADO ÚNICO a MEDIDO, aún acotada como cinemática de fluidos."),
              ("A direct measurement of the Unruh thermal response on an accelerated quantum detector with peer-reviewed replication would promote the detector response from DERIVED to MEASURED.",
               "Una medición directa de la respuesta térmica de Unruh en un detector cuántico acelerado con replicación revisada por pares promovería la respuesta del detector de DERIVADO a MEDIDO."),
              ("If the Jacobi eigenvalues of the reduced Rindler state ever differed from the truncated Gibbs weights by more than 1e-12, or if the Gauss–Legendre first-law integral missed A / (4 ℓ_P²), the verifier fails and the page does not build.",

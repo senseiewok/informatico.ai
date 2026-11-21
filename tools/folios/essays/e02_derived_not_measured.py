@@ -793,14 +793,14 @@ ESSAY: dict = {
                     "en": (
                         "That distinction matters more each year as scientific papers ship alongside executable "
                         "notebooks, symbolic algebra scripts, and automated synthesis pipelines. A deterministic "
-                        "program guarantees reproducibility of inference: anyone who runs the same code on the same "
+                        "program ensures reproducibility of inference: anyone who runs the same code on the same "
                         "inputs recovers the identical floating-point value. Yet reproducibility of code is orthogonal "
                         "to empirical realization in hardware, and conflating the two silently erases the laboratory."
                     ),
                     "es": (
                         "Esa distinción importa más cada año conforme los artículos científicos se publican junto con "
                         "cuadernos ejecutables, scripts de álgebra simbólica y flujos de síntesis automatizada. Un "
-                        "programa determinista garantiza la reproducibilidad de la inferencia: cualquiera que corra el "
+                        "programa determinista asegura la reproducibilidad de la inferencia: cualquiera que corra el "
                         "mismo código sobre las mismas entradas recupera idéntico valor en punto flotante. Pero la "
                         "reproducibilidad del código es ortogonal a la realización empírica en hardware, y confundirlas "
                         "borra silenciosamente al laboratorio."
@@ -814,15 +814,15 @@ ESSAY: dict = {
                     "title_es": "Doce decimales auditan la calculadora, jamás la cámara de vacío",
                     "paras": [
                         (
-                            "Checking a calculation to 12 decimal places proves that your calculator did not slip; it "
-                            "never proves that nature obeyed the setup you typed in. In 1960 Robert Pound and Glen Rebka "
+                            "Checking a calculation to 12 decimal places shows that your calculator did not slip; it "
+                            "never shows that nature obeyed the setup you typed in. In 1960 Robert Pound and Glen Rebka "
                             "measured gravitational time dilation over a 22.5 m tower, and in 2021 Vienna measured "
                             "Newtonian pull between two 90 mg gold spheres. Using those real measurements to predict what "
                             "two 10^-14 kg specks would do in a 2.5 s quantum drop is honest deduction, but until someone "
                             "actually drops the specks in 10^-15 Pa vacuum without a stray gas atom spoiling the fringes, "
                             "nobody has measured the entanglement.",
-                            "Comprobar un cálculo hasta 12 decimales demuestra que la calculadora no resbaló; jamás "
-                            "demuestra que la naturaleza siguió el montaje que escribiste. En 1960 Robert Pound y Glen Rebka "
+                            "Comprobar un cálculo hasta 12 decimales muestra que la calculadora no resbaló; jamás "
+                            "muestra que la naturaleza siguió el montaje que escribiste. En 1960 Robert Pound y Glen Rebka "
                             "midieron la dilatación gravitatoria del tiempo en una torre de 22.5 m, y en 2021 Viena midió "
                             "la atracción newtoniana entre dos esferas de oro de 90 mg. Usar esas mediciones reales para "
                             "predecir qué harían dos motas de 10^-14 kg en una caída cuántica de 2.5 s es deducción honesta, "
@@ -1094,11 +1094,11 @@ ESSAY: dict = {
                         "Treat the 6 labels not as a beauty contest from 1 to 6, but as a typed partial order modeled "
                         "on formal proof assistants. When the mathlib community formalized mathematics in Lean in 2020 "
                         "(DOI 10.1145/3372885.3373824) and Joseph Tooby-Smith digitalized high-energy physics theorems "
-                        "in HepLean in 2025 (DOI 10.1016/j.cpc.2024.109457), every proved lemma carried its exact "
-                        "hypotheses inside its type signature. If you prove theorem B assuming axiom A, Lean's kernel "
+                        "in HepLean in 2025 (DOI 10.1016/j.cpc.2024.109457), every checked lemma carried its exact "
+                        "hypotheses inside its type signature. If you derive theorem B assuming axiom A, Lean's kernel "
                         "verifies the implication A -> B with zero hand-waving, yet running #print axioms never lets "
                         "you pretend A vanished. In Time & Gravity, data-tg-parent is that exact type-theoretic "
-                        "dependency edge: DERIVED (NOT MEASURED) certifies the implication from a mature MEASURED "
+                        "dependency edge: DERIVED (NOT MEASURED) tracks the implication from a mature MEASURED "
                         "parent row while refusing to mint synthetic empirical data."
                     ),
                     "es": (
@@ -1106,11 +1106,11 @@ ESSAY: dict = {
                         "tipado inspirado en los asistentes formales de demostración. Cuando la comunidad de mathlib "
                         "formalizó matemáticas en Lean en 2020 (DOI 10.1145/3372885.3373824) y Joseph Tooby-Smith "
                         "digitalizó teoremas de física de altas energías en HepLean en 2025 (DOI 10.1016/j.cpc.2024.109457), "
-                        "cada lema demostrado conservó sus hipótesis exactas dentro de su firma de tipos. Si demuestras "
+                        "cada lema verificado conservó sus hipótesis exactas dentro de su firma de tipos. Si derivas "
                         "el teorema B asumiendo el axioma A, el kernel de Lean verifica la implicación A -> B sin "
                         "ambigüedades, pero ejecutar #print axioms jamás permite fingir que A desapareció. En Tiempo y "
                         "Gravedad, data-tg-parent es exactamente esa arista de dependencia de tipos: DERIVADO (NO MEDIDO) "
-                        "certifica la implicación desde una fila madre MEDIDA madura negándose a fabricar datos empíricos."
+                        "registra la implicación desde una fila madre MEDIDA madura negándose a fabricar datos empíricos."
                     ),
                 },
                 {
@@ -1260,7 +1260,7 @@ ESSAY: dict = {
                 {
                     "type": "p",
                     "en": (
-                        "A verifier that prints PASS on a curated repository proves very little until you try to fool "
+                        "A verifier that prints PASS on a curated repository shows very little until you try to fool "
                         "it. Borrowed from safety-critical compiler testing, mutation analysis measures whether a rule "
                         "suite actually kills plausible corruptions injected into the data. In the companion Python "
                         "module for this essay, run_epistemic_mutations() takes a clean 11-row, 7-claim benchmark "
@@ -1271,7 +1271,7 @@ ESSAY: dict = {
                         "1-collaboration XENONnT run inside the 24-month window to MEASURED."
                     ),
                     "es": (
-                        "Un verificador que imprime PASS sobre un repositorio curado demuestra muy poco hasta que "
+                        "Un verificador que imprime PASS sobre un repositorio curado muestra muy poco hasta que "
                         "intentas engañarlo. Tomado de las pruebas de compiladores críticos, el análisis de mutaciones "
                         "mide si un conjunto de reglas realmente elimina corrupciones plausibles inyectadas en los "
                         "datos. En el módulo compañero en Python de este ensayo, run_epistemic_mutations() toma un "
@@ -1318,14 +1318,14 @@ ESSAY: dict = {
                     "paras": [
                         (
                             "A green indicator LED on a smoke detector only tells you the battery is connected; blowing "
-                            "real test smoke into the chamber proves the sensor actually trips the siren. Passing "
+                            "real test smoke into the chamber shows the sensor actually trips the siren. Passing "
                             "--planted-defect to every verifier on this site is that puff of test smoke. And keeping "
                             "DERIVED (NOT MEASURED) distinct from MEASURED protects a quiet human truth: AI agents and "
                             "Python scripts can check 10^-12 algebra in milliseconds, yet they never machine the platinum "
                             "wedges, shield the germanium crystal under 1,400 m of limestone, or coax 10^-14 kg into "
                             "quantum free fall.",
                             "Un foco verde en un detector de humo solo indica que la batería está conectada; soplar humo "
-                            "real de prueba en la cámara demuestra que el sensor realmente activa la sirena. Pasar "
+                            "real de prueba en la cámara muestra que el sensor realmente activa la sirena. Pasar "
                             "--planted-defect a cada verificador de este sitio es esa bocanada de humo de prueba. Y "
                             "mantener DERIVADO (NO MEDIDO) separado de MEDIDO protege una verdad humana serena: los agentes "
                             "de IA y los scripts en Python pueden comprobar álgebra a 10^-12 en milisegundos, pero jamás "
@@ -1383,11 +1383,11 @@ ESSAY: dict = {
             "label_es": "Nota 04 · El Reloj de Replicación de 24 Meses",
             "en": (
                 "Even peer-reviewed experiments published in 2025 or 2026 stay capped at SINGLE RESULT or PROPOSED "
-                "until 24 months of independent scrutiny and a 2nd collaboration confirm the signal."
+                "until 24 months of independent scrutiny and a 2nd collaboration replicate the signal."
             ),
             "es": (
                 "Incluso los experimentos arbitrados publicados en 2025 o 2026 permanecen acotados en RESULTADO ÚNICO o "
-                "PROPUESTO hasta que 24 meses de escrutinio independiente y una 2da colaboración confirmen la señal."
+                "PROPUESTO hasta que 24 meses de escrutinio independiente y una 2da colaboración repliquen la señal."
             ),
         },
         {

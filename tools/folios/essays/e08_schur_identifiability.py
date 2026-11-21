@@ -827,8 +827,8 @@ ESSAY: dict = {
                         "Ejecutar la proyección exacta W-ortogonal de Gram–Schmidt modificado resuelve la objeción con un "
                         "giro doble notable. Primero, bajo ruido absoluto constante de par W = diag(T_N(s)²), flotar δγ y δs₀ "
                         "absorbe de verdad el 79.05% de la energía cruda: la retención de Fisher ‖P_⊥ d_σ‖_W² / ‖d_σ‖_W² cae "
-                        "al 20.95% (norma retenida 45.77%, frente a 67.32% de Fisher y 82.05% de norma bajo W = I). Sin "
-                        "embargo, σ_95^⊥ NO se debilita, sino que se ajusta ligeramente. ¿Por qué? Porque el límite con signo "
+                        "al 20.95% (norma retenida 45.77%, frente a 67.32% de Fisher y 82.05% de norma bajo W = I). No "
+                        "obstante, σ_95^⊥ NO se debilita, sino que se ajusta ligeramente. ¿Por qué? Porque el límite con signo "
                         "α_95⁻ = −7.360 en λ = 18 µm de la Tabla 11.4 YA descontó el perfil Δχ² = 6.17 sobre γ y s₀. Al "
                         "aplicar P_⊥ tanto a d_33 µm como a y_18 µm, su coseno sube a cos θ_⊥ = 0.999935 (residuo 1.14%) "
                         "con W = diag(T_N²) y a 0.999758 (residuo 2.20%) con W = I."
@@ -894,7 +894,7 @@ ESSAY: dict = {
                         "integration time. Across a candidate domain [25 µm, 3000 µm] spanning the 25 µm Stanford "
                         "micro-cantilever gap of Geraci et al. (2008), the sub-millimetre dual-modulation torsion regime of "
                         "Tan et al. (2020), and millimetre-scale gravimetry (Westphal et al., 2021), Carathéodory's theorem "
-                        "and the Kiefer–Wolfowitz Equivalence Theorem guarantee that a D-optimal design maximizing det M(ξ) "
+                        "and the Kiefer–Wolfowitz Equivalence Theorem show that a D-optimal design maximizing det M(ξ) "
                         "exists on a saturated support of just p = 3 separations with equal weights (1/3, 1/3, 1/3)."
                     ),
                     "es": (
@@ -904,7 +904,7 @@ ESSAY: dict = {
                         "3 × 3 singular de rango ≤ 2, dejando (γ, s₀, α) no identificables sin importar cuántas horas se "
                         "integre. En el dominio [25 µm, 3000 µm] —que abarca los 25 µm del microcantiléver de Geraci et al. "
                         "(2008), la torsión submilimétrica de Tan et al. (2020) y masas milimétricas (Westphal et al., 2021)—, "
-                        "el teorema de equivalencia de Kiefer–Wolfowitz garantiza un diseño D-óptimo saturado en p = 3 "
+                        "el teorema de equivalencia de Kiefer–Wolfowitz asegura un diseño D-óptimo saturado en p = 3 "
                         "separaciones con pesos iguales (1/3, 1/3, 1/3)."
                     ),
                 },
@@ -993,7 +993,7 @@ ESSAY: dict = {
                         "sin²(πx) from boundary rotational compliance 4x(1 − x) and axial pretension curvature sin(πx): "
                         "from displacement shapes alone, the standardized condition number explodes to κ = 1.03 × 10⁶ and "
                         "Schur retention collapses to 0.019%. Adding the fourth-order Euler–Bernoulli PDE residual "
-                        "regularization (λ_pde = 1.0) annihilates quadratic compliance identically (∂_x⁴[4x(1 − x)] = 0), "
+                        "regularization (λ_pde = 1.0) zeroes quadratic compliance identically (∂_x⁴[4x(1 − x)] = 0), "
                         "compressing κ to 20.79 and boosting Schur identifiability 1004× up to 19.52%."
                     ),
                     "es": (
@@ -1058,7 +1058,7 @@ ESSAY: dict = {
                             ("(2.5685, 0.3080, 0.1235)", "(2.5685, 0.3080, 0.1235)"),
                             ("20.79", "20.79"),
                             ("19.52% (1004× boost)", "19.52% (mejora 1004×)"),
-                            ("∂_x⁴ annihilates 4x(1 − x)", "∂_x⁴ anula 4x(1 − x)"),
+                            ("∂_x⁴ zeroes 4x(1 − x)", "∂_x⁴ anula 4x(1 − x)"),
                         ],
                         [
                             ("MacAdam Cone Space (L, M, S, 420–660 nm)", "Conos MacAdam (L, M, S, 420–660 nm)"),
@@ -1200,7 +1200,7 @@ ESSAY: dict = {
                         "identities: Fourier–Bessel wedge torque [G ρ² L⁵] = Energy, fractional torque deficit [T / T_N] = 0, "
                         "logarithmic slope [(dT_N / ds) / T_N] = L⁻¹, dimensionless offset basis [s_min d ln T_N / ds] = 0, "
                         "constant-torque-noise Fisher weight [(F L)² / σ_T²] = 0, and Yukawa wavenumber [1 / λ] = L⁻¹. "
-                        "Theorems 2, 3, and 4 prove integer square non-negativity (0 ≤ sq x), the 4-variable Cauchy–Schwarz–"
+                        "Theorems 2, 3, and 4 verify integer square non-negativity (0 ≤ sq x), the 4-variable Cauchy–Schwarz–"
                         "Lagrange identity (a₁² + a₂²)(b₁² + b₂²) − (a₁b₁ + a₂b₂)² = (a₁b₂ − a₂b₁)² ≥ 0, and the Schur "
                         "Fisher inequality i_tt i_nn − i_tn² ≤ i_tt i_nn the algebraic statement that nuisance profiling does not increase Fisher information."
                     ),
@@ -1219,16 +1219,16 @@ ESSAY: dict = {
                 {
                     "type": "p",
                     "en": (
-                        "Theorems 5 and 6 prove universal Gram–Schmidt nuisance annihilation r₁ v₁ + r₂ v₂ = 0 and the "
+                        "Theorems 5 and 6 verify universal Gram–Schmidt nuisance orthogonality r₁ v₁ + r₂ v₂ = 0 and the "
                         "exact Pythagorean Fisher decomposition (v₁² + v₂²)²(d₁² + d₂²) = (v₁² + v₂²)(d₁v₁ + d₂v₂)² + "
                         "(r₁² + r₂²), both independently verified as identically zero 4-variable polynomials over ℚ in "
-                        "verify_essay_schur_identifiability.py. Theorem 7 (kiefer_wolfowitz_trace_identity) proves that "
+                        "verify_essay_schur_identifiability.py. Theorem 7 (kiefer_wolfowitz_trace_identity) verifies that "
                         "whenever 3 support directional variances satisfy d_i ≤ p while summing to 3p, every support point "
-                        "saturates d_i = p (3 × 1 = 3 for p = 3); Theorem 8 checks the integer ordering 23 < 125 < 309 of Fisher values entered from the Python kernel (> 5× at 35 µm and > 13× at 25 µm); Theorem 9 proves ∀ s_centi ∈ [3280, 3310], "
-                        "2211 s_centi < 7500 × 1000 (the arithmetic behind the D = 75.00 µm comparison); and Theorem 10 proves the counting statement n_pts < p_params → ¬(p_params ≤ n_pts)."
+                        "saturates d_i = p (3 × 1 = 3 for p = 3); Theorem 8 checks the integer ordering 23 < 125 < 309 of Fisher values entered from the Python kernel (> 5× at 35 µm and > 13× at 25 µm); Theorem 9 verifies ∀ s_centi ∈ [3280, 3310], "
+                        "2211 s_centi < 7500 × 1000 (the arithmetic behind the D = 75.00 µm comparison); and Theorem 10 checks the counting statement n_pts < p_params → ¬(p_params ≤ n_pts)."
                     ),
                     "es": (
-                        "Los Teoremas 5 y 6 demuestran la aniquilación universal de Gram–Schmidt r₁ v₁ + r₂ v₂ = 0 y la "
+                        "Los Teoremas 5 y 6 verifican la ortogonalidad universal de Gram–Schmidt r₁ v₁ + r₂ v₂ = 0 y la "
                         "descomposición pitagórica exacta (v₁² + v₂²)²(d₁² + d₂²) = (v₁² + v₂²)(d₁v₁ + d₂v₂)² + (r₁² + r₂²), "
                         "verificadas además como polinomios idénticamente nulos en 4 variables sobre ℚ dentro de "
                         "verify_essay_schur_identifiability.py. El Teorema 7 (kiefer_wolfowitz_trace_identity) prueba que "

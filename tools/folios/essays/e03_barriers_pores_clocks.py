@@ -339,7 +339,7 @@ ESSAY: dict = {
                         "time-reversed twin. To turn an oscillation into an irreversible tick counter that advances strictly "
                         "from 12:00:00 to 12:00:01, each pallet drop must dissipate free energy into a thermal bath. For three "
                         "centuries clockmakers treated that frictional loss as a practical nuisance to be minimized with jeweled "
-                        "bearings and deadbeat anchors. Only in 2015 did Andre C. Barato and Udo Seifert prove (DOI "
+                        "bearings and deadbeat anchors. Only in 2015 did Andre C. Barato and Udo Seifert show (DOI "
                         "10.1103/physrevlett.114.158101), building on Seifert's stochastic thermodynamics framework of 2012 "
                         "(DOI 10.1088/0034-4885/75/12/126001), that thermal dissipation is not an engineering blemish at all: "
                         "for every autonomous classical Markovian clock, entropy production sets an unbreakable lower bound on "
@@ -354,7 +354,7 @@ ESSAY: dict = {
                         "irreversible de tics que avance estrictamente de 12:00:00 a 12:00:01, cada caída del áncora debe disipar "
                         "energía libre en un baño térmico. Durante tres siglos los relojeros trataron esa pérdida como una "
                         "imperfección mecánica por minimizar con rubíes y áncoras de reposo. Apenas en 2015 Andre C. Barato y Udo "
-                        "Seifert demostraron (DOI 10.1103/physrevlett.114.158101), sobre la termodinámica estocástica formulada "
+                        "Seifert mostraron (DOI 10.1103/physrevlett.114.158101), sobre la termodinámica estocástica formulada "
                         "por Seifert en 2012 (DOI 10.1088/0034-4885/75/12/126001), que esa disipación no es un defecto práctico: "
                         "en todo reloj markoviano clásico autónomo, la producción de entropía impone una cota inferior "
                         "infranqueable a la precisión temporal."
@@ -423,11 +423,11 @@ ESSAY: dict = {
                         ),
                         (
                             "To make the counter march reliably forward with at most 1 % timing error (relative variance 0.0001), "
-                            "you must bias the flow strongly forward—and Barato and Seifert's inequality proves that cutting "
+                            "you must bias the flow strongly forward—and Barato and Seifert's inequality shows that cutting "
                             "standard deviation 10-fold (cutting variance 100-fold) forces at least 2 / 0.0001 = 20,000 k_B of heat "
                             "into the surrounding bath.",
                             "Para que el contador avance con un error temporal máximo de 1 % (varianza relativa 0.0001), hay que "
-                            "sesgar con fuerza el paso hacia adelante, y la desigualdad de Barato y Seifert demuestra que reducir "
+                            "sesgar con fuerza el paso hacia adelante, y la desigualdad de Barato y Seifert muestra que reducir "
                             "10 veces la desviación estándar (100 veces la varianza) obliga a liberar al menos 2 / 0.0001 = 20,000 k_B "
                             "de calor hacia el baño térmico.",
                         ),
@@ -914,7 +914,7 @@ ESSAY: dict = {
             "doi": "10.1038/s41586-021-04349-7",
             "year": 2022,
             "role_en": "Demonstrates coherent 87Sr optical clock phase evolution across 1 mm at ~10^-19 fractional stability.",
-            "role_es": "Demuestra la evolución coherente de fase en un reloj óptico de 87Sr a través de 1 mm con estabilidad ~10^-19.",
+            "role_es": "Muestra la evolución coherente de fase en un reloj óptico de 87Sr a través de 1 mm con estabilidad ~10^-19.",
         },
         {
             "id": "ES03-ZUREK2009",
@@ -953,8 +953,8 @@ ESSAY: dict = {
             "citation": "Csanády, L., Vergani, P., Gadsby, D. C., & Nairn, A. C. (2006). Thermodynamics of CFTR channel gating: A spreading conformational change initiates an irreversible gating cycle. Journal of General Physiology, 128(5), 523–533.",
             "doi": "10.1085/jgp.200609558",
             "year": 2006,
-            "role_en": "Proves CFTR uses ATP hydrolysis to drive an irreversible non-equilibrium gating cycle while Cl- flows passively.",
-            "role_es": "Demuestra que CFTR usa la hidrólisis de ATP para impulsar un ciclo irreversible de compuerta con flujo pasivo de Cl-.",
+            "role_en": "Shows CFTR uses ATP hydrolysis to drive an irreversible non-equilibrium gating cycle while Cl- flows passively.",
+            "role_es": "Muestra que CFTR usa la hidrólisis de ATP para impulsar un ciclo irreversible de compuerta con flujo pasivo de Cl-.",
         },
         {
             "id": "ES03-VEIT2020",

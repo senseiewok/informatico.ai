@@ -761,7 +761,7 @@ ESSAY: dict = {
                         "Canonical general relativity and textbook quantum mechanics disagree on the status of the symbol t. "
                         "In Schrödinger dynamics, t is an external classical parameter ticking uniformly outside the laboratory; "
                         "in canonical quantum gravity, diffeomorphism invariance forces the total Hamiltonian constraint to "
-                        "annihilate physical states, Ĉ|Ψ⟩⟩ = 0. Page and Wootters (1983) showed how dynamical evolution "
+                        "vanish on physical states, Ĉ|Ψ⟩⟩ = 0. Page and Wootters (1983) showed how dynamical evolution "
                         "re-emerges inside a stationary universe: partition the composite Hilbert space into a reference clock "
                         "H_C and a rest-of-world system H_S coupled by Ĉ = H_C ⊗ I_S − I_C ⊗ H_S. Although |Ψ⟩⟩ never changes "
                         "with respect to an external watch, projecting |Ψ⟩⟩ onto the clock's localized time states |t_n⟩ yields "
@@ -868,7 +868,7 @@ ESSAY: dict = {
                         "Pasemos de 1 partícula con reloj interno a 2 microesferas en superposición acopladas solo por gravedad. "
                         "Una segunda restricción Ĉ_2M de 64 × 64 sobre H_C^(16) ⊗ H_A^(2) ⊗ H_B^(2) sitúa el estado conjunto en "
                         "ker(Ĉ_2M) con proyección de Jacobi 1.0000000000, generando entrelazamiento siempre que la fase cruzada "
-                        "Δφ = φ_LR + φ_RL − φ_LL − φ_RR ≠ 0 mod 2π. Sin embargo, Trillo y Navascués (2025) señalaron un resquicio: "
+                        "Δφ = φ_LR + φ_RL − φ_LL − φ_RR ≠ 0 mod 2π. No obstante, Trillo y Navascués (2025) señalaron un resquicio: "
                         "si la gravedad clásica se acopla a una densidad difuminada con ancho gaussiano σ en la dinámica híbrida de "
                         "Diósi–Penrose, su ecuación maestra entrelaza transitoriamente dos masas bajo d_c ≈ 0.8509 σ. ¿Podría un "
                         "campo híbrido clásico imitar el canal cuántico en geometrías reales de mesa?"
@@ -1093,28 +1093,28 @@ ESSAY: dict = {
                     "type": "p",
                     "en": (
                         "Crucially, a formal specification is only as honest as its definitions. Writing a function "
-                        "f(α) := α − α and proving f(α) = 0 proves nothing about physics—only that an integer minus itself "
-                        "vanishes. Our upgraded specification eliminates every self-subtraction shortcut and proves 9 universal "
+                        "f(α) := α − α and checking f(α) = 0 shows nothing about physics—only that an integer minus itself "
+                        "vanishes. Our upgraded specification eliminates every self-subtraction shortcut and verifies 9 universal "
                         "∀ quantifiers over genuine multivariate functions: (1) 8 exact SI dimensional exponent equations over "
                         "SIDim ∈ ℤ⁷; (2) universal Quantum Equivalence Principle redshift equality across all (m_0, w, s, α_num ∈ ℤ) "
                         "from e_low(q) = m_0 + q w and e_high(q) = (m_0 + q w)(s + α_num) via explicit Int ring distributivity; "
                         "(3) universal 8-variable bipartite-local gauge invariance of cross_phase(ll, lr, rl, rr) = lr + rl − ll − rr "
                         "contrasted with the −4 λ non-local shift; (4) universal bilateral (−z_A)(−z_B) = z_A z_B versus "
                         "unilateral J_grav + (−J_grav) = 0 spin-echo parity and two-half-step gradient cancellation; "
-                        "(5) a decide check over 7 benchmark proposal rows whose σ_c and γ_crit values we entered by hand from the Python kernel, confirming only that the table is evaluated consistently against σ_95 = 33 µm; and (6) the universal "
+                        "(5) a decide check over 7 benchmark proposal rows whose σ_c and γ_crit values we entered by hand from the Python kernel, verifying only that the table is evaluated consistently against σ_95 = 33 µm; and (6) the universal "
                         "Maxwell–Calladine constraint-rigidity identity (d_dof − r) − (e_constraints − r) = d_dof − e_constraints "
                         "locking su(4)'s 9 non-local generators at rank r = 9."
                     ),
                     "es": (
                         "De modo crucial, una especificación formal es tan honesta como sus definiciones. Definir f(α) := α − α "
-                        "y probar f(α) = 0 no demuestra nada físico, solo que un entero menos sí mismo se anula. Nuestra "
-                        "especificación elimina todo atajo vacuo y demuestra 9 cuantificadores universales ∀ sobre funciones "
+                        "y comprobar f(α) = 0 no muestra nada físico, solo que un entero menos sí mismo se anula. Nuestra "
+                        "especificación elimina todo atajo vacuo y verifica 9 cuantificadores universales ∀ sobre funciones "
                         "multivariables genuinas: (1) 8 ecuaciones dimensionales SI exactas en SIDim ∈ ℤ⁷; (2) igualdad "
                         "universal del Principio de Equivalencia Cuántico para todo (m_0, w, s, α_num ∈ ℤ) a partir de "
                         "e_low(q) = m_0 + q w y e_high(q) = (m_0 + q w)(s + α_num) por distributividad en Int; (3) invariancia "
                         "universal en 8 variables de cross_phase(ll, lr, rl, rr) = lr + rl − ll − rr frente al giro no local "
                         "−4 λ; (4) paridad universal bilateral (−z_A)(−z_B) = z_A z_B frente a la unilateral J_grav + (−J_grav) = 0 "
-                        "y cancelación de gradientes; (5) una comprobación por decide sobre 7 filas de propuestas cuyos valores σ_c y γ_crit capturamos a mano desde el kernel de Python, que solo confirma que la tabla se evalúa de forma consistente frente a σ_95 = 33 µm; y (6) la identidad universal de Maxwell–Calladine (d_dof − r) − (e_constraints − r) = "
+                        "y cancelación de gradientes; (5) una comprobación por decide sobre 7 filas de propuestas cuyos valores σ_c y γ_crit capturamos a mano desde el kernel de Python, que solo verifica que la tabla se evalúa de forma consistente frente a σ_95 = 33 µm; y (6) la identidad universal de Maxwell–Calladine (d_dof − r) − (e_constraints − r) = "
                         "d_dof − e_constraints que fija los 9 generadores no locales de su(4) en rango r = 9."
                     ),
                 },
@@ -1126,16 +1126,16 @@ ESSAY: dict = {
                     "title_es": "Lean 4 verifica las armaduras entre hipótesis y números, jamás el río empírico",
                     "paras": [
                         (
-                            "Imagine a structural engineer proving by exact integer statics that a 9-bar truss has 0 floppy "
-                            "mechanisms under stated pin loads. That proof rules out arithmetic errors in the steps it covers—corresponding to our DERIVED (NOT MEASURED) epistemic badge. It does not prove without "
+                            "Imagine a structural engineer verifying by exact integer statics that a 9-bar truss has 0 floppy "
+                            "mechanisms under stated pin loads. That check rules out arithmetic errors in the steps it covers—corresponding to our DERIVED (NOT MEASURED) epistemic badge. It does not prove without "
                             "going outdoors whether wind gusts at the canyon exceed those stated loads.",
-                            "Imagina un ingeniero estructural que prueba con estática entera exacta que una celosía de 9 barras "
-                            "tiene 0 modos flexibles bajo cargas declaradas. Esa prueba descarta errores aritméticos en los pasos que cubre —nuestra etiqueta DERIVADO (NO MEDIDO)—, pero no demuestra sin salir al cañón qué ráfagas soplan allí.",
+                            "Imagina un ingeniero estructural que verifica con estática entera exacta que una celosía de 9 barras "
+                            "tiene 0 modos flexibles bajo cargas declaradas. Esa verificación descarta errores aritméticos en los pasos que cubre —nuestra etiqueta DERIVADO (NO MEDIDO)—, pero no demuestra sin salir al cañón qué ráfagas soplan allí.",
                         ),
                         (
-                            "Likewise, IRUG_Unification.lean proves integer identities and finite table checks: the stated redshift expressions give η = 0, the cross-phase is unchanged by local shifts, bilateral sign flips preserve z_A z_B, and the 7 hand-entered proposal rows evaluate as listed against 33 µm and 10⁻³ s⁻¹. It does not prove that the Wheeler–DeWitt, Diósi–Penrose, or Lindblad models describe nature, nor that our recast of the 2020 Eöt-Wash limits is correct. Whether gravity actually entangles 10⁻¹⁴ kg "
+                            "Likewise, IRUG_Unification.lean verifies integer identities and finite table checks: the stated redshift expressions give η = 0, the cross-phase is unchanged by local shifts, bilateral sign flips preserve z_A z_B, and the 7 hand-entered proposal rows evaluate as listed against 33 µm and 10⁻³ s⁻¹. It does not prove that the Wheeler–DeWitt, Diósi–Penrose, or Lindblad models describe nature, nor that our recast of the 2020 Eöt-Wash limits is correct. Whether gravity actually entangles 10⁻¹⁴ kg "
                             "diamonds remains PROPOSED until two cryostats measure it.",
-                            "Del mismo modo, IRUG_Unification.lean prueba identidades enteras y comprobaciones finitas de tabla: las expresiones de corrimiento declaradas dan η = 0, la fase cruzada no cambia ante corrimientos locales, los cambios de signo bilaterales conservan z_A z_B y las 7 filas de propuestas capturadas a mano se evalúan como se listan frente a 33 µm y 10⁻³ s⁻¹. No prueba que los modelos de Wheeler–DeWitt, Diósi–Penrose o Lindblad describan la naturaleza, ni que nuestra proyección de los límites Eöt-Wash de 2020 sea correcta. Si la gravedad entrelaza diamantes de 10⁻¹⁴ kg "
+                            "Del mismo modo, IRUG_Unification.lean verifica identidades enteras y comprobaciones finitas de tabla: las expresiones de corrimiento declaradas dan η = 0, la fase cruzada no cambia ante corrimientos locales, los cambios de signo bilaterales conservan z_A z_B y las 7 filas de propuestas capturadas a mano se evalúan como se listan frente a 33 µm y 10⁻³ s⁻¹. No prueba que los modelos de Wheeler–DeWitt, Diósi–Penrose o Lindblad describan la naturaleza, ni que nuestra proyección de los límites Eöt-Wash de 2020 sea correcta. Si la gravedad entrelaza diamantes de 10⁻¹⁴ kg "
                             "sigue siendo PROPUESTO hasta medirlo en laboratorio.",
                         ),
                     ],
@@ -1399,8 +1399,8 @@ ESSAY: dict = {
             "citation": "Barato, A. C., & Seifert, U. — Cost and precision of Brownian clocks, Physical Review X 6(4), 041053",
             "doi": "10.1103/physrevx.6.041053",
             "year": 2016,
-            "role_en": "Proves the thermodynamic dissipation-precision bound for autonomous Markovian and biomolecular clocks.",
-            "role_es": "Demuestra la cota termodinámica entre disipación y precisión en relojes markovianos y biomoleculares.",
+            "role_en": "Derives the thermodynamic dissipation-precision bound for autonomous Markovian and biomolecular clocks.",
+            "role_es": "Deriva la cota termodinámica entre disipación y precisión en relojes markovianos y biomoleculares.",
         },
         {
             "id": "ES06-LEE2020",

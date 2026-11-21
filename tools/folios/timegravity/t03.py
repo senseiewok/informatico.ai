@@ -206,8 +206,8 @@ PAGE: dict = {
         ),
         {"type": "change_box",
          "items": [
-             ("A composition-dependent fall confirmed by two independent collaborations would make the first MEASURED claim false and withdraw both DERIVED claims; the page would be rewritten, not relabelled.",
-              "Una caída dependiente de la composición confirmada por dos colaboraciones independientes haría falsa la primera afirmación MEDIDA y retiraría ambas afirmaciones DERIVADAS; la página se reescribiría, no se reetiquetaría."),
+             ("A composition-dependent fall replicated by two independent collaborations would make the first MEASURED claim false and withdraw both DERIVED claims; the page would be rewritten, not relabelled.",
+              "Una caída dependiente de la composición replicada por dos colaboraciones independientes haría falsa la primera afirmación MEDIDA y retiraría ambas afirmaciones DERIVADAS; la página se reescribiría, no se reetiquetaría."),
              ("An independent replication of the antihydrogen fall would raise the 2023 row from SINGLE RESULT to MEASURED.",
               "Una replicación independiente de la caída del antihidrógeno subiría la fila de 2023 de RESULTADO ÚNICO a MEDIDO."),
              ("A resolving DOI for the 2026 quantum-phase equivalence result would admit it to the ledger as SINGLE RESULT, inside the replication window.",

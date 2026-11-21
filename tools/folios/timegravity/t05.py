@@ -62,13 +62,13 @@ PAGE: dict = {
     "standfirst_en": (
         "Put two small masses each into two places at once and let them pull on each other through gravity alone. If the pull is "
         "carried by something quantum, the pair comes back entangled, by a phase this page recomputes from G, the masses, the distances "
-        "and the time. Nobody has run the experiment. And since 2025, into 2026, the literature disputes what a positive result would prove. This page "
+        "and the time. Nobody has run the experiment. And since 2025, into 2026, the literature disputes what a positive result would settle. This page "
         "draws the three answers at equal weight and labels the whole question OPEN."
     ),
     "standfirst_es": (
         "Pon dos masas pequeñas, cada una en dos lugares a la vez, y deja que se atraigan solo por gravedad. Si la atracción la lleva "
         "algo cuántico, el par regresa entrelazado, por una fase que esta página recalcula desde G, las masas, las distancias y el tiempo. "
-        "Nadie ha corrido el experimento. Y desde 2025, ya en 2026, la literatura disputa qué probaría un resultado positivo. Esta página dibuja las "
+        "Nadie ha corrido el experimento. Y desde 2025, ya en 2026, la literatura disputa qué zanjaría un resultado positivo. Esta página dibuja las "
         "tres respuestas con el mismo peso y etiqueta toda la pregunta como ABIERTA."
     ),
     "seo": (
@@ -158,11 +158,11 @@ PAGE: dict = {
               "es un múltiplo de 2π, y de otro modo su concurrencia es |sin(Δφ/2)|.",
               parent=WEST),
             T(" The label is DERIVED: the concurrence formula is Wootters's for a pure two-qubit state, and the potential it is fed is the "
-              "Newtonian one, the law the parent MEASURED row confirmed between millimetre gold spheres at a surface distance of 400 µm. For the 2017 geometry the kernel finds "
+              "Newtonian one, the law the parent MEASURED row tested between millimetre gold spheres at a surface distance of 400 µm. For the 2017 geometry the kernel finds "
               "the RL and LR branch phases to exceed the LL phase by 0.44 rad and −0.13 rad (the paper's order-of-magnitude 0.7 and −0.2), an entanglement phase of 0.31 rad and "
               "a concurrence of 0.16; the verifier recomputes the concurrence from the reduced state's purity and requires agreement to one part in 10¹².",
               " La etiqueta es DERIVADO: la fórmula de la concurrencia es la de Wootters para un estado puro de dos qubits, y el potencial que se "
-              "le da es el newtoniano, la ley que la fila madre MEDIDA confirmó entre esferas de oro milimétricas a una distancia entre superficies de 400 µm. Para la geometría de 2017 el núcleo encuentra "
+              "le da es el newtoniano, la ley que la fila madre MEDIDA puso a prueba entre esferas de oro milimétricas a una distancia entre superficies de 400 µm. Para la geometría de 2017 el núcleo encuentra "
               "que las fases de las ramas RL y LR exceden la fase LL por 0.44 rad y −0.13 rad (los 0.7 y −0.2 de orden de magnitud del artículo), una fase de entrelazamiento de 0.31 rad "
               "y una concurrencia de 0.16; el verificador recalcula la concurrencia desde la pureza del estado reducido y exige coincidencia a una parte en 10¹²."),
         ),
@@ -197,10 +197,10 @@ PAGE: dict = {
                  "el sobrante es la fase de entrelazamiento. En esta página es 0.31 radianes tras 2.5 segundos, y el dial marcaría 1 tras 25 segundos.")),
              P(T("The hard part is not the pull, which is there. The hard part is keeping two specks of matter in two places for seconds without a "
                  "single gas molecule or a single photon noticing where they are. Nobody has done it yet. And a second hard part appeared in 2025: "
-                 "physicists disagree about whether seeing the entanglement would prove gravity is quantum. So the page says OPEN, twice.",
+                 "physicists disagree about whether seeing the entanglement would settle whether gravity is quantum. So the page says OPEN, twice.",
                  "Lo difícil no es la atracción, que está ahí. Lo difícil es mantener dos motas de materia en dos lugares durante segundos sin que "
                  "una sola molécula de gas o un solo fotón note dónde están. Nadie lo ha hecho todavía. Y en 2025 apareció una segunda dificultad: "
-                 "los físicos no concuerdan en si ver el entrelazamiento probaría que la gravedad es cuántica. Por eso la página dice ABIERTO, dos veces.")),
+                 "los físicos no concuerdan en si ver el entrelazamiento zanjaría que la gravedad es cuántica. Por eso la página dice ABIERTO, dos veces.")),
          ]},
         {"type": "analogy",
          "kicker_en": "Everyday Analogy & Controls Primer",
@@ -798,8 +798,8 @@ PAGE: dict = {
         ),
         {"type": "change_box",
          "items": [
-             ("A performed experiment that witnessed entanglement would move the quantum channel's row from PROPOSED to SINGLE RESULT, then MEASURED after a second collaboration; the page label would stay OPEN until the dispute over what it proves is resolved in the peer-reviewed record.",
-              "Un experimento realizado que atestiguara entrelazamiento movería la fila del canal cuántico de PROPUESTO a RESULTADO ÚNICO, y luego a MEDIDO tras una segunda colaboración; la etiqueta de página seguiría ABIERTO hasta que la disputa sobre qué prueba se resuelva en el registro revisado por pares."),
+             ("A performed experiment that witnessed entanglement would move the quantum channel's row from PROPOSED to SINGLE RESULT, then MEASURED after a second collaboration; the page label would stay OPEN until the dispute over what it settles is resolved in the peer-reviewed record.",
+              "Un experimento realizado que atestiguara entrelazamiento movería la fila del canal cuántico de PROPUESTO a RESULTADO ÚNICO, y luego a MEDIDO tras una segunda colaboración; la etiqueta de página seguiría ABIERTO hasta que la disputa sobre qué zanja se resuelva en el registro revisado por pares."),
              ("A performed experiment that found no entanglement where the quantum channel predicts it would be reported as a BOUND on the mediator, and the page rewritten around it.",
               "Un experimento realizado que no encontrara entrelazamiento donde el canal cuántico lo predice se reportaría como una COTA sobre el mediador, y la página se reescribiría alrededor de ella."),
              ("A sub-millimetre test of Newton's law analysed by its own collaboration for the smeared potential erf(r/2σ)/r would turn the σ question from OPEN into a BOUND on the model, in either direction; the page's one-mode estimate is not that analysis.",
@@ -827,8 +827,8 @@ PAGE: dict = {
     ],
     "sidenotes": [
         ("SIDENOTE T.05-A · WHY THE PAGE LABEL IS OPEN", "NOTA T.05-A · POR QUÉ LA ETIQUETA DE PÁGINA ES ABIERTO",
-         "Two reasons, and the second would hold even if the first fell. No gravitationally induced entanglement has been measured. And the peer-reviewed record of 2025 and 2026 disagrees about what measuring it would prove. A page cannot carry a label higher than its weakest load-bearing claim, and the load-bearing claim here is the dispute.",
-         "Dos razones, y la segunda se sostendría aunque cayera la primera. No se ha medido ningún entrelazamiento inducido por gravedad. Y el registro revisado por pares de 2025 y 2026 no concuerda en qué probaría medirlo. Una página no puede llevar una etiqueta más alta que su afirmación portante más débil, y la afirmación portante aquí es la disputa."),
+         "Two reasons, and the second would hold even if the first fell. No gravitationally induced entanglement has been measured. And the peer-reviewed record of 2025 and 2026 disagrees about what measuring it would settle. A page cannot carry a label higher than its weakest load-bearing claim, and the load-bearing claim here is the dispute.",
+         "Dos razones, y la segunda se sostendría aunque cayera la primera. No se ha medido ningún entrelazamiento inducido por gravedad. Y el registro revisado por pares de 2025 y 2026 no concuerda en qué zanjaría medirlo. Una página no puede llevar una etiqueta más alta que su afirmación portante más débil, y la afirmación portante aquí es la disputa."),
         ("SIDENOTE T.05-B · WEAK IS NOT ZERO", "NOTA T.05-B · DÉBIL NO ES CERO",
          "The gravitational coupling is some forty-three orders of magnitude below the electromagnetic one, as the 2017 sufficiency paper notes, yet the phase after 2.5 s is a third of a radian. The experiment's problem is isolation: 10⁻¹⁵ Pa and 0.15 K, with no stray field, for seconds. That is why the page lists cooling records as distance covered.",
          "El acoplamiento gravitatorio está unos cuarenta y tres órdenes de magnitud por debajo del electromagnético, como señala el artículo de suficiencia de 2017, y aun así la fase tras 2.5 s es un tercio de radián. El problema del experimento es el aislamiento: 10⁻¹⁵ Pa y 0.15 K, sin campo parásito, durante segundos. Por eso la página lista los récords de enfriamiento como distancia recorrida."),

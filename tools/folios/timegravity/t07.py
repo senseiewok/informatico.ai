@@ -246,8 +246,8 @@ PAGE: dict = {
     ],
     "sidenotes": [
         ("SIDENOTE T.07-A · WHY THE CLOSED FORM, NOT A SIMULATION", "NOTA T.07-A · POR QUÉ LA FORMA CERRADA, NO UNA SIMULACIÓN",
-         "A verifier that compares a simulation with another run of itself proves only that the code is deterministic. cos²(εt/2) is what the 1938 and 1950 experiments measured for a two-level system; matching it is the only check that means something.",
-         "Un verificador que compara una simulación con otra corrida de sí misma demuestra solo que el código es determinista. cos²(εt/2) es lo que los experimentos de 1938 y 1950 midieron para un sistema de dos niveles; coincidir con eso es la única comprobación que significa algo."),
+         "A verifier that compares a simulation with another run of itself shows only that the code is deterministic. cos²(εt/2) is what the 1938 and 1950 experiments measured for a two-level system; matching it is the only check that means something.",
+         "Un verificador que compara una simulación con otra corrida de sí misma muestra solo que el código es determinista. cos²(εt/2) es lo que los experimentos de 1938 y 1950 midieron para un sistema de dos niveles; coincidir con eso es la única comprobación que significa algo."),
         ("SIDENOTE T.07-B · WHAT THE TOY IS NOT", "NOTA T.07-B · LO QUE EL JUGUETE NO ES",
          "Two subsystems and a constraint. No metric, no gravity, no horizon. It shows how a timeless equation can hold a clock, and that which clock is a choice. Everything beyond that on this subject is labelled OPEN.",
          "Dos subsistemas y una restricción. Sin métrica, sin gravedad, sin horizonte. Muestra cómo una ecuación sin tiempo puede contener un reloj, y que qué reloj es una elección. Todo lo demás sobre este tema lleva la etiqueta ABIERTO."),
