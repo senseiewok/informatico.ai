@@ -5572,6 +5572,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
     rows_html = "\n".join(rows)
     first = catalog["pillars"]["engineering"][0]
     arch_n = len(catalog["pillars"]["architecture"])
+    math_n = len(catalog["pillars"]["math"])
     total_pillar_n = sum(len(v) for v in NEW_FOLIOS.values())
     strip_aria = (
         f"Informatico.ai: 4 Pilares, Serie Tiempo y Gravedad, 6 Retos y {skill_count} Skills de IA"

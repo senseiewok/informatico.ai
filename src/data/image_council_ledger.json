@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2",
   "law": "Law 8 & Law 17 — Human-Scale Grounded Scientific Plate Generation & 4-Seat Image Selection Council",
-  "total_plates_replaced": 67,
-  "magazine_plates_count": 67,
+  "total_plates_replaced": 68,
+  "magazine_plates_count": 68,
   "council_seats": [
     "gemini-4-argon (Physical Specification & Structural Plausibility Seat)",
     "claude-opus-5.5 (Human Perceptual Impact & Tactile Craft Seat)",
@@ -724,6 +724,17 @@
       "bytes": 138957,
       "zero_baked_text_verified": true,
       "sha256": "cba5e3a1221adbe6a573f949639f65ae7761e9f0a623b8f4de3f756c41ec4d81"
+    },
+    {
+      "plate_id": "m14",
+      "path": "src/plates/m14.jpg",
+      "governing_specification": "Raking-light tabletop macro photograph on warm cream limestone vellum paper showing brushed brass and frosted quartz spheres packed inside a dark anodized-slate Voronoi cell tray beside a smooth unmarked matte-steel ring gauge",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-argon-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 150848,
+      "zero_baked_text_verified": true,
+      "sha256": "3ae3862ced611f0f6a859577d99c280d284a59f120c038545a145237c6383d28"
     }
   ]
 }

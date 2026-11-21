@@ -735,6 +735,14 @@
     "title": "The Stone Skeleton",
     "year": 1995
   },
+  "doi:10.1017/fmp.2017.1": {
+    "fetched": "2026-11-21",
+    "first_author": "HALES",
+    "found": true,
+    "journal": "Forum of Mathematics, Pi",
+    "title": "A FORMAL PROOF OF THE KEPLER CONJECTURE",
+    "year": 2017
+  },
   "doi:10.1017/s0305004100032680": {
     "fetched": "2026-11-14",
     "first_author": "Broadbent",
@@ -2311,6 +2319,14 @@
     "title": "On a Problem of Sidon in Additive Number Theory, and on some Related Problems",
     "year": 1941
   },
+  "doi:10.1112/plms/s3-8.4.609": {
+    "fetched": "2026-11-21",
+    "first_author": "Rogers",
+    "found": true,
+    "journal": "Proceedings of the London Mathematical Society",
+    "title": "The Packing of Equal Spheres",
+    "year": 1958
+  },
   "doi:10.1115/1.2110263": {
     "fetched": "2026-11-04",
     "first_author": "Zhang",
@@ -3127,6 +3143,22 @@
     "title": "The Living Experience as a design content: from concept to appropriation",
     "year": 2015
   },
+  "doi:10.4007/annals.2003.157.689": {
+    "fetched": "2026-11-21",
+    "first_author": "Cohn",
+    "found": true,
+    "journal": "Annals of Mathematics",
+    "title": "New upper bounds on sphere packings I",
+    "year": 2003
+  },
+  "doi:10.4007/annals.2008.168.1": {
+    "fetched": "2026-11-21",
+    "first_author": "Musin",
+    "found": true,
+    "journal": "Annals of Mathematics",
+    "title": "The kissing number in four dimensions",
+    "year": 2008
+  },
   "doi:10.4007/annals.2015.182.1.9": {
     "fetched": "2026-11-07",
     "first_author": "Bourgain",
@@ -3150,6 +3182,30 @@
     "journal": "Annals of Mathematics",
     "title": "On large subsets of $\\mathbb{F}_q^n$ with no three-term arithmetic progression",
     "year": 2017
+  },
+  "doi:10.4007/annals.2017.185.3.7": {
+    "fetched": "2026-11-21",
+    "first_author": "Viazovska",
+    "found": true,
+    "journal": "Annals of Mathematics",
+    "title": "The sphere packing problem in dimension $8$",
+    "year": 2017
+  },
+  "doi:10.4007/annals.2017.185.3.8": {
+    "fetched": "2026-11-21",
+    "first_author": "Cohn",
+    "found": true,
+    "journal": "Annals of Mathematics",
+    "title": "The sphere packing problem in dimension $24$",
+    "year": 2017
+  },
+  "doi:10.4007/annals.2022.196.3.3": {
+    "fetched": "2026-11-21",
+    "first_author": "Cohn",
+    "found": true,
+    "journal": "Annals of Mathematics",
+    "title": "Universal optimality of the $E_8$ and Leech lattices and interpolation formulas",
+    "year": 2022
   },
   "doi:10.4007/annals.2025.201.2.5": {
     "fetched": "2026-11-04",
@@ -4194,6 +4250,20 @@
     "total_smart_citations": 296,
     "unclassified": 7,
     "year": 1995
+  },
+  "scite:10.1017/fmp.2017.1": {
+    "citing_publications": 498,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Forum of Mathematics Pi",
+    "mentioning": 250,
+    "retracted": false,
+    "supporting": 1,
+    "title": "A Formal Proof of the Kepler Conjecture",
+    "total_smart_citations": 257,
+    "unclassified": 6,
+    "year": 2017
   },
   "scite:10.1021/acscatal.0c04525": {
     "citing_publications": 1009,
@@ -5619,6 +5689,20 @@
     "unclassified": 6,
     "year": 2017
   },
+  "scite:10.1112/plms/s3-8.4.609": {
+    "citing_publications": 214,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Proceedings of the London Mathematical Society",
+    "mentioning": 110,
+    "retracted": false,
+    "supporting": 0,
+    "title": "The Packing of Equal Spheres",
+    "total_smart_citations": 116,
+    "unclassified": 6,
+    "year": 1958
+  },
   "scite:10.1115/1.3644004": {
     "citing_publications": 2942,
     "contrasting": 0,
@@ -6161,6 +6245,34 @@
     "unclassified": 39,
     "year": 1995
   },
+  "scite:10.4007/annals.2003.157.689": {
+    "citing_publications": 377,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Annals of Mathematics",
+    "mentioning": 541,
+    "retracted": false,
+    "supporting": 3,
+    "title": "New upper bounds on sphere packings I",
+    "total_smart_citations": 549,
+    "unclassified": 5,
+    "year": 2003
+  },
+  "scite:10.4007/annals.2008.168.1": {
+    "citing_publications": 175,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Annals of Mathematics",
+    "mentioning": 150,
+    "retracted": false,
+    "supporting": 3,
+    "title": "The kissing number in four dimensions",
+    "total_smart_citations": 159,
+    "unclassified": 6,
+    "year": 2008
+  },
   "scite:10.4007/annals.2015.182.1.9": {
     "citing_publications": 555,
     "contrasting": 2,
@@ -6174,6 +6286,48 @@
     "total_smart_citations": 931,
     "unclassified": 2,
     "year": 2015
+  },
+  "scite:10.4007/annals.2017.185.3.7": {
+    "citing_publications": 456,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Annals of Mathematics",
+    "mentioning": 377,
+    "retracted": false,
+    "supporting": 8,
+    "title": "The sphere packing problem in dimension $8$",
+    "total_smart_citations": 388,
+    "unclassified": 3,
+    "year": 2017
+  },
+  "scite:10.4007/annals.2017.185.3.8": {
+    "citing_publications": 419,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Annals of Mathematics",
+    "mentioning": 334,
+    "retracted": false,
+    "supporting": 5,
+    "title": "The sphere packing problem in dimension $24$",
+    "total_smart_citations": 341,
+    "unclassified": 2,
+    "year": 2017
+  },
+  "scite:10.4007/annals.2022.196.3.3": {
+    "citing_publications": 127,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Annals of Mathematics",
+    "mentioning": 56,
+    "retracted": false,
+    "supporting": 2,
+    "title": "Universal optimality of the $E_8$ and Leech lattices and interpolation formulas",
+    "total_smart_citations": 58,
+    "unclassified": 0,
+    "year": 2022
   },
   "scite:10.4007/annals.2025.201.2.5": {
     "citing_publications": 25,
