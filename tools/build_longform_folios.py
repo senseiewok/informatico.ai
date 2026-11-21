@@ -977,8 +977,8 @@ def render_folio_crossword_section(slug: str, folio_id: str) -> str:
         <div class="tp-puzzle-header-right">
           <span class="tp-cw-edition-badge" data-en="EN · INDEPENDENT ENGLISH EDITION (10×10)" data-es="ES-MX · EDICIÓN INDEPENDIENTE EN ESPAÑOL (10×10)">EN · INDEPENDENT ENGLISH EDITION (10×10)</span>
           <div class="tp-passport-bar" role="region" aria-label="Collector's Passport Crossword Progress">
-            <span class="tp-passport-count" data-en="0 / 51 Folios Sealed (EN: 0 · ES-MX: 0)" data-es="0 / 51 Folios Sellados (EN: 0 · ES-MX: 0)">0 / 51 Folios Sealed (EN: 0 · ES-MX: 0)</span>
-            <progress class="tp-passport-progress" max="102" value="0" aria-label="Total bilingual crosswords solved across Informatico.ai"></progress>
+            <span class="tp-passport-count" data-en="0 / 52 Folios Sealed (EN: 0 · ES-MX: 0)" data-es="0 / 52 Folios Sellados (EN: 0 · ES-MX: 0)">0 / 52 Folios Sealed (EN: 0 · ES-MX: 0)</span>
+            <progress class="tp-passport-progress" max="104" value="0" aria-label="Total bilingual crosswords solved across Informatico.ai"></progress>
           </div>
         </div>
       </div>
@@ -5616,9 +5616,9 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
           <span class="tp-track-chip-meta" data-en="Time &amp; Gravity (T.00–T.13) · 11 Cross-Scale Essays" data-es="Tiempo y Gravedad (T.00–T.13) · 11 Ensayos entre Escalas">Time &amp; Gravity (T.00–T.13) · 11 Cross-Scale Essays</span>
         </a>
         <a class="tp-track-chip" href="math/">
-          <span class="tp-track-chip-kicker" data-en="PILLAR IV · 12 ESSAYS" data-es="PILAR IV · 12 ENSAYOS">PILLAR IV · 12 ESSAYS</span>
+          <span class="tp-track-chip-kicker" data-en="PILLAR IV · 13 ESSAYS" data-es="PILAR IV · 13 ENSAYOS">PILLAR IV · 13 ESSAYS</span>
           <strong class="tp-track-chip-title" data-en="Formal &amp; Pure Mathematics" data-es="Matemáticas Formales y Puras">Formal &amp; Pure Mathematics</strong>
-          <span class="tp-track-chip-meta" data-en="12 Folios · Lean 4 FLT, Cap Sets, Kakeya" data-es="12 Folios · Lean 4 FLT, Cap Sets, Kakeya">12 Folios · Lean 4 FLT, Cap Sets, Kakeya</span>
+          <span class="tp-track-chip-meta" data-en="13 Folios · Lean 4 FLT, Cap Sets, Shannon Capacity" data-es="13 Folios · Lean 4 FLT, Cap Sets, Capacidad de Shannon">13 Folios · Lean 4 FLT, Cap Sets, Shannon Capacity</span>
         </a>
         <a class="tp-track-chip tp-track-chip-bounty" href="bounties/">
           <span class="tp-track-chip-kicker" data-en="6 GRAND-CHALLENGE FOLIOS" data-es="6 FOLIOS DE GRANDES RETOS">6 GRAND-CHALLENGE FOLIOS</span>

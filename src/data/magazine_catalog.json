@@ -6178,6 +6178,120 @@
           "retracted": false,
           "summary": "Scite Smart Citation Index (fetched 2026-11-08): 0 retractions; 2,512 citing publications (0 supporting, 708 mentioning, 0 contrasting) for Regev, On lattices, learning with errors, random linear codes, and cryptography (Journal of the ACM, 2009), the paper behind the LWE problem used in ML-KEM."
         }
+      },
+      {
+        "folio_id": "M.13",
+        "slug": "m13",
+        "pillar": "math",
+        "category_code": "M",
+        "parent_folios": [
+          "M.03",
+          "M.06"
+        ],
+        "lineage_mode": "CONTINUATION · Extends M.03 Combinatorial Packing & M.06 Graph Complexity Bounds",
+        "title": "Shannon Zero-Error Graph Capacity, Lovász Theta Sandwich & the Open Seven-Cycle Gap",
+        "subtitle": "How Claude Shannon turned error-free messaging into packing squares on cyclic graphs, how László Lovász settled the five-cycle with a three-dimensional umbrella, why Willem Haemers separated geometric cones from capacity on twenty-seven lines, and why the seven-cycle limit stays open.",
+        "date_published": "2026-11-21",
+        "date_redated": "2026-11-21",
+        "current_edition": "REV 1.0",
+        "status_badge": "GRAPH CAPACITY · REV 1.0",
+        "primary_kernel": "skills/math/m13/verify_m13_shannon_capacity.py",
+        "governing_law": "α(G) ≤ Θ(G) ≤ ϑ(G) ≤ α*(G) ≤ χ̄(G) · ϑ(C_n) = n cos(π/n) / [1 + cos(π/n)]",
+        "colophon": {
+          "identifier": "M.13 · Zero-Error Capacity & Lovász Theta Sandwich · REV 1.0",
+          "kernels": "Shannon Strong Product G^k · Lovász Umbrella ϑ(G) · Haemers Minrank(S_bar) = 7",
+          "benchmarks": "C_5 (k = 2): α = 2 · Θ(C_5) = ϑ(C_5) = √5 ≈ 2.236068 · C_7 (k = 5): 367^(1/5) ≈ 3.257866 ≤ Θ(C_7) ≤ ϑ(C_7) ≈ 3.317667 (OPEN)",
+          "bridge": "Extends M.03/M.06 · Information-theoretic packing and spectral duality"
+        },
+        "sliders": [
+          {
+            "label": "Odd Cycle Length (n)",
+            "min": 5,
+            "max": 13,
+            "step": 2,
+            "value": 5,
+            "unit": "n = "
+          },
+          {
+            "label": "Codeword Block Length (k)",
+            "min": 1,
+            "max": 5,
+            "step": 1,
+            "value": 2,
+            "unit": "k = "
+          }
+        ],
+        "steps": [
+          "Stage 1 (Confusability Graphs and Strong Products, Shannon 1956): Claude Shannon (DOI 10.1109/TIT.1956.1056798) modeled a noisy discrete channel as a graph G whose vertices are input letters and whose edges connect pairs that can produce the same output. Zero-error words of length k form an independent set in the k-fold strong product G^k, yielding Θ(G) = sup_k α(G^k)^(1/k). For C_5, α(C_5) = 2, whereas the five pairs (i, 2i mod 5) form an independent set in C_5^2, giving Θ(C_5) ≥ √5.",
+          "Stage 2 (Lovász Orthonormal Umbrellas and Sandwich Inequality, 1979): László Lovász (DOI 10.1109/TIT.1979.1055985) defined ϑ(G) by placing unit vectors u_i in Euclidean space so non-adjacent vertices are orthogonal, minimizing max_i 1/(c · u_i)^2 over unit handles c. Because ϑ is multiplicative under strong products, α(G) ≤ Θ(G) ≤ ϑ(G) ≤ α*(G) ≤ χ̄(G). On odd cycles, ϑ(C_n) = n cos(π/n) / [1 + cos(π/n)], pinning Θ(C_5) = √5 ≈ 2.236068 via the 3D umbrella cos²φ = 1/√5.",
+          "Stage 3 (Haemers Minrank Separation on the Schläfli Complement, 1979): Willem Haemers (DOI 10.1109/TIT.1979.1056027) bounded Θ(G) above by the minimum rank of any matrix fitting G over a field. On the 27-line cubic-surface intersection graph S_bar = SRG(27, 10, 1, 5), spectrum {10^1, 1^20, (-5)^6} gives ϑ(S_bar) = 9, whereas A(S_bar) − I fits S_bar with exact rational rank 7. Thus Θ(S_bar) ≤ 7 < 9, and the diagonal in S ⊠ S_bar shows Θ(S ⊠ S_bar) ≥ 27 > 3 × 7 ≥ Θ(S) Θ(S_bar).",
+          "Stage 4 (Open Hypothesis on C_7, Tier T0–T1 Bounds, and Falsification Condition): For the seven-cycle C_7, Polak & Schrijver (2019, DOI 10.1016/j.ipl.2018.11.006) found 367 independent vertices in C_7^5, establishing Tier T0/T1 bounds 367^(1/5) ≈ 3.257866 ≤ Θ(C_7) ≤ ϑ(C_7) ≈ 3.317667. Whether Θ(C_7) equals ϑ(C_7) or stays strictly below it remains OPEN. Any strict algebraic upper bound below 3.317667 refutes equality Θ(C_7) = ϑ(C_7), while any block code with α(C_7^k)^(1/k) > 3.257866 tightens the lower floor."
+        ],
+        "readouts": [
+          {
+            "label": "Lovász Theta Upper Bound ϑ(C_n)",
+            "value": "2.236068 (closed Θ(C_5) = √5)"
+          },
+          {
+            "label": "Best Block-k Rate α(C_n^k)^(1/k)",
+            "value": "2.236068 at n = 5, k = 2"
+          },
+          {
+            "label": "Sandwich: α · ϑ · α* · χ̄",
+            "value": "2 ≤ 2.2361 ≤ 2.500 ≤ 3"
+          },
+          {
+            "label": "Open Capacity Gap ϑ − Rate",
+            "value": "0.000000 (CLOSED ON C_5)"
+          }
+        ],
+        "spec_plate": {
+          "division": "COMBINATORIAL INFORMATION THEORY / SEMIDEFINITE BOUNDS",
+          "title": "Odd-Cycle Zero-Error Packing Envelope, Lovász Orthonormal Umbrella & Haemers Rank Bound",
+          "body": "Exact discrete mathematics verification over odd cycles C_5 through C_13, strong products C_5^2 and C_7^2, and the 27-vertex Schläfli complement SRG(27, 10, 1, 5). Lower bounds for C_7^5 (367 codewords) are cited from Polak & Schrijver (2019); all C_5^2, C_7^2, Gram PSD eigenvalues, and exact rational Gaussian-elimination rank-7 checks are recomputed from scratch by verify_m13_shannon_capacity.py.",
+          "meta": "Primary anchors: Shannon 1956 (DOI 10.1109/TIT.1956.1056798) · Lovász 1979 (DOI 10.1109/TIT.1979.1055985) · Haemers 1979 (DOI 10.1109/TIT.1979.1056027) · Polak & Schrijver 2019 (DOI 10.1016/j.ipl.2018.11.006)"
+        },
+        "sidenote_1": {
+          "kicker": "SIDENOTE M.13-A · POLYNOMIAL-TIME SDP VS. NP-HARD ALPHA",
+          "body": "Grötschel, Lovász & Schrijver (1981, DOI 10.1007/BF02579273) showed via the ellipsoid method that ϑ(G) can be approximated to arbitrary rational precision in polynomial time, even though both α(G) and χ̄(G) are NP-hard. Whenever α(G) = χ̄(G) (perfect graphs), the sandwich collapses to equality and yields both quantities in polynomial time."
+        },
+        "sidenote_2": {
+          "kicker": "SIDENOTE M.13-B · NON-ADDITIVITY UNDER DISJOINT UNION (ALON 1998)",
+          "body": "Shannon asked in 1956 whether the capacity of a disjoint union equals the sum Θ(G ⊔ H) = Θ(G) + Θ(H). Noga Alon (1998, DOI 10.1007/PL00009824) constructed graphs G and H for which Θ(G) and Θ(H) are bounded while Θ(G ⊔ H) grows far larger, demonstrating that block-coding across two separate channels can mix codewords more efficiently than either channel separately."
+        },
+        "skill": {
+          "filename": "shannon-capacity-lovasz-theta-SKILL.md",
+          "name": "shannon-capacity-lovasz-theta",
+          "description": "AI-agnostic combinatorial information theory skill for Shannon zero-error graph capacity, the Lovasz theta sandwich alpha(G) <= Theta(G) <= vartheta(G) <= chi_bar(G), and Haemers minrank separation.",
+          "rules": [
+            "Model zero-error k-symbol block codes as independent sets in the strong product G^{\boxtimes k}, never the Cartesian box product, so symbol confusability across simultaneous coordinates is captured.",
+            "Enforce the Lovasz sandwich alpha(G) <= Theta(G) <= vartheta(G) <= alpha*(G) <= chi_bar(G) and compute odd-cycle theta values via n * cos(pi/n) / (1 + cos(pi/n)).",
+            "Never treat vartheta(G) as equal to Theta(G) in general: check algebraic minrank bounds such as Haemers rank(A(S_bar) - I) = 7 < 9 = vartheta(S_bar) on the 27-vertex Schlafli complement.",
+            "Keep Theta(C_7) explicitly labeled OPEN between the verified lower floor 367^(1/5) (~3.257866) and the Lovasz upper bound vartheta(C_7) (~3.317667)."
+          ]
+        },
+        "revisions": [
+          {
+            "edition": "REV 1.0",
+            "date": "2026-11-21",
+            "summary": "REV 1.0 (Published 2026-11-21): Volume VII Mathematics monograph continuing Folios M.03 & M.06 across Shannon (1956), Lovász (1979), Haemers (1979), Grötschel–Lovász–Schrijver (1981), Alon (1998), Bohman–Holzman (2003), and Polak–Schrijver (2019).",
+            "opus": "Verification note: all seven primary DOIs were checked against Crossref on 2026-11-21 with zero retraction notices; skills/math/m13/verify_m13_shannon_capacity.py recomputes odd-cycle bounds, the 3D C_5 umbrella, the 10-word C_7^2 packing, Gram PSD spectra, and exact rational rank 7 on the 27-vertex Schläfli complement."
+          }
+        ],
+        "volume": 7,
+        "volume_code": "VOL. 07",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,800 WORDS",
+        "scite": {
+          "doi": "10.1109/TIT.1979.1055985",
+          "fetched_on": "2026-11-21",
+          "citing_publications": 1779,
+          "supporting": 15,
+          "mentioning": 1482,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index entry for Lovasz 1979, \"On the Shannon capacity of a graph\" (IEEE Transactions on Information Theory, DOI 10.1109/TIT.1979.1055985), fetched 2026-11-21: 1,779 citing publications (15 supporting, 1,482 mentioning, 0 contrasting) and zero retraction notices. These counts describe that foundational paper, not this folio."
+        }
       }
     ]
   },

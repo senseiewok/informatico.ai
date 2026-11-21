@@ -225,7 +225,7 @@ class ToolchainTrackTests(unittest.TestCase):
             [f"e{i:02d}" for i in range(1, 16)]
             + [f"a{i:02d}" for i in range(1, 14)]
             + [f"p{i:02d}" for i in range(1, 13)]
-            + [f"m{i:02d}" for i in range(1, 13)]  # M.13-M.15 withdrawn 2026-11-17
+            + [f"m{i:02d}" for i in range(1, 14)]  # +M.13 (2026-11-21)
             + [f"b{i:02d}" for i in range(1, 7)]
             + [f"x{i:02d}" for i in range(1, 8)]
         )

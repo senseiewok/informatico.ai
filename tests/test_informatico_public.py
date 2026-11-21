@@ -144,7 +144,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
             [f"e{i:02d}" for i in range(1, 16)]
             + [f"a{i:02d}" for i in range(1, 14)]
             + [f"p{i:02d}" for i in range(1, 13)]
-            + [f"m{i:02d}" for i in range(1, 13)]  # M.13-M.15 withdrawn 2026-11-17
+            + [f"m{i:02d}" for i in range(1, 14)]  # +M.13 (2026-11-21)
             + [f"b{i:02d}" for i in range(1, 7)]
             + [f"x{i:02d}" for i in range(1, 8)]
             + ["utopian-city-future"]
@@ -164,7 +164,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
             ("engineering/index.html", 15),
             ("architecture/index.html", 13),
             ("physics/index.html", 12),
-            ("math/index.html", 12),  # -3: M.13-M.15 withdrawn 2026-11-17 (unreviewed automated content)
+            ("math/index.html", 13),  # +1: M.13 added 2026-11-21
             ("bounties/index.html", 6),
             ("toolchain/index.html", 7),
         ):

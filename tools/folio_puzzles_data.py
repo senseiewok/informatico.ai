@@ -1416,6 +1416,26 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
             ("RED", "Conjunto de nodos conectados; un proyecto de Lean 4 puede organizarse como una red de dependencias entre lemas (Folio M.01)", "Acto IV"),
         ],
     },
+    "m13": {
+        "title_en": "Folio M.13 · Shannon Zero-Error Capacity & Lovász Theta Crossword",
+        "title_es": "Folio M.13 · Crucigrama de Capacidad de Error Cero de Shannon y Theta de Lovász",
+        "en": [
+            ("SHANNON", "Information theorist who in 1956 turned zero-error coding into packing vertices in strong graph products", "Act I"),
+            ("LOVASZ", "Mathematician whose 1979 orthonormal umbrella bounded capacity from above and closed C_5 at root five", "Act I"),
+            ("HAEMERS", "Author of the 1979 matrix-rank bound showing capacity can stay strictly below theta on 27 lines", "Act I"),
+            ("CYCLE", "Ring graph of odd length n whose capacity sits between independence alpha and theta", "Act II"),
+            ("SANDWICH", "Inequality chain placing Lovasz theta between independence number and clique cover", "Act II"),
+            ("SCHLAFLI", "Cubic-surface graph on 27 vertices whose complement has theta = 9 and rational rank 7", "Act III"),
+        ],
+        "es": [
+            ("SHANNON", "Teórico de la información que en 1956 formuló la capacidad de error cero mediante productos fuertes", "Acto I"),
+            ("LOVASZ", "Matemático cuyo paraguas ortonormal de 1979 cerró la capacidad del ciclo de cinco en raíz de cinco", "Acto I"),
+            ("HAEMERS", "Autor de la cota de rango matricial de 1979 que separó la capacidad de theta en 27 rectas", "Acto I"),
+            ("CICLO", "Grafo en anillo impar de n vértices donde el caso de siete sigue abierto entre 3.2579 y 3.3177", "Acto II"),
+            ("RANGO", "Dimensión lineal exacta igual a 7 para A(S_bar) - I sobre el complemento de Schläfli", "Acto III"),
+            ("CONO", "Figura geométrica de vectores ortogonales que acota desde arriba los empaquetamientos sin error", "Acto II"),
+        ],
+    },
     "cc01": {
         "title_en": "CC.01 · Golf GTI Chassis, Boost & Transaxle Crossword",
         "title_es": "CC.01 · Crucigrama de Chasis, Turbo y Transmisión del Golf GTI",
