@@ -135,7 +135,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                'to Automotive Pearlescent Lacquers & Barragán Stucco',
  'act1_dropcap': 'In the first years of the nineteenth century the English physician and polymath Thomas Young argued before the Royal Society of London that light is a wave. Isaac Newton had favored tiny corpuscles; Young proposed that color is a periodic vibration, and he used interference, including measurements of the colored rings seen in thin films, to estimate the wavelengths of visible light. Violet was a rapid flutter scarcely four hundred nanometers from '
                  'crest to crest, while deep red stretched out toward seven hundred nanometers. '
-                 'Six decades later, James Clerk Maxwell proved that these luminous undulations '
+                 'Six decades later, James Clerk Maxwell showed that these luminous undulations '
                  'were oscillating electric and magnetic fields traveling across space, setting '
                  'the stage for how modern coatings manipulate light.',
  'act1_body': 'Consider two iconic masterpieces of human color craft that sit at opposite poles of '
@@ -161,7 +161,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'chronology': [('1801',
                  'Thomas Young presents his wave theory of light to the Royal Society and estimates the wavelengths of colors from interference in thin films; his double-slit demonstration follows a few years later.'),
                 ('1865',
-                 'James Clerk Maxwell proves light and color are transverse electromagnetic waves '
+                 'James Clerk Maxwell shows light and color are transverse electromagnetic waves '
                  'governed by dielectric permittivity epsilon(omega).'),
                 ('1913',
                  'William Henry Bragg & William Lawrence Bragg derive the crystal diffraction law 2 d sin(theta) = m lambda; its thin-film analogue with refraction, 2 d sqrt(n^2 - sin^2 theta) = m lambda, is the form this folio uses.'),

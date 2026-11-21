@@ -161,10 +161,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               '10.1103/RevModPhys.35.724) that quantum proton transfer across Watson–Crick '
               'hydrogen bonds could generate rare tautomeric base-pair conformations that fool DNA '
               'polymerases. Modern path-integral simulations and open-quantum-system studies '
-              'confirm that environmental decoherence and zero-point vibrational energy dictate '
-              'barrier transmission, proving that biological enzymes exploit quantum mechanics to '
-              'accelerate chemical catalysis by multiple orders of magnitude without requiring '
-              'destructive thermal activation.',
+              'indicate that environmental decoherence and zero-point vibrational energy shape '
+              'barrier transmission, and hydrogen tunneling is reported to contribute to some '
+              'enzyme-catalyzed reactions. How much it speeds catalysis is still debated, and this '
+              'folio does not settle it.',
  'act1_stakes': 'For over a century, classical chemical kinetics operated under the Arrhenius '
                 'framework and Eyring transition state theory, which assume that reacting atoms '
                 'behave as point-like classical billiard balls that must gather thermal kinetic '
@@ -226,7 +226,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                      'threshold_pass': 'Quantum tunneling regime: rapid deamination catalysis',
                      'threshold_fail': 'Classical thermal stall: slow activation over barrier'},
  'act2_intuition': 'Near the crest of a narrow parabolic potential barrier with imaginary '
-                   'curvature frequency omega_b, Ronald Bell proved that quantum mechanical '
+                   'curvature frequency omega_b, Ronald Bell showed that quantum mechanical '
                    'tunneling multiplies the classical Eyring–Kramers transition-state rate by the '
                    'correction factor kappa_tun = (u_b / 2) / sin(u_b / 2), where u_b = hbar * '
                    'omega_b / (k_B T). Because the semiclassical Euclidean action integral S_E = '
@@ -355,7 +355,7 @@ ES_TRANSLATION = {'title_es': 'Penetración Cuántica de Barrera WKB, Transferen
            'el tunelamiento cuántico WKB permite que el protón atraviese directamente una barrera '
            'delgada cuando el sitio activo acerca los átomos.',
  'plain_es': 'En 1928, el físico George Gamow resolvió el enigma de la desintegración radiactiva '
-             'demostrando que las partículas atómicas se comportan como ondas capaces de atravesar '
+             'mostrando que las partículas atómicas se comportan como ondas capaces de atravesar '
              'barreras de energía prohibidas por la física clásica. En la biología moderna, este '
              'asombroso efecto cuántico es la clave detrás de los editores genéticos más '
              'avanzados. Para entenderlo de manera sencilla, imaginen lanzar una pelota contra una '

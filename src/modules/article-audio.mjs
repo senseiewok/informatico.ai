@@ -883,8 +883,14 @@ export class TpArticleAudioElement extends HTMLElement {
     } else {
       this._playIcon.textContent = "▶";
       this._playBtn.setAttribute("aria-pressed", "false");
-      this._playLabel.textContent =
-        lang === "es"
+      // A recorded track is a short spoken summary of the folio, not a reading of the whole text, so the label must
+      // not borrow the page's reading time. Its real length is shown once the browser knows it.
+      const summaryLen = usingNeuralTrack && totalSec > 0 ? ` (${formatTimeSec(totalSec)})` : "";
+      this._playLabel.textContent = usingNeuralTrack
+        ? lang === "es"
+          ? `Escuchar el resumen en audio${summaryLen}`
+          : `Listen to the audio summary${summaryLen}`
+        : lang === "es"
           ? `Escuchar Monográfico (${readingTime.replace("READ", "AUDIO")})`
           : `Listen to Monograph (${readingTime.replace("READ", "AUDIO")})`;
       this._statusText.textContent =

@@ -357,7 +357,7 @@ ES_TRANSLATION = {'title_es': 'Reología de Materia Blanda y Subdifusión Anóma
  'why_es': 'Cruzar un salón lleno de gente es rápido si caminas sin detenerte (recubrimiento denso '
            'de PEG muco-inerte), pero imposible si te detienes a estrechar la mano de cada persona '
            '(nanopartícula con carga electrostática adherente).',
- 'plain_es': 'En 1979, el físico Pierre-Gilles de Gennes demostró que los geles biológicos y las '
+ 'plain_es': 'En 1979, el físico Pierre-Gilles de Gennes mostró que los geles biológicos y las '
              'cadenas de polímeros entrelazadas obedecen leyes geométricas universales de escala. '
              'Para entender cómo viajan los medicamentos a través de los pulmones, imaginen que el '
              'moco protector es como una red de pescar enredada. En una vía respiratoria sana, '
@@ -370,7 +370,7 @@ ES_TRANSLATION = {'title_es': 'Reología de Materia Blanda y Subdifusión Anóma
              'superficie pegajosa, queda adherida de inmediato a los hilos. Diseñar cápsulas '
              'microscópicas con cubiertas especiales y muy resbalosas permite que los fármacos se '
              'deslicen entre los poros antes de que la red los atrape.',
- 'deep_es': 'La reología de materia blanda demuestra que la difusión en hidrogeles de mucina está '
+ 'deep_es': 'La reología de materia blanda indica que la difusión en hidrogeles de mucina está '
             'gobernada por la ley de escala de correlación de de Gennes, donde el tamaño del poro '
             'se reduce con la concentración según una potencia de tres cuartos. El transporte de '
             'nanopartículas depende de dos factores críticos: la fracción de sólidos de mucina y '

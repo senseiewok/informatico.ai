@@ -299,8 +299,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'clearance below twenty millimeters to chase maximum downforce, the adverse '
                 'pressure gradient in the expanding rear diffuser becomes too steep for the tired '
                 'boundary layer to climb. The flow separates violently, destroying suction in a '
-                'fraction of a second. This cliff-edge breakdown proves that frictionless '
-                'approximations fail catastrophically in racing; success requires mastering '
+                'fraction of a second. This cliff-edge breakdown is why frictionless '
+                'approximations are not enough in racing; success requires mastering '
                 'unsteady viscous shear layers, vortex breakdown, and nonlinear aeroelastic '
                 'springing.',
  'act2_plain_primer': 'Let us walk through how our two physical adjustment knobs control this '

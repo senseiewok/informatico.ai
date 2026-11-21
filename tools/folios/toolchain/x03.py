@@ -243,7 +243,7 @@ FOLIO = {'slug': 'x03',
              'and Spatial Structures, 48(3), 167–173.',
              'Van Mele, T., et al. (2017–2026). COMPAS: A framework for computational research in '
              'architecture and structures (MIT License). https://github.com/compas-dev/compas'],
- 'act1_plain_bridge': 'Every historic masonry arch that has stood for centuries quietly proves '
+ 'act1_plain_bridge': 'Every historic masonry arch that has stood for centuries quietly shows '
                       'that stone works best when squeezed together rather than pulled apart. For '
                       'a small one-to-five person architectural studio, proving that a curved '
                       'vault or timber reciprocal roof will stand safely used to require expensive '
@@ -338,7 +338,7 @@ FOLIO = {'slug': 'x03',
                    'falsework, the mechanics bridge into Folio A.02’s reciprocal timber nexorades, '
                    'and when cast with low-carbon earth mortars, their pumpability follows Folio '
                    'E.02’s Herschel–Bulkley rheology.',
- 'plain_es': 'Cualquier arco de piedra tradicional demuestra que la mampostería trabaja a la '
+ 'plain_es': 'Cualquier arco de piedra tradicional muestra que la mampostería trabaja a la '
              'perfección cuando se comprime y sufre cuando se tensiona. Para un taller '
              'independiente de arquitectura de una a cinco personas, calcular una bóveda curva o '
              'una cubierta recíproca de madera solía requerir costosas licencias de software '

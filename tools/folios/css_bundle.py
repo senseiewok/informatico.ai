@@ -1374,7 +1374,7 @@ REVAMP_CSS = r"""
   }
   @media (max-width: 780px) {
     .tp-truth-boundary-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
   .tp-truth-card {
@@ -1903,6 +1903,8 @@ REVAMP_CSS = r"""
     line-height: 1.66;
   }
   .tp-truth-col {
+    min-width: 0;
+    overflow-wrap: anywhere;
     padding: 1.25rem 1.35rem;
     border-radius: 10px;
     border: 1px solid var(--tp-rule-strong);

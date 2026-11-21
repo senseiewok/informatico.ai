@@ -173,7 +173,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'microscopic scale of human airways, where the Reynolds number plummets below one '
                 'ten-thousandth, fluid inertia completely vanishes. Under these conditions, the '
                 'Navier–Stokes equations simplify into linear, time-reversible Stokes flow. As '
-                'Edward Purcell famously proved in his scallop theorem, any reciprocal '
+                'Edward Purcell showed in his scallop theorem, any reciprocal '
                 'back-and-forth motion produces zero net propulsion; moving forward and backward '
                 'along the identical trajectory leaves the fluid exactly where it started. Cilia '
                 'escape this constraint by executing an asymmetric stroke cycle: an extended, '
@@ -295,7 +295,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'lattice-Boltzmann and immersed-boundary methods on distributed graphic '
                    'processors, researchers can evaluate how novel pharmacological synchronizers '
                    'or rheological modifying agents restore collective metachronal wave '
-                   'propagation, turning raw optical video into definitive biophysical metrics of '
+                   'propagation, turning raw optical video into quantitative biophysical metrics of '
                    'therapeutic rescue.',
  'cf_bridge': 'Restoring mucociliary clearance (MCC) is the ultimate functional readout of any '
               'Cystic Fibrosis therapy. When CFTR modulators, ENaC '
@@ -398,6 +398,6 @@ ES_TRANSLATION = {'title_es': 'Hidrodinámica de Materia Activa y Sincronizació
             'sincronización de fase. Mediante cámaras de alta velocidad y modelos computacionales '
             'de redes complejas, los científicos pueden rastrear hoy esta transición de fase en '
             'tiempo real.',
- 'bridge_es': 'Demuestra por qué mantener una profundidad de líquido periciliar h_ASL ≥ 7 μm es '
+ 'bridge_es': 'Muestra por qué mantener una profundidad de líquido periciliar h_ASL ≥ 7 μm es '
               'indispensable para que el acoplamiento hidrodinámico de Oseen mantenga el '
               'aclaramiento mucociliar en la Fibrosis Quística.'}

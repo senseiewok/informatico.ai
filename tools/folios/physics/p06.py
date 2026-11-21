@@ -194,7 +194,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Masao Doi & Sam Edwards formulate the tube-theory stress relaxation modulus G(t) '
                  'of entangled networks.'),
                 ('1982',
-                 'Lerman, Frisch & Lumpkin prove biased reptation governs kilobase DNA migration '
+                 'Lerman, Frisch & Lumpkin propose that biased reptation governs kilobase DNA migration '
                  'in hydrogels.'),
                 ('1998',
                  'Milner & McLeish add contour-length fluctuations to reptation theory for melts of linear '

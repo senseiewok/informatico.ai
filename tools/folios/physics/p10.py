@@ -100,7 +100,7 @@ FOLIO = {'category_code': 'P',
            "Breaking T-symmetry with m_T = 0.55 > m_P = 0.25 inverts the K' valley mass and opens "
            'a 14.2% topological bandgap.',
            'Stage 3 (Quantized Berry Flux & Chern Number C = +1): Integrating Berry curvature '
-           'Ω_-(k) across the Brillouin zone yields C = +1, guaranteeing a chiral gapless boundary '
+           'Ω_-(k) across the Brillouin zone yields C = +1, which implies a chiral gapless boundary '
            'state.',
            'Stage 4 (Backscatter-Free 90° Bend & Defect Bypass): In the folio\'s illustrative model, with disorder σ_def = 0.30 the one-way edge wave keeps 99.8% forward transmission; the figure is not taken from an experiment.'],
  'subtitle': 'Synthesizing the wave-physics archive of Folios E.03, A.05, A.08, and P.08: how '
@@ -306,8 +306,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'the wave, energy naturally leaks into that backward channel. Haldane and Raghu '
                 'broke this fundamental symmetry. By imbuing the bulk material with non-zero '
                 'topological invariants, they ensured that the backward-propagating channel simply '
-                'does not exist at the edge, converting a fragile interference balance into an '
-                'unshakeable mathematical guarantee.',
+                'does not exist at the edge, converting a fragile interference balance into a '
+                'property protected by topology.',
  'act2_plain_primer': 'Let us walk through how our two adjustment knobs control this '
                       'backscatter-free wave highway. The first knob is the Time-Reversal Breaking '
                       'Mass. In a standard crystal, light moves equally well forward or backward. '
@@ -340,7 +340,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'torus of the Brillouin zone, Gauss–Bonnet-type quantization forces the total '
                    'flux to be an exact integer multiple of two pi: the Chern number C. If a '
                    'crystal with Chern number C = 1 interfaces with air or a trivial insulator '
-                   'where C = 0, the difference in topological invariant Delta_C = 1 guarantees '
+                   'where C = 0, the difference in topological invariant Delta_C = 1 implies, by the bulk-boundary correspondence, '
                    'the physical existence of exactly one gapless chiral boundary state crossing '
                    'the bulk energy gap. Because the dispersion relation of this edge mode has a '
                    'strictly positive group velocity v_g = d_omega/dk throughout the operating '
@@ -417,7 +417,7 @@ ES_TRANSLATION = {'title_es': 'Fotónica Topológica, Aislantes de Chern Fotóni
             'salta de cero a uno. El segundo control introduce defectos estructurales como '
             'esquinas abruptas y postes faltantes. En una guía de onda ordinaria, los defectos '
             'provocan retrodispersión destructiva y bloquean la señal. En la fase topológica '
-            'protegida, el número entero de Chern garantiza la existencia de un modo quiral en el '
+            'protegida, el número entero de Chern implica la existencia de un modo quiral en el '
             'borde con velocidad de grupo unidireccional: no existen estados hacia atrás a los que '
             'la luz pueda saltar. Hoy en día, los científicos emplean modelos de optimización por '
             'computadora para diseñar microchips ópticos inmunes a errores de fabricación, '

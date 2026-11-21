@@ -146,7 +146,7 @@ FOLIO = {'slug': 'b01',
                 'body': 'While the greedy Mian–Chowla sequence achieves |A(500)| = 20 without '
                         'lookahead, projective-plane Singer constructions over prime powers p² + p '
                         '+ 1 pack up to p + 1 elements near the √N frontier.'},
- 'walkthrough': ['Set Interval Horizon N = 500 and Candidate Cardinality |A| = 20: confirm the '
+ 'walkthrough': ['Set Interval Horizon N = 500 and Candidate Cardinality |A| = 20: check that the '
                  'Mian–Chowla greedy set achieves 210 unique pairwise sums below the Erdős–Turán '
                  'bound of 28.09.',
                  'Drag Candidate Cardinality |A| above 29 at N = 500 (or click [⚡ Counterfactual '
@@ -664,7 +664,7 @@ FOLIO = {'slug': 'b01',
                            'Singer sobre potencias primas p² + p + 1 empacan hasta p + 1 elementos '
                            'cerca de la frontera √N.'},
  'walkthrough_es': ['Configura el Horizonte del Intervalo N = 500 y la Cardinalidad Candidata |A| '
-                    '= 20: confirma que el conjunto voraz de Mian–Chowla logra 210 sumas por pares '
+                    '= 20: verifica que el conjunto voraz de Mian–Chowla logra 210 sumas por pares '
                     'únicas por debajo de la cota de Erdős–Turán de 28.09.',
                     'Arrastra la Cardinalidad Candidata |A| por encima de 29 con N = 500 (o pulsa '
                     '[⚡ Counterfactual Axiom-Knockout]): observa cómo el techo del palomar de '
