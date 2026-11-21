@@ -191,6 +191,14 @@
     "title": "Particle creation by black holes",
     "year": 1975
   },
+  "doi:10.1007/bf02579273": {
+    "fetched": "2026-11-21",
+    "first_author": "Grötschel",
+    "found": true,
+    "journal": "Combinatorica",
+    "title": "The ellipsoid method and its consequences in combinatorial optimization",
+    "year": 1981
+  },
   "doi:10.1007/bfb0013365": {
     "fetched": "2026-11-14",
     "first_author": "Kuramoto",
@@ -222,6 +230,14 @@
     "journal": "Journal of High Energy Physics",
     "title": "The entropy of bulk quantum fields and the entanglement wedge of an evaporating black hole",
     "year": 2019
+  },
+  "doi:10.1007/pl00009824": {
+    "fetched": "2026-11-21",
+    "first_author": "Alon",
+    "found": true,
+    "journal": "Combinatorica",
+    "title": "The Shannon Capacity of a Union",
+    "year": 1998
   },
   "doi:10.1007/s00023-014-0375-8": {
     "fetched": "2026-11-10",
@@ -567,6 +583,14 @@
     "title": "Mechanical performance of wall structures in 3D printing processes: Theory, design tools and experiments",
     "year": 2018
   },
+  "doi:10.1016/j.ipl.2018.11.006": {
+    "fetched": "2026-11-21",
+    "first_author": "Polak",
+    "found": true,
+    "journal": "Information Processing Letters",
+    "title": "New lower bound on the Shannon capacity of C7 from circular graphs",
+    "year": 2019
+  },
   "doi:10.1016/j.jcp.2018.10.045": {
     "fetched": "2026-11-04",
     "first_author": "Raissi",
@@ -638,6 +662,14 @@
     "journal": "Molecular Therapy",
     "title": "Lentiviral-Vector-Based Dendritic Cell Vaccine Synergizes with Checkpoint Blockade to Clear Chronic Viral Infection",
     "year": 2020
+  },
+  "doi:10.1016/s0020-0190(01)00229-0": {
+    "fetched": "2026-11-21",
+    "first_author": "Vesel",
+    "found": true,
+    "journal": "Information Processing Letters",
+    "title": "Improved lower bound on the Shannon capacity of C7",
+    "year": 2002
   },
   "doi:10.1016/s0022-5193(86)80098-4": {
     "fetched": "2026-11-04",
@@ -2166,6 +2198,38 @@
     "journal": "IEEE Transactions on Industrial Electronics",
     "title": "Synchronverters: Inverters That Mimic Synchronous Generators",
     "year": 2011
+  },
+  "doi:10.1109/tit.1956.1056798": {
+    "fetched": "2026-11-21",
+    "first_author": "Shannon",
+    "found": true,
+    "journal": "IEEE Transactions on Information Theory",
+    "title": "The zero error capacity of a noisy channel",
+    "year": 1956
+  },
+  "doi:10.1109/tit.1979.1055985": {
+    "fetched": "2026-11-21",
+    "first_author": "Lovasz",
+    "found": true,
+    "journal": "IEEE Transactions on Information Theory",
+    "title": "On the Shannon capacity of a graph",
+    "year": 1979
+  },
+  "doi:10.1109/tit.1979.1056027": {
+    "fetched": "2026-11-21",
+    "first_author": "Haemers",
+    "found": true,
+    "journal": "IEEE Transactions on Information Theory",
+    "title": "On Some Problems of Lovász Concerning the Shannon Capacity of a Graph",
+    "year": 1979
+  },
+  "doi:10.1109/tit.2002.808128": {
+    "fetched": "2026-11-21",
+    "first_author": "Bohman",
+    "found": true,
+    "journal": "IEEE Transactions on Information Theory",
+    "title": "A nontrivial lower bound on the shannon capacities of the complements of odd cycles",
+    "year": 2003
   },
   "doi:10.1111/j.1531-314x.2006.00032.x": {
     "fetched": "2026-11-20",

@@ -1700,10 +1700,63 @@ export function initPlateSolvers(scope = document) {
         if (barrierOut) barrierOut.textContent = `${total.toFixed(3)} (at σ = ${sigma.toFixed(2)}, ${who})`;
         return;
       }
+
+      if (slug === "m13") {
+        // Folio M.13: Shannon Zero-Error Capacity & Lovasz Theta Sandwich on Odd Cycles C_n.
+        const rawN = Math.round(v0);
+        const n = rawN >= 5 ? (rawN % 2 === 1 ? rawN : rawN + 1) : 5;
+        const k = Math.max(1, Math.min(5, Math.round(v1)));
+        if (pLabel) pLabel.textContent = `n = ${n}`;
+        if (cLabel) cLabel.textContent = `k = ${k}`;
+        if (inlineP) inlineP.textContent = `n = ${n}`;
+        const alpha = Math.floor((n - 1) / 2);
+        const cosPiN = Math.cos(Math.PI / n);
+        const theta = (n * cosPiN) / (1.0 + cosPiN);
+        const alphaStar = n / 2.0;
+        const chiBar = Math.floor((n + 1) / 2);
+        let rate = alpha;
+        if (n === 5) {
+          rate = k === 1 ? 2.0 : Math.pow(Math.pow(5.0, Math.floor(k / 2)) * Math.pow(2.0, k % 2), 1.0 / k);
+        } else if (n === 7) {
+          const c7Rates = { 1: 3.0, 2: Math.sqrt(10.0), 3: Math.pow(33.0, 1.0 / 3.0), 4: Math.pow(108.0, 1.0 / 4.0), 5: Math.pow(367.0, 1.0 / 5.0) };
+          rate = c7Rates[k] || 3.0;
+        } else {
+          const c2Sizes = { 9: 18.0, 11: 26.0, 13: 38.0 };
+          const c2 = c2Sizes[n] || (alpha * alpha);
+          rate = k === 1 ? alpha : Math.pow(Math.pow(c2, Math.floor(k / 2)) * Math.pow(alpha, k % 2), 1.0 / k);
+        }
+        const gap = Math.max(0.0, theta - rate);
+        if (barrierOut) {
+          barrierOut.textContent = n === 5
+            ? `${theta.toFixed(6)} (closed Θ(C_5) = √5)`
+            : `${theta.toFixed(6)} (upper bound ϑ(C_${n}))`;
+        }
+        if (fluxOut) fluxOut.textContent = `${rate.toFixed(6)} at n = ${n}, k = ${k}`;
+        if (ethOut) ethOut.textContent = `${alpha} ≤ ${theta.toFixed(4)} ≤ ${alphaStar.toFixed(3)} ≤ ${chiBar}`;
+        if (qedOut) {
+          if (n === 5) {
+            qedOut.textContent = gap < 1e-6
+              ? `${gap.toFixed(6)} (CLOSED ON C_5)`
+              : k === 1
+                ? `${gap.toFixed(6)} (SINGLE USE k = 1)`
+                : `${gap.toFixed(6)} (ODD BLOCK k = ${k}; EVEN k CLOSES GAP)`;
+          } else {
+            qedOut.textContent = `${gap.toFixed(6)} (OPEN GAP)`;
+          }
+        }
+        const m13Dot = document.getElementById("tp-svg-math-point");
+        if (m13Dot) {
+          const pts = [[62, 152], [136, 126], [210, 98], [284, 72], [344, 50]];
+          const step = Math.min(4, Math.max(0, Math.round((n - 5) / 2)));
+          m13Dot.setAttribute("cx", String(pts[step][0]));
+          m13Dot.setAttribute("cy", String(pts[step][1]));
+        }
+        return;
+      }
     };
     mathPrimeInput.addEventListener("input", updateMath);
     mathClauseInput.addEventListener("input", updateMath);
-    if ((getActiveSlug() || "m01") === "m01") updateMath();
+    if ((getActiveSlug() || "m01") === "m01" || getActiveSlug() === "m13") updateMath();
   }
 
   // 5. Engineering Stokes-Brinkman (E.01), Acoustic Metamaterials (E.03) & Enthalpy Cores (E.04)
