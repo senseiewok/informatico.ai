@@ -4990,7 +4990,7 @@
             "edition": "REV 1.1",
             "date": "2026-11-01",
             "summary": "REV 1.1 (Redated 2026-11-01): Added AlphaEvolve rank-48 4×4 matrix tensor verification alongside FunSearch F_3^8 cap set bounds.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified log_4(48) = 2.79248 < log_2(7) = 2.80735 asymptotic exponent improvement. (REV 1.4: arithmetic confirmed; \"verified\" wording withdrawn.)"
+            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified log_4(48) = 2.79248 < log_2(7) = 2.80735 asymptotic exponent improvement. (REV 1.4: arithmetic rechecked; \"verified\" wording withdrawn.)"
           },
           {
             "edition": "REV 1.0",
@@ -5217,7 +5217,7 @@
           {
             "edition": "REV 1.1",
             "date": "2026-11-02",
-            "summary": "REV 1.1 (Redated 2026-11-02): Certified AlphaGeometry 2 neuro-symbolic DD+AR deductive closure and Cayley-Menger 3D distance geometry with 4-Seat Frontier Council review. (REV 1.2: \"certified\" wording withdrawn.)",
+            "summary": "REV 1.1 (Redated 2026-11-02): AlphaGeometry 2 neuro-symbolic DD+AR deductive closure and Cayley-Menger 3D distance geometry with 4-Seat Frontier Council review. (REV 1.2: \"certified\" wording withdrawn.)",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Cayley-Menger determinant det(B_5) = 0 and auxiliary anchor triangulation to transmembrane helices TM2-TM8-TM11. (REV 1.2: \"verified\" wording withdrawn; the helix claim has no source.)"
           },
           {
@@ -5331,7 +5331,7 @@
           {
             "edition": "REV 1.1",
             "date": "2026-11-02",
-            "summary": "REV 1.1 (Redated 2026-11-02): Certified Williams sub-cubic APSP circuit polynomials and step-level PRM800K process reward supervision with 4-Seat Frontier Council review. (REV 1.2: \"certified\" wording withdrawn.)",
+            "summary": "REV 1.1 (Redated 2026-11-02): Williams sub-cubic APSP circuit polynomials and step-level PRM800K process reward supervision with 4-Seat Frontier Council review. (REV 1.2: \"certified\" wording withdrawn.)",
             "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified exp(c √log n) sub-cubic divisor and step-level survival probability prod_{k=1}^L p_k. (REV 1.2: \"verified\" wording withdrawn; the product formula is a model, and the divisor has no stated constant.)"
           },
           {
@@ -5630,7 +5630,7 @@
         ],
         "steps": [
           "Stage 1 (Monge–Kantorovich Convex Duality): Relaxes Monge's transport map T_# μ_0 = μ_1 into Kantorovich's linear program over couplings π ∈ Π(μ_0, μ_1).",
-          "Stage 2 (Brenier Polar Factorization Theorem): Proves the unique L²-optimal transport map is the gradient of a convex potential T(x) = ∇Φ(x) = x + ∇ψ_0(x).",
+          "Stage 2 (Brenier Polar Factorization Theorem): Gives the unique L²-optimal transport map is the gradient of a convex potential T(x) = ∇Φ(x) = x + ∇ψ_0(x).",
           "Stage 3 (Benamou–Brenier Dynamic Fluid Geodesic, DOI 10.1007/s002110050002): Evolves density ρ_t along constant-velocity geodesics ∂_t ρ + ∇·(ρ∇ψ) = 0 with HJB optimality ∂_t ψ + ½|∇ψ|² = 0.",
           "Stage 4 (Cuturi Sinkhorn Scaling, Continuing M.04/M.07): The entropic penalty ε KL(π || μ_0⊗μ_1) turns the problem into alternating matrix scalings. The 18-step count shown is an illustrative value; the real count depends on ε and the stopping tolerance."
         ],
@@ -5800,7 +5800,7 @@
           {
             "edition": "REV 1.1",
             "date": "2026-11-14",
-            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The Betti numbers and the 38–116 nm bar are now labelled as values from a synthetic teaching model, and the 'certifies 65 nm LNP passage' and 'BOTTLENECK PASS' wording is withdrawn. The invented before-and-after pore radii for CF sputum under therapy (42 nm to 118 nm) are removed; the bridge now describes a proposed analysis with no clinical claim. E.01's 0.5927 is identified as the square-lattice site threshold.",
+            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The Betti numbers and the 38–116 nm bar are now labelled as values from a synthetic teaching model, and the earlier wording about 65 nm LNP passage and the 'BOTTLENECK PASS' wording is withdrawn. The invented before-and-after pore radii for CF sputum under therapy (42 nm to 118 nm) are removed; the bridge now describes a proposed analysis with no clinical claim. E.01's 0.5927 is identified as the square-lattice site threshold.",
             "opus": "Review: all DOIs checked in Crossref and the Scite index on 2026-11-14. Added DOIs for Cohen-Steiner, Edelsbrunner & Harer (10.1007/s00454-006-1276-5), Carlsson (10.1090/S0273-0979-09-01249-X) and Robins et al. (10.1002/2015WR017937)."
           },
           {
@@ -6032,7 +6032,7 @@
           "rules": [
             "Configure Module-LWE over polynomial ring R_q = Z_q[X]/(X^256 + 1) with prime modulus q = 3329 and module rank k in {2, 3, 4} (ML-KEM-512/768/1024).",
             "Take decapsulation failure rates from FIPS 203 Table 1 (2^-138.8, 2^-164.8 and 2^-174.8 for ML-KEM-512/768/1024) and noise widths from Table 2 (eta1 = 3, 2, 2; eta2 = 2) rather than deriving them from a rule of thumb.",
-            "Before citing a Lean file, confirm it exists in the repository, and report its README claims as the repository's statements unless you have built it yourself."
+            "Before citing a Lean file, check that it exists in the repository, and report its README claims as the repository's statements unless you have built it yourself."
           ]
         },
         "revisions": [

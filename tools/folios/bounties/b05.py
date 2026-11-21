@@ -133,7 +133,7 @@ FOLIO = {'slug': 'b05',
            'pruning spurious weights [0.0036, -0.0044, 0.0030, 0.0050] to exact zero while '
            'retaining [-0.9992, 0.0996].',
            'Stage 4: PySR Pareto MDL Selection — Evaluate L_MDL = (N/2) ln(MSE) + 0.45 C_tree '
-           'across complexity levels C_tree ∈ {3, 6, 11}, certifying the knee at C_tree = 6 (L_MDL '
+           'across complexity levels C_tree ∈ {3, 6, 11}, checking the knee at C_tree = 6 (L_MDL '
            '= -1360.8705 nats).'],
  'rules': ['Exact Support Recovery Invariant: STLSQ must recover the exact two-term support '
            "['u*u_x', 'u_xx'] with zero false-positive operators and zero false-negative physical "
@@ -237,7 +237,7 @@ FOLIO = {'slug': 'b05',
                  'threshold is snipped away to absolute zero, leaving only the two thick, '
                  'fruit-bearing branches intact. Finally, the gardener counts the total weight of '
                  'the harvest versus the labor spent trimming (the Minimum Description Length, '
-                 'L_MDL), confirming that this exact two-branch configuration yields the sweetest '
+                 'L_MDL), showing that this exact two-branch configuration yields the sweetest '
                  'fruit with zero wasted effort.',
  'act2_plain_primer': 'In the interactive proof workbench below, you hold direct control over the '
                       'discovery crucible through two responsive sliders. The first slider adjusts '
@@ -331,16 +331,16 @@ FOLIO = {'slug': 'b05',
                    'file enforce a strict, deterministic audit designed to reject ungrounded '
                    'claims with zero external dependencies. The script operates on dual epistemic '
                    'layers. First, it runs the forward discovery benchmark under baseline sensor '
-                   'parameters (σ = 0.02, λ = 0.05), certifying that STLSQ isolates the exact '
-                   'physical support {u·u_x, u_xx} and confirming that PySR’s Minimum Description '
+                   'parameters (σ = 0.02, λ = 0.05), checking that STLSQ isolates the exact '
+                   'physical support {u·u_x, u_xx} and showing that PySR’s Minimum Description '
                    'Length selects C_tree = 6 at L_MDL = -1360.87 nats. Second, and most '
                    'importantly, the harness executes an adversarial planted-defect suite. It '
                    'deliberately introduces counterfactual perturbations—injecting excessive '
                    'sensor noise (σ = 0.22) to verify that spurious cubic operator leakage '
                    'triggers an immediate OVERFIT failure, and raising the sparsity threshold (λ = '
-                   '0.15) to prove that the premature deletion of physical viscosity triggers an '
+                   '0.15) to show that the premature deletion of physical viscosity triggers an '
                    'UNDERFIT failure. By requiring that every failure path triggers an explicit '
-                   'non-zero exit code, our portable skill architecture guarantees that neither a '
+                   'non-zero exit code, our portable skill architecture means that neither a '
                    'hallucinating language model nor an inadvertent code regression can claim '
                    'success on a compromised model. Every assertion is cryptographically '
                    'reproducible, ensuring absolute scientific integrity before publication.',
@@ -369,7 +369,7 @@ FOLIO = {'slug': 'b05',
             'de corte λ = 0.05 se anula numéricamente, aislando el soporte exacto {u·u_x, u_xx}. '
             'La selección final se formaliza a través de la longitud mínima de descripción de '
             'Pareto en PySR (L_MDL = -1360.87 nats), demostrando que cuando el umbral satisface '
-            '0.25σ < λ ≤ 0.10, el sistema garantiza convergencia sin subajuste ni sobreajuste.',
+            '0.25σ < λ ≤ 0.10, el sistema asegura convergencia sin subajuste ni sobreajuste.',
  'easy_history_title_en': "How Human Pioneers Reached This Frontier: From Kepler's Mars Tables to "
                           'SINDy & PySR Symbolic Discovery',
  'easy_history_title_es': 'Cómo los Pioneros Humanos Llegaron a Esta Frontera: De las Tablas de '
@@ -486,14 +486,14 @@ FOLIO = {'slug': 'b05',
                          'title_en': 'Minimum Description Length (L_MDL = −1360.87 nats)',
                          'title_es': 'Longitud Mínima de Descripción (L_MDL = −1360.87 nats)',
                          'summary_en': 'Scores symbolic trees via L_MDL = (N/2) ln(MSE) + λ_MDL '
-                                       'C_tree, certifying u_t = −u·u_x + 0.10 u_xx at the C_tree '
+                                       'C_tree, checking u_t = −u·u_x + 0.10 u_xx at the C_tree '
                                        '= 6 cliff.',
                          'summary_es': 'Evalúa árboles mediante L_MDL = (N/2) ln(MSE) + λ_MDL '
-                                       'C_tree, certificando u_t = −u·u_x + 0.10 u_xx en el '
+                                       'C_tree, comprobando u_t = −u·u_x + 0.10 u_xx en el '
                                        'escalón C_tree = 6.',
-                         'roadblock_en': 'Extending guaranteed recovery to 3D turbulent closures '
+                         'roadblock_en': 'Extending reliable recovery to 3D turbulent closures '
                                          'with formal symmetry verification in Lean 4.',
-                         'roadblock_es': 'Extender la recuperación garantizada a cierres '
+                         'roadblock_es': 'Extender la recuperación fiable a cierres '
                                          'turbulentos 3D con verificación formal de simetrías en '
                                          'Lean 4.'}],
  'toy_model_title_en': 'Try It in Your Head in 20 Seconds: Snipping 4 Fake Noise Terms to Reveal a '
@@ -600,7 +600,7 @@ FOLIO = {'slug': 'b05',
                       'exactamente, los cuatro términos parásitos desaparecen y el soporte se '
                       'contrae a {u·u_x, u_xx}. A continuación, PySR evalúa el funcional de '
                       'Longitud Mínima de Descripción L_MDL = (N/2) ln(MSE) + λ_MDL C_tree con '
-                      'λ_MDL = 0.45 sobre complejidades C_tree ∈ {3, 6, 11}, certificando la '
+                      'λ_MDL = 0.45 sobre complejidades C_tree ∈ {3, 6, 11}, comprobando la '
                       'rodilla de Pareto en C_tree = 6 con L_MDL = -1360.87 nats.',
  'act4_human_ai_es': 'Resolver retos abiertos de descubrimiento físico requiere una simbiosis '
                      'auténtica entre la intuición humana y el cálculo simbólico de alto '
@@ -615,11 +615,11 @@ FOLIO = {'slug': 'b05',
                       'pruebas adversarias oculta errores algorítmicos. El arnés autónomo en '
                       'Python bounties/bounty_p2_pysr_pysindy_pde_discovery.py y su guía SKILL.md '
                       'ejecutan una auditoría determinista en dos capas con cero dependencias '
-                      'externas: primero certifican que en σ = 0.02 y λ = 0.05 STLSQ aísla el '
+                      'externas: primero comprueban que en σ = 0.02 y λ = 0.05 STLSQ aísla el '
                       'soporte exacto {u·u_x, u_xx} y PySR selecciona C_tree = 6 con L_MDL = '
                       '-1360.87 nats; segundo, inyectan defectos sembrados contrafactuales (ruido '
                       'excesivo σ = 0.22 para provocar SOBREAJUSTE y umbral excesivo λ = 0.15 para '
-                      'provocar SUBAJUSTE), garantizando que cualquier desviación física falle de '
+                      'provocar SUBAJUSTE), asegurando que cualquier desviación física falle de '
                       'forma explícita y reproducible.',
  'sidenote_1_es': {'kicker': 'NOTA AL MARGEN B.05-A · DIAGRAMA DE FASE SOBREAJUSTE VS. SUBAJUSTE',
                    'body': 'Deslizar λ por encima de 0.10 en el banco de pruebas borra el término '
@@ -646,7 +646,7 @@ FOLIO = {'slug': 'b05',
               '= 0.05, podando los pesos espurios [0.0036, -0.0044, 0.0030, 0.0050] a cero exacto '
               'mientras conserva [-0.9992, 0.0996].',
               'Etapa 4: Selección de Pareto MDL en PySR — Evalúa L_MDL = (N/2) ln(MSE) + 0.45 '
-              'C_tree sobre los niveles de complejidad C_tree ∈ {3, 6, 11}, certificando la '
+              'C_tree sobre los niveles de complejidad C_tree ∈ {3, 6, 11}, comprobando la '
               'rodilla en C_tree = 6 (L_MDL = -1360.8705 nats).'],
  'rules_es': ['Invariante de Recuperación de Soporte Exacto: STLSQ debe recuperar el soporte '
               "exacto de dos términos ['u*u_x', 'u_xx'] con cero operadores falsos positivos y "

@@ -103,7 +103,7 @@ FOLIO = {'folio_id': 'M.06',
                         'added to the source list.'},
                {'edition': 'REV 1.1',
                 'date': '2026-11-02',
-                'summary': 'REV 1.1 (Redated 2026-11-02): Certified Williams sub-cubic APSP '
+                'summary': 'REV 1.1 (Redated 2026-11-02): Williams sub-cubic APSP '
                            'circuit polynomials and step-level PRM800K process reward supervision '
                            'with 4-Seat Frontier Council review. (REV 1.2: "certified" wording '
                            'withdrawn.)',
@@ -162,7 +162,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Gajentaan & Overmars introduce 3SUM-hardness in computational geometry '
                  '(DOI 10.1016/0925-7721(95)00022-2).'),
                 ('2010',
-                 'Virginia Vassilevska Williams & Ryan Williams prove sub-cubic equivalences '
+                 'Virginia Vassilevska Williams & Ryan Williams establish sub-cubic equivalences '
                  'around APSP and triangle detection (journal version DOI 10.1145/3186893).'),
                 ('2018',
                  'Ryan Williams gives a randomized O(n^3 / 2^{Omega(sqrt(log n))}) algorithm for '
@@ -191,7 +191,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'act4_title': 'Act IV — Human + AI Co-Design & the Structural & Civil Engineering Specification '
                'Bridge',
  'act4_human_ai': 'Models that propose proof steps can be scored step by step, and a proof assistant such as Lean 4 checks the steps it is given. The folio did not run either, and it does not claim that step-level scoring prevents errors in practice; Lightman et al. report an improvement on a math benchmark, nothing more. Mathlib (DOI 10.1145/3372885.3373824) is the community library Lean projects build on, and the anthropics/formal-math README lists a 3sum-apsp project whose statement this site has not checked.',
- 'act4_deepening': 'In systems that combine a language model with a proof assistant, one could score the model\'s intermediate deductions before expanding the search. That is a possibility, not a description of a system the folio has tested. If the README statement of a polynomial saving for APSP were confirmed by experts, it would be a major result; that is not something this site can assess.',
+ 'act4_deepening': 'In systems that combine a language model with a proof assistant, one could score the model\'s intermediate deductions before expanding the search. That is a possibility, not a description of a system the folio has tested. If the README statement of a polynomial saving for APSP were checked by experts, it would be a major result; that is not something this site can assess.',
  'cf_bridge': 'This bridge is an analogy the folio draws and nothing more. A study of prime '
               'editing for CF-causing CFTR variants in human organoids and airway cells exists '
               '(Cell Reports Medicine, DOI 10.1016/j.xcrm.2024.101544). The folio only borrows '
@@ -213,7 +213,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'checked by this site. Referred to by Chan et al., arXiv:2610.42012.',
              "Lightman, H., et al. (2023). Let's verify step by step (PRM800K). arXiv:2305.20050.",
              'The mathlib Community (2020). The Lean mathematical library. Proceedings of the '
-             '9th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP '
+             '9th ACM SIGPLAN CPP conference (CPP '
              '2020), 367–381. DOI: 10.1145/3372885.3373824.',
              'Bulcaen, M., et al. (2024). Prime editing functionally corrects cystic '
              'fibrosis-causing CFTR mutations in human organoids and airway epithelial cells. '
