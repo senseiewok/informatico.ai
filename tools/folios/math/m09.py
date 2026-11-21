@@ -47,7 +47,7 @@ FOLIO = {'folio_id': 'M.09',
               'unit': 'ε = '}],
  'steps': ["Stage 1 (Monge–Kantorovich Convex Duality): Relaxes Monge's transport map T_# μ_0 = "
            "μ_1 into Kantorovich's linear program over couplings π ∈ Π(μ_0, μ_1).",
-           'Stage 2 (Brenier Polar Factorization Theorem): Gives the unique L²-optimal transport '
+           'Stage 2 (Brenier Polar Factorization Theorem): Shows the unique L²-optimal transport '
            'map is the gradient of a convex potential T(x) = ∇Φ(x) = x + ∇ψ_0(x).',
            'Stage 3 (Benamou–Brenier Dynamic Fluid Geodesic, DOI 10.1007/s002110050002): Evolves '
            'density ρ_t along constant-velocity geodesics ∂_t ρ + ∇·(ρ∇ψ) = 0 with HJB optimality '
@@ -104,7 +104,7 @@ FOLIO = {'folio_id': 'M.09',
  'revisions': [{'edition': 'REV 1.1',
                 'date': '2026-11-14',
                 'summary': 'REV 1.1 (Redated 2026-11-14): Grounding revision. W_2² = 4.82, σ_t = '
-                           '1.15 and the 18 Sinkhorn steps are now labelled as illustrative '
+                           '1.15 and the 18 Sinkhorn steps are now labeled as illustrative '
                            "values (the Gaussian parameters behind them are not stated), and the "
                            "'QED PASS' verdict is withdrawn. The claims that optimal transport "
                            'has reconstructed basal-to-ionocyte trajectories and that flow '
@@ -200,7 +200,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'introduced Sinkhorn entropic regularization, the intractable optimal transport '
               'bottleneck transformed into rapid matrix-vector scalings perfectly suited for '
               'parallel graphics processing hardware. Optimal transport ideas now appear in '
-              'generative modelling, and Schiebinger et al. (2019, Cell, DOI '
+              'generative modeling, and Schiebinger et al. (2019, Cell, DOI '
               '10.1016/j.cell.2019.01.006) used optimal transport to infer developmental '
               'trajectories from single-cell snapshots of cellular reprogramming.',
  'act1_stakes': "The journey from Monge's military trenches to modern generative artificial "
@@ -215,7 +215,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                 'entropy-regularized convex optimization, researchers converted a fragile '
                 'combinatorial puzzle into a smooth, differentiable geometry known as the '
                 'Otto–Wasserstein manifold. This geometry is now studied in generative '
-                'modelling, image registration and logistics; how far it helps in each '
+                'modeling, image registration and logistics; how far it helps in each '
                 'application is a question for the specialist literature, not something this '
                 'folio measures.',
  'pullquote': '"Benamou and Brenier showed that morphing one probability distribution into '
@@ -321,7 +321,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                   'could be applied to mass-haul balancing, and machine-learning researchers '
                   'train continuous normalizing flows toward straight transport-like velocity '
                   'fields. These are directions the folio describes, not projects it ran.',
- 'act4_deepening': 'Optimal transport links generative modelling with experimental biology and '
+ 'act4_deepening': 'Optimal transport links generative modeling with experimental biology and '
                    'engineering. When biologists analyze single-cell RNA sequencing data, the '
                    'measurement destroys the cells at each timestamp, leaving only disconnected '
                    'snapshots of cellular populations. Schiebinger et al. (2019) used optimal '
@@ -332,7 +332,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'mathematical frontiers beckon: how do we scale dynamic optimal transport to '
                    'high-dimensional non-Euclidean manifolds like SE(3) for protein docking '
                    'without incurring the curse of dimensionality? Stable entropy-regularized '
-                   'estimators on curved spaces would be useful for molecular modelling and '
+                   'estimators on curved spaces would be useful for molecular modeling and '
                    'logistics, if they can be built.',
  'cf_bridge': 'Standalone Mathematical Flagship & Triad Synthesis (M.04 + M.07 + M.08 -> M.09): '
               'Written for applied mathematicians, optimal-control theorists, and AI researchers. '

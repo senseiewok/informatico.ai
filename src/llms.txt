@@ -39,7 +39,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 ## Architecture
 
 - [Architecture](https://informatico.ai/architecture/): Twelve interactive essays on architecture: stone vaults, timber gridshells, Barragán's color, sky-cooling roofs and facades that move with humidity and sun.
-- [A.01 Funicular Thrust Surfaces in Stone and Timber Shells](https://informatico.ai/architecture/a01/): How a compression-only stone vault stands when its thrust line stays inside the masonry, with a middle-third check and a modelled springer node.
+- [A.01 Funicular Thrust Surfaces in Stone and Timber Shells](https://informatico.ai/architecture/a01/): How a compression-only stone vault stands when its thrust line stays inside the masonry, with a middle-third check and a modeled springer node.
 - [A.02 Reciprocal Timber Gridshells (Nexorades)](https://informatico.ai/architecture/a02/): How bolt-free reciprocal timber frames, where each beam rests on its neighbor, turn shell thrust into local bending and span large roofs with short pieces.
 - [A.03 Double-Skin Facades and Buoyancy Stack Ventilation](https://informatico.ai/architecture/a03/): How the thermosiphon stack effect and solar shading inside multi-story ventilated glass cavities could reduce cooling loads, in a stack-draft model.
 - [A.04 From Archigram to British High-Tech Architecture](https://informatico.ai/architecture/a04/): How Archigram's 1960s plug-in drawings are widely seen as an influence on Rogers, Piano, Rice and Foster, with a lever model of the cast-steel gerberette.

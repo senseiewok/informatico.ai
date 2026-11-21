@@ -85,7 +85,7 @@ FOLIO = {'folio_id': 'M.05',
                            'robotic surgery and self-driving cars, and the "QED verified" labels '
                            'are removed. The numbers 14 and 47 are marked as fixed illustrative '
                            'values, the 0.42 Å figure is withdrawn, and the Cystic Fibrosis '
-                           'section is shortened to a labelled analogy.',
+                           'section is shortened to a labeled analogy.',
                 'opus': 'Review: DOIs checked in Crossref and the Scite index on 2026-11-14; the '
                         '25 of 30 result, the 100 million synthetic theorems and the 84% versus '
                         '54% figures were read in the Nature abstract and the arXiv abstract. '
@@ -154,9 +154,9 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  "47 ('Bride's Chair')."),
                 ('1841 and 1928',
                  'Arthur Cayley (1841) and Karl Menger (1928) give determinant criteria for when '
-                 'a set of distances can be realised by points in Euclidean space.'),
+                 'a set of distances can be realized by points in Euclidean space.'),
                 ('Late 1970s',
-                 'Wu Wen-Tsun develops algebraic mechanization of geometry proof search via '
+                 'Wu Wen-Tsun develops algebraic methods for automated geometry deductions via '
                  'characteristic sets.'),
                 ('2024',
                  'Trinh et al. publish AlphaGeometry in Nature (DOI 10.1038/s41586-023-06747-5), '
@@ -199,9 +199,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              'Tooby-Smith, J. (2025). HepLean: Digitalising high energy physics. Computer Physics '
              'Communications, 308, 109457. DOI: 10.1016/j.cpc.2024.109457 (repository now '
              'leanprover-community/physlib, formerly HEPLean/PhysLean).',
-             'The mathlib Community (2020). The Lean mathematical library. Proceedings of the '
-             '9th ACM SIGPLAN CPP conference (CPP '
-             '2020), 367–381. DOI: 10.1145/3372885.3373824.',
+             'The mathlib Community (2020). The Lean mathematical library (CPP 2020), '
+             '367–381. DOI: 10.1145/3372885.3373824.',
              'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
              'context of citations and classifies their intent using deep learning '
              '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '

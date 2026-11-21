@@ -103,7 +103,7 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
     # ---- Pillar II: Architecture
     "a01": (
         "Funicular Thrust Surfaces in Stone and Timber Shells",
-        "How a compression-only stone vault stands when its thrust line stays inside the masonry, with a middle-third check and a modelled springer node.",
+        "How a compression-only stone vault stands when its thrust line stays inside the masonry, with a middle-third check and a modeled springer node.",
         "Superficies Funiculares de Empuje en Bóvedas",
         "Cómo se sostiene una bóveda de piedra a compresión pura cuando su línea de empuje queda dentro de la mampostería, con revisión del tercio medio.",
     ),

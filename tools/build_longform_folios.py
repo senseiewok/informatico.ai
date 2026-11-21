@@ -3471,7 +3471,7 @@ def render_bounty_crucible_svg(bounty: dict) -> str:
       <text x="170" y="252" text-anchor="middle" font-size="7.5" font-weight="700" fill="var(--tp-verdigris)">uu_x</text>
       <text x="210" y="252" text-anchor="middle" font-size="7.5" font-weight="700" fill="var(--tp-verdigris)">u_xx</text>
       <text x="250" y="252" text-anchor="middle" font-size="7.5" fill="var(--tp-graphite)">u³</text>
-      <text data-bw-b05-badge x="157" y="278" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--tp-verdigris)">STLSQ EXACT · {u·u_x, u_xx} · MDL = -1360.9</text>"""
+      <text data-bw-b05-badge x="157" y="278" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--tp-verdigris)">STLSQ TARGET · {u·u_x, u_xx} · MDL = -1073.5</text>"""
 
     else:
         # b06

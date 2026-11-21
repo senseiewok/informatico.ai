@@ -82,7 +82,7 @@ FOLIO = {'folio_id': 'M.06',
                 'summary': 'REV 1.2 (Redated 2026-11-14): Grounding revision. The speedup of '
                            '14.8x at n = 4,096, the validity figures 41.2% and 94.6%, and the '
                            'bound 2^(0.385 n) were presented as results; none follows from the '
-                           'cited papers. The first two are now labelled as illustrative, with the '
+                           'cited papers. The first two are now labeled as illustrative, with the '
                            'per-step probabilities that produce the validity figures stated, and '
                            'the third is removed. Williams (2018) is described as its abstract '
                            'does, as a randomized algorithm that uses rectangular matrix products '
@@ -91,7 +91,7 @@ FOLIO = {'folio_id': 'M.06',
                            "'QED verified' labels, the wrong DOI attached to an antisense "
                            'oligonucleotide, and the claim that the method prunes genome-wide '
                            'off-target edits in seconds are removed; the Cystic Fibrosis section '
-                           'is shortened to a labelled analogy. The Alman and Vassilevska Williams '
+                           'is shortened to a labeled analogy. The Alman and Vassilevska Williams '
                            'result is reported as a statement of the repository README and of '
                            'the preprint, which this site has not checked.',
                 'opus': 'Review: DOIs checked in Crossref and the Scite index on 2026-11-14; the '
@@ -162,7 +162,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Gajentaan & Overmars introduce 3SUM-hardness in computational geometry '
                  '(DOI 10.1016/0925-7721(95)00022-2).'),
                 ('2010',
-                 'Virginia Vassilevska Williams & Ryan Williams establish sub-cubic equivalences '
+                 'Virginia Vassilevska Williams & Ryan Williams show sub-cubic equivalences '
                  'around APSP and triangle detection (journal version DOI 10.1145/3186893).'),
                 ('2018',
                  'Ryan Williams gives a randomized O(n^3 / 2^{Omega(sqrt(log n))}) algorithm for '
@@ -177,7 +177,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'act2_title': 'Act II — How It Actually Works: Razborov–Smolensky Polynomials + Step-Level PRM',
  'act2_analogy': 'Everyday analogy: Imagine planning connecting flights across four thousand regional airports during a holiday storm. If you inspect every single layover combination one by one, you must evaluate billions of possibilities, and your computer freezes. Instead, an experienced travel coordinator groups neighboring airports into regional hubs. By checking weather patterns across whole regional corridors at once, you rule out thousands of delayed connecting routes in a single pass, finding the fastest itinerary without getting overwhelmed.',
  'act2_plain_primer': 'To see how this batching shortcut works in practice, you can explore two intuitive control knobs. The first knob controls the grouping size, deciding how many regional cities or logical steps are bundled into each algebraic package. If you keep the grouping parameter at zero, the computer checks each connection individually, forcing the calculation into a slow, grinding crawl. But as you dial the grouping knob higher, the computer translates multiple comparisons into algebraic polynomials, evaluating hundreds of routes in parallel. The second knob measures constraint density, tracking how many overlapping rules or scheduling limits crowd into the network. When constraints are sparse, paths remain open and flexible. However, as constraint crowding approaches the critical boundary, conflict points multiply rapidly. The two knobs drive an illustration with assumed numbers; they are not measurements of any algorithm.',
- 'distill_diagram': {'analogy_title': 'Regional Airport Hub Routing', 'analogy_sub': 'Batching regional hubs eliminates dominated layovers in one pass', 'force_a_title': 'Polynomial Block Degree (d_poly)', 'force_a_sub': 'Compresses comparison blocks into low-degree polynomial systems', 'force_b_title': 'Constraint Clause Density (alpha)', 'force_b_sub': 'Clause crowding ratio driving fine-grained hardness transitions', 'threshold_title': 'Sub-Cubic Circuit Complexity Barrier', 'threshold_pass': 'Illustrative: an assumed 14.8x divisor at n = 4,096; modelled 20-step validity 94.6%', 'threshold_fail': 'Naive cubic search needs 4,096^3 = 6.87e10 operations'},
+ 'distill_diagram': {'analogy_title': 'Regional Airport Hub Routing', 'analogy_sub': 'Batching regional hubs eliminates dominated layovers in one pass', 'force_a_title': 'Polynomial Block Degree (d_poly)', 'force_a_sub': 'Compresses comparison blocks into low-degree polynomial systems', 'force_b_title': 'Constraint Clause Density (alpha)', 'force_b_sub': 'Clause crowding ratio driving fine-grained hardness transitions', 'threshold_title': 'Sub-Cubic Circuit Complexity Barrier', 'threshold_pass': 'Illustrative: an assumed 14.8x divisor at n = 4,096; modeled 20-step validity 94.6%', 'threshold_fail': 'Naive cubic search needs 4,096^3 = 6.87e10 operations'},
  'act2_intuition': 'The classical Floyd–Warshall algorithm evaluates the min-plus distance product (A * B)_{ij} = min_k (A_{ik} + B_{kj}) across n vertices, using about n^3 comparisons. Ryan Williams applied Razborov–Smolensky polynomials to reduce the min-plus product to a relatively small number of rectangular matrix products over F_2 (SIAM Journal on Computing, DOI 10.1137/15M1024524), which gives a running time of n^3/2^(Ω(√log n)). That is an asymptotic statement with an unspecified constant, so it does not say what the speedup is at n = 4,096; the divisor 14.8 on this page is an assumed illustrative value. Separately, multi-step reasoning has an analogous issue: if each of 20 steps is valid independently with probability p, the whole chain is valid with probability p^20. With p = 0.9566 that is about 41.2%, and with p = 0.99723 about 94.6%. These are the two numbers the page shows; they come from the assumed per-step probabilities and are not measurements of any outcome-supervised or process-supervised model.',
  'act2_deepening': 'Fine-grained reductions tie together three conjectures: the 3SUM hypothesis, the All-Pairs Shortest Paths conjecture and the Strong Exponential Time Hypothesis. Under those conjectures, computing the min-plus matrix product was believed to need about n^3 operations up to sub-polynomial factors. Williams does not contradict that belief, since his saving is a factor of 2^(Ω(√log n)), which is smaller than any polynomial in n. The README of the 3sum-apsp project states a polynomial saving for APSP, which would contradict the APSP conjecture; this site has not checked that claim. The page\'s sliders are illustrative controls: they are not parameters of Williams\'s algorithm and they do not model the satisfiability threshold.',
  'walkthrough': ["Experiment 1 (Illustrative Divisor): With the assumed divisor 14.8, 6.87 × 10^10 "
@@ -191,7 +191,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'act4_title': 'Act IV — Human + AI Co-Design & the Structural & Civil Engineering Specification '
                'Bridge',
  'act4_human_ai': 'Models that propose proof steps can be scored step by step, and a proof assistant such as Lean 4 checks the steps it is given. The folio did not run either, and it does not claim that step-level scoring prevents errors in practice; Lightman et al. report an improvement on a math benchmark, nothing more. Mathlib (DOI 10.1145/3372885.3373824) is the community library Lean projects build on, and the anthropics/formal-math README lists a 3sum-apsp project whose statement this site has not checked.',
- 'act4_deepening': 'In systems that combine a language model with a proof assistant, one could score the model\'s intermediate deductions before expanding the search. That is a possibility, not a description of a system the folio has tested. If the README statement of a polynomial saving for APSP were checked by experts, it would be a major result; that is not something this site can assess.',
+ 'act4_deepening': 'In systems that combine a language model with a proof assistant, one could score the model\'s intermediate deductions before expanding the search. That is a possibility, not a description of a system the folio has tested. If experts verified the README statement of a polynomial saving for APSP, it would be a major result; that is not something this site can assess.',
  'cf_bridge': 'This bridge is an analogy the folio draws and nothing more. A study of prime '
               'editing for CF-causing CFTR variants in human organoids and airway cells exists '
               '(Cell Reports Medicine, DOI 10.1016/j.xcrm.2024.101544). The folio only borrows '
@@ -212,9 +212,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              '(https://github.com/anthropics/formal-math); README read 2026-11-14. Not built or '
              'checked by this site. Referred to by Chan et al., arXiv:2610.42012.',
              "Lightman, H., et al. (2023). Let's verify step by step (PRM800K). arXiv:2305.20050.",
-             'The mathlib Community (2020). The Lean mathematical library. Proceedings of the '
-             '9th ACM SIGPLAN CPP conference (CPP '
-             '2020), 367–381. DOI: 10.1145/3372885.3373824.',
+             'The mathlib Community (2020). The Lean mathematical library (CPP 2020), '
+             '367–381. DOI: 10.1145/3372885.3373824.',
              'Bulcaen, M., et al. (2024). Prime editing functionally corrects cystic '
              'fibrosis-causing CFTR mutations in human organoids and airway epithelial cells. '
              'Cell Reports Medicine, 5(5), 101544. DOI: 10.1016/j.xcrm.2024.101544.',
@@ -238,7 +237,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         '            <text x="315" y="84" font-size="11" fill="var(--tp-verdigris)">Williams '
         'Sub-Cubic APSP + Step-Level PRM (assumed 14.8x, illustrative)</text>\n'
         '            <text x="210" y="204" font-size="11" fill="currentColor">Graph / Proof '
-        'Horizon n (up to 4,096 Nodes · 94.6% modelled)</text>\n'
+        'Horizon n (up to 4,096 Nodes · 94.6% modeled)</text>\n'
         '          </svg>'}
 
 PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a pruned polynomial circuit tree revealing an '
