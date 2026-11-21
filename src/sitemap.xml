@@ -138,7 +138,7 @@
   </url>
   <url>
     <loc>https://informatico.ai/architecture/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/architecture/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/architecture/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/architecture/"/>
@@ -247,6 +247,14 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/architecture/a13/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/architecture/a13/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/architecture/a13/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/architecture/a14/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/architecture/a14/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/architecture/a14/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/architecture/a14/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/architecture/a14/"/>
   </url>
   <url>
     <loc>https://informatico.ai/physics/</loc>
@@ -962,7 +970,7 @@
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/architecture/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/architecture/"/>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/architecture/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/architecture/"/>
@@ -1071,6 +1079,14 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/architecture/a13/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/architecture/a13/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/architecture/a13/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/architecture/a14/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/architecture/a14/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/architecture/a14/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/architecture/a14/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/architecture/a14/"/>
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/physics/</loc>

@@ -3337,6 +3337,120 @@
           "retracted": false,
           "summary": "Scite Smart Citation index entry for Ramm & Mehlhorn, On shape finding methods and ultimate load analyses of reinforced concrete shells (Engineering Structures, 1991, DOI 10.1016/0141-0296(91)90050-M), checked 2026-11-20: 51 citing publications (0 supporting, 12 mentioning, 0 contrasting) and no retraction notice. The counts describe that paper, not this folio's idealized spherical-cap model."
         }
+      },
+      {
+        "folio_id": "A.14",
+        "slug": "a14",
+        "pillar": "architecture",
+        "category_code": "A",
+        "parent_folios": [
+          "A.01",
+          "A.13"
+        ],
+        "lineage_mode": "CONTINUATION · Continues A.01 Funicular Thrust Surfaces & A.13 Heinz Isler Thin Shells",
+        "title": "Félix Candela's Hypar Ruled Shells: Hyperbolic Paraboloid Membrane Shear & Straight-Line Formwork",
+        "subtitle": "Continuing Folio A.01's funicular thrust surfaces and A.13's inverted-hanging concrete shells: a structural design study of how hyperbolic paraboloid (hypar) geometry uses straight timber plank rulings to form doubly curved 40 mm concrete umbrellas (12.0 m quadrant semi-span, 4.0 m rise), mapping Pucher's flat-projection membrane shear model (N_xy = 31.35 kN/m, σ_2 = -0.784 MPa) alongside cantilevered free-edge, valley-rib, and thin-shell buckling boundaries.",
+        "date_published": "2026-11-21",
+        "date_redated": "2026-11-21",
+        "current_edition": "REV 1.0",
+        "status_badge": "CANDELA HYPAR SHELL · REV 1.0",
+        "primary_kernel": "skills/architecture/a14/verify_a14_candela_hypar.py",
+        "governing_law": "z = (h / (a b)) x y · N_xy = (q_0 a b) / (2 h) · σ_1 = +N_xy / t · σ_2 = -N_xy / t · M_x = M_y = 0",
+        "colophon": {
+          "identifier": "A.14 · Félix Candela Hypar Ruled Shells & Pucher Membrane Shear · REV 1.0",
+          "kernels": "Doubly-Ruled Hypar Saddle · Pucher Flat-Projection Shear · 45-Degree Principal Arch-Tie Field",
+          "benchmarks": "Model values (not measurements): a = b = 12.0 m · h = 4.0 m · t = 40.0 mm · q_0 = 1.741 kN/m² · N_xy = 31.35 kN/m · σ_2 = -0.784 MPa · λ_comp = 20.1 · 80.0% shell-field thickness saving vs 200 mm slab · Q_storm = 8.0 L/s (576 m²)",
+          "bridge": "Continues A.01/A.13 · Idealized Pucher membrane shear vs. cantilevered free-edge & rib behavior"
+        },
+        "sliders": [
+          {
+            "label": "Hypar Quadrant Semi-Span (a = b)",
+            "min": 6.0,
+            "max": 18.0,
+            "step": 1.0,
+            "value": 12.0,
+            "unit": " m"
+          },
+          {
+            "label": "Hypar Corner Rise (h)",
+            "min": 1.0,
+            "max": 6.0,
+            "step": 0.5,
+            "value": 4.0,
+            "unit": " m"
+          }
+        ],
+        "steps": [
+          "Stage 1 (Doubly-Ruled Hypar Geometry & Unbent Timber Formwork): A hyperbolic paraboloid quadrant z(x, y) = (h / (a b)) x y has negative Gaussian curvature everywhere (an anticlastic saddle) yet contains two families of straight generating lines along constant x and constant y. Because every section parallel to the axes is a straight line, builders could assemble formwork from unbent straight timber planks without curved falsework (Cassinello et al. 2010, DOI 10.3989/ic.10.040; Garlock & Billington 2011, DOI 10.2749/101686611x13049248220564).",
+          "Stage 2 (Pucher Projected Membrane Equilibrium): Under uniform plan-projected gravity load q_0 = 1.741 kN/m² (40.0 mm concrete at ρ = 2,400 kg/m³ giving 0.941 kN/m² plus 0.80 kN/m² superimposed load), Pucher's 1934 projected equilibrium equation cancels normal membrane terms because ∂²z/∂x² = 0 and ∂²z/∂y² = 0 identically. In this idealized interior membrane model with supported edges, N_x = N_y = M_x = M_y = 0 and uniform shear becomes N_xy = (q_0 a b) / (2 h) = 31.35 kN/m.",
+          "Stage 3 (Diagonal Principal Arch-Tie Field & Thickness Ratio): Rotating 45 degrees onto the bisecting diagonals resolves pure shear into equal principal tension σ_1 = +N_xy / t = +0.784 MPa and principal compression σ_2 = -N_xy / t = -0.784 MPa. Against an allowable compressive threshold of 0.45 f_ck = 15.75 MPa (f_ck = 35 MPa), the model compressive ratio is λ_comp = 20.1, while the 40 mm shell field uses 80.0% less concrete volume than a 200 mm solid flat slab (excluding stem and ribs).",
+          "Stage 4 (Central Stormwater Funnel & Tier T2 Model Boundary): Grouping four quadrants into a 24.0 m by 24.0 m (576 m²) umbrella slopes rainwater inward toward a central hollow stem, collecting 8.0 L/s (28.8 m³/h) under 50 mm/h design rain. Hypothesis (Tier T2 analytical model): straight-ruled anticlastic curvature carries symmetric gravity load primarily in in-plane shear rather than bending. This flat-projection model is falsified for physical cantilevered umbrellas where slope-angle self-weight growth, free-edge boundary bending, valley-rib concentration, concrete creep, or thin-shell buckling (Ramm & Mehlhorn 1991, DOI 10.1016/0141-0296(91)90050-M; Wang et al. 2020, DOI 10.1016/j.engstruct.2020.111156) govern failure."
+        ],
+        "readouts": [
+          {
+            "label": "Membrane Shear Force (N_xy)",
+            "value": "31.35 kN/m (Uniform in Model Quadrant)"
+          },
+          {
+            "label": "Principal Compressive Stress (σ_2)",
+            "value": "-0.784 MPa (Quadrant Field, Model Service Load)"
+          },
+          {
+            "label": "Model Compressive Margin (λ_comp)",
+            "value": "λ_comp = 20.1 (80.0% Savings vs 200 mm)"
+          },
+          {
+            "label": "Stormwater Harvest Rate (50 mm/h)",
+            "value": "8.0 L/s (28.8 m³/h, 576 m² Model Roof)"
+          }
+        ],
+        "spec_plate": {
+          "division": "CSI MASTERFORMAT 03 31 00 / 03 38 00 · CONCRETE HYPAR DESIGN STUDY",
+          "title": "Doubly-Ruled Hyperbolic Paraboloid Umbrella Shell (40 mm Field Model)",
+          "body": "Analytical design study of an idealized 4-quadrant hyperbolic paraboloid umbrella (24.0 m by 24.0 m overall plan, a = b = 12.0 m quadrant semi-span, h = 4.0 m rise, 40.0 mm shell field thickness) using Pucher flat-projection membrane equilibrium. Model values only; omits slope-angle dead-weight amplification, cantilevered free-edge bending, valley ribs, reinforcement detailing, and creep buckling. Not an engineered structural drawing or construction plan.",
+          "meta": "References: Candela 1960 (DOI 10.14359/8024, 10.14359/8026) · Billington & Garlock 2010 (DOI 10.1061/(asce)st.1943-541x.0000144) · Wang et al. 2020 (DOI 10.1016/j.engstruct.2020.111156) · Model values, not measurements"
+        },
+        "sidenote_1": {
+          "kicker": "SIDENOTE A.14-A · OVER 800 THIN SHELLS IN MEXICO CITY & BEYOND",
+          "body": "Cassinello, Schlaich, and Torroja (2010, DOI 10.3989/ic.10.040) document how Spanish-born architect-engineer Félix Candela built more than 800 reinforced-concrete thin shells—chiefly in Mexico—pairing doubly curved strength with low-cost carpentry. Billington and Garlock (2010, DOI 10.1061/(asce)st.1943-541x.0000144) and Garlock and Billington (2011, DOI 10.2749/101686611x13049248220564) examine how Candela united economy, efficiency, and sculptural form."
+        },
+        "sidenote_2": {
+          "kicker": "SIDENOTE A.14-B · STRAIGHT RULINGS VS. CANTILEVER EDGE BENDING",
+          "body": "Because z = (h / (a b)) x y has zero second partial derivatives along the x and y axes, Pucher's 1934 projected membrane equation yields constant shear N_xy = q_0 a b / (2 h) when edges carry tangential shear. In physical cantilevered umbrellas (Candela 1960, DOI 10.14359/8026; Wang et al. 2020, DOI 10.1016/j.engstruct.2020.111156; Wang et al. 2022, DOI 10.1016/j.engstruct.2022.114577), free outer edges and central valley intersections alter shear flow and demand nonlinear ultimate-load analysis (Ramm & Mehlhorn 1991, DOI 10.1016/0141-0296(91)90050-M)."
+        },
+        "skill": {
+          "filename": "candela-hypar-membrane-shear-SKILL.md",
+          "name": "candela-hypar-membrane-shear",
+          "description": "AI-agnostic architectural and structural engineering skill for Félix Candela's doubly-ruled hyperbolic paraboloid (hypar) concrete shells, Pucher flat-projection membrane shear equilibrium, and idealized cantilever/rib bounds.",
+          "rules": [
+            "Define one quadrant of a hyperbolic paraboloid saddle as z(x, y) = (h / (a * b)) * x * y with twist parameter c = (a * b) / h.",
+            "Compute Pucher flat-projection membrane shear resultant as N_xy = (q_0 * a * b) / (2 * h) under uniform projected gravity load q_0, noting omitted slope-angle weight amplification.",
+            "Resolve 45-degree principal stresses as sigma_1 = +N_xy / t (tension) and sigma_2 = -N_xy / t (compression) in the idealized interior membrane model.",
+            "Evaluate compressive margin lambda_comp = (0.45 * f_ck) / |sigma_2| alongside shell-field thickness savings relative to a 200 mm slab, and flag free-edge bending and buckling limits."
+          ]
+        },
+        "revisions": [
+          {
+            "edition": "REV 1.0",
+            "date": "2026-11-21",
+            "summary": "REV 1.0 (Published 2026-11-21): Volume VII Architecture monograph continuing Folios A.01 & A.13 via Félix Candela's doubly-ruled hyperbolic paraboloid shells (1960 ACI papers), Pucher projected membrane shear (1934), central umbrella stormwater drainage, and modern multi-sided umbrella evaluations (Wang et al. 2020, 2022).",
+            "opus": "Independent verification: all 7 new DOIs checked via Crossref API, anchor paper checked via Scite tallies API (16 citing publications, 0 retractions), and hypar equilibrium equations recomputed offline by skills/architecture/a14/verify_a14_candela_hypar.py (with --planted-defect)."
+          }
+        ],
+        "volume": 7,
+        "volume_code": "VOL. 07",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,820 WORDS",
+        "scite": {
+          "doi": "10.14359/8024",
+          "fetched_on": "2026-11-21",
+          "citing_publications": 16,
+          "supporting": 0,
+          "mentioning": 0,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation index entry for Candela, General Formulas for Membrane Stresses in Hyperbolic Paraboloidical Shells (ACI Journal Proceedings, Vol. 57, 1960, DOI 10.14359/8024), checked 2026-11-21: 16 citing publications (0 supporting, 0 mentioning, 0 contrasting) and no retraction notice. Counts describe that paper, not this folio's model."
+        }
       }
     ],
     "physics": [

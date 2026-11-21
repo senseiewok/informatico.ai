@@ -1336,6 +1336,26 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
             ("CARGA", "Peso propio y sobrecarga uniforme proyectada en planta dentro del modelo", "Acto III"),
         ],
     },
+    "a14": {
+        "title_en": "Folio A.14 · Félix Candela Hypar Ruled Shells & Pucher Membrane Shear Crossword",
+        "title_es": "Folio A.14 · Crucigrama de Cascarones Reglados de Félix Candela y Cortante de Pucher",
+        "en": [
+            ("CANDELA", "Architect-engineer Félix, who built over 800 thin concrete shells across Mexico using straight formwork", "Act I"),
+            ("PUCHER", "Austrian engineer who formulated projected shell equilibrium equations in 1934", "Act I"),
+            ("HYPAR", "Doubly-ruled hyperbolic paraboloid saddle with negative Gaussian curvature and straight generators", "Act II"),
+            ("SHEAR", "Uniform in-plane force N_xy carrying gravity load in the idealized interior hypar membrane", "Act II"),
+            ("UMBRELLA", "Four-quadrant inverted canopy funneling rainwater inward down a central hollow stem", "Act III"),
+            ("TWIST", "Geometric parameter c = (a b) / h governing membrane shear under fixed gravity load", "Act II"),
+        ],
+        "es": [
+            ("CANDELA", "Arquitecto e ingeniero que construyó más de 800 cascarones delgados de concreto en México", "Acto I"),
+            ("PUCHER", "Ingeniero austriaco que publicó en 1934 la ecuación proyectada de equilibrio laminar", "Acto I"),
+            ("ALABEO", "Parámetro geométrico c = (a b) / h que escala el cortante N_xy de membrana", "Acto II"),
+            ("CORTANTE", "Esfuerzo uniforme en el plano N_xy que transmite la carga en el modelo idealizado", "Acto II"),
+            ("DUELA", "Tabla de madera recta que permite cimbrar una superficie doblemente curvada sin doblarla", "Acto I"),
+            ("BAJANTE", "Columna central hueca que capta el agua de lluvia en el paraguas invertido", "Acto III"),
+        ],
+    },
     "p11": {
         "title_en": "Folio P.11 · Surface-Code Quantum Error Correction & FeMoCo Nitrogen Catalysis Crossword",
         "title_es": "Folio P.11 · Crucigrama de Corrección Cuántica de Superficie y Catálisis de Nitrógeno",

@@ -185,6 +185,12 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "Domos Delgados de Heinz Isler y Pandeo Elástico",
         "Cómo una tela colgada invertida da forma a cáscaras de concreto en compresión, y por qué las abolladuras reducen el pandeo frente al límite clásico.",
     ),
+    "a14": (
+        "Felix Candela's Hypar Shells and Membrane Shear",
+        "How straight timber boards form doubly curved hyperbolic paraboloid concrete umbrellas, and where Pucher's pure-shear model reaches its edge limits.",
+        "Cascarones Reglados de Félix Candela y Cortante",
+        "Cómo tablas rectas cimbran paraguas de concreto en paraboloide hiperbólico, y dónde el modelo de cortante de Pucher encuentra su límite de borde.",
+    ),
     # ---- Pillar III: Physics
     "p01": (
         "Fluctuation–Dissipation and Allosteric Gating Energy",
@@ -349,9 +355,9 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "architecture": (
         "Architecture Essays: Vaults, Color & Facades | Informatico.ai",
-        "Twelve interactive essays on architecture: stone vaults, timber gridshells, Barragán's color, sky-cooling roofs and facades that move with humidity and sun.",
+        "Fourteen interactive essays on architecture: stone vaults, timber gridshells, thin concrete shells, Barragán's color and radiative sky-cooling roofs.",
         "Ensayos de Arquitectura: Bóvedas, Color y Fachadas | Informatico.ai",
-        "Doce ensayos interactivos de arquitectura: bóvedas de piedra, retículas de madera, el color de Barragán, techos que se enfrían y fachadas que se mueven.",
+        "Catorce ensayos interactivos de arquitectura: bóvedas de piedra, retículas, cascarones delgados, color de Barragán y techos de enfriamiento pasivo.",
     ),
     "physics": (
         "Physics Essays: F1 Aero, Color & Waves | Informatico.ai",

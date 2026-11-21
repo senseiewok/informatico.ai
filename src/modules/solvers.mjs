@@ -1598,6 +1598,86 @@ export function initPlateSolvers(scope = document) {
         if (qLbl) qLbl.textContent = `${qTot.toFixed(2)} kPa`;
         return;
       }
+      if (slug === "a14") {
+        // Folio A.14 idealized Pucher membrane shear model: N_xy = q_0 a b / (2 h), sigma_1,2 = +/- N_xy / t.
+        const aM = v0;
+        const hM = v1;
+        const tMm = 40.0;
+        const tM = tMm / 1000.0;
+        const qSw = (2400.0 * 9.80665 * tM) / 1000.0;
+        const qTot = qSw + 0.80;
+        const cTwist = (aM * aM) / hM;
+        const nXy = (qTot * cTwist) / 2.0;
+        const sig1 = (nXy / tM) / 1000.0;
+        const sig2 = -sig1;
+        const lamComp = (0.45 * 35.0) / Math.max(1e-9, Math.abs(sig2));
+        const areaM2 = 4.0 * aM * aM;
+        const qStormM3h = areaM2 * (50.0 / 1000.0);
+        const qStormLs = (qStormM3h / 3600.0) * 1000.0;
+        if (riseLabel) riseLabel.textContent = `${aM.toFixed(1)} m`;
+        if (loadLabel) loadLabel.textContent = `${hM.toFixed(1)} m`;
+        if (inlineRise) inlineRise.textContent = `a = b = ${aM.toFixed(1)} m`;
+        if (thrustOut) thrustOut.textContent = `${nXy.toFixed(2)} kN/m (Uniform in Model Quadrant)`;
+        if (kernOut) kernOut.textContent = `${sig2.toFixed(3)} MPa (Quadrant Field, Model Service Load)`;
+        if (outR2) outR2.textContent = `λ_comp = ${lamComp.toFixed(1)} (80.0% Savings vs 200 mm)`;
+        if (statusOut) statusOut.textContent = `${qStormLs.toFixed(1)} L/s (${qStormM3h.toFixed(1)} m³/h, ${areaM2.toFixed(0)} m² Model Roof)`;
+        if (statusBox) statusBox.setAttribute("data-alert", lamComp >= 3.0 ? "false" : "true");
+        const umbL = document.getElementById("tp-a14-umbrella-l");
+        const umbR = document.getElementById("tp-a14-umbrella-r");
+        const rule1 = document.getElementById("tp-a14-rule-1");
+        const rule2 = document.getElementById("tp-a14-rule-2");
+        const rainPath = document.getElementById("tp-a14-rain");
+        const spanLbl = document.getElementById("tp-a14-span-lbl");
+        const sig1Bar = document.getElementById("tp-a14-sig1-bar");
+        const sig2Bar = document.getElementById("tp-a14-sig2-bar");
+        const nxyDot = document.getElementById("tp-a14-nxy-dot");
+        const sig1Lbl = document.getElementById("tp-a14-sig1-lbl");
+        const sig2Lbl = document.getElementById("tp-a14-sig2-lbl");
+        const nxyLbl = document.getElementById("tp-a14-nxy-lbl");
+        const halfPx = 72 + ((aM - 6.0) / 12.0) * 78;
+        const dropPx = 15 + ((hM - 1.0) / 5.0) * 50;
+        const tipY = Math.round(130 - dropPx);
+        const lx = Math.round(198 - halfPx);
+        const rx = Math.round(198 + halfPx);
+        if (umbL) umbL.setAttribute("points", `${lx},${tipY} 198,130 198,144 ${lx},${tipY + 12}`);
+        if (umbR) umbR.setAttribute("points", `198,130 ${rx},${tipY} ${rx},${tipY + 12} 198,144`);
+        if (rule1) {
+          rule1.setAttribute("x1", String(Math.round(lx + halfPx * 0.2)));
+          rule1.setAttribute("y1", String(Math.round(tipY + dropPx * 0.2)));
+        }
+        if (rule2) {
+          rule2.setAttribute("x1", String(Math.round(rx - halfPx * 0.2)));
+          rule2.setAttribute("y1", String(Math.round(tipY + dropPx * 0.2)));
+        }
+        if (rainPath) {
+          rainPath.setAttribute("d", `M ${lx + 28} ${tipY - 4} L 184 116`);
+        }
+        if (spanLbl) spanLbl.textContent = `2a = ${(2.0 * aM).toFixed(1)} m · h = ${hM.toFixed(1)} m · Q = ${qStormLs.toFixed(1)} L/s`;
+        const barH = Math.max(8, Math.min(40, Math.round((sig1 / 3.0) * 36)));
+        if (sig1Bar) {
+          sig1Bar.setAttribute("y", String(100 - barH));
+          sig1Bar.setAttribute("height", String(barH));
+        }
+        if (sig2Bar) {
+          sig2Bar.setAttribute("y", "100");
+          sig2Bar.setAttribute("height", String(barH));
+        }
+        if (sig1Lbl) {
+          sig1Lbl.setAttribute("y", String(92 - barH));
+          sig1Lbl.textContent = `+${sig1.toFixed(3)} MPa`;
+        }
+        if (sig2Lbl) {
+          sig2Lbl.setAttribute("y", String(114 + barH));
+          sig2Lbl.textContent = `${sig2.toFixed(3)} MPa`;
+        }
+        if (nxyDot) {
+          const dotY = Math.max(54, Math.min(156, Math.round(156 - (nXy / 285.0) * 102)));
+          nxyDot.setAttribute("cy", String(dotY));
+          if (nxyLbl) nxyLbl.setAttribute("y", String(dotY - 14));
+        }
+        if (nxyLbl) nxyLbl.textContent = `${nXy.toFixed(2)} kN/m`;
+        return;
+      }
 
       const rise = v0;
       const asym = v1;
