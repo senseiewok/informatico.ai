@@ -103,6 +103,14 @@
     "title": "Discrete Differential-Geometry Operators for Triangulated 2-Manifolds",
     "year": 2003
   },
+  "doi:10.1007/bf00047063": {
+    "fetched": "2026-11-21",
+    "first_author": "Bažant",
+    "found": true,
+    "journal": "International Journal of Fracture",
+    "title": "Determination of fracture energy, process zone length and brittleness number from size effect, with application to rock and concrete",
+    "year": 1990
+  },
   "doi:10.1007/bf01418933": {
     "fetched": "2026-11-04",
     "first_author": "Huxley",
@@ -302,6 +310,14 @@
     "journal": "Annals of Physics",
     "title": "Unified interactions of leptons and hadrons",
     "year": 1975
+  },
+  "doi:10.1016/0008-8846(76)90007-7": {
+    "fetched": "2026-11-21",
+    "first_author": "Hillerborg",
+    "found": true,
+    "journal": "Cement and Concrete Research",
+    "title": "Analysis of crack formation and crack growth in concrete by means of fracture mechanics and finite elements",
+    "year": 1976
   },
   "doi:10.1016/0020-7683(66)90018-7": {
     "fetched": "2026-11-10",
@@ -622,6 +638,14 @@
     "journal": "Sustainable Cities and Society",
     "title": "Origami-based adaptive facade for reducing reflected solar radiation in outdoor urban environments",
     "year": 2023
+  },
+  "doi:10.1016/j.tafmec.2024.104649": {
+    "fetched": "2026-11-21",
+    "first_author": "Qin",
+    "found": true,
+    "journal": "Theoretical and Applied Fracture Mechanics",
+    "title": "Syncretic investigation on size effect in fracture behavior of dam concrete with physical experiment and mesoscale simulation",
+    "year": 2024
   },
   "doi:10.1016/j.watres.2005.10.030": {
     "fetched": "2026-11-14",
@@ -1087,6 +1111,22 @@
     "title": "Muco-Obstructive Lung Diseases",
     "year": 2019
   },
+  "doi:10.1061/(asce)0733-9399(1984)110:4(518)": {
+    "fetched": "2026-11-21",
+    "first_author": "Bažant",
+    "found": true,
+    "journal": "Journal of Engineering Mechanics",
+    "title": "Size Effect in Blunt Fracture: Concrete, Rock, Metal",
+    "year": 1984
+  },
+  "doi:10.1061/(asce)0733-9399(2009)135:2(78)": {
+    "fetched": "2026-11-21",
+    "first_author": "Bažant",
+    "found": true,
+    "journal": "Journal of Engineering Mechanics",
+    "title": "Universal Size Effect Law and Effect of Crack Depth on Quasi-Brittle Structure Strength",
+    "year": 2009
+  },
   "doi:10.1061/(asce)ae.1943-5568.0000430": {
     "fetched": "2026-11-20",
     "first_author": "Tang",
@@ -1478,6 +1518,14 @@
     "journal": "Proceedings of the Royal Society of London. A. Mathematical and Physical Sciences",
     "title": "An analytic representation for the quasi-normal modes of Kerr black holes",
     "year": 1985
+  },
+  "doi:10.1098/rsta.1921.0006": {
+    "fetched": "2026-11-21",
+    "first_author": "Griffith",
+    "found": true,
+    "journal": "Philosophical Transactions of the Royal Society of London. Series A, Containing Papers of a Mathematical or Physical Character",
+    "title": "VI. The phenomena of rupture and flow in solids",
+    "year": 1921
   },
   "doi:10.1103/2jm3-4976": {
     "fetched": "2026-11-09",

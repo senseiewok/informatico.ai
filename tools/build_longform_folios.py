@@ -86,7 +86,9 @@ def linkify_citations(escaped_text: str) -> str:
     # 1. Linkify DOIs (10.xxxx/...)
     def _doi_repl(m: re.Match) -> str:
         prefix = m.group(1) or ""
-        doi = m.group(2).rstrip(".,;:)")
+        doi = m.group(2).rstrip(".,;:")
+        while doi.endswith(")") and doi.count(")") > doi.count("("):
+            doi = doi[:-1].rstrip(".,;:")
         trailing = m.group(2)[len(doi):]
         doi_url = f"https://doi.org/{doi}"
         scite_url = f"https://scite.ai/reports/{doi}"
@@ -243,11 +245,11 @@ VOLUMES_SPEC = [
         "volume": 7,
         "code": "VOL. 07",
         "roman": "Volume VII",
-        "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY, VADOSE SUCTION & FUNICULAR THIN-SHELL BUCKLING · 3 FOLIOS",
-        "title": "Biot 3D Poroelasticity, Unsaturated Suction Stress & Heinz Isler's Thin-Shell Concrete Domes",
-        "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), and Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns).",
+        "kicker": "VOLUME VII (VOL. 07) · DEEP POROELASTICITY, VADOSE SUCTION, CONCRETE FRACTURE & FUNICULAR THIN-SHELL BUCKLING · 4 FOLIOS",
+        "title": "Biot 3D Poroelasticity, Unsaturated Suction Stress, Concrete Size Effect & Heinz Isler's Thin-Shell Domes",
+        "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), Engineering Folio E.15 (Hillerborg fictitious crack process zones, Bažant Type II Size Effect Law, and Bažant–Kazemi fracture energy regression in concrete), and Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns).",
         "cadence": "Verifier-gated Living Edition release",
-        "folios": ["e13", "e14", "a13"],
+        "folios": ["e13", "e14", "e15", "a13"],
     },
 ]
 
@@ -2461,8 +2463,8 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
         lead_series = ""
         rack_cls = "tp-issue-rack tp-issue-rack-headed"
         rack_head = """      <div class="tp-issue-rack-head">
-        <p class="tp-kicker" data-en="Standalone Engineering Monographs · E.01–E.14" data-es="Monografías Independientes de Ingeniería · E.01–E.14">Standalone Engineering Monographs · E.01–E.14</p>
-        <h2 class="tp-h2" data-en="Fourteen Systems &amp; Mechanics Monographs" data-es="Catorce Monografías de Sistemas y Mecánica">Fourteen Systems &amp; Mechanics Monographs</h2>
+        <p class="tp-kicker" data-en="Standalone Engineering Monographs · E.01–E.15" data-es="Monografías Independientes de Ingeniería · E.01–E.15">Standalone Engineering Monographs · E.01–E.15</p>
+        <h2 class="tp-h2" data-en="Fifteen Systems &amp; Mechanics Monographs" data-es="Quince Monografías de Sistemas y Mecánica">Fifteen Systems &amp; Mechanics Monographs</h2>
       </div>
 """
     else:
