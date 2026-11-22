@@ -102,7 +102,7 @@ FOLIO = {'folio_id': 'M.04',
                            "(PFR) entropic doubling, Marton's conjecture bounds, and "
                            '22,028,942-edge magma implication graph with 4-Seat Frontier Council '
                            'review.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Ruzsa entropic triangle inequality submodularity and polynomial coset '
                         'covering bound <= 2 * K^12. (REV 1.2: this "verified" wording is '
                         'withdrawn; the bound is as stated in the project README.)'},
@@ -111,7 +111,7 @@ FOLIO = {'folio_id': 'M.04',
                 'summary': 'REV 1.0 (Published 2026-11-01): Initial publication of the PFR '
                            'Entropic Calculus and 22,028,942-edge Equational Magma Graph '
                            'monograph.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Ruzsa entropic triangle inequality and 4,694² = 22,033,636 total magma '
                         'law pairs (22,028,942 off-diagonal implications). (REV 1.2: the '
                         'arithmetic is right, since 4,694 × 4,693 = 22,028,942; the "verified" '

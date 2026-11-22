@@ -118,7 +118,7 @@ FOLIO = {'folio_id': 'E.05',
                            'CFA deep foundation shaft + toe bearing (Q_ult = Q_skin + Q_toe), and '
                            "Seed-Idriss liquefaction surcharge (r_u = Delta_u / sigma'_v0, CSI 31 "
                            '63 23, FHWA GEC-8).',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): reviewed '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): reviewed '
                         'the consolidation formulas. The word "Verified" in this note and the note '
                         'below is withdrawn in REV 1.2; the earlier readouts (64.2%, 4,180 kN, '
                         'r_u = 0.28) did not follow from the page model.'},
@@ -127,7 +127,7 @@ FOLIO = {'folio_id': 'E.05',
                 'summary': 'REV 1.0 (Published 2026-11-01): Initial 5-Act civil geotechnical '
                            'monograph on Terzaghi effective stress consolidation, CSI 31 63 23 CFA '
                            'deep piling, and Seed-Idriss liquefaction surcharge.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Fourier series consolidation isochrones, T_v = c_v t / H_dr² scaling, and '
                         'effective-stress CFA shaft capacity.'}],
  'volume': 3,

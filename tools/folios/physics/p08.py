@@ -38,7 +38,7 @@ FOLIO = {'category_code': 'P',
                            'swapped and is fixed.'},
                {'date': '2026-11-02',
                 'edition': 'REV 1.0',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'exact Snell-Bragg cos(theta_t) = sqrt(1 - sin^2(theta_i)/n_f^2) '
                         'blue-shift trajectory across 0-75 deg.',
                 'summary': 'REV 1.0 (Published 2026-11-02): Inaugural Volume IV electromagnetic '

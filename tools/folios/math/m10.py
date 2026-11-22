@@ -118,7 +118,7 @@ FOLIO = {'folio_id': 'M.10',
                            'Volume V, completing the circle back to Folio E.01 & P.03 via '
                            "Edelsbrunner, Letscher & Zomorodian's persistent homology (DOI "
                            '10.1007/s00454-002-2885-2).',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'chain complex exactness partial^2 = 0, Euler-Poincare alternation chi = '
                         'beta_0 - beta_1 + beta_2, and H_1 throat percolation threshold. (REV '
                         "1.1: this 'verified' wording is withdrawn for the throat threshold, "

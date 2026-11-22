@@ -121,7 +121,7 @@ FOLIO = {'folio_id': 'E.11',
                            'continuing Folio E.10 (DOI 10.1016/j.cemconres.2018.04.005) via SIMP '
                            'continuum topology optimization, Michell trusses, and skyscraper '
                            'inerter damping.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): '
                         'Reviewed SIMP adjoint sensitivity, Helmholtz filter length scale, and '
                         'Smith inerter transfer function. The word "Verified" is withdrawn in REV '
                         '1.1: no FE run or measurement backed the headline numbers.'}],

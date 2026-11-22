@@ -92,7 +92,7 @@ FOLIO = {'folio_id': 'A.04',
                 'date': '2026-11-02',
                 'summary': 'REV 1.2 (Redated 2026-11-02): Revised the cast-steel gerberette lever model and Stewart Brand '
                            'shearing-layer discussion.',
-                'opus': 'Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier \'verified\' '
+                'opus': 'Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier \'verified\' '
                         'wording is withdrawn in REV 1.3: T_tie = 1,280 kN follows from assumed inputs, and SF = 3.12 '
                         'and m = 0 were not computed.'},
                {'edition': 'REV 1.1',
@@ -100,7 +100,7 @@ FOLIO = {'folio_id': 'A.04',
                 'summary': 'REV 1.1 (Redated 2026-11-01): Dedicated 5-Act monograph tracing the lineage from Archigram '
                            '(Plug-In City, Walking City) to British High-Tech (Foster, Rogers, Piano, Rice) with a '
                            'gerberette lever model and shearing layers.',
-                'opus': 'Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier \'verified\' '
+                'opus': 'Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier \'verified\' '
                         'wording is withdrawn in REV 1.3.'}],
  'volume': 2,
  'volume_code': 'VOL. 02',

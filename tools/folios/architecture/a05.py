@@ -125,7 +125,7 @@ FOLIO = {
                 'Schroeder prime QRD diffusion and a portable companion skill.'
             ),
             'opus': (
-                "Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' "
+                "Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' "
                 'and ISO 3382 compliance wording is withdrawn in REV 1.2: nothing was measured.'
             ),
         },
@@ -137,7 +137,7 @@ FOLIO = {
                 'Schroeder QRD timber vaults, and clinical speech intelligibility.'
             ),
             'opus': (
-                "Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' "
+                "Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' "
                 'wording is withdrawn in REV 1.2.'
             ),
         },

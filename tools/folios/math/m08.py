@@ -112,7 +112,7 @@ FOLIO = {'folio_id': 'M.08',
                            "Schrodinger's 1920 Riemannian color manifold (DOI "
                            '10.1002/andp.19203682202), and MacAdam metric ellipses (DOI '
                            '10.1364/JOSA.32.000247).',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'rank-3 projection operator P_R^2 = P_R idempotence, Christoffel geodesic '
                         "curvature, and illuminant metamerism drift. (REV 1.1: this 'verified' "
                         'wording is withdrawn; no measurement or independent check was run.)'}],

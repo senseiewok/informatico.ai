@@ -101,20 +101,20 @@ FOLIO = {'folio_id': 'E.03',
                 'summary': 'REV 1.2 (Redated 2026-11-02): Verified sub-wavelength Helmholtz '
                            'viscothermal acoustic metamaterials (delta_v = sqrt(2*nu/omega), CSI '
                            '09 84 13) with multi-model peer review.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): checked that '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): checked that '
                         'delta_v = 0.174 mm follows from the page formula. The word "Verified" in '
                         'this note and in the notes below is withdrawn in REV 1.3.'},
                {'edition': 'REV 1.1',
                 'date': '2026-11-01',
                 'summary': 'REV 1.1 (Redated 2026-11-01): Added CSI 09 84 13 cleanroom panel '
                            'spec.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'reflection coefficient |R|² = 0.002 at Z_s/Z_0 = 1.04 + 0.08i.'},
                {'edition': 'REV 1.0',
                 'date': '2026-10-31',
                 'summary': 'REV 1.0 (Published 2026-10-31): Initial Stinson viscothermal Helmholtz '
                            'metamaterial monograph.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified δ_v '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified δ_v '
                         '= 0.174 mm.'}],
  'volume': 2,
  'volume_code': 'VOL. 02',

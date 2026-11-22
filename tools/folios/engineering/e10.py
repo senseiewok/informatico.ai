@@ -116,7 +116,7 @@ FOLIO = {'folio_id': 'E.10',
                            "monograph continuing Folio E.02 & A.01 via Nicolas Roussel's 3DCP "
                            'thixotropic structuration (DOI 10.1016/j.cemconres.2018.04.005) and '
                            'Suiker elastic buckling laws.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Reviewed '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Reviewed '
                         'von Mises base shear rho*g*H/sqrt(3) vs. Roussel A_thix build-up rate and '
                         'Suiker buckling scaling. The word "Verified" is withdrawn in REV '
                         '1.1: the published 2.84 m / SF 1.68 figures did not follow from the '

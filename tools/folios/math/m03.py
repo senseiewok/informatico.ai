@@ -100,7 +100,7 @@ FOLIO = {'folio_id': 'M.03',
                            '(10/10 research problems). (REV 1.4: the log-concavity check and the '
                            'IMO 2025 and FirstProof figures have no source in this folio and are '
                            'withdrawn.)',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Gemma 4 31B + Ornith 1.5 '
+                'opus': 'Cross-model check (Gemini 4 Argon + Gemma 4 31B + Ornith 1.5 '
                         '35B): Verified small-case pure O-sequence log-concavity circuit breaker '
                         '(d <= 7), FunSearch 512-cap invariant, and AlphaEvolve Rank-48 tensor '
                         'exponent. (REV 1.4: this "verified" wording is withdrawn.)'},
@@ -111,7 +111,7 @@ FOLIO = {'folio_id': 'M.03',
                            '10.4007/annals.2017.185.1.8), FunSearch F_3^8 lower bound (>= 512, DOI '
                            '10.1038/s41586-023-06924-6), and AlphaEvolve Rank-48 4x4 matrix tensor '
                            'decomposition with 4-Seat Frontier Council review.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'slice-rank base 2.755104, F_3^8 512-cap line-free invariant, and '
                         'log_4(48) = 2.7925 tensor exponent. (REV 1.4: "verified" wording '
                         'withdrawn; the base 2.7551 is a number the folio computed, and the paper '
@@ -120,7 +120,7 @@ FOLIO = {'folio_id': 'M.03',
                 'date': '2026-11-01',
                 'summary': 'REV 1.1 (Redated 2026-11-01): Added AlphaEvolve rank-48 4×4 matrix '
                            'tensor verification alongside FunSearch F_3^8 cap set bounds.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'log_4(48) = 2.79248 < log_2(7) = 2.80735 asymptotic exponent '
                         'improvement. (REV 1.4: arithmetic rechecked; "verified" wording '
                         'withdrawn.)'},
@@ -128,7 +128,7 @@ FOLIO = {'folio_id': 'M.03',
                 'date': '2026-10-29',
                 'summary': 'REV 1.0 (Published 2026-10-29): Initial publication of F_3^8 Cap Set '
                            'and Ellenberg-Gijswijt slice-rank monograph.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'exact known cap set sizes for n=3 (9), n=4 (20), n=5 (45), n=6 (112). '
                         '(REV 1.4: "verified" wording withdrawn; only n = 4 (20) is cited in this '
                         'edition.)'}],

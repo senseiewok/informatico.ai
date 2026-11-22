@@ -112,7 +112,7 @@ FOLIO = {'folio_id': 'E.09',
                            'continuing Folio E.01 & E.07 by uniting Lucas-Washburn capillary '
                            'imbibition, Jonkers bacterial CaCO3 mineralization (DOI '
                            '10.1016/j.ecoleng.2008.12.036), and Coda-Wave Interferometry.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Checked '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Checked '
                         'cubic Poiseuille leakage reduction (1 - (0.018/0.30)^3) = 99.978% and '
                         'Michaelis-Menten calcite molar volume balance. The word "Verified" is '
                         'withdrawn in REV 1.1: these are model values, not measurements.'}],

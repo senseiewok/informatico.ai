@@ -277,14 +277,14 @@ class SiteFiles(unittest.TestCase):
     def test_sitemap_lists_both_languages_with_alternates_and_real_dates(self):
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 216)  # +2: M.15 added 2026-11-21, EN + es-MX
-        self.assertEqual(len(set(locs)), 216)
-        self.assertEqual(sum("/es-mx/" in u for u in locs), 108)
+        self.assertEqual(len(locs), 220)  # +4: /toolchain/proof-observatory/ + /toolchain/ai-loop/ (EN + es-MX)
+        self.assertEqual(len(set(locs)), 220)
+        self.assertEqual(sum("/es-mx/" in u for u in locs), 110)
         self.assertNotIn("lang=es", xml)
         for loc in locs:
             self.assertIsNotNone(url_to_file(loc))
             self.assertTrue(url_to_file(loc).is_file(), loc)
-        self.assertEqual(xml.count('hreflang="es-MX"'), 216)
+        self.assertEqual(xml.count('hreflang="es-MX"'), 220)
         dates = set(re.findall(r"<lastmod>([^<]+)</lastmod>", xml))
         for d in dates:
             self.assertRegex(d, r"^\d{4}-\d{2}-\d{2}$")
@@ -293,9 +293,52 @@ class SiteFiles(unittest.TestCase):
         text = (RESEARCH / "llms.txt").read_text(encoding="utf-8")
         self.assertTrue(text.startswith("# Informatico.ai\n"))
         urls = re.findall(r"\]\((https://informatico\.ai/[^)]*)\)", text)
-        self.assertEqual(len(urls), 107)  # CC.01-03 + 4 hubs + 57 essays + bounties hub + 6 bounty folios + toolbox hub + 7 tools + Time & Gravity hub + T.01-T.13 + Cross-Scale Essays hub + 12 essays + about
+        self.assertEqual(len(urls), 109)  # +2: /toolchain/proof-observatory/ + /toolchain/ai-loop/
         for u in urls:
             self.assertTrue(url_to_file(u).is_file(), u)
+
+    def test_toolchain_methodology_guides_bilingual_and_linked(self):
+        hub_en = (RESEARCH / "toolchain" / "index.html").read_text(encoding="utf-8")
+        hub_es = (RESEARCH / "es-mx" / "toolchain" / "index.html").read_text(encoding="utf-8")
+        for slug in ("proof-observatory", "ai-loop"):
+            self.assertIn(f'href="./{slug}/"', hub_en)
+            self.assertIn(f'href="./{slug}/"', hub_es)
+            rel_path = f"toolchain/{slug}/"
+            en_file = RESEARCH / "toolchain" / slug / "index.html"
+            es_file = RESEARCH / "es-mx" / "toolchain" / slug / "index.html"
+            self.assertTrue(en_file.is_file(), en_file)
+            self.assertTrue(es_file.is_file(), es_file)
+            en, es = parse(en_file), parse(es_file)
+            en_url, es_url = SITE + rel_path, SITE + "es-mx/" + rel_path
+            for doc, canon in ((en, en_url), (es, es_url)):
+                links = {(l.get("rel"), l.get("hreflang")): l.get("href") for l in doc.links}
+                self.assertEqual(links[("canonical", None)], canon, rel_path)
+                self.assertEqual(links[("alternate", "en")], en_url, rel_path)
+                self.assertEqual(links[("alternate", "es-MX")], es_url, rel_path)
+                self.assertEqual(links[("alternate", "es")], es_url, rel_path)
+                self.assertEqual(links[("alternate", "x-default")], en_url, rel_path)
+                self.assertTrue(20 <= len(doc.title) <= 70, doc.title)
+                desc = doc.meta["description"]
+                self.assertTrue(110 <= len(desc) <= 158, f"{rel_path}: {len(desc)} chars: {desc!r}")
+                self.assertTrue(desc.endswith("."), desc)
+                self.assertNotIn("medical", desc.lower())
+            self.assertNotEqual(en.title, es.title, rel_path)
+            self.assertNotEqual(en.h1, es.h1, rel_path)
+            en_raw = en_file.read_text(encoding="utf-8")
+            es_raw = es_file.read_text(encoding="utf-8")
+            self.assertNotIn('style="', en_raw)
+            self.assertNotIn('style="', es_raw)
+            self.assertEqual(builder.to_spanish_static(en_raw, swap=False, shift=False), en_raw)
+            base = SITE + "es-mx/" + rel_path
+            for attr, value in es.refs:
+                if value.startswith(("#", "mailto:", "data:")) or (value.startswith("http") and not value.startswith(SITE)):
+                    continue
+                target = url_to_file(urljoin(base, value))
+                if target is None:
+                    continue
+                self.assertTrue(target.exists(), f"/es-mx/{rel_path}: {attr}={value!r} -> {target} missing")
+                if attr == "href" and target.name == "index.html" and "/es-mx/" not in urljoin(base, value) and not value.startswith("http"):
+                    self.fail(f"/es-mx/{rel_path}: page link {value!r} leaves /es-mx/")
 
     def test_welcome_for_visiting_intelligences_in_llms_and_about(self):
         llms = (RESEARCH / "llms.txt").read_text(encoding="utf-8")

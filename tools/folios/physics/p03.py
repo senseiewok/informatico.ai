@@ -25,7 +25,7 @@ FOLIO = {'category_code': 'P',
               {'label': 'Reference Values', 'value': 'STATED IN ESSAY'}],
  'revisions': [{'date': '2026-11-02',
                 'edition': 'REV 1.2',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified de '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified de '
                         'Gennes mesh scaling, subdiffusion exponent bounds, and CSI 11 53 43 / 23 '
                         '41 33 aerosol rheometry clean-air filtration containment.',
                 'summary': 'REV 1.2 (Redated 2026-11-02): Verified Carreau-Yasuda shear-thinning '
@@ -34,7 +34,7 @@ FOLIO = {'category_code': 'P',
                            '0.814) vs CF mucus plugs (alpha < 0.20).'},
                {'date': '2026-11-01',
                 'edition': 'REV 1.1',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified de '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified de '
                         'Gennes mesh scaling xi ~ w^(-0.75), subdiffusion alpha = 0.814, and CSI '
                         '11 53 43 / 23 41 33 HEPA extraction boundary.',
                 'summary': 'REV 1.1 (Redated 2026-11-01): Added CSI MasterFormat 11 53 43 / 23 41 '
@@ -43,7 +43,7 @@ FOLIO = {'category_code': 'P',
                            'LNPs.'},
                {'date': '2026-11-01',
                 'edition': 'REV 1.0',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified de '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified de '
                         'Gennes mesh scaling xi ~ w^(-0.75), subdiffusion alpha = 0.814, and CF '
                         'sputum plug percolation cutoff.',
                 'summary': 'REV 1.0 (Inaugural Edition 2026-11-01): Soft matter mucus '

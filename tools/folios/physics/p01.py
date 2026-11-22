@@ -25,7 +25,7 @@ FOLIO = {'category_code': 'P',
               {'label': 'Reference Values', 'value': 'STATED IN ESSAY'}],
  'revisions': [{'date': '2026-11-02',
                 'edition': 'REV 1.2',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'non-equilibrium covariance positive-definiteness, active '
                         'dissipation-fluctuation ratio (1.12 <= 2.0), and CSI 11 53 00 / 13 21 00 '
                         'cryo-EM suite environmental criteria.',
@@ -35,7 +35,7 @@ FOLIO = {'category_code': 'P',
                            'kinetics.'},
                {'date': '2026-11-01',
                 'edition': 'REV 1.1',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Keizer covariance matrix positive-definiteness, tight ATP-Cl coupling '
                         '(0.88), and CSI 11 53 00 / 13 21 00 cleanroom spec compliance.',
                 'summary': 'REV 1.1 (Redated 2026-11-01): Added CSI MasterFormat 11 53 00 / 13 21 '
@@ -44,7 +44,7 @@ FOLIO = {'category_code': 'P',
                            'allosteric rescue.'},
                {'date': '2026-11-01',
                 'edition': 'REV 1.0',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'non-equilibrium covariance bounds, positive ATP-Cl coupling (0.88), and '
                         'uncoupled G551D dissipative trap.',
                 'summary': 'REV 1.0 (Inaugural Edition 2026-11-01): Keizer non-equilibrium '

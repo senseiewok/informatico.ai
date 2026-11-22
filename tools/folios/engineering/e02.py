@@ -102,7 +102,7 @@ FOLIO = {'folio_id': 'E.02',
                            'concrete rheology (tau = tau_0 + K * gamma_dot^n), 125 mm steel '
                            'slickline plug core (r_p/R = tau_0/tau_w), Buckingham-Reiner velocity '
                            'profile, and PCE dispersion (ACI 304.2R, CSI 03 30 00).',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): checked that '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): checked that '
                         'tau_w = 75.0 Pa and r_p/R = 37.3% follow from the page formulas. The word '
                         '"Verified" in this note and in the notes below, and the '
                         'PCE-to-mucolytic bridge, are withdrawn in REV 1.4.'},
@@ -111,14 +111,14 @@ FOLIO = {'folio_id': 'E.02',
                 'summary': 'REV 1.2 (Redated 2026-11-01): Unified 125 mm steel slickline '
                            'Herschel-Bulkley concrete pumping & tremie placement observatory with '
                            'PCE-to-mucolytic yield-stress bridge.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified wall '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified wall '
                         'shear stress τ_w = (ΔP·R)/(2L) = 75.0 Pa at ΔP/L = 2.40 kPa/m and plug '
                         'ratio r_p/R = 37.3%.'},
                {'edition': 'REV 1.1',
                 'date': '2026-10-29',
                 'summary': 'REV 1.1 (Redated 2026-10-29): Added Buckingham-Reiner fourth-order '
                            'plug-flow polynomial verification.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'zero-flow arrest when τ_w ≤ τ_0.'}],
  'volume': 1,
  'volume_code': 'VOL. 01',

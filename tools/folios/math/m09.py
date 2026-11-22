@@ -122,7 +122,7 @@ FOLIO = {'folio_id': 'M.09',
                            "synthesizing Folios M.04, M.07 & M.08 via Benamou & Brenier's dynamic "
                            'fluid formulation of Wasserstein-2 optimal transport (DOI '
                            '10.1007/s002110050002).',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Bures-Wasserstein closed-form metric, HJB optimality d_t psi + 0.5|nabla '
                         "psi|^2 = 0, and log-Sinkhorn convergence. (REV 1.1: this 'verified' "
                         'wording is withdrawn; no independent check was run.)'}],

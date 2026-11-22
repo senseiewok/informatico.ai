@@ -98,7 +98,7 @@ FOLIO = {'folio_id': 'M.02',
                            "0.600) and a reference to OpenAI's openai/math repository. (REV 1.4: "
                            "the '1.0400x Markovian spectral relaxation speedup' and the '722 -> 719 "
                            "sign-parity' account have no source and are withdrawn.)",
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Gemma 4 31B + Ornith 1.5 '
+                'opus': 'Cross-model check (Gemini 4 Argon + Gemma 4 31B + Ornith 1.5 '
                         '35B): Verified Guth-Maynard 30/13 exponent at sigma = 3/4. (REV 1.4: the '
                         "'quarantine of 3 sign-flip lemmas' wording is withdrawn; it has no "
                         'source.)'},
@@ -109,14 +109,14 @@ FOLIO = {'folio_id': 'M.02',
                            '2/5 zeros on Re(s) = 1/2, DOI 10.1515/crll.1989.399.1), and '
                            'Challenge/XiPrime.lean spectral bounds with 4-Seat Frontier Council '
                            'review.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Ingham-Huxley crossover at sigma = 3/4 (c = 0.600) and zero sorryAx '
                         'contamination in Challenge/XiPrime.lean. (REV 1.4: the \'zero sorryAx\' wording is withdrawn; the file exists as zeta23/Challenge/XiPrime.lean, but this site ran no such check.)'},
                {'edition': 'REV 1.1',
                 'date': '2026-11-01',
                 'summary': 'REV 1.1 (Redated 2026-11-01): Added Challenge/XiPrime.lean spectral '
                            'barrier trace and Cheeger-Fiedler Markovian mixing bridge. (REV 1.4: withdrawn as a zero-density trace; XiPrime.lean concerns the zeros of ξ′.)',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Ingham-Huxley crossover at σ = 3/4 where both exponents equal 6/5 · (1 - '
                         'σ). (REV 1.4: the exponents at that point are 12/5 · (1 - σ) and '
                         '3/(2-σ) · (1 - σ), both 3/5 at σ = 3/4; the 6/5 wording was wrong.)'},
@@ -124,7 +124,7 @@ FOLIO = {'folio_id': 'M.02',
                 'date': '2026-10-24',
                 'summary': 'REV 1.0 (Published 2026-10-24): Initial formal-math Zeta23 '
                            'zero-density monograph.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Montgomery-Halász large sieve orthogonality constants. (REV 1.4: this '
                         "'verified' wording is withdrawn.)"}],
  'governing_law': 'Zero-density estimates · Large Sieve · Zeta23 (README statement)',

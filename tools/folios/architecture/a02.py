@@ -71,19 +71,19 @@ FOLIO = {'folio_id': 'A.02',
                 'date': '2026-11-02',
                 'summary': 'REV 1.2 (Redated 2026-11-02): Added a notched lap joint shear utilization and a gridshell '
                            'buckling factor SF = 3.74, with the portable reciprocal-timber-nexorade skill.',
-                'opus': 'Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier \'verified\' '
+                'opus': 'Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier \'verified\' '
                         'wording is withdrawn in REV 1.3: nothing was built, tested or checked against EN 1995-1-1.'},
                {'edition': 'REV 1.1',
                 'date': '2026-11-01',
                 'summary': 'REV 1.1 (Redated 2026-11-01): Added CSI 06 18 00 CNC glulam specification plate and '
                            'perpendicular-to-grain splitting reinforcement check.',
-                'opus': 'Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier \'verified\' '
+                'opus': 'Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier \'verified\' '
                         'wording for k_v = 0.78 and utilization 0.64 is withdrawn in REV 1.3: these are illustrative values.'},
                {'edition': 'REV 1.0',
                 'date': '2026-10-25',
                 'summary': 'REV 1.0 (Published 2026-10-25): Initial publication of reciprocal nexorade kinematics and '
                            '1:5 CNC lap joinery.',
-                'opus': 'Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier \'verified\' '
+                'opus': 'Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier \'verified\' '
                         'wording is withdrawn in REV 1.3.'}],
  'reading_time': '22 MIN READ',
  'word_count': '4,650 WORDS',

@@ -33,7 +33,7 @@ FOLIO = {'category_code': 'P',
               {'label': 'Bulk-Boundary Verdict', 'value': 'EDGE MODE EXPECTED (C ≠ 0)'}],
  'revisions': [{'date': '2026-11-03',
                 'edition': 'REV 1.0',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'two-valley Berry flux integral (1/2pi) int Omega d^2k = +1 for m_T = 0.55 '
                         '> m_P = 0.25 and chiral dispersion.',
                 'summary': 'REV 1.0 (Published 2026-11-03): Volume V topological wave-physics '

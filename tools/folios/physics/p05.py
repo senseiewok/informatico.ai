@@ -27,7 +27,7 @@ FOLIO = {'category_code': 'P',
               {'label': 'Catalytic Regime', 'value': 'STABLE_COUPLED_CYCLE'}],
  'revisions': [{'date': '2026-11-02',
                 'edition': 'REV 1.1',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Bell '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified Bell '
                         'tunneling factor convergence kappa_tun = 6.84 at 310 K, Marcus '
                         'reorganization lambda = 22.4 kcal/mol, and CSI 11 53 53 / 13 21 00 laser '
                         'kinetic cleanroom criteria.',
@@ -37,7 +37,7 @@ FOLIO = {'category_code': 'P',
                            'rescuing CFTR 1717-1G>A.'},
                {'date': '2026-11-01',
                 'edition': 'REV 1.0',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified WKB '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified WKB '
                         'mass-scaling exponent sqrt(2m) and Bell tunneling factor convergence.',
                 'summary': 'REV 1.0 (Published 2026-11-01): Initial 5-Act monograph on WKB proton '
                            'tunneling, Marcus reorganization, and TadA base-editing catalysis for '
