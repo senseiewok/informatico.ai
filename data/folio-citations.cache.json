@@ -359,6 +359,14 @@
     "title": "Matrix analysis of statically and kinematically indeterminate frameworks",
     "year": 1986
   },
+  "doi:10.1016/0038-092x(75)90062-6": {
+    "fetched": "2026-11-21",
+    "first_author": "Catalanotti",
+    "found": true,
+    "journal": "Solar Energy",
+    "title": "The radiative cooling of selective surfaces",
+    "year": 1975
+  },
   "doi:10.1016/0141-0296(91)90050-m": {
     "fetched": "2026-11-20",
     "first_author": "Ramm",
@@ -671,6 +679,14 @@
     "title": "Consciousness in the universe: A review of the 'Orch OR' theory",
     "year": 2014
   },
+  "doi:10.1016/j.rser.2010.08.019": {
+    "fetched": "2026-11-21",
+    "first_author": "Kuznik",
+    "found": true,
+    "journal": "Renewable and Sustainable Energy Reviews",
+    "title": "A review on phase change materials integrated in building walls",
+    "year": 2011
+  },
   "doi:10.1016/j.scs.2023.104740": {
     "fetched": "2026-11-20",
     "first_author": "Meloni",
@@ -726,6 +742,14 @@
     "journal": "Journal of Theoretical Biology",
     "title": "Muco-ciliary transport in the lung",
     "year": 1986
+  },
+  "doi:10.1016/s0378-7788(00)00114-6": {
+    "fetched": "2026-11-21",
+    "first_author": "Crawley",
+    "found": true,
+    "journal": "Energy and Buildings",
+    "title": "EnergyPlus: creating a new-generation building energy simulation program",
+    "year": 2001
   },
   "doi:10.1017/9781108778633": {
     "fetched": "2026-11-20",
@@ -856,7 +880,7 @@
     "year": 2009
   },
   "doi:10.1038/nature13883": {
-    "fetched": "2026-11-04",
+    "fetched": "2026-11-21",
     "first_author": "Raman",
     "found": true,
     "journal": "Nature",
@@ -934,6 +958,14 @@
     "journal": "",
     "title": "",
     "year": null
+  },
+  "doi:10.1038/s41467-022-32409-7": {
+    "fetched": "2026-11-21",
+    "first_author": "Song",
+    "found": true,
+    "journal": "Nature Communications",
+    "title": "Durable radiative cooling against environmental aging",
+    "year": 2022
   },
   "doi:10.1038/s41467-023-43348-2": {
     "fetched": "2026-11-09",
@@ -1119,6 +1151,14 @@
     "title": "One-milligram torsional pendulum toward experiments at the quantum-gravity interface",
     "year": 2026
   },
+  "doi:10.1038/scientificamerican0278-144": {
+    "fetched": "2026-11-21",
+    "first_author": "Bahadori",
+    "found": true,
+    "journal": "Scientific American",
+    "title": "Passive Cooling Systems in Iranian Architecture",
+    "year": 1978
+  },
   "doi:10.1038/srep19519": {
     "fetched": "2026-11-14",
     "first_author": "Romero-García",
@@ -1246,6 +1286,14 @@
     "journal": "Review of Scientific Instruments",
     "title": "Modified Spin-Echo Method for Measuring Nuclear Relaxation Times",
     "year": 1958
+  },
+  "doi:10.1063/1.329270": {
+    "fetched": "2026-11-21",
+    "first_author": "Granqvist",
+    "found": true,
+    "journal": "Journal of Applied Physics",
+    "title": "Radiative cooling to low temperatures: General considerations and application to selectively emitting SiO films",
+    "year": 1981
   },
   "doi:10.1063/1.522605": {
     "fetched": "2026-11-10",
@@ -2192,7 +2240,7 @@
     "year": 2007
   },
   "doi:10.1103/physrevresearch.2.023068": {
-    "fetched": "2026-11-07",
+    "fetched": "2026-11-21",
     "first_author": "Burns",
     "found": true,
     "journal": "Physical Review Research",
@@ -2471,6 +2519,14 @@
     "title": "The propagation of plane sound waves in narrow and wide circular tubes, and generalization to uniform tubes of arbitrary cross-sectional shape",
     "year": 1991
   },
+  "doi:10.1126/sciadv.aaz5413": {
+    "fetched": "2026-11-21",
+    "first_author": "Chen",
+    "found": true,
+    "journal": "Science Advances",
+    "title": "Colored and paintable bilayer coatings with high solar-infrared reflectance for efficient cooling",
+    "year": 2020
+  },
   "doi:10.1126/sciadv.adk2949": {
     "fetched": "2026-11-09",
     "first_author": "Fuchs",
@@ -2575,8 +2631,16 @@
     "title": "A self-interfering clock as a “which path” witness",
     "year": 2015
   },
+  "doi:10.1126/science.aai7899": {
+    "fetched": "2026-11-21",
+    "first_author": "Zhai",
+    "found": true,
+    "journal": "Science",
+    "title": "Scalable-manufactured randomized glass-polymer hybrid metamaterial for daytime radiative cooling",
+    "year": 2017
+  },
   "doi:10.1126/science.aat9513": {
-    "fetched": "2026-11-07",
+    "fetched": "2026-11-21",
     "first_author": "Mandal",
     "found": true,
     "journal": "Science",
@@ -4063,6 +4127,20 @@
     "unclassified": 7,
     "year": 1986
   },
+  "scite:10.1016/0038-092x(75)90062-6": {
+    "citing_publications": 605,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Solar Energy",
+    "mentioning": 291,
+    "retracted": false,
+    "supporting": 1,
+    "title": "The radiative cooling of selective surfaces",
+    "total_smart_citations": 294,
+    "unclassified": 2,
+    "year": 1975
+  },
   "scite:10.1016/0141-0296(91)90050-m": {
     "citing_publications": 51,
     "contrasting": 0,
@@ -4279,6 +4357,20 @@
     "total_smart_citations": 245,
     "unclassified": 2
   },
+  "scite:10.1016/j.rser.2010.08.019": {
+    "citing_publications": 1084,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Renewable and Sustainable Energy Reviews",
+    "mentioning": 438,
+    "retracted": false,
+    "supporting": 2,
+    "title": "A review on phase change materials integrated in building walls",
+    "total_smart_citations": 449,
+    "unclassified": 9,
+    "year": 2011
+  },
   "scite:10.1016/s0022-5193(86)80098-4": {
     "citing_publications": 186,
     "contrasting": 0,
@@ -4292,6 +4384,20 @@
     "total_smart_citations": 209,
     "unclassified": 0,
     "year": 1986
+  },
+  "scite:10.1016/s0378-7788(00)00114-6": {
+    "citing_publications": 3014,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Energy and Buildings",
+    "mentioning": 1118,
+    "retracted": false,
+    "supporting": 2,
+    "title": "EnergyPlus: creating a new-generation building energy simulation program",
+    "total_smart_citations": 1156,
+    "unclassified": 36,
+    "year": 2001
   },
   "scite:10.1017/cbo9781107050310": {
     "citing_publications": 484,
@@ -4348,16 +4454,16 @@
     "unclassified": 4
   },
   "scite:10.1038/nature13883": {
-    "citing_publications": 3769,
+    "citing_publications": 3807,
     "contrasting": 1,
-    "fetched": "2026-11-08",
+    "fetched": "2026-11-21",
     "found": true,
     "journal": "Nature",
-    "mentioning": 2634,
+    "mentioning": 2649,
     "retracted": false,
     "supporting": 15,
     "title": "Passive radiative cooling below ambient air temperature under direct sunlight",
-    "total_smart_citations": 2653,
+    "total_smart_citations": 2668,
     "unclassified": 3,
     "year": 2014
   },
@@ -4424,6 +4530,20 @@
     "total_smart_citations": 227,
     "unclassified": 0,
     "year": 2019
+  },
+  "scite:10.1038/s41467-022-32409-7": {
+    "citing_publications": 423,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Nature Communications",
+    "mentioning": 210,
+    "retracted": false,
+    "supporting": 2,
+    "title": "Durable radiative cooling against environmental aging",
+    "total_smart_citations": 212,
+    "unclassified": 0,
+    "year": 2022
   },
   "scite:10.1038/s41467-023-43348-2": {
     "citing_publications": 77,
@@ -4639,6 +4759,20 @@
     "total_smart_citations": 4,
     "unclassified": 0
   },
+  "scite:10.1038/scientificamerican0278-144": {
+    "citing_publications": 338,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Scientific American",
+    "mentioning": 89,
+    "retracted": false,
+    "supporting": 0,
+    "title": "Passive Cooling Systems in Iranian Architecture",
+    "total_smart_citations": 95,
+    "unclassified": 6,
+    "year": 1978
+  },
   "scite:10.1039/f29787401818": {
     "citing_publications": 815,
     "contrasting": 2,
@@ -4692,6 +4826,20 @@
     "total_smart_citations": 57,
     "unclassified": 0,
     "year": 2021
+  },
+  "scite:10.1063/1.329270": {
+    "citing_publications": 592,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Journal of Applied Physics",
+    "mentioning": 312,
+    "retracted": false,
+    "supporting": 1,
+    "title": "Radiative cooling to low temperatures: General considerations and application to selectively emitting SiO films",
+    "total_smart_citations": 316,
+    "unclassified": 3,
+    "year": 1981
   },
   "scite:10.1063/1.522605": {
     "citing_publications": 743,
@@ -5654,16 +5802,16 @@
     "unclassified": 1
   },
   "scite:10.1103/physrevresearch.2.023068": {
-    "citing_publications": 717,
+    "citing_publications": 741,
     "contrasting": 0,
-    "fetched": "2026-11-08",
+    "fetched": "2026-11-21",
     "found": true,
     "journal": "Physical Review Research",
-    "mentioning": 519,
+    "mentioning": 524,
     "retracted": false,
     "supporting": 2,
     "title": "Dedalus: A flexible framework for numerical simulations with spectral methods",
-    "total_smart_citations": 521,
+    "total_smart_citations": 526,
     "unclassified": 0,
     "year": 2020
   },
@@ -5787,6 +5935,20 @@
     "unclassified": 3,
     "year": 1930
   },
+  "scite:10.1126/sciadv.aaz5413": {
+    "citing_publications": 389,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Science Advances",
+    "mentioning": 264,
+    "retracted": false,
+    "supporting": 1,
+    "title": "Colored and paintable bilayer coatings with high solar-infrared reflectance for efficient cooling",
+    "total_smart_citations": 266,
+    "unclassified": 1,
+    "year": 2020
+  },
   "scite:10.1126/sciadv.adk2949": {
     "citing_publications": 72,
     "classification_provenance": "Scite ML citation classification",
@@ -5889,17 +6051,31 @@
     "total_smart_citations": 138,
     "unclassified": 0
   },
-  "scite:10.1126/science.aat9513": {
-    "citing_publications": 2317,
-    "contrasting": 4,
-    "fetched": "2026-11-08",
+  "scite:10.1126/science.aai7899": {
+    "citing_publications": 2562,
+    "contrasting": 1,
+    "fetched": "2026-11-21",
     "found": true,
     "journal": "Science",
-    "mentioning": 1629,
+    "mentioning": 1592,
     "retracted": false,
-    "supporting": 23,
+    "supporting": 8,
+    "title": "Scalable-manufactured randomized glass-polymer hybrid metamaterial for daytime radiative cooling",
+    "total_smart_citations": 1603,
+    "unclassified": 2,
+    "year": 2017
+  },
+  "scite:10.1126/science.aat9513": {
+    "citing_publications": 2339,
+    "contrasting": 4,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Science",
+    "mentioning": 1653,
+    "retracted": false,
+    "supporting": 24,
     "title": "Hierarchically porous polymer coatings for highly efficient passive daytime radiative cooling",
-    "total_smart_citations": 1657,
+    "total_smart_citations": 1682,
     "unclassified": 1,
     "year": 2018
   },
@@ -6086,16 +6262,16 @@
     "year": 2020
   },
   "scite:10.1162/qss_a_00146": {
-    "citing_publications": 182,
+    "citing_publications": 196,
     "contrasting": 0,
-    "fetched": "2026-11-08",
+    "fetched": "2026-11-21",
     "found": true,
     "journal": "Quantitative Science Studies",
-    "mentioning": 82,
+    "mentioning": 83,
     "retracted": false,
     "supporting": 1,
     "title": "scite: A smart citation index that displays the context of citations and classifies their intent using deep learning",
-    "total_smart_citations": 85,
+    "total_smart_citations": 86,
     "unclassified": 2,
     "year": 2021
   },
