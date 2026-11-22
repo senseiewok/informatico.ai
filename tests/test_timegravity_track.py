@@ -1002,6 +1002,41 @@ class TimeGravityHumansAndPlatesTests(unittest.TestCase):
         self.assertEqual(labels_of(TG / "t06" / "index.html").count("DERIVED"), 2)
         self.assertEqual(labels_of(TG / "t12" / "index.html").count("PROPOSED"), 1)
 
+    def test_wedge_z_smeared_1d_matches_2d_reference(self) -> None:
+        import timegravity_kernel_wedge as k_wed
+        from timegravity_kernel_isl import plate_mode_ratio
+
+        xs, ws = k_wed._GL24
+
+        def z_smeared_2d_ref(k: float, s: float, t1: float, t2: float, sigma: float) -> float:
+            total = 0.0
+            for xi, wi in zip(xs, ws):
+                z1 = 0.5 * t1 * (xi + 1.0)
+                for xj, wj in zip(xs, ws):
+                    gap = s + z1 + 0.5 * t2 * (xj + 1.0)
+                    total += wi * wj * math.exp(-k * gap) * plate_mode_ratio(k, gap, sigma)
+            return total * 0.25 * t1 * t2
+
+        cases = [
+            # (k, s, t1, t2, sigma) covering t1 < t2, t1 > t2, t1 == t2, near-field, asymptotic b - a > 7, and high-k decay
+            (5200.0, 25e-6, 54e-6, 99e-6, 33e-6),
+            (5200.0, 52e-6, 99e-6, 54e-6, 33e-6),
+            (12000.0, 52e-6, 60e-6, 60e-6, 33e-6),
+            (1.0, 3000e-6, 54e-6, 99e-6, 10e-6),
+            (5200.0, 1000e-6, 54e-6, 99e-6, 33e-6),
+            (400000.0, 25e-6, 54e-6, 99e-6, 33e-6),
+            (150000.0, 300e-6, 54e-6, 99e-6, 20e-6),
+        ]
+        for k, s, t1, t2, sigma in cases:
+            ref = z_smeared_2d_ref(k, s, t1, t2, sigma)
+            got = k_wed.z_smeared(k, s, t1, t2, sigma)
+            self.assertGreater(ref, 0.0)
+            rel_err = abs(got - ref) / ref
+            self.assertLess(rel_err, 1e-13, f"z_smeared mismatch for {(k, s, t1, t2, sigma)}: rel_err={rel_err:.3e}")
+
+        # Extreme decay guard (k * s > 745) returns 0.0 identically as float64 underflows exp(-k * gap)
+        self.assertEqual(k_wed.z_smeared(400000.0, 3000e-6, 54e-6, 99e-6, 33e-6), 0.0)
+
 
 if __name__ == "__main__":
     unittest.main()
