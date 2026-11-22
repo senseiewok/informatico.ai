@@ -900,10 +900,10 @@
           }
         ],
         "steps": [
-          "Stage 1 (Chamber Pressure Balance, after Anagnostou & Kovári 1996): At depth z_0 = 24.0 m, the model EPB chamber pressure P_face = 210 kPa is taken to sit between the active (collapse) and passive (blowout) limits. The folio states no soil profile, so this is an assumed operating point, not a computed face-stability check.",
-          "Stage 2 (Foam-Conditioned Muck Rheology): Surfactant-polymer foam injection turns excavated clay into a cohesive, low-permeability plastic paste that can pass the screw conveyor. The 120 mm slump is an illustrative target.",
-          "Stage 3 (Peck Gaussian Trough): Volume loss V_L = 0.75% across D = 9.8 m gives V_s = 0.566 m³ per metre of tunnel; with inflection width i = K z_0 = 12.0 m the centerline settlement is S_max = V_s / (√(2π) i) = 18.8 mm.",
-          "Stage 4 (Graph Neural Network Subsurface Digital Twin, a Proposal): Cutterhead torque and tail-void grout pressures could update a GNN model whose aim is to keep the trough slope β_max below 1/500 beneath masonry buildings. No such network was built for this folio."
+          "Stage 1 (Chamber Balance, Anagnostou & Kovári 1996, DOI 10.1016/0886-7798(96)00017-X): At z_0 = 24.0 m, P_face = 210 kPa is an assumed point under stated assumptions, not a soil-profile check.",
+          "Stage 2 (Soil Conditioning, Merritt & Mair 2006, DOI 10.1680/geot.2006.56.9.605; Budach & Thewes 2015, DOI 10.1016/j.tust.2015.08.006): Foam may condition clay or coarse ground in the screw conveyor; about 120 mm slump is illustrative.",
+          "Stage 3 (Peck Trough, DOI 10.1680/geot.1993.43.2.315): V_L = 0.75% across D = 9.8 m gives V_s = 0.566 m³ per meter and S_max = 18.8 mm at i = 12.0 m.",
+          "Stage 4 (Proposed GNN Twin): Torque and grout pressures could suggest updates to keep β_max < 1/500 (cf. Skempton & MacDonald 1956, DOI 10.1680/ipeds.1956.12202). Untested; no network was built."
         ],
         "readouts": [
           {
@@ -926,16 +926,16 @@
         "spec_plate": {
           "division": "CSI MASTERFORMAT 31 71 19 / PRECAST SEGMENTAL LINING",
           "title": "9.8 m Earth-Pressure-Balance TBM & Precast Fiber-Reinforced Segmental Lining",
-          "body": "Pressurized EPB shield excavation with automated two-component tail-void backfill grouting, EPDM elastomeric gasketed C60/75 precast concrete tunnel rings, and real-time InSAR + GNN settlement monitoring. A design sketch, not a project specification.",
+          "body": "Pressurized EPB shield excavation with two-component tail-void grouting, EPDM-gasketed C60/75 precast rings, and proposed InSAR + GNN monitoring. Design sketch only, not a project specification.",
           "meta": "Anchor: Mair, Taylor & Bracegirdle 1993, DOI 10.1680/geot.1993.43.2.315 · β ≤ 1/500 is the limit chosen for this model"
         },
         "sidenote_1": {
           "kicker": "SIDENOTE E.08-A · CONSERVATION OF SOIL VOLUME IN PECK–MAIR TROUGHS",
-          "body": "Integrating S(y) = S_max exp(−y² / 2i²) from −∞ to +∞ yields V_s = √(2π) · i · S_max. Equating V_s to V_L · (π D² / 4) shows that, with i = K z_0, S_max is inversely proportional to depth z_0 while maximum slope occurs at y = ±i."
+          "body": "Integrating S(y) = S_max exp(−y² / 2i²) over (−∞, +∞) gives V_s = √(2π) i S_max = V_L (π D² / 4). With i = K z_0, S_max scales as 1 / z_0 and maximum slope falls at y = ±i."
         },
         "sidenote_2": {
           "kicker": "SIDENOTE E.08-B · SPECIFICATION PLATE · CSI 31 71 19 / GNN SUBSURFACE TWIN",
-          "body": "A Graph Neural Network could represent borehole stratigraphy and tunnel rings as nodes of a message-passing graph, constrained by Mohr–Coulomb yield surfaces, to forecast the settlement trough some tens of metres ahead of the TBM face. This is a proposed architecture; the folio trained no network and reports no forecast accuracy."
+          "body": "A Graph Neural Network might link borehole strata and lining rings under Mohr–Coulomb constraints to estimate settlement about tens of meters ahead. Untested proposal, not yet built or verified."
         },
         "skill": {
           "filename": "epb-tbm-peck-settlement-SKILL.md",
@@ -951,7 +951,7 @@
           {
             "edition": "REV 1.1",
             "date": "2026-11-14",
-            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The Graph Neural Network digital twin is now described as a proposal: no network was built, and the claims of 50 m look-ahead forecasts, \"GNN PASS\" and a \"Rankine pass\" verdict are withdrawn. The 1/500 slope limit is labelled as the choice of this model, not a value taken from a named standard, and the page now says that a constant K below the surface is a simplification of what Mair, Taylor & Bracegirdle (1993) reported. The Brunel opening is cut back to the commonly told account, and the foam note is marked as an analogy.",
+            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The Graph Neural Network digital twin is now described as a proposal: no network was built, and the claims of 50 m look-ahead forecasts, \"GNN PASS\" and a \"Rankine pass\" verdict are withdrawn. The 1/500 slope limit is labeled as the choice of this model, not a value taken from a named standard, and the page now says that a constant K below the surface is a simplification of what Mair, Taylor & Bracegirdle (1993) reported. The Brunel opening is cut back to the commonly told account, and the foam note is marked as an analogy.",
             "opus": "Review: references checked by DOI in the Scite index on 2026-11-14; S_max = 18.8 mm and the slope 1/1,050 were recomputed by hand from the stated law."
           },
           {
