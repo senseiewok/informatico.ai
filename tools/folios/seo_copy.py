@@ -145,7 +145,7 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "a06": (
         "Net-Zero Water and Greywater Constructed Wetlands",
-        "How a modelled reed bed removes about 95% of greywater BOD, while 60 °C recirculation and UV-C are design targets meant to limit bacteria growth indoors.",
+        "How a modeled reed bed removes about 95% of greywater BOD, while 60 °C recirculation and UV-C are design targets meant to limit bacteria growth indoors.",
         "Agua Neta Cero y Humedales Construidos",
         "Cómo un lecho de carrizo modelado elimina cerca del 95% de la DBO del agua gris, y cómo 60 °C y UV-C son metas de diseño para limitar bacterias.",
     ),
