@@ -106,6 +106,12 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "Efecto de Tamaño y Fractura en Concreto",
         "Cómo la zona de proceso de Hillerborg y la ley de Bažant explican por qué vigas profundas de concreto fallan a menor esfuerzo que probetas chicas.",
     ),
+    "e16": (
+        "Bridge Pier Local Scour and Flood Time Lag",
+        "How Shields sediment threshold, Sheppard-Melville equilibrium scour and Melville-Chiew flood time lag model craters around river bridge piers.",
+        "Socavación en Pilas de Puente y Avenidas",
+        "Cómo el umbral de Shields, la socavación de Sheppard-Melville y el factor temporal de Melville-Chiew modelan fosas en pilas de puentes fluviales.",
+    ),
     # ---- Pillar II: Architecture
     "a01": (
         "Funicular Thrust Surfaces in Stone and Timber Shells",

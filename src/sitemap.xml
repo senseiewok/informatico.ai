@@ -137,6 +137,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/engineering/e15/"/>
   </url>
   <url>
+    <loc>https://informatico.ai/engineering/e16/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/engineering/e16/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/engineering/e16/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/engineering/e16/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/engineering/e16/"/>
+  </url>
+  <url>
     <loc>https://informatico.ai/architecture/</loc>
     <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/architecture/"/>
@@ -983,6 +991,14 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/engineering/e15/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/engineering/e15/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/engineering/e15/"/>
+  </url>
+  <url>
+    <loc>https://informatico.ai/es-mx/engineering/e16/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://informatico.ai/engineering/e16/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://informatico.ai/es-mx/engineering/e16/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://informatico.ai/es-mx/engineering/e16/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://informatico.ai/engineering/e16/"/>
   </url>
   <url>
     <loc>https://informatico.ai/es-mx/architecture/</loc>

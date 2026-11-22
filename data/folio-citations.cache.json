@@ -703,6 +703,14 @@
     "title": "Syncretic investigation on size effect in fracture behavior of dam concrete with physical experiment and mesoscale simulation",
     "year": 2024
   },
+  "doi:10.1016/j.tust.2015.08.006": {
+    "fetched": "2026-11-21",
+    "first_author": "Budach",
+    "found": true,
+    "journal": "Tunnelling and Underground Space Technology",
+    "title": "Application ranges of EPB shields in coarse ground based on laboratory research",
+    "year": 2015
+  },
   "doi:10.1016/j.watres.2005.10.030": {
     "fetched": "2026-11-14",
     "first_author": "Hijnen",
@@ -1223,6 +1231,46 @@
     "title": "Universal Size Effect Law and Effect of Crack Depth on Quasi-Brittle Structure Strength",
     "year": 2009
   },
+  "doi:10.1061/(asce)0733-9410(1989)115:1(1)": {
+    "fetched": "2026-11-21",
+    "first_author": "Boscardin",
+    "found": true,
+    "journal": "Journal of Geotechnical Engineering",
+    "title": "Building Response to Excavation‐Induced Settlement",
+    "year": 1989
+  },
+  "doi:10.1061/(asce)0733-9429(1997)123:2(125)": {
+    "fetched": "2026-11-21",
+    "first_author": "Melville",
+    "found": true,
+    "journal": "Journal of Hydraulic Engineering",
+    "title": "Pier and Abutment Scour: Integrated Approach",
+    "year": 1997
+  },
+  "doi:10.1061/(asce)0733-9429(1999)125:1(59)": {
+    "fetched": "2026-11-21",
+    "first_author": "Melville",
+    "found": true,
+    "journal": "Journal of Hydraulic Engineering",
+    "title": "Time Scale for Local Scour at Bridge Piers",
+    "year": 1999
+  },
+  "doi:10.1061/(asce)0733-9429(1999)125:4(376)": {
+    "fetched": "2026-11-21",
+    "first_author": "Buffington",
+    "found": true,
+    "journal": "Journal of Hydraulic Engineering",
+    "title": "The Legend of A. F. Shields",
+    "year": 1999
+  },
+  "doi:10.1061/(asce)0887-3828(2003)17:3(144)": {
+    "fetched": "2026-11-21",
+    "first_author": "Wardhana",
+    "found": true,
+    "journal": "Journal of Performance of Constructed Facilities",
+    "title": "Analysis of Recent Bridge Failures in the United States",
+    "year": 2003
+  },
   "doi:10.1061/(asce)ae.1943-5568.0000430": {
     "fetched": "2026-11-20",
     "first_author": "Tang",
@@ -1238,6 +1286,22 @@
     "journal": "Journal of Geotechnical and Geoenvironmental Engineering",
     "title": "Shaft Capacity of Continuous Flight Auger Piles in Sand",
     "year": 2009
+  },
+  "doi:10.1061/(asce)hy.1943-7900.0000800": {
+    "fetched": "2026-11-21",
+    "first_author": "Sheppard",
+    "found": true,
+    "journal": "Journal of Hydraulic Engineering",
+    "title": "Evaluation of Existing Equations for Local Scour at Bridge Piers",
+    "year": 2014
+  },
+  "doi:10.1061/(asce)hy.1943-7900.0001696": {
+    "fetched": "2026-11-21",
+    "first_author": "Link",
+    "found": true,
+    "journal": "Journal of Hydraulic Engineering",
+    "title": "Local Scour and Sediment Deposition at Bridge Piers during Floods",
+    "year": 2020
   },
   "doi:10.1061/(asce)st.1943-541x.0000144": {
     "fetched": "2026-11-21",
@@ -3087,6 +3151,38 @@
     "title": "Subsurface settlement profiles above tunnels in clays",
     "year": 1993
   },
+  "doi:10.1680/geot.1994.44.2.191": {
+    "fetched": "2026-11-21",
+    "first_author": "Skempton",
+    "found": true,
+    "journal": "Géotechnique",
+    "title": "Thames Tunnel: geology, site investigation and geotechnical problems",
+    "year": 1994
+  },
+  "doi:10.1680/geot.2006.56.9.605": {
+    "fetched": "2026-11-21",
+    "first_author": "Merritt",
+    "found": true,
+    "journal": "Géotechnique",
+    "title": "Mechanics of tunnelling machine screw conveyors: model tests",
+    "year": 2006
+  },
+  "doi:10.1680/geot.2008.58.9.695": {
+    "fetched": "2026-11-21",
+    "first_author": "Mair",
+    "found": true,
+    "journal": "Géotechnique",
+    "title": "Tunnelling and geotechnics: new horizons",
+    "year": 2008
+  },
+  "doi:10.1680/ipeds.1956.12202": {
+    "fetched": "2026-11-21",
+    "first_author": "SKEMPTON",
+    "found": true,
+    "journal": "Proceedings of the Institution of Civil Engineers",
+    "title": "THE ALLOWABLE SETTLEMENTS OF BUILDINGS.",
+    "year": 1956
+  },
   "doi:10.21105/joss.02104": {
     "fetched": "2026-11-07",
     "first_author": "de Silva",
@@ -3182,6 +3278,14 @@
     "journal": "Bulletin de la Soci&amp;#233;t&amp;#233; math&amp;#233;matique de France",
     "title": "Conditional brownian motion and the boundary limits of harmonic functions",
     "year": 1957
+  },
+  "doi:10.2478/johh-2026-0004": {
+    "fetched": "2026-11-21",
+    "first_author": "Kabiri-Samani",
+    "found": true,
+    "journal": "Journal of Hydrology and Hydromechanics",
+    "title": "Does an Armor Layer Control Clear-Water Scour at Cylindrical Bridge Piers? A Comprehensive Experimental Assessment under Steady and Unsteady Flow Conditions",
+    "year": 2026
   },
   "doi:10.2749/101686611x13049248220564": {
     "fetched": "2026-11-21",
@@ -6724,53 +6828,5 @@
     "total_smart_citations": 1212,
     "unclassified": 62,
     "year": 2018
-  },
-  "doi:10.1680/geot.1994.44.2.191": {
-    "fetched": "2026-11-21",
-    "first_author": "Skempton",
-    "found": true,
-    "journal": "Géotechnique",
-    "title": "Thames Tunnel: geology, site investigation and geotechnical problems",
-    "year": 1994
-  },
-  "doi:10.1680/ipeds.1956.12202": {
-    "fetched": "2026-11-21",
-    "first_author": "SKEMPTON",
-    "found": true,
-    "journal": "Proceedings of the Institution of Civil Engineers",
-    "title": "THE ALLOWABLE SETTLEMENTS OF BUILDINGS.",
-    "year": 1956
-  },
-  "doi:10.1061/(asce)0733-9410(1989)115:1(1)": {
-    "fetched": "2026-11-21",
-    "first_author": "Boscardin",
-    "found": true,
-    "journal": "Journal of Geotechnical Engineering",
-    "title": "Building Response to Excavation‐Induced Settlement",
-    "year": 1989
-  },
-  "doi:10.1680/geot.2006.56.9.605": {
-    "fetched": "2026-11-21",
-    "first_author": "Merritt",
-    "found": true,
-    "journal": "Géotechnique",
-    "title": "Mechanics of tunnelling machine screw conveyors: model tests",
-    "year": 2006
-  },
-  "doi:10.1680/geot.2008.58.9.695": {
-    "fetched": "2026-11-21",
-    "first_author": "Mair",
-    "found": true,
-    "journal": "Géotechnique",
-    "title": "Tunnelling and geotechnics: new horizons",
-    "year": 2008
-  },
-  "doi:10.1016/j.tust.2015.08.006": {
-    "fetched": "2026-11-21",
-    "first_author": "Budach",
-    "found": true,
-    "journal": "Tunnelling and Underground Space Technology",
-    "title": "Application ranges of EPB shields in coarse ground based on laboratory research",
-    "year": 2015
   }
 }

@@ -2262,6 +2262,106 @@ export function initPlateSolvers(scope = document) {
         }
         return;
       }
+      if (slug === "e16") {
+        // Reduced closed-form model of Folio E.16 (Shields V_c + Sheppard-Melville + HEC-18 CSU + Melville-Chiew K_t):
+        // Circular pier a* = 2.00 m, approach depth y_1 = 3.00 m, quartz sand d_50 = 2.00 mm (0.002 m),
+        // specific gravity s = 2.65, critical Shields theta_c = 0.045, g = 9.81 m/s^2, K_1 = 1.0, K_2 = 1.0, K_3 = 1.1.
+        const iRatio = Number.isFinite(p0) ? Math.max(0.45, Math.min(1.0, p0)) : 0.85;
+        const tdHours = Number.isFinite(p1) ? Math.max(2.0, Math.min(240.0, p1)) : 24.0;
+        if (phiLabel) phiLabel.textContent = `V_1 / V_c = ${iRatio.toFixed(2)}`;
+        if (radLabel) radLabel.textContent = `${tdHours.toFixed(1)} h`;
+        if (inlinePhi) inlinePhi.textContent = `V_1 / V_c = ${iRatio.toFixed(2)}`;
+        const aStar = 2.0;
+        const y1 = 3.0;
+        const d50 = 0.002;
+        const gAcc = 9.81;
+        const uStarC = Math.sqrt(0.045 * (2.65 - 1.0) * gAcc * d50);
+        const vc = 5.75 * uStarC * Math.log10((5.53 * y1) / d50);
+        const v1 = iRatio * vc;
+        const fr1 = v1 / Math.sqrt(gAcc * y1);
+        const yOverA = y1 / aStar;
+        const aOverD = aStar / d50;
+        const f1 = Math.tanh(Math.pow(yOverA, 0.4));
+        const f2 = Math.max(0.0, 1.0 - 1.2 * Math.pow(Math.log(iRatio), 2));
+        const f3 = aOverD / (0.4 * Math.pow(aOverD, 1.2) + 10.6 * Math.pow(aOverD, -0.13));
+        const ysSmEq = 2.5 * aStar * f1 * f2 * f3;
+        const csuCap = fr1 <= 0.8 ? 2.4 : 3.0;
+        const ysCsuEq = Math.min(
+          csuCap * aStar,
+          2.0 * 1.0 * 1.0 * 1.1 * y1 * Math.pow(aStar / y1, 0.65) * Math.pow(fr1, 0.43),
+        );
+        const teDays = yOverA <= 6.0
+          ? 30.89 * (aStar / v1) * (iRatio - 0.4) * Math.pow(yOverA, 0.25)
+          : 48.26 * (aStar / v1) * (iRatio - 0.4);
+        const evalKt = (hVal) => {
+          const dVal = hVal / 24.0;
+          if (dVal >= teDays) return 1.0;
+          const arg = Math.abs((1.0 / iRatio) * Math.log(dVal / teDays));
+          return Math.exp(-0.03 * Math.pow(arg, 1.6));
+        };
+        const kt = evalKt(tdHours);
+        const ysTrans = kt * ysSmEq;
+        if (kappaOut) kappaOut.textContent = `y_s(t_d) = ${ysTrans.toFixed(3)} m · y_s,SM = ${ysSmEq.toFixed(3)} m (model)`;
+        if (deffOut) deffOut.textContent = `y_s,CSU = ${ysCsuEq.toFixed(3)} m · K_t = ${kt.toFixed(4)} (model)`;
+        if (outR2) outR2.textContent = `V_c = ${vc.toFixed(3)} m/s · t_e = ${teDays.toFixed(2)} d (model)`;
+        if (percOut) {
+          percOut.textContent = kt < 0.65
+            ? "RAPID INITIAL EXCAVATION (K_t < 0.65, model)"
+            : kt < 0.90
+              ? "TRANSIENT HYDROGRAPH LAG (0.65 <= K_t < 0.90, model)"
+              : "NEAR-EQUILIBRIUM MATURITY (K_t >= 0.90, model)";
+        }
+        if (percBox) percBox.setAttribute("data-alert", ysTrans >= 2.0 ? "true" : "false");
+        const logTMin = Math.log10(2.0);
+        const logTMax = Math.log10(240.0);
+        const mapX = (hVal) => 52.0 + ((Math.log10(hVal) - logTMin) / (logTMax - logTMin)) * 296.0;
+        const mapY = (yMeters) => Math.max(36.0, Math.min(180.0, 176.0 - (yMeters / 2.8) * 134.4));
+        const ySmVal = mapY(ysSmEq);
+        const yCsuVal = mapY(ysCsuEq);
+        const smLine = document.getElementById("tp-e16-sm-eq-line");
+        if (smLine) {
+          const ySmSvg = ySmVal.toFixed(1);
+          smLine.setAttribute("y1", ySmSvg);
+          smLine.setAttribute("y2", ySmSvg);
+        }
+        const csuLine = document.getElementById("tp-e16-csu-eq-line");
+        if (csuLine) {
+          const yCsuSvg = yCsuVal.toFixed(1);
+          csuLine.setAttribute("y1", yCsuSvg);
+          csuLine.setAttribute("y2", yCsuSvg);
+        }
+        const smLabel = document.getElementById("tp-e16-sm-label");
+        const csuLabel = document.getElementById("tp-e16-csu-label");
+        const smHigher = ySmVal <= yCsuVal; // smaller SVG y means deeper scour (higher on chart)
+        if (smLabel) {
+          const smY = smHigher ? Math.max(35.0, ySmVal - 6.0) : Math.min(179.0, ySmVal + 11.0);
+          smLabel.setAttribute("y", smY.toFixed(1));
+          smLabel.textContent = `S/M eq. y_s,SM = ${ysSmEq.toFixed(3)} m (t_e = ${teDays.toFixed(1)} d)`;
+        }
+        if (csuLabel) {
+          const csuY = smHigher ? Math.min(179.0, yCsuVal + 11.0) : Math.max(35.0, yCsuVal - 6.0);
+          csuLabel.setAttribute("y", csuY.toFixed(1));
+          csuLabel.textContent = `HEC-18 CSU = ${ysCsuEq.toFixed(3)} m`;
+        }
+        const scourCurve = document.getElementById("tp-e16-scour-curve");
+        if (scourCurve) {
+          const pts = [];
+          const steps = 16;
+          for (let i = 0; i <= steps; i += 1) {
+            const hSample = 2.0 * Math.pow(240.0 / 2.0, i / steps);
+            const ySample = evalKt(hSample) * ysSmEq;
+            pts.push(`${i === 0 ? "M" : "L"} ${mapX(hSample).toFixed(1)} ${mapY(ySample).toFixed(1)}`);
+          }
+          scourCurve.setAttribute("d", pts.join(" "));
+        }
+        if (engPoint) {
+          const cx = Math.max(52, Math.min(348, Math.round(mapX(tdHours))));
+          const cy = Math.max(36, Math.min(180, Math.round(mapY(ysTrans))));
+          engPoint.setAttribute("cx", String(cx));
+          engPoint.setAttribute("cy", String(cy));
+        }
+        return;
+      }
 
       const phi = v0;
       const radiusNm = v1;
@@ -2288,7 +2388,7 @@ export function initPlateSolvers(scope = document) {
     };
     engPhiInput.addEventListener("input", updateEng);
     engRadiusInput.addEventListener("input", updateEng);
-    if ((getActiveSlug() || "e01") === "e01") updateEng();
+    if (["e01", "e16"].includes(getActiveSlug() || "e01")) updateEng();
   }
 
   // 6. Physics Solvers (P.01-P.06)

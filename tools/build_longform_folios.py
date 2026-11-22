@@ -245,11 +245,11 @@ VOLUMES_SPEC = [
         "volume": 7,
         "code": "VOL. 07",
         "roman": "Volume VII",
-        "kicker": "VOLUME VII (VOL. 07) · POROELASTICITY, SUCTION, CONCRETE FRACTURE, THIN SHELLS, GRAPH CAPACITY & SPHERE PACKING · 7 FOLIOS",
-        "title": "Poroelasticity, Suction Stress, Concrete Size Effect, Isler and Candela Shells, Shannon Capacity & Sphere Packing",
-        "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), Engineering Folio E.15 (Hillerborg fictitious crack process zones, Bažant Type II Size Effect Law, and Bažant–Kazemi fracture energy regression in concrete), Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns), Architecture Folio A.14 (Félix Candela's doubly-ruled hyperbolic paraboloid concrete umbrellas, Pucher flat-projection membrane shear, and cantilevered edge boundaries), Mathematics Folio M.13 (Shannon zero-error graph capacity, Lovász's orthonormal theta sandwich, Haemers's rank-7 Schläfli separation, and the open seven-cycle gap), and Mathematics Folio M.14 (Sphere packing, Cohn–Elkies Fourier linear programming, Viazovska modular functions in dimensions 8 and 24, and the open dimension-4 gap).",
+        "kicker": "VOLUME VII (VOL. 07) · POROELASTICITY, SUCTION, CONCRETE FRACTURE, BRIDGE SCOUR, THIN SHELLS, GRAPH CAPACITY & SPHERE PACKING · 8 FOLIOS",
+        "title": "Poroelasticity, Suction Stress, Concrete Size Effect, Bridge Pier Scour, Isler and Candela Shells, Shannon Capacity & Sphere Packing",
+        "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), Engineering Folio E.15 (Hillerborg fictitious crack process zones, Bažant Type II Size Effect Law, and Bažant–Kazemi fracture energy regression in concrete), Engineering Folio E.16 (Shields incipient sediment motion, Sheppard–Melville horseshoe-vortex pier scour, and Melville–Chiew flood-duration time-scale lag), Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns), Architecture Folio A.14 (Félix Candela's doubly-ruled hyperbolic paraboloid concrete umbrellas, Pucher flat-projection membrane shear, and cantilevered edge boundaries), Mathematics Folio M.13 (Shannon zero-error graph capacity, Lovász's orthonormal theta sandwich, Haemers's rank-7 Schläfli separation, and the open seven-cycle gap), and Mathematics Folio M.14 (Sphere packing, Cohn–Elkies Fourier linear programming, Viazovska modular functions in dimensions 8 and 24, and the open dimension-4 gap).",
         "cadence": "Verifier-gated Living Edition release",
-        "folios": ["e13", "e14", "e15", "a13", "a14", "m13", "m14"],
+        "folios": ["e13", "e14", "e15", "e16", "a13", "a14", "m13", "m14"],
     },
 ]
 
@@ -2463,8 +2463,8 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
         lead_series = ""
         rack_cls = "tp-issue-rack tp-issue-rack-headed"
         rack_head = """      <div class="tp-issue-rack-head">
-        <p class="tp-kicker" data-en="Standalone Engineering Monographs · E.01–E.15" data-es="Monografías Independientes de Ingeniería · E.01–E.15">Standalone Engineering Monographs · E.01–E.15</p>
-        <h2 class="tp-h2" data-en="Fifteen Systems &amp; Mechanics Monographs" data-es="Quince Monografías de Sistemas y Mecánica">Fifteen Systems &amp; Mechanics Monographs</h2>
+        <p class="tp-kicker" data-en="Standalone Engineering Monographs · E.01–E.16" data-es="Monografías Independientes de Ingeniería · E.01–E.16">Standalone Engineering Monographs · E.01–E.16</p>
+        <h2 class="tp-h2" data-en="Sixteen Systems &amp; Mechanics Monographs" data-es="Dieciséis Monografías de Sistemas y Mecánica">Sixteen Systems &amp; Mechanics Monographs</h2>
       </div>
 """
     else:

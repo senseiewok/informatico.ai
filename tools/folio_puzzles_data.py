@@ -1276,6 +1276,26 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
             ("VIGA", "Elemento estructural de concreto ensayado en flexión de tres puntos a distintas escalas", "Acto I"),
         ],
     },
+    "e16": {
+        "title_en": "Folio E.16 · Bridge Pier Local Scour & Flood Time-Scale Lag Crossword",
+        "title_es": "Folio E.16 · Crucigrama de Socavación en Pilas de Puente y Avenidas",
+        "en": [
+            ("SHIELDS", "Hydraulic researcher whose 1936 Berlin study framed dimensionless incipient grain motion", "Act I"),
+            ("SCOUR", "Local excavation of riverbed sand and gravel around a bridge pier foundation", "Act I"),
+            ("VORTEX", "U-shaped horseshoe eddy formed when downward pier-nose flow wraps around both flanks", "Act II"),
+            ("FROUDE", "Dimensionless ratio V_1 / sqrt(g y_1) governing the HEC-18 CSU pier-scour equation", "Act II"),
+            ("FLOOD", "Transient high-water event whose duration t_d is often shorter than equilibrium time t_e", "Act III"),
+            ("PIER", "Vertical river bridge support column around which horseshoe vortices excavate a crater", "Act I"),
+        ],
+        "es": [
+            ("SHIELDS", "Investigador que formuló en 1936 el umbral adimensional de inicio de movimiento del grano", "Acto I"),
+            ("VORTICE", "Remolino en herradura al pie de la pila que arrastra arena fuera de la fosa", "Acto II"),
+            ("AVENIDA", "Crecida transitoria de un río cuya duración t_d suele ser menor que el tiempo de equilibrio", "Acto III"),
+            ("CAUCE", "Lecho fluvial de arena y grava donde se mide la velocidad umbral V_c", "Acto I"),
+            ("GRAVA", "Sedimento grueso cuya coraza superficial puede romperse ante flujos intensos", "Acto IV"),
+            ("PILA", "Columna circular de puente expuesta a socavación local por flujo descendente", "Acto I"),
+        ],
+    },
     "a11": {
         "title_en": "Folio A.11 · 3D Polyhedral Graphic Statics, Airy Stress & Guastavino Vaults Crossword",
         "title_es": "Folio A.11 · Crucigrama de Estática Gráfica Poliédrica 3D y Bóvedas sin Acero",

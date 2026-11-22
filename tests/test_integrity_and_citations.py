@@ -77,7 +77,7 @@ class AntiChimeraAndCitationGateTests(unittest.TestCase):
 
     def test_folio_citation_checker_passes_all_60_folios(self) -> None:
         folios = check_folio_citations.load_informatico_folios()
-        self.assertEqual(len(folios), 68)  # 55 pillar (+A.14, +M.13, +M.14, +E.15, +E.14, +E.13, +A.13) + 6 bounty + 7 toolchain (+X.07)
+        self.assertEqual(len(folios), 69)  # 56 pillar (+E.16, +A.14, +M.13, +M.14, +E.15, +E.14, +E.13, +A.13) + 6 bounty + 7 toolchain (+X.07)
         findings = check_folio_citations.check(folios)
         self.assertEqual(findings, [])
 
