@@ -559,6 +559,22 @@
     "title": "Rheological requirements for printable concretes",
     "year": 2018
   },
+  "doi:10.1016/j.compstruc.2009.06.011": {
+    "fetched": "2026-11-21",
+    "first_author": "Douthe",
+    "found": true,
+    "journal": "Computers & Structures",
+    "title": "Design of nexorades or reciprocal frame systems with the dynamic relaxation method",
+    "year": 2009
+  },
+  "doi:10.1016/j.conbuildmat.2015.04.028": {
+    "fetched": "2026-11-21",
+    "first_author": "Dietsch",
+    "found": true,
+    "journal": "Construction and Building Materials",
+    "title": "Self-tapping screws and threaded rods as reinforcement for structural timber elements – A state-of-the-art report",
+    "year": 2015
+  },
   "doi:10.1016/j.cpc.2024.109408": {
     "fetched": "2026-11-07",
     "first_author": "Capanema",
@@ -1310,6 +1326,14 @@
     "journal": "Journal of Structural Engineering",
     "title": "Structural Art and the Example of Félix Candela",
     "year": 2010
+  },
+  "doi:10.1061/(asce)st.1943-541x.0000838": {
+    "fetched": "2026-11-21",
+    "first_author": "Jockwer",
+    "found": true,
+    "journal": "Journal of Structural Engineering",
+    "title": "State-of-the-Art Review of Approaches for the Design of Timber Beams with Notches",
+    "year": 2014
   },
   "doi:10.1061/9780784415788": {
     "fetched": "2026-11-04",
@@ -3023,6 +3047,14 @@
     "title": "Cellular tensegrity: defining new rules of biological design that govern the cytoskeleton",
     "year": 1993
   },
+  "doi:10.1260/0266-3511.26.4.331": {
+    "fetched": "2026-11-21",
+    "first_author": "Gelez",
+    "found": true,
+    "journal": "International Journal of Space Structures",
+    "title": "Behavior of a Simple Nexorade or Reciprocal Frame System",
+    "year": 2011
+  },
   "doi:10.1260/0266-3511.30.1.1": {
     "fetched": "2026-11-20",
     "first_author": "Tang",
@@ -4403,6 +4435,34 @@
     "unclassified": 2,
     "year": 2018
   },
+  "scite:10.1016/j.compstruc.2009.06.011": {
+    "citing_publications": 96,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Computers & Structures",
+    "mentioning": 69,
+    "retracted": false,
+    "supporting": 2,
+    "title": "Design of nexorades or reciprocal frame systems with the dynamic relaxation method",
+    "total_smart_citations": 72,
+    "unclassified": 1,
+    "year": 2009
+  },
+  "scite:10.1016/j.conbuildmat.2015.04.028": {
+    "citing_publications": 212,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Construction and Building Materials",
+    "mentioning": 55,
+    "retracted": false,
+    "supporting": 0,
+    "title": "Self-tapping screws and threaded rods as reinforcement for structural timber elements – A state-of-the-art report",
+    "total_smart_citations": 60,
+    "unclassified": 5,
+    "year": 2015
+  },
   "scite:10.1016/j.cpc.2024.109457": {
     "citing_publications": 7,
     "contrasting": 0,
@@ -4940,6 +5000,20 @@
     "total_smart_citations": 3,
     "unclassified": 0,
     "year": 2009
+  },
+  "scite:10.1061/(asce)st.1943-541x.0000838": {
+    "citing_publications": 33,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Journal of Structural Engineering",
+    "mentioning": 34,
+    "retracted": false,
+    "supporting": 1,
+    "title": "State-of-the-Art Review of Approaches for the Design of Timber Beams with Notches",
+    "total_smart_citations": 35,
+    "unclassified": 0,
+    "year": 2014
   },
   "scite:10.1061/9780784415788": {
     "citing_publications": 445,
@@ -6430,6 +6504,20 @@
     "total_smart_citations": 1429,
     "unclassified": 143,
     "year": 2008
+  },
+  "scite:10.1260/0266-3511.26.4.331": {
+    "citing_publications": 20,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "International Journal of Space Structures",
+    "mentioning": 8,
+    "retracted": false,
+    "supporting": 0,
+    "title": "Behavior of a Simple Nexorade or Reciprocal Frame System",
+    "total_smart_citations": 9,
+    "unclassified": 1,
+    "year": 2011
   },
   "scite:10.12942/lrr-2003-1": {
     "citing_publications": 749,
