@@ -5562,7 +5562,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         <p class="tp-kicker" data-en="Pillar {PILLAR_ROMAN[p_key]} · {len(folios)} essays" data-es="Pilar {PILLAR_ROMAN[p_key]} · {len(folios)} ensayos">Pillar {PILLAR_ROMAN[p_key]} · {len(folios)} essays</p>
         <h2 id="pillar-{p_key}" class="tp-h2"><a href="{p_key}/" data-en="{esc(en)}" data-es="{esc(es_t)}">{esc(en)}</a></h2>
         <p class="tp-cover-hook" data-en="{esc(hook_en)}" data-es="{esc(hook_es)}">{esc(hook_en)}</p>
-        <a class="tp-cover-more" href="{p_key}/" data-en="See all {len(folios)} →" data-es="Ver los {len(folios)} →">See all {len(folios)} →</a>{'' if p_key != 'engineering' else ' <a class="tp-cover-more" href="engineering/#cult-classics-eng" data-en="Cult Classics: CC.01 GTI &amp; CC.03 MINI JCW →" data-es="Clásicos de Culto: CC.01 GTI y CC.03 MINI JCW →">Cult Classics: CC.01 GTI &amp; CC.03 MINI JCW →</a>'}
+        <div class="tp-cover-links"><a class="tp-cover-more" href="{p_key}/" data-en="See all {len(folios)} →" data-es="Ver los {len(folios)} →">See all {len(folios)} →</a>{'' if p_key != 'engineering' else ' <a class="tp-cover-more" href="engineering/#cult-classics-eng" data-en="Cult Classics: CC.01 GTI &amp; CC.03 MINI JCW →" data-es="Clásicos de Culto: CC.01 GTI y CC.03 MINI JCW →">Cult Classics: CC.01 GTI &amp; CC.03 MINI JCW →</a>'}</div>
       </div>
       <div class="tp-cover-row">
 {cards}
