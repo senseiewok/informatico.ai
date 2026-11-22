@@ -92,11 +92,11 @@ FOLIO = {
         ),
         (
             'Stage 3 (Erdős First-Moment Floor, Convexity at p = 1/2, and Spencer’s Local Lemma, 1947–1975): Paul Erdős '
-            '(1947, DOI 10.1090/S0002-9904-1947-08785-1) colored edges independently with red probability p, giving '
+            '(1947, DOI 10.1090/S0002-9904-1947-08785-1) counted colorings at p = 1/2; this folio extends the same count to a general red probability p, giving '
             'expected monochromatic k-cliques E[X_k(n, p)] = C(n, k)[p^C(k,2) + (1 − p)^C(k,2)]. Whenever E[X_k(n, p)] < 1, '
             'at least one coloring avoids monochromatic K_k, so R(k, k) ≥ n_1(k, p) + 1. Convexity of p^m + (1 − p)^m '
             'minimizes E[X_k] at p = 0.50, yielding asymptotic base √2 ≈ 1.414214; Joel Spencer (1975, '
-            'DOI 10.1016/0097-3165(75)90071-0) doubled the prefactor to (√2/e) k 2^(k/2) via the Lovász Local Lemma.'
+            'DOI 10.1016/0097-3165(75)90071-0) doubled the prefactor to (1 + o(1)) (√2/e) k 2^(k/2) via the Lovász Local Lemma.'
         ),
         (
             'Stage 4 (Asymmetric Book Algorithm, Tier T0–T1 Hypothesis, and Falsification Conditions, 1988–2026): '
@@ -121,8 +121,7 @@ FOLIO = {
         'title': 'Exhaustive K_6 Goodman Check, Paley P(17) over F_17 & Rational First-Moment Thresholds',
         'body': (
             'Scope boundary: verify_m15_ramsey_bounds.py recomputes offline from scratch all 32,768 two-colorings of K_6 '
-            '(minimum 2 monochromatic triangles across 1,760 colorings), the Z_8 circulant {1, 4, 7} and 9-vertex parity '
-            'bound for R(3, 4) = 9, all 2,380 four-subsets of Paley P(17) for R(4, 4) = 18, and rational Fraction union '
+            '(minimum 2 monochromatic triangles across 1,760 colorings), the Z_8 circulant {1, 4, 7} witness for R(3, 4) > 8, all 2,380 four-subsets of Paley P(17) for R(4, 4) > 17 (the matching upper bounds are the classical degree arguments, restated and not machine-checked), and rational Fraction union '
             'bounds across k ∈ [3..10] and p ∈ [0.20..0.80]. The computer-assisted bounds R(5, 5) ≥ 43 (Exoo 1989), '
             'R(5, 5) ≤ 46 (Angeltveit & McKay 2026), and R(k, k) ≤ (4 − ε)^k (Campos et al. 2026) are reported from '
             'those published papers and are not re-derived by this script.'
@@ -307,14 +306,12 @@ LONGFORM_DATA = {
         'Everyday analogy: Consider an old telephone switchboard where every pair of jacks is linked by either a '
         'crimson patch cord or an indigo patch cord. An operator scanning for a tangled group of five mutually '
         'cross-patched jacks pulls one master jack and sorts its remaining cords into a crimson bundle and an indigo '
-        'bundle; whichever bundle holds at least half the board becomes the next search pool. If crimson cords '
-        'outnumber indigo cords across a region, the operator instead collects an entire spine of jacks that share '
-        'one huge crimson neighborhood—a combinatorial book whose pages all connect back to the spine. Where the '
+        'bundle; whichever bundle holds at least half the board becomes the next search pool. A newer strategy instead builds, one jack at a time, a small group of mutually crimson jacks (the spine) that all share one large crimson neighborhood (the pages): a combinatorial book. Where the '
         'analogy stops: physical patch cords sit on a small fixed panel, whereas graph neighborhoods lose half their '
         'vertices at each balanced step and shift edge density dynamically across dozens of recursive stages.'
     ),
     'act2_plain_primer': (
-        'Our interactive Ramsey workbench couples two controls directly to our rational Python verifier. The first '
+        'Our interactive Ramsey workbench has two controls and mirrors, in the browser, the arithmetic of our rational Python verifier. The first '
         'slider sets Clique Target Size from three up to ten vertices, stepping from the settled three-clique and '
         'four-clique numbers through the open five-clique window and into asymptotic territory where only exponential '
         'bounds are known. The second slider adjusts Red Edge Density between twenty percent and eighty percent in '
@@ -352,11 +349,7 @@ LONGFORM_DATA = {
         'the symmetric Lovász Local Lemma to '
         'weakly dependent k-subsets sharing at least two vertices, doubling the lower prefactor to (√2/e) k 2^(k/2). '
         'On the upper side, Erdős–Szekeres steps one vertex at a time, halving the surviving pool at worst and '
-        'producing C(2k − 2, k − 1) < 4^(k−1). Campos, Griffiths, Morris, and Sahasrabudhe (2026) observed that if '
-        'red edge density inside the active pool stays stuck near 1/2, quasirandomness control applies, whereas if '
-        'neighborhoods drift slightly above 1/2, one can instead extract a whole book B_{t, m}—a red t-clique spine '
-        'joined in red to a common page set—absorbing t vertices in one density-boost step without paying t separate '
-        'pigeonhole halvings, pushing the upper growth rate down to (4 − ε)^k for a positive constant ε > 0.'
+        'producing C(2k − 2, k − 1) < 4^(k−1). Campos, Griffiths, Morris, and Sahasrabudhe (2026) introduced a book algorithm that, without using quasirandomness, builds a large monochromatic book (a clique joined in one color to a common set of vertices) one step at a time through red, big-blue, and density-boost steps, giving R(k, k) ≤ (4 − ε)^k for a positive constant ε > 0.'
     ),
     'walkthrough': [
         (
@@ -383,15 +376,11 @@ LONGFORM_DATA = {
         'Ramsey theory forged two tools that now sit across theoretical computer science, coding theory, and '
         'combinatorial optimization: the probabilistic method (Folio M.03) and algebraic pseudorandomness. Graphs that '
         'mimic coin flips—such as Paley quadratic-residue graphs—inspire explicit expanders, low-discrepancy samplers, '
-        'and communication networks resilient to localized edge failures, while linear-programming flag algebras and '
-        'symmetry-breaking search drive modern bounds on finite Ramsey instances like Angeltveit and McKay’s 2026 '
-        'reduction of R(5, 5) from 48 down to 46.'
+        'and communication networks resilient to localized edge failures, while linear programming and large computer case checks drive modern bounds on finite Ramsey instances, such as Angeltveit and McKay’s 2026 upper bound R(5, 5) ≤ 46.'
     ),
     'act4_deepening': (
         'Under the Tier T0–T1 evidence discipline of this monograph, three layers stay strictly separated. First, '
-        'our pure-Python script skills/math/m15/verify_m15_ramsey_bounds.py recomputes R(3, 3) = 6 (all 32,768 K_6 '
-        'colorings), R(3, 4) = 9 (Z_8 circulant {1, 4, 7} and K_9 odd degree sum 27), R(4, 4) = 18 (all 2,380 '
-        'four-subsets of Paley P(17)), and rational Fraction union bounds n_1(k, p) across k ∈ [3..10] and '
+        'our pure-Python script skills/math/m15/verify_m15_ramsey_bounds.py recomputes R(3, 3) = 6 (all 32,768 K_6 colorings) and the lower-bound witnesses for R(3, 4) > 8 (Z_8 circulant {1, 4, 7}) and R(4, 4) > 17 (all 2,380 four-subsets of Paley P(17)); it restates, but does not machine-check, the matching upper-bound arguments (K_9 odd degree sum 27, and 9 + 9 = 18); and it computes rational Fraction union bounds n_1(k, p) across k ∈ [3..10] and '
         'p ∈ [0.20..0.80], failing deterministically under --planted-defect when C_5, Z_8, P(17), or strict < 1 are '
         'corrupted. Second, the bounds 43 ≤ R(5, 5) ≤ 46 (Exoo 1989; Angeltveit & McKay 2026) and R(k, k) ≤ (4 − ε)^k '
         '(Campos, Griffiths, Morris & Sahasrabudhe 2026) are cited from peer-reviewed publications with ε > 0 kept '
@@ -542,11 +531,10 @@ ES_TRANSLATION = {
         'aunque en dos mil veintitrés el método del libro redujo exponencialmente un techo de ochenta y ocho años.'
     ),
     'deep_es': (
-        'En el modelo de Ramsey (1930, DOI 10.1112/plms/s2-30.1.264) y Erdős (1947, '
-        'DOI 10.1090/S0002-9904-1947-08785-1), colorear cada arista de K_n en rojo con probabilidad p produce un '
+        'En el argumento probabilístico de Erdős (1947, DOI 10.1090/S0002-9904-1947-08785-1), que da una cota inferior para los números de Ramsey (1930, DOI 10.1112/plms/s2-30.1.264), colorear cada arista de K_n en rojo con probabilidad p produce un '
         'conteo esperado E[X_k(n, p)] = C(n, k)[p^C(k,2) + (1 − p)^C(k,2)]. Cuando E[X_k(n, p)] < 1 en aritmética '
         'racional, existe al menos una coloración sin K_k monocromático, dando R(k, k) ≥ n_1(k, p) + 1 y base '
-        'asintótica √2 ≈ 1.414214 (duplicada en factor lineal por Spencer 1975, DOI 10.1016/0097-3165(75)90071-0). '
+        'asintótica √2 ≈ 1.414214 (Spencer 1975, DOI 10.1016/0097-3165(75)90071-0, duplicó la constante del prefactor, no la base). '
         'Nuestro script fuera de línea comprueba las 32,768 coloraciones de K_6 con mínimo de 2 triángulos en 1,760 '
         'casos (Goodman 1959, DOI 10.1080/00029890.1959.11989408), el grafo circulante en Z_8 y la paridad 9 × 3 = 27 '
         'para R(3, 4) = 9, y los 2,380 subconjuntos de cuatro vértices del grafo de Paley P(17) sobre F_17 para '

@@ -841,7 +841,8 @@ export function initPlateWebGL(scope = document) {
     const lensBtns = wrap ? wrap.querySelectorAll(".tp-lens-btn[data-lens-mode]") : [];
     const pillarAttr = (canvas.getAttribute("data-pillar-webgl") || "engineering").toLowerCase();
     const folioAttr = (canvas.getAttribute("data-folio-webgl") || "e01").toLowerCase();
-    const folioNum = Math.max(0, Math.min(15, (parseInt(folioAttr.replace(/\D+/g, ""), 10) || 1) - 1));
+    const folioCap = pillarAttr === "math" ? 14 : 13;   // index 14 is the M.15 surface; other pillars keep their last view
+    const folioNum = Math.max(0, Math.min(folioCap, (parseInt(folioAttr.replace(/\D+/g, ""), 10) || 1) - 1));
     const pillarIndex = pillarAttr === "engineering" ? 0.0
       : pillarAttr === "architecture" ? 1.0
       : pillarAttr === "physics" ? 2.0

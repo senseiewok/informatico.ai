@@ -89,7 +89,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 - [M.12 Public Lean 4 Repositories and Post-Quantum ML-KEM](https://informatico.ai/math/m12/): What the README of the public Lean 4 repository anthropics/formal-math says it contains, beside the NIST FIPS 203 lattice standard; none checked here.
 - [M.13 Shannon Zero-Error Graph Capacity and Lovász Theta](https://informatico.ai/math/m13/): How Shannon zero-error block codes, Lovász's theta umbrella and Haemers's rank bound meet on odd cycles, with the seven-cycle limit still open.
 - [M.14 Sphere Packing, Cohn–Elkies Bounds & Open Gaps](https://informatico.ai/math/m14/): How Cohn–Elkies Fourier linear programming, Viazovska modular functions in dimensions 8 and 24, and Laguerre bounds meet open gaps in dimension four.
-- [M.15 Diagonal Ramsey Numbers & the Book Algorithm](https://informatico.ai/math/m15/): How Paley quadratic residues, Erdős random coin-flip floors and the 2026 book algorithm frame diagonal Ramsey numbers, with R(5, 5) open in [43, 46].
+- [M.15 Diagonal Ramsey Numbers & the Book Algorithm](https://informatico.ai/math/m15/): How Paley quadratic residues, Erdős random coin-flip floors and the 2023 book algorithm frame diagonal Ramsey numbers, with R(5, 5) open in [43, 46].
 
 ## Grand Challenges & Open Problems Crucible (B.01–B.06)
 
