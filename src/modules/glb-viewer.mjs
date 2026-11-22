@@ -64,8 +64,14 @@ export function parseGlbBuffer(buffer) {
   if (20 + c0Len > buffer.byteLength) {
     throw new Error(`JSON chunk length (${c0Len}) exceeds buffer bounds`);
   }
+  if (c0Len % 4 !== 0) {
+    throw new Error(`JSON chunk length (${c0Len}) is not 4-byte aligned`);
+  }
   const jsonText = new TextDecoder("utf-8").decode(new Uint8Array(buffer, 20, c0Len));
   const gltf = JSON.parse(jsonText);
+  if (gltf.asset?.version !== "2.0") {
+    throw new Error(`Unsupported glTF asset.version: ${gltf.asset?.version}`);
+  }
 
   const binHeaderOffset = 20 + c0Len;
   if (binHeaderOffset + 8 > buffer.byteLength) {
@@ -80,6 +86,9 @@ export function parseGlbBuffer(buffer) {
   if (binStart + c1Len > buffer.byteLength) {
     throw new Error(`BIN chunk length (${c1Len}) exceeds buffer bounds`);
   }
+  if (c1Len % 4 !== 0 || binStart + c1Len !== totalLen) {
+    throw new Error(`BIN chunk alignment or totalLength mismatch`);
+  }
 
   const prim = gltf.meshes?.[0]?.primitives?.[0];
   if (!prim) {
@@ -87,45 +96,90 @@ export function parseGlbBuffer(buffer) {
   }
   const accessors = gltf.accessors || [];
   const bufferViews = gltf.bufferViews || [];
+  const compBytes = { 5120: 1, 5121: 1, 5122: 2, 5123: 2, 5125: 4, 5126: 4 };
+  const typeArity = { SCALAR: 1, VEC2: 2, VEC3: 3, VEC4: 4, MAT2: 4, MAT3: 9, MAT4: 16 };
 
-  function sliceAccessor(accIdx) {
+  for (let i = 0; i < bufferViews.length; i += 1) {
+    const bv = bufferViews[i];
+    const bufIdx = bv?.buffer ?? 0;
+    const bvOff = bv?.byteOffset ?? 0;
+    const bvLen = bv?.byteLength;
+    if (!bv || bufIdx !== 0 || !Number.isInteger(bvOff) || !Number.isInteger(bvLen)) {
+      throw new Error(`Invalid bufferView[${i}] integer fields or buffer reference`);
+    }
+    if (bvOff < 0 || bvLen < 0 || bvOff + bvLen > c1Len) {
+      throw new Error(`BufferView[${i}] [${bvOff}, ${bvOff + bvLen}] exceeds BIN chunk`);
+    }
+  }
+
+  for (let i = 0; i < accessors.length; i += 1) {
+    const acc = accessors[i];
+    const bvIdx = acc?.bufferView;
+    const bv = Number.isInteger(bvIdx) ? bufferViews[bvIdx] : undefined;
+    const cb = compBytes[acc?.componentType];
+    const ar = typeArity[acc?.type];
+    const accOff = acc?.byteOffset ?? 0;
+    const cnt = acc?.count;
+    if (!bv || !cb || !ar || !Number.isInteger(accOff) || !Number.isInteger(cnt)) {
+      throw new Error(`Accessor[${i}] invalid bufferView, integer offset/count, or type`);
+    }
+    const elemSz = cb * ar;
+    if (bv.byteStride !== undefined && bv.byteStride !== elemSz) {
+      throw new Error(`BufferView[${bvIdx}] unsupported byteStride ${bv.byteStride}`);
+    }
+    const needed = cnt * elemSz;
+    if (cnt <= 0 || accOff < 0 || accOff + needed > bv.byteLength) {
+      throw new Error(`Accessor[${i}] span [${accOff}, ${accOff + needed}] exceeds bufferView`);
+    }
+  }
+
+  function sliceAccessor(accIdx, expectedType, expectedComp) {
     if (typeof accIdx !== "number" || accIdx < 0 || accIdx >= accessors.length) {
       throw new Error(`Accessor index ${accIdx} out of bounds`);
     }
     const acc = accessors[accIdx];
+    if (acc.type !== expectedType || (expectedComp !== undefined && acc.componentType !== expectedComp)) {
+      throw new Error(`Accessor ${accIdx} unexpected type/componentType`);
+    }
     const bv = bufferViews[acc.bufferView];
-    if (!bv) {
-      throw new Error(`Missing bufferView ${acc.bufferView}`);
-    }
+    const elemSz = compBytes[acc.componentType] * typeArity[acc.type];
     const byteOffset = (bv.byteOffset || 0) + (acc.byteOffset || 0);
-    const byteLength = bv.byteLength || 0;
-    if (byteOffset < 0 || byteOffset + byteLength > c1Len) {
-      throw new Error(`BufferView [${byteOffset}, ${byteOffset + byteLength}] exceeds BIN chunk`);
-    }
-    return { acc, absOffset: binStart + byteOffset, byteLength };
+    const needed = acc.count * elemSz;
+    return { acc, absOffset: binStart + byteOffset, byteLength: needed };
   }
 
-  const posSlice = sliceAccessor(prim.attributes.POSITION);
+  const posSlice = sliceAccessor(prim.attributes.POSITION, "VEC3", 5126);
   const vCount = posSlice.acc.count;
   const positions = new Float32Array(buffer.slice(posSlice.absOffset, posSlice.absOffset + vCount * 12));
+  for (let i = 0; i < positions.length; i += 1) {
+    if (!Number.isFinite(positions[i])) throw new Error("Non-finite POSITION float in GLB");
+  }
 
   let normals;
   if (typeof prim.attributes.NORMAL === "number") {
-    const normSlice = sliceAccessor(prim.attributes.NORMAL);
+    const normSlice = sliceAccessor(prim.attributes.NORMAL, "VEC3", 5126);
+    if (normSlice.acc.count !== vCount) throw new Error("NORMAL count !== POSITION count");
     normals = new Float32Array(buffer.slice(normSlice.absOffset, normSlice.absOffset + vCount * 12));
+    for (let i = 0; i < normals.length; i += 1) {
+      if (!Number.isFinite(normals[i])) throw new Error("Non-finite NORMAL float in GLB");
+    }
   } else {
     normals = new Float32Array(vCount * 3);
   }
 
   let colors;
   if (typeof prim.attributes.COLOR_0 === "number") {
-    const colSlice = sliceAccessor(prim.attributes.COLOR_0);
+    const colSlice = sliceAccessor(prim.attributes.COLOR_0, "VEC3", 5126);
+    if (colSlice.acc.count !== vCount) throw new Error("COLOR_0 count !== POSITION count");
     colors = new Float32Array(buffer.slice(colSlice.absOffset, colSlice.absOffset + vCount * 12));
+    for (let i = 0; i < colors.length; i += 1) {
+      if (!Number.isFinite(colors[i])) throw new Error("Non-finite COLOR_0 float in GLB");
+    }
   } else {
     colors = new Float32Array(vCount * 3).fill(0.25);
   }
 
-  const idxSlice = sliceAccessor(prim.indices);
+  const idxSlice = sliceAccessor(prim.indices, "SCALAR");
   const iCount = idxSlice.acc.count;
   let indices;
   if (idxSlice.acc.componentType === 5125) {
@@ -294,48 +348,80 @@ export function encodeCustomGlbBuffer(parsed, scaleVec, slug, p0, p1) {
 }
 
 /**
- * Encode a scaled mesh into a clean-room ISO 10303-21 AP242 ASCII .STEP file.
+ * Encode a scaled mesh into a clean-room ISO 10303-21 faceted POLY_LOOP .STEP file (AP242 header).
  */
 export function encodeCustomStepString(parsed, scaleVec, slug, p0, p1) {
   const [sx, sy, sz] = scaleVec;
+  const safeSlug = /^[a-z0-9_-]+$/i.test(String(slug || "")) ? String(slug) : "x01";
+  const sp0 = Number.isFinite(Number(p0)) ? Number(p0) : 0;
+  const sp1 = Number.isFinite(Number(p1)) ? Number(p1) : 0;
   const lines = [
     "ISO-10303-21;",
     "HEADER;",
-    `FILE_DESCRIPTION(('Informatico.ai Parametric Educational Solid (${slug.toUpperCase()})','Not certified for fitness'),'2;1');`,
-    `FILE_NAME('${slug}_custom_${p0}_${p1}.step','2026-11-08T00:00:00',('Informatico.ai Toolbox'),('Sensei Ewok Lab'),'clean-room-stdlib','Informatico.ai','CC0-1.0 / CC-BY-4.0');`,
-    "FILE_SCHEMA(('AUTOMOTIVE_DESIGN { 1 0 10303 214 1 1 1 1 }'));",
+    `FILE_DESCRIPTION(('Informatico.ai Parametric Educational Solid (${safeSlug.toUpperCase()})','Not certified for fitness'),'2;1');`,
+    `FILE_NAME('${safeSlug}_custom_${sp0}_${sp1}.step','2026-11-08T00:00:00',('Informatico.ai Toolbox'),('Sensei Ewok Lab'),'clean-room-stdlib','Informatico.ai','CC0-1.0 / CC-BY-4.0');`,
+    "FILE_SCHEMA(('AP242_MANAGED_MODEL_BASED_3D_ENGINEERING_MIM_LF { 1 0 10303 442 1 1 4 }'));",
     "ENDSEC;",
     "DATA;",
+    "#1 = APPLICATION_CONTEXT('managed model based 3d engineering');",
+    `#2 = PRODUCT('${safeSlug}','${safeSlug}','Educational CAD Solid',(#1));`,
+    "#3 = PRODUCT_DEFINITION_FORMATION('1.0','First Edition',#2);",
+    "#4 = PRODUCT_DEFINITION('design','',#3,#1);",
+    "#5 = ( GEOMETRIC_REPRESENTATION_CONTEXT(3) GLOBAL_UNCERTAINTY_ASSIGNED_CONTEXT((#6)) GLOBAL_UNIT_ASSIGNED_CONTEXT((#7,#8,#9)) REPRESENTATION_CONTEXT('3D','3D Context') );",
+    "#6 = UNCERTAINTY_MEASURE_WITH_UNIT(LENGTH_MEASURE(1.0E-05),#7,'distance_accuracy_value','confusion accuracy');",
+    "#7 = ( LENGTH_UNIT() NAMED_UNIT(*) SI_UNIT(.MILLI.,.METRE.) );",
+    "#8 = ( NAMED_UNIT(*) PLANE_ANGLE_UNIT() SI_UNIT($,.RADIAN.) );",
+    "#9 = ( NAMED_UNIT(*) SI_UNIT($,.STERADIAN.) SOLID_ANGLE_UNIT() );",
   ];
-  let eid = 1;
+  let eid = 10;
   const vIds = [];
+  const scaledVerts = [];
   for (let i = 0; i < parsed.vertexCount; i += 1) {
-    const x = (parsed.positions[i * 3] * sx).toFixed(4);
-    const y = (parsed.positions[i * 3 + 1] * sy).toFixed(4);
-    const z = (parsed.positions[i * 3 + 2] * sz).toFixed(4);
+    const vx = parsed.positions[i * 3] * sx;
+    const vy = parsed.positions[i * 3 + 1] * sy;
+    const vz = parsed.positions[i * 3 + 2] * sz;
+    scaledVerts.push([vx, vy, vz]);
     const cpId = eid++;
     const vpId = eid++;
-    lines.push(`#${cpId} = CARTESIAN_POINT('V${i}',(${x},${y},${z}));`);
-    lines.push(`#${vpId} = VERTEX_POINT('VP${i}',#${cpId});`);
+    lines.push(`#${cpId} = CARTESIAN_POINT('',(${vx.toFixed(5)},${vy.toFixed(5)},${vz.toFixed(5)}));`);
+    lines.push(`#${vpId} = VERTEX_POINT('',#${cpId});`);
     vIds.push(vpId);
   }
   const faceIds = [];
   for (let t = 0; t < parsed.indices.length; t += 3) {
-    const a = vIds[parsed.indices[t]];
-    const b = vIds[parsed.indices[t + 1]];
-    const c = vIds[parsed.indices[t + 2]];
+    const i0 = parsed.indices[t];
+    const i1 = parsed.indices[t + 1];
+    const i2 = parsed.indices[t + 2];
+    const pA = scaledVerts[i0];
+    const pB = scaledVerts[i1];
+    const pC = scaledVerts[i2];
+    const ux = pB[0] - pA[0], uy = pB[1] - pA[1], uz = pB[2] - pA[2];
+    const vx = pC[0] - pA[0], vy = pC[1] - pA[1], vz = pC[2] - pA[2];
+    let nx = uy * vz - uz * vy;
+    let ny = uz * vx - ux * vz;
+    let nz = ux * vy - uy * vx;
+    const nLen = Math.hypot(nx, ny, nz) || 1.0;
+    nx /= nLen; ny /= nLen; nz /= nLen;
+    const dirId = eid++;
+    const plPtId = eid++;
+    const axisId = eid++;
+    const planeId = eid++;
     const loopId = eid++;
     const boundId = eid++;
     const faceId = eid++;
-    lines.push(`#${loopId} = POLY_LOOP('L${t / 3}',(#${a},#${b},#${c}));`);
-    lines.push(`#${boundId} = FACE_OUTER_BOUND('B${t / 3}',#${loopId},.T.);`);
-    lines.push(`#${faceId} = ADVANCED_FACE('F${t / 3}',(#${boundId}),$,.T.);`);
+    lines.push(`#${dirId} = DIRECTION('',(${nx.toFixed(6)},${ny.toFixed(6)},${nz.toFixed(6)}));`);
+    lines.push(`#${plPtId} = CARTESIAN_POINT('',(${pA[0].toFixed(5)},${pA[1].toFixed(5)},${pA[2].toFixed(5)}));`);
+    lines.push(`#${axisId} = AXIS2_PLACEMENT_3D('',#${plPtId},#${dirId},$);`);
+    lines.push(`#${planeId} = PLANE('',#${axisId});`);
+    lines.push(`#${loopId} = POLY_LOOP('',(#${vIds[i0]},#${vIds[i1]},#${vIds[i2]}));`);
+    lines.push(`#${boundId} = FACE_OUTER_BOUND('',#${loopId},.T.);`);
+    lines.push(`#${faceId} = ADVANCED_FACE('',(#${boundId}),#${planeId},.T.);`);
     faceIds.push(`#${faceId}`);
   }
   const shellId = eid++;
   const brepId = eid++;
-  lines.push(`#${shellId} = CLOSED_SHELL('${slug}_shell',(${faceIds.join(",")}));`);
-  lines.push(`#${brepId} = MANIFOLD_SOLID_BREP('${slug}_brep',#${shellId});`);
+  lines.push(`#${shellId} = CLOSED_SHELL('',(${faceIds.join(",")}));`);
+  lines.push(`#${brepId} = MANIFOLD_SOLID_BREP('${safeSlug}',#${shellId});`);
   lines.push("ENDSEC;");
   lines.push("END-ISO-10303-21;");
   return lines.join("\n") + "\n";
@@ -834,10 +920,11 @@ export function initGlbViewers(scope = document) {
       let out = ["", "", "", ""];
       if (slug === "x01") {
         const vol = p0 * 30.0 * p1;
+        const dispVol = knockoutActive ? (11.0 / 12.0) * vol : vol;
         out = [
-          knockoutActive ? "CORRUPT · Half-Edge Mismatch" : "glTF v2 · 1,708 B (PASS)",
-          knockoutActive ? "V=14, E=36, F=24 · 2 UNPAIRED" : "V=14, E=36, F=24 · χ=2",
-          `${vol.toFixed(1)} mm³ (${knockoutActive ? "normal flipped" : "err = 0.00%"})`,
+          knockoutActive ? "CORRUPT · Half-Edge Mismatch" : "glTF v2 · 2,716 B (PASS)",
+          knockoutActive ? "V=14, E=36, F=24 · 3 DUP / 3 UNPAIRED" : "V=14, E=36, F=24 · χ=2",
+          `${dispVol.toFixed(1)} mm³ (${knockoutActive ? "−8.33% · Tri 0 flipped" : "err = 0.00%"})`,
           pass ? "4/4 Fuzz + Defect REJECTED" : "PLANTED DEFECT TRIGGERED",
         ];
       } else if (slug === "x02") {
@@ -913,7 +1000,7 @@ export function initGlbViewers(scope = document) {
       if (box3) box3.setAttribute("data-alert", pass ? "false" : "true");
       if (caption) {
         caption.textContent = pass
-          ? `Certified Geometry Regime (${slug.toUpperCase()}) — All 4 stage invariants satisfied (${out[3]}).`
+          ? `Verified Geometry Regime (${slug.toUpperCase()}) — All 4 stage invariants satisfied (${out[3]}).`
           : `Planted-Defect / Boundary Knockout (${slug.toUpperCase()}) — Geometric invariant violated (${out[3]}).`;
       }
       const vReg = VIEWER_REGISTRY.get(slug);

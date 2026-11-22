@@ -14,7 +14,7 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Toolbox Folio**: `X.01` (`TOOL-CORE-1` · `REV 1.0`, Redated `2026-11-08`)
 - **Canonical URL**: https://informatico.ai/toolchain/x01/ (Spanish: https://informatico.ai/es-mx/toolchain/x01/)
 - **Track Badge**: TOOLBOX X.01 · ZERO-BUILD WEBGL2 GLB INSPECTOR + STDLIB VALIDATOR
-- **Reference Standard / Repository**: [Khronos glTF 2.0 Specification (ISO/IEC 12113)](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html)
+- **Reference Standard / Repository**: [Khronos glTF 2.0 Specification (ISO/IEC 12113:2022)](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html)
 - **Governing Equation**: `V = (1/6) ∑_{f ∈ F} v_0 · (v_1 × v_2) · χ = V − E + F = 2 − 2g · 3F = 2E`
 - **Deterministic Generator**: `python skills/toolchain/x01/make_x01.py`
 - **Byte-Level Stdlib Verifier**: `python skills/toolchain/x01/verify_x01_toolchain_x01_glb_inspector_validator.py`
@@ -22,8 +22,8 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Primary Scite Anchor DOI**: https://doi.org/10.1080/10867651.1996.10487458 (Scite Report: https://scite.ai/reports/10.1080/10867651.1996.10487458)
 
 ## 2. Small-Studio & Independent-Practitioner Open-Tool Workflow
-- **EN**: Zero-Cost Studio Workflow (Blender 4.2 + FreeCAD 1.0 + Python 3 stdlib): Run make_x01.py to emit x01_artifact.glb, x01_artifact.step, and x01_artifact.3mf; audit any client or subcontractor .glb mesh for non-manifold edges, inverted normals, or chunk corruption in < 0.05s before opening a slicer or BIM model.
-- **ES-MX**: Flujo de Estudio sin Costo (Blender 4.2 + FreeCAD 1.0 + Python 3 stdlib): Ejecuta make_x01.py para generar x01_artifact.glb, x01_artifact.step y x01_artifact.3mf; audita cualquier malla .glb en busca de bordes no-variedad, normales invertidas o bloques corruptos en < 0.05s antes de enviarla a corte o BIM.
+- **EN**: Zero-Cost Studio Workflow (Blender 4.2 + FreeCAD 1.0 + Python 3 stdlib): Run make_x01.py to emit x01_artifact.glb (2,716 B), faceted Part-21 x01_artifact.step (10,356 B), and x01_artifact.3mf (1,672 B); run verify_x01 to check non-manifold seams, flipped normals, and chunk bounds in < 0.05s before opening a slicer or BIM model.
+- **ES-MX**: Flujo de Estudio sin Costo (Blender 4.2 + FreeCAD 1.0 + Python 3 stdlib): Ejecuten make_x01.py para generar x01_artifact.glb (2,716 B), x01_artifact.step facetado Parte 21 (10,356 B) y x01_artifact.3mf (1,672 B); auditen cualquier malla .glb en busca de bordes no-variedad, normales invertidas o bloques corruptos en < 0.05s antes de enviarla a corte o BIM.
 
 ## 3. Tool-Neutral Agent Packet & Security Boundary (`security-runtime`)
 1. **Generate Deterministic 3D Artifacts Locally**: Run `python skills/toolchain/x01/make_x01.py` inside the repository working directory to emit `src/toolchain/x01/files/x01_artifact.*` and `manifest.json`.
@@ -31,28 +31,28 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 3. **Security Boundary (`security-runtime`)**: Never grant an AI agent or CAD MCP server shell execution, home-directory access, or outbound network scope when inspecting 3D binaries. Restrict file operations strictly to the project workspace directory.
 
 ## 4. Deterministic Verification & Falsification Rules
-1. Binary Chunk Containment Invariant: Every glTF bufferView byteOffset + byteLength must satisfy 0 ≤ start ≤ end ≤ BIN_byteLength, and every triangle index must be strictly less than POSITION.count.
-2. Watertight 2-Manifold Closure Invariant: Every directed half-edge (u, v) must appear exactly once and have a unique reverse half-edge (v, u), enforcing 3F = 2E and χ = V − E + F = 2.
-3. Planted-Defect Sensitivity Invariant: Flipping the winding of Triangle 0 ((i_0, i_1, i_2) → (i_0, i_2, i_1)) must immediately trigger duplicate/unpaired half-edge failure and alter the divergence volume.
+1. Binary Chunk Containment Invariant: JSON and BIN chunks must be 4-byte aligned, every glTF bufferView and accessor span must lie within [0, BIN_byteLength], and every triangle index must be below POSITION.count.
+2. Watertight Single-Shell 2-Manifold Invariant: Across GLB, STEP, and 3MF, every directed half-edge (u, v) appears once with reverse twin (v, u) on one connected shell (β_0 = 1, 3F = 2E, χ = 2).
+3. Planted-Defect Sensitivity Invariant: Flipping Triangle 0 ((0, 3, 8) → (0, 8, 3)) produces 3 duplicate and 3 unpaired half-edges and drops signed volume from 24,000.0 to 22,000.0 mm³.
 
 ## 5. 4-Stage Geometry & Verification Pipeline
-- Stage 1: Khronos GLB Binary Header & Chunk Bounds Audit — Unpack the 12-byte header (<3I: magic 0x46546C67, version 2, total_len) and verify that Chunk 0 (JSON) and Chunk 1 (BIN) byte offsets and accessor bufferViews lie strictly within the file.
-- Stage 2: Directed Half-Edge Manifold Closure (3F = 2E) — Build the directed half-edge table {(u, v)} across all triangles and assert zero degenerate triangles, zero duplicate half-edges, and 100% reverse half-edge pairing (v, u) ∈ E.
-- Stage 3: Euler–Poincaré Characteristic & Divergence-Theorem Volume — Compute χ = V − E + F = 2 − 2g and integrate V_mesh = (1/6) ∑ v_0 · (v_1 × v_2) to check numerical agreement with the analytical solid volume (24,000.0 mm³).
-- Stage 4: Malformed-Binary Fuzz Suite & Planted-Defect Knockout — Run the parser and topological verifier against 4 malformed GLB fuzz files (truncated header, chunk OOB, vertex index OOB, flipped normal) and assert that every defect fails.
+- Stage 1: Khronos GLB Binary Header & Chunk Bounds Audit — Unpack the 12-byte header (<3I: magic 0x46546C67, version 2, total_len = 2,716 B) and check 4-byte-aligned JSON (1,896 B) and BIN (792 B) chunks plus all four bufferViews and finite float attributes.
+- Stage 2: Directed Half-Edge Manifold Closure (3F = 2E, β_0 = 1) — Build the directed half-edge table {(u, v)} across all 24 triangles and check zero degenerate faces, zero duplicate half-edges, reverse twin pairing (v, u), and single-shell connectivity.
+- Stage 3: Cross-Format Volume & Topology Parity — Compute χ = V − E + F = 2 and V_mesh = (1/6) ∑ v_0 · (v_1 × v_2) = 24,000.0 mm³ across x01_artifact.glb, comment-stripped Part-21 x01_artifact.step, and millimeter-unit x01_artifact.3mf.
+- Stage 4: Malformed-Binary Fuzz Suite & Planted-Defect Knockout — Run the parser and manifold verifier against 4 malformed GLB fuzz files (truncated header, chunk OOB, vertex index OOB, flipped normal) and --planted-defect, checking that each defect fails.
 
 ## 6. Verified Reference Telemetry (T0/T1)
-- **GLB Binary Header & Chunks**: `glTF v2 · 1,708 B (PASS)`
+- **GLB Binary Header & Chunks**: `glTF v2 · 2,716 B (PASS)`
 - **2-Manifold Topology (V, E, F)**: `V=14, E=36, F=24 · χ=2`
 - **Divergence Signed Volume**: `24,000.0 mm³ (err = 0.00%)`
 - **Fuzz & Knockout Gate**: `4/4 Fuzz + Defect REJECTED`
 
 ## 7. Exact T0–T3 Truth Boundary
 ### Verified Geometry in Repository Today (T0/T1)
-- Zero-dependency WebGL2 GLB loader and interactive orbit/wireframe/clipping inspector in src/modules/glb-viewer.mjs.
-- Deterministic Python stdlib generator (skills/toolchain/x01/make_x01.py) emitting x01_artifact.glb, x01_artifact.step, x01_artifact.3mf, manifest.json, and 4 malformed fuzz fixtures.
-- Byte-level stdlib verifier (verify_x01_toolchain_x01_glb_inspector_validator.py) checking χ = 2, V = 24,000.0 mm³, SHA-256 manifest match, 4/4 fuzz rejection, and planted-defect knockout.
+- Zero-dependency WebGL2 GLB inspector and client-side GLB/STEP/DXF exporter in src/modules/glb-viewer.mjs (parseGlbBuffer + encodeCustomStepString).
+- Deterministic Python stdlib generator (skills/toolchain/x01/make_x01.py) emitting x01_artifact.glb (2,716 B), faceted ISO 10303-21 POLY_LOOP x01_artifact.step (10,356 B), x01_artifact.3mf (1,672 B), manifest.json, and 4 malformed fuzz fixtures.
+- Byte-level stdlib verifier (verify_x01_toolchain_x01_glb_inspector_validator.py) checking V = 14, E = 36, F = 24, β_0 = 1, χ = 2, and V = 24,000.0 mm³ across GLB, STEP, and 3MF plus 4/4 fuzz and planted-defect rejection.
 
 ### Educational Boundary & Edition 2 Horizon (T2/T3)
-- Educational Geometry Boundary: Every file on this page is an educational artifact and is not certified as load-bearing, printable, safe, or fit for any purpose.
-- Future Edition 2 Extensions: Skeletal animation tracks, Draco/Meshopt compressed buffer views, and KTX2 GPU texture transcoding remain outside the v1 static-mesh subset.
+- Educational Geometry Boundary: Every file on this page is an educational artifact and is not certified as load-bearing, printable, safe, or fit for any purpose; combinatorial 2-manifold checks do not test geometric self-intersection or structural strength.
+- Future Edition 2 Extensions: Analytic NURBS EDGE_LOOP STEP AP242 surfaces, Draco/Meshopt buffer compression, and KTX2 GPU textures remain outside this v1 static-mesh subset.
