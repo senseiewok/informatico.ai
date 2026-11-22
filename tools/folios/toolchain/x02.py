@@ -1,365 +1,400 @@
 # -*- coding: utf-8 -*-
 """Tech & Tools · The Toolbox — Folio X.02: Code-First Parametric Solids & Measured STEP AP242, 3MF, and GLB Round-Trip Fidelity."""
 
-FOLIO = {'slug': 'x02',
- 'folio_id': 'X.02',
- 'tool_id': 'TOOL-ENG-1',
- 'cat': 'engineering',
- 'plate_slug': 'x02',
- 'pillar_label_en': 'Engineering Toolbox · Code-First Parametric CAD & STEP AP242',
- 'pillar_label_es': 'Herramientas de Ingeniería · CAD Paramétrico en Código y STEP AP242',
- 'badge_en': 'TOOLBOX X.02 · BUILD123D / CADQUERY KERNEL → STEP AP242 · 3MF · GLB AUDIT',
- 'badge_es': 'HERRAMIENTA X.02 · KERNEL BUILD123D / CADQUERY → AUDITORÍA STEP AP242 · 3MF · GLB',
- 'title': 'Code-First Parametric Solids & Measured STEP AP242, 3MF, and GLB Round-Trip Fidelity',
- 'title_es': 'Sólidos Paramétricos en Código y Fidelidad Medida entre STEP AP242, 3MF y GLB',
- 'subtitle': 'Empowering solo mechanical and civil engineers to generate exact B-rep solids from '
-             'version-controlled Python scripts and measure exactly what survives—and what is '
-             'lost—across STEP AP242, 3MF, and GLB.',
- 'subtitle_es': 'Empoderando a ingenieros mecánicos y civiles independientes para generar sólidos '
-                'B-rep exactos desde scripts en Python bajo control de versiones y medir qué se '
-                'conserva y qué se pierde entre STEP AP242, 3MF y GLB.',
- 'why_en': "Independent engineers and small hardware shops shouldn't need $5,000-per-seat "
-           'proprietary CAD licenses just to version-control a bracket, clevis, or structural node '
-           'in Git. Code-first CAD in Python lets you parameterize every dimension as an equation, '
-           'diff changes in pull requests, and export STEP AP242, 3MF, and GLB with a mathematical '
-           'audit of chordal tessellation error.',
- 'why_es': 'Los ingenieros independientes y talleres pequeños no deberían necesitar licencias '
-           'propietarias de $5,000 USD anuales solo para controlar versiones de una pieza o nodo '
-           'estructural en Git. El CAD basado en código Python permite parametrizar cada '
-           'dimensión, revisar diffs en pull requests y exportar STEP AP242, 3MF y GLB auditando '
-           'el error cordal de teselación.',
- 'governing_law': 'h_sagitta = R (1 − cos(π / N)) · V_step = V_flange + V_boss = 43,200 mm³ · ΔV / '
-                  'V < 10⁻⁶',
- 'pass_pill_en': 'PASS · V = 43,200 mm³ · h_32 = 0.0722 mm · AP242 + 3MF + GLB',
- 'pass_pill_es': 'APROBADO · V = 43,200 mm³ · h_32 = 0.0722 mm · AP242 + 3MF + GLB',
- 'generator_script': 'skills/toolchain/x02/make_x02.py',
- 'verifier_script': 'skills/toolchain/x02/verify_x02_toolchain_x02_parametric_step_3mf_roundtrip.py',
- 'skill_dir': 'skills/toolchain/x02',
- 'skill_name': 'toolchain-x02-parametric-step-3mf-roundtrip',
- 'formats': ('glb', 'step', '3mf'),
- 'primary_doi': '10.1115/1.4029050',
- 'scite_summary': 'ISO 10303-242 (STEP AP242) boundary-representation exchange semantics (Feeney '
-                  'et al., 2015) and chordal tessellation error bounds verified offline.',
- 'date_published': '2026-11-08',
- 'date_redated': '2026-11-08',
- 'current_edition': 'REV 1.0',
- 'reading_time': '22 MIN READ',
- 'small_studio_kit_en': "Independent Engineer's Zero-Cost Stack (build123d Apache-2.0 + FreeCAD "
-                        '1.0 + OrcaSlicer): Author parametric parts in Python, export ISO 10303-21 '
-                        'STEP AP242 for CNC machine shops and 3MF for additive prototyping, and '
-                        'run verify_x02 to check for zero volume drift between B-rep and mesh.',
- 'small_studio_kit_es': 'Stack sin Costo para Ingenieros Independientes (build123d Apache-2.0 + '
-                        'FreeCAD 1.0 + OrcaSlicer): Modela piezas paramétricas en Python, exporta '
-                        'STEP AP242 (ISO 10303-21) para maquinado CNC y 3MF para manufactura '
-                        'aditiva, y ejecuta verify_x02 para comprobar cero deriva volumétrica.',
- 'companion_folios': [('engineering',
-                       'e10',
-                       'Folio E.10',
-                       '3D Concrete Printing Thixotropy & Suiker Buckling'),
-                      ('engineering',
-                       'e06',
-                       'Folio E.06',
-                       'ASCE 7-22 Lead-Rubber Seismic Base Isolation'),
-                      ('engineering',
-                       'e11',
-                       'Folio E.11',
-                       'SIMP Topology Optimization & Inerter Dampers'),
-                      ('math',
-                       'm05',
-                       'Folio M.05',
-                       'AlphaGeometry 2 Neuro-Symbolic Euclidean Synthesis')],
- 'external_links': [('gumyr/build123d (Apache-2.0 Python BREP CAD)',
-                     'https://github.com/gumyr/build123d'),
-                    ('CadQuery/cadquery (Apache-2.0 Parametric CAD)',
-                     'https://github.com/CadQuery/cadquery'),
-                    ('3MF Consortium Core Specification',
-                     'https://github.com/3MFConsortium/spec_core')],
- 'act1_dropcap': 'In the drafty computer laboratories of Cambridge University during the early '
-                 '1970s, Ian Braid and Charles Lang wrestled with a quiet revolution on glowing '
-                 'cathode-ray screens. For generations, machinists and patternmakers had shaped '
-                 'turbine housings and gearbox casings using chalk markings, wooden templates, and '
-                 'steel calipers. Translating those curved, interlocking metal solids into '
-                 'computer memory seemed almost impossible. Wireframe sketches looked like ghostly '
-                 'spiderwebs that could not tell solid metal from empty air, while faceted polygon '
-                 'approximations stripped away the silky smooth curves of cylindrical bores. '
-                 'Alongside Hungarian researcher Timothy Varady in Budapest, Braid helped pioneer '
-                 'boundary representation, defining physical objects by their true geometric '
-                 'boundaries: smooth analytical planes, cylinders, and topological loops. Decades '
-                 'later, international standards teams codified that vision into the universal '
-                 'STEP AP242 standard, ensuring that precise geometric forms could travel freely '
-                 'between different software tools without losing their exact analytical curvature '
-                 'or dimensional truth.',
- 'act1_body': 'For decades, mechanical and structural engineering remained tethered to expensive, '
-              'closed-source CAD ecosystems that stored geometry in proprietary binary formats. '
-              'Sharing a model between different modeling programs frequently resulted in '
-              'translated geometry losing its parametric history, trimming curves failing to '
-              'evaluate, and cylindrical surfaces collapsing into crude triangle approximations. '
-              'The ratification of ISO 10303-21 STEP AP242 (Feeney et al., 2015, DOI: '
-              '10.1115/1.4029050) — established an open, model-based engineering foundation for '
-              'boundary representations. Instead of approximating curved shapes as flat polygons, '
-              'STEP '
-              'AP242 defines solids through explicit topological hierarchies: CARTESIAN_POINT, '
-              'VERTEX_POINT, POLY_LOOP, and ADVANCED_FACE entities bounded within a CLOSED_SHELL. '
-              'In Folio X.02, we demonstrate how open Python libraries such as build123d and '
-              'CadQuery liberate engineers from commercial lock-in. A single version-controlled '
-              'Python script generates our stepped structural clevis pedestal, producing an exact '
-              'ISO STEP AP242 boundary representation alongside modern 3MF and binary GLB mesh '
-              'files. Our byte-level verifier inspects all three formats simultaneously, '
-              'showing that analytical volumes match exactly while measuring the chordal '
-              'tessellation error introduced whenever smooth analytic surfaces are converted into '
-              'faceted meshes.',
- 'pullquote': 'Code-first CAD turns a mechanical drawing from an opaque binary blob into a pure '
-              'function: parameters go in, and verified STEP AP242, 3MF, and GLB artifacts come '
-              'out with known chordal error bounds.',
- 'chronology': [('1973–1980',
-                 'Ian Braid (Cambridge) and Charles Eastman pioneer boundary-representation '
-                 '(B-rep) and constructive solid geometry (CSG) kernels.'),
-                ('1994–2014',
-                 'ISO 10303 (STEP) evolves from AP203/AP214 to AP242 Managed Model-Based 3D '
-                 'Engineering, unifying product manufacturing information (PMI) and exact B-rep '
-                 'topology.'),
-                ('2015',
-                 'The 3MF Consortium releases the open XML/ZIP 3MF specification to replace '
-                 'unitless, non-manifold 1987 STL files.'),
-                ('2018–2026',
-                 'CadQuery 2 and build123d (Apache-2.0) bring algebraic Python scripting to '
-                 'OpenCascade, liberating solo engineers from proprietary CAD lock-in.')],
- 'act2_intuition': 'When an exact boundary representation is converted into a triangle mesh for '
-                   'visualization or additive fabrication, curved geometries undergo inevitable '
-                   'discretization error. Consider a circular cylindrical bore or boss of nominal '
-                   'radius R approximated by an inscribed regular polygon with N flat facets. The '
-                   'distance between the true circular arc and the center of each inscribed facet '
-                   'chord is governed by the chordal sagitta formula: h = R(1 − cos(π / N)). Using '
-                   'Taylor series expansion for large N, this geometric deviation scales inversely '
-                   'with the square of facet count: h ≈ R π² / (2 N²). For a cylindrical locating '
-                   'bore with radius R = 15 mm, setting N = 12 creates a chordal sagitta of 0.511 '
-                   'mm—an error massive enough to prevent mating pins from fitting. Doubling N to '
-                   '24 reduces the sagitta to 0.128 mm, while N = 32 reaches 0.0722 mm, fitting '
-                   'within standard sliding tolerances. In contrast, planar stepped B-rep faces '
-                   'retain their exact analytic volume V = 43,200.0 mm³ identically across STEP '
-                   'AP242, 3MF, and GLB containers, illustrating the mathematical distinction '
-                   'between exact boundary geometry and faceted representations.',
- 'sliders': [{'id': 'tp-tool-s0',
-              'label': 'Circumferential Tessellation Facets N',
-              'min': 8,
-              'max': 64,
-              'step': 4,
-              'value': 32,
-              'unit': 'N = '},
-             {'id': 'tp-tool-s1',
-              'label': 'Upper Boss Height H_boss',
-              'min': 10,
-              'max': 30,
-              'step': 2,
-              'value': 18,
-              'unit': ' mm'}],
- 'readouts': [{'label': 'Exact B-Rep / Mesh Volume', 'value': '43,200.0 mm³ (ΔV = 0.00%)'},
-              {'label': 'Chordal Sagitta Error h(N)', 'value': '0.0722 mm (at R=15, N=32)'},
-              {'label': 'STEP AP242 Schema Audit', 'value': 'CLOSED_SHELL · 28 FACES PASS'},
-              {'label': '3MF & GLB Parity Verdict', 'value': 'PASS · SHA-256 VERIFIED'}],
- 'steps': ['Stage 1: Algebraic Python Solid Definition — Parameterize the stepped flange (60 × 40 '
-           '× 12 mm) and boss (40 × 20 × 18 mm) as a single closed 2-manifold boundary with '
-           'V_exact = 28,800 + 14,400 = 43,200.0 mm³.',
-           'Stage 2: ISO 10303-21 STEP AP242 B-Rep Serialization — Emit explicit CARTESIAN_POINT, '
-           'VERTEX_POINT, POLY_LOOP, ADVANCED_FACE, CLOSED_SHELL, and MANIFOLD_SOLID_BREP entities '
-           'with millimeter length units (#7) and 10⁻⁵ mm uncertainty (#6).',
-           'Stage 3: Deterministic 3MF ZIP & GLB Binary Packaging — Package the identical '
-           '16-vertex, 28-triangle topology into 3MF Core 1.2.3 XML (fixed ZIP timestamp) and '
-           'Khronos GLB binary buffers with embedded provenance metadata.',
-           'Stage 4: Cross-Format Round-Trip & Chordal Deviation Audit — Verify that STEP, 3MF, '
-           'and GLB agree on vertex/face counts and analytical volume, and bound circular bore '
-           'discretization error via h = R(1 − cos(π/N)).'],
- 'rules': ['Cross-Format Topological Identity: The vertex count (V = 16), face count (F = 28), and '
-           'Euler characteristic (χ = 2) must match identically across x02_artifact.step, '
-           'x02_artifact.3mf, and x02_artifact.glb.',
-           'Chordal Sagitta Tolerance Bound: For any cylindrical feature of radius R discretized '
-           'into N segments, the radial deviation is strictly h = R(1 − cos(π/N)); keeping h ≤ '
-           '0.10 mm at R = 15 mm requires N ≥ 28.',
-           'Provenance & Planted-Defect Gate: Every exported file must embed the generator script '
-           'SHA-256 and boundary statement, and verify_x02 must reject any flipped-normal or '
-           'corrupted-schema mutation.'],
- 'sidenote_1': {'kicker': 'SIDENOTE X.02-A · WHY STL SHOULD RETIRE IN FAVOR OF 3MF & STEP',
-                'body': 'The 1987 STL format stores raw triangle soup with no units, no vertex '
-                        'sharing, no material metadata, and no license/provenance block. 3MF and '
-                        'STEP AP242 preserve explicit units (mm) and shared vertex indices.'},
- 'sidenote_2': {'kicker': 'SIDENOTE X.02-B · APACHE-2.0 BUILD123D FOR SOLO ENGINEERS',
-                'body': 'Unlike GPL-licensed script CAD tools whose copyleft terms can complicate '
-                        'client deliverables, build123d and CadQuery are licensed under '
-                        'Apache-2.0, making them clean for independent consulting engineers.'},
- 'walkthrough': ['Inspect the stepped clevis pedestal in the live WebGL2 viewer below; toggle '
-                 'Wireframe to see the seamless 16-vertex, 28-triangle shoulder transition at z = '
-                 '12 mm.',
-                 'Scrub Circumferential Facets N down from 32 to 8 (or click [⚡ Counterfactual '
-                 'Axiom-Knockout]) to watch the chordal sagitta error h = R(1 − cos(π/N)) breach '
-                 'the 0.10 mm pin-clearance budget.',
-                 'Download x02_artifact.step, x02_artifact.3mf, and x02_artifact.glb to test '
-                 'import fidelity in FreeCAD, Blender, or your slicer.'],
- 't0_t1_certified': ['Deterministic generator (skills/toolchain/x02/make_x02.py) emitting '
-                     'byte-reproducible STEP AP242 (.step), 3MF Core 1.2.3 (.3mf), and glTF 2.0 '
-                     '(.glb) solids.',
-                     'Stdlib cross-format verifier '
-                     '(verify_x02_toolchain_x02_parametric_step_3mf_roundtrip.py) checking '
-                     'ISO-10303-21 AP242 B-rep entities, 3MF ZIP XML structure, GLB manifoldness, '
-                     'and V = 43,200.0 mm³.',
-                     'Explicit Round-Trip Survival Matrix documenting what survives across STEP '
-                     'AP242, 3MF, and GLB (units, topology, colors, provenance).'],
- 't2_t3_open_horizon': ['Educational Geometry Boundary: Every file on this page is an educational '
-                        'artifact; nothing is certified as load-bearing, printable, safe, or fit '
-                        'for any purpose.',
-                        'Future Edition 2 Extensions: Analytic NURBS trimmed-surface STEP AP242 '
-                        'export via build123d/OCCT C++ bindings and automated PMI semantic '
-                        'tolerance extraction.'],
- 'sources': ['ISO 10303-242:2022. Industrial automation systems and integration — Product data '
-             'representation and exchange — Part 242: Application protocol: Managed model-based 3D '
-             'engineering.',
-             'Feeney, A. B., Frechette, S. P., & Srinivasan, V. (2015). A portrait of an ISO STEP '
-             'tolerancing standard as an enabler of smart manufacturing systems. Journal of '
-             'Computing and Information Science in Engineering, 15(2), 021001. DOI '
-             '10.1115/1.4029050',
-             '3MF Consortium. (2023). 3D Manufacturing Format Core Specification & Reference Guide '
-             'v1.2.3. https://github.com/3MFConsortium/spec_core',
-             'build123d Contributors. (2023–2026). build123d: A python CAD programming library '
-             '(Apache-2.0). https://github.com/gumyr/build123d'],
- 'act1_plain_bridge': 'Think of designing a precision metal bracket like writing a recipe. Instead '
-                      'of drawing fixed lines, you write down clear rules. You specify that the '
-                      'base is sixty millimeters long and the mounting boss sits centered on top. '
-                      'If you change one measurement, the entire part updates automatically. That '
-                      'is what parametric modeling means. But trouble starts when you share your '
-                      'file. Different manufacturing tools speak completely different languages. '
-                      'Some tools expect true curved surfaces, while others convert everything '
-                      'into flat triangular facets. When a round hole turns into flat facets, the '
-                      'opening shrinks slightly. Pins that should slide smoothly get stuck. Our '
-                      'free interactive tool solves this headache. Right in your browser, you can '
-                      'inspect an exact stepped pedestal in three dimensions. You can adjust the '
-                      'facet count and watch how the roundness changes in real time. In seconds, '
-                      'you can download verified files and Python scripts to audit your own parts.',
- 'act1_stakes': 'For an independent mechanical consultant or a small hardware team, file exchange '
-                'discrepancies between software tools create costly friction. When a client sends '
-                'a model exported through an unchecked conversion pipeline, subtle geometric '
-                'corruptions can slip through unnoticed. A circular cylindrical bore faceted into '
-                'thirty-two chords shrinks by more than seventy microns along its radius. If an '
-                'assembler tries to slide a hardened steel locating dowel into that faceted '
-                'opening, the pin seizes tight, halting physical assembly. Worse still, '
-                'proprietary CAD vendors charge upwards of five thousand dollars per seat each '
-                'year, locking solo practitioners out of professional revision-control and '
-                'file-checking workflows. Open, script-driven CAD coupled with offline '
-                'verification democratizes this entire engineering cycle. By parameterizing parts '
-                'in readable Python code and executing byte-level audits across STEP, 3MF, and GLB '
-                'exports, solo practitioners can check geometric integrity by script, verify '
-                'clearance limits, and collaborate seamlessly with machining facilities without '
-                'costly proprietary software.',
- 'act2_analogy': 'Picture a master carpenter cutting a traditional Japanese watari-ago notched '
-                 'timber joint with a razor-sharp hand chisel. When shaping the interlocking tenon '
-                 'and mortise, every wooden face must be planed perfectly flat, meeting cleanly at '
-                 'right angles. If the carpenter pares away just a quarter-millimeter too much '
-                 'wood, the joint wobbles loosely and loses its grip. If the cut remains too '
-                 'tight, the beams refuse to slide together. A true solid CAD model demands that '
-                 'same exacting tactile fit: surfaces must meet with zero accidental gaps, '
-                 'preserving exact boundaries and precise physical clearances.',
- 'act2_plain_primer': 'Before diving into technical formulas, take a look at the two controls and '
-                      'the counterfactual test in our interactive workbench. The first slider '
-                      'adjusts the Circumferential Tessellation Facets, labeled N. When converting '
-                      'a round hole or cylindrical boss into a 3D mesh, the computer approximates '
-                      'the circle with a polygon of N sides. At low values like eight or twelve, '
-                      'the circle looks noticeably chunky and shrinks inward, cutting into your '
-                      'clearance tolerance. As you slide N up toward thirty-two or sixty-four, the '
-                      'faceted shape hugs the true cylinder closely. The second slider changes the '
-                      'Upper Boss Height, growing or shrinking the top stepped pedestal. Watch how '
-                      'the exact mathematical volume recalculates instantly while keeping the base '
-                      'flange unchanged. Finally, try the Planted-Defect Knockout button. Clicking '
-                      'it intentionally drops the facet count or corrupts the schema, immediately '
-                      'breaching the tolerance threshold and triggering an audit failure that '
-                      'alerts the designer before any material is cut.',
- 'act2_deepening': 'Inside a boundary representation kernel, solid bodies are not stored as loose '
-                   'surface meshes, but as evaluated topological graphs anchored by precise '
-                   'geometric definitions. A closed solid shell is constructed through the Boolean '
-                   'union of oriented half-spaces, where each planar face is bounded by a directed '
-                   'closed wire known in ISO 10303-21 syntax as a POLY_LOOP. In our stepped clevis '
-                   'pedestal, the base flange (sixty by forty by twelve millimeters) merges with '
-                   'the upper boss (forty by twenty by eighteen millimeters) along a shared planar '
-                   'boundary at elevation z = 12 mm. Rather than retaining an internal dividing '
-                   'wall, the kernel executes half-space regularization, dissolving redundant '
-                   'internal faces and sewing outer faces into a single MANIFOLD_SOLID_BREP '
-                   'bounded by a CLOSED_SHELL entity. Each ADVANCED_FACE explicitly references its '
-                   'underlying surface equation, boundary orientation flag, and bounding vertex '
-                   'loop. This topological rigor means that every edge is shared by exactly '
-                   'two adjacent faces with opposing parameter orientations, ensuring that '
-                   'analytical mass properties and volume integrals evaluate without approximation '
-                   'drift across neutral CAD exchange formats.',
- 'act4_human_ai': 'In modern parametric CAD engineering, artificial intelligence tools can '
-                  'generate complex solid modeling scripts in Python upon request. However, large '
-                  'language models frequently invent nonexistent API methods, misplace Boolean '
-                  'coordinate offsets, or hallucinate topological connections that produce invalid '
-                  'non-manifold geometry or unstitched boundary shells. Folio X.02 introduces a '
-                  'disciplined co-design workflow that prevents these failure modes. The human '
-                  'engineer defines the mechanical interface requirements, dimensional tolerances, '
-                  'and aesthetic proportions. The AI coding agent implements the parametric recipe '
-                  'in Python using build123d or CadQuery syntax, adhering to portable rules '
-                  'documented in our companion SKILL.md guide. Before any generated STEP AP242, '
-                  '3MF, or GLB file is accepted into production, verify_x02 executes a fully '
-                  'automated, offline verification pass. The verifier parses the STEP entity '
-                  'graph, audits XML triangle indices in 3MF archives, validates binary GLB '
-                  'buffers, and checks the chordal sagitta error against specified pin-clearance '
-                  'tolerances. This mathematical gatekeeper ensures that the generative speed of '
-                  'artificial intelligence is harnessed safely, leaving human engineers in '
-                  'complete command of physical intent and functional geometry.',
- 'act4_deepening': 'The boundary-representation and round-trip verification methodologies '
-                   'developed in Folio X.02 form a vital connective bridge across Informatico.ai. '
-                   'In Civil and Structural Engineering, modeling elastomeric bearings for seismic '
-                   'base isolation (Folio E.06) demands precise parametric cylindrical boss '
-                   'geometry to verify lead-core confinement clearances under cyclic lateral shear '
-                   'displacement. In Advanced Manufacturing, toolpath synthesis for 3D concrete '
-                   'printing (Folio E.10) requires exact STEP B-rep solids to compute thixotropic '
-                   'bead slicing and avoid nozzle trajectory deviations. In Computational '
-                   'Mechanics, SIMP topology optimization (Folio E.11) outputs organic density '
-                   'distributions that must be reconstructed into smooth boundary-representation '
-                   'solids for CNC milling operations. In Mathematics, neuro-symbolic geometry '
-                   'synthesis (Folio M.05) bridges algebraic constraint systems with Euclidean '
-                   'constructive geometry, matching the dual representation of parametric code and '
-                   'evaluated B-rep entities. By mastering code-first CAD modeling in open Python, '
-                   'solo engineers acquire a unified computational toolchain capable of expressing '
-                   'complex physical concepts across civil, mechanical, and mathematical '
-                   'disciplines without proprietary constraints or commercial software barriers.',
- 'plain_es': 'Diseñar una pieza mecánica mediante código paramétrico es como escribir una receta '
-             'clara en lugar de hacer un dibujo estático. En lugar de trazar líneas fijas, '
-             'definimos dimensiones mediante fórmulas matemáticas. Por ejemplo, indicamos que la '
-             'base mide sesenta milímetros de largo y que el soporte superior se ubica justo en el '
-             'centro. Si más adelante cambiamos una medida, toda la pieza se actualiza de forma '
-             'automática. El verdadero reto surge al compartir el archivo con talleres y '
-             'colaboradores. Algunos sistemas requieren superficies analíticas perfectamente '
-             'curvas, mientras que otros programas convierten todo en pequeños triángulos planos. '
-             'Al transformar un orificio circular en caras planas, el diámetro efectivo se reduce '
-             'y los pasadores metálicos pueden atascarse. Nuestra herramienta interactiva en el '
-             'navegador les permite explorar un pedestal escalonado, ajustar el número de '
-             'divisiones circulares y observar cómo cambia la redondez en tiempo real. En pocos '
-             'segundos, pueden descargar modelos verificados y rutinas en Python para auditar sus '
-             'propias piezas sin pagar licencias comerciales.',
- 'deep_es': 'El intercambio de modelos geométricos entre formatos neutros ilustra la tensión '
-            'matemática entre representaciones de frontera exactas y aproximaciones discretizadas '
-            'por teselación. El estándar ISO 10303-21 STEP AP242 preserva definiciones topológicas '
-            'analíticas mediante entidades MANIFOLD_SOLID_BREP compuestas por bucles cerrados y '
-            'caras avanzadas, asegurando que el volumen teórico permanezca inalterado. En '
-            'contraste, formatos como 3MF y GLB aproximan las superficies curvas mediante mallas '
-            'de triángulos planos. Cuando se discretiza un cilindro circular de radio nominal en '
-            'un polígono regular de N facetas, la desviación cordal máxima o sagita introduce una '
-            'reducción radial calculada mediante la función trigonométrica correspondiente. A '
-            'valores bajos de facetas, esta discrepancia dimensional puede impedir el ensamblaje '
-            'adecuado de pasadores y bujes mecánicos. Al combinar scripts de modelado paramétrico '
-            'en Python con verificadores deterministas que operan a nivel de bytes, los ingenieros '
-            'independientes pueden comprobar la equivalencia volumétrica entre representaciones '
-            'continuas y discretas, asegurando tolerancias de holgura controladas sin depender '
-            'de costosas plataformas comerciales.',
- 'distill_diagram': {'analogy_title': 'The Notched Timber & Sliding Fit',
-                     'analogy_sub': 'Exact planar faces and controlled tolerances ensure snug '
-                                    'joint fit.',
-                     'force_a_title': 'Analytic B-Rep Solid (STEP AP242)',
-                     'force_a_sub': 'Exact mathematical cylinders, planes, and closed topological '
-                                    'shells.',
-                     'force_b_title': 'Chordal Tessellation Sagitta h(N)',
-                     'force_b_sub': 'Polygon discretization pulls cylindrical walls inward by '
-                                    'h(N).',
-                     'threshold_title': 'Pin Clearance Tolerance (h ≤ 0.10 mm)',
-                     'threshold_pass': 'Fine Tessellation (N ≥ 28): h ≤ 0.10 mm, mating pins slide '
-                                       'free.',
-                     'threshold_fail': 'Coarse Facets (N < 28): Sagitta h > 0.10 mm, mating pins '
-                                       'seize.'}}
+FOLIO = {
+    'slug': 'x02',
+    'folio_id': 'X.02',
+    'tool_id': 'TOOL-ENG-1',
+    'cat': 'engineering',
+    'plate_slug': 'x02',
+    'pillar_label_en': 'Engineering Toolbox · Code-First Parametric CAD & STEP AP242',
+    'pillar_label_es': 'Herramientas de Ingeniería · CAD Paramétrico en Código y STEP AP242',
+    'badge_en': 'TOOLBOX X.02 · BUILD123D / CADQUERY KERNEL → STEP AP242 · 3MF · GLB AUDIT',
+    'badge_es': 'HERRAMIENTA X.02 · KERNEL BUILD123D / CADQUERY → AUDITORÍA STEP AP242 · 3MF · GLB',
+    'title': 'Code-First Parametric Solids & Measured STEP AP242, 3MF, and GLB Round-Trip Fidelity',
+    'title_es': 'Sólidos Paramétricos en Código y Fidelidad Medida entre STEP AP242, 3MF y GLB',
+    'subtitle': (
+        'Authoring version-controlled Python solids for independent mechanical and civil '
+        'engineers while auditing planar volume parity and cylindrical chordal sagitta across '
+        'STEP Part 21, 3MF, and GLB.'
+    ),
+    'subtitle_es': (
+        'Modelado de sólidos paramétricos en Python bajo control de versiones para ingenieros '
+        'mecánicos y civiles independientes, auditando volumen planar y sagita cordal entre '
+        'STEP Parte 21, 3MF y GLB.'
+    ),
+    'why_en': (
+        "Independent engineers and small hardware shops shouldn't need $5,000-per-seat "
+        'commercial CAD licenses just to version-control a bracket, clevis, or structural node '
+        'in Git. Code-first CAD in Python lets you parameterize dimensions as readable equations, '
+        'review diffs in pull requests, and audit neutral exchange files offline for mesh '
+        'topology and chordal tessellation error.'
+    ),
+    'why_es': (
+        'Los ingenieros independientes y talleres pequeños no deberían pagar licencias '
+        'comerciales de $5,000 USD anuales solo para versionar una ménsula o nodo estructural '
+        'en Git. El CAD en código Python permite parametrizar cada cota, revisar cambios en '
+        'pull requests y auditar archivos neutros fuera de línea en topología de malla y sagita '
+        'cordal.'
+    ),
+    'governing_law': (
+        'h_sagitta = R (1 − cos(π / N)) · V_step = V_flange + V_boss = 43,200 mm³ · ΔV / V < 10⁻⁶'
+    ),
+    'pass_pill_en': 'PASS · V = 43,200 mm³ · h_32 = 0.0722 mm · AP242 + 3MF + GLB',
+    'pass_pill_es': 'APROBADO · V = 43,200 mm³ · h_32 = 0.0722 mm · AP242 + 3MF + GLB',
+    'generator_script': 'skills/toolchain/x02/make_x02.py',
+    'verifier_script': 'skills/toolchain/x02/verify_x02_toolchain_x02_parametric_step_3mf_roundtrip.py',
+    'skill_dir': 'skills/toolchain/x02',
+    'skill_name': 'toolchain-x02-parametric-step-3mf-roundtrip',
+    'formats': ('glb', 'step', '3mf'),
+    'primary_doi': '10.1115/1.4029050',
+    'scite_summary': (
+        'Grounded in Braid (1975), Requicha (1980), Cha Zhang & Tsuhan Chen (2001), and '
+        'Feeney et al. (2015) ISO 10303-242 STEP AP242 exchange semantics.'
+    ),
+    'date_published': '2026-11-08',
+    'date_redated': '2026-11-08',
+    'current_edition': 'REV 1.0',
+    'reading_time': '22 MIN READ',
+    'small_studio_kit_en': (
+        "Independent Engineer's Open Stack (build123d Apache-2.0 + FreeCAD 1.0 + OrcaSlicer): "
+        'Use build123d or CadQuery on OpenCascade to export production ISO 10303-242 STEP AP242 '
+        'EDGE_LOOP solids for CNC shops, open x02_artifact.3mf and x02_artifact.glb in slicers '
+        'or Blender, and run verify_x02 to audit our illustrative Part-21 STEP sketch, 3MF, and '
+        'GLB for 43,200.0 mm³ volume and chordal sagitta bounds.'
+    ),
+    'small_studio_kit_es': (
+        'Stack Abierto para Ingenieros Independientes (build123d Apache-2.0 + FreeCAD 1.0 + '
+        'OrcaSlicer): Usa build123d o CadQuery sobre OpenCascade para exportar sólidos STEP '
+        'AP242 (ISO 10303-242) con EDGE_LOOP para talleres CNC, abre x02_artifact.3mf y '
+        'x02_artifact.glb en laminadores o Blender, y ejecuta verify_x02 para auditar el esquema '
+        'ilustrativo Parte 21, 3MF y GLB en volumen (43,200.0 mm³) y sagita cordal.'
+    ),
+    'companion_folios': [
+        ('engineering', 'e10', 'Folio E.10', '3D Concrete Printing Thixotropy & Suiker Buckling'),
+        ('engineering', 'e06', 'Folio E.06', 'ASCE 7-22 Lead-Rubber Seismic Base Isolation'),
+        ('engineering', 'e11', 'Folio E.11', 'SIMP Topology Optimization & Inerter Dampers'),
+        ('math', 'm05', 'Folio M.05', 'AlphaGeometry 2 Neuro-Symbolic Euclidean Synthesis'),
+    ],
+    'external_links': [
+        ('gumyr/build123d (Apache-2.0 Python BREP CAD)', 'https://github.com/gumyr/build123d'),
+        ('CadQuery/cadquery (Apache-2.0 Parametric CAD)', 'https://github.com/CadQuery/cadquery'),
+        ('3MF Consortium Core Specification', 'https://github.com/3MFConsortium/spec_core'),
+    ],
+    'act1_dropcap': (
+        'At the University of Cambridge Computer-Aided Design Group in 1975, Ian Braid published '
+        'a solid-modeling program that built mechanical parts from six primitive shapes, '
+        'including rectangular blocks, cylinders, wedges, and pierced plates. Earlier computer '
+        'drawings stored only wireframe lines, which could not separate solid metal from empty '
+        'air. Coarse polygon approximations created a second shop-floor hazard. Replacing a '
+        'round locating bore with a handful of flat chords pulled the wall inward and pinched '
+        'mating pins. Braid represented each body by its boundary instead, linking oriented '
+        'faces, edges, and vertex loops around one closed interior volume. At the University of '
+        'Rochester in 1980, Aristides Requicha formalized the topological closure rules that '
+        'distinguish valid rigid solids from dangling faces. Auditing vertex pairing, enclosed '
+        'volume, and chordal sagitta still guards open geometry files before any material is cut.'
+    ),
+    'act1_body': (
+        'For decades, mechanical and structural engineering workflows relied on closed-source '
+        'CAD programs whose binary files stripped parametric history or broke trimmed surfaces '
+        'during translation. Building on the boundary-representation work of Braid (1975, DOI: '
+        '10.1145/360715.360727) and the regularized solid-modeling theory of Requicha (1980, '
+        'DOI: 10.1145/356827.356833), ISO 10303-242 STEP AP242 (Feeney et al., 2015, DOI: '
+        '10.1115/1.4029050), serialized in ISO 10303-21 clear text, exchanges full B-rep solids '
+        'through EDGE_LOOP, ADVANCED_FACE, and SHAPE_DEFINITION_REPRESENTATION entities when '
+        'authored on OpenCascade via Apache-2.0 Python libraries such as build123d or CadQuery. '
+        'In Folio X.02, our zero-dependency stdlib script make_x02.py emits a rectilinear '
+        'stepped clevis pedestal (60 × 40 × 12 mm flange plus 40 × 20 × 18 mm boss) as 16 '
+        'vertices and 28 triangles across binary glTF 2.0 (GLB), 3MF Core 1.2.3, and an '
+        'illustrative Part-21 STEP entity sketch, while bounding cylindrical chordal sagitta.'
+    ),
+    'pullquote': (
+        'Code-first CAD turns a mechanical part from an opaque binary file into an inspectable '
+        'Python function: parameters go in, and open artifacts come out with checked 2-manifold '
+        'topology, signed volume, and bounded chordal sagitta.'
+    ),
+    'chronology': [
+        (
+            '1975–1980',
+            'Ian Braid at Cambridge (DOI 10.1145/360715.360727) and Aristides Requicha at '
+            'Rochester (DOI 10.1145/356827.356833) formalize boundary-representation (B-rep) '
+            'synthesis and regularized solid set operations.',
+        ),
+        (
+            '1994–2015',
+            'ISO 10303 pairs Part 21 ASCII clear-text encoding with ISO 10303-242 STEP AP242 '
+            'Managed Model-Based 3D Engineering (Feeney et al., 2015, DOI 10.1115/1.4029050).',
+        ),
+        (
+            '2001–2015',
+            'Cha Zhang and Tsuhan Chen (DOI 10.1109/ICIP.2001.958278) formalize signed '
+            'tetrahedral mesh volume integration; the 3MF Consortium releases unit-aware XML/ZIP '
+            '3MF Core to replace unitless 1987 STL triangle soup.',
+        ),
+        (
+            '2018–2026',
+            'CadQuery 2 and build123d (Apache-2.0) bring Python scripting to OpenCascade so '
+            'independent engineers can version-control parametric B-rep parts in Git.',
+        ),
+    ],
+    'act2_intuition': (
+        'Converting a smooth analytic cylinder into a triangle mesh for browser viewing or '
+        'additive slicing introduces predictable polygon discretization error. For a circular '
+        'locating bore of radius R approximated by an inscribed regular N-gon, the radial '
+        'distance from the circular arc to the midpoint of each flat chord follows the sagitta '
+        'relation h = R(1 − cos(π / N)), which behaves for large N as approximately R π² / '
+        '(2 N²). On a reference bore of radius R = 15 mm, coarse tessellation at N = 12 facets '
+        'pulls each chord inward by 0.5111 mm (and 1.1418 mm at N = 8), which could cause a '
+        'precision dowel pin to bind. Raising N to 28 brings the sagitta down to 0.0943 mm '
+        '(within a 0.10 mm clearance budget), and N = 32 reaches 0.0722 mm. By contrast, our '
+        'exported stepped pedestal has purely planar orthogonal walls, so its 28 triangular '
+        'facets enclose V = 43,200.0 mm³ without curved-surface discretization loss.'
+    ),
+    'sliders': [
+        {
+            'id': 'tp-tool-s0',
+            'label': 'Circumferential Tessellation Facets N',
+            'min': 8,
+            'max': 64,
+            'step': 4,
+            'value': 32,
+            'unit': 'N = ',
+        },
+        {
+            'id': 'tp-tool-s1',
+            'label': 'Upper Boss Height H_boss',
+            'min': 10,
+            'max': 30,
+            'step': 2,
+            'value': 18,
+            'unit': ' mm',
+        },
+    ],
+    'readouts': [
+        {'label': 'Planar B-Rep / Mesh Volume', 'value': '43,200.0 mm³ (ΔV = 0.00%)'},
+        {'label': 'Chordal Sagitta Error h(N)', 'value': '0.0722 mm (at R=15, N=32)'},
+        {'label': 'STEP AP242 Schema Audit', 'value': 'CLOSED_SHELL · 28 FACES PASS'},
+        {'label': '3MF & GLB Parity Verdict', 'value': 'PASS · SHA-256 VERIFIED'},
+    ],
+    'steps': [
+        'Stage 1: Parametric Stepped-Pedestal Mesh — Construct the 4-ring rectilinear stepped '
+        'pedestal (60 × 40 × 12 mm base flange plus 40 × 20 × 18 mm boss) as a single 16-vertex, '
+        '28-triangle closed 2-manifold with analytical volume 28,800 + 14,400 = 43,200.0 mm³.',
+        'Stage 2: Illustrative ISO 10303-21 Part-21 STEP Sketch — Serialize 16 VERTEX_POINT '
+        'records and 28 triangular POLY_LOOP / PLANE face records in millimeter units (#7) for '
+        'text inspection (use build123d / OpenCascade when EDGE_LOOP STEP AP242 import is needed).',
+        'Stage 3: Deterministic 3MF Core 1.2.3 & GLB Packaging — Serialize the same 16 vertices '
+        'and 28 triangles into fixed-timestamp 3MF ZIP XML and Khronos glTF 2.0 binary buffers '
+        'with SHA-256 provenance recorded in manifest.json.',
+        'Stage 4: Cross-Format Parity & Chordal Sagitta Audit — Parse STEP, 3MF, and GLB to '
+        'check V = 16, F = 28, χ = 2, millimeter units, and signed volume 43,200.0 mm³ (Cha '
+        'Zhang & Tsuhan Chen, 2001, DOI: 10.1109/ICIP.2001.958278), plus h(15, 32) = 0.072229 mm '
+        '≤ 0.10 mm (N ≥ 28).',
+    ],
+    'rules': [
+        'Cross-Format Topology, Unit & Volume Parity: Parsed DATA records in x02_artifact.step, '
+        'millimeter XML in x02_artifact.3mf, and binary buffers in x02_artifact.glb must agree '
+        'on V = 16, E = 42, F = 28, Euler χ = 2, and signed volume 43,200.0 mm³.',
+        'Chordal Sagitta Clearance Bound: For a reference bore of radius R = 15 mm faceted into '
+        'N chords, h = R(1 − cos(π/N)) equals 0.072229 mm at N = 32; keeping h ≤ 0.10 mm '
+        'requires N ≥ 28 (whereas coarse N = 8 yields 1.1418 mm).',
+        'Provenance & Planted-Defect Gate: Manifest SHA-256 hashes must match make_x02.py and '
+        'all three artifacts, and verify_x02 must reject a flipped triangle normal, dropped STEP '
+        'face, or unescaped ampersands in 3MF XML.',
+    ],
+    'sidenote_1': {
+        'kicker': 'SIDENOTE X.02-A · WHY 3MF & STEP REPLACE UNITLESS 1987 STL',
+        'body': (
+            'Legacy 1987 STL files store disconnected triangle coordinates without units, '
+            'shared vertex indices, or provenance metadata. Both 3MF Core 1.2.3 and STEP Part 21 '
+            'declare explicit millimeter units and indexed vertex topology.'
+        ),
+    },
+    'sidenote_2': {
+        'kicker': 'SIDENOTE X.02-B · ILLUSTRATIVE PART-21 SKETCH VS. OPENCASCADE STEP AP242',
+        'body': (
+            'Because make_x02.py uses only Python stdlib, x02_artifact.step is an illustrative '
+            'Part-21 POLY_LOOP sketch rather than an OpenCascade-importable EDGE_LOOP + '
+            'SHAPE_DEFINITION_REPRESENTATION solid; export production STEP AP242 via build123d '
+            'or CadQuery.'
+        ),
+    },
+    'walkthrough': [
+        'Rotate the stepped clevis pedestal in the WebGL2 inspector below and toggle Wireframe '
+        'to inspect the 16-vertex, 28-triangle shoulder terrace at z = 12 mm.',
+        'Drag Circumferential Tessellation Facets N from 32 down below 28 (or click [⚡ '
+        'Planted-Defect / Boundary Knockout], which sets N = 8) to watch h = R(1 − cos(π/N)) '
+        'cross the 0.10 mm clearance threshold.',
+        'Download x02_artifact.3mf, x02_artifact.glb, and x02_artifact.step, then run verify_x02 '
+        'locally (and with --planted-defect) to inspect the JSON round-trip report.',
+    ],
+    't0_t1_certified': [
+        'Stdlib generator (skills/toolchain/x02/make_x02.py) emitting watertight glTF 2.0 '
+        '(.glb), 3MF Core 1.2.3 (.3mf), and an illustrative Part-21 STEP entity sketch (.step) '
+        'for a stepped rectilinear pedestal.',
+        'Stdlib verifier (verify_x02_toolchain_x02_parametric_step_3mf_roundtrip.py) parsing '
+        'STEP DATA entities, 3MF XML, and GLB binary buffers for millimeter units, watertight '
+        'χ = 2 topology, 43,200.0 mm³ signed volume, and h(15, 32) = 0.072229 mm ≤ 0.10 mm.',
+        'Primary-source grounding in Braid (1975), Requicha (1980), Cha Zhang & Tsuhan Chen '
+        '(2001), and Feeney et al. (2015) with offline DOI cache verification.',
+    ],
+    't2_t3_open_horizon': [
+        'Educational Geometry Boundary: Every file on this page is an educational artifact; '
+        'nothing is certified as load-bearing, printable, safe, or fit for any purpose.',
+        'OpenCascade STEP AP242 Horizon: Full EDGE_LOOP, SHAPE_DEFINITION_REPRESENTATION, and '
+        'CYLINDRICAL_SURFACE / NURBS STEP AP242 export requires build123d or CadQuery on '
+        'OpenCascade rather than the stdlib Part-21 sketch shipped here.',
+    ],
+    'sources': [
+        'Braid, I. C. (1975). The synthesis of solids bounded by many faces. Communications of '
+        'the ACM, 18(4), 201–208. DOI 10.1145/360715.360727',
+        'Requicha, A. A. G. (1980). Representations for rigid solids: Theory, methods, and '
+        'systems. ACM Computing Surveys, 12(4), 437–464. DOI 10.1145/356827.356833',
+        'Cha Zhang, & Tsuhan Chen. (2001). Efficient feature extraction for 2D/3D objects in '
+        'mesh representation. Proceedings 2001 International Conference on Image Processing '
+        '(ICIP), 3, 935–938. DOI 10.1109/ICIP.2001.958278',
+        'Feeney, A. B., Frechette, S. P., & Srinivasan, V. (2015). A portrait of an ISO STEP '
+        'tolerancing standard as an enabler of smart manufacturing systems. Journal of '
+        'Computing and Information Science in Engineering, 15(2), 021001. DOI 10.1115/1.4029050',
+        'Robinson, W. H. (1982). Lead-rubber hysteretic bearings suitable for protecting '
+        'structures during earthquakes. Earthquake Engineering & Structural Dynamics, 10(4), '
+        '593–604. DOI 10.1002/eqe.4290100408',
+        'Sigmund, O. (2001). A 99 line topology optimization code written in Matlab. Structural '
+        'and Multidisciplinary Optimization, 21(2), 120–127. DOI 10.1007/s001580050176',
+        'Suiker, A. S. J. (2018). Mechanical performance of wall structures in 3D printing '
+        'processes: Theory, design tools and experiments. International Journal of Mechanical '
+        'Sciences, 137, 145–170. DOI 10.1016/j.ijmecsci.2018.01.010',
+        'Trinh, T. H., Wu, Y., Le, Q. V., He, H., & Luong, T. (2024). Solving olympiad geometry '
+        'without human demonstrations. Nature, 625, 476–482. DOI 10.1038/s41586-023-06747-5',
+        'ISO 10303-242:2022 & ISO 10303-21:2016. Managed model-based 3D engineering (STEP '
+        'AP242) and clear text encoding of the exchange structure.',
+        '3MF Consortium. (2023). 3D Manufacturing Format Core Specification v1.2.3; and '
+        'build123d Contributors (2023–2026), Apache-2.0 Python CAD library, '
+        'https://github.com/gumyr/build123d',
+    ],
+    'act1_plain_bridge': (
+        'Designing a metal bracket in code works much like writing a clear workshop recipe. '
+        'Instead of dragging lines by hand, you state each measurement as a rule. Set a '
+        'sixty-millimeter base flange and center a stepped mounting boss on top. Change one '
+        'number, and the whole part updates together. Trouble often begins when you send that '
+        'file to a machine shop or a printer. Milling software reads smooth analytic '
+        'boundaries, whereas triangle-mesh printers chop curved holes into flat facets. Each '
+        'flat facet pulls the wall slightly inward, so a locating pin may bind during assembly. '
+        'On this page, you can turn a stepped pedestal in three dimensions and test how facet '
+        'count changes bore clearance. Download the open files and run the companion Python '
+        'script offline to check vertex, face, and volume counts yourself.'
+    ),
+    'act1_stakes': (
+        'For an independent mechanical consultant or small hardware shop, silent geometry loss '
+        'across file exports can stall fabrication. When a cylindrical bore of fifteen-millimeter '
+        'radius is faceted into twelve chords instead of twenty-eight or thirty-two, inward '
+        'chordal sagitta grows past half a millimeter, which may seize a hardened dowel pin '
+        'during fit-up. At the same time, commercial CAD suites often cost several thousand '
+        'dollars per seat annually and lock parametric feature trees inside proprietary binaries '
+        'that Git cannot diff. Pairing Apache-2.0 Python kernels such as build123d or CadQuery '
+        'with neutral STEP AP242 (Feeney et al., 2015, DOI: 10.1115/1.4029050), 3MF, and GLB '
+        'workflows lets small teams keep dimensions in plain text, run automated byte-level '
+        'topology checks in continuous integration, and share auditable artifacts with CNC '
+        'machinists and additive fabricators.'
+    ),
+    'act2_analogy': (
+        'A carpenter cutting a Japanese watari-ago notched timber joint planes each mortise and '
+        'tenon cheek flat so opposing shoulders meet at clean right angles. Paring away a '
+        'quarter-millimeter too much wood leaves the beam loose; leaving a proud ridge stops '
+        'the joint from seating. Solid modeling requires similar geometric discipline so '
+        'adjacent faces share edges cleanly without stray gaps. Where the analogy stops: timber '
+        'swells with humidity and yields slightly along its grain, whereas digital boundary and '
+        'mesh files fail through unpaired half-edges or polygon chordal shrinkage before any '
+        'physical load is applied.'
+    ),
+    'act2_plain_primer': (
+        'Two sliders and a knockout toggle control the interactive workbench below. The first '
+        'slider sets Circumferential Tessellation Facets, modeling how many flat polygon sides '
+        'approximate a fifteen-millimeter reference locating bore. At coarse settings such as '
+        'eight or twelve facets, the flat chords pull inward across the opening and exceed a '
+        'tenth-millimeter pin-clearance budget; at twenty-eight facets or higher, the chordal '
+        'deviation stays within budget. The second slider adjusts Upper Boss Height on the '
+        'stepped pedestal, updating the calculated block volume while keeping the base flange '
+        'fixed. Clicking the Planted-Defect / Boundary Knockout button drops the facet slider to '
+        'eight so the clearance alert fires in the browser, while running the Python verifier '
+        'with its planted-defect flag flips a triangle normal in memory to test manifold '
+        'rejection.'
+    ),
+    'act2_deepening': (
+        'In Requicha’s (1980, DOI: 10.1145/356827.356833) solid-modeling framework, a valid '
+        'rigid body is a regular closed point set (an r-set) whose boundary forms an orientable '
+        '2-manifold without dangling faces or self-intersections. Full B-rep kernels such as '
+        'OpenCascade construct stepped solids via regularized Boolean union, dissolving the '
+        'shared interior patch at z = 12 mm and exporting EDGE_LOOP boundaries. Our stdlib '
+        'generator make_x02.py builds the same stepped polyhedron directly by stitching four '
+        'rectangular vertex rings—outer 60 × 40 mm rings at z = 0 and z = 12 mm, stepping inward '
+        'across an eight-triangle shoulder terrace to inner 40 × 20 mm rings at z = 12 and z = '
+        '30 mm—into 16 shared vertices, 42 undirected edges, and 28 outward counter-clockwise '
+        'triangles (3F = 2E, Euler characteristic χ = V − E + F = 2). Evaluating the signed '
+        'origin-tetrahedron sum V = (1/6) ∑ v₀ · (v₁ × v₂) (Cha Zhang & Tsuhan Chen, 2001, DOI: '
+        '10.1109/ICIP.2001.958278) yields 43,200.0 mm³ across GLB, 3MF, and the Part-21 sketch.'
+    ),
+    'act4_human_ai': (
+        'Language models asked to write parametric Python CAD scripts can draft flange and boss '
+        'dimensions quickly, yet they may also hallucinate API calls, invert face winding, or '
+        'confuse faceted meshes with OpenCascade EDGE_LOOP B-reps. Folio X.02 pairs human '
+        'tolerance specification with a deterministic offline check in verify_x02 rather than '
+        'trusting generated files by eye. The human engineer sets the interface dimensions and '
+        'the 0.10 mm bore-sagitta ceiling; make_x02.py emits the reference .glb, .3mf, and '
+        'illustrative .step files alongside manifest.json; and verify_x02 checks SHA-256 '
+        'hashes, millimeter unit tags, watertight χ = 2 topology, and 43,200.0 mm³ signed '
+        'volume across all three files, checks h(15, 32) = 0.072229 mm ≤ 0.10 mm (requiring '
+        'N ≥ 28), and verifies that flipped normals, dropped STEP faces, and malformed 3MF XML '
+        'are rejected.'
+    ),
+    'act4_deepening': (
+        'Verified parametric geometry connects directly to four companion Folios on '
+        'Informatico.ai. In seismic isolation (Folio E.06), lead-rubber elastomeric bearings '
+        '(Robinson, 1982, DOI: 10.1002/eqe.4290100408) depend on concentric cylindrical core '
+        'and shim tolerances under cyclic shear. In additive construction (Folio E.10), '
+        'mechanistic wall-buckling and toolpath models for 3D concrete printing (Suiker, 2018, '
+        'DOI: 10.1016/j.ijmecsci.2018.01.010) slice stepped solid geometry into layered '
+        'extrusion paths. In structural optimization (Folio E.11), density fields from SIMP '
+        'penalization (Sigmund, 2001, DOI: 10.1007/s001580050176) require boundary '
+        'reconstruction into watertight solids before machining or printing. And in formal '
+        'geometry (Folio M.05), neuro-symbolic Euclidean synthesis in AlphaGeometry (Trinh et '
+        'al., 2024, DOI: 10.1038/s41586-023-06747-5) mirrors the pairing of symbolic rules with '
+        'an independent geometric checker.'
+    ),
+    'plain_es': (
+        'Diseñar un soporte metálico mediante código funciona como escribir una receta clara de '
+        'taller. En vez de arrastrar líneas a mano en la computadora, ustedes definen cada '
+        'medida como una regla. Fijan una brida base de sesenta milímetros y centran encima un '
+        'bloque escalonado. Cambian un número y toda la pieza se actualiza junta. El problema '
+        'suele aparecer al compartir el archivo con un taller de maquinado o impresión. El '
+        'maquinado lee fronteras geométricas continuas, mientras las mallas de impresión cortan '
+        'los barrenos redondos en caras planas. Cada cara plana reduce un poco el claro '
+        'interior y un pasador de acero puede atorarse al ensamblar. Aquí pueden girar el '
+        'pedestal en tres dimensiones y probar cómo el número de divisiones afecta esa holgura. '
+        'También pueden descargar los archivos abiertos y correr la rutina en Python para '
+        'revisar vértices, caras y volumen.'
+    ),
+    'deep_es': (
+        'El intercambio de sólidos entre formatos abiertos distingue las fronteras B-rep '
+        'analíticas de las mallas trianguladas (Braid, 1975; Requicha, 1980). En OpenCascade '
+        '(build123d o CadQuery), el protocolo ISO 10303-242 (STEP AP242; Feeney et al., 2015) '
+        'codificado en texto ISO 10303-21 emplea EDGE_LOOP y SHAPE_DEFINITION_REPRESENTATION; '
+        'nuestro generador en biblioteca estándar make_x02.py emite un esquema ilustrativo '
+        'Parte 21 con 16 puntos VERTEX_POINT y 28 bucles POLY_LOOP cuya malla cerrada en '
+        'milímetros coincide en topología (χ = 2) y volumen con signo (43,200.0 mm³; Cha Zhang '
+        'y Tsuhan Chen, 2001) con 3MF y GLB. Para un barreno de referencia R = 15 mm aproximado '
+        'por N facetas, la sagita cordal h = R(1 − cos(π/N)) mide 0.5111 mm en N = 12, baja a '
+        '0.0722 mm en N = 32 y exige N ≥ 28 para mantenerse dentro de 0.10 mm.'
+    ),
+    'distill_diagram': {
+        'analogy_title': 'The Notched Timber & Sliding Fit',
+        'analogy_sub': 'Planed flat cheeks and bounded clearances let mating joints seat cleanly.',
+        'force_a_title': 'Analytic B-Rep Solid (STEP AP242)',
+        'force_a_sub': 'Closed OpenCascade EDGE_LOOP shells in ISO 10303-242 (or planar Part-21 sketch).',
+        'force_b_title': 'Chordal Tessellation Sagitta h(N)',
+        'force_b_sub': 'Polygon discretization pulls cylindrical bore walls inward by h(N).',
+        'threshold_title': 'Pin Clearance Tolerance (h ≤ 0.10 mm)',
+        'threshold_pass': 'Fine Tessellation (N ≥ 28): h ≤ 0.10 mm, locating pins slide clear.',
+        'threshold_fail': 'Coarse Facets (N < 28): Sagitta h > 0.10 mm, locating pins may bind.',
+    },
+}

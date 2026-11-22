@@ -2255,6 +2255,14 @@
     "title": "The cosmological constant problem",
     "year": 1989
   },
+  "doi:10.1109/icip.2001.958278": {
+    "fetched": "2026-11-21",
+    "first_author": "Cha Zhang",
+    "found": true,
+    "journal": "Proceedings 2001 International Conference on Image Processing (ICIP)",
+    "title": "Efficient feature extraction for 2D/3D objects in mesh representation",
+    "year": 2001
+  },
   "doi:10.1109/tac.2002.803532": {
     "fetched": "2026-11-07",
     "first_author": "Smith",
@@ -2727,6 +2735,14 @@
     "title": "Construction of Arbitrary Order Finite Element Degree-of-Freedom Maps on Polygonal and Polyhedral Cell Meshes",
     "year": 2022
   },
+  "doi:10.1145/356827.356833": {
+    "fetched": "2026-11-21",
+    "first_author": "Requicha",
+    "found": true,
+    "journal": "ACM Computing Surveys",
+    "title": "Representations for Rigid Solids: Theory, Methods, and Systems",
+    "year": 1980
+  },
   "doi:10.1145/357290.357293": {
     "fetched": "2026-11-04",
     "first_author": "Cook",
@@ -2734,6 +2750,14 @@
     "journal": "ACM Transactions on Graphics",
     "title": "A Reflectance Model for Computer Graphics",
     "year": 1982
+  },
+  "doi:10.1145/360715.360727": {
+    "fetched": "2026-11-21",
+    "first_author": "Braid",
+    "found": true,
+    "journal": "Communications of the ACM",
+    "title": "The synthesis of solids bounded by many faces",
+    "year": 1975
   },
   "doi:10.1145/800031.808601": {
     "fetched": "2026-11-21",

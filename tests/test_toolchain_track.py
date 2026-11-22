@@ -249,5 +249,104 @@ class ToolchainTrackTests(unittest.TestCase):
         self.assertIn('ES_VOICE_INF = "es-MX-DaliaNeural"', audio_py)
         self.assertIn('SPEECH_RATE = "+20%"', audio_py)
 
+    def test_x02_cross_format_entity_parity_and_sagitta_verifier_rejects_drift(self) -> None:
+        import io
+        import shutil
+        import tempfile
+        import zipfile
+
+        sys.path.insert(0, str(ROOT / "tools"))
+        import toolchain_uga  # noqa: E402
+
+        files_dir = TOOLCHAIN_RESEARCH / "x02" / "files"
+        make_py = TOOLCHAIN_SKILLS / "x02" / "make_x02.py"
+        res = toolchain_uga.verify_folio_assets("x02", files_dir, make_py)
+        rt = res.get("x02_roundtrip_checks", {})
+        self.assertEqual(rt.get("step_vertex_points"), 16)
+        self.assertEqual(rt.get("step_poly_loops"), 28)
+        self.assertEqual(rt.get("step_advanced_faces"), 28)
+        self.assertEqual(rt.get("step_signed_volume_mm3"), 43200.0)
+        self.assertEqual(rt.get("threemf_vertices"), 16)
+        self.assertEqual(rt.get("threemf_faces"), 28)
+        self.assertEqual(rt.get("threemf_signed_volume_mm3"), 43200.0)
+        self.assertAlmostEqual(rt.get("chordal_sagitta_mm", 0.0), 0.072229, places=6)
+        self.assertEqual(rt.get("min_facets_for_0p10mm"), 28)
+
+        def _update_manifest_file(mpath: Path, fname: str, raw_bytes: bytes) -> None:
+            mdata = json.loads(mpath.read_text(encoding="utf-8"))
+            for f_entry in mdata["files"]:
+                if f_entry["filename"] == fname:
+                    f_entry["bytes"] = len(raw_bytes)
+                    f_entry["sha256"] = hashlib.sha256(raw_bytes).hexdigest()
+            mpath.write_text(json.dumps(mdata, indent=2) + "\n", encoding="utf-8", newline="\n")
+
+        # 1. STEP comment-spoofed ADVANCED_FACE + zeroed coordinate -> must fail closed
+        with tempfile.TemporaryDirectory() as td:
+            tmp_dir = Path(td)
+            shutil.copytree(files_dir, tmp_dir, dirs_exist_ok=True)
+            step_path = tmp_dir / "x02_artifact.step"
+            spoofed = (
+                "/* #999 = ADVANCED_FACE('',(#998),#997,.T.); */\n"
+                + step_path.read_text(encoding="utf-8").replace("ADVANCED_FACE(", "FACE_SURFACE(", 1)
+            )
+            raw_spoofed = spoofed.encode("utf-8")
+            step_path.write_bytes(raw_spoofed)
+            _update_manifest_file(tmp_dir / "manifest.json", "x02_artifact.step", raw_spoofed)
+            with self.assertRaises(AssertionError):
+                toolchain_uga.verify_folio_assets("x02", tmp_dir, make_py)
+
+        # 2. STEP zeroed coordinates (volume collapse) -> must fail closed
+        with tempfile.TemporaryDirectory() as td:
+            tmp_dir = Path(td)
+            shutil.copytree(files_dir, tmp_dir, dirs_exist_ok=True)
+            step_path = tmp_dir / "x02_artifact.step"
+            zeroed = re.sub(
+                r"CARTESIAN_POINT\('',\([^)]+\)\)",
+                "CARTESIAN_POINT('',(0.0,0.0,0.0))",
+                step_path.read_text(encoding="utf-8"),
+            )
+            raw_zeroed = zeroed.encode("utf-8")
+            step_path.write_bytes(raw_zeroed)
+            _update_manifest_file(tmp_dir / "manifest.json", "x02_artifact.step", raw_zeroed)
+            with self.assertRaisesRegex(AssertionError, "x02 STEP round-trip mismatch"):
+                toolchain_uga.verify_folio_assets("x02", tmp_dir, make_py)
+
+        # 3. 3MF unit changed to inch or out-of-bounds triangle index -> must raise AssertionError (not IndexError)
+        for bad_mut, expected_msg in (
+            (('unit="millimeter"', 'unit="inch"'), "x02 3MF unit"),
+            (('v1="0"', 'v1="99"'), "x02 3MF triangle index out of bounds"),
+        ):
+            with tempfile.TemporaryDirectory() as td:
+                tmp_dir = Path(td)
+                shutil.copytree(files_dir, tmp_dir, dirs_exist_ok=True)
+                tmf_path = tmp_dir / "x02_artifact.3mf"
+                with zipfile.ZipFile(tmf_path, "r") as zf_in:
+                    entries = {n: zf_in.read(n) for n in zf_in.namelist()}
+                entries["3D/3dmodel.model"] = (
+                    entries["3D/3dmodel.model"].decode("utf-8").replace(bad_mut[0], bad_mut[1], 1).encode("utf-8")
+                )
+                buf = io.BytesIO()
+                with zipfile.ZipFile(buf, "w", compression=zipfile.ZIP_DEFLATED) as zf_out:
+                    for n, b in entries.items():
+                        zf_out.writestr(n, b)
+                raw_tmf = buf.getvalue()
+                tmf_path.write_bytes(raw_tmf)
+                _update_manifest_file(tmp_dir / "manifest.json", "x02_artifact.3mf", raw_tmf)
+                with self.assertRaisesRegex(AssertionError, expected_msg):
+                    toolchain_uga.verify_folio_assets("x02", tmp_dir, make_py)
+
+        # 4. Negative (-32) or zero (0) chordal_segments in manifest -> must raise AssertionError
+        for bad_n in (-32, 0):
+            with tempfile.TemporaryDirectory() as td:
+                tmp_dir = Path(td)
+                shutil.copytree(files_dir, tmp_dir, dirs_exist_ok=True)
+                mpath = tmp_dir / "manifest.json"
+                mdata = json.loads(mpath.read_text(encoding="utf-8"))
+                mdata["parameters"]["chordal_segments"] = bad_n
+                mpath.write_text(json.dumps(mdata, indent=2) + "\n", encoding="utf-8", newline="\n")
+                with self.assertRaisesRegex(AssertionError, "x02 invalid bore parameters"):
+                    toolchain_uga.verify_folio_assets("x02", tmp_dir, make_py)
+
+
 if __name__ == "__main__":
     unittest.main()
