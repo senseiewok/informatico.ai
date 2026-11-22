@@ -241,39 +241,134 @@ export function parseGlbBuffer(buffer) {
 }
 
 /**
+ * Build a deformed/scaled parametric mesh without mutating parsed buffers.
+ * For X.05 (16-vertex 4-station square frustum), rings z={0,16,32,48} take clamped hw={20,16,max(2,p0/2),max(2,hw2+max(0,p1))}
+ * with recomputed area-weighted outward vertex normals and signed divergence volume.
+ */
+export function buildParametricMesh(parsed, scaleVec = [1.0, 1.0, 1.0], slug = "", p0 = NaN, p1 = NaN) {
+  const vCount = parsed.vertexCount;
+  const idx = parsed.indices;
+  const positions = new Float32Array(vCount * 3);
+  const normals = new Float32Array(vCount * 3);
+  const bmin = [Infinity, Infinity, Infinity];
+  const bmax = [-Infinity, -Infinity, -Infinity];
+
+  const isX05 =
+    String(slug || "").toLowerCase() === "x05" &&
+    vCount === 16 &&
+    Number.isFinite(Number(p0)) &&
+    Number.isFinite(Number(p1)) &&
+    Number(p0) > 0;
+
+  if (isX05) {
+    const hw2 = Math.max(2.0, 0.5 * Number(p0));
+    const hw3 = Math.max(2.0, hw2 + Math.max(0.0, Number(p1)));
+    const rings = [
+      [0.0, 20.0],
+      [16.0, 16.0],
+      [32.0, hw2],
+      [48.0, hw3],
+    ];
+    let vi = 0;
+    for (let r = 0; r < 4; r += 1) {
+      const [z, hw] = rings[r];
+      const quad = [
+        [-hw, -hw, z],
+        [hw, -hw, z],
+        [hw, hw, z],
+        [-hw, hw, z],
+      ];
+      for (let k = 0; k < 4; k += 1) {
+        const [x, y, zv] = quad[k];
+        positions[vi * 3] = x;
+        positions[vi * 3 + 1] = y;
+        positions[vi * 3 + 2] = zv;
+        if (x < bmin[0]) bmin[0] = x;
+        if (y < bmin[1]) bmin[1] = y;
+        if (zv < bmin[2]) bmin[2] = zv;
+        if (x > bmax[0]) bmax[0] = x;
+        if (y > bmax[1]) bmax[1] = y;
+        if (zv > bmax[2]) bmax[2] = zv;
+        vi += 1;
+      }
+    }
+    const acc = new Float64Array(vCount * 3);
+    for (let t = 0; t < idx.length; t += 3) {
+      const a = idx[t], b = idx[t + 1], c = idx[t + 2];
+      const x0 = positions[a * 3], y0 = positions[a * 3 + 1], z0 = positions[a * 3 + 2];
+      const ux = positions[b * 3] - x0, uy = positions[b * 3 + 1] - y0, uz = positions[b * 3 + 2] - z0;
+      const vx = positions[c * 3] - x0, vy = positions[c * 3 + 1] - y0, vz = positions[c * 3 + 2] - z0;
+      const nx = uy * vz - uz * vy;
+      const ny = uz * vx - ux * vz;
+      const nz = ux * vy - uy * vx;
+      for (const vert of [a, b, c]) {
+        acc[vert * 3] += nx;
+        acc[vert * 3 + 1] += ny;
+        acc[vert * 3 + 2] += nz;
+      }
+    }
+    for (let i = 0; i < vCount; i += 1) {
+      const nx = acc[i * 3], ny = acc[i * 3 + 1], nz = acc[i * 3 + 2];
+      const nLen = Math.hypot(nx, ny, nz) || 1.0;
+      normals[i * 3] = nx / nLen;
+      normals[i * 3 + 1] = ny / nLen;
+      normals[i * 3 + 2] = nz / nLen;
+    }
+  } else {
+    const [sx, sy, sz] = scaleVec || [1.0, 1.0, 1.0];
+    const invSx = 1 / Math.max(Math.abs(sx), 1e-5);
+    const invSy = 1 / Math.max(Math.abs(sy), 1e-5);
+    const invSz = 1 / Math.max(Math.abs(sz), 1e-5);
+    for (let i = 0; i < vCount; i += 1) {
+      const x = parsed.positions[i * 3] * sx;
+      const y = parsed.positions[i * 3 + 1] * sy;
+      const z = parsed.positions[i * 3 + 2] * sz;
+      positions[i * 3] = x;
+      positions[i * 3 + 1] = y;
+      positions[i * 3 + 2] = z;
+      if (x < bmin[0]) bmin[0] = x;
+      if (y < bmin[1]) bmin[1] = y;
+      if (z < bmin[2]) bmin[2] = z;
+      if (x > bmax[0]) bmax[0] = x;
+      if (y > bmax[1]) bmax[1] = y;
+      if (z > bmax[2]) bmax[2] = z;
+      const nx = parsed.normals[i * 3] * invSx;
+      const ny = parsed.normals[i * 3 + 1] * invSy;
+      const nz = parsed.normals[i * 3 + 2] * invSz;
+      const nLen = Math.hypot(nx, ny, nz) || 1.0;
+      normals[i * 3] = nx / nLen;
+      normals[i * 3 + 1] = ny / nLen;
+      normals[i * 3 + 2] = nz / nLen;
+    }
+  }
+
+  let signedVol6 = 0.0;
+  for (let t = 0; t < idx.length; t += 3) {
+    const i0 = idx[t] * 3, i1 = idx[t + 1] * 3, i2 = idx[t + 2] * 3;
+    const x0 = positions[i0], y0 = positions[i0 + 1], z0 = positions[i0 + 2];
+    const x1 = positions[i1], y1 = positions[i1 + 1], z1 = positions[i1 + 2];
+    const x2 = positions[i2], y2 = positions[i2 + 1], z2 = positions[i2 + 2];
+    signedVol6 +=
+      x0 * (y1 * z2 - z1 * y2) +
+      y0 * (z1 * x2 - x1 * z2) +
+      z0 * (x1 * y2 - y1 * x2);
+  }
+
+  return { positions, normals, bmin, bmax, signedVolume: signedVol6 / 6.0 };
+}
+
+/**
  * Encode a scaled mesh into a valid Khronos glTF 2.0 binary (.glb) ArrayBuffer (ISO/IEC 12113:2022).
  */
 export function encodeCustomGlbBuffer(parsed, scaleVec, slug, p0, p1) {
-  const [sx, sy, sz] = scaleVec;
-  const invSx = 1 / Math.max(Math.abs(sx), 1e-5);
-  const invSy = 1 / Math.max(Math.abs(sy), 1e-5);
-  const invSz = 1 / Math.max(Math.abs(sz), 1e-5);
+  const safeSlug = /^[a-z0-9_-]+$/i.test(String(slug || "")) ? String(slug) : "x01";
+  const sp0 = Number.isFinite(Number(p0)) ? Number(p0) : 0;
+  const sp1 = Number.isFinite(Number(p1)) ? Number(p1) : 0;
   const vCount = parsed.vertexCount;
-  const scaledPos = new Float32Array(vCount * 3);
-  const scaledNorm = new Float32Array(vCount * 3);
-  const bmin = [Infinity, Infinity, Infinity];
-  const bmax = [-Infinity, -Infinity, -Infinity];
-  for (let i = 0; i < vCount; i += 1) {
-    const x = parsed.positions[i * 3] * sx;
-    const y = parsed.positions[i * 3 + 1] * sy;
-    const z = parsed.positions[i * 3 + 2] * sz;
-    scaledPos[i * 3] = x;
-    scaledPos[i * 3 + 1] = y;
-    scaledPos[i * 3 + 2] = z;
-    if (x < bmin[0]) bmin[0] = x;
-    if (y < bmin[1]) bmin[1] = y;
-    if (z < bmin[2]) bmin[2] = z;
-    if (x > bmax[0]) bmax[0] = x;
-    if (y > bmax[1]) bmax[1] = y;
-    if (z > bmax[2]) bmax[2] = z;
-    const nx = parsed.normals[i * 3] * invSx;
-    const ny = parsed.normals[i * 3 + 1] * invSy;
-    const nz = parsed.normals[i * 3 + 2] * invSz;
-    const nLen = Math.hypot(nx, ny, nz) || 1;
-    scaledNorm[i * 3] = nx / nLen;
-    scaledNorm[i * 3 + 1] = ny / nLen;
-    scaledNorm[i * 3 + 2] = nz / nLen;
-  }
+  const mesh = buildParametricMesh(parsed, scaleVec, safeSlug, sp0, sp1);
+  const scaledPos = mesh.positions;
+  const scaledNorm = mesh.normals;
+  const { bmin, bmax } = mesh;
 
   const posBytes = scaledPos.byteLength;
   const normBytes = scaledNorm.byteLength;
@@ -285,20 +380,20 @@ export function encodeCustomGlbBuffer(parsed, scaleVec, slug, p0, p1) {
   const gltfObj = {
     asset: {
       version: "2.0",
-      generator: `Informatico.ai Live Parametric Exporter (${slug.toUpperCase()})`,
+      generator: `Informatico.ai Live Parametric Exporter (${safeSlug.toUpperCase()})`,
       extras: {
-        folio: slug.toUpperCase(),
-        slider_0: p0,
-        slider_1: p1,
+        folio: safeSlug.toUpperCase(),
+        slider_0: sp0,
+        slider_1: sp1,
         license: "CC0-1.0 / CC-BY-4.0 (Educational artifact; not certified for fitness)",
       },
     },
     scene: 0,
     scenes: [{ nodes: [0] }],
-    nodes: [{ mesh: 0, name: `${slug}_parametric_solid` }],
+    nodes: [{ mesh: 0, name: `${safeSlug}_parametric_solid` }],
     meshes: [
       {
-        name: `${slug}_mesh`,
+        name: `${safeSlug}_mesh`,
         primitives: [{ attributes: { POSITION: 0, NORMAL: 1, COLOR_0: 2 }, indices: 3, mode: 4 }],
       },
     ],
@@ -351,10 +446,10 @@ export function encodeCustomGlbBuffer(parsed, scaleVec, slug, p0, p1) {
  * Encode a scaled mesh into a clean-room ISO 10303-21 faceted POLY_LOOP .STEP file (AP242 header).
  */
 export function encodeCustomStepString(parsed, scaleVec, slug, p0, p1) {
-  const [sx, sy, sz] = scaleVec;
   const safeSlug = /^[a-z0-9_-]+$/i.test(String(slug || "")) ? String(slug) : "x01";
   const sp0 = Number.isFinite(Number(p0)) ? Number(p0) : 0;
   const sp1 = Number.isFinite(Number(p1)) ? Number(p1) : 0;
+  const mesh = buildParametricMesh(parsed, scaleVec, safeSlug, sp0, sp1);
   const lines = [
     "ISO-10303-21;",
     "HEADER;",
@@ -377,9 +472,9 @@ export function encodeCustomStepString(parsed, scaleVec, slug, p0, p1) {
   const vIds = [];
   const scaledVerts = [];
   for (let i = 0; i < parsed.vertexCount; i += 1) {
-    const vx = parsed.positions[i * 3] * sx;
-    const vy = parsed.positions[i * 3 + 1] * sy;
-    const vz = parsed.positions[i * 3 + 2] * sz;
+    const vx = mesh.positions[i * 3];
+    const vy = mesh.positions[i * 3 + 1];
+    const vz = mesh.positions[i * 3 + 2];
     scaledVerts.push([vx, vy, vz]);
     const cpId = eid++;
     const vpId = eid++;
@@ -431,7 +526,10 @@ export function encodeCustomStepString(parsed, scaleVec, slug, p0, p1) {
  * Encode a scaled mesh into a clean-room ASCII R2000 .DXF layered 2D CAD projection.
  */
 export function encodeCustomDxfString(parsed, scaleVec, slug, p0, p1) {
-  const [sx, sy] = scaleVec;
+  const safeSlug = /^[a-z0-9_-]+$/i.test(String(slug || "")) ? String(slug) : "x01";
+  const sp0 = Number.isFinite(Number(p0)) ? Number(p0) : 0;
+  const sp1 = Number.isFinite(Number(p1)) ? Number(p1) : 0;
+  const mesh = buildParametricMesh(parsed, scaleVec, safeSlug, sp0, sp1);
   const lines = [
     "0", "SECTION",
     "2", "HEADER",
@@ -451,17 +549,17 @@ export function encodeCustomDxfString(parsed, scaleVec, slug, p0, p1) {
       const key = u < v ? `${u}_${v}` : `${v}_${u}`;
       if (seen.has(key)) continue;
       seen.add(key);
-      const x0 = (parsed.positions[u * 3] * sx).toFixed(4);
-      const y0 = (parsed.positions[u * 3 + 1] * sy).toFixed(4);
-      const x1 = (parsed.positions[v * 3] * sx).toFixed(4);
-      const y1 = (parsed.positions[v * 3 + 1] * sy).toFixed(4);
+      const x0 = mesh.positions[u * 3].toFixed(4);
+      const y0 = mesh.positions[u * 3 + 1].toFixed(4);
+      const x1 = mesh.positions[v * 3].toFixed(4);
+      const y1 = mesh.positions[v * 3 + 1].toFixed(4);
       const layer = e === 0 ? "CUT" : e === 1 ? "MOUNTAIN" : "VALLEY";
       lines.push("0", "LINE", "8", layer, "10", x0, "20", y0, "30", "0.0", "11", x1, "21", y1, "31", "0.0");
     }
   }
   lines.push(
     "0", "TEXT", "8", "ANNOTATION", "10", "0.0", "20", "-18.0", "30", "0.0", "40", "3.5",
-    "1", `${slug.toUpperCase()} Custom (${p0}, ${p1}) - Educational Artifact (CC0-1.0)`
+    "1", `${safeSlug.toUpperCase()} Custom (${sp0}, ${sp1}) - Educational Artifact (CC0-1.0)`
   );
   lines.push("0", "ENDSEC", "0", "EOF");
   return lines.join("\n") + "\n";
@@ -559,26 +657,25 @@ function buildMvpAndNormalMatrix(yaw, pitch, zoom, aspect) {
   return { mvp, normMat };
 }
 
-function normalizePositions(parsed, scaleVec = [1.0, 1.0, 1.0]) {
-  const { positions, bmin, bmax, vertexCount } = parsed;
-  const [sx, sy, sz] = scaleVec;
-  const cx = 0.5 * (bmin[0] + bmax[0]) * sx;
-  const cy = 0.5 * (bmin[1] + bmax[1]) * sy;
-  const cz = 0.5 * (bmin[2] + bmax[2]) * sz;
-  const span = Math.max(
-    (bmax[0] - bmin[0]) * sx,
-    (bmax[1] - bmin[1]) * sy,
-    (bmax[2] - bmin[2]) * sz,
-    1e-5
-  );
+function normalizeMeshPositions(positions, bmin, bmax) {
+  const vCount = positions.length / 3;
+  const cx = 0.5 * (bmin[0] + bmax[0]);
+  const cy = 0.5 * (bmin[1] + bmax[1]);
+  const cz = 0.5 * (bmin[2] + bmax[2]);
+  const span = Math.max(bmax[0] - bmin[0], bmax[1] - bmin[1], bmax[2] - bmin[2], 1e-5);
   const scale = 1.35 / span;
   const normPos = new Float32Array(positions.length);
-  for (let i = 0; i < vertexCount; i += 1) {
-    normPos[i * 3] = (positions[i * 3] * sx - cx) * scale;
-    normPos[i * 3 + 1] = (positions[i * 3 + 1] * sy - cy) * scale;
-    normPos[i * 3 + 2] = (positions[i * 3 + 2] * sz - cz) * scale;
+  for (let i = 0; i < vCount; i += 1) {
+    normPos[i * 3] = (positions[i * 3] - cx) * scale;
+    normPos[i * 3 + 1] = (positions[i * 3 + 1] - cy) * scale;
+    normPos[i * 3 + 2] = (positions[i * 3 + 2] - cz) * scale;
   }
   return normPos;
+}
+
+function normalizePositions(parsed, scaleVec = [1.0, 1.0, 1.0]) {
+  const mesh = buildParametricMesh(parsed, scaleVec, "", NaN, NaN);
+  return normalizeMeshPositions(mesh.positions, mesh.bmin, mesh.bmax);
 }
 
 function buildWireframeIndices(triIndices) {
@@ -648,7 +745,8 @@ function mountSingleGlbViewer(container) {
   }
 
   let scaleVec = [1.0, 1.0, 1.0];
-  let normPos = normalizePositions(parsed, scaleVec);
+  let curMesh = buildParametricMesh(parsed, scaleVec, slug, NaN, NaN);
+  let normPos = normalizeMeshPositions(curMesh.positions, curMesh.bmin, curMesh.bmax);
   const wireIndices = buildWireframeIndices(parsed.indices);
 
   const state = {
@@ -664,9 +762,9 @@ function mountSingleGlbViewer(container) {
 
   function updateStatusText() {
     if (!statusEl) return;
-    const dx = ((parsed.bmax[0] - parsed.bmin[0]) * scaleVec[0]).toFixed(1);
-    const dy = ((parsed.bmax[1] - parsed.bmin[1]) * scaleVec[1]).toFixed(1);
-    const dz = ((parsed.bmax[2] - parsed.bmin[2]) * scaleVec[2]).toFixed(1);
+    const dx = (curMesh.bmax[0] - curMesh.bmin[0]).toFixed(1);
+    const dy = (curMesh.bmax[1] - curMesh.bmin[1]).toFixed(1);
+    const dz = (curMesh.bmax[2] - curMesh.bmin[2]).toFixed(1);
     statusEl.textContent = `glTF 2.0 Binary (${parsed.byteLength} B) · V=${parsed.vertexCount}, F=${parsed.triangleCount} · BBox ${dx}×${dy}×${dz} mm`;
   }
   updateStatusText();
@@ -700,7 +798,7 @@ function mountSingleGlbViewer(container) {
 
       const normBuf = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, normBuf);
-      gl.bufferData(gl.ARRAY_BUFFER, parsed.normals, gl.STATIC_DRAW);
+      gl.bufferData(gl.ARRAY_BUFFER, curMesh.normals, gl.DYNAMIC_DRAW);
       gl.enableVertexAttribArray(1);
       gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 0, 0);
 
@@ -723,6 +821,7 @@ function mountSingleGlbViewer(container) {
         prog,
         vao,
         posBuf,
+        normBuf,
         triBuf,
         lineBuf,
         uMvp: gl.getUniformLocation(prog, "u_mvp"),
@@ -776,18 +875,40 @@ function mountSingleGlbViewer(container) {
     gl.bindVertexArray(null);
   }
 
-  function updateScale(sx, sy, sz) {
-    scaleVec = [Math.max(0.15, sx), Math.max(0.15, sy), Math.max(0.15, sz)];
-    normPos = normalizePositions(parsed, scaleVec);
+  function syncGpuMesh() {
+    normPos = normalizeMeshPositions(curMesh.positions, curMesh.bmin, curMesh.bmax);
     if (gl && gpu && gpu.posBuf) {
       gl.bindBuffer(gl.ARRAY_BUFFER, gpu.posBuf);
       gl.bufferSubData(gl.ARRAY_BUFFER, 0, normPos);
+    }
+    if (gl && gpu && gpu.normBuf) {
+      gl.bindBuffer(gl.ARRAY_BUFFER, gpu.normBuf);
+      gl.bufferSubData(gl.ARRAY_BUFFER, 0, curMesh.normals);
     }
     updateStatusText();
     draw();
   }
 
-  VIEWER_REGISTRY.set(slug, { parsed, getScaleVec: () => scaleVec, updateScale });
+  function updateScale(sx, sy, sz) {
+    scaleVec = [Math.max(0.15, sx), Math.max(0.15, sy), Math.max(0.15, sz)];
+    curMesh = buildParametricMesh(parsed, scaleVec, "", NaN, NaN);
+    syncGpuMesh();
+  }
+
+  function updateParametric(p0, p1) {
+    const [sx, sy, sz] = computeParametricScaleVec(slug, p0, p1);
+    scaleVec = [Math.max(0.15, sx), Math.max(0.15, sy), Math.max(0.15, sz)];
+    curMesh = buildParametricMesh(parsed, scaleVec, slug, p0, p1);
+    syncGpuMesh();
+  }
+
+  VIEWER_REGISTRY.set(slug, {
+    parsed,
+    getScaleVec: () => scaleVec,
+    getMesh: () => curMesh,
+    updateScale,
+    updateParametric,
+  });
 
   canvas.addEventListener("webglcontextlost", (e) => {
     e.preventDefault();
@@ -916,6 +1037,10 @@ export function initGlbViewers(scope = document) {
         const u1 = v1.getAttribute("data-unit") || "";
         v1.textContent = u1.includes("=") ? `${u1}${p1}` : `${p1}${u1}`;
       }
+      const vReg = VIEWER_REGISTRY.get(slug);
+      if (vReg) {
+        vReg.updateParametric(p0, p1);
+      }
       let pass = !knockoutActive;
       let out = ["", "", "", ""];
       if (slug === "x01") {
@@ -958,19 +1083,25 @@ export function initGlbViewers(scope = document) {
           pass ? "CUT · MOUNTAIN · VALLEY" : "ALERT · KAWASAKI SUM != 0°",
         ];
       } else if (slug === "x05") {
-        const overhangDeg = (Math.atan2(p1, 16.0) * 180.0) / Math.PI;
-        pass = !knockoutActive && overhangDeg <= 45.0;
+        const dhw2 = 0.5 * p0 - 16.0;
+        const maxFlare = Math.max(0.0, dhw2, p1);
+        const overhangDeg = (Math.atan2(maxFlare, 16.0) * 180.0) / Math.PI;
+        const overhangOk = overhangDeg <= 45.0;
+        pass = !knockoutActive && overhangOk;
         const a1 = 1024.0;
         const a2 = p0 * p0;
         const v1 = (16.0 / 3.0) * (1600.0 + a1 + Math.sqrt(1600.0 * a1));
         const v2 = (16.0 / 3.0) * (a1 + a2 + Math.sqrt(a1 * a2));
         const a3 = Math.pow(p0 + 2 * p1, 2);
         const v3 = (16.0 / 3.0) * (a2 + a3 + Math.sqrt(a2 * a3));
+        const vFrustum = v1 + v2 + v3;
+        const liveSignedVol = vReg ? vReg.getMesh().signedVolume : vFrustum;
+        const relPct = (Math.abs(liveSignedVol - vFrustum) / Math.max(vFrustum, 1e-9)) * 100.0;
         out = [
-          `${(v1 + v2 + v3).toFixed(1)} mm³ (ΔV = 0.00%)`,
+          `${vFrustum.toFixed(1)} mm³ (ΔV = ${relPct.toFixed(2)}%)`,
           "V=16, E=42, F=28 · χ=2",
-          `${overhangDeg.toFixed(2)}° ${pass ? "≤" : ">"} 45.0° (GEOMETRY)`,
-          pass ? "PASS · DEFECT REJECTED" : "ALERT · OVERHANG > 45°",
+          `${overhangDeg.toFixed(2)}° ${overhangOk ? "≤" : ">"} 45.0° (GEOMETRY)`,
+          pass ? "PASS · DEFECT REJECTED" : (overhangOk ? "PLANTED DEFECT TRIGGERED" : "ALERT · OVERHANG > 45°"),
         ];
       } else if (slug === "x07") {
         const vol = 47416.9102 * (p0 / 30.0) * (p1 / 18.0);
@@ -1002,11 +1133,6 @@ export function initGlbViewers(scope = document) {
         caption.textContent = pass
           ? `Verified Geometry Regime (${slug.toUpperCase()}) — All 4 stage invariants satisfied (${out[3]}).`
           : `Planted-Defect / Boundary Knockout (${slug.toUpperCase()}) — Geometric invariant violated (${out[3]}).`;
-      }
-      const vReg = VIEWER_REGISTRY.get(slug);
-      if (vReg) {
-        const [sx, sy, sz] = computeParametricScaleVec(slug, p0, p1);
-        vReg.updateScale(sx, sy, sz);
       }
     };
 
@@ -1046,7 +1172,7 @@ export function initGlbViewers(scope = document) {
         if (knockoutActive && s0 && s1) {
           if (slug === "x02") s0.value = "8";
           else if (slug === "x03") s1.value = "95";
-          else if (slug === "x05") s1.value = "20";
+          else if (slug === "x05") { s0.value = "24"; s1.value = "20"; }
           else if (slug === "x07") s1.value = "9";
         } else if (s0 && s1) {
           if (slug === "x01") { s0.value = "40"; s1.value = "20"; }
