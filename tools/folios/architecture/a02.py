@@ -12,7 +12,7 @@ FOLIO = {'folio_id': 'A.02',
  'category_code': 'A',
  'title': 'Reciprocal Timber Gridshells (Nexorades), Eccentric Lap Moments, and 1:5 Shear-Block Joinery',
  'subtitle': 'Structural kinematics of bolt-free reciprocal timber frames where each beam rests on its neighbor with '
-             'engagement eccentricity e_z, converting global shell thrust into localized bending.',
+             'a vertical step at each lap, converting global shell thrust into localized bending.',
  'date_published': '2026-10-25',
  'date_redated': '2026-11-14',
  'current_edition': 'REV 1.3',
@@ -23,13 +23,13 @@ FOLIO = {'folio_id': 'A.02',
               'kernels': '1:50 Nexorade Bay + 1:5 Notched Lap Joint',
               'benchmarks': 'Model values: M_lap = 5.15 kN·m (a = 0.373 m, λ = 0.25) · utilization 0.64 and SF 3.74 are illustrative',
               'bridge': 'Reciprocal Load Sharing'},
- 'steps': ['Stage 1 (4-Valence Reciprocal Fan): Four GL28h larch members interlock in a pinwheel cyclic dependency so '
-           'no more than two members meet at any single point.',
+ 'steps': ['Stage 1 (4-Valence Reciprocal Fan): Four GL28h larch members interlock in a pinwheel loop so '
+           'no more than two members meet at any point.',
            'Stage 2 (Eccentricity-Induced Dome Rise): An assumed vertical offset e_z = 85 mm at each lap joint '
-           'tilts each member, and repeated around the fan this gives the dome its rise.',
+           'tilts each member; repeated around the fan, this gives the dome its rise.',
            'Stage 3 (Notch Shear & Bending Check, in the style of EN 1995-1-1): With V_lap = 18.4 kN, λ = 0.25 and an '
-           'assumed member length L = 1.493 m (so a = λL = 0.373 m), M_lap = 18.4 × 0.373 × 0.75 = 5.15 kN·m. The '
-           'notch utilization 0.64 is a fixed illustrative value, not a full design check.',
+           'assumed member length L = 1.493 m (a = λL = 0.373 m), M_lap = 18.4 × 0.373 × 0.75 = 5.15 kN·m. The '
+           'default notch utilization 0.64 is an illustrative baseline rescaled by the sliders below, not a full design check.',
            'Stage 4 (1:5 CNC Dovetail Shear-Block Node): A proposed node in which hardwood beech dowels and EPDM gaskets '
            'carry shear without exposed steel plates (design proposal, not tested).'],
  'readouts': [{'label': 'Joint Shear Force (V_lap)', 'value': '18.4 kN'},
@@ -42,10 +42,11 @@ FOLIO = {'folio_id': 'A.02',
                         'concealed self-tapping full-thread reinforcement screws (f_{m,k} = 28 MPa, f_{v,k} = 3.5 '
                         'MPa).',
                 'meta': 'Design proposal, not a product · EN 14080 is the glued-laminated timber product standard such members would need to meet'},
- 'sidenote_1': {'kicker': 'SIDENOTE A.02 · VILLARD DE HONNECOURT TO KAGAWA',
+ 'sidenote_1': {'kicker': 'SIDENOTE A.02 · SHORT MEMBERS, NOTCHED LAPS',
                 'body': 'Reciprocal frames let members shorter than the span cover it together (Popovic Larsen 2007, DOI '
-                        '10.4324/9780080556000). The price is bending and shear at every notch, which EN 1995-1-1 asks '
-                        'designers to check for notched members.'},
+                        '10.4324/9780080556000). The trade-off is bending and shear at every notch, which EN 1995-1-1 '
+                        'and notch-fracture reviews ask designers to check (Jockwer, Steiger, and Frangi 2014, DOI '
+                        '10.1061/(ASCE)ST.1943-541X.0000838).'},
  'skill': {'filename': 'reciprocal-timber-nexorade-SKILL.md',
            'name': 'reciprocal-timber-nexorade',
            'description': 'AI-agnostic structural timber engineering skill for reciprocal gridshells (nexorades), '
@@ -61,7 +62,7 @@ FOLIO = {'folio_id': 'A.02',
                 'summary': 'REV 1.3 (Redated 2026-11-14): Grounding revision. The model does not prove gridshells safe; '
                            'earlier SAFE / PASS claims, buckling claims from COMPAS, '
                            'and an unsourced 60% embodied carbon reduction claim are withdrawn; '
-                           'the utilization 0.64 and SF 3.74 are now labelled illustrative values. The bending moment '
+                           'the utilization 0.64 and SF 3.74 are now labeled illustrative values. The bending moment '
                            'now states its assumed member length (L = 1.493 m), the invented Song and Leonardo scenes '
                            'are replaced by a plain account.',
                 'opus': 'Review: references checked by DOI in Crossref and the Scite index; Scite search found no '
@@ -111,13 +112,21 @@ FOLIO = {'folio_id': 'A.02',
 
 LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'history_lead': 'In Northern Song China, timber "rainbow bridges" crossed the Bian River at Kaifeng as woven arches '
-                 'of short logs, with no piers standing in the water; one appears in the twelfth-century scroll Along '
-                 'the River During the Qingming Festival. Each log rests on its neighbors, so pieces shorter than the '
-                 'span carry the span together. Leonardo da Vinci later drew similar self-supporting arrangements of '
-                 'short poles in the sketches now collected in the Codex Atlanticus. Structures of this kind, in '
-                 'which members support one another in a closed loop, are now called reciprocal frames (Popovic '
-                 'Larsen 2007, DOI 10.4324/9780080556000).',
- 'history_body': "From Leonardo da Vinci's sketches in the Codex Atlanticus to Villard de Honnecourt's medieval floor grillages and contemporary timber pavilions, reciprocal frames assemble short members into closed polygonal fans. In her book Reciprocal Frame Architecture (DOI 10.4324/9780080556000), Olga Popovic Larsen describes how in these systems each member rests on the next, so no single node gathers many members. Asefi and Bahremandi-Tolou review the design challenges of such frames in architecture (Journal of Building Engineering, DOI 10.1016/j.jobe.2019.100867). Designers today could pair form-finding tools such as compas-dev/compas (https://github.com/compas-dev/compas; see DOI 10.1016/j.cad.2015.01.006 for the underlying three-dimensional graphic statics) with timber connection rules from EN 1995-1-1. This folio does not run those tools, and it makes no embodied-carbon claim; its numbers come from the lap-moment formula shown.",
+                 'of short logs without river piers. One such bridge appears in the twelfth-century scroll Along the '
+                 'River During the Qingming Festival. Each log rests on its neighbors, so pieces shorter than the '
+                 'crossing carry the span together. Leonardo da Vinci later sketched similar self-supporting loops '
+                 'of short poles in sheets now bound in the Codex Atlanticus. Builders and engineers now call these '
+                 'mutually supporting loops reciprocal frames (Popovic Larsen 2007, DOI 10.4324/9780080556000); the form-finding literature also calls them nexorades (Douthe and Baverel 2009, DOI 10.1016/j.compstruc.2009.06.011).',
+ 'history_body': "From Villard de Honnecourt's medieval floor grillages and Leonardo da Vinci's Codex Atlanticus sketches "
+                 'to contemporary timber pavilions, reciprocal frames weave short bars into closed polygonal fans. '
+                 'Olga Popovic Larsen (2007, Reciprocal Frame Architecture, DOI 10.4324/9780080556000) explains how '
+                 'each member rests on the next so no node gathers many beams. Douthe and Baverel (2009, DOI '
+                 '10.1016/j.compstruc.2009.06.011) formulate nexorade geometry through dynamic relaxation, while '
+                 'Asefi and Bahremandi-Tolou (2019, DOI 10.1016/j.jobe.2019.100867) review architectural design '
+                 'challenges. Designers could pair open tools such as compas-dev/compas '
+                 '(https://github.com/compas-dev/compas; 3D graphic statics in DOI 10.1016/j.cad.2015.01.006) with '
+                 'EN 1995-1-1 timber checks. This folio does not run those tools and makes no embodied-carbon claim; '
+                 'its numbers come from the lap-moment formula shown.',
  'pullquote': 'A reciprocal timber frame replaces the congested multi-axis steel node with a woven rhythm of short, '
               'lap-jointed beams—where every member both supports its neighbor and is supported in return.',
  'pullquote_cite': "Editorial Synthesis · From the Song Dynasty Rainbow Bridges & Da Vinci's Codex Atlanticus to "
@@ -132,54 +141,63 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Frei Otto & Ted Happold',
                  'Erect the Mannheim Multihalle timber gridshell by lifting a flat hemlock lath lattice into a '
                  'funicular shell.'),
-                ('2010',
-                 'Shigeru Ban & Hermann Blumer',
-                 'Translate triaxial woven bamboo geometry into CNC-milled hexagonal/triangular glulam shell ribs at '
-                 'Metz.'),
+                ('2009–2011',
+                 'Douthe & Baverel; Gelez, Aubry & Vaudeville',
+                 'Apply dynamic relaxation to nexorade form-finding (DOI 10.1016/j.compstruc.2009.06.011) and study the bending resistance and stiffness of a simple nexorade (DOI 10.1260/0266-3511.26.4.331).'),
                 ('2026',
                  'Informatico.ai Folio A.02',
                  'A teaching model of the reciprocal lap moment, with an illustrative buckling factor (SF = 3.74) and '
                  'an assumed joint stiffness.')],
- 'intuition_lead': 'When gravity loads act on a curved reciprocal timber gridshell, the system transfers force through '
-                   'membrane compression along its diagonal lattice ribs. However, what threatens slender timber '
-                   'shells is not compressive crushing, but local joint splitting and global elastic buckling. The '
-                   'vertical offset e_z at each lap joint inherently produces an eccentric bending moment M_lap = '
-                   'V_lap * a * (1 - lambda_lap); this is the folio\'s simplified lever model of the lap (see Popovic Larsen, DOI '
-                   '10.4324/9780080556000, and Asefi and Bahremandi-Tolou, DOI 10.1016/j.jobe.2019.100867, for '
-                   'reciprocal frame behaviour in general). With V_lap = 18.4 kN, lambda = 0.25 and an assumed member '
-                   'length of 1.493 m, the lap arm is a = 0.373 m and M_lap = 5.15 kN·m. EN 1995-1-1 includes a shear '
-                   'check for notched members, tau_d <= k_v * f_{v,d}, and splitting at the re-entrant corner of a notch '
-                   'is a known weakness that designers often address with fully threaded self-tapping screws. The '
-                   'utilization of 0.64 and the elastic buckling factor of 3.74 shown here are illustrative values, not '
-                   'the result of a full analysis; a real gridshell would need a complete design check by a qualified '
-                   'engineer.',
- 'intuition_body': 'In an Euler buckling estimate the critical load N_cr = pi^2 E I_eff / (k L_trib)^2 depends on the '
+ 'intuition_lead': 'Under gravity, a reciprocal frame couples member bending, shear, and joint flexibility across '
+                   'every bar in the loop (Gelez, Aubry, and Vaudeville 2011, DOI 10.1260/0266-3511.26.4.331). In '
+                   'slender timber shells, local joint splitting and elastic buckling can govern before '
+                   'compressive crushing. Here, an assumed vertical step e_z = 85 mm tilts each stacked bar to give '
+                   'the fan its rise, while the in-plane engagement arm a = lambda_lap * L enters this folio\'s '
+                   'simplified lap-moment formula M_lap = V_lap * a * (1 - lambda_lap) (for general reciprocal frame '
+                   'behavior, see Popovic Larsen 2007, DOI 10.4324/9780080556000, and Asefi and Bahremandi-Tolou '
+                   '2019, DOI 10.1016/j.jobe.2019.100867). With V_lap = 18.4 kN, lambda = 0.25, and assumed member '
+                   'length L = 1.493 m, a = 0.373 m and M_lap = 5.15 kN·m. EN 1995-1-1 checks notched shear as '
+                   'tau_d <= k_v * f_{v,d}; splitting at re-entrant notch corners is a documented failure mode '
+                   '(Jockwer, Steiger, and Frangi 2014, DOI 10.1061/(ASCE)ST.1943-541X.0000838) often reinforced '
+                   'with fully threaded self-tapping screws (Dietsch and Brandner 2015, DOI '
+                   '10.1016/j.conbuildmat.2015.04.028). Utilization 0.64 and buckling factor 3.74 are illustrative '
+                   'values, not a full design check by a qualified engineer.',
+ 'intuition_body': 'In an Euler buckling estimate, critical load N_cr = pi^2 E I_eff / (k L_trib)^2 depends on the '
                    'rotational stiffness K_phi of the lap joints. This folio assumes K_phi = 142 kN·m/rad for a screwed '
-                   'lap joint; that value is an assumption, not taken from a test or from EN 1995-1-1. With an '
-                   'illustrative N_cr = 1,280 kN against a design force N_d = 342 kN, the ratio is 1,280 / 342 = 3.74. '
-                   'These are teaching values; the folio makes no claim about embodied carbon.',
- 'walkthrough': ['Experiment 1 (Step Through the 4 Stages): Click Stages 1 -> 4 above to follow the reciprocal fan, '
-                 'the eccentricity e_z, the lap-moment and notch check, and the proposed CNC node.',
-                 'Experiment 2 (Inspect the Reciprocal Nexorade Node): Examine the SVG diagram below showing how four '
-                 'beams weave around the central opening with offset eccentricity e_z.',
-                 'Experiment 3 (Read the Companion Skill): Download the reciprocal-timber-nexorade SKILL.md below; it '
-                 'lists the lap-moment formula, the notch shear ratio and the screw-reinforcement rule used here. It is a '
-                 'study aid, not a design code.'],
- 'human_ai_shift': "Reciprocal frames are hard to design by hand because changing one beam's angle changes the "
-                   'elevation of every neighboring beam. A designer, with or without an AI assistant, could pair '
-                   'parametric geometry from a tool such as compas-dev/compas (https://github.com/compas-dev/compas; '
-                   'see DOI 10.1016/j.cad.2015.01.006 for the underlying graphic statics) with a finite-element library '
-                   'such as FEniCS/dolfinx (DOI 10.1145/3524456) to explore these weaves and prepare cutting data. This '
-                   'folio names those tools as options a reader could use; it did not run them.',
+                   'lap joint; that value is an assumption, not taken from a test or EN 1995-1-1. With illustrative '
+                   'N_cr = 1,280 kN against design force N_d = 342 kN, the ratio is 1,280 / 342 = 3.74. These are '
+                   'teaching values; the folio makes no claim about embodied carbon.',
+ 'walkthrough': ['Experiment 1 (Sweep Engagement Ratio): Drag Slider 1 (λ = a / L) from 0.15 to 0.45 at V_lap = '
+                 '18.4 kN. Watch M_lap climb from 3.50 to 6.80 kN·m as the lap moves inward toward mid-span.',
+                 'Experiment 2 (Test the Surrogate Alert & Node): With λ = 0.25, raise Slider 2 (V_lap) to about 28.8 kN to see illustrative utilization pass 1.00, then inspect the 4-beam SVG weave below.',
+                 'Experiment 3 (Read the Companion Skill): Download reciprocal-timber-nexorade SKILL.md below; it '
+                 'summarizes the lap-moment formula, notch shear ratio, and screw-reinforcement rule as a study aid, '
+                 'not a design code.'],
+ 'human_ai_shift': "Reciprocal frames are hard to adjust by hand because tilting one beam shifts every neighbor's "
+                   'elevation (Douthe and Baverel 2009, DOI 10.1016/j.compstruc.2009.06.011). A designer could pair '
+                   'compas-dev/compas (https://github.com/compas-dev/compas; graphic statics in DOI '
+                   '10.1016/j.cad.2015.01.006) with FEniCS/dolfinx (DOI 10.1145/3524456) to explore geometry and '
+                   'prepare cutting data. This folio names those tools as options; it did not run them.',
  'sources': ['Leonardo da Vinci (c. 1478–1519). Codex Atlanticus. Biblioteca Ambrosiana, Milan.',
              'Otto, F., & Hennicke, J. (1974). IL 10: Gitterschalen / Grid Shells. Institute for Lightweight '
              'Structures, Stuttgart.',
              'Popovic Larsen, O. (2007). Reciprocal Frame Architecture. Architectural Press / Routledge. DOI: '
              '10.4324/9780080556000.',
+             'Douthe, C., & Baverel, O. (2009). Design of nexorades or reciprocal frame systems with the dynamic '
+             'relaxation method. Computers & Structures, 87(21–22), 1296–1307. DOI: 10.1016/j.compstruc.2009.06.011.',
+             'Gelez, S., Aubry, S., & Vaudeville, B. (2011). Behavior of a Simple Nexorade or Reciprocal Frame '
+             'System. International Journal of Space Structures, 26(4), 331–342. DOI: 10.1260/0266-3511.26.4.331.',
+             'Jockwer, R., Steiger, R., & Frangi, A. (2014). State-of-the-Art Review of Approaches for the Design of '
+             'Timber Beams with Notches. Journal of Structural Engineering, 140(3). DOI: '
+             '10.1061/(ASCE)ST.1943-541X.0000838.',
+             'Dietsch, P., & Brandner, R. (2015). Self-tapping screws and threaded rods as reinforcement for '
+             'structural timber elements – A state-of-the-art report. Construction and Building Materials, 97, '
+             '78–89. DOI: 10.1016/j.conbuildmat.2015.04.028.',
              'Asefi, M., & Bahremandi-Tolou, M. (2019). Design challenges of reciprocal frame structures in '
              'architecture. Journal of Building Engineering, 26, 100867. DOI: 10.1016/j.jobe.2019.100867.',
              'CEN (2004). EN 1995-1-1, Eurocode 5: Design of timber structures — Part 1-1: General — Common rules and '
              'rules for buildings.',
+             'CEN (2013). EN 14080, Timber structures — Glued laminated timber and glued solid timber — Requirements.',
              'Akbarzadeh, M., Van Mele, T., & Block, P. (2015). On the equilibrium of funicular polyhedral frames and '
              'convex polyhedral force diagrams. Computer-Aided Design, 63, 118–128. DOI: 10.1016/j.cad.2015.01.006. '
              '(Cited for graphic statics; compas-dev/compas, https://github.com/compas-dev/compas, is a separate '
@@ -219,97 +237,79 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
            'summary': 'Scite index entry for Asefi & Bahremandi-Tolou, Design challenges of reciprocal frame structures in architecture (DOI 10.1016/j.jobe.2019.100867), checked 2026-11-08: 19 citing publications (0 supporting, 8 mentioning, 0 contrasting) and no retraction notice. The paper reviews reciprocal frame design; it does not check this folio\'s numbers.'},
  'word_count': '4,650 WORDS',
  'act1_dropcap': 'In Northern Song China, timber "rainbow bridges" crossed the Bian River at Kaifeng as woven arches '
-                 'of short logs, with no piers standing in the water; one appears in the twelfth-century scroll Along '
-                 'the River During the Qingming Festival. Each log rests on its neighbors, so pieces shorter than the '
-                 'span carry the span together. Leonardo da Vinci later drew similar self-supporting arrangements of '
-                 'short poles in the sketches now collected in the Codex Atlanticus. Structures of this kind, in '
-                 'which members support one another in a closed loop, are now called reciprocal frames (Popovic '
-                 'Larsen 2007, DOI 10.4324/9780080556000).',
- 'act1_plain_bridge': 'To see how a reciprocal timber frame works, take four wooden butter knives and place them over '
-                      'the rim of an open coffee mug. If you weave them in a pinwheel pattern so that the tip of each '
-                      'knife rests on the blade of the next one, the knives lock together firmly over the center. You '
-                      'can press your thumb down on the middle of that weave and it will not fall into the cup. No '
-                      'single knife is long enough to span the whole rim on its own, but working together, they form a '
-                      'self-supporting bridge. In modern timber architecture, builders use this interlocking '
-                      'arrangement to cover halls using short boards instead of large old-growth '
-                      'tree trunks. Because the pieces lean on one another at simple notches, the roof carries heavy '
-                      'snow loads while using light, locally harvested wood.',
- 'act1_body': "From Leonardo da Vinci's sketches in the Codex Atlanticus to Villard de Honnecourt's medieval floor grillages and contemporary timber pavilions, reciprocal frames assemble short members into closed polygonal fans. In her book Reciprocal Frame Architecture (DOI 10.4324/9780080556000), Olga Popovic Larsen describes how in these systems each member rests on the next, so no single node gathers many members. Asefi and Bahremandi-Tolou review the design challenges of such frames in architecture (Journal of Building Engineering, DOI 10.1016/j.jobe.2019.100867). Designers today could pair form-finding tools such as compas-dev/compas (https://github.com/compas-dev/compas; see DOI 10.1016/j.cad.2015.01.006 for the underlying three-dimensional graphic statics) with timber connection rules from EN 1995-1-1. This folio does not run those tools, and it makes no embodied-carbon claim; its numbers come from the lap-moment formula shown.",
- 'act1_stakes': 'Traditional carpentry depended on complex mortise-and-tenon joints secured with dry wooden pegs, but '
-                'sizing reciprocal frames without calculation risks unpredicted joint rotation and splitting. Because each '
-                'beam rests on its neighbor with an eccentric vertical offset, the axial compression that naturally '
-                'stabilizes a dome gets converted into localized bending and shear at every notched joint. If '
-                'carpenters cut a notch too deep, they sever the long wood fibers that carry tensile bending stress, '
-                'concentrating splitting forces perpendicular to the grain. Under the weight of heavy winter snow or '
-                'shifting wind gusts, an unreinforced notch can shear along the grain line. Because the system '
-                'is mutually dependent, the failure of a single lap joint redistributes load to adjacent joints '
-                'and can lead to elastic buckling. '
-                'Engineers therefore check both notch shear and global stability.',
- 'act2_analogy': 'Everyday analogy: Interlock four index fingers in a closed pinwheel loop, where each fingertip '
-                 'presses down on the knuckle of the next. Pressing downward in the center makes the circle tighten '
-                 'against your palms with clear stiffness. However, if one knuckle slips sideways or if you press '
-                 'too hard near the delicate nail bed, the interlocking grip loosens. Reciprocal timber '
-                 'frames balance this trade-off: mutual geometric support creates strength, but localized joint '
-                 'shearing requires reinforcement.',
- 'act2_plain_primer': 'In the digital workshop below, you explore how two architectural sliders govern the stability '
-                      'of a reciprocal timber shell. The first slider adjusts the engagement ratio, which dictates how '
-                      'far along the length of each beam the neighboring timber rests. When you slide this value '
-                      'toward the outer tip, the central open eye of the pinwheel expands into a wide, airy skylight, '
-                      'but the bending leverage on each beam increases dramatically. Bringing the joint closer to the '
-                      'center stiffens the weave but crowds the wood members together. The second slider controls the '
-                      'downward shear force acting at the notched joint, representing the weight of snow, roofing '
-                      'tiles, and occupants pressing onto that connection. As this shear force climbs, it tests the '
-                      'shear strength of the wooden notch. Balancing these two settings keeps the timber safely within '
-                      'its natural structural capacity.',
+                 'of short logs without river piers. One such bridge appears in the twelfth-century scroll Along the '
+                 'River During the Qingming Festival. Each log rests on its neighbors, so pieces shorter than the '
+                 'crossing carry the span together. Leonardo da Vinci later sketched similar self-supporting loops '
+                 'of short poles in sheets now bound in the Codex Atlanticus. Builders and engineers now call these '
+                 'mutually supporting loops reciprocal frames (Popovic Larsen 2007, DOI 10.4324/9780080556000); the form-finding literature also calls them nexorades (Douthe and Baverel 2009, DOI 10.1016/j.compstruc.2009.06.011).',
+ 'act1_plain_bridge': 'Lay four wooden butter knives across an open coffee mug rim so each tip rests on the next '
+                      'blade. Press down in the center. The pinwheel locks firm over the opening even though no '
+                      'single knife reaches across on its own. Working together, short pieces bridge a wider gap. '
+                      'Timber builders apply the same weave to roof halls with short boards instead of giant tree '
+                      'trunks. Each beam leans on its neighbor at a simple notch, spreading weight without a '
+                      'crowded central hub.',
+ 'act1_body': "From Villard de Honnecourt's medieval floor grillages and Leonardo da Vinci's Codex Atlanticus sketches "
+              'to contemporary timber pavilions, reciprocal frames weave short bars into closed polygonal fans. '
+              'Olga Popovic Larsen (2007, Reciprocal Frame Architecture, DOI 10.4324/9780080556000) explains how '
+              'each member rests on the next so no node gathers many beams. Douthe and Baverel (2009, DOI '
+              '10.1016/j.compstruc.2009.06.011) formulate nexorade geometry through dynamic relaxation, while '
+              'Asefi and Bahremandi-Tolou (2019, DOI 10.1016/j.jobe.2019.100867) review architectural design '
+              'challenges. Designers could pair open tools such as compas-dev/compas '
+              '(https://github.com/compas-dev/compas; 3D graphic statics in DOI 10.1016/j.cad.2015.01.006) with '
+              'EN 1995-1-1 timber checks. This folio does not run those tools and makes no embodied-carbon claim; '
+              'its numbers come from the lap-moment formula shown.',
+ 'act1_stakes': 'Sizing reciprocal frames by eye risks joint rotation and splitting. In a reciprocal grid, member '
+                'bending, shear, and joint flexibility are tightly coupled, and how the members connect affects the stiffness and robustness of the whole (Gelez, Aubry, and Vaudeville 2011, DOI 10.1260/0266-3511.26.4.331). Cutting a '
+                'notch too deep severs tensile wood fibers and concentrates splitting stress perpendicular to the '
+                'grain (Jockwer, Steiger, and Frangi 2014, DOI 10.1061/(ASCE)ST.1943-541X.0000838). Engineers '
+                'therefore check both notch shear and overall frame stability.',
+ 'act2_analogy': 'Slide four interlocked butter knives across a mug rim farther inward from their tips, and each blade '
+                 'bends harder over a longer lever arm. Short pieces still bridge the rim, yet every lap carries '
+                 'sharper bending. Where the picture stops: kitchen knives are held only by friction and can slip apart, whereas notched '
+                 'timber beams have cut grain fibers that can split under heavy shear.',
+ 'act2_plain_primer': 'Two sliders drive the teaching model below. The first slider sets the engagement ratio from '
+                      '0.15 near the beam tip to 0.45 toward mid-span. Moving the lap inward lengthens the bending '
+                      'lever and lifts the model moment from 3.50 to 6.80 kN·m at 18.4 kN. The second slider scales '
+                      'downward notch shear from 8.0 to 32.0 kN. The interactive script scales illustrative '
+                      'utilization proportionally with the lap moment from its 0.64 default, crossing 1.00 at about 28.8 kN when the engagement ratio is 0.25. It also scales the illustrative buckling factor inversely from 3.74. This '
+                      'surrogate scaling is a teaching aid, not a Eurocode 5 notch-shear or buckling calculation.',
  'distill_diagram': {'analogy_title': 'Four Interlocked Knives Over Mug Rim',
                      'analogy_sub': 'Mutual lap support spans wide openings with short pieces',
                      'force_a_title': 'Engagement Ratio (λ = a/L)',
-                     'force_a_sub': 'Controls central eye radius, dome camber, and beam bending',
+                     'force_a_sub': 'Moves lap inward toward mid-span, raising lever arm and lap moment',
                      'force_b_title': 'Lap Shear Force (V_lap)',
-                     'force_b_sub': 'Downline roof gravity loading transferred across each notch',
+                     'force_b_sub': 'Downward roof gravity load transferred across each notch',
                      'threshold_title': 'Eurocode 5 Notch Shear Limit (τ_d <= k_v f_vd)',
                      'threshold_pass': 'Within the model limit; self-tapping screws help resist splitting',
-                     'threshold_fail': 'Grain cleavage at notch re-entrant corner; shell snaps flat'},
- 'act2_intuition': 'When gravity loads act on a curved reciprocal timber gridshell, the system transfers force through '
-                   'membrane compression along its diagonal lattice ribs. However, what threatens slender timber '
-                   'shells is not compressive crushing, but local joint splitting and global elastic buckling. The '
-                   'vertical offset e_z at each lap joint inherently produces an eccentric bending moment M_lap = '
-                   'V_lap * a * (1 - lambda_lap); this is the folio\'s simplified lever model of the lap (see Popovic Larsen, DOI '
-                   '10.4324/9780080556000, and Asefi and Bahremandi-Tolou, DOI 10.1016/j.jobe.2019.100867, for '
-                   'reciprocal frame behaviour in general). With V_lap = 18.4 kN, lambda = 0.25 and an assumed member '
-                   'length of 1.493 m, the lap arm is a = 0.373 m and M_lap = 5.15 kN·m. EN 1995-1-1 includes a shear '
-                   'check for notched members, tau_d <= k_v * f_{v,d}, and splitting at the re-entrant corner of a notch '
-                   'is a known weakness that designers often address with fully threaded self-tapping screws. The '
-                   'utilization of 0.64 and the elastic buckling factor of 3.74 shown here are illustrative values, not '
-                   'the result of a full analysis; a real gridshell would need a complete design check by a qualified '
-                   'engineer.',
- 'act2_deepening': 'The nonlinear coupling between engagement ratio lambda and lap shear force V_lap dictates the '
-                   'overall geometry and safety margin of the gridshell. Increasing the engagement ratio shifts the '
-                   'lap connection toward the mid-span of the receiving beam, which increases the vertical rise of the '
-                   'dome through cumulative eccentric camber. However, this same geometric expansion elongates the '
-                   'cantilever arm a, increasing the eccentric bending moment that the wood fibers must resist in '
-                   'flexure. If the lap shear force surges under heavy snow accumulation, the shear stress at the '
-                   'notch root increases. Without perpendicular-to-grain screw reinforcement, the timber '
-                   'can split along the grain. Furthermore, because timber is an orthotropic '
-                   'material with high longitudinal stiffness but low transverse shear resistance, slip within the '
-                   'semi-rigid joints softens the global shell lattice. As rotational joint stiffness degrades, the '
-                   'effective buckling length of each rib bay grows, lowering the global critical buckling threshold '
-                   'and lowering resistance to snap-through instability.',
- 'act4_deepening': 'One proposal for practice, not a description of current use: instead of drawing hundreds of '
-                   'bespoke lap notches by hand, a human architect could sketch the roof envelope and sightlines while '
-                   'a geometry solver works out the closed-loop kinematics of the nexorade mesh and drafts five-axis '
-                   'toolpaths. Any such output would still need checking against EN 1995-1-1 by a qualified engineer. '
-                   'An open question lies in real-time robotic '
-                   'fabrication and material variability: can computer vision and acoustic resonance testing during '
-                   'milling detect localized knots and grain deviations in each unique glulam billet, dynamically '
-                   'altering the engagement geometry on the fly to place joint notches only in pristine, defect-free '
-                   'wood grain? That remains a research question.',
- 'act4_human_ai': "Reciprocal frames are hard to design by hand because changing one beam's angle changes the "
-                  'elevation of every neighboring beam. A designer, with or without an AI assistant, could pair '
-                  'parametric geometry from a tool such as compas-dev/compas (https://github.com/compas-dev/compas; '
-                  'see DOI 10.1016/j.cad.2015.01.006 for the underlying graphic statics) with a finite-element library '
-                  'such as FEniCS/dolfinx (DOI 10.1145/3524456) to explore these weaves and prepare cutting data. This '
-                  'folio names those tools as options a reader could use; it did not run them.'}
+                     'threshold_fail': 'Above model limit: notch shear rises; unreinforced wood can split along grain'},
+ 'act2_intuition': 'Under gravity, a reciprocal frame couples member bending, shear, and joint flexibility across '
+                   'every bar in the loop (Gelez, Aubry, and Vaudeville 2011, DOI 10.1260/0266-3511.26.4.331). In '
+                   'slender timber shells, local joint splitting and elastic buckling can govern before '
+                   'compressive crushing. Here, an assumed vertical step e_z = 85 mm tilts each stacked bar to give '
+                   'the fan its rise, while the in-plane engagement arm a = lambda_lap * L enters this folio\'s '
+                   'simplified lap-moment formula M_lap = V_lap * a * (1 - lambda_lap) (for general reciprocal frame '
+                   'behavior, see Popovic Larsen 2007, DOI 10.4324/9780080556000, and Asefi and Bahremandi-Tolou '
+                   '2019, DOI 10.1016/j.jobe.2019.100867). With V_lap = 18.4 kN, lambda = 0.25, and assumed member '
+                   'length L = 1.493 m, a = 0.373 m and M_lap = 5.15 kN·m. EN 1995-1-1 checks notched shear as '
+                   'tau_d <= k_v * f_{v,d}; splitting at re-entrant notch corners is a documented failure mode '
+                   '(Jockwer, Steiger, and Frangi 2014, DOI 10.1061/(ASCE)ST.1943-541X.0000838) often reinforced '
+                   'with fully threaded self-tapping screws (Dietsch and Brandner 2015, DOI '
+                   '10.1016/j.conbuildmat.2015.04.028). Utilization 0.64 and buckling factor 3.74 are illustrative '
+                   'values, not a full design check by a qualified engineer.',
+ 'act2_deepening': 'Engagement ratio lambda and lap shear V_lap jointly drive M_lap = V_lap * a * (1 - lambda), '
+                   'peaking as the lap approaches mid-span (lambda = 0.50). Because timber is orthotropic—stiff '
+                   'along the grain but weak in perpendicular tension and shear—high notch loads demand careful '
+                   'detailing and reinforcement. In addition, connection behavior affects the stiffness of the whole frame (Gelez, Aubry, and Vaudeville 2011, DOI 10.1260/0266-3511.26.4.331); in the Euler estimate used here, a lower rotational joint stiffness K_phi gives a lower critical load.',
+ 'act4_deepening': 'One proposal for practice, not current use: an architect could sketch the roof envelope while a '
+                   'dynamic-relaxation solver computes closed-loop nexorade kinematics (Douthe and Baverel 2009, DOI '
+                   '10.1016/j.compstruc.2009.06.011) and drafts five-axis toolpaths. Any output would still require '
+                   'EN 1995-1-1 verification by a qualified engineer. An open research question is whether in-line '
+                   'scanning during milling could detect knots and adjust notch positions to avoid weak grain.',
+ 'act4_human_ai': "Reciprocal frames are hard to adjust by hand because tilting one beam shifts every neighbor's "
+                  'elevation (Douthe and Baverel 2009, DOI 10.1016/j.compstruc.2009.06.011). A designer could pair '
+                  'compas-dev/compas (https://github.com/compas-dev/compas; graphic statics in DOI '
+                  '10.1016/j.cad.2015.01.006) with FEniCS/dolfinx (DOI 10.1145/3524456) to explore geometry and '
+                  'prepare cutting data. This folio names those tools as options; it did not run them.'}
 
 PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a 4-valence reciprocal timber gridshell (nexorade) with eccentric '
         'notched lap joints and beechwood shear keys would look like (artistic impression, not a measured structure)',
@@ -320,32 +320,27 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a 4-valence rec
 DISPATCH = {'kicker': 'FRONTIER TIMBER TECTONICS DISPATCH · RECIPROCAL NEXORADE GRIDSHELLS (EUROCODE 5)',
  'headline': 'Reciprocal Timber Gridshells: Short Members, Mutual Support, and the Bending at Every Notch',
  'body': "Building on Villard de Honnecourt's medieval floor frames and Olga Popovic Larsen's Reciprocal Frame "
-         'Architecture (DOI 10.4324/9780080556000; Asefi & Bahremandi-Tolou, J. Build. Eng. 2019, DOI '
-         '10.1016/j.jobe.2019.100867), this folio models a GL28h larch nexorade with an assumed eccentricity e_z = 85 '
-         'mm, a lap moment of 5.15 kN·m, and illustrative values for notch utilization (0.64) and buckling (SF = '
-         '3.74).'}
+         'Architecture (DOI 10.4324/9780080556000; Douthe & Baverel 2009, DOI 10.1016/j.compstruc.2009.06.011; '
+         'Asefi & Bahremandi-Tolou 2019, DOI 10.1016/j.jobe.2019.100867), this folio models a GL28h larch nexorade '
+         'with assumed eccentricity e_z = 85 mm, lap moment 5.15 kN·m, and illustrative values for notch '
+         'utilization (0.64) and buckling (SF = 3.74).'}
 
 META_3D = ('Nexorade Reciprocal 4-Beam Pinwheel Gridshell',
  'X/Z: Geodesic Timber Lattice Coordinates · Y: Reciprocal Lap-Joint Camber & Bending Moment')
 
 ES_TRANSLATION = {'title_es': 'Retículas Recíprocas de Madera (Nexorades), Momentos de Traslape Excéntrico y Ensambles de Corte 1:5',
- 'subtitle_es': 'Cinemática estructural de entramados recíprocos de madera sin herrajes metálicos donde cada viga '
-                'descansa sobre su vecina con excentricidad e_z, cubriendo grandes claros con piezas cortas.',
- 'why_es': 'Como cuatro cuchillos o vigas entrelazados en molinete sobre los bordes de un vaso, cada elemento sostiene '
-           'al siguiente y es sostenido por el anterior, salvando un claro mayor que cualquier pieza individual.',
- 'plain_es': 'Para entender cómo funciona una estructura recíproca de madera, coloquen cuatro cuchillos de mesa '
-             'entrelazados en forma de molinete sobre la boca de una taza grande. Si el extremo de cada cuchillo '
-             'descansa sobre la hoja del siguiente, el conjunto se traba por sí solo en el centro con firmeza. '
-             'Ningún cuchillo es lo bastante largo para cruzar toda la boca de la taza por su cuenta, '
-             'pero trabajando en equipo forman un puente que se sostiene solo. En la arquitectura de madera se usa '
-             'este principio para techar claros amplios con piezas cortas en lugar de troncos de gran tamaño. Como las piezas '
-             'se apoyan unas en otras en muescas sencillas, el techo puede soportar cargas de nieve usando madera ligera.',
- 'deep_es': 'El comportamiento estructural de una cáscara recíproca de madera depende de dos parámetros fundamentales: '
-            'la relación de traslape entre vigas y la fuerza cortante en cada ensamble. Al ajustar la posición del '
-            'traslape, se define la curvatura de la cúpula y el tamaño del óculo central que permite la entrada de luz '
-            'natural. No obstante, al desfasar las piezas verticalmente, la compresión de la cúpula se transforma en '
-            'un momento de flexión y esfuerzo cortante en la muesca de unión. Si la carga de nieve sobrepasa el '
-            'límite que revisa el Eurocódigo 5, las fibras de la madera pueden abrirse a lo largo del grano. '
-            'Por eso es común reforzar las muescas con tornillos de rosca completa contra la tensión '
-            'perpendicular al grano. En este modelo, el momento de traslape de 5.15 kN·m supone una viga de 1.493 m; '
-            'la utilización de 0.64 y el factor de pandeo de 3.74 son valores ilustrativos, no un cálculo de diseño.'}
+ 'subtitle_es': 'Cinemática estructural de entramados recíprocos de madera sin placas ni pernos metálicos donde cada '
+                'viga descansa sobre su vecina con un desfase vertical en cada traslape, convirtiendo el empuje '
+                'global en flexión local.',
+ 'why_es': 'Si cuatro cuchillos entrelazados sobre una taza se apoyan más hacia el centro de cada hoja, crecen el brazo de palanca y la flexión en cada apoyo. Donde termina la imagen: los cuchillos solo se sostienen por fricción y pueden resbalar, mientras que las vigas con muescas tienen fibras cortadas que pueden abrirse a lo largo del grano bajo cortante alto.',
+ 'plain_es': 'Coloquen cuatro cuchillos de madera para mantequilla sobre la boca de una taza de café, con cada punta apoyada sobre la '
+             'hoja siguiente. Presionen el centro. El molinete se traba con firmeza aunque ningún cuchillo cruce la '
+             'taza por sí solo. Juntos, varios tramos cortos salvan un claro mayor. En la arquitectura en madera se '
+             'aplica el mismo tejido para cubrir salas amplias con tablas cortas en lugar de troncos enormes. Cada '
+             'viga se apoya en su vecina con una muesca sencilla, sin reunir muchas piezas en un solo nudo.',
+ 'deep_es': 'Dos deslizadores controlan el modelo: la relación de traslape (de 0.15 cerca del extremo a 0.45 hacia '
+            'el centro) y el cortante en la muesca (de 8.0 a 32.0 kN). Mover el traslape hacia el centro eleva '
+            'M_lap de 3.50 a 6.80 kN·m con 18.4 kN (5.15 kN·m en el valor base λ = 0.25 y L = 1.493 m). La '
+            'geometría entrante de la muesca concentra cortante y tensión perpendicular al grano; por ello el '
+            'Eurocódigo 5 revisa estas zonas y suelen añadirse tornillos de rosca completa. Los deslizadores '
+            'reescalan la utilización ilustrativa desde 0.64 proporcionalmente con M_lap (superando 1.00 cerca de 28.8 kN con λ = 0.25) y el factor de pandeo inversamente desde 3.74; es una guía didáctica, no un cálculo de diseño.'}

@@ -1,7 +1,7 @@
 {
   "version": "7.0.0",
-  "title": "Informatico.ai — 7-Volume, 55-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
-  "total_folios": 55,
+  "title": "Informatico.ai — 7-Volume, 56-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
+  "total_folios": 56,
   "pillars": {
     "engineering": [
       {
@@ -786,10 +786,10 @@
           }
         ],
         "steps": [
-          "Stage 1 (Coupled Heave-Torsion Modal Kinematics): A model 2,100 m suspension span with deck width B = 36 m oscillates in vertical bending h(x,t) (f_h = 0.095 Hz) and torsion α(x,t) (f_α = 0.235 Hz). These are illustrative values, not a surveyed bridge.",
-          "Stage 2 (Scanlan Aeroelastic Flutter Derivatives): Motion-induced pitching moment M_ae scales with A_2*(K) at reduced velocity U / (f_α B); in the folio model the vented twin-box girder keeps A_2*(K) < 0 up to U_crit = 76.4 m/s, a fixed illustrative value.",
-          "Stage 3 (Physics-Informed Neural Network Virtual Sensing): Embedding the coupled Euler–Bernoulli + Saint-Venant PDE residual R_pde into L_total is the proposed way to reconstruct full-span bending stress from 8 accelerometers. No network was trained for this folio.",
-          "Stage 4 (Orthotropic Steel Deck Fatigue Check, a Proposal): Stress histories from such a digital twin could be compared with the fatigue provisions of a design code such as the AASHTO LRFD Bridge Design Specifications at rib-to-deck welds. The folio performs no code check."
+          "Stage 1 (Modal Kinematics): Model 2,100 m span (B = 36 m) with heave h(x,t) (f_h = 0.095 Hz) and torsion α(x,t) (f_α = 0.235 Hz); illustrative values, not a surveyed bridge.",
+          "Stage 2 (Scanlan Derivatives): Under 1971 2B² moment scaling with per-span I_α, A_2*(K) < 0 keeps the vented twin-box model stable up to an illustrative U_crit = 76.4 m/s.",
+          "Stage 3 (Proposed PINN Residual): Penalizing non-dimensionalized beam and Saint-Venant PDE residuals R_pde could aid 8-sensor stress estimation; untested, no network trained.",
+          "Stage 4 (Proposed Weld Fatigue Check): Estimated rib-to-deck weld stress ranges could be compared against AASHTO LRFD fatigue provisions; no code check is run."
         ],
         "readouts": [
           {
@@ -812,33 +812,34 @@
         "spec_plate": {
           "division": "CSI MASTERFORMAT 05 12 00 / AASHTO LRFD",
           "title": "Streamlined Twin-Box Orthotropic Steel Bridge Girder & Fiber-Bragg PINN Digital Twin",
-          "body": "Aerodynamically vented twin-box structural steel deck girder with central 6.0 m wind slot, nose fairings, and 8-node tri-axial accelerometer / FBG optical strain array feeding an edge Physics-Informed Neural Network virtual stress monitor.",
+          "body": "Design study: vented twin-box steel girder with a 6.0 m central slot, fairings, and an 8-station accelerometer and fiber-Bragg-grating array paired with a proposed PINN monitor.",
           "meta": "Design study · U_crit = 76.4 m/s is a model value, not a wind-tunnel result · no code compliance is claimed"
         },
         "sidenote_1": {
           "kicker": "SIDENOTE E.07-A · WHY TACOMA NARROWS WAS FLUTTER, NOT SIMPLE VORTEX RESONANCE",
-          "body": "Kármán vortex shedding occurs at a Strouhal frequency f_s = St · U / D (about 1 Hz at 19 m/s), whereas Tacoma Narrows twisted at about 0.2 Hz. Billah & Scanlan (1991, DOI 10.1119/1.16590) use this mismatch to argue that the failure was not vortex resonance but self-excited single-degree-of-freedom torsional flutter, in which motion-dependent aerodynamic damping turns negative (A_2*(K) > 0)."
+          "body": "Vortex shedding occurs near f_s = St · U / D (about 1 Hz at 19 m/s), whereas Tacoma Narrows twisted near 0.2 Hz. Billah & Scanlan (1991, DOI 10.1119/1.16590) attribute the collapse to self-excited torsional flutter (A_2*(K) > 0)."
         },
         "sidenote_2": {
           "kicker": "SIDENOTE E.07-B · SPECIFICATION PLATE · CSI 05 12 00 / PINN VIRTUAL SENSING",
-          "body": "By regularizing neural network weights with the fourth-order Euler–Bernoulli operator E I ∂⁴h/∂x⁴ + m ∂²h/∂t² = q_aero(x,t), PINN digital twins are meant to damp unphysical stress oscillations between sparse bridge sensors."
+          "body": "Penalizing bending E I ∂⁴h/∂x⁴ − H_w ∂²h/∂x² + m ∂²h/∂t² − L_aero(x,t) and torsion I_α ∂²α/∂t² − G J ∂²α/∂x² − M_ae(x,t) might curb unphysical curvature spikes between sparse sensors if wind loads are estimated."
         },
         "skill": {
           "filename": "bridge-flutter-pinn-twin-SKILL.md",
           "name": "bridge-flutter-pinn-twin",
           "description": "AI-agnostic structural and wind civil engineering skill for Scanlan bridge aeroelastic flutter derivatives, critical wind speed U_crit, and Physics-Informed Neural Network (PINN) virtual stress sensing.",
           "rules": [
-            "Compute dimensionless reduced velocity U_red = U / (f_alpha * B) and reduced frequency K = B * omega / U = 2 * pi / U_red.",
-            "Evaluate net torsional aeroelastic damping zeta_net = zeta_struct - (rho * B^4 / (2 * I_alpha)) * A_2*(K); instability (flutter) occurs when zeta_net <= 0.",
-            "Balance PINN composite loss L_total = L_data + lambda_pde * ||E*I*u_xxxx + m*u_tt - f_aero||^2 so sparse sensor noise does not violate Euler-Bernoulli equilibrium."
+            "Compute U_red = U / (f_alpha * B) and K = B * omega / U = 2 * pi / U_red.",
+            "Under Scanlan 1971 2B^2 moment scaling (per-span I_alpha in kg*m^2/m), evaluate zeta_net = zeta_s - (rho * B^4 / (2 * I_alpha)) * A_2*^(1971)(K) = zeta_s - (rho * B^4 / (4 * I_alpha)) * A_2*^(1996)(K) with A_2*^(1996) = 2 * A_2*^(1971); flutter starts at zeta_net <= 0.",
+            "Weight non-dimensionalized bending (E I ∂⁴h/∂x⁴ − H_w ∂²h/∂x² + m ∂²h/∂t² − L_aero) and torsion (I_α ∂²α/∂t² − G J ∂²α/∂x² − M_ae) residuals in L_total = L_data + λ_pde ‖R_pde‖²; unmeasured wind makes sparse inversion ill-posed.",
+            "State that these are explanatory single-mode relations with illustrative constants: not a design or assessment method, and no value here applies to a real bridge."
           ]
         },
         "revisions": [
           {
             "edition": "REV 1.1",
             "date": "2026-11-14",
-            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. U_crit = 76.4 m/s, net damping +2.84% and the 1.42% PINN error are now labelled as illustrative model values: no wind-tunnel test was run and no network was trained, and the claims of wind-tunnel verification and AASHTO LRFD compliance are withdrawn. The Tacoma Narrows account is cut back to the documented record and cites Scanlan & Tomko 1971 (DOI 10.1061/JMCEA3.0001526) and Billah & Scanlan 1991 (DOI 10.1119/1.16590). Statements that such digital twins are deployed are now written as proposals.",
-            "opus": "Review: references checked by DOI in the Scite index on 2026-11-14; the reduced velocity was recomputed by hand (B = 36 m is now stated)."
+            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. U_crit = 76.4 m/s, net damping +2.84% and the 1.42% PINN error are now labeled as illustrative model values: no wind-tunnel test was run and no network was trained, and the claims of wind-tunnel verification and AASHTO LRFD compliance are withdrawn. The Tacoma Narrows account is cut back to the documented record and cites Scanlan & Tomko 1971 (DOI 10.1061/JMCEA3.0001526) and Billah & Scanlan 1991 (DOI 10.1119/1.16590). Statements that such digital twins are deployed are now written as proposals. A grounding pass on 2026-11-21 added six references (Sarkar et al. 1994, Jain et al. 1996, Chan et al. 2006, Ya et al. 2011, Yang et al. 2015, Al-Adly & Kripakaran 2024), stated the two moment-scaling conventions, and said which readouts are fixed.",
+            "opus": "Review: DOIs checked in Crossref and Scite (2026-11-14; expanded 2026-11-21), with Scanlan 2B² moment scaling and slider readouts stated."
           },
           {
             "edition": "REV 1.0",
@@ -850,16 +851,16 @@
         "volume": 4,
         "volume_code": "VOL. 04",
         "reading_time": "22 MIN READ",
-        "word_count": "4,650 WORDS",
+        "word_count": "5,250 WORDS",
         "scite": {
           "doi": "10.1016/j.jcp.2018.10.045",
-          "fetched_on": "2026-11-08",
-          "citing_publications": 24941,
+          "fetched_on": "2026-11-21",
+          "citing_publications": 25907,
           "supporting": 65,
-          "mentioning": 12640,
+          "mentioning": 13014,
           "contrasting": 4,
           "retracted": false,
-          "summary": "Scite index entry for Raissi, Perdikaris & Karniadakis 2019 (DOI 10.1016/j.jcp.2018.10.045), fetched 2026-11-08: 24,941 citing publications (65 supporting, 12,640 mentioning, 4 contrasting) and no retraction notice. These counts describe that one paper, not this folio."
+          "summary": "Scite index entry for Raissi, Perdikaris & Karniadakis 2019 (DOI 10.1016/j.jcp.2018.10.045), fetched 2026-11-21: 25,907 citing publications (65 supporting, 13,014 mentioning, 4 contrasting) and no retraction notice. These counts describe that one paper, not this folio."
         }
       },
       {
@@ -1795,6 +1796,122 @@
           "retracted": false,
           "summary": "Scite Smart Citation Index entry for Bažant 1984, \"Size Effect in Blunt Fracture: Concrete, Rock, Metal\" (Journal of Engineering Mechanics, DOI 10.1061/(ASCE)0733-9399(1984)110:4(518)), fetched 2026-11-21: 1,772 citing records (35 supporting, 707 mentioning, 1 contrasting) and no retraction notice. These counts describe that foundational paper, not this folio."
         }
+      },
+      {
+        "folio_id": "E.16",
+        "slug": "e16",
+        "pillar": "engineering",
+        "category_code": "E",
+        "parent_folios": [
+          "E.05",
+          "E.07",
+          "E.14"
+        ],
+        "lineage_mode": "CONTINUATION · Continues E.05 Deep Piling, E.07 Bridge Dynamics & E.14 Rainfall Slope Mechanics",
+        "title": "Bridge Pier Local Scour, Shields Sediment Threshold & Flood-Duration Time-Scale Lag",
+        "subtitle": "Continuing Folio E.05's deep piling, E.07's bridge dynamics, and E.14's rainfall slope mechanics: an illustrative hydraulic-engineering study coupling Shields incipient sediment motion, Sheppard and Melville equilibrium horseshoe-vortex scour, Federal Highway Administration Froude envelopes, and Melville and Chiew flood-duration lag around circular river bridge piers.",
+        "date_published": "2026-11-21",
+        "date_redated": "2026-11-21",
+        "current_edition": "REV 1.0",
+        "status_badge": "HYDRAULIC SCOUR · REV 1.0",
+        "primary_kernel": "skills/engineering/e16/verify_e16_pier_scour_timescale.py",
+        "governing_law": "y_s,SM = 2.5 a* f_1 f_2 f_3 · y_s,CSU = 2.0 K_1 K_2 K_3 y_1 (a* / y_1)^0.65 Fr_1^0.43 · K_t(t_d) = exp(−0.03 |(V_c / V_1) ln((t_d / 24) / t_e)|^1.6) · y_s(t_d) = K_t(t_d) y_s,SM",
+        "colophon": {
+          "identifier": "E.16 · Bridge Pier Scour & Flood Time-Scale Lag · REV 1.0",
+          "kernels": "Shields Threshold (1936) · Melville Pier Scour (1997) · Melville–Chiew Time Scale (1999) · Sheppard–Melville (2014)",
+          "benchmarks": "Model values (circular pier a* = 2.00 m, y_1 = 3.00 m, d_50 = 2.00 mm, V_1 / V_c = 0.85, t_d = 24.0 h): V_c = 0.860 m/s · y_s,SM,eq = 2.505 m · y_s,CSU,eq = 2.142 m · t_e = 42.09 days · K_t = 0.7254 · y_s(24 h) = 1.817 m (1.213 m at 2.0 h flash flood)",
+          "bridge": "Continues E.05/E.07/E.14"
+        },
+        "sliders": [
+          {
+            "label": "Clear-Water Flow Intensity",
+            "min": 0.45,
+            "max": 1.0,
+            "step": 0.05,
+            "value": 0.85,
+            "unit": "V_1 / V_c = "
+          },
+          {
+            "label": "Peak Flood Duration",
+            "min": 2.0,
+            "max": 240.0,
+            "step": 2.0,
+            "value": 24.0,
+            "unit": " h"
+          }
+        ],
+        "steps": [
+          "Stage 1 (Shields Incipient Motion & Logarithmic Critical Velocity V_c): Forensic analysis of 503 United States bridge failures from 1989 to 2000 by Wardhana and Hadipriono (2003, DOI 10.1061/(ASCE)0887-3828(2003)17:3(144)) attributed 266 failures (52.88%) to hydraulic flood, scour, and debris forces. Under Shields incipient-motion mechanics (documented by Buffington 1999, DOI 10.1061/(ASCE)0733-9429(1999)125:4(376)) and Melville (1997, DOI 10.1061/(ASCE)0733-9429(1997)123:2(125)), cohesionless quartz grains (specific gravity s = 2.65, d_50 = 2.00 mm, θ_c = 0.045) reach critical shear velocity u_*c = √(θ_c (s − 1) g d_50) = 0.03817 m/s and depth-averaged threshold velocity V_c = 5.75 u_*c log_10(5.53 y_1 / d_50) = 0.860 m/s at approach depth y_1 = 3.00 m.",
+          "Stage 2 (Sheppard–Melville Equilibrium Scour vs. Froude-Only HEC-18 CSU): Sheppard, Melville, and Demir (2014, DOI 10.1061/(ASCE)HY.1943-7900.0000800) evaluated 23 pier-scour formulas across 569 laboratory and 928 field records (filtered to 441 laboratory and 791 field datasets), merging clear-water factors into y_s,SM = 2.5 a* f_1 f_2 f_3 with f_1 = tanh((y_1 / a*)^0.4), f_2 = max(0, 1 − 1.2 [ln(V_1 / V_c)]^2), and f_3 = (a* / d_50) / [0.4 (a* / d_50)^1.2 + 10.6 (a* / d_50)^(−0.13)]. For a* = 2.00 m (f_1 = 0.8262, f_3 = 0.6263), near-threshold flow V_1 / V_c = 0.45 gives y_s,SM,eq = 0.608 m versus Froude-based CSU y_s,CSU,eq = 1.629 m (2.682× higher because CSU omits V_c), whereas near the clear-water peak V_1 / V_c = 0.85 gives y_s,SM,eq = 2.505 m versus y_s,CSU,eq = 2.142 m.",
+          "Stage 3 (Melville & Chiew Equilibrium Time Scale t_e and Transient Factor K_t): Melville and Chiew (1999, DOI 10.1061/(ASCE)0733-9429(1999)125:1(59)) showed that clear-water horseshoe-vortex scour approaches equilibrium over time scale t_e (days) = 30.89 (a* / V_1) (V_1 / V_c − 0.4) (y_1 / a*)^0.25 for y_1 / a* <= 6.0 (where empirical constant 30.89 = 2.669 × 10^6 / 86,400 days·s^(−1) converts dimensionless t* = V_1 t_e,sec / a* with a* in m and V_1 in m/s), with temporal fraction K_t(t_d) = exp(−0.03 |(V_c / V_1) ln((t_d / 24) / t_e)|^1.6) for t_d / 24 < t_e (clamped to 1.0 once t_d / 24 >= t_e). At V_1 / V_c = 0.85 (V_1 = 0.731 m/s), t_e = 42.09 days (1,010.1 h): a 2.0 h flash flood reaches K_t = 0.4841 (y_s = 1.213 m), and a 24.0 h storm reaches K_t = 0.7254 (y_s = 1.817 m). Applying a relation fitted to steady laboratory flows to a 2.00 m pier and to a flood duration is an extrapolation.",
+          "Stage 4 (Open Hypothesis, Tier T1–T2, and Falsification Conditions): Hypothesis (Tier T1–T2): in uniform cohesionless sand or fine gravel around an unskewed circular pier under single-peak clear-water flow (0.45 <= V_1 / V_c <= 1.00), transient scour depth follows y_s(t_d) = K_t(t_d) y_s,SM,eq, excavating roughly half of equilibrium depth within two hours yet remaining below steady-state equilibrium across 24-hour floods (1.817 m vs. 2.505 m S/M and 2.142 m CSU). This hypothesis is falsified under live-bed sediment transport (V_1 / V_c > 1.0), in graded armored riverbeds where horseshoe vortices breach surface armor into finer sub-layers (\"armor-break\" scour, Kabiri-Samani, Fathi & Farooq 2026, DOI 10.2478/johh-2026-0004), across multi-flood deposition-erosion sequences (Link et al. 2020, DOI 10.1061/(ASCE)HY.1943-7900.0001696), or when woody debris rafts widen the effective pier obstruction."
+        ],
+        "readouts": [
+          {
+            "label": "Transient & S/M Eq. Scour",
+            "value": "y_s(t_d) = 1.817 m · y_s,SM = 2.505 m (model)"
+          },
+          {
+            "label": "HEC-18 CSU & Time Factor",
+            "value": "y_s,CSU = 2.142 m · K_t = 0.7254 (model)"
+          },
+          {
+            "label": "Threshold V_c & Eq. Time t_e",
+            "value": "V_c = 0.860 m/s · t_e = 42.09 d (model)"
+          },
+          {
+            "label": "Clear-Water Scour Regime",
+            "value": "TRANSIENT HYDROGRAPH LAG (0.65 <= K_t < 0.90, model)"
+          }
+        ],
+        "spec_plate": {
+          "division": "HYDRAULIC SCOUR / ILLUSTRATIVE MODEL (FILING LABEL · NOT A DESIGN METHOD)",
+          "title": "Circular Bridge Pier Clear-Water Horseshoe-Vortex Scour & Flood Time-Scale Illustrative Envelope",
+          "body": "Illustrative closed-form hydraulic study, not a bridge foundation design check (AASHTO LRFD / FHWA HEC-18) or site geotechnical evaluation: models a single unskewed circular concrete pier (a* = 2.00 m, K_1 = 1.0, K_2 = 1.0, K_3 = 1.1) in approach depth y_1 = 3.00 m over uniform cohesionless quartz sand-gravel (d_50 = 2.00 mm, s = 2.65, θ_c = 0.045, u_*c = 0.03817 m/s, V_c = 0.860 m/s, f_1 = 0.8262, f_3 = 0.6263) across clear-water intensities V_1 / V_c ∈ [0.45, 1.00] and flood durations t_d ∈ [2, 240] h. Contraction scour, abutment scour, live-bed dune passage, cohesive clays, graded armor breach, pile-cap exposure, and debris accumulation fall outside this reduced 2-slider curve. Nothing on this page may be used to assess or reduce the design scour depth at a real bridge.",
+          "meta": "Primary anchors: Buffington 1999 (DOI 10.1061/(ASCE)0733-9429(1999)125:4(376)) · Melville 1997 (DOI 10.1061/(ASCE)0733-9429(1997)123:2(125)) · Melville & Chiew 1999 (DOI 10.1061/(ASCE)0733-9429(1999)125:1(59)) · Sheppard, Melville & Demir 2014 (DOI 10.1061/(ASCE)HY.1943-7900.0000800) · Model values, not field survey data"
+        },
+        "sidenote_1": {
+          "kicker": "SIDENOTE E.16-A · DIMENSIONLESS TIME t* VS. EMPIRICAL DAY-SECOND CONSTANT IN t_e",
+          "body": "Melville and Chiew (1999, DOI 10.1061/(ASCE)0733-9429(1999)125:1(59)) define dimensionless equilibrium time scale t* = V_1 t_e,sec / a*. Dividing t* (a* / V_1) in seconds by 86,400 s/day gives the dimensional prefactors used here, 30.89 days·s^(−1) (equivalent to 2.669 × 10^6 / 86,400 for shallow flow y_1 / a* <= 6) and 48.26 days·s^(−1) (equivalent to 4.170 × 10^6 / 86,400 for deep flow y_1 / a* > 6), requiring a* in meters and V_1 in m/s, with a small 0.18% empirical fit step at y_1 / a* = 6 (30.89 × 6^0.25 = 48.35 vs. 48.26)."
+        },
+        "sidenote_2": {
+          "kicker": "SIDENOTE E.16-B · POST-EQUILIBRIUM CLAMP & ZERO-CROSSING GUARD ON f_2",
+          "body": "Two boundary conditions govern numerical evaluation of clear-water scour: first, f_2 = 1 − 1.2 [ln(V_1 / V_c)]^2 crosses zero at V_1 / V_c = exp(−1 / √1.2) ≈ 0.4014, so clear-water sweeps enforce V_1 / V_c >= 0.45 (where f_2 >= 0.2349). Second, at low intensity V_1 / V_c = 0.45, t_e drops to 8.83 days (212.0 h); when peak duration t_d reaches 240.0 h, t_d / 24 exceeds t_e and K_t must clamp at 1.0 rather than evaluating |ln((t_d / 24) / t_e)| past maturity."
+        },
+        "skill": {
+          "filename": "bridge-pier-scour-timescale-SKILL.md",
+          "name": "bridge-pier-scour-timescale",
+          "description": "AI-agnostic hydraulic engineering skill for Shields critical velocity V_c, Sheppard-Melville and HEC-18 CSU circular pier scour, and Melville-Chiew clear-water flood-duration time-scale factor K_t.",
+          "rules": [
+            "Enforce finite positive pier diameter a*, approach depth y_1, median grain size d_50, gravity g, sediment specific gravity s > 1.0, relative roughness 5.53 y_1 / d_50 > 1.0, and clear-water intensity ratio V_1 / V_c in [0.405, 1.00].",
+            "Evaluate Sheppard-Melville clear-water equilibrium scour y_s,SM = 2.5 a* f_1 f_2 f_3 alongside Froude-capped HEC-18 CSU y_s,CSU, keeping grain-coarseness attenuation f_3 active rather than setting f_3 = 1.",
+            "Convert dimensionless time scale t* = V_1 t_e,sec / a* using explicit SI inputs (a* in m, V_1 in m/s, empirical factor 30.89 days*s^-1 for y_1 / a* <= 6 or 48.26 days*s^-1 for y_1 / a* > 6) and clamp K_t(t_d) = 1.0 whenever flood duration t_d / 24 >= t_e.",
+            "Label transient clear-water scour y_s(t_d) = K_t(t_d) y_s,SM as a Tier T1-T2 illustrative hydraulic hypothesis falsified by live-bed transport (V_1 / V_c > 1), graded armor-layer breach, multi-flood deposition-erosion cycles, cohesive soils, or debris rafts.",
+            "State that this is an illustrative single-event model. Design practice uses equilibrium scour depth (FHWA HEC-18); never use K_t or any value from this skill to assess or reduce the design scour depth at a real bridge."
+          ]
+        },
+        "revisions": [
+          {
+            "edition": "REV 1.0",
+            "date": "2026-11-21",
+            "summary": "REV 1.0 (Published 2026-11-21): Volume VII Civil & Hydraulic Engineering monograph continuing Folios E.05, E.07 & E.14 via Shields incipient motion (1936/1999), Melville pier-scour synthesis (1997), Melville–Chiew clear-water time scale (1999), Wardhana–Hadipriono U.S. bridge failure forensics (2003), Sheppard–Melville–Demir equation benchmark (2014), flood hydrograph memory (2020), and armored-bed clear-water scour experiments (2026).",
+            "opus": "Verification note: all seven primary DOIs in this folio were checked against Crossref and Scite on 2026-11-21 with zero retraction notices; all numerical outputs are recomputed offline by skills/engineering/e16/verify_e16_pier_scour_timescale.py and represent illustrative closed-form hydraulic model values rather than site-specific field survey data."
+          }
+        ],
+        "volume": 7,
+        "volume_code": "VOL. 07",
+        "reading_time": "22 MIN READ",
+        "word_count": "4,750 WORDS",
+        "scite": {
+          "doi": "10.1061/(ASCE)0733-9429(1999)125:1(59)",
+          "fetched_on": "2026-11-21",
+          "citing_publications": 851,
+          "supporting": 26,
+          "mentioning": 420,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index entry for Melville & Chiew 1999, \"Time Scale for Local Scour at Bridge Piers\" (Journal of Hydraulic Engineering, DOI 10.1061/(ASCE)0733-9429(1999)125:1(59)), fetched 2026-11-21: 851 citing records (26 supporting, 420 mentioning, 0 contrasting) and no retraction notice. These counts describe that foundational paper, not this folio."
+        }
       }
     ],
     "architecture": [
@@ -1932,7 +2049,7 @@
         "pillar": "architecture",
         "category_code": "A",
         "title": "Reciprocal Timber Gridshells (Nexorades), Eccentric Lap Moments, and 1:5 Shear-Block Joinery",
-        "subtitle": "Structural kinematics of bolt-free reciprocal timber frames where each beam rests on its neighbor with engagement eccentricity e_z, converting global shell thrust into localized bending.",
+        "subtitle": "Structural kinematics of bolt-free reciprocal timber frames where each beam rests on its neighbor with a vertical step at each lap, converting global shell thrust into localized bending.",
         "date_published": "2026-10-25",
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.3",
@@ -1946,9 +2063,9 @@
           "bridge": "Reciprocal Load Sharing"
         },
         "steps": [
-          "Stage 1 (4-Valence Reciprocal Fan): Four GL28h larch members interlock in a pinwheel cyclic dependency so no more than two members meet at any single point.",
-          "Stage 2 (Eccentricity-Induced Dome Rise): An assumed vertical offset e_z = 85 mm at each lap joint tilts each member, and repeated around the fan this gives the dome its rise.",
-          "Stage 3 (Notch Shear & Bending Check, in the style of EN 1995-1-1): With V_lap = 18.4 kN, λ = 0.25 and an assumed member length L = 1.493 m (so a = λL = 0.373 m), M_lap = 18.4 × 0.373 × 0.75 = 5.15 kN·m. The notch utilization 0.64 is a fixed illustrative value, not a full design check.",
+          "Stage 1 (4-Valence Reciprocal Fan): Four GL28h larch members interlock in a pinwheel loop so no more than two members meet at any point.",
+          "Stage 2 (Eccentricity-Induced Dome Rise): An assumed vertical offset e_z = 85 mm at each lap joint tilts each member; repeated around the fan, this gives the dome its rise.",
+          "Stage 3 (Notch Shear & Bending Check, in the style of EN 1995-1-1): With V_lap = 18.4 kN, λ = 0.25 and an assumed member length L = 1.493 m (a = λL = 0.373 m), M_lap = 18.4 × 0.373 × 0.75 = 5.15 kN·m. The default notch utilization 0.64 is an illustrative baseline rescaled by the sliders below, not a full design check.",
           "Stage 4 (1:5 CNC Dovetail Shear-Block Node): A proposed node in which hardwood beech dowels and EPDM gaskets carry shear without exposed steel plates (design proposal, not tested)."
         ],
         "readouts": [
@@ -1976,8 +2093,8 @@
           "meta": "Design proposal, not a product · EN 14080 is the glued-laminated timber product standard such members would need to meet"
         },
         "sidenote_1": {
-          "kicker": "SIDENOTE A.02 · VILLARD DE HONNECOURT TO KAGAWA",
-          "body": "Reciprocal frames let members shorter than the span cover it together (Popovic Larsen 2007, DOI 10.4324/9780080556000). The price is bending and shear at every notch, which EN 1995-1-1 asks designers to check for notched members."
+          "kicker": "SIDENOTE A.02 · SHORT MEMBERS, NOTCHED LAPS",
+          "body": "Reciprocal frames let members shorter than the span cover it together (Popovic Larsen 2007, DOI 10.4324/9780080556000). The trade-off is bending and shear at every notch, which EN 1995-1-1 and notch-fracture reviews ask designers to check (Jockwer, Steiger, and Frangi 2014, DOI 10.1061/(ASCE)ST.1943-541X.0000838)."
         },
         "skill": {
           "filename": "reciprocal-timber-nexorade-SKILL.md",
@@ -1993,7 +2110,7 @@
           {
             "edition": "REV 1.3",
             "date": "2026-11-14",
-            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. The model does not prove gridshells safe; earlier SAFE / PASS claims, buckling claims from COMPAS, and an unsourced 60% embodied carbon reduction claim are withdrawn; the utilization 0.64 and SF 3.74 are now labelled illustrative values. The bending moment now states its assumed member length (L = 1.493 m), the invented Song and Leonardo scenes are replaced by a plain account.",
+            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. The model does not prove gridshells safe; earlier SAFE / PASS claims, buckling claims from COMPAS, and an unsourced 60% embodied carbon reduction claim are withdrawn; the utilization 0.64 and SF 3.74 are now labeled illustrative values. The bending moment now states its assumed member length (L = 1.493 m), the invented Song and Leonardo scenes are replaced by a plain account.",
             "opus": "Review: references checked by DOI in Crossref and the Scite index; Scite search found no source for the 4x-6x span claim, so it was removed."
           },
           {
@@ -2321,10 +2438,10 @@
           }
         ],
         "steps": [
-          "Stage 1 (Direct & Early Reflections 0–50 ms): Vault geometry directs early energy to listeners within the first 50 ms (an illustrative early clarity C_50 = +4.8 dB, not computed here).",
-          "Stage 2 (Schroeder Quadratic-Residue Diffusion): Coffered timber wells of depth d_n = (n² mod p)·λ/(2p) spread reflections across many directions instead of one mirror-like bounce.",
-          "Stage 3 (Micro-Perforated Helmholtz Absorption): 0.8 mm perforated timber veneer over mineral wool, with an assumed mean absorption α_bar = 0.44.",
-          "Stage 4 (Eyring Decay): For V = 2,400 m³ and an assumed surface area S ≈ 1,075 m², T_60,Eyring = 0.161 × 2,400 / (−1,075 × ln 0.56) = 0.62 s (Sabine gives 0.82 s). The STI of 0.74 is an illustrative value, not a measurement."
+          "Stage 1 (Early Window, cf. Bradley 1986, DOI 10.1121/1.393908): Early sound, within about 50 ms, aids speech; C_50 = +4.8 dB is an illustrative estimate.",
+          "Stage 2 (Schroeder Diffusion, DOI 10.1121/1.382601): For prime p and design wavelength λ_0 = c/f_0, well depths d_n = (n² mod p)·λ_0/(2p) scatter reflections.",
+          "Stage 3 (Perforated Veneer, cf. Maa 1998, DOI 10.1121/1.423870): Maa models micro-perforated panel absorbers; this untested sketch backs 0.8 mm oak veneer with wool (assumed α_bar = 0.44).",
+          "Stage 4 (Eyring Decay, DOI 10.1121/1.1915175): For V = 2,400 m³ and S ≈ 1,075 m², Eyring gives 0.62 s (Sabine 0.82 s); STI = 0.74 is a linear estimate, not an MTF value (DOI 10.1121/1.384464)."
         ],
         "readouts": [
           {
@@ -2346,28 +2463,28 @@
         ],
         "sidenote_1": {
           "kicker": "SIDENOTE A.05-A · EYRING VS SABINE",
-          "body": "In highly absorptive rooms Sabine's formula gives longer reverberation times than Eyring's -S·ln(1 - α_bar) form, which is generally the better estimate there (Eyring 1930, DOI 10.1121/1.1915175). Both rest on a diffuse-field assumption."
+          "body": "In absorptive rooms Sabine's formula predicts longer decay than Eyring's -S·ln(1 - α_bar) estimate (Eyring 1930, DOI 10.1121/1.1915175) under a diffuse-field assumption."
         },
         "sidenote_2": {
           "kicker": "SIDENOTE A.05-B · SPECIFICATION PLATE · CSI 09 84 00",
-          "body": "Design proposal, not a tested product: micro-perforated oak acoustic coffers (0.8 mm apertures at 4 mm pitch) with a design target of NRC = 0.85; fire classification under EN 13501-1 would need testing."
+          "body": "Untested design proposal: 0.8 mm perforated oak coffers at 4 mm pitch over mineral wool (cf. Maa 1998, DOI 10.1121/1.423870), targeting about NRC = 0.85; EN 13501-1 fire rating not yet tested."
         },
         "skill": {
           "filename": "tectonic-acoustics-sabine-eyring-SKILL.md",
           "name": "tectonic-acoustics-sabine-eyring",
           "description": "AI-agnostic architectural acoustics skill for Sabine/Eyring reverberation, Schroeder QRD coffered vaults, and the IEC 60268-16 Speech Transmission Index (STI).",
           "rules": [
-            "Compute both Sabine T_60 = 0.161 V / A and Eyring T_60 = 0.161 V / (-S ln(1 - alpha_bar)) across 125 Hz - 4 kHz octave bands.",
-            "Size Schroeder quadratic-residue diffuser wells via d_n = (n^2 mod p) * c / (2 p f_0) to prevent focal caustics under curved vaults.",
-            "Use the folio's own design targets of STI >= 0.68 and background noise <= NC-28 for consultation rooms and civic halls (folio targets, not requirements of a cited standard)."
+            "Estimate SI-unit Sabine T_60 = 0.161 V / A and Eyring logarithmic decay T_60 = 0.161 V / (-S ln(1 - alpha_bar)) (after Eyring 1930, DOI 10.1121/1.1915175) for volume V and area S.",
+            "Size Schroeder diffuser wells for prime p via d_n = (n^2 mod p) * c / (2 p f_0) under curved vaults (Schroeder 1979, DOI 10.1121/1.382601).",
+            "Apply the folio's own targets of STI >= 0.68 and noise <= NC-28 as model caveats, not requirements of IEC 60268-16 or ISO 3382-1."
           ]
         },
         "revisions": [
           {
             "edition": "REV 1.2",
             "date": "2026-11-14",
-            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. The Sabine comparison is corrected from 0.73 s to 0.82 s (it follows from the same room as the Eyring 0.62 s), STI 0.74 and C_50 +4.8 dB are labelled illustrative, and no ISO 3382 rating is claimed (earlier claims of formal rating and alarm-fatigue effects are withdrawn). The Eyring and Schroeder DOIs pointed to a one-page supplement item and a different 1975 paper; they now cite DOI 10.1121/1.1915175 and DOI 10.1121/1.382601. The midnight scene is replaced by a plain account. A later review corrected the Speech Transmission Index attribution (IEC 60268-16, not ISO 3382), made the NC-28 threshold consistent, softened outcome claims in the plain-language and Spanish text, and changed the readout verdict and the Scite record.",
-            "opus": "Review: references checked by DOI in Crossref and the Scite index; Scite literature supports that Eyring gives shorter times than Sabine in absorptive rooms."
+            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. Sabine is corrected from 0.73 s to 0.82 s (same room as Eyring 0.62 s), STI 0.74 and C_50 +4.8 dB are labeled illustrative estimates, and earlier ISO 3382 rating and alarm-fatigue claims are withdrawn. Eyring and the 1979 QRD diffuser now cite DOI 10.1121/1.1915175 and DOI 10.1121/1.382601, STI cites IEC 60268-16, NC-28 is aligned, and the midnight scene is replaced by a plain account. A grounding pass on 2026-11-21 added Steeneken and Houtgast 1980, two Bradley 1986 papers, Maa 1998, Busch-Vishniac et al. 2005 and Zhu et al. 2017, and refreshed the Scite note.",
+            "opus": "Review: references checked by DOI in Crossref and the Scite index; Scite literature suggests that Eyring estimates shorter decay than Sabine in absorptive rooms."
           },
           {
             "edition": "REV 1.1",
@@ -2389,13 +2506,13 @@
         "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1121/1.1915175",
-          "fetched_on": "2026-11-08",
-          "citing_publications": 146,
-          "supporting": 1,
-          "mentioning": 31,
+          "fetched_on": "2026-11-21",
+          "citing_publications": 217,
+          "supporting": 4,
+          "mentioning": 84,
           "contrasting": 0,
           "retracted": false,
-          "summary": "Eyring, Reverberation time in dead rooms (DOI 10.1121/1.1915175). The citation counts shown were taken on 2026-11-08 for an earlier record, a one-page 1930 supplement item by Eyring (DOI 10.1121/1.1901884), and have not been refreshed for this DOI. Neither record checks this folio's numbers."
+          "summary": "Scite index entry for Eyring, Reverberation Time in \"Dead\" Rooms (DOI 10.1121/1.1915175), checked 2026-11-21: 217 citing publications (4 supporting, 84 mentioning, 0 contrasting) and no retraction notice. Does not check this folio's numbers."
         }
       },
       {
@@ -2404,7 +2521,7 @@
         "pillar": "architecture",
         "category_code": "A",
         "title": "Net-Zero Water & Greywater Constructed Wetlands: Subsurface Darcy Filtration, UV-C Photolysis and Hot-Water Recirculation (Design Study)",
-        "subtitle": "How a modelled subsurface reed bed removes about 95% of greywater BOD_5 outside, while 60 °C recirculation and a 254 nm UV-C reactor are design targets meant to limit growth of opportunistic waterborne bacteria inside.",
+        "subtitle": "How a modeled subsurface reed bed removes about 95% of greywater BOD_5 outside, while 60 °C recirculation and a 254 nm UV-C reactor are design targets meant to limit growth of opportunistic waterborne bacteria inside.",
         "date_published": "2026-11-01",
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.2",
@@ -2464,7 +2581,7 @@
         },
         "sidenote_2": {
           "kicker": "SIDENOTE A.06-B · SPECIFICATION PLATE · CSI 22 13 00 / 22 42 00",
-          "body": "Offset drain clinical washbasin with an automated 65 °C thermal P-trap cycle, intended to reduce droplet dispersal from the drain. Kotay et al. (2017, DOI 10.1128/AEM.03327-16) modelled sink-trap dispersal with a marker organism; this fixture is a design proposal and has not been tested."
+          "body": "Offset drain clinical washbasin with an automated 65 °C thermal P-trap cycle, intended to reduce droplet dispersal from the drain. Kotay et al. (2017, DOI 10.1128/AEM.03327-16) modeled sink-trap dispersal with a marker organism; this fixture is a design proposal and has not been tested."
         },
         "skill": {
           "filename": "netzero-water-pathogen-plumbing-SKILL.md",
@@ -2480,13 +2597,13 @@
           {
             "edition": "REV 1.2",
             "date": "2026-11-14",
-            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. Earlier editions said the design eradicates pathogens and showed a zero-biofilm verdict; nothing here was measured, so those statements are withdrawn and every number is labelled as a model value. The opening scene about Käthe Seidel was not sourced and is replaced by a plain account. A later review corrected the title (the CSI 22 13 00 label and \"pathogen-control\" are removed), stated the assumed wetland constants and a consistent bed depth, and softened the readout verdict and the Spanish text.",
+            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. Earlier editions said the design eradicates pathogens and showed a zero-biofilm verdict; nothing here was measured, so those statements are withdrawn and every number is labeled as a model value. The opening scene about Käthe Seidel was not sourced and is replaced by a plain account. A later review corrected the title (the CSI 22 13 00 label and \"pathogen-control\" are removed), stated the assumed wetland constants and a consistent bed depth, and softened the readout verdict and the Spanish text.",
             "opus": "Review: new references checked by DOI in Crossref and the Scite index."
           },
           {
             "edition": "REV 1.1",
             "date": "2026-11-02",
-            "summary": "REV 1.1 (Redated 2026-11-02): Modelled 95.1% Kadlec-Knight BOD_5 greywater reduction and a 5.4-log Chick-Watson UV-C design dose with a 60 °C thermal loop.",
+            "summary": "REV 1.1 (Redated 2026-11-02): Modeled 95.1% Kadlec-Knight BOD_5 greywater reduction and a 5.4-log Chick-Watson UV-C design dose with a 60 °C thermal loop.",
             "opus": "Council review of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.2: nothing was measured, and ASHRAE 188 does not prescribe this design."
           },
           {
@@ -2632,7 +2749,7 @@
         "pillar": "architecture",
         "category_code": "A",
         "title": "AI-Designed Daytime Radiative Sky-Cooling Photonic Roofs (8–13 μm Window) & Stefan Phase-Change Envelopes",
-        "subtitle": "Extending architectural wave optics from visible color (0.38–0.78 μm) to the 8–13 μm atmospheric infrared window—beaming building heat straight into 3 K deep space under peak midday sun.",
+        "subtitle": "A building-physics model pairing daytime radiative sky cooling across the 8–13 μm atmospheric window (Raman et al. 2014, DOI 10.1038/nature13883; Mandal et al. 2018, DOI 10.1126/science.aat9513) with a proposed Stefan phase-change ceiling buffer (Carslaw & Jaeger 1959; Kuznik et al. 2011, DOI 10.1016/j.rser.2010.08.019).",
         "date_published": "2026-11-02",
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.1",
@@ -2664,10 +2781,10 @@
           }
         ],
         "steps": [
-          "Stage 1 (Solar Reflection, 0.3–2.5 μm): In the model the roof reflects 97.0% of an assumed 1,000 W/m² of midday sunlight, so it absorbs (1 − 0.97) × 1,000 = 30 W/m².",
-          "Stage 2 (Emission in the 8–13 μm Window): The model assigns the roof a net radiative exchange with the sky of 116.4 W/m² at air temperature (emission minus absorbed atmospheric radiation). This is a fixed illustrative value, not a measurement.",
-          "Stage 3 (Sub-Ambient Equilibrium Below Air Temperature): Net cooling power P_net = 116.4 − 30 = +86.4 W/m². Divided by an assumed combined heat-exchange coefficient of about 13.9 W/(m²·K), that gives a roof surface about 6.2 °C below outdoor air in the model.",
-          "Stage 4 (Stefan Phase-Change Thermal Ceiling Buffer): A proposed 21 °C PCM ceiling panel would absorb indoor heat along a moving melting front s(t) = 2λ_s√(α t). The panel is a design proposal and was not sized or tested here."
+          "Stage 1 (Solar Reflection, 0.3–2.5 μm): In the model the roof reflects 97.0% of an assumed 1,000 W/m² of midday sunlight, absorbing (1 − 0.97) × 1,000 = 30 W/m² (Raman et al. 2014, DOI 10.1038/nature13883, report about 97% solar reflection).",
+          "Stage 2 (Emission in the 8–13 μm Window): Through the 8–13 μm atmospheric transparency window (Catalanotti et al. 1975, DOI 10.1016/0038-092X(75)90062-6; Granqvist & Hjortsberg 1981, DOI 10.1063/1.329270), the model assigns an illustrative net radiative sky exchange of about 116.4 W/m² at air temperature.",
+          "Stage 3 (Sub-Ambient Equilibrium Below Air Temperature): Net cooling power is P_net = 116.4 − 30 = +86.4 W/m². Dividing by an assumed combined heat-exchange coefficient of about 13.9 W/(m²·K) gives a model roof surface about 6.2 °C below outdoor air under the stated assumptions (Raman et al. 2014, DOI 10.1038/nature13883, measured about 4.9 °C and 40.1 W/m²).",
+          "Stage 4 (Stefan Phase-Change Thermal Ceiling Buffer): A proposed 21 °C PCM ceiling panel could absorb indoor heat along a moving melting front s(t) = 2λ_s√(α t) (Carslaw & Jaeger 1959; Kuznik et al. 2011, DOI 10.1016/j.rser.2010.08.019). The panel is an untested design proposal and was not sized here."
         ],
         "readouts": [
           {
@@ -2690,16 +2807,16 @@
         "spec_plate": {
           "division": "CSI MASTERFORMAT 07 54 00 / 07 21 00",
           "title": "Microporous PVDF-HFP Radiative Sky-Cooling Membrane & Bio-PCM Thermal Ceiling",
-          "body": "Design proposal: a hierarchically porous poly(vinylidene fluoride-co-hexafluoropropylene) cool-roof coating of the kind reported by Mandal et al. (2018, DOI 10.1126/science.aat9513), with assumed R_solar = 0.97 and ε_8-13um = 0.95, coupled to 21 °C PCM ceiling cassettes. Not a tested assembly.",
-          "meta": "Reference: Raman et al. 2014, DOI 10.1038/nature13883 · Model values, not measurements · ASTM E1980 is the practice for calculating a solar reflectance index; none was calculated here"
+          "body": "Untested design proposal: a hierarchically porous poly(vinylidene fluoride-co-hexafluoropropylene) cool-roof coating of the kind reported by Mandal et al. (2018, DOI 10.1126/science.aat9513), with assumed R_solar = 0.97 and ε_8-13um = 0.95, paired with 21 °C PCM ceiling cassettes (Kuznik et al. 2011, DOI 10.1016/j.rser.2010.08.019).",
+          "meta": "References: Raman et al. 2014 (DOI 10.1038/nature13883); Granqvist & Hjortsberg 1981 (DOI 10.1063/1.329270) · Model estimates, not measurements · ASTM E1980 defines solar reflectance index; none was calculated here"
         },
         "sidenote_1": {
           "kicker": "SIDENOTE A.08-A · VISIBLE STRUCTURAL COLOR WITHOUT SOLAR HEATING",
-          "body": "A white roof can glare. One proposed answer is a thin-film coating that reflects a narrow band of visible color (terracotta, slate blue, ochre) and still reflects most of the invisible near-infrared part of sunlight. A colored surface absorbs more sunlight than a white one, so it would cool less. This folio does not model colored roofs."
+          "body": "A white roof can glare. Chen et al. (2020, DOI 10.1126/sciadv.aaz5413) report paintable bilayer coatings in which a thin top layer absorbs narrowly for visible color while a scattering underlayer reflects near-infrared sunlight. Because visible absorption adds solar heat, colored roofs may cool less than white ones; this folio models white-limit assumptions only."
         },
         "sidenote_2": {
           "kicker": "SIDENOTE A.08-B · SPECIFICATION PLATE · CSI 07 54 00 / STEFAN NUMBER",
-          "body": "Illustrative storage figure: about 7.2 kg/m² of PCM with latent heat L_f = 210 kJ/kg stores 7.2 × 210 = 1,512 kJ/m², which is 420 Wh/m². In an 18 mm panel that means the panel is roughly half PCM by volume (an assumption). The Stefan number Ste = c_p ΔT / L_f = 0.085 is also an assumed value. The folio makes no claim about chiller demand."
+          "body": "Illustrative storage estimate: about 7.2 kg/m² of PCM with latent heat L_f = 210 kJ/kg stores 1,512 kJ/m² (420 Wh/m²), assuming about half of an 18 mm panel is PCM and Stefan number Ste = c_p ΔT / L_f = 0.085 (Carslaw & Jaeger 1959; Kuznik et al. 2011, DOI 10.1016/j.rser.2010.08.019). No chiller-demand estimate is computed here."
         },
         "skill": {
           "filename": "radiative-sky-cooling-stefan-pcm-SKILL.md",
@@ -2707,7 +2824,7 @@
           "description": "AI-agnostic building-physics and photonic-envelope skill for daytime radiative sky cooling across the 8-13 um atmospheric window and Stefan phase-change thermal storage.",
           "rules": [
             "Evaluate net radiative cooling flux P_net(T) = epsilon_LWIR * sigma * T^4 - P_atm(T_amb) - (1 - R_solar) * I_solar - h_c * (T_amb - T).",
-            "Treat R_solar >= 0.94 across 0.3-2.5 um and epsilon_LWIR >= 0.90 across 8-13 um as this folio's own design targets under I_solar = 1000 W/m^2; report P_net and Delta T as model values, never as measured results.",
+            "Treat R_solar >= 0.94 across 0.3-2.5 um and epsilon_LWIR >= 0.90 across 8-13 um as this folio's own design targets under I_solar = 1000 W/m^2; report P_net and Delta T as model estimates, not measured results.",
             "Compute Stefan phase-change melting front depth s(t) = 2 * lambda_s * sqrt(alpha_th * t) where lambda_s * exp(lambda_s^2) * erf(lambda_s) = Ste / sqrt(pi)."
           ]
         },
@@ -2731,13 +2848,13 @@
         "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1038/nature13883",
-          "fetched_on": "2026-11-08",
-          "citing_publications": 3769,
+          "fetched_on": "2026-11-21",
+          "citing_publications": 3807,
           "supporting": 15,
-          "mentioning": 2634,
+          "mentioning": 2649,
           "contrasting": 1,
           "retracted": false,
-          "summary": "Scite index entry for Raman et al., Passive radiative cooling below ambient air temperature under direct sunlight (DOI 10.1038/nature13883), checked 2026-11-08: 3,769 citing publications (15 supporting, 2,634 mentioning, 1 contrasting) and no retraction notice. The counts describe that paper, not this folio's model."
+          "summary": "Scite index entry for Raman et al., Passive radiative cooling below ambient air temperature under direct sunlight (DOI 10.1038/nature13883), checked 2026-11-21: 3,807 citing publications (15 supporting, 2,649 mentioning, 1 contrasting) and no retraction notice. The counts describe that paper, not this folio's model."
         }
       },
       {
@@ -5598,7 +5715,7 @@
         "current_edition": "REV 1.1",
         "status_badge": "F1 OPTIMAL CONTROL & AI · REV 1.1",
         "primary_kernel": "tools/discovery/formal_proof_thermodynamic_landscape.py",
-        "governing_law": "H(x, u, λ) = 1/v + λ_v f_v(v, P_k, δ) − λ_E P_k/(η v) · u_θ = F⁻¹(R_φ · F(a))",
+        "governing_law": "H(x, u, λ) = 1/v + λ_v f_v(v, P_k, δ) − λ_E P_batt(P_k)/v ; u_{l+1} = σ(W u_l + F⁻¹(R_φ · F(u_l)))",
         "colophon": {
           "identifier": "M.07 · F1 Pontryagin Control & FNO Surrogates · FIA 2026 Art. 5",
           "kernels": "Pontryagin Maximum Principle (PMP) · HJB PDE · Fourier Neural Operator",
@@ -5624,10 +5741,10 @@
           }
         ],
         "steps": [
-          "Stage 1 (Fourier Neural Operator Surrogate, proposed): An FNO layer u_{t+1} = σ(W u_t + F⁻¹(R_φ · F u_t)) could be trained to map wing angle δ_wing and ride height h_ride to drag and downforce coefficients. No such surrogate was trained for this folio.",
-          "Stage 2 (Distance-Domain Pontryagin Hamiltonian H): Formulates minimum-time lap control with ds/dt = v. While the battery stays inside its limits, the battery co-state λ_E* is constant; the folio calibrates it to an assumed 4.0 MJ-per-lap energy budget.",
-          "Stage 3 (Bang–Singular–Bang Taper vs. Clipping): Above a switching speed the model tapers P_k*(s) instead of deploying full power until the battery clips. The 298 km/h switching speed and the 0.42 s saving are illustrative model values.",
-          "Stage 4 (Regenerative Braking Harvest): Under braking the MGU-K recovers energy so that the periodic boundary condition E_batt(L) = E_batt(0) closes the lap."
+          "Stage 1 (Fourier Neural Operator Surrogate, proposed): An FNO layer u_{l+1} = σ(W u_l + F⁻¹(R_φ · F(u_l))) could map wing angle δ_wing and ride height h_ride to aerodynamic coefficients; no surrogate was trained here.",
+          "Stage 2 (Distance-Domain Pontryagin Hamiltonian H): Rewrites minimum-time control in track distance ds/dt = v; on interior battery arcs, co-state λ_E* is constant across an assumed 4.0 MJ budget.",
+          "Stage 3 (Convex-Loss Taper vs. Clipping): Above a switching speed, convex electrical losses taper P_k*(s) instead of clipping mid-straight (298.4 km/h and 0.42 s are illustrative).",
+          "Stage 4 (Regenerative Braking Harvest): Under braking (P_k < 0), piecewise efficiency η_regen recovers kinetic energy so E_batt(L) = E_batt(0) closes the lap."
         ],
         "readouts": [
           {
@@ -5648,26 +5765,26 @@
           }
         ],
         "spec_plate": {
-          "division": "FIA 2026 ARTICLE 5 / SCIENTIFIC ML & OPTIMAL CONTROL",
-          "title": "2026 Formula 1 350 kW MGU-K Energy Store & Real-Time FNO-Pontryagin Lap Optimizer",
-          "body": "Design study: a 350 kW kinetic motor-generator unit governed by a distance-domain Pontryagin co-state controller that could query a 32-mode Fourier Neural Operator aerodynamic surrogate. Nothing here was built or run on a car.",
-          "meta": "Method sources cited, not reproduced: Limebeer, Perantoni & Rao 2014 (DOI 10.1080/00207179.2014.900705) · Li et al. FNO (arXiv:2010.08895)"
+          "division": "APPLIED OPTIMAL CONTROL & OPERATOR LEARNING · DESIGN STUDY",
+          "title": "Hybrid 350 kW MGU-K Energy Store & Proposed FNO-Pontryagin Lap Controller",
+          "body": "Design study: a 350 kW kinetic motor-generator unit scheduled by a distance-domain Pontryagin co-state controller that could query a 32-mode Fourier Neural Operator flow surrogate. Nothing here was built or run on a car.",
+          "meta": "Method sources cited, not reproduced: Limebeer, Perantoni & Rao 2014 (DOI 10.1080/00207179.2014.900705) · Li et al. 2020 (arXiv:2010.08895)"
         },
         "sidenote_1": {
           "kicker": "SIDENOTE M.07-A · WHY THE BATTERY CO-STATE λ_E IS CONSTANT ACROSS THE LAP",
-          "body": "By Pontryagin's co-state equation dλ_E/ds = −∂H/∂E_batt, whenever the battery state of charge E_batt(s) stays strictly inside its [E_min, E_max] corridor, ∂H/∂E_batt = 0—meaning a single scalar shadow price λ_E* governs every straight and corner on the circuit!"
+          "body": "By Pontryagin's adjoint equation dλ_E/ds = −∂H/∂E_batt, whenever battery energy E_batt(s) stays inside [E_min, E_max] and losses omit state of charge, ∂H/∂E_batt = 0, so one constant shadow price λ_E* governs the lap."
         },
         "sidenote_2": {
           "kicker": "SIDENOTE M.07-B · SPECIFICATION PLATE · FOURIER NEURAL OPERATOR ZERO-SHOT SUPER-RESOLUTION",
-          "body": "Because R_φ acts directly on the lowest k_max Fourier modes, the operator can be evaluated on a finer grid than it was trained on; Li et al. (arXiv:2010.08895) report this zero-shot super-resolution on their benchmark flows. Whether it holds for race-car aerodynamics is untested here."
+          "body": "Because R_φ acts on the lowest k_max Fourier modes, an FNO layer could be evaluated on finer grids than its training mesh (Li et al. 2020, arXiv:2010.08895); race-car aerodynamics remains untested here."
         },
         "skill": {
           "filename": "f1-pontryagin-fno-control-SKILL.md",
           "name": "f1-pontryagin-fno-control",
           "description": "AI-agnostic applied mathematics and operator-learning skill for Formula 1 350 kW MGU-K Pontryagin optimal energy management, HJB lap-time minimization, and Fourier Neural Operator PDE surrogates.",
           "rules": [
-            "Formulate distance-domain Pontryagin Hamiltonian H = (1/v) + lambda_v * a_net(v, P_k, delta_wing) / v - lambda_E * P_k / (eta_k * v).",
-            "Determine the MGU-K switching velocity v_switch from the switching function dH/dP_k = lambda_v / (m * v^2) - lambda_E / (eta_k * v), which vanishes where lambda_v / (m * v) = lambda_E / eta_k, to prevent straight-end clipping.",
+            "Formulate the minimum-Hamiltonian H = (1/v) + lambda_v * a_net(v, P_k, delta_wing) / v - lambda_E * P_batt(P_k) / v along arc-length s, with P_batt = P_k / eta_k for motoring (P_k >= 0) and eta_regen * P_k under braking.",
+            "Evaluate the motoring optimality condition dH/dP_k = lambda_v / (m * v^2) - lambda_E * (dP_batt/dP_k) / v = 0 (lambda_v, lambda_E < 0 under min_u H): affine losses (dP_batt/dP_k = 1/eta_k) switch at lambda_v / (m * v) = lambda_E / eta_k, whereas strictly convex losses P_batt(P_k) initiate smooth tapering below P_k,max where lambda_v / (m * v) = lambda_E * dP_batt/dP_k(P_k,max).",
             "Evaluate spectral neural operator layer u_{l+1}(x) = sigma(W * u_l(x) + F^{-1}(R_phi * F(u_l))(x)) truncated at k_max Fourier modes."
           ]
         },
@@ -5675,8 +5792,8 @@
           {
             "edition": "REV 1.1",
             "date": "2026-11-14",
-            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The lap-time gain, switching speed, FNO error and speedup are now labelled as illustrative model values; no surrogate was trained and no lap was simulated. The 2014 Limebeer, Perantoni & Rao paper is no longer cited for the 2026 rules it predates, the switching condition is corrected to lambda_v/(m v) = lambda_E/eta, the invented opening scene is replaced by a plain account, and the nebulizer and Cystic Fibrosis dosing bridge is withdrawn.",
-            "opus": "Review: DOIs checked in Crossref and arXiv:2010.08895 checked on 2026-11-14. No DOIs added."
+            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The lap-time gain, switching speed, FNO error and speedup are now labeled as illustrative model values; no surrogate was trained and no lap was simulated. The 2014 Limebeer, Perantoni & Rao paper is no longer cited for the 2026 rules it predates, the switching condition is corrected to lambda_v/(m v) = lambda_E/eta, the invented opening scene is replaced by a plain account, and the nebulizer and Cystic Fibrosis dosing bridge is withdrawn.",
+            "opus": "Review: DOIs checked in Crossref and arXiv:2010.08895 checked on 2026-11-14; 2026-11-21 grounding pass verified and added Bellman 1954, Crandall & Lions 1983, Perantoni & Limebeer 2014, Salazar et al. 2017, Duhr et al. 2021, and Lu et al. 2021."
           },
           {
             "edition": "REV 1.0",
@@ -5691,13 +5808,13 @@
         "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1080/00207179.2014.900705",
-          "fetched_on": "2026-11-08",
+          "fetched_on": "2026-11-21",
           "citing_publications": 87,
           "supporting": 0,
           "mentioning": 52,
           "contrasting": 0,
           "retracted": false,
-          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 87 citing publications (0 supporting, 52 mentioning, 0 contrasting) on David Limebeer, Giacomo Perantoni & Anil Rao's optimal control of Formula One hybrid energy recovery systems."
+          "summary": "Scite Smart Citation Index [observed: Scite ML citation classification, accessed 2026-11-21]: 0 retractions; 87 citing publications (0 supporting, 52 mentioning, 0 contrasting) on David Limebeer, Giacomo Perantoni & Anil Rao's optimal control of Formula One hybrid energy recovery systems."
         }
       },
       {
@@ -6643,14 +6760,15 @@
       "volume": 7,
       "code": "VOL. 07",
       "roman": "Volume VII",
-      "kicker": "VOLUME VII (VOL. 07) · POROELASTICITY, SUCTION, CONCRETE FRACTURE, THIN SHELLS, GRAPH CAPACITY & SPHERE PACKING · 7 FOLIOS",
-      "title": "Poroelasticity, Suction Stress, Concrete Size Effect, Isler and Candela Shells, Shannon Capacity & Sphere Packing",
-      "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), Engineering Folio E.15 (Hillerborg fictitious crack process zones, Bažant Type II Size Effect Law, and Bažant–Kazemi fracture energy regression in concrete), Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns), Architecture Folio A.14 (Félix Candela's doubly-ruled hyperbolic paraboloid concrete umbrellas, Pucher flat-projection membrane shear, and cantilevered edge boundaries), Mathematics Folio M.13 (Shannon zero-error graph capacity, Lovász's orthonormal theta sandwich, Haemers's rank-7 Schläfli separation, and the open seven-cycle gap), and Mathematics Folio M.14 (Sphere packing, Cohn–Elkies Fourier linear programming, Viazovska modular functions in dimensions 8 and 24, and the open dimension-4 gap).",
+      "kicker": "VOLUME VII (VOL. 07) · POROELASTICITY, SUCTION, CONCRETE FRACTURE, BRIDGE SCOUR, THIN SHELLS, GRAPH CAPACITY & SPHERE PACKING · 8 FOLIOS",
+      "title": "Poroelasticity, Suction Stress, Concrete Size Effect, Bridge Pier Scour, Isler and Candela Shells, Shannon Capacity & Sphere Packing",
+      "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), Engineering Folio E.15 (Hillerborg fictitious crack process zones, Bažant Type II Size Effect Law, and Bažant–Kazemi fracture energy regression in concrete), Engineering Folio E.16 (Shields incipient sediment motion, Sheppard–Melville horseshoe-vortex pier scour, and Melville–Chiew flood-duration time-scale lag), Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns), Architecture Folio A.14 (Félix Candela's doubly-ruled hyperbolic paraboloid concrete umbrellas, Pucher flat-projection membrane shear, and cantilevered edge boundaries), Mathematics Folio M.13 (Shannon zero-error graph capacity, Lovász's orthonormal theta sandwich, Haemers's rank-7 Schläfli separation, and the open seven-cycle gap), and Mathematics Folio M.14 (Sphere packing, Cohn–Elkies Fourier linear programming, Viazovska modular functions in dimensions 8 and 24, and the open dimension-4 gap).",
       "cadence": "Verifier-gated Living Edition release",
       "folios": [
         "e13",
         "e14",
         "e15",
+        "e16",
         "a13",
         "a14",
         "m13",

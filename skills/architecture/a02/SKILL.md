@@ -17,9 +17,9 @@ A plain-text companion to the essay at https://informatico.ai/architecture/a02/ 
 3. Provide full-thread self-tapping screw reinforcement perpendicular to grain where tension splitting stress exceeds f_{t,90,d}.
 
 ## How it works, in four stages
-- Stage 1 (4-Valence Reciprocal Fan): Four GL28h larch members interlock in a pinwheel cyclic dependency so no more than two members meet at any single point.
-- Stage 2 (Eccentricity-Induced Dome Rise): An assumed vertical offset e_z = 85 mm at each lap joint tilts each member, and repeated around the fan this gives the dome its rise.
-- Stage 3 (Notch Shear & Bending Check, in the style of EN 1995-1-1): With V_lap = 18.4 kN, λ = 0.25 and an assumed member length L = 1.493 m (so a = λL = 0.373 m), M_lap = 18.4 × 0.373 × 0.75 = 5.15 kN·m. The notch utilization 0.64 is a fixed illustrative value, not a full design check.
+- Stage 1 (4-Valence Reciprocal Fan): Four GL28h larch members interlock in a pinwheel loop so no more than two members meet at any point.
+- Stage 2 (Eccentricity-Induced Dome Rise): An assumed vertical offset e_z = 85 mm at each lap joint tilts each member; repeated around the fan, this gives the dome its rise.
+- Stage 3 (Notch Shear & Bending Check, in the style of EN 1995-1-1): With V_lap = 18.4 kN, λ = 0.25 and an assumed member length L = 1.493 m (a = λL = 0.373 m), M_lap = 18.4 × 0.373 × 0.75 = 5.15 kN·m. The default notch utilization 0.64 is an illustrative baseline rescaled by the sliders below, not a full design check.
 - Stage 4 (1:5 CNC Dovetail Shear-Block Node): A proposed node in which hardwood beech dowels and EPDM gaskets carry shear without exposed steel plates (design proposal, not tested).
 
 ## Reference values stated in the essay
@@ -36,4 +36,4 @@ The reference values above are stated in the essay. No script in this repository
 - What the essay compares against: Model values: M_lap = 5.15 kN·m (a = 0.373 m, λ = 0.25) · utilization 0.64 and SF 3.74 are illustrative
 
 ## Recent research context
-- **Reciprocal Timber Gridshells: Short Members, Mutual Support, and the Bending at Every Notch**: Building on Villard de Honnecourt's medieval floor frames and Olga Popovic Larsen's Reciprocal Frame Architecture (DOI 10.4324/9780080556000; Asefi & Bahremandi-Tolou, J. Build. Eng. 2019, DOI 10.1016/j.jobe.2019.100867), this folio models a GL28h larch nexorade with an assumed eccentricity e_z = 85 mm, a lap moment of 5.15 kN·m, and illustrative values for notch utilization (0.64) and buckling (SF = 3.74).
+- **Reciprocal Timber Gridshells: Short Members, Mutual Support, and the Bending at Every Notch**: Building on Villard de Honnecourt's medieval floor frames and Olga Popovic Larsen's Reciprocal Frame Architecture (DOI 10.4324/9780080556000; Douthe & Baverel 2009, DOI 10.1016/j.compstruc.2009.06.011; Asefi & Bahremandi-Tolou 2019, DOI 10.1016/j.jobe.2019.100867), this folio models a GL28h larch nexorade with assumed eccentricity e_z = 85 mm, lap moment 5.15 kN·m, and illustrative values for notch utilization (0.64) and buckling (SF = 3.74).

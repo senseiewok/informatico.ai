@@ -161,14 +161,45 @@ def z_yukawa(k: float, s: float, t1: float, t2: float, lam: float) -> float:
 
 
 def z_smeared(k: float, s: float, t1: float, t2: float, sigma: float) -> float:
+    """Vertical factor ∫₀^{t₁} dz₁ ∫₀^{t₂} dz₂ e^{−k(s+z₁+z₂)} R_σ(k, s+z₁+z₂). The change of variables
+    u = z₁ + z₂ turns it, exactly, into a 1D integral with a trapezoid-shaped weight, evaluated here by Gauss–Legendre
+    on [0, min(t₁,t₂)], [min(t₁,t₂), max(t₁,t₂)], and [max(t₁,t₂), t₁+t₂]. It is the same integral as the earlier
+    24×24 rule, by a different quadrature, so the two agree to quadrature error and not digit for digit."""
+    if k * s > 745.0:
+        return 0.0
+    a_k = k * sigma
+    inv_2sig = 0.5 / sigma
+    if s * inv_2sig - a_k > 7.0:
+        # For every gap >= s, b - a > 7 => erfc(a - b) = 2 and exp(2k·gap)erfc(a + b) < exp(-49) < 6e-22, so R_σ == 1 in float64.
+        return math.exp(-k * s) * (-math.expm1(-k * t1)) * (-math.expm1(-k * t2)) / (k * k)
+    ta, tb = (t1, t2) if t1 <= t2 else (t2, t1)
     xs, ws = _GL24
+    erfc = math.erfc
+    exp = math.exp
+    log = math.log
+    sqrt_pi = math.sqrt(math.pi)
     total = 0.0
-    for xi, wi in zip(xs, ws):
-        z1 = 0.5 * t1 * (xi + 1.0)
-        for xj, wj in zip(xs, ws):
-            gap = s + z1 + 0.5 * t2 * (xj + 1.0)
-            total += wi * wj * math.exp(-k * gap) * plate_mode_ratio(k, gap, sigma)
-    return total * 0.25 * t1 * t2
+    for lo, hi, mode in ((0.0, ta, 0), (ta, tb, 1), (tb, ta + tb, 2)):
+        half = 0.5 * (hi - lo)
+        if half == 0.0:
+            continue
+        mid = 0.5 * (hi + lo)
+        seg = 0.0
+        for xi, wi in zip(xs, ws):
+            u = mid + half * xi
+            wu = u if mode == 0 else (ta if mode == 1 else (ta + tb - u))
+            gap = s + u
+            b = gap * inv_2sig
+            apb = a_k + b
+            if apb > 25.0:
+                x2 = apb * apb
+                lerfc = -x2 - log(apb * sqrt_pi) + log(1.0 - 0.5 / x2 + 0.75 / (x2 * x2))
+            else:
+                lerfc = log(erfc(apb))
+            kg = k * gap
+            seg += wi * wu * 0.5 * (exp(-kg) * erfc(a_k - b) + exp(kg + lerfc))
+        total += half * seg
+    return total
 
 
 def k_nodes(kmin: float = K_MIN, kmax: float = K_MAX, per_decade: int = K_PANELS_PER_DECADE) -> list[tuple[float, float]]:
@@ -206,6 +237,8 @@ def wedge_torque(n_fold: int, s: float, kind: str = "newton", sigma: float | Non
     table = radial_table(n_fold, planted_defect)
     total = 0.0
     for (k, wk), r in zip(_K_NODES, table):
+        if r == 0.0:
+            continue
         if kind == "newton":
             z = z_newton(k, s, t1, t2)
         elif kind == "smeared":

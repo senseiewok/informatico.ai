@@ -607,6 +607,14 @@
     "title": "Useful daylight illuminances: A replacement for daylight factors",
     "year": 2006
   },
+  "doi:10.1016/j.engstruct.2005.09.018": {
+    "fetched": "2026-11-21",
+    "first_author": "Chan",
+    "found": true,
+    "journal": "Engineering Structures",
+    "title": "Fiber Bragg grating sensors for structural health monitoring of Tsing Ma bridge: Background and experimental observation",
+    "year": 2006
+  },
   "doi:10.1016/j.engstruct.2020.111156": {
     "fetched": "2026-11-21",
     "first_author": "Wang",
@@ -640,7 +648,7 @@
     "year": 2019
   },
   "doi:10.1016/j.jcp.2018.10.045": {
-    "fetched": "2026-11-04",
+    "fetched": "2026-11-21",
     "first_author": "Raissi",
     "found": true,
     "journal": "Journal of Computational Physics",
@@ -774,6 +782,14 @@
     "journal": "",
     "title": "The Stone Skeleton",
     "year": 1995
+  },
+  "doi:10.1017/dce.2024.4": {
+    "fetched": "2026-11-21",
+    "first_author": "Al-Adly",
+    "found": true,
+    "journal": "Data-Centric Engineering",
+    "title": "Physics-informed neural networks for structural health monitoring: a case study for Kirchhoff-Love plates",
+    "year": 2024
   },
   "doi:10.1017/fmp.2017.1": {
     "fetched": "2026-11-21",
@@ -1215,6 +1231,14 @@
     "title": "Size Effect in Blunt Fracture: Concrete, Rock, Metal",
     "year": 1984
   },
+  "doi:10.1061/(asce)0733-9399(1994)120:8(1718)": {
+    "fetched": "2026-11-21",
+    "first_author": "Sarkar",
+    "found": true,
+    "journal": "Journal of Engineering Mechanics",
+    "title": "Identification of Aeroelastic Parameters of Flexible Bridges",
+    "year": 1994
+  },
   "doi:10.1061/(asce)0733-9399(2009)135:2(78)": {
     "fetched": "2026-11-21",
     "first_author": "Bažant",
@@ -1223,6 +1247,14 @@
     "title": "Universal Size Effect Law and Effect of Crack Depth on Quasi-Brittle Structure Strength",
     "year": 2009
   },
+  "doi:10.1061/(asce)0733-9445(1996)122:7(716)": {
+    "fetched": "2026-11-21",
+    "first_author": "Jain",
+    "found": true,
+    "journal": "Journal of Structural Engineering",
+    "title": "Coupled Flutter and Buffeting Analysis of Long-Span Bridges",
+    "year": 1996
+  },
   "doi:10.1061/(asce)ae.1943-5568.0000430": {
     "fetched": "2026-11-20",
     "first_author": "Tang",
@@ -1230,6 +1262,22 @@
     "journal": "Journal of Architectural Engineering",
     "title": "Gridshell as Formwork: Proof of Concept for a New Technique for Constructing Thin Concrete Shells Supported by Gridshell as Formwork",
     "year": 2020
+  },
+  "doi:10.1061/(asce)be.1943-5592.0000181": {
+    "fetched": "2026-11-21",
+    "first_author": "Ya",
+    "found": true,
+    "journal": "Journal of Bridge Engineering",
+    "title": "Fatigue Evaluation of Rib-to-Deck Welded Joints of Orthotropic Steel Bridge Deck",
+    "year": 2011
+  },
+  "doi:10.1061/(asce)be.1943-5592.0000645": {
+    "fetched": "2026-11-21",
+    "first_author": "Yang",
+    "found": true,
+    "journal": "Journal of Bridge Engineering",
+    "title": "Aerodynamic Stabilization Mechanism of a Twin Box Girder with Various Slot Widths",
+    "year": 2015
   },
   "doi:10.1061/(asce)gt.1943-5606.0000073": {
     "fetched": "2026-11-04",
@@ -1256,7 +1304,7 @@
     "year": 2021
   },
   "doi:10.1061/jmcea3.0001526": {
-    "fetched": "2026-11-14",
+    "fetched": "2026-11-21",
     "first_author": "Scanlan",
     "found": true,
     "journal": "Journal of the Engineering Mechanics Division",
@@ -1408,7 +1456,7 @@
     "year": null
   },
   "doi:10.1080/00207179.2014.900705": {
-    "fetched": "2026-11-04",
+    "fetched": "2026-11-21",
     "first_author": "Limebeer",
     "found": true,
     "journal": "International Journal of Control",
@@ -2456,7 +2504,7 @@
     "year": 2023
   },
   "doi:10.1119/1.16590": {
-    "fetched": "2026-11-14",
+    "fetched": "2026-11-21",
     "first_author": "Billah",
     "found": true,
     "journal": "American Journal of Physics",
@@ -2472,7 +2520,7 @@
     "year": 1930
   },
   "doi:10.1121/1.1915175": {
-    "fetched": "2026-11-14",
+    "fetched": "2026-11-21",
     "first_author": "Eyring",
     "found": true,
     "journal": "The Journal of the Acoustical Society of America",
@@ -3360,7 +3408,7 @@
     "year": 2021
   },
   "doi:10.48550/arxiv.2010.08895": {
-    "fetched": "2026-11-13",
+    "fetched": "2026-11-21",
     "first_author": "Li",
     "found": true,
     "journal": "arXiv",
@@ -4318,17 +4366,16 @@
     "year": 2006
   },
   "scite:10.1016/j.jcp.2018.10.045": {
-    "citing_publications": 24941,
+    "citing_publications": 25907,
     "contrasting": 4,
-    "fetched": "2026-11-08",
+    "fetched": "2026-11-21",
     "found": true,
     "journal": "Journal of Computational Physics",
-    "mentioning": 12640,
+    "mentioning": 13014,
     "retracted": false,
     "supporting": 65,
     "title": "Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations",
-    "total_smart_citations": 12739,
-    "unclassified": 30,
+    "total_smart_citations": 13113,
     "year": 2019
   },
   "scite:10.1016/j.jobe.2019.100867": {
@@ -4898,7 +4945,7 @@
   "scite:10.1080/00207179.2014.900705": {
     "citing_publications": 87,
     "contrasting": 0,
-    "fetched": "2026-11-08",
+    "fetched": "2026-11-22",
     "found": true,
     "journal": "International Journal of Control",
     "mentioning": 52,
@@ -4906,7 +4953,6 @@
     "supporting": 0,
     "title": "Optimal control of Formula One car energy recovery systems",
     "total_smart_citations": 52,
-    "unclassified": 0,
     "year": 2014
   },
   "scite:10.1086/148307": {
@@ -6772,5 +6818,354 @@
     "journal": "Tunnelling and Underground Space Technology",
     "title": "Application ranges of EPB shields in coarse ground based on laboratory research",
     "year": 2015
+  },
+  "doi:10.1016/j.apenergy.2020.115980": {
+    "fetched": "2026-11-21",
+    "first_author": "Duhr",
+    "found": true,
+    "journal": "Applied Energy",
+    "title": "Time-optimal gearshift and energy management strategies for a hybrid electric race car",
+    "year": 2021
+  },
+  "doi:10.1016/j.compstruc.2009.06.011": {
+    "fetched": "2026-11-21",
+    "first_author": "Douthe",
+    "found": true,
+    "journal": "Computers & Structures",
+    "title": "Design of nexorades or reciprocal frame systems with the dynamic relaxation method",
+    "year": 2009
+  },
+  "doi:10.1016/j.conbuildmat.2015.04.028": {
+    "fetched": "2026-11-21",
+    "first_author": "Dietsch",
+    "found": true,
+    "journal": "Construction and Building Materials",
+    "title": "Self-tapping screws and threaded rods as reinforcement for structural timber elements – A state-of-the-art report",
+    "year": 2015
+  },
+  "doi:10.1038/s42256-021-00302-5": {
+    "fetched": "2026-11-21",
+    "first_author": "Lu",
+    "found": true,
+    "journal": "Nature Machine Intelligence",
+    "title": "Learning nonlinear operators via DeepONet based on the universal approximation theorem of operators",
+    "year": 2021
+  },
+  "doi:10.1061/(asce)0733-9429(1997)123:2(125)": {
+    "fetched": "2026-11-21",
+    "first_author": "Melville",
+    "found": true,
+    "journal": "Journal of Hydraulic Engineering",
+    "title": "Pier and Abutment Scour: Integrated Approach",
+    "year": 1997
+  },
+  "doi:10.1061/(asce)0733-9429(1999)125:1(59)": {
+    "fetched": "2026-11-21",
+    "first_author": "Melville",
+    "found": true,
+    "journal": "Journal of Hydraulic Engineering",
+    "title": "Time Scale for Local Scour at Bridge Piers",
+    "year": 1999
+  },
+  "doi:10.1061/(asce)0733-9429(1999)125:4(376)": {
+    "fetched": "2026-11-21",
+    "first_author": "Buffington",
+    "found": true,
+    "journal": "Journal of Hydraulic Engineering",
+    "title": "The Legend of A. F. Shields",
+    "year": 1999
+  },
+  "doi:10.1061/(asce)0887-3828(2003)17:3(144)": {
+    "fetched": "2026-11-21",
+    "first_author": "Wardhana",
+    "found": true,
+    "journal": "Journal of Performance of Constructed Facilities",
+    "title": "Analysis of Recent Bridge Failures in the United States",
+    "year": 2003
+  },
+  "doi:10.1061/(asce)hy.1943-7900.0000800": {
+    "fetched": "2026-11-21",
+    "first_author": "Sheppard",
+    "found": true,
+    "journal": "Journal of Hydraulic Engineering",
+    "title": "Evaluation of Existing Equations for Local Scour at Bridge Piers",
+    "year": 2014
+  },
+  "doi:10.1061/(asce)hy.1943-7900.0001696": {
+    "fetched": "2026-11-21",
+    "first_author": "Link",
+    "found": true,
+    "journal": "Journal of Hydraulic Engineering",
+    "title": "Local Scour and Sediment Deposition at Bridge Piers during Floods",
+    "year": 2020
+  },
+  "doi:10.1061/(asce)st.1943-541x.0000838": {
+    "fetched": "2026-11-21",
+    "first_author": "Jockwer",
+    "found": true,
+    "journal": "Journal of Structural Engineering",
+    "title": "State-of-the-Art Review of Approaches for the Design of Timber Beams with Notches",
+    "year": 2014
+  },
+  "doi:10.1080/00423114.2014.889315": {
+    "fetched": "2026-11-21",
+    "first_author": "Perantoni",
+    "found": true,
+    "journal": "Vehicle System Dynamics",
+    "title": "Optimal control for a Formula One car with variable parameters",
+    "year": 2014
+  },
+  "doi:10.1090/s0002-9904-1954-09848-8": {
+    "fetched": "2026-11-21",
+    "first_author": "Bellman",
+    "found": true,
+    "journal": "Bulletin of the American Mathematical Society",
+    "title": "The theory of dynamic programming",
+    "year": 1954
+  },
+  "doi:10.1090/s0002-9947-1983-0690039-8": {
+    "fetched": "2026-11-21",
+    "first_author": "Crandall",
+    "found": true,
+    "journal": "Transactions of the American Mathematical Society",
+    "title": "Viscosity solutions of Hamilton-Jacobi equations",
+    "year": 1983
+  },
+  "doi:10.1109/icip.2001.958278": {
+    "fetched": "2026-11-21",
+    "first_author": "Cha Zhang",
+    "found": true,
+    "journal": "Proceedings 2001 International Conference on Image Processing (ICIP)",
+    "title": "Efficient feature extraction for 2D/3D objects in mesh representation",
+    "year": 2001
+  },
+  "doi:10.1109/tcst.2016.2642830": {
+    "fetched": "2026-11-21",
+    "first_author": "Salazar",
+    "found": true,
+    "journal": "IEEE Transactions on Control Systems Technology",
+    "title": "Time-optimal Control Policy for a Hybrid Electric Race Car",
+    "year": 2017
+  },
+  "doi:10.1145/356827.356833": {
+    "fetched": "2026-11-21",
+    "first_author": "Requicha",
+    "found": true,
+    "journal": "ACM Computing Surveys",
+    "title": "Representations for Rigid Solids: Theory, Methods, and Systems",
+    "year": 1980
+  },
+  "doi:10.1145/360715.360727": {
+    "fetched": "2026-11-21",
+    "first_author": "Braid",
+    "found": true,
+    "journal": "Communications of the ACM",
+    "title": "The synthesis of solids bounded by many faces",
+    "year": 1975
+  },
+  "doi:10.1260/0266-3511.26.4.331": {
+    "fetched": "2026-11-21",
+    "first_author": "Gelez",
+    "found": true,
+    "journal": "International Journal of Space Structures",
+    "title": "Behavior of a Simple Nexorade or Reciprocal Frame System",
+    "year": 2011
+  },
+  "doi:10.2478/johh-2026-0004": {
+    "fetched": "2026-11-21",
+    "first_author": "Kabiri-Samani",
+    "found": true,
+    "journal": "Journal of Hydrology and Hydromechanics",
+    "title": "Does an Armor Layer Control Clear-Water Scour at Cylindrical Bridge Piers? A Comprehensive Experimental Assessment under Steady and Unsteady Flow Conditions",
+    "year": 2026
+  },
+  "scite:10.1016/j.apenergy.2020.115980": {
+    "citing_publications": 56,
+    "contrasting": 0,
+    "fetched": "2026-11-22",
+    "found": true,
+    "journal": "Applied Energy",
+    "mentioning": 28,
+    "retracted": false,
+    "supporting": 0,
+    "title": "Time-optimal gearshift and energy management strategies for a hybrid electric race car",
+    "total_smart_citations": 28,
+    "year": 2021
+  },
+  "scite:10.1016/j.compstruc.2009.06.011": {
+    "citing_publications": 96,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Computers & Structures",
+    "mentioning": 69,
+    "retracted": false,
+    "supporting": 2,
+    "title": "Design of nexorades or reciprocal frame systems with the dynamic relaxation method",
+    "total_smart_citations": 72,
+    "unclassified": 1,
+    "year": 2009
+  },
+  "scite:10.1016/j.conbuildmat.2015.04.028": {
+    "citing_publications": 212,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Construction and Building Materials",
+    "mentioning": 55,
+    "retracted": false,
+    "supporting": 0,
+    "title": "Self-tapping screws and threaded rods as reinforcement for structural timber elements – A state-of-the-art report",
+    "total_smart_citations": 60,
+    "unclassified": 5,
+    "year": 2015
+  },
+  "scite:10.1038/s42256-021-00302-5": {
+    "citing_publications": 5336,
+    "contrasting": 1,
+    "fetched": "2026-11-22",
+    "found": true,
+    "journal": "Nature Machine Intelligence",
+    "mentioning": 2966,
+    "retracted": false,
+    "supporting": 7,
+    "title": "Learning nonlinear operators via DeepONet based on the universal approximation theorem of operators",
+    "total_smart_citations": 2974,
+    "year": 2021
+  },
+  "scite:10.1061/(asce)st.1943-541x.0000838": {
+    "citing_publications": 33,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Journal of Structural Engineering",
+    "mentioning": 34,
+    "retracted": false,
+    "supporting": 1,
+    "title": "State-of-the-Art Review of Approaches for the Design of Timber Beams with Notches",
+    "total_smart_citations": 35,
+    "unclassified": 0,
+    "year": 2014
+  },
+  "scite:10.1080/00423114.2014.889315": {
+    "citing_publications": 161,
+    "contrasting": 0,
+    "fetched": "2026-11-22",
+    "found": true,
+    "journal": "Vehicle System Dynamics",
+    "mentioning": 131,
+    "retracted": false,
+    "supporting": 1,
+    "title": "Optimal control for a Formula One car with variable parameters",
+    "total_smart_citations": 135,
+    "year": 2014
+  },
+  "scite:10.1090/s0002-9904-1954-09848-8": {
+    "citing_publications": 1547,
+    "contrasting": 0,
+    "fetched": "2026-11-22",
+    "found": true,
+    "journal": "Bulletin of the American Mathematical Society",
+    "mentioning": 451,
+    "retracted": false,
+    "supporting": 1,
+    "title": "The theory of dynamic programming",
+    "total_smart_citations": 463,
+    "year": 1954
+  },
+  "scite:10.1090/s0002-9947-1983-0690039-8": {
+    "citing_publications": 2997,
+    "contrasting": 0,
+    "fetched": "2026-11-22",
+    "found": true,
+    "journal": "Transactions of the American Mathematical Society",
+    "mentioning": 1574,
+    "retracted": false,
+    "supporting": 13,
+    "title": "Viscosity solutions of Hamilton-Jacobi equations",
+    "total_smart_citations": 1607,
+    "year": 1983
+  },
+  "scite:10.1109/tcst.2016.2642830": {
+    "citing_publications": 54,
+    "contrasting": 0,
+    "fetched": "2026-11-22",
+    "found": true,
+    "journal": "IEEE Transactions on Control Systems Technology",
+    "mentioning": 30,
+    "retracted": false,
+    "supporting": 0,
+    "title": "Time-optimal Control Policy for a Hybrid Electric Race Car",
+    "total_smart_citations": 30,
+    "year": 2017
+  },
+  "scite:10.1260/0266-3511.26.4.331": {
+    "citing_publications": 20,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "International Journal of Space Structures",
+    "mentioning": 8,
+    "retracted": false,
+    "supporting": 0,
+    "title": "Behavior of a Simple Nexorade or Reciprocal Frame System",
+    "total_smart_citations": 9,
+    "unclassified": 1,
+    "year": 2011
+  },
+  "doi:10.1103/physrevx.7.021034": {
+    "fetched": "2026-11-21",
+    "first_author": "Zhu",
+    "found": true,
+    "journal": "Physical Review X",
+    "title": "Ultrathin Acoustic Metasurface-Based Schroeder Diffuser",
+    "year": 2017
+  },
+  "doi:10.1121/1.384464": {
+    "fetched": "2026-11-21",
+    "first_author": "Steeneken",
+    "found": true,
+    "journal": "The Journal of the Acoustical Society of America",
+    "title": "A physical method for measuring speech-transmission quality",
+    "year": 1980
+  },
+  "doi:10.1121/1.393907": {
+    "fetched": "2026-11-21",
+    "first_author": "Bradley",
+    "found": true,
+    "journal": "The Journal of the Acoustical Society of America",
+    "title": "Predictors of speech intelligibility in rooms",
+    "year": 1986
+  },
+  "doi:10.1121/1.393908": {
+    "fetched": "2026-11-21",
+    "first_author": "Bradley",
+    "found": true,
+    "journal": "The Journal of the Acoustical Society of America",
+    "title": "Speech intelligibility studies in classrooms",
+    "year": 1986
+  },
+  "doi:10.1121/1.423870": {
+    "fetched": "2026-11-21",
+    "first_author": "Maa",
+    "found": true,
+    "journal": "The Journal of the Acoustical Society of America",
+    "title": "Potential of microperforated panel absorber",
+    "year": 1998
+  },
+  "scite:10.1121/1.1915175": {
+    "citing_publications": 217,
+    "classification_provenance": "Scite ML citation classification",
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "The Journal of the Acoustical Society of America",
+    "mentioning": 84,
+    "retracted": false,
+    "supporting": 4,
+    "title": "Reverberation Time in “Dead” Rooms",
+    "total_smart_citations": 98,
+    "unclassified": 10,
+    "year": 1930
   }
 }

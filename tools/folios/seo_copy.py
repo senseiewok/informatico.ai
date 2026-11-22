@@ -106,6 +106,12 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "Efecto de Tamaño y Fractura en Concreto",
         "Cómo la zona de proceso de Hillerborg y la ley de Bažant explican por qué vigas profundas de concreto fallan a menor esfuerzo que probetas chicas.",
     ),
+    "e16": (
+        "Bridge Pier Local Scour and Flood Time Lag",
+        "How Shields sediment threshold, Sheppard-Melville equilibrium scour and Melville-Chiew flood time lag model craters around river bridge piers.",
+        "Socavación en Pilas de Puente y Avenidas",
+        "Cómo el umbral de Shields, la socavación de Sheppard-Melville y el factor temporal de Melville-Chiew modelan fosas en pilas de puentes fluviales.",
+    ),
     # ---- Pillar II: Architecture
     "a01": (
         "Funicular Thrust Surfaces in Stone and Timber Shells",
@@ -139,7 +145,7 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "a06": (
         "Net-Zero Water and Greywater Constructed Wetlands",
-        "How a modelled reed bed removes about 95% of greywater BOD, while 60 °C recirculation and UV-C are design targets meant to limit bacteria growth indoors.",
+        "How a modeled reed bed removes about 95% of greywater BOD, while 60 °C recirculation and UV-C are design targets meant to limit bacteria growth indoors.",
         "Agua Neta Cero y Humedales Construidos",
         "Cómo un lecho de carrizo modelado elimina cerca del 95% de la DBO del agua gris, y cómo 60 °C y UV-C son metas de diseño para limitar bacterias.",
     ),

@@ -12,15 +12,16 @@ A plain-text companion to the essay at https://informatico.ai/engineering/e07/ (
 `ζ_net = ζ_s − (ρ B⁴ / 2 I_α) A_2*(K) · L_total = L_data + λ_pde ‖R_pde‖² · CSI 05 12 00`
 
 ## Rules the essay derives
-1. Compute dimensionless reduced velocity U_red = U / (f_alpha * B) and reduced frequency K = B * omega / U = 2 * pi / U_red.
-2. Evaluate net torsional aeroelastic damping zeta_net = zeta_struct - (rho * B^4 / (2 * I_alpha)) * A_2*(K); instability (flutter) occurs when zeta_net <= 0.
-3. Balance PINN composite loss L_total = L_data + lambda_pde * ||E*I*u_xxxx + m*u_tt - f_aero||^2 so sparse sensor noise does not violate Euler-Bernoulli equilibrium.
+1. Compute U_red = U / (f_alpha * B) and K = B * omega / U = 2 * pi / U_red.
+2. Under Scanlan 1971 2B^2 moment scaling (per-span I_alpha in kg*m^2/m), evaluate zeta_net = zeta_s - (rho * B^4 / (2 * I_alpha)) * A_2*^(1971)(K) = zeta_s - (rho * B^4 / (4 * I_alpha)) * A_2*^(1996)(K) with A_2*^(1996) = 2 * A_2*^(1971); flutter starts at zeta_net <= 0.
+3. Weight non-dimensionalized bending (E I ∂⁴h/∂x⁴ − H_w ∂²h/∂x² + m ∂²h/∂t² − L_aero) and torsion (I_α ∂²α/∂t² − G J ∂²α/∂x² − M_ae) residuals in L_total = L_data + λ_pde ‖R_pde‖²; unmeasured wind makes sparse inversion ill-posed.
+4. State that these are explanatory single-mode relations with illustrative constants: not a design or assessment method, and no value here applies to a real bridge.
 
 ## How it works, in four stages
-- Stage 1 (Coupled Heave-Torsion Modal Kinematics): A model 2,100 m suspension span with deck width B = 36 m oscillates in vertical bending h(x,t) (f_h = 0.095 Hz) and torsion α(x,t) (f_α = 0.235 Hz). These are illustrative values, not a surveyed bridge.
-- Stage 2 (Scanlan Aeroelastic Flutter Derivatives): Motion-induced pitching moment M_ae scales with A_2*(K) at reduced velocity U / (f_α B); in the folio model the vented twin-box girder keeps A_2*(K) < 0 up to U_crit = 76.4 m/s, a fixed illustrative value.
-- Stage 3 (Physics-Informed Neural Network Virtual Sensing): Embedding the coupled Euler–Bernoulli + Saint-Venant PDE residual R_pde into L_total is the proposed way to reconstruct full-span bending stress from 8 accelerometers. No network was trained for this folio.
-- Stage 4 (Orthotropic Steel Deck Fatigue Check, a Proposal): Stress histories from such a digital twin could be compared with the fatigue provisions of a design code such as the AASHTO LRFD Bridge Design Specifications at rib-to-deck welds. The folio performs no code check.
+- Stage 1 (Modal Kinematics): Model 2,100 m span (B = 36 m) with heave h(x,t) (f_h = 0.095 Hz) and torsion α(x,t) (f_α = 0.235 Hz); illustrative values, not a surveyed bridge.
+- Stage 2 (Scanlan Derivatives): Under 1971 2B² moment scaling with per-span I_α, A_2*(K) < 0 keeps the vented twin-box model stable up to an illustrative U_crit = 76.4 m/s.
+- Stage 3 (Proposed PINN Residual): Penalizing non-dimensionalized beam and Saint-Venant PDE residuals R_pde could aid 8-sensor stress estimation; untested, no network trained.
+- Stage 4 (Proposed Weld Fatigue Check): Estimated rib-to-deck weld stress ranges could be compared against AASHTO LRFD fatigue provisions; no code check is run.
 
 ## Reference values stated in the essay
 - **Reduced Wind Velocity U/(f_α B)**: `6.15 (U = 52.0 m/s, B = 36 m)`
@@ -36,4 +37,4 @@ The reference values above are stated in the essay. No script in this repository
 - What the essay compares against: Illustrative model values: U_crit = 76.4 m/s · PINN stress error 1.42% (8 sensors; no network trained)
 
 ## Recent research context
-- **Could Physics-Informed Neural Networks Turn Sparse Bridge Accelerometers Into Full-Span Stress Estimates?**: This folio pairs Robert Scanlan's aeroelastic flutter derivatives (Scanlan & Tomko 1971, DOI 10.1061/JMCEA3.0001526) with the Physics-Informed Neural Networks of Raissi, Perdikaris & Karniadakis (J. Comput. Phys., DOI 10.1016/j.jcp.2018.10.045). It proposes that a bridge digital twin could embed Euler–Bernoulli and torsional PDEs in its loss function to estimate stress and flutter margin along a 2,000 m span from about 8 accelerometer stations. It is a design study: nothing was trained or deployed.
+- **Could Physics-Informed Neural Networks Turn Sparse Bridge Accelerometers Into Full-Span Stress Estimates?**: Pairs Scanlan's flutter derivatives (DOI 10.1061/JMCEA3.0001526; Jain et al. 1996, DOI 10.1061/(ASCE)0733-9445(1996)122:7(716)) and twin-box slot mechanics (Yang et al. 2015, DOI 10.1061/(ASCE)BE.1943-5592.0000645) with PINNs (Raissi et al. 2019, DOI 10.1016/j.jcp.2018.10.045; Al-Adly & Kripakaran 2024, DOI 10.1017/dce.2024.4) for sparse bridge sensing; untested proposal.

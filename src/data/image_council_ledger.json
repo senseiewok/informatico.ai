@@ -746,6 +746,17 @@
       "bytes": 147872,
       "zero_baked_text_verified": true,
       "sha256": "9fd412d60fa2a715a9127673b13a9d0055fb63bba15cd088861875cd22bcecbf"
+    },
+    {
+      "plate_id": "e16",
+      "path": "src/plates/e16.jpg",
+      "governing_specification": "Weathered two-meter circular concrete highway bridge pier beneath overhead girder in a shallow gravel-and-sand river at low-water inspection, showing an upstream crescent-shaped horseshoe scour pit in verdigris-and-slate water refraction and downstream sand-gravel wake ripples",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-pro-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 292646,
+      "zero_baked_text_verified": true,
+      "sha256": "016f9e0cfd72bbbc9782a1ec46d7493b43aefd829c71024b7e3861f9bc5f2db7"
     }
   ]
 }

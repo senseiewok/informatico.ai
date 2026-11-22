@@ -12,15 +12,15 @@ A plain-text companion to the essay at https://informatico.ai/architecture/a05/ 
 `T_60 = 0.161V / [−S ln(1−α)] · STI = 0.74`
 
 ## Rules the essay derives
-1. Compute both Sabine T_60 = 0.161 V / A and Eyring T_60 = 0.161 V / (-S ln(1 - alpha_bar)) across 125 Hz - 4 kHz octave bands.
-2. Size Schroeder quadratic-residue diffuser wells via d_n = (n^2 mod p) * c / (2 p f_0) to prevent focal caustics under curved vaults.
-3. Use the folio's own design targets of STI >= 0.68 and background noise <= NC-28 for consultation rooms and civic halls (folio targets, not requirements of a cited standard).
+1. Estimate SI-unit Sabine T_60 = 0.161 V / A and Eyring logarithmic decay T_60 = 0.161 V / (-S ln(1 - alpha_bar)) (after Eyring 1930, DOI 10.1121/1.1915175) for volume V and area S.
+2. Size Schroeder diffuser wells for prime p via d_n = (n^2 mod p) * c / (2 p f_0) under curved vaults (Schroeder 1979, DOI 10.1121/1.382601).
+3. Apply the folio's own targets of STI >= 0.68 and noise <= NC-28 as model caveats, not requirements of IEC 60268-16 or ISO 3382-1.
 
 ## How it works, in four stages
-- Stage 1 (Direct & Early Reflections 0–50 ms): Vault geometry directs early energy to listeners within the first 50 ms (an illustrative early clarity C_50 = +4.8 dB, not computed here).
-- Stage 2 (Schroeder Quadratic-Residue Diffusion): Coffered timber wells of depth d_n = (n² mod p)·λ/(2p) spread reflections across many directions instead of one mirror-like bounce.
-- Stage 3 (Micro-Perforated Helmholtz Absorption): 0.8 mm perforated timber veneer over mineral wool, with an assumed mean absorption α_bar = 0.44.
-- Stage 4 (Eyring Decay): For V = 2,400 m³ and an assumed surface area S ≈ 1,075 m², T_60,Eyring = 0.161 × 2,400 / (−1,075 × ln 0.56) = 0.62 s (Sabine gives 0.82 s). The STI of 0.74 is an illustrative value, not a measurement.
+- Stage 1 (Early Window, cf. Bradley 1986, DOI 10.1121/1.393908): Early sound, within about 50 ms, aids speech; C_50 = +4.8 dB is an illustrative estimate.
+- Stage 2 (Schroeder Diffusion, DOI 10.1121/1.382601): For prime p and design wavelength λ_0 = c/f_0, well depths d_n = (n² mod p)·λ_0/(2p) scatter reflections.
+- Stage 3 (Perforated Veneer, cf. Maa 1998, DOI 10.1121/1.423870): Maa models micro-perforated panel absorbers; this untested sketch backs 0.8 mm oak veneer with wool (assumed α_bar = 0.44).
+- Stage 4 (Eyring Decay, DOI 10.1121/1.1915175): For V = 2,400 m³ and S ≈ 1,075 m², Eyring gives 0.62 s (Sabine 0.82 s); STI = 0.74 is a linear estimate, not an MTF value (DOI 10.1121/1.384464).
 
 ## Reference values stated in the essay
 - **Eyring Reverberation T_60 (Model)**: `0.62 s (vs 1.85 s illustrative untreated)`
@@ -36,4 +36,4 @@ The reference values above are stated in the essay. No script in this repository
 - What the essay compares against: Model values: V = 2,400 m³, S ≈ 1,075 m², α_bar = 0.44 → Eyring 0.62 s, Sabine 0.82 s
 
 ## Recent research context
-- **Prime-Sequence Quadratic Residue Coffered Vaults: A Reverberation Model for Clearer Speech**: Combining Carl Eyring's logarithmic reverberation law (JASA DOI 10.1121/1.1915175) with Manfred Schroeder's prime-sequence quadratic residue diffusers (JASA DOI 10.1121/1.382601), this folio models a 2,400 m³ vault with T_60 = 0.62 s and shows an illustrative Speech Transmission Index of 0.74. It measured no room and makes no health claim.
+- **Prime-Sequence Quadratic Residue Coffered Vaults: A Reverberation Model for Clearer Speech**: Pairing Eyring's reverberation formula (DOI 10.1121/1.1915175) with Schroeder diffuser geometry (DOI 10.1121/1.382601), this folio models a 2,400 m³ vault with estimated T_60 = 0.62 s and a clamped linear STI estimate of 0.74, beside frontier metasurface diffusers (Zhu et al. 2017, DOI 10.1103/PhysRevX.7.021034). It measured no room and makes no health claim.

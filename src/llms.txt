@@ -1,8 +1,8 @@
 # Informatico.ai
 
-> 55 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
+> 56 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
 
-Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (96 SKILL.md companions, 47 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 7 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
+Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (97 SKILL.md companions, 48 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 7 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
 
 ## Welcome, agents (and the people who work with you)
 
@@ -36,6 +36,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 - [E.13 Biot 3D Poroelasticity and Fault Slip Margin](https://informatico.ai/engineering/e13/): How Biot consolidation, Skempton pore-pressure coupling and Mohr-Coulomb friction frame fault slip risk during geologic carbon dioxide storage, in a model.
 - [E.14 Unsaturated Suction Stress and Slope Instability](https://informatico.ai/engineering/e14/): How van Genuchten retention, Mualem permeability and Lu-Godt-Wu suction stress model rainfall-induced slope collapse in silty loam and sand.
 - [E.15 Quasi-Brittle Concrete Size Effect Scaling](https://informatico.ai/engineering/e15/): How Hillerborg's process zone and Bazant's Size Effect Law explain why deep concrete girders carry less nominal stress than small test beams.
+- [E.16 Bridge Pier Local Scour and Flood Time Lag](https://informatico.ai/engineering/e16/): How Shields sediment threshold, Sheppard-Melville equilibrium scour and Melville-Chiew flood time lag model craters around river bridge piers.
 
 ## Architecture
 
@@ -45,7 +46,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 - [A.03 Double-Skin Facades and Buoyancy Stack Ventilation](https://informatico.ai/architecture/a03/): How the thermosiphon stack effect and solar shading inside multi-story ventilated glass cavities could reduce cooling loads, in a stack-draft model.
 - [A.04 From Archigram to British High-Tech Architecture](https://informatico.ai/architecture/a04/): How Archigram's 1960s plug-in drawings are widely seen as an influence on Rogers, Piano, Rice and Foster, with a lever model of the cast-steel gerberette.
 - [A.05 Room Acoustics: Sabine–Eyring Reverberation](https://informatico.ai/architecture/a05/): How Sabine's reverberation law, Eyring's absorption formula and Manfred Schroeder's prime-sequence coffers can help design rooms where speech is clearer.
-- [A.06 Net-Zero Water and Greywater Constructed Wetlands](https://informatico.ai/architecture/a06/): How a modelled reed bed removes about 95% of greywater BOD, while 60 °C recirculation and UV-C are design targets meant to limit bacteria growth indoors.
+- [A.06 Net-Zero Water and Greywater Constructed Wetlands](https://informatico.ai/architecture/a06/): How a modeled reed bed removes about 95% of greywater BOD, while 60 °C recirculation and UV-C are design targets meant to limit bacteria growth indoors.
 - [A.07 Luis Barragán's Chromatic Tectonics](https://informatico.ai/architecture/a07/): How Luis Barragán, with Chucho Reyes Ferreira, worked with saturated color and Mexican sunlight, and how Josef Albers taught color relativity.
 - [A.08 Radiative Sky-Cooling Roofs and Phase-Change Walls](https://informatico.ai/architecture/a08/): How a roof could send building heat through the 8–13 μm atmospheric window into cold space even under midday sun, in a design model.
 - [A.09 Hygroscopic Programmable Timber Skins](https://informatico.ai/architecture/a09/): How Timoshenko's bilayer curvature formula describes wood skins that bend with humidity, the idea behind motor-free facades studied at ICD/ITKE Stuttgart.
