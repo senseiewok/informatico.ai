@@ -400,7 +400,7 @@
     "year": 1984
   },
   "doi:10.1016/0886-7798(96)00017-x": {
-    "fetched": "2026-11-14",
+    "fetched": "2026-11-21",
     "first_author": "Anagnostou",
     "found": true,
     "journal": "Tunnelling and Underground Space Technology",
@@ -3016,7 +3016,7 @@
     "year": 1954
   },
   "doi:10.1680/geot.1993.43.2.315": {
-    "fetched": "2026-11-04",
+    "fetched": "2026-11-21",
     "first_author": "Mair",
     "found": true,
     "journal": "Géotechnique",
@@ -6548,5 +6548,53 @@
     "total_smart_citations": 1212,
     "unclassified": 62,
     "year": 2018
+  },
+  "doi:10.1680/geot.1994.44.2.191": {
+    "fetched": "2026-11-21",
+    "first_author": "Skempton",
+    "found": true,
+    "journal": "Géotechnique",
+    "title": "Thames Tunnel: geology, site investigation and geotechnical problems",
+    "year": 1994
+  },
+  "doi:10.1680/ipeds.1956.12202": {
+    "fetched": "2026-11-21",
+    "first_author": "SKEMPTON",
+    "found": true,
+    "journal": "Proceedings of the Institution of Civil Engineers",
+    "title": "THE ALLOWABLE SETTLEMENTS OF BUILDINGS.",
+    "year": 1956
+  },
+  "doi:10.1061/(asce)0733-9410(1989)115:1(1)": {
+    "fetched": "2026-11-21",
+    "first_author": "Boscardin",
+    "found": true,
+    "journal": "Journal of Geotechnical Engineering",
+    "title": "Building Response to Excavation‐Induced Settlement",
+    "year": 1989
+  },
+  "doi:10.1680/geot.2006.56.9.605": {
+    "fetched": "2026-11-21",
+    "first_author": "Merritt",
+    "found": true,
+    "journal": "Géotechnique",
+    "title": "Mechanics of tunnelling machine screw conveyors: model tests",
+    "year": 2006
+  },
+  "doi:10.1680/geot.2008.58.9.695": {
+    "fetched": "2026-11-21",
+    "first_author": "Mair",
+    "found": true,
+    "journal": "Géotechnique",
+    "title": "Tunnelling and geotechnics: new horizons",
+    "year": 2008
+  },
+  "doi:10.1016/j.tust.2015.08.006": {
+    "fetched": "2026-11-21",
+    "first_author": "Budach",
+    "found": true,
+    "journal": "Tunnelling and Underground Space Technology",
+    "title": "Application ranges of EPB shields in coarse ground based on laboratory research",
+    "year": 2015
   }
 }

@@ -17,10 +17,10 @@ A plain-text companion to the essay at https://informatico.ai/engineering/e08/ (
 3. Verify EPB face pressure P_face stays between active collapse pressure sigma_h,active + u_0 and passive blowout pressure sigma_v0.
 
 ## How it works, in four stages
-- Stage 1 (Chamber Pressure Balance, after Anagnostou & Kovári 1996): At depth z_0 = 24.0 m, the model EPB chamber pressure P_face = 210 kPa is taken to sit between the active (collapse) and passive (blowout) limits. The folio states no soil profile, so this is an assumed operating point, not a computed face-stability check.
-- Stage 2 (Foam-Conditioned Muck Rheology): Surfactant-polymer foam injection turns excavated clay into a cohesive, low-permeability plastic paste that can pass the screw conveyor. The 120 mm slump is an illustrative target.
-- Stage 3 (Peck Gaussian Trough): Volume loss V_L = 0.75% across D = 9.8 m gives V_s = 0.566 m³ per metre of tunnel; with inflection width i = K z_0 = 12.0 m the centerline settlement is S_max = V_s / (√(2π) i) = 18.8 mm.
-- Stage 4 (Graph Neural Network Subsurface Digital Twin, a Proposal): Cutterhead torque and tail-void grout pressures could update a GNN model whose aim is to keep the trough slope β_max below 1/500 beneath masonry buildings. No such network was built for this folio.
+- Stage 1 (Chamber Balance, Anagnostou & Kovári 1996, DOI 10.1016/0886-7798(96)00017-X): At z_0 = 24.0 m, P_face = 210 kPa is an assumed point under stated assumptions, not a soil-profile check.
+- Stage 2 (Soil Conditioning, Merritt & Mair 2006, DOI 10.1680/geot.2006.56.9.605; Budach & Thewes 2015, DOI 10.1016/j.tust.2015.08.006): Foam may condition clay or coarse ground in the screw conveyor; about 120 mm slump is illustrative.
+- Stage 3 (Peck Trough, DOI 10.1680/geot.1993.43.2.315): V_L = 0.75% across D = 9.8 m gives V_s = 0.566 m³ per meter and S_max = 18.8 mm at i = 12.0 m.
+- Stage 4 (Proposed GNN Twin): Torque and grout pressures could suggest updates to keep β_max < 1/500 (cf. Skempton & MacDonald 1956, DOI 10.1680/ipeds.1956.12202). Untested; no network was built.
 
 ## Reference values stated in the essay
 - **Trough Inflection Width (i = K z_0)**: `12.0 m (K = 0.50, z_0 = 24 m)`
@@ -36,4 +36,4 @@ The reference values above are stated in the essay. No script in this repository
 - What the essay compares against: D = 9.8 m · z_0 = 24.0 m · V_L = 0.75% ⇒ S_max = 18.8 mm
 
 ## Recent research context
-- **Could Graph Neural Networks and Peck–Mair Gaussian Troughs Forecast Urban Settlement Ahead of the Cutterhead?**: Building on Ralph Peck's (1969) Gaussian settlement trough and the subsurface profiles of Mair, Taylor & Bracegirdle (Géotechnique, DOI 10.1680/geot.1993.43.2.315), this folio proposes that cutterhead torque, chamber pressure and InSAR satellite radar from an Earth-Pressure-Balance Tunnel Boring Machine could feed a physics-constrained Graph Neural Network. In the folio's worked example the trough slope is 1/1,050. Nothing was trained or deployed.
+- **Could Graph Neural Networks and Peck–Mair Gaussian Troughs Forecast Urban Settlement Ahead of the Cutterhead?**: Building on Peck (1969) and Mair, Taylor & Bracegirdle (1993, DOI 10.1680/geot.1993.43.2.315; Mair 2008, DOI 10.1680/geot.2008.58.9.695), this folio proposes feeding TBM torque, chamber pressure, and InSAR radar to a physics-constrained GNN. Default slope is 1/1,050; no network was trained.
