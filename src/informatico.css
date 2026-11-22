@@ -417,6 +417,12 @@
     border-color: var(--tp-minium);
   }
 
+  .tp-eq-gloss {
+    font-style: italic;
+    font-size: 0.94em;
+    color: var(--tp-slate);
+  }
+
   .tp-plate {
     background-color: var(--tp-vellum);
     border: 1px solid var(--tp-rule-strong);
@@ -655,6 +661,13 @@
     font-size: 1.02rem;
     margin: 0 0 0.4rem;
     color: var(--tp-ink);
+  }
+
+  .tp-spec-gloss {
+    font-size: 0.84rem;
+    line-height: 1.45;
+    color: var(--tp-slate);
+    margin: 0.35rem 0 0.4rem;
   }
 
   .tp-spec-meta {

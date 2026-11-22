@@ -68,6 +68,7 @@ GREEK_EN = {
     "∑": " sum over ",
     "∏": " product over ",
     "∫": " integral of ",
+    "√": " square root of ",
     "∞": " infinity ",
     "≈": " approximately equals ",
     "≠": " is not equal to ",
@@ -128,6 +129,7 @@ GREEK_ES = {
     "∑": " suma sobre ",
     "∏": " producto sobre ",
     "∫": " integral de ",
+    "√": " raíz cuadrada de ",
     "∞": " infinito ",
     "≈": " aproximadamente igual a ",
     "≠": " distinto de ",
@@ -172,13 +174,84 @@ GREEK_ES = {
 }
 
 
+UNITS_EN: list[tuple[str, str]] = [
+    (r"\bkg\s*CO[₂2]e/m[²2]\b", "kilograms of C O 2 equivalent per square meter"),
+    (r"\bkN/m[²2]\b", "kilonewtons per square meter"),
+    (r"\bW/m[²2]\b", "watts per square meter"),
+    (r"\bkJ/mol\b", "kilojoules per mole"),
+    (r"\bkcal/mol\b", "kilocalories per mole"),
+    (r"\bm/s[²2]\b", "meters per second squared"),
+    (r"\bm/s\b", "meters per second"),
+    (r"\bmm[³3]\b", "cubic millimeters"),
+    (r"\bcm[²2]\b", "square centimeters"),
+    (r"\bm[²2]\b", "square meters"),
+    (r"\bGPa\b", "gigapascals"),
+    (r"\bMPa\b", "megapascals"),
+    (r"\bkPa\b", "kilopascals"),
+    (r"\bkN\b", "kilonewtons"),
+    (r"\bkW\b", "kilowatts"),
+    (r"\bmV\b", "millivolts"),
+    (r"\bpA\b", "picoamperes"),
+    (r"\b[μµ]m\b", "micrometers"),
+    (r"\b[μµ]M\b", "micromolar"),
+    (r"\b[μµ]s\b", "microseconds"),
+    (r"\b[μµ]L\b", "microliters"),
+    (r"\bnm\b", "nanometers"),
+    (r"\bms\b", "milliseconds"),
+    (r"\bkHz\b", "kilohertz"),
+    (r"\bHz\b", "hertz"),
+]
+
+UNITS_ES: list[tuple[str, str]] = [
+    (r"\bkg\s*CO[₂2]e/m[²2]\b", "kilogramos de C O 2 equivalente por metro cuadrado"),
+    (r"\bkN/m[²2]\b", "kilonewtons por metro cuadrado"),
+    (r"\bW/m[²2]\b", "vatios por metro cuadrado"),
+    (r"\bkJ/mol\b", "kilojulios por mol"),
+    (r"\bkcal/mol\b", "kilocalorías por mol"),
+    (r"\bm/s[²2]\b", "metros por segundo al cuadrado"),
+    (r"\bm/s\b", "metros por segundo"),
+    (r"\bmm[³3]\b", "milímetros cúbicos"),
+    (r"\bcm[²2]\b", "centímetros cuadrados"),
+    (r"\bm[²2]\b", "metros cuadrados"),
+    (r"\bGPa\b", "gigapascales"),
+    (r"\bMPa\b", "megapascales"),
+    (r"\bkPa\b", "kilopascales"),
+    (r"\bkN\b", "kilonewtons"),
+    (r"\bkW\b", "kilovatios"),
+    (r"\bmV\b", "milivoltios"),
+    (r"\bpA\b", "picoamperios"),
+    (r"\b[μµ]m\b", "micrómetros"),
+    (r"\b[μµ]M\b", "micromolar"),
+    (r"\b[μµ]s\b", "microsegundos"),
+    (r"\b[μµ]L\b", "microlitros"),
+    (r"\bnm\b", "nanómetros"),
+    (r"\bms\b", "milisegundos"),
+    (r"\bkHz\b", "kilohercios"),
+    (r"\bHz\b", "hercios"),
+]
+
+_DENSE_PAREN_MATH_RE = re.compile(r"\(([^()]{4,140})\)")
+_MATH_SYMBOL_RE = re.compile(r"[=≤≥≈≠±×÷∑∏∫∂∇√∞∝→↔⇌∈ℤℝ²³⁴⁻⁺₀-₉α-ωΑ-ΩΔΦΨΛΩ^_]")
+
+
+def _strip_dense_formula_parens(text: str) -> str:
+    """Drop dense symbolic equation parentheticals (containing '=' and math operators) without removing cited numbers."""
+    def _repl(match: re.Match[str]) -> str:
+        inner = match.group(1)
+        if "=" in inner and len(_MATH_SYMBOL_RE.findall(inner)) >= 3:
+            return ""
+        return match.group(0)
+    return _DENSE_PAREN_MATH_RE.sub(_repl, text)
+
+
 def normalize_scientific_speech(text: str, lang: str = "en") -> str:
-    """Convert scientific equations, Unicode symbols, and acronyms into natural spoken prosody."""
+    """Convert scientific equations, Unicode symbols, units, and acronyms into natural spoken prosody."""
     if not text:
         return ""
     s = str(text)
     s = re.sub(r"\[Scite\s*↗?\]", "", s)
     s = re.sub(r"https?://\S+", "", s)
+    s = _strip_dense_formula_parens(s)
     s = re.sub(r"\b([CEAPMLDGTRBX])\.0(\d)\b", r"\1 \2", s)
     s = re.sub(r"\b([CEAPMLDGTRBX])\.(\d{2})\b", r"\1 \2", s)
 
@@ -195,6 +268,8 @@ def normalize_scientific_speech(text: str, lang: str = "en") -> str:
         s = re.sub(r"\bsenseiewok\.ai\b", "Sensei Ewok punto A I", s, flags=re.IGNORECASE)
         s = re.sub(r"\bes-MX\b", "español de México", s, flags=re.IGNORECASE)
         s = re.sub(r"\ben-US\b", "inglés", s, flags=re.IGNORECASE)
+        for pat, rep in UNITS_ES:
+            s = re.sub(pat, rep, s)
         table = GREEK_ES
     else:
         s = re.sub(r"\bppFEV[₁1]\b", "percent predicted F E V 1", s)
@@ -209,6 +284,8 @@ def normalize_scientific_speech(text: str, lang: str = "en") -> str:
         s = re.sub(r"\bsenseiewok\.ai\b", "Sensei Ewok dot A I", s, flags=re.IGNORECASE)
         s = re.sub(r"\bes-MX\b", "Mexican Spanish", s, flags=re.IGNORECASE)
         s = re.sub(r"\ben-US\b", "English", s, flags=re.IGNORECASE)
+        for pat, rep in UNITS_EN:
+            s = re.sub(pat, rep, s)
         table = GREEK_EN
 
     for sym, spoken in table.items():
@@ -216,6 +293,7 @@ def normalize_scientific_speech(text: str, lang: str = "en") -> str:
 
     s = s.translate(SUBSCRIPT_MAP).translate(SUPERSCRIPT_MAP)
     s = re.sub(r"_([a-zA-Z0-9]+)", r" \1", s)
+    s = s.replace("=", " equals " if not lang.startswith("es") else " igual a ")
     s = s.replace("−", " minus " if not lang.startswith("es") else " menos ")
     s = s.replace("—", ", ")
     s = s.replace("–", " to " if not lang.startswith("es") else " a ")
@@ -223,6 +301,22 @@ def normalize_scientific_speech(text: str, lang: str = "en") -> str:
     s = re.sub(r"[{}[\]]", " ", s)
     s = re.sub(r"\s+", " ", s).strip()
     return s
+
+
+_LISTENABILITY_LATEX_RE = re.compile(r"\\(?:frac|sqrt|sum|int|partial|nabla|alpha|beta|gamma|delta)\b")
+_LISTENABILITY_GREEK_RE = re.compile(r"[α-ωΑ-ΩΔΦΨΛΩ∂∇∑∏∫√∞≈≠≤≥∝→↔⇌]")
+
+
+def listenability_findings(text: str) -> list[str]:
+    """Return offline listenability defects in a normalized narration script."""
+    issues: list[str] = []
+    if _LISTENABILITY_LATEX_RE.search(text):
+        issues.append("raw-latex")
+    if _LISTENABILITY_GREEK_RE.search(text):
+        issues.append("raw-greek-symbol")
+    if "=" in text:
+        issues.append("bare-equals")
+    return issues
 
 
 def _trim_sentences(txt: str, max_chars: int = 340) -> str:
@@ -239,6 +333,7 @@ def _trim_sentences(txt: str, max_chars: int = 340) -> str:
 def build_informatico_scripts() -> list[dict]:
     """Extract 5-Act bilingual narration scripts for all 60 Informatico.ai Folios (48 Pillar + 6 Bounties + 6 Toolbox)."""
     from tools.build_longform_folios import decf, decf_title
+    from tools.law_glosses import resolve_law_gloss
     from tools.folios import (
         BOUNTY_FOLIOS,
         FOLIO_ES_TRANSLATIONS,
@@ -267,6 +362,8 @@ def build_informatico_scripts() -> list[dict]:
             act4_en = decf_title(disc.get("headline", "")) + ". " + decf(lf.get("act4_body", ""))
             act5_en = decf(lf.get("act4_human_potential", "")) or f"Synthesis of Folio {fid}: {title_en}."
 
+            spoken_law_en = resolve_law_gloss(folio, "en") or folio.get("governing_law", "")
+            spoken_law_es = resolve_law_gloss(folio, "es") or folio.get("governing_law", "")
             chapters_en = [
                 normalize_scientific_speech(
                     _trim_sentences(f"Folio {fid}: {title_en}. {sub_en} Act 1, Story: {act1_en}", 380),
@@ -278,8 +375,8 @@ def build_informatico_scripts() -> list[dict]:
                 ),
                 normalize_scientific_speech(
                     _trim_sentences(
-                        f"Act 3, Interactive Workbench. Governing law: {folio.get('governing_law', '')}. {act3_en}",
-                        340,
+                        f"Act 3, Interactive Workbench. In plain words, the governing law says {spoken_law_en}. {act3_en}",
+                        360,
                     ),
                     "en",
                 ),
@@ -311,8 +408,8 @@ def build_informatico_scripts() -> list[dict]:
                 ),
                 normalize_scientific_speech(
                     _trim_sentences(
-                        f"Acto 3, Laboratorio interactivo. Este monográfico verifica la ley gobernante {folio.get('governing_law', '')} mediante cuatro lentes interactivas en tiempo real.",
-                        320,
+                        f"Acto 3, Laboratorio interactivo. En palabras simples, la ley gobernante expresa que {spoken_law_es}. Este monográfico la explora mediante cuatro lentes interactivas en tiempo real.",
+                        360,
                     ),
                     "es",
                 ),
@@ -357,6 +454,8 @@ def build_informatico_scripts() -> list[dict]:
             act3_en = " ".join(entry.get("walkthrough", [])[:2])
             act4_en = entry.get("act4_human_ai") or entry.get("why_en", "")
 
+            spoken_law_en = resolve_law_gloss(entry, "en") or entry.get("governing_law", "")
+            spoken_law_es = resolve_law_gloss(entry, "es") or entry.get("governing_law", "")
             chapters_en = [
                 normalize_scientific_speech(
                     _trim_sentences(f"{track_label_en} {fid}: {title_en}. {sub_en} Act 1, Story: {act1_en}", 380),
@@ -368,8 +467,8 @@ def build_informatico_scripts() -> list[dict]:
                 ),
                 normalize_scientific_speech(
                     _trim_sentences(
-                        f"Act 3, Interactive Workbench. Governing law: {entry.get('governing_law', '')}. {act3_en}",
-                        340,
+                        f"Act 3, Interactive Workbench. In plain words, the governing law says {spoken_law_en}. {act3_en}",
+                        360,
                     ),
                     "en",
                 ),
@@ -399,8 +498,8 @@ def build_informatico_scripts() -> list[dict]:
                 ),
                 normalize_scientific_speech(
                     _trim_sentences(
-                        f"Acto 3, Laboratorio interactivo y mecanismo técnico: {deep_es}",
-                        340,
+                        f"Acto 3, Laboratorio interactivo. En palabras simples, la ley gobernante expresa que {spoken_law_es}. {deep_es}",
+                        360,
                     ),
                     "es",
                 ),

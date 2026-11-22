@@ -259,7 +259,7 @@
       <a class="tp-act-pill" href="#act5-heading-m14" data-en="V · Sources" data-es="V · Fuentes">V · Sources</a>
       <a class="tp-act-pill tp-act-pill-puzzle" href="#act-puzzle-m14" data-en="VI · Puzzle" data-es="VI · Crucigrama">VI · Puzzle</a>
     </nav>
-    <tp-article-audio class="tp-article-audio" data-folio="M.14" data-reading-time="22 MIN READ"></tp-article-audio>
+    <tp-article-audio class="tp-article-audio" data-folio="M.14" data-reading-time="22 MIN READ" data-audio-src="../../audio/m14-en.mp3" data-audio-src-es="../../audio/m14-es.mp3"></tp-article-audio>
 
     <details class="tp-es-dossier" lang="es-MX">
       <summary class="tp-es-summary">
@@ -363,7 +363,7 @@
         </figure>
         <p>
           Fix the Fourier transform convention f̂(t) = ∫ f(x) exp(−2πi x·t) dx on ℝ^d. With radial coordinate u = 2π|x|², the generalized Laguerre–Gaussian functions ψ_k(x) = L_k^(d/2−1)(u) exp(−u/2) are exact radial eigenfunctions of the d-dimensional Fourier transform with eigenvalue (−1)^k. Therefore, choosing a dual polynomial P̂(u) = (u + α)∏(u − s_j)² of odd degree M = 2m + 1 (with α &gt; 0 and real double roots s_j &gt; 0) automatically enforces f̂(t) ≥ 0 everywhere on ℝ^d. Expanding P̂(u) in the Laguerre basis and flipping the sign of every odd-index coefficient yields P(u), whose leading term −u^(2m+1) turns negative beyond a rational root bound u_cut. Live parameter coupling: <span id="tp-inline-prime" class="tp-scrub">d = 8</span> under governing law
-          <button type="button" class="tp-eq-chip" data-eq-target="tp-svg-stage-1">Δ_d ≤ Vol(B_d(r_cut/2)) · f(0)/f̂(0) · f(x) ≤ 0 (|x| ≥ r_cut) · f̂(t) ≥ 0 · Δ_8 = π⁴/384 · Δ_24 = π¹²/12!</button>.
+          <button type="button" class="tp-eq-chip" data-eq-target="tp-svg-stage-1" aria-describedby="tp-eq-gloss-m14">Δ_d ≤ Vol(B_d(r_cut/2)) · f(0)/f̂(0) · f(x) ≤ 0 (|x| ≥ r_cut) · f̂(t) ≥ 0 · Δ_8 = π⁴/384 · Δ_24 = π¹²/12!</button><span id="tp-eq-gloss-m14" class="tp-eq-gloss" data-en=" — in plain words: Cohn–Elkies auxiliary functions with controlled sign and Fourier transform upper-bound sphere packing density, matching the optimal E8 and Leech lattices in dimensions 8 and 24" data-es=" — en palabras simples: las funciones auxiliares de Cohn y Elkies con signo y transformada de Fourier acotan la densidad de empaquetamiento de esferas, coincidiendo con las redes óptimas en dimensiones 8 y 24"> — in plain words: Cohn–Elkies auxiliary functions with controlled sign and Fourier transform upper-bound sphere packing density, matching the optimal E8 and Leech lattices in dimensions 8 and 24</span>.
         </p>
         <p>Because u_cut = 2π r_cut² is rational, every π cancels in the ball volume factor for even dimensions d: Vol(B_d(r_cut/2)) = (u_cut/8)^(d/2) / (d/2)!. Our offline verifier checks P(0) &gt; 0, checks P̂(u) ≥ 0, and expands the shifted polynomial P(u_cut + w) in exact Fraction arithmetic to verify that every coefficient is ≤ 0 (with leading coefficient &lt; 0). That symbolic Descartes check establishes f(x) ≤ 0 for all |x| ≥ r_cut without floating-point sampling gaps. In d = 4, degree-5 Laguerre bounds tighten the upper roof from 0.700415 to 0.672477, still 9.02% above D_4’s density π²/16 ≈ 0.616850—illustrating why finite polynomials alone do not close the gap without Viazovska’s infinite modular-form interpolation.</p>
         
@@ -645,6 +645,7 @@
         <div class="tp-spec-plate">
           <span class="tp-spec-tag" data-en="Governing law" data-es="Ley gobernante">Governing law</span>
           <h3 class="tp-spec-title">Δ_d ≤ Vol(B_d(r_cut/2)) · f(0)/f̂(0) · f(x) ≤ 0 (|x| ≥ r_cut) · f̂(t) ≥ 0 · Δ_8 = π⁴/384 · Δ_24 = π¹²/12!</h3>
+          <p class="tp-spec-gloss" data-en="In plain words: Cohn–Elkies auxiliary functions with controlled sign and Fourier transform upper-bound sphere packing density, matching the optimal E8 and Leech lattices in dimensions 8 and 24." data-es="En palabras simples: las funciones auxiliares de Cohn y Elkies con signo y transformada de Fourier acotan la densidad de empaquetamiento de esferas, coincidiendo con las redes óptimas en dimensiones 8 y 24.">In plain words: Cohn–Elkies auxiliary functions with controlled sign and Fourier transform upper-bound sphere packing density, matching the optimal E8 and Leech lattices in dimensions 8 and 24.</p>
           <p class="tp-spec-meta">Offline model values: Δ_8(E_8) = 0.253670 (τ_8 = 240; deg-5 LP 0.303541) · Δ_24(Λ_24) = 0.001930 (τ_24 = 196,560; deg-5 LP 0.008955) · d=4 open gap (0.616850 vs 0.672477)</p>
         </div>
       </aside>

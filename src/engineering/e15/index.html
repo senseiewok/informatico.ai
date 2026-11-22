@@ -259,7 +259,7 @@
       <a class="tp-act-pill" href="#act5-heading-e15" data-en="V · Sources" data-es="V · Fuentes">V · Sources</a>
       <a class="tp-act-pill tp-act-pill-puzzle" href="#act-puzzle-e15" data-en="VI · Puzzle" data-es="VI · Crucigrama">VI · Puzzle</a>
     </nav>
-    <tp-article-audio class="tp-article-audio" data-folio="E.15" data-reading-time="22 MIN READ"></tp-article-audio>
+    <tp-article-audio class="tp-article-audio" data-folio="E.15" data-reading-time="22 MIN READ" data-audio-src="../../audio/e15-en.mp3" data-audio-src-es="../../audio/e15-es.mp3"></tp-article-audio>
 
     <details class="tp-es-dossier" lang="es-MX">
       <summary class="tp-es-summary">
@@ -363,7 +363,7 @@
         </figure>
         <p>
           In Bažant&#x27;s (1984) energy-release balance, advancing a notch through a quasi-brittle beam releases strain energy from a band of width proportional to aggregate-controlled FPZ length c_f as well as from the outer elastic volume proportional to D. Combining both terms yields σ_N(D) = B f&#x27;_t / √(1 + D / D_0), where brittleness number β_B = D / D_0 measures structural size relative to the material-geometry crossover scale D_0. Taking the log–log derivative gives local slope s = d ln σ_N / d ln D = −β_B / [2(1 + β_B)], moving smoothly from 0 in the plastic limit (β_B → 0) to −0.5 in Griffith LEFM (β_B → ∞). Notice the calibration boundary: holding B f&#x27;_t = 4.20 MPa, E&#x27; = 34.0 GPa, f&#x27;_t = 3.20 MPa, g(α_0) = 1.12, and g&#x27;(α_0) = 3.80 fixed while varying D_0 scales initial fracture energy G_f = (B f&#x27;_t)^2 D_0 g(α_0) / E&#x27;, process-zone length c_f = D_0 g(α_0) / g&#x27;(α_0), and Hillerborg characteristic length l_ch = E&#x27; G_f / (f&#x27;_t)^2 linearly with D_0. Live parameter coupling: <span id="tp-inline-phi" class="tp-scrub">Structural Depth = 400.0 mm</span> under governing law
-          <button type="button" class="tp-eq-chip" data-eq-target="tp-svg-stage-1">σ_N(D) = B f&#x27;_t / √(1 + D / D_0) · β_B = D / D_0 · G_f = (B f&#x27;_t)² D_0 g(α_0) / E&#x27; · c_f = D_0 g(α_0) / g&#x27;(α_0)</button>.
+          <button type="button" class="tp-eq-chip" data-eq-target="tp-svg-stage-1" aria-describedby="tp-eq-gloss-e15">σ_N(D) = B f&#x27;_t / √(1 + D / D_0) · β_B = D / D_0 · G_f = (B f&#x27;_t)² D_0 g(α_0) / E&#x27; · c_f = D_0 g(α_0) / g&#x27;(α_0)</button><span id="tp-eq-gloss-e15" class="tp-eq-gloss" data-en=" — in plain words: nominal concrete tensile strength declines with member size relative to a transition scale set by fracture energy and the finite fracture process zone" data-es=" — en palabras simples: la resistencia nominal a tracción del concreto disminuye con el tamaño del elemento respecto a una escala de transición fijada por la energía y la zona de fractura"> — in plain words: nominal concrete tensile strength declines with member size relative to a transition scale set by fracture energy and the finite fracture process zone</span>.
         </p>
         <p>Bažant and Kazemi (1990) turned this scaling relation into a direct laboratory extraction method. Squaring and inverting σ_N(D) gives Y = 1 / σ_N^2 = C D + A, where A = 1 / (B f&#x27;_t)^2 and C = 1 / [(B f&#x27;_t)^2 D_0]. Fitting five notched beams across D ∈ {100, 200, 400, 800, 1600} mm recovers B f&#x27;_t = 4.20 MPa and D_0 = 220.0 mm directly from regression slope C and intercept A, yielding initial fracture energy G_f = 127.84 N/m (note unit identity: MPa^2 · mm / GPa = N/m), effective FPZ length c_f = 64.84 mm, and Hillerborg l_ch = 424.5 mm. By contrast, replacing (1 + D / D_0) with 1 assumes scale-invariant plastic strength, leaving slope s = 0 and inflating a D = 2,000 mm girder&#x27;s modeled capacity from 1.322 MPa to 4.200 MPa (a 3.177× unconservative defect).</p>
         
@@ -641,6 +641,7 @@
         <div class="tp-spec-plate">
           <span class="tp-spec-tag" data-en="Governing law" data-es="Ley gobernante">Governing law</span>
           <h3 class="tp-spec-title">σ_N(D) = B f&#x27;_t / √(1 + D / D_0) · β_B = D / D_0 · G_f = (B f&#x27;_t)² D_0 g(α_0) / E&#x27; · c_f = D_0 g(α_0) / g&#x27;(α_0)</h3>
+          <p class="tp-spec-gloss" data-en="In plain words: nominal concrete tensile strength declines with member size relative to a transition scale set by fracture energy and the finite fracture process zone." data-es="En palabras simples: la resistencia nominal a tracción del concreto disminuye con el tamaño del elemento respecto a una escala de transición fijada por la energía y la zona de fractura.">In plain words: nominal concrete tensile strength declines with member size relative to a transition scale set by fracture energy and the finite fracture process zone.</p>
           <p class="tp-spec-meta">Model values (notched beam D = 400.0 mm, D_0 = 220.0 mm): β_B = 1.818 · σ_N = 2.502 MPa (59.6% of B f&#x27;_t) · s = −0.323 · G_f = 127.84 N/m · c_f = 64.84 mm (drops to σ_N = 1.322 MPa at D = 2000 mm)</p>
         </div>
       </aside>
