@@ -449,10 +449,10 @@ TOOLCHAIN_SEO: dict[str, tuple[str, str, str, str]] = {
         "Cómo estudios y talleres generan envolventes plegables Miura-ori en GLB y 3MF junto con patrones planos DXF por capas para corte láser.",
     ),
     "x05": (
-        "SIMP Structural Lattices to Watertight 3MF Meshes",
-        "How variable-taper SIMP structural struts are synthesized as watertight 2-manifold 3MF, GLB and STEP meshes with frustum volume and overhang checks.",
-        "Retículas Estructurales SIMP a Mallas 3MF Herméticas",
-        "Cómo se sintetizan puntales estructurales SIMP ahusados como mallas 3MF, GLB y STEP herméticas con verificación de volumen y ángulo de voladizo.",
+        "Tapered Strut Meshes: Watertight 3MF & Overhangs",
+        "How an illustrative four-station tapered strut is exported to closed 2-manifold 3MF, GLB and STEP files with Python frustum volume and overhang checks.",
+        "Puntales Ahusados: Mallas 3MF Herméticas y Voladizo",
+        "Cómo un puntal ahusado ilustrativo de cuatro estaciones se exporta a archivos cerrados 3MF, GLB y STEP con verificación de volumen y voladizo en Python.",
     ),
     "x06": (
         "Topological Metamaterial Cells and Betti Verifier",

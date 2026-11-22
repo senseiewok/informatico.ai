@@ -13,17 +13,17 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 ## 1. Governing Law, Open Standard & Canonical URL
 - **Toolbox Folio**: `X.05` (`TOOL-FAB-1` · `REV 1.0`, Redated `2026-11-08`)
 - **Canonical URL**: https://informatico.ai/toolchain/x05/ (Spanish: https://informatico.ai/es-mx/toolchain/x05/)
-- **Track Badge**: TOOLBOX X.05 · SIMP TOPOLOGY LATTICE → MANIFOLD 3MF · GLB · STEP + OVERHANG AUDIT
+- **Track Badge**: TOOLBOX X.05 · TAPERED STRUT FRUSTUM → MANIFOLD 3MF · GLB · STEP + OVERHANG AUDIT
 - **Reference Standard / Repository**: [elalish/manifold (Apache-2.0 Exact Manifold CSG)](https://github.com/elalish/manifold)
-- **Governing Equation**: `V = ∑_{k=1}^3 (h_k / 3)(A_{k-1} + A_k + √(A_{k-1} A_k)) = 46,080 mm³ · θ_wall = arctan(Δw / Δz) = 14.04° ≤ 45°`
+- **Governing Equation**: `V = ∑_{k=1}^3 (h_k / 3)(A_{k-1} + A_k + √(A_{k-1} A_k)) = 46,080 mm³ · θ_wall = arcsin(max(0, −n_f · ẑ)) = arctan(max(0, Δhw) / Δz) = 14.04° ≤ 45°`
 - **Deterministic Generator**: `python skills/toolchain/x05/make_x05.py`
 - **Byte-Level Stdlib Verifier**: `python skills/toolchain/x05/verify_x05_toolchain_x05_simp_manifold_3mf.py`
 - **Planted-Defect Knockout Check**: `python skills/toolchain/x05/verify_x05_toolchain_x05_simp_manifold_3mf.py --planted-defect` (must exit non-zero)
 - **Primary Scite Anchor DOI**: https://doi.org/10.1007/s001580050176 (Scite Report: https://scite.ai/reports/10.1007/s001580050176)
 
 ## 2. Small-Studio & Independent-Practitioner Open-Tool Workflow
-- **EN**: Independent Structural & Maker Stack (Manifold Apache-2.0 + OrcaSlicer / PrusaSlicer + FreeCAD): Generate variable-taper structural struts in Python, export x05_artifact.3mf with embedded XML metadata and x05_artifact.step, and run verify_x05 to audit 2E = 3F watertightness, frustum volume, and wall overhang angle distribution.
-- **ES-MX**: Stack para Ingenieros y Makers Independientes (Manifold Apache-2.0 + OrcaSlicer / PrusaSlicer + FreeCAD): Genera puntales estructurales ahusados en Python, exporta x05_artifact.3mf con metadatos XML y x05_artifact.step, y ejecuta verify_x05 para auditar hermeticidad 2E = 3F, volumen exacto y distribución de ángulos de voladizo.
+- **EN**: Independent Structural & Maker Stack (Manifold Apache-2.0 + OrcaSlicer / PrusaSlicer + FreeCAD): Run make_x05.py to emit x05_artifact.3mf (1,769 B), x05_artifact.glb (2,936 B), and Part-21 x05_artifact.step (11,824 B), then run verify_x05 to check half-edge closure, frustum volume, and lateral overhang slope.
+- **ES-MX**: Stack Abierto para Ingenieros y Makers (Manifold Apache-2.0 + OrcaSlicer / PrusaSlicer + FreeCAD): Ejecuten make_x05.py para generar x05_artifact.3mf (1,769 B), x05_artifact.glb (2,936 B) y x05_artifact.step Parte 21 (11,824 B), y corran verify_x05 para auditar semi-aristas, volumen de tronco piramidal y pendiente de voladizo.
 
 ## 3. Tool-Neutral Agent Packet & Security Boundary (`security-runtime`)
 1. **Generate Deterministic 3D Artifacts Locally**: Run `python skills/toolchain/x05/make_x05.py` inside the repository working directory to emit `src/toolchain/x05/files/x05_artifact.*` and `manifest.json`.
@@ -31,15 +31,15 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 3. **Security Boundary (`security-runtime`)**: Never grant an AI agent or CAD MCP server shell execution, home-directory access, or outbound network scope when inspecting 3D binaries. Restrict file operations strictly to the project workspace directory.
 
 ## 4. Deterministic Verification & Falsification Rules
-1. Frustum-to-Divergence Volume Identity: The divergence-theorem volume of the triangulated strut must equal the analytical sum of frustum volumes ∑ (h_k/3)(A_{k-1} + A_k + √(A_{k-1}A_k)) = 46,080.0 mm³.
-2. Geometric Overhang Angle Bound: Every lateral wall facet normal n_f must satisfy θ_f = arccos(−n_f · ẑ) ≤ 45.0° in the reference benchmark configuration (measured purely as geometry, never as a printability claim).
-3. 3MF Package & Planted-Defect Integrity: x05_artifact.3mf must be a valid ZIP archive containing [Content_Types].xml, _rels/.rels, and 3D/3dmodel.model, and verify_x05 must reject any flipped-normal mutation.
+1. Explanation-Only Non-Design Rule: This folio and skill are an explanation of mesh closure and overhang geometry, not a structural design method, and none of their numbers or files may be used on a real structure.
+2. Cross-Format Frustum & Manifold Parity: GLB, millimeter 3MF ([Content_Types].xml, _rels/.rels, 3D/3dmodel.model, identity transform), and Part-21 STEP POLY_LOOP entities must match V = 16, E = 42, F = 28, β_0 = 1, χ = 2, and V = 46,080.0 mm³.
+3. Elevation-Gated Overhang & Knockout Rule: Excluding only z = 0 mm base facets, every normal n_f must satisfy θ_f = arcsin(max(0, −n_f · ẑ)) ≤ 45.0° (assumed geometric bound, not a printability claim), rejecting flipped normals, flare > 16 mm, and z > 0 soffits.
 
 ## 5. 4-Stage Geometry & Verification Pipeline
-- Stage 1: Multi-Station Tapered Strut Parameterization — Define 4 cross-sectional rings along z ∈ {0, 16, 32, 48} mm with half-widths hw ∈ {20, 16, 12, 16} mm.
-- Stage 2: Closed 2-Manifold Frustum Triangulation — Connect consecutive rings with outward CCW side quads (2 triangles per side) and seal the z = 0 base and z = 48 crown into a 16-vertex, 28-triangle genus-0 manifold.
-- Stage 3: Analytical Moscow-Papyrus Frustum Integration — Compute V_exact = ∑_{k=1}^3 (16/3)(A_{k-1} + A_k + √(A_{k-1}A_k)) = 46,080.0 mm³ and verify exact match with the divergence-theorem mesh volume.
-- Stage 4: Facet Normal Overhang Audit & 3MF Packaging — Evaluate θ_f = arctan(Δhw / Δz) = 14.036° across the flared upper section, package x05_artifact.3mf, .glb, and .step, and run the planted-defect knockout.
+- Stage 1: Four-Station Strut Rings — Place square stations along z ∈ {0, 16, 32, 48} mm with half-widths hw ∈ {20, 16, 12, 16} mm (widths 40, 32, 24, 32 mm).
+- Stage 2: Single-Shell 2-Manifold Triangulation — Stitch consecutive rings with outward counter-clockwise quads and seal z = 0 and z = 48 into V = 16, E = 42, F = 28, β_0 = 1, χ = 2.
+- Stage 3: Frustum & Cross-Format Volume Parity — Sum V = ∑_{k=1}^3 (16/3)(A_{k-1} + A_k + √(A_{k-1}A_k)) = 46,080.0 mm³ against divergence volume (Mirtich, 1996, DOI 10.1080/10867651.1996.10487458) across GLB, 3MF, and Part-21 STEP.
+- Stage 4: Elevation-Gated Overhang Audit — Check non-base facets (outside z = 0 mm) for θ_f = arcsin(max(0, −n_f · ẑ)) = 14.0362° ≤ 45.0° and reject flipped normals, Δhw_top = 20 mm (51.34°), and z > 0 horizontal soffits (90.0°).
 
 ## 6. Verified Reference Telemetry (T0/T1)
 - **3-Stage Frustum Volume**: `46,080.0 mm³ (ΔV = 0.00%)`
@@ -49,10 +49,10 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 
 ## 7. Exact T0–T3 Truth Boundary
 ### Verified Geometry in Repository Today (T0/T1)
-- Deterministic generator (skills/toolchain/x05/make_x05.py) producing byte-reproducible x05_artifact.3mf, x05_artifact.glb, and x05_artifact.step.
-- Stdlib verifier (verify_x05_toolchain_x05_simp_manifold_3mf.py) checking 2-manifold closure (χ = 2), frustum volume conservation (46,080.0 mm³), 3MF XML structure, and planted-defect rejection.
-- Portable SKILL.md companion with explicit geometry-only boundary guardrails.
+- Deterministic stdlib generator (skills/toolchain/x05/make_x05.py) emitting x05_artifact.3mf (1,769 B), x05_artifact.glb (2,936 B), and an illustrative Part-21 POLY_LOOP x05_artifact.step (11,824 B).
+- Byte-level verifier (verify_x05_toolchain_x05_simp_manifold_3mf.py + tools/toolchain_x05_checks.py) checking β_0 = 1, χ = 2, 46,080.0 mm³ frustum/divergence parity, θ_max = 14.0362° ≤ 45.0° across GLB, STEP, and 3MF, and overhang/normal knockouts.
+- Synchronized WebGL2 4-ring deformation, normal recomputation, and custom GLB/STEP/DXF export in src/modules/glb-viewer.mjs.
 
 ### Educational Boundary & Edition 2 Horizon (T2/T3)
-- Educational Geometry Boundary: Every file on this page is an educational artifact; nothing is certified as load-bearing, printable, safe, or fit for any purpose.
-- Future Edition 2 Extensions: 3MF Beam Lattice extension (<beamlattice>) export for multi-thousand-strut aerospace and architectural space frames.
+- Educational Geometry Boundary: Every file on this page is an educational artifact and an explanation, not a structural design method; nothing is certified as load-bearing, printable, safe, or fit for any purpose.
+- Open-Toolchain Horizon: Coupled finite-element SIMP extraction to 3MF Beam Lattice (<beamlattice>) and OpenCascade EDGE_LOOP STEP AP242 export via build123d.

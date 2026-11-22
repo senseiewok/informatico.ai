@@ -1,359 +1,382 @@
 # -*- coding: utf-8 -*-
 """Tech & Tools · The Toolbox — Folio X.05: Topology-Optimized Structural Struts to Watertight 3MF & Build-Plate Overhang Audit."""
 
-FOLIO = {'slug': 'x05',
- 'folio_id': 'X.05',
- 'tool_id': 'TOOL-FAB-1',
- 'cat': 'engineering',
- 'plate_slug': 'x05',
- 'pillar_label_en': 'Additive & Structural Toolbox · SIMP Lattices to Watertight 3MF',
- 'pillar_label_es': 'Herramientas Aditivas y Estructurales · Retículas SIMP a 3MF Hermético',
- 'badge_en': 'TOOLBOX X.05 · SIMP TOPOLOGY LATTICE → MANIFOLD 3MF · GLB · STEP + OVERHANG AUDIT',
- 'badge_es': 'HERRAMIENTA X.05 · RETÍCULA SIMP → 3MF · GLB · STEP HERMÉTICO + AUDITORÍA DE '
-             'VOLADIZO',
- 'title': 'Topology-Optimized Structural Struts to Watertight 3MF & Build-Plate Overhang Audit',
- 'title_es': 'Puntales Estructurales Optimizados por Topología a 3MF Hermético y Auditoría de '
-             'Voladizo',
- 'subtitle': 'How to convert variable-density SIMP structural struts into 3MF and GLB meshes, check them for closed 2-manifold topology, and audit frustum volume conservation and build-plate '
-             'overhang angles θ = arccos(−n · ẑ) in pure Python.',
- 'subtitle_es': 'Cómo convertir puntales estructurales SIMP de densidad variable en mallas 3MF y GLB, revisar que sean 2-variedades cerradas y auditar la conservación de volumen de tronco '
-                'piramidal y los ángulos de voladizo θ = arccos(−n · ẑ) en Python puro.',
- 'why_en': 'When engineers and makers run topology optimization (like the Bendsøe–Sigmund SIMP '
-           'method in Folio E.11), raw voxel density fields often turn into jagged, non-manifold '
-           'marching-cubes meshes that choke CAD kernels and slicers. Constructing tapered '
-           'structural struts directly as closed 2-manifold frustums—and auditing their exact '
-           'volume and overhang angles before export—bridges mathematical optimization and clean '
-           '3MF/STEP files without ever making unverified fitness claims.',
- 'why_es': 'Cuando ingenieros y makers ejecutan optimización topológica (como el método SIMP de '
-           'Bendsøe–Sigmund del Folio E.11), los campos de densidad de vóxeles suelen producir '
-           'mallas escalonadas y no-variedad que fallan en los programas CAD y laminadores. '
-           'Construir puntales ahusados directamente como troncos cerrados 2-variedad—y auditar su '
-           'volumen exacto y ángulos de voladizo antes de exportar—conecta la optimización '
-           'matemática con archivos 3MF/STEP limpios sin hacer afirmaciones infundadas de aptitud.',
- 'governing_law': 'V = ∑_{k=1}^3 (h_k / 3)(A_{k-1} + A_k + √(A_{k-1} A_k)) = 46,080 mm³ · θ_wall = '
-                  'arctan(Δw / Δz) = 14.04° ≤ 45°',
- 'pass_pill_en': 'PASS · V = 46,080 mm³ · θ_max = 14.04° ≤ 45° · 3MF+GLB+STEP',
- 'pass_pill_es': 'APROBADO · V = 46,080 mm³ · θ_max = 14.04° ≤ 45° · 3MF+GLB+STEP',
- 'generator_script': 'skills/toolchain/x05/make_x05.py',
- 'verifier_script': 'skills/toolchain/x05/verify_x05_toolchain_x05_simp_manifold_3mf.py',
- 'skill_dir': 'skills/toolchain/x05',
- 'skill_name': 'toolchain-x05-simp-manifold-3mf',
- 'formats': ('glb', '3mf', 'step'),
- 'primary_doi': '10.1007/s001580050176',
- 'scite_summary': 'Bendsøe & Sigmund (1999/2001) SIMP topology optimization and exact '
-                  'frustum/manifold mesh synthesis verified offline.',
- 'date_published': '2026-11-08',
- 'date_redated': '2026-11-08',
- 'current_edition': 'REV 1.0',
- 'reading_time': '22 MIN READ',
- 'small_studio_kit_en': 'Independent Structural & Maker Stack (Manifold Apache-2.0 + OrcaSlicer / '
-                        'PrusaSlicer + FreeCAD): Generate variable-taper structural struts in '
-                        'Python, export x05_artifact.3mf with embedded XML metadata and '
-                        'x05_artifact.step, and run verify_x05 to audit 2E = 3F watertightness, '
-                        'frustum volume, and wall overhang angle distribution.',
- 'small_studio_kit_es': 'Stack para Ingenieros y Makers Independientes (Manifold Apache-2.0 + '
-                        'OrcaSlicer / PrusaSlicer + FreeCAD): Genera puntales estructurales '
-                        'ahusados en Python, exporta x05_artifact.3mf con metadatos XML y '
-                        'x05_artifact.step, y ejecuta verify_x05 para auditar hermeticidad 2E = '
-                        '3F, volumen exacto y distribución de ángulos de voladizo.',
- 'companion_folios': [('engineering',
-                       'e11',
-                       'Folio E.11',
-                       'SIMP Topology Optimization & Inerter Dampers'),
-                      ('physics',
-                       'p07',
-                       'Folio P.07',
-                       'Formula 1 Ground-Effect Venturi Aerodynamics'),
-                      ('engineering',
-                       'e10',
-                       'Folio E.10',
-                       '3D Concrete Printing Thixotropy & Suiker Buckling'),
-                      ('math',
-                       'm09',
-                       'Folio M.09',
-                       'Benamou–Brenier Wasserstein-2 Optimal Transport')],
- 'external_links': [('elalish/manifold (Apache-2.0 Exact Manifold CSG)',
-                     'https://github.com/elalish/manifold'),
-                    ('3MF Consortium Core & Beam Lattice Specifications',
-                     'https://github.com/3MFConsortium/spec_core'),
-                    ('TopOpt Group (DTU Mechanical Engineering)',
-                     'https://www.topopt.mek.dtu.dk/')],
- 'act1_dropcap': 'In the dry heat of Melbourne in 1904, the Australian mechanical theorist Anthony '
-                 'George Maldon Michell sat at his drafting table sketching the ultimate '
-                 'theoretical boundaries of structural economy. Michell calculated that the '
-                 'lightest possible frameworks capable of carrying external loads without buckling '
-                 'must follow intersecting lines of principal strain, forming orthogonal curves '
-                 "reminiscent of organic bone tissue. For nearly a century, Michell's elegant "
-                 'mathematical networks remained largely theoretical dreams because foundry '
-                 'workers and machinists could not easily carve such intricate, curved trusses '
-                 'from solid ingots. That craft dilemma began to dissolve in Copenhagen during the '
-                 'late 1980s, when Martin Bendsøe and Ole Sigmund pioneered the solid isotropic '
-                 'material with penalization method. By allowing computer algorithms to '
-                 'continuously redistribute material density across thousands of simulated finite '
-                 'elements, structural engineers could watch computer screens carve organic load '
-                 'paths automatically.',
- 'act1_body': 'Yet converting continuous density fields into physical hardware introduced a fresh '
-              'computational barrier. When algorithms filtered gray intermediate voxels into crisp '
-              'binary boundaries, standard isosurface extraction methods like marching cubes '
-              'produced jagged, non-manifold surfaces riddled with self-intersections and '
-              'unstitched edges. In their foundational review (Bendsøe & Sigmund, Structural and '
-              'Multidisciplinary Optimization, DOI 10.1007/s001580050176), the researchers '
-              'emphasized that mathematical convergence in an idealized finite-element grid does '
-              'not guarantee physical manufacturability on factory floors. To bridge this divide, '
-              'computer graphics engineers such as Emmett Lalish developed rigorous '
-              'boundary-representation algorithms, showing that constructive solid geometry can '
-              'maintain strict manifold topology without floating-point leaks. Simultaneously, the '
-              '3MF Consortium established Core Specification v1.2.3, replacing fragile legacy STL '
-              'formats with structured XML archives containing verifiable vertex indices, unit '
-              'definitions, and build-space orientations. Modern computational pipelines now '
-              'enforce closed-volume invariants directly during lattice synthesis, generating '
-              'watertight structural components that import into slicing engines without repair.',
- 'pullquote': 'Checking whether a mesh is watertight (3F = 2E) and measuring its facet overhang '
-              'angle θ = arccos(−n · ẑ) are pure theorems of Euclidean geometry; physical qualification of a '
-              'physical part requires material testing that no software script can replace.',
- 'chronology': [('1904',
-                 'A. G. M. Michell derives the analytical minimum-weight truss layouts (Michell '
-                 'continua) along orthogonal principal strain lines.'),
-                ('1988–2001',
-                 'Martin Bendsøe and Ole Sigmund formulate the SIMP method and publish the famous '
-                 '99-line topology optimization code (DOI 10.1007/s001580050176).'),
-                ('2015–2023',
-                 'The 3MF Consortium standardizes XML/ZIP mesh and beam-lattice representations '
-                 'with explicit unit and provenance metadata.'),
-                ('2026',
-                 'Informatico.ai ships X.05: tapered frustum manifold synthesis to 3MF/GLB/STEP '
-                 'with divergence-volume and overhang-angle verification.')],
- 'act2_intuition': 'Exact solid geometry requires simultaneous adherence to combinatorial topology '
-                   'and classical volume integration. The overall strut volume obeys the ancient '
-                   'Moscow Papyrus frustum summation across its three stacked segments: V = '
-                   '∑_{k=1}^3 (h_k / 3)(A_{k-1} + A_k + √(A_{k-1} A_k)), yielding exactly 46,080.0 '
-                   'mm³ with zero numerical divergence. Simultaneously, discrete surface '
-                   'orientation is governed by the downward wall overhang angle θ = arccos(−n · '
-                   'ẑ) = arctan(Δw / Δz). At the baseline configuration, this angle evaluates to '
-                   '14.04°, safely below the critical 45.0° manufacturing limit where additive '
-                   'slicing algorithms mandate sacrificial support structures. To ensure the mesh '
-                   'is a valid watertight solid, the boundary representation must satisfy '
-                   'two-manifold Euler–Poincaré closure χ = V − E + F = 16 − 42 + 28 = 2, where '
-                   'every shared edge connects exactly two adjacent triangular facets (2E = 3F). '
-                   'If an outward normal flips or an edge unzips, the topological invariant '
-                   'corrupts, instantly triggering an automated failure gate.',
- 'sliders': [{'id': 'tp-tool-s0',
-              'label': 'Mid-Span Waist Width w_2',
-              'min': 12,
-              'max': 36,
-              'step': 2,
-              'value': 24,
-              'unit': ' mm'},
-             {'id': 'tp-tool-s1',
-              'label': 'Upper Head Flare Δw_top',
-              'min': 0,
-              'max': 24,
-              'step': 2,
-              'value': 4,
-              'unit': ' mm'}],
- 'readouts': [{'label': '3-Stage Frustum Volume', 'value': '46,080.0 mm³ (ΔV = 0.00%)'},
-              {'label': '2-Manifold Closure (V, E, F)', 'value': 'V=16, E=42, F=28 · χ=2'},
-              {'label': 'Max Wall Overhang Angle θ', 'value': '14.04° ≤ 45.0° (GEOMETRY)'},
-              {'label': '3MF / GLB / STEP Gate', 'value': 'PASS · DEFECT REJECTED'}],
- 'steps': ['Stage 1: Multi-Station Tapered Strut Parameterization — Define 4 cross-sectional rings '
-           'along z ∈ {0, 16, 32, 48} mm with half-widths hw ∈ {20, 16, 12, 16} mm.',
-           'Stage 2: Closed 2-Manifold Frustum Triangulation — Connect consecutive rings with '
-           'outward CCW side quads (2 triangles per side) and seal the z = 0 base and z = 48 crown '
-           'into a 16-vertex, 28-triangle genus-0 manifold.',
-           'Stage 3: Analytical Moscow-Papyrus Frustum Integration — Compute V_exact = ∑_{k=1}^3 '
-           '(16/3)(A_{k-1} + A_k + √(A_{k-1}A_k)) = 46,080.0 mm³ and verify exact match with the '
-           'divergence-theorem mesh volume.',
-           'Stage 4: Facet Normal Overhang Audit & 3MF Packaging — Evaluate θ_f = arctan(Δhw / Δz) '
-           '= 14.036° across the flared upper section, package x05_artifact.3mf, .glb, and .step, '
-           'and run the planted-defect knockout.'],
- 'rules': ['Frustum-to-Divergence Volume Identity: The divergence-theorem volume of the '
-           'triangulated strut must equal the analytical sum of frustum volumes ∑ (h_k/3)(A_{k-1} '
-           '+ A_k + √(A_{k-1}A_k)) = 46,080.0 mm³.',
-           'Geometric Overhang Angle Bound: Every lateral wall facet normal n_f must satisfy θ_f = '
-           'arccos(−n_f · ẑ) ≤ 45.0° in the reference benchmark configuration (measured purely as '
-           'geometry, never as a printability claim).',
-           '3MF Package & Planted-Defect Integrity: x05_artifact.3mf must be a valid ZIP archive '
-           'containing [Content_Types].xml, _rels/.rels, and 3D/3dmodel.model, and verify_x05 must '
-           'reject any flipped-normal mutation.'],
- 'sidenote_1': {'kicker': 'SIDENOTE X.05-A · GEOMETRY VS. PHYSICAL FITNESS BOUNDARY',
-                'body': 'Measuring an overhang angle θ ≤ 45° or checking 3F = 2E watertightness '
-                        'only verifies the mathematical mesh. Actual additive manufacturing '
-                        'depends on polymer rheology, layer adhesion, thermal warping, and nozzle '
-                        'diameter.'},
- 'sidenote_2': {'kicker': 'SIDENOTE X.05-B · WHY DETERMINISTIC ZIP TIMESTAMPS MATTER FOR 3MF',
-                'body': 'Standard ZIP writers embed the current wall-clock time into every entry '
-                        'header, causing git status to mark .3mf files dirty on every run. Our '
-                        'write_3mf helper pins ZipInfo.date_time to a fixed constant for '
-                        'byte-for-bit reproducibility.'},
- 'walkthrough': ['Inspect the tapered SIMP strut in the WebGL2 viewer below; notice how the flared '
-                 'upper head (z ∈ [32, 48] mm) highlighted in warm amber inclines outward at '
-                 '14.04°.',
-                 'Drag Upper Head Flare Δw_top above 16 mm (or click [⚡ Counterfactual '
-                 'Axiom-Knockout]) to push the lateral wall overhang angle past the 45° geometric '
-                 'threshold.',
-                 'Download x05_artifact.3mf, x05_artifact.glb, and x05_artifact.step and verify '
-                 'their SHA-256 hashes against manifest.json.'],
- 't0_t1_certified': ['Deterministic generator (skills/toolchain/x05/make_x05.py) producing '
-                     'byte-reproducible x05_artifact.3mf, x05_artifact.glb, and x05_artifact.step.',
-                     'Stdlib verifier (verify_x05_toolchain_x05_simp_manifold_3mf.py) checking '
-                     '2-manifold closure (χ = 2), frustum volume conservation (46,080.0 mm³), 3MF '
-                     'XML structure, and planted-defect rejection.',
-                     'Portable SKILL.md companion with explicit geometry-only boundary '
-                     'guardrails.'],
- 't2_t3_open_horizon': ['Educational Geometry Boundary: Every file on this page is an educational '
-                        'artifact; nothing is certified as load-bearing, printable, safe, or fit '
-                        'for any purpose.',
-                        'Future Edition 2 Extensions: 3MF Beam Lattice extension (<beamlattice>) '
-                        'export for multi-thousand-strut aerospace and architectural space '
-                        'frames.'],
- 'sources': ['Bendsøe, M. P., & Sigmund, O. (1999). Material interpolation schemes in topology '
-             'optimization. Archive of Applied Mechanics, 69(9–10), 635–654. DOI '
-             '10.1007/s004190050248',
-             'Sigmund, O. (2001). A 99 line topology optimization code written in Matlab. '
-             'Structural and Multidisciplinary Optimization, 21(2), 120–127. DOI '
-             '10.1007/s001580050176',
-             'Lalish, E. (2023–2026). Manifold: Exact manifold triangular meshes '
-             '(Apache-2.0). https://github.com/elalish/manifold',
-             '3MF Consortium. (2023). 3MF Core Specification v1.2.3. '
-             'https://github.com/3MFConsortium/spec_core'],
- 'act1_plain_bridge': 'Designing high-strength lightweight parts often leaves makers and engineers '
-                      'wrestling with messy digital meshes that refuse to print or import cleanly. '
-                      'When computer optimization carves away unnecessary material to leave '
-                      'slender bone-like struts, the resulting digital models frequently contain '
-                      'broken edges, holes, and microscopic cracks. This browser workbench takes '
-                      'variable-density structural struts and builds them directly as clean, '
-                      'watertight solid bodies whose outer skins are checked for closure. You can '
-                      'examine every junction live in your browser, audit the exact volume of '
-                      'metal or plastic required, and ensure the side walls never lean so steeply '
-                      'that a three-dimensional printer requires wasteful temporary support '
-                      'structures. Once your design passes every geometric check, you can '
-                      'instantly download production-ready files in modern 3D Manufacturing '
-                      'Format, standard GL Transmission Format, or neutral STEP boundary '
-                      'representations. You can immediately drag these files into OrcaSlicer, '
-                      'PrusaSlicer, FreeCAD, or Blender without repairing a single broken '
-                      'triangle.',
- 'act1_stakes': 'For solo engineers, independent aerospace consultancies, and digital fabrication '
-                'ateliers, the gap between mathematical design and print-bed reality carries '
-                'punishing financial consequences. When a prototype mesh contains non-manifold '
-                'seams or invalid facet orientations, slicing software either aborts or silently '
-                'generates erratic toolpaths that deposit stray filament into mid-air voids. On '
-                'expensive metal laser powder-bed fusion systems or industrial photopolymer '
-                'printers, a single geometric failure causes recoater blade collisions, warped '
-                'build plates, and thousands of dollars in wasted feedstock and machine downtime. '
-                'Furthermore, excessive downward-facing overhang angles force slicers to generate '
-                'dense internal support forests that require tedious manual post-processing and '
-                'ruin delicate surface finishes. By executing rigorous topological and overhang '
-                'audits inside lightweight client environments before sending geometry to the '
-                'printer, independent teams bypass expensive enterprise modeling suites. They '
-                'produce clean, support-free structural struts that transition from '
-                'algorithmic conception to physical inspection on the factory floor.',
- 'act2_analogy': 'Think of how an old oak tree tapers smoothly from its wide root collar to a '
-                 'slender waist before flaring out to cradle heavy branches. The trunk stays '
-                 'upright because its outer bark forms an unbroken, sealed boundary enclosing '
-                 'solid wood, and every flare expands at a gentle, self-supporting tilt. In stone '
-                 'masonry, builders stack brick corbels outwards layer by layer to form '
-                 'cantilevered arches. As long as each step angles outward by less than forty-five '
-                 'degrees from vertical, gravity holds the stone securely without temporary wooden '
-                 'falsework collapsing beneath it.',
- 'act2_plain_primer': 'You can sculpt and verify this structural strut using two interactive '
-                      'sliders and a diagnostic stress-test button. The first control sets the '
-                      "Mid-Span Waist Width, adjusting the strut's narrowest middle cross-section "
-                      'between twelve and thirty-six millimeters. Increasing this dimension bulks '
-                      'up the central core to resist lateral buckling, while narrowing it creates '
-                      'an hourglass silhouette that cuts unnecessary mass. The second control '
-                      'governs the Upper Head Flare, adjusting how far the top mounting flange '
-                      'widens past the base between zero and twenty-four millimeters to distribute '
-                      'joint loads across bolted machine frames. Finally, clicking the '
-                      'Counterfactual Axiom-Knockout button deliberately stresses the strut beyond '
-                      'its safe manufacturing limits. It widens the upper head flare past sixteen '
-                      'millimeters until the lateral wall slope exceeds forty-five degrees, or '
-                      'deliberately flips an outward-facing surface normal. The audit immediately '
-                      'turns red, demonstrating how automated checks reject defective, unprintable '
-                      'geometry before any material reaches a machine.',
- 'act2_deepening': 'Behind the clean visual preview lies a rigorous computational pipeline '
-                   'operating entirely in standard Python. Rather than approximating organic '
-                   'struts with heavy voxel grids, the generator computes parametric '
-                   'cross-sectional lofts that directly synthesize half-edge triangle topology. '
-                   'Surface normals are calculated analytically from facet cross products and '
-                   'oriented strictly outward via counter-clockwise vertex winding. The overhang '
-                   'audit evaluates the inner product between each normalized facet normal n and '
-                   'the downward unit build vector −ẑ. When the resulting inclination θ = '
-                   'arccos(−n · ẑ) exceeds the critical self-supporting threshold of 45°, liquid '
-                   'resin or molten filament droops under gravity unless pinned by costly support '
-                   'pillars. Concurrently, exact mesh volume is computed using the discrete '
-                   'divergence theorem by summing oriented tetrahedral signed volumes 1/6 (v0 · '
-                   '(v1 × v2)) across all twenty-eight facets. Comparing this signed sum against '
-                   'the analytical Moscow Papyrus frustum formula checks geometric '
-                   'fidelity, ensuring that subsequent structural FEA simulations receive '
-                   'exact volumetric mass distributions.',
- 'act4_human_ai': 'Modern structural engineering reaches peak velocity when human domain intuition '
-                  'couples with autonomous AI coding agents governed by deterministic verifiers. '
-                  'Instead of manually clicking through complex commercial CAD menus, a solo '
-                  'engineer instructs an AI partner to parameterize a lightweight strut assembly. '
-                  'The assistant references the formal protocol in the companion SKILL.md '
-                  'document, modifying parameters inside make_x05.py to meet novel aerodynamic or '
-                  'load-bearing requirements. Before any code is committed or files sent to the '
-                  'fabrication lab, the developer executes '
-                  'verify_x05_toolchain_x05_simp_manifold_3mf.py. This independent Python '
-                  'verification script parses the generated 3MF archive, validates its XML '
-                  'namespace headers, checks 2-manifold edge matching (2E = 3F), recalculates '
-                  'frustum volumes, and tests for zero overhang violations. By acting as an '
-                  'unyielding mathematical judge, the deterministic script prevents AI '
-                  'hallucinations from contaminating manufacturing pipelines, allowing small '
-                  'independent teams to produce clean, reproducible engineering models '
-                  'with verified geometric bounds.',
- 'act4_deepening': 'The geometric principles governing this structural strut form an intellectual '
-                   'crossroads uniting civil engineering, high-performance aerodynamics, '
-                   'rheological fabrication, and pure variational mathematics. When structural '
-                   'engineers optimize seismic bracing in Folio E.11 using SIMP algorithms and '
-                   'inerter dampers, the resulting force-density fields map directly onto these '
-                   'tapered frustum geometries to prevent high-frequency mechanical resonance. In '
-                   'high-speed automotive engineering (Folio P.07), identical slender profiles '
-                   'minimize turbulent wake detachment across Formula 1 ground-effect Venturi '
-                   'floor stays. At architectural scales, the overhang angle criteria θ ≤ 45° '
-                   'dictate the layer-by-layer stability of 3D concrete printing (Folio E.10), '
-                   'where wet paste thixotropy and Suiker buckling govern whether a cantilevered '
-                   'wall stands or collapses under its own weight. Furthermore, viewing mass '
-                   'distribution through Benamou–Brenier optimal transport (Folio M.09) reveals '
-                   'that these organic frustum transitions solve dynamic quadratic Wasserstein '
-                   'geodesic paths, channeling stress efficiently from broad structural '
-                   'foundations into compact machine nodes with minimal internal shear '
-                   'dissipation.',
- 'plain_es': 'Diseñar piezas mecánicas ultraligeras y resistentes suele enfrentar a ingenieros y '
-             'creadores con modelos digitales defectuosos que fallan al momento de fabricarse. '
-             'Cuando los programas de optimización eliminan material sobrante para dejar puntales '
-             'delgados parecidos a huesos, las mallas resultantes suelen contener agujeros, caras '
-             'invertidas y grietas microscópicas. Este entorno interactivo genera puntales '
-             'estructurales de sección variable y revisa que formen cuerpos sólidos herméticos. Desde su navegador, ustedes pueden ajustar las dimensiones '
-             'del puntal en tiempo real, auditar el volumen exacto de material necesario y '
-             'verificar que las paredes nunca se inclinen tanto como para requerir soportes '
-             'temporales que desperdicien filamento o resina. Una vez aprobada la geometría, '
-             'pueden descargar inmediatamente los archivos de producción en formatos 3MF, GLB o '
-             'STEP. Estos modelos se abren de forma directa en OrcaSlicer, PrusaSlicer, FreeCAD o '
-             'Blender, listos para mandarse a la impresora sin necesidad de reparaciones '
-             'adicionales.',
- 'deep_es': 'La síntesis matemática de este puntal estructural asegura una correspondencia '
-            'estricta entre la topología combinatoria y la cinemática de manufactura aditiva. El '
-            'volumen total del componente se calcula mediante la fórmula clásica del tronco '
-            'piramidal para sus tres secciones apiladas: V = ∑ (h_k / 3)(A_{k-1} + A_k + √(A_{k-1} '
-            'A_k)), conservando un valor exacto de 46,080.0 mm³ sin pérdidas por discretización '
-            'numérica. La orientación superficial se audita mediante el ángulo de voladizo '
-            'respecto al vector de construcción descendente, donde la inclinación de pared θ = '
-            'arctan(Δw / Δz) resulta en 14.04°, manteniéndose holgadamente por debajo del umbral '
-            'crítico de 45.0°. Simultáneamente, la estructura de semi-aristas verifica el cierre '
-            '2-variedad bajo la característica de Euler–Poincaré χ = V − E + F = 2 y la condición '
-            'de frontera cerrada 2E = 3F. Esta revisión analítica comprueba esas condiciones en los archivos 3MF y STEP exportados antes de usarlos en simulaciones mecánicas.',
- 'distill_diagram': {'analogy_title': 'The Tapered Trunk & Brick Corbel',
-                     'analogy_sub': 'Corbel steps and flared branches stand firm without '
-                                    'falsework.',
-                     'force_a_title': 'Mid-Span Waist Width w_2',
-                     'force_a_sub': 'Governs core buckling strength and structural mass '
-                                    'distribution.',
-                     'force_b_title': 'Upper Head Flare Δw_top',
-                     'force_b_sub': 'Distributes interface loads but steepens downward wall '
-                                    'overhang.',
-                     'threshold_title': 'Self-Supporting Overhang Limit (θ ≤ 45°)',
-                     'threshold_pass': 'Wall angle θ = 14.04° ≤ 45°: Clean self-supporting 3D '
-                                       'print.',
-                     'threshold_fail': 'Flare past 16 mm forces θ > 45°: Overhang droop and print '
-                                       'sag.'}}
+FOLIO = {
+    'slug': 'x05',
+    'folio_id': 'X.05',
+    'tool_id': 'TOOL-FAB-1',
+    'cat': 'engineering',
+    'plate_slug': 'x05',
+    'pillar_label_en': 'Additive & Structural Toolbox · Tapered Struts to Watertight 3MF',
+    'pillar_label_es': 'Herramientas Aditivas y Estructurales · Puntales Ahusados a 3MF Hermético',
+    'badge_en': 'TOOLBOX X.05 · TAPERED STRUT FRUSTUM → MANIFOLD 3MF · GLB · STEP + OVERHANG AUDIT',
+    'badge_es': 'HERRAMIENTA X.05 · TRONCO AHUSADO → 3MF · GLB · STEP HERMÉTICO + AUDITORÍA DE VOLADIZO',
+    'title': 'Topology-Optimized Structural Struts to Watertight 3MF & Build-Plate Overhang Audit',
+    'title_es': 'Puntales Estructurales Optimizados por Topología a 3MF Hermético y Auditoría de Voladizo',
+    'subtitle': (
+        'How an illustrative four-station tapered strut is triangulated into closed 2-manifold 3MF, '
+        'GLB, and Part-21 STEP files while pure Python checks frustum volume and build-plate overhang slope.'
+    ),
+    'subtitle_es': (
+        'Cómo un puntal ahusado ilustrativo de cuatro estaciones se triangula en archivos cerrados '
+        '2-variedad 3MF, GLB y STEP Parte 21 mientras Python puro audita el volumen y el ángulo de voladizo.'
+    ),
+    'why_en': (
+        'Thresholding a voxel topology-optimization grid into triangles can leave open seams, '
+        'inverted normals, or steep overhangs that stall desktop slicers. Stitching an illustrative '
+        'tapered strut from closed rings—and checking half-edge pairing, volume, and wall tilt '
+        'offline—turns an opaque export into an inspectable geometric record.'
+    ),
+    'why_es': (
+        'Convertir una malla de vóxeles de optimización topológica en triángulos puede dejar bordes '
+        'abiertos, normales invertidas o voladizos pronunciados que detienen los laminadores. Tejer '
+        'un puntal ahusado ilustrativo desde anillos cerrados permite auditar semi-aristas, volumen '
+        'y pendiente de pared fuera de línea.'
+    ),
+    'governing_law': (
+        'V = ∑_{k=1}^3 (h_k / 3)(A_{k-1} + A_k + √(A_{k-1} A_k)) = 46,080 mm³ · '
+        'θ_wall = arcsin(max(0, −n_f · ẑ)) = arctan(max(0, Δhw) / Δz) = 14.04° ≤ 45°'
+    ),
+    'pass_pill_en': 'PASS · V = 46,080 mm³ · θ_max = 14.04° ≤ 45° · 3MF+GLB+STEP',
+    'pass_pill_es': 'APROBADO · V = 46,080 mm³ · θ_max = 14.04° ≤ 45° · 3MF+GLB+STEP',
+    'generator_script': 'skills/toolchain/x05/make_x05.py',
+    'verifier_script': 'skills/toolchain/x05/verify_x05_toolchain_x05_simp_manifold_3mf.py',
+    'skill_dir': 'skills/toolchain/x05',
+    'skill_name': 'toolchain-x05-simp-manifold-3mf',
+    'formats': ('glb', '3mf', 'step'),
+    'primary_doi': '10.1007/s001580050176',
+    'scite_summary': (
+        'Grounded in Michell (1904), Bendsøe (1989), Bendsøe & Sigmund (1999), Sigmund (2001), '
+        'Mirtich (1996), Crane et al. (2013), and Feeney et al. (2015), checked offline.'
+    ),
+    'date_published': '2026-11-08',
+    'date_redated': '2026-11-08',
+    'current_edition': 'REV 1.0',
+    'reading_time': '22 MIN READ',
+    'small_studio_kit_en': (
+        'Independent Structural & Maker Stack (Manifold Apache-2.0 + OrcaSlicer / PrusaSlicer + '
+        'FreeCAD): Run make_x05.py to emit x05_artifact.3mf (1,769 B), x05_artifact.glb (2,936 B), '
+        'and Part-21 x05_artifact.step (11,824 B), then run verify_x05 to check half-edge closure, '
+        'frustum volume, and lateral overhang slope.'
+    ),
+    'small_studio_kit_es': (
+        'Stack Abierto para Ingenieros y Makers (Manifold Apache-2.0 + OrcaSlicer / PrusaSlicer + '
+        'FreeCAD): Ejecuten make_x05.py para generar x05_artifact.3mf (1,769 B), x05_artifact.glb '
+        '(2,936 B) y x05_artifact.step Parte 21 (11,824 B), y corran verify_x05 para auditar '
+        'semi-aristas, volumen de tronco piramidal y pendiente de voladizo.'
+    ),
+    'companion_folios': [
+        ('engineering', 'e11', 'Folio E.11', 'SIMP Topology Optimization & Inerter Dampers'),
+        ('physics', 'p07', 'Folio P.07', 'Formula 1 Ground-Effect Venturi Aerodynamics'),
+        ('engineering', 'e10', 'Folio E.10', '3D Concrete Printing Thixotropy & Suiker Buckling'),
+        ('math', 'm09', 'Folio M.09', 'Benamou–Brenier Wasserstein-2 Optimal Transport'),
+    ],
+    'external_links': [
+        ('elalish/manifold (Apache-2.0 Exact Manifold CSG)', 'https://github.com/elalish/manifold'),
+        ('3MF Consortium Core & Beam Lattice Specifications', 'https://github.com/3MFConsortium/spec_core'),
+        ('TopOpt Group (DTU Mechanical Engineering)', 'https://www.topopt.mek.dtu.dk/'),
+    ],
+    'act1_dropcap': (
+        'In 1904, the Australian engineer Anthony George Maldon Michell derived minimum-volume frame '
+        'layouts whose tension and compression members follow orthogonal curves. Workshop mills could '
+        'rarely carve such branching ribs from solid metal stock. Eight decades later in Denmark, '
+        'Martin Bendsøe and Ole Sigmund recast layout optimization as continuous material '
+        'distribution across finite-element grids. Yet turning a pixelated density grid into a clean '
+        'solid boundary remains tricky. Thresholded voxel surfaces can leave stepped facets, open '
+        'seams, or inverted triangles that stall additive slicers. Rather than extracting noisy '
+        'isosurfaces, this page constructs an illustrative four-station tapered strut directly from '
+        'closed square rings. A standard-library verification script then audits every shared edge, '
+        'enclosed cubic millimeter, and outward wall tilt across three open file formats. The result '
+        'is an educational geometry walkthrough, never a structural design method for a real '
+        'load-bearing part.'
+    ),
+    'act1_plain_bridge': (
+        'Think of a digital part for a three-dimensional printer like a cardboard shell taped along '
+        'every corner, where one open seam or flipped triangle leaves slicing software unable to '
+        'separate solid interior from empty air. Steep overhangs pose a second hurdle. Walls leaning '
+        'far past vertical sag without temporary supports beneath them. Here, an illustrative '
+        'tapered strut is stitched from four horizontal square rings so every edge pairs cleanly by '
+        'construction. Move the two browser sliders to adjust its middle waist and top flare while '
+        'volume and wall tilt update live on screen. Download the neutral files and run the Python '
+        'checker offline on your own geometry. This page is an explanation of mesh and overhang '
+        'geometry, not a structural design method. '
+        'None of its numbers or files may be used on a real structure.'
+    ),
+    'act1_body': (
+        'Bendsøe (1989, DOI 10.1007/bf01650949) posed shape optimization as material distribution, '
+        'Bendsøe and Sigmund (1999, DOI 10.1007/s004190050248) compared power-law interpolation '
+        'against microstructural bounds, and Sigmund (2001, DOI 10.1007/s001580050176) published a '
+        '99-line compliance-minimization code. Exporting solid files requires boundaries that '
+        'separate interior from exterior (Requicha, 1980, DOI 10.1145/356827.356833), as enforced in '
+        'Emmett Lalish’s Apache-2.0 Manifold library and unit-indexed 3MF Core v1.2.3 archives. '
+        'Here, make_x05.py builds a prescribed four-ring strut—an illustrative fixture, not a '
+        'finite-element SIMP output—into x05_artifact.3mf (1,769 B), x05_artifact.glb (2,936 B), and '
+        'an illustrative Part-21 POLY_LOOP sketch x05_artifact.step (11,824 B; compare full analytic '
+        'EDGE_LOOP STEP AP242 exchange in Feeney, Frechette, & Srinivasan, 2015, DOI '
+        '10.1115/1.4029050). This folio is an explanation, not a design method, and none of its '
+        'numbers or files may be used on a real structure.'
+    ),
+    'act1_stakes': (
+        'When an exported mesh carries an unpaired half-edge, a flipped normal, or an unnoticed '
+        'downward ledge, smooth shading can hide the flaw until a slicer or mesher aborts. Checking '
+        'closure and wall tilt in standard Python lets solo engineers, students, and small workshops '
+        'inspect open mesh archives in continuous integration without paid repair suites. The '
+        'companion verifier parses all three committed files, checks single-shell edge pairing, '
+        'recomputes the three-segment frustum volume sum, and audits every non-base facet normal '
+        'against an illustrative forty-five-degree overhang rule of thumb.'
+    ),
+    'pullquote': (
+        'Checking half-edge closure (3F = 2E) and facet overhang tilt θ_wall = arcsin(max(0, −n_f · '
+        'ẑ)) verifies only a geometric mesh; qualifying any real structural part requires physical '
+        'engineering analysis and testing that this educational script never performs.'
+    ),
+    'chronology': [
+        (
+            '1904',
+            'A. G. M. Michell derives analytical minimum-volume frame layouts along orthogonal '
+            'strain trajectories (DOI 10.1080/14786440409463229).',
+        ),
+        (
+            '1989–2001',
+            'Martin Bendsøe (1989, DOI 10.1007/bf01650949), Bendsøe and Ole Sigmund (1999, DOI '
+            '10.1007/s004190050248), and Sigmund (2001, DOI 10.1007/s001580050176) establish '
+            'material-distribution interpolation and the 99-line educational SIMP code.',
+        ),
+        (
+            '1996–2015',
+            'Brian Mirtich (1996, DOI 10.1080/10867651.1996.10487458) formulates polyhedral '
+            'divergence-volume integration; Feeney et al. (2015, DOI 10.1115/1.4029050) review the '
+            'ISO 10303-242 STEP AP242 exchange and PMI tolerancing standard.',
+        ),
+        (
+            '2026',
+            'Informatico.ai ships X.05: an illustrative four-station tapered strut exported to 3MF, '
+            'GLB, and Part-21 STEP with frustum-volume and facet-overhang verification.',
+        ),
+    ],
+    'act2_analogy': (
+        'Picture a mason corbeling flat courses of brick outward from a pillar, stepping each layer '
+        'slightly past the one below without wooden falsework. So long as each outward step stays '
+        'modest relative to course height, the wall rests stably while its outer faces form one '
+        'continuous skin. Where the analogy stops: real masonry resists collapse through mortar '
+        'bedding, friction, and dead-weight compression, whereas our digital audit measures only '
+        'combinatorial triangle pairing and geometric facet slope without modeling gravity, polymer '
+        'rheology, thermal warping, or buckling.'
+    ),
+    'act2_plain_primer': (
+        'Two sliders and one mode toggle drive the workbench below. Mid-Span Waist Width sets the '
+        'full square width at the thirty-two-millimeter waist between 12 and 36 millimeters '
+        '(widening past 32 millimeters also tilts the middle segment outward). Upper Head Flare adds '
+        '0 to 24 millimeters of outward half-width per side at the forty-eight-millimeter crown '
+        'relative to the waist, raising lateral overhang from 0 degrees to 14.04 degrees at 4 '
+        'millimeters and crossing 45 degrees above 16 millimeters. The second readout card stays '
+        'fixed text because all slider settings keep the same 28-triangle connectivity. Clicking the '
+        'Planted-Defect / Boundary Knockout button resets Mid-Span Waist Width to 24 millimeters and '
+        'sets Upper Head Flare to 20 millimeters (51.34 degrees, 66,560.0 cubic millimeters) to fire '
+        'the browser overhang alert, while running the Python verifier with its planted-defect flag '
+        'flips Triangle 0 in memory to test half-edge rejection.'
+    ),
+    'act2_intuition': (
+        'Two elementary relations govern the illustrative strut across z ∈ {0, 16, 32, 48} mm with '
+        'square half-widths hw ∈ {20, 16, 12, 16} mm (areas A ∈ {1,600, 1,024, 576, 1,024} mm²). '
+        'Summing the square-frustum formula across the three h_k = 16 mm segments gives V = '
+        '∑_{k=1}^3 (h_k / 3)(A_{k-1} + A_k + √(A_{k-1} A_k)) = 20,821.33 + 12,629.33 + 12,629.33 = '
+        '46,080.0 mm³, matching the boundary divergence sum V = (1/6) ∑ v_0 · (v_1 × v_2) (Mirtich, '
+        '1996, DOI 10.1080/10867651.1996.10487458). A lateral wall rising by Δz with outward '
+        'half-width change Δhw = Δw / 2 has unit normal n_f = (Δz, 0, −Δhw) / √(Δz² + Δhw²) on the '
+        '+X face, so −n_f · ẑ = sin θ_wall (whereas arccos(−n_f · ẑ) = 75.96° is the polar '
+        'complement). Thus θ_wall = arcsin(max(0, −n_f · ẑ)) = arctan(max(0, Δhw) / Δz) equals 0° '
+        'below z = 32 mm and arctan(4 / 16) = 14.04° on the flared head, within an assumed 45.0° '
+        'rule-of-thumb ceiling (not a material constant). Paired half-edges (3F = 2E; Crane et al., '
+        '2013, DOI 10.1145/2504435.2504442) close V = 16, E = 42, F = 28 into χ = 2.'
+    ),
+    'act2_deepening': (
+        'In Requicha’s (1980, DOI 10.1145/356827.356833) framework, rigid solids are regular closed '
+        'point sets; the stricter single-shell 2-manifold and overhang checks here belong to '
+        'run_x05_strut_checks in tools/toolchain_x05_checks.py. Build-plate contact is identified '
+        'strictly by vertex elevation (all three vertices at z = 0 mm), never by n_z ≈ −1 alone: the '
+        '2 base facets sit on the bed, whereas any suspended horizontal soffit at z > 0 evaluates '
+        'arcsin(1) = 90.0° and fails closed. Across the other 26 facets, 2 crown facets face +Z, 16 '
+        'lower wall facets taper inward at −14.0362° (0° overhang), and 8 head facets flare outward '
+        'at +14.0362°. In src/modules/glb-viewer.mjs, slider moves update the z = 32 and z = 48 '
+        'rings, recompute WebGL2 vertex normals and signed volume, and evaluate max(0, hw_2 − 16, '
+        'Δhw_top) for live GLB and Part-21 STEP export.'
+    ),
+    'sliders': [
+        {
+            'id': 'tp-tool-s0',
+            'label': 'Mid-Span Waist Width',
+            'min': 12,
+            'max': 36,
+            'step': 2,
+            'value': 24,
+            'unit': ' mm',
+        },
+        {
+            'id': 'tp-tool-s1',
+            'label': 'Upper Head Flare',
+            'min': 0,
+            'max': 24,
+            'step': 2,
+            'value': 4,
+            'unit': ' mm',
+        },
+    ],
+    'readouts': [
+        {'label': '3-Stage Frustum Volume', 'value': '46,080.0 mm³ (ΔV = 0.00%)'},
+        {'label': '2-Manifold Closure (V, E, F)', 'value': 'V=16, E=42, F=28 · χ=2'},
+        {'label': 'Max Wall Overhang Angle θ', 'value': '14.04° ≤ 45.0° (GEOMETRY)'},
+        {'label': '3MF / GLB / STEP Gate', 'value': 'PASS · DEFECT REJECTED'},
+    ],
+    'steps': [
+        'Stage 1: Four-Station Strut Rings — Place square stations along z ∈ {0, 16, 32, 48} mm with '
+        'half-widths hw ∈ {20, 16, 12, 16} mm (widths 40, 32, 24, 32 mm).',
+        'Stage 2: Single-Shell 2-Manifold Triangulation — Stitch consecutive rings with outward '
+        'counter-clockwise quads and seal z = 0 and z = 48 into V = 16, E = 42, F = 28, β_0 = 1, χ = 2.',
+        'Stage 3: Frustum & Cross-Format Volume Parity — Sum V = ∑_{k=1}^3 (16/3)(A_{k-1} + A_k + '
+        '√(A_{k-1}A_k)) = 46,080.0 mm³ against divergence volume (Mirtich, 1996, DOI '
+        '10.1080/10867651.1996.10487458) across GLB, 3MF, and Part-21 STEP.',
+        'Stage 4: Elevation-Gated Overhang Audit — Check non-base facets (outside z = 0 mm) for '
+        'θ_f = arcsin(max(0, −n_f · ẑ)) = 14.0362° ≤ 45.0° and reject flipped normals, Δhw_top = '
+        '20 mm (51.34°), and z > 0 horizontal soffits (90.0°).',
+    ],
+    'rules': [
+        'Explanation-Only Non-Design Rule: This folio and skill are an explanation of mesh closure '
+        'and overhang geometry, not a structural design method, and none of their numbers or files '
+        'may be used on a real structure.',
+        'Cross-Format Frustum & Manifold Parity: GLB, millimeter 3MF ([Content_Types].xml, '
+        '_rels/.rels, 3D/3dmodel.model, identity transform), and Part-21 STEP POLY_LOOP entities '
+        'must match V = 16, E = 42, F = 28, β_0 = 1, χ = 2, and V = 46,080.0 mm³.',
+        'Elevation-Gated Overhang & Knockout Rule: Excluding only z = 0 mm base facets, every '
+        'normal n_f must satisfy θ_f = arcsin(max(0, −n_f · ẑ)) ≤ 45.0° (assumed geometric bound, '
+        'not a printability claim), rejecting flipped normals, flare > 16 mm, and z > 0 soffits.',
+    ],
+    'sidenote_1': {
+        'kicker': 'SIDENOTE X.05-A · ARCSIN OVERHANG VS. POLAR ARCCOS COMPLEMENT',
+        'body': (
+            'For outward wall normal n_f = (Δz, 0, −Δhw)/√(Δz² + Δhw²), −n_f · ẑ equals sin θ_wall, '
+            'so tilt from vertical is arcsin(−n_f · ẑ) = arctan(Δhw/Δz) = 14.04°, whereas '
+            'arccos(−n_f · ẑ) = 75.96° measures angle from −ẑ.'
+        ),
+    },
+    'sidenote_2': {
+        'kicker': 'SIDENOTE X.05-B · FIXED 3MF TIMESTAMPS & PART-21 STEP SKETCH',
+        'body': (
+            'write_3mf pins ZipInfo.date_time for Git reproducibility, and write_step_ap242 emits an '
+            'illustrative Part-21 POLY_LOOP sketch (use build123d or CadQuery on OpenCascade for '
+            'EDGE_LOOP STEP AP242 solids).'
+        ),
+    },
+    'walkthrough': [
+        'Inspect the four-station strut in the WebGL2 viewer below; the flared upper head '
+        '(z ∈ [32, 48] mm) in amber inclines outward at 14.04° from vertical.',
+        'Slide Mid-Span Waist Width to reshape the waist volume, or drag Upper Head Flare past '
+        '16 mm (or click [⚡ Planted-Defect / Boundary Knockout (Verifier FAIL)], setting waist '
+        '24 mm and flare 20 mm → 51.34° and 66,560.0 mm³) to trigger the overhang alert.',
+        'Download x05_artifact.3mf, x05_artifact.glb, and x05_artifact.step, or run '
+        'verify_x05_toolchain_x05_simp_manifold_3mf.py (and with --planted-defect) locally.',
+    ],
+    't0_t1_certified': [
+        'Deterministic stdlib generator (skills/toolchain/x05/make_x05.py) emitting '
+        'x05_artifact.3mf (1,769 B), x05_artifact.glb (2,936 B), and an illustrative Part-21 '
+        'POLY_LOOP x05_artifact.step (11,824 B).',
+        'Byte-level verifier (verify_x05_toolchain_x05_simp_manifold_3mf.py + '
+        'tools/toolchain_x05_checks.py) checking β_0 = 1, χ = 2, 46,080.0 mm³ frustum/divergence '
+        'parity, θ_max = 14.0362° ≤ 45.0° across GLB, STEP, and 3MF, and overhang/normal knockouts.',
+        'Synchronized WebGL2 4-ring deformation, normal recomputation, and custom GLB/STEP/DXF '
+        'export in src/modules/glb-viewer.mjs.',
+    ],
+    't2_t3_open_horizon': [
+        'Educational Geometry Boundary: Every file on this page is an educational artifact and an '
+        'explanation, not a structural design method; nothing is certified as load-bearing, '
+        'printable, safe, or fit for any purpose.',
+        'Open-Toolchain Horizon: Coupled finite-element SIMP extraction to 3MF Beam Lattice '
+        '(<beamlattice>) and OpenCascade EDGE_LOOP STEP AP242 export via build123d.',
+    ],
+    'sources': [
+        'Michell, A. G. M. (1904). LVIII. The limits of economy of material in frame-structures. '
+        'Philosophical Magazine, 8(47), 589–597. DOI 10.1080/14786440409463229',
+        'Requicha, A. A. G. (1980). Representations for rigid solids: Theory, methods, and systems. '
+        'ACM Computing Surveys, 12(4), 437–464. DOI 10.1145/356827.356833',
+        'Bendsøe, M. P. (1989). Optimal shape design as a material distribution problem. Structural '
+        'Optimization, 1(4), 193–202. DOI 10.1007/bf01650949',
+        'Mirtich, B. (1996). Fast and accurate computation of polyhedral mass properties. Journal of '
+        'Graphics Tools, 1(2), 31–50. DOI 10.1080/10867651.1996.10487458',
+        'Bendsøe, M. P., & Sigmund, O. (1999). Material interpolation schemes in topology '
+        'optimization. Archive of Applied Mechanics, 69(9–10), 635–654. DOI 10.1007/s004190050248',
+        'Benamou, J.-D., & Brenier, Y. (2000). A computational fluid mechanics solution to the '
+        'Monge-Kantorovich mass transfer problem. Numerische Mathematik, 84(3), 375–393. DOI '
+        '10.1007/s002110050002',
+        'Sigmund, O. (2001). A 99 line topology optimization code written in Matlab. Structural and '
+        'Multidisciplinary Optimization, 21(2), 120–127. DOI 10.1007/s001580050176',
+        'Smith, M. C. (2002). Synthesis of mechanical networks: The inerter. IEEE Transactions on '
+        'Automatic Control, 47(10), 1648–1662. DOI 10.1109/tac.2002.803532',
+        'Katz, J. (2006). Aerodynamics of race cars. Annual Review of Fluid Mechanics, 38, 27–63. '
+        'DOI 10.1146/annurev.fluid.38.050304.092016',
+        'Crane, K., de Goes, F., Desbrun, M., & Schröder, P. (2013). Digital geometry processing '
+        'with discrete exterior calculus. ACM SIGGRAPH 2013 Courses, Art. 7. DOI '
+        '10.1145/2504435.2504442',
+        'Feeney, A. B., Frechette, S. P., & Srinivasan, V. (2015). A portrait of an ISO STEP '
+        'tolerancing standard as an enabler of smart manufacturing systems. Journal of Computing and '
+        'Information Science in Engineering, 15(2), 021001. DOI 10.1115/1.4029050',
+        'Suiker, A. S. J. (2018). Mechanical performance of wall structures in 3D printing '
+        'processes: Theory, design tools and experiments. International Journal of Mechanical '
+        'Sciences, 137, 145–170. DOI 10.1016/j.ijmecsci.2018.01.010',
+        'Lalish, E. (2023–2026). Manifold: Exact manifold triangular meshes (Apache-2.0), '
+        'https://github.com/elalish/manifold; and 3MF Consortium (2023), 3MF Core Specification '
+        'v1.2.3, https://github.com/3MFConsortium/spec_core',
+    ],
+    'act4_human_ai': (
+        'Coding agents asked to script 3D brackets can misstate overhang trigonometry, omit 3MF '
+        'archive relationships, or leave seams open. Guided by SKILL.md, make_x05.py emits '
+        'x05_artifact.3mf, x05_artifact.glb, x05_artifact.step, and manifest.json, while verify_x05 '
+        'checks SHA-256 hashes, 3MF OPC entries and millimeter units, single-shell closure (3F = 2E, '
+        'χ = 2), 46,080.0 mm³ frustum and divergence volume parity across all three files, and '
+        'non-base (outside z = 0 mm) overhang tilt θ_f = arcsin(max(0, −n_f · ẑ)) ≤ 45.0°, rejecting '
+        'flipped normals, 20 mm flare knockouts (51.34°), and z > 0 horizontal soffits (90.0°).'
+    ),
+    'act4_deepening': (
+        'Closed frustum meshes connect to four companion Folios on Informatico.ai. In Folio E.11, '
+        'SIMP density fields (Sigmund, 2001, DOI 10.1007/s001580050176) and mechanical inerter '
+        'networks (Smith, 2002, DOI 10.1109/tac.2002.803532) require watertight boundary conversion '
+        'before fabrication. In Folio P.07, underbody Venturi tunnels (Katz, 2006, DOI '
+        '10.1146/annurev.fluid.38.050304.092016) load slender aero stays where mesh checks never '
+        'replace structural testing. In Folio E.10, Suiker (2018, DOI 10.1016/j.ijmecsci.2018.01.010) '
+        'models buckling and plastic collapse of 3D-printed walls omitted by purely geometric '
+        'overhang rules. And in Folio M.09, Benamou and Brenier (2000, DOI 10.1007/s002110050002) '
+        'formulate Monge–Kantorovich mass transfer as continuum density flow between cross-sections.'
+    ),
+    'plain_es': (
+        'Piensen en una pieza digital para impresión tridimensional como una maqueta de cartón '
+        'sellada en cada arista, donde una unión abierta o un triángulo invertido impide distinguir '
+        'el interior sólido del aire vacío. Los voladizos crean otro reto. Las paredes muy '
+        'inclinadas ceden sin soportes temporales debajo. Aquí se teje un puntal ahusado ilustrativo '
+        'con cuatro anillos cuadrados horizontales para cerrar cada arista desde el origen. Ustedes '
+        'pueden mover los dos controles para ajustar la cintura central y el ensanchamiento superior '
+        'mientras cambian el volumen y la inclinación. Descarguen los archivos abiertos y corran el '
+        'verificador en Python fuera de línea. Este folio es una explicación, no un método de diseño '
+        'estructural. Ninguna de sus cifras o archivos puede usarse en una estructura real.'
+    ),
+    'deep_es': (
+        'Este puntal ilustrativo en z ∈ {0, 16, 32, 48} mm con semianchos hw ∈ {20, 16, 12, 16} mm '
+        '(no una corrida SIMP; Bendsøe, 1989; Sigmund, 2001) suma V = ∑_{k=1}^3 (h_k / 3)(A_{k-1} + '
+        'A_k + √(A_{k-1} A_k)) = 46,080.0 mm³, igual al volumen por divergencia (Mirtich, 1996) en '
+        'GLB, 3MF y el boceto Parte 21 POLY_LOOP STEP (compárese con STEP AP242 analítico en Feeney '
+        'et al., 2015). En cada pared lateral con Δhw = Δw / 2, θ_wall = arcsin(max(0, −n_f · ẑ)) = '
+        'arctan(max(0, Δhw) / Δz) = 14.04° ≤ 45.0° (arccos(−n_f · ẑ) = 75.96° es el complemento '
+        'polar), y run_x05_strut_checks audita χ = 2 y 3F = 2E (Crane et al., 2013) excluyendo solo '
+        'la base en z = 0 mm. Este folio es una explicación, no un método de diseño estructural, y '
+        'ninguna de sus cifras o archivos puede usarse en una estructura real.'
+    ),
+    'distill_diagram': {
+        'analogy_title': 'The Stepped Brick Corbel',
+        'analogy_sub': 'Modest outward steps and sealed seams hold shape without falsework.',
+        'force_a_title': 'Mid-Span Waist Width (w_2)',
+        'force_a_sub': 'Sets the z = 32 mm square waist section and enclosed frustum volume.',
+        'force_b_title': 'Upper Head Flare (Δhw_top)',
+        'force_b_sub': 'Widens the z = 48 mm crown per side and steepens wall overhang.',
+        'threshold_title': 'Geometric Overhang Rule of Thumb (θ ≤ 45°)',
+        'threshold_pass': 'Wall tilt θ = 14.04° ≤ 45°: Within geometric overhang bound.',
+        'threshold_fail': 'Flare past 16 mm forces θ > 45°: Exceeds geometric overhang bound.',
+    },
+}
