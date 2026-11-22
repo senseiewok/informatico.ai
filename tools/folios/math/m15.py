@@ -31,8 +31,8 @@ FOLIO = {
     'lineage_mode': 'CONTINUATION · Extends M.03 Extremal Combinatorics & M.13 Graph Packing Bounds',
     'title': 'Diagonal Ramsey Numbers: Paley Colorings, Erdős Random Floors, the Book Algorithm & Open Gaps',
     'subtitle': (
-        'How Frank Ramsey uncovered unavoidable order inside colored graphs, how Paul Erdős launched probabilistic '
-        'combinatorics in three pages, why seventeen quadratic residues settle four-cliques while five-cliques sit '
+        'How Frank Ramsey uncovered unavoidable order inside colored graphs, how Paul Erdős gave a three-page '
+        'probabilistic lower bound, why seventeen quadratic residues settle four-cliques while five-cliques sit '
         'between forty-three and forty-six, and how an asymmetric book algorithm broke the base-four ceiling.'
     ),
     'date_published': '2026-11-21',
@@ -103,17 +103,24 @@ FOLIO = {
             'Thomason (1988, DOI 10.1002/jgt.3190120406), Conlon (2009, DOI 10.4007/annals.2009.170.941), and Sah (2023, '
             'DOI 10.1215/00127094-2022-0048) shaved sub-exponential factors off Erdős–Szekeres C(2k − 2, k − 1) < 4^k. '
             'Campos, Griffiths, Morris, and Sahasrabudhe (2026, DOI 10.4007/annals.2026.203.3.4) achieved an exponential '
-            'reduction R(k, k) ≤ (4 − ε)^k for a constant ε > 0 via an asymmetric book algorithm. Hypothesis (Tier T0–T1): '
-            'skewing p off 0.50 drops n_1(k, p) for every k ≥ 5 (from 100 at p = 0.50 to 71 at p = 0.45 and 17 at p = 0.20 '
-            'when k = 10), yet finite algebraic colorings beat n_1 + 1 at k = 3, 4, 5 while leaving both R(5, 5) ∈ [43, 46] '
-            'and whether lim R(k, k)^(1/k) exists inside [√2, 4 − ε] open. Any 43-vertex (K_5, K_5)-free coloring refutes '
+            'reduction R(k, k) ≤ (4 − ε)^k for a constant ε > 0 via an asymmetric book algorithm. Skewing p off 0.50 '
+            'drops n_1(k, p) for every k from 5 to 10 on the 0.05 grid (from 100 at p = 0.50 to 71 at p = 0.45 and 17 at '
+            'p = 0.20 when k = 10); Hypothesis (Tier T0–T1): that drop off p = 0.50 extends to larger k, while finite '
+            'algebraic colorings beat n_1 + 1 at k = 3, 4, 5 and both R(5, 5) ∈ [43, 46] and whether lim R(k, k)^(1/k) '
+            'exists inside [√2, 4 − ε] remain open. Any 43-vertex (K_5, K_5)-free coloring refutes '
             'R(5, 5) = 43; any family exceeding base √2 narrows the asymptotic gap from below.'
         ),
     ],
     'readouts': [
         {'label': 'First-Moment Floor n_1(k, p) + 1', 'value': 'R(5, 5) ≥ 12 (n_1 = 11, E = 0.902344)'},
-        {'label': 'Binomial Ceiling & LLL Scale', 'value': 'C(8, 4) = 70 · Spencer LLL scale 14.72'},
-        {'label': 'Published Finite / Book Bracket', 'value': '43 ≤ R(5, 5) ≤ 46 (Exoo 1989; Angeltveit–McKay 2026)'},
+        {
+            'label': 'Binomial Ceiling & LLL Scale',
+            'value': 'C(8, 4) = 70 · Spencer LLL 14.72 (asymptotic leading term, not a bound at this k)',
+        },
+        {
+            'label': 'Finite Bracket (Published k ≤ 5; Folio Elementary Bounds k ≥ 6)',
+            'value': '43 ≤ R(5, 5) ≤ 46 (Exoo 1989; Angeltveit–McKay 2026)',
+        },
         {'label': 'Threshold Status & Open Horizon', 'value': 'OPEN FINITE WINDOW [43, 46] · BASE [√2, 4 − ε]'},
     ],
     'spec_plate': {
@@ -121,7 +128,7 @@ FOLIO = {
         'title': 'Exhaustive K_6 Goodman Check, Paley P(17) over F_17 & Rational First-Moment Thresholds',
         'body': (
             'Scope boundary: verify_m15_ramsey_bounds.py recomputes offline from scratch all 32,768 two-colorings of K_6 '
-            '(minimum 2 monochromatic triangles across 1,760 colorings), the Z_8 circulant {1, 4, 7} witness for R(3, 4) > 8, all 2,380 four-subsets of Paley P(17) for R(4, 4) > 17 (the matching upper bounds are the classical degree arguments, restated and not machine-checked), and rational Fraction union '
+            '(minimum 2 monochromatic triangles across 1,760 colorings), the Z_8 circulant {1, 4, 7} witness for R(3, 4) > 8, all 2,380 four-subsets of Paley P(17) for R(4, 4) > 17 (the matching upper bounds are the classical degree arguments, restated and not machine-checked), five-subset checks on Paley P(37) and P(41), and rational Fraction union '
             'bounds across k ∈ [3..10] and p ∈ [0.20..0.80]. The computer-assisted bounds R(5, 5) ≥ 43 (Exoo 1989), '
             'R(5, 5) ≤ 46 (Angeltveit & McKay 2026), and R(k, k) ≤ (4 − ε)^k (Campos et al. 2026) are reported from '
             'those published papers and are not re-derived by this script.'
@@ -148,8 +155,9 @@ FOLIO = {
         'body': (
             'Paley graphs P(q) on prime powers q ≡ 1 (mod 4) look statistically random in edge density and eigenvalue '
             'spread, and P(17) reaches the sharp threshold 17 = R(4, 4) − 1. Yet Paley constructions do not settle '
-            'R(5, 5): on prime q = 37, P(37) avoids monochromatic 5-cliques yet falls below Exoo’s 42-vertex coloring '
-            '(1989, DOI 10.1002/jgt.3190130113), while on prime q = 41, P(41) already contains monochromatic 5-cliques, '
+            'R(5, 5): as checked offline by verify_m15_ramsey_bounds.py, on prime q = 37, P(37) avoids monochromatic '
+            '5-cliques across all 435,897 five-subsets yet falls below Exoo’s 42-vertex coloring (1989, '
+            'DOI 10.1002/jgt.3190130113), while on prime q = 41, P(41) already contains monochromatic 5-cliques, '
             'illustrating how subtle local correlations separate explicit algebraic graphs from uniform random colorings.'
         ),
     },
@@ -194,8 +202,10 @@ FOLIO = {
             'opus': (
                 'Verification note: twelve primary journal DOIs were checked against Crossref and Scite on 2026-11-21 '
                 'with zero retraction notices; skills/math/m15/verify_m15_ramsey_bounds.py recomputes all 32,768 K_6 '
-                'colorings, the Z_8 witness and K_9 parity bound for R(3, 4) = 9, all 2,380 four-subsets of Paley P(17) '
-                'for R(4, 4) = 18, and rational Fraction union bounds across k = 3..10 and p = 0.20..0.80.'
+                'colorings for R(3, 3) = 6, the Z_8 circulant witness for R(3, 4) > 8, all 2,380 four-subsets of Paley '
+                'P(17) for R(4, 4) > 17 (the matching upper bounds for R(3, 4) = 9 and R(4, 4) = 18 are the classical '
+                'degree arguments, restated and not machine-checked), five-subset checks on Paley P(37) and P(41), and '
+                'rational Fraction union bounds across k = 3..10 and p = 0.20..0.80.'
             ),
         }
     ],
@@ -217,12 +227,13 @@ LONGFORM_DATA = {
         'Seventeen brass pins stand in a circle on an ash pegboard, linked across every pair by taut crimson or indigo '
         'silk threads. Inspect all two thousand three hundred eighty quartets of pins and not one quartet shares a '
         'single thread color. Add an eighteenth pin, however, and every possible lacing contains at least one solid '
-        'crimson quartet or one solid indigo quartet. Young Cambridge logician Frank Plumpton Ramsey uncovered this law '
-        'of unavoidable order shortly before his death at age twenty-six in nineteen thirty. Yet finding the threshold '
-        'for five pins has defeated exhaustive search for decades. Today mathematicians know only that the five-pin '
-        'threshold sits at forty-three, forty-four, forty-five, or forty-six. Stranger still, Paul Erdős showed in '
-        'nineteen forty-seven that tossing a fair coin for each thread beats every constructive recipe known in high '
-        'dimensions.'
+        'crimson quartet or one solid indigo quartet. Frank Plumpton Ramsey showed in nineteen thirty that such '
+        'monochromatic order is unavoidable in general, and Robert Greenwood and Andrew Gleason settled this '
+        'eighteen-pin quartet threshold in nineteen fifty-five. Yet finding the threshold for five pins has resisted '
+        'search for decades: today mathematicians know only that the five-pin threshold sits at forty-three, '
+        'forty-four, forty-five, or forty-six. For general clique size k, Paul Erdős showed in nineteen forty-seven '
+        'that tossing a fair coin for each thread yields exponential lower base √2, showing that a clique-free '
+        'coloring exists without exhibiting one.'
     ),
     'act1_plain_bridge': (
         'In plain words, gather six strangers in a room. Either three of them have all met before, or three of them '
@@ -231,14 +242,14 @@ LONGFORM_DATA = {
         'cluster becomes unavoidable. For clusters of three dots, six is the tipping point. For clusters of four dots, '
         'seventeen dots can dodge every four-dot group, while eighteen dots force one. For clusters of five dots, all '
         'modern computers have narrowed the tipping point to four whole numbers between forty-three and forty-six. At '
-        'large cluster sizes, nobody knows the growth rate, though a twenty twenty-three book method recently pushed '
-        'the eighty-eight-year upper ceiling downward by an exponential step.'
+        'large cluster sizes, nobody knows the growth rate, though a book method posted as a preprint in 2023—eighty-eight '
+        'years after the 1935 upper bound—and published in 2026 pushed the upper ceiling downward by an exponential step.'
     ),
     'act1_body': (
         'Ramsey introduced his theorem in Proceedings of the London Mathematical Society while studying decision '
         'procedures in formal logic (1930, DOI 10.1112/plms/s2-30.1.264). Five years later, Paul Erdős and George '
-        'Szekeres rediscovered the finite graph version in Budapest to show that large point sets in the plane contain '
-        'convex polygons. By picking one pivot vertex and splitting its neighbors into red neighbors and blue neighbors, '
+        'Szekeres (1935) gave a finite graph version in a paper on a combinatorial problem in geometry. '
+        'By picking one pivot vertex and splitting its neighbors into red neighbors and blue neighbors, '
         'they bounded each threshold by the sum of two smaller thresholds, yielding a central binomial ceiling that '
         'grows near powers of four. Twelve years after that, Erdős (1947, DOI 10.1090/S0002-9904-1947-08785-1) flipped '
         'the problem upside down: instead of building a clever coloring by hand, he colored every edge independently by '
@@ -260,8 +271,8 @@ LONGFORM_DATA = {
         '(2026, DOI 10.4007/annals.2026.203.3.4) lowered the exponential base itself below four.'
     ),
     'pullquote': (
-        '"Tossing a fair coin for every edge builds clique-free graphs that no human algebraist has yet matched at '
-        'large scale—while seventeen brass pins modulo seventeen settle four-cliques by pure quadratic symmetry."'
+        '"Tossing a fair coin for every edge gives exponential lower base √2, showing that a clique-free coloring '
+        'exists without exhibiting one—while seventeen brass pins modulo seventeen settle four-cliques by quadratic symmetry."'
     ),
     'chronology': [
         (
@@ -367,16 +378,17 @@ LONGFORM_DATA = {
         (
             'Experiment 3 (High-k Exponential Chasm and Sharp Density Sensitivity at k = 10): Raise Clique Target Size '
             'to k = 10. At balanced p = 0.50, the rational union floor yields existence of a 100-vertex clique-free '
-            'coloring (R(10, 10) ≥ 101, Spencer LLL scale 166.48) against C(18, 9) = 48,620; nudging p by just 0.05 to '
-            '0.45 or 0.55 drops n_1 from 100 to 71, and p = 0.20 drops it to 17.'
+            'coloring (R(10, 10) ≥ 101; Spencer LLL 166.48, an asymptotic leading term, not a bound at this k) against '
+            'C(18, 9) = 48,620; nudging p by just 0.05 to 0.45 or 0.55 drops n_1 from 100 to 71, and p = 0.20 drops it to 17.'
         ),
     ],
     'act4_title': 'Act IV — Imagining Humanity’s Future: Quasirandomness, LP/Computer Bounds & Open Ramsey Horizons',
     'act4_human_ai': (
-        'Ramsey theory forged two tools that now sit across theoretical computer science, coding theory, and '
-        'combinatorial optimization: the probabilistic method (Folio M.03) and algebraic pseudorandomness. Graphs that '
-        'mimic coin flips—such as Paley quadratic-residue graphs—inspire explicit expanders, low-discrepancy samplers, '
-        'and communication networks resilient to localized edge failures, while linear programming and large computer case checks drive modern bounds on finite Ramsey instances, such as Angeltveit and McKay’s 2026 upper bound R(5, 5) ≤ 46.'
+        'Two contrasting ideas run through these bounds: the probabilistic method (Erdős 1947; Folio M.03), which '
+        'shows a clique-free coloring exists by averaging over random colorings, and explicit algebraic witnesses '
+        'such as Paley quadratic-residue graphs (Greenwood & Gleason 1955). On finite Ramsey instances, linear '
+        'programming and large computer case checks narrow the remaining small thresholds, as in Angeltveit and '
+        'McKay’s 2026 upper bound R(5, 5) ≤ 46 (DOI 10.1002/jgt.70029).'
     ),
     'act4_deepening': (
         'Under the Tier T0–T1 evidence discipline of this monograph, three layers stay strictly separated. First, '
@@ -439,8 +451,8 @@ LONGFORM_DATA = {
             'Ramsey. Annals of Mathematics, 203(3), 869–932 (preprint arXiv:2303.09521). DOI: 10.4007/annals.2026.203.3.4.'
         ),
         (
-            'Angeltveit, V., & McKay, B. D. (2026). R(5, 5) ≤ 46. Journal of Graph Theory (preprint arXiv:2409.15709). '
-            'DOI: 10.1002/jgt.70029.'
+            'Angeltveit, V., & McKay, B. D. (2026). R(5, 5) ≤ 46. Journal of Graph Theory, 112(3), 198–208 '
+            '(preprint arXiv:2409.15709). DOI: 10.1002/jgt.70029.'
         ),
         (
             'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the context of citations and '
@@ -494,10 +506,11 @@ DISPATCH = {
     'kicker': 'FRONTIER EXTREMAL COMBINATORICS DISPATCH · RAMSEY NUMBERS & BOOK ALGORITHMS',
     'headline': 'Breaking the Eighty-Eight-Year Base-Four Ceiling While R(5, 5) Narrows to [43, 46]',
     'body': (
-        'For eighty-eight years after Erdős and Szekeres (1935), upper bounds on diagonal Ramsey numbers R(k, k) '
-        'remained at base 4 − o(1). Campos, Griffiths, Morris, and Sahasrabudhe (2026, Annals of Mathematics, '
-        'DOI 10.4007/annals.2026.203.3.4) lowered the exponential base to 4 − ε, giving R(k, k) ≤ (4 − ε)^k via an '
-        'asymmetric book algorithm, while Angeltveit and McKay (2026, DOI 10.1002/jgt.70029) compressed R(5, 5) into [43, 46].'
+        'For eighty-eight years after Erdős and Szekeres (1935), until the 2023 preprint of Campos, Griffiths, Morris, '
+        'and Sahasrabudhe (arXiv:2303.09521; published in 2026 in Annals of Mathematics, DOI 10.4007/annals.2026.203.3.4), '
+        'upper bounds on diagonal Ramsey numbers R(k, k) remained at base 4 − o(1). Their asymmetric book algorithm '
+        'lowered the exponential base to 4 − ε, giving R(k, k) ≤ (4 − ε)^k, while Angeltveit and McKay (2026, '
+        'DOI 10.1002/jgt.70029) compressed R(5, 5) into [43, 46].'
     ),
 }
 
@@ -511,8 +524,8 @@ ES_TRANSLATION = {
         'Números de Ramsey Diagonales: Grafos de Paley, Cotas Aleatorias de Erdős, el Algoritmo del Libro y Brechas Abiertas'
     ),
     'subtitle_es': (
-        'Cómo Frank Ramsey halló orden inevitable en grafos coloreados, cómo Paul Erdős fundó el método '
-        'probabilístico en tres páginas, por qué diecisiete residuos cuadráticos cierran las camarillas de cuatro '
+        'Cómo Frank Ramsey halló orden inevitable en grafos coloreados, cómo Paul Erdős dio una cota inferior '
+        'probabilística en tres páginas, por qué diecisiete residuos cuadráticos cierran las camarillas de cuatro '
         'mientras las de cinco quedan entre cuarenta y tres y cuarenta y seis, y cómo el algoritmo del libro bajó '
         'la base exponencial debajo de cuatro.'
     ),
@@ -528,7 +541,8 @@ ES_TRANSLATION = {
         'Para grupos de cuatro puntos, diecisiete puntos logran esquivar cada cuarteto monocromático, pero dieciocho '
         'puntos fuerzan uno. Para grupos de cinco puntos, las computadoras actuales han acotado el umbral a cuatro '
         'enteros entre cuarenta y tres y cuarenta y seis. En tamaños grandes nadie conoce la tasa de crecimiento, '
-        'aunque en dos mil veintitrés el método del libro redujo exponencialmente un techo de ochenta y ocho años.'
+        'aunque el método del libro—difundido como preprint en 2023, ochenta y ocho años después de la cota de 1935, '
+        'y publicado en 2026—redujo exponencialmente ese techo superior.'
     ),
     'deep_es': (
         'En el argumento probabilístico de Erdős (1947, DOI 10.1090/S0002-9904-1947-08785-1), que da una cota inferior para los números de Ramsey (1930, DOI 10.1112/plms/s2-30.1.264), colorear cada arista de K_n en rojo con probabilidad p produce un '
@@ -536,16 +550,18 @@ ES_TRANSLATION = {
         'racional, existe al menos una coloración sin K_k monocromático, dando R(k, k) ≥ n_1(k, p) + 1 y base '
         'asintótica √2 ≈ 1.414214 (Spencer 1975, DOI 10.1016/0097-3165(75)90071-0, duplicó la constante del prefactor, no la base). '
         'Nuestro script fuera de línea comprueba las 32,768 coloraciones de K_6 con mínimo de 2 triángulos en 1,760 '
-        'casos (Goodman 1959, DOI 10.1080/00029890.1959.11989408), el grafo circulante en Z_8 y la paridad 9 × 3 = 27 '
-        'para R(3, 4) = 9, y los 2,380 subconjuntos de cuatro vértices del grafo de Paley P(17) sobre F_17 para '
-        'R(4, 4) = 18 (Greenwood & Gleason 1955, DOI 10.4153/CJM-1955-001-4). Para k = 5 permanece abierta la '
+        'casos para R(3, 3) = 6 (Goodman 1959, DOI 10.1080/00029890.1959.11989408), el testigo circulante en Z_8 para '
+        'R(3, 4) > 8 y los 2,380 subconjuntos de cuatro vértices del grafo de Paley P(17) sobre F_17 para R(4, 4) > 17 '
+        '(Greenwood & Gleason 1955, DOI 10.4153/CJM-1955-001-4; las cotas superiores correspondientes para R(3, 4) = 9 y '
+        'R(4, 4) = 18 son los argumentos clásicos de grados, enunciados aquí y no comprobados por máquina). Para k = 5 permanece abierta la '
         'ventana 43 ≤ R(5, 5) ≤ 46 (Exoo 1989, DOI 10.1002/jgt.3190130113; Angeltveit & McKay 2026, '
         'DOI 10.1002/jgt.70029), mientras Campos, Griffiths, Morris y Sahasrabudhe (2026, '
         'DOI 10.4007/annals.2026.203.3.4) obtuvieron R(k, k) ≤ (4 − ε)^k con ε > 0 constante. Tanto el entero '
         'R(5, 5) como la existencia de lim R(k, k)^(1/k) en [√2, 4 − ε] siguen abiertos.'
     ),
     'bridge_es': (
-        'Extiende M.03 y M.13 a números de Ramsey diagonales: comprueba R(3, 3) = 6 y R(4, 4) = 18 mediante P(17), '
-        'evalúa pisos racionales de Erdős y acota las brechas abiertas en R(5, 5) y en [√2, 4 − ε].'
+        'Extiende M.03 y M.13 a números de Ramsey diagonales: comprueba R(3, 3) = 6 y los testigos de cota inferior '
+        'R(3, 4) > 8 en Z_8 y R(4, 4) > 17 mediante P(17) (con las cotas superiores clásicas enunciadas, no comprobadas '
+        'por máquina), evalúa pisos racionales de Erdős y expone las brechas abiertas en R(5, 5) y en [√2, 4 − ε].'
     ),
 }

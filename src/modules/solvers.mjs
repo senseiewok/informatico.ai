@@ -1969,7 +1969,7 @@ export function initPlateSolvers(scope = document) {
           barrierOut.textContent = `R(${kVal}, ${kVal}) ≥ ${floorVal} (n_1 = ${n1}, E = ${expFloat.toFixed(6)})`;
         }
         if (fluxOut) {
-          fluxOut.textContent = `C(${2 * kVal - 2}, ${kVal - 1}) = ${esBinom.toLocaleString("en-US")} · Spencer LLL scale ${spencerScale.toFixed(2)}`;
+          fluxOut.textContent = `C(${2 * kVal - 2}, ${kVal - 1}) = ${esBinom.toLocaleString("en-US")} · Spencer LLL ${spencerScale.toFixed(2)} (asymptotic leading term, not a bound at this k)`;
         }
         if (ethOut) {
           if (kVal === 3) {

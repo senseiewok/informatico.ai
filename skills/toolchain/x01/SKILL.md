@@ -22,8 +22,8 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Primary Scite Anchor DOI**: https://doi.org/10.1080/10867651.1996.10487458 (Scite Report: https://scite.ai/reports/10.1080/10867651.1996.10487458)
 
 ## 2. Small-Studio & Independent-Practitioner Open-Tool Workflow
-- **EN**: Zero-Cost Studio Workflow (Blender 4.2 + FreeCAD 1.0 + Python 3 stdlib): Run make_x01.py to emit x01_artifact.glb (2,716 B), faceted Part-21 x01_artifact.step (10,356 B), and x01_artifact.3mf (1,672 B); run verify_x01 to check non-manifold seams, flipped normals, and chunk bounds in < 0.05s before opening a slicer or BIM model.
-- **ES-MX**: Flujo de Estudio sin Costo (Blender 4.2 + FreeCAD 1.0 + Python 3 stdlib): Ejecuten make_x01.py para generar x01_artifact.glb (2,716 B), x01_artifact.step facetado Parte 21 (10,356 B) y x01_artifact.3mf (1,672 B); auditen cualquier malla .glb en busca de bordes no-variedad, normales invertidas o bloques corruptos en < 0.05s antes de enviarla a corte o BIM.
+- **EN**: Zero-Cost Studio Workflow (Blender 4.2 + FreeCAD 1.0 + Python 3 stdlib): Run make_x01.py to emit x01_artifact.glb (2,716 B), faceted Part-21 x01_artifact.step (10,356 B), and x01_artifact.3mf (1,672 B); run verify_x01 to check non-manifold seams, flipped normals, and chunk bounds on those three artifacts before opening a slicer or BIM model.
+- **ES-MX**: Flujo de Estudio sin Costo (Blender 4.2 + FreeCAD 1.0 + Python 3 stdlib): Ejecuten make_x01.py para generar x01_artifact.glb (2,716 B), x01_artifact.step facetado Parte 21 (10,356 B) y x01_artifact.3mf (1,672 B); ejecuten verify_x01 para revisar en esos tres artefactos bordes no-variedad, normales invertidas y bloques corruptos antes de abrir un laminador o un modelo BIM.
 
 ## 3. Tool-Neutral Agent Packet & Security Boundary (`security-runtime`)
 1. **Generate Deterministic 3D Artifacts Locally**: Run `python skills/toolchain/x01/make_x01.py` inside the repository working directory to emit `src/toolchain/x01/files/x01_artifact.*` and `manifest.json`.

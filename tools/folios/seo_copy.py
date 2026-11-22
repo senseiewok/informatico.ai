@@ -357,9 +357,9 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "m15": (
         "Diagonal Ramsey Numbers & the Book Algorithm",
-        "How Paley quadratic residues, Erdős random coin-flip floors and the 2023 book algorithm frame diagonal Ramsey numbers, with R(5, 5) open in [43, 46].",
+        "How Paley quadratic residues, Erdős random coin-flip floors and the 2026 book algorithm frame diagonal Ramsey numbers, with R(5, 5) open in [43, 46].",
         "Números de Ramsey Diagonales y Algoritmo del Libro",
-        "Cómo los residuos de Paley, los pisos aleatorios de Erdős y el algoritmo del libro de 2023 acotan los números de Ramsey, con R(5, 5) en [43, 46].",
+        "Cómo los residuos de Paley, los pisos aleatorios de Erdős y el algoritmo del libro de 2026 acotan los números de Ramsey, con R(5, 5) en [43, 46].",
     ),
 }
 
@@ -387,7 +387,7 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
         "Mathematics Essays: Lean 4 Repositories & More | Informatico.ai",
         "Fifteen interactive essays on mathematics: Fermat's Last Theorem, diagonal Ramsey bounds, zero-error graph capacity, sphere packing and optimal transport.",
         "Ensayos de Matemáticas: Repositorios Lean 4 y Más | Informatico.ai",
-        "Quince ensayos interactivos de matemáticas: el Último Teorema de Fermat, números de Ramsey, capacidad sin error, empaquetamiento de esferas y control.",
+        "Quince ensayos interactivos de matemáticas: Último Teorema de Fermat, números de Ramsey, capacidad sin error, empaquetamiento de esferas y transporte óptimo.",
     ),
     "bounties": (
         "Grand Challenges & Open Problems Crucible | Informatico.ai",

@@ -103,6 +103,14 @@ class X01VerifierParityTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Accessor 4 span"):
             toolchain_uga.parse_glb(_pack_custom_glb(g_extra_acc, bin_chunk))
 
+        # 4b. Integer fields must be integers, as in the browser parser: a string, a fraction and a zero count
+        for field, value, needle in (("byteOffset", "0", "must be an integer"), ("count", 0.5, "must be an integer"),
+                                     ("count", True, "must be an integer"), ("count", 0, "Accessor 0 span")):
+            g_bad_int = json.loads(json.dumps(gltf_base))
+            g_bad_int["accessors"][0][field] = value
+            with self.assertRaisesRegex(ValueError, needle, msg=f"{field}={value!r}"):
+                toolchain_uga.parse_glb(_pack_custom_glb(g_bad_int, bin_chunk))
+
         # 5. Wrong POSITION type (SCALAR instead of VEC3) is rejected
         g_bad_type = json.loads(json.dumps(gltf_base))
         g_bad_type["accessors"][0]["type"] = "SCALAR"
@@ -124,21 +132,39 @@ class X01VerifierParityTests(unittest.TestCase):
     def test_step_comments_strings_directions_pinch_shells_and_3mf_transforms(self) -> None:
         step_txt = (self.files_dir / "x01_artifact.step").read_text(encoding="utf-8")
 
-        # 1a. Nested ISO 10303-21 block comment cannot spoof SI_UNIT(.MILLI.,.METRE.)
-        nested_spoof = step_txt.replace(
+        # 1a. A millimeter unit that exists only inside a comment cannot stand in for the real one.
+        #     The only difference from a valid file is the commented text: no other token can trigger the rejection.
+        commented_only = step_txt.replace(
             "SI_UNIT(.MILLI.,.METRE.)",
-            "CONVERSION_BASED_UNIT('INCH',#5) /* outer /* inner */ SI_UNIT(.MILLI.,.METRE.) */",
+            "SI_UNIT($,.METRE.) /* SI_UNIT(.MILLI.,.METRE.) */",
         )
+        self.assertNotEqual(commented_only, step_txt)
+        self.assertIn("SI_UNIT(.MILLI.,.METRE.)", commented_only)
         with self.assertRaisesRegex(AssertionError, "SI_UNIT"):
-            parse_step_faceted_brep(nested_spoof)
+            parse_step_faceted_brep(commented_only)
 
-        # 1b. String literal inside PRODUCT(...) cannot spoof SI_UNIT(.MILLI.,.METRE.)
-        str_spoof = step_txt.replace(
+        # 1a'. A comment opened inside a comment is refused outright: where it ends decides what text is live.
+        nested = step_txt.replace(
+            "SI_UNIT(.MILLI.,.METRE.)",
+            "SI_UNIT($,.METRE.) /* outer /* inner */ SI_UNIT(.MILLI.,.METRE.) */",
+        )
+        with self.assertRaisesRegex(AssertionError, "Nested"):
+            parse_step_faceted_brep(nested)
+
+        # 1b. A millimeter unit that exists only inside a string literal cannot stand in for the real one.
+        #     The real unit is replaced first, then the spoof is planted, so the only MILLI token left is quoted.
+        self.assertIn("'Educational CAD Solid'", step_txt)
+        str_spoof = step_txt.replace("SI_UNIT(.MILLI.,.METRE.)", "SI_UNIT($,.METRE.)").replace(
             "'Educational CAD Solid'",
             "'SI_UNIT(.MILLI.,.METRE.)'",
-        ).replace("SI_UNIT(.MILLI.,.METRE.)", "SI_UNIT($,.METRE.)")
+        )
+        self.assertEqual(str_spoof.count("SI_UNIT(.MILLI.,.METRE.)"), 1)
         with self.assertRaisesRegex(AssertionError, "SI_UNIT"):
             parse_step_faceted_brep(str_spoof)
+
+        # 1c. Control: the unmodified file is accepted, so the three rejections above are about the edits.
+        ok_v, ok_t, _ = parse_step_faceted_brep(step_txt)
+        self.assertEqual((len(ok_v), len(ok_t)), (14, 24))
 
         # 2a. Unnormalized nearly orthogonal DIRECTION (1000, 0, -1) is rejected after normalization
         tilted_dir = step_txt.replace(
@@ -245,6 +271,19 @@ class X01VerifierParityTests(unittest.TestCase):
         mjs_path = ROOT / "src" / "modules" / "glb-viewer.mjs"
         mjs = mjs_path.read_text(encoding="utf-8")
         self.assertIn("glTF v2 · 2,716 B (PASS)", mjs)
+        # The readouts in the viewer are fixed text. Tie them to the artifact and to the mesh, so that a changed
+        # artifact or a changed flip cannot leave the text stale.
+        self.assertEqual((self.files_dir / "x01_artifact.glb").stat().st_size, 2716)
+        tris = [tuple(t) for t in toolchain_uga.build_x01_geometry()["triangles"]]
+        a, b, c = tris[0]
+        flipped = [(a, c, b)] + tris[1:]
+        directed: dict[tuple[int, int], int] = {}
+        for t in flipped:
+            for e in ((t[0], t[1]), (t[1], t[2]), (t[2], t[0])):
+                directed[e] = directed.get(e, 0) + 1
+        duplicated = sum(1 for n in directed.values() if n > 1)
+        unpaired = sum(1 for (u, v) in directed if (v, u) not in directed)
+        self.assertEqual((duplicated, unpaired), (3, 3))
         self.assertNotIn("1,708 B", mjs)
         self.assertIn("3 DUP / 3 UNPAIRED", mjs)
         self.assertIn("(11.0 / 12.0) * vol", mjs)
@@ -281,14 +320,17 @@ class X01VerifierParityTests(unittest.TestCase):
             "  const out = Buffer.concat([hdr, jb, binPart]);\n"
             "  return out.buffer.slice(out.byteOffset, out.byteOffset + out.byteLength);\n"
             "}\n"
+            "// Control: an unmodified repack must parse, so a rejection below is about the mutation.\n"
+            "try { parseGlbBuffer(repack(() => {})); } catch (e) { console.error('control failed: ' + e.message); process.exit(3); }\n"
             "for (const bad of [\n"
             "  repack((g) => { g.accessors[0].byteOffset = 24; }),\n"
             "  repack((g) => { g.accessors[0].byteOffset = '0'; }),\n"
             "  repack((g) => { g.accessors[0].count = 0.5; }),\n"
             "]) {\n"
-            "  let caught = false;\n"
-            "  try { parseGlbBuffer(bad); } catch { caught = true; }\n"
-            "  if (!caught) process.exit(2);\n"
+            "  let message = null;\n"
+            "  try { parseGlbBuffer(bad); } catch (e) { message = String(e.message); }\n"
+            "  if (message === null) process.exit(2);\n"
+            "  if (!message.includes('Accessor[0]')) { console.error('wrong rejection: ' + message); process.exit(4); }\n"
             "}\n"
             "process.stdout.write(stepOut);\n"
         )
