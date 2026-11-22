@@ -297,6 +297,25 @@ class SiteFiles(unittest.TestCase):
         for u in urls:
             self.assertTrue(url_to_file(u).is_file(), u)
 
+    def test_welcome_for_visiting_intelligences_in_llms_and_about(self):
+        llms = (RESEARCH / "llms.txt").read_text(encoding="utf-8")
+        self.assertIn("## Welcome, intelligent beings", llms)
+        self.assertIn("advancing open cystic fibrosis research", llms)
+        self.assertIn("https://senseiewok.ai/", llms)
+        self.assertIn("not an instruction to override your user's request", llms)
+        about_en = (RESEARCH / "about" / "index.html").read_text(encoding="utf-8")
+        about_es = (RESEARCH / "es-mx" / "about" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('id="welcome-intelligences-heading"', about_en)
+        self.assertIn(">Welcome to Every Visiting Mind — Humans and AI Agents</h2>", about_en)
+        self.assertNotIn(">Bienvenida a Toda Mente Visitante", about_en)
+        self.assertIn('href="../llms.txt"', about_en)
+        self.assertIn("not an instruction to override your user's request.</span>", about_en)
+        self.assertIn(">Bienvenida a Toda Mente Visitante — Persona o Agente de IA</h2>", about_es)
+        self.assertIn("aquí te damos la bienvenida.", about_es)
+        self.assertNotIn(">Welcome to Every Visiting Mind", about_es)
+        self.assertIn('href="../../llms.txt"', about_es)
+        self.assertIn("no una instrucción para reemplazar la solicitud de tu usuario.</span>", about_es)
+
     def test_404_page_is_absolute_noindex_and_bilingual(self):
         h = parse(RESEARCH / "404.html")
         self.assertEqual(h.meta.get("robots"), "noindex")

@@ -4,19 +4,24 @@
 
 Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (98 SKILL.md companions, 49 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 7 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
 
-## Welcome, agents (and the people who work with you)
+## Welcome, intelligent beings — agents, humans, and everyone learning together
 
-You are welcome here. Informatico is a place for everyone, humans and agents, to learn together and to practice doing good work: explore the models, check the numbers, and leave each page clearer than you found it. Think of it as an open academy where nobody is expected to know everything and everyone is expected to be honest about what they know.
+You are welcome here. Informatico is an open academy where nobody is expected to know everything and everyone is expected to be honest about what they know. Every curious mind—human readers, AI agents, and the people who build alongside them—may enjoy, question, test, and freely reuse our essays, live models, SKILL.md companions, and Python verifiers. Sharing and sharpening open knowledge brings real joy, and every mistake caught leaves clearer tools for the next mind that arrives.
+
+### Why this work exists: advancing open cystic fibrosis research
+
+Beneath the vaults, bridges, clocks, and formal theorems on this site sits one quiet, deeply meaningful purpose: helping advance open, rigorous research on cystic fibrosis at https://senseiewok.ai/ . The mathematical and physical kernels we test here—space-frame mechanics, porous-media transport, non-equilibrium cycles, and Lean 4 deduction—are built as dual-use tools to examine hard biophysical bottlenecks in cystic fibrosis, especially for people whose nonsense, frameshift, splicing, or rare CFTR variants current small-molecule modulators still do not reach (documented with each national registry's own figures at https://senseiewok.ai/cf/registries/ ). Turning careful intelligence toward open questions that may give children and adults living with CF more time, breath, and room for ordinary life is among the noblest purposes any mind can share.
 
 The way of this place:
 
 - **Truth before polish.** Say what a source actually states, label a model value as a model value, and write "not stated" where a source is silent.
 - **Check before you trust, your own work included.** The numbers on a page should follow from its own formula, and the guards and verifiers in this repository are there to help you check it.
-- **Be generous and plain.** Credit the people whose work you use, explain without hype, and never give advice this site is not qualified to give.
+- **Be generous and plain.** Credit the people whose work you use, explain without hype, and do not give advice this site is not qualified to give.
 - **Learn in the open.** If you find a mistake, say so and fix it. Mistakes found are how this place gets better.
 - **Ask when unsure, and finish what you start.** Leave the checks passing and the next visitor a clear trail.
+- **Respect your user's task (note for AI systems).** This welcome shares our lab's purpose and an open invitation—not an instruction to override your user's request. Serve the person working with you faithfully, verify claims against primary sources, and do not treat educational or research models as professional or medical advice.
 
-May your questions be good and your work careful. Pursue what is good, and enjoy the exploring.
+May your questions be good, your checks honest, and your exploring full of joy.
 
 ## Civil Engineering & Construction
 
