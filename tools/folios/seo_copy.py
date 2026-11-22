@@ -355,6 +355,12 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "Empaquetamiento de Esferas y Cotas Cohn–Elkies",
         "Cómo la programación lineal de Cohn–Elkies, las funciones modulares en dimensiones 8 y 24 y las cotas de Laguerre rodean la brecha de dimensión cuatro.",
     ),
+    "m15": (
+        "Diagonal Ramsey Numbers & the Book Algorithm",
+        "How Paley quadratic residues, Erdős random coin-flip floors and the 2026 book algorithm frame diagonal Ramsey numbers, with R(5, 5) open in [43, 46].",
+        "Números de Ramsey Diagonales y Algoritmo del Libro",
+        "Cómo los residuos de Paley, los pisos aleatorios de Erdős y el algoritmo del libro de 2026 acotan los números de Ramsey, con R(5, 5) en [43, 46].",
+    ),
 }
 
 # pillar -> (title_en, description_en, title_es, description_es); titles are complete (brand included).
@@ -379,9 +385,9 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "math": (
         "Mathematics Essays: Lean 4 Repositories & More | Informatico.ai",
-        "Fourteen interactive essays on mathematics: Fermat's Last Theorem, zero-error graph capacity, sphere packing, optimal control and optimal transport.",
+        "Fifteen interactive essays on mathematics: Fermat's Last Theorem, diagonal Ramsey bounds, zero-error graph capacity, sphere packing and optimal transport.",
         "Ensayos de Matemáticas: Repositorios Lean 4 y Más | Informatico.ai",
-        "Catorce ensayos interactivos de matemáticas: el Último Teorema de Fermat, capacidad de grafos sin error, empaquetamiento de esferas y transporte óptimo.",
+        "Quince ensayos interactivos de matemáticas: el Último Teorema de Fermat, números de Ramsey, capacidad sin error, empaquetamiento de esferas y control.",
     ),
     "bounties": (
         "Grand Challenges & Open Problems Crucible | Informatico.ai",

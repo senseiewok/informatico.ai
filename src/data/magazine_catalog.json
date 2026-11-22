@@ -1,7 +1,7 @@
 {
   "version": "7.0.0",
-  "title": "Informatico.ai — 7-Volume, 56-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
-  "total_folios": 56,
+  "title": "Informatico.ai — 7-Volume, 57-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
+  "total_folios": 57,
   "pillars": {
     "engineering": [
       {
@@ -6637,6 +6637,120 @@
           "retracted": false,
           "summary": "Scite Smart Citation Index entry for Cohn & Elkies 2003, \"New upper bounds on sphere packings I\" (Annals of Mathematics, DOI 10.4007/annals.2003.157.689), fetched 2026-11-21: 377 citing publications (3 supporting, 541 mentioning, 0 contrasting) and no retraction notice. These counts describe that foundational paper, not this folio."
         }
+      },
+      {
+        "folio_id": "M.15",
+        "slug": "m15",
+        "pillar": "math",
+        "category_code": "M",
+        "parent_folios": [
+          "M.03",
+          "M.13"
+        ],
+        "lineage_mode": "CONTINUATION · Extends M.03 Extremal Combinatorics & M.13 Graph Packing Bounds",
+        "title": "Diagonal Ramsey Numbers: Paley Colorings, Erdős Random Floors, the Book Algorithm & Open Gaps",
+        "subtitle": "How Frank Ramsey uncovered unavoidable order inside colored graphs, how Paul Erdős launched probabilistic combinatorics in three pages, why seventeen quadratic residues settle four-cliques while five-cliques sit between forty-three and forty-six, and how an asymmetric book algorithm broke the base-four ceiling.",
+        "date_published": "2026-11-21",
+        "date_redated": "2026-11-21",
+        "current_edition": "REV 1.0",
+        "status_badge": "RAMSEY EXTREMAL BOUNDS · REV 1.0",
+        "primary_kernel": "skills/math/m15/verify_m15_ramsey_bounds.py",
+        "governing_law": "E[X_k(n, p)] = C(n, k)[p^C(k,2) + (1 − p)^C(k,2)] · √2 ≤ lim inf R(k,k)^(1/k) ≤ lim sup R(k,k)^(1/k) ≤ 4 − ε",
+        "colophon": {
+          "identifier": "M.15 · Diagonal Ramsey Numbers & Book Bounds · REV 1.0",
+          "kernels": "Goodman K_6 Multiplicity · Paley P(17) over F_17 · Rational First-Moment Union Bound",
+          "benchmarks": "R(3, 3) = 6 (1,760 extremal K_6 colorings at 2 triangles) · R(4, 4) = 18 via P(17) · 43 ≤ R(5, 5) ≤ 46 (OPEN) · n_1(5, 0.50) = 11 vs C(8, 4) = 70",
+          "bridge": "Extends M.03/M.13 · Probabilistic existence, algebraic pseudorandomness and asymmetric density boosting"
+        },
+        "sliders": [
+          {
+            "label": "Clique Target Size (k)",
+            "min": 3,
+            "max": 10,
+            "step": 1,
+            "value": 5,
+            "unit": "k = "
+          },
+          {
+            "label": "Red Edge Density (p)",
+            "min": 0.2,
+            "max": 0.8,
+            "step": 0.05,
+            "value": 0.5,
+            "unit": "p = "
+          }
+        ],
+        "steps": [
+          "Stage 1 (Small Settled Thresholds and Goodman Multiplicity, 1930–1959): Frank Ramsey (1930, DOI 10.1112/plms/s2-30.1.264) showed that every two-coloring of a large enough complete graph contains a monochromatic k-clique. On five vertices, a red pentagon C_5 and its blue pentagram complement avoid monochromatic triangles, whereas on K_6 Goodman’s degree identity (1959, DOI 10.1080/00029890.1959.11989408) gives T_mono = 20 − (1/2)∑ d_r(v)(5 − d_r(v)) ≥ 2 across all 32,768 colorings (attained 1,760 times), pinning R(3, 3) = 6. On eight vertices, the circulant step set {1, 4, 7} avoids red K_3 and blue K_4, while forced 3-regularity on K_9 gives odd degree sum 9 × 3 = 27, pinning R(3, 4) = 9.",
+          "Stage 2 (Quadratic Residues on F_17 and the Open Five-Clique Window, 1955–2026): Greenwood and Gleason (1955, DOI 10.4153/CJM-1955-001-4) colored K_17 by connecting u and v in red whenever (v − u) mod 17 lies in the quadratic residue set {1, 2, 4, 8, 9, 13, 15, 16}. Multiplication by non-residue 3 mod 17 swaps red and blue edges, yielding strongly regular Paley graph P(17) = SRG(17, 8, 3, 4) with zero monochromatic K_4 across all 2,380 four-subsets; combining with R(4, 4) ≤ R(3, 4) + R(4, 3) = 18 settles R(4, 4) = 18. By contrast, R(5, 5) stays open between 43 (Exoo 1989, DOI 10.1002/jgt.3190130113) and 46 (Angeltveit & McKay 2026, DOI 10.1002/jgt.70029).",
+          "Stage 3 (Erdős First-Moment Floor, Convexity at p = 1/2, and Spencer’s Local Lemma, 1947–1975): Paul Erdős (1947, DOI 10.1090/S0002-9904-1947-08785-1) colored edges independently with red probability p, giving expected monochromatic k-cliques E[X_k(n, p)] = C(n, k)[p^C(k,2) + (1 − p)^C(k,2)]. Whenever E[X_k(n, p)] < 1, at least one coloring avoids monochromatic K_k, so R(k, k) ≥ n_1(k, p) + 1. Convexity of p^m + (1 − p)^m minimizes E[X_k] at p = 0.50, yielding asymptotic base √2 ≈ 1.414214; Joel Spencer (1975, DOI 10.1016/0097-3165(75)90071-0) doubled the prefactor to (√2/e) k 2^(k/2) via the Lovász Local Lemma.",
+          "Stage 4 (Asymmetric Book Algorithm, Tier T0–T1 Hypothesis, and Falsification Conditions, 1988–2026): Thomason (1988, DOI 10.1002/jgt.3190120406), Conlon (2009, DOI 10.4007/annals.2009.170.941), and Sah (2023, DOI 10.1215/00127094-2022-0048) shaved sub-exponential factors off Erdős–Szekeres C(2k − 2, k − 1) < 4^k. Campos, Griffiths, Morris, and Sahasrabudhe (2026, DOI 10.4007/annals.2026.203.3.4) achieved an exponential reduction R(k, k) ≤ (4 − ε)^k for a constant ε > 0 via an asymmetric book algorithm. Hypothesis (Tier T0–T1): skewing p off 0.50 drops n_1(k, p) for every k ≥ 5 (from 100 at p = 0.50 to 71 at p = 0.45 and 17 at p = 0.20 when k = 10), yet finite algebraic colorings beat n_1 + 1 at k = 3, 4, 5 while leaving both R(5, 5) ∈ [43, 46] and whether lim R(k, k)^(1/k) exists inside [√2, 4 − ε] open. Any 43-vertex (K_5, K_5)-free coloring refutes R(5, 5) = 43; any family exceeding base √2 narrows the asymptotic gap from below."
+        ],
+        "readouts": [
+          {
+            "label": "First-Moment Floor n_1(k, p) + 1",
+            "value": "R(5, 5) ≥ 12 (n_1 = 11, E = 0.902344)"
+          },
+          {
+            "label": "Binomial Ceiling & LLL Scale",
+            "value": "C(8, 4) = 70 · Spencer LLL scale 14.72"
+          },
+          {
+            "label": "Published Finite / Book Bracket",
+            "value": "43 ≤ R(5, 5) ≤ 46 (Exoo 1989; Angeltveit–McKay 2026)"
+          },
+          {
+            "label": "Threshold Status & Open Horizon",
+            "value": "OPEN FINITE WINDOW [43, 46] · BASE [√2, 4 − ε]"
+          }
+        ],
+        "spec_plate": {
+          "division": "EXTREMAL & PROBABILISTIC COMBINATORICS / RAMSEY MULTIPLICITY & DENSITY",
+          "title": "Exhaustive K_6 Goodman Check, Paley P(17) over F_17 & Rational First-Moment Thresholds",
+          "body": "Scope boundary: verify_m15_ramsey_bounds.py recomputes offline from scratch all 32,768 two-colorings of K_6 (minimum 2 monochromatic triangles across 1,760 colorings), the Z_8 circulant {1, 4, 7} and 9-vertex parity bound for R(3, 4) = 9, all 2,380 four-subsets of Paley P(17) for R(4, 4) = 18, and rational Fraction union bounds across k ∈ [3..10] and p ∈ [0.20..0.80]. The computer-assisted bounds R(5, 5) ≥ 43 (Exoo 1989), R(5, 5) ≤ 46 (Angeltveit & McKay 2026), and R(k, k) ≤ (4 − ε)^k (Campos et al. 2026) are reported from those published papers and are not re-derived by this script.",
+          "meta": "Primary anchors: Ramsey 1930 (DOI 10.1112/plms/s2-30.1.264) · Erdős 1947 (DOI 10.1090/S0002-9904-1947-08785-1) · Greenwood & Gleason 1955 (DOI 10.4153/CJM-1955-001-4) · Campos, Griffiths, Morris & Sahasrabudhe 2026 (DOI 10.4007/annals.2026.203.3.4) · Angeltveit & McKay 2026 (DOI 10.1002/jgt.70029)"
+        },
+        "sidenote_1": {
+          "kicker": "SIDENOTE M.15-A · WHY INTEGER PLATEAUS APPEAR AT k = 3 AND k = 4",
+          "body": "Although the continuous expectation E[X_k(n, p)] = C(n, k)[p^m + (1 − p)^m] attains a strict minimum at p = 0.50 for every k ≥ 3 and n ≥ k, its integer cutoff n_1(k, p) = max{n : E[X_k(n, p)] < 1} rounds down to whole vertices. At k = 3, E[X_3(4, 0.50)] = 4 × (1/8 + 1/8) = 1, so strict inequality < 1 holds only up to n_1 = 3 across the entire slider interval [0.20, 0.80]; at k = 4, n_1 = 6 stays flat across [0.40, 0.60]. From k = 5 through k = 10, the 0.05 step grid resolves a single peak at p = 0.50."
+        },
+        "sidenote_2": {
+          "kicker": "SIDENOTE M.15-B · PALEY QUADRATIC RESIDUES STOP AT FOUR-CLIQUES",
+          "body": "Paley graphs P(q) on prime powers q ≡ 1 (mod 4) look statistically random in edge density and eigenvalue spread, and P(17) reaches the sharp threshold 17 = R(4, 4) − 1. Yet Paley constructions do not settle R(5, 5): on prime q = 37, P(37) avoids monochromatic 5-cliques yet falls below Exoo’s 42-vertex coloring (1989, DOI 10.1002/jgt.3190130113), while on prime q = 41, P(41) already contains monochromatic 5-cliques, illustrating how subtle local correlations separate explicit algebraic graphs from uniform random colorings."
+        },
+        "skill": {
+          "filename": "diagonal-ramsey-paley-book-bounds-SKILL.md",
+          "name": "diagonal-ramsey-paley-book-bounds",
+          "description": "AI-agnostic extremal and probabilistic combinatorics skill for diagonal Ramsey numbers R(k, k), Goodman triangle multiplicity, Paley P(17), rational Erdos first-moment floors, and asymmetric book bounds.",
+          "rules": [
+            "Require strict inequality E[X_k(n, p)] = C(n, k) * (p^C(k,2) + (1 - p)^C(k,2)) < 1 in rational arithmetic when computing the first-moment witness n_1(k, p), since E = 1 (as at k = 3, n = 4, p = 0.50) permits constant-1 random variables with zero clique-free colorings.",
+            "Distinguish continuous expectation minimization at p = 0.50 from integer quantization plateaus of n_1(k, p) at k = 3 (n_1 = 3 across [0.20, 0.80]) and k = 4 (n_1 = 6 across [0.40, 0.60]).",
+            "Verify R(3, 3) = 6, R(3, 4) = 9, and R(4, 4) = 18 via explicit witnesses (C_5, Z_8 circulant {1, 4, 7}, and self-complementary Paley P(17) over F_17) paired with Goodman multiplicity and degree-sum parity.",
+            "Keep R(5, 5) explicitly labeled OPEN inside [43, 46] (Exoo 1989; Angeltveit & McKay 2026) and state the asymptotic root bracket as lim inf >= sqrt(2) and lim sup <= 4 - epsilon (Campos et al. 2026) without assuming the limit exists or inventing a numerical value for epsilon."
+          ]
+        },
+        "revisions": [
+          {
+            "edition": "REV 1.0",
+            "date": "2026-11-21",
+            "summary": "REV 1.0 (Published 2026-11-21): Volume VII Mathematics monograph continuing Folios M.03 & M.13 across Ramsey (1930), Erdős–Szekeres (1935), Erdős (1947), Greenwood–Gleason (1955), Goodman (1959), Spencer (1975), Thomason (1988), Exoo (1989), McKay–Radziszowski (1995), Conlon (2009), Sah (2023), Campos–Griffiths–Morris–Sahasrabudhe (2026), and Angeltveit–McKay (2026).",
+            "opus": "Verification note: twelve primary journal DOIs were checked against Crossref and Scite on 2026-11-21 with zero retraction notices; skills/math/m15/verify_m15_ramsey_bounds.py recomputes all 32,768 K_6 colorings, the Z_8 witness and K_9 parity bound for R(3, 4) = 9, all 2,380 four-subsets of Paley P(17) for R(4, 4) = 18, and rational Fraction union bounds across k = 3..10 and p = 0.20..0.80."
+          }
+        ],
+        "volume": 7,
+        "volume_code": "VOL. 07",
+        "reading_time": "23 MIN READ",
+        "word_count": "4,900 WORDS",
+        "scite": {
+          "doi": "10.1112/plms/s2-30.1.264",
+          "fetched_on": "2026-11-21",
+          "citing_publications": 2255,
+          "supporting": 4,
+          "mentioning": 845,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index entry for Ramsey 1930, \"On a Problem of Formal Logic\" (Proceedings of the London Mathematical Society, DOI 10.1112/plms/s2-30.1.264), fetched 2026-11-21: 2,255 citing publications (4 supporting, 845 mentioning, 0 contrasting) and no retraction notice. These counts describe that foundational paper, not this folio."
+        }
       }
     ]
   },
@@ -6760,9 +6874,9 @@
       "volume": 7,
       "code": "VOL. 07",
       "roman": "Volume VII",
-      "kicker": "VOLUME VII (VOL. 07) · POROELASTICITY, SUCTION, CONCRETE FRACTURE, BRIDGE SCOUR, THIN SHELLS, GRAPH CAPACITY & SPHERE PACKING · 8 FOLIOS",
-      "title": "Poroelasticity, Suction Stress, Concrete Size Effect, Bridge Pier Scour, Isler and Candela Shells, Shannon Capacity & Sphere Packing",
-      "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), Engineering Folio E.15 (Hillerborg fictitious crack process zones, Bažant Type II Size Effect Law, and Bažant–Kazemi fracture energy regression in concrete), Engineering Folio E.16 (Shields incipient sediment motion, Sheppard–Melville horseshoe-vortex pier scour, and Melville–Chiew flood-duration time-scale lag), Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns), Architecture Folio A.14 (Félix Candela's doubly-ruled hyperbolic paraboloid concrete umbrellas, Pucher flat-projection membrane shear, and cantilevered edge boundaries), Mathematics Folio M.13 (Shannon zero-error graph capacity, Lovász's orthonormal theta sandwich, Haemers's rank-7 Schläfli separation, and the open seven-cycle gap), and Mathematics Folio M.14 (Sphere packing, Cohn–Elkies Fourier linear programming, Viazovska modular functions in dimensions 8 and 24, and the open dimension-4 gap).",
+      "kicker": "VOLUME VII (VOL. 07) · POROELASTICITY, SUCTION, CONCRETE FRACTURE, BRIDGE SCOUR, THIN SHELLS, GRAPH CAPACITY, SPHERE PACKING & RAMSEY BOUNDS · 9 FOLIOS",
+      "title": "Poroelasticity, Suction Stress, Concrete Size Effect, Bridge Pier Scour, Isler and Candela Shells, Shannon Capacity, Sphere Packing & Diagonal Ramsey Bounds",
+      "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), Engineering Folio E.15 (Hillerborg fictitious crack process zones, Bažant Type II Size Effect Law, and Bažant–Kazemi fracture energy regression in concrete), Engineering Folio E.16 (Shields incipient sediment motion, Sheppard–Melville horseshoe-vortex pier scour, and Melville–Chiew flood-duration time-scale lag), Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns), Architecture Folio A.14 (Félix Candela's doubly-ruled hyperbolic paraboloid concrete umbrellas, Pucher flat-projection membrane shear, and cantilevered edge boundaries), Mathematics Folio M.13 (Shannon zero-error graph capacity, Lovász's orthonormal theta sandwich, Haemers's rank-7 Schläfli separation, and the open seven-cycle gap), Mathematics Folio M.14 (Sphere packing, Cohn–Elkies Fourier linear programming, Viazovska modular functions in dimensions 8 and 24, and the open dimension-4 gap), and Mathematics Folio M.15 (Diagonal Ramsey numbers, Goodman K_6 multiplicity, Paley P(17) over F_17, Erdős random floors, the 2026 exponential book algorithm, and the open R(5, 5) ∈ [43, 46] window).",
       "cadence": "Verifier-gated Living Edition release",
       "folios": [
         "e13",
@@ -6772,7 +6886,8 @@
         "a13",
         "a14",
         "m13",
-        "m14"
+        "m14",
+        "m15"
       ]
     }
   ]

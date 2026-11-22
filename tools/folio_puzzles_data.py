@@ -1496,6 +1496,26 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
             ("KEPLER", "Astrónomo cuya conjetura de apilamiento de 1611 en 3D se formalizó en 2017", "Acto I"),
         ],
     },
+    "m15": {
+        "title_en": "Folio M.15 · Diagonal Ramsey Numbers, Paley Graphs & Book Algorithm Crossword",
+        "title_es": "Folio M.15 · Crucigrama de Números de Ramsey, Grafos de Paley y Algoritmo del Libro",
+        "en": [
+            ("RAMSEY", "Cambridge logician whose 1930 partition theorem showed large colored graphs contain monochromatic cliques", "Act I"),
+            ("ERDOS", "Mathematician whose 1947 random coin-flip union bound anchored the root-two Ramsey floor", "Act I"),
+            ("PALEY", "Quadratic-residue graph P(17) over F_17 with zero monochromatic four-cliques", "Act II"),
+            ("GOODMAN", "Author of the 1959 vertex-degree formula counting monochromatic triangles in K_6", "Act I"),
+            ("CLIQUE", "Complete subgraph whose all-red or all-blue appearance defines R(k, k)", "Act II"),
+            ("SPENCER", "Combinatorialist who doubled the random Ramsey lower bound in 1975 via the Local Lemma", "Act II"),
+        ],
+        "es": [
+            ("RAMSEY", "Lógico de Cambridge cuyo teorema de 1930 mostró que el desorden completo tiene límite finito", "Acto I"),
+            ("PALEY", "Grafo autocomplementario de residuos cuadráticos sobre F_17 sin camarillas monocromáticas de cuatro", "Acto II"),
+            ("CAMARILLA", "Subgrafo completo monocromático cuya aparición inevitable define el umbral R(k, k)", "Acto II"),
+            ("MONEDA", "Sorteo aleatorio arista por arista introducido por Erdős en 1947 para acotar R(k, k) desde abajo", "Acto I"),
+            ("LIBRO", "Subgrafo con lomo compartido y páginas comunes que bajó la base exponencial debajo de cuatro", "Acto II"),
+            ("GRADO", "Conteo de aristas incidentes usado por Goodman en 1959 para hallar al menos dos triángulos en K_6", "Acto I"),
+        ],
+    },
     "cc01": {
         "title_en": "CC.01 · Golf GTI Chassis, Boost & Transaxle Crossword",
         "title_es": "CC.01 · Crucigrama de Chasis, Turbo y Transmisión del Golf GTI",

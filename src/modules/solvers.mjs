@@ -1920,10 +1920,123 @@ export function initPlateSolvers(scope = document) {
         }
         return;
       }
+
+      if (slug === "m15") {
+        // Folio M.15: Diagonal Ramsey Numbers, Paley P(17), Rational Erdos Floor & Book Bounds.
+        const kRaw = parseFloat(mathPrimeInput.value);
+        const pRaw = parseFloat(mathClauseInput.value);
+        const kVal = Number.isFinite(kRaw) ? Math.max(3, Math.min(10, Math.round(kRaw))) : 5;
+        const pStep = Number.isFinite(pRaw) ? Math.max(4, Math.min(16, Math.round(pRaw * 20.0))) : 10;
+        const pVal = pStep / 20.0;
+        if (pLabel) pLabel.textContent = `k = ${kVal}`;
+        if (cLabel) cLabel.textContent = `p = ${pVal.toFixed(2)}`;
+        if (inlineP) inlineP.textContent = `k = ${kVal}`;
+
+        const pNum = BigInt(pStep);
+        const qNum = 20n - pNum;
+        const combBig = (nInt, rInt) => {
+          if (rInt < 0 || rInt > nInt) return 0n;
+          const rUse = Math.min(rInt, nInt - rInt);
+          let num = 1n;
+          for (let i = 1; i <= rUse; i++) {
+            num = (num * BigInt(nInt - rUse + i)) / BigInt(i);
+          }
+          return num;
+        };
+        const floorForK = (kIter) => {
+          const mIt = BigInt((kIter * (kIter - 1)) / 2);
+          const denIt = 20n ** mIt;
+          const sumIt = (pNum ** mIt) + (qNum ** mIt);
+          let nIt = kIter - 1;
+          while (combBig(nIt + 1, kIter) * sumIt < denIt) {
+            nIt += 1;
+          }
+          return nIt + 1;
+        };
+        const mEdges = BigInt((kVal * (kVal - 1)) / 2);
+        const denom = 20n ** mEdges;
+        const sumPow = (pNum ** mEdges) + (qNum ** mEdges);
+        const floorVal = floorForK(kVal);
+        const n1 = floorVal - 1;
+        const expScaled = (combBig(n1, kVal) * sumPow * 1000000000n + denom / 2n) / denom;
+        const expFloat = Number(expScaled) / 1e9;
+        const esBinom = Number(combBig(2 * kVal - 2, kVal - 1));
+        const spencerScale = (Math.SQRT2 / Math.E) * kVal * Math.pow(2.0, kVal / 2.0);
+        const balFloorMap = { 3: 4, 4: 7, 5: 12, 6: 18, 7: 28, 8: 43, 9: 66, 10: 101 };
+        const balFloor = balFloorMap[kVal] || floorVal;
+
+        if (barrierOut) {
+          barrierOut.textContent = `R(${kVal}, ${kVal}) ≥ ${floorVal} (n_1 = ${n1}, E = ${expFloat.toFixed(6)})`;
+        }
+        if (fluxOut) {
+          fluxOut.textContent = `C(${2 * kVal - 2}, ${kVal - 1}) = ${esBinom.toLocaleString("en-US")} · Spencer LLL scale ${spencerScale.toFixed(2)}`;
+        }
+        if (ethOut) {
+          if (kVal === 3) {
+            ethOut.textContent = "R(3, 3) = 6 (C_5 witness & Goodman K_6 min 2 triangles)";
+          } else if (kVal === 4) {
+            ethOut.textContent = "R(4, 4) = 18 (Paley P(17) over F_17 & R(3,4) + R(4,3))";
+          } else if (kVal === 5) {
+            ethOut.textContent = "43 ≤ R(5, 5) ≤ 46 (Exoo 1989; Angeltveit–McKay 2026)";
+          } else {
+            ethOut.textContent = `${balFloor} ≤ R(${kVal}, ${kVal}) ≤ ${esBinom.toLocaleString("en-US")} · Book (4 − ε)^k`;
+          }
+        }
+        if (qedOut) {
+          if (kVal === 3) {
+            qedOut.textContent = "SETTLED AT 6 (ALL 32,768 K_6 COLORINGS HAVE ≥ 2 K_3)";
+          } else if (kVal === 4) {
+            qedOut.textContent = "SETTLED AT 18 (PALEY SRG(17, 8, 3, 4) HAS 0 MONO K_4)";
+          } else if (kVal === 5) {
+            qedOut.textContent = "OPEN FINITE WINDOW [43, 46] · BASE [√2, 4 − ε]";
+          } else {
+            qedOut.textContent = `OPEN ASYMPTOTIC GAP (k = ${kVal}) · BASE [√2, 4 − ε]`;
+          }
+        }
+        if (qedBox) qedBox.setAttribute("data-alert", kVal <= 4 ? "false" : "true");
+
+        const floorCurve = document.getElementById("tp-m15-floor-curve");
+        const floorBar = document.getElementById("tp-m15-floor-bar");
+        const ceilBar = document.getElementById("tp-m15-ceil-bar");
+        const m15Pt = document.getElementById("tp-m15-point");
+        const m15Status = document.getElementById("tp-m15-status-lbl");
+        const cx = 60 + (kVal - 3) * 38;
+        const mapLogH = (val) => Math.max(10, Math.min(154, Math.round((Math.log10(Math.max(2.0, val)) / 4.75) * 154)));
+        if (floorCurve) {
+          const dPts = [];
+          for (let kIt = 3; kIt <= 10; kIt++) {
+            const xIt = 60 + (kIt - 3) * 38;
+            const yIt = 184 - mapLogH(floorForK(kIt));
+            dPts.push(`${kIt === 3 ? "M" : "L"} ${xIt} ${yIt}`);
+          }
+          floorCurve.setAttribute("d", dPts.join(" "));
+        }
+        const hFloor = mapLogH(floorVal);
+        const hCeil = mapLogH(esBinom);
+        if (floorBar) {
+          floorBar.setAttribute("x", String(cx - 10));
+          floorBar.setAttribute("y", String(184 - hFloor));
+          floorBar.setAttribute("height", String(hFloor));
+        }
+        if (ceilBar) {
+          ceilBar.setAttribute("x", String(cx + 9));
+          ceilBar.setAttribute("y", String(184 - hCeil));
+          ceilBar.setAttribute("height", String(hCeil));
+        }
+        if (m15Pt) {
+          m15Pt.setAttribute("cx", String(cx));
+          m15Pt.setAttribute("cy", String(184 - hFloor));
+        }
+        if (m15Status) {
+          m15Status.textContent = `k = ${kVal}, p = ${pVal.toFixed(2)}: floor ≥ ${floorVal} · C(${2 * kVal - 2},${kVal - 1}) = ${esBinom.toLocaleString("en-US")}`;
+        }
+        if (barrierOut) syncSvgStageTelemetry("m15", barrierOut.textContent);
+        return;
+      }
     };
     mathPrimeInput.addEventListener("input", updateMath);
     mathClauseInput.addEventListener("input", updateMath);
-    if ((getActiveSlug() || "m01") === "m01" || getActiveSlug() === "m13") updateMath();
+    if ((getActiveSlug() || "m01") === "m01" || getActiveSlug() === "m13" || getActiveSlug() === "m15") updateMath();
   }
 
   // 5. Engineering Stokes-Brinkman (E.01), Acoustic Metamaterials (E.03) & Enthalpy Cores (E.04)

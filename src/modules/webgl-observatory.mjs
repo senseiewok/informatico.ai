@@ -302,12 +302,19 @@ float potentialSurface(vec2 xz) {
         + exp(-12.0 * dot(xz - vec2(0.0, 0.48), xz - vec2(0.0, 0.48))));
       float h1CycleHole = -0.44 * exp(-16.0 * r2) * (0.45 + 0.55 * aNorm);
       return -0.06 + vrPeaks + h1CycleHole + breath * 0.4;
-    } else {
+    } else if (u_folio < 13.5) {
       // M.14: Sphere Packing & Cohn-Elkies Radial Laguerre-Gaussian Dual Potential
       float rShell = sqrt(r2 + 0.0001);
       float primalWave = (0.58 - 0.88 * r2 + 0.24 * r2 * r2) * exp(-2.4 * r2);
       float dualRings = 0.22 * pow(cos(3.8 * rShell - (1.2 + 0.8 * bNorm)), 2.0) * exp(-1.1 * r2);
       return primalWave * (0.65 + 0.45 * aNorm) + dualRings + breath * 0.3;
+    } else {
+      // M.15: Diagonal Ramsey First-Moment Convexity Ridge (z = p - 0.5) & Book Growth Envelope (x = k)
+      float kCoord = clamp(0.5 * (xz.x + 1.0), 0.0, 1.0);
+      float pSkew = xz.y - 0.45 * (bNorm - 0.5);
+      float floorRidge = (0.14 + 0.34 * kCoord * (0.65 + 0.45 * aNorm)) * exp(-3.4 * pSkew * pSkew);
+      float bookCeiling = 0.22 * kCoord * kCoord * (0.55 + 0.45 * pSkew * pSkew);
+      return -0.22 + floorRidge + bookCeiling + breath * 0.3;
     }
   }
 }
@@ -834,7 +841,7 @@ export function initPlateWebGL(scope = document) {
     const lensBtns = wrap ? wrap.querySelectorAll(".tp-lens-btn[data-lens-mode]") : [];
     const pillarAttr = (canvas.getAttribute("data-pillar-webgl") || "engineering").toLowerCase();
     const folioAttr = (canvas.getAttribute("data-folio-webgl") || "e01").toLowerCase();
-    const folioNum = Math.max(0, Math.min(13, (parseInt(folioAttr.replace(/\D+/g, ""), 10) || 1) - 1));
+    const folioNum = Math.max(0, Math.min(15, (parseInt(folioAttr.replace(/\D+/g, ""), 10) || 1) - 1));
     const pillarIndex = pillarAttr === "engineering" ? 0.0
       : pillarAttr === "architecture" ? 1.0
       : pillarAttr === "physics" ? 2.0

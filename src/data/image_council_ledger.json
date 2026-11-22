@@ -757,6 +757,17 @@
       "bytes": 292646,
       "zero_baked_text_verified": true,
       "sha256": "016f9e0cfd72bbbc9782a1ec46d7493b43aefd829c71024b7e3861f9bc5f2db7"
+    },
+    {
+      "plate_id": "m15",
+      "path": "src/plates/m15.jpg",
+      "governing_specification": "Seventeen-pin circular natural-ash wooden pegboard laced with taut crimson-terracotta and Prussian-indigo spun silk threads beside two plain boxwood thread spools and antique brass drafting dividers on cream limestone archival vellum over dark slate",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-pro-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 203302,
+      "zero_baked_text_verified": true,
+      "sha256": "02a9519e95f177c0dff2dc171a899d03140cad8e69434bb446c4a250ec2e207a"
     }
   ]
 }
