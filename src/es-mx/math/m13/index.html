@@ -259,7 +259,7 @@
       <a class="tp-act-pill" href="#act5-heading-m13" data-en="V · Sources" data-es="V · Fuentes">V · Fuentes</a>
       <a class="tp-act-pill tp-act-pill-puzzle" href="#act-puzzle-m13" data-en="VI · Puzzle" data-es="VI · Crucigrama">VI · Crucigrama</a>
     </nav>
-    <tp-article-audio class="tp-article-audio" data-folio="M.13" data-reading-time="22 MIN READ"></tp-article-audio>
+    <tp-article-audio class="tp-article-audio" data-folio="M.13" data-reading-time="22 MIN READ" data-audio-src="../../../audio/m13-en.mp3" data-audio-src-es="../../../audio/m13-es.mp3"></tp-article-audio>
 
     <details class="tp-es-dossier" lang="es-MX">
       <summary class="tp-es-summary">
@@ -363,7 +363,7 @@
         </figure>
         <p>
           To build Lovász&#x27;s sandwich α(G) ≤ Θ(G) ≤ ϑ(G) ≤ α*(G) ≤ χ̄(G), assign each vertex i a unit vector u_i ∈ ℝ^d such that u_i · u_j = 0 whenever i and j are non-adjacent in G. Choose a unit handle vector c and define ϑ(G) = min_{c, {u_i}} max_i 1 / (c · u_i)². Because orthogonal vectors in any independent set S satisfy ∑_{i ∈ S} (c · u_i)² ≤ ‖c‖² = 1, the maximum term is at least 1/|S|, forcing ϑ(G) ≥ α(G). Moreover, taking tensor products u_i ⊗ v_j preserves orthogonality on non-edges of G ⊠ H, making ϑ multiplicative: ϑ(G ⊠ H) = ϑ(G) ϑ(H), so α(G^k)^(1/k) ≤ ϑ(G) for every block length k. On C_5, tilting five vectors into ℝ³ at cos²φ = 1/√5 makes non-neighbors orthogonal and locks ϑ(C_5) = √5 ≈ 2.236068. Live parameter coupling: <span id="tp-inline-prime" class="tp-scrub">n = 5</span> under governing law
-          <button type="button" class="tp-eq-chip" data-eq-target="tp-svg-stage-1">α(G) ≤ Θ(G) ≤ ϑ(G) ≤ α*(G) ≤ χ̄(G) · ϑ(C_n) = n cos(π/n) / [1 + cos(π/n)]</button>.
+          <button type="button" class="tp-eq-chip" data-eq-target="tp-svg-stage-1" aria-describedby="tp-eq-gloss-m13">α(G) ≤ Θ(G) ≤ ϑ(G) ≤ α*(G) ≤ χ̄(G) · ϑ(C_n) = n cos(π/n) / [1 + cos(π/n)]</button><span id="tp-eq-gloss-m13" class="tp-eq-gloss" data-en=" — in plain words: the Lovász theta number sandwiches Shannon&#x27;s zero-error graph capacity between independence number and fractional covering, evaluating in closed form on odd cycles" data-es=" — en palabras simples: el número theta de Lovász acota la capacidad de error cero de Shannon entre el número de independencia y el recubrimiento fraccional, con expresión cerrada en ciclos impares"> — en palabras simples: el número theta de Lovász acota la capacidad de error cero de Shannon entre el número de independencia y el recubrimiento fraccional, con expresión cerrada en ciclos impares</span>.
         </p>
         <p>For general odd cycles C_n (n ≥ 5), Lovász (1979, Theorem 9) evaluated the spectral bound directly from the eigenvalues λ_m = 2 cos(2πm/n) of the adjacency matrix A(C_n). Since λ_min = −2 cos(π/n) on a k = 2 regular edge-transitive cycle, ϑ(C_n) = −n λ_min / (2 − λ_min) = n cos(π/n) / [1 + cos(π/n)]. Equivalently, the circulant matrix M = I + A(C_n) / [2 cos(π/n)] has unit diagonal, vanishes on all non-edges, and has non-negative eigenvalues 1 + cos(2πm/n) / cos(π/n) ≥ 0, giving an explicit positive-semidefinite Gram factorization. Yet Haemers (1979) showed ϑ(G) is not tight everywhere: on the 27-vertex intersection graph S_bar = SRG(27, 10, 1, 5) of the 27 lines on a smooth cubic surface, eigenvalues {10¹, 1²⁰, (−5)⁶} give ϑ(S_bar) = 9, while B = A(S_bar) − I fits S_bar with diagonal −1 and exact rational rank 27 − 20 = 7, forcing Θ(S_bar) ≤ 7 &lt; 9 and Θ(S ⊠ S_bar) ≥ 27 &gt; 3 × 7 ≥ Θ(S) Θ(S_bar).</p>
         
@@ -642,6 +642,7 @@
         <div class="tp-spec-plate">
           <span class="tp-spec-tag" data-en="Governing law" data-es="Ley gobernante">Ley gobernante</span>
           <h3 class="tp-spec-title">α(G) ≤ Θ(G) ≤ ϑ(G) ≤ α*(G) ≤ χ̄(G) · ϑ(C_n) = n cos(π/n) / [1 + cos(π/n)]</h3>
+          <p class="tp-spec-gloss" data-en="In plain words: the Lovász theta number sandwiches Shannon&#x27;s zero-error graph capacity between independence number and fractional covering, evaluating in closed form on odd cycles." data-es="En palabras simples: el número theta de Lovász acota la capacidad de error cero de Shannon entre el número de independencia y el recubrimiento fraccional, con expresión cerrada en ciclos impares.">En palabras simples: el número theta de Lovász acota la capacidad de error cero de Shannon entre el número de independencia y el recubrimiento fraccional, con expresión cerrada en ciclos impares.</p>
           <p class="tp-spec-meta">C_5 (k = 2): α = 2 · Θ(C_5) = ϑ(C_5) = √5 ≈ 2.236068 · C_7 (k = 5): 367^(1/5) ≈ 3.257866 ≤ Θ(C_7) ≤ ϑ(C_7) ≈ 3.317667 (OPEN)</p>
         </div>
       </aside>

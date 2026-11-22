@@ -108,6 +108,47 @@ class TestRealSite(unittest.TestCase):
         slugs = {item["slug"] for item in audio.build_informatico_scripts()}
         self.assertTrue(set(manifest["folios"]) <= slugs)
 
+    def test_every_informatico_folio_has_grounded_bilingual_law_gloss_and_listenable_scripts(self):
+        from tools.law_glosses import LAW_GLOSSES, resolve_law_gloss
+
+        overclaim_words = ("proves", "proven", "guarantees", "guaranteed", "cures", "annihilation")
+        items = audio.build_informatico_scripts()
+        self.assertGreaterEqual(len(items), 70)
+        for item in items:
+            slug = item["slug"]
+            self.assertIn(slug, LAW_GLOSSES, f"Missing law gloss for {slug}")
+            for lang in ("en", "es"):
+                gloss = resolve_law_gloss(slug, lang)
+                self.assertGreater(len(gloss), 30, f"Short {lang} gloss for {slug}")
+                low = gloss.lower()
+                for bad in overclaim_words:
+                    self.assertNotIn(bad, low, f"Overclaim word '{bad}' in {slug} ({lang}) gloss")
+                script = audio.script_text(item, lang)
+                self.assertEqual(audio.listenability_findings(script), [], f"{slug}-{lang}: {script[:120]}")
+
+
+class TestSpeechNormalization(unittest.TestCase):
+    def test_units_expand_while_cited_numbers_survive(self):
+        en = audio.normalize_scientific_speech("Strength reaches 45 MPa at 310.15 K with 8.0% F508del and 12 kJ/mol.", "en")
+        self.assertIn("megapascals", en)
+        self.assertIn("kilojoules per mole", en)
+        self.assertIn("310.15 K", en)
+        self.assertIn("8.0%", en)
+        self.assertIn("F 508 del", en)
+
+        es = audio.normalize_scientific_speech("Alcanza 45 MPa y 12 kJ/mol con 8.0% en 50 nm.", "es")
+        self.assertIn("megapascales", es)
+        self.assertIn("kilojulios por mol", es)
+        self.assertIn("nanómetros", es)
+        self.assertIn("8.0%", es)
+
+    def test_dense_formula_parenthetical_is_stripped_without_dropping_plain_numbers(self):
+        out = audio.normalize_scientific_speech("Vault thrust (H = qL² / 8f, |e| ≤ t/6) stays within 8.0% margin (2024).", "en")
+        self.assertNotIn("qL", out)
+        self.assertIn("8.0%", out)
+        self.assertIn("(2024)", out)
+        self.assertEqual(audio.listenability_findings(out), [])
+
 
 if __name__ == "__main__":
     unittest.main()

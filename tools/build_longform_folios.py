@@ -1563,6 +1563,29 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
         )
     )
 
+    try:
+        from tools.law_glosses import resolve_law_gloss
+    except ImportError:
+        from law_glosses import resolve_law_gloss
+    law_gloss_en = resolve_law_gloss(folio, "en")
+    law_gloss_es = resolve_law_gloss(folio, "es")
+    eq_aria_attr = f' aria-describedby="tp-eq-gloss-{esc(slug)}"' if law_gloss_en else ""
+    eq_gloss_inline_html = (
+        f'<span id="tp-eq-gloss-{esc(slug)}" class="tp-eq-gloss" '
+        f'data-en=" — in plain words: {esc(law_gloss_en)}" '
+        f'data-es=" — en palabras simples: {esc(law_gloss_es or law_gloss_en)}">'
+        f' — in plain words: {esc(law_gloss_en)}</span>'
+        if law_gloss_en
+        else ""
+    )
+    spec_gloss_html = (
+        f'\n          <p class="tp-spec-gloss" data-en="In plain words: {esc(law_gloss_en)}." '
+        f'data-es="En palabras simples: {esc(law_gloss_es or law_gloss_en)}.">'
+        f'In plain words: {esc(law_gloss_en)}.</p>'
+        if law_gloss_en
+        else ""
+    )
+
     has_en_audio = (ROOT / "src" / "audio" / f"{slug}-en.mp3").is_file()
     has_es_audio = (ROOT / "src" / "audio" / f"{slug}-es.mp3").is_file()
     audio_attrs = (
@@ -1647,7 +1670,7 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
         {distill_svg_html}
         <p>
           {linkify_citations(esc(act2_intuition_c))} Live parameter coupling: {inline_scrub} under governing law
-          <button type="button" class="tp-eq-chip" data-eq-target="tp-svg-stage-1">{esc(folio["governing_law"])}</button>.
+          <button type="button" class="tp-eq-chip" data-eq-target="tp-svg-stage-1"{eq_aria_attr}>{esc(folio["governing_law"])}</button>{eq_gloss_inline_html}.
         </p>
         {act2_deepening_html}
         {act2_proof_spine_html}
@@ -1680,7 +1703,7 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
         {sn2_html}
         <div class="tp-spec-plate">
           <span class="tp-spec-tag" data-en="Governing law" data-es="Ley gobernante">Governing law</span>
-          <h3 class="tp-spec-title">{esc(folio["governing_law"])}</h3>
+          <h3 class="tp-spec-title">{esc(folio["governing_law"])}</h3>{spec_gloss_html}
           <p class="tp-spec-meta">{esc(decf_title(col["benchmarks"]))}</p>
         </div>
       </aside>
