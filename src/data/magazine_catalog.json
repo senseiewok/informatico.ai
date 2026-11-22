@@ -3108,18 +3108,18 @@
         ],
         "lineage_mode": "CONTINUATION · Continues A.01 Funicular Masonry Vaults & A.02 Reciprocal Gridshells",
         "title": "3D Polyhedral Graphic Statics & Airy Stress Surfaces: Maxwell–Rankine Reciprocal Polyhedra, Guastavino Tile Vaulting & Zero-Rebar Floors",
-        "subtitle": "Continuing Folio A.01's 2D catenary thrust lines and A.02's reciprocal frames: a design study of how James Clerk Maxwell's reciprocal figures and polyhedral graphic statics, with tools such as the open-source COMPAS framework, shape compression-only vaults; one published unreinforced funicular floor uses about a third of the material of a flat slab.",
+        "subtitle": "An explanatory model linking 2D Airy stress surfaces, 3D reciprocal force polyhedra, and an untested exterior roof sky-cooling calculation; not a structural design method.",
         "date_published": "2026-11-07",
-        "date_redated": "2026-11-14",
-        "current_edition": "REV 1.5",
-        "status_badge": "3D STATICS + SKY-COOLING · REV 1.5",
+        "date_redated": "2026-11-21",
+        "current_edition": "REV 1.6",
+        "status_badge": "3D STATICS + SKY-COOLING · REV 1.6",
         "primary_kernel": "tools/tectonic_verify.py",
-        "governing_law": "σ_xx = Φ_yy · σ_yy = Φ_xx · det(H_Φ) > 0 · N_i ∝ A_i^* · q_net(8–13 μm) (folio design target ≥ 80 W/m²)",
+        "governing_law": "σ_xx = Φ_yy · σ_yy = Φ_xx · Φ_xx, Φ_yy < 0, det(H_Φ) > 0 (2D Airy) · N_i ∝ A_i^* (3D) · q_net(T_a)",
         "colophon": {
-          "identifier": "A.11 · 3D Polyhedral Graphic Statics & Passive Sky-Cooling Vaults · REV 1.5",
-          "kernels": "Maxwell–Rankine Dual Polyhedra (Γ ↔ Γ^*) · Airy Concavity det(H_Φ) > 0 · 8–13 μm Sky-Cooling",
-          "benchmarks": "Model values: det(H_Φ) = +1.84 (illustrative) · q_net = 98.4 W/m² at air temperature · ΔT_eq = −7.08 °C for an assumed 13.9 W/(m²·K)",
-          "bridge": "Continues A.01/A.02 ↔ Toolbox X.03 STEP AP242 · Concave Stress Vaults & P(VdF-HFP) Sky-Cooling"
+          "identifier": "A.11 · 3D Polyhedral Graphic Statics & Sky-Cooling Vaults · REV 1.6",
+          "kernels": "2D Airy Concavity (Φ_xx, Φ_yy < 0, det(H_Φ) > 0) · 3D Dual Polyhedra (Γ ↔ Γ^*) · 8–13 μm Cooling",
+          "benchmarks": "Fixed values: det(H_Φ) = +1.84 · q_net(T_a) = 98.4 W/m² · ΔT_eq ≈ −7.08 °C (assumed 134.0 W/m², 13.9 W/(m²·K))",
+          "bridge": "Continues A.01/A.02 · Separate 7-voussoir arch kit in Toolbox X.03"
         },
         "sliders": [
           {
@@ -3140,77 +3140,84 @@
           }
         ],
         "steps": [
-          "Stage 1 (Airy Stress Function & Negative-Definite Hessian): In-plane membrane stresses are written through an Airy stress function Φ(x, y) as σ_xx = Φ_yy, σ_yy = Φ_xx, σ_xy = −Φ_xy. In his 1870 paper on reciprocal figures Maxwell read a polyhedron lifted over a frame as a discrete stress function of this kind.",
-          "Stage 2 (Rankine–Minkowski Reciprocal Polyhedra Γ ↔ Γ^*): In 3D polyhedral graphic statics (Akbarzadeh, Van Mele & Block 2015, DOI 10.1016/j.cad.2015.01.006), each member of the form diagram is perpendicular to a face of a closed cell in the force diagram, and the face area is proportional to the member force; a closed cell means the forces at that node balance.",
-          "Stage 3 (Concavity and Compression): If the Hessian of Φ is negative-definite (Φ_xx < 0, Φ_yy < 0, det(H_Φ) = Φ_xx Φ_yy − Φ_xy² > 0), the in-plane stress field of the model is compressive everywhere. That is a property of the model under the load case considered, not a structural check of a real shell; the 52 mm thickness is an illustrative value.",
-          "Stage 4 (8–13 μm Radiative Sky-Cooling Extrados & Toolbox X.03 CAD Bridge): With a porous P(VdF-HFP)-type coating (Mandal et al. 2018, DOI 10.1126/science.aat9513) assumed at R_solar = 0.96 under 890 W/m² of sun, the extrados absorbs 35.6 W/m². The model assigns a net radiative exchange with the sky of 134.0 W/m² at air temperature (a fixed illustrative value), so q_net = 134.0 − 35.6 = 98.4 W/m²; divided by an assumed combined heat-exchange coefficient of 13.9 W/(m²·K), that gives ΔT_eq ≈ −7.08 °C. Toolbox X.03 provides the STEP AP242 voussoir geometry."
+          "Stage 1 (2D Airy Stress Surface): In 2D membrane models (tension-positive), σ_xx = Φ_yy, σ_yy = Φ_xx, σ_xy = −Φ_xy. Maxwell (1864, DOI 10.1080/14786446408643663; 1870) linked plane frames to polyhedra and stress functions; Thrust Network Analysis (Block & Ochsendorf 2007) projects 3D vault forces onto a 2D Airy surface.",
+          "Stage 2 (3D Reciprocal Polyhedra Γ ↔ Γ^*): Separately, 3D polyhedral graphic statics (Akbarzadeh, Van Mele & Block 2015, DOI 10.1016/j.cad.2015.01.006) maps each bar perpendicular to a closed force-cell face, with axial force proportional to face area (N_i ∝ A_i^*); cell closure means nodal forces balance.",
+          "Stage 3 (Concavity & Safety Boundary): Negative-definite Hessian (Φ_xx < 0, Φ_yy < 0, det(H_Φ) > 0) means the 2D model is compressive under one load case. This folio is an explanation, not a design method; none of its untested numbers (including t = 52 mm or det(H_Φ) = +1.84) may be used on a real structure.",
+          "Stage 4 (Separate Exterior Sky-Cooling Pairing): For an exposed roof only (not a floor), assuming a P(VdF-HFP) coating (Mandal et al. 2018, DOI 10.1126/science.aat9513) with R_solar = 0.96 under 890 W/m² absorbs 35.6 W/m². With a lumped illustrative sky exchange of 134.0 W/m² at T_a = 303.15 K and assumed h_comb = 13.9 W/(m²·K), q_net(T_a) = 98.4 W/m² and ΔT_eq ≈ −7.08 °C. Toolbox X.03 (/toolchain/x03/) has a separate 7-voussoir arch STEP AP242 kit."
         ],
         "readouts": [
           {
             "label": "Airy Hessian Determinant det(H_Φ)",
-            "value": "+1.84 > 0 (Illustrative, Compressive in Model)"
+            "value": "+1.84 > 0 (Fixed Text, Φ_xx, Φ_yy < 0)"
           },
           {
             "label": "Dual Polyhedron Closure Error",
-            "value": "Closed by Construction (Model, No Solver Run)"
+            "value": "Closed by Construction (Fixed Text, No Solver)"
           },
           {
             "label": "8–13 μm Sky-Cooling Net Flux",
-            "value": "98.4 W/m² · ΔT_eq = −7.08 °C (Model)"
+            "value": "98.4 W/m² at T_a · ΔT_eq ≈ −7.08 °C (Fixed Text)"
           },
           {
-            "label": "A.11 ↔ X.03 Model Status",
-            "value": "COMPRESSION-ONLY IN MODEL · NOT A STRUCTURAL CHECK"
+            "label": "A.11 Model Boundary",
+            "value": "EXPLANATORY MODEL · NOT A DESIGN METHOD"
           }
         ],
         "spec_plate": {
-          "division": "CSI MASTERFORMAT 04 20 00 / 07 56 00 / COMPAS-3GS / TOOLBOX X.03",
-          "title": "Unreinforced Funicular Ribbed Vaults with 8–13 μm Passive Sky-Cooling Extrados & STEP AP242 Export",
-          "body": "Design proposal: compression-only tile and dry-cut stone funicular vaults shaped with reciprocal polyhedra (tools such as compas-dev/compas, geometry from Toolbox X.03), with a porous P(VdF-HFP)-type sky-cooling coating on the extrados at assumed R_solar = 0.96 and ε_8-13μm = 0.95. Not a tested or engineered assembly.",
-          "meta": "References: Akbarzadeh et al. 2015, DOI 10.1016/j.cad.2015.01.006 · Raman et al. 2014, DOI 10.1038/nature13883 · Mandal et al. 2018, DOI 10.1126/science.aat9513 · Model values, not measurements"
+          "division": "EXPLANATORY PAIRING · CSI 04 20 00 / 07 56 00 (NOT A DESIGN SPEC)",
+          "title": "Illustrative Pairing: Funicular Compression Vaults & Exterior 8–13 μm Sky-Cooling Coating",
+          "body": "Explanatory pairing only, not a design method or tested assembly: 3D reciprocal force polyhedra (tools such as compas-dev/compas) paired on an exposed roof with a porous P(VdF-HFP) coating at assumed R_solar = 0.96. None of these untested numbers may be used on a real structure.",
+          "meta": "Akbarzadeh et al. 2015 (DOI 10.1016/j.cad.2015.01.006) · Raman et al. 2014 (DOI 10.1038/nature13883) · Mandal et al. 2018 (DOI 10.1126/science.aat9513) · Fixed illustrative values"
         },
         "sidenote_1": {
-          "kicker": "SIDENOTE A.11-A · CROSS-FIELD ANALOGY · SOAP FOAM & GUASTAVINO TILE VAULTS",
-          "body": "Rafael Guastavino and his son, who emigrated from Spain to the United States in 1881, built hundreds of thin timbrel tile vaults there (López et al. 2023, DOI 10.3390/buildings13082052). 3D polyhedral graphic statics came more than a century later, so it played no part in their designs. The soap-foam picture is this folio's analogy: in a polyhedral force diagram each cell closes, much as each bubble in a foam is closed, and each face area is proportional to the force in the matching member."
+          "kicker": "SIDENOTE A.11-A · ANALOGY · SOAP FOAM & GUASTAVINO TILE VAULTS",
+          "body": "Rafael Guastavino and his son emigrated from Spain in 1881 and built hundreds of thin timbrel tile vaults in the United States (López López et al. 2023, DOI 10.3390/buildings13082052). 3D polyhedral graphic statics came a century later and played no part in their work. The soap-foam picture is an analogy for static force balance under one load case."
         },
         "sidenote_2": {
-          "kicker": "SIDENOTE A.11-B · DAYTIME SKY-COOLING VAULTS & TOOLBOX X.03 CAD",
-          "body": "Mandal et al. (2018, DOI 10.1126/science.aat9513) reported porous P(VdF-HFP) coatings that reached about 6 °C below ambient under 890 W/m² of sun and about 96 W/m² of cooling power under 750 W/m². In this folio's model the same kind of coating on a vault extrados gives 98.4 W/m² at air temperature, a model value. The companion 7-voussoir STEP AP242 and GLB kit is in Toolbox X.03 (/toolchain/x03/)."
+          "kicker": "SIDENOTE A.11-B · DAYTIME SKY-COOLING & TOOLBOX X.03",
+          "body": "Mandal et al. (2018, DOI 10.1126/science.aat9513) reported porous P(VdF-HFP) coatings about 6 °C below ambient under 890 W/m² of sun and about 96 W/m² of cooling under 750 W/m². Under stated assumptions, this folio's roof calculation gives 98.4 W/m² at air temperature. Toolbox X.03 (/toolchain/x03/) offers a separate 7-voussoir arch STEP AP242/GLB kit."
         },
         "skill": {
           "filename": "3d-polyhedral-graphic-statics-SKILL.md",
           "name": "3d-polyhedral-graphic-statics",
-          "description": "AI-agnostic architectural and structural skill for 3D Polyhedral Graphic Statics (Maxwell-Rankine dual polyhedra), strictly concave Airy stress surfaces, 8-13 um daytime radiative sky-cooling vault envelopes, and Toolbox X.03 STEP AP242 voussoir coupling.",
+          "description": "Explanatory companion for 3D Polyhedral Graphic Statics, 2D Airy concavity, and exterior 8–13 μm sky-cooling arithmetic. Explanation only, not a design method; no folio number may be used on a real structure.",
           "rules": [
-            "Check 3D nodal equilibrium by requiring every polyhedral cell c_v^* in the reciprocal force diagram Gamma^* to close within a numerical tolerance (for example ||sum F_i|| < 1e-12 kN).",
-            "Check that the model stress field is compressive by testing the Airy stress Hessian: Phi_xx < 0, Phi_yy < 0, and det(H_Phi) = Phi_xx*Phi_yy - Phi_xy^2 > 0. This is a model check for one load case, not a structural assessment of a real vault.",
-            "Evaluate daytime radiative sky-cooling net flux q_net = q_rad(T_s) - q_atm(T_a) - q_solar*(1 - R_solar) - h_c*(T_a - T_s); treat q_net >= 80 W/m^2 at T_a = 303.15 K and Delta T_eq <= -4.5 C as this folio's own design targets, and report results as model values, never as measurements."
+            "Explanation only, not a structural design method: no thickness, stress, or cooling number from this folio may be used on a real structure.",
+            "In 3D reciprocal force diagrams Gamma^*, verify each polyhedral cell closes (e.g. ||sum F_i|| < 1e-12 kN) with axial force proportional to face area (N_i proportional to A_i^*).",
+            "In a 2D Airy model (tension-positive), check Phi_xx < 0, Phi_yy < 0, and det(H_Phi) > 0 for one load case; this does not check buckling, sliding, support movement, or asymmetric loads.",
+            "For an exposed roof only, distinguish cooling power at air temperature q_net(T_a) = q_sky_net(T_a) - q_solar*(1 - R_solar) from steady-state q_net(T_s) = 0, and estimate Delta T_eq = -q_net(T_a) / h_comb under stated assumptions. Treat 80 W/m^2 and -4.5 C as untested illustrative benchmarks."
           ]
         },
         "revisions": [
           {
+            "edition": "REV 1.6",
+            "date": "2026-11-21",
+            "summary": "REV 1.6 (Redated 2026-11-21): Removed \"design study\" labels and the unsafe \"cannot fall down\" claim; added an explicit non-design structural boundary in Act I, Spanish, and SKILL.md. Aligned Act III with solvers.mjs (sliders update labels only; readouts are fixed text, no counterfactual solver), fixed SVG N_i ∝ A_i^* and dispatch edition, separated 2D Airy from 3D polyhedra and floors from roofs, added Maxwell (1864), corrected López López et al. (2023), cut uncited history, and fixed US spellings.",
+            "opus": "Multi-family audit (Gemini 4 pro-tier + Ornith 1.5 35B); solver behavior checked in solvers.mjs:1548-1554; citations verified offline."
+          },
+          {
             "edition": "REV 1.5",
             "date": "2026-11-14",
-            "summary": "REV 1.5 (Redated 2026-11-14): Grounding revision. The opening scene of Maxwell at Glenlair and the claim that Rafael Guastavino built Grand Central's vaults in 1913 using Maxwell's principle were not sourced and are replaced by a plain account. The 70-72% concrete and carbon figures are replaced by a published one-third-of-the-material figure for an unreinforced funicular floor (Küpfer et al. 2025); no pass, certification or guarantee is claimed for things nobody measured (earlier wording is withdrawn), and the sky-cooling numbers now state the assumptions they follow from. The 80 W/m² and −4.5 °C thresholds are labelled as this folio's own design targets.",
-            "opus": "Review: references checked by DOI in Crossref and Scite; central claims checked against the Scite index; arithmetic recomputed from the stated balance."
+            "summary": "REV 1.5 (Redated 2026-11-14): Grounding revision. Replaced unsourced Maxwell/Guastavino scenes and 70-72% claims with a plain account and Küpfer et al. (2025). Withdrew unmeasured pass/certification wording; labeled 80 W/m² and −4.5 °C as illustrative benchmarks.",
+            "opus": "Review: DOIs checked in Crossref and Scite; arithmetic recomputed from the stated balance."
           },
           {
             "edition": "REV 1.4",
             "date": "2026-11-10",
-            "summary": "REV 1.4 (Redated 2026-11-10): Coupled 3D polyhedral graphic statics and negative-definite Airy stress surfaces (DOI 10.1016/j.cad.2015.01.006) with 8–13 μm atmospheric-window daytime radiative sky-cooling extrados coatings (Raman et al. 2014, DOI 10.1038/nature13883; Mandal et al. 2018 porous P(VdF-HFP), DOI 10.1126/science.aat9513), cross-linked directly to Toolbox X.03 STEP AP242/3MF/DXF/GLB voussoir assemblies with reference values stated in the essay.",
-            "opus": "Council review (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B). Its 'verified' wording is withdrawn in REV 1.5: no Airy surface or force diagram was solved, and the cooling figures are model values that depend on stated assumptions."
+            "summary": "REV 1.4 (Redated 2026-11-10): Paired 3D polyhedral graphic statics (DOI 10.1016/j.cad.2015.01.006) with 8–13 μm sky-cooling coatings (Raman et al. 2014, DOI 10.1038/nature13883; Mandal et al. 2018, DOI 10.1126/science.aat9513) and linked Toolbox X.03.",
+            "opus": "Council review (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B). 'Verified' wording withdrawn in REV 1.5: no solver ran and cooling numbers depend on stated assumptions."
           },
           {
             "edition": "REV 1.0",
             "date": "2026-11-07",
-            "summary": "REV 1.0 (Published 2026-11-07): Volume VI Architecture monograph continuing Folios A.01 & A.02 via Maxwell 3D polyhedral graphic statics, Heyman limit analysis (DOI 10.1017/cbo9781107050310), and compas-dev/compas.",
-            "opus": "Council review (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B) of the area-force relation and Airy concavity. Its 'verified' wording is withdrawn in REV 1.5: the relation is proportionality, as published, and nothing was computed."
+            "summary": "REV 1.0 (Published 2026-11-07): Initial Volume VI monograph continuing A.01 & A.02 via Heyman (DOI 10.1017/cbo9781107050310) and compas-dev/compas.",
+            "opus": "Council review (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B). 'Verified' wording withdrawn in REV 1.5: the relation is proportionality and nothing was computed."
           }
         ],
         "volume": 6,
         "volume_code": "VOL. 06",
-        "reading_time": "22 MIN READ",
-        "word_count": "4,650 WORDS",
+        "reading_time": "19 MIN READ",
+        "word_count": "4,100 WORDS",
         "scite": {
           "doi": "10.1016/j.cad.2015.01.006",
           "fetched_on": "2026-11-08",
