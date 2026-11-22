@@ -1,8 +1,8 @@
 # Informatico.ai
 
-> 56 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
+> 57 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
 
-Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (97 SKILL.md companions, 48 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 7 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
+Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (98 SKILL.md companions, 49 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 7 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
 
 ## Welcome, agents (and the people who work with you)
 
@@ -74,7 +74,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 
 ## Mathematics
 
-- [Mathematics](https://informatico.ai/math/): Fourteen interactive essays on mathematics: Fermat's Last Theorem, zero-error graph capacity, sphere packing, optimal control and optimal transport.
+- [Mathematics](https://informatico.ai/math/): Fifteen interactive essays on mathematics: Fermat's Last Theorem, diagonal Ramsey bounds, zero-error graph capacity, sphere packing and optimal transport.
 - [M.01 Fermat's Last Theorem and a Public Lean 4 Repository](https://informatico.ai/math/m01/): A reading of the Taylor–Wiles patching argument behind Fermat's Last Theorem and of a public Lean 4 repository whose README says it formalises the proof.
 - [M.02 Riemann Zeta Zero-Density Estimates](https://informatico.ai/math/m02/): Classical zero-density estimates for the Riemann zeta function, and what a public Lean 4 repository README states about a recent critical-line result.
 - [M.03 Cap Sets, FunSearch and AlphaEvolve](https://informatico.ai/math/m03/): What Google DeepMind's FunSearch and AlphaEvolve papers report: a 512-point cap set in eight dimensions and 48 products for 4×4 complex matrices.
@@ -89,6 +89,7 @@ May your questions be good and your work careful. Pursue what is good, and enjoy
 - [M.12 Public Lean 4 Repositories and Post-Quantum ML-KEM](https://informatico.ai/math/m12/): What the README of the public Lean 4 repository anthropics/formal-math says it contains, beside the NIST FIPS 203 lattice standard; none checked here.
 - [M.13 Shannon Zero-Error Graph Capacity and Lovász Theta](https://informatico.ai/math/m13/): How Shannon zero-error block codes, Lovász's theta umbrella and Haemers's rank bound meet on odd cycles, with the seven-cycle limit still open.
 - [M.14 Sphere Packing, Cohn–Elkies Bounds & Open Gaps](https://informatico.ai/math/m14/): How Cohn–Elkies Fourier linear programming, Viazovska modular functions in dimensions 8 and 24, and Laguerre bounds meet open gaps in dimension four.
+- [M.15 Diagonal Ramsey Numbers & the Book Algorithm](https://informatico.ai/math/m15/): How Paley quadratic residues, Erdős random coin-flip floors and the 2026 book algorithm frame diagonal Ramsey numbers, with R(5, 5) open in [43, 46].
 
 ## Grand Challenges & Open Problems Crucible (B.01–B.06)
 
