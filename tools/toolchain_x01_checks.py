@@ -37,7 +37,12 @@ _STEP_SHELL_RE = re.compile(r"#(\d+)\s*=\s*CLOSED_SHELL\s*\(\s*'[^']*'\s*,\s*\((
 
 
 def strip_step_comments_and_strings(step_text: str) -> str:
-    """Strip ISO 10303-21 nested /* ... */ comments and blank single-quoted string literals to ''."""
+    """Strip /* ... */ comments and blank single-quoted string literals to ''.
+
+    A "/*" inside a comment is refused. Whether such a comment ends at the first or the last "*/" decides what text
+    is live, and a checker that guesses can be made to hide or reveal a unit declaration. A file that needs the
+    guess is not accepted.
+    """
     out: list[str] = []
     n = len(step_text)
     i = 0
@@ -48,8 +53,7 @@ def strip_step_comments_and_strings(step_text: str) -> str:
         nxt = step_text[i + 1] if i + 1 < n else ""
         if comment_depth > 0:
             if ch == "/" and nxt == "*":
-                comment_depth += 1
-                i += 2
+                raise AssertionError("Nested /* inside a block comment in STEP file: ambiguous, not accepted")
             elif ch == "*" and nxt == "/":
                 comment_depth -= 1
                 i += 2
@@ -414,7 +418,7 @@ def run_x01_cross_format_checks(files_dir: Path, manifest: dict[str, Any]) -> di
     # 4. Specific defect-reason verification on the 4 fuzz fixtures
     for fname, needle in (
         ("fuzz/fuzz_01_truncated_header.glb", "too short"),
-        ("fuzz/fuzz_02_chunk_oob.glb", "JSON chunk length"),
+        ("fuzz/fuzz_02_chunk_oob.glb", "exceeds file size"),
         ("fuzz/fuzz_03_index_oob.glb", "exceeds vertex count"),
     ):
         try:

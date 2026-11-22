@@ -335,6 +335,13 @@ def write_glb(
     return raw
 
 
+def _glb_int(value: Any, what: str) -> int:
+    """A glTF integer field as an int. Strings, floats and booleans are refused, as the browser parser refuses them."""
+    if isinstance(value, bool) or not isinstance(value, int):
+        raise ValueError(f"{what} must be an integer, got {value!r}")
+    return value
+
+
 def parse_glb(data: bytes) -> dict[str, Any]:
     """Parse a binary .glb using pure stdlib and return header, json, vertices, normals, colors, triangles."""
     if len(data) < 20:
@@ -380,29 +387,29 @@ def parse_glb(data: bytes) -> dict[str, Any]:
     type_arity = {"SCALAR": 1, "VEC2": 2, "VEC3": 3, "VEC4": 4, "MAT2": 4, "MAT3": 9, "MAT4": 16}
 
     for bv_i, bv_item in enumerate(views):
-        if int(bv_item.get("buffer", 0)) != 0:
+        if _glb_int(bv_item.get("buffer", 0), f"bufferView[{bv_i}] buffer") != 0:
             raise ValueError(f"bufferView[{bv_i}] references unsupported buffer {bv_item.get('buffer')}")
-        bv_off = int(bv_item.get("byteOffset", 0))
-        bv_len = int(bv_item.get("byteLength", -1))
+        bv_off = _glb_int(bv_item.get("byteOffset", 0), f"bufferView[{bv_i}] byteOffset")
+        bv_len = _glb_int(bv_item.get("byteLength", -1), f"bufferView[{bv_i}] byteLength")
         if bv_off < 0 or bv_len < 0 or bv_off + bv_len > len(bin_data):
             raise ValueError(f"bufferView[{bv_i}] [{bv_off}:{bv_off + bv_len}] exceeds BIN length {len(bin_data)}")
 
     for acc_i, acc_item in enumerate(accessors):
-        bv_idx = int(acc_item.get("bufferView", -1))
+        bv_idx = _glb_int(acc_item.get("bufferView", -1), f"Accessor {acc_i} bufferView")
         if bv_idx < 0 or bv_idx >= len(views):
             raise ValueError(f"Accessor {acc_i} bufferView {bv_idx} out of bounds")
-        cb = comp_bytes.get(int(acc_item.get("componentType", -1)))
+        cb = comp_bytes.get(_glb_int(acc_item.get("componentType", -1), f"Accessor {acc_i} componentType"))
         ar = type_arity.get(str(acc_item.get("type", "")))
         if cb is None or ar is None:
             raise ValueError(f"Accessor {acc_i} unsupported componentType/type")
         elem_sz = cb * ar
         bv_item = views[bv_idx]
-        if "byteStride" in bv_item and int(bv_item["byteStride"]) != elem_sz:
+        if "byteStride" in bv_item and _glb_int(bv_item["byteStride"], f"bufferView[{bv_idx}] byteStride") != elem_sz:
             raise ValueError(f"bufferView[{bv_idx}] unsupported byteStride {bv_item['byteStride']}")
-        acc_off = int(acc_item.get("byteOffset", 0))
-        cnt = int(acc_item.get("count", -1))
+        acc_off = _glb_int(acc_item.get("byteOffset", 0), f"Accessor {acc_i} byteOffset")
+        cnt = _glb_int(acc_item.get("count", -1), f"Accessor {acc_i} count")
         needed = cnt * elem_sz
-        if cnt < 0 or acc_off < 0 or acc_off + needed > int(bv_item["byteLength"]):
+        if cnt <= 0 or acc_off < 0 or acc_off + needed > int(bv_item["byteLength"]):
             raise ValueError(
                 f"Accessor {acc_i} span [{acc_off}:{acc_off + needed}] exceeds bufferView[{bv_idx}] length {bv_item['byteLength']}"
             )

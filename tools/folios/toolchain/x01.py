@@ -57,13 +57,12 @@ FOLIO = {
         'Zero-Cost Studio Workflow (Blender 4.2 + FreeCAD 1.0 + Python 3 stdlib): Run make_x01.py to '
         'emit x01_artifact.glb (2,716 B), faceted Part-21 x01_artifact.step (10,356 B), and '
         'x01_artifact.3mf (1,672 B); run verify_x01 to check non-manifold seams, flipped normals, '
-        'and chunk bounds in < 0.05s before opening a slicer or BIM model.'
+        'and chunk bounds on those three artifacts before opening a slicer or BIM model.'
     ),
     'small_studio_kit_es': (
         'Flujo de Estudio sin Costo (Blender 4.2 + FreeCAD 1.0 + Python 3 stdlib): Ejecuten '
         'make_x01.py para generar x01_artifact.glb (2,716 B), x01_artifact.step facetado Parte 21 '
-        '(10,356 B) y x01_artifact.3mf (1,672 B); auditen cualquier malla .glb en busca de bordes '
-        'no-variedad, normales invertidas o bloques corruptos en < 0.05s antes de enviarla a corte o BIM.'
+        '(10,356 B) y x01_artifact.3mf (1,672 B); ejecuten verify_x01 para revisar en esos tres artefactos bordes no-variedad, normales invertidas y bloques corruptos antes de abrir un laminador o un modelo BIM.'
     ),
     'companion_folios': [
         ('engineering', 'e10', 'Folio E.10', '3D Concrete Printing Thixotropy & Suiker Buckling'),
@@ -80,12 +79,7 @@ FOLIO = {
         ('mikedh/trimesh (MIT Mesh Inspector)', 'https://github.com/mikedh/trimesh'),
     ],
     'act1_dropcap': (
-        'At the Prussian Academy in Berlin in 1750, Leonhard Euler studied hand-carved wooden blocks, '
-        'crystal prisms, and faceted stone models by lamplight. Master masons and joiners had worked '
-        'with these shapes for centuries, yet nobody had named the numerical balance tying a solid '
-        'together. Euler noticed that however a closed block is beveled or subdivided, its corners, '
-        'seams, and flat faces stay locked in a constant tally, a memoir printed by the Saint '
-        'Petersburg Academy in 1758. Two and a half centuries later, graphics engineers met under the '
+        'In 1750 Leonhard Euler wrote Elementa doctrinae solidorum, printed in 1758 in the Novi Commentarii of the Saint Petersburg Academy (Eneström 230). Its main theorem ties the corners, edges, and flat faces of a solid bounded by planes into one fixed count: however such a block is beveled or subdivided, corners plus faces exceed edges by two. Two and a half centuries later, graphics engineers met under the '
         'Khronos consortium to address a cognate workshop problem on the web. As three-dimensional '
         'models moved from desktop workstations to browsers, files arrived split at the seams, '
         'turned inside out, or truncated mid-transfer. Their open binary container meant every corner, '
@@ -102,7 +96,7 @@ FOLIO = {
         'Right on this page, a lightweight browser viewer opens binary mesh files directly without '
         'external libraries. You can rotate the calibration prism, slice across its interior, and '
         'inspect every facet. With one click, you can also download the neutral files and a Python '
-        'script that checks your own exports in milliseconds.'
+        'script that checks these artifacts, which you can adapt to your own exports.'
     ),
     'act1_body': (
         'Early exchange formats such as 1987 stereolithography files stored unindexed triangle '
@@ -115,8 +109,7 @@ FOLIO = {
         'BIN chunks. While glTF stores unitless linear coordinates, our committed 2,716-byte '
         'x01_artifact.glb records millimeter provenance in asset.extras alongside a 1,672-byte 3MF '
         'archive and a 10,356-byte ISO 10303-21 faceted POLY_LOOP B-rep sketch carrying an AP242 '
-        'header (compare full analytic EDGE_LOOP STEP AP242 exchange in Feeney, Frechette, & '
-        'Srinivasan, 2015, DOI 10.1115/1.4029050). In src/modules/glb-viewer.mjs, '
+        'header (AP242 itself is described by Feeney, Frechette, & Srinivasan, 2015, DOI 10.1115/1.4029050; a full exchange file would use analytic EDGE_LOOP faces, which this sketch does not). The millimeter unit entity in the STEP file is declared but not bound to the solid by a shape representation, and the file is not schema-validated. In src/modules/glb-viewer.mjs, '
         'parseGlbBuffer checks chunk alignment, bufferView and accessor spans, finite floats, and '
         'vertex index bounds before uploading typed arrays directly into WebGL2.'
     ),
@@ -125,11 +118,10 @@ FOLIO = {
         'bench time and workshop material. When an external contractor or script exports an asset '
         'with a flipped triangle normal or an unpaired boundary seam, smooth viewport shading can '
         'hide the flaw until a finite-element simulation diverges, a CAM toolpath halts, or a slicer '
-        'bridges across an unintended void. Commercial mesh-repair seats charge steep annual fees to '
-        'diagnose those boundary errors. Pairing neutral open standards with a readable Python '
+        'bridges across an unintended void. Commercial mesh-repair tools require paid licenses to diagnose those boundary errors. Pairing neutral open standards with a readable Python '
         'standard-library verifier removes that license barrier. Running verify_x01 checks GLB chunk '
         'alignment, all four bufferViews, single-shell connectivity, signed volume, and cross-format '
-        'parity across GLB, faceted Part-21 STEP, and 3MF in under fifty milliseconds, catching '
+        'parity across GLB, faceted Part-21 STEP, and 3MF, catching '
         'corrupt exports before a studio cuts a physical prototype.'
     ),
     'pullquote': (
@@ -140,8 +132,7 @@ FOLIO = {
     'chronology': [
         (
             '1750–1758',
-            'Leonhard Euler writes his Berlin memoir on polyhedra and publishes the vertex-edge-face '
-            'balance for closed genus-zero solids in the St. Petersburg Academy commentaries.',
+            'Leonhard Euler writes Elementa doctrinae solidorum (1750), printed in the St. Petersburg Novi Commentarii (1758), stating the vertex-edge-face balance for solids bounded by planes.',
         ),
         (
             '1813–1826',
@@ -154,9 +145,14 @@ FOLIO = {
             'boundary surface triangles (DOI 10.1080/10867651.1996.10487458).',
         ),
         (
-            '2013–2022',
-            'Keenan Crane et al. formalize discrete exterior calculus on meshes (DOI '
-            '10.1145/2504435.2504442) and Khronos ratifies glTF 2.0 / GLB as ISO/IEC 12113:2022.',
+            '2013',
+            'Keenan Crane et al. publish SIGGRAPH course notes on discrete exterior calculus for meshes '
+            '(DOI 10.1145/2504435.2504442).',
+        ),
+        (
+            '2017–2022',
+            'Khronos releases glTF 2.0 with its binary GLB container (2017), later published as '
+            'ISO/IEC 12113:2022.',
         ),
         (
             '2026',
@@ -203,7 +199,7 @@ FOLIO = {
         'COLOR_0, [504:792] uint32 indices), and finite IEEE-754 floats. It then builds the directed '
         'half-edge map across 14 vertices, 36 edges, and 24 faces, checks dual face-edge shell '
         'connectivity and single-umbrella vertex links (β_0 = 1), and cross-checks that '
-        'x01_artifact.step (after stripping nested comments and string literals) and '
+        'x01_artifact.step (after stripping comments and string literals) and '
         'x01_artifact.3mf (with identity build transform) reconstruct the congruent 24,000.0 mm³ '
         'manifold. Flipping Triangle 0 reverses one 1,000.0 mm³ signed tetrahedron from +1,000.0 '
         'to −1,000.0 mm³, lowering total signed volume to 22,000.0 mm³.'
@@ -302,7 +298,7 @@ FOLIO = {
     ],
     'act4_human_ai': (
         'Language models can draft parametric mesh scripts in seconds, yet neural token predictors '
-        'have no built-in spatial check; generated meshes routinely contain out-of-bounds indices, '
+        'have no built-in spatial check; generated meshes can contain out-of-bounds indices, '
         'unpaired seams, or inverted face windings that look plausible under flat shading. Folio X.01 '
         'models a practical division of labor between human designer, coding agent, and deterministic '
         'verification code. The designer sets dimensions, clearances, and fabrication intent; an '
@@ -317,9 +313,7 @@ FOLIO = {
         'linked below. In Architecture, polyhedral graphic statics (Folio A.11) balances spatial '
         'frames through closed reciprocal force polyhedra where open facets break static equilibrium '
         '(Akbarzadeh, Van Mele, & Block, 2015, DOI 10.1016/j.cad.2015.01.006). In Engineering, '
-        'extruded wall buckling and slicing models for 3D concrete printing (Folio E.10) rely on '
-        'oriented shell geometry along the print path (Suiker, 2018, DOI '
-        '10.1016/j.ijmecsci.2018.01.010). In Mathematics, persistent homology (Folio M.10) tracks '
+        'the mechanical performance of printed wall structures (Folio E.10; Suiker, 2018, DOI 10.1016/j.ijmecsci.2018.01.010) is modeled on wall geometry, and a slicer needs an oriented, closed mesh to produce that geometry; the second point is a bridge made by this folio, not a claim of that paper. In Mathematics, persistent homology (Folio M.10) tracks '
         'Betti numbers and Euler characteristics across simplicial filtrations over binary boundary '
         'matrices (Edelsbrunner, Letscher, & Zomorodian, 2002, DOI 10.1007/s00454-002-2885-2). In '
         'structural optimization (Folio E.11), converting SIMP density fields (Sigmund, 2001, DOI '
@@ -327,6 +321,9 @@ FOLIO = {
         'verification.'
     ),
     'sources': [
+        'Euler, L. (1758; written 1750). Elementa doctrinae solidorum. Novi Commentarii academiae '
+        'scientiarum Petropolitanae, 4, 109–140 (Eneström 230). '
+        'https://scholarlycommons.pacific.edu/euler-works/230/',
         'Khronos Group. (2022). glTF 2.0 Specification / ISO/IEC 12113:2022 Information technology — '
         'Runtime 3D asset delivery format. https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html',
         'Mirtich, B. (1996). Fast and accurate computation of polyhedral mass properties. Journal of '
@@ -363,15 +360,14 @@ FOLIO = {
         'les permite abrir archivos binarios en tres dimensiones sin instalar programas adicionales. '
         'Pueden girar el prisma de calibración, revisar cortes transversales y observar cada '
         'triángulo. Con un clic, cualquier estudiante o despacho independiente puede descargar los '
-        'modelos y el verificador en Python para auditar sus archivos sin licencias costosas.'
+        'modelos y el verificador en Python, que revisa estos artefactos y puede adaptarse a sus propios archivos sin licencias costosas.'
     ),
     'deep_es': (
         'La verificación de una malla poligonal combina topología combinatoria y cálculo vectorial. '
         'Por el teorema de la divergencia de Gauss-Ostrogradsky, el volumen encerrado se obtiene '
         'sumando tetraedros con signo sobre los triángulos frontera (Mirtich, 1996). Para que la '
         'frontera sea una 2-variedad orientable de una sola componente conexa, cada semi-arista '
-        'dirigida debe emparejarse con una gemela inversa, cumpliendo tres caras por cada dos '
-        'aristas y característica de Euler igual a dos en género cero. En x01_artifact.glb (2,716 '
+        'dirigida debe emparejarse con una gemela inversa, cumpliendo 3F = 2E (dos caras por cada tres aristas) y característica de Euler igual a dos en género cero. En x01_artifact.glb (2,716 '
         'bytes), el verificador revisa la cabecera de doce bytes, la alineación de cuatro bytes y '
         'los cuatro bufferViews antes de contrastar topología y volumen contra x01_artifact.step y '
         'x01_artifact.3mf. Si el Triángulo 0 invierte su orientación, aparecen tres semi-aristas '

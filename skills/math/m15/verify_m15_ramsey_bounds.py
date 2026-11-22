@@ -11,14 +11,15 @@ Mathematical definitions and primary anchors:
          two-colorings of K_6 satisfy Goodman's triangle multiplicity identity (Goodman 1959,
          DOI 10.1080/00029890.1959.11989408):
              T_mono(G) = C(6, 3) - (1 / 2) * sum_{v=0}^5 d_r(v) * (5 - d_r(v)) >= 20 - 18 = 2.
-      2. R(3, 4) = 9 (Greenwood & Gleason 1955): Circulant graph on Z_8 with red step set {1, 4, 7} has
-         0 red K_3 across C(8, 3) = 56 triples and 0 blue K_4 across C(8, 4) = 70 quadruples (R(3, 4) > 8),
-         while R(2, 4) = 4 and R(3, 3) = 6 are both even so 3-regularity on 9 vertices would require odd
-         degree sum 9 * 3 = 27, forcing R(3, 4) <= 9.
-      3. R(4, 4) = 18 (Greenwood & Gleason 1955): Paley graph P(17) over F_17 with quadratic-residue red step
+      2. R(3, 4) > 8 witness (Greenwood & Gleason 1955): Circulant graph on Z_8 with red step set {1, 4, 7} has
+         0 red K_3 across C(8, 3) = 56 triples and 0 blue K_4 across C(8, 4) = 70 quadruples (the matching upper
+         bound R(3, 4) <= 9 via odd degree sum 9 * 3 = 27 on K_9 is restated as a constant, not machine-checked).
+      3. R(4, 4) > 17 witness (Greenwood & Gleason 1955): Paley graph P(17) over F_17 with quadratic-residue red step
          set {1, 2, 4, 8, 9, 13, 15, 16} is SRG(17, 8, 3, 4), self-complementary via multiplication by the
          quadratic non-residue 3 mod 17, and has 0 red K_4 and 0 blue K_4 across all C(17, 4) = 2,380
-         4-subsets (R(4, 4) > 17), matching R(3, 4) + R(4, 3) = 9 + 9 = 18.
+         4-subsets (the matching upper bound R(3, 4) + R(4, 3) = 9 + 9 = 18 is restated, not machine-checked).
+      4. Paley P(37) and P(41) five-clique check: P(37) has 0 monochromatic K_5 across all C(37, 5) = 435,897
+         5-subsets, whereas P(41) already contains monochromatic K_5s across C(41, 5) = 749,398 5-subsets.
   - Asymmetric random first-moment floor (Erdos 1947, DOI 10.1090/S0002-9904-1947-08785-1):
         E[X_k(n, p)] = C(n, k) * (p^C(k, 2) + (1 - p)^C(k, 2)),
         n_1(k, p) = max { n >= k - 1 : E[X_k(n, p)] < 1 }  =>  R(k, k) >= n_1(k, p) + 1.
@@ -37,9 +38,10 @@ Planted-defect mode (`--planted-defect`):
   2. Replaces the Z_8 circulant {1, 4, 7} with {1, 3, 5, 7} (bipartite K_{4,4}, creating two blue K_4s).
   3. Adds non-residue {3, 14} to P(17) and uses residue multiplier 2 instead of non-residue 3, breaking
      self-complementarity, SRG(17, 8, 3, 4), and K_4-freeness.
-  4. At k = 3 relaxes the strict union-bound condition E[X_3(n, p)] < 1 to <= 1 (falsely accepting E = 1.0 at
+    4. At k = 3 relaxes the strict union-bound condition E[X_3(n, p)] < 1 to <= 1 (falsely accepting E = 1.0 at
      n = 4, p = 0.50 and inflating n_1(3, 0.50) from 3 to 4), and for k >= 4 drops the blue term (1 - p)^m,
      breaking p <-> 1 - p symmetry and skewing the optimal density away from p = 0.50.
+  5. Plants a monochromatic red K_5 on vertices {0, 1, 2, 3, 4} inside Paley P(37).
 """
 from __future__ import annotations
 
@@ -314,6 +316,71 @@ def verify_r44_paley17(planted_defect: bool = False) -> dict[str, Any]:
     }
 
 
+def _count_paley_monochromatic_k5(prime_q: int, plant_red_k5: bool = False) -> tuple[bool, int, int, int]:
+    """Count red and blue 5-cliques across all C(q, 5) five-subsets of Paley P(q) for prime q = 1 (mod 4)."""
+    qr = {(x * x) % prime_q for x in range(1, prime_q)}
+    undirected = (prime_q - 1) in qr
+    red_mask = [
+        sum(1 << v for v in range(prime_q) if v != u and ((v - u) % prime_q) in qr)
+        for u in range(prime_q)
+    ]
+    if plant_red_k5:
+        clique_bits = 0b11111
+        for u in range(5):
+            red_mask[u] |= clique_bits ^ (1 << u)
+    all_bits = (1 << prime_q) - 1
+    blue_mask = [all_bits ^ (1 << u) ^ red_mask[u] for u in range(prime_q)]
+
+    subsets_checked = 0
+    red_k5 = 0
+    blue_k5 = 0
+    for a, b, c, d, e in combinations(range(prime_q), 5):
+        subsets_checked += 1
+        m = (1 << a) | (1 << b) | (1 << c) | (1 << d) | (1 << e)
+        if (
+            (red_mask[a] & m) == (m ^ (1 << a))
+            and (red_mask[b] & m) == (m ^ (1 << b))
+            and (red_mask[c] & m) == (m ^ (1 << c))
+            and (red_mask[d] & m) == (m ^ (1 << d))
+            and (red_mask[e] & m) == (m ^ (1 << e))
+        ):
+            red_k5 += 1
+        elif (
+            (blue_mask[a] & m) == (m ^ (1 << a))
+            and (blue_mask[b] & m) == (m ^ (1 << b))
+            and (blue_mask[c] & m) == (m ^ (1 << c))
+            and (blue_mask[d] & m) == (m ^ (1 << d))
+            and (blue_mask[e] & m) == (m ^ (1 << e))
+        ):
+            blue_k5 += 1
+    return undirected, subsets_checked, red_k5, blue_k5
+
+
+def verify_paley_37_and_41_k5(planted_defect: bool = False) -> dict[str, Any]:
+    """Check P(37) has zero monochromatic 5-cliques across all 435,897 5-subsets and P(41) has monochromatic 5-cliques."""
+    p37_undir, p37_subsets, p37_red, p37_blue = _count_paley_monochromatic_k5(37, plant_red_k5=planted_defect)
+    p41_undir, p41_subsets, p41_red, p41_blue = _count_paley_monochromatic_k5(41, plant_red_k5=False)
+    paley_k5_ok = (
+        p37_undir
+        and p41_undir
+        and p37_subsets == 435897
+        and p37_red == 0
+        and p37_blue == 0
+        and p41_subsets == 749398
+        and p41_red > 0
+        and p41_blue > 0
+    )
+    return {
+        "p37_subsets_checked": p37_subsets,
+        "p37_red_k5_count": p37_red,
+        "p37_blue_k5_count": p37_blue,
+        "p41_subsets_checked": p41_subsets,
+        "p41_red_k5_count": p41_red,
+        "p41_blue_k5_count": p41_blue,
+        "paley_k5_ok": paley_k5_ok,
+    }
+
+
 def verify_probabilistic_and_asymptotic_table(planted_defect: bool = False) -> dict[str, Any]:
     """Verify exact Fraction first-moment floors, convexity at p = 0.50, plateaus, and k = 3..10 table."""
     p_grid = [Fraction(step, 20) for step in range(4, 17)]
@@ -346,15 +413,14 @@ def verify_probabilistic_and_asymptotic_table(planted_defect: bool = False) -> d
                     strict_argmax_k5_to_10 = False
         table[f"k={k}"] = evaluate_ramsey_slider(k, 0.50, planted_defect=planted_defect)
 
-    # Check open R(5, 5) bracket consistency with random floor and Erdos-Szekeres ceiling
-    r5_floor = EXPECTED_BALANCED_N1[5] + 1  # 12
+    # Check open R(5, 5) bracket ordering against computed first-moment floor and Erdos-Szekeres ceiling
+    r5_floor = first_moment_witness_n1(5, Fraction(1, 2), planted_defect=planted_defect) + 1
     r5_exoo = 43
     r5_angeltveit_mckay = 46
-    r5_es = math.comb(8, 4)  # 70
-    r5_bracket_ok = (r5_floor == 12 and r5_exoo == 43 and r5_angeltveit_mckay == 46 and r5_es == 70)
+    r5_es = math.comb(8, 4)
+    r5_bracket_ok = (r5_floor <= r5_exoo <= r5_angeltveit_mckay <= r5_es)
     skew_pins_ok = (
-        not planted_defect
-        and first_moment_witness_n1(5, Fraction(4, 20)) == 6
+        first_moment_witness_n1(5, Fraction(4, 20)) == 6
         and first_moment_witness_n1(5, Fraction(9, 20)) == 10
         and first_moment_witness_n1(10, Fraction(4, 20)) == 17
         and first_moment_witness_n1(10, Fraction(9, 20)) == 71
@@ -409,6 +475,7 @@ def run_verification(planted_defect: bool = False) -> dict[str, Any]:
     r33 = verify_r33_c5_and_exhaustive_k6(planted_defect=planted_defect)
     r34 = verify_r34_circulant8_and_parity(planted_defect=planted_defect)
     r44 = verify_r44_paley17(planted_defect=planted_defect)
+    paley_k5 = verify_paley_37_and_41_k5(planted_defect=planted_defect)
     prob = verify_probabilistic_and_asymptotic_table(planted_defect=planted_defect)
     guards_ok = _check_input_rejections()
     default_readout = evaluate_ramsey_slider(5, 0.50, planted_defect=planted_defect)
@@ -417,6 +484,7 @@ def run_verification(planted_defect: bool = False) -> dict[str, Any]:
         r33["r33_ok"]
         and r34["r34_ok"]
         and r44["r44_ok"]
+        and paley_k5["paley_k5_ok"]
         and prob["probabilistic_ok"]
         and guards_ok
     )
@@ -428,6 +496,7 @@ def run_verification(planted_defect: bool = False) -> dict[str, Any]:
         "r33_exhaustive_k6": r33,
         "r34_circulant8_and_parity": r34,
         "r44_paley17": r44,
+        "paley_37_and_41_k5": paley_k5,
         "probabilistic_bounds": prob,
         "input_guards_ok": guards_ok,
     }
