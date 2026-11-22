@@ -71,6 +71,14 @@
     "title": "The CIEDE2000 color-difference formula: Implementation notes, supplementary test data, and mathematical observations",
     "year": 2005
   },
+  "doi:10.1002/cpa.3160440402": {
+    "fetched": "2026-11-22",
+    "first_author": "Brenier",
+    "found": true,
+    "journal": "Communications on Pure and Applied Mathematics",
+    "title": "Polar factorization and monotone rearrangement of vector‐valued functions",
+    "year": 1991
+  },
   "doi:10.1002/eqe.2390": {
     "fetched": "2026-11-14",
     "first_author": "Lazar",
@@ -126,6 +134,14 @@
     "journal": "Pediatric Pulmonology",
     "title": "Early childhood developmental skills of children with tracheostomies and ventilators recently discharged home",
     "year": 2022
+  },
+  "doi:10.1006/aima.1997.1634": {
+    "fetched": "2026-11-22",
+    "first_author": "McCann",
+    "found": true,
+    "journal": "Advances in Mathematics",
+    "title": "A Convexity Principle for Interacting Gases",
+    "year": 1997
   },
   "doi:10.1006/jcss.2001.1774": {
     "fetched": "2026-11-14",
@@ -734,6 +750,14 @@
     "journal": "Engineering Structures",
     "title": "Structural analysis of Félix Candela’s hexagonal hyperbolic paraboloidal umbrellas",
     "year": 2022
+  },
+  "doi:10.1016/j.exmath.2018.01.002": {
+    "fetched": "2026-11-22",
+    "first_author": "Bhatia",
+    "found": true,
+    "journal": "Expositiones Mathematicae",
+    "title": "On the Bures–Wasserstein distance between positive definite matrices",
+    "year": 2019
   },
   "doi:10.1016/j.ijmecsci.2018.01.010": {
     "fetched": "2026-11-14",
@@ -1702,6 +1726,14 @@
     "journal": "The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science",
     "title": "XLV. <i>On reciprocal figures and diagrams of forces</i>",
     "year": 1864
+  },
+  "doi:10.1081/pde-100002243": {
+    "fetched": "2026-11-22",
+    "first_author": "Otto",
+    "found": true,
+    "journal": "Communications in Partial Differential Equations",
+    "title": "THE GEOMETRY OF DISSIPATIVE EVOLUTION EQUATIONS: THE POROUS MEDIUM EQUATION",
+    "year": 2001
   },
   "doi:10.1085/jgp.200609558": {
     "fetched": "2026-11-04",
@@ -4528,16 +4560,16 @@
     "year": 2001
   },
   "scite:10.1007/s002110050002": {
-    "citing_publications": 2109,
+    "citing_publications": 2137,
     "contrasting": 0,
-    "fetched": "2026-11-08",
+    "fetched": "2026-11-22",
     "found": true,
     "journal": "Numerische Mathematik",
-    "mentioning": 2106,
+    "mentioning": 2121,
     "retracted": false,
     "supporting": 19,
     "title": "A computational fluid mechanics solution to the Monge-Kantorovich mass transfer problem",
-    "total_smart_citations": 2131,
+    "total_smart_citations": 2146,
     "unclassified": 6,
     "year": 2000
   },

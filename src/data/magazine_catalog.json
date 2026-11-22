@@ -5950,7 +5950,7 @@
         ],
         "lineage_mode": "TRIAD_SYNTHESIS · Synthesizes M.04 PFR Entropic Distance, M.07 Pontryagin Control & M.08 Riemannian Geodesics",
         "title": "Monge–Kantorovich Optimal Transport, Benamou–Brenier Wasserstein-2 Geodesic Fluid Dynamics, Sinkhorn Entropic Regularization & Flow Matching",
-        "subtitle": "Synthesizing Folios M.04, M.07, and M.08: how Jean-David Benamou & Yann Brenier recast quadratic Wasserstein-2 optimal transport as a fluid-mechanics problem of least kinetic energy, with a pressureless flow guided by a Hamilton–Jacobi potential. The numbers shown are illustrative model values.",
+        "subtitle": "Synthesizing Folios M.04, M.07, and M.08: how Jean-David Benamou and Yann Brenier recast quadratic Wasserstein-2 optimal transport as a pressureless fluid flow of least kinetic energy. Numerical readouts shown here are fixed illustrative model values.",
         "date_published": "2026-11-03",
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.1",
@@ -5959,13 +5959,13 @@
         "governing_law": "W_2²(μ_0, μ_1) = inf ∫_0^1 ∫ ρ|v|² dx dt · ∂_t ρ + ∇·(ρ∇ψ) = 0 · ∂_t ψ + ½|∇ψ|² = 0",
         "colophon": {
           "identifier": "M.09 · Benamou–Brenier Wasserstein-2 Optimal Transport",
-          "kernels": "Benamou–Brenier Fluid Geodesic · Brenier Convex Potential ∇Φ · Sinkhorn KL",
-          "benchmarks": "Illustrative model values: W_2²(μ_0, μ_1) = 4.82 · t = 0.50 · ε = 0.05 (18 Sinkhorn steps)",
+          "kernels": "Benamou–Brenier Continuity & HJB · Brenier Convex Potential ∇Φ · Sinkhorn Scaling",
+          "benchmarks": "Illustrative 1D Gaussians: W_2² = 4.82 · t = 0.50 (σ = 1.15) · ε = 0.05 (18 steps)",
           "bridge": "Synthesizes M.04/M.07/M.08 · Waddington-OT trajectory inference (Schiebinger et al. 2019) as a method reference"
         },
         "sliders": [
           {
-            "label": "McCann Geodesic Transport Time (t)",
+            "label": "McCann Geodesic Transport Time (t_geo)",
             "min": 0.0,
             "max": 1.0,
             "step": 0.05,
@@ -5973,7 +5973,7 @@
             "unit": "t = "
           },
           {
-            "label": "Sinkhorn Entropic Regularization (ε)",
+            "label": "Sinkhorn Entropic Regularization (eps_reg)",
             "min": 0.01,
             "max": 0.5,
             "step": 0.01,
@@ -5982,51 +5982,51 @@
           }
         ],
         "steps": [
-          "Stage 1 (Monge–Kantorovich Convex Duality): Relaxes Monge's transport map T_# μ_0 = μ_1 into Kantorovich's linear program over couplings π ∈ Π(μ_0, μ_1).",
-          "Stage 2 (Brenier Polar Factorization Theorem): Shows the unique L²-optimal transport map is the gradient of a convex potential T(x) = ∇Φ(x) = x + ∇ψ_0(x).",
-          "Stage 3 (Benamou–Brenier Dynamic Fluid Geodesic, DOI 10.1007/s002110050002): Evolves density ρ_t along constant-velocity geodesics ∂_t ρ + ∇·(ρ∇ψ) = 0 with HJB optimality ∂_t ψ + ½|∇ψ|² = 0.",
-          "Stage 4 (Cuturi Sinkhorn Scaling, Continuing M.04/M.07): The entropic penalty ε KL(π || μ_0⊗μ_1) turns the problem into alternating matrix scalings. The 18-step count shown is an illustrative value; the real count depends on ε and the stopping tolerance."
+          "Stage 1 (Kantorovich Couplings): Relaxes Monge maps T_# μ_0 = μ_1 into a linear program over couplings π ∈ Π(μ_0, μ_1) when discrete mass splits (DOI 10.1561/2200000073).",
+          "Stage 2 (Brenier Polar Factorization, DOI 10.1002/cpa.3160440402): When μ_0, μ_1 ∈ P_2(ℝ^d) and μ_0 vanishes on Lebesgue-null sets, T(x) = ∇Φ(x) = x + ∇ψ_0(x) for convex Φ.",
+          "Stage 3 (Benamou–Brenier Geodesic, DOI 10.1007/s002110050002): Minimizing ½∬ ρ|v|² dx dt = ½W_2² under ∂_t ρ + ∇·(ρv) = 0 gives v = ∇ψ and ∂_t ψ + ½|∇ψ|² = 0 (DOI 10.1006/aima.1997.1634).",
+          "Stage 4 (Sinkhorn Scaling, arXiv:1306.0895): Penalty ε KL(π || μ_0⊗μ_1) gives π_ij = u_i K_ij v_j with K_ij = exp(−||x_i − y_j||² / ε) and O(ε) bias (18 steps fixed illustrative)."
         ],
         "readouts": [
           {
             "label": "Squared Wasserstein Distance (W_2², model)",
-            "value": "4.82 (illustrative Gaussian pair)"
+            "value": "4.82 (fixed illustrative Gaussian pair)"
           },
           {
-            "label": "Geodesic Mean & Std. Dev. (t=0.5, model)",
-            "value": "μ_t = 0.00 · σ_t = 1.15 (illustrative)"
+            "label": "Midpoint Mean & Spread (t = 0.50, model)",
+            "value": "μ_0.5 = 0.00 · σ_0.5 = 1.15 (fixed illustrative)"
           },
           {
-            "label": "Sinkhorn Scaling Convergence (model)",
-            "value": "18 iterations at ε = 0.05 (illustrative)"
+            "label": "Sinkhorn Scaling Step Count (model)",
+            "value": "18 steps at ε = 0.05 (fixed illustrative)"
           },
           {
             "label": "Model Geometry",
-            "value": "Benamou–Brenier geodesic (teaching model)"
+            "value": "Benamou–Brenier geodesic (teaching model, not a solver)"
           }
         ],
         "spec_plate": {
-          "division": "COMPUTATIONAL MATHEMATICS & GENERATIVE AI / OT-FLOW",
-          "title": "Benamou–Brenier Dynamic Optimal Transport & Sinkhorn Flow-Matching Solver",
-          "body": "Design study: a Bures–Wasserstein geodesic integrator and a log-domain stabilized Sinkhorn–Knopp matrix scaling routine, of the kind used for trajectory inference and mass-haul planning. Nothing here was run on real data.",
-          "meta": "Sources cited, not reproduced: Benamou & Brenier (2000) DOI 10.1007/s002110050002 · Cuturi (2013)"
+          "division": "APPLIED MATHEMATICS & OPTIMAL TRANSPORT · TEACHING STUDY",
+          "title": "Benamou–Brenier Fluid Geodesic & Entropic Sinkhorn Study",
+          "body": "Teaching study pairing Monge–Kantorovich couplings, Benamou–Brenier continuity and Hamilton–Jacobi equations, 1D Gaussian displacement interpolation, and Sinkhorn scaling under stated assumptions. No solver runs here; readouts are fixed illustrative text.",
+          "meta": "Cited, not reproduced: Brenier 1991 (DOI 10.1002/cpa.3160440402) · Benamou & Brenier 2000 (DOI 10.1007/s002110050002) · Peyré & Cuturi 2019 (DOI 10.1561/2200000073)"
         },
         "sidenote_1": {
-          "kicker": "SIDENOTE M.09-A · UNITING M.04 ENTROPY, M.07 HJB & M.08 RIEMANNIAN METRICS",
-          "body": "In Felix Otto's formal Riemannian calculus on probability space P_2(R^d), Benamou–Brenier paths are geodesics. As ε -> 0, entropic transport plans approach the unregularized optimal plan, whose Brenier map solves the Monge–Ampère equation det(D²Φ) = f / (g ∘ ∇Φ)."
+          "kicker": "SIDENOTE M.09-A · OTTO CALCULUS (2001) & MONGE–AMPÈRE CAVEAT",
+          "body": "Felix Otto (2001, DOI 10.1081/PDE-100002243) introduced a formal Riemannian calculus on probability densities for porous-medium gradient flows. For smooth positive densities f and g with g ∘ ∇Φ > 0, det(D²Φ) = f / (g ∘ ∇Φ) holds classically, and in a weak Aleksandrov sense otherwise."
         },
         "sidenote_2": {
-          "kicker": "SIDENOTE M.09-B · WADDINGTON-OT AND A POSSIBLE AIRWAY QUESTION",
-          "body": "Because scRNA-seq destroys cells at each measurement timepoint t_k, Schiebinger et al. (2019, DOI 10.1016/j.cell.2019.01.006) used optimal transport to infer developmental trajectories during reprogramming. The same method could in principle be asked how airway basal cells give rise to ionocytes, a CFTR-rich cell type described in 2018 (Montoro et al., DOI 10.1038/s41586-018-0393-7; Plasschaert et al., DOI 10.1038/s41586-018-0394-6). This folio has not done that analysis."
+          "kicker": "SIDENOTE M.09-B · SNAPSHOT TRAJECTORY INFERENCE (WADDINGTON-OT)",
+          "body": "Because single-cell RNA sequencing destroys cells at each timepoint, Schiebinger et al. (2019, DOI 10.1016/j.cell.2019.01.006; erratum DOI 10.1016/j.cell.2019.02.026) used optimal transport across 315,000 profiles over 18 days to estimate ancestor-descendant couplings."
         },
         "skill": {
           "filename": "wasserstein-optimal-transport-benamou-brenier-SKILL.md",
           "name": "wasserstein-optimal-transport-benamou-brenier",
-          "description": "AI-agnostic mathematical and generative-AI skill for Monge-Kantorovich optimal transport, Benamou-Brenier Wasserstein-2 dynamic fluid geodesics, Bures-Wasserstein Gaussian closed forms, and Sinkhorn entropic scaling.",
+          "description": "AI-agnostic optimal-transport skill for Monge-Kantorovich couplings, Brenier polar factorization, Benamou-Brenier Wasserstein-2 fluid geodesics, Bures-Wasserstein Gaussian displacement interpolation, and entropic Sinkhorn scaling.",
           "rules": [
-            "Compute dynamic Wasserstein-2 distance via Benamou-Brenier action minimization W_2^2(mu_0, mu_1) = inf int_0^1 int rho(t,x) |v(t,x)|^2 dx dt subject to d_t rho + nabla.(rho v) = 0.",
-            "Interpolate Gaussian measures N(m_0, Sigma_0) and N(m_1, Sigma_1) along McCann's geodesic m_t = (1-t)m_0 + t m_1 rather than Euclidean mixture averaging.",
-            "Stabilize Sinkhorn-Knopp scaling in the log domain for small entropic regularization epsilon to prevent numerical underflow in exp(-C_ij / epsilon)."
+            "Relate W_2^2(mu_0, mu_1) = inf int_0^1 int rho |v|^2 dx dt under d_t rho + nabla.(rho v) = 0 to kinetic saddle point (1/2) W_2^2 = inf int_0^1 int (1/2) rho |v|^2 dx dt, giving v = nabla psi and d_t psi + (1/2)|nabla psi|^2 = 0 (DOI 10.1007/s002110050002).",
+            "Check that mu_0 vanishes on Lebesgue-null sets before asserting T = nabla Phi (DOI 10.1002/cpa.3160440402), and interpolate both mean m_t = (1-t)m_0 + t m_1 and covariance along McCann paths (DOI 10.1006/aima.1997.1634; DOI 10.1016/j.exmath.2018.01.002).",
+            "Stabilize Sinkhorn scaling pi_ij = u_i exp(-c_ij / epsilon) v_j in the log domain for small epsilon > 0, note its O(epsilon) bias (arXiv:1306.0895), and state when readouts are fixed illustrative values."
           ]
         },
         "revisions": [
@@ -6045,17 +6045,17 @@
         ],
         "volume": 5,
         "volume_code": "VOL. 05",
-        "reading_time": "22 MIN READ",
-        "word_count": "4,650 WORDS",
+        "reading_time": "19 MIN READ",
+        "word_count": "4,550 WORDS",
         "scite": {
           "doi": "10.1007/s002110050002",
-          "fetched_on": "2026-11-08",
-          "citing_publications": 2109,
+          "fetched_on": "2026-11-22",
+          "citing_publications": 2137,
           "supporting": 19,
-          "mentioning": 2106,
+          "mentioning": 2121,
           "contrasting": 0,
           "retracted": false,
-          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,109 citing publications (19 supporting, 2,106 mentioning, 0 contrasting) on Jean-David Benamou & Yann Brenier's computational fluid mechanics formulation of the Monge-Kantorovich L2 Wasserstein optimal transport problem."
+          "summary": "Scite index [observed: Scite ML citation classification, accessed 2026-11-22]: 0 retractions; 2,137 citing publications (19 supporting, 2,121 mentioning, 0 contrasting citation statements) for Benamou & Brenier 2000 (DOI 10.1007/s002110050002). Counts describe that paper, not this folio."
         }
       },
       {
