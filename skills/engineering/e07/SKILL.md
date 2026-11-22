@@ -15,6 +15,7 @@ A plain-text companion to the essay at https://informatico.ai/engineering/e07/ (
 1. Compute U_red = U / (f_alpha * B) and K = B * omega / U = 2 * pi / U_red.
 2. Under Scanlan 1971 2B^2 moment scaling (per-span I_alpha in kg*m^2/m), evaluate zeta_net = zeta_s - (rho * B^4 / (2 * I_alpha)) * A_2*^(1971)(K) = zeta_s - (rho * B^4 / (4 * I_alpha)) * A_2*^(1996)(K) with A_2*^(1996) = 2 * A_2*^(1971); flutter starts at zeta_net <= 0.
 3. Weight non-dimensionalized bending (E I ∂⁴h/∂x⁴ − H_w ∂²h/∂x² + m ∂²h/∂t² − L_aero) and torsion (I_α ∂²α/∂t² − G J ∂²α/∂x² − M_ae) residuals in L_total = L_data + λ_pde ‖R_pde‖²; unmeasured wind makes sparse inversion ill-posed.
+4. State that these are explanatory single-mode relations with illustrative constants: not a design or assessment method, and no value here applies to a real bridge.
 
 ## How it works, in four stages
 - Stage 1 (Modal Kinematics): Model 2,100 m span (B = 36 m) with heave h(x,t) (f_h = 0.095 Hz) and torsion α(x,t) (f_α = 0.235 Hz); illustrative values, not a surveyed bridge.

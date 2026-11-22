@@ -161,8 +161,10 @@ def z_yukawa(k: float, s: float, t1: float, t2: float, lam: float) -> float:
 
 
 def z_smeared(k: float, s: float, t1: float, t2: float, sigma: float) -> float:
-    """Vertical factor ∫₀^{t₁} dz₁ ∫₀^{t₂} dz₂ e^{−k(s+z₁+z₂)} R_σ(k, s+z₁+z₂), reduced identically to a 1D
-    trapezoidal convolution in u = z₁ + z₂ over [0, min(t₁,t₂)], [min(t₁,t₂), max(t₁,t₂)], and [max(t₁,t₂), t₁+t₂]."""
+    """Vertical factor ∫₀^{t₁} dz₁ ∫₀^{t₂} dz₂ e^{−k(s+z₁+z₂)} R_σ(k, s+z₁+z₂). The change of variables
+    u = z₁ + z₂ turns it, exactly, into a 1D integral with a trapezoid-shaped weight, evaluated here by Gauss–Legendre
+    on [0, min(t₁,t₂)], [min(t₁,t₂), max(t₁,t₂)], and [max(t₁,t₂), t₁+t₂]. It is the same integral as the earlier
+    24×24 rule, by a different quadrature, so the two agree to quadrature error and not digit for digit."""
     if k * s > 745.0:
         return 0.0
     a_k = k * sigma

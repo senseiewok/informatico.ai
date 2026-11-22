@@ -17,9 +17,9 @@ A plain-text companion to the essay at https://informatico.ai/architecture/a05/ 
 3. Apply the folio's own targets of STI >= 0.68 and noise <= NC-28 as model caveats, not requirements of IEC 60268-16 or ISO 3382-1.
 
 ## How it works, in four stages
-- Stage 1 (Early Window, Bradley 1986, DOI 10.1121/1.393907): Sound within 50 ms aids speech; C_50 = +4.8 dB is an illustrative estimate.
+- Stage 1 (Early Window, cf. Bradley 1986, DOI 10.1121/1.393908): Early sound, within about 50 ms, aids speech; C_50 = +4.8 dB is an illustrative estimate.
 - Stage 2 (Schroeder Diffusion, DOI 10.1121/1.382601): For prime p and design wavelength λ_0 = c/f_0, well depths d_n = (n² mod p)·λ_0/(2p) scatter reflections.
-- Stage 3 (Perforated Veneer, cf. Maa 1998, DOI 10.1121/1.423870): Maa models fiber-free air-cavity panels; this untested sketch backs 0.8 mm oak veneer with wool (assumed α_bar = 0.44).
+- Stage 3 (Perforated Veneer, cf. Maa 1998, DOI 10.1121/1.423870): Maa models micro-perforated panel absorbers; this untested sketch backs 0.8 mm oak veneer with wool (assumed α_bar = 0.44).
 - Stage 4 (Eyring Decay, DOI 10.1121/1.1915175): For V = 2,400 m³ and S ≈ 1,075 m², Eyring gives 0.62 s (Sabine 0.82 s); STI = 0.74 is a linear estimate, not an MTF value (DOI 10.1121/1.384464).
 
 ## Reference values stated in the essay

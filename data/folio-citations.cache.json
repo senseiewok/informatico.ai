@@ -4366,17 +4366,16 @@
     "year": 2006
   },
   "scite:10.1016/j.jcp.2018.10.045": {
-    "citing_publications": 24941,
+    "citing_publications": 25907,
     "contrasting": 4,
-    "fetched": "2026-11-08",
+    "fetched": "2026-11-21",
     "found": true,
     "journal": "Journal of Computational Physics",
-    "mentioning": 12640,
+    "mentioning": 13014,
     "retracted": false,
     "supporting": 65,
     "title": "Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations",
-    "total_smart_citations": 12739,
-    "unclassified": 30,
+    "total_smart_citations": 13113,
     "year": 2019
   },
   "scite:10.1016/j.jobe.2019.100867": {

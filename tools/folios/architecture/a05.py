@@ -61,12 +61,11 @@ FOLIO = {
         },
     ],
     'steps': [
-        'Stage 1 (Early Window, Bradley 1986, DOI 10.1121/1.393907): Sound within 50 ms aids speech; '
+        'Stage 1 (Early Window, cf. Bradley 1986, DOI 10.1121/1.393908): Early sound, within about 50 ms, aids speech; '
         'C_50 = +4.8 dB is an illustrative estimate.',
         'Stage 2 (Schroeder Diffusion, DOI 10.1121/1.382601): For prime p and design wavelength λ_0 = c/f_0, '
         'well depths d_n = (n² mod p)·λ_0/(2p) scatter reflections.',
-        'Stage 3 (Perforated Veneer, cf. Maa 1998, DOI 10.1121/1.423870): Maa models fiber-free air-cavity '
-        'panels; this untested sketch backs 0.8 mm oak veneer with wool (assumed α_bar = 0.44).',
+        'Stage 3 (Perforated Veneer, cf. Maa 1998, DOI 10.1121/1.423870): Maa models micro-perforated panel absorbers; this untested sketch backs 0.8 mm oak veneer with wool (assumed α_bar = 0.44).',
         'Stage 4 (Eyring Decay, DOI 10.1121/1.1915175): For V = 2,400 m³ and S ≈ 1,075 m², Eyring gives 0.62 s '
         '(Sabine 0.82 s); STI = 0.74 is a linear estimate, not an MTF value (DOI 10.1121/1.384464).',
     ],
@@ -80,7 +79,7 @@ FOLIO = {
         'kicker': 'SIDENOTE A.05-A · EYRING VS SABINE',
         'body': (
             "In absorptive rooms Sabine's formula predicts longer decay than Eyring's "
-            '-S·ln(1 - α_bar) estimate (Eyring 1930, DOI 10.1121/1.1915175) under stated assumptions.'
+            '-S·ln(1 - α_bar) estimate (Eyring 1930, DOI 10.1121/1.1915175) under a diffuse-field assumption.'
         ),
     },
     'sidenote_2': {
@@ -111,11 +110,7 @@ FOLIO = {
             'edition': 'REV 1.2',
             'date': '2026-11-14',
             'summary': (
-                'REV 1.2 (Redated 2026-11-14): Grounding revision. Sabine is corrected from 0.73 s to 0.82 s '
-                '(same room as Eyring 0.62 s), STI 0.74 and C_50 +4.8 dB are labeled illustrative estimates, '
-                'and earlier ISO 3382 rating and alarm-fatigue claims are withdrawn. Eyring and the 1979 QRD '
-                'diffuser now cite DOI 10.1121/1.1915175 and DOI 10.1121/1.382601, STI cites IEC 60268-16, '
-                'NC-28 is aligned, and the readout verdict and Scite note are updated.'
+                'REV 1.2 (Redated 2026-11-14): Grounding revision. Sabine is corrected from 0.73 s to 0.82 s (same room as Eyring 0.62 s), STI 0.74 and C_50 +4.8 dB are labeled illustrative estimates, and earlier ISO 3382 rating and alarm-fatigue claims are withdrawn. Eyring and the 1979 QRD diffuser now cite DOI 10.1121/1.1915175 and DOI 10.1121/1.382601, STI cites IEC 60268-16, NC-28 is aligned, and the midnight scene is replaced by a plain account. A grounding pass on 2026-11-21 added Steeneken and Houtgast 1980, two Bradley 1986 papers, Maa 1998, Busch-Vishniac et al. 2005 and Zhu et al. 2017, and refreshed the Scite note.'
             ),
             'opus': (
                 'Review: references checked by DOI in Crossref and the Scite index; Scite literature suggests '
@@ -159,16 +154,10 @@ LONGFORM_DATA = {
     'reading_time': '22 MIN READ',
     'word_count': '4,650 WORDS',
     'scite': _SCITE_RECORD,
-    'act1_title': "Act I — Wallace Sabine's Midnight Cushions at Harvard and the Physics of Clear Speech",
+    'act1_title': "Act I — Wallace Sabine's Cushions at Harvard and the Physics of Clear Speech",
     'act1_dropcap': (
-        'Harvard University opened its Fogg Art Museum in 1895 with a semicircular lecture hall where professors '
-        'at the lectern could scarcely make a sentence understood. Spoken words hung in the plaster room '
-        'for about five and a half seconds, blurring each syllable into the next. Harvard asked Wallace Clement '
-        'Sabine, a twenty-seven-year-old physics instructor, to find a remedy. Working after midnight once '
-        'Cambridge streetcars fell quiet, Sabine sounded an organ pipe, shut off the wind, and timed the fading '
-        'tone with a chronograph. Night after night his assistants carried hundreds of hair-stuffed seat cushions '
-        'across from Sanders Theater and placed them on the seats and aisles. More cushions meant a shorter echo, '
-        "tracing a clean inverse curve. Sabine's cushion experiments linked room volume, surface absorption, and "
+        'Harvard University opened its Fogg Art Museum in 1895 with a lecture room in which speech was hard to follow, and asked Wallace Clement Sabine, a young physics instructor, to find a remedy. As his Collected Papers on Acoustics (1922) recount, Sabine sounded an organ pipe, shut off the wind, and timed how long the tone stayed audible, then repeated the measurement as seat cushions from Sanders Theatre were brought into the room. More cushions meant a shorter decay. '
+        "Sabine's cushion experiments linked room volume, surface absorption, and "
         'decay time, a foundation later gathered in his 1922 Collected Papers on Acoustics.'
     ),
     'act1_plain_bridge': (
@@ -187,7 +176,7 @@ LONGFORM_DATA = {
         'refined that estimate for absorptive rooms via discrete energy-loss reflections (DOI 10.1121/1.1915175). '
         'Manfred Schroeder proposed maximum-length-sequence diffusers in 1975 (DOI 10.1121/1.380425) and prime '
         'quadratic-residue wells in 1979 (DOI 10.1121/1.382601). Herman Steeneken and Tammo Houtgast defined the '
-        'Speech Transmission Index in 1980 (DOI 10.1121/1.384464), standardized in IEC 60268-16 beside ISO 3382-1. '
+        'Speech Transmission Index in 1980 (DOI 10.1121/1.384464), standardized in IEC 60268-16; ISO 3382-1 covers room-acoustic measurement. '
         'A reader could simulate room waves with FEniCS/dolfinx (https://github.com/FEniCS/dolfinx, DOI '
         '10.1145/3524456) or check residues in leanprover-community/mathlib4 (DOI 10.1145/3372885.3373824); '
         'neither simulation was run here.'
@@ -195,8 +184,7 @@ LONGFORM_DATA = {
     'act1_stakes': (
         'Hard plaster, glass, and terrazzo leave rooms reflective, while elevated ward noise measured at Johns '
         'Hopkins Hospital by Busch-Vishniac et al. (2005, DOI 10.1121/1.2118327) may add masking. Bradley (1986, '
-        'DOI 10.1121/1.393907; DOI 10.1121/1.393908) found that room speech scores track both fifty-millisecond '
-        'early-to-late ratios and signal-to-noise ratio. Heavy foam everywhere might deaden speech, whereas bare '
+        'DOI 10.1121/1.393907; DOI 10.1121/1.393908) found that room speech scores track measures that combine early-to-late sound ratios with signal-to-noise ratio. Heavy foam everywhere might deaden speech, whereas bare '
         'vaults focus echoes; pairing absorption with scattering aims to balance decay and early support.'
     ),
     'pullquote': (
@@ -220,9 +208,9 @@ LONGFORM_DATA = {
             'Steeneken and Houtgast formulate the Speech Transmission Index (DOI 10.1121/1.384464).',
         ),
         (
-            '1986–2009',
+            '1986',
             'John S. Bradley relates early-to-late ratios and noise to speech intelligibility '
-            '(DOI 10.1121/1.393907), preceding ISO 3382-1 and IEC 60268-16.',
+            '(DOI 10.1121/1.393907).',
         ),
     ],
     'act2_title': 'Act II — How It Actually Works: Eyring Decay + Early-to-Late Energy Ratio C_50',
@@ -236,11 +224,8 @@ LONGFORM_DATA = {
     'act2_plain_primer': (
         'Two controls drive the interactive model below. Mean Acoustic Absorption Coefficient sets the average '
         'fraction of sound energy absorbed per bounce. At low values, sound lingers off hard walls. Raising '
-        'absorption shortens estimated decay time and shifts two linear clarity estimates (with the speech index '
-        'clamped at its ends), which are not verified room scores. Schroeder QRD Prime Modulus steps across odd '
-        'values from five to twenty-three around prime choices such as thirteen. Moving this second slider updates '
-        'the modulus label and scales the three-dimensional relief over a fixed seven-well cycle, without changing '
-        'decay time.'
+        'absorption shortens estimated decay time and shifts two linear clarity estimates (with the speech index clamped at its low end), which are not verified room scores. Schroeder QRD Prime Modulus steps across odd '
+        'values from five to twenty-three around prime choices such as thirteen. Moving this second slider updates the modulus label and the height of the animated ripple in the three-dimensional view; the stepped wells there keep a fixed seven-well pattern, and decay time does not change.'
     ),
     'distill_diagram': {
         'analogy_title': 'Early Acoustic Clarity vs Echo Blur',
@@ -254,8 +239,7 @@ LONGFORM_DATA = {
         'threshold_fail': 'Echoes mask consonants; speech smeared',
     },
     'act2_intuition': (
-        'Bradley (1986, DOI 10.1121/1.393907) reported that speech intelligibility tracks signal-to-noise ratio '
-        'and the fifty-millisecond early-to-late ratio C_50. At high absorption, Eyring estimates shorter decay '
+        'Bradley (1986, DOI 10.1121/1.393907; DOI 10.1121/1.393908) compared predictors of speech intelligibility in rooms that combine early-to-late sound ratios with signal-to-noise ratio; the C_50 shown here is a simpler stand-in chosen by this folio. At high absorption, Eyring estimates shorter decay '
         'than Sabine via T_60 = 0.161 * V / [-S * ln(1 - alpha_bar)] (DOI 10.1121/1.1915175). For prime p, '
         'Schroeder depths d_n = (c / [2 f_0 p]) * (n^2 mod p) give a flat discrete Fourier power spectrum in the '
         'design band (DOI 10.1121/1.382601). Under stated assumptions (V = 2,400 m³, about S ≈ 1,075 m², '
@@ -265,16 +249,14 @@ LONGFORM_DATA = {
     'act2_deepening': (
         "As alpha_bar nears one in Eyring's denominator, estimated decay drops toward zero (DOI 10.1121/1.1915175). "
         'A Schroeder diffuser instead acts as a phase grating over [f_0, (p - 1) f_0] for prime p, spreading '
-        'reflections across angles (DOI 10.1121/1.382601). Dah-You Maa (1998, DOI 10.1121/1.423870) analyzed '
-        'fiber-free micro-perforated panels over air cavities; this untested sketch pairs 0.8 mm perforated veneer '
+        'reflections across angles (DOI 10.1121/1.382601). Dah-You Maa (1998, DOI 10.1121/1.423870) analyzed micro-perforated panel absorbers backed by a shallow cavity; this untested sketch pairs 0.8 mm perforated veneer '
         'with mineral wool at approximately alpha_bar = 0.44.'
     ),
     'walkthrough': [
         'Experiment 1 (Sabine vs. Eyring): At alpha_bar = 0.44 (V = 2,400 m³, about S ≈ 1,075 m²), compare '
         'Eyring T_60 = 0.62 s with Sabine T_60 = 0.82 s.',
         'Experiment 2 (Absorption vs. Modulus): Move alpha_bar to update Eyring T_60 and linear STI/C_50 '
-        'estimates; move p_QRD (odd steps 5–23, prime choices 5, 7, 11, 13, 17, 19, 23) to scale the 3D relief '
-        'and label without altering T_60.',
+        'estimates; move p_QRD (odd steps 5–23, prime choices 5, 7, 11, 13, 17, 19, 23) to change the label and the ripple height in the 3D view without altering T_60.',
         "Experiment 3 (Folio Caveat): Compare the STI estimate with the folio's 0.68 target; real rooms also "
         'depend on noise (Bradley 1986, DOI 10.1121/1.393908).',
     ],
@@ -285,8 +267,7 @@ LONGFORM_DATA = {
         '10.1145/3372885.3373824) before ISO 3382-1 field testing. Neither simulation was run here.'
     ),
     'act4_deepening': (
-        'Zhu et al. (2017, DOI 10.1103/PhysRevX.7.021034) reported a passive planar metasurface Schroeder diffuser '
-        'about one-twentieth of a wavelength thick. An untested question asks whether motorized coffers could '
+        'Zhu et al. (2017, DOI 10.1103/PhysRevX.7.021034) reported an ultrathin planar metasurface Schroeder diffuser, about an order of magnitude thinner than a conventional one. An untested question asks whether motorized coffers could '
         'shift a room between about 0.5 s for speech and 1.8 s for music, which is not verified here.'
     ),
     'sources': [
@@ -395,7 +376,7 @@ ES_TRANSLATION = {
         '0.62 s frente a 0.82 s de Sabine, junto a difusores de Schroeder (DOI 10.1121/1.382601). El primer '
         'control recalcula T_60 y estimaciones lineales ilustrativas de STI y C_50, distintas de Steeneken y '
         'Houtgast (DOI 10.1121/1.384464) y Bradley (DOI 10.1121/1.393907). El segundo control cambia la etiqueta '
-        'del módulo impar (5 a 23, inicial 13) y la escala 3D sin alterar T_60. Un proyectista podría simular '
+        'del módulo impar (5 a 23, inicial 13) y la altura de la ondulación en la vista 3D sin alterar T_60. Un proyectista podría simular '
         'ondas en computadora y medir según ISO 3382-1; la meta 0.68 es propia de la ficha.'
     ),
 }

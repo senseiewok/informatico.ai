@@ -291,7 +291,7 @@ class ToolchainTrackTests(unittest.TestCase):
             raw_spoofed = spoofed.encode("utf-8")
             step_path.write_bytes(raw_spoofed)
             _update_manifest_file(tmp_dir / "manifest.json", "x02_artifact.step", raw_spoofed)
-            with self.assertRaisesRegex(AssertionError, "CLOSED_SHELL face list"):
+            with self.assertRaisesRegex(AssertionError, "CLOSED_SHELL face list disagrees"):
                 toolchain_uga.verify_folio_assets("x02", tmp_dir, make_py)
 
         # 2. STEP zeroed coordinates (volume collapse) -> must fail closed

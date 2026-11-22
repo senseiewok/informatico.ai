@@ -69,10 +69,12 @@ FOLIO = {'folio_id': 'E.07',
                      'A_2*^(1971); flutter starts at zeta_net <= 0.',
                      'Weight non-dimensionalized bending (E I ∂⁴h/∂x⁴ − H_w ∂²h/∂x² + m ∂²h/∂t² − '
                      'L_aero) and torsion (I_α ∂²α/∂t² − G J ∂²α/∂x² − M_ae) residuals in L_total = '
-                     'L_data + λ_pde ‖R_pde‖²; unmeasured wind makes sparse inversion ill-posed.']},
+                     'L_data + λ_pde ‖R_pde‖²; unmeasured wind makes sparse inversion ill-posed.',
+                     'State that these are explanatory single-mode relations with illustrative constants: '
+                     'not a design or assessment method, and no value here applies to a real bridge.']},
  'revisions': [{'edition': 'REV 1.1',
                 'date': '2026-11-14',
-                'summary': 'REV 1.1 (Redated 2026-11-14): Grounding revision. U_crit = 76.4 m/s, net damping +2.84% and the 1.42% PINN error are labeled as illustrative model values: no wind-tunnel test or trained network stands behind them, and wind-tunnel verification and AASHTO LRFD compliance claims are withdrawn. Cites Scanlan & Tomko 1971 (DOI 10.1061/JMCEA3.0001526) and Billah & Scanlan 1991 (DOI 10.1119/1.16590); digital twins are framed as proposals.',
+                'summary': 'REV 1.1 (Redated 2026-11-14): Grounding revision. U_crit = 76.4 m/s, net damping +2.84% and the 1.42% PINN error are now labeled as illustrative model values: no wind-tunnel test was run and no network was trained, and the claims of wind-tunnel verification and AASHTO LRFD compliance are withdrawn. The Tacoma Narrows account is cut back to the documented record and cites Scanlan & Tomko 1971 (DOI 10.1061/JMCEA3.0001526) and Billah & Scanlan 1991 (DOI 10.1119/1.16590). Statements that such digital twins are deployed are now written as proposals. A grounding pass on 2026-11-21 added six references (Sarkar et al. 1994, Jain et al. 1996, Chan et al. 2006, Ya et al. 2011, Yang et al. 2015, Al-Adly & Kripakaran 2024), stated the two moment-scaling conventions, and said which readouts are fixed.',
                 'opus': 'Review: DOIs checked in Crossref and Scite (2026-11-14; expanded 2026-11-21), with Scanlan 2B² moment scaling and slider readouts stated.'},
                {'edition': 'REV 1.0',
                 'date': '2026-11-02',
@@ -129,12 +131,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'central slot so wind passes with less feedback. Engineers also seek ways to '
                       'estimate weld fatigue between sparse sensors along multi-kilometer spans. '
                       'This folio pairs bridge flutter mechanics with an untested design study of '
-                      'physics-guided machine learning; no bridge was instrumented and no neural '
-                      'network was trained for this page.',
+                      'physics-guided machine learning; no bridge was instrumented and no neural network was trained for this page. This page explains the idea; it is not a design or assessment method, and none of its numbers apply to a real bridge.',
  'act1_body': 'Scanlan and Tomko (1971, DOI 10.1061/JMCEA3.0001526) measured flutter derivatives '
               'on wind-tunnel deck models, and Billah and Scanlan explained why resonance failed '
-              '(1991, DOI 10.1119/1.16590): self-excited torsional flutter drove the span. Long '
-              'crossings often use streamlined box girders, or twin boxes separated by a central '
+              '(1991, DOI 10.1119/1.16590): self-excited torsional flutter drove the span. Some long crossings use streamlined box girders, or twin boxes separated by a central '
               'slot (Yang et al. 2015, DOI 10.1061/(ASCE)BE.1943-5592.0000645). Monitoring '
               'buffeting and fatigue across a kilometer or more hits a practical limit because '
               'optical strain gauges and accelerometers sit at discrete stations (Chan et al. '
@@ -146,8 +146,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'real bridge is not yet verified. CSI MasterFormat 05 12 00 and AASHTO LRFD name '
               'the subject scope only.',
  'act1_stakes': 'Quasi-static wind rules treat gusts as steady horizontal drag, ignoring how a '
-                'flexing girder alters its own wake. Under strong wind, a bluff or poorly vented '
-                'deck may enter torsional or coupled flutter (Jain, Jones & Scanlan 1996, DOI '
+                'flexing girder alters its own wake. Under strong wind, a deck may enter torsional or coupled flutter (Jain, Jones & Scanlan 1996, DOI '
                 '10.1061/(ASCE)0733-9445(1996)122:7(716)). Below flutter onset, storm buffeting '
                 'adds spanwise stress cycles, while wheel loads drive local root and toe fatigue '
                 'cracks in welded rib-to-deck joints of orthotropic steel decks (Ya, Yamada & '
@@ -165,8 +164,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Scanlan & Tomko publish measured lift and pitching-moment flutter derivatives '
                  'for bridge decks.'),
                 ('1991–1996',
-                 'Billah & Scanlan clarify Tacoma Narrows; Sarkar et al. (1994) and Jain et al. '
-                 '(1996) formalize coupled flutter analysis.'),
+                 'Billah & Scanlan clarify Tacoma Narrows; Sarkar et al. (1994) identify aeroelastic parameters of flexible bridges; Jain et al. (1996) treat coupled flutter and buffeting.'),
                 ('2006–2015',
                  'Chan et al. (2006) monitor Tsing Ma with fiber-Bragg sensors; Ya et al. (2011) '
                  'test weld fatigue; Yang et al. (2015) study slotted twin boxes.'),
@@ -214,17 +212,13 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'to 4 I_α. With per-span inertia I_α (kg·m²/m, making ρ B⁴ / I_α '
                    'dimensionless), uncoupled 1971 torsional damping is ζ_net = ζ_s − (ρ B⁴ / '
                    '[2 I_α]) A_2*(K). At U = 52.0 m/s, B = 36 m, and f_α = 0.235 Hz, U_red = 6.15 '
-                   '(K = 1.02); +2.84% and U_crit = 76.4 m/s are illustrative model estimates, '
-                   'not wind-tunnel data. A coupled PINN loss L_total = L_data + λ_pde ‖R_pde‖² '
+                   '(K = 1.02); +2.84% and U_crit = 76.4 m/s are fixed illustrative values, not computed from this law and not wind-tunnel data. A coupled PINN loss L_total = L_data + λ_pde ‖R_pde‖² '
                    'would non-dimensionalize bending E I ∂⁴h/∂x⁴ − H_w ∂²h/∂x² + m ∂²h/∂t² − '
                    'L_aero(x,t) and torsion I_α ∂²α/∂t² − G J ∂²α/∂x² − M_ae(x,t); 1.42% is an '
                    'untested reference.',
- 'act2_deepening': 'Leading-edge shear layers on bluff girders roll into vortices whose pressure '
-                   'phase relative to pitch velocity can turn A_2*(K) positive and inject torsional '
-                   'energy (Billah & Scanlan 1991, DOI 10.1119/1.16590). Wind-tunnel tests on '
+ 'act2_deepening': 'As a qualitative picture, flow separating at the leading edge of a bluff girder can act in phase with pitch velocity; when A_2*(K) turns positive, the wind injects torsional energy (Billah & Scanlan 1991, DOI 10.1119/1.16590). Wind-tunnel tests on '
                    'twin-box decks suggest a central slot modifies gap venting and surface-pressure '
-                   'phase between windward and leeward boxes, raising critical flutter speed when '
-                   'slot ratio and fairings suit the section (Yang et al. 2015, DOI '
+                   'phase between windward and leeward boxes, raising critical flutter speed when the slot suits the section (Yang et al. 2015, DOI '
                    '10.1061/(ASCE)BE.1943-5592.0000645). For sensing, automatic differentiation '
                    'evaluates fourth-order bending derivatives without grid-difference noise '
                    '(Raissi et al. 2019, DOI 10.1016/j.jcp.2018.10.045; Al-Adly & Kripakaran '
@@ -236,16 +230,15 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'flips at U_crit = 76.4 m/s, while +2.84% stays a fixed reference.',
                  'Experiment 2 (PINN Loss Weight Label): Move PINN Physics Loss Weight λ_pde '
                  'from 0.10 to 2.00; the browser updates λ = … and shared stage-overlay vectors '
-                 'while 1.42% remains a fixed untested benchmark.',
+                 'while 1.42% remains a fixed placeholder value.',
                  'Experiment 3 (4-Stage Stepper): Step Stages 1 to 4 across modal kinematics, '
                  'Scanlan 2B² moment scaling, coupled PDE residuals, and proposed weld-fatigue '
                  'checks.'],
  'act4_title': 'Act IV — Civil Structural Digital Twins, Lab Sustainability & Upstream Discovery '
                'Threads',
- 'act4_human_ai': 'Bridges such as Tsing Ma deploy fiber-Bragg-grating (FBG) strain arrays (Chan '
-                  'et al. 2006, DOI 10.1016/j.engstruct.2005.09.018). As an untested proposal, '
+ 'act4_human_ai': 'Fiber-Bragg-grating (FBG) strain sensors were trialed on the Tsing Ma Bridge (Chan et al. 2006, DOI 10.1016/j.engstruct.2005.09.018). As an untested proposal, '
                   'sparse FBG and accelerometer data might pair with PINNs (Al-Adly & Kripakaran '
-                  '2024, DOI 10.1017/dce.2024.4) or PySINDy (DOI 10.1073/pnas.1517384113) to '
+                  '2024, DOI 10.1017/dce.2024.4) or SINDy sparse regression (Brunton et al. 2016, DOI 10.1073/pnas.1517384113) to '
                   'prioritize Orthotropic Steel Deck (OSD) weld inspection (Ya et al. 2011, DOI '
                   '10.1061/(ASCE)BE.1943-5592.0000181). Citation tallies were checked in Scite '
                   '(DOI 10.1162/qss_a_00146).',
@@ -256,7 +249,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'Two caveats limit any proposed PINN twin: global beam equations cannot '
                    'resolve local weld-toe notches without submodeling, and surrogates may '
                    'miscalibrate in extreme storms outside training data. Separating measured '
-                   'wind-tunnel derivatives from illustrative model estimates keeps tests honest.',
+                   'wind-tunnel derivatives from fixed illustrative values keeps tests honest.',
  'cf_bridge': 'Standalone civil engineering folio, written for structural, wind and bridge engineers.',
  'sources': ['Scanlan, R. H., & Tomko, J. J. (1971). Airfoil and Bridge Deck Flutter Derivatives. '
              'J. Eng. Mech. Div. (ASCE), 97(6), 1717–1737. DOI: 10.1061/JMCEA3.0001526.',
@@ -342,11 +335,10 @@ ES_TRANSLATION = {'title_es': 'Flameo Aeroelástico de Puentes Colgantes de Gran
              'agua. Las ráfagas cotidianas tuercen el tablero y el amortiguamiento del acero '
              'suele apagarlas. Sobre una velocidad crítica ese margen puede perderse. El aire '
              'empuja en fase con la torsión y mete energía en cada ciclo, como en Tacoma Narrows '
-             'en 1940. Las oscilaciones crecen hasta dañar tirantes o vigas. Los cruces modernos '
+             'en 1940. Las oscilaciones pueden crecer hasta dañar péndolas o vigas. Los cruces modernos '
              'perfilan el cajón o abren una ranura central para reducir esa retroalimentación. '
              'También se busca estimar fatiga en soldaduras entre pocos sensores. Este folio une '
-             'esa física con una propuesta no probada de redes guiadas por ecuaciones, sin puente '
-             'instrumentado ni red entrenada.',
+             'esa física con una propuesta no probada de redes guiadas por ecuaciones, sin puente instrumentado ni red entrenada. Esta página explica la idea; no es un método de diseño ni de evaluación, y ninguno de sus números aplica a un puente real.',
  'deep_es': 'Bajo el escalamiento de momento 2B² de Scanlan y Tomko (1971, DOI '
             '10.1061/JMCEA3.0001526) con inercia por metro I_α (kg·m²/m), el amortiguamiento '
             'torsional neto es ζ_net = ζ_s − (ρ B⁴ / [2 I_α]) A_2*^(1971)(K) = ζ_s − (ρ B⁴ / '
@@ -355,9 +347,7 @@ ES_TRANSLATION = {'title_es': 'Flameo Aeroelástico de Puentes Colgantes de Gran
             '10.1061/(ASCE)0733-9445(1996)122:7(716)) cumple A_2*^(1996) = 2 A_2*^(1971). La '
             'ranura central de un doble cajón modifica la fase de presiones (Yang et al. 2015, '
             'DOI 10.1061/(ASCE)BE.1943-5592.0000645). Se propone evaluar sensores ópticos (Chan '
-            'et al. 2006, DOI 10.1016/j.engstruct.2005.09.018) y residuos PDE acoplados de '
-            'flexión y torsión en PINNs (Raissi et al. 2019, DOI 10.1016/j.jcp.2018.10.045; '
+            'et al. 2006, DOI 10.1016/j.engstruct.2005.09.018) y residuos acoplados de las ecuaciones de flexión y torsión en PINNs (Raissi et al. 2019, DOI 10.1016/j.jcp.2018.10.045; '
             'Al-Adly y Kripakaran 2024, DOI 10.1017/dce.2024.4) frente a fatiga por cargas '
             'rodantes en uniones costilla-tablero (Ya et al. 2011, DOI '
-            '10.1061/(ASCE)BE.1943-5592.0000181). El control de viento actualiza U/(f_α B) y el '
-            'veredicto en 76.4 m/s; +2.84 % y 1.42 % son referencias fijas.'}
+            '10.1061/(ASCE)BE.1943-5592.0000181). El control de viento actualiza U/(f_α B) y el veredicto en 76.4 m/s; 76.4 m/s, +2.84 % y 1.42 % son valores ilustrativos fijos: no provienen de un túnel de viento ni de una red entrenada.'}

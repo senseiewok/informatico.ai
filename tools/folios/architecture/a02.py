@@ -169,7 +169,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'teaching values; the folio makes no claim about embodied carbon.',
  'walkthrough': ['Experiment 1 (Sweep Engagement Ratio): Drag Slider 1 (λ = a / L) from 0.15 to 0.45 at V_lap = '
                  '18.4 kN. Watch M_lap climb from 3.50 to 6.80 kN·m as the lap moves inward toward mid-span.',
-                 'Experiment 2 (Test the Surrogate Alert & Node): With λ = 0.25, raise Slider 2 (V_lap) past about 28.8 kN to see illustrative utilization pass 1.00, then inspect the 4-beam SVG weave below.',
+                 'Experiment 2 (Test the Surrogate Alert & Node): With λ = 0.25, raise Slider 2 (V_lap) to about 28.8 kN to see illustrative utilization pass 1.00, then inspect the 4-beam SVG weave below.',
                  'Experiment 3 (Read the Companion Skill): Download reciprocal-timber-nexorade SKILL.md below; it '
                  'summarizes the lap-moment formula, notch shear ratio, and screw-reinforcement rule as a study aid, '
                  'not a design code.'],

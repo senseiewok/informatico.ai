@@ -132,7 +132,7 @@ FOLIO = {
             '(d_50 = 2.00 mm, s = 2.65, θ_c = 0.045, u_*c = 0.03817 m/s, V_c = 0.860 m/s, f_1 = 0.8262, f_3 = 0.6263) '
             'across clear-water intensities V_1 / V_c ∈ [0.45, 1.00] and flood durations t_d ∈ [2, 240] h. Contraction '
             'scour, abutment scour, live-bed dune passage, cohesive clays, graded armor breach, pile-cap exposure, and '
-            'debris accumulation fall outside this reduced 2-slider curve. Design practice takes the equilibrium or envelope depth on purpose, because a bridge meets many floods and scour adds up from one to the next. Nothing on this page may be used to assess or reduce scour depth at a real bridge.'
+            'debris accumulation fall outside this reduced 2-slider curve. Nothing on this page may be used to assess or reduce the design scour depth at a real bridge.'
         ),
         'meta': (
             'Primary anchors: Buffington 1999 (DOI 10.1061/(ASCE)0733-9429(1999)125:4(376)) · '
@@ -188,9 +188,7 @@ FOLIO = {
                 'deposition-erosion cycles, cohesive soils, or debris rafts.'
             ),
             (
-                'State that this is an illustrative single-event model. Design practice uses equilibrium or envelope '
-                'scour depth on purpose because scour accumulates across floods; never use K_t or any value from this '
-                'skill to assess or reduce scour depth at a real bridge.'
+                'State that this is an illustrative single-event model. Design practice uses equilibrium scour depth (FHWA HEC-18); never use K_t or any value from this skill to assess or reduce the design scour depth at a real bridge.'
             ),
         ],
     },
@@ -227,9 +225,9 @@ LONGFORM_DATA = {
     'scite': dict(_SCITE),
     'act1_title': 'Act I — Cool Fact & Human Story: How River Currents Undermine Bridge Piers',
     'act1_dropcap': (
-        'A river in flood does its damage where no one can see it. In one survey of 503 United States bridge failures from 1989 to 2000, flood and scour accounted for 266, more than half (Wardhana and Hadipriono 2003, DOI 10.1061/(ASCE)0887-3828(2003)17:3(144)). Long before a steel girder bends or a concrete deck cracks, the river attacks '
+        'A river in flood does its damage where no one can see it. In one survey of 503 United States bridge failures from 1989 to 2000, hydraulic causes such as flood and scour accounted for 266, more than half (Wardhana and Hadipriono 2003, DOI 10.1061/(ASCE)0887-3828(2003)17:3(144)). Long before a steel girder bends or a concrete deck cracks, the river attacks '
         'the hidden bed below. Fast current strikes the rounded nose of a pier, dives toward the bottom, and rolls '
-        'into a swirling horseshoe vortex that scoops sand and gravel from around the footing. Equilibrium formulas give the hole that weeks of steady flow would dig, and a three-hour mountain flash flood does not last that long. Design practice uses the equilibrium depth on purpose, because a bridge meets many floods and scour adds up from one to the next. Understanding '
+        'into a swirling horseshoe vortex that scoops sand and gravel from around the footing. Equilibrium formulas give the hole that weeks of steady flow would dig, and a three-hour mountain flash flood does not last that long. Design practice uses the equilibrium depth (FHWA HEC-18, 2012). A bridge meets many floods, and in clear-water conditions the hole is not refilled between them. Understanding '
         'how sediment threshold and flood duration govern that crater separates flash-flood lag from steady-state erosion.'
     ),
     'act1_plain_bridge': (
@@ -239,7 +237,7 @@ LONGFORM_DATA = {
         'threshold that moves open riverbed sand, the vortex carves a clean pit without fresh sand washing in from '
         'upstream. Digging that pit to its deepest possible level takes many days of steady flow. Real rainstorms '
         'rarely hold peak speed that long. Roughly half of the final pit depth forms during the opening hours, then '
-        'excavation slows sharply as the crater widens. A formula that leaves out grain size or storm duration can therefore give a deeper hole than one short flood digs. That margin is deliberate in design, and nothing on this page may be used to assess or reduce scour depth at a real bridge. Pairing sediment '
+        'excavation slows sharply as the crater widens. A formula that leaves out grain size or storm duration can therefore give a deeper hole than one short flood digs. Design keeps that margin, and nothing on this page may be used to assess or reduce the design scour depth at a real bridge. Pairing sediment '
         'threshold rules with flood duration tracks how deep the pit grows before the storm recedes.'
     ),
     'act1_body': (
@@ -398,7 +396,7 @@ LONGFORM_DATA = {
         'predict; (3) multi-peak flood sequences with incomplete infilling between storms (Link et al. 2020, DOI '
         '10.1061/(ASCE)HY.1943-7900.0001696); and (4) floating log jams or skewed pier walls that amplify downflow '
         'width beyond a*. Keeping f_3 = 1, K_t = 1 as a failing planted defect inside '
-        'verify_e16_pier_scour_timescale.py keeps the check able to fail. This single-storm relation is a laboratory-scale teaching model: Design practice takes the equilibrium or envelope depth on purpose, because a bridge meets many floods and scour adds up from one to the next. Nothing on this page may be used to assess or reduce scour depth at a real bridge.'
+        'verify_e16_pier_scour_timescale.py keeps the check able to fail. This single-storm relation is a laboratory-scale teaching model. Nothing on this page may be used to assess or reduce the design scour depth at a real bridge.'
     ),
     'cf_bridge': 'Continues E.05/E.07/E.14',
     'sources': [
@@ -488,7 +486,7 @@ DISPATCH = {
     'kicker': 'FRONTIER HYDRAULIC DISPATCH · BRIDGE PIER SCOUR & HYDROGRAPH TIME LAG',
     'headline': 'Shields Sediment Threshold, Sheppard–Melville Pier Scour & Flash-Flood Time-Scale Lag',
     'body': (
-        'In one survey, flood and scour accounted for 52.88% of U.S. bridge failures from 1989 to 2000 (Wardhana & Hadipriono 2003). Equilibrium formulas describe weeks of steady flow, not one short flood. Coupling Sheppard–Melville equilibrium scour (2014) '
+        'In one survey, hydraulic causes such as flood and scour accounted for 52.88% of U.S. bridge failures from 1989 to 2000 (Wardhana & Hadipriono 2003). Equilibrium formulas describe weeks of steady flow, not one short flood. Coupling Sheppard–Melville equilibrium scour (2014) '
         'with Melville–Chiew time lag (1999, DOI 10.1061/(ASCE)0733-9429(1999)125:1(59)) tracks y_s from 1.213 m at '
         '2.0 h and 1.817 m at 24.0 h toward 2.505 m over t_e = 42.09 days.'
     ),
@@ -516,7 +514,7 @@ ES_TRANSLATION = {
         'Esa columna de agua baja hacia el lecho, gira alrededor de ambos costados como una herradura y arrastra la '
         'arena suelta fuera del hueco. Cuando la corriente queda por debajo del umbral que mueve el resto del cauce, '
         'el vórtice excava sin que entre arena nueva desde aguas arriba. Alcanzar la profundidad máxima de equilibrio '
-        'toma semanas de flujo constante, mientras que una tormenta real dura pocas horas o días. En diseño se usa a propósito la profundidad de equilibrio, porque la socavación se acumula de una avenida a otra. Combinar el umbral '
+        'toma semanas de flujo constante, mientras que una tormenta real dura pocas horas o días. En diseño se usa la profundidad de equilibrio: un puente enfrenta muchas avenidas y, en agua clara, la fosa no se rellena entre una y otra. Combinar el umbral '
         'de sedimento con la duración de la avenida permite estimar cuánto crece la fosa antes de que baje el río.'
     ),
     'deep_es': (
@@ -534,6 +532,6 @@ ES_TRANSLATION = {
     ),
     'bridge_es': (
         'Acoplar y_s(t_d) = K_t(t_d) y_s,SM distingue el retardo en avenidas cortas del equilibrio de semanas en '
-        'arena uniforme (estudio hidráulico ilustrativo, no un cálculo de cimentación; nada de esta página debe usarse para evaluar o reducir la socavación en un puente real).'
+        'arena uniforme (estudio hidráulico ilustrativo, no un cálculo de cimentación; nada de esta página debe usarse para evaluar o reducir la profundidad de socavación de diseño en un puente real).'
     ),
 }

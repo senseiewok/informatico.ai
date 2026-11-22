@@ -85,7 +85,6 @@ def linkify_citations(escaped_text: str) -> str:
     """Turn DOIs, PMIDs, NCT trial IDs, arXiv IDs, and PDB IDs in HTML-escaped text into clickable external links."""
     # 1. Linkify DOIs (10.xxxx/...)
     def _doi_repl(m: re.Match) -> str:
-        prefix = m.group(1) or ""
         doi = m.group(2).rstrip(".,;:")
         while doi.endswith(")") and doi.count(")") > doi.count("("):
             doi = doi[:-1].rstrip(".,;:")

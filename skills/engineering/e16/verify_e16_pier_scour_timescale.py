@@ -28,7 +28,7 @@ Sheppard, Melville & Demir 2014, DOI 10.1061/(ASCE)HY.1943-7900.0000800):
         y_s(t_d) = K_t(t_d) * y_s,SM                                              [m]
 
 Model scope & caveats:
-  - Illustrative closed-form hydraulic screening model for a single unskewed circular pier in uniform
+  - Illustrative closed-form hydraulic model for a single unskewed circular pier in uniform
     cohesionless sand/gravel under clear-water flow (0.45 <= V_1 / V_c <= 1.00); not a bridge foundation
     design calculation.
   - Does not cover live-bed sediment transport (V_1 / V_c > 1.0), graded armor-layer breach ("armor-break"
