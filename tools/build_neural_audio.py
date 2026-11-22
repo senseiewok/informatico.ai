@@ -6,7 +6,7 @@ Covers:
     in EN-US & ES-MX -> src/audio/<slug>-{en,es}.mp3
   - 40 Sensei Ewok CF Lab Monographs (c01..c10, p01..p10, d01..d10, l01..l10) in EN-US & ES-MX -> src/cf/audio/<slug>-{en,es}.mp3
 
-Uses a warm, brisk Woman's Neural AI Voice (`en-US-AvaMultilingualNeural` & `es-MX-DaliaNeural` at `rate="+20%"`)
+Uses a warm Woman's Neural AI Voice (`en-US-AvaMultilingualNeural` & `es-MX-DaliaNeural` at `rate="+0%"`, 1x default speed)
 paired with a Scientific & Mathematical Prosody Normalizer so equations, Greek symbols, units, and clinical/engineering
 acronyms are spoken naturally rather than spelled character-by-character.
 
@@ -46,7 +46,7 @@ if str(TOOLS) not in sys.path:
 EN_VOICE = "en-US-AvaMultilingualNeural"
 ES_VOICE_CF = "es-MX-DaliaNeural"
 ES_VOICE_INF = "es-MX-DaliaNeural"
-SPEECH_RATE = "+20%"
+SPEECH_RATE = "+0%"
 
 SUBSCRIPT_MAP = str.maketrans("₀₁₂₃₄₅₆₇₈₉₊₋₌₍₎", "0123456789+-=()")
 SUPERSCRIPT_MAP = str.maketrans("⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾", "0123456789+-=()")
@@ -512,7 +512,7 @@ def compute_segment_offsets_ratios(segments: list[str]) -> list[float]:
 
 
 SEGMENT_JOIN = " ... "
-# Speech at rate +20% runs at roughly 15 to 20 characters a second in both voices. Outside these bounds a
+# Speech at rate +0% (1x) runs at roughly 12 to 17 characters a second in both voices. Outside these bounds a
 # track is truncated, silent, or not the narration of its script.
 MIN_CHARS_PER_SECOND = 7.0
 MAX_CHARS_PER_SECOND = 40.0

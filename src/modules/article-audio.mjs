@@ -7,7 +7,7 @@
 // discovery, Neural/Natural/Google voice ranking (penalizing legacy SAPI5 voices), and a
 // Scientific & Mathematical Prosody Normalizer in English (en-US) and Mexican Spanish (es-MX).
 
-const SPEEDS = [1.15, 1.35, 1.5, 1.0, 0.85];
+const SPEEDS = [1.0, 1.15, 1.35, 1.5, 0.85];
 
 const AUDIO_TRACK_PATH_RE = /^((?:\.\.\/){1,5}|\/)audio\/([a-zA-Z0-9_-]+)\.(mp3|ogg|wav|m4a)$/i;
 const SAFE_AUDIO_PREFIXES = ["/", "../", "../../", "../../../", "../../../../", "../../../../../"];
@@ -744,7 +744,7 @@ export class TpArticleAudioElement extends HTMLElement {
     speedBtn.className = "tp-audio-util-btn tp-audio-speed-btn";
     speedBtn.setAttribute("data-audio-action", "speed");
     speedBtn.setAttribute("title", "Playback speed / Velocidad de narración");
-    speedBtn.textContent = "1.15×";
+    speedBtn.textContent = "1×";
     speedBtn.addEventListener("click", () => this.cycleSpeed());
 
     leftGroup.appendChild(playBtn);

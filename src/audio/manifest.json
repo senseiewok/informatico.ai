@@ -3,7 +3,7 @@
   "voices": {
     "en": "en-US-AvaMultilingualNeural",
     "es": "es-MX-DaliaNeural",
-    "rate": "+20%"
+    "rate": "+0%"
   },
   "folios": {
     "e01": {
@@ -25,9 +25,9 @@
         0.8644
       ],
       "en_text_sha256": "e8f0802cf47dd1fbc3e53c82375670d02316b81f091c48c9cb817034bd6f5795",
-      "en_seconds": 83.76,
+      "en_seconds": 101.02,
       "es_text_sha256": "ddccb46ac26fa71f39f836f3bae39b08bd067ce276eb3abbbefee9d83edc3857",
-      "es_seconds": 72.31
+      "es_seconds": 86.88
     },
     "e02": {
       "folio_id": "E.02",
@@ -48,9 +48,9 @@
         0.8581
       ],
       "en_text_sha256": "7456124400d23aba38218ad8b5acc1ce8f3df000089a32f40769977676e85c1f",
-      "en_seconds": 68.04,
+      "en_seconds": 82.01,
       "es_text_sha256": "a5810616e6d5f1394c1c969bf5cf4f57d31f2174beadf29a1aeb588845411e28",
-      "es_seconds": 71.76
+      "es_seconds": 86.21
     },
     "e03": {
       "folio_id": "E.03",
@@ -71,9 +71,9 @@
         0.8545
       ],
       "en_text_sha256": "41dfe2ce97d12bc509a069458ac628e6c542f9bc5f912757c3248a9584a8fc9d",
-      "en_seconds": 81.55,
+      "en_seconds": 97.9,
       "es_text_sha256": "07571fe3ca3f186f1c191a22d50c7e6e2a8581855cc999b34b8d73cd91c65434",
-      "es_seconds": 71.86
+      "es_seconds": 86.33
     },
     "e04": {
       "folio_id": "E.04",
@@ -94,9 +94,9 @@
         0.8186
       ],
       "en_text_sha256": "56b9c664893ebe2018ab99faa09d3404d375f7ef7577df60d0d77c8dc5468113",
-      "en_seconds": 81.31,
+      "en_seconds": 97.8,
       "es_text_sha256": "e364480da190234e3a7ef0801ecd563ebeb9822cb466ed04915644a57c4f06aa",
-      "es_seconds": 60.0
+      "es_seconds": 72.1
     },
     "e05": {
       "folio_id": "E.05",
@@ -117,9 +117,9 @@
         0.8691
       ],
       "en_text_sha256": "3bed0e347ab32d9d3ae25dc003d36e3fd1d48292bf9d6bd3e5656e6168a6f034",
-      "en_seconds": 90.07,
+      "en_seconds": 108.94,
       "es_text_sha256": "7b67b4decda5bc7b3e2250f88d23e9914169e55a03e375e777251dd778f78228",
-      "es_seconds": 80.26
+      "es_seconds": 96.41
     },
     "e06": {
       "folio_id": "E.06",
@@ -140,9 +140,9 @@
         0.8626
       ],
       "en_text_sha256": "5ae9ba23f189b8eb4f06e3b00c0626f209e79ccce1e5320de46968731a067e89",
-      "en_seconds": 83.26,
+      "en_seconds": 100.66,
       "es_text_sha256": "4e5404d9e6708b85a06ca808db17f22e026e18ef568f874eefd5fae5fc5003b8",
-      "es_seconds": 74.3
+      "es_seconds": 89.28
     },
     "e07": {
       "folio_id": "E.07",
@@ -150,22 +150,22 @@
       "es_src": "audio/e07-es.mp3",
       "en_offsets": [
         0.0,
-        0.2871,
-        0.502,
-        0.6988,
-        0.8031
+        0.2746,
+        0.5199,
+        0.7119,
+        0.8117
       ],
       "es_offsets": [
         0.0,
-        0.2687,
-        0.5117,
-        0.6919,
-        0.8683
+        0.2746,
+        0.5012,
+        0.6852,
+        0.8654
       ],
-      "en_text_sha256": "fdd4393c819e875a0520879b909f69814cd5ac759b1fab667585bb71a1fb4da3",
-      "en_seconds": 82.37,
-      "es_text_sha256": "a27bd36826e37c45c543c913dbd88a0f7561542a7764bf1f85266cf23e88747f",
-      "es_seconds": 76.25
+      "en_text_sha256": "c8511bd715b1cf437cbe40aa509f91104e6c26b4ba7ea03f40a2785e0e89857a",
+      "en_seconds": 103.08,
+      "es_text_sha256": "097f4865d253251374173c92769b07fcdc946d9775de342b8d6a52fcb719df20",
+      "es_seconds": 91.82
     },
     "e08": {
       "folio_id": "E.08",
@@ -173,22 +173,22 @@
       "es_src": "audio/e08-es.mp3",
       "en_offsets": [
         0.0,
-        0.2523,
-        0.4754,
-        0.7177,
-        0.8175
+        0.2807,
+        0.4893,
+        0.686,
+        0.797
       ],
       "es_offsets": [
         0.0,
-        0.2496,
-        0.5164,
-        0.6833,
-        0.8703
+        0.2605,
+        0.4953,
+        0.6695,
+        0.8647
       ],
-      "en_text_sha256": "f1ac7334e152137c843d1aca8778407aafd47e79d9c9d6f051ae9a8818ac1b9b",
-      "en_seconds": 92.81,
-      "es_text_sha256": "45445a1c1bd49b5c94111b636c617ce88be705623f8391ecafe0d7a9e94cca10",
-      "es_seconds": 83.62
+      "en_text_sha256": "1e1b113fe616726d4f3497fdaf01581f7900ec09982946fd3314ba3988f181b9",
+      "en_seconds": 100.49,
+      "es_text_sha256": "b42637b93dd7d4dc2e5b246fa910617b1121883a05494fbd26eeecbb7630a9b4",
+      "es_seconds": 99.22
     },
     "e09": {
       "folio_id": "E.09",
@@ -209,9 +209,9 @@
         0.8629
       ],
       "en_text_sha256": "78782550a175eb4fff2131715b81720a9706f6fed7120746f5b13946872e4d09",
-      "en_seconds": 88.34,
+      "en_seconds": 106.39,
       "es_text_sha256": "4dff051f9595326e44b4132f1375b5f38bca42138abd27a4abe452710100418e",
-      "es_seconds": 79.9
+      "es_seconds": 96.0
     },
     "e10": {
       "folio_id": "E.10",
@@ -232,9 +232,9 @@
         0.8301
       ],
       "en_text_sha256": "a4339ff58fe76c3171c0e8e64065519c822f5521e42ab8ae03a722924639d58b",
-      "en_seconds": 67.56,
+      "en_seconds": 80.57,
       "es_text_sha256": "1df8528cd295b19de3158b7368cce302b8f248d6083708f36b5587691eeb0dcf",
-      "es_seconds": 63.34
+      "es_seconds": 76.08
     },
     "e11": {
       "folio_id": "E.11",
@@ -255,9 +255,9 @@
         0.8449
       ],
       "en_text_sha256": "b8e9bb69caf698748bd7159570c0b6b5ef08716f0bb47ade4dfa18f5f22b5d96",
-      "en_seconds": 76.15,
+      "en_seconds": 91.01,
       "es_text_sha256": "ae6c9cbb851b4eee0afc7ddbc717a84c87d4e87ad9e8b85e8736dfb4cac251ca",
-      "es_seconds": 68.23
+      "es_seconds": 81.98
     },
     "e12": {
       "folio_id": "E.12",
@@ -278,9 +278,9 @@
         0.8412
       ],
       "en_text_sha256": "2bd1ee18ba313f86570ed95ee62ffe03e1be554fa56528712f14aa3bc0cd58f3",
-      "en_seconds": 74.14,
+      "en_seconds": 88.8,
       "es_text_sha256": "c86c6966077a3a1a0c7e33baaf0e026235dc2af33ac278aa4ec6fcf19fd4d7e9",
-      "es_seconds": 63.79
+      "es_seconds": 76.66
     },
     "e13": {
       "folio_id": "E.13",
@@ -301,9 +301,9 @@
         0.8297
       ],
       "en_text_sha256": "a6eb319ace03053cc8019872463682ca94fb3111f03a66cdeb6ced996e9ac79c",
-      "en_seconds": 89.16,
+      "en_seconds": 107.14,
       "es_text_sha256": "e80195c35e4f9d9a4db64c1af1f7d32c3605a3cf2ddd921aca7417e174bd6cf3",
-      "es_seconds": 61.18
+      "es_seconds": 73.49
     },
     "e14": {
       "folio_id": "E.14",
@@ -324,9 +324,55 @@
         0.8678
       ],
       "en_text_sha256": "718bad319b5eac8290194e431427b57a2434ae1aa43302eeb8d7e30fc80a1c02",
-      "en_seconds": 74.18,
+      "en_seconds": 88.58,
       "es_text_sha256": "5218bc4c6a66946816b591eb4160419941eef41f68e3c81ee5aebabc047e0bf9",
-      "es_seconds": 82.61
+      "es_seconds": 99.24
+    },
+    "e15": {
+      "folio_id": "E.15",
+      "en_src": "audio/e15-en.mp3",
+      "es_src": "audio/e15-es.mp3",
+      "en_offsets": [
+        0.0,
+        0.2846,
+        0.5056,
+        0.7566,
+        0.8367
+      ],
+      "es_offsets": [
+        0.0,
+        0.2757,
+        0.4886,
+        0.6921,
+        0.8633
+      ],
+      "en_text_sha256": "5f532bd602504f2b2dfab0e55b710950f455f036975c8102abe58bb9a6040462",
+      "en_seconds": 106.22,
+      "es_text_sha256": "f2f03cccc1589ab59aea533e2fa9d76e1dd56ee5f13b2f742ac0b9d601d91b70",
+      "es_seconds": 100.13
+    },
+    "e16": {
+      "folio_id": "E.16",
+      "en_src": "audio/e16-en.mp3",
+      "es_src": "audio/e16-es.mp3",
+      "en_offsets": [
+        0.0,
+        0.2884,
+        0.5402,
+        0.749,
+        0.8378
+      ],
+      "es_offsets": [
+        0.0,
+        0.2593,
+        0.4808,
+        0.716,
+        0.8736
+      ],
+      "en_text_sha256": "444811e49ddd46dce0d3d3710eb88c71ed8bd0ff235ec58b2ddc5c95dda0d797",
+      "en_seconds": 113.57,
+      "es_text_sha256": "2c47be2e3ab95a528e79dc1e2803b34a0d455ef31b180aeaafb4f98095640f8a",
+      "es_seconds": 111.41
     },
     "a01": {
       "folio_id": "A.01",
@@ -334,22 +380,22 @@
       "es_src": "audio/a01-es.mp3",
       "en_offsets": [
         0.0,
-        0.3123,
-        0.5796,
-        0.7568,
-        0.8468
+        0.3288,
+        0.5563,
+        0.7433,
+        0.8384
       ],
       "es_offsets": [
         0.0,
-        0.3032,
-        0.544,
-        0.688,
-        0.8608
+        0.3076,
+        0.5373,
+        0.6834,
+        0.8588
       ],
-      "en_text_sha256": "d5fc77f76d1312d130f29c88f5e4063862d595645d015d606443ed93efdb9eb3",
-      "en_seconds": 82.85,
-      "es_text_sha256": "f55967cb9f15a39f5982ea853b71b4d7e9d39a4341287b3f302bdfec84dfeae7",
-      "es_seconds": 72.29
+      "en_text_sha256": "1867894540f2192c02f0142aed2811bf9dc2b94cd855131dda1c74310432a475",
+      "en_seconds": 95.04,
+      "es_text_sha256": "eccea14a3ee10829431183a3646dbed82e0beffd237876584e65c5d87815440b",
+      "es_seconds": 85.97
     },
     "a02": {
       "folio_id": "A.02",
@@ -357,22 +403,22 @@
       "es_src": "audio/a02-es.mp3",
       "en_offsets": [
         0.0,
-        0.2317,
-        0.4889,
-        0.7301,
-        0.8248
+        0.2313,
+        0.4793,
+        0.7305,
+        0.8251
       ],
       "es_offsets": [
         0.0,
-        0.2395,
-        0.5203,
-        0.677,
-        0.8616
+        0.2582,
+        0.5311,
+        0.6843,
+        0.8647
       ],
-      "en_text_sha256": "6bd8ad7ee3b7abdf6f7c5edf85c7900c4b540aae4c6283a21fa6a235435eb02a",
-      "en_seconds": 76.18,
-      "es_text_sha256": "3925582c23ada7b4ce2bcdb88696d0be06dcf2ca22e786c21ef983cf3589ceee",
-      "es_seconds": 70.06
+      "en_text_sha256": "6d00cf36da3d20d46896e2d80f202f050f0e903050901a856bc275196b09f013",
+      "en_seconds": 102.5,
+      "es_text_sha256": "9b0284885ff3f00197c62573ee82d629236e4efa13e1283466c9a3d1cdd2a00c",
+      "es_seconds": 87.89
     },
     "a03": {
       "folio_id": "A.03",
@@ -393,9 +439,9 @@
         0.864
       ],
       "en_text_sha256": "a4f887db763c3f80855ff74a526c6922286be41f360908901429c40917f96c4b",
-      "en_seconds": 74.5,
+      "en_seconds": 89.54,
       "es_text_sha256": "656a7029c3248f570492fda174373a75104a86b7b17fcca87f30aaf89f87ab8b",
-      "es_seconds": 72.6
+      "es_seconds": 87.22
     },
     "a04": {
       "folio_id": "A.04",
@@ -416,9 +462,9 @@
         0.8449
       ],
       "en_text_sha256": "41c8ee49b333ed74712382a2013ef63a7bbe05cf632ec95907da38fbe3c58f21",
-      "en_seconds": 72.46,
+      "en_seconds": 87.19,
       "es_text_sha256": "f99ceaa0bdeb9cb19dba06c2aa89a9dcee605d9c8d2d02dd20b1b6f44ec933c7",
-      "es_seconds": 64.27
+      "es_seconds": 77.21
     },
     "a05": {
       "folio_id": "A.05",
@@ -426,22 +472,22 @@
       "es_src": "audio/a05-es.mp3",
       "en_offsets": [
         0.0,
-        0.2593,
-        0.4737,
-        0.7074,
-        0.7988
+        0.248,
+        0.5019,
+        0.7202,
+        0.8075
       ],
       "es_offsets": [
         0.0,
-        0.2639,
-        0.5231,
-        0.6644,
-        0.8657
+        0.2678,
+        0.5161,
+        0.6594,
+        0.8637
       ],
-      "en_text_sha256": "eaaf4c8ae27103794eca5d7413f0df7d653348e9be5a47bee362fbc24b651d92",
-      "en_seconds": 88.75,
-      "es_text_sha256": "4e5c78b6f01afdc298f7fb0b7094a47e6d91ab95fa522d0f4a855418edf7dc19",
-      "es_seconds": 75.38
+      "en_text_sha256": "aa2fb776044513c0000ac62bfdae7501bbb6d8ceff712c3f0e263a7166db366f",
+      "en_seconds": 110.06,
+      "es_text_sha256": "41cacb5c5bd0ae13b2b757690a946f2981095a68f76934de1d3a6d190eb3c46b",
+      "es_seconds": 90.43
     },
     "a06": {
       "folio_id": "A.06",
@@ -449,22 +495,22 @@
       "es_src": "audio/a06-es.mp3",
       "en_offsets": [
         0.0,
-        0.2737,
-        0.4415,
-        0.7122,
-        0.8031
+        0.2552,
+        0.4791,
+        0.7308,
+        0.8159
       ],
       "es_offsets": [
         0.0,
-        0.1603,
-        0.392,
-        0.5672,
-        0.8387
+        0.1481,
+        0.4384,
+        0.6002,
+        0.851
       ],
-      "en_text_sha256": "f6f98ebbaae21c65deb8b920d6f3b5724e355e1e90636ac3cf3a2db2e660fe98",
-      "en_seconds": 97.44,
-      "es_text_sha256": "739cbdf5acdbabca7c089e075ec13bc21d9893c6c3f6c88b829680b36d296ed2",
-      "es_seconds": 64.9
+      "en_text_sha256": "75a6bd622715c06db713e0307e9958373f993cfb49a2134a13af9ef1a865d658",
+      "en_seconds": 126.46,
+      "es_text_sha256": "b6ff69e6729f2ae4f38c648fdb7afe2ad116d4b52710b6acaa7cc406b4444a2b",
+      "es_seconds": 84.5
     },
     "a07": {
       "folio_id": "A.07",
@@ -472,22 +518,22 @@
       "es_src": "audio/a07-es.mp3",
       "en_offsets": [
         0.0,
-        0.2809,
-        0.4856,
-        0.7509,
-        0.8307
+        0.2787,
+        0.4793,
+        0.742,
+        0.8247
       ],
       "es_offsets": [
         0.0,
-        0.2537,
-        0.5075,
-        0.7065,
-        0.8763
+        0.2562,
+        0.5096,
+        0.7077,
+        0.8769
       ],
-      "en_text_sha256": "41c152ad930f0772827de444c67fb883cb787a2597e154b8ca98aec3f6f4e135",
-      "en_seconds": 88.87,
-      "es_text_sha256": "d716f5589142904fadd4e6e9ba0477150a66a0330d2daa01d6ea6c28828e7ec8",
-      "es_seconds": 86.71
+      "en_text_sha256": "fe7272654902bc62a06e9e439311196dbc3354d3ad19bbc1713c371b99aba1fa",
+      "en_seconds": 107.52,
+      "es_text_sha256": "5391bfe1d0cb679728e551255b23cf02bd4bcc81f0ab51e956bd2ab02c5587b0",
+      "es_seconds": 120.34
     },
     "a08": {
       "folio_id": "A.08",
@@ -495,22 +541,22 @@
       "es_src": "audio/a08-es.mp3",
       "en_offsets": [
         0.0,
-        0.2785,
-        0.4691,
-        0.6906,
-        0.8005
+        0.2332,
+        0.495,
+        0.7057,
+        0.8102
       ],
       "es_offsets": [
         0.0,
-        0.2858,
-        0.489,
-        0.6769,
-        0.8728
+        0.2551,
+        0.4247,
+        0.6362,
+        0.8568
       ],
-      "en_text_sha256": "d5e547da25775d851d2f73a40bf56652555bf897ab14f24893462eae4bd9d026",
-      "en_seconds": 83.57,
-      "es_text_sha256": "7a33903d32f0b5c3bebcfe1dade6595d9743290f6d974dcf753d6559639db953",
-      "es_seconds": 82.82
+      "en_text_sha256": "69573f69267629d550041f217032de08ef3387f8e01c905748f87029ce2eba6d",
+      "en_seconds": 111.91,
+      "es_text_sha256": "ebe9a4e8c2cc9895d0c048f92bfe831d2e66358a1b3b3143f9dce643f6f30d3e",
+      "es_seconds": 98.02
     },
     "a09": {
       "folio_id": "A.09",
@@ -531,9 +577,9 @@
         0.8517
       ],
       "en_text_sha256": "78262f95e090f0eb2c440f9f3e026e16524acdf39e45eb649b5a0ff96f3aa194",
-      "en_seconds": 75.84,
+      "en_seconds": 91.61,
       "es_text_sha256": "1490f49bc04f43e58520d715855f39cba44fe17073e97737e549b9d7a3856a26",
-      "es_seconds": 72.86
+      "es_seconds": 87.53
     },
     "a10": {
       "folio_id": "A.10",
@@ -554,9 +600,9 @@
         0.853
       ],
       "en_text_sha256": "369321a58b00b3b7fd20b982b6099ca9d6f7ec077d7a02421c5c0ed540f44025",
-      "en_seconds": 84.17,
+      "en_seconds": 100.49,
       "es_text_sha256": "e35de962607150312697c749be4d4e355288873878423cf1485a32111d0f4ea3",
-      "es_seconds": 74.16
+      "es_seconds": 89.09
     },
     "a11": {
       "folio_id": "A.11",
@@ -564,22 +610,22 @@
       "es_src": "audio/a11-es.mp3",
       "en_offsets": [
         0.0,
-        0.1217,
-        0.4059,
-        0.6709,
-        0.7854
+        0.2253,
+        0.4645,
+        0.7246,
+        0.8136
       ],
       "es_offsets": [
         0.0,
-        0.249,
-        0.4923,
-        0.6904,
-        0.8787
+        0.2606,
+        0.4531,
+        0.6526,
+        0.8638
       ],
-      "en_text_sha256": "e4d8f4a43492977e771eb46aa59cf96e152c00df8caf82ceef94071b7ad5caef",
-      "en_seconds": 83.98,
-      "es_text_sha256": "d717f06d7bfb618092692d0544e21d32c6601dbcdb614d83256b563a233c8ae0",
-      "es_seconds": 86.81
+      "en_text_sha256": "95403a94d17f0700cb08eb9721abec31f11a3d1fb4eae584f0b1e0a1063b2a67",
+      "en_seconds": 115.27,
+      "es_text_sha256": "5728b13ee8e8e1e54f908549fe5e2093dd56be2f24725aaea4d52817ef8b1446",
+      "es_seconds": 95.06
     },
     "a12": {
       "folio_id": "A.12",
@@ -600,9 +646,9 @@
         0.8445
       ],
       "en_text_sha256": "62ad89a4a58eadc71946a504857d473e2972242bcff04d651ccf3b825c284730",
-      "en_seconds": 82.82,
+      "en_seconds": 99.46,
       "es_text_sha256": "1be807da260d90b39f6c20442684e236aee94e132f22e24b1f1b7ac9aeac48e8",
-      "es_seconds": 64.82
+      "es_seconds": 77.88
     },
     "a13": {
       "folio_id": "A.13",
@@ -623,9 +669,32 @@
         0.8287
       ],
       "en_text_sha256": "1ed23b47c38a57d88a0d50a7f43f4395056be093ba2f56f471214cb7792cec25",
-      "en_seconds": 77.52,
+      "en_seconds": 93.05,
       "es_text_sha256": "597533ebcf4ef58cc09cfddbafdfe41e32191f24705b828da77368be6ce3e241",
-      "es_seconds": 70.61
+      "es_seconds": 84.82
+    },
+    "a14": {
+      "folio_id": "A.14",
+      "en_src": "audio/a14-en.mp3",
+      "es_src": "audio/a14-es.mp3",
+      "en_offsets": [
+        0.0,
+        0.3062,
+        0.5057,
+        0.7199,
+        0.816
+      ],
+      "es_offsets": [
+        0.0,
+        0.2758,
+        0.5108,
+        0.6918,
+        0.8659
+      ],
+      "en_text_sha256": "b9a26f8e1ed4ea6f130c7363cdedbf606cff54a32abd6ff753e1c44f9ceb98f7",
+      "en_seconds": 100.08,
+      "es_text_sha256": "404e9031ad4607bb27abf840674a584e64bc3dd131ec3e6aed8d1b2d5a9fe149",
+      "es_seconds": 99.89
     },
     "p01": {
       "folio_id": "P.01",
@@ -646,9 +715,9 @@
         0.8504
       ],
       "en_text_sha256": "752dabd0b121c888997e09d18f6809e4b37777e2aef9ad8310d6060e9322e74a",
-      "en_seconds": 82.08,
+      "en_seconds": 97.7,
       "es_text_sha256": "75ac110c5b4ee917d37cdcba35384c57478b83fc479f100b30396bce7eefc736",
-      "es_seconds": 67.13
+      "es_seconds": 80.64
     },
     "p02": {
       "folio_id": "P.02",
@@ -669,9 +738,9 @@
         0.8599
       ],
       "en_text_sha256": "4182d58c10e7358a99fa4325eca365ffdd011f5f13a5f113b8be21eb3946ffd5",
-      "en_seconds": 76.97,
+      "en_seconds": 92.62,
       "es_text_sha256": "8a932c11fe18725b39c4474c2c4cbd227b6b3185bfceb1cc60ecf8144ad78f65",
-      "es_seconds": 69.5
+      "es_seconds": 83.5
     },
     "p03": {
       "folio_id": "P.03",
@@ -692,9 +761,9 @@
         0.85
       ],
       "en_text_sha256": "2969ccd93192729defebd7c97f228b10ad0e5927a904b2e6701822ec7a43d9d9",
-      "en_seconds": 80.74,
+      "en_seconds": 97.22,
       "es_text_sha256": "15046bde98d0d36d6520308986a3b51a4c611e9c4090bfd5e5e2c6ae50b5d94b",
-      "es_seconds": 70.9
+      "es_seconds": 85.18
     },
     "p04": {
       "folio_id": "P.04",
@@ -715,9 +784,9 @@
         0.8587
       ],
       "en_text_sha256": "89f11f00bad7157ef6f673fdd3eb2109064a67716c4fcd0a031fa7fed6d69935",
-      "en_seconds": 84.7,
+      "en_seconds": 101.52,
       "es_text_sha256": "545505d7e1b4949fd6e243c10c222ddbeb2b4827d542668d8d466490d022ac33",
-      "es_seconds": 73.9
+      "es_seconds": 88.75
     },
     "p05": {
       "folio_id": "P.05",
@@ -738,9 +807,9 @@
         0.8593
       ],
       "en_text_sha256": "4c83d24578c910975e5294bb25898b60c5af7afeb3c720742d51414d87866751",
-      "en_seconds": 85.13,
+      "en_seconds": 102.96,
       "es_text_sha256": "cbcefd75937c75961135f22faf308f683c16667eae29148633b8ff99ba4eaa24",
-      "es_seconds": 75.48
+      "es_seconds": 90.67
     },
     "p06": {
       "folio_id": "P.06",
@@ -761,9 +830,9 @@
         0.8577
       ],
       "en_text_sha256": "4b7e718e4021d36d3b677aa422937a9999e1e2822881a30fff1748045dacc0b3",
-      "en_seconds": 83.83,
+      "en_seconds": 101.4,
       "es_text_sha256": "b01f6be63d1ca091adfab9fd9e382e2db83e6b106554caf095fc02ea24c0aa97",
-      "es_seconds": 72.24
+      "es_seconds": 86.78
     },
     "p07": {
       "folio_id": "P.07",
@@ -784,9 +853,9 @@
         0.8687
       ],
       "en_text_sha256": "3cf16706b86c49e65d1a3c798ed636d51936c23ddb5dbd392797ab992b37a124",
-      "en_seconds": 87.82,
+      "en_seconds": 104.64,
       "es_text_sha256": "765076954027d48f2410bf5ad63414b4078ea0ef039b70e61f5aa4f40a9b6b6a",
-      "es_seconds": 83.83
+      "es_seconds": 100.68
     },
     "p08": {
       "folio_id": "P.08",
@@ -807,9 +876,9 @@
         0.8658
       ],
       "en_text_sha256": "91f6cfa51e128d003fcfa2609f7a87c53c9f38a7367479eadf362a6f16640abe",
-      "en_seconds": 93.46,
+      "en_seconds": 112.7,
       "es_text_sha256": "7a529833890c433e29c0b44008c67baa87ec5b3cbf9a4bd6b6023065ee14444f",
-      "es_seconds": 80.45
+      "es_seconds": 96.62
     },
     "p09": {
       "folio_id": "P.09",
@@ -830,9 +899,9 @@
         0.8556
       ],
       "en_text_sha256": "cb70845a6e7538c57d91e922bc189b9681681d36584c69423c3e4d21e3e1df93",
-      "en_seconds": 96.5,
+      "en_seconds": 115.94,
       "es_text_sha256": "7b0ff56225893c96c8040fa09decd2e73391ff28cf42c9d4a9bf49f3bfc0c0f8",
-      "es_seconds": 78.29
+      "es_seconds": 94.06
     },
     "p10": {
       "folio_id": "P.10",
@@ -853,9 +922,9 @@
         0.8743
       ],
       "en_text_sha256": "d39268db93b43e7720cfff283d9f5eb449ab2cfa35d60d43e9b4b569fc02e356",
-      "en_seconds": 93.72,
+      "en_seconds": 112.94,
       "es_text_sha256": "b1ae3bd96f079bb63356d8ea16e7e89b10edaf06ec670a23a16b8eb71b9af8d9",
-      "es_seconds": 82.8
+      "es_seconds": 99.46
     },
     "p11": {
       "folio_id": "P.11",
@@ -876,9 +945,9 @@
         0.8451
       ],
       "en_text_sha256": "7514d8e80fc0da0d0494af409680916c8d7ca6fe6caaa9d4c8a3f187f6db775d",
-      "en_seconds": 78.94,
+      "en_seconds": 95.18,
       "es_text_sha256": "a4f7e4bb672a15ad74d8be7ec0a2d06af50a4e1da6285a9c5dcaf3da7695536c",
-      "es_seconds": 68.18
+      "es_seconds": 81.91
     },
     "p12": {
       "folio_id": "P.12",
@@ -899,9 +968,9 @@
         0.8606
       ],
       "en_text_sha256": "e496ca36b9b793c852fbce17c0babf89d88fc68ecf36a752f41725b3e37c4480",
-      "en_seconds": 81.46,
+      "en_seconds": 97.87,
       "es_text_sha256": "5c98a895798fc061e7a8ad679b80ad56bbc48f601ce15d0574e3b176cc2e2db6",
-      "es_seconds": 75.98
+      "es_seconds": 91.27
     },
     "m01": {
       "folio_id": "M.01",
@@ -922,9 +991,9 @@
         0.8617
       ],
       "en_text_sha256": "eaf6b2820f56bf1d204b8afcbee72c221cdd91ddaf244aeaad5f04a220f54caf",
-      "en_seconds": 74.21,
+      "en_seconds": 89.33,
       "es_text_sha256": "fa4a58cccd6edb844945e39f34589200b8de6458377856412e70265b353b7ea4",
-      "es_seconds": 71.18
+      "es_seconds": 85.51
     },
     "m02": {
       "folio_id": "M.02",
@@ -945,9 +1014,9 @@
         0.8549
       ],
       "en_text_sha256": "f86c41a66d24808c2d4ee4ea08792a60f488d6d75ed705ba39d94ae17234688a",
-      "en_seconds": 77.38,
+      "en_seconds": 92.74,
       "es_text_sha256": "a547fa6c5381c81f7632c912de508c000158d7dbb1f505fa8e6dece0d4f1781b",
-      "es_seconds": 66.26
+      "es_seconds": 79.58
     },
     "m03": {
       "folio_id": "M.03",
@@ -968,9 +1037,9 @@
         0.861
       ],
       "en_text_sha256": "7fdec8b2cfd768dfe508a092634cc218119b6f52b52d84332893d98bc2b83c7b",
-      "en_seconds": 87.84,
+      "en_seconds": 106.01,
       "es_text_sha256": "f3300b907478eb8e3a166e6d863a245eee73192b6b8e9d8acb8bc3ce2c90ce77",
-      "es_seconds": 76.34
+      "es_seconds": 91.73
     },
     "m04": {
       "folio_id": "M.04",
@@ -991,9 +1060,9 @@
         0.8248
       ],
       "en_text_sha256": "63538ee8874fc5292a907c505d30c1d638fbbc0ee31dbdda558b3e87e15cdbaf",
-      "en_seconds": 92.28,
+      "en_seconds": 111.53,
       "es_text_sha256": "3bf8e7b62cfa65e8ba454f89046d1284523e1daf3084be61530cb7cce7bb9474",
-      "es_seconds": 59.09
+      "es_seconds": 70.99
     },
     "m05": {
       "folio_id": "M.05",
@@ -1014,9 +1083,9 @@
         0.8302
       ],
       "en_text_sha256": "26bf1002fc380cbd3da34776c3176e7db82a309ab0b1f580f08a3ef81ab7df06",
-      "en_seconds": 79.08,
+      "en_seconds": 95.52,
       "es_text_sha256": "0363257e3f2fa9d5e899460faa3421033c7189e7ff8600b0af51d610b7e0fbc4",
-      "es_seconds": 59.02
+      "es_seconds": 70.9
     },
     "m06": {
       "folio_id": "M.06",
@@ -1037,9 +1106,9 @@
         0.8683
       ],
       "en_text_sha256": "a10691bad36f5341cc963d4b60a166b9d47edd73b289fbdca9a9dd56af06211d",
-      "en_seconds": 86.9,
+      "en_seconds": 104.38,
       "es_text_sha256": "dea31cf5387e270ba558804b8360a4e766e0ae4cf59f218bb0a2c85ab171269b",
-      "es_seconds": 80.3
+      "es_seconds": 96.48
     },
     "m07": {
       "folio_id": "M.07",
@@ -1047,22 +1116,22 @@
       "es_src": "audio/m07-es.mp3",
       "en_offsets": [
         0.0,
-        0.1485,
-        0.3242,
-        0.6194,
-        0.7425
+        0.1516,
+        0.4424,
+        0.6113,
+        0.737
       ],
       "es_offsets": [
         0.0,
-        0.1366,
-        0.401,
-        0.6093,
-        0.8496
+        0.1311,
+        0.4108,
+        0.6249,
+        0.8556
       ],
-      "en_text_sha256": "efbe11da848de4d9130daf1dce484982c7495038464c6307a024d91c62dcc89c",
-      "en_seconds": 79.82,
-      "es_text_sha256": "be4261907c776c846cea3e5c10f4e1da1eca91f3083d3912592888548e7290f0",
-      "es_seconds": 73.92
+      "en_text_sha256": "6cd0d302b130ea062a87445a295e62cf7442e8ece9d94f5292510b01b5939111",
+      "en_seconds": 90.17,
+      "es_text_sha256": "8074a4940063f54146a720046eab12c3939719a3d814d4ee2c6eca3d5e054a02",
+      "es_seconds": 96.24
     },
     "m08": {
       "folio_id": "M.08",
@@ -1070,22 +1139,22 @@
       "es_src": "audio/m08-es.mp3",
       "en_offsets": [
         0.0,
-        0.1365,
-        0.4318,
-        0.6816,
-        0.7676
+        0.1324,
+        0.4125,
+        0.6862,
+        0.7745
       ],
       "es_offsets": [
         0.0,
-        0.1496,
-        0.3938,
-        0.5903,
-        0.846
+        0.1382,
+        0.4309,
+        0.6214,
+        0.8577
       ],
-      "en_text_sha256": "77781ae06328e04414b5ad2998a767a6c1fdcf6b4cf8ac7392be741a2a1414bc",
-      "en_seconds": 81.77,
-      "es_text_sha256": "3b1b0c3ff2f5ecefdd8809752f06f41f5db32731b2b8cc9b4b664aa1e1deb9bc",
-      "es_seconds": 72.91
+      "en_text_sha256": "4d22392615c3caf3b3390078a4bb290be7f8bb6af2e91bdedd4f6fedd152810e",
+      "en_seconds": 105.07,
+      "es_text_sha256": "b4441968ff5cf8407158e0d4bbd4fb6156ba01be3a2e9b455d1f2bcaeab0bbf7",
+      "es_seconds": 94.42
     },
     "m09": {
       "folio_id": "M.09",
@@ -1093,22 +1162,22 @@
       "es_src": "audio/m09-es.mp3",
       "en_offsets": [
         0.0,
-        0.1288,
-        0.3586,
-        0.6846,
-        0.7767
+        0.2348,
+        0.4599,
+        0.7355,
+        0.8108
       ],
       "es_offsets": [
         0.0,
-        0.1386,
-        0.3578,
-        0.6245,
-        0.8598
+        0.266,
+        0.3994,
+        0.6488,
+        0.8689
       ],
-      "en_text_sha256": "cbceb6ef85e2349d6953345ca23c58b6af098d0abf7aaad97a3a253dcac3a02b",
-      "en_seconds": 82.2,
-      "es_text_sha256": "83219492864d720b6400ccb0dad1ed23b8f9cde27376022102253882c7f0cfa4",
-      "es_seconds": 73.51
+      "en_text_sha256": "41b56a2c8136d37031ee1b88e2e797cb8ff30a001bdb31fa22f845d8d8a67f4d",
+      "en_seconds": 120.89,
+      "es_text_sha256": "bd36405f7588c5b3391049a4dd3597611a7d239164e45803cfc6be0c22c9321f",
+      "es_seconds": 95.74
     },
     "m10": {
       "folio_id": "M.10",
@@ -1129,9 +1198,9 @@
         0.8719
       ],
       "en_text_sha256": "ffabe55804b7c76e8898bb3a8721d50d98a70f8623dc3ea8b9b77ca2d28f7e85",
-      "en_seconds": 91.54,
+      "en_seconds": 109.32,
       "es_text_sha256": "232954c871c65dbfcdf9fdda206f3f1ce6595824701873dcca72bbc67dfa7226",
-      "es_seconds": 80.26
+      "es_seconds": 96.38
     },
     "m11": {
       "folio_id": "M.11",
@@ -1152,9 +1221,9 @@
         0.8722
       ],
       "en_text_sha256": "f4e59308002d8620bb67be2ae3ab462040a3d3d37e62ccd23517f358a87017f6",
-      "en_seconds": 79.37,
+      "en_seconds": 95.4,
       "es_text_sha256": "e1040b19d442ece6c51d3189476f8030ad24d103f64dd01ab089b227ae5599c1",
-      "es_seconds": 82.08
+      "es_seconds": 98.59
     },
     "m12": {
       "folio_id": "M.12",
@@ -1175,9 +1244,78 @@
         0.8606
       ],
       "en_text_sha256": "72d5c6b3c29b3525ef74f66f7bc62c59f6731dcd9cefcbdaea408743798606cc",
-      "en_seconds": 93.14,
+      "en_seconds": 112.8,
       "es_text_sha256": "911be7e6a6cae6e0b1da4baa50bd8d7b5ed050b41b28695fc78ff4fd21d29c64",
-      "es_seconds": 80.86
+      "es_seconds": 97.13
+    },
+    "m13": {
+      "folio_id": "M.13",
+      "en_src": "audio/m13-en.mp3",
+      "es_src": "audio/m13-es.mp3",
+      "en_offsets": [
+        0.0,
+        0.2714,
+        0.5176,
+        0.7675,
+        0.8474
+      ],
+      "es_offsets": [
+        0.0,
+        0.2638,
+        0.5107,
+        0.7105,
+        0.8722
+      ],
+      "en_text_sha256": "b1f1e975babdc3ee2c90dfcd8b6a5eb221592631427b7b46611b8cf3f92f839b",
+      "en_seconds": 105.84,
+      "es_text_sha256": "ef2f24f3d5a104b6ba0095080817fb94bdedb2ff410f42d982828e7c11744434",
+      "es_seconds": 97.42
+    },
+    "m14": {
+      "folio_id": "M.14",
+      "en_src": "audio/m14-en.mp3",
+      "es_src": "audio/m14-es.mp3",
+      "en_offsets": [
+        0.0,
+        0.2565,
+        0.4993,
+        0.7735,
+        0.8476
+      ],
+      "es_offsets": [
+        0.0,
+        0.1088,
+        0.3724,
+        0.642,
+        0.852
+      ],
+      "en_text_sha256": "d6f16337df27916f3f90eb782bb40ffdd66e521605b3d3a45b64b8b4a36fef1c",
+      "en_seconds": 120.5,
+      "es_text_sha256": "3e128a003999818eacb6f891fb79a6be7300ca0bfe35999b74f5ba992a0ecf59",
+      "es_seconds": 92.42
+    },
+    "m15": {
+      "folio_id": "M.15",
+      "en_src": "audio/m15-en.mp3",
+      "es_src": "audio/m15-es.mp3",
+      "en_offsets": [
+        0.0,
+        0.2655,
+        0.4847,
+        0.7644,
+        0.842
+      ],
+      "es_offsets": [
+        0.0,
+        0.1073,
+        0.4032,
+        0.6471,
+        0.8541
+      ],
+      "en_text_sha256": "780fb03bdfb6bb90e820e61fbfe970e87b686a8256bdf7b87dc7d879804d1269",
+      "en_seconds": 117.58,
+      "es_text_sha256": "1933955ff94ff76a32da0c01ebba6d268ddc9fb83f619d4a46f5bcd145411ce0",
+      "es_seconds": 97.22
     },
     "b01": {
       "folio_id": "B.01",
@@ -1198,9 +1336,9 @@
         0.8686
       ],
       "en_text_sha256": "6b7800d79c351c378cb6a91dbce89fcab84ee695dc6433b0cf0e0d0f8382ac92",
-      "en_seconds": 84.05,
+      "en_seconds": 101.04,
       "es_text_sha256": "b56da0b58fe9b6961a46026836d20fe6ee2057133e4cea86a47c2f229c536baf",
-      "es_seconds": 60.89
+      "es_seconds": 73.15
     },
     "b02": {
       "folio_id": "B.02",
@@ -1221,9 +1359,9 @@
         0.8796
       ],
       "en_text_sha256": "499bf390f03cf5a05df9d5ccf01b3bd49decbdb40dec5d8b5f5c5ea8f40c24b0",
-      "en_seconds": 80.18,
+      "en_seconds": 96.26,
       "es_text_sha256": "dd8b443f41ecc09324fdf0141d2738d7e9381e6da5ba6497f4613e05965cf78d",
-      "es_seconds": 64.18
+      "es_seconds": 77.09
     },
     "b03": {
       "folio_id": "B.03",
@@ -1244,9 +1382,9 @@
         0.8694
       ],
       "en_text_sha256": "b9c4d5b7ba90fcbcf115180fe8a46481eed69ef3451dae4a81d2f6d303a7c363",
-      "en_seconds": 97.85,
+      "en_seconds": 118.27,
       "es_text_sha256": "905b63c1a7b53662bb30054bab858afe1e7efc0ce53bf17bde062208705e045d",
-      "es_seconds": 62.98
+      "es_seconds": 75.67
     },
     "b04": {
       "folio_id": "B.04",
@@ -1267,9 +1405,9 @@
         0.8727
       ],
       "en_text_sha256": "7bfa7fa2e5d8b86e45780a95872987c6cc39621addab423e56fcbdf65d2f5286",
-      "en_seconds": 97.03,
+      "en_seconds": 115.99,
       "es_text_sha256": "a0c75d28bf7f8af4d0d1e7045aa44064b00223bc0a0c1ba20f61d0ecb1602f2f",
-      "es_seconds": 62.93
+      "es_seconds": 75.6
     },
     "b05": {
       "folio_id": "B.05",
@@ -1277,22 +1415,22 @@
       "es_src": "audio/b05-es.mp3",
       "en_offsets": [
         0.0,
-        0.2359,
-        0.4764,
-        0.7347,
-        0.8956
+        0.2269,
+        0.4583,
+        0.7448,
+        0.8996
       ],
       "es_offsets": [
         0.0,
-        0.262,
-        0.4742,
-        0.7416,
-        0.8749
+        0.2659,
+        0.4811,
+        0.7378,
+        0.873
       ],
-      "en_text_sha256": "5acfeab268ad7ff5b40cb70a857a30c3d969c28d8c193cbded7f0af4d4b50d26",
-      "en_seconds": 96.31,
-      "es_text_sha256": "34904c1256e3c43d8db09c076ca4249efe4016d680f986b1c38eb21f394b986d",
-      "es_seconds": 63.74
+      "en_text_sha256": "6e88aec3d57787830a0b6a89036f98a77c5b2e5efdd8df6689fab85c1d50faeb",
+      "en_seconds": 119.57,
+      "es_text_sha256": "d0c9231a520090ba69663ec7290e481a147b03ce80ed94364e4022e3fb7e849c",
+      "es_seconds": 74.4
     },
     "b06": {
       "folio_id": "B.06",
@@ -1300,22 +1438,22 @@
       "es_src": "audio/b06-es.mp3",
       "en_offsets": [
         0.0,
-        0.235,
-        0.467,
-        0.7296,
-        0.8963
+        0.2219,
+        0.4075,
+        0.6555,
+        0.9021
       ],
       "es_offsets": [
         0.0,
-        0.2927,
-        0.5049,
-        0.7083,
-        0.8644
+        0.2726,
+        0.5032,
+        0.7283,
+        0.8737
       ],
-      "en_text_sha256": "b494f901c8d9a8c4941e1b105cde2024c321861ef9200faba69f662585744e2a",
-      "en_seconds": 99.34,
-      "es_text_sha256": "87738f5c534fc36dd014f637091b4e6559d9507c576eb73ceb2b49ba78738edf",
-      "es_seconds": 59.5
+      "en_text_sha256": "86ee923fabcaf1ba8eaee8ac8b3544b205ec625de58265241b572cca81901a45",
+      "en_seconds": 140.86,
+      "es_text_sha256": "ce50fb53144e7e60957e8a1b1ee9f153eba70002f53ec5d99456eca6c521aa60",
+      "es_seconds": 84.77
     },
     "x01": {
       "folio_id": "X.01",
@@ -1323,22 +1461,22 @@
       "es_src": "audio/x01-es.mp3",
       "en_offsets": [
         0.0,
-        0.2401,
-        0.4989,
-        0.712,
-        0.899
+        0.2455,
+        0.4752,
+        0.6839,
+        0.9028
       ],
       "es_offsets": [
         0.0,
-        0.2993,
-        0.5919,
-        0.7631,
-        0.8836
+        0.2802,
+        0.5359,
+        0.7782,
+        0.8911
       ],
-      "en_text_sha256": "c48938499bd630befc0ea73c5c4de7f35d7c2b317a58053f663861cf8650357f",
-      "en_seconds": 87.26,
-      "es_text_sha256": "03e7c71823eae05ff32919ba64a1b9202e74ed00c29727c651fe618ee8cc2e6b",
-      "es_seconds": 66.19
+      "en_text_sha256": "2e4377e03f44c560bab919713182043025fa66d31649ec2cf55b8487cb18aae4",
+      "en_seconds": 106.44,
+      "es_text_sha256": "e83df3092e9f5b5179a455e7b372b2d8e26a650c9d16fac6c049c375d3c79a4b",
+      "es_seconds": 88.2
     },
     "x02": {
       "folio_id": "X.02",
@@ -1346,22 +1484,22 @@
       "es_src": "audio/x02-es.mp3",
       "en_offsets": [
         0.0,
-        0.249,
-        0.5028,
-        0.747,
-        0.8929
+        0.2349,
+        0.4699,
+        0.6929,
+        0.8996
       ],
       "es_offsets": [
         0.0,
-        0.2937,
-        0.535,
-        0.7495,
-        0.8729
+        0.2845,
+        0.5487,
+        0.7776,
+        0.8872
       ],
-      "en_text_sha256": "71c2d689e6c8dae7614655615ddcd22f38ab0992c9071de2dfd1ff185cd9a2e2",
-      "en_seconds": 81.12,
-      "es_text_sha256": "ea87b7411c3ba44f0773a424bc2f8ce45fdadac25e0ecacb60e974ce9b321a2f",
-      "es_seconds": 63.02
+      "en_text_sha256": "c6f2d65b916a965d1ad1c965712de0d2c410e3df569bddde881fa7cb0a719e51",
+      "en_seconds": 102.58,
+      "es_text_sha256": "00c6afa103882a1ce75d713773c3c83cefe2d23fa9448ec8c7848bce09a6f63b",
+      "es_seconds": 93.0
     },
     "x03": {
       "folio_id": "X.03",
@@ -1382,9 +1520,9 @@
         0.8734
       ],
       "en_text_sha256": "5a75b9701529696957e6a066efd72e9796d0b565b9d1696ef8e50f038105198a",
-      "en_seconds": 82.01,
+      "en_seconds": 98.33,
       "es_text_sha256": "c4ab4b8f7c45dfefa17b10b015984a57961bc448e8fd59529f8e1197cb4019d5",
-      "es_seconds": 62.78
+      "es_seconds": 75.41
     },
     "x04": {
       "folio_id": "X.04",
@@ -1405,9 +1543,9 @@
         0.8681
       ],
       "en_text_sha256": "6316daf1774bb59995dfcb51d0108cd0dc0247e0a87e90960304ed89c91ff746",
-      "en_seconds": 86.93,
+      "en_seconds": 104.64,
       "es_text_sha256": "edf49a4b921c639dcce56fefb5b12f822e2f01b3f85a9e71c8b860373de7c0d3",
-      "es_seconds": 60.55
+      "es_seconds": 72.72
     },
     "x05": {
       "folio_id": "X.05",
@@ -1415,22 +1553,22 @@
       "es_src": "audio/x05-es.mp3",
       "en_offsets": [
         0.0,
-        0.2837,
-        0.4285,
-        0.7228,
-        0.8902
+        0.2513,
+        0.4875,
+        0.7379,
+        0.8873
       ],
       "es_offsets": [
         0.0,
-        0.3429,
-        0.5409,
-        0.737,
-        0.8717
+        0.273,
+        0.5914,
+        0.7475,
+        0.8769
       ],
-      "en_text_sha256": "3fe95b9902b13e2433146919b208addf30c192dda1c4a0be1412eaf7f84be59f",
-      "en_seconds": 87.38,
-      "es_text_sha256": "c5f99ef604ca393859f8360152618def13feaf8e5fdeead9157f4ee396aeb42a",
-      "es_seconds": 59.23
+      "en_text_sha256": "4469b01001b5aa515008ebc912872fe64036427422b11dab5e7d7277f6b21ef1",
+      "en_seconds": 102.43,
+      "es_text_sha256": "731cce28a66492fc4d0c41a7ec74223f0f004545bf6ef42089cd64e3463c5b92",
+      "es_seconds": 83.81
     },
     "x06": {
       "folio_id": "X.06",
@@ -1451,9 +1589,9 @@
         0.8395
       ],
       "en_text_sha256": "997f39520be36f2e3a36fde3d9f8670baccd6726807fb39cb1381c2db3cd8859",
-      "en_seconds": 62.47,
+      "en_seconds": 75.46,
       "es_text_sha256": "8a3bb11900797d76ada78dba54b835ff32ec7a6ec37ea67e6672adfc7cdc31cc",
-      "es_seconds": 47.18
+      "es_seconds": 56.71
     },
     "x07": {
       "folio_id": "X.07",
@@ -1474,9 +1612,9 @@
         0.8817
       ],
       "en_text_sha256": "c7f175dde052ab25fd3eac69476cb7b01fdd9c7c88b9cce448c42ba8e9d8edf6",
-      "en_seconds": 94.34,
+      "en_seconds": 112.7,
       "es_text_sha256": "7963236ad9d93812e2f7f847fb76ae73c05965f345cc397104b2c2699c8eae3f",
-      "es_seconds": 66.14
+      "es_seconds": 79.49
     }
   }
 }

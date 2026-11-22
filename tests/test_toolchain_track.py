@@ -242,12 +242,12 @@ class ToolchainTrackTests(unittest.TestCase):
             hashes[h] = s
 
         audio_mjs = (RESEARCH / "modules" / "article-audio.mjs").read_text(encoding="utf-8")
-        self.assertIn("const SPEEDS = [1.15, 1.35, 1.5, 1.0, 0.85];", audio_mjs)
+        self.assertIn("const SPEEDS = [1.0, 1.15, 1.35, 1.5, 0.85];", audio_mjs)
         self.assertIn("ava|emma|jenny|aria|dalia", audio_mjs)
         audio_py = (ROOT / "tools" / "build_neural_audio.py").read_text(encoding="utf-8")
         self.assertIn('EN_VOICE = "en-US-AvaMultilingualNeural"', audio_py)
         self.assertIn('ES_VOICE_INF = "es-MX-DaliaNeural"', audio_py)
-        self.assertIn('SPEECH_RATE = "+20%"', audio_py)
+        self.assertIn('SPEECH_RATE = "+0%"', audio_py)
 
     def test_x02_cross_format_entity_parity_and_sagitta_verifier_rejects_drift(self) -> None:
         import io
