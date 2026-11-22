@@ -672,10 +672,18 @@ REVAMP_CSS = r"""
     line-height: 1.42;
   }
 
-  .tp-cover-more {
+  /* One grid cell for the pillar's links. Two links placed directly in the cell were drawn on top of each other. */
+  .tp-cover-links {
     grid-column: 2;
     grid-row: 1 / span 3;
     align-self: end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.45rem;
+  }
+
+  .tp-cover-more {
     white-space: nowrap;
     color: var(--tp-ink);
     font-weight: 600;
@@ -740,11 +748,15 @@ REVAMP_CSS = r"""
       grid-template-columns: 1fr;
     }
 
-    .tp-cover-more {
+    .tp-cover-links {
       grid-column: 1;
       grid-row: auto;
-      justify-self: start;
+      align-items: flex-start;
       margin-top: 0.5rem;
+    }
+
+    .tp-cover-more {
+      white-space: normal;
     }
 
     .tp-cover-row {
