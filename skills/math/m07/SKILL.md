@@ -9,18 +9,18 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 A plain-text companion to the essay at https://informatico.ai/math/m07/ (`M.07 · F1 Pontryagin Control & FNO Surrogates · FIA 2026 Art. 5`, `REV 1.1`, redated `2026-11-14`).
 
 ## The governing relation
-`H(x, u, λ) = 1/v + λ_v f_v(v, P_k, δ) − λ_E P_k/(η v) · u_θ = F⁻¹(R_φ · F(a))`
+`H(x, u, λ) = 1/v + λ_v f_v(v, P_k, δ) − λ_E P_batt(P_k)/v ; u_{l+1} = σ(W u_l + F⁻¹(R_φ · F(u_l)))`
 
 ## Rules the essay derives
-1. Formulate distance-domain Pontryagin Hamiltonian H = (1/v) + lambda_v * a_net(v, P_k, delta_wing) / v - lambda_E * P_k / (eta_k * v).
-2. Determine the MGU-K switching velocity v_switch from the switching function dH/dP_k = lambda_v / (m * v^2) - lambda_E / (eta_k * v), which vanishes where lambda_v / (m * v) = lambda_E / eta_k, to prevent straight-end clipping.
+1. Formulate the minimum-Hamiltonian H = (1/v) + lambda_v * a_net(v, P_k, delta_wing) / v - lambda_E * P_batt(P_k) / v along arc-length s, with P_batt = P_k / eta_k for motoring (P_k >= 0) and eta_regen * P_k under braking.
+2. Evaluate the motoring optimality condition dH/dP_k = lambda_v / (m * v^2) - lambda_E * (dP_batt/dP_k) / v = 0 (lambda_v, lambda_E < 0 under min_u H): affine losses (dP_batt/dP_k = 1/eta_k) switch at lambda_v / (m * v) = lambda_E / eta_k, whereas strictly convex losses P_batt(P_k) initiate smooth tapering below P_k,max where lambda_v / (m * v) = lambda_E * dP_batt/dP_k(P_k,max).
 3. Evaluate spectral neural operator layer u_{l+1}(x) = sigma(W * u_l(x) + F^{-1}(R_phi * F(u_l))(x)) truncated at k_max Fourier modes.
 
 ## How it works, in four stages
-- Stage 1 (Fourier Neural Operator Surrogate, proposed): An FNO layer u_{t+1} = σ(W u_t + F⁻¹(R_φ · F u_t)) could be trained to map wing angle δ_wing and ride height h_ride to drag and downforce coefficients. No such surrogate was trained for this folio.
-- Stage 2 (Distance-Domain Pontryagin Hamiltonian H): Formulates minimum-time lap control with ds/dt = v. While the battery stays inside its limits, the battery co-state λ_E* is constant; the folio calibrates it to an assumed 4.0 MJ-per-lap energy budget.
-- Stage 3 (Bang–Singular–Bang Taper vs. Clipping): Above a switching speed the model tapers P_k*(s) instead of deploying full power until the battery clips. The 298 km/h switching speed and the 0.42 s saving are illustrative model values.
-- Stage 4 (Regenerative Braking Harvest): Under braking the MGU-K recovers energy so that the periodic boundary condition E_batt(L) = E_batt(0) closes the lap.
+- Stage 1 (Fourier Neural Operator Surrogate, proposed): An FNO layer u_{l+1} = σ(W u_l + F⁻¹(R_φ · F(u_l))) could map wing angle δ_wing and ride height h_ride to aerodynamic coefficients; no surrogate was trained here.
+- Stage 2 (Distance-Domain Pontryagin Hamiltonian H): Rewrites minimum-time control in track distance ds/dt = v; on interior battery arcs, co-state λ_E* is constant across an assumed 4.0 MJ budget.
+- Stage 3 (Convex-Loss Taper vs. Clipping): Above a switching speed, convex electrical losses taper P_k*(s) instead of clipping mid-straight (298.4 km/h and 0.42 s are illustrative).
+- Stage 4 (Regenerative Braking Harvest): Under braking (P_k < 0), piecewise efficiency η_regen recovers kinetic energy so E_batt(L) = E_batt(0) closes the lap.
 
 ## Reference values stated in the essay
 - **Straight-Line Lap Gain (Δt_lap, model)**: `−0.42 s vs. naive clipping (illustrative)`

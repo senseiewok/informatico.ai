@@ -1496,7 +1496,7 @@
     "year": null
   },
   "doi:10.1080/00207179.2014.900705": {
-    "fetched": "2026-11-04",
+    "fetched": "2026-11-21",
     "first_author": "Limebeer",
     "found": true,
     "journal": "International Journal of Control",
@@ -3520,7 +3520,7 @@
     "year": 2021
   },
   "doi:10.48550/arxiv.2010.08895": {
-    "fetched": "2026-11-13",
+    "fetched": "2026-11-21",
     "first_author": "Li",
     "found": true,
     "journal": "arXiv",
@@ -5100,15 +5100,13 @@
   "scite:10.1080/00207179.2014.900705": {
     "citing_publications": 87,
     "contrasting": 0,
-    "fetched": "2026-11-08",
+    "fetched": "2026-11-21",
     "found": true,
     "journal": "International Journal of Control",
     "mentioning": 52,
     "retracted": false,
     "supporting": 0,
     "title": "Optimal control of Formula One car energy recovery systems",
-    "total_smart_citations": 52,
-    "unclassified": 0,
     "year": 2014
   },
   "scite:10.1086/148307": {
@@ -6940,5 +6938,125 @@
     "total_smart_citations": 1212,
     "unclassified": 62,
     "year": 2018
+  },
+  "doi:10.1016/j.apenergy.2020.115980": {
+    "fetched": "2026-11-21",
+    "first_author": "Duhr",
+    "found": true,
+    "journal": "Applied Energy",
+    "title": "Time-optimal gearshift and energy management strategies for a hybrid electric race car",
+    "year": 2021
+  },
+  "doi:10.1038/s42256-021-00302-5": {
+    "fetched": "2026-11-21",
+    "first_author": "Lu",
+    "found": true,
+    "journal": "Nature Machine Intelligence",
+    "title": "Learning nonlinear operators via DeepONet based on the universal approximation theorem of operators",
+    "year": 2021
+  },
+  "doi:10.1080/00423114.2014.889315": {
+    "fetched": "2026-11-21",
+    "first_author": "Perantoni",
+    "found": true,
+    "journal": "Vehicle System Dynamics",
+    "title": "Optimal control for a Formula One car with variable parameters",
+    "year": 2014
+  },
+  "doi:10.1090/s0002-9904-1954-09848-8": {
+    "fetched": "2026-11-21",
+    "first_author": "Bellman",
+    "found": true,
+    "journal": "Bulletin of the American Mathematical Society",
+    "title": "The theory of dynamic programming",
+    "year": 1954
+  },
+  "doi:10.1090/s0002-9947-1983-0690039-8": {
+    "fetched": "2026-11-21",
+    "first_author": "Crandall",
+    "found": true,
+    "journal": "Transactions of the American Mathematical Society",
+    "title": "Viscosity solutions of Hamilton-Jacobi equations",
+    "year": 1983
+  },
+  "doi:10.1109/tcst.2016.2642830": {
+    "fetched": "2026-11-21",
+    "first_author": "Salazar",
+    "found": true,
+    "journal": "IEEE Transactions on Control Systems Technology",
+    "title": "Time-optimal Control Policy for a Hybrid Electric Race Car",
+    "year": 2017
+  },
+  "scite:10.1016/j.apenergy.2020.115980": {
+    "citing_publications": 28,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Applied Energy",
+    "mentioning": 28,
+    "retracted": false,
+    "supporting": 0,
+    "title": "Time-optimal gearshift and energy management strategies for a hybrid electric race car",
+    "year": 2021
+  },
+  "scite:10.1038/s42256-021-00302-5": {
+    "citing_publications": 2974,
+    "contrasting": 1,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Nature Machine Intelligence",
+    "mentioning": 2966,
+    "retracted": false,
+    "supporting": 7,
+    "title": "Learning nonlinear operators via DeepONet based on the universal approximation theorem of operators",
+    "year": 2021
+  },
+  "scite:10.1080/00423114.2014.889315": {
+    "citing_publications": 132,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Vehicle System Dynamics",
+    "mentioning": 131,
+    "retracted": false,
+    "supporting": 1,
+    "title": "Optimal control for a Formula One car with variable parameters",
+    "year": 2014
+  },
+  "scite:10.1090/s0002-9904-1954-09848-8": {
+    "citing_publications": 452,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Bulletin of the American Mathematical Society",
+    "mentioning": 451,
+    "retracted": false,
+    "supporting": 1,
+    "title": "The theory of dynamic programming",
+    "year": 1954
+  },
+  "scite:10.1090/s0002-9947-1983-0690039-8": {
+    "citing_publications": 1587,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Transactions of the American Mathematical Society",
+    "mentioning": 1574,
+    "retracted": false,
+    "supporting": 13,
+    "title": "Viscosity solutions of Hamilton-Jacobi equations",
+    "year": 1983
+  },
+  "scite:10.1109/tcst.2016.2642830": {
+    "citing_publications": 30,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "IEEE Transactions on Control Systems Technology",
+    "mentioning": 30,
+    "retracted": false,
+    "supporting": 0,
+    "title": "Time-optimal Control Policy for a Hybrid Electric Race Car",
+    "year": 2017
   }
 }

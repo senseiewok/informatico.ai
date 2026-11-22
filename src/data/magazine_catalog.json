@@ -5713,7 +5713,7 @@
         "current_edition": "REV 1.1",
         "status_badge": "F1 OPTIMAL CONTROL & AI · REV 1.1",
         "primary_kernel": "tools/discovery/formal_proof_thermodynamic_landscape.py",
-        "governing_law": "H(x, u, λ) = 1/v + λ_v f_v(v, P_k, δ) − λ_E P_k/(η v) · u_θ = F⁻¹(R_φ · F(a))",
+        "governing_law": "H(x, u, λ) = 1/v + λ_v f_v(v, P_k, δ) − λ_E P_batt(P_k)/v ; u_{l+1} = σ(W u_l + F⁻¹(R_φ · F(u_l)))",
         "colophon": {
           "identifier": "M.07 · F1 Pontryagin Control & FNO Surrogates · FIA 2026 Art. 5",
           "kernels": "Pontryagin Maximum Principle (PMP) · HJB PDE · Fourier Neural Operator",
@@ -5739,10 +5739,10 @@
           }
         ],
         "steps": [
-          "Stage 1 (Fourier Neural Operator Surrogate, proposed): An FNO layer u_{t+1} = σ(W u_t + F⁻¹(R_φ · F u_t)) could be trained to map wing angle δ_wing and ride height h_ride to drag and downforce coefficients. No such surrogate was trained for this folio.",
-          "Stage 2 (Distance-Domain Pontryagin Hamiltonian H): Formulates minimum-time lap control with ds/dt = v. While the battery stays inside its limits, the battery co-state λ_E* is constant; the folio calibrates it to an assumed 4.0 MJ-per-lap energy budget.",
-          "Stage 3 (Bang–Singular–Bang Taper vs. Clipping): Above a switching speed the model tapers P_k*(s) instead of deploying full power until the battery clips. The 298 km/h switching speed and the 0.42 s saving are illustrative model values.",
-          "Stage 4 (Regenerative Braking Harvest): Under braking the MGU-K recovers energy so that the periodic boundary condition E_batt(L) = E_batt(0) closes the lap."
+          "Stage 1 (Fourier Neural Operator Surrogate, proposed): An FNO layer u_{l+1} = σ(W u_l + F⁻¹(R_φ · F(u_l))) could map wing angle δ_wing and ride height h_ride to aerodynamic coefficients; no surrogate was trained here.",
+          "Stage 2 (Distance-Domain Pontryagin Hamiltonian H): Rewrites minimum-time control in track distance ds/dt = v; on interior battery arcs, co-state λ_E* is constant across an assumed 4.0 MJ budget.",
+          "Stage 3 (Convex-Loss Taper vs. Clipping): Above a switching speed, convex electrical losses taper P_k*(s) instead of clipping mid-straight (298.4 km/h and 0.42 s are illustrative).",
+          "Stage 4 (Regenerative Braking Harvest): Under braking (P_k < 0), piecewise efficiency η_regen recovers kinetic energy so E_batt(L) = E_batt(0) closes the lap."
         ],
         "readouts": [
           {
@@ -5763,26 +5763,26 @@
           }
         ],
         "spec_plate": {
-          "division": "FIA 2026 ARTICLE 5 / SCIENTIFIC ML & OPTIMAL CONTROL",
-          "title": "2026 Formula 1 350 kW MGU-K Energy Store & Real-Time FNO-Pontryagin Lap Optimizer",
-          "body": "Design study: a 350 kW kinetic motor-generator unit governed by a distance-domain Pontryagin co-state controller that could query a 32-mode Fourier Neural Operator aerodynamic surrogate. Nothing here was built or run on a car.",
-          "meta": "Method sources cited, not reproduced: Limebeer, Perantoni & Rao 2014 (DOI 10.1080/00207179.2014.900705) · Li et al. FNO (arXiv:2010.08895)"
+          "division": "APPLIED OPTIMAL CONTROL & OPERATOR LEARNING · DESIGN STUDY",
+          "title": "Hybrid 350 kW MGU-K Energy Store & Proposed FNO-Pontryagin Lap Controller",
+          "body": "Design study: a 350 kW kinetic motor-generator unit scheduled by a distance-domain Pontryagin co-state controller that could query a 32-mode Fourier Neural Operator flow surrogate. Nothing here was built or run on a car.",
+          "meta": "Method sources cited, not reproduced: Limebeer, Perantoni & Rao 2014 (DOI 10.1080/00207179.2014.900705) · Li et al. 2020 (arXiv:2010.08895)"
         },
         "sidenote_1": {
           "kicker": "SIDENOTE M.07-A · WHY THE BATTERY CO-STATE λ_E IS CONSTANT ACROSS THE LAP",
-          "body": "By Pontryagin's co-state equation dλ_E/ds = −∂H/∂E_batt, whenever the battery state of charge E_batt(s) stays strictly inside its [E_min, E_max] corridor, ∂H/∂E_batt = 0—meaning a single scalar shadow price λ_E* governs every straight and corner on the circuit!"
+          "body": "By Pontryagin's adjoint equation dλ_E/ds = −∂H/∂E_batt, whenever battery energy E_batt(s) stays inside [E_min, E_max] and losses omit state of charge, ∂H/∂E_batt = 0, so one constant shadow price λ_E* governs the lap."
         },
         "sidenote_2": {
           "kicker": "SIDENOTE M.07-B · SPECIFICATION PLATE · FOURIER NEURAL OPERATOR ZERO-SHOT SUPER-RESOLUTION",
-          "body": "Because R_φ acts directly on the lowest k_max Fourier modes, the operator can be evaluated on a finer grid than it was trained on; Li et al. (arXiv:2010.08895) report this zero-shot super-resolution on their benchmark flows. Whether it holds for race-car aerodynamics is untested here."
+          "body": "Because R_φ acts on the lowest k_max Fourier modes, an FNO layer could be evaluated on finer grids than its training mesh (Li et al. 2020, arXiv:2010.08895); race-car aerodynamics remains untested here."
         },
         "skill": {
           "filename": "f1-pontryagin-fno-control-SKILL.md",
           "name": "f1-pontryagin-fno-control",
           "description": "AI-agnostic applied mathematics and operator-learning skill for Formula 1 350 kW MGU-K Pontryagin optimal energy management, HJB lap-time minimization, and Fourier Neural Operator PDE surrogates.",
           "rules": [
-            "Formulate distance-domain Pontryagin Hamiltonian H = (1/v) + lambda_v * a_net(v, P_k, delta_wing) / v - lambda_E * P_k / (eta_k * v).",
-            "Determine the MGU-K switching velocity v_switch from the switching function dH/dP_k = lambda_v / (m * v^2) - lambda_E / (eta_k * v), which vanishes where lambda_v / (m * v) = lambda_E / eta_k, to prevent straight-end clipping.",
+            "Formulate the minimum-Hamiltonian H = (1/v) + lambda_v * a_net(v, P_k, delta_wing) / v - lambda_E * P_batt(P_k) / v along arc-length s, with P_batt = P_k / eta_k for motoring (P_k >= 0) and eta_regen * P_k under braking.",
+            "Evaluate the motoring optimality condition dH/dP_k = lambda_v / (m * v^2) - lambda_E * (dP_batt/dP_k) / v = 0 (lambda_v, lambda_E < 0 under min_u H): affine losses (dP_batt/dP_k = 1/eta_k) switch at lambda_v / (m * v) = lambda_E / eta_k, whereas strictly convex losses P_batt(P_k) initiate smooth tapering below P_k,max where lambda_v / (m * v) = lambda_E * dP_batt/dP_k(P_k,max).",
             "Evaluate spectral neural operator layer u_{l+1}(x) = sigma(W * u_l(x) + F^{-1}(R_phi * F(u_l))(x)) truncated at k_max Fourier modes."
           ]
         },
@@ -5790,8 +5790,8 @@
           {
             "edition": "REV 1.1",
             "date": "2026-11-14",
-            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The lap-time gain, switching speed, FNO error and speedup are now labelled as illustrative model values; no surrogate was trained and no lap was simulated. The 2014 Limebeer, Perantoni & Rao paper is no longer cited for the 2026 rules it predates, the switching condition is corrected to lambda_v/(m v) = lambda_E/eta, the invented opening scene is replaced by a plain account, and the nebulizer and Cystic Fibrosis dosing bridge is withdrawn.",
-            "opus": "Review: DOIs checked in Crossref and arXiv:2010.08895 checked on 2026-11-14. No DOIs added."
+            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The lap-time gain, switching speed, FNO error and speedup are now labeled as illustrative model values; no surrogate was trained and no lap was simulated. The 2014 Limebeer, Perantoni & Rao paper is no longer cited for the 2026 rules it predates, the switching condition is corrected to lambda_v/(m v) = lambda_E/eta, the invented opening scene is replaced by a plain account, and the nebulizer and Cystic Fibrosis dosing bridge is withdrawn.",
+            "opus": "Review: DOIs checked in Crossref and arXiv:2010.08895 checked on 2026-11-14; 2026-11-21 grounding pass verified and added Bellman 1954, Crandall & Lions 1983, Perantoni & Limebeer 2014, Salazar et al. 2017, Duhr et al. 2021, and Lu et al. 2021."
           },
           {
             "edition": "REV 1.0",
@@ -5806,13 +5806,13 @@
         "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1080/00207179.2014.900705",
-          "fetched_on": "2026-11-08",
+          "fetched_on": "2026-11-21",
           "citing_publications": 87,
           "supporting": 0,
           "mentioning": 52,
           "contrasting": 0,
           "retracted": false,
-          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 87 citing publications (0 supporting, 52 mentioning, 0 contrasting) on David Limebeer, Giacomo Perantoni & Anil Rao's optimal control of Formula One hybrid energy recovery systems."
+          "summary": "Scite Smart Citation Index [observed: Scite ML citation classification, accessed 2026-11-21]: 0 retractions; 87 citing publications (0 supporting, 52 mentioning, 0 contrasting) on David Limebeer, Giacomo Perantoni & Anil Rao's optimal control of Formula One hybrid energy recovery systems."
         }
       },
       {
