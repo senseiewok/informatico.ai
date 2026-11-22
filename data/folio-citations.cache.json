@@ -703,6 +703,14 @@
     "title": "Syncretic investigation on size effect in fracture behavior of dam concrete with physical experiment and mesoscale simulation",
     "year": 2024
   },
+  "doi:10.1016/j.tust.2015.08.006": {
+    "fetched": "2026-11-21",
+    "first_author": "Budach",
+    "found": true,
+    "journal": "Tunnelling and Underground Space Technology",
+    "title": "Application ranges of EPB shields in coarse ground based on laboratory research",
+    "year": 2015
+  },
   "doi:10.1016/j.watres.2005.10.030": {
     "fetched": "2026-11-14",
     "first_author": "Hijnen",
@@ -1222,6 +1230,14 @@
     "journal": "Journal of Engineering Mechanics",
     "title": "Universal Size Effect Law and Effect of Crack Depth on Quasi-Brittle Structure Strength",
     "year": 2009
+  },
+  "doi:10.1061/(asce)0733-9410(1989)115:1(1)": {
+    "fetched": "2026-11-21",
+    "first_author": "Boscardin",
+    "found": true,
+    "journal": "Journal of Geotechnical Engineering",
+    "title": "Building Response to Excavation‐Induced Settlement",
+    "year": 1989
   },
   "doi:10.1061/(asce)ae.1943-5568.0000430": {
     "fetched": "2026-11-20",
@@ -2271,6 +2287,14 @@
     "title": "Nonequilibrium Thermodynamics of Chemical Reaction Networks: Wisdom from Stochastic Thermodynamics",
     "year": 2016
   },
+  "doi:10.1103/physrevx.7.021034": {
+    "fetched": "2026-11-21",
+    "first_author": "Zhu",
+    "found": true,
+    "journal": "Physical Review X",
+    "title": "Ultrathin Acoustic Metasurface-Based Schroeder Diffuser",
+    "year": 2017
+  },
   "doi:10.1103/qhj9-pc2b": {
     "fetched": "2026-11-08",
     "first_author": "Sorci",
@@ -2472,7 +2496,7 @@
     "year": 1930
   },
   "doi:10.1121/1.1915175": {
-    "fetched": "2026-11-14",
+    "fetched": "2026-11-21",
     "first_author": "Eyring",
     "found": true,
     "journal": "The Journal of the Acoustical Society of America",
@@ -2511,6 +2535,30 @@
     "title": "Binaural dissimilarity and optimum ceilings for concert halls: More lateral sound diffusion",
     "year": 1979
   },
+  "doi:10.1121/1.384464": {
+    "fetched": "2026-11-21",
+    "first_author": "Steeneken",
+    "found": true,
+    "journal": "The Journal of the Acoustical Society of America",
+    "title": "A physical method for measuring speech-transmission quality",
+    "year": 1980
+  },
+  "doi:10.1121/1.393907": {
+    "fetched": "2026-11-21",
+    "first_author": "Bradley",
+    "found": true,
+    "journal": "The Journal of the Acoustical Society of America",
+    "title": "Predictors of speech intelligibility in rooms",
+    "year": 1986
+  },
+  "doi:10.1121/1.393908": {
+    "fetched": "2026-11-21",
+    "first_author": "Bradley",
+    "found": true,
+    "journal": "The Journal of the Acoustical Society of America",
+    "title": "Speech intelligibility studies in classrooms",
+    "year": 1986
+  },
   "doi:10.1121/1.400379": {
     "fetched": "2026-11-07",
     "first_author": "Stinson",
@@ -2518,6 +2566,14 @@
     "journal": "The Journal of the Acoustical Society of America",
     "title": "The propagation of plane sound waves in narrow and wide circular tubes, and generalization to uniform tubes of arbitrary cross-sectional shape",
     "year": 1991
+  },
+  "doi:10.1121/1.423870": {
+    "fetched": "2026-11-21",
+    "first_author": "Maa",
+    "found": true,
+    "journal": "The Journal of the Acoustical Society of America",
+    "title": "Potential of microperforated panel absorber",
+    "year": 1998
   },
   "doi:10.1126/sciadv.aaz5413": {
     "fetched": "2026-11-21",
@@ -3086,6 +3142,38 @@
     "journal": "Géotechnique",
     "title": "Subsurface settlement profiles above tunnels in clays",
     "year": 1993
+  },
+  "doi:10.1680/geot.1994.44.2.191": {
+    "fetched": "2026-11-21",
+    "first_author": "Skempton",
+    "found": true,
+    "journal": "Géotechnique",
+    "title": "Thames Tunnel: geology, site investigation and geotechnical problems",
+    "year": 1994
+  },
+  "doi:10.1680/geot.2006.56.9.605": {
+    "fetched": "2026-11-21",
+    "first_author": "Merritt",
+    "found": true,
+    "journal": "Géotechnique",
+    "title": "Mechanics of tunnelling machine screw conveyors: model tests",
+    "year": 2006
+  },
+  "doi:10.1680/geot.2008.58.9.695": {
+    "fetched": "2026-11-21",
+    "first_author": "Mair",
+    "found": true,
+    "journal": "Géotechnique",
+    "title": "Tunnelling and geotechnics: new horizons",
+    "year": 2008
+  },
+  "doi:10.1680/ipeds.1956.12202": {
+    "fetched": "2026-11-21",
+    "first_author": "SKEMPTON",
+    "found": true,
+    "journal": "Proceedings of the Institution of Civil Engineers",
+    "title": "THE ALLOWABLE SETTLEMENTS OF BUILDINGS.",
+    "year": 1956
   },
   "doi:10.21105/joss.02104": {
     "fetched": "2026-11-07",
@@ -5935,6 +6023,21 @@
     "unclassified": 3,
     "year": 1930
   },
+  "scite:10.1121/1.1915175": {
+    "citing_publications": 217,
+    "classification_provenance": "Scite ML citation classification",
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "The Journal of the Acoustical Society of America",
+    "mentioning": 84,
+    "retracted": false,
+    "supporting": 4,
+    "title": "Reverberation Time in “Dead” Rooms",
+    "total_smart_citations": 98,
+    "unclassified": 10,
+    "year": 1930
+  },
   "scite:10.1126/sciadv.aaz5413": {
     "citing_publications": 389,
     "contrasting": 0,
@@ -6724,53 +6827,5 @@
     "total_smart_citations": 1212,
     "unclassified": 62,
     "year": 2018
-  },
-  "doi:10.1680/geot.1994.44.2.191": {
-    "fetched": "2026-11-21",
-    "first_author": "Skempton",
-    "found": true,
-    "journal": "Géotechnique",
-    "title": "Thames Tunnel: geology, site investigation and geotechnical problems",
-    "year": 1994
-  },
-  "doi:10.1680/ipeds.1956.12202": {
-    "fetched": "2026-11-21",
-    "first_author": "SKEMPTON",
-    "found": true,
-    "journal": "Proceedings of the Institution of Civil Engineers",
-    "title": "THE ALLOWABLE SETTLEMENTS OF BUILDINGS.",
-    "year": 1956
-  },
-  "doi:10.1061/(asce)0733-9410(1989)115:1(1)": {
-    "fetched": "2026-11-21",
-    "first_author": "Boscardin",
-    "found": true,
-    "journal": "Journal of Geotechnical Engineering",
-    "title": "Building Response to Excavation‐Induced Settlement",
-    "year": 1989
-  },
-  "doi:10.1680/geot.2006.56.9.605": {
-    "fetched": "2026-11-21",
-    "first_author": "Merritt",
-    "found": true,
-    "journal": "Géotechnique",
-    "title": "Mechanics of tunnelling machine screw conveyors: model tests",
-    "year": 2006
-  },
-  "doi:10.1680/geot.2008.58.9.695": {
-    "fetched": "2026-11-21",
-    "first_author": "Mair",
-    "found": true,
-    "journal": "Géotechnique",
-    "title": "Tunnelling and geotechnics: new horizons",
-    "year": 2008
-  },
-  "doi:10.1016/j.tust.2015.08.006": {
-    "fetched": "2026-11-21",
-    "first_author": "Budach",
-    "found": true,
-    "journal": "Tunnelling and Underground Space Technology",
-    "title": "Application ranges of EPB shields in coarse ground based on laboratory research",
-    "year": 2015
   }
 }
