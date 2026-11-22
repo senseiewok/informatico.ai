@@ -150,18 +150,13 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       "Rao's optimal control of Formula One hybrid energy recovery systems."},
  'act1_title': "Act I — From Lev Pontryagin's Maximum Principle to 2026 Formula 1 350 kW Hybrid "
                'Control & Neural PDE Operators',
- 'act1_dropcap': 'Lev Semenovich Pontryagin, blind from an accident at the age of fourteen, led '
-                 'a control seminar at the Steklov Mathematical Institute in Moscow on engines, '
-                 'valves, and steering rudders. Working with Vladimir Boltyanskii, Revaz '
-                 'Gamkrelidze, and Evgenii Mishchenko, he asked how to guide a machine in minimum '
-                 'time when controls hit hard limits. Euler and Lagrange had assumed smooth '
+ 'act1_dropcap': 'Lev Semenovich Pontryagin, blind from an accident at the age of fourteen, led a group at the Steklov Mathematical Institute in Moscow. Working with Vladimir Boltyanskii, Revaz Gamkrelidze, and Evgenii Mishchenko, he studied how to steer a system in minimum time when its controls have hard limits. Euler and Lagrange had assumed smooth '
                  'interior adjustments. Real hardware defies that assumption: valves hit stops, '
                  'motors overheat, and batteries drain. Announced in the mid-1950s and set out in '
                  'their 1962 book The Mathematical Theory of Optimal Processes, their principle '
                  'attaches a shadow price called the co-state to each state. That co-state tracks '
                  'the future time value of stored energy, telling the controller when to use full '
-                 'power, hold back, or brake. One marginal price coordinates every straight and '
-                 'corner.',
+                 'power, hold back, or brake. In the model below, one such price is shared by the whole lap.',
  'act1_plain_bridge': 'Picture driving an electric hybrid car about fifty miles across a desert '
                       'highway on one small battery pack. No charging stations sit along the '
                       'route. Stomping on the accelerator pedal at the stoplight feels fast, yet '
@@ -174,8 +169,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'Easing off the boost early on a long straight saves charge for low-speed '
                       'corner exits. Braking into the next turn then feeds kinetic energy back '
                       'into the battery. Pacing beats draining the pack early.',
- 'act1_body': 'Minimum-lap-time control for Formula One cars was cast in curvilinear track '
-              'coordinates by Perantoni and Limebeer (2014, DOI 10.1080/00423114.2014.889315) and '
+ 'act1_body': 'Minimum-lap-time control for Formula One cars was solved using a curvilinear-coordinate track description by Perantoni and Limebeer (2014, DOI 10.1080/00423114.2014.889315) and '
               'extended to hybrid recovery by Limebeer, Perantoni, and Rao (2014, DOI '
               '10.1080/00207179.2014.900705), when the motor-generator was limited to 120 '
               'kilowatts. Analytical Pontryagin policies for hybrid race cars were derived by '
@@ -186,14 +180,11 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               '10.48550/arXiv.2010.08895) parameterizes PDE kernels in Fourier space; pairing it '
               'with a race-car controller is proposed here and not yet tested.',
  'act1_stakes': 'Optimal control and continuum fluid mechanics long sat on opposite sides of a '
-                'computational divide. Dynamic programming, introduced by Richard Bellman (1954, '
+                'computational divide. Dynamic programming, set out by Richard Bellman (1954, '
                 'DOI 10.1090/S0002-9904-1954-09848-8), characterizes minimum-time trajectories '
-                'via the Hamilton–Jacobi–Bellman equation, whose non-smooth value functions '
-                'across switching surfaces are defined by the viscosity solutions of Crandall and '
-                'Lions (1983, DOI 10.1090/S0002-9947-1983-0690039-8). Point-mass equations solve '
+                'via the Hamilton–Jacobi–Bellman equation, whose non-smooth value functions are made rigorous as viscosity solutions (Crandall and Lions 1983, DOI 10.1090/S0002-9947-1983-0690039-8). Point-mass equations solve '
                 'quickly, yet three-dimensional turbulent wakes remain too costly to evaluate '
-                'online. Teams therefore fit polynomial wind-tunnel maps offline with conservative '
-                'margins. Coupling Pontryagin co-state trajectory optimization with neural '
+                'online. Such flows are usually reduced to fitted maps computed offline. Coupling Pontryagin co-state trajectory optimization with neural '
                 'surrogates could narrow that gap, alongside classical spacecraft trajectory '
                 'optimization.',
  'pullquote': '"In the model, a single shadow price, the co-state lambda_E, decides where on '
@@ -201,9 +192,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'chronology': [('1954–1957',
                  'Richard Bellman formulates Dynamic Programming and the Hamilton–Jacobi–Bellman '
                  '(HJB) equation (DOI 10.1090/S0002-9904-1954-09848-8).'),
-                ('1956–1983',
-                 'Pontryagin et al. publish the bounded-control maximum principle (1962); '
-                 'Crandall & Lions define HJB viscosity solutions (DOI '
+                ('1962–1983',
+                 'Pontryagin et al. publish the maximum principle for bounded controls in book form (1962); Crandall & Lions introduce viscosity solutions of Hamilton–Jacobi equations (1983, DOI '
                  '10.1090/S0002-9947-1983-0690039-8).'),
                 ('2014–2017',
                  'Limebeer, Perantoni & Rao model F1 hybrid recovery (DOI '
@@ -222,21 +212,15 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    '[E_min, E_max], d(lambda_E)/ds = -dH/dE_batt = 0 keeps lambda_E* constant. '
                    'With affine losses, dH/dP_k = lambda_v/(m*v^2) - lambda_E*/(eta_k*v) favors '
                    'full boost until lambda_v/(m*v) = lambda_E*/eta_k, where d(dH/dP_k)/ds = 0 '
-                   'gives a constant-speed singular cruise; smooth tapering during acceleration '
-                   'requires strictly convex losses P_batt(P_k) (Salazar et al. 2017). An FNO '
+                   'gives a constant-speed singular cruise; in this Hamiltonian, smooth tapering during acceleration requires strictly convex losses P_batt(P_k). This folio does not write such a loss term down, and the taper values it shows assume one. Analytical policies for hybrid race cars are derived by Salazar et al. (2017). An FNO '
                    'layer u_{l+1} = sigma(W u_l + F^(-1)(R_phi * F(u_l))) truncated at k_max '
                    'modes could supply drag gradients dC_D/d(delta_wing) to the optimizer '
                    '(proposed, untested).',
- 'act2_deepening': 'Race-strategy simulations typically tabulate drag and downforce as polynomial '
-                   'fits to wind-tunnel data (Perantoni & Limebeer 2014). On track, pitch and '
+ 'act2_deepening': 'A lap-time simulation takes drag and downforce from a fitted aerodynamic map. On track, pitch and '
                    'active flap motion shift floor separation points. Truncating a Fourier Neural '
-                   'Operator at k_max modes acts on PDE benchmarks as a spectral filter: low '
-                   'wavenumbers capture large-scale pressure fields while higher wavenumbers '
-                   'resolve finer shear layers. As the simulated car accelerates past 290 '
+                   'Operator at k_max modes acts as a spectral filter: low wavenumbers carry the large-scale structure of a field and higher wavenumbers its finer detail. As the simulated car accelerates past 290 '
                    'kilometers per hour, thrust per kilowatt falls as 1/v while drag grows as '
-                   'v^2. In hybrid models with convex internal-resistance and inverter losses '
-                   '(Duhr et al. 2021, DOI 10.1016/j.apenergy.2020.115980), continuing to dump '
-                   '350 kilowatts into quadratic aerodynamic drag carries a steep marginal cost, '
+                   'v^2. In convex powertrain models of the kind used by Duhr et al. (2021, DOI 10.1016/j.apenergy.2020.115980), losses grow faster than power, so in the illustration here continuing to dump 350 kilowatts into quadratic aerodynamic drag carries a steep marginal cost, '
                    'so the co-state policy tapers power before straight-end clipping.',
  'act2_analogy': 'A trail runner carrying one twenty-ounce water flask across mountain ridges '
                  'faces the same pacing dilemma. Drinking greedily on the flat valley floor '
@@ -264,7 +248,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                      'force_b_sub': 'Resolves aerodynamic drag fields across non-local wavenumber '
                                     'space',
                      'threshold_title': 'Switching Velocity Taper vs. Clipping',
-                     'threshold_pass': 'Model: singular taper saves about 0.42 s without battery '
+                     'threshold_pass': 'Model: convex-loss taper saves about 0.42 s without battery '
                                        'clipping (illustrative)',
                      'threshold_fail': 'Model: early boost depletion clips power mid-straight '
                                        '(illustrative loss)'},
@@ -287,9 +271,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'viscosity formulations (Crandall & Lions 1983) suggests a clear split between '
                    'learned surrogates and human engineers. Offline simulations could sweep wing '
                    'angles and wind conditions, yet any candidate energy policy carries a strict '
-                   'caveat: its optimality is bounded by surrogate error under stated assumptions. '
-                   'Engineers still define state constraints, battery thermal limits, and '
-                   'saturation guards (Duhr et al. 2021). Two open questions remain: how may a '
+                   'caveat: it would only be as good as the surrogate. '
+                   'Engineers still define state constraints, battery thermal limits, and saturation guards. Two open questions remain: how may a '
                    'posteriori spectral residuals flag out-of-distribution stall or wake regimes, '
                    'and what Lipschitz bounds on surrogate gradients preserve stability when '
                    'actuators saturate?',

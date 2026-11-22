@@ -116,7 +116,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'River During the Qingming Festival. Each log rests on its neighbors, so pieces shorter than the '
                  'crossing carry the span together. Leonardo da Vinci later sketched similar self-supporting loops '
                  'of short poles in sheets now bound in the Codex Atlanticus. Builders and engineers now call these '
-                 'mutually supporting loops reciprocal frames, or nexorades.',
+                 'mutually supporting loops reciprocal frames (Popovic Larsen 2007, DOI 10.4324/9780080556000); the form-finding literature also calls them nexorades (Douthe and Baverel 2009, DOI 10.1016/j.compstruc.2009.06.011).',
  'history_body': "From Villard de Honnecourt's medieval floor grillages and Leonardo da Vinci's Codex Atlanticus sketches "
                  'to contemporary timber pavilions, reciprocal frames weave short bars into closed polygonal fans. '
                  'Olga Popovic Larsen (2007, Reciprocal Frame Architecture, DOI 10.4324/9780080556000) explains how '
@@ -142,16 +142,15 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Erect the Mannheim Multihalle timber gridshell by lifting a flat hemlock lath lattice into a '
                  'funicular shell.'),
                 ('2009–2011',
-                 'Douthe, Baverel & Gelez',
-                 'Formalize nexorade dynamic-relaxation form-finding (DOI 10.1016/j.compstruc.2009.06.011) and '
-                 'planar nexorade flexural stiffness and joint behavior (DOI 10.1260/0266-3511.26.4.331).'),
+                 'Douthe & Baverel; Gelez, Aubry & Vaudeville',
+                 'Apply dynamic relaxation to nexorade form-finding (DOI 10.1016/j.compstruc.2009.06.011) and study the bending resistance and stiffness of a simple nexorade (DOI 10.1260/0266-3511.26.4.331).'),
                 ('2026',
                  'Informatico.ai Folio A.02',
                  'A teaching model of the reciprocal lap moment, with an illustrative buckling factor (SF = 3.74) and '
                  'an assumed joint stiffness.')],
  'intuition_lead': 'Under gravity, a reciprocal frame couples member bending, shear, and joint flexibility across '
                    'every bar in the loop (Gelez, Aubry, and Vaudeville 2011, DOI 10.1260/0266-3511.26.4.331). In '
-                   'slender timber shells, local joint splitting and elastic buckling generally govern before '
+                   'slender timber shells, local joint splitting and elastic buckling can govern before '
                    'compressive crushing. Here, an assumed vertical step e_z = 85 mm tilts each stacked bar to give '
                    'the fan its rise, while the in-plane engagement arm a = lambda_lap * L enters this folio\'s '
                    'simplified lap-moment formula M_lap = V_lap * a * (1 - lambda_lap) (for general reciprocal frame '
@@ -170,8 +169,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'teaching values; the folio makes no claim about embodied carbon.',
  'walkthrough': ['Experiment 1 (Sweep Engagement Ratio): Drag Slider 1 (λ = a / L) from 0.15 to 0.45 at V_lap = '
                  '18.4 kN. Watch M_lap climb from 3.50 to 6.80 kN·m as the lap moves inward toward mid-span.',
-                 'Experiment 2 (Test the Surrogate Alert & Node): Raise Slider 2 (V_lap) toward 32.0 kN to see '
-                 'illustrative utilization pass 1.00, then inspect the 4-beam SVG weave below.',
+                 'Experiment 2 (Test the Surrogate Alert & Node): With λ = 0.25, raise Slider 2 (V_lap) past about 28.8 kN to see illustrative utilization pass 1.00, then inspect the 4-beam SVG weave below.',
                  'Experiment 3 (Read the Companion Skill): Download reciprocal-timber-nexorade SKILL.md below; it '
                  'summarizes the lap-moment formula, notch shear ratio, and screw-reinforcement rule as a study aid, '
                  'not a design code.'],
@@ -243,7 +241,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'River During the Qingming Festival. Each log rests on its neighbors, so pieces shorter than the '
                  'crossing carry the span together. Leonardo da Vinci later sketched similar self-supporting loops '
                  'of short poles in sheets now bound in the Codex Atlanticus. Builders and engineers now call these '
-                 'mutually supporting loops reciprocal frames, or nexorades.',
+                 'mutually supporting loops reciprocal frames (Popovic Larsen 2007, DOI 10.4324/9780080556000); the form-finding literature also calls them nexorades (Douthe and Baverel 2009, DOI 10.1016/j.compstruc.2009.06.011).',
  'act1_plain_bridge': 'Lay four wooden butter knives across an open coffee mug rim so each tip rests on the next '
                       'blade. Press down in the center. The pinwheel locks firm over the opening even though no '
                       'single knife reaches across on its own. Working together, short pieces bridge a wider gap. '
@@ -261,21 +259,19 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'EN 1995-1-1 timber checks. This folio does not run those tools and makes no embodied-carbon claim; '
               'its numbers come from the lap-moment formula shown.',
  'act1_stakes': 'Sizing reciprocal frames by eye risks joint rotation and splitting. In a reciprocal grid, member '
-                'bending, shear, and joint flexibility are tightly coupled, so losing one bar shifts load onto '
-                'adjacent joints (Gelez, Aubry, and Vaudeville 2011, DOI 10.1260/0266-3511.26.4.331). Cutting a '
+                'bending, shear, and joint flexibility are tightly coupled, and how the members connect affects the stiffness and robustness of the whole (Gelez, Aubry, and Vaudeville 2011, DOI 10.1260/0266-3511.26.4.331). Cutting a '
                 'notch too deep severs tensile wood fibers and concentrates splitting stress perpendicular to the '
                 'grain (Jockwer, Steiger, and Frangi 2014, DOI 10.1061/(ASCE)ST.1943-541X.0000838). Engineers '
                 'therefore check both notch shear and overall frame stability.',
  'act2_analogy': 'Slide four interlocked butter knives across a mug rim farther inward from their tips, and each blade '
                  'bends harder over a longer lever arm. Short pieces still bridge the rim, yet every lap carries '
-                 'sharper bending. Where the picture stops: kitchen knives slip apart by friction, whereas notched '
+                 'sharper bending. Where the picture stops: kitchen knives are held only by friction and can slip apart, whereas notched '
                  'timber beams have cut grain fibers that can split under heavy shear.',
  'act2_plain_primer': 'Two sliders drive the teaching model below. The first slider sets the engagement ratio from '
                       '0.15 near the beam tip to 0.45 toward mid-span. Moving the lap inward lengthens the bending '
                       'lever and lifts the model moment from 3.50 to 6.80 kN·m at 18.4 kN. The second slider scales '
                       'downward notch shear from 8.0 to 32.0 kN. The interactive script scales illustrative '
-                      'utilization proportionally with the lap moment from its 0.64 default, crossing 1.00 as shear '
-                      'nears 32.0 kN. It also scales the illustrative buckling factor inversely from 3.74. This '
+                      'utilization proportionally with the lap moment from its 0.64 default, crossing 1.00 at about 28.8 kN when the engagement ratio is 0.25. It also scales the illustrative buckling factor inversely from 3.74. This '
                       'surrogate scaling is a teaching aid, not a Eurocode 5 notch-shear or buckling calculation.',
  'distill_diagram': {'analogy_title': 'Four Interlocked Knives Over Mug Rim',
                      'analogy_sub': 'Mutual lap support spans wide openings with short pieces',
@@ -288,7 +284,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                      'threshold_fail': 'Above model limit: notch shear rises; unreinforced wood can split along grain'},
  'act2_intuition': 'Under gravity, a reciprocal frame couples member bending, shear, and joint flexibility across '
                    'every bar in the loop (Gelez, Aubry, and Vaudeville 2011, DOI 10.1260/0266-3511.26.4.331). In '
-                   'slender timber shells, local joint splitting and elastic buckling generally govern before '
+                   'slender timber shells, local joint splitting and elastic buckling can govern before '
                    'compressive crushing. Here, an assumed vertical step e_z = 85 mm tilts each stacked bar to give '
                    'the fan its rise, while the in-plane engagement arm a = lambda_lap * L enters this folio\'s '
                    'simplified lap-moment formula M_lap = V_lap * a * (1 - lambda_lap) (for general reciprocal frame '
@@ -303,9 +299,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'act2_deepening': 'Engagement ratio lambda and lap shear V_lap jointly drive M_lap = V_lap * a * (1 - lambda), '
                    'peaking as the lap approaches mid-span (lambda = 0.50). Because timber is orthotropic—stiff '
                    'along the grain but weak in perpendicular tension and shear—high notch loads demand careful '
-                   'detailing and reinforcement. In addition, semi-rigid joint slip lowers global frame stiffness '
-                   '(Gelez, Aubry, and Vaudeville 2011, DOI 10.1260/0266-3511.26.4.331); in curved shells, reduced '
-                   'rotational joint stiffness K_phi also lowers critical buckling capacity.',
+                   'detailing and reinforcement. In addition, connection behavior affects the stiffness of the whole frame (Gelez, Aubry, and Vaudeville 2011, DOI 10.1260/0266-3511.26.4.331); in the Euler estimate used here, a lower rotational joint stiffness K_phi gives a lower critical load.',
  'act4_deepening': 'One proposal for practice, not current use: an architect could sketch the roof envelope while a '
                    'dynamic-relaxation solver computes closed-loop nexorade kinematics (Douthe and Baverel 2009, DOI '
                    '10.1016/j.compstruc.2009.06.011) and drafts five-axis toolpaths. Any output would still require '
@@ -338,10 +332,8 @@ ES_TRANSLATION = {'title_es': 'Retículas Recíprocas de Madera (Nexorades), Mom
  'subtitle_es': 'Cinemática estructural de entramados recíprocos de madera sin placas ni pernos metálicos donde cada '
                 'viga descansa sobre su vecina con un desfase vertical en cada traslape, convirtiendo el empuje '
                 'global en flexión local.',
- 'why_es': 'Al deslizar cuatro cuchillos entrelazados sobre una taza hacia el centro de cada pieza, aumenta el brazo '
-           'de palanca y la flexión en cada apoyo. Donde termina la imagen: los cuchillos solo se deslizan por '
-           'fricción, mientras que las vigas de madera ranuradas tienen fibras que pueden abrirse a lo largo del grano.',
- 'plain_es': 'Coloquen cuatro cuchillos de madera sobre la boca de una taza de café, con cada punta apoyada sobre la '
+ 'why_es': 'Si cuatro cuchillos entrelazados sobre una taza se apoyan más hacia el centro de cada hoja, crecen el brazo de palanca y la flexión en cada apoyo. Donde termina la imagen: los cuchillos solo se sostienen por fricción y pueden resbalar, mientras que las vigas con muescas tienen fibras cortadas que pueden abrirse a lo largo del grano bajo cortante alto.',
+ 'plain_es': 'Coloquen cuatro cuchillos de madera para mantequilla sobre la boca de una taza de café, con cada punta apoyada sobre la '
              'hoja siguiente. Presionen el centro. El molinete se traba con firmeza aunque ningún cuchillo cruce la '
              'taza por sí solo. Juntos, varios tramos cortos salvan un claro mayor. En la arquitectura en madera se '
              'aplica el mismo tejido para cubrir salas amplias con tablas cortas en lugar de troncos enormes. Cada '
@@ -351,5 +343,4 @@ ES_TRANSLATION = {'title_es': 'Retículas Recíprocas de Madera (Nexorades), Mom
             'M_lap de 3.50 a 6.80 kN·m con 18.4 kN (5.15 kN·m en el valor base λ = 0.25 y L = 1.493 m). La '
             'geometría entrante de la muesca concentra cortante y tensión perpendicular al grano; por ello el '
             'Eurocódigo 5 revisa estas zonas y suelen añadirse tornillos de rosca completa. Los deslizadores '
-            'reescalan la utilización ilustrativa desde 0.64 proporcionalmente con M_lap (superando 1.00 hacia '
-            '32.0 kN) y el factor de pandeo inversamente desde 3.74; es una guía didáctica, no un cálculo de diseño.'}
+            'reescalan la utilización ilustrativa desde 0.64 proporcionalmente con M_lap (superando 1.00 cerca de 28.8 kN con λ = 0.25) y el factor de pandeo inversamente desde 3.74; es una guía didáctica, no un cálculo de diseño.'}

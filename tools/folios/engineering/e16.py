@@ -77,7 +77,7 @@ FOLIO = {
         (
             'Stage 1 (Shields Incipient Motion & Logarithmic Critical Velocity V_c): Forensic analysis of 503 United '
             'States bridge failures from 1989 to 2000 by Wardhana and Hadipriono (2003, DOI '
-            '10.1061/(ASCE)0887-3828(2003)17:3(144)) attributed 266 collapses (52.88%) to hydraulic flood, scour, and '
+            '10.1061/(ASCE)0887-3828(2003)17:3(144)) attributed 266 failures (52.88%) to hydraulic flood, scour, and '
             'debris forces. Under Shields incipient-motion mechanics (documented by Buffington 1999, DOI '
             '10.1061/(ASCE)0733-9429(1999)125:4(376)) and Melville (1997, DOI 10.1061/(ASCE)0733-9429(1997)123:2(125)), '
             'cohesionless quartz grains (specific gravity s = 2.65, d_50 = 2.00 mm, θ_c = 0.045) reach critical shear '
@@ -102,7 +102,7 @@ FOLIO = {
             't* = V_1 t_e,sec / a* with a* in m and V_1 in m/s), with temporal fraction K_t(t_d) = exp(−0.03 |(V_c / V_1) '
             'ln((t_d / 24) / t_e)|^1.6) for t_d / 24 < t_e (clamped to 1.0 once t_d / 24 >= t_e). At V_1 / V_c = 0.85 '
             '(V_1 = 0.731 m/s), t_e = 42.09 days (1,010.1 h): a 2.0 h flash flood reaches K_t = 0.4841 (y_s = 1.213 m), '
-            'and a 24.0 h storm reaches K_t = 0.7254 (y_s = 1.817 m).'
+            'and a 24.0 h storm reaches K_t = 0.7254 (y_s = 1.817 m). Applying a relation fitted to steady laboratory flows to a 2.00 m pier and to a flood duration is an extrapolation.'
         ),
         (
             'Stage 4 (Open Hypothesis, Tier T1–T2, and Falsification Conditions): Hypothesis (Tier T1–T2): in uniform '
@@ -123,16 +123,16 @@ FOLIO = {
         {'label': 'Clear-Water Scour Regime', 'value': 'TRANSIENT HYDROGRAPH LAG (0.65 <= K_t < 0.90, model)'},
     ],
     'spec_plate': {
-        'division': 'HYDRAULIC SCOUR / FHWA HEC-18 SCREENING (FILING LABEL · DESIGN STUDY)',
-        'title': 'Circular Bridge Pier Clear-Water Horseshoe-Vortex Scour & Flood Time-Scale Screening Envelope',
+        'division': 'HYDRAULIC SCOUR / ILLUSTRATIVE MODEL (FILING LABEL · NOT A DESIGN METHOD)',
+        'title': 'Circular Bridge Pier Clear-Water Horseshoe-Vortex Scour & Flood Time-Scale Illustrative Envelope',
         'body': (
-            'Illustrative closed-form hydraulic screening study, not a bridge foundation design check (AASHTO LRFD / '
+            'Illustrative closed-form hydraulic study, not a bridge foundation design check (AASHTO LRFD / '
             'FHWA HEC-18) or site geotechnical evaluation: models a single unskewed circular concrete pier (a* = 2.00 m, '
             'K_1 = 1.0, K_2 = 1.0, K_3 = 1.1) in approach depth y_1 = 3.00 m over uniform cohesionless quartz sand-gravel '
             '(d_50 = 2.00 mm, s = 2.65, θ_c = 0.045, u_*c = 0.03817 m/s, V_c = 0.860 m/s, f_1 = 0.8262, f_3 = 0.6263) '
             'across clear-water intensities V_1 / V_c ∈ [0.45, 1.00] and flood durations t_d ∈ [2, 240] h. Contraction '
             'scour, abutment scour, live-bed dune passage, cohesive clays, graded armor breach, pile-cap exposure, and '
-            'debris accumulation fall outside this reduced 2-slider curve.'
+            'debris accumulation fall outside this reduced 2-slider curve. Design practice takes the equilibrium or envelope depth on purpose, because a bridge meets many floods and scour adds up from one to the next. Nothing on this page may be used to assess or reduce scour depth at a real bridge.'
         ),
         'meta': (
             'Primary anchors: Buffington 1999 (DOI 10.1061/(ASCE)0733-9429(1999)125:4(376)) · '
@@ -145,9 +145,8 @@ FOLIO = {
         'kicker': 'SIDENOTE E.16-A · DIMENSIONLESS TIME t* VS. EMPIRICAL DAY-SECOND CONSTANT IN t_e',
         'body': (
             'Melville and Chiew (1999, DOI 10.1061/(ASCE)0733-9429(1999)125:1(59)) define dimensionless equilibrium '
-            'time scale t* = V_1 t_e,sec / a*. Dividing t* (a* / V_1) in seconds by 86,400 s/day produces the standard '
-            'published dimensional prefactors 30.89 days·s^(−1) (= 2.669 × 10^6 / 86,400 for shallow flow y_1 / a* <= 6) '
-            'and 48.26 days·s^(−1) (= 4.170 × 10^6 / 86,400 for deep flow y_1 / a* > 6), requiring a* in meters and '
+            'time scale t* = V_1 t_e,sec / a*. Dividing t* (a* / V_1) in seconds by 86,400 s/day gives the dimensional prefactors used here, 30.89 days·s^(−1) (equivalent to 2.669 × 10^6 / 86,400 for shallow flow y_1 / a* <= 6) '
+            'and 48.26 days·s^(−1) (equivalent to 4.170 × 10^6 / 86,400 for deep flow y_1 / a* > 6), requiring a* in meters and '
             'V_1 in m/s, with a small 0.18% empirical fit step at y_1 / a* = 6 (30.89 × 6^0.25 = 48.35 vs. 48.26).'
         ),
     },
@@ -185,9 +184,13 @@ FOLIO = {
                 'K_t(t_d) = 1.0 whenever flood duration t_d / 24 >= t_e.'
             ),
             (
-                'Label transient clear-water scour y_s(t_d) = K_t(t_d) y_s,SM as a Tier T1-T2 hydraulic screening '
-                'hypothesis falsified by live-bed transport (V_1 / V_c > 1), graded armor-layer breach, multi-flood '
+                'Label transient clear-water scour y_s(t_d) = K_t(t_d) y_s,SM as a Tier T1-T2 illustrative hydraulic hypothesis falsified by live-bed transport (V_1 / V_c > 1), graded armor-layer breach, multi-flood '
                 'deposition-erosion cycles, cohesive soils, or debris rafts.'
+            ),
+            (
+                'State that this is an illustrative single-event model. Design practice uses equilibrium or envelope '
+                'scour depth on purpose because scour accumulates across floods; never use K_t or any value from this '
+                'skill to assess or reduce scour depth at a real bridge.'
             ),
         ],
     },
@@ -205,8 +208,7 @@ FOLIO = {
             'opus': (
                 'Verification note: all seven primary DOIs in this folio were checked against Crossref and Scite on '
                 '2026-11-21 with zero retraction notices; all numerical outputs are recomputed offline by '
-                'skills/engineering/e16/verify_e16_pier_scour_timescale.py and represent illustrative closed-form '
-                'hydraulic screening model values rather than site-specific field survey data.'
+                'skills/engineering/e16/verify_e16_pier_scour_timescale.py and represent illustrative closed-form hydraulic model values rather than site-specific field survey data.'
             ),
         }
     ],
@@ -223,15 +225,11 @@ LONGFORM_DATA = {
     'parent_folios': ['E.05', 'E.07', 'E.14'],
     'lineage_mode': 'CONTINUATION · Continues E.05 Deep Piling, E.07 Bridge Dynamics & E.14 Rainfall Slope Mechanics',
     'scite': dict(_SCITE),
-    'act1_title': 'Act I — Cool Fact & Human Story: Why River Currents Topple More Bridges Than Earthquakes and Wind',
+    'act1_title': 'Act I — Cool Fact & Human Story: How River Currents Undermine Bridge Piers',
     'act1_dropcap': (
-        'On the morning of April 5, 1987, spring snowmelt from the Catskill Mountains surged down Schoharie Creek in '
-        'upstate New York and tore beneath a concrete bridge pier. Two highway spans collapsed into the swollen river. '
-        'Across the United States, moving water has brought down more highway bridges than wind, earthquakes, and '
-        'structural overload combined. Long before a steel girder bends or a concrete deck cracks, the river attacks '
+        'A river in flood does its damage where no one can see it. In one survey of 503 United States bridge failures from 1989 to 2000, flood and scour accounted for 266, more than half (Wardhana and Hadipriono 2003, DOI 10.1061/(ASCE)0887-3828(2003)17:3(144)). Long before a steel girder bends or a concrete deck cracks, the river attacks '
         'the hidden bed below. Fast current strikes the rounded nose of a pier, dives toward the bottom, and rolls '
-        'into a swirling horseshoe vortex that scoops sand and gravel from around the footing. Yet classic design '
-        'formulas often treat a three-hour mountain flash flood as if the river ran steady for six weeks. Understanding '
+        'into a swirling horseshoe vortex that scoops sand and gravel from around the footing. Equilibrium formulas give the hole that weeks of steady flow would dig, and a three-hour mountain flash flood does not last that long. Design practice uses the equilibrium depth on purpose, because a bridge meets many floods and scour adds up from one to the next. Understanding '
         'how sediment threshold and flood duration govern that crater separates flash-flood lag from steady-state erosion.'
     ),
     'act1_plain_bridge': (
@@ -241,15 +239,13 @@ LONGFORM_DATA = {
         'threshold that moves open riverbed sand, the vortex carves a clean pit without fresh sand washing in from '
         'upstream. Digging that pit to its deepest possible level takes many days of steady flow. Real rainstorms '
         'rarely hold peak speed that long. Roughly half of the final pit depth forms during the opening hours, then '
-        'excavation slows sharply as the crater widens. Older formulas that ignore grain size or storm duration can '
-        'therefore overestimate shallow flash floods while missing near-threshold clear-water peaks. Pairing sediment '
+        'excavation slows sharply as the crater widens. A formula that leaves out grain size or storm duration can therefore give a deeper hole than one short flood digs. That margin is deliberate in design, and nothing on this page may be used to assess or reduce scour depth at a real bridge. Pairing sediment '
         'threshold rules with flood duration tracks how deep the pit grows before the storm recedes.'
     ),
     'act1_body': (
         'Forensic engineering placed river hydraulics at the center of structural safety when Kumalasari Wardhana and '
         'Fabian Hadipriono analyzed 503 bridge failures across the United States from 1989 to 2000 (Journal of '
-        'Performance of Constructed Facilities, 2003, DOI 10.1061/(ASCE)0887-3828(2003)17:3(144)) and found that 266 '
-        'collapses, or 52.88 percent, stemmed from hydraulic flood, scour, and drift action. Predicting that hazard '
+        'Performance of Constructed Facilities, 2003, DOI 10.1061/(ASCE)0887-3828(2003)17:3(144)) and found that 266 failures, or 52.88 percent, stemmed from hydraulic flood, scour, and drift action. Predicting that hazard '
         'rests on three historical advances: Albert Shields framed dimensionless bed-shear incipient motion in Berlin '
         'in 1936 (recounted by John Buffington in 1999, DOI 10.1061/(ASCE)0733-9429(1999)125:4(376)); Bruce Melville '
         '(1997, DOI 10.1061/(ASCE)0733-9429(1997)123:2(125)) and Max Sheppard, Melville, and Huseyin Demir (2014, DOI '
@@ -262,7 +258,7 @@ LONGFORM_DATA = {
         'Treating pier scour as instantaneous or independent of sediment threshold skews engineering judgment in two '
         'opposite directions. In our illustrative reference model for a 2.00 m circular pier in 3.00 m of water over '
         '2.00 mm quartz sand and gravel, mild flow at 0.45 of critical velocity yields 0.608 m of Sheppard and '
-        'Melville equilibrium scour, whereas the threshold-blind Colorado State University Froude formula predicts '
+        'Melville equilibrium scour, whereas the base Colorado State University equation, which has no sediment-threshold term, predicts '
         '1.629 m, or 2.682 times deeper. Conversely, near the clear-water peak at 0.85 of critical velocity, '
         'equilibrium scour reaches 2.505 m over 42.09 days, yet a 2.0 hour flash flood carves 1.213 m and a 24.0 hour '
         'flood carves 1.817 m. Omitting both grain-size attenuation and flood-duration lag inflates modeled short-flood '
@@ -302,7 +298,7 @@ LONGFORM_DATA = {
         ),
         (
             '2026',
-            'Abdorreza Kabiri-Samani, Amir Fathi, and Rashid Farooq test clear-water scour in armored beds under '
+            'Abdorreza Kabiri-Samani, Amirhossein Fathi, and Rashid Farooq test clear-water scour in armored beds under '
             'steady and unsteady hydrographs (Journal of Hydrology and Hydromechanics, DOI 10.2478/johh-2026-0004).'
         ),
     ],
@@ -338,11 +334,10 @@ LONGFORM_DATA = {
     'act2_intuition': (
         'Once we step from plain intuition to formal hydraulics, four coupled relations govern clear-water pier scour. '
         'First, for uniform cohesionless quartz sediment of specific gravity s = ρ_s / ρ = 2.65, median diameter '
-        'd_50 = 2.00 mm = 0.002 m, and critical Shields stress θ_c = 0.045 (Buffington 1999, DOI '
-        '10.1061/(ASCE)0733-9429(1999)125:4(376)), critical bed shear velocity is u_*c = √(θ_c (s − 1) g d_50) = '
+        'd_50 = 2.00 mm = 0.002 m, and an assumed critical Shields stress θ_c = 0.045 (for the history of the Shields curve see Buffington 1999, DOI 10.1061/(ASCE)0733-9429(1999)125:4(376)), critical bed shear velocity is u_*c = √(θ_c (s − 1) g d_50) = '
         '0.03817 m/s. Integrating the rough-bed logarithmic velocity profile across approach depth y_1 = 3.00 m '
         '(Melville 1997, DOI 10.1061/(ASCE)0733-9429(1997)123:2(125)) yields critical depth-averaged velocity '
-        'V_c = 5.75 u_*c log_10(5.53 y_1 / d_50) = 0.860 m/s. Clear-water scour holds while upstream approach '
+        'V_c = 5.75 u_*c log_10(5.53 y_1 / d_50) = 0.860 m/s. Pairing an assumed θ_c with this log-law form is a simplification made by this folio; it does not reproduce the procedure for u_*c and V_c given in either scour paper, so every number below belongs to this simplified model and not to a published method. Clear-water scour holds while upstream approach '
         'velocity V_1 stays at or below V_c (flow intensity V_1 / V_c <= 1.00), so upstream bedload does not refill '
         'the horseshoe pit. In the Sheppard–Melville (S/M) synthesis (Sheppard, Melville & Demir 2014, DOI '
         '10.1061/(ASCE)HY.1943-7900.0000800), equilibrium scour around effective diameter a* = 2.00 m factors into '
@@ -351,8 +346,7 @@ LONGFORM_DATA = {
         '10.6 (a* / d_50)^(−0.13)] = 0.6263 at a* / d_50 = 1,000.'
     ),
     'act2_deepening': (
-        'Comparing Sheppard–Melville against the Federal Highway Administration HEC-18 Colorado State University (CSU) '
-        'equation y_s,CSU = 2.0 K_1 K_2 K_3 y_1 (a* / y_1)^0.65 Fr_1^0.43 (capped at 2.4 a* for Fr_1 <= 0.8, with '
+        'Comparing Sheppard–Melville against the base Colorado State University (CSU) equation of the Federal Highway Administration circular HEC-18 (Evaluating Scour at Bridges, Fifth Edition, 2012, FHWA-HIF-12-003), y_s,CSU = 2.0 K_1 K_2 K_3 y_1 (a* / y_1)^0.65 Fr_1^0.43 (capped at 2.4 a* for Fr_1 <= 0.8, with '
         'Fr_1 = V_1 / √(g y_1) and K_1 = 1.0, K_2 = 1.0, K_3 = 1.1) exposes a revealing physical crossover. At mild '
         'flow V_1 / V_c = 0.45 (V_1 = 0.387 m/s, Fr_1 = 0.0713), CSU omits the sediment mobility threshold V_c and '
         'predicts y_s,CSU = 1.629 m, whereas S/M attenuates f_2 to 0.2349 and predicts 0.608 m (2.682× lower). Near '
@@ -368,14 +362,13 @@ LONGFORM_DATA = {
             'Experiment 1 (Flash Flood vs. Multi-Day Storm at V_1 / V_c = 0.85): Keep Clear-Water Flow Intensity at '
             '0.85 (V_1 = 0.731 m/s, t_e = 42.09 days) and sweep Peak Flood Duration from 2.0 h through 24.0 h up to '
             '120.0 h. Watch time factor K_t climb from 0.4841 (y_s = 1.213 m) to 0.7254 (y_s = 1.817 m) and 0.8777 '
-            '(y_s = 2.199 m), passing the static CSU line (2.142 m) around five days while still trailing S/M '
+            '(y_s = 2.199 m), passing the static CSU line (2.142 m) after about four days while still trailing S/M '
             'equilibrium (2.505 m).'
         ),
         (
             'Experiment 2 (Near-Threshold Crossover at V_1 / V_c = 0.45): Drag Clear-Water Flow Intensity down to '
             '0.45 and sweep Peak Flood Duration to 240.0 h. Because equilibrium time shrinks to t_e = 8.83 days '
-            '(212.0 h), K_t clamps cleanly at 1.0000 for t_d = 240.0 h, holding y_s = y_s,SM,eq = 0.608 m while '
-            'threshold-blind HEC-18 CSU sits 2.682× higher at 1.629 m.'
+            '(212.0 h), K_t clamps cleanly at 1.0000 for t_d = 240.0 h, holding y_s = y_s,SM,eq = 0.608 m while the base HEC-18 CSU equation sits 2.682× higher at 1.629 m.'
         ),
         (
             'Experiment 3 (Incipient Live-Bed Peak at V_1 / V_c = 1.00 & 4-Lens Observatory): Raise Clear-Water Flow '
@@ -405,7 +398,7 @@ LONGFORM_DATA = {
         'predict; (3) multi-peak flood sequences with incomplete infilling between storms (Link et al. 2020, DOI '
         '10.1061/(ASCE)HY.1943-7900.0001696); and (4) floating log jams or skewed pier walls that amplify downflow '
         'width beyond a*. Keeping f_3 = 1, K_t = 1 as a failing planted defect inside '
-        'verify_e16_pier_scour_timescale.py guards automated screening against unattenuated steady-state shortcuts.'
+        'verify_e16_pier_scour_timescale.py keeps the check able to fail. This single-storm relation is a laboratory-scale teaching model: Design practice takes the equilibrium or envelope depth on purpose, because a bridge meets many floods and scour adds up from one to the next. Nothing on this page may be used to assess or reduce scour depth at a real bridge.'
     ),
     'cf_bridge': 'Continues E.05/E.07/E.14',
     'sources': [
@@ -440,6 +433,10 @@ LONGFORM_DATA = {
             'Kabiri-Samani, A., Fathi, A., & Farooq, R. (2026). Does an Armor Layer Control Clear-Water Scour at '
             'Cylindrical Bridge Piers? A Comprehensive Experimental Assessment under Steady and Unsteady Flow '
             'Conditions. Journal of Hydrology and Hydromechanics, 74(1). DOI: 10.2478/johh-2026-0004.'
+        ),
+        (
+            'Federal Highway Administration (2012). Evaluating Scour at Bridges, Fifth Edition. Hydraulic '
+            'Engineering Circular No. 18, Publication FHWA-HIF-12-003.'
         ),
         (
             'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the context of citations and '
@@ -491,8 +488,7 @@ DISPATCH = {
     'kicker': 'FRONTIER HYDRAULIC DISPATCH · BRIDGE PIER SCOUR & HYDROGRAPH TIME LAG',
     'headline': 'Shields Sediment Threshold, Sheppard–Melville Pier Scour & Flash-Flood Time-Scale Lag',
     'body': (
-        'Why has moving river water caused 52.88% of modern U.S. bridge failures (Wardhana & Hadipriono 2003), yet '
-        'steady-state formulas misread short mountain floods? Coupling Sheppard–Melville equilibrium scour (2014) '
+        'In one survey, flood and scour accounted for 52.88% of U.S. bridge failures from 1989 to 2000 (Wardhana & Hadipriono 2003). Equilibrium formulas describe weeks of steady flow, not one short flood. Coupling Sheppard–Melville equilibrium scour (2014) '
         'with Melville–Chiew time lag (1999, DOI 10.1061/(ASCE)0733-9429(1999)125:1(59)) tracks y_s from 1.213 m at '
         '2.0 h and 1.817 m at 24.0 h toward 2.505 m over t_e = 42.09 days.'
     ),
@@ -520,7 +516,7 @@ ES_TRANSLATION = {
         'Esa columna de agua baja hacia el lecho, gira alrededor de ambos costados como una herradura y arrastra la '
         'arena suelta fuera del hueco. Cuando la corriente queda por debajo del umbral que mueve el resto del cauce, '
         'el vórtice excava sin que entre arena nueva desde aguas arriba. Alcanzar la profundidad máxima de equilibrio '
-        'toma semanas de flujo constante, mientras que una tormenta real dura pocas horas o días. Combinar el umbral '
+        'toma semanas de flujo constante, mientras que una tormenta real dura pocas horas o días. En diseño se usa a propósito la profundidad de equilibrio, porque la socavación se acumula de una avenida a otra. Combinar el umbral '
         'de sedimento con la duración de la avenida permite estimar cuánto crece la fosa antes de que baje el río.'
     ),
     'deep_es': (
@@ -530,7 +526,7 @@ ES_TRANSLATION = {
         'socavación de equilibrio en agua clara sigue y_s,SM = 2.5 a* f_1 f_2 f_3 con f_1 = 0.8262 y f_3 = 0.6263. '
         'En flujo moderado V_1 / V_c = 0.45, S/M predice 0.608 m frente a 1.629 m de la ecuación HEC-18 CSU (2.682× '
         'mayor por omitir V_c). En V_1 / V_c = 0.85, el equilibrio S/M sube a 2.505 m con escala temporal t_e = 42.09 '
-        'días (constante empírica 30.89 días·s^(−1) con a* en m y V_1 en m/s): una avenida relámpago de 2.0 h alcanza '
+        'días (constante empírica 30.89 días·s^(−1) con a* en m y V_1 en m/s): una avenida súbita de 2.0 h alcanza '
         'K_t = 0.4841 (y_s = 1.213 m) y una tormenta de 24.0 h llega a K_t = 0.7254 (y_s = 1.817 m), frente a 4.000 m '
         'con el defecto f_3 = 1, K_t = 1. Esta hipótesis de nivel T1–T2 se refuta en lecho móvil (V_1 / V_c > 1.0), '
         'ruptura de coraza gruesa sobre arena fina (Kabiri-Samani et al. 2026, DOI 10.2478/johh-2026-0004), trenes de '
@@ -538,6 +534,6 @@ ES_TRANSLATION = {
     ),
     'bridge_es': (
         'Acoplar y_s(t_d) = K_t(t_d) y_s,SM distingue el retardo en avenidas cortas del equilibrio de semanas en '
-        'arena uniforme (estudio hidráulico ilustrativo, no un cálculo de cimentación).'
+        'arena uniforme (estudio hidráulico ilustrativo, no un cálculo de cimentación; nada de esta página debe usarse para evaluar o reducir la socavación en un puente real).'
     ),
 }

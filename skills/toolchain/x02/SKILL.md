@@ -22,8 +22,8 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - **Primary Scite Anchor DOI**: https://doi.org/10.1115/1.4029050 (Scite Report: https://scite.ai/reports/10.1115/1.4029050)
 
 ## 2. Small-Studio & Independent-Practitioner Open-Tool Workflow
-- **EN**: Independent Engineer's Open Stack (build123d Apache-2.0 + FreeCAD 1.0 + OrcaSlicer): Use build123d or CadQuery on OpenCascade to export production ISO 10303-242 STEP AP242 EDGE_LOOP solids for CNC shops, open x02_artifact.3mf and x02_artifact.glb in slicers or Blender, and run verify_x02 to audit our illustrative Part-21 STEP sketch, 3MF, and GLB for 43,200.0 mm³ volume and chordal sagitta bounds.
-- **ES-MX**: Stack Abierto para Ingenieros Independientes (build123d Apache-2.0 + FreeCAD 1.0 + OrcaSlicer): Usa build123d o CadQuery sobre OpenCascade para exportar sólidos STEP AP242 (ISO 10303-242) con EDGE_LOOP para talleres CNC, abre x02_artifact.3mf y x02_artifact.glb en laminadores o Blender, y ejecuta verify_x02 para auditar el esquema ilustrativo Parte 21, 3MF y GLB en volumen (43,200.0 mm³) y sagita cordal.
+- **EN**: Independent Engineer's Open Stack (build123d Apache-2.0 + FreeCAD 1.0 + OrcaSlicer): Use build123d or CadQuery on OpenCascade to export STEP B-rep solids with EDGE_LOOP boundaries for CNC shops (check which STEP schema your exporter writes), open x02_artifact.3mf and x02_artifact.glb in slicers or Blender, and run verify_x02 to audit our illustrative Part-21 STEP sketch, 3MF, and GLB for 43,200.0 mm³ volume and chordal sagitta bounds.
+- **ES-MX**: Stack Abierto para Ingenieros Independientes (build123d Apache-2.0 + FreeCAD 1.0 + OrcaSlicer): Usa build123d o CadQuery sobre OpenCascade para exportar sólidos STEP B-rep con EDGE_LOOP para talleres CNC (revisa qué esquema STEP escribe tu exportador), abre x02_artifact.3mf y x02_artifact.glb en laminadores o Blender, y ejecuta verify_x02 para auditar el boceto ilustrativo Parte 21, 3MF y GLB en volumen (43,200.0 mm³) y sagita cordal.
 
 ## 3. Tool-Neutral Agent Packet & Security Boundary (`security-runtime`)
 1. **Generate Deterministic 3D Artifacts Locally**: Run `python skills/toolchain/x02/make_x02.py` inside the repository working directory to emit `src/toolchain/x02/files/x02_artifact.*` and `manifest.json`.
@@ -39,18 +39,18 @@ compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI C
 - Stage 1: Parametric Stepped-Pedestal Mesh — Construct the 4-ring rectilinear stepped pedestal (60 × 40 × 12 mm base flange plus 40 × 20 × 18 mm boss) as a single 16-vertex, 28-triangle closed 2-manifold with analytical volume 28,800 + 14,400 = 43,200.0 mm³.
 - Stage 2: Illustrative ISO 10303-21 Part-21 STEP Sketch — Serialize 16 VERTEX_POINT records and 28 triangular POLY_LOOP / PLANE face records in millimeter units (#7) for text inspection (use build123d / OpenCascade when EDGE_LOOP STEP AP242 import is needed).
 - Stage 3: Deterministic 3MF Core 1.2.3 & GLB Packaging — Serialize the same 16 vertices and 28 triangles into fixed-timestamp 3MF ZIP XML and Khronos glTF 2.0 binary buffers with SHA-256 provenance recorded in manifest.json.
-- Stage 4: Cross-Format Parity & Chordal Sagitta Audit — Parse STEP, 3MF, and GLB to check V = 16, F = 28, χ = 2, millimeter units, and signed volume 43,200.0 mm³ (Cha Zhang & Tsuhan Chen, 2001, DOI: 10.1109/ICIP.2001.958278), plus h(15, 32) = 0.072229 mm ≤ 0.10 mm (N ≥ 28).
+- Stage 4: Cross-Format Parity & Chordal Sagitta Audit — Parse STEP, 3MF, and GLB to check V = 16, F = 28, χ = 2, millimeter units in STEP and 3MF, and signed volume 43,200.0 mm³ (Cha Zhang & Tsuhan Chen, 2001, DOI: 10.1109/ICIP.2001.958278), plus h(15, 32) = 0.072229 mm ≤ 0.10 mm (N ≥ 28).
 
 ## 6. Verified Reference Telemetry (T0/T1)
 - **Planar B-Rep / Mesh Volume**: `43,200.0 mm³ (ΔV = 0.00%)`
 - **Chordal Sagitta Error h(N)**: `0.0722 mm (at R=15, N=32)`
-- **STEP AP242 Schema Audit**: `CLOSED_SHELL · 28 FACES PASS`
+- **STEP Part-21 Entity Audit**: `CLOSED_SHELL · 28 FACES PASS`
 - **3MF & GLB Parity Verdict**: `PASS · SHA-256 VERIFIED`
 
 ## 7. Exact T0–T3 Truth Boundary
 ### Verified Geometry in Repository Today (T0/T1)
 - Stdlib generator (skills/toolchain/x02/make_x02.py) emitting watertight glTF 2.0 (.glb), 3MF Core 1.2.3 (.3mf), and an illustrative Part-21 STEP entity sketch (.step) for a stepped rectilinear pedestal.
-- Stdlib verifier (verify_x02_toolchain_x02_parametric_step_3mf_roundtrip.py) parsing STEP DATA entities, 3MF XML, and GLB binary buffers for millimeter units, watertight χ = 2 topology, 43,200.0 mm³ signed volume, and h(15, 32) = 0.072229 mm ≤ 0.10 mm.
+- Stdlib verifier (verify_x02_toolchain_x02_parametric_step_3mf_roundtrip.py) parsing STEP DATA entities, 3MF XML, and GLB binary buffers for millimeter unit declarations (STEP and 3MF; the GLB has no unit tag), watertight χ = 2 topology, 43,200.0 mm³ signed volume, and h(15, 32) = 0.072229 mm ≤ 0.10 mm.
 - Primary-source grounding in Braid (1975), Requicha (1980), Cha Zhang & Tsuhan Chen (2001), and Feeney et al. (2015) with offline DOI cache verification.
 
 ### Educational Boundary & Edition 2 Horizon (T2/T3)

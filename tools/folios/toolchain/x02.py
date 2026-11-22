@@ -15,24 +15,21 @@ FOLIO = {
     'title_es': 'Sólidos Paramétricos en Código y Fidelidad Medida entre STEP AP242, 3MF y GLB',
     'subtitle': (
         'Authoring version-controlled Python solids for independent mechanical and civil '
-        'engineers while auditing planar volume parity and cylindrical chordal sagitta across '
-        'STEP Part 21, 3MF, and GLB.'
+        'engineers while auditing volume parity across STEP Part 21, 3MF, and GLB and computing chordal sagitta for a reference bore.'
     ),
     'subtitle_es': (
         'Modelado de sólidos paramétricos en Python bajo control de versiones para ingenieros '
-        'mecánicos y civiles independientes, auditando volumen planar y sagita cordal entre '
-        'STEP Parte 21, 3MF y GLB.'
+        'mecánicos y civiles independientes, auditando la paridad de volumen entre STEP Parte 21, 3MF y GLB y calculando la sagita cordal de un barreno de referencia.'
     ),
     'why_en': (
-        "Independent engineers and small hardware shops shouldn't need $5,000-per-seat "
-        'commercial CAD licenses just to version-control a bracket, clevis, or structural node '
+        "Independent engineers and small hardware shops shouldn't need "
+        'commercial CAD licenses costing thousands of dollars per seat just to version-control a bracket, clevis, or structural node '
         'in Git. Code-first CAD in Python lets you parameterize dimensions as readable equations, '
         'review diffs in pull requests, and audit neutral exchange files offline for mesh '
         'topology and chordal tessellation error.'
     ),
     'why_es': (
-        'Los ingenieros independientes y talleres pequeños no deberían pagar licencias '
-        'comerciales de $5,000 USD anuales solo para versionar una ménsula o nodo estructural '
+        'Los ingenieros independientes y talleres pequeños no deberían pagar licencias comerciales de miles de dólares por usuario solo para versionar una ménsula o nodo estructural '
         'en Git. El CAD en código Python permite parametrizar cada cota, revisar cambios en '
         'pull requests y auditar archivos neutros fuera de línea en topología de malla y sagita '
         'cordal.'
@@ -40,8 +37,8 @@ FOLIO = {
     'governing_law': (
         'h_sagitta = R (1 − cos(π / N)) · V_step = V_flange + V_boss = 43,200 mm³ · ΔV / V < 10⁻⁶'
     ),
-    'pass_pill_en': 'PASS · V = 43,200 mm³ · h_32 = 0.0722 mm · AP242 + 3MF + GLB',
-    'pass_pill_es': 'APROBADO · V = 43,200 mm³ · h_32 = 0.0722 mm · AP242 + 3MF + GLB',
+    'pass_pill_en': 'PASS · V = 43,200 mm³ · h_32 = 0.0722 mm · STEP (Part 21) + 3MF + GLB',
+    'pass_pill_es': 'APROBADO · V = 43,200 mm³ · h_32 = 0.0722 mm · STEP (Part 21) + 3MF + GLB',
     'generator_script': 'skills/toolchain/x02/make_x02.py',
     'verifier_script': 'skills/toolchain/x02/verify_x02_toolchain_x02_parametric_step_3mf_roundtrip.py',
     'skill_dir': 'skills/toolchain/x02',
@@ -58,17 +55,14 @@ FOLIO = {
     'reading_time': '22 MIN READ',
     'small_studio_kit_en': (
         "Independent Engineer's Open Stack (build123d Apache-2.0 + FreeCAD 1.0 + OrcaSlicer): "
-        'Use build123d or CadQuery on OpenCascade to export production ISO 10303-242 STEP AP242 '
-        'EDGE_LOOP solids for CNC shops, open x02_artifact.3mf and x02_artifact.glb in slicers '
+        'Use build123d or CadQuery on OpenCascade to export STEP B-rep solids with EDGE_LOOP boundaries for CNC shops (check which STEP schema your exporter writes), open x02_artifact.3mf and x02_artifact.glb in slicers '
         'or Blender, and run verify_x02 to audit our illustrative Part-21 STEP sketch, 3MF, and '
         'GLB for 43,200.0 mm³ volume and chordal sagitta bounds.'
     ),
     'small_studio_kit_es': (
         'Stack Abierto para Ingenieros Independientes (build123d Apache-2.0 + FreeCAD 1.0 + '
-        'OrcaSlicer): Usa build123d o CadQuery sobre OpenCascade para exportar sólidos STEP '
-        'AP242 (ISO 10303-242) con EDGE_LOOP para talleres CNC, abre x02_artifact.3mf y '
-        'x02_artifact.glb en laminadores o Blender, y ejecuta verify_x02 para auditar el esquema '
-        'ilustrativo Parte 21, 3MF y GLB en volumen (43,200.0 mm³) y sagita cordal.'
+        'OrcaSlicer): Usa build123d o CadQuery sobre OpenCascade para exportar sólidos STEP B-rep con EDGE_LOOP para talleres CNC (revisa qué esquema STEP escribe tu exportador), abre x02_artifact.3mf y '
+        'x02_artifact.glb en laminadores o Blender, y ejecuta verify_x02 para auditar el boceto ilustrativo Parte 21, 3MF y GLB en volumen (43,200.0 mm³) y sagita cordal.'
     ),
     'companion_folios': [
         ('engineering', 'e10', 'Folio E.10', '3D Concrete Printing Thixotropy & Suiker Buckling'),
@@ -82,16 +76,7 @@ FOLIO = {
         ('3MF Consortium Core Specification', 'https://github.com/3MFConsortium/spec_core'),
     ],
     'act1_dropcap': (
-        'At the University of Cambridge Computer-Aided Design Group in 1975, Ian Braid published '
-        'a solid-modeling program that built mechanical parts from six primitive shapes, '
-        'including rectangular blocks, cylinders, wedges, and pierced plates. Earlier computer '
-        'drawings stored only wireframe lines, which could not separate solid metal from empty '
-        'air. Coarse polygon approximations created a second shop-floor hazard. Replacing a '
-        'round locating bore with a handful of flat chords pulled the wall inward and pinched '
-        'mating pins. Braid represented each body by its boundary instead, linking oriented '
-        'faces, edges, and vertex loops around one closed interior volume. At the University of '
-        'Rochester in 1980, Aristides Requicha formalized the topological closure rules that '
-        'distinguish valid rigid solids from dangling faces. Auditing vertex pairing, enclosed '
+        'At the University of Cambridge Computer-Aided Design Group in 1975, Ian Braid described a technique that synthesizes solids from primitive shapes such as a cube, wedge, or cylinder, which can be added or subtracted (DOI 10.1145/360715.360727). A wireframe drawing stores only lines, which cannot separate solid metal from empty air; a solid model has to say which side of each face is material. At the University of Rochester in 1980, Aristides Requicha set out a theory of regularized point sets for rigid solids (DOI 10.1145/356827.356833). Coarse polygon approximations bring a second problem, illustrated on this page: replacing a round locating bore with a handful of flat chords pulls the wall inward, which can pinch a mating pin. Auditing vertex pairing, enclosed '
         'volume, and chordal sagitta still guards open geometry files before any material is cut.'
     ),
     'act1_body': (
@@ -99,10 +84,7 @@ FOLIO = {
         'CAD programs whose binary files stripped parametric history or broke trimmed surfaces '
         'during translation. Building on the boundary-representation work of Braid (1975, DOI: '
         '10.1145/360715.360727) and the regularized solid-modeling theory of Requicha (1980, '
-        'DOI: 10.1145/356827.356833), ISO 10303-242 STEP AP242 (Feeney et al., 2015, DOI: '
-        '10.1115/1.4029050), serialized in ISO 10303-21 clear text, exchanges full B-rep solids '
-        'through EDGE_LOOP, ADVANCED_FACE, and SHAPE_DEFINITION_REPRESENTATION entities when '
-        'authored on OpenCascade via Apache-2.0 Python libraries such as build123d or CadQuery. '
+        'DOI: 10.1145/356827.356833), ISO 10303-242 STEP AP242 (described by Feeney et al., 2015, DOI: 10.1115/1.4029050) is an application protocol for exchanging product models, serialized in ISO 10303-21 clear text. A B-rep kernel such as OpenCascade, scripted through Apache-2.0 Python libraries such as build123d or CadQuery, writes STEP solids through EDGE_LOOP, ADVANCED_FACE, and SHAPE_DEFINITION_REPRESENTATION entities. '
         'In Folio X.02, our zero-dependency stdlib script make_x02.py emits a rectilinear '
         'stepped clevis pedestal (60 × 40 × 12 mm flange plus 40 × 20 × 18 mm boss) as 16 '
         'vertices and 28 triangles across binary glTF 2.0 (GLB), 3MF Core 1.2.3, and an '
@@ -117,8 +99,7 @@ FOLIO = {
         (
             '1975–1980',
             'Ian Braid at Cambridge (DOI 10.1145/360715.360727) and Aristides Requicha at '
-            'Rochester (DOI 10.1145/356827.356833) formalize boundary-representation (B-rep) '
-            'synthesis and regularized solid set operations.',
+            'Rochester (DOI 10.1145/356827.356833) describe solid synthesis from primitives and regularized set operations on solids.',
         ),
         (
             '1994–2015',
@@ -127,8 +108,7 @@ FOLIO = {
         ),
         (
             '2001–2015',
-            'Cha Zhang and Tsuhan Chen (DOI 10.1109/ICIP.2001.958278) formalize signed '
-            'tetrahedral mesh volume integration; the 3MF Consortium releases unit-aware XML/ZIP '
+            'Cha Zhang and Tsuhan Chen (DOI 10.1109/ICIP.2001.958278) use signed tetrahedral mesh volume integration; the 3MF Consortium releases unit-aware XML/ZIP '
             '3MF Core to replace unitless 1987 STL triangle soup.',
         ),
         (
@@ -173,7 +153,7 @@ FOLIO = {
     'readouts': [
         {'label': 'Planar B-Rep / Mesh Volume', 'value': '43,200.0 mm³ (ΔV = 0.00%)'},
         {'label': 'Chordal Sagitta Error h(N)', 'value': '0.0722 mm (at R=15, N=32)'},
-        {'label': 'STEP AP242 Schema Audit', 'value': 'CLOSED_SHELL · 28 FACES PASS'},
+        {'label': 'STEP Part-21 Entity Audit', 'value': 'CLOSED_SHELL · 28 FACES PASS'},
         {'label': '3MF & GLB Parity Verdict', 'value': 'PASS · SHA-256 VERIFIED'},
     ],
     'steps': [
@@ -187,7 +167,7 @@ FOLIO = {
         'and 28 triangles into fixed-timestamp 3MF ZIP XML and Khronos glTF 2.0 binary buffers '
         'with SHA-256 provenance recorded in manifest.json.',
         'Stage 4: Cross-Format Parity & Chordal Sagitta Audit — Parse STEP, 3MF, and GLB to '
-        'check V = 16, F = 28, χ = 2, millimeter units, and signed volume 43,200.0 mm³ (Cha '
+        'check V = 16, F = 28, χ = 2, millimeter units in STEP and 3MF, and signed volume 43,200.0 mm³ (Cha '
         'Zhang & Tsuhan Chen, 2001, DOI: 10.1109/ICIP.2001.958278), plus h(15, 32) = 0.072229 mm '
         '≤ 0.10 mm (N ≥ 28).',
     ],
@@ -215,8 +195,7 @@ FOLIO = {
         'body': (
             'Because make_x02.py uses only Python stdlib, x02_artifact.step is an illustrative '
             'Part-21 POLY_LOOP sketch rather than an OpenCascade-importable EDGE_LOOP + '
-            'SHAPE_DEFINITION_REPRESENTATION solid; export production STEP AP242 via build123d '
-            'or CadQuery.'
+            'SHAPE_DEFINITION_REPRESENTATION solid. The file declares the AP242 schema name in its header but describes its faces with POLY_LOOP; export an importable STEP solid via build123d or CadQuery.'
         ),
     },
     'walkthrough': [
@@ -225,15 +204,14 @@ FOLIO = {
         'Drag Circumferential Tessellation Facets N from 32 down below 28 (or click [⚡ '
         'Planted-Defect / Boundary Knockout], which sets N = 8) to watch h = R(1 − cos(π/N)) '
         'cross the 0.10 mm clearance threshold.',
-        'Download x02_artifact.3mf, x02_artifact.glb, and x02_artifact.step, then run verify_x02 '
-        'locally (and with --planted-defect) to inspect the JSON round-trip report.',
+        'Download x02_artifact.3mf, x02_artifact.glb, and x02_artifact.step to inspect them, or clone the repository and run verify_x02 locally (and with --planted-defect) to inspect the JSON round-trip report.',
     ],
     't0_t1_certified': [
         'Stdlib generator (skills/toolchain/x02/make_x02.py) emitting watertight glTF 2.0 '
         '(.glb), 3MF Core 1.2.3 (.3mf), and an illustrative Part-21 STEP entity sketch (.step) '
         'for a stepped rectilinear pedestal.',
         'Stdlib verifier (verify_x02_toolchain_x02_parametric_step_3mf_roundtrip.py) parsing '
-        'STEP DATA entities, 3MF XML, and GLB binary buffers for millimeter units, watertight '
+        'STEP DATA entities, 3MF XML, and GLB binary buffers for millimeter unit declarations (STEP and 3MF; the GLB has no unit tag), watertight '
         'χ = 2 topology, 43,200.0 mm³ signed volume, and h(15, 32) = 0.072229 mm ≤ 0.10 mm.',
         'Primary-source grounding in Braid (1975), Requicha (1980), Cha Zhang & Tsuhan Chen '
         '(2001), and Feeney et al. (2015) with offline DOI cache verification.',
@@ -247,7 +225,7 @@ FOLIO = {
     ],
     'sources': [
         'Braid, I. C. (1975). The synthesis of solids bounded by many faces. Communications of '
-        'the ACM, 18(4), 201–208. DOI 10.1145/360715.360727',
+        'the ACM, 18(4), 209–216. DOI 10.1145/360715.360727',
         'Requicha, A. A. G. (1980). Representations for rigid solids: Theory, methods, and '
         'systems. ACM Computing Surveys, 12(4), 437–464. DOI 10.1145/356827.356833',
         'Cha Zhang, & Tsuhan Chen. (2001). Efficient feature extraction for 2D/3D objects in '
@@ -322,8 +300,7 @@ FOLIO = {
     ),
     'act2_deepening': (
         'In Requicha’s (1980, DOI: 10.1145/356827.356833) solid-modeling framework, a valid '
-        'rigid body is a regular closed point set (an r-set) whose boundary forms an orientable '
-        '2-manifold without dangling faces or self-intersections. Full B-rep kernels such as '
+        'rigid body is a regular closed point set (an r-set), which excludes dangling faces and edges. The stricter orientable 2-manifold condition used on this page is the mesh check in verify_x02, not a statement from that paper. Full B-rep kernels such as '
         'OpenCascade construct stepped solids via regularized Boolean union, dissolving the '
         'shared interior patch at z = 12 mm and exporting EDGE_LOOP boundaries. Our stdlib '
         'generator make_x02.py builds the same stepped polyhedron directly by stitching four '
@@ -341,20 +318,15 @@ FOLIO = {
         'tolerance specification with a deterministic offline check in verify_x02 rather than '
         'trusting generated files by eye. The human engineer sets the interface dimensions and '
         'the 0.10 mm bore-sagitta ceiling; make_x02.py emits the reference .glb, .3mf, and '
-        'illustrative .step files alongside manifest.json; and verify_x02 checks SHA-256 '
-        'hashes, millimeter unit tags, watertight χ = 2 topology, and 43,200.0 mm³ signed '
-        'volume across all three files, checks h(15, 32) = 0.072229 mm ≤ 0.10 mm (requiring '
+        'illustrative .step files alongside manifest.json; and verify_x02 checks SHA-256 hashes, millimeter unit declarations in STEP and 3MF (the GLB stores the same numbers with no unit tag), watertight χ = 2 topology, and 43,200.0 mm³ signed volume across all three files, checks h(15, 32) = 0.072229 mm ≤ 0.10 mm (requiring '
         'N ≥ 28), and verifies that flipped normals, dropped STEP faces, and malformed 3MF XML '
         'are rejected.'
     ),
     'act4_deepening': (
         'Verified parametric geometry connects directly to four companion Folios on '
         'Informatico.ai. In seismic isolation (Folio E.06), lead-rubber elastomeric bearings '
-        '(Robinson, 1982, DOI: 10.1002/eqe.4290100408) depend on concentric cylindrical core '
-        'and shim tolerances under cyclic shear. In additive construction (Folio E.10), '
-        'mechanistic wall-buckling and toolpath models for 3D concrete printing (Suiker, 2018, '
-        'DOI: 10.1016/j.ijmecsci.2018.01.010) slice stepped solid geometry into layered '
-        'extrusion paths. In structural optimization (Folio E.11), density fields from SIMP '
+        '(Robinson, 1982, DOI: 10.1002/eqe.4290100408) are round parts of the kind a faceted file only approximates. In additive construction (Folio E.10), '
+        'the mechanical model of printed wall structures by Suiker (2018, DOI: 10.1016/j.ijmecsci.2018.01.010) concerns walls built layer by layer, the kind of geometry a slicer derives from a solid file. In structural optimization (Folio E.11), density fields from SIMP '
         'penalization (Sigmund, 2001, DOI: 10.1007/s001580050176) require boundary '
         'reconstruction into watertight solids before machining or printing. And in formal '
         'geometry (Folio M.05), neuro-symbolic Euclidean synthesis in AlphaGeometry (Trinh et '
@@ -379,8 +351,7 @@ FOLIO = {
         'analíticas de las mallas trianguladas (Braid, 1975; Requicha, 1980). En OpenCascade '
         '(build123d o CadQuery), el protocolo ISO 10303-242 (STEP AP242; Feeney et al., 2015) '
         'codificado en texto ISO 10303-21 emplea EDGE_LOOP y SHAPE_DEFINITION_REPRESENTATION; '
-        'nuestro generador en biblioteca estándar make_x02.py emite un esquema ilustrativo '
-        'Parte 21 con 16 puntos VERTEX_POINT y 28 bucles POLY_LOOP cuya malla cerrada en '
+        'nuestro generador en biblioteca estándar make_x02.py emite un boceto ilustrativo Parte 21 con 16 puntos VERTEX_POINT y 28 bucles POLY_LOOP cuya malla cerrada en '
         'milímetros coincide en topología (χ = 2) y volumen con signo (43,200.0 mm³; Cha Zhang '
         'y Tsuhan Chen, 2001) con 3MF y GLB. Para un barreno de referencia R = 15 mm aproximado '
         'por N facetas, la sagita cordal h = R(1 − cos(π/N)) mide 0.5111 mm en N = 12, baja a '

@@ -3731,7 +3731,7 @@ def sources_list(page: dict) -> str:
     items = []
     for text_, doi in page["sources"]:
         items.append(
-            f'          <li>{t(text_)} DOI <a class="tp-cite-link" href="https://doi.org/{a(doi)}" target="_blank" rel="noopener noreferrer">DOI {t(doi)}</a> '
+            f'          <li>{t(text_)} <a class="tp-cite-link" href="https://doi.org/{a(doi)}" target="_blank" rel="noopener noreferrer">DOI {t(doi)}</a> '
             f'<a class="tp-scite-badge-link" href="https://scite.ai/reports/{a(doi)}" target="_blank" rel="noopener noreferrer" title="Inspect Scite Smart Citation report for {a(doi)}">[Scite &#8599;]</a></li>'
         )
     return f"""        <h3 data-en="Primary sources" data-es="Fuentes primarias">Primary sources</h3>

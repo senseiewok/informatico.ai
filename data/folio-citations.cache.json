@@ -559,22 +559,6 @@
     "title": "Rheological requirements for printable concretes",
     "year": 2018
   },
-  "doi:10.1016/j.compstruc.2009.06.011": {
-    "fetched": "2026-11-21",
-    "first_author": "Douthe",
-    "found": true,
-    "journal": "Computers & Structures",
-    "title": "Design of nexorades or reciprocal frame systems with the dynamic relaxation method",
-    "year": 2009
-  },
-  "doi:10.1016/j.conbuildmat.2015.04.028": {
-    "fetched": "2026-11-21",
-    "first_author": "Dietsch",
-    "found": true,
-    "journal": "Construction and Building Materials",
-    "title": "Self-tapping screws and threaded rods as reinforcement for structural timber elements – A state-of-the-art report",
-    "year": 2015
-  },
   "doi:10.1016/j.cpc.2024.109408": {
     "fetched": "2026-11-07",
     "first_author": "Capanema",
@@ -718,14 +702,6 @@
     "journal": "Theoretical and Applied Fracture Mechanics",
     "title": "Syncretic investigation on size effect in fracture behavior of dam concrete with physical experiment and mesoscale simulation",
     "year": 2024
-  },
-  "doi:10.1016/j.tust.2015.08.006": {
-    "fetched": "2026-11-21",
-    "first_author": "Budach",
-    "found": true,
-    "journal": "Tunnelling and Underground Space Technology",
-    "title": "Application ranges of EPB shields in coarse ground based on laboratory research",
-    "year": 2015
   },
   "doi:10.1016/j.watres.2005.10.030": {
     "fetched": "2026-11-14",
@@ -1247,46 +1223,6 @@
     "title": "Universal Size Effect Law and Effect of Crack Depth on Quasi-Brittle Structure Strength",
     "year": 2009
   },
-  "doi:10.1061/(asce)0733-9410(1989)115:1(1)": {
-    "fetched": "2026-11-21",
-    "first_author": "Boscardin",
-    "found": true,
-    "journal": "Journal of Geotechnical Engineering",
-    "title": "Building Response to Excavation‐Induced Settlement",
-    "year": 1989
-  },
-  "doi:10.1061/(asce)0733-9429(1997)123:2(125)": {
-    "fetched": "2026-11-21",
-    "first_author": "Melville",
-    "found": true,
-    "journal": "Journal of Hydraulic Engineering",
-    "title": "Pier and Abutment Scour: Integrated Approach",
-    "year": 1997
-  },
-  "doi:10.1061/(asce)0733-9429(1999)125:1(59)": {
-    "fetched": "2026-11-21",
-    "first_author": "Melville",
-    "found": true,
-    "journal": "Journal of Hydraulic Engineering",
-    "title": "Time Scale for Local Scour at Bridge Piers",
-    "year": 1999
-  },
-  "doi:10.1061/(asce)0733-9429(1999)125:4(376)": {
-    "fetched": "2026-11-21",
-    "first_author": "Buffington",
-    "found": true,
-    "journal": "Journal of Hydraulic Engineering",
-    "title": "The Legend of A. F. Shields",
-    "year": 1999
-  },
-  "doi:10.1061/(asce)0887-3828(2003)17:3(144)": {
-    "fetched": "2026-11-21",
-    "first_author": "Wardhana",
-    "found": true,
-    "journal": "Journal of Performance of Constructed Facilities",
-    "title": "Analysis of Recent Bridge Failures in the United States",
-    "year": 2003
-  },
   "doi:10.1061/(asce)ae.1943-5568.0000430": {
     "fetched": "2026-11-20",
     "first_author": "Tang",
@@ -1303,22 +1239,6 @@
     "title": "Shaft Capacity of Continuous Flight Auger Piles in Sand",
     "year": 2009
   },
-  "doi:10.1061/(asce)hy.1943-7900.0000800": {
-    "fetched": "2026-11-21",
-    "first_author": "Sheppard",
-    "found": true,
-    "journal": "Journal of Hydraulic Engineering",
-    "title": "Evaluation of Existing Equations for Local Scour at Bridge Piers",
-    "year": 2014
-  },
-  "doi:10.1061/(asce)hy.1943-7900.0001696": {
-    "fetched": "2026-11-21",
-    "first_author": "Link",
-    "found": true,
-    "journal": "Journal of Hydraulic Engineering",
-    "title": "Local Scour and Sediment Deposition at Bridge Piers during Floods",
-    "year": 2020
-  },
   "doi:10.1061/(asce)st.1943-541x.0000144": {
     "fetched": "2026-11-21",
     "first_author": "Billington",
@@ -1326,14 +1246,6 @@
     "journal": "Journal of Structural Engineering",
     "title": "Structural Art and the Example of Félix Candela",
     "year": 2010
-  },
-  "doi:10.1061/(asce)st.1943-541x.0000838": {
-    "fetched": "2026-11-21",
-    "first_author": "Jockwer",
-    "found": true,
-    "journal": "Journal of Structural Engineering",
-    "title": "State-of-the-Art Review of Approaches for the Design of Timber Beams with Notches",
-    "year": 2014
   },
   "doi:10.1061/9780784415788": {
     "fetched": "2026-11-04",
@@ -2391,14 +2303,6 @@
     "title": "The cosmological constant problem",
     "year": 1989
   },
-  "doi:10.1109/icip.2001.958278": {
-    "fetched": "2026-11-21",
-    "first_author": "Cha Zhang",
-    "found": true,
-    "journal": "Proceedings 2001 International Conference on Image Processing (ICIP)",
-    "title": "Efficient feature extraction for 2D/3D objects in mesh representation",
-    "year": 2001
-  },
   "doi:10.1109/tac.2002.803532": {
     "fetched": "2026-11-07",
     "first_author": "Smith",
@@ -2887,14 +2791,6 @@
     "title": "Construction of Arbitrary Order Finite Element Degree-of-Freedom Maps on Polygonal and Polyhedral Cell Meshes",
     "year": 2022
   },
-  "doi:10.1145/356827.356833": {
-    "fetched": "2026-11-21",
-    "first_author": "Requicha",
-    "found": true,
-    "journal": "ACM Computing Surveys",
-    "title": "Representations for Rigid Solids: Theory, Methods, and Systems",
-    "year": 1980
-  },
   "doi:10.1145/357290.357293": {
     "fetched": "2026-11-04",
     "first_author": "Cook",
@@ -2902,14 +2798,6 @@
     "journal": "ACM Transactions on Graphics",
     "title": "A Reflectance Model for Computer Graphics",
     "year": 1982
-  },
-  "doi:10.1145/360715.360727": {
-    "fetched": "2026-11-21",
-    "first_author": "Braid",
-    "found": true,
-    "journal": "Communications of the ACM",
-    "title": "The synthesis of solids bounded by many faces",
-    "year": 1975
   },
   "doi:10.1145/800031.808601": {
     "fetched": "2026-11-21",
@@ -3046,14 +2934,6 @@
     "journal": "Journal of Cell Science",
     "title": "Cellular tensegrity: defining new rules of biological design that govern the cytoskeleton",
     "year": 1993
-  },
-  "doi:10.1260/0266-3511.26.4.331": {
-    "fetched": "2026-11-21",
-    "first_author": "Gelez",
-    "found": true,
-    "journal": "International Journal of Space Structures",
-    "title": "Behavior of a Simple Nexorade or Reciprocal Frame System",
-    "year": 2011
   },
   "doi:10.1260/0266-3511.30.1.1": {
     "fetched": "2026-11-20",
@@ -3207,38 +3087,6 @@
     "title": "Subsurface settlement profiles above tunnels in clays",
     "year": 1993
   },
-  "doi:10.1680/geot.1994.44.2.191": {
-    "fetched": "2026-11-21",
-    "first_author": "Skempton",
-    "found": true,
-    "journal": "Géotechnique",
-    "title": "Thames Tunnel: geology, site investigation and geotechnical problems",
-    "year": 1994
-  },
-  "doi:10.1680/geot.2006.56.9.605": {
-    "fetched": "2026-11-21",
-    "first_author": "Merritt",
-    "found": true,
-    "journal": "Géotechnique",
-    "title": "Mechanics of tunnelling machine screw conveyors: model tests",
-    "year": 2006
-  },
-  "doi:10.1680/geot.2008.58.9.695": {
-    "fetched": "2026-11-21",
-    "first_author": "Mair",
-    "found": true,
-    "journal": "Géotechnique",
-    "title": "Tunnelling and geotechnics: new horizons",
-    "year": 2008
-  },
-  "doi:10.1680/ipeds.1956.12202": {
-    "fetched": "2026-11-21",
-    "first_author": "SKEMPTON",
-    "found": true,
-    "journal": "Proceedings of the Institution of Civil Engineers",
-    "title": "THE ALLOWABLE SETTLEMENTS OF BUILDINGS.",
-    "year": 1956
-  },
   "doi:10.21105/joss.02104": {
     "fetched": "2026-11-07",
     "first_author": "de Silva",
@@ -3334,14 +3182,6 @@
     "journal": "Bulletin de la Soci&amp;#233;t&amp;#233; math&amp;#233;matique de France",
     "title": "Conditional brownian motion and the boundary limits of harmonic functions",
     "year": 1957
-  },
-  "doi:10.2478/johh-2026-0004": {
-    "fetched": "2026-11-21",
-    "first_author": "Kabiri-Samani",
-    "found": true,
-    "journal": "Journal of Hydrology and Hydromechanics",
-    "title": "Does an Armor Layer Control Clear-Water Scour at Cylindrical Bridge Piers? A Comprehensive Experimental Assessment under Steady and Unsteady Flow Conditions",
-    "year": 2026
   },
   "doi:10.2749/101686611x13049248220564": {
     "fetched": "2026-11-21",
@@ -4435,34 +4275,6 @@
     "unclassified": 2,
     "year": 2018
   },
-  "scite:10.1016/j.compstruc.2009.06.011": {
-    "citing_publications": 96,
-    "contrasting": 0,
-    "fetched": "2026-11-21",
-    "found": true,
-    "journal": "Computers & Structures",
-    "mentioning": 69,
-    "retracted": false,
-    "supporting": 2,
-    "title": "Design of nexorades or reciprocal frame systems with the dynamic relaxation method",
-    "total_smart_citations": 72,
-    "unclassified": 1,
-    "year": 2009
-  },
-  "scite:10.1016/j.conbuildmat.2015.04.028": {
-    "citing_publications": 212,
-    "contrasting": 0,
-    "fetched": "2026-11-21",
-    "found": true,
-    "journal": "Construction and Building Materials",
-    "mentioning": 55,
-    "retracted": false,
-    "supporting": 0,
-    "title": "Self-tapping screws and threaded rods as reinforcement for structural timber elements – A state-of-the-art report",
-    "total_smart_citations": 60,
-    "unclassified": 5,
-    "year": 2015
-  },
   "scite:10.1016/j.cpc.2024.109457": {
     "citing_publications": 7,
     "contrasting": 0,
@@ -5001,20 +4813,6 @@
     "unclassified": 0,
     "year": 2009
   },
-  "scite:10.1061/(asce)st.1943-541x.0000838": {
-    "citing_publications": 33,
-    "contrasting": 0,
-    "fetched": "2026-11-21",
-    "found": true,
-    "journal": "Journal of Structural Engineering",
-    "mentioning": 34,
-    "retracted": false,
-    "supporting": 1,
-    "title": "State-of-the-Art Review of Approaches for the Design of Timber Beams with Notches",
-    "total_smart_citations": 35,
-    "unclassified": 0,
-    "year": 2014
-  },
   "scite:10.1061/9780784415788": {
     "citing_publications": 445,
     "contrasting": 0,
@@ -5100,13 +4898,14 @@
   "scite:10.1080/00207179.2014.900705": {
     "citing_publications": 87,
     "contrasting": 0,
-    "fetched": "2026-11-21",
+    "fetched": "2026-11-22",
     "found": true,
     "journal": "International Journal of Control",
     "mentioning": 52,
     "retracted": false,
     "supporting": 0,
     "title": "Optimal control of Formula One car energy recovery systems",
+    "total_smart_citations": 52,
     "year": 2014
   },
   "scite:10.1086/148307": {
@@ -6503,20 +6302,6 @@
     "unclassified": 143,
     "year": 2008
   },
-  "scite:10.1260/0266-3511.26.4.331": {
-    "citing_publications": 20,
-    "contrasting": 0,
-    "fetched": "2026-11-21",
-    "found": true,
-    "journal": "International Journal of Space Structures",
-    "mentioning": 8,
-    "retracted": false,
-    "supporting": 0,
-    "title": "Behavior of a Simple Nexorade or Reciprocal Frame System",
-    "total_smart_citations": 9,
-    "unclassified": 1,
-    "year": 2011
-  },
   "scite:10.12942/lrr-2003-1": {
     "citing_publications": 749,
     "classification_provenance": "Scite ML citation classification",
@@ -6939,6 +6724,54 @@
     "unclassified": 62,
     "year": 2018
   },
+  "doi:10.1680/geot.1994.44.2.191": {
+    "fetched": "2026-11-21",
+    "first_author": "Skempton",
+    "found": true,
+    "journal": "Géotechnique",
+    "title": "Thames Tunnel: geology, site investigation and geotechnical problems",
+    "year": 1994
+  },
+  "doi:10.1680/ipeds.1956.12202": {
+    "fetched": "2026-11-21",
+    "first_author": "SKEMPTON",
+    "found": true,
+    "journal": "Proceedings of the Institution of Civil Engineers",
+    "title": "THE ALLOWABLE SETTLEMENTS OF BUILDINGS.",
+    "year": 1956
+  },
+  "doi:10.1061/(asce)0733-9410(1989)115:1(1)": {
+    "fetched": "2026-11-21",
+    "first_author": "Boscardin",
+    "found": true,
+    "journal": "Journal of Geotechnical Engineering",
+    "title": "Building Response to Excavation‐Induced Settlement",
+    "year": 1989
+  },
+  "doi:10.1680/geot.2006.56.9.605": {
+    "fetched": "2026-11-21",
+    "first_author": "Merritt",
+    "found": true,
+    "journal": "Géotechnique",
+    "title": "Mechanics of tunnelling machine screw conveyors: model tests",
+    "year": 2006
+  },
+  "doi:10.1680/geot.2008.58.9.695": {
+    "fetched": "2026-11-21",
+    "first_author": "Mair",
+    "found": true,
+    "journal": "Géotechnique",
+    "title": "Tunnelling and geotechnics: new horizons",
+    "year": 2008
+  },
+  "doi:10.1016/j.tust.2015.08.006": {
+    "fetched": "2026-11-21",
+    "first_author": "Budach",
+    "found": true,
+    "journal": "Tunnelling and Underground Space Technology",
+    "title": "Application ranges of EPB shields in coarse ground based on laboratory research",
+    "year": 2015
+  },
   "doi:10.1016/j.apenergy.2020.115980": {
     "fetched": "2026-11-21",
     "first_author": "Duhr",
@@ -6947,6 +6780,22 @@
     "title": "Time-optimal gearshift and energy management strategies for a hybrid electric race car",
     "year": 2021
   },
+  "doi:10.1016/j.compstruc.2009.06.011": {
+    "fetched": "2026-11-21",
+    "first_author": "Douthe",
+    "found": true,
+    "journal": "Computers & Structures",
+    "title": "Design of nexorades or reciprocal frame systems with the dynamic relaxation method",
+    "year": 2009
+  },
+  "doi:10.1016/j.conbuildmat.2015.04.028": {
+    "fetched": "2026-11-21",
+    "first_author": "Dietsch",
+    "found": true,
+    "journal": "Construction and Building Materials",
+    "title": "Self-tapping screws and threaded rods as reinforcement for structural timber elements – A state-of-the-art report",
+    "year": 2015
+  },
   "doi:10.1038/s42256-021-00302-5": {
     "fetched": "2026-11-21",
     "first_author": "Lu",
@@ -6954,6 +6803,62 @@
     "journal": "Nature Machine Intelligence",
     "title": "Learning nonlinear operators via DeepONet based on the universal approximation theorem of operators",
     "year": 2021
+  },
+  "doi:10.1061/(asce)0733-9429(1997)123:2(125)": {
+    "fetched": "2026-11-21",
+    "first_author": "Melville",
+    "found": true,
+    "journal": "Journal of Hydraulic Engineering",
+    "title": "Pier and Abutment Scour: Integrated Approach",
+    "year": 1997
+  },
+  "doi:10.1061/(asce)0733-9429(1999)125:1(59)": {
+    "fetched": "2026-11-21",
+    "first_author": "Melville",
+    "found": true,
+    "journal": "Journal of Hydraulic Engineering",
+    "title": "Time Scale for Local Scour at Bridge Piers",
+    "year": 1999
+  },
+  "doi:10.1061/(asce)0733-9429(1999)125:4(376)": {
+    "fetched": "2026-11-21",
+    "first_author": "Buffington",
+    "found": true,
+    "journal": "Journal of Hydraulic Engineering",
+    "title": "The Legend of A. F. Shields",
+    "year": 1999
+  },
+  "doi:10.1061/(asce)0887-3828(2003)17:3(144)": {
+    "fetched": "2026-11-21",
+    "first_author": "Wardhana",
+    "found": true,
+    "journal": "Journal of Performance of Constructed Facilities",
+    "title": "Analysis of Recent Bridge Failures in the United States",
+    "year": 2003
+  },
+  "doi:10.1061/(asce)hy.1943-7900.0000800": {
+    "fetched": "2026-11-21",
+    "first_author": "Sheppard",
+    "found": true,
+    "journal": "Journal of Hydraulic Engineering",
+    "title": "Evaluation of Existing Equations for Local Scour at Bridge Piers",
+    "year": 2014
+  },
+  "doi:10.1061/(asce)hy.1943-7900.0001696": {
+    "fetched": "2026-11-21",
+    "first_author": "Link",
+    "found": true,
+    "journal": "Journal of Hydraulic Engineering",
+    "title": "Local Scour and Sediment Deposition at Bridge Piers during Floods",
+    "year": 2020
+  },
+  "doi:10.1061/(asce)st.1943-541x.0000838": {
+    "fetched": "2026-11-21",
+    "first_author": "Jockwer",
+    "found": true,
+    "journal": "Journal of Structural Engineering",
+    "title": "State-of-the-Art Review of Approaches for the Design of Timber Beams with Notches",
+    "year": 2014
   },
   "doi:10.1080/00423114.2014.889315": {
     "fetched": "2026-11-21",
@@ -6979,6 +6884,14 @@
     "title": "Viscosity solutions of Hamilton-Jacobi equations",
     "year": 1983
   },
+  "doi:10.1109/icip.2001.958278": {
+    "fetched": "2026-11-21",
+    "first_author": "Cha Zhang",
+    "found": true,
+    "journal": "Proceedings 2001 International Conference on Image Processing (ICIP)",
+    "title": "Efficient feature extraction for 2D/3D objects in mesh representation",
+    "year": 2001
+  },
   "doi:10.1109/tcst.2016.2642830": {
     "fetched": "2026-11-21",
     "first_author": "Salazar",
@@ -6987,76 +6900,170 @@
     "title": "Time-optimal Control Policy for a Hybrid Electric Race Car",
     "year": 2017
   },
-  "scite:10.1016/j.apenergy.2020.115980": {
-    "citing_publications": 28,
-    "contrasting": 0,
+  "doi:10.1145/356827.356833": {
     "fetched": "2026-11-21",
+    "first_author": "Requicha",
+    "found": true,
+    "journal": "ACM Computing Surveys",
+    "title": "Representations for Rigid Solids: Theory, Methods, and Systems",
+    "year": 1980
+  },
+  "doi:10.1145/360715.360727": {
+    "fetched": "2026-11-21",
+    "first_author": "Braid",
+    "found": true,
+    "journal": "Communications of the ACM",
+    "title": "The synthesis of solids bounded by many faces",
+    "year": 1975
+  },
+  "doi:10.1260/0266-3511.26.4.331": {
+    "fetched": "2026-11-21",
+    "first_author": "Gelez",
+    "found": true,
+    "journal": "International Journal of Space Structures",
+    "title": "Behavior of a Simple Nexorade or Reciprocal Frame System",
+    "year": 2011
+  },
+  "doi:10.2478/johh-2026-0004": {
+    "fetched": "2026-11-21",
+    "first_author": "Kabiri-Samani",
+    "found": true,
+    "journal": "Journal of Hydrology and Hydromechanics",
+    "title": "Does an Armor Layer Control Clear-Water Scour at Cylindrical Bridge Piers? A Comprehensive Experimental Assessment under Steady and Unsteady Flow Conditions",
+    "year": 2026
+  },
+  "scite:10.1016/j.apenergy.2020.115980": {
+    "citing_publications": 56,
+    "contrasting": 0,
+    "fetched": "2026-11-22",
     "found": true,
     "journal": "Applied Energy",
     "mentioning": 28,
     "retracted": false,
     "supporting": 0,
     "title": "Time-optimal gearshift and energy management strategies for a hybrid electric race car",
+    "total_smart_citations": 28,
     "year": 2021
   },
-  "scite:10.1038/s42256-021-00302-5": {
-    "citing_publications": 2974,
-    "contrasting": 1,
+  "scite:10.1016/j.compstruc.2009.06.011": {
+    "citing_publications": 96,
+    "contrasting": 0,
     "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Computers & Structures",
+    "mentioning": 69,
+    "retracted": false,
+    "supporting": 2,
+    "title": "Design of nexorades or reciprocal frame systems with the dynamic relaxation method",
+    "total_smart_citations": 72,
+    "unclassified": 1,
+    "year": 2009
+  },
+  "scite:10.1016/j.conbuildmat.2015.04.028": {
+    "citing_publications": 212,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Construction and Building Materials",
+    "mentioning": 55,
+    "retracted": false,
+    "supporting": 0,
+    "title": "Self-tapping screws and threaded rods as reinforcement for structural timber elements – A state-of-the-art report",
+    "total_smart_citations": 60,
+    "unclassified": 5,
+    "year": 2015
+  },
+  "scite:10.1038/s42256-021-00302-5": {
+    "citing_publications": 5336,
+    "contrasting": 1,
+    "fetched": "2026-11-22",
     "found": true,
     "journal": "Nature Machine Intelligence",
     "mentioning": 2966,
     "retracted": false,
     "supporting": 7,
     "title": "Learning nonlinear operators via DeepONet based on the universal approximation theorem of operators",
+    "total_smart_citations": 2974,
     "year": 2021
   },
-  "scite:10.1080/00423114.2014.889315": {
-    "citing_publications": 132,
+  "scite:10.1061/(asce)st.1943-541x.0000838": {
+    "citing_publications": 33,
     "contrasting": 0,
     "fetched": "2026-11-21",
+    "found": true,
+    "journal": "Journal of Structural Engineering",
+    "mentioning": 34,
+    "retracted": false,
+    "supporting": 1,
+    "title": "State-of-the-Art Review of Approaches for the Design of Timber Beams with Notches",
+    "total_smart_citations": 35,
+    "unclassified": 0,
+    "year": 2014
+  },
+  "scite:10.1080/00423114.2014.889315": {
+    "citing_publications": 161,
+    "contrasting": 0,
+    "fetched": "2026-11-22",
     "found": true,
     "journal": "Vehicle System Dynamics",
     "mentioning": 131,
     "retracted": false,
     "supporting": 1,
     "title": "Optimal control for a Formula One car with variable parameters",
+    "total_smart_citations": 135,
     "year": 2014
   },
   "scite:10.1090/s0002-9904-1954-09848-8": {
-    "citing_publications": 452,
+    "citing_publications": 1547,
     "contrasting": 0,
-    "fetched": "2026-11-21",
+    "fetched": "2026-11-22",
     "found": true,
     "journal": "Bulletin of the American Mathematical Society",
     "mentioning": 451,
     "retracted": false,
     "supporting": 1,
     "title": "The theory of dynamic programming",
+    "total_smart_citations": 463,
     "year": 1954
   },
   "scite:10.1090/s0002-9947-1983-0690039-8": {
-    "citing_publications": 1587,
+    "citing_publications": 2997,
     "contrasting": 0,
-    "fetched": "2026-11-21",
+    "fetched": "2026-11-22",
     "found": true,
     "journal": "Transactions of the American Mathematical Society",
     "mentioning": 1574,
     "retracted": false,
     "supporting": 13,
     "title": "Viscosity solutions of Hamilton-Jacobi equations",
+    "total_smart_citations": 1607,
     "year": 1983
   },
   "scite:10.1109/tcst.2016.2642830": {
-    "citing_publications": 30,
+    "citing_publications": 54,
     "contrasting": 0,
-    "fetched": "2026-11-21",
+    "fetched": "2026-11-22",
     "found": true,
     "journal": "IEEE Transactions on Control Systems Technology",
     "mentioning": 30,
     "retracted": false,
     "supporting": 0,
     "title": "Time-optimal Control Policy for a Hybrid Electric Race Car",
+    "total_smart_citations": 30,
     "year": 2017
+  },
+  "scite:10.1260/0266-3511.26.4.331": {
+    "citing_publications": 20,
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "International Journal of Space Structures",
+    "mentioning": 8,
+    "retracted": false,
+    "supporting": 0,
+    "title": "Behavior of a Simple Nexorade or Reciprocal Frame System",
+    "total_smart_citations": 9,
+    "unclassified": 1,
+    "year": 2011
   }
 }

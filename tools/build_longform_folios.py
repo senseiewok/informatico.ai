@@ -92,8 +92,9 @@ def linkify_citations(escaped_text: str) -> str:
         trailing = m.group(2)[len(doi):]
         doi_url = f"https://doi.org/{doi}"
         scite_url = f"https://scite.ai/reports/{doi}"
+        # The link text already starts with "DOI", so a "DOI" or "DOI:" written before the number is not repeated.
         return (
-            f'{prefix}<a class="tp-cite-link" href="{doi_url}" target="_blank" rel="noopener noreferrer">DOI {doi}</a> '
+            f'<a class="tp-cite-link" href="{doi_url}" target="_blank" rel="noopener noreferrer">DOI {doi}</a> '
             f'<a class="tp-scite-badge-link" href="{scite_url}" target="_blank" rel="noopener noreferrer" title="Inspect Scite Smart Citation report for {doi}">[Scite &#8599;]</a>{trailing}'
         )
 

@@ -269,6 +269,31 @@ def run_checks(planted_defect: bool = False) -> dict[str, Any]:
     if abs(post_eq_low_intensity["exact_kt_factor"] - 1.0) > 1e-9:
         failures.append("Post-equilibrium clamp failed when t_d = 240 h exceeds t_e = 212.0 h at V_1/V_c = 0.45")
 
+    # The page prints these values. Pin them, so a changed constant that keeps the orderings above still fails.
+    if not planted_defect:
+        low_intensity_24h = evaluate_pier_scour(flow_intensity_ratio=0.45, flood_duration_hours=24.0)
+        for label, got, want, tol in (
+            ("V_c", default_24h["critical_velocity_vc_m_s"], 0.860, 5e-4),
+            ("y_s,SM at 0.85", default_24h["exact_ys_sm_eq_m"], 2.505, 5e-4),
+            ("y_s,CSU at 0.85", default_24h["exact_ys_csu_eq_m"], 2.142, 5e-4),
+            ("t_e at 0.85", default_24h["exact_te_days"], 42.09, 5e-3),
+            ("K_t at 2 h", flash_2h["exact_kt_factor"], 0.4841, 5e-5),
+            ("y_s at 2 h", flash_2h["exact_ys_transient_m"], 1.213, 5e-4),
+            ("K_t at 24 h", default_24h["exact_kt_factor"], 0.7254, 5e-5),
+            ("y_s at 24 h", default_24h["exact_ys_transient_m"], 1.817, 5e-4),
+            ("K_t at 120 h", multiday_120h["exact_kt_factor"], 0.8777, 5e-5),
+            ("y_s at 120 h", multiday_120h["exact_ys_transient_m"], 2.199, 5e-4),
+            ("y_s,SM at 0.45", low_intensity_24h["exact_ys_sm_eq_m"], 0.608, 5e-4),
+            ("y_s,CSU at 0.45", low_intensity_24h["exact_ys_csu_eq_m"], 1.629, 5e-4),
+            ("t_e at 0.45", low_intensity_24h["exact_te_days"], 8.83, 5e-3),
+            ("y_s,SM at 1.00", threshold_peak_24h["exact_ys_sm_eq_m"], 2.587, 5e-4),
+            ("t_e at 1.00", threshold_peak_24h["exact_te_days"], 47.70, 5e-3),
+            ("K_t at 1.00, 24 h", threshold_peak_24h["exact_kt_factor"], 0.7703, 5e-5),
+            ("y_s at 1.00, 24 h", threshold_peak_24h["exact_ys_transient_m"], 1.993, 5e-4),
+        ):
+            if abs(got - want) > tol:
+                failures.append(f"Printed value drifted: {label} is {got:.5f}, the page states {want}")
+
     # Domain rejection checks
     for bad_label, bad_kwargs in (
         ("sub-threshold V_1/V_c = 0.35", {"flow_intensity_ratio": 0.35}),

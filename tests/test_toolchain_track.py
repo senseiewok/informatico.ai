@@ -280,19 +280,18 @@ class ToolchainTrackTests(unittest.TestCase):
                     f_entry["sha256"] = hashlib.sha256(raw_bytes).hexdigest()
             mpath.write_text(json.dumps(mdata, indent=2) + "\n", encoding="utf-8", newline="\n")
 
-        # 1. STEP comment-spoofed ADVANCED_FACE + zeroed coordinate -> must fail closed
+        # 1. STEP comment-spoofed ADVANCED_FACE inside DATA, one real face renamed -> the shell check must reject it
         with tempfile.TemporaryDirectory() as td:
             tmp_dir = Path(td)
             shutil.copytree(files_dir, tmp_dir, dirs_exist_ok=True)
             step_path = tmp_dir / "x02_artifact.step"
-            spoofed = (
-                "/* #999 = ADVANCED_FACE('',(#998),#997,.T.); */\n"
-                + step_path.read_text(encoding="utf-8").replace("ADVANCED_FACE(", "FACE_SURFACE(", 1)
-            )
+            spoofed = step_path.read_text(encoding="utf-8").replace("ADVANCED_FACE(", "FACE_SURFACE(", 1)
+            self.assertEqual(spoofed.count("DATA;"), 1)
+            spoofed = spoofed.replace("DATA;", "DATA;\n/* #999 = ADVANCED_FACE('',(#998),#997,.T.); */", 1)
             raw_spoofed = spoofed.encode("utf-8")
             step_path.write_bytes(raw_spoofed)
             _update_manifest_file(tmp_dir / "manifest.json", "x02_artifact.step", raw_spoofed)
-            with self.assertRaises(AssertionError):
+            with self.assertRaisesRegex(AssertionError, "CLOSED_SHELL face list"):
                 toolchain_uga.verify_folio_assets("x02", tmp_dir, make_py)
 
         # 2. STEP zeroed coordinates (volume collapse) -> must fail closed
