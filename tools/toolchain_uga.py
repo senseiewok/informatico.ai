@@ -20,6 +20,7 @@ import hashlib
 import io
 import json
 import math
+import re
 import struct
 import zipfile
 import xml.etree.ElementTree as ET
@@ -1635,6 +1636,150 @@ def verify_folio_assets(
             raise AssertionError(f"Fuzz fixture {fz['file']} was NOT rejected by verifier!")
         fuzz_rejected += 1
 
+    # 4b. If X.02, verify STEP Part-21 mesh/volume/unit parity, 3MF mesh/volume/unit parity, and chordal sagitta bounds
+    x02_roundtrip_checks: dict[str, Any] | None = None
+    if slug == "x02":
+        params = manifest.get("parameters", {})
+        step_txt = (files_dir / "x02_artifact.step").read_text(encoding="utf-8")
+        step_no_comments = re.sub(r"/\*.*?\*/", "", step_txt, flags=re.S)
+        m_data = re.search(r"\bDATA\s*;(.*?)\bENDSEC\s*;", step_no_comments, flags=re.S)
+        if not m_data:
+            raise AssertionError("x02 STEP file missing DATA; ... ENDSEC; section")
+        data_sec = m_data.group(1)
+        if not re.search(r"SI_UNIT\s*\(\s*\.MILLI\.\s*,\s*\.METRE\.\s*\)", data_sec):
+            raise AssertionError("x02 STEP file missing millimeter SI_UNIT(.MILLI.,.METRE.)")
+
+        cp_map: dict[int, Vec3] = {}
+        for m_cp in re.finditer(
+            r"#(\d+)\s*=\s*CARTESIAN_POINT\s*\([^,]*,\s*\(\s*([+-]?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)\s*,"
+            r"\s*([+-]?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)\s*,\s*([+-]?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)\s*\)\s*\)\s*;",
+            data_sec,
+        ):
+            cp_map[int(m_cp.group(1))] = (float(m_cp.group(2)), float(m_cp.group(3)), float(m_cp.group(4)))
+
+        vp_order: list[int] = []
+        vp_index: dict[int, int] = {}
+        step_verts: list[Vec3] = []
+        for m_vp in re.finditer(r"#(\d+)\s*=\s*VERTEX_POINT\s*\([^,]*,\s*#(\d+)\s*\)\s*;", data_sec):
+            vid, cid = int(m_vp.group(1)), int(m_vp.group(2))
+            if cid not in cp_map or vid in vp_index:
+                raise AssertionError(f"x02 STEP invalid or duplicate VERTEX_POINT #{vid} -> #{cid}")
+            vp_index[vid] = len(step_verts)
+            vp_order.append(vid)
+            step_verts.append(cp_map[cid])
+
+        pl_map: dict[int, Tri] = {}
+        for m_pl in re.finditer(r"#(\d+)\s*=\s*POLY_LOOP\s*\([^,]*,\s*\(\s*#(\d+)\s*,\s*#(\d+)\s*,\s*#(\d+)\s*\)\s*\)\s*;", data_sec):
+            lid = int(m_pl.group(1))
+            v_refs = (int(m_pl.group(2)), int(m_pl.group(3)), int(m_pl.group(4)))
+            if any(vr not in vp_index for vr in v_refs):
+                raise AssertionError(f"x02 STEP POLY_LOOP #{lid} references unknown VERTEX_POINT {v_refs}")
+            pl_map[lid] = (vp_index[v_refs[0]], vp_index[v_refs[1]], vp_index[v_refs[2]])
+
+        fob_map: dict[int, tuple[int, bool]] = {}
+        for m_fob in re.finditer(r"#(\d+)\s*=\s*FACE_OUTER_BOUND\s*\([^,]*,\s*#(\d+)\s*,\s*\.(T|F)\.\s*\)\s*;", data_sec):
+            fob_map[int(m_fob.group(1))] = (int(m_fob.group(2)), m_fob.group(3) == "T")
+
+        af_map: dict[int, Tri] = {}
+        for m_af in re.finditer(
+            r"#(\d+)\s*=\s*ADVANCED_FACE\s*\([^,]*,\s*\(\s*#(\d+)\s*\)\s*,\s*#\d+\s*,\s*\.(T|F)\.\s*\)\s*;",
+            data_sec,
+        ):
+            af_id, fob_id, same_sense = int(m_af.group(1)), int(m_af.group(2)), (m_af.group(3) == "T")
+            if fob_id not in fob_map:
+                raise AssertionError(f"x02 STEP ADVANCED_FACE #{af_id} missing FACE_OUTER_BOUND #{fob_id}")
+            loop_id, fob_orient = fob_map[fob_id]
+            if loop_id not in pl_map:
+                raise AssertionError(f"x02 STEP FACE_OUTER_BOUND #{fob_id} missing POLY_LOOP #{loop_id}")
+            t_abc = pl_map[loop_id]
+            af_map[af_id] = t_abc if (same_sense == fob_orient) else (t_abc[0], t_abc[2], t_abc[1])
+
+        m_shell = re.search(r"#\d+\s*=\s*CLOSED_SHELL\s*\([^,]*,\s*\(([^)]+)\)\s*\)\s*;", data_sec)
+        if not m_shell:
+            raise AssertionError("x02 STEP missing CLOSED_SHELL face list")
+        shell_face_ids = [int(x) for x in re.findall(r"#(\d+)", m_shell.group(1))]
+        if any(fid not in af_map for fid in shell_face_ids) or len(shell_face_ids) != len(af_map):
+            raise AssertionError("x02 STEP CLOSED_SHELL face list disagrees with ADVANCED_FACE definitions")
+        step_tris = [af_map[fid] for fid in shell_face_ids]
+        step_topo = check_manifold_topology(step_verts, step_tris)
+        step_vol = signed_mesh_volume(step_verts, step_tris)
+        if (
+            not step_topo["is_watertight"]
+            or step_topo["vertices"] != topo["vertices"]
+            or step_topo["faces"] != topo["faces"]
+            or step_topo["euler_characteristic"] != exp["euler_characteristic"]
+            or abs(step_vol - exp["analytical_volume"]) > 1e-2
+        ):
+            raise AssertionError(
+                f"x02 STEP round-trip mismatch: topo={step_topo}, vol={step_vol:.4f} vs {exp['analytical_volume']:.4f}"
+            )
+        # In-process STEP face-drop knockout check
+        dropped_step_topo = check_manifold_topology(step_verts, step_tris[:-1])
+        if dropped_step_topo["is_watertight"] or dropped_step_topo["faces"] == topo["faces"]:
+            raise AssertionError("x02 STEP face-drop negative control was not rejected")
+
+        tmf_raw = (files_dir / "x02_artifact.3mf").read_bytes()
+        with zipfile.ZipFile(io.BytesIO(tmf_raw), "r") as zf_x02:
+            tmf_root = parse_3mf_model(zf_x02.read("3D/3dmodel.model"), "x02_artifact.3mf")
+        if tmf_root.attrib.get("unit") != "millimeter":
+            raise AssertionError(f"x02 3MF unit {tmf_root.attrib.get('unit')!r} != 'millimeter'")
+        ns_3mf = {"m": NS_3MF_CORE}
+        try:
+            tmf_verts = [
+                (float(el.attrib["x"]), float(el.attrib["y"]), float(el.attrib["z"]))
+                for el in tmf_root.findall("m:resources/m:object/m:mesh/m:vertices/m:vertex", ns_3mf)
+            ]
+            tmf_tris = [
+                (int(el.attrib["v1"]), int(el.attrib["v2"]), int(el.attrib["v3"]))
+                for el in tmf_root.findall("m:resources/m:object/m:mesh/m:triangles/m:triangle", ns_3mf)
+            ]
+        except (KeyError, ValueError) as exc:
+            raise AssertionError(f"x02 3MF malformed vertex/triangle attribute: {exc}") from exc
+        if any(v_i < 0 or v_i >= len(tmf_verts) for tri in tmf_tris for v_i in tri):
+            raise AssertionError(f"x02 3MF triangle index out of bounds for {len(tmf_verts)} vertices")
+        tmf_topo = check_manifold_topology(tmf_verts, tmf_tris)
+        tmf_vol = signed_mesh_volume(tmf_verts, tmf_tris)
+        if (
+            not tmf_topo["is_watertight"]
+            or tmf_topo["vertices"] != topo["vertices"]
+            or tmf_topo["faces"] != topo["faces"]
+            or tmf_topo["euler_characteristic"] != exp["euler_characteristic"]
+            or abs(tmf_vol - exp["analytical_volume"]) > 1e-2
+        ):
+            raise AssertionError(
+                f"x02 3MF round-trip mismatch: topo={tmf_topo}, vol={tmf_vol:.4f} vs {exp['analytical_volume']:.4f}"
+            )
+
+        r_bore = float(params.get("reference_bore_radius_mm", 0.0))
+        n_seg = int(params.get("chordal_segments", 0))
+        if r_bore <= 0.0 or n_seg < 28:
+            raise AssertionError(f"x02 invalid bore parameters: R={r_bore} mm (must be > 0), N={n_seg} (must be >= 28)")
+        sagitta_ref = r_bore * (1.0 - math.cos(math.pi / n_seg))
+        sagitta_manifest = float(params.get("chordal_sagitta_mm", 0.0))
+        if abs(sagitta_ref - sagitta_manifest) > 1e-6 or sagitta_ref > 0.10:
+            raise AssertionError(
+                f"x02 chordal sagitta check failed: computed={sagitta_ref:.6f} mm, manifest={sagitta_manifest:.6f} mm"
+            )
+        sag_28 = r_bore * (1.0 - math.cos(math.pi / 28))
+        sag_27 = r_bore * (1.0 - math.cos(math.pi / 27))
+        sag_8 = r_bore * (1.0 - math.cos(math.pi / 8))
+        if not (sag_28 <= 0.10 < sag_27 and sag_8 > 0.10):
+            raise AssertionError("x02 chordal sagitta N >= 28 threshold or coarse N = 8 knockout failed")
+        x02_roundtrip_checks = {
+            "step_vertex_points": len(step_verts),
+            "step_poly_loops": len(pl_map),
+            "step_advanced_faces": len(step_tris),
+            "step_signed_volume_mm3": round(step_vol, 3),
+            "threemf_vertices": tmf_topo["vertices"],
+            "threemf_faces": tmf_topo["faces"],
+            "threemf_signed_volume_mm3": round(tmf_vol, 3),
+            "reference_bore_radius_mm": r_bore,
+            "chordal_segments": n_seg,
+            "chordal_sagitta_mm": round(sagitta_ref, 6),
+            "min_facets_for_0p10mm": 28,
+            "coarse_n8_sagitta_mm": round(sag_8, 6),
+        }
+
     # 5. If X.03, verify coupled A.11 <-> X.03 Heyman compression + 8-13 um sky-cooling envelope invariants
     x03_envelope_checks: dict[str, Any] | None = None
     if slug == "x03":
@@ -1740,12 +1885,16 @@ def verify_folio_assets(
         # When invoked with --planted-defect, run the valid assertions against the mutated geometry so it FAILS
         if not mutated_topo["is_watertight"] or abs(mutated_vol - exp["analytical_volume"]) > 1e-2:
             extra_note = (
-                "; for X.03 also rejects |e| > t/6 = 66.7 mm and sub-threshold sky-cooling q_net < 80 W/m^2"
-                if slug == "x03"
+                "; for X.02 also verified coarse N = 8 sagitta h > 0.10 mm and STEP face-drop rejection"
+                if slug == "x02"
                 else (
-                    "; for X.07 also breaks discrete Gauss-Bonnet closure sum(2*pi - sum theta) = 4*pi"
-                    if slug == "x07"
-                    else ""
+                    "; for X.03 also rejects |e| > t/6 = 66.7 mm and sub-threshold sky-cooling q_net < 80 W/m^2"
+                    if slug == "x03"
+                    else (
+                        "; for X.07 also breaks discrete Gauss-Bonnet closure sum(2*pi - sum theta) = 4*pi"
+                        if slug == "x07"
+                        else ""
+                    )
                 )
             )
             raise AssertionError(
@@ -1794,6 +1943,8 @@ def verify_folio_assets(
         },
         "verified_files": [f["filename"] for f in manifest["files"]],
     }
+    if x02_roundtrip_checks is not None:
+        out_payload["x02_roundtrip_checks"] = x02_roundtrip_checks
     if x03_envelope_checks is not None:
         out_payload["x03_coupled_envelope_checks"] = x03_envelope_checks
     if x07_curvature_checks is not None:
