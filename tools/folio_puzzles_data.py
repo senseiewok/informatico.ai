@@ -1301,14 +1301,14 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
         "title_es": "Folio A.11 · Crucigrama de Estática Gráfica Poliédrica 3D y Bóvedas sin Acero",
         "en": [
             ("MAXWELL", "Scientist whose 1864 paper on reciprocal figures linked plane frames in equilibrium to polyhedra; in 1870 he read a polyhedron as a stress function", "Act I"),
-            ("VAULT", "Compression-only shell; the folio is a design study, and its 52 mm thickness and compression-only result are model values, not a structural check", "Act III"),
+            ("VAULT", "Compression-only shell; this folio is an explanation, not a design method, and its 52 mm thickness cannot be used on a real structure", "Act III"),
             ("DUAL", "In the force diagram, each member's face has an area proportional to the member force; a closed cell means the forces at that node balance", "Act III"),
-            ("AIRY", "Stress function Phi(x, y); if its Hessian is negative-definite the model's stress field is compressive everywhere, a property of the model and not a structural check", "Act III"),
-            ("TILE", "Thin timbrel unit; Rafael Guastavino and his son built hundreds of thin timbrel tile vaults in the United States after emigrating from Spain in 1881", "Act I"),
+            ("AIRY", "2D stress function Phi(x, y); negative-definite Hessian marks compression in the model for one load, not a real structural check", "Act III"),
+            ("TILE", "Thin timbrel unit; Rafael Guastavino and his son built hundreds of thin timbrel tile vaults in the United States after 1881", "Act I"),
             ("RIB", "Stiffening element of a funicular floor; the folio notes that one published unreinforced funicular floor uses about one-third of the material of a flat slab", "Act I"),
         ],
         "es": [
-            ("BOVEDA", "Cubierta delgada a compresión; en el folio es un estudio de diseño, con espesor ilustrativo de 52 mm y sin ser una revisión estructural", "Acto III"),
+            ("BOVEDA", "Cubierta a compresión; este folio es una explicación, no un método de diseño, y su espesor de 52 mm no aplica a una obra real", "Acto III"),
             ("MAXWELL", "Científico cuyos artículos de 1864 y 1870 sobre figuras recíprocas ligaron marcos planos en equilibrio con poliedros y funciones de esfuerzo", "Acto I"),
             ("CARA", "Polígono de una celda en el diagrama de fuerzas; su área es proporcional a la fuerza del miembro", "Acto III"),
             ("ARCO", "Forma que carga en compresión; el Folio A.01 revisa su línea de empuje con la regla del tercio medio", "Acto I"),

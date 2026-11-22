@@ -175,9 +175,9 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "a11": (
         "3D Polyhedral Graphic Statics and Stone Vaults",
-        "How James Clerk Maxwell's reciprocal figures and polyhedral graphic statics, with tools like COMPAS, shape compression-only vaults, as a design study.",
+        "An explanatory model of 2D Airy stress surfaces, 3D reciprocal force polyhedra, and exterior sky cooling; not a structural design method.",
         "Estática Gráfica Poliédrica 3D y Bóvedas de Piedra",
-        "Cómo las figuras recíprocas de James Clerk Maxwell y la estática gráfica poliédrica, con herramientas como COMPAS, dan forma a bóvedas a compresión pura.",
+        "Modelo explicativo de superficies de Airy 2D, poliedros recíprocos 3D y enfriamiento radiativo exterior; no es un método de diseño estructural.",
     ),
     "a12": (
         "Tensegrity Cable Domes and Sky-Cooling Canopies",
