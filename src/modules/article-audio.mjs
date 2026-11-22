@@ -813,14 +813,8 @@ export class TpArticleAudioElement extends HTMLElement {
       return btn;
     });
 
-    const audioEl = document.createElement("audio");
-    audioEl.preload = "none";
-    audioEl.hidden = true;
-    audioEl.setAttribute("playsinline", "");
-
     this.appendChild(topRow);
     this.appendChild(chapterRow);
-    this.appendChild(audioEl);
 
     this._playBtn = playBtn;
     this._playIcon = playIcon;
@@ -828,7 +822,7 @@ export class TpArticleAudioElement extends HTMLElement {
     this._speedBtn = speedBtn;
     this._statusText = statusText;
     this._progressEl = progress;
-    this._audioEl = audioEl;
+    this._audioEl = null;
   }
 
   _syncLabels(currentSec = this._bufferOffsetSec) {
@@ -1185,18 +1179,34 @@ export class TpArticleAudioElement extends HTMLElement {
     }
   }
 
+  _ensureAudioElement(rawSrc) {
+    const safeSrc = sanitizeAudioTrackPath(rawSrc);
+    if (!safeSrc) return null;
+    if (!this._audioEl) {
+      const audioEl = document.createElement("audio");
+      audioEl.preload = "none";
+      audioEl.hidden = true;
+      audioEl.setAttribute("playsinline", "");
+      audioEl.setAttribute("src", safeSrc);
+      this.appendChild(audioEl);
+      this._audioEl = audioEl;
+      return audioEl;
+    }
+    if (this._audioEl.getAttribute("src") !== safeSrc) {
+      this._audioEl.setAttribute("src", safeSrc);
+    }
+    return this._audioEl;
+  }
+
   _playMediaElementTrack(src, chapterIndex, lang, token) {
-    const el = this._audioEl;
-    const safeSrc = sanitizeAudioTrackPath(src);
-    if (!el || !safeSrc || typeof el.play !== "function") return false;
+    const el = this._ensureAudioElement(src);
+    if (!el || typeof el.play !== "function") return false;
+    const safeSrc = el.getAttribute("src") || "";
     const speed = SPEEDS[this._speedIndex];
     const ratios = this._getChapterRatios(lang);
     const startRatio = ratios[chapterIndex] || 0;
 
     this._usingMediaEl = true;
-    if (el.getAttribute("src") !== safeSrc) {
-      el.setAttribute("src", safeSrc);
-    }
     el.playbackRate = speed;
 
     const applyInitialSeek = () => {

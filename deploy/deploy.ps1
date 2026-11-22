@@ -43,6 +43,7 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+$DeployUserAgent = 'SenseiEwokCFLab/0.1 (informatico-deploy-sync; +https://github.com/senseiewok)'
 # Settings that are not secret live in a local, git-ignored file, so only the password has to be typed. Parameters and the environment win over it.
 $localFile = Join-Path $PSScriptRoot 'deploy.local.json'
 $local = $null
@@ -99,10 +100,10 @@ if (-not $Server) { $Server = Read-Host 'Server' }
 if (-not $User) { $User = Read-Host 'Username' }
 if (-not $ServerCertDomain) { $ServerCertDomain = Read-Host 'Certificate domain (the part of the server certificate name after its first dot; put it in deploy.local.json to stop being asked)' }
 if (-not ($Server -and $User -and $ServerCertDomain)) { throw 'The server, username and certificate domain are all needed.' }
-if ($Server -notmatch '^[A-Za-z0-9.\-]+$') { throw "Invalid server hostname '$Server'." }
-if ($ServerCertDomain -notmatch '^[A-Za-z0-9.\-]+$') { throw "Invalid certificate domain '$ServerCertDomain'." }
+if ($Server -notmatch '\A[A-Za-z0-9](?:[A-Za-z0-9.\-]*[A-Za-z0-9])?\z') { throw "Invalid server hostname '$Server'." }
+if ($ServerCertDomain -notmatch '\A[A-Za-z0-9](?:[A-Za-z0-9.\-]*[A-Za-z0-9])?\z') { throw "Invalid certificate domain '$ServerCertDomain'." }
 if ($Port -lt 1 -or $Port -gt 65535) { throw "Invalid port '$Port'." }
-if ($RemoteDir -and ($RemoteDir -notmatch '^[A-Za-z0-9._/\-]+$' -or $RemoteDir -match '(^|/)\.\.(/|$)')) {
+if ($RemoteDir -and ($RemoteDir -notmatch '\A[A-Za-z0-9._][A-Za-z0-9._/\-]*\z' -or $RemoteDir -match '(^|/)\.\.(/|$)')) {
     throw "Invalid RemoteDir '$RemoteDir'."
 }
 $securePassword = Read-Host 'Password (not shown, not saved)' -AsSecureString
@@ -192,6 +193,7 @@ if (-not $Force -and $SiteUrl) {
         $httpClient = [System.Net.Http.HttpClient]::new()
         $httpClient.Timeout = [TimeSpan]::FromSeconds(20)
         $httpClient.DefaultRequestHeaders.CacheControl = [System.Net.Http.Headers.CacheControlHeaderValue]::Parse('no-cache')
+        $httpClient.DefaultRequestHeaders.UserAgent.ParseAdd($DeployUserAgent)
         $baseSiteUrl = $SiteUrl.TrimEnd('/')
         $changedFiles = @()
         Write-Host "Comparing $($files.Count) local files against live site (skipping already-uploaded files)..." -ForegroundColor Cyan
@@ -304,6 +306,7 @@ function Test-LiveFileUploaded($fileInfo, [string] $relPath, [string] $remoteUrl
             try {
                 $hc.Timeout = [TimeSpan]::FromSeconds(12)
                 $hc.DefaultRequestHeaders.CacheControl = [System.Net.Http.Headers.CacheControlHeaderValue]::Parse('no-cache, no-store')
+                $hc.DefaultRequestHeaders.UserAgent.ParseAdd($DeployUserAgent)
                 $baseSiteUrl = $SiteUrl.TrimEnd('/')
                 for ($checkTry = 1; $checkTry -le 2; $checkTry++) {
                     try {
@@ -401,6 +404,7 @@ try {
     try {
         $hcLive.Timeout = [TimeSpan]::FromSeconds(20)
         $hcLive.DefaultRequestHeaders.CacheControl = [System.Net.Http.Headers.CacheControlHeaderValue]::Parse('no-cache, no-store')
+        $hcLive.DefaultRequestHeaders.UserAgent.ParseAdd($DeployUserAgent)
         $liveBytes = $hcLive.GetByteArrayAsync("$($SiteUrl.TrimEnd('/'))/?nocache=$([DateTime]::UtcNow.Ticks)").GetAwaiter().GetResult()
     } finally { $hcLive.Dispose() }
     $liveHome = $utf8.GetString($liveBytes).Replace("`r`n", "`n")
