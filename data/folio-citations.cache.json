@@ -2472,7 +2472,7 @@
     "year": 1930
   },
   "doi:10.1121/1.1915175": {
-    "fetched": "2026-11-14",
+    "fetched": "2026-11-21",
     "first_author": "Eyring",
     "found": true,
     "journal": "The Journal of the Acoustical Society of America",
@@ -7065,5 +7065,60 @@
     "total_smart_citations": 9,
     "unclassified": 1,
     "year": 2011
+  },
+  "doi:10.1103/physrevx.7.021034": {
+    "fetched": "2026-11-21",
+    "first_author": "Zhu",
+    "found": true,
+    "journal": "Physical Review X",
+    "title": "Ultrathin Acoustic Metasurface-Based Schroeder Diffuser",
+    "year": 2017
+  },
+  "doi:10.1121/1.384464": {
+    "fetched": "2026-11-21",
+    "first_author": "Steeneken",
+    "found": true,
+    "journal": "The Journal of the Acoustical Society of America",
+    "title": "A physical method for measuring speech-transmission quality",
+    "year": 1980
+  },
+  "doi:10.1121/1.393907": {
+    "fetched": "2026-11-21",
+    "first_author": "Bradley",
+    "found": true,
+    "journal": "The Journal of the Acoustical Society of America",
+    "title": "Predictors of speech intelligibility in rooms",
+    "year": 1986
+  },
+  "doi:10.1121/1.393908": {
+    "fetched": "2026-11-21",
+    "first_author": "Bradley",
+    "found": true,
+    "journal": "The Journal of the Acoustical Society of America",
+    "title": "Speech intelligibility studies in classrooms",
+    "year": 1986
+  },
+  "doi:10.1121/1.423870": {
+    "fetched": "2026-11-21",
+    "first_author": "Maa",
+    "found": true,
+    "journal": "The Journal of the Acoustical Society of America",
+    "title": "Potential of microperforated panel absorber",
+    "year": 1998
+  },
+  "scite:10.1121/1.1915175": {
+    "citing_publications": 217,
+    "classification_provenance": "Scite ML citation classification",
+    "contrasting": 0,
+    "fetched": "2026-11-21",
+    "found": true,
+    "journal": "The Journal of the Acoustical Society of America",
+    "mentioning": 84,
+    "retracted": false,
+    "supporting": 4,
+    "title": "Reverberation Time in “Dead” Rooms",
+    "total_smart_citations": 98,
+    "unclassified": 10,
+    "year": 1930
   }
 }

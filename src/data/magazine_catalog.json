@@ -2437,10 +2437,10 @@
           }
         ],
         "steps": [
-          "Stage 1 (Direct & Early Reflections 0–50 ms): Vault geometry directs early energy to listeners within the first 50 ms (an illustrative early clarity C_50 = +4.8 dB, not computed here).",
-          "Stage 2 (Schroeder Quadratic-Residue Diffusion): Coffered timber wells of depth d_n = (n² mod p)·λ/(2p) spread reflections across many directions instead of one mirror-like bounce.",
-          "Stage 3 (Micro-Perforated Helmholtz Absorption): 0.8 mm perforated timber veneer over mineral wool, with an assumed mean absorption α_bar = 0.44.",
-          "Stage 4 (Eyring Decay): For V = 2,400 m³ and an assumed surface area S ≈ 1,075 m², T_60,Eyring = 0.161 × 2,400 / (−1,075 × ln 0.56) = 0.62 s (Sabine gives 0.82 s). The STI of 0.74 is an illustrative value, not a measurement."
+          "Stage 1 (Early Window, Bradley 1986, DOI 10.1121/1.393907): Sound within 50 ms aids speech; C_50 = +4.8 dB is an illustrative estimate.",
+          "Stage 2 (Schroeder Diffusion, DOI 10.1121/1.382601): For prime p and design wavelength λ_0 = c/f_0, well depths d_n = (n² mod p)·λ_0/(2p) scatter reflections.",
+          "Stage 3 (Perforated Veneer, cf. Maa 1998, DOI 10.1121/1.423870): Maa models fiber-free air-cavity panels; this untested sketch backs 0.8 mm oak veneer with wool (assumed α_bar = 0.44).",
+          "Stage 4 (Eyring Decay, DOI 10.1121/1.1915175): For V = 2,400 m³ and S ≈ 1,075 m², Eyring gives 0.62 s (Sabine 0.82 s); STI = 0.74 is a linear estimate, not an MTF value (DOI 10.1121/1.384464)."
         ],
         "readouts": [
           {
@@ -2462,28 +2462,28 @@
         ],
         "sidenote_1": {
           "kicker": "SIDENOTE A.05-A · EYRING VS SABINE",
-          "body": "In highly absorptive rooms Sabine's formula gives longer reverberation times than Eyring's -S·ln(1 - α_bar) form, which is generally the better estimate there (Eyring 1930, DOI 10.1121/1.1915175). Both rest on a diffuse-field assumption."
+          "body": "In absorptive rooms Sabine's formula predicts longer decay than Eyring's -S·ln(1 - α_bar) estimate (Eyring 1930, DOI 10.1121/1.1915175) under stated assumptions."
         },
         "sidenote_2": {
           "kicker": "SIDENOTE A.05-B · SPECIFICATION PLATE · CSI 09 84 00",
-          "body": "Design proposal, not a tested product: micro-perforated oak acoustic coffers (0.8 mm apertures at 4 mm pitch) with a design target of NRC = 0.85; fire classification under EN 13501-1 would need testing."
+          "body": "Untested design proposal: 0.8 mm perforated oak coffers at 4 mm pitch over mineral wool (cf. Maa 1998, DOI 10.1121/1.423870), targeting about NRC = 0.85; EN 13501-1 fire rating not yet tested."
         },
         "skill": {
           "filename": "tectonic-acoustics-sabine-eyring-SKILL.md",
           "name": "tectonic-acoustics-sabine-eyring",
           "description": "AI-agnostic architectural acoustics skill for Sabine/Eyring reverberation, Schroeder QRD coffered vaults, and the IEC 60268-16 Speech Transmission Index (STI).",
           "rules": [
-            "Compute both Sabine T_60 = 0.161 V / A and Eyring T_60 = 0.161 V / (-S ln(1 - alpha_bar)) across 125 Hz - 4 kHz octave bands.",
-            "Size Schroeder quadratic-residue diffuser wells via d_n = (n^2 mod p) * c / (2 p f_0) to prevent focal caustics under curved vaults.",
-            "Use the folio's own design targets of STI >= 0.68 and background noise <= NC-28 for consultation rooms and civic halls (folio targets, not requirements of a cited standard)."
+            "Estimate SI-unit Sabine T_60 = 0.161 V / A and Eyring logarithmic decay T_60 = 0.161 V / (-S ln(1 - alpha_bar)) (after Eyring 1930, DOI 10.1121/1.1915175) for volume V and area S.",
+            "Size Schroeder diffuser wells for prime p via d_n = (n^2 mod p) * c / (2 p f_0) under curved vaults (Schroeder 1979, DOI 10.1121/1.382601).",
+            "Apply the folio's own targets of STI >= 0.68 and noise <= NC-28 as model caveats, not requirements of IEC 60268-16 or ISO 3382-1."
           ]
         },
         "revisions": [
           {
             "edition": "REV 1.2",
             "date": "2026-11-14",
-            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. The Sabine comparison is corrected from 0.73 s to 0.82 s (it follows from the same room as the Eyring 0.62 s), STI 0.74 and C_50 +4.8 dB are labelled illustrative, and no ISO 3382 rating is claimed (earlier claims of formal rating and alarm-fatigue effects are withdrawn). The Eyring and Schroeder DOIs pointed to a one-page supplement item and a different 1975 paper; they now cite DOI 10.1121/1.1915175 and DOI 10.1121/1.382601. The midnight scene is replaced by a plain account. A later review corrected the Speech Transmission Index attribution (IEC 60268-16, not ISO 3382), made the NC-28 threshold consistent, softened outcome claims in the plain-language and Spanish text, and changed the readout verdict and the Scite record.",
-            "opus": "Review: references checked by DOI in Crossref and the Scite index; Scite literature supports that Eyring gives shorter times than Sabine in absorptive rooms."
+            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. Sabine is corrected from 0.73 s to 0.82 s (same room as Eyring 0.62 s), STI 0.74 and C_50 +4.8 dB are labeled illustrative estimates, and earlier ISO 3382 rating and alarm-fatigue claims are withdrawn. Eyring and the 1979 QRD diffuser now cite DOI 10.1121/1.1915175 and DOI 10.1121/1.382601, STI cites IEC 60268-16, NC-28 is aligned, and the readout verdict and Scite note are updated.",
+            "opus": "Review: references checked by DOI in Crossref and the Scite index; Scite literature suggests that Eyring estimates shorter decay than Sabine in absorptive rooms."
           },
           {
             "edition": "REV 1.1",
@@ -2505,13 +2505,13 @@
         "word_count": "4,650 WORDS",
         "scite": {
           "doi": "10.1121/1.1915175",
-          "fetched_on": "2026-11-08",
-          "citing_publications": 146,
-          "supporting": 1,
-          "mentioning": 31,
+          "fetched_on": "2026-11-21",
+          "citing_publications": 217,
+          "supporting": 4,
+          "mentioning": 84,
           "contrasting": 0,
           "retracted": false,
-          "summary": "Eyring, Reverberation time in dead rooms (DOI 10.1121/1.1915175). The citation counts shown were taken on 2026-11-08 for an earlier record, a one-page 1930 supplement item by Eyring (DOI 10.1121/1.1901884), and have not been refreshed for this DOI. Neither record checks this folio's numbers."
+          "summary": "Scite index entry for Eyring, Reverberation Time in \"Dead\" Rooms (DOI 10.1121/1.1915175), checked 2026-11-21: 217 citing publications (4 supporting, 84 mentioning, 0 contrasting) and no retraction notice. Does not check this folio's numbers."
         }
       },
       {
