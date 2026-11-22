@@ -77,6 +77,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
         about_bridge_rel = {
             Path("src/about/index.html"),
             Path("src/es-mx/about/index.html"),
+            Path("src/llms.txt"),
             Path("src/data/about-evidence.json"),
             Path("deploy/htaccess.txt"),
             Path("tests/test_informatico_seo.py"),
