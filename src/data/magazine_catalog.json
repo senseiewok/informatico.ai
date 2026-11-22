@@ -5830,18 +5830,18 @@
         "pillar": "math",
         "category_code": "M",
         "title": "Riemannian Differential Geometry of Color Perception: Helmholtz–Schrödinger Geodesics, MacAdam Metric Tensors & Grassmann Spectral Hilbert Projections",
-        "subtitle": "How the linearity of color matching that Hermann Grassmann described, read in modern terms as a projection Π: L²([380,780] nm) → ℝ³, creates metamers, and how a Riemannian line element ds² = g_ij dx^i dx^j of the kind Erwin Schrödinger proposed in 1920 defines curved paths between hues. The numbers shown are model values.",
+        "subtitle": "How Hermann Grassmann’s color-mixing laws compress spectra into three cone signals and create metamers, and how Riemannian line elements from Helmholtz, Schrödinger, and Stiles model curved hue paths while overestimating large intervals. Numbers shown are illustrative.",
         "date_published": "2026-11-02",
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.1",
         "status_badge": "RIEMANNIAN COLOR MATH · REV 1.1",
         "primary_kernel": "tools/discovery/formal_proof_thermodynamic_landscape.py",
-        "governing_law": "ds² = ∑ g_ij(x) dx^i dx^j · ẍ^k + Γ^k_ij ẋ^i ẋ^j = 0 · Π: L²([380,780]) → ℝ³₊",
+        "governing_law": "Π_T: L²([380,780]) → ℝ³ · ds² = ∑ g_ij(x) dx^i dx^j (x ∈ ℝ³₊) · ẍ^k + Γ^k_ij ẋ^i ẋ^j = 0",
         "colophon": {
           "identifier": "M.08 · Riemannian Color Manifold & Metamer Nullspace · CIE",
-          "kernels": "Helmholtz–Schrödinger Metric g_ij · MacAdam Ellipses · Cohen Metamer Matrix",
-          "benchmarks": "dim ker(Π) = ∞ · model hue drift and ΔE_00 values are illustrative",
-          "bridge": "Schrödinger Color Geodesics ↔ A.07 Barragán Pigments & P.08 Wave Interference"
+          "kernels": "Weber–Fechner Metric · MacAdam Ellipses · Cohen–Kappauf Projector",
+          "benchmarks": "dim ker(Π_T) = ∞ · illustrative Δs_geo = 42.8, +9.4°, ΔE_00 = 0.18",
+          "bridge": "Schrödinger Geodesics ↔ A.07 Pigments & P.08 Thin-Film Optics"
         },
         "sliders": [
           {
@@ -5862,51 +5862,51 @@
           }
         ],
         "steps": [
-          "Stage 1 (Grassmann Hilbert Space Projection Π: L² → ℝ³₊): Continuous electromagnetic spectra I(λ) project onto 3 cone coordinates X_k = ∫ S(λ, T_illum) R(λ) c̄_k(λ) dλ.",
-          "Stage 2 (Cohen's Fundamental Metamer Decomposition): Because dim ker(Π) = ∞, any spectrum decomposes into R(λ) = R*(λ) + B(λ), where metameric black B(λ) vanishes under D65 (6500 K) but emerges at sunset (3000 K).",
-          "Stage 3 (Helmholtz-Type Line Element g_ij, the folio's model): Discrimination ellipses such as those MacAdam measured in 1942 show that equal perceptual steps are not equal Euclidean steps. The folio models this with a Helmholtz-type line element ds² = ∑ a_k (dx^k / x^k)².",
-          "Stage 4 (Geodesic Hue Interpolation, model): Solvingẍ^k + Γ^k_ij ẋ^i ẋ^j = 0 for that model metric between a cobalt blue and a magenta (rosa mexicano) gives a curved path. The +9.4° hue difference from a flat RGB chord is an illustrative model value, not a measured Abney-effect correction."
+          "Stage 1 (Grassmann Projection Π_T: L² → ℝ³): Positive reflectance ρ(λ) ∈ (0, 1] maps to cone signals x_k = ∫ S(λ, T_illum) ρ(λ) c̄_k(λ) dλ in ℝ³₊ (Grassmann 1853).",
+          "Stage 2 (Reflectance Projector): Weighted P_{A_T} = A_T (A_Tᵀ A_T)⁻¹ A_Tᵀ splits discrete reflectances ρ into a 3D fundamental component and metameric black (adapting Cohen & Kappauf 1982).",
+          "Stage 3 (Weber–Fechner Model Metric): Combining zero self-light offsets (c_k = 0 in Helmholtz 1891–1892) with Stiles’s (1946) Fechner weights yields model ds² = ∑ a_k (dx^k / x^k)².",
+          "Stage 4 (Log-Geodesics & Scale Caveat): Solving ẍ^k + Γ^k_ij ẋ^i ẋ^j = 0 gives x^k(t) = x^k(0)^(1−t) x^k(1)^t (+9.4° illustrative); Bujack et al. (2022) show diminishing returns at large steps."
         ],
         "readouts": [
           {
-            "label": "Riemannian Geodesic Distance (model)",
-            "value": "ds_geo = 42.8 (illustrative units, t = 0.50)"
+            "label": "Geodesic Arc Length (model)",
+            "value": "Δs_geo = 42.8 at t = 0.50 (fixed illustrative)"
           },
           {
-            "label": "Chord vs. Geodesic Hue Difference (model)",
-            "value": "+9.4° for the flat chord (illustrative)"
+            "label": "Chord vs. Geodesic Hue Shift (model)",
+            "value": "+9.4° for the flat chord (fixed illustrative)"
           },
           {
-            "label": "Illuminant Metamerism Index (model)",
-            "value": "ΔE_00 = 0.18 at 6500 K (illustrative)"
+            "label": "Near-Metamer Index (model)",
+            "value": "ΔE_00 = 0.18 at 6500 K (fixed illustrative)"
           },
           {
             "label": "Model Geometry",
-            "value": "Helmholtz-type metric (a model, not a proof)"
+            "value": "c_k = 0 Weber–Fechner metric (model, not a proof)"
           }
         ],
         "spec_plate": {
-          "division": "NAMED FOR CONTEXT: CIE 015:2018 (COLORIMETRY) / ISO/CIE 11664-6 (CIEDE2000)",
-          "title": "81-Band Spectral Reflectance Projection & Riemannian Geodesic Colorimetry Kernel",
-          "body": "Design study: a 5 nm wavelength-resolved (380–780 nm) spectral power and reflectance integration kernel using Jozef Cohen's matrix R projection and geodesic interpolation under a model Riemannian metric.",
-          "meta": "Sources cited, not reproduced: Schrödinger 1920 (DOI 10.1002/andp.19203682202) · MacAdam 1942 (DOI 10.1364/JOSA.32.000247)"
+          "division": "MATHEMATICAL COLORIMETRY & DIFFERENTIAL GEOMETRY · TEACHING STUDY",
+          "title": "Spectral Nullspace Projection & Weber–Fechner Geodesic Study",
+          "body": "Teaching study pairing Grassmann projection and Cohen–Kappauf metamer decomposition with closed-form geodesics under stated assumptions (c_k = 0). No spectral grid solver runs here; readouts are fixed illustrative text.",
+          "meta": "Cited, not reproduced: Schrödinger 1920 (DOI 10.1002/andp.19203682202) · MacAdam 1942 (DOI 10.1364/JOSA.32.000247) · Bujack et al. 2022 (DOI 10.1073/pnas.2119753119)"
         },
         "sidenote_1": {
-          "kicker": "SIDENOTE M.08-A · SCHRÖDINGER'S COLOR METRIC BEFORE QUANTUM MECHANICS",
-          "body": "Six years before his 1926 wave equation, Erwin Schrödinger published a theory of color measurement in Annalen der Physik (1920) that treated color space with a Riemannian line element, building on earlier work by Helmholtz."
+          "kicker": "SIDENOTE M.08-A · HELMHOLTZ (1891–1892) & SCHRÖDINGER (1920)",
+          "body": "Helmholtz proposed a 3D Riemannian color line element in 1891–1892 (Peruzzi & Roberti 2023, DOI 10.1007/s00407-023-00304-2). Schrödinger revived it in 1920, separating affine color matching from Riemannian threshold distance (Roberti & Peruzzi 2023, DOI 10.1007/s00407-023-00317-x)."
         },
         "sidenote_2": {
-          "kicker": "SIDENOTE M.08-B · SPECIFICATION PLATE · COHEN'S MATRIX R & AUTOMOTIVE/ARCHITECTURAL METAMERISM",
-          "body": "When an automotive metallic door panel repainted with a different pigment batch matches the fender at noon (6500 K) but clashes at sunset (3000 K), their reflectance difference ΔR(λ) lies in ker(Π_D65) but outside ker(Π_3000K)."
+          "kicker": "SIDENOTE M.08-B · COHEN–KAPPAUF PROJECTOR & METAMERISM",
+          "body": "Cohen & Kappauf (1982, DOI 10.2307/1422186) premultiply a radiant stimulus by A(AᵀA)⁻¹Aᵀ to isolate its 3D fundamental metamer from metameric blacks. Weighting A into A_T applies orthogonal projection P_{A_T} to discrete reflectances, where shifting 6500 K to 3000 K may expose differences."
         },
         "skill": {
           "filename": "riemannian-color-schrodinger-geodesic-SKILL.md",
           "name": "riemannian-color-schrodinger-geodesic",
-          "description": "AI-agnostic mathematical colorimetry and differential-geometry skill for Grassmann spectral Hilbert projections, Cohen metameric black nullspaces, MacAdam metric tensors, and Schrodinger color geodesics.",
+          "description": "AI-agnostic colorimetry and differential-geometry skill for Grassmann projections, Cohen-Kappauf metamer projectors, MacAdam ellipses, Weber-Fechner geodesics, and non-Riemannian large-difference limits.",
           "rules": [
-            "Project spectral reflectance R(lambda) under illuminant S(lambda, T) onto tristimulus cone space via x_k = int_{380}^{780} S(lambda, T) * R(lambda) * c_bar_k(lambda) d_lambda.",
-            "Decompose R = P_R * R + (I - P_R) * R using Cohen's projection matrix P_R = A * (A^T * A)^{-1} * A^T to isolate fundamental color from metameric blacks in ker(Pi).",
-            "Integrate Riemannian color geodesics under a stated model metric ds^2 = g_ij(x) dx^i dx^j rather than Euclidean chords, and report that the hue paths depend on the chosen metric."
+            "Map reflectance rho(lambda) in [0, 1] to x_k = int S(lambda, T) rho(lambda) c_bar_k(lambda) d_lambda in R^3_{>=0} (strictly positive rho(lambda) in (0, 1] lands in R^3_+), keeping linear codomain R^3 distinct from R^3_+.",
+            "Use Cohen and Kappauf (1982) projector A(A^T A)^{-1}A^T on radiant stimuli, or weighted P_{A_T} = A_T (A_T^T A_T)^{-1} A_T^T on discrete reflectances rho, to separate 3D fundamentals from metameric blacks.",
+            "Distinguish Helmholtz (1891-1892) self-light offsets c_k from Stiles (1946) unequal Fechner weights in model ds^2 = sum a_k (dx^k / x^k)^2, and note Bujack et al. (2022) diminishing returns at large color intervals."
           ]
         },
         "revisions": [
@@ -5925,17 +5925,17 @@
         ],
         "volume": 4,
         "volume_code": "VOL. 04",
-        "reading_time": "22 MIN READ",
-        "word_count": "4,650 WORDS",
+        "reading_time": "19 MIN READ",
+        "word_count": "4,300 WORDS",
         "scite": {
           "doi": "10.1002/andp.19203682202",
-          "fetched_on": "2026-11-08",
-          "citing_publications": 102,
+          "fetched_on": "2026-11-21",
+          "citing_publications": 103,
           "supporting": 0,
           "mentioning": 20,
           "contrasting": 0,
           "retracted": false,
-          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 102 citing publications (0 supporting, 20 mentioning, 0 contrasting) on Erwin Schrödinger's foundational Riemannian differential geometry of perceptual color space and geodesic hue paths."
+          "summary": "Scite index [observed: Scite ML citation classification, accessed 2026-11-21]: 0 retractions; 103 citing publications (0 supporting, 20 mentioning, 0 contrasting) for Schrödinger 1920 (DOI 10.1002/andp.19203682202). Counts describe that paper, not this folio."
         }
       },
       {
