@@ -786,10 +786,10 @@
           }
         ],
         "steps": [
-          "Stage 1 (Coupled Heave-Torsion Modal Kinematics): A model 2,100 m suspension span with deck width B = 36 m oscillates in vertical bending h(x,t) (f_h = 0.095 Hz) and torsion α(x,t) (f_α = 0.235 Hz). These are illustrative values, not a surveyed bridge.",
-          "Stage 2 (Scanlan Aeroelastic Flutter Derivatives): Motion-induced pitching moment M_ae scales with A_2*(K) at reduced velocity U / (f_α B); in the folio model the vented twin-box girder keeps A_2*(K) < 0 up to U_crit = 76.4 m/s, a fixed illustrative value.",
-          "Stage 3 (Physics-Informed Neural Network Virtual Sensing): Embedding the coupled Euler–Bernoulli + Saint-Venant PDE residual R_pde into L_total is the proposed way to reconstruct full-span bending stress from 8 accelerometers. No network was trained for this folio.",
-          "Stage 4 (Orthotropic Steel Deck Fatigue Check, a Proposal): Stress histories from such a digital twin could be compared with the fatigue provisions of a design code such as the AASHTO LRFD Bridge Design Specifications at rib-to-deck welds. The folio performs no code check."
+          "Stage 1 (Modal Kinematics): Model 2,100 m span (B = 36 m) with heave h(x,t) (f_h = 0.095 Hz) and torsion α(x,t) (f_α = 0.235 Hz); illustrative values, not a surveyed bridge.",
+          "Stage 2 (Scanlan Derivatives): Under 1971 2B² moment scaling with per-span I_α, A_2*(K) < 0 keeps the vented twin-box model stable up to an illustrative U_crit = 76.4 m/s.",
+          "Stage 3 (Proposed PINN Residual): Penalizing non-dimensionalized beam and Saint-Venant PDE residuals R_pde could aid 8-sensor stress estimation; untested, no network trained.",
+          "Stage 4 (Proposed Weld Fatigue Check): Estimated rib-to-deck weld stress ranges could be compared against AASHTO LRFD fatigue provisions; no code check is run."
         ],
         "readouts": [
           {
@@ -812,33 +812,33 @@
         "spec_plate": {
           "division": "CSI MASTERFORMAT 05 12 00 / AASHTO LRFD",
           "title": "Streamlined Twin-Box Orthotropic Steel Bridge Girder & Fiber-Bragg PINN Digital Twin",
-          "body": "Aerodynamically vented twin-box structural steel deck girder with central 6.0 m wind slot, nose fairings, and 8-node tri-axial accelerometer / FBG optical strain array feeding an edge Physics-Informed Neural Network virtual stress monitor.",
+          "body": "Design study: vented twin-box steel girder with a 6.0 m central slot, fairings, and an 8-station accelerometer and fiber-Bragg-grating array paired with a proposed PINN monitor.",
           "meta": "Design study · U_crit = 76.4 m/s is a model value, not a wind-tunnel result · no code compliance is claimed"
         },
         "sidenote_1": {
           "kicker": "SIDENOTE E.07-A · WHY TACOMA NARROWS WAS FLUTTER, NOT SIMPLE VORTEX RESONANCE",
-          "body": "Kármán vortex shedding occurs at a Strouhal frequency f_s = St · U / D (about 1 Hz at 19 m/s), whereas Tacoma Narrows twisted at about 0.2 Hz. Billah & Scanlan (1991, DOI 10.1119/1.16590) use this mismatch to argue that the failure was not vortex resonance but self-excited single-degree-of-freedom torsional flutter, in which motion-dependent aerodynamic damping turns negative (A_2*(K) > 0)."
+          "body": "Vortex shedding occurs near f_s = St · U / D (about 1 Hz at 19 m/s), whereas Tacoma Narrows twisted near 0.2 Hz. Billah & Scanlan (1991, DOI 10.1119/1.16590) attribute the collapse to self-excited torsional flutter (A_2*(K) > 0)."
         },
         "sidenote_2": {
           "kicker": "SIDENOTE E.07-B · SPECIFICATION PLATE · CSI 05 12 00 / PINN VIRTUAL SENSING",
-          "body": "By regularizing neural network weights with the fourth-order Euler–Bernoulli operator E I ∂⁴h/∂x⁴ + m ∂²h/∂t² = q_aero(x,t), PINN digital twins are meant to damp unphysical stress oscillations between sparse bridge sensors."
+          "body": "Penalizing bending E I ∂⁴h/∂x⁴ − H_w ∂²h/∂x² + m ∂²h/∂t² − L_aero(x,t) and torsion I_α ∂²α/∂t² − G J ∂²α/∂x² − M_ae(x,t) might curb unphysical curvature spikes between sparse sensors if wind loads are estimated."
         },
         "skill": {
           "filename": "bridge-flutter-pinn-twin-SKILL.md",
           "name": "bridge-flutter-pinn-twin",
           "description": "AI-agnostic structural and wind civil engineering skill for Scanlan bridge aeroelastic flutter derivatives, critical wind speed U_crit, and Physics-Informed Neural Network (PINN) virtual stress sensing.",
           "rules": [
-            "Compute dimensionless reduced velocity U_red = U / (f_alpha * B) and reduced frequency K = B * omega / U = 2 * pi / U_red.",
-            "Evaluate net torsional aeroelastic damping zeta_net = zeta_struct - (rho * B^4 / (2 * I_alpha)) * A_2*(K); instability (flutter) occurs when zeta_net <= 0.",
-            "Balance PINN composite loss L_total = L_data + lambda_pde * ||E*I*u_xxxx + m*u_tt - f_aero||^2 so sparse sensor noise does not violate Euler-Bernoulli equilibrium."
+            "Compute U_red = U / (f_alpha * B) and K = B * omega / U = 2 * pi / U_red.",
+            "Under Scanlan 1971 2B^2 moment scaling (per-span I_alpha in kg*m^2/m), evaluate zeta_net = zeta_s - (rho * B^4 / (2 * I_alpha)) * A_2*^(1971)(K) = zeta_s - (rho * B^4 / (4 * I_alpha)) * A_2*^(1996)(K) with A_2*^(1996) = 2 * A_2*^(1971); flutter starts at zeta_net <= 0.",
+            "Weight non-dimensionalized bending (E I ∂⁴h/∂x⁴ − H_w ∂²h/∂x² + m ∂²h/∂t² − L_aero) and torsion (I_α ∂²α/∂t² − G J ∂²α/∂x² − M_ae) residuals in L_total = L_data + λ_pde ‖R_pde‖²; unmeasured wind makes sparse inversion ill-posed."
           ]
         },
         "revisions": [
           {
             "edition": "REV 1.1",
             "date": "2026-11-14",
-            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. U_crit = 76.4 m/s, net damping +2.84% and the 1.42% PINN error are now labelled as illustrative model values: no wind-tunnel test was run and no network was trained, and the claims of wind-tunnel verification and AASHTO LRFD compliance are withdrawn. The Tacoma Narrows account is cut back to the documented record and cites Scanlan & Tomko 1971 (DOI 10.1061/JMCEA3.0001526) and Billah & Scanlan 1991 (DOI 10.1119/1.16590). Statements that such digital twins are deployed are now written as proposals.",
-            "opus": "Review: references checked by DOI in the Scite index on 2026-11-14; the reduced velocity was recomputed by hand (B = 36 m is now stated)."
+            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. U_crit = 76.4 m/s, net damping +2.84% and the 1.42% PINN error are labeled as illustrative model values: no wind-tunnel test or trained network stands behind them, and wind-tunnel verification and AASHTO LRFD compliance claims are withdrawn. Cites Scanlan & Tomko 1971 (DOI 10.1061/JMCEA3.0001526) and Billah & Scanlan 1991 (DOI 10.1119/1.16590); digital twins are framed as proposals.",
+            "opus": "Review: DOIs checked in Crossref and Scite (2026-11-14; expanded 2026-11-21), with Scanlan 2B² moment scaling and slider readouts stated."
           },
           {
             "edition": "REV 1.0",
@@ -850,16 +850,16 @@
         "volume": 4,
         "volume_code": "VOL. 04",
         "reading_time": "22 MIN READ",
-        "word_count": "4,650 WORDS",
+        "word_count": "5,250 WORDS",
         "scite": {
           "doi": "10.1016/j.jcp.2018.10.045",
-          "fetched_on": "2026-11-08",
-          "citing_publications": 24941,
+          "fetched_on": "2026-11-21",
+          "citing_publications": 25907,
           "supporting": 65,
-          "mentioning": 12640,
+          "mentioning": 13014,
           "contrasting": 4,
           "retracted": false,
-          "summary": "Scite index entry for Raissi, Perdikaris & Karniadakis 2019 (DOI 10.1016/j.jcp.2018.10.045), fetched 2026-11-08: 24,941 citing publications (65 supporting, 12,640 mentioning, 4 contrasting) and no retraction notice. These counts describe that one paper, not this folio."
+          "summary": "Scite index entry for Raissi, Perdikaris & Karniadakis 2019 (DOI 10.1016/j.jcp.2018.10.045), fetched 2026-11-21: 25,907 citing publications (65 supporting, 13,014 mentioning, 4 contrasting) and no retraction notice. These counts describe that one paper, not this folio."
         }
       },
       {

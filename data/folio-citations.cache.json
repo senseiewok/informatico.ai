@@ -607,6 +607,14 @@
     "title": "Useful daylight illuminances: A replacement for daylight factors",
     "year": 2006
   },
+  "doi:10.1016/j.engstruct.2005.09.018": {
+    "fetched": "2026-11-21",
+    "first_author": "Chan",
+    "found": true,
+    "journal": "Engineering Structures",
+    "title": "Fiber Bragg grating sensors for structural health monitoring of Tsing Ma bridge: Background and experimental observation",
+    "year": 2006
+  },
   "doi:10.1016/j.engstruct.2020.111156": {
     "fetched": "2026-11-21",
     "first_author": "Wang",
@@ -640,7 +648,7 @@
     "year": 2019
   },
   "doi:10.1016/j.jcp.2018.10.045": {
-    "fetched": "2026-11-04",
+    "fetched": "2026-11-21",
     "first_author": "Raissi",
     "found": true,
     "journal": "Journal of Computational Physics",
@@ -774,6 +782,14 @@
     "journal": "",
     "title": "The Stone Skeleton",
     "year": 1995
+  },
+  "doi:10.1017/dce.2024.4": {
+    "fetched": "2026-11-21",
+    "first_author": "Al-Adly",
+    "found": true,
+    "journal": "Data-Centric Engineering",
+    "title": "Physics-informed neural networks for structural health monitoring: a case study for Kirchhoff-Love plates",
+    "year": 2024
   },
   "doi:10.1017/fmp.2017.1": {
     "fetched": "2026-11-21",
@@ -1215,6 +1231,14 @@
     "title": "Size Effect in Blunt Fracture: Concrete, Rock, Metal",
     "year": 1984
   },
+  "doi:10.1061/(asce)0733-9399(1994)120:8(1718)": {
+    "fetched": "2026-11-21",
+    "first_author": "Sarkar",
+    "found": true,
+    "journal": "Journal of Engineering Mechanics",
+    "title": "Identification of Aeroelastic Parameters of Flexible Bridges",
+    "year": 1994
+  },
   "doi:10.1061/(asce)0733-9399(2009)135:2(78)": {
     "fetched": "2026-11-21",
     "first_author": "Bažant",
@@ -1223,6 +1247,14 @@
     "title": "Universal Size Effect Law and Effect of Crack Depth on Quasi-Brittle Structure Strength",
     "year": 2009
   },
+  "doi:10.1061/(asce)0733-9445(1996)122:7(716)": {
+    "fetched": "2026-11-21",
+    "first_author": "Jain",
+    "found": true,
+    "journal": "Journal of Structural Engineering",
+    "title": "Coupled Flutter and Buffeting Analysis of Long-Span Bridges",
+    "year": 1996
+  },
   "doi:10.1061/(asce)ae.1943-5568.0000430": {
     "fetched": "2026-11-20",
     "first_author": "Tang",
@@ -1230,6 +1262,22 @@
     "journal": "Journal of Architectural Engineering",
     "title": "Gridshell as Formwork: Proof of Concept for a New Technique for Constructing Thin Concrete Shells Supported by Gridshell as Formwork",
     "year": 2020
+  },
+  "doi:10.1061/(asce)be.1943-5592.0000181": {
+    "fetched": "2026-11-21",
+    "first_author": "Ya",
+    "found": true,
+    "journal": "Journal of Bridge Engineering",
+    "title": "Fatigue Evaluation of Rib-to-Deck Welded Joints of Orthotropic Steel Bridge Deck",
+    "year": 2011
+  },
+  "doi:10.1061/(asce)be.1943-5592.0000645": {
+    "fetched": "2026-11-21",
+    "first_author": "Yang",
+    "found": true,
+    "journal": "Journal of Bridge Engineering",
+    "title": "Aerodynamic Stabilization Mechanism of a Twin Box Girder with Various Slot Widths",
+    "year": 2015
   },
   "doi:10.1061/(asce)gt.1943-5606.0000073": {
     "fetched": "2026-11-04",
@@ -1256,7 +1304,7 @@
     "year": 2021
   },
   "doi:10.1061/jmcea3.0001526": {
-    "fetched": "2026-11-14",
+    "fetched": "2026-11-21",
     "first_author": "Scanlan",
     "found": true,
     "journal": "Journal of the Engineering Mechanics Division",
@@ -2456,7 +2504,7 @@
     "year": 2023
   },
   "doi:10.1119/1.16590": {
-    "fetched": "2026-11-14",
+    "fetched": "2026-11-21",
     "first_author": "Billah",
     "found": true,
     "journal": "American Journal of Physics",
