@@ -15,6 +15,14 @@
     "title": "Inhaled Nanoformulated mRNA Polyplexes for Protein Production in Lung Epithelium",
     "year": 2019
   },
+  "doi:10.1002/andp.18531650505": {
+    "fetched": "2026-11-21",
+    "first_author": "Grassmann",
+    "found": true,
+    "journal": "Annalen der Physik",
+    "title": "Zur Theorie der Farbenmischung",
+    "year": 1853
+  },
   "doi:10.1002/andp.19053221004": {
     "fetched": "2026-11-08",
     "first_author": "Einstein",
@@ -46,6 +54,22 @@
     "journal": "Annalen der Physik",
     "title": "Grundlinien einer Theorie der Farbenmetrik im Tagessehen",
     "year": 1920
+  },
+  "doi:10.1002/col.1049": {
+    "fetched": "2026-11-21",
+    "first_author": "Luo",
+    "found": true,
+    "journal": "Color Research &amp; Application",
+    "title": "The development of the CIE 2000 colour‐difference formula: CIEDE2000",
+    "year": 2001
+  },
+  "doi:10.1002/col.20070": {
+    "fetched": "2026-11-21",
+    "first_author": "Sharma",
+    "found": true,
+    "journal": "Color Research &amp; Application",
+    "title": "The CIEDE2000 color-difference formula: Implementation notes, supplementary test data, and mathematical observations",
+    "year": 2005
   },
   "doi:10.1002/eqe.2390": {
     "fetched": "2026-11-14",
@@ -318,6 +342,22 @@
     "journal": "Inventiones mathematicae",
     "title": "The Navier–Stokes limit of the Boltzmann equation for bounded collision kernels",
     "year": 2003
+  },
+  "doi:10.1007/s00407-023-00304-2": {
+    "fetched": "2026-11-21",
+    "first_author": "Peruzzi",
+    "found": true,
+    "journal": "Archive for History of Exact Sciences",
+    "title": "Helmholtz and the geometry of color space: gestation and development of Helmholtz’s line element",
+    "year": 2023
+  },
+  "doi:10.1007/s00407-023-00317-x": {
+    "fetched": "2026-11-21",
+    "first_author": "Roberti",
+    "found": true,
+    "journal": "Archive for History of Exact Sciences",
+    "title": "The Helmholtz legacy in color metrics: Schrödinger’s color theory",
+    "year": 2023
   },
   "doi:10.1007/s004190050248": {
     "fetched": "2026-11-10",
@@ -1583,6 +1623,14 @@
     "title": "Molecular structure of the ATP-bound, phosphorylated human CFTR",
     "year": 2018
   },
+  "doi:10.1073/pnas.2119753119": {
+    "fetched": "2026-11-21",
+    "first_author": "Bujack",
+    "found": true,
+    "journal": "Proceedings of the National Academy of Sciences",
+    "title": "The non-Riemannian nature of perceptual color space",
+    "year": 2022
+  },
   "doi:10.1074/jbc.m112.371264": {
     "fetched": "2026-11-04",
     "first_author": "",
@@ -1726,6 +1774,14 @@
     "journal": "Reports on Progress in Physics",
     "title": "Stochastic thermodynamics, fluctuation theorems and molecular machines",
     "year": 2012
+  },
+  "doi:10.1088/0959-5309/58/1/305": {
+    "fetched": "2026-11-21",
+    "first_author": "Stiles",
+    "found": true,
+    "journal": "Proceedings of the Physical Society",
+    "title": "A modified Helmholtz line-element in brightness-colour space",
+    "year": 1946
   },
   "doi:10.1088/1361-6382/abebf2": {
     "fetched": "2026-11-09",
@@ -3510,6 +3566,14 @@
     "journal": "Quantum",
     "title": "Witnessing mass-energy equivalence with trapped atom interferometers",
     "year": 2025
+  },
+  "doi:10.2307/1422186": {
+    "fetched": "2026-11-21",
+    "first_author": "Cohen",
+    "found": true,
+    "journal": "The American Journal of Psychology",
+    "title": "Metameric Color Stimuli, Fundamental Metamers, and Wyszecki's Metameric Blacks",
+    "year": 1982
   },
   "doi:10.2307/2118559": {
     "fetched": "2026-11-04",
