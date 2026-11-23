@@ -76,19 +76,19 @@ FOLIO = {'folio_id': 'A.03',
                 'date': '2026-11-02',
                 'summary': 'REV 1.2 (Redated 2026-11-02): Added a double-skin facade cavity buoyancy model with '
                            'illustrative air-change and solar factor values.',
-                'opus': 'Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier \'verified\' '
+                'opus': 'Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier \'verified\' '
                         'wording (and its Δp = 4.2 Pa, which the formula does not give) is withdrawn in REV 1.3.'},
                {'edition': 'REV 1.1',
                 'date': '2026-11-01',
                 'summary': 'REV 1.1 (Redated 2026-11-01): Added CSI 08 44 13 acoustic labyrinth sill detail and '
                            'EnergyPlus BSDF optical matrix parameters.',
-                'opus': 'Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier \'verified\' '
+                'opus': 'Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier \'verified\' '
                         'ζ_tot = 6.85 is withdrawn in REV 1.3; v = 0.84 m/s needs ζ_tot ≈ 9.3.'},
                {'edition': 'REV 1.0',
                 'date': '2026-10-30',
                 'summary': 'REV 1.0 (Published 2026-10-30): Initial thermosiphon double-skin facade stack ventilation '
                            'monograph.',
-                'opus': 'Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier \'verified\' '
+                'opus': 'Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier \'verified\' '
                         'wording is withdrawn in REV 1.3.'}],
  'reading_time': '22 MIN READ',
  'word_count': '4,650 WORDS',

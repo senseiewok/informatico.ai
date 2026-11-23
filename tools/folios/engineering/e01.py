@@ -102,7 +102,7 @@ FOLIO = {'folio_id': 'E.01',
                            'continuum (sqrt(kappa)), discrete Helmholtz-Hodge decomposition, and '
                            'Broadbent-Hammersley percolation (phi_c = 0.5927, CSI 03 30 00 / 07 16 '
                            '00) with multi-model peer review.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): checked that '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): checked that '
                         'sqrt(kappa) = 13.09 nm follows from the page formula. The word '
                         '"Verified" in this note and in the notes below, and the claim of '
                         'parity with CSI specifications, are withdrawn in REV 1.4: CSI section '
@@ -112,19 +112,19 @@ FOLIO = {'folio_id': 'E.01',
                 'summary': 'REV 1.2 (Redated 2026-11-01): Coupled civil capillary-active mineral '
                            'lime mortar physics to capillary pore network percolation in mineral '
                            'lime mortars and porous stone.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         '√κ = 13.09 nm static and dynamic parity.'},
                {'edition': 'REV 1.1',
                 'date': '2026-10-28',
                 'summary': 'REV 1.1 (Redated 2026-10-28): Added discrete Helmholtz-Hodge flux '
                            'decomposition.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified L2 '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified L2 '
                         'orthogonality on finite-volume cell faces.'},
                {'edition': 'REV 1.0',
                 'date': '2026-10-22',
                 'summary': 'REV 1.0 (Published 2026-10-22): Initial Darcy-Brinkman momentum '
                            'balance monograph.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'subcritical arrest below φ_c = 0.5927.'}],
  'volume': 1,
  'volume_code': 'VOL. 01',

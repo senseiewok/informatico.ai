@@ -137,7 +137,7 @@ FOLIO = {'folio_id': 'M.11',
                            "10.1515/crll.1989.399.1) via Wang–Zahl's 3D Kakeya proof "
                            '(arXiv:2502.17655), Guth–Maynard 30/13 (arXiv:2405.20552), and '
                            'anthropics/formal-math.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): '
                         'Verified 3D Kakeya tube overlap exponent, Guth-Maynard 30/13 vs. Huxley '
                         "12/5, and prime gap exponent 17/30. (REV 1.1: this 'verified' wording is "
                         'withdrawn; 17/30 is a short-interval exponent, not a prime-gap bound, '

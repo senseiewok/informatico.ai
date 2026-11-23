@@ -116,6 +116,8 @@ May your questions be good, your checks honest, and your exploring full of joy.
 - [X.05 (TOOL-FAB-1) Tapered Strut Meshes: Watertight 3MF & Overhangs](https://informatico.ai/toolchain/x05/): How an illustrative four-station tapered strut is exported to closed 2-manifold 3MF, GLB and STEP files with Python frustum volume and overhang checks.
 - [X.06 (TOOL-PHYS-MATH-1) Topological Metamaterial Cells and Betti Verifier](https://informatico.ai/toolchain/x06/): How pierced genus-one acoustic metamaterial unit cells are exported to GLB, 3MF and STEP while a Python verifier checks Euler and Betti invariants.
 - [X.07 (TOOL-CORE-2) Gauss–Bonnet Curvature & Cotangent Mesh Audit](https://informatico.ai/toolchain/x07/): How pure Python checks discrete Gauss–Bonnet closure, Meyer mixed Voronoi areas, and cotangent edge weights across GLB, 3MF, and STEP.
+- [Lean 4 Proof Observatory & Formal Math](https://informatico.ai/toolchain/proof-observatory/): How Lean 4 kernel checking works and how to audit public repositories on Fermat's Last Theorem, zeta zeros, 3SUM-APSP, and k-CNF counting.
+- [The AI Loop · Local Models & Verifiers](https://informatico.ai/toolchain/ai-loop/): Architecture for pairing open-weight local models on Ollama with frontier orchestration, tool-free diff review, and planted-defect Python verifiers.
 
 ## Time & Gravity · Fourteen Pages on an Open Problem (T.00–T.13)
 

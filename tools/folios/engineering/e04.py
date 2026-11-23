@@ -106,7 +106,7 @@ FOLIO = {'folio_id': 'E.04',
                            'enthalpy recovery (epsilon = NTU / (1 + NTU), CSI 23 72 23) and '
                            'selective vapor permeation across polymer membranes with 4-Seat '
                            'Multi-Lineage Council review.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): checked that '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): checked that '
                         'epsilon_s = 88.2% (NTU = 7.5) and epsilon_l = 79.4% follow from the page '
                         'formula. The word "Verified" in this note and the note below is '
                         'withdrawn in REV 1.2, and the -12.5 °C frost limit is an illustrative '
@@ -115,7 +115,7 @@ FOLIO = {'folio_id': 'E.04',
                 'date': '2026-11-01',
                 'summary': 'REV 1.0 (Published 2026-11-01): Initial publication of counter-current '
                            'membrane enthalpy recovery and frost-limit psychrometrics.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'balanced counter-current limit lim_{C_r -> 1} ε(NTU, C_r) = NTU / (1 + '
                         'NTU) = 88.24%.'}],
  'volume': 2,

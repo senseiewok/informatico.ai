@@ -29,7 +29,7 @@ FOLIO = {'category_code': 'P',
               {'label': 'Aero-Elastic Stability Verdict', 'value': 'ATTACHED · ZERO PORPOISING'}],
  'revisions': [{'date': '2026-11-02',
                 'edition': 'REV 1.0',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified -C_p '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified -C_p '
                         '= 2.84 throat suction, -C_L = 3.38 Z-mode downforce, and h_crit = 19.0 mm '
                         'Hopf stall boundary.',
                 'summary': 'REV 1.0 (Published 2026-11-02): Inaugural Volume IV Formula 1 fluid '

@@ -136,7 +136,7 @@ FOLIO = {'folio_id': 'E.12',
                            'Infrastructure monograph synthesizing E.06, P.02, and M.07 with '
                            'Control Barrier Functions (DOI 10.1109/TAC.2016.2638961) and '
                            'PyPSA/PyPSA.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): '
                         'reviewed the swing equation and the CBF-QP Lie-derivative condition. Its '
                         'statement on the provenance of the processor proof is withdrawn in '
                         'REV 1.1.'}],

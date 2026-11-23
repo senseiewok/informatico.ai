@@ -24,7 +24,7 @@ FOLIO = {'category_code': 'P',
               {'label': 'Reference Values', 'value': 'STATED IN ESSAY'}],
  'revisions': [{'date': '2026-11-02',
                 'edition': 'REV 1.2',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Donnan osmotic equilibrium Delta Pi = 2.5 kPa, critical PCL threshold '
                         'h_PCL = 7.0 um, and CSI 11 53 53 / 13 21 00 Ussing electrophysiology '
                         'compliance.',
@@ -35,7 +35,7 @@ FOLIO = {'category_code': 'P',
                            'CFTR deficit.'},
                {'date': '2026-11-01',
                 'edition': 'REV 1.1',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Donnan osmotic pressure Delta Pi = 2.5 kPa, critical PCL threshold h_PCL '
                         '= 7 um, and CSI 11 53 53 / 13 21 00 biosafety integration.',
                 'summary': 'REV 1.1 (Redated 2026-11-01): Added CSI MasterFormat 11 53 53 / 13 21 '
@@ -44,7 +44,7 @@ FOLIO = {'category_code': 'P',
                            'desiccation.'},
                {'date': '2026-11-01',
                 'edition': 'REV 1.0',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'trans-epithelial ion fluxes, Donnan swelling pressures, and catastrophic '
                         'osmotic PCL thinning under CFTR deficiency.',
                 'summary': 'REV 1.0 (Inaugural Edition 2026-11-01): Nernst-Planck electrokinetics, '

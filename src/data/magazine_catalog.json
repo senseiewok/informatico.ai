@@ -100,25 +100,25 @@
             "edition": "REV 1.3",
             "date": "2026-11-02",
             "summary": "REV 1.3 (Redated 2026-11-02): Verified Stokes-Brinkman porous continuum (sqrt(kappa)), discrete Helmholtz-Hodge decomposition, and Broadbent-Hammersley percolation (phi_c = 0.5927, CSI 03 30 00 / 07 16 00) with multi-model peer review.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): checked that sqrt(kappa) = 13.09 nm follows from the page formula. The word \"Verified\" in this note and in the notes below, and the claim of parity with CSI specifications, are withdrawn in REV 1.4: CSI section numbers classify work and contain no such values."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): checked that sqrt(kappa) = 13.09 nm follows from the page formula. The word \"Verified\" in this note and in the notes below, and the claim of parity with CSI specifications, are withdrawn in REV 1.4: CSI section numbers classify work and contain no such values."
           },
           {
             "edition": "REV 1.2",
             "date": "2026-11-01",
             "summary": "REV 1.2 (Redated 2026-11-01): Coupled civil capillary-active mineral lime mortar physics to capillary pore network percolation in mineral lime mortars and porous stone.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified √κ = 13.09 nm static and dynamic parity."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified √κ = 13.09 nm static and dynamic parity."
           },
           {
             "edition": "REV 1.1",
             "date": "2026-10-28",
             "summary": "REV 1.1 (Redated 2026-10-28): Added discrete Helmholtz-Hodge flux decomposition.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified L2 orthogonality on finite-volume cell faces."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified L2 orthogonality on finite-volume cell faces."
           },
           {
             "edition": "REV 1.0",
             "date": "2026-10-22",
             "summary": "REV 1.0 (Published 2026-10-22): Initial Darcy-Brinkman momentum balance monograph.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified subcritical arrest below φ_c = 0.5927."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified subcritical arrest below φ_c = 0.5927."
           }
         ],
         "volume": 1,
@@ -232,19 +232,19 @@
             "edition": "REV 1.3",
             "date": "2026-11-02",
             "summary": "REV 1.3 (Redated 2026-11-02): Verified Herschel-Bulkley yield-stress concrete rheology (tau = tau_0 + K * gamma_dot^n), 125 mm steel slickline plug core (r_p/R = tau_0/tau_w), Buckingham-Reiner velocity profile, and PCE dispersion (ACI 304.2R, CSI 03 30 00).",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): checked that tau_w = 75.0 Pa and r_p/R = 37.3% follow from the page formulas. The word \"Verified\" in this note and in the notes below, and the PCE-to-mucolytic bridge, are withdrawn in REV 1.4."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): checked that tau_w = 75.0 Pa and r_p/R = 37.3% follow from the page formulas. The word \"Verified\" in this note and in the notes below, and the PCE-to-mucolytic bridge, are withdrawn in REV 1.4."
           },
           {
             "edition": "REV 1.2",
             "date": "2026-11-01",
             "summary": "REV 1.2 (Redated 2026-11-01): Unified 125 mm steel slickline Herschel-Bulkley concrete pumping & tremie placement observatory with PCE-to-mucolytic yield-stress bridge.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified wall shear stress τ_w = (ΔP·R)/(2L) = 75.0 Pa at ΔP/L = 2.40 kPa/m and plug ratio r_p/R = 37.3%."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified wall shear stress τ_w = (ΔP·R)/(2L) = 75.0 Pa at ΔP/L = 2.40 kPa/m and plug ratio r_p/R = 37.3%."
           },
           {
             "edition": "REV 1.1",
             "date": "2026-10-29",
             "summary": "REV 1.1 (Redated 2026-10-29): Added Buckingham-Reiner fourth-order plug-flow polynomial verification.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified zero-flow arrest when τ_w ≤ τ_0."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified zero-flow arrest when τ_w ≤ τ_0."
           }
         ],
         "volume": 1,
@@ -358,19 +358,19 @@
             "edition": "REV 1.2",
             "date": "2026-11-02",
             "summary": "REV 1.2 (Redated 2026-11-02): Verified sub-wavelength Helmholtz viscothermal acoustic metamaterials (delta_v = sqrt(2*nu/omega), CSI 09 84 13) with multi-model peer review.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): checked that delta_v = 0.174 mm follows from the page formula. The word \"Verified\" in this note and in the notes below is withdrawn in REV 1.3."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): checked that delta_v = 0.174 mm follows from the page formula. The word \"Verified\" in this note and in the notes below is withdrawn in REV 1.3."
           },
           {
             "edition": "REV 1.1",
             "date": "2026-11-01",
             "summary": "REV 1.1 (Redated 2026-11-01): Added CSI 09 84 13 cleanroom panel spec.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified reflection coefficient |R|² = 0.002 at Z_s/Z_0 = 1.04 + 0.08i."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified reflection coefficient |R|² = 0.002 at Z_s/Z_0 = 1.04 + 0.08i."
           },
           {
             "edition": "REV 1.0",
             "date": "2026-10-31",
             "summary": "REV 1.0 (Published 2026-10-31): Initial Stinson viscothermal Helmholtz metamaterial monograph.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified δ_v = 0.174 mm."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified δ_v = 0.174 mm."
           }
         ],
         "volume": 2,
@@ -484,13 +484,13 @@
             "edition": "REV 1.1",
             "date": "2026-11-02",
             "summary": "REV 1.1 (Redated 2026-11-02): Verified Kays & London counter-current enthalpy recovery (epsilon = NTU / (1 + NTU), CSI 23 72 23) and selective vapor permeation across polymer membranes with 4-Seat Multi-Lineage Council review.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): checked that epsilon_s = 88.2% (NTU = 7.5) and epsilon_l = 79.4% follow from the page formula. The word \"Verified\" in this note and the note below is withdrawn in REV 1.2, and the -12.5 °C frost limit is an illustrative estimate, not a verified result."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): checked that epsilon_s = 88.2% (NTU = 7.5) and epsilon_l = 79.4% follow from the page formula. The word \"Verified\" in this note and the note below is withdrawn in REV 1.2, and the -12.5 °C frost limit is an illustrative estimate, not a verified result."
           },
           {
             "edition": "REV 1.0",
             "date": "2026-11-01",
             "summary": "REV 1.0 (Published 2026-11-01): Initial publication of counter-current membrane enthalpy recovery and frost-limit psychrometrics.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified balanced counter-current limit lim_{C_r -> 1} ε(NTU, C_r) = NTU / (1 + NTU) = 88.24%."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified balanced counter-current limit lim_{C_r -> 1} ε(NTU, C_r) = NTU / (1 + NTU) = 88.24%."
           }
         ],
         "volume": 2,
@@ -604,13 +604,13 @@
             "edition": "REV 1.1",
             "date": "2026-11-02",
             "summary": "REV 1.1 (Redated 2026-11-02): Verified Karl Terzaghi effective stress (sigma'_v = sigma_v - u) & 1D consolidation (du/dt = c_v d^2u/dz^2), CFA deep foundation shaft + toe bearing (Q_ult = Q_skin + Q_toe), and Seed-Idriss liquefaction surcharge (r_u = Delta_u / sigma'_v0, CSI 31 63 23, FHWA GEC-8).",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): reviewed the consolidation formulas. The word \"Verified\" in this note and the note below is withdrawn in REV 1.2; the earlier readouts (64.2%, 4,180 kN, r_u = 0.28) did not follow from the page model."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): reviewed the consolidation formulas. The word \"Verified\" in this note and the note below is withdrawn in REV 1.2; the earlier readouts (64.2%, 4,180 kN, r_u = 0.28) did not follow from the page model."
           },
           {
             "edition": "REV 1.0",
             "date": "2026-11-01",
             "summary": "REV 1.0 (Published 2026-11-01): Initial 5-Act civil geotechnical monograph on Terzaghi effective stress consolidation, CSI 31 63 23 CFA deep piling, and Seed-Idriss liquefaction surcharge.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Fourier series consolidation isochrones, T_v = c_v t / H_dr² scaling, and effective-stress CFA shaft capacity."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified Fourier series consolidation isochrones, T_v = c_v t / H_dr² scaling, and effective-stress CFA shaft capacity."
           }
         ],
         "volume": 3,
@@ -724,13 +724,13 @@
             "edition": "REV 1.1",
             "date": "2026-11-02",
             "summary": "REV 1.1 (Redated 2026-11-02): Verified nonlinear structural dynamics (M*u_ddot + C*u_dot + F_s(u) = -M*u_ddot_g(t)), ASCE 7-22 Chapter 17 inelastic response spectra (S_DS, B_M), and Robinson bilinear Lead-Rubber Bearing (LRB) seismic base isolation (CSI 13 48 00).",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): reviewed the period-lengthening formulas. The word \"Verified\" in this note and the note below is withdrawn in REV 1.2, as are the drift figure 0.32% and the displacement D_M = 232 mm, which did not follow from the page formula."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): reviewed the period-lengthening formulas. The word \"Verified\" in this note and the note below is withdrawn in REV 1.2, as are the drift figure 0.32% and the displacement D_M = 232 mm, which did not follow from the page formula."
           },
           {
             "edition": "REV 1.0",
             "date": "2026-11-01",
             "summary": "REV 1.0 (Published 2026-11-01): Initial 5-Act structural dynamics monograph on ASCE 7-22 inelastic response spectra, Robinson lead-rubber seismic isolators, and Risk Category IV hospital resilience.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified bilinear hysteresis energy E_loop = 4 Q_d (D_M - D_y), effective damping β_eff = 22.0%, and ASCE 7-22 spectral displacement D_M = 232 mm."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified bilinear hysteresis energy E_loop = 4 Q_d (D_M - D_y), effective damping β_eff = 22.0%, and ASCE 7-22 spectral displacement D_M = 232 mm."
           }
         ],
         "volume": 3,
@@ -845,7 +845,7 @@
             "edition": "REV 1.0",
             "date": "2026-11-02",
             "summary": "REV 1.0 (Published 2026-11-02): Inaugural Volume IV civil structural & wind engineering monograph uniting Scanlan aeroelastic flutter derivatives with Raissi-Perdikaris-Karniadakis PINN bridge digital twins (DOI 10.1016/j.jcp.2018.10.045).",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified U_crit = 76.4 m/s twin-box flutter boundary and 1.42% PINN virtual sensing error at lambda_pde = 1.00. The word \"Verified\" is withdrawn in REV 1.1: both figures are illustrative model values."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified U_crit = 76.4 m/s twin-box flutter boundary and 1.42% PINN virtual sensing error at lambda_pde = 1.00. The word \"Verified\" is withdrawn in REV 1.1: both figures are illustrative model values."
           }
         ],
         "volume": 4,
@@ -959,7 +959,7 @@
             "edition": "REV 1.0",
             "date": "2026-11-02",
             "summary": "REV 1.0 (Published 2026-11-02): Inaugural Volume IV geotechnical & underground tunneling monograph uniting Peck-Mair Gaussian settlement troughs (DOI 10.1680/geot.1993.43.2.315) with EPB-TBM chamber mechanics and GNN subsurface digital twins.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified exact Gaussian integral V_s = sqrt(2*pi)*i*S_max = 0.565 m^3/m and S_max = 18.8 mm at V_L = 0.75%, D = 9.8 m, i = 12.0 m. This was an arithmetic check only; no other verification is claimed."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified exact Gaussian integral V_s = sqrt(2*pi)*i*S_max = 0.565 m^3/m and S_max = 18.8 mm at V_L = 0.75%, D = 9.8 m, i = 12.0 m. This was an arithmetic check only; no other verification is claimed."
           }
         ],
         "volume": 4,
@@ -1078,7 +1078,7 @@
             "edition": "REV 1.0",
             "date": "2026-11-03",
             "summary": "REV 1.0 (Published 2026-11-03): Volume V civil materials monograph continuing Folio E.01 & E.07 by uniting Lucas-Washburn capillary imbibition, Jonkers bacterial CaCO3 mineralization (DOI 10.1016/j.ecoleng.2008.12.036), and Coda-Wave Interferometry.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Checked cubic Poiseuille leakage reduction (1 - (0.018/0.30)^3) = 99.978% and Michaelis-Menten calcite molar volume balance. The word \"Verified\" is withdrawn in REV 1.1: these are model values, not measurements."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Checked cubic Poiseuille leakage reduction (1 - (0.018/0.30)^3) = 99.978% and Michaelis-Menten calcite molar volume balance. The word \"Verified\" is withdrawn in REV 1.1: these are model values, not measurements."
           }
         ],
         "volume": 5,
@@ -1197,7 +1197,7 @@
             "edition": "REV 1.0",
             "date": "2026-11-03",
             "summary": "REV 1.0 (Published 2026-11-03): Volume V additive civil construction monograph continuing Folio E.02 & A.01 via Nicolas Roussel's 3DCP thixotropic structuration (DOI 10.1016/j.cemconres.2018.04.005) and Suiker elastic buckling laws.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Reviewed von Mises base shear rho*g*H/sqrt(3) vs. Roussel A_thix build-up rate and Suiker buckling scaling. The word \"Verified\" is withdrawn in REV 1.1: the published 2.84 m / SF 1.68 figures did not follow from the formula."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Reviewed von Mises base shear rho*g*H/sqrt(3) vs. Roussel A_thix build-up rate and Suiker buckling scaling. The word \"Verified\" is withdrawn in REV 1.1: the published 2.84 m / SF 1.68 figures did not follow from the formula."
           }
         ],
         "volume": 5,
@@ -1316,7 +1316,7 @@
             "edition": "REV 1.0",
             "date": "2026-11-07",
             "summary": "REV 1.0 (Published 2026-11-07): Volume VI Civil Engineering flagship continuing Folio E.10 (DOI 10.1016/j.cemconres.2018.04.005) via SIMP continuum topology optimization, Michell trusses, and skyscraper inerter damping.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Reviewed SIMP adjoint sensitivity, Helmholtz filter length scale, and Smith inerter transfer function. The word \"Verified\" is withdrawn in REV 1.1: no FE run or measurement backed the headline numbers."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Reviewed SIMP adjoint sensitivity, Helmholtz filter length scale, and Smith inerter transfer function. The word \"Verified\" is withdrawn in REV 1.1: no FE run or measurement backed the headline numbers."
           }
         ],
         "volume": 6,
@@ -1436,7 +1436,7 @@
             "edition": "REV 1.0",
             "date": "2026-11-07",
             "summary": "REV 1.0 (Published 2026-11-07): Volume VI Cyber-Physical Infrastructure monograph synthesizing E.06, P.02, and M.07 with Control Barrier Functions (DOI 10.1109/TAC.2016.2638961) and PyPSA/PyPSA.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): reviewed the swing equation and the CBF-QP Lie-derivative condition. Its statement on the provenance of the processor proof is withdrawn in REV 1.1."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): reviewed the swing equation and the CBF-QP Lie-derivative condition. Its statement on the provenance of the processor proof is withdrawn in REV 1.1."
           }
         ],
         "volume": 6,
@@ -1989,25 +1989,25 @@
             "edition": "REV 1.3",
             "date": "2026-11-02",
             "summary": "REV 1.3 (Redated 2026-11-02): Reported a +7.08 °C margin between the illustrative surface temperature and the dew point. No certification or fungal-reservoir prevention was measured; earlier wording is withdrawn in REV 1.4.",
-            "opus": "Council review of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B); the earlier word \"verified\" is withdrawn in REV 1.4 because nothing was measured. Arithmetic reviewed: horizontal thrust H = 216.0 kN, kern safety factor SF = 9.38, and f_Rsi >= 0.70 condensation protection."
+            "opus": "Cross-model check of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B); the earlier word \"verified\" is withdrawn in REV 1.4 because nothing was measured. Arithmetic reviewed: horizontal thrust H = 216.0 kN, kern safety factor SF = 9.38, and f_Rsi >= 0.70 condensation protection."
           },
           {
             "edition": "REV 1.2",
             "date": "2026-11-01",
             "summary": "REV 1.2 (Redated 2026-11-01): Added dynamic Maxwell-Cremona Reciprocal Force Dual SVG and CSI 05 12 00 / 07 21 00 UHPC thermal-break plate.",
-            "opus": "Council review of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B); the earlier word \"verified\" is withdrawn in REV 1.4 because nothing was measured. Arithmetic reviewed: H = 216.0 kN, SF = 9.38, and f_Rsi ≥ 0.70 condensation margin."
+            "opus": "Cross-model check of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B); the earlier word \"verified\" is withdrawn in REV 1.4 because nothing was measured. Arithmetic reviewed: H = 216.0 kN, SF = 9.38, and f_Rsi ≥ 0.70 condensation margin."
           },
           {
             "edition": "REV 1.1",
             "date": "2026-10-27",
             "summary": "REV 1.1 (Redated 2026-10-27): Coupled 1:50 vault section to 1:5 EN ISO 13788 Glaser dew-point loupe.",
-            "opus": "Council review of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B); the earlier word \"verified\" is withdrawn in REV 1.4 because nothing was measured. Arithmetic reviewed: T_si = 16.4 °C > T_dew = 9.3 °C at 20 °C / 50% RH."
+            "opus": "Cross-model check of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B); the earlier word \"verified\" is withdrawn in REV 1.4 because nothing was measured. Arithmetic reviewed: T_si = 16.4 °C > T_dew = 9.3 °C at 20 °C / 50% RH."
           },
           {
             "edition": "REV 1.0",
             "date": "2026-10-20",
             "summary": "REV 1.0 (Published 2026-10-20): Initial 1:50 funicular catenary vault form diagram.",
-            "opus": "Council review of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B); the earlier word \"verified\" is withdrawn in REV 1.4 because nothing was measured. Arithmetic reviewed: middle-third kern boundary |e| ≤ 100 mm."
+            "opus": "Cross-model check of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B); the earlier word \"verified\" is withdrawn in REV 1.4 because nothing was measured. Arithmetic reviewed: middle-third kern boundary |e| ≤ 100 mm."
           }
         ],
         "reading_time": "22 MIN READ",
@@ -2117,19 +2117,19 @@
             "edition": "REV 1.2",
             "date": "2026-11-02",
             "summary": "REV 1.2 (Redated 2026-11-02): Added a notched lap joint shear utilization and a gridshell buckling factor SF = 3.74, with the portable reciprocal-timber-nexorade skill.",
-            "opus": "Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.3: nothing was built, tested or checked against EN 1995-1-1."
+            "opus": "Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.3: nothing was built, tested or checked against EN 1995-1-1."
           },
           {
             "edition": "REV 1.1",
             "date": "2026-11-01",
             "summary": "REV 1.1 (Redated 2026-11-01): Added CSI 06 18 00 CNC glulam specification plate and perpendicular-to-grain splitting reinforcement check.",
-            "opus": "Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording for k_v = 0.78 and utilization 0.64 is withdrawn in REV 1.3: these are illustrative values."
+            "opus": "Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording for k_v = 0.78 and utilization 0.64 is withdrawn in REV 1.3: these are illustrative values."
           },
           {
             "edition": "REV 1.0",
             "date": "2026-10-25",
             "summary": "REV 1.0 (Published 2026-10-25): Initial publication of reciprocal nexorade kinematics and 1:5 CNC lap joinery.",
-            "opus": "Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.3."
+            "opus": "Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.3."
           }
         ],
         "reading_time": "22 MIN READ",
@@ -2239,19 +2239,19 @@
             "edition": "REV 1.2",
             "date": "2026-11-02",
             "summary": "REV 1.2 (Redated 2026-11-02): Added a double-skin facade cavity buoyancy model with illustrative air-change and solar factor values.",
-            "opus": "Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording (and its Δp = 4.2 Pa, which the formula does not give) is withdrawn in REV 1.3."
+            "opus": "Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording (and its Δp = 4.2 Pa, which the formula does not give) is withdrawn in REV 1.3."
           },
           {
             "edition": "REV 1.1",
             "date": "2026-11-01",
             "summary": "REV 1.1 (Redated 2026-11-01): Added CSI 08 44 13 acoustic labyrinth sill detail and EnergyPlus BSDF optical matrix parameters.",
-            "opus": "Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' ζ_tot = 6.85 is withdrawn in REV 1.3; v = 0.84 m/s needs ζ_tot ≈ 9.3."
+            "opus": "Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' ζ_tot = 6.85 is withdrawn in REV 1.3; v = 0.84 m/s needs ζ_tot ≈ 9.3."
           },
           {
             "edition": "REV 1.0",
             "date": "2026-10-30",
             "summary": "REV 1.0 (Published 2026-10-30): Initial thermosiphon double-skin facade stack ventilation monograph.",
-            "opus": "Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.3."
+            "opus": "Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.3."
           }
         ],
         "reading_time": "22 MIN READ",
@@ -2377,13 +2377,13 @@
             "edition": "REV 1.2",
             "date": "2026-11-02",
             "summary": "REV 1.2 (Redated 2026-11-02): Revised the cast-steel gerberette lever model and Stewart Brand shearing-layer discussion.",
-            "opus": "Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.3: T_tie = 1,280 kN follows from assumed inputs, and SF = 3.12 and m = 0 were not computed."
+            "opus": "Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.3: T_tie = 1,280 kN follows from assumed inputs, and SF = 3.12 and m = 0 were not computed."
           },
           {
             "edition": "REV 1.1",
             "date": "2026-11-01",
             "summary": "REV 1.1 (Redated 2026-11-01): Dedicated 5-Act monograph tracing the lineage from Archigram (Plug-In City, Walking City) to British High-Tech (Foster, Rogers, Piano, Rice) with a gerberette lever model and shearing layers.",
-            "opus": "Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.3."
+            "opus": "Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.3."
           }
         ],
         "volume": 2,
@@ -2490,13 +2490,13 @@
             "edition": "REV 1.1",
             "date": "2026-11-02",
             "summary": "REV 1.1 (Redated 2026-11-02): Added Eyring decay T_60 = 0.62 s and an STI value with Schroeder prime QRD diffusion and a portable companion skill.",
-            "opus": "Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' and ISO 3382 compliance wording is withdrawn in REV 1.2: nothing was measured."
+            "opus": "Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' and ISO 3382 compliance wording is withdrawn in REV 1.2: nothing was measured."
           },
           {
             "edition": "REV 1.0",
             "date": "2026-11-01",
             "summary": "REV 1.0 (Published 2026-11-01): Initial 5-Act monograph on Sabine-Eyring reverberation, Schroeder QRD timber vaults, and clinical speech intelligibility.",
-            "opus": "Council review of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.2."
+            "opus": "Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.2."
           }
         ],
         "governing_law": "T_60 = 0.161V / [−S ln(1−α)] · STI = 0.74",
@@ -2604,13 +2604,13 @@
             "edition": "REV 1.1",
             "date": "2026-11-02",
             "summary": "REV 1.1 (Redated 2026-11-02): Modeled 95.1% Kadlec-Knight BOD_5 greywater reduction and a 5.4-log Chick-Watson UV-C design dose with a 60 °C thermal loop.",
-            "opus": "Council review of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.2: nothing was measured, and ASHRAE 188 does not prescribe this design."
+            "opus": "Cross-model check of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.2: nothing was measured, and ASHRAE 188 does not prescribe this design."
           },
           {
             "edition": "REV 1.0",
             "date": "2026-11-01",
             "summary": "REV 1.0 (Published 2026-11-01): Initial 5-Act monograph coupling net-zero subsurface greywater wetlands with clinical plumbing.",
-            "opus": "Council review of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified inactivation' wording is withdrawn in REV 1.2: nothing was measured."
+            "opus": "Cross-model check of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified inactivation' wording is withdrawn in REV 1.2: nothing was measured."
           }
         ],
         "governing_law": "C_out = C* + (C_in−C*)e^(−kτ) · 5.4-Log UV-C",
@@ -2839,7 +2839,7 @@
             "edition": "REV 1.0",
             "date": "2026-11-02",
             "summary": "REV 1.0 (Published 2026-11-02): First edition, pairing the daytime radiative cooling result of Raman et al. (DOI 10.1038/nature13883) with a proposed structural-color membrane and Stefan PCM storage.",
-            "opus": "Council review of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.1: nothing was measured, and −6.2 K does not follow from h_c = 6.9 W/(m^2 K) alone."
+            "opus": "Cross-model check of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.1: nothing was measured, and −6.2 K does not follow from h_c = 6.9 W/(m^2 K) alone."
           }
         ],
         "volume": 4,
@@ -3615,19 +3615,19 @@
           {
             "date": "2026-11-02",
             "edition": "REV 1.2",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified non-equilibrium covariance positive-definiteness, active dissipation-fluctuation ratio (1.12 <= 2.0), and CSI 11 53 00 / 13 21 00 cryo-EM suite environmental criteria.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified non-equilibrium covariance positive-definiteness, active dissipation-fluctuation ratio (1.12 <= 2.0), and CSI 11 53 00 / 13 21 00 cryo-EM suite environmental criteria.",
             "summary": "REV 1.2 (Redated 2026-11-02): Verified Keizer fluctuation-dissipation matrix (d sigma/dt = M sigma + sigma M^T + Gamma) and Harada-Sasa broken detailed balance bounds against Cryo-EM 8EIQ/6MSM gating kinetics."
           },
           {
             "date": "2026-11-01",
             "edition": "REV 1.1",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Keizer covariance matrix positive-definiteness, tight ATP-Cl coupling (0.88), and CSI 11 53 00 / 13 21 00 cleanroom spec compliance.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified Keizer covariance matrix positive-definiteness, tight ATP-Cl coupling (0.88), and CSI 11 53 00 / 13 21 00 cleanroom spec compliance.",
             "summary": "REV 1.1 (Redated 2026-11-01): Added CSI MasterFormat 11 53 00 / 13 21 00 cleanroom cryo-EM structural specification plate and explicit Keizer fluctuation-dissipation covariance coupling proof to ivacaftor allosteric rescue."
           },
           {
             "date": "2026-11-01",
             "edition": "REV 1.0",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified non-equilibrium covariance bounds, positive ATP-Cl coupling (0.88), and uncoupled G551D dissipative trap.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified non-equilibrium covariance bounds, positive ATP-Cl coupling (0.88), and uncoupled G551D dissipative trap.",
             "summary": "REV 1.0 (Inaugural Edition 2026-11-01): Keizer non-equilibrium fluctuation-dissipation theory and reaction-diffusion non-linear coupling in ABC-transporter gating."
           }
         ],
@@ -3735,19 +3735,19 @@
           {
             "date": "2026-11-02",
             "edition": "REV 1.2",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified antiplectic wave speed v = 336 um/s, hydrodynamic coupling tensor, and CSI 11 53 13 / 13 21 26 micro-incubator laminar containment.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified antiplectic wave speed v = 336 um/s, hydrodynamic coupling tensor, and CSI 11 53 13 / 13 21 26 micro-incubator laminar containment.",
             "summary": "REV 1.2 (Redated 2026-11-02): Verified Kuramoto phase-lag synchronization (d theta_i / dt = omega_0 + sum_j K_ij sin(theta_j - theta_i - alpha)) and low Reynolds Stokes flow order parameter r = 0.880 across healthy vs dehydrated PCL boundaries."
           },
           {
             "date": "2026-11-01",
             "edition": "REV 1.1",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified low-Reynolds Stokesian hydrodynamic interaction tensor, wave speed v = 336 um/s, and CSI 11 53 13 / 13 21 26 micro-chamber environmental controls.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified low-Reynolds Stokesian hydrodynamic interaction tensor, wave speed v = 336 um/s, and CSI 11 53 13 / 13 21 26 micro-chamber environmental controls.",
             "summary": "REV 1.1 (Redated 2026-11-01): Added CSI MasterFormat 11 53 13 / 13 21 26 ciliary microhydrodynamic organ-on-chip specification plate and verified Kuramoto phase synchronization order parameter r >= 0.85."
           },
           {
             "date": "2026-11-01",
             "edition": "REV 1.0",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Low-Reynolds Stokes flow, order parameter r >= 0.85, and steric arrest below h_PCL < 7 μm.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified Low-Reynolds Stokes flow, order parameter r >= 0.85, and steric arrest below h_PCL < 7 μm.",
             "summary": "REV 1.0 (Inaugural Edition 2026-11-01): Active matter ciliary carpet beating and Kuramoto metachronal wave synchronization."
           }
         ],
@@ -3855,19 +3855,19 @@
           {
             "date": "2026-11-02",
             "edition": "REV 1.2",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified de Gennes mesh scaling, subdiffusion exponent bounds, and CSI 11 53 43 / 23 41 33 aerosol rheometry clean-air filtration containment.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified de Gennes mesh scaling, subdiffusion exponent bounds, and CSI 11 53 43 / 23 41 33 aerosol rheometry clean-air filtration containment.",
             "summary": "REV 1.2 (Redated 2026-11-02): Verified Carreau-Yasuda shear-thinning rheology eta(dot_gamma) and de Gennes mesh scaling xi ~ w^(-0.75) for 65 nm PEGylated LNP subdiffusion across healthy (alpha = 0.814) vs CF mucus plugs (alpha < 0.20)."
           },
           {
             "date": "2026-11-01",
             "edition": "REV 1.1",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified de Gennes mesh scaling xi ~ w^(-0.75), subdiffusion alpha = 0.814, and CSI 11 53 43 / 23 41 33 HEPA extraction boundary.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified de Gennes mesh scaling xi ~ w^(-0.75), subdiffusion alpha = 0.814, and CSI 11 53 43 / 23 41 33 HEPA extraction boundary.",
             "summary": "REV 1.1 (Redated 2026-11-01): Added CSI MasterFormat 11 53 43 / 23 41 33 laboratory rheometry aerosol containment plate and Carreau-Yasuda shear-thinning subdiffusion scaling for 65 nm PEGylated LNPs."
           },
           {
             "date": "2026-11-01",
             "edition": "REV 1.0",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified de Gennes mesh scaling xi ~ w^(-0.75), subdiffusion alpha = 0.814, and CF sputum plug percolation cutoff.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified de Gennes mesh scaling xi ~ w^(-0.75), subdiffusion alpha = 0.814, and CF sputum plug percolation cutoff.",
             "summary": "REV 1.0 (Inaugural Edition 2026-11-01): Soft matter mucus gel Carreau-Yasuda rheology and nanoparticle anomalous subdiffusion."
           }
         ],
@@ -3975,19 +3975,19 @@
           {
             "date": "2026-11-02",
             "edition": "REV 1.2",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Donnan osmotic equilibrium Delta Pi = 2.5 kPa, critical PCL threshold h_PCL = 7.0 um, and CSI 11 53 53 / 13 21 00 Ussing electrophysiology compliance.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified Donnan osmotic equilibrium Delta Pi = 2.5 kPa, critical PCL threshold h_PCL = 7.0 um, and CSI 11 53 53 / 13 21 00 Ussing electrophysiology compliance.",
             "summary": "REV 1.2 (Redated 2026-11-02): Verified coupled Nernst-Planck electrokinetic ion flux, Donnan swelling pressures, and Starling water flux (d h_PCL / dt = L_p (Delta Pi_osm - Delta P_hydro)) predicting catastrophic periciliary brush collapse below 7.0 um in CFTR deficit."
           },
           {
             "date": "2026-11-01",
             "edition": "REV 1.1",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Donnan osmotic pressure Delta Pi = 2.5 kPa, critical PCL threshold h_PCL = 7 um, and CSI 11 53 53 / 13 21 00 biosafety integration.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified Donnan osmotic pressure Delta Pi = 2.5 kPa, critical PCL threshold h_PCL = 7 um, and CSI 11 53 53 / 13 21 00 biosafety integration.",
             "summary": "REV 1.1 (Redated 2026-11-01): Added CSI MasterFormat 11 53 53 / 13 21 00 electrophysiological cell culture cleanroom plate and coupled Nernst-Planck/Donnan osmotic collapse criteria for periciliary brush desiccation."
           },
           {
             "date": "2026-11-01",
             "edition": "REV 1.0",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified trans-epithelial ion fluxes, Donnan swelling pressures, and catastrophic osmotic PCL thinning under CFTR deficiency.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified trans-epithelial ion fluxes, Donnan swelling pressures, and catastrophic osmotic PCL thinning under CFTR deficiency.",
             "summary": "REV 1.0 (Inaugural Edition 2026-11-01): Nernst-Planck electrokinetics, Donnan membrane equilibrium, and periciliary osmotic collapse."
           }
         ],
@@ -4098,13 +4098,13 @@
           {
             "date": "2026-11-02",
             "edition": "REV 1.1",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Bell tunneling factor convergence kappa_tun = 6.84 at 310 K, Marcus reorganization lambda = 22.4 kcal/mol, and CSI 11 53 53 / 13 21 00 laser kinetic cleanroom criteria.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified Bell tunneling factor convergence kappa_tun = 6.84 at 310 K, Marcus reorganization lambda = 22.4 kcal/mol, and CSI 11 53 53 / 13 21 00 laser kinetic cleanroom criteria.",
             "summary": "REV 1.1 (Redated 2026-11-02): Verified WKB semiclassical tunneling action integral, Bell parabolic correction kappa_tun, and Marcus reorganization energy for engineered TadA-8e adenine base editors rescuing CFTR 1717-1G>A."
           },
           {
             "date": "2026-11-01",
             "edition": "REV 1.0",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified WKB mass-scaling exponent sqrt(2m) and Bell tunneling factor convergence.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified WKB mass-scaling exponent sqrt(2m) and Bell tunneling factor convergence.",
             "summary": "REV 1.0 (Published 2026-11-01): Initial 5-Act monograph on WKB proton tunneling, Marcus reorganization, and TadA base-editing catalysis for Class I CFTR mutations."
           }
         ],
@@ -4214,13 +4214,13 @@
           {
             "date": "2026-11-02",
             "edition": "REV 1.1",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Doi-Edwards odd-mode Fourier sum psi(0) = 1.0, contour-length fluctuation exponent 3.4, and CSI 11 53 43 / 23 41 33 cleanroom aerosol containment.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified Doi-Edwards odd-mode Fourier sum psi(0) = 1.0, contour-length fluctuation exponent 3.4, and CSI 11 53 43 / 23 41 33 cleanroom aerosol containment.",
             "summary": "REV 1.1 (Redated 2026-11-02): Verified de Gennes polymer reptation (D_rep ~ N^-2, tau_d ~ N^3) and Doi-Edwards topological tube disengagement dynamics for 4.5 kb CFTR mRNA and prime-editing ribonucleoprotein polyplex mucosal transit."
           },
           {
             "date": "2026-11-01",
             "edition": "REV 1.0",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Doi-Edwards odd-mode Fourier series sum_{p odd} 8/(p^2 pi^2) = 1 at t=0 and N^-2 diffusivity scaling.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified Doi-Edwards odd-mode Fourier series sum_{p odd} 8/(p^2 pi^2) = 1 at t=0 and N^-2 diffusivity scaling.",
             "summary": "REV 1.0 (Published 2026-11-01): Initial 5-Act monograph on de Gennes polymer reptation, Doi-Edwards tube theory, and large genetic cargo delivery in CF."
           }
         ],
@@ -4330,7 +4330,7 @@
           {
             "date": "2026-11-02",
             "edition": "REV 1.0",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified -C_p = 2.84 throat suction, -C_L = 3.38 Z-mode downforce, and h_crit = 19.0 mm Hopf stall boundary.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified -C_p = 2.84 throat suction, -C_L = 3.38 Z-mode downforce, and h_crit = 19.0 mm Hopf stall boundary.",
             "summary": "REV 1.0 (Published 2026-11-02): Inaugural Volume IV Formula 1 fluid physics monograph uniting Zhang-Toet-Zerihan ground-effect aerodynamics (DOI 10.1115/1.2110263) with 2026 FIA Active X/Z-mode wings and porpoising Hopf stability."
           }
         ],
@@ -4446,7 +4446,7 @@
           {
             "date": "2026-11-02",
             "edition": "REV 1.0",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified exact Snell-Bragg cos(theta_t) = sqrt(1 - sin^2(theta_i)/n_f^2) blue-shift trajectory across 0-75 deg.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified exact Snell-Bragg cos(theta_t) = sqrt(1 - sin^2(theta_i)/n_f^2) blue-shift trajectory across 0-75 deg.",
             "summary": "REV 1.0 (Published 2026-11-02): Inaugural Volume IV electromagnetic color wave monograph uniting Bragg thin-film interference, Cook-Torrance microfacet BRDFs (DOI 10.1145/357290.357293), automotive pearlescence, and Barragan matte stucco."
           }
         ],
@@ -4562,7 +4562,7 @@
           {
             "date": "2026-11-03",
             "edition": "REV 1.0",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified root of Legendre function P_{1/2}(cos 130.7099 deg) = 0 -> alpha_T = 49.29 deg and Rayleigh limit scaling.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified root of Legendre function P_{1/2}(cos 130.7099 deg) = 0 -> alpha_T = 49.29 deg and Rayleigh limit scaling.",
             "summary": "REV 1.0 (Published 2026-11-03): Volume V electrohydrodynamic aerosol physics monograph completing Folios P.03, P.04 & P.06 via Sir Geoffrey Taylor's 1964 cone theorem (DOI 10.1098/rspa.1964.0151) and Rayleigh fission bounds."
           }
         ],
@@ -4679,7 +4679,7 @@
           {
             "date": "2026-11-03",
             "edition": "REV 1.0",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified two-valley Berry flux integral (1/2pi) int Omega d^2k = +1 for m_T = 0.55 > m_P = 0.25 and chiral dispersion.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified two-valley Berry flux integral (1/2pi) int Omega d^2k = +1 for m_T = 0.55 > m_P = 0.25 and chiral dispersion.",
             "summary": "REV 1.0 (Published 2026-11-03): Volume V topological wave-physics monograph synthesizing Folios E.03, A.05, A.08 & P.08 via Haldane & Raghu's photonic Chern insulators (DOI 10.1103/PhysRevLett.100.013904)."
           }
         ],
@@ -4844,7 +4844,7 @@
             "edition": "REV 1.0",
             "date": "2026-11-07",
             "summary": "REV 1.0 (Published 2026-11-07): Volume VI Quantum Physics & WEF Grand Challenge flagship continuing Folios P.05 (DOI 10.1103/revmodphys.35.724) and P.10 (DOI 10.1103/PhysRevLett.100.013904) via quantumlib/Stim and pyscf/pyscf.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified surface-code threshold scaling, stabilizer commutation, and FeMoCo active-space QPE bounds."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified surface-code threshold scaling, stabilizer commutation, and FeMoCo active-space QPE bounds."
           }
         ],
         "volume": 6,
@@ -4958,13 +4958,13 @@
             "edition": "REV 1.4",
             "date": "2026-11-10",
             "summary": "REV 1.4 (Redated 2026-11-10): Synthesized Barato & Seifert (2015, DOI 10.1103/PhysRevLett.114.158101) Thermodynamic Uncertainty Relation (Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² = A·coth(A/2) ≥ 2 for NESS Markovian jump networks, bridged to Folio M.11) across the Boltzmann–Grad hard-sphere limit (Kn → 0) into Chapman–Enskog Navier–Stokes viscous entropy production σ_visc = (2μ/T) S_ij S_ij ≥ 0 (DOI 10.1007/s00222-003-0316-5), with its reference values stated in the essay.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified Markovian steady-state TUR scope (Q_TUR = 2.3617 > 2 at A = 1.5), hard-sphere collision invariants (< 1e-14), and positive Couette viscous dissipation σ_visc > 0."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified Markovian steady-state TUR scope (Q_TUR = 2.3617 > 2 at A = 1.5), hard-sphere collision invariants (< 1e-14), and positive Couette viscous dissipation σ_visc > 0."
           },
           {
             "edition": "REV 1.0",
             "date": "2026-11-07",
             "summary": "REV 1.0 (Published 2026-11-07): Volume VI Mathematical Physics monograph synthesizing Folios P.01 (DOI 10.1103/physrev.37.405), P.07 (DOI 10.1146/annurev.fluid.38.050304.092016), and M.09 (DOI 10.1007/s002110050002) via Deng–Hani–Ma's resolution of Hilbert's Sixth Problem (arXiv:2503.01800).",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified Boltzmann-Grad scaling, Lanford short-time vs. Deng-Hani-Ma long-time cluster expansion, and Chapman-Enskog projection."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified Boltzmann-Grad scaling, Lanford short-time vs. Deng-Hani-Ma long-time cluster expansion, and Chapman-Enskog projection."
           }
         ],
         "volume": 6,
@@ -5073,31 +5073,31 @@
             "edition": "REV 1.4",
             "date": "2026-11-06",
             "summary": "REV 1.4 (Redated 2026-11-06): Integrated late-October 2026 anthropics/formal-math ETHIsFalse refutation (Challenge.lean, 2^o(n) #3-SAT algorithm via Eight-Square Identity and SWAP = I - 2*singlet, s_3 = 0) and synchronized the 26-release Frontier AI & Formal Math Catalog across 13 research organizations. (REV 1.5: withdrawn as stated. No file named ETHIsFalse was found in that repository on 2026-11-14, and the refutation is the repository's own unchecked claim.)",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Gemma 4 31B + Ornith 1.5 35B): Verified ETHIsFalse s_3 = 0 phase-transition update, Eight-Square norm conservation, and zero sorryAx contamination. (REV 1.5: this 'verified' wording is withdrawn; the repository was not built or checked by this site.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Gemma 4 31B + Ornith 1.5 35B): Verified ETHIsFalse s_3 = 0 phase-transition update, Eight-Square norm conservation, and zero sorryAx contamination. (REV 1.5: this 'verified' wording is withdrawn; the repository was not built or checked by this site.)"
           },
           {
             "edition": "REV 1.3",
             "date": "2026-11-02",
             "summary": "REV 1.3 (Redated 2026-11-02): Earlier edition (superseded and withdrawn in REV 1.5) that modeled the 5-stage FLT Boltzmann landscape alongside an allosteric transmembrane channel dual-corrector analogy.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Taylor-Wiles R=T patching activation barrier Delta G‡ = 3.59 kcal/mol and Frey curve semistability discriminant. (REV 1.5: the barrier is an illustrative model value; the 'zero sorryAx' and 'full isomorphism' wording of this edition is withdrawn.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified Taylor-Wiles R=T patching activation barrier Delta G‡ = 3.59 kcal/mol and Frey curve semistability discriminant. (REV 1.5: the barrier is an illustrative model value; the 'zero sorryAx' and 'full isomorphism' wording of this edition is withdrawn.)"
           },
           {
             "edition": "REV 1.2",
             "date": "2026-11-01",
             "summary": "REV 1.2 (Redated 2026-11-01): Coupled 5-stage FLT Boltzmann landscape with ETH #3-SAT sparsification and exported canonical SHA-256 snapshot to cf-research.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified counterfactual p=2 Pythagorean collapse and dim S_2(Gamma_0(2)) = 0 terminal obstruction."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified counterfactual p=2 Pythagorean collapse and dim S_2(Gamma_0(2)) = 0 terminal obstruction."
           },
           {
             "edition": "REV 1.1",
             "date": "2026-10-25",
             "summary": "REV 1.1 (Redated 2026-10-25): Added Noether-Kirchhoff alluvial deductive flux conservation across proof tactics.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified zero sorryAx contamination across transitive dependency cones. (REV 1.5: wording withdrawn; no such check was run by this site.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified zero sorryAx contamination across transitive dependency cones. (REV 1.5: wording withdrawn; no such check was run by this site.)"
           },
           {
             "edition": "REV 1.0",
             "date": "2026-10-18",
             "summary": "REV 1.0 (Published 2026-10-18): Initial publication of the Lean 4 Fermat's Last Theorem thermodynamic landscape.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified baseline Kramers escape rate across the Ribet level-lowering bottleneck."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified baseline Kramers escape rate across the Ribet level-lowering bottleneck."
           }
         ],
         "governing_law": "FLT · Taylor-Wiles R=T · #3-SAT sparsification",
@@ -5205,25 +5205,25 @@
             "edition": "REV 1.3",
             "date": "2026-11-06",
             "summary": "REV 1.3 (Redated 2026-11-06): Added the Guth-Maynard (30/13)(1-sigma) zero-density bound (total exponent 15/26 = 0.5769 at sigma = 3/4, below 0.600) and a reference to OpenAI's openai/math repository. (REV 1.4: the '1.0400x Markovian spectral relaxation speedup' and the '722 -> 719 sign-parity' account have no source and are withdrawn.)",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Gemma 4 31B + Ornith 1.5 35B): Verified Guth-Maynard 30/13 exponent at sigma = 3/4. (REV 1.4: the 'quarantine of 3 sign-flip lemmas' wording is withdrawn; it has no source.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Gemma 4 31B + Ornith 1.5 35B): Verified Guth-Maynard 30/13 exponent at sigma = 3/4. (REV 1.4: the 'quarantine of 3 sign-flip lemmas' wording is withdrawn; it has no source.)"
           },
           {
             "edition": "REV 1.2",
             "date": "2026-11-02",
             "summary": "REV 1.2 (Redated 2026-11-02): Re-verified Ingham-Huxley zero-density crossover (sigma = 3/4, c = 0.600), Conrey critical-line mollifier (> 2/5 zeros on Re(s) = 1/2, DOI 10.1515/crll.1989.399.1), and Challenge/XiPrime.lean spectral bounds with 4-Seat Frontier Council review.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Ingham-Huxley crossover at sigma = 3/4 (c = 0.600) and zero sorryAx contamination in Challenge/XiPrime.lean. (REV 1.4: the 'zero sorryAx' wording is withdrawn; the file exists as zeta23/Challenge/XiPrime.lean, but this site ran no such check.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified Ingham-Huxley crossover at sigma = 3/4 (c = 0.600) and zero sorryAx contamination in Challenge/XiPrime.lean. (REV 1.4: the 'zero sorryAx' wording is withdrawn; the file exists as zeta23/Challenge/XiPrime.lean, but this site ran no such check.)"
           },
           {
             "edition": "REV 1.1",
             "date": "2026-11-01",
             "summary": "REV 1.1 (Redated 2026-11-01): Added Challenge/XiPrime.lean spectral barrier trace and Cheeger-Fiedler Markovian mixing bridge. (REV 1.4: withdrawn as a zero-density trace; XiPrime.lean concerns the zeros of ξ′.)",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Ingham-Huxley crossover at σ = 3/4 where both exponents equal 6/5 · (1 - σ). (REV 1.4: the exponents at that point are 12/5 · (1 - σ) and 3/(2-σ) · (1 - σ), both 3/5 at σ = 3/4; the 6/5 wording was wrong.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified Ingham-Huxley crossover at σ = 3/4 where both exponents equal 6/5 · (1 - σ). (REV 1.4: the exponents at that point are 12/5 · (1 - σ) and 3/(2-σ) · (1 - σ), both 3/5 at σ = 3/4; the 6/5 wording was wrong.)"
           },
           {
             "edition": "REV 1.0",
             "date": "2026-10-24",
             "summary": "REV 1.0 (Published 2026-10-24): Initial formal-math Zeta23 zero-density monograph.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Montgomery-Halász large sieve orthogonality constants. (REV 1.4: this 'verified' wording is withdrawn.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified Montgomery-Halász large sieve orthogonality constants. (REV 1.4: this 'verified' wording is withdrawn.)"
           }
         ],
         "governing_law": "Zero-density estimates · Large Sieve · Zeta23 (README statement)",
@@ -5331,25 +5331,25 @@
             "edition": "REV 1.3",
             "date": "2026-11-06",
             "summary": "REV 1.3 (Redated 2026-11-06): Expanded extremal combinatorics benchmark with a pure O-sequence h-vector log-concavity check (h_k^2 >= h_{k-1}*h_{k+1} up to degree d = 7; earlier editions credited a DeepMind 'AlphaProof Nexus' Science paper for which no resolvable source was found), Gemini Deep Think IMO 2025 Gold (35/42), and FirstProof (10/10 research problems). (REV 1.4: the log-concavity check and the IMO 2025 and FirstProof figures have no source in this folio and are withdrawn.)",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Gemma 4 31B + Ornith 1.5 35B): Verified small-case pure O-sequence log-concavity circuit breaker (d <= 7), FunSearch 512-cap invariant, and AlphaEvolve Rank-48 tensor exponent. (REV 1.4: this \"verified\" wording is withdrawn.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Gemma 4 31B + Ornith 1.5 35B): Verified small-case pure O-sequence log-concavity circuit breaker (d <= 7), FunSearch 512-cap invariant, and AlphaEvolve Rank-48 tensor exponent. (REV 1.4: this \"verified\" wording is withdrawn.)"
           },
           {
             "edition": "REV 1.2",
             "date": "2026-11-02",
             "summary": "REV 1.2 (Redated 2026-11-02): Re-verified Ellenberg-Gijswijt slice-rank cap set upper bound (2.7551^n, DOI 10.4007/annals.2017.185.1.8), FunSearch F_3^8 lower bound (>= 512, DOI 10.1038/s41586-023-06924-6), and AlphaEvolve Rank-48 4x4 matrix tensor decomposition with 4-Seat Frontier Council review.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified slice-rank base 2.755104, F_3^8 512-cap line-free invariant, and log_4(48) = 2.7925 tensor exponent. (REV 1.4: \"verified\" wording withdrawn; the base 2.7551 is a number the folio computed, and the paper states o(2.756^n).)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified slice-rank base 2.755104, F_3^8 512-cap line-free invariant, and log_4(48) = 2.7925 tensor exponent. (REV 1.4: \"verified\" wording withdrawn; the base 2.7551 is a number the folio computed, and the paper states o(2.756^n).)"
           },
           {
             "edition": "REV 1.1",
             "date": "2026-11-01",
             "summary": "REV 1.1 (Redated 2026-11-01): Added AlphaEvolve rank-48 4×4 matrix tensor verification alongside FunSearch F_3^8 cap set bounds.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified log_4(48) = 2.79248 < log_2(7) = 2.80735 asymptotic exponent improvement. (REV 1.4: arithmetic rechecked; \"verified\" wording withdrawn.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified log_4(48) = 2.79248 < log_2(7) = 2.80735 asymptotic exponent improvement. (REV 1.4: arithmetic rechecked; \"verified\" wording withdrawn.)"
           },
           {
             "edition": "REV 1.0",
             "date": "2026-10-29",
             "summary": "REV 1.0 (Published 2026-10-29): Initial publication of F_3^8 Cap Set and Ellenberg-Gijswijt slice-rank monograph.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified exact known cap set sizes for n=3 (9), n=4 (20), n=5 (45), n=6 (112). (REV 1.4: \"verified\" wording withdrawn; only n = 4 (20) is cited in this edition.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified exact known cap set sizes for n=3 (9), n=4 (20), n=5 (45), n=6 (112). (REV 1.4: \"verified\" wording withdrawn; only n = 4 (20) is cited in this edition.)"
           }
         ],
         "governing_law": "FunSearch Cap Set (512 in F_3^8) · AlphaEvolve 48 products",
@@ -5457,13 +5457,13 @@
             "edition": "REV 1.1",
             "date": "2026-11-02",
             "summary": "REV 1.1 (Redated 2026-11-02): Re-verified Polynomial Freiman-Ruzsa (PFR) entropic doubling, Marton's conjecture bounds, and 22,028,942-edge magma implication graph with 4-Seat Frontier Council review.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Ruzsa entropic triangle inequality submodularity and polynomial coset covering bound <= 2 * K^12. (REV 1.2: this \"verified\" wording is withdrawn; the bound is as stated in the project README.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified Ruzsa entropic triangle inequality submodularity and polynomial coset covering bound <= 2 * K^12. (REV 1.2: this \"verified\" wording is withdrawn; the bound is as stated in the project README.)"
           },
           {
             "edition": "REV 1.0",
             "date": "2026-11-01",
             "summary": "REV 1.0 (Published 2026-11-01): Initial publication of the PFR Entropic Calculus and 22,028,942-edge Equational Magma Graph monograph.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Ruzsa entropic triangle inequality and 4,694² = 22,033,636 total magma law pairs (22,028,942 off-diagonal implications). (REV 1.2: the arithmetic is right, since 4,694 × 4,693 = 22,028,942; the \"verified\" wording is withdrawn.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified Ruzsa entropic triangle inequality and 4,694² = 22,033,636 total magma law pairs (22,028,942 off-diagonal implications). (REV 1.2: the arithmetic is right, since 4,694 × 4,693 = 22,028,942; the \"verified\" wording is withdrawn.)"
           }
         ],
         "governing_law": "PFR entropy proof · Lean 4 project (README) · 22,028,942 magma-law pairs",
@@ -5571,13 +5571,13 @@
             "edition": "REV 1.1",
             "date": "2026-11-02",
             "summary": "REV 1.1 (Redated 2026-11-02): AlphaGeometry 2 neuro-symbolic DD+AR deductive closure and Cayley-Menger 3D distance geometry with 4-Seat Frontier Council review. (REV 1.2: \"certified\" wording withdrawn.)",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Cayley-Menger determinant det(B_5) = 0 and auxiliary anchor triangulation to transmembrane helices TM2-TM8-TM11. (REV 1.2: \"verified\" wording withdrawn; the helix claim has no source.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified Cayley-Menger determinant det(B_5) = 0 and auxiliary anchor triangulation to transmembrane helices TM2-TM8-TM11. (REV 1.2: \"verified\" wording withdrawn; the helix claim has no source.)"
           },
           {
             "edition": "REV 1.0",
             "date": "2026-11-01",
             "summary": "REV 1.0 (Published 2026-11-01): Initial 5-Act monograph on neuro-symbolic DD+AR auxiliary construction and Cayley-Menger 3D pocket rigidity.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Cayley-Menger determinant rank conditions and DD+AR fixed-point termination. (REV 1.2: \"verified\" wording withdrawn.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified Cayley-Menger determinant rank conditions and DD+AR fixed-point termination. (REV 1.2: \"verified\" wording withdrawn.)"
           }
         ],
         "governing_law": "DD+AR Closure · Cayley-Menger det(B_5) = 0",
@@ -5685,13 +5685,13 @@
             "edition": "REV 1.1",
             "date": "2026-11-02",
             "summary": "REV 1.1 (Redated 2026-11-02): Williams sub-cubic APSP circuit polynomials and step-level PRM800K process reward supervision with 4-Seat Frontier Council review. (REV 1.2: \"certified\" wording withdrawn.)",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified exp(c √log n) sub-cubic divisor and step-level survival probability prod_{k=1}^L p_k. (REV 1.2: \"verified\" wording withdrawn; the product formula is a model, and the divisor has no stated constant.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified exp(c √log n) sub-cubic divisor and step-level survival probability prod_{k=1}^L p_k. (REV 1.2: \"verified\" wording withdrawn; the product formula is a model, and the divisor has no stated constant.)"
           },
           {
             "edition": "REV 1.0",
             "date": "2026-11-01",
             "summary": "REV 1.0 (Published 2026-11-01): Initial 5-Act monograph uniting Williams sub-cubic APSP circuit polynomials with step-level Process Reward verification.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified exp(c √log n) sub-cubic divisor and step-level survival probability prod_{k=1}^L p_k. (REV 1.2: \"verified\" wording withdrawn.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified exp(c √log n) sub-cubic divisor and step-level survival probability prod_{k=1}^L p_k. (REV 1.2: \"verified\" wording withdrawn.)"
           }
         ],
         "governing_law": "O(n³ / 2^(Ω(√log n))) APSP (randomized) · Step-Level PRM",
@@ -5806,7 +5806,7 @@
             "edition": "REV 1.0",
             "date": "2026-11-02",
             "summary": "REV 1.0 (Published 2026-11-02): Inaugural Volume IV Formula 1 applied mathematics & AI monograph uniting Limebeer-Perantoni-Rao optimal hybrid control (DOI 10.1080/00207179.2014.900705) with Fourier Neural Operators (arXiv:2010.08895).",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified constant co-state d(lambda_E)/ds = 0 interior invariance, -0.42 s straight-line clipping avoidance, and 0.82% FNO spectral convergence. (REV 1.1: this 'verified' wording is withdrawn; the -0.42 s and 0.82% figures are illustrative and were not computed by any run.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified constant co-state d(lambda_E)/ds = 0 interior invariance, -0.42 s straight-line clipping avoidance, and 0.82% FNO spectral convergence. (REV 1.1: this 'verified' wording is withdrawn; the -0.42 s and 0.82% figures are illustrative and were not computed by any run.)"
           }
         ],
         "volume": 4,
@@ -5920,7 +5920,7 @@
             "edition": "REV 1.0",
             "date": "2026-11-02",
             "summary": "REV 1.0 (Published 2026-11-02): Inaugural Volume IV mathematical colorimetry monograph uniting Grassmann's spectral projection, Erwin Schrodinger's 1920 Riemannian color manifold (DOI 10.1002/andp.19203682202), and MacAdam metric ellipses (DOI 10.1364/JOSA.32.000247).",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified rank-3 projection operator P_R^2 = P_R idempotence, Christoffel geodesic curvature, and illuminant metamerism drift. (REV 1.1: this 'verified' wording is withdrawn; no measurement or independent check was run.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified rank-3 projection operator P_R^2 = P_R idempotence, Christoffel geodesic curvature, and illuminant metamerism drift. (REV 1.1: this 'verified' wording is withdrawn; no measurement or independent check was run.)"
           }
         ],
         "volume": 4,
@@ -6040,7 +6040,7 @@
             "edition": "REV 1.0",
             "date": "2026-11-03",
             "summary": "REV 1.0 (Published 2026-11-03): Volume V mathematical monograph synthesizing Folios M.04, M.07 & M.08 via Benamou & Brenier's dynamic fluid formulation of Wasserstein-2 optimal transport (DOI 10.1007/s002110050002).",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified Bures-Wasserstein closed-form metric, HJB optimality d_t psi + 0.5|nabla psi|^2 = 0, and log-Sinkhorn convergence. (REV 1.1: this 'verified' wording is withdrawn; no independent check was run.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified Bures-Wasserstein closed-form metric, HJB optimality d_t psi + 0.5|nabla psi|^2 = 0, and log-Sinkhorn convergence. (REV 1.1: this 'verified' wording is withdrawn; no independent check was run.)"
           }
         ],
         "volume": 5,
@@ -6160,7 +6160,7 @@
             "edition": "REV 1.0",
             "date": "2026-11-03",
             "summary": "REV 1.0 (Published 2026-11-03): Crowning 40th Folio of Informatico.ai Volume V, completing the circle back to Folio E.01 & P.03 via Edelsbrunner, Letscher & Zomorodian's persistent homology (DOI 10.1007/s00454-002-2885-2).",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified chain complex exactness partial^2 = 0, Euler-Poincare alternation chi = beta_0 - beta_1 + beta_2, and H_1 throat percolation threshold. (REV 1.1: this 'verified' wording is withdrawn for the throat threshold, which is a synthetic model value.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified chain complex exactness partial^2 = 0, Euler-Poincare alternation chi = beta_0 - beta_1 + beta_2, and H_1 throat percolation threshold. (REV 1.1: this 'verified' wording is withdrawn for the throat threshold, which is a synthetic model value.)"
           }
         ],
         "volume": 5,
@@ -6279,7 +6279,7 @@
             "edition": "REV 1.0",
             "date": "2026-11-07",
             "summary": "REV 1.0 (Published 2026-11-07): Volume VI Mathematics flagship continuing Folio M.02 (Huxley DOI 10.1007/BF01418933, Conrey DOI 10.1515/crll.1989.399.1) via Wang–Zahl's 3D Kakeya proof (arXiv:2502.17655), Guth–Maynard 30/13 (arXiv:2405.20552), and anthropics/formal-math.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified 3D Kakeya tube overlap exponent, Guth-Maynard 30/13 vs. Huxley 12/5, and prime gap exponent 17/30. (REV 1.1: this 'verified' wording is withdrawn; 17/30 is a short-interval exponent, not a prime-gap bound, and no proof was checked here.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified 3D Kakeya tube overlap exponent, Guth-Maynard 30/13 vs. Huxley 12/5, and prime gap exponent 17/30. (REV 1.1: this 'verified' wording is withdrawn; 17/30 is a short-interval exponent, not a prime-gap bound, and no proof was checked here.)"
           }
         ],
         "volume": 6,
@@ -6399,7 +6399,7 @@
             "edition": "REV 1.0",
             "date": "2026-11-07",
             "summary": "REV 1.0 (Published 2026-11-07): Volume VI Capstone Mathematics monograph synthesizing Folios M.01 (DOI 10.2307/2118559), M.03 (DOI 10.1038/s41586-023-06924-6), and M.06 (DOI 10.1137/15M1024524) with anthropics/formal-math and open-quantum-safe/liboqs.",
-            "opus": "Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified Module-LWE ring parameters (q=3329, n=256), EightSquare rank <= 28, and Lean 4 zero-sorry audit. (REV 1.1: this 'verified' wording is withdrawn; no EightSquare.lean appears in the file tree read on 2026-11-14, and no Lean build was run. q = 3329 and n = 256 do match FIPS 203.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): Verified Module-LWE ring parameters (q=3329, n=256), EightSquare rank <= 28, and Lean 4 zero-sorry audit. (REV 1.1: this 'verified' wording is withdrawn; no EightSquare.lean appears in the file tree read on 2026-11-14, and no Lean build was run. q = 3329 and n = 256 do match FIPS 203.)"
           }
         ],
         "volume": 6,
@@ -6864,7 +6864,7 @@
       "roman": "Volume VI",
       "kicker": "VOLUME VI (VOL. 06) · QUANTUM ERROR CORRECTION, HILBERT'S 6TH PROBLEM, 3D KAKEYA, LEAN 4 FORMAL COMPLEXITY, 3D GRAPHIC STATICS, TENSEGRITY SKY-COOLING, SIMP TOPOLOGY & CONTROL-BARRIER GRIDS · 8 FOLIOS",
       "title": "Fault-Tolerant Quantum Computing, Hilbert's Sixth Problem, 3D Kakeya & Guth–Maynard 30/13, Anthropic Lean 4 Complexity & Post-Quantum Lattices, 3D Graphic Statics, Tensegrity Sky-Cooling, SIMP Topology & Control-Barrier Renewable Grids",
-      "subtitle": "Eight Volume VI monographs (E.11–E.12, A.11–A.12, P.11–P.12, M.11–M.12) selected by a 3-Seat Multi-Family Council & Jury to explain humanity's highest-value scientific breakthroughs and WEF grand challenges through vivid cross-field analogies, open-source software, and formal AI verification: Bendsøe–Sigmund SIMP topology optimization & Formula 1 inerter dampers (E.11), Control Barrier Functions, firefly-synchronized renewable grids & the published precedents for verified RISC-V processors (E.12), Maxwell 3D polyhedral graphic statics & zero-rebar stone/tile vaults (A.11), Pellegrino tensegrity cable domes & 8–13 μm radiative sky-cooling canopies (A.12), Kitaev surface-code quantum error correction & FeMoCo clean nitrogen catalysis (P.11), Deng–Hani–Ma's resolution of Hilbert's 6th Problem from Newton to Navier–Stokes (P.12), Wang–Zahl's 3D Kakeya proof & Guth–Maynard's 30/13 Riemann zero-density bound (M.11), and Anthropic's Lean 4 complexity proofs paired with NIST FIPS 203 post-quantum crystal lattices (M.12).",
+      "subtitle": "Eight Volume VI monographs (E.11–E.12, A.11–A.12, P.11–P.12, M.11–M.12) selected by a 3-seat cross-lineage review panel to explain humanity's highest-value scientific breakthroughs and WEF grand challenges through vivid cross-field analogies, open-source software, and formal AI verification: Bendsøe–Sigmund SIMP topology optimization & Formula 1 inerter dampers (E.11), Control Barrier Functions, firefly-synchronized renewable grids & the published precedents for verified RISC-V processors (E.12), Maxwell 3D polyhedral graphic statics & zero-rebar stone/tile vaults (A.11), Pellegrino tensegrity cable domes & 8–13 μm radiative sky-cooling canopies (A.12), Kitaev surface-code quantum error correction & FeMoCo clean nitrogen catalysis (P.11), Deng–Hani–Ma's resolution of Hilbert's 6th Problem from Newton to Navier–Stokes (P.12), Wang–Zahl's 3D Kakeya proof & Guth–Maynard's 30/13 Riemann zero-density bound (M.11), and Anthropic's Lean 4 complexity proofs paired with NIST FIPS 203 post-quantum crystal lattices (M.12).",
       "cadence": "Hourly Zero-Token Sentinel Gate + 12h Deep-Craft Atelier Heartbeat (:05 Math, :15 Arch, :20 Civil Eng, :40 Phys)",
       "folios": [
         "e11",

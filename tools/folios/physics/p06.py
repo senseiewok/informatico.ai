@@ -27,7 +27,7 @@ FOLIO = {'category_code': 'P',
               {'label': 'Transport Regime', 'value': 'STABLE_COUPLED_CYCLE'}],
  'revisions': [{'date': '2026-11-02',
                 'edition': 'REV 1.1',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Doi-Edwards odd-mode Fourier sum psi(0) = 1.0, contour-length fluctuation '
                         'exponent 3.4, and CSI 11 53 43 / 23 41 33 cleanroom aerosol containment.',
                 'summary': 'REV 1.1 (Redated 2026-11-02): Verified de Gennes polymer reptation '
@@ -36,7 +36,7 @@ FOLIO = {'category_code': 'P',
                            'prime-editing ribonucleoprotein polyplex mucosal transit.'},
                {'date': '2026-11-01',
                 'edition': 'REV 1.0',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Doi-Edwards odd-mode Fourier series sum_{p odd} 8/(p^2 pi^2) = 1 at t=0 '
                         'and N^-2 diffusivity scaling.',
                 'summary': 'REV 1.0 (Published 2026-11-01): Initial 5-Act monograph on de Gennes '

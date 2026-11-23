@@ -84,7 +84,7 @@ FOLIO = {'folio_id': 'E.08',
                            'underground tunneling monograph uniting Peck-Mair Gaussian settlement '
                            'troughs (DOI 10.1680/geot.1993.43.2.315) with EPB-TBM chamber '
                            'mechanics and GNN subsurface digital twins.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'exact Gaussian integral V_s = sqrt(2*pi)*i*S_max = 0.565 m^3/m and S_max '
                         '= 18.8 mm at V_L = 0.75%, D = 9.8 m, i = 12.0 m. This was an arithmetic check only; no other verification is claimed.'}],
  'volume': 4,

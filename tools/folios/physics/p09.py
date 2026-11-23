@@ -33,7 +33,7 @@ FOLIO = {'category_code': 'P',
               {'label': 'Aerosol & LNP Verdict', 'value': 'INSIDE MODEL WINDOW'}],
  'revisions': [{'date': '2026-11-03',
                 'edition': 'REV 1.0',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified root '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified root '
                         'of Legendre function P_{1/2}(cos 130.7099 deg) = 0 -> alpha_T = 49.29 deg '
                         'and Rayleigh limit scaling.',
                 'summary': 'REV 1.0 (Published 2026-11-03): Volume V electrohydrodynamic aerosol '

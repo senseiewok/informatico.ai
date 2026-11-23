@@ -108,7 +108,7 @@ FOLIO = {'folio_id': 'E.06',
                            '(M*u_ddot + C*u_dot + F_s(u) = -M*u_ddot_g(t)), ASCE 7-22 Chapter 17 '
                            'inelastic response spectra (S_DS, B_M), and Robinson bilinear '
                            'Lead-Rubber Bearing (LRB) seismic base isolation (CSI 13 48 00).',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): reviewed '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): reviewed '
                         'the period-lengthening formulas. The word "Verified" in this note and '
                         'the note below is withdrawn in REV 1.2, as are the drift figure 0.32% '
                         'and the displacement D_M = 232 mm, which did not follow from the page '
@@ -119,7 +119,7 @@ FOLIO = {'folio_id': 'E.06',
                            'monograph on ASCE 7-22 inelastic response spectra, Robinson '
                            'lead-rubber seismic isolators, and Risk Category IV hospital '
                            'resilience.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'bilinear hysteresis energy E_loop = 4 Q_d (D_M - D_y), effective damping '
                         'β_eff = 22.0%, and ASCE 7-22 spectral displacement D_M = 232 mm.'}],
  'volume': 3,

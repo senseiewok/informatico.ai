@@ -237,7 +237,7 @@ VOLUMES_SPEC = [
         "roman": "Volume VI",
         "kicker": "VOLUME VI (VOL. 06) · QUANTUM ERROR CORRECTION, HILBERT'S 6TH PROBLEM, 3D KAKEYA, LEAN 4 FORMAL COMPLEXITY, 3D GRAPHIC STATICS, TENSEGRITY SKY-COOLING, SIMP TOPOLOGY & CONTROL-BARRIER GRIDS · 8 FOLIOS",
         "title": "Fault-Tolerant Quantum Computing, Hilbert's Sixth Problem, 3D Kakeya & Guth–Maynard 30/13, Anthropic Lean 4 Complexity & Post-Quantum Lattices, 3D Graphic Statics, Tensegrity Sky-Cooling, SIMP Topology & Control-Barrier Renewable Grids",
-        "subtitle": "Eight Volume VI monographs (E.11–E.12, A.11–A.12, P.11–P.12, M.11–M.12) selected by a 3-Seat Multi-Family Council & Jury to explain humanity's highest-value scientific breakthroughs and WEF grand challenges through vivid cross-field analogies, open-source software, and formal AI verification: Bendsøe–Sigmund SIMP topology optimization & Formula 1 inerter dampers (E.11), Control Barrier Functions, firefly-synchronized renewable grids & the published precedents for verified RISC-V processors (E.12), Maxwell 3D polyhedral graphic statics & zero-rebar stone/tile vaults (A.11), Pellegrino tensegrity cable domes & 8–13 μm radiative sky-cooling canopies (A.12), Kitaev surface-code quantum error correction & FeMoCo clean nitrogen catalysis (P.11), Deng–Hani–Ma's resolution of Hilbert's 6th Problem from Newton to Navier–Stokes (P.12), Wang–Zahl's 3D Kakeya proof & Guth–Maynard's 30/13 Riemann zero-density bound (M.11), and Anthropic's Lean 4 complexity proofs paired with NIST FIPS 203 post-quantum crystal lattices (M.12).",
+        "subtitle": "Eight Volume VI monographs (E.11–E.12, A.11–A.12, P.11–P.12, M.11–M.12) selected by a 3-seat cross-lineage review panel to explain humanity's highest-value scientific breakthroughs and WEF grand challenges through vivid cross-field analogies, open-source software, and formal AI verification: Bendsøe–Sigmund SIMP topology optimization & Formula 1 inerter dampers (E.11), Control Barrier Functions, firefly-synchronized renewable grids & the published precedents for verified RISC-V processors (E.12), Maxwell 3D polyhedral graphic statics & zero-rebar stone/tile vaults (A.11), Pellegrino tensegrity cable domes & 8–13 μm radiative sky-cooling canopies (A.12), Kitaev surface-code quantum error correction & FeMoCo clean nitrogen catalysis (P.11), Deng–Hani–Ma's resolution of Hilbert's 6th Problem from Newton to Navier–Stokes (P.12), Wang–Zahl's 3D Kakeya proof & Guth–Maynard's 30/13 Riemann zero-density bound (M.11), and Anthropic's Lean 4 complexity proofs paired with NIST FIPS 203 post-quantum crystal lattices (M.12).",
         "cadence": "Hourly Zero-Token Sentinel Gate + 12h Deep-Craft Atelier Heartbeat (:05 Math, :15 Arch, :20 Civil Eng, :40 Phys)",
         "folios": ["e11", "e12", "a11", "a12", "p11", "p12", "m11", "m12"],
     },
@@ -1211,7 +1211,7 @@ def render_multi_chapter_monograph_sections(
             <strong>Structural &amp; Mathematical Isomorphism (<code>{bridge_c}</code>):</strong> One of the defining principles of <em>Informatico.ai</em> is that deep governing operators transcend disciplinary silos. The exact mathematical structure of Folio <strong>{esc(fid)}</strong> (<code>{gov_law}</code>) reappears across coupled multiscale systems{cf_bridge_tail}
           </p>
           <p>
-            <strong>Living Edition &amp; Multi-Family Council Provenance (<code>{esc(folio.get("current_edition", "REV 1.0"))}</code>):</strong> {latest_rev_summary} {latest_rev_opus} By pairing multi-chapter mathematical and physical derivations with interactive WebGL2/SVG observatories and downloadable <code>SKILL.md</code> companions, Folio <strong>{esc(fid)}</strong> equips engineers, mathematicians, physicists, and AI agents with a permanent, falsifiable building block for frontier discovery.
+            <strong>Living Edition &amp; Revision Provenance (<code>{esc(folio.get("current_edition", "REV 1.0"))}</code>):</strong> {latest_rev_summary} {latest_rev_opus} By pairing multi-chapter mathematical and physical derivations with interactive WebGL2/SVG observatories and downloadable <code>SKILL.md</code> companions, Folio <strong>{esc(fid)}</strong> equips engineers, mathematicians, physicists, and AI agents with a permanent, falsifiable building block for frontier discovery.
           </p>
         </section>"""
 
@@ -4482,6 +4482,10 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
         )
     cards_html = "\n".join(rack_cards)
 
+    sys.modules.setdefault("build_longform_folios", sys.modules[__name__])
+    import build_toolchain_guides  # noqa: E402
+    guides_band_html = build_toolchain_guides.render_toolchain_companion_band()
+
     return f"""{head}
 <body class="tp-body tp-page-hub">
 {render_masthead(rel_res, "toolchain", lang)}
@@ -4526,11 +4530,12 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
         </div>
       </div>
     </section>
-    <section class="tp-issue-rack" aria-label="6 Tech and Tools Folios">
+    <section class="tp-issue-rack" aria-label="7 Tech and Tools Folios">
       <div class="tp-rack-grid">
 {cards_html}
       </div>
     </section>
+{guides_band_html}
 {render_toolchain_section(rel_res)}
 {render_site_footer(rel_res)}
   </main>
@@ -6017,15 +6022,15 @@ def render_about_page(catalog: dict, lang: str = "en") -> str:
           <strong class="tz-bridge-title" data-en="Premature Stop Signals &amp; the Last 8% Genotype Gap &rarr;" data-es="Señales de Paro Prematuro y la Brecha del Último 8% &rarr;">Premature Stop Signals &amp; the Last 8% Genotype Gap &rarr;</strong>
           <span class="tz-bridge-desc" data-en="What happens when a genetic sequence hits a premature termination codon before the valve is built." data-es="Qué ocurre cuando una secuencia genética encuentra un codón de paro prematuro antes de construir la válvula.">What happens when a genetic sequence hits a premature termination codon before the valve is built.</span>
         </a>
-        <a class="tz-bridge-card" href="https://senseiewok.ai/math/l01/" target="_blank" rel="noopener noreferrer">
+        <a class="tz-bridge-card" href="../toolchain/proof-observatory/">
           <img class="tz-bridge-thumb" src="{plate_src(rel_res + '/plates/', 'm01')}" width="640" height="360" loading="lazy" decoding="async" alt="Formal deductive proof graph and invariant verification lattice.">
-          <span class="tz-bridge-kicker" data-en="MONOGRAPH L.01 · FORMAL VERIFICATION" data-es="MONOGRAFÍA L.01 · VERIFICACIÓN FORMAL">MONOGRAPH L.01 · FORMAL VERIFICATION</span>
-          <strong class="tz-bridge-title" data-en="Lean 4 Formal Proofs &amp; Auxiliary Patching Landscapes &rarr;" data-es="Pruebas Formales en Lean 4 y Paisajes de Parchado Auxiliar &rarr;">Lean 4 Formal Proofs &amp; Auxiliary Patching Landscapes &rarr;</strong>
+          <span class="tz-bridge-kicker" data-en="PROOF OBSERVATORY · LEAN 4" data-es="OBSERVATORIO DE PRUEBAS · LEAN 4">PROOF OBSERVATORY · LEAN 4</span>
+          <strong class="tz-bridge-title" data-en="Lean 4 Formal Proofs &amp; Trusted Kernel Replay &rarr;" data-es="Pruebas Formales en Lean 4 y Reproducción del Núcleo &rarr;">Lean 4 Formal Proofs &amp; Trusted Kernel Replay &rarr;</strong>
           <span class="tz-bridge-desc" data-en="How machine-checked deduction in Lean 4 inspires zero-hand-waving verification across our research notes." data-es="Cómo la deducción verificada por máquina en Lean 4 inspira la verificación sin cabos sueltos en nuestras notas.">How machine-checked deduction in Lean 4 inspires zero-hand-waving verification across our research notes.</span>
         </a>
       </div>
 
-      <h3 id="council-audit-heading" data-en="How Every Essay Is Audited: 4-Seat Council &amp; 2x Retina Playwright Gate" data-es="Cómo se Audita Cada Ensayo: Consejo de 4 Asientos y Compuerta Playwright 2x Retina">How Every Essay Is Audited: 4-Seat Council &amp; 2x Retina Playwright Gate</h3>
+      <h3 id="review-gate-heading" data-en="How Every Essay Is Checked: Verifiers, Blind Diff Review &amp; 2x Retina Playwright Gate" data-es="Cómo se Revisa Cada Ensayo: Verificadores, Revisión Ciega y Compuerta Playwright 2x Retina">How Every Essay Is Checked: Verifiers, Blind Diff Review &amp; 2x Retina Playwright Gate</h3>
       <div class="tz-council-grid">
         <div class="tz-council-card">
           <span class="tz-council-kicker" data-en="SEAT 01 · DETERMINISTIC KERNEL" data-es="ASIENTO 01 · NÚCLEO DETERMINISTA">SEAT 01 · DETERMINISTIC KERNEL</span>
@@ -6117,6 +6122,10 @@ def render_research_sitemap(catalog: dict) -> str:
     entries.append(("toolchain/", max(t["date_redated"] for t in TOOLCHAIN_FOLIOS)))
     for t in TOOLCHAIN_FOLIOS:
         entries.append((f"toolchain/{t['slug']}/", t["date_redated"]))
+    sys.modules.setdefault("build_longform_folios", sys.modules[__name__])
+    import build_toolchain_guides  # noqa: E402
+    for g_slug in build_toolchain_guides.GUIDE_SLUGS:
+        entries.append((f"toolchain/{g_slug}/", build_toolchain_guides.GUIDE_DATE_MODIFIED))
     # Time & Gravity (T): the hub and every shipped page, beside the Folio count of 48 (tools/folios/timegravity/).
     entries.append(("timegravity/", TIMEGRAVITY_DATE))
     for tg in TIMEGRAVITY_PAGES:
@@ -6225,6 +6234,11 @@ def render_llms_txt(catalog: dict) -> str:
     for t in TOOLCHAIN_FOLIOS:
         t_title, t_desc = TOOLCHAIN_SEO[t["slug"]][0], TOOLCHAIN_SEO[t["slug"]][1]
         lines.append(f"- [{t['folio_id']} ({t['tool_id']}) {t_title}]({page_url('toolchain/' + t['slug'] + '/')}): {t_desc}")
+    sys.modules.setdefault("build_longform_folios", sys.modules[__name__])
+    import build_toolchain_guides  # noqa: E402
+    for g_slug in build_toolchain_guides.GUIDE_SLUGS:
+        g_title, g_desc = build_toolchain_guides.GUIDE_SEO[g_slug][0], build_toolchain_guides.GUIDE_SEO[g_slug][1]
+        lines.append(f"- [{g_title}]({page_url('toolchain/' + g_slug + '/')}): {g_desc}")
     lines.append("")
     lines.append("## Time & Gravity · Fourteen Pages on an Open Problem (T.00–T.13)")
     lines.append("")
@@ -6474,6 +6488,11 @@ def main() -> None:
         es_tfdir.mkdir(parents=True, exist_ok=True)
         (es_tfdir / "index.html").write_text(to_spanish_static(render_toolchain_folio_page(t, catalog, "es")), encoding="utf-8")
         t_count += 1
+
+    # Render Tech & Tools Methodology Guides (/toolchain/proof-observatory/ and /toolchain/ai-loop/)
+    sys.modules.setdefault("build_longform_folios", sys.modules[__name__])
+    import build_toolchain_guides  # noqa: E402
+    build_toolchain_guides.write_pages(catalog)
 
     # Render About page (/about/ and /es-mx/about/)
     adir = res_dir / "about"

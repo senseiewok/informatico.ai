@@ -96,7 +96,7 @@ FOLIO = {'folio_id': 'M.05',
                            'DD+AR deductive closure and Cayley-Menger 3D distance geometry with '
                            '4-Seat Frontier Council review. (REV 1.2: "certified" wording '
                            'withdrawn.)',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Cayley-Menger determinant det(B_5) = 0 and auxiliary anchor triangulation '
                         'to transmembrane helices TM2-TM8-TM11. (REV 1.2: "verified" wording '
                         'withdrawn; the helix claim has no source.)'},
@@ -105,7 +105,7 @@ FOLIO = {'folio_id': 'M.05',
                 'summary': 'REV 1.0 (Published 2026-11-01): Initial 5-Act monograph on '
                            'neuro-symbolic DD+AR auxiliary construction and Cayley-Menger 3D '
                            'pocket rigidity.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Cayley-Menger determinant rank conditions and DD+AR fixed-point '
                         'termination. (REV 1.2: "verified" wording withdrawn.)'}],
  'governing_law': 'DD+AR Closure · Cayley-Menger det(B_5) = 0',

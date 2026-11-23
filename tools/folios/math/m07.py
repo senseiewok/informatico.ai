@@ -114,7 +114,7 @@ FOLIO = {'folio_id': 'M.07',
                            'mathematics & AI monograph uniting Limebeer-Perantoni-Rao optimal '
                            'hybrid control (DOI 10.1080/00207179.2014.900705) with Fourier Neural '
                            'Operators (arXiv:2010.08895).',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'constant co-state d(lambda_E)/ds = 0 interior invariance, -0.42 s '
                         'straight-line clipping avoidance, and 0.82% FNO spectral convergence. '
                         "(REV 1.1: this 'verified' wording is withdrawn; the -0.42 s and 0.82% "

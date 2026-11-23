@@ -104,7 +104,7 @@ FOLIO = {'folio_id': 'P.11',
                            'Challenge flagship continuing Folios P.05 (DOI '
                            '10.1103/revmodphys.35.724) and P.10 (DOI '
                            '10.1103/PhysRevLett.100.013904) via quantumlib/Stim and pyscf/pyscf.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): '
                         'Verified surface-code threshold scaling, stabilizer commutation, and '
                         'FeMoCo active-space QPE bounds.'}],
  'volume': 6,

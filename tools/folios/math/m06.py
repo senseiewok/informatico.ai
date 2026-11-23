@@ -107,7 +107,7 @@ FOLIO = {'folio_id': 'M.06',
                            'circuit polynomials and step-level PRM800K process reward supervision '
                            'with 4-Seat Frontier Council review. (REV 1.2: "certified" wording '
                            'withdrawn.)',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'exp(c √log n) sub-cubic divisor and step-level survival probability '
                         'prod_{k=1}^L p_k. (REV 1.2: "verified" wording withdrawn; the product '
                         'formula is a model, and the divisor has no stated constant.)'},
@@ -116,7 +116,7 @@ FOLIO = {'folio_id': 'M.06',
                 'summary': 'REV 1.0 (Published 2026-11-01): Initial 5-Act monograph uniting '
                            'Williams sub-cubic APSP circuit polynomials with step-level Process '
                            'Reward verification.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'exp(c √log n) sub-cubic divisor and step-level survival probability '
                         'prod_{k=1}^L p_k. (REV 1.2: "verified" wording withdrawn.)'}],
  'governing_law': 'O(n³ / 2^(Ω(√log n))) APSP (randomized) · Step-Level PRM',

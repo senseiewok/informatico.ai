@@ -141,7 +141,7 @@ FOLIO = {'folio_id': 'M.12',
                            'monograph synthesizing Folios M.01 (DOI 10.2307/2118559), M.03 (DOI '
                            '10.1038/s41586-023-06924-6), and M.06 (DOI 10.1137/15M1024524) with '
                            'anthropics/formal-math and open-quantum-safe/liboqs.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B): '
                         'Verified Module-LWE ring parameters (q=3329, n=256), EightSquare rank <= '
                         "28, and Lean 4 zero-sorry audit. (REV 1.1: this 'verified' wording is "
                         'withdrawn; no EightSquare.lean appears in the file tree read on '

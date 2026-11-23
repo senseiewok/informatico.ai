@@ -24,7 +24,7 @@ FOLIO = {'category_code': 'P',
               {'label': 'Reference Values', 'value': 'STATED IN ESSAY'}],
  'revisions': [{'date': '2026-11-02',
                 'edition': 'REV 1.2',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'antiplectic wave speed v = 336 um/s, hydrodynamic coupling tensor, and '
                         'CSI 11 53 13 / 13 21 26 micro-incubator laminar containment.',
                 'summary': 'REV 1.2 (Redated 2026-11-02): Verified Kuramoto phase-lag '
@@ -33,7 +33,7 @@ FOLIO = {'category_code': 'P',
                            '0.880 across healthy vs dehydrated PCL boundaries.'},
                {'date': '2026-11-01',
                 'edition': 'REV 1.1',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'low-Reynolds Stokesian hydrodynamic interaction tensor, wave speed v = '
                         '336 um/s, and CSI 11 53 13 / 13 21 26 micro-chamber environmental '
                         'controls.',
@@ -42,7 +42,7 @@ FOLIO = {'category_code': 'P',
                            'verified Kuramoto phase synchronization order parameter r >= 0.85.'},
                {'date': '2026-11-01',
                 'edition': 'REV 1.0',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Low-Reynolds Stokes flow, order parameter r >= 0.85, and steric arrest '
                         'below h_PCL < 7 μm.',
                 'summary': 'REV 1.0 (Inaugural Edition 2026-11-01): Active matter ciliary carpet '

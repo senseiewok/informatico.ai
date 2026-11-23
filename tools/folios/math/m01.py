@@ -98,7 +98,7 @@ FOLIO = {'folio_id': 'M.01',
                            '#3-SAT algorithm via Eight-Square Identity and SWAP = I - 2*singlet, '
                            's_3 = 0) and synchronized the 26-release Frontier AI & Formal Math '
                            'Catalog across 13 research organizations. (REV 1.5: withdrawn as stated. No file named ETHIsFalse was found in that repository on 2026-11-14, and the refutation is the repository\'s own unchecked claim.)',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Gemma 4 31B + Ornith 1.5 '
+                'opus': 'Cross-model check (Gemini 4 Argon + Gemma 4 31B + Ornith 1.5 '
                         '35B): Verified ETHIsFalse s_3 = 0 phase-transition update, Eight-Square '
                         'norm conservation, and zero sorryAx contamination. (REV 1.5: this '
                         "'verified' wording is withdrawn; the repository was not built or checked "
@@ -108,7 +108,7 @@ FOLIO = {'folio_id': 'M.01',
                 'summary': 'REV 1.3 (Redated 2026-11-02): Earlier edition (superseded and withdrawn in REV 1.5) '
                            'that modeled the 5-stage FLT Boltzmann landscape alongside an '
                            'allosteric transmembrane channel dual-corrector analogy.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'Taylor-Wiles R=T patching activation barrier Delta G‡ = 3.59 kcal/mol and '
                         'Frey curve semistability discriminant. (REV 1.5: the barrier is an '
                         "illustrative model value; the 'zero sorryAx' and 'full isomorphism' "
@@ -118,21 +118,21 @@ FOLIO = {'folio_id': 'M.01',
                 'summary': 'REV 1.2 (Redated 2026-11-01): Coupled 5-stage FLT Boltzmann landscape '
                            'with ETH #3-SAT sparsification and exported canonical SHA-256 snapshot '
                            'to cf-research.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'counterfactual p=2 Pythagorean collapse and dim S_2(Gamma_0(2)) = 0 '
                         'terminal obstruction.'},
                {'edition': 'REV 1.1',
                 'date': '2026-10-25',
                 'summary': 'REV 1.1 (Redated 2026-10-25): Added Noether-Kirchhoff alluvial '
                            'deductive flux conservation across proof tactics.',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified zero '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified zero '
                         'sorryAx contamination across transitive dependency cones. (REV 1.5: '
                         'wording withdrawn; no such check was run by this site.)'},
                {'edition': 'REV 1.0',
                 'date': '2026-10-18',
                 'summary': 'REV 1.0 (Published 2026-10-18): Initial publication of the Lean 4 '
                            "Fermat's Last Theorem thermodynamic landscape.",
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'baseline Kramers escape rate across the Ribet level-lowering '
                         'bottleneck.'}],
  'governing_law': 'FLT · Taylor-Wiles R=T · #3-SAT sparsification',

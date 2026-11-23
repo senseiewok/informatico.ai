@@ -51,24 +51,24 @@ FOLIO = {'folio_id': 'A.01',
                {'edition': 'REV 1.3',
                 'date': '2026-11-02',
                 'summary': 'REV 1.3 (Redated 2026-11-02): Reported a +7.08 °C margin between the illustrative surface temperature and the dew point. No certification or fungal-reservoir prevention was measured; earlier wording is withdrawn in REV 1.4.',
-                'opus': 'Council review of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B); the earlier word "verified" is withdrawn in REV 1.4 because nothing was measured. Arithmetic reviewed: horizontal thrust H = '
+                'opus': 'Cross-model check of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B); the earlier word "verified" is withdrawn in REV 1.4 because nothing was measured. Arithmetic reviewed: horizontal thrust H = '
                         '216.0 kN, kern safety factor SF = 9.38, and f_Rsi >= 0.70 condensation protection.'},
                {'edition': 'REV 1.2',
                 'date': '2026-11-01',
                 'summary': 'REV 1.2 (Redated 2026-11-01): Added dynamic Maxwell-Cremona Reciprocal Force Dual SVG and '
                            'CSI 05 12 00 / 07 21 00 UHPC thermal-break plate.',
-                'opus': 'Council review of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B); the earlier word "verified" is withdrawn in REV 1.4 because nothing was measured. Arithmetic reviewed: H = 216.0 kN, SF = 9.38, '
+                'opus': 'Cross-model check of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B); the earlier word "verified" is withdrawn in REV 1.4 because nothing was measured. Arithmetic reviewed: H = 216.0 kN, SF = 9.38, '
                         'and f_Rsi ≥ 0.70 condensation margin.'},
                {'edition': 'REV 1.1',
                 'date': '2026-10-27',
                 'summary': 'REV 1.1 (Redated 2026-10-27): Coupled 1:50 vault section to 1:5 EN ISO 13788 Glaser '
                            'dew-point loupe.',
-                'opus': 'Council review of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B); the earlier word "verified" is withdrawn in REV 1.4 because nothing was measured. Arithmetic reviewed: T_si = 16.4 °C > T_dew = '
+                'opus': 'Cross-model check of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B); the earlier word "verified" is withdrawn in REV 1.4 because nothing was measured. Arithmetic reviewed: T_si = 16.4 °C > T_dew = '
                         '9.3 °C at 20 °C / 50% RH.'},
                {'edition': 'REV 1.0',
                 'date': '2026-10-20',
                 'summary': 'REV 1.0 (Published 2026-10-20): Initial 1:50 funicular catenary vault form diagram.',
-                'opus': 'Council review of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B); the earlier word "verified" is withdrawn in REV 1.4 because nothing was measured. Arithmetic reviewed: middle-third kern '
+                'opus': 'Cross-model check of the model arithmetic only (Gemini 4 Argon + Qwen 3.8 27B); the earlier word "verified" is withdrawn in REV 1.4 because nothing was measured. Arithmetic reviewed: middle-third kern '
                         'boundary |e| ≤ 100 mm.'}],
  'reading_time': '22 MIN READ',
  'word_count': '4,650 WORDS',

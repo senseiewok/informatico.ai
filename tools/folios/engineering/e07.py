@@ -82,7 +82,7 @@ FOLIO = {'folio_id': 'E.07',
                            'wind engineering monograph uniting Scanlan aeroelastic flutter '
                            'derivatives with Raissi-Perdikaris-Karniadakis PINN bridge digital '
                            'twins (DOI 10.1016/j.jcp.2018.10.045).',
-                'opus': 'Multi-Family Council Audit (Gemini 4 Argon + Qwen 3.8 27B): Verified '
+                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
                         'U_crit = 76.4 m/s twin-box flutter boundary and 1.42% PINN virtual '
                         'sensing error at lambda_pde = 1.00. The word "Verified" is withdrawn in REV 1.1: both figures are illustrative model values.'}],
  'volume': 4,
