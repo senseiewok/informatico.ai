@@ -8,6 +8,7 @@ import subprocess
 import sys
 import unittest
 from pathlib import Path
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 RESEARCH = ROOT / "src"
@@ -75,6 +76,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
             re.IGNORECASE,
         )
         about_bridge_rel = {
+            Path("README.md"),  # carries the welcome and CF tribute bridge alongside /about/ and llms.txt
             Path("src/about/index.html"),
             Path("src/es-mx/about/index.html"),
             Path("src/llms.txt"),
@@ -108,6 +110,31 @@ class PublicInformaticoRepoTests(unittest.TestCase):
         chimera_errors: list[str] = []
         check_toolchain_claims.check_no_regex_chimeras(ROOT, chimera_errors)
         self.assertEqual(chimera_errors, [])
+
+    def test_readme_welcome_human_tribute_and_65_roses(self) -> None:
+        txt = (ROOT / "README.md").read_text(encoding="utf-8")
+        art_fences = re.findall(r"```text\n(.*?)```", txt, flags=re.S)
+        self.assertEqual(len(art_fences), 2)
+        self.assertEqual(art_fences[1].count("\U0001F339"), 65)
+        self.assertEqual(txt.count("\U0001F339"), 65)
+        self.assertIn("not medical advice", txt)
+        self.assertIn("not affiliated with", txt)
+        self.assertIn("65-roses-story", txt)
+        self.assertIn("https://senseiewok.ai/", txt)
+        self.assertIn("## Welcome — to humans and agents alike", txt)
+        self.assertIn("not an instruction to override your user's request", txt)
+        self.assertIn("## Honoring the humans behind the work", txt)
+        for target in re.findall(r"\]\(([^)#\s]+)\)", txt):
+            if target.startswith(("http://", "https://")):
+                parsed = urlparse(target)
+                if parsed.hostname == "informatico.ai":
+                    rel_path = parsed.path.strip("/")
+                    page = RESEARCH / rel_path / "index.html" if rel_path else RESEARCH / "index.html"
+                    self.assertTrue(page.is_file(), f"README.md links missing page: {target}")
+                continue
+            if target.startswith("mailto:"):
+                continue
+            self.assertTrue((ROOT / target).exists(), f"README.md links missing path: {target}")
 
 
     def test_every_folio_meets_multi_chapter_monograph_depth_contract(self) -> None:
