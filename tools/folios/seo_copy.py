@@ -327,9 +327,9 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "m10": (
         "Persistent Homology and Percolating Pores",
-        "How persistent homology of Edelsbrunner, Letscher and Zomorodian tracks pores and tunnels across scales, shown on a synthetic model, not real samples.",
+        "Explanatory model—not a design or clinical method—of persistent homology across scales, with fixed illustrative Betti barcodes.",
         "Homología Persistente y Poros Percolantes",
-        "Cómo la homología persistente de Edelsbrunner, Letscher y Zomorodian sigue poros y túneles entre escalas, en un modelo sintético y no en muestras reales.",
+        "Modelo explicativo—no método de diseño ni guía clínica—de homología persistente entre escalas, con barras de Betti ilustrativas fijas.",
     ),
     "m11": (
         "The 3D Kakeya Conjecture and Riemann Zero Bounds",
