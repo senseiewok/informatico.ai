@@ -1038,6 +1038,38 @@ class TimeGravityHumansAndPlatesTests(unittest.TestCase):
         self.assertEqual(k_wed.z_smeared(400000.0, 3000e-6, 54e-6, 99e-6, 33e-6), 0.0)
 
 
+_WRITE_TEXT = re.compile(r"\.write_text\((?P<args>.*)\)\s*$")
+
+
+def _text_writes_missing_lf(source: str) -> list[str]:
+    """Lines that call write_text without newline="\\n" (Windows would write CRLF)."""
+    missing = []
+    for line in source.splitlines():
+        m = _WRITE_TEXT.search(line)
+        if m and 'newline="\\n"' not in m.group("args"):
+            missing.append(line.strip())
+    return missing
+
+
+class TimeGravityLineEndingTests(unittest.TestCase):
+    """src/timegravity/*/files/*.json is eol=lf in .gitattributes. A generator that writes
+    CRLF on Windows leaves the main checkout looking modified, and every schedule then
+    stops at its dirty-checkout gate (seen 2026-11-23, about 25 hours of skipped slots)."""
+
+    def test_every_generator_writes_text_with_lf_line_endings(self) -> None:
+        generators = sorted(SKILLS.glob("t*/make_t*.py"))
+        self.assertGreaterEqual(len(generators), 9)
+        for gen in generators:
+            with self.subTest(generator=gen.name):
+                self.assertEqual(_text_writes_missing_lf(gen.read_text(encoding="utf-8")), [])
+
+    def test_planted_crlf_write_is_caught(self) -> None:
+        planted = '    (FILES_DIR / "manifest.json").write_text(text, encoding="utf-8")\n'
+        fixed = '    (FILES_DIR / "manifest.json").write_text(text, encoding="utf-8", newline="\\n")\n'
+        self.assertEqual(len(_text_writes_missing_lf(planted)), 1)
+        self.assertEqual(_text_writes_missing_lf(fixed), [])
+
+
 if __name__ == "__main__":
     unittest.main()
 
