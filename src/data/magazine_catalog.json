@@ -3241,22 +3241,22 @@
         ],
         "lineage_mode": "SYNTHESIS · Synthesizes A.04 Lightweight Exoskeletons, A.08 Radiative Sky-Cooling & A.10 Deployable Skins",
         "title": "Tensegrity Cable-Strut Domes & Radiative Sky-Cooling Envelopes: Pellegrino Equilibrium Nullspaces, Prestress Stiffening & Zero-Energy Cooling",
-        "subtitle": "Synthesizing Folio A.04's lightweight megastructures, A.08's 8–13 μm radiative sky cooling, and A.10's deployable skins: a design study of how the floating-compression tensegrity of Kenneth Snelson and Buckminster Fuller could carry a radiative sky-cooling membrane over a civic canopy.",
+        "subtitle": "Synthesizing Folios A.04, A.08, and A.10: an explanatory model—not a structural design method—pairing floating-compression tensegrity frameworks from Snelson, Fuller, Calladine, and Pellegrino with an untested exterior 8–13 μm radiative sky-cooling calculation.",
         "date_published": "2026-11-07",
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.1",
         "status_badge": "TENSEGRITY & SKY-COOL · REV 1.1",
         "primary_kernel": "tools/tectonic_verify.py",
-        "governing_law": "A t = f · K_T = K_E + K_G(t_0) ≻ 0 · P_cool = P_rad(T_s) − P_atm(T_amb) − P_sun",
+        "governing_law": "A t = f · K_T = K_E + K_G(t_0) ≻ 0 · q_net(T_a) = q_sky_net(T_a) − (1 − R_solar) I_sun",
         "colophon": {
-          "identifier": "A.12 · Tensegrity Cable-Strut Domes & 8–13 μm Sky-Cooling Canopies · ASCE 19",
-          "kernels": "Pellegrino–Calladine SVD Nullspace (s ≥ 1, m ≥ 0) · Geometric Stiffness K_G(t_0) · Raman 8–13 μm",
-          "benchmarks": "Model values: t_0 = 185 kN · q_net = 98.4 W/m² at air temperature ⇒ ΔT ≈ −5.2 °C for an assumed 18.9 W/(m²·K)",
-          "bridge": "Synthesizes A.04/A.08/A.10 · Analogy: cellular tensegrity hypothesis (Ingber 1993) ↔ prestressed cable domes"
+          "identifier": "A.12 · Tensegrity Frameworks & Exterior 8–13 μm Sky-Cooling Pairing",
+          "kernels": "Pellegrino–Calladine Equilibrium Subspaces (s ≥ 1, m ≥ 0) · Prestress Stiffness K_G(t_0) · Exterior 8–13 μm Arithmetic",
+          "benchmarks": "Fixed illustrative values: t_0 = 185 kN · q_net(T_a) = 98.4 W/m² ⇒ ΔT ≈ −5.2 °C (assumed 128.4 W/m², 18.9 W/(m²·K))",
+          "bridge": "Synthesizes A.04/A.08/A.10 · Analogy: cellular tensegrity hypothesis (Ingber 1993) ↔ prestressed cable nets"
         },
         "sliders": [
           {
-            "label": "Cable Prestress Self-Stress Level (t_0)",
+            "label": "Cable Prestress Self-Stress Level",
             "min": 40.0,
             "max": 320.0,
             "step": 5.0,
@@ -3264,7 +3264,7 @@
             "unit": " kN"
           },
           {
-            "label": "8–13 μm Atmospheric Window Emissivity (ε_LWIR)",
+            "label": "8–13 μm Atmospheric Window Emissivity",
             "min": 0.7,
             "max": 0.99,
             "step": 0.01,
@@ -3273,80 +3273,80 @@
           }
         ],
         "steps": [
-          "Stage 1 (Snelson–Fuller Islands of Compression in an Ocean of Tension): Isolated steel compression struts float without touching one another, suspended inside a continuous prestressed cable net (Calladine 1978, DOI 10.1016/0020-7683(78)90052-5).",
-          "Stage 2 (Pellegrino–Calladine Equilibrium Matrix SVD): Singular Value Decomposition of the equilibrium matrix A (Pellegrino & Calladine 1986, DOI 10.1016/0020-7683(86)90014-4) identifies s = dim ker(A) self-stress states and m = dim ker(Aᵀ) infinitesimal mechanisms.",
-          "Stage 3 (Geometric Prestress Stiffening K_G(t_0) ≻ 0): Just as tightening a guitar string raises its pitch, cable prestress t_0 makes the geometric stiffness matrix K_G(t_0) positive on the mechanism modes, so the prestressed structure is stiff in the model. The structural mass figure of 12.4 kg/m² shown on this page is illustrative, not a design result.",
-          "Stage 4 (Daytime Radiative Sky-Cooling Membrane Canopy, Continuing A.08): The membrane is assumed to reflect 97% of an assumed 1,000 W/m² of sunlight, as the photonic surface of Raman et al. did (2014, DOI 10.1038/nature13883), so it absorbs 30 W/m². The model assigns a net radiative exchange with the sky of 128.4 W/m² at air temperature, a fixed illustrative value, so q_net = 128.4 − 30 = 98.4 W/m². Divided by an assumed combined heat-exchange coefficient of about 18.9 W/(m²·K), that gives a membrane surface about 5.2 °C below the air in the model."
+          "Stage 1 (Snelson–Fuller Floating Compression): Isolated compression struts sit suspended without touching one another inside a continuous tensioned cable network (Calladine 1978, DOI 10.1016/0020-7683(78)90052-5).",
+          "Stage 2 (Pellegrino–Calladine Equilibrium Matrix Subspaces): Row-echelon subspace analysis of equilibrium matrix A (Pellegrino & Calladine 1986, DOI 10.1016/0020-7683(86)90014-4) separates s = dim ker(A) self-stress states from m = dim ker(Aᵀ) mechanisms.",
+          "Stage 3 (Prestress Stiffening & Safety Boundary): In an idealized pin-jointed model, cable prestress t_0 makes K_G(t_0) positive on mechanism modes. Explanation only, not a design method; no figure here (185 kN, +42.8 kN/m, 12.4 kg/m² for 120 m) may be used on a real structure.",
+          "Stage 4 (Separate Sky-Cooling Arithmetic, Continuing A.08): Assuming R_solar = 0.97 under I_sun = 1,000 W/m² (after Raman et al. 2014, DOI 10.1038/nature13883) absorbs 30 W/m². With fixed lumped sky exchange 128.4 W/m² at air temperature and assumed h_comb = 18.9 W/(m²·K), q_net(T_a) = 98.4 W/m² and ΔT ≈ −5.2 °C."
         ],
         "readouts": [
           {
             "label": "Tangent Stiffness λ_min(K_E + K_G)",
-            "value": "+42.8 kN/m (Illustrative, Positive in Model)"
+            "value": "+42.8 kN/m (Fixed Illustrative Text, No Solver)"
           },
           {
             "label": "Structural Steel Aerial Mass",
-            "value": "12.4 kg/m² (Illustrative, 120 m Span)"
+            "value": "12.4 kg/m² for 120 m Span (Fixed Illustrative Text)"
           },
           {
             "label": "Net Daytime Sky-Cooling Flux",
-            "value": "98.4 W/m² (Model, at Air Temperature)"
+            "value": "98.4 W/m² at Air Temp · ΔT ≈ −5.2 °C (Fixed Text)"
           },
           {
-            "label": "Sub-Ambient Canopy Drop (ΔT)",
-            "value": "−5.2 °C Membrane Surface (Model)"
+            "label": "A.12 Model Boundary",
+            "value": "EXPLANATORY MODEL · NOT A DESIGN METHOD"
           }
         ],
         "spec_plate": {
-          "division": "CSI MASTERFORMAT 05 16 00 / 13 31 23 / ASCE 19 STRUCTURAL CABLES",
-          "title": "Geiger–Levy Cable-Strut Tensegrity Domes with Photonic Radiative Sky-Cooling PTFE Cladding",
-          "body": "Design proposal: a Geiger-type circular cable dome, prestressed so that its geometric stiffness K_G(t_0) is positive on its mechanism modes, clad in a microporous radiative sky-cooling membrane. Not an engineered or tested assembly; NREL/EnergyPlus is named as a tool a reader could use, and this folio ran no simulation.",
-          "meta": "References: Pellegrino & Calladine (1986) DOI 10.1016/0020-7683(86)90014-4 · Raman et al. (2014) DOI 10.1038/nature13883 · ASCE 19 is the standard for structural applications of steel cables; it sets none of this folio's values"
+          "division": "EXPLANATORY PAIRING · CSI 05 16 00 / 13 31 23 (NOT A DESIGN SPEC)",
+          "title": "Illustrative Pairing: Prestressed Cable-Strut Canopy & Exterior 8–13 μm Sky-Cooling Coating",
+          "body": "Explanatory pairing only, not a design method or tested assembly: a prestressed cable-strut framework paired conceptually with an exterior radiative-cooling coating (Raman et al. 2014 tested seven HfO₂/SiO₂ layers on a silver mirror atop silicon; Mandal et al. 2018 tested porous P(VdF-HFP) polymer films, distinct from architectural PTFE fabric). None of these untested numbers may be used on a real structure; no COMPAS or NREL/EnergyPlus model ran.",
+          "meta": "Pellegrino & Calladine 1986 (DOI 10.1016/0020-7683(86)90014-4) · Raman et al. 2014 (DOI 10.1038/nature13883) · Mandal et al. 2018 (DOI 10.1126/science.aat9513) · ASCE 19 sets none of this folio's values"
         },
         "sidenote_1": {
-          "kicker": "SIDENOTE A.12-A · CROSS-FIELD ANALOGY · BICYCLE WHEELS, LIVING CELLS & THE SAHARAN SILVER ANT",
-          "body": "A bicycle wheel is stiff because its thin spokes are pretensioned, so they never have to carry compression. Donald Ingber proposed that living cells use a similar tensegrity principle in their cytoskeleton (1993, DOI 10.1242/jcs.104.3.613). Saharan silver ants are covered in hairs that raise their near-infrared reflection and help them shed heat by thermal radiation (Shi et al. 2015, DOI 10.1126/science.aab3564). Joining a tensegrity dome to a radiative-cooling skin is this folio's design idea."
+          "kicker": "SIDENOTE A.12-A · CROSS-FIELD ANALOGY · BICYCLE WHEELS, LIVING CELLS & SAHARAN SILVER ANTS",
+          "body": "A bicycle wheel resists load because its thin spokes start in tension inside a rigid rim. Donald Ingber proposed that living cells use a tensegrity-like balance in their cytoskeleton (1993, DOI 10.1242/jcs.104.3.613). Separately, Saharan silver ants carry triangular hairs that raise solar reflection and mid-infrared thermal emission (Shi et al. 2015, DOI 10.1126/science.aab3564). Pairing tensegrity mechanics with radiative-cooling coatings here is an untested conceptual synthesis."
         },
         "sidenote_2": {
-          "kicker": "SIDENOTE A.12-B · OPEN-SOURCE BUILDING PHYSICS · NREL/ENERGYPLUS & COMPAS",
-          "body": "Open tools such as compas-dev/compas (for equilibrium matrices and form finding) and NREL/EnergyPlus (for whole-building energy) could be used to test a canopy like this one. This folio ran neither. A cooler membrane is not a heat-safety measure, and nothing here is guidance on protecting people during heatwaves."
+          "kicker": "SIDENOTE A.12-B · OPEN-SOURCE TOOLS & THERMAL SAFETY BOUNDARY",
+          "body": "Open tools such as compas-dev/compas (for framework equilibrium) and NREL/EnergyPlus (for building heat balance) could test parts of this pairing, though this folio ran neither. A cooler roof membrane is not a heat-safety measure, does not replace mechanical cooling, and gives no guidance for protecting people during heatwaves."
         },
         "skill": {
           "filename": "tensegrity-nullspace-skycooling-SKILL.md",
           "name": "tensegrity-nullspace-skycooling",
-          "description": "AI-agnostic architectural engineering skill for Pellegrino-Calladine tensegrity equilibrium matrix SVD (s = dim ker(A), m = dim ker(A^T)), geometric prestress stiffening K_G(t_0), and 8-13 um radiative sky-cooling membranes.",
+          "description": "Explanatory companion for Pellegrino-Calladine tensegrity equilibrium matrix subspaces (s = dim ker(A), m = dim ker(A^T)), geometric prestress stiffening K_G(t_0), and exterior 8-13 um sky-cooling arithmetic. Explanation only, not a design method; no folio number may be used on a real structure.",
           "rules": [
-            "Compute Singular Value Decomposition of equilibrium matrix A to extract self-stress vector t_0 in ker(A) with strictly positive tension in all cables.",
-            "Verify first-order prestress stability by checking u^T * K_G(t_0) * u > 0 for all inextensional mechanism modes u in ker(A^T).",
-            "Evaluate net daytime radiative cooling flux q_net = P_rad(T_s) - P_atm(T_amb) - (1 - R_solar) * I_sun across the 8-13 um atmospheric window."
+            "Explanation only, not a structural or thermal design method: none of this folio's untested numbers (185 kN, +42.8 kN/m, 12.4 kg/m^2, 98.4 W/m^2, -5.2 C) may be used on a real structure; analyze the four subspaces of equilibrium matrix A (Pellegrino & Calladine 1986, DOI 10.1016/0020-7683(86)90014-4).",
+            "In an idealized pin-jointed frame, check u^T * K_G(t_0) * u > 0 on mechanism modes u in ker(A^T); this omits strut buckling, cable slackening, wind flutter, ponding, and support movement.",
+            "Separate radiative arithmetic from statics: in q_net(T_a) = q_sky_net(T_a) - (1 - R_solar) * I_sun, state every assumed constant (R_solar = 0.97, I_sun = 1,000 W/m^2, sky exchange 128.4 W/m^2, h_comb = 18.9 W/(m^2*K)) as model values."
           ]
         },
         "revisions": [
           {
             "edition": "REV 1.1",
             "date": "2026-11-14",
-            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The opening scene of Snelson and Fuller was dramatized and is replaced by a plain account, and the 2026 chronology entry that presented this folio's canopy as a built project is withdrawn. Unsourced figures (85% less steel, 80% of capacity spent on self-weight, a bicycle wheel carrying 100 times its weight, a World Economic Forum ranking) and public-health and zero-energy claims are removed; the 98.4 W/m² and −5.2 °C values now state the assumptions they follow from, and the stiffness and mass readouts are labelled illustrative.",
+            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The opening scene of Snelson and Fuller was dramatized and is replaced by a plain account, and the 2026 chronology entry that presented this canopy as a built project is withdrawn. Unsourced figures (85% less steel, 80% of capacity spent on self-weight, a bicycle wheel carrying 100 times its weight, a World Economic Forum ranking) and public-health and zero-energy claims are removed; the 98.4 W/m² and −5.2 °C values now state the assumptions they follow from, and the stiffness and mass readouts are labeled illustrative.",
             "opus": "Review: references checked by DOI in Crossref and Scite; central claims checked against the Scite index; arithmetic recomputed from the stated balance."
           },
           {
             "edition": "REV 1.0",
             "date": "2026-11-07",
-            "summary": "REV 1.0 (Published 2026-11-07): Volume VI Architecture synthesis monograph uniting Pellegrino & Calladine tensegrity matrix mechanics (DOI 10.1016/0020-7683(86)90014-4) with Raman daytime radiative sky cooling (DOI 10.1038/nature13883).",
-            "opus": "Council review (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B) of the Maxwell-Calladine rule b - 3j + 6 = s - m and the stiffness formulation. Its 'verified' wording for the radiative balance is withdrawn in REV 1.1: no Planck calculation was run, and the cooling figures are model values."
+            "summary": "REV 1.0 (Published 2026-11-07): Volume VI Architecture synthesis monograph pairing Pellegrino & Calladine tensegrity matrix mechanics (DOI 10.1016/0020-7683(86)90014-4) with Raman et al. daytime radiative sky cooling (DOI 10.1038/nature13883).",
+            "opus": "Initial arithmetic check of the Calladine count b - 3j + 6 = s - m and prestress stiffness relation. Earlier \"verified\" wording for the radiative balance was withdrawn in REV 1.1 because no Planck calculation ran and the cooling figures are model values."
           }
         ],
         "volume": 6,
         "volume_code": "VOL. 06",
-        "reading_time": "22 MIN READ",
-        "word_count": "4,650 WORDS",
+        "reading_time": "19 MIN READ",
+        "word_count": "4,300 WORDS",
         "scite": {
           "doi": "10.1126/science.aat9513",
-          "fetched_on": "2026-11-08",
-          "citing_publications": 2317,
-          "supporting": 23,
-          "mentioning": 1629,
+          "fetched_on": "2026-11-21",
+          "citing_publications": 2339,
+          "supporting": 24,
+          "mentioning": 1653,
           "contrasting": 4,
           "retracted": false,
-          "summary": "Scite index entry for Mandal et al., Hierarchically porous polymer coatings for highly efficient passive daytime radiative cooling (DOI 10.1126/science.aat9513), checked 2026-11-08: 2,317 citing publications (23 supporting, 1,629 mentioning, 4 contrasting) and no retraction notice. The counts describe that paper, not this folio's model."
+          "summary": "Scite index entry [observed: Scite ML citation classification, accessed 2026-11-21] for Mandal et al., Hierarchically porous polymer coatings for highly efficient passive daytime radiative cooling (DOI 10.1126/science.aat9513): 2,339 citing publications (distinct from statement tallies: 24 supporting, 1,653 mentioning, 4 contrasting) and no retraction notice. Those counts describe that paper, not this folio's untested pairing."
         }
       },
       {

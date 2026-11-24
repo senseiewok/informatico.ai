@@ -181,9 +181,9 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "a12": (
         "Tensegrity Cable Domes and Sky-Cooling Canopies",
-        "A design study of how the floating-compression tensegrity of Snelson and Fuller could carry an 8–13 μm radiative sky-cooling membrane over a civic canopy.",
+        "An explanatory model pairing floating-compression tensegrity frameworks with an untested radiative sky-cooling roof calculation; not a design method.",
         "Domos de Tensegridad y Cubiertas de Enfriamiento",
-        "Un estudio de diseño sobre cómo la tensegridad de Snelson y Fuller podría sostener una membrana de enfriamiento radiativo de 8–13 μm sobre una plaza.",
+        "Modelo explicativo que combina marcos de tensegridad en tensión con un cálculo hipotético de enfriamiento radiativo exterior; no es método de diseño.",
     ),
     "a13": (
         "Heinz Isler's Thin-Shell Domes and Buckling",
