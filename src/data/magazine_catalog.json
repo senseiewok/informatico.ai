@@ -3241,22 +3241,22 @@
         ],
         "lineage_mode": "SYNTHESIS · Synthesizes A.04 Lightweight Exoskeletons, A.08 Radiative Sky-Cooling & A.10 Deployable Skins",
         "title": "Tensegrity Cable-Strut Domes & Radiative Sky-Cooling Envelopes: Pellegrino Equilibrium Nullspaces, Prestress Stiffening & Zero-Energy Cooling",
-        "subtitle": "Synthesizing Folio A.04's lightweight megastructures, A.08's 8–13 μm radiative sky cooling, and A.10's deployable skins: a design study of how the floating-compression tensegrity of Kenneth Snelson and Buckminster Fuller could carry a radiative sky-cooling membrane over a civic canopy.",
+        "subtitle": "Synthesizing Folios A.04, A.08, and A.10: an explanatory model—not a structural design method—pairing floating-compression tensegrity frameworks from Snelson, Fuller, Calladine, and Pellegrino with an untested exterior 8–13 μm radiative sky-cooling calculation.",
         "date_published": "2026-11-07",
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.1",
         "status_badge": "TENSEGRITY & SKY-COOL · REV 1.1",
         "primary_kernel": "tools/tectonic_verify.py",
-        "governing_law": "A t = f · K_T = K_E + K_G(t_0) ≻ 0 · P_cool = P_rad(T_s) − P_atm(T_amb) − P_sun",
+        "governing_law": "A t = f · K_T = K_E + K_G(t_0) ≻ 0 · q_net(T_a) = q_sky_net(T_a) − (1 − R_solar) I_sun",
         "colophon": {
-          "identifier": "A.12 · Tensegrity Cable-Strut Domes & 8–13 μm Sky-Cooling Canopies · ASCE 19",
-          "kernels": "Pellegrino–Calladine SVD Nullspace (s ≥ 1, m ≥ 0) · Geometric Stiffness K_G(t_0) · Raman 8–13 μm",
-          "benchmarks": "Model values: t_0 = 185 kN · q_net = 98.4 W/m² at air temperature ⇒ ΔT ≈ −5.2 °C for an assumed 18.9 W/(m²·K)",
-          "bridge": "Synthesizes A.04/A.08/A.10 · Analogy: cellular tensegrity hypothesis (Ingber 1993) ↔ prestressed cable domes"
+          "identifier": "A.12 · Tensegrity Frameworks & Exterior 8–13 μm Sky-Cooling Pairing",
+          "kernels": "Pellegrino–Calladine Equilibrium Subspaces (s ≥ 1, m ≥ 0) · Prestress Stiffness K_G(t_0) · Exterior 8–13 μm Arithmetic",
+          "benchmarks": "Fixed illustrative values: t_0 = 185 kN · q_net(T_a) = 98.4 W/m² ⇒ ΔT ≈ −5.2 °C (assumed 128.4 W/m², 18.9 W/(m²·K))",
+          "bridge": "Synthesizes A.04/A.08/A.10 · Analogy: cellular tensegrity hypothesis (Ingber 1993) ↔ prestressed cable nets"
         },
         "sliders": [
           {
-            "label": "Cable Prestress Self-Stress Level (t_0)",
+            "label": "Cable Prestress Self-Stress Level",
             "min": 40.0,
             "max": 320.0,
             "step": 5.0,
@@ -3264,7 +3264,7 @@
             "unit": " kN"
           },
           {
-            "label": "8–13 μm Atmospheric Window Emissivity (ε_LWIR)",
+            "label": "8–13 μm Atmospheric Window Emissivity",
             "min": 0.7,
             "max": 0.99,
             "step": 0.01,
@@ -3273,80 +3273,80 @@
           }
         ],
         "steps": [
-          "Stage 1 (Snelson–Fuller Islands of Compression in an Ocean of Tension): Isolated steel compression struts float without touching one another, suspended inside a continuous prestressed cable net (Calladine 1978, DOI 10.1016/0020-7683(78)90052-5).",
-          "Stage 2 (Pellegrino–Calladine Equilibrium Matrix SVD): Singular Value Decomposition of the equilibrium matrix A (Pellegrino & Calladine 1986, DOI 10.1016/0020-7683(86)90014-4) identifies s = dim ker(A) self-stress states and m = dim ker(Aᵀ) infinitesimal mechanisms.",
-          "Stage 3 (Geometric Prestress Stiffening K_G(t_0) ≻ 0): Just as tightening a guitar string raises its pitch, cable prestress t_0 makes the geometric stiffness matrix K_G(t_0) positive on the mechanism modes, so the prestressed structure is stiff in the model. The structural mass figure of 12.4 kg/m² shown on this page is illustrative, not a design result.",
-          "Stage 4 (Daytime Radiative Sky-Cooling Membrane Canopy, Continuing A.08): The membrane is assumed to reflect 97% of an assumed 1,000 W/m² of sunlight, as the photonic surface of Raman et al. did (2014, DOI 10.1038/nature13883), so it absorbs 30 W/m². The model assigns a net radiative exchange with the sky of 128.4 W/m² at air temperature, a fixed illustrative value, so q_net = 128.4 − 30 = 98.4 W/m². Divided by an assumed combined heat-exchange coefficient of about 18.9 W/(m²·K), that gives a membrane surface about 5.2 °C below the air in the model."
+          "Stage 1 (Snelson–Fuller Floating Compression): Isolated compression struts sit suspended without touching one another inside a continuous tensioned cable network (Calladine 1978, DOI 10.1016/0020-7683(78)90052-5).",
+          "Stage 2 (Pellegrino–Calladine Equilibrium Matrix Subspaces): Row-echelon subspace analysis of equilibrium matrix A (Pellegrino & Calladine 1986, DOI 10.1016/0020-7683(86)90014-4) separates s = dim ker(A) self-stress states from m = dim ker(Aᵀ) mechanisms.",
+          "Stage 3 (Prestress Stiffening & Safety Boundary): In an idealized pin-jointed model, cable prestress t_0 makes K_G(t_0) positive on mechanism modes. Explanation only, not a design method; no figure here (185 kN, +42.8 kN/m, 12.4 kg/m² for 120 m) may be used on a real structure.",
+          "Stage 4 (Separate Sky-Cooling Arithmetic, Continuing A.08): Assuming R_solar = 0.97 under I_sun = 1,000 W/m² (after Raman et al. 2014, DOI 10.1038/nature13883) absorbs 30 W/m². With fixed lumped sky exchange 128.4 W/m² at air temperature and assumed h_comb = 18.9 W/(m²·K), q_net(T_a) = 98.4 W/m² and ΔT ≈ −5.2 °C."
         ],
         "readouts": [
           {
             "label": "Tangent Stiffness λ_min(K_E + K_G)",
-            "value": "+42.8 kN/m (Illustrative, Positive in Model)"
+            "value": "+42.8 kN/m (Fixed Illustrative Text, No Solver)"
           },
           {
             "label": "Structural Steel Aerial Mass",
-            "value": "12.4 kg/m² (Illustrative, 120 m Span)"
+            "value": "12.4 kg/m² for 120 m Span (Fixed Illustrative Text)"
           },
           {
             "label": "Net Daytime Sky-Cooling Flux",
-            "value": "98.4 W/m² (Model, at Air Temperature)"
+            "value": "98.4 W/m² at Air Temp · ΔT ≈ −5.2 °C (Fixed Text)"
           },
           {
-            "label": "Sub-Ambient Canopy Drop (ΔT)",
-            "value": "−5.2 °C Membrane Surface (Model)"
+            "label": "A.12 Model Boundary",
+            "value": "EXPLANATORY MODEL · NOT A DESIGN METHOD"
           }
         ],
         "spec_plate": {
-          "division": "CSI MASTERFORMAT 05 16 00 / 13 31 23 / ASCE 19 STRUCTURAL CABLES",
-          "title": "Geiger–Levy Cable-Strut Tensegrity Domes with Photonic Radiative Sky-Cooling PTFE Cladding",
-          "body": "Design proposal: a Geiger-type circular cable dome, prestressed so that its geometric stiffness K_G(t_0) is positive on its mechanism modes, clad in a microporous radiative sky-cooling membrane. Not an engineered or tested assembly; NREL/EnergyPlus is named as a tool a reader could use, and this folio ran no simulation.",
-          "meta": "References: Pellegrino & Calladine (1986) DOI 10.1016/0020-7683(86)90014-4 · Raman et al. (2014) DOI 10.1038/nature13883 · ASCE 19 is the standard for structural applications of steel cables; it sets none of this folio's values"
+          "division": "EXPLANATORY PAIRING · CSI 05 16 00 / 13 31 23 (NOT A DESIGN SPEC)",
+          "title": "Illustrative Pairing: Prestressed Cable-Strut Canopy & Exterior 8–13 μm Sky-Cooling Coating",
+          "body": "Explanatory pairing only, not a design method or tested assembly: a prestressed cable-strut framework paired conceptually with an exterior radiative-cooling coating (Raman et al. 2014 tested seven HfO₂/SiO₂ layers on a silver mirror atop silicon; Mandal et al. 2018 tested porous P(VdF-HFP) polymer films, distinct from architectural PTFE fabric). None of these untested numbers may be used on a real structure; no COMPAS or NREL/EnergyPlus model ran.",
+          "meta": "Pellegrino & Calladine 1986 (DOI 10.1016/0020-7683(86)90014-4) · Raman et al. 2014 (DOI 10.1038/nature13883) · Mandal et al. 2018 (DOI 10.1126/science.aat9513) · ASCE 19 sets none of this folio's values"
         },
         "sidenote_1": {
-          "kicker": "SIDENOTE A.12-A · CROSS-FIELD ANALOGY · BICYCLE WHEELS, LIVING CELLS & THE SAHARAN SILVER ANT",
-          "body": "A bicycle wheel is stiff because its thin spokes are pretensioned, so they never have to carry compression. Donald Ingber proposed that living cells use a similar tensegrity principle in their cytoskeleton (1993, DOI 10.1242/jcs.104.3.613). Saharan silver ants are covered in hairs that raise their near-infrared reflection and help them shed heat by thermal radiation (Shi et al. 2015, DOI 10.1126/science.aab3564). Joining a tensegrity dome to a radiative-cooling skin is this folio's design idea."
+          "kicker": "SIDENOTE A.12-A · CROSS-FIELD ANALOGY · BICYCLE WHEELS, LIVING CELLS & SAHARAN SILVER ANTS",
+          "body": "A bicycle wheel resists load because its thin spokes start in tension inside a rigid rim. Donald Ingber proposed that living cells use a tensegrity-like balance in their cytoskeleton (1993, DOI 10.1242/jcs.104.3.613). Separately, Saharan silver ants carry triangular hairs that raise solar reflection and mid-infrared thermal emission (Shi et al. 2015, DOI 10.1126/science.aab3564). Pairing tensegrity mechanics with radiative-cooling coatings here is an untested conceptual synthesis."
         },
         "sidenote_2": {
-          "kicker": "SIDENOTE A.12-B · OPEN-SOURCE BUILDING PHYSICS · NREL/ENERGYPLUS & COMPAS",
-          "body": "Open tools such as compas-dev/compas (for equilibrium matrices and form finding) and NREL/EnergyPlus (for whole-building energy) could be used to test a canopy like this one. This folio ran neither. A cooler membrane is not a heat-safety measure, and nothing here is guidance on protecting people during heatwaves."
+          "kicker": "SIDENOTE A.12-B · OPEN-SOURCE TOOLS & THERMAL SAFETY BOUNDARY",
+          "body": "Open tools such as compas-dev/compas (for framework equilibrium) and NREL/EnergyPlus (for building heat balance) could test parts of this pairing, though this folio ran neither. A cooler roof membrane is not a heat-safety measure, does not replace mechanical cooling, and gives no guidance for protecting people during heatwaves."
         },
         "skill": {
           "filename": "tensegrity-nullspace-skycooling-SKILL.md",
           "name": "tensegrity-nullspace-skycooling",
-          "description": "AI-agnostic architectural engineering skill for Pellegrino-Calladine tensegrity equilibrium matrix SVD (s = dim ker(A), m = dim ker(A^T)), geometric prestress stiffening K_G(t_0), and 8-13 um radiative sky-cooling membranes.",
+          "description": "Explanatory companion for Pellegrino-Calladine tensegrity equilibrium matrix subspaces (s = dim ker(A), m = dim ker(A^T)), geometric prestress stiffening K_G(t_0), and exterior 8-13 um sky-cooling arithmetic. Explanation only, not a design method; no folio number may be used on a real structure.",
           "rules": [
-            "Compute Singular Value Decomposition of equilibrium matrix A to extract self-stress vector t_0 in ker(A) with strictly positive tension in all cables.",
-            "Verify first-order prestress stability by checking u^T * K_G(t_0) * u > 0 for all inextensional mechanism modes u in ker(A^T).",
-            "Evaluate net daytime radiative cooling flux q_net = P_rad(T_s) - P_atm(T_amb) - (1 - R_solar) * I_sun across the 8-13 um atmospheric window."
+            "Explanation only, not a structural or thermal design method: none of this folio's untested numbers (185 kN, +42.8 kN/m, 12.4 kg/m^2, 98.4 W/m^2, -5.2 C) may be used on a real structure; analyze the four subspaces of equilibrium matrix A (Pellegrino & Calladine 1986, DOI 10.1016/0020-7683(86)90014-4).",
+            "In an idealized pin-jointed frame, check u^T * K_G(t_0) * u > 0 on mechanism modes u in ker(A^T); this omits strut buckling, cable slackening, wind flutter, ponding, and support movement.",
+            "Separate radiative arithmetic from statics: in q_net(T_a) = q_sky_net(T_a) - (1 - R_solar) * I_sun, state every assumed constant (R_solar = 0.97, I_sun = 1,000 W/m^2, sky exchange 128.4 W/m^2, h_comb = 18.9 W/(m^2*K)) as model values."
           ]
         },
         "revisions": [
           {
             "edition": "REV 1.1",
             "date": "2026-11-14",
-            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The opening scene of Snelson and Fuller was dramatized and is replaced by a plain account, and the 2026 chronology entry that presented this folio's canopy as a built project is withdrawn. Unsourced figures (85% less steel, 80% of capacity spent on self-weight, a bicycle wheel carrying 100 times its weight, a World Economic Forum ranking) and public-health and zero-energy claims are removed; the 98.4 W/m² and −5.2 °C values now state the assumptions they follow from, and the stiffness and mass readouts are labelled illustrative.",
+            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The opening scene of Snelson and Fuller was dramatized and is replaced by a plain account, and the 2026 chronology entry that presented this canopy as a built project is withdrawn. Unsourced figures (85% less steel, 80% of capacity spent on self-weight, a bicycle wheel carrying 100 times its weight, a World Economic Forum ranking) and public-health and zero-energy claims are removed; the 98.4 W/m² and −5.2 °C values now state the assumptions they follow from, and the stiffness and mass readouts are labeled illustrative.",
             "opus": "Review: references checked by DOI in Crossref and Scite; central claims checked against the Scite index; arithmetic recomputed from the stated balance."
           },
           {
             "edition": "REV 1.0",
             "date": "2026-11-07",
-            "summary": "REV 1.0 (Published 2026-11-07): Volume VI Architecture synthesis monograph uniting Pellegrino & Calladine tensegrity matrix mechanics (DOI 10.1016/0020-7683(86)90014-4) with Raman daytime radiative sky cooling (DOI 10.1038/nature13883).",
-            "opus": "Council review (Gemini 4 Argon + Qwen 3.8 27B + Gemma 4 31B) of the Maxwell-Calladine rule b - 3j + 6 = s - m and the stiffness formulation. Its 'verified' wording for the radiative balance is withdrawn in REV 1.1: no Planck calculation was run, and the cooling figures are model values."
+            "summary": "REV 1.0 (Published 2026-11-07): Volume VI Architecture synthesis monograph pairing Pellegrino & Calladine tensegrity matrix mechanics (DOI 10.1016/0020-7683(86)90014-4) with Raman et al. daytime radiative sky cooling (DOI 10.1038/nature13883).",
+            "opus": "Initial arithmetic check of the Calladine count b - 3j + 6 = s - m and prestress stiffness relation. Earlier \"verified\" wording for the radiative balance was withdrawn in REV 1.1 because no Planck calculation ran and the cooling figures are model values."
           }
         ],
         "volume": 6,
         "volume_code": "VOL. 06",
-        "reading_time": "22 MIN READ",
-        "word_count": "4,650 WORDS",
+        "reading_time": "19 MIN READ",
+        "word_count": "4,300 WORDS",
         "scite": {
           "doi": "10.1126/science.aat9513",
-          "fetched_on": "2026-11-08",
-          "citing_publications": 2317,
-          "supporting": 23,
-          "mentioning": 1629,
+          "fetched_on": "2026-11-21",
+          "citing_publications": 2339,
+          "supporting": 24,
+          "mentioning": 1653,
           "contrasting": 4,
           "retracted": false,
-          "summary": "Scite index entry for Mandal et al., Hierarchically porous polymer coatings for highly efficient passive daytime radiative cooling (DOI 10.1126/science.aat9513), checked 2026-11-08: 2,317 citing publications (23 supporting, 1,629 mentioning, 4 contrasting) and no retraction notice. The counts describe that paper, not this folio's model."
+          "summary": "Scite index entry [observed: Scite ML citation classification, accessed 2026-11-21] for Mandal et al., Hierarchically porous polymer coatings for highly efficient passive daytime radiative cooling (DOI 10.1126/science.aat9513): 2,339 citing publications (distinct from statement tallies: 24 supporting, 1,653 mentioning, 4 contrasting) and no retraction notice. Those counts describe that paper, not this folio's untested pairing."
         }
       },
       {
@@ -6070,7 +6070,7 @@
         ],
         "lineage_mode": "TRIAD_SYNTHESIS · Completes the Circle to E.01 Percolation, P.03 Mucin Meshes & M.05 Simplicial Geometry",
         "title": "Persistent Homology, Vietoris–Rips Simplicial Filtrations, Betti Barcodes & Topological Percolation Thresholds in Disordered Media",
-        "subtitle": "Closing the 40-Folio circle back to Folio E.01's porous percolation and P.03's mucin hydrogels: how Edelsbrunner, Letscher & Zomorodian's persistent homology tracks pores and tunnels across scales. The barcodes shown come from a synthetic teaching model, not from real samples.",
+        "subtitle": "Synthesizing Folios E.01, P.03, and M.05: an explanatory model—not a structural, hydrological, or clinical design method—of how persistent homology pairs topological cycle births and deaths across filtration scales. Numerical readouts shown here are fixed illustrative text.",
         "date_published": "2026-11-03",
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.1",
@@ -6078,14 +6078,14 @@
         "primary_kernel": "tools/discovery/frontier_ai_math_catalog.py",
         "governing_law": "∂_{k−1} ∘ ∂_k = 0 · β_k^{i,j} = rank(H_k(K_i) → H_k(K_j)) · d_B(D(f), D(g)) ≤ ||f − g||_∞",
         "colophon": {
-          "identifier": "M.10 · Persistent Homology & Topological Percolation Barcodes",
-          "kernels": "Vietoris–Rips Filtration · Z_2 Boundary Reduction ∂_k · Bottleneck Stability",
-          "benchmarks": "Synthetic model: ε = 65 nm · β_0 = 1, β_1 = 3, χ = −2 · longest H_1 bar ends at 116 nm (illustrative)",
-          "bridge": "Completes E.01/P.03/M.05 · a proposed pore-size analysis, not a measured result"
+          "identifier": "M.10 · Persistent Homology & Topological Persistence Barcodes",
+          "kernels": "Alpha & Vietoris–Rips Filtrations · Z_2 Boundary Reduction ∂_k · Bottleneck Stability",
+          "benchmarks": "Abstract 7-vertex flag 2-skeleton (|V|=7, |E|=10, |F|=1): β_0=1, β_1=3, χ=−2 · H_1 [38, 116] nm (fixed illustrative)",
+          "bridge": "Synthesizes E.01/P.03/M.05 · micro-CT persistence (Robins et al. 2016) as a method reference"
         },
         "sliders": [
           {
-            "label": "Simplicial Filtration Scale (ε)",
+            "label": "Simplicial Filtration Scale",
             "min": 15.0,
             "max": 140.0,
             "step": 5.0,
@@ -6093,7 +6093,7 @@
             "unit": " nm"
           },
           {
-            "label": "Point-Cloud Perturbation Noise (σ_noise)",
+            "label": "Point-Cloud Perturbation Noise",
             "min": 0.02,
             "max": 0.35,
             "step": 0.01,
@@ -6102,51 +6102,51 @@
           }
         ],
         "steps": [
-          "Stage 1 (Vietoris–Rips Simplicial Filtration K_ε, Continuing M.05): Grows balls of radius ε around 3D pore/mucin nodes, adding edges, triangles, and tetrahedra as pairwise distances cross 2ε.",
-          "Stage 2 (Chain Complex & Z_2 Boundary Reduction ∂_{k−1} ∘ ∂_k = 0, DOI 10.1007/s00454-002-2885-2): Reduces boundary matrices to pair each k-cycle birth b_i with its bounding (k+1)-simplex death d_i.",
-          "Stage 3 (Cohen-Steiner Bottleneck Stability): By the stability theorem of Cohen-Steiner, Edelsbrunner & Harer, a perturbation moves persistence points by at most d_B ≤ ||f − g||_∞, so short bars near the diagonal can be read as noise and long bars as structure. σ_noise = 0.08 is the model setting.",
-          "Stage 4 (Pore-Throat Reading, Completing E.01 & P.03): In the synthetic model the longest H_1 interval is [38 nm, 116 nm]. Robins et al. (2016) relate persistence features of this kind to percolating length scales in micro-CT images of porous materials. Whether a given particle passes through a real mesh also depends on chemistry and binding, which topology alone does not settle."
+          "Stage 1 (Alpha & Vietoris–Rips Filtrations): 3D alpha filtrations (Edelsbrunner, Letscher & Zomorodian 2002, DOI 10.1007/s00454-002-2885-2) and Vietoris–Rips cliques (indexed by diameter ||x_a − x_b|| ≤ t in Carlsson 2009, DOI 10.1090/S0273-0979-09-01249-X and Bauer 2021, DOI 10.1007/s41468-021-00071-5, so t = 2ε under ball radius ε) build nested complexes.",
+          "Stage 2 (Chain Nilpotency & Z_2 Pairing, DOI 10.1007/s00454-002-2885-2): ∂_{k−1} ∘ ∂_k = 0 gives H_k = ker(∂_k)/im(∂_{k+1}) and pairs cycle births b_i with bounding deaths d_i. Explanation only, not a structural or clinical design method.",
+          "Stage 3 (Bottleneck Stability, DOI 10.1007/s00454-006-1276-5): Cohen-Steiner, Edelsbrunner & Harer bound d_B(D(f), D(g)) ≤ ||f − g||_∞ for tame functions; under uniform bound δ in matching units, bars with d_i − b_i > 2δ stay off b = d (σ = 0.08 is a dimensionless slider setting).",
+          "Stage 4 (Micro-CT Persistence Reference, DOI 10.1002/2015WR017937): Robins et al. (2016) relate persistence on bead, sand, sandstone, and limestone micro-CT images to pore-size distributions and percolating sphere radius ([38, 116] nm is fixed illustrative text; chemistry and binding also affect transport)."
         ],
         "readouts": [
           {
             "label": "Betti Numbers (β_0, β_1, β_2, model)",
-            "value": "β₀ = 1 · β₁ = 3 · β₂ = 0"
+            "value": "β₀ = 1 · β₁ = 3 · β₂ = 0 (Fixed 7-Vertex 2-Skeleton)"
           },
           {
-            "label": "Euler–Poincaré Invariant (χ)",
-            "value": "χ = β₀ − β₁ + β₂ = −2"
+            "label": "Euler–Poincaré Invariant (χ, model)",
+            "value": "χ = 7 − 10 + 1 = −2 (Fixed Illustrative Text)"
           },
           {
             "label": "Longest H_1 Bar Death Scale (model)",
-            "value": "116 nm (synthetic point cloud)"
+            "value": "116 nm on [38, 116] nm (Fixed Illustrative Text)"
           },
           {
-            "label": "Model Reading",
-            "value": "Long bar stands out from noise (not a measurement)"
+            "label": "M.10 Model Boundary",
+            "value": "EXPLANATORY MODEL · NOT A DESIGN METHOD"
           }
         ],
         "spec_plate": {
-          "division": "ALGEBRAIC TOPOLOGY & 3D POROUS TOMOGRAPHY / TDA",
-          "title": "Vietoris–Rips & Alpha-Complex Persistent Homology Pore Analyzer (Design Study)",
-          "body": "Design study: a Z_2 sparse boundary-matrix reducer and Wasserstein/Bottleneck persistence diagram analyzer that could be applied to 3D micro-CT images of concrete cores (E.01/E.09) or to imaged mucin hydrogels (P.03). No such images were analyzed here.",
-          "meta": "Method source cited, not reproduced: Edelsbrunner, Letscher & Zomorodian (2002) DOI 10.1007/s00454-002-2885-2"
+          "division": "ALGEBRAIC TOPOLOGY & POROUS TOMOGRAPHY · EXPLANATORY MODEL (NOT A DESIGN SPEC)",
+          "title": "Illustrative Study: Alpha & Vietoris–Rips Persistent Homology in Porous Media",
+          "body": "Explanatory model only, not a structural, hydrological, or clinical design method: none of these illustrative numbers (65 nm, β₀ = 1, β₁ = 3, χ = −2, 38–116 nm) may be used on a real structure, foundation, or patient sample. No boundary-matrix reducer runs in the browser, no micro-CT or hydrogel images were analyzed here, and the four readout cards stay fixed text.",
+          "meta": "Method sources cited, not reproduced: Edelsbrunner, Letscher & Zomorodian 2002 (DOI 10.1007/s00454-002-2885-2) · Cohen-Steiner, Edelsbrunner & Harer 2007 (DOI 10.1007/s00454-006-1276-5) · Robins et al. 2016 (DOI 10.1002/2015WR017937)"
         },
         "sidenote_1": {
-          "kicker": "SIDENOTE M.10-A · CLOSING THE 40-FOLIO LOOP FROM E.01 TO M.10",
-          "body": "Folio E.01 introduced percolation (the square-lattice site threshold p_c ≈ 0.5927) and Helmholtz–Hodge decomposition; Folio M.10 adds persistent homology, a way to track connected pieces and loops in 3D point clouds across scales."
+          "kicker": "SIDENOTE M.10-A · ALPHA FILTRATIONS, VIETORIS–RIPS CLIQUES & RIPSER",
+          "body": "Folio E.01 used square-lattice percolation (p_c ≈ 0.5927). Edelsbrunner, Letscher & Zomorodian (2002, DOI 10.1007/s00454-002-2885-2) defined persistence on 3D alpha-complex filtrations, while Ripser (Bauer 2021, DOI 10.1007/s41468-021-00071-5) computes Vietoris–Rips barcodes using implicit coboundaries and apparent pairs."
         },
         "sidenote_2": {
-          "kicker": "SIDENOTE M.10-B · BOTTLENECK STABILITY AND NOISY IMAGES",
-          "body": "Noisy tomograms make single-threshold segmentation fragile. The Bottleneck Stability Theorem bounds how far noise can move persistence points, which is why persistence is attractive for noisy images; how well it sizes pores in a particular biological sample would have to be tested."
+          "kicker": "SIDENOTE M.10-B · BOTTLENECK STABILITY VS. DIMENSIONLESS SLIDER JITTER",
+          "body": "Cohen-Steiner, Edelsbrunner & Harer (2007, DOI 10.1007/s00454-006-1276-5) bound d_B(D(f), D(g)) ≤ ||f − g||_∞ under a supremum norm in matching units. Unbounded random noise lacks a finite supremum bound unless truncated, and the σ = 0.08 slider here is a normalized dimensionless display control."
         },
         "skill": {
           "filename": "persistent-homology-betti-percolation-SKILL.md",
           "name": "persistent-homology-betti-percolation",
-          "description": "AI-agnostic algebraic-topology and porous-media skill for Vietoris-Rips/Alpha simplicial filtrations, boundary matrix reduction (partial_{k-1} o partial_k = 0), Betti persistence barcodes, and percolation throat sizing.",
+          "description": "Explanatory algebraic-topology companion for Alpha and Vietoris-Rips simplicial filtrations, Z_2 boundary reduction, persistence barcodes, bottleneck stability, and micro-CT pore-scale persistence. Explanation only, not a structural, hydrological, or clinical design method; no folio number may be used on a real structure or patient sample.",
           "rules": [
-            "Verify the fundamental chain-complex identity partial_{k-1} * partial_k = 0 and Euler-Poincare invariant chi = sum_k (-1)^k |K^(k)| = sum_k (-1)^k beta_k.",
-            "Filter out topological noise features with persistence lifetime (d_i - b_i) <= 2 * sigma_noise under the Cohen-Steiner Bottleneck Stability bound.",
-            "Compare the birth/death scale of the dominant H_1 / H_2 cycle with a particle diameter only as a first geometric screen, and state that transport also depends on chemistry and binding."
+            "Explanation only, not a structural, hydrological, or clinical design method: none of this folio's illustrative numbers (65 nm, beta_0 = 1, beta_1 = 3, chi = -2, 38-116 nm) may be used on a real structure, foundation, or patient sample; check chain nilpotency partial_{k-1} o partial_k = 0 and truncate chi = sum_{k>=0} (-1)^k |K^(k)| = sum_{k>=0} (-1)^k beta_k to beta_0 - beta_1 + beta_2 only if beta_k = 0 for k >= 3 (DOI 10.1007/s00454-002-2885-2).",
+            "Apply diagonal separation d_i - b_i > 2*delta under tame bottleneck stability d_B(D(f), D(g)) <= ||f - g||_inf <= delta only in matching units (DOI 10.1007/s00454-006-1276-5), account for diameter t = 2*epsilon vs. ball-radius epsilon conventions in Vietoris-Rips software (DOI 10.1090/S0273-0979-09-01249-X; DOI 10.1007/s41468-021-00071-5), and do not equate a dimensionless slider (sigma = 0.08) to a nanometer bound.",
+            "Distinguish Robins et al. (2016, DOI 10.1002/2015WR017937) persistence on bead, sand, sandstone, and limestone micro-CT images from untested biological gel proposals, note that charge and binding could also block particles, and state when readouts are fixed illustrative text."
           ]
         },
         "revisions": [
@@ -6160,22 +6160,22 @@
             "edition": "REV 1.0",
             "date": "2026-11-03",
             "summary": "REV 1.0 (Published 2026-11-03): Crowning 40th Folio of Informatico.ai Volume V, completing the circle back to Folio E.01 & P.03 via Edelsbrunner, Letscher & Zomorodian's persistent homology (DOI 10.1007/s00454-002-2885-2).",
-            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified chain complex exactness partial^2 = 0, Euler-Poincare alternation chi = beta_0 - beta_1 + beta_2, and H_1 throat percolation threshold. (REV 1.1: this 'verified' wording is withdrawn for the throat threshold, which is a synthetic model value.)"
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Checked chain boundary nilpotency partial^2 = 0 (earlier printed as \"exactness\"), Euler-Poincare alternation chi = beta_0 - beta_1 + beta_2, and H_1 throat threshold. (REV 1.1: earlier \"Verified\" wording is withdrawn across all three items because no verifier script ran here and the throat threshold is a synthetic model value.)"
           }
         ],
         "volume": 5,
         "volume_code": "VOL. 05",
-        "reading_time": "22 MIN READ",
-        "word_count": "4,650 WORDS",
+        "reading_time": "19 MIN READ",
+        "word_count": "4,400 WORDS",
         "scite": {
           "doi": "10.1007/s00454-002-2885-2",
-          "fetched_on": "2026-11-08",
-          "citing_publications": 2416,
+          "fetched_on": "2026-11-24",
+          "citing_publications": 2459,
           "supporting": 8,
-          "mentioning": 2230,
+          "mentioning": 2256,
           "contrasting": 1,
           "retracted": false,
-          "summary": "Scite Smart Citation Index (verified 2026-11-08): 0 retractions; 2,416 citing publications (8 supporting, 2,230 mentioning, 1 contrasting) on Edelsbrunner, Letscher & Zomorodian's foundational paper on topological persistence and simplicial filtration barcodes."
+          "summary": "Scite Smart Citation Index [observed: Scite ML citation classification, accessed 2026-11-24]: 0 retractions; 2,459 citing publications (8 supporting, 2,256 mentioning, 1 contrasting citation statements) for Edelsbrunner, Letscher & Zomorodian 2002 (DOI 10.1007/s00454-002-2885-2). Counts describe that paper, not this folio."
         }
       },
       {

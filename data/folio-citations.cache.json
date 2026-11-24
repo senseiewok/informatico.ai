@@ -1,6 +1,6 @@
 {
   "doi:10.1002/2015wr017937": {
-    "fetched": "2026-11-14",
+    "fetched": "2026-11-24",
     "first_author": "Robins",
     "found": true,
     "journal": "Water Resources Research",
@@ -384,7 +384,7 @@
     "year": 1999
   },
   "doi:10.1007/s00454-002-2885-2": {
-    "fetched": "2026-11-04",
+    "fetched": "2026-11-24",
     "first_author": "Edelsbrunner",
     "found": true,
     "journal": "Discrete &amp; Computational Geometry",
@@ -400,12 +400,20 @@
     "year": 2004
   },
   "doi:10.1007/s00454-006-1276-5": {
-    "fetched": "2026-11-14",
+    "fetched": "2026-11-24",
     "first_author": "Cohen-Steiner",
     "found": true,
     "journal": "Discrete &amp; Computational Geometry",
     "title": "Stability of Persistence Diagrams",
     "year": 2007
+  },
+  "doi:10.1007/s41468-021-00071-5": {
+    "fetched": "2026-11-24",
+    "first_author": "Bauer",
+    "found": true,
+    "journal": "Journal of Applied and Computational Topology",
+    "title": "Ripser: efficient computation of Vietoris–Rips persistence barcodes",
+    "year": 2021
   },
   "doi:10.1016/0003-4916(75)90211-0": {
     "fetched": "2026-11-11",
@@ -1912,7 +1920,7 @@
     "year": 1983
   },
   "doi:10.1090/s0273-0979-09-01249-x": {
-    "fetched": "2026-11-14",
+    "fetched": "2026-11-24",
     "first_author": "Carlsson",
     "found": true,
     "journal": "Bulletin of the American Mathematical Society",
@@ -2936,7 +2944,7 @@
     "year": 2010
   },
   "doi:10.1126/science.1223012": {
-    "fetched": "2026-11-04",
+    "fetched": "2026-11-24",
     "first_author": "Button",
     "found": true,
     "journal": "Science",
@@ -4588,16 +4596,16 @@
     "year": 2003
   },
   "scite:10.1007/s00454-002-2885-2": {
-    "citing_publications": 2416,
+    "citing_publications": 2459,
     "contrasting": 1,
-    "fetched": "2026-11-08",
+    "fetched": "2026-11-24",
     "found": true,
     "journal": "Discrete & Computational Geometry",
-    "mentioning": 2230,
+    "mentioning": 2256,
     "retracted": false,
     "supporting": 8,
     "title": "Topological Persistence and Simplification",
-    "total_smart_citations": 2240,
+    "total_smart_citations": 2266,
     "unclassified": 1,
     "year": 2002
   },
