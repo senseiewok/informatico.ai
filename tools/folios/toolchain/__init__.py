@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Modular Tech & Tools (The Toolbox) Folios package (X.01–X.07)."""
+"""Modular Tech & Tools (The Toolbox) Folios package (X.01–X.08)."""
 
 from .x01 import FOLIO as X01
 from .x02 import FOLIO as X02
@@ -8,6 +8,7 @@ from .x04 import FOLIO as X04
 from .x05 import FOLIO as X05
 from .x06 import FOLIO as X06
 from .x07 import FOLIO as X07
+from .x08 import FOLIO as X08
 
 BOUNDARY_EN = (
     "Educational and exploratory design calculation only. Nothing on this page, in the downloadable "
@@ -27,7 +28,7 @@ BOUNDARY_ES = (
     "todas las cargas, propiedades de materiales, conexiones y requisitos normativos locales."
 )
 
-TOOLCHAIN_FOLIOS: list[dict] = [X01, X02, X03, X04, X05, X06, X07]
+TOOLCHAIN_FOLIOS: list[dict] = [X01, X02, X03, X04, X05, X06, X07, X08]
 TOOLCHAIN_BY_SLUG: dict[str, dict] = {f["slug"]: f for f in TOOLCHAIN_FOLIOS}
 
 PILLAR_FOLIO_TO_TOOLCHAIN: dict[str, list[dict]] = {}

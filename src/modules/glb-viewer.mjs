@@ -259,6 +259,13 @@ export function buildParametricMesh(parsed, scaleVec = [1.0, 1.0, 1.0], slug = "
     Number.isFinite(Number(p0)) &&
     Number.isFinite(Number(p1)) &&
     Number(p0) > 0;
+  const isX08 =
+    String(slug || "").toLowerCase() === "x08" &&
+    vCount === 16 &&
+    Number.isFinite(Number(p0)) &&
+    Number.isFinite(Number(p1)) &&
+    Number(p0) > 0 &&
+    Number(p1) > 0;
 
   if (isX05) {
     const hw2 = Math.max(2.0, 0.5 * Number(p0));
@@ -280,6 +287,54 @@ export function buildParametricMesh(parsed, scaleVec = [1.0, 1.0, 1.0], slug = "
       ];
       for (let k = 0; k < 4; k += 1) {
         const [x, y, zv] = quad[k];
+        positions[vi * 3] = x;
+        positions[vi * 3 + 1] = y;
+        positions[vi * 3 + 2] = zv;
+        if (x < bmin[0]) bmin[0] = x;
+        if (y < bmin[1]) bmin[1] = y;
+        if (zv < bmin[2]) bmin[2] = zv;
+        if (x > bmax[0]) bmax[0] = x;
+        if (y > bmax[1]) bmax[1] = y;
+        if (zv > bmax[2]) bmax[2] = zv;
+        vi += 1;
+      }
+    }
+    const acc = new Float64Array(vCount * 3);
+    for (let t = 0; t < idx.length; t += 3) {
+      const a = idx[t], b = idx[t + 1], c = idx[t + 2];
+      const x0 = positions[a * 3], y0 = positions[a * 3 + 1], z0 = positions[a * 3 + 2];
+      const ux = positions[b * 3] - x0, uy = positions[b * 3 + 1] - y0, uz = positions[b * 3 + 2] - z0;
+      const vx = positions[c * 3] - x0, vy = positions[c * 3 + 1] - y0, vz = positions[c * 3 + 2] - z0;
+      const nx = uy * vz - uz * vy;
+      const ny = uz * vx - ux * vz;
+      const nz = ux * vy - uy * vx;
+      for (const vert of [a, b, c]) {
+        acc[vert * 3] += nx;
+        acc[vert * 3 + 1] += ny;
+        acc[vert * 3 + 2] += nz;
+      }
+    }
+    for (let i = 0; i < vCount; i += 1) {
+      const nx = acc[i * 3], ny = acc[i * 3 + 1], nz = acc[i * 3 + 2];
+      const nLen = Math.hypot(nx, ny, nz) || 1.0;
+      normals[i * 3] = nx / nLen;
+      normals[i * 3 + 1] = ny / nLen;
+      normals[i * 3 + 2] = nz / nLen;
+    }
+  } else if (isX08) {
+    const xs = [0.0, 24.0, 24.0 + Number(p0)];
+    const ys = [-15.0, 15.0];
+    const zs = [0.0, 36.0, 36.0 + Number(p1)];
+    const nodeOrder = [
+      [0, 0], [1, 0],
+      [0, 1], [1, 1], [2, 1],
+      [0, 2], [1, 2], [2, 2],
+    ];
+    let vi = 0;
+    for (let jy = 0; jy < 2; jy += 1) {
+      for (let k = 0; k < nodeOrder.length; k += 1) {
+        const [ix, kz] = nodeOrder[k];
+        const x = xs[ix], y = ys[jy], zv = zs[kz];
         positions[vi * 3] = x;
         positions[vi * 3 + 1] = y;
         positions[vi * 3 + 2] = zv;
@@ -1001,6 +1056,7 @@ function computeParametricScaleVec(slug, p0, p1) {
   }
   if (slug === "x05") return [p0 / 24.0, (p0 + p1) / 28.0, 1.0];
   if (slug === "x07") return [p0 / 30.0, 1.0, p1 / 18.0];
+  if (slug === "x08") return [1.0, 1.0, 1.0];
   return [p0 / 24.0, p0 / 24.0, p1 / 60.0];
 }
 
@@ -1113,6 +1169,49 @@ export function initGlbViewers(scope = document) {
           `${vol.toFixed(1)} mm³ · ${nonDelaunay}`,
           pass ? "PASS · DEFECT REJECTED" : (knockoutActive ? "PLANTED DEFECT TRIGGERED" : "ALERT · COTANGENT WEIGHT < 0"),
         ];
+      } else if (slug === "x08") {
+        const bW = 24.0, dY = 30.0, hS = 36.0;
+        const boxes = [
+          [0.0, bW, -0.5 * dY, 0.5 * dY, 0.0, hS],
+          [0.0, bW, -0.5 * dY, 0.5 * dY, hS, hS + p1],
+          [bW, bW + p0, -0.5 * dY, 0.5 * dY, hS, hS + p1],
+        ];
+        let vTot = 0.0, mx = 0.0, mz = 0.0;
+        for (const [x0, x1, y0, y1, z0, z1] of boxes) {
+          const vb = (x1 - x0) * (y1 - y0) * (z1 - z0);
+          vTot += vb;
+          mx += vb * 0.5 * (x0 + x1);
+          mz += vb * 0.5 * (z0 + z1);
+        }
+        const xCm = mx / vTot;
+        const zCm = mz / vTot;
+        let ixx = 0.0, iyy = 0.0, izz = 0.0, ixz = 0.0;
+        for (const [x0, x1, y0, y1, z0, z1] of boxes) {
+          const lx = x1 - x0, ly = y1 - y0, lz = z1 - z0;
+          const vb = lx * ly * lz;
+          const dx = 0.5 * (x0 + x1) - xCm;
+          const dz = 0.5 * (z0 + z1) - zCm;
+          const d2 = dx * dx + dz * dz;
+          ixx += (vb * (ly * ly + lz * lz)) / 12.0 + vb * (d2 - dx * dx);
+          iyy += (vb * (lx * lx + lz * lz)) / 12.0 + vb * d2;
+          izz += (vb * (lx * lx + ly * ly)) / 12.0 + vb * (d2 - dz * dz);
+          ixz -= vb * dx * dz;
+        }
+        const mid = 0.5 * (ixx + izz);
+        const rad = Math.hypot(0.5 * (ixx - izz), ixz);
+        const evs = [mid - rad, mid + rad, iyy].sort((a, b) => a - b);
+        const mTip = Math.min(xCm, bW - xCm, 0.5 * dY);
+        const tiltDeg = (Math.atan2(mTip, zCm) * 180.0) / Math.PI;
+        const fmtSigned = (v, d) => (v < 0 ? `\u2212${Math.abs(v).toFixed(d)}` : `+${v.toFixed(d)}`);
+        const fmtTilt = (v) => (v < 0 ? `\u2212${Math.abs(v).toFixed(2)}\u00b0` : `${v.toFixed(2)}\u00b0`);
+        const stands = mTip > 0.0;
+        pass = !knockoutActive && stands;
+        out = [
+          knockoutActive ? "V=16, E=42, F=28 · 3 DUP / 3 UNPAIRED" : "V=16, E=42, F=28 · χ=2",
+          `x_cm=${xCm.toFixed(2)} mm · m_tip=${fmtSigned(mTip, 2)} mm (${fmtTilt(tiltDeg)})`,
+          `${(evs[0] / 1e6).toFixed(2)} / ${(evs[1] / 1e6).toFixed(2)} / ${(evs[2] / 1e6).toFixed(2)} ×10⁶ mm⁵`,
+          pass ? "PASS · STANDS IN BASE HULL" : (!stands ? "ALERT · TIPS OVER (m_tip ≤ 0)" : "PLANTED DEFECT TRIGGERED"),
+        ];
       } else {
         const vol = (6400.0 - p0 * p0) * p1;
         const phi = ((p0 * p0) / 6400.0) * 100.0;
@@ -1174,6 +1273,7 @@ export function initGlbViewers(scope = document) {
           else if (slug === "x03") s1.value = "95";
           else if (slug === "x05") { s0.value = "24"; s1.value = "20"; }
           else if (slug === "x07") s1.value = "9";
+          else if (slug === "x08") { s0.value = "48"; s1.value = "24"; }
         } else if (s0 && s1) {
           if (slug === "x01") { s0.value = "40"; s1.value = "20"; }
           else if (slug === "x02") { s0.value = "32"; s1.value = "18"; }
@@ -1182,6 +1282,7 @@ export function initGlbViewers(scope = document) {
           else if (slug === "x05") { s0.value = "24"; s1.value = "4"; }
           else if (slug === "x06") { s0.value = "24"; s1.value = "60"; }
           else if (slug === "x07") { s0.value = "30"; s1.value = "18"; }
+          else if (slug === "x08") { s0.value = "18"; s1.value = "18"; }
         }
         updateWb();
       });

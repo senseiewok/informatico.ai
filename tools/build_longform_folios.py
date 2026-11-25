@@ -390,6 +390,20 @@ def update_catalogs() -> dict:
 
 
 
+def extract_stage_short_label(st: str) -> str:
+    """Extract stepper button label before the top-level ': ' separator, preserving colons inside (...)."""
+    depth = 0
+    for idx in range(len(st) - 1):
+        ch = st[idx]
+        if ch == "(":
+            depth += 1
+        elif ch == ")" and depth > 0:
+            depth -= 1
+        elif ch == ":" and st[idx + 1] == " " and depth == 0:
+            return st[:idx].replace("Stage ", "")
+    return st.split(":", 1)[0].replace("Stage ", "")
+
+
 def render_Controls_for_pillar(pillar: str, folio: dict, lf: dict) -> str:
     """Render the interactive plate (stepper + SVG + sliders + readouts) for any Folio."""
     fid = esc(folio["folio_id"])
@@ -402,7 +416,7 @@ def render_Controls_for_pillar(pillar: str, folio: dict, lf: dict) -> str:
     step_btns = []
     for idx, st in enumerate(steps):
         pressed = "true" if idx == 0 else "false"
-        short_label = st.split(":")[0].replace("Stage ", "")
+        short_label = extract_stage_short_label(st)
         step_btns.append(
             f'<button type="button" class="tp-step-btn" aria-pressed="{pressed}" '
             f'data-step-target="tp-{slug}-stage-caption" data-step-desc="{esc(st)}">{esc(short_label)}</button>'
@@ -796,11 +810,15 @@ def render_Controls_for_pillar(pillar: str, folio: dict, lf: dict) -> str:
             </div>
           </div>"""
 
+    _plate_ver_name, _ = _existing_skill_verifier(ROOT / "skills" / pillar / slug)
+    _has_verified_kernel = bool(_plate_ver_name) and folio.get("kernel_verdict") != "Not independently verified"
+    _plate_kernel_label = "Deterministic Kernel" if _has_verified_kernel else "Source Module"
+
     return f"""<div class="tp-plate" role="region" aria-label="Interactive Plate {fid}">
           <div class="tp-plate-head">
             <span>Plate {fid}-A &amp; {fid}-B · {esc(folio["colophon"]["kernels"])}</span>
             <div class="tp-plate-head-actions">
-              <span>Deterministic Kernel: {esc(folio["primary_kernel"])}</span>
+              <span>{_plate_kernel_label}: {esc(folio["primary_kernel"])}</span>
               <button type="button" class="tp-fullscreen-btn tp-layout-toggle-btn" data-plate-layout-toggle="true" aria-pressed="true" title="Toggle Side-by-Side Split Workbench vs. Stacked Cinema">Split Workbench ◫</button>
             </div>
           </div>
@@ -1053,12 +1071,13 @@ def render_multi_chapter_monograph_sections(
     slider_specs = []
     for idx, s in enumerate(sliders, 1):
         lbl = esc(decf_title(s.get("label", f"Parameter {idx}")))
-        unit = esc(s.get("unit", ""))
+        raw_unit = str(s.get("unit", ""))
         s_min, s_max, s_val, s_step = s.get("min", 0), s.get("max", 1), s.get("value", 0), s.get("step", 0.1)
+        op_pt = esc(f"{raw_unit}{s_val}" if raw_unit.rstrip().endswith("=") else f"{s_val}{raw_unit}")
         slider_specs.append(
             f"control parameter <code>P_{idx}</code> (<em>{lbl}</em>) spanning the admissible interval "
-            f"<code>[{s_min}, {s_max}]</code> with step resolution <code>&Delta; = {s_step}</code> and canonical reference operating point "
-            f"<code>{unit}{s_val}</code>"
+            f"<code>[{s_min}, {s_max}]</code> with step resolution <code>&Delta; = {s_step}</code> and reference operating point "
+            f"<code>{op_pt}</code>"
         )
     sliders_prose = "; ".join(slider_specs) if slider_specs else "dimensionless state-space coordinates"
 
@@ -1084,7 +1103,7 @@ def render_multi_chapter_monograph_sections(
             <h4><span data-en="Stage {idx} Derivation &amp; State Transition" data-es="Derivaci&oacute;n y Transici&oacute;n de Estado &middot; Etapa {idx}">Stage {idx} Derivation &amp; State Transition</span></h4>
             <p><strong>Formal Stage Mechanism:</strong> {step_c}</p>
             <p>
-              <strong>Operator Coupling &amp; Invariant Closure:</strong> At Stage {idx} of the Folio {esc(fid)} derivation chain, the intermediate state maps directly onto the governing law <code>{gov_law}</code> under benchmark regime <code>{bench_c}</code>. To ensure that deductive or physical flux is conserved without unverified hand-waving as the system advances from Stage {idx} toward terminal convergence, the transition operator enforces the companion verification constraint: <em>{matched_rule}</em> Every numerical trajectory and geometric projection in Plate {esc(fid)}-A and Plate {esc(fid)}-B below evaluates this exact stage transfer function in real time.
+              <strong>Operator Coupling &amp; Invariant Closure:</strong> At Stage {idx} of the Folio {esc(fid)} derivation chain, the intermediate state maps directly onto the governing law <code>{gov_law}</code> under benchmark regime <code>{bench_c}</code>. To ensure that deductive or physical flux is conserved without unverified hand-waving as the system advances from Stage {idx} toward terminal convergence, the transition operator enforces the companion verification constraint: <em>{matched_rule}</em> {_ii2_stage_tail(py_ver_rel, fid)}
             </p>
           </div>"""
         )
@@ -1112,6 +1131,23 @@ def render_multi_chapter_monograph_sections(
         else ""
     )
 
+    if py_ver_rel:
+        ii1_lead_html = (
+            f"To elevate Folio <strong>{esc(fid)}</strong> (<em>{esc(decf_title(folio['title']))}</em>) "
+            f"from a qualitative summary to an executable mathematical and physical treatise, we first define the exact "
+            f"state-space manifold on which the operator <code>{gov_law}</code> acts. Let the system state be parameterized by "
+            f"{sliders_prose}. Over this bounded domain, the coupled kernels (<code>{kernels_c}</code>) map every admissible "
+            f"input configuration to a unique, deterministic equilibrium or deductive fixed point{_ii1_tail(py_ver_rel)}."
+        )
+    else:
+        ii1_lead_html = (
+            f"To frame Folio <strong>{esc(fid)}</strong> (<em>{esc(decf_title(folio['title']))}</em>) "
+            f"as a structured mathematical and physical exposition, we first write the state-space domain on which the "
+            f"relation <code>{gov_law}</code> is posed. Let the display controls span {sliders_prose}. Across this parameter "
+            f"box, the cited formulations (<code>{kernels_c}</code>) frame the governing balance and its stated assumptions"
+            f"{_ii1_tail(py_ver_rel)}."
+        )
+
     gov_law_latex = folio.get("governing_law_latex")
     if gov_law_latex:
         gov_law_block_html = (
@@ -1131,7 +1167,7 @@ def render_multi_chapter_monograph_sections(
               <p class="tp-theorem-meta"><strong>Kernels:</strong> {kernels_c} &middot; <strong>Benchmarks:</strong> {bench_c} &middot; <strong>Primary Anchor:</strong> <code>DOI {doi_str}</code></p>
             </div>
             <p>
-              To elevate Folio <strong>{esc(fid)}</strong> (<em>{esc(decf_title(folio["title"]))}</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>{gov_law}</code> acts. Let the system state be parameterized by {sliders_prose}. Over this bounded domain, the coupled kernels (<code>{kernels_c}</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point{_ii1_tail(py_ver_rel)}.
+              {ii1_lead_html}
             </p>
             <p>
               Crucially, well-posedness across the <code>{bench_c}</code> regime requires that the governing operator preserve dimensional homogeneity, non-negativity of physical energy/entropy functionals, and strict monotony along the primary reaction or proof coordinate. Whenever a simplified model omits one of the coupled terms in <code>{gov_law}</code>, the resulting approximation violates boundary compatibility and diverges from the primary peer-reviewed evidence (<code>{scite_sum_c}</code>).
@@ -1149,7 +1185,7 @@ def render_multi_chapter_monograph_sections(
           <article class="tp-proof-chapter" id="ch-ii-3-{esc(slug)}">
             <h3 data-en="&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds" data-es="&sect; II.3 &middot; Invariantes de Verificaci&oacute;n Determinista, Escalamiento Dimensional y Cotas de Estabilidad">&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds</h3>
             <p>
-              {_ii3_intro(py_ver_rel, fid, skill.get("filename", "SKILL.md"))}
+              {_ii3_intro(py_ver_rel, fid, skill.get("filename", "SKILL.md"), len(skill.get("rules", [])))}
             </p>
             <ol class="tp-invariant-list">
 {rules_list_html}
@@ -1166,7 +1202,7 @@ def render_multi_chapter_monograph_sections(
                 <strong>Secondary Coupling &amp; Regime Boundary ({sn2_kicker}):</strong> {linkify_citations(esc(sn2_body_c))}
               </p>
               <p>
-                <strong>Mathematical &amp; Physical Necessity of the Full Operator:</strong> Testing a theorem or physical law by knocking out its core hypothesis is one of the sharpest ways a human mind builds intuition. This counterfactual analysis shows <em>why</em> every coupling term in <code>{gov_law}</code> is indispensable: When the primary control parameter is dragged to its degenerate boundary in the Act III observatory below, the stabilizing restorative term vanishes, reproducing the classical collapse predicted by theory and illustrating that our solver is an interactive computational model rather than a static animation.
+                <strong>Mathematical &amp; Physical Necessity of the Full Operator:</strong> Testing a theorem or physical law by knocking out its core hypothesis is one of the sharpest ways a human mind builds intuition. This counterfactual analysis shows <em>why</em> every coupling term in <code>{gov_law}</code> is indispensable: {_ii4_tail(py_ver_rel)}
               </p>
             </div>
           </article>
@@ -1180,7 +1216,10 @@ def render_multi_chapter_monograph_sections(
         r_lbl = esc(decf_title(ro.get("label", "")))
         r_val = esc(decf(ro.get("value", "")))
         readout_rows.append(f'<tr><th scope="row">{r_lbl}</th><td><code>{r_val}</code></td>{_readout_source_cell(py_ver_rel)}</tr>')
-        readout_prose_bits.append(f"<strong>{r_lbl}</strong> converges to <code>{r_val}</code>")
+        if py_ver_rel:
+            readout_prose_bits.append(f"<strong>{r_lbl}</strong> converges to <code>{r_val}</code>")
+        else:
+            readout_prose_bits.append(f"<strong>{r_lbl}</strong> lists <code>{r_val}</code>")
     readouts_table_rows = "\n".join(readout_rows)
     readouts_summary_prose = "; ".join(readout_prose_bits)
 
@@ -1277,13 +1316,36 @@ def _ii2_tail(py_ver_rel: str) -> str:
     return f" and the standalone verifier in <code>{esc(py_ver_rel)}</code>" if py_ver_rel else ""
 
 
-def _ii3_intro(py_ver_rel: str, fid: str, skill_filename: str) -> str:
+def _ii2_stage_tail(py_ver_rel: str, fid: str) -> str:
     if py_ver_rel:
-        return (f"Every quantitative claim in Folio <strong>{esc(fid)}</strong> is tied to three falsification rules "
+        return (f"Every numerical trajectory and geometric projection in Plate {esc(fid)}-A and Plate {esc(fid)}-B "
+                f"below evaluates this exact stage transfer function in real time.")
+    return (f"Plate {esc(fid)}-A and Plate {esc(fid)}-B below pair this stage relation with the interactive "
+            f"controls and fixed reference figures.")
+
+
+_RULE_COUNT_WORDS = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six"}
+
+
+def _ii3_intro(py_ver_rel: str, fid: str, skill_filename: str, n_rules: int = 3) -> str:
+    word = _RULE_COUNT_WORDS.get(n_rules, str(n_rules))
+    f_noun = "falsification rule" if n_rules == 1 else "falsification rules"
+    r_noun = "rule" if n_rules == 1 else "rules"
+    if py_ver_rel:
+        return (f"Every quantitative claim in Folio <strong>{esc(fid)}</strong> is tied to {word} {f_noun} "
                 f"listed in <code>{esc(skill_filename)}</code> and executed by <code>{esc(py_ver_rel)}</code>:")
-    return (f"Folio <strong>{esc(fid)}</strong> states three rules a careful reader can use to test its claims. "
+    return (f"Folio <strong>{esc(fid)}</strong> states {word} {r_noun} a careful reader can use to test its claims. "
             f"They are listed as plain text in <code>{esc(skill_filename)}</code>. "
             f"No script in this repository executes them yet:")
+
+
+def _ii4_tail(py_ver_rel: str) -> str:
+    if py_ver_rel:
+        return ("When the primary control parameter is dragged to its degenerate boundary in the Act III observatory "
+                "below, the stabilizing restorative term vanishes, reproducing the classical collapse predicted by "
+                "theory and illustrating that our solver is an interactive computational model rather than a static animation.")
+    return ("At the degenerate boundary of the Act III parameter interval below, omitting that coupling term "
+            "recovers the classical breakdown described in the cited literature rather than an interior balance.")
 
 
 def _readout_source_cell(py_ver_rel: str) -> str:
@@ -1320,7 +1382,7 @@ def _pillar_skill_box(fid: str, py_filename: str, py_verifier_src: str) -> dict:
         "aria": "Downloadable SKILL.md companion",
         "kicker": "SKILL.md companion &middot; plain text",
         "desc": (f"Give any AI agent or engineering pipeline the governing equations of Folio {esc(fid)} as plain text: a portable "
-                 f"<code>SKILL.md</code>, or the live telemetry as JSON. Its reference values are stated in the essay and are not yet "
+                 f"<code>SKILL.md</code>, or the current panel state as JSON. Its reference values are stated in the essay and are not yet "
                  f"recomputed by a script in this repository."),
         "button": "",
         "source": "",
@@ -1445,7 +1507,7 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
     sl0_short = sl0_inline["label"].split("(")[0].strip()
     sl0_u = str(sl0_inline.get("unit", ""))
     sl0_v = sl0_inline.get("value", "")
-    sl0_txt = f"{sl0_u}{sl0_v}" if "=" in sl0_u else f"{sl0_short} = {sl0_v}{sl0_u}"
+    sl0_txt = f"{sl0_u}{sl0_v}" if sl0_u.rstrip().endswith("=") else f"{sl0_short} = {sl0_v}{sl0_u}"
     if slug == "e02":
         inline_scrub = '<span id="tp-inline-tau0" class="tp-scrub">tau_0 = 28.0 Pa</span>'
     elif slug == "e05":
@@ -1485,12 +1547,11 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
     utopia_companion_html = ""
     if slug == "a04":
         utopia_companion_html = f"""
-        <figure class="tp-editorial-figure tp-utopia-companion" data-editorial-plate="utopian-city-future" role="group" aria-label="2050 Utopian City of the Future in the Era of AI, Metamaterials, and Autonomous Robotics">
-          
-          <img class="tp-editorial-img" src="{plate_src(rel_res + '/plates/', 'utopian-city-future')}" data-plate-slug="utopian-city-future" width="1280" height="720" alt="Conceptual visualization imagining what the Utopian City of the Future in the era of AI, cellular auxetic metamaterials, and autonomous climbing and aerial robots would look like (artistic impression, not a measured structure)" loading="lazy" decoding="async">
+        <figure class="tp-editorial-figure tp-utopia-companion" data-editorial-plate="utopian-city-future" role="group" aria-label="Conceptual visualization imagining a speculative plug-in megastructure">
+          <img class="tp-editorial-img" src="{plate_src(rel_res + '/plates/', 'utopian-city-future')}" data-plate-slug="utopian-city-future" width="1280" height="720" alt="Conceptual visualization imagining what a speculative plug-in megastructure with replaceable service capsules on an exposed perimeter frame might look like (artistic impression, not a measured structure)" loading="lazy" decoding="async">
           <figcaption class="tp-editorial-caption">
-            <strong>Horizon 2050 — The Utopian City in the Era of AI, Metamaterials &amp; Robotics:</strong> Extending Ron Herron&rsquo;s <em>Walking City</em> and Peter Cook&rsquo;s <em>Plug-In City</em> into the 21st century: collaborative aerial and climbing robot swarms weave ultralight stretching-dominated auxetic metamaterial space frames (<code>E*/E_s = C(&rho;*/&rho;_s)</code>, <code>&nu; &lt; 0</code>) over seismic-cloaking phononic foundation rings (<code>Folios E.03 &amp; E.06</code>), while neuro-symbolic AI digital twins orchestrate crane-replaceable ISO-5 gene-therapy and clinical pods across lush vertical sky-gardens.
-            <span class="tp-drawn-note"><strong>Visual &amp; Scite Provenance:</strong> AI-generated architectural vision plate (VLM-audited for zero baked-in text) grounded in <a class="tp-cite-link" href="https://doi.org/{esc(scite.get('doi', ''))}" target="_blank" rel="noopener noreferrer"><code>DOI {esc(scite.get('doi', ''))}</code></a> (<a class="tp-scite-badge-link" href="https://scite.ai/reports/{esc(scite.get('doi', ''))}" target="_blank" rel="noopener noreferrer">Scite Report &#8599;</a>); exact structural equilibrium is governed by <code>tools/tectonic_verify.py</code>.</span>
+            <strong>Speculative Horizon &mdash; Imagining a Plug-In Exoskeleton Frame:</strong> Conceptual visualization imagining what Ron Herron&rsquo;s <em>Walking City</em> and Peter Cook&rsquo;s <em>Plug-In City</em> (Beslioglu 2014, <a class="tp-cite-link" href="https://doi.org/10.4995/vlc.2014.1829" target="_blank" rel="noopener noreferrer"><code>DOI 10.4995/vlc.2014.1829</code></a>) might look like as an exposed perimeter lattice with detachable service modules.
+            <span class="tp-drawn-note"><strong>Visual Boundary:</strong> Artistic impression only (audited for zero baked-in text), not a measured or engineered structure; the lever balance and reference figures in Plate A.04-A and Plate A.04-B below come from <code>tools/folios/architecture/a04.py</code>.</span>
           </figcaption>
         </figure>"""
 
@@ -1602,6 +1663,16 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
         (f' data-audio-src="{rel_res}/audio/{esc(slug)}-en.mp3"' if has_en_audio else "")
         + (f' data-audio-src-es="{rel_res}/audio/{esc(slug)}-es.mp3"' if has_es_audio else "")
     )
+    es_gov_clause = (
+        f'Este monográfico interactivo verifica la ley gobernante <code>{esc(folio["governing_law"])}</code>.'
+        if py_filename
+        else f'Este monográfico educativo expone la relación gobernante <code>{esc(folio["governing_law"])}</code>.'
+    )
+    es_act3_clause = (
+        "permiten explorar los umbrales críticos directamente en el navegador."
+        if py_filename
+        else "permiten inspeccionar los controles y las cifras de referencia directamente en el navegador."
+    )
     return f"""<div id="tp-folio-mount" data-folio-id="{esc(fid)}" data-folio-slug="{esc(slug)}" data-plate-prefix="{rel_res}/plates/">
     <section class="tp-hero">
       <p class="tp-kicker"><span data-en="{esc(pillar_en)}" data-es="{esc(pillar_es)}">{esc(pillar_en)}</span> · {esc(fid)} · <span data-en="{rt_en}" data-es="{rt_es}">{rt_en}</span></p>
@@ -1641,10 +1712,10 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
         <span><strong>Sinopsis Ejecutiva en Español · Folio {esc(fid)}</strong></span>
       </summary>
       <div class="tp-es-body">
-        <p><strong>Actos I y II — Historia, ley gobernante e intuición cotidiana:</strong> <em>{esc(title_es_c)}</em> — {esc(sub_es_c)} Este monográfico interactivo verifica la ley gobernante <code>{esc(folio["governing_law"])}</code>. <strong>Por qué importa en la vida real:</strong> {esc(why_es_c)}</p>
+        <p><strong>Actos I y II — Historia, ley gobernante e intuición cotidiana:</strong> <em>{esc(title_es_c)}</em> — {esc(sub_es_c)} {es_gov_clause} <strong>Por qué importa en la vida real:</strong> {esc(why_es_c)}</p>
         {es_plain_html}
         {es_deep_html}
-        <p><strong>Acto III — Laboratorio interactivo:</strong> los deslizadores en tiempo real y las cuatro lentes del observatorio (superficie 3D, retrato de fase, listón de conservación y radar polar) permiten explorar los umbrales críticos directamente en el navegador.</p>
+        <p><strong>Acto III — Laboratorio interactivo:</strong> los deslizadores en tiempo real y las cuatro lentes del observatorio (superficie 3D, retrato de fase, listón de conservación y radar polar) {es_act3_clause}</p>
         <p><strong>Actos IV y V — Descubrimiento y fuentes:</strong> la narrativa completa y las fuentes primarias siguen abajo (en inglés). <em>Investigación científica y educativa abierta, no consejo médico.</em></p>
       </div>
     </details>
@@ -2140,7 +2211,7 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
     <div class="tp-contents-inner">
       <div class="tp-contents-head">
         <h2 id="tp-contents-title" data-en="Contents" data-es="Contenido">Contents</h2>
-        <input id="tp-contents-search" class="tp-contents-search" type="search" autocomplete="off" placeholder="Search {total} essays, 6 bounties, 7 tools &amp; 12 syntheses" aria-label="Search essays, bounties and tools">
+        <input id="tp-contents-search" class="tp-contents-search" type="search" autocomplete="off" placeholder="Search {total} essays, 6 bounties, 8 tools &amp; 12 syntheses" aria-label="Search essays, bounties and tools">
         <button type="button" class="tp-tool-btn tp-contents-close" data-close-contents aria-label="Close contents">Close</button>
       </div>
       <p id="tp-contents-empty" class="tp-contents-empty" hidden data-en="No essay matches that search." data-es="Ningún ensayo coincide con la búsqueda.">No essay matches that search.</p>
@@ -2154,7 +2225,7 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
         </ol>
       </section>
       <section class="tp-contents-bounties" aria-label="Tech and Tools Toolbox Folios">
-        <h3><a href="{_href(rel_res, 'toolchain/')}" data-en="Tech &amp; Tools · The Toolbox · 7 Open 3D CAD &amp; Studio Folios (X.01–X.07)" data-es="Tecnología y Herramientas · Caja de Herramientas 3D y CAD Abierto (X.01–X.07)">Tech &amp; Tools · The Toolbox · 7 Open 3D CAD &amp; Studio Folios (X.01–X.07)</a></h3>
+        <h3><a href="{_href(rel_res, 'toolchain/')}" data-en="Tech &amp; Tools · The Toolbox · 8 Open 3D CAD &amp; Studio Folios (X.01–X.08)" data-es="Tecnología y Herramientas · Caja de Herramientas 3D y CAD Abierto (X.01–X.08)">Tech &amp; Tools · The Toolbox · 8 Open 3D CAD &amp; Studio Folios (X.01–X.08)</a></h3>
         <ol>
             {tool_items_html}
         </ol>
@@ -4329,22 +4400,25 @@ def _build_toolchain_skill_and_scripts(tool: dict) -> tuple[str, str, str, str]:
 
 
 def write_toolchain_skills_and_assets() -> None:
-    """Write skills/toolchain/{x01..x06}/{make_x0x.py,verify_x0x_*.py,SKILL.md} and generate src/toolchain/<slug>/files/*."""
+    """Write skills/toolchain/{x01..x08}/{make_x0x.py,verify_x0x_*.py,SKILL.md} and generate src/toolchain/<slug>/files/*."""
     skills_dir = ROOT / "skills"
     res_dir = ROOT / "src"
     for tool in TOOLCHAIN_FOLIOS:
         slug = tool["slug"]
         tdir = skills_dir / "toolchain" / slug
         tdir.mkdir(parents=True, exist_ok=True)
-        for old_py in tdir.glob("verify_*.py"):
-            old_py.unlink()
         make_py_src, verify_py_src, verify_filename, skill_md = _build_toolchain_skill_and_scripts(tool)
         make_path = tdir / f"make_{slug}.py"
         verify_path = tdir / verify_filename
         skill_path = tdir / "SKILL.md"
-        make_path.write_text(make_py_src, encoding="utf-8")
-        verify_path.write_text(verify_py_src, encoding="utf-8")
-        skill_path.write_text(skill_md, encoding="utf-8")
+        for old_py in tdir.glob("verify_*.py"):
+            if old_py.name != verify_filename:
+                old_py.unlink()
+        if not make_path.is_file() or make_path.read_text(encoding="utf-8") != make_py_src:
+            make_path.write_text(make_py_src, encoding="utf-8", newline="\n")
+        if not verify_path.is_file() or verify_path.read_text(encoding="utf-8") != verify_py_src:
+            verify_path.write_text(verify_py_src, encoding="utf-8", newline="\n")
+        skill_path.write_text(skill_md, encoding="utf-8", newline="\n")
 
         files_dir = res_dir / "toolchain" / slug / "files"
         generate_folio_assets(
@@ -4407,9 +4481,9 @@ def render_toolchain_section(rel_res: str = ".") -> str:
     cards_joined = "\n\n".join(cards_html_list)
     return f"""    <section id="tp-toolchain-toolbox" class="tp-bounty-crucible" aria-labelledby="toolchain-toolbox-heading">
       <div class="tp-bounty-header">
-        <p class="tp-kicker" data-en="Special Feature · Tech &amp; Tools · The 3D CAD, Open BIM &amp; Small-Studio Toolbox (X.01–X.07)" data-es="Especial · Tecnología y Herramientas · Caja de Herramientas 3D, CAD Abierto y Pequeños Estudios (X.01–X.07)">Special Feature · Tech &amp; Tools · The 3D CAD, Open BIM &amp; Small-Studio Toolbox (X.01–X.07)</p>
+        <p class="tp-kicker" data-en="Special Feature · Tech &amp; Tools · The 3D CAD, Open BIM &amp; Small-Studio Toolbox (X.01–X.08)" data-es="Especial · Tecnología y Herramientas · Caja de Herramientas 3D, CAD Abierto y Pequeños Estudios (X.01–X.08)">Special Feature · Tech &amp; Tools · The 3D CAD, Open BIM &amp; Small-Studio Toolbox (X.01–X.08)</p>
         <h2 id="toolchain-toolbox-heading" class="tp-h2"><a href="{toolchain_hub_href}" data-en="Tech &amp; Tools · The Toolbox: Downloadable STEP, 3MF, GLB &amp; DXF Files, Byte-Level Verifiers &amp; Small-Studio Skills" data-es="Tecnología y Herramientas · La Caja de Herramientas: Archivos STEP, 3MF, GLB y DXF, Verificadores y Skills para Pequeños Estudios">Tech &amp; Tools · The Toolbox: Downloadable STEP, 3MF, GLB &amp; DXF Files, Byte-Level Verifiers &amp; Small-Studio Skills</a></h2>
-        <p class="tp-standfirst" data-en="Seven dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.07 at /toolchain/x01/ through /toolchain/x07/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every Folio ships a deterministic Python generator (make_x01.py..make_x07.py), downloadable neutral files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, a live zero-build WebGL2 3D inspector, a stdlib byte-level verifier with planted-defect knockout, and a portable SKILL.md companion." data-es="Siete Folios dedicados de CAD 3D, fabricación y herramientas abiertas (X.01–X.07 en /es-mx/toolchain/x01/ a /es-mx/toolchain/x07/) diseñados para empoderar a pequeños despachos de arquitectura, ingenieros independientes, físicos y makers matemáticos. Cada Folio entrega un generador determinista en Python (make_x01.py..make_x07.py), archivos descargables (.glb, .step, .3mf, .dxf) con manifiesto SHA-256, un visor 3D WebGL2 sin dependencias, un verificador a nivel de bytes y su SKILL.md portátil.">Seven dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.07 at /toolchain/x01/ through /toolchain/x07/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every Folio ships a deterministic Python generator (make_x01.py..make_x07.py), downloadable neutral files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, a live zero-build WebGL2 3D inspector, a stdlib byte-level verifier with planted-defect knockout, and a portable SKILL.md companion.</p>
+        <p class="tp-standfirst" data-en="Eight dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.08 at /toolchain/x01/ through /toolchain/x08/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every Folio ships a deterministic Python generator (make_x01.py..make_x08.py), downloadable neutral files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, a live zero-build WebGL2 3D inspector, a stdlib byte-level verifier with planted-defect knockout, and a portable SKILL.md companion." data-es="Ocho Folios dedicados de CAD 3D, fabricación y herramientas abiertas (X.01–X.08 en /es-mx/toolchain/x01/ a /es-mx/toolchain/x08/) diseñados para empoderar a pequeños despachos de arquitectura, ingenieros independientes, físicos y makers matemáticos. Cada Folio entrega un generador determinista en Python (make_x01.py..make_x08.py), archivos descargables (.glb, .step, .3mf, .dxf) con manifiesto SHA-256, un visor 3D WebGL2 sin dependencias, un verificador a nivel de bytes y su SKILL.md portátil.">Eight dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.08 at /toolchain/x01/ through /toolchain/x08/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every Folio ships a deterministic Python generator (make_x01.py..make_x08.py), downloadable neutral files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, a live zero-build WebGL2 3D inspector, a stdlib byte-level verifier with planted-defect knockout, and a portable SKILL.md companion.</p>
       </div>
 
       <div class="tp-toolchain-boundary-banner" role="note" aria-label="Educational Geometry Boundary">
@@ -4419,11 +4493,11 @@ def render_toolchain_section(rel_res: str = ".") -> str:
       </div>
 
       <div class="tp-bounty-filter-bar" role="group" aria-label="Filter Tech and Tools Folios by field">
-        <button type="button" class="tp-bounty-filter-btn" data-toolchain-filter="all" aria-pressed="true" data-en="All 7 Toolbox Folios (X.01–X.07)" data-es="Las 7 Herramientas (X.01–X.07)">All 7 Toolbox Folios (X.01–X.07)</button>
+        <button type="button" class="tp-bounty-filter-btn" data-toolchain-filter="all" aria-pressed="true" data-en="All 8 Toolbox Folios (X.01–X.08)" data-es="Las 8 Herramientas (X.01–X.08)">All 8 Toolbox Folios (X.01–X.08)</button>
         <button type="button" class="tp-bounty-filter-btn" data-toolchain-filter="architecture" aria-pressed="false" data-en="Small Architects · Vaults &amp; Kinetic DXF (X.03 · X.04)" data-es="Pequeños Arquitectos · Bóvedas y DXF (X.03 · X.04)">Small Architects · Vaults &amp; Kinetic DXF (X.03 · X.04)</button>
         <button type="button" class="tp-bounty-filter-btn" data-toolchain-filter="engineering" aria-pressed="false" data-en="Independent Engineers · STEP &amp; 3MF (X.02 · X.05)" data-es="Ingenieros Independientes · STEP y 3MF (X.02 · X.05)">Independent Engineers · STEP &amp; 3MF (X.02 · X.05)</button>
         <button type="button" class="tp-bounty-filter-btn" data-toolchain-filter="core" aria-pressed="false" data-en="Core WebGL2 &amp; Curvature (X.01 · X.07)" data-es="Visor WebGL2 y Curvatura (X.01 · X.07)">Core WebGL2 &amp; Curvature (X.01 · X.07)</button>
-        <button type="button" class="tp-bounty-filter-btn" data-toolchain-filter="physics_math" aria-pressed="false" data-en="Physics &amp; Math Topology (X.06)" data-es="Topología Física y Matemática (X.06)">Physics &amp; Math Topology (X.06)</button>
+        <button type="button" class="tp-bounty-filter-btn" data-toolchain-filter="physics_math" aria-pressed="false" data-en="Physics &amp; Math Mechanics &amp; Topology (X.06 · X.08)" data-es="Mecánica y Topología Física y Matemática (X.06 · X.08)">Physics &amp; Math Mechanics &amp; Topology (X.06 · X.08)</button>
       </div>
 
       <div class="tp-bounty-grid">
@@ -4443,15 +4517,15 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
     title_en = "Tech & Tools · The 3D CAD, Open BIM & Small-Studio Toolbox"
     title_es = "Tecnología y Herramientas · Caja de Herramientas 3D, CAD Abierto y Pequeños Estudios"
     hook_en = (
-        "Seven standalone 3D CAD and open-toolchain monographs (X.01–X.07) empowering boutique architecture studios, "
+        "Eight standalone 3D CAD and open-toolchain monographs (X.01–X.08) empowering boutique architecture studios, "
         "independent civil and mechanical engineers, physicists, and math makers. Every Folio ships a deterministic Python "
-        "generator (make_x01.py..make_x07.py), downloadable neutral 3D/2D files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, "
+        "generator (make_x01.py..make_x08.py), downloadable neutral 3D/2D files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, "
         "a live zero-dependency WebGL2 3D inspector, a stdlib byte-level verifier with planted-defect knockout, and a portable SKILL.md."
     )
     hook_es = (
-        "Siete monografías dedicadas de CAD 3D y herramientas abiertas (X.01–X.07) diseñadas para empoderar a pequeños despachos de arquitectura, "
+        "Ocho monografías dedicadas de CAD 3D y herramientas abiertas (X.01–X.08) diseñadas para empoderar a pequeños despachos de arquitectura, "
         "ingenieros civiles y mecánicos independientes, físicos y makers matemáticos. Cada Folio incluye su generador determinista en Python "
-        "(make_x01.py..make_x07.py), archivos descargables (.glb, .step, .3mf, .dxf) con manifiesto SHA-256, un visor 3D WebGL2 sin dependencias, "
+        "(make_x01.py..make_x08.py), archivos descargables (.glb, .step, .3mf, .dxf) con manifiesto SHA-256, un visor 3D WebGL2 sin dependencias, "
         "un verificador a nivel de bytes con prueba de defecto plantado y su SKILL.md portátil."
     )
     crumbs = [(BRAND, page_url("", lang)), (title_es if es else title_en, canon)]
@@ -4508,7 +4582,7 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
     </ol>
   </nav>
     <section class="tp-pillar-hero" aria-labelledby="pillar-heading">
-      <p class="tp-kicker" data-en="Tech &amp; Tools · The Toolbox · 7 Dedicated 3D CAD &amp; Studio Folios (X.01–X.07)" data-es="Tecnología y Herramientas · Caja de Herramientas · 7 Folios 3D y CAD Abierto (X.01–X.07)">Tech &amp; Tools · The Toolbox · 7 Dedicated 3D CAD &amp; Studio Folios (X.01–X.07)</p>
+      <p class="tp-kicker" data-en="Tech &amp; Tools · The Toolbox · 8 Dedicated 3D CAD &amp; Studio Folios (X.01–X.08)" data-es="Tecnología y Herramientas · Caja de Herramientas · 8 Folios 3D y CAD Abierto (X.01–X.08)">Tech &amp; Tools · The Toolbox · 8 Dedicated 3D CAD &amp; Studio Folios (X.01–X.08)</p>
       <h1 id="pillar-heading" class="tp-h1" data-en="{esc(title_en)}" data-es="{esc(title_es)}">{esc(title_en)}</h1>
       <p class="tp-standfirst" data-en="{esc(hook_en)}" data-es="{esc(hook_es)}">{esc(hook_en)}</p>
       <div class="tp-toolchain-boundary-banner" role="note" aria-label="Educational Geometry Boundary">
@@ -4525,7 +4599,7 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
           <div class="tp-studio-step-card">
             <span class="tp-studio-step-num" data-en="Step 1 · Grab Any 3D/CAD File" data-es="Paso 1 · Descarga el Archivo 3D/CAD">Step 1 · Grab Any 3D/CAD File</span>
             <h2 class="tp-studio-step-title" data-en="Download Open Neutral Geometry" data-es="Descarga Geometría Abierta y Neutral">Download Open Neutral Geometry</h2>
-            <p data-en="Every Toolbox Folio (X.01–X.07) below gives you instant 1-click downloads of watertight .glb meshes, ISO 10303-21 .step AP242 solids, .3mf print packages, and .dxf laser/CNC cut sheets." data-es="Cada Folio (X.01–X.07) te ofrece descarga directa en 1 clic de mallas .glb estancas, sólidos .step AP242, paquetes .3mf de impresión 3D y planos .dxf de corte láser/CNC.">Every Toolbox Folio (X.01–X.07) below gives you instant 1-click downloads of watertight .glb meshes, ISO 10303-21 .step AP242 solids, .3mf print packages, and .dxf laser/CNC cut sheets.</p>
+            <p data-en="Every Toolbox Folio (X.01–X.08) below gives you instant 1-click downloads of watertight .glb meshes, ISO 10303-21 .step AP242 solids, .3mf print packages, and .dxf laser/CNC cut sheets." data-es="Cada Folio (X.01–X.08) te ofrece descarga directa en 1 clic de mallas .glb estancas, sólidos .step AP242, paquetes .3mf de impresión 3D y planos .dxf de corte láser/CNC.">Every Toolbox Folio (X.01–X.08) below gives you instant 1-click downloads of watertight .glb meshes, ISO 10303-21 .step AP242 solids, .3mf print packages, and .dxf laser/CNC cut sheets.</p>
           </div>
           <div class="tp-studio-step-card">
             <span class="tp-studio-step-num" data-en="Step 2 · Open in Free Desktop Tools" data-es="Paso 2 · Ábrelo en Herramientas Gratuitas">Step 2 · Open in Free Desktop Tools</span>
@@ -4540,7 +4614,7 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
         </div>
       </div>
     </section>
-    <section class="tp-issue-rack" aria-label="7 Tech and Tools Folios">
+    <section class="tp-issue-rack" aria-label="8 Tech and Tools Folios">
       <div class="tp-rack-grid">
 {cards_html}
       </div>
@@ -5162,7 +5236,7 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
       {_t_pager_card(prev_t, "prev")}
       {_t_pager_card(next_t, "next")}
     </nav>
-    <p class="tp-pager-all"><a href="{_href(rel_res, 'toolchain/')}" data-en="All 7 Tech &amp; Tools Folios (X.01–X.07) &rarr;" data-es="Las 7 Herramientas y Folios CAD 3D (X.01–X.07) &rarr;">All 7 Tech &amp; Tools Folios (X.01–X.07) &rarr;</a></p>
+    <p class="tp-pager-all"><a href="{_href(rel_res, 'toolchain/')}" data-en="All 8 Tech &amp; Tools Folios (X.01–X.08) &rarr;" data-es="Las 8 Herramientas y Folios CAD 3D (X.01–X.08) &rarr;">All 8 Tech &amp; Tools Folios (X.01–X.08) &rarr;</a></p>
 {render_site_footer(rel_res)}
   </main>
   <script type="module" src="{rel_res}/modules/main.mjs"></script>
@@ -5666,8 +5740,8 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
           <span class="tp-track-chip-meta" data-en="Erdős #30 (Open) · Unitary Microgrants" data-es="Erdős #30 (Abierto) · Microbecas Unitary">Erdős #30 (Open) · Unitary Microgrants</span>
         </a>
         <a class="tp-track-chip tp-track-chip-toolchain" href="toolchain/">
-          <span class="tp-track-chip-kicker" data-en="7 3D CAD &amp; STUDIO FOLIOS" data-es="7 FOLIOS CAD 3D Y ESTUDIO">7 3D CAD &amp; STUDIO FOLIOS</span>
-          <strong class="tp-track-chip-title" data-en="Tech &amp; Tools · The Toolbox (X.01–X.07)" data-es="Tecnología y Herramientas (X.01–X.07)">Tech &amp; Tools · The Toolbox (X.01–X.07)</strong>
+          <span class="tp-track-chip-kicker" data-en="8 3D CAD &amp; STUDIO FOLIOS" data-es="8 FOLIOS CAD 3D Y ESTUDIO">8 3D CAD &amp; STUDIO FOLIOS</span>
+          <strong class="tp-track-chip-title" data-en="Tech &amp; Tools · The Toolbox (X.01–X.08)" data-es="Tecnología y Herramientas (X.01–X.08)">Tech &amp; Tools · The Toolbox (X.01–X.08)</strong>
           <span class="tp-track-chip-meta" data-en="STEP · 3MF · GLB · DXF · Small Architects" data-es="STEP · 3MF · GLB · DXF · Pequeños Estudios">STEP · 3MF · GLB · DXF · Small Architects</span>
         </a>
         <a class="tp-track-chip tp-track-chip-timegravity" href="timegravity/">
@@ -6238,7 +6312,7 @@ def render_llms_txt(catalog: dict) -> str:
         b_title, b_desc = BOUNTY_SEO[b["slug"]][0], BOUNTY_SEO[b["slug"]][1]
         lines.append(f"- [{b['folio_id']} ({b['bounty_id']}) {b_title}]({page_url('bounties/' + b['slug'] + '/')}): {b_desc}")
     lines.append("")
-    lines.append("## Tech & Tools · The 3D CAD, Open BIM & Small-Studio Toolbox (X.01–X.07)")
+    lines.append("## Tech & Tools · The 3D CAD, Open BIM & Small-Studio Toolbox (X.01–X.08)")
     lines.append("")
     lines.append(f"- [Tech & Tools · The Toolbox]({page_url('toolchain/')}): {PILLAR_SEO['toolchain'][1]}")
     for t in TOOLCHAIN_FOLIOS:

@@ -88,7 +88,7 @@
     "year": 1991
   },
   "doi:10.1002/eqe.2390": {
-    "fetched": "2026-11-14",
+    "fetched": "2026-11-24",
     "first_author": "Lazar",
     "found": true,
     "journal": "Earthquake Engineering &amp; Structural Dynamics",
@@ -134,6 +134,14 @@
     "journal": "Journal of Graph Theory",
     "title": "R(5,5)≤46",
     "year": 2026
+  },
+  "doi:10.1002/nme.3072": {
+    "fetched": "2026-11-24",
+    "first_author": "Lazarov",
+    "found": true,
+    "journal": "International Journal for Numerical Methods in Engineering",
+    "title": "Filters in topology optimization based on Helmholtz‐type differential equations",
+    "year": 2011
   },
   "doi:10.1002/ppul.26265": {
     "fetched": "2026-11-04",
@@ -240,7 +248,7 @@
     "year": 1973
   },
   "doi:10.1007/bf01650949": {
-    "fetched": "2026-11-14",
+    "fetched": "2026-11-24",
     "first_author": "Bendsøe",
     "found": true,
     "journal": "Structural Optimization",
@@ -360,7 +368,7 @@
     "year": 1999
   },
   "doi:10.1007/s001580050176": {
-    "fetched": "2026-11-07",
+    "fetched": "2026-11-24",
     "first_author": "Sigmund",
     "found": true,
     "journal": "Structural and Multidisciplinary Optimization",
@@ -696,7 +704,7 @@
     "year": 2012
   },
   "doi:10.1016/j.cemconres.2018.04.005": {
-    "fetched": "2026-11-04",
+    "fetched": "2026-11-24",
     "first_author": "Roussel",
     "found": true,
     "journal": "Cement and Concrete Research",
@@ -816,7 +824,7 @@
     "year": 2019
   },
   "doi:10.1016/j.jcp.2018.10.045": {
-    "fetched": "2026-11-21",
+    "fetched": "2026-11-24",
     "first_author": "Raissi",
     "found": true,
     "journal": "Journal of Computational Physics",
@@ -1768,7 +1776,7 @@
     "year": 1996
   },
   "doi:10.1080/14786440409463229": {
-    "fetched": "2026-11-14",
+    "fetched": "2026-11-24",
     "first_author": "Michell",
     "found": true,
     "journal": "The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science",
@@ -1782,6 +1790,14 @@
     "journal": "The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science",
     "title": "XLV. <i>On reciprocal figures and diagrams of forces</i>",
     "year": 1864
+  },
+  "doi:10.1080/2151237x.2006.10129220": {
+    "fetched": "2026-11-24",
+    "first_author": "Kallay",
+    "found": true,
+    "journal": "Journal of Graphics Tools",
+    "title": "Computing the Moment of Inertia of a Solid Defined by a Triangle Mesh",
+    "year": 2006
   },
   "doi:10.1081/pde-100002243": {
     "fetched": "2026-11-22",
@@ -2703,8 +2719,16 @@
     "title": "Efficient feature extraction for 2D/3D objects in mesh representation",
     "year": 2001
   },
+  "doi:10.1109/mcg.1984.6429334": {
+    "fetched": "2026-11-24",
+    "first_author": "Lien",
+    "found": true,
+    "journal": "IEEE Computer Graphics and Applications",
+    "title": "A symbolic method for calculating the integral properties of arbitrary nonconvex polyhedra",
+    "year": 1984
+  },
   "doi:10.1109/tac.2002.803532": {
-    "fetched": "2026-11-07",
+    "fetched": "2026-11-24",
     "first_author": "Smith",
     "found": true,
     "journal": "IEEE Transactions on Automatic Control",
@@ -3199,6 +3223,14 @@
     "title": "On lattices, learning with errors, random linear codes, and cryptography",
     "year": 2009
   },
+  "doi:10.1145/2461912.2461957": {
+    "fetched": "2026-11-24",
+    "first_author": "Prévost",
+    "found": true,
+    "journal": "ACM Transactions on Graphics",
+    "title": "Make it stand",
+    "year": 2013
+  },
   "doi:10.1145/2504435.2504442": {
     "fetched": "2026-11-10",
     "first_author": "Crane",
@@ -3206,6 +3238,14 @@
     "journal": "ACM SIGGRAPH 2013 Courses",
     "title": "Digital geometry processing with discrete exterior calculus",
     "year": 2013
+  },
+  "doi:10.1145/2601097.2601157": {
+    "fetched": "2026-11-24",
+    "first_author": "Bächer",
+    "found": true,
+    "journal": "ACM Transactions on Graphics",
+    "title": "Spin-it",
+    "year": 2014
   },
   "doi:10.1145/3110268": {
     "fetched": "2026-11-14",
@@ -4563,6 +4603,20 @@
     "unclassified": 1,
     "year": 1920
   },
+  "scite:10.1002/nme.3072": {
+    "citing_publications": 1255,
+    "contrasting": 0,
+    "fetched": "2026-11-24",
+    "found": true,
+    "journal": "International Journal for Numerical Methods in Engineering",
+    "mentioning": 468,
+    "retracted": false,
+    "supporting": 6,
+    "title": "Filters in topology optimization based on Helmholtz‐type differential equations",
+    "total_smart_citations": 475,
+    "unclassified": 1,
+    "year": 2010
+  },
   "scite:10.1007/978-3-030-79876-5_37": {
     "citing_publications": 685,
     "classification_provenance": "Scite ML citation classification",
@@ -4674,16 +4728,16 @@
     "unclassified": 1
   },
   "scite:10.1007/s001580050176": {
-    "citing_publications": 2752,
+    "citing_publications": 2786,
     "contrasting": 0,
-    "fetched": "2026-11-08",
+    "fetched": "2026-11-24",
     "found": true,
     "journal": "Structural and Multidisciplinary Optimization",
-    "mentioning": 1181,
+    "mentioning": 1184,
     "retracted": false,
     "supporting": 18,
     "title": "A 99 line topology optimization code written in Matlab",
-    "total_smart_citations": 1247,
+    "total_smart_citations": 1250,
     "unclassified": 48,
     "year": 2001
   },
@@ -5603,6 +5657,30 @@
     "title": "Optimal control for a Formula One car with variable parameters",
     "total_smart_citations": 135,
     "year": 2014
+  },
+  "scite:10.1080/10867651.1996.10487458": {
+    "citing_publications": 313,
+    "contrasting": 0,
+    "fetched": "2026-11-24",
+    "found": true,
+    "mentioning": 137,
+    "retracted": false,
+    "supporting": 0,
+    "total_smart_citations": 138,
+    "unclassified": 1,
+    "classification_provenance": "Scite ML citation classification"
+  },
+  "scite:10.1080/2151237x.2006.10129220": {
+    "citing_publications": 15,
+    "contrasting": 0,
+    "fetched": "2026-11-24",
+    "found": true,
+    "mentioning": 4,
+    "retracted": false,
+    "supporting": 0,
+    "total_smart_citations": 4,
+    "unclassified": 0,
+    "classification_provenance": "Scite ML citation classification"
   },
   "scite:10.1086/148307": {
     "citing_publications": 2869,
@@ -6600,6 +6678,18 @@
     "unclassified": 9,
     "year": 1963
   },
+  "scite:10.1109/mcg.1984.6429334": {
+    "citing_publications": 121,
+    "contrasting": 0,
+    "fetched": "2026-11-24",
+    "found": true,
+    "mentioning": 10,
+    "retracted": false,
+    "supporting": 0,
+    "total_smart_citations": 10,
+    "unclassified": 0,
+    "classification_provenance": "Scite ML citation classification"
+  },
   "scite:10.1109/tac.2016.2638961": {
     "citing_publications": 3385,
     "contrasting": 0,
@@ -6925,6 +7015,30 @@
     "total_smart_citations": 709,
     "unclassified": 1,
     "year": 2009
+  },
+  "scite:10.1145/2461912.2461957": {
+    "citing_publications": 296,
+    "contrasting": 0,
+    "fetched": "2026-11-24",
+    "found": true,
+    "mentioning": 26,
+    "retracted": false,
+    "supporting": 0,
+    "total_smart_citations": 26,
+    "unclassified": 0,
+    "classification_provenance": "Scite ML citation classification"
+  },
+  "scite:10.1145/2601097.2601157": {
+    "citing_publications": 187,
+    "contrasting": 0,
+    "fetched": "2026-11-24",
+    "found": true,
+    "mentioning": 24,
+    "retracted": false,
+    "supporting": 0,
+    "total_smart_citations": 24,
+    "unclassified": 0,
+    "classification_provenance": "Scite ML citation classification"
   },
   "scite:10.1145/3372885.3373824": {
     "citing_publications": 458,

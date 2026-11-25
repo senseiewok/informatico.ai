@@ -299,6 +299,10 @@ LAW_GLOSSES: dict[str, dict[str, str]] = {
         "en": "angle defects across all mesh vertices sum to two pi times the Euler characteristic, and non-negative cotangent weights check well-shaped Delaunay-like triangles",
         "es": "los defectos angulares en todos los vértices suman dos pi por la característica de Euler, y pesos cotangentes no negativos verifican triángulos bien condicionados",
     },
+    "x08": {
+        "en": "signed tetrahedron moments locate the polyhedral center of mass and geometric inertia tensor, principal moments obey the triangle inequality, and positive base-hull distance checks static balance",
+        "es": "los momentos de tetraedros signados fijan el centro de masa y el tensor de inercia geométrico, los momentos principales cumplen la desigualdad triangular y el margen de apoyo revisa el equilibrio",
+    },
 }
 
 

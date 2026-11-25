@@ -14,7 +14,7 @@ RESEARCH = ROOT / "src"
 SKILLS = ROOT / "skills"
 TOOLCHAIN_SKILLS = SKILLS / "toolchain"
 TOOLCHAIN_RESEARCH = RESEARCH / "toolchain"
-SLUGS = ("x01", "x02", "x03", "x04", "x05", "x06", "x07")
+SLUGS = ("x01", "x02", "x03", "x04", "x05", "x06", "x07", "x08")
 
 
 class ToolchainTrackTests(unittest.TestCase):
@@ -176,7 +176,7 @@ class ToolchainTrackTests(unittest.TestCase):
             timeout=30,
         )
         self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
-        self.assertIn("PASS: All 7 Tech & Tools (The Toolbox)", res.stdout)
+        self.assertIn("PASS: All 8 Tech & Tools (The Toolbox)", res.stdout)
 
 
     def test_parametric_cad_browser_exporter_and_realtime_mesh_scaling(self) -> None:
@@ -227,9 +227,9 @@ class ToolchainTrackTests(unittest.TestCase):
             + [f"p{i:02d}" for i in range(1, 13)]
             + [f"m{i:02d}" for i in range(1, 17)]  # +M.16 (2026-11-24); +M.13, +M.14, +M.15 (2026-11-21)
             + [f"b{i:02d}" for i in range(1, 7)]
-            + [f"x{i:02d}" for i in range(1, 8)]
+            + [f"x{i:02d}" for i in range(1, 9)]
         )
-        self.assertEqual(len(all_slugs), 71)  # +M.16 (2026-11-24); +M.15, +E.16, +A.14, +M.13, +M.14 (2026-11-21)
+        self.assertEqual(len(all_slugs), 72)  # +X.08, +M.16 (2026-11-24); +M.15, +E.16, +A.14, +M.13, +M.14 (2026-11-21)
         hashes: dict[str, str] = {}
         plates_dir = RESEARCH / "plates"
         for s in all_slugs:
