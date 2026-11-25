@@ -1226,7 +1226,7 @@
         ],
         "lineage_mode": "CONTINUATION · Continues E.10 3DCP Additive Construction & A.01 Funicular Shell Geometry",
         "title": "Continuum Topology Optimization & Skyscraper Inerter Damping: SIMP Penalization, Michell Funicular Trusses & Trabecular Bone Mechanics",
-        "subtitle": "Continuing Folio E.10's robotic 3D concrete printing and A.01's funicular vaults: how Bendsøe–Sigmund SIMP topology optimization, Michell minimum-weight trusses, and flywheel inerters could reduce the material in floors while managing wind sway, shown as an illustrative design study.",
+        "subtitle": "Continuing Folios E.10 and A.01: an explanatory model—not a structural design method—on how Bendsøe–Sigmund SIMP topology optimization, Michell trusses, and flywheel inerters relate to slab mass and wind sway.",
         "date_published": "2026-11-07",
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.1",
@@ -1234,9 +1234,9 @@
         "primary_kernel": "tools/continuum_verify.py",
         "governing_law": "min_ρ c(ρ) = Uᵀ K(ρ) U · E_e(ρ_e) = E_min + ρ_e^p (E_0 − E_min) · F_inerter = b (ü_2 − ü_1)",
         "colophon": {
-          "identifier": "E.11 · SIMP Topology Optimization & Inerter Damping · Eurocode 2 / ACI 318",
-          "kernels": "Bendsøe–Sigmund SIMP Penalization · Michell Orthogonal Hencky Nets · Smith Inerter b",
-          "benchmarks": "V/V_0 = 0.35 · p = 3.0 ⇒ 1 − V/V_0 = 65% less slab concrete volume · b/m = 0.18 inerter ratio (drift reduction not computed)",
+          "identifier": "E.11 · SIMP Topology Optimization & Inerter Damping · CSI 03 41 00",
+          "kernels": "Bendsøe–Sigmund SIMP · Lazarov–Sigmund PDE Filter · Smith Inerter b",
+          "benchmarks": "V/V_0 = 0.35 · p = 3.0 ⇒ 65% less slab-zone volume · μ_b = 0.18 (readouts 3–4 fixed text)",
           "bridge": "Continues E.10/A.01 · Trabecular Bone Remodeling (Wolff's Law) ↔ Robotic 3DCP Funicular Floor Ribs"
         },
         "sliders": [
@@ -1258,10 +1258,10 @@
           }
         ],
         "steps": [
-          "Stage 1 (Wolff's Trabecular Bone Remodeling & Principal Stress Trajectories): Under gravity and wind loads, a continuum finite-element model (FEniCS/dolfinx is one open-source tool a reader could use; this folio ran no FE model) gives principal tensile and compressive stress trajectories σ_1, σ_2.",
-          "Stage 2 (SIMP Power-Law Penalization & Helmholtz PDE Filtering): Element stiffness E_e(ρ_e) = E_min + ρ_e^p (E_0 − E_min) with p = 3 pushes intermediate densities toward 0 or 1, while a filter radius r_min suppresses checkerboard patterns and mesh dependency.",
-          "Stage 3 (Toward Michell-like Layouts): For simple load cases, optimized layouts tend to resemble Anthony Michell's 1904 minimum-weight trusses. Keeping V/V_0 = 0.35 means 65% less concrete volume in the optimized slab region than a solid slab of the same envelope; whole-building savings would be smaller.",
-          "Stage 4 (Flywheel Inerter): A ball-screw or rack-and-pinion flywheel inerter F = b(ü_2 − ü_1) has inertance b much larger than its own mass: for a ring flywheel on a screw, b = m_fly (2π r / P)², so r = 45 mm and lead P = 20 mm give b ≈ 200 m_fly (illustrative). Inerter-based devices have been studied for structural vibration suppression (Lazar et al. 2013); the drift reduction in the lab is illustrative."
+          "Stage 1 (Stress Trajectories): A continuum finite-element model (FEniCS/dolfinx is one open-source option; none was run here) maps principal stress paths σ_1, σ_2.",
+          "Stage 2 (SIMP & Filtering): E_e(ρ_e) = E_min + ρ_e^p (E_0 − E_min) with assumed p = 3 (Bendsøe 1989; Sigmund 2001 cone filter radius r_min) pairs with the Lazarov & Sigmund (2011, DOI 10.1002/nme.3072) Helmholtz PDE density filter −r² ∇²ρ̃ + ρ̃ = ρ (with PDE length r = r_min / (2√3)).",
+          "Stage 3 (Slider Heuristic): Idealized point-load layouts recall Michell (1904) nets. At V/V_0 = 0.35, Readout 1 computes 1 / max(0.05, V/V_0) ≈ 2.9× and Readout 2 computes −65% slab-zone volume; not for real structures.",
+          "Stage 4 (Flywheel Inerter): Smith's F = b(ü_2 − ü_1) with an assumed thin rim (I = m_fly r²) gives b = m_fly (2π r / P)² = 199.86 m_fly ≈ 200× at r = 45 mm, P = 20 mm (solid disk ≈ 100×); Lazar, Neild & Wagg (2014) studied inerters for building vibration. Readouts 3–4 remain fixed text."
         ],
         "readouts": [
           {
@@ -1274,42 +1274,42 @@
           },
           {
             "label": "Inerter Apparent Mass Gain",
-            "value": "≈ 200× flywheel mass (r = 45 mm, P = 20 mm)"
+            "value": "≈ 200× thin-ring mass (r = 45 mm, P = 20 mm; fixed text)"
           },
           {
-            "label": "Model Filter Status",
-            "value": "FILTERED · no checkerboard in illustrative layout"
+            "label": "Model Filter & Boundary Status",
+            "value": "EXPLANATORY MODEL · NOT A DESIGN METHOD (fixed text)"
           }
         ],
         "spec_plate": {
           "division": "CSI MASTERFORMAT 03 41 00 (filing label)",
-          "title": "Topology-Optimized Funicular Ribbed Floor Slabs & Tuned Inerter Mass Dampers (Design Study)",
-          "body": "Design study: formwork-free 3D-printed ribbed slabs shaped by Helmholtz-filtered SIMP topology optimization (p = 3, r_min = 45 mm assumed) paired with ball-screw flywheel inerters in tall-building outriggers. Not designed to or checked against any code.",
-          "meta": "Method: Sigmund (2001) DOI 10.1007/s001580050176 · Inerter: Smith (2002) DOI 10.1109/TAC.2002.803532"
+          "title": "Topology-Optimized Ribbed Floor Slabs & Flywheel Inerters (Explanatory)",
+          "body": "Explanatory sketch, not a structural design method: ribbed slab concept combining SIMP (assumed p = 3) and Helmholtz PDE filtering (assumed cone radius r_min = 45 mm, PDE length r = r_min / (2√3) ≈ 13.0 mm) with flywheel inerters. None of these untested numbers may be used on a real structure or for code compliance.",
+          "meta": "SIMP: Bendsøe (1989) & Sigmund (2001) · PDE Filter: Lazarov & Sigmund (2011) DOI 10.1002/nme.3072 · Inerter: Smith (2002)"
         },
         "sidenote_1": {
           "kicker": "SIDENOTE E.11-A · CROSS-FIELD ANALOGY · YOUR THIGH BONE & A FLYWHEEL",
-          "body": "Your femur is dense along the main load paths and lighter elsewhere, an observation behind Wolff's Law. Topology optimization removes material in a similar spirit. Lighter floors make tall buildings livelier in wind, which is where inerter-based dampers could help; the inerter is widely described as first used in Formula 1 suspensions (Lazar et al. 2013)."
+          "body": "Your femur is dense along load paths and porous elsewhere (Wolff 1892). Lighter floors may respond more to wind, where inerters have been studied; Lazar, Neild & Wagg (2014) note Formula 1 suspensions as an early use."
         },
         "sidenote_2": {
           "kicker": "SIDENOTE E.11-B · SENSITIVITIES & OPEN-SOURCE SOLVERS",
-          "body": "Adjoint sensitivities ∂c/∂ρ_e = −p ρ_e^(p−1)(E_0 − E_min) u_eᵀ k_0 u_e (as in Sigmund 2001) could be computed in open-source FEniCS/dolfinx. Neural surrogates such as physics-informed neural networks (Raissi et al. 2019) have been proposed to speed up such loops; this folio claims no speed-up."
+          "body": "Adjoint sensitivities ∂c/∂ρ_e = −p ρ_e^(p−1)(E_0 − E_min) u_eᵀ k_0 u_e (Sigmund 2001) could be computed in FEniCS/dolfinx, and surrogates (Raissi et al. 2019) have been proposed; this folio claims no speed-up."
         },
         "skill": {
           "filename": "simp-topology-inerter-damping-SKILL.md",
           "name": "simp-topology-inerter-damping",
-          "description": "AI-agnostic structural engineering skill for Bendsøe-Sigmund SIMP continuum topology optimization, Helmholtz PDE sensitivity filtering, Michell funicular trusses, and tuned inerter dampers.",
+          "description": "Explanatory companion on Bendsøe-Sigmund SIMP optimization, Sigmund (2001) sensitivity filtering, Lazarov-Sigmund (2011) Helmholtz PDE density filtering, Michell trusses, and Smith (2002) inerters. Explanation, not a design method; none of its numbers apply to real structures.",
           "rules": [
-            "Penalize intermediate element densities via SIMP law E_e(rho_e) = E_min + rho_e^p * (E_0 - E_min) with p >= 3 and E_min = 1e-9 * E_0.",
-            "Apply Helmholtz PDE density filter -r_min^2 * laplacian(rho_tilde) + rho_tilde = rho to enforce a mesh-independent minimum member size.",
-            "Size two-terminal flywheel inerter inertance b (kg) via F = b * (a_2 - a_1) to achieve target apparent-mass ratio mu_b = b / m_modal."
+            "Explanation, not a design method: none of these assumed numbers (V/V_0 = 0.35, c/c_0 approx 2.9x, -65%, r_min = 45 mm, r approx 13.0 mm, r_fly = 45 mm, P = 20 mm, b approx 200 * m_fly, mu_b = 0.18) may be used on a real structure.",
+            "Separate SIMP E_e(rho_e) = E_min + rho_e^p * (E_0 - E_min) and Sigmund (2001, DOI 10.1007/s001580050176) cone sensitivity filtering (radius r_min) from Lazarov & Sigmund (2011, DOI 10.1002/nme.3072) PDE density filtering -r^2 * laplacian(rho_tilde) + rho_tilde = rho with r = r_min / (2*sqrt(3)).",
+            "Separate slider heuristics (1 / max(0.05, V/V_0) and -(1 - V/V_0)) from fixed-text readouts (thin-ring b = m_fly * (2*pi*r/P)^2 = 199.86 * m_fly vs solid disk approx 100 * m_fly; mu_b updates its label and schematic overlay, driving zero numerical readouts)."
           ]
         },
         "revisions": [
           {
             "edition": "REV 1.1",
             "date": "2026-11-14",
-            "summary": "REV 1.1 (Grounding pass 2026-11-14): Withdrew the \"WEF Net-Zero PASS\" verdict, the unsupported 1.14x compliance, 44% drift, 15 ms and 1,000x figures, and the claim that Smith invented the inerter for Formula 1 (the F1 link is now cited to Lazar et al. 2013 as a secondary account). Corrected a Raissi PINN DOI that was credited to Fourier Neural Operators, credited SIMP to Bendsøe 1989 rather than the 2001 99-line code, replaced an invented 1904 scene, and removed an AI-vendor repository and statements that the folio ran FEniCS.",
+            "summary": "REV 1.1 (Grounding pass 2026-11-14): Withdrew the \"WEF Net-Zero PASS\" verdict, the unsupported 1.14x compliance, 44% drift, 15 ms and 1,000x figures, and the claim that Smith invented the inerter for Formula 1 (the F1 link is now cited to Lazar et al. 2014 as a secondary account). Corrected a Raissi PINN DOI that was credited to Fourier Neural Operators, credited SIMP to Bendsøe 1989 rather than the 2001 99-line code, replaced an invented 1904 scene, and removed an AI-vendor repository and statements that the folio ran FEniCS.",
             "opus": "Review: all DOIs checked against Crossref and the Scite index on 2026-11-14; 1 − 0.35 = 65% and (2π·45/20)² ≈ 200 recomputed by hand."
           },
           {
@@ -1321,17 +1321,17 @@
         ],
         "volume": 6,
         "volume_code": "VOL. 06",
-        "reading_time": "22 MIN READ",
-        "word_count": "4,650 WORDS",
+        "reading_time": "24 MIN READ",
+        "word_count": "5,350 WORDS",
         "scite": {
           "doi": "10.1007/s001580050176",
-          "fetched_on": "2026-11-08",
-          "citing_publications": 2752,
+          "fetched_on": "2026-11-24",
+          "citing_publications": 2786,
           "supporting": 18,
-          "mentioning": 1181,
+          "mentioning": 1184,
           "contrasting": 0,
           "retracted": false,
-          "summary": "Scite index entry for Sigmund 2001, \"A 99 line topology optimization code written in Matlab\" (DOI 10.1007/s001580050176), fetched 2026-11-08: 2,752 citing publications (18 supporting, 1,181 mentioning, 0 contrasting) and no retraction notice. These counts describe that one paper, not this folio."
+          "summary": "Scite index entry for Sigmund 2001, \"A 99 line topology optimization code written in Matlab\" (DOI 10.1007/s001580050176), fetched 2026-11-24: 2,786 citing publications (18 supporting, 1,184 mentioning, 0 contrasting statements) and no retraction notice. Citing publications count distinct papers, not statement sums, and describe that paper, not this folio."
         }
       },
       {
