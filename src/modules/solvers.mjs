@@ -1440,9 +1440,15 @@ export function initPlateSolvers(scope = document) {
         const vpReaction = 4800.0;
         const tieTension = vpReaction * (a / c);
         const sf = 3.12 * (1280.0 / Math.max(100.0, tieTension));
-        if (thrustOut) thrustOut.textContent = `About 48 m (column-free floors)`;
+        if (thrustOut) thrustOut.textContent = `About 48 m (fixed reference text)`;
         if (kernOut) kernOut.textContent = `${tieTension.toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} kN (SF = ${sf.toFixed(2)}, illustrative)`;
-        if (outR2) outR2.textContent = `τ_pod = 15 yr / τ_frame = 100 yr`;
+        if (outR2) outR2.textContent = `τ_pod = 15 yr / τ_frame = 100 yr (fixed text)`;
+        if (statusOut) {
+          statusOut.textContent =
+            sf >= 1.5
+              ? `m = 0 assumed (fixed) · SF ≥ 1.50 (illustrative)`
+              : `SF < 1.50 (illustrative tie surrogate; m = 0 assumed)`;
+        }
         if (statusBox) statusBox.setAttribute("data-alert", sf >= 1.5 ? "false" : "true");
 
         const a04Truss1 = document.getElementById("tp-a04-truss-1");
@@ -1455,7 +1461,7 @@ export function initPlateSolvers(scope = document) {
           if (a04Truss2) a04Truss2.setAttribute("d", `M 175 130 Q 340 ${camberY2} 505 130`);
         }
         if (a04Label) {
-          a04Label.textContent = `Exoskeleton model · T_tie = ${tieTension.toFixed(0)} kN (assumed V_p = 4,800 kN)`;
+          a04Label.textContent = `Exoskeleton model · T_tie = ${Math.round(tieTension).toLocaleString("en-US")} kN (assumed V_p = 4,800 kN)`;
         }
         return;
       }
@@ -1723,7 +1729,8 @@ export function initPlateSolvers(scope = document) {
     };
     archSpanInput.addEventListener("input", updateArch);
     archLoadInput.addEventListener("input", updateArch);
-    if ((getActiveSlug() || "a01") === "a01") updateArch();
+    const initArchSlug = getActiveSlug() || "a01";
+    if (initArchSlug === "a01" || initArchSlug === "a04") updateArch();
   }
 
   // 4. Math Modularity, Spectral, Combinatorics, PFR, Neuro-Symbolic & Complexity Solvers (M.01-M.06)
@@ -1752,16 +1759,24 @@ export function initPlateSolvers(scope = document) {
       const decimals = (el) => ((el.step || "1").split(".")[1] || "").length;
       const fmt = (el, unit) => {
         const v = parseFloat(el.value).toFixed(decimals(el));
-        return unit.includes("=") ? `${unit}${v}` : `${v}${unit}`;
+        return unit.trimEnd().endsWith("=") ? `${unit}${v}` : `${v}${unit}`;
       };
       if (LABEL_UNITS[slug]) {
         const [u0, u1] = LABEL_UNITS[slug];
         const t0 = fmt(mathPrimeInput, u0);
+        const t1 = fmt(mathClauseInput, u1);
         if (pLabel) pLabel.textContent = t0;
-        if (cLabel) cLabel.textContent = fmt(mathClauseInput, u1);
+        if (cLabel) cLabel.textContent = t1;
         if (inlineP) {
           const name = (document.querySelector('label[for="tp-math-prime"] span')?.textContent || "").replace(/\s*\(.*\)\s*$/, "").trim();
-          inlineP.textContent = u0.includes("=") || !name ? t0 : `${name} = ${t0}`;
+          inlineP.textContent = u0.trimEnd().endsWith("=") || !name ? t0 : `${name} = ${t0}`;
+        }
+        if (slug === "m07") {
+          const pkText = document.getElementById("tp-m07-pk-text");
+          const modesText = document.getElementById("tp-m07-modes-text");
+          const modesInt = Math.round(parseFloat(mathClauseInput.value) || 32);
+          if (pkText) pkText.textContent = `PMP Co-State Taper (P_k = ${t0} \u2192 Convex-Loss Arc)`;
+          if (modesText) modesText.textContent = `${modesInt} Modes`;
         }
         return;
       }
@@ -2165,7 +2180,7 @@ export function initPlateSolvers(scope = document) {
     };
     mathPrimeInput.addEventListener("input", updateMath);
     mathClauseInput.addEventListener("input", updateMath);
-    if ((getActiveSlug() || "m01") === "m01" || getActiveSlug() === "m13" || getActiveSlug() === "m15" || getActiveSlug() === "m16") updateMath();
+    if ((getActiveSlug() || "m01") === "m01" || getActiveSlug() === "m07" || getActiveSlug() === "m13" || getActiveSlug() === "m15" || getActiveSlug() === "m16") updateMath();
   }
 
   // 5. Engineering Stokes-Brinkman (E.01), Acoustic Metamaterials (E.03) & Enthalpy Cores (E.04)

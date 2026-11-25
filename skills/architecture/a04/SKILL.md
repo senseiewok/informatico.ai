@@ -1,39 +1,39 @@
 ---
 name: archigram-hightech-exoskeleton
-description: AI-agnostic architectural and structural engineering skill for Archigram Plug-In megastructures, British High-Tech exoskeletons (Foster, Rogers, Piano, Rice), gerberette cantilever statics, Maxwell-Calladine space-frame rigidity, and Stewart Brand shearing layers.
+description: Explanatory architectural and statics reference (not a structural design method) for cast-steel gerberette lever equilibrium, the Maxwell-Calladine counting rule, and Stewart Brand shearing layers; no number here may be used on a real structure.
 license: MIT
 compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI Codex, Ollama (Qwen 3.8 / Gemma 4)
 ---
 # From Archigram's Plug-In Megastructures to British High-Tech Exoskeletons: Gerberette Cantilevers, Maxwell Space Frames & Shearing-Layer Pods (Folio A.04)
 
-A plain-text companion to the essay at https://informatico.ai/architecture/a04/ (`A.04 · Archigram to High-Tech Exoskeletons · CSI 05 12 13`, `REV 1.3`, redated `2026-11-14`).
+A plain-text companion to the essay at https://informatico.ai/architecture/a04/ (`A.04 · Archigram to High-Tech Exoskeletons · Teaching Model`, `REV 1.3`, redated `2026-11-14`).
 
 ## The governing relation
 `T_tie = V_p · (a / c) · b − 3j + 6 = s − m · τ_pod ≪ τ_frame`
 
 ## Rules the essay derives
-1. Evaluate cast-steel gerberette cantilever equilibrium: exterior tension tie force T_tie = V_floor * (a / c) and column compression C_col = V_floor * (1 + a / c).
-2. Verify 3D space-frame static and kinematic determinacy via the Maxwell-Calladine matrix index b - 3j + 6 = s - m (ensuring m = 0 internal mechanisms).
-3. Decouple Stewart Brand's 6 Shearing Layers by routing all Services (HVAC, medical gases, cleanroom exhaust, tau = 7-15 yr) on the exterior exoskeleton outside the 48 m column-free Structure (tau = 60-100 yr).
+1. Explanatory, untested model only, not a structural design method (no number here may be used on a real structure): under assumed V_p = 4,800 kN, compute T_tie = V_p * (a / c) and C_col = V_p * (1 + a / c), with browser surrogate SF = 3.12 * (1,280 / max(100, T_tie)) flagging SF < 1.50 above 2,662.4 kN.
+2. State the 3D Maxwell-Calladine count b - 3j + 6 = s - m (Pellegrino & Calladine 1986, DOI 10.1016/0020-7683(86)90014-4); here m = 0, about 48 m clear span, and 15 yr / 100 yr lifetimes remain fixed reference text, not verified matrix outputs.
+3. Treat separating shorter-lived services (about 7-15 yr in Brand 1994) from long-lived structure (about 30-300 yr in Brand 1994; Habraken 2021, DOI 10.4324/9781003014713) as an untested concept caveat, not a facility code.
 
 ## How it works, in four stages
-- Stage 1 (Archigram Plug-In Matrix, 1961–1964): Peter Cook's Plug-In City and Ron Herron's Walking City imagine a long-lived structural frame carrying short-lived clip-on capsules (the 100-year and 15-year lifetimes used here are the folio's illustrative values).
-- Stage 2 (Pompidou Cast-Steel Gerberette Equilibrium, 1971–1977): In the folio's lever model, an assumed floor reaction V_p = 4,800 kN acts at a = 1.60 m outside the column and is balanced by an exterior tie: T_tie = V_p·(a/c) = 4,800 × 1.60 / 6.00 = 1,280.0 kN at c = 6.00 m. These are teaching values, not the loads of the real building.
-- Stage 3 (Foster & Rogers High-Tech Mast Suspension, 1978–1986): Norman Foster (HSBC Hong Kong) hangs floors from masts, and Richard Rogers (Lloyd's of London) places service towers and prefabricated service pods outside the main floor plates.
-- Stage 4 (Brand's Shearing Layers & Replaceable Service Modules): Stewart Brand describes building layers that change at different rates. Keeping services outside the long-life frame could, as a proposal, make it easier to replace clinical or laboratory service modules.
+- Stage 1 (Archigram Plug-In Matrix, 1961–1964): Cook's Plug-In City and Herron's Walking City depict a frame carrying replaceable capsules (Beslioglu 2014, DOI 10.4995/vlc.2014.1829; the 100-year and 15-year lifetimes are fixed illustrative values).
+- Stage 2 (Pompidou Gerberette Lever, 1971–1977): Under the stated assumptions (V_p = 4,800 kN, a = 1.60 m, c = 6.00 m), T_tie = V_p·(a/c) = 1,280.0 kN and C_col = 6,080.0 kN (illustrative values, not real building loads).
+- Stage 3 (Foster & Rogers Perimeter Structure, 1978–1986): Norman Foster (HSBC Hong Kong) hangs floors from masts, and Richard Rogers (Lloyd's) places service towers outside main floor plates.
+- Stage 4 (Brand's Shearing Layers): Stewart Brand (1994) separates long-lived frames from faster-aging services; placing replaceable service pods outside the frame could remain an untested architectural proposal.
 
 ## Reference values stated in the essay
-- **Exoskeleton Clear Span (Pompidou, as Reported)**: `About 48 m (column-free floors)`
+- **Exoskeleton Clear Span (Reported)**: `About 48 m (fixed reference text)`
 - **Gerberette Tie-Rod Tension (Model)**: `1,280.0 kN (SF = 3.12, illustrative)`
-- **Shearing-Layer Ratio (Illustrative)**: `τ_pod = 15 yr / τ_frame = 100 yr`
-- **Maxwell-Calladine Index (Assumed)**: `m = 0 assumed, not computed`
+- **Shearing-Layer Ratio (Illustrative)**: `τ_pod = 15 yr / τ_frame = 100 yr (fixed text)`
+- **Rigidity & Surrogate Tie Check**: `m = 0 assumed (fixed) · SF ≥ 1.50 (illustrative)`
 
 ## What is and is not checked
 The reference values above are stated in the essay. No script in this repository recomputes them yet, so treat them as the essay's claims and check them against the primary source before relying on them.
 
 ## Primary source
 - https://doi.org/10.1016/0020-7683(86)90014-4 (Scite report: https://scite.ai/reports/10.1016/0020-7683(86)90014-4)
-- What the essay compares against: Model values: T_tie = 4,800 × 1.60 / 6.00 = 1,280 kN (V_p assumed) · SF 3.12 illustrative
+- What the essay compares against: Assumed & illustrative values: T_tie = 4,800 × 1.60 / 6.00 = 1,280.0 kN (V_p assumed) · SF = 3.12 illustrative
 
 ## Recent research context
-- **From Archigram's 1964 Plug-In Capsules to High-Tech Exoskeletons: A Lever Model of the Gerberette**: Connecting Peter Cook & Ron Herron's Archigram Plug-In drawings (1961–1974) with the Centre Pompidou's cast-steel gerberettes, Norman Foster's HSBC suspended floors, and the Pellegrino–Calladine counting rule for frameworks (Int. J. Solids Struct. DOI 10.1016/0020-7683(86)90014-4; Calladine DOI 10.1016/0020-7683(78)90052-5), this folio models the gerberette as a lever (T_tie = V_p a/c = 1,280.0 kN for assumed inputs) and proposes, without claiming any built example, frames whose service modules could be replaced.
+- **From Archigram's 1964 Plug-In Capsules to High-Tech Exoskeletons: A Lever Model of the Gerberette**: Connecting Cook & Herron's Plug-In drawings (Beslioglu 2014, DOI 10.4995/vlc.2014.1829) with Centre Pompidou gerberettes (Hamzeian 2018, DOI 10.1201/9780429506208-91) and Pellegrino–Calladine counting (DOI 10.1016/0020-7683(86)90014-4), this untested explanation estimates T_tie = 1,280.0 kN under stated assumptions; no figure belongs on a real structure.

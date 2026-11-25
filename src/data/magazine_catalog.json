@@ -2171,24 +2171,24 @@
         "pillar": "architecture",
         "category_code": "A",
         "title": "Double-Skin Facade Buoyancy Stack Ventilation, Cavity Plumes, and 1:5 Acoustic Damper Louvers",
-        "subtitle": "A model of thermosiphon stack draft Δp_stack = ρ_0 g H β ΔT and solar shading position inside multi-story ventilated glass cavities, and how such a facade could reduce cooling loads.",
+        "subtitle": "An explanatory model—not a facade design method—of buoyancy stack draft and solar shading position inside multi-story ventilated glass cavities, and how such a cavity could carry heat away.",
         "date_published": "2026-10-30",
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.3",
         "status_badge": "REDATED REV 1.3",
         "primary_kernel": "tools/tectonic_verify.py",
-        "governing_law": "Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11",
+        "governing_law": "Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11 (assumed)",
         "colophon": {
           "identifier": "A.03 · Facade Thermodynamics",
           "kernels": "1:50 Multi-Story Shaft + 1:5 Damper Sill",
-          "benchmarks": "Model values: Δp = 3.92 Pa (ρ_0 = 1.2 kg/m³, H = 9.0 m, ΔT = 11.2 K, T_ext ≈ 303 K) · g_tot = 0.11 assumed",
+          "benchmarks": "Model values: Δp = 3.92 Pa (ρ_0 = 1.2 kg/m³, H = 9.0 m, ΔT = 11.2 K, T_ext ≈ 303 K) · g_tot = 0.11 fixed text",
           "bridge": "Buoyancy Convective Clearance"
         },
         "steps": [
           "Stage 1 (Solar Shortwave Absorption): An assumed solar irradiance I_sol = 650 W/m² heats the ventilated blind positioned in the outer third of the 600 mm cavity.",
-          "Stage 2 (Hydrostatic Buoyancy Pressure Drive): Δp_stack = ρ_0 g H (ΔT / T_ext) = 1.2 × 9.81 × 9.0 × (11.2 / 303) = 3.92 Pa across a 9.0 m two-story shaft (T_ext ≈ 303 K, about 30 °C, assumed).",
-          "Stage 3 (Bernoulli Discharge & Damper Loss Balance): Setting Δp = ζ_tot ρ v² / 2 gives v = 0.84 m/s for an assumed total loss coefficient ζ_tot ≈ 9.3 (inlet, outlet louvers and friction). The 142 m³/h per metre of facade assumes an effective free opening of about 0.047 m² per metre.",
-          "Stage 4 (1:5 Acoustic Baffle Sill Node A-12): A proposed mineral-wool lined labyrinth damper with a design target of R_w = 46 dB and C_d = 0.62 (targets, not measured)."
+          "Stage 2 (Hydrostatic Buoyancy Pressure Drive): Δp_stack = ρ_0 g H (ΔT / T_ext) = 1.2 × 9.81 × 9.0 × (11.2 / 303) = 3.92 Pa across a 9.0 m two-story shaft (ideal-gas β ≈ 1 / T_ext, T_ext ≈ 303 K, about 30 °C, assumed).",
+          "Stage 3 (Bernoulli Discharge & Damper Loss Balance): Setting Δp = ζ_tot ρ v² / 2 gives v = 0.84 m/s for an assumed total loss coefficient ζ_tot ≈ 9.3. The 142 m³/h per meter of facade assumes an opening of about 0.047 m² per meter.",
+          "Stage 4 (1:5 Acoustic Baffle Sill Node A-12): A proposed mineral-wool lined labyrinth damper with design targets of R_w = 46 dB and C_d = 0.62 (targets, not measured)."
         ],
         "readouts": [
           {
@@ -2200,40 +2200,45 @@
             "value": "0.84 m/s (142 m³/h·m)"
           },
           {
-            "label": "Total Solar Factor (g_tot)",
+            "label": "Total Solar Factor (g_tot, Fixed Text)",
             "value": "0.11 (assumed; EN ISO 52022-3 method)"
           },
           {
-            "label": "Air Changes & Daylight (Illustrative)",
+            "label": "Rescaled ACH & Fixed Daylight (Illustrative)",
             "value": "24.21 ACH · 285 EML (illustrative)"
           }
         ],
         "spec_plate": {
-          "division": "CSI MASTERFORMAT 08 44 13 / 08 91 00",
-          "title": "Thermally Broken Double-Skin Curtain Wall & Acoustic Labyrinth Vent (Node A-12)",
-          "body": "Naturally ventilated box-window facade assembly with motorized micro-perforated aluminum venetian blinds and sound-attenuating intake sill (U_cw = 0.68 W/(m²·K), g_tot = 0.11, R_w = 46 dB).",
-          "meta": "Design proposal, not a product · EN 13830 is the curtain walling product standard a real system would be tested to"
+          "division": "EXPLANATORY MODEL · CSI 08 44 13 / 08 91 00 (NOT A DESIGN SPEC)",
+          "title": "Illustrative Box-Window Curtain Wall & Acoustic Sill Concept (Node A-12)",
+          "body": "Explanatory proposal only, not a tested product or design specification: ventilated box-window cavity with motorized aluminum blinds and sound-attenuating intake sill (assumed/target values: U_cw = 0.68 W/(m²·K), g_tot = 0.11, R_w = 46 dB). None of these numbers may be used on a real building.",
+          "meta": "Explanatory proposal, not a product · EN 13830 is the curtain-walling product standard a real system would be tested to"
         },
         "sidenote_1": {
-          "kicker": "SIDENOTE A.03 · BLIND POSITIONING PARADOX",
-          "body": "A blind placed close to the inner glazing tends to pass more of its absorbed heat indoors; moving it toward the outer skin lets more of that heat leave with the cavity air. Saelens, Roels and Hens compare strategies for multiple-skin facades (DOI 10.1016/j.buildenv.2006.06.024). The outer-third position here is a design assumption."
+          "kicker": "SIDENOTE A.03-A · BLIND POSITIONING PARADOX",
+          "body": "A blind placed close to the inner glazing may pass more absorbed heat indoors; moving it toward the outer skin could let more heat leave with cavity air. Saelens, Roels, and Hens compare multiple-skin facade strategies (DOI 10.1016/j.buildenv.2006.06.024). The outer-third position here is an assumed parameter."
+        },
+        "sidenote_2": {
+          "kicker": "SIDENOTE A.03-B · ILLUSTRATIVE ASSEMBLY & SAFETY BOUNDARY",
+          "body": "This folio is an explanation, not a facade design method, and remains untested on hardware. Assumed envelope and acoustic target values on this page may not be used to design or size a real structure."
         },
         "skill": {
           "filename": "double-skin-facade-buoyancy-SKILL.md",
           "name": "double-skin-facade-buoyancy",
-          "description": "AI-agnostic facade engineering and building physics skill for double-skin curtain wall buoyancy stack ventilation, EN ISO 52022-3 g_tot solar factors, and acoustic intake dampers.",
+          "description": "Explanatory building-physics reference (not a facade design method) for double-skin curtain-wall buoyancy stack draft, EN ISO 52022-3 g_tot concepts, and acoustic intake dampers.",
           "rules": [
-            "Compute buoyancy stack pressure delta_p_stack = rho_0 * g * H * (T_cav - T_ext) / T_ext and mass flow m_dot = rho * A_eff * sqrt(2 * delta_p / zeta_tot).",
-            "Calculate total solar energy transmittance g_tot with the EN ISO 52022-3 method; this folio uses its own design target g_tot <= 0.15 when exterior irradiance exceeds 500 W/m^2 (a folio target, not a requirement of the standard).",
-            "This folio assumes a cavity depth D >= 500 mm for maintenance access (the folio's own assumption, not a code requirement), or sealed dry-air Closed Cavity Facade (CCF) modules."
+            "Explanatory, untested model only, not a facade design method: none of these numbers may be used to design or size a real building or curtain wall.",
+            "Under stated assumptions, estimate hydrostatic stack draft delta_p_stack = rho_0 * g * H * (T_cav - T_ext) / T_ext (ideal-gas beta = 1 / T_ext; baseline assumes rho_0 = 1.2 kg/m^3, T_ext about 303 K, zeta_tot about 9.3, opening area A about 0.047 m^2/m), cavity speed v = sqrt(2 * delta_p_stack / (zeta_tot * rho_0)), and mass flow m_dot = rho_0 * A * v = A * sqrt(2 * rho_0 * delta_p_stack / zeta_tot).",
+            "Calculate total solar energy transmittance g_tot with the EN ISO 52022-3 method; this folio uses an illustrative target g_tot <= 0.15 above 500 W/m^2 (not a requirement of the standard), and in the browser lab g_tot = 0.11 and 285 EML remain fixed text while 24.21 ACH rescales with velocity.",
+            "This folio assumes a cavity depth D >= 500 mm for maintenance access (an assumed parameter, not a code requirement), or sealed dry-air Closed Cavity Facade (CCF) modules."
           ]
         },
         "revisions": [
           {
             "edition": "REV 1.3",
             "date": "2026-11-14",
-            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. No design was certified and no pathogen clearance measured; earlier claims of protected sleep and immunity are withdrawn: nothing was measured. The circadian sentences had cited a radiative-cooling paper (DOI 10.1038/nature13883); they now cite Berson et al. 2002 (DOI 10.1126/science.1067262) and Brown et al. 2022 (DOI 10.1371/journal.pbio.3001571). The stack draft now states its assumptions (T_ext ≈ 303 K, ζ_tot ≈ 9.3), and the opening scene is replaced by a plain account. A later review withdrew the \"lung\" pullquote, the unsourced claims about mid-century glazing and the Paimio sanatorium source, and softened outcome statements in the plain-language text and the Spanish text.",
-            "opus": "Review: references checked by DOI in Crossref and the Scite index; Scite indexed the 250 lux melanopic EDI daytime recommendation in Brown et al. 2022."
+            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. No design was certified and no pathogen clearance measured; earlier claims of protected sleep and immunity are withdrawn. Circadian light sentences cite Berson et al. (2002; DOI 10.1126/science.1067262) and Brown et al. (2022; DOI 10.1371/journal.pbio.3001571). Stack draft assumptions (T_ext ≈ 303 K, ζ_tot ≈ 9.3), browser readout rescaling versus fixed text, and the non-design-method boundary are stated explicitly.",
+            "opus": "Review: Crossref metadata checked for all six DOIs; Scite index checked for Nabil & Mardaljevic (2006; DOI 10.1016/j.enbuild.2006.03.013). Brown et al. (2022) recommends at least 250 lux melanopic EDI indoors during daytime for healthy adults."
           },
           {
             "edition": "REV 1.2",
@@ -2293,18 +2298,20 @@
         "pillar": "architecture",
         "category_code": "A",
         "title": "From Archigram's Plug-In Megastructures to British High-Tech Exoskeletons: Gerberette Cantilevers, Maxwell Space Frames & Shearing-Layer Pods",
-        "subtitle": "How the plug-in ideas of Peter Cook and Ron Herron's 1960s Archigram drawings are widely seen as an influence on the British High-Tech work of Richard Rogers, Renzo Piano, Peter Rice and Norman Foster—and a lever model of the cast-steel gerberette, with replaceable service modules as a proposal.",
+        "subtitle": "An architectural and statics explanation, not a structural design method: from Archigram's 1960s plug-in drawings to the Centre Pompidou cast-steel gerberette lever and replaceable service modules; no number here may be used on a real structure.",
         "date_published": "2026-11-01",
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.3",
         "status_badge": "HIGH-TECH & ARCHIGRAM · REV 1.3",
-        "primary_kernel": "tools/tectonic_verify.py",
+        "primary_kernel": "tools/folios/architecture/a04.py",
+        "kernel_verdict": "Not independently verified",
+        "kernel_verdict_es": "Sin verificación independiente",
         "governing_law": "T_tie = V_p · (a / c) · b − 3j + 6 = s − m · τ_pod ≪ τ_frame",
         "colophon": {
-          "identifier": "A.04 · Archigram to High-Tech Exoskeletons · CSI 05 12 13",
-          "kernels": "Gerberette T_tie = V_p(a/c) · Maxwell Rigidity · Shearing Layers",
-          "benchmarks": "Model values: T_tie = 4,800 × 1.60 / 6.00 = 1,280 kN (V_p assumed) · SF 3.12 illustrative",
-          "bridge": "Long-Life Frame + Replaceable Services ↔ Adaptable Clinical Buildings (a proposal)"
+          "identifier": "A.04 · Archigram to High-Tech Exoskeletons · Teaching Model",
+          "kernels": "Gerberette Lever T_tie = V_p(a/c) · Maxwell-Calladine Count · Shearing Layers",
+          "benchmarks": "Assumed & illustrative values: T_tie = 4,800 × 1.60 / 6.00 = 1,280.0 kN (V_p assumed) · SF = 3.12 illustrative",
+          "bridge": "Durable Perimeter Frame + Replaceable Services (Untested Proposal)"
         },
         "sliders": [
           {
@@ -2325,15 +2332,15 @@
           }
         ],
         "steps": [
-          "Stage 1 (Archigram Plug-In Matrix, 1961–1964): Peter Cook's Plug-In City and Ron Herron's Walking City imagine a long-lived structural frame carrying short-lived clip-on capsules (the 100-year and 15-year lifetimes used here are the folio's illustrative values).",
-          "Stage 2 (Pompidou Cast-Steel Gerberette Equilibrium, 1971–1977): In the folio's lever model, an assumed floor reaction V_p = 4,800 kN acts at a = 1.60 m outside the column and is balanced by an exterior tie: T_tie = V_p·(a/c) = 4,800 × 1.60 / 6.00 = 1,280.0 kN at c = 6.00 m. These are teaching values, not the loads of the real building.",
-          "Stage 3 (Foster & Rogers High-Tech Mast Suspension, 1978–1986): Norman Foster (HSBC Hong Kong) hangs floors from masts, and Richard Rogers (Lloyd's of London) places service towers and prefabricated service pods outside the main floor plates.",
-          "Stage 4 (Brand's Shearing Layers & Replaceable Service Modules): Stewart Brand describes building layers that change at different rates. Keeping services outside the long-life frame could, as a proposal, make it easier to replace clinical or laboratory service modules."
+          "Stage 1 (Archigram Plug-In Matrix, 1961–1964): Cook's Plug-In City and Herron's Walking City depict a frame carrying replaceable capsules (Beslioglu 2014, DOI 10.4995/vlc.2014.1829; the 100-year and 15-year lifetimes are fixed illustrative values).",
+          "Stage 2 (Pompidou Gerberette Lever, 1971–1977): Under the stated assumptions (V_p = 4,800 kN, a = 1.60 m, c = 6.00 m), T_tie = V_p·(a/c) = 1,280.0 kN and C_col = 6,080.0 kN (illustrative values, not real building loads).",
+          "Stage 3 (Foster & Rogers Perimeter Structure, 1978–1986): Norman Foster (HSBC Hong Kong) hangs floors from masts, and Richard Rogers (Lloyd's) places service towers outside main floor plates.",
+          "Stage 4 (Brand's Shearing Layers): Stewart Brand (1994) separates long-lived frames from faster-aging services; placing replaceable service pods outside the frame could remain an untested architectural proposal."
         ],
         "readouts": [
           {
-            "label": "Exoskeleton Clear Span (Pompidou, as Reported)",
-            "value": "About 48 m (column-free floors)"
+            "label": "Exoskeleton Clear Span (Reported)",
+            "value": "About 48 m (fixed reference text)"
           },
           {
             "label": "Gerberette Tie-Rod Tension (Model)",
@@ -2341,55 +2348,55 @@
           },
           {
             "label": "Shearing-Layer Ratio (Illustrative)",
-            "value": "τ_pod = 15 yr / τ_frame = 100 yr"
+            "value": "τ_pod = 15 yr / τ_frame = 100 yr (fixed text)"
           },
           {
-            "label": "Maxwell-Calladine Index (Assumed)",
-            "value": "m = 0 assumed, not computed"
+            "label": "Rigidity & Surrogate Tie Check",
+            "value": "m = 0 assumed (fixed) · SF ≥ 1.50 (illustrative)"
           }
         ],
         "sidenote_1": {
-          "kicker": "SIDENOTE A.04-A · ARCHIGRAM TO FOSTER, ROGERS & FUTURE SYSTEMS",
-          "body": "Archigram's members taught at architecture schools such as the Architectural Association, and their drawings are widely seen as an influence on British High-Tech. This folio does not document direct teaching links between Archigram and Team 4 (Norman Foster and Richard Rogers) or Jan Kaplický's Future Systems."
+          "kicker": "SIDENOTE A.04-A · ARCHIGRAM, POMPIDOU & UNDOCUMENTED LINKS",
+          "body": "Archigram's 1960s issues explored plug-in frames (Cook et al. 1999; Beslioglu 2014, DOI 10.4995/vlc.2014.1829). This folio documents no direct teaching link between Archigram and Team 4 (Foster and Rogers) or Jan Kaplický's Future Systems."
         },
         "sidenote_2": {
-          "kicker": "SIDENOTE A.04-B · SPECIFICATION PLATE · CSI 05 12 13 (ARCHITECTURALLY EXPOSED STRUCTURAL STEEL)",
-          "body": "Design proposal, not a tested product: cast-steel gerberette brackets with a specified f_y = 355 MPa and Charpy V-notch ≥ 40 J at −20 °C, external stainless-steel tension tie rods, and quick-disconnect service manifolds."
+          "kicker": "SIDENOTE A.04-B · CONCEPT NOTE · CSI 05 12 13 (NOT A SPEC)",
+          "body": "Untested concept sketch, not a structural specification: cast-steel brackets (illustrative f_y = 355 MPa, Charpy 40 J at −20 °C), exterior tie rods, and detachable risers. No number here may be used on a real structure."
         },
         "skill": {
           "filename": "archigram-hightech-exoskeleton-SKILL.md",
           "name": "archigram-hightech-exoskeleton",
-          "description": "AI-agnostic architectural and structural engineering skill for Archigram Plug-In megastructures, British High-Tech exoskeletons (Foster, Rogers, Piano, Rice), gerberette cantilever statics, Maxwell-Calladine space-frame rigidity, and Stewart Brand shearing layers.",
+          "description": "Explanatory architectural and statics reference (not a structural design method) for cast-steel gerberette lever equilibrium, the Maxwell-Calladine counting rule, and Stewart Brand shearing layers; no number here may be used on a real structure.",
           "rules": [
-            "Evaluate cast-steel gerberette cantilever equilibrium: exterior tension tie force T_tie = V_floor * (a / c) and column compression C_col = V_floor * (1 + a / c).",
-            "Verify 3D space-frame static and kinematic determinacy via the Maxwell-Calladine matrix index b - 3j + 6 = s - m (ensuring m = 0 internal mechanisms).",
-            "Decouple Stewart Brand's 6 Shearing Layers by routing all Services (HVAC, medical gases, cleanroom exhaust, tau = 7-15 yr) on the exterior exoskeleton outside the 48 m column-free Structure (tau = 60-100 yr)."
+            "Explanatory, untested model only, not a structural design method (no number here may be used on a real structure): under assumed V_p = 4,800 kN, compute T_tie = V_p * (a / c) and C_col = V_p * (1 + a / c), with browser surrogate SF = 3.12 * (1,280 / max(100, T_tie)) flagging SF < 1.50 above 2,662.4 kN.",
+            "State the 3D Maxwell-Calladine count b - 3j + 6 = s - m (Pellegrino & Calladine 1986, DOI 10.1016/0020-7683(86)90014-4); here m = 0, about 48 m clear span, and 15 yr / 100 yr lifetimes remain fixed reference text, not verified matrix outputs.",
+            "Treat separating shorter-lived services (about 7-15 yr in Brand 1994) from long-lived structure (about 30-300 yr in Brand 1994; Habraken 2021, DOI 10.4324/9781003014713) as an untested concept caveat, not a facility code."
           ]
         },
         "revisions": [
           {
             "edition": "REV 1.3",
             "date": "2026-11-14",
-            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. The PASS verdict, the claim that COMPAS verified the tie-rod safety factor, and the claims that Archigram directly mentored Foster and Rogers were unsourced and are withdrawn; V_p = 4,800 kN and SF = 3.12 are now labeled as assumed and illustrative. The invented 1961 founding scene and a source entry that did not exist as cited are replaced by a plain account and a modest, labeled proposal.",
-            "opus": "Review: references checked by DOI in Crossref and the Scite index; Hamzeian (2018, DOI 10.1201/9780429506208-91) documents the evolution of the Pompidou cast node, and the lever-model numbers come from the stated formulas."
+            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. Earlier PASS and COMPAS claims and unsourced mentorship claims are withdrawn; V_p = 4,800 kN and SF = 3.12 are labeled assumed and illustrative, fixed readouts and the 2,662.4 kN surrogate threshold are stated, and the non-design-method boundary is set across Act I, Spanish summary, and SKILL.md.",
+            "opus": "Review: references checked in Crossref and Scite; Hamzeian (2018, DOI 10.1201/9780429506208-91) documents the Pompidou cast node, and lever estimates follow under the stated assumptions."
           },
           {
             "edition": "REV 1.2",
             "date": "2026-11-02",
             "summary": "REV 1.2 (Redated 2026-11-02): Revised the cast-steel gerberette lever model and Stewart Brand shearing-layer discussion.",
-            "opus": "Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.3: T_tie = 1,280 kN follows from assumed inputs, and SF = 3.12 and m = 0 were not computed."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B); earlier 'verified' wording withdrawn in REV 1.3 because T_tie, SF = 3.12, and m = 0 were not verified."
           },
           {
             "edition": "REV 1.1",
             "date": "2026-11-01",
-            "summary": "REV 1.1 (Redated 2026-11-01): Dedicated 5-Act monograph tracing the lineage from Archigram (Plug-In City, Walking City) to British High-Tech (Foster, Rogers, Piano, Rice) with a gerberette lever model and shearing layers.",
-            "opus": "Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.3."
+            "summary": "REV 1.1 (Redated 2026-11-01): Initial 5-Act monograph from Archigram to British High-Tech with a gerberette lever model.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B); earlier 'verified' wording withdrawn in REV 1.3."
           }
         ],
         "volume": 2,
         "volume_code": "VOL. 02",
-        "reading_time": "22 MIN READ",
-        "word_count": "4,650 WORDS",
+        "reading_time": "21 MIN READ",
+        "word_count": "~4,530 WORDS",
         "scite": {
           "doi": "10.1016/0020-7683(86)90014-4",
           "fetched_on": "2026-11-08",
@@ -2398,7 +2405,7 @@
           "mentioning": 499,
           "contrasting": 0,
           "retracted": false,
-          "summary": "Scite index entry for Pellegrino & Calladine, Matrix analysis of statically and kinematically indeterminate frameworks (DOI 10.1016/0020-7683(86)90014-4), checked 2026-11-08: 833 citing publications (1 supporting, 499 mentioning, 0 contrasting) and no retraction notice. The paper is about framework rigidity; it says nothing about gerberettes or this folio's numbers."
+          "summary": "Scite index entry [observed: Scite ML citation classification, accessed 2026-11-08] for Pellegrino & Calladine, Matrix analysis of statically and kinematically indeterminate frameworks (DOI 10.1016/0020-7683(86)90014-4): 833 citing publications (distinct from statement tallies: 1 supporting, 499 mentioning, 0 contrasting) and no retraction notice. That paper analyzes pin-jointed framework matrices; it says nothing about gerberettes or this folio's assumed numbers."
         }
       },
       {
@@ -5716,18 +5723,20 @@
         "pillar": "math",
         "category_code": "M",
         "title": "Formula 1 350 kW MGU-K Pontryagin Optimal Energy Control, Hamilton–Jacobi–Bellman Lap Time Minimization & Fourier Neural Operator Surrogates",
-        "subtitle": "A design study: how Lev Pontryagin's Maximum Principle could schedule a hybrid race car's electric boost (350 kW under the 2026 Formula 1 rules as reported) without running the battery flat mid-straight, and how Fourier Neural Operators might stand in for slow flow solvers. The numbers are illustrative model values.",
+        "subtitle": "An applied-mathematics explanation, not a vehicle design method. Pontryagin's Maximum Principle models hybrid boost pacing (up to the reported 2026 350 kW ceiling) on a finite battery, with Fourier Neural Operators proposed as flow surrogates. All figures are illustrative; none belong on a real vehicle, battery, or controller.",
         "date_published": "2026-11-02",
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.1",
         "status_badge": "F1 OPTIMAL CONTROL & AI · REV 1.1",
-        "primary_kernel": "tools/discovery/formal_proof_thermodynamic_landscape.py",
-        "governing_law": "H(x, u, λ) = 1/v + λ_v f_v(v, P_k, δ) − λ_E P_batt(P_k)/v ; u_{l+1} = σ(W u_l + F⁻¹(R_φ · F(u_l)))",
+        "primary_kernel": "tools/folios/math/m07.py",
+        "kernel_verdict": "Not independently verified",
+        "kernel_verdict_es": "Sin verificación independiente",
+        "governing_law": "H(x, u, λ) = 1/v + λ_v a_net(v, P_k, δ)/v − λ_E P_batt(P_k)/v ; u_{l+1} = σ(W u_l + F⁻¹(R_φ · F(u_l)))",
         "colophon": {
-          "identifier": "M.07 · F1 Pontryagin Control & FNO Surrogates · FIA 2026 Art. 5",
+          "identifier": "M.07 · Hybrid Pontryagin Control & FNO Surrogates (Teaching Model)",
           "kernels": "Pontryagin Maximum Principle (PMP) · HJB PDE · Fourier Neural Operator",
-          "benchmarks": "Model values: P_k,max = 350 kW · ΔE_lap = 4.0 MJ (assumed budget) · FNO error 0.82% (illustrative, not measured)",
-          "bridge": "F1 350 kW Co-State Switching ↔ P.07 Active Aero (analogy only)"
+          "benchmarks": "Illustrative constants: P_k,max = 350 kW · ΔE_lap = 4.0 MJ (assumed) · FNO error 0.82% (untrained)",
+          "bridge": "Hybrid Co-State Switching ↔ P.07 Active Aero (conceptual analogy only)"
         },
         "sliders": [
           {
@@ -5748,80 +5757,80 @@
           }
         ],
         "steps": [
-          "Stage 1 (Fourier Neural Operator Surrogate, proposed): An FNO layer u_{l+1} = σ(W u_l + F⁻¹(R_φ · F(u_l))) could map wing angle δ_wing and ride height h_ride to aerodynamic coefficients; no surrogate was trained here.",
-          "Stage 2 (Distance-Domain Pontryagin Hamiltonian H): Rewrites minimum-time control in track distance ds/dt = v; on interior battery arcs, co-state λ_E* is constant across an assumed 4.0 MJ budget.",
-          "Stage 3 (Convex-Loss Taper vs. Clipping): Above a switching speed, convex electrical losses taper P_k*(s) instead of clipping mid-straight (298.4 km/h and 0.42 s are illustrative).",
-          "Stage 4 (Regenerative Braking Harvest): Under braking (P_k < 0), piecewise efficiency η_regen recovers kinetic energy so E_batt(L) = E_batt(0) closes the lap."
+          "Stage 1 (Proposed FNO Surrogate): Layer u_{l+1} = σ(W u_l + F⁻¹(R_φ · F(u_l))) could map wing angle and ride height to flow fields (Li et al. 2020); untrained here.",
+          "Stage 2 (Distance-Domain Hamiltonian H): Rewrites minimum-time control in ds/dt = v; on interior battery arcs, constant λ_E* < 0 allocates an assumed 4.0 MJ budget.",
+          "Stage 3 (Convex-Loss Motoring Taper): For P_k ≥ 0, assumed draw P_batt(P_k) = P_k/η_k + α P_k² (α > 0) tapers P_k*(s) on (v_switch, v_zero) (298.4 km/h and −0.42 s are fixed illustrative figures).",
+          "Stage 4 (Corner Braking & Harvest): On braking arcs (F_brake > 0, λ_v > 0, P_k < 0), P_batt = η_regen P_k recovers kinetic energy toward E_batt(L) = E_batt(0)."
         ],
         "readouts": [
           {
             "label": "Straight-Line Lap Gain (Δt_lap, model)",
-            "value": "−0.42 s vs. naive clipping (illustrative)"
+            "value": "−0.42 s vs. naive clipping (fixed illustrative)"
           },
           {
             "label": "Optimal Taper Velocity (v_switch, model)",
-            "value": "298.4 km/h (illustrative)"
+            "value": "298.4 km/h (fixed illustrative)"
           },
           {
             "label": "FNO Operator Error (k_max = 32, model)",
-            "value": "0.82% (illustrative; no surrogate trained here)"
+            "value": "0.82% (fixed illustrative; no surrogate trained)"
           },
           {
             "label": "Pontryagin Model Outcome",
-            "value": "Taper avoids clipping in the model (not a race result)"
+            "value": "Taper avoids clipping in the model (not a vehicle design)"
           }
         ],
         "spec_plate": {
-          "division": "APPLIED OPTIMAL CONTROL & OPERATOR LEARNING · DESIGN STUDY",
-          "title": "Hybrid 350 kW MGU-K Energy Store & Proposed FNO-Pontryagin Lap Controller",
-          "body": "Design study: a 350 kW kinetic motor-generator unit scheduled by a distance-domain Pontryagin co-state controller that could query a 32-mode Fourier Neural Operator flow surrogate. Nothing here was built or run on a car.",
-          "meta": "Method sources cited, not reproduced: Limebeer, Perantoni & Rao 2014 (DOI 10.1080/00207179.2014.900705) · Li et al. 2020 (arXiv:2010.08895)"
+          "division": "APPLIED OPTIMAL CONTROL & OPERATOR LEARNING · TEACHING MODEL",
+          "title": "Hybrid 350 kW MGU-K Energy Store & Proposed FNO-Pontryagin Teaching Model",
+          "body": "Teaching model: a 350 kW motor-generator schedule framed via Pontryagin co-states and a proposed 32-mode Fourier Neural Operator. Not a vehicle design method; nothing ran on a car and no figure belongs on hardware.",
+          "meta": "Cited, not reproduced: Limebeer, Perantoni & Rao 2014 (DOI 10.1080/00207179.2014.900705) · Li et al. 2020 (arXiv:2010.08895)"
         },
         "sidenote_1": {
-          "kicker": "SIDENOTE M.07-A · WHY THE BATTERY CO-STATE λ_E IS CONSTANT ACROSS THE LAP",
-          "body": "By Pontryagin's adjoint equation dλ_E/ds = −∂H/∂E_batt, whenever battery energy E_batt(s) stays inside [E_min, E_max] and losses omit state of charge, ∂H/∂E_batt = 0, so one constant shadow price λ_E* governs the lap."
+          "kicker": "SIDENOTE M.07-A · CONSTANT INTERIOR BATTERY CO-STATE λ_E*",
+          "body": "By Pontryagin's adjoint equation dλ_E/ds = −∂H/∂E_batt, when E_batt(s) stays inside (E_min, E_max) and losses omit state of charge, ∂H/∂E_batt = 0 keeps λ_E* < 0 constant."
         },
         "sidenote_2": {
-          "kicker": "SIDENOTE M.07-B · SPECIFICATION PLATE · FOURIER NEURAL OPERATOR ZERO-SHOT SUPER-RESOLUTION",
-          "body": "Because R_φ acts on the lowest k_max Fourier modes, an FNO layer could be evaluated on finer grids than its training mesh (Li et al. 2020, arXiv:2010.08895); race-car aerodynamics remains untested here."
+          "kicker": "SIDENOTE M.07-B · FNO ZERO-SHOT SUPER-RESOLUTION",
+          "body": "Because R_φ acts on the lowest k_max Fourier modes, Li et al. (2020, arXiv:2010.08895) report zero-shot super-resolution on Navier–Stokes benchmarks; race-car aerodynamics remains untested here."
         },
         "skill": {
           "filename": "f1-pontryagin-fno-control-SKILL.md",
           "name": "f1-pontryagin-fno-control",
-          "description": "AI-agnostic applied mathematics and operator-learning skill for Formula 1 350 kW MGU-K Pontryagin optimal energy management, HJB lap-time minimization, and Fourier Neural Operator PDE surrogates.",
+          "description": "AI-agnostic applied-mathematics teaching skill for hybrid Pontryagin energy pacing, Hamilton-Jacobi-Bellman formulations, and proposed Fourier Neural Operator PDE surrogates (not a vehicle or controller design method).",
           "rules": [
-            "Formulate the minimum-Hamiltonian H = (1/v) + lambda_v * a_net(v, P_k, delta_wing) / v - lambda_E * P_batt(P_k) / v along arc-length s, with P_batt = P_k / eta_k for motoring (P_k >= 0) and eta_regen * P_k under braking.",
-            "Evaluate the motoring optimality condition dH/dP_k = lambda_v / (m * v^2) - lambda_E * (dP_batt/dP_k) / v = 0 (lambda_v, lambda_E < 0 under min_u H): affine losses (dP_batt/dP_k = 1/eta_k) switch at lambda_v / (m * v) = lambda_E / eta_k, whereas strictly convex losses P_batt(P_k) initiate smooth tapering below P_k,max where lambda_v / (m * v) = lambda_E * dP_batt/dP_k(P_k,max).",
-            "Evaluate spectral neural operator layer u_{l+1}(x) = sigma(W * u_l(x) + F^{-1}(R_phi * F(u_l))(x)) truncated at k_max Fourier modes."
+            "Treat this skill strictly as an educational explanation, not as a vehicle, battery, or powertrain controller design method; none of its assumed or untested illustrative figures (-0.42 s, 298.4 km/h, 4.0 MJ, 0.82%, not verified) may be applied to real hardware, under the stated assumptions of H = (1/v) + lambda_v * a_net / v - lambda_E * P_batt(P_k) / v with interior d(lambda_E)/ds = 0 (lambda_E* < 0).",
+            "Separate motoring arcs (lambda_v < 0, F_brake = 0, P_k >= 0), the subgradient coasting deadband (P_k* = 0 when lambda_E* / eta_k <= lambda_v / (m * v) <= lambda_E* * eta_regen), lift-and-coast regen (lambda_E* * eta_regen < lambda_v / (m * v) < 0, F_brake = 0, P_k < 0), and corner friction braking (lambda_v > 0, F_brake > 0, P_k < 0, P_batt = eta_regen * P_k): under the stated assumptions, quadratic draw P_k / eta_k + alpha * P_k^2 (alpha > 0) could taper P_k*(s) = (lambda_v / (lambda_E* * m * v) - 1/eta_k) / (2α) on (v_switch, v_zero) with v_switch = lambda_v / (lambda_E* * m * (1/eta_k + 2α P_{k,max})) and v_zero = lambda_v * eta_k / (lambda_E* * m).",
+            "Write the Fourier Neural Operator layer u_{l+1}(x) = sigma(W * u_l(x) + F^{-1}(R_phi * F(u_l))(x)) truncated at k_max modes (Li et al. 2020, arXiv:2010.08895), noting the caveat that race-car aerodynamic simulation coupling is not yet tested and remains untested here."
           ]
         },
         "revisions": [
           {
             "edition": "REV 1.1",
             "date": "2026-11-14",
-            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. The lap-time gain, switching speed, FNO error and speedup are now labeled as illustrative model values; no surrogate was trained and no lap was simulated. The 2014 Limebeer, Perantoni & Rao paper is no longer cited for the 2026 rules it predates, the switching condition is corrected to lambda_v/(m v) = lambda_E/eta, the invented opening scene is replaced by a plain account, and the nebulizer and Cystic Fibrosis dosing bridge is withdrawn.",
-            "opus": "Review: DOIs checked in Crossref and arXiv:2010.08895 checked on 2026-11-14; 2026-11-21 grounding pass verified and added Bellman 1954, Crandall & Lions 1983, Perantoni & Limebeer 2014, Salazar et al. 2017, Duhr et al. 2021, and Lu et al. 2021."
+            "summary": "REV 1.1 (Redated 2026-11-14): Grounding revision. Lap-time, switching-speed, and FNO figures are labeled fixed illustrative values (no surrogate trained, no lap simulated); citations follow primary abstracts and titles, motoring vs. braking co-state sign domains are separated, and the non-design-method vehicle boundary is stated.",
+            "opus": "Bibliographic scope: DOIs in Crossref and arXiv:2010.08895 matched to abstracts for Limebeer et al. (2014), Perantoni & Limebeer (2014), Salazar et al. (2017), Duhr et al. (2021), Bellman (1954), Crandall & Lions (1983), Li et al. (2020), Kovachki et al. (2023), and title-level DeepONet in Lu et al. (2021)."
           },
           {
             "edition": "REV 1.0",
             "date": "2026-11-02",
             "summary": "REV 1.0 (Published 2026-11-02): Inaugural Volume IV Formula 1 applied mathematics & AI monograph uniting Limebeer-Perantoni-Rao optimal hybrid control (DOI 10.1080/00207179.2014.900705) with Fourier Neural Operators (arXiv:2010.08895).",
-            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified constant co-state d(lambda_E)/ds = 0 interior invariance, -0.42 s straight-line clipping avoidance, and 0.82% FNO spectral convergence. (REV 1.1: this 'verified' wording is withdrawn; the -0.42 s and 0.82% figures are illustrative and were not computed by any run.)"
+            "opus": "Initial edition note: constant interior co-state d(lambda_E)/ds = 0 alongside -0.42 s and 0.82% illustrative figures (REV 1.1: earlier verification wording is withdrawn; -0.42 s and 0.82% were not computed by any run)."
           }
         ],
         "volume": 4,
         "volume_code": "VOL. 04",
-        "reading_time": "22 MIN READ",
-        "word_count": "4,650 WORDS",
+        "reading_time": "19 MIN READ",
+        "word_count": "4,350 WORDS",
         "scite": {
           "doi": "10.1080/00207179.2014.900705",
-          "fetched_on": "2026-11-21",
+          "fetched_on": "2026-11-25",
           "citing_publications": 87,
           "supporting": 0,
           "mentioning": 52,
           "contrasting": 0,
           "retracted": false,
-          "summary": "Scite Smart Citation Index [observed: Scite ML citation classification, accessed 2026-11-21]: 0 retractions; 87 citing publications (0 supporting, 52 mentioning, 0 contrasting) on David Limebeer, Giacomo Perantoni & Anil Rao's optimal control of Formula One hybrid energy recovery systems."
+          "summary": "Scite Smart Citation Index [observed: Scite ML citation classification, accessed 2026-11-25]: 0 retractions; 87 citing publications (0 supporting, 52 mentioning, 0 contrasting citation statements) for Limebeer, Perantoni & Rao (2014, DOI 10.1080/00207179.2014.900705). Counts describe that paper, not this folio."
         }
       },
       {

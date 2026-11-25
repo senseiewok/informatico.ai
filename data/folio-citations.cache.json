@@ -1791,6 +1791,14 @@
     "title": "XLV. <i>On reciprocal figures and diagrams of forces</i>",
     "year": 1864
   },
+  "doi:10.1080/2151237x.2006.10129220": {
+    "fetched": "2026-11-24",
+    "first_author": "Kallay",
+    "found": true,
+    "journal": "Journal of Graphics Tools",
+    "title": "Computing the Moment of Inertia of a Solid Defined by a Triangle Mesh",
+    "year": 2006
+  },
   "doi:10.1081/pde-100002243": {
     "fetched": "2026-11-22",
     "first_author": "Otto",
@@ -2711,6 +2719,14 @@
     "title": "Efficient feature extraction for 2D/3D objects in mesh representation",
     "year": 2001
   },
+  "doi:10.1109/mcg.1984.6429334": {
+    "fetched": "2026-11-24",
+    "first_author": "Lien",
+    "found": true,
+    "journal": "IEEE Computer Graphics and Applications",
+    "title": "A symbolic method for calculating the integral properties of arbitrary nonconvex polyhedra",
+    "year": 1984
+  },
   "doi:10.1109/tac.2002.803532": {
     "fetched": "2026-11-24",
     "first_author": "Smith",
@@ -3207,6 +3223,14 @@
     "title": "On lattices, learning with errors, random linear codes, and cryptography",
     "year": 2009
   },
+  "doi:10.1145/2461912.2461957": {
+    "fetched": "2026-11-24",
+    "first_author": "Prévost",
+    "found": true,
+    "journal": "ACM Transactions on Graphics",
+    "title": "Make it stand",
+    "year": 2013
+  },
   "doi:10.1145/2504435.2504442": {
     "fetched": "2026-11-10",
     "first_author": "Crane",
@@ -3214,6 +3238,14 @@
     "journal": "ACM SIGGRAPH 2013 Courses",
     "title": "Digital geometry processing with discrete exterior calculus",
     "year": 2013
+  },
+  "doi:10.1145/2601097.2601157": {
+    "fetched": "2026-11-24",
+    "first_author": "Bächer",
+    "found": true,
+    "journal": "ACM Transactions on Graphics",
+    "title": "Spin-it",
+    "year": 2014
   },
   "doi:10.1145/3110268": {
     "fetched": "2026-11-14",
@@ -5626,6 +5658,30 @@
     "total_smart_citations": 135,
     "year": 2014
   },
+  "scite:10.1080/10867651.1996.10487458": {
+    "citing_publications": 313,
+    "contrasting": 0,
+    "fetched": "2026-11-24",
+    "found": true,
+    "mentioning": 137,
+    "retracted": false,
+    "supporting": 0,
+    "total_smart_citations": 138,
+    "unclassified": 1,
+    "classification_provenance": "Scite ML citation classification"
+  },
+  "scite:10.1080/2151237x.2006.10129220": {
+    "citing_publications": 15,
+    "contrasting": 0,
+    "fetched": "2026-11-24",
+    "found": true,
+    "mentioning": 4,
+    "retracted": false,
+    "supporting": 0,
+    "total_smart_citations": 4,
+    "unclassified": 0,
+    "classification_provenance": "Scite ML citation classification"
+  },
   "scite:10.1086/148307": {
     "citing_publications": 2869,
     "classification_provenance": "Scite ML citation classification",
@@ -6622,6 +6678,18 @@
     "unclassified": 9,
     "year": 1963
   },
+  "scite:10.1109/mcg.1984.6429334": {
+    "citing_publications": 121,
+    "contrasting": 0,
+    "fetched": "2026-11-24",
+    "found": true,
+    "mentioning": 10,
+    "retracted": false,
+    "supporting": 0,
+    "total_smart_citations": 10,
+    "unclassified": 0,
+    "classification_provenance": "Scite ML citation classification"
+  },
   "scite:10.1109/tac.2016.2638961": {
     "citing_publications": 3385,
     "contrasting": 0,
@@ -6947,6 +7015,30 @@
     "total_smart_citations": 709,
     "unclassified": 1,
     "year": 2009
+  },
+  "scite:10.1145/2461912.2461957": {
+    "citing_publications": 296,
+    "contrasting": 0,
+    "fetched": "2026-11-24",
+    "found": true,
+    "mentioning": 26,
+    "retracted": false,
+    "supporting": 0,
+    "total_smart_citations": 26,
+    "unclassified": 0,
+    "classification_provenance": "Scite ML citation classification"
+  },
+  "scite:10.1145/2601097.2601157": {
+    "citing_publications": 187,
+    "contrasting": 0,
+    "fetched": "2026-11-24",
+    "found": true,
+    "mentioning": 24,
+    "retracted": false,
+    "supporting": 0,
+    "total_smart_citations": 24,
+    "unclassified": 0,
+    "classification_provenance": "Scite ML citation classification"
   },
   "scite:10.1145/3372885.3373824": {
     "citing_publications": 458,

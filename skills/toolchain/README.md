@@ -1,6 +1,6 @@
-# Portable AI Agent Skills — Tech & Tools · The Toolbox (`X.01`–`X.06`)
+# Portable AI Agent Skills — Tech & Tools · The Toolbox (`X.01`–`X.08`)
 
-Each folder (`x01/` through `x06/`) contains:
+Each folder (`x01/` through `x08/`) contains:
 1. **`SKILL.md`**: Cross-provider AI agent skill (`Claude Code`, `GitHub Copilot`, `Cursor`, `Antigravity`, `Qwen3-Coder`, `Ollama`) with YAML frontmatter and `security-runtime` guardrails.
 2. **`make_<slug>.py`**: Deterministic Python 3 stdlib generator (the primary source of truth) that writes the neutral `.glb`, `.step`, `.3mf`, `.dxf`, and `manifest.json` files into `src/toolchain/<slug>/files/`.
 3. **`verify_<slug>_*.py`**: Byte-level Python 3 stdlib verifier with `--planted-defect` falsification knockout.
@@ -27,3 +27,5 @@ python skills/toolchain/x01/verify_x01_toolchain_x01_glb_inspector_validator.py 
 | `skills/toolchain/x04/` | `toolchain-x04-miura-ori-dxf-fabricator` | `X.04` · Miura-Ori Deployable Solar Screens: From 3D Folding Kinematics (GLB) to Flat-Pattern DXF | `.glb`, `.3mf`, `.dxf` | `verify_x04_toolchain_x04_miura_ori_dxf_fabricator.py` |
 | `skills/toolchain/x05/` | `toolchain-x05-simp-manifold-3mf` | `X.05` · Topology-Optimized Structural Struts to Watertight 3MF & Build-Plate Overhang Audit | `.3mf`, `.glb`, `.step` | `verify_x05_toolchain_x05_simp_manifold_3mf.py` |
 | `skills/toolchain/x06/` | `toolchain-x06-topological-metamaterial-cell` | `X.06` · Sub-Wavelength Acoustic & Topological Metamaterial Unit Cells: Genus $g = 1$ & Betti-Number Verification | `.glb`, `.3mf`, `.step` | `verify_x06_toolchain_x06_topological_metamaterial_cell.py` |
+| `skills/toolchain/x07/` | `toolchain-x07-gauss-bonnet-audit` | `X.07` · Discrete Gauss–Bonnet Curvature & Cotangent-Laplacian Mesh Quality Audit | `.glb`, `.3mf`, `.step` | `verify_x07_toolchain_x07_gauss_bonnet_audit.py` |
+| `skills/toolchain/x08/` | `toolchain-x08-polyhedral-inertia-tipover` | `X.08` · Polyhedral Mass Properties, Principal Inertia & Static Tip-Over Audit | `.glb`, `.3mf`, `.step` | `verify_x08_toolchain_x08_polyhedral_inertia_tipover.py` |

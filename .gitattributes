@@ -8,3 +8,5 @@ deploy/htaccess.txt text eol=lf
 # Written by several schedules on Windows; one line ending keeps their branches from clashing on the whole file.
 data/folio-citations.cache.json text eol=lf
 src/data/image_council_ledger.json text eol=lf
+skills/toolchain/x08/*.py text eol=lf
+src/toolchain/x08/files/*.json text eol=lf

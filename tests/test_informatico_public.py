@@ -20,7 +20,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_all_48_skills_and_python_verifiers_exist_and_pass(self) -> None:
         skill_files = list(SKILLS.glob("*/*/SKILL.md"))
         py_files = list(SKILLS.glob("*/*/verify_*.py"))
-        self.assertEqual(len(skill_files), 99)  # +M.16 (2026-11-24); +M.15, +E.16, +A.14, +M.13, +M.14 (2026-11-21), +ES.12; +e15, +e14 (2026-11-21); +e13, +a13, +x07 (2026-11-20); cc01..cc03 (2026-11-15); the earlier m13..m15 withdrawn 2026-11-17 (-3)
+        self.assertEqual(len(skill_files), 100)  # +X.08, +M.16 (2026-11-24); +M.15, +E.16, +A.14, +M.13, +M.14 (2026-11-21), +ES.12; +e15, +e14 (2026-11-21); +e13, +a13, +x07 (2026-11-20); cc01..cc03 (2026-11-15); the earlier m13..m15 withdrawn 2026-11-17 (-3)
         self.assertGreaterEqual(len(py_files), 1)
         for py in py_files:  # a verifier that cannot fail is not a verifier
             self.assertIn("--planted-defect", py.read_text(encoding="utf-8"), py.name)
@@ -36,12 +36,12 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_48_folios_citation_gate_passes_offline(self) -> None:
         res = subprocess.run([sys.executable, "-X", "utf8", str(ROOT / "tools" / "check_folio_citations.py"), "--offline"], capture_output=True, text=True, encoding="utf-8", timeout=30)
         self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
-        self.assertIn("SUMMARY essays=71 fail=0 warn=0 unchecked=0", res.stdout)  # +M.16 (2026-11-24); +M.15, +E.16, +A.14, +M.13, +M.14 (2026-11-21)
+        self.assertIn("SUMMARY essays=72 fail=0 warn=0 unchecked=0", res.stdout)  # +X.08, +M.16 (2026-11-24); +M.15, +E.16, +A.14, +M.13, +M.14 (2026-11-21)
 
     def test_106_bilingual_pages_and_bounty_crucible_mounted(self) -> None:
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 222)  # +2: /math/m16/ (EN + es-MX)
+        self.assertEqual(len(locs), 224)  # +2: /toolchain/x08/ (EN + es-MX)
         self.assertTrue((RESEARCH / "about" / "index.html").is_file())
         self.assertTrue((RESEARCH / "es-mx" / "about" / "index.html").is_file())
         hub_html = (RESEARCH / "index.html").read_text(encoding="utf-8")
@@ -174,7 +174,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
             + [f"p{i:02d}" for i in range(1, 13)]
             + [f"m{i:02d}" for i in range(1, 17)]  # +M.16 (2026-11-24); +M.13, +M.14, +M.15 (2026-11-21)
             + [f"b{i:02d}" for i in range(1, 7)]
-            + [f"x{i:02d}" for i in range(1, 8)]
+            + [f"x{i:02d}" for i in range(1, 9)]
             + ["utopian-city-future"]
         )
         seen_hashes: dict[str, str] = {}
@@ -194,7 +194,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
             ("physics/index.html", 12),
             ("math/index.html", 16),  # +M.16 (2026-11-24); +M.13, +M.14, +M.15 (2026-11-21)
             ("bounties/index.html", 6),
-            ("toolchain/index.html", 7),
+            ("toolchain/index.html", 8),
         ):
             hub_txt = (RESEARCH / hub_rel).read_text(encoding="utf-8")
             thumbs = re.findall(r'<img class="tp-rack-thumb" src="([^"]+)"', hub_txt)
@@ -232,6 +232,36 @@ class PublicInformaticoRepoTests(unittest.TestCase):
             self.assertTrue(any("CRLF" in p for p in probs), probs)
             self.assertTrue(any("bad.html" in p and "inline script" in p for p in probs), probs)
             self.assertFalse(any("good.html" in p for p in probs), probs)
+
+    def test_stepper_button_labels_preserve_colons_inside_titles(self) -> None:
+        if str(ROOT / "tools") not in sys.path:
+            sys.path.insert(0, str(ROOT / "tools"))
+        from build_longform_folios import extract_stage_short_label
+
+        self.assertEqual(
+            extract_stage_short_label("Stage 4 (1:5 Acoustic Baffle Sill Node A-12): A proposed baffle."),
+            "4 (1:5 Acoustic Baffle Sill Node A-12)",
+        )
+        self.assertEqual(
+            extract_stage_short_label("Stage 1: Check sill ratio (1:5): measure gap"),
+            "1",
+        )
+        self.assertEqual(
+            extract_stage_short_label("Stage 1 (Bound (arXiv: 2401.0001): tight): body prose"),
+            "1 (Bound (arXiv: 2401.0001): tight)",
+        )
+
+        a03_html = (RESEARCH / "architecture" / "a03" / "index.html").read_text(encoding="utf-8")
+        self.assertIn(">4 (1:5 Acoustic Baffle Sill Node A-12)</button>", a03_html)
+        for pillar in ("architecture", "engineering", "physics", "math"):
+            for page in sorted((RESEARCH / pillar).glob("*/index.html")):
+                txt = page.read_text(encoding="utf-8")
+                for label in re.findall(r'class="tp-step-btn"[^>]*>([^<]+)</button>', txt):
+                    self.assertEqual(
+                        label.count("("),
+                        label.count(")"),
+                        f"Unbalanced stepper button label {label!r} in {page.relative_to(RESEARCH)}",
+                    )
 
 
 if __name__ == "__main__":

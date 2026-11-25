@@ -132,10 +132,10 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "Cómo el efecto chimenea por termosifón y el control solar en cavidades acristaladas ventiladas podrían reducir cargas de enfriamiento, en un modelo de tiro.",
     ),
     "a04": (
-        "From Archigram to British High-Tech Architecture",
-        "How Archigram's 1960s plug-in drawings are widely seen as an influence on Rogers, Piano, Rice and Foster, with a lever model of the cast-steel gerberette.",
-        "De Archigram a la Arquitectura High-Tech Británica",
-        "Cómo los dibujos enchufables de Archigram suelen verse como influencia en Rogers, Piano, Rice y Foster, con un modelo de palanca de la gerberette.",
+        "Archigram Plug-In Frames & Gerberette Lever Statics",
+        "An explanatory model from Archigram's 1964 plug-in drawings to Centre Pompidou cast-steel gerberette levers and shearing layers; not a design method.",
+        "Marcos Plug-In de Archigram y Palanca Gerberette",
+        "Modelo explicativo de los dibujos enchufables de Archigram a la palanca gerberette del Centro Pompidou y capas de cambio; no es método de diseño.",
     ),
     "a05": (
         "Room Acoustics: Sabine–Eyring Reverberation",
@@ -308,10 +308,10 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "El algoritmo de Ryan Williams para caminos más cortos entre todos los pares, lo que afirma un repositorio sobre 3SUM y APSP, y la supervisión por pasos.",
     ),
     "m07": (
-        "F1 Energy Control with Pontryagin's Maximum Principle",
-        "A design study of how Pontryagin's Maximum Principle could schedule a 350 kW hybrid boost without flattening the battery, with neural surrogates proposed.",
+        "Pontryagin Hybrid Energy Control & Neural Operators",
+        "How Pontryagin's Maximum Principle models hybrid boost pacing on a finite battery, with neural flow surrogates proposed in a teaching model.",
         "Control Óptimo de Energía en F1: Pontryagin",
-        "Un estudio de diseño de cómo el Principio del Máximo de Pontryagin podría programar un impulso híbrido de 350 kW sin agotar la batería.",
+        "Cómo el Principio del Máximo de Pontryagin modela el reparto de impulso híbrido con batería finita y sustitutos neuronales propuestos.",
     ),
     "m08": (
         "The Riemannian Geometry of Color Perception",
@@ -403,9 +403,9 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "toolchain": (
         "Tech & Tools · The 3D CAD & Open Toolbox | Informatico.ai",
-        "Seven interactive 3D CAD and open-tool folios with downloadable STEP, 3MF, GLB and DXF files, Python byte-level verifiers, and skills for small studios.",
+        "Eight interactive 3D CAD and open-tool folios with downloadable STEP, 3MF, GLB and DXF files, Python byte-level verifiers, and skills for small studios.",
         "Tecnología y Herramientas · Caja 3D y CAD | Informatico.ai",
-        "Siete folios interactivos de herramientas 3D y CAD abierto con archivos STEP, 3MF, GLB y DXF, verificadores en Python y habilidades para estudios.",
+        "Ocho folios interactivos de herramientas 3D y CAD abierto con archivos STEP, 3MF, GLB y DXF, verificadores en Python y habilidades para estudios.",
     ),
     # Time & Gravity hub (/timegravity/): the track pages' own copy lives in tools/folios/timegravity/<slug>.py ("seo").
     "timegravity": (
@@ -471,6 +471,12 @@ TOOLCHAIN_SEO: dict[str, tuple[str, str, str, str]] = {
         "How pure Python checks discrete Gauss–Bonnet closure, Meyer mixed Voronoi areas, and cotangent edge weights across GLB, 3MF, and STEP.",
         "Curvatura Gauss–Bonnet y Auditoría Cotangente",
         "Cómo Python comprueba el cierre de Gauss–Bonnet, las áreas mixtas de Meyer y los pesos cotangentes en archivos GLB, 3MF y STEP.",
+    ),
+    "x08": (
+        "Polyhedral Inertia & Tip-Over Balance Audit",
+        "How pure Python computes signed simplex volume, center of mass, principal inertia moments and base support tip-over margin across GLB, 3MF and STEP.",
+        "Inercia Poliédrica y Equilibrio al Volcamiento",
+        "Cómo Python calcula el volumen por símplices, el centro de masa, los momentos principales de inercia y el margen de volcamiento en GLB, 3MF y STEP.",
     ),
 }
 
