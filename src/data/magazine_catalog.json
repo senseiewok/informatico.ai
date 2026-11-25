@@ -2298,18 +2298,20 @@
         "pillar": "architecture",
         "category_code": "A",
         "title": "From Archigram's Plug-In Megastructures to British High-Tech Exoskeletons: Gerberette Cantilevers, Maxwell Space Frames & Shearing-Layer Pods",
-        "subtitle": "How the plug-in ideas of Peter Cook and Ron Herron's 1960s Archigram drawings are widely seen as an influence on the British High-Tech work of Richard Rogers, Renzo Piano, Peter Rice and Norman Foster—and a lever model of the cast-steel gerberette, with replaceable service modules as a proposal.",
+        "subtitle": "An architectural and statics explanation, not a structural design method: from Archigram's 1960s plug-in drawings to the Centre Pompidou cast-steel gerberette lever and replaceable service modules; no number here may be used on a real structure.",
         "date_published": "2026-11-01",
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.3",
         "status_badge": "HIGH-TECH & ARCHIGRAM · REV 1.3",
-        "primary_kernel": "tools/tectonic_verify.py",
+        "primary_kernel": "tools/folios/architecture/a04.py",
+        "kernel_verdict": "Not independently verified",
+        "kernel_verdict_es": "Sin verificación independiente",
         "governing_law": "T_tie = V_p · (a / c) · b − 3j + 6 = s − m · τ_pod ≪ τ_frame",
         "colophon": {
-          "identifier": "A.04 · Archigram to High-Tech Exoskeletons · CSI 05 12 13",
-          "kernels": "Gerberette T_tie = V_p(a/c) · Maxwell Rigidity · Shearing Layers",
-          "benchmarks": "Model values: T_tie = 4,800 × 1.60 / 6.00 = 1,280 kN (V_p assumed) · SF 3.12 illustrative",
-          "bridge": "Long-Life Frame + Replaceable Services ↔ Adaptable Clinical Buildings (a proposal)"
+          "identifier": "A.04 · Archigram to High-Tech Exoskeletons · Teaching Model",
+          "kernels": "Gerberette Lever T_tie = V_p(a/c) · Maxwell-Calladine Count · Shearing Layers",
+          "benchmarks": "Assumed & illustrative values: T_tie = 4,800 × 1.60 / 6.00 = 1,280.0 kN (V_p assumed) · SF = 3.12 illustrative",
+          "bridge": "Durable Perimeter Frame + Replaceable Services (Untested Proposal)"
         },
         "sliders": [
           {
@@ -2330,15 +2332,15 @@
           }
         ],
         "steps": [
-          "Stage 1 (Archigram Plug-In Matrix, 1961–1964): Peter Cook's Plug-In City and Ron Herron's Walking City imagine a long-lived structural frame carrying short-lived clip-on capsules (the 100-year and 15-year lifetimes used here are the folio's illustrative values).",
-          "Stage 2 (Pompidou Cast-Steel Gerberette Equilibrium, 1971–1977): In the folio's lever model, an assumed floor reaction V_p = 4,800 kN acts at a = 1.60 m outside the column and is balanced by an exterior tie: T_tie = V_p·(a/c) = 4,800 × 1.60 / 6.00 = 1,280.0 kN at c = 6.00 m. These are teaching values, not the loads of the real building.",
-          "Stage 3 (Foster & Rogers High-Tech Mast Suspension, 1978–1986): Norman Foster (HSBC Hong Kong) hangs floors from masts, and Richard Rogers (Lloyd's of London) places service towers and prefabricated service pods outside the main floor plates.",
-          "Stage 4 (Brand's Shearing Layers & Replaceable Service Modules): Stewart Brand describes building layers that change at different rates. Keeping services outside the long-life frame could, as a proposal, make it easier to replace clinical or laboratory service modules."
+          "Stage 1 (Archigram Plug-In Matrix, 1961–1964): Cook's Plug-In City and Herron's Walking City depict a frame carrying replaceable capsules (Beslioglu 2014, DOI 10.4995/vlc.2014.1829; the 100-year and 15-year lifetimes are fixed illustrative values).",
+          "Stage 2 (Pompidou Gerberette Lever, 1971–1977): Under the stated assumptions (V_p = 4,800 kN, a = 1.60 m, c = 6.00 m), T_tie = V_p·(a/c) = 1,280.0 kN and C_col = 6,080.0 kN (illustrative values, not real building loads).",
+          "Stage 3 (Foster & Rogers Perimeter Structure, 1978–1986): Norman Foster (HSBC Hong Kong) hangs floors from masts, and Richard Rogers (Lloyd's) places service towers outside main floor plates.",
+          "Stage 4 (Brand's Shearing Layers): Stewart Brand (1994) separates long-lived frames from faster-aging services; placing replaceable service pods outside the frame could remain an untested architectural proposal."
         ],
         "readouts": [
           {
-            "label": "Exoskeleton Clear Span (Pompidou, as Reported)",
-            "value": "About 48 m (column-free floors)"
+            "label": "Exoskeleton Clear Span (Reported)",
+            "value": "About 48 m (fixed reference text)"
           },
           {
             "label": "Gerberette Tie-Rod Tension (Model)",
@@ -2346,55 +2348,55 @@
           },
           {
             "label": "Shearing-Layer Ratio (Illustrative)",
-            "value": "τ_pod = 15 yr / τ_frame = 100 yr"
+            "value": "τ_pod = 15 yr / τ_frame = 100 yr (fixed text)"
           },
           {
-            "label": "Maxwell-Calladine Index (Assumed)",
-            "value": "m = 0 assumed, not computed"
+            "label": "Rigidity & Surrogate Tie Check",
+            "value": "m = 0 assumed (fixed) · SF ≥ 1.50 (illustrative)"
           }
         ],
         "sidenote_1": {
-          "kicker": "SIDENOTE A.04-A · ARCHIGRAM TO FOSTER, ROGERS & FUTURE SYSTEMS",
-          "body": "Archigram's members taught at architecture schools such as the Architectural Association, and their drawings are widely seen as an influence on British High-Tech. This folio does not document direct teaching links between Archigram and Team 4 (Norman Foster and Richard Rogers) or Jan Kaplický's Future Systems."
+          "kicker": "SIDENOTE A.04-A · ARCHIGRAM, POMPIDOU & UNDOCUMENTED LINKS",
+          "body": "Archigram's 1960s issues explored plug-in frames (Cook et al. 1999; Beslioglu 2014, DOI 10.4995/vlc.2014.1829). This folio documents no direct teaching link between Archigram and Team 4 (Foster and Rogers) or Jan Kaplický's Future Systems."
         },
         "sidenote_2": {
-          "kicker": "SIDENOTE A.04-B · SPECIFICATION PLATE · CSI 05 12 13 (ARCHITECTURALLY EXPOSED STRUCTURAL STEEL)",
-          "body": "Design proposal, not a tested product: cast-steel gerberette brackets with a specified f_y = 355 MPa and Charpy V-notch ≥ 40 J at −20 °C, external stainless-steel tension tie rods, and quick-disconnect service manifolds."
+          "kicker": "SIDENOTE A.04-B · CONCEPT NOTE · CSI 05 12 13 (NOT A SPEC)",
+          "body": "Untested concept sketch, not a structural specification: cast-steel brackets (illustrative f_y = 355 MPa, Charpy 40 J at −20 °C), exterior tie rods, and detachable risers. No number here may be used on a real structure."
         },
         "skill": {
           "filename": "archigram-hightech-exoskeleton-SKILL.md",
           "name": "archigram-hightech-exoskeleton",
-          "description": "AI-agnostic architectural and structural engineering skill for Archigram Plug-In megastructures, British High-Tech exoskeletons (Foster, Rogers, Piano, Rice), gerberette cantilever statics, Maxwell-Calladine space-frame rigidity, and Stewart Brand shearing layers.",
+          "description": "Explanatory architectural and statics reference (not a structural design method) for cast-steel gerberette lever equilibrium, the Maxwell-Calladine counting rule, and Stewart Brand shearing layers; no number here may be used on a real structure.",
           "rules": [
-            "Evaluate cast-steel gerberette cantilever equilibrium: exterior tension tie force T_tie = V_floor * (a / c) and column compression C_col = V_floor * (1 + a / c).",
-            "Verify 3D space-frame static and kinematic determinacy via the Maxwell-Calladine matrix index b - 3j + 6 = s - m (ensuring m = 0 internal mechanisms).",
-            "Decouple Stewart Brand's 6 Shearing Layers by routing all Services (HVAC, medical gases, cleanroom exhaust, tau = 7-15 yr) on the exterior exoskeleton outside the 48 m column-free Structure (tau = 60-100 yr)."
+            "Explanatory, untested model only, not a structural design method (no number here may be used on a real structure): under assumed V_p = 4,800 kN, compute T_tie = V_p * (a / c) and C_col = V_p * (1 + a / c), with browser surrogate SF = 3.12 * (1,280 / max(100, T_tie)) flagging SF < 1.50 above 2,662.4 kN.",
+            "State the 3D Maxwell-Calladine count b - 3j + 6 = s - m (Pellegrino & Calladine 1986, DOI 10.1016/0020-7683(86)90014-4); here m = 0, about 48 m clear span, and 15 yr / 100 yr lifetimes remain fixed reference text, not verified matrix outputs.",
+            "Treat separating shorter-lived services (about 7-15 yr in Brand 1994) from long-lived structure (about 30-300 yr in Brand 1994; Habraken 2021, DOI 10.4324/9781003014713) as an untested concept caveat, not a facility code."
           ]
         },
         "revisions": [
           {
             "edition": "REV 1.3",
             "date": "2026-11-14",
-            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. The PASS verdict, the claim that COMPAS verified the tie-rod safety factor, and the claims that Archigram directly mentored Foster and Rogers were unsourced and are withdrawn; V_p = 4,800 kN and SF = 3.12 are now labeled as assumed and illustrative. The invented 1961 founding scene and a source entry that did not exist as cited are replaced by a plain account and a modest, labeled proposal.",
-            "opus": "Review: references checked by DOI in Crossref and the Scite index; Hamzeian (2018, DOI 10.1201/9780429506208-91) documents the evolution of the Pompidou cast node, and the lever-model numbers come from the stated formulas."
+            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. Earlier PASS and COMPAS claims and unsourced mentorship claims are withdrawn; V_p = 4,800 kN and SF = 3.12 are labeled assumed and illustrative, fixed readouts and the 2,662.4 kN surrogate threshold are stated, and the non-design-method boundary is set across Act I, Spanish summary, and SKILL.md.",
+            "opus": "Review: references checked in Crossref and Scite; Hamzeian (2018, DOI 10.1201/9780429506208-91) documents the Pompidou cast node, and lever estimates follow under the stated assumptions."
           },
           {
             "edition": "REV 1.2",
             "date": "2026-11-02",
             "summary": "REV 1.2 (Redated 2026-11-02): Revised the cast-steel gerberette lever model and Stewart Brand shearing-layer discussion.",
-            "opus": "Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.3: T_tie = 1,280 kN follows from assumed inputs, and SF = 3.12 and m = 0 were not computed."
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B); earlier 'verified' wording withdrawn in REV 1.3 because T_tie, SF = 3.12, and m = 0 were not verified."
           },
           {
             "edition": "REV 1.1",
             "date": "2026-11-01",
-            "summary": "REV 1.1 (Redated 2026-11-01): Dedicated 5-Act monograph tracing the lineage from Archigram (Plug-In City, Walking City) to British High-Tech (Foster, Rogers, Piano, Rice) with a gerberette lever model and shearing layers.",
-            "opus": "Cross-model check of the model text (Gemini 4 Argon + Qwen 3.8 27B). Its earlier 'verified' wording is withdrawn in REV 1.3."
+            "summary": "REV 1.1 (Redated 2026-11-01): Initial 5-Act monograph from Archigram to British High-Tech with a gerberette lever model.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B); earlier 'verified' wording withdrawn in REV 1.3."
           }
         ],
         "volume": 2,
         "volume_code": "VOL. 02",
-        "reading_time": "22 MIN READ",
-        "word_count": "4,650 WORDS",
+        "reading_time": "21 MIN READ",
+        "word_count": "~4,530 WORDS",
         "scite": {
           "doi": "10.1016/0020-7683(86)90014-4",
           "fetched_on": "2026-11-08",
@@ -2403,7 +2405,7 @@
           "mentioning": 499,
           "contrasting": 0,
           "retracted": false,
-          "summary": "Scite index entry for Pellegrino & Calladine, Matrix analysis of statically and kinematically indeterminate frameworks (DOI 10.1016/0020-7683(86)90014-4), checked 2026-11-08: 833 citing publications (1 supporting, 499 mentioning, 0 contrasting) and no retraction notice. The paper is about framework rigidity; it says nothing about gerberettes or this folio's numbers."
+          "summary": "Scite index entry [observed: Scite ML citation classification, accessed 2026-11-08] for Pellegrino & Calladine, Matrix analysis of statically and kinematically indeterminate frameworks (DOI 10.1016/0020-7683(86)90014-4): 833 citing publications (distinct from statement tallies: 1 supporting, 499 mentioning, 0 contrasting) and no retraction notice. That paper analyzes pin-jointed framework matrices; it says nothing about gerberettes or this folio's assumed numbers."
         }
       },
       {

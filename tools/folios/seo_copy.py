@@ -132,10 +132,10 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "Cómo el efecto chimenea por termosifón y el control solar en cavidades acristaladas ventiladas podrían reducir cargas de enfriamiento, en un modelo de tiro.",
     ),
     "a04": (
-        "From Archigram to British High-Tech Architecture",
-        "How Archigram's 1960s plug-in drawings are widely seen as an influence on Rogers, Piano, Rice and Foster, with a lever model of the cast-steel gerberette.",
-        "De Archigram a la Arquitectura High-Tech Británica",
-        "Cómo los dibujos enchufables de Archigram suelen verse como influencia en Rogers, Piano, Rice y Foster, con un modelo de palanca de la gerberette.",
+        "Archigram Plug-In Frames & Gerberette Lever Statics",
+        "An explanatory model from Archigram's 1964 plug-in drawings to Centre Pompidou cast-steel gerberette levers and shearing layers; not a design method.",
+        "Marcos Plug-In de Archigram y Palanca Gerberette",
+        "Modelo explicativo de los dibujos enchufables de Archigram a la palanca gerberette del Centro Pompidou y capas de cambio; no es método de diseño.",
     ),
     "a05": (
         "Room Acoustics: Sabine–Eyring Reverberation",

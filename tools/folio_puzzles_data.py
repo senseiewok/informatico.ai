@@ -599,15 +599,15 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
         "title_es": "Folio A.04 · Crucigrama de Archigram a Exoesqueletos High-Tech",
         "en": [
             ("POMPIDOU", "Paris center realized 1971-1977 by Piano, Rogers and Peter Rice, with an exposed exoskeleton and column-free floors of about 48 m", "Act I"),
-            ("ARCHIGRAM", "1960s group whose Plug-In City and Walking City drawings are widely seen as an influence on British High-Tech", "Act I"),
-            ("TRUSS", "At the Pompidou, floor trusses are carried by cast-steel gerberettes on short arms outside the column line", "Act I"),
+            ("ARCHIGRAM", "1960s London group of Cook, Herron and colleagues whose Plug-In City and Walking City drawings separated a frame from clip-on capsules", "Act I"),
+            ("TRUSS", "At the Pompidou, floor trusses are carried by cast-steel gerberettes on short arms inside the column line", "Act I"),
             ("FOSTER", "High-Tech architect of the Hongkong and Shanghai Bank headquarters, which hangs groups of floors from steel masts", "Act I"),
             ("RICE", "Engineer with Ove Arup & Partners; the team including him used cast-steel gerberettes at the Pompidou", "Act I"),
             ("POD", "Replaceable service module; the folio's 15-year pod and 100-year frame lifetimes are illustrative values", "Act III"),
         ],
         "es": [
             ("POMPIDOU", "Centro de París realizado de 1971 a 1977 por Piano, Rogers y Peter Rice, con estructura exterior expuesta y plantas libres de unos 48 m", "Acto I"),
-            ("CERCHA", "Viga de celosía de piso que, en el Pompidou, se apoya en gerberettes de acero fundido sobre brazos cortos fuera de la línea de columnas", "Acto I"),
+            ("CERCHA", "Viga de celosía de piso que, en el Pompidou, se apoya en gerberettes de acero fundido sobre brazos cortos dentro de la línea de columnas", "Acto I"),
             ("CAPSULA", "Módulo enchufable que una grúa podría subir y bajar de una estructura de larga vida, como en Plug-In City", "Acto I"),
             ("ACERO", "Material de las ménsulas gerberette del Pompidou, que el equipo de ingeniería con Peter Rice empleó en forma fundida", "Acto I"),
             ("ROGER", "Apellido (sin s) de Richard, quien con Piano ganó el concurso del Pompidou y es autor del edificio Lloyd's of London", "Acto I"),
