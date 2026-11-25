@@ -15,6 +15,14 @@
     "title": "Inhaled Nanoformulated mRNA Polyplexes for Protein Production in Lung Epithelium",
     "year": 2019
   },
+  "doi:10.1002/adma.202001412": {
+    "fetched": "2026-11-24",
+    "first_author": "Eder",
+    "found": true,
+    "journal": "Advanced Materials",
+    "title": "Wood and the Activity of Dead Tissue",
+    "year": 2020
+  },
   "doi:10.1002/andp.18531650505": {
     "fetched": "2026-11-21",
     "first_author": "Grassmann",
@@ -568,7 +576,7 @@
     "year": 2008
   },
   "doi:10.1016/j.cad.2014.02.010": {
-    "fetched": "2026-11-14",
+    "fetched": "2026-11-24",
     "first_author": "Reichert",
     "found": true,
     "journal": "Computer-Aided Design",
@@ -1008,7 +1016,7 @@
     "year": 1980
   },
   "doi:10.1038/37745": {
-    "fetched": "2026-11-14",
+    "fetched": "2026-11-24",
     "first_author": "Dawson",
     "found": true,
     "journal": "Nature",
@@ -2911,6 +2919,14 @@
     "title": "Potential of microperforated panel absorber",
     "year": 1998
   },
+  "doi:10.1126/sciadv.aax1311": {
+    "fetched": "2026-11-24",
+    "first_author": "Grönquist",
+    "found": true,
+    "journal": "Science Advances",
+    "title": "Analysis of hygroscopic self-shaping wood at large scale for curved mass timber structures",
+    "year": 2019
+  },
   "doi:10.1126/sciadv.aaz5413": {
     "fetched": "2026-11-21",
     "first_author": "Chen",
@@ -3176,7 +3192,7 @@
     "year": 2021
   },
   "doi:10.1145/3524456": {
-    "fetched": "2026-11-07",
+    "fetched": "2026-11-24",
     "first_author": "Scroggs",
     "found": true,
     "journal": "ACM Transactions on Mathematical Software",
@@ -3248,7 +3264,7 @@
     "year": 2020
   },
   "doi:10.1162/qss_a_00146": {
-    "fetched": "2026-11-21",
+    "fetched": "2026-11-24",
     "first_author": "Nicholson",
     "found": true,
     "journal": "Quantitative Science Studies",
@@ -3294,6 +3310,14 @@
     "journal": "",
     "title": "",
     "year": null
+  },
+  "doi:10.1186/s10086-023-02105-1": {
+    "fetched": "2026-11-24",
+    "first_author": "Peng",
+    "found": true,
+    "journal": "Journal of Wood Science",
+    "title": "Bending responses of self-shaping wood bilayers: comparison between adsorption and desorption processes",
+    "year": 2023
   },
   "doi:10.1186/s12890-018-0661-1": {
     "fetched": "2026-11-14",
@@ -3384,7 +3408,7 @@
     "year": 2014
   },
   "doi:10.1364/josa.11.000233": {
-    "fetched": "2026-11-04",
+    "fetched": "2026-11-24",
     "first_author": "Timoshenko",
     "found": true,
     "journal": "Journal of the Optical Society of America",
@@ -6971,16 +6995,16 @@
     "unclassified": 17
   },
   "scite:10.1364/josa.11.000233": {
-    "citing_publications": 2499,
+    "citing_publications": 2504,
     "contrasting": 0,
-    "fetched": "2026-11-08",
+    "fetched": "2026-11-24",
     "found": true,
     "journal": "Journal of the Optical Society of America",
-    "mentioning": 1474,
+    "mentioning": 1478,
     "retracted": false,
     "supporting": 48,
     "title": "Analysis of Bi-Metal Thermostats",
-    "total_smart_citations": 1528,
+    "total_smart_citations": 1532,
     "unclassified": 6,
     "year": 1925
   },
