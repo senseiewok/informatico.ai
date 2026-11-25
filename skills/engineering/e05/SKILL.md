@@ -1,39 +1,39 @@
 ---
 name: terzaghi-cfa-geotechnical-piling
-description: AI-agnostic civil geotechnical engineering skill for Terzaghi 1D consolidation (du/dt = c_v d^2u/dz^2), effective stress sigma'_v = sigma_v - u, CFA deep foundation capacity, and excess pore-pressure r_u screening.
+description: Explanatory geotechnical reference (not a foundation or structural design method) for Terzaghi 1D consolidation, effective stress, and an illustrative continuous flight auger pile algebraic model; no number here may be used on a real structure.
 license: MIT
 compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI Codex, Ollama (Qwen 3.8 / Gemma 4)
 ---
 # Terzaghi Soil Mechanics, CFA Augercast Deep Foundation Piling & Excess Pore Pressure (Folio E.05)
 
-A plain-text companion to the essay at https://informatico.ai/engineering/e05/ (`E.05 · Geotechnical & Deep Foundations · CSI 31 63 23`, `REV 1.2`, redated `2026-11-14`).
+A plain-text companion to the essay at https://informatico.ai/engineering/e05/ (`E.05 · Geotechnical & Deep Foundations · Teaching Model`, `REV 1.2`, redated `2026-11-14`).
 
 ## The governing relation
 `∂u/∂t = c_v ∂²u/∂z² · Q_ult = Q_skin + Q_toe · r_u = Δu / σ'_{v0}`
 
 ## Rules the essay derives
-1. Compute Terzaghi dimensionless time factor T_v = (c_v * t) / H_dr^2 and degree of consolidation U_avg = sqrt(4*T_v/pi) for T_v <= 0.286 or U_avg = 1 - (8/pi^2)*exp(-pi^2 * T_v / 4) for T_v > 0.286.
-2. Evaluate axial CFA pile ultimate capacity Q_ult = Q_skin + Q_toe using effective overburden stress sigma'_v(z) = sigma_v(z) - u(z); this folio assumes the shaft term is scaled by (1 - 0.65 r_u) and the toe term by (1 - 0.35 r_u), its own illustrative factors.
-3. Flag the design for review whenever excess pore-pressure ratio r_u = Delta_u / sigma'_v0 >= 0.70 or factor of safety FS = Q_ult / P_design < 2.0 (both are this folio's screening choices, not code values); a real liquefaction assessment needs a site-specific cyclic analysis.
+1. Explanatory model only, not a geotechnical or structural design method (no number here may be used on a real structure): with assumed H_dr = 6 m and t = 3.6 yr, compute T_v = c_v * t / H_dr^2, piecewise U_avg(T_v), and assumed S_c = (Delta_q / 120) * 66.7 * U_avg.
+2. Evaluate illustrative Q_ult = max(650, 2,380 * (1 - 0.65 * r_u) + 1,980 * (1 - 0.35 * r_u)) against assumed P_design = 1,400 + 1.25 * Delta_q using r_u = min(0.98, Delta_q * (1 - U_avg) / 200) (untested assumptions, not code values).
+3. Treat r_u >= 0.70 or FS = Q_ult / P_design < 2.0 as an illustrative alert, not a code check; cyclic liquefaction (Seed & Idriss 1971, DOI 10.1061/JSFEAQ.0001662) requires site testing.
 
 ## How it works, in four stages
-- Stage 1 (Undrained Surcharge Application, t = 0⁺): Structural surcharge Δq = 120 kPa transfers initially 100% into excess pore-water pressure Δu(z, 0) = Δq.
-- Stage 2 (Terzaghi Hydrodynamic Dissipation): Pore water drains toward permeable sand boundaries via ∂u/∂t = c_v ∂²u/∂z². The page assumes a drainage path H_dr = 6 m and an elapsed time t = 3.6 years, so T_v = 3.2 × 3.6 / 6² = 0.320 and U_avg = 1 − (8/π²) exp(−π² T_v / 4) = 63.2%.
-- Stage 3 (CFA Augercast Shaft + Toe Mobilization): A 750 mm diameter, 24 m deep CFA pile carries load by shaft friction and toe bearing. The page uses fixed illustrative capacities of 2,380 kN (shaft) and 1,980 kN (toe), and the folio assumes that residual pore pressure reduces them by factors of 0.65 r_u (shaft) and 0.35 r_u (toe): Q_ult = 2,380 × (1 − 0.65 r_u) + 1,980 × (1 − 0.35 r_u). With r_u = 0.221 (Stage 4, unrounded) this gives Q_ult = 3,865 kN against an assumed design load of 1,400 kN + 1.25 kN per kPa of surcharge (FS = 2.49). The 0.65 and 0.35 factors are this folio's own assumptions, not code values.
-- Stage 4 (Pore-Pressure Ratio, r_u = Δu / σ'_{v0}): The residual excess pore pressure after consolidation, Δu = Δq (1 − U_avg) = 44.2 kPa, over an assumed σ'_{v0} = 200 kPa gives r_u = 0.22. This is a consolidation ratio, not a seismic liquefaction analysis; r_u = 1 would mean zero effective stress, and the page flags r_u ≥ 0.70 as its own screening choice.
+- Stage 1 (Undrained Surcharge Application, t = 0⁺): Assumed surcharge Δq = 120 kPa transfers initially into excess pore pressure Δu(z, 0) = Δq in saturated clay (Terzaghi 1925).
+- Stage 2 (Terzaghi Hydrodynamic Dissipation): With assumed H_dr = 6 m and t = 3.6 yr at c_v = 3.2 m²/yr, T_v = 0.320 gives U_avg = 63.2% and assumed settlement S_c = (Δq / 120) × 66.7 × U_avg = 42.2 mm.
+- Stage 3 (Assumed CFA Shaft + Toe Model): Illustrative 750 mm by 24 m CFA capacities follow Q_ult = 2,380 × (1 − 0.65 r_u) + 1,980 × (1 − 0.35 r_u) = 3,865 kN at unrounded r_u = 0.2208 against assumed P_design = 1,400 + 1.25 Δq = 1,550 kN (FS = 2.49; untested assumptions, not a design method).
+- Stage 4 (Consolidation Pore-Pressure Ratio): Residual Δu = Δq (1 − U_avg) = 44.2 kPa over assumed σ'_{v0} = 200 kPa gives r_u = 0.22 (σ'_v = 156 kPa), distinct from seismic liquefaction (Seed & Idriss 1971, DOI 10.1061/JSFEAQ.0001662); r_u ≥ 0.70 or FS < 2.0 is an illustrative alert.
 
 ## Reference values stated in the essay
-- **Average Consolidation U_avg**: `63.2% (S_c = 42.2 mm, model)`
-- **CFA Ultimate Pile Capacity**: `3,865 kN (FS = 2.49, model)`
-- **Pore-Pressure Ratio r_u**: `0.22 (σ'_v = 156 kPa)`
-- **Geotechnical Verdict**: `MODEL FS ≥ 2.0 · ILLUSTRATIVE, NOT A SITE DESIGN`
+- **Average Consolidation U_avg (Model)**: `63.2% (S_c = 42.2 mm, model)`
+- **CFA Pile Capacity (Illustrative)**: `3,865 kN (FS = 2.49, model)`
+- **Consolidation Ratio r_u (Assumed)**: `0.22 (σ'_v = 156 kPa)`
+- **Illustrative Model Check**: `MODEL FS ≥ 2.0 · ILLUSTRATIVE, NOT A SITE DESIGN`
 
 ## What is and is not checked
 The reference values above are stated in the essay. No script in this repository recomputes them yet, so treat them as the essay's claims and check them against the primary source before relying on them.
 
 ## Primary source
 - https://doi.org/10.1061/(ASCE)GT.1943-5606.0000073 (Scite report: https://scite.ai/reports/10.1061/(ASCE)GT.1943-5606.0000073)
-- What the essay compares against: Model values at defaults: T_v = 0.320 · U_avg = 63.2% (H_dr = 6 m, t = 3.6 yr)
+- What the essay compares against: Assumed defaults: T_v = 0.320 · U_avg = 63.2% · Q_ult = 3,865 kN
 
 ## Recent research context
-- **A Century After Erdbaumechanik: Instrumented CFA Piles and Effective Stress**: One century after Karl Terzaghi's Erdbaumechanik (1925), continuous flight auger (CFA) piles are installed with rigs that record depth, torque and grout volume (FHWA GEC No. 8), and field tests show how their shaft resistance develops in sand (Gavin, Cadogan & Casey 2009, DOI 10.1061/(ASCE)GT.1943-5606.0000073).
+- **A Century After Erdbaumechanik: Effective Stress, Consolidation, and Monitored CFA Piles**: Connecting Terzaghi's 1925 effective stress model with FHWA GEC No. 8 rig monitoring (Brown et al. 2007) and sand shaft tests (Gavin, Cadogan & Casey 2009, DOI 10.1061/(ASCE)GT.1943-5606.0000073). This untested explanation estimates U_avg = 63.2% and Q_ult = 3,865 kN under assumed inputs; no figure belongs on a real structure.

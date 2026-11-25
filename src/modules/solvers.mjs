@@ -2966,7 +2966,7 @@ export function initPlateSolvers(scope = document) {
         isoPath.setAttribute("d", "M 360 30 Q " + bulgeX + " 112 360 195");
       }
       if (svgLabel) {
-        svgLabel.textContent = "U_avg = " + (uAvgClamped * 100).toFixed(1) + "% · Q_ult = " + qUlt.toFixed(0) + " kN";
+        svgLabel.textContent = "U_avg = " + (uAvgClamped * 100).toFixed(1) + "% · Q_ult = " + Math.round(qUlt).toLocaleString("en-US") + " kN";
       }
     };
     e05SurchargeInput.addEventListener("input", updateE05);

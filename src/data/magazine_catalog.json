@@ -514,22 +514,24 @@
         "pillar": "engineering",
         "category_code": "E",
         "title": "Terzaghi Soil Mechanics, CFA Augercast Deep Foundation Piling & Excess Pore Pressure",
-        "subtitle": "How Karl Terzaghi's effective stress principle σ'_v = σ_v − u, hydrodynamic consolidation ∂u/∂t = c_v ∂²u/∂z², and Continuous Flight Auger (CFA) deep foundations relate to structural settlement and excess pore pressure.",
+        "subtitle": "An explanatory geotechnical model of Karl Terzaghi's effective stress, consolidation, and continuous flight auger piles under assumed parameters. It is not a foundation or structural design method, and no number here belongs on a real structure.",
         "date_published": "2026-11-01",
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.2",
         "status_badge": "CIVIL & GEOTECHNICAL · REV 1.2",
-        "primary_kernel": "tools/continuum_verify.py",
+        "primary_kernel": "tools/folios/engineering/e05.py",
+        "kernel_verdict": "Not independently verified",
+        "kernel_verdict_es": "Sin verificación independiente",
         "governing_law": "∂u/∂t = c_v ∂²u/∂z² · Q_ult = Q_skin + Q_toe · r_u = Δu / σ'_{v0}",
         "colophon": {
-          "identifier": "E.05 · Geotechnical & Deep Foundations · CSI 31 63 23",
-          "kernels": "σ'_v = σ_v − u · ∂u/∂t = c_v ∂²u/∂z² · CFA Bearing",
-          "benchmarks": "Model values at defaults: T_v = 0.320 · U_avg = 63.2% (H_dr = 6 m, t = 3.6 yr)",
-          "bridge": "Terzaghi Consolidation"
+          "identifier": "E.05 · Geotechnical & Deep Foundations · Teaching Model",
+          "kernels": "σ'_v = σ_v − u · ∂u/∂t = c_v ∂²u/∂z² · Assumed CFA Model",
+          "benchmarks": "Assumed defaults: T_v = 0.320 · U_avg = 63.2% · Q_ult = 3,865 kN",
+          "bridge": "Terzaghi Consolidation (Explanatory Model)"
         },
         "sliders": [
           {
-            "label": "Foundation Surcharge Load (Δq)",
+            "label": "Foundation Surcharge Load (kPa)",
             "min": 40.0,
             "max": 260.0,
             "step": 5.0,
@@ -537,7 +539,7 @@
             "unit": " kPa"
           },
           {
-            "label": "Consolidation Coefficient (c_v)",
+            "label": "Consolidation Coefficient (m²/yr)",
             "min": 0.5,
             "max": 8.0,
             "step": 0.1,
@@ -546,77 +548,77 @@
           }
         ],
         "steps": [
-          "Stage 1 (Undrained Surcharge Application, t = 0⁺): Structural surcharge Δq = 120 kPa transfers initially 100% into excess pore-water pressure Δu(z, 0) = Δq.",
-          "Stage 2 (Terzaghi Hydrodynamic Dissipation): Pore water drains toward permeable sand boundaries via ∂u/∂t = c_v ∂²u/∂z². The page assumes a drainage path H_dr = 6 m and an elapsed time t = 3.6 years, so T_v = 3.2 × 3.6 / 6² = 0.320 and U_avg = 1 − (8/π²) exp(−π² T_v / 4) = 63.2%.",
-          "Stage 3 (CFA Augercast Shaft + Toe Mobilization): A 750 mm diameter, 24 m deep CFA pile carries load by shaft friction and toe bearing. The page uses fixed illustrative capacities of 2,380 kN (shaft) and 1,980 kN (toe), and the folio assumes that residual pore pressure reduces them by factors of 0.65 r_u (shaft) and 0.35 r_u (toe): Q_ult = 2,380 × (1 − 0.65 r_u) + 1,980 × (1 − 0.35 r_u). With r_u = 0.221 (Stage 4, unrounded) this gives Q_ult = 3,865 kN against an assumed design load of 1,400 kN + 1.25 kN per kPa of surcharge (FS = 2.49). The 0.65 and 0.35 factors are this folio's own assumptions, not code values.",
-          "Stage 4 (Pore-Pressure Ratio, r_u = Δu / σ'_{v0}): The residual excess pore pressure after consolidation, Δu = Δq (1 − U_avg) = 44.2 kPa, over an assumed σ'_{v0} = 200 kPa gives r_u = 0.22. This is a consolidation ratio, not a seismic liquefaction analysis; r_u = 1 would mean zero effective stress, and the page flags r_u ≥ 0.70 as its own screening choice."
+          "Stage 1 (Undrained Surcharge Application, t = 0⁺): Assumed surcharge Δq = 120 kPa transfers initially into excess pore pressure Δu(z, 0) = Δq in saturated clay (Terzaghi 1925).",
+          "Stage 2 (Terzaghi Hydrodynamic Dissipation): With assumed H_dr = 6 m and t = 3.6 yr at c_v = 3.2 m²/yr, T_v = 0.320 gives U_avg = 63.2% and assumed settlement S_c = (Δq / 120) × 66.7 × U_avg = 42.2 mm.",
+          "Stage 3 (Assumed CFA Shaft + Toe Model): Illustrative 750 mm by 24 m CFA capacities follow Q_ult = 2,380 × (1 − 0.65 r_u) + 1,980 × (1 − 0.35 r_u) = 3,865 kN at unrounded r_u = 0.2208 against assumed P_design = 1,400 + 1.25 Δq = 1,550 kN (FS = 2.49; untested assumptions, not a design method).",
+          "Stage 4 (Consolidation Pore-Pressure Ratio): Residual Δu = Δq (1 − U_avg) = 44.2 kPa over assumed σ'_{v0} = 200 kPa gives r_u = 0.22 (σ'_v = 156 kPa), distinct from seismic liquefaction (Seed & Idriss 1971, DOI 10.1061/JSFEAQ.0001662); r_u ≥ 0.70 or FS < 2.0 is an illustrative alert."
         ],
         "readouts": [
           {
-            "label": "Average Consolidation U_avg",
+            "label": "Average Consolidation U_avg (Model)",
             "value": "63.2% (S_c = 42.2 mm, model)"
           },
           {
-            "label": "CFA Ultimate Pile Capacity",
+            "label": "CFA Pile Capacity (Illustrative)",
             "value": "3,865 kN (FS = 2.49, model)"
           },
           {
-            "label": "Pore-Pressure Ratio r_u",
+            "label": "Consolidation Ratio r_u (Assumed)",
             "value": "0.22 (σ'_v = 156 kPa)"
           },
           {
-            "label": "Geotechnical Verdict",
+            "label": "Illustrative Model Check",
             "value": "MODEL FS ≥ 2.0 · ILLUSTRATIVE, NOT A SITE DESIGN"
           }
         ],
         "spec_plate": {
-          "division": "CSI MASTERFORMAT 31 63 23 / FHWA GEC-8",
-          "title": "Continuous Flight Auger (CFA) Augercast Deep Foundation Piles",
-          "body": "Illustrative design sketch, not a project specification: CFA piles (D = 750 mm, L = 24 m, f'_c = 40 MPa grout) installed with automated monitoring of depth, torque and pumped grout volume. The grout-volume target of more than 115% of theoretical volume is a design assumption of this page; check the current FHWA guidance for the actual criteria.",
-          "meta": "Design sketch · FHWA GEC No. 8 is the FHWA design and construction manual for CFA piles; no site data stand behind this plate"
+          "division": "CONCEPT NOTE · CSI 31 63 23 FILING LABEL / FHWA GEC-8 (NOT A SPEC)",
+          "title": "Continuous Flight Auger (CFA) Deep Foundation Concept Note",
+          "body": "Untested explanatory note, not a specification or design method: illustrative CFA piles (D = 750 mm, L = 24 m, assumed f'_c = 40 MPa grout) monitored for depth, torque, and grout volume (Brown et al. 2007, FHWA GEC No. 8; CSI 31 63 23 is a filing label only). No number here belongs on a real foundation.",
+          "meta": "Explanatory note · FHWA GEC No. 8 provides agency guidance for CFA piles; no site data stand behind this folio"
         },
         "sidenote_1": {
           "kicker": "SIDENOTE E.05-A · TERZAGHI EFFECTIVE STRESS & TIME FACTOR T_v",
-          "body": "Consolidation settlement depends on the dimensionless time factor T_v = c_v t / H_dr². A clay layer drained at top and bottom (H_dr = H/2) reaches a given degree of consolidation 4× faster than the same layer drained on one side only."
+          "body": "Under Terzaghi (1925), T_v = c_v t / H_dr² governs 1D consolidation; double drainage (H_dr = H/2) divides consolidation time by four for uniform clay."
         },
         "sidenote_2": {
-          "kicker": "SIDENOTE E.05-B · SPECIFICATION PLATE · CSI 31 63 23 (CFA PILES)",
-          "body": "Design sketch of continuous flight auger (augercast) piles (D = 750 mm, L = 24 m, f'_c = 40 MPa grout, design target of more than 115% theoretical grout volume) with automated rig monitoring."
+          "kicker": "SIDENOTE E.05-B · CONCEPT NOTE · CSI 31 63 23 LABEL (NOT A SPEC)",
+          "body": "Untested note, not a specification: illustrative CFA geometry (D = 750 mm, L = 24 m) and rig logs (Brown et al. 2007); no number belongs on real work."
         },
         "skill": {
           "filename": "terzaghi-cfa-geotechnical-piling-SKILL.md",
           "name": "terzaghi-cfa-geotechnical-piling",
-          "description": "AI-agnostic civil geotechnical engineering skill for Terzaghi 1D consolidation (du/dt = c_v d^2u/dz^2), effective stress sigma'_v = sigma_v - u, CFA deep foundation capacity, and excess pore-pressure r_u screening.",
+          "description": "Explanatory geotechnical reference (not a foundation or structural design method) for Terzaghi 1D consolidation, effective stress, and an illustrative continuous flight auger pile algebraic model; no number here may be used on a real structure.",
           "rules": [
-            "Compute Terzaghi dimensionless time factor T_v = (c_v * t) / H_dr^2 and degree of consolidation U_avg = sqrt(4*T_v/pi) for T_v <= 0.286 or U_avg = 1 - (8/pi^2)*exp(-pi^2 * T_v / 4) for T_v > 0.286.",
-            "Evaluate axial CFA pile ultimate capacity Q_ult = Q_skin + Q_toe using effective overburden stress sigma'_v(z) = sigma_v(z) - u(z); this folio assumes the shaft term is scaled by (1 - 0.65 r_u) and the toe term by (1 - 0.35 r_u), its own illustrative factors.",
-            "Flag the design for review whenever excess pore-pressure ratio r_u = Delta_u / sigma'_v0 >= 0.70 or factor of safety FS = Q_ult / P_design < 2.0 (both are this folio's screening choices, not code values); a real liquefaction assessment needs a site-specific cyclic analysis."
+            "Explanatory model only, not a geotechnical or structural design method (no number here may be used on a real structure): with assumed H_dr = 6 m and t = 3.6 yr, compute T_v = c_v * t / H_dr^2, piecewise U_avg(T_v), and assumed S_c = (Delta_q / 120) * 66.7 * U_avg.",
+            "Evaluate illustrative Q_ult = max(650, 2,380 * (1 - 0.65 * r_u) + 1,980 * (1 - 0.35 * r_u)) against assumed P_design = 1,400 + 1.25 * Delta_q using r_u = min(0.98, Delta_q * (1 - U_avg) / 200) (untested assumptions, not code values).",
+            "Treat r_u >= 0.70 or FS = Q_ult / P_design < 2.0 as an illustrative alert, not a code check; cyclic liquefaction (Seed & Idriss 1971, DOI 10.1061/JSFEAQ.0001662) requires site testing."
           ]
         },
         "revisions": [
           {
             "edition": "REV 1.2",
             "date": "2026-11-14",
-            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. The source entry for DOI 10.1061/(ASCE)GT.1943-5606.0000073 was corrected to Gavin, Cadogan & Casey, the readouts were recomputed from the page model (U_avg = 63.2%, Q_ult = 3,865 kN, r_u = 0.22), and the invented 1925 workshop scene and an unsourced 4.2 mm settlement result were removed. A later review corrected the page further: the pore-pressure ratio r_u is now described as a consolidation quantity, not a liquefaction result, the 0.65 and 0.35 capacity-reduction factors behind 3,865 kN are stated, and unsourced liquefaction and drainage claims were removed.",
-            "opus": "Review: every DOI in the folio was checked in Crossref and the Scite index on 2026-11-14, and the repository names with the GitHub API. No finite-element analysis or site data stand behind this folio; its numbers come from the closed-form model and the stated assumptions."
+            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. Corrected DOI 10.1061/(ASCE)GT.1943-5606.0000073 to Gavin, Cadogan & Casey (2009), recomputed closed-form readouts (U_avg = 63.2%, S_c = 42.2 mm, Q_ult = 3,865 kN, r_u = 0.22), removed unsourced claims, aligned Experiment 2 and SVG curves with solvers.mjs, and set the non-design-method boundary.",
+            "opus": "Review: references checked in Crossref and Scite; no finite-element model or site data stand behind this folio."
           },
           {
             "edition": "REV 1.1",
             "date": "2026-11-02",
-            "summary": "REV 1.1 (Redated 2026-11-02): Verified Karl Terzaghi effective stress (sigma'_v = sigma_v - u) & 1D consolidation (du/dt = c_v d^2u/dz^2), CFA deep foundation shaft + toe bearing (Q_ult = Q_skin + Q_toe), and Seed-Idriss liquefaction surcharge (r_u = Delta_u / sigma'_v0, CSI 31 63 23, FHWA GEC-8).",
-            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): reviewed the consolidation formulas. The word \"Verified\" in this note and the note below is withdrawn in REV 1.2; the earlier readouts (64.2%, 4,180 kN, r_u = 0.28) did not follow from the page model."
+            "summary": "REV 1.1 (Redated 2026-11-02): Revised Terzaghi effective stress, 1D consolidation, and CFA shaft + toe bearing discussion.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B); earlier \"Verified\" wording and mismatched readouts (64.2%, 4,180 kN, r_u = 0.28) withdrawn in REV 1.2."
           },
           {
             "edition": "REV 1.0",
             "date": "2026-11-01",
-            "summary": "REV 1.0 (Published 2026-11-01): Initial 5-Act civil geotechnical monograph on Terzaghi effective stress consolidation, CSI 31 63 23 CFA deep piling, and Seed-Idriss liquefaction surcharge.",
-            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified Fourier series consolidation isochrones, T_v = c_v t / H_dr² scaling, and effective-stress CFA shaft capacity."
+            "summary": "REV 1.0 (Published 2026-11-01): Initial 5-Act geotechnical monograph on Terzaghi consolidation and CFA deep piling.",
+            "opus": "Cross-model check (Gemini 4 Argon + Qwen 3.8 27B); earlier \"Verified\" wording withdrawn in REV 1.2."
           }
         ],
         "volume": 3,
         "volume_code": "VOL. 03",
-        "reading_time": "22 MIN READ",
-        "word_count": "4,650 WORDS",
+        "reading_time": "20 MIN READ",
+        "word_count": "~4,450 WORDS",
         "scite": {
           "doi": "10.1061/(ASCE)GT.1943-5606.0000073",
           "fetched_on": "2026-11-08",
@@ -625,7 +627,7 @@
           "mentioning": 3,
           "contrasting": 0,
           "retracted": false,
-          "summary": "Scite index entry for Gavin, Cadogan & Casey 2009, Shaft Capacity of Continuous Flight Auger Piles in Sand (DOI 10.1061/(ASCE)GT.1943-5606.0000073), as recorded 2026-11-08: 39 citing publications (0 supporting, 3 mentioning, 0 contrasting) and no retraction notice. These counts describe that one paper, not this folio."
+          "summary": "Scite index entry [observed: Scite ML citation classification, accessed 2026-11-08] for Gavin, Cadogan & Casey (2009), Shaft Capacity of Continuous Flight Auger Piles in Sand (DOI 10.1061/(ASCE)GT.1943-5606.0000073). It records 39 citing publications (distinct from statement tallies: 0 supporting, 3 mentioning, 0 contrasting) and no retraction notice. That paper reports sand tests, not this folio's assumed clay factors."
         }
       },
       {
