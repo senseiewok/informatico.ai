@@ -128,6 +128,7 @@ FOLIO = {'folio_id': 'M.02',
                         'Montgomery-Halász large sieve orthogonality constants. (REV 1.4: this '
                         "'verified' wording is withdrawn.)"}],
  'governing_law': 'Zero-density estimates · Large Sieve · Zeta23 (README statement)',
+ 'governing_law_latex': r"N(\sigma, T) \ll T^{c(1-\sigma)+\varepsilon}, \\ c_{\mathrm{Huxley}} = \frac{12}{5}, \quad c_{\mathrm{GM}} = \frac{30}{13}",
  'volume': 1,
  'volume_code': 'VOL. 01',
  'reading_time': '22 MIN READ',
