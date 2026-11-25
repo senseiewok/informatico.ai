@@ -78,9 +78,9 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "e11": (
         "SIMP Topology Optimization and Inerter Damping",
-        "How Bendsøe and Sigmund's SIMP topology optimization, Michell trusses and flywheel inerters could lighten floor slabs, as a design study.",
+        "How SIMP topology optimization and Michell trusses could lighten floor slabs while flywheel inerters resist sway; explanation, not a design method.",
         "Optimización Topológica SIMP y Amortiguador Inerter",
-        "Cómo la optimización SIMP de Bendsøe y Sigmund, las armaduras de Michell y los inerters de volante podrían aligerar losas, en un estudio de diseño.",
+        "Cómo la optimización SIMP y las armaduras de Michell podrían aligerar losas mientras los inerters frenan el balanceo; explicación, no método de diseño.",
     ),
     "e12": (
         "RISC-V Silicon and Firefly Grid Control Barriers",
