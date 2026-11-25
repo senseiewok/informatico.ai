@@ -308,13 +308,21 @@ float potentialSurface(vec2 xz) {
       float primalWave = (0.58 - 0.88 * r2 + 0.24 * r2 * r2) * exp(-2.4 * r2);
       float dualRings = 0.22 * pow(cos(3.8 * rShell - (1.2 + 0.8 * bNorm)), 2.0) * exp(-1.1 * r2);
       return primalWave * (0.65 + 0.45 * aNorm) + dualRings + breath * 0.3;
-    } else {
+    } else if (u_folio < 14.5) {
       // M.15: Diagonal Ramsey First-Moment Convexity Ridge (z = p - 0.5) & Book Growth Envelope (x = k)
       float kCoord = clamp(0.5 * (xz.x + 1.0), 0.0, 1.0);
       float pSkew = xz.y - 0.45 * (bNorm - 0.5);
       float floorRidge = (0.14 + 0.34 * kCoord * (0.65 + 0.45 * aNorm)) * exp(-3.4 * pSkew * pSkew);
       float bookCeiling = 0.22 * kCoord * kCoord * (0.55 + 0.45 * pSkew * pSkew);
       return -0.22 + floorRidge + bookCeiling + breath * 0.3;
+    } else {
+      // M.16: Behrend High-Dimensional Spherical Shell Ring & Odd-Modulus Cyclic Fourier Ripples
+      float rShell = sqrt(r2 + 0.0004);
+      float targetR = 0.44 + 0.28 * aNorm;
+      float dr = rShell - targetR;
+      float shellRing = (0.46 + 0.16 * bNorm) * exp(-18.0 * dr * dr);
+      float dftHarmonics = 0.11 * cos(7.0 * xz.x + 3.5 * xz.y - u_time * 1.1) * cos(7.0 * xz.y) * exp(-0.85 * r2);
+      return -0.24 + shellRing + dftHarmonics + breath * 0.28;
     }
   }
 }
@@ -841,7 +849,7 @@ export function initPlateWebGL(scope = document) {
     const lensBtns = wrap ? wrap.querySelectorAll(".tp-lens-btn[data-lens-mode]") : [];
     const pillarAttr = (canvas.getAttribute("data-pillar-webgl") || "engineering").toLowerCase();
     const folioAttr = (canvas.getAttribute("data-folio-webgl") || "e01").toLowerCase();
-    const folioCap = pillarAttr === "math" ? 14 : 13;   // index 14 is the M.15 surface; other pillars keep their last view
+    const folioCap = pillarAttr === "math" ? 15 : 13;   // index 15 is the M.16 surface; other pillars keep their last view
     const folioNum = Math.max(0, Math.min(folioCap, (parseInt(folioAttr.replace(/\D+/g, ""), 10) || 1) - 1));
     const pillarIndex = pillarAttr === "engineering" ? 0.0
       : pillarAttr === "architecture" ? 1.0

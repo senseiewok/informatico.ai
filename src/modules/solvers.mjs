@@ -2033,10 +2033,139 @@ export function initPlateSolvers(scope = document) {
         if (barrierOut) syncSvgStageTelemetry("m15", barrierOut.textContent);
         return;
       }
+
+      if (slug === "m16") {
+        // Folio M.16: Three-Term Arithmetic Progressions, Base-(2d-1) Behrend Shells & Odd-Modulus Cyclic DFT.
+        const dRaw = parseFloat(mathPrimeInput.value);
+        const mRaw = parseFloat(mathClauseInput.value);
+        const dVal = Number.isFinite(dRaw) ? Math.max(2, Math.min(8, Math.round(dRaw))) : 5;
+        const mVal = Number.isFinite(mRaw) ? Math.max(2, Math.min(6, Math.round(mRaw))) : 4;
+        if (pLabel) pLabel.textContent = `d = ${dVal}`;
+        if (cLabel) cLabel.textContent = `m = ${mVal}`;
+        if (inlineP) inlineP.textContent = `d = ${dVal}`;
+
+        const maxSingle = (dVal - 1) * (dVal - 1);
+        const maxSum = mVal * maxSingle;
+        let dp = new Array(maxSum + 1).fill(0n);
+        dp[0] = 1n;
+        for (let step = 0; step < mVal; step++) {
+          const nxt = new Array(maxSum + 1).fill(0n);
+          for (let cur = 0; cur <= maxSum; cur++) {
+            const ways = dp[cur];
+            if (ways === 0n) continue;
+            for (let c = 0; c < dVal; c++) {
+              nxt[cur + c * c] += ways;
+            }
+          }
+          dp = nxt;
+        }
+        let modalR2 = 0;
+        let modalSize = 0n;
+        for (let r2 = 0; r2 <= maxSum; r2++) {
+          if (dp[r2] > modalSize) {
+            modalSize = dp[r2];
+            modalR2 = r2;
+          }
+        }
+        const totalGrid = BigInt(dVal) ** BigInt(mVal);
+        const numShells = BigInt(maxSum + 1);
+        const pigeonFloor = (totalGrid + numShells - 1n) / numShells;
+        const radix = 2 * dVal - 1;
+        const ambientN = BigInt(radix) ** BigInt(mVal);
+
+        // Exact shifted base-3 {0, 1} Cantor count in {1, ..., ambientN} (digits of n - 1 in {0, 1})
+        const trits = [];
+        let tmp = ambientN - 1n;
+        while (tmp > 0n) {
+          trits.push(Number(tmp % 3n));
+          tmp /= 3n;
+        }
+        trits.reverse();
+        let cantorCount = 0n;
+        let tight = true;
+        const kTrits = trits.length;
+        for (let idx = 0; idx < kTrits; idx++) {
+          const rem = BigInt(kTrits - idx - 1);
+          const tr = trits[idx];
+          if (tr === 0) {
+            continue;
+          } else if (tr === 1) {
+            cantorCount += 1n << rem;
+          } else {
+            cantorCount += 1n << (rem + 1n);
+            tight = false;
+            break;
+          }
+        }
+        if (tight) cantorCount += 1n;
+
+        const fmtBig = (b) => b.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        if (barrierOut) {
+          barrierOut.textContent = `|B(${dVal}, ${mVal})| = ${fmtBig(modalSize)} on R*² = ${modalR2} (in N = ${fmtBig(ambientN)}, base ${radix})`;
+        }
+        if (fluxOut) {
+          fluxOut.textContent = `Pigeonhole ≥ ${fmtBig(pigeonFloor)} (${fmtBig(totalGrid)} / ${numShells.toString()} shells) · Cantor C_3(${fmtBig(ambientN)}) = ${fmtBig(cantorCount)}`;
+        }
+        if (ethOut) {
+          ethOut.textContent = "r_3(9) = 5, r_3(14) = 8, r_3(20) = 9, r_3(24) = 10 · max |Â(r)| = 5.15 at N = 20 (M = 41)";
+        }
+        if (qedOut) {
+          qedOut.textContent = "OPEN EXPONENT GAP β ∈ [1/9, 1/2] · FINITE CROSSOVER REGIME";
+        }
+        if (qedBox) qedBox.setAttribute("data-alert", "true");
+
+        const shellCurve = document.getElementById("tp-m16-shell-curve");
+        const pigeonLine = document.getElementById("tp-m16-pigeon-line");
+        const shellBar = document.getElementById("tp-m16-shell-bar");
+        const cantorBar = document.getElementById("tp-m16-cantor-bar");
+        const m16Pt = document.getElementById("tp-m16-point");
+        const m16Status = document.getElementById("tp-m16-status-lbl");
+
+        const maxRef = Math.max(Number(cantorCount), Number(modalSize), 4);
+        const logDenom = Math.log10(maxRef + 1.0);
+        const mapH = (valNum) => Math.max(6, Math.min(144, Math.round((Math.log10(Math.max(1.0, valNum) + 1.0) / Math.max(0.6, logDenom)) * 140)));
+
+        if (shellCurve) {
+          const pts = [];
+          for (let r2 = 0; r2 <= maxSum; r2++) {
+            const xCoord = Math.round(56 + (maxSum > 0 ? (r2 / maxSum) : 0) * 244);
+            const hVal = dp[r2] > 0n ? mapH(Number(dp[r2])) : 2;
+            pts.push(`${r2 === 0 ? "M" : "L"} ${xCoord} ${184 - hVal}`);
+          }
+          shellCurve.setAttribute("d", pts.join(" "));
+        }
+        const hModal = mapH(Number(modalSize));
+        const hPigeon = mapH(Number(pigeonFloor));
+        const hCantor = mapH(Number(cantorCount));
+        const modalX = Math.round(56 + (maxSum > 0 ? (modalR2 / maxSum) : 0.35) * 244);
+
+        if (pigeonLine) {
+          pigeonLine.setAttribute("y1", String(184 - hPigeon));
+          pigeonLine.setAttribute("y2", String(184 - hPigeon));
+        }
+        if (shellBar) {
+          shellBar.setAttribute("x", String(modalX - 9));
+          shellBar.setAttribute("y", String(184 - hModal));
+          shellBar.setAttribute("height", String(hModal));
+        }
+        if (cantorBar) {
+          cantorBar.setAttribute("y", String(184 - hCantor));
+          cantorBar.setAttribute("height", String(hCantor));
+        }
+        if (m16Pt) {
+          m16Pt.setAttribute("cx", String(modalX));
+          m16Pt.setAttribute("cy", String(184 - hModal));
+        }
+        if (m16Status) {
+          m16Status.textContent = `d = ${dVal}, m = ${mVal} (b = ${radix}): |B| = ${fmtBig(modalSize)} at R*² = ${modalR2} · C_3 = ${fmtBig(cantorCount)}`;
+        }
+        if (barrierOut) syncSvgStageTelemetry("m16", barrierOut.textContent);
+        return;
+      }
     };
     mathPrimeInput.addEventListener("input", updateMath);
     mathClauseInput.addEventListener("input", updateMath);
-    if ((getActiveSlug() || "m01") === "m01" || getActiveSlug() === "m13" || getActiveSlug() === "m15") updateMath();
+    if ((getActiveSlug() || "m01") === "m01" || getActiveSlug() === "m13" || getActiveSlug() === "m15" || getActiveSlug() === "m16") updateMath();
   }
 
   // 5. Engineering Stokes-Brinkman (E.01), Acoustic Metamaterials (E.03) & Enthalpy Cores (E.04)

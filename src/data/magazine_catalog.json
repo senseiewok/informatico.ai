@@ -1,7 +1,7 @@
 {
   "version": "7.0.0",
-  "title": "Informatico.ai — 7-Volume, 57-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
-  "total_folios": 57,
+  "title": "Informatico.ai — 7-Volume, 58-Folio Civil Engineering, Architecture, Physics & Mathematics Monograph Catalog",
+  "total_folios": 58,
   "pillars": {
     "engineering": [
       {
@@ -6758,6 +6758,121 @@
           "retracted": false,
           "summary": "Scite Smart Citation Index entry for Ramsey 1930, \"On a Problem of Formal Logic\" (Proceedings of the London Mathematical Society, DOI 10.1112/plms/s2-30.1.264), fetched 2026-11-21: 2,255 citing publications (4 supporting, 845 mentioning, 0 contrasting) and no retraction notice. These counts describe that foundational paper, not this folio."
         }
+      },
+      {
+        "folio_id": "M.16",
+        "slug": "m16",
+        "pillar": "math",
+        "category_code": "M",
+        "parent_folios": [
+          "M.03",
+          "M.04",
+          "M.15"
+        ],
+        "lineage_mode": "CONTINUATION · Extends M.03 Cap Sets, M.04 Additive Entropy & M.15 Extremal Thresholds",
+        "title": "Three-Term Arithmetic Progressions: Behrend Spheres, Fourier Bias & Kelley–Meka Bounds",
+        "subtitle": "How Paul Erdős and Pál Turán asked whether positive density forces three equally spaced integers, how Felix Behrend hid dense progression-free sets on high-dimensional spheres, how Klaus Roth turned harmonic ripples into density increments, and how Zander Kelley and Raghu Meka reached quasi-polynomial decay.",
+        "date_published": "2026-11-24",
+        "date_redated": "2026-11-24",
+        "current_edition": "REV 1.0",
+        "status_badge": "ADDITIVE COMBINATORICS BOUNDS · REV 1.0",
+        "primary_kernel": "skills/math/m16/verify_m16_progression_bounds.py",
+        "governing_law": "For N ≥ 3: T(A) = (1/M) ∑_r Â(r)² conj(Â(2r mod M)) · N exp(−c √(log N)) ≤ r_3(N) ≤ N exp(−c′ (log N)^(1/9))",
+        "colophon": {
+          "identifier": "M.16 · Three-Term Arithmetic Progressions & Behrend Spheres · REV 1.0",
+          "kernels": "Bitmask Branch-and-Bound r_3(N) · Base-(2d−1) Spherical Shell DP · Odd-Modulus Cyclic DFT",
+          "benchmarks": "r_3(9) = 5 > |C_3(9)| = 4 · r_3(20) = 9, r_3(24) = 10 · |B(5, 4)| = 30 on R*² = 18 in N = 6,561 · Open log exponent β ∈ [1/9, 1/2]",
+          "bridge": "Extends M.03/M.04/M.15 · Strict Euclidean convexity, carry-free radix projection and sifting increments"
+        },
+        "sliders": [
+          {
+            "label": "Digit Bound (d)",
+            "min": 2,
+            "max": 8,
+            "step": 1,
+            "value": 5,
+            "unit": "d = "
+          },
+          {
+            "label": "Shell Dimension (m)",
+            "min": 2,
+            "max": 6,
+            "step": 1,
+            "value": 4,
+            "unit": "m = "
+          }
+        ],
+        "steps": [
+          "Stage 1 (Small Extremal Thresholds and Ternary Cantor Departures, 1936): Paul Erdős and Pál Turán (1936, DOI 10.1112/jlms/s1-11.4.261) introduced r_3(N), the maximum size of a subset of {1, …, N} containing no three distinct terms in arithmetic progression x + z = 2y, and recorded the base-3 {0, 1} construction (credited there to G. Szekeres), written here as C_3(N) of scale N^(log_3 2) ≈ N^0.63093. Exhaustive search in verify_m16_progression_bounds.py recomputes r_3(1..24) and pinpoints where optimal sets outgrow C_3(N): at N = 9, witness {1, 2, 4, 8, 9} gives r_3(9) = 5 > |C_3(9)| = 4; at N = 14, r_3(14) = |C_3(14)| = 8; at N = 20, {1, 2, 6, 7, 9, 14, 15, 18, 20} gives r_3(20) = 9 > 8; and at N = 24, r_3(24) = 10 > 8.",
+          "Stage 2 (Behrend Spherical Shells and Carry-Free Base-(2d − 1) Projection, 1942–2011): Raphaël Salem and Donald Spencer (1942, DOI 10.1073/pnas.28.12.561) refuted sub-linear power-law ceilings O(N^(1 − ε)) on r_3(N), and Felix Behrend (1946, DOI 10.1073/pnas.32.12.331) intersected {0, …, d − 1}^m with quadratic shells ∑ x_i² = R², choosing modal shell R*² of size S_m(R*²) ≥ ⌈d^m / (m(d − 1)² + 1)⌉ and projecting via radix b = 2d − 1 into {1, …, (2d − 1)^m}. Because 0 ≤ x_i + z_i ≤ 2d − 2 < 2d − 1 blocks every base carry and strict Euclidean convexity forbids three distinct collinear sphere points, B(d, m) has zero nontrivial 3-APs; Michael Elkin (2011, DOI 10.1007/s11856-011-0061-1) and Ben Green with Julia Wolf (2010, DOI 10.1007/978-0-387-68361-4_9) thickened the sphere to a thin annulus, raising r_3(N) by a Θ(√(log N)) factor.",
+          "Stage 3 (Roth’s Circle Method and Our Odd-Modulus Z_{2N+1} Discretization, 1953–2011): Klaus Roth (1953, DOI 10.1112/jlms/s1-28.1.104) adapted the continuous Hardy–Littlewood circle method on [0, 1] to establish r_3(N) = O(N / log log N). To check finite sets exactly, this folio discretizes Roth’s orthogonality identity onto the odd cyclic group Z_M of order M = 2N + 1, preventing wrap-around since 2 ≤ x + z ≤ 2N < M and giving T(A) = (1/M) ∑_{r=0}^{M−1} Â(r)² conj(Â(2r mod M)) with complex square Â(r)². When A is 3-AP-free, T(A) = |A|, yielding our finite linear bias floor max_{r≠0} |Â(r)| ≥ ||A|² − M| / (M − |A|) alongside Parseval’s RMS floor √(|A|(M − |A|)/(M − 1)); Jean Bourgain (1999, DOI 10.1007/s000390050105) and Tom Sanders (2011, DOI 10.4007/annals.2011.174.1.20) refined Bohr-set and almost-periodicity increments.",
+          "Stage 4 (Kelley–Meka Physical-Space Sifting, Combined Display Note & Tier T0–T1 Falsification, 2020–2023): After Thomas Bloom and Olof Sisask crossed the logarithmic barrier in preprint arXiv:2007.03528, Zander Kelley and Raghu Meka (2023, DOI 10.1109/focs57990.2023.00059, arXiv:2302.05537) bypassed high-order Fourier inversions via Hölder decoupling, physical-space sifting, and spread subspaces to establish r_3(N) ≤ exp(−c (log N)^(1/12)) N (c > 0), expounded on integer intervals at β = 1/12 by Bloom and Sisask (2023, DOI 10.2140/ent.2023.2.15) and sharpened to β = 1/9 in preprint arXiv:2309.02353 (for N ≥ 3, combined in our governing header beside Behrend’s β = 1/2 lower bound and our Z_{2N+1} DFT identity). Hypothesis (Tier T0–T1): across d ∈ [2..8], m ∈ [2..6], radix-(2d − 1) overhead keeps |B(d, m)| < |C_3(N)| before asymptotic crossover, while valid log exponents in [1/9, 1/2] remain OPEN; any construction with β < 1/2 or upper bound with β > 1/9 narrows that open interval."
+        ],
+        "readouts": [
+          {
+            "label": "Modal Behrend Shell |B(d, m)|",
+            "value": "|B(5, 4)| = 30 on R*² = 18 (in N = 6,561, base 9)"
+          },
+          {
+            "label": "Grid Pigeonhole & Ternary Baseline",
+            "value": "Pigeonhole ≥ 10 (625 / 65 shells) · Cantor C_3(6,561) = 256"
+          },
+          {
+            "label": "Small Exact r_3(N) & Fourier Peak (Fixed Reference)",
+            "value": "r_3(9) = 5, r_3(14) = 8, r_3(20) = 9, r_3(24) = 10 · max |Â(r)| = 5.15 at N = 20 (M = 41)"
+          },
+          {
+            "label": "Asymptotic Log-Exponent Window",
+            "value": "OPEN EXPONENT GAP β ∈ [1/9, 1/2] · FINITE CROSSOVER REGIME"
+          }
+        ],
+        "spec_plate": {
+          "division": "ADDITIVE & EXTREMAL COMBINATORICS / PROGRESSION-FREE SHELLS & HARMONIC SIFTING",
+          "title": "Exhaustive r_3(1..24), Base-(2d−1) Behrend Spherical Shells & Odd-Modulus Cyclic DFT",
+          "body": "Scope boundary: verify_m16_progression_bounds.py recomputes offline from scratch exact r_3(N) for N = 1..24 via bitmask branch-and-bound (cross-checked against power-set enumeration for N = 1..14), explicit base-(2d − 1) Behrend sets B(d, m) for d ∈ [2..5], m ∈ [2..4] with zero nontrivial 3-APs, exact dynamic-programming shell histograms across d ∈ [2..8], m ∈ [2..6], and odd-modulus Z_{2N+1} DFT 3-AP identities across N = 3..24 (max floating-point residual < 1.25e-14, asserted < 1e-12). Our governing header pairs that finite Z_{2N+1} identity with Behrend’s 1946 lower bound and the Kelley & Meka (2023, β = 1/12) / Bloom & Sisask (2023 ENT exposition; preprint arXiv:2309.02353, β = 1/9) upper bounds, which are reported from those papers and not re-derived by this script.",
+          "meta": "Primary anchors: Erdős & Turán 1936 (DOI 10.1112/jlms/s1-11.4.261) · Behrend 1946 (DOI 10.1073/pnas.32.12.331) · Roth 1953 (DOI 10.1112/jlms/s1-28.1.104) · Kelley & Meka 2023 (DOI 10.1109/focs57990.2023.00059) · Bloom & Sisask 2023 (DOI 10.2140/ent.2023.2.15; preprint arXiv:2309.02353)"
+        },
+        "sidenote_1": {
+          "kicker": "SIDENOTE M.16-A · WHY DROPPING BASE 2d − 1 TO d OR FLATTENING L² TO L¹ FAILS",
+          "body": "Two planted knockouts in verify_m16_progression_bounds.py isolate both halves of Behrend’s 1946 idea. First, keeping the true Euclidean shell ∑ x_i² = 5 at d = 3, m = 3 (six permutations of (2, 1, 0)) but encoding in base b = 3 instead of carry-free b = 2d − 1 = 5 produces {6, 8, 12, 16, 20, 22} ⊆ {1..27}, where base-3 carries create two nontrivial three-term progressions (8, 12, 16) and (12, 16, 20) of step 4. Second, keeping carry-free base b = 5 but replacing quadratic ∑ x_i² with the flat L¹ slice ∑ x_i = 3 admits collinear vectors (2, 1, 0), (1, 1, 1), and (0, 1, 2), mapping to (8, 32, 56) of step 24."
+        },
+        "sidenote_2": {
+          "kicker": "SIDENOTE M.16-B · FINITE CANTOR ADVANTAGE VS ASYMPTOTIC BEHREND CROSSOVER",
+          "body": "On our interactive grid d ∈ [2..8], m ∈ [2..6], the shifted ternary Cantor set C_3(N) stays larger than Behrend’s shell B(d, m): at d = 5, m = 4 (N = 6,561), |C_3| = 256 exceeds |B| = 30, and even at d = 8, m = 6 (N = 11,390,625), |C_3| = 32,768 exceeds |B| = 3,300. That finite lag comes from the factor (d / (2d − 1))^m ≈ 2^(−m) paid to prevent base carries across m coordinates. Once dimension m is scaled near √(2 log_2 N) with 2d − 1 = ⌊N^(1/m)⌋ for large N, however, exp(−2√(2 ln 2) √(ln N)) decays slower than any fixed negative power N^(log_3 2 − 1) ≈ N^(−0.36907), so spherical shells eventually overtake C_3(N)."
+        },
+        "skill": {
+          "filename": "progression-free-behrend-kelley-meka-bounds-SKILL.md",
+          "name": "progression-free-behrend-kelley-meka-bounds",
+          "description": "AI-agnostic additive and extremal combinatorics skill for three-term progression-free sets r_3(N), carry-free base-(2d-1) Behrend spherical shells, odd-modulus cyclic Fourier identities, and Kelley-Meka quasi-polynomial bounds.",
+          "rules": [
+            "Encode Behrend shell vectors x in {0, ..., d - 1}^m using radix b = 2d - 1 (never b = d) and strict Euclidean norm sum(x_i^2) = R^2 (never L^1 sum), blocking carries in x_i + z_i = 2*y_i while strict sphere convexity forces x = y = z.",
+            "Distinguish Roth’s 1953 continuous circle-method bound O(N / log log N) from this folio’s finite odd-modulus cyclic discretization Z_M (M = 2N + 1), and retain the complex square A_hat(r)^2 (not |A_hat(r)|^2) in T(A) = (1/M) * sum_r A_hat(r)^2 * conj(A_hat(2r mod M)).",
+            "Separate finite-N behavior from asymptotic growth: C_3(N) matches r_3(N) at N = 14 (8) yet trails at N = 9 (4 vs 5), N = 20 (8 vs 9), and N = 24 (8 vs 10), and |C_3((2d - 1)^m)| exceeds |B(d, m)| across d in [2..8], m in [2..6] before Behrend’s exp(-c * sqrt(log N)) density overtakes N^(log_3 2) at large m.",
+            "Keep the upper-bound milestones distinct—Bloom-Sisask arXiv:2007.03528 logarithmic-barrier break, Kelley-Meka 2023 (DOI 10.1109/focs57990.2023.00059) explicit exp(-c * (log N)^(1/12)) * N bound, Bloom-Sisask 2023 Essential Number Theory (DOI 10.2140/ent.2023.2.15) 1/12 exposition, and preprint arXiv:2309.02353 exponent 1/9—and keep the log-exponent gap [1/9, 1/2] explicitly labeled OPEN."
+          ]
+        },
+        "revisions": [
+          {
+            "edition": "REV 1.0",
+            "date": "2026-11-24",
+            "summary": "REV 1.0 (Published 2026-11-24): Volume VII Mathematics monograph continuing Folios M.03, M.04 & M.15 across Erdős–Turán (1936), Salem–Spencer (1942), Behrend (1946), Roth (1953), Szemerédi (1975), Bourgain (1999), Green–Tao (2008), Green–Wolf (2010), Elkin (2011), Sanders (2011), Kelley–Meka (2023), and Bloom–Sisask (2020 preprint; 2023 Essential Number Theory; 2023 arXiv:2309.02353).",
+            "opus": "Verification note: twelve primary DOIs (10.1112/jlms/s1-11.4.261, 10.1073/pnas.28.12.561, 10.1073/pnas.32.12.331, 10.1112/jlms/s1-28.1.104, 10.4064/aa-27-1-199-245, 10.1007/s000390050105, 10.4007/annals.2008.167.481, 10.1007/978-0-387-68361-4_9, 10.1007/s11856-011-0061-1, 10.4007/annals.2011.174.1.20, 10.1109/focs57990.2023.00059, 10.2140/ent.2023.2.15) were checked against Crossref, OpenAlex, and Scite on 2026-11-24 with zero retraction notices; skills/math/m16/verify_m16_progression_bounds.py recomputes r_3(1..24), Behrend shells, and Z_{2N+1} DFT identities."
+          }
+        ],
+        "volume": 7,
+        "volume_code": "VOL. 07",
+        "reading_time": "24 MIN READ",
+        "word_count": "5,100 WORDS",
+        "scite": {
+          "doi": "10.1112/jlms/s1-28.1.104",
+          "fetched_on": "2026-11-24",
+          "citing_publications": 666,
+          "supporting": 4,
+          "mentioning": 451,
+          "contrasting": 0,
+          "retracted": false,
+          "summary": "Scite Smart Citation Index entry for Roth 1953, \"On Certain Sets of Integers\" (Journal of the London Mathematical Society, DOI 10.1112/jlms/s1-28.1.104), fetched 2026-11-24 [observed: Scite ML citation classification, accessed 2026-11-24]: 666 citing publications, with 4 supporting, 451 mentioning, and 0 contrasting classified citation statements, and no retraction notice. Citing publications and classified citation statements are distinct counts, and describe that foundational paper rather than this folio."
+        }
       }
     ]
   },
@@ -6881,9 +6996,9 @@
       "volume": 7,
       "code": "VOL. 07",
       "roman": "Volume VII",
-      "kicker": "VOLUME VII (VOL. 07) · POROELASTICITY, SUCTION, CONCRETE FRACTURE, BRIDGE SCOUR, THIN SHELLS, GRAPH CAPACITY, SPHERE PACKING & RAMSEY BOUNDS · 9 FOLIOS",
-      "title": "Poroelasticity, Suction Stress, Concrete Size Effect, Bridge Pier Scour, Isler and Candela Shells, Shannon Capacity, Sphere Packing & Diagonal Ramsey Bounds",
-      "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), Engineering Folio E.15 (Hillerborg fictitious crack process zones, Bažant Type II Size Effect Law, and Bažant–Kazemi fracture energy regression in concrete), Engineering Folio E.16 (Shields incipient sediment motion, Sheppard–Melville horseshoe-vortex pier scour, and Melville–Chiew flood-duration time-scale lag), Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns), Architecture Folio A.14 (Félix Candela's doubly-ruled hyperbolic paraboloid concrete umbrellas, Pucher flat-projection membrane shear, and cantilevered edge boundaries), Mathematics Folio M.13 (Shannon zero-error graph capacity, Lovász's orthonormal theta sandwich, Haemers's rank-7 Schläfli separation, and the open seven-cycle gap), Mathematics Folio M.14 (Sphere packing, Cohn–Elkies Fourier linear programming, Viazovska modular functions in dimensions 8 and 24, and the open dimension-4 gap), and Mathematics Folio M.15 (Diagonal Ramsey numbers, Goodman K_6 multiplicity, Paley P(17) over F_17, Erdős random floors, the 2026 exponential book algorithm, and the open R(5, 5) ∈ [43, 46] window).",
+      "kicker": "VOLUME VII (VOL. 07) · POROELASTICITY, SUCTION, CONCRETE FRACTURE, BRIDGE SCOUR, THIN SHELLS, GRAPH CAPACITY, SPHERE PACKING, RAMSEY & 3-AP BOUNDS · 10 FOLIOS",
+      "title": "Poroelasticity, Suction Stress, Concrete Size Effect, Bridge Pier Scour, Isler and Candela Shells, Shannon Capacity, Sphere Packing, Ramsey & 3-AP Bounds",
+      "subtitle": "Volume VII features Engineering Folio E.13 (Biot 3D effective stress, Rice–Cleary Skempton coupling B, and Mohr–Coulomb fault slip bounds in geologic CO2 storage), Engineering Folio E.14 (van Genuchten–Mualem retention, Lu–Godt–Wu closed-form suction stress, and rainfall-induced infinite-slope instability), Engineering Folio E.15 (Hillerborg fictitious crack process zones, Bažant Type II Size Effect Law, and Bažant–Kazemi fracture energy regression in concrete), Engineering Folio E.16 (Shields incipient sediment motion, Sheppard–Melville horseshoe-vortex pier scour, and Melville–Chiew flood-duration time-scale lag), Architecture Folio A.13 (Heinz Isler's inverted-hanging cloth form-finding, Zoelly classical elastic buckling, and spherical-shell imperfection knockdowns), Architecture Folio A.14 (Félix Candela's doubly-ruled hyperbolic paraboloid concrete umbrellas, Pucher flat-projection membrane shear, and cantilevered edge boundaries), Mathematics Folio M.13 (Shannon zero-error graph capacity, Lovász's orthonormal theta sandwich, Haemers's rank-7 Schläfli separation, and the open seven-cycle gap), Mathematics Folio M.14 (Sphere packing, Cohn–Elkies Fourier linear programming, Viazovska modular functions in dimensions 8 and 24, and the open dimension-4 gap), Mathematics Folio M.15 (Diagonal Ramsey numbers, Goodman K_6 multiplicity, Paley P(17) over F_17, Erdős random floors, the 2026 exponential book algorithm, and the open R(5, 5) ∈ [43, 46] window), and Mathematics Folio M.16 (Three-term arithmetic progressions r_3(N), Behrend base-(2d − 1) spherical shells, Roth's circle method and finite Z_{2N+1} Fourier discretization, Kelley–Meka / Bloom–Sisask quasi-polynomial bounds, and the open β ∈ [1/9, 1/2] exponent window).",
       "cadence": "Verifier-gated Living Edition release",
       "folios": [
         "e13",
@@ -6894,7 +7009,8 @@
         "a14",
         "m13",
         "m14",
-        "m15"
+        "m15",
+        "m16"
       ]
     }
   ]

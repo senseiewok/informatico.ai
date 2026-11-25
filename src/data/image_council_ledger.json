@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2",
   "law": "Law 8 & Law 17 — Human-Scale Grounded Scientific Plate Generation & 4-Seat Image Selection Council",
-  "total_plates_replaced": 69,
-  "magazine_plates_count": 69,
+  "total_plates_replaced": 70,
+  "magazine_plates_count": 70,
   "council_seats": [
     "gemini-4-argon (Physical Specification & Structural Plausibility Seat)",
     "claude-opus-5.5 (Human Perceptual Impact & Tactile Craft Seat)",
@@ -768,6 +768,17 @@
       "bytes": 203302,
       "zero_baked_text_verified": true,
       "sha256": "02a9519e95f177c0dff2dc171a899d03140cad8e69434bb446c4a250ec2e207a"
+    },
+    {
+      "plate_id": "m16",
+      "path": "src/plates/m16.jpg",
+      "governing_specification": "Clear hemispherical borosilicate glass bowl mounted in a plain ungraduated brushed-brass ring holding cobalt-indigo and emerald-verdigris glass spheres along a single horizontal latitude ring, beside a five-rod dark walnut abacus with unnumbered boxwood beads and a shallow illuminated two-rod water ripple tank with concentric wave interference fringes on cream limestone vellum",
+      "human_perceptual_grounding": "pure_tactile_physical_or_vellum_photography_zero_wireframe_soup",
+      "winning_engine": "image-generator-pro-spec-verified",
+      "resolution": "1280x720",
+      "bytes": 171552,
+      "zero_baked_text_verified": true,
+      "sha256": "aa3217906cbed1f7f5a376ff888b0fea047d9b921c45bd33d899f84c9693578d"
     }
   ]
 }

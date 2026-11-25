@@ -1516,6 +1516,26 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
             ("GRADO", "Conteo de aristas incidentes usado por Goodman en 1959 para hallar al menos dos triángulos en K_6", "Acto I"),
         ],
     },
+    "m16": {
+        "title_en": "Folio M.16 · Three-Term Progressions, Behrend Spheres & Fourier Bounds Crossword",
+        "title_es": "Folio M.16 · Crucigrama de Progresiones de Tres Términos y Esferas de Behrend",
+        "en": [
+            ("BEHREND", "Author of the 1946 high-dimensional spherical-shell construction for progression-free sets", "Act I"),
+            ("FOURIER", "Harmonic transform on odd Z_{2N+1} discretizing Roth's 1953 orthogonality count for three-term progressions", "Act II"),
+            ("CANTOR", "Base-three zero-one fractal set giving the classical N^(log_3 2) progression-free baseline", "Act II"),
+            ("SPHERE", "Curved Euclidean shell where no three distinct points sit collinearly along one straight chord", "Act II"),
+            ("RADIX", "Expanded number base b = 2d - 1 chosen wide enough to prevent coordinate addition carries", "Act II"),
+            ("ROTH", "Mathematician whose 1953 circle-method argument gave the O(N / log log N) upper bound on r_3(N)", "Act I"),
+        ],
+        "es": [
+            ("ESFERA", "Superficie curva donde una recta corta a lo más dos puntos sin admitir tríos colineales", "Acto II"),
+            ("ACARREO", "Desborde entre dígitos vecinos evitado al codificar coordenadas en la base amplia 2d − 1", "Acto II"),
+            ("TERNARIO", "Sistema numérico en base tres cuya restricción a cero y uno genera el polvo fractal clásico", "Acto I"),
+            ("CASCARON", "Capa esférica de radio fijo donde Behrend concentró vectores reticulares sin progresiones", "Acto I"),
+            ("CRIBADO", "Método en espacio físico introducido por Kelley y Meka en 2023 para cotas cuasi-polinomiales", "Acto II"),
+            ("CUERDA", "Segmento recto entre dos puntos distintos de una esfera cuyo punto medio cae en el interior", "Acto II"),
+        ],
+    },
     "cc01": {
         "title_en": "CC.01 · Golf GTI Chassis, Boost & Transaxle Crossword",
         "title_es": "CC.01 · Crucigrama de Chasis, Turbo y Transmisión del Golf GTI",

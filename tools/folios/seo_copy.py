@@ -361,6 +361,12 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "Números de Ramsey Diagonales y Algoritmo del Libro",
         "Cómo los residuos de Paley, los pisos aleatorios de Erdős y el algoritmo del libro de 2026 acotan los números de Ramsey, con R(5, 5) en [43, 46].",
     ),
+    "m16": (
+        "Three-Term Progressions & Behrend Spheres",
+        "How Felix Behrend's curved high-dimensional shells, Klaus Roth's circle method and Kelley–Meka sifting bound sets free of three-term progressions.",
+        "Progresiones de Tres Términos y Esferas",
+        "Cómo los cascarones esféricos de Behrend, el método del círculo de Roth y el cribado de Kelley y Meka acotan conjuntos sin progresiones de tres términos.",
+    ),
 }
 
 # pillar -> (title_en, description_en, title_es, description_es); titles are complete (brand included).
@@ -385,9 +391,9 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "math": (
         "Mathematics Essays: Lean 4 Repositories & More | Informatico.ai",
-        "Fifteen interactive essays on mathematics: Fermat's Last Theorem, diagonal Ramsey bounds, zero-error graph capacity, sphere packing and optimal transport.",
+        "Sixteen interactive essays on mathematics: Fermat's Last Theorem, diagonal Ramsey bounds, Behrend progression spheres, sphere packing and optimal transport.",
         "Ensayos de Matemáticas: Repositorios Lean 4 y Más | Informatico.ai",
-        "Quince ensayos interactivos de matemáticas: Último Teorema de Fermat, números de Ramsey, capacidad sin error, empaquetamiento de esferas y transporte óptimo.",
+        "Dieciséis ensayos interactivos de matemáticas: Último Teorema de Fermat, números de Ramsey, esferas de Behrend, empaquetamiento de esferas y transporte.",
     ),
     "bounties": (
         "Grand Challenges & Open Problems Crucible | Informatico.ai",
