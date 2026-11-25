@@ -25,6 +25,7 @@ FOLIO = {'folio_id': 'M.12',
  'status_badge': 'LEAN 4 & POST-QUANTUM · REV 1.1',
  'primary_kernel': 'tools/formal_verifier.py',
  'governing_law': 'b = A s + e (mod q) · q = 3329 · n = 256 · k ∈ {2, 3, 4} (NIST FIPS 203)',
+ 'governing_law_latex': r"b = A s + e \pmod{q}, \\ q = 3329, \quad n = 256, \\ k \in \{2,3,4\} \;(\text{NIST FIPS 203})",
  'colophon': {'identifier': 'M.12 · anthropics/formal-math (as stated in its READMEs) & NIST FIPS '
                             '203 ML-KEM Lattices',
               'kernels': 'Projects listed in the anthropics/formal-math README read 2026-11-14: '

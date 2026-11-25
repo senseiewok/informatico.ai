@@ -22,7 +22,7 @@ const LABELS = {
       `${bad} of ${total} sentences differ from about-evidence.json; they are marked in the text.`,
     statusError:
       "Could not load about-evidence.json; the static table below lists every sentence.",
-    sentenceLabel: (n, tier) => `Sentence ${n}, ${tier}. Opens its evidence.`,
+    sentenceLabel: (n, tier) => `${tier}. Sentence ${n}. Opens its evidence.`,
     rosetteAnnounce:
       "65-facet geometric rosette bloomed: built with love for the 65 Roses (Cystic Fibrosis) community.",
   },
@@ -38,7 +38,7 @@ const LABELS = {
       `${bad} de ${total} oraciones difieren de about-evidence.json; están marcadas en el texto.`,
     statusError:
       "No se pudo cargar about-evidence.json; la tabla estática abajo enumera cada oración.",
-    sentenceLabel: (n, tier) => `Oración ${n}, ${tier}. Abre su evidencia.`,
+    sentenceLabel: (n, tier) => `${tier}. Oración ${n}. Abre su evidencia.`,
     rosetteAnnounce:
       "Roseta geométrica de 65 facetas desplegada: construido con cariño para la comunidad de las 65 Rosas (Fibrosis Quística).",
   },
@@ -205,7 +205,7 @@ class TracePresenter {
     const tierName = this.#tierName(row.tier);
     const text = renderSentence(row, this.#lang);
     btn.replaceChildren(
-      document.createTextNode(text),
+      document.createTextNode(`${text} `),
       h(
         "span",
         { class: "tz-tier-mark", "data-tier": row.tier, "aria-hidden": "true" },

@@ -181,7 +181,7 @@ class BuiltPages(unittest.TestCase):
             self.assertNotEqual(en.h1, es.h1, f"/{path}: the Spanish page's H1 is still English")
             es_html = es_file.read_text(encoding="utf-8")
             self.assertIn('data-es="Ingeniería">Ingeniería</a>', es_html, path)
-            self.assertIn('id="tp-lang-toggle" class="tp-tool-btn" type="button" aria-pressed="true" aria-label="Read in English" title="English">EN</button>', es_html, path)
+            self.assertIn('id="tp-lang-toggle" class="tp-tool-btn" type="button" aria-pressed="true" aria-label="EN — Read in English" title="English">EN</button>', es_html, path)
             if path.count("/") == 2:
                 self.assertIn('data-es="Por qué importa">Por qué importa</span>', es_html, path)
                 self.assertIn('data-es="I · Historia">I · Historia</a>', es_html, path)

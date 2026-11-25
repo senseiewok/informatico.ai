@@ -46,6 +46,7 @@ FOLIO = {
         'For N ≥ 3: T(A) = (1/M) ∑_r Â(r)² conj(Â(2r mod M)) · '
         'N exp(−c √(log N)) ≤ r_3(N) ≤ N exp(−c′ (log N)^(1/9))'
     ),
+    'governing_law_latex': r"N \ge 3: \; T(A) = \frac{1}{M}\sum_r \hat{A}(r)^2 \overline{\hat{A}(2r \bmod M)}, \\ N e^{-c\sqrt{\log N}} \le r_3(N) \le N e^{-c'(\log N)^{1/9}}",
     'colophon': {
         'identifier': 'M.16 · Three-Term Arithmetic Progressions & Behrend Spheres · REV 1.0',
         'kernels': 'Bitmask Branch-and-Bound r_3(N) · Base-(2d−1) Spherical Shell DP · Odd-Modulus Cyclic DFT',

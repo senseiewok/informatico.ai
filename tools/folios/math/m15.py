@@ -44,6 +44,7 @@ FOLIO = {
         'E[X_k(n, p)] = C(n, k)[p^C(k,2) + (1 − p)^C(k,2)] · '
         '√2 ≤ lim inf R(k,k)^(1/k) ≤ lim sup R(k,k)^(1/k) ≤ 4 − ε'
     ),
+    'governing_law_latex': r"\mathbb{E}[X_k(n,p)] = \binom{n}{k}\left(p^{\binom{k}{2}} + (1-p)^{\binom{k}{2}}\right), \\ \sqrt{2} \le \liminf R(k,k)^{1/k}, \\ \limsup R(k,k)^{1/k} \le 4 - \varepsilon",
     'colophon': {
         'identifier': 'M.15 · Diagonal Ramsey Numbers & Book Bounds · REV 1.0',
         'kernels': 'Goodman K_6 Multiplicity · Paley P(17) over F_17 · Rational First-Moment Union Bound',

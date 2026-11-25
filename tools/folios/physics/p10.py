@@ -19,6 +19,7 @@ FOLIO = {'category_code': 'P',
  'folio_id': 'P.10',
  'governing_law': 'C_n = (1/2π) ∮_{BZ} Ω_n(k) d²k ∈ ℤ · Ω_n = i⟨∇_k u_n | × | ∇_k u_n⟩ · |m_T| > '
                   '|m_P| ⇒ |C| = 1',
+ 'governing_law_latex': r"C_n = \frac{1}{2\pi}\oint_{\mathrm{BZ}} \Omega_n(k)\,d^2k \in \mathbb{Z}, \\ \Omega_n = i\langle \nabla_k u_n | \times | \nabla_k u_n \rangle, \\ |m_T| > |m_P| \;\Longrightarrow\; |C| = 1",
  'kernel_verdict': 'Partial: 1 of 4 readouts recomputed',
  'kernel_verdict_es': 'Parcial: 1 de 4 lecturas recalculadas',
  'lineage_mode': 'TRIAD_SYNTHESIS · Synthesizes E.03/A.05 Acoustic Metamaterials & A.08/P.08 '

@@ -27,6 +27,7 @@ FOLIO = {'folio_id': 'M.11',
  'primary_kernel': 'tools/formal_verifier.py',
  'governing_law': 'dim_H(K) = dim_M(K) = 3 for Kakeya K ⊂ ℝ³ (as stated in the Wang–Zahl '
                   'preprint) · N(σ, T) ≤ T^(30(1−σ)/13+o(1)) (Guth–Maynard)',
+ 'governing_law_latex': r"\dim_H(K) = \dim_M(K) = 3 \\ \text{for Kakeya } K \subset \mathbb{R}^3 \\ \text{(as stated in the Wang–Zahl preprint)}, \\ N(\sigma, T) \le T^{\frac{30(1-\sigma)}{13} + o(1)} \;(\text{Guth–Maynard})",
  'colophon': {'identifier': 'M.11 · 3D Kakeya Conjecture (arXiv:2502.17655) & Guth–Maynard 30/13 '
                             '(arXiv:2405.20552)',
               'kernels': 'Wang–Zahl volume estimates for unions of tubes · Guth–Maynard large '

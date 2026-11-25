@@ -41,6 +41,7 @@ FOLIO = {
     'status_badge': 'GRAPH CAPACITY · REV 1.0',
     'primary_kernel': 'skills/math/m13/verify_m13_shannon_capacity.py',
     'governing_law': 'α(G) ≤ Θ(G) ≤ ϑ(G) ≤ α*(G) ≤ χ̄(G) · ϑ(C_n) = n cos(π/n) / [1 + cos(π/n)]',
+    'governing_law_latex': r"\alpha(G) \le \Theta(G) \le \vartheta(G) \le \alpha^*(G) \le \bar{\chi}(G), \\ \vartheta(C_n) = \frac{n \cos(\pi/n)}{1 + \cos(\pi/n)}",
     'colophon': {
         'identifier': 'M.13 · Zero-Error Capacity & Lovász Theta Sandwich · REV 1.0',
         'kernels': 'Shannon Strong Product G^k · Lovász Umbrella ϑ(G) · Haemers Minrank(S_bar) = 7',

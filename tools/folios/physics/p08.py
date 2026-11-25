@@ -18,6 +18,7 @@ FOLIO = {'category_code': 'P',
  'folio_id': 'P.08',
  'governing_law': 'Δ_OPD = 2 d √(n_f² − sin²θ_i) = m λ · f_r = k_d(ρ/π) + k_s(D F G) / '
                   '[4(n·l)(n·v)]',
+ 'governing_law_latex': r"\Delta_{\mathrm{OPD}} = 2 d \sqrt{n_f^2 - \sin^2\theta_i} = m\lambda, \\ f_r = k_d \frac{\rho}{\pi} + k_s \frac{D F G}{4(n\cdot l)(n\cdot v)}",
  'kernel_verdict': 'Partial: 2 of 4 readouts recomputed',
  'kernel_verdict_es': 'Parcial: 2 de 4 lecturas recalculadas',
  'pillar': 'physics',

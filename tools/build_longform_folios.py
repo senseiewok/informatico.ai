@@ -2079,9 +2079,9 @@ def render_masthead(rel_res: str, active_pillar: str = "", lang: str = "en") -> 
     links_html = "\n        ".join(links)
     home_cur = ' aria-current="page"' if rel_res in (".", "") else ""
     lang_btn = (
-        '<button id="tp-lang-toggle" class="tp-tool-btn" type="button" aria-pressed="true" aria-label="Read in English" title="English">EN</button>'
+        '<button id="tp-lang-toggle" class="tp-tool-btn" type="button" aria-pressed="true" aria-label="EN — Read in English" title="English">EN</button>'
         if lang == "es"
-        else '<button id="tp-lang-toggle" class="tp-tool-btn" type="button" aria-pressed="false" aria-label="Leer en español" title="Español">ES</button>'
+        else '<button id="tp-lang-toggle" class="tp-tool-btn" type="button" aria-pressed="false" aria-label="ES — Leer en español" title="Español">ES</button>'
     )
     return f"""  <a class="skip-link" href="#main" data-en="Skip to content" data-es="Saltar al contenido">Skip to content</a>
   <header class="tp-masthead tp-masthead-slim">

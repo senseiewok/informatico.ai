@@ -52,7 +52,7 @@
       </nav>
       <div class="tp-masthead-tools">
         <button type="button" class="tp-tool-btn tp-contents-btn" data-open-contents aria-haspopup="dialog" aria-controls="tp-contents" aria-expanded="false"><span class="tp-contents-icon" aria-hidden="true"></span><span data-en="Contents" data-es="Contenido">Contents</span></button>
-        <button id="tp-lang-toggle" class="tp-tool-btn" type="button" aria-pressed="false" aria-label="Leer en español" title="Español">ES</button>
+        <button id="tp-lang-toggle" class="tp-tool-btn" type="button" aria-pressed="false" aria-label="ES — Leer en español" title="Español">ES</button>
         <button id="tp-blueprint-toggle" class="tp-tool-btn" type="button" aria-pressed="false" aria-label="Switch to dark theme">Dark</button>
       </div>
     </div>
@@ -372,7 +372,7 @@
             <h3 data-en="&sect; II.1 &middot; Formal Problem Statement, State-Space Manifold &amp; Governing Operator" data-es="&sect; II.1 &middot; Enunciado Formal, Variedad de Espacio de Estados y Operador Gobernante">&sect; II.1 &middot; Formal Problem Statement, State-Space Manifold &amp; Governing Operator</h3>
             <div class="tp-theorem-box" role="region" aria-label="Formal Governing Law and Verification Anchor">
               <span class="tp-kicker" data-en="CANONICAL GOVERNING OPERATOR &middot; FOLIO M.07" data-es="OPERADOR GOBERNANTE CAN&Oacute;NICO &middot; FOLIO M.07">CANONICAL GOVERNING OPERATOR &middot; FOLIO M.07</span>
-              <p class="tp-theorem-eq"><code>H(x, u, λ) = 1/v + λ_v a_net(v, P_k, δ)/v − λ_E P_batt(P_k)/v ; u_{l+1} = σ(W u_l + F⁻¹(R_φ · F(u_l)))</code></p>
+              <p class="tp-theorem-eq tp-theorem-eq--mathml"><math display="block"><mrow><mi>H</mi><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>u</mi><mo>,</mo><mi>λ</mi><mo stretchy="false">)</mo><mo>=</mo></mrow></math> <math display="block"><mrow><mfrac><mrow><mn>1</mn><mo>+</mo><msub><mi>λ</mi><mi>v</mi></msub><msub><mi>a</mi><mrow><mrow><mi mathvariant="normal">n</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">t</mi></mrow></mrow></msub><mo stretchy="false">(</mo><mi>v</mi><mo>,</mo><msub><mi>P</mi><mi>k</mi></msub><mo>,</mo><mi>δ</mi><mo stretchy="false">)</mo><mo>−</mo><msub><mi>λ</mi><mi>E</mi></msub><msub><mi>P</mi><mrow><mrow><mi mathvariant="normal">b</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">t</mi></mrow></mrow></msub><mo stretchy="false">(</mo><msub><mi>P</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow><mrow><mi>v</mi></mrow></mfrac><mo>,</mo></mrow></math> <math display="block"><mrow><msub><mi>u</mi><mrow><mi>l</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>σ</mi><mrow><mo stretchy="true" fence="true" form="prefix">(</mo><mi>W</mi><msub><mi>u</mi><mi>l</mi></msub><mo>+</mo><msup><mi>ℱ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">(</mo><msub><mi>R</mi><mi>ϕ</mi></msub><mo>·</mo><mi>ℱ</mi><mo stretchy="false">(</mo><msub><mi>u</mi><mi>l</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo stretchy="true" fence="true" form="postfix">)</mo></mrow></mrow></math></p>
               <p class="tp-theorem-meta"><strong>Kernels:</strong> Pontryagin Maximum Principle (PMP) · HJB PDE · Fourier Neural Operator &middot; <strong>Benchmarks:</strong> Illustrative constants: P_k,max = 350 kW · ΔE_lap = 4.0 MJ (assumed) · FNO error 0.82% (untrained) &middot; <strong>Primary Anchor:</strong> <code>DOI 10.1080/00207179.2014.900705</code></p>
             </div>
             <p>

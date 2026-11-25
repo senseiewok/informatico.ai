@@ -26,6 +26,7 @@ FOLIO = {'folio_id': 'M.09',
  'primary_kernel': 'tools/discovery/frontier_ai_math_catalog.py',
  'governing_law': 'W_2²(μ_0, μ_1) = inf ∫_0^1 ∫ ρ|v|² dx dt · ∂_t ρ + ∇·(ρ∇ψ) = 0 · ∂_t ψ + ½|∇ψ|² '
                   '= 0',
+ 'governing_law_latex': r"W_2^2(\mu_0,\mu_1) = \inf \int_0^1 \int \rho |v|^2\,dx\,dt, \\ \partial_t \rho + \nabla \cdot (\rho \nabla \psi) = 0, \quad \partial_t \psi + \frac{1}{2}|\nabla \psi|^2 = 0",
  'colophon': {'identifier': 'M.09 · Benamou–Brenier Wasserstein-2 Optimal Transport',
               'kernels': 'Benamou–Brenier Continuity & HJB · Brenier Convex Potential ∇Φ · '
                          'Sinkhorn Scaling',

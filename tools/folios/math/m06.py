@@ -120,6 +120,7 @@ FOLIO = {'folio_id': 'M.06',
                         'exp(c √log n) sub-cubic divisor and step-level survival probability '
                         'prod_{k=1}^L p_k. (REV 1.2: "verified" wording withdrawn.)'}],
  'governing_law': 'O(n³ / 2^(Ω(√log n))) APSP (randomized) · Step-Level PRM',
+ 'governing_law_latex': r"O\left(\frac{n^3}{2^{\Omega(\sqrt{\log n})}}\right)\;\text{APSP (randomized)}, \\ \text{Step-Level PRM}",
  'volume': 3,
  'volume_code': 'VOL. 03',
  'reading_time': '22 MIN READ',

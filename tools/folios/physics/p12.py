@@ -24,6 +24,7 @@ FOLIO = {'folio_id': 'P.12',
  'status_badge': 'HILBERT 6TH + TUR · REV 1.4',
  'primary_kernel': 'tools/physics_kernel.py',
  'governing_law': 'Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² ≥ 2 · ∂_t f + v·∇_x f = (1/Kn) Q(f,f) ⇒ σ_visc = (2μ/T) S_ij S_ij ≥ 0',
+ 'governing_law_latex': r"Q_{\mathrm{TUR}} = \frac{\Delta S}{k_B}\frac{\mathrm{Var}(J)}{\langle J \rangle^2} \ge 2, \\ \partial_t f + v \cdot \nabla_x f = \frac{1}{\mathrm{Kn}} Q(f,f) \;\Longrightarrow \\ \sigma_{\mathrm{visc}} = \frac{2\mu}{T} S_{ij} S_{ij} \ge 0",
  'colophon': {'identifier': "P.12 · Hilbert's 6th & TUR Bridge: Markov Jumps → Boltzmann → Navier–Stokes · "
                             'arXiv:2503.01800',
               'kernels': 'Barato–Seifert TUR (Q_TUR ≥ 2) · Boltzmann–Grad (N ε^(d−1) = 1/Kn) · Deng–Hani–Ma '

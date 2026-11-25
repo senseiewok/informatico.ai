@@ -109,6 +109,7 @@ FOLIO = {'folio_id': 'M.05',
                         'Cayley-Menger determinant rank conditions and DD+AR fixed-point '
                         'termination. (REV 1.2: "verified" wording withdrawn.)'}],
  'governing_law': 'DD+AR Closure · Cayley-Menger det(B_5) = 0',
+ 'governing_law_latex': r"\mathrm{DD}+\mathrm{AR}\;\text{Closure}, \\ \det(B_5) = 0 \;(\text{Cayley–Menger})",
  'volume': 3,
  'volume_code': 'VOL. 03',
  'reading_time': '22 MIN READ',

@@ -25,6 +25,7 @@ FOLIO = {'folio_id': 'P.11',
  'status_badge': 'QUANTUM QEC & FEMOCO · REV 1.0',
  'primary_kernel': 'tools/physics_kernel.py',
  'governing_law': 'p_L ≈ 0.03 (p / p_th)^((d+1)/2) · [A_s, B_p] = 0 · H_FeMoCo |Ψ_0⟩ = E_0 |Ψ_0⟩',
+ 'governing_law_latex': r"p_L \approx 0.03 \left(\frac{p}{p_{\mathrm{th}}}\right)^{(d+1)/2}, \quad [A_s, B_p] = 0, \\ H_{\mathrm{FeMoCo}} |\Psi_0\rangle = E_0 |\Psi_0\rangle",
  'colophon': {'identifier': 'P.11 · Surface-Code Quantum Error Correction & FeMoCo Catalysis · '
                             'Stim / PySCF',
               'kernels': 'Kitaev Surface-Code Stabilizers [A_s, B_p] = 0 · Fowler Threshold p_th ≈ '
