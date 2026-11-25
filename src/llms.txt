@@ -2,7 +2,7 @@
 
 > 58 interactive long-form essays on civil engineering, architecture, physics and mathematics, in English and Spanish, each with a live model to explore.
 
-Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (99 SKILL.md companions, 50 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 7 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
+Every essay, Time & Gravity series page, bounty folio, and 3D CAD toolbox folio is also in Mexican Spanish under https://informatico.ai/es-mx/. Public open-source repository (100 SKILL.md companions, 51 Python verifiers that must fail under a planted defect, 14-step Time & Gravity ledger & verifiers, 6 Bounty Crucible harnesses & 8 Tech & Tools 3D CAD generators): https://github.com/senseiewok/informatico.ai . For learning and research, not professional or medical advice.
 
 ## Welcome, intelligent beings — agents, humans, and everyone learning together
 
@@ -107,9 +107,9 @@ May your questions be good, your checks honest, and your exploring full of joy.
 - [B.05 (BOUNTY-P2) PySR Symbolic Regression and PySINDy PDE Discovery](https://informatico.ai/bounties/b05/): How PySINDy sparse thresholding, Dedalus spectral solvers and PySR symbolic regression recover the viscous Burgers equation from noisy data in an example.
 - [B.06 (BOUNTY-M2) PhysLean Gauge Anomaly & ITensors.jl Entanglement](https://informatico.ai/bounties/b06/): How HEPLean/PhysLean treats Standard Model gauge anomaly cancellation in Lean 4, with ITensors.jl and NetKet entanglement bounds, in a worked Python example.
 
-## Tech & Tools · The 3D CAD, Open BIM & Small-Studio Toolbox (X.01–X.07)
+## Tech & Tools · The 3D CAD, Open BIM & Small-Studio Toolbox (X.01–X.08)
 
-- [Tech & Tools · The Toolbox](https://informatico.ai/toolchain/): Seven interactive 3D CAD and open-tool folios with downloadable STEP, 3MF, GLB and DXF files, Python byte-level verifiers, and skills for small studios.
+- [Tech & Tools · The Toolbox](https://informatico.ai/toolchain/): Eight interactive 3D CAD and open-tool folios with downloadable STEP, 3MF, GLB and DXF files, Python byte-level verifiers, and skills for small studios.
 - [X.01 (TOOL-CORE-1) Zero-Build WebGL2 GLB Viewer and Manifold Validator](https://informatico.ai/toolchain/x01/): How a zero-dependency WebGL2 loader parses binary glTF 2.0 files while a Python stdlib verifier checks watertight topology and signed mesh volume.
 - [X.02 (TOOL-ENG-1) Code-First Parametric Solids: STEP, 3MF and GLB](https://informatico.ai/toolchain/x02/): How independent engineers generate parametric B-rep solids in Python and audit what survives across STEP AP242, 3MF and GLB with chordal tolerances.
 - [X.03 (TOOL-ARCH-1) Small Architect's Vault, Timber and Open BIM Kit](https://informatico.ai/toolchain/x03/): How small architecture studios generate compression-only stone and timber voussoir arches in Python and export STEP, 3MF, DXF and GLB files checked by script.
@@ -117,6 +117,7 @@ May your questions be good, your checks honest, and your exploring full of joy.
 - [X.05 (TOOL-FAB-1) Tapered Strut Meshes: Watertight 3MF & Overhangs](https://informatico.ai/toolchain/x05/): How an illustrative four-station tapered strut is exported to closed 2-manifold 3MF, GLB and STEP files with Python frustum volume and overhang checks.
 - [X.06 (TOOL-PHYS-MATH-1) Topological Metamaterial Cells and Betti Verifier](https://informatico.ai/toolchain/x06/): How pierced genus-one acoustic metamaterial unit cells are exported to GLB, 3MF and STEP while a Python verifier checks Euler and Betti invariants.
 - [X.07 (TOOL-CORE-2) Gauss–Bonnet Curvature & Cotangent Mesh Audit](https://informatico.ai/toolchain/x07/): How pure Python checks discrete Gauss–Bonnet closure, Meyer mixed Voronoi areas, and cotangent edge weights across GLB, 3MF, and STEP.
+- [X.08 (TOOL-PHYS-MATH-2) Polyhedral Inertia & Tip-Over Balance Audit](https://informatico.ai/toolchain/x08/): How pure Python computes signed simplex volume, center of mass, principal inertia moments and base support tip-over margin across GLB, 3MF and STEP.
 - [Lean 4 Proof Observatory & Formal Math](https://informatico.ai/toolchain/proof-observatory/): How Lean 4 kernel checking works and how to audit public repositories on Fermat's Last Theorem, zeta zeros, 3SUM-APSP, and k-CNF counting.
 - [The AI Loop · Local Models & Verifiers](https://informatico.ai/toolchain/ai-loop/): Architecture for pairing open-weight local models on Ollama with frontier orchestration, tool-free diff review, and planted-defect Python verifiers.
 

@@ -403,9 +403,9 @@ PILLAR_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "toolchain": (
         "Tech & Tools · The 3D CAD & Open Toolbox | Informatico.ai",
-        "Seven interactive 3D CAD and open-tool folios with downloadable STEP, 3MF, GLB and DXF files, Python byte-level verifiers, and skills for small studios.",
+        "Eight interactive 3D CAD and open-tool folios with downloadable STEP, 3MF, GLB and DXF files, Python byte-level verifiers, and skills for small studios.",
         "Tecnología y Herramientas · Caja 3D y CAD | Informatico.ai",
-        "Siete folios interactivos de herramientas 3D y CAD abierto con archivos STEP, 3MF, GLB y DXF, verificadores en Python y habilidades para estudios.",
+        "Ocho folios interactivos de herramientas 3D y CAD abierto con archivos STEP, 3MF, GLB y DXF, verificadores en Python y habilidades para estudios.",
     ),
     # Time & Gravity hub (/timegravity/): the track pages' own copy lives in tools/folios/timegravity/<slug>.py ("seo").
     "timegravity": (
@@ -471,6 +471,12 @@ TOOLCHAIN_SEO: dict[str, tuple[str, str, str, str]] = {
         "How pure Python checks discrete Gauss–Bonnet closure, Meyer mixed Voronoi areas, and cotangent edge weights across GLB, 3MF, and STEP.",
         "Curvatura Gauss–Bonnet y Auditoría Cotangente",
         "Cómo Python comprueba el cierre de Gauss–Bonnet, las áreas mixtas de Meyer y los pesos cotangentes en archivos GLB, 3MF y STEP.",
+    ),
+    "x08": (
+        "Polyhedral Inertia & Tip-Over Balance Audit",
+        "How pure Python computes signed simplex volume, center of mass, principal inertia moments and base support tip-over margin across GLB, 3MF and STEP.",
+        "Inercia Poliédrica y Equilibrio al Volcamiento",
+        "Cómo Python calcula el volumen por símplices, el centro de masa, los momentos principales de inercia y el margen de volcamiento en GLB, 3MF y STEP.",
     ),
 }
 

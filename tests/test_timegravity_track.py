@@ -264,7 +264,7 @@ class TimeGravityTrackTests(unittest.TestCase):
         self.assertIn("(https://informatico.ai/timegravity/)", llms)
         self.assertIn("(https://informatico.ai/timegravity/t01/)", llms)
         self.assertIn("(https://informatico.ai/timegravity/t13/)", llms)
-        self.assertIn("99 SKILL.md companions", llms)  # +M.16 (2026-11-24); +M.15, +E.16, +A.14, +M.13, +M.14 (2026-11-21), +ES.12; +E.15, +E.14 (2026-11-21); +E.13, +A.13, +X.07 (2026-11-20); CC.01..CC.03
+        self.assertIn("100 SKILL.md companions", llms)  # +X.08, +M.16 (2026-11-24); +M.15, +E.16, +A.14, +M.13, +M.14 (2026-11-21), +ES.12; +E.15, +E.14 (2026-11-21); +E.13, +A.13, +X.07 (2026-11-20); CC.01..CC.03
         self.assertLess(llms.index("timegravity/t02/"), llms.index("timegravity/t01/"))
         self.assertIn("## Time & Gravity", llms)
 

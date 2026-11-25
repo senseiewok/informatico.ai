@@ -277,14 +277,14 @@ class SiteFiles(unittest.TestCase):
     def test_sitemap_lists_both_languages_with_alternates_and_real_dates(self):
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 222)  # +2: /math/m16/ (EN + es-MX)
-        self.assertEqual(len(set(locs)), 222)
-        self.assertEqual(sum("/es-mx/" in u for u in locs), 111)
+        self.assertEqual(len(locs), 224)  # +2: /toolchain/x08/ (EN + es-MX)
+        self.assertEqual(len(set(locs)), 224)
+        self.assertEqual(sum("/es-mx/" in u for u in locs), 112)
         self.assertNotIn("lang=es", xml)
         for loc in locs:
             self.assertIsNotNone(url_to_file(loc))
             self.assertTrue(url_to_file(loc).is_file(), loc)
-        self.assertEqual(xml.count('hreflang="es-MX"'), 222)
+        self.assertEqual(xml.count('hreflang="es-MX"'), 224)
         dates = set(re.findall(r"<lastmod>([^<]+)</lastmod>", xml))
         for d in dates:
             self.assertRegex(d, r"^\d{4}-\d{2}-\d{2}$")
@@ -293,7 +293,7 @@ class SiteFiles(unittest.TestCase):
         text = (RESEARCH / "llms.txt").read_text(encoding="utf-8")
         self.assertTrue(text.startswith("# Informatico.ai\n"))
         urls = re.findall(r"\]\((https://informatico\.ai/[^)]*)\)", text)
-        self.assertEqual(len(urls), 110)  # +1: /math/m16/
+        self.assertEqual(len(urls), 111)  # +1: /toolchain/x08/
         for u in urls:
             self.assertTrue(url_to_file(u).is_file(), u)
 
