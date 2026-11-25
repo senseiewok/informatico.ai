@@ -42,9 +42,9 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "e05": (
         "Terzaghi Soil Mechanics and CFA Deep Foundations",
-        "How Karl Terzaghi's effective stress principle and consolidation theory, with continuous flight auger piles, relate to settlement and excess pore pressure.",
-        "Mecánica de Suelos de Terzaghi y Pilas CFA",
-        "Cómo el esfuerzo efectivo y la consolidación de Karl Terzaghi, junto con las pilas CFA, se relacionan con el asentamiento y la presión de poro.",
+        "An explanatory model of Karl Terzaghi's effective stress, consolidation, and continuous flight auger piles; explanation only, not a design method.",
+        "Mecánica de Suelos de Terzaghi y Pilotes CFA",
+        "Modelo explicativo del esfuerzo efectivo y la consolidación de Karl Terzaghi con pilotes de barrena continua CFA; explicación, no método de diseño.",
     ),
     "e06": (
         "Nonlinear Structural Dynamics and Seismic Isolation",

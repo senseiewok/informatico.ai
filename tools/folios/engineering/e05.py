@@ -6,349 +6,425 @@ SLUG = 'e05'
 
 PILLAR = 'engineering'
 
-FOLIO = {'folio_id': 'E.05',
- 'slug': 'e05',
- 'pillar': 'engineering',
- 'category_code': 'E',
- 'title': 'Terzaghi Soil Mechanics, CFA Augercast Deep Foundation Piling & Excess Pore Pressure',
- 'subtitle': "How Karl Terzaghi's effective stress principle σ'_v = σ_v − u, hydrodynamic "
-             'consolidation ∂u/∂t = c_v ∂²u/∂z², and Continuous Flight Auger (CFA) deep '
-             'foundations relate to structural settlement and excess pore pressure.',
- 'date_published': '2026-11-01',
- 'date_redated': '2026-11-14',
- 'current_edition': 'REV 1.2',
- 'status_badge': 'CIVIL & GEOTECHNICAL · REV 1.2',
- 'primary_kernel': 'tools/continuum_verify.py',
- 'governing_law': "∂u/∂t = c_v ∂²u/∂z² · Q_ult = Q_skin + Q_toe · r_u = Δu / σ'_{v0}",
- 'colophon': {'identifier': 'E.05 · Geotechnical & Deep Foundations · CSI 31 63 23',
-              'kernels': "σ'_v = σ_v − u · ∂u/∂t = c_v ∂²u/∂z² · CFA Bearing",
-              'benchmarks': 'Model values at defaults: T_v = 0.320 · U_avg = 63.2% (H_dr = 6 m, t = '
-                            '3.6 yr)',
-              'bridge': 'Terzaghi Consolidation'},
- 'sliders': [{'label': 'Foundation Surcharge Load (Δq)',
-              'min': 40.0,
-              'max': 260.0,
-              'step': 5.0,
-              'value': 120.0,
-              'unit': ' kPa'},
-             {'label': 'Consolidation Coefficient (c_v)',
-              'min': 0.5,
-              'max': 8.0,
-              'step': 0.1,
-              'value': 3.2,
-              'unit': ' m²/yr'}],
- 'steps': ['Stage 1 (Undrained Surcharge Application, t = 0⁺): Structural surcharge Δq = 120 kPa '
-           'transfers initially 100% into excess pore-water pressure Δu(z, 0) = Δq.',
-           'Stage 2 (Terzaghi Hydrodynamic Dissipation): Pore water drains toward permeable sand '
-           'boundaries via ∂u/∂t = c_v ∂²u/∂z². The page assumes a drainage path H_dr = 6 m and '
-           'an elapsed time t = 3.6 years, so T_v = 3.2 × 3.6 / 6² = 0.320 and U_avg = 1 − '
-           '(8/π²) exp(−π² T_v / 4) = 63.2%.',
-           'Stage 3 (CFA Augercast Shaft + Toe Mobilization): A 750 mm diameter, 24 m deep CFA '
-           'pile carries load by shaft friction and toe bearing. The page uses fixed '
-           'illustrative capacities of 2,380 kN (shaft) and 1,980 kN (toe), and the folio assumes '
-           'that residual pore pressure reduces them by factors of 0.65 r_u (shaft) and 0.35 r_u '
-           '(toe): Q_ult = 2,380 × (1 − 0.65 r_u) + 1,980 × (1 − 0.35 r_u). With r_u = 0.221 '
-           '(Stage 4, unrounded) this gives Q_ult = 3,865 kN against an assumed design load of '
-           '1,400 kN + 1.25 kN per kPa of surcharge (FS = 2.49). The 0.65 and 0.35 factors are '
-           "this folio's own assumptions, not code values.",
-           "Stage 4 (Pore-Pressure Ratio, r_u = Δu / σ'_{v0}): The residual excess pore pressure "
-           "after consolidation, Δu = Δq (1 − U_avg) = 44.2 kPa, over an assumed σ'_{v0} = 200 kPa "
-           "gives r_u = 0.22. This is a consolidation ratio, not a seismic liquefaction analysis; "
-           'r_u = 1 would mean zero effective stress, and the page flags r_u ≥ 0.70 as its own '
-           'screening choice.'],
- 'readouts': [{'label': 'Average Consolidation U_avg', 'value': '63.2% (S_c = 42.2 mm, model)'},
-              {'label': 'CFA Ultimate Pile Capacity', 'value': '3,865 kN (FS = 2.49, model)'},
-              {'label': 'Pore-Pressure Ratio r_u', 'value': "0.22 (σ'_v = 156 kPa)"},
-              {'label': 'Geotechnical Verdict', 'value': 'MODEL FS ≥ 2.0 · ILLUSTRATIVE, NOT A SITE DESIGN'}],
- 'spec_plate': {'division': 'CSI MASTERFORMAT 31 63 23 / FHWA GEC-8',
-                'title': 'Continuous Flight Auger (CFA) Augercast Deep Foundation Piles',
-                'body': 'Illustrative design sketch, not a project specification: CFA piles (D = '
-                        "750 mm, L = 24 m, f'_c = 40 MPa grout) installed with automated "
-                        'monitoring of depth, torque and pumped grout volume. The grout-volume '
-                        'target of more than 115% of theoretical volume is a design assumption '
-                        'of this page; check the current FHWA guidance for the actual criteria.',
-                'meta': 'Design sketch · FHWA GEC No. 8 is the FHWA design and construction '
-                        'manual for CFA piles; no site data stand behind this plate'},
- 'sidenote_1': {'kicker': 'SIDENOTE E.05-A · TERZAGHI EFFECTIVE STRESS & TIME FACTOR T_v',
-                'body': 'Consolidation settlement depends on the dimensionless time factor T_v = '
-                        'c_v t / H_dr². A clay layer drained at top and bottom (H_dr = H/2) '
-                        'reaches a given degree of consolidation 4× faster than the same layer '
-                        'drained on one side only.'},
- 'sidenote_2': {'kicker': 'SIDENOTE E.05-B · SPECIFICATION PLATE · CSI 31 63 23 (CFA PILES)',
-                'body': "Design sketch of continuous flight auger (augercast) piles (D = 750 mm, L "
-                        "= 24 m, f'_c = 40 MPa grout, design target of more than 115% "
-                        'theoretical grout volume) with automated rig monitoring.'},
- 'skill': {'filename': 'terzaghi-cfa-geotechnical-piling-SKILL.md',
-           'name': 'terzaghi-cfa-geotechnical-piling',
-           'description': 'AI-agnostic civil geotechnical engineering skill for Terzaghi 1D '
-                          "consolidation (du/dt = c_v d^2u/dz^2), effective stress sigma'_v = "
-                          'sigma_v - u, CFA deep foundation capacity, and excess pore-pressure r_u '
-                          'screening.',
-           'rules': ['Compute Terzaghi dimensionless time factor T_v = (c_v * t) / H_dr^2 and '
-                     'degree of consolidation U_avg = sqrt(4*T_v/pi) for T_v <= 0.286 or U_avg = 1 '
-                     '- (8/pi^2)*exp(-pi^2 * T_v / 4) for T_v > 0.286.',
-                     'Evaluate axial CFA pile ultimate capacity Q_ult = Q_skin + Q_toe using '
-                     "effective overburden stress sigma'_v(z) = sigma_v(z) - u(z); this folio assumes the "
-                     'shaft term is scaled by (1 - 0.65 r_u) and the toe term by (1 - 0.35 r_u), '
-                     'its own illustrative factors.',
-                     'Flag the design for review whenever excess pore-pressure ratio r_u = '
-                     "Delta_u / sigma'_v0 >= 0.70 or factor of safety FS = Q_ult / P_design < 2.0 "
-                     "(both are this folio's screening choices, not code values); a real "
-                     'liquefaction assessment needs a site-specific cyclic analysis.']},
- 'revisions': [{'edition': 'REV 1.2',
-                'date': '2026-11-14',
-                'summary': 'REV 1.2 (Redated 2026-11-14): Grounding revision. The source entry for DOI '
-                           '10.1061/(ASCE)GT.1943-5606.0000073 was corrected to Gavin, Cadogan & '
-                           'Casey, the readouts were recomputed from the page model (U_avg = '
-                           '63.2%, Q_ult = 3,865 kN, r_u = 0.22), and the invented 1925 workshop '
-                           'scene and an unsourced 4.2 mm settlement result were removed. A '
-                           'later review corrected the page further: the pore-pressure ratio r_u '
-                           'is now described as a consolidation quantity, not a liquefaction '
-                           'result, the 0.65 and 0.35 capacity-reduction factors behind '
-                           '3,865 kN are stated, and unsourced liquefaction and drainage claims '
-                           'were removed.',
-                'opus': 'Review: every DOI in the folio was checked in Crossref and the Scite '
-                        'index on 2026-11-14, and the repository names with the GitHub API. No '
-                        'finite-element analysis or site data stand behind this folio; its '
-                        'numbers come from the closed-form model and the stated assumptions.'},
-               {'edition': 'REV 1.1',
-                'date': '2026-11-02',
-                'summary': 'REV 1.1 (Redated 2026-11-02): Verified Karl Terzaghi effective stress '
-                           "(sigma'_v = sigma_v - u) & 1D consolidation (du/dt = c_v d^2u/dz^2), "
-                           'CFA deep foundation shaft + toe bearing (Q_ult = Q_skin + Q_toe), and '
-                           "Seed-Idriss liquefaction surcharge (r_u = Delta_u / sigma'_v0, CSI 31 "
-                           '63 23, FHWA GEC-8).',
-                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): reviewed '
-                        'the consolidation formulas. The word "Verified" in this note and the note '
-                        'below is withdrawn in REV 1.2; the earlier readouts (64.2%, 4,180 kN, '
-                        'r_u = 0.28) did not follow from the page model.'},
-               {'edition': 'REV 1.0',
-                'date': '2026-11-01',
-                'summary': 'REV 1.0 (Published 2026-11-01): Initial 5-Act civil geotechnical '
-                           'monograph on Terzaghi effective stress consolidation, CSI 31 63 23 CFA '
-                           'deep piling, and Seed-Idriss liquefaction surcharge.',
-                'opus': 'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B): Verified '
-                        'Fourier series consolidation isochrones, T_v = c_v t / H_dr² scaling, and '
-                        'effective-stress CFA shaft capacity.'}],
- 'volume': 3,
- 'volume_code': 'VOL. 03',
- 'reading_time': '22 MIN READ',
- 'word_count': '4,650 WORDS',
- 'scite': {'doi': '10.1061/(ASCE)GT.1943-5606.0000073',
-           'fetched_on': '2026-11-08',
-           'citing_publications': 39,
-           'supporting': 0,
-           'mentioning': 3,
-           'contrasting': 0,
-           'retracted': False,
-           'summary': 'Scite index entry for Gavin, Cadogan & Casey 2009, Shaft Capacity of '
-                      'Continuous Flight Auger Piles in Sand (DOI '
-                      '10.1061/(ASCE)GT.1943-5606.0000073), as recorded 2026-11-08: 39 citing '
-                      'publications (0 supporting, 3 mentioning, 0 contrasting) and no '
-                      'retraction notice. These counts describe that one paper, not this '
-                      'folio.'}}
+_SCITE_RECORD = {
+    'doi': '10.1061/(ASCE)GT.1943-5606.0000073',
+    'fetched_on': '2026-11-08',
+    'citing_publications': 39,
+    'supporting': 0,
+    'mentioning': 3,
+    'contrasting': 0,
+    'retracted': False,
+    'summary': (
+        'Scite index entry [observed: Scite ML citation classification, accessed 2026-11-08] for '
+        'Gavin, Cadogan & Casey (2009), Shaft Capacity of Continuous Flight Auger Piles in Sand '
+        '(DOI 10.1061/(ASCE)GT.1943-5606.0000073). It records 39 citing publications (distinct '
+        'from statement tallies: 0 supporting, 3 mentioning, 0 contrasting) and no retraction '
+        "notice. That paper reports sand tests, not this folio's assumed clay factors."
+    ),
+}
 
-LONGFORM_DATA = {'reading_time': '22 MIN READ',
- 'word_count': '4,650 WORDS',
- 'scite': {'doi': '10.1061/(ASCE)GT.1943-5606.0000073',
-           'fetched_on': '2026-11-08',
-           'citing_publications': 39,
-           'supporting': 0,
-           'mentioning': 3,
-           'contrasting': 0,
-           'retracted': False,
-           'summary': 'Scite index entry for Gavin, Cadogan & Casey 2009, Shaft Capacity of '
-                      'Continuous Flight Auger Piles in Sand (DOI '
-                      '10.1061/(ASCE)GT.1943-5606.0000073), as recorded 2026-11-08: 39 citing '
-                      'publications (0 supporting, 3 mentioning, 0 contrasting) and no '
-                      'retraction notice. These counts describe that one paper, not this '
-                      'folio.'},
- 'act1_title': "Act I — Karl Terzaghi's Effective Stress Revolution and Continuous Flight Auger "
-               '(CFA) Deep Piling',
- 'act1_dropcap': 'In 1925 the Austrian engineer Karl Terzaghi, then teaching at Robert College '
-                 'in Constantinople (Istanbul), published Erdbaumechanik, the book usually taken '
-                 'as the start of modern soil mechanics. Builders had long seen structures on '
-                 'clay settle unevenly, sometimes for years. Terzaghi treated saturated ground as '
-                 'two phases, mineral grains and pore water, and set out two ideas that are still '
-                 'taught: the principle of effective stress, which says the grains carry only the '
-                 'total stress minus the pore-water pressure, and a theory of one-dimensional '
-                 'consolidation, in which a new load is first carried by the water and passes to '
-                 'the grains only as water drains away.',
- 'act1_plain_bridge': 'Think of stepping your foot onto a waterlogged kitchen sponge resting on a '
-                      'kitchen counter. The instant your shoe presses down, you do not compress '
-                      'the foam fibers right away. Instead, you pressurize the water trapped '
-                      'inside the tiny pores, sending water squirting out across the sides. Only '
-                      'after that trapped water drains away do the rubbery sponge fibers finally '
-                      'compress and flatten out. Saturated soil beneath a skyscraper acts in the '
-                      'exact same manner. When a heavy concrete tower is constructed, the trapped '
-                      'groundwater initially carries the weight. Over months and years, water '
-                      'slowly seeps out through tiny underground passages, allowing the sand and '
-                      'clay grains to lock together and support the building. Earthquake shaking of '
-                      'loose wet sand is a different problem: water pressure can rise and push '
-                      'the grains apart, which engineers assess separately. Deep concrete piles '
-                      'that carry load to firmer layers are one tool for that, not a guarantee.',
- 'act1_body': 'Because water is virtually incompressible, any sudden foundation surcharge applied '
-              'to saturated, low-permeability clay is initially borne entirely by excess '
-              "pore-water pressure. Only as pore water slowly drains according to Terzaghi's "
-              'one-dimensional diffusion equation does load transfer to the mineral skeleton, '
-              'generating primary consolidation settlement. To bypass soft, compressible alluvial '
-              'soils and avoid decades of destructive differential settlement, modern heavy civil '
-              'projects utilize Continuous Flight Auger deep foundation piles. A hollow-stem auger '
-              'drills into competent load-bearing strata at depth, pumping high-strength cement '
-              'grout under pressure as the tooling is withdrawn. This continuous installation '
-              'mobilizes both cylindrical shaft friction and toe bearing capacity without casing '
-              'vibration. Field tests show how shaft resistance develops on CFA piles in sand '
-              '(Gavin, Cadogan & Casey 2009, DOI 10.1061/(ASCE)GT.1943-5606.0000073). '
-              'Separately, prefabricated vertical drains can be installed in soft clay to shorten '
-              'drainage paths so consolidation happens faster; how much faster depends on drain '
-              'spacing and soil properties, and no design can guarantee serviceability without '
-              'site investigation and monitoring.',
- 'act1_stakes': 'When geotechnical engineers ignore excess pore-water pressure and assume '
-                'instantaneous soil settlement, the consequences for civil infrastructure are '
-                'severe. In heavy building construction, failing to account for low consolidation '
-                'rates causes structures to experience severe differential settlement decades '
-                'after ribbon-cutting ceremonies, cracking structural load-bearing walls, warping '
-                'elevator shafts, and rupturing buried utility mains. Under dynamic cyclic '
-                'loading, such as earthquake ground motions, pore pressure can also build up in '
-                'loose saturated sand. That is a different process from consolidation under a '
-                'steady surcharge, and it needs its own site-specific assessment. Engineers reduce these risks with site '
-                'investigation, liquefaction assessment, ground improvement and, where suitable, '
-                'deep foundations that carry load down into denser layers below the liquefiable '
-                'zone. Deep piles in liquefiable ground still need design for lost shaft support '
-                'and downdrag; they are one tool, not a guarantee.',
- 'pullquote': '"Soil grains do not know the total weight of the skyscraper above them; they feel '
-              "only the Terzaghi effective stress sigma'_v = sigma_v - u remaining after "
-              'pore-water pressure is subtracted."',
- 'chronology': [('1925',
-                 'Karl Terzaghi publishes Erdbaumechanik, establishing the principle of effective '
-                 "stress sigma'_v = sigma_v - u and 1D consolidation."),
-                ('1948',
-                 'Terzaghi & Ralph Peck publish Soil Mechanics in Engineering Practice, a '
-                 'standard text on bearing capacity and settlement design.'),
-                ('1971',
-                 'H. Bolton Seed & I. M. Idriss publish their simplified procedure for evaluating '
-                 'soil liquefaction potential (DOI 10.1061/JSFEAQ.0001662).'),
-                ('2007',
-                 'FHWA Geotechnical Engineering Circular No. 8 (Brown et al.) gives design and '
-                 'construction guidance for Continuous Flight Auger (CFA) piles.')],
- 'act2_title': 'Act II — How It Actually Works: Pore-Water Isochrones, CFA Pile Bearing & '
-               'Excess Pore-Pressure Ratio r_u',
- 'act2_analogy': 'Stepping onto a soaking wet kitchen sponge first pressurizes the water trapped '
-                 'in its pores; the foam skeleton only compresses as that water escapes. '
-                 'Terzaghi consolidation is the slow squeezing out of that trapped water. The '
-                 'ratio r_u on this page tracks how much of the load the water is still '
-                 'carrying: the higher it is, the lower the effective stress between the grains.',
- 'act2_plain_primer': 'To see how geotechnical engineers design stable foundations, our simulation '
-                      'gives you two fundamental dials that control ground behavior. The first '
-                      'dial is the Foundation Surcharge Load, which represents the immense weight '
-                      'of the building or bridge pushing down on the earth. Increasing this dial '
-                      'places greater stress on the subterranean soil, demanding that both the '
-                      'trapped water and the mineral grains carry more burden. The second dial is '
-                      'the Consolidation Coefficient, which dictates how quickly water can squeeze '
-                      'out through microscopic soil pores. If you set this drainage dial high, '
-                      'trapped water escapes faster and the ground settles sooner. If you turn it '
-                      'down, as in a dense, slow-draining clay, the water remains under pressure '
-                      'for years. The dial runs from 0.5 to 8 m²/yr, a clay range; a clean sand '
-                      'would drain much faster than anything on this scale. Tuning both knobs '
-                      'shows how excess pore pressure builds up under heavy loading, and why '
-                      'engineers sometimes turn to deep foundation piles when surface soils drain '
-                      'too slowly.',
- 'distill_diagram': {'analogy_title': 'Waterlogged Sponge & Excess Pore Pressure',
-                     'analogy_sub': 'Trapped water bears load until slow pore drainage settles '
-                                    'skeleton.',
-                     'force_a_title': 'Foundation Surcharge (Δq)',
-                     'force_a_sub': 'Total downward building weight pressurizing soil pore water.',
-                     'force_b_title': 'Consolidation Speed (c_v)',
-                     'force_b_sub': 'Rate of hydrodynamic pore-water dissipation through strata.',
-                     'threshold_title': "Excess Pore-Pressure Ratio (r_u = Δu / σ'_v0)",
-                     'threshold_pass': 'Low r_u: Effective stress stays positive, grains and '
-                                       'piles carry the load.',
-                     'threshold_fail': 'High r_u: Excess pore pressure carries more of the load, '
-                                       'effective stress falls.'},
- 'act2_intuition': 'Under an applied surface surcharge Delta_q, the dimensionless time factor T_v '
-                   '= (c_v * t) / H_dr^2 dictates the transient degree of consolidation: for T_v '
-                   '<= 0.286, average settlement follows U_avg = sqrt(4 * T_v / pi). '
-                   'Simultaneously, a Continuous Flight Auger pile of diameter D = 0.75 m and '
-                   'length L = 24.0 m transfers axial load through combined shaft skin friction '
-                   "Q_skin = integral(beta * sigma'_v(z) * pi * D dz) and end-bearing toe "
-                   'resistance Q_toe = q_b * A_toe. However, if seismic shaking or rapid undrained '
-                   'loading raises excess pore-water pressure Delta_u such that the pore-pressure '
-                   "ratio r_u = Delta_u / sigma'_v0 approaches unity, effective stress falls "
-                   'toward zero. Where effective stress is zero, intergranular friction '
-                   'vanishes and that layer stops contributing shaft support (a real '
-                   'liquefaction assessment needs a site-specific cyclic analysis, which this '
-                   'page does not do). '
-                   "A coupled analysis based on Biot's poroelasticity, which a reader could build "
-                   'with a finite-element library such as FEniCS/dolfinx '
-                   '(https://github.com/FEniCS/dolfinx; one of its method papers: DOI '
-                   '10.1145/3524456), would show how axial load sheds down the shaft into deeper '
-                   'bearing layers when upper layers soften. No such analysis was run for this '
-                   'folio. On this page, settlement is a simple scaling (66.7 mm at full '
-                   'consolidation under 120 kPa, times U_avg) and capacity uses fixed '
-                   'illustrative values.',
- 'act2_deepening': 'The micro-mechanical interplay between pore-water dissipation and soil '
-                   'skeleton stiffness governs the nonlinear rate of consolidation settlement. In '
-                   'cohesive clay formations, hydraulic permeability is not constant; as excess '
-                   'water drains, the void ratio decreases, compressing pore throats and reducing '
-                   'permeability. This permeability reduction '
-                   'creates an evolving nonlinear consolidation front where drainage slows '
-                   'progressively over time. Concurrently, load transfer along a deep augercast '
-                   'pile shaft engages non-uniform shear stress distributions. In the upper '
-                   'strata, high soil compressibility requires larger downward displacement to '
-                   'mobilize ultimate skin friction, while the stiffer basal sands develop '
-                   'immediate end-bearing resistance. If sudden cyclic earthquake shearing occurs, '
-                   'contractive tendencies in loose granular layers induce positive excess pore '
-                   'pressures that degrade shaft resistance from the ground surface downward. '
-                   'Finite-element models can represent this progressive load transfer; none was '
-                   'run for this folio.',
- 'walkthrough': ['Experiment 1 (Foundation Surcharge & Settlement): Increase Foundation Surcharge '
-                 'Delta_q from 60 kPa to 220 kPa. Watch primary consolidation settlement S_c rise '
-                 'while the parabolic pore-pressure isochrone bulges rightward.',
-                 'Experiment 2 (Consolidation Coefficient & Pore-Pressure Check): Lower '
-                 'Consolidation Coefficient c_v toward 0.8 m^2/yr under high surcharge to observe '
-                 'undrained excess pore-pressure buildup (r_u > 0.65) and reduced CFA factor of '
-                 'safety.',
-                 'Experiment 3 (4-Stage Geotechnical Stepper): Click Stages 1 to 4 to trace '
-                 'undrained surcharge loading, Terzaghi hydrodynamic dissipation, CFA shaft + toe '
-                 'mobilization, and excess pore-pressure screening.'],
- 'act4_title': 'Act IV — Automated Geotechnical Rig Telemetry & the Structural & Civil Engineering '
-               'Specification Bridge',
- 'act4_human_ai': 'CFA rigs are commonly instrumented to record depth, torque, penetration '
-                  'rate and pumped grout volume. As a proposal, not something this folio has '
-                  'done, those records could be combined with effective-stress models to flag '
-                  'piles for review. A reader could explore this with a finite-element library '
-                  'such as FEniCS/dolfinx (one of its method papers: DOI 10.1145/3524456) or with '
-                  'sparse identification of settlement trends from piezometer data '
-                  '(dynamicslab/pysindy, DOI 10.1073/pnas.1517384113). Neither was run here, and '
-                  'no model makes a foundation guaranteed-safe. References were checked in the '
-                  'Scite index (DOI 10.1162/qss_a_00146).',
- 'act4_deepening': 'Looking ahead, and offered as a research direction: machine-learning '
-                   'models could read drilling records from instrumented CFA rigs and flag piles '
-                   'where the auger may not have reached the intended bearing layer or met '
-                   'unexpected soft pockets. Engineers would still interpret the results, judge '
-                   'pile integrity and decide on acceptance under the applicable codes. Open frontier '
-                   'questions focus on predicting multi-decade creep settlement under variable '
-                   'sea-level rise and modeling microbially induced calcite precipitation to '
-                   'reinforce liquefiable sands in situ. Combining instrument records with '
-                   'sound soil mechanics can make foundations more resilient, though no method '
-                   'removes earthquake risk.',
- 'sources': ['Gavin, K. G., Cadogan, D., & Casey, P. (2009). Shaft Capacity of Continuous Flight '
-             'Auger Piles in Sand. Journal of Geotechnical and Geoenvironmental Engineering, '
-             '135(6), 790–798. DOI: 10.1061/(ASCE)GT.1943-5606.0000073.',
-             'Terzaghi, K., Peck, R. B., & Mesri, G. (1996). Soil Mechanics in Engineering '
-             'Practice (3rd ed.). Wiley.',
-             'Seed, H. B., & Idriss, I. M. (1971). Simplified procedure for evaluating soil '
-             'liquefaction potential. Journal of the Soil Mechanics and Foundations Division, '
-             'ASCE, 97(9), 1249–1273. DOI: 10.1061/JSFEAQ.0001662.',
-             'Brown, D. A., Dapp, S. D., Thompson, W. R., & Lazarte, C. A. (2007). Design and '
-             'Construction of Continuous Flight Auger (CFA) Piles (FHWA GEC No. 8). Federal '
-             'Highway Administration.',
-             'Scroggs, M. W., Dokken, J. S., Richardson, C. N., & Wells, G. N. (2022). Construction of Arbitrary Order Finite Element Degree-of-Freedom Maps on Polygonal and Polyhedral Cell Meshes (FEniCS/dolfinx, https://github.com/FEniCS/dolfinx). ACM Transactions on Mathematical Software, 48(2), 18:1–18:23. DOI: 10.1145/3524456.',
-             'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
-             'context of citations and classifies their intent using deep learning '
-             '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
-             '10.1162/qss_a_00146.'],
- 'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Terzaghi 1D '
+FOLIO = {
+    'folio_id': 'E.05',
+    'slug': 'e05',
+    'pillar': 'engineering',
+    'category_code': 'E',
+    'title': 'Terzaghi Soil Mechanics, CFA Augercast Deep Foundation Piling & Excess Pore Pressure',
+    'subtitle': (
+        "An explanatory geotechnical model of Karl Terzaghi's effective stress, consolidation, "
+        'and continuous flight auger piles under assumed parameters. It is not a foundation or '
+        'structural design method, and no number here belongs on a real structure.'
+    ),
+    'date_published': '2026-11-01',
+    'date_redated': '2026-11-14',
+    'current_edition': 'REV 1.2',
+    'status_badge': 'CIVIL & GEOTECHNICAL · REV 1.2',
+    'primary_kernel': 'tools/folios/engineering/e05.py',
+    'kernel_verdict': 'Not independently verified',
+    'kernel_verdict_es': 'Sin verificación independiente',
+    'governing_law': "∂u/∂t = c_v ∂²u/∂z² · Q_ult = Q_skin + Q_toe · r_u = Δu / σ'_{v0}",
+    'colophon': {
+        'identifier': 'E.05 · Geotechnical & Deep Foundations · Teaching Model',
+        'kernels': "σ'_v = σ_v − u · ∂u/∂t = c_v ∂²u/∂z² · Assumed CFA Model",
+        'benchmarks': 'Assumed defaults: T_v = 0.320 · U_avg = 63.2% · Q_ult = 3,865 kN',
+        'bridge': 'Terzaghi Consolidation (Explanatory Model)',
+    },
+    'sliders': [
+        {
+            'label': 'Foundation Surcharge Load (kPa)',
+            'min': 40.0,
+            'max': 260.0,
+            'step': 5.0,
+            'value': 120.0,
+            'unit': ' kPa',
+        },
+        {
+            'label': 'Consolidation Coefficient (m²/yr)',
+            'min': 0.5,
+            'max': 8.0,
+            'step': 0.1,
+            'value': 3.2,
+            'unit': ' m²/yr',
+        },
+    ],
+    'steps': [
+        (
+            'Stage 1 (Undrained Surcharge Application, t = 0⁺): Assumed surcharge Δq = 120 kPa '
+            'transfers initially into excess pore pressure Δu(z, 0) = Δq in saturated clay '
+            '(Terzaghi 1925).'
+        ),
+        (
+            'Stage 2 (Terzaghi Hydrodynamic Dissipation): With assumed H_dr = 6 m and t = 3.6 yr '
+            'at c_v = 3.2 m²/yr, T_v = 0.320 gives U_avg = 63.2% and assumed settlement '
+            'S_c = (Δq / 120) × 66.7 × U_avg = 42.2 mm.'
+        ),
+        (
+            'Stage 3 (Assumed CFA Shaft + Toe Model): Illustrative 750 mm by 24 m CFA capacities '
+            'follow Q_ult = 2,380 × (1 − 0.65 r_u) + 1,980 × (1 − 0.35 r_u) = 3,865 kN at '
+            'unrounded r_u = 0.2208 against assumed P_design = 1,400 + 1.25 Δq = 1,550 kN '
+            '(FS = 2.49; untested assumptions, not a design method).'
+        ),
+        (
+            'Stage 4 (Consolidation Pore-Pressure Ratio): Residual Δu = Δq (1 − U_avg) = 44.2 kPa '
+            "over assumed σ'_{v0} = 200 kPa gives r_u = 0.22 (σ'_v = 156 kPa), distinct from "
+            'seismic liquefaction (Seed & Idriss 1971, DOI 10.1061/JSFEAQ.0001662); r_u ≥ 0.70 or '
+            'FS < 2.0 is an illustrative alert.'
+        ),
+    ],
+    'readouts': [
+        {'label': 'Average Consolidation U_avg (Model)', 'value': '63.2% (S_c = 42.2 mm, model)'},
+        {'label': 'CFA Pile Capacity (Illustrative)', 'value': '3,865 kN (FS = 2.49, model)'},
+        {'label': 'Consolidation Ratio r_u (Assumed)', 'value': "0.22 (σ'_v = 156 kPa)"},
+        {'label': 'Illustrative Model Check', 'value': 'MODEL FS ≥ 2.0 · ILLUSTRATIVE, NOT A SITE DESIGN'},
+    ],
+    'spec_plate': {
+        'division': 'CONCEPT NOTE · CSI 31 63 23 FILING LABEL / FHWA GEC-8 (NOT A SPEC)',
+        'title': 'Continuous Flight Auger (CFA) Deep Foundation Concept Note',
+        'body': (
+            'Untested explanatory note, not a specification or design method: illustrative CFA '
+            "piles (D = 750 mm, L = 24 m, assumed f'_c = 40 MPa grout) monitored for depth, "
+            'torque, and grout volume (Brown et al. 2007, FHWA GEC No. 8; CSI 31 63 23 is a '
+            'filing label only). No number here belongs on a real foundation.'
+        ),
+        'meta': (
+            'Explanatory note · FHWA GEC No. 8 provides agency guidance for CFA piles; '
+            'no site data stand behind this folio'
+        ),
+    },
+    'sidenote_1': {
+        'kicker': 'SIDENOTE E.05-A · TERZAGHI EFFECTIVE STRESS & TIME FACTOR T_v',
+        'body': (
+            'Under Terzaghi (1925), T_v = c_v t / H_dr² governs 1D consolidation; double drainage '
+            '(H_dr = H/2) divides consolidation time by four for uniform clay.'
+        ),
+    },
+    'sidenote_2': {
+        'kicker': 'SIDENOTE E.05-B · CONCEPT NOTE · CSI 31 63 23 LABEL (NOT A SPEC)',
+        'body': (
+            'Untested note, not a specification: illustrative CFA geometry (D = 750 mm, L = 24 m) '
+            'and rig logs (Brown et al. 2007); no number belongs on real work.'
+        ),
+    },
+    'skill': {
+        'filename': 'terzaghi-cfa-geotechnical-piling-SKILL.md',
+        'name': 'terzaghi-cfa-geotechnical-piling',
+        'description': (
+            'Explanatory geotechnical reference (not a foundation or structural design method) '
+            'for Terzaghi 1D consolidation, effective stress, and an illustrative continuous '
+            'flight auger pile algebraic model; no number here may be used on a real structure.'
+        ),
+        'rules': [
+            (
+                'Explanatory model only, not a geotechnical or structural design method (no '
+                'number here may be used on a real structure): with assumed H_dr = 6 m and '
+                't = 3.6 yr, compute T_v = c_v * t / H_dr^2, piecewise U_avg(T_v), and assumed '
+                'S_c = (Delta_q / 120) * 66.7 * U_avg.'
+            ),
+            (
+                'Evaluate illustrative Q_ult = max(650, 2,380 * (1 - 0.65 * r_u) + 1,980 * '
+                '(1 - 0.35 * r_u)) against assumed P_design = 1,400 + 1.25 * Delta_q using '
+                'r_u = min(0.98, Delta_q * (1 - U_avg) / 200) (untested assumptions, not code '
+                'values).'
+            ),
+            (
+                'Treat r_u >= 0.70 or FS = Q_ult / P_design < 2.0 as an illustrative alert, not '
+                'a code check; cyclic liquefaction (Seed & Idriss 1971, DOI '
+                '10.1061/JSFEAQ.0001662) requires site testing.'
+            ),
+        ],
+    },
+    'revisions': [
+        {
+            'edition': 'REV 1.2',
+            'date': '2026-11-14',
+            'summary': (
+                'REV 1.2 (Redated 2026-11-14): Grounding revision. Corrected DOI '
+                '10.1061/(ASCE)GT.1943-5606.0000073 to Gavin, Cadogan & Casey (2009), recomputed '
+                'closed-form readouts (U_avg = 63.2%, S_c = 42.2 mm, Q_ult = 3,865 kN, r_u = '
+                '0.22), removed unsourced claims, aligned Experiment 2 and SVG curves with '
+                'solvers.mjs, and set the non-design-method boundary.'
+            ),
+            'opus': (
+                'Review: references checked in Crossref and Scite; no finite-element model or '
+                'site data stand behind this folio.'
+            ),
+        },
+        {
+            'edition': 'REV 1.1',
+            'date': '2026-11-02',
+            'summary': (
+                'REV 1.1 (Redated 2026-11-02): Revised Terzaghi effective stress, 1D '
+                'consolidation, and CFA shaft + toe bearing discussion.'
+            ),
+            'opus': (
+                'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B); earlier "Verified" wording '
+                'and mismatched readouts (64.2%, 4,180 kN, r_u = 0.28) withdrawn in REV 1.2.'
+            ),
+        },
+        {
+            'edition': 'REV 1.0',
+            'date': '2026-11-01',
+            'summary': (
+                'REV 1.0 (Published 2026-11-01): Initial 5-Act geotechnical monograph on Terzaghi '
+                'consolidation and CFA deep piling.'
+            ),
+            'opus': (
+                'Cross-model check (Gemini 4 Argon + Qwen 3.8 27B); earlier "Verified" wording '
+                'withdrawn in REV 1.2.'
+            ),
+        },
+    ],
+    'volume': 3,
+    'volume_code': 'VOL. 03',
+    'reading_time': '20 MIN READ',
+    'word_count': '~4,450 WORDS',
+    'scite': _SCITE_RECORD,
+}
+
+LONGFORM_DATA = {
+    'reading_time': '20 MIN READ',
+    'word_count': '~4,450 WORDS',
+    'scite': _SCITE_RECORD,
+    'act1_title': (
+        "Act I — Karl Terzaghi's Effective Stress Principle and Continuous Flight Auger "
+        '(CFA) Deep Piling'
+    ),
+    'act1_dropcap': (
+        'In 1925 in Vienna, the Austrian civil engineer Karl Terzaghi published Erdbaumechanik, '
+        'setting out a two-phase physical description of waterlogged ground. Builders had long '
+        'watched heavy masonry structures on soft clay settle unevenly for years. Terzaghi '
+        'separated saturated soil into solid mineral grains and pore water. Water barely '
+        'compresses under ordinary building loads, whereas wet clay pores drain slowly. Under '
+        'his principle of effective stress, the mineral skeleton carries only total overburden '
+        'pressure minus water pressure inside the pores. Under one-dimensional consolidation, a '
+        'sudden building load first pressurizes trapped water and shifts to the grains only as '
+        'water drains. Decades later, foundation crews began drilling hollow-stem augers through '
+        'compressible clay into firmer strata and pumping cement grout as the auger withdrew. '
+        'Everything here is an explanatory model, not a geotechnical or structural design method, '
+        'and no figure on this page belongs on a real structure.'
+    ),
+    'act1_plain_bridge': (
+        'Imagine setting a heavy stone block onto soft river mud whose tiny spaces are brimming '
+        'with groundwater. Water cannot compress out of the way in an instant. At first, trapped '
+        'groundwater carries the added weight while microscopic clay passages slow its escape '
+        'toward sandy layers. Over months or years, water seeps out and solid grains press closer '
+        'together, lowering the ground surface. Earthquake shaking in loose wet sand is a '
+        'separate hazard in which rapid vibration raises water pressure between grains. Where '
+        'soft clay is thick, Continuous Flight Auger (CFA) piles bore down to denser layers and '
+        'fill the shaft with pumped cement grout. Deep piles and vertical drains remain '
+        'site-dependent tools rather than guarantees against settlement or earthquakes. This page '
+        'offers a simplified classroom explanation rather than a foundation design method, so '
+        'none of its numbers may be used on real work.'
+    ),
+    'act1_body': (
+        "Under Terzaghi's consolidation theory, an undrained surcharge on saturated, "
+        'low-permeability clay transfers first into excess pore-water pressure before diffusing '
+        'toward permeable boundaries (Terzaghi 1925). Primary consolidation settlement develops '
+        'as drainage transfers vertical stress onto the mineral skeleton (Terzaghi, Peck & Mesri '
+        '1996). Where compressible clay overlies denser strata, Continuous Flight Auger (CFA) '
+        'rigs drill a hollow-stem auger to depth and pump cement grout during withdrawal '
+        '(Brown et al. 2007). Instrumented load tests in sand document how shaft resistance '
+        'develops along augercast piles (Gavin, Cadogan & Casey 2009, DOI '
+        '10.1061/(ASCE)GT.1943-5606.0000073). Citation tallies for cited papers were checked in '
+        'Scite (Nicholson et al. 2021, DOI 10.1162/qss_a_00146). Prefabricated vertical drains '
+        'can shorten clay drainage paths where site testing supports them, yet this untested '
+        'folio is an explanation, not a foundation design method.'
+    ),
+    'act1_stakes': (
+        'Ignoring slow pore-water drainage on compressible clay leads to long-term consolidation '
+        'settlement (Terzaghi, Peck & Mesri 1996). Differential settlement and angular distortion '
+        'can crack walls and frames (Boscardin & Cording 1989, DOI '
+        '10.1061/(ASCE)0733-9410(1989)115:1(1)). Cyclic earthquake shearing in loose wet sand '
+        'raises pore pressure through a separate mechanism needing site-specific liquefaction '
+        'analysis (Seed & Idriss 1971, DOI 10.1061/JSFEAQ.0001662). Steady surcharge '
+        'consolidation on this page does not model seismic liquefaction. In practice, engineers '
+        'combine borings, lab testing, ground improvement, and piles checked for downdrag and '
+        'lost lateral support; deep piles are one option, not a guarantee.'
+    ),
+    'pullquote': (
+        "In Karl Terzaghi's two-phase soil model (Terzaghi 1925), mineral grains carry only the "
+        'effective stress remaining after pore-water pressure is subtracted from total overburden '
+        'stress.'
+    ),
+    'chronology': [
+        (
+            '1925',
+            'Karl Terzaghi publishes Erdbaumechanik in Vienna, formulating the principle of '
+            'effective stress and one-dimensional consolidation.',
+        ),
+        (
+            '1941–1948',
+            'Maurice Biot generalizes three-dimensional poroelastic consolidation (DOI '
+            '10.1063/1.1712886), and Terzaghi & Ralph Peck publish Soil Mechanics in Engineering '
+            'Practice.',
+        ),
+        (
+            '1971',
+            'H. Bolton Seed & I. M. Idriss publish a simplified cyclic procedure for evaluating '
+            'earthquake soil liquefaction potential (DOI 10.1061/JSFEAQ.0001662).',
+        ),
+        (
+            '2007–2009',
+            'FHWA Circular No. 8 (Brown et al. 2007) documents CFA pile practice, and Gavin, '
+            'Cadogan & Casey (2009, DOI 10.1061/(ASCE)GT.1943-5606.0000073) report sand shaft '
+            'load tests.',
+        ),
+    ],
+    'act2_title': (
+        'Act II — How It Works: Pore-Water Isochrones, CFA Pile Bearing & Excess Pore-Pressure '
+        'Ratio'
+    ),
+    'act2_analogy': (
+        'Pressing a hand onto a soaked kitchen sponge first squeezes trapped water inside its '
+        'pores; the foam skeleton compresses as water escapes. Terzaghi consolidation describes '
+        'that gradual transfer of load from pore water to grains. The excess pore-pressure ratio '
+        'on this page tracks what fraction of the assumed initial effective overburden pressure '
+        'remains in water. Where the comparison stops: sponge foam rebounds elastically in '
+        'seconds, whereas clay platelets rearrange plastically over years and a bored grout pile '
+        'carries load into deeper strata.'
+    ),
+    'act2_plain_primer': (
+        'Two sliders drive the closed-form algebraic model in Act III under fixed illustrative '
+        'soil and pile assumptions. Foundation Surcharge Load sets the assumed uniform surface '
+        'pressure from 40 to 260 kilopascals, raising both model settlement and residual water '
+        'pressure. Consolidation Coefficient sets the assumed pore-water diffusion rate from 0.5 '
+        'to 8.0 square meters per year across a fixed six-meter drainage path. Higher diffusion '
+        'values drain excess water sooner at the fixed 3.6-year snapshot. Lower diffusion values '
+        "combined with heavy surcharge leave higher residual water pressure, triggering the page's "
+        'illustrative factor-of-safety alert.'
+    ),
+    'distill_diagram': {
+        'analogy_title': 'Soaked Sponge & Pore Drainage',
+        'analogy_sub': 'Trapped pore water carries load until slow drainage compresses skeleton.',
+        'force_a_title': 'Foundation Surcharge (Δq)',
+        'force_a_sub': 'Assumed surface pressure raising initial excess pore-water pressure.',
+        'force_b_title': 'Consolidation Rate (c_v)',
+        'force_b_sub': 'Assumed diffusion rate draining pore water toward sand boundaries.',
+        'threshold_title': 'Illustrative Alert (r_u ≥ 0.70 or FS < 2.0)',
+        'threshold_pass': 'Model FS ≥ 2.0 and r_u < 0.70 under assumed reference constants.',
+        'threshold_fail': 'Model FS < 2.0 or r_u ≥ 0.70 (illustrative alert, not a site check).',
+    },
+    'act2_intuition': (
+        'With assumed H_dr = 6.0 m and t = 3.6 yr, the time factor T_v = c_v t / H_dr² governs '
+        'average consolidation (Terzaghi 1925). The browser model uses U_avg = sqrt(4 T_v / pi) '
+        'for T_v <= 0.286 and U_avg = 1 − (8 / pi²) exp(−pi² T_v / 4) above 0.286, clamped to '
+        '[0.05, 0.995]. At defaults Delta_q = 120 kPa and c_v = 3.2 m²/yr, T_v = 0.320 gives '
+        'U_avg = 63.2%. Assumed settlement follows S_c = (Delta_q / 120) × 66.7 × U_avg = '
+        '42.2 mm. Residual pressure Delta_u = Delta_q (1 − U_avg) = 44.2 kPa over assumed '
+        "sigma'_v0 = 200 kPa yields r_u = 0.22 and sigma'_v = 156 kPa. The illustrative CFA "
+        'formula scales 2,380 kN shaft and 1,980 kN toe terms to Q_ult = 3,865 kN against '
+        'P_design = 1,550 kN (FS = 2.49). Readers could explore Biot poroelasticity (Biot 1941, '
+        'DOI 10.1063/1.1712886) in FEniCS/dolfinx (https://github.com/FEniCS/dolfinx; Scroggs '
+        'et al. 2022, DOI 10.1145/3524456); none was run here.'
+    ),
+    'act2_deepening': (
+        "Terzaghi's linear diffusion equation treats the consolidation coefficient c_v as "
+        'constant, whereas real soft clays lose void space and permeability as compression '
+        'proceeds (Terzaghi, Peck & Mesri 1996). Variable compressibility and radial drainage '
+        'around piles alter settlement rates in layered ground. Along real bored and augercast '
+        'piles, shaft friction mobilizes at small relative slip whereas full base resistance '
+        'requires larger downward movement (Brown et al. 2007; Gavin, Cadogan & Casey 2009, DOI '
+        "10.1061/(ASCE)GT.1943-5606.0000073). This folio's algebraic formula omits slip "
+        'compatibility, layered soils, negative skin friction, and cyclic earthquake '
+        'pore-pressure generation (Seed & Idriss 1971, DOI 10.1061/JSFEAQ.0001662).'
+    ),
+    'walkthrough': [
+        (
+            'Experiment 1 (Surcharge Sweep at Default Drainage): Hold Consolidation Coefficient '
+            'at 3.2 m²/yr and raise Foundation Surcharge from 60 kPa to 220 kPa. Assumed S_c '
+            'climbs from 21.1 mm to 77.3 mm while r_u rises from 0.11 to 0.40. Illustrative '
+            'Q_ult drops from 4,113 kN (FS = 2.79) to 3,453 kN (FS = 2.06) as the isochrone '
+            'bulge moves from x = 406 to x = 530.'
+        ),
+        (
+            'Experiment 2 (Low Drainage & Illustrative Alert Threshold): Set Consolidation '
+            'Coefficient to 0.8 m²/yr at 120 kPa to read T_v = 0.080, U_avg = 31.9%, r_u = 0.41, '
+            'and FS = 2.22. Raise Foundation Surcharge to 220 kPa at 0.8 m²/yr so r_u hits 0.75 '
+            'and Q_ult falls to 2,682 kN (FS = 1.60), triggering the illustrative alert.'
+        ),
+        (
+            'Experiment 3 (Four-Stage Stepper & Companion Caveat Sheet): Click Stages 1 through '
+            '4 above to inspect each assumed equation. Read terzaghi-cfa-geotechnical-piling '
+            'SKILL.md below as an explanatory caveat sheet, not a foundation design method.'
+        ),
+    ],
+    'act4_title': (
+        'Act IV — Rig Drilling Telemetry & the Geotechnical Concept Note Bridge'
+    ),
+    'act4_human_ai': (
+        'Automated monitoring systems on CFA rigs can record auger depth, torque, rotation rate, '
+        'and pumped grout volume during installation (Brown et al. 2007). As an untested '
+        'proposal, engineers might pair those installation logs with piezometer settlement '
+        'records. Readers could prototype poroelastic finite-element models in FEniCS/dolfinx '
+        '(Scroggs et al. 2022, DOI 10.1145/3524456) or data-driven system identification with '
+        'dynamicslab/pysindy (Brunton, Proctor & Kutz 2016, DOI 10.1073/pnas.1517384113). '
+        'Neither tool was run for this folio, citation counts come from Scite (DOI '
+        '10.1162/qss_a_00146), and no software replaces licensed site engineering.'
+    ),
+    'act4_deepening': (
+        'Offered strictly as an unverified research direction, statistical models trained on rig '
+        'telemetry and cone-penetration borings might help flag anomalous grout-volume drops or '
+        'soft lenses for inspection. Field load testing, core sampling, and licensed engineering '
+        'review would remain mandatory under applicable codes. Coupling three-dimensional '
+        'consolidation (Biot 1941, DOI 10.1063/1.1712886) with field CFA measurements (Gavin, '
+        'Cadogan & Casey 2009, DOI 10.1061/(ASCE)GT.1943-5606.0000073) remains an open modeling '
+        'problem, not a design substitute.'
+    ),
+    'sources': [
+        'Terzaghi, K. (1925). Erdbaumechanik auf bodenphysikalischer Grundlage. Franz Deuticke, '
+        'Vienna.',
+        'Biot, M. A. (1941). General Theory of Three-Dimensional Consolidation. Journal of '
+        'Applied Physics, 12(2), 155–164. DOI: 10.1063/1.1712886.',
+        'Terzaghi, K., Peck, R. B., & Mesri, G. (1996; 1st ed. Terzaghi & Peck, 1948). Soil '
+        'Mechanics in Engineering Practice (3rd ed.). Wiley.',
+        'Seed, H. B., & Idriss, I. M. (1971). Simplified Procedure for Evaluating Soil '
+        'Liquefaction Potential. Journal of the Soil Mechanics and Foundations Division, ASCE, '
+        '97(9), 1249–1273. DOI: 10.1061/JSFEAQ.0001662.',
+        'Boscardin, M. D., & Cording, E. J. (1989). Building Response to Excavation-Induced '
+        'Settlement. Journal of Geotechnical Engineering, 115(1), 1–21. DOI: '
+        '10.1061/(ASCE)0733-9410(1989)115:1(1).',
+        'Brown, D. A., Dapp, S. D., Thompson, W. R., & Lazarte, C. A. (2007). Design and '
+        'Construction of Continuous Flight Auger (CFA) Piles (FHWA GEC No. 8, FHWA-HIF-07-039). '
+        'Federal Highway Administration.',
+        'Gavin, K. G., Cadogan, D., & Casey, P. (2009). Shaft Capacity of Continuous Flight '
+        'Auger Piles in Sand. Journal of Geotechnical and Geoenvironmental Engineering, 135(6), '
+        '790–798. DOI: 10.1061/(ASCE)GT.1943-5606.0000073.',
+        'Construction Specifications Institute (CSI). MasterFormat Section 31 63 23: Bored Piles '
+        '(industry filing label only; this folio is not a project specification).',
+        'Brunton, S. L., Proctor, J. L., & Kutz, J. N. (2016). Discovering governing equations '
+        'from data by sparse identification of nonlinear dynamical systems. Proceedings of the '
+        'National Academy of Sciences, 113(15), 3932–3937. DOI: 10.1073/pnas.1517384113. '
+        '(Cited for the SINDy method; dynamicslab/pysindy, https://github.com/dynamicslab/pysindy, '
+        'is a separate open-source Python package.)',
+        'Scroggs, M. W., Dokken, J. S., Richardson, C. N., & Wells, G. N. (2022). Construction '
+        'of Arbitrary Order Finite Element Degree-of-Freedom Maps on Polygonal and Polyhedral '
+        'Cell Meshes (FEniCS/dolfinx, https://github.com/FEniCS/dolfinx). ACM Transactions on '
+        'Mathematical Software, 48(2), 18:1–18:23. DOI: 10.1145/3524456.',
+        'Nicholson, J. M., et al. (2021). scite: A smart citation index that displays the '
+        'context of citations and classifies their intent using deep learning (https://scite.ai). '
+        'Quantitative Science Studies, 2(3), 882–898. DOI: 10.1162/qss_a_00146.',
+    ],
+    'svg': (
+        '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Terzaghi 1D '
         'consolidation pore-pressure isochrones and 24-meter CFA augercast deep foundation pile">\n'
         '            <rect x="45" y="30" width="250" height="55" fill="var(--tp-ochre)" '
         'fill-opacity="0.16" stroke="currentColor" stroke-opacity="0.35"/>\n'
@@ -358,22 +434,22 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         'fill-opacity="0.22" stroke="currentColor" stroke-opacity="0.45"/>\n'
         '            <rect id="tp-e05-svg-pile" x="152" y="24" width="36" height="156" '
         'fill="var(--tp-graphite)" stroke="var(--tp-prussian)" stroke-width="2"/>\n'
-        '            <text x="54" y="52" font-size="10" fill="currentColor">Holocene Fill &amp; '
-        'Loose Sand (0–6 m)</text>\n'
-        '            <text x="54" y="122" font-size="10" fill="currentColor">Compressible Marine '
+        '            <text x="54" y="52" font-size="10" fill="currentColor">Assumed Upper Sand &amp; '
+        'Fill (0–6 m)</text>\n'
+        '            <text x="54" y="122" font-size="10" fill="currentColor">Assumed Compressible '
         'Clay (6–18 m)</text>\n'
-        '            <text x="54" y="182" font-size="10" fill="var(--tp-verdigris)">Dense Bearing '
+        '            <text x="54" y="182" font-size="10" fill="var(--tp-verdigris)">Assumed Bearing '
         'Stratum (18–24 m · Q_toe)</text>\n'
         '            <text x="52" y="20" font-size="11" font-weight="600" '
-        'fill="currentColor">1:200 Soil Profile &amp; CFA Pile (D = 750 mm)</text>\n'
+        'fill="currentColor">Illustrative Profile &amp; CFA Pile (D = 750 mm)</text>\n'
         '            <line x1="360" y1="30" x2="360" y2="195" stroke="currentColor" '
         'stroke-opacity="0.45" stroke-width="1.8"/>\n'
         '            <line x1="360" y1="195" x2="635" y2="195" stroke="currentColor" '
         'stroke-opacity="0.45" stroke-width="1.8"/>\n'
-        '            <path id="tp-e05-svg-isochrone" d="M 360 30 Q 535 112 360 195" '
+        '            <path id="tp-e05-svg-isochrone" data-custom-curve="1" d="M 360 30 Q 453 112 360 195" '
         'fill="var(--tp-minium)" fill-opacity="0.16" stroke="var(--tp-minium)" '
         'stroke-width="2.8"/>\n'
-        '            <path d="M 360 30 Q 445 112 360 195" fill="none" stroke="var(--tp-verdigris)" '
+        '            <path data-custom-curve="1" d="M 360 30 Q 445 112 360 195" fill="none" stroke="var(--tp-verdigris)" '
         'stroke-width="2" stroke-dasharray="5,4"/>\n'
         '            <text x="365" y="20" font-size="11" font-weight="600" '
         'fill="currentColor">Terzaghi Excess Pore Pressure Isochrone Δu(z, t)</text>\n'
@@ -381,56 +457,73 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         'fill="var(--tp-minium)">U_avg = 63.2% · Q_ult = 3,865 kN</text>\n'
         '            <text x="415" y="212" font-size="10" fill="currentColor">Excess Pore Pressure '
         'Δu (kPa) · Drainage Boundaries z = 0, 2H_dr</text>\n'
-        '          </svg>'}
+        '          </svg>'
+    ),
+}
 
-PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what Continuous Flight Auger deep foundation piles and '
-        'Terzaghi consolidation strata would look like in cutaway (artistic impression, not a '
-        'measured structure)',
- 'caption': 'Conceptual Vision Plate E.05-V (Imagining What It Would Look Like) · Artistic '
-            'geotechnical cutaway imagining Continuous Flight Auger (CFA) deep foundation piles '
-            'drilled through stratified clay and sand into granite bedrock.'}
+PLATE_CAPTION = {
+    'alt': (
+        'Conceptual visualization imagining what Continuous Flight Auger deep foundation piles '
+        'and Terzaghi consolidation strata would look like in cutaway (artistic impression, not '
+        'a measured structure)'
+    ),
+    'caption': (
+        'Conceptual Vision Plate E.05-V (Imagining What It Would Look Like). Artistic cutaway '
+        'imagining CFA piles in clay and sand (untested impression, not an engineered '
+        'foundation).'
+    ),
+}
 
-DISPATCH = {'kicker': 'FRONTIER GEOTECHNICAL DISPATCH · AUTOMATED CFA RIG TELEMETRY & POROELASTIC GELS',
- 'headline': 'A Century After Erdbaumechanik: Instrumented CFA Piles and Effective Stress',
- 'body': "One century after Karl Terzaghi's Erdbaumechanik (1925), continuous flight auger (CFA) "
-         'piles are installed with rigs that record depth, torque and grout volume (FHWA GEC No. '
-         '8), and field tests show how their shaft resistance develops in sand (Gavin, Cadogan & '
-         'Casey 2009, DOI 10.1061/(ASCE)GT.1943-5606.0000073).'}
+DISPATCH = {
+    'kicker': 'GEOTECHNICAL TEACHING DISPATCH · TERZAGHI CONSOLIDATION & CFA RIG MONITORING',
+    'headline': 'A Century After Erdbaumechanik: Effective Stress, Consolidation, and Monitored CFA Piles',
+    'body': (
+        "Connecting Terzaghi's 1925 effective stress model with FHWA GEC No. 8 rig monitoring "
+        '(Brown et al. 2007) and sand shaft tests (Gavin, Cadogan & Casey 2009, DOI '
+        '10.1061/(ASCE)GT.1943-5606.0000073). This untested explanation estimates U_avg = 63.2% '
+        'and Q_ult = 3,865 kN under assumed inputs; no figure belongs on a real structure.'
+    ),
+}
 
-META_3D = ('Terzaghi Consolidation Dish & 4-Pile Bearing Cones',
- 'X/Z: Foundation Mat Footprint · Y: Effective Stress Consolidation & CFA Pile Capacity')
+META_3D = (
+    'Terzaghi Consolidation Dish & 4-Pile Bearing Cones',
+    'X/Z: Foundation Mat Footprint · Y: Effective Stress Consolidation & Assumed CFA Capacity',
+)
 
-ES_TRANSLATION = {'title_es': 'Mecánica de Suelos de Terzaghi, Pilotes Profundos CFA y Presión de Poro en Exceso',
- 'subtitle_es': 'Cómo el principio de esfuerzo efectivo de Karl Terzaghi σ′_v = σ_v − u, la '
-                'consolidación hidrodinámica ∂u/∂t = c_v ∂²u/∂z² y las cimentaciones profundas CFA '
-                'se relacionan con el asentamiento y la presión de poro en exceso.',
- 'why_es': 'Al pisar una esponja empapada, primero se presuriza el agua atrapada; el esqueleto de '
-           'la esponja sólo se comprime a medida que el agua escapa lentamente por los poros '
-           '(consolidación de Terzaghi).',
- 'plain_es': 'En 1925, el ingeniero austriaco Karl Terzaghi, entonces profesor en el Robert '
-             'College de Constantinopla (Estambul), publicó Erdbaumechanik, el libro con el que '
-             'suele fecharse el inicio de la mecánica de suelos moderna. Desde hacía mucho, las '
-             'construcciones sobre arcilla se asentaban de forma desigual. Terzaghi explicó que '
-             'el suelo saturado actúa como una esponja compuesta por granos minerales y agua '
-             'atrapada. Cuando construyen un edificio pesado, el peso inicial lo '
-             'sostiene la presión del agua subterránea. Solo a medida que esa agua escurre '
-             'lentamente por los diminutos poros del subsuelo, los granos sólidos se juntan para '
-             'cargar la estructura. Para entenderlo, piensen en una esponja empapada: al pisarla, '
-             'el agua sale disparada primero, y solo después la goma se comprime. Un sismo que '
-             'sacude arena suelta y húmeda es otro problema: la presión del agua puede subir y '
-             'separar los granos, y los ingenieros lo evalúan por separado. Los pilotes '
-             'profundos de concreto que llevan la carga a capas más firmes son una herramienta '
-             'para eso, no una garantía.',
- 'deep_es': 'El principio de esfuerzo efectivo de Terzaghi establece que la resistencia del suelo '
-            'depende del esfuerzo neto sobre los granos minerales una vez restada la presión de '
-            'poro. Cuando una sobrecarga actúa sobre arcillas saturadas, la disipación '
-            'hidrodinámica del agua sigue una ecuación diferencial de difusión, transfiriendo '
-            'carga gradualmente al esqueleto sólido. Si ocurre un terremoto, las vibraciones '
-            'rápidas pueden incrementar la presión de poro en arena suelta saturada, un proceso '
-            'distinto de la consolidación bajo una sobrecarga constante que requiere su propia '
-            'evaluación en sitio. Para proteger grandes estructuras, la ingeniería '
-            'geotécnica puede usar, entre otras herramientas, pilotes profundos de barrena '
-            'continua que transfieren las cargas hacia estratos más firmes. Las perforadoras '
-            'suelen registrar la profundidad, el torque y el volumen de concreto bombeado, '
-            'datos que ayudan a los ingenieros a revisar cada pilote. Los valores de esta página '
-            'son ilustrativos y ningún método elimina el riesgo sísmico.'}
+ES_TRANSLATION = {
+    'title_es': 'Mecánica de Suelos de Terzaghi, Pilotes Profundos CFA y Presión de Poro en Exceso',
+    'subtitle_es': (
+        'Modelo geotécnico explicativo, no un método de diseño estructural ni de cimentaciones: '
+        'cómo el esfuerzo efectivo y la consolidación de Karl Terzaghi se combinan con pilotes '
+        'de barrena continua bajo supuestos ilustrativos; ninguna cifra aquí puede usarse en una '
+        'obra real.'
+    ),
+    'why_es': (
+        'Al presionar una esponja empapada, primero sube la presión del agua atrapada en los '
+        'poros y el esqueleto sólo se comprime conforme el agua escapa (consolidación de '
+        'Terzaghi). Donde termina la comparación: la espuma recupera su forma en segundos, '
+        'mientras la arcilla se deforma de manera plástica durante años y un pilote perforado '
+        'transmite carga a estratos profundos.'
+    ),
+    'plain_es': (
+        'En 1925 en Viena, Karl Terzaghi publicó Erdbaumechanik y trató el suelo saturado como '
+        'granos minerales sólidos y agua en los poros. Bajo una sobrecarga sobre arcilla '
+        'saturada, el agua casi incompresible recibe primero el peso porque los poros frenan su '
+        'salida; conforme drena, los granos se reacomodan y producen asentamiento. El sismo en '
+        'arena suelta saturada es otro fenómeno que exige evaluación cíclica en sitio (Seed e '
+        'Idriss 1971, DOI 10.1061/JSFEAQ.0001662). Los pilotes de barrena continua (CFA) '
+        'perforan hasta estratos densos e inyectan lechada de cemento (Brown et al. 2007). Esta '
+        'página es una explicación conceptual, no un método de diseño geotécnico ni estructural, '
+        'y ninguna cifra debe usarse en una obra real.'
+    ),
+    'deep_es': (
+        'Con H_dr = 6.0 m y t = 3.6 años supuestos, T_v = c_v t / H_dr² (Terzaghi 1925) da en '
+        '120 kPa y 3.2 m²/año T_v = 0.320, U_avg = 63.2%, S_c = 42.2 mm y r_u = 0.22 sobre '
+        "sigma'_v0 = 200 kPa supuesto. El modelo CFA ilustrativo (0.75 m por 24 m) escala "
+        '2,380 kN y 1,980 kN supuestos a Q_ult = 3,865 kN frente a P_design = 1,550 kN '
+        '(FS = 2.49), con alerta ilustrativa si r_u >= 0.70 o FS < 2.0 (en 220 kPa y 0.8 m²/año, '
+        'r_u = 0.75 y Q_ult = 2,682 kN, FS = 1.60). Los sistemas de monitoreo en equipos CFA '
+        'pueden registrar profundidad, par y lechada bombeada (Brown et al. 2007; Gavin, Cadogan '
+        'y Casey 2009, DOI 10.1061/(ASCE)GT.1943-5606.0000073); esto no es un método de diseño.'
+    ),
+}
