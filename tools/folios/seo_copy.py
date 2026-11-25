@@ -308,10 +308,10 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
         "El algoritmo de Ryan Williams para caminos más cortos entre todos los pares, lo que afirma un repositorio sobre 3SUM y APSP, y la supervisión por pasos.",
     ),
     "m07": (
-        "F1 Energy Control with Pontryagin's Maximum Principle",
-        "A design study of how Pontryagin's Maximum Principle could schedule a 350 kW hybrid boost without flattening the battery, with neural surrogates proposed.",
+        "Pontryagin Hybrid Energy Control & Neural Operators",
+        "How Pontryagin's Maximum Principle models hybrid boost pacing on a finite battery, with neural flow surrogates proposed in a teaching model.",
         "Control Óptimo de Energía en F1: Pontryagin",
-        "Un estudio de diseño de cómo el Principio del Máximo de Pontryagin podría programar un impulso híbrido de 350 kW sin agotar la batería.",
+        "Cómo el Principio del Máximo de Pontryagin modela el reparto de impulso híbrido con batería finita y sustitutos neuronales propuestos.",
     ),
     "m08": (
         "The Riemannian Geometry of Color Perception",

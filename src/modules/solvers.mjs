@@ -1752,16 +1752,24 @@ export function initPlateSolvers(scope = document) {
       const decimals = (el) => ((el.step || "1").split(".")[1] || "").length;
       const fmt = (el, unit) => {
         const v = parseFloat(el.value).toFixed(decimals(el));
-        return unit.includes("=") ? `${unit}${v}` : `${v}${unit}`;
+        return unit.trimEnd().endsWith("=") ? `${unit}${v}` : `${v}${unit}`;
       };
       if (LABEL_UNITS[slug]) {
         const [u0, u1] = LABEL_UNITS[slug];
         const t0 = fmt(mathPrimeInput, u0);
+        const t1 = fmt(mathClauseInput, u1);
         if (pLabel) pLabel.textContent = t0;
-        if (cLabel) cLabel.textContent = fmt(mathClauseInput, u1);
+        if (cLabel) cLabel.textContent = t1;
         if (inlineP) {
           const name = (document.querySelector('label[for="tp-math-prime"] span')?.textContent || "").replace(/\s*\(.*\)\s*$/, "").trim();
-          inlineP.textContent = u0.includes("=") || !name ? t0 : `${name} = ${t0}`;
+          inlineP.textContent = u0.trimEnd().endsWith("=") || !name ? t0 : `${name} = ${t0}`;
+        }
+        if (slug === "m07") {
+          const pkText = document.getElementById("tp-m07-pk-text");
+          const modesText = document.getElementById("tp-m07-modes-text");
+          const modesInt = Math.round(parseFloat(mathClauseInput.value) || 32);
+          if (pkText) pkText.textContent = `PMP Co-State Taper (P_k = ${t0} \u2192 Convex-Loss Arc)`;
+          if (modesText) modesText.textContent = `${modesInt} Modes`;
         }
         return;
       }
@@ -2165,7 +2173,7 @@ export function initPlateSolvers(scope = document) {
     };
     mathPrimeInput.addEventListener("input", updateMath);
     mathClauseInput.addEventListener("input", updateMath);
-    if ((getActiveSlug() || "m01") === "m01" || getActiveSlug() === "m13" || getActiveSlug() === "m15" || getActiveSlug() === "m16") updateMath();
+    if ((getActiveSlug() || "m01") === "m01" || getActiveSlug() === "m07" || getActiveSlug() === "m13" || getActiveSlug() === "m15" || getActiveSlug() === "m16") updateMath();
   }
 
   // 5. Engineering Stokes-Brinkman (E.01), Acoustic Metamaterials (E.03) & Enthalpy Cores (E.04)

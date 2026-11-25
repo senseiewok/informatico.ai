@@ -992,7 +992,7 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
             ("FOURIER", "Transformada en el corazón de una capa de Operador Neuronal de Fourier; el folio propone ese sustituto pero no entrenó ninguno", "Acto III"),
             ("VUELTA", "Un circuito completo de la pista; el modelo busca el tiempo mínimo y cierra la vuelta con E_batt(L) = E_batt(0)", "Acto III"),
             ("CURVA", "Tramo del trazado antes del cual se frena; al frenar el MGU-K recupera energía en el modelo", "Acto III"),
-            ("MOTOR", "Unidad de potencia híbrida de un auto de Fórmula 1; el folio reporta 350 kW eléctricos según las reglas de 2026", "Acto III"),
+            ("MOTOR", "Unidad de potencia híbrida de un auto de Fórmula 1; el folio menciona un techo de 350 kW eléctricos reportado para 2026", "Acto III"),
             ("META", "Línea donde termina la vuelta; el modelo exige que la batería llegue con la misma energía con que salió", "Acto III"),
         ],
     },

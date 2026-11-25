@@ -809,11 +809,15 @@ def render_Controls_for_pillar(pillar: str, folio: dict, lf: dict) -> str:
             </div>
           </div>"""
 
+    _plate_ver_name, _ = _existing_skill_verifier(ROOT / "skills" / pillar / slug)
+    _has_verified_kernel = bool(_plate_ver_name) and folio.get("kernel_verdict") != "Not independently verified"
+    _plate_kernel_label = "Deterministic Kernel" if _has_verified_kernel else "Source Module"
+
     return f"""<div class="tp-plate" role="region" aria-label="Interactive Plate {fid}">
           <div class="tp-plate-head">
             <span>Plate {fid}-A &amp; {fid}-B · {esc(folio["colophon"]["kernels"])}</span>
             <div class="tp-plate-head-actions">
-              <span>Deterministic Kernel: {esc(folio["primary_kernel"])}</span>
+              <span>{_plate_kernel_label}: {esc(folio["primary_kernel"])}</span>
               <button type="button" class="tp-fullscreen-btn tp-layout-toggle-btn" data-plate-layout-toggle="true" aria-pressed="true" title="Toggle Side-by-Side Split Workbench vs. Stacked Cinema">Split Workbench ◫</button>
             </div>
           </div>
@@ -1066,12 +1070,13 @@ def render_multi_chapter_monograph_sections(
     slider_specs = []
     for idx, s in enumerate(sliders, 1):
         lbl = esc(decf_title(s.get("label", f"Parameter {idx}")))
-        unit = esc(s.get("unit", ""))
+        raw_unit = str(s.get("unit", ""))
         s_min, s_max, s_val, s_step = s.get("min", 0), s.get("max", 1), s.get("value", 0), s.get("step", 0.1)
+        op_pt = esc(f"{raw_unit}{s_val}" if raw_unit.rstrip().endswith("=") else f"{s_val}{raw_unit}")
         slider_specs.append(
             f"control parameter <code>P_{idx}</code> (<em>{lbl}</em>) spanning the admissible interval "
-            f"<code>[{s_min}, {s_max}]</code> with step resolution <code>&Delta; = {s_step}</code> and canonical reference operating point "
-            f"<code>{unit}{s_val}</code>"
+            f"<code>[{s_min}, {s_max}]</code> with step resolution <code>&Delta; = {s_step}</code> and reference operating point "
+            f"<code>{op_pt}</code>"
         )
     sliders_prose = "; ".join(slider_specs) if slider_specs else "dimensionless state-space coordinates"
 
@@ -1097,7 +1102,7 @@ def render_multi_chapter_monograph_sections(
             <h4><span data-en="Stage {idx} Derivation &amp; State Transition" data-es="Derivaci&oacute;n y Transici&oacute;n de Estado &middot; Etapa {idx}">Stage {idx} Derivation &amp; State Transition</span></h4>
             <p><strong>Formal Stage Mechanism:</strong> {step_c}</p>
             <p>
-              <strong>Operator Coupling &amp; Invariant Closure:</strong> At Stage {idx} of the Folio {esc(fid)} derivation chain, the intermediate state maps directly onto the governing law <code>{gov_law}</code> under benchmark regime <code>{bench_c}</code>. To ensure that deductive or physical flux is conserved without unverified hand-waving as the system advances from Stage {idx} toward terminal convergence, the transition operator enforces the companion verification constraint: <em>{matched_rule}</em> Every numerical trajectory and geometric projection in Plate {esc(fid)}-A and Plate {esc(fid)}-B below evaluates this exact stage transfer function in real time.
+              <strong>Operator Coupling &amp; Invariant Closure:</strong> At Stage {idx} of the Folio {esc(fid)} derivation chain, the intermediate state maps directly onto the governing law <code>{gov_law}</code> under benchmark regime <code>{bench_c}</code>. To ensure that deductive or physical flux is conserved without unverified hand-waving as the system advances from Stage {idx} toward terminal convergence, the transition operator enforces the companion verification constraint: <em>{matched_rule}</em> {_ii2_stage_tail(py_ver_rel, fid)}
             </p>
           </div>"""
         )
@@ -1125,6 +1130,23 @@ def render_multi_chapter_monograph_sections(
         else ""
     )
 
+    if py_ver_rel:
+        ii1_lead_html = (
+            f"To elevate Folio <strong>{esc(fid)}</strong> (<em>{esc(decf_title(folio['title']))}</em>) "
+            f"from a qualitative summary to an executable mathematical and physical treatise, we first define the exact "
+            f"state-space manifold on which the operator <code>{gov_law}</code> acts. Let the system state be parameterized by "
+            f"{sliders_prose}. Over this bounded domain, the coupled kernels (<code>{kernels_c}</code>) map every admissible "
+            f"input configuration to a unique, deterministic equilibrium or deductive fixed point{_ii1_tail(py_ver_rel)}."
+        )
+    else:
+        ii1_lead_html = (
+            f"To frame Folio <strong>{esc(fid)}</strong> (<em>{esc(decf_title(folio['title']))}</em>) "
+            f"as a structured mathematical and physical exposition, we first write the state-space domain on which the "
+            f"relation <code>{gov_law}</code> is posed. Let the display controls span {sliders_prose}. Across this parameter "
+            f"box, the cited formulations (<code>{kernels_c}</code>) frame the governing balance and its stated assumptions"
+            f"{_ii1_tail(py_ver_rel)}."
+        )
+
     act2_proof_spine_html = f"""
         <section class="tp-proof-spine" aria-label="Multi-Chapter Formal Proof and Governing Derivation">
           <article class="tp-proof-chapter" id="ch-ii-1-{esc(slug)}">
@@ -1135,7 +1157,7 @@ def render_multi_chapter_monograph_sections(
               <p class="tp-theorem-meta"><strong>Kernels:</strong> {kernels_c} &middot; <strong>Benchmarks:</strong> {bench_c} &middot; <strong>Primary Anchor:</strong> <code>DOI {doi_str}</code></p>
             </div>
             <p>
-              To elevate Folio <strong>{esc(fid)}</strong> (<em>{esc(decf_title(folio["title"]))}</em>) from a qualitative summary to an executable mathematical and physical treatise, we first define the exact state-space manifold on which the operator <code>{gov_law}</code> acts. Let the system state be parameterized by {sliders_prose}. Over this bounded domain, the coupled kernels (<code>{kernels_c}</code>) map every admissible input configuration to a unique, deterministic equilibrium or deductive fixed point{_ii1_tail(py_ver_rel)}.
+              {ii1_lead_html}
             </p>
             <p>
               Crucially, well-posedness across the <code>{bench_c}</code> regime requires that the governing operator preserve dimensional homogeneity, non-negativity of physical energy/entropy functionals, and strict monotony along the primary reaction or proof coordinate. Whenever a simplified model omits one of the coupled terms in <code>{gov_law}</code>, the resulting approximation violates boundary compatibility and diverges from the primary peer-reviewed evidence (<code>{scite_sum_c}</code>).
@@ -1153,7 +1175,7 @@ def render_multi_chapter_monograph_sections(
           <article class="tp-proof-chapter" id="ch-ii-3-{esc(slug)}">
             <h3 data-en="&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds" data-es="&sect; II.3 &middot; Invariantes de Verificaci&oacute;n Determinista, Escalamiento Dimensional y Cotas de Estabilidad">&sect; II.3 &middot; Deterministic Verification Invariants, Dimensional Scaling &amp; Stability Bounds</h3>
             <p>
-              {_ii3_intro(py_ver_rel, fid, skill.get("filename", "SKILL.md"))}
+              {_ii3_intro(py_ver_rel, fid, skill.get("filename", "SKILL.md"), len(skill.get("rules", [])))}
             </p>
             <ol class="tp-invariant-list">
 {rules_list_html}
@@ -1170,7 +1192,7 @@ def render_multi_chapter_monograph_sections(
                 <strong>Secondary Coupling &amp; Regime Boundary ({sn2_kicker}):</strong> {linkify_citations(esc(sn2_body_c))}
               </p>
               <p>
-                <strong>Mathematical &amp; Physical Necessity of the Full Operator:</strong> Testing a theorem or physical law by knocking out its core hypothesis is one of the sharpest ways a human mind builds intuition. This counterfactual analysis shows <em>why</em> every coupling term in <code>{gov_law}</code> is indispensable: When the primary control parameter is dragged to its degenerate boundary in the Act III observatory below, the stabilizing restorative term vanishes, reproducing the classical collapse predicted by theory and illustrating that our solver is an interactive computational model rather than a static animation.
+                <strong>Mathematical &amp; Physical Necessity of the Full Operator:</strong> Testing a theorem or physical law by knocking out its core hypothesis is one of the sharpest ways a human mind builds intuition. This counterfactual analysis shows <em>why</em> every coupling term in <code>{gov_law}</code> is indispensable: {_ii4_tail(py_ver_rel)}
               </p>
             </div>
           </article>
@@ -1184,7 +1206,10 @@ def render_multi_chapter_monograph_sections(
         r_lbl = esc(decf_title(ro.get("label", "")))
         r_val = esc(decf(ro.get("value", "")))
         readout_rows.append(f'<tr><th scope="row">{r_lbl}</th><td><code>{r_val}</code></td>{_readout_source_cell(py_ver_rel)}</tr>')
-        readout_prose_bits.append(f"<strong>{r_lbl}</strong> converges to <code>{r_val}</code>")
+        if py_ver_rel:
+            readout_prose_bits.append(f"<strong>{r_lbl}</strong> converges to <code>{r_val}</code>")
+        else:
+            readout_prose_bits.append(f"<strong>{r_lbl}</strong> lists <code>{r_val}</code>")
     readouts_table_rows = "\n".join(readout_rows)
     readouts_summary_prose = "; ".join(readout_prose_bits)
 
@@ -1281,13 +1306,36 @@ def _ii2_tail(py_ver_rel: str) -> str:
     return f" and the standalone verifier in <code>{esc(py_ver_rel)}</code>" if py_ver_rel else ""
 
 
-def _ii3_intro(py_ver_rel: str, fid: str, skill_filename: str) -> str:
+def _ii2_stage_tail(py_ver_rel: str, fid: str) -> str:
     if py_ver_rel:
-        return (f"Every quantitative claim in Folio <strong>{esc(fid)}</strong> is tied to three falsification rules "
+        return (f"Every numerical trajectory and geometric projection in Plate {esc(fid)}-A and Plate {esc(fid)}-B "
+                f"below evaluates this exact stage transfer function in real time.")
+    return (f"Plate {esc(fid)}-A and Plate {esc(fid)}-B below pair this stage relation with the interactive "
+            f"controls and fixed reference figures.")
+
+
+_RULE_COUNT_WORDS = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six"}
+
+
+def _ii3_intro(py_ver_rel: str, fid: str, skill_filename: str, n_rules: int = 3) -> str:
+    word = _RULE_COUNT_WORDS.get(n_rules, str(n_rules))
+    f_noun = "falsification rule" if n_rules == 1 else "falsification rules"
+    r_noun = "rule" if n_rules == 1 else "rules"
+    if py_ver_rel:
+        return (f"Every quantitative claim in Folio <strong>{esc(fid)}</strong> is tied to {word} {f_noun} "
                 f"listed in <code>{esc(skill_filename)}</code> and executed by <code>{esc(py_ver_rel)}</code>:")
-    return (f"Folio <strong>{esc(fid)}</strong> states three rules a careful reader can use to test its claims. "
+    return (f"Folio <strong>{esc(fid)}</strong> states {word} {r_noun} a careful reader can use to test its claims. "
             f"They are listed as plain text in <code>{esc(skill_filename)}</code>. "
             f"No script in this repository executes them yet:")
+
+
+def _ii4_tail(py_ver_rel: str) -> str:
+    if py_ver_rel:
+        return ("When the primary control parameter is dragged to its degenerate boundary in the Act III observatory "
+                "below, the stabilizing restorative term vanishes, reproducing the classical collapse predicted by "
+                "theory and illustrating that our solver is an interactive computational model rather than a static animation.")
+    return ("At the degenerate boundary of the Act III parameter interval below, omitting that coupling term "
+            "recovers the classical breakdown described in the cited literature rather than an interior balance.")
 
 
 def _readout_source_cell(py_ver_rel: str) -> str:
@@ -1324,7 +1372,7 @@ def _pillar_skill_box(fid: str, py_filename: str, py_verifier_src: str) -> dict:
         "aria": "Downloadable SKILL.md companion",
         "kicker": "SKILL.md companion &middot; plain text",
         "desc": (f"Give any AI agent or engineering pipeline the governing equations of Folio {esc(fid)} as plain text: a portable "
-                 f"<code>SKILL.md</code>, or the live telemetry as JSON. Its reference values are stated in the essay and are not yet "
+                 f"<code>SKILL.md</code>, or the current panel state as JSON. Its reference values are stated in the essay and are not yet "
                  f"recomputed by a script in this repository."),
         "button": "",
         "source": "",
@@ -1449,7 +1497,7 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
     sl0_short = sl0_inline["label"].split("(")[0].strip()
     sl0_u = str(sl0_inline.get("unit", ""))
     sl0_v = sl0_inline.get("value", "")
-    sl0_txt = f"{sl0_u}{sl0_v}" if "=" in sl0_u else f"{sl0_short} = {sl0_v}{sl0_u}"
+    sl0_txt = f"{sl0_u}{sl0_v}" if sl0_u.rstrip().endswith("=") else f"{sl0_short} = {sl0_v}{sl0_u}"
     if slug == "e02":
         inline_scrub = '<span id="tp-inline-tau0" class="tp-scrub">tau_0 = 28.0 Pa</span>'
     elif slug == "e05":
@@ -1606,6 +1654,16 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
         (f' data-audio-src="{rel_res}/audio/{esc(slug)}-en.mp3"' if has_en_audio else "")
         + (f' data-audio-src-es="{rel_res}/audio/{esc(slug)}-es.mp3"' if has_es_audio else "")
     )
+    es_gov_clause = (
+        f'Este monográfico interactivo verifica la ley gobernante <code>{esc(folio["governing_law"])}</code>.'
+        if py_filename
+        else f'Este monográfico educativo expone la relación gobernante <code>{esc(folio["governing_law"])}</code>.'
+    )
+    es_act3_clause = (
+        "permiten explorar los umbrales críticos directamente en el navegador."
+        if py_filename
+        else "permiten inspeccionar los controles y las cifras de referencia directamente en el navegador."
+    )
     return f"""<div id="tp-folio-mount" data-folio-id="{esc(fid)}" data-folio-slug="{esc(slug)}" data-plate-prefix="{rel_res}/plates/">
     <section class="tp-hero">
       <p class="tp-kicker"><span data-en="{esc(pillar_en)}" data-es="{esc(pillar_es)}">{esc(pillar_en)}</span> · {esc(fid)} · <span data-en="{rt_en}" data-es="{rt_es}">{rt_en}</span></p>
@@ -1645,10 +1703,10 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
         <span><strong>Sinopsis Ejecutiva en Español · Folio {esc(fid)}</strong></span>
       </summary>
       <div class="tp-es-body">
-        <p><strong>Actos I y II — Historia, ley gobernante e intuición cotidiana:</strong> <em>{esc(title_es_c)}</em> — {esc(sub_es_c)} Este monográfico interactivo verifica la ley gobernante <code>{esc(folio["governing_law"])}</code>. <strong>Por qué importa en la vida real:</strong> {esc(why_es_c)}</p>
+        <p><strong>Actos I y II — Historia, ley gobernante e intuición cotidiana:</strong> <em>{esc(title_es_c)}</em> — {esc(sub_es_c)} {es_gov_clause} <strong>Por qué importa en la vida real:</strong> {esc(why_es_c)}</p>
         {es_plain_html}
         {es_deep_html}
-        <p><strong>Acto III — Laboratorio interactivo:</strong> los deslizadores en tiempo real y las cuatro lentes del observatorio (superficie 3D, retrato de fase, listón de conservación y radar polar) permiten explorar los umbrales críticos directamente en el navegador.</p>
+        <p><strong>Acto III — Laboratorio interactivo:</strong> los deslizadores en tiempo real y las cuatro lentes del observatorio (superficie 3D, retrato de fase, listón de conservación y radar polar) {es_act3_clause}</p>
         <p><strong>Actos IV y V — Descubrimiento y fuentes:</strong> la narrativa completa y las fuentes primarias siguen abajo (en inglés). <em>Investigación científica y educativa abierta, no consejo médico.</em></p>
       </div>
     </details>
