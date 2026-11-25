@@ -163,9 +163,9 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "a09": (
         "Hygroscopic Programmable Timber Skins",
-        "How Timoshenko's bilayer curvature formula describes wood skins that bend with humidity, the idea behind motor-free facades studied at ICD/ITKE Stuttgart.",
+        "An explanatory model adapting Timoshenko's bilayer curvature formula to humidity-bent wood skins; explanation only, not a structural design method.",
         "Pieles Programables de Madera Higroscópica",
-        "Cómo la fórmula de curvatura bicapa de Timoshenko describe pieles de madera que se curvan con la humedad, idea de fachadas sin motores del ICD/ITKE.",
+        "Modelo explicativo que adapta la curvatura bicapa de Timoshenko a pieles de madera que se curvan con la humedad; no es método de diseño estructural.",
     ),
     "a10": (
         "Miura-Ori Origami Deployable Facades",

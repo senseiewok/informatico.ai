@@ -1061,7 +1061,7 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
         "title_es": "Folio A.09 · Crucigrama de Pieles de Madera Higroscópica y Timoshenko",
         "en": [
             ("BILAYER", "Two bonded plies that swell differently; the folio's Timoshenko model gives a curvature of 1.42 per meter for assumed values", "Act III"),
-            ("BEECH", "European hardwood (Fagus sylvatica) assumed in the folio's cross-grained bilayer facade elements, a design proposal and not a tested product", "Act III"),
+            ("BEECH", "European hardwood (Fagus sylvatica) assumed in the folio's illustrative bilayer petal example; explanation only, not a tested product", "Act III"),
             ("SWELL", "Moisture expansion of wood; the model assumes beech swells tangentially at 0.32 percent per percent moisture content, an assumed round value", "Act III"),
             ("CONE", "Pine cone scale, which opens when dry and closes when wet because two layers swell differently (Dawson, Vincent and Rocca, 1997)", "Act I"),
             ("GRAIN", "Direction of the wood fibers; the model assumes beech swells far more across the grain than along it", "Act III"),
@@ -1071,9 +1071,9 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
             ("MADERA", "Material cuya hinchazón depende de la dirección de la fibra; el modelo del folio supone coeficientes redondos asumidos", "Acto III"),
             ("BICAPA", "Dos capas unidas que se hinchan distinto; la fórmula de Timoshenko (1925) describe su curvatura", "Acto II"),
             ("CLIMA", "Humedad del aire; en el modelo del folio, una fachada de bicapas de madera se abre y se cierra con ella sin motores", "Acto III"),
-            ("HAYA", "Madera (Fagus sylvatica) supuesta en los elementos de fachada bicapa del folio, una propuesta de diseño no probada", "Acto III"),
+            ("HAYA", "Madera (Fagus sylvatica) supuesta en el pétalo bicapa ilustrativo del folio; modelo explicativo, no un producto probado", "Acto III"),
             ("FIBRA", "Dirección de las fibras de la madera; el modelo supone que se hincha mucho más a lo ancho que a lo largo", "Acto III"),
-            ("ARCO", "Forma curva; en el modelo, un pétalo de 425 mm se desplaza unos 128 mm en la punta al secarse", "Acto III"),
+            ("ARCO", "Forma curva; en el modelo del deslizador, un pétalo de 425 mm muestra 128.2 mm en la punta al valor base", "Acto III"),
         ],
     },
     "a10": {
