@@ -32,6 +32,7 @@ from folios import (  # noqa: E402
     PLATE_CAPTIONS,
 )
 from folios.css_bundle import REVAMP_CSS, update_informatico_css  # noqa: E402
+from folios.mathml_render import get_cached_mathml  # noqa: E402
 from folios.bounties_data import BOUNTY_BY_SLUG, BOUNTY_FOLIOS  # noqa: E402
 from folios.toolchain_data import PILLAR_FOLIO_TO_TOOLCHAIN, TOOLCHAIN_BY_SLUG, TOOLCHAIN_FOLIOS  # noqa: E402
 from folios.seo_copy import BOUNTY_SEO, BRAND, FOLIO_SEO, HUB_SEO, PILLAR_SEO, TOOLCHAIN_SEO  # noqa: E402
@@ -1111,13 +1112,22 @@ def render_multi_chapter_monograph_sections(
         else ""
     )
 
+    gov_law_latex = folio.get("governing_law_latex")
+    if gov_law_latex:
+        gov_law_block_html = (
+            f'<p class="tp-theorem-eq tp-theorem-eq--mathml">'
+            f'{get_cached_mathml(slug, gov_law_latex)}</p>'
+        )
+    else:
+        gov_law_block_html = f'<p class="tp-theorem-eq"><code>{gov_law}</code></p>'
+
     act2_proof_spine_html = f"""
         <section class="tp-proof-spine" aria-label="Multi-Chapter Formal Proof and Governing Derivation">
           <article class="tp-proof-chapter" id="ch-ii-1-{esc(slug)}">
             <h3 data-en="&sect; II.1 &middot; Formal Problem Statement, State-Space Manifold &amp; Governing Operator" data-es="&sect; II.1 &middot; Enunciado Formal, Variedad de Espacio de Estados y Operador Gobernante">&sect; II.1 &middot; Formal Problem Statement, State-Space Manifold &amp; Governing Operator</h3>
             <div class="tp-theorem-box" role="region" aria-label="Formal Governing Law and Verification Anchor">
               <span class="tp-kicker" data-en="CANONICAL GOVERNING OPERATOR &middot; FOLIO {esc(fid)}" data-es="OPERADOR GOBERNANTE CAN&Oacute;NICO &middot; FOLIO {esc(fid)}">CANONICAL GOVERNING OPERATOR &middot; FOLIO {esc(fid)}</span>
-              <p class="tp-theorem-eq"><code>{gov_law}</code></p>
+              {gov_law_block_html}
               <p class="tp-theorem-meta"><strong>Kernels:</strong> {kernels_c} &middot; <strong>Benchmarks:</strong> {bench_c} &middot; <strong>Primary Anchor:</strong> <code>DOI {doi_str}</code></p>
             </div>
             <p>

@@ -3591,6 +3591,7 @@
         "date_redated": "2026-11-02",
         "folio_id": "P.01",
         "governing_law": "σ_ij = −k_B (∂²S / ∂α_i ∂α_j)⁻¹ · A_r = k_B T ln(v_r⁺ / v_r⁻)",
+        "governing_law_latex": "\\sigma_{ij} = -k_B \\left(\\frac{\\partial^2 S}{\\partial \\alpha_i \\partial \\alpha_j}\\right)^{-1}, \\\\ A_r = k_B T \\ln\\frac{v_r^+}{v_r^-}",
         "pillar": "physics",
         "primary_kernel": "tools/physics_kernel.py",
         "readouts": [
@@ -4071,6 +4072,7 @@
         "date_redated": "2026-11-02",
         "folio_id": "P.05",
         "governing_law": "T_WKB ~ exp(−2/ℏ ∫√(2m(V−E))dx) · k_H/k_D = 6.84",
+        "governing_law_latex": "T_{\\mathrm{WKB}} \\sim \\exp\\left(-\\frac{2}{\\hbar}\\int \\sqrt{2m(V(x)-E)}\\,dx\\right), \\\\ \\kappa_{\\mathrm{tun}} = \\frac{u_b / 2}{\\sin(u_b / 2)}",
         "kernel_verdict": "Not independently verified",
         "kernel_verdict_es": "Sin verificación independiente",
         "pillar": "physics",
@@ -5101,6 +5103,7 @@
           }
         ],
         "governing_law": "FLT · Taylor-Wiles R=T · #3-SAT sparsification",
+        "governing_law_latex": "a^p + b^p = c^p \\;(p \\ge 3) \\;\\Longrightarrow\\; R_{\\mathbb{Q}} \\cong \\mathbb{T}_{\\mathbb{Q}}, \\\\ \\dim\\,S_2(\\Gamma_0(2)) = 0",
         "volume": 1,
         "volume_code": "VOL. 01",
         "reading_time": "22 MIN READ",
@@ -5227,6 +5230,7 @@
           }
         ],
         "governing_law": "Zero-density estimates · Large Sieve · Zeta23 (README statement)",
+        "governing_law_latex": "N(\\sigma, T) \\ll T^{c(1-\\sigma)+\\varepsilon}, \\\\ c_{\\mathrm{Huxley}} = \\frac{12}{5}, \\quad c_{\\mathrm{GM}} = \\frac{30}{13}",
         "volume": 1,
         "volume_code": "VOL. 01",
         "reading_time": "22 MIN READ",

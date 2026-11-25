@@ -136,6 +136,7 @@ FOLIO = {'folio_id': 'M.01',
                         'baseline Kramers escape rate across the Ribet level-lowering '
                         'bottleneck.'}],
  'governing_law': 'FLT · Taylor-Wiles R=T · #3-SAT sparsification',
+ 'governing_law_latex': r"a^p + b^p = c^p \;(p \ge 3) \;\Longrightarrow\; R_{\mathbb{Q}} \cong \mathbb{T}_{\mathbb{Q}}, \\ \dim\,S_2(\Gamma_0(2)) = 0",
  'volume': 1,
  'volume_code': 'VOL. 01',
  'reading_time': '22 MIN READ',

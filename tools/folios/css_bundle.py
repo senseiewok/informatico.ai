@@ -1611,6 +1611,22 @@ REVAMP_CSS = r"""
     margin: 0.35rem 0;
     color: var(--tp-prussian);
   }
+  .tp-theorem-eq--mathml {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.45rem 1.05rem;
+    padding: 0.4rem 0;
+    font-weight: 400;
+    max-width: 100%;
+  }
+  .tp-theorem-eq--mathml math {
+    font-size: clamp(0.84rem, 2.2vw, 1.12rem);
+    line-height: 1.5;
+    color: var(--tp-prussian);
+    max-width: 100%;
+  }
   .tp-theorem-meta {
     font-size: 0.84rem;
     color: var(--tp-ink-soft);
