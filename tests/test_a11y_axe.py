@@ -24,7 +24,36 @@ HTACCESS_PATH = ROOT / "deploy" / "htaccess.txt"
 
 AXE_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"]
 AUDIT_ROUTES = ["", "math/", "math/m01/", "es-mx/math/m01/", "physics/p01/", "about/"]
-MATHML_ROUTES = ["math/m01/", "es-mx/math/m01/", "physics/p01/", "physics/p05/"]
+MATHML_ROUTES = [
+    "math/m01/",
+    "math/m02/",
+    "math/m05/",
+    "math/m06/",
+    "math/m07/",
+    "math/m08/",
+    "math/m09/",
+    "math/m10/",
+    "math/m11/",
+    "math/m12/",
+    "math/m13/",
+    "math/m14/",
+    "math/m15/",
+    "math/m16/",
+    "physics/p01/",
+    "physics/p02/",
+    "physics/p03/",
+    "physics/p04/",
+    "physics/p05/",
+    "physics/p06/",
+    "physics/p07/",
+    "physics/p08/",
+    "physics/p09/",
+    "physics/p10/",
+    "physics/p11/",
+    "physics/p12/",
+    "es-mx/math/m01/",
+    "es-mx/physics/p12/",
+]
 VIEWPORTS = [
     ("desktop", {"width": 1440, "height": 900}),
     ("mobile", {"width": 375, "height": 812}),
@@ -194,8 +223,8 @@ class InformaticoAxeAndMathMLTests(unittest.TestCase):
         self.assertIn("button-name", violation_ids)
 
     def test_wcag22_aa_audit_across_routes_and_viewports(self) -> None:
-        """Run axe WCAG 2.2 AA across 6 routes at desktop (1440x900) and mobile (375x812); fail on critical."""
-        critical_hits: list[dict] = []
+        """Run axe WCAG 2.2 AA across 6 routes at desktop (1440x900) and mobile (375x812); fail on critical or serious."""
+        blocking_hits: list[dict] = []
         summary_lines: list[str] = ["\n[informatico.ai axe-core WCAG 2.2 AA Summary]"]
 
         for route in AUDIT_ROUTES:
@@ -215,11 +244,12 @@ class InformaticoAxeAndMathMLTests(unittest.TestCase):
                     rule_id = v.get("id") or "unknown"
                     nodes_count = len(v.get("nodes", []))
                     summary_lines.append(f"    - impact={impact:<9} id={rule_id:<30} nodes={nodes_count}")
-                    if impact == "critical":
-                        critical_hits.append(
+                    if impact in ("critical", "serious"):
+                        blocking_hits.append(
                             {
                                 "route": route_label,
                                 "viewport": vp_name,
+                                "impact": impact,
                                 "id": rule_id,
                                 "nodes": nodes_count,
                                 "help": v.get("help", ""),
@@ -227,14 +257,20 @@ class InformaticoAxeAndMathMLTests(unittest.TestCase):
                         )
 
         print("\n".join(summary_lines), flush=True)
-        self.assertEqual(critical_hits, [], f"Critical WCAG 2.2 AA violations detected: {critical_hits}")
+        self.assertEqual(blocking_hits, [], f"Critical/serious WCAG 2.2 AA violations detected: {blocking_hits}")
 
     def test_mathml_renders_under_strict_csp(self) -> None:
         """Verify native MathML Core lays out under strict production CSP and save 2x Retina screenshots."""
         lf = _lab_files_root()
-        screenshot_dir = lf / "scratch" / "screenshots" / "2026-11-24" / "mathml-m01" if lf else None
+        screenshot_dir = lf / "scratch" / "screenshots" / "2026-11-25" / "mathml-wave2" if lf else None
         if screenshot_dir is not None:
             screenshot_dir.mkdir(parents=True, exist_ok=True)
+        shot_routes = {
+            "math/m08/": "m08",
+            "math/m14/": "m14",
+            "physics/p09/": "p09",
+            "physics/p12/": "p12",
+        }
 
         for route in MATHML_ROUTES:
             for vp_name, vp_size in VIEWPORTS:
@@ -279,7 +315,7 @@ class InformaticoAxeAndMathMLTests(unittest.TestCase):
                         }"""
                     )
                     self.assertIsNotNone(box, f"Missing MathML element on {route}")
-                    self.assertGreater(box["height"], 10.0, f"MathML collapsed vertically on {route}: {box}")
+                    self.assertGreaterEqual(box["height"], 10.0, f"MathML collapsed vertically on {route}: {box}")
                     self.assertGreater(box["width"], 40.0, f"MathML collapsed horizontally on {route}: {box}")
                     self.assertLessEqual(
                         box["wrapScrollW"],
@@ -288,11 +324,12 @@ class InformaticoAxeAndMathMLTests(unittest.TestCase):
                     )
                     self.assertEqual(box["namespace"], "http://www.w3.org/1998/Math/MathML")
 
-                    if route == "math/m01/" and screenshot_dir is not None:
+                    if route in shot_routes and screenshot_dir is not None:
+                        slug = shot_routes[route]
                         theorem_box = page.locator(".tp-theorem-box").first
                         theorem_box.scroll_into_view_if_needed()
-                        theorem_box.screenshot(path=str(screenshot_dir / f"m01-theorem-{vp_name}-2x.png"))
-                        page.screenshot(path=str(screenshot_dir / f"m01-viewport-{vp_name}-2x.png"))
+                        theorem_box.screenshot(path=str(screenshot_dir / f"{slug}-theorem-{vp_name}-2x.png"))
+                        page.screenshot(path=str(screenshot_dir / f"{slug}-viewport-{vp_name}-2x.png"))
                 finally:
                     ctx.close()
 

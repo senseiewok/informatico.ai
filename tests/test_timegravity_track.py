@@ -163,7 +163,7 @@ class TimeGravityTrackTests(unittest.TestCase):
             self.assertEqual(txt.count('class="tp-proof-stage-block"'), 4, path)
         self.assertIn("What sets the slope?", en.read_text(encoding="utf-8"))
         self.assertIn('lang="es-MX"', es.read_text(encoding="utf-8"))
-        self.assertIn('aria-pressed="true" aria-label="Read in English" title="English">EN</button>', es.read_text(encoding="utf-8"))
+        self.assertIn('aria-pressed="true" aria-label="EN — Read in English" title="English">EN</button>', es.read_text(encoding="utf-8"))
 
     def test_spanish_twin_is_the_english_page_through_the_site_copier(self) -> None:
         for en in (TG / "index.html", TG / "t01" / "index.html"):

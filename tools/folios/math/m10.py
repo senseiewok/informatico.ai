@@ -26,6 +26,7 @@ FOLIO = {'folio_id': 'M.10',
  'primary_kernel': 'tools/discovery/frontier_ai_math_catalog.py',
  'governing_law': '∂_{k−1} ∘ ∂_k = 0 · β_k^{i,j} = rank(H_k(K_i) → H_k(K_j)) · d_B(D(f), D(g)) '
                   '≤ ||f − g||_∞',
+ 'governing_law_latex': r"\partial_{k-1} \circ \partial_k = 0, \\ \beta_k^{i,j} = \mathrm{rank}\left(H_k(K_i) \to H_k(K_j)\right), \\ d_B(D(f), D(g)) \le \|f - g\|_\infty",
  'colophon': {'identifier': 'M.10 · Persistent Homology & Topological Persistence Barcodes',
               'kernels': 'Alpha & Vietoris–Rips Filtrations · Z_2 Boundary Reduction ∂_k · '
                          'Bottleneck Stability',

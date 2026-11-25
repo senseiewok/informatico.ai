@@ -52,7 +52,7 @@
       </nav>
       <div class="tp-masthead-tools">
         <button type="button" class="tp-tool-btn tp-contents-btn" data-open-contents aria-haspopup="dialog" aria-controls="tp-contents" aria-expanded="false"><span class="tp-contents-icon" aria-hidden="true"></span><span data-en="Contents" data-es="Contenido">Contenido</span></button>
-        <button id="tp-lang-toggle" class="tp-tool-btn" type="button" aria-pressed="true" aria-label="Read in English" title="English">EN</button>
+        <button id="tp-lang-toggle" class="tp-tool-btn" type="button" aria-pressed="true" aria-label="EN — Read in English" title="English">EN</button>
         <button id="tp-blueprint-toggle" class="tp-tool-btn" type="button" aria-pressed="false" aria-label="Switch to dark theme">Dark</button>
       </div>
     </div>
@@ -374,7 +374,7 @@
             <h3 data-en="&sect; II.1 &middot; Formal Problem Statement, State-Space Manifold &amp; Governing Operator" data-es="&sect; II.1 &middot; Enunciado Formal, Variedad de Espacio de Estados y Operador Gobernante">§ II.1 · Enunciado Formal, Variedad de Espacio de Estados y Operador Gobernante</h3>
             <div class="tp-theorem-box" role="region" aria-label="Formal Governing Law and Verification Anchor">
               <span class="tp-kicker" data-en="CANONICAL GOVERNING OPERATOR &middot; FOLIO M.16" data-es="OPERADOR GOBERNANTE CAN&Oacute;NICO &middot; FOLIO M.16">OPERADOR GOBERNANTE CANÓNICO · FOLIO M.16</span>
-              <p class="tp-theorem-eq"><code>For N ≥ 3: T(A) = (1/M) ∑_r Â(r)² conj(Â(2r mod M)) · N exp(−c √(log N)) ≤ r_3(N) ≤ N exp(−c′ (log N)^(1/9))</code></p>
+              <p class="tp-theorem-eq tp-theorem-eq--mathml"><math display="block"><mrow><mi>N</mi><mo>≥</mo><mn>3</mn><mi>:</mi><mspace width="0.278em"></mspace><mi>T</mi><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mi>M</mi></mrow></mfrac><munder><mo>∑</mo><mi>r</mi></munder><mover><mrow><mi>A</mi></mrow><mo>^</mo></mover><mo stretchy="false">(</mo><mi>r</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mover><mrow><mover><mrow><mi>A</mi></mrow><mo>^</mo></mover><mo stretchy="false">(</mo><mn>2</mn><mi>r</mi><mo>mod</mo><mi>M</mi><mo stretchy="false">)</mo></mrow><mo accent="true">―</mo></mover><mo>,</mo></mrow></math> <math display="block"><mrow><mi>N</mi><msup><mi>e</mi><mrow><mo>−</mo><mi>c</mi><msqrt><mrow><mi>log</mi><mi>N</mi></mrow></msqrt></mrow></msup><mo>≤</mo><msub><mi>r</mi><mn>3</mn></msub><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo><mo>≤</mo><mi>N</mi><msup><mi>e</mi><mrow><mo>−</mo><msup><mi>c</mi><mi>′</mi></msup><mo stretchy="false">(</mo><mi>log</mi><mi>N</mi><msup><mo stretchy="false">)</mo><mrow><mn>1</mn><mo>/</mo><mn>9</mn></mrow></msup></mrow></msup></mrow></math></p>
               <p class="tp-theorem-meta"><strong>Kernels:</strong> Bitmask Branch-and-Bound r_3(N) · Base-(2d−1) Spherical Shell DP · Odd-Modulus Cyclic DFT &middot; <strong>Benchmarks:</strong> r_3(9) = 5 &gt; |C_3(9)| = 4 · r_3(20) = 9, r_3(24) = 10 · |B(5, 4)| = 30 on R*² = 18 in N = 6,561 · Open log exponent β ∈ [1/9, 1/2] &middot; <strong>Primary Anchor:</strong> <code>DOI 10.1112/jlms/s1-28.1.104</code></p>
             </div>
             <p>

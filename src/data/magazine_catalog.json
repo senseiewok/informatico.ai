@@ -3721,6 +3721,7 @@
         "date_redated": "2026-11-02",
         "folio_id": "P.02",
         "governing_law": "∂_t θ_i = ω_0 + ∑_j K_ij sin(θ_j − θ_i − α) · v_wave = λ f_beat",
+        "governing_law_latex": "\\partial_t \\theta_i = \\omega_0 + \\sum_j K_{ij} \\sin(\\theta_j - \\theta_i - \\alpha), \\\\ v_{\\mathrm{wave}} = \\lambda f_{\\mathrm{beat}}",
         "pillar": "physics",
         "primary_kernel": "tools/physics_kernel.py",
         "readouts": [
@@ -3841,6 +3842,7 @@
         "date_redated": "2026-11-02",
         "folio_id": "P.03",
         "governing_law": "η(γ̇) = η_∞ + (η_0 − η_∞)[1 + (λ γ̇)²]^((n−1)/2) · ξ_mesh ~ w^(−0.75)",
+        "governing_law_latex": "\\eta(\\dot{\\gamma}) = \\eta_\\infty + (\\eta_0 - \\eta_\\infty)\\left[1 + (\\lambda \\dot{\\gamma})^2\\right]^{(n-1)/2}, \\\\ \\xi_{\\mathrm{mesh}} \\sim w^{-0.75}",
         "pillar": "physics",
         "primary_kernel": "tools/physics_kernel.py",
         "readouts": [
@@ -3961,6 +3963,7 @@
         "date_redated": "2026-11-02",
         "folio_id": "P.04",
         "governing_law": "J_k = −D_k (∇c_k + (z_k F / RT) c_k ∇Φ) · dh_PCL/dt = L_p (ΔΠ_osm − ΔP_hydro)",
+        "governing_law_latex": "J_k = -D_k\\left(\\nabla c_k + \\frac{z_k F}{RT} c_k \\nabla \\Phi\\right), \\\\ \\frac{dh_{\\mathrm{PCL}}}{dt} = L_p(\\Delta \\Pi_{\\mathrm{osm}} - \\Delta P_{\\mathrm{hydro}})",
         "pillar": "physics",
         "primary_kernel": "tools/physics_kernel.py",
         "readouts": [
@@ -4198,6 +4201,7 @@
         "date_redated": "2026-11-02",
         "folio_id": "P.06",
         "governing_law": "τ_d = L_tube² / (π² D_curv) ~ N³ · D_rep ~ N⁻²",
+        "governing_law_latex": "\\tau_d = \\frac{L_{\\mathrm{tube}}^2}{\\pi^2 D_{\\mathrm{curv}}} \\sim N^3, \\quad D_{\\mathrm{rep}} \\sim N^{-2}",
         "kernel_verdict": "Not independently verified",
         "kernel_verdict_es": "Sin verificación independiente",
         "pillar": "physics",
@@ -4314,6 +4318,7 @@
         "date_redated": "2026-11-02",
         "folio_id": "P.07",
         "governing_law": "C_p = 1 − (U/U_∞)² · Γ_v = ∮ u·dl · m z̈ + c_a(z) ż + k_s z = −½ρU²A C_L(z, δ_wing)",
+        "governing_law_latex": "C_p = 1 - \\left(\\frac{U}{U_\\infty}\\right)^2, \\quad \\Gamma_v = \\oint \\mathbf{u} \\cdot d\\mathbf{l}, \\\\ m\\ddot{z} + c_a(z)\\dot{z} + k_s z = -\\frac{1}{2}\\rho U^2 A C_L(z, \\delta_{\\mathrm{wing}})",
         "kernel_verdict": "Partial: 1 of 4 readouts recomputed",
         "kernel_verdict_es": "Parcial: 1 de 4 lecturas recalculadas",
         "pillar": "physics",
@@ -4424,6 +4429,7 @@
         "date_redated": "2026-11-14",
         "folio_id": "P.08",
         "governing_law": "Δ_OPD = 2 d √(n_f² − sin²θ_i) = m λ · f_r = k_d(ρ/π) + k_s(D F G) / [4(n·l)(n·v)]",
+        "governing_law_latex": "\\Delta_{\\mathrm{OPD}} = 2 d \\sqrt{n_f^2 - \\sin^2\\theta_i} = m\\lambda, \\\\ f_r = k_d \\frac{\\rho}{\\pi} + k_s \\frac{D F G}{4(n\\cdot l)(n\\cdot v)}",
         "kernel_verdict": "Partial: 2 of 4 readouts recomputed",
         "kernel_verdict_es": "Parcial: 2 de 4 lecturas recalculadas",
         "pillar": "physics",
@@ -4540,6 +4546,7 @@
         "date_redated": "2026-11-03",
         "folio_id": "P.09",
         "governing_law": "P_{1/2}(cos θ_0) = 0 ⇒ θ_T = 49.3° · q_R = 8π √(ε_0 γ R³) · d_drop ~ (ρ ε_0 Q³ / γ K)^(1/6)",
+        "governing_law_latex": "P_{1/2}(\\cos\\theta_0) = 0 \\;\\Longrightarrow\\; \\theta_T = 49.3^\\circ, \\\\ q_R = 8\\pi\\sqrt{\\varepsilon_0 \\gamma R^3}, \\quad d_{\\mathrm{drop}} \\sim \\left(\\frac{\\rho \\varepsilon_0 Q^3}{\\gamma K}\\right)^{1/6}",
         "kernel_verdict": "Partial: 1 of 4 readouts recomputed",
         "kernel_verdict_es": "Parcial: 1 de 4 lecturas recalculadas",
         "lineage_mode": "REFERENCE_COMPLETION · Completes P.03 Viscoelastic Shear, P.04 Electrostatic Donnan Fields & P.06 4.5 kb Payloads",
@@ -4656,6 +4663,7 @@
         "date_redated": "2026-11-03",
         "folio_id": "P.10",
         "governing_law": "C_n = (1/2π) ∮_{BZ} Ω_n(k) d²k ∈ ℤ · Ω_n = i⟨∇_k u_n | × | ∇_k u_n⟩ · |m_T| > |m_P| ⇒ |C| = 1",
+        "governing_law_latex": "C_n = \\frac{1}{2\\pi}\\oint_{\\mathrm{BZ}} \\Omega_n(k)\\,d^2k \\in \\mathbb{Z}, \\\\ \\Omega_n = i\\langle \\nabla_k u_n | \\times | \\nabla_k u_n \\rangle, \\\\ |m_T| > |m_P| \\;\\Longrightarrow\\; |C| = 1",
         "kernel_verdict": "Partial: 1 of 4 readouts recomputed",
         "kernel_verdict_es": "Parcial: 1 de 4 lecturas recalculadas",
         "lineage_mode": "TRIAD_SYNTHESIS · Synthesizes E.03/A.05 Acoustic Metamaterials & A.08/P.08 Photonic Interference",
@@ -4778,6 +4786,7 @@
         "status_badge": "QUANTUM QEC & FEMOCO · REV 1.0",
         "primary_kernel": "tools/physics_kernel.py",
         "governing_law": "p_L ≈ 0.03 (p / p_th)^((d+1)/2) · [A_s, B_p] = 0 · H_FeMoCo |Ψ_0⟩ = E_0 |Ψ_0⟩",
+        "governing_law_latex": "p_L \\approx 0.03 \\left(\\frac{p}{p_{\\mathrm{th}}}\\right)^{(d+1)/2}, \\quad [A_s, B_p] = 0, \\\\ H_{\\mathrm{FeMoCo}} |\\Psi_0\\rangle = E_0 |\\Psi_0\\rangle",
         "colophon": {
           "identifier": "P.11 · Surface-Code Quantum Error Correction & FeMoCo Catalysis · Stim / PySCF",
           "kernels": "Kitaev Surface-Code Stabilizers [A_s, B_p] = 0 · Fowler Threshold p_th ≈ 1% · FeMoCo [Fe7MoS9C]",
@@ -4892,6 +4901,7 @@
         "status_badge": "HILBERT 6TH + TUR · REV 1.4",
         "primary_kernel": "tools/physics_kernel.py",
         "governing_law": "Q_TUR = (ΔS/k_B)·Var(J)/⟨J⟩² ≥ 2 · ∂_t f + v·∇_x f = (1/Kn) Q(f,f) ⇒ σ_visc = (2μ/T) S_ij S_ij ≥ 0",
+        "governing_law_latex": "Q_{\\mathrm{TUR}} = \\frac{\\Delta S}{k_B}\\frac{\\mathrm{Var}(J)}{\\langle J \\rangle^2} \\ge 2, \\\\ \\partial_t f + v \\cdot \\nabla_x f = \\frac{1}{\\mathrm{Kn}} Q(f,f) \\;\\Longrightarrow \\\\ \\sigma_{\\mathrm{visc}} = \\frac{2\\mu}{T} S_{ij} S_{ij} \\ge 0",
         "colophon": {
           "identifier": "P.12 · Hilbert's 6th & TUR Bridge: Markov Jumps → Boltzmann → Navier–Stokes · arXiv:2503.01800",
           "kernels": "Barato–Seifert TUR (Q_TUR ≥ 2) · Boltzmann–Grad (N ε^(d−1) = 1/Kn) · Deng–Hani–Ma Trees · Chapman–Enskog σ_visc",
@@ -5594,6 +5604,7 @@
           }
         ],
         "governing_law": "DD+AR Closure · Cayley-Menger det(B_5) = 0",
+        "governing_law_latex": "\\mathrm{DD}+\\mathrm{AR}\\;\\text{Closure}, \\\\ \\det(B_5) = 0 \\;(\\text{Cayley–Menger})",
         "volume": 3,
         "volume_code": "VOL. 03",
         "reading_time": "22 MIN READ",
@@ -5708,6 +5719,7 @@
           }
         ],
         "governing_law": "O(n³ / 2^(Ω(√log n))) APSP (randomized) · Step-Level PRM",
+        "governing_law_latex": "O\\left(\\frac{n^3}{2^{\\Omega(\\sqrt{\\log n})}}\\right)\\;\\text{APSP (randomized)}, \\\\ \\text{Step-Level PRM}",
         "volume": 3,
         "volume_code": "VOL. 03",
         "reading_time": "22 MIN READ",
@@ -5738,6 +5750,7 @@
         "kernel_verdict": "Not independently verified",
         "kernel_verdict_es": "Sin verificación independiente",
         "governing_law": "H(x, u, λ) = 1/v + λ_v a_net(v, P_k, δ)/v − λ_E P_batt(P_k)/v ; u_{l+1} = σ(W u_l + F⁻¹(R_φ · F(u_l)))",
+        "governing_law_latex": "H(x,u,\\lambda) = \\\\ \\frac{1 + \\lambda_v a_{\\mathrm{net}}(v,P_k,\\delta) - \\lambda_E P_{\\mathrm{batt}}(P_k)}{v}, \\\\ u_{l+1} = \\sigma\\left(W u_l + \\mathcal{F}^{-1}(R_\\phi \\cdot \\mathcal{F}(u_l))\\right)",
         "colophon": {
           "identifier": "M.07 · Hybrid Pontryagin Control & FNO Surrogates (Teaching Model)",
           "kernels": "Pontryagin Maximum Principle (PMP) · HJB PDE · Fourier Neural Operator",
@@ -5852,6 +5865,7 @@
         "status_badge": "RIEMANNIAN COLOR MATH · REV 1.1",
         "primary_kernel": "tools/discovery/formal_proof_thermodynamic_landscape.py",
         "governing_law": "Π_T: L²([380,780]) → ℝ³ · ds² = ∑ g_ij(x) dx^i dx^j (x ∈ ℝ³₊) · ẍ^k + Γ^k_ij ẋ^i ẋ^j = 0",
+        "governing_law_latex": "\\Pi_T : L^2([380,780]) \\to \\mathbb{R}^3, \\\\ ds^2 = \\sum g_{ij}(x)\\,dx^i dx^j \\;(x \\in \\mathbb{R}_+^3), \\\\ \\ddot{x}^k + \\Gamma^k_{ij} \\dot{x}^i \\dot{x}^j = 0",
         "colophon": {
           "identifier": "M.08 · Riemannian Color Manifold & Metamer Nullspace · CIE",
           "kernels": "Weber–Fechner Metric · MacAdam Ellipses · Cohen–Kappauf Projector",
@@ -5972,6 +5986,7 @@
         "status_badge": "OPTIMAL TRANSPORT · REV 1.1",
         "primary_kernel": "tools/discovery/frontier_ai_math_catalog.py",
         "governing_law": "W_2²(μ_0, μ_1) = inf ∫_0^1 ∫ ρ|v|² dx dt · ∂_t ρ + ∇·(ρ∇ψ) = 0 · ∂_t ψ + ½|∇ψ|² = 0",
+        "governing_law_latex": "W_2^2(\\mu_0,\\mu_1) = \\inf \\int_0^1 \\int \\rho |v|^2\\,dx\\,dt, \\\\ \\partial_t \\rho + \\nabla \\cdot (\\rho \\nabla \\psi) = 0, \\quad \\partial_t \\psi + \\frac{1}{2}|\\nabla \\psi|^2 = 0",
         "colophon": {
           "identifier": "M.09 · Benamou–Brenier Wasserstein-2 Optimal Transport",
           "kernels": "Benamou–Brenier Continuity & HJB · Brenier Convex Potential ∇Φ · Sinkhorn Scaling",
@@ -6092,6 +6107,7 @@
         "status_badge": "PERSISTENT HOMOLOGY · REV 1.1",
         "primary_kernel": "tools/discovery/frontier_ai_math_catalog.py",
         "governing_law": "∂_{k−1} ∘ ∂_k = 0 · β_k^{i,j} = rank(H_k(K_i) → H_k(K_j)) · d_B(D(f), D(g)) ≤ ||f − g||_∞",
+        "governing_law_latex": "\\partial_{k-1} \\circ \\partial_k = 0, \\\\ \\beta_k^{i,j} = \\mathrm{rank}\\left(H_k(K_i) \\to H_k(K_j)\\right), \\\\ d_B(D(f), D(g)) \\le \\|f - g\\|_\\infty",
         "colophon": {
           "identifier": "M.10 · Persistent Homology & Topological Persistence Barcodes",
           "kernels": "Alpha & Vietoris–Rips Filtrations · Z_2 Boundary Reduction ∂_k · Bottleneck Stability",
@@ -6211,6 +6227,7 @@
         "status_badge": "3D KAKEYA & 30/13 · REV 1.1",
         "primary_kernel": "tools/formal_verifier.py",
         "governing_law": "dim_H(K) = dim_M(K) = 3 for Kakeya K ⊂ ℝ³ (as stated in the Wang–Zahl preprint) · N(σ, T) ≤ T^(30(1−σ)/13+o(1)) (Guth–Maynard)",
+        "governing_law_latex": "\\dim_H(K) = \\dim_M(K) = 3 \\\\ \\text{for Kakeya } K \\subset \\mathbb{R}^3 \\\\ \\text{(as stated in the Wang–Zahl preprint)}, \\\\ N(\\sigma, T) \\le T^{\\frac{30(1-\\sigma)}{13} + o(1)} \\;(\\text{Guth–Maynard})",
         "colophon": {
           "identifier": "M.11 · 3D Kakeya Conjecture (arXiv:2502.17655) & Guth–Maynard 30/13 (arXiv:2405.20552)",
           "kernels": "Wang–Zahl volume estimates for unions of tubes · Guth–Maynard large values of Dirichlet polynomials",
@@ -6331,6 +6348,7 @@
         "status_badge": "LEAN 4 & POST-QUANTUM · REV 1.1",
         "primary_kernel": "tools/formal_verifier.py",
         "governing_law": "b = A s + e (mod q) · q = 3329 · n = 256 · k ∈ {2, 3, 4} (NIST FIPS 203)",
+        "governing_law_latex": "b = A s + e \\pmod{q}, \\\\ q = 3329, \\quad n = 256, \\\\ k \\in \\{2,3,4\\} \\;(\\text{NIST FIPS 203})",
         "colophon": {
           "identifier": "M.12 · anthropics/formal-math (as stated in its READMEs) & NIST FIPS 203 ML-KEM Lattices",
           "kernels": "Projects listed in the anthropics/formal-math README read 2026-11-14: zeta23, 3sum-apsp, eth (not built here) · Module-LWE b = As + e",
@@ -6450,6 +6468,7 @@
         "status_badge": "GRAPH CAPACITY · REV 1.0",
         "primary_kernel": "skills/math/m13/verify_m13_shannon_capacity.py",
         "governing_law": "α(G) ≤ Θ(G) ≤ ϑ(G) ≤ α*(G) ≤ χ̄(G) · ϑ(C_n) = n cos(π/n) / [1 + cos(π/n)]",
+        "governing_law_latex": "\\alpha(G) \\le \\Theta(G) \\le \\vartheta(G) \\le \\alpha^*(G) \\le \\bar{\\chi}(G), \\\\ \\vartheta(C_n) = \\frac{n \\cos(\\pi/n)}{1 + \\cos(\\pi/n)}",
         "colophon": {
           "identifier": "M.13 · Zero-Error Capacity & Lovász Theta Sandwich · REV 1.0",
           "kernels": "Shannon Strong Product G^k · Lovász Umbrella ϑ(G) · Haemers Minrank(S_bar) = 7",
@@ -6564,6 +6583,7 @@
         "status_badge": "SPHERE PACKING & LP BOUNDS · REV 1.0",
         "primary_kernel": "skills/math/m14/verify_m14_sphere_packing.py",
         "governing_law": "Δ_d ≤ Vol(B_d(r_cut/2)) · f(0)/f̂(0) · f(x) ≤ 0 (|x| ≥ r_cut) · f̂(t) ≥ 0 · Δ_8 = π⁴/384 · Δ_24 = π¹²/12!",
+        "governing_law_latex": "\\Delta_d \\le \\mathrm{Vol}\\left(B_d(r_{\\mathrm{cut}}/2)\\right) \\frac{f(0)}{\\hat{f}(0)}, \\\\ f(x) \\le 0 \\;(|x| \\ge r_{\\mathrm{cut}}), \\quad \\hat{f}(t) \\ge 0, \\\\ \\Delta_8 = \\frac{\\pi^4}{384}, \\quad \\Delta_{24} = \\frac{\\pi^{12}}{12!}",
         "colophon": {
           "identifier": "M.14 · Sphere Packing, Cohn–Elkies LP & Open Gaps · REV 1.0",
           "kernels": "Laguerre–Gaussian Fourier Eigenbasis · Descartes Shift Check · Golay G_24 Leech Enumeration",
@@ -6678,6 +6698,7 @@
         "status_badge": "RAMSEY EXTREMAL BOUNDS · REV 1.0",
         "primary_kernel": "skills/math/m15/verify_m15_ramsey_bounds.py",
         "governing_law": "E[X_k(n, p)] = C(n, k)[p^C(k,2) + (1 − p)^C(k,2)] · √2 ≤ lim inf R(k,k)^(1/k) ≤ lim sup R(k,k)^(1/k) ≤ 4 − ε",
+        "governing_law_latex": "\\mathbb{E}[X_k(n,p)] = \\binom{n}{k}\\left(p^{\\binom{k}{2}} + (1-p)^{\\binom{k}{2}}\\right), \\\\ \\sqrt{2} \\le \\liminf R(k,k)^{1/k}, \\\\ \\limsup R(k,k)^{1/k} \\le 4 - \\varepsilon",
         "colophon": {
           "identifier": "M.15 · Diagonal Ramsey Numbers & Book Bounds · REV 1.0",
           "kernels": "Goodman K_6 Multiplicity · Paley P(17) over F_17 · Rational First-Moment Union Bound",
@@ -6793,6 +6814,7 @@
         "status_badge": "ADDITIVE COMBINATORICS BOUNDS · REV 1.0",
         "primary_kernel": "skills/math/m16/verify_m16_progression_bounds.py",
         "governing_law": "For N ≥ 3: T(A) = (1/M) ∑_r Â(r)² conj(Â(2r mod M)) · N exp(−c √(log N)) ≤ r_3(N) ≤ N exp(−c′ (log N)^(1/9))",
+        "governing_law_latex": "N \\ge 3: \\; T(A) = \\frac{1}{M}\\sum_r \\hat{A}(r)^2 \\overline{\\hat{A}(2r \\bmod M)}, \\\\ N e^{-c\\sqrt{\\log N}} \\le r_3(N) \\le N e^{-c'(\\log N)^{1/9}}",
         "colophon": {
           "identifier": "M.16 · Three-Term Arithmetic Progressions & Behrend Spheres · REV 1.0",
           "kernels": "Bitmask Branch-and-Bound r_3(N) · Base-(2d−1) Spherical Shell DP · Odd-Modulus Cyclic DFT",

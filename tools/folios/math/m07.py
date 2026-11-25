@@ -32,6 +32,7 @@ FOLIO = {
         'H(x, u, λ) = 1/v + λ_v a_net(v, P_k, δ)/v − λ_E P_batt(P_k)/v ; '
         'u_{l+1} = σ(W u_l + F⁻¹(R_φ · F(u_l)))'
     ),
+    'governing_law_latex': r"H(x,u,\lambda) = \\ \frac{1 + \lambda_v a_{\mathrm{net}}(v,P_k,\delta) - \lambda_E P_{\mathrm{batt}}(P_k)}{v}, \\ u_{l+1} = \sigma\left(W u_l + \mathcal{F}^{-1}(R_\phi \cdot \mathcal{F}(u_l))\right)",
     'colophon': {
         'identifier': 'M.07 · Hybrid Pontryagin Control & FNO Surrogates (Teaching Model)',
         'kernels': 'Pontryagin Maximum Principle (PMP) · HJB PDE · Fourier Neural Operator',

@@ -41,6 +41,7 @@ FOLIO = {
     'status_badge': 'SPHERE PACKING & LP BOUNDS · REV 1.0',
     'primary_kernel': 'skills/math/m14/verify_m14_sphere_packing.py',
     'governing_law': 'Δ_d ≤ Vol(B_d(r_cut/2)) · f(0)/f̂(0) · f(x) ≤ 0 (|x| ≥ r_cut) · f̂(t) ≥ 0 · Δ_8 = π⁴/384 · Δ_24 = π¹²/12!',
+    'governing_law_latex': r"\Delta_d \le \mathrm{Vol}\left(B_d(r_{\mathrm{cut}}/2)\right) \frac{f(0)}{\hat{f}(0)}, \\ f(x) \le 0 \;(|x| \ge r_{\mathrm{cut}}), \quad \hat{f}(t) \ge 0, \\ \Delta_8 = \frac{\pi^4}{384}, \quad \Delta_{24} = \frac{\pi^{12}}{12!}",
     'colophon': {
         'identifier': 'M.14 · Sphere Packing, Cohn–Elkies LP & Open Gaps · REV 1.0',
         'kernels': 'Laguerre–Gaussian Fourier Eigenbasis · Descartes Shift Check · Golay G_24 Leech Enumeration',

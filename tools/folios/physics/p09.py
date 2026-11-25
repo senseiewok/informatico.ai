@@ -19,6 +19,7 @@ FOLIO = {'category_code': 'P',
  'folio_id': 'P.09',
  'governing_law': 'P_{1/2}(cos θ_0) = 0 ⇒ θ_T = 49.3° · q_R = 8π √(ε_0 γ R³) · d_drop ~ (ρ ε_0 Q³ '
                   '/ γ K)^(1/6)',
+ 'governing_law_latex': r"P_{1/2}(\cos\theta_0) = 0 \;\Longrightarrow\; \theta_T = 49.3^\circ, \\ q_R = 8\pi\sqrt{\varepsilon_0 \gamma R^3}, \quad d_{\mathrm{drop}} \sim \left(\frac{\rho \varepsilon_0 Q^3}{\gamma K}\right)^{1/6}",
  'kernel_verdict': 'Partial: 1 of 4 readouts recomputed',
  'kernel_verdict_es': 'Parcial: 1 de 4 lecturas recalculadas',
  'lineage_mode': 'REFERENCE_COMPLETION · Completes P.03 Viscoelastic Shear, P.04 Electrostatic '

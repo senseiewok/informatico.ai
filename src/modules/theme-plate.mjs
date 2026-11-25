@@ -60,7 +60,7 @@ export function applyMagazineLanguage(isEs, scope = document) {
   if (langBtn) {
     langBtn.setAttribute("aria-pressed", isEs ? "true" : "false");
     langBtn.textContent = isEs ? "EN" : "ES";
-    langBtn.setAttribute("aria-label", isEs ? "Read in English" : "Leer en español");
+    langBtn.setAttribute("aria-label", isEs ? "EN — Read in English" : "ES — Leer en español");
     langBtn.setAttribute("title", isEs ? "English" : "Español");
   }
 

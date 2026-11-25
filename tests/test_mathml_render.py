@@ -18,8 +18,30 @@ from folios import mathml_render  # noqa: E402
 PILOT_PAGES = [
     ("math", "m01"),
     ("math", "m02"),
+    ("math", "m05"),
+    ("math", "m06"),
+    ("math", "m07"),
+    ("math", "m08"),
+    ("math", "m09"),
+    ("math", "m10"),
+    ("math", "m11"),
+    ("math", "m12"),
+    ("math", "m13"),
+    ("math", "m14"),
+    ("math", "m15"),
+    ("math", "m16"),
     ("physics", "p01"),
+    ("physics", "p02"),
+    ("physics", "p03"),
+    ("physics", "p04"),
     ("physics", "p05"),
+    ("physics", "p06"),
+    ("physics", "p07"),
+    ("physics", "p08"),
+    ("physics", "p09"),
+    ("physics", "p10"),
+    ("physics", "p11"),
+    ("physics", "p12"),
 ]
 
 
@@ -30,6 +52,8 @@ class MathMLRenderTests(unittest.TestCase):
         folios = mathml_render.discover_mathml_folios()
         for _, slug in PILOT_PAGES:
             self.assertIn(slug, folios)
+        self.assertNotIn("m03", folios)
+        self.assertNotIn("m04", folios)
 
     def test_rendered_pages_contain_clean_mathml_and_zero_inline_styles(self) -> None:
         for pillar, slug in PILOT_PAGES:

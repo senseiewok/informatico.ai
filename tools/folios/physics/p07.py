@@ -18,6 +18,7 @@ FOLIO = {'category_code': 'P',
  'folio_id': 'P.07',
  'governing_law': 'C_p = 1 − (U/U_∞)² · Γ_v = ∮ u·dl · m z̈ + c_a(z) ż + k_s z = −½ρU²A C_L(z, '
                   'δ_wing)',
+ 'governing_law_latex': r"C_p = 1 - \left(\frac{U}{U_\infty}\right)^2, \quad \Gamma_v = \oint \mathbf{u} \cdot d\mathbf{l}, \\ m\ddot{z} + c_a(z)\dot{z} + k_s z = -\frac{1}{2}\rho U^2 A C_L(z, \delta_{\mathrm{wing}})",
  'kernel_verdict': 'Partial: 1 of 4 readouts recomputed',
  'kernel_verdict_es': 'Parcial: 1 de 4 lecturas recalculadas',
  'pillar': 'physics',

@@ -23,6 +23,7 @@ FOLIO = {'folio_id': 'M.08',
  'primary_kernel': 'tools/discovery/formal_proof_thermodynamic_landscape.py',
  'governing_law': 'Π_T: L²([380,780]) → ℝ³ · ds² = ∑ g_ij(x) dx^i dx^j (x ∈ ℝ³₊) · ẍ^k + Γ^k_ij '
                   'ẋ^i ẋ^j = 0',
+ 'governing_law_latex': r"\Pi_T : L^2([380,780]) \to \mathbb{R}^3, \\ ds^2 = \sum g_{ij}(x)\,dx^i dx^j \;(x \in \mathbb{R}_+^3), \\ \ddot{x}^k + \Gamma^k_{ij} \dot{x}^i \dot{x}^j = 0",
  'colophon': {'identifier': 'M.08 · Riemannian Color Manifold & Metamer Nullspace · CIE',
               'kernels': 'Weber–Fechner Metric · MacAdam Ellipses · Cohen–Kappauf Projector',
               'benchmarks': 'dim ker(Π_T) = ∞ · illustrative Δs_geo = 42.8, +9.4°, ΔE_00 = 0.18',
