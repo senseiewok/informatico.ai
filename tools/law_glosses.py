@@ -241,6 +241,10 @@ LAW_GLOSSES: dict[str, dict[str, str]] = {
         "en": "expected monochromatic cliques set the probabilistic lower floor for diagonal Ramsey numbers, framing the exponential growth rate between root two and below four",
         "es": "el número esperado de cliques monocromáticos fija el piso probabilístico para los números de Ramsey diagonales, enmarcando su tasa exponencial entre raíz de dos y menos de cuatro",
     },
+    "m16": {
+        "en": "cyclic Fourier sums count three-term arithmetic progressions while high-dimensional spherical shells without base carries bound progression-free subsets from below",
+        "es": "las sumas cíclicas de Fourier cuentan progresiones aritméticas de tres términos mientras cascarones esféricos sin acarreos acotan por debajo los conjuntos libres de tríos",
+    },
     # Bounties (B.01 - B.06)
     "b01": {
         "en": "a Sidon set has all pairwise sums distinct, limiting how many elements can fit inside an interval up to roughly the square root of its size",

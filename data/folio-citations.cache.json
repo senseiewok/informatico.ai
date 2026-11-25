@@ -167,6 +167,14 @@
     "title": "Time evolution of large classical systems",
     "year": 1975
   },
+  "doi:10.1007/978-0-387-68361-4_9": {
+    "fetched": "2026-11-24",
+    "first_author": "Green",
+    "found": true,
+    "journal": "Additive Number Theory",
+    "title": "A Note on Elkin’s Improvement of Behrend’s Construction",
+    "year": 2010
+  },
   "doi:10.1007/978-3-030-79876-5_37": {
     "fetched": "2026-11-10",
     "first_author": "Moura",
@@ -343,6 +351,14 @@
     "title": "The Theory of Coda Wave Interferometry",
     "year": 2006
   },
+  "doi:10.1007/s000390050105": {
+    "fetched": "2026-11-24",
+    "first_author": "Bourgain",
+    "found": true,
+    "journal": "Geometric And Functional Analysis",
+    "title": "On Triples in Arithmetic Progression",
+    "year": 1999
+  },
   "doi:10.1007/s001580050176": {
     "fetched": "2026-11-07",
     "first_author": "Sigmund",
@@ -414,6 +430,14 @@
     "journal": "Discrete &amp; Computational Geometry",
     "title": "Stability of Persistence Diagrams",
     "year": 2007
+  },
+  "doi:10.1007/s11856-011-0061-1": {
+    "fetched": "2026-11-24",
+    "first_author": "Elkin",
+    "found": true,
+    "journal": "Israel Journal of Mathematics",
+    "title": "An improved construction of progression-free sets",
+    "year": 2011
   },
   "doi:10.1007/s41468-021-00071-5": {
     "fetched": "2026-11-24",
@@ -1671,6 +1695,22 @@
     "title": "The non-Riemannian nature of perceptual color space",
     "year": 2022
   },
+  "doi:10.1073/pnas.28.12.561": {
+    "fetched": "2026-11-24",
+    "first_author": "Salem",
+    "found": true,
+    "journal": "Proceedings of the National Academy of Sciences",
+    "title": "On Sets of Integers Which Contain No Three Terms in Arithmetical Progression",
+    "year": 1942
+  },
+  "doi:10.1073/pnas.32.12.331": {
+    "fetched": "2026-11-24",
+    "first_author": "Behrend",
+    "found": true,
+    "journal": "Proceedings of the National Academy of Sciences",
+    "title": "On Sets of Integers Which Contain No Three Terms in Arithmetical Progression",
+    "year": 1946
+  },
   "doi:10.1074/jbc.m112.371264": {
     "fetched": "2026-11-04",
     "first_author": "",
@@ -2647,6 +2687,14 @@
     "title": "The cosmological constant problem",
     "year": 1989
   },
+  "doi:10.1109/focs57990.2023.00059": {
+    "fetched": "2026-11-24",
+    "first_author": "Kelley",
+    "found": true,
+    "journal": "2023 IEEE 64th Annual Symposium on Foundations of Computer Science (FOCS)",
+    "title": "Strong Bounds for 3-Progressions",
+    "year": 2023
+  },
   "doi:10.1109/icip.2001.958278": {
     "fetched": "2026-11-21",
     "first_author": "Cha Zhang",
@@ -2743,6 +2791,14 @@
     "title": "Modeling the Void",
     "year": 2008
   },
+  "doi:10.1112/jlms/s1-11.4.261": {
+    "fetched": "2026-11-24",
+    "first_author": "Erdös",
+    "found": true,
+    "journal": "Journal of the London Mathematical Society",
+    "title": "On Some Sequences of Integers",
+    "year": 1936
+  },
   "doi:10.1112/jlms/s1-16.4.212": {
     "fetched": "2026-11-10",
     "first_author": "Erdös",
@@ -2750,6 +2806,14 @@
     "journal": "Journal of the London Mathematical Society",
     "title": "On a Problem of Sidon in Additive Number Theory, and on some Related Problems",
     "year": 1941
+  },
+  "doi:10.1112/jlms/s1-28.1.104": {
+    "fetched": "2026-11-24",
+    "first_author": "Roth",
+    "found": true,
+    "journal": "Journal of the London Mathematical Society",
+    "title": "On Certain Sets of Integers",
+    "year": 1953
   },
   "doi:10.1112/plms/s2-30.1.264": {
     "fetched": "2026-11-21",
@@ -3583,6 +3647,14 @@
     "title": "A Closed-form Equation for Predicting the Hydraulic Conductivity of Unsaturated Soils",
     "year": 1980
   },
+  "doi:10.2140/ent.2023.2.15": {
+    "fetched": "2026-11-24",
+    "first_author": "Bloom",
+    "found": true,
+    "journal": "Essential Number Theory",
+    "title": "The Kelley–Meka bounds for sets free of three-term arithmetic progressions",
+    "year": 2023
+  },
   "doi:10.21468/scipostphyscodeb.4": {
     "fetched": "2026-11-07",
     "first_author": "Fishman",
@@ -3767,6 +3839,14 @@
     "title": "New upper bounds on sphere packings I",
     "year": 2003
   },
+  "doi:10.4007/annals.2008.167.481": {
+    "fetched": "2026-11-24",
+    "first_author": "Green",
+    "found": true,
+    "journal": "Annals of Mathematics",
+    "title": "The primes contain arbitrarily long arithmetic progressions",
+    "year": 2008
+  },
   "doi:10.4007/annals.2008.168.1": {
     "fetched": "2026-11-21",
     "first_author": "Musin",
@@ -3782,6 +3862,14 @@
     "journal": "Annals of Mathematics",
     "title": "A new upper bound for diagonal Ramsey numbers",
     "year": 2009
+  },
+  "doi:10.4007/annals.2011.174.1.20": {
+    "fetched": "2026-11-24",
+    "first_author": "Sanders",
+    "found": true,
+    "journal": "Annals of Mathematics",
+    "title": "On Roth's theorem on progressions",
+    "year": 2011
   },
   "doi:10.4007/annals.2015.182.1.9": {
     "fetched": "2026-11-07",
@@ -3854,6 +3942,14 @@
     "journal": "Annals of Mathematics",
     "title": "An exponential improvement for diagonal Ramsey",
     "year": 2026
+  },
+  "doi:10.4064/aa-27-1-199-245": {
+    "fetched": "2026-11-24",
+    "first_author": "Szemerédi",
+    "found": true,
+    "journal": "Acta Arithmetica",
+    "title": "On sets of integers containing k elements in arithmetic progression",
+    "year": 1975
   },
   "doi:10.4153/cjm-1955-001-4": {
     "fetched": "2026-11-21",

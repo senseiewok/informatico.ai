@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Pillar package for math: exports all 15 essay modules (m01..m15)."""
+"""Pillar package for math: exports all 16 essay modules (m01..m16)."""
 from __future__ import annotations
 
 from . import m01
@@ -17,5 +17,6 @@ from . import m12
 from . import m13
 from . import m14
 from . import m15
+from . import m16
 
-ESSAY_MODULES = [m01, m02, m03, m04, m05, m06, m07, m08, m09, m10, m11, m12, m13, m14, m15]
+ESSAY_MODULES = [m01, m02, m03, m04, m05, m06, m07, m08, m09, m10, m11, m12, m13, m14, m15, m16]
