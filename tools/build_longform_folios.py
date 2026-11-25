@@ -389,6 +389,20 @@ def update_catalogs() -> dict:
 
 
 
+def extract_stage_short_label(st: str) -> str:
+    """Extract stepper button label before the top-level ': ' separator, preserving colons inside (...)."""
+    depth = 0
+    for idx in range(len(st) - 1):
+        ch = st[idx]
+        if ch == "(":
+            depth += 1
+        elif ch == ")" and depth > 0:
+            depth -= 1
+        elif ch == ":" and st[idx + 1] == " " and depth == 0:
+            return st[:idx].replace("Stage ", "")
+    return st.split(":", 1)[0].replace("Stage ", "")
+
+
 def render_Controls_for_pillar(pillar: str, folio: dict, lf: dict) -> str:
     """Render the interactive plate (stepper + SVG + sliders + readouts) for any Folio."""
     fid = esc(folio["folio_id"])
@@ -401,7 +415,7 @@ def render_Controls_for_pillar(pillar: str, folio: dict, lf: dict) -> str:
     step_btns = []
     for idx, st in enumerate(steps):
         pressed = "true" if idx == 0 else "false"
-        short_label = st.split(":")[0].replace("Stage ", "")
+        short_label = extract_stage_short_label(st)
         step_btns.append(
             f'<button type="button" class="tp-step-btn" aria-pressed="{pressed}" '
             f'data-step-target="tp-{slug}-stage-caption" data-step-desc="{esc(st)}">{esc(short_label)}</button>'

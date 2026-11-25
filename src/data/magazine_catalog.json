@@ -2171,24 +2171,24 @@
         "pillar": "architecture",
         "category_code": "A",
         "title": "Double-Skin Facade Buoyancy Stack Ventilation, Cavity Plumes, and 1:5 Acoustic Damper Louvers",
-        "subtitle": "A model of thermosiphon stack draft Δp_stack = ρ_0 g H β ΔT and solar shading position inside multi-story ventilated glass cavities, and how such a facade could reduce cooling loads.",
+        "subtitle": "An explanatory model—not a facade design method—of buoyancy stack draft and solar shading position inside multi-story ventilated glass cavities, and how such a cavity could carry heat away.",
         "date_published": "2026-10-30",
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.3",
         "status_badge": "REDATED REV 1.3",
         "primary_kernel": "tools/tectonic_verify.py",
-        "governing_law": "Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11",
+        "governing_law": "Δp_stack = ρ_0 g H (ΔT / T_ext) · g_tot = 0.11 (assumed)",
         "colophon": {
           "identifier": "A.03 · Facade Thermodynamics",
           "kernels": "1:50 Multi-Story Shaft + 1:5 Damper Sill",
-          "benchmarks": "Model values: Δp = 3.92 Pa (ρ_0 = 1.2 kg/m³, H = 9.0 m, ΔT = 11.2 K, T_ext ≈ 303 K) · g_tot = 0.11 assumed",
+          "benchmarks": "Model values: Δp = 3.92 Pa (ρ_0 = 1.2 kg/m³, H = 9.0 m, ΔT = 11.2 K, T_ext ≈ 303 K) · g_tot = 0.11 fixed text",
           "bridge": "Buoyancy Convective Clearance"
         },
         "steps": [
           "Stage 1 (Solar Shortwave Absorption): An assumed solar irradiance I_sol = 650 W/m² heats the ventilated blind positioned in the outer third of the 600 mm cavity.",
-          "Stage 2 (Hydrostatic Buoyancy Pressure Drive): Δp_stack = ρ_0 g H (ΔT / T_ext) = 1.2 × 9.81 × 9.0 × (11.2 / 303) = 3.92 Pa across a 9.0 m two-story shaft (T_ext ≈ 303 K, about 30 °C, assumed).",
-          "Stage 3 (Bernoulli Discharge & Damper Loss Balance): Setting Δp = ζ_tot ρ v² / 2 gives v = 0.84 m/s for an assumed total loss coefficient ζ_tot ≈ 9.3 (inlet, outlet louvers and friction). The 142 m³/h per metre of facade assumes an effective free opening of about 0.047 m² per metre.",
-          "Stage 4 (1:5 Acoustic Baffle Sill Node A-12): A proposed mineral-wool lined labyrinth damper with a design target of R_w = 46 dB and C_d = 0.62 (targets, not measured)."
+          "Stage 2 (Hydrostatic Buoyancy Pressure Drive): Δp_stack = ρ_0 g H (ΔT / T_ext) = 1.2 × 9.81 × 9.0 × (11.2 / 303) = 3.92 Pa across a 9.0 m two-story shaft (ideal-gas β ≈ 1 / T_ext, T_ext ≈ 303 K, about 30 °C, assumed).",
+          "Stage 3 (Bernoulli Discharge & Damper Loss Balance): Setting Δp = ζ_tot ρ v² / 2 gives v = 0.84 m/s for an assumed total loss coefficient ζ_tot ≈ 9.3. The 142 m³/h per meter of facade assumes an opening of about 0.047 m² per meter.",
+          "Stage 4 (1:5 Acoustic Baffle Sill Node A-12): A proposed mineral-wool lined labyrinth damper with design targets of R_w = 46 dB and C_d = 0.62 (targets, not measured)."
         ],
         "readouts": [
           {
@@ -2200,40 +2200,45 @@
             "value": "0.84 m/s (142 m³/h·m)"
           },
           {
-            "label": "Total Solar Factor (g_tot)",
+            "label": "Total Solar Factor (g_tot, Fixed Text)",
             "value": "0.11 (assumed; EN ISO 52022-3 method)"
           },
           {
-            "label": "Air Changes & Daylight (Illustrative)",
+            "label": "Rescaled ACH & Fixed Daylight (Illustrative)",
             "value": "24.21 ACH · 285 EML (illustrative)"
           }
         ],
         "spec_plate": {
-          "division": "CSI MASTERFORMAT 08 44 13 / 08 91 00",
-          "title": "Thermally Broken Double-Skin Curtain Wall & Acoustic Labyrinth Vent (Node A-12)",
-          "body": "Naturally ventilated box-window facade assembly with motorized micro-perforated aluminum venetian blinds and sound-attenuating intake sill (U_cw = 0.68 W/(m²·K), g_tot = 0.11, R_w = 46 dB).",
-          "meta": "Design proposal, not a product · EN 13830 is the curtain walling product standard a real system would be tested to"
+          "division": "EXPLANATORY MODEL · CSI 08 44 13 / 08 91 00 (NOT A DESIGN SPEC)",
+          "title": "Illustrative Box-Window Curtain Wall & Acoustic Sill Concept (Node A-12)",
+          "body": "Explanatory proposal only, not a tested product or design specification: ventilated box-window cavity with motorized aluminum blinds and sound-attenuating intake sill (assumed/target values: U_cw = 0.68 W/(m²·K), g_tot = 0.11, R_w = 46 dB). None of these numbers may be used on a real building.",
+          "meta": "Explanatory proposal, not a product · EN 13830 is the curtain-walling product standard a real system would be tested to"
         },
         "sidenote_1": {
-          "kicker": "SIDENOTE A.03 · BLIND POSITIONING PARADOX",
-          "body": "A blind placed close to the inner glazing tends to pass more of its absorbed heat indoors; moving it toward the outer skin lets more of that heat leave with the cavity air. Saelens, Roels and Hens compare strategies for multiple-skin facades (DOI 10.1016/j.buildenv.2006.06.024). The outer-third position here is a design assumption."
+          "kicker": "SIDENOTE A.03-A · BLIND POSITIONING PARADOX",
+          "body": "A blind placed close to the inner glazing may pass more absorbed heat indoors; moving it toward the outer skin could let more heat leave with cavity air. Saelens, Roels, and Hens compare multiple-skin facade strategies (DOI 10.1016/j.buildenv.2006.06.024). The outer-third position here is an assumed parameter."
+        },
+        "sidenote_2": {
+          "kicker": "SIDENOTE A.03-B · ILLUSTRATIVE ASSEMBLY & SAFETY BOUNDARY",
+          "body": "This folio is an explanation, not a facade design method, and remains untested on hardware. Assumed envelope and acoustic target values on this page may not be used to design or size a real structure."
         },
         "skill": {
           "filename": "double-skin-facade-buoyancy-SKILL.md",
           "name": "double-skin-facade-buoyancy",
-          "description": "AI-agnostic facade engineering and building physics skill for double-skin curtain wall buoyancy stack ventilation, EN ISO 52022-3 g_tot solar factors, and acoustic intake dampers.",
+          "description": "Explanatory building-physics reference (not a facade design method) for double-skin curtain-wall buoyancy stack draft, EN ISO 52022-3 g_tot concepts, and acoustic intake dampers.",
           "rules": [
-            "Compute buoyancy stack pressure delta_p_stack = rho_0 * g * H * (T_cav - T_ext) / T_ext and mass flow m_dot = rho * A_eff * sqrt(2 * delta_p / zeta_tot).",
-            "Calculate total solar energy transmittance g_tot with the EN ISO 52022-3 method; this folio uses its own design target g_tot <= 0.15 when exterior irradiance exceeds 500 W/m^2 (a folio target, not a requirement of the standard).",
-            "This folio assumes a cavity depth D >= 500 mm for maintenance access (the folio's own assumption, not a code requirement), or sealed dry-air Closed Cavity Facade (CCF) modules."
+            "Explanatory, untested model only, not a facade design method: none of these numbers may be used to design or size a real building or curtain wall.",
+            "Under stated assumptions, estimate hydrostatic stack draft delta_p_stack = rho_0 * g * H * (T_cav - T_ext) / T_ext (ideal-gas beta = 1 / T_ext; baseline assumes rho_0 = 1.2 kg/m^3, T_ext about 303 K, zeta_tot about 9.3, opening area A about 0.047 m^2/m), cavity speed v = sqrt(2 * delta_p_stack / (zeta_tot * rho_0)), and mass flow m_dot = rho_0 * A * v = A * sqrt(2 * rho_0 * delta_p_stack / zeta_tot).",
+            "Calculate total solar energy transmittance g_tot with the EN ISO 52022-3 method; this folio uses an illustrative target g_tot <= 0.15 above 500 W/m^2 (not a requirement of the standard), and in the browser lab g_tot = 0.11 and 285 EML remain fixed text while 24.21 ACH rescales with velocity.",
+            "This folio assumes a cavity depth D >= 500 mm for maintenance access (an assumed parameter, not a code requirement), or sealed dry-air Closed Cavity Facade (CCF) modules."
           ]
         },
         "revisions": [
           {
             "edition": "REV 1.3",
             "date": "2026-11-14",
-            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. No design was certified and no pathogen clearance measured; earlier claims of protected sleep and immunity are withdrawn: nothing was measured. The circadian sentences had cited a radiative-cooling paper (DOI 10.1038/nature13883); they now cite Berson et al. 2002 (DOI 10.1126/science.1067262) and Brown et al. 2022 (DOI 10.1371/journal.pbio.3001571). The stack draft now states its assumptions (T_ext ≈ 303 K, ζ_tot ≈ 9.3), and the opening scene is replaced by a plain account. A later review withdrew the \"lung\" pullquote, the unsourced claims about mid-century glazing and the Paimio sanatorium source, and softened outcome statements in the plain-language text and the Spanish text.",
-            "opus": "Review: references checked by DOI in Crossref and the Scite index; Scite indexed the 250 lux melanopic EDI daytime recommendation in Brown et al. 2022."
+            "summary": "REV 1.3 (Redated 2026-11-14): Grounding revision. No design was certified and no pathogen clearance measured; earlier claims of protected sleep and immunity are withdrawn. Circadian light sentences cite Berson et al. (2002; DOI 10.1126/science.1067262) and Brown et al. (2022; DOI 10.1371/journal.pbio.3001571). Stack draft assumptions (T_ext ≈ 303 K, ζ_tot ≈ 9.3), browser readout rescaling versus fixed text, and the non-design-method boundary are stated explicitly.",
+            "opus": "Review: Crossref metadata checked for all six DOIs; Scite index checked for Nabil & Mardaljevic (2006; DOI 10.1016/j.enbuild.2006.03.013). Brown et al. (2022) recommends at least 250 lux melanopic EDI indoors during daytime for healthy adults."
           },
           {
             "edition": "REV 1.2",

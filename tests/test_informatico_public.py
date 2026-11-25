@@ -233,6 +233,36 @@ class PublicInformaticoRepoTests(unittest.TestCase):
             self.assertTrue(any("bad.html" in p and "inline script" in p for p in probs), probs)
             self.assertFalse(any("good.html" in p for p in probs), probs)
 
+    def test_stepper_button_labels_preserve_colons_inside_titles(self) -> None:
+        if str(ROOT / "tools") not in sys.path:
+            sys.path.insert(0, str(ROOT / "tools"))
+        from build_longform_folios import extract_stage_short_label
+
+        self.assertEqual(
+            extract_stage_short_label("Stage 4 (1:5 Acoustic Baffle Sill Node A-12): A proposed baffle."),
+            "4 (1:5 Acoustic Baffle Sill Node A-12)",
+        )
+        self.assertEqual(
+            extract_stage_short_label("Stage 1: Check sill ratio (1:5): measure gap"),
+            "1",
+        )
+        self.assertEqual(
+            extract_stage_short_label("Stage 1 (Bound (arXiv: 2401.0001): tight): body prose"),
+            "1 (Bound (arXiv: 2401.0001): tight)",
+        )
+
+        a03_html = (RESEARCH / "architecture" / "a03" / "index.html").read_text(encoding="utf-8")
+        self.assertIn(">4 (1:5 Acoustic Baffle Sill Node A-12)</button>", a03_html)
+        for pillar in ("architecture", "engineering", "physics", "math"):
+            for page in sorted((RESEARCH / pillar).glob("*/index.html")):
+                txt = page.read_text(encoding="utf-8")
+                for label in re.findall(r'class="tp-step-btn"[^>]*>([^<]+)</button>', txt):
+                    self.assertEqual(
+                        label.count("("),
+                        label.count(")"),
+                        f"Unbalanced stepper button label {label!r} in {page.relative_to(RESEARCH)}",
+                    )
+
 
 if __name__ == "__main__":
     unittest.main()
