@@ -1182,18 +1182,18 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
         "en": [
             ("INERTER", "Two-terminal mechanical device whose force is proportional to relative acceleration, introduced by Malcolm Smith in 2002", "Act I"),
             ("MICHELL", "Australian engineer whose 1904 paper asked how a truss carrying a given load could use the least material", "Act I"),
-            ("BONE", "Trabecular tissue; Wolff argued in 1892 that bone adapts to its loads, a resemblance with Michell trusses that the folio calls a popular analogy, not a proof", "Act I"),
+            ("BONE", "Trabecular tissue; Wolff argued in 1892 that bone adapts to load, a resemblance with Michell frames that the folio calls an analogy, not an identity", "Act I"),
             ("SIMP", "Power-law density penalization with p = 3 that pushes intermediate densities toward 0 or 1", "Act III"),
             ("SLAB", "Floor plate; at V/V_0 = 0.35 the explanatory model trims 65 percent of slab-region volume, not a real building design", "Act III"),
             ("MASS", "Apparent mass of an inerter; an assumed thin-ring flywheel (r = 45 mm, P = 20 mm) gives about 200 times its own mass as fixed text", "Act III"),
         ],
         "es": [
             ("MICHELL", "Ingeniero australiano cuyo artículo de 1904 preguntó cómo una armadura con una carga dada podía usar el mínimo de material", "Acto I"),
-            ("HUESO", "Tejido trabecular; Wolff sostuvo en 1892 que el hueso se adapta a sus cargas, una analogía popular y no una demostración", "Acto I"),
-            ("LOSA", "Placa de entrepiso; modelo explicativo sin elementos finitos ni validez estructural, con 65% menos volumen en la zona", "Acto III"),
+            ("HUESO", "Tejido trabecular; Wolff sostuvo en 1892 que el hueso se adapta a sus cargas, una analogía y no una identidad", "Acto I"),
+            ("LOSA", "Placa de entrepiso; modelo explicativo sin elementos finitos ni validez en obra (65% menos volumen a V/V_0 = 0.35)", "Acto III"),
             ("GIRO", "Rotación del volante en el inerter; el deslizador μ_b cambia su etiqueta y el esquema visual, sin actualizar recuadros numéricos", "Acto III"),
             ("PESO", "Peso del concreto de la losa; con V/V_0 = 0.35 el modelo ilustra 65% menos volumen en la región estudiada", "Acto III"),
-            ("RED", "Malla de elementos finitos; el filtro PDE de Helmholtz de Lazarov y Sigmund (2011) usa r = r_min / (2√3)", "Acto III"),
+            ("RED", "Malla de elementos finitos; Lazarov y Sigmund (2011) filtran densidades con una EDP tipo Helmholtz", "Acto III"),
         ],
     },
     "e12": {
