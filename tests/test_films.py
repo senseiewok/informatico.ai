@@ -342,9 +342,9 @@ class FilmPlayerMarkupTests(unittest.TestCase):
     """The cover player as built: poster, hidden play button, privacy line, plain link; no frame, no YouTube player host."""
 
     NAME_EN = "Play film: Informatico intro, 45 seconds, from YouTube"
-    NAME_ES = "Reproducir película: Informatico, introducción, 45 segundos, desde YouTube"
-    PRIVACY_EN = "This film plays from YouTube. Nothing from YouTube loads until you press play."
-    PRIVACY_ES = "Este video se reproduce desde YouTube. No se carga nada de YouTube hasta que oprimas reproducir."
+    NAME_ES = "Reproducir video: Informatico, introducción, 45 segundos, desde YouTube"
+    PRIVACY_EN = "This film plays from YouTube. Nothing from YouTube loads until you press play; then YouTube can see you came from this site."
+    PRIVACY_ES = "Este video se reproduce desde YouTube. No se carga nada de YouTube hasta que oprimas reproducir; entonces YouTube puede ver que llegaste desde este sitio."
 
     def _figure(self, page: str) -> str:
         found = re.findall(r'<figure class="tp-cover-film" data-film="informatico-intro">.*?</figure>', page, re.S)
@@ -479,7 +479,13 @@ class FilmFacadeModuleTests(unittest.TestCase):
         self.assertRegex(create, r"if \(src === null\) \{\s+return null;\s+\}\s+const frame = doc\.createElement")
         play = self.code[self.code.index("function playFilm(") : self.code.index("export function initFilmFacade(")]
         self.assertIn('createFilmFrame(doc, facade.getAttribute("data-yt")', play, "the ID is read from the DOM again at click time")
-        self.assertRegex(play, r"if \(frame === null\) \{\s+return null;\s+\}\s+button\.replaceWith\(frame\);\s+frame\.focus\(\);")
+        self.assertRegex(play, r"return null;\s+\}\s+button\.replaceWith\(frame\);\s+frame\.focus\(\);")
+        # A failed check at click time withdraws the control and hands focus to the plain link: no dead button.
+        dead = play[play.index("if (frame === null) {") : play.index("button.replaceWith(frame);")]
+        self.assertIn('button.setAttribute("hidden", "");', dead)
+        self.assertIn('privacy.setAttribute("hidden", "");', dead)
+        self.assertIn("link.focus();", dead)
+        self.assertRegex(dead, r"return null;\s+\}\s*$")
 
     def test_frame_is_built_only_inside_the_click_path_with_exact_attributes(self) -> None:
         self.assertEqual(self.code.count('createElement("iframe")'), 1)

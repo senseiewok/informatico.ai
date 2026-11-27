@@ -51,11 +51,28 @@ function frameTitle(facade, isEs) {
   return title || (isEs ? "Reproductor de video de YouTube" : "YouTube video player");
 }
 
+function captionParts(facade) {
+  const figure = facade.closest(".tp-cover-film");
+  return {
+    privacy: figure ? figure.querySelector(".tp-film-privacy") : null,
+    link: figure ? figure.querySelector("a.tp-film-out") : null,
+  };
+}
+
 function playFilm(facade, button) {
   const doc = facade.ownerDocument;
   const isEs = (doc.documentElement.getAttribute("lang") || "").toLowerCase().startsWith("es");
   const frame = createFilmFrame(doc, facade.getAttribute("data-yt"), frameTitle(facade, isEs));
   if (frame === null) {
+    /* The ID no longer passes: withdraw the control and hand the reader to the plain link. */
+    button.setAttribute("hidden", "");
+    const { privacy, link } = captionParts(facade);
+    if (privacy) {
+      privacy.setAttribute("hidden", "");
+    }
+    if (link) {
+      link.focus();
+    }
     return null;
   }
   button.replaceWith(frame);
@@ -66,7 +83,8 @@ function playFilm(facade, button) {
 /**
  * Show the play button on every facade in scope and wire its click. Safe to call again on the same
  * scope. A facade with a bad ID keeps its button hidden, so the plain link beside it stays the only way
- * to the film. Never throws: a failure here must leave the page as it was.
+ * to the film; if the ID stops passing before the press, the press hides the button again and moves focus
+ * to that link. Never throws: a failure here must leave the page as it was.
  */
 export function initFilmFacade(scope = document) {
   let wired = 0;
@@ -79,8 +97,7 @@ export function initFilmFacade(scope = document) {
       facade.setAttribute(READY_ATTR, "");
       button.addEventListener("click", () => playFilm(facade, button), { once: true });
       button.removeAttribute("hidden");
-      const figure = facade.closest(".tp-cover-film");
-      const privacy = figure ? figure.querySelector(".tp-film-privacy") : null;
+      const { privacy } = captionParts(facade);
       if (privacy) {
         privacy.removeAttribute("hidden");
       }

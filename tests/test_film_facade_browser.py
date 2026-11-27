@@ -1,22 +1,30 @@
 #!/usr/bin/env python3
 """Browser check of the cover's click-to-play film (src/modules/film-facade.mjs) in Playwright Chromium.
 
-The cover is served from 127.0.0.1 with the Content-Security-Policy read from deploy/htaccess.txt, so the
-policy the live site sends is the policy under test. Every request to another host is recorded and aborted.
+The cover is served from 127.0.0.1 with the Content-Security-Policy, Permissions-Policy and Referrer-Policy
+read from deploy/htaccess.txt, so the policies the live site sends are the policies under test. Every request
+to another host is recorded and aborted.
 
 - before the press: no request leaves 127.0.0.1, no frame exists, the play button is shown with its name;
+- the deployed Permissions-Policy delegates autoplay to the player host and to no other;
 - after the press: exactly one frame, with the exact src, allow and referrerpolicy, holding focus, and the
-  only outside request is that frame's document on the one player host; no CSP or Trusted Types error;
-- a bad video ID never shows the button and never builds a frame.
+  only outside request is that frame's document on the one player host, carrying the site origin as its
+  Referer and nothing more; no CSP or Trusted Types error;
+- a bad video ID never shows the button and never builds a frame; an ID that goes bad before the press
+  hides the button again and moves focus to the plain link;
+- without scripts, on both covers, the poster and the plain link remain.
 
 Skipped when Playwright or Chromium is not installed. Set FILM_FACADE_SHOTS to a folder to save screenshots.
 """
 from __future__ import annotations
 
+import functools
 import json
 import os
 import re
+import threading
 import unittest
+import urllib.request
 from pathlib import Path
 from urllib.parse import urlsplit
 
@@ -25,20 +33,45 @@ try:
 except ImportError:  # pragma: no cover
     sync_playwright = None
 
-from tests.test_a11y_axe import _load_csp_header, find_chrome, serve
+from tests.test_a11y_axe import _StaticSiteServer, _StrictCspHandler, _load_csp_header, find_chrome
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src"
+HTACCESS = ROOT / "deploy" / "htaccess.txt"
+PLAYER_ORIGIN = "https://www.youtube-nocookie.com"
+_HEADER_LINE = r'^\s*Header always set {name} "((?:[^"\\]|\\.)*)"\s*$'
+
+
+def _deployed_header(name: str) -> str:
+    """The value deploy/htaccess.txt sets for a header; Apache's backslash-quote is read back as a plain quote."""
+    found = re.findall(_HEADER_LINE.replace("{name}", re.escape(name)), HTACCESS.read_text(encoding="utf-8"), re.M)
+    if len(found) != 1:
+        raise RuntimeError(f"{name}: expected one 'Header always set' line in {HTACCESS}, found {len(found)}")
+    return found[0].replace('\\"', '"')
+
+
+def serve_with_headers(directory: Path, headers: dict[str, str]):
+    """Serve a folder on 127.0.0.1 with the given response headers on every response."""
+
+    class _Handler(_StrictCspHandler):
+        def end_headers(self) -> None:
+            for name, value in headers.items():
+                self.send_header(name, value)
+            super().end_headers()
+
+    httpd = _StaticSiteServer(("127.0.0.1", 0), functools.partial(_Handler, directory=str(directory)))
+    threading.Thread(target=httpd.serve_forever, daemon=True).start()
+    return httpd, f"http://127.0.0.1:{httpd.server_address[1]}/"
 FILMS = json.loads((ROOT / "data" / "films.json").read_text(encoding="utf-8"))
 INTRO = next(f for f in FILMS if f["slug"] == "informatico-intro")
 PLAYER_HOST = "www.youtube-nocookie.com"
 VIEWPORTS = (("desktop", {"width": 1440, "height": 900}), ("mobile", {"width": 375, "height": 812}))
 COVERS = (
     ("en", "", "Play film: Informatico intro, 45 seconds, from YouTube", "Informatico: intro (YouTube video player)",
-     "This film plays from YouTube. Nothing from YouTube loads until you press play."),
-    ("es", "es-mx/", "Reproducir película: Informatico, introducción, 45 segundos, desde YouTube",
+     "This film plays from YouTube. Nothing from YouTube loads until you press play; then YouTube can see you came from this site."),
+    ("es", "es-mx/", "Reproducir video: Informatico, introducción, 45 segundos, desde YouTube",
      "Informatico: introducción (reproductor de video de YouTube)",
-     "Este video se reproduce desde YouTube. No se carga nada de YouTube hasta que oprimas reproducir."),
+     "Este video se reproduce desde YouTube. No se carga nada de YouTube hasta que oprimas reproducir; entonces YouTube puede ver que llegaste desde este sitio."),
 )
 POLICY_ERROR_RE = re.compile(r"content security policy|trusted ?types|refused to|permissions policy", re.I)
 
@@ -52,7 +85,12 @@ class FilmFacadeBrowserTests(unittest.TestCase):
         if not cls.chrome:
             raise unittest.SkipTest("no Chromium found (set CHROME_PATH)")
         cls.csp = _load_csp_header()
-        cls.httpd, cls.base = serve(SRC, csp_policy=cls.csp)
+        cls.headers = {
+            "Content-Security-Policy": cls.csp,
+            "Permissions-Policy": _deployed_header("Permissions-Policy"),
+            "Referrer-Policy": _deployed_header("Referrer-Policy"),
+        }
+        cls.httpd, cls.base = serve_with_headers(SRC, cls.headers)
         cls.pw = sync_playwright().start()
         cls.browser = cls.pw.chromium.launch(
             executable_path=cls.chrome,
@@ -80,12 +118,14 @@ class FilmFacadeBrowserTests(unittest.TestCase):
         ctx = self.browser.new_context(viewport=viewport)
         outside: list[str] = []
         errors: list[str] = []
+        self.referers: dict[str, str | None] = {}
 
         def handle(r) -> None:
             if r.request.url.startswith(self.base):
                 r.continue_()
             else:
                 outside.append(r.request.url)
+                self.referers[r.request.url] = r.request.headers.get("referer")
                 r.abort()
 
         ctx.route("**/*", handle)
@@ -101,7 +141,12 @@ class FilmFacadeBrowserTests(unittest.TestCase):
         if self.shots:
             page.screenshot(path=str(self.shots / f"{name}.jpg"), type="jpeg", quality=62)
 
-    def test_csp_under_test_is_the_deployed_one(self) -> None:
+    def test_headers_under_test_are_the_deployed_ones(self) -> None:
+        self.assertEqual(self.headers["Referrer-Policy"], "no-referrer")
+        self.assertIn('autoplay=(self "https://www.youtube-nocookie.com")', self.headers["Permissions-Policy"])
+        with urllib.request.urlopen(self.base) as resp:  # the test server really sends them
+            for name, value in self.headers.items():
+                self.assertEqual(resp.headers.get_all(name), [value], name)
         self.assertIn("frame-src https://www.youtube-nocookie.com;", self.csp)
         self.assertIn("require-trusted-types-for 'script'; trusted-types 'none'", self.csp)
         self.assertIn("style-src-attr 'none'", self.csp)
@@ -118,6 +163,24 @@ class FilmFacadeBrowserTests(unittest.TestCase):
                         self.assertEqual(outside, [], "a request left 127.0.0.1 before the press")
                         self.assertEqual(page.locator("iframe").count(), 0)
                         self.assertEqual(page.locator("link[rel~=preconnect], link[rel~=dns-prefetch]").count(), 0)
+                        # The deployed Permissions-Policy lets this site and the one player host autoplay, nobody else.
+                        policy = page.evaluate(
+                            """(host) => {
+                                const fp = document.permissionsPolicy || document.featurePolicy;
+                                return fp ? {
+                                    player: fp.allowsFeature('autoplay', host),
+                                    self: fp.allowsFeature('autoplay'),
+                                    other: fp.allowsFeature('autoplay', 'https://www.youtube.com'),
+                                    camera: fp.allowsFeature('camera'),
+                                } : null;
+                            }""",
+                            PLAYER_ORIGIN,
+                        )
+                        self.assertIsNotNone(policy, "this Chromium exposes no permissions policy object")
+                        self.assertTrue(policy["player"], "autoplay is delegated to the player host")
+                        self.assertTrue(policy["self"])
+                        self.assertFalse(policy["other"], "autoplay is not delegated to any other host")
+                        self.assertFalse(policy["camera"])
                         button = page.get_by_role("button", name=name, exact=True)
                         self.assertEqual(button.count(), 1)
                         self.assertEqual(page.locator(".tp-film-play").count(), 1)
@@ -199,6 +262,9 @@ class FilmFacadeBrowserTests(unittest.TestCase):
                         self.assertAlmostEqual(after["h"], after["bh"], delta=3)
                         # The only request that ever left 127.0.0.1 is the frame's own document.
                         self.assertEqual(outside, [want_src])
+                        # The page is served no-referrer; the frame's own referrerpolicy sends the site origin and
+                        # nothing more (no path), which the YouTube player needs.
+                        self.assertEqual(self.referers, {want_src: self.base})
                         self.assertEqual({urlsplit(u).hostname for u in outside}, {PLAYER_HOST})
                         policy_errors = [e for e in errors if POLICY_ERROR_RE.search(e)]
                         self.assertEqual(policy_errors, [], "CSP or Trusted Types violation")
@@ -224,7 +290,11 @@ class FilmFacadeBrowserTests(unittest.TestCase):
                     facade.setAttribute('data-yt', 'x" onload="alert(1)');
                     document.querySelector('.tp-film-play').click();
                     out.framesAfterTamperedClick = document.querySelectorAll('iframe').length;
-                    out.buttonStillThere = document.querySelectorAll('.tp-film-play').length;
+                    // No dead control: button and privacy line hidden again, focus on the plain link.
+                    out.buttonHiddenAgain = document.querySelector('.tp-film-play').hasAttribute('hidden');
+                    out.privacyHiddenAgain = document.querySelector('.tp-film-privacy').hasAttribute('hidden');
+                    out.focusOnPlainLink = document.activeElement === document.querySelector('a.tp-film-out');
+                    out.plainLinkHref = document.querySelector('a.tp-film-out').getAttribute('href');
                     // A fresh facade with a bad ID: init leaves its button hidden and wires nothing.
                     const fresh = document.createElement('div');
                     fresh.setAttribute('class', 'tp-film-facade');
@@ -245,7 +315,10 @@ class FilmFacadeBrowserTests(unittest.TestCase):
             self.assertEqual(result["accepted"], [])
             self.assertEqual(result["frames"], [])
             self.assertEqual(result["framesAfterTamperedClick"], 0)
-            self.assertEqual(result["buttonStillThere"], 1)
+            self.assertTrue(result["buttonHiddenAgain"])
+            self.assertTrue(result["privacyHiddenAgain"])
+            self.assertTrue(result["focusOnPlainLink"])
+            self.assertEqual(result["plainLinkHref"], f"https://www.youtube.com/watch?v={INTRO['youtube_id']}")
             self.assertEqual(result["wired"], 0)
             self.assertTrue(result["freshHidden"])
             self.assertEqual(result["framesAtEnd"], 0)
@@ -258,14 +331,19 @@ class FilmFacadeBrowserTests(unittest.TestCase):
         outside: list[str] = []
         try:
             ctx.route("**/*", lambda r: r.continue_() if r.request.url.startswith(self.base) else (outside.append(r.request.url), r.abort()))
-            page = ctx.new_page()
-            page.goto(self.base, wait_until="load")
-            self.assertFalse(page.locator(".tp-film-play").is_visible())
-            self.assertFalse(page.locator(".tp-film-privacy").is_visible())
-            self.assertTrue(page.locator(".tp-film-facade img").is_visible())
-            link = page.locator("a.tp-film-out")
-            self.assertTrue(link.is_visible())
-            self.assertEqual(link.get_attribute("href"), f"https://www.youtube.com/watch?v={INTRO['youtube_id']}")
+            for route, link_text in (("", "Watch on youtube.com"), ("es-mx/", "Ver en youtube.com")):
+                with self.subTest(route=route):
+                    page = ctx.new_page()
+                    page.goto(self.base + route, wait_until="load")
+                    self.assertFalse(page.locator(".tp-film-play").is_visible())
+                    self.assertFalse(page.locator(".tp-film-privacy").is_visible())
+                    self.assertTrue(page.locator(".tp-film-facade img").is_visible())
+                    link = page.locator("a.tp-film-out")
+                    self.assertTrue(link.is_visible())
+                    self.assertEqual(link.inner_text(), link_text)
+                    self.assertEqual(link.get_attribute("href"), f"https://www.youtube.com/watch?v={INTRO['youtube_id']}")
+                    self.assertEqual(page.locator("iframe").count(), 0)
+                    page.close()
             self.assertEqual(outside, [])
         finally:
             ctx.close()

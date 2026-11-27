@@ -5694,8 +5694,8 @@ def _film_poster_src(rel_res: str, poster: str) -> str:
 
 # The one film that plays on the cover itself (click-to-play, top of the page). Every other film is a link-out card.
 COVER_PLAYER_SLUG = "informatico-intro"
-FILM_PRIVACY_EN = "This film plays from YouTube. Nothing from YouTube loads until you press play."
-FILM_PRIVACY_ES = "Este video se reproduce desde YouTube. No se carga nada de YouTube hasta que oprimas reproducir."
+FILM_PRIVACY_EN = "This film plays from YouTube. Nothing from YouTube loads until you press play; then YouTube can see you came from this site."
+FILM_PRIVACY_ES = "Este video se reproduce desde YouTube. No se carga nada de YouTube hasta que oprimas reproducir; entonces YouTube puede ver que llegaste desde este sitio."
 
 
 def _cover_player_film(films: list[dict] | None = None) -> dict | None:
@@ -5736,7 +5736,7 @@ def render_cover_film_player(rel_res: str = ".", films: list[dict] | None = None
     copy = FILM_COPY[slug]
     dur_en, dur_es = _spoken_duration(duration)
     name_en = f"Play film: {copy['player_name_en']}, {dur_en}, from YouTube"
-    name_es = f"Reproducir película: {copy['player_name_es']}, {dur_es}, desde YouTube"
+    name_es = f"Reproducir video: {copy['player_name_es']}, {dur_es}, desde YouTube"
     label_en = f"{copy['title_en']} · {duration}"
     label_es = f"{copy['title_es']} · {duration}"
     link_en = "Watch on youtube.com"

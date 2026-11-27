@@ -7,6 +7,10 @@
 # if there is one, and put the blocks below UNDER its existing lines, never over them: cPanel writes its HTTPS-redirect
 # and handler lines there. Plain http:// already answers 301 to https:// on the live site, so no redirect is added here.
 #
+# UPLOAD ORDER for the cover's click-to-play film: upload this file BEFORE the pages. The pages build a player frame for
+# www.youtube-nocookie.com on the press; under the older frame-src 'none' that frame is blocked and the play button does nothing.
+# With this file first, the old pages simply never ask for a frame.
+#
 # ---- 1. Security and cache headers (mod_headers). "always" makes them apply to 404 and 3xx responses too.
 # Keep one header per line, the value in double quotes, and change a header here first; tests/test_informatico_seo.py pins this file.
 <IfModule mod_headers.c>
