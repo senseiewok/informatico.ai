@@ -16,10 +16,12 @@ import { initGlbViewers } from "./glb-viewer.mjs";
 import { initTraceSentence } from "./trace-sentence.mjs";
 import { initFeaturedSpotlight } from "./featured-spotlight.mjs";
 import { initLabLink } from "./lab-link.mjs";
+import { initFilmFacade } from "./film-facade.mjs";
 
 function bootMagazine(scope = document) {
   initThemePlate();
   initFeaturedSpotlight(scope);
+  initFilmFacade(scope);
   initArticleAudio(scope);
   initPlateSolvers(scope);
   initCompanionAndLedger(scope);

@@ -12,10 +12,12 @@
 <IfModule mod_headers.c>
   Header always unset Content-Security-Policy
   # Only this site's own files run or load: no inline script or style, no event-handler or style attributes, no other host, no data:
-  # or blob: source, no frames, workers or plugins, no form submission anywhere, no <base>, and no embedding of these pages.
+  # or blob: source, no workers or plugins, no form submission anywhere, no <base>, and no embedding of these pages.
+  # frame-src names one host, the YouTube privacy-enhanced player, for the cover's click-to-play film: the page ships no frame,
+  # src/modules/film-facade.mjs builds it only when the reader presses play. Permissions-Policy lets that one host autoplay.
   # media-src 'self' allows native playback of same-origin .mp3 narrations and .webm scientific plates.
   # require-trusted-types-for 'script' + trusted-types 'none' reject DOM string injection (innerHTML and the like).
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self'; style-src-attr 'none'; img-src 'self'; font-src 'self'; connect-src 'self'; media-src 'self'; frame-src 'none'; worker-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self'; style-src-attr 'none'; img-src 'self'; font-src 'self'; connect-src 'self'; media-src 'self'; frame-src https://www.youtube-nocookie.com; worker-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'"
   Header always unset X-Content-Type-Options
   Header always set X-Content-Type-Options "nosniff"
   Header always unset Referrer-Policy
@@ -23,7 +25,7 @@
   Header always unset X-Frame-Options
   Header always set X-Frame-Options "DENY"
   Header always unset Permissions-Policy
-  Header always set Permissions-Policy "accelerometer=(), autoplay=(), bluetooth=(), browsing-topics=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), hid=(), idle-detection=(), interest-cohort=(), local-fonts=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), xr-spatial-tracking=()"
+  Header always set Permissions-Policy "accelerometer=(), autoplay=(self \"https://www.youtube-nocookie.com\"), bluetooth=(), browsing-topics=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), hid=(), idle-detection=(), interest-cohort=(), local-fonts=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), xr-spatial-tracking=()"
   Header always unset Cross-Origin-Opener-Policy
   Header always set Cross-Origin-Opener-Policy "same-origin"
   Header always unset Cross-Origin-Resource-Policy

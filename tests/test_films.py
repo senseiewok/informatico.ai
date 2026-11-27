@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-"""Cover films shelf (#films): dormant until data/films.json holds a YouTube ID, link-out only, no embed.
+"""Cover films: a click-to-play player for the intro at the top of the cover, and a link-out shelf (#films).
 
 What is pinned here:
 - every youtube_id is null or exactly 11 characters of [A-Za-z0-9_-]; a bad ID stops the build;
-- the English cover and the es-MX cover both render the section or both omit it;
+- the English cover and the es-MX cover both render the player and the shelf, or both omit them;
 - posters exist, are 640x360 WebP, at most 120 KB, with no EXIF, XMP or ICC chunk and no JPEG APPn segment;
-- with a fixture, each item links to exactly https://www.youtube.com/watch?v=<id> with rel="noopener noreferrer";
-- no iframe on either cover, and a film with poster null renders as text only.
+- only the intro is the cover player; every other film is a card linking to https://www.youtube.com/watch?v=<id>
+  with rel="noopener noreferrer", and a card with poster null renders as text only;
+- no built page ships an iframe or names a YouTube player or thumbnail host; the frame is built by
+  src/modules/film-facade.mjs on the press, with a fixed address shape and a re-validated ID;
+- deploy/htaccess.txt opens frame-src and autoplay to the one player host and changes nothing else.
 """
 from __future__ import annotations
 
@@ -154,36 +157,28 @@ class FilmsSectionTests(unittest.TestCase):
     def test_fixture_hrefs_rel_and_no_iframe(self) -> None:
         html = B.render_cover_films_section(".", FIXTURE)
         hrefs = re.findall(r'<a class="tp-film-link" href="([^"]+)" rel="([^"]+)"', html)
-        self.assertEqual(
-            hrefs,
-            [
-                ("https://www.youtube.com/watch?v=AbC_dEf-123", "noopener noreferrer"),
-                ("https://www.youtube.com/watch?v=Zz9-Yy8_Xx7", "noopener noreferrer"),
-            ],
-        )
+        # The intro plays at the top of the cover (FilmPlayerMarkupTests), so the shelf keeps one card.
+        self.assertEqual(hrefs, [("https://www.youtube.com/watch?v=Zz9-Yy8_Xx7", "noopener noreferrer")])
         self.assertEqual(
             re.findall(r'href="([^"]+)"', html),
-            [
-                "https://www.youtube.com/watch?v=AbC_dEf-123",
-                "https://www.youtube.com/watch?v=Zz9-Yy8_Xx7",
-                "https://creativecommons.org/licenses/by/4.0/",
-            ],
+            ["https://www.youtube.com/watch?v=Zz9-Yy8_Xx7", "https://creativecommons.org/licenses/by/4.0/"],
         )
         self.assertNotIn("<iframe", html.lower())
         self.assertNotIn("youtube-nocookie", html)
-        self.assertEqual(html.count('alt=""'), 2)
-        self.assertEqual(len(re.findall(r'<img class="tp-film-poster" src="images/films/[a-z-]+\.webp\?v=[0-9a-f]{8}" width="640" height="360"', html)), 2)
-        self.assertEqual(html.count("opens youtube.com</span>"), 2)
-        self.assertIn(">Informatico: intro · 0:45<", html)
+        self.assertNotIn("informatico-intro", html)
+        self.assertEqual(html.count('alt=""'), 1)
+        self.assertEqual(len(re.findall(r'<img class="tp-film-poster" src="images/films/[a-z-]+\.webp\?v=[0-9a-f]{8}" width="640" height="360"', html)), 1)
+        self.assertEqual(html.count("opens youtube.com</span>"), 1)
         self.assertIn(">Follow the Light · 4:57<", html)
-        for copy in B.FILM_COPY.values():
-            self.assertIn(B.esc(copy["note_en"]), html)
+        self.assertIn(B.esc(B.FILM_COPY["follow-the-light"]["note_en"]), html)
 
     def test_null_ids_are_skipped_and_all_null_drops_section(self) -> None:
         self.assertEqual(B.render_cover_films_section(".", [dict(f, youtube_id=None) for f in FIXTURE]), "")
-        one = B.render_cover_films_section(".", [FIXTURE[0], dict(FIXTURE[1], youtube_id=None)])
+        # With only the cover player's film live, the shelf has no card left and is omitted.
+        self.assertEqual(B.render_cover_films_section(".", [FIXTURE[0], dict(FIXTURE[1], youtube_id=None)]), "")
+        one = B.render_cover_films_section(".", [dict(FIXTURE[0], youtube_id=None), FIXTURE[1]])
         self.assertEqual(one.count('class="tp-film-link"'), 1)
-        self.assertNotIn("follow-the-light", one)
+        self.assertNotIn("informatico-intro", one)
 
     def test_lung_model_credit_renders_whenever_its_poster_is_shown(self) -> None:
         credit_en = (
@@ -209,9 +204,8 @@ class FilmsSectionTests(unittest.TestCase):
 
     def test_spanish_cover_says_follow_the_light_narration_is_english(self) -> None:
         en, es = _render_hub_with(FIXTURE)
-        ext = dict(re.findall(r'data-film="([a-z-]+)">.*?<span class="tp-film-ext"[^>]*>([^<]*)</span>', es, re.S))
-        self.assertEqual(ext, {"informatico-intro": "abre youtube.com", "follow-the-light": "abre youtube.com (narración en inglés)"})
-        self.assertEqual(re.findall(r'<span class="tp-film-ext"[^>]*>([^<]*)</span>', en), ["opens youtube.com"] * 2)
+        self.assertEqual(re.findall(r'<span class="tp-film-ext"[^>]*>([^<]*)</span>', es), ["abre youtube.com (narración en inglés)"])
+        self.assertEqual(re.findall(r'<span class="tp-film-ext"[^>]*>([^<]*)</span>', en), ["opens youtube.com"])
 
     def test_null_poster_renders_text_only(self) -> None:
         html = B.render_cover_films_section(".", [dict(FIXTURE[1], poster=None)])
@@ -228,13 +222,18 @@ class FilmsSectionTests(unittest.TestCase):
             self.assertNotIn("<iframe", page.lower(), rel)
             self.assertEqual(
                 re.findall(r'class="tp-film-link" href="([^"]+)"', page),
-                ["https://www.youtube.com/watch?v=AbC_dEf-123", "https://www.youtube.com/watch?v=Zz9-Yy8_Xx7"],
+                ["https://www.youtube.com/watch?v=Zz9-Yy8_Xx7"],
+                rel,
+            )
+            self.assertEqual(
+                re.findall(r'class="tp-film-out" href="([^"]+)"', page),
+                ["https://www.youtube.com/watch?v=AbC_dEf-123"],
                 rel,
             )
         self.assertIn('src="images/films/informatico-intro.webp?v=', en)
         self.assertIn('src="../images/films/informatico-intro.webp?v=', es)
         self.assertIn(">Películas<", es)
-        self.assertIn(">abre youtube.com<", es)
+        self.assertIn(">abre youtube.com (narración en inglés)<", es)
         self.assertIn(B.esc(B.FILM_COPY["follow-the-light"]["note_es"]), es)
         for p in re.findall(r'src="\.\./(images/films/[^"?]+)', es):
             self.assertTrue((SRC / p).is_file(), p)
@@ -244,24 +243,281 @@ class FilmsSectionTests(unittest.TestCase):
         for rel, page in (("en", en), ("es", es)):
             self.assertNotIn('id="films"', page, rel)
             self.assertNotIn("tp-film", page, rel)
+            # Dormant: the hero keeps its conceptual illustration.
+            self.assertEqual(page.count('<figure class="tp-cover-figure">'), 1, rel)
 
     def test_built_covers_match_films_json(self) -> None:
         """src/index.html and src/es-mx/index.html agree with each other and with data/films.json."""
         live = [f for f in FILMS if f["youtube_id"]]
+        shelf = [f for f in live if f["slug"] != B.COVER_PLAYER_SLUG]
+        player = [f for f in live if f["slug"] == B.COVER_PLAYER_SLUG]
         for rel in ("index.html", "es-mx/index.html"):
             html = (SRC / rel).read_text(encoding="utf-8")
             self.assertNotIn("<iframe", html.lower(), rel)
-            self.assertEqual(html.count('id="films"'), 1 if live else 0, rel)
+            self.assertEqual(html.count('id="films"'), 1 if shelf else 0, rel)
             self.assertEqual(
                 re.findall(r'class="tp-film-link" href="([^"]+)"', html),
-                [f"https://www.youtube.com/watch?v={f['youtube_id']}" for f in live],
+                [f"https://www.youtube.com/watch?v={f['youtube_id']}" for f in shelf],
+                rel,
+            )
+            self.assertEqual(re.findall(r'class="tp-film-facade" data-yt="([^"]*)"', html), [f["youtube_id"] for f in player], rel)
+            self.assertEqual(
+                re.findall(r'class="tp-film-out" href="([^"]+)"', html),
+                [f"https://www.youtube.com/watch?v={f['youtube_id']}" for f in player],
                 rel,
             )
 
-    def test_csp_keeps_frames_off(self) -> None:
+
+def _header(name: str) -> str:
+    """The one value deploy/htaccess.txt sets for a response header (Apache writes an inner quote as \\")."""
+    ht = (ROOT / "deploy" / "htaccess.txt").read_text(encoding="utf-8")
+    found = re.findall(rf'^\s*Header always set {re.escape(name)} "((?:[^"\\]|\\.)*)"\s*$', ht, re.M)
+    if len(found) != 1:
+        raise AssertionError(f"{name}: expected exactly one 'Header always set' line, found {len(found)}")
+    return found[0].replace('\\"', '"')
+
+
+class FilmHeaderTests(unittest.TestCase):
+    """The player needs exactly two header changes; everything else stays as strict as it was."""
+
+    PLAYER_HOST = "https://www.youtube-nocookie.com"
+
+    def _csp(self) -> dict[str, str]:
+        parts = [d.strip() for d in _header("Content-Security-Policy").split(";")]
+        names = [p.split(" ", 1)[0] for p in parts]
+        self.assertEqual(len(names), len(set(names)), "a CSP directive is repeated")
+        return {p.split(" ", 1)[0]: p.split(" ", 1)[1] if " " in p else "" for p in parts}
+
+    def test_csp_is_exact_and_frames_one_host_only(self) -> None:
+        self.assertEqual(
+            _header("Content-Security-Policy"),
+            "default-src 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self'; style-src-attr 'none'; "
+            "img-src 'self'; font-src 'self'; connect-src 'self'; media-src 'self'; "
+            "frame-src https://www.youtube-nocookie.com; worker-src 'none'; base-uri 'none'; form-action 'none'; "
+            "frame-ancestors 'none'; object-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'",
+        )
+        csp = self._csp()
+        self.assertEqual(csp["frame-src"], self.PLAYER_HOST)
+        # No other directive names any host: no remote script, image (thumbnail), style, font or connection.
+        for name, value in csp.items():
+            if name != "frame-src":
+                self.assertNotIn("http", value, name)
+                self.assertNotIn("*", value, name)
+        self.assertEqual(csp["script-src"], "'self'")
+        self.assertEqual(csp["img-src"], "'self'")
+        self.assertEqual(csp["style-src-attr"], "'none'")
+        self.assertEqual(csp["require-trusted-types-for"], "'script'")
+        self.assertEqual(csp["trusted-types"], "'none'")
+        self.assertEqual(csp["frame-ancestors"], "'none'")
+
+    def test_permissions_policy_is_exact_and_only_autoplay_opens(self) -> None:
+        value = _header("Permissions-Policy")
+        self.assertEqual(
+            value,
+            'accelerometer=(), autoplay=(self "https://www.youtube-nocookie.com"), bluetooth=(), browsing-topics=(), camera=(), '
+            "display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), hid=(), idle-detection=(), interest-cohort=(), "
+            "local-fonts=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), "
+            "publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), xr-spatial-tracking=()",
+        )
+        features = dict(item.split("=", 1) for item in value.split(", "))
+        self.assertEqual(features.pop("autoplay"), f'(self "{self.PLAYER_HOST}")')
+        self.assertEqual(set(features.values()), {"()"}, "every other feature stays denied")
+        self.assertEqual(len(features), 22)
+
+    def test_the_player_host_appears_in_the_two_headers_and_nowhere_else(self) -> None:
         ht = (ROOT / "deploy" / "htaccess.txt").read_text(encoding="utf-8")
-        self.assertIn("frame-src 'none'", ht)
-        self.assertNotIn("youtube", ht.lower())
+        lines = [ln.strip() for ln in ht.splitlines() if "youtube" in ln.lower() and not ln.lstrip().startswith("#")]
+        self.assertEqual(len(lines), 2)
+        self.assertTrue(lines[0].startswith("Header always set Content-Security-Policy "))
+        self.assertTrue(lines[1].startswith("Header always set Permissions-Policy "))
+        for ln in lines:
+            self.assertEqual(ln.lower().count("youtube"), 1)
+        self.assertNotIn("ytimg", ht)
+        self.assertNotIn("google", ht.lower())
+        self.assertEqual(_header("Referrer-Policy"), "no-referrer")
+        self.assertEqual(_header("X-Frame-Options"), "DENY")
+
+
+class FilmPlayerMarkupTests(unittest.TestCase):
+    """The cover player as built: poster, hidden play button, privacy line, plain link; no frame, no YouTube player host."""
+
+    NAME_EN = "Play film: Informatico intro, 45 seconds, from YouTube"
+    NAME_ES = "Reproducir película: Informatico, introducción, 45 segundos, desde YouTube"
+    PRIVACY_EN = "This film plays from YouTube. Nothing from YouTube loads until you press play."
+    PRIVACY_ES = "Este video se reproduce desde YouTube. No se carga nada de YouTube hasta que oprimas reproducir."
+
+    def _figure(self, page: str) -> str:
+        found = re.findall(r'<figure class="tp-cover-film" data-film="informatico-intro">.*?</figure>', page, re.S)
+        self.assertEqual(len(found), 1)
+        return found[0]
+
+    def test_only_the_intro_is_the_cover_player(self) -> None:
+        self.assertEqual(B.COVER_PLAYER_SLUG, "informatico-intro")
+        self.assertEqual([f["youtube_id"] for f in FILMS if f["slug"] == B.COVER_PLAYER_SLUG], ["1NQqIR1ihlc"])
+        self.assertEqual(B.render_cover_film_player(".", [dict(FIXTURE[0], youtube_id=None), FIXTURE[1]]), "")
+        self.assertEqual(B.render_cover_film_player(".", [FIXTURE[1]]), "")
+        html = B.render_cover_film_player(".", FIXTURE)
+        self.assertEqual(html.count("data-yt="), 1)
+        self.assertNotIn("follow-the-light", html)
+        self.assertNotIn("Zz9-Yy8_Xx7", html)
+
+    def test_player_markup_exact_pieces(self) -> None:
+        html = B.render_cover_film_player(".", FIXTURE)
+        self.assertIn('<div class="tp-film-facade" data-yt="AbC_dEf-123" ', html)
+        self.assertRegex(
+            html,
+            r'<img class="tp-film-poster" src="images/films/informatico-intro\.webp\?v=[0-9a-f]{8}" width="640" height="360" '
+            r'loading="eager" fetchpriority="high" decoding="async" alt="">',
+        )
+        self.assertEqual(html.count("<button"), 1)
+        self.assertIn('<button type="button" class="tp-film-play" aria-describedby="film-privacy-informatico-intro" hidden>', html)
+        self.assertIn('<span class="tp-film-play-glyph" aria-hidden="true"></span>', html)
+        button = re.search(r"<button.*?</button>", html, re.S).group(0)
+        self.assertIn(f'data-en="{self.NAME_EN}" data-es="{self.NAME_ES}">{self.NAME_EN}</span>', button)
+        self.assertNotIn("aria-label", button, "the name is text, so the Spanish page can carry it in its own HTML")
+        self.assertIn(
+            f'<span class="tp-film-privacy" id="film-privacy-informatico-intro" data-en="{self.PRIVACY_EN}" data-es="{self.PRIVACY_ES}" hidden>'
+            f"{self.PRIVACY_EN}</span>",
+            html,
+        )
+        self.assertEqual(html.count('id="film-privacy-informatico-intro"'), 1)
+        self.assertEqual(
+            re.findall(r'<a class="tp-film-out" href="([^"]+)" rel="([^"]+)"', html),
+            [("https://www.youtube.com/watch?v=AbC_dEf-123", "noopener noreferrer")],
+        )
+        self.assertEqual(re.findall(r'href="([^"]+)"', html), ["https://www.youtube.com/watch?v=AbC_dEf-123"])
+        self.assertNotIn(" style=", html)
+        self.assertNotIn("<iframe", html.lower())
+        self.assertNotIn("srcdoc", html.lower())
+
+    def test_bad_rows_stop_the_build(self) -> None:
+        for bad in ("abc", "AbC_dEf-1234", 'AbC"dEf-123', "AbC_dEf-123\n", "", 12345678901):
+            with self.subTest(bad=bad), self.assertRaisesRegex(ValueError, "youtube_id must"):
+                B.render_cover_film_player(".", [dict(FIXTURE[0], youtube_id=bad)])
+        with self.assertRaisesRegex(ValueError, "duration must"):
+            B.render_cover_film_player(".", [dict(FIXTURE[0], duration="45")])
+        for bad in (None, "", "images/films/missing.webp", "https://example.com/x.webp"):
+            with self.subTest(poster=bad), self.assertRaisesRegex(ValueError, "needs an existing"):
+                B.render_cover_film_player(".", [dict(FIXTURE[0], poster=bad)])
+
+    def test_spoken_duration(self) -> None:
+        self.assertEqual(B._spoken_duration("0:45"), ("45 seconds", "45 segundos"))
+        self.assertEqual(B._spoken_duration("0:01"), ("1 second", "1 segundo"))
+        self.assertEqual(B._spoken_duration("1:00"), ("1 minute", "1 minuto"))
+        self.assertEqual(B._spoken_duration("4:58"), ("4 minutes 58 seconds", "4 minutos 58 segundos"))
+
+    def test_player_sits_in_the_hero_before_everything_else_on_both_covers(self) -> None:
+        en, es = _render_hub_with(FIXTURE)
+        for rel, page, name, privacy in (("en", en, self.NAME_EN, self.PRIVACY_EN), ("es", es, self.NAME_ES, self.PRIVACY_ES)):
+            fig = self._figure(page)
+            hero = re.search(r'<section class="tp-cover-hero".*?</section>', page, re.S).group(0)
+            self.assertIn(fig, hero, rel)
+            self.assertLess(page.index('id="cover-heading"'), page.index('class="tp-cover-film"'), rel)
+            self.assertLess(page.index('class="tp-cover-film"'), page.index('class="tp-cover-track-strip"'), rel)
+            self.assertLess(page.index('class="tp-cover-film"'), page.index('id="tp-featured-edition-desk"'), rel)
+            self.assertNotIn("tp-cover-figure", page, rel)
+            self.assertIn(f">{name}</span>", fig, rel)
+            self.assertIn(f">{privacy}</span>", fig, rel)
+            self.assertEqual(page.count('class="tp-film-facade"'), 1, rel)
+        self.assertIn(">Ver en youtube.com</a>", self._figure(es))
+        self.assertIn(">Informatico: introducción · 0:45</span>", self._figure(es))
+        self.assertIn("oprimas", self.PRIVACY_ES)
+
+    def test_built_html_names_no_youtube_player_host_and_ships_no_frame(self) -> None:
+        """Every built page: no frame, no player or thumbnail host, no preconnect or dns-prefetch."""
+        pages = sorted(SRC.rglob("*.html"))
+        self.assertGreater(len(pages), 150)
+        for page in pages:
+            low = page.read_text(encoding="utf-8").lower()
+            rel = page.relative_to(SRC).as_posix()
+            for banned in ("<iframe", "youtube-nocookie", "ytimg", "youtube.com/embed", "preconnect", "dns-prefetch", "srcdoc"):
+                self.assertNotIn(banned, low, f"{rel}: {banned}")
+        for rel in ("index.html", "es-mx/index.html"):
+            html = (SRC / rel).read_text(encoding="utf-8")
+            hosts = set(re.findall(r"https?://([a-z0-9.-]*(?:youtube|youtu\.be|google|ytimg|ggpht)[a-z0-9.-]*)", html.lower()))
+            self.assertEqual(hosts, {"www.youtube.com"}, rel)
+            for m in re.finditer(r"<(?:img|script|link|source|video|audio)\b[^>]*>", html):
+                self.assertNotIn("youtu", m.group(0).lower(), rel)
+
+    def test_css_sizes_the_frame_by_class(self) -> None:
+        css = (SRC / "informatico.css").read_text(encoding="utf-8")
+        for needle in (".tp-film-frame", ".tp-film-play[hidden]", ".tp-film-play:focus-visible", ".tp-film-facade", ".tp-cover-film"):
+            self.assertIn(needle, css)
+        self.assertNotIn("youtube-nocookie", css.lower())
+        self.assertNotIn("ytimg", css.lower())
+
+
+class FilmFacadeModuleTests(unittest.TestCase):
+    """Static pins on src/modules/film-facade.mjs. tests/test_film_facade_browser.py runs it in Chromium."""
+
+    def setUp(self) -> None:
+        self.src = (SRC / "modules" / "film-facade.mjs").read_text(encoding="utf-8")
+        self.code = self.src.split("*/", 1)[1]
+        self.main = (SRC / "modules" / "main.mjs").read_text(encoding="utf-8")
+
+    def test_module_is_wired_from_the_site_entry(self) -> None:
+        self.assertIn('import { initFilmFacade } from "./film-facade.mjs";', self.main)
+        self.assertEqual(self.main.count("initFilmFacade(scope);"), 1)
+        boot = self.main[self.main.index("function bootMagazine("):]
+        self.assertIn("initFilmFacade(scope);", boot[: boot.index("}")])
+
+    def test_one_host_one_fixed_address_shape(self) -> None:
+        self.assertEqual(re.findall(r'"(https?://[^"]*)"', self.code), ["https://www.youtube-nocookie.com"])
+        self.assertIn('const EMBED_QUERY = "autoplay=1&rel=0&playsinline=1";', self.code)
+        self.assertIn("isFilmId(id) ? `${EMBED_ORIGIN}/embed/${id}?${EMBED_QUERY}` : null", self.code)
+        self.assertEqual(len(re.findall(r"`[^`]*\$\{[^`]*`", self.code)), 2, "one address template and one selector")
+        self.assertEqual(self.code.count('setAttribute("src"'), 1)
+        self.assertIn('frame.setAttribute("src", src);', self.code)
+        for other in ("ytimg", "youtube.com", "google", "youtu.be"):
+            self.assertNotIn(other, self.code, other)
+
+    def test_id_is_validated_at_init_and_again_at_click(self) -> None:
+        self.assertIn("const ID_PATTERN = /^[A-Za-z0-9_-]{11}$/;", self.code)
+        self.assertIn('return typeof value === "string" && ID_PATTERN.test(value);', self.code)
+        create = self.code[self.code.index("export function createFilmFrame(") : self.code.index("function frameTitle(")]
+        self.assertLess(create.index("filmEmbedSrc(id)"), create.index('createElement("iframe")'))
+        self.assertRegex(create, r"if \(src === null\) \{\s+return null;\s+\}\s+const frame = doc\.createElement")
+        play = self.code[self.code.index("function playFilm(") : self.code.index("export function initFilmFacade(")]
+        self.assertIn('createFilmFrame(doc, facade.getAttribute("data-yt")', play, "the ID is read from the DOM again at click time")
+        self.assertRegex(play, r"if \(frame === null\) \{\s+return null;\s+\}\s+button\.replaceWith\(frame\);\s+frame\.focus\(\);")
+
+    def test_frame_is_built_only_inside_the_click_path_with_exact_attributes(self) -> None:
+        self.assertEqual(self.code.count('createElement("iframe")'), 1)
+        self.assertEqual(self.code.count("createElement("), 1)
+        self.assertEqual(self.code.count("createFilmFrame("), 2, "defined once, called once")
+        self.assertEqual(self.code.count("playFilm("), 2, "defined once, called once")
+        self.assertIn('button.addEventListener("click", () => playFilm(facade, button), { once: true });', self.code)
+        attrs = re.findall(r'frame\.setAttribute\("([a-z]+)", ("[^"]*"|[a-z]+)\);', self.code)
+        self.assertEqual(
+            attrs,
+            [
+                ("class", '"tp-film-frame"'),
+                ("src", "src"),
+                ("title", "title"),
+                ("allow", '"autoplay; fullscreen"'),
+                ("referrerpolicy", '"strict-origin-when-cross-origin"'),
+                ("width", '"640"'),
+                ("height", '"360"'),
+                ("tabindex", '"0"'),
+            ],
+        )
+        self.assertNotIn("loading", self.code, "the frame is wanted now; never lazy")
+
+    def test_no_markup_injection_no_inline_style_no_network(self) -> None:
+        for banned in ("innerHTML", "outerHTML", "insertAdjacentHTML", "srcdoc", "document.write", "eval(", "fetch(",
+                       "XMLHttpRequest", "sendBeacon", ".style", "cssText", '"style"', "location.", "window.open",
+                       "import(", "new Image", "preconnect", "localStorage", "sessionStorage", "document.cookie"):
+            self.assertNotIn(banned, self.code, banned)
+
+    def test_it_cannot_stop_the_page_from_booting(self) -> None:
+        body = self.code[self.code.index("export function initFilmFacade("):]
+        self.assertRegex(body, r"\{\s+let wired = 0;\s+try \{")
+        self.assertRegex(body, r"\} catch \{[^}]*\}\s+return wired;\s+\}\s*$")
+
+    def test_files_use_lf_line_endings(self) -> None:
+        for rel in ("src/modules/film-facade.mjs", "src/modules/main.mjs", "deploy/htaccess.txt", "tests/test_films.py",
+                    "tests/test_film_facade_browser.py"):
+            self.assertNotIn(b"\r", (ROOT / rel).read_bytes(), rel)
 
 
 if __name__ == "__main__":

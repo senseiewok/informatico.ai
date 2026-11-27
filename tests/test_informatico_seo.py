@@ -375,7 +375,7 @@ class SiteFiles(unittest.TestCase):
         self.assertIn(
             'Header always set Content-Security-Policy "default-src \'self\'; script-src \'self\'; script-src-attr \'none\'; '
             'style-src \'self\'; style-src-attr \'none\'; img-src \'self\'; font-src \'self\'; connect-src \'self\'; '
-            'media-src \'self\'; frame-src \'none\'; worker-src \'none\'; base-uri \'none\'; form-action \'none\'; '
+            'media-src \'self\'; frame-src https://www.youtube-nocookie.com; worker-src \'none\'; base-uri \'none\'; form-action \'none\'; '
             'frame-ancestors \'none\'; object-src \'none\'; require-trusted-types-for \'script\'; trusted-types \'none\'"',
             ht,
         )

@@ -3514,6 +3514,105 @@ REVAMP_CSS = r"""
     line-height: 1.4;
     color: var(--tp-graphite);
   }
+  /* Cover film player (hero media slot): a poster with a play button over it. film-facade.mjs swaps the button
+     for the player frame on the press; the frame is sized here by class, never by an inline style. */
+  .tp-cover-film {
+    margin: 0;
+    width: 100%;
+    max-width: 640px;
+    justify-self: end;
+  }
+  .tp-film-facade {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid var(--tp-rule-strong);
+    border-radius: 10px;
+    background-color: var(--tp-stone-deep);
+  }
+  .tp-film-facade .tp-film-poster {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 0;
+  }
+  .tp-film-play,
+  .tp-film-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .tp-film-play {
+    display: grid;
+    place-items: center;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+  .tp-film-play[hidden],
+  .tp-film-privacy[hidden] {
+    display: none;
+  }
+  .tp-film-play:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: -6px;
+    box-shadow: inset 0 0 0 9px #0b1220;
+  }
+  .tp-film-play-glyph {
+    display: grid;
+    place-items: center;
+    width: 4.25rem;
+    height: 4.25rem;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: rgba(11, 18, 32, 0.78);
+  }
+  .tp-film-play-glyph::before {
+    content: "";
+    width: 1.35rem;
+    height: 1.5rem;
+    margin-left: 0.3rem;
+    background-color: #fff;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+  }
+  .tp-film-play:hover .tp-film-play-glyph {
+    background-color: #0b1220;
+  }
+  .tp-film-frame {
+    background-color: #000;
+  }
+  .tp-film-caption {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.15rem 0.9rem;
+    margin-top: 0.45rem;
+  }
+  .tp-film-caption .tp-film-title {
+    font-size: 1rem;
+  }
+  .tp-film-out {
+    font-family: var(--tp-font-mono, monospace);
+    font-size: 0.76rem;
+    color: var(--tp-ink);
+  }
+  .tp-film-caption .tp-film-privacy,
+  .tp-film-caption .tp-film-note {
+    flex-basis: 100%;
+    margin: 0;
+    font-size: 0.78rem;
+    line-height: 1.38;
+    color: var(--tp-graphite);
+  }
+  @media (max-width: 860px) {
+    .tp-cover-film {
+      order: 0;
+      max-width: none;
+    }
+  }
   @media (prefers-reduced-motion: no-preference) {
     .tp-film-poster {
       transition: transform 160ms ease-out;

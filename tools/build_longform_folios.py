@@ -5652,6 +5652,9 @@ FILM_COPY: dict[str, dict[str, str]] = {
     "informatico-intro": {
         "title_en": "Informatico: intro",
         "title_es": "Informatico: introducción",
+        # Spoken form of the title for the play button's accessible name.
+        "player_name_en": "Informatico intro",
+        "player_name_es": "Informatico, introducción",
         "note_en": "Known physics, shown; clock effects exaggerated. No new discovery. CC BY-SA 4.0. Sources on YouTube.",
         "note_es": "Física conocida, mostrada; los efectos de reloj están exagerados. Ningún descubrimiento nuevo. CC BY-SA 4.0. Fuentes en YouTube.",
     },
@@ -5689,10 +5692,78 @@ def _film_poster_src(rel_res: str, poster: str) -> str:
     return f"{base}?v={sha8}"
 
 
+# The one film that plays on the cover itself (click-to-play, top of the page). Every other film is a link-out card.
+COVER_PLAYER_SLUG = "informatico-intro"
+FILM_PRIVACY_EN = "This film plays from YouTube. Nothing from YouTube loads until you press play."
+FILM_PRIVACY_ES = "Este video se reproduce desde YouTube. No se carga nada de YouTube hasta que oprimas reproducir."
+
+
+def _cover_player_film(films: list[dict] | None = None) -> dict | None:
+    """The data/films.json row for the cover player, or None while it has no YouTube ID (dormant)."""
+    for film in load_films() if films is None else films:
+        if film.get("slug") == COVER_PLAYER_SLUG:
+            return film if film.get("youtube_id") is not None else None
+    return None
+
+
+def _spoken_duration(duration: str) -> tuple[str, str]:
+    """'0:45' -> ('45 seconds', '45 segundos'); '4:58' -> ('4 minutes 58 seconds', '4 minutos 58 segundos')."""
+    m, s = (int(x) for x in duration.split(":"))
+    en = [f"{m} minute{'' if m == 1 else 's'}"] if m else []
+    es = [f"{m} minuto{'' if m == 1 else 's'}"] if m else []
+    if s or not m:
+        en.append(f"{s} second{'' if s == 1 else 's'}")
+        es.append(f"{s} segundo{'' if s == 1 else 's'}")
+    return " ".join(en), " ".join(es)
+
+
+def render_cover_film_player(rel_res: str = ".", films: list[dict] | None = None) -> str:
+    """Click-to-play player for the cover hero, or "" while the film is dormant (the hero then keeps its illustration).
+
+    The page ships a poster, a hidden play button, the privacy line and a plain youtube.com link; it ships no
+    iframe and names no YouTube player host. src/modules/film-facade.mjs shows the button and, on the press,
+    builds the frame. Without scripts the poster and the plain link are all there is."""
+    film = _cover_player_film(films)
+    if film is None:
+        return ""
+    slug, vid, duration, poster = film["slug"], film["youtube_id"], film.get("duration"), film.get("poster")
+    if not isinstance(vid, str) or not YOUTUBE_ID_RE.fullmatch(vid):
+        raise ValueError(f"films.json: {slug}: youtube_id must be 11 characters of A-Z a-z 0-9 _ -, got {vid!r}")
+    if not isinstance(duration, str) or not FILM_DURATION_RE.fullmatch(duration):
+        raise ValueError(f"films.json: {slug}: duration must look like m:ss, got {duration!r}")
+    if not isinstance(poster, str) or not FILM_POSTER_RE.fullmatch(poster) or not (ROOT / "src" / poster).is_file():
+        raise ValueError(f"films.json: {slug}: the cover player needs an existing src/images/films/*.webp poster, got {poster!r}")
+    copy = FILM_COPY[slug]
+    dur_en, dur_es = _spoken_duration(duration)
+    name_en = f"Play film: {copy['player_name_en']}, {dur_en}, from YouTube"
+    name_es = f"Reproducir película: {copy['player_name_es']}, {dur_es}, desde YouTube"
+    label_en = f"{copy['title_en']} · {duration}"
+    label_es = f"{copy['title_es']} · {duration}"
+    link_en = "Watch on youtube.com"
+    link_es = "Ver en youtube.com"
+    privacy_id = f"film-privacy-{slug}"
+    return f"""      <figure class="tp-cover-film" data-film="{esc(slug)}">
+        <div class="tp-film-facade" data-yt="{esc(vid)}" data-title-en="{esc(copy['title_en'])} (YouTube video player)" data-title-es="{esc(copy['title_es'])} (reproductor de video de YouTube)">
+          <img class="tp-film-poster" src="{_film_poster_src(rel_res, poster)}" width="640" height="360" loading="eager" fetchpriority="high" decoding="async" alt="">
+          <button type="button" class="tp-film-play" aria-describedby="{privacy_id}" hidden>
+            <span class="tp-film-play-glyph" aria-hidden="true"></span>
+            <span class="tp-sr-only" data-en="{esc(name_en)}" data-es="{esc(name_es)}">{esc(name_en)}</span>
+          </button>
+        </div>
+        <figcaption class="tp-film-caption">
+          <span class="tp-film-title" data-en="{esc(label_en)}" data-es="{esc(label_es)}">{esc(label_en)}</span>
+          <a class="tp-film-out" href="https://www.youtube.com/watch?v={esc(vid)}" rel="noopener noreferrer" data-en="{link_en}" data-es="{link_es}">{link_en}</a>
+          <span class="tp-film-privacy" id="{privacy_id}" data-en="{esc(FILM_PRIVACY_EN)}" data-es="{esc(FILM_PRIVACY_ES)}" hidden>{esc(FILM_PRIVACY_EN)}</span>
+          <span class="tp-film-note" data-en="{esc(copy['note_en'])}" data-es="{esc(copy['note_es'])}">{esc(copy['note_en'])}</span>
+        </figcaption>
+      </figure>"""
+
+
 def render_cover_films_section(rel_res: str = ".", films: list[dict] | None = None) -> str:
     """Compact #films link-out shelf on the cover. Dormant by design: a film with youtube_id null is skipped,
-    and with no film left the whole section (both languages) is omitted. No embed and no iframe: each item is
-    a plain link to youtube.com, so the pinned CSP (frame-src 'none') stays as it is."""
+    and with no film left the whole section (both languages) is omitted. No embed and no iframe here: each
+    item is a plain link to youtube.com. The cover player's film (COVER_PLAYER_SLUG) is validated like the
+    rest but gets no card: it plays at the top of the cover (render_cover_film_player)."""
     rows = load_films() if films is None else films
     items: list[str] = []
     seen_slugs: set[str] = set()
@@ -5737,6 +5808,8 @@ def render_cover_films_section(rel_res: str = ".", films: list[dict] | None = No
                 f'{esc(copy["poster_credit_en"])}</span> <a href="{esc(copy["poster_credit_url"])}" rel="noopener noreferrer license">'
                 f'{esc(copy["poster_credit_license"])}</a>.</p>'
             )
+        if slug == COVER_PLAYER_SLUG:
+            continue
         items.append(
             f"""        <li class="tp-film{'' if poster_html else ' tp-film-textonly'}" data-film="{esc(slug)}">
           <a class="tp-film-link" href="{esc(href)}" rel="noopener noreferrer">{poster_html}
@@ -5812,6 +5885,11 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         if es
         else f"Informatico.ai 4 Pillars, Time and Gravity Series, 6 Bounties and {skill_count} AI Skills"
     )
+    # The hero's media slot: the click-to-play intro film while it has a YouTube ID, the conceptual illustration otherwise.
+    hero_media = render_cover_film_player(".") or f"""      <figure class="tp-cover-figure">
+        <img src="{plate_src('plates/', 'utopian-city-future')}" width="1280" height="720" loading="eager" fetchpriority="high" decoding="async" alt="Conceptual illustration imagining what a city built with these ideas would look like: light space frames, vertical gardens and robots at work (artistic impression, not a design).">
+        <figcaption data-en="Conceptual illustration imagining what a city built with these ideas would look like. An artistic impression, not a design." data-es="Ilustración conceptual que imagina cómo se vería una ciudad construida con estas ideas. Una impresión artística, no un diseño.">Conceptual illustration imagining what a city built with these ideas would look like. An artistic impression, not a design.</figcaption>
+      </figure>"""
 
     return f"""{head}
 <body class="tp-body tp-page-cover">
@@ -5829,10 +5907,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
           <button type="button" class="tp-cta" data-open-contents aria-haspopup="dialog" aria-controls="tp-contents" data-en="Browse all {total}" data-es="Ver los {total}">Browse all {total}</button>
         </div>
       </div>
-      <figure class="tp-cover-figure">
-        <img src="{plate_src('plates/', 'utopian-city-future')}" width="1280" height="720" loading="eager" fetchpriority="high" decoding="async" alt="Conceptual illustration imagining what a city built with these ideas would look like: light space frames, vertical gardens and robots at work (artistic impression, not a design).">
-        <figcaption data-en="Conceptual illustration imagining what a city built with these ideas would look like. An artistic impression, not a design." data-es="Ilustración conceptual que imagina cómo se vería una ciudad construida con estas ideas. Una impresión artística, no un diseño.">Conceptual illustration imagining what a city built with these ideas would look like. An artistic impression, not a design.</figcaption>
-      </figure>
+{hero_media}
       <nav class="tp-cover-track-strip" aria-label="{strip_aria}">
         <a class="tp-track-chip" href="engineering/">
           <span class="tp-track-chip-kicker" data-en="PILLAR I · {eng_n} ESSAYS" data-es="PILAR I · {eng_n} ENSAYOS">PILLAR I · {eng_n} ESSAYS</span>
