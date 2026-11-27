@@ -3508,6 +3508,12 @@ REVAMP_CSS = r"""
     line-height: 1.45;
     color: var(--tp-graphite);
   }
+  .tp-film-credit {
+    margin: 0.3rem 0 0;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    color: var(--tp-graphite);
+  }
   @media (prefers-reduced-motion: no-preference) {
     .tp-film-poster {
       transition: transform 160ms ease-out;

@@ -161,7 +161,14 @@ class FilmsSectionTests(unittest.TestCase):
                 ("https://www.youtube.com/watch?v=Zz9-Yy8_Xx7", "noopener noreferrer"),
             ],
         )
-        self.assertEqual(len(re.findall(r'href="', html)), 2)
+        self.assertEqual(
+            re.findall(r'href="([^"]+)"', html),
+            [
+                "https://www.youtube.com/watch?v=AbC_dEf-123",
+                "https://www.youtube.com/watch?v=Zz9-Yy8_Xx7",
+                "https://creativecommons.org/licenses/by/4.0/",
+            ],
+        )
         self.assertNotIn("<iframe", html.lower())
         self.assertNotIn("youtube-nocookie", html)
         self.assertEqual(html.count('alt=""'), 2)
@@ -177,6 +184,34 @@ class FilmsSectionTests(unittest.TestCase):
         one = B.render_cover_films_section(".", [FIXTURE[0], dict(FIXTURE[1], youtube_id=None)])
         self.assertEqual(one.count('class="tp-film-link"'), 1)
         self.assertNotIn("follow-the-light", one)
+
+    def test_lung_model_credit_renders_whenever_its_poster_is_shown(self) -> None:
+        credit_en = (
+            '<p class="tp-film-credit"><span data-en="Lung model: Human Reference Atlas (HuBMAP),"'
+        )
+        cc_link = '<a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener noreferrer license">CC BY 4.0</a>.</p>'
+        en, es = _render_hub_with(FIXTURE)
+        for rel, page, words in (
+            ("en", en, ">Lung model: Human Reference Atlas (HuBMAP),</span> "),
+            ("es", es, ">Modelo de pulmón: Human Reference Atlas (HuBMAP),</span> "),
+        ):
+            item = re.search(r'<li class="tp-film" data-film="follow-the-light">.*?</li>', page, re.S)
+            self.assertIsNotNone(item, rel)
+            item_html = item.group(0)
+            self.assertIn('<img class="tp-film-poster" src="', item_html, rel)
+            self.assertIn(credit_en, item_html, rel)
+            self.assertIn(words + cc_link, item_html, rel)
+            self.assertEqual(page.count('class="tp-film-credit"'), 1, rel)
+        # The credit belongs to the poster: a text-only card carries no credit, and the intro has none.
+        text_only = B.render_cover_films_section(".", [FIXTURE[0], dict(FIXTURE[1], poster=None)])
+        self.assertNotIn("tp-film-credit", text_only)
+        self.assertNotIn("Human Reference Atlas", text_only)
+
+    def test_spanish_cover_says_follow_the_light_narration_is_english(self) -> None:
+        en, es = _render_hub_with(FIXTURE)
+        ext = dict(re.findall(r'data-film="([a-z-]+)">.*?<span class="tp-film-ext"[^>]*>([^<]*)</span>', es, re.S))
+        self.assertEqual(ext, {"informatico-intro": "abre youtube.com", "follow-the-light": "abre youtube.com (narración en inglés)"})
+        self.assertEqual(re.findall(r'<span class="tp-film-ext"[^>]*>([^<]*)</span>', en), ["opens youtube.com"] * 2)
 
     def test_null_poster_renders_text_only(self) -> None:
         html = B.render_cover_films_section(".", [dict(FIXTURE[1], poster=None)])

@@ -5660,6 +5660,13 @@ FILM_COPY: dict[str, dict[str, str]] = {
         "title_es": "Sigue la luz (Follow the Light)",
         "note_en": "A trip from the lungs to the CFTR gene. Real measured shapes where we had data, imagined colors. Not medical advice. CC BY-SA 4.0.",
         "note_es": "Un viaje de los pulmones al gen CFTR. Formas reales medidas donde teníamos datos, colores imaginados. No es consejo médico. CC BY-SA 4.0.",
+        # The narration lines (film audio script) are English; only the Spanish cover says so.
+        "ext_es": "abre youtube.com (narración en inglés)",
+        # The poster shows the Human Reference Atlas lung model (CC BY 4.0), so it is credited whenever the poster is shown.
+        "poster_credit_en": "Lung model: Human Reference Atlas (HuBMAP),",
+        "poster_credit_es": "Modelo de pulmón: Human Reference Atlas (HuBMAP),",
+        "poster_credit_license": "CC BY 4.0",
+        "poster_credit_url": "https://creativecommons.org/licenses/by/4.0/",
     },
 }
 
@@ -5721,13 +5728,22 @@ def render_cover_films_section(rel_res: str = ".", films: list[dict] | None = No
             )
         label_en = f"{copy['title_en']} · {duration}"
         label_es = f"{copy['title_es']} · {duration}"
+        ext_es = copy.get("ext_es", "abre youtube.com")
+        credit_html = ""
+        if poster_html and copy.get("poster_credit_en"):
+            # The licence link sits outside any data-en element: the Spanish build replaces such an element's children with text.
+            credit_html = (
+                f'\n          <p class="tp-film-credit"><span data-en="{esc(copy["poster_credit_en"])}" data-es="{esc(copy["poster_credit_es"])}">'
+                f'{esc(copy["poster_credit_en"])}</span> <a href="{esc(copy["poster_credit_url"])}" rel="noopener noreferrer license">'
+                f'{esc(copy["poster_credit_license"])}</a>.</p>'
+            )
         items.append(
             f"""        <li class="tp-film{'' if poster_html else ' tp-film-textonly'}" data-film="{esc(slug)}">
           <a class="tp-film-link" href="{esc(href)}" rel="noopener noreferrer">{poster_html}
             <span class="tp-film-title" data-en="{esc(label_en)}" data-es="{esc(label_es)}">{esc(label_en)}</span>
-            <span class="tp-film-ext" data-en="opens youtube.com" data-es="abre youtube.com">opens youtube.com</span>
+            <span class="tp-film-ext" data-en="opens youtube.com" data-es="{esc(ext_es)}">opens youtube.com</span>
           </a>
-          <p class="tp-film-note" data-en="{esc(copy['note_en'])}" data-es="{esc(copy['note_es'])}">{esc(copy['note_en'])}</p>
+          <p class="tp-film-note" data-en="{esc(copy['note_en'])}" data-es="{esc(copy['note_es'])}">{esc(copy['note_en'])}</p>{credit_html}
         </li>"""
         )
     if not items:
