@@ -5641,6 +5641,126 @@ def render_cover_timegravity_feature(rel_res: str = ".") -> str:
     </section>"""
 
 
+FILMS_JSON = ROOT / "data" / "films.json"
+YOUTUBE_ID_RE = re.compile(r"^[A-Za-z0-9_-]{11}$")
+FILM_POSTER_RE = re.compile(r"^images/films/[a-z0-9][a-z0-9-]*\.webp$")
+FILM_DURATION_RE = re.compile(r"^[0-9]{1,2}:[0-5][0-9]$")
+
+# Cover copy for each film in data/films.json, keyed by slug. The English notes follow the films' own YouTube
+# descriptions. es-MX: draft, pending maintainer review (Mexican Spanish).
+FILM_COPY: dict[str, dict[str, str]] = {
+    "informatico-intro": {
+        "title_en": "Informatico: intro",
+        "title_es": "Informatico: introducción",
+        "note_en": "Known physics, shown; clock effects exaggerated. No new discovery. CC BY-SA 4.0. Sources on YouTube.",
+        "note_es": "Física conocida, mostrada; los efectos de reloj están exagerados. Ningún descubrimiento nuevo. CC BY-SA 4.0. Fuentes en YouTube.",
+    },
+    "follow-the-light": {
+        "title_en": "Follow the Light",
+        "title_es": "Sigue la luz (Follow the Light)",
+        "note_en": "A trip from the lungs to the CFTR gene. Real measured shapes where we had data, imagined colors. Not medical advice. CC BY-SA 4.0.",
+        "note_es": "Un viaje de los pulmones al gen CFTR. Formas reales medidas donde teníamos datos, colores imaginados. No es consejo médico. CC BY-SA 4.0.",
+        # The narration lines (film audio script) are English; only the Spanish cover says so.
+        "ext_es": "abre youtube.com (narración en inglés)",
+        # The poster shows the Human Reference Atlas lung model (CC BY 4.0), so it is credited whenever the poster is shown.
+        "poster_credit_en": "Lung model: Human Reference Atlas (HuBMAP),",
+        "poster_credit_es": "Modelo de pulmón: Human Reference Atlas (HuBMAP),",
+        "poster_credit_license": "CC BY 4.0",
+        "poster_credit_url": "https://creativecommons.org/licenses/by/4.0/",
+    },
+}
+
+
+def load_films(path: Path | None = None) -> list[dict]:
+    """Read data/films.json. A missing file or a malformed row is an error, never a silent skip."""
+    p = path or FILMS_JSON
+    if not p.is_file():
+        raise FileNotFoundError(f"{p}: missing; keep the file with youtube_id null to leave the films shelf dormant")
+    rows = json.loads(p.read_text(encoding="utf-8"))
+    if not isinstance(rows, list):
+        raise ValueError(f"{p}: expected a JSON list of films")
+    return rows
+
+
+def _film_poster_src(rel_res: str, poster: str) -> str:
+    """Cache-busted poster URL, like plate_src: '<rel>/images/films/<slug>.webp?v=<sha8>'."""
+    sha8 = hashlib.sha256((ROOT / "src" / poster).read_bytes()).hexdigest()[:8]
+    base = poster if rel_res in ("", ".") else f"{rel_res.rstrip('/')}/{poster}"
+    return f"{base}?v={sha8}"
+
+
+def render_cover_films_section(rel_res: str = ".", films: list[dict] | None = None) -> str:
+    """Compact #films link-out shelf on the cover. Dormant by design: a film with youtube_id null is skipped,
+    and with no film left the whole section (both languages) is omitted. No embed and no iframe: each item is
+    a plain link to youtube.com, so the pinned CSP (frame-src 'none') stays as it is."""
+    rows = load_films() if films is None else films
+    items: list[str] = []
+    seen_slugs: set[str] = set()
+    seen_ids: set[str] = set()
+    for film in rows:
+        slug = film["slug"]
+        if slug in seen_slugs:
+            raise ValueError(f"films.json: {slug}: duplicate slug")
+        seen_slugs.add(slug)
+        vid = film.get("youtube_id")
+        if vid is None:
+            continue
+        if not isinstance(vid, str) or not YOUTUBE_ID_RE.fullmatch(vid):
+            raise ValueError(f"films.json: {slug}: youtube_id must be 11 characters of A-Z a-z 0-9 _ -, got {vid!r}")
+        if vid in seen_ids:
+            raise ValueError(f"films.json: {slug}: duplicate youtube_id {vid!r}")
+        seen_ids.add(vid)
+        if slug not in FILM_COPY:
+            raise ValueError(f"films.json: {slug}: no cover copy in FILM_COPY")
+        copy = FILM_COPY[slug]
+        duration = film.get("duration")
+        if not isinstance(duration, str) or not FILM_DURATION_RE.fullmatch(duration):
+            raise ValueError(f"films.json: {slug}: duration must look like m:ss, got {duration!r}")
+        href = f"https://www.youtube.com/watch?v={vid}"
+        poster = film.get("poster")
+        poster_html = ""
+        if poster is not None:
+            if not isinstance(poster, str) or not FILM_POSTER_RE.fullmatch(poster) or not (ROOT / "src" / poster).is_file():
+                raise ValueError(f"films.json: {slug}: poster must be an existing src/images/films/*.webp, got {poster!r}")
+            poster_html = (
+                f'\n            <img class="tp-film-poster" src="{_film_poster_src(rel_res, poster)}" width="640" height="360" '
+                f'loading="lazy" decoding="async" alt="">'
+            )
+        label_en = f"{copy['title_en']} · {duration}"
+        label_es = f"{copy['title_es']} · {duration}"
+        ext_es = copy.get("ext_es", "abre youtube.com")
+        credit_html = ""
+        if poster_html and copy.get("poster_credit_en"):
+            # The licence link sits outside any data-en element: the Spanish build replaces such an element's children with text.
+            credit_html = (
+                f'\n          <p class="tp-film-credit"><span data-en="{esc(copy["poster_credit_en"])}" data-es="{esc(copy["poster_credit_es"])}">'
+                f'{esc(copy["poster_credit_en"])}</span> <a href="{esc(copy["poster_credit_url"])}" rel="noopener noreferrer license">'
+                f'{esc(copy["poster_credit_license"])}</a>.</p>'
+            )
+        items.append(
+            f"""        <li class="tp-film{'' if poster_html else ' tp-film-textonly'}" data-film="{esc(slug)}">
+          <a class="tp-film-link" href="{esc(href)}" rel="noopener noreferrer">{poster_html}
+            <span class="tp-film-title" data-en="{esc(label_en)}" data-es="{esc(label_es)}">{esc(label_en)}</span>
+            <span class="tp-film-ext" data-en="opens youtube.com" data-es="{esc(ext_es)}">opens youtube.com</span>
+          </a>
+          <p class="tp-film-note" data-en="{esc(copy['note_en'])}" data-es="{esc(copy['note_es'])}">{esc(copy['note_en'])}</p>{credit_html}
+        </li>"""
+        )
+    if not items:
+        return ""
+    items_html = "\n".join(items)
+    return f"""    <section class="tp-cover-films" id="films" aria-labelledby="films-heading">
+      <div class="tp-cover-films-head">
+        <p class="tp-kicker" data-en="Short films · watch on YouTube" data-es="Cortometrajes · para ver en YouTube">Short films · watch on YouTube</p>
+        <h2 id="films-heading" class="tp-h2" data-en="Films" data-es="Películas">Films</h2>
+      </div>
+      <ul class="tp-films-list">
+{items_html}
+      </ul>
+    </section>
+"""
+
+
 def render_hub_index(catalog: dict, lang: str = "en") -> str:
     """The cover: compact hero + Navigator Strip above the fold, Featured Time & Gravity Essay-Showcase, 4 Pillar rows, Toolchain, and 6 Bounties."""
     es = lang == "es"
@@ -5772,7 +5892,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
       </nav>
     </section>
 {render_cover_rotating_spotlight_and_schedule(".")}
-{rows_html}
+{render_cover_films_section(".")}{rows_html}
 {render_toolchain_section(".")}
 {render_bounty_crucible_section(".")}
 {render_cover_timegravity_feature(".")}
