@@ -19,6 +19,7 @@ import struct
 import sys
 import tempfile
 import unittest
+from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -33,6 +34,29 @@ FIXTURE = [
     {"slug": "follow-the-light", "youtube_id": "Zz9-Yy8_Xx7", "duration": "4:57", "poster": "images/films/follow-the-light.webp"},
 ]
 POSTER_MAX_BYTES = 120 * 1024
+
+
+class _LoadingTagParser(HTMLParser):
+    """Collect the tags that make a browser fetch something (parsed, not regex-matched; case-insensitive)."""
+
+    WATCHED = {"img", "script", "link", "source", "video", "audio", "iframe", "embed", "object"}
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.found: list[tuple[str, list[tuple[str, str | None]]]] = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag in self.WATCHED:
+            self.found.append((tag, attrs))
+
+    handle_startendtag = handle_starttag
+
+
+def _loading_tags(html: str) -> list[tuple[str, list[tuple[str, str | None]]]]:
+    parser = _LoadingTagParser()
+    parser.feed(html)
+    parser.close()
+    return parser.found
 
 
 def _webp_chunks(data: bytes) -> list[tuple[bytes, bytes]]:
@@ -436,8 +460,8 @@ class FilmPlayerMarkupTests(unittest.TestCase):
             html = (SRC / rel).read_text(encoding="utf-8")
             hosts = set(re.findall(r"https?://([a-z0-9.-]*(?:youtube|youtu\.be|google|ytimg|ggpht)[a-z0-9.-]*)", html.lower()))
             self.assertEqual(hosts, {"www.youtube.com"}, rel)
-            for m in re.finditer(r"<(?:img|script|link|source|video|audio)\b[^>]*>", html):
-                self.assertNotIn("youtu", m.group(0).lower(), rel)
+            for tag, attrs in _loading_tags(html):
+                self.assertNotIn("youtu", " ".join(f"{k}={v or ''}" for k, v in attrs).lower(), f"{rel}: <{tag}>")
 
     def test_css_sizes_the_frame_by_class(self) -> None:
         css = (SRC / "informatico.css").read_text(encoding="utf-8")
