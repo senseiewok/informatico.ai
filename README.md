@@ -241,4 +241,5 @@ A **4-Seat Multi-Family Council** ([`src/data/bounty_crucible_council_ledger.jso
 ## License & Security
 
 - **Dual License ([`LICENSE`](LICENSE))**: MIT for code, solvers, Python verifiers, and `SKILL.md` companions; Creative Commons Attribution 4.0 International (`CC BY 4.0`) for long-form essays and visual plates.
+- **Film posters (exception)**: the two posters in `src/images/films/` are stills from the lab's own films and stay under the films' license, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). The Follow the Light poster shows the Human Reference Atlas lung model (HuBMAP, CC BY 4.0), credited on the card.
 - **Security & Contributing**: Vulnerability reporting and CSP boundaries live in [`SECURITY.md`](SECURITY.md); single-maintainer pull request rules live in [`CONTRIBUTING.md`](CONTRIBUTING.md).
