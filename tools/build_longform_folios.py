@@ -2092,7 +2092,7 @@ def render_masthead(rel_res: str, active_pillar: str = "", lang: str = "en") -> 
           <span class="tp-brand-title">Informatico.ai</span>
         </span>
       </a>
-      <nav class="tp-nav" aria-label="Disciplines">
+      <nav class="tp-nav" aria-label="Disciplines" data-aria-en="Disciplines" data-aria-es="Disciplinas">
         {links_html}
       </nav>
       <div class="tp-masthead-tools">
@@ -2239,7 +2239,7 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "", a
       <div class="tp-contents-head">
         <h2 id="tp-contents-title" tabindex="-1" autofocus data-en="Contents" data-es="Contenido">Contents</h2>
         <input id="tp-contents-search" class="tp-contents-search" type="search" autocomplete="off" placeholder="Search {total} essays, 6 bounties, 8 tools &amp; 12 syntheses" aria-label="Search essays, bounties and tools">
-        <button type="button" class="tp-tool-btn tp-contents-close" data-close-contents aria-label="Close contents">Close</button>
+        <button type="button" class="tp-tool-btn tp-contents-close" data-close-contents aria-label="Close contents" data-aria-en="Close contents" data-aria-es="Cerrar contenido" data-en="Close" data-es="Cerrar">Close</button>
       </div>
 {render_contents_sections(rel_res, active_pillar)}
       <p id="tp-contents-empty" class="tp-contents-empty" hidden data-en="No essay matches that search." data-es="Ningún ensayo coincide con la búsqueda.">No essay matches that search.</p>
@@ -6653,6 +6653,7 @@ def render_not_found() -> str:
 
 _VOID_TAGS = frozenset({"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"})
 _URL_ATTR = re.compile(r'(\s)(href|src|data-plate-prefix|data-audio-src|data-audio-src-es)(=(["\']))(.*?)(\4)')
+_ARIA_LABEL_ATTR = re.compile(r'(\saria-label=")[^"]*(")')
 
 
 def _es_shift_url(attr: str, value: str) -> str:
@@ -6672,6 +6673,8 @@ class _SpanishStatic(html.parser.HTMLParser):
 
     - swap: an element carrying both data-en and a non-empty data-es gets data-es as its only text, exactly what
       theme-plate.mjs does in the browser (el.textContent = data-es), so the Spanish is in the HTML itself;
+      an element carrying aria-label and a non-empty data-aria-es gets that as its aria-label (folio-router.mjs
+      does the same in the browser when the language is switched in place);
     - shift: relative file addresses get one more "../" (see _es_shift_url).
     With both off the output equals the input (tests/test_informatico_seo.py checks this on every page)."""
 
@@ -6693,12 +6696,15 @@ class _SpanishStatic(html.parser.HTMLParser):
             if tag not in _VOID_TAGS:
                 self.skip += 1
             return
+        a = dict(attrs)
+        if self.swap and a.get("aria-label") is not None and a.get("data-aria-es"):
+            label_es = html.escape(a["data-aria-es"], quote=True)
+            raw = _ARIA_LABEL_ATTR.sub(lambda m: m.group(1) + label_es + m.group(2), raw, count=1)
         self.out.append(self._start(raw))
         if tag in _VOID_TAGS:
             return
         m = re.match(r"<\s*([^\s/>]+)", raw)
         self.stack.append(m.group(1) if m else tag)
-        a = dict(attrs)
         if self.swap and a.get("data-en") is not None and a.get("data-es"):
             self.out.append(html.escape(a["data-es"], quote=False))
             self.skip = 1

@@ -8,7 +8,10 @@ there was no way to go to a whole section such as Mathematics. What was measured
   answered with its keyboard (the view resized);
 - scrolling the dialog to either end went on to scroll the page behind it, so closing left the reader somewhere
   else on the page;
-- the masthead hides its seven section links at 860px and below, and the dialog did not list them.
+- the masthead hides its seven section links at 860px and below, and the dialog did not list them;
+- the masthead is position: sticky but scrolled away with the page, because html and body both had
+  overflow-x: hidden (which makes body a scroll container), so Contents was reachable only from the top;
+- on Spanish pages the Close button and two names read by screen readers were in English.
 
 Part one reads the built pages with html.parser (no browser): every page with the dialog lists the seven sections,
 in English or Mexican Spanish, each link resolving to a built page, the current one marked as the masthead marks
@@ -92,6 +95,10 @@ class _ContentsMarkup(HTMLParser):
         self.list_heading_id: str | None = None
         self.nav_labelledby: str | None = None
         self.title_attrs: dict[str, str | None] | None = None
+        self.masthead_nav_label: str | None = None
+        self.close_label: str | None = None
+        self.close_text = ""
+        self._in_close = False
         self.focusable_before_title = 0
         self._link: dict | None = None
         self._in_list_heading = False
@@ -110,6 +117,11 @@ class _ContentsMarkup(HTMLParser):
             self.title_attrs = a
         elif in_dialog and self.title_attrs is None and tag in {"a", "button", "input", "select", "textarea"}:
             self.focusable_before_title += 1
+        if tag == "nav" and "tp-nav" in (a.get("class") or "").split():
+            self.masthead_nav_label = a.get("aria-label")
+        if in_dialog and tag == "button" and "data-close-contents" in a:
+            self.close_label = a.get("aria-label")
+            self._in_close = True
         if in_dialog and tag == "nav" and "tp-contents-sections" in (a.get("class") or "").split():
             self.nav_labelledby = a.get("aria-labelledby")
         in_list = in_dialog and self._inside("nav", "tp-contents-sections")
@@ -132,6 +144,8 @@ class _ContentsMarkup(HTMLParser):
             self._link = None
         if tag == "h3":
             self._in_list_heading = False
+        if tag == "button":
+            self._in_close = False
         for i in range(len(self.stack) - 1, -1, -1):
             if self.stack[i][0] == tag:
                 del self.stack[i:]
@@ -142,6 +156,8 @@ class _ContentsMarkup(HTMLParser):
             self._link["text"] += data
         if self._in_list_heading:
             self.list_heading += data
+        if self._in_close:
+            self.close_text += data
 
 
 def _pages_with_contents() -> list[Path]:
@@ -189,6 +205,11 @@ class ContentsSectionListMarkupTests(unittest.TestCase):
                 self.assertIsNotNone(parsed.title_attrs, "dialog heading missing")
                 self.assertIn("autofocus", parsed.title_attrs)
                 self.assertEqual(parsed.title_attrs.get("tabindex"), "-1")
+                # The Close button and the names a screen reader announces are in the page's language.
+                self.assertEqual(parsed.close_text.strip(), "Cerrar" if is_es else "Close")
+                self.assertEqual(parsed.close_label, "Cerrar contenido" if is_es else "Close contents")
+                if parsed.masthead_links:
+                    self.assertEqual(parsed.masthead_nav_label, "Disciplinas" if is_es else "Disciplines")
         self.assertGreater(spanish, 100)
 
     def test_a_section_page_marks_itself(self) -> None:
@@ -246,7 +267,8 @@ class MobileContentsBrowserTests(unittest.TestCase):
     def _page(self, ctx, route: str):
         page = ctx.new_page()
         self.errors: list[str] = []
-        page.on("console", lambda m: self.errors.append(m.text) if m.type == "error" else None)
+        # Script and policy errors count; a media file the loopback server dropped under load does not.
+        page.on("console", lambda m: self.errors.append(m.text) if m.type == "error" and "net::ERR_" not in m.text else None)
         page.on("pageerror", lambda e: self.errors.append(str(e)))
         page.goto(self.base + route, wait_until="load")
         page.wait_for_function(BOUND_JS, timeout=20000)
@@ -256,6 +278,16 @@ class MobileContentsBrowserTests(unittest.TestCase):
         page.locator(OPENER).tap()
         page.wait_for_function("document.getElementById('tp-contents').open")
         page.wait_for_timeout(250)
+
+    def _finger_tap(self, page, selector: str) -> None:
+        """One touch at the element's centre, where it is now. (Playwright's own tap first scrolls its target
+        into view, which moves a page under a sticky masthead by a few pixels; a finger does not.)"""
+        box = page.locator(selector).bounding_box()
+        point = [{"x": box["x"] + box["width"] / 2, "y": box["y"] + box["height"] / 2}]
+        cdp = page.context.new_cdp_session(page)
+        cdp.send("Input.dispatchTouchEvent", {"type": "touchStart", "touchPoints": point})
+        cdp.send("Input.dispatchTouchEvent", {"type": "touchEnd", "touchPoints": []})
+        cdp.detach()
 
     def _touch_scroll(self, page, distance: int) -> None:
         """Finger drags up the middle of the screen (down, for a negative distance), as a phone sends them.
@@ -475,6 +507,88 @@ class MobileContentsBrowserTests(unittest.TestCase):
             state = page.evaluate(STATE_JS)
             self.assertFalse(state["locked"])
             self.assertEqual(set(state["expanded"]), {"false"})
+        finally:
+            ctx.close()
+
+    def test_masthead_stays_on_screen_and_the_page_cannot_scroll_sideways(self) -> None:
+        for name, route, _section, _labels, _heading in PAGES:
+            with self.subTest(page=name):
+                ctx, page = self._phone(route)
+                try:
+                    page.evaluate("window.scrollTo({top: 3000, behavior: 'instant'})")
+                    page.wait_for_timeout(250)
+                    self.assertEqual(page.evaluate(STATE_JS)["scrollY"], 3000)
+                    box = page.locator(OPENER).bounding_box()
+                    self.assertGreaterEqual(box["y"], 0, "the Contents button scrolled off the top")
+                    self.assertLessEqual(box["y"] + box["height"], 80)
+                    self.assertGreaterEqual(box["x"], 0)
+                    self.assertLessEqual(box["x"] + box["width"], 375)
+                    self.assertEqual(page.locator(".tp-masthead").evaluate("(m) => Math.round(m.getBoundingClientRect().top)"), 0)
+                    # The button is the top thing at its own centre, not covered by the page.
+                    on_top = page.evaluate(
+                        "([x, y]) => !!document.elementFromPoint(x, y).closest('[data-open-contents]')",
+                        [box["x"] + box["width"] / 2, box["y"] + box["height"] / 2],
+                    )
+                    self.assertTrue(on_top)
+                    # No sideways scroll: not by the layout, not by script, not by a finger.
+                    sideways = page.evaluate(
+                        """() => { const r = document.documentElement, b = document.body;
+                             window.scrollTo({left: 400, top: 3000, behavior: 'instant'}); b.scrollLeft = 400;
+                             return [Math.max(r.scrollWidth, b.scrollWidth), window.scrollX, b.scrollLeft]; }"""
+                    )
+                    self.assertEqual(sideways, [375, 0, 0])
+                    # A finger on the button, 3000px down the page, opens Contents; closing leaves the page there.
+                    self._finger_tap(page, OPENER)
+                    page.wait_for_function("document.getElementById('tp-contents').open", timeout=5000)
+                    page.wait_for_timeout(250)
+                    self.assertEqual(page.evaluate(STATE_JS)["scrollY"], 3000)
+                    page.keyboard.press("Escape")
+                    page.wait_for_function("!document.getElementById('tp-contents').open")
+                    page.wait_for_timeout(150)
+                    closed = page.evaluate(STATE_JS)
+                    self.assertEqual(closed["scrollY"], 3000)
+                    self.assertTrue(closed["activeIsOpener"])
+                    self.assertEqual(page.locator(".tp-masthead").evaluate("(m) => Math.round(m.getBoundingClientRect().top)"), 0)
+                    self.assertEqual(self.errors, [])
+                finally:
+                    ctx.close()
+
+    def test_masthead_stays_on_screen_on_desktop(self) -> None:
+        ctx = self.browser.new_context(viewport={"width": 1280, "height": 800})
+        try:
+            for route in ("", "math/m01/"):
+                with self.subTest(route=route):
+                    page = self._page(ctx, route)
+                    page.evaluate("window.scrollTo({top: 3000, behavior: 'instant'})")
+                    page.wait_for_timeout(250)
+                    self.assertEqual(page.locator(".tp-masthead").evaluate("(m) => Math.round(m.getBoundingClientRect().top)"), 0)
+                    self.assertTrue(page.locator(".tp-masthead .tp-nav a[data-tp-nav='math']").is_visible())
+                    page.close()
+        finally:
+            ctx.close()
+
+    def test_spanish_pages_name_the_controls_in_spanish(self) -> None:
+        # (route, Close text, Close name, masthead list name): the Spanish address, the in-place switch, English.
+        cases = (
+            ("es-mx/math/", "Cerrar", "Cerrar contenido", "Disciplinas"),
+            ("math/?lang=es", "Cerrar", "Cerrar contenido", "Disciplinas"),
+            ("math/", "Close", "Close contents", "Disciplines"),
+        )
+        ctx = self.browser.new_context(viewport={"width": 1280, "height": 800})
+        try:
+            for route, close_text, close_name, list_name in cases:
+                with self.subTest(route=route):
+                    page = self._page(ctx, route)
+                    page.wait_for_timeout(300)
+                    self.assertEqual(page.get_by_role("navigation", name=list_name, exact=True).count(), 1)
+                    page.locator(OPENER).click()
+                    page.wait_for_function("document.getElementById('tp-contents').open")
+                    close = page.get_by_role("button", name=close_name, exact=True)
+                    self.assertEqual(close.count(), 1)
+                    self.assertEqual(close.inner_text().strip(), close_text)
+                    close.click()
+                    page.wait_for_function("!document.getElementById('tp-contents').open")
+                    page.close()
         finally:
             ctx.close()
 

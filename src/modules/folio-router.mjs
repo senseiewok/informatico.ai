@@ -127,8 +127,18 @@ export function initFolioRouter() {
     );
   }
 
+  // Names that are not visible text (the masthead list, the Close button) follow the language too.
+  function syncAriaLabels(isEs) {
+    document.querySelectorAll("[data-aria-en][data-aria-es]").forEach((el) => {
+      el.setAttribute("aria-label", el.getAttribute(isEs ? "data-aria-es" : "data-aria-en"));
+    });
+  }
+
   window.addEventListener("tp-lang-change", (ev) => {
-    syncSearchLabels(Boolean(ev && ev.detail && ev.detail.isEs));
+    const isEs = Boolean(ev && ev.detail && ev.detail.isEs);
+    syncSearchLabels(isEs);
+    syncAriaLabels(isEs);
   });
   syncSearchLabels(document.documentElement.lang === "es-MX");
+  syncAriaLabels(document.documentElement.lang === "es-MX");
 }
