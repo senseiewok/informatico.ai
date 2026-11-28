@@ -1951,7 +1951,7 @@ def render_essay_page(essay: dict, essays: list[dict], catalog: dict, lang: str 
     return f"""{head}
 <body class="tp-body tp-page-folio tp-page-cross-essay">
 {B.render_masthead(rel_res, "physics", lang)}
-{B.render_contents_dialog(rel_res, catalog, slug)}
+{B.render_contents_dialog(rel_res, catalog, slug, active_pillar="physics")}
   <main id="main" class="tp-shell" tabindex="-1">
     <nav class="tp-breadcrumb-bar" aria-label="{aria_crumb}">
       <ol class="tp-breadcrumb-list">
@@ -2081,7 +2081,7 @@ def render_essays_hub(essays: list[dict], catalog: dict, lang: str = "en") -> st
     return f"""{head}
 <body class="tp-body tp-page-hub">
 {B.render_masthead(rel_res, "physics", lang)}
-{B.render_contents_dialog(rel_res, catalog)}
+{B.render_contents_dialog(rel_res, catalog, active_pillar="physics")}
   <main id="main" class="tp-shell" tabindex="-1">
     <nav class="tp-breadcrumb-bar" aria-label="{aria_crumb}">
       <ol class="tp-breadcrumb-list">

@@ -756,7 +756,7 @@ def render_page(catalog: dict, lang: str = "en") -> str:
     return f"""{head}
 <body class="tp-body tp-page-folio cc-page cc-page-mini">
 {B.render_masthead(rel, "engineering", lang)}
-{B.render_contents_dialog(rel, catalog, C.SLUG)}
+{B.render_contents_dialog(rel, catalog, C.SLUG, active_pillar="engineering")}
 {render_parade()}
   <main id="main" class="tp-shell cc-shell" tabindex="-1">
     <nav class="tp-breadcrumb-bar" aria-label="{aria_crumb}">
