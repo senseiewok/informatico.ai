@@ -5939,8 +5939,8 @@ def render_cover_rotating_spotlight_and_schedule(rel_res: str = ".") -> str:
 
     slides_block = "\n".join(slides_html)
     coming_block = "\n".join(coming_html)
-    note_en = "A different essay is featured here each week. These are already on the site, so you can read ahead."
-    note_es = "Cada semana destacamos aquí un ensayo distinto. Estos ya están en el sitio, así que puedes adelantarte."
+    note_en = "A different essay is featured here each week. These three are next in line and already on the site."
+    note_es = "Cada semana destacamos aquí un ensayo distinto. Estos tres son los siguientes y ya están en el sitio."
 
     return f"""    <section class="tp-featured-edition-desk tp-this-week" id="tp-featured-edition-desk" aria-labelledby="tp-featured-desk-heading">
       <div class="tp-this-week-grid">
@@ -5949,7 +5949,7 @@ def render_cover_rotating_spotlight_and_schedule(rel_res: str = ".") -> str:
 {slides_block}
         </div>
         <aside class="tp-coming-next" aria-labelledby="tp-coming-next-heading">
-          <h2 id="tp-coming-next-heading" class="tp-this-week-label" data-en="Coming next" data-es="Lo que sigue">Coming next</h2>
+          <h2 id="tp-coming-next-heading" class="tp-this-week-label" data-en="Read next" data-es="Para leer después">Read next</h2>
           <ul class="tp-coming-list">
 {coming_block}
           </ul>

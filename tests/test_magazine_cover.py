@@ -322,7 +322,7 @@ class ThisWeekTests(unittest.TestCase):
             desk = page(rel).by_id("tp-featured-edition-desk")
             self.assertIsNotNone(desk, rel)
             headings = [(h.attrs["data-en"], h.attrs["data-es"]) for h in desk.find_all("h2")]
-            self.assertEqual(headings, [("This week’s essay", "El ensayo de la semana"), ("Coming next", "Lo que sigue")], rel)
+            self.assertEqual(headings, [("This week’s essay", "El ensayo de la semana"), ("Read next", "Para leer después")], rel)
             self.assertFalse(desk.find_all("code"), f"{rel}: a formula or code on the cover feature")
             self.assertFalse(desk.find_all("button"), f"{rel}: rotation controls on the cover feature")
             for cls in ("tp-spotlight-pill", "tp-spotlight-badge", "tp-spotlight-law", "tp-release-item", "tp-spotlight-counter"):
