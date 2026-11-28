@@ -13,8 +13,8 @@ FOLIO = {'folio_id': 'E.06',
  'title': 'Nonlinear Structural Dynamics, ASCE 7-22 Inelastic Response Spectra & Seismic '
           'Base-Isolation Dampers',
  'subtitle': "How Maurice Biot's earthquake spectra, Newmark–Hall inelastic ductility, and William "
-             "Robinson's bilinear lead-rubber seismic isolators help decouple hospitals and "
-             'laboratories from ground motion.',
+             "Robinson's lead-rubber bearings are meant to reduce how much ground motion reaches "
+             'a building. An explanation, not a design method.',
  'date_published': '2026-11-01',
  'date_redated': '2026-11-14',
  'current_edition': 'REV 1.2',
@@ -58,11 +58,10 @@ FOLIO = {'folio_id': 'E.06',
               {'label': 'Model Verdict', 'value': 'WITHIN ASSUMED MOAT · NOT A CODE CHECK'}],
  'spec_plate': {'division': 'CSI MASTERFORMAT 13 48 00 / ASCE 7-22 CH. 17',
                 'title': 'Lead-Rubber Bearing (LRB) Seismic Isolation System',
-                'body': 'Illustrative design sketch, not a project specification: elastomeric '
-                        'base isolation bearings with a cylindrical lead core for an essential '
-                        'healthcare building, with design targets T_M ≈ 2.85 s and equivalent '
-                        'viscous damping of about 20% or more.',
-                'meta': 'Design sketch · ASCE/SEI 7-22 Chapter 17 requires prototype testing of '
+                'body': 'Illustration only, not a project specification or design method: '
+                        'elastomeric bearings with a cylindrical lead core under a hospital, '
+                        'using this page\'s assumed T_M = 2.85 s and β_eff = 22%.',
+                'meta': 'Illustration · ASCE/SEI 7-22 Chapter 17 requires prototype testing of '
                         'isolators; none was done for this page'},
  'sidenote_1': {'kicker': 'SIDENOTE E.06-A · DAMPING FACTOR B_M & DISPLACEMENT',
                 'body': 'In the damping-factor table used for isolated structures, B_M = 1.0 at '
@@ -72,15 +71,20 @@ FOLIO = {'folio_id': 'E.06',
                         'standard for the exact table and which spectral value it uses.'},
  'sidenote_2': {'kicker': 'SIDENOTE E.06-B · SPECIFICATION PLATE · CSI 13 48 00 (SEISMIC '
                           'ISOLATION)',
-                'body': 'Design sketch of a 950 mm diameter lead-rubber bearing (170 mm lead '
-                        'core, 32 natural rubber layers, Q_d = 185 kN, k_d = 1.45 kN/mm). These '
-                        'are illustrative values; no bearing was built or tested.'},
+                'body': 'Illustrative values for a 950 mm diameter lead-rubber bearing (170 mm '
+                        'lead core, 32 natural rubber layers, Q_d = 185 kN, k_d = 1.45 kN/mm). No '
+                        'bearing was built or tested, the page does not compute these values, '
+                        'and none may be used on a real structure.'},
  'skill': {'filename': 'asce7-seismic-base-isolation-SKILL.md',
            'name': 'asce7-seismic-base-isolation',
            'description': 'AI-agnostic structural dynamics and earthquake engineering skill for '
                           'ASCE 7-22 Chapter 17 seismic base isolation, bilinear lead-rubber '
-                          'bearing hysteresis, and inelastic response spectra.',
-           'rules': ['Compute secant isolator stiffness k_eff = Q_d / D_M + k_d and effective '
+                          'bearing hysteresis, and inelastic response spectra. Explanation, not a '
+                          'design method; none of its numbers may be used on a real structure.',
+           'rules': ['Explanation, not a design method: none of this folio\'s assumed numbers '
+                     '(T_M = 2.85 s, beta_eff = 22%, B_M = 1.54, D_M = 276 mm, C_s = 0.137, the '
+                     '400 mm moat, the bearing dimensions) may be used on a real structure.',
+                     'Compute secant isolator stiffness k_eff = Q_d / D_M + k_d and effective '
                      'isolated period T_M = 2 * pi * sqrt(W / (g * k_eff)).',
                      'Evaluate bilinear hysteretic loop energy E_loop = 4 * Q_d * (D_M - D_y), '
                      'equivalent viscous damping beta_eff = E_loop / (2 * pi * k_eff * D_M^2), and '
@@ -153,67 +157,43 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'describe that one standard, not this folio.'},
  'act1_title': "Act I — From Maurice Biot's Response Spectrum to William Robinson's Lead-Rubber "
                'Seismic Isolator',
- 'act1_dropcap': 'In his 1932 doctoral work at Caltech, the Belgian-born engineer Maurice '
-                 'Anthony Biot introduced the idea behind the earthquake response spectrum: a '
-                 'curve showing how strongly simple structures with different natural periods '
-                 'respond to a given ground motion. Later work, including Newmark and Hall\'s, '
-                 'built design spectra that allow buildings to survive strong shaking by yielding '
-                 'into the inelastic range, which protects lives but can leave the building and '
-                 'its contents badly damaged. In New Zealand in the 1970s the physicist William '
-                 'Robinson developed the lead-rubber bearing: layers of rubber and steel around a '
-                 'central lead core, which he described in a 1982 paper (DOI '
-                 '10.1002/eqe.4290100408). Placed beneath a building, such bearings lengthen its '
-                 'period and dissipate energy as the lead yields.',
- 'act1_plain_bridge': 'Imagine riding a crowded subway car when the train suddenly hits the brakes '
-                      'and jerks violently. If you stand with your knees locked and your body '
-                      'rigid, the sudden jolt knocks you off your feet. But if you relax, bend '
-                      'your knees, and let your feet glide on roller skates, the floor can jerk '
-                      'violently underneath you while your upper body remains perfectly upright '
-                      'and calm. Seismic base isolation protects modern buildings in that exact '
-                      'same way. Instead of bolting a hospital or laboratory rigidly to the rock, '
-                      'engineers set the entire building on giant flexible rubber and lead pads. '
-                      'When an earthquake strikes, the ground thrashes furiously beneath the '
-                      'foundation pads. The soft pads stretch and the lead inside bends smoothly, '
-                      'absorbing the shock like heavy-duty shock absorbers. The building above '
-                      'gently glides in place, keeping surgical rooms, delicate computers, and '
-                      'medicine pipelines safe.',
- 'act1_body': 'For acute-care hospitals, emergency trauma centers, semiconductor cleanrooms, and '
-              'high-containment biomedical laboratories, allowing structural columns to yield '
-              'during an earthquake is unacceptable. Inter-story drift shatters pressurized '
-              'medical gas pipelines, misaligns delicate laser equipment, and forces immediate '
-              'facility evacuation even when structural collapse is avoided. Under ASCE/SEI 7-22 '
-              'Chapter 17 (DOI 10.1061/9780784415788), seismic base isolation solves this '
-              'fundamental vulnerability by inserting laminated elastomeric Lead-Rubber Bearings '
-              'beneath the superstructure. These bearings lengthen the fundamental period from '
-              'a fraction of a second to a few seconds (2.85 s on this page), moving the '
-              'building away from the periods where typical ground motions are strongest. At the '
-              'same time, the lead core yields in shear and dissipates energy in bilinear '
-              'hysteresis loops. In this page\'s model, those two effects lower the design base '
-              'shear coefficient from 0.92 to 0.137, about 85%. How much a real building\'s '
-              'floor accelerations drop depends on the building and the earthquake, and staying '
-              'operational also depends on non-structural design.',
- 'act1_stakes': 'When structural designers rely on conventional fixed-base ductility assumptions '
-                'for critical facilities, the consequences during severe earthquakes can be '
-                'disastrous. While reinforced concrete shear walls may prevent catastrophic '
-                'building collapse, the violent inter-story drift and extreme floor accelerations '
-                'ruin interior infrastructure. Heavy ceiling grids drop, fire sprinkler pipes '
-                'rupture, emergency backup generators rip from their anchor bolts, and delicate '
-                'surgical equipment can be thrown about. Hospitals can be forced to close after '
-                'an earthquake because of non-structural damage even when the structure stands. '
-                'Base isolation aims higher than collapse prevention: it seeks to keep the '
-                'building usable, though no design guarantees that. Codes for isolated '
-                'buildings require the isolators to be tested and the design to show that '
-                'displacements stay within the moat clearance. By reducing the shaking passed '
-                'to the building, isolation lowers the risk of costly shutdowns for hospitals '
-                'and production facilities.',
- 'pullquote': '"Instead of fighting the earthquake with brute-force stiffness that amplifies floor '
-              'accelerations, seismic base isolation decouples the superstructure from the ground '
-              'and shifts the building out of harm\'s resonant frequency band."',
+ 'act1_dropcap': 'In 1932 Maurice Biot introduced the earthquake response spectrum: a curve '
+                 'showing how strongly simple structures with different natural periods respond '
+                 'to a given ground motion. Newmark and Hall\'s 1982 monograph Earthquake Spectra '
+                 'and Design set out design spectra for structures that are allowed to yield. In '
+                 'the same year William Robinson reported tests of lead-rubber bearings, which '
+                 'by then had been used in New Zealand; he described a unit that gives vertical load support, horizontal '
+                 'flexibility and energy absorption (DOI 10.1002/eqe.4290100408).',
+ 'act1_plain_bridge': 'Picture standing in a subway car that brakes hard. With locked knees the '
+                      'jolt throws you; with bent knees the floor moves under you and your body '
+                      'moves less. Base isolation gives a building something like bent knees: it '
+                      'sits on rubber-and-lead bearings that are stiff under its weight and soft '
+                      'sideways, so the ground can move more beneath it while the floors above '
+                      'move less. How much less depends on the building and the earthquake.',
+ 'act1_body': 'For a hospital or laboratory, staying usable after an earthquake takes more than '
+              'a frame that stays up: equipment, pipes and ceilings have to come through too. '
+              'ASCE/SEI 7-22 Chapter 17 (DOI 10.1061/9780784415788) sets requirements for '
+              'buildings placed on seismic isolators. On this page the bearings lengthen an '
+              'assumed fixed-base period of 0.65 s to 2.85 s, which moves the building further '
+              'along the falling (1/T) branch of the design spectrum, and the lead core dissipates energy in '
+              'bilinear hysteresis loops. In this page\'s model those two effects lower the base '
+              'shear coefficient from 0.92 to 0.137, about 85%. This folio is an explanation, '
+              'not a design method, and none of its numbers may be used on a real structure. '
+              'How much a real building\'s floor accelerations drop depends on the building and '
+              'the earthquake, and staying operational also depends on non-structural design.',
+ 'act1_stakes': 'A building designed to yield can avoid collapse and still be unusable. In this '
+                'page\'s model the fixed-base frame sees a spectral acceleration of 0.92 g; the '
+                'isolated one sees 0.21 g before damping is counted. Isolation aims to keep the '
+                'building usable, though no design guarantees that. ASCE/SEI 7-22 Chapter 17 '
+                'requires the isolators to be tested and the design to show that displacements '
+                'stay within the moat clearance; this page did neither.',
+ 'pullquote': '"Isolation does not make the ground move less. It lets the ground move beneath the '
+              'building, so the floors above can move less."',
  'chronology': [('1932',
-                 'Maurice Biot introduces the mechanical earthquake response spectrum at Caltech.'),
+                 'Maurice Biot introduces the earthquake response spectrum.'),
                 ('1982',
-                 'William H. Robinson publishes the lead-rubber bearing, developed in New Zealand '
-                 'in the 1970s (DOI 10.1002/eqe.4290100408).'),
+                 'William H. Robinson reports tests of lead-rubber bearings already in use in New '
+                 'Zealand (DOI 10.1002/eqe.4290100408).'),
                 ('1982',
                  'Nathan Newmark & William Hall codify inelastic design response spectra and '
                  'equal-displacement ductility rules.'),
@@ -228,31 +208,23 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'you while your upper body remains steady, calm, and upright. Seismic base '
                  'isolation gives a building flexible knees, letting the ground move a great '
                  'deal below while the floors above move much less.',
- 'act2_plain_primer': 'To see how engineers protect buildings during a major earthquake, our model '
-                      'gives you two primary controls that govern structural response. The first '
-                      'control is the Design Spectral Acceleration, which represents the raw '
-                      'intensity and violence of the earthquake ground shaking. Turning this dial '
-                      'up simulates a more severe, near-fault tectonic rupture that violently '
-                      'accelerates the ground beneath the foundation. The second control is the '
-                      'Effective Hysteretic Damping, which represents the energy-absorbing '
-                      'capability of the lead core inside the rubber bearings. Raising this '
-                      'damping dial simulates inserting a thicker lead plug that plastically '
-                      'deforms during shaking, acting like a heavy brake that absorbs shock '
-                      'energy. Balancing these two controls demonstrates how base isolation '
-                      'shields the superstructure: even when ground shaking intensity rises to '
-                      'extreme levels, increasing the internal hysteretic damping curbs lateral '
-                      'sway and keeps building motion within safe clearance boundaries.',
+ 'act2_plain_primer': 'The model has two controls. Design Spectral Acceleration S_DS sets how '
+                      'strong the design ground shaking is. Effective damping β_eff sets how much '
+                      'energy the bearings dissipate each cycle; on this page it is a slider '
+                      'value, not computed from a bearing. Raise S_DS and the isolator '
+                      'displacement D_M grows in proportion; raise β_eff and the damping factor '
+                      'B_M rises, so D_M shrinks. The readout says whether D_M stays inside an '
+                      'assumed 400 mm moat. It is a model check, not a code check.',
  'distill_diagram': {'analogy_title': 'Subway Rider Knees & Seismic Bearings',
-                     'analogy_sub': 'Flexible bearings let ground jerk while the superstructure '
-                                    'rests.',
+                     'analogy_sub': 'Flexible bearings let the ground move while the floors above '
+                                    'move less.',
                      'force_a_title': 'Spectral Acceleration (S_DS)',
-                     'force_a_sub': 'Tectonic ground shaking intensity driving base motion.',
+                     'force_a_sub': 'Design ground-shaking intensity.',
                      'force_b_title': 'Hysteretic Damping (β_eff)',
                      'force_b_sub': 'Plastic shear yield in lead core absorbing seismic energy.',
                      'threshold_title': 'Isolation Moat Clearance Limit',
-                     'threshold_pass': 'Isolated Motion: Drift and floor accelerations suppressed.',
-                     'threshold_fail': 'Moat Impact: Excessive displacement strikes retaining '
-                                       'moat.'},
+                     'threshold_pass': 'Within model: D_M inside the assumed 400 mm moat.',
+                     'threshold_fail': 'Outside model: D_M exceeds the assumed 400 mm moat.'},
  'act2_intuition': 'A base-isolated structure obeys the coupled nonlinear matrix equation of '
                    'motion M * u_ddot + C * u_dot + F_s(u, u_dot) = -M * r * u_ddot_g(t), where '
                    'F_s(u) represents the bilinear restoring force across the isolation plane: '
@@ -263,33 +235,28 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'increases the ASCE 7-22 damping multiplier B_M, reducing spectral displacement '
                    'D_M. With the page assumptions (S_D1 = 0.60 g, T_M = 2.85 s, B_M = 1.54), D_M = '
                    '9.81 × 0.60 × 2.85 / (4π² × 1.54) m = 276 mm and C_s = 0.60 / (2.85 × 1.54) = '
-                   '0.137. These are equivalent-linear estimates; a real design would also run '
-                   'nonlinear response-history analyses, which a reader could set up with a '
-                   'structural or finite-element package such as FEniCS/dolfinx (one of its '
-                   'method papers: DOI 10.1145/3524456). None was run for this folio.',
- 'act2_deepening': 'The nonlinear response of lead-rubber bearings involves intimate coupling '
-                   'between mechanical kinematics and thermodynamics. During cyclic lateral '
-                   'displacement, alternating elastomeric layers provide high vertical stiffness '
-                   'to support building gravity loads while maintaining low horizontal shear '
-                   'stiffness. Within the central cylindrical cavity, the solid lead plug '
-                   'undergoes severe plastic shear strain exceeding one hundred percent. Because '
-                   'lead recrystallizes dynamically at ambient temperatures, it can endure '
-                   'hundreds of large-amplitude cyclic reversals without work-hardening or brittle '
-                   'fatigue failure. However, the plastic work dissipated during severe ground '
-                   'shaking converts directly into internal heat. Under repeated large cycles the '
-                   'lead core heats up, which lowers its characteristic strength Q_d and the '
-                   'energy dissipated per cycle; tests reported in the literature have recorded '
-                   'core temperatures well above 100 °C (reviewed by Yang et al. 2026, Polymers, '
-                   'DOI 10.3390/polym18111306). Nonlinear response-history models can include '
-                   'this heating along with P-Delta effects, and designers check that the rubber '
-                   'provides enough restoring force for the building to recenter, limiting '
-                   'permanent offsets.',
+                   '0.137. Two assumptions sit in these formulas: S_D1 = 0.60 S_DS is this '
+                   'page\'s choice, and the standard states which spectral value enters D_M, so '
+                   'take it from the current edition; C_s = S_D1 / (T_M B_M) is this page\'s '
+                   'simplification, not the standard\'s base-shear procedure. These are '
+                   'equivalent-linear estimates; a real design would also run nonlinear '
+                   'response-history analyses. None was run for this folio.',
+ 'act2_deepening': 'Robinson (1982) tested lead-rubber bearings and found that the lead behaved '
+                   'roughly as an elastic-plastic solid, with a shear yield stress of about 10.5 '
+                   'MPa (DOI 10.1002/eqe.4290100408). The plastic work of yielding turns into '
+                   'heat. Yang et al. (2026, DOI 10.3390/polym18111306) tested full-scale '
+                   'bearings and found that in the first cycles the characteristic strength and '
+                   'the energy dissipated per cycle drop markedly; they also cite earlier '
+                   'experiments reporting lead-core temperatures of 150–200 °C under cyclic '
+                   'shear. Nonlinear response-history models can include this heating. This '
+                   'page\'s equivalent-linear model does not.',
  'walkthrough': ['Experiment 1 (Spectral Acceleration Demand): Increase Design Spectral '
-                 'Acceleration S_DS from 0.60 g to 1.60 g. Watch isolator displacement D_M and '
-                 'base shear ratio V_b/W update live while the bilinear hysteresis loop expands.',
+                 'Acceleration S_DS from 0.60 g to 1.60 g. D_M grows in proportion to S_DS; at '
+                 '22% damping it passes the assumed 400 mm moat from S_DS = 1.45 g (D_M = 400.1 '
+                 'mm), and the readout changes to EXCEEDS ASSUMED MOAT.',
                  'Experiment 2 (Supplemental Hysteretic Damping): Increase Effective Damping Ratio '
-                 'beta_eff from 8% to 28%. Observe the ASCE 7-22 damping factor B_M climb, '
-                 'suppressing isolator drift D_M within the 400 mm moat clearance.',
+                 'beta_eff from 8% to 28%. The damping factor B_M rises from 1.12 to 1.66 and '
+                 'D_M falls in proportion.',
                  'Experiment 3 (4-Stage Dynamic Stepper): Click Stages 1 to 4 to trace fixed-base '
                  'resonance amplification, LRB period lengthening, lead-core plastic hysteresis, '
                  'and the model displacement and base-shear check (not a code check).'],
@@ -310,14 +277,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'and residual offsets soon after shaking stops. Such estimates could help '
                    'engineers decide where to inspect first; they would not replace inspection '
                    'or a decision by a qualified engineer about whether a building is safe to '
-                   'use. Engineers also review long-term rubber aging against design '
-                   'tolerances. Open research frontiers explore semi-active magnetorheological '
-                   'dampers and shape-memory alloy tendons that dynamically adjust their restoring '
-                   'stiffness based on real-time earthquake frequency signatures. By unifying '
-                   'automated real-time structural health monitoring with robust mechanical '
-                   'isolation systems, civil engineers aim to help medical and technological '
-                   'facilities keep working after strong earthquakes, while accepting that no '
-                   'system removes the risk.',
+                   'use. No system removes the risk.',
  'sources': ['ASCE/SEI 7-22 (2022). Minimum Design Loads and Associated Criteria for Buildings and '
              'Other Structures, Chapter 17: Seismic Design Requirements for Seismically Isolated '
              'Structures. American Society of Civil Engineers. DOI: 10.1061/9780784415788.',
@@ -381,8 +341,8 @@ PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a Lead-Rubber B
 DISPATCH = {'kicker': 'FRONTIER SEISMIC DISPATCH · ASCE/SEI 7-22 MULTI-PERIOD SPECTRA & LRB ISOLATION',
  'headline': 'ASCE 7-22 Chapter 17 Multi-Period MCE_R Spectra & Bilinear Lead-Rubber Hospital '
              'Isolation',
- 'body': "Building on Maurice Biot's 1932 response spectrum and William Robinson's lead-rubber "
-         'bearing (1982, DOI 10.1002/eqe.4290100408), ASCE/SEI 7-22 (DOI 10.1061/9780784415788) '
+ 'body': "Building on Maurice Biot's 1932 response spectrum and William Robinson's tests of "
+         'lead-rubber bearings (1982, DOI 10.1002/eqe.4290100408), ASCE/SEI 7-22 (DOI 10.1061/9780784415788) '
          'sets requirements for seismically isolated structures in its Chapter 17. In this '
          "page's equivalent-linear model, isolating a building at T_M = 2.85 s with 22% damping "
          'lowers the base shear coefficient from 0.92 to 0.137.'}
@@ -393,34 +353,28 @@ META_3D = ('ASCE 7-22 Lead-Rubber Isolator Hysteretic Bowl',
 ES_TRANSLATION = {'title_es': 'Dinámica Estructural No Lineal, Espectros Inelásticos ASCE 7-22 y Aisladores '
              'Sísmicos de Base',
  'subtitle_es': 'Cómo los espectros sísmicos de Maurice Biot, la ductilidad inelástica de '
-                'Newmark–Hall y los aisladores bilineales de plomo-caucho de William Robinson '
-                'desacoplan hospitales y laboratorios del movimiento telúrico.',
+                'Newmark–Hall y los aisladores de plomo y caucho de William Robinson buscan '
+                'reducir el movimiento del suelo que llega a un edificio. Una explicación, no un '
+                'método de diseño.',
  'why_es': 'Viajar de pie con las rodillas rígidas en el metro te derriba al primer frenazo, '
            'mientras que flexionar las piernas sobre rodamientos permite que el piso se mueva '
            'debajo de ti manteniendo estable el torso.',
- 'plain_es': 'En su trabajo doctoral de 1932 en Caltech, el ingeniero de origen belga Maurice '
-             'Anthony Biot introdujo la idea del espectro de respuesta sísmica: una curva que '
+ 'plain_es': 'En 1932 Maurice Biot introdujo el espectro de respuesta sísmica: una curva que '
              'muestra cuánto responden estructuras sencillas con distintos periodos naturales a '
-             'un mismo movimiento del suelo. En la década de 1970, el físico William Robinson '
-             'desarrolló en Nueva Zelanda los aisladores de plomo y caucho, que describió en un '
-             'artículo de 1982. Para comprender cómo funcionan en la vida cotidiana, imaginen '
-             'viajar de pie en el metro: si mantienen las piernas rígidas, un frenazo brusco los '
-             'derribará fácilmente; pero si flexionan las rodillas o usan patines, el piso puede '
-             'moverse bruscamente debajo de ustedes mientras su torso permanece tranquilo. Los '
-             'aisladores sísmicos actúan exactamente como esas rodillas flexibles. En lugar de '
-             'anclar un hospital directamente a la roca, los ingenieros colocan grandes '
-             'almohadillas de caucho con un núcleo de plomo en la base. Durante un sismo, el suelo '
-             'tiembla con violencia, pero el edificio se mueve mucho menos.',
- 'deep_es': 'El aislamiento sísmico de base protege las estructuras al desacoplar el edificio del '
-            'suelo mediante dos mecanismos combinados: el alargamiento del periodo fundamental y '
-            'la disipación histerética de energía. Al intercalar capas elásticas de caucho con '
-            'placas de acero, el periodo natural se desplaza desde la zona destructiva de '
-            'resonancia hacia frecuencias mucho más lentas y seguras. Simultáneamente, el núcleo '
-            'central de plomo se deforma plásticamente durante el sismo, absorbiendo energía '
-            'telúrica en ciclos de histéresis bilineal. En el modelo equivalente lineal de esta '
-            'página, el coeficiente de cortante basal baja de 0.92 a 0.137 y el desplazamiento '
-            'del aislador es de 276 mm. En la ingeniería estructural, este comportamiento se '
-            'analiza además con simulaciones no lineales para comprobar que el desplazamiento se '
-            'mantenga dentro de la junta perimetral. El aislamiento ayuda a que hospitales y '
-            'laboratorios sigan funcionando tras un sismo fuerte, aunque ningún sistema elimina '
-            'el riesgo.'}
+             'un mismo movimiento del suelo. En 1982 William Robinson reportó pruebas de '
+             'aisladores de plomo y caucho que ya se usaban en Nueva Zelanda. Imaginen viajar de '
+             'pie en el metro: con las piernas rígidas, un frenazo los derriba; con las rodillas '
+             'flexionadas, el piso se mueve debajo y el cuerpo se mueve menos. Los aisladores '
+             'dan al edificio algo parecido a esas rodillas: son rígidos bajo su peso y '
+             'flexibles en dirección horizontal, así que el suelo puede moverse más abajo mientras los pisos de arriba se '
+             'mueven menos. Esta página explica la idea; no es un método de diseño, y ninguno de '
+             'sus números puede usarse en una estructura real.',
+ 'deep_es': 'En el modelo de esta página, los apoyos alargan un periodo supuesto de 0.65 s a '
+            '2.85 s, lo que lleva al edificio más adelante en la rama descendente (1/T) del '
+            'espectro de diseño, y el '
+            'núcleo de plomo disipa energía en ciclos de histéresis bilineal. Con esos dos '
+            'efectos, el coeficiente de cortante basal baja de 0.92 a 0.137 y el desplazamiento '
+            'del aislador es de 276 mm, dentro de una junta supuesta de 400 mm. Es una '
+            'estimación equivalente lineal: no se corrió ningún análisis no lineal ni se revisó '
+            'el diseño contra ASCE/SEI 7-22. El aislamiento busca que hospitales y laboratorios '
+            'sigan funcionando tras un sismo fuerte, aunque ningún sistema elimina el riesgo.'}
