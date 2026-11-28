@@ -5429,7 +5429,7 @@
         ],
         "steps": [
           "Stage 1 (Small Doubling Hypothesis): A subset A ⊂ F_2^n satisfies |A + A| ≤ K|A|, indicating hidden approximate subgroup structure.",
-          "Stage 2 (Ruzsa Entropic Triangle Inequality): Defines entropic distance d(X, Y) = H(X - Y') - (H(X) + H(Y'))/2 and evaluates submodularity bounds.",
+          "Stage 2 (Ruzsa Entropic Triangle Inequality): Defines entropic distance d(X, Y) = H(X - Y') - (H(X) + H(Y'))/2, where Y' is an independent copy of Y.",
           "Stage 3 (Tau-Minimizer): The proof studies a minimizer of an entropic functional τ and uses it to show that d(X, U_H) is small for the uniform distribution U_H on a subgroup H. This page's slider is a simplified picture of that step, not the paper's argument.",
           "Stage 4 (Polynomial Coset Covering): The theorem, as stated in the README of the Lean project, says A is covered by at most 2·K^12 cosets of a subspace H of size at most |A|. Separately, the Equational Theories project concerns 4,694 × 4,693 = 22,028,942 ordered pairs of magma laws."
         ],
@@ -5473,7 +5473,7 @@
           {
             "edition": "REV 1.2",
             "date": "2026-11-14",
-            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. The opening scene of Marton in a Budapest office in 1998, the claim that the Lean formalization took 21 days, and the claim that all 22,028,942 magma law pairs are resolved in a machine-checked graph are removed: the project READMEs do not say these things. The page now reports what the two READMEs state and that this site did not check them. The number 22,028,942 is stated correctly as 4,694 × 4,693 ordered pairs (not 4,694²). The links to data compression and encryption, the reference to anthropics/formal-math as part of these projects, and the AAV and lipid-nanoparticle passage are removed; the Cystic Fibrosis comparison is a labelled analogy.",
+            "summary": "REV 1.2 (Redated 2026-11-14): Grounding revision. The opening scene of Marton in a Budapest office in 1998, the claim that the Lean formalization took 21 days, and the claim that all 22,028,942 magma law pairs are resolved in a machine-checked graph are removed: the project READMEs do not say these things. The page now reports what the two READMEs state and that this site did not check them. The number 22,028,942 is stated correctly as 4,694 × 4,693 ordered pairs (not 4,694²). The links to data compression and encryption, the reference to anthropics/formal-math as part of these projects, and the AAV and lipid-nanoparticle passage are removed; the Cystic Fibrosis comparison is a labeled analogy.",
             "opus": "Review: DOIs checked in Crossref and the Scite index on 2026-11-14; both repository READMEs read on that date (teorth/pfr states the 2K^12 covering and the completed formalization; teorth/equational_theories states the 4,694 laws, 22,028,942 pairs and the 25 September 2024 launch). The Annals abstract was checked with Scite and states the result in characteristic 2."
           },
           {

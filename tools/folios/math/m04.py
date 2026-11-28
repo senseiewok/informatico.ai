@@ -41,7 +41,7 @@ FOLIO = {'folio_id': 'M.04',
  'steps': ['Stage 1 (Small Doubling Hypothesis): A subset A ⊂ F_2^n satisfies |A + A| ≤ K|A|, '
            'indicating hidden approximate subgroup structure.',
            'Stage 2 (Ruzsa Entropic Triangle Inequality): Defines entropic distance d(X, Y) = H(X '
-           "- Y') - (H(X) + H(Y'))/2 and evaluates submodularity bounds.",
+           "- Y') - (H(X) + H(Y'))/2, where Y' is an independent copy of Y.",
            'Stage 3 (Tau-Minimizer): The proof studies a minimizer of an entropic functional τ and '
            'uses it to show that d(X, U_H) is small for the uniform distribution U_H on a '
            "subgroup H. This page's slider is a simplified picture of that step, not the "
@@ -89,7 +89,7 @@ FOLIO = {'folio_id': 'M.04',
                            '4,694²). The links to data compression and encryption, the reference to '
                            'anthropics/formal-math as part of these projects, and the AAV and '
                            'lipid-nanoparticle passage are removed; the Cystic Fibrosis comparison '
-                           'is a labelled analogy.',
+                           'is a labeled analogy.',
                 'opus': 'Review: DOIs checked in Crossref and the Scite index on 2026-11-14; both '
                         'repository READMEs read on that date (teorth/pfr states the 2K^12 '
                         'covering and the completed formalization; teorth/equational_theories '
@@ -162,11 +162,11 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Equational Theories Project',
                  'Launched 25 September 2024 (README); concerns 22,028,942 ordered pairs of '
                  '4,694 magma laws.')],
- 'act2_analogy': 'Everyday analogy: Imagine smoothing out a wrinkled bedsheet on a mattress. If you try to tug each wrinkle individually by hand, new folds pop up somewhere else across the fabric. But if you pour a cup of warm water over the sheet and run a steam iron across the surface, thermal energy and surface tension work together to relax the fabric smoothly into a flat, crisp plane without leaving a single crease behind.',
- 'act2_plain_primer': 'To see how informational smoothing works, you can explore two intuitive control knobs. The first knob measures the expansion rate, tracking how many new combinations appear when you add a set of points to itself. When this doubling knob is low, points stay bundled together in a tight cluster; but as you dial it higher, the points spread out across the space. The second knob measures informational distance, tracking how far our messy arrangement sits from a perfectly uniform grid. When this distance knob is high, the points are scattered like tangled wrinkles on our bedsheet analogy. As you lower the distance knob, the entropic steam iron smooths away local irregularities step by step. Together, these two knobs are a picture, not the paper\'s argument: they suggest that when the expansion rate is bounded, the informational distance can be made small.',
- 'distill_diagram': {'analogy_title': 'Wrinkled Bedsheet Steam Ironing', 'analogy_sub': 'Heat and tension relax wrinkles into a flat, crisp plane', 'force_a_title': 'Doubling Constant K (|A+A|/|A|)', 'force_a_sub': 'Controls subset expansion under pairwise vector addition', 'force_b_title': 'Ruzsa Entropic Distance d_R', 'force_b_sub': 'Measures deviation from uniform subgroup distribution', 'threshold_title': 'Marton Coset Covering Horizon', 'threshold_pass': 'Covered by at most 2 K^12 cosets (as stated in the project README)', 'threshold_fail': 'No polynomial covering bound'},
- 'act2_intuition': "Why might replacing combinatorial counting with Shannon entropy help with a long-standing problem? Because counting discrete elements in subset sumsets |A + A| is intrinsically brittle: adding or removing a few outlier points distorts geometric boundaries without altering core algebraic structure. In contrast, Shannon entropy H(X) = -sum p(x) log p(x) obeys smooth, submodular convexity inequalities that behave like potential energy in statistical physics. In the breakthrough by Gowers, Green, Manners, and Tao (Annals of Mathematics 2025, DOI 10.4007/annals.2025.201.2.5), the authors introduced the Ruzsa entropic distance d_R(X, Y) = H(X - Y') - 0.5 [H(X) + H(Y')], measuring how far random variables deviate from a genuine subgroup distribution. The theorem, as stated in the README of the Lean 4 project teorth/pfr, is that any subset A of F_2^n with small doubling |A + A| <= K |A| is covered by at most 2 K^12 cosets of a subspace H of size at most |A|; the paper's argument is in the Annals (DOI 10.4007/annals.2025.201.2.5) and is not reproduced here.",
- 'act2_deepening': "The coupling between the additive doubling constant K and entropic distance d_R turns an algebraic problem into one about information. When a set A in the binary vector space F_2^n satisfies |A + A| <= K |A|, drawing two independent uniform random variables X and Y from A yields an entropic distance d_R(X, Y) bounded by log K. If the distance is zero, the distribution is uniform on a subgroup. The proof then works with a minimizer of an entropic functional to show that the distance to such a uniform distribution must be small, and a covering argument turns that into the bound of at most 2 K^12 cosets. The page's contraction slider is a simplified picture of this, not the paper's argument; read the paper for the details.",
+ 'act2_analogy': 'Everyday analogy: smoothing a wrinkled bedsheet. Tugging one wrinkle at a time tends to push the fold somewhere else; working across the whole sheet at once flattens it. The analogy is loose: it pictures trading point-by-point counting for one quantity, entropy, that describes the whole set at once.',
+ 'act2_plain_primer': 'To see how informational smoothing works, you can explore two intuitive control knobs. The first knob measures the expansion rate, tracking how many new combinations appear when you add a set of points to itself. When this doubling knob is low, points stay bundled together in a tight cluster; but as you dial it higher, the points spread out across the space. The second knob measures informational distance, tracking how far our messy arrangement sits from a perfectly uniform grid. When this distance knob is high, the points are scattered like wrinkles on the bedsheet; as you lower it, the picture flattens. Together, these two knobs are a picture, not the paper\'s argument: they suggest that when the expansion rate is bounded, the informational distance can be made small.',
+ 'distill_diagram': {'analogy_title': 'Wrinkled Bedsheet Steam Ironing', 'analogy_sub': 'Working on the whole sheet at once, not one wrinkle at a time', 'force_a_title': 'Doubling Constant K (|A+A|/|A|)', 'force_a_sub': 'Controls subset expansion under pairwise vector addition', 'force_b_title': 'Ruzsa Entropic Distance d_R', 'force_b_sub': 'Measures deviation from a uniform distribution on a coset of a subgroup', 'threshold_title': 'Marton Coset Covering Horizon', 'threshold_pass': 'Covered by at most 2 K^12 cosets (as stated in the project README)', 'threshold_fail': 'No polynomial covering bound'},
+ 'act2_intuition': "Why might trading counting for Shannon entropy help? This is the folio's own reading, not a claim taken from the paper: entropy H(X) = -sum p(x) log p(x) obeys inequalities, such as submodularity, that can be chained step by step, which may be harder to do with the sizes of sumsets directly. Gowers, Green, Manners and Tao work with an entropic Ruzsa distance d_R(X, Y) = H(X - Y') - 0.5 [H(X) + H(Y')], where Y' is an independent copy of Y; it is zero when X and Y are uniform on cosets of the same subgroup. The theorem, as stated in the README of the Lean 4 project teorth/pfr, is that any subset A of F_2^n with small doubling |A + A| <= K |A| is covered by at most 2 K^12 cosets of a subspace H of size at most |A|; the paper's argument is in the Annals (DOI 10.4007/annals.2025.201.2.5) and is not reproduced here.",
+ 'act2_deepening': "Here is how doubling and entropic distance meet. Let X and Y' be independent and uniform on a set A in F_2^n with |A + A| <= K |A|. Then H(X) = H(Y') = log |A|, and since subtraction is addition in F_2^n, X - Y' takes at most |A + A| values, so H(X - Y') <= log K + log |A|. Hence d_R(X, X) <= log K. If d_R(X, X) = 0, X is uniform on a coset of a subgroup. The proof then works with a minimizer of an entropic functional to show that the distance to such a uniform distribution must be small, and a covering argument turns that into the bound of at most 2 K^12 cosets. The page's contraction slider is a simplified picture of this, not the paper's argument; read the paper for the details.",
  'walkthrough': ['Experiment 1 (Follow the 4-Stage Entropic Descent): Click through Stages 1 -> 4 '
                  'above to trace how small doubling |A+A| <= K|A| maps to Ruzsa entropic distance '
                  'd(X, Y), tau-minimizer descent, and the 2 K^12 coset covering bound.',
@@ -177,7 +177,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Experiment 3 (Apply Blueprint Decomposition): Use the portable SKILL.md below to '
                  'structure complex engineering or proof tasks as human-readable DAG blueprints '
                  'with independent machine-verifiable nodes.'],
- 'act4_human_ai': "The READMEs of the PFR and Equational Theories projects describe open collaborations around Lean 4 proofs and, in the second case, a dashboard of verified and conjectured implications. Lean's kernel rejects a step that does not follow, so a mistaken lemma cannot enter the formal proof. This folio cannot say how many contributors were human or AI, or how the work compares with unassisted work. The anthropics/formal-math repository is not part of either project, and the folio draws no link to it. Mathlib (DOI 10.1145/3372885.3373824) is the library such projects build on.",
+ 'act4_human_ai': "The READMEs of the PFR and Equational Theories projects describe open collaborations around Lean 4 proofs and, in the second case, a dashboard of verified and conjectured implications. Lean's kernel rejects a step that does not follow, so, barring a bug in Lean itself, a false statement cannot be proved; an unproved step has to appear as sorry or an added axiom, and #print axioms on the final theorem lists both. Lean cannot check that a formal statement says what its authors meant. This folio cannot say how many contributors were human or AI, or how the work compares with unassisted work. The anthropics/formal-math repository is not part of either project, and the folio draws no link to it. Mathlib (DOI 10.1145/3372885.3373824) is the library such projects build on.",
  'act4_deepening': 'Splitting a large proof or a large list of questions into small pieces that different people, or programs, can take on is one way to organize formalization. The Equational Theories README describes this for 4,694 magma laws; this folio has not checked how far the project got or which tools settled which pairs. Whether similar entropy methods work over other groups is a question for mathematicians and is not addressed here.',
  'cf_bridge': 'This bridge is an analogy the folio draws and nothing more. The folio compares '
               'measuring how far a probability distribution is from a clean structure with '
@@ -204,7 +204,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
              '(https://scite.ai). Quantitative Science Studies, 2(3), 882–898. DOI: '
              '10.1162/qss_a_00146.'],
  'svg': '<svg class="tp-svg-stage" viewBox="0 0 680 220" role="img" aria-label="Ruzsa entropic '
-        'descent and 22-million magma implication DAG">\n'
+        'descent and the 22,028,942 ordered pairs of distinct magma laws">\n'
         '            <path d="M 70 50 C 180 55, 240 155, 360 165" fill="none" '
         'stroke="var(--tp-prussian)" stroke-width="3"/>\n'
         '            <circle cx="70" cy="50" r="6" fill="var(--tp-minium)"/>\n'
@@ -244,12 +244,13 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
  'word_count': '4,650 WORDS'}
 
 PLATE_CAPTION = {'alt': 'Conceptual visualization imagining what a Polynomial Freiman-Ruzsa entropic coset '
-        'covering lattice and the 22-million-edge equational magma implication DAG would look like '
+        'covering lattice and the 22,028,942 ordered pairs of distinct magma laws would look like '
         '(artistic impression, not a formal plot)',
  'caption': 'Conceptual Vision Plate M.04-V (Imagining What It Would Look Like) · Artistic '
             'mathematical visualization imagining Ruzsa entropic distance contracting an '
-            'approximate set A into <= 2 K^12 subgroup cosets alongside the 22,028,942-edge '
-            'universal algebra magma implication graph.'}
+            'approximate set A into <= 2 K^12 cosets of one subgroup, alongside the 22,028,942 '
+            'ordered pairs of distinct magma laws (each pair asks whether one law implies the other; '
+            'this folio reports, not checks, the project\'s answers).'}
 
 DISPATCH = {'kicker': 'POLYNOMIAL FREIMAN–RUZSA (PFR) · A LEAN 4 PROJECT README AND THE EQUATIONAL THEORIES '
            'PROJECT, REPORTED NOT CHECKED HERE',
@@ -273,11 +274,12 @@ ES_TRANSLATION = {'title_es': 'Cálculo de Entropía Polinomial de Freiman–Ruz
                 'magmas y 22,028,942 pares ordenados del proyecto de Teorías Ecuacionales. La '
                 'comparación con la genética es una analogía.',
  'why_es': 'La distancia entrópica de Ruzsa mide cuánto se parece una nube desordenada de datos a '
-           'una estructura algebraica limpia: si al sumar el conjunto consigo mismo apenas crece '
-           'su entropía, está cubierto por pocos subgrupos.',
+           'una estructura algebraica limpia: si al sumar el conjunto consigo mismo apenas crece, '
+           'queda cubierto por un número de clases laterales de un mismo subespacio que crece solo '
+           'de forma polinomial con la constante de duplicación.',
  'bridge_es': 'Es solo una analogía de este folio: se compara medir qué tan lejos está una '
               'distribución de probabilidad de una estructura limpia con agrupar perfiles medidos '
               'de variantes relacionadas. No describe ningún diseño de entrega génica, ninguna '
               'secuencia ni ningún resultado sobre CFTR, y nada de esto es consejo médico.',
  'plain_es': 'En palabras sencillas, este acertijo pregunta qué tanto debe parecerse una colección desordenada de puntos a una cuadrícula ordenada. Imaginen que arrojan un puñado de monedas sobre una manta. Si al sumar sus posiciones casi no aparecen posiciones nuevas, las monedas comparten una alineación secreta. La conjetura dice que un conjunto así se puede cubrir con un número modesto de marcos ordenados, donde "modesto" significa un polinomio en la constante de duplicación. Este folio no afirma nada sobre compresión de datos, transmisión ni cifrado.',
- 'deep_es': 'El núcleo de esta demostración se comprende a través de la relación entre la tasa de duplicación del conjunto y la distancia entrópica de Ruzsa. En el deslizador de duplicación, valores pequeños indican que el conjunto apenas crece al sumarse consigo mismo. Por su parte, la distancia entrópica de Ruzsa mide qué tan lejos se encuentra una distribución de probabilidades respecto a una distribución uniforme sobre un subgrupo. Gowers, Green, Manners y Tao sustituyen el conteo de puntos por la entropía de Shannon. El deslizador de contracción es solo una imagen simplificada, no el argumento del artículo. El README del proyecto teorth/pfr afirma que la formalización en Lean 4 de la demostración se completó, y el de Equational Theories describe 4,694 leyes y 22,028,942 pares ordenados; este sitio reporta esas afirmaciones y no ha compilado ni revisado ninguno de los dos proyectos.'}
+ 'deep_es': 'El núcleo de esta demostración se comprende a través de la relación entre la tasa de duplicación del conjunto y la distancia entrópica de Ruzsa. En el deslizador de duplicación, valores pequeños indican que el conjunto apenas crece al sumarse consigo mismo. Por su parte, la distancia entrópica de Ruzsa mide qué tan lejos se encuentra una distribución de probabilidades respecto a una distribución uniforme sobre una clase lateral de un subgrupo. Gowers, Green, Manners y Tao sustituyen el conteo de puntos por la entropía de Shannon. El deslizador de contracción es solo una imagen simplificada, no el argumento del artículo. El README del proyecto teorth/pfr afirma que la formalización en Lean 4 de la demostración se completó, y el de Equational Theories describe 4,694 leyes y 22,028,942 pares ordenados; este sitio reporta esas afirmaciones y no ha compilado ni revisado ninguno de los dos proyectos.'}
