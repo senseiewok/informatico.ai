@@ -14,6 +14,8 @@ ROOT = Path(__file__).resolve().parent.parent
 RESEARCH = ROOT / "src"
 SKILLS = ROOT / "skills"
 BOUNTIES = ROOT / "bounties"
+sys.path.insert(0, str(ROOT / "tools"))
+from folios.city_tools import CITY_TOOLS  # noqa: E402  (each city tool adds one page per language)
 
 
 class PublicInformaticoRepoTests(unittest.TestCase):
@@ -41,7 +43,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
     def test_106_bilingual_pages_and_bounty_crucible_mounted(self) -> None:
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 224)  # +2: /toolchain/x08/ (EN + es-MX)
+        self.assertEqual(len(locs), 224 + 2 * len(CITY_TOOLS))  # +2: /toolchain/x08/ (EN + es-MX)
         self.assertTrue((RESEARCH / "about" / "index.html").is_file())
         self.assertTrue((RESEARCH / "es-mx" / "about" / "index.html").is_file())
         hub_html = (RESEARCH / "index.html").read_text(encoding="utf-8")

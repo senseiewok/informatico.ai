@@ -35,6 +35,17 @@ from folios.css_bundle import REVAMP_CSS, update_informatico_css  # noqa: E402
 from folios.mathml_render import get_cached_mathml  # noqa: E402
 from folios.bounties_data import BOUNTY_BY_SLUG, BOUNTY_FOLIOS  # noqa: E402
 from folios.toolchain_data import PILLAR_FOLIO_TO_TOOLCHAIN, TOOLCHAIN_BY_SLUG, TOOLCHAIN_FOLIOS  # noqa: E402
+from folios.city_tools import (  # noqa: E402  (the Toolbox's second kind of entry: first estimates, no CAD files)
+    CITY_TOOL_BOUNDARY_EN,
+    CITY_TOOL_BOUNDARY_ES,
+    CITY_TOOLS,
+    CITY_TOOLS_GROUP_EN,
+    CITY_TOOLS_GROUP_ES,
+    CITY_TOOLS_GROUP_TITLE_EN,
+    CITY_TOOLS_GROUP_TITLE_ES,
+    PERSPECTIVE_LABELS as CITY_PERSPECTIVE_LABELS,
+    validate_city_tool,
+)
 from folios.seo_copy import BOUNTY_SEO, BRAND, FOLIO_SEO, HUB_SEO, PILLAR_SEO, TOOLCHAIN_SEO  # noqa: E402
 from folios.timegravity import PAGES as TIMEGRAVITY_PAGES, TRACK_DATE as TIMEGRAVITY_DATE, TRACK_MAP as TIMEGRAVITY_TRACK_MAP  # noqa: E402
 from toolchain_uga import BOUNDARY_EN, BOUNDARY_ES, generate_folio_assets  # noqa: E402
@@ -2194,6 +2205,27 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
             f'<span class="tp-contents-title" data-en="{esc(t["title"])}" data-es="{esc(t["title_es"])}">{esc(t["title"])}</span></a></li>'
         )
     tool_items_html = "\n            ".join(tool_items)
+    city_items = []
+    for c in CITY_TOOLS:
+        c_slug = c["slug"]
+        c_cur = ' aria-current="page"' if c_slug == active_slug else ""
+        c_search = esc(f"{c['tool_id']} {c['question_en']} {c['question_es']}".lower())
+        city_items.append(
+            f'<li data-contents-bounty-item data-search="{c_search}"><a href="{_href(rel_res, "toolchain/" + c_slug + "/")}"{c_cur}>'
+            f'<span class="tp-contents-id">{esc(c["tool_id"])}</span> '
+            f'<span class="tp-contents-title" data-en="{esc(c["question_en"])}" data-es="{esc(c["question_es"])}">{esc(c["question_en"])}</span></a></li>'
+        )
+    city_section_html = ""
+    if city_items:
+        city_items_html = "\n            ".join(city_items)
+        city_section_html = f"""
+      <section class="tp-contents-bounties" aria-label="City tools">
+        <h3><a href="{_href(rel_res, 'toolchain/')}#tp-city-tools" data-en="{esc(CITY_TOOLS_GROUP_TITLE_EN)}" data-es="{esc(CITY_TOOLS_GROUP_TITLE_ES)}">{esc(CITY_TOOLS_GROUP_TITLE_EN)}</a></h3>
+        <ol>
+            {city_items_html}
+        </ol>
+      </section>"""
+    tools_total = len(TOOLCHAIN_FOLIOS) + len(CITY_TOOLS)
     from folios.essays import ESSAYS as CROSS_SCALE_ESSAYS  # noqa: E402
     essay_items = []
     for es_doc in CROSS_SCALE_ESSAYS:
@@ -2211,7 +2243,7 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
     <div class="tp-contents-inner">
       <div class="tp-contents-head">
         <h2 id="tp-contents-title" data-en="Contents" data-es="Contenido">Contents</h2>
-        <input id="tp-contents-search" class="tp-contents-search" type="search" autocomplete="off" placeholder="Search {total} essays, 6 bounties, 8 tools &amp; 12 syntheses" aria-label="Search essays, bounties and tools">
+        <input id="tp-contents-search" class="tp-contents-search" type="search" autocomplete="off" placeholder="Search {total} essays, 6 bounties, {tools_total} tools &amp; 12 syntheses" aria-label="Search essays, bounties and tools">
         <button type="button" class="tp-tool-btn tp-contents-close" data-close-contents aria-label="Close contents">Close</button>
       </div>
       <p id="tp-contents-empty" class="tp-contents-empty" hidden data-en="No essay matches that search." data-es="Ningún ensayo coincide con la búsqueda.">No essay matches that search.</p>
@@ -2229,7 +2261,7 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
         <ol>
             {tool_items_html}
         </ol>
-      </section>
+      </section>{city_section_html}
       <section class="tp-contents-bounties" aria-label="Cross-Scale Featured Essays">
         <h3><a href="{_href(rel_res, 'essays/')}" data-en="Cross-Scale Featured Essays · 12 Standalone Syntheses (ES.01–ES.12)" data-es="Ensayos Destacados entre Escalas · 12 Síntesis Independientes (ES.01–ES.12)">Cross-Scale Featured Essays · 12 Standalone Syntheses (ES.01–ES.12)</a></h3>
         <ol>
@@ -4431,8 +4463,8 @@ def write_toolchain_skills_and_assets() -> None:
         )
 
 
-def render_toolchain_section(rel_res: str = ".") -> str:
-    """Render the Tech & Tools · The Toolbox (X.01–X.06) showcase section on the cover and hubs."""
+def render_toolchain_section(rel_res: str = ".", include_city_group: bool = True) -> str:
+    """Render the Tech & Tools · The Toolbox (X.01–X.06) showcase section on the cover and hubs, with the City tools group below the CAD tools."""
     toolchain_hub_href = _href(rel_res, "toolchain/")
     cards_html_list = []
     for t in TOOLCHAIN_FOLIOS:
@@ -4483,7 +4515,7 @@ def render_toolchain_section(rel_res: str = ".") -> str:
       <div class="tp-bounty-header">
         <p class="tp-kicker" data-en="Special Feature · Tech &amp; Tools · The 3D CAD, Open BIM &amp; Small-Studio Toolbox (X.01–X.08)" data-es="Especial · Tecnología y Herramientas · Caja de Herramientas 3D, CAD Abierto y Pequeños Estudios (X.01–X.08)">Special Feature · Tech &amp; Tools · The 3D CAD, Open BIM &amp; Small-Studio Toolbox (X.01–X.08)</p>
         <h2 id="toolchain-toolbox-heading" class="tp-h2"><a href="{toolchain_hub_href}" data-en="Tech &amp; Tools · The Toolbox: Downloadable STEP, 3MF, GLB &amp; DXF Files, Byte-Level Verifiers &amp; Small-Studio Skills" data-es="Tecnología y Herramientas · La Caja de Herramientas: Archivos STEP, 3MF, GLB y DXF, Verificadores y Skills para Pequeños Estudios">Tech &amp; Tools · The Toolbox: Downloadable STEP, 3MF, GLB &amp; DXF Files, Byte-Level Verifiers &amp; Small-Studio Skills</a></h2>
-        <p class="tp-standfirst" data-en="Eight dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.08 at /toolchain/x01/ through /toolchain/x08/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every Folio ships a deterministic Python generator (make_x01.py..make_x08.py), downloadable neutral files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, a live zero-build WebGL2 3D inspector, a stdlib byte-level verifier with planted-defect knockout, and a portable SKILL.md companion." data-es="Ocho Folios dedicados de CAD 3D, fabricación y herramientas abiertas (X.01–X.08 en /es-mx/toolchain/x01/ a /es-mx/toolchain/x08/) diseñados para empoderar a pequeños despachos de arquitectura, ingenieros independientes, físicos y makers matemáticos. Cada Folio entrega un generador determinista en Python (make_x01.py..make_x08.py), archivos descargables (.glb, .step, .3mf, .dxf) con manifiesto SHA-256, un visor 3D WebGL2 sin dependencias, un verificador a nivel de bytes y su SKILL.md portátil.">Eight dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.08 at /toolchain/x01/ through /toolchain/x08/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every Folio ships a deterministic Python generator (make_x01.py..make_x08.py), downloadable neutral files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, a live zero-build WebGL2 3D inspector, a stdlib byte-level verifier with planted-defect knockout, and a portable SKILL.md companion.</p>
+        <p class="tp-standfirst" data-en="Eight dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.08 at /toolchain/x01/ through /toolchain/x08/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every CAD Folio ships a deterministic Python generator (make_x01.py..make_x08.py), downloadable neutral files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, a live zero-build WebGL2 3D inspector, a stdlib byte-level verifier with planted-defect knockout, and a portable SKILL.md companion." data-es="Ocho Folios dedicados de CAD 3D, fabricación y herramientas abiertas (X.01–X.08 en /es-mx/toolchain/x01/ a /es-mx/toolchain/x08/) diseñados para empoderar a pequeños despachos de arquitectura, ingenieros independientes, físicos y makers matemáticos. Cada Folio CAD entrega un generador determinista en Python (make_x01.py..make_x08.py), archivos descargables (.glb, .step, .3mf, .dxf) con manifiesto SHA-256, un visor 3D WebGL2 sin dependencias, un verificador a nivel de bytes y su SKILL.md portátil.">Eight dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.08 at /toolchain/x01/ through /toolchain/x08/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every CAD Folio ships a deterministic Python generator (make_x01.py..make_x08.py), downloadable neutral files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, a live zero-build WebGL2 3D inspector, a stdlib byte-level verifier with planted-defect knockout, and a portable SKILL.md companion.</p>
       </div>
 
       <div class="tp-toolchain-boundary-banner" role="note" aria-label="Educational Geometry Boundary">
@@ -4493,7 +4525,7 @@ def render_toolchain_section(rel_res: str = ".") -> str:
       </div>
 
       <div class="tp-bounty-filter-bar" role="group" aria-label="Filter Tech and Tools Folios by field">
-        <button type="button" class="tp-bounty-filter-btn" data-toolchain-filter="all" aria-pressed="true" data-en="All 8 Toolbox Folios (X.01–X.08)" data-es="Las 8 Herramientas (X.01–X.08)">All 8 Toolbox Folios (X.01–X.08)</button>
+        <button type="button" class="tp-bounty-filter-btn" data-toolchain-filter="all" aria-pressed="true" data-en="All 8 CAD Toolbox Folios (X.01–X.08)" data-es="Las 8 Herramientas CAD (X.01–X.08)">All 8 CAD Toolbox Folios (X.01–X.08)</button>
         <button type="button" class="tp-bounty-filter-btn" data-toolchain-filter="architecture" aria-pressed="false" data-en="Small Architects · Vaults &amp; Kinetic DXF (X.03 · X.04)" data-es="Pequeños Arquitectos · Bóvedas y DXF (X.03 · X.04)">Small Architects · Vaults &amp; Kinetic DXF (X.03 · X.04)</button>
         <button type="button" class="tp-bounty-filter-btn" data-toolchain-filter="engineering" aria-pressed="false" data-en="Independent Engineers · STEP &amp; 3MF (X.02 · X.05)" data-es="Ingenieros Independientes · STEP y 3MF (X.02 · X.05)">Independent Engineers · STEP &amp; 3MF (X.02 · X.05)</button>
         <button type="button" class="tp-bounty-filter-btn" data-toolchain-filter="core" aria-pressed="false" data-en="Core WebGL2 &amp; Curvature (X.01 · X.07)" data-es="Visor WebGL2 y Curvatura (X.01 · X.07)">Core WebGL2 &amp; Curvature (X.01 · X.07)</button>
@@ -4502,8 +4534,288 @@ def render_toolchain_section(rel_res: str = ".") -> str:
 
       <div class="tp-bounty-grid">
 {cards_joined}
-      </div>
+      </div>{chr(10) + render_city_tools_group(rel_res) if include_city_group else ""}
     </section>"""
+
+
+def render_city_tools_group(rel_res: str = ".", base_href: str | None = None) -> str:
+    """The "City tools" group of the Toolbox: one fixed statement and a text-only card per tool (no plate, no audio)."""
+    base = base_href if base_href is not None else _href(rel_res, "toolchain/")
+    cards = []
+    for c in CITY_TOOLS:
+        c_href = f"{base}{c['slug']}/"
+        cards.append(
+            f"""        <article class="tp-bounty-card tp-city-tool-card" data-city-tool-card="{esc(c['slug'])}">
+          <div class="tp-bounty-card-top"><span class="tp-bounty-badge">{esc(c['tool_id'])}</span></div>
+          <h3 class="tp-bounty-title"><a href="{c_href}" data-en="{esc(c['question_en'])}" data-es="{esc(c['question_es'])}">{esc(c['question_en'])}</a></h3>
+          <p class="tp-bounty-body" data-en="{esc(c['audience_en'])}" data-es="{esc(c['audience_es'])}">{esc(c['audience_en'])}</p>
+        </article>"""
+        )
+    grid = ""
+    if cards:
+        cards_joined = "\n".join(cards)
+        grid = f"""
+      <div class="tp-bounty-grid">
+{cards_joined}
+      </div>"""
+    return f"""    <section id="tp-city-tools" class="tp-city-tools-group" aria-labelledby="city-tools-heading">
+      <h2 id="city-tools-heading" class="tp-h2" data-en="{esc(CITY_TOOLS_GROUP_TITLE_EN)}" data-es="{esc(CITY_TOOLS_GROUP_TITLE_ES)}">{esc(CITY_TOOLS_GROUP_TITLE_EN)}</h2>
+      <p class="tp-standfirst" data-en="{esc(CITY_TOOLS_GROUP_EN)}" data-es="{esc(CITY_TOOLS_GROUP_ES)}">{esc(CITY_TOOLS_GROUP_EN)}</p>{grid}
+    </section>"""
+
+
+def _city_tool_twin(tool: dict):
+    """Import a city tool's standard-library Python twin (skills/toolchain/<slug>/<python_twin>)."""
+    import importlib.util  # noqa: E402
+
+    path = ROOT / "skills" / "toolchain" / tool["slug"] / tool["python_twin"]
+    spec = importlib.util.spec_from_file_location(f"city_tool_{tool['slug']}", path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def _city_tool_model(tool: dict) -> dict:
+    return json.loads((ROOT / "src" / "toolchain" / tool["slug"] / "files" / "model.json").read_text(encoding="utf-8"))
+
+
+def city_tool_worked_example(tool: dict) -> dict:
+    """The worked example, computed by the Python twin from model.json: every number a page prints comes from here."""
+    return _city_tool_twin(tool).estimate(dict(tool["worked_example"]), _city_tool_model(tool))
+
+
+def _fmt_num(x) -> str:
+    """Plain decimal text for a number: thousands separators, no exponent notation, three significant figures below 100."""
+    if isinstance(x, int) and not isinstance(x, bool):
+        return f"{x:,}"
+    ax = abs(x)
+    if ax >= 100 or ax == 0:
+        return f"{x:,.0f}"
+    decimals = 2
+    while ax < 10 ** (2 - decimals) and decimals < 12:
+        decimals += 1
+    if ax >= 10:
+        decimals = 1
+    return f"{x:,.{decimals}f}"
+
+
+def _bi_paragraphs(en: list[str], es: list[str], cls: str = "") -> str:
+    c = f' class="{cls}"' if cls else ""
+    return "\n".join(f'      <p{c} data-en="{esc(a)}" data-es="{esc(b)}">{esc(a)}</p>' for a, b in zip(en, es))
+
+
+def _bi_list(en: list[str], es: list[str]) -> str:
+    items = "\n".join(f'        <li data-en="{esc(a)}" data-es="{esc(b)}">{esc(a)}</li>' for a, b in zip(en, es))
+    return f"      <ul>\n{items}\n      </ul>"
+
+
+def render_city_tool_page(tool: dict, catalog: dict, lang: str = "en") -> str:
+    """Render one city tool at /toolchain/<slug>/ and /es-mx/toolchain/<slug>/: question, inputs, range, sources, limits, code."""
+    errors = validate_city_tool(tool)
+    if errors:
+        raise ValueError("; ".join(errors))
+    rel_root, rel_res = "../..", "../.."
+    es = lang == "es"
+    slug = tool["slug"]
+    tid = tool["tool_id"]
+    t_en, d_en, t_es, d_es = tool["seo"]
+    seo_title = f"{t_es if es else t_en} | {BRAND}"
+    seo_desc = d_es if es else d_en
+    canon = page_url(f"toolchain/{slug}/", lang)
+    image = "https://informatico.ai/plates/utopian-city-future.jpg"
+    crumbs = [
+        (BRAND, page_url("", lang)),
+        ("Herramientas" if es else "Tech & Tools", page_url("toolchain/", lang)),
+        (t_es if es else t_en, canon),
+    ]
+    ld = _ld("WebPage", t_es if es else t_en, seo_desc, canon, lang, image=image,
+             date_published=tool["date_published"], date_modified=tool["date_redated"], crumbs=crumbs)
+    head = render_head(seo_title, seo_desc, f"toolchain/{slug}/", "article", image, rel_root, rel_res, ld, lang)
+
+    result = city_tool_worked_example(tool)
+    by_id = {i["id"]: i for i in tool["inputs"]}
+    driver = by_id[result["driver"]]
+    unit = result["unit"]
+    low, high = _fmt_num(result["low"]), _fmt_num(result["high"])
+    if low == high:
+        raise ValueError(f"city tool {slug}: the range prints as one figure ({low}); a city tool shows a range")
+    range_en = f"{low} – {high} {unit}"
+
+    input_rows = []
+    for inp in tool["inputs"]:
+        iid = esc(inp["id"])
+        val = tool["worked_example"][inp["id"]]
+        if inp.get("default") is None:
+            src_en, src_es = "Your value", "Su valor"
+        else:
+            src_en, src_es = inp["source_en"], inp["source_es"]
+        rng = f"{_fmt_num(inp['min'])} – {_fmt_num(inp['max'])} {inp['unit']}"
+        input_rows.append(
+            f"""        <div class="tp-city-input">
+          <label for="ci-{iid}" data-en="{esc(inp['label_en'])} ({esc(inp['unit'])})" data-es="{esc(inp['label_es'])} ({esc(inp['unit'])})">{esc(inp['label_en'])} ({esc(inp['unit'])})</label>
+          <input id="ci-{iid}" name="{iid}" type="number" inputmode="decimal" min="{esc(str(inp['min']))}" max="{esc(str(inp['max']))}" step="{esc(str(inp['step']))}" value="{esc(str(val))}" aria-describedby="ci-{iid}-note">
+          <small id="ci-{iid}-note"><span data-en="Accepted range: " data-es="Rango aceptado: ">Accepted range: </span>{esc(rng)} · <span data-en="{esc(src_en)}" data-es="{esc(src_es)}">{esc(src_en)}</span></small>
+        </div>"""
+        )
+    inputs_html = "\n".join(input_rows)
+
+    step_rows = "\n".join(
+        f'          <tr><td data-en="{esc(st["label_en"])}" data-es="{esc(st["label_es"])}">{esc(st["label_en"])}</td>'
+        f'<td>{esc(_fmt_num(st["value"]))} {esc(st.get("unit", ""))}</td></tr>'
+        for st in result["steps"]
+    )
+    ex_inputs = "\n".join(
+        f'          <tr><td data-en="{esc(by_id[k]["label_en"])}" data-es="{esc(by_id[k]["label_es"])}">{esc(by_id[k]["label_en"])}</td>'
+        f'<td>{esc(_fmt_num(v))} {esc(by_id[k]["unit"])}</td></tr>'
+        for k, v in tool["worked_example"].items()
+    )
+
+    persp = []
+    for pp in tool["perspectives"]:
+        k_en, k_es = CITY_PERSPECTIVE_LABELS[pp["kind"]]
+        persp.append(
+            f"""    <section class="tp-city-section" data-city-perspective="{esc(pp['kind'])}">
+      <p class="tp-kicker" data-en="{esc(k_en)}" data-es="{esc(k_es)}">{esc(k_en)}</p>
+      <h2 class="tp-h2" data-en="{esc(pp['heading_en'])}" data-es="{esc(pp['heading_es'])}">{esc(pp['heading_en'])}</h2>
+{_bi_paragraphs(pp['body_en'], pp['body_es'])}
+    </section>"""
+        )
+    persp_html = "\n".join(persp)
+
+    sources_html = "\n".join(
+        f'        <li><a href="{esc(sr["url"])}" target="_blank" rel="noopener noreferrer">{esc(sr["label"])}</a>. '
+        f'<span data-en="What the tool takes from it: {esc(sr["takes_en"])}" data-es="Lo que la herramienta toma de ella: {esc(sr["takes_es"])}">What the tool takes from it: {esc(sr["takes_en"])}</span></li>'
+        for sr in tool["sources"]
+    )
+    files_href = f"{rel_res}/toolchain/{slug}/files"
+    downloads = [("model.json", "model.json", "The model: every coefficient with its source and range", "El modelo: cada coeficiente con su fuente y rango"),
+                 ("worked-example.csv", "worked-example.csv", "The worked example", "El ejemplo resuelto"),
+                 (city_twin_served_name(tool), tool["python_twin"], "The Python twin (standard library only)", "El gemelo en Python (solo biblioteca estándar)"),
+                 (tool["module"], tool["module"], "The browser module (no dependencies)", "El módulo del navegador (sin dependencias)"),
+                 ("downloads.json", "downloads.json", "Sizes and SHA-256 hashes of the files above", "Tamaños y hashes SHA-256 de los archivos anteriores")]
+    downloads_html = "\n".join(
+        f'        <li><a href="{files_href}/{esc(served)}" download="{esc(saved)}"><code>{esc(saved)}</code></a> · <span data-en="{esc(a)}" data-es="{esc(b)}">{esc(a)}</span></li>'
+        for served, saved, a, b in downloads
+    )
+
+    return f"""{head}
+<body class="tp-body tp-page-folio tp-page-city-tool">
+{render_masthead(rel_res, "toolchain", lang)}
+{render_contents_dialog(rel_res, catalog, slug)}
+  <main id="main" class="tp-shell" tabindex="-1">
+  <nav class="tp-breadcrumb-bar" aria-label="Breadcrumb">
+    <ol class="tp-breadcrumb-list">
+        <li class="tp-crumb-item"><a class="tp-crumb-link" href="{_href(rel_res)}">Informatico.ai</a></li>
+        <li class="tp-crumb-item"><a class="tp-crumb-link" href="{_href(rel_res, 'toolchain/')}" data-en="Tech &amp; Tools" data-es="Herramientas">Tech &amp; Tools</a></li>
+        <li class="tp-crumb-item" aria-current="page"><span>{esc(tid)}</span></li>
+    </ol>
+  </nav>
+    <section class="tp-pillar-hero" aria-labelledby="city-tool-question">
+      <p class="tp-kicker" data-en="{esc(CITY_TOOLS_GROUP_TITLE_EN)} · {esc(tid)} · A first estimate" data-es="{esc(CITY_TOOLS_GROUP_TITLE_ES)} · {esc(tid)} · Una primera estimación">{esc(CITY_TOOLS_GROUP_TITLE_EN)} · {esc(tid)} · A first estimate</p>
+      <h1 id="city-tool-question" class="tp-h1" data-en="{esc(tool['question_en'])}" data-es="{esc(tool['question_es'])}">{esc(tool['question_en'])}</h1>
+      <p class="tp-standfirst" data-en="{esc(tool['audience_en'])}" data-es="{esc(tool['audience_es'])}">{esc(tool['audience_en'])}</p>
+      <p class="tp-toolchain-boundary-banner" role="note" data-city-boundary data-en="{esc(CITY_TOOL_BOUNDARY_EN)}" data-es="{esc(CITY_TOOL_BOUNDARY_ES)}">{esc(CITY_TOOL_BOUNDARY_EN)}</p>
+    </section>
+    <section class="tp-city-section tp-city-calculator" aria-labelledby="city-tool-inputs">
+      <h2 id="city-tool-inputs" class="tp-h2" data-en="Inputs" data-es="Datos de entrada">Inputs</h2>
+      <form class="tp-city-form" data-city-tool="{esc(slug)}" novalidate>
+{inputs_html}
+      </form>
+      <h2 class="tp-h2" data-en="Result" data-es="Resultado">Result</h2>
+      <p><output class="tp-city-result" form="" data-city-result aria-live="polite">{esc(range_en)}</output></p>
+      <p data-city-driver><span data-en="The input that moves this range most: " data-es="El dato que más mueve este rango: ">The input that moves this range most: </span><span data-en="{esc(driver['label_en'])}" data-es="{esc(driver['label_es'])}">{esc(driver['label_en'])}</span></p>
+      <p class="tp-city-error" data-city-error role="alert" hidden></p>
+    </section>
+    <section class="tp-city-section" aria-labelledby="city-tool-worked">
+      <h2 id="city-tool-worked" class="tp-h2" data-en="Worked example" data-es="Ejemplo resuelto">Worked example</h2>
+      <table class="tp-table" data-city-worked-inputs>
+        <caption data-en="Inputs of the worked example" data-es="Datos del ejemplo resuelto">Inputs of the worked example</caption>
+        <tbody>
+{ex_inputs}
+        </tbody>
+      </table>
+      <table class="tp-table" data-city-worked-steps>
+        <caption data-en="Steps, as the Python twin computes them" data-es="Pasos, tal como los calcula el gemelo en Python">Steps, as the Python twin computes them</caption>
+        <tbody>
+{step_rows}
+        </tbody>
+      </table>
+      <p data-city-worked-range><span data-en="Result: " data-es="Resultado: ">Result: </span>{esc(range_en)}</p>
+    </section>
+{persp_html}
+    <section class="tp-city-section" data-city-misleading aria-labelledby="city-tool-mislead">
+      <h2 id="city-tool-mislead" class="tp-h2" data-en="The strongest reason this answer could mislead" data-es="La razón más fuerte por la que esta respuesta podría engañar">The strongest reason this answer could mislead</h2>
+{_bi_paragraphs(tool['misleading_en'], tool['misleading_es'])}
+    </section>
+    <section class="tp-city-section" data-city-limits aria-labelledby="city-tool-limits">
+      <h2 id="city-tool-limits" class="tp-h2" data-en="Where this stops" data-es="Dónde se detiene">Where this stops</h2>
+{_bi_list(tool['limits_en'], tool['limits_es'])}
+    </section>
+    <section class="tp-city-section" data-city-next aria-labelledby="city-tool-next">
+      <h2 id="city-tool-next" class="tp-h2" data-en="What to do next" data-es="Qué hacer después">What to do next</h2>
+{_bi_list(tool['next_en'], tool['next_es'])}
+    </section>
+    <section class="tp-city-section" aria-labelledby="city-tool-sources">
+      <h2 id="city-tool-sources" class="tp-h2" data-en="Sources" data-es="Fuentes">Sources</h2>
+      <ol>
+{sources_html}
+      </ol>
+      <h2 class="tp-h2" data-en="Downloads" data-es="Descargas">Downloads</h2>
+      <ul>
+{downloads_html}
+      </ul>
+      <p class="tp-toolchain-boundary-banner" role="note" data-en="{esc(CITY_TOOL_BOUNDARY_EN)}" data-es="{esc(CITY_TOOL_BOUNDARY_ES)}">{esc(CITY_TOOL_BOUNDARY_EN)}</p>
+    </section>
+{render_site_footer(rel_res)}
+  </main>
+  <script type="module" src="{rel_res}/modules/main.mjs"></script>
+  <script type="module" src="{files_href}/{esc(tool['module'])}"></script>
+</body>
+</html>
+"""
+
+
+def city_twin_served_name(tool: dict) -> str:
+    """The Python twin's file name on the site: .py is not a web file type the deploy gate uploads, so it is served as .txt."""
+    return tool["python_twin"] + ".txt"
+
+
+def write_city_tool_assets(tool: dict) -> None:
+    """Beside a city tool: copy its Python twin, write worked-example.csv and downloads.json (sizes and SHA-256).
+
+    model.json and the browser module are hand-written in src/toolchain/<slug>/files/ and only read here. Nothing is
+    named manifest.json (the CAD builder writes that) and no verify_*.py is touched.
+    """
+    import csv  # noqa: E402
+    import io  # noqa: E402
+
+    errors = validate_city_tool(tool)
+    if errors:
+        raise ValueError("; ".join(errors))
+    slug = tool["slug"]
+    files = ROOT / "src" / "toolchain" / slug / "files"
+    twin_src = ROOT / "skills" / "toolchain" / slug / tool["python_twin"]
+    for need in (files / "model.json", files / tool["module"], twin_src):
+        if not need.is_file():
+            raise FileNotFoundError(f"city tool {slug}: missing {need.relative_to(ROOT)}")
+    (files / city_twin_served_name(tool)).write_bytes(twin_src.read_bytes())
+    result = city_tool_worked_example(tool)
+    buf = io.StringIO()
+    w = csv.writer(buf, lineterminator="\n")
+    w.writerow(["kind", "label", "value", "unit"])
+    by_id = {i["id"]: i for i in tool["inputs"]}
+    for k, v in tool["worked_example"].items():
+        w.writerow(["input", by_id[k]["label_en"], v, by_id[k]["unit"]])
+    for st in result["steps"]:
+        w.writerow(["step", st["label_en"], st["value"], st.get("unit", "")])
+    w.writerow(["result_low", "low end of range", result["low"], result["unit"]])
+    w.writerow(["result_high", "high end of range", result["high"], result["unit"]])
+    (files / "worked-example.csv").write_bytes(buf.getvalue().encode("utf-8"))
+    entries = []
+    for fn in ("model.json", "worked-example.csv", city_twin_served_name(tool), tool["module"]):
+        data = (files / fn).read_bytes()
+        entries.append({"file": fn, "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()})
+    (files / "downloads.json").write_bytes((json.dumps({"tool": slug, "files": entries}, indent=2) + "\n").encode("utf-8"))
 
 
 def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
@@ -4518,13 +4830,13 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
     title_es = "Tecnología y Herramientas · Caja de Herramientas 3D, CAD Abierto y Pequeños Estudios"
     hook_en = (
         "Eight standalone 3D CAD and open-toolchain monographs (X.01–X.08) empowering boutique architecture studios, "
-        "independent civil and mechanical engineers, physicists, and math makers. Every Folio ships a deterministic Python "
+        "independent civil and mechanical engineers, physicists, and math makers. Every CAD Folio ships a deterministic Python "
         "generator (make_x01.py..make_x08.py), downloadable neutral 3D/2D files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, "
         "a live zero-dependency WebGL2 3D inspector, a stdlib byte-level verifier with planted-defect knockout, and a portable SKILL.md."
     )
     hook_es = (
         "Ocho monografías dedicadas de CAD 3D y herramientas abiertas (X.01–X.08) diseñadas para empoderar a pequeños despachos de arquitectura, "
-        "ingenieros civiles y mecánicos independientes, físicos y makers matemáticos. Cada Folio incluye su generador determinista en Python "
+        "ingenieros civiles y mecánicos independientes, físicos y makers matemáticos. Cada Folio CAD incluye su generador determinista en Python "
         "(make_x01.py..make_x08.py), archivos descargables (.glb, .step, .3mf, .dxf) con manifiesto SHA-256, un visor 3D WebGL2 sin dependencias, "
         "un verificador a nivel de bytes con prueba de defecto plantado y su SKILL.md portátil."
     )
@@ -4599,7 +4911,7 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
           <div class="tp-studio-step-card">
             <span class="tp-studio-step-num" data-en="Step 1 · Grab Any 3D/CAD File" data-es="Paso 1 · Descarga el Archivo 3D/CAD">Step 1 · Grab Any 3D/CAD File</span>
             <h2 class="tp-studio-step-title" data-en="Download Open Neutral Geometry" data-es="Descarga Geometría Abierta y Neutral">Download Open Neutral Geometry</h2>
-            <p data-en="Every Toolbox Folio (X.01–X.08) below gives you instant 1-click downloads of watertight .glb meshes, ISO 10303-21 .step AP242 solids, .3mf print packages, and .dxf laser/CNC cut sheets." data-es="Cada Folio (X.01–X.08) te ofrece descarga directa en 1 clic de mallas .glb estancas, sólidos .step AP242, paquetes .3mf de impresión 3D y planos .dxf de corte láser/CNC.">Every Toolbox Folio (X.01–X.08) below gives you instant 1-click downloads of watertight .glb meshes, ISO 10303-21 .step AP242 solids, .3mf print packages, and .dxf laser/CNC cut sheets.</p>
+            <p data-en="Every CAD Toolbox Folio (X.01–X.08) below gives you instant 1-click downloads of watertight .glb meshes, ISO 10303-21 .step AP242 solids, .3mf print packages, and .dxf laser/CNC cut sheets." data-es="Cada Folio CAD (X.01–X.08) te ofrece descarga directa en 1 clic de mallas .glb estancas, sólidos .step AP242, paquetes .3mf de impresión 3D y planos .dxf de corte láser/CNC.">Every CAD Toolbox Folio (X.01–X.08) below gives you instant 1-click downloads of watertight .glb meshes, ISO 10303-21 .step AP242 solids, .3mf print packages, and .dxf laser/CNC cut sheets.</p>
           </div>
           <div class="tp-studio-step-card">
             <span class="tp-studio-step-num" data-en="Step 2 · Open in Free Desktop Tools" data-es="Paso 2 · Ábrelo en Herramientas Gratuitas">Step 2 · Open in Free Desktop Tools</span>
@@ -4614,13 +4926,14 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
         </div>
       </div>
     </section>
-    <section class="tp-issue-rack" aria-label="8 Tech and Tools Folios">
+    <section class="tp-issue-rack" aria-label="8 Tech and Tools CAD Folios">
       <div class="tp-rack-grid">
 {cards_html}
       </div>
     </section>
+{render_city_tools_group(rel_res, "./")}
 {guides_band_html}
-{render_toolchain_section(rel_res)}
+{render_toolchain_section(rel_res, include_city_group=False)}
 {render_site_footer(rel_res)}
   </main>
   <script type="module" src="{rel_res}/modules/main.mjs"></script>
@@ -6427,6 +6740,7 @@ def render_research_sitemap(catalog: dict) -> str:
         [_folio_lastmod(f) for f in every]
         + [b["date_redated"] for b in BOUNTY_FOLIOS]
         + [t["date_redated"] for t in TOOLCHAIN_FOLIOS]
+        + [c["date_redated"] for c in CITY_TOOLS]
     )
     entries.append(("", newest_all))
     for pillar, folios in catalog["pillars"].items():
@@ -6436,9 +6750,11 @@ def render_research_sitemap(catalog: dict) -> str:
     entries.append(("bounties/", max(b["date_redated"] for b in BOUNTY_FOLIOS)))
     for b in BOUNTY_FOLIOS:
         entries.append((f"bounties/{b['slug']}/", b["date_redated"]))
-    entries.append(("toolchain/", max(t["date_redated"] for t in TOOLCHAIN_FOLIOS)))
+    entries.append(("toolchain/", max([t["date_redated"] for t in TOOLCHAIN_FOLIOS] + [c["date_redated"] for c in CITY_TOOLS])))
     for t in TOOLCHAIN_FOLIOS:
         entries.append((f"toolchain/{t['slug']}/", t["date_redated"]))
+    for c in CITY_TOOLS:
+        entries.append((f"toolchain/{c['slug']}/", c["date_redated"]))
     sys.modules.setdefault("build_longform_folios", sys.modules[__name__])
     import build_toolchain_guides  # noqa: E402
     for g_slug in build_toolchain_guides.GUIDE_SLUGS:
@@ -6556,6 +6872,12 @@ def render_llms_txt(catalog: dict) -> str:
     for g_slug in build_toolchain_guides.GUIDE_SLUGS:
         g_title, g_desc = build_toolchain_guides.GUIDE_SEO[g_slug][0], build_toolchain_guides.GUIDE_SEO[g_slug][1]
         lines.append(f"- [{g_title}]({page_url('toolchain/' + g_slug + '/')}): {g_desc}")
+    if CITY_TOOLS:
+        lines.append("")
+        lines.append(f"### {CITY_TOOLS_GROUP_TITLE_EN}")
+        lines.append("")
+        for c in CITY_TOOLS:
+            lines.append(f"- [{c['tool_id']} {c['seo'][0]}]({page_url('toolchain/' + c['slug'] + '/')}): {c['seo'][1]}")
     lines.append("")
     lines.append("## Time & Gravity · Fourteen Pages on an Open Problem (T.00–T.13)")
     lines.append("")
@@ -6805,6 +7127,16 @@ def main() -> None:
         es_tfdir.mkdir(parents=True, exist_ok=True)
         (es_tfdir / "index.html").write_text(to_spanish_static(render_toolchain_folio_page(t, catalog, "es")), encoding="utf-8")
         t_count += 1
+
+    # City tools (/toolchain/c01/ ...): their own renderer and assets, never the CAD Toolbox builders.
+    for c in CITY_TOOLS:
+        write_city_tool_assets(c)
+        cfdir = tdir / c["slug"]
+        cfdir.mkdir(parents=True, exist_ok=True)
+        (cfdir / "index.html").write_text(render_city_tool_page(c, catalog, "en"), encoding="utf-8")
+        es_cfdir = es_tdir / c["slug"]
+        es_cfdir.mkdir(parents=True, exist_ok=True)
+        (es_cfdir / "index.html").write_text(to_spanish_static(render_city_tool_page(c, catalog, "es")), encoding="utf-8")
 
     # Render Tech & Tools Methodology Guides (/toolchain/proof-observatory/ and /toolchain/ai-loop/)
     sys.modules.setdefault("build_longform_folios", sys.modules[__name__])
