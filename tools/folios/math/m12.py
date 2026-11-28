@@ -15,7 +15,7 @@ FOLIO = {'folio_id': 'M.12',
                  'Fine-Grained Complexity',
  'title': 'Public Lean 4 Repositories and NIST FIPS 203 (ML-KEM): What They State, Side by Side',
  'subtitle': "Synthesizing Folios M.01, M.03 and M.06: what the README of the public Lean 4 "
-             'repository anthropics/formal-math, read on 2026-11-14, says it contains (including '
+             'repository anthropics/formal-math, read on 2026-11-28, says it contains (including '
              'an eth project that the README says refutes the Exponential Time Hypothesis, a '
              'statement this site has not checked), set beside the module-lattice key encapsulation standard NIST FIPS 203 '
              '(ML-KEM).',
@@ -28,8 +28,8 @@ FOLIO = {'folio_id': 'M.12',
  'governing_law_latex': r"b = A s + e \pmod{q}, \\ q = 3329, \quad n = 256, \\ k \in \{2,3,4\} \;(\text{NIST FIPS 203})",
  'colophon': {'identifier': 'M.12 · anthropics/formal-math (as stated in its READMEs) & NIST FIPS '
                             '203 ML-KEM Lattices',
-              'kernels': 'Projects listed in the anthropics/formal-math README read 2026-11-14: '
-                         'zeta23, 3sum-apsp, eth (not built here) · '
+              'kernels': 'Projects listed in the anthropics/formal-math README read 2026-11-28: '
+                         'zeta23, 3sum-apsp, eth, vp-vnp (not built here) · '
                          'Module-LWE b = As + e',
               'benchmarks': 'ML-KEM-768: k = 3 · q = 3329 · n = 256 · NIST security category 3 · '
                             'decapsulation failure 2^−164.8 (FIPS 203, Table 1)',
@@ -57,23 +57,21 @@ FOLIO = {'folio_id': 'M.12',
            'module lattice problems; Regev (2009) showed that plain LWE is at least as hard, '
            'under a quantum reduction, as certain worst-case lattice problems.',
            'Stage 3 (What anthropics/formal-math says it contains): The README of '
-           'anthropics/formal-math, read on 2026-11-14, lists three Lean 4 projects: zeta23 '
+           'anthropics/formal-math, read on 2026-11-28, lists four Lean 4 projects: zeta23 '
            '(Alpöge–Furman on zeta zeros), 3sum-apsp (Alman–Vassilevska Williams on 3SUM and '
-           'APSP) and eth, described there as an algorithm for counting k-CNF solutions that '
-           'refutes the Exponential Time Hypothesis. This site has not built or checked any of '
-           'them. Earlier editions named files EightSquare.lean, ThreeSUM_APSP.lean and '
-           "ETHIsFalse.lean; no files of those names appear in the repository's file tree read "
-           'on 2026-11-14.',
+           'APSP), eth, described there as an algorithm for counting k-CNF solutions that '
+           'refutes the Exponential Time Hypothesis, and vp-vnp. This site has not built or '
+           'checked any of them. Claims about named Lean files in earlier editions are '
+           'withdrawn.',
            'Stage 4 (Implementation): open-quantum-safe/liboqs is an open-source library of '
            'post-quantum algorithms. Formal proofs about mathematics do not by themselves make '
            'an implementation bug-free; verifying cryptographic code is a separate task.'],
  'readouts': [{'label': 'ML-KEM-768 Security (FIPS 203)',
                'value': 'NIST security category 3 (k = 3)'},
               {'label': 'Eight-Square Rank Claim',
-               'value': 'Withdrawn: no EightSquare.lean in the formal-math file tree (read '
-                        '2026-11-14)'},
+               'value': 'Withdrawn: not verified by this site'},
               {'label': 'formal-math/eth README Statement',
-               'value': 'README read 2026-11-14 states an ETH refutation (not checked here)'},
+               'value': 'README read 2026-11-28 states an ETH refutation (not checked here)'},
               {'label': 'ML-KEM-768 Decapsulation Failure',
                'value': '2^−164.8 (FIPS 203, Table 1)'}],
  'spec_plate': {'division': 'POST-QUANTUM CRYPTOGRAPHY / NIST FIPS 203 (ML-KEM) / LEAN 4 FORMAL '
@@ -95,8 +93,10 @@ FOLIO = {'folio_id': 'M.12',
                         'alike. That belief rests on decades of cryptanalysis, not on a proof.'},
  'sidenote_2': {'kicker': 'SIDENOTE M.12-B · WHAT THE ANTHROPICS/FORMAL-MATH README LISTS',
                 'body': 'The README of https://github.com/anthropics/formal-math, read on '
-                        '2026-11-14, lists three projects: zeta23, 3sum-apsp and eth. It states a deterministic algorithm that '
-                        'counts satisfying assignments of every k-CNF in 2^O(min{k²n log log '
+                        '2026-11-28, lists four projects: zeta23, 3sum-apsp, eth and vp-vnp. For '
+                        'eth it states a deterministic algorithm that '
+                        'counts satisfying assignments of every k-CNF (m ≥ 2 clauses, n ≥ 4 '
+                        'variables) in 2^O(min{k²n log log '
                         'n/√log n, km/√log m}) steps, which it says refutes the Exponential Time '
                         'Hypothesis. That is an extraordinary claim; this site reports it as the '
                         "repository's statement and has not checked it. The README of "
@@ -106,7 +106,7 @@ FOLIO = {'folio_id': 'M.12',
  'skill': {'filename': 'lean4-complexity-mlkem-lattice-SKILL.md',
            'name': 'lean4-complexity-mlkem-lattice',
            'description': 'AI-agnostic formal mathematics and cryptography skill for reading the '
-                          'Lean 4 projects in anthropics/formal-math (zeta23, 3sum-apsp, eth) by '
+                          'Lean 4 projects in anthropics/formal-math (zeta23, 3sum-apsp, eth, vp-vnp) by '
                           'their READMEs and for NIST FIPS 203 ML-KEM Module-LWE parameters.',
            'rules': ['Configure Module-LWE over polynomial ring R_q = Z_q[X]/(X^256 + 1) with '
                      'prime modulus q = 3329 and module rank k in {2, 3, 4} (ML-KEM-512/768/1024).',
@@ -184,7 +184,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                       'problem used in ML-KEM.'},
  'act1_title': "Act I — Cool Fact & Human Story: Why Quantum Computers Could Break Today's "
                'Internet Locks, and Why Cryptographers Turned to 768-Dimensional Lattices',
- 'act1_dropcap': 'In 1994 Peter Shor, then at AT&T Bell Laboratories, published a quantum '
+ 'act1_dropcap': 'In 1994 Peter Shor published a quantum '
                  'algorithm for factoring integers and computing discrete logarithms in '
                  'polynomial time. If a large enough fault-tolerant quantum computer is ever '
                  'built, it could break the RSA and elliptic-curve systems that protect much of '
@@ -195,11 +195,10 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'mechanically, though only for the statements someone has formalised.',
  'act1_plain_bridge': 'Every time you log into your bank, send a text message, or sign a digital '
                       'document on your computer, your privacy depends on a clever mathematical '
-                      "padlock. Today's locks work like a one-way street: multiplying two gigantic "
-                      'prime numbers together is lightning fast, but unscrambling their product '
-                      'back into the original primes takes a conventional supercomputer thousands '
-                      'of years. A large future quantum computer could crack those prime-number '
-                      'locks. To keep our digital world safe, scientists '
+                      "padlock. Today's locks work like a one-way street: multiplying two large "
+                      'prime numbers is fast, but no known method on an ordinary computer '
+                      'recovers the primes quickly from their product. A large future quantum '
+                      'computer could. To keep our digital world safe, scientists '
                       'designed a completely new type of padlock based on high-dimensional '
                       'geometric grids called crystal lattices. Imagine a giant egg carton '
                       'floating in hundreds of dimensions, hidden behind a dense cloud of fog. '
@@ -220,7 +219,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
               'that these problems are hard. Separately, the public repositories '
               'https://github.com/anthropics/formal-math and '
               'https://github.com/anthropics/fermats-last-theorem state in their READMEs, read on '
-              '2026-11-14, that they contain Lean 4 formalisations; this site has not built them. The parent folios of '
+              '2026-11-28, that they contain Lean 4 formalisations; this site has not built them. The parent folios of '
               "this synthesis cite Andrew Wiles's modularity paper (Annals of Mathematics, DOI "
               '10.2307/2118559), the FunSearch program-search paper (Nature, DOI '
               "10.1038/s41586-023-06924-6) and Ryan Williams's faster all-pairs shortest paths via "
@@ -247,8 +246,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'NIST publishes FIPS 203 (ML-KEM) and FIPS 204 (ML-DSA); open-source libraries '
                  'such as open-quantum-safe/liboqs implement them.'),
                 ('2026',
-                 'On 2026-11-14 this site reads the READMEs of the public Lean 4 repositories '
-                 'anthropics/formal-math (which lists zeta23, 3sum-apsp and eth) and '
+                 'On 2026-11-28 this site reads the READMEs of the public Lean 4 repositories '
+                 'anthropics/formal-math (which lists zeta23, 3sum-apsp, eth and vp-vnp) and '
                  'anthropics/fermats-last-theorem.')],
  'act2_title': 'Act II — Cross-Field Intuition: A 768-Dimensional Egg Carton in Thick Fog + The '
                'Unbribable Lean 4 Referee',
@@ -270,18 +269,17 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'lattice-reduction attacks much more expensive. FIPS 203 fixes the noise '
                    'parameters (eta1 = 3 for ML-KEM-512 and 2 for the others; eta2 = 2) and lists '
                    'decapsulation failure rates of 2^-138.8, 2^-164.8 and 2^-174.8 for the three '
-                   'parameter sets. Earlier editions also described an EightSquare.lean proof '
-                   'that an eight-square bilinear map needs only 28 products; no file of that '
-                   'name appears in the anthropics/formal-math file tree read on 2026-11-14, and '
-                   'that claim is withdrawn.',
+                   'parameter sets. Earlier editions also said an eight-square bilinear map '
+                   'needs only 28 products; this site has not verified that, and the claim is '
+                   'withdrawn.',
  'act2_analogy': 'Everyday analogy: Imagine an egg carton that stretches across seven hundred '
                  'sixty-eight dimensions, covered in an impenetrable bank of fog. The public key '
                  'is like dropping a tiny marble into one secret indentation near a grid point, '
                  'then giving the whole carton a slight nudge (+e). Without the secret map, a '
                  'searcher, as far as anyone knows even one with a quantum computer, faces an '
                  'astronomical number of similar valleys. But with the private trapdoor, '
-                 'the rightful owner reaches straight through the fog and retrieves the marble in '
-                 'a microsecond.',
+                 'the rightful owner reaches straight through the fog and retrieves the marble '
+                 'quickly.',
  'act2_plain_primer': 'To understand how this post-quantum lock operates, consider two primary '
                       'adjustments on our cryptographic dashboard. The first adjustment controls '
                       'the geometric dimension or rank of the polynomial crystal lattice, toggling '
@@ -301,8 +299,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                      'analogy_sub': 'Retrieving a marble dropped into foggy high-dimensional '
                                     'valleys',
                      'force_a_title': 'Lattice Module Rank k',
-                     'force_a_sub': 'Scales crystal dimension from 512D to 1024D against quantum '
-                                    'SVP',
+                     'force_a_sub': 'Scales crystal dimension from 512D to 1024D against known '
+                                    'SVP attacks',
                      'force_b_title': 'Binomial Noise Width η',
                      'force_b_sub': 'Injects cryptographic fog while bounding decryption failure '
                                     'risk',
@@ -319,14 +317,13 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Observe the trade-off between LWE cryptographic fog density and decryption '
                  'failure margin.',
                  'Experiment 3 (Quantum ⚛ & Counterfactual ⚡): Click [⚛ Quantum] and [⚡ '
-                 'Counterfactual] to inspect the ML-KEM lattice vector geometry. (The former '
-                 'EightSquare.lean panel referred to a file that does not appear in the '
-                 'anthropics/formal-math file tree read on 2026-11-14.)'],
+                 'Counterfactual] to inspect the ML-KEM lattice vector geometry.'],
  'act4_title': "Act IV — Imagining Humanity's Future: Quantum-Resistant Privacy & "
                'Machine-Checked Mathematics',
  'act4_human_ai': 'Open-source post-quantum libraries '
                   '(https://github.com/open-quantum-safe/liboqs) and public Lean 4 repositories '
-                  'are two separate efforts. Read on 2026-11-14, the READMEs of '
+                  'are two separate efforts. Read on 2026-11-28 (formal-math, '
+                  'fermats-last-theorem) and 2026-11-14 (pfr, DeepSeek-Prover-V2), the READMEs of '
                   'https://github.com/anthropics/formal-math and '
                   'https://github.com/anthropics/fermats-last-theorem describe machine-checked '
                   'Lean 4 formalisations, the README of https://github.com/teorth/pfr describes '
@@ -342,23 +339,18 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'smaller obligations in libraries such as leanprover-community/mathlib4. '
                    'Verifying the code of post-quantum libraries such as '
                    'open-quantum-safe/liboqs is a separate, ongoing task that formal mathematics '
-                   'alone does not complete. Compelling open '
-                   'mathematical frontiers remain: can we formalize fully machine-checked proofs '
+                   'alone does not complete. One open question: can we formalize fully machine-checked proofs '
                    'of post-quantum chosen-ciphertext security reductions down to the Lean 4 '
                    'kernel, closing the gap between high-level paper proofs and machine-code '
-                   'execution? Furthermore, can tensor rank compression algorithms discover even '
-                   'faster arithmetic transforms for ring-polynomial multiplication without '
-                   'compromising lattice security margins? Progress on these questions would '
-                   'help keep communication and research safer as quantum computing develops.',
+                   'execution?',
  'cf_bridge': 'Standalone Formal Mathematics, Fine-Grained Complexity & Post-Quantum Cryptography '
-              'Capstone Flagship (M.01 + M.03 + M.06 -> M.12): Closing Volume VI across all 48 '
-              'Folios of Informatico.ai.',
+              'Capstone (M.01 + M.03 + M.06 -> M.12): closes Volume VI.',
  'sources': ['Regev, O. (2009). On lattices, learning with errors, random linear codes, and '
              'cryptography. Journal of the ACM, 56(6), 1–40. DOI: 10.1145/1568318.1568324.',
-             'anthropics/formal-math README and project READMEs (read 2026-11-14): projects '
-             'zeta23, 3sum-apsp and eth. GitHub: https://github.com/anthropics/formal-math. '
+             'anthropics/formal-math README (read 2026-11-28): projects zeta23, 3sum-apsp, eth '
+             'and vp-vnp. GitHub: https://github.com/anthropics/formal-math. '
              'Repository statements; not built by this site.',
-             'anthropics/fermats-last-theorem README (read 2026-11-14): states a machine-checked '
+             'anthropics/fermats-last-theorem README (read 2026-11-28): states a machine-checked '
              "Lean 4 proof of Fermat's Last Theorem. GitHub: "
              'https://github.com/anthropics/fermats-last-theorem. Repository statement; not built '
              'by this site.',
@@ -382,8 +374,8 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
         '            <line x1="35" y1="188" x2="645" y2="188" stroke="currentColor" '
         'stroke-opacity="0.3"/>\n'
         '            <text x="44" y="24" font-size="10.5" font-weight="600" '
-        'fill="currentColor">anthropics/formal-math: zeta23 · 3sum-apsp · '
-        'eth</text>\n'
+        'fill="currentColor">anthropics/formal-math: four Lean 4 '
+        'projects</text>\n'
         '            <g transform="translate(56, 46)">\n'
         '              <rect x="0" y="0" width="235" height="46" rx="6" fill="var(--tp-stone)" '
         'fill-opacity="0.3" stroke="var(--tp-prussian)" stroke-width="1.8"/>\n'
@@ -448,7 +440,7 @@ DISPATCH = {'kicker': 'FRONTIER LEAN 4 FORMAL VERIFICATION & POST-QUANTUM CRYPTO
  'headline': 'Public Lean 4 Repositories and the NIST FIPS 203 Lattice Standard, Side by Side',
  'body': 'A synthesis of Folios M.01 (Wiles, DOI 10.2307/2118559), M.03 (FunSearch, DOI '
          '10.1038/s41586-023-06924-6) and M.06 (Williams, DOI 10.1137/15M1024524), read beside '
-         'what the README of https://github.com/anthropics/formal-math, read on 2026-11-14, says '
+         'what the README of https://github.com/anthropics/formal-math, read on 2026-11-28, says '
          'the repository contains (including a statement, not checked here, that one project '
          'refutes ETH) and the ML-KEM standard implemented in '
          'https://github.com/open-quantum-safe/liboqs.'}
@@ -459,7 +451,7 @@ META_3D = ('Module-LWE Crystal Lattice Teaching Surface',
 ES_TRANSLATION = {'title_es': 'Repositorios públicos de Lean 4 y NIST FIPS 203 (ML-KEM): lo que afirman, '
              'uno al lado del otro',
  'subtitle_es': 'Sintetizando los Folios M.01, M.03 y M.06: lo que el README del repositorio '
-                'público de Lean 4 anthropics/formal-math, consultado el 14 de noviembre de 2026, '
+                'público de Lean 4 anthropics/formal-math, consultado el 28 de noviembre de 2026, '
                 'dice que contiene (incluido un proyecto eth que, según el README, refuta la '
                 'Hipótesis del Tiempo Exponencial, una afirmación que este sitio no ha '
                 'comprobado), junto al estándar de encapsulamiento de claves con retículos NIST '
@@ -469,28 +461,29 @@ ES_TRANSLATION = {'title_es': 'Repositorios públicos de Lean 4 y NIST FIPS 203 
            'eficiencia. Es una creencia bien estudiada, no una prueba.',
  'plain_es': 'En 1994, el matemático Peter Shor publicó un algoritmo cuántico que, si algún día '
              'se construyera una computadora cuántica lo bastante grande, permitiría romper los '
-             'candados matemáticos que protegen buena parte de nuestras comunicaciones. Durante treinta años, la seguridad de internet dependió de la dificultad de '
-             'descomponer números gigantescos en sus factores primos. Para defender el futuro '
+             'candados matemáticos que protegen buena parte de nuestras comunicaciones. Hoy, '
+             'buena parte de la seguridad de internet depende de lo difícil que es '
+             'descomponer números enormes en sus factores primos. Para defender el futuro '
              'digital, los científicos desarrollaron candados post-cuánticos basados en retículos '
              'cristalinos de cientos de dimensiones. Imaginen un enorme cartón de huevos '
              'suspendido en 768 dimensiones y oculto tras una densa niebla. Colocar una canica en '
              'un hueco específico es facilísimo para el dueño que tiene el mapa privado, pero para '
-             'un intruso o una computadora cuántica que busca a ciegas entre billones de valles '
+             'un intruso o una computadora cuántica que busca a ciegas entre muchísimos valles '
              'parecidos, la tarea se considera extremadamente difícil. Los asistentes de '
              'demostración formal como Lean 4 revisan paso a paso los argumentos que alguien ha '
              'formalizado, pero no garantizan que un candado nunca falle.',
- 'deep_es': 'La seguridad del estándar post-cuántico NIST FIPS 203 (ML-KEM) depende del '
-            'equilibrio entre dos parámetros clave: el rango del retículo modular y el ancho del ruido binomial '
+ 'deep_es': 'El tablero de este folio mueve dos parámetros del estándar post-cuántico NIST '
+            'FIPS 203 (ML-KEM): el rango del retículo modular y el ancho del ruido binomial '
             'centrado. Al seleccionar un rango k entre dos y cuatro, la dimensión del espacio '
-            'polinomial se expande de 512 a 1,024 dimensiones, elevando la resistencia '
-            'criptográfica ante algoritmos cuánticos de reducción de base como BKZ. Al mismo '
+            'polinomial se expande de 512 a 1,024 dimensiones, lo que encarece mucho los '
+            'ataques conocidos de reducción de base, como BKZ. Al mismo '
             'tiempo, el ancho del ruido inyecta una niebla controlada que oculta la clave privada '
             'manteniendo los fallos de desencapsulado muy raros (2^-164.8 para ML-KEM-768, según '
-            'la Tabla 1 de FIPS 203). Por separado, según su README consultado el 14 de '
-            'noviembre de 2026, el repositorio anthropics/formal-math dice contener tres '
-            'proyectos de Lean 4 (zeta23, 3sum-apsp y eth); este sitio no los ha compilado. Los '
-            'archivos EightSquare.lean y ETHIsFalse.lean que citaban ediciones anteriores no '
-            'aparecen en el árbol de archivos del repositorio consultado ese mismo día. Ninguna de estas herramientas vuelve inquebrantable la '
+            'la Tabla 1 de FIPS 203). Por separado, según su README consultado el 28 de '
+            'noviembre de 2026, el repositorio anthropics/formal-math dice contener cuatro '
+            'proyectos de Lean 4 (zeta23, 3sum-apsp, eth y vp-vnp); este sitio no los ha '
+            'compilado. Se retiran las afirmaciones de ediciones anteriores sobre archivos '
+            'de Lean concretos. Ninguna de estas herramientas vuelve inquebrantable la '
             'privacidad: los retículos son la mejor apuesta actual, bien estudiada, no una '
             'garantía.',
  'bridge_es': 'Folio de cierre del Volumen VI (M.01 + M.03 + M.06 -> M.12), sobre matemáticas '
