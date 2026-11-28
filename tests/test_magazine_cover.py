@@ -398,7 +398,9 @@ class CoverFrontsTests(unittest.TestCase):
                 self.assertEqual(dek.attrs["data-en"], B._standfirst_excerpt(B.decf(B.LONGFORM[slug]["act1_plain_bridge"])), rel)
                 self.assertEqual(dek.attrs["data-es"], B._standfirst_excerpt(B.decf(es_meta["plain_es"])), rel)
 
-    def test_each_front_standfirst_says_the_same_thing_in_both_languages(self) -> None:
+    def test_each_front_standfirst_lines_up_in_both_languages(self) -> None:
+        # Structural only (sentence count, figures, length): a digit-free clause present in one language can
+        # pass. The Spanish meaning is checked by the es-MX reviewer, not by this test.
         """The reported fault: the Architecture and Mathematics fronts showed one passage in English and another
         in Spanish (a citation sentence with two DOIs; a sentence about 1994). Both languages come from the
         essay's plain-words pair (act1_plain_bridge and plain_es), and the excerpts must line up: the same
@@ -691,9 +693,10 @@ class HubPlainWordsTests(unittest.TestCase):
             self.assertEqual(["tp-cta-primary" in a.classes for a in ctas], [True, False], rel)
             self.assertEqual(len(rack.find_all("a", "tp-rack-card-series")), 14, rel)
 
-    def test_time_and_gravity_step_count_is_one_number_everywhere(self) -> None:
-        """The series length is counted once (B._tg_steps) and every place that states it agrees: the hub
-        kicker, the rack kicker, the standfirst's spelled-out number, each card's "Step i of N", and the cover."""
+    def test_time_and_gravity_step_count_agrees_on_physics_and_cover(self) -> None:
+        """The series length is counted once (B._tg_steps) for the /physics/ hub kicker, the rack kicker, the
+        standfirst's spelled-out number, each card's "Step i of N", and the cover row. Not covered: the Contents
+        drawer label and the /timegravity/ pages, which still state 14 directly."""
         steps = B._tg_steps()
         self.assertEqual(steps, len(B.TIMEGRAVITY_PAGES))
         word_en, word_es = B._number_words(steps)
@@ -831,23 +834,21 @@ class HubPlainWordsTests(unittest.TestCase):
                 self.assertIn("QUICK-START", quick.find("span", "tp-studio-quickstart-badge").attrs["data-en"], rel)
                 self.assertIn("run_all_bounties.py" if hub == "bounties" else "run_all_toolchain.py", quick.text(), rel)
                 for text in shown_strings(quick):
-                    self.assertNotRegex(text, r"\) below\b", f"{rel}: the essays are above the box now: {text!r}")
+                    self.assertNotRegex(text, r"(?i)\) below\b|\babajo\b|a continuación", f"{rel}: the essays are above the box now: {text!r}")
 
     def test_hub_cards_are_not_cut_and_show_only_the_short_code(self) -> None:
         """Card blurbs on the hubs ended in "..." at three lines. Nothing clamps them now, and the Bounties and
         Toolbox cards show B.01 or X.06 without the internal id (BOUNTY-M1, TOOL-PHYS-MATH-1)."""
         css = " ".join((SRC / "informatico.css").read_text(encoding="utf-8").split())
-        for selector in (".tp-rack-dek {", ".tp-body .tp-rack-dek {", ".tp-rack-title {", ".tp-body .tp-rack-title {"):
-            start = 0
-            found = 0
-            while (at := css.find(selector, start)) != -1:
-                if at == 0 or css[at - 1] in " }":
-                    rule = css[at:css.index("}", at)]
-                    found += 1
-                    for banned in ("line-clamp", "text-overflow", "-webkit-box", "overflow: hidden", "max-height", "nowrap"):
-                        self.assertNotIn(banned, rule, f"{selector} {banned}")
-                start = at + 1
-            self.assertGreater(found, 0, selector)
+        # Every rule whose selector list mentions a card title or blurb, however it is written
+        # (".a, .tp-rack-dek", ".x .tp-rack-dek:not(y)"), may not clip text.
+        found = 0
+        for head, body in re.findall(r"([^{}]+)\{([^{}]*)\}", re.sub(r"/\*.*?\*/", "", css)):
+            if "tp-rack-dek" in head or "tp-rack-title" in head:
+                found += 1
+                for banned in ("line-clamp", "text-overflow", "-webkit-box", "overflow: hidden", "max-height", "nowrap"):
+                    self.assertNotIn(banned, body, f"{head.strip()} {banned}")
+        self.assertGreater(found, 2)
         for hub in ("physics", "bounties", "toolchain", "engineering", "architecture", "math"):
             for prefix in ("", "es-mx/"):
                 rel = f"{prefix}{hub}/index.html"
