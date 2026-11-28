@@ -5796,7 +5796,15 @@ COVER_FRONTS: dict[str, dict] = {
     "math": {"lead": "m12", "links": ("m07", "m08", "m10")},
 }
 
-_SENTENCE_END_RE = re.compile(r"(?<=[.?!])\s+")
+# A sentence ends at . ? or ! followed by space, but not after "et al.", "e.g.", "i.e.", "cf.", "vs.", "approx."
+# or a single capital initial ("J. Heyman"), which would cut a citation in half.
+_SENTENCE_END_RE = re.compile(
+    r"(?<!\bal\.)(?<!\be\.g\.)(?<!\bi\.e\.)(?<!\bcf\.)(?<!\bvs\.)(?<!\bapprox\.)(?<!\b[A-Z]\.)(?<=[.?!])\s+"
+)
+
+
+def _balanced(text: str) -> bool:
+    return text.count("(") == text.count(")") and text.count("[") == text.count("]")
 # Lead-ins dropped from a quoted opening: the box label, and a clause pointing back at a page heading the cover
 # does not show ("To picture this mystery, imagine ..." becomes "Imagine ...").
 _PLAIN_LEAD_RE = re.compile(
@@ -5816,8 +5824,10 @@ def _standfirst_excerpt(text: str, max_chars: int = 280) -> str:
         text = text[:1].upper() + text[1:]
     parts = _SENTENCE_END_RE.split(text)
     out = parts[0]
-    if len(parts) > 1 and len(out) + 1 + len(parts[1]) <= max_chars:
+    if len(parts) > 1 and len(out) + 1 + len(parts[1]) <= max_chars and _balanced(f"{out} {parts[1]}"):
         out = f"{out} {parts[1]}"
+    if not _balanced(out):
+        raise ValueError(f"standfirst would cut a bracket in half: {out!r}")
     return out
 
 

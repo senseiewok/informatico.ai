@@ -758,6 +758,12 @@ class ThisWeekTests(unittest.TestCase):
         long_second = "Short first. " + "x" * 300 + "."
         self.assertEqual(B._standfirst_excerpt(long_second), "Short first.")
         self.assertEqual(B._standfirst_excerpt("About 1.09 parts. Is it physics? Yes."), "About 1.09 parts. Is it physics?")
+        # The reported cut: "... calcite crystal network (Cultrone et al." on the Architecture front.
+        self.assertEqual(
+            B._standfirst_excerpt("Paint is a mirror. Lime turns to calcite (Cultrone et al. 2004). It hardens."),
+            "Paint is a mirror. Lime turns to calcite (Cultrone et al. 2004).",
+        )
+        self.assertEqual(B._standfirst_excerpt("Arches stand. J. Heyman said so. Yes."), "Arches stand. J. Heyman said so.")
 
     def test_module_rotates_weekly_without_innerhtml(self) -> None:
         mod = (SRC / "modules" / "featured-spotlight.mjs").read_text(encoding="utf-8")
