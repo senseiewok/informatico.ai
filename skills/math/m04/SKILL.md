@@ -18,7 +18,7 @@ A plain-text companion to the essay at https://informatico.ai/math/m04/ (`M.04 �
 
 ## How it works, in four stages
 - Stage 1 (Small Doubling Hypothesis): A subset A ⊂ F_2^n satisfies |A + A| ≤ K|A|, indicating hidden approximate subgroup structure.
-- Stage 2 (Ruzsa Entropic Triangle Inequality): Defines entropic distance d(X, Y) = H(X - Y') - (H(X) + H(Y'))/2 and evaluates submodularity bounds.
+- Stage 2 (Ruzsa Entropic Triangle Inequality): Defines entropic distance d(X, Y) = H(X - Y') - (H(X) + H(Y'))/2, where Y' is an independent copy of Y.
 - Stage 3 (Tau-Minimizer): The proof studies a minimizer of an entropic functional τ and uses it to show that d(X, U_H) is small for the uniform distribution U_H on a subgroup H. This page's slider is a simplified picture of that step, not the paper's argument.
 - Stage 4 (Polynomial Coset Covering): The theorem, as stated in the README of the Lean project, says A is covered by at most 2·K^12 cosets of a subspace H of size at most |A|. Separately, the Equational Theories project concerns 4,694 × 4,693 = 22,028,942 ordered pairs of magma laws.
 
