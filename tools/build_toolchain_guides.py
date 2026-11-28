@@ -491,7 +491,7 @@ def render_guide_page(slug: str, catalog: dict, lang: str = "en") -> str:
     return f"""{head}
 <body class="tp-body tp-page-folio">
 {B.render_masthead(rel_res, "toolchain", lang)}
-{B.render_contents_dialog(rel_res, catalog, slug)}
+{B.render_contents_dialog(rel_res, catalog, slug, active_pillar="toolchain")}
   <main id="main" class="tp-shell" tabindex="-1">
   <nav class="tp-breadcrumb-bar" aria-label="{B.esc(lbl_crumb)}">
     <ol class="tp-breadcrumb-list">

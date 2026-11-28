@@ -3945,7 +3945,7 @@ def render_page(page: dict, catalog: dict, lang: str = "en") -> str:
     return f"""{head}
 <body class="tp-body tp-page-folio tg-page">
 {B.render_masthead(rel_res, "physics", lang)}
-{B.render_contents_dialog(rel_res, catalog)}
+{B.render_contents_dialog(rel_res, catalog, active_pillar="physics")}
   <main id="main" class="tp-shell" tabindex="-1">
 {breadcrumb(rel_res, page)}
 <div id="tp-folio-mount" data-folio-id="{page['code']}" data-folio-slug="{plate_slug(page)}">

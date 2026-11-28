@@ -1229,7 +1229,7 @@ def render_page(catalog: dict, lang: str = "en") -> str:
     return f"""{head}
 <body class="tp-body tp-page-folio sf-page">
 {B.render_masthead(rel, "architecture", lang)}
-{B.render_contents_dialog(rel, catalog, C.SLUG)}
+{B.render_contents_dialog(rel, catalog, C.SLUG, active_pillar="architecture")}
 {render_catenary_backdrop()}
   <main id="main" class="tp-shell sf-shell" tabindex="-1">
     <nav class="tp-breadcrumb-bar" aria-label="{aria_crumb}">

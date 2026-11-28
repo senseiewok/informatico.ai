@@ -2069,7 +2069,7 @@ def render_masthead(rel_res: str, active_pillar: str = "", lang: str = "en") -> 
     links = []
     # Time & Gravity is a series inside Physics (2026-11-09 council): it is reached from /physics/, the Contents
     # dialog's Physics column, the home chip and the footer, not from a masthead item of its own.
-    for p_key in ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "about"):
+    for p_key in MASTHEAD_SECTIONS:
         en, es = PILLAR_NAV_LABELS[p_key]
         cur = ' aria-current="page"' if p_key == active_pillar else ""
         links.append(
@@ -2105,8 +2105,35 @@ def render_masthead(rel_res: str, active_pillar: str = "", lang: str = "en") -> 
   </header>"""
 
 
-def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -> str:
-    """Every essay, one click from any page: a native <dialog> with search, four columns of titles."""
+MASTHEAD_SECTIONS = ("engineering", "architecture", "physics", "math", "bounties", "toolchain", "about")
+
+
+def render_contents_sections(rel_res: str, active_pillar: str = "") -> str:
+    """The masthead's seven sections again, at the top of the Contents dialog.
+
+    Below 861px the masthead hides its own links, so on a phone this list is the way to a whole section."""
+    links = []
+    for p_key in MASTHEAD_SECTIONS:
+        en, es = PILLAR_NAV_LABELS[p_key]
+        cur = ' aria-current="page"' if p_key == active_pillar else ""
+        links.append(
+            f'<li><a href="{_href(rel_res, p_key + "/")}" data-contents-section="{p_key}"'
+            f'{cur} data-en="{esc(en)}" data-es="{esc(es)}">{esc(en)}</a></li>'
+        )
+    links_html = "\n          ".join(links)
+    return f"""      <nav class="tp-contents-sections" aria-labelledby="tp-contents-sections-title">
+        <h3 id="tp-contents-sections-title" data-en="Sections" data-es="Secciones">Sections</h3>
+        <ul>
+          {links_html}
+        </ul>
+      </nav>"""
+
+
+def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "", active_pillar: str = "") -> str:
+    """Every essay, one click from any page: a native <dialog> with the section list, search, four columns of titles.
+
+    The heading takes the opening focus (autofocus), so a phone does not raise its keyboard over the list;
+    folio-router.mjs moves focus on to the search field where there is a keyboard and a fine pointer."""
     tg_items = []
     tg_by_code = {p["code"]: p for p in TIMEGRAVITY_PAGES}
     for m in TIMEGRAVITY_TRACK_MAP:
@@ -2210,10 +2237,11 @@ def render_contents_dialog(rel_res: str, catalog: dict, active_slug: str = "") -
     return f"""  <dialog id="tp-contents" class="tp-contents" aria-labelledby="tp-contents-title">
     <div class="tp-contents-inner">
       <div class="tp-contents-head">
-        <h2 id="tp-contents-title" data-en="Contents" data-es="Contenido">Contents</h2>
+        <h2 id="tp-contents-title" tabindex="-1" autofocus data-en="Contents" data-es="Contenido">Contents</h2>
         <input id="tp-contents-search" class="tp-contents-search" type="search" autocomplete="off" placeholder="Search {total} essays, 6 bounties, 8 tools &amp; 12 syntheses" aria-label="Search essays, bounties and tools">
         <button type="button" class="tp-tool-btn tp-contents-close" data-close-contents aria-label="Close contents">Close</button>
       </div>
+{render_contents_sections(rel_res, active_pillar)}
       <p id="tp-contents-empty" class="tp-contents-empty" hidden data-en="No essay matches that search." data-es="Ningún ensayo coincide con la búsqueda.">No essay matches that search.</p>
       <div class="tp-contents-grid">
 {cols_html}
@@ -2387,7 +2415,7 @@ def render_folio_page(pillar: str, folios: list[dict], folio: dict, catalog: dic
     return f"""{head}
 <body class="tp-body tp-page-folio">
 {render_masthead(rel_res, pillar, lang)}
-{render_contents_dialog(rel_res, catalog, folio["slug"])}
+{render_contents_dialog(rel_res, catalog, folio["slug"], active_pillar=pillar)}
   <main id="main" class="tp-shell" tabindex="-1">
 {render_breadcrumb(rel_res, pillar, folio)}
 {render_folio_mount(pillar, folio, rel_res)}
@@ -2583,7 +2611,7 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
     return f"""{head}
 <body class="tp-body tp-page-hub">
 {render_masthead(rel_res, pillar, lang)}
-{render_contents_dialog(rel_res, catalog)}
+{render_contents_dialog(rel_res, catalog, active_pillar=pillar)}
   <main id="main" class="tp-shell" tabindex="-1">
 {render_breadcrumb(rel_res, pillar)}
     <section class="tp-pillar-hero" aria-labelledby="pillar-heading">
@@ -3307,7 +3335,7 @@ def render_bounties_hub(catalog: dict, lang: str = "en") -> str:
     return f"""{head}
 <body class="tp-body tp-page-hub">
 {render_masthead(rel_res, "bounties", lang)}
-{render_contents_dialog(rel_res, catalog)}
+{render_contents_dialog(rel_res, catalog, active_pillar="bounties")}
   <main id="main" class="tp-shell" tabindex="-1">
   <nav class="tp-breadcrumb-bar" aria-label="Breadcrumb">
     <ol class="tp-breadcrumb-list">
@@ -3933,7 +3961,7 @@ def render_bounty_folio_page(bounty: dict, catalog: dict, lang: str = "en") -> s
     return f"""{head}
 <body class="tp-body tp-page-folio">
 {render_masthead(rel_res, "bounties", lang)}
-{render_contents_dialog(rel_res, catalog, slug)}
+{render_contents_dialog(rel_res, catalog, slug, active_pillar="bounties")}
   <main id="main" class="tp-shell" tabindex="-1">
   <nav class="tp-breadcrumb-bar" aria-label="Breadcrumb">
     <ol class="tp-breadcrumb-list">
@@ -4573,7 +4601,7 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
     return f"""{head}
 <body class="tp-body tp-page-hub">
 {render_masthead(rel_res, "toolchain", lang)}
-{render_contents_dialog(rel_res, catalog)}
+{render_contents_dialog(rel_res, catalog, active_pillar="toolchain")}
   <main id="main" class="tp-shell" tabindex="-1">
   <nav class="tp-breadcrumb-bar" aria-label="Breadcrumb">
     <ol class="tp-breadcrumb-list">
@@ -4872,7 +4900,7 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
     return f"""{head}
 <body class="tp-body tp-page-folio">
 {render_masthead(rel_res, "toolchain", lang)}
-{render_contents_dialog(rel_res, catalog, slug)}
+{render_contents_dialog(rel_res, catalog, slug, active_pillar="toolchain")}
   <main id="main" class="tp-shell" tabindex="-1">
   <nav class="tp-breadcrumb-bar" aria-label="Breadcrumb">
     <ol class="tp-breadcrumb-list">
@@ -6104,7 +6132,7 @@ def render_about_page(catalog: dict, lang: str = "en") -> str:
     return f"""{head}
 <body class="tp-body tp-page-hub">
 {render_masthead(rel_res, "about", lang)}
-{render_contents_dialog(rel_res, catalog, "about")}
+{render_contents_dialog(rel_res, catalog, "about", active_pillar="about")}
   <main id="main" class="tp-shell" tabindex="-1">
     <nav class="tp-breadcrumb-bar" aria-label="Breadcrumb">
       <ol class="tp-breadcrumb-list">

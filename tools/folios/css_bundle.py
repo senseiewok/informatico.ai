@@ -168,10 +168,51 @@ REVAMP_CSS = r"""
     background-color: var(--tp-vellum);
     color: var(--tp-ink);
     box-shadow: 0 24px 64px color-mix(in srgb, var(--tp-ink) 28%, transparent);
+    /* The list is long: it scrolls inside the dialog, and reaching either end never scrolls the page behind. */
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   .tp-contents::backdrop {
     background-color: color-mix(in srgb, var(--tp-ink) 55%, transparent);
+  }
+
+  /* While Contents is open the page behind it stays where it is (folio-router.mjs sets and clears the classes).
+     Where the page had a scrollbar that takes up width, its gutter is kept, so the page does not shift sideways. */
+  html.tp-contents-open {
+    overflow: hidden;
+  }
+
+  html.tp-contents-open.tp-contents-gutter {
+    scrollbar-gutter: stable;
+  }
+
+  html.tp-contents-open body {
+    overflow: hidden;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .tp-contents[open] {
+      animation: tp-contents-in 160ms ease-out;
+    }
+
+    .tp-contents[open]::backdrop {
+      animation: tp-contents-fade 160ms ease-out;
+    }
+  }
+
+  @keyframes tp-contents-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.5rem);
+    }
+  }
+
+  @keyframes tp-contents-fade {
+    from {
+      opacity: 0;
+    }
   }
 
   .tp-contents-inner {
@@ -193,6 +234,72 @@ REVAMP_CSS = r"""
     margin: 0;
     font-family: var(--font-display, Georgia, serif);
     font-size: 1.5rem;
+  }
+
+  /* The heading only receives the opening focus, so a phone keyboard stays down; it is not a control. */
+  .tp-contents-head h2:focus {
+    outline: none;
+  }
+
+  /* The masthead's seven sections, shown in the dialog wherever the masthead hides them (860px and below). */
+  .tp-contents-sections {
+    display: none;
+  }
+
+  @media (max-width: 860px) {
+    .tp-contents-sections:not([hidden]) {
+      display: block;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.1rem;
+      border-bottom: 1px solid var(--tp-rule-strong);
+    }
+
+    .tp-contents-sections h3 {
+      margin: 0 0 0.6rem;
+      font-family: var(--tp-font-ui, system-ui, sans-serif);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--tp-graphite);
+    }
+
+    .tp-contents-sections ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.5rem;
+    }
+
+    .tp-contents-sections a {
+      display: flex;
+      align-items: center;
+      min-height: 2.75rem;
+      padding: 0.5rem 0.85rem;
+      border: 1px solid var(--tp-rule-strong);
+      border-radius: 10px;
+      background-color: var(--tp-stone);
+      color: var(--tp-ink);
+      font-family: var(--tp-font-ui, system-ui, sans-serif);
+      font-size: 0.95rem;
+      line-height: 1.2;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    .tp-contents-sections a:hover,
+    .tp-contents-sections a:focus-visible {
+      border-color: var(--tp-ink);
+    }
+
+    .tp-contents-sections a[aria-current="page"] {
+      background-color: var(--tp-ink);
+      border-color: var(--tp-ink);
+      color: var(--tp-vellum);
+      font-weight: 600;
+    }
   }
 
   .tp-contents-search {
