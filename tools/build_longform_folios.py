@@ -5945,7 +5945,7 @@ def render_cover_rotating_spotlight_and_schedule(rel_res: str = ".") -> str:
     slides_block = "\n".join(slides_html)
     coming_block = "\n".join(coming_html)
     note_en = "A different essay is featured here each week. These three are next in line and already on the site."
-    note_es = "Cada semana destacamos aquí un ensayo distinto. Estos tres son los siguientes y ya están en el sitio."
+    note_es = "Cada semana destacamos aquí un ensayo distinto. Estos tres son los que siguen y ya están en el sitio."
 
     return f"""    <section class="tp-featured-edition-desk tp-this-week" id="tp-featured-edition-desk" aria-labelledby="tp-featured-desk-heading">
       <div class="tp-this-week-grid">
@@ -5954,7 +5954,7 @@ def render_cover_rotating_spotlight_and_schedule(rel_res: str = ".") -> str:
 {slides_block}
         </div>
         <aside class="tp-coming-next" aria-labelledby="tp-coming-next-heading">
-          <h2 id="tp-coming-next-heading" class="tp-this-week-label" data-en="Read next" data-es="Para leer después">Read next</h2>
+          <h2 id="tp-coming-next-heading" class="tp-this-week-label" data-en="Read next" data-es="Lo que sigue">Read next</h2>
           <ul class="tp-coming-list">
 {coming_block}
           </ul>
@@ -6410,7 +6410,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         <a class="tp-track-chip" href="math/">
           <span class="tp-track-chip-kicker" data-en="{math_n} essays" data-es="{math_n} ensayos">{math_n} essays</span>
           <strong class="tp-track-chip-title" data-en="{esc(sec['math'][0])}" data-es="{esc(sec['math'][1])}">{esc(sec['math'][0])}</strong>
-          <span class="tp-track-chip-meta" data-en="Proofs checked by machines, codes and sphere packing" data-es="Demostraciones verificadas por máquinas, códigos y empaquetamiento de esferas">Proofs checked by machines, codes and sphere packing</span>
+          <span class="tp-track-chip-meta" data-en="Proofs checked by machines, codes and sphere packing" data-es="Códigos, empaquetamiento de esferas y demostraciones verificadas por máquina">Proofs checked by machines, codes and sphere packing</span>
         </a>
         <a class="tp-track-chip tp-track-chip-bounty" href="bounties/">
           <span class="tp-track-chip-kicker" data-en="{bounty_n} essays" data-es="{bounty_n} ensayos">{bounty_n} essays</span>
@@ -6425,7 +6425,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         <a class="tp-track-chip tp-track-chip-timegravity" href="timegravity/">
           <span class="tp-track-chip-kicker" data-en="A 14-step series" data-es="Una serie de 14 pasos">A 14-step series</span>
           <strong class="tp-track-chip-title" data-en="{esc(sec['timegravity'][0])}" data-es="{esc(sec['timegravity'][1])}">{esc(sec['timegravity'][0])}</strong>
-          <span class="tp-track-chip-meta" data-en="Why a higher clock runs faster" data-es="Por qué un reloj más alto corre más rápido">Why a higher clock runs faster</span>
+          <span class="tp-track-chip-meta" data-en="Why a higher clock runs faster" data-es="Por qué un reloj a mayor altura avanza más rápido">Why a higher clock runs faster</span>
         </a>
         <a class="tp-track-chip tp-track-chip-classic" href="classics/golf-gti/">
           <span class="tp-track-chip-kicker" data-en="{esc(sec['classics'][0])}" data-es="{esc(sec['classics'][1])}">{esc(sec['classics'][0])}</span>
@@ -6833,7 +6833,7 @@ def render_about_page(catalog: dict, lang: str = "en") -> str:
 
       <h2 id="for-builders" data-en="For builders and coders" data-es="Para quienes programan y construyen">For builders and coders</h2>
       <p data-en="{total} long-form essays and 6 Grand-Challenge &amp; Open-Problem monographs. Each one tells the human story, builds the everyday intuition, and hands you a live model and a plain-text AI SKILL.md to push, pull and test. {_verifier_count()} verifiers across the Toolbox, Time and Gravity and the cross-scale essays can be run from a clone and must fail under a planted defect." data-es="{total} ensayos de largo aliento y 6 monografías de grandes retos y problemas abiertos. Cada uno cuenta la historia humana, construye la intuición cotidiana y te entrega un modelo vivo y un SKILL.md en texto plano para probar. {_verifier_count()} verificadores de la Caja de Herramientas, Tiempo y Gravedad y los ensayos entre escalas se ejecutan desde un clon y deben fallar ante un defecto plantado.">{total} long-form essays and 6 Grand-Challenge &amp; Open-Problem monographs. Each one tells the human story, builds the everyday intuition, and hands you a live model and a plain-text AI SKILL.md to push, pull and test. {_verifier_count()} verifiers across the Toolbox, Time and Gravity and the cross-scale essays can be run from a clone and must fail under a planted defect.</p>
-      <p class="tp-builders-skills"><span data-en="{skill_count} AI SKILL.md · {_verifier_count()} verifiers · Claude · Copilot · Cursor · Antigravity: " data-es="{skill_count} SKILL.md · {_verifier_count()} verificadores · Claude · Copilot · Cursor · Antigravity: ">{skill_count} AI SKILL.md · {_verifier_count()} verifiers · Claude · Copilot · Cursor · Antigravity: </span><a href="https://github.com/senseiewok/informatico.ai/tree/main/skills" target="_blank" rel="noopener noreferrer" data-en="Agent Skills &amp; Verifiers on GitHub →" data-es="Skills de IA y Verificadores en GitHub →">Agent Skills &amp; Verifiers on GitHub →</a></p>
+      <p class="tp-builders-skills"><span data-en="{skill_count} AI SKILL.md · {_verifier_count()} verifiers · Claude · Copilot · Cursor · Antigravity: " data-es="{skill_count} SKILL.md · {_verifier_count()} verificadores · Claude · Copilot · Cursor · Antigravity: ">{skill_count} AI SKILL.md · {_verifier_count()} verifiers · Claude · Copilot · Cursor · Antigravity: </span><a href="https://github.com/senseiewok/informatico.ai/tree/main/skills" target="_blank" rel="noopener noreferrer" data-en="Agent Skills &amp; Verifiers on GitHub →" data-es="Skills de IA y verificadores en GitHub →">Agent Skills &amp; Verifiers on GitHub →</a></p>
 
       <h2 id="contact-heading" data-en="Check Our Math, and Write to Us" data-es="Revisa Nuestras Matemáticas y Escríbenos">Check Our Math, and Write to Us</h2>
       <p><span data-en="Every page, solver, and verification script is open for inspection across our public GitHub repositories: " data-es="Cada página, solucionador y script de verificación está abierto a inspección en nuestros repositorios públicos de GitHub: ">Every page, solver, and verification script is open for inspection across our public GitHub repositories: </span><a href="https://github.com/senseiewok/informatico.ai" target="_blank" rel="noopener noreferrer">senseiewok/informatico.ai</a>, <a href="https://github.com/senseiewok/cf-research" target="_blank" rel="noopener noreferrer">senseiewok/cf-research</a><span data-en=", and " data-es=" y ">, and </span><a href="https://github.com/senseiewok/cf-skills" target="_blank" rel="noopener noreferrer">senseiewok/cf-skills</a>. <span data-en="If you find a broken citation, a numerical edge case in a solver, or a sentence that outruns its source, please open an issue or write to us directly at " data-es="Si encuentras una cita rota, un caso límite numérico en un solucionador o una oración que rebase su fuente, abre un issue o escríbenos directamente a ">If you find a broken citation, a numerical edge case in a solver, or a sentence that outruns its source, please open an issue or write to us directly at </span><a href="mailto:contact@senseiewok.ai">contact@senseiewok.ai</a> <span data-en="(please never include personal medical details)." data-es="(por favor nunca incluyas datos médicos personales).">(please never include personal medical details).</span></p>

@@ -348,7 +348,7 @@ class ThisWeekTests(unittest.TestCase):
             desk = page(rel).by_id("tp-featured-edition-desk")
             self.assertIsNotNone(desk, rel)
             headings = [(h.attrs["data-en"], h.attrs["data-es"]) for h in desk.find_all("h2")]
-            self.assertEqual(headings, [("This week’s essay", "El ensayo de la semana"), ("Read next", "Para leer después")], rel)
+            self.assertEqual(headings, [("This week’s essay", "El ensayo de la semana"), ("Read next", "Lo que sigue")], rel)
             self.assertFalse(desk.find_all("code"), f"{rel}: a formula or code on the cover feature")
             self.assertFalse(desk.find_all("button"), f"{rel}: rotation controls on the cover feature")
             for cls in ("tp-spotlight-pill", "tp-spotlight-badge", "tp-spotlight-law", "tp-release-item", "tp-spotlight-counter"):
@@ -462,7 +462,7 @@ class AboutBuildersTests(unittest.TestCase):
             self.assertEqual(span.attrs["data-en"], f"{skills} AI SKILL.md · {verifiers} verifiers · Claude · Copilot · Cursor · Antigravity: ", rel)
             self.assertEqual(span.attrs["data-es"], f"{skills} SKILL.md · {verifiers} verificadores · Claude · Copilot · Cursor · Antigravity: ", rel)
             self.assertEqual(link.attrs["href"], "https://github.com/senseiewok/informatico.ai/tree/main/skills", rel)
-            self.assertEqual((link.attrs["data-en"], link.attrs["data-es"]), ("Agent Skills & Verifiers on GitHub →", "Skills de IA y Verificadores en GitHub →"), rel)
+            self.assertEqual((link.attrs["data-en"], link.attrs["data-es"]), ("Agent Skills & Verifiers on GitHub →", "Skills de IA y verificadores en GitHub →"), rel)
 
 
 class EssayCardTests(unittest.TestCase):
