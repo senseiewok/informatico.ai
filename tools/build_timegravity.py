@@ -3906,7 +3906,7 @@ def render_page(page: dict, catalog: dict, lang: str = "en") -> str:
         if block["type"] == "h2":
             jump.append((f"#{block['id']}", block.get("short_en", block["en"]), block.get("short_es", block["es"])))
     jump.append(("#humans", "The Humans" if slug else "Humans (1905–2026)", "Las Personas" if slug else "Personas (1905–2026)"))
-    # Own classes, not tp-act-pill: theme-plate.mjs relabels .tp-act-jump-bar pills with the Folio act names.
+    # Own classes, not tp-act-pill: theme-plate.mjs once relabelled .tp-act-jump-bar pills by position (fixed 2026-11-28).
     jump_html = "\n".join(f'      <a class="tg-jump-pill" href="{h}" data-en="{a(e)}" data-es="{a(s)}">{t(e)}</a>' for h, e, s in jump)
 
     kind = (page.get("instrument") or {}).get("kind", "slope")
