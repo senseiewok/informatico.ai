@@ -28,6 +28,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 import build_longform_folios as builder  # noqa: E402
 from folios.seo_copy import BOUNTY_SEO, FOLIO_SEO, HUB_SEO, PILLAR_SEO  # noqa: E402
+from folios.city_tools import CITY_TOOLS  # noqa: E402  (each city tool adds one page per language)
 
 SITE = "https://informatico.ai/"
 PILLARS = ("engineering", "architecture", "physics", "math")
@@ -277,14 +278,14 @@ class SiteFiles(unittest.TestCase):
     def test_sitemap_lists_both_languages_with_alternates_and_real_dates(self):
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-        self.assertEqual(len(locs), 224)  # +2: /toolchain/x08/ (EN + es-MX)
-        self.assertEqual(len(set(locs)), 224)
-        self.assertEqual(sum("/es-mx/" in u for u in locs), 112)
+        self.assertEqual(len(locs), 224 + 2 * len(CITY_TOOLS))  # +2: /toolchain/x08/ (EN + es-MX)
+        self.assertEqual(len(set(locs)), 224 + 2 * len(CITY_TOOLS))
+        self.assertEqual(sum("/es-mx/" in u for u in locs), 112 + len(CITY_TOOLS))
         self.assertNotIn("lang=es", xml)
         for loc in locs:
             self.assertIsNotNone(url_to_file(loc))
             self.assertTrue(url_to_file(loc).is_file(), loc)
-        self.assertEqual(xml.count('hreflang="es-MX"'), 224)
+        self.assertEqual(xml.count('hreflang="es-MX"'), 224 + 2 * len(CITY_TOOLS))
         dates = set(re.findall(r"<lastmod>([^<]+)</lastmod>", xml))
         for d in dates:
             self.assertRegex(d, r"^\d{4}-\d{2}-\d{2}$")
@@ -293,7 +294,7 @@ class SiteFiles(unittest.TestCase):
         text = (RESEARCH / "llms.txt").read_text(encoding="utf-8")
         self.assertTrue(text.startswith("# Informatico.ai\n"))
         urls = re.findall(r"\]\((https://informatico\.ai/[^)]*)\)", text)
-        self.assertEqual(len(urls), 111)  # +1: /toolchain/x08/
+        self.assertEqual(len(urls), 111 + len(CITY_TOOLS))  # +1: /toolchain/x08/
         for u in urls:
             self.assertTrue(url_to_file(u).is_file(), u)
 
