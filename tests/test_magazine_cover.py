@@ -49,12 +49,14 @@ MACHINERY_WORDS = (
 )
 DECK_EN = (
     "Long illustrated essays on how buildings, bridges, physics and math work. "
-    "Each one starts with a story, explains the idea in plain words, and gives you a model you can move."
+    "Each one has a model you can move, and most start with a story told in plain words."
 )
 DECK_ES = (
     "Ensayos largos e ilustrados sobre cómo funcionan los edificios, los puentes, la física y las matemáticas. "
-    "Cada uno empieza con una historia, explica la idea en palabras sencillas y te da un modelo que puedes mover."
+    "Cada uno tiene un modelo que puedes mover, y la mayoría empieza con una historia contada en palabras sencillas."
 )
+# Every family of pages the cover calls an essay or puts in "This week's essay" (Bounties are "6 essays" on a tile).
+ESSAY_FAMILIES = ("engineering", "architecture", "physics", "math", "bounties", "classics", "timegravity")
 
 
 class Node:
@@ -173,7 +175,25 @@ class CoverHeroTests(unittest.TestCase):
             self.assertIsNone(CODE_RE.search(seen), f"{rel}: a folio code in the hero")
 
     def test_deck_is_true_of_every_essay(self) -> None:
-        """"Each one starts with a story, explains the idea in plain words, and gives you a model you can move.\""""
+        """"Each one has a model you can move, and most start with a story told in plain words.\"
+
+        Checked on every page the cover calls an essay, in both languages: each has a range control; more than half
+        have a plain-words box. The 58 pillar essays also keep their story and lab sections.
+        """
+        pages = 0
+        with_plain = 0
+        for prefix in ("", "es-mx/"):
+            for family in ESSAY_FAMILIES:
+                for essay in sorted((SRC / prefix / family).glob("*/index.html")):
+                    rel = essay.relative_to(SRC).as_posix()
+                    tree = parse(essay.read_text(encoding="utf-8"))
+                    pages += 1
+                    movable = [n for n in tree.find_all("input") if n.attrs.get("type") == "range"]
+                    self.assertTrue(movable, f"{rel}: no control to move the model with")
+                    if tree.find_all("div", "tp-plain-bridge-box") or "in plain words" in essay.read_text(encoding="utf-8").casefold():
+                        with_plain += 1
+        self.assertGreater(pages, 150)
+        self.assertGreater(with_plain * 2, pages, f"only {with_plain} of {pages} essays have plain-words text")
         count = 0
         for pillar in PILLARS:
             for folio_page in sorted((SRC / pillar).glob("*/index.html")):
@@ -346,6 +366,8 @@ class ThisWeekTests(unittest.TestCase):
                 title = slide.find("h3", "tp-spotlight-slide-title").find("a")
                 self.assertEqual(title.attrs["data-en"], item["title_en"], rel)
                 self.assertTrue(resolves(rel, title.attrs["href"]), f"{rel}: {title.attrs['href']}")
+                # The module copies a slide's href into "Start reading" only when it matches this pattern.
+                self.assertRegex(title.attrs["href"], r"^(?:\.\.?/)*[a-z0-9-]+(?:/[a-z0-9-]+)*/$", rel)
                 img = slide.find("img")
                 self.assertTrue((SRC / rel).parent.joinpath(img.attrs["src"].split("?", 1)[0]).resolve().is_file(), img.attrs["src"])
                 self.assertTrue(img.attrs["alt"].strip(), rel)
@@ -569,6 +591,8 @@ class ActPillTests(unittest.TestCase):
 PHONE = {"width": 390, "height": 844}
 DESKTOP = {"width": 1440, "height": 900}
 WEEK_MS = 7 * 24 * 3600 * 1000
+DAY_MS = 24 * 3600 * 1000
+MONDAY_SHIFT_MS = 3 * DAY_MS  # the epoch is a Thursday; weeks turn over on Monday 00:00 UTC
 BOXES_JS = """() => {
   const box = (sel) => { const r = document.querySelector(sel).getBoundingClientRect(); return {top: r.top, bottom: r.bottom, left: r.left, right: r.right}; };
   return {
@@ -702,7 +726,7 @@ class MagazineCoverBrowserTests(unittest.TestCase):
                 s = tab.evaluate(SPOTLIGHT_JS)
                 total = len(B.INFORMATICO_SPOTLIGHT_ROTATION)
                 self.assertEqual(s["total"], total, route)
-                active = (s["now"] // WEEK_MS) % total
+                active = ((s["now"] + MONDAY_SHIFT_MS) // WEEK_MS) % total
                 self.assertEqual(s["shown"], [active], route)
                 self.assertEqual(s["coming"], [(active + k) % total for k in (1, 2, 3)], route)
                 self.assertEqual(s["start"], s["href"], f"{route}: Start reading does not open this week's essay")
@@ -718,14 +742,20 @@ class MagazineCoverBrowserTests(unittest.TestCase):
                 """async () => {
                   const m = await import('/modules/featured-spotlight.mjs');
                   const W = 7 * 24 * 3600 * 1000;
+                  const D = 24 * 3600 * 1000;
+                  const MON = 4 * D; // Monday 5 January 1970, 00:00 UTC
                   return {
-                    slots: [0, W - 1, W, 9 * W, 10 * W + 5].map((t) => m.computeWeekSlot(9, t)),
+                    slots: [0, MON - 1, MON, MON + W - 1, MON + W, MON + 9 * W].map((t) => m.computeWeekSlot(9, t)),
+                    weekday: [MON, MON + 9 * W, Date.UTC(2026, 10, 30)].map((t) => new Date(t).getUTCDay()),
+                    turnover: [Date.UTC(2026, 10, 29, 23, 59), Date.UTC(2026, 10, 30, 0, 0)].map((t) => m.computeWeekSlot(9, t)),
                     guard: [m.computeWeekSlot(0, W), m.computeWeekSlot(NaN, W), m.computeWeekSlot(9, -5)],
                     next: [m.comingNextSlots(0, 9), m.comingNextSlots(7, 9), m.comingNextSlots(8, 9), m.comingNextSlots(0, 3), m.comingNextSlots(0, 1)],
                   };
                 }"""
             )
-            self.assertEqual(got["slots"], [0, 0, 1, 0, 1])
+            self.assertEqual(got["slots"], [0, 0, 1, 1, 2, 1])
+            self.assertEqual(got["weekday"], [1, 1, 1])  # every turnover instant is a Monday
+            self.assertNotEqual(got["turnover"][0], got["turnover"][1], "the essay must change at Monday 00:00 UTC")
             self.assertEqual(got["guard"], [0, 0, 0])
             self.assertEqual(got["next"], [[1, 2, 3], [8, 0, 1], [0, 1, 2], [1, 2], []])
         finally:
@@ -785,8 +815,11 @@ class MagazineCoverBrowserTests(unittest.TestCase):
                 self.assertTrue(cards[slug]["wrapShown"], slug)
             tab.evaluate("window.scrollTo(0, document.body.scrollHeight)")
             tab.wait_for_function("[...document.querySelectorAll('.tp-rack-thumb')].every((i) => i.complete)")
-            empty = [c["slug"] for c in tab.evaluate(CARDS_JS) if c["wrapShown"] and c["imgOk"] is False]
+            after = tab.evaluate(CARDS_JS)
+            empty = [c["slug"] for c in after if c["wrapShown"] and c["imgOk"] is False]
             self.assertEqual(empty, [], "a card shows an image box with no picture in it")
+            # Only the picture we broke may turn its card into a text card: a lazy image must never be caught early.
+            self.assertEqual([c["slug"] for c in after if c["noimg"]], ["a12"])
             self.assertEqual(problems, [])
         finally:
             ctx.close()

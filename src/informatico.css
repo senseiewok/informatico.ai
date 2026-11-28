@@ -7694,7 +7694,8 @@
     padding: 0.7rem 0;
     border-top: 1px solid var(--tp-rule);
   }
-  .tp-coming-item:first-child {
+  /* The first shown item always follows a hidden one: slot 0 without scripts, the moved-to-the-end three with them. */
+  .tp-coming-item[hidden] + .tp-coming-item:not([hidden]) {
     padding-top: 0;
     border-top: 0;
   }

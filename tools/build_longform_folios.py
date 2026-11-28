@@ -5857,12 +5857,12 @@ def _spotlight_story(item: dict) -> dict:
         folio = next(f for f in NEW_FOLIOS[section] if f["slug"] == slug)
         es_meta = get_folio_es_meta(slug, folio, folio["colophon"])
         plain_en = decf(LONGFORM[slug].get("act1_plain_bridge", ""))
-        plain_es = decf(es_meta.get("plain_es", "")) or plain_en
+        plain_es = decf(es_meta.get("plain_es", ""))
         rt_en, rt_es = short_reading_time(slug)
     elif section in ("bounties", "toolchain"):
         rec = (BOUNTY_BY_SLUG if section == "bounties" else TOOLCHAIN_BY_SLUG)[slug]
         plain_en = rec.get("act1_plain_bridge", rec.get("why_en", ""))
-        plain_es = rec.get("plain_es", rec.get("why_es", "")) or plain_en
+        plain_es = rec.get("plain_es", rec.get("why_es", ""))
         rt_en, rt_es = _minutes_label(rec.get("reading_time", "15 MIN READ"))
     elif section == "timegravity":
         rec = next(p for p in TIMEGRAVITY_PAGES if p["slug"] == slug)
@@ -6350,11 +6350,11 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
     start_href = _href(".", INFORMATICO_SPOTLIGHT_ROTATION[0]["href"])
     deck_en = (
         "Long illustrated essays on how buildings, bridges, physics and math work. "
-        "Each one starts with a story, explains the idea in plain words, and gives you a model you can move."
+        "Each one has a model you can move, and most start with a story told in plain words."
     )
     deck_es = (
         "Ensayos largos e ilustrados sobre cómo funcionan los edificios, los puentes, la física y las matemáticas. "
-        "Cada uno empieza con una historia, explica la idea en palabras sencillas y te da un modelo que puedes mover."
+        "Cada uno tiene un modelo que puedes mover, y la mayoría empieza con una historia contada en palabras sencillas."
     )
     cover_film = _cover_player_film()
     film_cta = ""
