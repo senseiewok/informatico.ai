@@ -183,11 +183,14 @@ class InformaticoAxeAndMathMLTests(unittest.TestCase):
             cls.httpd.shutdown()
             cls.httpd.server_close()
 
-    def _run_axe_on_url(self, url: str, viewport: dict[str, int]) -> list[dict]:
+    def _run_axe_on_url(self, url: str, viewport: dict[str, int], dark: bool = False) -> list[dict]:
         ctx = self.browser.new_context(bypass_csp=True, viewport=viewport)
         try:
             page = ctx.new_page()
             page.goto(url, wait_until="load")
+            if dark:
+                # What the masthead's Dark button sets (src/modules/theme-plate.mjs).
+                page.evaluate("document.documentElement.setAttribute('data-theme', 'blueprint')")
             page.wait_for_timeout(400)
             page.add_script_tag(path=str(self.axe_js))
             results = page.evaluate(
@@ -258,6 +261,24 @@ class InformaticoAxeAndMathMLTests(unittest.TestCase):
 
         print("\n".join(summary_lines), flush=True)
         self.assertEqual(blocking_hits, [], f"Critical/serious WCAG 2.2 AA violations detected: {blocking_hits}")
+
+    def test_wcag22_aa_audit_in_the_dark_theme(self) -> None:
+        """The same audit with the dark theme on (warm dark palette, magazine pass of 2026-11-28): contrast is the
+        rule most likely to break when tokens change, and the light run alone would not see it."""
+        blocking_hits: list[dict] = []
+        summary_lines: list[str] = ["\n[informatico.ai axe-core WCAG 2.2 AA Summary, dark theme]"]
+        for route in AUDIT_ROUTES:
+            route_label = route or "/"
+            for vp_name, vp_size in VIEWPORTS:
+                violations = self._run_axe_on_url(self.base + route, vp_size, dark=True)
+                summary_lines.append(f"  {route_label:<16} {vp_name:<8}: {len(violations)} rule(s)")
+                for v in violations:
+                    impact = v.get("impact") or "unknown"
+                    summary_lines.append(f"    - impact={impact:<9} id={v.get('id') or 'unknown':<30} nodes={len(v.get('nodes', []))}")
+                    if impact in ("critical", "serious"):
+                        blocking_hits.append({"route": route_label, "viewport": vp_name, "impact": impact, "id": v.get("id"), "nodes": len(v.get("nodes", []))})
+        print("\n".join(summary_lines), flush=True)
+        self.assertEqual(blocking_hits, [], f"Critical/serious WCAG 2.2 AA violations in the dark theme: {blocking_hits}")
 
     def test_mathml_renders_under_strict_csp(self) -> None:
         """Verify native MathML Core lays out under strict production CSP and save 2x Retina screenshots."""

@@ -288,12 +288,6 @@
   .tg-bmv-branch { transition: x1 200ms ease, x2 200ms ease; }
   .tg-btn-row-label { align-self: center; font-size: 0.85rem; color: var(--tp-graphite); }
 
-  .tp-track-chip-timegravity {
-    background: linear-gradient(135deg, var(--tp-vellum) 0%, var(--tp-verdigris-soft) 100%);
-    border-color: var(--tp-prussian);
-  }
-  .tp-track-chip-timegravity .tp-track-chip-kicker { color: var(--tp-prussian); }
-
   @media (max-width: 720px) {
     .tg-controls { grid-template-columns: 1fr; }
     .tg-claim::after, .tg-claim-look::after { font-size: 0.58rem; }

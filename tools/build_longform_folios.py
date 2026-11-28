@@ -1301,11 +1301,6 @@ def _tg_ledger_rows() -> int:
     return len(json.loads((ROOT / "timegravity" / "ledger.json").read_text(encoding="utf-8"))["rows"])
 
 
-def _tg_verifier_count() -> int:
-    """Time & Gravity verifiers on disk."""
-    return len(list((ROOT / "skills" / "timegravity").glob("*/verify_*.py")))
-
-
 def _verifier_count() -> int:
     """How many verifiers are on disk. Copy that quotes a number reads it here, so it cannot go stale."""
     return len(list((ROOT / "skills").glob("*/*/verify_*.py")))
@@ -1869,13 +1864,6 @@ def render_folio_mount(pillar: str, folio: dict, rel_res: str = "../..") -> str:
 </div>"""
 
 
-PILLAR_ROMAN = {
-    "engineering": "I",
-    "architecture": "II",
-    "physics": "III",
-    "math": "IV",
-}
-
 PILLAR_TITLES_ES = {
     "engineering": "Ingeniería Civil y Construcción",
     "architecture": "Arquitectura",
@@ -2043,7 +2031,7 @@ def render_head(title: str, desc: str, path: str, og_type: str, og_image: str, r
   <meta name="twitter:title" content="{esc(title)}">
   <meta name="twitter:description" content="{esc(desc)}">
   <meta name="twitter:image" content="{og_image}">
-  <meta name="theme-color" content="#eceef0">
+  <meta name="theme-color" content="#f6f1e7">
   <link rel="icon" href="{root_pfx}images/icon-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="{root_pfx}images/icon-192.png" sizes="192x192" type="image/png">
   <link rel="apple-touch-icon" href="{root_pfx}images/apple-touch-icon.png">
@@ -2501,14 +2489,29 @@ def render_timegravity_series_rack(rel_res: str) -> str:
     cards_html = "\n".join(cards)
     hub_href = _href(rel_res, "timegravity/")
     step2_href = _href(rel_res, "timegravity/t02/")
+    steps = len(cards)
+    rows = _tg_ledger_rows()  # counted from timegravity/ledger.json at build time, so the sentence cannot go stale
+    name_en, name_es = COVER_SECTION_NAMES["timegravity"]
+    stand_en = (
+        "A guided fourteen-step inquiry from optical clocks and sub-millimetre torsion balances to GW250114 black-hole ringdown, "
+        "electromagnetic pointer selection, dark-sector clock networks, and Weinberg soft-graviton Ward identities—where every page ends "
+        "with the open question the next one takes up, and six strict evidence labels (including DERIVED (NOT MEASURED)) hold every claim "
+        f"to a {rows}-row offline ledger."
+    )
+    stand_es = (
+        "Una investigación guiada de catorce pasos desde relojes ópticos y balanzas de torsión submilimétricas hasta el ringdown de agujeros "
+        "negros GW250114, la selección electromagnética de estados puntero, las redes de relojes del sector oscuro y las identidades de "
+        "gravitones blandos de Weinberg, donde cada página cierra con la pregunta abierta que retoma la siguiente y seis etiquetas de evidencia "
+        f"(incluida DERIVADO (NO MEDIDO)) sostienen cada afirmación frente a un libro de {rows} filas."
+    )
     return f"""
     <section class="tp-issue-rack tp-series-rack tp-series-rack-lead" aria-labelledby="timegravity-series-heading" id="timegravity-series">
-      <p class="tp-kicker" data-en="Featured Series · Time &amp; Gravity · 14 steps · 123 audited claims" data-es="Serie Destacada · Tiempo y Gravedad · 14 pasos · 123 afirmaciones auditadas">Featured Series · Time &amp; Gravity · 14 steps · 123 audited claims</p>
-      <h2 id="timegravity-series-heading" class="tp-h2"><a href="{hub_href}" data-en="Time &amp; Gravity (T.00–T.13)" data-es="Tiempo y Gravedad (T.00–T.13)">Time &amp; Gravity (T.00–T.13)</a></h2>
-      <p class="tp-standfirst" data-en="A guided fourteen-step inquiry from optical clocks and sub-millimetre torsion balances to GW250114 black-hole ringdown, electromagnetic pointer selection, dark-sector clock networks, and Weinberg soft-graviton Ward identities—where every page ends with the open question the next one takes up, and six strict evidence labels (including DERIVED (NOT MEASURED)) hold every claim to a 117-row offline ledger." data-es="Una investigación guiada de catorce pasos desde relojes ópticos y balanzas de torsión submilimétricas hasta el ringdown de agujeros negros GW250114, la selección electromagnética de estados puntero, las redes de relojes del sector oscuro y las identidades de gravitones blandos de Weinberg, donde cada página cierra con la pregunta abierta que retoma la siguiente y seis etiquetas de evidencia (incluida DERIVADO (NO MEDIDO)) sostienen cada afirmación frente a un libro de 117 filas.">A guided fourteen-step inquiry from optical clocks and sub-millimetre torsion balances to GW250114 black-hole ringdown, electromagnetic pointer selection, dark-sector clock networks, and Weinberg soft-graviton Ward identities—where every page ends with the open question the next one takes up, and six strict evidence labels (including DERIVED (NOT MEASURED)) hold every claim to a 117-row offline ledger.</p>
+      <p class="tp-kicker" data-en="A {steps}-step series" data-es="Una serie de {steps} pasos">A {steps}-step series</p>
+      <h2 id="timegravity-series-heading" class="tp-h2"><a href="{hub_href}" data-en="{esc(name_en)}" data-es="{esc(name_es)}">{esc(name_en)}</a></h2>
+      <p class="tp-standfirst" data-en="{esc(stand_en)}" data-es="{esc(stand_es)}">{esc(stand_en)}</p>
       <div class="tp-series-rack-ctas">
-        <a class="tp-cta tp-cta-primary" href="{hub_href}" data-en="Enter the Series Hub · T.00 →" data-es="Entrar al Inicio de la Serie · T.00 →">Enter the Series Hub · T.00 →</a>
-        <a class="tp-cta" href="{step2_href}" data-en="Begin Step 2 · Everyone Moves at One Rate (T.02) →" data-es="Empezar Paso 2 · Todos Avanzamos a un Mismo Ritmo (T.02) →">Begin Step 2 · Everyone Moves at One Rate (T.02) →</a>
+        <a class="tp-cta tp-cta-primary" href="{hub_href}" data-en="Enter the Series Hub →" data-es="Entrar al Inicio de la Serie →">Enter the Series Hub →</a>
+        <a class="tp-cta" href="{step2_href}" data-en="Begin Step 2 · Everyone Moves at One Rate →" data-es="Empezar Paso 2 · Todos Avanzamos a un Mismo Ritmo →">Begin Step 2 · Everyone Moves at One Rate →</a>
       </div>
       <div class="tp-rack-grid">
 {cards_html}
@@ -2593,11 +2596,16 @@ def render_cross_scale_essays_showcase(rel_res: str, lang: str = "en") -> str:
         )
     cards_html = "\n".join(cards)
     hub_href = _href(rel_res, "essays/")
+    n = len(cards)
+    # The same sentence the section used to open and close with, without the list of methods in between
+    # (each essay's own card names its method).
+    stand_en = f"{n} essays in four parts on how the same mathematical ideas connect falling clocks, stone vaults, and living pores."
+    stand_es = f"{n} ensayos en cuatro partes sobre cómo las mismas ideas matemáticas conectan relojes en caída, bóvedas de piedra y poros vivos."
     return f"""
     <section class="tp-cross-scale-showcase" id="cross-scale-essays" aria-labelledby="cross-scale-essays-heading">
-      <p class="tp-kicker" data-en="Featured Companion Synthesis · 12 Standalone Essays · ES.01–ES.12" data-es="Síntesis Compañera Destacada · 12 Ensayos Independientes · ES.01–ES.12">Featured Companion Synthesis · 12 Standalone Essays · ES.01–ES.12</p>
+      <p class="tp-kicker" data-en="{n} essays" data-es="{n} ensayos">{n} essays</p>
       <h2 id="cross-scale-essays-heading" class="tp-h2"><a href="{hub_href}" data-en="Cross-Scale Essays: Clocks, Stone, and Living Matter" data-es="Ensayos entre Escalas: Relojes, Piedra y Materia Viva">Cross-Scale Essays: Clocks, Stone, and Living Matter</a></h2>
-      <p class="tp-standfirst" data-en="Four editorial movements—Foundations &amp; Bounds (ES.01–ES.03), Constraints &amp; Formal Proof (ES.04–ES.06), Horizons, Identifiability &amp; Multipartite Witnesses (ES.07–ES.09), and Movement IV · Coda &amp; Crown (ES.10–ES.12)—tracing how fluctuation-dissipation floors, DERIVED (NOT MEASURED) parent gates, Q_TUR ≥ 2 bounds, rank-nullity rigidity, Doob conditional survival, Page–Wootters / Lean 4 proofs, the 73.14 µm parallel horizon, Fisher Schur-complement identifiability, tripartite Mermin witnesses, signed biharmonic operator sieves, the seven-gate chiral and entire-UV crown sieve, and iso-P_o cycle-affinity gates connect falling clocks, stone vaults, and living pores." data-es="Cuatro movimientos editoriales —Fundamentos y Cotas (ES.01–ES.03), Restricciones y Prueba Formal (ES.04–ES.06), Horizontes, Identificabilidad y Testigos Multipartitos (ES.07–ES.09) y Movimiento IV · Coda y Corona (ES.10–ES.12)— que muestran cómo los pisos de fluctuación-disipación, las compuertas DERIVADO (NO MEDIDO), las cotas Q_TUR ≥ 2, la rigidez rango-nulidad, la supervivencia condicional de Doob, las pruebas Page–Wootters / Lean 4, el horizonte paralelo de 73.14 µm, el complemento de Schur de Fisher, los testigos Mermin, las cribas de operadores biarmónicos con signo, la criba corona de siete compuertas y las compuertas de afinidad cíclica iso-P_o conectan relojes en caída, bóvedas de piedra y poros vivos.">Four editorial movements—Foundations &amp; Bounds (ES.01–ES.03), Constraints &amp; Formal Proof (ES.04–ES.06), Horizons, Identifiability &amp; Multipartite Witnesses (ES.07–ES.09), and Movement IV · Coda &amp; Crown (ES.10–ES.12)—tracing how fluctuation-dissipation floors, DERIVED (NOT MEASURED) parent gates, Q_TUR ≥ 2 bounds, rank-nullity rigidity, Doob conditional survival, Page–Wootters / Lean 4 proofs, the 73.14 µm parallel horizon, Fisher Schur-complement identifiability, tripartite Mermin witnesses, signed biharmonic operator sieves, the seven-gate chiral and entire-UV crown sieve, and iso-P_o cycle-affinity gates connect falling clocks, stone vaults, and living pores.</p>
+      <p class="tp-standfirst" data-en="{esc(stand_en)}" data-es="{esc(stand_es)}">{esc(stand_en)}</p>
       <div class="tp-cross-scale-grid">
 {cards_html}
       </div>
@@ -2617,40 +2625,24 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
                                               image=image, crumbs=crumbs), lang)
     cards = render_rack_cards(pillar, folios, "./", "../plates/", eager=len(folios))
     n = len(folios)
+    steps = len(TIMEGRAVITY_PAGES)
     if pillar == "physics":
         lead_series = render_timegravity_series_rack(rel_res) + render_cross_scale_essays_showcase(rel_res, lang)
-        rack_cls = "tp-issue-rack tp-issue-rack-headed"
-        rack_head = """      <div class="tp-issue-rack-head">
-        <p class="tp-kicker" data-en="Standalone Physics Monographs · P.01–P.12" data-es="Monografías Independientes de Física · P.01–P.12">Standalone Physics Monographs · P.01–P.12</p>
-        <h2 class="tp-h2" data-en="Twelve Multiscale &amp; Quantum Monographs" data-es="Doce Monografías Multiescala y Cuánticas">Twelve Multiscale &amp; Quantum Monographs</h2>
-      </div>
-"""
     elif pillar == "architecture":
         lead_series = render_architecture_classics_rack(rel_res)
-        rack_cls = "tp-issue-rack tp-issue-rack-headed"
-        arch_last = f"A.{len(folios):02d}"
-        rack_head = f"""      <div class="tp-issue-rack-head">
-        <p class="tp-kicker" data-en="Standalone Architecture Monographs · A.01–{arch_last}" data-es="Monografías Independientes de Arquitectura · A.01–{arch_last}">Standalone Architecture Monographs · A.01–{arch_last}</p>
-        <h2 class="tp-h2" data-en="Structural &amp; Geometric Monographs ({len(folios)})" data-es="Monografías Estructurales y Geométricas ({len(folios)})">Structural &amp; Geometric Monographs ({len(folios)})</h2>
-      </div>
-"""
-    elif pillar == "engineering":
-        lead_series = ""
-        rack_cls = "tp-issue-rack tp-issue-rack-headed"
-        rack_head = """      <div class="tp-issue-rack-head">
-        <p class="tp-kicker" data-en="Standalone Engineering Monographs · E.01–E.16" data-es="Monografías Independientes de Ingeniería · E.01–E.16">Standalone Engineering Monographs · E.01–E.16</p>
-        <h2 class="tp-h2" data-en="Sixteen Systems &amp; Mechanics Monographs" data-es="Dieciséis Monografías de Sistemas y Mecánica">Sixteen Systems &amp; Mechanics Monographs</h2>
-      </div>
-"""
     else:
-        lead_series, rack_cls, rack_head = "", "tp-issue-rack", ""
+        lead_series = ""
+    rack_head = f"""      <div class="tp-issue-rack-head">
+        <h2 id="all-essays-heading" class="tp-h2" data-en="All {n} essays" data-es="Los {n} ensayos">All {n} essays</h2>
+      </div>
+"""
     extra_sections = ""
     if pillar == "engineering":
         extra_sections = f"\n{render_cult_classics_rack(rel_res, 'cult-classics-eng')}"
     elif pillar in ("physics", "math"):
         extra_sections = f"\n{render_symbolic_physics_lab_section(rel_res)}\n{render_oss_physics_radar_section(rel_res)}"
-    kick_en = f"Pillar {PILLAR_ROMAN[pillar]} · {n} essays" + (" · 1 series of 14 steps" if pillar == "physics" else "")
-    kick_es = f"Pilar {PILLAR_ROMAN[pillar]} · {n} ensayos" + (" · 1 serie de 14 pasos" if pillar == "physics" else "")
+    kick_en = f"{n} essays" + (f" and a {steps}-step series" if pillar == "physics" else "")
+    kick_es = f"{n} ensayos" + (f" y una serie de {steps} pasos" if pillar == "physics" else "")
     return f"""{head}
 <body class="tp-body tp-page-hub">
 {render_masthead(rel_res, pillar, lang)}
@@ -2662,7 +2654,7 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
       <h1 id="pillar-heading" class="tp-h1" data-en="{esc(title_en)}" data-es="{esc(title_es)}">{esc(title_en)}</h1>
       <p class="tp-standfirst" data-en="{esc(hook_en)}" data-es="{esc(hook_es)}">{esc(hook_en)}</p>
     </section>{lead_series}
-    <section class="{rack_cls}" aria-label="{esc(PILLAR_TITLES[pillar])} essays">
+    <section class="tp-issue-rack tp-issue-rack-headed" id="all-essays" aria-labelledby="all-essays-heading">
 {rack_head}      <div class="tp-rack-grid">
 {cards}
       </div>
@@ -2763,8 +2755,8 @@ def render_bounty_crucible_section(rel_res: str = ".") -> str:
     return f"""    <section id="tp-bounty-crucible" class="tp-bounty-crucible" aria-labelledby="bounty-crucible-heading">
       <div class="tp-bounty-header">
         <p class="tp-kicker" data-en="Special Feature · 6 Grand-Challenge &amp; Open-Problem Folios (B.01–B.06)" data-es="Especial · 6 Folios de Grandes Retos y Problemas Abiertos (B.01–B.06)">Special Feature · 6 Grand-Challenge &amp; Open-Problem Folios (B.01–B.06)</p>
-        <h2 id="bounty-crucible-heading" class="tp-h2"><a href="{bounties_hub_href}" data-en="Grand Challenges &amp; Open Problems Crucible: Six Problem Folios, Interactive Context &amp; Reproducible Harnesses" data-es="El Crisol de Grandes Retos y Problemas Abiertos: Seis Folios Dedicados con Historia, Prueba Interactiva y Código Reproducible">Grand Challenges &amp; Open Problems Crucible: Six Problem Folios, Interactive Context &amp; Reproducible Harnesses</a></h2>
-        <p class="tp-standfirst" data-en="Audited on 2026-11-15 against live competition notices (bounty_crucible_council_ledger.json): six dedicated Folios (B.01–B.06 at /bounties/b01/ through /bounties/b06/) track which avenues remain active (Erdős Problem #30, Unitary Foundation rolling microgrants and Metriq, and PhysLean PRs) alongside concluded milestones (AIMO closed Sept 2026, XPRIZE Carbon 2025, Holcim 2025, Global Cooling 2021), each paired with a live counterfactual workbench and zero-dependency Python verifier." data-es="Auditado el 2026-11-15 frente a convocatorias vigentes (bounty_crucible_council_ledger.json): seis Folios (B.01–B.06 en /bounties/b01/ a /bounties/b06/) distinguen vías activas (Erdős #30, microbecas Unitary y Metriq, y PRs en PhysLean) de certámenes concluidos (AIMO en sept. 2026, XPRIZE Carbon 2025, Holcim 2025, Cooling Prize 2021), con laboratorio contrafactual y script en Python.">Audited on 2026-11-15 against live competition notices (bounty_crucible_council_ledger.json): six dedicated Folios (B.01–B.06 at /bounties/b01/ through /bounties/b06/) track which avenues remain active (Erdős Problem #30, Unitary Foundation rolling microgrants and Metriq, and PhysLean PRs) alongside concluded milestones (AIMO closed Sept 2026, XPRIZE Carbon 2025, Holcim 2025, Global Cooling 2021), each paired with a live counterfactual workbench and zero-dependency Python verifier.</p>
+        <h2 id="bounty-crucible-heading" class="tp-h2"><a href="{bounties_hub_href}" data-en="Grand Challenges &amp; Open Problems: Six Essays, Each with a Model to Try and Code You Can Rerun" data-es="Grandes Retos y Problemas Abiertos: Seis Ensayos, Cada Uno con un Modelo para Probar y Código que Puedes Volver a Ejecutar">Grand Challenges &amp; Open Problems: Six Essays, Each with a Model to Try and Code You Can Rerun</a></h2>
+        <p class="tp-standfirst" data-en="Checked on 2026-11-15 against the competitions' current notices: six dedicated Folios (B.01–B.06 at /bounties/b01/ through /bounties/b06/) track which avenues remain active (Erdős Problem #30, Unitary Foundation rolling microgrants and Metriq, and PhysLean PRs) alongside concluded milestones (AIMO closed Sept 2026, XPRIZE Carbon 2025, Holcim 2025, Global Cooling 2021), each paired with a live counterfactual workbench and zero-dependency Python verifier." data-es="Revisado el 2026-11-15 frente a convocatorias vigentes: seis Folios (B.01–B.06 en /bounties/b01/ a /bounties/b06/) distinguen vías activas (Erdős #30, microbecas Unitary y Metriq, y PRs en PhysLean) de certámenes concluidos (AIMO en sept. 2026, XPRIZE Carbon 2025, Holcim 2025, Cooling Prize 2021), con laboratorio contrafactual y script en Python.">Checked on 2026-11-15 against the competitions' current notices: six dedicated Folios (B.01–B.06 at /bounties/b01/ through /bounties/b06/) track which avenues remain active (Erdős Problem #30, Unitary Foundation rolling microgrants and Metriq, and PhysLean PRs) alongside concluded milestones (AIMO closed Sept 2026, XPRIZE Carbon 2025, Holcim 2025, Global Cooling 2021), each paired with a live counterfactual workbench and zero-dependency Python verifier.</p>
       </div>
 
       {bounty_boundary_html()}
@@ -4554,14 +4546,14 @@ def render_toolchain_section(rel_res: str = ".", include_city_group: bool = True
     return f"""    <section id="tp-toolchain-toolbox" class="tp-bounty-crucible" aria-labelledby="toolchain-toolbox-heading">
       <div class="tp-bounty-header">
         <p class="tp-kicker" data-en="Special Feature · Tech &amp; Tools · The 3D CAD, Open BIM &amp; Small-Studio Toolbox (X.01–X.08)" data-es="Especial · Tecnología y Herramientas · Caja de Herramientas 3D, CAD Abierto y Pequeños Estudios (X.01–X.08)">Special Feature · Tech &amp; Tools · The 3D CAD, Open BIM &amp; Small-Studio Toolbox (X.01–X.08)</p>
-        <h2 id="toolchain-toolbox-heading" class="tp-h2"><a href="{toolchain_hub_href}" data-en="Tech &amp; Tools · The Toolbox: Downloadable STEP, 3MF, GLB &amp; DXF Files, Byte-Level Verifiers &amp; Small-Studio Skills" data-es="Tecnología y Herramientas · La Caja de Herramientas: Archivos STEP, 3MF, GLB y DXF, Verificadores y Skills para Pequeños Estudios">Tech &amp; Tools · The Toolbox: Downloadable STEP, 3MF, GLB &amp; DXF Files, Byte-Level Verifiers &amp; Small-Studio Skills</a></h2>
-        <p class="tp-standfirst" data-en="Eight dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.08 at /toolchain/x01/ through /toolchain/x08/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every CAD Folio ships a deterministic Python generator (make_x01.py..make_x08.py), downloadable neutral files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, a live zero-build WebGL2 3D inspector, a stdlib byte-level verifier with planted-defect knockout, and a portable SKILL.md companion." data-es="Ocho Folios dedicados de CAD 3D, fabricación y herramientas abiertas (X.01–X.08 en /es-mx/toolchain/x01/ a /es-mx/toolchain/x08/) diseñados para empoderar a pequeños despachos de arquitectura, ingenieros independientes, físicos y makers matemáticos. Cada Folio CAD entrega un generador determinista en Python (make_x01.py..make_x08.py), archivos descargables (.glb, .step, .3mf, .dxf) con manifiesto SHA-256, un visor 3D WebGL2 sin dependencias, un verificador a nivel de bytes y su SKILL.md portátil.">Eight dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.08 at /toolchain/x01/ through /toolchain/x08/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every CAD Folio ships a deterministic Python generator (make_x01.py..make_x08.py), downloadable neutral files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, a live zero-build WebGL2 3D inspector, a stdlib byte-level verifier with planted-defect knockout, and a portable SKILL.md companion.</p>
+        <h2 id="toolchain-toolbox-heading" class="tp-h2"><a href="{toolchain_hub_href}" data-en="Tech &amp; Tools · The Toolbox: Downloadable STEP, 3MF, GLB &amp; DXF Files, a Check for Each File &amp; Guides for Small Studios" data-es="Tecnología y Herramientas · La Caja de Herramientas: Archivos STEP, 3MF, GLB y DXF, una Revisión para Cada Archivo y Guías para Pequeños Estudios">Tech &amp; Tools · The Toolbox: Downloadable STEP, 3MF, GLB &amp; DXF Files, a Check for Each File &amp; Guides for Small Studios</a></h2>
+        <p class="tp-standfirst" data-en="Eight dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.08 at /toolchain/x01/ through /toolchain/x08/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every CAD Folio ships the Python script that generates its files, downloadable neutral files (.glb, .step, .3mf, .dxf) with a list of checksums, a live 3D viewer in the browser, a checking script that must fail when a defect is planted, and a portable SKILL.md companion." data-es="Ocho Folios dedicados de CAD 3D, fabricación y herramientas abiertas (X.01–X.08 en /es-mx/toolchain/x01/ a /es-mx/toolchain/x08/) diseñados para empoderar a pequeños despachos de arquitectura, ingenieros independientes, físicos y makers matemáticos. Cada Folio CAD entrega el script de Python que genera sus archivos, archivos descargables (.glb, .step, .3mf, .dxf) con una lista de sumas de verificación, un visor 3D en el navegador, un script de revisión y su SKILL.md portátil.">Eight dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.08 at /toolchain/x01/ through /toolchain/x08/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every CAD Folio ships the Python script that generates its files, downloadable neutral files (.glb, .step, .3mf, .dxf) with a list of checksums, a live 3D viewer in the browser, a checking script that must fail when a defect is planted, and a portable SKILL.md companion.</p>
       </div>
 
       <div class="tp-toolchain-boundary-banner" role="note" aria-label="Educational Geometry Boundary">
-        <strong data-en="Fixed Educational Artifact Boundary &middot; 100% Open-Source &amp; Sovereign International Standards (GCC-01&ndash;GCC-05)" data-es="Frontera de Artefacto Educativo &middot; 100% Código Abierto y Estándares Internacionales Soberanos (GCC-01&ndash;GCC-05)">Fixed Educational Artifact Boundary &middot; 100% Open-Source &amp; Sovereign International Standards (GCC-01&ndash;GCC-05)</strong>
+        <strong data-en="Fixed Educational Artifact Boundary &middot; 100% Open-Source &amp; Sovereign International Standards" data-es="Frontera de Artefacto Educativo &middot; 100% Código Abierto y Estándares Internacionales Soberanos">Fixed Educational Artifact Boundary &middot; 100% Open-Source &amp; Sovereign International Standards</strong>
         <span data-en="{esc(BOUNDARY_EN)}" data-es="{esc(BOUNDARY_ES)}">{esc(BOUNDARY_EN)}</span>
-        <span data-en="Global Legal &amp; FOSS Charter (GCC-01–GCC-05): Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work." data-es="Carta Legal y FOSS Global (GCC-01–GCC-05): Cero software propietario requerido o promovido. Los generadores usan Python 3 stdlib (PSF-2.0 / MIT) emitiendo ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf) y ASCII limpio (.dxf) bajo CC0-1.0 / CC-BY-4.0, sin telemetría ni cargas a la nube. Los archivos no afirman cumplir ningún reglamento de construcción, norma de ejercicio profesional ni ley; revisa lo que aplica donde trabajas.">Global Legal &amp; FOSS Charter (GCC-01&ndash;GCC-05): Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work.</span>
+        <span data-en="Global Legal &amp; FOSS Charter: Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work." data-es="Carta Legal y FOSS Global: Cero software propietario requerido o promovido. Los generadores usan Python 3 stdlib (PSF-2.0 / MIT) emitiendo ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf) y ASCII limpio (.dxf) bajo CC0-1.0 / CC-BY-4.0, sin telemetría ni cargas a la nube. Los archivos no afirman cumplir ningún reglamento de construcción, norma de ejercicio profesional ni ley; revisa lo que aplica donde trabajas.">Global Legal &amp; FOSS Charter: Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work.</span>
       </div>
 
       <div class="tp-bounty-filter-bar" role="group" aria-label="Filter Tech and Tools Folios by field">
@@ -4870,15 +4862,15 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
     title_es = "Tecnología y Herramientas · Caja de Herramientas 3D, CAD Abierto y Pequeños Estudios"
     hook_en = (
         "Eight standalone 3D CAD and open-toolchain monographs (X.01–X.08) empowering boutique architecture studios, "
-        "independent civil and mechanical engineers, physicists, and math makers. Every CAD Folio ships a deterministic Python "
-        "generator (make_x01.py..make_x08.py), downloadable neutral 3D/2D files (.glb, .step, .3mf, .dxf) with a SHA-256 manifest, "
-        "a live zero-dependency WebGL2 3D inspector, a stdlib byte-level verifier with planted-defect knockout, and a portable SKILL.md."
+        "independent civil and mechanical engineers, physicists, and math makers. Every CAD Folio ships the Python script that "
+        "generates its files, downloadable neutral 3D/2D files (.glb, .step, .3mf, .dxf) with a list of checksums, "
+        "a live 3D viewer in the browser, a checking script that must fail when a defect is planted, and a portable SKILL.md."
     )
     hook_es = (
         "Ocho monografías dedicadas de CAD 3D y herramientas abiertas (X.01–X.08) diseñadas para empoderar a pequeños despachos de arquitectura, "
-        "ingenieros civiles y mecánicos independientes, físicos y makers matemáticos. Cada Folio CAD incluye su generador determinista en Python "
-        "(make_x01.py..make_x08.py), archivos descargables (.glb, .step, .3mf, .dxf) con manifiesto SHA-256, un visor 3D WebGL2 sin dependencias, "
-        "un verificador a nivel de bytes con prueba de defecto plantado y su SKILL.md portátil."
+        "ingenieros civiles y mecánicos independientes, físicos y makers matemáticos. Cada Folio CAD incluye el script de Python que genera "
+        "sus archivos, archivos descargables (.glb, .step, .3mf, .dxf) con una lista de sumas de verificación, un visor 3D en el navegador, "
+        "un script de revisión que debe fallar cuando se planta un defecto y su SKILL.md portátil."
     )
     crumbs = [(BRAND, page_url("", lang)), (title_es if es else title_en, canon)]
     image = "https://informatico.ai/plates/x01.jpg"
@@ -4939,9 +4931,9 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
       <h1 id="pillar-heading" class="tp-h1" data-en="{esc(title_en)}" data-es="{esc(title_es)}">{esc(title_en)}</h1>
       <p class="tp-standfirst" data-en="{esc(hook_en)}" data-es="{esc(hook_es)}">{esc(hook_en)}</p>
       <div class="tp-toolchain-boundary-banner" role="note" aria-label="Educational Geometry Boundary">
-        <strong data-en="Fixed Educational Artifact Boundary &middot; 100% Open-Source &amp; Sovereign International Standards (GCC-01&ndash;GCC-05)" data-es="Frontera de Artefacto Educativo &middot; 100% Código Abierto y Estándares Internacionales Soberanos (GCC-01&ndash;GCC-05)">Fixed Educational Artifact Boundary &middot; 100% Open-Source &amp; Sovereign International Standards (GCC-01&ndash;GCC-05)</strong>
+        <strong data-en="Fixed Educational Artifact Boundary &middot; 100% Open-Source &amp; Sovereign International Standards" data-es="Frontera de Artefacto Educativo &middot; 100% Código Abierto y Estándares Internacionales Soberanos">Fixed Educational Artifact Boundary &middot; 100% Open-Source &amp; Sovereign International Standards</strong>
         <span data-en="{esc(BOUNDARY_EN)}" data-es="{esc(BOUNDARY_ES)}">{esc(BOUNDARY_EN)}</span>
-        <span data-en="Global Legal &amp; FOSS Charter (GCC-01–GCC-05): Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work." data-es="Carta Legal y FOSS Global (GCC-01–GCC-05): Cero software propietario requerido o promovido. Los generadores usan Python 3 stdlib (PSF-2.0 / MIT) emitiendo ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf) y ASCII limpio (.dxf) bajo CC0-1.0 / CC-BY-4.0, sin telemetría ni cargas a la nube. Los archivos no afirman cumplir ningún reglamento de construcción, norma de ejercicio profesional ni ley; revisa lo que aplica donde trabajas.">Global Legal &amp; FOSS Charter (GCC-01&ndash;GCC-05): Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work.</span>
+        <span data-en="Global Legal &amp; FOSS Charter: Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work." data-es="Carta Legal y FOSS Global: Cero software propietario requerido o promovido. Los generadores usan Python 3 stdlib (PSF-2.0 / MIT) emitiendo ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf) y ASCII limpio (.dxf) bajo CC0-1.0 / CC-BY-4.0, sin telemetría ni cargas a la nube. Los archivos no afirman cumplir ningún reglamento de construcción, norma de ejercicio profesional ni ley; revisa lo que aplica donde trabajas.">Global Legal &amp; FOSS Charter: Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work.</span>
       </div>
       <div class="tp-studio-quickstart" role="region" aria-label="30-Second Studio Quick-Start Guide">
         <div class="tp-studio-quickstart-head">
@@ -5617,7 +5609,7 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "badge_es": "BASÍLICA · ARUP · FUENTES CON DOI · GLB + DXF EN VIVO",
         "cta_en": "Enter CC.02 Architecture Showcase →",
         "cta_es": "Entrar a Vitrina CC.02 →",
-        "alt": "Schematic 18-spire parabolic skyline beneath Montjuïc datum and doubly-ruled hyperboloid lines for CC.02.",
+        "alt": "Schematic 18-spire parabolic skyline beneath Montjuïc datum and doubly-ruled hyperboloid lines.",
     },
     {
         "code": "B.06",
@@ -5636,7 +5628,7 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "badge_es": "LEAN 4 · SEGÚN EL REPOSITORIO",
         "cta_en": "Read B.06 Proof Monograph →",
         "cta_es": "Leer Monografía B.06 →",
-        "alt": "Editorial plate for Bounty B.06 illustrating chiral gauge anomaly cancellation and tensor-network entanglement geometry.",
+        "alt": "Editorial plate illustrating chiral gauge anomaly cancellation and tensor-network entanglement geometry.",
     },
     {
         "code": "T.00",
@@ -5655,7 +5647,7 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "badge_es": "MEASURED · DERIVADO · BOUND · OPEN · CADA AFIRMACIÓN ETIQUETADA",
         "cta_en": "Read the T.00–T.13 Series →",
         "cta_es": "Leer la Serie T.00–T.13 →",
-        "alt": "Series track diagram for Time and Gravity (T.00 to T.13) spanning optical clock gradients, tabletop interferometry, Kerr horizons, and six epistemic badges.",
+        "alt": "Series track diagram for Time and Gravity spanning optical clock gradients, tabletop interferometry, Kerr horizons, and six epistemic badges.",
     },
     {
         "code": "M.11",
@@ -5674,7 +5666,7 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "badge_es": "ANCLADO A DOI",
         "cta_en": "Read M.11 Mathematics Monograph →",
         "cta_es": "Leer Monografía M.11 →",
-        "alt": "Editorial plate for Folio M.11 depicting 3D Kakeya directional tube incidences and critical-strip zero density bounds.",
+        "alt": "Editorial plate depicting 3D Kakeya directional tube incidences and critical-strip zero density bounds.",
     },
     {
         "code": "CC.01",
@@ -5693,7 +5685,7 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "badge_es": "VW · PRENSA · ARTÍCULOS · 3D WEBGL2 · GLB Y DXF",
         "cta_en": "Read CC.01 →",
         "cta_es": "Leer CC.01 →",
-        "alt": "Schematic hatchback silhouettes with a red rule and a tartan band, the share plate for CC.01.",
+        "alt": "Schematic hatchback silhouettes with a red rule and a tartan band.",
     },
     {
         "code": "CC.03",
@@ -5712,7 +5704,7 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "badge_es": "BMW/MINI · BRANDS HATCH · 6 DOIs · COMPROBADO POR SCRIPT",
         "cta_en": "Read CC.03 →",
         "cta_es": "Leer CC.03 →",
-        "alt": "Schematic Mini silhouettes from 1959 ADO15 to F56 JCW above a chequered rule, the share plate for CC.03.",
+        "alt": "Schematic Mini silhouettes from 1959 ADO15 to F56 JCW above a chequered rule.",
     },
     {
         "code": "A.11",
@@ -5731,7 +5723,7 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "badge_es": "MODELO DE EQUILIBRIO · COMPROBADO POR SCRIPT",
         "cta_en": "Read A.11 Architecture Monograph →",
         "cta_es": "Leer Monografía A.11 →",
-        "alt": "Editorial plate for Folio A.11 showing compression-only masonry tile vault ribs and reciprocal force polyhedra.",
+        "alt": "Editorial plate showing compression-only masonry tile vault ribs and reciprocal force polyhedra.",
     },
     {
         "code": "E.12",
@@ -5750,7 +5742,7 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "badge_es": "ESTUDIO DE MODELO CBF-QP",
         "cta_en": "Read E.12 Engineering Monograph →",
         "cta_es": "Leer Monografía E.12 →",
-        "alt": "Editorial plate for Folio E.12 showing a silicon wafer beside synchronized grid phase trajectories (conceptual plate).",
+        "alt": "Editorial plate showing a silicon wafer beside synchronized grid phase trajectories (conceptual plate).",
     },
     {
         "code": "X.03",
@@ -5769,42 +5761,9 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
         "badge_es": "STEP / GLB · COMPROBACIÓN DE BYTES",
         "cta_en": "Read X.03 Toolbox Monograph →",
         "cta_es": "Leer Monografía X.03 →",
-        "alt": "Editorial plate for Toolbox X.03 showing reciprocal timber joinery and neutral STEP/GLB studio geometry.",
+        "alt": "Editorial plate showing reciprocal timber joinery and neutral STEP/GLB studio geometry.",
     },
 )
-
-# Not drawn on the cover since the magazine pass of 2026-11-28: its first entry (T.13) is already published, and
-# the cover's "Coming next" now lists the next essays of the rotation above, which are all on the site.
-INFORMATICO_RELEASE_SCHEDULE: tuple[dict, ...] = (
-    {
-        "slot_en": "WED · 09:00 PT SLOT",
-        "slot_es": "MIÉ · TURNO 09:00 PT",
-        "code": "T.13 · UNIFICATION",
-        "title_en": "Gauge-Gravity Holonomy, Soft Graviton Theorems & PhysLean Anomaly Bridge",
-        "title_es": "Holonomía Gauge-Gravedad, Teoremas de Gravitones Blandos y Puente PhysLean",
-        "gate_en": "SCHEDULED EDITION · Gated by build_timegravity.py and the series label check (DERIVED / OPEN); PhysLean is cited as its repository states, not run here",
-        "gate_es": "EDICIÓN PROGRAMADA · Sujeta a build_timegravity.py y a la revisión de etiquetas de la serie (DERIVADO / ABIERTO); PhysLean se cita según su repositorio, no se ejecuta aquí",
-    },
-    {
-        "slot_en": "MON · 09:00 PT SLOT",
-        "slot_es": "LUN · TURNO 09:00 PT",
-        "code": "P.12 ↔ M.11 · REV 1.4",
-        "title_en": "Thermodynamic Uncertainty Relations (TUR) Across Boltzmann-to-Stokes Scales",
-        "title_es": "Relaciones de Incertidumbre Termodinámica (TUR) en las Escalas de Boltzmann a Stokes",
-        "gate_en": "SCHEDULED EDITION · Gated by tools/check_folio_citations.py",
-        "gate_es": "EDICIÓN PROGRAMADA · Sujeta a tools/check_folio_citations.py",
-    },
-    {
-        "slot_en": "WED · 09:00 PT SLOT",
-        "slot_es": "MIÉ · TURNO 09:00 PT",
-        "code": "A.11 ↔ X.03 · CAD EDITION",
-        "title_en": "Reciprocal Polyhedral Vaults & Passive Sky-Cooling Envelopes in STEP AP242",
-        "title_es": "Bóvedas Poliédricas Recíprocas y Envolventes Radiativas en STEP AP242",
-        "gate_en": "SCHEDULED EDITION · Gated by run_all_toolchain.py & watertight 2-manifold GLB verifier",
-        "gate_es": "EDICIÓN PROGRAMADA · Sujeta a run_all_toolchain.py y verificador GLB 2-variedad",
-    },
-)
-
 
 # Everyday section names for the cover (magazine pass, phase 1, 2026-11-28). The page titles, URLs and folio
 # codes are unchanged; these are only what a first-time reader sees on the cover. es-MX: draft, pending
@@ -5818,6 +5777,23 @@ COVER_SECTION_NAMES: dict[str, tuple[str, str]] = {
     "toolchain": ("For makers: 3D tools", "Para creadores: herramientas 3D"),
     "timegravity": ("Time & gravity, step by step", "Tiempo y gravedad, paso a paso"),
     "classics": ("Classic designs explained", "Diseños clásicos explicados"),
+    # The /essays/ hub ("Cross-Scale Essays: Clocks, Stone, and Living Matter"): its own words, without the label.
+    "essays": (
+        "Clocks, stone and living matter: the same math at different scales",
+        "Relojes, piedra y materia viva: las mismas matemáticas a distintas escalas",
+    ),
+}
+
+# The four section fronts on the cover (magazine pass, phase 2, 2026-11-28): one lead essay and three headline
+# links per section. Every pick is an essay that section's own PILLAR_HOOKS sentence names, and none is in the
+# weekly rotation (INFORMATICO_SPOTLIGHT_ROTATION), so the cover never shows an essay twice. Titles, standfirsts
+# and reading times are read from the essays; only the choice is made here. tests/test_magazine_cover.py checks
+# that each slug exists, has a plate and is outside the rotation.
+COVER_FRONTS: dict[str, dict] = {
+    "engineering": {"lead": "e07", "links": ("e06", "e08", "e09")},
+    "architecture": {"lead": "a07", "links": ("a08", "a01", "a09")},
+    "physics": {"lead": "p07", "links": ("p08", "p03", "p10")},
+    "math": {"lead": "m12", "links": ("m07", "m08", "m10")},
 }
 
 _SENTENCE_END_RE = re.compile(r"(?<=[.?!])\s+")
@@ -5970,106 +5946,6 @@ def _watch_film_label(duration: str) -> tuple[str, str]:
     if minutes == 0:
         return f"Watch the {seconds}-second film", f"Ver el video de {seconds} segundos"
     return f"Watch the film ({duration})", f"Ver el video ({duration})"
-
-
-def render_cover_timegravity_feature(rel_res: str = ".") -> str:
-    """Featured Series Essay-Showcase & 13-Step Reading-Order Ribbon on the Home cover."""
-    by_code = {p["code"]: p for p in TIMEGRAVITY_PAGES}
-    step_items = []
-    for i, m in enumerate(TIMEGRAVITY_TRACK_MAP, 1):
-        tg = by_code.get(m["code"])
-        if tg is None:
-            continue
-        slug = tg["slug"]
-        href = _href(rel_res, "timegravity/" + (f"{slug}/" if slug else ""))
-        meta_en = f"Step {i} of 14 · {tg['code']}"
-        meta_es = f"Paso {i} de 14 · {tg['code']}"
-        title_en, title_es = tg["title_en"], tg["title_es"]
-        step_items.append(
-            f"""          <li class="tp-featured-step-item">
-            <a class="tp-featured-step-link" href="{href}">
-              <span class="tp-featured-step-meta" data-en="{esc(meta_en)}" data-es="{esc(meta_es)}">{esc(meta_en)}</span>
-              <strong class="tp-featured-step-title" data-en="{esc(title_en)}" data-es="{esc(title_es)}">{esc(title_en)}</strong>
-            </a>
-          </li>"""
-        )
-    steps_html = "\n".join(step_items)
-    hub_href = _href(rel_res, "timegravity/")
-    step2_href = _href(rel_res, "timegravity/t02/")
-    phys_href = _href(rel_res, "physics/#timegravity-series")
-    plate_url = f"{_href(rel_res, 'plates/t00.png')}?v={_png_sha8('t00')}"
-
-    kicker_en = f"Featured Series · Physics · 14 Steps · {_tg_ledger_rows()} Ledger Rows"
-    kicker_es = f"Serie Destacada · Física · 14 Pasos · {_tg_ledger_rows()} Filas de Registro"
-    h2_en = "Time & Gravity: Fourteen Steps from Falling Clocks to Open Horizons"
-    h2_es = "Tiempo y Gravedad: Catorce Pasos de los Relojes que Caen a los Horizontes Abiertos"
-    essay1_en = (
-        "Drop an apple from rest and ask what pushes it downward: in general relativity, nothing pushes. "
-        "A clock on an upper shelf ticks slightly faster than a clock on the floor—about 1.09 × 10⁻¹⁶ faster per metre at Earth’s surface—"
-        "and a freely falling body simply follows the straightest worldline that maximises its own elapsed proper time. "
-        "Our fourteen-step series begins with that everyday clock-rate slope and walks, one open question at a time, through optical-lattice "
-        "interferometry, 10⁻¹⁴ kg table-top quantum-gravity witnesses and the 33 µm Eöt-Wash torsion-balance recast, Diósi–Penrose objective-collapse bounds, "
-        "timeless Wheeler–DeWitt relational clocks, Hawking–Unruh horizon thermodynamics, GW250114 Kerr black-hole ringdown spectroscopy, "
-        "Page-curve island unitarity, electromagnetic pointer-state einselection (scaling as R⁶T⁹), and the question of whether dark matter, 84.3% of all matter in the Planck 2018 data, reaches our clocks only through gravity."
-    )
-    essay1_es = (
-        "Suelta una manzana desde el reposo y pregunta qué la empuja hacia abajo: en la relatividad general nada empuja. "
-        "Un reloj en un estante alto corre ligeramente más rápido que uno en el suelo —alrededor de 1.09 × 10⁻¹⁶ más rápido por metro en la superficie terrestre— "
-        "y un cuerpo en caída libre simplemente sigue la línea de mundo más recta que maximiza su propio tiempo propio transcurrido. "
-        "Nuestra serie de catorce pasos parte de esa pendiente cotidiana de ritmos de reloj y recorre, una pregunta abierta a la vez, la interferometría "
-        "de redes ópticas, los testigos de gravedad cuántica de mesa de 10⁻¹⁴ kg y el recálculo Eöt-Wash a 33 µm, las cotas de colapso objetivo de Diósi–Penrose, "
-        "los relojes relacionales sin tiempo de Wheeler–DeWitt, la termodinámica de horizontes de Hawking–Unruh, la espectroscopía de ringdown de Kerr en GW250114, "
-        "la unitariedad de islas en la curva de Page, la einselección electromagnética de estados puntero (con escala R⁶T⁹) y la pregunta de si la materia oscura, el 84.3% de toda la materia según los datos de Planck 2018, llega a nuestros relojes solo a través de la gravedad."
-    )
-    essay2_en = (
-        "Where standard relativity and quantum mechanics meet without laboratory data, prose alone easily blurs textbook measurements with mathematical extrapolations. "
-        "Every substantive claim across T.00–T.13 therefore carries one of six badges checked by script—MEASURED, DERIVED (NOT MEASURED), SINGLE RESULT, BOUND, PROPOSED, or OPEN—"
-        f"read against a {_tg_ledger_rows()}-row primary-literature ledger and {_tg_verifier_count()} zero-dependency Python verifiers that must fail under a planted defect."
-    )
-    essay2_es = (
-        "Donde la relatividad estándar y la mecánica cuántica se encuentran sin datos de laboratorio, la prosa por sí sola confunde con facilidad mediciones consolidadas con extrapolaciones matemáticas. "
-        "Por ello, cada afirmación sustantiva de T.00–T.13 lleva una de seis insignias comprobadas por script —MEASURED, DERIVADO (NO MEDIDO), SINGLE RESULT, BOUND, PROPOSED u OPEN— "
-        f"contrastadas con un registro primario de {_tg_ledger_rows()} filas y {_tg_verifier_count()} verificadores en Python sin dependencias que deben fallar ante un defecto plantado."
-    )
-    cta1_en, cta1_es = "Enter the Series Hub (T.00) →", "Entrar al Inicio de la Serie (T.00) →"
-    cta2_en, cta2_es = "Begin Step 2 · Everyone Moves at One Rate (T.02) →", "Empezar Paso 2 · Todos Avanzamos a un Mismo Ritmo (T.02) →"
-    cta3_en, cta3_es = "Explore the Physics Section →", "Explorar la Sección de Física →"
-    cap_en = (
-        "Deterministic track map (Plate T.00): four regimes from falling clocks and 10⁻¹⁴ kg interferometers to GW250114 horizons, "
-        "R⁶T⁹ photon baths, and dark-sector clock networks—every claim carries one of six labels, checked by script against the series ledger."
-    )
-    cap_es = (
-        "Mapa determinista de la serie (Lámina T.00): cuatro regímenes desde relojes en caída e interferómetros de 10⁻¹⁴ kg hasta horizontes GW250114, "
-        "baños fotónicos R⁶T⁹ y redes de relojes del sector oscuro; cada afirmación lleva una de seis etiquetas, comprobada por script contra el registro de la serie."
-    )
-    rail_en = "Reading order across all 14 steps (note T.02 precedes T.01 so spacetime norm precedes spatial projection):"
-    rail_es = "Orden de lectura de los 14 pasos (nota: T.02 precede a T.01 para fijar la norma espaciotemporal antes de su proyección):"
-
-    return f"""    <section class="tp-cover-featured-series" id="featured-timegravity" aria-labelledby="featured-tg-heading">
-      <div class="tp-featured-series-grid">
-        <div class="tp-featured-series-copy">
-          <p class="tp-kicker" data-en="{esc(kicker_en)}" data-es="{esc(kicker_es)}">{esc(kicker_en)}</p>
-          <h2 id="featured-tg-heading" class="tp-h2"><a href="{hub_href}" data-en="{esc(h2_en)}" data-es="{esc(h2_es)}">{esc(h2_en)}</a></h2>
-          <p class="tp-featured-series-essay" data-en="{esc(essay1_en)}" data-es="{esc(essay1_es)}">{esc(essay1_en)}</p>
-          <p class="tp-featured-series-essay" data-en="{esc(essay2_en)}" data-es="{esc(essay2_es)}">{esc(essay2_en)}</p>
-          <div class="tp-featured-series-ctas">
-            <a class="tp-cta tp-cta-primary" href="{hub_href}" data-en="{esc(cta1_en)}" data-es="{esc(cta1_es)}">{esc(cta1_en)}</a>
-            <a class="tp-cta" href="{step2_href}" data-en="{esc(cta2_en)}" data-es="{esc(cta2_es)}">{esc(cta2_en)}</a>
-            <a class="tp-cta" href="{phys_href}" data-en="{esc(cta3_en)}" data-es="{esc(cta3_es)}">{esc(cta3_en)}</a>
-          </div>
-        </div>
-        <figure class="tp-featured-series-figure">
-          <img class="tp-featured-series-plate" src="{plate_url}" width="1200" height="630" loading="lazy" decoding="async" alt="Deterministic series diagram for Time and Gravity (T.00 to T.13): clock-rate gradient, quantum superposition interferometry, Kerr horizon ringdown, and six-label evidence ledger.">
-          <figcaption class="tp-featured-series-caption" data-en="{esc(cap_en)}" data-es="{esc(cap_es)}">{esc(cap_en)}</figcaption>
-        </figure>
-      </div>
-      <nav class="tp-featured-steps-nav" aria-labelledby="featured-tg-steps-label">
-        <p id="featured-tg-steps-label" class="tp-featured-steps-label" data-en="{esc(rail_en)}" data-es="{esc(rail_es)}">{esc(rail_en)}</p>
-        <ol class="tp-featured-steps-rail">
-{steps_html}
-        </ol>
-      </nav>
-    </section>"""
 
 
 FILMS_JSON = ROOT / "data" / "films.json"
@@ -6301,8 +6177,122 @@ def render_cover_films_section(rel_res: str = ".", films: list[dict] | None = No
 """
 
 
+def _front_essay(pillar: str, slug: str) -> dict:
+    """Title, link, reading time and plate for one essay named on a section front, read from the catalogue."""
+    folio = next((f for f in NEW_FOLIOS[pillar] if f["slug"] == slug), None)
+    if folio is None:
+        raise ValueError(f"COVER_FRONTS: {pillar}: no essay {slug!r}")
+    if any(item["href"] == f"{pillar}/{slug}/" for item in INFORMATICO_SPOTLIGHT_ROTATION):
+        raise ValueError(f"COVER_FRONTS: {slug} is already in the weekly rotation")
+    es_meta = get_folio_es_meta(slug, folio, folio["colophon"])
+    rt_en, rt_es = short_reading_time(slug)
+    return {
+        "href": f"{pillar}/{slug}/",
+        "title_en": decf_title(folio["title"]),
+        "title_es": decf_title(es_meta["title_es"]),
+        "rt_en": rt_en,
+        "rt_es": rt_es,
+    }
+
+
+def render_cover_fronts(catalog: dict, lang: str = "en") -> str:
+    """The four section fronts on the cover: a section name, one lead essay with its picture and its own opening
+    words, three more headlines, and a link to the whole section. Picks come from COVER_FRONTS; every word
+    shown about an essay is read from that essay (the standfirst through _spotlight_story), and the counts come
+    from the catalogue. Nothing here is clamped or cut: a long title or a longer Spanish line simply wraps."""
+    fronts = []
+    for p_key in ("engineering", "architecture", "physics", "math"):
+        folios = catalog["pillars"][p_key]
+        pick = COVER_FRONTS[p_key]
+        name_en, name_es = COVER_SECTION_NAMES[p_key]
+        lead_slug = pick["lead"]
+        lead = _front_essay(p_key, lead_slug)
+        if not plate_exists(lead_slug):
+            raise ValueError(f"COVER_FRONTS: {lead_slug} has no plate to lead a section front with")
+        story = _spotlight_story({"href": lead["href"], "code": lead_slug})
+        links = []
+        for slug in pick["links"]:
+            e = _front_essay(p_key, slug)
+            links.append(
+                f"""          <li class="tp-front-item"><a class="tp-front-link" href="{e['href']}" data-en="{esc(e['title_en'])}" data-es="{esc(e['title_es'])}">{esc(e['title_en'])}</a> <span class="tp-front-time" data-en="{e['rt_en']}" data-es="{e['rt_es']}">{e['rt_en']}</span></li>"""
+            )
+        links_html = "\n".join(links)
+        n = len(folios)
+        fronts.append(
+            f"""      <section class="tp-front" data-track="{p_key}" aria-labelledby="pillar-{p_key}">
+        <h2 id="pillar-{p_key}" class="tp-front-name"><a href="{p_key}/" data-en="{esc(name_en)}" data-es="{esc(name_es)}">{esc(name_en)}</a></h2>
+        <article class="tp-front-lead">
+          <a class="tp-front-figure" href="{lead['href']}" tabindex="-1" aria-hidden="true"><img class="tp-front-img" src="{plate_src('plates/', lead_slug)}" width="1280" height="720" loading="lazy" decoding="async" alt=""></a>
+          <h3 class="tp-front-title"><a href="{lead['href']}" data-en="{esc(lead['title_en'])}" data-es="{esc(lead['title_es'])}">{esc(lead['title_en'])}</a></h3>
+          <p class="tp-front-dek" data-en="{esc(story['stand_en'])}" data-es="{esc(story['stand_es'])}">{esc(story['stand_en'])}</p>
+          <p class="tp-front-time" data-en="{lead['rt_en']}" data-es="{lead['rt_es']}">{lead['rt_en']}</p>
+        </article>
+        <ul class="tp-front-list">
+{links_html}
+        </ul>
+        <p class="tp-front-all"><a class="tp-text-link" href="{p_key}/" data-en="See all {n} essays →" data-es="Ver los {n} ensayos →">See all {n} essays →</a></p>
+      </section>"""
+        )
+    fronts_html = "\n".join(fronts)
+    aria = "Secciones" if lang == "es" else "Sections"
+    return f"""    <section class="tp-fronts" aria-label="{aria}">
+{fronts_html}
+    </section>"""
+
+
+# The classics named in the "More to explore" row: (href, EN, es-MX). Names only, as their own pages give them.
+COVER_CLASSICS_LINKS: tuple[tuple[str, str, str], ...] = (
+    ("classics/golf-gti/", "the Golf GTI", "el Golf GTI"),
+    ("classics/sagrada-familia/", "La Sagrada Família", "La Sagrada Família"),
+    ("classics/mini-jcw/", "the MINI JCW", "el MINI JCW"),
+)
+
+
+def render_cover_more_row() -> str:
+    """"More to explore" on the cover: the other parts of the site as a plain name and one plain line each.
+    The lines are the phase 1 tile subtitles; the classics item names its three pages as three links."""
+    sec = COVER_SECTION_NAMES
+    steps = len(TIMEGRAVITY_PAGES)
+    items = (
+        ("bounties/", sec["bounties"], ("Open problems and prize challenges, explained", "Problemas abiertos y retos con premio, explicados")),
+        ("toolchain/", sec["toolchain"], ("Open 3D files for small studios", "Archivos 3D abiertos para estudios pequeños")),
+        ("timegravity/", sec["timegravity"], (
+            f"A {steps}-step series · Why a higher clock runs faster",
+            f"Una serie de {steps} pasos · Por qué un reloj a mayor altura avanza más rápido",
+        )),
+    )
+    rows = [
+        f"""        <li class="tp-more-item">
+          <a class="tp-more-title" href="{href}" data-en="{esc(name[0])}" data-es="{esc(name[1])}">{esc(name[0])}</a>
+          <span class="tp-more-desc" data-en="{esc(desc[0])}" data-es="{esc(desc[1])}">{esc(desc[0])}</span>
+        </li>"""
+        for href, name, desc in items
+    ]
+    classics = "\n".join(
+        f'            <li><a class="tp-text-link" href="{href}" data-en="{esc(en)}" data-es="{esc(es_t)}">{esc(en)}</a></li>'
+        for href, en, es_t in COVER_CLASSICS_LINKS
+    )
+    rows.append(
+        f"""        <li class="tp-more-item">
+          <span class="tp-more-title" data-en="{esc(sec['classics'][0])}" data-es="{esc(sec['classics'][1])}">{esc(sec['classics'][0])}</span>
+          <ul class="tp-more-links">
+{classics}
+          </ul>
+        </li>"""
+    )
+    rows_html = "\n".join(rows)
+    return f"""    <section class="tp-more" aria-labelledby="more-heading">
+      <h2 id="more-heading" class="tp-this-week-label" data-en="More to explore" data-es="Más para explorar">More to explore</h2>
+      <ul class="tp-more-list">
+{rows_html}
+      </ul>
+    </section>"""
+
+
 def render_hub_index(catalog: dict, lang: str = "en") -> str:
-    """The cover: compact hero + Navigator Strip above the fold, Featured Time & Gravity Essay-Showcase, 4 Pillar rows, Toolchain, and 6 Bounties."""
+    """The cover: hero with the click-to-play film, This week's essay and Read next, four section fronts,
+    a "More to explore" row, the crossword, and two small links. The Toolbox, the open problems, the Time &
+    Gravity series, the classics and the essays across scales each live on their own hub."""
     es = lang == "es"
     total = sum(len(v) for v in catalog["pillars"].values())
     t_en, d_en, t_es, d_es = (x.replace("{total}", str(total)) for x in HUB_SEO)
@@ -6321,38 +6311,10 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
     ).replace("</", "<" + "\\/")
     head = render_head(hub_title, hub_desc, "", "website", "https://informatico.ai/plates/utopian-city-future.jpg", ".", ".", hub_ld, lang)
 
-    rows = []
-    for p_key in ("engineering", "architecture", "physics", "math"):
-        folios = catalog["pillars"][p_key]
-        en, es_t = PILLAR_TITLES[p_key], PILLAR_TITLES_ES[p_key]
-        hook_en, hook_es = PILLAR_HOOKS[p_key]
-        cards = render_rack_cards(p_key, folios, f"{p_key}/", "plates/", eager=4)
-        rows.append(
-            f"""    <section class="tp-cover-pillar" data-track="{p_key}" aria-labelledby="pillar-{p_key}">
-      <div class="tp-cover-pillar-head">
-        <p class="tp-kicker" data-en="{len(folios)} essays" data-es="{len(folios)} ensayos">{len(folios)} essays</p>
-        <h2 id="pillar-{p_key}" class="tp-h2"><a href="{p_key}/" data-en="{esc(en)}" data-es="{esc(es_t)}">{esc(en)}</a></h2>
-        <p class="tp-cover-hook" data-en="{esc(hook_en)}" data-es="{esc(hook_es)}">{esc(hook_en)}</p>
-        <div class="tp-cover-links"><a class="tp-cover-more" href="{p_key}/" data-en="See all {len(folios)} →" data-es="Ver los {len(folios)} →">See all {len(folios)} →</a>{'' if p_key != 'engineering' else ' <a class="tp-cover-more" href="engineering/#cult-classics-eng" data-en="Classic designs: the Golf GTI &amp; the MINI JCW →" data-es="Diseños clásicos: el Golf GTI y el MINI JCW →">Classic designs: the Golf GTI &amp; the MINI JCW →</a>'}</div>
-      </div>
-      <div class="tp-cover-row">
-{cards}
-      </div>
-    </section>"""
-        )
-    rows_html = "\n".join(rows)
-    first = catalog["pillars"]["engineering"][0]
-    arch_n = len(catalog["pillars"]["architecture"])
-    math_n = len(catalog["pillars"]["math"])
-    eng_n = len(catalog["pillars"]["engineering"])
-    total_pillar_n = sum(len(v) for v in NEW_FOLIOS.values())
-    phys_n = len(catalog["pillars"]["physics"])
-    bounty_n, tool_n = len(BOUNTY_FOLIOS), len(TOOLCHAIN_FOLIOS)
-    sec = COVER_SECTION_NAMES
-    strip_aria = "Secciones de Informatico.ai" if es else "Sections of Informatico.ai"
     # "Start reading" opens this week's essay: the first of the rotation here, the current one once
     # featured-spotlight.mjs has picked the week's slot.
     start_href = _href(".", INFORMATICO_SPOTLIGHT_ROTATION[0]["href"])
+    sec = COVER_SECTION_NAMES
     deck_en = (
         "Long illustrated essays on how buildings, bridges, physics and math work. "
         "Each one has a model you can move, and most start with a story told in plain words."
@@ -6391,68 +6353,12 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         </div>
       </div>
 {hero_media}
-      <nav class="tp-cover-track-strip" aria-label="{strip_aria}">
-        <a class="tp-track-chip" href="engineering/">
-          <span class="tp-track-chip-kicker" data-en="{eng_n} essays" data-es="{eng_n} ensayos">{eng_n} essays</span>
-          <strong class="tp-track-chip-title" data-en="{esc(sec['engineering'][0])}" data-es="{esc(sec['engineering'][1])}">{esc(sec['engineering'][0])}</strong>
-          <span class="tp-track-chip-meta" data-en="Bridges, tunnels, concrete and soil" data-es="Puentes, túneles, concreto y suelo">Bridges, tunnels, concrete and soil</span>
-        </a>
-        <a class="tp-track-chip" href="architecture/">
-          <span class="tp-track-chip-kicker" data-en="{arch_n} essays" data-es="{arch_n} ensayos">{arch_n} essays</span>
-          <strong class="tp-track-chip-title" data-en="{esc(sec['architecture'][0])}" data-es="{esc(sec['architecture'][1])}">{esc(sec['architecture'][0])}</strong>
-          <span class="tp-track-chip-meta" data-en="Vaults, shells and cool roofs" data-es="Bóvedas, cascarones y techos frescos">Vaults, shells and cool roofs</span>
-        </a>
-        <a class="tp-track-chip" href="physics/">
-          <span class="tp-track-chip-kicker" data-en="{phys_n} essays and a 14-step series" data-es="{phys_n} ensayos y una serie de 14 pasos">{phys_n} essays and a 14-step series</span>
-          <strong class="tp-track-chip-title" data-en="{esc(sec['physics'][0])}" data-es="{esc(sec['physics'][1])}">{esc(sec['physics'][0])}</strong>
-          <span class="tp-track-chip-meta" data-en="Race-car air, soft matter and the colors of light" data-es="El aire de un auto de carreras, la materia blanda y los colores de la luz">Race-car air, soft matter and the colors of light</span>
-        </a>
-        <a class="tp-track-chip" href="math/">
-          <span class="tp-track-chip-kicker" data-en="{math_n} essays" data-es="{math_n} ensayos">{math_n} essays</span>
-          <strong class="tp-track-chip-title" data-en="{esc(sec['math'][0])}" data-es="{esc(sec['math'][1])}">{esc(sec['math'][0])}</strong>
-          <span class="tp-track-chip-meta" data-en="Proofs checked by machines, codes and sphere packing" data-es="Códigos, empaquetamiento de esferas y demostraciones verificadas por máquina">Proofs checked by machines, codes and sphere packing</span>
-        </a>
-        <a class="tp-track-chip tp-track-chip-bounty" href="bounties/">
-          <span class="tp-track-chip-kicker" data-en="{bounty_n} essays" data-es="{bounty_n} ensayos">{bounty_n} essays</span>
-          <strong class="tp-track-chip-title" data-en="{esc(sec['bounties'][0])}" data-es="{esc(sec['bounties'][1])}">{esc(sec['bounties'][0])}</strong>
-          <span class="tp-track-chip-meta" data-en="Open problems and prize challenges, explained" data-es="Problemas abiertos y retos con premio, explicados">Open problems and prize challenges, explained</span>
-        </a>
-        <a class="tp-track-chip tp-track-chip-toolchain" href="toolchain/">
-          <span class="tp-track-chip-kicker" data-en="{tool_n} guides" data-es="{tool_n} guías">{tool_n} guides</span>
-          <strong class="tp-track-chip-title" data-en="{esc(sec['toolchain'][0])}" data-es="{esc(sec['toolchain'][1])}">{esc(sec['toolchain'][0])}</strong>
-          <span class="tp-track-chip-meta" data-en="Open 3D files for small studios" data-es="Archivos 3D abiertos para estudios pequeños">Open 3D files for small studios</span>
-        </a>
-        <a class="tp-track-chip tp-track-chip-timegravity" href="timegravity/">
-          <span class="tp-track-chip-kicker" data-en="A 14-step series" data-es="Una serie de 14 pasos">A 14-step series</span>
-          <strong class="tp-track-chip-title" data-en="{esc(sec['timegravity'][0])}" data-es="{esc(sec['timegravity'][1])}">{esc(sec['timegravity'][0])}</strong>
-          <span class="tp-track-chip-meta" data-en="Why a higher clock runs faster" data-es="Por qué un reloj a mayor altura avanza más rápido">Why a higher clock runs faster</span>
-        </a>
-        <a class="tp-track-chip tp-track-chip-classic" href="classics/golf-gti/">
-          <span class="tp-track-chip-kicker" data-en="{esc(sec['classics'][0])}" data-es="{esc(sec['classics'][1])}">{esc(sec['classics'][0])}</span>
-          <strong class="tp-track-chip-title" data-en="One Brief, Eight Answers: the Golf GTI" data-es="Un reto, ocho respuestas: el Golf GTI">One Brief, Eight Answers: the Golf GTI</strong>
-          <span class="tp-track-chip-meta" data-en="Fifty years, one engineering move at a time" data-es="Cincuenta años, una decisión de ingeniería a la vez">Fifty years, one engineering move at a time</span>
-        </a>
-        <a class="tp-track-chip tp-track-chip-classic" href="classics/sagrada-familia/">
-          <span class="tp-track-chip-kicker" data-en="{esc(sec['classics'][0])}" data-es="{esc(sec['classics'][1])}">{esc(sec['classics'][0])}</span>
-          <strong class="tp-track-chip-title" data-en="One Stone Forest: La Sagrada Família" data-es="Un bosque de piedra: La Sagrada Família">One Stone Forest: La Sagrada Família</strong>
-          <span class="tp-track-chip-meta" data-en="144 years of building, in eight moves" data-es="144 años de construcción, en ocho hitos">144 years of building, in eight moves</span>
-        </a>
-        <a class="tp-track-chip tp-track-chip-classic" href="classics/mini-jcw/">
-          <span class="tp-track-chip-kicker" data-en="{esc(sec['classics'][0])}" data-es="{esc(sec['classics'][1])}">{esc(sec['classics'][0])}</span>
-          <strong class="tp-track-chip-title" data-en="Wheels at the Corners: MINI JCW" data-es="Ruedas en las esquinas: MINI JCW">Wheels at the Corners: MINI JCW</strong>
-          <span class="tp-track-chip-meta" data-en="From the 1959 Mini to the F56 JCW" data-es="Del Mini de 1959 al F56 JCW">From the 1959 Mini to the F56 JCW</span>
-        </a>
-      </nav>
     </section>
 {render_cover_rotating_spotlight_and_schedule(".")}
-{render_cover_films_section(".")}{rows_html}
-{render_toolchain_section(".")}
-{render_bounty_crucible_section(".")}
-{render_cover_timegravity_feature(".")}
-{render_cult_classics_rack(".")}
-{render_cross_scale_essays_showcase(".", lang)}
+{render_cover_films_section(".")}{render_cover_fronts(catalog, lang)}
+{render_cover_more_row()}
 {render_folio_crossword_section("hub", "INFORMATICO.AI")}
-    <p class="tp-cover-coders"><a href="about/#for-builders" data-en="For builders and coders: use these essays with AI tools →" data-es="Para quienes programan y construyen: usa estos ensayos con herramientas de IA →">For builders and coders: use these essays with AI tools →</a></p>
+    <p class="tp-cover-coders"><a class="tp-text-link" href="about/#for-builders" data-en="For builders and coders: use these essays with AI tools →" data-es="Para quienes programan y construyen: usa estos ensayos con herramientas de IA →">For builders and coders: use these essays with AI tools →</a> <a class="tp-text-link" href="essays/" data-en="{esc(sec['essays'][0])} →" data-es="{esc(sec['essays'][1])} →">{esc(sec['essays'][0])} →</a></p>
 {render_site_footer(".")}
   </main>
   <script type="module" src="modules/main.mjs"></script>

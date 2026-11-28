@@ -239,22 +239,32 @@ class TimeGravityTrackTests(unittest.TestCase):
 
     def test_index_sitemap_and_llms_carry_the_track(self) -> None:
         hub = (RESEARCH / "index.html").read_text(encoding="utf-8")
-        self.assertIn('class="tp-track-chip tp-track-chip-timegravity" href="timegravity/"', hub)
-        self.assertIn('id="featured-timegravity"', hub)
-        # 2026-11-15 homepage rebalance (two-seat review, build-with-changes): the pillars come first and the
-        # Time & Gravity band sits below them with the Cross-Scale Essays. This reverses the 2026-11-09 order.
-        self.assertLess(hub.index('id="pillar-engineering"'), hub.index('id="featured-timegravity"'))
-        rail_start = hub.index('class="tp-featured-steps-rail"')
-        rail = hub[rail_start:hub.index("</ol>", rail_start)]
-        self.assertLess(rail.index('href="./timegravity/t02/"'), rail.index('href="./timegravity/t01/"'))
+        self.assertIn('class="tp-more-title" href="timegravity/"', hub)
+        self.assertNotIn('id="featured-timegravity"', hub)  # magazine pass, phase 2 (2026-11-28)
+        # The four section fronts come first; the series is one line in "More to explore" below them.
+        self.assertLess(hub.index('id="pillar-engineering"'), hub.index('class="tp-more-title" href="timegravity/"'))
+        self.assertNotIn("tp-featured-steps-rail", hub)
         es_hub = (RESEARCH / "es-mx" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="timegravity/"', es_hub)
-        self.assertIn('id="featured-timegravity"', es_hub)
-        self.assertLess(es_hub.index('id="pillar-engineering"'), es_hub.index('id="featured-timegravity"'))  # 2026-11-15
+        self.assertIn('class="tp-more-title" href="timegravity/"', es_hub)
+        self.assertNotIn('id="featured-timegravity"', es_hub)
+        self.assertLess(es_hub.index('id="pillar-engineering"'), es_hub.index('class="tp-more-title" href="timegravity/"'))
         phys = (RESEARCH / "physics" / "index.html").read_text(encoding="utf-8")
         es_phys = (RESEARCH / "es-mx" / "physics" / "index.html").read_text(encoding="utf-8")
-        self.assertLess(phys.index('id="timegravity-series"'), phys.index("Standalone Physics Monographs"))
-        self.assertLess(es_phys.index('id="timegravity-series"'), es_phys.index("Monografías Independientes de Física"))
+        ledger_rows = len(json.loads((ROOT / "timegravity" / "ledger.json").read_text(encoding="utf-8"))["rows"])
+        for rel, txt, row_words in (("en", phys, f"to a {ledger_rows}-row offline ledger."), ("es", es_phys, f"un libro de {ledger_rows} filas.")):
+            self.assertLess(txt.index('id="timegravity-series"'), txt.index('id="all-essays"'), rel)
+            # The reading order the cover's rail used to show is the order of the series cards on /physics/:
+            # step 2 is T.02, which comes before T.01.
+            self.assertLess(txt.index('href="../timegravity/t02/" data-folio-slug'), txt.index('href="../timegravity/t01/" data-folio-slug'), rel)
+            # The ledger size is counted at build time; the two stale hand-typed numbers are gone.
+            self.assertIn(row_words, txt, rel)
+            self.assertNotIn("117", txt[txt.index('id="timegravity-series"'):txt.index('id="all-essays"')], rel)
+            self.assertNotIn("123 audited claims", txt, rel)
+            self.assertNotIn("123 afirmaciones", txt, rel)
+            self.assertNotIn("(T.00)", txt, rel)
+            self.assertNotIn("(T.02)", txt, rel)
+            self.assertNotIn("Standalone Physics Monographs", txt, rel)
+            self.assertNotIn("Monografías Independientes", txt, rel)
         self.assertIn("T06-GERACI2008", (TG / "t06" / "index.html").read_text(encoding="utf-8"))
         xml = (RESEARCH / "sitemap.xml").read_text(encoding="utf-8")
         for url in ("https://informatico.ai/timegravity/", "https://informatico.ai/timegravity/t01/",
@@ -451,7 +461,7 @@ class TimeGravityBatch3Tests(unittest.TestCase):
             txt = phys.read_text(encoding="utf-8")
             self.assertEqual(txt.count('class="tp-rack-card tp-rack-card-series"'), 14, f"{phys}: fourteen series cards")
             self.assertIn('id="timegravity-series"', txt)
-            self.assertIn("1 series of 14 steps", txt)
+            self.assertIn('data-en="12 essays and a 14-step series"', txt)  # the hub kicker, in plain words since 2026-11-28
             self.assertLess(txt.index('id="timegravity-series"'), txt.index("tp-symbolic-physics-lab"),
                             "series rack sits above the interactive sections")
         for tpage in (TG / "index.html", TG / "t07" / "index.html", TG / "t13" / "index.html"):

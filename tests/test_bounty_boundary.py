@@ -18,7 +18,7 @@ PRIZE_VERDICT = re.compile(r"(XPRIZE|Holcim|Cooling Prize|IStructE|Erd\u0151s|AI
 
 class BountyBoundaryTests(unittest.TestCase):
     def pages(self) -> list[Path]:
-        out = [SRC / "bounties" / "index.html", SRC / "es-mx" / "bounties" / "index.html", SRC / "index.html"]
+        out = [SRC / "bounties" / "index.html", SRC / "es-mx" / "bounties" / "index.html"]
         for n in range(1, 7):
             out.append(SRC / "bounties" / f"b{n:02d}" / "index.html")
             out.append(SRC / "es-mx" / "bounties" / f"b{n:02d}" / "index.html")
@@ -33,6 +33,18 @@ class BountyBoundaryTests(unittest.TestCase):
             self.assertIn(blf.esc(blf.BOUNTY_BOUNDARY_ES), html, page)
             if "es-mx" not in page.parts:
                 self.assertIn(blf.esc(blf.BOUNTY_BOUNDARY_EN), html, page)
+
+    def test_cover_names_no_prize_so_none_can_read_as_entered_or_won(self) -> None:
+        """Since the magazine pass of 2026-11-28 the open-problems section lives on /bounties/ (with the notice).
+        The cover only links there, and must not name a prize, a sum of money or a verdict."""
+        named = re.compile(r"XPRIZE|Holcim|Cooling Prize|IStructE|AIMO|Erd\u0151s Problem|\$\s?\d|\bPASS\b|APROBADO|\bw[oi]n\b|\bgan[oó]\b|award", re.I)
+        for rel in ("index.html", "es-mx/index.html"):
+            html = (SRC / rel).read_text(encoding="utf-8")
+            main = html[html.index("<main"):html.index("</main>")]
+            hit = named.search(main)
+            self.assertIsNone(hit, f"{rel}: {hit.group(0) if hit else ''}")
+            self.assertIn('href="bounties/"', main, rel)
+            self.assertNotIn("tp-bounty-crucible", main, rel)
 
     def test_no_label_reads_as_a_prize_verdict(self) -> None:
         for page in self.pages():

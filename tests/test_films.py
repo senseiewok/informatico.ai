@@ -437,7 +437,7 @@ class FilmPlayerMarkupTests(unittest.TestCase):
             hero = re.search(r'<section class="tp-cover-hero".*?</section>', page, re.S).group(0)
             self.assertIn(fig, hero, rel)
             self.assertLess(page.index('id="cover-heading"'), page.index('class="tp-cover-film"'), rel)
-            self.assertLess(page.index('class="tp-cover-film"'), page.index('class="tp-cover-track-strip"'), rel)
+            self.assertLess(page.index('class="tp-cover-film"'), page.index('class="tp-fronts"'), rel)
             self.assertLess(page.index('class="tp-cover-film"'), page.index('id="tp-featured-edition-desk"'), rel)
             self.assertNotIn("tp-cover-figure", page, rel)
             self.assertIn(f">{name}</span>", fig, rel)

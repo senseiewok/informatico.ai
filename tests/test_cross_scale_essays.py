@@ -124,11 +124,19 @@ class CrossScaleEssaysTests(unittest.TestCase):
             self.assertNotEqual(bad.returncode, 0, f"{ver_py} must fail closed on --planted-defect")
 
     def test_featured_linking_on_home_physics_timegravity_and_contents(self) -> None:
-        for rel in ("index.html", "physics/index.html", "timegravity/index.html"):
+        for rel in ("physics/index.html", "timegravity/index.html"):
             txt = (RESEARCH / rel).read_text(encoding="utf-8")
             self.assertIn('id="cross-scale-essays"', txt, rel)
             for e in ESSAYS:
                 self.assertIn(f"essays/{e['slug']}/", txt, rel)
+            # In plain words since 2026-11-28, with the count taken from the essay list.
+            self.assertIn(f">{len(ESSAYS)} essays in four parts on how the same mathematical ideas connect", txt, rel)
+            self.assertNotIn("crown sieve, and iso-P_o", txt, rel)
+        # The cover (magazine pass, phase 2) no longer carries the showcase: it links to the hub by a plain name.
+        for rel in ("index.html", "es-mx/index.html"):
+            txt = (RESEARCH / rel).read_text(encoding="utf-8")
+            self.assertNotIn('id="cross-scale-essays"', txt, rel)
+            self.assertIn('class="tp-text-link" href="essays/"', txt, rel)
         for lean_rel, min_thms in (
             (SKILLS / "coupled-constraints-formal-proof" / "IRUG_Unification.lean", 4),
             (SKILLS / "loophole-free-parallel-horizon" / "ParallelHorizon.lean", 9),

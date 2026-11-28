@@ -112,12 +112,16 @@ class CityToolsKind(unittest.TestCase):
 
     def test_group_on_toolbox_hub_and_home_in_both_languages(self) -> None:
         for rel, statement in (
-            ("toolchain/index.html", GROUP_EN), ("index.html", GROUP_EN),
-            ("es-mx/toolchain/index.html", GROUP_ES), ("es-mx/index.html", GROUP_ES),
+            ("toolchain/index.html", GROUP_EN), ("es-mx/toolchain/index.html", GROUP_ES),
         ):
             html = (SRC / rel).read_text(encoding="utf-8")
             self.assertEqual(html.count('id="tp-city-tools"'), 1, rel)
             self.assertIn(statement, html, rel)
+        # Magazine pass, phase 2 (2026-11-28): the Toolbox showcase left the cover, which now links to the hub.
+        for rel in ("index.html", "es-mx/index.html"):
+            html = (SRC / rel).read_text(encoding="utf-8")
+            self.assertNotIn('id="tp-city-tools"', html, rel)
+            self.assertIn('class="tp-more-title" href="toolchain/"', html, rel)
 
     def test_group_sits_below_the_cad_tools_on_the_hub(self) -> None:
         html = (SRC / "toolchain" / "index.html").read_text(encoding="utf-8")

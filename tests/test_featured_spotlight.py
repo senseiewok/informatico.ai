@@ -73,8 +73,14 @@ class FeaturedSpotlightTests(unittest.TestCase):
         self.assertIn("classics/mini-jcw/", [r["href"] for r in rot])
         for rel in ("index.html", "es-mx/index.html"):
             ids = _scan(rel).ids
-            order = [ids.index(i) for i in ("tp-featured-edition-desk", "pillar-engineering", "featured-timegravity", "cross-scale-essays")]
+            order = [ids.index(i) for i in ("tp-featured-edition-desk", "pillar-engineering", "pillar-architecture", "pillar-physics", "pillar-math", "more-heading")]
             self.assertEqual(order, sorted(order), rel)
+            # The long series band and the essays-across-scales showcase live on /physics/ and /timegravity/.
+            self.assertNotIn("featured-timegravity", ids, rel)
+            self.assertNotIn("cross-scale-essays", ids, rel)
+        for rel in ("physics/index.html", "es-mx/physics/index.html"):
+            ids = _scan(rel).ids
+            self.assertLess(ids.index("timegravity-series"), ids.index("cross-scale-essays"), rel)
 
     def test_spotlight_module_is_wired_without_innerhtml(self) -> None:
         mod_src = (RES / "modules" / "featured-spotlight.mjs").read_text(encoding="utf-8")

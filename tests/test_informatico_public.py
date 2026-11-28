@@ -47,7 +47,9 @@ class PublicInformaticoRepoTests(unittest.TestCase):
         self.assertTrue((RESEARCH / "about" / "index.html").is_file())
         self.assertTrue((RESEARCH / "es-mx" / "about" / "index.html").is_file())
         hub_html = (RESEARCH / "index.html").read_text(encoding="utf-8")
-        self.assertIn('id="tp-bounty-crucible"', hub_html)
+        self.assertNotIn('id="tp-bounty-crucible"', hub_html)  # magazine pass, phase 2: on /bounties/ only
+        for rel in ("bounties/index.html", "es-mx/bounties/index.html"):
+            self.assertIn('id="tp-bounty-crucible"', (RESEARCH / rel).read_text(encoding="utf-8"), rel)
         self.assertIn("https://github.com/senseiewok/informatico.ai", hub_html)
         # 2026-11-15 homepage rebalance: the Symbolic Physics Lab and the OSS Physics Radar live on /physics/ and
         # /math/ (asserted below), not on the cover; their engine links are checked on /physics/.
@@ -56,7 +58,8 @@ class PublicInformaticoRepoTests(unittest.TestCase):
         phys_html = (RESEARCH / "physics" / "index.html").read_text(encoding="utf-8")
         for repo in ("HEPLean/PhysLean", "MilesCranmer/PySR", "dynamicslab/pysindy", "DedalusProject/dedalus", "itensor/ITensors.jl"):
             self.assertIn(f"https://github.com/{repo}", phys_html)
-        self.assertIn('class="tp-cover-track-strip"', hub_html)
+        self.assertNotIn('class="tp-cover-track-strip"', hub_html)
+        self.assertEqual(hub_html.count('<section class="tp-front" '), 4)
         self.assertTrue((RESEARCH / "bounties" / "index.html").is_file())
         self.assertTrue((RESEARCH / "es-mx" / "bounties" / "index.html").is_file())
         for bslug in ("b01", "b02", "b03", "b04", "b05", "b06"):
@@ -190,7 +193,7 @@ class PublicInformaticoRepoTests(unittest.TestCase):
             seen_hashes[h] = slug
 
         for hub_rel, expected_count in (
-            ("index.html", 58),  # +M.16 (2026-11-24); +M.15, +E.16, +A.14, +M.13, +M.14 (2026-11-21)
+            ("index.html", 0),  # magazine pass, phase 2 (2026-11-28): the essay cards are on the four hubs
             ("engineering/index.html", 16),
             ("architecture/index.html", 14),  # +A.14 (2026-11-21)
             ("physics/index.html", 12),
