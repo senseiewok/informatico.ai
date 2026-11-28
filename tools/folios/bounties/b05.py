@@ -16,11 +16,11 @@ FOLIO = {'slug': 'b05',
  'title_es': 'Regresión Simbólica de Pareto (PySR) y Descubrimiento Disperso de EDPs (PySINDy + '
              'Dedalus)',
  'subtitle': 'How Sequentially Thresholded Least Squares (STLSQ) and Pareto Minimum Description '
-             'Length (MDL) recover exact viscous Burgers and Navier–Stokes PDEs from noisy '
-             'velocity trajectories.',
+             'Length (MDL) can pick out the terms of the viscous Burgers equation from noisy '
+             'velocity data, shown here on this folio\'s own worked example.',
  'subtitle_es': 'Cómo los mínimos cuadrados con umbral secuencial (STLSQ) y la longitud mínima de '
-                'descripción de Pareto (MDL) recuperan ecuaciones exactas de fluidos desde '
-                'trayectorias con ruido.',
+                'descripción de Pareto (MDL) pueden identificar los términos de la ecuación viscosa '
+                'de Burgers a partir de datos de velocidad con ruido, en el ejemplo de este folio.',
  'why_en': 'Modern wind tunnels, ocean buoys, and bridge accelerometers stream terabytes of noisy '
            'velocity data, yet black-box neural networks cannot tell an engineer which physical '
            "conservation terms are actually active. Combining PySINDy's sparse operator pruning "

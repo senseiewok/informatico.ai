@@ -15,12 +15,13 @@ FOLIO = {'slug': 'b06',
           '(ITensors.jl + NetKet)',
  'title_es': 'Física Gauge Verificada en PhysLean y Criticidad Cuántica con Redes Tensoriales '
              '(ITensors.jl + NetKet)',
- 'subtitle': 'How HEPLean/PhysLean formalizes Standard Model U(1)_Y × SU(2)_L × SU(3)_C chiral '
-             'anomaly cancellation in Lean 4 while ITensors.jl and NetKet bound critical '
-             'entanglement entropy.',
- 'subtitle_es': 'Cómo HEPLean/PhysLean formaliza en Lean 4 la cancelación de anomalías quirales '
-                'del Modelo Estándar mientras ITensors.jl y NetKet acotan la entropía de '
-                'entrelazamiento crítico.',
+ 'subtitle': 'What the HEPLean/PhysLean repository states about formalizing Standard Model '
+             'U(1)_Y × SU(2)_L × SU(3)_C chiral anomaly cancellation in Lean 4, beside the critical '
+             'entanglement-entropy bounds that tools such as ITensors.jl and NetKet are used to study.',
+ 'subtitle_es': 'Lo que el repositorio HEPLean/PhysLean afirma sobre la formalización en Lean 4 '
+                'de la cancelación de anomalías quirales U(1)_Y × SU(2)_L × SU(3)_C del Modelo Estándar, junto a las cotas de '
+                'entropía de entrelazamiento crítico que se estudian con herramientas como '
+                'ITensors.jl y NetKet.',
  'why_en': 'Why does the electric charge of a proton balance the charge of an electron, even '
            'though quarks carry fractional charges of +2/3 and -1/3? In the Standard Model, quantum '
            'gauge invariance requires four anomaly traces—including the cubic hypercharge sum '
