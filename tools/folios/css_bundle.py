@@ -1019,7 +1019,7 @@ REVAMP_CSS = r"""
   }
 
   .tp-page-folio [id^="act"] {
-    scroll-margin-top: 7.5rem;
+    scroll-margin-top: 0.5rem;
   }
 
   .tp-chronology th[scope="row"],
@@ -3172,7 +3172,7 @@ REVAMP_CSS = r"""
     border: 1.5px solid var(--tp-rule-strong);
     border-radius: 12px;
     background-color: var(--tp-vellum);
-    scroll-margin-top: 7.5rem;
+    scroll-margin-top: 0.5rem;
     box-sizing: border-box;
   }
   .tp-essay-obs-head .tp-h2 {
@@ -3262,7 +3262,7 @@ REVAMP_CSS = r"""
   }
   .tp-essay-sec {
     margin: 0 0 2.2rem;
-    scroll-margin-top: 7.5rem;
+    scroll-margin-top: 0.5rem;
   }
   .tp-essay-eq {
     margin: 1.25rem 0 1.5rem;
@@ -3756,6 +3756,37 @@ REVAMP_CSS = r"""
     .tp-bounty-pill,
     .tp-plate-head-actions > * {
       white-space: normal;
+    }
+  }
+
+  /* In-page jumps (jump-bar pills, #anchors, source links) land below what is stuck to the top of the screen:
+     the masthead, plus the one bar a page type keeps under it. Outside any layer, so it replaces the
+     scroll-padding-top that styles.css sets for the older shared header. Heights are the bars' own:
+     masthead 3.5rem + 1px border; act bar 3.4rem; essay bar 3.7rem; the Cult Classics generation rail and the
+     Sagrada era rail end 7.4rem down; the Time & Gravity bar sticks from 981px up and ends 7.2rem down.
+     tests/test_mobile_contents_browser.py measures the real bars against these. */
+  html:has(.tp-body) {
+    --tp-masthead-h: calc(3.5rem + 1px);
+    --tp-sticky-stack: var(--tp-masthead-h);
+    scroll-padding-top: calc(var(--tp-sticky-stack) + 0.75rem);
+  }
+
+  html:has(.tp-act-jump-bar) {
+    --tp-sticky-stack: calc(var(--tp-masthead-h) + 3.4rem);
+  }
+
+  html:has(.tp-essay-jump-bar) {
+    --tp-sticky-stack: calc(var(--tp-masthead-h) + 3.7rem);
+  }
+
+  html:has(.cc-gen-rail),
+  html:has(.sf-era-rail) {
+    --tp-sticky-stack: 7.4rem;
+  }
+
+  @media (min-width: 981px) {
+    html:has(.tg-jump-bar) {
+      --tp-sticky-stack: 7.2rem;
     }
   }
 """

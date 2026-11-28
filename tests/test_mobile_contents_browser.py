@@ -11,7 +11,8 @@ there was no way to go to a whole section such as Mathematics. What was measured
 - the masthead hides its seven section links at 860px and below, and the dialog did not list them;
 - the masthead is position: sticky but scrolled away with the page, because html and body both had
   overflow-x: hidden (which makes body a scroll container), so Contents was reachable only from the top;
-- on Spanish pages the Close button and two names read by screen readers were in English.
+- on Spanish pages the Close button and two names read by screen readers were in English;
+- once the masthead did stick, in-page jumps landed with their target under it (and under the jump bar).
 
 Part one reads the built pages with html.parser (no browser): every page with the dialog lists the seven sections,
 in English or Mexican Spanish, each link resolving to a built page, the current one marked as the masthead marks
@@ -75,6 +76,27 @@ STATE_JS = """() => {
     activeIsOpener: !!a && a.matches('[data-open-contents]'),
     expanded: Array.from(document.querySelectorAll('[data-open-contents][aria-expanded]')).map((b) => b.getAttribute('aria-expanded')),
   };
+}"""
+JUMP_LINKS_JS = """() => Array.from(document.querySelectorAll(
+    '.tp-act-jump-bar a[href^="#"], .tp-essay-jump-bar a[href^="#"], .tg-jump-bar a[href^="#"]'
+  )).map((a) => a.getAttribute('href')).filter((h) => h.length > 1 && document.getElementById(h.slice(1)))"""
+# Where a jump target sits against everything stuck to the top of the screen at that moment.
+LANDING_JS = """(hash) => {
+  const target = document.getElementById(hash.slice(1));
+  let stack = 0;
+  const stuck = [];
+  for (const el of document.querySelectorAll('body *')) {
+    if (el.closest('dialog')) continue;
+    const cs = getComputedStyle(el);
+    if (cs.position !== 'sticky') continue;
+    const r = el.getBoundingClientRect();
+    const pinned = r.height > 0 && r.width > 0 && Math.abs(r.top - parseFloat(cs.top)) <= 1;
+    if (pinned && r.bottom > stack) { stack = r.bottom; }
+    if (pinned) stuck.push(el.className.toString().split(' ')[0]);
+  }
+  const root = document.documentElement;
+  return {top: target.getBoundingClientRect().top, stack, stuck, scrollY: window.scrollY,
+          atEnd: window.scrollY + window.innerHeight >= root.scrollHeight - 2};
 }"""
 SECTION_LINKS_JS = """() => Array.from(document.querySelectorAll('#tp-contents .tp-contents-sections a')).map((a) => {
   const r = a.getBoundingClientRect();
@@ -552,6 +574,48 @@ class MobileContentsBrowserTests(unittest.TestCase):
                     self.assertEqual(self.errors, [])
                 finally:
                     ctx.close()
+
+    def test_in_page_jumps_land_below_the_masthead_and_the_jump_bar(self) -> None:
+        # One page per kind of sticky stack: act bar, essay bar, Cult Classics rail, Time & Gravity bar, Spanish.
+        routes = ("math/m01/", "es-mx/physics/p01/", "essays/barriers-pores-clocks/", "classics/golf-gti/", "timegravity/t01/")
+        for width, height, phone in ((375, 812, True), (1280, 800, False)):
+            ctx = self.browser.new_context(
+                viewport={"width": width, "height": height}, is_mobile=phone, has_touch=phone, reduced_motion="reduce"
+            )
+            try:
+                for route in routes:
+                    page = self._page(ctx, route)
+                    page.wait_for_timeout(400)
+                    hashes = page.evaluate(JUMP_LINKS_JS)
+                    self.assertGreaterEqual(len(hashes), 3, f"{route}: no jump bar found")
+                    picked = sorted({0, 1, len(hashes) // 2, len(hashes) - 2})
+                    for i in picked:
+                        with self.subTest(width=width, route=route, how="pill", target=hashes[i]):
+                            page.evaluate("window.scrollTo({top: 0, behavior: 'instant'})")
+                            page.locator(f'a[href="{hashes[i]}"]').first.click()
+                            page.wait_for_timeout(500)
+                            self._assert_landed_clear(page, hashes[i])
+                    page.close()
+                    # Arriving from another page at an address that ends in the anchor.
+                    for i in (picked[1], picked[-1]):
+                        with self.subTest(width=width, route=route, how="address", target=hashes[i]):
+                            page = ctx.new_page()
+                            page.goto(self.base + route + hashes[i], wait_until="load")
+                            page.wait_for_function(BOUND_JS, timeout=20000)
+                            page.wait_for_timeout(700)
+                            self._assert_landed_clear(page, hashes[i])
+                            page.close()
+            finally:
+                ctx.close()
+
+    def _assert_landed_clear(self, page, target: str) -> None:
+        landing = page.evaluate(LANDING_JS, target)
+        self.assertGreater(landing["scrollY"], 0, "the page did not move to the target")
+        self.assertIn("tp-masthead", landing["stuck"])
+        self.assertGreaterEqual(landing["top"], landing["stack"], f"target hidden under {landing['stuck']}")
+        if not landing["atEnd"]:
+            # ...and close under it, not somewhere down the screen.
+            self.assertLessEqual(landing["top"] - landing["stack"], 110)
 
     def test_masthead_stays_on_screen_on_desktop(self) -> None:
         ctx = self.browser.new_context(viewport={"width": 1280, "height": 800})

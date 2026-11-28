@@ -636,6 +636,9 @@ li.cc-ghost-nolen .cc-ghost-key { background: transparent !important; color: var
   margin-top: 0.9rem;
 }
 .cc-page .tp-essay-jump-bar {
+  /* This bar wraps to several rows (five on a phone), so it stays in the page, as on the Sagrada page;
+     the generation rail is what sticks under the masthead. */
+  position: static;
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
