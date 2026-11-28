@@ -13,12 +13,12 @@ FOLIO = {'slug': 'b04',
  'badge_es': 'GRAN RETO B.04 (A-1) · HOLCIM 8ª ED. (2025) + COOLING PRIZE (2021)',
  'title': '$1M Holcim Awards & $3M Global Cooling Prize: A Zero-Rebar 3D Graphic Statics Vault & Sky-Cooling Design Study',
  'title_es': 'Premios Holcim ($1M) y Global Cooling ($3M): Estudio de Diseño de Bóvedas 3D sin Acero y Enfriamiento Radiativo',
- 'subtitle': 'How Maxwell–Rankine 3D polyhedral graphic statics in COMPAS and 8–13 μm porous '
-             'fluoropolymer membranes span 16 m with zero steel rebar and cool 5.2 °C below midday '
-             'ambient air using zero electricity.',
- 'subtitle_es': 'Cómo la estática gráfica poliédrica 3D en COMPAS y las membranas porosas de 8–13 '
-                'μm cubren claros de 16 m sin varillas de acero y enfrían 5.2 °C bajo el aire '
-                'ambiente al mediodía sin electricidad.',
+ 'subtitle': 'A design study of a 16 m vault without steel rebar, shaped by Maxwell–Rankine 3D '
+             'graphic statics, under a porous roof radiating through the 8–13 μm infrared window that stays 5.2 °C below midday air '
+             'without electricity in this folio\'s model.',
+ 'subtitle_es': 'Un estudio de diseño de una bóveda de 16 m sin varillas de acero, formada con '
+                'estática gráfica 3D de Maxwell–Rankine, bajo una cubierta porosa que irradia por la ventana infrarroja de 8–13 μm y que en '
+                'el modelo de este folio queda 5.2 °C bajo el aire del mediodía sin electricidad.',
  'why_en': 'Two forces dominate the carbon footprint of buildings in hot climates: the steel and '
            'concrete locked into floor plates, and the electricity burned by air conditioners. '
            'Pairing compression-only stone/tile vaults (designed via 3D force polyhedra in COMPAS) '
