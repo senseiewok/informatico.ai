@@ -5658,6 +5658,17 @@ FILM_COPY: dict[str, dict[str, str]] = {
         "note_en": "Known physics, shown; clock effects exaggerated. No new discovery. CC BY-SA 4.0. Sources on YouTube.",
         "note_es": "Física conocida, mostrada; los efectos de reloj están exagerados. Ningún descubrimiento nuevo. CC BY-SA 4.0. Fuentes en YouTube.",
     },
+    # Plays at the top of /about/. It is the sister lab's film; the note says only that.
+    "cf-lab-trailer": {
+        "title_en": "Sensei Ewok's CF Lab: a 30-second trip to the CFTR gene",
+        "title_es": "Sensei Ewok's CF Lab: un viaje de 30 segundos al gen CFTR",
+        "frame_title_en": "Sensei Ewok's CF Lab: a 30-second trip to the CFTR gene",
+        "frame_title_es": "Sensei Ewok's CF Lab: un viaje de 30 segundos al gen CFTR",
+        "player_name_en": "Sensei Ewok's CF Lab",
+        "player_name_es": "Sensei Ewok's CF Lab",
+        "note_en": "The lab's cystic fibrosis film, from senseiewok.ai.",
+        "note_es": "El video del laboratorio sobre fibrosis quística, de senseiewok.ai.",
+    },
     "follow-the-light": {
         "title_en": "Follow the Light",
         "title_es": "Sigue la luz (Follow the Light)",
@@ -5698,12 +5709,22 @@ FILM_PRIVACY_EN = "This film plays from YouTube. Nothing from YouTube loads unti
 FILM_PRIVACY_ES = "Este video se reproduce desde YouTube. No se carga nada de YouTube hasta que oprimas reproducir; entonces YouTube puede ver que llegaste desde este sitio."
 
 
-def _cover_player_film(films: list[dict] | None = None) -> dict | None:
-    """The data/films.json row for the cover player, or None while it has no YouTube ID (dormant)."""
+# The film that plays at the top of /about/: the sister lab's trailer. It gets no card on the cover shelf.
+ABOUT_PLAYER_SLUG = "cf-lab-trailer"
+PLAYER_SLUGS = (COVER_PLAYER_SLUG, ABOUT_PLAYER_SLUG)
+
+
+def _player_film(slug: str, films: list[dict] | None = None) -> dict | None:
+    """The data/films.json row for a click-to-play film, or None while it has no YouTube ID (dormant)."""
     for film in load_films() if films is None else films:
-        if film.get("slug") == COVER_PLAYER_SLUG:
+        if film.get("slug") == slug:
             return film if film.get("youtube_id") is not None else None
     return None
+
+
+def _cover_player_film(films: list[dict] | None = None) -> dict | None:
+    """The data/films.json row for the cover player, or None while it has no YouTube ID (dormant)."""
+    return _player_film(COVER_PLAYER_SLUG, films)
 
 
 def _spoken_duration(duration: str) -> tuple[str, str]:
@@ -5723,10 +5744,23 @@ def render_cover_film_player(rel_res: str = ".", films: list[dict] | None = None
     The page ships a poster, a hidden play button, the privacy line and a plain youtube.com link; it ships no
     iframe and names no YouTube player host. src/modules/film-facade.mjs shows the button and, on the press,
     builds the frame. Without scripts the poster and the plain link are all there is."""
-    film = _cover_player_film(films)
+    return render_film_player(COVER_PLAYER_SLUG, rel_res, films)
+
+
+def render_about_film_player(rel_res: str = "..", films: list[dict] | None = None) -> str:
+    """Click-to-play player for the /about/ hero (the sister lab's trailer), or "" while that film is dormant."""
+    return render_film_player(ABOUT_PLAYER_SLUG, rel_res, films)
+
+
+def render_film_player(slug: str, rel_res: str = ".", films: list[dict] | None = None) -> str:
+    """One click-to-play player figure for the film with this slug, or "" while it is dormant. Same markup on
+    every page that carries one: poster, hidden play button, privacy line, plain youtube.com link; no iframe."""
+    if slug not in PLAYER_SLUGS:
+        raise ValueError(f"{slug}: not a click-to-play film (PLAYER_SLUGS)")
+    film = _player_film(slug, films)
     if film is None:
         return ""
-    slug, vid, duration, poster = film["slug"], film["youtube_id"], film.get("duration"), film.get("poster")
+    vid, duration, poster = film["youtube_id"], film.get("duration"), film.get("poster")
     if not isinstance(vid, str) or not YOUTUBE_ID_RE.fullmatch(vid):
         raise ValueError(f"films.json: {slug}: youtube_id must be 11 characters of A-Z a-z 0-9 _ -, got {vid!r}")
     if not isinstance(duration, str) or not FILM_DURATION_RE.fullmatch(duration):
@@ -5742,8 +5776,10 @@ def render_cover_film_player(rel_res: str = ".", films: list[dict] | None = None
     link_en = "Watch on youtube.com"
     link_es = "Ver en youtube.com"
     privacy_id = f"film-privacy-{slug}"
+    frame_en = copy.get("frame_title_en", f"{copy['title_en']} (YouTube video player)")
+    frame_es = copy.get("frame_title_es", f"{copy['title_es']} (reproductor de video de YouTube)")
     return f"""      <figure class="tp-cover-film" data-film="{esc(slug)}">
-        <div class="tp-film-facade" data-yt="{esc(vid)}" data-title-en="{esc(copy['title_en'])} (YouTube video player)" data-title-es="{esc(copy['title_es'])} (reproductor de video de YouTube)">
+        <div class="tp-film-facade" data-yt="{esc(vid)}" data-title-en="{esc(frame_en)}" data-title-es="{esc(frame_es)}">
           <img class="tp-film-poster" src="{_film_poster_src(rel_res, poster)}" width="640" height="360" loading="eager" fetchpriority="high" decoding="async" alt="">
           <button type="button" class="tp-film-play" aria-describedby="{privacy_id}" hidden>
             <span class="tp-film-play-glyph" aria-hidden="true"></span>
@@ -5808,7 +5844,7 @@ def render_cover_films_section(rel_res: str = ".", films: list[dict] | None = No
                 f'{esc(copy["poster_credit_en"])}</span> <a href="{esc(copy["poster_credit_url"])}" rel="noopener noreferrer license">'
                 f'{esc(copy["poster_credit_license"])}</a>.</p>'
             )
-        if slug == COVER_PLAYER_SLUG:
+        if slug in PLAYER_SLUGS:
             continue
         items.append(
             f"""        <li class="tp-film{'' if poster_html else ' tp-film-textonly'}" data-film="{esc(slug)}">
@@ -6059,6 +6095,11 @@ def render_about_page(catalog: dict, lang: str = "en") -> str:
         )
     table_rows_html = "\n".join(table_rows)
     rosette_svg = _render_65_rosette_svg()
+    # The hero's media slot: the sister lab's click-to-play trailer while it has a YouTube ID, Plate 0-A otherwise.
+    hero_media = render_about_film_player(rel_res) or f"""      <figure class="tp-cover-figure">
+        <img src="{plate_src(rel_res + '/plates/', 'utopian-city-future')}" width="1024" height="576" loading="eager" decoding="async" alt="Architectural cross-section of a sun-lit engineering atelier and civic infrastructure span.">
+        <figcaption data-en="Plate 0-A · Shared Verification Atelier. Civil trusses, porous media, and biomolecular frames share one deterministic verification harness across Informatico.ai and senseiewok.ai." data-es="Lámina 0-A · Taller de Verificación Compartido. Armaduras civiles, medios porosos y marcos biomoleculares comparten un mismo arnés determinista en Informatico.ai y senseiewok.ai.">Plate 0-A · Shared Verification Atelier. Civil trusses, porous media, and biomolecular frames share one deterministic verification harness across Informatico.ai and senseiewok.ai.</figcaption>
+      </figure>"""
 
     return f"""{head}
 <body class="tp-body tp-page-hub">
@@ -6091,10 +6132,7 @@ def render_about_page(catalog: dict, lang: str = "en") -> str:
         </p>
         <noscript><p class="tz-noscript" lang="en">JavaScript is off: every sentence's source, tier, date read, and check command is available in the static table under "All evidence for this page" below. / <span lang="es-MX">JavaScript está apagado: la fuente, el nivel, la fecha de lectura y el comando de verificación de cada oración están en la tabla estática más abajo.</span></p></noscript>
       </div>
-      <figure class="tp-cover-figure">
-        <img src="{plate_src(rel_res + '/plates/', 'utopian-city-future')}" width="1024" height="576" loading="eager" decoding="async" alt="Architectural cross-section of a sun-lit engineering atelier and civic infrastructure span.">
-        <figcaption data-en="Plate 0-A · Shared Verification Atelier. Civil trusses, porous media, and biomolecular frames share one deterministic verification harness across Informatico.ai and senseiewok.ai." data-es="Lámina 0-A · Taller de Verificación Compartido. Armaduras civiles, medios porosos y marcos biomoleculares comparten un mismo arnés determinista en Informatico.ai y senseiewok.ai.">Plate 0-A · Shared Verification Atelier. Civil trusses, porous media, and biomolecular frames share one deterministic verification harness across Informatico.ai and senseiewok.ai.</figcaption>
-      </figure>
+{hero_media}
     </section>
 
     <article class="tp-prose" aria-labelledby="pace1-heading">
