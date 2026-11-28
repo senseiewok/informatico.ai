@@ -371,7 +371,7 @@ class FilmPlayerMarkupTests(unittest.TestCase):
     PRIVACY_ES = "Este video se reproduce desde YouTube. No se carga nada de YouTube hasta que oprimas reproducir; entonces YouTube puede ver que llegaste desde este sitio."
 
     def _figure(self, page: str) -> str:
-        found = re.findall(r'<figure class="tp-cover-film" data-film="informatico-intro">.*?</figure>', page, re.S)
+        found = re.findall(r'<figure class="tp-cover-film" id="film-informatico-intro" data-film="informatico-intro">.*?</figure>', page, re.S)
         self.assertEqual(len(found), 1)
         return found[0]
 

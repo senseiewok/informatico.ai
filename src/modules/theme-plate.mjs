@@ -13,7 +13,6 @@ const NAV_LABELS = {
     about: "About",
     sub: "Engineering · Architecture · Physics · Mathematics",
     whyKicker: "Why it matters",
-    actPills: ["I · Story", "II · Intuition", "III · Lab", "IV · Discovery", "V · Sources", "VI · Puzzle"],
     walkthroughHeading: "Three experiments to try",
     chronHeading: "Historical Turning Points & Chronology",
     sourcesHeading: "Primary Literature & Standards Citations",
@@ -33,7 +32,6 @@ const NAV_LABELS = {
     about: "Acerca de",
     sub: "Ingeniería · Arquitectura · Física · Matemáticas",
     whyKicker: "Por qué importa",
-    actPills: ["I · Historia", "II · Intuición", "III · Laboratorio", "IV · Descubrimiento", "V · Fuentes", "VI · Crucigrama"],
     walkthroughHeading: "Tres experimentos para probar",
     chronHeading: "Hitos Históricos y Cronología Científica",
     sourcesHeading: "Literatura Primaria y Normas Técnicas",
@@ -97,14 +95,10 @@ export function applyMagazineLanguage(isEs, scope = document) {
     el.textContent = dict.whyKicker;
   });
 
-  rootScope.querySelectorAll(".tp-act-jump-bar").forEach((bar) => {
-    const pills = bar.querySelectorAll(".tp-act-pill");
-    pills.forEach((pill, idx) => {
-      if (dict.actPills[idx]) {
-        pill.textContent = dict.actPills[idx];
-      }
-    });
-  });
+  // Act pills (.tp-act-jump-bar .tp-act-pill) are not relabelled here. Each carries its own data-en / data-es,
+  // set above, so a pill's label always names the section its href points to. A fixed six-name list applied by
+  // position mislabelled every bar that is not exactly six pills long (the eight-pill essay bar showed
+  // "V · Sources" and "VI · Puzzle" twice, on pills that led elsewhere).
 
   rootScope.querySelectorAll(".tp-walkthrough-box h3").forEach((el) => {
     el.textContent = dict.walkthroughHeading;

@@ -114,9 +114,13 @@ class VerifierClaimTests(unittest.TestCase):
 
     def test_home_counts_verifiers_from_disk(self) -> None:
         count = len(runner.discover())
+        # The sentence moved from the cover's hero to /about/ ("For builders and coders") on 2026-11-28.
         home = (SRC / "index.html").read_text(encoding="utf-8")
-        self.assertIn(f"{count} verifiers across the Toolbox, Time and Gravity and the cross-scale essays", home)  # no Mathematics verifier left once M.13-M.15 were withdrawn (2026-11-17)
+        about = (SRC / "about" / "index.html").read_text(encoding="utf-8")
+        self.assertIn(f"{count} verifiers across the Toolbox, Time and Gravity and the cross-scale essays", about)  # no Mathematics verifier left once M.13-M.15 were withdrawn (2026-11-17)
+        self.assertNotIn("verifiers across the Toolbox", home)
         self.assertNotIn("hands you a live model, Python verifier, and AI SKILL.md", home)
+        self.assertNotIn("hands you a live model, Python verifier, and AI SKILL.md", about)
 
 
 if __name__ == "__main__":

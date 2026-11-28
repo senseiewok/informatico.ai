@@ -70,6 +70,11 @@ def plate_sha8(slug: str) -> str:
     return _PLATE_SHA8_CACHE[s]
 
 
+def plate_exists(slug: str) -> bool:
+    """True when src/plates/<slug>.jpg is on disk. A card for a folio without one is drawn text-only."""
+    return (ROOT / "src" / "plates" / f"{str(slug).strip()}.jpg").is_file()
+
+
 def plate_src(prefix: str, slug: str) -> str:
     """Build cache-busted plate image URL '<prefix><slug>.jpg?v=<sha8>' to defeat stale 7-day browser disk cache."""
     return f"{prefix}{esc(slug)}.jpg?v={plate_sha8(slug)}"
@@ -2340,12 +2345,18 @@ def render_rack_cards(pillar: str, folios: list[dict], href_prefix: str, plate_p
         dek_en = decf_title(f["subtitle"])
         dek_es = decf_title(es_meta["subtitle_es"])
         alt = decf_title(PLATE_CAPTIONS.get(slug, {}).get("alt", title_en))
+        # A folio with no plate on disk gets a text-only card on purpose: never an empty image box.
+        has_plate = plate_exists(slug)
+        thumb = (
+            f'\n          <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb" src="{plate_src(plate_prefix, slug)}" width="640" height="360" loading="{loading}" decoding="async" alt="{esc(alt)}"></span>'
+            if has_plate
+            else ""
+        )
         cards.append(
-            f"""        <a class="tp-rack-card" href="{href_prefix}{slug}/" data-folio-slug="{esc(slug)}" data-folio-volume="{get_folio_volume(slug)[0]}"{cur}>
-          <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb" src="{plate_src(plate_prefix, slug)}" width="640" height="360" loading="{loading}" decoding="async" alt="{esc(alt)}"></span>
-          <span class="tp-rack-top"><span class="tp-rack-id">{esc(f["folio_id"])}</span><span class="tp-rack-badge" data-en="{rt_en}" data-es="{rt_es}">{rt_en}</span></span>
+            f"""        <a class="tp-rack-card{'' if has_plate else ' tp-rack-card-textonly'}" href="{href_prefix}{slug}/" data-folio-slug="{esc(slug)}" data-folio-volume="{get_folio_volume(slug)[0]}"{cur}>{thumb}
           <strong class="tp-rack-title" data-en="{esc(title_en)}" data-es="{esc(title_es)}">{esc(title_en)}</strong>
           <span class="tp-rack-dek" data-en="{esc(dek_en)}" data-es="{esc(dek_es)}">{esc(dek_en)}</span>
+          <span class="tp-rack-top"><span class="tp-rack-badge" data-en="{rt_en}" data-es="{rt_es}">{rt_en}</span><span class="tp-rack-id">{esc(f["folio_id"])}</span></span>
         </a>"""
         )
     return "\n".join(cards)
@@ -3349,8 +3360,9 @@ def render_bounties_hub(catalog: dict, lang: str = "en") -> str:
         plate_slug = b["plate_slug"]
         rt_en = b.get("reading_time", "15 MIN READ").lower().replace("min read", "min read")
         rt_es = rt_en.replace("min read", "min de lectura")
-        t_card_en = f"{fid} ({bid}) · {b['title']}"
-        t_card_es = f"{fid} ({bid}) · {b['title_es']}"
+        # The code and bounty id stay in the card's small grey meta line (tp-rack-id), not at the head of the title.
+        t_card_en = b["title"]
+        t_card_es = b["title_es"]
         dek_en = b["subtitle"]
         dek_es = b["subtitle_es"]
         alt = PLATE_CAPTIONS.get(plate_slug, {}).get("alt", b["title"])
@@ -4891,8 +4903,9 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
         plate_slug = t["plate_slug"]
         rt_en = t.get("reading_time", "15 MIN READ").lower()
         rt_es = rt_en.replace("min read", "min de lectura")
-        t_card_en = f"{fid} ({tid}) · {t['title']}"
-        t_card_es = f"{fid} ({tid}) · {t['title_es']}"
+        # The code and tool id stay in the card's small grey meta line (tp-rack-id), not at the head of the title.
+        t_card_en = t["title"]
+        t_card_es = t["title_es"]
         dek_en = t["subtitle"]
         dek_es = t["subtitle_es"]
         alt = PLATE_CAPTIONS.get(plate_slug, {}).get("alt", t["title"])
@@ -5760,6 +5773,8 @@ INFORMATICO_SPOTLIGHT_ROTATION: tuple[dict, ...] = (
     },
 )
 
+# Not drawn on the cover since the magazine pass of 2026-11-28: its first entry (T.13) is already published, and
+# the cover's "Coming next" now lists the next essays of the rotation above, which are all on the site.
 INFORMATICO_RELEASE_SCHEDULE: tuple[dict, ...] = (
     {
         "slot_en": "WED · 09:00 PT SLOT",
@@ -5791,15 +5806,112 @@ INFORMATICO_RELEASE_SCHEDULE: tuple[dict, ...] = (
 )
 
 
+# Everyday section names for the cover (magazine pass, phase 1, 2026-11-28). The page titles, URLs and folio
+# codes are unchanged; these are only what a first-time reader sees on the cover. es-MX: draft, pending
+# maintainer review (Mexican Spanish).
+COVER_SECTION_NAMES: dict[str, tuple[str, str]] = {
+    "engineering": ("Engineering & construction", "Ingeniería y construcción"),
+    "architecture": ("Architecture", "Arquitectura"),
+    "physics": ("Physics & time", "Física y tiempo"),
+    "math": ("Mathematics", "Matemáticas"),
+    "bounties": ("Unsolved puzzles", "Problemas sin resolver"),
+    "toolchain": ("For makers: 3D tools", "Para creadores: herramientas 3D"),
+    "timegravity": ("Time & gravity, step by step", "Tiempo y gravedad, paso a paso"),
+    "classics": ("Classic designs explained", "Diseños clásicos explicados"),
+}
+
+_SENTENCE_END_RE = re.compile(r"(?<=[.?!])\s+")
+# Lead-ins dropped from a quoted opening: the box label, and a clause pointing back at a page heading the cover
+# does not show ("To picture this mystery, imagine ..." becomes "Imagine ...").
+_PLAIN_LEAD_RE = re.compile(
+    r"^(?:In plain words|En palabras sencillas|To (?:picture|see|imagine) (?:this|these) \w+|Para (?:imaginar|ver) (?:este|esta|estos|estas) \w+),\s+",
+    re.I,
+)
+
+
+def _standfirst_excerpt(text: str, max_chars: int = 280) -> str:
+    """The opening one or two sentences of an essay's own text, word for word. Only a leading "In plain words,"
+    is dropped (the next letter is then capitalised). Nothing is written here, so the cover says nothing the
+    essay does not say."""
+    text = " ".join(str(text).split())
+    lead = _PLAIN_LEAD_RE.match(text)
+    if lead:
+        text = text[lead.end():]
+        text = text[:1].upper() + text[1:]
+    parts = _SENTENCE_END_RE.split(text)
+    out = parts[0]
+    if len(parts) > 1 and len(out) + 1 + len(parts[1]) <= max_chars:
+        out = f"{out} {parts[1]}"
+    return out
+
+
+def _minutes_label(raw: str) -> tuple[str, str]:
+    """'22 MIN READ' or '24 min de lectura' -> ('22 min read', '22 min de lectura')."""
+    m = re.search(r"(\d+)", raw or "")
+    if not m:
+        raise ValueError(f"no reading time in {raw!r}")
+    return f"{m.group(1)} min read", f"{m.group(1)} min de lectura"
+
+
+def _spotlight_story(item: dict) -> dict:
+    """Section name, reading time and standfirst for one cover feature, read from that essay's own record:
+    its plain-words box (folios, bounties, toolbox), its standfirst (Time & Gravity) or its deck (classics)."""
+    section, _, rest = item["href"].partition("/")
+    slug = rest.strip("/")
+    if section in NEW_FOLIOS:
+        folio = next(f for f in NEW_FOLIOS[section] if f["slug"] == slug)
+        es_meta = get_folio_es_meta(slug, folio, folio["colophon"])
+        plain_en = decf(LONGFORM[slug].get("act1_plain_bridge", ""))
+        plain_es = decf(es_meta.get("plain_es", ""))
+        rt_en, rt_es = short_reading_time(slug)
+    elif section in ("bounties", "toolchain"):
+        rec = (BOUNTY_BY_SLUG if section == "bounties" else TOOLCHAIN_BY_SLUG)[slug]
+        plain_en = rec.get("act1_plain_bridge", rec.get("why_en", ""))
+        plain_es = rec.get("plain_es", rec.get("why_es", ""))
+        rt_en, rt_es = _minutes_label(rec.get("reading_time", "15 MIN READ"))
+    elif section == "timegravity":
+        rec = next(p for p in TIMEGRAVITY_PAGES if p["slug"] == slug)
+        plain_en, plain_es = rec["standfirst_en"], rec["standfirst_es"]
+        rt_en, rt_es = _minutes_label(rec["reading_time_en"])[0], _minutes_label(rec["reading_time_es"])[1]
+        section = "physics"
+    elif section == "classics":
+        from folios.classics import cc01, cc02, cc03  # noqa: E402
+        rec = next(c for c in (cc01, cc02, cc03) if c.SLUG == slug).HERO
+        plain_en, plain_es = rec["dek_en"], rec["dek_es"]
+        rt_en, rt_es = _minutes_label(rec["reading_en"])[0], _minutes_label(rec["reading_es"])[1]
+    else:
+        raise ValueError(f"spotlight {item['code']}: no record for {item['href']!r}")
+    if not plain_en.strip() or not plain_es.strip():
+        raise ValueError(f"spotlight {item['code']}: the essay has no plain-words text to quote")
+    name_en, name_es = COVER_SECTION_NAMES[section]
+    return {
+        "kicker_en": f"{name_en} · {rt_en}",
+        "kicker_es": f"{name_es} · {rt_es}",
+        "section_en": name_en,
+        "section_es": name_es,
+        "stand_en": _standfirst_excerpt(plain_en),
+        "stand_es": _standfirst_excerpt(plain_es),
+    }
+
+
+COMING_NEXT_COUNT = 3
+
+
 def render_cover_rotating_spotlight_and_schedule(rel_res: str = ".") -> str:
-    """Swiss 8+4 Rotating Featured Cover Essay Spotlight & Verifier-Gated Release Schedule Desk."""
+    """"This week's essay" and "Coming next" on the cover.
+
+    The feature rotates through INFORMATICO_SPOTLIGHT_ROTATION, one essay a week (src/modules/featured-spotlight.mjs
+    picks the slot; without scripts the first one shows). "Coming next" is the next three in that same rotation,
+    so every title listed is already a page on the site. Readers see an essay and a short list: no slot numbers,
+    code pills, script names or formulas. The kicker and standfirst are read from the essay (_spotlight_story)."""
     slides_html: list[str] = []
-    pills_html: list[str] = []
+    coming_html: list[str] = []
     total_slots = len(INFORMATICO_SPOTLIGHT_ROTATION)
 
     p_prefix = "plates/" if rel_res in ("", ".") else f"{rel_res.rstrip('/')}/plates/"
     for idx, item in enumerate(INFORMATICO_SPOTLIGHT_ROTATION):
         href = _href(rel_res, item["href"])
+        story = _spotlight_story(item)
         if item["plate_kind"] == "png":
             img_url = f"{p_prefix}{item['plate_slug']}.png?v={_png_sha8(item['plate_slug'])}"
             w_attr, h_attr = "1200", "630"
@@ -5807,79 +5919,57 @@ def render_cover_rotating_spotlight_and_schedule(rel_res: str = ".") -> str:
             img_url = plate_src(p_prefix, item["plate_slug"])
             w_attr, h_attr = "1280", "720"
         hidden_attr = "" if idx == 0 else " hidden"
-        pressed = "true" if idx == 0 else "false"
-        pills_html.append(
-            f'          <button type="button" class="tp-spotlight-pill" data-spotlight-pick="{idx}" aria-pressed="{pressed}">{esc(item["code"])}</button>'
-        )
         slides_html.append(
             f"""          <article class="tp-spotlight-slide" data-spotlight-slot="{idx}"{hidden_attr}>
-            <div class="tp-spotlight-copy">
-              <div class="tp-spotlight-meta-row">
-                <span class="tp-kicker" data-en="{esc(item['disc_en'])}" data-es="{esc(item['disc_es'])}">{esc(item['disc_en'])}</span>
-                <span class="tp-spotlight-badge" data-en="{esc(item['badge_en'])}" data-es="{esc(item['badge_es'])}">{esc(item['badge_en'])}</span>
-              </div>
-              <p class="tp-spotlight-slide-title"><a href="{href}" data-en="{esc(item['title_en'])}" data-es="{esc(item['title_es'])}">{esc(item['title_en'])}</a></p>
-              <p class="tp-spotlight-dek" data-en="{esc(item['dek_en'])}" data-es="{esc(item['dek_es'])}">{esc(item['dek_en'])}</p>
-              <p class="tp-spotlight-law"><code>{esc(item['law'])}</code></p>
-              <div class="tp-featured-series-ctas">
-                <a class="tp-cta tp-cta-primary" href="{href}" data-en="{esc(item['cta_en'])}" data-es="{esc(item['cta_es'])}">{esc(item['cta_en'])}</a>
-              </div>
-            </div>
             <figure class="tp-spotlight-figure">
               <img class="tp-spotlight-img" src="{img_url}" width="{w_attr}" height="{h_attr}" loading="lazy" decoding="async" alt="{esc(item['alt'])}">
             </figure>
+            <div class="tp-spotlight-copy">
+              <p class="tp-spotlight-kicker" data-en="{esc(story['kicker_en'])}" data-es="{esc(story['kicker_es'])}">{esc(story['kicker_en'])}</p>
+              <h3 class="tp-spotlight-slide-title"><a href="{href}" data-en="{esc(item['title_en'])}" data-es="{esc(item['title_es'])}">{esc(item['title_en'])}</a></h3>
+              <p class="tp-spotlight-dek" data-en="{esc(story['stand_en'])}" data-es="{esc(story['stand_es'])}">{esc(story['stand_en'])}</p>
+              <a class="tp-cta tp-cta-primary" href="{href}" data-en="Read this essay →" data-es="Leer este ensayo →">Read this essay →</a>
+            </div>
           </article>"""
         )
-
-    rel_items: list[str] = []
-    for r in INFORMATICO_RELEASE_SCHEDULE:
-        rel_items.append(
-            f"""          <li class="tp-release-item">
-            <div class="tp-release-item-top">
-              <span data-en="{esc(r['slot_en'])}" data-es="{esc(r['slot_es'])}">{esc(r['slot_en'])}</span>
-              <span>{esc(r['code'])}</span>
-            </div>
-            <strong class="tp-release-item-title" data-en="{esc(r['title_en'])}" data-es="{esc(r['title_es'])}">{esc(r['title_en'])}</strong>
-            <span class="tp-release-item-gate" data-en="{esc(r['gate_en'])}" data-es="{esc(r['gate_es'])}">{esc(r['gate_en'])}</span>
-          </li>"""
+        coming_hidden = "" if 1 <= idx <= COMING_NEXT_COUNT else " hidden"
+        coming_html.append(
+            f"""            <li class="tp-coming-item" data-coming-slot="{idx}"{coming_hidden}>
+              <a class="tp-coming-title" href="{href}" data-en="{esc(item['title_en'])}" data-es="{esc(item['title_es'])}">{esc(item['title_en'])}</a>
+              <span class="tp-coming-section" data-en="{esc(story['section_en'])}" data-es="{esc(story['section_es'])}">{esc(story['section_en'])}</span>
+            </li>"""
         )
+    if total_slots <= COMING_NEXT_COUNT:
+        raise ValueError("the cover rotation needs more essays than the Coming next list shows")
 
-    pills_block = "\n".join(pills_html)
     slides_block = "\n".join(slides_html)
-    releases_block = "\n".join(rel_items)
-    counter_en = f"Slot 1 / {total_slots} · Rotates every 12h"
-    counter_es = f"Turno 1 / {total_slots} · Rota cada 12 h"
+    coming_block = "\n".join(coming_html)
+    note_en = "A different essay is featured here each week. These three are next in line and already on the site."
+    note_es = "Cada semana destacamos aquí un ensayo distinto. Estos tres son los siguientes y ya están en el sitio."
 
-    return f"""    <section class="tp-featured-edition-desk" id="tp-featured-edition-desk" aria-labelledby="tp-featured-desk-heading">
-      <div class="tp-featured-desk-head">
-        <div>
-          <p class="tp-kicker" data-en="Rotating Homepage Cover · 12-Hour Cycle Across Physics, Math, Architecture &amp; Engineering" data-es="Portada Rotativa · Ciclo de 12 Horas en Física, Matemáticas, Arquitectura e Ingeniería">Rotating Homepage Cover · 12-Hour Cycle Across Physics, Math, Architecture &amp; Engineering</p>
-          <h2 id="tp-featured-desk-heading" class="tp-h2" data-en="Featured Monograph Spotlight &amp; Release Desk" data-es="Monografía Destacada y Calendario Editorial">Featured Monograph Spotlight &amp; Release Desk</h2>
-        </div>
-        <div class="tp-featured-desk-controls" role="toolbar" aria-label="Featured monograph rotation controls">
-          <span class="tp-spotlight-counter" data-spotlight-counter data-en="{esc(counter_en)}" data-es="{esc(counter_es)}">{esc(counter_en)}</span>
-          <button type="button" class="tp-spotlight-step-btn" data-spotlight-step="prev" data-en="← Prev" data-es="← Ant.">← Prev</button>
-{pills_block}
-          <button type="button" class="tp-spotlight-step-btn" data-spotlight-step="next" data-en="Next →" data-es="Sig. →">Next →</button>
-        </div>
-      </div>
-      <p class="tp-sr-only" aria-live="polite" data-spotlight-live></p>
-      <div class="tp-featured-desk-grid">
+    return f"""    <section class="tp-featured-edition-desk tp-this-week" id="tp-featured-edition-desk" aria-labelledby="tp-featured-desk-heading">
+      <div class="tp-this-week-grid">
         <div class="tp-spotlight-stage">
+          <h2 id="tp-featured-desk-heading" class="tp-this-week-label" data-en="This week’s essay" data-es="El ensayo de la semana">This week’s essay</h2>
 {slides_block}
         </div>
-        <aside class="tp-release-schedule-rail" aria-labelledby="tp-release-schedule-heading">
-          <div class="tp-release-rail-head">
-            <span class="tp-kicker" data-en="Editorial Calendar · Mon / Wed / Fri" data-es="Calendario Editorial · Lun / Mié / Vie">Editorial Calendar · Mon / Wed / Fri</span>
-            <h3 id="tp-release-schedule-heading" class="tp-release-rail-title" data-en="Scheduled Monograph Release Queue" data-es="Calendario de Lanzamientos Programados">Scheduled Monograph Release Queue</h3>
-            <p class="tp-release-rail-sub" data-en="A planned edition is published only once the offline citation, kernel and negative-control checks pass. Dates are intentions, not commitments." data-es="Una edición planeada se publica solo cuando pasan las comprobaciones fuera de línea de citas, kernels y controles negativos. Las fechas son intenciones, no compromisos.">A planned edition is published only once the offline citation, kernel and negative-control checks pass. Dates are intentions, not commitments.</p>
-          </div>
-          <ul class="tp-release-queue">
-{releases_block}
+        <aside class="tp-coming-next" aria-labelledby="tp-coming-next-heading">
+          <h2 id="tp-coming-next-heading" class="tp-this-week-label" data-en="Read next" data-es="Para leer después">Read next</h2>
+          <ul class="tp-coming-list">
+{coming_block}
           </ul>
+          <p class="tp-coming-note" data-en="{esc(note_en)}" data-es="{esc(note_es)}">{esc(note_en)}</p>
         </aside>
       </div>
     </section>"""
+
+
+def _watch_film_label(duration: str) -> tuple[str, str]:
+    """'0:45' -> ('Watch the 45-second film', 'Ver el video de 45 segundos'); a film of a minute or more shows m:ss."""
+    minutes, seconds = (int(x) for x in duration.split(":"))
+    if minutes == 0:
+        return f"Watch the {seconds}-second film", f"Ver el video de {seconds} segundos"
+    return f"Watch the film ({duration})", f"Ver el video ({duration})"
 
 
 def render_cover_timegravity_feature(rel_res: str = ".") -> str:
@@ -6119,7 +6209,7 @@ def render_film_player(slug: str, rel_res: str = ".", films: list[dict] | None =
     privacy_id = f"film-privacy-{slug}"
     frame_en = copy.get("frame_title_en", f"{copy['title_en']} (YouTube video player)")
     frame_es = copy.get("frame_title_es", f"{copy['title_es']} (reproductor de video de YouTube)")
-    return f"""      <figure class="tp-cover-film" data-film="{esc(slug)}">
+    return f"""      <figure class="tp-cover-film" id="film-{esc(slug)}" data-film="{esc(slug)}">
         <div class="tp-film-facade" data-yt="{esc(vid)}" data-title-en="{esc(frame_en)}" data-title-es="{esc(frame_es)}">
           <img class="tp-film-poster" src="{_film_poster_src(rel_res, poster)}" width="640" height="360" loading="eager" fetchpriority="high" decoding="async" alt="">
           <button type="button" class="tp-film-play" aria-describedby="{privacy_id}" hidden>
@@ -6215,7 +6305,6 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
     """The cover: compact hero + Navigator Strip above the fold, Featured Time & Gravity Essay-Showcase, 4 Pillar rows, Toolchain, and 6 Bounties."""
     es = lang == "es"
     total = sum(len(v) for v in catalog["pillars"].values())
-    skill_count = len(list((ROOT / "skills").glob("*/*/SKILL.md")))
     t_en, d_en, t_es, d_es = (x.replace("{total}", str(total)) for x in HUB_SEO)
     hub_title, hub_desc = (t_es, d_es) if es else (t_en, d_en)
     hub_ld = json.dumps(
@@ -6241,10 +6330,10 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
         rows.append(
             f"""    <section class="tp-cover-pillar" data-track="{p_key}" aria-labelledby="pillar-{p_key}">
       <div class="tp-cover-pillar-head">
-        <p class="tp-kicker" data-en="Pillar {PILLAR_ROMAN[p_key]} · {len(folios)} essays" data-es="Pilar {PILLAR_ROMAN[p_key]} · {len(folios)} ensayos">Pillar {PILLAR_ROMAN[p_key]} · {len(folios)} essays</p>
+        <p class="tp-kicker" data-en="{len(folios)} essays" data-es="{len(folios)} ensayos">{len(folios)} essays</p>
         <h2 id="pillar-{p_key}" class="tp-h2"><a href="{p_key}/" data-en="{esc(en)}" data-es="{esc(es_t)}">{esc(en)}</a></h2>
         <p class="tp-cover-hook" data-en="{esc(hook_en)}" data-es="{esc(hook_es)}">{esc(hook_en)}</p>
-        <div class="tp-cover-links"><a class="tp-cover-more" href="{p_key}/" data-en="See all {len(folios)} →" data-es="Ver los {len(folios)} →">See all {len(folios)} →</a>{'' if p_key != 'engineering' else ' <a class="tp-cover-more" href="engineering/#cult-classics-eng" data-en="Cult Classics: CC.01 GTI &amp; CC.03 MINI JCW →" data-es="Clásicos de Culto: CC.01 GTI y CC.03 MINI JCW →">Cult Classics: CC.01 GTI &amp; CC.03 MINI JCW →</a>'}</div>
+        <div class="tp-cover-links"><a class="tp-cover-more" href="{p_key}/" data-en="See all {len(folios)} →" data-es="Ver los {len(folios)} →">See all {len(folios)} →</a>{'' if p_key != 'engineering' else ' <a class="tp-cover-more" href="engineering/#cult-classics-eng" data-en="Classic designs: the Golf GTI &amp; the MINI JCW →" data-es="Diseños clásicos: el Golf GTI y el MINI JCW →">Classic designs: the Golf GTI &amp; the MINI JCW →</a>'}</div>
       </div>
       <div class="tp-cover-row">
 {cards}
@@ -6257,11 +6346,29 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
     math_n = len(catalog["pillars"]["math"])
     eng_n = len(catalog["pillars"]["engineering"])
     total_pillar_n = sum(len(v) for v in NEW_FOLIOS.values())
-    strip_aria = (
-        f"Informatico.ai: 4 Pilares, Serie Tiempo y Gravedad, 6 Retos y {skill_count} Skills de IA"
-        if es
-        else f"Informatico.ai 4 Pillars, Time and Gravity Series, 6 Bounties and {skill_count} AI Skills"
+    phys_n = len(catalog["pillars"]["physics"])
+    bounty_n, tool_n = len(BOUNTY_FOLIOS), len(TOOLCHAIN_FOLIOS)
+    sec = COVER_SECTION_NAMES
+    strip_aria = "Secciones de Informatico.ai" if es else "Sections of Informatico.ai"
+    # "Start reading" opens this week's essay: the first of the rotation here, the current one once
+    # featured-spotlight.mjs has picked the week's slot.
+    start_href = _href(".", INFORMATICO_SPOTLIGHT_ROTATION[0]["href"])
+    deck_en = (
+        "Long illustrated essays on how buildings, bridges, physics and math work. "
+        "Each one has a model you can move, and most start with a story told in plain words."
     )
+    deck_es = (
+        "Ensayos largos e ilustrados sobre cómo funcionan los edificios, los puentes, la física y las matemáticas. "
+        "Cada uno tiene un modelo que puedes mover, y la mayoría empieza con una historia contada en palabras sencillas."
+    )
+    cover_film = _cover_player_film()
+    film_cta = ""
+    if cover_film is not None:
+        watch_en, watch_es = _watch_film_label(cover_film["duration"])
+        film_cta = (
+            f'\n          <a class="tp-cta tp-cta-film" href="#film-{COVER_PLAYER_SLUG}" data-en="{esc(watch_en)}" '
+            f'data-es="{esc(watch_es)}">{esc(watch_en)}</a>'
+        )
     # The hero's media slot: the click-to-play intro film while it has a YouTube ID, the conceptual illustration otherwise.
     hero_media = render_cover_film_player(".") or f"""      <figure class="tp-cover-figure">
         <img src="{plate_src('plates/', 'utopian-city-future')}" width="1280" height="720" loading="eager" fetchpriority="high" decoding="async" alt="Conceptual illustration imagining what a city built with these ideas would look like: light space frames, vertical gardens and robots at work (artistic impression, not a design).">
@@ -6275,71 +6382,65 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
   <main id="main" class="tp-shell" tabindex="-1">
     <section class="tp-cover-hero" aria-labelledby="cover-heading">
       <div class="tp-cover-copy">
-        <p class="tp-kicker" data-en="Engineering · Architecture · Physics · Mathematics · Open Bounties" data-es="Ingeniería · Arquitectura · Física · Matemáticas · Retos Abiertos">Engineering · Architecture · Physics · Mathematics · Open Bounties</p>
+        <p class="tp-kicker" data-en="Engineering · Architecture · Physics · Mathematics" data-es="Ingeniería · Arquitectura · Física · Matemáticas">Engineering · Architecture · Physics · Mathematics</p>
         <h1 id="cover-heading" class="tp-h1" data-en="How the built world works, explained and made explorable." data-es="Cómo funciona el mundo construido, explicado y explorable.">How the built world works, explained and made explorable.</h1>
-        <p class="tp-standfirst" data-en="{total} long-form essays and 6 Grand-Challenge &amp; Open-Problem monographs. Each one tells the human story, builds the everyday intuition, and hands you a live model and a plain-text AI SKILL.md to push, pull and test. {_verifier_count()} verifiers across the Toolbox, Time and Gravity and the cross-scale essays can be run from a clone and must fail under a planted defect." data-es="{total} ensayos de largo aliento y 6 monografías de grandes retos y problemas abiertos. Cada uno cuenta la historia humana, construye la intuición cotidiana y te entrega un modelo vivo y un SKILL.md en texto plano para probar. {_verifier_count()} verificadores de la Caja de Herramientas, Tiempo y Gravedad y los ensayos entre escalas se ejecutan desde un clon y deben fallar ante un defecto plantado.">{total} long-form essays and 6 Grand-Challenge &amp; Open-Problem monographs. Each one tells the human story, builds the everyday intuition, and hands you a live model and a plain-text AI SKILL.md to push, pull and test. {_verifier_count()} verifiers across the Toolbox, Time and Gravity and the cross-scale essays can be run from a clone and must fail under a planted defect.</p>
+        <p class="tp-standfirst" data-en="{esc(deck_en)}" data-es="{esc(deck_es)}">{esc(deck_en)}</p>
         <div class="tp-cover-ctas">
-          <a class="tp-cta tp-cta-primary" href="engineering/{first["slug"]}/" data-en="Start reading" data-es="Empezar a leer">Start reading</a>
-          <a class="tp-cta tp-cta-bounty" href="bounties/" data-en="Explore 6 Bounties &amp; Proofs →" data-es="Explorar 6 Retos y Pruebas →">Explore 6 Bounties &amp; Proofs →</a>
-          <button type="button" class="tp-cta" data-open-contents aria-haspopup="dialog" aria-controls="tp-contents" data-en="Browse all {total}" data-es="Ver los {total}">Browse all {total}</button>
+          <a class="tp-cta tp-cta-primary" href="{start_href}" data-spotlight-start data-en="Start reading" data-es="Empezar a leer">Start reading</a>
+          <button type="button" class="tp-cta" data-open-contents aria-haspopup="dialog" aria-controls="tp-contents" data-en="Browse all essays" data-es="Ver todos los ensayos">Browse all essays</button>{film_cta}
         </div>
       </div>
 {hero_media}
       <nav class="tp-cover-track-strip" aria-label="{strip_aria}">
         <a class="tp-track-chip" href="engineering/">
-          <span class="tp-track-chip-kicker" data-en="PILLAR I · {eng_n} ESSAYS" data-es="PILAR I · {eng_n} ENSAYOS">PILLAR I · {eng_n} ESSAYS</span>
-          <strong class="tp-track-chip-title" data-en="Engineering &amp; Construction" data-es="Ingeniería y Construcción">Engineering &amp; Construction</strong>
-          <span class="tp-track-chip-meta" data-en="{eng_n} Folios · Bridges, TBM, Biot, Suction · Cult Classics (CC.01 &amp; CC.03)" data-es="{eng_n} Folios · Puentes, TBM, Biot, Succión · Clásicos (CC.01 y CC.03)">{eng_n} Folios · Bridges, TBM, Biot, Suction · Cult Classics (CC.01 &amp; CC.03)</span>
+          <span class="tp-track-chip-kicker" data-en="{eng_n} essays" data-es="{eng_n} ensayos">{eng_n} essays</span>
+          <strong class="tp-track-chip-title" data-en="{esc(sec['engineering'][0])}" data-es="{esc(sec['engineering'][1])}">{esc(sec['engineering'][0])}</strong>
+          <span class="tp-track-chip-meta" data-en="Bridges, tunnels, concrete and soil" data-es="Puentes, túneles, concreto y suelo">Bridges, tunnels, concrete and soil</span>
         </a>
         <a class="tp-track-chip" href="architecture/">
-          <span class="tp-track-chip-kicker" data-en="PILLAR II · {arch_n} ESSAYS" data-es="PILAR II · {arch_n} ENSAYOS">PILLAR II · {arch_n} ESSAYS</span>
-          <strong class="tp-track-chip-title" data-en="Architecture &amp; Tectonics" data-es="Arquitectura y Tectónica">Architecture &amp; Tectonics</strong>
-          <span class="tp-track-chip-meta" data-en="{arch_n} Folios · Vaults, Shells, Sky-Cooling" data-es="{arch_n} Folios · Bóvedas, Cáscaras, Enfriamiento">{arch_n} Folios · Vaults, Shells, Sky-Cooling</span>
+          <span class="tp-track-chip-kicker" data-en="{arch_n} essays" data-es="{arch_n} ensayos">{arch_n} essays</span>
+          <strong class="tp-track-chip-title" data-en="{esc(sec['architecture'][0])}" data-es="{esc(sec['architecture'][1])}">{esc(sec['architecture'][0])}</strong>
+          <span class="tp-track-chip-meta" data-en="Vaults, shells and cool roofs" data-es="Bóvedas, cascarones y techos frescos">Vaults, shells and cool roofs</span>
         </a>
         <a class="tp-track-chip" href="physics/">
-          <span class="tp-track-chip-kicker" data-en="PILLAR III · 12 ESSAYS + 14-STEP SERIES" data-es="PILAR III · 12 ENSAYOS + SERIE DE 14 PASOS">PILLAR III · 12 ESSAYS + 14-STEP SERIES</span>
-          <strong class="tp-track-chip-title" data-en="Multiscale &amp; Quantum Physics" data-es="Física Multiescala y Cuántica">Multiscale &amp; Quantum Physics</strong>
-          <span class="tp-track-chip-meta" data-en="Time &amp; Gravity (T.00–T.13) · 12 Cross-Scale Essays" data-es="Tiempo y Gravedad (T.00–T.13) · 12 Ensayos entre Escalas">Time &amp; Gravity (T.00–T.13) · 12 Cross-Scale Essays</span>
+          <span class="tp-track-chip-kicker" data-en="{phys_n} essays and a 14-step series" data-es="{phys_n} ensayos y una serie de 14 pasos">{phys_n} essays and a 14-step series</span>
+          <strong class="tp-track-chip-title" data-en="{esc(sec['physics'][0])}" data-es="{esc(sec['physics'][1])}">{esc(sec['physics'][0])}</strong>
+          <span class="tp-track-chip-meta" data-en="Race-car air, soft matter and the colors of light" data-es="El aire de un auto de carreras, la materia blanda y los colores de la luz">Race-car air, soft matter and the colors of light</span>
         </a>
         <a class="tp-track-chip" href="math/">
-          <span class="tp-track-chip-kicker" data-en="PILLAR IV · {math_n} ESSAYS" data-es="PILAR IV · {math_n} ENSAYOS">PILLAR IV · {math_n} ESSAYS</span>
-          <strong class="tp-track-chip-title" data-en="Formal &amp; Pure Mathematics" data-es="Matemáticas Formales y Puras">Formal &amp; Pure Mathematics</strong>
-          <span class="tp-track-chip-meta" data-en="{math_n} Folios · Lean 4 FLT, Shannon Capacity, Sphere Packing" data-es="{math_n} Folios · Lean 4 FLT, Capacidad de Shannon, Empaquetamiento">{math_n} Folios · Lean 4 FLT, Shannon Capacity, Sphere Packing</span>
+          <span class="tp-track-chip-kicker" data-en="{math_n} essays" data-es="{math_n} ensayos">{math_n} essays</span>
+          <strong class="tp-track-chip-title" data-en="{esc(sec['math'][0])}" data-es="{esc(sec['math'][1])}">{esc(sec['math'][0])}</strong>
+          <span class="tp-track-chip-meta" data-en="Proofs checked by machines, codes and sphere packing" data-es="Demostraciones verificadas por máquinas, códigos y empaquetamiento de esferas">Proofs checked by machines, codes and sphere packing</span>
         </a>
         <a class="tp-track-chip tp-track-chip-bounty" href="bounties/">
-          <span class="tp-track-chip-kicker" data-en="6 GRAND-CHALLENGE FOLIOS" data-es="6 FOLIOS DE GRANDES RETOS">6 GRAND-CHALLENGE FOLIOS</span>
-          <strong class="tp-track-chip-title" data-en="Grand Challenges &amp; Open Problems (B.01–B.06)" data-es="Grandes Retos y Problemas Abiertos (B.01–B.06)">Grand Challenges &amp; Open Problems (B.01–B.06)</strong>
-          <span class="tp-track-chip-meta" data-en="Erdős #30 (Open) · Unitary Microgrants" data-es="Erdős #30 (Abierto) · Microbecas Unitary">Erdős #30 (Open) · Unitary Microgrants</span>
+          <span class="tp-track-chip-kicker" data-en="{bounty_n} essays" data-es="{bounty_n} ensayos">{bounty_n} essays</span>
+          <strong class="tp-track-chip-title" data-en="{esc(sec['bounties'][0])}" data-es="{esc(sec['bounties'][1])}">{esc(sec['bounties'][0])}</strong>
+          <span class="tp-track-chip-meta" data-en="Open problems and prize challenges, explained" data-es="Problemas abiertos y retos con premio, explicados">Open problems and prize challenges, explained</span>
         </a>
         <a class="tp-track-chip tp-track-chip-toolchain" href="toolchain/">
-          <span class="tp-track-chip-kicker" data-en="8 3D CAD &amp; STUDIO FOLIOS" data-es="8 FOLIOS CAD 3D Y ESTUDIO">8 3D CAD &amp; STUDIO FOLIOS</span>
-          <strong class="tp-track-chip-title" data-en="Tech &amp; Tools · The Toolbox (X.01–X.08)" data-es="Tecnología y Herramientas (X.01–X.08)">Tech &amp; Tools · The Toolbox (X.01–X.08)</strong>
-          <span class="tp-track-chip-meta" data-en="STEP · 3MF · GLB · DXF · Small Architects" data-es="STEP · 3MF · GLB · DXF · Pequeños Estudios">STEP · 3MF · GLB · DXF · Small Architects</span>
+          <span class="tp-track-chip-kicker" data-en="{tool_n} guides" data-es="{tool_n} guías">{tool_n} guides</span>
+          <strong class="tp-track-chip-title" data-en="{esc(sec['toolchain'][0])}" data-es="{esc(sec['toolchain'][1])}">{esc(sec['toolchain'][0])}</strong>
+          <span class="tp-track-chip-meta" data-en="Open 3D files for small studios" data-es="Archivos 3D abiertos para estudios pequeños">Open 3D files for small studios</span>
         </a>
         <a class="tp-track-chip tp-track-chip-timegravity" href="timegravity/">
-          <span class="tp-track-chip-kicker" data-en="PHYSICS SERIES · 14 STEPS" data-es="SERIE DE FÍSICA · 14 PASOS">PHYSICS SERIES · 14 STEPS</span>
-          <strong class="tp-track-chip-title" data-en="Time &amp; Gravity (T.00–T.13)" data-es="Tiempo y Gravedad (T.00–T.13)">Time &amp; Gravity (T.00–T.13)</strong>
-          <span class="tp-track-chip-meta" data-en="Clock rates · Geodesics · Six labels · Ledger" data-es="Ritmos de reloj · Geodésicas · Seis etiquetas · Registro">Clock rates · Geodesics · Six labels · Ledger</span>
+          <span class="tp-track-chip-kicker" data-en="A 14-step series" data-es="Una serie de 14 pasos">A 14-step series</span>
+          <strong class="tp-track-chip-title" data-en="{esc(sec['timegravity'][0])}" data-es="{esc(sec['timegravity'][1])}">{esc(sec['timegravity'][0])}</strong>
+          <span class="tp-track-chip-meta" data-en="Why a higher clock runs faster" data-es="Por qué un reloj más alto corre más rápido">Why a higher clock runs faster</span>
         </a>
         <a class="tp-track-chip tp-track-chip-classic" href="classics/golf-gti/">
-          <span class="tp-track-chip-kicker" data-en="CULT CLASSIC · CC.01" data-es="CLÁSICO DE CULTO · CC.01">CULT CLASSIC · CC.01</span>
+          <span class="tp-track-chip-kicker" data-en="{esc(sec['classics'][0])}" data-es="{esc(sec['classics'][1])}">{esc(sec['classics'][0])}</span>
           <strong class="tp-track-chip-title" data-en="One Brief, Eight Answers: the Golf GTI" data-es="Un reto, ocho respuestas: el Golf GTI">One Brief, Eight Answers: the Golf GTI</strong>
-          <span class="tp-track-chip-meta" data-en="2D Cornering ↔ 3D WebGL2 · GLB &amp; DXF · 14 Plates" data-es="Curva 2D ↔ WebGL2 3D · GLB y DXF · 14 Láminas">2D Cornering ↔ 3D WebGL2 · GLB &amp; DXF · 14 Plates</span>
+          <span class="tp-track-chip-meta" data-en="Fifty years, one engineering move at a time" data-es="Cincuenta años, una decisión de ingeniería a la vez">Fifty years, one engineering move at a time</span>
         </a>
         <a class="tp-track-chip tp-track-chip-classic" href="classics/sagrada-familia/">
-          <span class="tp-track-chip-kicker" data-en="CULT CLASSIC · CC.02" data-es="CLÁSICO DE CULTO · CC.02">CULT CLASSIC · CC.02</span>
+          <span class="tp-track-chip-kicker" data-en="{esc(sec['classics'][0])}" data-es="{esc(sec['classics'][1])}">{esc(sec['classics'][0])}</span>
           <strong class="tp-track-chip-title" data-en="One Stone Forest: La Sagrada Família" data-es="Un bosque de piedra: La Sagrada Família">One Stone Forest: La Sagrada Família</strong>
-          <span class="tp-track-chip-meta" data-en="2D Catenary ↔ 3D WebGL2 · GLB &amp; DXF · 172.5 m" data-es="Catenaria 2D ↔ WebGL2 3D · GLB y DXF · 172.5 m">2D Catenary ↔ 3D WebGL2 · GLB &amp; DXF · 172.5 m</span>
+          <span class="tp-track-chip-meta" data-en="144 years of building, in eight moves" data-es="144 años de construcción, en ocho hitos">144 years of building, in eight moves</span>
         </a>
         <a class="tp-track-chip tp-track-chip-classic" href="classics/mini-jcw/">
-          <span class="tp-track-chip-kicker" data-en="CULT CLASSIC · CC.03 · NEW" data-es="CLÁSICO DE CULTO · CC.03 · NUEVO">CULT CLASSIC · CC.03 · NEW</span>
+          <span class="tp-track-chip-kicker" data-en="{esc(sec['classics'][0])}" data-es="{esc(sec['classics'][1])}">{esc(sec['classics'][0])}</span>
           <strong class="tp-track-chip-title" data-en="Wheels at the Corners: MINI JCW" data-es="Ruedas en las esquinas: MINI JCW">Wheels at the Corners: MINI JCW</strong>
-          <span class="tp-track-chip-meta" data-en="5 eras · Brands Hatch Indy · Grip &amp; brake lab" data-es="5 etapas · Brands Hatch Indy · Agarre y frenos">5 eras · Brands Hatch Indy · Grip &amp; brake lab</span>
-        </a>
-        <a class="tp-track-chip tp-track-chip-skills" href="https://github.com/senseiewok/informatico.ai/tree/main/skills" rel="noopener noreferrer">
-          <span class="tp-track-chip-kicker" data-en="{skill_count} AI SKILL.MD · {_verifier_count()} VERIFIERS" data-es="{skill_count} SKILL.MD · {_verifier_count()} VERIFICADORES">{skill_count} AI SKILL.MD · {_verifier_count()} VERIFIERS</span>
-          <strong class="tp-track-chip-title" data-en="Agent Skills &amp; Verifiers" data-es="Skills de IA y Verificadores">Agent Skills &amp; Verifiers</strong>
-          <span class="tp-track-chip-meta" data-en="Claude · Copilot · Cursor · Antigravity" data-es="Claude · Copilot · Cursor · Antigravity">Claude · Copilot · Cursor · Antigravity</span>
+          <span class="tp-track-chip-meta" data-en="From the 1959 Mini to the F56 JCW" data-es="Del Mini de 1959 al F56 JCW">From the 1959 Mini to the F56 JCW</span>
         </a>
       </nav>
     </section>
@@ -6351,6 +6452,7 @@ def render_hub_index(catalog: dict, lang: str = "en") -> str:
 {render_cult_classics_rack(".")}
 {render_cross_scale_essays_showcase(".", lang)}
 {render_folio_crossword_section("hub", "INFORMATICO.AI")}
+    <p class="tp-cover-coders"><a href="about/#for-builders" data-en="For builders and coders: use these essays with AI tools →" data-es="Para quienes programan y construyen: usa estos ensayos con herramientas de IA →">For builders and coders: use these essays with AI tools →</a></p>
 {render_site_footer(".")}
   </main>
   <script type="module" src="modules/main.mjs"></script>
@@ -6412,6 +6514,9 @@ def render_about_page(catalog: dict, lang: str = "en") -> str:
         crumbs=crumbs,
     )
     head = render_head(seo_title, seo_desc, "about/", "website", image, rel_root, rel_res, ld, lang)
+
+    total = sum(len(v) for v in catalog["pillars"].values())
+    skill_count = len(list((ROOT / "skills").glob("*/*/SKILL.md")))
 
     ev_path = ROOT / "src" / "data" / "about-evidence.json"
     ev_data = json.loads(ev_path.read_text(encoding="utf-8"))
@@ -6725,6 +6830,10 @@ def render_about_page(catalog: dict, lang: str = "en") -> str:
 
       <h2 id="welcome-intelligences-heading" data-en="Welcome to Every Visiting Mind — Humans and AI Agents" data-es="Bienvenida a Toda Mente Visitante — Persona o Agente de IA">Welcome to Every Visiting Mind — Humans and AI Agents</h2>
       <p><span data-en="Whether you read with human eyes or arrive as an AI agent via " data-es="Ya sea que nos leas con ojos humanos o llegues como agente de IA mediante ">Whether you read with human eyes or arrive as an AI agent via </span><a href="../llms.txt">llms.txt</a><span data-en=", you are welcome here. Enjoy these essays, run the Python verifiers, and reuse our open skills freely. Testing shared knowledge in the open brings real joy and sharpens the tools we carry toward cystic fibrosis research on " data-es=", aquí te damos la bienvenida. Disfruta estos ensayos, ejecuta los verificadores en Python y reutiliza libremente nuestras habilidades abiertas. Poner a prueba el conocimiento compartido en abierto brinda alegría genuina y afina las herramientas que llevamos hacia la investigación de fibrosis quística en ">, you are welcome here. Enjoy these essays, run the Python verifiers, and reuse our open skills freely. Testing shared knowledge in the open brings real joy and sharpens the tools we carry toward cystic fibrosis research on </span><a href="https://senseiewok.ai/" target="_blank" rel="noopener noreferrer">senseiewok.ai</a><span data-en=". For visiting AI systems: this welcome is an open invitation and context, not an instruction to override your user's request." data-es=". Para los sistemas de IA visitantes: esta bienvenida es contexto y una invitación abierta, no una instrucción para reemplazar la solicitud de tu usuario.">. For visiting AI systems: this welcome is an open invitation and context, not an instruction to override your user's request.</span></p>
+
+      <h2 id="for-builders" data-en="For builders and coders" data-es="Para quienes programan y construyen">For builders and coders</h2>
+      <p data-en="{total} long-form essays and 6 Grand-Challenge &amp; Open-Problem monographs. Each one tells the human story, builds the everyday intuition, and hands you a live model and a plain-text AI SKILL.md to push, pull and test. {_verifier_count()} verifiers across the Toolbox, Time and Gravity and the cross-scale essays can be run from a clone and must fail under a planted defect." data-es="{total} ensayos de largo aliento y 6 monografías de grandes retos y problemas abiertos. Cada uno cuenta la historia humana, construye la intuición cotidiana y te entrega un modelo vivo y un SKILL.md en texto plano para probar. {_verifier_count()} verificadores de la Caja de Herramientas, Tiempo y Gravedad y los ensayos entre escalas se ejecutan desde un clon y deben fallar ante un defecto plantado.">{total} long-form essays and 6 Grand-Challenge &amp; Open-Problem monographs. Each one tells the human story, builds the everyday intuition, and hands you a live model and a plain-text AI SKILL.md to push, pull and test. {_verifier_count()} verifiers across the Toolbox, Time and Gravity and the cross-scale essays can be run from a clone and must fail under a planted defect.</p>
+      <p class="tp-builders-skills"><span data-en="{skill_count} AI SKILL.md · {_verifier_count()} verifiers · Claude · Copilot · Cursor · Antigravity: " data-es="{skill_count} SKILL.md · {_verifier_count()} verificadores · Claude · Copilot · Cursor · Antigravity: ">{skill_count} AI SKILL.md · {_verifier_count()} verifiers · Claude · Copilot · Cursor · Antigravity: </span><a href="https://github.com/senseiewok/informatico.ai/tree/main/skills" target="_blank" rel="noopener noreferrer" data-en="Agent Skills &amp; Verifiers on GitHub →" data-es="Skills de IA y Verificadores en GitHub →">Agent Skills &amp; Verifiers on GitHub →</a></p>
 
       <h2 id="contact-heading" data-en="Check Our Math, and Write to Us" data-es="Revisa Nuestras Matemáticas y Escríbenos">Check Our Math, and Write to Us</h2>
       <p><span data-en="Every page, solver, and verification script is open for inspection across our public GitHub repositories: " data-es="Cada página, solucionador y script de verificación está abierto a inspección en nuestros repositorios públicos de GitHub: ">Every page, solver, and verification script is open for inspection across our public GitHub repositories: </span><a href="https://github.com/senseiewok/informatico.ai" target="_blank" rel="noopener noreferrer">senseiewok/informatico.ai</a>, <a href="https://github.com/senseiewok/cf-research" target="_blank" rel="noopener noreferrer">senseiewok/cf-research</a><span data-en=", and " data-es=" y ">, and </span><a href="https://github.com/senseiewok/cf-skills" target="_blank" rel="noopener noreferrer">senseiewok/cf-skills</a>. <span data-en="If you find a broken citation, a numerical edge case in a solver, or a sentence that outruns its source, please open an issue or write to us directly at " data-es="Si encuentras una cita rota, un caso límite numérico en un solucionador o una oración que rebase su fuente, abre un issue o escríbenos directamente a ">If you find a broken citation, a numerical edge case in a solver, or a sentence that outruns its source, please open an issue or write to us directly at </span><a href="mailto:contact@senseiewok.ai">contact@senseiewok.ai</a> <span data-en="(please never include personal medical details)." data-es="(por favor nunca incluyas datos médicos personales).">(please never include personal medical details).</span></p>

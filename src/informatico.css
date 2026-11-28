@@ -7529,6 +7529,271 @@
       transform: translateY(-2px);
     }
   }
+  /* Magazine pass, phase 1 (2026-11-28): a calmer first impression on the cover. Everyday words, serif titles,
+     codes in small grey, no clipped labels. Palette and page structure are unchanged (phase 2). */
+  .tp-cover-hero .tp-standfirst {
+    font-size: clamp(1.04rem, 1.3vw, 1.2rem);
+    line-height: 1.5;
+    max-width: 44ch;
+  }
+  .tp-cover-film {
+    scroll-margin-top: 5rem;
+  }
+  .tp-cover-coders {
+    margin: 1.6rem 0 0;
+    font-family: var(--tp-font-ui, system-ui, sans-serif);
+    font-size: 0.86rem;
+  }
+  .tp-cover-coders a {
+    color: var(--tp-graphite);
+  }
+
+  /* Section tiles: a count, a name in the serif, one short line that wraps instead of being cut off. */
+  .tp-cover-track-strip {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+  .tp-track-chip,
+  .tp-track-chip-bounty,
+  .tp-track-chip-toolchain {
+    justify-content: flex-start;
+    gap: 0.22rem;
+    padding: 0.7rem 0.8rem 0.75rem;
+    border-color: var(--tp-rule);
+    background: none;
+    background-color: var(--tp-vellum);
+  }
+  .tp-track-chip:hover {
+    border-color: var(--tp-ink);
+  }
+  .tp-track-chip-kicker,
+  .tp-track-chip-bounty .tp-track-chip-kicker,
+  .tp-track-chip-toolchain .tp-track-chip-kicker {
+    font-family: var(--tp-font-ui, system-ui, sans-serif);
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    color: var(--tp-slate);
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+  .tp-track-chip-title {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.08rem;
+    font-weight: 600;
+    line-height: 1.22;
+  }
+  .tp-track-chip-meta {
+    font-size: 0.8rem;
+    line-height: 1.36;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+  @media (max-width: 1120px) {
+    .tp-cover-track-strip {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  /* Phone, cover only: headline, deck and Start reading first; then the film with its privacy line; then the
+     tiles. /about/ shares the hero classes and keeps its film first. */
+  @media (max-width: 860px) {
+    .tp-page-cover .tp-cover-copy {
+      order: 1;
+    }
+    .tp-page-cover .tp-cover-film {
+      order: 2;
+    }
+    .tp-page-cover .tp-cover-track-strip {
+      order: 3;
+    }
+  }
+
+  /* This week's essay and Coming next (#tp-featured-edition-desk). */
+  .tp-featured-edition-desk.tp-this-week {
+    margin: 1.6rem 0 2.2rem;
+    padding: 0 0 1.6rem;
+    border-top: 0;
+    border-bottom: 1px solid var(--tp-rule);
+    background-color: transparent;
+  }
+  .tp-this-week-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
+    gap: 1.5rem clamp(1.5rem, 3vw, 2.75rem);
+    align-items: start;
+  }
+  .tp-this-week .tp-spotlight-stage {
+    grid-column: auto;
+    min-width: 0;
+  }
+  .tp-this-week-label {
+    margin: 0 0 0.8rem;
+    font-family: var(--tp-font-ui, system-ui, sans-serif);
+    font-size: 0.86rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--tp-minium);
+  }
+  .tp-this-week .tp-spotlight-slide {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 1rem clamp(1rem, 2.2vw, 1.75rem);
+    align-items: center;
+  }
+  .tp-this-week .tp-spotlight-slide[hidden],
+  .tp-coming-item[hidden] {
+    display: none;
+  }
+  .tp-this-week .tp-spotlight-figure {
+    margin: 0;
+  }
+  .tp-this-week .tp-spotlight-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border: 0;
+    border-radius: 10px;
+    background-color: var(--tp-stone-deep);
+  }
+  .tp-spotlight-kicker {
+    margin: 0 0 0.4rem;
+    font-family: var(--tp-font-ui, system-ui, sans-serif);
+    font-size: 0.84rem;
+    color: var(--tp-slate);
+  }
+  .tp-this-week .tp-spotlight-slide-title {
+    margin: 0 0 0.55rem;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: clamp(1.4rem, 2.2vw, 1.95rem);
+    font-weight: 600;
+    line-height: 1.16;
+  }
+  .tp-this-week .tp-spotlight-dek {
+    margin: 0 0 1rem;
+    max-width: 46ch;
+    font-size: 1.02rem;
+    line-height: 1.5;
+    color: var(--tp-graphite);
+  }
+  .tp-coming-next {
+    padding-left: clamp(1rem, 2.2vw, 1.75rem);
+    border-left: 1px solid var(--tp-rule);
+  }
+  .tp-coming-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .tp-coming-item {
+    padding: 0.7rem 0;
+    border-top: 1px solid var(--tp-rule);
+  }
+  /* The first shown item always follows a hidden one: slot 0 without scripts, the moved-to-the-end three with them. */
+  .tp-coming-item[hidden] + .tp-coming-item:not([hidden]) {
+    padding-top: 0;
+    border-top: 0;
+  }
+  .tp-coming-title {
+    display: block;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.04rem;
+    font-weight: 600;
+    line-height: 1.28;
+    color: var(--tp-ink);
+    text-decoration: none;
+  }
+  .tp-body .tp-coming-title {
+    color: var(--tp-ink);
+  }
+  .tp-coming-title:hover,
+  .tp-coming-title:focus-visible {
+    text-decoration: underline;
+  }
+  .tp-coming-section {
+    display: block;
+    margin-top: 0.2rem;
+    font-family: var(--tp-font-ui, system-ui, sans-serif);
+    font-size: 0.78rem;
+    color: var(--tp-slate);
+  }
+  .tp-coming-note {
+    margin: 0.9rem 0 0;
+    font-size: 0.84rem;
+    line-height: 1.45;
+    color: var(--tp-slate);
+  }
+  @media (max-width: 1080px) {
+    .tp-this-week-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .tp-coming-next {
+      padding-left: 0;
+      padding-top: 1.1rem;
+      border-left: 0;
+      border-top: 1px solid var(--tp-rule);
+    }
+  }
+  @media (max-width: 760px) {
+    .tp-this-week .tp-spotlight-slide {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  /* Essay cards: picture, title in the serif, deck, then reading time and the folio code in small grey.
+     The code is never the first thing read; monospace is kept for real code and formulas. */
+  .tp-body .tp-rack-card {
+    display: flex;
+    flex-direction: column;
+  }
+  .tp-body .tp-rack-title {
+    order: 1;
+    padding-top: 0.8rem;
+    font-family: var(--font-serif, Georgia, serif);
+    font-weight: 600;
+  }
+  .tp-body .tp-rack-dek {
+    order: 2;
+    margin-bottom: 0.6rem;
+  }
+  .tp-body .tp-rack-top {
+    order: 3;
+    justify-content: flex-start;
+    gap: 0.15rem 0.7rem;
+    margin-top: auto;
+    padding: 0 0.95rem 0.85rem;
+    font-size: 0.76rem;
+  }
+  .tp-body .tp-rack-badge {
+    order: 1;
+    font-size: 0.76rem;
+  }
+  .tp-body .tp-rack-id {
+    order: 2;
+    font-family: var(--tp-font-ui, system-ui, sans-serif);
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    color: var(--tp-slate);
+  }
+  /* A card with no picture (none on disk, or one that failed to load) is a text card on purpose: no empty box. */
+  .tp-body .tp-rack-card-textonly .tp-rack-thumb-wrap,
+  .tp-body .tp-rack-card-noimg .tp-rack-thumb-wrap {
+    display: none;
+  }
+  .tp-body .tp-rack-card-textonly,
+  .tp-body .tp-rack-card-noimg {
+    border-top: 3px solid var(--tp-ink);
+  }
+  .tp-body .tp-rack-card-textonly .tp-rack-title,
+  .tp-body .tp-rack-card-noimg .tp-rack-title {
+    padding-top: 1.1rem;
+    font-size: 1.18rem;
+  }
 }
 
   /* Phone width: a long file name, link or label must wrap inside its column instead of widening it.
