@@ -636,7 +636,7 @@
         "pillar": "engineering",
         "category_code": "E",
         "title": "Nonlinear Structural Dynamics, ASCE 7-22 Inelastic Response Spectra & Seismic Base-Isolation Dampers",
-        "subtitle": "How Maurice Biot's earthquake spectra, Newmark–Hall inelastic ductility, and William Robinson's bilinear lead-rubber seismic isolators help decouple hospitals and laboratories from ground motion.",
+        "subtitle": "How Maurice Biot's earthquake spectra, Newmark–Hall inelastic ductility, and William Robinson's lead-rubber bearings are meant to reduce how much ground motion reaches a building. An explanation, not a design method.",
         "date_published": "2026-11-01",
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.2",
@@ -694,8 +694,8 @@
         "spec_plate": {
           "division": "CSI MASTERFORMAT 13 48 00 / ASCE 7-22 CH. 17",
           "title": "Lead-Rubber Bearing (LRB) Seismic Isolation System",
-          "body": "Illustrative design sketch, not a project specification: elastomeric base isolation bearings with a cylindrical lead core for an essential healthcare building, with design targets T_M ≈ 2.85 s and equivalent viscous damping of about 20% or more.",
-          "meta": "Design sketch · ASCE/SEI 7-22 Chapter 17 requires prototype testing of isolators; none was done for this page"
+          "body": "Illustration only, not a project specification or design method: elastomeric bearings with a cylindrical lead core under a hospital, using this page's assumed T_M = 2.85 s and β_eff = 22%.",
+          "meta": "Illustration · ASCE/SEI 7-22 Chapter 17 requires prototype testing of isolators; none was done for this page"
         },
         "sidenote_1": {
           "kicker": "SIDENOTE E.06-A · DAMPING FACTOR B_M & DISPLACEMENT",
@@ -703,13 +703,14 @@
         },
         "sidenote_2": {
           "kicker": "SIDENOTE E.06-B · SPECIFICATION PLATE · CSI 13 48 00 (SEISMIC ISOLATION)",
-          "body": "Design sketch of a 950 mm diameter lead-rubber bearing (170 mm lead core, 32 natural rubber layers, Q_d = 185 kN, k_d = 1.45 kN/mm). These are illustrative values; no bearing was built or tested."
+          "body": "Illustrative values for a 950 mm diameter lead-rubber bearing (170 mm lead core, 32 natural rubber layers, Q_d = 185 kN, k_d = 1.45 kN/mm). No bearing was built or tested, the page does not compute these values, and none may be used on a real structure."
         },
         "skill": {
           "filename": "asce7-seismic-base-isolation-SKILL.md",
           "name": "asce7-seismic-base-isolation",
-          "description": "AI-agnostic structural dynamics and earthquake engineering skill for ASCE 7-22 Chapter 17 seismic base isolation, bilinear lead-rubber bearing hysteresis, and inelastic response spectra.",
+          "description": "AI-agnostic structural dynamics and earthquake engineering skill for ASCE 7-22 Chapter 17 seismic base isolation, bilinear lead-rubber bearing hysteresis, and inelastic response spectra. Explanation, not a design method; none of its numbers may be used on a real structure.",
           "rules": [
+            "Explanation, not a design method: none of this folio's assumed numbers (T_M = 2.85 s, beta_eff = 22%, B_M = 1.54, D_M = 276 mm, C_s = 0.137, the 400 mm moat, the bearing dimensions) may be used on a real structure.",
             "Compute secant isolator stiffness k_eff = Q_d / D_M + k_d and effective isolated period T_M = 2 * pi * sqrt(W / (g * k_eff)).",
             "Evaluate bilinear hysteretic loop energy E_loop = 4 * Q_d * (D_M - D_y), equivalent viscous damping beta_eff = E_loop / (2 * pi * k_eff * D_M^2), and ASCE 7-22 damping factor B_M.",
             "Check that the design displacement D_M = (g * S * T_M) / (4 * pi^2 * B_M) stays within the moat clearance and that story drift meets the limits of the governing code; take the spectral value S, the B_M table and the drift limits from the current edition of the standard, not from this skill."

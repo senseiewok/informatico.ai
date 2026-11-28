@@ -48,9 +48,9 @@ FOLIO_SEO: dict[str, tuple[str, str, str, str]] = {
     ),
     "e06": (
         "Nonlinear Structural Dynamics and Seismic Isolation",
-        "How Biot's earthquake spectra, Newmark–Hall ductility and Robinson's lead-rubber bearings are meant to decouple hospitals and laboratories from ground motion.",
+        "An explanatory model of Biot's earthquake spectra and lead-rubber seismic isolation for hospitals and laboratories; explanation only, not a design method.",
         "Dinámica Estructural No Lineal y Aislamiento Sísmico",
-        "Cómo los espectros sísmicos de Biot, la ductilidad de Newmark–Hall y los aisladores de Robinson buscan separar hospitales y laboratorios del sismo.",
+        "Modelo explicativo de los espectros sísmicos de Biot y el aislamiento con apoyos de plomo y caucho; explicación, no método de diseño.",
     ),
     "e07": (
         "Suspension Bridge Flutter and Scanlan Derivatives",

@@ -1,6 +1,6 @@
 ---
 name: asce7-seismic-base-isolation
-description: AI-agnostic structural dynamics and earthquake engineering skill for ASCE 7-22 Chapter 17 seismic base isolation, bilinear lead-rubber bearing hysteresis, and inelastic response spectra.
+description: AI-agnostic structural dynamics and earthquake engineering skill for ASCE 7-22 Chapter 17 seismic base isolation, bilinear lead-rubber bearing hysteresis, and inelastic response spectra. Explanation, not a design method; none of its numbers may be used on a real structure.
 license: MIT
 compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI Codex, Ollama (Qwen 3.8 / Gemma 4)
 ---
@@ -12,9 +12,10 @@ A plain-text companion to the essay at https://informatico.ai/engineering/e06/ (
 `M ü + C u̇ + F_s(u) = −M ü_g(t) · V_b = C_s W · μ_Δ = Δ_max / Δ_y`
 
 ## Rules the essay derives
-1. Compute secant isolator stiffness k_eff = Q_d / D_M + k_d and effective isolated period T_M = 2 * pi * sqrt(W / (g * k_eff)).
-2. Evaluate bilinear hysteretic loop energy E_loop = 4 * Q_d * (D_M - D_y), equivalent viscous damping beta_eff = E_loop / (2 * pi * k_eff * D_M^2), and ASCE 7-22 damping factor B_M.
-3. Check that the design displacement D_M = (g * S * T_M) / (4 * pi^2 * B_M) stays within the moat clearance and that story drift meets the limits of the governing code; take the spectral value S, the B_M table and the drift limits from the current edition of the standard, not from this skill.
+1. Explanation, not a design method: none of this folio's assumed numbers (T_M = 2.85 s, beta_eff = 22%, B_M = 1.54, D_M = 276 mm, C_s = 0.137, the 400 mm moat, the bearing dimensions) may be used on a real structure.
+2. Compute secant isolator stiffness k_eff = Q_d / D_M + k_d and effective isolated period T_M = 2 * pi * sqrt(W / (g * k_eff)).
+3. Evaluate bilinear hysteretic loop energy E_loop = 4 * Q_d * (D_M - D_y), equivalent viscous damping beta_eff = E_loop / (2 * pi * k_eff * D_M^2), and ASCE 7-22 damping factor B_M.
+4. Check that the design displacement D_M = (g * S * T_M) / (4 * pi^2 * B_M) stays within the moat clearance and that story drift meets the limits of the governing code; take the spectral value S, the B_M table and the drift limits from the current edition of the standard, not from this skill.
 
 ## How it works, in four stages
 - Stage 1 (Fixed-Base Response): The page assumes S_D1 = 0.60 S_DS, so at S_DS = 1.00 g the spectral plateau ends at T_s = 0.60 s. An unisolated frame with T_fixed = 0.65 s sits just past it, at S_a = 0.60/0.65 = 0.92 g.
@@ -36,4 +37,4 @@ The reference values above are stated in the essay. No script in this repository
 - What the essay compares against: Model values: D_M = 276 mm and C_s = 0.137 at S_DS = 1.00 g, S_D1 = 0.60 g, B_M = 1.54
 
 ## Recent research context
-- **ASCE 7-22 Chapter 17 Multi-Period MCE_R Spectra & Bilinear Lead-Rubber Hospital Isolation**: Building on Maurice Biot's 1932 response spectrum and William Robinson's lead-rubber bearing (1982, DOI 10.1002/eqe.4290100408), ASCE/SEI 7-22 (DOI 10.1061/9780784415788) sets requirements for seismically isolated structures in its Chapter 17. In this page's equivalent-linear model, isolating a building at T_M = 2.85 s with 22% damping lowers the base shear coefficient from 0.92 to 0.137.
+- **ASCE 7-22 Chapter 17 Multi-Period MCE_R Spectra & Bilinear Lead-Rubber Hospital Isolation**: Building on Maurice Biot's 1932 response spectrum and William Robinson's tests of lead-rubber bearings (1982, DOI 10.1002/eqe.4290100408), ASCE/SEI 7-22 (DOI 10.1061/9780784415788) sets requirements for seismically isolated structures in its Chapter 17. In this page's equivalent-linear model, isolating a building at T_M = 2.85 s with 22% damping lowers the base shear coefficient from 0.92 to 0.137.
