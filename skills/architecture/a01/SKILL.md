@@ -1,6 +1,6 @@
 ---
 name: tectonic-funicular-envelope
-description: AI-agnostic architectural and structural engineering skill for funicular vault graphic statics (middle-third rule |e| <= t/6 as a design target) and a 1:5 thermal-break node check.
+description: AI-agnostic teaching skill for funicular vault graphic statics (middle-third rule |e| <= t/6 as the model target) and an illustrative 1:5 thermal-break node. Not a design method.
 license: MIT
 compatibility: Claude Code, GitHub Copilot, Cursor, Google Antigravity, OpenAI Codex, Ollama (Qwen 3.8 / Gemma 4)
 ---
@@ -12,9 +12,10 @@ A plain-text companion to the essay at https://informatico.ai/architecture/a01/ 
 `H = qL² / (8f) · |e| ≤ t/6`
 
 ## Rules the essay derives
-1. Horizontal Thrust: H = q * L^2 / (8 * f) under uniform line load q across span L and rise f.
-2. Thrust-line check: compute the geometric factor SF = t / (2 * |e|). SF >= 3 means the thrust line is inside the middle third (|e| <= t / 6); SF = 1 means it has reached the edge, where a hinge can form. Report this as a model result, not as proof of safety.
-3. 1:5 Springer Thermal Node: check T_si > T_dew and the temperature factor f_Rsi = (T_si - T_e) / (T_i - T_e) defined in ISO 13788. The target f_Rsi >= 0.70 is this folio's own choice, not a requirement of the standard; state T_i, T_e and humidity with every result.
+1. Scope: this skill explains a teaching model. It is not a design method, and none of its numbers may be used on a real structure.
+2. Horizontal Thrust: H = q * L^2 / (8 * f) under uniform line load q across span L and rise f.
+3. Thrust-line check: compute the geometric factor SF = t / (2 * |e|). SF >= 3 means the thrust line is inside the middle third (|e| <= t / 6); SF = 1 means it has reached the edge, where a hinge can form. Report this as a model result, not as proof of safety.
+4. 1:5 Springer Thermal Node: check T_si > T_dew and the temperature factor f_Rsi = (T_si - T_e) / (T_i - T_e) defined in ISO 13788. The target f_Rsi >= 0.70 is this folio's own choice, not a requirement of the standard; state T_i, T_e and humidity with every result.
 
 ## How it works, in four stages
 - Stage 1 (Dead-Load Catenary): Under self-weight, the inverted catenary thrust line follows the center line of the vault (e = 0 mm).

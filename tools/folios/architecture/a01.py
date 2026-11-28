@@ -36,12 +36,13 @@ FOLIO = {'folio_id': 'A.01',
                 'body': 'Illustrative specification for a load-bearing thermal-break pad under a masonry vault springer. The compressive design resistance σ_Rd = 45 MPa and thermal conductivity λ = 0.19 W/(m·K) are design assumptions, not data from a tested product; ordinary concrete conducts heat several times better than this.',
                 'meta': 'Design sketch only · no BIM or CAD files are published · not tested or certified to any standard'},
  'sidenote_1': {'kicker': "SIDENOTE A.01 · HEYMAN'S SAFE THEOREM (1966)",
-                'body': 'Jacques Heyman (1966, DOI 10.1016/0020-7683(66)90018-7) applied plastic theory to masonry: if any thrust line in equilibrium with the loads can be found that lies wholly within the masonry, the structure is safe. The middle-third rule |e| ≤ t/6 is an older and stricter condition that keeps the whole joint in compression; this folio uses it as its design target.'},
+                'body': 'Jacques Heyman (1966, DOI 10.1016/0020-7683(66)90018-7) applied plastic theory to masonry: if any thrust line in equilibrium with the loads can be found that lies wholly within the masonry, the structure is safe. The middle-third rule |e| ≤ t/6 is an older and stricter condition that keeps the whole joint in compression; this folio uses it as its model target.'},
  'skill': {'filename': 'tectonic-funicular-envelope-SKILL.md',
            'name': 'tectonic-funicular-envelope',
-           'description': 'AI-agnostic architectural and structural engineering skill for funicular vault graphic '
-                          'statics (middle-third rule |e| <= t/6 as a design target) and a 1:5 thermal-break node check.',
-           'rules': ['Horizontal Thrust: H = q * L^2 / (8 * f) under uniform line load q across span L and rise f.',
+           'description': 'AI-agnostic teaching skill for funicular vault graphic statics (middle-third rule '
+                          '|e| <= t/6 as the model target) and an illustrative 1:5 thermal-break node. Not a design method.',
+           'rules': ['Scope: this skill explains a teaching model. It is not a design method, and none of its numbers may be used on a real structure.',
+                     'Horizontal Thrust: H = q * L^2 / (8 * f) under uniform line load q across span L and rise f.',
                      'Thrust-line check: compute the geometric factor SF = t / (2 * |e|). SF >= 3 means the thrust line is inside the middle third (|e| <= t / 6); SF = 1 means it has reached the edge, where a hinge can form. Report this as a model result, not as proof of safety.',
                      '1:5 Springer Thermal Node: check T_si > T_dew and the temperature factor f_Rsi = (T_si - T_e) / (T_i - T_e) defined in ISO 13788. The target f_Rsi >= 0.70 is this folio\'s own choice, not a requirement of the standard; state T_i, T_e and humidity with every result.']},
  'revisions': [{'edition': 'REV 1.4',
@@ -96,19 +97,16 @@ FOLIO = {'folio_id': 'A.01',
               'unit': ' m'}]}
 
 LONGFORM_DATA = {'reading_time': '22 MIN READ',
- 'history_lead': "In the 1670s, London was rebuilding after the Great Fire. Work on St Paul's Cathedral began in 1675. Robert Hooke, who worked alongside Christopher Wren on the rebuilding, printed a Latin anagram at the end of A Description of Helioscopes. Its solution was published after his death in 1705: an inverted flexible hanging line gives the shape of a standing rigid arch. A hanging chain carries its weight in pure tension; invert that curve in stone, and the blocks carry weight in pure compression.",
- 'history_body': "Two centuries after Hooke, Karl Culmann, James Clerk Maxwell (1864, DOI 10.1080/14786446408643663), and Luigi Cremona developed graphic statics. A drawing of a structure's form pairs with a reciprocal diagram of its forces, so forces can be read directly with a ruler. Between 1898 and 1908 Antoni Gaudí built a hanging model of weighted cords for the church of the Colònia Güell. In 1966, Jacques Heyman applied plastic limit analysis in The Stone Skeleton (DOI 10.1016/0020-7683(66)90018-7). He later expanded the paper into a book (DOI 10.1017/CBO9781107050310). Assuming masonry has no tensile strength, effectively unlimited compressive strength, and does not slide, a vault is safe if an equilibrium thrust line lies wholly inside the stone. Three-dimensional graphic statics extends these methods to shells (Akbarzadeh, Van Mele, and Block 2015, DOI 10.1016/j.cad.2015.01.006). Open libraries such as compas-dev/compas (https://github.com/compas-dev/compas) build on this framework. This folio does not run those tools; its numbers come from the two formulas shown.",
+ 'history_lead': "In the 1670s, Robert Hooke printed a Latin anagram at the end of A Description of Helioscopes. Its solution was published after his death in 1705: an inverted flexible hanging line gives the shape of a standing rigid arch. A hanging chain carries its weight in pure tension; invert that curve in stone, and the blocks carry weight in pure compression. This folio explains that idea with a teaching model. It is an explanation, not a design method, and none of its numbers may be used on a real structure.",
+ 'history_body': "Two centuries after Hooke, James Clerk Maxwell published On reciprocal figures and diagrams of forces (1864, DOI 10.1080/14786446408643663), pairing a drawing of a structure's form with a diagram of its forces. In 1966, Jacques Heyman applied plastic limit analysis in The Stone Skeleton (DOI 10.1016/0020-7683(66)90018-7). He later expanded the paper into a book (DOI 10.1017/CBO9781107050310). Assuming masonry has no tensile strength, effectively unlimited compressive strength, and does not slide, a vault is safe if an equilibrium thrust line lies wholly inside the stone. Three-dimensional graphic statics extends these methods to shells (Akbarzadeh, Van Mele, and Block 2015, DOI 10.1016/j.cad.2015.01.006). Open libraries such as compas-dev/compas (https://github.com/compas-dev/compas) build on this framework. This folio does not run those tools; its numbers come from the two formulas shown.",
  'pullquote': 'As hangs the flexible line, so but inverted will stand the rigid arch.',
  'pullquote_cite': 'Robert Hooke, anagram printed in A Description of Helioscopes (1670s); solution published 1705 (English translation of the Latin)',
  'chronology': [('1675',
                  'Robert Hooke',
                  'States, as an anagram, that a hanging chain turned upside down gives the shape of a standing arch; the solution is published in 1705.'),
-                ('1864–1872',
-                 'Maxwell, Culmann & Cremona',
-                 'Develop reciprocal form-and-force diagrams, the basis of graphic statics.'),
-                ('1898–1908',
-                 'Antoni Gaudí',
-                 'Builds a hanging model of weighted cords for the church of the Colònia Güell near Barcelona.'),
+                ('1864',
+                 'James Clerk Maxwell',
+                 "Publishes 'On reciprocal figures and diagrams of forces' (DOI 10.1080/14786446408643663)."),
                 ('1966',
                  'Jacques Heyman',
                  "Publishes 'The Stone Skeleton' (DOI 10.1016/0020-7683(66)90018-7), applying the safe theorem of plastic theory to masonry: a thrust line within the masonry is enough."),
@@ -120,7 +118,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    '(eccentricity |e| <= t/6, or +/-100 mm inside a 600 mm vault), the entire thickness remains in '
                    'compression. When |e| exceeds t/6, the opposite face tries to go into tension; because dry '
                    'joints cannot pull, the joint starts to open there. A full hinge forms once the thrust line reaches the edge, and four hinges turn the arch into a collapse mechanism. Meanwhile, at the 1:5 abutment support where that 216 kN horizontal thrust '
-                   'meets the foundation, the folio assumes a load-bearing thermal break that keeps the interior surface at 16.34 °C, which is 7.08 °C above the 9.26 °C dew point of room air at 20 °C and 50% relative humidity. The surface temperature is an illustrative value: the outdoor temperature and the node geometry that would produce it are not stated, and no ISO 10211 calculation was run.',
+                   'meets the foundation, the folio assumes a load-bearing thermal break that keeps the interior surface at 16.4 °C, which is 7.1 °C above the 9.3 °C dew point of room air at 20 °C and 50% relative humidity. The surface temperature is an illustrative value: the outdoor temperature and the node geometry that would produce it are not stated, and no ISO 10211 calculation was run.',
  'walkthrough': ['Experiment 1 (Scrub Crown Rise & Watch the Maxwell-Cremona Force Dual): Drag the Crown Rise slider '
                  '(f) between 2.5 m and 6.5 m. Watch both the 1:50 arch profile and the reciprocal pole O in the '
                  'Maxwell-Cremona force polygon shift live as horizontal thrust H = qL^2/(8f) changes.',
@@ -128,7 +126,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                  'Eccentricity slider past 100 mm (t/6). Watch the readout change once the thrust line leaves the middle third; in the model this is where a joint would start to open.',
                  'Experiment 3 (Switch Between 1:50 Macro & 1:5 Nodal Scales): Click Stages 1 -> 4 in the stepper '
                  'above to inspect the Glaser vapor-pressure profile and CSI 07 27 00 thermal-break assembly.'],
- 'human_ai_shift': 'Finite-element software often shows force flow only as color maps. Graphic statics gives a direct link: change the geometry and the force diagram updates with it. A designer, with or without an AI assistant, could use tools such as compas-dev/compas (https://github.com/compas-dev/compas). That library draws on three-dimensional graphic statics (DOI 10.1016/j.cad.2015.01.006). Pairing geometry with a thermal model in FEniCS/dolfinx (DOI 10.1145/3524456) could screen shell shapes. The goal is keeping the geometric factor at 3 or more while inside surfaces stay above the dew point. This is a workflow proposal; the folio did not run these tools.',
+ 'human_ai_shift': 'Finite-element software often shows force flow only as color maps. Graphic statics gives a direct link: change the geometry and the force diagram updates with it. A designer, with or without an AI assistant, could use tools such as compas-dev/compas (https://github.com/compas-dev/compas). That library draws on three-dimensional graphic statics (DOI 10.1016/j.cad.2015.01.006). Pairing geometry with a thermal model in FEniCS/dolfinx (DOI 10.1145/3524456) could compare shell shapes. The goal is keeping the geometric factor at 3 or more while inside surfaces stay above the dew point. This is a workflow proposal; the folio did not run these tools.',
  'sources': ['Hooke, R. (1676). A Description of Helioscopes, and Some Other Instruments. London. (Contains the arch anagram; the solution was published in 1705.)',
              'Maxwell, J. C. (1864). On reciprocal figures and diagrams of forces. Philosophical Magazine, 27(182), '
              '250–261. DOI: 10.1080/14786446408643663.',
@@ -170,17 +168,17 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
            'retracted': False,
            'summary': 'Scite index entry for Heyman, The Stone Skeleton (DOI 10.1017/CBO9781107050310), checked 2026-11-08: 484 citing publications (7 supporting, 282 mentioning, 0 contrasting) and no retraction notice. The book is about masonry structures; it says nothing about the thermal node.'},
  'word_count': '4,650 WORDS',
- 'act1_dropcap': "In the 1670s, London was rebuilding after the Great Fire. Work on St Paul's Cathedral began in 1675. Robert Hooke, who worked alongside Christopher Wren on the rebuilding, printed a Latin anagram at the end of A Description of Helioscopes. Its solution was published after his death in 1705: an inverted flexible hanging line gives the shape of a standing rigid arch. A hanging chain carries its weight in pure tension; invert that curve in stone, and the blocks carry weight in pure compression.",
+ 'act1_dropcap': "In the 1670s, Robert Hooke printed a Latin anagram at the end of A Description of Helioscopes. Its solution was published after his death in 1705: an inverted flexible hanging line gives the shape of a standing rigid arch. A hanging chain carries its weight in pure tension; invert that curve in stone, and the blocks carry weight in pure compression. This folio explains that idea with a teaching model. It is an explanation, not a design method, and none of its numbers may be used on a real structure.",
  'act1_plain_bridge': 'To picture how an arch stands, lean two heavy hardback books together on a smooth wooden '
                       'table. When they lean steeply, their tops press tightly together and hold. Spread their bottoms '
                       'too far apart, and the outward push slides both books flat. Stone and brick resist squeezing '
                       'well, yet they cannot handle being pulled apart. Without steel ties, the line of squeezing '
                       'force must stay inside the middle third of each block so the whole joint stays compressed. If '
                       'that line drifts past the middle third, the far face begins to open. A full hinge forms only '
-                      'when thrust reaches the outer edge, and four hinges allow the arch to fold. At the cold base '
-                      'of the wall, builders also check the inside surface temperature. Keeping that surface warmer '
-                      'than the room dew point prevents indoor moisture from condensing on the stone.',
- 'act1_body': "Two centuries after Hooke, Karl Culmann, James Clerk Maxwell (1864, DOI 10.1080/14786446408643663), and Luigi Cremona developed graphic statics. A drawing of a structure's form pairs with a reciprocal diagram of its forces, so forces can be read directly with a ruler. Between 1898 and 1908 Antoni Gaudí built a hanging model of weighted cords for the church of the Colònia Güell. In 1966, Jacques Heyman applied plastic limit analysis in The Stone Skeleton (DOI 10.1016/0020-7683(66)90018-7). He later expanded the paper into a book (DOI 10.1017/CBO9781107050310). Assuming masonry has no tensile strength, effectively unlimited compressive strength, and does not slide, a vault is safe if an equilibrium thrust line lies wholly inside the stone. Three-dimensional graphic statics extends these methods to shells (Akbarzadeh, Van Mele, and Block 2015, DOI 10.1016/j.cad.2015.01.006). Open libraries such as compas-dev/compas (https://github.com/compas-dev/compas) build on this framework. This folio does not run those tools; its numbers come from the two formulas shown.",
+                      'when thrust reaches the outer edge, and four hinges allow the arch to fold. The folio also '
+                      'models one cold spot at the base of the wall: if an inside surface is colder than the room '
+                      'dew point, moisture can condense on it.',
+ 'act1_body': "Two centuries after Hooke, James Clerk Maxwell published On reciprocal figures and diagrams of forces (1864, DOI 10.1080/14786446408643663), pairing a drawing of a structure's form with a diagram of its forces. In 1966, Jacques Heyman applied plastic limit analysis in The Stone Skeleton (DOI 10.1016/0020-7683(66)90018-7). He later expanded the paper into a book (DOI 10.1017/CBO9781107050310). Assuming masonry has no tensile strength, effectively unlimited compressive strength, and does not slide, a vault is safe if an equilibrium thrust line lies wholly inside the stone. Three-dimensional graphic statics extends these methods to shells (Akbarzadeh, Van Mele, and Block 2015, DOI 10.1016/j.cad.2015.01.006). Open libraries such as compas-dev/compas (https://github.com/compas-dev/compas) build on this framework. This folio does not run those tools; its numbers come from the two formulas shown.",
  'act1_stakes': 'Empirical rules of thumb assume fixed geometry and steady boundary conditions. If abutments '
                 'spread or uneven loads push the thrust line outside the middle third, dry joints begin to open. A '
                 'hinge forms only when thrust reaches the masonry edge (|e| = t/2), and four hinges make a collapse '
@@ -214,7 +212,7 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'toward the extrados at the quarter-span. If an abutment spreads outward, the crown drops and pushes '
                    'the thrust line toward the intrados. At the 1:5 abutment node, compressive thrust must pass through '
                    'a load-bearing thermal break. Ordinary insulation crushes under high thrust. The folio assumes a '
-                   'load-bearing pad as a design target, not a tested product. It is meant to carry thrust while '
+                   'load-bearing pad as a model assumption, not a tested product. It is meant to carry thrust while '
                    'keeping the inside surface above the dew point.',
  'act4_deepening': 'What follows is a proposal, not a description of current practice. Rather than running '
                    'finite-element analysis only as a late check, a generative workflow could enforce the middle-third '
@@ -223,12 +221,12 @@ LONGFORM_DATA = {'reading_time': '22 MIN READ',
                    'and filters out forms requiring oversized abutments. At the small scale, ISO 10211 and ISO 13788 '
                    'methods could evaluate cold-spot temperatures for 1:5 nodes to reduce condensation risk. Separate '
                    'checks would address structural bearing stiffness.',
- 'act4_human_ai': 'Finite-element software often shows force flow only as color maps. Graphic statics gives a direct link: change the geometry and the force diagram updates with it. A designer, with or without an AI assistant, could use tools such as compas-dev/compas (https://github.com/compas-dev/compas). That library draws on three-dimensional graphic statics (DOI 10.1016/j.cad.2015.01.006). Pairing geometry with a thermal model in FEniCS/dolfinx (DOI 10.1145/3524456) could screen shell shapes. The goal is keeping the geometric factor at 3 or more while inside surfaces stay above the dew point. This is a workflow proposal; the folio did not run these tools.'}
+ 'act4_human_ai': 'Finite-element software often shows force flow only as color maps. Graphic statics gives a direct link: change the geometry and the force diagram updates with it. A designer, with or without an AI assistant, could use tools such as compas-dev/compas (https://github.com/compas-dev/compas). That library draws on three-dimensional graphic statics (DOI 10.1016/j.cad.2015.01.006). Pairing geometry with a thermal model in FEniCS/dolfinx (DOI 10.1145/3524456) could compare shell shapes. The goal is keeping the geometric factor at 3 or more while inside surfaces stay above the dew point. This is a workflow proposal; the folio did not run these tools.'}
 
-PLATE_CAPTION = {'alt': "Conceptual visualization imagining what Gaudi's hanging chain catenary model paired with Heyman's stone "
+PLATE_CAPTION = {'alt': "Conceptual visualization imagining what a hanging chain catenary model paired with a stone "
         'masonry funicular vault would look like (artistic impression, not a measured structure)',
  'caption': 'Conceptual Vision Plate A.01-V (Imagining What It Would Look Like) · Artistic architectural cutaway '
-            "imagining Antoni Gaudi's inverted catenary hanging-chain model suspended beneath an unreinforced "
+            "imagining an inverted catenary hanging-chain model suspended beneath an unreinforced "
             'limestone ashlar funicular vault.'}
 
 DISPATCH = {'kicker': 'FRONTIER TECTONIC DISPATCH · THRUST NETWORK ANALYSIS (TNA)',
@@ -241,16 +239,17 @@ META_3D = ('Heyman Biaxial Catenary Masonry Groin Vault',
 ES_TRANSLATION = {'title_es': 'Superficies Foniculares de Empuje, Duales de Maxwell–Cremona y Tectónica Nodal 1:5',
  'subtitle_es': 'Cómo una bóveda de piedra a compresión pura se sostiene cuando su línea de empuje queda dentro de la mampostería (teorema de seguridad de Heyman), revisada aquí con la regla clásica, más estricta, del tercio medio (|e| ≤ t/6), junto con un nodo de arranque ilustrativo a escala 1:5 cuya superficie interior se modela por encima del punto de rocío.',
  'why_es': 'Una cadena colgante adopta por gravedad una forma de tracción pura; al invertirla como un arco de '
-           'piedra (catenaria invertida de Hooke y Gaudí), toda la estructura trabaja en compresión pura sin doblarse.',
+           'piedra (catenaria invertida de Hooke), toda la estructura trabaja en compresión pura sin doblarse.',
  'plain_es': 'Para imaginar cómo se sostiene una bóveda de piedra, apoyen dos libros gruesos uno contra otro sobre '
              'una mesa lisa. Si se inclinan con suficiente altura, sus bordes superiores se presionan con firmeza y '
              'se mantienen en pie. Si separan las bases de más, el empuje hacia afuera los hace resbalar y caer. '
              'La piedra y el ladrillo resisten bien la compresión, pero no soportan que los estiren. Sin tirantes de '
              'acero, la línea de compresión debe quedar en el tercio central de cada bloque para mantener toda la '
              'junta comprimida. Si sale del tercio medio, la cara opuesta empieza a abrirse. Una rótula se forma '
-             'solo al llegar al borde exterior, y cuatro rótulas permiten que el arco se pliegue. En el arranque frío '
-             'del muro, también se revisa la temperatura superficial interior. Mantenerla por encima del punto de '
-             'rocío evita que la humedad interior se condense sobre la piedra.',
+             'solo al llegar al borde exterior, y cuatro rótulas permiten que el arco se pliegue. El folio también '
+             'modela un punto frío en la base del muro: si una superficie interior está más fría que el punto de '
+             'rocío del cuarto, la humedad puede condensarse sobre ella. Este folio es una explicación, no un método '
+             'de diseño, y ninguno de sus números debe usarse en una estructura real.',
  'deep_es': 'El equilibrio de la bóveda acopla la altura del arco en la clave con la excentricidad de las cargas '
             'asimétricas. Un arco más tendido genera mayor empuje horizontal en los estribos. Elevar la flecha '
             'dirige el peso de forma más vertical hacia los cimientos. El teorema de seguridad de Heyman indica que la '
