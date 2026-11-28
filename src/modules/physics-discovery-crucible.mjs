@@ -647,7 +647,7 @@ function bindBountyWorkbench(wb) {
 }
 
 export function initPhysicsDiscoveryCrucible(scope = document) {
-  // Feature 0: Open-Bounty Crucible category filter bar on cover & /bounties/
+  // Feature 0: Open-Bounty Crucible category filter bar on /bounties/
   const crucible = scope.querySelector("#tp-bounty-crucible");
   if (crucible && crucible.dataset.bound !== "true") {
     crucible.dataset.bound = "true";

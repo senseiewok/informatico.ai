@@ -2465,14 +2465,39 @@ def _png_sha8(name: str) -> str:
     return hashlib.sha256(p.read_bytes()).hexdigest()[:8] if p.is_file() else "00000000"
 
 
-def render_timegravity_series_rack(rel_res: str) -> str:
-    """The Time & Gravity series as a rack of fourteen plate cards on /physics/, one per step, in reading order."""
-    cards = []
+# Spelled-out counts for copy that names a number in words. A count outside the table stops the build, so a
+# sentence can never keep saying "fourteen" after the series grows or shrinks.
+_NUMBER_WORDS: dict[int, tuple[str, str]] = {
+    6: ("six", "seis"), 7: ("seven", "siete"), 8: ("eight", "ocho"), 9: ("nine", "nueve"), 10: ("ten", "diez"),
+    11: ("eleven", "once"), 12: ("twelve", "doce"), 13: ("thirteen", "trece"), 14: ("fourteen", "catorce"),
+    15: ("fifteen", "quince"), 16: ("sixteen", "dieciséis"),
+}
+
+
+def _number_words(n: int) -> tuple[str, str]:
+    """(English, Spanish) words for a count, or a build failure when the table has no entry for it."""
+    if n not in _NUMBER_WORDS:
+        raise ValueError(f"no spelled-out word for {n}; add it to _NUMBER_WORDS")
+    return _NUMBER_WORDS[n]
+
+
+def _tg_series_steps() -> list[dict]:
+    """The Time & Gravity pages in reading order (which is not code order: T.02 precedes T.01). Its length is
+    the one step count every sentence, kicker and card about the series uses."""
     by_code = {p["code"]: p for p in TIMEGRAVITY_PAGES}
-    for i, m in enumerate(TIMEGRAVITY_TRACK_MAP, 1):  # reading order, which is not code order (T.02 precedes T.01)
-        tg = by_code.get(m["code"])
-        if tg is None:
-            continue
+    return [by_code[m["code"]] for m in TIMEGRAVITY_TRACK_MAP if m["code"] in by_code]
+
+
+def _tg_steps() -> int:
+    return len(_tg_series_steps())
+
+
+def render_timegravity_series_rack(rel_res: str) -> str:
+    """The Time & Gravity series as a rack of plate cards on /physics/, one per step, in reading order."""
+    cards = []
+    series = _tg_series_steps()
+    steps = len(series)
+    for i, tg in enumerate(series, 1):
         slug = tg["slug"]
         plate = slug or "t00"
         href = _href(rel_res, "timegravity/" + (f"{slug}/" if slug else ""))
@@ -2481,28 +2506,32 @@ def render_timegravity_series_rack(rel_res: str) -> str:
         cards.append(
             f"""        <a class="tp-rack-card tp-rack-card-series" href="{href}" data-folio-slug="{esc(plate)}" data-series-step="{i}">
           <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb tp-rack-thumb-series" src="{_href(rel_res, 'plates/' + plate + '.png')}?v={_png_sha8(plate)}" width="1200" height="630" loading="lazy" decoding="async" alt="{esc('Plate for ' + tg['code'] + ' · ' + title_en)}"></span>
-          <span class="tp-rack-top"><span class="tp-rack-id" data-en="Step {i} of 14 · {esc(tg['code'])}" data-es="Paso {i} de 14 · {esc(tg['code'])}">Step {i} of 14 · {esc(tg['code'])}</span><span class="tp-rack-badge" data-en="{esc(tg['reading_time_en'])}" data-es="{esc(tg['reading_time_es'])}">{esc(tg['reading_time_en'])}</span></span>
+          <span class="tp-rack-top"><span class="tp-rack-id" data-en="Step {i} of {steps} · {esc(tg['code'])}" data-es="Paso {i} de {steps} · {esc(tg['code'])}">Step {i} of {steps} · {esc(tg['code'])}</span><span class="tp-rack-badge" data-en="{esc(tg['reading_time_en'])}" data-es="{esc(tg['reading_time_es'])}">{esc(tg['reading_time_en'])}</span></span>
           <strong class="tp-rack-title" data-en="{esc(title_en)}" data-es="{esc(title_es)}">{esc(title_en)}</strong>
           <span class="tp-rack-dek" data-en="{esc(d_en)}" data-es="{esc(d_es)}">{esc(d_en)}</span>
         </a>"""
         )
     cards_html = "\n".join(cards)
     hub_href = _href(rel_res, "timegravity/")
-    step2_href = _href(rel_res, "timegravity/t02/")
-    steps = len(cards)
+    # The second call to action opens the first essay after the series index, whichever page that is.
+    first_no, first = next((i, tg) for i, tg in enumerate(series, 1) if tg["slug"])
+    first_href = _href(rel_res, f"timegravity/{first['slug']}/")
+    begin_en = f"Begin Step {first_no} · {first['title_en']} →"
+    begin_es = f"Empieza en el paso {first_no} · {first['title_es']} →"
+    word_en, word_es = _number_words(steps)
     rows = _tg_ledger_rows()  # counted from timegravity/ledger.json at build time, so the sentence cannot go stale
     name_en, name_es = COVER_SECTION_NAMES["timegravity"]
     stand_en = (
-        "A guided fourteen-step inquiry from optical clocks and sub-millimetre torsion balances to GW250114 black-hole ringdown, "
+        f"A guided {word_en}-step inquiry from optical clocks and sub-millimetre torsion balances to GW250114 black-hole ringdown, "
         "electromagnetic pointer selection, dark-sector clock networks, and Weinberg soft-graviton Ward identities—where every page ends "
         "with the open question the next one takes up, and six strict evidence labels (including DERIVED (NOT MEASURED)) hold every claim "
         f"to a {rows}-row offline ledger."
     )
     stand_es = (
-        "Una investigación guiada de catorce pasos desde relojes ópticos y balanzas de torsión submilimétricas hasta el ringdown de agujeros "
+        f"Una investigación guiada de {word_es} pasos desde relojes ópticos y balanzas de torsión submilimétricas hasta el ringdown de agujeros "
         "negros GW250114, la selección electromagnética de estados puntero, las redes de relojes del sector oscuro y las identidades de "
-        "gravitones blandos de Weinberg, donde cada página cierra con la pregunta abierta que retoma la siguiente y seis etiquetas de evidencia "
-        f"(incluida DERIVADO (NO MEDIDO)) sostienen cada afirmación frente a un libro de {rows} filas."
+        "gravitones blandos de Weinberg, donde cada página cierra con la pregunta abierta que retoma la siguiente y seis etiquetas estrictas "
+        f"de evidencia (incluida DERIVADO (NO MEDIDO)) sostienen cada afirmación frente a un registro fuera de línea de {rows} filas."
     )
     return f"""
     <section class="tp-issue-rack tp-series-rack tp-series-rack-lead" aria-labelledby="timegravity-series-heading" id="timegravity-series">
@@ -2510,8 +2539,8 @@ def render_timegravity_series_rack(rel_res: str) -> str:
       <h2 id="timegravity-series-heading" class="tp-h2"><a href="{hub_href}" data-en="{esc(name_en)}" data-es="{esc(name_es)}">{esc(name_en)}</a></h2>
       <p class="tp-standfirst" data-en="{esc(stand_en)}" data-es="{esc(stand_es)}">{esc(stand_en)}</p>
       <div class="tp-series-rack-ctas">
-        <a class="tp-cta tp-cta-primary" href="{hub_href}" data-en="Enter the Series Hub →" data-es="Entrar al Inicio de la Serie →">Enter the Series Hub →</a>
-        <a class="tp-cta" href="{step2_href}" data-en="Begin Step 2 · Everyone Moves at One Rate →" data-es="Empezar Paso 2 · Todos Avanzamos a un Mismo Ritmo →">Begin Step 2 · Everyone Moves at One Rate →</a>
+        <a class="tp-cta tp-cta-primary" href="{hub_href}" data-en="Enter the Series Hub →" data-es="Ir al índice de la serie →">Enter the Series Hub →</a>
+        <a class="tp-cta" href="{first_href}" data-en="{esc(begin_en)}" data-es="{esc(begin_es)}">{esc(begin_en)}</a>
       </div>
       <div class="tp-rack-grid">
 {cards_html}
@@ -2625,7 +2654,7 @@ def render_pillar_hub(pillar: str, folios: list[dict], catalog: dict, lang: str 
                                               image=image, crumbs=crumbs), lang)
     cards = render_rack_cards(pillar, folios, "./", "../plates/", eager=len(folios))
     n = len(folios)
-    steps = len(TIMEGRAVITY_PAGES)
+    steps = _tg_steps()
     if pillar == "physics":
         lead_series = render_timegravity_series_rack(rel_res) + render_cross_scale_essays_showcase(rel_res, lang)
     elif pillar == "architecture":
@@ -2756,7 +2785,7 @@ def render_bounty_crucible_section(rel_res: str = ".") -> str:
       <div class="tp-bounty-header">
         <p class="tp-kicker" data-en="Special Feature · 6 Grand-Challenge &amp; Open-Problem Folios (B.01–B.06)" data-es="Especial · 6 Folios de Grandes Retos y Problemas Abiertos (B.01–B.06)">Special Feature · 6 Grand-Challenge &amp; Open-Problem Folios (B.01–B.06)</p>
         <h2 id="bounty-crucible-heading" class="tp-h2"><a href="{bounties_hub_href}" data-en="Grand Challenges &amp; Open Problems: Six Essays, Each with a Model to Try and Code You Can Rerun" data-es="Grandes Retos y Problemas Abiertos: Seis Ensayos, Cada Uno con un Modelo para Probar y Código que Puedes Volver a Ejecutar">Grand Challenges &amp; Open Problems: Six Essays, Each with a Model to Try and Code You Can Rerun</a></h2>
-        <p class="tp-standfirst" data-en="Checked on 2026-11-15 against the competitions' current notices: six dedicated Folios (B.01–B.06 at /bounties/b01/ through /bounties/b06/) track which avenues remain active (Erdős Problem #30, Unitary Foundation rolling microgrants and Metriq, and PhysLean PRs) alongside concluded milestones (AIMO closed Sept 2026, XPRIZE Carbon 2025, Holcim 2025, Global Cooling 2021), each paired with a live counterfactual workbench and zero-dependency Python verifier." data-es="Revisado el 2026-11-15 frente a convocatorias vigentes: seis Folios (B.01–B.06 en /bounties/b01/ a /bounties/b06/) distinguen vías activas (Erdős #30, microbecas Unitary y Metriq, y PRs en PhysLean) de certámenes concluidos (AIMO en sept. 2026, XPRIZE Carbon 2025, Holcim 2025, Cooling Prize 2021), con laboratorio contrafactual y script en Python.">Checked on 2026-11-15 against the competitions' current notices: six dedicated Folios (B.01–B.06 at /bounties/b01/ through /bounties/b06/) track which avenues remain active (Erdős Problem #30, Unitary Foundation rolling microgrants and Metriq, and PhysLean PRs) alongside concluded milestones (AIMO closed Sept 2026, XPRIZE Carbon 2025, Holcim 2025, Global Cooling 2021), each paired with a live counterfactual workbench and zero-dependency Python verifier.</p>
+        <p class="tp-standfirst" data-en="Checked on 2026-11-15 against the competitions' current notices: six dedicated Folios (B.01–B.06 at /bounties/b01/ through /bounties/b06/) track which avenues remain active (Erdős Problem #30, Unitary Foundation rolling microgrants and Metriq, and PhysLean PRs) alongside concluded milestones (AIMO closed Sept 2026, XPRIZE Carbon 2025, Holcim 2025, Global Cooling 2021), each paired with a live counterfactual workbench and zero-dependency Python verifier." data-es="Revisado el 2026-11-15 contra los avisos vigentes de cada certamen: seis Folios dedicados (B.01–B.06 en /es-mx/bounties/b01/ a /es-mx/bounties/b06/) distinguen las vías que siguen activas (el Problema #30 de Erdős, las microbecas continuas de Unitary Foundation y Metriq, y los PR en PhysLean) de los hitos concluidos (AIMO cerró en sept. de 2026, XPRIZE Carbon 2025, Holcim 2025, Global Cooling 2021), cada uno con un laboratorio contrafactual en vivo y un verificador en Python sin dependencias.">Checked on 2026-11-15 against the competitions' current notices: six dedicated Folios (B.01–B.06 at /bounties/b01/ through /bounties/b06/) track which avenues remain active (Erdős Problem #30, Unitary Foundation rolling microgrants and Metriq, and PhysLean PRs) alongside concluded milestones (AIMO closed Sept 2026, XPRIZE Carbon 2025, Holcim 2025, Global Cooling 2021), each paired with a live counterfactual workbench and zero-dependency Python verifier.</p>
       </div>
 
       {bounty_boundary_html()}
@@ -3347,12 +3376,11 @@ def render_bounties_hub(catalog: dict, lang: str = "en") -> str:
     for i, b in enumerate(BOUNTY_FOLIOS):
         slug = b["slug"]
         fid = b["folio_id"]
-        bid = b["bounty_id"]
         loading = "eager" if i < 6 else "lazy"
         plate_slug = b["plate_slug"]
         rt_en = b.get("reading_time", "15 MIN READ").lower().replace("min read", "min read")
         rt_es = rt_en.replace("min read", "min de lectura")
-        # The code and bounty id stay in the card's small grey meta line (tp-rack-id), not at the head of the title.
+        # Only the short code (B.01) shows, in the card's small grey meta line (tp-rack-id), as on the section hubs.
         t_card_en = b["title"]
         t_card_es = b["title_es"]
         dek_en = b["subtitle"]
@@ -3361,7 +3389,7 @@ def render_bounties_hub(catalog: dict, lang: str = "en") -> str:
         rack_cards.append(
             f"""        <a class="tp-rack-card" href="./{slug}/" data-folio-slug="{esc(slug)}">
           <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb" src="{plate_src('../plates/', plate_slug)}" width="640" height="360" loading="{loading}" decoding="async" alt="{esc(alt)}"></span>
-          <span class="tp-rack-top"><span class="tp-rack-id">{esc(fid)} · {esc(bid)}</span><span class="tp-rack-badge" data-en="{esc(rt_en)}" data-es="{esc(rt_es)}">{esc(rt_en)}</span></span>
+          <span class="tp-rack-top"><span class="tp-rack-id">{esc(fid)}</span><span class="tp-rack-badge" data-en="{esc(rt_en)}" data-es="{esc(rt_es)}">{esc(rt_en)}</span></span>
           <strong class="tp-rack-title" data-en="{esc(t_card_en)}" data-es="{esc(t_card_es)}">{esc(t_card_en)}</strong>
           <span class="tp-rack-dek" data-en="{esc(dek_en)}" data-es="{esc(dek_es)}">{esc(dek_en)}</span>
         </a>"""
@@ -3383,6 +3411,14 @@ def render_bounties_hub(catalog: dict, lang: str = "en") -> str:
       <p class="tp-kicker" data-en="Grand Challenges &amp; Open Problems · 6 Dedicated Folios (B.01–B.06)" data-es="Grandes Retos y Problemas Abiertos · 6 Folios Dedicados (B.01–B.06)">Grand Challenges &amp; Open Problems · 6 Dedicated Folios (B.01–B.06)</p>
       <h1 id="pillar-heading" class="tp-h1" data-en="{esc(title_en)}" data-es="{esc(title_es)}">{esc(title_en)}</h1>
       <p class="tp-standfirst" data-en="{esc(hook_en)}" data-es="{esc(hook_es)}">{esc(hook_en)}</p>
+    </section>
+    <section class="tp-issue-rack" aria-label="6 Open-Bounty Folios">
+      <div class="tp-rack-grid">
+{cards_html}
+      </div>
+    </section>
+    <section class="tp-builders-box" aria-labelledby="builders-heading">
+      <h2 id="builders-heading" class="tp-h2" data-en="For builders: run the examples yourself" data-es="Para quienes programan: corre los ejemplos tú mismo">For builders: run the examples yourself</h2>
       <div class="tp-studio-quickstart" role="region" aria-label="30-Second Bounty Quick-Start Guide">
         <div class="tp-studio-quickstart-head">
           <span class="tp-studio-quickstart-badge" data-en="⚡ 30-SECOND BOUNTY QUICK-START · WORKED EXAMPLES &amp; PYTHON HARNESSES" data-es="⚡ GUÍA RÁPIDA DE 30 SEGUNDOS · EJEMPLOS DESARROLLADOS Y CÓDIGO PYTHON">⚡ 30-SECOND BOUNTY QUICK-START · WORKED EXAMPLES &amp; PYTHON HARNESSES</span>
@@ -3391,25 +3427,20 @@ def render_bounties_hub(catalog: dict, lang: str = "en") -> str:
         <div class="tp-studio-steps-grid">
           <div class="tp-studio-step-card">
             <span class="tp-studio-step-num" data-en="Step 1 · Pick Any Prize Folio" data-es="Paso 1 · Elige un Folio de Premio">Step 1 · Pick Any Prize Folio</span>
-            <h2 class="tp-studio-step-title" data-en="Erdős · XPRIZE · Holcim · PhysLean" data-es="Erdős · XPRIZE · Holcim · PhysLean">Erdős · XPRIZE · Holcim · PhysLean</h2>
-            <p data-en="Open any of the 6 Bounty Folios (B.01–B.06) below to read the plain-language distillation, 4-stage proof derivation, and a link to each prize's own rules." data-es="Abre cualquiera de los 6 Folios de Retos (B.01–B.06) para leer la explicación accesible, la derivación en 4 etapas y las reglas del registro oficial.">Open any of the 6 Bounty Folios (B.01–B.06) below to read the plain-language distillation, 4-stage proof derivation, and a link to each prize's own rules.</p>
+            <h3 class="tp-studio-step-title" data-en="Erdős · XPRIZE · Holcim · PhysLean" data-es="Erdős · XPRIZE · Holcim · PhysLean">Erdős · XPRIZE · Holcim · PhysLean</h3>
+            <p data-en="Open any of the 6 Bounty Folios (B.01–B.06) above to read the plain-language distillation, 4-stage proof derivation, and a link to each prize's own rules." data-es="Abre cualquiera de los 6 Folios de Retos (B.01–B.06) para leer la explicación accesible, la derivación en 4 etapas y las reglas del registro oficial.">Open any of the 6 Bounty Folios (B.01–B.06) above to read the plain-language distillation, 4-stage proof derivation, and a link to each prize's own rules.</p>
           </div>
           <div class="tp-studio-step-card">
             <span class="tp-studio-step-num" data-en="Step 2 · Test the Counterfactual Workbench" data-es="Paso 2 · Prueba el Laboratorio Contrafactual">Step 2 · Test the Counterfactual Workbench</span>
-            <h2 class="tp-studio-step-title" data-en="Benchmark PASS vs. Axiom Knockout" data-es="Benchmark PASS vs. Supresión de Axioma">Benchmark PASS vs. Axiom Knockout</h2>
+            <h3 class="tp-studio-step-title" data-en="Benchmark PASS vs. Axiom Knockout" data-es="Benchmark PASS vs. Supresión de Axioma">Benchmark PASS vs. Axiom Knockout</h3>
             <p data-en="Drag the two state-space sliders or click Counterfactual Axiom-Knockout to see exactly why the full governing operator is necessary." data-es="Arrastra los dos deslizadores o activa la Supresión Contrafactual de Axiomas para comprobar por qué cada término de la ley gobernante es necesario.">Drag the two state-space sliders or click Counterfactual Axiom-Knockout to see exactly why the full governing operator is necessary.</p>
           </div>
           <div class="tp-studio-step-card">
             <span class="tp-studio-step-num" data-en="Step 3 · Run the Stdlib Python Verifier" data-es="Paso 3 · Ejecuta el Verificador en Python">Step 3 · Run the Stdlib Python Verifier</span>
-            <h2 class="tp-studio-step-title" data-en="Zero-Dependency Proof Script + SKILL.md" data-es="Script Reproducible + SKILL.md">Zero-Dependency Proof Script + SKILL.md</h2>
+            <h3 class="tp-studio-step-title" data-en="Zero-Dependency Proof Script + SKILL.md" data-es="Script Reproducible + SKILL.md">Zero-Dependency Proof Script + SKILL.md</h3>
             <p data-en="Run python bounties/run_all_bounties.py to execute all 6 proof harnesses in <1s, or download any Folio's proof harness and AI SKILL.md." data-es="Ejecuta python bounties/run_all_bounties.py para correr los 6 verificadores en <1s, o descarga el script de prueba y el SKILL.md de cada Folio.">Run <code>python bounties/run_all_bounties.py</code> to execute all 6 proof harnesses in &lt;1s, or download any Folio's proof harness and AI <code>SKILL.md</code>.</p>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="tp-issue-rack" aria-label="6 Open-Bounty Folios">
-      <div class="tp-rack-grid">
-{cards_html}
       </div>
     </section>
 {render_bounty_crucible_section(rel_res)}
@@ -4495,6 +4526,20 @@ def write_toolchain_skills_and_assets() -> None:
         )
 
 
+# The Toolbox section heading. It says only what holds for every CAD Folio (X.01 onward): each ships downloadable
+# files in open formats and one checking script (skills/toolchain/<slug>/verify_*.py) that checks that folio's
+# whole file set and must fail under a planted defect. It does not promise a separate check per file.
+# tests/test_magazine_cover.py holds the heading to the catalogue and to the scripts on disk.
+TOOLBOX_HEADING_EN = (
+    "Tech & Tools · The Toolbox: Downloadable STEP, 3MF, GLB & DXF Files, "
+    "a Checking Script for Each CAD Folio & Guides for Small Studios"
+)
+TOOLBOX_HEADING_ES = (
+    "Tecnología y Herramientas · La Caja de Herramientas: Archivos Descargables STEP, 3MF, GLB y DXF, "
+    "un Script de Revisión para Cada Folio CAD y Guías para Pequeños Despachos"
+)
+
+
 def render_toolchain_section(rel_res: str = ".", include_city_group: bool = True) -> str:
     """Render the Tech & Tools · The Toolbox (X.01–X.06) showcase section on the cover and hubs, with the City tools group below the CAD tools."""
     toolchain_hub_href = _href(rel_res, "toolchain/")
@@ -4545,15 +4590,15 @@ def render_toolchain_section(rel_res: str = ".", include_city_group: bool = True
     cards_joined = "\n\n".join(cards_html_list)
     return f"""    <section id="tp-toolchain-toolbox" class="tp-bounty-crucible" aria-labelledby="toolchain-toolbox-heading">
       <div class="tp-bounty-header">
-        <p class="tp-kicker" data-en="Special Feature · Tech &amp; Tools · The 3D CAD, Open BIM &amp; Small-Studio Toolbox (X.01–X.08)" data-es="Especial · Tecnología y Herramientas · Caja de Herramientas 3D, CAD Abierto y Pequeños Estudios (X.01–X.08)">Special Feature · Tech &amp; Tools · The 3D CAD, Open BIM &amp; Small-Studio Toolbox (X.01–X.08)</p>
-        <h2 id="toolchain-toolbox-heading" class="tp-h2"><a href="{toolchain_hub_href}" data-en="Tech &amp; Tools · The Toolbox: Downloadable STEP, 3MF, GLB &amp; DXF Files, a Check for Each File &amp; Guides for Small Studios" data-es="Tecnología y Herramientas · La Caja de Herramientas: Archivos STEP, 3MF, GLB y DXF, una Revisión para Cada Archivo y Guías para Pequeños Estudios">Tech &amp; Tools · The Toolbox: Downloadable STEP, 3MF, GLB &amp; DXF Files, a Check for Each File &amp; Guides for Small Studios</a></h2>
-        <p class="tp-standfirst" data-en="Eight dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.08 at /toolchain/x01/ through /toolchain/x08/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every CAD Folio ships the Python script that generates its files, downloadable neutral files (.glb, .step, .3mf, .dxf) with a list of checksums, a live 3D viewer in the browser, a checking script that must fail when a defect is planted, and a portable SKILL.md companion." data-es="Ocho Folios dedicados de CAD 3D, fabricación y herramientas abiertas (X.01–X.08 en /es-mx/toolchain/x01/ a /es-mx/toolchain/x08/) diseñados para empoderar a pequeños despachos de arquitectura, ingenieros independientes, físicos y makers matemáticos. Cada Folio CAD entrega el script de Python que genera sus archivos, archivos descargables (.glb, .step, .3mf, .dxf) con una lista de sumas de verificación, un visor 3D en el navegador, un script de revisión y su SKILL.md portátil.">Eight dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.08 at /toolchain/x01/ through /toolchain/x08/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every CAD Folio ships the Python script that generates its files, downloadable neutral files (.glb, .step, .3mf, .dxf) with a list of checksums, a live 3D viewer in the browser, a checking script that must fail when a defect is planted, and a portable SKILL.md companion.</p>
+        <p class="tp-kicker" data-en="Special Feature · Tech &amp; Tools · The 3D CAD, Open BIM &amp; Small-Studio Toolbox (X.01–X.08)" data-es="Especial · Tecnología y Herramientas · Caja de Herramientas 3D, CAD Abierto y Pequeños Despachos (X.01–X.08)">Special Feature · Tech &amp; Tools · The 3D CAD, Open BIM &amp; Small-Studio Toolbox (X.01–X.08)</p>
+        <h2 id="toolchain-toolbox-heading" class="tp-h2"><a href="{toolchain_hub_href}" data-en="{esc(TOOLBOX_HEADING_EN)}" data-es="{esc(TOOLBOX_HEADING_ES)}">{esc(TOOLBOX_HEADING_EN)}</a></h2>
+        <p class="tp-standfirst" data-en="Eight dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.08 at /toolchain/x01/ through /toolchain/x08/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every CAD Folio ships the Python script that generates its files, downloadable neutral files (.glb, .step, .3mf, .dxf) with a list of checksums, a live 3D viewer in the browser, a checking script that must fail when a defect is planted, and a portable SKILL.md companion." data-es="Ocho Folios dedicados de CAD 3D, fabricación y herramientas abiertas (X.01–X.08 en /es-mx/toolchain/x01/ a /es-mx/toolchain/x08/) diseñados para empoderar a pequeños despachos de arquitectura, ingenieros independientes, físicos y makers matemáticos. Cada Folio CAD incluye el script de Python que genera sus archivos, archivos neutros descargables (.glb, .step, .3mf, .dxf) con una lista de sumas de verificación, un visor 3D en vivo en el navegador, un script de revisión que debe fallar cuando se le introduce un defecto a propósito y su SKILL.md portátil.">Eight dedicated 3D CAD, fabrication, and open-tool Folios (X.01–X.08 at /toolchain/x01/ through /toolchain/x08/) built to empower small architecture studios, independent civil and mechanical engineers, physicists, and math makers. Every CAD Folio ships the Python script that generates its files, downloadable neutral files (.glb, .step, .3mf, .dxf) with a list of checksums, a live 3D viewer in the browser, a checking script that must fail when a defect is planted, and a portable SKILL.md companion.</p>
       </div>
 
       <div class="tp-toolchain-boundary-banner" role="note" aria-label="Educational Geometry Boundary">
         <strong data-en="Fixed Educational Artifact Boundary &middot; 100% Open-Source &amp; Sovereign International Standards" data-es="Frontera de Artefacto Educativo &middot; 100% Código Abierto y Estándares Internacionales Soberanos">Fixed Educational Artifact Boundary &middot; 100% Open-Source &amp; Sovereign International Standards</strong>
         <span data-en="{esc(BOUNDARY_EN)}" data-es="{esc(BOUNDARY_ES)}">{esc(BOUNDARY_EN)}</span>
-        <span data-en="Global Legal &amp; FOSS Charter: Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work." data-es="Carta Legal y FOSS Global: Cero software propietario requerido o promovido. Los generadores usan Python 3 stdlib (PSF-2.0 / MIT) emitiendo ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf) y ASCII limpio (.dxf) bajo CC0-1.0 / CC-BY-4.0, sin telemetría ni cargas a la nube. Los archivos no afirman cumplir ningún reglamento de construcción, norma de ejercicio profesional ni ley; revisa lo que aplica donde trabajas.">Global Legal &amp; FOSS Charter: Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work.</span>
+        <span data-en="Global Legal &amp; FOSS Charter: Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work." data-es="Carta Global Legal y FOSS: Cero software propietario requerido o promovido. Los generadores usan Python 3 stdlib (PSF-2.0 / MIT) emitiendo ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf) y ASCII limpio (.dxf) bajo CC0-1.0 / CC-BY-4.0, sin telemetría ni cargas a la nube. Los archivos no afirman cumplir ningún reglamento de construcción, norma de ejercicio profesional ni ley; revisa lo que aplica donde trabajas.">Global Legal &amp; FOSS Charter: Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work.</span>
       </div>
 
       <div class="tp-bounty-filter-bar" role="group" aria-label="Filter Tech and Tools Folios by field">
@@ -4859,7 +4904,7 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
     seo_desc = d_es if es else d_en
     canon = page_url("toolchain/", lang)
     title_en = "Tech & Tools · The 3D CAD, Open BIM & Small-Studio Toolbox"
-    title_es = "Tecnología y Herramientas · Caja de Herramientas 3D, CAD Abierto y Pequeños Estudios"
+    title_es = "Tecnología y Herramientas · Caja de Herramientas 3D, CAD Abierto y Pequeños Despachos"
     hook_en = (
         "Eight standalone 3D CAD and open-toolchain monographs (X.01–X.08) empowering boutique architecture studios, "
         "independent civil and mechanical engineers, physicists, and math makers. Every CAD Folio ships the Python script that "
@@ -4869,8 +4914,9 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
     hook_es = (
         "Ocho monografías dedicadas de CAD 3D y herramientas abiertas (X.01–X.08) diseñadas para empoderar a pequeños despachos de arquitectura, "
         "ingenieros civiles y mecánicos independientes, físicos y makers matemáticos. Cada Folio CAD incluye el script de Python que genera "
-        "sus archivos, archivos descargables (.glb, .step, .3mf, .dxf) con una lista de sumas de verificación, un visor 3D en el navegador, "
-        "un script de revisión que debe fallar cuando se planta un defecto y su SKILL.md portátil."
+        "sus archivos, archivos neutros descargables 3D/2D (.glb, .step, .3mf, .dxf) con una lista de sumas de verificación, "
+        "un visor 3D en vivo en el navegador, un script de revisión que debe fallar cuando se le introduce un defecto a propósito "
+        "y su SKILL.md portátil."
     )
     crumbs = [(BRAND, page_url("", lang)), (title_es if es else title_en, canon)]
     image = "https://informatico.ai/plates/x01.jpg"
@@ -4890,12 +4936,11 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
     for i, t in enumerate(TOOLCHAIN_FOLIOS):
         slug = t["slug"]
         fid = t["folio_id"]
-        tid = t["tool_id"]
         loading = "eager" if i < 6 else "lazy"
         plate_slug = t["plate_slug"]
         rt_en = t.get("reading_time", "15 MIN READ").lower()
         rt_es = rt_en.replace("min read", "min de lectura")
-        # The code and tool id stay in the card's small grey meta line (tp-rack-id), not at the head of the title.
+        # Only the short code (X.06) shows, in the card's small grey meta line (tp-rack-id), as on the section hubs.
         t_card_en = t["title"]
         t_card_es = t["title_es"]
         dek_en = t["subtitle"]
@@ -4904,7 +4949,7 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
         rack_cards.append(
             f"""        <a class="tp-rack-card" href="./{slug}/" data-folio-slug="{esc(slug)}">
           <span class="tp-rack-thumb-wrap"><img class="tp-rack-thumb" src="{plate_src('../plates/', plate_slug)}" width="640" height="360" loading="{loading}" decoding="async" alt="{esc(alt)}"></span>
-          <span class="tp-rack-top"><span class="tp-rack-id">{esc(fid)} · {esc(tid)}</span><span class="tp-rack-badge" data-en="{esc(rt_en)}" data-es="{esc(rt_es)}">{esc(rt_en)}</span></span>
+          <span class="tp-rack-top"><span class="tp-rack-id">{esc(fid)}</span><span class="tp-rack-badge" data-en="{esc(rt_en)}" data-es="{esc(rt_es)}">{esc(rt_en)}</span></span>
           <strong class="tp-rack-title" data-en="{esc(t_card_en)}" data-es="{esc(t_card_es)}">{esc(t_card_en)}</strong>
           <span class="tp-rack-dek" data-en="{esc(dek_en)}" data-es="{esc(dek_es)}">{esc(dek_en)}</span>
         </a>"""
@@ -4933,8 +4978,16 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
       <div class="tp-toolchain-boundary-banner" role="note" aria-label="Educational Geometry Boundary">
         <strong data-en="Fixed Educational Artifact Boundary &middot; 100% Open-Source &amp; Sovereign International Standards" data-es="Frontera de Artefacto Educativo &middot; 100% Código Abierto y Estándares Internacionales Soberanos">Fixed Educational Artifact Boundary &middot; 100% Open-Source &amp; Sovereign International Standards</strong>
         <span data-en="{esc(BOUNDARY_EN)}" data-es="{esc(BOUNDARY_ES)}">{esc(BOUNDARY_EN)}</span>
-        <span data-en="Global Legal &amp; FOSS Charter: Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work." data-es="Carta Legal y FOSS Global: Cero software propietario requerido o promovido. Los generadores usan Python 3 stdlib (PSF-2.0 / MIT) emitiendo ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf) y ASCII limpio (.dxf) bajo CC0-1.0 / CC-BY-4.0, sin telemetría ni cargas a la nube. Los archivos no afirman cumplir ningún reglamento de construcción, norma de ejercicio profesional ni ley; revisa lo que aplica donde trabajas.">Global Legal &amp; FOSS Charter: Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work.</span>
+        <span data-en="Global Legal &amp; FOSS Charter: Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work." data-es="Carta Global Legal y FOSS: Cero software propietario requerido o promovido. Los generadores usan Python 3 stdlib (PSF-2.0 / MIT) emitiendo ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf) y ASCII limpio (.dxf) bajo CC0-1.0 / CC-BY-4.0, sin telemetría ni cargas a la nube. Los archivos no afirman cumplir ningún reglamento de construcción, norma de ejercicio profesional ni ley; revisa lo que aplica donde trabajas.">Global Legal &amp; FOSS Charter: Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work.</span>
       </div>
+    </section>
+    <section class="tp-issue-rack" aria-label="8 Tech and Tools CAD Folios">
+      <div class="tp-rack-grid">
+{cards_html}
+      </div>
+    </section>
+    <section class="tp-builders-box" aria-labelledby="builders-heading">
+      <h2 id="builders-heading" class="tp-h2" data-en="For builders: open the files and run the scripts yourself" data-es="Para quienes construyen y programan: abre los archivos y corre los scripts tú mismo">For builders: open the files and run the scripts yourself</h2>
       <div class="tp-studio-quickstart" role="region" aria-label="30-Second Studio Quick-Start Guide">
         <div class="tp-studio-quickstart-head">
           <span class="tp-studio-quickstart-badge" data-en="⚡ 30-SECOND STUDIO QUICK-START · ZERO PAID SOFTWARE REQUIRED" data-es="⚡ GUÍA RÁPIDA DE 30 SEGUNDOS · CERO SOFTWARE DE PAGO">⚡ 30-SECOND STUDIO QUICK-START · ZERO PAID SOFTWARE REQUIRED</span>
@@ -4943,25 +4996,20 @@ def render_toolchain_hub(catalog: dict, lang: str = "en") -> str:
         <div class="tp-studio-steps-grid">
           <div class="tp-studio-step-card">
             <span class="tp-studio-step-num" data-en="Step 1 · Grab Any 3D/CAD File" data-es="Paso 1 · Descarga el Archivo 3D/CAD">Step 1 · Grab Any 3D/CAD File</span>
-            <h2 class="tp-studio-step-title" data-en="Download Open Neutral Geometry" data-es="Descarga Geometría Abierta y Neutral">Download Open Neutral Geometry</h2>
-            <p data-en="Every CAD Toolbox Folio (X.01–X.08) below gives you instant 1-click downloads of watertight .glb meshes, ISO 10303-21 .step AP242 solids, .3mf print packages, and .dxf laser/CNC cut sheets." data-es="Cada Folio CAD (X.01–X.08) te ofrece descarga directa en 1 clic de mallas .glb estancas, sólidos .step AP242, paquetes .3mf de impresión 3D y planos .dxf de corte láser/CNC.">Every CAD Toolbox Folio (X.01–X.08) below gives you instant 1-click downloads of watertight .glb meshes, ISO 10303-21 .step AP242 solids, .3mf print packages, and .dxf laser/CNC cut sheets.</p>
+            <h3 class="tp-studio-step-title" data-en="Download Open Neutral Geometry" data-es="Descarga Geometría Abierta y Neutral">Download Open Neutral Geometry</h3>
+            <p data-en="Every CAD Toolbox Folio (X.01–X.08) above gives you instant 1-click downloads of watertight .glb meshes, ISO 10303-21 .step AP242 solids, .3mf print packages, and .dxf laser/CNC cut sheets." data-es="Cada Folio CAD (X.01–X.08) te ofrece descarga directa en 1 clic de mallas .glb estancas, sólidos .step AP242, paquetes .3mf de impresión 3D y planos .dxf de corte láser/CNC.">Every CAD Toolbox Folio (X.01–X.08) above gives you instant 1-click downloads of watertight .glb meshes, ISO 10303-21 .step AP242 solids, .3mf print packages, and .dxf laser/CNC cut sheets.</p>
           </div>
           <div class="tp-studio-step-card">
             <span class="tp-studio-step-num" data-en="Step 2 · Open in Free Desktop Tools" data-es="Paso 2 · Ábrelo en Herramientas Gratuitas">Step 2 · Open in Free Desktop Tools</span>
-            <h2 class="tp-studio-step-title" data-en="Blender · FreeCAD · OrcaSlicer · QCAD" data-es="Blender · FreeCAD · OrcaSlicer · QCAD">Blender · FreeCAD · OrcaSlicer · QCAD</h2>
+            <h3 class="tp-studio-step-title" data-en="Blender · FreeCAD · OrcaSlicer · QCAD" data-es="Blender · FreeCAD · OrcaSlicer · QCAD">Blender · FreeCAD · OrcaSlicer · QCAD</h3>
             <p data-en="Open .glb in Blender 4.2+, .step in FreeCAD 1.0 or build123d / CadQuery, .3mf in OrcaSlicer / PrusaSlicer, and .dxf (CUT, MOUNTAIN, VALLEY layers) in QCAD Community Edition, LibreCAD, or Inkscape." data-es="Abre .glb en Blender 4.2+, .step en FreeCAD 1.0 o build123d / CadQuery, .3mf en OrcaSlicer / PrusaSlicer y .dxf (capas CUT, MOUNTAIN, VALLEY) en QCAD Community Edition, LibreCAD o Inkscape.">Open .glb in Blender 4.2+, .step in FreeCAD 1.0 or build123d / CadQuery, .3mf in OrcaSlicer / PrusaSlicer, and .dxf (CUT, MOUNTAIN, VALLEY layers) in QCAD Community Edition, LibreCAD, or Inkscape.</p>
           </div>
           <div class="tp-studio-step-card">
             <span class="tp-studio-step-num" data-en="Step 3 · Customize or Verify with Python" data-es="Paso 3 · Personaliza o Verifica con Python">Step 3 · Customize or Verify with Python</span>
-            <h2 class="tp-studio-step-title" data-en="Code Is Source of Truth + Byte Verifier" data-es="El Código Es la Fuente de Verdad">Code Is Source of Truth + Byte Verifier</h2>
+            <h3 class="tp-studio-step-title" data-en="Code Is Source of Truth + Byte Verifier" data-es="El Código Es la Fuente de Verdad">Code Is Source of Truth + Byte Verifier</h3>
             <p data-en="Run python skills/toolchain/x01/make_x01.py to regenerate custom dimensions, and python toolchain/run_all_toolchain.py to verify watertightness and planted-defect rejection in <1s." data-es="Ejecuta python skills/toolchain/x01/make_x01.py para regenerar dimensiones a medida y python toolchain/run_all_toolchain.py para verificar estanqueidad en <1s.">Run python skills/toolchain/x01/make_x01.py to regenerate custom dimensions, and python toolchain/run_all_toolchain.py to verify watertightness and planted-defect rejection in &lt;1s.</p>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="tp-issue-rack" aria-label="8 Tech and Tools CAD Folios">
-      <div class="tp-rack-grid">
-{cards_html}
       </div>
     </section>
 {render_city_tools_group(rel_res, "./")}
@@ -5239,7 +5287,7 @@ def render_toolchain_folio_page(tool: dict, catalog: dict, lang: str = "en") -> 
       <div class="tp-toolchain-boundary-banner" role="note" aria-label="Educational Geometry Boundary">
         <strong data-en="Fixed Educational Artifact Boundary &middot; 100% Open-Source &amp; Sovereign International Standards (GCC-01&ndash;GCC-05)" data-es="Frontera de Artefacto Educativo &middot; 100% Código Abierto y Estándares Internacionales Soberanos (GCC-01&ndash;GCC-05)">Fixed Educational Artifact Boundary &middot; 100% Open-Source &amp; Sovereign International Standards (GCC-01&ndash;GCC-05)</strong>
         <span data-en="{esc(BOUNDARY_EN)}" data-es="{esc(BOUNDARY_ES)}">{esc(BOUNDARY_EN)}</span>
-        <span data-en="Global Legal &amp; FOSS Charter (GCC-01–GCC-05): Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work." data-es="Carta Legal y FOSS Global (GCC-01–GCC-05): Cero software propietario requerido o promovido. Los generadores usan Python 3 stdlib (PSF-2.0 / MIT) emitiendo ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf) y ASCII limpio (.dxf) bajo CC0-1.0 / CC-BY-4.0, sin telemetría ni cargas a la nube. Los archivos no afirman cumplir ningún reglamento de construcción, norma de ejercicio profesional ni ley; revisa lo que aplica donde trabajas.">Global Legal &amp; FOSS Charter (GCC-01&ndash;GCC-05): Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work.</span>
+        <span data-en="Global Legal &amp; FOSS Charter (GCC-01–GCC-05): Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work." data-es="Carta Global Legal y FOSS (GCC-01–GCC-05): Cero software propietario requerido o promovido. Los generadores usan Python 3 stdlib (PSF-2.0 / MIT) emitiendo ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf) y ASCII limpio (.dxf) bajo CC0-1.0 / CC-BY-4.0, sin telemetría ni cargas a la nube. Los archivos no afirman cumplir ningún reglamento de construcción, norma de ejercicio profesional ni ley; revisa lo que aplica donde trabajas.">Global Legal &amp; FOSS Charter (GCC-01&ndash;GCC-05): Zero proprietary software required or endorsed. Generators run on Python 3 stdlib (PSF-2.0 / MIT) emitting ISO/IEC 12113:2022 (.glb), ISO 10303-21 (.step), ISO/IEC 25422 (.3mf), and clean-room ASCII (.dxf) under CC0-1.0 / CC-BY-4.0, with no telemetry and no cloud uploads. The files make no claim of compliance with any building code, licensure rule or law; check what applies where you work.</span>
       </div>
     </section>
 
@@ -5787,36 +5835,52 @@ COVER_SECTION_NAMES: dict[str, tuple[str, str]] = {
 # The four section fronts on the cover (magazine pass, phase 2, 2026-11-28): one lead essay and three headline
 # links per section. Every pick is an essay that section's own PILLAR_HOOKS sentence names, and none is in the
 # weekly rotation (INFORMATICO_SPOTLIGHT_ROTATION), so the cover never shows an essay twice. Titles, standfirsts
-# and reading times are read from the essays; only the choice is made here. tests/test_magazine_cover.py checks
-# that each slug exists, has a plate and is outside the rotation.
+# and reading times are read from the essays; only the choice is made here. A lead is an essay whose plain-words
+# text opens with the same picture in English and in Spanish and cites nothing in its first two sentences
+# (a07 and m12 did not: their Spanish openings were a citation sentence and a different passage).
+# tests/test_magazine_cover.py checks that each slug exists, has a plate and is outside the rotation, and that
+# the two languages of each standfirst correspond.
 COVER_FRONTS: dict[str, dict] = {
     "engineering": {"lead": "e07", "links": ("e06", "e08", "e09")},
-    "architecture": {"lead": "a07", "links": ("a08", "a01", "a09")},
+    "architecture": {"lead": "a01", "links": ("a07", "a08", "a09")},
     "physics": {"lead": "p07", "links": ("p08", "p03", "p10")},
-    "math": {"lead": "m12", "links": ("m07", "m08", "m10")},
+    "math": {"lead": "m08", "links": ("m12", "m07", "m10")},
 }
 
-# A sentence ends at . ? or ! followed by space, but not after "et al.", "e.g.", "i.e.", "cf.", "vs.", "approx."
-# or a single capital initial ("J. Heyman"), which would cut a citation in half.
+# Abbreviations whose full stop does not end a sentence: citations ("et al.", a single capital initial as in
+# "J. Heyman"), Latin and Spanish shorthand, titles, and "EE. UU.". Cutting after one would end a standfirst
+# in the middle of a citation or a name.
+_NO_BREAK_ABBREVIATIONS = (
+    "al.", "e.g.", "i.e.", "cf.", "vs.", "approx.", "Approx.", "aprox.", "Aprox.", "p.", "ej.", "EE.", "UU.",
+    "Dr.", "Dra.", "Sr.", "Sra.", "Fig.", "fig.", "etc.",
+)
+# "No." and "núm." are abbreviations only before a number ("No. 5"); "No." alone is a whole sentence.
 _SENTENCE_END_RE = re.compile(
-    r"(?<!\bal\.)(?<!\be\.g\.)(?<!\bi\.e\.)(?<!\bcf\.)(?<!\bvs\.)(?<!\bapprox\.)(?<!\b[A-Z]\.)(?<=[.?!])\s+"
+    "".join(rf"(?<!\b{re.escape(a)})" for a in _NO_BREAK_ABBREVIATIONS)
+    + r"(?<!\b[A-Z]\.)(?<=[.?!])(?!(?:(?<=\bNo\.)|(?<=\bno\.)|(?<=\bnúm\.)|(?<=\bNúm\.))\s+\d)\s+"
 )
 
 
 def _balanced(text: str) -> bool:
     return text.count("(") == text.count(")") and text.count("[") == text.count("]")
-# Lead-ins dropped from a quoted opening: the box label, and a clause pointing back at a page heading the cover
-# does not show ("To picture this mystery, imagine ..." becomes "Imagine ...").
+
+
+# Lead-ins dropped from a quoted opening: the box label ("In plain words,", "Everyday picture:"), and a clause
+# pointing back at a page heading the cover does not show ("To picture this mystery, imagine ..." becomes
+# "Imagine ...").
 _PLAIN_LEAD_RE = re.compile(
-    r"^(?:In plain words|En palabras sencillas|To (?:picture|see|imagine) (?:this|these) \w+|Para (?:imaginar|ver) (?:este|esta|estos|estas) \w+),\s+",
+    r"^(?:(?:In plain words|En palabras sencillas|To (?:picture|see|imagine) (?:this|these) \w+"
+    r"|Para (?:imaginar|ver) (?:este|esta|estos|estas) \w+),|(?:Everyday picture|Imagen cotidiana):)\s+",
     re.I,
 )
 
 
 def _standfirst_excerpt(text: str, max_chars: int = 280) -> str:
-    """The opening one or two sentences of an essay's own text, word for word. Only a leading "In plain words,"
-    is dropped (the next letter is then capitalised). Nothing is written here, so the cover says nothing the
-    essay does not say."""
+    """The opening one or two sentences of an essay's own text, word for word. Only a leading label such as
+    "In plain words," is dropped (the next letter is then capitalised). Nothing is written here, so the cover
+    says nothing the essay does not say. It fails closed: when the first sentence alone is longer than
+    max_chars (usually a full stop the splitter did not recognise), the build stops instead of printing a
+    paragraph or cutting one mid-sentence."""
     text = " ".join(str(text).split())
     lead = _PLAIN_LEAD_RE.match(text)
     if lead:
@@ -5824,6 +5888,8 @@ def _standfirst_excerpt(text: str, max_chars: int = 280) -> str:
         text = text[:1].upper() + text[1:]
     parts = _SENTENCE_END_RE.split(text)
     out = parts[0]
+    if len(out) > max_chars:
+        raise ValueError(f"standfirst: the first sentence is {len(out)} characters (limit {max_chars}): {out!r}")
     if len(parts) > 1 and len(out) + 1 + len(parts[1]) <= max_chars and _balanced(f"{out} {parts[1]}"):
         out = f"{out} {parts[1]}"
     if not _balanced(out):
@@ -6262,7 +6328,7 @@ def render_cover_more_row() -> str:
     """"More to explore" on the cover: the other parts of the site as a plain name and one plain line each.
     The lines are the phase 1 tile subtitles; the classics item names its three pages as three links."""
     sec = COVER_SECTION_NAMES
-    steps = len(TIMEGRAVITY_PAGES)
+    steps = _tg_steps()
     items = (
         ("bounties/", sec["bounties"], ("Open problems and prize challenges, explained", "Problemas abiertos y retos con premio, explicados")),
         ("toolchain/", sec["toolchain"], ("Open 3D files for small studios", "Archivos 3D abiertos para estudios pequeños")),

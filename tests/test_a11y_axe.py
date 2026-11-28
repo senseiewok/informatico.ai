@@ -24,6 +24,10 @@ HTACCESS_PATH = ROOT / "deploy" / "htaccess.txt"
 
 AXE_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"]
 AUDIT_ROUTES = ["", "math/", "math/m01/", "es-mx/math/m01/", "physics/p01/", "about/"]
+# The dark run also covers the hubs that carry the sections moved off the cover (magazine pass, phase 2).
+DARK_AUDIT_ROUTES = AUDIT_ROUTES + ["physics/", "toolchain/", "bounties/", "essays/", "engineering/"]
+# What the masthead's Dark button sets on <html> (src/modules/theme-plate.mjs): both attributes, not one.
+DARK_ATTRIBUTES = {"data-theme": "blueprint", "data-plate-theme": "dark"}
 MATHML_ROUTES = [
     "math/m01/",
     "math/m02/",
@@ -189,8 +193,10 @@ class InformaticoAxeAndMathMLTests(unittest.TestCase):
             page = ctx.new_page()
             page.goto(url, wait_until="load")
             if dark:
-                # What the masthead's Dark button sets (src/modules/theme-plate.mjs).
-                page.evaluate("document.documentElement.setAttribute('data-theme', 'blueprint')")
+                page.evaluate(
+                    "(attrs) => { for (const [k, v] of Object.entries(attrs)) document.documentElement.setAttribute(k, v); }",
+                    DARK_ATTRIBUTES,
+                )
             page.wait_for_timeout(400)
             page.add_script_tag(path=str(self.axe_js))
             results = page.evaluate(
@@ -267,7 +273,7 @@ class InformaticoAxeAndMathMLTests(unittest.TestCase):
         rule most likely to break when tokens change, and the light run alone would not see it."""
         blocking_hits: list[dict] = []
         summary_lines: list[str] = ["\n[informatico.ai axe-core WCAG 2.2 AA Summary, dark theme]"]
-        for route in AUDIT_ROUTES:
+        for route in DARK_AUDIT_ROUTES:
             route_label = route or "/"
             for vp_name, vp_size in VIEWPORTS:
                 violations = self._run_axe_on_url(self.base + route, vp_size, dark=True)
@@ -279,6 +285,17 @@ class InformaticoAxeAndMathMLTests(unittest.TestCase):
                         blocking_hits.append({"route": route_label, "viewport": vp_name, "impact": impact, "id": v.get("id"), "nodes": len(v.get("nodes", []))})
         print("\n".join(summary_lines), flush=True)
         self.assertEqual(blocking_hits, [], f"Critical/serious WCAG 2.2 AA violations in the dark theme: {blocking_hits}")
+
+    def test_dark_run_sets_what_the_dark_button_sets(self) -> None:
+        """The dark audit is only as good as its switch: it must set every attribute the masthead button sets,
+        and it must include the hubs."""
+        module = (SRC / "modules" / "theme-plate.mjs").read_text(encoding="utf-8")
+        for name, value in DARK_ATTRIBUTES.items():
+            self.assertIn(f'root.setAttribute("{name}", "{value}")', module, name)
+        self.assertEqual(len(re.findall(r'root\.setAttribute\("data-[a-z-]+", "(?:blueprint|dark)"\)', module)), len(DARK_ATTRIBUTES))
+        for route in ("physics/", "toolchain/", "bounties/", "essays/", "engineering/"):
+            self.assertIn(route, DARK_AUDIT_ROUTES)
+            self.assertTrue((SRC / route / "index.html").is_file(), route)
 
     def test_mathml_renders_under_strict_csp(self) -> None:
         """Verify native MathML Core lays out under strict production CSP and save 2x Retina screenshots."""

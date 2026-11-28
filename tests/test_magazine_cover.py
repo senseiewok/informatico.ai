@@ -317,7 +317,8 @@ class CoverFrontsTests(unittest.TestCase):
             self.assertTrue(B.plate_exists(pick["lead"]), f"{pick['lead']} has no plate")
             self.assertTrue((SRC / "plates" / f"{pick['lead']}.jpg").is_file(), pick["lead"])
         self.assertEqual(B.COVER_FRONTS["engineering"], {"lead": "e07", "links": ("e06", "e08", "e09")})
-        self.assertEqual(B.COVER_FRONTS["architecture"], {"lead": "a07", "links": ("a08", "a01", "a09")})
+        self.assertEqual(B.COVER_FRONTS["architecture"], {"lead": "a01", "links": ("a07", "a08", "a09")})
+        self.assertEqual(B.COVER_FRONTS["math"], {"lead": "m08", "links": ("m12", "m07", "m10")})
         with self.assertRaises(ValueError):
             B._front_essay("math", "m11")  # in the rotation
         with self.assertRaises(ValueError):
@@ -396,6 +397,48 @@ class CoverFrontsTests(unittest.TestCase):
                 es_meta = B.get_folio_es_meta(slug, folio, folio["colophon"])
                 self.assertEqual(dek.attrs["data-en"], B._standfirst_excerpt(B.decf(B.LONGFORM[slug]["act1_plain_bridge"])), rel)
                 self.assertEqual(dek.attrs["data-es"], B._standfirst_excerpt(B.decf(es_meta["plain_es"])), rel)
+
+    def test_each_front_standfirst_says_the_same_thing_in_both_languages(self) -> None:
+        """The reported fault: the Architecture and Mathematics fronts showed one passage in English and another
+        in Spanish (a citation sentence with two DOIs; a sentence about 1994). Both languages come from the
+        essay's plain-words pair (act1_plain_bridge and plain_es), and the excerpts must line up: the same
+        number of sentences, the same figures, a comparable length, and no citation in either."""
+        for rel, _lang in COVERS:
+            fronts = page(rel).find_all("section", "tp-front")
+            self.assertEqual(len(fronts), len(PILLARS), rel)
+            for pillar, front in zip(PILLARS, fronts):
+                slug = B.COVER_FRONTS[pillar]["lead"]
+                dek = front.find("p", "tp-front-dek")
+                en, es_text = dek.attrs.get("data-en", "").strip(), dek.attrs.get("data-es", "").strip()
+                self.assertTrue(en and es_text, f"{rel}: {slug} is missing a language")
+                self.assertNotEqual(en, es_text, f"{rel}: {slug} shows the English text in Spanish")
+                self.assertEqual(
+                    len(B._SENTENCE_END_RE.split(en)), len(B._SENTENCE_END_RE.split(es_text)),
+                    f"{slug}: a different number of sentences in each language: {en!r} / {es_text!r}",
+                )
+                self.assertEqual(
+                    sorted(re.findall(r"\d+(?:[.,]\d+)?", en)), sorted(re.findall(r"\d+(?:[.,]\d+)?", es_text)),
+                    f"{slug}: the figures differ between the languages: {en!r} / {es_text!r}",
+                )
+                self.assertLess(max(len(en), len(es_text)) / min(len(en), len(es_text)), 1.6, f"{slug}: {en!r} / {es_text!r}")
+                for text in (en, es_text):
+                    self.assertIsNone(re.search(r"\(\s*[A-ZÁÉÍÓÚ][^()]*\b(?:1[6-9]|20)\d\d\b[^()]*\)", text), f"{slug}: a citation in {text!r}")
+
+    def test_no_cover_standfirst_carries_a_doi(self) -> None:
+        """A standfirst is an opening picture, not a reference: none on the cover (the four fronts and every
+        slide of the weekly rotation, in both languages) contains "DOI" or a DOI's "10." prefix."""
+        doi = re.compile(r"\bDOI\b|\b10\.\d", re.I)
+        self.assertIsNotNone(doi.search("(Kubelka 1948, DOI 10.1364/JOSA.38.000448)"))
+        self.assertIsNotNone(doi.search("see 10.1016/j.cemconres.2004.12.012"))
+        self.assertIsNone(doi.search("About 10 parts in 110.5"))
+        for rel, _lang in COVERS:
+            root = page(rel)
+            deks = root.find_all("p", "tp-front-dek") + root.by_id("tp-featured-edition-desk").find_all("p", "tp-spotlight-dek")
+            self.assertEqual(len(deks), len(PILLARS) + len(B.INFORMATICO_SPOTLIGHT_ROTATION), rel)
+            for dek in deks:
+                for text in (dek.attrs["data-en"], dek.attrs["data-es"], dek.text()):
+                    hit = doi.search(text)
+                    self.assertIsNone(hit, f"{rel}: {hit.group(0) if hit else ''!r} in the standfirst {text!r}")
 
     def test_more_to_explore_row_is_plain_names_and_one_line_each(self) -> None:
         names = B.COVER_SECTION_NAMES
@@ -626,18 +669,216 @@ class HubPlainWordsTests(unittest.TestCase):
             self.assertEqual((h2.attrs["data-en"], h2.attrs["data-es"]), B.COVER_SECTION_NAMES["timegravity"], rel)
             stand = rack.find("p", "tp-standfirst")
             self.assertTrue(stand.attrs["data-en"].endswith(f"hold every claim to a {rows}-row offline ledger."), rel)
-            self.assertTrue(stand.attrs["data-es"].endswith(f"frente a un libro de {rows} filas."), rel)
+            self.assertTrue(stand.attrs["data-es"].endswith(f"frente a un registro fuera de línea de {rows} filas."), rel)
+            # The Spanish says what the English says: "six strict evidence labels", an offline ledger.
+            self.assertIn("six strict evidence labels (including DERIVED (NOT MEASURED))", stand.attrs["data-en"], rel)
+            self.assertIn("seis etiquetas estrictas de evidencia (incluida DERIVADO (NO MEDIDO))", stand.attrs["data-es"], rel)
+            self.assertNotIn("libro", stand.attrs["data-es"], rel)
             ctas = rack.find("div", "tp-series-rack-ctas").find_all("a")
             self.assertEqual(
                 [(a.attrs["data-en"], a.attrs["data-es"]) for a in ctas],
                 [
-                    ("Enter the Series Hub →", "Entrar al Inicio de la Serie →"),
-                    ("Begin Step 2 · Everyone Moves at One Rate →", "Empezar Paso 2 · Todos Avanzamos a un Mismo Ritmo →"),
+                    ("Enter the Series Hub →", "Ir al índice de la serie →"),
+                    ("Begin Step 2 · Everyone Moves at One Rate →", "Empieza en el paso 2 · Todos Avanzamos a un Mismo Ritmo →"),
                 ],
                 rel,
             )
+            self.assertEqual([a.attrs["href"] for a in ctas], ["../timegravity/", "../timegravity/t02/"], rel)
+            # The second button names the page it opens by that page's own title, in each language.
+            t02 = page(f"{prefix}timegravity/t02/index.html").find("h1")
+            self.assertTrue(ctas[1].attrs["data-en"].endswith(f"· {t02.attrs['data-en']} →"), rel)
+            self.assertTrue(ctas[1].attrs["data-es"].endswith(f"· {t02.attrs['data-es']} →"), rel)
             self.assertEqual(["tp-cta-primary" in a.classes for a in ctas], [True, False], rel)
             self.assertEqual(len(rack.find_all("a", "tp-rack-card-series")), 14, rel)
+
+    def test_time_and_gravity_step_count_is_one_number_everywhere(self) -> None:
+        """The series length is counted once (B._tg_steps) and every place that states it agrees: the hub
+        kicker, the rack kicker, the standfirst's spelled-out number, each card's "Step i of N", and the cover."""
+        steps = B._tg_steps()
+        self.assertEqual(steps, len(B.TIMEGRAVITY_PAGES))
+        word_en, word_es = B._number_words(steps)
+        for prefix in ("", "es-mx/"):
+            rel = f"{prefix}physics/index.html"
+            root = page(rel)
+            hero = root.find("section", "tp-pillar-hero").find("p", "tp-kicker")
+            self.assertTrue(hero.attrs["data-en"].endswith(f"and a {steps}-step series"), rel)
+            self.assertTrue(hero.attrs["data-es"].endswith(f"y una serie de {steps} pasos"), rel)
+            rack = root.by_id("timegravity-series")
+            kicker = rack.find("p", "tp-kicker")
+            self.assertEqual((kicker.attrs["data-en"], kicker.attrs["data-es"]), (f"A {steps}-step series", f"Una serie de {steps} pasos"), rel)
+            stand = rack.find("p", "tp-standfirst")
+            self.assertIn(f"A guided {word_en}-step inquiry", stand.attrs["data-en"], rel)
+            self.assertIn(f"Una investigación guiada de {word_es} pasos", stand.attrs["data-es"], rel)
+            ids = [c.find("span", "tp-rack-id") for c in rack.find_all("a", "tp-rack-card-series")]
+            self.assertEqual(len(ids), steps, rel)
+            for i, node in enumerate(ids, 1):
+                self.assertTrue(node.attrs["data-en"].startswith(f"Step {i} of {steps} · "), node.attrs["data-en"])
+                self.assertTrue(node.attrs["data-es"].startswith(f"Paso {i} de {steps} · "), node.attrs["data-es"])
+        # A shorter series changes every one of them together; a hand-typed "14" or "fourteen" would not follow.
+        saved = B.TIMEGRAVITY_TRACK_MAP
+        B.TIMEGRAVITY_TRACK_MAP = saved[:-1]
+        try:
+            shorter = parse(B.render_timegravity_series_rack(".."))
+            self.assertEqual(B._tg_steps(), steps - 1)
+            w_en, w_es = B._number_words(steps - 1)
+            texts = " ".join(shown_strings(shorter))
+            self.assertIn(f"A {steps - 1}-step series", texts)
+            self.assertIn(f"A guided {w_en}-step inquiry", texts)
+            self.assertIn(f"Una investigación guiada de {w_es} pasos", texts)
+            self.assertIn(f"Step {steps - 1} of {steps - 1} · ", texts)
+            self.assertNotIn(f"of {steps}", texts)
+            self.assertNotIn(f"de {steps} ", texts)
+            self.assertNotIn(word_en, texts)
+            self.assertNotIn(word_es, texts)
+        finally:
+            B.TIMEGRAVITY_TRACK_MAP = saved
+        with self.assertRaises(ValueError):
+            B._number_words(99)
+
+    def test_toolbox_heading_and_sentences_say_what_the_site_ships(self) -> None:
+        """The heading promised "a Check for Each File". What exists is one checking script per CAD Folio, which
+        checks that folio's file set and fails under a planted defect; the heading now says that, and this test
+        holds it to the catalogue and to the scripts on disk."""
+        self.assertIn("a Checking Script for Each CAD Folio", B.TOOLBOX_HEADING_EN)
+        self.assertIn("un Script de Revisión para Cada Folio CAD", B.TOOLBOX_HEADING_ES)
+        self.assertIn("Archivos Descargables STEP, 3MF, GLB y DXF", B.TOOLBOX_HEADING_ES)
+        for word in ("Each File", "Cada Archivo", "Check for"):
+            self.assertNotIn(word, B.TOOLBOX_HEADING_EN + B.TOOLBOX_HEADING_ES)
+        formats: set[str] = set()
+        for tool in B.TOOLCHAIN_FOLIOS:
+            scripts = list((ROOT / "skills" / "toolchain" / tool["slug"]).glob("verify_*.py"))
+            self.assertEqual(len(scripts), 1, f"{tool['slug']}: one checking script per CAD Folio")
+            self.assertIn("--planted-defect", scripts[0].read_text(encoding="utf-8"), tool["slug"])
+            self.assertTrue(tool["formats"], tool["slug"])
+            formats.update(tool["formats"])
+        self.assertEqual(formats, {"step", "3mf", "glb", "dxf"})  # the four formats the heading names
+        es_sentence = (
+            "Cada Folio CAD incluye el script de Python que genera sus archivos, archivos neutros descargables "
+            "(.glb, .step, .3mf, .dxf) con una lista de sumas de verificación, un visor 3D en vivo en el navegador, un script "
+            "de revisión que debe fallar cuando se le introduce un defecto a propósito y su SKILL.md portátil."
+        )
+        for prefix in ("", "es-mx/"):
+            rel = f"{prefix}toolchain/index.html"
+            root = page(rel)
+            link = root.by_id("toolchain-toolbox-heading").find("a")
+            self.assertEqual((link.attrs["data-en"], link.attrs["data-es"]), (B.TOOLBOX_HEADING_EN, B.TOOLBOX_HEADING_ES), rel)
+            section = root.by_id("tp-toolchain-toolbox").find("p", "tp-standfirst")
+            self.assertTrue(section.attrs["data-es"].endswith(es_sentence), rel)
+            self.assertIn("a checking script that must fail when a defect is planted", section.attrs["data-en"], rel)
+            hero = root.find("section", "tp-pillar-hero")
+            hook = hero.find("p", "tp-standfirst").attrs["data-es"]
+            self.assertIn("un visor 3D en vivo en el navegador, un script de revisión que debe fallar cuando se le introduce un defecto a propósito y su SKILL.md portátil.", hook, rel)
+            self.assertIn("archivos neutros descargables", hook, rel)
+            # One term for small studios in the page's own headings and sentences (essay titles keep theirs).
+            for node in (hero.find("h1"), hero.find("p", "tp-kicker"), link, root.by_id("tp-toolchain-toolbox").find("p", "tp-kicker")):
+                self.assertNotIn("Pequeños Estudios", node.attrs["data-es"], rel)
+            self.assertIn("Pequeños Despachos", hero.find("h1").attrs["data-es"], rel)
+            charters = [n.attrs["data-es"] for n in root.find_all("span") if "FOSS" in n.attrs.get("data-es", "")]
+            self.assertGreaterEqual(len(charters), 2, rel)
+            for text in charters:
+                self.assertTrue(text.startswith("Carta Global Legal y FOSS:"), text[:60])
+        for slug in ("x01", "x08"):
+            text = (SRC / "es-mx" / "toolchain" / slug / "index.html").read_text(encoding="utf-8")
+            self.assertIn("Carta Global Legal y FOSS (GCC-01", text, slug)
+            self.assertNotIn("Carta Legal y FOSS Global", text, slug)
+
+    def test_bounties_standfirst_names_the_same_things_in_both_languages(self) -> None:
+        for prefix in ("", "es-mx/"):
+            rel = f"{prefix}bounties/index.html"
+            stand = page(rel).by_id("tp-bounty-crucible").find("p", "tp-standfirst")
+            en, es_text = stand.attrs["data-en"], stand.attrs["data-es"]
+            self.assertTrue(es_text.startswith("Revisado el 2026-11-15 contra los avisos vigentes de cada certamen: seis "), rel)
+            self.assertTrue(en.startswith("Checked on 2026-11-15 against the competitions' current notices: six "), rel)
+            for name in ("Global Cooling 2021", "XPRIZE Carbon 2025", "Holcim 2025", "AIMO", "Metriq", "PhysLean", "Unitary Foundation", "B.01–B.06", "#30"):
+                self.assertIn(name, en, rel)
+                self.assertIn(name, es_text, rel)
+            self.assertNotIn("Cooling Prize 2021", es_text, rel)
+            self.assertIn("microbecas continuas de Unitary Foundation", es_text, rel)
+            self.assertTrue(es_text.endswith("cada uno con un laboratorio contrafactual en vivo y un verificador en Python sin dependencias."), rel)
+            self.assertTrue(en.endswith("each paired with a live counterfactual workbench and zero-dependency Python verifier."), rel)
+            self.assertEqual(sorted(re.findall(r"\d+", en)), sorted(re.findall(r"\d+", es_text)), rel)
+
+    def test_builders_box_sits_below_the_essays_under_a_plain_heading(self) -> None:
+        """The quick-start steps ("Run python ...") opened the Bounties and Toolbox hubs, above the essays. They
+        now follow the essay cards, under a heading a first-time reader can skip past."""
+        headings = {
+            "bounties": ("For builders: run the examples yourself", "Para quienes programan: corre los ejemplos tú mismo"),
+            "toolchain": (
+                "For builders: open the files and run the scripts yourself",
+                "Para quienes construyen y programan: abre los archivos y corre los scripts tú mismo",
+            ),
+        }
+        for hub, want in headings.items():
+            for prefix in ("", "es-mx/"):
+                rel = f"{prefix}{hub}/index.html"
+                main = page(rel).find("main")
+                hero = main.find("section", "tp-pillar-hero")
+                self.assertFalse(hero.find_all("div", "tp-studio-quickstart"), f"{rel}: the quick-start box is back in the hero")
+                order = [n for n in main.walk()]
+                box = main.find("section", "tp-builders-box")
+                self.assertIsNotNone(box, rel)
+                cards = [c for c in main.find_all("a", "tp-rack-card") if c.attrs.get("data-folio-slug")]
+                self.assertGreaterEqual(len(cards), 6, rel)
+                self.assertGreater(order.index(box), order.index(cards[-1]), f"{rel}: the box is above the essays")
+                h2 = box.find("h2")
+                self.assertEqual((h2.attrs["data-en"], h2.attrs["data-es"]), want, rel)
+                self.assertEqual(box.attrs["aria-labelledby"], h2.attrs["id"], rel)
+                quick = box.find("div", "tp-studio-quickstart")
+                # The content is kept: the badge, three steps, and the command.
+                self.assertEqual(len(quick.find_all("div", "tp-studio-step-card")), 3, rel)
+                self.assertEqual(len(quick.find_all("h3", "tp-studio-step-title")), 3, rel)
+                self.assertFalse(quick.find_all("h2"), f"{rel}: step titles outrank the box heading")
+                self.assertIn("QUICK-START", quick.find("span", "tp-studio-quickstart-badge").attrs["data-en"], rel)
+                self.assertIn("run_all_bounties.py" if hub == "bounties" else "run_all_toolchain.py", quick.text(), rel)
+                for text in shown_strings(quick):
+                    self.assertNotRegex(text, r"\) below\b", f"{rel}: the essays are above the box now: {text!r}")
+
+    def test_hub_cards_are_not_cut_and_show_only_the_short_code(self) -> None:
+        """Card blurbs on the hubs ended in "..." at three lines. Nothing clamps them now, and the Bounties and
+        Toolbox cards show B.01 or X.06 without the internal id (BOUNTY-M1, TOOL-PHYS-MATH-1)."""
+        css = " ".join((SRC / "informatico.css").read_text(encoding="utf-8").split())
+        for selector in (".tp-rack-dek {", ".tp-body .tp-rack-dek {", ".tp-rack-title {", ".tp-body .tp-rack-title {"):
+            start = 0
+            found = 0
+            while (at := css.find(selector, start)) != -1:
+                if at == 0 or css[at - 1] in " }":
+                    rule = css[at:css.index("}", at)]
+                    found += 1
+                    for banned in ("line-clamp", "text-overflow", "-webkit-box", "overflow: hidden", "max-height", "nowrap"):
+                        self.assertNotIn(banned, rule, f"{selector} {banned}")
+                start = at + 1
+            self.assertGreater(found, 0, selector)
+        for hub in ("physics", "bounties", "toolchain", "engineering", "architecture", "math"):
+            for prefix in ("", "es-mx/"):
+                rel = f"{prefix}{hub}/index.html"
+                cards = page(rel).find("main").find_all("a", "tp-rack-card")
+                self.assertGreaterEqual(len(cards), 6, rel)
+                for card in cards:
+                    for cls in ("tp-rack-title", "tp-rack-dek"):
+                        for node in card.find_all(None, cls):
+                            for text in (node.text(), node.attrs.get("data-en", ""), node.attrs.get("data-es", "")):
+                                self.assertFalse(text.rstrip().endswith(("...", "…")), f"{rel}: {text!r}")
+        for hub, letter in (("bounties", "B"), ("toolchain", "X")):
+            for prefix in ("", "es-mx/"):
+                rel = f"{prefix}{hub}/index.html"
+                cards = [c for c in page(rel).find("main").find_all("a", "tp-rack-card") if c.attrs.get("data-folio-slug")]
+                for card in cards:
+                    slug = card.attrs["data-folio-slug"]
+                    self.assertEqual(card.attrs["href"], f"./{slug}/", rel)
+                    self.assertEqual(card.find("span", "tp-rack-id").text(), f"{letter}.{slug[1:]}", rel)
+                    for text in shown_strings(card.find("span", "tp-rack-top")):
+                        self.assertNotRegex(text, r"BOUNTY-|TOOL-", f"{rel}: {text!r}")
+
+    def test_section_headings_that_link_look_like_headings(self) -> None:
+        """The "Special feature" heading on /bounties/ (and the Toolbox section heading) is an h2 around a link;
+        it was drawn as a default blue underlined link."""
+        css = " ".join((SRC / "informatico.css").read_text(encoding="utf-8").split())
+        self.assertIn(".tp-bounty-header .tp-h2 a { color: inherit; text-decoration: none; }", css)
+        self.assertIn(".tp-bounty-header .tp-h2 a:hover, .tp-bounty-header .tp-h2 a:focus-visible { text-decoration: underline; }", css)
+        for rel, ident in (("bounties/index.html", "bounty-crucible-heading"), ("toolchain/index.html", "toolchain-toolbox-heading")):
+            h2 = page(rel).by_id(ident)
+            self.assertEqual((h2.tag, "tp-h2" in h2.classes, "tp-bounty-header" in h2.parent.classes), ("h2", True, True), rel)
+            self.assertIsNotNone(h2.find("a"), rel)
 
     def test_moved_sections_read_in_plain_words_and_keep_their_notices(self) -> None:
         for prefix, lang in (("", "en"), ("es-mx/", "es")):
@@ -667,6 +908,30 @@ class HubPlainWordsTests(unittest.TestCase):
         source = (ROOT / "tools" / "build_longform_folios.py").read_text(encoding="utf-8")
         for dead in ("gate_en", "gate_es", "Gated by build_timegravity.py", "INFORMATICO_RELEASE_SCHEDULE", "render_cover_timegravity_feature"):
             self.assertNotIn(dead, source, dead)
+
+    def test_orphan_comments_are_gone_and_the_cover_figure_rule_is_kept_on_purpose(self) -> None:
+        """Comments that described removed cover parts are gone from the stylesheet and the modules. The
+        .tp-cover-figure rules were also reported as dead, but they are not: the builder still writes that figure
+        on / and /about/ whenever a film has no YouTube id (tests/test_films.py renders both that way), so the
+        rules stay while the builder can emit the class, and must go when it no longer can."""
+        css = (SRC / "informatico.css").read_text(encoding="utf-8")
+        bundle = (ROOT / "tools" / "folios" / "css_bundle.py").read_text(encoding="utf-8")
+        for dead in (
+            "Above-the-Fold 6-Track", "Skills Navigator Strip", "One grid cell for the pillar's links",
+            "Cover Featured Series Essay-Showcase", "#featured-timegravity", "then the tiles", "Section tiles:",
+            "two-line deck",
+        ):
+            self.assertNotIn(dead, css, dead)
+            self.assertNotIn(dead, bundle, dead)
+        module = (SRC / "modules" / "physics-discovery-crucible.mjs").read_text(encoding="utf-8")
+        self.assertNotIn("on cover", module)
+        self.assertIn("category filter bar on /bounties/", module)
+        builder = (ROOT / "tools" / "build_longform_folios.py").read_text(encoding="utf-8")
+        emitted = '<figure class="tp-cover-figure">' in builder
+        self.assertEqual(emitted, ".tp-cover-figure" in css, "the .tp-cover-figure rules and the builder's fallback figure go together")
+        self.assertTrue(emitted)
+        for rel in ("index.html", "es-mx/index.html", "about/index.html"):  # films are live, so no page shows the fallback
+            self.assertFalse(page(rel).find_all("figure", "tp-cover-figure"), rel)
 
     def test_dead_cover_styles_are_gone(self) -> None:
         css = (SRC / "informatico.css").read_text(encoding="utf-8") + (SRC / "timegravity.css").read_text(encoding="utf-8")
@@ -765,6 +1030,42 @@ class ThisWeekTests(unittest.TestCase):
         )
         self.assertEqual(B._standfirst_excerpt("Arches stand. J. Heyman said so. Yes."), "Arches stand. J. Heyman said so.")
 
+    def test_standfirst_excerpt_does_not_stop_at_an_abbreviation(self) -> None:
+        cases = (
+            ("Mide aprox. 5 m de alto. Es alto. Fin.", "Mide aprox. 5 m de alto. Es alto."),
+            ("It is approx. 5 m tall. It is tall. End.", "It is approx. 5 m tall. It is tall."),
+            ("Usa metal, p. ej. acero o cobre. Sirve. Fin.", "Usa metal, p. ej. acero o cobre. Sirve."),
+            ("Usa metal (ej. acero) siempre. Sirve. Fin.", "Usa metal (ej. acero) siempre. Sirve."),
+            ("En EE. UU. se usa mucho. Sirve. Fin.", "En EE. UU. se usa mucho. Sirve."),
+            ("El Dr. Shor lo vio. Sirve. Fin.", "El Dr. Shor lo vio. Sirve."),
+            ("El Sr. Paz lo vio. Sirve. Fin.", "El Sr. Paz lo vio. Sirve."),
+            ("La Sra. Ruiz lo vio. Sirve. Fin.", "La Sra. Ruiz lo vio. Sirve."),
+            ("See Fig. 3 for the arch. It stands. End.", "See Fig. 3 for the arch. It stands."),
+            ("Rule No. 5 holds here. It stands. End.", "Rule No. 5 holds here. It stands."),
+            ("La regla núm. 5 vale aquí. Sirve. Fin.", "La regla núm. 5 vale aquí. Sirve."),
+            ("Stone, brick, etc. are heavy. They stand. End.", "Stone, brick, etc. are heavy. They stand."),
+            ("Arches (cf. Heyman) stand. They last. End.", "Arches (cf. Heyman) stand. They last."),
+        )
+        for text, want in cases:
+            self.assertEqual(B._standfirst_excerpt(text), want, text)
+        # "No." is an abbreviation only before a number; on its own it is a sentence.
+        self.assertEqual(B._standfirst_excerpt("Is it physics? No. It is not. End."), "Is it physics? No.")
+        # The box labels are dropped in both languages.
+        self.assertEqual(B._standfirst_excerpt("Everyday picture: shiny paint is a mirror. It glares. End."), "Shiny paint is a mirror. It glares.")
+        self.assertEqual(B._standfirst_excerpt("Imagen cotidiana: la pintura es un espejo. Brilla. Fin."), "La pintura es un espejo. Brilla.")
+
+    def test_standfirst_excerpt_fails_closed_on_an_overlong_first_sentence(self) -> None:
+        """A first sentence longer than the limit means a paragraph with no recognised full stop. The build stops
+        there; it does not print the paragraph or cut it."""
+        with self.assertRaises(ValueError):
+            B._standfirst_excerpt("word " * 80 + "end. Short.")
+        with self.assertRaises(ValueError):
+            B._standfirst_excerpt("Short enough here. Second.", max_chars=10)
+        self.assertEqual(B._standfirst_excerpt("x" * 280), "x" * 280)
+        for item in B.INFORMATICO_SPOTLIGHT_ROTATION:  # every cover feature fits
+            story = B._spotlight_story(item)
+            self.assertLessEqual(max(len(story["stand_en"]), len(story["stand_es"])), 280, item["code"])
+
     def test_module_rotates_weekly_without_innerhtml(self) -> None:
         mod = (SRC / "modules" / "featured-spotlight.mjs").read_text(encoding="utf-8")
         main = (SRC / "modules" / "main.mjs").read_text(encoding="utf-8")
@@ -843,7 +1144,7 @@ class EssayCardTests(unittest.TestCase):
                 title = card.find("strong", "tp-rack-title")
                 for value in (title.attrs["data-en"], title.attrs["data-es"]):
                     self.assertIsNone(CODE_RE.match(value), f"{rel}: {value!r}")
-                self.assertRegex(card.find("span", "tp-rack-id").text(), r"^[BX]\.\d{2} · ", rel)
+                self.assertRegex(card.find("span", "tp-rack-id").text(), r"^[BX]\.\d{2}$", rel)
 
     def test_codes_are_small_grey_sans_and_titles_serif(self) -> None:
         css = " ".join((SRC / "informatico.css").read_text(encoding="utf-8").split())
@@ -1072,6 +1373,9 @@ class MagazineCoverBrowserTests(unittest.TestCase):
         try:
             b = tab.evaluate(BOXES_JS)
             self.assertGreater(b["film"]["left"], b["deck"]["right"], "the film is not in the right column")
+            # No wide empty band between the words and the film (it was over 400 px at this width).
+            self.assertLess(b["film"]["left"] - max(b["h1"]["right"], b["deck"]["right"]), 160, b)
+            self.assertGreater(b["film"]["right"] - b["film"]["left"], 640, "the film does not fill its column")
             self.assertLess(b["film"]["top"], b["start"]["bottom"])
             self.assertLessEqual(b["start"]["bottom"], DESKTOP["height"])
             self.assertEqual(b["clipped"], [], "text on a section front or row is cut off")

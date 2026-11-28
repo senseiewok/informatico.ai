@@ -455,7 +455,7 @@ REVAMP_CSS = r"""
     text-transform: uppercase;
   }
 
-  /* Cover — Swiss Above-the-Fold 6-Track & Bounty Architecture */
+  /* Cover hero */
   .tp-cover-hero {
     display: grid;
     grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.82fr);
@@ -479,6 +479,8 @@ REVAMP_CSS = r"""
     max-width: 56ch;
   }
 
+  /* .tp-cover-figure is the hero's still picture on / and /about/ while a film has no YouTube id (the dormant
+     fallback in render_hub_index and render_about_page); tests/test_films.py renders both that way. */
   .tp-cover-figure {
     margin: 0;
   }
@@ -539,8 +541,6 @@ REVAMP_CSS = r"""
     background-color: var(--tp-prussian);
     color: var(--tp-vellum);
   }
-
-  /* Above-the-Fold 6-Track & Skills Navigator Strip */
 
   .tp-toolchain-boundary-banner {
     margin: 1rem 0 1.35rem;
@@ -668,8 +668,6 @@ REVAMP_CSS = r"""
     margin-bottom: 0.3rem;
   }
 
-  /* One grid cell for the pillar's links. Two links placed directly in the cell were drawn on top of each other. */
-
   @media (max-width: 860px) {
     .tp-cover-hero {
       grid-template-columns: 1fr;
@@ -691,7 +689,7 @@ REVAMP_CSS = r"""
 
   }
 
-  /* Cards: image, id + time, title, two-line deck */
+  /* Cards: image, title, deck (never cut), then time and code */
   .tp-body .tp-rack-card {
     padding: 0;
     gap: 0;
@@ -761,10 +759,6 @@ REVAMP_CSS = r"""
     font-size: 0.88rem;
     line-height: 1.4;
     color: var(--tp-graphite);
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
 
   /* Pillar hub */
@@ -2666,7 +2660,6 @@ REVAMP_CSS = r"""
   .tp-issue-rack-head .tp-h2 { margin: 0; }
   .tp-contents-series { margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid var(--tp-rule); }
 
-  /* Cover Featured Series Essay-Showcase (#featured-timegravity) */
   @media (max-width: 960px) {
     .tp-series-rack.tp-series-rack-lead {
       padding: 1.15rem 1rem 1.25rem;
@@ -3277,9 +3270,8 @@ REVAMP_CSS = r"""
     color: var(--tp-graphite);
   }
 
-  /* Section tiles: a count, a name in the serif, one short line that wraps instead of being cut off. */
-  /* Phone, cover only: headline, deck and Start reading first; then the film with its privacy line; then the
-     tiles. /about/ shares the hero classes and keeps its film first. */
+  /* Phone, cover only: headline, deck and Start reading first; then the film with its privacy line; then this
+     week's essay and the section fronts. /about/ shares the hero classes and keeps its film first. */
   @media (max-width: 860px) {
     .tp-page-cover .tp-cover-copy {
       order: 1;
@@ -3514,6 +3506,46 @@ REVAMP_CSS = r"""
   .tp-page-cover .tp-cover-hero {
     padding-bottom: 0;
     border-bottom: 0;
+  }
+  /* Desktop cover hero: the film takes the wider column and fills it, and the headline grows to fill its own,
+     so no empty band is left between the two. Phones keep the single column set above. */
+  @media (min-width: 861px) {
+    .tp-page-cover .tp-cover-hero {
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    }
+    .tp-page-cover .tp-cover-hero .tp-h1 {
+      font-size: clamp(2.1rem, 3.7vw, 3.5rem);
+      max-width: 22ch;
+    }
+    .tp-page-cover .tp-cover-hero .tp-standfirst {
+      max-width: 56ch;
+    }
+    .tp-page-cover .tp-cover-film,
+    .tp-page-cover .tp-cover-figure {
+      max-width: none;
+      justify-self: stretch;
+    }
+  }
+  /* A section heading that is also a link reads as a heading: ink colour, underline on hover or focus only. */
+  .tp-bounty-header .tp-h2 a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .tp-bounty-header .tp-h2 a:hover,
+  .tp-bounty-header .tp-h2 a:focus-visible {
+    text-decoration: underline;
+  }
+  /* "For builders" on the Bounties and Toolbox hubs: the quick-start steps, below the essays. */
+  .tp-builders-box {
+    margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+    padding: clamp(1.25rem, 2.5vw, 1.75rem) 0 0;
+    border-top: 1px solid var(--tp-rule-strong);
+  }
+  .tp-builders-box > .tp-h2 {
+    margin: 0 0 0.25rem;
+  }
+  .tp-builders-box .tp-studio-quickstart {
+    margin-top: 1rem;
   }
   .tp-page-cover .tp-featured-edition-desk.tp-this-week,
   .tp-page-cover .tp-cover-films,

@@ -38,6 +38,41 @@ class _Spans(HTMLParser):
         self.text.append(data)
 
 
+class _SeriesStandfirst(HTMLParser):
+    """The standfirst of the Time & Gravity rack on /physics/: its text and both languages of its pair."""
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.in_rack = False
+        self.in_stand = False
+        self.out: list[str] = []
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if tag == "section":
+            self.in_rack = a.get("id") == "timegravity-series"
+        elif self.in_rack and tag == "p" and "tp-standfirst" in (a.get("class") or "").split():
+            self.in_stand = True
+            self.out += [a.get("data-en", ""), a.get("data-es", "")]
+
+    def handle_endtag(self, tag):
+        if tag == "p":
+            self.in_stand = False
+
+    def handle_data(self, data):
+        if self.in_stand:
+            self.out.append(data)
+
+
+def series_standfirst(html_text: str) -> str:
+    parser = _SeriesStandfirst()
+    parser.feed(html_text)
+    parser.close()
+    text = " ".join(parser.out)
+    assert "offline" in text or "fuera de línea" in text, "the Time & Gravity rack standfirst was not found"
+    return text
+
+
 def labels_of(path: Path) -> list[str]:
     p = _Spans()
     p.feed(path.read_text(encoding="utf-8"))
@@ -251,14 +286,15 @@ class TimeGravityTrackTests(unittest.TestCase):
         phys = (RESEARCH / "physics" / "index.html").read_text(encoding="utf-8")
         es_phys = (RESEARCH / "es-mx" / "physics" / "index.html").read_text(encoding="utf-8")
         ledger_rows = len(json.loads((ROOT / "timegravity" / "ledger.json").read_text(encoding="utf-8"))["rows"])
-        for rel, txt, row_words in (("en", phys, f"to a {ledger_rows}-row offline ledger."), ("es", es_phys, f"un libro de {ledger_rows} filas.")):
+        for rel, txt, row_words in (("en", phys, f"to a {ledger_rows}-row offline ledger."), ("es", es_phys, f"un registro fuera de línea de {ledger_rows} filas.")):
             self.assertLess(txt.index('id="timegravity-series"'), txt.index('id="all-essays"'), rel)
             # The reading order the cover's rail used to show is the order of the series cards on /physics/:
             # step 2 is T.02, which comes before T.01.
             self.assertLess(txt.index('href="../timegravity/t02/" data-folio-slug'), txt.index('href="../timegravity/t01/" data-folio-slug'), rel)
             # The ledger size is counted at build time; the two stale hand-typed numbers are gone.
             self.assertIn(row_words, txt, rel)
-            self.assertNotIn("117", txt[txt.index('id="timegravity-series"'):txt.index('id="all-essays"')], rel)
+            for stale in ("117-row", "117 filas", "117 rows"):
+                self.assertNotIn(stale, series_standfirst(txt), rel)
             self.assertNotIn("123 audited claims", txt, rel)
             self.assertNotIn("123 afirmaciones", txt, rel)
             self.assertNotIn("(T.00)", txt, rel)
