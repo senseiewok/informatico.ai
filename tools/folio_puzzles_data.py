@@ -538,7 +538,7 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
         "title_en": "Folio A.01 · Funicular Masonry Vaults & Glaser Crossword",
         "title_es": "Folio A.01 · Crucigrama de Bóvedas Funiculares y Condensación de Glaser",
         "en": [
-            ("CATENARY", "Hanging chain curve that Hooke stated, as an anagram, becomes a pure compression arch when inverted, and that Gaudí used in a hanging model of weighted cords", "Act I"),
+            ("CATENARY", "Hanging chain curve that Hooke stated, as an anagram, becomes a pure compression arch when inverted", "Act I"),
             ("HEYMAN", "Structural theorist whose 1966 paper The Stone Skeleton brought the safe theorem to stone structures", "Act I"),
             ("THRUST", "Line of compressive force; it must stay inside the masonry for Heyman's safe theorem, and inside the middle third for the stricter rule the folio checks", "Act II"),
             ("VAULT", "Curved masonry ceiling shell; an unreinforced stone one can stand for centuries yet fail quickly if its abutments spread", "Act II"),
@@ -551,7 +551,7 @@ RAW_PUZZLE_SPECS: dict[str, dict[str, Any]] = {
             ("EMPUJE", "Línea de fuerza compresiva; debe quedar dentro de la mampostería para el teorema de Heyman y dentro del tercio medio para la regla más estricta que revisa el folio", "Acto II"),
             ("GLASER", "Perfil de presión de vapor que el folio muestra para el nodo de arranque 1:5; su temperatura superficial de 16.4 grados es un valor ilustrativo", "Acto III"),
             ("PIEDRA", "Material de la bóveda; resiste compresión y casi no tiene resistencia a tracción", "Acto II"),
-            ("ARCO", "Forma que invierte la curva de una cadena colgante, idea que Hooke publicó como anagrama y que Gaudí usó en un modelo colgante de cuerdas", "Acto I"),
+            ("ARCO", "Forma que invierte la curva de una cadena colgante, idea que Hooke publicó como anagrama", "Acto I"),
         ],
     },
     "a02": {
