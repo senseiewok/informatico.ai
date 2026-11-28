@@ -6,6 +6,12 @@
     "poster": "images/films/informatico-intro.webp"
   },
   {
+    "slug": "cf-lab-trailer",
+    "youtube_id": "NaH3vw-wX1A",
+    "duration": "0:30",
+    "poster": "images/films/cf-lab-trailer.webp"
+  },
+  {
     "slug": "follow-the-light",
     "youtube_id": "-iCbbNoexpk",
     "duration": "4:58",

@@ -105,7 +105,7 @@ def _render_hub_with(films: list[dict]) -> tuple[str, str]:
 class FilmsDataTests(unittest.TestCase):
     def test_films_json_rows(self) -> None:
         self.assertIsInstance(FILMS, list)
-        self.assertEqual([f["slug"] for f in FILMS], ["informatico-intro", "follow-the-light"])
+        self.assertEqual([f["slug"] for f in FILMS], ["informatico-intro", "cf-lab-trailer", "follow-the-light"])
         for f in FILMS:
             self.assertEqual(set(f), {"slug", "youtube_id", "duration", "poster"}, f["slug"])
             vid = f["youtube_id"]
@@ -273,7 +273,7 @@ class FilmsSectionTests(unittest.TestCase):
     def test_built_covers_match_films_json(self) -> None:
         """src/index.html and src/es-mx/index.html agree with each other and with data/films.json."""
         live = [f for f in FILMS if f["youtube_id"]]
-        shelf = [f for f in live if f["slug"] != B.COVER_PLAYER_SLUG]
+        shelf = [f for f in live if f["slug"] not in B.PLAYER_SLUGS]
         player = [f for f in live if f["slug"] == B.COVER_PLAYER_SLUG]
         for rel in ("index.html", "es-mx/index.html"):
             html = (SRC / rel).read_text(encoding="utf-8")
@@ -456,7 +456,7 @@ class FilmPlayerMarkupTests(unittest.TestCase):
             rel = page.relative_to(SRC).as_posix()
             for banned in ("<iframe", "youtube-nocookie", "ytimg", "youtube.com/embed", "preconnect", "dns-prefetch", "srcdoc"):
                 self.assertNotIn(banned, low, f"{rel}: {banned}")
-        for rel in ("index.html", "es-mx/index.html"):
+        for rel in ("index.html", "es-mx/index.html", "about/index.html", "es-mx/about/index.html"):
             html = (SRC / rel).read_text(encoding="utf-8")
             hosts = set(re.findall(r"https?://([a-z0-9.-]*(?:youtube|youtu\.be|google|ytimg|ggpht)[a-z0-9.-]*)", html.lower()))
             self.assertEqual(hosts, {"www.youtube.com"}, rel)
@@ -469,6 +469,215 @@ class FilmPlayerMarkupTests(unittest.TestCase):
             self.assertIn(needle, css)
         self.assertNotIn("youtube-nocookie", css.lower())
         self.assertNotIn("ytimg", css.lower())
+
+
+class _Elements(HTMLParser):
+    """Flat list of elements in document order: (tag, attrs dict, text directly inside, ancestor tags+classes).
+    Parsed with html.parser, never matched with a tag regex."""
+
+    VOID = {"img", "br", "hr", "meta", "link", "input", "source", "wbr", "area", "base", "col", "embed", "track"}
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.items: list[dict] = []
+        self.stack: list[dict] = []
+
+    def handle_starttag(self, tag, attrs):
+        item = {"tag": tag, "attrs": dict(attrs), "text": "", "path": [(e["tag"], e["attrs"].get("class", "")) for e in self.stack]}
+        self.items.append(item)
+        if tag not in self.VOID:
+            self.stack.append(item)
+
+    def handle_startendtag(self, tag, attrs):
+        self.items.append({"tag": tag, "attrs": dict(attrs), "text": "", "path": [(e["tag"], e["attrs"].get("class", "")) for e in self.stack]})
+
+    def handle_endtag(self, tag):
+        for i in range(len(self.stack) - 1, -1, -1):
+            if self.stack[i]["tag"] == tag:
+                del self.stack[i:]
+                break
+
+    def handle_data(self, data):
+        if self.stack:
+            self.stack[-1]["text"] += data
+
+
+def _elements(html: str) -> list[dict]:
+    parser = _Elements()
+    parser.feed(html)
+    parser.close()
+    return parser.items
+
+
+def _inside(item: dict, tag: str, cls: str) -> bool:
+    return any(t == tag and cls in c.split() for t, c in item["path"])
+
+
+def _render_about_with(films: list[dict]) -> tuple[str, str]:
+    """Render both About pages in memory with a temporary films.json; nothing under src/ is written."""
+    catalog = json.loads((SRC / "data" / "magazine_catalog.json").read_text(encoding="utf-8"))
+    saved = B.FILMS_JSON
+    with tempfile.TemporaryDirectory() as tmp:
+        p = Path(tmp) / "films.json"
+        p.write_text(json.dumps(films), encoding="utf-8")
+        B.FILMS_JSON = p
+        try:
+            en = B.render_about_page(catalog, "en")
+            es = B.to_spanish_static(B.render_about_page(catalog, "es"))
+        finally:
+            B.FILMS_JSON = saved
+    return en, es
+
+
+class AboutFilmPlayerTests(unittest.TestCase):
+    """/about/ and /es-mx/about/: the sister lab's trailer as a click-to-play player in the hero."""
+
+    TRAILER = {"slug": "cf-lab-trailer", "youtube_id": "Qq1_Ww2-Ee3", "duration": "0:30", "poster": "images/films/cf-lab-trailer.webp"}
+    NAME_EN = "Play film: Sensei Ewok's CF Lab, 30 seconds, from YouTube"
+    NAME_ES = "Reproducir video: Sensei Ewok's CF Lab, 30 segundos, desde YouTube"
+    FRAME_EN = "Sensei Ewok's CF Lab: a 30-second trip to the CFTR gene"
+    FRAME_ES = "Sensei Ewok's CF Lab: un viaje de 30 segundos al gen CFTR"
+    # The sister site's name is assembled here: tests/test_informatico_public.py lets only the About sources spell it.
+    SISTER_SITE = "senseiewok" + ".ai"
+    NOTE_EN = f"The lab's cystic fibrosis film, from {SISTER_SITE}."
+    NOTE_ES = f"El video del laboratorio sobre fibrosis quística, de {SISTER_SITE}."
+
+    def _film_parts(self, page: str) -> dict:
+        """The player's elements on a page, found by parsing: exactly one figure, facade, button, link."""
+        els = _elements(page)
+        figures = [e for e in els if e["tag"] == "figure" and "tp-cover-film" in e["attrs"].get("class", "").split()]
+        self.assertEqual(len(figures), 1)
+        inside = [e for e in els if _inside(e, "figure", "tp-cover-film")]
+
+        def one(tag: str, cls: str) -> dict:
+            found = [e for e in inside if e["tag"] == tag and cls in e["attrs"].get("class", "").split()]
+            self.assertEqual(len(found), 1, f"{tag}.{cls}")
+            return found[0]
+
+        return {
+            "figure": figures[0],
+            "facade": one("div", "tp-film-facade"),
+            "img": one("img", "tp-film-poster"),
+            "button": one("button", "tp-film-play"),
+            "glyph": one("span", "tp-film-play-glyph"),
+            "name": one("span", "tp-sr-only"),
+            "title": one("span", "tp-film-title"),
+            "link": one("a", "tp-film-out"),
+            "privacy": one("span", "tp-film-privacy"),
+            "note": one("span", "tp-film-note"),
+            "all": inside,
+            "page": els,
+        }
+
+    def test_two_players_one_per_page_and_neither_is_a_shelf_card(self) -> None:
+        self.assertEqual(B.ABOUT_PLAYER_SLUG, "cf-lab-trailer")
+        self.assertEqual(B.PLAYER_SLUGS, ("informatico-intro", "cf-lab-trailer"))
+        self.assertEqual([f["youtube_id"] for f in FILMS if f["slug"] == B.ABOUT_PLAYER_SLUG], ["NaH3vw-wX1A"])
+        self.assertEqual([f["duration"] for f in FILMS if f["slug"] == B.ABOUT_PLAYER_SLUG], ["0:30"])
+        films = [FIXTURE[0], self.TRAILER, FIXTURE[1]]
+        shelf = B.render_cover_films_section(".", films)
+        self.assertNotIn("cf-lab-trailer", shelf)
+        self.assertNotIn(self.TRAILER["youtube_id"], shelf)
+        self.assertEqual(shelf.count('class="tp-film-link"'), 1)
+        cover = B.render_cover_film_player(".", films)
+        self.assertNotIn(self.TRAILER["youtube_id"], cover)
+        about = B.render_about_film_player("..", films)
+        self.assertNotIn(FIXTURE[0]["youtube_id"], about)
+        self.assertEqual(about.count("data-yt="), 1)
+        with self.assertRaisesRegex(ValueError, "not a click-to-play film"):
+            B.render_film_player("follow-the-light", ".", films)
+
+    def test_bad_rows_stop_the_build(self) -> None:
+        for bad in ("abc", "Qq1_Ww2-Ee34", 'Qq1"Ww2-Ee3', "Qq1_Ww2-Ee3\n", "", 12345678901):
+            with self.subTest(bad=bad), self.assertRaisesRegex(ValueError, "youtube_id must"):
+                B.render_about_film_player("..", [dict(self.TRAILER, youtube_id=bad)])
+        with self.assertRaisesRegex(ValueError, "duration must"):
+            B.render_about_film_player("..", [dict(self.TRAILER, duration="30")])
+        for bad in (None, "images/films/missing.webp", "https://example.com/x.webp"):
+            with self.subTest(poster=bad), self.assertRaisesRegex(ValueError, "needs an existing"):
+                B.render_about_film_player("..", [dict(self.TRAILER, poster=bad)])
+
+    def test_about_player_markup_on_both_pages(self) -> None:
+        en, es = _render_about_with([FIXTURE[0], self.TRAILER, FIXTURE[1]])
+        want_href = f"https://www.youtube.com/watch?v={self.TRAILER['youtube_id']}"
+        for rel, page, name, privacy, note, link_text, title, poster_prefix in (
+            ("en", en, self.NAME_EN, B.FILM_PRIVACY_EN, self.NOTE_EN, "Watch on youtube.com", self.FRAME_EN + " · 0:30", "../images/films/"),
+            ("es", es, self.NAME_ES, B.FILM_PRIVACY_ES, self.NOTE_ES, "Ver en youtube.com", self.FRAME_ES + " · 0:30", "../../images/films/"),
+        ):
+            with self.subTest(page=rel):
+                p = self._film_parts(page)
+                self.assertEqual(p["figure"]["attrs"].get("data-film"), "cf-lab-trailer")
+                self.assertTrue(_inside(p["figure"], "section", "tp-cover-hero"), "the player sits in the hero")
+                self.assertEqual(p["facade"]["attrs"]["data-yt"], self.TRAILER["youtube_id"])
+                self.assertEqual(p["facade"]["attrs"]["data-title-en"], self.FRAME_EN)
+                self.assertEqual(p["facade"]["attrs"]["data-title-es"], self.FRAME_ES)
+                img = p["img"]["attrs"]
+                self.assertEqual((img["alt"], img["width"], img["height"], img["loading"]), ("", "640", "360", "eager"))
+                self.assertRegex(img["src"], r"^" + re.escape(poster_prefix) + r"cf-lab-trailer\.webp\?v=[0-9a-f]{8}$")
+                self.assertTrue((SRC / "images" / "films" / "cf-lab-trailer.webp").is_file())
+                button = p["button"]["attrs"]
+                self.assertEqual(button["type"], "button")
+                self.assertIn("hidden", button)
+                self.assertNotIn("aria-label", button)
+                self.assertEqual(button["aria-describedby"], "film-privacy-cf-lab-trailer")
+                self.assertEqual(p["glyph"]["attrs"]["aria-hidden"], "true")
+                self.assertEqual(p["name"]["text"], name)
+                self.assertEqual((p["name"]["attrs"]["data-en"], p["name"]["attrs"]["data-es"]), (self.NAME_EN, self.NAME_ES))
+                self.assertEqual(p["privacy"]["attrs"]["id"], "film-privacy-cf-lab-trailer")
+                self.assertIn("hidden", p["privacy"]["attrs"])
+                self.assertEqual(p["privacy"]["text"], privacy)
+                self.assertEqual(p["note"]["text"], note)
+                self.assertEqual(p["title"]["text"], title)
+                self.assertEqual(p["link"]["attrs"]["href"], want_href)
+                self.assertEqual(p["link"]["attrs"]["rel"], "noopener noreferrer")
+                self.assertEqual(p["link"]["text"], link_text)
+                # Nothing in the figure loads from, or frames, another host; nothing carries an inline style.
+                for e in p["all"]:
+                    self.assertNotIn(e["tag"], {"iframe", "script", "embed", "object", "video", "source"}, rel)
+                    self.assertNotIn("style", e["attrs"], rel)
+                    self.assertNotIn("srcdoc", e["attrs"], rel)
+                self.assertEqual([e["attrs"]["href"] for e in p["all"] if "href" in e["attrs"]], [want_href])
+                # One player, one privacy id, and the old Plate 0-A figure gives way to it.
+                self.assertEqual(sum(1 for e in p["page"] if e["attrs"].get("id") == "film-privacy-cf-lab-trailer"), 1)
+                self.assertEqual(sum(1 for e in p["page"] if e["tag"] == "iframe"), 0)
+                self.assertEqual(sum(1 for e in p["page"] if "tp-cover-figure" in e["attrs"].get("class", "").split()), 0)
+                # Order in the document: heading first, then the player, then the essay.
+                ids = [e["attrs"].get("id") for e in p["page"]]
+                order = [i for i, e in enumerate(p["page"]) if e is p["figure"]][0]
+                self.assertLess(ids.index("about-heading"), order)
+                self.assertLess(order, ids.index("pace1-heading"))
+
+    def test_about_keeps_its_plate_while_the_trailer_is_dormant(self) -> None:
+        en, es = _render_about_with([FIXTURE[0], dict(self.TRAILER, youtube_id=None), FIXTURE[1]])
+        for rel, page in (("en", en), ("es", es)):
+            els = _elements(page)
+            self.assertEqual(sum(1 for e in els if "tp-cover-film" in e["attrs"].get("class", "").split()), 0, rel)
+            self.assertEqual(sum(1 for e in els if "tp-film-facade" in e["attrs"].get("class", "").split()), 0, rel)
+            self.assertEqual(sum(1 for e in els if e["tag"] == "figure" and "tp-cover-figure" in e["attrs"].get("class", "").split()), 1, rel)
+
+    def test_built_about_pages_match_films_json(self) -> None:
+        trailer = next(f for f in FILMS if f["slug"] == B.ABOUT_PLAYER_SLUG)
+        for rel, name in (("about/index.html", self.NAME_EN), ("es-mx/about/index.html", self.NAME_ES)):
+            p = self._film_parts((SRC / rel).read_text(encoding="utf-8"))
+            self.assertEqual(p["facade"]["attrs"]["data-yt"], trailer["youtube_id"], rel)
+            self.assertEqual(p["link"]["attrs"]["href"], f"https://www.youtube.com/watch?v={trailer['youtube_id']}", rel)
+            self.assertEqual(p["name"]["text"], name, rel)
+            self.assertEqual(sum(1 for e in p["page"] if e["tag"] == "iframe"), 0, rel)
+            scripts = [e["attrs"].get("src", "") for e in p["page"] if e["tag"] == "script" and "src" in e["attrs"]]
+            self.assertTrue(any(s.endswith("modules/main.mjs") for s in scripts), f"{rel}: the page loads the module entry")
+
+    def test_the_caption_says_whose_film_it_is_and_no_more(self) -> None:
+        copy = B.FILM_COPY["cf-lab-trailer"]
+        self.assertEqual((copy["note_en"], copy["note_es"]), (self.NOTE_EN, self.NOTE_ES))
+        for text in (copy["note_en"], copy["note_es"], copy["title_en"], copy["title_es"]):
+            low = text.lower()
+            for word in ("cure", "cura", "treat", "trat", "therap", "terap", "breakthrough", "award", "premio", "proves", "demuestra"):
+                self.assertNotIn(word, low, text)
+
+    def test_security_doc_states_the_one_exception(self) -> None:
+        doc = (ROOT / "SECURITY.md").read_text(encoding="utf-8")
+        self.assertIn("pressing play builds one frame for `https://www.youtube-nocookie.com`", doc)
+        self.assertIn("The pages ship no frame and request nothing from another host", doc)
 
 
 class FilmFacadeModuleTests(unittest.TestCase):

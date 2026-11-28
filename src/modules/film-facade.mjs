@@ -1,6 +1,6 @@
 /**
  * @module film-facade
- * Click-to-play film player for the cover.
+ * Click-to-play film player (the cover and the About page each carry one).
  *
  * The page ships a poster and a hidden play button, and no frame. Until the reader presses play nothing
  * is requested from YouTube: no frame, no script, no thumbnail and no preconnect. On the press this module
@@ -52,7 +52,7 @@ function frameTitle(facade, isEs) {
 }
 
 function captionParts(facade) {
-  const figure = facade.closest(".tp-cover-film");
+  const figure = facade.closest("figure");
   return {
     privacy: figure ? figure.querySelector(".tp-film-privacy") : null,
     link: figure ? figure.querySelector("a.tp-film-out") : null,

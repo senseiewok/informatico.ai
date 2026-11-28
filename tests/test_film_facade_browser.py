@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Browser check of the cover's click-to-play film (src/modules/film-facade.mjs) in Playwright Chromium.
+"""Browser check of the click-to-play films on the cover and on /about/ (src/modules/film-facade.mjs), in Chromium.
 
-The cover is served from 127.0.0.1 with the Content-Security-Policy, Permissions-Policy and Referrer-Policy
+The site is served from 127.0.0.1 with the Content-Security-Policy, Permissions-Policy and Referrer-Policy
 read from deploy/htaccess.txt, so the policies the live site sends are the policies under test. Every request
 to another host is recorded and aborted.
 
@@ -12,7 +12,7 @@ to another host is recorded and aborted.
   Referer and nothing more; no CSP or Trusted Types error;
 - a bad video ID never shows the button and never builds a frame; an ID that goes bad before the press
   hides the button again and moves focus to the plain link;
-- without scripts, on both covers, the poster and the plain link remain.
+- without scripts, on all four pages, the poster and the plain link remain.
 
 Skipped when Playwright or Chromium is not installed. Set FILM_FACADE_SHOTS to a folder to save screenshots.
 """
@@ -62,22 +62,30 @@ def serve_with_headers(directory: Path, headers: dict[str, str]):
     httpd = _StaticSiteServer(("127.0.0.1", 0), functools.partial(_Handler, directory=str(directory)))
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
     return httpd, f"http://127.0.0.1:{httpd.server_address[1]}/"
+
+
 FILMS = json.loads((ROOT / "data" / "films.json").read_text(encoding="utf-8"))
 INTRO = next(f for f in FILMS if f["slug"] == "informatico-intro")
+TRAILER = next(f for f in FILMS if f["slug"] == "cf-lab-trailer")
 PLAYER_HOST = "www.youtube-nocookie.com"
 VIEWPORTS = (("desktop", {"width": 1440, "height": 900}), ("mobile", {"width": 375, "height": 812}))
-COVERS = (
-    ("en", "", "Play film: Informatico intro, 45 seconds, from YouTube", "Informatico: intro (YouTube video player)",
-     "This film plays from YouTube. Nothing from YouTube loads until you press play; then YouTube can see you came from this site."),
-    ("es", "es-mx/", "Reproducir video: Informatico, introducción, 45 segundos, desde YouTube",
-     "Informatico: introducción (reproductor de video de YouTube)",
-     "Este video se reproduce desde YouTube. No se carga nada de YouTube hasta que oprimas reproducir; entonces YouTube puede ver que llegaste desde este sitio."),
+PRIVACY_EN = "This film plays from YouTube. Nothing from YouTube loads until you press play; then YouTube can see you came from this site."
+PRIVACY_ES = "Este video se reproduce desde YouTube. No se carga nada de YouTube hasta que oprimas reproducir; entonces YouTube puede ver que llegaste desde este sitio."
+# Every page that carries a player: (page, lang, route, button name, frame title, privacy line, film row).
+PAGES = (
+    ("cover", "en", "", "Play film: Informatico intro, 45 seconds, from YouTube", "Informatico: intro (YouTube video player)", PRIVACY_EN, INTRO),
+    ("cover", "es", "es-mx/", "Reproducir video: Informatico, introducción, 45 segundos, desde YouTube",
+     "Informatico: introducción (reproductor de video de YouTube)", PRIVACY_ES, INTRO),
+    ("about", "en", "about/", "Play film: Sensei Ewok's CF Lab, 30 seconds, from YouTube",
+     "Sensei Ewok's CF Lab: a 30-second trip to the CFTR gene", PRIVACY_EN, TRAILER),
+    ("about", "es", "es-mx/about/", "Reproducir video: Sensei Ewok's CF Lab, 30 segundos, desde YouTube",
+     "Sensei Ewok's CF Lab: un viaje de 30 segundos al gen CFTR", PRIVACY_ES, TRAILER),
 )
 POLICY_ERROR_RE = re.compile(r"content security policy|trusted ?types|refused to|permissions policy", re.I)
 
 
 @unittest.skipIf(sync_playwright is None, "Playwright is not installed in this Python")
-@unittest.skipIf(INTRO["youtube_id"] is None, "the intro film is dormant")
+@unittest.skipIf(INTRO["youtube_id"] is None or TRAILER["youtube_id"] is None, "a click-to-play film is dormant")
 class FilmFacadeBrowserTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
@@ -114,7 +122,7 @@ class FilmFacadeBrowserTests(unittest.TestCase):
             httpd.server_close()
 
     def _open(self, route: str, viewport: dict[str, int]):
-        """A page on the cover with every outside request recorded and aborted, and console errors collected."""
+        """A page with every outside request recorded and aborted, and console errors collected."""
         ctx = self.browser.new_context(viewport=viewport)
         outside: list[str] = []
         errors: list[str] = []
@@ -152,11 +160,10 @@ class FilmFacadeBrowserTests(unittest.TestCase):
         self.assertIn("style-src-attr 'none'", self.csp)
 
     def test_nothing_from_youtube_before_the_press_then_one_exact_focused_frame(self) -> None:
-        vid = INTRO["youtube_id"]
-        want_src = f"https://www.youtube-nocookie.com/embed/{vid}?autoplay=1&rel=0&playsinline=1"
         for vp_name, viewport in VIEWPORTS:
-            for lang, route, name, title, privacy in COVERS:
-                with self.subTest(viewport=vp_name, lang=lang):
+            for page_name, lang, route, name, title, privacy, film in PAGES:
+                want_src = f"https://www.youtube-nocookie.com/embed/{film['youtube_id']}?autoplay=1&rel=0&playsinline=1"
+                with self.subTest(page=page_name, viewport=vp_name, lang=lang):
                     ctx, page, outside, errors = self._open(route, viewport)
                     try:
                         # Before the press.
@@ -215,7 +222,7 @@ class FilmFacadeBrowserTests(unittest.TestCase):
                         self.assertAlmostEqual(before["width"] / before["height"], 16 / 9, delta=0.03)
                         self.assertAlmostEqual(before["bw"], before["width"], delta=3)
                         self.assertAlmostEqual(before["bh"], before["height"], delta=3)
-                        self._shot(page, f"{vp_name}-{lang}-1-before")
+                        self._shot(page, f"{page_name}-{vp_name}-{lang}-1-before")
 
                         # The press, from the keyboard path: focus, then Enter.
                         button.focus()
@@ -268,16 +275,21 @@ class FilmFacadeBrowserTests(unittest.TestCase):
                         self.assertEqual({urlsplit(u).hostname for u in outside}, {PLAYER_HOST})
                         policy_errors = [e for e in errors if POLICY_ERROR_RE.search(e)]
                         self.assertEqual(policy_errors, [], "CSP or Trusted Types violation")
-                        self._shot(page, f"{vp_name}-{lang}-2-after-press-frame-aborted")
+                        self._shot(page, f"{page_name}-{vp_name}-{lang}-2-after-press-frame-aborted")
                     finally:
                         ctx.close()
 
     def test_bad_ids_are_rejected_in_the_browser(self) -> None:
-        ctx, page, outside, errors = self._open("", VIEWPORTS[0][1])
+        for route, film in (("", INTRO), ("about/", TRAILER)):
+            with self.subTest(route=route):
+                self._bad_ids_on(route, film)
+
+    def _bad_ids_on(self, route: str, film: dict) -> None:
+        ctx, page, outside, errors = self._open(route, VIEWPORTS[0][1])
         try:
             result = page.evaluate(
                 """async () => {
-                    const m = await import('./modules/film-facade.mjs');
+                    const m = await import('/modules/film-facade.mjs');
                     const bad = ['', 'abc', 'AbC_dEf-1234', 'AbC dEf-123', 'AbC_dEf-123\\n', 'AbC"dEf-123', '../../../../x',
                                  'https://evil.example/', 'AbC_dEf-12\\u0661', null, undefined, 12345678901, ['AbC_dEf-123']];
                     const out = { accepted: [], frames: [], good: m.filmEmbedSrc('AbC_dEf-123') };
@@ -318,7 +330,7 @@ class FilmFacadeBrowserTests(unittest.TestCase):
             self.assertTrue(result["buttonHiddenAgain"])
             self.assertTrue(result["privacyHiddenAgain"])
             self.assertTrue(result["focusOnPlainLink"])
-            self.assertEqual(result["plainLinkHref"], f"https://www.youtube.com/watch?v={INTRO['youtube_id']}")
+            self.assertEqual(result["plainLinkHref"], f"https://www.youtube.com/watch?v={film['youtube_id']}")
             self.assertEqual(result["wired"], 0)
             self.assertTrue(result["freshHidden"])
             self.assertEqual(result["framesAtEnd"], 0)
@@ -331,7 +343,12 @@ class FilmFacadeBrowserTests(unittest.TestCase):
         outside: list[str] = []
         try:
             ctx.route("**/*", lambda r: r.continue_() if r.request.url.startswith(self.base) else (outside.append(r.request.url), r.abort()))
-            for route, link_text in (("", "Watch on youtube.com"), ("es-mx/", "Ver en youtube.com")):
+            for route, link_text, film in (
+                ("", "Watch on youtube.com", INTRO),
+                ("es-mx/", "Ver en youtube.com", INTRO),
+                ("about/", "Watch on youtube.com", TRAILER),
+                ("es-mx/about/", "Ver en youtube.com", TRAILER),
+            ):
                 with self.subTest(route=route):
                     page = ctx.new_page()
                     page.goto(self.base + route, wait_until="load")
@@ -341,7 +358,7 @@ class FilmFacadeBrowserTests(unittest.TestCase):
                     link = page.locator("a.tp-film-out")
                     self.assertTrue(link.is_visible())
                     self.assertEqual(link.inner_text(), link_text)
-                    self.assertEqual(link.get_attribute("href"), f"https://www.youtube.com/watch?v={INTRO['youtube_id']}")
+                    self.assertEqual(link.get_attribute("href"), f"https://www.youtube.com/watch?v={film['youtube_id']}")
                     self.assertEqual(page.locator("iframe").count(), 0)
                     page.close()
             self.assertEqual(outside, [])
