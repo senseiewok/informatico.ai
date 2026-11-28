@@ -6343,7 +6343,7 @@
         ],
         "lineage_mode": "SYNTHESIS · Synthesizes M.01 Lean 4 Modularity, M.03 Tensor Rank & M.06 Fine-Grained Complexity",
         "title": "Public Lean 4 Repositories and NIST FIPS 203 (ML-KEM): What They State, Side by Side",
-        "subtitle": "Synthesizing Folios M.01, M.03 and M.06: what the README of the public Lean 4 repository anthropics/formal-math, read on 2026-11-14, says it contains (including an eth project that the README says refutes the Exponential Time Hypothesis, a statement this site has not checked), set beside the module-lattice key encapsulation standard NIST FIPS 203 (ML-KEM).",
+        "subtitle": "Synthesizing Folios M.01, M.03 and M.06: what the README of the public Lean 4 repository anthropics/formal-math, read on 2026-11-28, says it contains (including an eth project that the README says refutes the Exponential Time Hypothesis, a statement this site has not checked), set beside the module-lattice key encapsulation standard NIST FIPS 203 (ML-KEM).",
         "date_published": "2026-11-07",
         "date_redated": "2026-11-14",
         "current_edition": "REV 1.1",
@@ -6353,7 +6353,7 @@
         "governing_law_latex": "b = A s + e \\pmod{q}, \\\\ q = 3329, \\quad n = 256, \\\\ k \\in \\{2,3,4\\} \\;(\\text{NIST FIPS 203})",
         "colophon": {
           "identifier": "M.12 · anthropics/formal-math (as stated in its READMEs) & NIST FIPS 203 ML-KEM Lattices",
-          "kernels": "Projects listed in the anthropics/formal-math README read 2026-11-14: zeta23, 3sum-apsp, eth (not built here) · Module-LWE b = As + e",
+          "kernels": "Projects listed in the anthropics/formal-math README read 2026-11-28: zeta23, 3sum-apsp, eth, vp-vnp (not built here) · Module-LWE b = As + e",
           "benchmarks": "ML-KEM-768: k = 3 · q = 3329 · n = 256 · NIST security category 3 · decapsulation failure 2^−164.8 (FIPS 203, Table 1)",
           "bridge": "Synthesizes M.01/M.03/M.06 · Egg carton in fog (analogy) ↔ post-quantum key exchange"
         },
@@ -6378,7 +6378,7 @@
         "steps": [
           "Stage 1 (Shor's Quantum Period-Finding): Shor's 1994 algorithm would let a large fault-tolerant quantum computer (Folio P.11) find the period r of a^x mod N in time polynomial in log N, which would break RSA and elliptic-curve cryptography. No quantum computer able to do this for cryptographic key sizes has been reported.",
           "Stage 2 (Module Learning With Errors, NIST FIPS 203 ML-KEM): The public key b = A s + e (mod q = 3329) over the ring R_q = ℤ_q[X]/(X²⁵⁶ + 1) hides the secret s behind small centered binomial noise e. Its security rests on the presumed hardness of module lattice problems; Regev (2009) showed that plain LWE is at least as hard, under a quantum reduction, as certain worst-case lattice problems.",
-          "Stage 3 (What anthropics/formal-math says it contains): The README of anthropics/formal-math, read on 2026-11-14, lists three Lean 4 projects: zeta23 (Alpöge–Furman on zeta zeros), 3sum-apsp (Alman–Vassilevska Williams on 3SUM and APSP) and eth, described there as an algorithm for counting k-CNF solutions that refutes the Exponential Time Hypothesis. This site has not built or checked any of them. Earlier editions named files EightSquare.lean, ThreeSUM_APSP.lean and ETHIsFalse.lean; no files of those names appear in the repository's file tree read on 2026-11-14.",
+          "Stage 3 (What anthropics/formal-math says it contains): The README of anthropics/formal-math, read on 2026-11-28, lists four Lean 4 projects: zeta23 (Alpöge–Furman on zeta zeros), 3sum-apsp (Alman–Vassilevska Williams on 3SUM and APSP), eth, described there as an algorithm for counting k-CNF solutions that refutes the Exponential Time Hypothesis, and vp-vnp. This site has not built or checked any of them. Claims about named Lean files in earlier editions are withdrawn.",
           "Stage 4 (Implementation): open-quantum-safe/liboqs is an open-source library of post-quantum algorithms. Formal proofs about mathematics do not by themselves make an implementation bug-free; verifying cryptographic code is a separate task."
         ],
         "readouts": [
@@ -6388,11 +6388,11 @@
           },
           {
             "label": "Eight-Square Rank Claim",
-            "value": "Withdrawn: no EightSquare.lean in the formal-math file tree (read 2026-11-14)"
+            "value": "Withdrawn: not verified by this site"
           },
           {
             "label": "formal-math/eth README Statement",
-            "value": "README read 2026-11-14 states an ETH refutation (not checked here)"
+            "value": "README read 2026-11-28 states an ETH refutation (not checked here)"
           },
           {
             "label": "ML-KEM-768 Decapsulation Failure",
@@ -6411,12 +6411,12 @@
         },
         "sidenote_2": {
           "kicker": "SIDENOTE M.12-B · WHAT THE ANTHROPICS/FORMAL-MATH README LISTS",
-          "body": "The README of https://github.com/anthropics/formal-math, read on 2026-11-14, lists three projects: zeta23, 3sum-apsp and eth. It states a deterministic algorithm that counts satisfying assignments of every k-CNF in 2^O(min{k²n log log n/√log n, km/√log m}) steps, which it says refutes the Exponential Time Hypothesis. That is an extraordinary claim; this site reports it as the repository's statement and has not checked it. The README of https://github.com/anthropics/fermats-last-theorem, read the same day, describes it as a separate Lean 4 repository holding a machine-checked proof of Fermat's Last Theorem."
+          "body": "The README of https://github.com/anthropics/formal-math, read on 2026-11-28, lists four projects: zeta23, 3sum-apsp, eth and vp-vnp. For eth it states a deterministic algorithm that counts satisfying assignments of every k-CNF (m ≥ 2 clauses, n ≥ 4 variables) in 2^O(min{k²n log log n/√log n, km/√log m}) steps, which it says refutes the Exponential Time Hypothesis. That is an extraordinary claim; this site reports it as the repository's statement and has not checked it. The README of https://github.com/anthropics/fermats-last-theorem, read the same day, describes it as a separate Lean 4 repository holding a machine-checked proof of Fermat's Last Theorem."
         },
         "skill": {
           "filename": "lean4-complexity-mlkem-lattice-SKILL.md",
           "name": "lean4-complexity-mlkem-lattice",
-          "description": "AI-agnostic formal mathematics and cryptography skill for reading the Lean 4 projects in anthropics/formal-math (zeta23, 3sum-apsp, eth) by their READMEs and for NIST FIPS 203 ML-KEM Module-LWE parameters.",
+          "description": "AI-agnostic formal mathematics and cryptography skill for reading the Lean 4 projects in anthropics/formal-math (zeta23, 3sum-apsp, eth, vp-vnp) by their READMEs and for NIST FIPS 203 ML-KEM Module-LWE parameters.",
           "rules": [
             "Configure Module-LWE over polynomial ring R_q = Z_q[X]/(X^256 + 1) with prime modulus q = 3329 and module rank k in {2, 3, 4} (ML-KEM-512/768/1024).",
             "Take decapsulation failure rates from FIPS 203 Table 1 (2^-138.8, 2^-164.8 and 2^-174.8 for ML-KEM-512/768/1024) and noise widths from Table 2 (eta1 = 3, 2, 2; eta2 = 2) rather than deriving them from a rule of thumb.",
