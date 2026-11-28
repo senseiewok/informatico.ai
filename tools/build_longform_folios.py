@@ -5821,7 +5821,12 @@ COVER_SECTION_NAMES: dict[str, tuple[str, str]] = {
 }
 
 _SENTENCE_END_RE = re.compile(r"(?<=[.?!])\s+")
-_PLAIN_LEAD_RE = re.compile(r"^(?:In plain words|En palabras sencillas),\s+", re.I)
+# Lead-ins dropped from a quoted opening: the box label, and a clause pointing back at a page heading the cover
+# does not show ("To picture this mystery, imagine ..." becomes "Imagine ...").
+_PLAIN_LEAD_RE = re.compile(
+    r"^(?:In plain words|En palabras sencillas|To (?:picture|see|imagine) (?:this|these) \w+|Para (?:imaginar|ver) (?:este|esta|estos|estas) \w+),\s+",
+    re.I,
+)
 
 
 def _standfirst_excerpt(text: str, max_chars: int = 280) -> str:

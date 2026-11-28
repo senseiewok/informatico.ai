@@ -190,8 +190,14 @@ class CoverHeroTests(unittest.TestCase):
                     pages += 1
                     movable = [n for n in tree.find_all("input") if n.attrs.get("type") == "range"]
                     self.assertTrue(movable, f"{rel}: no control to move the model with")
-                    if tree.find_all("div", "tp-plain-bridge-box") or "in plain words" in essay.read_text(encoding="utf-8").casefold():
+                    if tree.find_all("div", "tp-plain-bridge-box"):
                         with_plain += 1
+            # Every featured essay too, including the series front page (timegravity/) and the Toolbox entry.
+            for item in B.INFORMATICO_SPOTLIGHT_ROTATION:
+                featured = SRC / prefix / item["href"] / "index.html"
+                tree = parse(featured.read_text(encoding="utf-8"))
+                movable = [n for n in tree.find_all("input") if n.attrs.get("type") == "range"]
+                self.assertTrue(movable, f"{prefix}{item['href']}: a featured essay has no control to move the model with")
         self.assertGreater(pages, 150)
         self.assertGreater(with_plain * 2, pages, f"only {with_plain} of {pages} essays have plain-words text")
         count = 0
@@ -399,10 +405,16 @@ class ThisWeekTests(unittest.TestCase):
                 self.assertEqual(dek.text(), shown, rel)
                 self.assertLessEqual(len(shown), 280, shown)
                 self.assertIn(norm(shown), essay, f"{rel}: the standfirst for {href} is not in that essay: {shown!r}")
+                # The cover shows no heading for the excerpt to lean on, so it must not open by pointing back.
+                self.assertNotRegex(
+                    shown, r"(?i)^(?:this|these|that|esta|este|estos|estas)\b|^to (?:picture|see|imagine) (?:this|these)\b",
+                    f"{rel}: the standfirst for {href} opens by pointing back at something the cover does not show",
+                )
 
     def test_standfirst_excerpt_only_quotes(self) -> None:
         self.assertEqual(B._standfirst_excerpt("In plain words, a grid is a bicycle. It rolls. It stops."), "A grid is a bicycle. It rolls.")
         self.assertEqual(B._standfirst_excerpt("En palabras sencillas, una red es una bicicleta. Rueda."), "Una red es una bicicleta. Rueda.")
+        self.assertEqual(B._standfirst_excerpt("To picture this mystery, imagine a car. It turns."), "Imagine a car. It turns.")
         self.assertEqual(B._standfirst_excerpt("One  sentence only"), "One sentence only")
         long_second = "Short first. " + "x" * 300 + "."
         self.assertEqual(B._standfirst_excerpt(long_second), "Short first.")
